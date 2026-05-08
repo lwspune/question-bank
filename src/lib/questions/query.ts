@@ -5,6 +5,7 @@ export type OptionRow = {
   label: "A" | "B" | "C" | "D";
   text: string;
   isCorrect: boolean;
+  imageUrl: string | null;
 };
 
 export type QuestionRow = {
@@ -13,6 +14,7 @@ export type QuestionRow = {
   context: string | null;
   difficulty: Difficulty;
   solution: string | null;
+  imageUrl: string | null;
   exam: { id: string; name: string };
   subject: { id: string; name: string };
   chapter: { id: string; name: string };
@@ -37,12 +39,12 @@ export async function queryQuestions(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution,
+      id, text, context, difficulty, solution, image_url,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
       subtopic:subtopics!subtopic_id(id, name),
-      options(label, text, is_correct)
+      options(label, text, is_correct, image_url)
     `,
       { count: "exact" }
     )
@@ -69,7 +71,12 @@ export async function queryQuestions(
   const { data, error, count } = await q;
   if (error) throw new Error(`questions query: ${error.message}`);
 
-  type RawOption = { label: "A" | "B" | "C" | "D"; text: string; is_correct: boolean };
+  type RawOption = {
+    label: "A" | "B" | "C" | "D";
+    text: string;
+    is_correct: boolean;
+    image_url: string | null;
+  };
   type RawTaxonomy = { id: string; name: string };
   type Raw = {
     id: string;
@@ -77,6 +84,7 @@ export async function queryQuestions(
     context: string | null;
     difficulty: Difficulty;
     solution: string | null;
+    image_url: string | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
@@ -93,12 +101,18 @@ export async function queryQuestions(
     context: r.context,
     difficulty: r.difficulty,
     solution: r.solution,
+    imageUrl: r.image_url,
     exam: flatten(r.exam)!,
     subject: flatten(r.subject)!,
     chapter: flatten(r.chapter)!,
     subtopic: flatten(r.subtopic),
     options: (r.options ?? [])
-      .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct }))
+      .map((o) => ({
+        label: o.label,
+        text: o.text,
+        isCorrect: o.is_correct,
+        imageUrl: o.image_url,
+      }))
       .sort((a, b) => a.label.localeCompare(b.label)),
   }));
 

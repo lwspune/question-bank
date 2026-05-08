@@ -1,5 +1,6 @@
 import {
   Document,
+  ImageRun,
   Packer,
   Paragraph,
   TextRun,
@@ -75,13 +76,22 @@ const documentDefaults = {
 export type QuestionPaperInput = {
   title: string;
   questions: QuestionRow[];
+  /** Storage path → image bytes. If omitted or a path is missing, the image is silently skipped. */
+  imageBytes?: Map<string, Buffer>;
 };
 
 export type AnswerKeyInput = {
   title: string;
   questions: QuestionRow[];
   includeSolutions: boolean;
+  /** Accepted for symmetry with QuestionPaperInput; ignored — answer key never embeds images. */
+  imageBytes?: Map<string, Buffer>;
 };
+
+const QUESTION_IMAGE_WIDTH = 320;
+const QUESTION_IMAGE_HEIGHT = 240;
+const OPTION_IMAGE_WIDTH = 200;
+const OPTION_IMAGE_HEIGHT = 150;
 
 export async function buildQuestionPaper(
   input: QuestionPaperInput
@@ -93,7 +103,7 @@ export async function buildQuestionPaper(
   children.push(blank());
 
   for (const q of input.questions) {
-    children.push(...questionParagraphs(q, builder));
+    children.push(...questionParagraphs(q, builder, input.imageBytes));
   }
 
   const doc = new Document({
@@ -158,7 +168,11 @@ function titleParagraph(title: string): Paragraph {
   });
 }
 
-function questionParagraphs(q: QuestionRow, builder: Builder): Paragraph[] {
+function questionParagraphs(
+  q: QuestionRow,
+  builder: Builder,
+  imageBytes: Map<string, Buffer> | undefined
+): Paragraph[] {
   const out: Paragraph[] = [];
 
   out.push(
@@ -167,6 +181,17 @@ function questionParagraphs(q: QuestionRow, builder: Builder): Paragraph[] {
       children: mathRuns(q.text, builder),
     })
   );
+
+  if (q.imageUrl && imageBytes?.has(q.imageUrl)) {
+    out.push(
+      imageParagraph(
+        imageBytes.get(q.imageUrl)!,
+        QUESTION_IMAGE_WIDTH,
+        QUESTION_IMAGE_HEIGHT,
+        720
+      )
+    );
+  }
 
   if (q.context) {
     out.push(
@@ -190,9 +215,48 @@ function questionParagraphs(q: QuestionRow, builder: Builder): Paragraph[] {
         ],
       })
     );
+    if (opt.imageUrl && imageBytes?.has(opt.imageUrl)) {
+      out.push(
+        imageParagraph(
+          imageBytes.get(opt.imageUrl)!,
+          OPTION_IMAGE_WIDTH,
+          OPTION_IMAGE_HEIGHT,
+          1080
+        )
+      );
+    }
   }
 
   return out;
+}
+
+function imageParagraph(
+  data: Buffer,
+  width: number,
+  height: number,
+  indentLeft: number
+): Paragraph {
+  return new Paragraph({
+    indent: { left: indentLeft },
+    children: [
+      new ImageRun({
+        type: detectImageType(data),
+        data,
+        transformation: { width, height },
+      }),
+    ],
+  });
+}
+
+function detectImageType(bytes: Buffer): "png" | "jpg" {
+  // PNG: 89 50 4E 47
+  if (bytes.length >= 4 && bytes[0] === 0x89 && bytes[1] === 0x50) return "png";
+  // JPEG: FF D8 FF
+  if (bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8) return "jpg";
+  // Default to png; we accept only png/jpeg at upload, so this is unreachable
+  // unless someone seeds bytes manually. The docx library still needs *some*
+  // type, so picking png keeps the file from breaking outright.
+  return "png";
 }
 
 function mathRuns(text: string, builder: Builder): ParagraphChild[] {

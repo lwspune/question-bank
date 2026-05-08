@@ -1,13 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
 import JSZip from "jszip";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember } from "@/lib/auth";
-import { queryQuestions } from "@/lib/questions/query";
+import { queryQuestions, type QuestionRow } from "@/lib/questions/query";
 import type { Filters } from "@/lib/questions/filters";
 import {
   buildQuestionPaper,
   buildAnswerKey,
 } from "@/lib/export/docxBuilder";
+import { downloadImage } from "@/lib/storage/images";
 
 export const maxDuration = 60;
 
@@ -64,8 +66,10 @@ export async function POST(request: NextRequest) {
         : "Question Bank Export";
     const includeSolutions = !!options.includeSolutions;
 
+    const imageBytes = await fetchImageBytes(result.rows);
+
     const [paperBuf, keyBuf] = await Promise.all([
-      buildQuestionPaper({ title, questions: result.rows }),
+      buildQuestionPaper({ title, questions: result.rows, imageBytes }),
       buildAnswerKey({ title, questions: result.rows, includeSolutions }),
     ]);
 
@@ -94,4 +98,36 @@ export async function POST(request: NextRequest) {
 function sanitizeFilename(s: string): string {
   const cleaned = s.replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "_");
   return cleaned || "export";
+}
+
+/**
+ * Download all referenced image paths in parallel via the service-role client.
+ * Skips images that fail to fetch — the docx builder will silently render the
+ * paragraph without that image rather than fail the whole export.
+ */
+async function fetchImageBytes(
+  questions: QuestionRow[]
+): Promise<Map<string, Buffer>> {
+  const paths = new Set<string>();
+  for (const q of questions) {
+    if (q.imageUrl) paths.add(q.imageUrl);
+    for (const opt of q.options) {
+      if (opt.imageUrl) paths.add(opt.imageUrl);
+    }
+  }
+  if (paths.size === 0) return new Map();
+
+  const admin = createSupabaseAdminClient();
+  const result = new Map<string, Buffer>();
+  await Promise.all(
+    Array.from(paths).map(async (path) => {
+      try {
+        const bytes = await downloadImage(admin, path);
+        result.set(path, bytes);
+      } catch (err) {
+        console.warn(`failed to fetch image ${path}: ${err instanceof Error ? err.message : err}`);
+      }
+    })
+  );
+  return result;
 }

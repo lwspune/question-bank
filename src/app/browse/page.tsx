@@ -128,6 +128,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               <QuestionCard
                 question={q}
                 index={(filters.page - 1) * DEFAULT_PAGE_SIZE + i + 1}
+                isAdmin={member.role === "ADMIN"}
+                supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
               />
             </li>
           ))}
