@@ -31,13 +31,14 @@ src/
 │   ├── browse/                            org-wide: cascading filters, KaTeX preview, ZIP export, admin image-edit dialog
 │   ├── api/auth/callback/                 Supabase OAuth code exchange
 │   ├── api/upload/{preview,commit}/       two-stage admin upload
-│   ├── api/questions/[id]/images/         PUT (multipart): per-slot image upload / remove (admin only)
+│   ├── api/questions/[id]/                PUT (JSON): edit text+options+taxonomy+image paths in one request (admin only)
+│   ├── questions/[id]/edit/               admin-only edit page: cascading taxonomy + textareas + eager image upload
 │   └── api/export/                        POST → ZIP of Question Paper + Answer Key (server-side fetches image bytes via service-role for embed)
 ├── lib/
 │   ├── supabase/{client,server,middleware,admin}.ts    four supabase-js variants
 │   ├── auth.ts                            getSessionUser, getSessionMember, requireAdmin, HttpError
 │   ├── seed.ts                            taxonomy upsert (used by scripts/seed.ts)
-│   ├── questions/{filters,query}.ts       browse filters ↔ URL + Supabase query builder
+│   ├── questions/{filters,query,edit,applyEdit}.ts   browse filters ↔ URL · Supabase query builder · zod edit schema + hash · DB-side edit application
 │   ├── upload/{parser,validate,hash,taxonomy,commit}.ts   upload pipeline (pure → DB)
 │   ├── storage/
 │   │   ├── images.ts                      uploadImage / deleteImage / downloadImage / validateImageUpload (server, uses node:crypto)
@@ -104,6 +105,10 @@ Why behind architectural pivots — saves future-you from "why didn't we just…
 - **2026-05-08 — PNG and JPEG only, WebP rejected.** The `docx` library's `ImageRun` doesn't accept WebP, and silently dropping WebP images at export time would surprise teachers worse than rejecting at upload time.
 - **2026-05-08 — Per-question Edit Images UI rather than Excel-embedded extraction.** Smaller blast radius — Excel pipeline (xlsx parser) untouched. Teachers add images post-upload through the browse page. Excel-embedded extraction (xlsx → exceljs swap) is a separate future milestone.
 - **2026-05-08 — `imageUrl.ts` split out from `images.ts`.** `images.ts` imports `node:crypto` for `randomUUID`; importing it from a client component pulls `node:crypto` into the browser bundle and breaks the Webpack build. The pure-function URL builder lives in its own module so client components can use it.
+- **2026-05-08 — Edit lives on a dedicated page, not inline.** The M5 inline `EditImagesDialog` was cramped once we expanded scope to text + 4 options + solution + taxonomy. `/questions/[id]/edit` is admin-only and gives a full form. The browse card just links out.
+- **2026-05-08 — Eager-upload image flow on edit (MHT_CET_AI pattern).** Image uploads happen on file-pick via the browser session client (storage RLS gates admin + org folder). The Save endpoint is JSON-only and receives storage paths. Server compares old vs new paths and deletes orphans. Keeps the route handler simple and decouples storage failures from DB writes.
+- **2026-05-08 — Edit allows taxonomy moves but not auto-create.** The form lets admins reassign subject/chapter/subtopic from existing options. Auto-create from this UI was deliberately not added: a typo here is more visible (admin staring at one row) than during bulk Excel upload, and a typo'd "Phyiscs" subject would corrupt the canonical taxonomy. Auto-create stays in the upload pipeline only.
+- **2026-05-08 — `applyEdit` extracted as a discriminated-union returning DB function.** Route handler is a thin auth + http mapping; all the logic (load + verify org + path-prefix check + taxonomy hierarchy + UPDATEs + orphan cleanup) lives in `src/lib/questions/applyEdit.ts` and returns `{ kind: "ok" | "not_found" | "forbidden" | "invalid_image_path" | "invalid_taxonomy" | "duplicate" | "error" }`. Lets us integration-test the logic directly with the service-role client without spinning up the route.
 
 ## Adding a new RLS-protected table
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import KatexRenderer from "@/components/math/KatexRenderer";
-import EditImagesDialog from "./EditImagesDialog";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import type { QuestionRow } from "@/lib/questions/query";
@@ -30,18 +30,10 @@ export default function QuestionCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
-  const [editing, setEditing] = useState(false);
 
   const breadcrumb = `${question.subject.name} → ${question.chapter.name}${
     question.subtopic ? ` → ${question.subtopic.name}` : ""
   }`;
-
-  const optionImagePaths = {
-    A: question.options.find((o) => o.label === "A")?.imageUrl ?? null,
-    B: question.options.find((o) => o.label === "B")?.imageUrl ?? null,
-    C: question.options.find((o) => o.label === "C")?.imageUrl ?? null,
-    D: question.options.find((o) => o.label === "D")?.imageUrl ?? null,
-  };
 
   return (
     <div className="rounded-lg border bg-card shadow-sm">
@@ -169,23 +161,12 @@ export default function QuestionCard({
 
           {isAdmin && (
             <div className="pt-2 border-t">
-              {!editing ? (
-                <button
-                  type="button"
-                  onClick={() => setEditing(true)}
-                  className="text-xs font-medium text-primary hover:underline"
-                >
-                  Edit images
-                </button>
-              ) : (
-                <EditImagesDialog
-                  questionId={question.id}
-                  questionImagePath={question.imageUrl}
-                  optionImagePaths={optionImagePaths}
-                  supabaseUrl={supabaseUrl}
-                  onClose={() => setEditing(false)}
-                />
-              )}
+              <Link
+                href={`/questions/${question.id}/edit`}
+                className="text-xs font-medium text-primary hover:underline"
+              >
+                Edit question
+              </Link>
             </div>
           )}
         </div>
