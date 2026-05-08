@@ -30,7 +30,7 @@ type CommitResult = {
 };
 
 export default function UploadForm({ exams }: { exams: Exam[] }) {
-  const [examId, setExamId] = useState(exams[0]?.id ?? "");
+  const [examId, setExamId] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<PreviewResult | null>(null);
   const [committing, setCommitting] = useState(false);
@@ -116,7 +116,11 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
                   onChange={(e) => setExamId(e.target.value)}
                   disabled={busy || !!preview}
                   aria-label="Exam"
+                  required
                 >
+                  <option value="" disabled>
+                    — Select exam —
+                  </option>
                   {exams.map((x) => (
                     <option key={x.id} value={x.id}>
                       {x.name}
