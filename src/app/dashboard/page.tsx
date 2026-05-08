@@ -26,13 +26,16 @@ export default async function DashboardPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {member.role === "ADMIN" && (
-              <div>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild variant="outline">
+                <Link href="/browse">Browse questions</Link>
+              </Button>
+              {member.role === "ADMIN" && (
                 <Button asChild>
                   <Link href="/upload">Upload questions</Link>
                 </Button>
-              </div>
-            )}
+              )}
+            </div>
             <SignOutButton />
           </CardContent>
         </Card>
