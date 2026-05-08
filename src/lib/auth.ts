@@ -1,5 +1,11 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
+export class HttpError extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+  }
+}
+
 export type SessionUser = {
   id: string;
   email: string;
@@ -43,4 +49,11 @@ export async function getSessionMember(): Promise<SessionMember | null> {
     orgName: org.name,
     role: membership.role as "ADMIN" | "TEACHER",
   };
+}
+
+export async function requireAdmin(): Promise<SessionMember> {
+  const member = await getSessionMember();
+  if (!member) throw new HttpError(401, "Not signed in");
+  if (member.role !== "ADMIN") throw new HttpError(403, "Admin access required");
+  return member;
 }

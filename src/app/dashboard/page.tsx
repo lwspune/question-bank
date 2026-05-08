@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -23,13 +25,15 @@ export default async function DashboardPage() {
               Role: <span className="font-medium">{member.role}</span>
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Question bank features will appear here.
-            </p>
-            <div className="mt-6">
-              <SignOutButton />
-            </div>
+          <CardContent className="space-y-6">
+            {member.role === "ADMIN" && (
+              <div>
+                <Button asChild>
+                  <Link href="/upload">Upload questions</Link>
+                </Button>
+              </div>
+            )}
+            <SignOutButton />
           </CardContent>
         </Card>
       </main>
