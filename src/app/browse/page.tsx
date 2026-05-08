@@ -11,6 +11,7 @@ import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
 import FilterBar from "./FilterBar";
 import QuestionCard from "./QuestionCard";
 import Pagination from "./Pagination";
+import DownloadDialog from "./DownloadDialog";
 
 type PageProps = {
   searchParams: Record<string, string | string[] | undefined>;
@@ -99,6 +100,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         subjects={(subjects ?? []).map((s) => ({ id: s.id, name: s.name }))}
         chapters={(chapters ?? []).map((c) => ({ id: c.id, name: c.name }))}
         subtopics={(subtopics ?? []).map((s) => ({ id: s.id, name: s.name }))}
+      />
+
+      <DownloadDialog
+        filters={filters}
+        totalCount={questionsResult.totalCount}
       />
 
       {questionsResult.rows.length === 0 ? (
