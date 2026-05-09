@@ -20,10 +20,18 @@ export const metadata: Metadata = {
   description: "MCQ question bank for teachers",
 };
 
+// Synchronous: runs before paint to avoid a flash of the wrong theme.
+const themeBootstrap = `
+(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
-      <body className="min-h-screen bg-background text-foreground antialiased font-sans">
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         {children}
         <Toaster
           position="bottom-right"

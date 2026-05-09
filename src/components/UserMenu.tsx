@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut, User } from "lucide-react";
+import { LogOut, Moon, Sun, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,12 @@ export default function UserMenu({
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -36,6 +41,18 @@ export default function UserMenu({
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
+
+  function toggleTheme() {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }
 
   async function onSignOut() {
     setSigningOut(true);
@@ -82,6 +99,19 @@ export default function UserMenu({
           </p>
           <p className="mt-0.5 text-xs text-muted-foreground">{role}</p>
         </div>
+        <button
+          type="button"
+          role="menuitem"
+          onClick={toggleTheme}
+          className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent"
+        >
+          {isDark ? (
+            <Sun className="h-4 w-4" aria-hidden />
+          ) : (
+            <Moon className="h-4 w-4" aria-hidden />
+          )}
+          {isDark ? "Light mode" : "Dark mode"}
+        </button>
         <button
           type="button"
           role="menuitem"
