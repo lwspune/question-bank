@@ -1,17 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Eye, ImagePlus, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import KatexRenderer from "@/components/math/KatexRenderer";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
-
-type Difficulty = "EASY" | "MODERATE" | "HARD";
-type OptionLabel = "A" | "B" | "C" | "D";
+import {
+  isQuestionDirty,
+  toFormState,
+  type Difficulty,
+  type ExistingQuestion as DirtyExistingQuestion,
+  type OptionLabel,
+} from "@/lib/questions/dirty";
 
 export type SubjectTree = {
   id: string;
@@ -23,25 +35,7 @@ export type SubjectTree = {
   }[];
 };
 
-export type ExistingOption = {
-  label: OptionLabel;
-  text: string;
-  imageUrl: string | null;
-  isCorrect: boolean;
-};
-
-export type ExistingQuestion = {
-  id: string;
-  text: string;
-  context: string | null;
-  difficulty: Difficulty;
-  solution: string | null;
-  imageUrl: string | null;
-  subjectId: string;
-  chapterId: string;
-  subtopicId: string | null;
-  options: ExistingOption[];
-};
+export type ExistingQuestion = DirtyExistingQuestion & { id: string };
 
 type Props = {
   question: ExistingQuestion;
@@ -52,6 +46,8 @@ type Props = {
 
 const MAX_BYTES = 1024 * 1024;
 const ACCEPT = "image/png,image/jpeg";
+const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
+const NONE = "__NONE__";
 
 export default function EditQuestionForm({
   question,
@@ -60,41 +56,26 @@ export default function EditQuestionForm({
   supabaseUrl,
 }: Props) {
   const router = useRouter();
+  const initial = toFormState(question);
 
-  const [text, setText] = useState(question.text);
-  const [context, setContext] = useState(question.context ?? "");
-  const [difficulty, setDifficulty] = useState<Difficulty>(question.difficulty);
-  const [solution, setSolution] = useState(question.solution ?? "");
-  const [imagePath, setImagePath] = useState<string | null>(question.imageUrl);
-  const [subjectId, setSubjectId] = useState(question.subjectId);
-  const [chapterId, setChapterId] = useState(question.chapterId);
+  const [text, setText] = useState(initial.text);
+  const [context, setContext] = useState(initial.context);
+  const [difficulty, setDifficulty] = useState<Difficulty>(initial.difficulty);
+  const [solution, setSolution] = useState(initial.solution);
+  const [imagePath, setImagePath] = useState<string | null>(initial.imagePath);
+  const [subjectId, setSubjectId] = useState(initial.subjectId);
+  const [chapterId, setChapterId] = useState(initial.chapterId);
   const [subtopicId, setSubtopicId] = useState<string | null>(
-    question.subtopicId
+    initial.subtopicId
   );
-  const [correct, setCorrect] = useState<OptionLabel>(
-    (question.options.find((o) => o.isCorrect)?.label as OptionLabel) ?? "A"
-  );
-  const [optionTexts, setOptionTexts] = useState<Record<OptionLabel, string>>(
-    () => {
-      const init = { A: "", B: "", C: "", D: "" } as Record<OptionLabel, string>;
-      for (const o of question.options) init[o.label] = o.text;
-      return init;
-    }
-  );
-  const [optionImages, setOptionImages] = useState<
-    Record<OptionLabel, string | null>
-  >(() => {
-    const init = { A: null, B: null, C: null, D: null } as Record<
-      OptionLabel,
-      string | null
-    >;
-    for (const o of question.options) init[o.label] = o.imageUrl;
-    return init;
-  });
+  const [correct, setCorrect] = useState<OptionLabel>(initial.correct);
+  const [optionTexts, setOptionTexts] = useState(initial.optionTexts);
+  const [optionImages, setOptionImages] = useState(initial.optionImages);
 
   const [error, setError] = useState<string | null>(null);
   const [uploadingSlot, setUploadingSlot] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [mode, setMode] = useState<"edit" | "preview">("edit");
 
   const currentSubject = useMemo(
     () => subjects.find((s) => s.id === subjectId),
@@ -105,6 +86,22 @@ export default function EditQuestionForm({
     [currentSubject, chapterId]
   );
   const subtopicOptions = currentChapter?.subtopics ?? [];
+
+  const dirty = isQuestionDirty(question, {
+    text,
+    context,
+    difficulty,
+    solution,
+    imagePath,
+    subjectId,
+    chapterId,
+    subtopicId,
+    correct,
+    optionTexts,
+    optionImages,
+  });
+
+  const busy = saving || uploadingSlot !== null;
 
   function onSubjectChange(next: string) {
     setSubjectId(next);
@@ -140,7 +137,9 @@ export default function EditQuestionForm({
       const path = await uploadFile(file);
       setImagePath(path);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Upload failed");
+      const msg = err instanceof Error ? err.message : "Upload failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setUploadingSlot(null);
     }
@@ -154,7 +153,9 @@ export default function EditQuestionForm({
       const path = await uploadFile(file);
       setOptionImages((prev) => ({ ...prev, [label]: path }));
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Upload failed");
+      const msg = err instanceof Error ? err.message : "Upload failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setUploadingSlot(null);
     }
@@ -174,7 +175,7 @@ export default function EditQuestionForm({
       chapterId,
       subtopicId: subtopicId ?? null,
       correct,
-      options: (["A", "B", "C", "D"] as OptionLabel[]).map((label) => ({
+      options: LABELS.map((label) => ({
         label,
         text: optionTexts[label],
         imageUrl: optionImages[label],
@@ -210,219 +211,472 @@ export default function EditQuestionForm({
     }
   }
 
-  const busy = saving || uploadingSlot !== null;
-
   return (
-    <form onSubmit={onSave} className="space-y-6">
-      <section className="rounded-lg border bg-card p-4 space-y-4">
-        <h2 className="text-sm font-semibold">Taxonomy</h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div className="space-y-1.5">
-            <Label htmlFor="subject">Subject</Label>
-            <Select
-              id="subject"
-              value={subjectId}
-              onChange={onSubjectChange}
-              disabled={busy}
-            >
-              {subjects.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-            </Select>
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="chapter">Chapter</Label>
-            <Select
-              id="chapter"
-              value={chapterId}
-              onChange={onChapterChange}
-              disabled={busy || !currentSubject}
-            >
-              {(currentSubject?.chapters ?? []).map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </Select>
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="subtopic">Subtopic (optional)</Label>
-            <Select
-              id="subtopic"
-              value={subtopicId ?? ""}
-              onChange={(v) => setSubtopicId(v || null)}
-              disabled={busy || !currentChapter}
-            >
-              <option value="">— none —</option>
-              {subtopicOptions.map((st) => (
-                <option key={st.id} value={st.id}>
-                  {st.name}
-                </option>
-              ))}
-            </Select>
-          </div>
-        </div>
-      </section>
+    <form onSubmit={onSave}>
+      <div className="mb-6 flex items-center justify-between">
+        <ModeToggle mode={mode} onChange={setMode} />
+      </div>
 
-      <section className="rounded-lg border bg-card p-4 space-y-4">
-        <h2 className="text-sm font-semibold">Question</h2>
-        <div className="space-y-1.5">
-          <Label htmlFor="text">Text (LaTeX in \(…\) renders in Word)</Label>
-          <textarea
-            id="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            disabled={busy}
-            rows={3}
-            className={textareaClass}
-          />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="context">Context (optional)</Label>
-          <textarea
-            id="context"
-            value={context}
-            onChange={(e) => setContext(e.target.value)}
-            disabled={busy}
-            rows={2}
-            className={textareaClass}
-          />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="difficulty">Difficulty</Label>
-          <Select
-            id="difficulty"
-            value={difficulty}
-            onChange={(v) => setDifficulty(v as Difficulty)}
-            disabled={busy}
-          >
-            <option value="EASY">EASY</option>
-            <option value="MODERATE">MODERATE</option>
-            <option value="HARD">HARD</option>
-          </Select>
-        </div>
-        <ImageSlot
-          label="Question diagram"
-          path={imagePath}
+      {mode === "preview" ? (
+        <PreviewPane
+          text={text}
+          context={context}
+          imagePath={imagePath}
+          options={LABELS.map((label) => ({
+            label,
+            text: optionTexts[label],
+            imageUrl: optionImages[label],
+            isCorrect: correct === label,
+          }))}
+          solution={solution}
+          difficulty={difficulty}
           supabaseUrl={supabaseUrl}
-          onPick={onPickQuestionImage}
-          onRemove={() => setImagePath(null)}
-          uploading={uploadingSlot === "question"}
-          disabled={busy && uploadingSlot !== "question"}
         />
-      </section>
-
-      <section className="rounded-lg border bg-card p-4 space-y-4">
-        <h2 className="text-sm font-semibold">Options</h2>
-        {(["A", "B", "C", "D"] as OptionLabel[]).map((label) => (
-          <div key={label} className="rounded-md border p-3 space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor={`opt-${label}`} className="font-semibold">
-                ({label})
-              </Label>
-              <label className="flex items-center gap-1.5 text-xs">
-                <input
-                  type="radio"
-                  name="correct"
-                  checked={correct === label}
-                  onChange={() => setCorrect(label)}
+      ) : (
+        <div className="grid gap-6 lg:grid-cols-[1fr_18rem]">
+          <div className="min-w-0 space-y-6">
+            <Section heading="Question">
+              <div className="space-y-4">
+                <Field
+                  id="text"
+                  label="Text (LaTeX in \(…\) renders in Word)"
+                  value={text}
+                  onChange={setText}
+                  rows={3}
                   disabled={busy}
                 />
-                Correct
-              </label>
-            </div>
-            <textarea
-              id={`opt-${label}`}
-              value={optionTexts[label]}
-              onChange={(e) =>
-                setOptionTexts((prev) => ({ ...prev, [label]: e.target.value }))
-              }
-              disabled={busy}
-              rows={2}
-              className={textareaClass}
-            />
-            <ImageSlot
-              label={`Option ${label} image`}
-              path={optionImages[label]}
-              supabaseUrl={supabaseUrl}
-              onPick={(f) => onPickOptionImage(label, f)}
-              onRemove={() =>
-                setOptionImages((prev) => ({ ...prev, [label]: null }))
-              }
-              uploading={uploadingSlot === label}
-              disabled={busy && uploadingSlot !== label}
-              compact
-            />
-          </div>
-        ))}
-      </section>
+                <Field
+                  id="context"
+                  label="Context (optional)"
+                  value={context}
+                  onChange={setContext}
+                  rows={2}
+                  disabled={busy}
+                />
+              </div>
+            </Section>
 
-      <section className="rounded-lg border bg-card p-4 space-y-2">
-        <Label htmlFor="solution">Solution (optional)</Label>
-        <textarea
-          id="solution"
-          value={solution}
-          onChange={(e) => setSolution(e.target.value)}
-          disabled={busy}
-          rows={3}
-          className={textareaClass}
-        />
-      </section>
+            <Section heading="Options">
+              <div className="space-y-3">
+                {LABELS.map((label) => {
+                  const isCorrect = correct === label;
+                  return (
+                    <div
+                      key={label}
+                      className={cn(
+                        "rounded-md border p-3",
+                        isCorrect && "border-l-2 border-l-emerald-500"
+                      )}
+                    >
+                      <div className="mb-2 flex items-center justify-between">
+                        <span className="font-mono text-sm font-semibold">
+                          ({label})
+                        </span>
+                        <label className="flex cursor-pointer items-center gap-1.5 text-xs">
+                          <input
+                            type="radio"
+                            name="correct"
+                            checked={isCorrect}
+                            onChange={() => setCorrect(label)}
+                            disabled={busy}
+                          />
+                          Correct
+                        </label>
+                      </div>
+                      <textarea
+                        id={`opt-${label}`}
+                        value={optionTexts[label]}
+                        onChange={(e) =>
+                          setOptionTexts((prev) => ({
+                            ...prev,
+                            [label]: e.target.value,
+                          }))
+                        }
+                        disabled={busy}
+                        rows={2}
+                        className={textareaClass}
+                      />
+                      <div className="mt-3">
+                        <ImageSlot
+                          label={`Option ${label} image`}
+                          path={optionImages[label]}
+                          supabaseUrl={supabaseUrl}
+                          onPick={(f) => onPickOptionImage(label, f)}
+                          onRemove={() =>
+                            setOptionImages((prev) => ({
+                              ...prev,
+                              [label]: null,
+                            }))
+                          }
+                          uploading={uploadingSlot === label}
+                          disabled={busy && uploadingSlot !== label}
+                          compact
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </Section>
+
+            <Section heading="Solution">
+              <Field
+                id="solution"
+                label="Solution (optional)"
+                value={solution}
+                onChange={setSolution}
+                rows={4}
+                disabled={busy}
+                hideLabel
+              />
+            </Section>
+          </div>
+
+          <aside>
+            <div className="space-y-6 lg:sticky lg:top-20">
+              <Section heading="Taxonomy">
+                <div className="space-y-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Select
+                      value={subjectId}
+                      onValueChange={onSubjectChange}
+                      disabled={busy}
+                    >
+                      <SelectTrigger id="subject">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {subjects.map((s) => (
+                          <SelectItem key={s.id} value={s.id}>
+                            {s.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="chapter">Chapter</Label>
+                    <Select
+                      value={chapterId}
+                      onValueChange={onChapterChange}
+                      disabled={busy || !currentSubject}
+                    >
+                      <SelectTrigger id="chapter">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {(currentSubject?.chapters ?? []).map((c) => (
+                          <SelectItem key={c.id} value={c.id}>
+                            {c.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="subtopic">Subtopic (optional)</Label>
+                    <Select
+                      value={subtopicId ?? NONE}
+                      onValueChange={(v) =>
+                        setSubtopicId(v === NONE ? null : v)
+                      }
+                      disabled={busy || !currentChapter}
+                    >
+                      <SelectTrigger id="subtopic">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={NONE}>— none —</SelectItem>
+                        {subtopicOptions.map((st) => (
+                          <SelectItem key={st.id} value={st.id}>
+                            {st.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </Section>
+
+              <Section heading="Difficulty">
+                <Select
+                  value={difficulty}
+                  onValueChange={(v) => setDifficulty(v as Difficulty)}
+                  disabled={busy}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="EASY">Easy</SelectItem>
+                    <SelectItem value="MODERATE">Moderate</SelectItem>
+                    <SelectItem value="HARD">Hard</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Section>
+
+              <Section heading="Question diagram">
+                <ImageSlot
+                  label="Question image"
+                  path={imagePath}
+                  supabaseUrl={supabaseUrl}
+                  onPick={onPickQuestionImage}
+                  onRemove={() => setImagePath(null)}
+                  uploading={uploadingSlot === "question"}
+                  disabled={busy && uploadingSlot !== "question"}
+                  hideLabel
+                />
+              </Section>
+            </div>
+          </aside>
+        </div>
+      )}
 
       {error && (
         <div
           role="alert"
-          className="rounded-md border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive"
+          className="mt-6 rounded-md border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive"
         >
           {error}
         </div>
       )}
 
-      <div className="flex gap-2">
-        <Button type="submit" disabled={busy}>
-          {saving ? "Saving…" : "Save"}
-        </Button>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={() => router.back()}
-          disabled={busy}
-        >
-          Cancel
-        </Button>
-      </div>
+      <SaveBar
+        dirty={dirty}
+        saving={saving}
+        busy={busy}
+        onCancel={() => router.back()}
+      />
     </form>
   );
 }
 
-const textareaClass =
-  "flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
-
-function Select({
-  id,
-  value,
+function ModeToggle({
+  mode,
   onChange,
-  disabled,
+}: {
+  mode: "edit" | "preview";
+  onChange: (m: "edit" | "preview") => void;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label="View mode"
+      className="inline-flex rounded-md border border-input bg-background p-0.5"
+    >
+      <button
+        type="button"
+        onClick={() => onChange("edit")}
+        aria-pressed={mode === "edit"}
+        className={cn(
+          "inline-flex items-center gap-1.5 rounded-sm px-3 py-1.5 text-sm font-medium transition-colors",
+          mode === "edit"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        )}
+      >
+        <Pencil className="h-3.5 w-3.5" aria-hidden />
+        Edit
+      </button>
+      <button
+        type="button"
+        onClick={() => onChange("preview")}
+        aria-pressed={mode === "preview"}
+        className={cn(
+          "inline-flex items-center gap-1.5 rounded-sm px-3 py-1.5 text-sm font-medium transition-colors",
+          mode === "preview"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        )}
+      >
+        <Eye className="h-3.5 w-3.5" aria-hidden />
+        Preview
+      </button>
+    </div>
+  );
+}
+
+function Section({
+  heading,
   children,
 }: {
-  id: string;
-  value: string;
-  onChange: (v: string) => void;
-  disabled?: boolean;
+  heading: string;
   children: React.ReactNode;
 }) {
   return (
-    <select
-      id={id}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      disabled={disabled}
-      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-    >
+    <section className="rounded-lg border bg-card p-4">
+      <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        {heading}
+      </h2>
       {children}
-    </select>
+    </section>
+  );
+}
+
+function Field({
+  id,
+  label,
+  value,
+  onChange,
+  rows,
+  disabled,
+  hideLabel,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  rows: number;
+  disabled?: boolean;
+  hideLabel?: boolean;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <Label htmlFor={id} className={hideLabel ? "sr-only" : undefined}>
+        {label}
+      </Label>
+      <textarea
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
+        rows={rows}
+        className={textareaClass}
+      />
+    </div>
+  );
+}
+
+function SaveBar({
+  dirty,
+  saving,
+  busy,
+  onCancel,
+}: {
+  dirty: boolean;
+  saving: boolean;
+  busy: boolean;
+  onCancel: () => void;
+}) {
+  return (
+    <div className="sticky bottom-0 z-30 -mx-6 mt-8 border-t bg-background/95 px-6 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/85">
+      <div className="mx-auto flex max-w-3xl items-center justify-between gap-4">
+        <p className="flex items-center gap-2 text-sm text-muted-foreground">
+          {dirty ? (
+            <>
+              <span
+                className="inline-block h-2 w-2 rounded-full bg-amber-500"
+                aria-hidden
+              />
+              <span>Unsaved changes</span>
+            </>
+          ) : (
+            <span>No changes</span>
+          )}
+        </p>
+        <div className="flex gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onCancel}
+            disabled={busy}
+          >
+            Cancel
+          </Button>
+          <Button type="submit" disabled={!dirty || busy}>
+            {saving ? "Saving…" : "Save changes"}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PreviewPane({
+  text,
+  context,
+  imagePath,
+  options,
+  solution,
+  difficulty,
+  supabaseUrl,
+}: {
+  text: string;
+  context: string;
+  imagePath: string | null;
+  options: {
+    label: OptionLabel;
+    text: string;
+    imageUrl: string | null;
+    isCorrect: boolean;
+  }[];
+  solution: string;
+  difficulty: Difficulty;
+  supabaseUrl: string;
+}) {
+  return (
+    <div className="rounded-lg border bg-card p-6 font-serif shadow-sm">
+      <p className="mb-3 font-sans text-xs text-muted-foreground">
+        Difficulty: {difficulty.charAt(0) + difficulty.slice(1).toLowerCase()}
+      </p>
+      {context.trim() && (
+        <p className="mb-3 italic text-muted-foreground">
+          <KatexRenderer text={context} />
+        </p>
+      )}
+      <div className="mb-4 text-[15px] leading-relaxed">
+        <KatexRenderer text={text} />
+      </div>
+      {imagePath && (
+        <div className="mb-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={publicImageUrl(supabaseUrl, imagePath)}
+            alt="Question diagram"
+            className="max-h-64 w-auto rounded border"
+          />
+        </div>
+      )}
+      <ol className="space-y-2">
+        {options.map((opt) => (
+          <li
+            key={opt.label}
+            className={cn(
+              "rounded-md border p-3 text-sm",
+              opt.isCorrect && "border-l-2 border-l-emerald-500"
+            )}
+          >
+            <div className="flex items-start gap-3">
+              <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted font-mono text-xs font-bold text-muted-foreground">
+                {opt.label}
+              </span>
+              <div className="min-w-0 flex-1">
+                <KatexRenderer text={opt.text} />
+              </div>
+            </div>
+            {opt.imageUrl && (
+              <div className="ml-9 mt-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={publicImageUrl(supabaseUrl, opt.imageUrl)}
+                  alt={`Option ${opt.label} image`}
+                  className="max-h-32 w-auto rounded border bg-background"
+                />
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+      {solution.trim() && (
+        <div className="mt-4 rounded-md border border-dashed bg-background p-3 text-sm">
+          <p className="mb-1 font-sans text-xs font-medium text-muted-foreground">
+            Solution
+          </p>
+          <KatexRenderer text={solution} />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -435,6 +689,7 @@ function ImageSlot({
   uploading,
   disabled,
   compact,
+  hideLabel,
 }: {
   label: string;
   path: string | null;
@@ -444,39 +699,85 @@ function ImageSlot({
   uploading: boolean;
   disabled: boolean;
   compact?: boolean;
+  hideLabel?: boolean;
 }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  function trigger() {
+    if (!disabled && !uploading) inputRef.current?.click();
+  }
+
   return (
     <div className="space-y-1.5">
-      <Label className="text-xs text-muted-foreground">{label}</Label>
-      <div className="flex items-center gap-3 flex-wrap">
-        {path && (
-          <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={publicImageUrl(supabaseUrl, path)}
-              alt={label}
-              className={cn("rounded border", compact ? "h-10" : "h-16")}
-            />
+      {!hideLabel && (
+        <Label className="text-xs text-muted-foreground">{label}</Label>
+      )}
+      {path ? (
+        <div className="group relative inline-block overflow-hidden rounded-md border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={publicImageUrl(supabaseUrl, path)}
+            alt={label}
+            className={cn(
+              "block w-auto",
+              compact ? "h-20" : "h-32"
+            )}
+          />
+          <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity group-hover:opacity-100">
             <Button
               type="button"
-              variant="outline"
               size="sm"
+              variant="secondary"
+              onClick={trigger}
+              disabled={disabled || uploading}
+              className="h-7 text-xs"
+            >
+              <ImagePlus className="h-3.5 w-3.5" aria-hidden />
+              Replace
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              variant="destructive"
               onClick={onRemove}
               disabled={disabled || uploading}
+              className="h-7 text-xs"
             >
+              <Trash2 className="h-3.5 w-3.5" aria-hidden />
               Remove
             </Button>
-          </>
-        )}
-        <Input
-          type="file"
-          accept={ACCEPT}
-          onChange={(e) => onPick(e.target.files?.[0] ?? null)}
+          </div>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={trigger}
           disabled={disabled || uploading}
-          className="text-xs h-8 flex-1 min-w-40"
-        />
-        {uploading && <span className="text-xs text-muted-foreground">Uploading…</span>}
-      </div>
+          className={cn(
+            "flex w-full flex-col items-center justify-center gap-1 rounded-md border-2 border-dashed border-input p-4 text-center transition-colors hover:border-primary/50 hover:bg-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+            compact && "p-3"
+          )}
+        >
+          <ImagePlus
+            className="h-5 w-5 text-muted-foreground"
+            aria-hidden
+          />
+          <span className="text-xs text-muted-foreground">
+            {uploading ? "Uploading…" : "Add image"}
+          </span>
+        </button>
+      )}
+      <input
+        ref={inputRef}
+        type="file"
+        accept={ACCEPT}
+        onChange={(e) => onPick(e.target.files?.[0] ?? null)}
+        disabled={disabled || uploading}
+        className="sr-only"
+      />
     </div>
   );
 }
+
+const textareaClass =
+  "flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
