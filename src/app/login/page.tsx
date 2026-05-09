@@ -1,43 +1,40 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, Mail } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { BookOpen, Eye, EyeOff } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-type Status = "idle" | "sending" | "sent" | "error";
+import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
+    setSubmitting(true);
     setError(null);
 
     const supabase = createSupabaseBrowserClient();
-    const { error: signInError } = await supabase.auth.signInWithOtp({
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/api/auth/callback`,
-      },
+      password,
     });
 
     if (signInError) {
       setError(signInError.message);
-      setStatus("error");
+      setSubmitting(false);
       return;
     }
-    setStatus("sent");
-  }
-
-  function reset() {
-    setStatus("idle");
-    setError(null);
+    router.replace("/dashboard");
+    router.refresh();
   }
 
   return (
@@ -51,105 +48,78 @@ export default function LoginPage() {
             </span>
           </div>
 
-          {status === "sent" ? (
-            <SentState email={email} onUseDifferent={reset} />
-          ) : (
-            <FormState
-              email={email}
-              setEmail={setEmail}
-              onSubmit={onSubmit}
-              sending={status === "sending"}
-              error={error}
-            />
-          )}
+          <header className="mb-6">
+            <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Enter your email and password.
+            </p>
+          </header>
+
+          <form onSubmit={onSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="you@school.edu"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={submitting}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={submitting}
+                  className="pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  aria-label={
+                    showPassword ? "Hide password" : "Show password"
+                  }
+                  className={cn(
+                    "absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground",
+                    submitting && "pointer-events-none opacity-50"
+                  )}
+                  tabIndex={-1}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" aria-hidden />
+                  ) : (
+                    <Eye className="h-4 w-4" aria-hidden />
+                  )}
+                </button>
+              </div>
+            </div>
+            {error && (
+              <p className="text-sm text-destructive" role="alert">
+                {error}
+              </p>
+            )}
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={submitting || !email || !password}
+            >
+              {submitting ? "Signing in…" : "Sign in"}
+            </Button>
+          </form>
         </div>
       </section>
 
       <BrandPanel />
     </main>
-  );
-}
-
-function FormState({
-  email,
-  setEmail,
-  onSubmit,
-  sending,
-  error,
-}: {
-  email: string;
-  setEmail: (v: string) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  sending: boolean;
-  error: string | null;
-}) {
-  return (
-    <>
-      <header className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          We&apos;ll email you a magic link.
-        </p>
-      </header>
-      <form onSubmit={onSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="you@school.edu"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={sending}
-          />
-        </div>
-        {error && (
-          <p className="text-sm text-destructive" role="alert">
-            {error}
-          </p>
-        )}
-        <Button
-          type="submit"
-          className="w-full"
-          disabled={sending || !email}
-        >
-          {sending ? "Sending…" : "Send magic link"}
-        </Button>
-      </form>
-    </>
-  );
-}
-
-function SentState({
-  email,
-  onUseDifferent,
-}: {
-  email: string;
-  onUseDifferent: () => void;
-}) {
-  return (
-    <div className="text-center">
-      <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 duration-500 animate-in zoom-in-50">
-        <Mail className="h-6 w-6 text-primary" aria-hidden />
-      </div>
-      <h1 className="text-2xl font-semibold tracking-tight">
-        Check your inbox
-      </h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        We sent a sign-in link to{" "}
-        <span className="font-medium text-foreground">{email}</span>. Click the
-        link to continue. The link expires in 1 hour.
-      </p>
-      <button
-        type="button"
-        onClick={onUseDifferent}
-        className="mt-6 text-sm font-medium text-primary hover:underline"
-      >
-        Use a different email
-      </button>
-    </div>
   );
 }
 
