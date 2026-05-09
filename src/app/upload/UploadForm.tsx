@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Card,
@@ -11,6 +12,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Dropzone } from "@/components/ui/dropzone";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Stepper, type Step } from "@/components/ui/stepper";
+import { cn } from "@/lib/utils";
 
 type Exam = { id: string; name: string };
 
@@ -30,6 +41,12 @@ type CommitResult = {
   errors: { sourceRow: number; message: string }[];
 };
 
+const STEPS: Step[] = [
+  { key: "choose", label: "Choose" },
+  { key: "review", label: "Review" },
+  { key: "done", label: "Done" },
+];
+
 export default function UploadForm({ exams }: { exams: Exam[] }) {
   const [examId, setExamId] = useState("");
   const [file, setFile] = useState<File | null>(null);
@@ -38,6 +55,8 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
   const [result, setResult] = useState<CommitResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  const currentStep = result ? 2 : preview ? 1 : 0;
 
   async function onPreview(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -107,53 +126,7 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
 
   return (
     <div className="space-y-6">
-      {!result && (
-        <Card>
-          <CardHeader>
-            <CardTitle>1. Choose file and exam</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={onPreview} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="exam">Exam</Label>
-                <select
-                  id="exam"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  value={examId}
-                  onChange={(e) => setExamId(e.target.value)}
-                  disabled={busy || !!preview}
-                  aria-label="Exam"
-                  required
-                >
-                  <option value="" disabled>
-                    — Select exam —
-                  </option>
-                  {exams.map((x) => (
-                    <option key={x.id} value={x.id}>
-                      {x.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="file">Excel file (.xlsx)</Label>
-                <Input
-                  id="file"
-                  type="file"
-                  accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-                  disabled={busy || !!preview}
-                />
-              </div>
-              {!preview && (
-                <Button type="submit" disabled={!file || !examId || busy}>
-                  {busy ? "Parsing…" : "Preview"}
-                </Button>
-              )}
-            </form>
-          </CardContent>
-        </Card>
-      )}
+      <Stepper steps={STEPS} current={currentStep} />
 
       {error && (
         <div
@@ -164,48 +137,110 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
         </div>
       )}
 
+      {!preview && !result && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Choose file and exam</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={onPreview} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="exam">Exam</Label>
+                <Select
+                  value={examId}
+                  onValueChange={setExamId}
+                  disabled={busy}
+                >
+                  <SelectTrigger id="exam">
+                    <SelectValue placeholder="— Select exam —" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {exams.map((x) => (
+                      <SelectItem key={x.id} value={x.id}>
+                        {x.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Excel file</Label>
+                <Dropzone
+                  file={file}
+                  onFile={setFile}
+                  disabled={busy}
+                />
+              </div>
+              <Button type="submit" disabled={!file || !examId || busy}>
+                {busy ? "Parsing…" : "Preview"}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      )}
+
       {preview && !result && (
         <Card>
           <CardHeader>
-            <CardTitle>2. Review</CardTitle>
+            <CardTitle>Review</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm">
-              <span className="font-medium">{preview.totalRows}</span> rows parsed
-              from <span className="font-medium">{preview.filename}</span>:{" "}
-              <span className="text-green-700 font-medium">
-                {preview.validCount} valid
-              </span>
-              {" · "}
-              <span className="text-destructive font-medium">
-                {preview.errorCount} with errors
+            <p className="text-sm text-muted-foreground">
+              From{" "}
+              <span className="font-medium text-foreground">
+                {preview.filename}
               </span>
             </p>
 
+            <div className="grid grid-cols-3 gap-3">
+              <SummaryStat
+                value={preview.validCount}
+                label="Valid"
+                tone="ok"
+              />
+              <SummaryStat
+                value={preview.errorCount}
+                label="Errors"
+                tone={preview.errorCount > 0 ? "bad" : "neutral"}
+              />
+              <SummaryStat
+                value={preview.totalRows}
+                label="Total rows"
+                tone="neutral"
+              />
+            </div>
+
             {preview.errors.length > 0 && (
-              <div className="rounded-md border max-h-80 overflow-auto">
-                <table className="w-full text-sm">
-                  <thead className="sticky top-0 bg-muted/50">
-                    <tr>
-                      <th className="text-left px-3 py-2 w-20">Row</th>
-                      <th className="text-left px-3 py-2">Errors</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {preview.errors.map((e) => (
-                      <tr key={e.sourceRow} className="border-t">
-                        <td className="px-3 py-2 align-top font-mono">
-                          {e.sourceRow}
-                        </td>
-                        <td className="px-3 py-2">{e.messages.join("; ")}</td>
+              <div>
+                <h3 className="mb-2 text-sm font-semibold">
+                  Errors ({preview.errors.length})
+                </h3>
+                <div className="max-h-80 overflow-auto rounded-md border">
+                  <table className="w-full text-sm">
+                    <thead className="sticky top-0 bg-muted/50">
+                      <tr>
+                        <th className="w-20 px-3 py-2 text-left">Row</th>
+                        <th className="px-3 py-2 text-left">Errors</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {preview.errors.map((e) => (
+                        <tr key={e.sourceRow} className="border-t">
+                          <td className="px-3 py-2 align-top font-mono text-xs">
+                            {e.sourceRow}
+                          </td>
+                          <td className="px-3 py-2">
+                            {e.messages.join("; ")}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 pt-2">
               <Button
                 onClick={onCommit}
                 disabled={preview.validCount === 0 || committing}
@@ -228,48 +263,100 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
 
       {result && (
         <Card>
-          <CardHeader>
-            <CardTitle>3. Done</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <ul className="text-sm space-y-1">
-              <li>
-                Inserted:{" "}
-                <span className="font-medium text-green-700">
-                  {result.inserted}
-                </span>
-              </li>
-              <li>
-                Skipped (already in bank):{" "}
-                <span className="font-medium">{result.skipped}</span>
-              </li>
-              <li>
-                Failed:{" "}
-                <span className="font-medium text-destructive">
-                  {result.failed}
-                </span>
-              </li>
-            </ul>
+          <CardContent className="flex flex-col items-center gap-4 py-10 text-center">
+            <div className="rounded-full bg-emerald-100 p-3 duration-500 animate-in zoom-in-50">
+              <CheckCircle2
+                className="h-10 w-10 text-emerald-600"
+                aria-hidden
+                strokeWidth={1.75}
+              />
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold tracking-tight">
+                Upload complete
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {result.inserted} question{result.inserted === 1 ? "" : "s"}{" "}
+                added to your bank
+                {result.skipped > 0 && (
+                  <>
+                    {" · "}
+                    {result.skipped} skipped (already present)
+                  </>
+                )}
+                {result.failed > 0 && (
+                  <>
+                    {" · "}
+                    <span className="text-destructive">
+                      {result.failed} failed
+                    </span>
+                  </>
+                )}
+              </p>
+            </div>
+
             {result.errors.length > 0 && (
-              <details>
+              <details className="w-full max-w-md text-left">
                 <summary className="cursor-pointer text-sm font-medium">
                   View {result.errors.length} error
                   {result.errors.length === 1 ? "" : "s"}
                 </summary>
-                <ul className="mt-2 text-sm space-y-1">
+                <ul className="mt-2 max-h-48 space-y-1 overflow-auto rounded-md border bg-muted/30 p-3 text-sm">
                   {result.errors.map((e, i) => (
                     <li key={`${e.sourceRow}-${i}`}>
-                      <span className="font-mono">Row {e.sourceRow}:</span>{" "}
+                      <span className="font-mono text-xs">
+                        Row {e.sourceRow}:
+                      </span>{" "}
                       {e.message}
                     </li>
                   ))}
                 </ul>
               </details>
             )}
-            <Button onClick={reset}>Upload another file</Button>
+
+            <div className="flex flex-col gap-2 pt-2 sm:flex-row">
+              <Button asChild>
+                <Link href="/browse">Browse questions</Link>
+              </Button>
+              <Button variant="outline" onClick={reset}>
+                Upload another
+              </Button>
+            </div>
           </CardContent>
         </Card>
       )}
+    </div>
+  );
+}
+
+function SummaryStat({
+  value,
+  label,
+  tone,
+}: {
+  value: number;
+  label: string;
+  tone: "ok" | "bad" | "neutral";
+}) {
+  return (
+    <div
+      className={cn(
+        "rounded-lg border p-4 text-center",
+        tone === "ok" && "border-emerald-200 bg-emerald-50",
+        tone === "bad" && "border-destructive/30 bg-destructive/5",
+        tone === "neutral" && "bg-card"
+      )}
+    >
+      <p
+        className={cn(
+          "font-mono text-2xl font-semibold tabular-nums tracking-tight",
+          tone === "ok" && "text-emerald-700",
+          tone === "bad" && "text-destructive"
+        )}
+      >
+        {value.toLocaleString("en-IN")}
+      </p>
+      <p className="mt-1 text-xs text-muted-foreground">{label}</p>
     </div>
   );
 }
