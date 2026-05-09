@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -194,12 +195,16 @@ export default function EditQuestionForm({
           ? body.fieldErrors.join("; ")
           : body.error ?? `Save failed (${res.status})`;
         setError(msg);
+        toast.error(msg);
         return;
       }
+      toast.success("Question saved");
       router.push("/browse");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Save failed");
+      const msg = err instanceof Error ? err.message : "Save failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setSaving(false);
     }

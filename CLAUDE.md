@@ -28,7 +28,7 @@ src/
 │   ├── login/page.tsx                     magic-link sign-in (client)
 │   ├── dashboard/                         landing page; admin sees Upload button
 │   ├── upload/                            admin-only: file picker → preview → commit
-│   ├── browse/                            org-wide: cascading filters, KaTeX preview, ZIP export, admin image-edit dialog
+│   ├── browse/                            org-wide: cascading filters, KaTeX preview, image rendering, ZIP export, admin "Edit question" link
 │   ├── api/auth/callback/                 Supabase OAuth code exchange
 │   ├── api/upload/{preview,commit}/       two-stage admin upload
 │   ├── api/questions/[id]/                PUT (JSON): edit text+options+taxonomy+image paths in one request (admin only)
@@ -59,8 +59,8 @@ scripts/
 ├── extract-taxonomy.ts                    one-shot: regenerate taxonomy.json from a reference Excel
 └── seed.ts                                idempotent taxonomy seed (service-role)
 
-tests/                                     14 files, 79 tests
-├── fixtures/upload.ts                     in-memory .xlsx fixture builder
+tests/                                     19 .test.ts files, 119 tests
+├── fixtures/{upload,tinyImage}.ts         in-memory .xlsx fixture builder; 67-byte 1x1 PNG buffer
 ├── *.test.ts                              pure unit + DB integration (DB tests skip if env missing)
 └── setup.ts                               loads .env.local for tests
 ```
@@ -80,6 +80,11 @@ npm run db:types           # supabase gen types (requires SUPABASE_PROJECT_REF e
 
 ## Conventions specific to this project
 
+- **Spacing scale.** Page wrappers `p-8`, content cards (CardContent default) `p-6`, compact cards (FilterBar etc.) `p-4`, nested option blocks `p-3`. Pick the smallest tier that contains breathing room — don't mix `p-4`/`p-6` in the same visual rhythm.
+- **Typography.** UI text uses `font-sans` (Inter, default). Question/option/solution body text uses `font-serif` (Source Serif 4) — it's how teachers tell content apart from chrome. Both are loaded via `next/font` in `src/app/layout.tsx` and exposed as Tailwind utilities.
+- **Icons.** Use `lucide-react` for all icons. Never emoji or text glyphs (▾, ‹, ›) for UI affordances. Standard sizes: `h-3.5 w-3.5` for inline-with-text, `h-4 w-4` for buttons, `h-5 w-5` for the AppHeader logo.
+- **Toasts.** `import { toast } from "sonner"`. Fire on every async user-initiated success or failure (save, upload commit, export download, sign-out). Setting an inline `error` state is fine, but never *replace* a toast with it — both should fire so the user can't miss the result while scrolled.
+- **AppHeader.** Every authenticated page wraps its `<main>` in `<><AppHeader />…</>`. Don't re-add ad-hoc back-links or sign-out buttons on individual pages — sign-out lives in the AppHeader user menu.
 - **No Prisma.** Supabase RLS is the security boundary — every read/write goes through `@supabase/supabase-js` so the user's JWT carries through. Reach for `createSupabaseAdminClient()` (service-role) only in server-only contexts (seeds, cross-org admin) — it bypasses RLS by design.
 - **Migrations are append-only.** New SQL goes in a new `000N_<name>.sql`. Apply via Supabase MCP `apply_migration`. Never edit a previously-applied file.
 - **`.mcp.json` is gitignored.** Holds Supabase + Vercel personal access tokens. Don't commit.

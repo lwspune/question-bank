@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import AppHeader from "@/components/AppHeader";
 import UploadForm from "./UploadForm";
 
 export default async function UploadPage() {
@@ -16,14 +16,17 @@ export default async function UploadPage() {
     .order("name");
 
   return (
-    <main className="mx-auto max-w-4xl p-8">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Upload questions</h1>
-        <Link href="/dashboard" className="text-sm text-muted-foreground hover:underline">
-          ← Dashboard
-        </Link>
-      </div>
-      <UploadForm exams={exams ?? []} />
-    </main>
+    <>
+      <AppHeader />
+      <main className="mx-auto max-w-4xl p-8">
+        <header className="mb-6">
+          <h1 className="text-2xl font-semibold tracking-tight">Upload questions</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Add questions to your bank from an Excel file.
+          </p>
+        </header>
+        <UploadForm exams={exams ?? []} />
+      </main>
+    </>
   );
 }

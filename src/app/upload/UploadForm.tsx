@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -81,11 +82,17 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
       const json = await res.json();
       if (!res.ok) {
         setError(json.error ?? "commit failed");
+        toast.error(json.error ?? "Commit failed");
         return;
       }
       setResult(json);
+      toast.success(
+        `Upload complete · ${json.inserted} added${json.skipped ? `, ${json.skipped} skipped` : ""}${json.failed ? `, ${json.failed} failed` : ""}`
+      );
     } catch (err) {
-      setError(err instanceof Error ? err.message : "commit failed");
+      const msg = err instanceof Error ? err.message : "commit failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setCommitting(false);
     }

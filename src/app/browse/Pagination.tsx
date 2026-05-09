@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Pagination({
@@ -16,8 +17,10 @@ export default function Pagination({
     <nav className="mt-6 flex items-center justify-center gap-1" aria-label="Pagination">
       <PageLink
         href={currentPage > 1 ? buildHref(currentPage - 1) : null}
-        label="‹ Prev"
-      />
+        aria-label="Previous page"
+      >
+        <ChevronLeft className="h-4 w-4" aria-hidden />
+      </PageLink>
       {pages.map((p, i) =>
         p === "…" ? (
           <span key={`gap-${i}`} className="px-2 text-sm text-muted-foreground">
@@ -27,39 +30,45 @@ export default function Pagination({
           <PageLink
             key={p}
             href={p === currentPage ? null : buildHref(p)}
-            label={String(p)}
             active={p === currentPage}
-          />
+            aria-label={`Page ${p}`}
+            aria-current={p === currentPage ? "page" : undefined}
+          >
+            {p}
+          </PageLink>
         )
       )}
       <PageLink
         href={currentPage < totalPages ? buildHref(currentPage + 1) : null}
-        label="Next ›"
-      />
+        aria-label="Next page"
+      >
+        <ChevronRight className="h-4 w-4" aria-hidden />
+      </PageLink>
     </nav>
   );
 }
 
 function PageLink({
   href,
-  label,
   active,
+  children,
+  ...rest
 }: {
   href: string | null;
-  label: string;
   active?: boolean;
-}) {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLElement>) {
   const className = cn(
     "inline-flex items-center justify-center rounded-md text-sm h-9 min-w-9 px-3",
     active
       ? "bg-primary text-primary-foreground"
-      : "border border-input bg-background hover:bg-accent",
+      : "border border-input bg-background hover:bg-accent transition-colors",
     !href && !active && "opacity-40 pointer-events-none"
   );
-  if (!href) return <span className={className}>{label}</span>;
+  if (!href) return <span className={className} {...rest}>{children}</span>;
   return (
-    <Link href={href} className={className}>
-      {label}
+    <Link href={href} className={className} {...rest}>
+      {children}
     </Link>
   );
 }

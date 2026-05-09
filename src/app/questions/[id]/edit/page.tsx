@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import AppHeader from "@/components/AppHeader";
 import EditQuestionForm, {
   type ExistingQuestion,
   type SubjectTree,
@@ -111,22 +111,19 @@ export default async function EditQuestionPage({ params }: PageProps) {
   };
 
   return (
-    <main className="mx-auto max-w-3xl p-8">
-      <header className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Edit question</h1>
-        <Link
-          href="/browse"
-          className="text-sm text-muted-foreground hover:underline"
-        >
-          ← Browse
-        </Link>
-      </header>
-      <EditQuestionForm
-        question={existing}
-        subjects={tree}
-        orgId={member.orgId}
-        supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
-      />
-    </main>
+    <>
+      <AppHeader />
+      <main className="mx-auto max-w-3xl p-8">
+        <header className="mb-6">
+          <h1 className="text-2xl font-semibold tracking-tight">Edit question</h1>
+        </header>
+        <EditQuestionForm
+          question={existing}
+          subjects={tree}
+          orgId={member.orgId}
+          supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+        />
+      </main>
+    </>
   );
 }
