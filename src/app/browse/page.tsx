@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Inbox } from "lucide-react";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import AppHeader from "@/components/AppHeader";
+import { Button } from "@/components/ui/button";
 import {
   parseFilters,
   buildSearchParams,
@@ -9,6 +12,7 @@ import {
 } from "@/lib/questions/filters";
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
 import FilterBar from "./FilterBar";
+import MobileFilters from "./MobileFilters";
 import QuestionCard from "./QuestionCard";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
@@ -76,86 +80,127 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     Math.ceil(questionsResult.totalCount / DEFAULT_PAGE_SIZE)
   );
 
+  const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
+  const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
+  const chapterOpts = (chapters ?? []).map((c) => ({ id: c.id, name: c.name }));
+  const subtopicOpts = (subtopics ?? []).map((s) => ({ id: s.id, name: s.name }));
+
+  const activeCount = countActiveFilters(filters);
+  const filtered = activeCount > 0;
+
   return (
-    <main className="mx-auto max-w-5xl p-8">
-      <header className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold">Browse questions</h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            {member.orgName} · {questionsResult.totalCount} question
-            {questionsResult.totalCount === 1 ? "" : "s"}
-          </p>
-        </div>
-        <Link
-          href="/dashboard"
-          className="text-sm text-muted-foreground hover:underline"
-        >
-          ← Dashboard
-        </Link>
-      </header>
-
-      <FilterBar
-        filters={filters}
-        exams={(exams ?? []).map((e) => ({ id: e.id, name: e.name }))}
-        subjects={(subjects ?? []).map((s) => ({ id: s.id, name: s.name }))}
-        chapters={(chapters ?? []).map((c) => ({ id: c.id, name: c.name }))}
-        subtopics={(subtopics ?? []).map((s) => ({ id: s.id, name: s.name }))}
-      />
-
-      <DownloadDialog
-        filters={filters}
-        totalCount={questionsResult.totalCount}
-      />
-
-      {questionsResult.rows.length === 0 ? (
-        <div className="mt-8 rounded-md border bg-muted/30 p-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            No questions match these filters.{" "}
-            {hasAnyFilter(filters) && (
-              <Link
-                href="/browse"
-                className="underline hover:text-foreground"
-              >
-                Clear filters
-              </Link>
-            )}
-          </p>
-        </div>
-      ) : (
-        <ul className="mt-6 space-y-3">
-          {questionsResult.rows.map((q, i) => (
-            <li key={q.id}>
-              <QuestionCard
-                question={q}
-                index={(filters.page - 1) * DEFAULT_PAGE_SIZE + i + 1}
-                isAdmin={member.role === "ADMIN"}
-                supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+    <>
+      <AppHeader />
+      <main className="mx-auto max-w-7xl px-6 py-8">
+        <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Browse questions
+            </h1>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {questionsResult.totalCount} question
+              {questionsResult.totalCount === 1 ? "" : "s"}
+              {filtered ? " match" : " in your bank"}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="lg:hidden">
+              <MobileFilters
+                filters={filters}
+                exams={examOpts}
+                subjects={subjectOpts}
+                chapters={chapterOpts}
+                subtopics={subtopicOpts}
+                activeCount={activeCount}
               />
-            </li>
-          ))}
-        </ul>
-      )}
+            </div>
+            <DownloadDialog
+              filters={filters}
+              totalCount={questionsResult.totalCount}
+            />
+          </div>
+        </header>
 
-      {totalPages > 1 && (
-        <Pagination
-          currentPage={filters.page}
-          totalPages={totalPages}
-          buildHref={(p) =>
-            `/browse?${buildSearchParams({ ...filters, page: p }).toString()}`
-          }
-        />
-      )}
-    </main>
+        <div className="lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
+          <aside className="hidden lg:block">
+            <div className="sticky top-20">
+              <FilterBar
+                filters={filters}
+                exams={examOpts}
+                subjects={subjectOpts}
+                chapters={chapterOpts}
+                subtopics={subtopicOpts}
+              />
+            </div>
+          </aside>
+
+          <div className="min-w-0">
+            {questionsResult.rows.length === 0 ? (
+              <EmptyState filtered={filtered} />
+            ) : (
+              <ul className="space-y-3">
+                {questionsResult.rows.map((q, i) => (
+                  <li key={q.id}>
+                    <QuestionCard
+                      question={q}
+                      index={
+                        (filters.page - 1) * DEFAULT_PAGE_SIZE + i + 1
+                      }
+                      isAdmin={member.role === "ADMIN"}
+                      supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={filters.page}
+                totalPages={totalPages}
+                buildHref={(p) =>
+                  `/browse?${buildSearchParams({ ...filters, page: p }).toString()}`
+                }
+              />
+            )}
+          </div>
+        </div>
+      </main>
+    </>
   );
 }
 
-function hasAnyFilter(f: Filters): boolean {
+function EmptyState({ filtered }: { filtered: boolean }) {
   return (
-    f.examId != null ||
-    f.subjectId != null ||
-    f.chapterIds.length > 0 ||
-    f.subtopicIds.length > 0 ||
-    f.difficulties.length > 0 ||
-    f.q.length > 0
+    <div className="rounded-lg border border-dashed bg-muted/20 p-12 text-center">
+      <Inbox
+        className="mx-auto h-10 w-10 text-muted-foreground/60"
+        aria-hidden
+      />
+      <h2 className="mt-4 text-base font-semibold">
+        {filtered ? "No questions match" : "No questions yet"}
+      </h2>
+      <p className="mx-auto mt-1 max-w-sm text-sm text-muted-foreground">
+        {filtered
+          ? "Try clearing chapters, widening difficulty, or removing the search term."
+          : "Once an admin uploads an Excel file, questions will appear here."}
+      </p>
+      {filtered && (
+        <Button asChild variant="outline" size="sm" className="mt-4">
+          <Link href="/browse">Clear filters</Link>
+        </Button>
+      )}
+    </div>
   );
+}
+
+function countActiveFilters(f: Filters): number {
+  let n = 0;
+  if (f.examId) n++;
+  if (f.subjectId) n++;
+  if (f.chapterIds.length > 0) n++;
+  if (f.subtopicIds.length > 0) n++;
+  if (f.difficulties.length > 0) n++;
+  if (f.q) n++;
+  return n;
 }

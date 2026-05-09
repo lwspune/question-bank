@@ -2,9 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
+import { ChevronDown, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import {
   buildSearchParams,
@@ -20,9 +28,11 @@ type Props = {
   subjects: Option[];
   chapters: Option[];
   subtopics: Option[];
+  onApply?: () => void;
 };
 
 const DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
+const ALL = "__ALL__";
 
 export default function FilterBar({
   filters,
@@ -30,6 +40,7 @@ export default function FilterBar({
   subjects,
   chapters,
   subtopics,
+  onApply,
 }: Props) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -41,7 +52,10 @@ export default function FilterBar({
 
   function applyFilters(next: Filters) {
     const url = `/browse?${buildSearchParams(next).toString()}`;
-    startTransition(() => router.push(url));
+    startTransition(() => {
+      router.push(url);
+      onApply?.();
+    });
   }
 
   function update(partial: Partial<Filters>) {
@@ -79,6 +93,14 @@ export default function FilterBar({
     page: 1,
   };
 
+  const hasAnyFilter =
+    !!filters.examId ||
+    !!filters.subjectId ||
+    filters.chapterIds.length > 0 ||
+    filters.subtopicIds.length > 0 ||
+    filters.difficulties.length > 0 ||
+    !!filters.q;
+
   return (
     <div
       className={cn(
@@ -86,43 +108,49 @@ export default function FilterBar({
         pending && "opacity-60 pointer-events-none"
       )}
     >
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-1.5">
-          <Label htmlFor="exam">Exam</Label>
-          <select
-            id="exam"
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            value={filters.examId ?? ""}
-            onChange={(e) => update({ examId: e.target.value || null })}
-          >
-            <option value="">All exams</option>
+      <div className="space-y-1.5">
+        <Label htmlFor="exam">Exam</Label>
+        <Select
+          value={filters.examId ?? ALL}
+          onValueChange={(v) => update({ examId: v === ALL ? null : v })}
+        >
+          <SelectTrigger id="exam">
+            <SelectValue placeholder="All exams" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value={ALL}>All exams</SelectItem>
             {exams.map((x) => (
-              <option key={x.id} value={x.id}>
+              <SelectItem key={x.id} value={x.id}>
                 {x.name}
-              </option>
+              </SelectItem>
             ))}
-          </select>
-        </div>
+          </SelectContent>
+        </Select>
+      </div>
 
-        <div className="space-y-1.5">
-          <Label htmlFor="subject">Subject</Label>
-          <select
-            id="subject"
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            value={filters.subjectId ?? ""}
-            onChange={(e) => update({ subjectId: e.target.value || null })}
-            disabled={!filters.examId}
-          >
-            <option value="">
-              {filters.examId ? "All subjects" : "Pick an exam first"}
-            </option>
+      <div className="space-y-1.5">
+        <Label htmlFor="subject">Subject</Label>
+        <Select
+          value={filters.subjectId ?? ALL}
+          onValueChange={(v) => update({ subjectId: v === ALL ? null : v })}
+          disabled={!filters.examId}
+        >
+          <SelectTrigger id="subject">
+            <SelectValue
+              placeholder={
+                filters.examId ? "All subjects" : "Pick an exam first"
+              }
+            />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value={ALL}>All subjects</SelectItem>
             {subjects.map((x) => (
-              <option key={x.id} value={x.id}>
+              <SelectItem key={x.id} value={x.id}>
                 {x.name}
-              </option>
+              </SelectItem>
             ))}
-          </select>
-        </div>
+          </SelectContent>
+        </Select>
       </div>
 
       <CheckboxGroup
@@ -137,6 +165,11 @@ export default function FilterBar({
         disabled={!filters.subjectId}
         onChange={(id) =>
           update({ chapterIds: toggleInArray(filters.chapterIds, id) })
+        }
+        onClear={
+          filters.chapterIds.length > 0
+            ? () => update({ chapterIds: [] })
+            : undefined
         }
       />
 
@@ -153,11 +186,20 @@ export default function FilterBar({
         onChange={(id) =>
           update({ subtopicIds: toggleInArray(filters.subtopicIds, id) })
         }
+        onClear={
+          filters.subtopicIds.length > 0
+            ? () => update({ subtopicIds: [] })
+            : undefined
+        }
       />
 
       <div className="space-y-1.5">
         <Label>Difficulty</Label>
-        <div className="flex flex-wrap gap-2">
+        <div
+          role="group"
+          aria-label="Difficulty"
+          className="inline-flex w-full rounded-md border border-input bg-background p-0.5"
+        >
           {DIFFICULTIES.map((d) => {
             const on = filters.difficulties.includes(d);
             return (
@@ -170,14 +212,14 @@ export default function FilterBar({
                   })
                 }
                 className={cn(
-                  "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors",
+                  "flex-1 rounded-sm px-3 py-1.5 text-xs font-medium transition-colors",
                   on
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-foreground border-input hover:bg-accent"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
                 aria-pressed={on}
               >
-                {d}
+                {d.charAt(0) + d.slice(1).toLowerCase()}
               </button>
             );
           })}
@@ -189,31 +231,31 @@ export default function FilterBar({
         <div className="flex gap-2">
           <Input
             id="q"
-            placeholder="Search question text and solution…"
+            placeholder="Search question text…"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <Button type="submit" variant="outline">
-            Search
+          <Button
+            type="submit"
+            variant="outline"
+            size="icon"
+            aria-label="Search"
+          >
+            <Search className="h-4 w-4" aria-hidden />
           </Button>
         </div>
       </form>
 
-      <div className="flex justify-end">
+      <div className="border-t pt-3">
         <Button
           type="button"
           variant="ghost"
           size="sm"
           onClick={() => applyFilters(cleared)}
-          disabled={
-            !filters.examId &&
-            !filters.subjectId &&
-            filters.chapterIds.length === 0 &&
-            filters.subtopicIds.length === 0 &&
-            filters.difficulties.length === 0 &&
-            !filters.q
-          }
+          disabled={!hasAnyFilter}
+          className="w-full justify-center"
         >
+          <X className="h-3.5 w-3.5" aria-hidden />
           Clear all filters
         </Button>
       </div>
@@ -228,6 +270,7 @@ function CheckboxGroup({
   selected,
   disabled,
   onChange,
+  onClear,
 }: {
   label: string;
   emptyMessage: string;
@@ -235,22 +278,41 @@ function CheckboxGroup({
   selected: string[];
   disabled: boolean;
   onChange: (id: string) => void;
+  onClear?: () => void;
 }) {
   const summary =
-    selected.length === 0
-      ? "All"
-      : `${selected.length} selected`;
+    selected.length === 0 ? "All" : `${selected.length} selected`;
 
   return (
     <details className="group">
       <summary
         className={cn(
-          "cursor-pointer list-none flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-accent",
-          disabled && "cursor-not-allowed opacity-50 pointer-events-none"
+          "flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-accent",
+          disabled && "pointer-events-none cursor-not-allowed opacity-50"
         )}
       >
         <span className="font-medium">{label}</span>
-        <span className="text-xs text-muted-foreground">{summary}</span>
+        <span className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{summary}</span>
+          {onClear && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onClear();
+              }}
+              aria-label={`Clear ${label.toLowerCase()}`}
+              className="rounded-sm p-0.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+            >
+              <X className="h-3.5 w-3.5" aria-hidden />
+            </button>
+          )}
+          <ChevronDown
+            className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180"
+            aria-hidden
+          />
+        </span>
       </summary>
       <div className="mt-2 max-h-60 overflow-y-auto rounded-md border bg-background p-3">
         {options.length === 0 ? (
@@ -259,7 +321,7 @@ function CheckboxGroup({
           <ul className="space-y-1.5">
             {options.map((o) => (
               <li key={o.id}>
-                <label className="flex items-center gap-2 cursor-pointer text-sm">
+                <label className="flex cursor-pointer items-center gap-2 text-sm">
                   <input
                     type="checkbox"
                     checked={selected.includes(o.id)}
