@@ -8,6 +8,7 @@ export type CommitInput = {
   filename: string;
   createdBy: string;
   rows: ParsedRowPayload[];
+  uploadJobId?: string;
 };
 
 export type CommitResult = {
@@ -21,7 +22,7 @@ export async function commitStaged(
   client: SupabaseClient,
   input: CommitInput
 ): Promise<CommitResult> {
-  const { orgId, examId, filename, createdBy, rows } = input;
+  const { orgId, examId, filename, createdBy, rows, uploadJobId } = input;
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
 
@@ -59,6 +60,7 @@ export async function commitStaged(
     content_hash: string;
     source_file: string;
     source_row: number;
+    upload_job_id: string | null;
     created_by: string;
   };
 
@@ -101,6 +103,7 @@ export async function commitStaged(
           content_hash: row.contentHash,
           source_file: filename,
           source_row: row.sourceRow,
+          upload_job_id: uploadJobId ?? null,
           created_by: createdBy,
         },
       });

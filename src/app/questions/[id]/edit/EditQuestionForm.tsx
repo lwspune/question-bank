@@ -7,6 +7,14 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -78,6 +86,8 @@ export default function EditQuestionForm({
   const [uploadingSlot, setUploadingSlot] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [mode, setMode] = useState<"edit" | "preview">("edit");
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const currentSubject = useMemo(
     () => subjects.find((s) => s.id === subjectId),
@@ -161,6 +171,31 @@ export default function EditQuestionForm({
       toast.error(msg);
     } finally {
       setUploadingSlot(null);
+    }
+  }
+
+  async function onDelete() {
+    setDeleting(true);
+    try {
+      const res = await fetch(`/api/questions/${question.id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        const msg = body.error ?? `Delete failed (${res.status})`;
+        toast.error(msg);
+        return;
+      }
+      toast.success("Question deleted");
+      setDeleteOpen(false);
+      router.back();
+      router.refresh();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Delete failed");
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -457,9 +492,43 @@ export default function EditQuestionForm({
       <SaveBar
         dirty={dirty}
         saving={saving}
-        busy={busy}
+        busy={busy || deleting}
         onCancel={() => router.back()}
+        onDelete={() => setDeleteOpen(true)}
       />
+
+      <Dialog
+        open={deleteOpen}
+        onOpenChange={(v) => !deleting && setDeleteOpen(v)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete this question?</DialogTitle>
+            <DialogDescription>
+              The question, its options, images, and edit history will be
+              permanently removed. This cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setDeleteOpen(false)}
+              disabled={deleting}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              variant="destructive"
+              onClick={onDelete}
+              disabled={deleting}
+            >
+              {deleting ? "Deleting…" : "Delete question"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </form>
   );
 }
@@ -621,15 +690,28 @@ function SaveBar({
   saving,
   busy,
   onCancel,
+  onDelete,
 }: {
   dirty: boolean;
   saving: boolean;
   busy: boolean;
   onCancel: () => void;
+  onDelete: () => void;
 }) {
   return (
     <div className="sticky bottom-0 z-30 -mx-6 mt-8 border-t bg-background/95 px-6 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/85">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4">
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={onDelete}
+          disabled={busy}
+          className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+        >
+          <Trash2 className="h-3.5 w-3.5" aria-hidden />
+          Delete
+        </Button>
         <p className="flex items-center gap-2 text-sm text-muted-foreground">
           {dirty ? (
             <>

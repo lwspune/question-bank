@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
   ArrowRight,
+  ChevronRight,
   FileSpreadsheet,
   Search,
   Upload,
@@ -281,29 +282,39 @@ function RecentUploadsList({ uploads }: { uploads: RecentUpload[] }) {
   return (
     <ul className="divide-y rounded-lg border bg-card">
       {uploads.map((u) => (
-        <li key={u.id} className="flex items-center gap-4 p-4">
-          <FileSpreadsheet
-            className="h-5 w-5 shrink-0 text-muted-foreground"
-            aria-hidden
-          />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium">{u.filename}</p>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-emerald-700">+{u.inserted} added</span>
-              {u.skipped > 0 && (
-                <span>
-                  {" · "}
-                  {u.skipped} skipped
-                </span>
-              )}
-              {u.status === "FAILED" && (
-                <span className="text-destructive"> · failed</span>
-              )}
-            </p>
-          </div>
-          <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-            {timeAgo(u.createdAt)}
-          </span>
+        <li key={u.id}>
+          <Link
+            href={`/uploads/${u.id}`}
+            className="group flex items-center gap-4 p-4 transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none"
+            aria-label={`Open upload ${u.filename}`}
+          >
+            <FileSpreadsheet
+              className="h-5 w-5 shrink-0 text-muted-foreground"
+              aria-hidden
+            />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium">{u.filename}</p>
+              <p className="text-xs text-muted-foreground">
+                <span className="text-emerald-700">+{u.inserted} added</span>
+                {u.skipped > 0 && (
+                  <span>
+                    {" · "}
+                    {u.skipped} skipped
+                  </span>
+                )}
+                {u.status === "FAILED" && (
+                  <span className="text-destructive"> · failed</span>
+                )}
+              </p>
+            </div>
+            <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+              {timeAgo(u.createdAt)}
+            </span>
+            <ChevronRight
+              className="h-4 w-4 shrink-0 text-muted-foreground/60 transition-transform group-hover:translate-x-0.5 group-hover:text-muted-foreground"
+              aria-hidden
+            />
+          </Link>
         </li>
       ))}
     </ul>

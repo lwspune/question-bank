@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
         filename: job.filename,
         createdBy: member.user.id,
         rows: staged.rows,
+        uploadJobId: job.id,
       });
 
       await supabase
