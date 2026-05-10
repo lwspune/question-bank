@@ -50,6 +50,25 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: {
+        "pill-in": {
+          "0%": { opacity: "0", transform: "translateY(8px) scale(0.92)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        "count-pulse": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.25)" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(6px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "pill-in": "pill-in 220ms ease-out",
+        "count-pulse": "count-pulse 320ms ease-out",
+        "fade-in-up": "fade-in-up 360ms ease-out both",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

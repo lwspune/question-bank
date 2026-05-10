@@ -27,6 +27,7 @@ import {
   getRecentUploads,
   type RecentUpload,
 } from "@/lib/dashboard/activity";
+import StatCard from "./StatCard";
 
 export default async function DashboardPage() {
   const member = await getSessionMember();
@@ -121,7 +122,7 @@ function Section({
 }) {
   return (
     <section>
-      <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <h2 className="mb-3 text-sm font-semibold tracking-tight text-foreground/80">
         {heading}
       </h2>
       {children}
@@ -213,10 +214,11 @@ function ActionCard({
 function StatGrid({ stats }: { stats: DashboardStats }) {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-      <StatCard value={fmtNumber(stats.totalQuestions)} label="Questions" />
-      <StatCard value={fmtNumber(stats.examsCovered)} label="Exams" />
-      <StatCard value={fmtNumber(stats.chaptersCovered)} label="Chapters" />
+      <StatCard kind="numeric" value={stats.totalQuestions} label="Questions" />
+      <StatCard kind="numeric" value={stats.examsCovered} label="Exams" />
+      <StatCard kind="numeric" value={stats.chaptersCovered} label="Chapters" />
       <StatCard
+        kind="text"
         value={
           stats.daysSinceLastUpload == null
             ? "—"
@@ -224,17 +226,6 @@ function StatGrid({ stats }: { stats: DashboardStats }) {
         }
         label="Since last upload"
       />
-    </div>
-  );
-}
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-lg border bg-card p-4">
-      <p className="font-mono text-2xl font-semibold tabular-nums tracking-tight">
-        {value}
-      </p>
-      <p className="mt-1 text-xs text-muted-foreground">{label}</p>
     </div>
   );
 }
@@ -295,7 +286,7 @@ function RecentUploadsList({ uploads }: { uploads: RecentUpload[] }) {
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium">{u.filename}</p>
               <p className="text-xs text-muted-foreground">
-                <span className="text-emerald-700">+{u.inserted} added</span>
+                <span className="text-emerald-700 dark:text-emerald-400">+{u.inserted} added</span>
                 {u.skipped > 0 && (
                   <span>
                     {" · "}
@@ -319,10 +310,6 @@ function RecentUploadsList({ uploads }: { uploads: RecentUpload[] }) {
       ))}
     </ul>
   );
-}
-
-function fmtNumber(n: number): string {
-  return n.toLocaleString("en-IN");
 }
 
 function fmtDays(d: number): string {

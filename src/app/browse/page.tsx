@@ -19,6 +19,7 @@ import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
 import CartPill from "./CartPill";
 import Hero from "./Hero";
+import ActiveFilterChips from "./ActiveFilterChips";
 
 export const metadata: Metadata = {
   title: "Browse questions",
@@ -110,10 +111,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 sm:pb-32">
         {!filtered && <Hero totalPublicQuestions={questionsResult.totalCount} />}
 
-        <header className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <header className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
               {filtered ? "Filtered questions" : "All questions"}
@@ -142,6 +143,17 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             />
           </div>
         </header>
+
+        {filtered && (
+          <ActiveFilterChips
+            filters={filters}
+            exams={examOpts}
+            subjects={subjectOpts}
+            chapters={chapterOpts}
+            subtopics={subtopicOpts}
+            className="mb-4"
+          />
+        )}
 
         <div className="lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
           <aside className="hidden lg:block">
@@ -197,21 +209,20 @@ export default async function BrowsePage({ searchParams }: PageProps) {
 
 function EmptyState({ filtered }: { filtered: boolean }) {
   return (
-    <div className="rounded-lg border border-dashed bg-muted/20 p-12 text-center">
-      <Inbox
-        className="mx-auto h-10 w-10 text-muted-foreground/60"
-        aria-hidden
-      />
-      <h2 className="mt-4 text-base font-semibold">
+    <div className="rounded-xl border bg-card p-10 text-center shadow-sm sm:p-14">
+      <div className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <Inbox className="h-6 w-6" aria-hidden />
+      </div>
+      <h2 className="mt-5 text-base font-semibold sm:text-lg">
         {filtered ? "No questions match" : "No questions yet"}
       </h2>
-      <p className="mx-auto mt-1 max-w-sm text-sm text-muted-foreground">
+      <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
         {filtered
           ? "Try clearing chapters, widening difficulty, or removing the search term."
           : "Once an admin uploads an Excel file, questions will appear here."}
       </p>
       {filtered && (
-        <Button asChild variant="outline" size="sm" className="mt-4">
+        <Button asChild size="sm" className="mt-5">
           <Link href="/browse">Clear filters</Link>
         </Button>
       )}

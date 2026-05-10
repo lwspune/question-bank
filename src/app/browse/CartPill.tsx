@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Download, ShoppingCart, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -41,6 +41,14 @@ export default function CartPill({ filters }: { filters: Filters }) {
   const [sortMode, setSortMode] = useState<SortMode>("insertion");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [pulseKey, setPulseKey] = useState(0);
+  const prevCountRef = useRef(cart.count);
+
+  // Bump the count badge briefly whenever the cart grows (not when shrinking).
+  useEffect(() => {
+    if (cart.count > prevCountRef.current) setPulseKey((k) => k + 1);
+    prevCountRef.current = cart.count;
+  }, [cart.count]);
 
   // Fetch previews whenever the panel is opened OR the cart contents change
   // while it's open.
@@ -106,13 +114,16 @@ export default function CartPill({ filters }: { filters: Filters }) {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full border bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:bottom-6 sm:right-6"
+          "fixed bottom-4 right-4 z-40 flex animate-pill-in items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:bottom-6 sm:right-6"
         )}
         aria-label={`Open paper (${cart.count} questions)`}
       >
         <ShoppingCart className="h-4 w-4" aria-hidden />
         <span>Paper</span>
-        <span className="rounded-full bg-primary-foreground/20 px-2 py-0.5 font-mono text-xs tabular-nums">
+        <span
+          key={pulseKey}
+          className="inline-flex animate-count-pulse items-center justify-center rounded-full bg-primary-foreground/20 px-2 py-0.5 font-mono text-xs tabular-nums"
+        >
           {cart.count}
         </span>
       </button>

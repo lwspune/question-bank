@@ -58,8 +58,8 @@ export default function QuestionCard({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow hover:shadow",
-        inCart && "border-primary/50 ring-1 ring-primary/30"
+        "overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md",
+        inCart && "border-primary/60 ring-2 ring-primary/20"
       )}
     >
       <button
@@ -139,14 +139,14 @@ export default function QuestionCard({
                   )}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground">
                       {opt.label}
                     </span>
                     <div className="min-w-0 flex-1">
                       <KatexRenderer text={opt.text} />
                     </div>
                     {opt.isCorrect && (
-                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-emerald-700">
+                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
                         <Check className="h-3.5 w-3.5" aria-hidden />
                         Correct
                       </span>
@@ -232,7 +232,7 @@ function CartToggle({
         }
       }}
       className={cn(
-        "mt-0.5 inline-flex h-7 shrink-0 select-none items-center gap-1 rounded-md border px-2 text-xs font-medium transition-colors",
+        "-mt-0.5 inline-flex h-9 min-w-[44px] shrink-0 select-none items-center justify-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
         inCart
           ? "border-primary/40 bg-primary/10 text-primary hover:bg-primary/15"
           : disabled
@@ -242,12 +242,12 @@ function CartToggle({
     >
       {inCart ? (
         <>
-          <Check className="h-3.5 w-3.5" aria-hidden />
+          <Check className="h-4 w-4" aria-hidden />
           <span className="hidden sm:inline">Added</span>
         </>
       ) : (
         <>
-          <Plus className="h-3.5 w-3.5" aria-hidden />
+          <Plus className="h-4 w-4" aria-hidden />
           <span className="hidden sm:inline">Add</span>
         </>
       )}

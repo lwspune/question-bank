@@ -108,8 +108,8 @@ export default function FilterBar({
   return (
     <div
       className={cn(
-        "rounded-lg border bg-card p-4 space-y-4",
-        pending && "opacity-60 pointer-events-none"
+        "space-y-5 rounded-lg border bg-card p-5 shadow-sm",
+        pending && "pointer-events-none opacity-60"
       )}
     >
       <div className="space-y-1.5">
