@@ -278,9 +278,10 @@ export default function EditQuestionForm({
               <div className="space-y-4">
                 <Field
                   id="text"
-                  label="Text (LaTeX in \(…\) renders in Word)"
+                  label="Text (LaTeX in \(…\) renders in Word; paste a screenshot here to attach the diagram)"
                   value={text}
                   onChange={setText}
+                  onPasteImage={onPickQuestionImage}
                   rows={3}
                   disabled={busy}
                 />
@@ -292,6 +293,22 @@ export default function EditQuestionForm({
                   rows={2}
                   disabled={busy}
                 />
+                <div>
+                  <Label className="mb-1.5 block text-xs text-muted-foreground">
+                    Question diagram (optional)
+                  </Label>
+                  <ImageSlot
+                    label="Question diagram"
+                    path={imagePath}
+                    supabaseUrl={supabaseUrl}
+                    onPick={onPickQuestionImage}
+                    onRemove={() => setImagePath(null)}
+                    uploading={uploadingSlot === "question"}
+                    disabled={busy && uploadingSlot !== "question"}
+                    hideLabel
+                    compact
+                  />
+                </div>
               </div>
             </Section>
 
@@ -331,6 +348,9 @@ export default function EditQuestionForm({
                             [label]: e.target.value,
                           }))
                         }
+                        onPaste={handleImagePaste((f) =>
+                          onPickOptionImage(label, f)
+                        )}
                         disabled={busy}
                         rows={2}
                         className={textareaClass}
@@ -460,19 +480,6 @@ export default function EditQuestionForm({
                   value={visibility}
                   onChange={setVisibility}
                   disabled={busy}
-                />
-              </Section>
-
-              <Section heading="Question diagram">
-                <ImageSlot
-                  label="Question image"
-                  path={imagePath}
-                  supabaseUrl={supabaseUrl}
-                  onPick={onPickQuestionImage}
-                  onRemove={() => setImagePath(null)}
-                  uploading={uploadingSlot === "question"}
-                  disabled={busy && uploadingSlot !== "question"}
-                  hideLabel
                 />
               </Section>
             </div>
@@ -656,6 +663,7 @@ function Field({
   label,
   value,
   onChange,
+  onPasteImage,
   rows,
   disabled,
   hideLabel,
@@ -664,6 +672,8 @@ function Field({
   label: string;
   value: string;
   onChange: (v: string) => void;
+  /** Optional: when the clipboard contains an image, send it here instead of dropping it into the textarea. */
+  onPasteImage?: (file: File) => void;
   rows: number;
   disabled?: boolean;
   hideLabel?: boolean;
@@ -677,12 +687,32 @@ function Field({
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onPaste={onPasteImage ? handleImagePaste(onPasteImage) : undefined}
         disabled={disabled}
         rows={rows}
         className={textareaClass}
       />
     </div>
   );
+}
+
+function handleImagePaste(onImage: (file: File) => void) {
+  return (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.kind === "file" && item.type.startsWith("image/")) {
+        const blob = item.getAsFile();
+        if (blob) {
+          e.preventDefault();
+          onImage(blob);
+          return;
+        }
+      }
+    }
+    // No image on clipboard — fall through to the browser's text paste.
+  };
 }
 
 function SaveBar({
