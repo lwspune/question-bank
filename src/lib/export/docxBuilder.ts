@@ -13,6 +13,7 @@ import JSZip from "jszip";
 import type { QuestionRow } from "@/lib/questions/query";
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
 import { readImageDimensions, fitWithinBox } from "./imageDimensions";
+import { groupBySet } from "./groupBySet";
 
 const MARGIN = 720; // 0.5" in twips
 const COL_SPACE = 720;
@@ -112,8 +113,32 @@ export async function buildQuestionPaper(
   children.push(titleParagraph(input.title));
   children.push(blank());
 
-  for (const q of input.questions) {
-    children.push(...questionParagraphs(q, builder, input.imageBytes));
+  // Group consecutive set siblings so the shared passage prints once at the
+  // top of each unbroken run. Standalone questions go through unchanged.
+  for (const group of groupBySet(input.questions)) {
+    if (group.kind === "single") {
+      children.push(
+        ...questionParagraphs(
+          group.question,
+          builder,
+          input.imageBytes,
+          /* skipContextParagraph */ false
+        )
+      );
+      continue;
+    }
+    children.push(...passageBanner(group.passage, builder));
+    for (const q of group.questions) {
+      children.push(
+        ...questionParagraphs(
+          q,
+          builder,
+          input.imageBytes,
+          /* skipContextParagraph */ true
+        )
+      );
+    }
+    children.push(blank());
   }
 
   const doc = new Document({
@@ -181,7 +206,8 @@ function titleParagraph(title: string): Paragraph {
 function questionParagraphs(
   q: QuestionRow,
   builder: Builder,
-  imageBytes: Map<string, Buffer> | undefined
+  imageBytes: Map<string, Buffer> | undefined,
+  skipContextParagraph: boolean
 ): Paragraph[] {
   const out: Paragraph[] = [];
 
@@ -203,7 +229,7 @@ function questionParagraphs(
     out.push(imageParagraph(data, dims.width, dims.height, 720));
   }
 
-  if (q.context) {
+  if (q.context && !skipContextParagraph) {
     out.push(
       new Paragraph({
         indent: { left: 720 },
@@ -301,6 +327,24 @@ function mathRuns(text: string, builder: Builder): ParagraphChild[] {
 
 function blank(): Paragraph {
   return new Paragraph({ children: [] });
+}
+
+/**
+ * Print the passage shared by a question-set once, then the questions
+ * follow numbered. Italicised "Set:" prefix matches the per-question
+ * "Context:" prefix used elsewhere so the layout stays consistent.
+ */
+function passageBanner(passage: string, builder: Builder): Paragraph[] {
+  if (!passage) return [];
+  return [
+    new Paragraph({
+      indent: { left: 0 },
+      children: [
+        new TextRun({ text: "Set: ", italics: true, bold: true }),
+        ...mathRuns(passage, builder),
+      ],
+    }),
+  ];
 }
 
 async function finalize(doc: Document, builder: Builder): Promise<Buffer> {
