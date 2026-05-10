@@ -84,6 +84,9 @@ describe.skipIf(!HAS_ENV)("setUploadPyqMetadata", () => {
   afterAll(async () => {
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     if (otherOrgId) await admin.from("organizations").delete().eq("id", otherOrgId);
+    // Taxonomy isn't org-scoped — explicitly delete the test subject
+    // (cascades chapters/subtopics) or it leaks into /browse filters.
+    if (subjectId) await admin.from("subjects").delete().eq("id", subjectId);
     if (adminUserId) await admin.auth.admin.deleteUser(adminUserId);
   });
 

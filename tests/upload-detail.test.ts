@@ -157,6 +157,10 @@ describe.skipIf(!HAS_ENV)("getUploadDetail", () => {
   afterAll(async () => {
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     if (otherOrgId) await admin.from("organizations").delete().eq("id", otherOrgId);
+    // Taxonomy isn't org-scoped — must explicitly delete the subject we
+    // inserted (cascades chapters + subtopics) or it leaks into the
+    // public /browse Subject filter.
+    if (subjectId) await admin.from("subjects").delete().eq("id", subjectId);
     if (adminUserId) await admin.auth.admin.deleteUser(adminUserId);
   });
 

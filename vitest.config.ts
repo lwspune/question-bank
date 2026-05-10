@@ -7,6 +7,7 @@ export default defineConfig({
   },
   test: {
     setupFiles: ["./tests/setup.ts"],
+    globalSetup: ["./tests/global-teardown.ts"],
     include: ["tests/**/*.test.ts"],
     testTimeout: 30000,
     hookTimeout: 30000,
