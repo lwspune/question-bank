@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   latexToOmml,
+  sanitizeOmmlForXml,
   textWithMathToOmmlSegments,
 } from "@/lib/export/ommlBuilder";
 
@@ -22,6 +23,68 @@ describe("latexToOmml", () => {
   it("returns null for unparseable LaTeX (graceful fallback)", () => {
     const omml = latexToOmml("\\frac{1");
     expect(omml).toBeNull();
+  });
+
+  // Regression: real NDA Trig 2025 content "0 < α < 90°" was producing
+  // OMML with literal '<' inside <m:t>...</m:t>, breaking the docx.
+  it("escapes < > & inside <m:t> text content (XML safety)", () => {
+    const omml = latexToOmml("0 < \\alpha < 90");
+    expect(omml).not.toBeNull();
+    // No raw '<' should appear inside m:t text content. We assert by
+    // extracting every <m:t>...</m:t> block and checking its inner text.
+    const matches = [
+      ...omml!.matchAll(/<m:t(?:\s[^>]*)?>([\s\S]*?)<\/m:t>/g),
+    ];
+    expect(matches.length).toBeGreaterThan(0);
+    for (const m of matches) {
+      const inner = m[1];
+      // Inner text must not contain any literal < > or unescaped &.
+      expect(inner).not.toMatch(/</);
+      expect(inner).not.toMatch(/>/);
+      expect(inner).not.toMatch(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/);
+    }
+  });
+
+  it("escapes ampersand inside <m:t> text content", () => {
+    const omml = latexToOmml("a \\& b");
+    if (omml) {
+      const matches = [
+        ...omml.matchAll(/<m:t(?:\s[^>]*)?>([\s\S]*?)<\/m:t>/g),
+      ];
+      for (const m of matches) {
+        expect(m[1]).not.toMatch(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/);
+      }
+    }
+  });
+
+  it("preserves already-escaped entities (&amp;, &lt;, &gt;) instead of double-escaping", () => {
+    // Direct sanitizer behaviour: feed an OMML-shaped fragment and verify
+    // pre-escaped entities pass through untouched.
+    const fragment =
+      '<m:oMath><m:t>foo &amp; bar &lt; baz &gt; qux</m:t></m:oMath>';
+    const sanitized = sanitizeOmmlForXml(fragment);
+    expect(sanitized).toContain("&amp;");
+    expect(sanitized).not.toContain("&amp;amp;");
+    expect(sanitized).toContain("&lt;");
+    expect(sanitized).not.toContain("&amp;lt;");
+  });
+
+  it("escapes raw < > & inside m:t when fed directly to the sanitizer", () => {
+    const fragment = '<m:oMath><m:t>0<a<90</m:t></m:oMath>';
+    const sanitized = sanitizeOmmlForXml(fragment);
+    expect(sanitized).toBe(
+      '<m:oMath><m:t>0&lt;a&lt;90</m:t></m:oMath>'
+    );
+  });
+
+  it("does not touch text outside <m:t> elements", () => {
+    // The opening m:oMath tag has attributes (sometimes with > in URLs); the
+    // sanitizer must only operate inside m:t bodies.
+    const fragment =
+      '<m:oMath xmlns:m="http://example/foo"><m:t>x<y</m:t></m:oMath>';
+    const sanitized = sanitizeOmmlForXml(fragment);
+    expect(sanitized).toContain('xmlns:m="http://example/foo"');
+    expect(sanitized).toContain("<m:t>x&lt;y</m:t>");
   });
 });
 

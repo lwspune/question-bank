@@ -24,10 +24,33 @@ export function latexToOmml(
     if (!omml || typeof omml !== "string" || !omml.includes("m:oMath")) {
       return null;
     }
-    return omml;
+    return sanitizeOmmlForXml(omml);
   } catch {
     return null;
   }
+}
+
+/**
+ * Defensive XML-escape pass over <m:t>...</m:t> text content. mml2omml
+ * (and temml upstream) sometimes emit raw `<` / `>` / `&` inside math text
+ * — for example a LaTeX comparator like `0 < \alpha < 90` produces
+ * `<m:t>0<α<90</m:t>` which Word's strict XML parser rejects.
+ *
+ * Only operates inside m:t bodies; pre-existing entities are left alone.
+ * Self-closing `<m:t/>` is unaffected (no content to fix).
+ */
+export function sanitizeOmmlForXml(omml: string): string {
+  return omml.replace(
+    /<m:t(\s[^>]*)?>([\s\S]*?)<\/m:t>/g,
+    (_, attrs, content) => `<m:t${attrs ?? ""}>${escapeXmlText(content)}</m:t>`
+  );
+}
+
+function escapeXmlText(s: string): string {
+  return s
+    .replace(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 /**
