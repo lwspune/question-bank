@@ -3,6 +3,7 @@ import { contentHash } from "./hash";
 export type RawRow = {
   sourceRow: number;
   questionNumber?: string;
+  setLabel?: string;
   subject: string;
   chapter: string;
   subtopic?: string;
@@ -23,6 +24,7 @@ export type OptionLabel = "A" | "B" | "C" | "D";
 export type ParsedRowPayload = {
   sourceRow: number;
   questionNumber?: string;
+  setLabel?: string;
   subjectName: string;
   chapterName: string;
   subtopicName?: string;
@@ -108,6 +110,7 @@ export function validateRow(row: RawRow): ValidatedRow {
     parsed: {
       sourceRow: row.sourceRow,
       questionNumber: row.questionNumber,
+      setLabel: row.setLabel,
       subjectName: row.subject,
       chapterName: row.chapter,
       subtopicName: row.subtopic,

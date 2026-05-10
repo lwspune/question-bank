@@ -4,6 +4,7 @@ export type ParsedRow = {
   sourceRow: number;
   questionNumber?: string;
   course?: string;
+  setLabel?: string;
   subject: string;
   chapter: string;
   subtopic?: string;
@@ -72,6 +73,7 @@ export function parseXlsx(buffer: Buffer | ArrayBuffer | Uint8Array): ParseResul
       sourceRow: i + 1,
       questionNumber: optionalOf(r, "Q"),
       course: optionalOf(r, "Course"),
+      setLabel: optionalOf(r, "Set"),
       subject: cellOf(r, "Subject"),
       chapter: cellOf(r, "Chapter"),
       subtopic: optionalOf(r, "Subtopic"),

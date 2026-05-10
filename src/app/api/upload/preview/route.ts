@@ -5,6 +5,7 @@ import { parseXlsx } from "@/lib/upload/parser";
 import { validateRow } from "@/lib/upload/validate";
 import { detectCourse } from "@/lib/upload/detectCourse";
 import { resolveExam } from "@/lib/upload/resolveExam";
+import { propagateSetContext } from "@/lib/upload/propagateSetContext";
 
 export const maxDuration = 60;
 
@@ -116,13 +117,33 @@ export async function POST(request: NextRequest) {
     }
     const examId = resolved.examId;
 
-    const validated = parsed.rows.map(validateRow);
+    // Propagate Question Context across rows that share a Set label, and
+    // surface set-level errors (drift, missing context) at the row level.
+    const propagated = propagateSetContext(parsed.rows);
+    const rowsForValidation = propagated.ok ? propagated.rows : parsed.rows;
+
+    const validated = rowsForValidation.map(validateRow);
+
+    // Merge set-propagation errors into the row-error list so the Review UI
+    // shows them alongside validation errors. Any row carrying a set error
+    // must NOT land in validRows even if validateRow accepted it.
+    const errorsByRow = new Map<number, string[]>();
+    for (const v of validated) {
+      if (v.errors.length > 0) errorsByRow.set(v.sourceRow, [...v.errors]);
+    }
+    if (!propagated.ok) {
+      for (const e of propagated.errors) {
+        const existing = errorsByRow.get(e.sourceRow) ?? [];
+        existing.push(e.message);
+        errorsByRow.set(e.sourceRow, existing);
+      }
+    }
     const validRows = validated
-      .filter((v) => v.errors.length === 0)
+      .filter((v) => v.errors.length === 0 && !errorsByRow.has(v.sourceRow))
       .map((v) => v.parsed!);
-    const errors = validated
-      .filter((v) => v.errors.length > 0)
-      .map((v) => ({ sourceRow: v.sourceRow, messages: v.errors }));
+    const errors = Array.from(errorsByRow.entries())
+      .sort(([a], [b]) => a - b)
+      .map(([sourceRow, messages]) => ({ sourceRow, messages }));
 
     const { data: job, error: jobErr } = await supabase
       .from("upload_jobs")

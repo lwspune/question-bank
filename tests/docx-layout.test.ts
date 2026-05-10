@@ -16,6 +16,7 @@ const SAMPLE: QuestionRow = {
   difficulty: "EASY",
   solution: null,
   imageUrl: null,
+  setId: null,
   exam: { id: "e", name: "MHT-CET" },
   subject: { id: "s", name: "Maths" },
   chapter: { id: "c", name: "Algebra" },

@@ -15,6 +15,7 @@ export type QuestionRow = {
   difficulty: Difficulty;
   solution: string | null;
   imageUrl: string | null;
+  setId: string | null;
   exam: { id: string; name: string };
   subject: { id: string; name: string };
   chapter: { id: string; name: string };
@@ -59,7 +60,7 @@ export async function queryQuestions(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url,
+      id, text, context, difficulty, solution, image_url, set_id,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
@@ -107,6 +108,7 @@ export async function queryQuestions(
     difficulty: Difficulty;
     solution: string | null;
     image_url: string | null;
+    set_id: string | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
@@ -124,6 +126,7 @@ export async function queryQuestions(
     difficulty: r.difficulty,
     solution: r.solution,
     imageUrl: r.image_url,
+    setId: r.set_id,
     exam: flatten(r.exam)!,
     subject: flatten(r.subject)!,
     chapter: flatten(r.chapter)!,
@@ -159,7 +162,7 @@ export async function queryQuestionsByIds(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url,
+      id, text, context, difficulty, solution, image_url, set_id,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
@@ -185,6 +188,7 @@ export async function queryQuestionsByIds(
     difficulty: Difficulty;
     solution: string | null;
     image_url: string | null;
+    set_id: string | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
@@ -204,6 +208,7 @@ export async function queryQuestionsByIds(
       difficulty: r.difficulty,
       solution: r.solution,
       imageUrl: r.image_url,
+      setId: r.set_id,
       exam: flatten(r.exam)!,
       subject: flatten(r.subject)!,
       chapter: flatten(r.chapter)!,

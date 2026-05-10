@@ -121,6 +121,7 @@ export async function commitStaged(
     source_file: string;
     source_row: number;
     question_number: string | null;
+    set_id: string | null;
     upload_job_id: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -152,6 +153,12 @@ export async function commitStaged(
         ? await taxonomy.resolveSubtopic(chapterId, row.subtopicName)
         : null;
 
+      // Set membership is scoped per upload: the same Excel label "S1" used
+      // in two different uploads forms two different sets. Without an
+      // uploadJobId (sync receivers, ad-hoc imports) set_id stays NULL.
+      const setId =
+        row.setLabel && uploadJobId ? `${uploadJobId}:${row.setLabel}` : null;
+
       stagedInserts.push({
         row,
         q: {
@@ -168,6 +175,7 @@ export async function commitStaged(
           source_file: filename,
           source_row: row.sourceRow,
           question_number: row.questionNumber ?? null,
+          set_id: setId,
           upload_job_id: uploadJobId ?? null,
           pyq_year: pyqYear ?? null,
           pyq_month: pyqMonth ?? null,

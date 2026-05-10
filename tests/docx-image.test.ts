@@ -11,6 +11,7 @@ const Q_WITH_IMAGES: QuestionRow = {
   difficulty: "EASY",
   solution: "See the diagram.",
   imageUrl: "ORG/q-image.png",
+  setId: null,
   exam: { id: "e", name: "MHT-CET" },
   subject: { id: "s", name: "Physics" },
   chapter: { id: "c", name: "Optics" },
