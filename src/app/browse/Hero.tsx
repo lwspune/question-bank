@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 
-const SUPPORTED_EXAMS = ["MHT-CET"];
-const COMING_SOON_EXAMS = ["NDA", "IPMAT", "CUET", "NEET", "JEE Main"];
+const SUPPORTED_EXAMS = ["MHT-CET", "NDA"];
+const COMING_SOON_EXAMS = ["IPMAT", "CUET", "NEET", "JEE Main"];
 
 export default function Hero({
   totalPublicQuestions,
