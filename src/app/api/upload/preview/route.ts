@@ -3,6 +3,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireAdmin, HttpError } from "@/lib/auth";
 import { parseXlsx } from "@/lib/upload/parser";
 import { validateRow } from "@/lib/upload/validate";
+import { detectCourse } from "@/lib/upload/detectCourse";
+import { resolveExam } from "@/lib/upload/resolveExam";
 
 export const maxDuration = 60;
 
@@ -17,17 +19,13 @@ export async function POST(request: NextRequest) {
     const member = await requireAdmin();
     const formData = await request.formData();
     const file = formData.get("file");
-    const examId = formData.get("examId");
+    const examIdRaw = formData.get("examId");
+    const formExamId =
+      typeof examIdRaw === "string" && examIdRaw.length > 0 ? examIdRaw : null;
 
     if (!(file instanceof File)) {
       return NextResponse.json(
         { error: "file is required" },
-        { status: 400 }
-      );
-    }
-    if (typeof examId !== "string" || !examId) {
-      return NextResponse.json(
-        { error: "examId is required" },
         { status: 400 }
       );
     }
@@ -99,6 +97,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const supabase = createSupabaseServerClient();
+    const { data: knownExamRows, error: examsErr } = await supabase
+      .from("exams")
+      .select("id, name")
+      .order("name");
+    if (examsErr || !knownExamRows) {
+      return NextResponse.json(
+        { error: `failed to load exams: ${examsErr?.message ?? "unknown"}` },
+        { status: 500 }
+      );
+    }
+
+    const detection = detectCourse(parsed.rows);
+    const resolved = resolveExam(detection, formExamId, knownExamRows);
+    if (!resolved.ok) {
+      return NextResponse.json({ error: resolved.error }, { status: 400 });
+    }
+    const examId = resolved.examId;
+
     const validated = parsed.rows.map(validateRow);
     const validRows = validated
       .filter((v) => v.errors.length === 0)
@@ -107,7 +124,6 @@ export async function POST(request: NextRequest) {
       .filter((v) => v.errors.length > 0)
       .map((v) => ({ sourceRow: v.sourceRow, messages: v.errors }));
 
-    const supabase = createSupabaseServerClient();
     const { data: job, error: jobErr } = await supabase
       .from("upload_jobs")
       .insert({
@@ -141,6 +157,11 @@ export async function POST(request: NextRequest) {
       validCount: validRows.length,
       errorCount: errors.length,
       errors,
+      detectedExam: {
+        id: resolved.examId,
+        name: resolved.examName,
+        source: resolved.source,
+      },
     });
   } catch (err) {
     if (err instanceof HttpError) {

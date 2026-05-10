@@ -3,6 +3,7 @@ import * as XLSX from "xlsx";
 export type ParsedRow = {
   sourceRow: number;
   questionNumber?: string;
+  course?: string;
   subject: string;
   chapter: string;
   subtopic?: string;
@@ -70,6 +71,7 @@ export function parseXlsx(buffer: Buffer | ArrayBuffer | Uint8Array): ParseResul
     rows.push({
       sourceRow: i + 1,
       questionNumber: optionalOf(r, "Q"),
+      course: optionalOf(r, "Course"),
       subject: cellOf(r, "Subject"),
       chapter: cellOf(r, "Chapter"),
       subtopic: optionalOf(r, "Subtopic"),

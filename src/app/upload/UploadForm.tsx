@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -40,6 +40,11 @@ type PreviewResult = {
   validCount: number;
   errorCount: number;
   errors: { sourceRow: number; messages: string[] }[];
+  detectedExam: {
+    id: string;
+    name: string;
+    source: "file" | "form";
+  };
 };
 
 type CommitResult = {
@@ -71,7 +76,7 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
 
   async function onPreview(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!file || !examId) return;
+    if (!file) return;
     setBusy(true);
     setError(null);
     setPreview(null);
@@ -79,7 +84,7 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
 
     const formData = new FormData();
     formData.set("file", file);
-    formData.set("examId", examId);
+    if (examId) formData.set("examId", examId);
     if (pyqYear !== PYQ_NONE) formData.set("pyqYear", pyqYear);
     if (pyqMonth.trim()) formData.set("pyqMonth", pyqMonth.trim());
     if (pyqNote.trim()) formData.set("pyqNote", pyqNote.trim());
@@ -162,14 +167,14 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
           <CardContent>
             <form onSubmit={onPreview} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="exam">Exam</Label>
+                <Label htmlFor="exam">Exam (optional)</Label>
                 <Select
                   value={examId}
                   onValueChange={setExamId}
                   disabled={busy}
                 >
                   <SelectTrigger id="exam">
-                    <SelectValue placeholder="— Select exam —" />
+                    <SelectValue placeholder="— Auto-detect from file —" />
                   </SelectTrigger>
                   <SelectContent>
                     {exams.map((x) => (
@@ -179,6 +184,10 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
                     ))}
                   </SelectContent>
                 </Select>
+                <p className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                  <Sparkles className="h-3 w-3" aria-hidden />
+                  Leave blank if your file has a <code className="font-mono">Course</code> column — we&rsquo;ll detect it.
+                </p>
               </div>
               <fieldset className="space-y-2 rounded-md border bg-muted/20 p-3">
                 <legend className="px-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -242,7 +251,7 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
                   disabled={busy}
                 />
               </div>
-              <Button type="submit" disabled={!file || !examId || busy}>
+              <Button type="submit" disabled={!file || busy}>
                 {busy ? "Parsing…" : "Preview"}
               </Button>
             </form>
@@ -256,12 +265,29 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
             <CardTitle>Review</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              From{" "}
-              <span className="font-medium text-foreground">
-                {preview.filename}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+              <span>
+                From{" "}
+                <span className="font-medium text-foreground">
+                  {preview.filename}
+                </span>
               </span>
-            </p>
+              <span aria-hidden>·</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border bg-card px-2.5 py-0.5 text-xs font-medium text-foreground">
+                {preview.detectedExam.source === "file" && (
+                  <Sparkles
+                    className="h-3 w-3 text-primary"
+                    aria-hidden
+                  />
+                )}
+                {preview.detectedExam.name}
+                <span className="font-normal text-muted-foreground">
+                  {preview.detectedExam.source === "file"
+                    ? "(detected from file)"
+                    : "(selected)"}
+                </span>
+              </span>
+            </div>
 
             <div className="grid grid-cols-3 gap-3">
               <SummaryStat
