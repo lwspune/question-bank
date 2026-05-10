@@ -12,15 +12,16 @@ const Q1: QuestionRow = {
   context: null,
   difficulty: "EASY",
   solution: "Add the fractions: \\(\\frac{1}{2} + \\frac{1}{2} = 1\\).",
+  imageUrl: null,
   exam: { id: "e", name: "MHT-CET" },
   subject: { id: "s", name: "Maths" },
   chapter: { id: "c", name: "Fractions" },
   subtopic: null,
   options: [
-    { label: "A", text: "1", isCorrect: true },
-    { label: "B", text: "2", isCorrect: false },
-    { label: "C", text: "0", isCorrect: false },
-    { label: "D", text: "0.5", isCorrect: false },
+    { label: "A", text: "1", isCorrect: true, imageUrl: null },
+    { label: "B", text: "2", isCorrect: false, imageUrl: null },
+    { label: "C", text: "0", isCorrect: false, imageUrl: null },
+    { label: "D", text: "0.5", isCorrect: false, imageUrl: null },
   ],
 };
 
@@ -30,15 +31,16 @@ const Q2: QuestionRow = {
   context: null,
   difficulty: "EASY",
   solution: null,
+  imageUrl: null,
   exam: { id: "e", name: "MHT-CET" },
   subject: { id: "s", name: "Maths" },
   chapter: { id: "c", name: "Roots" },
   subtopic: null,
   options: [
-    { label: "A", text: "2", isCorrect: false },
-    { label: "B", text: "4", isCorrect: true },
-    { label: "C", text: "8", isCorrect: false },
-    { label: "D", text: "16", isCorrect: false },
+    { label: "A", text: "2", isCorrect: false, imageUrl: null },
+    { label: "B", text: "4", isCorrect: true, imageUrl: null },
+    { label: "C", text: "8", isCorrect: false, imageUrl: null },
+    { label: "D", text: "16", isCorrect: false, imageUrl: null },
   ],
 };
 

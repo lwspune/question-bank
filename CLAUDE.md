@@ -147,4 +147,58 @@ Follow the `questions`/`options` pattern (see `0002_rls.sql` + `0004_upload_stag
 - **Supabase project:** `wunvtnqlzjrkvolslbnm` (https://wunvtnqlzjrkvolslbnm.supabase.co)
 - **Production:** https://question-bank-sage.vercel.app — auto-deploys from `main`
 - **Repo:** https://github.com/lwspune/question-bank (public)
-- **Auth callback URLs allow-listed in Supabase Auth:** production + `localhost:3000`
+- **Auth callback URLs allow-listed in Supabase Auth:** production + `localhost:3000` (legacy from the magic-link era; harmless to leave even though we currently use password auth)
+
+## Operations
+
+Day-to-day knobs and where to look when something goes sideways.
+
+### Monitoring
+
+- **Vercel function logs:** dashboard → Project → Logs. The `/api/export`, `/api/sync/mock`, and `/api/upload/*` route handlers all `console.error` on the catch path; surface there.
+- **Vercel Analytics:** dashboard → Project → Analytics. Pageviews + visitor counts. Free tier, cookieless. Frontend errors don't surface here yet — if/when noise picks up, consider Sentry.
+- **Supabase logs:** dashboard → Logs → API/Postgres. Useful when an export 500s and you want to see the underlying SQL error.
+- **Supabase advisor:** run `mcp__supabase__get_advisors` periodically (or after a migration). Two acceptable lints today: `rls_enabled_no_policy` on `public.rate_limits` (intentional, service-role-only access) and `auth_leaked_password_protection` (Supabase auth setting, can be enabled in dashboard).
+
+### When to upgrade tiers
+
+- **Vercel Hobby (current)** is bounded by ~100 GB-h/month of function execution and ~100 GB of bandwidth. The export endpoint is the heavy hitter — when daily traffic crosses ~500 papers, watch the dashboard's bandwidth meter weekly.
+- **Supabase Free (current)** is bounded by 500 MB DB + 1 GB storage egress + 5 GB bandwidth. The public bucket of question images is the egress risk; if egress crosses ~80% of the cap mid-month, plan a Pro upgrade.
+
+### Rate limit visibility
+
+The rate-limit table (Phase D) is service-role only and not exposed to the API. To see who's hitting the limit:
+```sql
+select bucket, count, window_start
+from rate_limits
+order by count desc
+limit 20;
+```
+Buckets are formatted `export:anon:<ip>` or `export:user:<user_id>`.
+
+### Rotating SYNC_SHARED_SECRET
+
+No code change needed. Set a new value in:
+1. Vercel env vars (Question Bank project) → trigger redeploy
+2. MHT_CET_AI's env (whatever variable name its publisher uses) → redeploy
+
+The secret is read at request time via `process.env.SYNC_SHARED_SECRET`, so a redeploy on Question Bank's side picks up the new value immediately. Until both sides match, syncs return 401.
+
+### Resetting an admin password
+
+No password reset flow in the UI yet (deferred until SMTP is wired). To reset directly:
+```sql
+update auth.users
+set encrypted_password = crypt('new-password', gen_salt('bf'))
+where email = 'admin@example.com';
+```
+Run in the Supabase SQL editor with the service role.
+
+### Backfilling visibility on existing questions
+
+The default for new rows is PRIVATE. If you bulk-uploaded a batch you want public:
+```sql
+update questions
+set visibility = 'PUBLIC'
+where source_file = 'NDA_2024_paper.xlsx';
+```

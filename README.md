@@ -1,13 +1,25 @@
 # Question Bank
 
-MCQ question bank portal for teachers. Multi-tenant, per-school. Built on Next.js 14 + Supabase + Tailwind.
+Free, public past-year-question paper builder for Indian entrance exams. Filter by exam, chapter, difficulty and year — download the Question Paper + Answer Key as Word files. Live at **https://question-bank-sage.vercel.app**.
+
+Currently supports MHT-CET. NDA, IPMAT, CUET, NEET and JEE Main are queued.
+
+> Looking for the deeper context — architecture, decisions log, project conventions? See [CLAUDE.md](./CLAUDE.md). This README is for getting a local dev environment running.
+
+## Stack
+
+- **Next.js 14** App Router · TypeScript · Tailwind 3
+- **Supabase** Auth + Postgres + RLS via `@supabase/supabase-js` (no Prisma, no ORM)
+- **Word export:** `temml` (LaTeX → MathML) → `mathml2omml` → `docx` + `jszip`
+- **Math preview:** `katex` + `react-katex`
+- **Tests:** Vitest 2
+- **Deploy:** Vercel, git-integrated to `main`
 
 ## Setup (first time)
 
 ### 1. Create a Supabase project
 
-Go to https://supabase.com → New project. Save:
-
+Go to https://supabase.com → New project. From **Settings → API** save:
 - Project URL (`https://YOUR-REF.supabase.co`)
 - `anon` public key
 - `service_role` key (server-only — never expose to client)
@@ -17,7 +29,7 @@ Go to https://supabase.com → New project. Save:
 
 ```sh
 cp .env.example .env.local
-# fill in the four values
+# fill in the five values, including SYNC_SHARED_SECRET (any long random string)
 ```
 
 ### 3. Install deps
@@ -28,10 +40,7 @@ npm install
 
 ### 4. Apply migrations
 
-Paste the contents of these files into the Supabase SQL editor (Dashboard → SQL Editor → New query) **in order**:
-
-1. `supabase/migrations/0001_init.sql`
-2. `supabase/migrations/0002_rls.sql`
+Apply each `supabase/migrations/000N_*.sql` in order via the Supabase MCP tool, or paste the contents into the Supabase SQL editor (Dashboard → SQL Editor → New query). Today there are 12 migrations, including the schema, RLS, sync metadata, rate-limiter, and the public-visibility partial index.
 
 ### 5. Seed taxonomy
 
@@ -39,15 +48,15 @@ Paste the contents of these files into the Supabase SQL editor (Dashboard → SQ
 npm run db:seed
 ```
 
-This inserts the MHT-CET taxonomy (1 exam, 3 subjects, 72 chapters, 150 subtopics) extracted from the reference Excel. Idempotent — safe to re-run.
+Inserts the MHT-CET taxonomy (1 exam, 3 subjects, 73 chapters, 152 subtopics) extracted from the reference Excel. Idempotent — safe to re-run.
 
-### 6. Generate TypeScript types from the live schema (optional but recommended)
+### 6. Generate TypeScript types from the live schema (optional)
 
 ```sh
 SUPABASE_PROJECT_REF=your-ref npm run db:types
 ```
 
-(Requires the Supabase CLI: `npm i -g supabase` or use `npx supabase`.)
+Requires the Supabase CLI: `npm i -g supabase` or `npx supabase`.
 
 ### 7. Run the app
 
@@ -55,14 +64,37 @@ SUPABASE_PROJECT_REF=your-ref npm run db:types
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3000 → redirects to `/browse` (the public landing).
 
 ### 8. Onboard your first admin
 
-1. Sign in via magic link (enter your email, click the link in your inbox).
-2. After signing in, you'll see a "not linked to an organization" message — that's expected.
-3. Open `supabase/seed/seed-first-org.sql`, replace the two placeholders with your org name and your email, paste into the Supabase SQL editor, and run.
-4. Refresh the dashboard — you should now see your org name and `ADMIN` role.
+The login page accepts email + password sign-in. Magic-link is intentionally disabled until custom SMTP is wired (see [CLAUDE.md decisions log](./CLAUDE.md)). To create an admin:
+
+1. **Create the auth user via the Supabase dashboard:** Authentication → Users → "Add user" → email + a password you choose.
+2. **Set the password directly in `auth.users`** (or in the dashboard's user editor). Bcrypt example: `UPDATE auth.users SET encrypted_password = crypt('your-password', gen_salt('bf')) WHERE email = 'you@example.com';`
+3. **Link the user to an org** by editing `supabase/seed/seed-first-org.sql`, replacing the two placeholders with your org name and email, then running it in the SQL editor.
+4. Sign in at `/login` with your email + password. The admin dashboard, upload, and edit pages become available.
+
+## Common commands
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the Next.js dev server (Tailwind JIT can miss new routes — restart if styles look broken on a freshly-added page) |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint |
+| `npm test` | Vitest one-shot |
+| `npm run test:watch` | Vitest watch mode |
+| `npx tsc --noEmit` | Full project typecheck (covers test files too — keep this clean) |
+| `npm run db:seed` | Idempotent taxonomy seed |
+| `npm run db:types` | Regenerate `src/types/db.ts` from the live schema |
+| `npm run extract:taxonomy` | Regenerate `supabase/seed/taxonomy.json` from the reference Excel |
+
+## Where things live
+
+- **Live production:** https://question-bank-sage.vercel.app — auto-deploys from `main`
+- **Repo:** https://github.com/lwspune/question-bank
+- **Supabase project:** `wunvtnqlzjrkvolslbnm` (https://wunvtnqlzjrkvolslbnm.supabase.co)
+- **Architecture, decisions log, project conventions:** [CLAUDE.md](./CLAUDE.md)
 
 ## Tests
 
@@ -71,43 +103,10 @@ npm test            # one-shot
 npm run test:watch  # watch mode
 ```
 
-- Middleware tests run anywhere (mocked Supabase).
-- Seed and RLS tests require `.env.local` to be filled in. They are skipped automatically otherwise.
+Pure unit tests run anywhere. DB integration tests (the majority) require `.env.local` to be filled in and skip automatically otherwise. There are 184 tests across 28 files; full suite runs in ~5s.
 
-## Project structure
+## Public surface vs admin surface
 
-```
-src/
-├── app/
-│   ├── login/             # magic-link sign-in
-│   ├── dashboard/         # protected landing page
-│   ├── api/auth/callback  # Supabase auth code exchange
-│   └── page.tsx           # root redirect to /login or /dashboard
-├── lib/
-│   ├── supabase/          # browser, server, admin, middleware clients
-│   ├── auth.ts            # session + membership helpers
-│   ├── seed.ts            # taxonomy seed (idempotent)
-│   └── utils.ts           # cn()
-├── components/ui/         # shadcn-style primitives
-└── middleware.ts          # route guard
-
-supabase/
-├── migrations/            # raw SQL — apply in order
-└── seed/
-    ├── taxonomy.json      # extracted from reference Excel
-    └── seed-first-org.sql # manual onboarding for first admin
-
-scripts/
-├── extract-taxonomy.ts    # one-shot: regenerate taxonomy.json
-└── seed.ts                # CLI for seeding taxonomy
-
-tests/
-├── middleware.test.ts     # pure unit
-├── seed.test.ts           # integration (DB required)
-└── rls.test.ts            # integration (DB required)
-```
-
-## Status
-
-**M1 — done:** scaffold · auth · taxonomy seed · RLS · dashboard placeholder.
-**M2 — next:** Excel upload (admin) with validation + preview + commit.
+- **Public** (no login): `/`, `/browse`, `/api/export`, `/sitemap.xml`, `/robots.txt`, `/opengraph-image`. RLS scopes the question reads to `visibility = 'PUBLIC'` rows.
+- **Admin** (auth required): `/dashboard`, `/upload`, `/questions/[id]/edit`, plus the corresponding `/api` routes. Visibility per question is editable in the edit form.
+- **Server-to-server** (shared-secret): `/api/sync/mock` — receives finalized mocks from sibling apps (initially MHT_CET_AI). Auth via `Authorization: Bearer $SYNC_SHARED_SECRET`.

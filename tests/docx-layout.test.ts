@@ -15,15 +15,16 @@ const SAMPLE: QuestionRow = {
   context: null,
   difficulty: "EASY",
   solution: null,
+  imageUrl: null,
   exam: { id: "e", name: "MHT-CET" },
   subject: { id: "s", name: "Maths" },
   chapter: { id: "c", name: "Algebra" },
   subtopic: null,
   options: [
-    { label: "A", text: "1", isCorrect: true },
-    { label: "B", text: "2", isCorrect: false },
-    { label: "C", text: "3", isCorrect: false },
-    { label: "D", text: "4", isCorrect: false },
+    { label: "A", text: "1", isCorrect: true, imageUrl: null },
+    { label: "B", text: "2", isCorrect: false, imageUrl: null },
+    { label: "C", text: "3", isCorrect: false, imageUrl: null },
+    { label: "D", text: "4", isCorrect: false, imageUrl: null },
   ],
 };
 
