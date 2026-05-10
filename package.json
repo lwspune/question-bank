@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "db:seed": "tsx scripts/seed.ts",
     "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > src/types/db.ts",
     "extract:taxonomy": "tsx scripts/extract-taxonomy.ts",

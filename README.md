@@ -84,7 +84,7 @@ The login page accepts email + password sign-in. Magic-link is intentionally dis
 | `npm run lint` | ESLint |
 | `npm test` | Vitest one-shot |
 | `npm run test:watch` | Vitest watch mode |
-| `npx tsc --noEmit` | Full project typecheck (covers test files too — keep this clean) |
+| `npm run typecheck` | Full project typecheck (`tsc --noEmit`, covers test files too — keep this clean) |
 | `npm run db:seed` | Idempotent taxonomy seed |
 | `npm run db:types` | Regenerate `src/types/db.ts` from the live schema |
 | `npm run extract:taxonomy` | Regenerate `supabase/seed/taxonomy.json` from the reference Excel |
