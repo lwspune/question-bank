@@ -25,28 +25,31 @@ RLS helpers live in the **`private` schema** (not exposed by PostgREST): `privat
 ```
 src/
 ├── app/
-│   ├── login/page.tsx                     magic-link sign-in (client)
-│   ├── dashboard/                         landing page; admin sees Upload button
-│   ├── upload/                            admin-only: file picker → preview → commit
-│   ├── browse/                            org-wide: cascading filters, KaTeX preview, image rendering, ZIP export, admin "Edit question" link
+│   ├── layout.tsx                         next/font (Inter + Source Serif 4), sonner Toaster, no-FOUC theme bootstrap
+│   ├── login/page.tsx                     email + password sign-in (client) — split-screen layout
+│   ├── dashboard/                         page.tsx + loading.tsx — quick actions, stat cards, by-exam bars, recent uploads (admin)
+│   ├── upload/                            admin-only: Stepper → Dropzone (file pick) → preview summary bar → animated success
+│   ├── browse/                            page.tsx + loading.tsx + FilterBar + MobileFilters (Sheet) + QuestionCard + Pagination + DownloadDialog (real modal)
+│   ├── questions/[id]/edit/               admin-only edit page: two-column, sticky save bar, Edit/Preview tab, dropzone-style image slots
 │   ├── api/auth/callback/                 Supabase OAuth code exchange
 │   ├── api/upload/{preview,commit}/       two-stage admin upload
 │   ├── api/questions/[id]/                PUT (JSON): edit text+options+taxonomy+image paths in one request (admin only)
-│   ├── questions/[id]/edit/               admin-only edit page: cascading taxonomy + textareas + eager image upload
 │   └── api/export/                        POST → ZIP of Question Paper + Answer Key (server-side fetches image bytes via service-role for embed)
 ├── lib/
 │   ├── supabase/{client,server,middleware,admin}.ts    four supabase-js variants
 │   ├── auth.ts                            getSessionUser, getSessionMember, requireAdmin, HttpError
 │   ├── seed.ts                            taxonomy upsert (used by scripts/seed.ts)
-│   ├── questions/{filters,query,edit,applyEdit}.ts   browse filters ↔ URL · Supabase query builder · zod edit schema + hash · DB-side edit application
+│   ├── questions/{filters,query,edit,applyEdit,dirty}.ts   browse filters ↔ URL · Supabase query builder · zod edit schema + hash · DB-side edit application · pure-function form-state diff for edit page
+│   ├── dashboard/{stats,activity}.ts      getDashboardStats (totalQuestions/exams/chapters/daysSinceLastUpload/byExam) · getRecentUploads (cap 5)
 │   ├── upload/{parser,validate,hash,taxonomy,commit}.ts   upload pipeline (pure → DB)
 │   ├── storage/
 │   │   ├── images.ts                      uploadImage / deleteImage / downloadImage / validateImageUpload (server, uses node:crypto)
 │   │   └── imageUrl.ts                    pure-function publicImageUrl — safe to import from client components
 │   └── export/{ommlBuilder,docxBuilder}.ts                LaTeX → OMML, .docx assembly
 ├── components/
+│   ├── AppHeader.tsx + UserMenu.tsx       sticky 56px header (logo + org + avatar dropdown with dark-mode toggle + sign-out)
 │   ├── math/{parseLatex,KatexRenderer}.tsx   shared LaTeX segmenter + KaTeX wrapper
-│   └── ui/{button,input,label,card,badge}.tsx   shadcn primitives
+│   └── ui/{button,input,label,card,badge,select,dialog,sheet,skeleton,stepper,dropzone}.tsx   shadcn primitives
 └── middleware.ts                          Supabase session refresh + /dashboard guard
 
 supabase/
@@ -59,7 +62,7 @@ scripts/
 ├── extract-taxonomy.ts                    one-shot: regenerate taxonomy.json from a reference Excel
 └── seed.ts                                idempotent taxonomy seed (service-role)
 
-tests/                                     19 .test.ts files, 119 tests
+tests/                                     22 .test.ts files, 139 tests
 ├── fixtures/{upload,tinyImage}.ts         in-memory .xlsx fixture builder; 67-byte 1x1 PNG buffer
 ├── *.test.ts                              pure unit + DB integration (DB tests skip if env missing)
 └── setup.ts                               loads .env.local for tests
