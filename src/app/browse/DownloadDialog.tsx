@@ -45,8 +45,14 @@ export default function DownloadDialog({
         }),
       });
       if (!res.ok) {
-        const json = (await res.json().catch(() => ({}))) as { error?: string };
-        const msg = json.error ?? `Download failed (${res.status})`;
+        const json = (await res.json().catch(() => ({}))) as {
+          error?: string;
+          retryAfter?: number;
+        };
+        const msg =
+          res.status === 429 && json.retryAfter
+            ? `Too many downloads — try again in ${formatRetry(json.retryAfter)}.`
+            : json.error ?? `Download failed (${res.status})`;
         setError(msg);
         toast.error(msg);
         return;
@@ -155,4 +161,12 @@ export default function DownloadDialog({
 
 function sanitize(s: string): string {
   return s.replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "_") || "export";
+}
+
+function formatRetry(seconds: number): string {
+  if (seconds < 90) return `${seconds} seconds`;
+  const minutes = Math.ceil(seconds / 60);
+  if (minutes < 60) return `${minutes} minutes`;
+  const hours = Math.ceil(minutes / 60);
+  return `${hours} hour${hours === 1 ? "" : "s"}`;
 }
