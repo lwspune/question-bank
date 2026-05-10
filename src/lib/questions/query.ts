@@ -22,6 +22,22 @@ export type QuestionRow = {
   options: OptionRow[];
 };
 
+/**
+ * Slim shape for the cart panel: enough to render a breadcrumb + a text snippet
+ * and to sort by Subject → Chapter → source_row. Skips options/solution/images
+ * so the cart-preview payload stays small even for a 200-question cart.
+ */
+export type QuestionPreview = {
+  id: string;
+  text: string;
+  questionNumber: string | null;
+  sourceRow: number | null;
+  exam: { id: string; name: string };
+  subject: { id: string; name: string };
+  chapter: { id: string; name: string };
+  subtopic: { id: string; name: string } | null;
+};
+
 export type QueryResult = {
   totalCount: number;
   rows: QuestionRow[];
@@ -123,4 +139,148 @@ export async function queryQuestions(
   }));
 
   return { totalCount: count ?? 0, rows };
+}
+
+/**
+ * Fetch questions by an explicit ordered list of IDs and return them in the
+ * caller's order (cart-insertion order). IDs that don't resolve under the
+ * current RLS scope (deleted, made PRIVATE, etc.) are dropped silently —
+ * callers decide whether to surface "some questions are no longer available".
+ *
+ * RLS still applies. Empty input → no DB round-trip.
+ */
+export async function queryQuestionsByIds(
+  client: SupabaseClient,
+  ids: string[]
+): Promise<QuestionRow[]> {
+  if (ids.length === 0) return [];
+
+  const { data, error } = await client
+    .from("questions")
+    .select(
+      `
+      id, text, context, difficulty, solution, image_url,
+      exam:exams!exam_id(id, name),
+      subject:subjects!subject_id(id, name),
+      chapter:chapters!chapter_id(id, name),
+      subtopic:subtopics!subtopic_id(id, name),
+      options(label, text, is_correct, image_url)
+    `
+    )
+    .in("id", ids);
+
+  if (error) throw new Error(`questions by ids: ${error.message}`);
+
+  type RawOption = {
+    label: "A" | "B" | "C" | "D";
+    text: string;
+    is_correct: boolean;
+    image_url: string | null;
+  };
+  type RawTaxonomy = { id: string; name: string };
+  type Raw = {
+    id: string;
+    text: string;
+    context: string | null;
+    difficulty: Difficulty;
+    solution: string | null;
+    image_url: string | null;
+    exam: RawTaxonomy | RawTaxonomy[] | null;
+    subject: RawTaxonomy | RawTaxonomy[] | null;
+    chapter: RawTaxonomy | RawTaxonomy[] | null;
+    subtopic: RawTaxonomy | RawTaxonomy[] | null;
+    options: RawOption[] | null;
+  };
+
+  const flatten = (v: RawTaxonomy | RawTaxonomy[] | null): RawTaxonomy | null =>
+    Array.isArray(v) ? v[0] ?? null : v;
+
+  const byId = new Map<string, QuestionRow>();
+  for (const r of (data ?? []) as Raw[]) {
+    byId.set(r.id, {
+      id: r.id,
+      text: r.text,
+      context: r.context,
+      difficulty: r.difficulty,
+      solution: r.solution,
+      imageUrl: r.image_url,
+      exam: flatten(r.exam)!,
+      subject: flatten(r.subject)!,
+      chapter: flatten(r.chapter)!,
+      subtopic: flatten(r.subtopic),
+      options: (r.options ?? [])
+        .map((o) => ({
+          label: o.label,
+          text: o.text,
+          isCorrect: o.is_correct,
+          imageUrl: o.image_url,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    });
+  }
+
+  // Preserve the caller's order; skip ids that didn't resolve.
+  return ids
+    .map((id) => byId.get(id))
+    .filter((row): row is QuestionRow => row !== undefined);
+}
+
+/**
+ * Slim variant for the cart panel — same RLS scope, same order semantics,
+ * but no options/solution/images. Use this when the consumer only needs to
+ * render breadcrumbs + a text snippet.
+ */
+export async function queryQuestionPreviewsByIds(
+  client: SupabaseClient,
+  ids: string[]
+): Promise<QuestionPreview[]> {
+  if (ids.length === 0) return [];
+
+  const { data, error } = await client
+    .from("questions")
+    .select(
+      `
+      id, text, question_number, source_row,
+      exam:exams!exam_id(id, name),
+      subject:subjects!subject_id(id, name),
+      chapter:chapters!chapter_id(id, name),
+      subtopic:subtopics!subtopic_id(id, name)
+    `
+    )
+    .in("id", ids);
+
+  if (error) throw new Error(`question previews: ${error.message}`);
+
+  type RawTaxonomy = { id: string; name: string };
+  type Raw = {
+    id: string;
+    text: string;
+    question_number: string | null;
+    source_row: number | null;
+    exam: RawTaxonomy | RawTaxonomy[] | null;
+    subject: RawTaxonomy | RawTaxonomy[] | null;
+    chapter: RawTaxonomy | RawTaxonomy[] | null;
+    subtopic: RawTaxonomy | RawTaxonomy[] | null;
+  };
+
+  const flatten = (v: RawTaxonomy | RawTaxonomy[] | null): RawTaxonomy | null =>
+    Array.isArray(v) ? v[0] ?? null : v;
+
+  const byId = new Map<string, QuestionPreview>();
+  for (const r of (data ?? []) as Raw[]) {
+    byId.set(r.id, {
+      id: r.id,
+      text: r.text,
+      questionNumber: r.question_number,
+      sourceRow: r.source_row,
+      exam: flatten(r.exam)!,
+      subject: flatten(r.subject)!,
+      chapter: flatten(r.chapter)!,
+      subtopic: flatten(r.subtopic),
+    });
+  }
+
+  return ids
+    .map((id) => byId.get(id))
+    .filter((row): row is QuestionPreview => row !== undefined);
 }

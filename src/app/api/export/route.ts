@@ -3,7 +3,11 @@ import JSZip from "jszip";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember } from "@/lib/auth";
-import { queryQuestions, type QuestionRow } from "@/lib/questions/query";
+import {
+  queryQuestions,
+  queryQuestionsByIds,
+  type QuestionRow,
+} from "@/lib/questions/query";
 import type { Filters } from "@/lib/questions/filters";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import {
@@ -19,12 +23,16 @@ const HOUR_MS = 60 * 60 * 1000;
 const ANON_LIMIT = 10;
 const AUTHED_LIMIT = 100;
 
+type ExportOptions = {
+  title?: string;
+  includeSolutions?: boolean;
+};
+
+// Either filter-mode or cart-mode; never both. Front-end picks one.
 type Body = {
   filters?: Filters;
-  options?: {
-    title?: string;
-    includeSolutions?: boolean;
-  };
+  questionIds?: string[];
+  options?: ExportOptions;
 };
 
 export async function POST(request: NextRequest) {
@@ -72,30 +80,77 @@ export async function POST(request: NextRequest) {
     } catch {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
-    if (!body.filters || !body.options) {
+    if (!body.options) {
       return NextResponse.json({ error: "Bad request" }, { status: 400 });
     }
-    const filters = body.filters;
     const options = body.options;
+    const isCartMode = Array.isArray(body.questionIds);
+    if (!body.filters && !isCartMode) {
+      return NextResponse.json(
+        { error: "Either filters or questionIds is required" },
+        { status: 400 }
+      );
+    }
+    if (body.filters && isCartMode) {
+      return NextResponse.json(
+        { error: "Send filters or questionIds, not both" },
+        { status: 400 }
+      );
+    }
 
     // Public endpoint — RLS scopes the query: anon sees only PUBLIC rows,
     // authed org members see PUBLIC + their own org's PRIVATE.
     const supabase = createSupabaseServerClient();
-    const result = await queryQuestions(supabase, null, filters, EXPORT_CAP);
 
-    if (result.totalCount === 0) {
-      return NextResponse.json(
-        { error: "No questions match these filters." },
-        { status: 400 }
+    let questions: QuestionRow[];
+    if (isCartMode) {
+      const ids = (body.questionIds ?? []).filter(
+        (s): s is string => typeof s === "string" && s.length > 0
       );
-    }
-    if (result.totalCount > EXPORT_CAP) {
-      return NextResponse.json(
-        {
-          error: `Found ${result.totalCount} questions — narrow filters to ${EXPORT_CAP} or fewer per export, then try again.`,
-        },
-        { status: 400 }
+      const unique = Array.from(new Set(ids));
+      if (unique.length === 0) {
+        return NextResponse.json(
+          { error: "Your selection is empty." },
+          { status: 400 }
+        );
+      }
+      if (unique.length > EXPORT_CAP) {
+        return NextResponse.json(
+          {
+            error: `Selected ${unique.length} questions — max ${EXPORT_CAP} per export.`,
+          },
+          { status: 400 }
+        );
+      }
+      questions = await queryQuestionsByIds(supabase, unique);
+      if (questions.length === 0) {
+        return NextResponse.json(
+          { error: "None of the selected questions are available anymore." },
+          { status: 400 }
+        );
+      }
+    } else {
+      const result = await queryQuestions(
+        supabase,
+        null,
+        body.filters!,
+        EXPORT_CAP
       );
+      if (result.totalCount === 0) {
+        return NextResponse.json(
+          { error: "No questions match these filters." },
+          { status: 400 }
+        );
+      }
+      if (result.totalCount > EXPORT_CAP) {
+        return NextResponse.json(
+          {
+            error: `Found ${result.totalCount} questions — narrow filters to ${EXPORT_CAP} or fewer per export, then try again.`,
+          },
+          { status: 400 }
+        );
+      }
+      questions = result.rows;
     }
 
     const title =
@@ -104,11 +159,11 @@ export async function POST(request: NextRequest) {
         : "Question Bank Export";
     const includeSolutions = !!options.includeSolutions;
 
-    const imageBytes = await fetchImageBytes(result.rows);
+    const imageBytes = await fetchImageBytes(questions);
 
     const [paperBuf, keyBuf] = await Promise.all([
-      buildQuestionPaper({ title, questions: result.rows, imageBytes }),
-      buildAnswerKey({ title, questions: result.rows, includeSolutions }),
+      buildQuestionPaper({ title, questions, imageBytes }),
+      buildAnswerKey({ title, questions, includeSolutions }),
     ]);
 
     const safeName = sanitizeFilename(title);
