@@ -12,6 +12,7 @@ import {
 import JSZip from "jszip";
 import type { QuestionRow } from "@/lib/questions/query";
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
+import { readImageDimensions, fitWithinBox } from "./imageDimensions";
 
 const MARGIN = 720; // 0.5" in twips
 const COL_SPACE = 720;
@@ -88,10 +89,19 @@ export type AnswerKeyInput = {
   imageBytes?: Map<string, Buffer>;
 };
 
-const QUESTION_IMAGE_WIDTH = 320;
-const QUESTION_IMAGE_HEIGHT = 240;
-const OPTION_IMAGE_WIDTH = 200;
-const OPTION_IMAGE_HEIGHT = 150;
+// Maximum render boxes (px). Images smaller than the cap render at their
+// natural size; larger images scale-to-fit while preserving aspect ratio.
+// Caps are sized to keep the image inside one of the two columns
+// (column width ~336 px at 96 dpi).
+const QUESTION_IMAGE_MAX_WIDTH = 320;
+const QUESTION_IMAGE_MAX_HEIGHT = 360;
+const OPTION_IMAGE_MAX_WIDTH = 200;
+const OPTION_IMAGE_MAX_HEIGHT = 200;
+// Fallback when the image bytes can't be parsed (corrupt PNG/JPEG header):
+// preserves the legacy fixed-rectangle behaviour rather than dropping the
+// image entirely.
+const FALLBACK_QUESTION_DIMS = { width: 320, height: 240 };
+const FALLBACK_OPTION_DIMS = { width: 200, height: 150 };
 
 export async function buildQuestionPaper(
   input: QuestionPaperInput
@@ -183,14 +193,14 @@ function questionParagraphs(
   );
 
   if (q.imageUrl && imageBytes?.has(q.imageUrl)) {
-    out.push(
-      imageParagraph(
-        imageBytes.get(q.imageUrl)!,
-        QUESTION_IMAGE_WIDTH,
-        QUESTION_IMAGE_HEIGHT,
-        720
-      )
+    const data = imageBytes.get(q.imageUrl)!;
+    const dims = pickDims(
+      data,
+      QUESTION_IMAGE_MAX_WIDTH,
+      QUESTION_IMAGE_MAX_HEIGHT,
+      FALLBACK_QUESTION_DIMS
     );
+    out.push(imageParagraph(data, dims.width, dims.height, 720));
   }
 
   if (q.context) {
@@ -216,18 +226,29 @@ function questionParagraphs(
       })
     );
     if (opt.imageUrl && imageBytes?.has(opt.imageUrl)) {
-      out.push(
-        imageParagraph(
-          imageBytes.get(opt.imageUrl)!,
-          OPTION_IMAGE_WIDTH,
-          OPTION_IMAGE_HEIGHT,
-          1080
-        )
+      const data = imageBytes.get(opt.imageUrl)!;
+      const dims = pickDims(
+        data,
+        OPTION_IMAGE_MAX_WIDTH,
+        OPTION_IMAGE_MAX_HEIGHT,
+        FALLBACK_OPTION_DIMS
       );
+      out.push(imageParagraph(data, dims.width, dims.height, 1080));
     }
   }
 
   return out;
+}
+
+function pickDims(
+  data: Buffer,
+  maxW: number,
+  maxH: number,
+  fallback: { width: number; height: number }
+): { width: number; height: number } {
+  const natural = readImageDimensions(data);
+  if (!natural) return fallback;
+  return fitWithinBox(natural, maxW, maxH);
 }
 
 function imageParagraph(
