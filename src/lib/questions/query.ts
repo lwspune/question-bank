@@ -89,11 +89,14 @@ export async function queryQuestions(
 
   const start = (filters.page - 1) * pageSize;
   const end = start + pageSize - 1;
-  // Bulk uploads insert rows with identical created_at timestamps; without
-  // a tie-breaker, pagination overlaps. id is monotonic enough as a
-  // secondary sort for stable page boundaries.
+  // Bulk uploads insert rows with identical created_at timestamps;
+  // source_row breaks the tie (so within one upload, Excel-row order is
+  // preserved — Q34 before Q35 in the same set, etc.). id is the final
+  // tiebreaker for the rare case where source_row is also tied
+  // (sync-receiver inserts, ad-hoc imports without source_row).
   q = q
     .order("created_at", { ascending: false })
+    .order("source_row", { ascending: true, nullsFirst: false })
     .order("id", { ascending: true })
     .range(start, end);
 
