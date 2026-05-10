@@ -17,6 +17,7 @@ import MobileFilters from "./MobileFilters";
 import QuestionCard from "./QuestionCard";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
+import CartPill from "./CartPill";
 import Hero from "./Hero";
 
 export const metadata: Metadata = {
@@ -188,6 +189,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           </div>
         </div>
       </main>
+      <CartPill filters={filters} />
       <Footer />
     </>
   );

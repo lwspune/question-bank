@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, ChevronDown, ImageIcon, Pencil } from "lucide-react";
+import { Check, ChevronDown, ImageIcon, Pencil, Plus } from "lucide-react";
+import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
@@ -12,6 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { QuestionRow } from "@/lib/questions/query";
+import { useCart } from "@/lib/cart/CartProvider";
 
 const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
   EASY: "Easy",
@@ -32,13 +34,34 @@ export default function QuestionCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const cart = useCart();
+  const inCart = cart.has(question.id);
 
   const breadcrumb = `${question.subject.name} → ${question.chapter.name}${
     question.subtopic ? ` → ${question.subtopic.name}` : ""
   }`;
 
+  function onToggleCart(e: React.MouseEvent) {
+    e.stopPropagation();
+    if (inCart) {
+      cart.remove(question.id);
+      return;
+    }
+    if (cart.isFull) {
+      toast.error(`Paper is full (${cart.limit} questions max).`);
+      return;
+    }
+    const ok = cart.add(question.id);
+    if (ok) toast.success("Added to paper");
+  }
+
   return (
-    <div className="overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow hover:shadow">
+    <div
+      className={cn(
+        "overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow hover:shadow",
+        inCart && "border-primary/50 ring-1 ring-primary/30"
+      )}
+    >
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
@@ -72,6 +95,7 @@ export default function QuestionCard({
             <KatexRenderer text={question.text} />
           </div>
         </div>
+        <CartToggle inCart={inCart} disabled={cart.isFull && !inCart} onClick={onToggleCart} />
         <ChevronDown
           className={cn(
             "mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
@@ -173,6 +197,61 @@ export default function QuestionCard({
         </div>
       </div>
     </div>
+  );
+}
+
+function CartToggle({
+  inCart,
+  disabled,
+  onClick,
+}: {
+  inCart: boolean;
+  disabled: boolean;
+  onClick: (e: React.MouseEvent) => void;
+}) {
+  // Native button inside a parent <button> would be a hydration error;
+  // render as a span with role=button + click handler that stops propagation.
+  return (
+    <span
+      role="button"
+      tabIndex={0}
+      aria-pressed={inCart}
+      aria-disabled={disabled}
+      title={
+        inCart
+          ? "Remove from paper"
+          : disabled
+          ? "Paper is full"
+          : "Add to paper"
+      }
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          if (!disabled) onClick(e as unknown as React.MouseEvent);
+        }
+      }}
+      className={cn(
+        "mt-0.5 inline-flex h-7 shrink-0 select-none items-center gap-1 rounded-md border px-2 text-xs font-medium transition-colors",
+        inCart
+          ? "border-primary/40 bg-primary/10 text-primary hover:bg-primary/15"
+          : disabled
+          ? "cursor-not-allowed border-input bg-background text-muted-foreground/50"
+          : "border-input bg-background text-foreground hover:bg-accent"
+      )}
+    >
+      {inCart ? (
+        <>
+          <Check className="h-3.5 w-3.5" aria-hidden />
+          <span className="hidden sm:inline">Added</span>
+        </>
+      ) : (
+        <>
+          <Plus className="h-3.5 w-3.5" aria-hidden />
+          <span className="hidden sm:inline">Add</span>
+        </>
+      )}
+    </span>
   );
 }
 

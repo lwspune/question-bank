@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
+import { CartProvider } from "@/lib/cart/CartProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -78,14 +79,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
-        {children}
-        <Toaster
-          position="bottom-right"
-          richColors
-          closeButton
-          toastOptions={{ duration: 3500 }}
-        />
-        <Analytics />
+        <CartProvider>
+          {children}
+          <Toaster
+            position="bottom-right"
+            richColors
+            closeButton
+            toastOptions={{ duration: 3500 }}
+          />
+          <Analytics />
+        </CartProvider>
       </body>
     </html>
   );
