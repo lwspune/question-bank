@@ -6,11 +6,14 @@ export type Filters = {
   chapterIds: string[];
   subtopicIds: string[];
   difficulties: Difficulty[];
+  pyqYears: number[];
   q: string;
   page: number;
 };
 
 const ALL_DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
+const MIN_YEAR = 1900;
+const MAX_YEAR = 2100;
 
 export const EMPTY_FILTERS: Filters = {
   examId: null,
@@ -18,6 +21,7 @@ export const EMPTY_FILTERS: Filters = {
   chapterIds: [],
   subtopicIds: [],
   difficulties: [],
+  pyqYears: [],
   q: "",
   page: 1,
 };
@@ -30,10 +34,24 @@ export function parseFilters(params: URLSearchParams): Filters {
   const difficulties = csv(params.get("difficulty")).filter(
     (d): d is Difficulty => ALL_DIFFICULTIES.includes(d as Difficulty)
   );
+  const pyqYears = csv(params.get("pyqYears"))
+    .map((s) => parseInt(s, 10))
+    .filter(
+      (n) => Number.isInteger(n) && n >= MIN_YEAR && n <= MAX_YEAR
+    );
   const q = params.get("q") ?? "";
   const pageRaw = parseInt(params.get("page") ?? "1", 10);
   const page = Number.isNaN(pageRaw) || pageRaw < 1 ? 1 : pageRaw;
-  return { examId, subjectId, chapterIds, subtopicIds, difficulties, q, page };
+  return {
+    examId,
+    subjectId,
+    chapterIds,
+    subtopicIds,
+    difficulties,
+    pyqYears,
+    q,
+    page,
+  };
 }
 
 export function buildSearchParams(filters: Filters): URLSearchParams {
@@ -46,6 +64,8 @@ export function buildSearchParams(filters: Filters): URLSearchParams {
     sp.set("subtopicIds", filters.subtopicIds.join(","));
   if (filters.difficulties.length > 0)
     sp.set("difficulty", filters.difficulties.join(","));
+  if (filters.pyqYears.length > 0)
+    sp.set("pyqYears", filters.pyqYears.join(","));
   if (filters.q) sp.set("q", filters.q);
   if (filters.page > 1) sp.set("page", String(filters.page));
   return sp;

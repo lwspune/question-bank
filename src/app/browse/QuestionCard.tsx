@@ -42,7 +42,7 @@ export default function QuestionCard({
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
-        className="flex w-full items-start gap-3 rounded-lg p-4 text-left transition-colors hover:bg-accent/40"
+        className="flex w-full items-start gap-2 rounded-lg p-3 text-left transition-colors hover:bg-accent/40 sm:gap-3 sm:p-4"
         aria-expanded={expanded}
       >
         <span className="mt-0.5 inline-flex h-7 w-9 shrink-0 items-center justify-center rounded-full bg-muted px-2 font-mono text-xs text-muted-foreground">

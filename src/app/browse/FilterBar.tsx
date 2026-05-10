@@ -28,6 +28,7 @@ type Props = {
   subjects: Option[];
   chapters: Option[];
   subtopics: Option[];
+  pyqYears: number[];
   onApply?: () => void;
 };
 
@@ -40,6 +41,7 @@ export default function FilterBar({
   subjects,
   chapters,
   subtopics,
+  pyqYears,
   onApply,
 }: Props) {
   const router = useRouter();
@@ -89,6 +91,7 @@ export default function FilterBar({
     chapterIds: [],
     subtopicIds: [],
     difficulties: [],
+    pyqYears: [],
     q: "",
     page: 1,
   };
@@ -99,6 +102,7 @@ export default function FilterBar({
     filters.chapterIds.length > 0 ||
     filters.subtopicIds.length > 0 ||
     filters.difficulties.length > 0 ||
+    filters.pyqYears.length > 0 ||
     !!filters.q;
 
   return (
@@ -192,6 +196,35 @@ export default function FilterBar({
             : undefined
         }
       />
+
+      {pyqYears.length > 0 && (
+        <div className="space-y-1.5">
+          <Label>PYQ year</Label>
+          <div className="flex flex-wrap gap-1.5">
+            {pyqYears.map((year) => {
+              const on = filters.pyqYears.includes(year);
+              return (
+                <button
+                  key={year}
+                  type="button"
+                  onClick={() =>
+                    update({ pyqYears: toggleInArray(filters.pyqYears, year) })
+                  }
+                  className={cn(
+                    "rounded-full border px-2.5 py-1 font-mono text-xs font-medium tabular-nums transition-colors",
+                    on
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-input bg-background text-muted-foreground hover:text-foreground"
+                  )}
+                  aria-pressed={on}
+                >
+                  {year}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="space-y-1.5">
         <Label>Difficulty</Label>

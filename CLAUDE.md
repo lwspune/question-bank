@@ -28,11 +28,14 @@ RLS helpers live in the **`private` schema** (not exposed by PostgREST): `privat
 ```
 src/
 ├── app/
-│   ├── layout.tsx                         next/font (Inter + Source Serif 4), sonner Toaster, no-FOUC theme bootstrap
+│   ├── layout.tsx                         next/font (Inter + Source Serif 4), sonner Toaster, Vercel Analytics, no-FOUC theme bootstrap, full SEO Metadata + Twitter card
+│   ├── opengraph-image.tsx                edge-runtime ImageResponse — dynamic 1200x630 OG image with the headline + LWS Pune mark
+│   ├── robots.ts                          MetadataRoute.Robots — allow public routes, disallow /dashboard /upload /questions /api
+│   ├── sitemap.ts                         MetadataRoute.Sitemap — lists /browse + /login
 │   ├── login/page.tsx                     email + password sign-in (client) — split-screen layout
 │   ├── dashboard/                         page.tsx + loading.tsx — quick actions, stat cards, by-exam bars, recent uploads (admin)
 │   ├── upload/                            admin-only: Stepper → Dropzone (file pick) → preview summary bar → animated success
-│   ├── browse/                            page.tsx + loading.tsx + FilterBar + MobileFilters (Sheet) + QuestionCard + Pagination + DownloadDialog (real modal)
+│   ├── browse/                            page.tsx + loading.tsx + Hero + FilterBar (incl. pyqYears chips) + MobileFilters (Sheet) + QuestionCard + Pagination + DownloadDialog (real modal)
 │   ├── questions/[id]/edit/               admin-only edit page: two-column, sticky save bar, Edit/Preview tab, dropzone-style image slots
 │   ├── api/auth/callback/                 Supabase OAuth code exchange
 │   ├── api/upload/{preview,commit}/       two-stage admin upload
@@ -54,12 +57,13 @@ src/
 │   └── export/{ommlBuilder,docxBuilder}.ts                LaTeX → OMML, .docx assembly
 ├── components/
 │   ├── AppHeader.tsx + UserMenu.tsx       sticky 56px header (logo + org + avatar dropdown with dark-mode toggle + sign-out)
+│   ├── Footer.tsx                         site-wide footer (LWS Pune attribution, Report-a-question mailto, GitHub link)
 │   ├── math/{parseLatex,KatexRenderer}.tsx   shared LaTeX segmenter + KaTeX wrapper
 │   └── ui/{button,input,label,card,badge,select,dialog,sheet,skeleton,stepper,dropzone}.tsx   shadcn primitives
 └── middleware.ts                          Supabase session refresh + /dashboard guard
 
 supabase/
-├── migrations/0001..0011_*.sql            apply in order via Supabase MCP (0009 = visibility enum + public-read policies; 0010 = sync metadata columns: pyq_year, marks, neg_marks, attempt_stats, source_mock_id, source_app; 0011 = rate_limits table + atomic increment function)
+├── migrations/0001..0012_*.sql            apply in order via Supabase MCP (0009 = visibility enum + public-read policies; 0010 = sync metadata columns: pyq_year, marks, neg_marks, attempt_stats, source_mock_id, source_app; 0011 = rate_limits table + atomic increment function; 0012 = partial index on (visibility, exam_id, subject_id, created_at desc) WHERE visibility='PUBLIC' for the public hot path)
 └── seed/
     ├── taxonomy.json                      committed snapshot from MHT_CET_2025_PCM.xlsx
     └── seed-first-org.sql                 manual onboarding for first admin
@@ -68,7 +72,7 @@ scripts/
 ├── extract-taxonomy.ts                    one-shot: regenerate taxonomy.json from a reference Excel
 └── seed.ts                                idempotent taxonomy seed (service-role)
 
-tests/                                     28 .test.ts files, 180 tests
+tests/                                     28 .test.ts files, 184 tests
 ├── fixtures/{upload,tinyImage}.ts         in-memory .xlsx fixture builder; 67-byte 1x1 PNG buffer
 ├── *.test.ts                              pure unit + DB integration (DB tests skip if env missing)
 └── setup.ts                               loads .env.local for tests
@@ -126,6 +130,7 @@ Why behind architectural pivots — saves future-you from "why didn't we just…
 - **2026-05-09 — Login uses email + password (`signInWithPassword`), magic-link removed for now.** Supabase's default-SMTP cap of 2 emails/hour project-wide blocked the magic-link flow during development. Rather than configure custom SMTP just to demo, admin passwords are set directly in `auth.users` via `UPDATE ... SET encrypted_password = crypt('…', gen_salt('bf'))` (pgcrypto, bcrypt). No sign-up flow, no password-reset flow — both deferred until custom SMTP (Resend) is wired. When teachers come online, add a magic-link toggle alongside password sign-in rather than forcing them through admin-set passwords.
 - **2026-05-09 — Public-product pivot (Phase A): visibility enum + drop auth wall.** Question Bank repositioned from "private coaching tool" to "public PYQ paper builder, fed by sync from MHT_CET_AI." `0009_visibility.sql` adds a `visibility (PUBLIC | PRIVATE)` enum on `questions` (default PRIVATE; LWS Pune's 150 backfilled to PUBLIC). New permissive RLS policies grant anon + authenticated read access to PUBLIC rows; existing org-scoped policies remain for PRIVATE. `queryQuestions` now accepts `orgId: string | null` — null means "RLS scopes." Browse page + export endpoint are unauthenticated; AppHeader shows "Sign in" for anon; middleware redirects anon /dashboard → /browse instead of /login. Multi-tenancy stays for the future "private branded bank for paying coaching orgs" tier (deferred). Remaining phases: B (sync receiver from MHT_CET_AI), C (optional user accounts behind Resend SMTP), D (anti-abuse rate limit on /api/export).
 - **2026-05-09 — Sync receiver (Phase B): `POST /api/sync/mock`.** A finalized mock in MHT_CET_AI (or any sibling publisher) POSTs its questions here; we dedup via `content_hash`, auto-create chapters/subtopics, and either INSERT a new question (visibility=PUBLIC) or MERGE attempt_stats into an existing row. Auth via `Authorization: Bearer <SYNC_SHARED_SECRET>`. `0010_sync_metadata.sql` adds five nullable columns on `questions`: `pyq_year`, `marks`, `neg_marks`, `attempt_stats jsonb`, `source_mock_id`, `source_app`. **Trade-offs:** (1) `source_mock_id` is last-write-wins, not a join table — loses cross-mock provenance; if needed later, promote to a `question_sources` table. (2) Subject names must match the canonical taxonomy exactly (e.g. "Maths" not "Mathematics") — easier contract; alias map deferred. (3) Synced rows always land as PUBLIC in the LWS Pune org with the org's first ADMIN as `created_by`; admins can flip to PRIVATE via the edit page if needed. (4) On near-simultaneous duplicate POSTs, the orchestrator catches `23505` unique-violation and re-routes through MERGE — no race window. The MHT_CET_AI publisher button is a separate cross-project change (not in this commit).
+- **2026-05-09 — Public-launch polish (Phase E).** Five small things that together turn `/browse` from "looks half-built" into "feels like a real product." (1) **Hero + Footer:** new `Hero` on the browse landing (only when no filters applied) — exam-agnostic copy ("Build a question paper in 60 seconds") with a stat row showing what's available now (MHT-CET) vs coming soon (NDA, IPMAT, CUET, NEET, JEE Main); new `Footer` site-wide with LWS Pune attribution + Report-a-question mailto + GitHub link. (2) **SEO foundation:** full root `Metadata` (title template, description, keywords, OG, Twitter card), per-page metadata for `/browse`, dynamic OG image via `app/opengraph-image.tsx` (edge-runtime ImageResponse), `app/robots.ts` allowing public routes only, `app/sitemap.ts`. (3) **PYQ year filter:** new `pyqYears: number[]` field on `Filters`, parsed/serialized through URL, queried via `.in("pyq_year", ...)`, exposed as a chip toggle in `FilterBar` (only visible when at least one question in the public bank has a non-null `pyq_year`). (4) **Mobile pass:** QuestionCard padding tightens at `< sm`, MobileFilters Sheet now full-width on small viewports, AppHeader org name hidden on `< md` instead of `< sm`. (5) **Perf + analytics:** `0012_public_filter_index.sql` adds a partial index on `(visibility, exam_id, subject_id, created_at desc) WHERE visibility = 'PUBLIC'` for the public hot path; `@vercel/analytics` mounted in root layout. **Trade-offs:** OG image is dynamic ImageResponse not a designed PNG — looks fine but less polished than a real graphic; pyqYears filter UI is hidden when the bank has no PYQ data, which keeps the panel clean but means the feature is silently invisible until data arrives.
 - **2026-05-09 — Rate limiting (Phase D): per-IP/per-user cap on `/api/export`.** Public + zero rate limit = scraping. `0011_rate_limits.sql` adds a `rate_limits(bucket, window_start, count)` table + `public.rate_limit_increment(bucket, window_start)` SECURITY DEFINER function (service-role only — `revoke from anon, authenticated` is required because Supabase auto-grants execute on `public.*`). The route handler does `checkAndIncrement` BEFORE payload validation so junk requests still count toward the bucket. Limits: anon = 10 exports/hour/IP, authed = 100/hour/user. Bucket key is `export:anon:<ip>` or `export:user:<user_id>`. Garbage collection happens inline (each call deletes rows older than 2h for the same bucket). 429 response includes `Retry-After` header + JSON body with `retryAfter`/`limit`/`used`. `getSessionMember()` is wrapped in try/catch in the route — outside Next request scope (i.e. in tests calling POST directly) `next/headers` `cookies()` throws; harmless fallback to anon for the rate-limit bucket lets tests work without cookie mocking.
 
 ## Adding a new RLS-protected table

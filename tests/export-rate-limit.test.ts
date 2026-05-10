@@ -34,6 +34,7 @@ const BAD_FILTER_PAYLOAD = {
     chapterIds: [],
     subtopicIds: [],
     difficulties: [],
+    pyqYears: [],
     q: "",
     page: 1,
   },

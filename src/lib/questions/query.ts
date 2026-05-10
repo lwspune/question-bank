@@ -62,6 +62,7 @@ export async function queryQuestions(
     q = q.in("subtopic_id", filters.subtopicIds);
   if (filters.difficulties.length > 0)
     q = q.in("difficulty", filters.difficulties);
+  if (filters.pyqYears.length > 0) q = q.in("pyq_year", filters.pyqYears);
   if (filters.q.trim()) {
     q = q.textSearch("search_vector", filters.q.trim(), {
       type: "websearch",

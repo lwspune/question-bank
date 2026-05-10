@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { Inbox } from "lucide-react";
+import type { Metadata } from "next";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
   parseFilters,
@@ -16,6 +17,14 @@ import MobileFilters from "./MobileFilters";
 import QuestionCard from "./QuestionCard";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
+import Hero from "./Hero";
+
+export const metadata: Metadata = {
+  title: "Browse questions",
+  description:
+    "Filter past-year questions by exam, chapter, difficulty, and year. Download Question Paper + Answer Key as Word. Free, no sign-up.",
+  alternates: { canonical: "/browse" },
+};
 
 type PageProps = {
   searchParams: Record<string, string | string[] | undefined>;
@@ -44,6 +53,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     { data: subjects },
     { data: chapters },
     { data: subtopics },
+    { data: yearRows },
     questionsResult,
   ] = await Promise.all([
     supabase.from("exams").select("id, name").order("name"),
@@ -72,6 +82,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       : Promise.resolve({
           data: [] as { id: string; name: string; chapter_id: string }[],
         }),
+    supabase
+      .from("questions")
+      .select("pyq_year")
+      .not("pyq_year", "is", null)
+      .order("pyq_year", { ascending: false }),
     queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
   ]);
 
@@ -84,6 +99,9 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
   const chapterOpts = (chapters ?? []).map((c) => ({ id: c.id, name: c.name }));
   const subtopicOpts = (subtopics ?? []).map((s) => ({ id: s.id, name: s.name }));
+  const pyqYearOpts = Array.from(
+    new Set((yearRows ?? []).map((r) => r.pyq_year as number))
+  ).sort((a, b) => b - a);
 
   const activeCount = countActiveFilters(filters);
   const filtered = activeCount > 0;
@@ -91,16 +109,18 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-7xl px-6 py-8">
-        <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+        {!filtered && <Hero totalPublicQuestions={questionsResult.totalCount} />}
+
+        <header className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Browse questions
-            </h1>
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              {filtered ? "Filtered questions" : "All questions"}
+            </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              {questionsResult.totalCount} question
+              {questionsResult.totalCount.toLocaleString("en-IN")} question
               {questionsResult.totalCount === 1 ? "" : "s"}
-              {filtered ? " match" : " in your bank"}
+              {filtered ? " match" : " available"}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -111,6 +131,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 subjects={subjectOpts}
                 chapters={chapterOpts}
                 subtopics={subtopicOpts}
+                pyqYears={pyqYearOpts}
                 activeCount={activeCount}
               />
             </div>
@@ -130,6 +151,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 subjects={subjectOpts}
                 chapters={chapterOpts}
                 subtopics={subtopicOpts}
+                pyqYears={pyqYearOpts}
               />
             </div>
           </aside>
@@ -166,6 +188,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
@@ -201,6 +224,7 @@ function countActiveFilters(f: Filters): number {
   if (f.chapterIds.length > 0) n++;
   if (f.subtopicIds.length > 0) n++;
   if (f.difficulties.length > 0) n++;
+  if (f.pyqYears.length > 0) n++;
   if (f.q) n++;
   return n;
 }

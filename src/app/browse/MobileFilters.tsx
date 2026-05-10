@@ -21,6 +21,7 @@ type Props = {
   subjects: Option[];
   chapters: Option[];
   subtopics: Option[];
+  pyqYears: number[];
   activeCount: number;
 };
 
@@ -30,6 +31,7 @@ export default function MobileFilters({
   subjects,
   chapters,
   subtopics,
+  pyqYears,
   activeCount,
 }: Props) {
   const [open, setOpen] = useState(false);
@@ -60,6 +62,7 @@ export default function MobileFilters({
           subjects={subjects}
           chapters={chapters}
           subtopics={subtopics}
+          pyqYears={pyqYears}
           onApply={() => setOpen(false)}
         />
       </SheetContent>

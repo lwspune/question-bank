@@ -21,7 +21,7 @@ export default async function AppHeader() {
 
         {member ? (
           <div className="flex items-center gap-3">
-            <span className="hidden text-xs text-muted-foreground sm:inline">
+            <span className="hidden text-xs text-muted-foreground md:inline">
               {member.orgName}
             </span>
             <UserMenu email={member.user.email} role={member.role} />

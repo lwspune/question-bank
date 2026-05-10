@@ -18,6 +18,7 @@ const EMPTY_FILTERS: Filters = {
   chapterIds: [],
   subtopicIds: [],
   difficulties: [],
+  pyqYears: [],
   q: "",
   page: 1,
 };
