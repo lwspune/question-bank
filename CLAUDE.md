@@ -38,21 +38,24 @@ src/
 │   ├── dashboard/                         page.tsx + loading.tsx — quick actions, stat cards, by-exam bars, recent uploads (admin)
 │   ├── upload/                            admin-only: Stepper → Dropzone (file pick) → preview summary bar → animated success
 │   ├── browse/                            page.tsx + loading.tsx + Hero + FilterBar (incl. pyqYears chips) + MobileFilters (Sheet) + QuestionCard + Pagination + DownloadDialog (real modal)
-│   ├── questions/[id]/edit/               admin-only edit page: two-column, sticky save bar, Edit/Preview tab, dropzone-style image slots
+│   ├── questions/[id]/edit/               admin-only edit page: two-column, sticky save bar, Edit/Preview tab, dropzone-style image slots, Delete button in save bar
+│   ├── uploads/[id]/                      admin-only upload-detail: page.tsx (server) lists questions linked via upload_job_id, with header card; UploadHeaderActions (whole-upload delete dialog), PyqMetadataControl (3-field bulk-set: Year select + Month + Comment with confirm-on-overwrite dialog), QuestionListItem (per-row Edit + Delete)
 │   ├── api/auth/callback/                 Supabase OAuth code exchange
-│   ├── api/upload/{preview,commit}/       two-stage admin upload
-│   ├── api/questions/[id]/                PUT (JSON): edit text+options+taxonomy+image paths in one request (admin only)
+│   ├── api/upload/{preview,commit}/       two-stage admin upload (preview accepts pyqYear/pyqMonth/pyqNote on formData and stages them on upload_jobs.staged_rows; commit passes them to commitStaged)
+│   ├── api/questions/[id]/                PUT + DELETE (JSON, admin only): edit text+options+taxonomy+image paths; delete cascades options + cleans storage objects
+│   ├── api/uploads/[id]/                  DELETE + PATCH (JSON, admin only). DELETE removes all questions linked via upload_job_id + their storage objects + the upload_jobs row. PATCH bulk-updates pyq_year/pyq_month/pyq_note across the upload's questions; partial fields honoured, explicit null clears.
 │   ├── api/sync/mock/                     POST (JSON): receives a finalized mock from a sibling app (e.g. MHT_CET_AI). Bearer-token auth via SYNC_SHARED_SECRET. Idempotent + content-hash dedup + attempt-stats merging.
 │   └── api/export/                        POST → ZIP of Question Paper + Answer Key (server-side fetches image bytes via service-role for embed)
 ├── lib/
 │   ├── supabase/{client,server,middleware,admin}.ts    four supabase-js variants
 │   ├── auth.ts                            getSessionUser, getSessionMember, requireAdmin, HttpError
 │   ├── seed.ts                            taxonomy upsert (used by scripts/seed.ts)
-│   ├── questions/{filters,query,edit,applyEdit,dirty}.ts   browse filters ↔ URL · Supabase query builder · zod edit schema + hash · DB-side edit application · pure-function form-state diff for edit page
+│   ├── questions/{filters,query,edit,applyEdit,deleteQuestion,dirty}.ts   browse filters ↔ URL · Supabase query builder · zod edit schema + hash · DB-side edit application · admin delete (cascade + storage cleanup, discriminated-union return) · pure-function form-state diff for edit page
 │   ├── sync/{payload,mergeAttemptStats,applyMockSync}.ts  zod payload validator · pure stats merge · orchestrator that resolves taxonomy + dedups by content_hash + merges attempt_stats for the sync receiver
 │   ├── rate-limit.ts                      checkAndIncrement(client, bucket, {limit, windowMs}) backed by public.rate_limits + public.rate_limit_increment SQL function (service-role only)
-│   ├── dashboard/{stats,activity}.ts      getDashboardStats (totalQuestions/exams/chapters/daysSinceLastUpload/byExam) · getRecentUploads (cap 5)
-│   ├── upload/{parser,validate,hash,taxonomy,commit}.ts   upload pipeline (pure → DB)
+│   ├── dashboard/{stats,activity}.ts      getDashboardStats (totalQuestions/exams/chapters/daysSinceLastUpload/byExam) · getRecentUploads (cap 5; rows are <Link>'d to /uploads/[id])
+│   ├── upload/{parser,validate,hash,taxonomy,commit}.ts   upload pipeline (pure → DB). parser reads "Q" cell as optional questionNumber; commit stamps upload_job_id + pyq_year/pyq_month/pyq_note + question_number onto every inserted row.
+│   ├── upload/{uploadDetail,deleteUploadJob,setUploadPyqMetadata}.ts   /uploads/[id] read aggregate (per-question rows + pyq aggregation: value | null | "mixed") · whole-upload delete (cascades + storage cleanup) · partial PATCH of pyq fields (explicit null clears).
 │   ├── storage/
 │   │   ├── images.ts                      uploadImage / deleteImage / downloadImage / validateImageUpload (server, uses node:crypto)
 │   │   └── imageUrl.ts                    pure-function publicImageUrl — safe to import from client components
@@ -65,7 +68,7 @@ src/
 └── middleware.ts                          Supabase session refresh + /dashboard guard
 
 supabase/
-├── migrations/0001..0012_*.sql            apply in order via Supabase MCP (0009 = visibility enum + public-read policies; 0010 = sync metadata columns: pyq_year, marks, neg_marks, attempt_stats, source_mock_id, source_app; 0011 = rate_limits table + atomic increment function; 0012 = partial index on (visibility, exam_id, subject_id, created_at desc) WHERE visibility='PUBLIC' for the public hot path)
+├── migrations/0001..0016_*.sql            apply in order via Supabase MCP. 0009 = visibility enum + public-read policies; 0010 = sync metadata columns (pyq_year, marks, neg_marks, attempt_stats, source_mock_id, source_app); 0011 = rate_limits table + atomic increment function; 0012 = partial index on (visibility, exam_id, subject_id, created_at desc) WHERE visibility='PUBLIC' (public hot path); 0013 = questions.upload_job_id FK ON DELETE SET NULL + partial index; 0014 = data backfill of upload_job_id by (org_id, source_file) when ownership is unambiguous; 0015 = pyq_month + pyq_note text columns on questions; 0016 = question_number text column (original Q-number from Excel "Q" cell).
 └── seed/
     ├── taxonomy.json                      committed snapshot from MHT_CET_2025_PCM.xlsx
     └── seed-first-org.sql                 manual onboarding for first admin
@@ -74,11 +77,13 @@ scripts/
 ├── extract-taxonomy.ts                    one-shot: regenerate taxonomy.json from a reference Excel
 └── seed.ts                                idempotent taxonomy seed (service-role)
 
-tests/                                     28 .test.ts files, 184 tests
+tests/                                     36 .test.ts files, ~215 tests
 ├── fixtures/{upload,tinyImage}.ts         in-memory .xlsx fixture builder; 67-byte 1x1 PNG buffer
 ├── *.test.ts                              pure unit + DB integration (DB tests skip if env missing)
 └── setup.ts                               loads .env.local for tests
 ```
+
+> **Test-suite flake (known):** `tests/browse-query.test.ts` asserts LWS Pune holds exactly 150 questions, but vitest runs files in parallel and `tests/sync-mock-flow.test.ts` inserts into LWS Pune mid-flight (cleaned up via `afterAll`). Result: that one assertion intermittently sees 154 instead of 150. Confirmed pre-existing on `main` predating Phase A. Re-run usually passes; if it consistently fails, run that file in isolation (`npx vitest run tests/browse-query.test.ts`).
 
 ## Commands
 
@@ -143,6 +148,9 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-05-09 — Public-launch polish (Phase E).** Five small things that together turn `/browse` from "looks half-built" into "feels like a real product." (1) **Hero + Footer:** new `Hero` on the browse landing (only when no filters applied) — exam-agnostic copy ("Build a question paper in 60 seconds") with a stat row showing what's available now (MHT-CET) vs coming soon (NDA, IPMAT, CUET, NEET, JEE Main); new `Footer` site-wide with LWS Pune attribution + Report-a-question mailto + GitHub link. (2) **SEO foundation:** full root `Metadata` (title template, description, keywords, OG, Twitter card), per-page metadata for `/browse`, dynamic OG image via `app/opengraph-image.tsx` (edge-runtime ImageResponse), `app/robots.ts` allowing public routes only, `app/sitemap.ts`. (3) **PYQ year filter:** new `pyqYears: number[]` field on `Filters`, parsed/serialized through URL, queried via `.in("pyq_year", ...)`, exposed as a chip toggle in `FilterBar` (only visible when at least one question in the public bank has a non-null `pyq_year`). (4) **Mobile pass:** QuestionCard padding tightens at `< sm`, MobileFilters Sheet now full-width on small viewports, AppHeader org name hidden on `< md` instead of `< sm`. (5) **Perf + analytics:** `0012_public_filter_index.sql` adds a partial index on `(visibility, exam_id, subject_id, created_at desc) WHERE visibility = 'PUBLIC'` for the public hot path; `@vercel/analytics` mounted in root layout. **Trade-offs:** OG image is dynamic ImageResponse not a designed PNG — looks fine but less polished than a real graphic; pyqYears filter UI is hidden when the bank has no PYQ data, which keeps the panel clean but means the feature is silently invisible until data arrives.
 - **2026-05-09 — Rate limiting (Phase D): per-IP/per-user cap on `/api/export`.** Public + zero rate limit = scraping. `0011_rate_limits.sql` adds a `rate_limits(bucket, window_start, count)` table + `public.rate_limit_increment(bucket, window_start)` SECURITY DEFINER function (service-role only — `revoke from anon, authenticated` is required because Supabase auto-grants execute on `public.*`). The route handler does `checkAndIncrement` BEFORE payload validation so junk requests still count toward the bucket. Limits: anon = 10 exports/hour/IP, authed = 100/hour/user. Bucket key is `export:anon:<ip>` or `export:user:<user_id>`. Garbage collection happens inline (each call deletes rows older than 2h for the same bucket). 429 response includes `Retry-After` header + JSON body with `retryAfter`/`limit`/`used`. `getSessionMember()` is wrapped in try/catch in the route — outside Next request scope (i.e. in tests calling POST directly) `next/headers` `cookies()` throws; harmless fallback to anon for the rate-limit bucket lets tests work without cookie mocking.
 - **2026-05-09 — Production polish (Phase H).** Hygiene pass before walking away from the codebase. (1) `.env.example` updated with `SYNC_SHARED_SECRET` + generation hint. (2) README rewritten as a real dev-onboarding doc (was stuck at the M1/M2 era, still mentioned magic-link). (3) Long-deferred `tsc --noEmit` errors in `docx-export` + `docx-layout` test fixtures fixed (added `imageUrl: null` to QuestionRow + OptionRow). (4) Branded `not-found.tsx` (Compass icon, "Browse questions" CTA) + `error.tsx` (global error boundary, AlertTriangle, "Try again" + reset()). (5) New CLAUDE.md "Operations" section covering monitoring (Vercel + Supabase logs, advisor lints), upgrade-tier triggers, rate-limit visibility SQL, secret rotation, admin password reset, and bulk visibility flip. **Deliberately NOT done:** Sentry (Vercel built-in covers it), health-check endpoint (premature without uptime monitor), About / FAQ pages (content, not infra). Phases C (user accounts), F (Resend SMTP), and G (accounts UI) were marked unnecessary per user — pivot to "complete this project, defer cross-integration."
+- **2026-05-10 — Upload-detail page + per-question / whole-upload delete.** The dashboard's "Recent uploads" list became actionable. `0013_question_upload_job.sql` adds `questions.upload_job_id uuid references upload_jobs(id) on delete set null` (+ partial index) so questions can be claimed by their upload row; `commitStaged` stamps it on every insert. `0014_backfill_question_upload_job.sql` claims pre-migration questions by `(org_id, source_file)` *only* where exactly one upload_jobs row has `inserted > 0` for that combination — ambiguous ownership stays NULL. New `/uploads/[id]` page with a per-question Edit/Delete and a whole-upload Delete behind a single confirm dialog showing the question count. New `DELETE /api/questions/[id]` (existing route gained the verb) and `DELETE /api/uploads/[id]`. Both go through `applyEdit`-style discriminated-union helpers (`deleteQuestion`, `deleteUploadJob`) and clean up storage objects via the user JWT (admin storage policies in 0008 cover own-org folder). **Why `ON DELETE SET NULL` rather than CASCADE:** an accidental `delete from upload_jobs` shouldn't blow away questions; explicit whole-upload deletes go through the route handler, which orders the destruction (questions → storage → job row).
+- **2026-05-10 — PYQ details: year + month + comment, set per-batch.** `0010` already had `pyq_year int`. `0015_pyq_metadata.sql` adds `pyq_month text` + `pyq_note text` (both nullable). The user wanted three fields, not just year ("Year, Month (Text), and Comment (Shift |) etc."), to capture the shift/slot context that distinguishes one MHT-CET 2025 paper from another. Two surfaces: (A) Phase-A picker on the upload form between Exam and Dropzone — value travels via formData → `upload_jobs.staged_rows.{pyqYear,pyqMonth,pyqNote}` → `commitStaged` and is stamped onto every inserted row; (C) Phase-C bulk-set on `/uploads/[id]` via `PATCH /api/uploads/[id]` and `setUploadPyqMetadata` — partial fields honoured, explicit `null` clears, no-field call is a no-op. `getUploadDetail` aggregates each field across the linked questions as `value | null | "mixed"` so the header can show a single value or a "(mixed)" badge. Bulk-set has a confirm-on-overwrite dialog that fires when the new value would overwrite a non-null non-mixed existing value (per user's choice).
+- **2026-05-10 — Capture original Q-number from the Excel "Q" column.** `0016_question_number.sql` adds `questions.question_number text` (nullable). Parser reads the "Q" cell as optional `questionNumber` — numeric Excel cells coerce to string, text values like `1(a)` / `2A` round-trip, missing or empty stays NULL. **Why text, not int:** PYQ papers occasionally have sub-parts (`1(a)`, `2(b)`); int would force a lossy strip. **Why no backfill for the existing 150:** PYQ papers often section-break their numbering (e.g. Q1–Q50 PCM, Q1–Q50 PCB), so `source_row - 1` is not a reliable Q-number — pre-migration questions stay NULL and `/uploads/[id]` falls back to the existing "Row N" label. UI shows a monospace `Q1` chip when the column is set.
 
 ## Adding a new RLS-protected table
 
@@ -212,4 +220,22 @@ The default for new rows is PRIVATE. If you bulk-uploaded a batch you want publi
 update questions
 set visibility = 'PUBLIC'
 where source_file = 'NDA_2024_paper.xlsx';
+```
+
+### Setting PYQ year/month/comment for a whole upload
+
+Preferred path: open `/uploads/<jobId>` as the org admin, click **Edit** on the PYQ row, fill any of Year / Month / Comment, save. The PATCH covers all questions linked via `upload_job_id`. For a one-shot SQL backfill (e.g. tagging a batch that was uploaded before Phase A landed):
+```sql
+update questions
+set pyq_year = 2025, pyq_month = 'May', pyq_note = 'Shift I'
+where source_file = 'MHT_CET_2025_PCM.xlsx';
+```
+Use SQL only when you can't reach the upload via the UI (ambiguous `upload_job_id`) — otherwise the UI is auditable.
+
+### Deleting a whole upload
+
+`/uploads/<jobId>` → **Delete upload** removes every question linked via `upload_job_id` (cascades options + question_images via FK), then deletes the storage objects, then deletes the `upload_jobs` row. Pre-0013 questions have `upload_job_id = NULL` and are unreachable via this UI — delete those by `source_file` from SQL if needed:
+```sql
+delete from questions
+where source_file = 'BAD_BATCH.xlsx' and upload_job_id is null;
 ```
