@@ -26,11 +26,13 @@ export default function QuestionCard({
   index,
   isAdmin,
   supabaseUrl,
+  hideContext = false,
 }: {
   question: QuestionRow;
   index: number;
   isAdmin: boolean;
   supabaseUrl: string;
+  hideContext?: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
@@ -113,7 +115,7 @@ export default function QuestionCard({
       >
         <div className="overflow-hidden">
           <div className="space-y-3 border-t bg-muted/20 px-4 pb-4 font-serif">
-            {question.context && (
+            {question.context && !hideContext && (
               <div className="pt-3 text-sm italic text-muted-foreground">
                 <KatexRenderer text={question.context} />
               </div>

@@ -16,6 +16,8 @@ type Existing = {
   org_id: string;
   exam_id: string;
   image_url: string | null;
+  set_id: string | null;
+  context: string | null;
   options: { id: string; label: string; image_url: string | null }[];
 };
 
@@ -28,7 +30,9 @@ export async function applyEdit(
 ): Promise<ApplyEditResult> {
   const { data: existing, error: loadErr } = await client
     .from("questions")
-    .select("id, org_id, exam_id, image_url, options(id, label, image_url)")
+    .select(
+      "id, org_id, exam_id, image_url, set_id, context, options(id, label, image_url)"
+    )
     .eq("id", questionId)
     .maybeSingle<Existing>();
 
@@ -73,6 +77,19 @@ export async function applyEdit(
       return { kind: "duplicate" };
     }
     return { kind: "error", message: qErr.message };
+  }
+
+  // Set fan-out: when the edited question is part of a set AND its context
+  // changed, mirror the new context to every sibling sharing the set_id.
+  // Other fields (text, options, taxonomy, images) stay row-local — only
+  // the passage propagates, matching how it was loaded at upload time.
+  if (existing.set_id && existing.context !== payload.context) {
+    const { error: fanErr } = await client
+      .from("questions")
+      .update({ context: payload.context })
+      .eq("set_id", existing.set_id)
+      .neq("id", questionId);
+    if (fanErr) return { kind: "error", message: fanErr.message };
   }
 
   // UPDATE each option row by id (looked up via label).

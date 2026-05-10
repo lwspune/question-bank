@@ -89,7 +89,13 @@ export async function queryQuestions(
 
   const start = (filters.page - 1) * pageSize;
   const end = start + pageSize - 1;
-  q = q.order("created_at", { ascending: false }).range(start, end);
+  // Bulk uploads insert rows with identical created_at timestamps; without
+  // a tie-breaker, pagination overlaps. id is monotonic enough as a
+  // secondary sort for stable page boundaries.
+  q = q
+    .order("created_at", { ascending: false })
+    .order("id", { ascending: true })
+    .range(start, end);
 
   const { data, error, count } = await q;
   if (error) throw new Error(`questions query: ${error.message}`);

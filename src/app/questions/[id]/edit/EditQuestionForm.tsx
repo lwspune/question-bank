@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, Globe, ImagePlus, Lock, Pencil, Trash2 } from "lucide-react";
+import { Eye, Globe, ImagePlus, Layers, Lock, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -51,6 +51,8 @@ type Props = {
   subjects: SubjectTree[];
   orgId: string;
   supabaseUrl: string;
+  setId: string | null;
+  setMemberCount: number;
 };
 
 const MAX_BYTES = 1024 * 1024;
@@ -63,9 +65,13 @@ export default function EditQuestionForm({
   subjects,
   orgId,
   supabaseUrl,
+  setId,
+  setMemberCount,
 }: Props) {
   const router = useRouter();
   const initial = toFormState(question);
+  const [inSet, setInSet] = useState(setId !== null);
+  const [leavingSet, setLeavingSet] = useState(false);
 
   const [text, setText] = useState(initial.text);
   const [context, setContext] = useState(initial.context);
@@ -253,6 +259,35 @@ export default function EditQuestionForm({
     }
   }
 
+  async function onLeaveSet() {
+    if (!inSet) return;
+    if (
+      !confirm(
+        "Detach this question from the set? Editing the Context here will no longer update the other questions in the set."
+      )
+    ) {
+      return;
+    }
+    setLeavingSet(true);
+    try {
+      const res = await fetch(`/api/questions/${question.id}/leave-set`, {
+        method: "POST",
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        toast.error(body.error ?? `Couldn't leave set (${res.status})`);
+        return;
+      }
+      setInSet(false);
+      toast.success("Detached from set");
+      router.refresh();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Couldn't leave set");
+    } finally {
+      setLeavingSet(false);
+    }
+  }
+
   return (
     <form onSubmit={onSave}>
       <div className="mb-6 flex items-center justify-between">
@@ -288,6 +323,30 @@ export default function EditQuestionForm({
                   rows={3}
                   disabled={busy}
                 />
+                {inSet && setMemberCount > 0 && (
+                  <div className="rounded-md border border-primary/30 bg-primary/[0.04] px-3 py-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                        <Layers className="h-3.5 w-3.5" aria-hidden />
+                        Set · {setMemberCount} question
+                        {setMemberCount === 1 ? "" : "s"}
+                      </span>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={onLeaveSet}
+                        disabled={busy || leavingSet}
+                      >
+                        {leavingSet ? "Detaching…" : "Remove from set"}
+                      </Button>
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Editing the Context below updates all {setMemberCount}{" "}
+                      question{setMemberCount === 1 ? "" : "s"} in this set.
+                    </p>
+                  </div>
+                )}
                 <Field
                   id="context"
                   label="Context (optional)"

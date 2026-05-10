@@ -30,6 +30,7 @@ type RawQuestion = {
   chapter_id: string;
   subtopic_id: string | null;
   visibility: "PUBLIC" | "PRIVATE";
+  set_id: string | null;
   options: RawOption[];
 };
 
@@ -53,7 +54,7 @@ export default async function EditQuestionPage({ params }: PageProps) {
     .select(
       `
       id, text, context, difficulty, solution, image_url,
-      org_id, exam_id, subject_id, chapter_id, subtopic_id, visibility,
+      org_id, exam_id, subject_id, chapter_id, subtopic_id, visibility, set_id,
       options(id, label, text, is_correct, image_url)
     `
     )
@@ -112,6 +113,17 @@ export default async function EditQuestionPage({ params }: PageProps) {
     }),
   };
 
+  // If this question is part of a set, count the siblings so the form can
+  // surface "editing context will update N questions" before the user types.
+  let setMemberCount = 0;
+  if (question.set_id) {
+    const { count } = await supabase
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .eq("set_id", question.set_id);
+    setMemberCount = count ?? 0;
+  }
+
   return (
     <>
       <AppHeader />
@@ -124,6 +136,8 @@ export default async function EditQuestionPage({ params }: PageProps) {
           subjects={tree}
           orgId={member.orgId}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+          setId={question.set_id}
+          setMemberCount={setMemberCount}
         />
       </main>
     </>

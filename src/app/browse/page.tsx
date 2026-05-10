@@ -14,7 +14,7 @@ import {
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
 import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
-import QuestionCard from "./QuestionCard";
+import QuestionList from "./QuestionList";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
 import CartPill from "./CartPill";
@@ -173,20 +173,12 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             {questionsResult.rows.length === 0 ? (
               <EmptyState filtered={filtered} />
             ) : (
-              <ul className="space-y-3">
-                {questionsResult.rows.map((q, i) => (
-                  <li key={q.id}>
-                    <QuestionCard
-                      question={q}
-                      index={
-                        (filters.page - 1) * DEFAULT_PAGE_SIZE + i + 1
-                      }
-                      isAdmin={member?.role === "ADMIN"}
-                      supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <QuestionList
+                questions={questionsResult.rows}
+                pageOffset={(filters.page - 1) * DEFAULT_PAGE_SIZE}
+                isAdmin={member?.role === "ADMIN"}
+                supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+              />
             )}
 
             {totalPages > 1 && (
