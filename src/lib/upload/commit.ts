@@ -51,14 +51,61 @@ export async function commitStaged(
   const taxonomy = makeTaxonomyResolver(client);
 
   // Resolve subject IDs upfront (no auto-create for subjects).
+  // Parallelise lookups across unique names to avoid N sequential round-trips
+  // — for a 150-row upload with 3 subjects, this is the difference between
+  // ~3 × latency and 1 × latency.
+  const uniqueSubjectNames = Array.from(new Set(rows.map((r) => r.subjectName)));
+  const subjectResults = await Promise.all(
+    uniqueSubjectNames.map((name) =>
+      taxonomy.findSubject(examId, name).then((id) => ({ name, id }))
+    )
+  );
   const subjectIdByName = new Map<string, string>();
-  for (const row of rows) {
-    if (subjectIdByName.has(row.subjectName)) continue;
-    const sid = await taxonomy.findSubject(examId, row.subjectName);
-    if (sid) {
-      subjectIdByName.set(row.subjectName, sid);
-    }
+  for (const { name, id } of subjectResults) {
+    if (id) subjectIdByName.set(name, id);
   }
+
+  // Pre-resolve unique chapters in parallel. Each unique key is resolved
+  // exactly once, so concurrent calls can't race on the find→insert path.
+  const chapterKeyOf = (subjectId: string, name: string) =>
+    `${subjectId}::${name}`;
+  const chapterKeys = new Set<string>();
+  for (const row of rows) {
+    const subjectId = subjectIdByName.get(row.subjectName);
+    if (subjectId) chapterKeys.add(chapterKeyOf(subjectId, row.chapterName));
+  }
+  await Promise.all(
+    Array.from(chapterKeys).map((k) => {
+      const sep = k.indexOf("::");
+      const subjectId = k.slice(0, sep);
+      const name = k.slice(sep + 2);
+      return taxonomy.resolveChapter(subjectId, name);
+    })
+  );
+
+  // Pre-resolve unique subtopics in parallel — chapters are now in cache,
+  // so resolveChapter inside the keying loop returns instantly.
+  const subtopicKeyOf = (chapterId: string, name: string) =>
+    `${chapterId}::${name}`;
+  const subtopicKeys = new Set<string>();
+  for (const row of rows) {
+    if (!row.subtopicName) continue;
+    const subjectId = subjectIdByName.get(row.subjectName);
+    if (!subjectId) continue;
+    const chapterId = await taxonomy.resolveChapter(
+      subjectId,
+      row.chapterName
+    );
+    subtopicKeys.add(subtopicKeyOf(chapterId, row.subtopicName));
+  }
+  await Promise.all(
+    Array.from(subtopicKeys).map((k) => {
+      const sep = k.indexOf("::");
+      const chapterId = k.slice(0, sep);
+      const name = k.slice(sep + 2);
+      return taxonomy.resolveSubtopic(chapterId, name);
+    })
+  );
 
   type QuestionInsert = {
     org_id: string;

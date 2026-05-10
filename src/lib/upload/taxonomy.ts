@@ -56,6 +56,24 @@ export function makeTaxonomyResolver(client: SupabaseClient): TaxonomyResolver {
         .select("id")
         .single();
       if (error || !created) {
+        // Race: another concurrent commit (parallel test, or two near-simultaneous
+        // user uploads sharing a new chapter name) inserted the same row first.
+        // Re-find and adopt their id rather than failing the whole batch.
+        if (
+          error?.code === "23505" ||
+          /duplicate key|unique constraint/i.test(error?.message ?? "")
+        ) {
+          const { data: refound } = await client
+            .from("chapters")
+            .select("id")
+            .eq("subject_id", subjectId)
+            .eq("name", name)
+            .single();
+          if (refound?.id) {
+            chapterCache.set(k, refound.id);
+            return refound.id;
+          }
+        }
         throw new Error(`failed to create chapter "${name}": ${error?.message}`);
       }
       chapterCache.set(k, created.id);
@@ -83,6 +101,22 @@ export function makeTaxonomyResolver(client: SupabaseClient): TaxonomyResolver {
         .select("id")
         .single();
       if (error || !created) {
+        // Same race protection as resolveChapter — adopt the winner's id.
+        if (
+          error?.code === "23505" ||
+          /duplicate key|unique constraint/i.test(error?.message ?? "")
+        ) {
+          const { data: refound } = await client
+            .from("subtopics")
+            .select("id")
+            .eq("chapter_id", chapterId)
+            .eq("name", name)
+            .single();
+          if (refound?.id) {
+            subtopicCache.set(k, refound.id);
+            return refound.id;
+          }
+        }
         throw new Error(`failed to create subtopic "${name}": ${error?.message}`);
       }
       subtopicCache.set(k, created.id);
