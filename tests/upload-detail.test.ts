@@ -175,6 +175,44 @@ describe.skipIf(!HAS_ENV)("getUploadDetail", () => {
     }
   });
 
+  it("aggregates pyq metadata: null when no question has any value", async () => {
+    const result = await getUploadDetail(admin, jobId, orgId);
+    expect(result.kind).toBe("ok");
+    if (result.kind !== "ok") return;
+    expect(result.pyqMetadata).toEqual({
+      year: null,
+      month: null,
+      note: null,
+    });
+  });
+
+  it('aggregates pyq metadata: returns the shared value or "mixed"', async () => {
+    // Set both linked questions to year=2025, month=May. Note: leave Q2's note distinct.
+    await admin
+      .from("questions")
+      .update({ pyq_year: 2025, pyq_month: "May", pyq_note: "Shift I" })
+      .eq("upload_job_id", jobId)
+      .eq("text", `UD-Q1 ${RUN_ID}?`);
+    await admin
+      .from("questions")
+      .update({ pyq_year: 2025, pyq_month: "May", pyq_note: "Shift II" })
+      .eq("upload_job_id", jobId)
+      .eq("text", `UD-Q2 ${RUN_ID}?`);
+
+    const result = await getUploadDetail(admin, jobId, orgId);
+    expect(result.kind).toBe("ok");
+    if (result.kind !== "ok") return;
+    expect(result.pyqMetadata.year).toBe(2025);
+    expect(result.pyqMetadata.month).toBe("May");
+    expect(result.pyqMetadata.note).toBe("mixed");
+
+    // Reset for the rest of the suite
+    await admin
+      .from("questions")
+      .update({ pyq_year: null, pyq_month: null, pyq_note: null })
+      .eq("upload_job_id", jobId);
+  });
+
   it("returns not_found for an unknown job id", async () => {
     const result = await getUploadDetail(
       admin,

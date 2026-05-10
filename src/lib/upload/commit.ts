@@ -9,6 +9,9 @@ export type CommitInput = {
   createdBy: string;
   rows: ParsedRowPayload[];
   uploadJobId?: string;
+  pyqYear?: number | null;
+  pyqMonth?: string | null;
+  pyqNote?: string | null;
 };
 
 export type CommitResult = {
@@ -22,7 +25,17 @@ export async function commitStaged(
   client: SupabaseClient,
   input: CommitInput
 ): Promise<CommitResult> {
-  const { orgId, examId, filename, createdBy, rows, uploadJobId } = input;
+  const {
+    orgId,
+    examId,
+    filename,
+    createdBy,
+    rows,
+    uploadJobId,
+    pyqYear,
+    pyqMonth,
+    pyqNote,
+  } = input;
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
 
@@ -61,6 +74,9 @@ export async function commitStaged(
     source_file: string;
     source_row: number;
     upload_job_id: string | null;
+    pyq_year: number | null;
+    pyq_month: string | null;
+    pyq_note: string | null;
     created_by: string;
   };
 
@@ -104,6 +120,9 @@ export async function commitStaged(
           source_file: filename,
           source_row: row.sourceRow,
           upload_job_id: uploadJobId ?? null,
+          pyq_year: pyqYear ?? null,
+          pyq_month: pyqMonth ?? null,
+          pyq_note: pyqNote ?? null,
           created_by: createdBy,
         },
       });

@@ -7,6 +7,10 @@ import { validateRow } from "@/lib/upload/validate";
 export const maxDuration = 60;
 
 const MAX_ROWS = 1500;
+const MIN_YEAR = 1980;
+const MAX_YEAR = new Date().getFullYear() + 1;
+const MAX_MONTH_LEN = 20;
+const MAX_NOTE_LEN = 200;
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,6 +30,52 @@ export async function POST(request: NextRequest) {
         { error: "examId is required" },
         { status: 400 }
       );
+    }
+
+    const pyqYearRaw = formData.get("pyqYear");
+    const pyqMonthRaw = formData.get("pyqMonth");
+    const pyqNoteRaw = formData.get("pyqNote");
+
+    let pyqYear: number | null = null;
+    if (typeof pyqYearRaw === "string" && pyqYearRaw.trim() !== "") {
+      const n = Number(pyqYearRaw);
+      if (
+        !Number.isInteger(n) ||
+        n < MIN_YEAR ||
+        n > MAX_YEAR
+      ) {
+        return NextResponse.json(
+          {
+            error: `pyqYear must be an integer between ${MIN_YEAR} and ${MAX_YEAR}.`,
+          },
+          { status: 400 }
+        );
+      }
+      pyqYear = n;
+    }
+
+    let pyqMonth: string | null = null;
+    if (typeof pyqMonthRaw === "string") {
+      const trimmed = pyqMonthRaw.trim();
+      if (trimmed.length > MAX_MONTH_LEN) {
+        return NextResponse.json(
+          { error: `pyqMonth max ${MAX_MONTH_LEN} chars.` },
+          { status: 400 }
+        );
+      }
+      pyqMonth = trimmed === "" ? null : trimmed;
+    }
+
+    let pyqNote: string | null = null;
+    if (typeof pyqNoteRaw === "string") {
+      const trimmed = pyqNoteRaw.trim();
+      if (trimmed.length > MAX_NOTE_LEN) {
+        return NextResponse.json(
+          { error: `pyqNote max ${MAX_NOTE_LEN} chars.` },
+          { status: 400 }
+        );
+      }
+      pyqNote = trimmed === "" ? null : trimmed;
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
@@ -66,7 +116,13 @@ export async function POST(request: NextRequest) {
         status: "PENDING",
         total_rows: parsed.rows.length,
         created_by: member.user.id,
-        staged_rows: { examId, rows: validRows },
+        staged_rows: {
+          examId,
+          rows: validRows,
+          pyqYear,
+          pyqMonth,
+          pyqNote,
+        },
         errors_json: errors,
       })
       .select("id")

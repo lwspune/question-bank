@@ -21,11 +21,18 @@ export type UploadDetailQuestion = {
   subtopicName: string | null;
 };
 
+export type PyqAggregate = {
+  year: number | "mixed" | null;
+  month: string | "mixed" | null;
+  note: string | "mixed" | null;
+};
+
 export type UploadDetailResult =
   | {
       kind: "ok";
       job: UploadDetailJob;
       questions: UploadDetailQuestion[];
+      pyqMetadata: PyqAggregate;
     }
   | { kind: "not_found" }
   | { kind: "forbidden" };
@@ -47,6 +54,9 @@ type RawQuestion = {
   difficulty: UploadDetailQuestion["difficulty"];
   visibility: UploadDetailQuestion["visibility"];
   source_row: number | null;
+  pyq_year: number | null;
+  pyq_month: string | null;
+  pyq_note: string | null;
   subjects: { name: string } | null;
   chapters: { name: string } | null;
   subtopics: { name: string } | null;
@@ -71,6 +81,7 @@ export async function getUploadDetail(
     .select(
       `
       id, text, context, difficulty, visibility, source_row,
+      pyq_year, pyq_month, pyq_note,
       subjects(name),
       chapters(name),
       subtopics(name)
@@ -80,6 +91,7 @@ export async function getUploadDetail(
     .order("source_row", { ascending: true, nullsFirst: false })
     .returns<RawQuestion[]>();
 
+  const rows = questions ?? [];
   return {
     kind: "ok",
     job: {
@@ -90,7 +102,7 @@ export async function getUploadDetail(
       skipped: job.skipped,
       createdAt: job.created_at,
     },
-    questions: (questions ?? []).map((q) => ({
+    questions: rows.map((q) => ({
       id: q.id,
       text: q.text,
       context: q.context,
@@ -101,5 +113,23 @@ export async function getUploadDetail(
       chapterName: q.chapters?.name ?? "",
       subtopicName: q.subtopics?.name ?? null,
     })),
+    pyqMetadata: {
+      year: aggregate(rows.map((q) => q.pyq_year)),
+      month: aggregate(rows.map((q) => q.pyq_month)),
+      note: aggregate(rows.map((q) => q.pyq_note)),
+    },
   };
+}
+
+// Empty list → null. All values equal (including all null) → that value.
+// Otherwise → "mixed".
+function aggregate<T extends number | string | null>(
+  values: T[]
+): T | "mixed" {
+  if (values.length === 0) return null as T;
+  const first = values[0];
+  for (const v of values) {
+    if (v !== first) return "mixed";
+  }
+  return first;
 }

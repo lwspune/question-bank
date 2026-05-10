@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { getUploadDetail } from "@/lib/upload/uploadDetail";
 import UploadHeaderActions from "./UploadHeaderActions";
 import QuestionListItem from "./QuestionListItem";
+import PyqMetadataControl from "./PyqMetadataControl";
 
 type PageProps = { params: { id: string } };
 
@@ -29,7 +30,7 @@ export default async function UploadDetailPage({ params }: PageProps) {
   if (result.kind === "not_found") notFound();
   if (result.kind === "forbidden") redirect("/dashboard");
 
-  const { job, questions } = result;
+  const { job, questions, pyqMetadata } = result;
 
   return (
     <>
@@ -81,6 +82,16 @@ export default async function UploadDetailPage({ params }: PageProps) {
               questionCount={questions.length}
             />
           </div>
+
+          {questions.length > 0 && (
+            <div className="mt-4 border-t pt-4">
+              <PyqMetadataControl
+                jobId={job.id}
+                questionCount={questions.length}
+                current={pyqMetadata}
+              />
+            </div>
+          )}
         </header>
 
         {questions.length === 0 ? (

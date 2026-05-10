@@ -21,9 +21,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Stepper, type Step } from "@/components/ui/stepper";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 type Exam = { id: string; name: string };
+
+const PYQ_NONE = "__NONE__";
+const PYQ_YEARS = (() => {
+  const max = new Date().getFullYear() + 1;
+  const min = 2000;
+  return Array.from({ length: max - min + 1 }, (_, i) => max - i);
+})();
 
 type PreviewResult = {
   jobId: string;
@@ -50,6 +58,9 @@ const STEPS: Step[] = [
 export default function UploadForm({ exams }: { exams: Exam[] }) {
   const [examId, setExamId] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [pyqYear, setPyqYear] = useState<string>(PYQ_NONE);
+  const [pyqMonth, setPyqMonth] = useState("");
+  const [pyqNote, setPyqNote] = useState("");
   const [preview, setPreview] = useState<PreviewResult | null>(null);
   const [committing, setCommitting] = useState(false);
   const [result, setResult] = useState<CommitResult | null>(null);
@@ -69,6 +80,9 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
     const formData = new FormData();
     formData.set("file", file);
     formData.set("examId", examId);
+    if (pyqYear !== PYQ_NONE) formData.set("pyqYear", pyqYear);
+    if (pyqMonth.trim()) formData.set("pyqMonth", pyqMonth.trim());
+    if (pyqNote.trim()) formData.set("pyqNote", pyqNote.trim());
 
     try {
       const res = await fetch("/api/upload/preview", {
@@ -122,6 +136,9 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
     setResult(null);
     setError(null);
     setFile(null);
+    setPyqYear(PYQ_NONE);
+    setPyqMonth("");
+    setPyqNote("");
   }
 
   return (
@@ -163,6 +180,60 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
                   </SelectContent>
                 </Select>
               </div>
+              <fieldset className="space-y-2 rounded-md border bg-muted/20 p-3">
+                <legend className="px-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  PYQ details (optional)
+                </legend>
+                <p className="px-1 text-xs text-muted-foreground">
+                  Applied to every question in this batch. Skip if mixed-year
+                  or unknown.
+                </p>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="pyq-year">Year</Label>
+                    <Select
+                      value={pyqYear}
+                      onValueChange={setPyqYear}
+                      disabled={busy}
+                    >
+                      <SelectTrigger id="pyq-year">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={PYQ_NONE}>— None —</SelectItem>
+                        {PYQ_YEARS.map((y) => (
+                          <SelectItem key={y} value={String(y)}>
+                            {y}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="pyq-month">Month</Label>
+                    <Input
+                      id="pyq-month"
+                      value={pyqMonth}
+                      onChange={(e) => setPyqMonth(e.target.value)}
+                      placeholder="May"
+                      maxLength={20}
+                      disabled={busy}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="pyq-note">Comment</Label>
+                    <Input
+                      id="pyq-note"
+                      value={pyqNote}
+                      onChange={(e) => setPyqNote(e.target.value)}
+                      placeholder="Shift I"
+                      maxLength={200}
+                      disabled={busy}
+                    />
+                  </div>
+                </div>
+              </fieldset>
+
               <div className="space-y-2">
                 <Label>Excel file</Label>
                 <Dropzone

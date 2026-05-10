@@ -40,7 +40,13 @@ export async function POST(request: NextRequest) {
     }
 
     const staged = job.staged_rows as
-      | { examId: string; rows: ParsedRowPayload[] }
+      | {
+          examId: string;
+          rows: ParsedRowPayload[];
+          pyqYear?: number | null;
+          pyqMonth?: string | null;
+          pyqNote?: string | null;
+        }
       | null;
     if (!staged?.examId || !Array.isArray(staged.rows)) {
       return NextResponse.json(
@@ -62,6 +68,9 @@ export async function POST(request: NextRequest) {
         createdBy: member.user.id,
         rows: staged.rows,
         uploadJobId: job.id,
+        pyqYear: staged.pyqYear ?? null,
+        pyqMonth: staged.pyqMonth ?? null,
+        pyqNote: staged.pyqNote ?? null,
       });
 
       await supabase
