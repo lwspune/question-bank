@@ -239,8 +239,11 @@ export default function EditQuestionForm({
         return;
       }
       toast.success("Question saved");
-      router.push("/browse");
+      // Return to wherever the user came from (upload-detail list, browse,
+      // etc.) so they can move on to the next row. router.refresh() first
+      // invalidates the destination's RSC cache so the saved change shows.
       router.refresh();
+      router.back();
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Save failed";
       setError(msg);
