@@ -118,6 +118,7 @@ describe.skipIf(!HAS_ENV)("getUploadDetail", () => {
         difficulty: "EASY",
         content_hash: contentHash(`UD-Q1 ${RUN_ID}?`, ["a", "b", "c", "d"], "A"),
         source_row: 2,
+        question_number: "Q1",
         upload_job_id: jobId,
         created_by: adminUserId,
       },
@@ -130,6 +131,7 @@ describe.skipIf(!HAS_ENV)("getUploadDetail", () => {
         difficulty: "MODERATE",
         content_hash: contentHash(`UD-Q2 ${RUN_ID}?`, ["a", "b", "c", "d"], "B"),
         source_row: 3,
+        question_number: null,
         upload_job_id: jobId,
         created_by: adminUserId,
       },
@@ -173,6 +175,10 @@ describe.skipIf(!HAS_ENV)("getUploadDetail", () => {
       expect(q.subjectName).toContain("UD_Subject_");
       expect(q.chapterName).toContain("UD_Chapter_");
     }
+
+    const byText = new Map(result.questions.map((q) => [q.text, q]));
+    expect(byText.get(`UD-Q1 ${RUN_ID}?`)?.questionNumber).toBe("Q1");
+    expect(byText.get(`UD-Q2 ${RUN_ID}?`)?.questionNumber).toBeNull();
   });
 
   it("aggregates pyq metadata: null when no question has any value", async () => {

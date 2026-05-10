@@ -67,9 +67,13 @@ export default function QuestionListItem({ question }: Props) {
     <li className="flex items-start gap-3 p-4 sm:gap-4">
       <div className="min-w-0 flex-1">
         <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-          {question.sourceRow != null && (
+          {question.questionNumber ? (
+            <span className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px] font-semibold text-foreground">
+              Q{question.questionNumber}
+            </span>
+          ) : question.sourceRow != null ? (
             <span className="font-mono">Row {question.sourceRow}</span>
-          )}
+          ) : null}
           <span className="truncate">{breadcrumb}</span>
           <span aria-hidden>·</span>
           <span>{DIFFICULTY_LABEL[question.difficulty]}</span>

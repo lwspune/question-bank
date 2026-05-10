@@ -2,6 +2,7 @@ import * as XLSX from "xlsx";
 
 export type ParsedRow = {
   sourceRow: number;
+  questionNumber?: string;
   subject: string;
   chapter: string;
   subtopic?: string;
@@ -68,6 +69,7 @@ export function parseXlsx(buffer: Buffer | ArrayBuffer | Uint8Array): ParseResul
     const r = aoa[i];
     rows.push({
       sourceRow: i + 1,
+      questionNumber: optionalOf(r, "Q"),
       subject: cellOf(r, "Subject"),
       chapter: cellOf(r, "Chapter"),
       subtopic: optionalOf(r, "Subtopic"),

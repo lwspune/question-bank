@@ -73,6 +73,7 @@ export async function commitStaged(
     content_hash: string;
     source_file: string;
     source_row: number;
+    question_number: string | null;
     upload_job_id: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -119,6 +120,7 @@ export async function commitStaged(
           content_hash: row.contentHash,
           source_file: filename,
           source_row: row.sourceRow,
+          question_number: row.questionNumber ?? null,
           upload_job_id: uploadJobId ?? null,
           pyq_year: pyqYear ?? null,
           pyq_month: pyqMonth ?? null,

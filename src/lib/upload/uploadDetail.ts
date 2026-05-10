@@ -16,6 +16,7 @@ export type UploadDetailQuestion = {
   difficulty: "EASY" | "MODERATE" | "HARD";
   visibility: "PUBLIC" | "PRIVATE";
   sourceRow: number | null;
+  questionNumber: string | null;
   subjectName: string;
   chapterName: string;
   subtopicName: string | null;
@@ -54,6 +55,7 @@ type RawQuestion = {
   difficulty: UploadDetailQuestion["difficulty"];
   visibility: UploadDetailQuestion["visibility"];
   source_row: number | null;
+  question_number: string | null;
   pyq_year: number | null;
   pyq_month: string | null;
   pyq_note: string | null;
@@ -80,7 +82,7 @@ export async function getUploadDetail(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, visibility, source_row,
+      id, text, context, difficulty, visibility, source_row, question_number,
       pyq_year, pyq_month, pyq_note,
       subjects(name),
       chapters(name),
@@ -109,6 +111,7 @@ export async function getUploadDetail(
       difficulty: q.difficulty,
       visibility: q.visibility,
       sourceRow: q.source_row,
+      questionNumber: q.question_number,
       subjectName: q.subjects?.name ?? "",
       chapterName: q.chapters?.name ?? "",
       subtopicName: q.subtopics?.name ?? null,
