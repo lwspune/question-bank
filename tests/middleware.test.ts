@@ -22,13 +22,16 @@ beforeEach(() => {
 });
 
 describe("middleware route guard", () => {
-  it("redirects unauthenticated /dashboard requests to /login", async () => {
+  it("redirects unauthenticated /dashboard requests to /browse (public-pivot)", async () => {
+    // Post Phase A of the public-product pivot: anon users hitting an admin
+    // route land on the public browse page (login is reachable from the
+    // AppHeader Sign in button).
     const { updateSession } = await import("@/lib/supabase/middleware");
     const req = new NextRequest("http://localhost:3000/dashboard");
     const res = await updateSession(req);
 
     expect(res.status).toBe(307);
-    expect(res.headers.get("location")).toContain("/login");
+    expect(res.headers.get("location")).toContain("/browse");
   });
 
   it("does not redirect /login itself", async () => {

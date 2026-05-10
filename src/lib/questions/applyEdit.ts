@@ -60,6 +60,7 @@ export async function applyEdit(
       subject_id: payload.subjectId,
       chapter_id: payload.chapterId,
       subtopic_id: payload.subtopicId,
+      visibility: payload.visibility,
       content_hash: contentHashValue,
     })
     .eq("id", questionId);

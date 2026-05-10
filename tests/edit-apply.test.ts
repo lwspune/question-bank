@@ -179,6 +179,7 @@ describe.skipIf(!HAS_ENV)("applyEdit", () => {
       subjectId: subjectAId,
       chapterId: chapterUnderAId,
       subtopicId: subtopicUnderAId,
+      visibility: "PRIVATE" as const,
       correct: "A" as const,
       options: [
         { label: "A" as const, text: "A1", imageUrl: null },

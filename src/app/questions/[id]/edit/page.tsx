@@ -29,6 +29,7 @@ type RawQuestion = {
   subject_id: string;
   chapter_id: string;
   subtopic_id: string | null;
+  visibility: "PUBLIC" | "PRIVATE";
   options: RawOption[];
 };
 
@@ -52,7 +53,7 @@ export default async function EditQuestionPage({ params }: PageProps) {
     .select(
       `
       id, text, context, difficulty, solution, image_url,
-      org_id, exam_id, subject_id, chapter_id, subtopic_id,
+      org_id, exam_id, subject_id, chapter_id, subtopic_id, visibility,
       options(id, label, text, is_correct, image_url)
     `
     )
@@ -99,6 +100,7 @@ export default async function EditQuestionPage({ params }: PageProps) {
     subjectId: question.subject_id,
     chapterId: question.chapter_id,
     subtopicId: question.subtopic_id,
+    visibility: question.visibility,
     options: ["A", "B", "C", "D"].map((label) => {
       const o = question.options.find((opt) => opt.label === label);
       return {

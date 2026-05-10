@@ -29,6 +29,7 @@ const editQuestionSchema = z
     subjectId: z.string().uuid(),
     chapterId: z.string().uuid(),
     subtopicId: z.string().uuid().nullable(),
+    visibility: z.enum(["PUBLIC", "PRIVATE"]),
     correct: optionLabel,
     options: z.array(optionSchema).length(4),
   })

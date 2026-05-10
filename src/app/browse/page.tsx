@@ -33,8 +33,8 @@ function paramsFromSearch(
 }
 
 export default async function BrowsePage({ searchParams }: PageProps) {
+  // Public page: anon users are welcome. RLS scopes the question list.
   const member = await getSessionMember();
-  if (!member) redirect("/login");
 
   const filters = parseFilters(paramsFromSearch(searchParams));
   const supabase = createSupabaseServerClient();
@@ -72,7 +72,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       : Promise.resolve({
           data: [] as { id: string; name: string; chapter_id: string }[],
         }),
-    queryQuestions(supabase, member.orgId, filters, DEFAULT_PAGE_SIZE),
+    queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
   ]);
 
   const totalPages = Math.max(
@@ -146,7 +146,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                       index={
                         (filters.page - 1) * DEFAULT_PAGE_SIZE + i + 1
                       }
-                      isAdmin={member.role === "ADMIN"}
+                      isAdmin={member?.role === "ADMIN"}
                       supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                     />
                   </li>

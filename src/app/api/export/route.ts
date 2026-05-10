@@ -2,7 +2,6 @@ import { NextResponse, type NextRequest } from "next/server";
 import JSZip from "jszip";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { getSessionMember } from "@/lib/auth";
 import { queryQuestions, type QuestionRow } from "@/lib/questions/query";
 import type { Filters } from "@/lib/questions/filters";
 import {
@@ -25,11 +24,6 @@ type Body = {
 
 export async function POST(request: NextRequest) {
   try {
-    const member = await getSessionMember();
-    if (!member) {
-      return NextResponse.json({ error: "Not signed in" }, { status: 401 });
-    }
-
     const body = (await request.json()) as Body;
     if (!body.filters || !body.options) {
       return NextResponse.json({ error: "Bad request" }, { status: 400 });
@@ -37,13 +31,10 @@ export async function POST(request: NextRequest) {
     const filters = body.filters;
     const options = body.options;
 
+    // Public endpoint — RLS scopes the query: anon sees only PUBLIC rows,
+    // authed org members see PUBLIC + their own org's PRIVATE.
     const supabase = createSupabaseServerClient();
-    const result = await queryQuestions(
-      supabase,
-      member.orgId,
-      filters,
-      EXPORT_CAP
-    );
+    const result = await queryQuestions(supabase, null, filters, EXPORT_CAP);
 
     if (result.totalCount === 0) {
       return NextResponse.json(

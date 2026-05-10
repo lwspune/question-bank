@@ -1,7 +1,12 @@
 import { redirect } from "next/navigation";
-import { getSessionUser } from "@/lib/auth";
+import { getSessionMember, getSessionUser } from "@/lib/auth";
 
 export default async function Home() {
+  // Admins → their dashboard. Authed-but-orphaned and anon users → public browse.
+  const member = await getSessionMember();
+  if (member) redirect("/dashboard");
+
   const user = await getSessionUser();
-  redirect(user ? "/dashboard" : "/login");
+  if (user) redirect("/dashboard"); // orphan-user state lives on /dashboard
+  redirect("/browse");
 }

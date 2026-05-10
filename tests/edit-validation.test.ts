@@ -11,6 +11,7 @@ const VALID = {
   subjectId: "11111111-1111-1111-1111-111111111111",
   chapterId: "22222222-2222-2222-2222-222222222222",
   subtopicId: "33333333-3333-3333-3333-333333333333",
+  visibility: "PRIVATE" as const,
   correct: "A" as const,
   options: [
     { label: "A" as const, text: "2", imageUrl: null },

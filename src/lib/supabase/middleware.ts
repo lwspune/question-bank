@@ -40,8 +40,10 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
   } = await supabase.auth.getUser();
 
   if (isProtected(request.nextUrl.pathname) && !user) {
+    // Public pivot: anon users hitting an admin route go to the public browse
+    // page (login is reachable from the AppHeader Sign in button).
     const url = request.nextUrl.clone();
-    url.pathname = "/login";
+    url.pathname = "/browse";
     return NextResponse.redirect(url);
   }
 

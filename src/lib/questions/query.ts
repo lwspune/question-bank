@@ -31,10 +31,14 @@ export const DEFAULT_PAGE_SIZE = 25;
 
 export async function queryQuestions(
   client: SupabaseClient,
-  orgId: string,
+  orgId: string | null,
   filters: Filters,
   pageSize: number = DEFAULT_PAGE_SIZE
 ): Promise<QueryResult> {
+  // When orgId is null, no org filter is applied — RLS scopes the result:
+  //   anon role        → only PUBLIC rows
+  //   authenticated    → PUBLIC rows + caller's own org's PRIVATE rows
+  //   service-role     → everything (used in tests with explicit orgId)
   let q = client
     .from("questions")
     .select(
@@ -47,8 +51,9 @@ export async function queryQuestions(
       options(label, text, is_correct, image_url)
     `,
       { count: "exact" }
-    )
-    .eq("org_id", orgId);
+    );
+
+  if (orgId !== null) q = q.eq("org_id", orgId);
 
   if (filters.examId) q = q.eq("exam_id", filters.examId);
   if (filters.subjectId) q = q.eq("subject_id", filters.subjectId);

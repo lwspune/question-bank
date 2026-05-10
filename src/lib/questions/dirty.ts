@@ -1,5 +1,6 @@
 export type Difficulty = "EASY" | "MODERATE" | "HARD";
 export type OptionLabel = "A" | "B" | "C" | "D";
+export type Visibility = "PUBLIC" | "PRIVATE";
 
 export type ExistingOption = {
   label: OptionLabel;
@@ -17,6 +18,7 @@ export type ExistingQuestion = {
   subjectId: string;
   chapterId: string;
   subtopicId: string | null;
+  visibility: Visibility;
   options: ExistingOption[];
 };
 
@@ -29,6 +31,7 @@ export type QuestionFormState = {
   subjectId: string;
   chapterId: string;
   subtopicId: string | null;
+  visibility: Visibility;
   correct: OptionLabel;
   optionTexts: Record<OptionLabel, string>;
   optionImages: Record<OptionLabel, string | null>;
@@ -58,6 +61,7 @@ export function toFormState(q: ExistingQuestion): QuestionFormState {
     subjectId: q.subjectId,
     chapterId: q.chapterId,
     subtopicId: q.subtopicId,
+    visibility: q.visibility,
     correct:
       (q.options.find((o) => o.isCorrect)?.label as OptionLabel) ?? "A",
     optionTexts,
@@ -79,6 +83,7 @@ export function isQuestionDirty(
     baseline.subjectId !== current.subjectId ||
     baseline.chapterId !== current.chapterId ||
     baseline.subtopicId !== current.subtopicId ||
+    baseline.visibility !== current.visibility ||
     baseline.correct !== current.correct
   ) {
     return true;

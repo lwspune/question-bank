@@ -14,6 +14,7 @@ const baseline: ExistingQuestion = {
   subjectId: "subj-1",
   chapterId: "chap-1",
   subtopicId: null,
+  visibility: "PRIVATE",
   options: [
     { label: "A", text: "3", imageUrl: null, isCorrect: false },
     { label: "B", text: "4", imageUrl: null, isCorrect: true },
@@ -84,6 +85,11 @@ describe("isQuestionDirty", () => {
 
   it("treats whitespace-only context edits as dirty (does not auto-trim)", () => {
     const state = { ...toFormState(baseline), context: "  " };
+    expect(isQuestionDirty(baseline, state)).toBe(true);
+  });
+
+  it("detects visibility flip (PRIVATE -> PUBLIC)", () => {
+    const state = { ...toFormState(baseline), visibility: "PUBLIC" as const };
     expect(isQuestionDirty(baseline, state)).toBe(true);
   });
 });

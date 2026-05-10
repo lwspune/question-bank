@@ -11,12 +11,15 @@ MCQ question bank for teachers. Teachers upload Excel files of questions, filter
 - **Browser math preview:** `katex` + `react-katex`
 - **Deploy:** Vercel, git-integrated
 
-## Multi-tenancy model
+## Multi-tenancy + visibility model
 
 Per-school orgs, RLS-enforced. Three tiers of access:
 - **Service role** (seed scripts, server-only admin actions) bypasses RLS by design — never expose to client code.
 - **ADMIN** can write questions, options, upload_jobs, and auto-create chapters/subtopics, scoped to their own org.
 - **TEACHER** can read everything in their org but cannot write.
+- **anon** (no JWT) can read PUBLIC questions/options + all taxonomy. Cannot write anything.
+
+Each question has a `visibility` enum (`PUBLIC | PRIVATE`, default PRIVATE). Read RLS is the union of two permissive policies: `(visibility = 'PUBLIC')` for everyone, plus `(org_id = private.current_user_org_id())` for authenticated org members on their own org's PRIVATE rows. Authenticated users see PUBLIC across all orgs + their own PRIVATE; anon sees only PUBLIC. Admins flip per-question visibility from the edit page.
 
 RLS helpers live in the **`private` schema** (not exposed by PostgREST): `private.current_user_org_id()`, `private.current_user_is_admin()`. New org-scoped policies should reference these.
 
@@ -53,7 +56,7 @@ src/
 └── middleware.ts                          Supabase session refresh + /dashboard guard
 
 supabase/
-├── migrations/0001..0008_*.sql            apply in order via Supabase MCP
+├── migrations/0001..0009_*.sql            apply in order via Supabase MCP (0009 = visibility enum + public-read policies)
 └── seed/
     ├── taxonomy.json                      committed snapshot from MHT_CET_2025_PCM.xlsx
     └── seed-first-org.sql                 manual onboarding for first admin
@@ -62,7 +65,7 @@ scripts/
 ├── extract-taxonomy.ts                    one-shot: regenerate taxonomy.json from a reference Excel
 └── seed.ts                                idempotent taxonomy seed (service-role)
 
-tests/                                     22 .test.ts files, 139 tests
+tests/                                     24 .test.ts files, 148 tests
 ├── fixtures/{upload,tinyImage}.ts         in-memory .xlsx fixture builder; 67-byte 1x1 PNG buffer
 ├── *.test.ts                              pure unit + DB integration (DB tests skip if env missing)
 └── setup.ts                               loads .env.local for tests
@@ -118,6 +121,7 @@ Why behind architectural pivots — saves future-you from "why didn't we just…
 - **2026-05-08 — Edit allows taxonomy moves but not auto-create.** The form lets admins reassign subject/chapter/subtopic from existing options. Auto-create from this UI was deliberately not added: a typo here is more visible (admin staring at one row) than during bulk Excel upload, and a typo'd "Phyiscs" subject would corrupt the canonical taxonomy. Auto-create stays in the upload pipeline only.
 - **2026-05-08 — `applyEdit` extracted as a discriminated-union returning DB function.** Route handler is a thin auth + http mapping; all the logic (load + verify org + path-prefix check + taxonomy hierarchy + UPDATEs + orphan cleanup) lives in `src/lib/questions/applyEdit.ts` and returns `{ kind: "ok" | "not_found" | "forbidden" | "invalid_image_path" | "invalid_taxonomy" | "duplicate" | "error" }`. Lets us integration-test the logic directly with the service-role client without spinning up the route.
 - **2026-05-09 — Login uses email + password (`signInWithPassword`), magic-link removed for now.** Supabase's default-SMTP cap of 2 emails/hour project-wide blocked the magic-link flow during development. Rather than configure custom SMTP just to demo, admin passwords are set directly in `auth.users` via `UPDATE ... SET encrypted_password = crypt('…', gen_salt('bf'))` (pgcrypto, bcrypt). No sign-up flow, no password-reset flow — both deferred until custom SMTP (Resend) is wired. When teachers come online, add a magic-link toggle alongside password sign-in rather than forcing them through admin-set passwords.
+- **2026-05-09 — Public-product pivot (Phase A): visibility enum + drop auth wall.** Question Bank repositioned from "private coaching tool" to "public PYQ paper builder, fed by sync from MHT_CET_AI." `0009_visibility.sql` adds a `visibility (PUBLIC | PRIVATE)` enum on `questions` (default PRIVATE; LWS Pune's 150 backfilled to PUBLIC). New permissive RLS policies grant anon + authenticated read access to PUBLIC rows; existing org-scoped policies remain for PRIVATE. `queryQuestions` now accepts `orgId: string | null` — null means "RLS scopes." Browse page + export endpoint are unauthenticated; AppHeader shows "Sign in" for anon; middleware redirects anon /dashboard → /browse instead of /login. Multi-tenancy stays for the future "private branded bank for paying coaching orgs" tier (deferred). Remaining phases: B (sync receiver from MHT_CET_AI), C (optional user accounts behind Resend SMTP), D (anti-abuse rate limit on /api/export).
 
 ## Adding a new RLS-protected table
 

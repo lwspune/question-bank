@@ -32,7 +32,8 @@ export default async function DashboardPage() {
 
   if (!member) {
     const user = await getSessionUser();
-    if (!user) redirect("/login");
+    // Anon users land on the public browse page, not the admin dashboard.
+    if (!user) redirect("/browse");
     return (
       <>
         <AppHeader />

@@ -106,4 +106,18 @@ describe.skipIf(!HAS_ENV)("queryQuestions (against LWS Pune seed)", () => {
     );
     expect(result.totalCount).toBeGreaterThan(0);
   });
+
+  it("anon path (orgId=null, anon JWT) returns only PUBLIC questions", async () => {
+    // Hits the post-Phase-A code path: no org_id filter, RLS scopes by visibility.
+    // The 150 LWS Pune seed questions were backfilled to PUBLIC in 0009_visibility.
+    const anonClient = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { auth: { persistSession: false } }
+    );
+    const result = await queryQuestions(anonClient, null, EMPTY_FILTERS, 25);
+    expect(result.totalCount).toBeGreaterThanOrEqual(150);
+    expect(result.rows.length).toBe(25);
+    expect(result.rows[0].options).toHaveLength(4);
+  });
 });

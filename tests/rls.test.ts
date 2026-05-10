@@ -194,13 +194,19 @@ describe.skipIf(!HAS_ENV)("RLS — cross-org question isolation", () => {
     expect(error).not.toBeNull();
   });
 
-  it("anonymous (no JWT) cannot read questions", async () => {
+  it("anonymous (no JWT) cannot read this PRIVATE question", async () => {
+    // Post-visibility migration anon CAN read PUBLIC questions; the bank
+    // intentionally exposes those. Org-isolation specifically protects PRIVATE
+    // rows — questionAId was inserted with the default visibility (PRIVATE).
     const anonClient = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       { auth: { persistSession: false } }
     );
-    const { data } = await anonClient.from("questions").select("id").limit(5);
+    const { data } = await anonClient
+      .from("questions")
+      .select("id")
+      .eq("id", questionAId);
     expect(data?.length ?? 0).toBe(0);
   });
 });

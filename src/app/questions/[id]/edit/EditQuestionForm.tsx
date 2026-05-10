@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, ImagePlus, Pencil, Trash2 } from "lucide-react";
+import { Eye, Globe, ImagePlus, Lock, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -23,6 +23,7 @@ import {
   type Difficulty,
   type ExistingQuestion as DirtyExistingQuestion,
   type OptionLabel,
+  type Visibility,
 } from "@/lib/questions/dirty";
 
 export type SubjectTree = {
@@ -68,6 +69,7 @@ export default function EditQuestionForm({
   const [subtopicId, setSubtopicId] = useState<string | null>(
     initial.subtopicId
   );
+  const [visibility, setVisibility] = useState<Visibility>(initial.visibility);
   const [correct, setCorrect] = useState<OptionLabel>(initial.correct);
   const [optionTexts, setOptionTexts] = useState(initial.optionTexts);
   const [optionImages, setOptionImages] = useState(initial.optionImages);
@@ -96,6 +98,7 @@ export default function EditQuestionForm({
     subjectId,
     chapterId,
     subtopicId,
+    visibility,
     correct,
     optionTexts,
     optionImages,
@@ -174,6 +177,7 @@ export default function EditQuestionForm({
       subjectId,
       chapterId,
       subtopicId: subtopicId ?? null,
+      visibility,
       correct,
       options: LABELS.map((label) => ({
         label,
@@ -416,6 +420,14 @@ export default function EditQuestionForm({
                 </Select>
               </Section>
 
+              <Section heading="Visibility">
+                <VisibilityToggle
+                  value={visibility}
+                  onChange={setVisibility}
+                  disabled={busy}
+                />
+              </Section>
+
               <Section heading="Question diagram">
                 <ImageSlot
                   label="Question image"
@@ -449,6 +461,62 @@ export default function EditQuestionForm({
         onCancel={() => router.back()}
       />
     </form>
+  );
+}
+
+function VisibilityToggle({
+  value,
+  onChange,
+  disabled,
+}: {
+  value: Visibility;
+  onChange: (v: Visibility) => void;
+  disabled: boolean;
+}) {
+  return (
+    <div className="space-y-2">
+      <div
+        role="group"
+        aria-label="Visibility"
+        className="inline-flex w-full rounded-md border border-input bg-background p-0.5"
+      >
+        <button
+          type="button"
+          onClick={() => onChange("PUBLIC")}
+          disabled={disabled}
+          aria-pressed={value === "PUBLIC"}
+          className={cn(
+            "flex flex-1 items-center justify-center gap-1.5 rounded-sm px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50",
+            value === "PUBLIC"
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
+          )}
+        >
+          <Globe className="h-3.5 w-3.5" aria-hidden />
+          Public
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange("PRIVATE")}
+          disabled={disabled}
+          aria-pressed={value === "PRIVATE"}
+          className={cn(
+            "flex flex-1 items-center justify-center gap-1.5 rounded-sm px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50",
+            value === "PRIVATE"
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
+          )}
+        >
+          <Lock className="h-3.5 w-3.5" aria-hidden />
+          Private
+        </button>
+      </div>
+      <p className="text-xs text-muted-foreground">
+        {value === "PUBLIC"
+          ? "Anyone can browse and download this question."
+          : "Only your organization can see this question."}
+      </p>
+    </div>
   );
 }
 
