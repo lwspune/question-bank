@@ -88,4 +88,33 @@ describe("docx layout defaults", () => {
     const matches = xml.match(/<w:ind\s+w:left="720"\s*\/>/g) ?? [];
     expect(matches.length).toBeGreaterThanOrEqual(4);
   });
+
+  // Without this, Word falls back to its built-in math defaults
+  // (defJc="centerGroup", wrapIndent="1440", non-zero margins). Paragraphs
+  // that contain a 2-D math element (e.g. <m:f> for a fraction) then render
+  // shifted right by ~1" — so option "(A) -3/4" lands further indented than
+  // a plain-text option on the next question. Force the math-zone defaults
+  // to left-aligned with zero margins so all options align under the
+  // question text regardless of math content.
+  it("pins math-zone defaults so fraction options don't get extra indent", async () => {
+    const buf = await buildQuestionPaper({ title: "T", questions: [SAMPLE] });
+    const settings = await readPart(buf, "word/settings.xml");
+    expect(settings).toMatch(/<m:mathPr\b/);
+    expect(settings).toMatch(/<m:defJc\s+m:val="left"\s*\/>/);
+    expect(settings).toMatch(/<m:wrapIndent\s+m:val="0"\s*\/>/);
+    expect(settings).toMatch(/<m:lMargin\s+m:val="0"\s*\/>/);
+    expect(settings).toMatch(/<m:rMargin\s+m:val="0"\s*\/>/);
+  });
+
+  it("answer key applies the same math-zone defaults (solutions can contain fractions)", async () => {
+    const { buildAnswerKey } = await import("@/lib/export/docxBuilder");
+    const buf = await buildAnswerKey({
+      title: "T",
+      questions: [SAMPLE],
+      includeSolutions: true,
+    });
+    const settings = await readPart(buf, "word/settings.xml");
+    expect(settings).toMatch(/<m:mathPr\b/);
+    expect(settings).toMatch(/<m:defJc\s+m:val="left"\s*\/>/);
+  });
 });

@@ -347,31 +347,60 @@ function passageBanner(passage: string, builder: Builder): Paragraph[] {
   ];
 }
 
+// Word's built-in math defaults (defJc="centerGroup", wrapIndent="1440",
+// non-zero margins) cause paragraphs with a 2-D math element (e.g. <m:f>)
+// to render with extra left indent — option "(A) -3/4" lands ~1" to the
+// right of a plain-text option on the next question. Forcing these values
+// makes inline math align flush with the surrounding text.
+const MATH_PR_BLOCK =
+  "<m:mathPr>" +
+  '<m:mathFont m:val="Cambria Math"/>' +
+  '<m:brkBin m:val="before"/>' +
+  '<m:brkBinSub m:val="--"/>' +
+  '<m:smallFrac m:val="0"/>' +
+  "<m:dispDef/>" +
+  '<m:lMargin m:val="0"/>' +
+  '<m:rMargin m:val="0"/>' +
+  '<m:defJc m:val="left"/>' +
+  '<m:wrapIndent m:val="0"/>' +
+  '<m:intLim m:val="subSup"/>' +
+  '<m:naryLim m:val="undOvr"/>' +
+  "</m:mathPr>";
+
 async function finalize(doc: Document, builder: Builder): Promise<Buffer> {
   const buf = (await Packer.toBuffer(doc)) as Buffer;
-  if (builder.ommlByIndex.length === 0) return buf;
-  return injectOmml(buf, builder.ommlByIndex);
+  return patchZip(buf, builder.ommlByIndex);
 }
 
-async function injectOmml(
+async function patchZip(
   buf: Buffer,
   ommlByIndex: string[]
 ): Promise<Buffer> {
   const zip = await JSZip.loadAsync(buf);
-  const file = zip.file("word/document.xml");
-  if (!file) return buf;
-  let xml = await file.async("text");
 
-  for (let i = 0; i < ommlByIndex.length; i++) {
-    const marker = `${MARKER_PREFIX}${i}`;
-    const re = new RegExp(
-      `<w:r>(?:<w:rPr>[\\s\\S]*?</w:rPr>)?<w:t[^>]*>${escapeRegex(marker)}</w:t></w:r>`,
-      "g"
-    );
-    xml = xml.replace(re, ommlByIndex[i]);
+  const docFile = zip.file("word/document.xml");
+  if (docFile && ommlByIndex.length > 0) {
+    let xml = await docFile.async("text");
+    for (let i = 0; i < ommlByIndex.length; i++) {
+      const marker = `${MARKER_PREFIX}${i}`;
+      const re = new RegExp(
+        `<w:r>(?:<w:rPr>[\\s\\S]*?</w:rPr>)?<w:t[^>]*>${escapeRegex(marker)}</w:t></w:r>`,
+        "g"
+      );
+      xml = xml.replace(re, ommlByIndex[i]);
+    }
+    zip.file("word/document.xml", xml);
   }
 
-  zip.file("word/document.xml", xml);
+  const settingsFile = zip.file("word/settings.xml");
+  if (settingsFile) {
+    let settings = await settingsFile.async("text");
+    if (!settings.includes("<m:mathPr")) {
+      settings = settings.replace("</w:settings>", `${MATH_PR_BLOCK}</w:settings>`);
+      zip.file("word/settings.xml", settings);
+    }
+  }
+
   return (await zip.generateAsync({ type: "nodebuffer" })) as Buffer;
 }
 
