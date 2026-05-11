@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { parseXlsx } from "@/lib/upload/parser";
 import {
+  customXlsxBuffer,
   goodXlsxBuffer,
   malformedHeaderXlsxBuffer,
 } from "./fixtures/upload";
@@ -35,5 +36,39 @@ describe("parseXlsx", () => {
 
   it("throws when a required header column is missing", () => {
     expect(() => parseXlsx(malformedHeaderXlsxBuffer())).toThrow(/Answer/i);
+  });
+
+  it("converts literal \\n to real newlines while preserving math zones", () => {
+    // Author typed `\n` (two chars) in Excel cells instead of Alt+Enter.
+    // After parsing, those should be real newline characters; LaTeX commands
+    // beginning `\n` (e.g. `\neq`) inside math must stay untouched.
+    const buf = customXlsxBuffer([
+      [
+        1,
+        "Maths",
+        "MHT-CET",
+        "Algebra",
+        "Roots",
+        "Premise:\\n\\nDetails follow.",
+        "Given \\(r \\neq 1\\),\\nfind r.",
+        "\\(x\\)\\nfirst",
+        "\\(y\\)\\nsecond",
+        "\\(z\\)\\nthird",
+        "\\(w\\)\\nfourth",
+        "A",
+        "Solution\\nstep 1\\nstep 2",
+        "Moderate",
+      ],
+    ]);
+    const result = parseXlsx(buf);
+    const row = result.rows[0];
+
+    expect(row.question).toBe("Given \\(r \\neq 1\\),\nfind r.");
+    expect(row.context).toBe("Premise:\n\nDetails follow.");
+    expect(row.optionA).toBe("\\(x\\)\nfirst");
+    expect(row.optionB).toBe("\\(y\\)\nsecond");
+    expect(row.optionC).toBe("\\(z\\)\nthird");
+    expect(row.optionD).toBe("\\(w\\)\nfourth");
+    expect(row.solution).toBe("Solution\nstep 1\nstep 2");
   });
 });

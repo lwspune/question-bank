@@ -115,4 +115,36 @@ describe("validateEditPayload", () => {
       expect(result.payload.options[0].text).toBe("2");
     }
   });
+
+  it("converts literal \\n to real newlines in text-bearing fields (math preserved)", () => {
+    const result = validateEditPayload({
+      ...VALID,
+      text: "Premise:\\n\\nGiven \\(r \\neq 1\\),\\nfind r.",
+      context: "First line\\nSecond line",
+      solution: "step 1\\nstep 2",
+      options: [
+        { label: "A" as const, text: "ans\\nA", imageUrl: null },
+        { label: "B" as const, text: "ans\\nB", imageUrl: null },
+        { label: "C" as const, text: "ans\\nC", imageUrl: null },
+        { label: "D" as const, text: "ans\\nD", imageUrl: null },
+      ],
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.payload.text).toBe(
+        "Premise:\n\nGiven \\(r \\neq 1\\),\nfind r."
+      );
+      expect(result.payload.context).toBe("First line\nSecond line");
+      expect(result.payload.solution).toBe("step 1\nstep 2");
+      expect(result.payload.options[0].text).toBe("ans\nA");
+      // Hash must reflect the normalized text — otherwise saving and
+      // re-saving identical content would produce different hashes.
+      const expected = contentHash(
+        "Premise:\n\nGiven \\(r \\neq 1\\),\nfind r.",
+        ["ans\nA", "ans\nB", "ans\nC", "ans\nD"],
+        "A"
+      );
+      expect(result.contentHash).toBe(expected);
+    }
+  });
 });

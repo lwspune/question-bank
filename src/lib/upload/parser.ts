@@ -1,4 +1,5 @@
 import * as XLSX from "xlsx";
+import { normalizeNewlines } from "@/lib/text/normalizeNewlines";
 
 export type ParsedRow = {
   sourceRow: number;
@@ -65,10 +66,17 @@ export function parseXlsx(buffer: Buffer | ArrayBuffer | Uint8Array): ParseResul
     const v = cellOf(r, col);
     return v.length > 0 ? v : undefined;
   };
+  const optionalOptional = (
+    v: string | undefined,
+    fn: (s: string) => string
+  ): string | undefined => (v === undefined ? undefined : fn(v));
 
   const rows: ParsedRow[] = [];
   for (let i = 1; i < aoa.length; i++) {
     const r = aoa[i];
+    // Convert any literal `\n` typed in long-form cells (Question Context,
+    // Question, Options, Solution) into real newlines, while leaving math
+    // zones (`\neq` inside `\(...\)`, etc.) untouched.
     rows.push({
       sourceRow: i + 1,
       questionNumber: optionalOf(r, "Q"),
@@ -77,15 +85,15 @@ export function parseXlsx(buffer: Buffer | ArrayBuffer | Uint8Array): ParseResul
       subject: cellOf(r, "Subject"),
       chapter: cellOf(r, "Chapter"),
       subtopic: optionalOf(r, "Subtopic"),
-      context: optionalOf(r, "Question Context"),
-      question: cellOf(r, "Question"),
-      optionA: cellOf(r, "OptionA"),
-      optionB: cellOf(r, "OptionB"),
-      optionC: cellOf(r, "OptionC"),
-      optionD: cellOf(r, "OptionD"),
+      context: optionalOptional(optionalOf(r, "Question Context"), normalizeNewlines),
+      question: normalizeNewlines(cellOf(r, "Question")),
+      optionA: normalizeNewlines(cellOf(r, "OptionA")),
+      optionB: normalizeNewlines(cellOf(r, "OptionB")),
+      optionC: normalizeNewlines(cellOf(r, "OptionC")),
+      optionD: normalizeNewlines(cellOf(r, "OptionD")),
       answer: cellOf(r, "Answer"),
       difficulty: cellOf(r, "Difficulty Level"),
-      solution: optionalOf(r, "Solution"),
+      solution: optionalOptional(optionalOf(r, "Solution"), normalizeNewlines),
     });
   }
 

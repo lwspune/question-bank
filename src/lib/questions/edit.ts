@@ -1,15 +1,21 @@
 import { z } from "zod";
 import { contentHash } from "@/lib/upload/hash";
+import { normalizeNewlines } from "@/lib/text/normalizeNewlines";
 
+// Trim + convert any literal `\n` (backslash + n) typed by the admin into
+// real newlines, so the DB row matches what the UI renders (and the content
+// hash stays stable across save/re-save).
 const trimmedNonEmpty = z
   .string()
-  .transform((s) => s.trim())
+  .transform((s) => normalizeNewlines(s.trim()))
   .refine((s) => s.length > 0, { message: "must not be empty" });
 
 const trimmedNullable = z
   .string()
   .nullable()
-  .transform((s) => (s == null ? null : s.trim() || null));
+  .transform((s) =>
+    s == null ? null : normalizeNewlines(s.trim()) || null
+  );
 
 const optionLabel = z.enum(["A", "B", "C", "D"]);
 
