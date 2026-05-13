@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -100,18 +98,7 @@ function PageLink({
   );
   if (!href) return <span className={className} {...rest}>{children}</span>;
   return (
-    <Link
-      href={href}
-      className={className}
-      // After navigation, smooth-scroll to the top so the teacher lands on
-      // the new question list without a jarring instant jump.
-      onClick={() => {
-        if (typeof window !== "undefined") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      }}
-      {...rest}
-    >
+    <Link href={href} className={className} {...rest}>
       {children}
     </Link>
   );
