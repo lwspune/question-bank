@@ -1,4 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import {
+  normalizeSubjectName,
+  subjectMatchKeys,
+} from "./subjectAliases";
 
 export type TaxonomyResolver = {
   findSubject(examId: string, name: string): Promise<string | null>;
@@ -7,23 +11,51 @@ export type TaxonomyResolver = {
 };
 
 export function makeTaxonomyResolver(client: SupabaseClient): TaxonomyResolver {
-  const subjectCache = new Map<string, string | null>();
+  // Per-exam normalized-name → subject-id map. Built once on first
+  // findSubject() call for a given examId; subsequent lookups are
+  // pure-memory walks across the alias family.
+  const examSubjectMaps = new Map<string, Map<string, string>>();
   const chapterCache = new Map<string, string>();
   const subtopicCache = new Map<string, string>();
 
+  async function loadSubjectsForExam(
+    examId: string
+  ): Promise<Map<string, string>> {
+    const cached = examSubjectMaps.get(examId);
+    if (cached) return cached;
+
+    const { data, error } = await client
+      .from("subjects")
+      .select("id, name")
+      .eq("exam_id", examId);
+    if (error) throw new Error(`load subjects: ${error.message}`);
+
+    const map = new Map<string, string>();
+    for (const row of (data ?? []) as { id: string; name: string }[]) {
+      const norm = normalizeSubjectName(row.name);
+      if (map.has(norm)) {
+        // Same exam shouldn't have two subjects whose normalized names
+        // collide (e.g. "Maths" and "MATHS"). Catch it early rather than
+        // silently bind uploads to whichever inserted first.
+        throw new Error(
+          `ambiguous seeded subjects for exam ${examId}: "${row.name}" collides with another row on normalized key "${norm}"`
+        );
+      }
+      map.set(norm, row.id);
+    }
+    examSubjectMaps.set(examId, map);
+    return map;
+  }
+
   return {
     async findSubject(examId, name) {
-      const k = `${examId}::${name}`;
-      if (subjectCache.has(k)) return subjectCache.get(k)!;
-      const { data } = await client
-        .from("subjects")
-        .select("id")
-        .eq("exam_id", examId)
-        .eq("name", name)
-        .maybeSingle();
-      const id = data?.id ?? null;
-      subjectCache.set(k, id);
-      return id;
+      const map = await loadSubjectsForExam(examId);
+      // Walk the alias family in canonical-first order; first hit wins.
+      for (const key of subjectMatchKeys(name)) {
+        const id = map.get(key);
+        if (id) return id;
+      }
+      return null;
     },
 
     async resolveChapter(subjectId, name) {
