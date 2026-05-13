@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { Toaster } from "sonner";
+import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import "./globals.css";
@@ -81,8 +82,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <CartProvider>
           {children}
+          <OfflineBanner />
           <Toaster
-            position="bottom-right"
+            position="top-center"
             richColors
             closeButton
             toastOptions={{ duration: 3500 }}

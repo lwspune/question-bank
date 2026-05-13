@@ -19,6 +19,8 @@ import {
   type Difficulty,
   type Filters,
 } from "@/lib/questions/filters";
+import { applyPartial } from "@/lib/questions/applyPartial";
+import { selectRecentYears } from "@/lib/questions/selectRecentYears";
 
 type Option = { id: string; name: string };
 
@@ -29,6 +31,14 @@ type Props = {
   chapters: Option[];
   subtopics: Option[];
   pyqYears: number[];
+  /**
+   * "live"   — each change commits to the URL immediately (desktop sidebar).
+   * "staged" — each change calls onChange(next); nothing routes. Used by
+   *            MobileFilters which buffers staged changes and commits on
+   *            an explicit Apply.
+   */
+  mode?: "live" | "staged";
+  onChange?: (next: Filters) => void;
   onApply?: () => void;
 };
 
@@ -42,6 +52,8 @@ export default function FilterBar({
   chapters,
   subtopics,
   pyqYears,
+  mode = "live",
+  onChange,
   onApply,
 }: Props) {
   const router = useRouter();
@@ -60,18 +72,17 @@ export default function FilterBar({
     });
   }
 
+  /** Either commit to URL (live) or hand to parent (staged). */
+  function commit(next: Filters) {
+    if (mode === "staged") {
+      onChange?.(next);
+    } else {
+      applyFilters(next);
+    }
+  }
+
   function update(partial: Partial<Filters>) {
-    let next: Filters = { ...filters, ...partial, page: 1 };
-    if ("examId" in partial && partial.examId !== filters.examId) {
-      next = { ...next, subjectId: null, chapterIds: [], subtopicIds: [] };
-    }
-    if ("subjectId" in partial && partial.subjectId !== filters.subjectId) {
-      next = { ...next, chapterIds: [], subtopicIds: [] };
-    }
-    if ("chapterIds" in partial) {
-      next = { ...next, subtopicIds: [] };
-    }
-    applyFilters(next);
+    commit(applyPartial(filters, partial));
   }
 
   function toggleInArray<T>(arr: T[], value: T): T[] {
@@ -105,13 +116,11 @@ export default function FilterBar({
     filters.pyqYears.length > 0 ||
     !!filters.q;
 
-  return (
-    <div
-      className={cn(
-        "space-y-5 rounded-lg border bg-card p-5 shadow-sm",
-        pending && "pointer-events-none opacity-60"
-      )}
-    >
+  // Sections keyed for ordered rendering. Mobile sheet leads with difficulty
+  // and PYQ year (the multi-pick filters teachers reach for most), pushing
+  // the long chapter/subtopic accordions below the fold.
+  const sections: Record<SectionKey, JSX.Element> = {
+    exam: (
       <div className="space-y-1.5">
         <Label htmlFor="exam">Exam</Label>
         <Select
@@ -131,7 +140,8 @@ export default function FilterBar({
           </SelectContent>
         </Select>
       </div>
-
+    ),
+    subject: (
       <div className="space-y-1.5">
         <Label htmlFor="subject">Subject</Label>
         <Select
@@ -156,7 +166,8 @@ export default function FilterBar({
           </SelectContent>
         </Select>
       </div>
-
+    ),
+    chapters: (
       <CheckboxGroup
         label="Chapters"
         emptyMessage={
@@ -176,7 +187,8 @@ export default function FilterBar({
             : undefined
         }
       />
-
+    ),
+    subtopics: (
       <CheckboxGroup
         label="Subtopics"
         emptyMessage={
@@ -196,10 +208,32 @@ export default function FilterBar({
             : undefined
         }
       />
-
-      {pyqYears.length > 0 && (
+    ),
+    pyqYears:
+      pyqYears.length > 0 ? (
         <div className="space-y-1.5">
           <Label>PYQ year</Label>
+          {/* Presets: most teachers want the recent 3 / 5 years. Saves 3-5 individual taps. */}
+          <div className="mb-1 flex flex-wrap gap-1.5">
+            <PresetChip
+              label="Last 3 years"
+              onClick={() =>
+                update({ pyqYears: selectRecentYears(pyqYears, 3) })
+              }
+            />
+            <PresetChip
+              label="Last 5 years"
+              onClick={() =>
+                update({ pyqYears: selectRecentYears(pyqYears, 5) })
+              }
+            />
+            {filters.pyqYears.length > 0 && (
+              <PresetChip
+                label="All years"
+                onClick={() => update({ pyqYears: [] })}
+              />
+            )}
+          </div>
           <div className="flex flex-wrap gap-1.5">
             {pyqYears.map((year) => {
               const on = filters.pyqYears.includes(year);
@@ -224,10 +258,19 @@ export default function FilterBar({
             })}
           </div>
         </div>
-      )}
-
+      ) : (
+        <></>
+      ),
+    difficulty: (
       <div className="space-y-1.5">
-        <Label>Difficulty</Label>
+        <div className="flex items-baseline justify-between">
+          <Label>Difficulty</Label>
+          {filters.difficulties.length === 0 && (
+            <span className="text-[11px] text-muted-foreground/80">
+              All
+            </span>
+          )}
+        </div>
         <div
           role="group"
           aria-label="Difficulty"
@@ -258,7 +301,8 @@ export default function FilterBar({
           })}
         </div>
       </div>
-
+    ),
+    search: (
       <form onSubmit={onSearchSubmit} className="space-y-1.5">
         <Label htmlFor="q">Search</Label>
         <div className="flex gap-2">
@@ -267,6 +311,11 @@ export default function FilterBar({
             placeholder="Search question text…"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
+            inputMode="search"
+            autoCapitalize="off"
+            autoComplete="off"
+            spellCheck={false}
+            enterKeyHint="search"
           />
           <Button
             type="submit"
@@ -278,13 +327,28 @@ export default function FilterBar({
           </Button>
         </div>
       </form>
+    ),
+  };
 
+  const order: SectionKey[] =
+    mode === "staged" ? STAGED_ORDER : LIVE_ORDER;
+
+  return (
+    <div
+      className={cn(
+        "space-y-5 rounded-lg border bg-card p-5 shadow-sm",
+        pending && "pointer-events-none opacity-60"
+      )}
+    >
+      {order.map((key) => (
+        <div key={key}>{sections[key]}</div>
+      ))}
       <div className="border-t pt-3">
         <Button
           type="button"
           variant="ghost"
           size="sm"
-          onClick={() => applyFilters(cleared)}
+          onClick={() => commit(cleared)}
           disabled={!hasAnyFilter}
           className="w-full justify-center"
         >
@@ -293,6 +357,53 @@ export default function FilterBar({
         </Button>
       </div>
     </div>
+  );
+}
+
+type SectionKey =
+  | "exam"
+  | "subject"
+  | "chapters"
+  | "subtopics"
+  | "pyqYears"
+  | "difficulty"
+  | "search";
+
+const LIVE_ORDER: SectionKey[] = [
+  "exam",
+  "subject",
+  "chapters",
+  "subtopics",
+  "pyqYears",
+  "difficulty",
+  "search",
+];
+
+const STAGED_ORDER: SectionKey[] = [
+  "exam",
+  "subject",
+  "difficulty",
+  "pyqYears",
+  "chapters",
+  "subtopics",
+  "search",
+];
+
+function PresetChip({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="rounded-full border border-dashed border-primary/40 bg-primary/[0.04] px-2.5 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+    >
+      {label}
+    </button>
   );
 }
 

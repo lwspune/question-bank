@@ -2,18 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, ChevronDown, ImageIcon, Pencil, Plus } from "lucide-react";
+import { Check, ChevronDown, ImageIcon, Pencil, Plus, X } from "lucide-react";
 import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { QuestionRow } from "@/lib/questions/query";
 import { useCart } from "@/lib/cart/CartProvider";
+import { buildBreadcrumb } from "./breadcrumb";
 
 const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
   EASY: "Easy",
@@ -27,24 +29,24 @@ export default function QuestionCard({
   isAdmin,
   supabaseUrl,
   hideContext = false,
+  includeExam = false,
 }: {
   question: QuestionRow;
   index: number;
   isAdmin: boolean;
   supabaseUrl: string;
   hideContext?: boolean;
+  /** Surface the exam in the breadcrumb (used when no exam filter is active). */
+  includeExam?: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const cart = useCart();
   const inCart = cart.has(question.id);
 
-  const breadcrumb = `${question.subject.name} → ${question.chapter.name}${
-    question.subtopic ? ` → ${question.subtopic.name}` : ""
-  }`;
+  const breadcrumb = buildBreadcrumb(question, { includeExam });
 
-  function onToggleCart(e: React.MouseEvent) {
-    e.stopPropagation();
+  function onToggleCart() {
     if (inCart) {
       cart.remove(question.id);
       return;
@@ -64,48 +66,62 @@ export default function QuestionCard({
         inCart && "border-primary/60 ring-2 ring-primary/20"
       )}
     >
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        className="flex w-full items-start gap-2 rounded-lg p-3 text-left transition-colors hover:bg-accent/40 sm:gap-3 sm:p-4"
-        aria-expanded={expanded}
-      >
-        <span className="mt-0.5 inline-flex h-7 w-9 shrink-0 items-center justify-center rounded-full bg-muted px-2 font-mono text-xs text-muted-foreground">
+      <div className="flex w-full items-start gap-2 p-3 sm:gap-3 sm:p-4">
+        {/* Desktop / tablet: standalone Q-badge column. Hidden on phone to
+            reclaim horizontal space — the index reappears inline in the
+            breadcrumb row below as a compact `#N`. */}
+        <span className="mt-0.5 hidden h-7 w-9 shrink-0 items-center justify-center rounded-full bg-muted px-2 font-mono text-xs text-muted-foreground sm:inline-flex">
           Q{index}
         </span>
-        <div className="min-w-0 flex-1">
-          <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-            <span className="truncate">{breadcrumb}</span>
-            <span aria-hidden>·</span>
-            <span>{DIFFICULTY_LABEL[question.difficulty]}</span>
-            {question.imageUrl && (
-              <>
-                <span aria-hidden>·</span>
-                <span className="inline-flex items-center gap-1">
-                  <ImageIcon className="h-3 w-3" aria-hidden />
-                  <span className="sr-only">Has image</span>
-                </span>
-              </>
-            )}
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="flex min-w-0 flex-1 items-start gap-2 rounded text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <div className="min-w-0 flex-1">
+            <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+              <span className="font-mono text-muted-foreground/80 sm:hidden">
+                #{index}
+              </span>
+              <span className="truncate">{breadcrumb}</span>
+              <span aria-hidden>·</span>
+              <span>{DIFFICULTY_LABEL[question.difficulty]}</span>
+              {question.imageUrl && (
+                <>
+                  <span aria-hidden>·</span>
+                  <span className="inline-flex items-center gap-1">
+                    <ImageIcon className="h-3 w-3" aria-hidden />
+                    <span className="sr-only">Has image</span>
+                  </span>
+                </>
+              )}
+            </div>
+            <div
+              className={cn(
+                "font-serif text-[15px] leading-relaxed",
+                !expanded
+                  ? "line-clamp-2"
+                  : "overflow-x-auto [&_.katex]:max-w-full"
+              )}
+            >
+              <KatexRenderer text={question.text} />
+            </div>
           </div>
-          <div
+          <ChevronDown
             className={cn(
-              "font-serif text-[15px] leading-relaxed",
-              !expanded && "line-clamp-2"
+              "mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
+              expanded && "rotate-180"
             )}
-          >
-            <KatexRenderer text={question.text} />
-          </div>
-        </div>
-        <CartToggle inCart={inCart} disabled={cart.isFull && !inCart} onClick={onToggleCart} />
-        <ChevronDown
-          className={cn(
-            "mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
-            expanded && "rotate-180"
-          )}
-          aria-hidden
+            aria-hidden
+          />
+        </button>
+        <CartToggle
+          inCart={inCart}
+          disabled={cart.isFull && !inCart}
+          onClick={onToggleCart}
         />
-      </button>
+      </div>
 
       <div
         className={cn(
@@ -144,7 +160,7 @@ export default function QuestionCard({
                     <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground">
                       {opt.label}
                     </span>
-                    <div className="min-w-0 flex-1">
+                    <div className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
                       <KatexRenderer text={opt.text} />
                     </div>
                     {opt.isCorrect && (
@@ -209,16 +225,14 @@ function CartToggle({
 }: {
   inCart: boolean;
   disabled: boolean;
-  onClick: (e: React.MouseEvent) => void;
+  onClick: () => void;
 }) {
-  // Native button inside a parent <button> would be a hydration error;
-  // render as a span with role=button + click handler that stops propagation.
   return (
-    <span
-      role="button"
-      tabIndex={0}
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
       aria-pressed={inCart}
-      aria-disabled={disabled}
       title={
         inCart
           ? "Remove from paper"
@@ -226,34 +240,27 @@ function CartToggle({
           ? "Paper is full"
           : "Add to paper"
       }
-      onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          if (!disabled) onClick(e as unknown as React.MouseEvent);
-        }
-      }}
       className={cn(
-        "-mt-0.5 inline-flex h-9 min-w-[44px] shrink-0 select-none items-center justify-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+        "-mt-0.5 inline-flex h-10 min-w-[44px] shrink-0 select-none items-center justify-center gap-1.5 rounded-md border px-3 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed sm:h-9",
         inCart
           ? "border-primary/40 bg-primary/10 text-primary hover:bg-primary/15"
           : disabled
-          ? "cursor-not-allowed border-input bg-background text-muted-foreground/50"
+          ? "border-input bg-background text-muted-foreground/50"
           : "border-input bg-background text-foreground hover:bg-accent"
       )}
     >
       {inCart ? (
         <>
           <Check className="h-4 w-4" aria-hidden />
-          <span className="hidden sm:inline">Added</span>
+          <span>Added</span>
         </>
       ) : (
         <>
           <Plus className="h-4 w-4" aria-hidden />
-          <span className="hidden sm:inline">Add</span>
+          <span>Add</span>
         </>
       )}
-    </span>
+    </button>
   );
 }
 
@@ -278,13 +285,24 @@ function ZoomableImage({
           <img src={src} alt={alt} className={className} />
         </button>
       </DialogTrigger>
-      <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={alt}
-          className="mx-auto max-h-[85vh] w-auto rounded-lg bg-background"
-        />
+      <DialogContent
+        className="max-w-4xl border-none bg-transparent p-0 shadow-none"
+        hideCloseButton
+      >
+        <div className="relative">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            className="mx-auto max-h-[85vh] w-auto rounded-lg bg-background"
+          />
+          <DialogClose
+            className="absolute right-2 top-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-foreground shadow-md ring-1 ring-border transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label="Close image"
+          >
+            <X className="h-5 w-5" aria-hidden />
+          </DialogClose>
+        </div>
       </DialogContent>
     </Dialog>
   );

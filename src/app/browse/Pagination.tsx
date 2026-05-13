@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -14,37 +16,68 @@ export default function Pagination({
   const pages = visiblePages(currentPage, totalPages);
 
   return (
-    <nav className="mt-6 flex items-center justify-center gap-1" aria-label="Pagination">
-      <PageLink
-        href={currentPage > 1 ? buildHref(currentPage - 1) : null}
-        aria-label="Previous page"
+    <>
+      {/* Mobile: compact Prev / Page X of Y / Next bar — easier on thumbs and
+          fits a 360 px viewport without crowding the numbered jumper. */}
+      <nav
+        className="mt-6 flex items-center justify-between gap-2 sm:hidden"
+        aria-label="Pagination"
       >
-        <ChevronLeft className="h-4 w-4" aria-hidden />
-      </PageLink>
-      {pages.map((p, i) =>
-        p === "…" ? (
-          <span key={`gap-${i}`} className="px-2 text-sm text-muted-foreground">
-            …
-          </span>
-        ) : (
-          <PageLink
-            key={p}
-            href={p === currentPage ? null : buildHref(p)}
-            active={p === currentPage}
-            aria-label={`Page ${p}`}
-            aria-current={p === currentPage ? "page" : undefined}
-          >
-            {p}
-          </PageLink>
-        )
-      )}
-      <PageLink
-        href={currentPage < totalPages ? buildHref(currentPage + 1) : null}
-        aria-label="Next page"
+        <PageLink
+          href={currentPage > 1 ? buildHref(currentPage - 1) : null}
+          aria-label="Previous page"
+        >
+          <ChevronLeft className="h-4 w-4" aria-hidden />
+          <span className="ml-1">Prev</span>
+        </PageLink>
+        <span className="text-sm text-muted-foreground tabular-nums">
+          Page {currentPage} of {totalPages}
+        </span>
+        <PageLink
+          href={currentPage < totalPages ? buildHref(currentPage + 1) : null}
+          aria-label="Next page"
+        >
+          <span className="mr-1">Next</span>
+          <ChevronRight className="h-4 w-4" aria-hidden />
+        </PageLink>
+      </nav>
+
+      {/* Desktop / tablet: numbered jumper. */}
+      <nav
+        className="mt-6 hidden items-center justify-center gap-1 sm:flex"
+        aria-label="Pagination"
       >
-        <ChevronRight className="h-4 w-4" aria-hidden />
-      </PageLink>
-    </nav>
+        <PageLink
+          href={currentPage > 1 ? buildHref(currentPage - 1) : null}
+          aria-label="Previous page"
+        >
+          <ChevronLeft className="h-4 w-4" aria-hidden />
+        </PageLink>
+        {pages.map((p, i) =>
+          p === "…" ? (
+            <span key={`gap-${i}`} className="px-2 text-sm text-muted-foreground">
+              …
+            </span>
+          ) : (
+            <PageLink
+              key={p}
+              href={p === currentPage ? null : buildHref(p)}
+              active={p === currentPage}
+              aria-label={`Page ${p}`}
+              aria-current={p === currentPage ? "page" : undefined}
+            >
+              {p}
+            </PageLink>
+          )
+        )}
+        <PageLink
+          href={currentPage < totalPages ? buildHref(currentPage + 1) : null}
+          aria-label="Next page"
+        >
+          <ChevronRight className="h-4 w-4" aria-hidden />
+        </PageLink>
+      </nav>
+    </>
   );
 }
 
@@ -67,7 +100,18 @@ function PageLink({
   );
   if (!href) return <span className={className} {...rest}>{children}</span>;
   return (
-    <Link href={href} className={className} {...rest}>
+    <Link
+      href={href}
+      className={className}
+      // After navigation, smooth-scroll to the top so the teacher lands on
+      // the new question list without a jarring instant jump.
+      onClick={() => {
+        if (typeof window !== "undefined") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }}
+      {...rest}
+    >
       {children}
     </Link>
   );

@@ -10,6 +10,8 @@ type Props = {
   pageOffset: number;
   isAdmin: boolean;
   supabaseUrl: string;
+  /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
+  includeExam: boolean;
 };
 
 /**
@@ -26,6 +28,7 @@ export default function QuestionList({
   pageOffset,
   isAdmin,
   supabaseUrl,
+  includeExam,
 }: Props) {
   const groups = groupBySet(questions);
   const idToIndex = new Map<string, number>();
@@ -42,6 +45,7 @@ export default function QuestionList({
                 index={idToIndex.get(group.question.id)!}
                 isAdmin={isAdmin}
                 supabaseUrl={supabaseUrl}
+                includeExam={includeExam}
               />
             </li>
           );
@@ -61,6 +65,7 @@ export default function QuestionList({
                       isAdmin={isAdmin}
                       supabaseUrl={supabaseUrl}
                       hideContext
+                      includeExam={includeExam}
                     />
                   </li>
                 ))}

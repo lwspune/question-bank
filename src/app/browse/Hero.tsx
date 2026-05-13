@@ -9,15 +9,15 @@ export default function Hero({
   totalPublicQuestions: number;
 }) {
   return (
-    <section className="mb-8 rounded-xl border bg-gradient-to-br from-primary/5 via-background to-background p-6 shadow-sm sm:p-8">
+    <section className="mb-6 rounded-xl border bg-gradient-to-br from-primary/5 via-background to-background p-4 shadow-sm sm:mb-8 sm:p-8">
       <h1
-        className="animate-fade-in-up font-serif text-3xl font-semibold tracking-tight sm:text-4xl"
+        className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}
       >
         Build a question paper in 60 seconds.
       </h1>
       <p
-        className="mt-3 max-w-2xl animate-fade-in-up text-sm text-muted-foreground sm:text-base"
+        className="mt-2 max-w-2xl animate-fade-in-up text-sm text-muted-foreground sm:mt-3 sm:text-base"
         style={{ animationDelay: "80ms" }}
       >
         Filter past-year questions by exam, chapter, difficulty, and year.
@@ -25,7 +25,7 @@ export default function Hero({
         sign-up.
       </p>
       <div
-        className="mt-5 animate-fade-in-up space-y-2 text-xs"
+        className="mt-3 animate-fade-in-up space-y-2 text-xs sm:mt-5"
         style={{ animationDelay: "160ms" }}
       >
         <div>
@@ -44,7 +44,9 @@ export default function Hero({
             </span>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+        {/* "Coming soon" hidden on mobile so the first question card lands
+            in the initial viewport. Desktop has the room. */}
+        <div className="hidden flex-wrap items-center gap-x-2 gap-y-1.5 sm:flex">
           <span className="inline-flex items-center gap-1 text-muted-foreground">
             <Sparkles className="h-3 w-3" aria-hidden />
             Coming soon:

@@ -9,8 +9,18 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/lib/cart/CartProvider";
+import { safeSnippet } from "@/lib/text/safeSnippet";
+import KatexRenderer from "@/components/math/KatexRenderer";
 import DownloadDialog from "./DownloadDialog";
 import type { Filters } from "@/lib/questions/filters";
 
@@ -37,6 +47,7 @@ export default function CartPill({ filters }: { filters: Filters }) {
   const cart = useCart();
   const [open, setOpen] = useState(false);
   const [downloadOpen, setDownloadOpen] = useState(false);
+  const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
   const [previews, setPreviews] = useState<Preview[]>([]);
   const [sortMode, setSortMode] = useState<SortMode>("insertion");
   const [loading, setLoading] = useState(false);
@@ -113,8 +124,13 @@ export default function CartPill({ filters }: { filters: Filters }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
+        // Position respects iOS home-indicator safe area: pin to max(1rem,
+        // env(safe-area-inset-bottom)) on phone, larger fixed offset on sm+.
+        style={{
+          bottom: "max(1rem, env(safe-area-inset-bottom))",
+        }}
         className={cn(
-          "fixed bottom-4 right-4 z-40 flex animate-pill-in items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:bottom-6 sm:right-6"
+          "fixed right-4 z-40 flex animate-pill-in items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:right-6"
         )}
         aria-label={`Open paper (${cart.count} questions)`}
       >
@@ -161,9 +177,7 @@ export default function CartPill({ filters }: { filters: Filters }) {
               variant="ghost"
               size="sm"
               className="ml-auto h-8 text-xs text-destructive hover:bg-destructive/10 hover:text-destructive"
-              onClick={() => {
-                if (confirm("Clear all selected questions?")) cart.clear();
-              }}
+              onClick={() => setClearConfirmOpen(true)}
             >
               <Trash2 className="h-3.5 w-3.5" aria-hidden />
               Clear
@@ -218,6 +232,38 @@ export default function CartPill({ filters }: { filters: Filters }) {
         onExternalOpenChange={setDownloadOpen}
         hideTrigger
       />
+
+      <Dialog open={clearConfirmOpen} onOpenChange={setClearConfirmOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Clear all questions?</DialogTitle>
+            <DialogDescription>
+              This removes all {cart.count} question
+              {cart.count === 1 ? "" : "s"} from your paper. You can&apos;t
+              undo this.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              variant="outline"
+              onClick={() => setClearConfirmOpen(false)}
+              autoFocus
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                cart.clear();
+                setClearConfirmOpen(false);
+              }}
+            >
+              <Trash2 className="h-4 w-4" aria-hidden />
+              Clear all
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
@@ -260,8 +306,7 @@ function CartItem({
   const breadcrumb = `${preview.subject.name} → ${preview.chapter.name}${
     preview.subtopic ? ` → ${preview.subtopic.name}` : ""
   }`;
-  const snippet =
-    preview.text.length > 140 ? preview.text.slice(0, 140) + "…" : preview.text;
+  const snippet = safeSnippet(preview.text, 140);
   return (
     <li className="flex items-start gap-3 p-3">
       <span className="mt-0.5 inline-flex h-6 w-7 shrink-0 items-center justify-center rounded bg-muted font-mono text-xs text-muted-foreground">
@@ -274,7 +319,9 @@ function CartItem({
           )}
           <span className="truncate">{breadcrumb}</span>
         </p>
-        <p className="font-serif text-[13px] leading-snug">{snippet}</p>
+        <div className="overflow-x-auto font-serif text-[13px] leading-snug [&_.katex]:max-w-full">
+          <KatexRenderer text={snippet} />
+        </div>
       </div>
       <button
         type="button"

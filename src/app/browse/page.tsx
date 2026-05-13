@@ -178,6 +178,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 pageOffset={(filters.page - 1) * DEFAULT_PAGE_SIZE}
                 isAdmin={member?.role === "ADMIN"}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+                includeExam={!filters.examId}
               />
             )}
 
@@ -214,7 +215,7 @@ function EmptyState({ filtered }: { filtered: boolean }) {
           : "Once an admin uploads an Excel file, questions will appear here."}
       </p>
       {filtered && (
-        <Button asChild size="sm" className="mt-5">
+        <Button asChild className="mt-5">
           <Link href="/browse">Clear filters</Link>
         </Button>
       )}
