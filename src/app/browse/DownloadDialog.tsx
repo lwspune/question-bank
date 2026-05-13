@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download } from "lucide-react";
+import { Download, FileText, Key } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +20,7 @@ import type { Filters } from "@/lib/questions/filters";
 import { useCart } from "@/lib/cart/CartProvider";
 
 type Mode = "filters" | "cart";
+type Kind = "paper" | "key";
 
 export default function DownloadDialog({
   filters,
@@ -49,22 +50,23 @@ export default function DownloadDialog({
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
   const [title, setTitle] = useState("Question Bank Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
-  const [busy, setBusy] = useState(false);
+  const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const filterCount = totalCount;
   const cartCount = cart.count;
   const activeCount = mode === "cart" ? cartCount : filterCount;
   const overCap = activeCount > 200;
+  const busy = busyKind !== null;
 
-  async function onDownload() {
-    setBusy(true);
+  async function onDownload(kind: Kind) {
+    setBusyKind(kind);
     setError(null);
     try {
       const body =
         mode === "cart"
-          ? { questionIds: cart.ids, options: { title, includeSolutions } }
-          : { filters, options: { title, includeSolutions } };
+          ? { kind, questionIds: cart.ids, options: { title, includeSolutions } }
+          : { kind, filters, options: { title, includeSolutions } };
       const res = await fetch("/api/export", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -87,21 +89,22 @@ export default function DownloadDialog({
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${sanitize(title)}.zip`;
+      a.download = `${kind === "paper" ? "QP" : "Answers"}_${sanitize(title)}.docx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
       toast.success(
-        `Downloaded ${activeCount} question${activeCount === 1 ? "" : "s"}`
+        kind === "paper"
+          ? "Question Paper downloaded"
+          : "Answer Key downloaded"
       );
-      setOpen(false);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Download failed";
       setError(msg);
       toast.error(msg);
     } finally {
-      setBusy(false);
+      setBusyKind(null);
     }
   }
 
@@ -122,18 +125,18 @@ export default function DownloadDialog({
           </Button>
         </DialogTrigger>
       )}
-      <DialogContent>
-        <DialogHeader>
+      <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0">
+        <DialogHeader className="px-6 pt-6">
           <DialogTitle>
             Download {activeCount} question{activeCount === 1 ? "" : "s"}
           </DialogTitle>
           <DialogDescription>
-            You&apos;ll get a .zip with two files: the Question Paper and the
-            Answer Key. Both use 0.5″ margins, 2 columns, Cambria 10pt.
+            Two separate Word files — Question Paper and Answer Key. Tap each
+            to download. Both use 0.5″ margins, 2 columns, Cambria 10pt.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4">
+        <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
           {cartAvailable && (
             <div
               role="group"
@@ -193,19 +196,31 @@ export default function DownloadDialog({
           )}
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="sticky bottom-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row">
           <Button
             variant="outline"
             onClick={() => setOpen(false)}
             disabled={busy}
+            className="w-full sm:w-auto"
           >
-            Cancel
+            {busy ? "Working…" : "Done"}
           </Button>
           <Button
-            onClick={onDownload}
+            variant="outline"
+            onClick={() => onDownload("key")}
             disabled={busy || overCap || activeCount === 0}
+            className="w-full sm:w-auto"
           >
-            {busy ? "Generating…" : "Download"}
+            <Key className="h-4 w-4" aria-hidden />
+            {busyKind === "key" ? "Generating…" : "Answer Key"}
+          </Button>
+          <Button
+            onClick={() => onDownload("paper")}
+            disabled={busy || overCap || activeCount === 0}
+            className="w-full sm:w-auto"
+          >
+            <FileText className="h-4 w-4" aria-hidden />
+            {busyKind === "paper" ? "Generating…" : "Question Paper"}
           </Button>
         </DialogFooter>
       </DialogContent>

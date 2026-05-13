@@ -28,6 +28,7 @@ function makeReq(ip: string, body: unknown): NextRequest {
 }
 
 const BAD_FILTER_PAYLOAD = {
+  kind: "paper",
   filters: {
     examId: "00000000-0000-0000-0000-000000000000",
     subjectId: null,
@@ -57,17 +58,17 @@ describe.skipIf(!HAS_ENV)("/api/export rate limit", () => {
     await admin.from("rate_limits").delete().like("bucket", `%${RUN_ID}%`);
   });
 
-  it("anon: allows first 10 requests, blocks the 11th with 429 + Retry-After", async () => {
+  it("anon: allows first 20 requests, blocks the 21st with 429 + Retry-After", async () => {
     const { POST } = await import("@/app/api/export/route");
     const ip = `test-${RUN_ID}-single`;
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 20; i++) {
       const res = await POST(makeReq(ip, BAD_FILTER_PAYLOAD));
       // 200/400 in production. 500 is acceptable in tests only because
       // createSupabaseServerClient() reads next/headers cookies(), which
       // throws outside Next's request scope. The rate-limit check fires
       // BEFORE that, so the bucket still increments — that's what we're
-      // verifying via the 11th call below.
+      // verifying via the 21st call below.
       expect([200, 400, 500]).toContain(res.status);
     }
 
@@ -80,7 +81,7 @@ describe.skipIf(!HAS_ENV)("/api/export rate limit", () => {
     const body = await blocked.json();
     expect(body.error).toBeDefined();
     expect(body.retryAfter).toBeDefined();
-    expect(body.limit).toBe(10);
+    expect(body.limit).toBe(20);
   });
 
   it("anon: separate IPs are limited independently", async () => {
@@ -89,7 +90,7 @@ describe.skipIf(!HAS_ENV)("/api/export rate limit", () => {
     const ipB = `test-${RUN_ID}-iso-B`;
 
     // Burn through ipA's quota
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 21; i++) {
       await POST(makeReq(ipA, BAD_FILTER_PAYLOAD));
     }
     const blockedA = await POST(makeReq(ipA, BAD_FILTER_PAYLOAD));
@@ -105,8 +106,8 @@ describe.skipIf(!HAS_ENV)("/api/export rate limit", () => {
     const { POST } = await import("@/app/api/export/route");
     const ip = `test-${RUN_ID}-junk`;
 
-    // 10 invalid-payload requests still increment the bucket
-    for (let i = 0; i < 10; i++) {
+    // 20 invalid-payload requests still increment the bucket
+    for (let i = 0; i < 20; i++) {
       const res = await POST(makeReq(ip, { totally: "wrong" }));
       // 400 for bad payload; rate limit incremented anyway
       expect(res.status).toBe(400);

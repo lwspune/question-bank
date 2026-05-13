@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from "next/server";
-import JSZip from "jszip";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember } from "@/lib/auth";
@@ -20,8 +19,15 @@ export const maxDuration = 60;
 
 const EXPORT_CAP = 200;
 const HOUR_MS = 60 * 60 * 1000;
-const ANON_LIMIT = 10;
-const AUTHED_LIMIT = 100;
+// A full export is now two requests (Paper + Key); limits doubled so the
+// user-perceived per-hour cap stays roughly what it was under the old ZIP shape.
+const ANON_LIMIT = 20;
+const AUTHED_LIMIT = 200;
+
+const DOCX_CONTENT_TYPE =
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+type ExportKind = "paper" | "key";
 
 type ExportOptions = {
   title?: string;
@@ -30,6 +36,7 @@ type ExportOptions = {
 
 // Either filter-mode or cart-mode; never both. Front-end picks one.
 type Body = {
+  kind?: ExportKind;
   filters?: Filters;
   questionIds?: string[];
   options?: ExportOptions;
@@ -80,6 +87,13 @@ export async function POST(request: NextRequest) {
     } catch {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
+    if (body.kind !== "paper" && body.kind !== "key") {
+      return NextResponse.json(
+        { error: "kind must be 'paper' or 'key'" },
+        { status: 400 }
+      );
+    }
+    const kind: ExportKind = body.kind;
     if (!body.options) {
       return NextResponse.json({ error: "Bad request" }, { status: 400 });
     }
@@ -158,28 +172,25 @@ export async function POST(request: NextRequest) {
         ? options.title.trim()
         : "Question Bank Export";
     const includeSolutions = !!options.includeSolutions;
-
-    const imageBytes = await fetchImageBytes(questions);
-
-    const [paperBuf, keyBuf] = await Promise.all([
-      buildQuestionPaper({ title, questions, imageBytes }),
-      buildAnswerKey({ title, questions, includeSolutions }),
-    ]);
-
     const safeName = sanitizeFilename(title);
-    const zip = new JSZip();
-    zip.file(`QuestionPaper_${safeName}.docx`, paperBuf);
-    zip.file(`AnswerKey_${safeName}.docx`, keyBuf);
-    const zipBuf = (await zip.generateAsync({
-      type: "nodebuffer",
-    })) as Buffer;
 
-    return new NextResponse(zipBuf as unknown as ArrayBuffer, {
+    let docxBuf: Buffer;
+    let filename: string;
+    if (kind === "paper") {
+      const imageBytes = await fetchImageBytes(questions);
+      docxBuf = await buildQuestionPaper({ title, questions, imageBytes });
+      filename = `QP_${safeName}.docx`;
+    } else {
+      docxBuf = await buildAnswerKey({ title, questions, includeSolutions });
+      filename = `Answers_${safeName}.docx`;
+    }
+
+    return new NextResponse(docxBuf as unknown as ArrayBuffer, {
       status: 200,
       headers: {
-        "Content-Type": "application/zip",
-        "Content-Disposition": `attachment; filename="${safeName}.zip"`,
-        "Content-Length": String(zipBuf.length),
+        "Content-Type": DOCX_CONTENT_TYPE,
+        "Content-Disposition": `attachment; filename="${filename}"`,
+        "Content-Length": String(docxBuf.length),
       },
     });
   } catch (err) {
