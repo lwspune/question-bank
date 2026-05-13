@@ -67,6 +67,51 @@ describe.skipIf(!HAS_ENV)("getDashboardStats (against LWS Pune seed)", () => {
     expect(sum).toBe(stats.totalQuestions);
   });
 
+  it("matches SQL ground-truth even when org has >1000 questions (no row cap)", async () => {
+    // Regression for the PostgREST implicit 1000-row cap. The old impl did
+    // `.select(...)` then `data.length`, silently truncating at 1000.
+    // `count: "exact", head: true` returns the true count via headers,
+    // bypassing the cap; we use that as ground truth.
+    const { count: truthTotal, error: ce } = await client
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .eq("org_id", orgId);
+    expect(ce).toBeNull();
+    expect(truthTotal).not.toBeNull();
+
+    // Per-exam ground truth: one HEAD count per exam in the org.
+    const { data: examRows, error: ee } = await client
+      .from("exams")
+      .select("id");
+    expect(ee).toBeNull();
+    const truthByExam: { exam_id: string; count: number }[] = [];
+    for (const e of examRows ?? []) {
+      const { count } = await client
+        .from("questions")
+        .select("id", { count: "exact", head: true })
+        .eq("org_id", orgId)
+        .eq("exam_id", e.id);
+      if ((count ?? 0) > 0) {
+        truthByExam.push({ exam_id: e.id, count: count ?? 0 });
+      }
+    }
+
+    const stats = await getDashboardStats(client, orgId);
+
+    // Exact match against SQL, no matter how many rows.
+    expect(stats.totalQuestions).toBe(truthTotal);
+    // And the byExam slices sum to the same total.
+    expect(stats.byExam.reduce((a, r) => a + r.count, 0)).toBe(truthTotal);
+
+    // byExam matches truth per-exam.
+    const statsMap = new Map(stats.byExam.map((r) => [r.examId, r.count]));
+    const truthMap = new Map(truthByExam.map((r) => [r.exam_id, r.count]));
+    expect(statsMap.size).toBe(truthMap.size);
+    for (const [examId, count] of truthMap) {
+      expect(statsMap.get(examId)).toBe(count);
+    }
+  });
+
   it("returns zeroes / empty / null when org has no data", async () => {
     const { data: emptyOrg, error } = await client
       .from("organizations")

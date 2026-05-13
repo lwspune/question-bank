@@ -16,23 +16,23 @@ export type DashboardStats = {
 
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
+type RpcShape = {
+  total_questions: number;
+  chapters_covered: number;
+  by_exam: { exam_id: string; exam_name: string; count: number }[];
+};
+
 export async function getDashboardStats(
   client: SupabaseClient,
   orgId: string
 ): Promise<DashboardStats> {
-  type QuestionTaxonomy = {
-    exam_id: string;
-    chapter_id: string;
-    exams: { name: string } | { name: string }[] | null;
-  };
-
-  const [{ data: rows, error: qErr }, { data: lastJob, error: jErr }] =
+  // Aggregate counts go through the RPC so we never hit PostgREST's implicit
+  // 1000-row cap (the previous .select(...).length implementation silently
+  // truncated once an org crossed 1000 questions). The upload_jobs read is a
+  // single row and is unaffected, so it stays as a parallel direct query.
+  const [{ data: rpcData, error: rpcErr }, { data: lastJob, error: jErr }] =
     await Promise.all([
-      client
-        .from("questions")
-        .select("exam_id, chapter_id, exams!exam_id(name)")
-        .eq("org_id", orgId)
-        .returns<QuestionTaxonomy[]>(),
+      client.rpc("get_dashboard_stats", { p_org_id: orgId }),
       client
         .from("upload_jobs")
         .select("created_at")
@@ -42,30 +42,20 @@ export async function getDashboardStats(
         .maybeSingle(),
     ]);
 
-  if (qErr) throw new Error(`dashboard stats: ${qErr.message}`);
+  if (rpcErr) throw new Error(`dashboard stats: ${rpcErr.message}`);
   if (jErr) throw new Error(`dashboard stats: ${jErr.message}`);
 
-  const data = rows ?? [];
-  const examNames = new Map<string, string>();
-  const examCounts = new Map<string, number>();
-  const chapterIds = new Set<string>();
+  const stats = (rpcData as RpcShape | null) ?? {
+    total_questions: 0,
+    chapters_covered: 0,
+    by_exam: [],
+  };
 
-  for (const r of data) {
-    const exam = Array.isArray(r.exams) ? r.exams[0] : r.exams;
-    if (exam?.name && !examNames.has(r.exam_id)) {
-      examNames.set(r.exam_id, exam.name);
-    }
-    examCounts.set(r.exam_id, (examCounts.get(r.exam_id) ?? 0) + 1);
-    chapterIds.add(r.chapter_id);
-  }
-
-  const byExam: ByExamRow[] = [...examCounts.entries()]
-    .map(([examId, count]) => ({
-      examId,
-      examName: examNames.get(examId) ?? "(unknown)",
-      count,
-    }))
-    .sort((a, b) => b.count - a.count);
+  const byExam: ByExamRow[] = stats.by_exam.map((r) => ({
+    examId: r.exam_id,
+    examName: r.exam_name,
+    count: r.count,
+  }));
 
   const daysSinceLastUpload =
     lastJob?.created_at != null
@@ -75,9 +65,9 @@ export async function getDashboardStats(
       : null;
 
   return {
-    totalQuestions: data.length,
-    examsCovered: examCounts.size,
-    chaptersCovered: chapterIds.size,
+    totalQuestions: stats.total_questions,
+    examsCovered: byExam.length,
+    chaptersCovered: stats.chapters_covered,
     daysSinceLastUpload,
     byExam,
   };
