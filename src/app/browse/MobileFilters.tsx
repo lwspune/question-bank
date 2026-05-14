@@ -17,7 +17,7 @@ import {
   type Filters,
 } from "@/lib/questions/filters";
 
-type Option = { id: string; name: string };
+type Option = { id: string; name: string; count?: number };
 
 type Props = {
   filters: Filters;

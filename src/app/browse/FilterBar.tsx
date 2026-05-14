@@ -22,7 +22,7 @@ import {
 import { applyPartial } from "@/lib/questions/applyPartial";
 import { selectRecentYears } from "@/lib/questions/selectRecentYears";
 
-type Option = { id: string; name: string };
+type Option = { id: string; name: string; count?: number };
 
 type Props = {
   filters: Filters;
@@ -465,14 +465,21 @@ function CheckboxGroup({
           <ul className="space-y-1.5">
             {options.map((o) => (
               <li key={o.id}>
-                <label className="flex cursor-pointer items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={selected.includes(o.id)}
-                    onChange={() => onChange(o.id)}
-                    className="h-4 w-4 rounded border-input"
-                  />
-                  <span>{o.name}</span>
+                <label className="flex cursor-pointer items-center justify-between gap-2 text-sm">
+                  <span className="flex min-w-0 items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={selected.includes(o.id)}
+                      onChange={() => onChange(o.id)}
+                      className="h-4 w-4 shrink-0 rounded border-input"
+                    />
+                    <span className="truncate">{o.name}</span>
+                  </span>
+                  {o.count != null && (
+                    <span className="shrink-0 tabular-nums text-xs text-muted-foreground">
+                      ({o.count})
+                    </span>
+                  )}
                 </label>
               </li>
             ))}

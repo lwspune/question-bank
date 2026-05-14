@@ -12,6 +12,7 @@ import {
   type Filters,
 } from "@/lib/questions/filters";
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
+import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
 import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
 import QuestionList from "./QuestionList";
@@ -50,11 +51,25 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const filters = parseFilters(paramsFromSearch(searchParams));
   const supabase = createSupabaseServerClient();
 
+  // Facet RPC args — context-aware: chapter facets reflect all OTHER active
+  // filters (so the chapter list shrinks as the user narrows difficulty/year),
+  // and subtopic facets additionally respect the chapter selection.
+  const facetArgs = {
+    p_exam_id: filters.examId,
+    p_subject_id: filters.subjectId,
+    p_difficulties:
+      filters.difficulties.length > 0 ? filters.difficulties : null,
+    p_pyq_years: filters.pyqYears.length > 0 ? filters.pyqYears : null,
+    p_q: filters.q || null,
+  };
+
   const [
     { data: exams },
     { data: subjects },
     { data: chapters },
     { data: subtopics },
+    { data: chapterFacets },
+    { data: subtopicFacets },
     { data: pyqYears },
     questionsResult,
   ] = await Promise.all([
@@ -84,6 +99,19 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       : Promise.resolve({
           data: [] as { id: string; name: string; chapter_id: string }[],
         }),
+    filters.subjectId
+      ? supabase.rpc("get_chapter_facets", facetArgs)
+      : Promise.resolve({
+          data: [] as { chapter_id: string; q_count: number }[],
+        }),
+    filters.chapterIds.length > 0
+      ? supabase.rpc("get_subtopic_facets", {
+          p_chapter_ids: filters.chapterIds,
+          ...facetArgs,
+        })
+      : Promise.resolve({
+          data: [] as { subtopic_id: string; q_count: number }[],
+        }),
     supabase.rpc("get_pyq_years"),
     queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
   ]);
@@ -95,8 +123,29 @@ export default async function BrowsePage({ searchParams }: PageProps) {
 
   const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
-  const chapterOpts = (chapters ?? []).map((c) => ({ id: c.id, name: c.name }));
-  const subtopicOpts = (subtopics ?? []).map((s) => ({ id: s.id, name: s.name }));
+
+  // Merge facet counts onto chapter and subtopic options. Both are sorted by
+  // count desc and zero-count entries are hidden (per design — keeps the list
+  // strategic, no "(0)" rows).
+  const chapterFacetRows = (chapterFacets ?? []) as {
+    chapter_id: string;
+    q_count: number;
+  }[];
+  const subtopicFacetRows = (subtopicFacets ?? []) as {
+    subtopic_id: string;
+    q_count: number;
+  }[];
+  const chapterOpts: FacetedOption[] = mergeAndSortFacets(
+    (chapters ?? []).map((c) => ({ id: c.id, name: c.name })),
+    chapterFacetRows.map((f) => ({ id: f.chapter_id, count: f.q_count }))
+  );
+  const subtopicOpts: FacetedOption[] = mergeAndSortFacets(
+    (subtopics ?? []).map((s) => ({ id: s.id, name: s.name })),
+    subtopicFacetRows.map((f) => ({
+      id: f.subtopic_id,
+      count: f.q_count,
+    }))
+  );
   const pyqYearOpts = (pyqYears ?? []) as number[];
 
   const activeCount = countActiveFilters(filters);

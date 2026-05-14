@@ -13,7 +13,7 @@ import { buildShareUrl } from "@/lib/questions/buildShareUrl";
 import { buildActiveChips, type ChipLabels } from "./buildActiveChips";
 import { useState } from "react";
 
-type Option = { id: string; name: string };
+type Option = { id: string; name: string; count?: number };
 
 type Props = {
   filters: Filters;
@@ -27,6 +27,20 @@ type Props = {
 function makeLookup(options: Option[]): (id: string) => string {
   const map = new Map(options.map((o) => [o.id, o.name]));
   return (id) => map.get(id) ?? id;
+}
+
+/**
+ * For chapter/subtopic chips: render "Name (count)" when the count is known.
+ * Falls back to "Name" if facet count is missing (which shouldn't happen on
+ * the live page since the source list already had a positive count).
+ */
+function makeLookupWithCount(options: Option[]): (id: string) => string {
+  const map = new Map(options.map((o) => [o.id, o]));
+  return (id) => {
+    const o = map.get(id);
+    if (!o) return id;
+    return o.count != null ? `${o.name} (${o.count})` : o.name;
+  };
 }
 
 export default function ActiveFilterChips({
@@ -57,8 +71,8 @@ export default function ActiveFilterChips({
   const labels: ChipLabels = {
     examName: makeLookup(exams),
     subjectName: makeLookup(subjects),
-    chapterName: makeLookup(chapters),
-    subtopicName: makeLookup(subtopics),
+    chapterName: makeLookupWithCount(chapters),
+    subtopicName: makeLookupWithCount(subtopics),
   };
 
   const chips = buildActiveChips(filters, labels);
