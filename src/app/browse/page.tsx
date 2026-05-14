@@ -55,7 +55,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     { data: subjects },
     { data: chapters },
     { data: subtopics },
-    { data: yearRows },
+    { data: pyqYears },
     questionsResult,
   ] = await Promise.all([
     supabase.from("exams").select("id, name").order("name"),
@@ -84,11 +84,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       : Promise.resolve({
           data: [] as { id: string; name: string; chapter_id: string }[],
         }),
-    supabase
-      .from("questions")
-      .select("pyq_year")
-      .not("pyq_year", "is", null)
-      .order("pyq_year", { ascending: false }),
+    supabase.rpc("get_pyq_years"),
     queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
   ]);
 
@@ -101,9 +97,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
   const chapterOpts = (chapters ?? []).map((c) => ({ id: c.id, name: c.name }));
   const subtopicOpts = (subtopics ?? []).map((s) => ({ id: s.id, name: s.name }));
-  const pyqYearOpts = Array.from(
-    new Set((yearRows ?? []).map((r) => r.pyq_year as number))
-  ).sort((a, b) => b - a);
+  const pyqYearOpts = (pyqYears ?? []) as number[];
 
   const activeCount = countActiveFilters(filters);
   const filtered = activeCount > 0;
