@@ -102,7 +102,18 @@ export default async function DashboardPage() {
             )}
 
             {isAdmin && recentUploads.length > 0 && (
-              <Section heading="Recent uploads">
+              <Section
+                heading="Recent uploads"
+                action={
+                  <Link
+                    href="/uploads"
+                    className="text-xs font-medium text-muted-foreground hover:text-foreground"
+                  >
+                    View all
+                    <ArrowRight className="ml-0.5 inline h-3 w-3" aria-hidden />
+                  </Link>
+                }
+              >
                 <RecentUploadsList uploads={recentUploads} />
               </Section>
             )}
@@ -115,16 +126,21 @@ export default async function DashboardPage() {
 
 function Section({
   heading,
+  action,
   children,
 }: {
   heading: string;
+  action?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <section>
-      <h2 className="mb-3 text-sm font-semibold tracking-tight text-foreground/80">
-        {heading}
-      </h2>
+      <div className="mb-3 flex items-baseline justify-between gap-2">
+        <h2 className="text-sm font-semibold tracking-tight text-foreground/80">
+          {heading}
+        </h2>
+        {action}
+      </div>
       {children}
     </section>
   );
