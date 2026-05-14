@@ -39,14 +39,10 @@ export async function commitStaged(
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
 
-  // Pull existing hashes for this org once so we can dedupe in memory
-  // before round-tripping the inserts.
-  const { data: existingHashes, error: hashErr } = await client
-    .from("questions")
-    .select("content_hash")
-    .eq("org_id", orgId);
-  if (hashErr) throw new Error(`hash check failed: ${hashErr.message}`);
-  const existing = new Set((existingHashes ?? []).map((r) => r.content_hash as string));
+  // Dedup happens at the DB via the unique index on (org_id, content_hash)
+  // — see the .upsert call below. We used to pre-pull every hash for the
+  // org into an in-memory Set, but PostgREST silently capped that read at
+  // 1000 rows, breaking dedup once an org crossed that threshold.
 
   const taxonomy = makeTaxonomyResolver(client);
 
@@ -142,11 +138,6 @@ export async function commitStaged(
       continue;
     }
 
-    if (existing.has(row.contentHash)) {
-      result.skipped++;
-      continue;
-    }
-
     try {
       const chapterId = await taxonomy.resolveChapter(subjectId, row.chapterName);
       const subtopicId = row.subtopicName
@@ -183,8 +174,6 @@ export async function commitStaged(
           created_by: createdBy,
         },
       });
-      // Dedup within the same upload (same hash twice in one file)
-      existing.add(row.contentHash);
     } catch (err) {
       result.failed++;
       result.errors.push({
@@ -196,9 +185,15 @@ export async function commitStaged(
 
   if (stagedInserts.length === 0) return result;
 
+  // ON CONFLICT DO NOTHING on the (org_id, content_hash) unique index:
+  // duplicates (within-batch or cross-batch) are skipped silently and
+  // the returned rows are exactly the ones that landed.
   const { data: insertedQs, error: qErr } = await client
     .from("questions")
-    .insert(stagedInserts.map((s) => s.q))
+    .upsert(stagedInserts.map((s) => s.q), {
+      onConflict: "org_id,content_hash",
+      ignoreDuplicates: true,
+    })
     .select("id, content_hash");
   if (qErr) throw new Error(`question insert failed: ${qErr.message}`);
 
@@ -207,6 +202,7 @@ export async function commitStaged(
     idByHash.set(q.content_hash as string, q.id as string);
   }
   result.inserted = insertedQs?.length ?? 0;
+  result.skipped += stagedInserts.length - result.inserted;
 
   const optionRows: {
     question_id: string;
@@ -214,7 +210,12 @@ export async function commitStaged(
     text: string;
     is_correct: boolean;
   }[] = [];
+  // Dedup by content_hash so within-batch duplicates don't emit options
+  // twice for the same question_id (which would 23505 on options_question_id_label_key).
+  const seenHashes = new Set<string>();
   for (const s of stagedInserts) {
+    if (seenHashes.has(s.q.content_hash)) continue;
+    seenHashes.add(s.q.content_hash);
     const qId = idByHash.get(s.q.content_hash);
     if (!qId) continue;
     for (const opt of s.row.options) {
