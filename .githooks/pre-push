@@ -1,0 +1,22 @@
+#!/bin/sh
+# Local gate before pushing to remote. Catches the class of regression
+# documented under "Recurring pitfalls" in CLAUDE.md — specifically
+# server↔client prop serialization issues that compile under `next dev`
+# but fail under `next start` (and therefore on Vercel).
+#
+# Escape hatch: `git push --no-verify` — but you should know why before
+# you reach for it. See the 2026-05-13 Pagination revert decision-log
+# entry for the kind of bug this gate exists to prevent.
+
+set -e
+
+echo "[pre-push] typecheck..."
+npm run typecheck --silent
+
+echo "[pre-push] lint..."
+npm run lint --silent
+
+echo "[pre-push] build..."
+npm run build --silent
+
+echo "[pre-push] all gates passed"
