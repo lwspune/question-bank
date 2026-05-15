@@ -1,4 +1,5 @@
-import { Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 const SUPPORTED_EXAMS = ["MHT-CET", "NDA"];
 const COMING_SOON_EXAMS = ["IPMAT", "CUET", "NEET", "JEE Main"];
@@ -10,6 +11,20 @@ export default function Hero({
 }) {
   return (
     <section className="mb-6 rounded-xl border bg-gradient-to-br from-primary/5 via-background to-background p-4 shadow-sm sm:mb-8 sm:p-8">
+      <Link
+        href="/guide/nda-maths"
+        className="group mb-3 inline-flex animate-fade-in-up items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary transition-colors hover:border-primary/50 hover:bg-primary/15 sm:mb-4"
+        style={{ animationDelay: "0ms" }}
+      >
+        <BookOpen className="h-3 w-3" aria-hidden />
+        <span>
+          New: <span className="font-semibold">NDA Maths strategy guide</span>
+        </span>
+        <ArrowRight
+          className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+          aria-hidden
+        />
+      </Link>
       <h1
         className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}

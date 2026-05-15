@@ -8,6 +8,7 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import PrincipleCard from "@/app/guide/_components/PrincipleCard";
 import CollapsibleDomain from "@/app/guide/_components/CollapsibleDomain";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
@@ -60,6 +61,12 @@ export default async function PrinciplesIndex() {
         { label: "Principles" },
       ]}
     >
+      <GuideJsonLd
+        type="CollectionPage"
+        path="/guide/nda-maths/principles"
+        headline="NDA Maths Principles — ~70 atoms behind every question"
+        description="A complete catalog of the principles tested in NDA Mathematics. Top 20 cross-chapter principles get deep-dive pages; the long tail links to /browse for direct drill."
+      />
       <GuideHero
         eyebrow="Principles"
         title={`~${totalPrinciples} atoms behind every NDA Maths question`}

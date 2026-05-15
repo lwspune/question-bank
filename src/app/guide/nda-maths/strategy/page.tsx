@@ -8,6 +8,7 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import ChapterCard, {
   SkipChapterRow,
 } from "@/app/guide/_components/ChapterCard";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
@@ -80,6 +81,12 @@ export default async function NdaMathsStrategy() {
         { label: "Strategy" },
       ]}
     >
+      <GuideJsonLd
+        type="Article"
+        path="/guide/nda-maths/strategy"
+        headline="NDA Mathematics Strategy — Score 100+ in 50 hours"
+        description="Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 1,320 past-year questions across 11 papers."
+      />
       <GuideHero
         eyebrow="Strategy"
         title={`Score ${STRATEGY_HEADLINE.targetMarks}+ in NDA Maths with 50 hours of focused prep`}

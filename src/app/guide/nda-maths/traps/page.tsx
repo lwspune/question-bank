@@ -5,6 +5,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import SignFlipHeatmap from "@/app/guide/_components/SignFlipHeatmap";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { ROUTES } from "../_data/nda-maths";
 import {
   POSITIONAL_BIAS,
@@ -42,6 +43,12 @@ export default function Traps() {
         { label: "Traps" },
       ]}
     >
+      <GuideJsonLd
+        type="Article"
+        path="/guide/nda-maths/traps"
+        headline="NDA Maths Traps — Distractor patterns NDA reuses"
+        description="How students who know the math still lose marks. Sign-flip distractors, positional bias, last-step verification rules — the patterns hidden in the wrong options."
+      />
       <GuideHero
         eyebrow="Traps"
         title="Why students who know the math still lose marks"

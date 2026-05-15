@@ -8,6 +8,7 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import RelatedPrinciples from "@/app/guide/_components/RelatedPrinciples";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
@@ -100,6 +101,12 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
         { label: principle.name },
       ]}
     >
+      <GuideJsonLd
+        type="Article"
+        path={`/guide/nda-maths/principles/${params.slug}`}
+        headline={`${principle.name} — NDA Maths principle deep dive`}
+        description={principle.summary}
+      />
       <GuideHero
         eyebrow="Principle deep dive"
         title={principle.name}

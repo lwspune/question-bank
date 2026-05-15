@@ -6,6 +6,7 @@ import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
@@ -44,6 +45,12 @@ export default async function Trends() {
         { label: "Trends" },
       ]}
     >
+      <GuideJsonLd
+        type="Article"
+        path="/guide/nda-maths/trends"
+        headline="NDA Mathematics Trends — How the exam shifted (2021–2026)"
+        description="Year-by-year principle drift in NDA Maths. Modulus jumped 4 → 15 in 2023. Vieta declined 13 → 5. Cube roots of unity appeared post-2022. Practice recent papers first."
+      />
       <GuideHero
         eyebrow="Trends"
         title="NDA Mathematics 2025 is not the NDA Mathematics from 2021"

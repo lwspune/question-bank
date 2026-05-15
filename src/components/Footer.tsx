@@ -1,4 +1,5 @@
-import { Mail } from "lucide-react";
+import Link from "next/link";
+import { BookOpen, Mail } from "lucide-react";
 
 const REPORT_EMAIL = "connect.lwspune@gmail.com";
 
@@ -11,6 +12,13 @@ export default function Footer() {
           for teachers.
         </p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <Link
+            href="/guide/nda-maths"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <BookOpen className="h-3 w-3" aria-hidden />
+            NDA Maths Guide
+          </Link>
           <a
             href={`mailto:${REPORT_EMAIL}?subject=Question%20Bank%20feedback`}
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"

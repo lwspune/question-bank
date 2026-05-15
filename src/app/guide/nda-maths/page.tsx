@@ -6,6 +6,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { OVERVIEW, ROUTES } from "./_data/nda-maths";
 
 /** Pages with full content as of this commit. Other section cards get a
@@ -50,6 +51,12 @@ export default function NdaMathsLanding() {
         { label: "NDA Mathematics" },
       ]}
     >
+      <GuideJsonLd
+        type="CollectionPage"
+        path="/guide/nda-maths"
+        headline="NDA Mathematics — Strategy Guide"
+        description="A 1,320-question analysis of every NDA Maths paper from 2021 to 2026 — principles, strategy, traps, and how to score 100+."
+      />
       <GuideHero
         eyebrow="NDA Mathematics Guide"
         title="How NDA Mathematics actually works"

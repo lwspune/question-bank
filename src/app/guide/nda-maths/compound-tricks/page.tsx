@@ -4,6 +4,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import CompoundCard from "@/app/guide/_components/CompoundCard";
+import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
@@ -63,6 +64,12 @@ export default async function CompoundTricks() {
         { label: "Compound Tricks" },
       ]}
     >
+      <GuideJsonLd
+        type="Article"
+        path="/guide/nda-maths/compound-tricks"
+        headline="NDA Maths Compound Tricks — 4 recipes that own 30% of HARD"
+        description="When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard. Drill the recipe, not the silos."
+      />
       <GuideHero
         eyebrow="Compound Tricks"
         title="4 recipes that own 30% of the HARD pool"
