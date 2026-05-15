@@ -9,10 +9,13 @@ type Props = {
   pctHard?: number;
   summary: string;
   chapters?: string[];
-  /** Resolved drill filter (chapter + optional subtopic). */
+  /** Resolved drill filter — list of (chapter, subtopic) IDs plus optional
+   *  curated extras. The BrowseLink ORs subtopic and id sets so the count
+   *  matches the principle's full cross-chapter footprint. */
   drill: {
-    chapterId?: string;
-    subtopicId?: string;
+    chapterIds: string[];
+    subtopicIds: string[];
+    extraIds: string[];
   };
   /** If set, principle has a detail page at /guide/nda-maths/principles/{slug}. */
   slug?: string;
@@ -87,8 +90,9 @@ export default function PrincipleCard({
         <BrowseLink
           examId={examId}
           subjectId={subjectId}
-          chapterIds={drill.chapterId ? [drill.chapterId] : []}
-          subtopicIds={drill.subtopicId ? [drill.subtopicId] : []}
+          chapterIds={drill.chapterIds}
+          subtopicIds={drill.subtopicIds}
+          extraIds={drill.extraIds}
           variant={hasDetailPage ? "outline" : "primary"}
           className="px-3 py-1.5 text-xs"
         >

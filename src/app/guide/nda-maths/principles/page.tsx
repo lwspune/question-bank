@@ -34,12 +34,26 @@ export default async function PrinciplesIndex() {
   const supabase = createSupabaseServerClient();
   const taxonomy = await resolveTaxonomy(supabase, "NDA", "Mathematics");
 
-  /** Resolve a principle's drill (chapter + optional subtopic) into UUIDs. */
+  /** Resolve a principle's drill list (chapter + optional subtopic per entry)
+   *  into deduped ID lists ready to feed BrowseLink. ExtraIds pass through
+   *  unchanged — they're already UUIDs. */
   const resolveDrill = (p: Principle) => {
-    const chap = taxonomy.chapters.get(p.drill.chapter);
+    const subtopicIds = new Set<string>();
+    for (const d of p.drill) {
+      const chap = taxonomy.chapters.get(d.chapter);
+      if (!chap) continue;
+      if (d.subtopic) {
+        const sid = chap.subtopics.get(d.subtopic);
+        if (sid) subtopicIds.add(sid);
+      }
+    }
     return {
-      chapterId: chap?.id,
-      subtopicId: p.drill.subtopic ? chap?.subtopics.get(p.drill.subtopic) : undefined,
+      // chapterIds intentionally empty — subtopicIds + extraIds is the
+      // principle's atomic set. Setting chapterIds would AND-narrow and
+      // exclude extras that live in unlisted chapters.
+      chapterIds: [],
+      subtopicIds: Array.from(subtopicIds),
+      extraIds: p.extraQuestionIds ?? [],
     };
   };
 

@@ -55,10 +55,21 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
     loadWorkedExamples(supabase, detail.exampleQuestionIds),
   ]);
 
-  const chap = taxonomy.chapters.get(principle.drill.chapter);
-  const subtopicId = principle.drill.subtopic
-    ? chap?.subtopics.get(principle.drill.subtopic)
-    : undefined;
+  // Resolve every (chapter, subtopic) pair in the drill list into a deduped
+  // subtopicIds set. extraQuestionIds pass through unchanged — they're
+  // already UUIDs. chapterIds is intentionally NOT set: it would AND-narrow
+  // the result and exclude curated extras living in unlisted chapters.
+  const subtopicIdSet = new Set<string>();
+  for (const d of principle.drill) {
+    const chap = taxonomy.chapters.get(d.chapter);
+    if (!chap) continue;
+    if (d.subtopic) {
+      const sid = chap.subtopics.get(d.subtopic);
+      if (sid) subtopicIdSet.add(sid);
+    }
+  }
+  const drillSubtopicIds = Array.from(subtopicIdSet);
+  const drillExtraIds = principle.extraQuestionIds ?? [];
 
   // Find the next principle slug in TOP_20 order, for the PrevNext nav.
   const idx = TOP_20.findIndex((p) => p.slug === params.slug);
@@ -197,8 +208,8 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
           <BrowseLink
             examId={taxonomy.examId}
             subjectId={taxonomy.subjectId}
-            chapterIds={chap?.id ? [chap.id] : []}
-            subtopicIds={subtopicId ? [subtopicId] : []}
+            subtopicIds={drillSubtopicIds}
+            extraIds={drillExtraIds}
           >
             Drill the {principle.qCount} questions
           </BrowseLink>

@@ -75,8 +75,22 @@ export async function queryQuestions(
   if (filters.examId) q = q.eq("exam_id", filters.examId);
   if (filters.subjectId) q = q.eq("subject_id", filters.subjectId);
   if (filters.chapterIds.length > 0) q = q.in("chapter_id", filters.chapterIds);
-  if (filters.subtopicIds.length > 0)
+  // Subtopic vs extras: principle drill links include both — questions in
+  // named-keyword subtopics PLUS curated extras where the principle is the
+  // lever but the subtopic name doesn't carry the keyword. The two sets are
+  // OR'd; other filters (exam/subject/chapter/difficulty/year/q) AND-narrow
+  // on top.
+  const hasSubtopics = filters.subtopicIds.length > 0;
+  const hasExtras = filters.extraIds.length > 0;
+  if (hasSubtopics && hasExtras) {
+    q = q.or(
+      `subtopic_id.in.(${filters.subtopicIds.join(",")}),id.in.(${filters.extraIds.join(",")})`
+    );
+  } else if (hasSubtopics) {
     q = q.in("subtopic_id", filters.subtopicIds);
+  } else if (hasExtras) {
+    q = q.in("id", filters.extraIds);
+  }
   if (filters.difficulties.length > 0)
     q = q.in("difficulty", filters.difficulties);
   if (filters.pyqYears.length > 0) q = q.in("pyq_year", filters.pyqYears);

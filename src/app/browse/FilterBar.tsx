@@ -103,6 +103,7 @@ export default function FilterBar({
     subtopicIds: [],
     difficulties: [],
     pyqYears: [],
+    extraIds: [],
     q: "",
     page: 1,
   };

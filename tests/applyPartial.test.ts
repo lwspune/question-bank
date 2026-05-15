@@ -9,6 +9,7 @@ const SEEDED: Filters = {
   subtopicIds: ["st-1"],
   difficulties: ["EASY", "MODERATE"],
   pyqYears: [2024, 2023],
+  extraIds: [],
   q: "vectors",
   page: 4,
 };

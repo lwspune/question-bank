@@ -12,6 +12,9 @@ export type BrowseFilters = {
   subtopicIds?: string[];
   difficulties?: Difficulty[];
   pyqYears?: number[];
+  /** Curated question UUIDs OR'd with subtopicIds — used by principle drill
+   *  links to surface cross-chapter questions not captured by named subtopics. */
+  extraIds?: string[];
   q?: string;
 };
 
@@ -32,6 +35,7 @@ export function buildBrowseUrl(partial: BrowseFilters): string {
     subtopicIds: partial.subtopicIds ?? [],
     difficulties: partial.difficulties ?? [],
     pyqYears: partial.pyqYears ?? [],
+    extraIds: partial.extraIds ?? [],
     q: partial.q ?? "",
     page: 1,
   };

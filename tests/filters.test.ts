@@ -14,9 +14,22 @@ describe("parseFilters", () => {
       subtopicIds: [],
       difficulties: [],
       pyqYears: [],
+      extraIds: [],
       q: "",
       page: 1,
     });
+  });
+
+  it("parses comma-separated extraIds (curated principle drill extensions)", () => {
+    const f = parseFilters(
+      new URLSearchParams(
+        "extras=11111111-1111-1111-1111-111111111111,22222222-2222-2222-2222-222222222222"
+      )
+    );
+    expect(f.extraIds).toEqual([
+      "11111111-1111-1111-1111-111111111111",
+      "22222222-2222-2222-2222-222222222222",
+    ]);
   });
 
   it("parses comma-separated pyqYears as integers", () => {
@@ -74,6 +87,7 @@ describe("buildSearchParams", () => {
     subtopicIds: [],
     difficulties: [],
     pyqYears: [],
+    extraIds: [],
     q: "",
     page: 1,
   };
@@ -90,6 +104,7 @@ describe("buildSearchParams", () => {
       subtopicIds: [],
       difficulties: ["EASY"],
       pyqYears: [],
+      extraIds: [],
       q: "lens",
       page: 2,
     });
@@ -110,12 +125,49 @@ describe("buildSearchParams", () => {
       subtopicIds: ["x"],
       difficulties: ["EASY", "HARD"],
       pyqYears: [2024, 2022],
+      extraIds: [],
       q: "wave",
       page: 3,
     };
     const params = buildSearchParams(original);
     const parsed = parseFilters(params);
     expect(parsed).toEqual(original);
+  });
+
+  it("round-trips extraIds — used by principle drill links", () => {
+    const original: Filters = {
+      examId: null,
+      subjectId: null,
+      chapterIds: [],
+      subtopicIds: ["s1"],
+      difficulties: [],
+      pyqYears: [],
+      extraIds: [
+        "11111111-1111-1111-1111-111111111111",
+        "22222222-2222-2222-2222-222222222222",
+        "33333333-3333-3333-3333-333333333333",
+      ],
+      q: "",
+      page: 1,
+    };
+    const params = buildSearchParams(original);
+    expect(params.get("extras")).toBe(original.extraIds.join(","));
+    expect(parseFilters(params)).toEqual(original);
+  });
+
+  it("emits no extras param when extraIds is empty", () => {
+    const sp = buildSearchParams({
+      examId: null,
+      subjectId: null,
+      chapterIds: [],
+      subtopicIds: [],
+      difficulties: [],
+      pyqYears: [],
+      extraIds: [],
+      q: "",
+      page: 1,
+    });
+    expect(sp.has("extras")).toBe(false);
   });
 
   it("emits pyqYears as a comma-joined param when set", () => {
@@ -126,6 +178,7 @@ describe("buildSearchParams", () => {
       subtopicIds: [],
       difficulties: [],
       pyqYears: [2024, 2023],
+      extraIds: [],
       q: "",
       page: 1,
     });

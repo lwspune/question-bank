@@ -86,6 +86,7 @@ export default function ActiveFilterChips({
     subtopicIds: [],
     difficulties: [],
     pyqYears: [],
+    extraIds: [],
     q: "",
     page: 1,
   };

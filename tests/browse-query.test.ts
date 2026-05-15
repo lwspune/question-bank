@@ -19,6 +19,7 @@ const EMPTY_FILTERS: Filters = {
   subtopicIds: [],
   difficulties: [],
   pyqYears: [],
+  extraIds: [],
   q: "",
   page: 1,
 };
@@ -126,6 +127,74 @@ describe.skipIf(!HAS_ENV)("queryQuestions (against LWS Pune seed)", () => {
       25
     );
     expect(result.totalCount).toBeGreaterThan(0);
+  });
+
+  it("composite OR: subtopicIds ∪ extraIds returns union of both sets", async () => {
+    // Pick two specific questions outside any Physics subtopic to use as
+    // extraIds, then layer a Physics subtopic on top. The result should
+    // include every question in that subtopic PLUS the two extras.
+    const { data: subtopic } = await client
+      .from("subtopics")
+      .select("id")
+      .eq("chapter_id", (
+        await client
+          .from("chapters")
+          .select("id")
+          .eq("subject_id", physicsId)
+          .limit(1)
+          .single()
+      ).data!.id)
+      .limit(1)
+      .single();
+    const stId = subtopic!.id;
+
+    // Two PUBLIC questions from a DIFFERENT subtopic than stId — they'd
+    // never show up via the subtopic filter alone.
+    const { data: extras } = await client
+      .from("questions")
+      .select("id, subtopic_id")
+      .eq("org_id", orgId)
+      .eq("visibility", "PUBLIC")
+      .neq("subtopic_id", stId)
+      .limit(2);
+    const extraIds = extras!.map((r) => r.id);
+
+    const subOnly = await queryQuestions(
+      client,
+      orgId,
+      { ...EMPTY_FILTERS, subtopicIds: [stId] },
+      200
+    );
+    const union = await queryQuestions(
+      client,
+      orgId,
+      { ...EMPTY_FILTERS, subtopicIds: [stId], extraIds },
+      200
+    );
+    // Every subtopic-only id appears in the union, plus the two extras.
+    const unionIds = new Set(union.rows.map((r) => r.id));
+    for (const r of subOnly.rows) expect(unionIds.has(r.id)).toBe(true);
+    for (const id of extraIds) expect(unionIds.has(id)).toBe(true);
+    expect(union.totalCount).toBe(subOnly.totalCount + extraIds.length);
+  });
+
+  it("extraIds alone (no subtopicIds) returns only the extras", async () => {
+    const { data: extras } = await client
+      .from("questions")
+      .select("id")
+      .eq("org_id", orgId)
+      .eq("visibility", "PUBLIC")
+      .limit(3);
+    const extraIds = extras!.map((r) => r.id);
+
+    const result = await queryQuestions(
+      client,
+      orgId,
+      { ...EMPTY_FILTERS, extraIds },
+      200
+    );
+    expect(result.totalCount).toBe(extraIds.length);
+    expect(new Set(result.rows.map((r) => r.id))).toEqual(new Set(extraIds));
   });
 
   it("anon path (orgId=null, anon JWT) returns only PUBLIC questions", async () => {
