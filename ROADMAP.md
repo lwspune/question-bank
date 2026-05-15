@@ -2,7 +2,7 @@
 
 Pending features, data-model changes, and content work for Question Bank. Mirrors the "deferred" annotations scattered through the `CLAUDE.md` decisions log and consolidates them in one place.
 
-**Live as of 2026-05-15:** 1,378 questions (MHT-CET 748 + NDA 630, all PUBLIC) · public `/browse` with filter/cart/Word export · admin `/upload` + `/uploads` index + per-question edit · `/guide/nda-maths` with 26 indexable pages (landing + 5 sections + 20 principle deep dives) · cross-app sync receiver. 20 migrations applied. 442 tests across 63 files.
+**Live as of 2026-05-15:** ~2,878 questions all PUBLIC (MHT-CET 748 + NDA 2,130: Maths 480, English 550, Physics 273, Geography 211, Chemistry 162, History 150, Biology 115, Current Affairs 117, Polity 59, Economics 13) · public `/browse` with filter/cart/Word export · admin `/upload` + `/uploads` index + per-question edit · `/guide/nda-maths` with 26 indexable pages (landing + 5 sections + 20 principle deep dives) · cross-app sync receiver. 20 migrations applied. 442 tests across 63 files.
 
 ---
 
@@ -60,13 +60,12 @@ IPMAT, CUET, NEET, JEE Main — already shown in `/browse` Hero as "Coming soon.
 
 ## Taxonomy cleanup (data work)
 
-Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the `[[reclassification-sql-pattern]]` and `[[taxonomy-inline-iteration]]` memories. Done so far: NDA Mathematics (480 q · 121 subtopics) + MHT-CET Mathematics (248 q · 56 subtopics).
+Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the `[[reclassification-sql-pattern]]` and `[[taxonomy-inline-iteration]]` memories. **Done so far (11 subjects · 132 ch · 2,378 q · 438 subtopics):** all 10 NDA subjects + MHT-CET Mathematics.
 
 Pending:
 - MHT-CET Chemistry (33 chapters · ~241 subtopics)
 - MHT-CET Physics (27 chapters · ~243 subtopics)
-- NDA GAT 2025 Paper-1 PART B (100 q across History/Geography/Polity/Economics/Physics/Chemistry/Biology/Current Affairs — 1:1 question-to-subtopic ratio anti-pattern needs cleanup)
-- NDA other 9 subjects across remaining papers
+All NDA cleanup complete. Phase B/C/D template fully stable.
 
 ---
 
