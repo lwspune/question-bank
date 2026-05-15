@@ -10,7 +10,12 @@ import { OVERVIEW, ROUTES } from "./_data/nda-maths";
 
 /** Pages with full content as of this commit. Other section cards get a
  * "Coming soon" tag so readers know what to expect. */
-const LIVE_SLUGS = new Set(["strategy"]);
+const LIVE_SLUGS = new Set([
+  "strategy",
+  "compound-tricks",
+  "trends",
+  "traps",
+]);
 
 export const metadata: Metadata = {
   title: "NDA Mathematics — Strategy Guide",
