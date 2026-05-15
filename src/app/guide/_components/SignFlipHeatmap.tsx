@@ -1,17 +1,21 @@
 import { cn } from "@/lib/utils";
-import type { SignFlipCell } from "../nda-maths/_data/traps";
+import type { DistractorCell } from "../nda-maths/_data/traps";
 
 type Props = {
-  cells: SignFlipCell[];
+  cells: DistractorCell[];
+  /** Column header for the rate column. Defaults to "Sign-flip rate" for
+   *  back-compat; pass "Factor-of-2 rate" etc. for other trap categories. */
+  rateLabel?: string;
 };
 
 /**
- * Tabular heatmap: rows are (chapter, difficulty) slices, sign-flip % shown
+ * Tabular heatmap: rows are (chapter, difficulty) slices, distractor % shown
  * with color intensity. Sorted desc — the worst offenders are at the top.
+ * Reusable across trap categories via `rateLabel`.
  *
  * Not a chart — a styled table. Reads on mobile, prints clean, no chart-lib.
  */
-export default function SignFlipHeatmap({ cells }: Props) {
+export default function SignFlipHeatmap({ cells, rateLabel = "Sign-flip rate" }: Props) {
   return (
     <div className="overflow-x-auto rounded-md border">
       <table className="w-full text-sm">
@@ -20,7 +24,7 @@ export default function SignFlipHeatmap({ cells }: Props) {
             <th className="px-3 py-2 font-medium">Chapter</th>
             <th className="px-3 py-2 font-medium">Difficulty</th>
             <th className="px-3 py-2 text-right font-medium">Sample size</th>
-            <th className="px-3 py-2 text-right font-medium">Sign-flip rate</th>
+            <th className="px-3 py-2 text-right font-medium">{rateLabel}</th>
           </tr>
         </thead>
         <tbody>
@@ -65,7 +69,7 @@ export default function SignFlipHeatmap({ cells }: Props) {
   );
 }
 
-function DifficultyPill({ level }: { level: SignFlipCell["difficulty"] }) {
+function DifficultyPill({ level }: { level: DistractorCell["difficulty"] }) {
   const map = {
     EASY: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300",
     MODERATE:
