@@ -12,6 +12,7 @@ import { OVERVIEW, ROUTES } from "./_data/nda-maths";
  * "Coming soon" tag so readers know what to expect. */
 const LIVE_SLUGS = new Set([
   "strategy",
+  "principles",
   "compound-tricks",
   "trends",
   "traps",
