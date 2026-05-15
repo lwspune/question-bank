@@ -5,7 +5,12 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
+import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import { OVERVIEW, ROUTES } from "./_data/nda-maths";
+
+/** Pages with full content as of this commit. Other section cards get a
+ * "Coming soon" tag so readers know what to expect. */
+const LIVE_SLUGS = new Set(["strategy"]);
 
 export const metadata: Metadata = {
   title: "NDA Mathematics — Strategy Guide",
@@ -62,6 +67,7 @@ export default function NdaMathsLanding() {
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">
           {sectionCards.map((r) => {
             const href = `/guide/nda-maths/${r.slug}`;
+            const isLive = LIVE_SLUGS.has(r.slug);
             return (
               <li key={r.slug}>
                 <Link
@@ -69,9 +75,16 @@ export default function NdaMathsLanding() {
                   className="group block rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-accent"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-base font-semibold tracking-tight">
-                      {r.label}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base font-semibold tracking-tight">
+                        {r.label}
+                      </h3>
+                      {!isLive && (
+                        <span className="inline-flex items-center rounded-full border border-dashed bg-muted/40 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                          Coming soon
+                        </span>
+                      )}
+                    </div>
                     <ArrowRight
                       className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                       aria-hidden
@@ -110,13 +123,12 @@ export default function NdaMathsLanding() {
         </p>
       </section>
 
-      <section className="mt-12 rounded-lg border border-dashed bg-card p-5">
-        <p className="text-sm font-medium text-muted-foreground">
-          Coming up: Strategy, Principles, Compound Tricks, Trends, and
-          Traps sections. This is the foundation page — full content rolls
-          out over the next few weeks.
-        </p>
-      </section>
+      <PrevNextNav
+        next={{
+          href: "/guide/nda-maths/strategy",
+          label: "Strategy — Score 100+ in 50 hours",
+        }}
+      />
     </GuideShell>
   );
 }
