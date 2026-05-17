@@ -12,6 +12,7 @@
     "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > src/types/db.ts",
     "extract:taxonomy": "tsx scripts/extract-taxonomy.ts",
     "notes:lint": "tsx scripts/notes-lint.ts",
+    "tags:audit": "tsx scripts/principle-tag-audit.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepush": "npm run typecheck && npm run lint && npm run build",
