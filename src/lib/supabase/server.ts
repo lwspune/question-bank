@@ -1,7 +1,21 @@
+import { createClient } from "@supabase/supabase-js";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
 type CookieToSet = { name: string; value: string; options?: CookieOptions };
+
+/**
+ * Anon Supabase client with NO cookie binding. Use for fully public reads
+ * (e.g. /notes pages) where the page should be cacheable via `revalidate`.
+ * Cookie-aware clients force dynamic rendering on every request.
+ */
+export function createSupabaseAnonClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { auth: { persistSession: false } }
+  );
+}
 
 export function createSupabaseServerClient() {
   const cookieStore = cookies();

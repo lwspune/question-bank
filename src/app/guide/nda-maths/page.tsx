@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, NotebookPen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -68,6 +68,32 @@ export default function NdaMathsLanding() {
       <BrowseLink examId={undefined} className="mt-2">
         Browse the full question bank
       </BrowseLink>
+
+      {/* Cross-link to teaching notes — students who land here looking for
+          strategy often want chapter-deep teaching content too. */}
+      <Link
+        href="/notes/nda-maths/statistics"
+        className="group mt-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4 transition-colors hover:border-primary/50 hover:bg-primary/10"
+      >
+        <NotebookPen
+          className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+          aria-hidden
+        />
+        <div className="flex-1">
+          <p className="text-sm font-semibold tracking-tight text-foreground">
+            New: NDA Maths Statistics teaching notes
+          </p>
+          <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+            21 concept units across 4 subtopics — intuition, formulas,
+            worked examples, and per-concept drill links. Built for the
+            digital board and student self-study.
+          </p>
+        </div>
+        <ArrowRight
+          className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+          aria-hidden
+        />
+      </Link>
 
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">

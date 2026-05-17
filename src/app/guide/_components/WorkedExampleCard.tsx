@@ -9,6 +9,8 @@ import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 type Props = {
   rank: number;
   example: WorkedExample;
+  /** Scale fonts + spacing for digital-board projection. Used by /notes Present mode. */
+  presentMode?: boolean;
 };
 
 const DIFFICULTY_STYLES = {
@@ -17,14 +19,19 @@ const DIFFICULTY_STYLES = {
   HARD: "bg-rose-100 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300",
 } as const;
 
-export default function WorkedExampleCard({ rank, example }: Props) {
+export default function WorkedExampleCard({ rank, example, presentMode }: Props) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const correct = example.options.find((o) => o.isCorrect);
 
   return (
     <article className="rounded-lg border bg-card shadow-sm">
-      <header className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5 text-xs text-muted-foreground">
+      <header
+        className={cn(
+          "flex flex-wrap items-center gap-2 border-b text-muted-foreground",
+          presentMode ? "px-6 py-3 text-lg" : "px-4 py-2.5 text-xs"
+        )}
+      >
         <span className="font-semibold text-foreground tabular-nums">
           Example {rank}
         </span>
@@ -32,7 +39,8 @@ export default function WorkedExampleCard({ rank, example }: Props) {
         <span>{example.chapter}</span>
         <span
           className={cn(
-            "ml-auto inline-flex rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide",
+            "ml-auto inline-flex rounded font-medium uppercase tracking-wide",
+            presentMode ? "px-2 py-1 text-sm" : "px-1.5 py-0.5 text-[10px]",
             DIFFICULTY_STYLES[example.difficulty]
           )}
         >
@@ -40,30 +48,43 @@ export default function WorkedExampleCard({ rank, example }: Props) {
         </span>
       </header>
 
-      <div className="px-4 py-3 font-serif text-sm leading-relaxed">
+      <div
+        className={cn(
+          "font-serif leading-relaxed",
+          presentMode ? "px-6 py-5 text-2xl sm:text-3xl" : "px-4 py-3 text-sm"
+        )}
+      >
         <KatexRenderer text={example.text} />
       </div>
 
       {/* Options reveal */}
-      <div className="border-t px-4 py-3">
+      <div className={cn("border-t", presentMode ? "px-6 py-4" : "px-4 py-3")}>
         {!showAnswer ? (
           <button
             type="button"
             onClick={() => setShowAnswer(true)}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+            className={cn(
+              "inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
+              presentMode ? "text-xl" : "text-xs"
+            )}
           >
-            <ChevronDown className="h-3.5 w-3.5" aria-hidden />
+            <ChevronDown
+              className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
+              aria-hidden
+            />
             Show options and answer
           </button>
         ) : (
-          <ol className="space-y-1.5 text-sm">
+          <ol
+            className={cn(presentMode ? "space-y-3 text-2xl" : "space-y-1.5 text-sm")}
+          >
             {example.options.map((o) => (
               <li
                 key={o.label}
                 className={cn(
-                  "flex gap-2 rounded-md px-2 py-1",
-                  o.isCorrect &&
-                    "bg-emerald-50 dark:bg-emerald-950/30"
+                  "flex gap-2 rounded-md",
+                  presentMode ? "px-3 py-2" : "px-2 py-1",
+                  o.isCorrect && "bg-emerald-50 dark:bg-emerald-950/30"
                 )}
               >
                 <span
@@ -81,7 +102,10 @@ export default function WorkedExampleCard({ rank, example }: Props) {
                 </span>
                 {o.isCorrect && (
                   <CheckCircle2
-                    className="ml-auto h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400"
+                    className={cn(
+                      "ml-auto shrink-0 text-emerald-600 dark:text-emerald-400",
+                      presentMode ? "h-7 w-7" : "h-4 w-4"
+                    )}
                     aria-label="Correct answer"
                   />
                 )}
@@ -93,20 +117,45 @@ export default function WorkedExampleCard({ rank, example }: Props) {
 
       {/* Solution reveal */}
       {showAnswer && example.solution && (
-        <div className="border-t bg-muted/30 px-4 py-3">
+        <div
+          className={cn(
+            "border-t bg-muted/30",
+            presentMode ? "px-6 py-4" : "px-4 py-3"
+          )}
+        >
           {!showSolution ? (
             <button
               type="button"
               onClick={() => setShowSolution(true)}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+              className={cn(
+                "inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
+                presentMode ? "text-xl" : "text-xs"
+              )}
             >
-              <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+              <Lightbulb
+                className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
+                aria-hidden
+              />
               Show solution
             </button>
           ) : (
-            <div className="font-serif text-sm leading-relaxed text-muted-foreground">
-              <p className="mb-1 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
-                <Lightbulb className="h-3.5 w-3.5" aria-hidden /> Solution
+            <div
+              className={cn(
+                "font-serif leading-relaxed text-muted-foreground",
+                presentMode ? "text-xl sm:text-2xl" : "text-sm"
+              )}
+            >
+              <p
+                className={cn(
+                  "mb-1 flex items-center gap-1.5 font-semibold uppercase tracking-wide text-primary",
+                  presentMode ? "text-base" : "text-xs"
+                )}
+              >
+                <Lightbulb
+                  className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
+                  aria-hidden
+                />{" "}
+                Solution
               </p>
               <KatexRenderer text={example.solution} />
             </div>
@@ -115,7 +164,12 @@ export default function WorkedExampleCard({ rank, example }: Props) {
       )}
 
       {showAnswer && !example.solution && correct && (
-        <div className="border-t bg-muted/30 px-4 py-2 text-xs text-muted-foreground italic">
+        <div
+          className={cn(
+            "border-t bg-muted/30 italic text-muted-foreground",
+            presentMode ? "px-6 py-3 text-lg" : "px-4 py-2 text-xs"
+          )}
+        >
           No worked solution recorded for this question. The correct answer
           is {correct.label}.
         </div>

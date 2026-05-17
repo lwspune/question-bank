@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { ROUTES } from "@/app/guide/nda-maths/_data/nda-maths";
 import { DETAIL_SLUGS } from "@/app/guide/nda-maths/_data/principle-details";
+import { STATISTICS_SLUGS } from "@/app/notes/nda-maths/statistics/_data";
 
 const SITE_URL = "https://question-bank-sage.vercel.app";
 
@@ -30,6 +31,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const notesEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/notes/nda-maths/statistics`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...STATISTICS_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/notes/nda-maths/statistics/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+  ];
+
   return [
     {
       url: `${SITE_URL}/browse`,
@@ -38,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...guideEntries,
+    ...notesEntries,
     {
       url: `${SITE_URL}/login`,
       lastModified: now,
