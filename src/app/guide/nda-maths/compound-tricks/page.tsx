@@ -11,9 +11,9 @@ import { ROUTES } from "../_data/nda-maths";
 import { COMPOUNDS } from "../_data/compounds";
 
 export const metadata: Metadata = {
-  title: "NDA Maths Compound Tricks — 4 recipes that own 30% of HARD",
+  title: "NDA Maths Compound Tricks — 4 principle pairs that spike HARD",
   description:
-    "When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard. Drill the recipe, not the silos.",
+    "When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.5% bank average). Drill the recipe, not the silos.",
   alternates: { canonical: "/guide/nda-maths/compound-tricks" },
 };
 
@@ -50,8 +50,8 @@ export default async function CompoundTricks() {
   const stats = [
     { value: String(COMPOUNDS.length), label: "compound recipes" },
     { value: String(totalCompound), label: "compound questions" },
-    { value: "~30%", label: "of HARD pool" },
-    { value: "1.4–1.7×", label: "harder than average" },
+    { value: "40–67%", label: "HARD rate (vs 22.5% bank avg)" },
+    { value: "1.8–3×", label: "harder than average" },
   ];
 
   return (
@@ -67,24 +67,24 @@ export default async function CompoundTricks() {
       <GuideJsonLd
         type="Article"
         path="/guide/nda-maths/compound-tricks"
-        headline="NDA Maths Compound Tricks — 4 recipes that own 30% of HARD"
-        description="When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard. Drill the recipe, not the silos."
+        headline="NDA Maths Compound Tricks — 4 principle pairs that spike HARD"
+        description="When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.5% bank average). Drill the recipe, not the silos."
       />
       <GuideHero
         eyebrow="Compound Tricks"
-        title="4 recipes that own 30% of the HARD pool"
-        subtitle="When two principles appear together, the question is reliably hard. Most students lose marks here not because they don't know either principle — but because they didn't see them chained. Drill the recipe, not the silos."
+        title="4 principle pairs that spike HARD"
+        subtitle="When two principles appear together, the question is reliably hard — these compounds run 40–67% HARD vs the 22.5% bank average. Most students lose marks here not because they don't know either principle — but because they didn't see them chained. Drill the recipe, not the silos."
       >
         <StatBlock stats={stats} />
       </GuideHero>
 
       <section className="mt-12">
         <p className="font-serif leading-relaxed text-muted-foreground">
-          Across the 322 HARD questions in the bank, four principle pairings
-          recur with elevated frequency. Each compound below has a higher HARD
-          rate than the bank average (24%), and the questions that match almost
-          always require <em>both</em> tricks in sequence. Drill them as
-          compounds.
+          Across the 487 HARD questions in the 2,160-q bank, four principle
+          pairings recur with markedly elevated HARD rates. Each compound
+          below runs 1.8× to 3× the bank-average HARD rate (22.5%), and the
+          questions that match almost always require <em>both</em> tricks
+          in sequence. The chain is the skill — drill them as compounds.
         </p>
       </section>
 

@@ -41,7 +41,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "compound-tricks",
     label: "Compound Tricks",
     blurb:
-      "4 compound recipes that own 30% of the HARD pool — the chains paper-setters love.",
+      "4 principle pairs that spike HARD — 40–67% HARD vs 22.5% bank average. The chains paper-setters love.",
   },
   {
     slug: "trends",
