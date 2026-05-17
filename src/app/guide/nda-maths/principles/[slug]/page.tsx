@@ -10,8 +10,8 @@ import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import RelatedPrinciples from "@/app/guide/_components/RelatedPrinciples";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
+import { loadPrincipleQuestionIds } from "@/lib/tags/principleTags";
 import { ROUTES } from "../../_data/nda-maths";
 import { TOP_20 } from "../../_data/principles";
 import {
@@ -50,26 +50,17 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
   if (!principle || !detail) notFound();
 
   const supabase = createSupabaseServerClient();
-  const [taxonomy, examples] = await Promise.all([
-    resolveTaxonomy(supabase, "NDA", "Mathematics"),
+  const [examples, taggedMap] = await Promise.all([
     loadWorkedExamples(supabase, detail.exampleQuestionIds),
+    loadPrincipleQuestionIds(supabase, [params.slug]),
   ]);
 
-  // Resolve every (chapter, subtopic) pair in the drill list into a deduped
-  // subtopicIds set. extraQuestionIds pass through unchanged — they're
-  // already UUIDs. chapterIds is intentionally NOT set: it would AND-narrow
-  // the result and exclude curated extras living in unlisted chapters.
-  const subtopicIdSet = new Set<string>();
-  for (const d of principle.drill) {
-    const chap = taxonomy.chapters.get(d.chapter);
-    if (!chap) continue;
-    if (d.subtopic) {
-      const sid = chap.subtopics.get(d.subtopic);
-      if (sid) subtopicIdSet.add(sid);
-    }
-  }
-  const drillSubtopicIds = Array.from(subtopicIdSet);
-  const drillExtraIds = principle.extraQuestionIds ?? [];
+  // Live count + cross-chapter spread come from DB tags — no static qCount or
+  // drill resolution here. The /browse CTA uses `?principle=<slug>` which
+  // narrows to the same tagged set on the server side.
+  const taggedIds = taggedMap.get(params.slug) ?? [];
+  const liveCount = taggedIds.length;
+  const chapterSpread = await countDistinctChapters(supabase, taggedIds);
 
   // Find the next principle slug in TOP_20 order, for the PrevNext nav.
   const idx = TOP_20.findIndex((p) => p.slug === params.slug);
@@ -89,13 +80,13 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
       : { href: "/guide/nda-maths/principles", label: "All principles" };
 
   const stats = [
-    { value: String(principle.qCount), label: "questions in the bank" },
+    { value: String(liveCount), label: "questions in the bank" },
     {
       value: principle.pctHard != null ? `${principle.pctHard}%` : "—",
       label: "tagged HARD",
     },
     {
-      value: String(principle.chapters?.length ?? 1),
+      value: String(chapterSpread),
       label: "chapter spread",
     },
     { value: String(examples.length), label: "worked examples below" },
@@ -201,17 +192,12 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
           Drill every {principle.name.toLowerCase()} question
         </h2>
         <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-          {principle.qCount} questions from the bank — paginated, with cart and
+          {liveCount} questions from the bank — paginated, with cart and
           Word-export support.
         </p>
         <div className="mt-4 flex justify-center">
-          <BrowseLink
-            examId={taxonomy.examId}
-            subjectId={taxonomy.subjectId}
-            subtopicIds={drillSubtopicIds}
-            extraIds={drillExtraIds}
-          >
-            Drill the {principle.qCount} questions
+          <BrowseLink principleSlug={params.slug}>
+            Drill the {liveCount} questions
           </BrowseLink>
         </div>
       </section>
@@ -222,4 +208,23 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
       <PrevNextNav prev={prev} next={next} />
     </GuideShell>
   );
+}
+
+/** Count distinct chapters a principle's tagged questions span. RLS-respecting
+ *  (anon sees PUBLIC counts only). Empty input short-circuits to 0. */
+async function countDistinctChapters(
+  client: ReturnType<typeof createSupabaseServerClient>,
+  questionIds: string[]
+): Promise<number> {
+  if (questionIds.length === 0) return 0;
+  const { data, error } = await client
+    .from("questions")
+    .select("chapter_id")
+    .in("id", questionIds);
+  if (error) return 0;
+  const set = new Set<string>();
+  for (const row of (data ?? []) as { chapter_id: string }[]) {
+    set.add(row.chapter_id);
+  }
+  return set.size;
 }

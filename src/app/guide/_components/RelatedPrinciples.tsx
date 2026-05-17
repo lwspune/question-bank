@@ -39,9 +39,11 @@ export default function RelatedPrinciples({ slugs }: Props) {
                   aria-hidden
                 />
               </div>
-              <p className="mt-1 text-xs tabular-nums text-muted-foreground">
-                {p.qCount} q{p.pctHard != null && ` · ${p.pctHard}% hard`}
-              </p>
+              {p.pctHard != null && (
+                <p className="mt-1 text-xs tabular-nums text-muted-foreground">
+                  {p.pctHard}% hard
+                </p>
+              )}
             </Link>
           </li>
         ))}

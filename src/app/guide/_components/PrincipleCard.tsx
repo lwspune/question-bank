@@ -9,25 +9,27 @@ type Props = {
   pctHard?: number;
   summary: string;
   chapters?: string[];
-  /** Resolved drill filter — list of (chapter, subtopic) IDs plus optional
-   *  curated extras. The BrowseLink ORs subtopic and id sets so the count
-   *  matches the principle's full cross-chapter footprint. */
-  drill: {
+  /** If set, principle has a detail page at /guide/nda-maths/principles/{slug}
+   *  AND is backed by DB tags — the drill CTA uses `?principle=<slug>` and
+   *  resolves to the live tagged set. */
+  slug?: string;
+  /** Static drill filter for long-tail (no-slug) principles. Mutually
+   *  exclusive with `slug`. */
+  drill?: {
+    examId: string;
+    subjectId: string;
     chapterIds: string[];
     subtopicIds: string[];
-    extraIds: string[];
   };
-  /** If set, principle has a detail page at /guide/nda-maths/principles/{slug}. */
-  slug?: string;
-  examId: string;
-  subjectId: string;
 };
 
 /**
  * Card for the Principles page. Two flavours:
- *   - slug present → "Read deep dive →" link to the per-principle detail page,
- *     plus a secondary BrowseLink for direct drill.
- *   - no slug → just a single "Drill →" BrowseLink (long-tail principles).
+ *   - slug present (TOP_20): "Read deep dive →" link to the per-principle
+ *     detail page, plus a secondary BrowseLink using `?principle=<slug>`
+ *     (live tagged set).
+ *   - no slug (long-tail): single "Drill →" BrowseLink using the static
+ *     `drill` subtopic filter.
  */
 export default function PrincipleCard({
   rank,
@@ -36,13 +38,9 @@ export default function PrincipleCard({
   pctHard,
   summary,
   chapters,
-  drill,
   slug,
-  examId,
-  subjectId,
+  drill,
 }: Props) {
-  const hasDetailPage = Boolean(slug);
-
   return (
     <article className="rounded-lg border bg-card p-4 shadow-sm">
       <header className="flex items-start justify-between gap-3">
@@ -77,7 +75,7 @@ export default function PrincipleCard({
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        {hasDetailPage && slug && (
+        {slug && (
           <Link
             href={`/guide/nda-maths/principles/${slug}`}
             className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
@@ -87,17 +85,26 @@ export default function PrincipleCard({
             <ArrowRight className="h-3 w-3" aria-hidden />
           </Link>
         )}
-        <BrowseLink
-          examId={examId}
-          subjectId={subjectId}
-          chapterIds={drill.chapterIds}
-          subtopicIds={drill.subtopicIds}
-          extraIds={drill.extraIds}
-          variant={hasDetailPage ? "outline" : "primary"}
-          className="px-3 py-1.5 text-xs"
-        >
-          Drill the {qCount}
-        </BrowseLink>
+        {slug ? (
+          <BrowseLink
+            principleSlug={slug}
+            variant="outline"
+            className="px-3 py-1.5 text-xs"
+          >
+            Drill the {qCount}
+          </BrowseLink>
+        ) : drill ? (
+          <BrowseLink
+            examId={drill.examId}
+            subjectId={drill.subjectId}
+            chapterIds={drill.chapterIds}
+            subtopicIds={drill.subtopicIds}
+            variant="primary"
+            className="px-3 py-1.5 text-xs"
+          >
+            Drill the {qCount}
+          </BrowseLink>
+        ) : null}
       </div>
     </article>
   );

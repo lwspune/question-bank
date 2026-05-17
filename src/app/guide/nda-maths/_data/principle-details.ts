@@ -62,9 +62,9 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       },
     ],
     relatedSlugs: [
-      "gp-three-term",
-      "extrema-derivatives",
       "ap-three-term",
+      "vieta-symmetric-roots",
+      "compound-angle",
     ],
   },
 
@@ -150,52 +150,8 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       },
     ],
     relatedSlugs: [
-      "gp-three-term",
       "am-gm-mean-inequalities",
       "binomial-coefficient-identities",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "gp-three-term": {
-    trigger:
-      "Three terms a, b, c satisfy b² = ac (or can be rewritten to). Multiplicative cousin of AP.",
-    story: [
-      "If a, b, c are in GP, then b² = ac. That's the multiplicative version of the AP three-term identity. The leverage is the same: one equation closes the system.",
-      "GP three-term combines with AM-GM in the bank's highest-yield compound recipe. Whenever you see 'three terms in GP and a constraint on their sum or product', AM-GM is almost always faster than calculus. The relation b² = ac handles the GP side; AM-GM handles the bound.",
-      "Watch for the AP→GP bridge: log a, log b, log c in AP is equivalent to a, b, c in GP. Statisticians' AM-GM-HM chain compounds with this when the same triple is in AP / GP / HP simultaneously — that's a 5-q NDA staple.",
-    ],
-    exampleQuestionIds: [
-      "00d27cc3-2c95-4fc5-82fd-6b8efccf4252", // a,b,c in GP — a²,b²,c²; 1/a,1/b,1/c; √a,√b,√c (EASY)
-      "aaae67b4-5489-40a9-bfb4-8ad369a03f48", // 2^(1/c), 2^(b/ac), 2^(1/a) in GP (MODERATE)
-      "f4a26e0a-30d4-452a-b5f2-43da315efa4b", // AP terms in GP (MODERATE)
-      "194e8849-9fb4-4ff5-a7c1-bc360354cf09", // p^x = q^y = r^z, x,y,z in GP (HARD)
-    ],
-    variants: [
-      {
-        name: "b² = ac (basic)",
-        description:
-          "The three-term GP identity. Closes any GP question with one extra equation.",
-      },
-      {
-        name: "Sₙ = a(rⁿ − 1) / (r − 1)",
-        description:
-          "Sum of n terms. For |r| < 1, infinite sum = a/(1 − r).",
-      },
-      {
-        name: "Reciprocal GP",
-        description:
-          "If a, b, c are in GP, so are 1/a, 1/b, 1/c (with reciprocal common ratio).",
-      },
-      {
-        name: "Powers of GP",
-        description:
-          "aⁿ, bⁿ, cⁿ are in GP for any integer n. √a, √b, √c are also in GP (if positive).",
-      },
-    ],
-    relatedSlugs: [
-      "ap-three-term",
-      "am-gm-mean-inequalities",
       "vieta-symmetric-roots",
     ],
   },
@@ -239,8 +195,8 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
     ],
     relatedSlugs: [
       "double-angle",
-      "triangle-a-plus-b-plus-c-pi",
       "sine-cosine-rules",
+      "vieta-symmetric-roots",
     ],
   },
 
@@ -326,9 +282,9 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       },
     ],
     relatedSlugs: [
-      "conditional-probability-bayes",
       "binomial-coefficient-identities",
-      "central-tendency-statistics",
+      "ap-three-term",
+      "vieta-symmetric-roots",
     ],
   },
 
@@ -370,53 +326,9 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       },
     ],
     relatedSlugs: [
-      "continuity-conditions",
       "differentiability-conditions",
-      "standard-limits-lhopital",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "conditional-probability-bayes": {
-    trigger:
-      "The question says \"given that\", \"if it is known that\", or asks for a probability that depends on partial information.",
-    story: [
-      "Conditional probability is P(A | B) = P(A ∩ B) / P(B). That's all. Bayes' theorem is just this formula rearranged: P(A | B) = P(B | A) · P(A) / P(B). The arithmetic is trivial; the difficulty is parsing the question.",
-      "Watch for the framing. \"What is the probability that...\" usually means classical. \"Given that X happened, what is the probability...\" means conditional. \"If the answer was correct, what is the probability the student knew it?\" is pure Bayes — reverse the direction of inference.",
-      "Total probability theorem is the bridge: P(A) = Σ P(A | Bᵢ) · P(Bᵢ) over a partition. NDA uses this in ball-transfer problems (\"transfer a ball from urn A to urn B, then draw\") — the colour transferred is the partition Bᵢ.",
-    ],
-    exampleQuestionIds: [
-      "849ae393-e763-4251-9028-923c883a9c85", // P(A)=0.3, P(B)=0.4, P(A|B)=0.5 → P(B|A) (EASY, direct Bayes)
-      "f7fbf435-c86e-47f7-b4d4-8e300c0ae97c", // P(B|A^c) (MODERATE, complement framing)
-      "06ff5d77-2531-4fdd-a390-847af5cc13c7", // Building collapse Bayes (MODERATE, classic)
-      "00e8e6ff-8b6f-41b7-8260-f512190c7337", // Bag transfer total probability (HARD)
-    ],
-    variants: [
-      {
-        name: "P(A | B) = P(A ∩ B) / P(B)",
-        description:
-          "Definition. The numerator is the joint; the denominator is the conditioning event.",
-      },
-      {
-        name: "Bayes' theorem",
-        description:
-          "P(A | B) = P(B | A) · P(A) / P(B). Used when you know P(B | A) and want P(A | B) — \"reverse the direction\".",
-      },
-      {
-        name: "Total probability theorem",
-        description:
-          "P(A) = Σᵢ P(A | Bᵢ) · P(Bᵢ) over a partition {Bᵢ}. Solves the denominator P(B) in Bayes.",
-      },
-      {
-        name: "Independence test: P(A | B) = P(A)",
-        description:
-          "If P(A | B) = P(A), then A and B are independent. Equivalently P(A ∩ B) = P(A) · P(B).",
-      },
-    ],
-    relatedSlugs: [
-      "inclusion-exclusion",
-      "binomial-coefficient-identities",
-      "central-tendency-statistics",
+      "am-gm-mean-inequalities",
+      "ap-three-term",
     ],
   },
 
@@ -503,52 +415,8 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
     ],
     relatedSlugs: [
       "compound-angle",
-      "triangle-a-plus-b-plus-c-pi",
-      "vieta-symmetric-roots",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "triangle-a-plus-b-plus-c-pi": {
-    trigger:
-      "The question is set inside a triangle ABC and asks for a relation between the three angles or their trig functions.",
-    story: [
-      "In any triangle, A + B + C = π. From this single fact, an entire family of identities falls out: tan A + tan B + tan C = tan A · tan B · tan C; cos A + cos B + cos C = 1 + 4 sin(A/2) sin(B/2) sin(C/2); cos 2A + cos 2B + cos 2C = −1 − 4 cos A cos B cos C. NDA tests all of them, in different disguises.",
-      "The trick: when you see 'in a triangle ABC', the third angle is always determined by the other two. So any expression in A, B, C that's symmetric under permutation reduces — often elegantly. cot A · cot B · cot C is the reciprocal of (tan A + tan B + tan C) divided by their product, both of which equal the same thing.",
-      "Quadrant analysis pairs with this identity. If tan A · tan B · tan C > 0 in a triangle, all three tangents are positive (acute triangle) — the only way to have an odd-number-positive product with the sum-of-arguments equal to π. NDA's 'is this triangle acute / obtuse / right?' questions are quadrant questions, not geometry questions.",
-    ],
-    exampleQuestionIds: [
-      "971d53bc-014b-44c1-ba4a-69665e9bc294", // tan A+tan B+tan C = k, find cot A cot B cot C (MODERATE)
-      "71080148-6ac4-4a33-9219-8c63260ad810", // cot·cot·cot > 0 acute, tan·tan·tan > 0 obtuse (MODERATE)
-      "473cfe1f-696d-44f0-a46c-95362d6e9798", // Sides 16/63/65, cos 2A+cos 2B+cos 2C (MODERATE)
-      "ebdff27e-1d77-4b18-beaf-91e96aab40a5", // cos 2A+cos 2B+cos 2C = -1 (HARD)
-    ],
-    variants: [
-      {
-        name: "tan A + tan B + tan C = tan A · tan B · tan C",
-        description:
-          "Derived from tan(A + B) = tan(π − C) = −tan C, then rearrange. The cot version: cot A cot B + cot B cot C + cot C cot A = 1.",
-      },
-      {
-        name: "cos 2A + cos 2B + cos 2C = −1 − 4 cos A cos B cos C",
-        description:
-          "Less famous but tested. Useful when the question involves double angles in a triangle.",
-      },
-      {
-        name: "sin 2A + sin 2B + sin 2C = 4 sin A sin B sin C",
-        description:
-          "Sister identity to the cos 2 version. Always positive for any triangle.",
-      },
-      {
-        name: "Half-angle identities (s = semi-perimeter)",
-        description:
-          "tan(A/2) = √[(s − b)(s − c) / (s(s − a))]. Bridges A+B+C=π to side-based formulas (Heron's, in-radius).",
-      },
-    ],
-    relatedSlugs: [
       "sine-cosine-rules",
-      "compound-angle",
-      "double-angle",
+      "vieta-symmetric-roots",
     ],
   },
 
@@ -590,97 +458,9 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       },
     ],
     relatedSlugs: [
-      "triangle-a-plus-b-plus-c-pi",
       "compound-angle",
       "double-angle",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "standard-limits-lhopital": {
-    trigger:
-      "The expression is an indeterminate form (0/0, ∞/∞, ∞ − ∞) at the limit point.",
-    story: [
-      "Three standard limits cover ~70% of NDA's evaluable cases. lim x→0 sin x / x = 1 (extends to sin kx / x = k). lim x→0 (1 + x)^(1/x) = e (and lim x→∞ (1 + 1/x)ˣ = e). lim x→0 (aˣ − 1) / x = ln a. Recognise the shape; substitute; done.",
-      "When the form is 0/0 or ∞/∞ and not a standard limit, L'Hôpital's rule applies: differentiate numerator and denominator separately. Iterate if you're still in indeterminate territory. NDA's HARD limit questions are usually L'Hôpital with a trick — rationalisation or factoring first.",
-      "Rationalisation handles square-root indeterminates: multiply numerator and denominator by the conjugate to flip 0/0 to a computable form. The 1 − cos kx family in disguise — '√(1 − cos 4x)' is √(2 sin² 2x) = √2 · |sin 2x|, which becomes 2 sin 2x near 0. Recognising 'this is 1 − cos in disguise' is the trick.",
-    ],
-    exampleQuestionIds: [
-      "0f10e789-7f80-4f47-bf55-85c3acdbac7e", // (x³+x²)/(x²+3x+2) at -1 (EASY, factor)
-      "296fc09e-b94c-4af1-a963-69e2e90b05b3", // (x^(n²-1)-1)/(x^(n+1)-1) at 1 (EASY, standard form)
-      "8595742b-2269-49aa-a5a9-6e615a2b8261", // x/√(1-cos 4x) at 0 (MODERATE, rationalise)
-      "7095622e-4014-4bad-9b67-e8f4a9476d25", // (a^x-x^a)/(x^a-a^a)=-1 find a (HARD, L'Hôpital)
-    ],
-    variants: [
-      {
-        name: "lim x→0 sin x / x = 1",
-        description:
-          "The base trig limit. Extends to lim sin(kx) / x = k and lim tan(kx) / x = k.",
-      },
-      {
-        name: "lim x→∞ (1 + 1/x)ˣ = e",
-        description:
-          "And lim x→0 (1 + x)^(1/x) = e. Used in compound-interest and growth-rate questions.",
-      },
-      {
-        name: "lim x→0 (aˣ − 1) / x = ln a",
-        description:
-          "For any positive a ≠ 1. When a = e, ln a = 1.",
-      },
-      {
-        name: "L'Hôpital's rule: differentiate top and bottom",
-        description:
-          "For 0/0 or ∞/∞. lim f(x)/g(x) = lim f'(x)/g'(x) under indeterminacy. Iterate if needed.",
-      },
-    ],
-    relatedSlugs: [
-      "modulus-absolute-value",
-      "continuity-conditions",
-      "differentiability-conditions",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "continuity-conditions": {
-    trigger:
-      "The function is piecewise, or you need to check continuity at a specific point.",
-    story: [
-      "f is continuous at x = c iff three things hold: f(c) exists, lim x→c f(x) exists, and the two are equal. Equivalently: left limit = right limit = f(c). NDA tests this directly (\"is f continuous at x = 0?\") and indirectly (\"find a, b so that f is continuous\" — a system of equations).",
-      "The standard trap setup: piecewise function with three pieces — value below the split, value at the split (often a single number), value above the split. Equate left limit with f(c), then equate right limit with f(c). Two equations, often two unknowns.",
-      "Composed and oscillatory functions add subtlety. f(x) = sin(1/x²) for x ≠ 0 — does redefining f(0) = 0 give a continuous function? No: oscillation continues with no limit as x → 0. NDA loves this trap. Recognise 'sin of 1/x' or 'cos of 1/x' as the oscillation signature.",
-    ],
-    exampleQuestionIds: [
-      "b9120137-4bbf-4294-96e8-ad42aff914f7", // |x|-1 statements (EASY)
-      "6f4eb4a1-ec23-4550-9701-2ae0e01fec8e", // differentiable ⇒ continuous (EASY)
-      "d4c835b2-072c-4451-9efa-0b6a5d7ee46d", // piecewise find a+b (MODERATE)
-      "6e2c62e9-1510-4d59-8b19-e14e749516cc", // f(x) = [x]² - x² at 0 / at 1 (HARD)
-    ],
-    variants: [
-      {
-        name: "Left limit = right limit = f(c)",
-        description:
-          "All three must be equal AND finite. If any of the three fails, f is discontinuous at c.",
-      },
-      {
-        name: "Piecewise continuity",
-        description:
-          "At the split, set f(left limit) = f(value at split) = f(right limit). Solves for unknown coefficients.",
-      },
-      {
-        name: "Differentiable ⇒ continuous",
-        description:
-          "But not the converse. f(x) = |x| is continuous everywhere but not differentiable at 0.",
-      },
-      {
-        name: "Oscillatory non-continuity",
-        description:
-          "sin(1/x) or cos(1/x) at x = 0: no limit exists, so no continuous extension is possible.",
-      },
-    ],
-    relatedSlugs: [
-      "differentiability-conditions",
-      "modulus-absolute-value",
-      "standard-limits-lhopital",
+      "vieta-symmetric-roots",
     ],
   },
 
@@ -722,187 +502,12 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       },
     ],
     relatedSlugs: [
-      "continuity-conditions",
       "modulus-absolute-value",
-      "extrema-derivatives",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "extrema-derivatives": {
-    trigger:
-      "Find a maximum, minimum, or critical point of a differentiable function — or check whether a function is increasing / decreasing.",
-    story: [
-      "At a local extremum of a differentiable function, f'(x) = 0. That's the first-derivative test. The second-derivative test then classifies: f''(x) < 0 → local max; f''(x) > 0 → local min; f''(x) = 0 → inconclusive (need higher derivatives or a sign-change check).",
-      "Monotonicity is a related, lighter check: f'(x) > 0 throughout an interval ⇒ f is increasing there. NDA tests this with conditions on parameters — 'for what range of k is f(x) = x² − kx increasing on (1, ∞)?' — solve f'(x) > 0 for the appropriate constraint on k.",
-      "For functions where calculus is hard but AM-GM is easy, the answer often falls out of the inequality. f(x) = x + 1/x has its minimum at x = 1 by AM-GM (or by f'(x) = 1 − 1/x² = 0). Both methods give x = 1 and f(1) = 2. The skill is recognising when each is faster.",
-    ],
-    exampleQuestionIds: [
-      "1ae142a5-88c8-49fb-9138-f48c3da99fc3", // local max at 0 properties (EASY)
-      "61249d42-a525-40fe-98ce-ea3bfeb8c12f", // x + 1/x local max < local min (MODERATE)
-      "25b913ec-a83a-461e-85bd-7f106631359d", // x³+x²+kx no local extremum (MODERATE)
-      "07f7c2f3-3c84-478e-827e-32aaf1eb3b2a", // x/ln x — full extrema analysis (HARD)
-    ],
-    variants: [
-      {
-        name: "First-derivative test: f'(x) = 0 at extrema",
-        description:
-          "Solve f'(x) = 0 to find critical points. Then classify by sign change of f' or by f''.",
-      },
-      {
-        name: "Second-derivative test for classification",
-        description:
-          "f''(c) > 0 ⇒ local min at c; f''(c) < 0 ⇒ local max at c. If f''(c) = 0, inconclusive.",
-      },
-      {
-        name: "Increasing / decreasing intervals",
-        description:
-          "f'(x) > 0 on I ⇒ f increasing on I; f'(x) < 0 ⇒ decreasing. Used for parametric monotonicity questions.",
-      },
-      {
-        name: "No-extremum condition: f' never zero",
-        description:
-          "For cubic f(x) = ax³ + bx² + cx + d, no real extremum iff discriminant of f'(x) is negative.",
-      },
-    ],
-    relatedSlugs: [
       "am-gm-mean-inequalities",
-      "differentiability-conditions",
-      "continuity-conditions",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "kings-property-integrals": {
-    trigger:
-      "A definite integral that looks unevaluable, but the integrand splits into pieces that telescope under x → (a − x) or x → (a + b − x).",
-    story: [
-      "King's property: ∫₀^a f(x)dx = ∫₀^a f(a − x)dx. Adding the two and dividing by 2 turns the integrand into [f(x) + f(a − x)] / 2 — which often simplifies dramatically. The classic NDA shape: ∫₀^a f(a − x) / [f(x) + f(a − x)] dx = a/2. The numerator and denominator telescope after substitution.",
-      "Sister properties: odd / even function integrals over symmetric intervals. ∫₋ₐ^a (odd) dx = 0; ∫₋ₐ^a (even) dx = 2 ∫₀^a. Always check parity before computing — many NDA integrals collapse to 0 instantly.",
-      "Combined version: integrand = odd + even. The odd part vanishes; only the even part survives. Question stems with sums of trig × exponentials almost always have this structure (one term odd, one term even).",
-    ],
-    exampleQuestionIds: [
-      "31cc7adc-00ca-437e-8724-bf8ae44695d8", // ∫₀ᵃ f(a-x)/(f(x)+f(a-x)) dx (EASY)
-      "55cdc03f-3be6-4b3b-909d-4e93c1e85778", // ∫₋₁¹ odd integrand → 0 (EASY)
-      "0886bac8-80a0-4464-ad51-5f0b1382d20b", // ∫₋π/2^π/2 odd+even split (MODERATE)
-      "1488d4f1-a80c-4351-bdc3-545e9cfb41fd", // ∫₀^π ln(tan x/2) using King's (MODERATE)
-    ],
-    variants: [
-      {
-        name: "King's property: ∫₀^a f(x) = ∫₀^a f(a − x)",
-        description:
-          "Substitute u = a − x. The integral is unchanged in value but the integrand is now f(a − x).",
-      },
-      {
-        name: "Odd function: ∫₋ₐ^a (odd) = 0",
-        description:
-          "If f(−x) = −f(x), the integral over a symmetric interval is zero. Check parity first.",
-      },
-      {
-        name: "Even function: ∫₋ₐ^a (even) = 2 ∫₀^a",
-        description:
-          "If f(−x) = f(x), the integral over a symmetric interval doubles the half-range integral.",
-      },
-      {
-        name: "f(x) + f(a − x) simplifying",
-        description:
-          "Adding King's variants: 2I = ∫₀^a [f(x) + f(a − x)]dx. The sum often telescopes to a constant.",
-      },
-    ],
-    relatedSlugs: [
       "compound-angle",
-      "double-angle",
-      "modulus-absolute-value",
     ],
   },
 
-  /* ────────────────────────────────────────────────────────────────────── */
-  "determinant-properties": {
-    trigger:
-      "A determinant with symbolic entries — evaluate, find a value of a parameter, or check when it vanishes.",
-    story: [
-      "Six properties cover ~90% of NDA's determinant questions. (1) Swapping two rows / columns flips the sign. (2) Two equal rows / columns make det = 0. (3) Multiplying one row / column by k multiplies the det by k. (4) det(A^T) = det(A). (5) det(AB) = det(A) det(B). (6) Adding a multiple of one row to another leaves the det unchanged — the workhorse for row reduction.",
-      "The strategy for symbolic determinants is almost always row / column operations until two columns become equal (giving zero) or a column becomes all-zero. Specifically: R₁ → R₁ + R₂ + R₃ often turns the first column into a sum, which can be factored out — the symmetric-matrix trick.",
-      "When the determinant equals zero, the matrix is singular. NDA's 'find k such that det = 0' questions are eigenvalue questions in disguise. The 'when does det vanish' family covers a + b + c = 0 (sum-row trick) and pairwise equality (row equality).",
-    ],
-    exampleQuestionIds: [
-      "8e591b11-6dc1-4817-bbe2-c9197e52911c", // det(AB) = det(BA) for 2x2 (EASY)
-      "ca983083-fa6c-4a8e-ada8-a7353e9cd668", // det = 0, find x (MODERATE)
-      "3bcc15b0-00ff-498c-944c-b86746150eb1", // Σ |M_k| pattern (MODERATE)
-      "9f108e52-3784-404f-8aac-cf4d201a1862", // When does det(a,b,c;b,c,a;c,a,b) vanish (HARD)
-    ],
-    variants: [
-      {
-        name: "Row / column swap flips sign",
-        description:
-          "Each swap multiplies det by −1. Even swaps preserve sign; odd swaps invert.",
-      },
-      {
-        name: "R_i → R_i + k·R_j (invariant)",
-        description:
-          "Adding a multiple of one row to another doesn't change the determinant. The primary tool for row-reduction to upper triangular.",
-      },
-      {
-        name: "Singular matrix: det = 0",
-        description:
-          "Equivalent to: rows / columns linearly dependent; inverse doesn't exist; homogeneous system has non-trivial solution.",
-      },
-      {
-        name: "Cyclic / symmetric matrix trick",
-        description:
-          "For (a, b, c; b, c, a; c, a, b), R₁ → R₁ + R₂ + R₃ gives (a+b+c) in every column of row 1, factoring out as (a+b+c) · det of simpler matrix.",
-      },
-    ],
-    relatedSlugs: [
-      "vieta-symmetric-roots",
-      "binomial-coefficient-identities",
-      "cube-roots-of-unity",
-    ],
-  },
-
-  /* ────────────────────────────────────────────────────────────────────── */
-  "central-tendency-statistics": {
-    trigger:
-      "Compute mean, median, or mode of a data set — direct, transformed, or for a frequency distribution.",
-    story: [
-      "Mean is the arithmetic average: x̄ = (Σ xᵢ · fᵢ) / N. Median is the middle value when sorted (interpolate for even N or grouped data). Mode is the most frequent value. For symmetric distributions all three agree; for skewed distributions, the empirical relation Mode = 3·Median − 2·Mean usually holds.",
-      "Most NDA central-tendency questions are pure substitution. The traps come in three flavours: (1) which mean (arithmetic, geometric, harmonic)? — match to the type of data, (2) grouped vs ungrouped — grouped data uses class boundaries and interpolation, (3) effect of transformation — if y = ax + b, then ȳ = a·x̄ + b but the variance is a²·σ².",
-      "Geometric and harmonic means appear when the data has multiplicative or rate-of-change structure. Average speed over equal distances uses HM, not AM. Compound growth rate uses GM. Memorise: AM ≥ GM ≥ HM, with equality iff all values equal.",
-    ],
-    exampleQuestionIds: [
-      "4bd4c8d9-c625-4b44-b09e-da16e52b7b49", // AM of 8², ..., 15² (MODERATE)
-      "b76c9357-8996-452e-8c32-7ed039ec57f5", // Find median (MODERATE)
-      "599b1022-193e-44f0-9c08-3d0774b8b0c1", // Mean of squares = 130, find n (MODERATE)
-      "2ed4b11a-5141-42fd-b721-9f8e4c1460c0", // 5P=4Q=R/2 empirical relation (HARD)
-    ],
-    variants: [
-      {
-        name: "Mean: x̄ = Σ fᵢ xᵢ / Σ fᵢ",
-        description:
-          "Weighted average for frequency distributions. For ungrouped data, x̄ = Σ xᵢ / n.",
-      },
-      {
-        name: "Median by position / interpolation",
-        description:
-          "Position = (N+1)/2 for ungrouped. For grouped data, find median class then interpolate within.",
-      },
-      {
-        name: "Mode: most frequent observation",
-        description:
-          "For grouped data, mode = L + h · (f₁ − f₀) / (2f₁ − f₀ − f₂), where L is the modal class lower bound.",
-      },
-      {
-        name: "Empirical relation: Mode = 3·Median − 2·Mean",
-        description:
-          "Holds approximately for moderately skewed distributions. Convert between any two if the third is given.",
-      },
-    ],
-    relatedSlugs: [
-      "am-gm-mean-inequalities",
-      "inclusion-exclusion",
-      "binomial-coefficient-identities",
-    ],
-  }
 };
 
 /** Slugs with detail pages ready. Used by generateStaticParams. */

@@ -12,9 +12,15 @@ export type BrowseFilters = {
   subtopicIds?: string[];
   difficulties?: Difficulty[];
   pyqYears?: number[];
-  /** Curated question UUIDs OR'd with subtopicIds — used by principle drill
-   *  links to surface cross-chapter questions not captured by named subtopics. */
+  /** Curated question UUIDs OR'd with subtopicIds — used by long-tail
+   *  (no-slug) principle drill links to surface cross-chapter questions not
+   *  captured by named subtopics. TOP_20 (slugged) principles use
+   *  `principleSlug` instead, which resolves via DB tags. */
   extraIds?: string[];
+  /** TOP_20 principle slug — narrows /browse to the questions tagged with
+   *  this principle in `question_principle_tags`. Mutually exclusive in
+   *  practice with subtopicIds + extraIds (set one OR the other). */
+  principleSlug?: string | null;
   q?: string;
 };
 
@@ -36,6 +42,7 @@ export function buildBrowseUrl(partial: BrowseFilters): string {
     difficulties: partial.difficulties ?? [],
     pyqYears: partial.pyqYears ?? [],
     extraIds: partial.extraIds ?? [],
+    principleSlug: partial.principleSlug ?? null,
     q: partial.q ?? "",
     page: 1,
   };
