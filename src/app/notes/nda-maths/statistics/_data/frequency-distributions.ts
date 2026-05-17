@@ -6,7 +6,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How to organise raw data into class intervals + frequencies, and which graph (histogram, polygon, ogive, pie chart) tells the story best.",
   whyItMatters:
-    "7 PYQs across 2021–2025 — small subtopic but reliable scoring territory. " +
+    "14 PYQs across 2017–2025 — small subtopic but reliable scoring territory. " +
     "Three shapes dominate: picking the right graph for given data, computing a histogram class's relative height when widths are unequal, " +
     "and reading values straight off a frequency table (mode, cumulative count, median).",
   concepts: [

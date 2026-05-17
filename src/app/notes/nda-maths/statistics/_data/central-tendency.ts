@@ -6,11 +6,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A single value that summarises where a dataset is centred — mean, median, or mode.",
   whyItMatters:
-    "48 PYQs across 2021–2026 — the biggest subtopic in NDA Statistics. " +
+    "75 PYQs across 2017–2026 — the biggest subtopic in NDA Statistics. " +
     "Most questions test linear-transformation effects on the mean, grouped-data " +
     "calculations, replacement / wrong-value corrections, special-case mean " +
-    "shortcuts, or the sum-of-deviations identity. Master the ten concepts " +
-    "below and you cover the entire EASY + MODERATE bandwidth reliably.",
+    "shortcuts, the combined-mean of two groups, or the sum-of-deviations identity. " +
+    "Master the eleven concepts below and you cover the entire EASY + MODERATE " +
+    "bandwidth reliably.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
@@ -251,6 +252,64 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 6 ───────────────────────────────────────────────────────────────────────
     {
+      slug: "combined-mean-weighted",
+      name: "Combined Mean of Two Groups",
+      intuition:
+        "When two datasets with KNOWN sizes and means are pooled, the combined mean is " +
+        "the frequency-weighted average — the sum of the two totals divided by the sum " +
+        "of the two sizes. Plain averaging of the two means works ONLY when both groups " +
+        "have the same size. PYQs love the reverse direction: give you the combined mean " +
+        "and both group means, ask for the size split.",
+      definition:
+        "For group 1 of size \\(n_1\\) with mean \\(M_1\\) and group 2 of size \\(n_2\\) " +
+        "with mean \\(M_2\\), the combined mean of the pooled dataset is the " +
+        "frequency-weighted average. Generalises to \\(k\\) groups as a weighted average " +
+        "of the group means, with each weight equal to the group's size.",
+      formula: {
+        label: "Combined mean of two groups",
+        latex: "M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}",
+        symbols: [
+          { symbol: "\\(n_1, n_2\\)", meaning: "sizes of the two groups" },
+          { symbol: "\\(M_1, M_2\\)", meaning: "means of the two groups" },
+          { symbol: "\\(M_{12}\\)", meaning: "combined mean of the pooled dataset" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "The mean age of 30 men is 40 years and the mean age of 20 women is 35 years. " +
+          "Find the mean age of the combined group.",
+        steps: [
+          "Identify the groups: \\(n_1 = 30,\\ M_1 = 40,\\ n_2 = 20,\\ M_2 = 35\\).",
+          "Compute group totals: \\(n_1 M_1 = 30 \\times 40 = 1200\\); \\(n_2 M_2 = 20 \\times 35 = 700\\).",
+          "Apply the formula: \\(M_{12} = \\dfrac{1200 + 700}{30 + 20} = \\dfrac{1900}{50}\\).",
+          "Compute: \\(M_{12} = 38\\) years.",
+        ],
+        answer: "\\(M_{12} = 38\\) years",
+      },
+      pyqExampleId: "3c2e5644-ae19-407e-85ac-cdcb3b23fa5e",
+      traps: [
+        {
+          title: "Plain average of the two means is wrong unless \\(n_1 = n_2\\)",
+          body:
+            "Students average \\(M_1\\) and \\(M_2\\) directly. That gives the correct " +
+            "combined mean ONLY when both groups are the same size. For unequal sizes the " +
+            "larger group pulls the combined mean toward its own mean — which is exactly " +
+            "what the weighted formula encodes.",
+        },
+        {
+          title: "Reverse-solve: combined + group means give the size ratio",
+          body:
+            "If \\(M_{12},\\ M_1,\\ M_2\\) are given and you need \\(n_1 : n_2\\), " +
+            "rearrange the formula to " +
+            "\\(\\dfrac{n_1}{n_2} = \\dfrac{M_2 - M_{12}}{M_{12} - M_1}\\). PYQs use this " +
+            "shape with concrete totals (150 students, combined 60 kg, boys 70, girls 55) " +
+            "to test whether you recognise it as one equation in one unknown.",
+        },
+      ],
+    },
+
+    // 7 ───────────────────────────────────────────────────────────────────────
+    {
       slug: "median",
       name: "Median — Middle Value",
       intuition:
@@ -292,7 +351,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 7 ───────────────────────────────────────────────────────────────────────
+    // 8 ───────────────────────────────────────────────────────────────────────
     {
       slug: "mode",
       name: "Mode — Most Frequent Value",
@@ -336,7 +395,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 8 ───────────────────────────────────────────────────────────────────────
+    // 9 ───────────────────────────────────────────────────────────────────────
     {
       slug: "geometric-mean",
       name: "Geometric Mean (GM)",
@@ -375,7 +434,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 9 ───────────────────────────────────────────────────────────────────────
+    // 10 ──────────────────────────────────────────────────────────────────────
     {
       slug: "harmonic-mean",
       name: "Harmonic Mean (HM)",
@@ -424,7 +483,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 10 ──────────────────────────────────────────────────────────────────────
+    // 11 ──────────────────────────────────────────────────────────────────────
     {
       slug: "sum-of-deviations-empirical",
       name: "Sum of Deviations & the Empirical Relation",

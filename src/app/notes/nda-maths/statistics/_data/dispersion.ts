@@ -6,7 +6,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How spread out the data is around its centre — mean deviation, variance and standard deviation each measure spread on a different scale.",
   whyItMatters:
-    "27 PYQs across 2021–2026. 12 EASY + 14 MODERATE — almost every paper has one. The favourite shapes are linear-transformation effects on SD, " +
+    "44 PYQs across 2017–2026. 22 EASY + 18 MODERATE + 4 HARD — almost every paper has one. The favourite shapes are linear-transformation effects on SD, " +
     "the computational identity \\(\\sum x_i^2/n = \\bar{x}^2 + \\sigma^2\\), and coefficient-of-variation comparisons. " +
     "Master the six concepts below and dispersion becomes formulaic, not intimidating.",
   concepts: [
