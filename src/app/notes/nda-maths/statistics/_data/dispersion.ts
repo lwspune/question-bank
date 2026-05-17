@@ -238,6 +238,14 @@ export const DISPERSION_NOTE: SubtopicNote = {
             "Mean of the squares is NOT the square of the mean. Their difference is the variance: \\(\\overline{x^2} - \\bar{x}^2 = \\sigma^2 \\geq 0\\). " +
             "PYQs plant this trap by asking for \"mean of squares\" or \"\\(M^2 + \\sigma^2\\)\" and expecting you to recognise it as \\(\\sum x_i^2/n\\).",
         },
+        {
+          title: "Scaling inside the deviation moves the minimiser too",
+          body:
+            "For \\(S(a) = \\sum (c\\,x_i - a)^2\\), expand and minimise: the minimum is at " +
+            "\\(a = c\\,\\bar{x}\\), NOT \\(a = \\bar{x}\\). PYQs commonly use \\(c = 2\\) " +
+            "(e.g. \\(S = \\sum (2x_i - a)^2\\)) and expect you to identify the minimiser as " +
+            "\\(2\\bar{x}\\) — twice the mean, not the mean.",
+        },
       ],
     },
   ],

@@ -7,8 +7,8 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
     "How two variables move together — correlation measures the strength of the link, regression draws the best-fit line.",
   whyItMatters:
     "9 PYQs in Regression and Correlation plus 2 more in Properties of Correlation Coefficient — 11 total, with the HARDest dispersion-of-points questions in NDA Statistics. " +
-    "Almost every recent paper asks one of three shapes: properties of \\(r\\) under linear transformation, finding regression lines, or identifying which equation is which. " +
-    "Four tight concepts cover the entire surface.",
+    "Almost every recent paper asks one of three shapes: properties of \\(r\\) under linear transformation, finding regression lines, identifying which equation is which, or computing the angle between them. " +
+    "Five tight concepts cover the entire surface.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
@@ -98,6 +98,15 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
             "If a PYQ gives you two regression lines and asks for the means, solve the two equations simultaneously — " +
             "their intersection is exactly \\((\\bar{x}, \\bar{y})\\). No need to compute anything from raw data.",
         },
+        {
+          title: "From raw bivariate data, compute \\(b_{yx}\\) via the Pearson form",
+          body:
+            "When given \\(n\\) raw paired points (e.g. four \\((x_i, y_i)\\) values), use the " +
+            "computational formula \\(b_{yx} = \\dfrac{n\\sum x_i y_i - \\sum x_i \\sum y_i}{n\\sum x_i^2 - (\\sum x_i)^2}\\) " +
+            "with \\(\\bar{x}, \\bar{y}\\) read straight from the column sums. The regression " +
+            "line is then \\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\). Faster than the " +
+            "deviation-from-mean form because it works directly off the column totals.",
+        },
       ],
     },
 
@@ -180,6 +189,62 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           body:
             "Always compute both candidate pairings of \\(b_{yx} \\cdot b_{xy}\\). The pairing that satisfies the \\(\\leq 1\\) condition is the correct one. " +
             "Don't try to reason geometrically from the slopes — the inequality is mechanical and unambiguous.",
+        },
+      ],
+    },
+
+    // 5 ───────────────────────────────────────────────────────────────────────
+    {
+      slug: "angle-between-regression-lines",
+      name: "Angle Between the Two Regression Lines",
+      intuition:
+        "The two regression lines coincide when correlation is perfect and stand " +
+        "perpendicular when there is no correlation. In between, they make an acute " +
+        "angle whose tangent you can read straight off the line equations using the " +
+        "ordinary \"angle between two lines\" formula from coordinate geometry — " +
+        "no need to compute \\(r\\), \\(\\sigma_x\\), \\(\\sigma_y\\) first.",
+      definition:
+        "Treat the two regression lines as ordinary straight lines in the \\((x,y)\\) " +
+        "plane with slopes \\(m_1\\) and \\(m_2\\) (read directly from each equation " +
+        "after solving for \\(y\\)). The acute angle \\(\\theta\\) between them satisfies " +
+        "the standard formula below. When \\(r = \\pm 1\\) the slopes coincide and " +
+        "\\(\\tan\\theta = 0\\); when \\(r = 0\\), \\(1 + m_1 m_2 = 0\\) and the lines are perpendicular.",
+      formula: {
+        label: "Angle between two lines (applied to regression)",
+        latex: "\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1\\,m_2}\\right|",
+        symbols: [
+          { symbol: "\\(m_1, m_2\\)", meaning: "slopes of the two regression lines in the \\((x,y)\\) plane" },
+          { symbol: "\\(\\theta\\)", meaning: "acute angle between the lines" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "Two lines of regression are \\(x + 2y + 1 = 0\\) and \\(2x + 3y + 4 = 0\\). " +
+          "Find the tangent of the acute angle between them.",
+        steps: [
+          "Solve each line for \\(y\\). Line 1: \\(y = -\\tfrac{1}{2}x - \\tfrac{1}{2}\\), so \\(m_1 = -\\tfrac{1}{2}\\).",
+          "Line 2: \\(y = -\\tfrac{2}{3}x - \\tfrac{4}{3}\\), so \\(m_2 = -\\tfrac{2}{3}\\).",
+          "Apply the formula: \\(\\tan\\theta = \\left|\\dfrac{-1/2 - (-2/3)}{1 + (-1/2)(-2/3)}\\right| = \\left|\\dfrac{1/6}{4/3}\\right|\\).",
+          "Simplify: \\(\\tan\\theta = \\dfrac{1}{6} \\cdot \\dfrac{3}{4} = \\dfrac{1}{8}\\).",
+        ],
+        answer: "\\(\\tan\\theta = \\dfrac{1}{8}\\)",
+      },
+      pyqExampleId: "4557ccee-8cb8-44b9-b085-e6923a9b15b7",
+      traps: [
+        {
+          title: "Slope of the \\(x\\)-on-\\(y\\) line is NOT \\(b_{xy}\\) in the \\((x,y)\\) plane",
+          body:
+            "The slope of the \\(y\\)-on-\\(x\\) line in the \\((x,y)\\) plane is \\(b_{yx}\\). " +
+            "But the slope of the \\(x\\)-on-\\(y\\) line (written \\(x = a + b_{xy} y\\)) in " +
+            "the \\((x,y)\\) plane is \\(1/b_{xy}\\), NOT \\(b_{xy}\\). When reading slopes " +
+            "off the line equation directly (solve for \\(y\\), take the coefficient of \\(x\\)), " +
+            "you sidestep this trap.",
+        },
+        {
+          title: "Acute angle only — take absolute value",
+          body:
+            "A negative tangent would correspond to the obtuse supplement. The formula's " +
+            "absolute value guarantees \\(\\theta \\leq 90^\\circ\\). PYQs always ask the acute angle.",
         },
       ],
     },

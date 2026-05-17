@@ -8,8 +8,9 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
   whyItMatters:
     "48 PYQs across 2021–2026 — the biggest subtopic in NDA Statistics. " +
     "Most questions test linear-transformation effects on the mean, grouped-data " +
-    "calculations, or the sum-of-deviations identity. Master the eight concepts " +
-    "below and you cover 22 EASY + 18 MODERATE marks reliably.",
+    "calculations, replacement / wrong-value corrections, special-case mean " +
+    "shortcuts, or the sum-of-deviations identity. Master the ten concepts " +
+    "below and you cover the entire EASY + MODERATE bandwidth reliably.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
@@ -138,6 +139,118 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      slug: "mean-replacement-correction",
+      name: "Replacement and Wrong-Value Correction of the Mean",
+      intuition:
+        "When one observation is swapped — either deliberately or because a wrong " +
+        "value was later corrected — the mean shifts by exactly the change in that " +
+        "value divided by \\(n\\). No need to recompute from scratch. The same identity " +
+        "handles \"k observations are discarded\": work with the totals \\(nM\\) before " +
+        "and after, the difference is what changed.",
+      definition:
+        "If the mean of \\(n\\) observations is \\(M\\) and a single value \\(x\\) is " +
+        "replaced by \\(y\\), the new mean is \\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\). " +
+        "For a wrong-value correction, \\(x\\) is what was recorded and \\(y\\) is the " +
+        "correct value. For discards or additions, \\(n\\) itself changes — reason about " +
+        "the new total \\((n \\pm k)\\,M_{\\text{new}}\\) directly.",
+      formula: {
+        label: "Replacement rule (single observation, n unchanged)",
+        latex: "M_{\\text{new}} = M + \\dfrac{y - x}{n}",
+        symbols: [
+          { symbol: "\\(M\\)", meaning: "original mean" },
+          { symbol: "\\(n\\)", meaning: "number of observations (unchanged in pure replacement)" },
+          { symbol: "\\(x\\)", meaning: "the value being removed (or wrongly recorded)" },
+          { symbol: "\\(y\\)", meaning: "the value taking its place (or the correct one)" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "The mean of 20 observations is 15. One observation was recorded as 8 " +
+          "but the correct value is 28. Find the corrected mean.",
+        steps: [
+          "Identify the swap: wrong value \\(x = 8\\), correct value \\(y = 28\\), \\(n = 20\\).",
+          "Apply the rule: \\(M_{\\text{new}} = 15 + \\dfrac{28 - 8}{20}\\).",
+          "Compute the correction: \\(\\dfrac{20}{20} = 1\\).",
+          "Therefore \\(M_{\\text{new}} = 15 + 1 = 16\\).",
+        ],
+        answer: "\\(M_{\\text{new}} = 16\\)",
+      },
+      pyqExampleId: "b97d7058-a71c-4b2f-9bba-e154e4701f8c",
+      traps: [
+        {
+          title: "Divide by \\(n\\), not by 1",
+          body:
+            "Students often subtract \\(x - y\\) directly from \\(M\\). The mistake: only " +
+            "ONE of the \\(n\\) terms changed, so the shift in the average is the change " +
+            "in that one term divided by \\(n\\) — not the full change.",
+        },
+        {
+          title: "Discards: work with totals \\(nM\\), not the rule directly",
+          body:
+            "When \\(k\\) observations are discarded, \\(n\\) itself changes. Don't try " +
+            "to force the single-replacement formula. Instead: original total \\(= nM\\), " +
+            "new total \\(= (n-k)M_{\\text{new}}\\), the difference is the sum of the discarded values.",
+        },
+      ],
+    },
+
+    // 5 ───────────────────────────────────────────────────────────────────────
+    {
+      slug: "special-case-means",
+      name: "Special-Case Means — Consecutive Integers, Squares, AP, Binomial",
+      intuition:
+        "NDA loves to ask the mean of a structured sequence — natural numbers in an " +
+        "interval, perfect squares, an AP, values weighted by binomial coefficients. " +
+        "Rather than summing by hand, recognise the structure and use a closed-form " +
+        "shortcut. Saves 60–90 seconds per question.",
+      definition:
+        "Three shortcuts are load-bearing: (a) Mean of consecutive integers from \\(a\\) " +
+        "to \\(b\\) is \\((a+b)/2\\). (b) Mean of squares \\(1^2, 2^2, \\ldots, n^2\\) is " +
+        "\\(\\dfrac{(n+1)(2n+1)}{6}\\). (c) For an AP, the mean equals the average of " +
+        "the first and last terms (or equivalently the middle term). For binomial-weighted " +
+        "means, the denominator is \\(\\sum \\binom{n}{k} = 2^n\\), not the number of terms.",
+      formula: {
+        label: "Closed-form means for common sequences",
+        latex:
+          "\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}",
+        symbols: [
+          { symbol: "\\(a, b\\)", meaning: "first and last integer of an arithmetic run" },
+          { symbol: "\\(n\\)", meaning: "number of terms (for the squares formula, the upper index)" },
+          { symbol: "\\(a_1, a_n\\)", meaning: "first and last term of an AP" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Find the arithmetic mean of \\(8^2, 9^2, 10^2, \\ldots, 15^2\\).",
+        steps: [
+          "Number of terms: \\(15 - 8 + 1 = 8\\).",
+          "Write the sum as a difference: \\(\\sum_{k=1}^{15} k^2 - \\sum_{k=1}^{7} k^2 = \\dfrac{15 \\cdot 16 \\cdot 31}{6} - \\dfrac{7 \\cdot 8 \\cdot 15}{6}\\).",
+          "Compute each: \\(\\dfrac{7440}{6} - \\dfrac{840}{6} = 1240 - 140 = 1100\\).",
+          "Mean: \\(\\dfrac{1100}{8} = 137.5\\).",
+        ],
+        answer: "Mean \\(= 137.5\\)",
+      },
+      pyqExampleId: "4bd4c8d9-c625-4b44-b09e-da16e52b7b49",
+      traps: [
+        {
+          title: "AP shortcut fails for GPs and other non-uniform spacings",
+          body:
+            "The mean \\((a_1 + a_n)/2\\) works only because in an AP every term sits at " +
+            "equal distance around the centre. For \\(1, 2, 4, 8, \\ldots\\) (GP) the " +
+            "shortcut gives the wrong answer — you must sum properly or use the GP sum formula.",
+        },
+        {
+          title: "Binomial-weighted means use \\(\\sum \\binom{n}{k} = 2^n\\)",
+          body:
+            "When asked the mean of \\(1, 2, \\ldots, n+1\\) with frequencies " +
+            "\\(\\binom{n}{0}, \\binom{n}{1}, \\ldots, \\binom{n}{n}\\), the denominator " +
+            "is \\(2^n\\) (sum of one row of Pascal's triangle) — not the number of " +
+            "distinct values. Use \\(\\sum k \\binom{n}{k} = n \\cdot 2^{n-1}\\) for the numerator.",
+        },
+      ],
+    },
+
+    // 6 ───────────────────────────────────────────────────────────────────────
+    {
       slug: "median",
       name: "Median — Middle Value",
       intuition:
@@ -179,7 +292,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 5 ───────────────────────────────────────────────────────────────────────
+    // 7 ───────────────────────────────────────────────────────────────────────
     {
       slug: "mode",
       name: "Mode — Most Frequent Value",
@@ -223,7 +336,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 6 ───────────────────────────────────────────────────────────────────────
+    // 8 ───────────────────────────────────────────────────────────────────────
     {
       slug: "geometric-mean",
       name: "Geometric Mean (GM)",
@@ -262,7 +375,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       ],
     },
 
-    // 7 ───────────────────────────────────────────────────────────────────────
+    // 9 ───────────────────────────────────────────────────────────────────────
     {
       slug: "harmonic-mean",
       name: "Harmonic Mean (HM)",
@@ -298,10 +411,20 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
             "observation is equal. If your computed HM exceeds GM or AM, you made " +
             "an arithmetic error.",
         },
+        {
+          title: "\\(\\text{GM}^2 = \\text{AM} \\times \\text{HM}\\) for two numbers",
+          body:
+            "For exactly two positive numbers, the geometric mean is the geometric mean " +
+            "of the arithmetic and harmonic means: \\(\\text{GM}^2 = \\text{AM} \\cdot \\text{HM}\\). " +
+            "When a PYQ gives you two of \\(\\{\\text{AM}, \\text{GM}, \\text{HM}\\}\\) for " +
+            "a pair (e.g. \\(5\\,\\text{HM} = 4\\,\\text{GM}\\)), use this identity to " +
+            "recover the third without solving for the original numbers — much faster " +
+            "than setting up two equations in \\(m, n\\).",
+        },
       ],
     },
 
-    // 8 ───────────────────────────────────────────────────────────────────────
+    // 10 ──────────────────────────────────────────────────────────────────────
     {
       slug: "sum-of-deviations-empirical",
       name: "Sum of Deviations & the Empirical Relation",
