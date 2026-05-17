@@ -3,10 +3,19 @@ import type { Slide, SubtopicNote } from "@/app/notes/_types";
 /**
  * Derive the Present-mode slide deck from a SubtopicNote. Pure function.
  *
- * Slide order: title → why → (for each concept: intro → authored → pyq? → trap*) → drill.
+ * Slide order: title → why → (for each concept: intro → authored → pyq? → trap* → concept-drill?) → drill.
  * Optional sections are skipped — minimum deck is title + drill.
+ *
+ * `drillsByConcept` is the runtime overlay from Phase 2 — for each concept slug,
+ * a list of question UUIDs sourced from `question_concept_tags` at request time
+ * (via `loadResolvedDrills`). Concepts missing from the map (or with empty arrays)
+ * silently skip their concept-drill slide. Pass `new Map()` when DB data isn't
+ * available (tests, fallback rendering).
  */
-export function splitNoteIntoSlides(note: SubtopicNote): Slide[] {
+export function splitNoteIntoSlides(
+  note: SubtopicNote,
+  drillsByConcept: Map<string, string[]>
+): Slide[] {
   const slides: Slide[] = [];
 
   slides.push({
@@ -46,11 +55,12 @@ export function splitNoteIntoSlides(note: SubtopicNote): Slide[] {
       slides.push({ kind: "trap", conceptName: c.name, trap: t });
     }
 
-    if (c.drillQuestionIds && c.drillQuestionIds.length > 0) {
+    const conceptDrillIds = drillsByConcept.get(c.slug);
+    if (conceptDrillIds && conceptDrillIds.length > 0) {
       slides.push({
         kind: "concept-drill",
         conceptName: c.name,
-        questionIds: c.drillQuestionIds,
+        questionIds: conceptDrillIds,
       });
     }
   }

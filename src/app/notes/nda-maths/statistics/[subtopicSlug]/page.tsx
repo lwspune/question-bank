@@ -9,6 +9,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { splitNoteIntoSlides } from "@/lib/notes/splitNoteIntoSlides";
+import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import ConceptUnitCard from "@/app/notes/_components/ConceptUnitCard";
 import NotePresenter from "@/app/notes/_components/NotePresenter";
 import {
@@ -73,9 +74,13 @@ export default async function SubtopicNotePage({
   const chapter = taxonomy.chapters.get(STATISTICS_CHAPTER.chapterName);
   const subtopicId = chapter?.subtopics.get(note.subtopicName) ?? null;
 
-  // PYQ rows + subtopic count fire in parallel; both depend on taxonomy but
-  // not on each other.
-  const [pyqRows, countRes] = await Promise.all([
+  // PYQ rows + subtopic count + concept-drill tag list fire in parallel;
+  // all three depend on taxonomy but not on each other.
+  const conceptsForResolver = note.concepts.map((c) => ({
+    slug: c.slug,
+    pyqExampleId: c.pyqExampleId,
+  }));
+  const [pyqRows, countRes, drillsByConcept] = await Promise.all([
     loadWorkedExamples(supabase, pyqIds),
     subtopicId
       ? supabase
@@ -83,6 +88,7 @@ export default async function SubtopicNotePage({
           .select("id", { count: "exact", head: true })
           .eq("subtopic_id", subtopicId)
       : Promise.resolve({ count: 0 as number | null }),
+    loadResolvedDrills(supabase, params.subtopicSlug, conceptsForResolver),
   ]);
   const pyqById = new Map(pyqRows.map((r) => [r.id, r]));
   const drillCount = countRes.count ?? 0;
@@ -91,7 +97,7 @@ export default async function SubtopicNotePage({
     ? `/browse?examId=${taxonomy.examId}&subjectId=${taxonomy.subjectId}&subtopicIds=${subtopicId}`
     : "/browse";
 
-  const slides = splitNoteIntoSlides(note);
+  const slides = splitNoteIntoSlides(note, drillsByConcept);
 
   const sideNav = [
     ...sideNavBase,
@@ -185,6 +191,7 @@ export default async function SubtopicNotePage({
             index={i + 1}
             total={note.concepts.length}
             pyqExample={c.pyqExampleId ? pyqById.get(c.pyqExampleId) ?? null : null}
+            drillQuestionIds={drillsByConcept.get(c.slug) ?? []}
           />
         ))}
       </div>

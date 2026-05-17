@@ -63,18 +63,14 @@ export type ConceptUnit = {
   /**
    * Optional UUID of a real PYQ from the bank that applies this concept.
    * Rendered via the existing WorkedExampleCard so students can see how the
-   * concept shows up on the actual exam.
+   * concept shows up on the actual exam. Stays editorial (TS-curated) — it
+   * is the "featured" example, not a drill list.
+   *
+   * Drill-list questions are NOT carried on this type. They live in the
+   * `question_concept_tags` DB table (migration 0021) and are resolved at
+   * request time via `loadResolvedDrills`.
    */
   pyqExampleId?: string;
-  /**
-   * Curated UUIDs for a concept-specific drill. Students can practice exactly
-   * this concept (not the whole subtopic) via a /browse deep-link.
-   *
-   * Pilot uses hand-curated UUIDs (same pattern as /guide principle extras).
-   * Forward-compatible with a future `question_concept_tags` table — when
-   * that ships, this field becomes redundant and migrates mechanically.
-   */
-  drillQuestionIds?: string[];
   /** Optional gotchas specific to this concept. Rendered inline within the unit. */
   traps?: TrapCallout[];
 };

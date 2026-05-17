@@ -26,15 +26,18 @@ const baseNote = (overrides: Partial<SubtopicNote> = {}): SubtopicNote => ({
   ...overrides,
 });
 
+/** Default empty drill map used by tests that don't care about concept-drill slides. */
+const NO_DRILLS = new Map<string, string[]>();
+
 describe("splitNoteIntoSlides", () => {
   it("emits a title slide first and a drill slide last", () => {
-    const slides = splitNoteIntoSlides(baseNote());
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     expect(slides[0].kind).toBe("title");
     expect(slides[slides.length - 1].kind).toBe("drill");
   });
 
   it("title slide carries the subtopic title + one-line definition", () => {
-    const slides = splitNoteIntoSlides(baseNote());
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     expect(slides[0]).toEqual({
       kind: "title",
       title: "Test Subtopic",
@@ -43,17 +46,17 @@ describe("splitNoteIntoSlides", () => {
   });
 
   it("emits a why slide right after the title when whyItMatters is non-empty", () => {
-    const slides = splitNoteIntoSlides(baseNote());
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     expect(slides[1].kind).toBe("why");
   });
 
   it("skips the why slide when whyItMatters is empty", () => {
-    const slides = splitNoteIntoSlides(baseNote({ whyItMatters: "" }));
+    const slides = splitNoteIntoSlides(baseNote({ whyItMatters: "" }), NO_DRILLS);
     expect(slides[1].kind).not.toBe("why");
   });
 
   it("each concept emits at minimum a concept-intro + authored-example slide", () => {
-    const slides = splitNoteIntoSlides(baseNote());
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     const conceptIntros = slides.filter((s) => s.kind === "concept-intro");
     const examples = slides.filter((s) => s.kind === "authored-example");
     expect(conceptIntros).toHaveLength(1);
@@ -65,7 +68,8 @@ describe("splitNoteIntoSlides", () => {
     const slides = splitNoteIntoSlides(
       baseNote({
         concepts: [minimalConcept({ formula })],
-      })
+      }),
+      NO_DRILLS
     );
     const intro = slides.find((s) => s.kind === "concept-intro");
     expect(intro).toEqual({
@@ -78,7 +82,7 @@ describe("splitNoteIntoSlides", () => {
   });
 
   it("authored-example slide carries the full example payload and the concept name", () => {
-    const slides = splitNoteIntoSlides(baseNote());
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     const ex = slides.find((s) => s.kind === "authored-example");
     expect(ex).toMatchObject({
       conceptName: "Concept 1",
@@ -94,9 +98,10 @@ describe("splitNoteIntoSlides", () => {
     const withPyq = splitNoteIntoSlides(
       baseNote({
         concepts: [minimalConcept({ pyqExampleId: "uuid-pyq-1" })],
-      })
+      }),
+      NO_DRILLS
     );
-    const withoutPyq = splitNoteIntoSlides(baseNote());
+    const withoutPyq = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     expect(withPyq.some((s) => s.kind === "pyq-example")).toBe(true);
     expect(withoutPyq.some((s) => s.kind === "pyq-example")).toBe(false);
   });
@@ -105,7 +110,8 @@ describe("splitNoteIntoSlides", () => {
     const slides = splitNoteIntoSlides(
       baseNote({
         concepts: [minimalConcept({ pyqExampleId: "uuid-pyq-1" })],
-      })
+      }),
+      NO_DRILLS
     );
     const pyq = slides.find((s) => s.kind === "pyq-example");
     expect(pyq).toEqual({
@@ -126,7 +132,8 @@ describe("splitNoteIntoSlides", () => {
             ],
           }),
         ],
-      })
+      }),
+      NO_DRILLS
     );
     const traps = slides.filter((s) => s.kind === "trap");
     expect(traps).toHaveLength(2);
@@ -144,10 +151,10 @@ describe("splitNoteIntoSlides", () => {
           minimalConcept({
             pyqExampleId: "uuid-1",
             traps: [{ title: "T", body: "b" }],
-            drillQuestionIds: ["d1", "d2"],
           }),
         ],
-      })
+      }),
+      new Map([["c1", ["d1", "d2"]]])
     );
     const conceptKinds = slides
       .filter((s) => s.kind !== "title" && s.kind !== "why" && s.kind !== "drill")
@@ -161,41 +168,31 @@ describe("splitNoteIntoSlides", () => {
     ]);
   });
 
-  it("emits a concept-drill slide when drillQuestionIds is non-empty", () => {
-    const withDrill = splitNoteIntoSlides(
-      baseNote({
-        concepts: [minimalConcept({ drillQuestionIds: ["d1", "d2", "d3"] })],
-      })
+  it("emits a concept-drill slide when drillsByConcept has a non-empty entry for the concept", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote(),
+      new Map([["c1", ["d1", "d2", "d3"]]])
     );
     expect(
-      withDrill.some(
+      slides.some(
         (s) => s.kind === "concept-drill" && s.questionIds.length === 3
       )
     ).toBe(true);
   });
 
-  it("omits concept-drill slide when drillQuestionIds is empty or undefined", () => {
-    const without = splitNoteIntoSlides(baseNote());
-    const withEmpty = splitNoteIntoSlides(
-      baseNote({
-        concepts: [minimalConcept({ drillQuestionIds: [] })],
-      })
-    );
+  it("omits concept-drill slide when drillsByConcept has no entry or an empty array", () => {
+    const without = splitNoteIntoSlides(baseNote(), NO_DRILLS);
+    const withEmpty = splitNoteIntoSlides(baseNote(), new Map([["c1", []]]));
     expect(without.some((s) => s.kind === "concept-drill")).toBe(false);
     expect(withEmpty.some((s) => s.kind === "concept-drill")).toBe(false);
   });
 
-  it("concept-drill carries concept name and questionIds in order", () => {
+  it("concept-drill carries concept name and questionIds from the map", () => {
     const slides = splitNoteIntoSlides(
       baseNote({
-        concepts: [
-          minimalConcept({
-            slug: "x",
-            name: "X",
-            drillQuestionIds: ["a", "b", "c"],
-          }),
-        ],
-      })
+        concepts: [minimalConcept({ slug: "x", name: "X" })],
+      }),
+      new Map([["x", ["a", "b", "c"]]])
     );
     const drill = slides.find((s) => s.kind === "concept-drill");
     expect(drill).toEqual({
@@ -213,7 +210,8 @@ describe("splitNoteIntoSlides", () => {
           minimalConcept({ slug: "b", name: "B" }),
           minimalConcept({ slug: "c", name: "C" }),
         ],
-      })
+      }),
+      NO_DRILLS
     );
     const intros = slides.filter((s) => s.kind === "concept-intro");
     expect(
@@ -233,7 +231,8 @@ describe("splitNoteIntoSlides", () => {
           }),
           minimalConcept({ slug: "b", name: "B" }),
         ],
-      })
+      }),
+      NO_DRILLS
     );
     const kinds = slides.map((s) => s.kind);
     const bIntroIdx = slides.findIndex(
@@ -248,7 +247,8 @@ describe("splitNoteIntoSlides", () => {
 
   it("produces title + drill only for a note with no concepts", () => {
     const slides = splitNoteIntoSlides(
-      baseNote({ whyItMatters: "", concepts: [] })
+      baseNote({ whyItMatters: "", concepts: [] }),
+      NO_DRILLS
     );
     expect(slides).toHaveLength(2);
     expect(slides[0].kind).toBe("title");
@@ -256,10 +256,31 @@ describe("splitNoteIntoSlides", () => {
   });
 
   it("drill slide carries the subtopicName", () => {
-    const slides = splitNoteIntoSlides(baseNote());
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
     expect(slides[slides.length - 1]).toEqual({
       kind: "drill",
       subtopicName: "Test Subtopic",
     });
+  });
+
+  it("multi-concept: drills lookup is keyed by concept.slug, not by index or name", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          minimalConcept({ slug: "alpha", name: "A" }),
+          minimalConcept({ slug: "beta", name: "B" }),
+          minimalConcept({ slug: "gamma", name: "C" }),
+        ],
+      }),
+      new Map([
+        ["alpha", ["a1"]],
+        ["gamma", ["c1", "c2"]],
+      ])
+    );
+    const drills = slides.filter((s) => s.kind === "concept-drill");
+    expect(drills.map((s) => s.kind === "concept-drill" && s.conceptName)).toEqual([
+      "A",
+      "C",
+    ]);
   });
 });

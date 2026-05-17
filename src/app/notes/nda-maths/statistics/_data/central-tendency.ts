@@ -41,15 +41,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(\\bar{x} = 8\\)",
       },
       pyqExampleId: "78e0ac87-d443-49ae-860b-09a2a4185027",
-      drillQuestionIds: [
-        "2edc3844-7df9-457b-80f0-8f8ca92b9f08", // replace x_n with k
-        "b97d7058-a71c-4b2f-9bba-e154e4701f8c", // average correction
-        "bd283867-958b-4224-b741-1366d0a7d55a", // mean of naturals in [15,64]
-        "4bd4c8d9-c625-4b44-b09e-da16e52b7b49", // mean of 8² to 15²
-        "599b1022-193e-44f0-9c08-3d0774b8b0c1", // mean of 1,4,9,...,n²=130
-        "28c1b7f9-8cf0-4e54-96ae-acea8a9c956f", // 12 dice means of low/high subsets
-        "1cd7d383-10a6-4823-998a-e1c6c2ab6ef0", // x/y = 55/42
-      ],
       traps: [
         {
           title: "Outliers move the mean — sometimes a lot",
@@ -92,12 +83,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(\\bar{x} = 5.4\\)",
       },
       pyqExampleId: "e7f15493-52aa-4380-b0c2-8f93f48bc409",
-      drillQuestionIds: [
-        "0b0def6f-27ff-4d01-8697-9c63713d5365", // frequency of each class doubled
-        "35bc2890-c38f-4951-b4f6-5aba809b9656", // mean with binomial-coeff frequencies
-        "ba093f3c-8eb5-4c57-948d-98723a554f25", // Σ x_i f_i
-        "acbb5db5-5af7-4e75-b7f3-13e49985e3f6", // mean of the distribution
-      ],
       traps: [
         {
           title: "Divide by \\(\\sum f_i\\), not by the number of classes",
@@ -140,12 +125,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(\\bar{y} = 41\\)",
       },
       pyqExampleId: "fb039a72-6921-4a0e-a538-ca2081c72135",
-      drillQuestionIds: [
-        "5b072042-32c9-4871-b963-ff019714dc2d", // mean of (x_i - k) → mean of x_i
-        "c019375a-659d-465f-8f11-3c4ebadb09ec", // multiply by 4, subtract from 44
-        "618e67e3-6b15-4a67-875b-d9bd302d000b", // Σ 100(2x_i + 4)
-        "7b22e8d7-d22f-431c-b168-aa0970b528d5", // Σ (3x_i - 45)
-      ],
       traps: [
         {
           title: "Shift moves the mean, but not the SD",
@@ -190,13 +169,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(M = 7\\)",
       },
       pyqExampleId: "5d585188-bab2-476a-9078-e54725e8cdd5",
-      drillQuestionIds: [
-        "76ed2266-a695-4563-bb6d-c665c476d0b5", // median of marks
-        "acc99b4d-2156-42c9-8022-f74dda5d530a", // medians of first-5 vs last-5
-        "b76c9357-8996-452e-8c32-7ed039ec57f5", // median of x with frequencies
-        "ce598d2e-8eab-4c72-9537-2c0861c29f21", // median of the distribution
-        "714925f8-59a7-404e-884e-b9a6ab3846a7", // median (set context)
-      ],
       traps: [
         {
           title: "Always sort before reading off the middle",
@@ -240,10 +212,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(M_0 = 5\\)",
       },
       pyqExampleId: "8de1abbb-6597-407a-855d-bc6c986ee3b1",
-      drillQuestionIds: [
-        "32f6cd31-d333-467e-a725-a2eb0cba5e32", // mode of die throws
-        "5cef410e-bfb9-4345-86b4-383b149d59a8", // mode of the distribution
-      ],
       traps: [
         {
           title: "Mode can be undefined or multimodal — don't force one answer",
@@ -283,11 +251,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(\\text{GM} = 6\\)",
       },
       pyqExampleId: "319f7726-9981-4f36-93a2-1055cd03faad",
-      drillQuestionIds: [
-        "6a7469fb-d26c-426f-8e7b-d8a010f05717", // GM of 2,4,8,…,1024
-        "fe08e47f-49ca-4962-a235-14b333be5197", // AM vs GM: uses all data
-        "44f9500d-fc01-40a7-acbd-b138f4ba007c", // HM=x, GM=y, 5x=4y relation
-      ],
       traps: [
         {
           title: "GM is only defined for positive numbers",
@@ -327,12 +290,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "\\(\\text{HM} = 4.8\\)",
       },
       pyqExampleId: "3c181502-5d9d-48e8-b19d-c3d58738909f",
-      drillQuestionIds: [
-        "54703ec3-c779-48f3-9799-a03c8cf2dd59", // edible oil at 150/200/250/300 (equal money)
-        "87b78a01-b7cd-4eda-a8a8-1248bd381cf8", // HM of C(10,3)…C(10,7)
-        "8e808b55-035c-4c4c-8946-783f5326f3ad", // HM of 1,2,4,…,2^(n-1)
-        "44f9500d-fc01-40a7-acbd-b138f4ba007c", // HM=x, GM=y, 5x=4y relation
-      ],
       traps: [
         {
           title: "Order is always \\(\\text{AM} \\geq \\text{GM} \\geq \\text{HM}\\)",
@@ -376,16 +333,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         answer: "Sum of deviations \\(= 0\\)",
       },
       pyqExampleId: "9650e9ca-cc9b-4696-8607-0262116a0753",
-      drillQuestionIds: [
-        "6ac77c44-d86d-4fe0-9482-006be4008514", // deviations from 99
-        "d92e02af-1b48-4084-9ad5-5c9910938e5a", // deviations from median
-        "e978d39f-2cb0-4b5b-a721-dadc1b544ba6", // deviations from y sum to 180, find y
-        "1d21177e-685f-4298-8ea1-c6f4206f7ceb", // deviations from 10 and 20, (p-q)²=10000
-        "50157ec3-2f8e-4dad-95ee-a1c9672a687a", // when mean = median = mode
-        "b41e2929-003e-4466-ba59-a15ade9b7704", // frequency curve skewed left
-        "ebb35f72-bde8-4f18-adaa-959951947340", // mean > mode, median > mean (set)
-        "2ed4b11a-5141-42fd-b721-9f8e4c1460c0", // 5P=4Q=R/2 empirical relation
-      ],
       traps: [
         {
           title: "Sum of deviations is zero only about the mean",

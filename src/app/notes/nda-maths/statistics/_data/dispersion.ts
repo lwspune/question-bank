@@ -39,14 +39,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         answer: "\\(\\text{MD} = 2.4\\)",
       },
       pyqExampleId: "20f73222-eb92-4483-ae18-494bfde621ec",
-      drillQuestionIds: [
-        "e5908a03-a59f-42bf-9bfe-1a8e0644ced3", // MD of first 10 even naturals
-        "c1e8b916-adb4-4fe2-95e8-00d78bf55d0a", // coefficient of MD of 21,34,…
-        "e5ba1b92-eac7-46d8-989f-d78a8ba4e99a", // MD about arithmetic mean
-        "e6043bad-6888-4066-a7ae-2c17b8449f1f", // MD about the mean
-        "937d2d6e-9746-4884-a1bb-4adbc0d9bcb6", // MD of largest five obs
-        "de0c947c-8a59-4117-bc1b-ce3c9d433638", // MD about the median
-      ],
       traps: [
         {
           title: "Mean deviation about median is always \\(\\leq\\) about the mean",
@@ -88,13 +80,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         answer: "\\(\\sigma^2 = 8\\)",
       },
       pyqExampleId: "dce15c09-9f56-43af-b675-a154d1cba3e9",
-      drillQuestionIds: [
-        "10a8853a-ad59-462c-96b2-8b6359ede381", // mean=14 var=13.2, find 2 missing
-        "951ee8a8-cb20-4985-a888-810d399f73c4", // var of 5 positives=3.6, find 5th
-        "39dfa4a0-ff45-4bb1-b941-9e1c5d106259", // variance of largest five obs
-        "34aea07a-5de0-433b-b1c0-55ea489a27e8", // variance of Y from binomial X
-        "47f9e60b-6e83-4d9a-8f48-63fe9319337a", // variance of Y = 2X - 5
-      ],
       traps: [
         {
           title: "Computational form saves time on \\(\\Sigma x_i^2\\)-style PYQs",
@@ -131,11 +116,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         answer: "\\(\\sigma = 2\\sqrt{2} \\approx 2.83\\)",
       },
       pyqExampleId: "180027af-b87e-478d-93a1-0b1d4e271cd3",
-      drillQuestionIds: [
-        "cbb4acc3-9ca2-4790-ac86-54c59f6fcc3d", // what is the SD?
-        "015d8be5-6c2f-4d07-9692-45a4ef44269f", // unit equivalence statements
-        "7376ad48-8743-460c-92fc-0e33da3d714e", // most reliable measure of variability
-      ],
       traps: [
         {
           title: "SD and mean deviation share units; variance does not",
@@ -176,10 +156,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         answer: "\\(\\sigma_Y = 12\\)",
       },
       pyqExampleId: "33af29b2-fa37-43b9-a861-deb85008bbf4",
-      drillQuestionIds: [
-        "2ee49e4c-5435-4a67-b069-c45e36f23970", // SD=10, add 5 then ÷ 20
-        "3c78f872-e6b2-47cf-934a-9a2641591890", // SD=10, add 20 (shift only)
-      ],
       traps: [
         {
           title: "Squaring \\(a\\) for variance, taking absolute value for SD",
@@ -218,10 +194,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         answer: "\\(\\text{CV} = 20\\%\\)",
       },
       pyqExampleId: "e216a45f-d881-4f2c-948c-be9f7ec69f60",
-      drillQuestionIds: [
-        "5a82253f-99a8-4cf7-842c-c846a80efa9b", // CV of marks in Mathematics
-        "278cb8c1-fe40-4451-bcd0-e689922af73c", // highest variability subject
-      ],
       traps: [
         {
           title: "CV is unitless — that's the entire point",
@@ -259,11 +231,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         answer: "\\(\\sigma^2 = 28\\)",
       },
       pyqExampleId: "65867660-2a97-4b50-8e85-577c7b1e95df",
-      drillQuestionIds: [
-        "e2b6194f-15d4-4516-8ef6-451a5a9b6a9b", // min of Σ(2x_i - a)²
-        "7f1de98c-ef2f-47e9-87a0-c1f864e2fc30", // tropical tubers ΣX² ΣY²
-        "e4690c78-3549-4eba-a12b-f5d8cc8d1573", // tropical tubers ΣX² ΣY² (other Q in set)
-      ],
       traps: [
         {
           title: "\\(\\overline{x^2} \\neq (\\bar{x})^2\\) — they differ by exactly \\(\\sigma^2\\)",

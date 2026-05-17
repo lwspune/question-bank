@@ -40,9 +40,6 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         answer: "Heights = 6, 5, 5 (in density units)",
       },
       pyqExampleId: "d8cb68fd-9555-48d0-b0ff-7a05b3e947d0",
-      drillQuestionIds: [
-        "90f0b1af-627a-4930-8616-c59c9a76667e", // most appropriate graphical representation
-      ],
       traps: [
         {
           title: "Bar height ≠ frequency when class widths differ",
@@ -81,9 +78,6 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         answer: "\\(\\theta_{\\text{Science}} = 72^\\circ\\)",
       },
       pyqExampleId: "0e56a091-ec3e-4ddd-8b3c-68b58018ae62",
-      drillQuestionIds: [
-        "ffa91ba1-c4ab-45e0-b6ab-cd24c91267ad", // pie chart Science 30/70/50
-      ],
       traps: [
         {
           title: "All angles MUST sum to \\(360^\\circ\\)",
@@ -125,10 +119,6 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         answer: "\\(M = 160\\) cm",
       },
       pyqExampleId: "720b1f0e-74e4-4d0b-ae88-3901d51119b3",
-      drillQuestionIds: [
-        "2f577966-fbc9-4330-bcdd-8329ff2dcdf9", // height that occurs most frequently (mode)
-        "7f58e430-6a96-43d1-bd03-3bc7c44d5e26", // students with height ≤ 165 (cumulative)
-      ],
       traps: [
         {
           title: "Cumulative frequency is RUNNING total, not class total",

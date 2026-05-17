@@ -43,10 +43,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         answer: "\\(r_{UV} = -0.6\\)",
       },
       pyqExampleId: "8d536492-e15a-4d3f-b9ad-e6d295c95b19",
-      drillQuestionIds: [
-        "03263559-0466-4062-b7fb-03d288734b57", // r=0.7 husband-wife at marriage → silver jubilee
-        "4d378f28-d1a6-4a6e-879b-23b9ad50c29c", // r is independent of …
-      ],
       traps: [
         {
           title: "\\(r\\) is bounded by \\(-1\\) and \\(+1\\) — always",
@@ -95,11 +91,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         answer: "\\(y = \\dfrac{x + 5}{4}\\)  or equivalently  \\(4y - x - 5 = 0\\)",
       },
       pyqExampleId: "81b73d8a-5776-49fc-9bc6-32e377566d5c",
-      drillQuestionIds: [
-        "a6fa2083-7fa7-498e-9eef-01ca57031e07", // 4-point regression y on x
-        "ba9a07ff-0ba2-4dfb-8401-c77c79999c9d", // two reg lines, find x when y=-3
-        "6698f48f-0d4b-4bf4-a416-dc8cbb0c4174", // r=3/4, means 3,4 — statements
-      ],
       traps: [
         {
           title: "Both regression lines always pass through \\((\\bar{x}, \\bar{y})\\)",
@@ -142,9 +133,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         answer: "\\(r = -\\sqrt{\\dfrac{2}{3}}\\)",
       },
       pyqExampleId: "c0cb9af2-ecd0-4b1e-9923-352874cbbb49",
-      drillQuestionIds: [
-        "1dcaff01-a367-432f-b63f-40e0dc491d02", // two lines y=3/4 x+2 and x=3/4 y+1/4
-      ],
       traps: [
         {
           title: "\\(b_{yx} \\cdot b_{xy} \\leq 1\\) is non-negotiable",
@@ -186,9 +174,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         answer: "\\(b_{yx} = \\dfrac{2}{7},\\ b_{xy} = 3\\)",
       },
       pyqExampleId: "aec23a99-c901-4c50-a672-211c0d8da55d",
-      drillQuestionIds: [
-        "4557ccee-8cb8-44b9-b085-e6923a9b15b7", // angle between regression lines
-      ],
       traps: [
         {
           title: "Try the inequality before doing anything else",

@@ -17,6 +17,11 @@ type Props = {
   total: number;
   /** Pre-resolved bank PYQ row, or null when pyqExampleId didn't resolve. */
   pyqExample: WorkedExample | null;
+  /**
+   * Runtime overlay: question UUIDs tagged with this concept in the DB,
+   * sourced via `loadResolvedDrills`. Empty array hides the drill link.
+   */
+  drillQuestionIds: string[];
 };
 
 /**
@@ -31,6 +36,7 @@ export default function ConceptUnitCard({
   index,
   total,
   pyqExample,
+  drillQuestionIds,
 }: Props) {
   return (
     <section
@@ -98,15 +104,17 @@ export default function ConceptUnitCard({
         </div>
       )}
 
-      {/* Per-concept drill — sends to /browse filtered to exactly these UUIDs */}
-      {concept.drillQuestionIds && concept.drillQuestionIds.length > 0 && (
+      {/* Per-concept drill — sends to /browse filtered to exactly these UUIDs.
+          IDs sourced at request time from question_concept_tags via
+          loadResolvedDrills (Phase 2). Hidden silently when zero. */}
+      {drillQuestionIds.length > 0 && (
         <div className="mt-6 flex items-center justify-end border-t pt-4">
           <Link
-            href={buildBrowseUrl({ extraIds: concept.drillQuestionIds })}
+            href={buildBrowseUrl({ extraIds: drillQuestionIds })}
             className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary/10"
           >
             <Target className="h-3.5 w-3.5" aria-hidden />
-            Drill {concept.drillQuestionIds.length} more on {concept.name.toLowerCase()}
+            Drill {drillQuestionIds.length} more on {concept.name.toLowerCase()}
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
         </div>
