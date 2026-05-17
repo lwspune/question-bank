@@ -25,6 +25,11 @@ const optionSchema = z.object({
   imageUrl: z.string().nullable(),
 });
 
+const conceptTagSchema = z.object({
+  subtopicSlug: z.string().min(1),
+  conceptSlug: z.string().min(1),
+});
+
 const editQuestionSchema = z
   .object({
     text: trimmedNonEmpty,
@@ -38,6 +43,12 @@ const editQuestionSchema = z
     visibility: z.enum(["PUBLIC", "PRIVATE"]),
     correct: optionLabel,
     options: z.array(optionSchema).length(4),
+    /**
+     * Optional concept tags to set on this question. Replaces the full set:
+     * an empty array clears all tags. Validation that each pair is consistent
+     * with the question's final subtopic happens server-side in applyEdit.
+     */
+    conceptTags: z.array(conceptTagSchema).optional(),
   })
   .refine(
     (p) => {

@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, Globe, ImagePlus, Layers, Lock, Pencil, Trash2 } from "lucide-react";
+import { Eye, Globe, ImagePlus, Layers, Lock, NotebookPen, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -46,6 +46,15 @@ export type SubjectTree = {
 
 export type ExistingQuestion = DirtyExistingQuestion & { id: string };
 
+export type NotesConceptsEntry = {
+  /** The canonical DB subtopic name this entry maps to. */
+  subtopicName: string;
+  /** Stable URL slug for the subtopic, used in tag identity. */
+  subtopicSlug: string;
+  /** Available concept tags for this subtopic, in editorial order. */
+  concepts: { slug: string; name: string }[];
+};
+
 type Props = {
   question: ExistingQuestion;
   subjects: SubjectTree[];
@@ -53,6 +62,13 @@ type Props = {
   supabaseUrl: string;
   setId: string | null;
   setMemberCount: number;
+  /**
+   * Concept-tag descriptor for the question's CURRENT subtopic at page load.
+   * Null when the subtopic has no notes content yet — field is hidden in that case.
+   */
+  notesEntry: NotesConceptsEntry | null;
+  /** Concept slugs currently tagged on the question for `notesEntry.subtopicSlug`. */
+  initialConceptSlugs: string[];
 };
 
 const MAX_BYTES = 1024 * 1024;
@@ -67,6 +83,8 @@ export default function EditQuestionForm({
   supabaseUrl,
   setId,
   setMemberCount,
+  notesEntry,
+  initialConceptSlugs,
 }: Props) {
   const router = useRouter();
   const initial = toFormState(question);
@@ -87,6 +105,7 @@ export default function EditQuestionForm({
   const [correct, setCorrect] = useState<OptionLabel>(initial.correct);
   const [optionTexts, setOptionTexts] = useState(initial.optionTexts);
   const [optionImages, setOptionImages] = useState(initial.optionImages);
+  const [conceptSlugs, setConceptSlugs] = useState<string[]>(initialConceptSlugs);
 
   const [error, setError] = useState<string | null>(null);
   const [uploadingSlot, setUploadingSlot] = useState<string | null>(null);
@@ -209,7 +228,12 @@ export default function EditQuestionForm({
     e.preventDefault();
     setError(null);
     setSaving(true);
-    const payload = {
+    // Only send conceptTags when the user hasn't changed the subtopic — moving
+    // to a different subtopic invalidates the current concept set. The user
+    // can re-edit after save to retag in the new subtopic's concept list.
+    const sameSubtopic = subtopicId === question.subtopicId;
+    const includeTags = notesEntry !== null && sameSubtopic;
+    const payload: Record<string, unknown> = {
       text,
       context: context.trim() || null,
       difficulty,
@@ -226,6 +250,12 @@ export default function EditQuestionForm({
         imageUrl: optionImages[label],
       })),
     };
+    if (includeTags) {
+      payload.conceptTags = conceptSlugs.map((conceptSlug) => ({
+        subtopicSlug: notesEntry!.subtopicSlug,
+        conceptSlug,
+      }));
+    }
     try {
       const res = await fetch(`/api/questions/${question.id}`, {
         method: "PUT",
@@ -544,6 +574,14 @@ export default function EditQuestionForm({
                   disabled={busy}
                 />
               </Section>
+
+              <ConceptsSection
+                notesEntry={notesEntry}
+                conceptSlugs={conceptSlugs}
+                onChange={setConceptSlugs}
+                subtopicChanged={subtopicId !== question.subtopicId}
+                disabled={busy}
+              />
             </div>
           </aside>
         </div>
@@ -717,6 +755,81 @@ function Section({
       </h2>
       {children}
     </section>
+  );
+}
+
+function ConceptsSection({
+  notesEntry,
+  conceptSlugs,
+  onChange,
+  subtopicChanged,
+  disabled,
+}: {
+  notesEntry: NotesConceptsEntry | null;
+  conceptSlugs: string[];
+  onChange: (next: string[]) => void;
+  subtopicChanged: boolean;
+  disabled: boolean;
+}) {
+  if (!notesEntry) {
+    return (
+      <Section heading="Concepts">
+        <p className="text-xs text-muted-foreground">
+          Concept tagging will be available once notes are authored for this
+          subtopic.
+        </p>
+      </Section>
+    );
+  }
+  if (subtopicChanged) {
+    return (
+      <Section heading="Concepts">
+        <p className="flex items-start gap-1.5 text-xs text-muted-foreground">
+          <NotebookPen className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
+          Subtopic changed — save first, then re-edit to tag concepts in the new
+          subtopic.
+        </p>
+      </Section>
+    );
+  }
+  const selected = new Set(conceptSlugs);
+  const toggle = (slug: string) => {
+    const next = new Set(selected);
+    if (next.has(slug)) next.delete(slug);
+    else next.add(slug);
+    onChange(Array.from(next));
+  };
+  return (
+    <Section heading="Concepts">
+      <p className="mb-2 flex items-center gap-1.5 text-xs text-muted-foreground">
+        <NotebookPen className="h-3.5 w-3.5" aria-hidden />
+        {selected.size} of {notesEntry.concepts.length} selected
+      </p>
+      <ul className="space-y-1.5">
+        {notesEntry.concepts.map((c) => {
+          const id = `concept-${c.slug}`;
+          const checked = selected.has(c.slug);
+          return (
+            <li key={c.slug}>
+              <label
+                htmlFor={id}
+                className="flex cursor-pointer items-start gap-2 rounded-md px-2 py-1 text-sm hover:bg-accent"
+              >
+                <input
+                  id={id}
+                  type="checkbox"
+                  className="mt-0.5 h-4 w-4 shrink-0"
+                  checked={checked}
+                  onChange={() => toggle(c.slug)}
+                  disabled={disabled}
+                />
+                <span className={checked ? "font-medium" : ""}>{c.name}</span>
+              </label>
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
   );
 }
 

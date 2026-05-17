@@ -2,8 +2,11 @@ import { notFound, redirect } from "next/navigation";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
+import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
+import { getTagsForQuestion } from "@/lib/tags/conceptTags";
 import EditQuestionForm, {
   type ExistingQuestion,
+  type NotesConceptsEntry,
   type SubjectTree,
 } from "./EditQuestionForm";
 
@@ -124,6 +127,30 @@ export default async function EditQuestionPage({ params }: PageProps) {
     setMemberCount = count ?? 0;
   }
 
+  // Notes concept tagging: if the question's subtopic has notes content,
+  // pass the concept list + current tags so the form can render a multi-select.
+  let notesEntry: NotesConceptsEntry | null = null;
+  let initialConceptSlugs: string[] = [];
+  if (question.subtopic_id) {
+    const { data: stRow } = await supabase
+      .from("subtopics")
+      .select("name")
+      .eq("id", question.subtopic_id)
+      .maybeSingle<{ name: string }>();
+    const entry = stRow ? getSubtopicNotesEntry(stRow.name) : null;
+    if (entry) {
+      notesEntry = {
+        subtopicName: stRow!.name,
+        subtopicSlug: entry.subtopicSlug,
+        concepts: entry.concepts,
+      };
+      const tags = await getTagsForQuestion(supabase, question.id);
+      initialConceptSlugs = tags
+        .filter((t) => t.subtopicSlug === entry.subtopicSlug)
+        .map((t) => t.conceptSlug);
+    }
+  }
+
   return (
     <>
       <AppHeader />
@@ -138,6 +165,8 @@ export default async function EditQuestionPage({ params }: PageProps) {
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
           setId={question.set_id}
           setMemberCount={setMemberCount}
+          notesEntry={notesEntry}
+          initialConceptSlugs={initialConceptSlugs}
         />
       </main>
     </>

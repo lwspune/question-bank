@@ -1,6 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { EditQuestionPayload } from "./edit";
 import { deleteImage } from "@/lib/storage/images";
+import { setTagsForQuestion } from "@/lib/tags/conceptTags";
+import { validateConceptTag } from "@/lib/notes/subtopicSlugRegistry";
 
 export type ApplyEditResult =
   | { kind: "ok"; orphanedImagePaths: string[] }
@@ -8,6 +10,7 @@ export type ApplyEditResult =
   | { kind: "forbidden" }
   | { kind: "invalid_image_path"; field: string; path: string }
   | { kind: "invalid_taxonomy"; reason: string }
+  | { kind: "invalid_concept_tag"; reason: string }
   | { kind: "duplicate" }
   | { kind: "error"; message: string };
 
@@ -115,6 +118,53 @@ export async function applyEdit(
   const optionError = optionResults.find((r) => r && "error" in r);
   if (optionError) {
     return { kind: "error", message: optionError.error };
+  }
+
+  // Concept-tags write (Phase 1). Only when the caller explicitly provides
+  // `conceptTags` (omitted = leave existing tags untouched; empty array = clear).
+  // Validates each (subtopicSlug, conceptSlug) against the question's final
+  // subtopic via the notes registry; an invalid pair returns an error AFTER
+  // the question UPDATE has already succeeded — last-write-wins for the
+  // question, tags don't write on failure.
+  if (payload.conceptTags !== undefined) {
+    if (payload.conceptTags.length > 0) {
+      if (!payload.subtopicId) {
+        return {
+          kind: "invalid_concept_tag",
+          reason: "cannot tag a question with no subtopic",
+        };
+      }
+      const { data: subtopicRow } = await client
+        .from("subtopics")
+        .select("name")
+        .eq("id", payload.subtopicId)
+        .maybeSingle<{ name: string }>();
+      if (!subtopicRow) {
+        return {
+          kind: "invalid_concept_tag",
+          reason: "subtopic for tagging could not be loaded",
+        };
+      }
+      for (const tag of payload.conceptTags) {
+        const err = validateConceptTag(
+          subtopicRow.name,
+          tag.subtopicSlug,
+          tag.conceptSlug
+        );
+        if (err) return { kind: "invalid_concept_tag", reason: err };
+      }
+    }
+    try {
+      await setTagsForQuestion(client, questionId, payload.conceptTags);
+    } catch (tagErr) {
+      // Tag write failure is non-blocking — log and continue. The question
+      // UPDATE has already succeeded; tags are metadata.
+      console.warn(
+        `concept tags write failed for question ${questionId}: ${
+          tagErr instanceof Error ? tagErr.message : String(tagErr)
+        }`
+      );
+    }
   }
 
   // Orphan cleanup: any old image path no longer referenced gets deleted.

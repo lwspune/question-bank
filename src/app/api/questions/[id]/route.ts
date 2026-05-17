@@ -57,6 +57,8 @@ export async function PUT(
         );
       case "invalid_taxonomy":
         return NextResponse.json({ error: result.reason }, { status: 400 });
+      case "invalid_concept_tag":
+        return NextResponse.json({ error: result.reason }, { status: 400 });
       case "duplicate":
         return NextResponse.json(
           {
