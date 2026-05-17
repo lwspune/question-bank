@@ -26,7 +26,7 @@ import {
 export const metadata: Metadata = {
   title: "NDA Mathematics Strategy — Score 100+ in 50 hours",
   description:
-    "Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 1,320 past-year questions across 11 papers.",
+    "Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 2,160 past-year questions across 18 papers.",
   alternates: { canonical: "/guide/nda-maths/strategy" },
 };
 
@@ -68,7 +68,7 @@ export default async function NdaMathsStrategy() {
       value: `${STRATEGY_HEADLINE.targetAccuracyPct}%`,
       label: "accuracy needed",
     },
-    { value: "~45 h", label: "total prep time" },
+    { value: "~47 h", label: "total prep time" },
   ];
 
   return (
@@ -85,7 +85,7 @@ export default async function NdaMathsStrategy() {
         type="Article"
         path="/guide/nda-maths/strategy"
         headline="NDA Mathematics Strategy — Score 100+ in 50 hours"
-        description="Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 1,320 past-year questions across 11 papers."
+        description="Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 2,160 past-year questions across 18 papers."
       />
       <GuideHero
         eyebrow="Strategy"
@@ -171,13 +171,14 @@ export default async function NdaMathsStrategy() {
       <section className="mt-14">
         <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight sm:text-2xl">
           <Target className="h-5 w-5 text-primary" aria-hidden />
-          Tier A — the foundation (5 chapters, ~32 q/paper)
+          Tier A — the foundation (6 chapters, ~38 q/paper)
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Must-master, no skipping. These chapters share three properties: high
           q-count, high easy/moderate ratio, and reliable appearance every paper.
-          Together they account for 311 questions (24% of the bank) and ~32
-          questions per paper.
+          Together they account for 680 questions (31% of the bank) and ~38
+          questions per paper. Probability joined Tier A in 2026-05 after the
+          2017–2026 expansion confirmed its 9 q/paper rate.
         </p>
         <div className="mt-6 space-y-4">
           {tierA.map((c, i) => (
@@ -204,11 +205,13 @@ export default async function NdaMathsStrategy() {
       {/* SECTION 3 — Tier B */}
       <section className="mt-14">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          Tier B — selective drill (4 chapters, ~20 q/paper)
+          Tier B — selective drill (4 chapters, ~23 q/paper)
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Cover only the easier subtopics here. The hard subtopics in these
           chapters are time-sinks — leave them and pick up Tier A marks instead.
+          Trig Identities is the cherry-pick newcomer: 138 q but only the
+          compound-angle and specific-values subtopics earn study time.
         </p>
         <div className="mt-6 space-y-4">
           {tierB.map((c, i) => (
@@ -236,11 +239,11 @@ export default async function NdaMathsStrategy() {
       {/* SECTION 4 — Skip list */}
       <section className="mt-14">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          Skip list — 22 chapters
+          Skip list — 21 chapters
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           These chapters yield poor marks-per-hour. Browse them once for free
-          wins on test day, but don&rsquo;t deep-study. The 9 Tier A+B chapters
+          wins on test day, but don&rsquo;t deep-study. The 10 Tier A+B chapters
           above give you the 50 attempts you need.
         </p>
         <ul className="mt-4 rounded-md border bg-card p-4">
