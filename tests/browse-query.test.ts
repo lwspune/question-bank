@@ -20,6 +20,7 @@ const EMPTY_FILTERS: Filters = {
   difficulties: [],
   pyqYears: [],
   extraIds: [],
+  principleSlug: null,
   q: "",
   page: 1,
 };

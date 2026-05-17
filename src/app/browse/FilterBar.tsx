@@ -104,6 +104,7 @@ export default function FilterBar({
     difficulties: [],
     pyqYears: [],
     extraIds: [],
+    principleSlug: null,
     q: "",
     page: 1,
   };

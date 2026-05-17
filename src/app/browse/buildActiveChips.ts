@@ -11,6 +11,7 @@ export type ChipLabels = {
   subjectName: (id: string) => string;
   chapterName: (id: string) => string;
   subtopicName: (id: string) => string;
+  principleName: (slug: string) => string;
 };
 
 const DIFFICULTY_LABEL: Record<Difficulty, string> = {
@@ -100,6 +101,14 @@ export function buildActiveChips(
         pyqYears: filters.pyqYears.filter((x) => x !== y),
         page: 1,
       }),
+    });
+  }
+
+  if (filters.principleSlug) {
+    chips.push({
+      key: `principle:${filters.principleSlug}`,
+      label: `Principle: ${labels.principleName(filters.principleSlug)}`,
+      nextFilters: () => ({ ...filters, principleSlug: null, page: 1 }),
     });
   }
 

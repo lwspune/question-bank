@@ -21,6 +21,9 @@ type Props = {
   subjects: Option[];
   chapters: Option[];
   subtopics: Option[];
+  /** Map of principle slug → display name. Drives the "Principle: …" chip when
+   *  filters.principleSlug is set. Falls back to the slug if missing. */
+  principleNames?: Record<string, string>;
   className?: string;
 };
 
@@ -49,6 +52,7 @@ export default function ActiveFilterChips({
   subjects,
   chapters,
   subtopics,
+  principleNames,
   className,
 }: Props) {
   const router = useRouter();
@@ -73,6 +77,7 @@ export default function ActiveFilterChips({
     subjectName: makeLookup(subjects),
     chapterName: makeLookupWithCount(chapters),
     subtopicName: makeLookupWithCount(subtopics),
+    principleName: (slug: string) => principleNames?.[slug] ?? slug,
   };
 
   const chips = buildActiveChips(filters, labels);
@@ -80,6 +85,7 @@ export default function ActiveFilterChips({
   if (chips.length === 0) return null;
 
   const cleared: Filters = {
+    ...filters,
     examId: null,
     subjectId: null,
     chapterIds: [],
@@ -87,6 +93,7 @@ export default function ActiveFilterChips({
     difficulties: [],
     pyqYears: [],
     extraIds: [],
+    principleSlug: null,
     q: "",
     page: 1,
   };

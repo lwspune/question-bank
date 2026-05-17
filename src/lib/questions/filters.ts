@@ -10,8 +10,16 @@ export type Filters = {
   /** Curated question UUIDs added to the result via OR with subtopicIds —
    *  used by principle drill links to include questions where the principle
    *  is the lever but the subtopic name doesn't carry the keyword. Empty by
-   *  default; never user-facing in the FilterBar. */
+   *  default; never user-facing in the FilterBar.
+   *
+   *  Deprecated for /guide principle drills — `principleSlug` is the source
+   *  of truth now (migration 0023). Retained for backward URL compatibility. */
   extraIds: string[];
+  /** Slug of a top-20 principle from `/guide/nda-maths/_data/principles.ts`.
+   *  When set, narrows results to questions tagged with this principle in
+   *  `question_principle_tags` (migration 0023). AND-composes with all other
+   *  filters. Single value — only one principle can be active at a time. */
+  principleSlug: string | null;
   q: string;
   page: number;
 };
@@ -21,6 +29,9 @@ const MIN_YEAR = 1900;
 const MAX_YEAR = 2100;
 // UUID v1-v5 shape — relaxed enough to also accept v7/v8 variants.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+// Principle slug: lowercase, kebab-case, max 80 chars. Defence-in-depth
+// against a malicious caller smuggling SQL fragments via ?principle=.
+const PRINCIPLE_SLUG_RE = /^[a-z][a-z0-9-]{0,79}$/;
 
 export const EMPTY_FILTERS: Filters = {
   examId: null,
@@ -30,6 +41,7 @@ export const EMPTY_FILTERS: Filters = {
   difficulties: [],
   pyqYears: [],
   extraIds: [],
+  principleSlug: null,
   q: "",
   page: 1,
 };
@@ -50,6 +62,9 @@ export function parseFilters(params: URLSearchParams): Filters {
   // Defensive: only accept UUID-shaped extras so a malicious caller can't
   // smuggle SQL fragments or other identifiers into the query.
   const extraIds = csv(params.get("extras")).filter((s) => UUID_RE.test(s));
+  const rawPrinciple = params.get("principle");
+  const principleSlug =
+    rawPrinciple && PRINCIPLE_SLUG_RE.test(rawPrinciple) ? rawPrinciple : null;
   const q = params.get("q") ?? "";
   const pageRaw = parseInt(params.get("page") ?? "1", 10);
   const page = Number.isNaN(pageRaw) || pageRaw < 1 ? 1 : pageRaw;
@@ -61,6 +76,7 @@ export function parseFilters(params: URLSearchParams): Filters {
     difficulties,
     pyqYears,
     extraIds,
+    principleSlug,
     q,
     page,
   };
@@ -80,6 +96,7 @@ export function buildSearchParams(filters: Filters): URLSearchParams {
     sp.set("pyqYears", filters.pyqYears.join(","));
   if (filters.extraIds.length > 0)
     sp.set("extras", filters.extraIds.join(","));
+  if (filters.principleSlug) sp.set("principle", filters.principleSlug);
   if (filters.q) sp.set("q", filters.q);
   if (filters.page > 1) sp.set("page", String(filters.page));
   return sp;

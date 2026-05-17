@@ -15,9 +15,28 @@ describe("parseFilters", () => {
       difficulties: [],
       pyqYears: [],
       extraIds: [],
+      principleSlug: null,
       q: "",
       page: 1,
     });
+  });
+
+  it("parses ?principle=<slug> into principleSlug", () => {
+    const f = parseFilters(new URLSearchParams("principle=am-gm-mean-inequalities"));
+    expect(f.principleSlug).toBe("am-gm-mean-inequalities");
+  });
+
+  it("silently drops invalid principle slug shapes (defense vs SQL fragments)", () => {
+    expect(
+      parseFilters(new URLSearchParams("principle=DROP TABLE questions")).principleSlug
+    ).toBeNull();
+    expect(parseFilters(new URLSearchParams("principle=foo bar")).principleSlug).toBeNull();
+    expect(parseFilters(new URLSearchParams("principle=foo/bar")).principleSlug).toBeNull();
+    expect(parseFilters(new URLSearchParams("principle=")).principleSlug).toBeNull();
+  });
+
+  it("returns null principleSlug when ?principle= is missing", () => {
+    expect(parseFilters(new URLSearchParams("examId=e1")).principleSlug).toBeNull();
   });
 
   it("parses comma-separated extraIds (curated principle drill extensions)", () => {
@@ -88,6 +107,7 @@ describe("buildSearchParams", () => {
     difficulties: [],
     pyqYears: [],
     extraIds: [],
+    principleSlug: null,
     q: "",
     page: 1,
   };
@@ -105,6 +125,7 @@ describe("buildSearchParams", () => {
       difficulties: ["EASY"],
       pyqYears: [],
       extraIds: [],
+      principleSlug: null,
       q: "lens",
       page: 2,
     });
@@ -126,6 +147,7 @@ describe("buildSearchParams", () => {
       difficulties: ["EASY", "HARD"],
       pyqYears: [2024, 2022],
       extraIds: [],
+      principleSlug: null,
       q: "wave",
       page: 3,
     };
@@ -147,12 +169,47 @@ describe("buildSearchParams", () => {
         "22222222-2222-2222-2222-222222222222",
         "33333333-3333-3333-3333-333333333333",
       ],
+      principleSlug: null,
       q: "",
       page: 1,
     };
     const params = buildSearchParams(original);
     expect(params.get("extras")).toBe(original.extraIds.join(","));
     expect(parseFilters(params)).toEqual(original);
+  });
+
+  it("round-trips principleSlug", () => {
+    const original: Filters = {
+      examId: null,
+      subjectId: null,
+      chapterIds: [],
+      subtopicIds: [],
+      difficulties: [],
+      pyqYears: [],
+      extraIds: [],
+      principleSlug: "vieta-symmetric-roots",
+      q: "",
+      page: 1,
+    };
+    const params = buildSearchParams(original);
+    expect(params.get("principle")).toBe("vieta-symmetric-roots");
+    expect(parseFilters(params)).toEqual(original);
+  });
+
+  it("emits no principle param when principleSlug is null", () => {
+    const sp = buildSearchParams({
+      examId: null,
+      subjectId: null,
+      chapterIds: [],
+      subtopicIds: [],
+      difficulties: [],
+      pyqYears: [],
+      extraIds: [],
+      principleSlug: null,
+      q: "",
+      page: 1,
+    });
+    expect(sp.has("principle")).toBe(false);
   });
 
   it("emits no extras param when extraIds is empty", () => {
@@ -164,6 +221,7 @@ describe("buildSearchParams", () => {
       difficulties: [],
       pyqYears: [],
       extraIds: [],
+      principleSlug: null,
       q: "",
       page: 1,
     });
@@ -179,6 +237,7 @@ describe("buildSearchParams", () => {
       difficulties: [],
       pyqYears: [2024, 2023],
       extraIds: [],
+      principleSlug: null,
       q: "",
       page: 1,
     });

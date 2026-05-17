@@ -52,6 +52,25 @@ export async function queryQuestions(
   filters: Filters,
   pageSize: number = DEFAULT_PAGE_SIZE
 ): Promise<QueryResult> {
+  // Principle filter resolves to a question-id list via the tag table BEFORE
+  // building the main query, so the result narrows by `id IN (taggedIds)` and
+  // AND-composes with every other filter. RLS still applies (same client).
+  // Short-circuit to empty result when zero questions are tagged — `.in("id",
+  // [])` would generate a malformed array literal that PostgREST 400's on.
+  let principleNarrow: string[] | null = null;
+  if (filters.principleSlug) {
+    const { data: tagRows, error: tagErr } = await client
+      .from("question_principle_tags")
+      .select("question_id")
+      .eq("principle_slug", filters.principleSlug);
+    if (tagErr) throw new Error(`principle tag lookup: ${tagErr.message}`);
+    const taggedIds = (tagRows ?? []).map((r) => (r as { question_id: string }).question_id);
+    if (taggedIds.length === 0) {
+      return { totalCount: 0, rows: [] };
+    }
+    principleNarrow = taggedIds;
+  }
+
   // When orgId is null, no org filter is applied — RLS scopes the result:
   //   anon role        → only PUBLIC rows
   //   authenticated    → PUBLIC rows + caller's own org's PRIVATE rows
@@ -71,6 +90,7 @@ export async function queryQuestions(
     );
 
   if (orgId !== null) q = q.eq("org_id", orgId);
+  if (principleNarrow !== null) q = q.in("id", principleNarrow);
 
   if (filters.examId) q = q.eq("exam_id", filters.examId);
   if (filters.subjectId) q = q.eq("subject_id", filters.subjectId);

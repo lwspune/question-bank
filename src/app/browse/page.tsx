@@ -21,6 +21,7 @@ import DownloadDialog from "./DownloadDialog";
 import CartPill from "./CartPill";
 import Hero from "./Hero";
 import ActiveFilterChips from "./ActiveFilterChips";
+import { TOP_20 } from "@/app/guide/nda-maths/_data/principles";
 
 export const metadata: Metadata = {
   title: "Browse questions",
@@ -194,6 +195,9 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             subjects={subjectOpts}
             chapters={chapterOpts}
             subtopics={subtopicOpts}
+            principleNames={Object.fromEntries(
+              TOP_20.filter((p) => p.slug).map((p) => [p.slug as string, p.name])
+            )}
             className="mb-4"
           />
         )}
@@ -274,6 +278,7 @@ function countActiveFilters(f: Filters): number {
   if (f.subtopicIds.length > 0) n++;
   if (f.difficulties.length > 0) n++;
   if (f.pyqYears.length > 0) n++;
+  if (f.principleSlug) n++;
   if (f.q) n++;
   return n;
 }

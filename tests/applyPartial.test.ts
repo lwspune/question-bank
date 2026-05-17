@@ -10,6 +10,7 @@ const SEEDED: Filters = {
   difficulties: ["EASY", "MODERATE"],
   pyqYears: [2024, 2023],
   extraIds: [],
+  principleSlug: null,
   q: "vectors",
   page: 4,
 };

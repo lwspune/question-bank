@@ -9,6 +9,8 @@ const labels = {
   chapterName: (id: string) =>
     id === "chap-kin" ? "Kinematics" : id === "chap-elec" ? "Electricity" : id,
   subtopicName: (id: string) => (id === "sub-1d" ? "1-D motion" : id),
+  principleName: (slug: string) =>
+    slug === "vieta-symmetric-roots" ? "Vieta — sum and product of roots" : slug,
 };
 
 describe("buildActiveChips", () => {
@@ -169,5 +171,38 @@ describe("buildActiveChips", () => {
     };
     const chips = buildActiveChips(filters, labels);
     expect(chips.map((c) => c.label)).toEqual(["Chapter: chap-unknown"]);
+  });
+
+  it("emits a Principle chip when principleSlug is set", () => {
+    const filters: Filters = {
+      ...EMPTY_FILTERS,
+      principleSlug: "vieta-symmetric-roots",
+    };
+    const chips = buildActiveChips(filters, labels);
+    expect(chips.map((c) => c.label)).toEqual([
+      "Principle: Vieta — sum and product of roots",
+    ]);
+  });
+
+  it("removing the Principle chip clears principleSlug and resets page", () => {
+    const filters: Filters = {
+      ...EMPTY_FILTERS,
+      principleSlug: "vieta-symmetric-roots",
+      page: 3,
+    };
+    const next = buildActiveChips(filters, labels)
+      .find((c) => c.label.startsWith("Principle:"))!
+      .nextFilters();
+    expect(next.principleSlug).toBeNull();
+    expect(next.page).toBe(1);
+  });
+
+  it("Principle chip uses slug when principleName returns the slug (unknown)", () => {
+    const filters: Filters = {
+      ...EMPTY_FILTERS,
+      principleSlug: "unknown-principle",
+    };
+    const chips = buildActiveChips(filters, labels);
+    expect(chips.map((c) => c.label)).toEqual(["Principle: unknown-principle"]);
   });
 });
