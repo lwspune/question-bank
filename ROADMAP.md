@@ -2,31 +2,11 @@
 
 Pending features, data-model changes, and content work for Question Bank. Mirrors the "deferred" annotations scattered through the `CLAUDE.md` decisions log and consolidates them in one place.
 
-**Live as of 2026-05-15:** ~2,878 questions all PUBLIC (MHT-CET 748 + NDA 2,130: Maths 480, English 550, Physics 273, Geography 211, Chemistry 162, History 150, Biology 115, Current Affairs 117, Polity 59, Economics 13) · public `/browse` with filter/cart/Word export · admin `/upload` + `/uploads` index + per-question edit · `/guide/nda-maths` with 26 indexable pages (landing + 5 sections + 20 principle deep dives) · cross-app sync receiver. 20 migrations applied. 442 tests across 63 files.
+**Live as of 2026-05-17:** **4,708 questions all PUBLIC** (MHT-CET 748 + NDA 3,960: Maths 2,160, English 600, Physics 299, Geography 229, Chemistry 177, History 169, Current Affairs 127, Biology 124, Polity 61, Economics 14) · public `/browse` with filter/cart/Word export + `?principle=<slug>` filter · admin `/upload` + `/uploads` index + per-question edit + concept/principle tagging UI · `/guide/nda-maths` with **17 indexable pages** (landing + 5 sections + 11 TOP_11 principle deep dives, post-Phase-3 prune) · `/notes/nda-maths/statistics` with 4 subtopic notes · cross-app sync receiver. **23 migrations** applied. **~510 tests across 71 files**.
 
 ---
 
 ## Data model
-
-### Principle tags on questions (proposed, not committed)
-
-Add `principle_tags text[]` to `questions`. Multi-valued, since one question can invoke multiple principles simultaneously — `x² + x + 1 = 0` is both Vieta and Cube-roots-of-unity; "max sin A · sin B given A + B = π/2" is AM-GM AND Compound-angle.
-
-**Why this would be cleaner:** Today's principle drill resolves via two mechanisms — multi-subtopic drill lists + curated `extraQuestionIds` arrays, both stored as TS data in `src/app/guide/nda-maths/_data/principles.ts`. With a DB column, drill resolution collapses to one SQL filter (`WHERE 'am-gm' = ANY(principle_tags)`), the editorial TS file shrinks to just *content* (story, examples, variants), and new uploads can be tagged once instead of triggering a re-survey of every principle.
-
-It also unlocks UX that's currently impossible:
-- Filter `/browse` by principle directly (orthogonal to chapter/subtopic).
-- Show "tagged: AM-GM · Compound angle" chips on each `QuestionCard`.
-- Find questions invoking *multiple specific* principles ("Vieta + Compound angle").
-- Per-question audit on the edit page.
-
-**Why it's not urgent:** The current pattern works for the actual product. The primary use case is "filter → cart → export Word file" — principle tags are a *strategy-guide* concept, not a paper-builder concept. The 53 curated extras shipped 2026-05-15 cover the user-facing principle UI completely.
-
-**Hidden cost:** ~2,800 tag decisions (1,378 questions × ~2 principles each). Bootstrapping the column from current curated data covers ~600 questions of the top-20; the remaining ~750 need LLM-assisted or manual tagging with audit. That is a real ongoing tagging discipline once committed.
-
-**Decision driver:** is guide #2 coming?
-- **If yes** (MHT-CET strategy guide, IPMAT, etc.): ship this *before* writing the next guide's data files. The current hand-curated extras pattern doesn't scale to 4–5 guides × ~70 principles each.
-- **If no** (staying primarily a paper-builder, `/guide/nda-maths` is a one-off): the current pattern is good enough.
 
 ### Cross-batch passage reuse — `passages` table (option C)
 
@@ -46,7 +26,7 @@ Currently no concurrency check — two admins editing the same question race the
 
 ### MHT-CET strategy guide
 
-Replicate the NDA-Maths 7-phase template against MHT-CET's 748-question Physics / Chemistry / Maths bank. Most infrastructure (`_components/`, `_data/` shape, `resolveTaxonomy`, JSON-LD, OG image, sitemap pattern) is reusable; content + bank analysis is the new work. The MHT-CET principles set is different from NDA's, so this drives the "do principle tags need a DB column" question.
+Replicate the NDA-Maths 7-phase template against MHT-CET's 748-question Physics / Chemistry / Maths bank. Most infrastructure (`_components/`, `_data/` shape, `resolveTaxonomy`, JSON-LD, OG image, sitemap pattern) is reusable; content + bank analysis is the new work. Principle tagging now goes through `question_principle_tags` (migration 0023) — survey methodology in `[[principle-tag-survey-methodology]]`. Subject-level taxonomy cleanup must precede the guide (Chemistry + Physics still pending — see Taxonomy section below).
 
 ### NDA other-subject guides
 
@@ -60,7 +40,7 @@ IPMAT, CUET, NEET, JEE Main — already shown in `/browse` Hero as "Coming soon.
 
 ## Taxonomy cleanup (data work)
 
-Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the `[[reclassification-sql-pattern]]` and `[[taxonomy-inline-iteration]]` memories. **Done so far (11 subjects · 132 ch · 2,378 q · 438 subtopics):** all 10 NDA subjects + MHT-CET Mathematics.
+Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the `[[reclassification-sql-pattern]]` and `[[taxonomy-inline-iteration]]` memories. **Done so far (11 subjects · 132 ch · 4,058 q · 430 subtopics):** all 10 NDA subjects + MHT-CET Mathematics. NDA Maths re-Phase-D'd 2026-05-17 after 2017–2020 PYQ uploads added ~840 q (avg now 18.2 q/sub, highest density of any cleaned subject).
 
 Pending:
 - MHT-CET Chemistry (33 chapters · ~241 subtopics)
