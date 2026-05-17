@@ -13,9 +13,9 @@ import { ROUTES } from "../_data/nda-maths";
 import { DRIFT_CALLOUTS, DRIFT_ROWS, YEARS } from "../_data/trends";
 
 export const metadata: Metadata = {
-  title: "NDA Mathematics Trends — How the exam shifted (2021–2026)",
+  title: "NDA Mathematics Trends — How the exam shifted (2017–2026)",
   description:
-    "Year-by-year principle drift in NDA Maths. Modulus jumped 4 → 15 in 2023. Vieta declined 13 → 5. Cube roots of unity appeared post-2022. Practice recent papers first.",
+    "Year-by-year principle drift in NDA Maths across 18 papers. Modulus tripled in 2023 and stayed elevated. Vieta plunged 2025–26. Cube roots of unity spiked 2023–24. Practice recent papers first.",
   alternates: { canonical: "/guide/nda-maths/trends" },
 };
 
@@ -29,10 +29,10 @@ export default async function Trends() {
   }));
 
   const stats = [
-    { value: "6", label: "years analysed" },
-    { value: "11", label: "papers" },
-    { value: "1,320", label: "questions tagged" },
-    { value: "13", label: "principles tracked" },
+    { value: "10", label: "years analysed" },
+    { value: "18", label: "papers" },
+    { value: "2,160", label: "questions tagged" },
+    { value: "15", label: "principles tracked" },
   ];
 
   return (
@@ -48,13 +48,13 @@ export default async function Trends() {
       <GuideJsonLd
         type="Article"
         path="/guide/nda-maths/trends"
-        headline="NDA Mathematics Trends — How the exam shifted (2021–2026)"
-        description="Year-by-year principle drift in NDA Maths. Modulus jumped 4 → 15 in 2023. Vieta declined 13 → 5. Cube roots of unity appeared post-2022. Practice recent papers first."
+        headline="NDA Mathematics Trends — How the exam shifted (2017–2026)"
+        description="Year-by-year principle drift in NDA Maths across 18 papers. Modulus tripled in 2023 and stayed elevated. Vieta plunged 2025–26. Cube roots of unity spiked 2023–24. Practice recent papers first."
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA Mathematics 2025 is not the NDA Mathematics from 2021"
-        subtitle="The bank's principle distribution drifts year over year. A 5-year average misleads — the most recent papers are the more accurate forecast of the next one."
+        title="NDA Mathematics 2026 is not the NDA Mathematics from 2017"
+        subtitle="The bank's principle distribution drifts year over year. A 10-year window shows the real inflections; the most recent papers are the more accurate forecast of the next one."
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -65,9 +65,9 @@ export default async function Trends() {
           The 4 biggest shifts
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
-          Four principles have visibly moved between 2021 and 2026 — two on the
-          rise, two in decline. If you only practiced one cohort of papers, you
-          have a blind spot.
+          Four principles have visibly moved across the 2017–2026 window —
+          two on the rise, two in decline. If you only practiced one cohort
+          of papers, you have a blind spot.
         </p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {DRIFT_CALLOUTS.map((c) => {
@@ -119,9 +119,10 @@ export default async function Trends() {
           Year-by-year drift
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
-          Counts per paper-set (240 q each for 2021–2025, 120 q for 2026 since
-          NDA 2 hasn&rsquo;t happened yet). Cells are tinted by row magnitude — your
-          eye picks up the slope without a chart.
+          Counts per paper-set (240 q each for 2017–2019 and 2021–2025;
+          120 q for 2020 because NDA-2 was COVID-cancelled and for 2026
+          because NDA-2 hasn&rsquo;t been written yet). Cells are tinted by
+          row magnitude — your eye picks up the slope without a chart.
         </p>
         <div className="mt-4">
           <DriftTable rows={DRIFT_ROWS} years={YEARS} />
@@ -134,10 +135,10 @@ export default async function Trends() {
           Recommendation: practice 2025 and 2026 papers first
         </h2>
         <p className="mt-2 font-serif leading-relaxed text-muted-foreground">
-          The 2021 paper was the easiest and least representative of where
-          NDA is now. The 2023–24 papers were the hardest. 2025 was a bit
-          softer; 2026 NDA 1 is trending back up. Calibrate against the
-          recent two years before tackling older ones.
+          The 2017–2020 papers reveal the longer trend but pre-date the
+          modulus and ω spikes that defined the 2023–24 era. 2025 was
+          softer; 2026 NDA-1 is trending back up with determinants. Calibrate
+          against the recent two years before working backwards.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <BrowseLink
