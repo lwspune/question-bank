@@ -2,16 +2,20 @@
  * Content for /guide/nda-maths/principles. The principles tested in NDA
  * Mathematics, grouped by mathematical domain.
  *
- * `TOP_20` (now `TOP_11` post-2026-05-17 strict-cross-chapter prune): the
- * cross-chapter principles with deep-dive pages at /guide/nda-maths/principles/{slug}.
- * Each has a `slug` and is backed by DB tags in `question_principle_tags`
- * (migration 0023). Live counts + drill set come from the tag table at
- * request time via `loadPrincipleQuestionIds(slug)` — no static qCount,
- * no curated `extraQuestionIds`, no `drill[]` here.
+ * `TOP_11`: the cross-chapter principles with deep-dive pages at
+ * /guide/nda-maths/principles/{slug}. Each has a `slug` and is backed by DB
+ * tags in `question_principle_tags` (migration 0023). Live counts + drill
+ * set come from the tag table at request time via
+ * `loadPrincipleQuestionIds(slug)` — no static qCount, no curated
+ * `extraQuestionIds`, no `drill[]` here. Was `TOP_20` pre-2026-05-17 strict
+ * cross-chapter prune (9 single-chapter principles dropped, reborn as
+ * long-tail DOMAINS entries below).
  *
  * `DOMAINS` long-tail: principles without a `slug` keep their static
  * `qCount` + `drill` + (optional) `chapters` because they have no DB
  * tagging. Their "Drill the N →" CTA uses the static subtopic filter.
+ * `qCount` matches the live subtopic q-count as of OVERVIEW.asOf in
+ * `nda-maths.ts`.
  */
 
 export type PrincipleDrill = {
@@ -23,7 +27,7 @@ export type Principle = {
   /** Display name */
   name: string;
   /** Static question count — present only on long-tail (no-slug) principles.
-   *  For TOP_20 (slugged) principles the count comes from DB tags at request
+   *  For TOP_11 (slugged) principles the count comes from DB tags at request
    *  time and this field is omitted. */
   qCount?: number;
   /** Approximate % HARD among questions invoking this principle. Editorial. */
@@ -31,7 +35,7 @@ export type Principle = {
   /** One-sentence summary shown on the card. */
   summary: string;
   /** Static drill target for /browse CTA — present only on long-tail
-   *  principles. TOP_20 principles use `?principle=<slug>` instead. */
+   *  principles. TOP_11 principles use `?principle=<slug>` instead. */
   drill?: PrincipleDrill[];
   /** If present, principle has a detail page at /guide/nda-maths/principles/{slug}
    *  and is backed by DB tags in `question_principle_tags`. */
@@ -51,7 +55,7 @@ export type Domain = {
 /** Top cross-chapter / highest-leverage principles. Each has a detail page
  *  at /guide/nda-maths/principles/{slug} and is backed by `question_principle_tags`
  *  in the DB; live counts are loaded at request time, never hardcoded here. */
-export const TOP_20: Principle[] = [
+export const TOP_11: Principle[] = [
   {
     slug: "am-gm-mean-inequalities",
     name: "AM-GM / mean inequalities (incl. x + 1/x ≥ 2)",
@@ -131,7 +135,7 @@ export const TOP_20: Principle[] = [
   },
 ];
 
-/** All principles grouped by domain. TOP_20 entries appear in their domain
+/** All principles grouped by domain. TOP_11 entries appear in their domain
  *  AND have the slug set (the same Principle object is referenced).
  *  Long-tail (no-slug) principles below carry static qCount + drill since
  *  they have no DB tagging. */
@@ -141,48 +145,48 @@ export const DOMAINS: Domain[] = [
     label: "Algebra",
     blurb: "Polynomial identities, sequences, inequalities, logarithms.",
     principles: [
-      TOP_20.find((p) => p.slug === "vieta-symmetric-roots")!,
-      TOP_20.find((p) => p.slug === "am-gm-mean-inequalities")!,
-      TOP_20.find((p) => p.slug === "ap-three-term")!,
+      TOP_11.find((p) => p.slug === "vieta-symmetric-roots")!,
+      TOP_11.find((p) => p.slug === "am-gm-mean-inequalities")!,
+      TOP_11.find((p) => p.slug === "ap-three-term")!,
       {
         name: "GP three-term: b² = ac",
-        qCount: 20,
+        qCount: 37,
         summary: "Multiplicative counterpart to AP. Pairs with AM-GM in the bank's highest-yield compound recipe.",
         drill: [{ chapter: "Sequence & Series", subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations" }],
       },
       {
         name: "Sum of n terms (S_n) — AP / GP / special series",
-        qCount: 32,
+        qCount: 43,
         summary: "Sₙ for AP, GP, and special telescoping series. Knowing the closed forms saves 2-3 minutes per question.",
         drill: [{ chapter: "Sequence & Series", subtopic: "Arithmetic Progression — Sum, nth Term, Ratios" }],
       },
       {
         name: "AM ≥ GM ≥ HM chain",
-        qCount: 25,
+        qCount: 37,
         summary: "Stronger than AM-GM alone — chains three means with equality iff all values equal.",
         drill: [{ chapter: "Sequence & Series", subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations" }],
       },
       {
         name: "Algebraic identity expansion: (a±b)², (a+b+c)², a³+b³+c³−3abc",
-        qCount: 25,
+        qCount: 59,
         summary: "The pre-Vieta toolkit. The trick is recognising structure before brute-forcing.",
         drill: [{ chapter: "Matrices & Determinants", subtopic: "Determinant Properties, Operations, and Sums" }],
       },
       {
         name: "Symmetric polynomial: αⁿ + βⁿ recurrence",
-        qCount: 15,
+        qCount: 26,
         summary: "If α, β are roots and Sₙ = αⁿ + βⁿ, then Sₙ₊₁ = (α + β)Sₙ − αβ·Sₙ₋₁.",
         drill: [{ chapter: "Quadratic Equations", subtopic: "Vieta's Relations and Root-Coefficient Identities" }],
       },
       {
         name: "Logarithm laws (log ab, log aⁿ, change of base)",
-        qCount: 30,
+        qCount: 16,
         summary: "Pairs with AP/GP and trig equations frequently. Memorise three; derive the rest.",
         drill: [{ chapter: "Logarithms", subtopic: "Logarithm Identities, Change of Base, and Sums" }],
       },
       {
         name: "Divisibility, prime factorisation, modular arithmetic",
-        qCount: 15,
+        qCount: 13,
         summary: "Binary numbers, factorial divisibility, Legendre's formula. Rarely tested but easy when present.",
         drill: [{ chapter: "Binary Numbers" }],
       },
@@ -193,36 +197,36 @@ export const DOMAINS: Domain[] = [
     label: "Trigonometry",
     blurb: "Identities, equations, inverse trig, triangle theorems.",
     principles: [
-      TOP_20.find((p) => p.slug === "double-angle")!,
-      TOP_20.find((p) => p.slug === "compound-angle")!,
-      TOP_20.find((p) => p.slug === "sine-cosine-rules")!,
+      TOP_11.find((p) => p.slug === "double-angle")!,
+      TOP_11.find((p) => p.slug === "compound-angle")!,
+      TOP_11.find((p) => p.slug === "sine-cosine-rules")!,
       {
         name: "Triangle identity A + B + C = π",
-        qCount: 9,
+        qCount: 14,
         summary: "Unlocks tan A + tan B + tan C = tan A · tan B · tan C and similar projection identities.",
         drill: [{ chapter: "Properties of Triangle", subtopic: "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle" }],
       },
       {
         name: "sin²θ + cos²θ = 1 / Pythagorean identities",
-        qCount: 35,
+        qCount: 38,
         summary: "1 + tan² = sec², 1 + cot² = csc². The substrate of every trig manipulation.",
         drill: [{ chapter: "Trigonometric Identities", subtopic: "Compound Angle Formulas" }],
       },
       {
         name: "Sum-to-product / product-to-sum identities",
-        qCount: 15,
+        qCount: 27,
         summary: "2 sin A cos B = sin(A+B) + sin(A−B) and cousins. Used to telescope or factor trig sums.",
         drill: [{ chapter: "Trigonometric Identities", subtopic: "Product-to-Sum and Sum-to-Product Identities" }],
       },
       {
         name: "Specific values + quadrant analysis",
-        qCount: 60,
+        qCount: 21,
         summary: "Standard values at 30°/45°/60°/90° plus sign by quadrant. The lowest-level skill but tested everywhere.",
         drill: [{ chapter: "Trigonometric Identities", subtopic: "Specific Values and Quadrants" }],
       },
       {
         name: "Inverse trig identities (sin⁻¹ + cos⁻¹ = π/2)",
-        qCount: 25,
+        qCount: 17,
         summary: "Principal-range rules + sum/difference of inverse trig. The chapter is short and high-yield.",
         drill: [{ chapter: "Inverse Trigonometry", subtopic: "Identities, Properties, and Sum-Difference Formulas" }],
       },
@@ -233,22 +237,22 @@ export const DOMAINS: Domain[] = [
     label: "Complex Numbers",
     blurb: "Modulus, argument, roots of unity, De Moivre.",
     principles: [
-      TOP_20.find((p) => p.slug === "cube-roots-of-unity")!,
+      TOP_11.find((p) => p.slug === "cube-roots-of-unity")!,
       {
         name: "Modulus / argument / conjugate",
-        qCount: 25,
+        qCount: 39,
         summary: "|z|² = z·z̄, arg z, polar form. The base of every complex-number question.",
         drill: [{ chapter: "Complex Numbers", subtopic: "Modulus, Argument, and Conjugate" }],
       },
       {
         name: "Powers and nth roots of unity / De Moivre",
-        qCount: 10,
+        qCount: 15,
         summary: "(cos θ + i sin θ)ⁿ = cos nθ + i sin nθ. Tested rarely but elegant.",
         drill: [{ chapter: "Complex Numbers", subtopic: "Powers and Roots" }],
       },
       {
         name: "Conjugate-pair cancellation",
-        qCount: 5,
+        qCount: 8,
         summary: "(√2 + 1)ⁿ + (√2 − 1)ⁿ is always an integer because the irrational parts cancel. NDA loves this.",
         drill: [{ chapter: "Binomial Theorem", subtopic: "Integer and Fractional Parts of Binomial Expressions" }],
       },
@@ -259,88 +263,88 @@ export const DOMAINS: Domain[] = [
     label: "Calculus",
     blurb: "Limits, differentiation, integration, ODEs. NDA's largest topic cluster.",
     principles: [
-      TOP_20.find((p) => p.slug === "differentiability-conditions")!,
+      TOP_11.find((p) => p.slug === "differentiability-conditions")!,
       {
         name: "Standard limits + L'Hôpital",
-        qCount: 17,
+        qCount: 31,
         summary: "lim sin x / x = 1, lim (1 + 1/x)ˣ = e, indeterminate forms via L'Hôpital.",
         drill: [{ chapter: "Limits & Continuity", subtopic: "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms" }],
       },
       {
         name: "Continuity at a point",
-        qCount: 18,
+        qCount: 34,
         summary: "Left limit = right limit = f(c). Piecewise problems pair this with modulus.",
         drill: [{ chapter: "Limits & Continuity", subtopic: "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory" }],
       },
       {
         name: "Extrema via first/second derivative test",
-        qCount: 42,
+        qCount: 38,
         summary: "f'(x) = 0 at critical points, f''(x) tells you max vs min. AM-GM is often the shorter alternative.",
         drill: [{ chapter: "Application of Derivatives", subtopic: "Monotonicity, Extrema, and Critical Points" }],
       },
       {
         name: "King's property of definite integrals",
-        qCount: 20,
+        qCount: 32,
         summary: "∫₀ᵃ f(x)dx = ∫₀ᵃ f(a−x)dx. Reduces many hard-looking integrals to plug-and-add.",
         drill: [{ chapter: "Definite Integration", subtopic: "Properties of Definite Integrals — Symmetry, King's, Odd/Even" }],
       },
       {
         name: "Chain rule / logarithmic differentiation",
-        qCount: 25,
+        qCount: 48,
         summary: "(f(g(x)))' = f'(g(x))·g'(x). Plus log-differentiation for products of powers.",
         drill: [{ chapter: "Differentiation", subtopic: "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions" }],
       },
       {
         name: "Parametric / implicit / higher-order derivatives",
-        qCount: 20,
+        qCount: 21,
         summary: "When y is given via parameter t or implicitly via F(x, y) = 0.",
         drill: [{ chapter: "Differentiation", subtopic: "Parametric, Implicit, and Higher-Order Derivatives" }],
       },
       {
         name: "One-sided limits + greatest integer / |x| limits",
-        qCount: 15,
+        qCount: 16,
         summary: "[x] and |x| at integers — left and right limits diverge. NDA loves the edge cases.",
         drill: [{ chapter: "Limits & Continuity", subtopic: "One-Sided Limits, Greatest Integer, and Absolute Value Limits" }],
       },
       {
         name: "Integration by substitution",
-        qCount: 15,
+        qCount: 17,
         summary: "Algebraic, trig, and composite substitutions. Practice ~20 standard forms.",
         drill: [{ chapter: "Indefinite Integration", subtopic: "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms" }],
       },
       {
         name: "Integration by partial fractions",
-        qCount: 8,
+        qCount: 7,
         summary: "Rational integrands decompose. NDA-style: assume coefficients, compare numerators.",
         drill: [{ chapter: "Indefinite Integration", subtopic: "Integration by Partial Fractions" }],
       },
       {
         name: "e^x[f(x) + f'(x)] formula",
-        qCount: 10,
+        qCount: 13,
         summary: "Pattern recognition — if the integrand is e^x times f + f', the integral is e^x · f.",
         drill: [{ chapter: "Indefinite Integration", subtopic: "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals" }],
       },
       {
         name: "Odd / even function integrals",
-        qCount: 12,
+        qCount: 17,
         summary: "∫₋ₐᵃ f(x)dx = 0 if f odd, 2∫₀ᵃ if even. Spotting the symmetry is the trick.",
         drill: [{ chapter: "Definite Integration", subtopic: "Integration of Absolute Value, Piecewise, and Greatest Integer Functions" }],
       },
       {
         name: "Area bounded by curves",
-        qCount: 19,
+        qCount: 16,
         summary: "Setting up the right integral with correct limits is 80% of the work; computing is mechanical.",
         drill: [{ chapter: "Applications of Integration", subtopic: "Area Bounded by a Curve, Lines, and Axes" }],
       },
       {
         name: "Order / degree / formation of ODE",
-        qCount: 18,
+        qCount: 22,
         summary: "Order = highest derivative, degree = highest power once free of fractional/derivative forms.",
         drill: [{ chapter: "Differential Equations", subtopic: "Order, Degree, and Solutions of ODE" }],
       },
       {
         name: "Separable / first-order linear / IVP ODE",
-        qCount: 13,
+        qCount: 29,
         summary: "Separation of variables + integrating-factor for first-order linear ODE.",
         drill: [{ chapter: "Differential Equations", subtopic: "Solving and Verifying ODEs — Separable, IVP, and Applications" }],
       },
@@ -353,37 +357,37 @@ export const DOMAINS: Domain[] = [
     principles: [
       {
         name: "Distance formula (2D and 3D)",
-        qCount: 18,
+        qCount: 22,
         summary: "d² = Σ(xᵢ − yᵢ)². Trivial but appears everywhere.",
         drill: [{ chapter: "Lines", subtopic: "Distance, Section, and Locus" }],
       },
       {
         name: "Section formula (m:n internal / external + midpoint)",
-        qCount: 12,
+        qCount: 22,
         summary: "Point dividing a segment in m:n. Centroid, in-centre, circumcentre all build from this.",
         drill: [{ chapter: "Lines", subtopic: "Distance, Section, and Locus" }],
       },
       {
         name: "Slope and equation of line",
-        qCount: 16,
+        qCount: 27,
         summary: "Point-slope, two-point, intercept forms. Family of lines through a point.",
         drill: [{ chapter: "Lines", subtopic: "Equation, Slope, and Family of Lines" }],
       },
       {
         name: "Equation of circle: (x−h)² + (y−k)² = r²",
-        qCount: 12,
+        qCount: 11,
         summary: "Centre + radius from general form via completing the square.",
         drill: [{ chapter: "Circles", subtopic: "Circle Equation — Centre, Radius, Diameter, and Properties" }],
       },
       {
         name: "Parabola y² = 4ax + properties + latus rectum",
-        qCount: 11,
+        qCount: 13,
         summary: "Focus, directrix, latus rectum, focal chord. The vocabulary is tested as much as the math.",
         drill: [{ chapter: "Conics", subtopic: "Parabola — Equation, Properties, and Latus Rectum" }],
       },
       {
         name: "Ellipse: foci, eccentricity, focal distances",
-        qCount: 7,
+        qCount: 14,
         summary: "x²/a² + y²/b² = 1 with e² = 1 − b²/a². Sum of focal distances = 2a.",
         drill: [{ chapter: "Conics", subtopic: "Ellipse — Foci, Eccentricity, and Focal Distances" }],
       },
@@ -395,19 +399,19 @@ export const DOMAINS: Domain[] = [
       },
       {
         name: "Direction cosines / ratios: l² + m² + n² = 1",
-        qCount: 22,
+        qCount: 24,
         summary: "Direction cosines square-sum to 1 — the 3D unit-vector identity.",
         drill: [{ chapter: "3D Geometry", subtopic: "Direction Cosines and Ratios" }],
       },
       {
         name: "Line / plane / sphere in 3D",
-        qCount: 29,
+        qCount: 25,
         summary: "Vector form, Cartesian form, foot of perpendicular, distance between skew lines.",
         drill: [{ chapter: "3D Geometry", subtopic: "Lines and Planes in 3D" }],
       },
       {
         name: "Triangle / parallelogram / quadrilateral configurations",
-        qCount: 28,
+        qCount: 32,
         summary: "Coordinate-geometry questions about polygons (area, centroid, type of triangle).",
         drill: [{ chapter: "Lines", subtopic: "Triangles, Quadrilaterals, and Polygons" }],
       },
@@ -420,19 +424,19 @@ export const DOMAINS: Domain[] = [
     principles: [
       {
         name: "Dot product: a · b = |a||b| cos θ",
-        qCount: 20,
+        qCount: 32,
         summary: "Angle between vectors, projection, perpendicularity test.",
         drill: [{ chapter: "Vectors", subtopic: "Dot Product and Angle" }],
       },
       {
         name: "Cross product / scalar triple product / coplanarity",
-        qCount: 27,
+        qCount: 37,
         summary: "Area, volume, coplanarity test via determinant.",
         drill: [{ chapter: "Vectors", subtopic: "Cross Product and Triple Product" }],
       },
       {
         name: "Position vectors + section formula (vector form)",
-        qCount: 5,
+        qCount: 6,
         summary: "r = (1−t)a + tb for the line; (mb + na)/(m+n) for the section.",
         drill: [{ chapter: "Vectors", subtopic: "Position Vectors and Section" }],
       },
@@ -443,28 +447,28 @@ export const DOMAINS: Domain[] = [
     label: "Combinatorics",
     blurb: "Permutations, combinations, counting under constraints.",
     principles: [
-      TOP_20.find((p) => p.slug === "binomial-coefficient-identities")!,
+      TOP_11.find((p) => p.slug === "binomial-coefficient-identities")!,
       {
         name: "Permutations n! / (n−r)! + arrangements with restrictions",
-        qCount: 22,
+        qCount: 17,
         summary: "Standard arrangements, plus boys-girls-together, no-two-X-adjacent, vowel constraints.",
         drill: [{ chapter: "Permutation & Combination", subtopic: "Arrangements with Restrictions" }],
       },
       {
         name: "Combinations C(n, r) + selection problems",
-        qCount: 8,
+        qCount: 11,
         summary: "n!/(r!(n−r)!). Compute small cases by hand; recognise C(n,r) = C(n, n−r).",
         drill: [{ chapter: "Permutation & Combination", subtopic: "Combinations" }],
       },
       {
         name: "Forming numbers from given digits",
-        qCount: 13,
+        qCount: 20,
         summary: "Digit-arrangement counting with constraints (no zero in lead, even, prime, etc.).",
         drill: [{ chapter: "Permutation & Combination", subtopic: "Forming Numbers from Digits" }],
       },
       {
         name: "Geometric counting (lines, triangles from points)",
-        qCount: 9,
+        qCount: 13,
         summary: "How many lines/triangles can be drawn from n points (no 3 collinear).",
         drill: [{ chapter: "Permutation & Combination", subtopic: "Geometric Counting" }],
       },
@@ -475,46 +479,46 @@ export const DOMAINS: Domain[] = [
     label: "Probability",
     blurb: "Classical, conditional, independent events, binomial distribution.",
     principles: [
-      TOP_20.find((p) => p.slug === "inclusion-exclusion")!,
+      TOP_11.find((p) => p.slug === "inclusion-exclusion")!,
       {
         name: "Conditional probability + Bayes' theorem",
-        qCount: 17,
+        qCount: 29,
         summary: "P(A|B) = P(A ∩ B) / P(B). Watch for the \"given that\" framing — many classical-looking questions are conditional.",
         drill: [{ chapter: "Probability", subtopic: "Conditional Probability, Total Probability, and Bayes' Theorem" }],
       },
       {
         name: "Classical probability: favourable / total",
-        qCount: 25,
+        qCount: 46,
         summary: "The base. Sample-space construction is usually the actual work.",
         drill: [{ chapter: "Probability", subtopic: "Probability via Counting" }],
       },
       {
         name: "Independent events: P(A ∩ B) = P(A) · P(B)",
-        qCount: 10,
+        qCount: 16,
         summary: "Independence vs mutual exclusivity — students confuse them. Independence multiplies; ME adds.",
         drill: [{ chapter: "Probability", subtopic: "Independent Events" }],
       },
       {
         name: "Event algebra (inclusion-exclusion, mutually exclusive)",
-        qCount: 11,
+        qCount: 21,
         summary: "Compute P(A∪B), P(A∩B), P(Aᶜ) given various relations.",
         drill: [{ chapter: "Probability", subtopic: "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive" }],
       },
       {
         name: "P(at least one) = 1 − P(none)",
-        qCount: 10,
+        qCount: 18,
         summary: "When 'at least one X' is the question, complement is almost always faster.",
         drill: [{ chapter: "Probability", subtopic: "Probability with Dice" }],
       },
       {
         name: "Binomial distribution B(n, p)",
-        qCount: 21,
+        qCount: 15,
         summary: "P(X=k) = C(n,k)p^k q^(n-k); mean = np, variance = npq. One chapter, two formulas.",
         drill: [{ chapter: "Binomial Distribution", subtopic: "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events" }],
       },
       {
         name: "Probability with stock constructs (dice, coins, balls)",
-        qCount: 23,
+        qCount: 18,
         summary: "Same skeleton, different surface. Recognise the sample-space template.",
         drill: [{ chapter: "Probability", subtopic: "Probability with Dice" }],
       },
@@ -527,31 +531,31 @@ export const DOMAINS: Domain[] = [
     principles: [
       {
         name: "Measures of central tendency",
-        qCount: 48,
+        qCount: 75,
         summary: "Mean, median, mode for grouped and ungrouped data. The single highest-yield subtopic for a weak student.",
         drill: [{ chapter: "Statistics", subtopic: "Measures of Central Tendency — Mean, Median, Mode" }],
       },
       {
         name: "Variance / SD / mean deviation",
-        qCount: 27,
+        qCount: 44,
         summary: "σ² = E[(X − μ)²]. Mean deviation about mean vs median is a common trap.",
         drill: [{ chapter: "Statistics", subtopic: "Dispersion — Standard Deviation, Variance, Mean Deviation" }],
       },
       {
         name: "Coefficient of variation",
-        qCount: 5,
+        qCount: 44,
         summary: "CV = σ/μ × 100. Used to compare variability across data sets of different scales.",
         drill: [{ chapter: "Statistics", subtopic: "Dispersion — Standard Deviation, Variance, Mean Deviation" }],
       },
       {
         name: "Regression equation + correlation coefficient",
-        qCount: 11,
+        qCount: 27,
         summary: "y = bx + a, with b = r·σ_y/σ_x. Two regression lines intersect at (x̄, ȳ).",
         drill: [{ chapter: "Statistics", subtopic: "Regression and Correlation" }],
       },
       {
         name: "Frequency distribution + histogram + cumulative",
-        qCount: 7,
+        qCount: 14,
         summary: "Class boundaries, frequency density (when widths differ), ogive.",
         drill: [{ chapter: "Statistics", subtopic: "Frequency Distributions and Graphical Representation" }],
       },
@@ -562,40 +566,40 @@ export const DOMAINS: Domain[] = [
     label: "Sets, Functions & Relations",
     blurb: "Set operations, function properties, modulus and floor.",
     principles: [
-      TOP_20.find((p) => p.slug === "modulus-absolute-value")!,
+      TOP_11.find((p) => p.slug === "modulus-absolute-value")!,
       {
         name: "Set operations (union, intersection, complement, difference)",
-        qCount: 11,
+        qCount: 23,
         summary: "De Morgan, distributivity, symmetric difference. Read each statement carefully.",
         drill: [{ chapter: "Sets & Relations", subtopic: "Set Operations, Identities, and Cartesian Products of Sets" }],
       },
       {
         name: "Function: domain, range, properties",
-        qCount: 22,
+        qCount: 48,
         summary: "Domain restrictions from √, log, 1/x; range from value-set analysis.",
         drill: [{ chapter: "Functions", subtopic: "Domain, Range, and Function Properties" }],
       },
       {
         name: "Composition and inverse of functions",
-        qCount: 16,
+        qCount: 28,
         summary: "(f ∘ g)(x) and f⁻¹. The composition order matters; inverse exists only for bijections.",
         drill: [{ chapter: "Functions", subtopic: "Composition and Inverse of Functions" }],
       },
       {
         name: "Functional equations",
-        qCount: 16,
+        qCount: 18,
         summary: "f(x + 1) = ... or 4f(x) − f(1/x) = ... — solve for the unknown function.",
         drill: [{ chapter: "Functions", subtopic: "Functional Equations" }],
       },
       {
         name: "Greatest integer / floor function",
-        qCount: 28,
+        qCount: 7,
         summary: "[x] behaviour at integers, in limits, in integrals. Edge-case heavy.",
         drill: [{ chapter: "Functions", subtopic: "Greatest Integer Function" }],
       },
       {
         name: "Relations (reflexive, symmetric, transitive)",
-        qCount: 12,
+        qCount: 19,
         summary: "Equivalence relation = R, S, T. Each property tested with concrete relations.",
         drill: [{ chapter: "Sets & Relations", subtopic: "Relations — Properties, Cartesian Product, and Counting" }],
       },
@@ -608,25 +612,25 @@ export const DOMAINS: Domain[] = [
     principles: [
       {
         name: "Determinant evaluation by row/column ops",
-        qCount: 53,
+        qCount: 59,
         summary: "Largest single-chapter principle. Cofactor expansion + row/column operations + special determinant patterns (trig, complex, polynomial).",
         drill: [{ chapter: "Matrices & Determinants", subtopic: "Determinant Properties, Operations, and Sums" }],
       },
       {
         name: "Adjoint, inverse: A · adj(A) = det(A) · I",
-        qCount: 17,
+        qCount: 28,
         summary: "A⁻¹ = adj(A) / det(A). Adjoint properties are tested directly (e.g., adj(adj(A)) = det(A)^(n−2) · A).",
         drill: [{ chapter: "Matrices & Determinants", subtopic: "Cofactors, Adjoint, and Inverse" }],
       },
       {
         name: "Special matrices (skew-symmetric, diagonal, idempotent, orthogonal)",
-        qCount: 18,
+        qCount: 22,
         summary: "Each type has 1-2 defining properties; questions test which one applies.",
         drill: [{ chapter: "Matrices & Determinants", subtopic: "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation" }],
       },
       {
         name: "Linear systems / Cramer's rule / consistency",
-        qCount: 7,
+        qCount: 8,
         summary: "Δ, Δₓ, Δᵧ, Δ_z. Consistency conditions are the most tested aspect.",
         drill: [{ chapter: "Matrices & Determinants", subtopic: "Linear Systems — Consistency, Cramer's Rule, Solution Space" }],
       },

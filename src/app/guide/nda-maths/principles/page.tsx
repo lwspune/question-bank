@@ -15,7 +15,7 @@ import { loadPrincipleQuestionIds } from "@/lib/tags/principleTags";
 import { ROUTES } from "../_data/nda-maths";
 import {
   DOMAINS,
-  TOP_20,
+  TOP_11,
   type Principle,
 } from "../_data/principles";
 
@@ -34,8 +34,8 @@ const sideNav = ROUTES.map((r) => ({
 export default async function PrinciplesIndex() {
   const supabase = createSupabaseServerClient();
 
-  // Live tag counts for TOP_20 slugs — one DB round-trip for all of them.
-  const slugs = TOP_20.map((p) => p.slug!).filter(Boolean);
+  // Live tag counts for TOP_11 slugs — one DB round-trip for all of them.
+  const slugs = TOP_11.map((p) => p.slug!).filter(Boolean);
   const [taxonomy, taggedMap] = await Promise.all([
     resolveTaxonomy(supabase, "NDA", "Mathematics"),
     loadPrincipleQuestionIds(supabase, slugs),
@@ -43,7 +43,7 @@ export default async function PrinciplesIndex() {
   const liveCountFor = (slug: string) => taggedMap.get(slug)?.length ?? 0;
 
   /** Resolve a long-tail (no-slug) principle's drill list into deduped ID
-   *  lists ready to feed BrowseLink. TOP_20 principles use principleSlug
+   *  lists ready to feed BrowseLink. TOP_11 principles use principleSlug
    *  instead and never hit this path. */
   const resolveDrillStatic = (p: Principle) => {
     const subtopicIds = new Set<string>();
@@ -75,7 +75,7 @@ export default async function PrinciplesIndex() {
   const totalPrinciples = DOMAINS.reduce((s, d) => s + d.principles.length, 0);
   const stats = [
     { value: String(totalPrinciples), label: "principles in the catalog" },
-    { value: String(TOP_20.length), label: "with deep-dive pages" },
+    { value: String(TOP_11.length), label: "with deep-dive pages" },
     { value: String(DOMAINS.length), label: "mathematical domains" },
     {
       value: String(topTaggedTotal + longTailTotal),
@@ -102,7 +102,7 @@ export default async function PrinciplesIndex() {
       <GuideHero
         eyebrow="Principles"
         title={`${totalPrinciples} atoms behind every NDA Maths question`}
-        subtitle={`The chapter labels in your textbook hide a smaller, sharper structure. Every question in the bank reduces to a few principles from this catalog. The top ${TOP_20.length} are genuinely cross-chapter — drill these first.`}
+        subtitle={`The chapter labels in your textbook hide a smaller, sharper structure. Every question in the bank reduces to a few principles from this catalog. The top ${TOP_11.length} are genuinely cross-chapter — drill these first.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -110,7 +110,7 @@ export default async function PrinciplesIndex() {
       {/* TOP TABLE */}
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          Top {TOP_20.length} — cross-chapter principles with deep-dive pages
+          Top {TOP_11.length} — cross-chapter principles with deep-dive pages
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           These principles disguise themselves across multiple chapters — a
@@ -131,7 +131,7 @@ export default async function PrinciplesIndex() {
               </tr>
             </thead>
             <tbody>
-              {TOP_20.map((p, i) => (
+              {TOP_11.map((p, i) => (
                 <tr key={p.slug ?? p.name} className="border-b last:border-b-0">
                   <td className="px-3 py-2 tabular-nums text-muted-foreground">
                     {i + 1}
@@ -175,7 +175,7 @@ export default async function PrinciplesIndex() {
         </p>
         <div className="mt-6 space-y-3">
           {DOMAINS.map((d, idx) => {
-            // Domain total: live counts for TOP_20 (slugged) + static qCount
+            // Domain total: live counts for TOP_11 (slugged) + static qCount
             // for long-tail.
             const totalQ = d.principles.reduce(
               (s, p) =>
@@ -193,7 +193,7 @@ export default async function PrinciplesIndex() {
               >
                 {d.principles.map((p) => {
                   if (p.slug) {
-                    // TOP_20: live count + ?principle= CTA
+                    // TOP_11: live count + ?principle= CTA
                     return (
                       <PrincipleCard
                         key={p.slug}

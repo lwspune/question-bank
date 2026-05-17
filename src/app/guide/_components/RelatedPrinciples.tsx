@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { TOP_20 } from "../nda-maths/_data/principles";
+import { TOP_11 } from "../nda-maths/_data/principles";
 
 type Props = {
-  /** Slugs (must exist in TOP_20). */
+  /** Slugs (must exist in TOP_11). */
   slugs: string[];
 };
 
 export default function RelatedPrinciples({ slugs }: Props) {
   const principles = slugs
-    .map((s) => TOP_20.find((p) => p.slug === s))
+    .map((s) => TOP_11.find((p) => p.slug === s))
     .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
   if (principles.length === 0) return null;

@@ -13,7 +13,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { loadPrincipleQuestionIds } from "@/lib/tags/principleTags";
 import { ROUTES } from "../../_data/nda-maths";
-import { TOP_20 } from "../../_data/principles";
+import { TOP_11 } from "../../_data/principles";
 import {
   DETAIL_SLUGS,
   PRINCIPLE_DETAILS,
@@ -35,7 +35,7 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const principle = TOP_20.find((p) => p.slug === params.slug);
+  const principle = TOP_11.find((p) => p.slug === params.slug);
   if (!principle) return { title: "Principle not found" };
   return {
     title: `${principle.name} — NDA Maths principle deep dive`,
@@ -45,7 +45,7 @@ export async function generateMetadata({
 }
 
 export default async function PrincipleDetail({ params }: { params: Params }) {
-  const principle = TOP_20.find((p) => p.slug === params.slug);
+  const principle = TOP_11.find((p) => p.slug === params.slug);
   const detail = PRINCIPLE_DETAILS[params.slug];
   if (!principle || !detail) notFound();
 
@@ -62,20 +62,20 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
   const liveCount = taggedIds.length;
   const chapterSpread = await countDistinctChapters(supabase, taggedIds);
 
-  // Find the next principle slug in TOP_20 order, for the PrevNext nav.
-  const idx = TOP_20.findIndex((p) => p.slug === params.slug);
+  // Find the next principle slug in TOP_11 order, for the PrevNext nav.
+  const idx = TOP_11.findIndex((p) => p.slug === params.slug);
   const next =
-    idx >= 0 && idx + 1 < TOP_20.length && TOP_20[idx + 1].slug
+    idx >= 0 && idx + 1 < TOP_11.length && TOP_11[idx + 1].slug
       ? {
-          href: `/guide/nda-maths/principles/${TOP_20[idx + 1].slug}`,
-          label: TOP_20[idx + 1].name,
+          href: `/guide/nda-maths/principles/${TOP_11[idx + 1].slug}`,
+          label: TOP_11[idx + 1].name,
         }
       : { href: "/guide/nda-maths/compound-tricks", label: "Compound Tricks" };
   const prev =
-    idx > 0 && TOP_20[idx - 1].slug
+    idx > 0 && TOP_11[idx - 1].slug
       ? {
-          href: `/guide/nda-maths/principles/${TOP_20[idx - 1].slug}`,
-          label: TOP_20[idx - 1].name,
+          href: `/guide/nda-maths/principles/${TOP_11[idx - 1].slug}`,
+          label: TOP_11[idx - 1].name,
         }
       : { href: "/guide/nda-maths/principles", label: "All principles" };
 

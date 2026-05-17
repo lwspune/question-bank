@@ -19,7 +19,7 @@ export type PrincipleDetail = {
   exampleQuestionIds: string[];
   /** Common shapes/variants to recognise — bullet list. */
   variants: { name: string; description: string }[];
-  /** 3 cross-link slugs to related principles in the TOP_20. */
+  /** 3 cross-link slugs to related principles in the TOP_11. */
   relatedSlugs: string[];
 };
 

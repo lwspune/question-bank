@@ -7,7 +7,7 @@ import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import { OVERVIEW, ROUTES } from "./_data/nda-maths";
+import { CHAPTER_TABLE, OVERVIEW, ROUTES } from "./_data/nda-maths";
 
 /** Pages with full content as of this commit. Other section cards get a
  * "Coming soon" tag so readers know what to expect. */
@@ -22,7 +22,7 @@ const LIVE_SLUGS = new Set([
 export const metadata: Metadata = {
   title: "NDA Mathematics — Strategy Guide",
   description:
-    "How NDA Mathematics actually works. A 1,320-question analysis of the 2021–2026 papers — principles, strategy, traps, and how to score 100+.",
+    "How NDA Mathematics actually works. A 2,160-question analysis of the 2017–2026 papers — principles, strategy, traps, and how to score 100+.",
   alternates: { canonical: "/guide/nda-maths" },
 };
 
@@ -34,7 +34,7 @@ export default function NdaMathsLanding() {
 
   const stats = [
     { value: OVERVIEW.totalQ.toLocaleString("en-IN"), label: "Past-year questions" },
-    { value: String(OVERVIEW.papers), label: "Papers (2021–2026)" },
+    { value: String(OVERVIEW.papers), label: "Papers (2017–2026)" },
     { value: String(OVERVIEW.chapters), label: "Chapters" },
     { value: String(OVERVIEW.principles), label: "Principle atoms" },
   ];
@@ -55,12 +55,12 @@ export default function NdaMathsLanding() {
         type="CollectionPage"
         path="/guide/nda-maths"
         headline="NDA Mathematics — Strategy Guide"
-        description="A 1,320-question analysis of every NDA Maths paper from 2021 to 2026 — principles, strategy, traps, and how to score 100+."
+        description="A 2,160-question analysis of every NDA Maths paper from 2017 to 2026 — principles, strategy, traps, and how to score 100+."
       />
       <GuideHero
         eyebrow="NDA Mathematics Guide"
         title="How NDA Mathematics actually works"
-        subtitle="A 1,320-question analysis of every paper from 2021 to 2026. We mapped the principles, the compound tricks, the year-on-year drift, and the distractor traps — so you can study what the exam actually tests, not what a textbook tells you to."
+        subtitle="A 2,160-question analysis of every paper from 2017 to 2026. We mapped the principles, the compound tricks, the year-on-year drift, and the distractor traps — so you can study what the exam actually tests, not what a textbook tells you to."
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -94,6 +94,50 @@ export default function NdaMathsLanding() {
           aria-hidden
         />
       </Link>
+
+      {/* CHAPTER BREAKDOWN TABLE */}
+      <section className="mt-12">
+        <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          How the {OVERVIEW.totalQ.toLocaleString("en-IN")} questions break down
+        </h2>
+        <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
+          All 31 chapters tested in NDA Mathematics, sized by question count
+          across the 2017–2026 bank. Focus column names the top 1–2 subtopics
+          to drill within each chapter. Sorted by share of bank.
+        </p>
+        <div className="mt-4 overflow-x-auto rounded-md border">
+          <table className="w-full min-w-[720px] text-sm">
+            <thead className="border-b bg-muted/40">
+              <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <th className="px-3 py-2 font-medium">Chapter</th>
+                <th className="px-3 py-2 text-right font-medium">Questions</th>
+                <th className="px-3 py-2 text-right font-medium">Share</th>
+                <th className="px-3 py-2 text-right font-medium">% HARD</th>
+                <th className="px-3 py-2 font-medium">Focus topics</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CHAPTER_TABLE.map((row) => (
+                <tr key={row.chapter} className="border-b last:border-b-0 align-top">
+                  <td className="px-3 py-2 font-medium">{row.chapter}</td>
+                  <td className="px-3 py-2 text-right tabular-nums">
+                    {row.qCount}
+                  </td>
+                  <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
+                    {row.pctTotal.toFixed(1)}%
+                  </td>
+                  <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
+                    {row.pctHard}%
+                  </td>
+                  <td className="px-3 py-2 font-serif text-sm leading-relaxed text-muted-foreground">
+                    {row.focus}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
