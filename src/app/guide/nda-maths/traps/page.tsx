@@ -26,7 +26,7 @@ import {
 export const metadata: Metadata = {
   title: "NDA Maths Traps — Distractor patterns NDA reuses",
   description:
-    "How students who know the math still lose marks. Factor-of-2 errors, sign-flip distractors, quadrant confusion, domain misses on the last step — measured against the live 1,320-question bank with worked examples.",
+    "How students who know the math still lose marks. Factor-of-2 errors, sign-flip distractors, quadrant confusion, domain misses on the last step — measured against the live 2,160-question bank with worked examples.",
   alternates: { canonical: "/guide/nda-maths/traps" },
 };
 
@@ -102,7 +102,7 @@ export default async function Traps() {
       <GuideHero
         eyebrow="Traps"
         title="Why students who know the math still lose marks"
-        subtitle="Most NDA Maths losses aren't from not knowing the formula — they're from factor-of-2 slips, sign-flips, quadrant confusion, and domain misses on the last step. Every claim on this page is measured against the live 1,320-question bank."
+        subtitle="Most NDA Maths losses aren't from not knowing the formula — they're from factor-of-2 slips, sign-flips, quadrant confusion, and domain misses on the last step. Every claim on this page is measured against the live 2,160-question bank."
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -114,8 +114,10 @@ export default async function Traps() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           A purely random paper would have the correct answer evenly split
-          across A/B/C/D (25% each). NDA Mathematics doesn&rsquo;t — and the
-          bias <em>reverses</em> on HARD questions.
+          across A/B/C/D (25% each). NDA Mathematics doesn&rsquo;t — overall
+          B and C lead by ~3pp, and the bias <em>flattens</em> on HARD: A
+          catches up to C, B drops below both, D stays the rarest at every
+          difficulty.
         </p>
 
         {/* Overall + by-difficulty matrix */}
@@ -177,7 +179,7 @@ export default async function Traps() {
             </p>
             <p className="mt-1 font-serif text-sm leading-relaxed">
               When stuck, pick <strong>B or C</strong>. Combined share on
-              EASY+MODERATE is ~57%, vs A+D&rsquo;s ~43%.
+              EASY+MODERATE is ~56%, vs A+D&rsquo;s ~44%.
             </p>
           </div>
           <div className="rounded-md border border-rose-500/40 bg-rose-500/5 p-4">
@@ -185,9 +187,10 @@ export default async function Traps() {
               If the question feels HARD
             </p>
             <p className="mt-1 font-serif text-sm leading-relaxed">
-              The bias flips. <strong>A is the most common (90 q), D the
-              rarest (66 q).</strong> When stuck on HARD, pick A or C.
-              Standard &ldquo;B/C&rdquo; rule is anti-advice here.
+              The bias flattens. <strong>C (134 q) and A (132 q) are nearly
+              tied, B drops to 121 q, D the rarest at 100 q.</strong> When
+              stuck on HARD, pick A or C — the &ldquo;B/C&rdquo; rule is
+              weaker here.
             </p>
           </div>
         </div>
@@ -201,7 +204,7 @@ export default async function Traps() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           For every question with a numeric correct answer, we checked whether
-          any wrong option was exactly 2× or ½× the right one. <strong>9
+          any wrong option was exactly 2× or ½× the right one. <strong>8
           chapter × difficulty cells exceed 60%</strong> — this is the most
           common distractor pattern in NDA Maths, ahead of sign-flips. The
           mistakes it catches: forgetting the ½ in triangle area, radius vs
@@ -239,8 +242,9 @@ export default async function Traps() {
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           The second-most-common distractor shape. For every numeric answer,
           we checked whether any wrong option was literally the negative of
-          the right one. Limits and Differentiation lead — <strong>62% of
-          HARD limit questions</strong> include a sign-flip wrong option.
+          the right one. Limits and Differentiation lead — <strong>46% of
+          HARD limit questions</strong> include a sign-flip wrong option, and
+          Differentiation has it at ≈25% across all three difficulty bands.
         </p>
         <div className="mt-4">
           <SignFlipHeatmap cells={SIGN_FLIP_CELLS} rateLabel="Sign-flip rate" />

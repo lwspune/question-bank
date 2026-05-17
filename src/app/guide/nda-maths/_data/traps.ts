@@ -1,10 +1,18 @@
 /**
  * Content for /guide/nda-maths/traps. Distractor design patterns measured
- * against the live NDA Mathematics PUBLIC bank (1,320 q across 11 papers).
+ * against the live NDA Mathematics PUBLIC bank (2,160 q across 18 papers).
  *
- * Every number here is derived from a SQL query, not a hand-estimate — see
- * the 2026-05-15 "Traps section rewrite" decision-log entry in CLAUDE.md
- * for the queries and rationale.
+ * Every number here is derived from a SQL query, not a hand-estimate.
+ * Refreshed 2026-05-17 after the 2017–2020 PYQ uploads expanded the bank
+ * from 1,320 → 2,160 q. Detector definitions are unchanged from the
+ * 2026-05-15 ship; the cells just got bigger samples and the rates shifted.
+ *
+ * Sign-flip detector: per question, a wrong option whose text == "-"
+ * prepended to the correct option's text (or vice versa), after stripping
+ * `\(…\)` wrappers. Conservative — only catches the literal case.
+ *
+ * Factor-of-2 detector: per question, a wrong option whose first integer
+ * is exactly 2× or ½× the correct option's first integer.
  */
 
 // ─────────────────────────────────────────────────────────────────────
@@ -18,14 +26,15 @@ export type PositionalBiasRow = {
 
 /** Correct-answer position distribution across the bank, overall. */
 export const POSITIONAL_BIAS: PositionalBiasRow[] = [
-  { label: "A", count: 314, pct: 23.8 },
-  { label: "B", count: 363, pct: 27.5 },
-  { label: "C", count: 368, pct: 27.9 },
-  { label: "D", count: 275, pct: 20.8 },
+  { label: "A", count: 537, pct: 24.9 },
+  { label: "B", count: 613, pct: 28.4 },
+  { label: "C", count: 592, pct: 27.4 },
+  { label: "D", count: 418, pct: 19.4 },
 ];
 
-/** Same distribution, broken out by difficulty. The HARD column reverses
- *  the overall ranking — A becomes the most common, D the rarest. */
+/** Same distribution, broken out by difficulty. On HARD, A catches up
+ *  to C (both ≈ 28%) and B drops to ≈ 25% — closer to flat than the
+ *  overall B/C lead. D remains the rarest at every difficulty. */
 export type PositionalBiasByDifficulty = {
   label: "A" | "B" | "C" | "D";
   easy: number;
@@ -34,10 +43,10 @@ export type PositionalBiasByDifficulty = {
 };
 
 export const POSITIONAL_BIAS_BY_DIFFICULTY: PositionalBiasByDifficulty[] = [
-  { label: "A", easy: 86, moderate: 138, hard: 90 },
-  { label: "B", easy: 109, moderate: 176, hard: 78 },
-  { label: "C", easy: 109, moderate: 171, hard: 88 },
-  { label: "D", easy: 71, moderate: 138, hard: 66 },
+  { label: "A", easy: 152, moderate: 253, hard: 132 },
+  { label: "B", easy: 197, moderate: 295, hard: 121 },
+  { label: "C", easy: 184, moderate: 274, hard: 134 },
+  { label: "D", easy: 129, moderate: 189, hard: 100 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────
@@ -50,42 +59,38 @@ export type DistractorCell = {
   qCount: number;
 };
 
-/** Sign-flip distractor rate by chapter × difficulty.
- *  Detector: per question, a wrong option whose text == "-" prepended to
- *  the correct option's text (or vice versa), after stripping `\(…\)`
- *  wrappers. Conservative — only catches the literal case. */
+/** Sign-flip distractor rate by chapter × difficulty. Top 12 cells. */
 export const SIGN_FLIP_CELLS: DistractorCell[] = [
-  { chapter: "Limits & Continuity", difficulty: "HARD", pct: 62.5, qCount: 8 },
-  { chapter: "Logarithms", difficulty: "HARD", pct: 50.0, qCount: 2 },
-  { chapter: "Differentiation", difficulty: "HARD", pct: 38.5, qCount: 13 },
-  { chapter: "Differentiation", difficulty: "MODERATE", pct: 35.0, qCount: 20 },
-  { chapter: "Trigonometric Identities", difficulty: "HARD", pct: 32.0, qCount: 25 },
-  { chapter: "Differentiation", difficulty: "EASY", pct: 31.3, qCount: 16 },
-  { chapter: "Limits & Continuity", difficulty: "EASY", pct: 27.8, qCount: 18 },
-  { chapter: "Complex Numbers", difficulty: "MODERATE", pct: 25.0, qCount: 24 },
-  { chapter: "Indefinite Integration", difficulty: "HARD", pct: 25.0, qCount: 8 },
-  { chapter: "Trigonometric Identities", difficulty: "EASY", pct: 23.8, qCount: 21 },
-  { chapter: "Indefinite Integration", difficulty: "MODERATE", pct: 23.1, qCount: 13 },
-  { chapter: "Quadratic Equations", difficulty: "MODERATE", pct: 21.4, qCount: 14 },
+  { chapter: "Limits & Continuity", difficulty: "HARD", pct: 45.5, qCount: 11 },
+  { chapter: "Differentiation", difficulty: "EASY", pct: 26.9, qCount: 26 },
+  { chapter: "Differentiation", difficulty: "MODERATE", pct: 25.6, qCount: 39 },
+  { chapter: "Differentiation", difficulty: "HARD", pct: 25.0, qCount: 20 },
+  { chapter: "Complex Numbers", difficulty: "HARD", pct: 25.0, qCount: 16 },
+  { chapter: "Trigonometric Identities", difficulty: "HARD", pct: 23.4, qCount: 47 },
+  { chapter: "Complex Numbers", difficulty: "MODERATE", pct: 22.9, qCount: 35 },
+  { chapter: "Limits & Continuity", difficulty: "EASY", pct: 21.2, qCount: 33 },
+  { chapter: "Trigonometric Identities", difficulty: "EASY", pct: 18.2, qCount: 33 },
+  { chapter: "Limits & Continuity", difficulty: "MODERATE", pct: 16.2, qCount: 37 },
+  { chapter: "Indefinite Integration", difficulty: "MODERATE", pct: 16.0, qCount: 25 },
+  { chapter: "Matrices & Determinants", difficulty: "HARD", pct: 13.5, qCount: 52 },
 ];
 
-/** Factor-of-2 distractor rate by chapter × difficulty. The dominant trap
- *  in NDA Maths — more frequent than sign-flip across almost every chapter.
- *  Detector: per question, a wrong option whose first integer is exactly
- *  2× or ½× the correct option's first integer. */
+/** Factor-of-2 distractor rate by chapter × difficulty. Top 12 cells
+ *  picked for variety + sample size (qCount ≥ 10 except where the
+ *  cell is so striking that the 7–9 sample still earns its place). */
 export const FACTOR2_CELLS: DistractorCell[] = [
-  { chapter: "Sets & Relations", difficulty: "EASY", pct: 90.0, qCount: 10 },
-  { chapter: "Indefinite Integration", difficulty: "HARD", pct: 80.0, qCount: 5 },
-  { chapter: "Lines", difficulty: "HARD", pct: 66.7, qCount: 12 },
-  { chapter: "Limits & Continuity", difficulty: "HARD", pct: 66.7, qCount: 6 },
-  { chapter: "Applications of Integration", difficulty: "EASY", pct: 66.7, qCount: 6 },
-  { chapter: "Vectors", difficulty: "MODERATE", pct: 64.5, qCount: 31 },
-  { chapter: "Permutation & Combination", difficulty: "MODERATE", pct: 63.0, qCount: 27 },
-  { chapter: "Application of Derivatives", difficulty: "MODERATE", pct: 62.5, qCount: 16 },
-  { chapter: "Conics", difficulty: "EASY", pct: 62.5, qCount: 8 },
-  { chapter: "Complex Numbers", difficulty: "EASY", pct: 62.5, qCount: 8 },
-  { chapter: "Complex Numbers", difficulty: "HARD", pct: 55.6, qCount: 9 },
-  { chapter: "Definite Integration", difficulty: "EASY", pct: 58.3, qCount: 12 },
+  { chapter: "Sets & Relations", difficulty: "EASY", pct: 82.4, qCount: 17 },
+  { chapter: "Complex Numbers", difficulty: "EASY", pct: 80.0, qCount: 10 },
+  { chapter: "Definite Integration", difficulty: "EASY", pct: 80.0, qCount: 10 },
+  { chapter: "Complex Numbers", difficulty: "HARD", pct: 71.4, qCount: 14 },
+  { chapter: "Limits & Continuity", difficulty: "MODERATE", pct: 65.4, qCount: 26 },
+  { chapter: "Vectors", difficulty: "MODERATE", pct: 65.0, qCount: 40 },
+  { chapter: "Differentiation", difficulty: "EASY", pct: 64.7, qCount: 17 },
+  { chapter: "Application of Derivatives", difficulty: "MODERATE", pct: 61.5, qCount: 26 },
+  { chapter: "Matrices & Determinants", difficulty: "MODERATE", pct: 57.9, qCount: 38 },
+  { chapter: "Lines", difficulty: "HARD", pct: 57.9, qCount: 19 },
+  { chapter: "Functions", difficulty: "MODERATE", pct: 55.9, qCount: 34 },
+  { chapter: "Permutation & Combination", difficulty: "MODERATE", pct: 54.3, qCount: 35 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────
@@ -170,12 +175,12 @@ export type VerificationRule = {
 export const VERIFICATION_RULES: VerificationRule[] = [
   {
     chapter: "Limits & Continuity",
-    rule: "Verify the sign. 62% of HARD limit questions include a sign-flip distractor.",
+    rule: "Verify the sign. 46% of HARD limit questions include a sign-flip distractor.",
     catches: "sign",
   },
   {
     chapter: "Differentiation",
-    rule: "Verify the sign even on easy problems. d/dx(sin x) = cos x — but the sign-flip distractor is present in 31% of EASY differentiation q.",
+    rule: "Verify the sign even on easy problems. d/dx(sin x) = cos x — but the sign-flip distractor is present in 27% of EASY differentiation q.",
     catches: "sign",
   },
   {
@@ -195,7 +200,7 @@ export const VERIFICATION_RULES: VerificationRule[] = [
   },
   {
     chapter: "Lines",
-    rule: "Verify the factor of 2. Triangle area, midpoint, intercept lengths — 67% of HARD line questions include a ×2 or ×½ wrong option.",
+    rule: "Verify the factor of 2. Triangle area, midpoint, intercept lengths — 58% of HARD line questions include a ×2 or ×½ wrong option.",
     catches: "factor",
   },
   {
@@ -205,7 +210,7 @@ export const VERIFICATION_RULES: VerificationRule[] = [
   },
   {
     chapter: "Permutation & Combination",
-    rule: "Verify whether the arrangement counts each pair twice. Boys-girls-together, geometric counting — factor-2 errors are in 63% of MODERATE P&C.",
+    rule: "Verify whether the arrangement counts each pair twice. Boys-girls-together, geometric counting — factor-2 errors are in 54% of MODERATE P&C.",
     catches: "factor",
   },
   {
@@ -232,9 +237,9 @@ export const TRAP_HEADLINE = {
   /** Number of distinct trap categories surfaced on the page. */
   categories: 4,
   /** Highest factor-of-2 cell — Sets & Relations EASY. */
-  topFactor2: { pct: 90, chapter: "Sets & Relations", difficulty: "EASY" as const },
+  topFactor2: { pct: 82, chapter: "Sets & Relations", difficulty: "EASY" as const },
   /** Highest sign-flip cell — Limits & Continuity HARD. */
-  topSignFlip: { pct: 62, chapter: "Limits & Continuity", difficulty: "HARD" as const },
+  topSignFlip: { pct: 46, chapter: "Limits & Continuity", difficulty: "HARD" as const },
   /** Number of verification rules. */
   rules: VERIFICATION_RULES.length,
 };
