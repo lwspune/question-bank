@@ -59,77 +59,77 @@ export const TOP_11: Principle[] = [
   {
     slug: "am-gm-mean-inequalities",
     name: "AM-GM / mean inequalities (incl. x + 1/x ≥ 2)",
-    pctHard: 23,
+    pctHard: 16,
     summary:
       "Whenever you need a minimum of a sum or maximum of a product under a constraint, AM-GM is the lever. Spans Sequence & Series, Application of Derivatives, Trig Identities and Logarithms; questions disguise the inequality across chapter lines.",
   },
   {
     slug: "vieta-symmetric-roots",
     name: "Vieta — sum and product of roots",
-    pctHard: 39,
+    pctHard: 43,
     summary:
-      "If α, β are roots of ax² + bx + c = 0, then α + β = −b/a and αβ = c/a. Never solve; use structure. Cross-chapter into Complex Numbers, M&D, Properties of Triangle, Trig Identities, and Sequence & Series.",
+      "If α, β are roots of ax² + bx + c = 0, then α + β = −b/a and αβ = c/a. Never solve; use structure. Cross-chapter into Complex Numbers, M&D, Properties of Triangle, Trig Identities, and Sequence & Series — and 43% HARD overall, third-toughest principle in the bank.",
   },
   {
     slug: "ap-three-term",
     name: "AP three-term: 2b = a + c",
-    pctHard: 23,
+    pctHard: 28,
     summary:
-      "If a, b, c are in AP, then 2b = a + c. The bank disguises this across Lines (collinearity, family of lines), Logarithms, M&D, P&C, Probability, Properties of Triangle, Inverse Trig, and Trig Identities.",
+      "If a, b, c are in AP, then 2b = a + c. The bank disguises this across Lines (collinearity, family of lines), Logarithms, M&D, P&C, Probability, Properties of Triangle, Inverse Trig, and Trig Identities — nine chapters of cross-chapter reach.",
   },
   {
     slug: "compound-angle",
     name: "Compound angle: sin/cos/tan(A ± B)",
-    pctHard: 19,
+    pctHard: 24,
     summary:
       "The base trig identity that unlocks double angle, product-to-sum, and most identity manipulation. Tagged across Trig Identities + Trig Equations.",
   },
   {
     slug: "double-angle",
     name: "Double / half-angle formulas",
-    pctHard: 50,
+    pctHard: 44,
     summary:
-      "The hardest principle in the bank (50% HARD rate). sin 2A = 2 sin A cos A and cousins. Splits across Trig Identities Multi/Half-Angle and Properties of Triangle.",
+      "sin 2A = 2 sin A cos A and cousins. 44% HARD overall — second-hardest principle in the bank after Sine/Cosine rules. Splits across Trig Identities Multi/Half-Angle and Properties of Triangle.",
   },
   {
     slug: "sine-cosine-rules",
     name: "Sine rule + Cosine rule",
-    pctHard: 35,
+    pctHard: 57,
     summary:
-      "a/sin A = 2R and c² = a² + b² − 2ab cos C. Drives every \"solve the triangle\" problem; also surfaces in Height & Distance and inside trig-laden determinants and in-circle problems.",
+      "a/sin A = 2R and c² = a² + b² − 2ab cos C. The hardest principle in the live bank — 57% of tagged questions are HARD. Drives every \"solve the triangle\" problem; also surfaces in Height & Distance and inside trig-laden determinants and in-circle problems.",
   },
   {
     slug: "cube-roots-of-unity",
     name: "Cube roots of unity (1 + ω + ω² = 0, ω³ = 1)",
-    pctHard: 47,
+    pctHard: 41,
     summary:
       "Pairs with Vieta in the ω-Vieta compound. Beyond the named subtopic, ω appears explicitly inside Complex Numbers' modulus problems, M&D's special determinants, and Quadratic Equation questions where x² + x + 1 = 0 unlocks ω³ = 1 simplifications.",
   },
   {
     slug: "inclusion-exclusion",
     name: "Inclusion-Exclusion (sets + probability)",
-    pctHard: 13,
+    pctHard: 14,
     summary:
       "n(A∪B) = n(A) + n(B) − n(A∩B) and the three-set generalisation. The complement form 1 − P(none) is the other face of the same identity, used heavily in Binomial Distribution and Probability via Counting questions.",
   },
   {
     slug: "binomial-coefficient-identities",
     name: "Pascal / binomial-coefficient identities",
-    pctHard: 22,
+    pctHard: 19,
     summary:
       "ΣC(n,r) = 2ⁿ, C(n,r) = C(n,n−r), Pascal's rule. Spans Binomial Theorem and P&C primarily, plus M&D / Sets / Statistics questions where the identity is the key step.",
   },
   {
     slug: "modulus-absolute-value",
     name: "Modulus / absolute value behaviour",
-    pctHard: 15,
+    pctHard: 14,
     summary:
-      "Piecewise splitting at zero. The principle behind the 2023 modulus spike — five named subtopics across four chapters cover it explicitly, plus invocations across App of Derivatives, Apps of Integration, Functions, Linear Inequalities, Probability, Quad Eq and Sets & Relations.",
+      "Piecewise splitting at zero. The principle behind the 2023 modulus spike — broadest cross-chapter reach in the bank (10 chapters tagged), plus invocations across App of Derivatives, Apps of Integration, Functions, Linear Inequalities, Probability, Quad Eq and Sets & Relations.",
   },
   {
     slug: "differentiability-conditions",
     name: "Differentiability at a point",
-    pctHard: 12,
+    pctHard: 17,
     summary:
       "Differentiability ⇒ continuity (not the converse). Modulus and greatest-integer are the standard counter-examples. Spans Limits & Continuity, Differentiation, and Functions.",
   },

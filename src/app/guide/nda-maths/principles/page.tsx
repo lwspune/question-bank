@@ -18,6 +18,53 @@ import {
   TOP_11,
   type Principle,
 } from "../_data/principles";
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+type PrincipleStats = {
+  total: number;
+  pctHard: number;
+  chapterSpread: number;
+};
+
+/** Live per-principle stats: question count, %HARD, chapter spread.
+ *  One round-trip to loadPrincipleQuestionIds + one to questions. */
+async function loadPrincipleStats(
+  client: SupabaseClient,
+  slugs: string[]
+): Promise<Map<string, PrincipleStats>> {
+  const taggedMap = await loadPrincipleQuestionIds(client, slugs);
+  const allIds = Array.from(new Set(Array.from(taggedMap.values()).flat()));
+  const stats = new Map<string, PrincipleStats>();
+  if (allIds.length === 0) return stats;
+
+  const { data, error } = await client
+    .from("questions")
+    .select("id, difficulty, chapter_id")
+    .in("id", allIds);
+  if (error) return stats;
+  const byId = new Map(
+    ((data ?? []) as { id: string; difficulty: string; chapter_id: string }[]).map(
+      (r) => [r.id, r] as const
+    )
+  );
+
+  for (const [slug, ids] of taggedMap) {
+    let hard = 0;
+    const chapters = new Set<string>();
+    for (const id of ids) {
+      const q = byId.get(id);
+      if (!q) continue;
+      if (q.difficulty === "HARD") hard++;
+      if (q.chapter_id) chapters.add(q.chapter_id);
+    }
+    stats.set(slug, {
+      total: ids.length,
+      pctHard: ids.length > 0 ? Math.round((hard * 100) / ids.length) : 0,
+      chapterSpread: chapters.size,
+    });
+  }
+  return stats;
+}
 
 export const metadata: Metadata = {
   title: "NDA Maths Principles — the atoms behind every question",
@@ -34,13 +81,17 @@ const sideNav = ROUTES.map((r) => ({
 export default async function PrinciplesIndex() {
   const supabase = createSupabaseServerClient();
 
-  // Live tag counts for TOP_11 slugs — one DB round-trip for all of them.
+  // Live tag counts + %HARD + chapter spread for TOP_11 slugs.
   const slugs = TOP_11.map((p) => p.slug!).filter(Boolean);
-  const [taxonomy, taggedMap] = await Promise.all([
+  const [taxonomy, statsMap] = await Promise.all([
     resolveTaxonomy(supabase, "NDA", "Mathematics"),
-    loadPrincipleQuestionIds(supabase, slugs),
+    loadPrincipleStats(supabase, slugs),
   ]);
-  const liveCountFor = (slug: string) => taggedMap.get(slug)?.length ?? 0;
+  const liveCountFor = (slug: string) => statsMap.get(slug)?.total ?? 0;
+  const livePctHardFor = (slug: string) =>
+    statsMap.get(slug)?.pctHard ?? null;
+  const liveSpreadFor = (slug: string) =>
+    statsMap.get(slug)?.chapterSpread ?? 0;
 
   /** Resolve a long-tail (no-slug) principle's drill list into deduped ID
    *  lists ready to feed BrowseLink. TOP_11 principles use principleSlug
@@ -107,7 +158,7 @@ export default async function PrinciplesIndex() {
         <StatBlock stats={stats} />
       </GuideHero>
 
-      {/* TOP TABLE */}
+      {/* TOP TABLE — sorted by live #qs descending */}
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
           Top {TOP_11.length} — cross-chapter principles with deep-dive pages
@@ -116,48 +167,60 @@ export default async function PrinciplesIndex() {
           These principles disguise themselves across multiple chapters — a
           student who learns them as cross-chapter tricks unlocks questions
           that look unrelated. Each has a dedicated detail page with worked
-          examples and a one-click drill CTA. Question counts come from live
-          DB tags, so they stay accurate as the bank grows.
+          examples and a one-click drill CTA. Question count, % HARD, and
+          chapter spread all come from live DB tags — sorted by question
+          count descending so the highest-leverage principles are at the top.
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
-          <table className="w-full min-w-[640px] text-sm">
+          <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b bg-muted/40">
               <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <th className="px-3 py-2 font-medium">#</th>
                 <th className="px-3 py-2 font-medium">Principle</th>
                 <th className="px-3 py-2 text-right font-medium">Questions</th>
                 <th className="px-3 py-2 text-right font-medium">% HARD</th>
+                <th className="px-3 py-2 text-right font-medium">Chapters</th>
                 <th className="px-3 py-2 font-medium">Deep dive</th>
               </tr>
             </thead>
             <tbody>
-              {TOP_11.map((p, i) => (
-                <tr key={p.slug ?? p.name} className="border-b last:border-b-0">
-                  <td className="px-3 py-2 tabular-nums text-muted-foreground">
-                    {i + 1}
-                  </td>
-                  <td className="px-3 py-2 font-medium">{p.name}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">
-                    {p.slug ? liveCountFor(p.slug) : "—"}
-                  </td>
-                  <td className="px-3 py-2 text-right tabular-nums">
-                    {p.pctHard != null ? `${p.pctHard}%` : "—"}
-                  </td>
-                  <td className="px-3 py-2">
-                    {p.slug ? (
-                      <Link
-                        href={`/guide/nda-maths/principles/${p.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
-                      >
-                        <BookOpen className="h-3 w-3" aria-hidden /> Read
-                        <ArrowRight className="h-3 w-3" aria-hidden />
-                      </Link>
-                    ) : (
-                      <span className="text-xs text-muted-foreground">—</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
+              {[...TOP_11]
+                .sort(
+                  (a, b) =>
+                    liveCountFor(b.slug ?? "") - liveCountFor(a.slug ?? "")
+                )
+                .map((p, i) => (
+                  <tr key={p.slug ?? p.name} className="border-b last:border-b-0">
+                    <td className="px-3 py-2 tabular-nums text-muted-foreground">
+                      {i + 1}
+                    </td>
+                    <td className="px-3 py-2 font-medium">{p.name}</td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.slug ? liveCountFor(p.slug) : "—"}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.slug && livePctHardFor(p.slug) != null
+                        ? `${livePctHardFor(p.slug)}%`
+                        : "—"}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.slug ? liveSpreadFor(p.slug) : "—"}
+                    </td>
+                    <td className="px-3 py-2">
+                      {p.slug ? (
+                        <Link
+                          href={`/guide/nda-maths/principles/${p.slug}`}
+                          className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+                        >
+                          <BookOpen className="h-3 w-3" aria-hidden /> Read
+                          <ArrowRight className="h-3 w-3" aria-hidden />
+                        </Link>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">—</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
@@ -193,13 +256,13 @@ export default async function PrinciplesIndex() {
               >
                 {d.principles.map((p) => {
                   if (p.slug) {
-                    // TOP_11: live count + ?principle= CTA
+                    // TOP_11: live count + live %HARD + ?principle= CTA
                     return (
                       <PrincipleCard
                         key={p.slug}
                         name={p.name}
                         qCount={liveCountFor(p.slug)}
-                        pctHard={p.pctHard}
+                        pctHard={livePctHardFor(p.slug) ?? undefined}
                         summary={p.summary}
                         chapters={p.chapters}
                         slug={p.slug}
@@ -241,7 +304,9 @@ export default async function PrinciplesIndex() {
           <strong className="font-semibold text-foreground">Modulus</strong>{" "}
           and{" "}
           <strong className="font-semibold text-foreground">Vieta</strong>{" "}
-          first — they each span 7+ chapters in the live tagged set.
+          first — they have the broadest cross-chapter spread in the bank
+          (Modulus {liveSpreadFor("modulus-absolute-value")} chapters, Vieta{" "}
+          {liveSpreadFor("vieta-symmetric-roots")} chapters).
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
           <BrowseLink principleSlug="modulus-absolute-value">

@@ -35,7 +35,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "principles",
     label: "Principles",
     blurb:
-      "70 atoms behind every question. Drill the 11 cross-chapter principles first.",
+      "79 atoms behind every question. Drill the 11 cross-chapter principles first.",
   },
   {
     slug: "compound-tricks",
@@ -71,7 +71,7 @@ export const OVERVIEW: Overview = {
   totalQ: 2160,
   papers: 18,
   chapters: 31,
-  principles: 70,
+  principles: 79,
   difficulty: { easy: 662, moderate: 1011, hard: 487 },
   asOf: "2026-05-17",
 };
