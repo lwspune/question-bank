@@ -120,7 +120,10 @@ async function main() {
       });
     }
 
-    // 2. Every pyqExampleId must resolve AND be PUBLIC.
+    // 2. Every pyqExampleId must resolve, be PUBLIC, AND live in the parent module's subtopic.
+    //    The subtopic-match check catches the "featured question is actually in a different
+    //    subtopic" failure mode that notes-lint historically missed — see memory
+    //    feedback_pyqexampleid_must_match_subtopic.md.
     const pyqIds: { id: string; conceptName: string }[] = [];
     for (const c of ref.note.concepts) {
       if (c.pyqExampleId) pyqIds.push({ id: c.pyqExampleId, conceptName: c.name });
@@ -128,26 +131,35 @@ async function main() {
     if (pyqIds.length > 0) {
       const { data: rows } = await supabase
         .from("questions")
-        .select("id, visibility")
+        .select("id, visibility, subtopic_id")
         .in("id", pyqIds.map((p) => p.id));
-      const resolved = new Set((rows ?? []).map((r) => (r as { id: string }).id));
-      const privateIds = new Set(
-        (rows ?? [])
-          .filter((r) => (r as { visibility: string }).visibility !== "PUBLIC")
-          .map((r) => (r as { id: string }).id)
+      type Row = { id: string; visibility: string; subtopic_id: string | null };
+      const rowById = new Map<string, Row>(
+        ((rows ?? []) as Row[]).map((r) => [r.id, r])
       );
+      const expectedSubtopicId = sub?.id ?? null;
       for (const p of pyqIds) {
-        if (!resolved.has(p.id)) {
+        const row = rowById.get(p.id);
+        if (!row) {
           issues.push({
             severity: "error",
             note: ref.path,
             message: `pyqExampleId not found in bank: ${p.id} (concept "${p.conceptName}")`,
           });
-        } else if (privateIds.has(p.id)) {
+          continue;
+        }
+        if (row.visibility !== "PUBLIC") {
           issues.push({
             severity: "error",
             note: ref.path,
             message: `pyqExampleId is PRIVATE — students won't see it: ${p.id} (concept "${p.conceptName}")`,
+          });
+        }
+        if (expectedSubtopicId && row.subtopic_id !== expectedSubtopicId) {
+          issues.push({
+            severity: "error",
+            note: ref.path,
+            message: `pyqExampleId ${p.id} lives in a different subtopic than "${ref.note.subtopicName}" (concept "${p.conceptName}") — concept tag would be impossible. Swap for a question in the correct subtopic.`,
           });
         }
       }
