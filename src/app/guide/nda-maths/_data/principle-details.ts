@@ -78,10 +78,10 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       "The recipe: extract α + β and αβ from coefficients. Convert the target expression into those. Compute. Three steps, every time.",
     ],
     exampleQuestionIds: [
-      "e8f3d0c4-265c-4871-a8bd-24d6e38e4b4a", // x²+mx+n integer (Quad Eq, EASY)
-      "95079d62-efcb-4dea-8eb3-3a0590a6880c", // α²-β²=16 (Quad Eq, EASY)
-      "6531efe3-56e2-457a-a839-9cdcb95b8f4c", // tan α, tan β roots, cos(2α+2β) (Trig Identities cross-chapter)
-      "c17aae4f-8cf1-4131-8a10-1fc5aa699003", // α, β roots — AM and GM (compound with AM-GM, MODERATE)
+      "95079d62-efcb-4dea-8eb3-3a0590a6880c", // α²-β²=16 → use (α-β)(α+β) structure (Quad Eq, EASY)
+      "47f7748f-de22-4166-bdc0-844666002769", // 2-i√3 is root of x²+ax+b → conjugate-root + Vieta (Complex Numbers, MOD)
+      "6531efe3-56e2-457a-a839-9cdcb95b8f4c", // tan α, tan β roots, cos(2α+2β) (Trig Identities cross-chapter, MOD)
+      "be61f625-1e50-4385-9512-76bcc21ab01e", // α, β roots of 1+x+x²=0 → matrix product (M&D + ω + Vieta triple compound, HARD)
     ],
     variants: [
       {
@@ -122,10 +122,10 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       "Don't conflate this with the AP sum formulas (Sₙ = n/2 · [2a + (n−1)d]) — those are a separate skill. The three-term identity is the algebraic core; the sum formulas are computational. NDA tests both, often in the same question.",
     ],
     exampleQuestionIds: [
-      "ae62e269-8a7d-4c2c-830f-9f0219aaa2df", // p,q,r,s in AP, p+s=8, qr=15 (EASY)
-      "e8d94bc5-da0b-47e5-8536-959fa7deac61", // AM of 50-term AP (EASY)
-      "29ad76f9-a219-4a6b-a2a9-e6783ba5d55a", // p × p-th term = q × q-th term (MODERATE)
-      "e4a7c388-d352-4166-8978-3ef0c319b424", // first term x, sum n terms = 0, sum next m terms (HARD)
+      "ae62e269-8a7d-4c2c-830f-9f0219aaa2df", // p,q,r,s in AP, p+s=8, qr=15 → direct 2b=a+c (S&S, EASY)
+      "467b7926-2c25-428a-8ddf-fa4b13877e74", // x², x, -8 in AP → solve 2x = x²-8 (S&S, EASY)
+      "f90c8cbb-ab31-4ff6-9be8-c592495b57e3", // angles of triangle in AP, b:c=√3:√2 → 2B = A+C + A+B+C=π (Properties of Triangle, MOD)
+      "8181c432-89e0-45cc-b270-cf5275e02596", // C(n,4), C(n,5), C(n,6) in AP → find n (P&C cross-chapter, HARD)
     ],
     variants: [
       {
