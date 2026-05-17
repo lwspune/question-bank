@@ -57,7 +57,7 @@ src/
 │   └── notes/                             Public, anon-friendly, Google-indexable per-subtopic teaching notes. Dual-purpose: digital-board teaching (Present mode) AND student self-study (Read mode). page.tsx is a 307 redirect to /notes/nda-maths/statistics (only chapter live); nda-maths/page.tsx redirects to the same. ISR-cached (`export const revalidate = 3600` on every page; uses cookie-free `createSupabaseAnonClient` so caching isn't broken by request-scoped cookies). Prod warm-state ~200ms.
 │       ├── _types.ts                      `SubtopicNote = { subtopicName, title, oneLineDefinition, whyItMatters, concepts: ConceptUnit[], related? }`. Each `ConceptUnit = { slug, name, intuition, definition, formula? (with symbol legend), authoredExample (prompt + steps + answer), pyqExampleId?, traps? }` — atomic teaching unit. **Per-concept drill lists are NOT on this type** — they live in `question_concept_tags` (migration 0021) and are resolved at request time via `loadResolvedDrills`. `Slide` discriminated union drives Present mode: title → why → for each concept (intro → authored → pyq → traps → concept-drill) → drill.
 │       ├── _components/                   `FormulaBlock` (boxed formula with optional symbol legend; scales for presentMode) · `ConceptUnitCard` (the read-mode workhorse — renders one concept end-to-end: intuition → definition → formula → authored example → bank PYQ via WorkedExampleCard → traps → inline "Drill N more →" link to `/browse?extras=...`) · `WorkedExampleAuthored` (always-visible step-by-step example with prompt, numbered steps, and answer — distinct from the bank's WorkedExampleCard which reveals on click) · `TrapCallout` (amber warning-style callout for concept-specific gotchas) · `NotePresenter` (client island that handles the Present-mode overlay: ←/→/Space next, Shift+Space prev, F fullscreen, Esc exit; renders slides derived from splitNoteIntoSlides).
-│       └── nda-maths/statistics/          Pilot chapter — 4 subtopic notes pre-rendered as SSG via generateStaticParams. `_data/chapter.ts` defines `STATISTICS_CHAPTER` (chapterName + intro + subtopicOrder); `_data/{central-tendency,dispersion,regression-correlation,frequency-distributions}.ts` each export a SubtopicNote; `_data/index.ts` exposes `STATISTICS_NOTES: Record<slug, SubtopicNote>` and `STATISTICS_SLUGS`. Subtopic page resolves taxonomy + loads worked examples + queries live PYQ count in parallel; chapter landing lists each subtopic card with live PYQ counts. Authored counts as of pilot: **21 concept units · 21 authored examples · 89 curated PYQ UUIDs (8 pyqExamples + 81 per-concept drill UUIDs)**.
+│       └── nda-maths/statistics/          Pilot chapter — 4 subtopic notes pre-rendered as SSG via generateStaticParams. `_data/chapter.ts` defines `STATISTICS_CHAPTER` (chapterName + intro + subtopicOrder); `_data/{central-tendency,dispersion,regression-correlation,frequency-distributions}.ts` each export a SubtopicNote; `_data/index.ts` exposes `STATISTICS_NOTES: Record<slug, SubtopicNote>` and `STATISTICS_SLUGS`. Subtopic page resolves taxonomy + loads worked examples + concept drills (via `loadResolvedDrills`) + live PYQ count in parallel; chapter landing lists each subtopic card with live PYQ counts. Authored counts: **21 concept units · 21 authored worked examples · 8 pyqExampleIds (editorial, in TS)**. Per-concept drill UUIDs live in `question_concept_tags` (90 rows post-Phase-2 backfill across 21 concepts) — fetched at request time, not curated in the TS data files.
 ├── lib/
 │   ├── supabase/{client,server,middleware,admin}.ts    four supabase-js variants. `server.ts` exports BOTH `createSupabaseServerClient` (cookie-aware, default for /browse + /dashboard + admin routes) AND `createSupabaseAnonClient` (cookie-free anon client — opts the caller out of forced dynamic rendering, used by /notes pages so `revalidate=3600` ISR actually caches).
 │   ├── auth.ts                            getSessionUser, getSessionMember, requireAdmin, HttpError
@@ -150,6 +150,30 @@ Patterns that have bitten this codebase more than once. Each one earned its plac
 - **`next dev` is more forgiving than `next start` for server↔client prop serialization.** Functions and other non-serializable values passed from a Server Component to a Client Component compile cleanly under `next dev` but throw at SSR time under `next start` ("Functions cannot be passed directly to Client Components"). This bit us on the 2026-05-13 Pagination revert. **Mitigation:** the pre-push hook in `.githooks/pre-push` runs `next build` before allowing a push, so this class of bug is caught locally rather than after a Vercel deploy. Don't `git push --no-verify` unless you know exactly why.
 - **Source-source subtopic name collisions during bulk chapter merges.** When canonicalizing N source chapters into one target chapter, a bulk `UPDATE subtopics SET chapter_id = '<tgt>' WHERE chapter_id IN ('<src1>', '<src2>', ...)` can fail with `23505` on `subtopics_chapter_id_name_key` even if a pre-flight source-vs-target collision check came back clean — because two sources may share a same-named subtopic that collides only once both are reparented. Bit us on the NDA Physics E&M cluster (5 sources → "Magnetic Field Inside a Solenoid" appeared in two of them). **Mitigation:** process sources sequentially via a `DO $$ FOR mapping IN (VALUES (...)) LOOP ... END $$` block; each iteration redirects colliding questions, deletes colliding source subtopics, reparents the rest, updates remaining question chapter_ids, and deletes the source chapter — so by the time source 2 merges, source 1's content is already in target and the standard collision-handling kicks in. Pattern + full template in `[[reclassification-sql-pattern]]`.
 - **Catch-all chapters and subtopics drift until you reclassify per-question.** Buckets named "Mechanics", "Physics", "Error Identification in Sentences" collect every question that doesn't cleanly fit a more-specific name. They look harmless during a chapter-level merge but rot the bank's usefulness for technique drills. **Mitigation:** when a chapter or subtopic holds ≤~50 mixed-topic questions, read each stem and produce a `(question_id, target_canonical_id)` mapping; execute as a `DO $$ FOR m IN (VALUES (qid, tgt)) LOOP ... END $$` that (a) looks up the question's source subtopic, (b) finds same-named subtopic in target chapter, (c) redirects+deletes on collision, otherwise reparents+moves chapter_id. Precedents: Spotting Errors 29 q (2026-05-15 NDA English); Mechanics 19 q + Physics 26 q catch-all chapters (2026-05-15 NDA Physics). Beyond ~50 q the user prefers chapter-level merge + subtopic-cleanup as a follow-up pass.
+
+## Design axes
+
+Load-bearing design distinctions for the project. Each one earns its place by being structural — getting the axis wrong has cost real work, and the answer to "which axis does this live on?" is non-obvious for the named feature areas.
+
+### Tag taxonomies — principles (horizontal) vs concepts (vertical)
+
+**`/guide` principles** and **`/notes` concepts** are different kinds of tag and must NEVER share a schema or be merged into one taxonomy.
+
+| | Principles | Concepts |
+|---|---|---|
+| Axis | Horizontal — cross-subtopic | Vertical — within-subtopic |
+| Cardinality | ~20 in NDA Maths | ~5–10 per subtopic × hundreds = thousands at scale |
+| Storage | TS modules (`/guide/.../principles.ts`) + curated `extraQuestionIds` | DB table `question_concept_tags` (migration 0021) |
+| Authoring | Editorial — hand-curated, slow update cadence | Per-upload — admin tagging UI or chat session, fast cadence |
+| Value comes from | **Selectivity** (only the top-20, hand-picked) | **Coverage** (every relevant question tagged) |
+| Identity question | "What unifying lens does this question demand?" | "What specific technique within this chapter?" |
+
+**The wall — non-negotiable:**
+- DON'T migrate `/guide` principles to a DB table. Hand-curation is the signal-to-noise mechanism; "scaling" them dilutes their value.
+- DON'T bundle principles into `question_concept_tags` via a `tag_kind` discriminator. Flattens the strategic distinction.
+- DO share infrastructure at the seam: one admin tagging UI on `/questions/[id]/edit`, one notes-lint validator, future LLM-suggest can suggest both kinds. Sharing UI ≠ sharing schema.
+
+**Why this earned a section:** The initial concept-tags proposal (Phase 1, 2026-05-17) was a unified `question_tags` table. User pushed back; I conceded. Both axes shipped separately (principles still in TS, concepts in migration 0021) and the wall has held. This section exists so future tag-related features (admin UI, LLM-suggest, AI tutor grounding, MHT_CET_AI integration) don't re-litigate it from scratch.
 
 ## Decisions log
 
@@ -265,6 +289,64 @@ At-a-glance status of the cross-subject taxonomy cleanup (chapter + subtopic tec
 | MHT-CET Physics | ~250 | 27 ch · ~243 sub |
 
 Workflow: inline chapter-by-chapter in chat (no scripts), descending q-count first, source-source collision-loop for bulk merges, per-question reclassification for catch-all chapters ≤~50 q. Patterns + SQL templates: `[[reclassification-sql-pattern]]` + `[[taxonomy-inline-iteration]]`.
+
+## Notes editorial workflow
+
+Authoring a new chapter of `/notes` content. The loop is locked-in as of the Phase 2 ship (concept drills come from the DB, not TS). Order matters because some steps depend on earlier ones.
+
+### 1. Write the TS module
+
+Under `src/app/notes/<exam>/<chapter>/_data/`:
+
+- `chapter.ts` exports `<CHAPTER>_CHAPTER: ChapterNote` with `chapterName` (must match the canonical DB chapter name exactly), `title`, `intro`, and `subtopicOrder: string[]` of stable subtopic slugs.
+- One file per subtopic (`<subtopic-slug>.ts`), exporting a `SubtopicNote` with `subtopicName` (canonical DB name), `title`, `oneLineDefinition`, `whyItMatters`, and `concepts: ConceptUnit[]`. Each `ConceptUnit` carries `slug` (stable identity for DB tags), `name`, `intuition`, `definition`, optional `formula` (with symbol legend), `authoredExample` (prompt + steps + answer, KaTeX-aware), optional `pyqExampleId` (one featured PYQ from the bank), and optional `traps`.
+- `index.ts` re-exports the union as `<CHAPTER>_NOTES: Record<slug, SubtopicNote>` and `<CHAPTER>_SLUGS: string[]`.
+
+**The slug is the stable contract** — once a chapter ships, never rename a concept `slug` without a matching UPDATE on `question_concept_tags`. Notes-lint flags orphan slugs as errors but only after they've already broken pages.
+
+### 2. Register in the subtopic-slug registry
+
+`src/lib/notes/subtopicSlugRegistry.ts` aggregates `{subtopicName → (subtopicSlug, concepts[])}` across all chapter notes data. Append one import + one entry per subtopic in the new chapter. This drives both `applyEdit`'s server-side tag validation and the `/questions/[id]/edit` admin tagging UI; without registry entries the admin can't tag, and the lint can't validate.
+
+### 3. Run a chat tagging session
+
+For each chapter, propose a `(question_id, concept_slug)` mapping for every PUBLIC question. Same inline-iteration pattern as the taxonomy cleanup work.
+
+Audit query:
+```sql
+SELECT q.id, q.difficulty, q.pyq_year, q.set_id, LEFT(q.text, 200) AS text_preview
+FROM questions q
+WHERE q.chapter_id = '<chapter-uuid>' AND q.visibility = 'PUBLIC'
+ORDER BY q.set_id NULLS LAST, q.difficulty, q.pyq_year DESC NULLS LAST;
+```
+
+After user approval, INSERT via the standard atomic block:
+```sql
+INSERT INTO question_concept_tags (question_id, subtopic_slug, concept_slug, tagged_by_llm)
+VALUES
+  ('<q-uuid>'::uuid, '<subtopic-slug>', '<concept-slug>', true),
+  -- ...
+ON CONFLICT (question_id, subtopic_slug, concept_slug) DO NOTHING;
+```
+
+Mark `tagged_by_llm = true` on LLM-suggested rows so a future admin-review query can find them. The DB row count plus the LLM flag is the audit trail.
+
+### 4. Verify integrity
+
+- `npm run notes:lint` — every `subtopicName` resolves under live taxonomy; every `pyqExampleId` is PUBLIC; every DB tag's `concept_slug` matches a known TS concept (catches typos in either direction); each TS concept has ≥1 DB-tagged question (soft warn for un-tagged concepts). Exits non-zero on error.
+- `npm run prepush` — typecheck + lint + build clean.
+
+### 5. Ship
+
+ISR-cached `/notes` pages pick up new tags within the 1-hour `revalidate` window. Commit the TS module + the new registry entry; the DB rows are already live from Step 3.
+
+### Invariants to verify before commit
+
+- **Set-sibling co-location**: questions sharing `set_id` (passage groups) MUST be tagged with the same concept(s). Splitting a passage group breaks `/browse` + Word-export grouping. Audit `set_id` groupings in Step 3 before drafting the mapping.
+- **`pyqExampleId` stays in TS**: the one editorial "featured" example per concept is hand-picked and lives in the TS module. Drill UUIDs come from the DB — don't reach back to a TS array.
+- **Concept slugs are stable IDs**: never edit a `slug` in a published note. If a rename is genuinely necessary, do it as a one-shot `UPDATE question_concept_tags SET concept_slug = '<new>' WHERE subtopic_slug = '<sub>' AND concept_slug = '<old>'` in the same transaction as the TS edit.
+
+See "Design axes" above for why drills live in the DB while pyqExampleIds + concept definitions live in TS — they're on different axes.
 
 ## Adding a new RLS-protected table
 
