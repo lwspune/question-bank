@@ -474,10 +474,10 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
       "[x] (greatest integer function) is worse: at every integer, [x] jumps by 1. The derivative is 0 on every open interval (n, n+1), but undefined at integers. NDA tests this in derivative-of-floor questions — the answer is almost always 0 on the interior, undefined at the endpoint.",
     ],
     exampleQuestionIds: [
-      "f10d98eb-e52c-47a0-87e4-78b61ca192e0", // d/dx (x/|x|) for x<0 (EASY)
-      "6f6a1ee1-869e-4c41-b606-783a12efff57", // e^|x| (EASY)
-      "9943643d-bcde-41fd-ba82-b6e87e5b2ba6", // y = [x+1] at x=-3.5 (EASY)
-      "2c705cb2-aa60-4819-9419-545295fcbd9a", // |x|+1 * [x]-1 product, multiple statements (MODERATE)
+      "d41fa32c-cde9-4247-8f76-06da4cf721b0", // find a+b given f differentiable at x=1 — LHD=RHD parameter lever (HARD)
+      "6f6a1ee1-869e-4c41-b606-783a12efff57", // e^|x| — canonical |x| corner non-differentiability (EASY)
+      "9943643d-bcde-41fd-ba82-b6e87e5b2ba6", // d/dx of ⌊x+1⌋ at x=-3.5 — floor-interior derivative (EASY)
+      "49206ef2-3be1-4ed2-b160-982080dc5d99", // x|x| differentiable at 0? — the trap (contains |x| but IS differentiable) (MODERATE)
     ],
     variants: [
       {
