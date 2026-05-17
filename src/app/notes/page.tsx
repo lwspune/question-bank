@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 
 /**
- * /notes currently has only one published chapter (NDA Maths Statistics).
- * Redirect there until a second chapter ships and we need a real index.
+ * /notes currently only houses NDA Maths chapter notes. Until a second exam's
+ * notes ship, redirect to the NDA Maths chapter index landing (which lists
+ * every published chapter).
  */
 export default function NotesIndex() {
-  redirect("/notes/nda-maths/statistics");
+  redirect("/notes/nda-maths");
 }

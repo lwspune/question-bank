@@ -25,6 +25,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { STATISTICS_CHAPTER, STATISTICS_NOTES } from "../src/app/notes/nda-maths/statistics/_data";
+import { VECTORS_CHAPTER, VECTORS_NOTES } from "../src/app/notes/nda-maths/vectors/_data";
 import type { SubtopicNote } from "../src/app/notes/_types";
 
 function loadEnv() {
@@ -49,15 +50,25 @@ type NoteRef = {
 };
 
 // Every note ships its (exam, subject, chapter) context alongside its module.
-// For NDA Maths Statistics today; new notes append here.
-const NOTES: NoteRef[] = Object.entries(STATISTICS_NOTES).map(([slug, note]) => ({
-  path: `nda-maths/statistics/${slug}`,
-  subtopicSlug: slug,
-  exam: "NDA",
-  subject: "Mathematics",
-  chapter: STATISTICS_CHAPTER.chapterName,
-  note,
-}));
+// New chapters append a similar block below.
+const NOTES: NoteRef[] = [
+  ...Object.entries(STATISTICS_NOTES).map(([slug, note]) => ({
+    path: `nda-maths/statistics/${slug}`,
+    subtopicSlug: slug,
+    exam: "NDA",
+    subject: "Mathematics",
+    chapter: STATISTICS_CHAPTER.chapterName,
+    note,
+  })),
+  ...Object.entries(VECTORS_NOTES).map(([slug, note]) => ({
+    path: `nda-maths/vectors/${slug}`,
+    subtopicSlug: slug,
+    exam: "NDA",
+    subject: "Mathematics",
+    chapter: VECTORS_CHAPTER.chapterName,
+    note,
+  })),
+];
 
 async function main() {
   loadEnv();

@@ -6,125 +6,120 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
-import { STATISTICS_CHAPTER, STATISTICS_NOTES } from "@/app/notes/nda-maths/statistics/_data";
-import { VECTORS_CHAPTER, VECTORS_NOTES } from "@/app/notes/nda-maths/vectors/_data";
 
 export const revalidate = 3600;
-
-const PAGE_TITLE = "NDA Maths — Teaching Notes";
-const PAGE_INTRO =
-  "Per-subtopic teaching notes for NDA Mathematics — built for digital-board lectures and " +
-  "student self-study side-by-side. Each chapter breaks down into concept-by-concept units " +
-  "with intuition, formula, authored worked example, a featured PYQ, traps, and a one-click " +
-  "drill of every past-year question on that subtopic.";
+import {
+  VECTORS_CHAPTER,
+  VECTORS_NOTES,
+  VECTORS_SLUGS,
+} from "./_data";
 
 export const metadata: Metadata = {
-  title: `${PAGE_TITLE} — Notes for the digital board`,
-  description: PAGE_INTRO,
-  alternates: { canonical: "/notes/nda-maths" },
+  title: "NDA Maths Vectors — Notes for the digital board",
+  description: VECTORS_CHAPTER.intro,
+  alternates: { canonical: "/notes/nda-maths/vectors" },
 };
 
-type ChapterCard = {
-  slug: string;
-  chapterName: string;
-  title: string;
-  intro: string;
-  subtopicCount: number;
-};
-
-const CHAPTERS: ChapterCard[] = [
-  {
-    slug: "statistics",
-    chapterName: STATISTICS_CHAPTER.chapterName,
-    title: STATISTICS_CHAPTER.title,
-    intro: STATISTICS_CHAPTER.intro,
-    subtopicCount: Object.keys(STATISTICS_NOTES).length,
-  },
-  {
-    slug: "vectors",
-    chapterName: VECTORS_CHAPTER.chapterName,
-    title: VECTORS_CHAPTER.title,
-    intro: VECTORS_CHAPTER.intro,
-    subtopicCount: Object.keys(VECTORS_NOTES).length,
-  },
+const sideNavBase = [
+  { href: "/notes/nda-maths/vectors", label: "Chapter overview" },
 ];
 
-const sideNav = [
-  { href: "/notes/nda-maths", label: "Chapter index" },
-  ...CHAPTERS.map((c) => ({
-    href: `/notes/nda-maths/${c.slug}`,
-    label: c.chapterName,
-  })),
-];
-
-export default async function NdaMathsNotesIndex() {
+export default async function VectorsChapterPage() {
   const supabase = createSupabaseAnonClient();
   const taxonomy = await getNotesTaxonomy(supabase, "NDA", "Mathematics");
+  const chapter = taxonomy.chapters.get(VECTORS_CHAPTER.chapterName);
 
-  // Live PYQ count per chapter — read from the bank, not curated.
-  const chapterIds = CHAPTERS
-    .map((c) => taxonomy.chapters.get(c.chapterName)?.id)
+  const subtopicIds = VECTORS_CHAPTER.subtopicOrder
+    .map((slug) => VECTORS_NOTES[slug]?.subtopicName)
+    .map((name) => (name && chapter ? chapter.subtopics.get(name) : null))
     .filter((id): id is string => Boolean(id));
 
-  const countsByChapter = new Map<string, number>();
-  if (chapterIds.length > 0) {
+  let countsBySubtopic = new Map<string, number>();
+  if (subtopicIds.length > 0) {
     const { data } = await supabase
       .from("questions")
-      .select("chapter_id")
-      .in("chapter_id", chapterIds);
+      .select("subtopic_id")
+      .in("subtopic_id", subtopicIds);
     for (const row of data ?? []) {
-      const id = (row as { chapter_id: string }).chapter_id;
-      countsByChapter.set(id, (countsByChapter.get(id) ?? 0) + 1);
+      const id = (row as { subtopic_id: string }).subtopic_id;
+      countsBySubtopic.set(id, (countsBySubtopic.get(id) ?? 0) + 1);
     }
   }
 
+  const sideNav = [
+    ...sideNavBase,
+    ...VECTORS_CHAPTER.subtopicOrder.map((slug) => {
+      const n = VECTORS_NOTES[slug];
+      return {
+        href: `/notes/nda-maths/vectors/${slug}`,
+        label: n ? n.title : slug,
+      };
+    }),
+  ];
+
   return (
     <GuideShell
-      guideTitle="NDA Maths Notes"
+      guideTitle="NDA Vectors Notes"
       sideNav={sideNav}
-      breadcrumbs={[{ label: "Notes" }]}
+      breadcrumbs={[{ label: "Vectors" }]}
     >
       <GuideJsonLd
         type="CollectionPage"
-        path="/notes/nda-maths"
-        headline={PAGE_TITLE}
-        description={PAGE_INTRO}
+        path="/notes/nda-maths/vectors"
+        headline={VECTORS_CHAPTER.title}
+        description={VECTORS_CHAPTER.intro}
       />
 
       <GuideHero
         eyebrow="NDA Mathematics · Teaching notes"
-        title={PAGE_TITLE}
-        subtitle={PAGE_INTRO}
+        title={VECTORS_CHAPTER.title}
+        subtitle={VECTORS_CHAPTER.intro}
       />
 
       <section className="mt-2 grid gap-4 sm:mt-4">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
           <BookOpen className="h-4 w-4 text-primary" aria-hidden />
-          Chapters
+          Subtopic notes
         </p>
         <ul className="space-y-3">
-          {CHAPTERS.map((c) => {
-            const chapterId = taxonomy.chapters.get(c.chapterName)?.id;
-            const count = chapterId ? countsByChapter.get(chapterId) ?? 0 : 0;
+          {VECTORS_CHAPTER.subtopicOrder.map((slug) => {
+            const note = VECTORS_NOTES[slug];
+            if (!note) {
+              return (
+                <li
+                  key={slug}
+                  className="rounded-lg border-2 border-dashed bg-muted/30 p-5 text-muted-foreground"
+                >
+                  <p className="text-sm font-medium text-foreground">
+                    {slug}
+                  </p>
+                  <p className="mt-1 text-xs">Coming soon.</p>
+                </li>
+              );
+            }
+            const subtopicId = chapter?.subtopics.get(note.subtopicName);
+            const count = subtopicId
+              ? countsBySubtopic.get(subtopicId) ?? 0
+              : 0;
             return (
-              <li key={c.slug}>
+              <li key={slug}>
                 <Link
-                  href={`/notes/nda-maths/${c.slug}`}
+                  href={`/notes/nda-maths/vectors/${slug}`}
                   className="group block rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-primary/5"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-lg font-semibold tracking-tight">
-                      {c.title}
+                      {note.title}
                     </h3>
                     <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary tabular-nums">
-                      {count} PYQs · {c.subtopicCount} subtopics
+                      {count} PYQs
                     </span>
                   </div>
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-                    {c.intro}
+                    {note.oneLineDefinition}
                   </p>
                   <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 group-hover:opacity-100">
-                    Open chapter notes
+                    Open note
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </p>
                 </Link>

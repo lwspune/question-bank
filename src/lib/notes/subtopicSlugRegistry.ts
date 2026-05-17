@@ -1,4 +1,5 @@
 import { STATISTICS_NOTES } from "@/app/notes/nda-maths/statistics/_data";
+import { VECTORS_NOTES } from "@/app/notes/nda-maths/vectors/_data";
 
 /**
  * Server-side authoritative map from canonical DB subtopic name → slug for
@@ -24,6 +25,13 @@ export type SubtopicNotesEntry = {
 const REGISTRY: Map<string, SubtopicNotesEntry> = new Map();
 
 for (const [subtopicSlug, note] of Object.entries(STATISTICS_NOTES)) {
+  REGISTRY.set(note.subtopicName, {
+    subtopicSlug,
+    concepts: note.concepts.map((c) => ({ slug: c.slug, name: c.name })),
+  });
+}
+
+for (const [subtopicSlug, note] of Object.entries(VECTORS_NOTES)) {
   REGISTRY.set(note.subtopicName, {
     subtopicSlug,
     concepts: note.concepts.map((c) => ({ slug: c.slug, name: c.name })),
