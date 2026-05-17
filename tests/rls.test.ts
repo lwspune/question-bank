@@ -138,6 +138,10 @@ describe.skipIf(!HAS_ENV)("RLS — cross-org question isolation", () => {
         difficulty: "EASY",
         content_hash: `rls-hash-${RUN_ID}`,
         created_by: aliceUserId,
+        // Explicit PRIVATE — the org-isolation tests below assume this row is
+        // NOT publicly readable. Migration 0022 (2026-05-17) flipped the
+        // default visibility to PUBLIC, so we have to set it explicitly now.
+        visibility: "PRIVATE",
       })
       .select("id")
       .single();
