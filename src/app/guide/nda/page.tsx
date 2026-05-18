@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Languages, Leaf } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Languages, Leaf } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry and Biology",
+  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology and Geography",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, and NDA PART B Biology. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, and NDA PART A Geography. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -99,6 +99,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: paper has NOT hardened — only 4 HARDs across 190 q over 10 years",
     ],
   },
+  {
+    href: "/guide/nda-geography",
+    exam: "NDA PART A Geography",
+    title: "How NDA Geography actually works",
+    blurb:
+      "A 345-question analysis of every PART A Geography paper, 2017–2026. Recall vs Apply vs Verify strands, 7 chapter playbooks, 62-fact reference, and the trap shapes NDA reuses.",
+    qCount: 345,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Recall (Indian Geography Economy + Indian Geography Physical + World/Human) / Apply (Climatology + Earth's Structure) / Verify (Earth in Space + Oceanography) strands",
+      "7 chapter playbooks — one per chapter with worked PYQs",
+      "62-fact reference (Indian rivers ↔ states, mountain peaks ↔ ranges, mineral/crop ↔ producer states, local winds ↔ regions)",
+      "Trends: paper has NOT consistently hardened — drill all 10 years equally",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -109,8 +124,8 @@ export default function NdaGuideIndex() {
         <GuideJsonLd
           type="CollectionPage"
           path="/guide/nda"
-          headline="NDA Guides — Strategy for Maths, English and Physics"
-          description="Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), and NDA PART B Physics. Every claim is measured against the live past-year question bank."
+          headline="NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology and Geography"
+          description="Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, and NDA PART A Geography. Every claim is measured against the live past-year question bank."
         />
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
           <ol className="flex flex-wrap items-center gap-1.5">
@@ -135,12 +150,12 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics, Chemistry and Biology"
-            subtitle="Five evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology and Geography"
+            subtitle="Six evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {GUIDES.map((g) => {
             const Icon = g.href.includes("english")
               ? Languages
@@ -150,7 +165,9 @@ export default function NdaGuideIndex() {
                   ? FlaskConical
                   : g.href.includes("biology")
                     ? Leaf
-                    : BookOpen;
+                    : g.href.includes("geography")
+                      ? Globe
+                      : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -205,13 +222,13 @@ export default function NdaGuideIndex() {
             What makes these different
           </h2>
           <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-            All five guides are built the same way: pull every PUBLIC question
+            All six guides are built the same way: pull every PUBLIC question
             from the bank, classify it, look at the patterns. Every &ldquo;drill
             the N questions&rdquo; link goes to the exact set we&rsquo;re
             talking about. No claim survives that the data doesn&rsquo;t back up.
           </p>
           <p className="mt-3 font-serif text-sm leading-relaxed text-muted-foreground">
-            The five guides are also structured <em>differently</em> on purpose,
+            The six guides are also structured <em>differently</em> on purpose,
             because each subject&rsquo;s bank shape demands its own structure.
             NDA Maths has cross-chapter principles (AM-GM, Vieta), so the Maths
             guide leads with those. NDA English doesn&rsquo;t — each English
@@ -219,12 +236,18 @@ export default function NdaGuideIndex() {
             16 chapter playbooks. NDA Physics is a third pattern: skill-strand
             strategy with a %HARD-aware tier overlay, 14 chapter playbooks, and
             a dedicated formula compendium. NDA Chemistry and NDA Biology both
-            follow the playbook-only pattern, but with subject-tuned strand
-            splits: Chemistry uses Recall / Rule / Calculate (with a small but
-            distinct numeric strand for Mole questions), Biology uses Recall /
-            Apply / Verify (no numeric strand exists in Biology — instead the
-            third strand captures multi-statement evaluation, the second
-            execution mode in the bank).
+            follow the playbook-only pattern with subject-tuned strand splits:
+            Chemistry uses Recall / Rule / Calculate (with a small but distinct
+            numeric strand for Mole questions); Biology uses Recall / Apply /
+            Verify (no numeric strand exists in Biology — instead the third
+            strand captures multi-statement evaluation, the second execution
+            mode in the bank). NDA Geography sits in between Templates B and C:
+            it has skill-strand strategy (Recall / Apply / Verify) like the
+            other playbook-only guides, but with non-flat %HARD (4 of 7 chapters
+            above 15% HARD) acknowledged at strand level rather than per-chapter
+            cherry-pick — because Geography&rsquo;s HARD is spread within
+            chapters rather than concentrated in 1–2 subtopics the way
+            Physics&rsquo;s is.
           </p>
         </section>
       </main>
