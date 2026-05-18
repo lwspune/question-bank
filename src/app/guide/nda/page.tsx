@@ -228,26 +228,9 @@ export default function NdaGuideIndex() {
             talking about. No claim survives that the data doesn&rsquo;t back up.
           </p>
           <p className="mt-3 font-serif text-sm leading-relaxed text-muted-foreground">
-            The six guides are also structured <em>differently</em> on purpose,
-            because each subject&rsquo;s bank shape demands its own structure.
-            NDA Maths has cross-chapter principles (AM-GM, Vieta), so the Maths
-            guide leads with those. NDA English doesn&rsquo;t — each English
-            chapter is its own question type — so the English guide leads with
-            16 chapter playbooks. NDA Physics is a third pattern: skill-strand
-            strategy with a %HARD-aware tier overlay, 14 chapter playbooks, and
-            a dedicated formula compendium. NDA Chemistry and NDA Biology both
-            follow the playbook-only pattern with subject-tuned strand splits:
-            Chemistry uses Recall / Rule / Calculate (with a small but distinct
-            numeric strand for Mole questions); Biology uses Recall / Apply /
-            Verify (no numeric strand exists in Biology — instead the third
-            strand captures multi-statement evaluation, the second execution
-            mode in the bank). NDA Geography sits in between Templates B and C:
-            it has skill-strand strategy (Recall / Apply / Verify) like the
-            other playbook-only guides, but with non-flat %HARD (4 of 7 chapters
-            above 15% HARD) acknowledged at strand level rather than per-chapter
-            cherry-pick — because Geography&rsquo;s HARD is spread within
-            chapters rather than concentrated in 1–2 subtopics the way
-            Physics&rsquo;s is.
+            Each guide is shaped by its bank, not by a shared template — open
+            any guide above to see the structure that matches that
+            subject&rsquo;s past-year question shape.
           </p>
         </section>
       </main>
