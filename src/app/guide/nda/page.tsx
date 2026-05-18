@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Languages, Leaf } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology and Geography",
+  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography and History",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, and NDA PART A Geography. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, and NDA PART A History. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -114,6 +114,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: paper has NOT consistently hardened — drill all 10 years equally",
     ],
   },
+  {
+    href: "/guide/nda-history",
+    exam: "NDA PART A History",
+    title: "How NDA History actually works",
+    blurb:
+      "A 260-question analysis of every PART A History paper, 2017–2026. Cornerstone vs Foundation Recall vs Quick-Win chapter-tier strands, 4 chapter playbooks, ~95-entry timeline + named-pair reference, and the trap shapes NDA reuses.",
+    qCount: 260,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Cornerstone (Modern India alone — 47% of bank) / Foundation Recall (Ancient + Medieval India) / Quick-Win (World History) tier-strands",
+      "4 chapter playbooks — one per chapter with worked PYQs",
+      "~95-entry timeline + named pairs (Era timeline, Rulers ↔ dynasty, Reformers ↔ movement, Scholars ↔ texts, British Acts ↔ year)",
+      "Trends: paper has NOT consistently hardened, but chapter mix shifted (Modern dominated 2017–20, Ancient surged 2022–24)",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -150,8 +165,8 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology and Geography"
-            subtitle="Six evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography and History"
+            subtitle="Seven evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
@@ -167,7 +182,9 @@ export default function NdaGuideIndex() {
                     ? Leaf
                     : g.href.includes("geography")
                       ? Globe
-                      : BookOpen;
+                      : g.href.includes("history")
+                        ? Landmark
+                        : BookOpen;
             return (
               <li key={g.href}>
                 <Link

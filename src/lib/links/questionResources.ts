@@ -20,6 +20,7 @@ import { PLAYBOOKS as NDA_PHYSICS_PLAYBOOKS } from "@/app/guide/nda-physics/_dat
 import { PLAYBOOKS as NDA_CHEMISTRY_PLAYBOOKS } from "@/app/guide/nda-chemistry/_data/playbooks";
 import { PLAYBOOKS as NDA_BIOLOGY_PLAYBOOKS } from "@/app/guide/nda-biology/_data/playbooks";
 import { PLAYBOOKS as NDA_GEOGRAPHY_PLAYBOOKS } from "@/app/guide/nda-geography/_data/playbooks";
+import { PLAYBOOKS as NDA_HISTORY_PLAYBOOKS } from "@/app/guide/nda-history/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -78,6 +79,7 @@ const NDA_PHYSICS_BY_CHAPTER = buildChapterMap(NDA_PHYSICS_PLAYBOOKS);
 const NDA_CHEMISTRY_BY_CHAPTER = buildChapterMap(NDA_CHEMISTRY_PLAYBOOKS);
 const NDA_BIOLOGY_BY_CHAPTER = buildChapterMap(NDA_BIOLOGY_PLAYBOOKS);
 const NDA_GEOGRAPHY_BY_CHAPTER = buildChapterMap(NDA_GEOGRAPHY_PLAYBOOKS);
+const NDA_HISTORY_BY_CHAPTER = buildChapterMap(NDA_HISTORY_PLAYBOOKS);
 
 // ─── Public API ───────────────────────────────────────────────────────────
 
@@ -136,8 +138,11 @@ function resolveGuide(
     case "Geography":
       return chapterPlaybookLink("nda-geography", input.chapterName, NDA_GEOGRAPHY_BY_CHAPTER);
 
+    case "History":
+      return chapterPlaybookLink("nda-history", input.chapterName, NDA_HISTORY_BY_CHAPTER);
+
     default:
-      // History, Polity, Economics, Current Affairs — no guide yet.
+      // Polity, Economics, Current Affairs — no guide yet.
       return null;
   }
 }

@@ -218,7 +218,6 @@ describe("getQuestionResources — NDA Chemistry / Biology / Geography", () => {
 
 describe("getQuestionResources — NDA subjects without a guide", () => {
   it.each([
-    "History",
     "Polity",
     "Economics",
     "Current Affairs",
@@ -231,6 +230,30 @@ describe("getQuestionResources — NDA subjects without a guide", () => {
     });
     expect(res.guide).toBeNull();
     expect(res.notes).toBeNull();
+  });
+});
+
+describe("getQuestionResources — NDA History (per-chapter playbook)", () => {
+  it("returns the chapter playbook chip for NDA History Modern India", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "History",
+      chapterName: "Modern India",
+      subtopicName: "Freedom Movement — INC, Gandhi and Independence",
+    });
+    expect(res.guide?.href).toBe("/guide/nda-history/playbooks/modern-india");
+    expect(res.guide?.label).toBe("Playbook: Modern India");
+    expect(res.notes).toBeNull();
+  });
+
+  it("returns null guide for an unknown NDA History chapter", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "History",
+      chapterName: "Imaginary Chapter",
+      subtopicName: null,
+    });
+    expect(res.guide).toBeNull();
   });
 });
 

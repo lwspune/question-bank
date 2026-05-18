@@ -24,7 +24,11 @@ Currently no concurrency check — two admins editing the same question race the
 
 ## `/guide` expansion
 
-**Three guides shipped:** NDA Mathematics (Template A — principles-first), NDA English (Template B — playbooks-first), NDA PART B Physics (Template C — chapter-playbooks + skill-strand + formula compendium). Template choice flow + per-template editorial shape: CLAUDE.md "Guide structure templates" section. Don't propose forcing one template onto a subject whose bank shape rejects it — see [[english-guide-structure-diverges]].
+**Seven guides shipped:** NDA Mathematics (Template A — principles-first), NDA English (Template B — playbooks-first), NDA PART B Physics (Template C — chapter-playbooks + skill-strand + formula compendium), NDA Chemistry (Template B variant — Recall/Rule/Calculate), NDA Biology (Template B variant — Recall/Apply/Verify), NDA Geography (Template B + non-flat %HARD variant), NDA History (Template B + tier-style strands variant — Cornerstone/Foundation Recall/Quick-Win). Template choice flow + per-template editorial shape: CLAUDE.md "Guide structure templates" section. Don't propose forcing one template onto a subject whose bank shape rejects it — see [[english-guide-structure-diverges]].
+
+### Guide-side Present mode (adapt `NotePresenter` for `/guide` playbook pages)
+
+Today Present mode exists only on `/notes` subtopic pages (the slide deck derives from a `SubtopicNote` via `splitNoteIntoSlides`). Teachers projecting playbook content in class would benefit from the same overlay applied to playbook detail pages (trigger + story + sub-skills + traps + worked examples). Needs a playbook-shaped slide splitter (similar to `splitNoteIntoSlides` but consuming `PlaybookDetail`) + presenter wiring across all 6 playbook-bearing guide subtrees (English / Physics / Chemistry / Biology / Geography / History). ~2–3 hour build. Tier 4 scope per the 2026-05-18 Present-mode-discoverability ship which deliberately left this to a separate commit.
 
 ### MHT-CET strategy guides (Maths / Physics / Chemistry)
 
@@ -69,6 +73,36 @@ Today teachers upload text-only Excels and add images via the per-question edit 
 
 First admin is seeded via SQL; teacher addition is manual. A proper "invite teacher" flow is gated on SMTP being available (see Auth section).
 
+### Notes-lint guide-side rename validation
+
+`scripts/notes-lint.ts` currently validates the `/notes`-side chapter names against live taxonomy. The 2026-05-18 backlink-chip system also depends on guide-side names — every `chapter` string in each guide's `PLAYBOOKS` array must resolve to a real DB chapter, or the chip silently fails to render (the "automatic" path described in CLAUDE.md "Tier 1 backlinks"). Add a check: iterate every entry in every `PLAYBOOKS` array (English / Physics / Chemistry / Biology / Geography), confirm `(examName, subjectName, chapterName)` resolves. ~45 min safety net. Catches the silent-chip-break failure mode after any taxonomy rename.
+
+### Derive `/nda` NOTES_PREVIEWS array from `NOTES_CHAPTERS` registry
+
+Mop-up of the 2026-05-18 registry refactor. The `/nda` exam home's `NOTES_PREVIEWS` array (chapter cards with hand-written blurbs + concept counts) is still hardcoded — derivable from `NOTES_CHAPTERS` if we add `blurb` + `conceptCount` accessors to the registry entries, or compute `conceptCount` live at render time. ~15 min cleanup; trivial but consolidates the new-chapter ritual further.
+
+---
+
+## UI / IA polish
+
+The 2026-05-18 Tier 1 IA + cross-linking ship (primary nav, exam pill, `/nda` exam home, backlink chips, click-to-reveal, filter recipes, in-app reports) left these student / teacher journey items as follow-ups.
+
+### Brand link → exam home for non-admin viewers
+
+`AppHeader` brand link currently goes to `/browse` for non-admins (and `/dashboard` for admins). Now that `/nda` exists, non-admin brand link should go to the cookie-active exam's home (`/nda` today; future `/mht-cet` etc.) so "go home" means "go to your exam's everything-page". Behaviour change worth its own commit; cost is ~10 minutes (one helper edit). Deferred from Tier 1 Phase 1.
+
+### Per-exam `/browse` route
+
+Today `/browse` is exam-agnostic and the user applies the exam filter via cookie / URL param. A `/nda/browse` route (and future `/mht-cet/browse`) that defaults to the exam's `examId` would drop the "pick exam" step for the 95% case and let direct deep-links carry exam context naturally. Plumbing: route alias + middleware default-filter injection. ~1 hour. Deferred from Tier 2 (the empty-state recipes ship was the smaller half of Tier 2 student journey).
+
+### Cookie-driven resume
+
+Last-read playbook / last-opened concept note / current cart as a tiny `qb_resume` cookie. Lets a returning student pick up where they left off without an account. No DB cost; ~1 hour. Deferred from Tier 2 student journey.
+
+### Saved filter sets (DB-backed teacher infra) — Tier 3 scope
+
+New `saved_filters(user_id, org_id, name, filters_jsonb, created_at)` table + a small UI under `/dashboard` (probably split into "Admin" + "Teach" tabs). Lets a teacher save the same recipe ("MHT-CET Physics HARD 2024") and reuse it weekly without rebuilding. Half-day; first new schema since the Tier 1 UI overhaul began. Needs a small product decision on UI placement (dashboard tab vs `/browse` toolbar vs cart-style panel) before scoping. Subsumes the existing "Optional user accounts — saved filters / history" entry below.
+
 ---
 
 ## Auth + accounts
@@ -77,9 +111,9 @@ First admin is seeded via SQL; teacher addition is manual. A proper "invite teac
 
 Supabase's default-SMTP cap of 2 emails/hour project-wide blocked the magic-link flow during development. User has marked Phases F (SMTP) and G (user accounts) as not currently necessary. When teachers come online, wire Resend and re-enable magic-link alongside password sign-in.
 
-### Optional user accounts — saved filters / history (explicitly deferred)
+### Optional user accounts — recently-built papers, drill streaks
 
-Phase C of the original M-series plan. Saved filter presets, recently-built papers, drill streaks. Gated on auth being teacher-friendly first.
+Phase C of the original M-series plan (the "saved filters" half is now a separate active scope under the **UI / IA polish** section above). Remaining: recently-built papers history, per-user drill streaks / progress, account-bound preferences. Gated on auth being teacher-friendly first.
 
 ### Password reset flow
 

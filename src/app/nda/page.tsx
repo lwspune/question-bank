@@ -7,6 +7,7 @@ import {
   Compass,
   FlaskConical,
   Globe,
+  Landmark,
   Languages,
   Leaf,
   NotebookPen,
@@ -24,7 +25,7 @@ export const revalidate = 3600;
 const PAGE_TITLE = "NDA Preparation — Past Papers, Strategy Guides, Teaching Notes";
 const PAGE_DESCRIPTION =
   "Everything you need to prepare for the NDA in one place. Browse 4,800+ past-year " +
-  "questions, read evidence-led strategy guides for all six subjects, and study " +
+  "questions, read evidence-led strategy guides for seven subjects, and study " +
   "concept-by-concept teaching notes. Free, no sign-up.";
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ const GUIDE_PREVIEWS: GuidePreview[] = [
   { href: "/guide/nda-physics", exam: "Physics (Part B)", qCount: 449, Icon: Atom },
   { href: "/guide/nda-geography", exam: "Geography (Part A)", qCount: 345, Icon: Globe },
   { href: "/guide/nda-chemistry", exam: "Chemistry (Part B)", qCount: 262, Icon: FlaskConical },
+  { href: "/guide/nda-history", exam: "History (Part A)", qCount: 260, Icon: Landmark },
   { href: "/guide/nda-biology", exam: "Biology (Part B)", qCount: 190, Icon: Leaf },
 ];
 
@@ -138,7 +140,7 @@ export default async function NdaHomePage() {
               className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <BookOpen className="h-4 w-4" aria-hidden />
-              All six guides
+              All seven guides
             </Link>
           </div>
         </section>
@@ -153,7 +155,7 @@ export default async function NdaHomePage() {
               href="/guide/nda"
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
             >
-              See all six
+              See all seven
               <ArrowRight className="h-3.5 w-3.5" aria-hidden />
             </Link>
           </div>

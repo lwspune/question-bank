@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, FlaskConical, Globe, Languages, Leaf, Mail, NotebookPen } from "lucide-react";
+import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, NotebookPen } from "lucide-react";
 
 const REPORT_EMAIL = "connect.lwspune@gmail.com";
 
@@ -53,6 +53,13 @@ export default function Footer() {
           >
             <Globe className="h-3 w-3" aria-hidden />
             NDA Geography Guide
+          </Link>
+          <Link
+            href="/guide/nda-history"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Landmark className="h-3 w-3" aria-hidden />
+            NDA History Guide
           </Link>
           <Link
             href="/notes/nda-maths/statistics"
