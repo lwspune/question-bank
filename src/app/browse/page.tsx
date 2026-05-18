@@ -14,6 +14,8 @@ import {
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
 import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
+import { loadActiveExamContext } from "@/lib/exam/loadActiveExamContext";
+import FilterRecipes from "./FilterRecipes";
 import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
 import QuestionList from "./QuestionList";
@@ -162,11 +164,22 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const activeCount = countActiveFilters(filters);
   const filtered = activeCount > 0;
 
+  // Recipe chips on the empty state are exam-scoped via the cookie-backed
+  // active exam (independent of URL filters). Skipped entirely when any
+  // filter is active.
+  const activeExam = filtered ? null : await loadActiveExamContext();
+
   return (
     <>
       <AppHeader />
       <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 sm:pb-32">
         {!filtered && <Hero totalPublicQuestions={questionsResult.totalCount} />}
+        {!filtered && activeExam && (
+          <FilterRecipes
+            examId={activeExam.examId}
+            pyqYears={pyqYearOpts}
+          />
+        )}
 
         <header className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
