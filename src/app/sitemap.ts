@@ -151,6 +151,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const examHomeEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/nda`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+  ];
+
   return [
     {
       url: `${SITE_URL}/browse`,
@@ -158,6 +167,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
     },
+    ...examHomeEntries,
     ...guideEntries,
     ...notesEntries,
     {

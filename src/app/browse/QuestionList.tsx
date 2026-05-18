@@ -2,7 +2,17 @@ import { Layers } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { groupBySet } from "@/lib/export/groupBySet";
 import type { QuestionRow } from "@/lib/questions/query";
+import { getQuestionResources } from "@/lib/links/questionResources";
 import QuestionCard from "./QuestionCard";
+
+function resourcesFor(q: QuestionRow) {
+  return getQuestionResources({
+    examName: q.exam.name,
+    subjectName: q.subject.name,
+    chapterName: q.chapter.name,
+    subtopicName: q.subtopic?.name ?? null,
+  });
+}
 
 type Props = {
   questions: QuestionRow[];
@@ -46,6 +56,7 @@ export default function QuestionList({
                 isAdmin={isAdmin}
                 supabaseUrl={supabaseUrl}
                 includeExam={includeExam}
+                resources={resourcesFor(group.question)}
               />
             </li>
           );
@@ -66,6 +77,7 @@ export default function QuestionList({
                       supabaseUrl={supabaseUrl}
                       hideContext
                       includeExam={includeExam}
+                      resources={resourcesFor(q)}
                     />
                   </li>
                 ))}

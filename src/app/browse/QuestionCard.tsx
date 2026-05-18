@@ -2,7 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, ChevronDown, ImageIcon, Pencil, Plus, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  ChevronDown,
+  ImageIcon,
+  NotebookPen,
+  Pencil,
+  Plus,
+  X,
+} from "lucide-react";
 import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { cn } from "@/lib/utils";
@@ -15,6 +25,7 @@ import {
 } from "@/components/ui/dialog";
 import type { QuestionRow } from "@/lib/questions/query";
 import { useCart } from "@/lib/cart/CartProvider";
+import type { QuestionResources } from "@/lib/links/questionResources";
 import { buildBreadcrumb } from "./breadcrumb";
 
 const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
@@ -30,6 +41,7 @@ export default function QuestionCard({
   supabaseUrl,
   hideContext = false,
   includeExam = false,
+  resources,
 }: {
   question: QuestionRow;
   index: number;
@@ -38,6 +50,8 @@ export default function QuestionCard({
   hideContext?: boolean;
   /** Surface the exam in the breadcrumb (used when no exam filter is active). */
   includeExam?: boolean;
+  /** Optional links to strategy guide + concept notes that explain this question's lever. */
+  resources?: QuestionResources;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
@@ -122,6 +136,25 @@ export default function QuestionCard({
           onClick={onToggleCart}
         />
       </div>
+
+      {(resources?.guide || resources?.notes) && (
+        <div className="flex flex-wrap items-center gap-1.5 border-t border-dashed bg-muted/15 px-3 py-1.5 text-xs sm:gap-2 sm:px-4">
+          {resources.guide && (
+            <ResourceChip
+              href={resources.guide.href}
+              label={resources.guide.label}
+              Icon={BookOpen}
+            />
+          )}
+          {resources.notes && (
+            <ResourceChip
+              href={resources.notes.href}
+              label={resources.notes.label}
+              Icon={NotebookPen}
+            />
+          )}
+        </div>
+      )}
 
       <div
         className={cn(
@@ -261,6 +294,30 @@ function CartToggle({
         </>
       )}
     </button>
+  );
+}
+
+function ResourceChip({
+  href,
+  label,
+  Icon,
+}: {
+  href: string;
+  label: string;
+  Icon: typeof BookOpen;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group inline-flex items-center gap-1 rounded-full border border-input bg-background px-2 py-0.5 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+    >
+      <Icon className="h-3 w-3" aria-hidden />
+      <span>{label}</span>
+      <ArrowUpRight
+        className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        aria-hidden
+      />
+    </Link>
   );
 }
 

@@ -8,6 +8,7 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { CHAPTER_TABLE, OVERVIEW, ROUTES } from "./_data/nda-maths";
+import { getNotesChapterHref } from "@/lib/links/notesIndex";
 
 /** Pages with full content as of this commit. Other section cards get a
  * "Coming soon" tag so readers know what to expect. */
@@ -244,23 +245,39 @@ export default function NdaMathsLanding() {
               </tr>
             </thead>
             <tbody>
-              {CHAPTER_TABLE.map((row) => (
-                <tr key={row.chapter} className="border-b last:border-b-0 align-top">
-                  <td className="px-3 py-2 font-medium">{row.chapter}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">
-                    {row.qCount}
-                  </td>
-                  <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
-                    {row.pctTotal.toFixed(1)}%
-                  </td>
-                  <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
-                    {row.pctHard}%
-                  </td>
-                  <td className="px-3 py-2 font-serif text-sm leading-relaxed text-muted-foreground">
-                    {row.focus}
-                  </td>
-                </tr>
-              ))}
+              {CHAPTER_TABLE.map((row) => {
+                const notesHref = getNotesChapterHref(row.chapter);
+                return (
+                  <tr key={row.chapter} className="border-b last:border-b-0 align-top">
+                    <td className="px-3 py-2 font-medium">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span>{row.chapter}</span>
+                        {notesHref && (
+                          <Link
+                            href={notesHref}
+                            className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary transition-colors hover:bg-primary/10"
+                          >
+                            <NotebookPen className="h-2.5 w-2.5" aria-hidden />
+                            Notes
+                          </Link>
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {row.qCount}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
+                      {row.pctTotal.toFixed(1)}%
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
+                      {row.pctHard}%
+                    </td>
+                    <td className="px-3 py-2 font-serif text-sm leading-relaxed text-muted-foreground">
+                      {row.focus}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

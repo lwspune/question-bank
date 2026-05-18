@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowUpRight, BookOpen, Compass } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -142,6 +143,27 @@ export default async function SubtopicNotePage({
             drillCount={drillCount}
           />
         </div>
+      </div>
+
+      <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
+        <Link
+          href="/notes/nda-maths/statistics"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+        >
+          <BookOpen className="h-3.5 w-3.5" aria-hidden />
+          <span>All Statistics notes</span>
+        </Link>
+        <Link
+          href="/guide/nda-maths"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+        >
+          <Compass className="h-3.5 w-3.5" aria-hidden />
+          <span>NDA Maths strategy</span>
+          <ArrowUpRight
+            className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden
+          />
+        </Link>
       </div>
 
       {note.whyItMatters && (

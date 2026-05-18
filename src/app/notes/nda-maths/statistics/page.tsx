@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Presentation } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Compass, Presentation } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -75,6 +75,31 @@ export default async function StatisticsChapterPage() {
         title={STATISTICS_CHAPTER.title}
         subtitle={STATISTICS_CHAPTER.intro}
       />
+
+      <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
+        <Link
+          href="/guide/nda-maths"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+        >
+          <Compass className="h-3.5 w-3.5" aria-hidden />
+          <span>NDA Maths strategy</span>
+          <ArrowUpRight
+            className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden
+          />
+        </Link>
+        <Link
+          href="/nda"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+        >
+          <BookOpen className="h-3.5 w-3.5" aria-hidden />
+          <span>NDA home</span>
+          <ArrowUpRight
+            className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden
+          />
+        </Link>
+      </div>
 
       <section className="mt-2 grid gap-4 sm:mt-4">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
