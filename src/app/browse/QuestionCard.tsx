@@ -23,10 +23,12 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type { QuestionRow } from "@/lib/questions/query";
+import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { buildBreadcrumb } from "./breadcrumb";
+
+type OptionLabel = OptionRow["label"];
 
 const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
   EASY: "Easy",
@@ -55,10 +57,27 @@ export default function QuestionCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  // Click-to-reveal: students/teachers pick an option to unlock the answer
+  // visualisation. Admins get the answer revealed by default — they're
+  // scanning content, not testing themselves.
+  const [picked, setPicked] = useState<OptionLabel | null>(null);
+  const revealed = isAdmin || picked !== null;
   const cart = useCart();
   const inCart = cart.has(question.id);
 
   const breadcrumb = buildBreadcrumb(question, { includeExam });
+
+  function toggleExpanded() {
+    setExpanded((v) => {
+      if (v) {
+        // Collapsing — reset interactive state so the next expand is a
+        // fresh attempt for self-testing.
+        setPicked(null);
+        setShowSolution(false);
+      }
+      return !v;
+    });
+  }
 
   function onToggleCart() {
     if (inCart) {
@@ -89,7 +108,7 @@ export default function QuestionCard({
         </span>
         <button
           type="button"
-          onClick={() => setExpanded((v) => !v)}
+          onClick={toggleExpanded}
           aria-expanded={expanded}
           className="flex min-w-0 flex-1 items-start gap-2 rounded text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
@@ -181,40 +200,78 @@ export default function QuestionCard({
             )}
 
             <ol className="space-y-2 pt-2">
-              {question.options.map((opt) => (
-                <li
-                  key={opt.label}
-                  className={cn(
-                    "rounded-md border bg-background p-2.5 text-sm",
-                    opt.isCorrect && "border-l-2 border-l-emerald-500"
-                  )}
-                >
-                  <div className="flex items-start gap-3">
+              {question.options.map((opt) => {
+                const isPickedByUser = picked === opt.label;
+                const showCorrect = revealed && opt.isCorrect;
+                const showWrong =
+                  revealed && isPickedByUser && !opt.isCorrect;
+
+                const optionContent = (
+                  <>
                     <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground">
                       {opt.label}
                     </span>
                     <div className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
                       <KatexRenderer text={opt.text} />
                     </div>
-                    {opt.isCorrect && (
+                    {showCorrect && (
                       <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
                         <Check className="h-3.5 w-3.5" aria-hidden />
                         Correct
                       </span>
                     )}
-                  </div>
-                  {opt.imageUrl && (
-                    <div className="ml-9 mt-2">
-                      <ZoomableImage
-                        src={publicImageUrl(supabaseUrl, opt.imageUrl)}
-                        alt={`Option ${opt.label} image`}
-                        className="max-h-32 w-auto rounded border bg-background"
-                      />
-                    </div>
-                  )}
-                </li>
-              ))}
+                    {showWrong && (
+                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-red-700 dark:text-red-400">
+                        <X className="h-3.5 w-3.5" aria-hidden />
+                        Your pick
+                      </span>
+                    )}
+                  </>
+                );
+
+                return (
+                  <li
+                    key={opt.label}
+                    className={cn(
+                      "overflow-hidden rounded-md border bg-background",
+                      showCorrect && "border-l-2 border-l-emerald-500",
+                      showWrong && "border-l-2 border-l-red-500"
+                    )}
+                  >
+                    {isAdmin ? (
+                      <div className="flex items-start gap-3 p-2.5 text-sm">
+                        {optionContent}
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setPicked(opt.label)}
+                        aria-pressed={isPickedByUser}
+                        className="flex w-full items-start gap-3 p-2.5 text-left text-sm transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                      >
+                        {optionContent}
+                      </button>
+                    )}
+                    {opt.imageUrl && (
+                      <div className="px-2.5 pb-2.5">
+                        <div className="ml-9">
+                          <ZoomableImage
+                            src={publicImageUrl(supabaseUrl, opt.imageUrl)}
+                            alt={`Option ${opt.label} image`}
+                            className="max-h-32 w-auto rounded border bg-background"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
             </ol>
+            {!isAdmin && !revealed && (
+              <p className="pt-1 text-center text-xs text-muted-foreground">
+                Tap an option to check your answer.
+              </p>
+            )}
 
             {question.solution && (
               <div>
