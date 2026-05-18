@@ -24,8 +24,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { STATISTICS_CHAPTER, STATISTICS_NOTES } from "../src/app/notes/nda-maths/statistics/_data";
-import { VECTORS_CHAPTER, VECTORS_NOTES } from "../src/app/notes/nda-maths/vectors/_data";
+import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
 import type { SubtopicNote } from "../src/app/notes/_types";
 
 function loadEnv() {
@@ -49,26 +48,18 @@ type NoteRef = {
   note: SubtopicNote;
 };
 
-// Every note ships its (exam, subject, chapter) context alongside its module.
-// New chapters append a similar block below.
-const NOTES: NoteRef[] = [
-  ...Object.entries(STATISTICS_NOTES).map(([slug, note]) => ({
-    path: `nda-maths/statistics/${slug}`,
+// Auto-derived from NOTES_CHAPTERS. Adding a chapter to the registry
+// means it's automatically linted here too — no need to extend this list.
+const NOTES: NoteRef[] = NOTES_CHAPTERS.flatMap((c) =>
+  Object.entries(c.notes).map(([slug, note]) => ({
+    path: `${c.subjectRoute}/${c.chapterSlug}/${slug}`,
     subtopicSlug: slug,
-    exam: "NDA",
-    subject: "Mathematics",
-    chapter: STATISTICS_CHAPTER.chapterName,
+    exam: c.examName,
+    subject: c.subjectName,
+    chapter: c.chapter.chapterName,
     note,
-  })),
-  ...Object.entries(VECTORS_NOTES).map(([slug, note]) => ({
-    path: `nda-maths/vectors/${slug}`,
-    subtopicSlug: slug,
-    exam: "NDA",
-    subject: "Mathematics",
-    chapter: VECTORS_CHAPTER.chapterName,
-    note,
-  })),
-];
+  }))
+);
 
 async function main() {
   loadEnv();

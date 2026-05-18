@@ -1,10 +1,10 @@
-import { STATISTICS_NOTES } from "@/app/notes/nda-maths/statistics/_data";
-import { VECTORS_NOTES } from "@/app/notes/nda-maths/vectors/_data";
+import { NOTES_CHAPTERS } from "./chapters";
 
 /**
  * Server-side authoritative map from canonical DB subtopic name → slug for
- * every chapter that has notes content. As new chapters ship, append one
- * entry per chapter — that's the only place the registry needs to grow.
+ * every chapter that has notes content. Auto-derived from `NOTES_CHAPTERS`
+ * — adding a new chapter to the registry is enough; this module updates
+ * automatically.
  *
  * Used by the /questions/[id]/edit route and admin UI to validate concept
  * tags against the question's actual subtopic, and to find the concept list
@@ -24,18 +24,13 @@ export type SubtopicNotesEntry = {
 /** Map keyed by exact DB subtopic name. */
 const REGISTRY: Map<string, SubtopicNotesEntry> = new Map();
 
-for (const [subtopicSlug, note] of Object.entries(STATISTICS_NOTES)) {
-  REGISTRY.set(note.subtopicName, {
-    subtopicSlug,
-    concepts: note.concepts.map((c) => ({ slug: c.slug, name: c.name })),
-  });
-}
-
-for (const [subtopicSlug, note] of Object.entries(VECTORS_NOTES)) {
-  REGISTRY.set(note.subtopicName, {
-    subtopicSlug,
-    concepts: note.concepts.map((c) => ({ slug: c.slug, name: c.name })),
-  });
+for (const chapter of NOTES_CHAPTERS) {
+  for (const [subtopicSlug, note] of Object.entries(chapter.notes)) {
+    REGISTRY.set(note.subtopicName, {
+      subtopicSlug,
+      concepts: note.concepts.map((c) => ({ slug: c.slug, name: c.name })),
+    });
+  }
 }
 
 /**

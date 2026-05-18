@@ -1,51 +1,52 @@
 /**
- * Single source of truth for "which chapters have /notes content shipped"
- * — used by both `getQuestionResources` (per-question backlink chip on the
- * bank) and the `/guide/nda-maths` CHAPTER_TABLE (notes chip per chapter).
+ * Chapter-level notes lookups — used by `getQuestionResources` (per-question
+ * backlink chip on the bank) and the `/guide/nda-maths` CHAPTER_TABLE (notes
+ * chip per chapter).
  *
- * Today: NDA Maths Statistics + Vectors. Add a new chapter by appending one
- * entry. Chapter key is the canonical DB chapter name.
+ * Derives from `NOTES_CHAPTERS` — the single source of truth for shipped
+ * chapters. Adding a new chapter to that registry automatically updates
+ * every lookup here.
  */
 
+import {
+  NOTES_CHAPTERS,
+  type NotesChapterRegistration,
+} from "@/lib/notes/chapters";
+
 type ChapterNotesEntry = {
-  /** URL slug under /notes/<exam-subject>/. */
   chapterSlug: string;
-  /** Subject-anchored route prefix (e.g. "nda-maths"). */
   subjectRoute: string;
-  /** Short chip label, e.g. "Statistics notes". */
   chipLabel: string;
 };
 
-const NDA_MATHS_NOTES: Record<string, ChapterNotesEntry> = {
-  Statistics: {
-    chapterSlug: "statistics",
-    subjectRoute: "nda-maths",
-    chipLabel: "Statistics notes",
-  },
-  Vectors: {
-    chapterSlug: "vectors",
-    subjectRoute: "nda-maths",
-    chipLabel: "Vectors notes",
-  },
-};
+const BY_CHAPTER_NAME: Map<string, ChapterNotesEntry> = new Map();
+for (const c of NOTES_CHAPTERS) {
+  BY_CHAPTER_NAME.set(c.chapter.chapterName, {
+    chapterSlug: c.chapterSlug,
+    subjectRoute: c.subjectRoute,
+    chipLabel: c.chipLabel,
+  });
+}
 
 export function hasChapterNotes(chapterName: string): boolean {
-  return Boolean(NDA_MATHS_NOTES[chapterName]);
+  return BY_CHAPTER_NAME.has(chapterName);
 }
 
 export function getNotesChapterHref(chapterName: string): string | null {
-  const entry = NDA_MATHS_NOTES[chapterName];
+  const entry = BY_CHAPTER_NAME.get(chapterName);
   if (!entry) return null;
   return `/notes/${entry.subjectRoute}/${entry.chapterSlug}`;
 }
 
 export function getNotesChapterLabel(chapterName: string): string | null {
-  return NDA_MATHS_NOTES[chapterName]?.chipLabel ?? null;
+  return BY_CHAPTER_NAME.get(chapterName)?.chipLabel ?? null;
 }
 
 /** Internal — exposed so `questionResources` can derive subtopic-deep URLs. */
 export function getNotesChapterEntry(
   chapterName: string
 ): ChapterNotesEntry | null {
-  return NDA_MATHS_NOTES[chapterName] ?? null;
+  return BY_CHAPTER_NAME.get(chapterName) ?? null;
 }
+
+export type { NotesChapterRegistration };

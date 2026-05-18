@@ -6,8 +6,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
-import { STATISTICS_CHAPTER, STATISTICS_NOTES } from "@/app/notes/nda-maths/statistics/_data";
-import { VECTORS_CHAPTER, VECTORS_NOTES } from "@/app/notes/nda-maths/vectors/_data";
+import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 
 export const revalidate = 3600;
 
@@ -32,22 +31,17 @@ type ChapterCard = {
   subtopicCount: number;
 };
 
-const CHAPTERS: ChapterCard[] = [
-  {
-    slug: "statistics",
-    chapterName: STATISTICS_CHAPTER.chapterName,
-    title: STATISTICS_CHAPTER.title,
-    intro: STATISTICS_CHAPTER.intro,
-    subtopicCount: Object.keys(STATISTICS_NOTES).length,
-  },
-  {
-    slug: "vectors",
-    chapterName: VECTORS_CHAPTER.chapterName,
-    title: VECTORS_CHAPTER.title,
-    intro: VECTORS_CHAPTER.intro,
-    subtopicCount: Object.keys(VECTORS_NOTES).length,
-  },
-];
+// Auto-derived from the NOTES_CHAPTERS registry. Add a chapter there →
+// it shows up here without touching this file.
+const CHAPTERS: ChapterCard[] = getNotesChaptersForSubject("nda-maths").map(
+  (c) => ({
+    slug: c.chapterSlug,
+    chapterName: c.chapter.chapterName,
+    title: c.chapter.title,
+    intro: c.chapter.intro,
+    subtopicCount: Object.keys(c.notes).length,
+  })
+);
 
 const sideNav = [
   { href: "/notes/nda-maths", label: "Chapter index" },

@@ -8,14 +8,12 @@
  *   - principles: only the TOP_11 (slugged, DB-tagged) entries. Long-tail
  *     DOMAINS principles have no slug + no detail page, so a backlink
  *     wouldn't have anywhere to land.
- *   - concepts: aggregated from every notes module that has shipped
- *     (today: Statistics + Vectors). Add a new chapter by importing its
- *     notes Record below.
+ *   - concepts: aggregated from every chapter registered in NOTES_CHAPTERS.
+ *     Adding a new chapter to that registry automatically extends this map.
  */
 
 import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
-import { STATISTICS_NOTES } from "@/app/notes/nda-maths/statistics/_data";
-import { VECTORS_NOTES } from "@/app/notes/nda-maths/vectors/_data";
+import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
 const PRINCIPLE_BY_SLUG: Map<string, string> = new Map();
 for (const p of TOP_11) {
@@ -27,16 +25,13 @@ const CONCEPT_BY_TAG: Map<ConceptKey, string> = new Map();
 const conceptKey = (subtopicSlug: string, conceptSlug: string): ConceptKey =>
   `${subtopicSlug}::${conceptSlug}`;
 
-function indexNotes(notes: Record<string, { concepts: { slug: string; name: string }[] }>) {
-  for (const [subtopicSlug, note] of Object.entries(notes)) {
+for (const chapter of NOTES_CHAPTERS) {
+  for (const [subtopicSlug, note] of Object.entries(chapter.notes)) {
     for (const concept of note.concepts) {
       CONCEPT_BY_TAG.set(conceptKey(subtopicSlug, concept.slug), concept.name);
     }
   }
 }
-
-indexNotes(STATISTICS_NOTES);
-indexNotes(VECTORS_NOTES);
 
 /**
  * Display name for a principle slug, when it has a `/principles/[slug]`

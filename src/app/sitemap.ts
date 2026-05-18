@@ -11,8 +11,7 @@ import { ROUTES as BIOLOGY_ROUTES } from "@/app/guide/nda-biology/_data/nda-biol
 import { PLAYBOOK_SLUGS as BIOLOGY_PLAYBOOK_SLUGS } from "@/app/guide/nda-biology/_data/playbooks";
 import { ROUTES as GEOGRAPHY_ROUTES } from "@/app/guide/nda-geography/_data/nda-geography";
 import { PLAYBOOK_SLUGS as GEOGRAPHY_PLAYBOOK_SLUGS } from "@/app/guide/nda-geography/_data/playbooks";
-import { STATISTICS_SLUGS } from "@/app/notes/nda-maths/statistics/_data";
-import { VECTORS_SLUGS } from "@/app/notes/nda-maths/vectors/_data";
+import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
 const SITE_URL = "https://question-bank-sage.vercel.app";
 
@@ -118,38 +117,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  const notesEntries: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/notes/nda-maths`,
+  // Notes routes derive from NOTES_CHAPTERS. Adding a chapter to that
+  // registry automatically adds: the subject-route landing (once per
+  // distinct subjectRoute), the chapter landing, and one entry per slug.
+  const subjectRoutesSeen = new Set<string>();
+  const notesEntries: MetadataRoute.Sitemap = [];
+  for (const c of NOTES_CHAPTERS) {
+    if (!subjectRoutesSeen.has(c.subjectRoute)) {
+      subjectRoutesSeen.add(c.subjectRoute);
+      notesEntries.push({
+        url: `${SITE_URL}/notes/${c.subjectRoute}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.8,
+      });
+    }
+    notesEntries.push({
+      url: `${SITE_URL}/notes/${c.subjectRoute}/${c.chapterSlug}`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/notes/nda-maths/statistics`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    ...STATISTICS_SLUGS.map((slug) => ({
-      url: `${SITE_URL}/notes/nda-maths/statistics/${slug}`,
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    })),
-    {
-      url: `${SITE_URL}/notes/nda-maths/vectors`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    ...VECTORS_SLUGS.map((slug) => ({
-      url: `${SITE_URL}/notes/nda-maths/vectors/${slug}`,
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    })),
-  ];
+    });
+    for (const slug of c.slugs) {
+      notesEntries.push({
+        url: `${SITE_URL}/notes/${c.subjectRoute}/${c.chapterSlug}/${slug}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.7,
+      });
+    }
+  }
 
   const examHomeEntries: MetadataRoute.Sitemap = [
     {
