@@ -7,6 +7,8 @@ import { ROUTES as PHYSICS_ROUTES } from "@/app/guide/nda-physics/_data/nda-phys
 import { PLAYBOOK_SLUGS as PHYSICS_PLAYBOOK_SLUGS } from "@/app/guide/nda-physics/_data/playbooks";
 import { ROUTES as CHEMISTRY_ROUTES } from "@/app/guide/nda-chemistry/_data/nda-chemistry";
 import { PLAYBOOK_SLUGS as CHEMISTRY_PLAYBOOK_SLUGS } from "@/app/guide/nda-chemistry/_data/playbooks";
+import { ROUTES as BIOLOGY_ROUTES } from "@/app/guide/nda-biology/_data/nda-biology";
+import { PLAYBOOK_SLUGS as BIOLOGY_PLAYBOOK_SLUGS } from "@/app/guide/nda-biology/_data/playbooks";
 import { STATISTICS_SLUGS } from "@/app/notes/nda-maths/statistics/_data";
 import { VECTORS_SLUGS } from "@/app/notes/nda-maths/vectors/_data";
 
@@ -80,6 +82,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...CHEMISTRY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-chemistry/playbooks/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...BIOLOGY_ROUTES.map((r) => ({
+      url: r.slug
+        ? `${SITE_URL}/guide/nda-biology/${r.slug}`
+        : `${SITE_URL}/guide/nda-biology`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...BIOLOGY_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/nda-biology/playbooks/${slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.7,

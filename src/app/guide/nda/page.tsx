@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Languages } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Languages, Leaf } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics and Chemistry",
+  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry and Biology",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, and NDA PART B Chemistry. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, and NDA PART B Biology. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -84,6 +84,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: paper has NOT hardened (UNLIKE Physics) — drill all 10 years equally",
     ],
   },
+  {
+    href: "/guide/nda-biology",
+    exam: "NDA PART B Biology",
+    title: "How NDA Biology actually works",
+    blurb:
+      "A 190-question analysis of every PART B Biology paper, 2017–2026. Recall vs Apply vs Verify strands matched to an 82%-recall bank, 9 chapter playbooks, 50-fact reference, and the trap shapes NDA reuses.",
+    qCount: 190,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Recall (Human Physiology + Cell Biology + Microbiology + Biodiversity + Genetics) / Apply (Plant Biology + Reproduction) / Verify (Ecology + Biochemistry) strands",
+      "9 chapter playbooks — one per chapter with worked PYQs",
+      "50-fact reference (diseases ↔ pathogens, vitamins ↔ deficiencies, hormones ↔ glands, scientists ↔ discoveries)",
+      "Trends: paper has NOT hardened — only 4 HARDs across 190 q over 10 years",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -120,12 +135,12 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics and Chemistry"
-            subtitle="Four evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics, Chemistry and Biology"
+            subtitle="Five evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {GUIDES.map((g) => {
             const Icon = g.href.includes("english")
               ? Languages
@@ -133,7 +148,9 @@ export default function NdaGuideIndex() {
                 ? Atom
                 : g.href.includes("chemistry")
                   ? FlaskConical
-                  : BookOpen;
+                  : g.href.includes("biology")
+                    ? Leaf
+                    : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -188,21 +205,26 @@ export default function NdaGuideIndex() {
             What makes these different
           </h2>
           <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-            Both guides are built the same way: pull every PUBLIC question from
-            the bank, classify it, look at the patterns. Every &ldquo;drill the
-            N questions&rdquo; link goes to the exact set we&rsquo;re talking
-            about. No claim survives that the data doesn&rsquo;t back up.
+            All five guides are built the same way: pull every PUBLIC question
+            from the bank, classify it, look at the patterns. Every &ldquo;drill
+            the N questions&rdquo; link goes to the exact set we&rsquo;re
+            talking about. No claim survives that the data doesn&rsquo;t back up.
           </p>
           <p className="mt-3 font-serif text-sm leading-relaxed text-muted-foreground">
-            The four guides are also structured <em>differently</em> on purpose.
+            The five guides are also structured <em>differently</em> on purpose,
+            because each subject&rsquo;s bank shape demands its own structure.
             NDA Maths has cross-chapter principles (AM-GM, Vieta), so the Maths
             guide leads with those. NDA English doesn&rsquo;t — each English
             chapter is its own question type — so the English guide leads with
             16 chapter playbooks. NDA Physics is a third pattern: skill-strand
             strategy with a %HARD-aware tier overlay, 14 chapter playbooks, and
-            a dedicated formula compendium. NDA Chemistry follows the English
-            playbook-only pattern but with a Recall/Rule/Calculate strand split
-            and a 50-compound name↔formula reference instead of vocab families.
+            a dedicated formula compendium. NDA Chemistry and NDA Biology both
+            follow the playbook-only pattern, but with subject-tuned strand
+            splits: Chemistry uses Recall / Rule / Calculate (with a small but
+            distinct numeric strand for Mole questions), Biology uses Recall /
+            Apply / Verify (no numeric strand exists in Biology — instead the
+            third strand captures multi-statement evaluation, the second
+            execution mode in the bank).
           </p>
         </section>
       </main>

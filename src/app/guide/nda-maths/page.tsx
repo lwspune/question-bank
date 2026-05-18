@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, FlaskConical, Languages, NotebookPen } from "lucide-react";
+import { ArrowRight, Atom, FlaskConical, Languages, Leaf, NotebookPen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -136,6 +136,32 @@ export default function NdaMathsLanding() {
             12 chapter playbooks, 50-compound name↔formula reference,
             Recall/Rule/Calculate strands, and the trap shapes NDA reuses —
             across 262 PART B Chemistry questions, 2017–2026.
+          </p>
+        </div>
+        <ArrowRight
+          className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+          aria-hidden
+        />
+      </Link>
+
+      {/* Cross-link to the NDA Biology guide — same NDA cohort, PART B Biology. */}
+      <Link
+        href="/guide/nda-biology"
+        className="group mt-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4 transition-colors hover:border-primary/50 hover:bg-primary/10"
+      >
+        <Leaf
+          className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+          aria-hidden
+        />
+        <div className="flex-1">
+          <p className="text-sm font-semibold tracking-tight text-foreground">
+            Also new: NDA PART B Biology strategy guide
+          </p>
+          <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+            9 chapter playbooks, 50-fact reference (diseases ↔ pathogens,
+            vitamins ↔ deficiencies, hormones ↔ glands, scientists ↔
+            discoveries), Recall/Apply/Verify strands — across 190 PART B
+            Biology questions, 2017–2026.
           </p>
         </div>
         <ArrowRight

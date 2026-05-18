@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, FlaskConical, Languages, Mail, NotebookPen } from "lucide-react";
+import { Atom, BookOpen, FlaskConical, Languages, Leaf, Mail, NotebookPen } from "lucide-react";
 
 const REPORT_EMAIL = "connect.lwspune@gmail.com";
 
@@ -39,6 +39,13 @@ export default function Footer() {
           >
             <FlaskConical className="h-3 w-3" aria-hidden />
             NDA Chemistry Guide
+          </Link>
+          <Link
+            href="/guide/nda-biology"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Leaf className="h-3 w-3" aria-hidden />
+            NDA Biology Guide
           </Link>
           <Link
             href="/notes/nda-maths/statistics"
