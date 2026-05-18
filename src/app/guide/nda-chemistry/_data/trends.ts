@@ -4,9 +4,11 @@
  * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 262-q
  * PUBLIC NDA Chemistry bank as of OVERVIEW.asOf.
  *
- * Paper-set sizes: NDA PART B Chemistry is ~25 q per paper (sometimes 15–30).
- * NDA-1 + NDA-2 each year except 2020 (NDA-2 COVID-cancelled — single paper)
- * and 2026 NDA-2 (not yet held — also single paper).
+ * Paper-set sizes: NDA PART B Chemistry is ~15 q per single paper (range
+ * 12–18 across the bank; avg 14.6). NDA-1 + NDA-2 each year except 2020
+ * (NDA-2 COVID-cancelled — single paper) and 2026 NDA-2 (not yet held —
+ * also single paper). Year totals below = sum across both papers of the
+ * year (so 2020 + 2026 are roughly half a normal year).
  *
  * The HEADLINE for NDA Chemistry trends is what's NOT changing — UNLIKE
  * Physics, the paper has NOT hardened. %HARD oscillates 0–14% with no

@@ -99,7 +99,7 @@ export default async function NdaBiologyStrategy() {
       <GuideHero
         eyebrow="Strategy"
         title={`Score ${STRATEGY_HEADLINE.targetMarks}+ in PART B Biology with ~28 hours`}
-        subtitle={`${STRATEGY_HEADLINE.paperQ} PART B Biology questions × ${STRATEGY_HEADLINE.marksPerCorrect} marks − ${STRATEGY_HEADLINE.penaltyPerWrong} per wrong. Three skill strands matched to the bank's actual shape (69% Recall, 22% Apply, 8% Verify by chapter grouping — most Biology questions ARE recall by question shape, but the strand structure tracks which chapters lean each way).`}
+        subtitle={`${STRATEGY_HEADLINE.paperQ} PART B Biology questions × ${STRATEGY_HEADLINE.marksPerCorrect} marks − ${STRATEGY_HEADLINE.penaltyPerWrong} per wrong. Per-paper max ≈ ${STRATEGY_HEADLINE.totalMarks} marks. Three skill strands matched to the bank's actual shape (69% Recall, 22% Apply, 8% Verify by chapter grouping — most Biology questions ARE recall by question shape, but the strand structure tracks which chapters lean each way).`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -112,12 +112,13 @@ export default async function NdaBiologyStrategy() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           PART B Biology has ~{STRATEGY_HEADLINE.paperQ} questions on the
-          GAT (sometimes 15–30), each worth{" "}
+          GAT (range 9–13 across the 2017–2026 bank), each worth{" "}
           {STRATEGY_HEADLINE.marksPerCorrect} marks with{" "}
           <span className="font-medium text-foreground">
             −{STRATEGY_HEADLINE.penaltyPerWrong}
           </span>{" "}
-          per wrong. To net {STRATEGY_HEADLINE.targetMarks}+ marks:
+          per wrong. Per-paper max ≈ {STRATEGY_HEADLINE.totalMarks} marks.
+          To net {STRATEGY_HEADLINE.targetMarks}+ marks:
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full text-sm">
@@ -134,30 +135,30 @@ export default async function NdaBiologyStrategy() {
             <tbody className="tabular-nums">
               <tr className="border-b">
                 <td className="px-3 py-2">75%</td>
-                <td className="px-3 py-2">20</td>
-                <td className="px-3 py-2">15</td>
-                <td className="px-3 py-2">5</td>
-                <td className="px-3 py-2">~53</td>
+                <td className="px-3 py-2">8</td>
+                <td className="px-3 py-2">6</td>
+                <td className="px-3 py-2">2</td>
+                <td className="px-3 py-2">~21</td>
                 <td className="px-3 py-2 text-destructive">Miss</td>
               </tr>
               <tr className="border-b bg-emerald-50/50 dark:bg-emerald-950/20">
                 <td className="px-3 py-2 font-medium">90%</td>
-                <td className="px-3 py-2 font-medium">20</td>
-                <td className="px-3 py-2 font-medium">18</td>
-                <td className="px-3 py-2 font-medium">2</td>
-                <td className="px-3 py-2 font-medium">~69</td>
+                <td className="px-3 py-2 font-medium">10</td>
+                <td className="px-3 py-2 font-medium">9</td>
+                <td className="px-3 py-2 font-medium">1</td>
+                <td className="px-3 py-2 font-medium">~35</td>
                 <td className="px-3 py-2 font-medium text-emerald-700 dark:text-emerald-400">
-                  Close ✓
+                  Target ✓
                 </td>
               </tr>
               <tr>
                 <td className="px-3 py-2">95%</td>
-                <td className="px-3 py-2">22</td>
-                <td className="px-3 py-2">21</td>
+                <td className="px-3 py-2">11</td>
+                <td className="px-3 py-2">10</td>
                 <td className="px-3 py-2">1</td>
-                <td className="px-3 py-2">~83</td>
+                <td className="px-3 py-2">~39</td>
                 <td className="px-3 py-2 text-emerald-700 dark:text-emerald-400">
-                  Target ✓
+                  Stretch ✓
                 </td>
               </tr>
             </tbody>
@@ -165,8 +166,8 @@ export default async function NdaBiologyStrategy() {
         </div>
         <p className="mt-4 font-serif leading-relaxed text-muted-foreground">
           <span className="font-medium text-foreground">
-            Target: attempt 20 questions at 90%+ accuracy. Skip the 5 you&rsquo;re
-            unsure of.
+            Target: attempt {STRATEGY_HEADLINE.targetAttempts} of ~{STRATEGY_HEADLINE.paperQ} questions at 90%+ accuracy. Skip
+            the ~1 you&rsquo;re unsure of.
           </span>{" "}
           The −1.33 penalty is harsh — and Biology&rsquo;s extreme recall density
           rewards &lsquo;know cold or skip&rsquo; more than guessing. If you don&rsquo;t
@@ -274,12 +275,14 @@ export default async function NdaBiologyStrategy() {
       <section className="mt-14">
         <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight sm:text-2xl">
           <Clock className="h-5 w-5 text-primary" aria-hidden />
-          Test-day attempt order — for PART B Biology&rsquo;s ~25-min slot
+          Test-day attempt order — for PART B Biology&rsquo;s ~10-min slot
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Bank Recall marks first (fast, high-confidence), then Apply, then
-          Verify last (slowest per attempt). Within the GAT 2-hour total,
-          PART B Biology is ~25 min — this plan fits inside it.
+          Verify last (slowest per attempt). Within the GAT 2.5-hour total
+          (150 min for 150 q across English + 5 Part B sections), PART B
+          Biology&rsquo;s share is ~10–11 min for its ~11 questions —
+          this plan fits inside it.
         </p>
         <ol className="mt-6 space-y-4">
           {TEST_DAY_PLAN.map((phase, i) => (
@@ -350,7 +353,7 @@ export default async function NdaBiologyStrategy() {
                   {TIME_BUDGET.reduce((s, r) => s + r.hours, 0)}
                 </td>
                 <td className="px-3 py-2 font-serif font-medium">
-                  Target: 70+ marks
+                  Target: {STRATEGY_HEADLINE.targetMarks}+ marks (of {STRATEGY_HEADLINE.totalMarks} max)
                 </td>
               </tr>
             </tbody>

@@ -4,9 +4,11 @@
  * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 190-q
  * PUBLIC NDA Biology bank as of OVERVIEW.asOf.
  *
- * Paper-set sizes: NDA PART B Biology is ~25 q per paper (sometimes 15–30).
- * NDA-1 + NDA-2 each year except 2020 (NDA-2 COVID-cancelled — single paper)
- * and 2026 NDA-2 (not yet held — also single paper).
+ * Paper-set sizes: NDA PART B Biology is ~10–11 q per single paper (range
+ * 9–13 across the bank; avg 10.6). NDA-1 + NDA-2 each year except 2020
+ * (NDA-2 COVID-cancelled — single paper) and 2026 NDA-2 (not yet held —
+ * also single paper). Year totals below = sum across both papers of the
+ * year (so 2020 + 2026 are roughly half a normal year).
  *
  * The HEADLINE for NDA Biology trends — same as Chemistry — is what's NOT
  * changing. UNLIKE Physics (which hardened 22× per question 2021→2026),

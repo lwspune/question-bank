@@ -112,12 +112,13 @@ export default async function NdaChemistryStrategy() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           PART B Chemistry has ~{STRATEGY_HEADLINE.paperQ} questions on the
-          GAT (sometimes 15–30), each worth{" "}
+          GAT (range 12–18 across the 2017–2026 bank), each worth{" "}
           {STRATEGY_HEADLINE.marksPerCorrect} marks with{" "}
           <span className="font-medium text-foreground">
             −{STRATEGY_HEADLINE.penaltyPerWrong}
           </span>{" "}
-          per wrong. To net {STRATEGY_HEADLINE.targetMarks}+ marks:
+          per wrong. Per-paper max ≈ {STRATEGY_HEADLINE.totalMarks} marks.
+          To net {STRATEGY_HEADLINE.targetMarks}+ marks:
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full text-sm">
@@ -134,30 +135,30 @@ export default async function NdaChemistryStrategy() {
             <tbody className="tabular-nums">
               <tr className="border-b">
                 <td className="px-3 py-2">75%</td>
-                <td className="px-3 py-2">20</td>
-                <td className="px-3 py-2">15</td>
-                <td className="px-3 py-2">5</td>
-                <td className="px-3 py-2">~53</td>
+                <td className="px-3 py-2">12</td>
+                <td className="px-3 py-2">9</td>
+                <td className="px-3 py-2">3</td>
+                <td className="px-3 py-2">~32</td>
                 <td className="px-3 py-2 text-destructive">Miss</td>
               </tr>
               <tr className="border-b bg-emerald-50/50 dark:bg-emerald-950/20">
                 <td className="px-3 py-2 font-medium">90%</td>
-                <td className="px-3 py-2 font-medium">20</td>
-                <td className="px-3 py-2 font-medium">18</td>
-                <td className="px-3 py-2 font-medium">2</td>
-                <td className="px-3 py-2 font-medium">~69</td>
+                <td className="px-3 py-2 font-medium">13</td>
+                <td className="px-3 py-2 font-medium">12</td>
+                <td className="px-3 py-2 font-medium">1</td>
+                <td className="px-3 py-2 font-medium">~47</td>
                 <td className="px-3 py-2 font-medium text-emerald-700 dark:text-emerald-400">
-                  Close ✓
+                  Target ✓
                 </td>
               </tr>
               <tr>
-                <td className="px-3 py-2">95%</td>
-                <td className="px-3 py-2">22</td>
-                <td className="px-3 py-2">21</td>
+                <td className="px-3 py-2">93%</td>
+                <td className="px-3 py-2">14</td>
+                <td className="px-3 py-2">13</td>
                 <td className="px-3 py-2">1</td>
-                <td className="px-3 py-2">~83</td>
+                <td className="px-3 py-2">~51</td>
                 <td className="px-3 py-2 text-emerald-700 dark:text-emerald-400">
-                  Target ✓
+                  Stretch ✓
                 </td>
               </tr>
             </tbody>
@@ -165,8 +166,8 @@ export default async function NdaChemistryStrategy() {
         </div>
         <p className="mt-4 font-serif leading-relaxed text-muted-foreground">
           <span className="font-medium text-foreground">
-            Target: attempt 20 questions at 90%+ accuracy. Skip the 5 you&rsquo;re
-            unsure of.
+            Target: attempt {STRATEGY_HEADLINE.targetAttempts} of ~{STRATEGY_HEADLINE.paperQ} questions at 90%+ accuracy. Skip
+            the ~2 you&rsquo;re unsure of.
           </span>{" "}
           The −1.33 penalty is harsh — and Chemistry&rsquo;s high recall surface
           rewards &lsquo;know cold or skip&rsquo; more than guessing. If you don&rsquo;t
@@ -274,12 +275,13 @@ export default async function NdaChemistryStrategy() {
       <section className="mt-14">
         <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight sm:text-2xl">
           <Clock className="h-5 w-5 text-primary" aria-hidden />
-          Test-day attempt order — for PART B Chemistry&rsquo;s ~25-min slot
+          Test-day attempt order — for PART B Chemistry&rsquo;s ~15-min slot
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Bank Recall marks first (fast, high-confidence), then Rule, then
-          Calculate. Within the GAT 2-hour total, PART B Chemistry is ~25 min
-          — this plan fits inside it.
+          Calculate. Within the GAT 2.5-hour total (150 min for 150 q across
+          English + 5 Part B sections), PART B Chemistry&rsquo;s share is
+          ~15 min for its ~15 questions — this plan fits inside it.
         </p>
         <ol className="mt-6 space-y-4">
           {TEST_DAY_PLAN.map((phase, i) => (
@@ -350,7 +352,7 @@ export default async function NdaChemistryStrategy() {
                   {TIME_BUDGET.reduce((s, r) => s + r.hours, 0)}
                 </td>
                 <td className="px-3 py-2 font-serif font-medium">
-                  Target: 70+ marks
+                  Target: {STRATEGY_HEADLINE.targetMarks}+ marks (of {STRATEGY_HEADLINE.totalMarks} max)
                 </td>
               </tr>
             </tbody>

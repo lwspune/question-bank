@@ -18,8 +18,11 @@
  *     Small bucket but a distinct skill — surface it so candidates don't
  *     skip and lose 1–2 marks they could bank.
  *
- * GAT PART B Chemistry is ~25 q per paper (sometimes 20–30). Marks per
- * correct = 4, penalty −1.33. Same scoring as Physics.
+ * GAT PART B Chemistry is ~15 q per single paper (range 12–18 across the
+ * 2017–2026 bank; avg 14.6). Marks per correct = 4, penalty −1.33 — same
+ * 4 / −1.33 scoring as every NDA section. Per-paper max ≈ 60 marks.
+ * (Note: don't confuse with Physics's ~25 q/paper — that's a different PART
+ * B section. Each Part B section has its own q-count.)
  */
 
 import type { Difficulty } from "@/lib/questions/filters";
@@ -49,15 +52,16 @@ export type StrategyStrand = {
   chapters: StrandChapter[];
 };
 
-/** Headline numbers shown in the strategy hero. PART B Chemistry is ~25 q
- *  per paper on the GAT; max marks 100 (25 × 4), penalty −1.33 per wrong. */
+/** Headline numbers shown in the strategy hero. PART B Chemistry is ~15 q
+ *  per single paper on the GAT (range 12–18 across 18 papers in the bank;
+ *  avg 14.6). Max marks per paper ≈ 60 (15 × 4), penalty −1.33 per wrong. */
 export const STRATEGY_HEADLINE = {
-  paperQ: 25,
-  totalMarks: 100,
+  paperQ: 15,
+  totalMarks: 60,
   marksPerCorrect: 4,
   penaltyPerWrong: 1.33,
-  targetMarks: 70,
-  targetAttempts: 20,
+  targetMarks: 45,
+  targetAttempts: 13,
   targetAccuracyPct: 90,
 };
 
@@ -87,7 +91,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Catenation, Tetra-valency and Isomerism",
         "Hydrocarbons and Organic Classification",
       ],
-      expectedYieldPerPaper: "4–5 marks",
+      expectedYieldPerPaper: "~8 marks",
       studyHours: 5,
       summary:
         "45 q · 2 HARD across 10 yrs. Allotropes is the dominant subtopic — memorise the diamond/graphite/fullerene property table cold. Common Compounds is name↔formula↔use recall.",
@@ -103,7 +107,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Colloids and Suspensions",
         "Physical vs Chemical Changes",
       ],
-      expectedYieldPerPaper: "3 marks",
+      expectedYieldPerPaper: "~5 marks",
       studyHours: 3,
       summary:
         "30 q · 1 HARD across 10 yrs. Five small subtopics, each rule-of-thumb sized. Watch the colloid vs suspension distinction — 1 of 5 q is HARD.",
@@ -119,7 +123,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Common Industrial Substances and Alloys",
         "Paints and Coatings",
       ],
-      expectedYieldPerPaper: "3 marks",
+      expectedYieldPerPaper: "~5 marks",
       studyHours: 4,
       summary:
         "28 q · 11% HARD (driven by the Paints subtopic — 3 of 4 paint q are HARD). Industrial gases, cement composition, NPK fertiliser percentages, alloy compositions all pure recall.",
@@ -134,7 +138,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Alloys and Their Composition",
         "Extraction of Metals and Ores",
       ],
-      expectedYieldPerPaper: "2 marks",
+      expectedYieldPerPaper: "~3 marks",
       studyHours: 2,
       summary:
         "17 q · ZERO HARD across 10 yrs. Pure recall. Memorise the reactivity series K-Na-Ca-Mg-Al-Zn-Fe-Cu-Hg-Ag-Au, the four major alloy compositions (brass, bronze, stainless steel, solder), galvanisation = zinc coating.",
@@ -148,7 +152,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Properties of Hydrogen",
         "Properties and Anomalous Behaviour of Water",
       ],
-      expectedYieldPerPaper: "1 mark",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 1.5,
       summary:
         "11 q · 1 HARD across 10 yrs. Permanent (CaSO₄/MgSO₄) vs temporary (Ca(HCO₃)₂) hardness recall + softening methods. Water's anomalous max density at 4 °C.",
@@ -161,7 +165,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Common Chemicals and Their Uses",
         "Medicines and Health Chemistry",
       ],
-      expectedYieldPerPaper: "1 mark",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 1.5,
       summary:
         "10 q · ZERO HARD across 10 yrs. Drink/gas/cleaner identification + antacid/analgesic/antibiotic types. The lowest-investment / highest-confidence chapter in the bank.",
@@ -204,7 +208,7 @@ export const RULE_STRAND: StrategyStrand = {
         "Isotopes and Isoelectronic Species",
         "Electron Configuration and Valence Shells",
       ],
-      expectedYieldPerPaper: "3–4 marks",
+      expectedYieldPerPaper: "~6 marks",
       studyHours: 4,
       summary:
         "35 q · 9% HARD. Periodic Trends is the biggest subtopic (12 q) — drill the rule once, the rest follows. Watch for 'order of valency' Match-List traps in the HARD pool.",
@@ -220,7 +224,7 @@ export const RULE_STRAND: StrategyStrand = {
         "Salts and Common Compounds",
         "Water of Crystallization",
       ],
-      expectedYieldPerPaper: "3 marks",
+      expectedYieldPerPaper: "~6 marks",
       studyHours: 3,
       summary:
         "33 q · 6% HARD. Five subtopics, each rule-of-thumb sized. Common Acids overlaps with /common-compounds — drill both side-by-side.",
@@ -237,7 +241,7 @@ export const RULE_STRAND: StrategyStrand = {
         "Endothermic and Exothermic Reactions",
         "Physical vs Chemical Changes",
       ],
-      expectedYieldPerPaper: "3 marks",
+      expectedYieldPerPaper: "~5 marks",
       studyHours: 3,
       summary:
         "30 q · 10% HARD — the chapter's hot pool is Redox (10 q at 20% HARD). LEO RGO + oxidation-state assignment cracks 80% of redox questions.",
@@ -251,7 +255,7 @@ export const RULE_STRAND: StrategyStrand = {
         "Valency, Oxidation States and Molecular Formula",
         "Bond Counting and Molecular Structure",
       ],
-      expectedYieldPerPaper: "1 mark",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 1,
       summary:
         "11 q · ZERO HARD across 10 yrs. EN-difference > 1.7 ⟹ ionic; < 1.7 ⟹ covalent. Ox-state from sum-to-charge rule. Pure rule application.",
@@ -280,7 +284,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
         "Mole Concept, Avogadro's Law and Molar Calculations",
         "Stoichiometry and Laws of Chemical Combination",
       ],
-      expectedYieldPerPaper: "1 mark",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
         "9 q · 1 HARD across 10 yrs. Small bucket, distinct skill. Drill the equivalent-weight calculation (the recurring tricky form) and the law-identification format.",
@@ -296,25 +300,27 @@ export type TestDayPhase = {
   detail: string;
 };
 
-/** Test-day attempt order — fastest-strand-first to bank marks early. */
+/** Test-day attempt order — fastest-strand-first to bank marks early.
+ *  Slot budget is ~15 min total (PART B Chemistry's share of the 150-min GAT
+ *  is roughly proportional to its q-count: ~15 q × ~1 min ≈ 15 min). */
 export const TEST_DAY_PLAN: TestDayPhase[] = [
   {
-    durationMin: 8,
+    durationMin: 5,
     label: "Sweep Recall (Carbon + Matter + Industrial + Metals + Hydrogen + Everyday + Practical)",
     detail:
-      "Scan all ~25 Chemistry questions, mark every Recall-strand item (allotropes, common compounds, separation methods, reactivity series, alloy composition, water hardness, household chemicals). Expect 13–15 Recall items per paper at ~25 sec each. Target: 12 correct in 8 min. If you don't recognise an allotrope or common-compound name within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
+      "Scan all ~15 Chemistry questions, mark every Recall-strand item (allotropes, common compounds, separation methods, reactivity series, alloy composition, water hardness, household chemicals). Expect ~8 Recall items per paper at ~25 sec each. Target: 7 correct in 5 min. If you don't recognise an allotrope or common-compound name within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
   },
   {
-    durationMin: 10,
+    durationMin: 7,
     label: "Sweep Rule (Atomic Structure + Acids/Bases + Reactions + Bonding)",
     detail:
-      "Attempt every rule-application question. Periodic trends (3–4 q), pH/acid-base (3 q), redox identification (2–3 q), reaction type (1–2 q), ox-state assignment (1 q). ~10 items × ~60 sec. Target: 8 correct. If a redox question requires assigning ox-states to >2 elements in a complex compound, skip — those swallow 2+ min.",
+      "Attempt every rule-application question. Periodic trends (1–2 q), pH/acid-base (1–2 q), redox identification (1–2 q), reaction type (1 q), ox-state assignment (≤1 q). ~6 items × ~60 sec. Target: 5 correct. If a redox question requires assigning ox-states to >2 elements in a complex compound, skip — those swallow 2+ min.",
   },
   {
-    durationMin: 4,
+    durationMin: 3,
     label: "Calculate last (Mole + Stoichiometry)",
     detail:
-      "Tackle the numeric questions last. ~1–2 items per paper. Set up the formula, plug numbers, double-check unit conversion. Don't get clever — Mole questions in NDA are direct plug-in, not multi-step. If the question gives you mass in g and asks for moles, divide by molar mass and you're done.",
+      "Tackle the numeric questions last. ~1 item most papers, sometimes 0. Set up the formula, plug numbers, double-check unit conversion. Don't get clever — Mole questions in NDA are direct plug-in, not multi-step. If the question gives you mass in g and asks for moles, divide by molar mass and you're done.",
   },
 ];
 
@@ -325,9 +331,9 @@ export type TimeBudgetRow = {
 };
 
 export const TIME_BUDGET: TimeBudgetRow[] = [
-  { label: "Recall — Carbon + Matter + Industrial + Metals + Hydrogen + Everyday + Practical", hours: 14, outcome: "~14 marks/paper" },
-  { label: "Rule — Atomic Structure + Acids/Bases + Reactions + Bonding", hours: 11, outcome: "~10 marks/paper" },
-  { label: "Calculate — Mole Concept and Stoichiometry", hours: 2, outcome: "~1 mark/paper" },
+  { label: "Recall — Carbon + Matter + Industrial + Metals + Hydrogen + Everyday + Practical", hours: 14, outcome: "~24 marks/paper" },
+  { label: "Rule — Atomic Structure + Acids/Bases + Reactions + Bonding", hours: 11, outcome: "~17 marks/paper" },
+  { label: "Calculate — Mole Concept and Stoichiometry", hours: 2, outcome: "~2 marks/paper" },
   { label: "Common-compounds active recall (the /common-compounds page)", hours: 4, outcome: "Compounding gains across Recall" },
   { label: "Past papers, timed (last 3 years)", hours: 5, outcome: "Calibration + speed" },
 ];

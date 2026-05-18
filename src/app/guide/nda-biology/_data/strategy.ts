@@ -25,8 +25,13 @@
  * not pure question counts. A Cell Biology question can still be "verify"
  * by shape even though the chapter is grouped in Recall.
  *
- * GAT PART B Biology is ~25 q per paper (sometimes 20–30). Marks per
- * correct = 4, penalty −1.33. Same scoring as Physics + Chemistry.
+ * GAT PART B Biology is ~10–11 q per single paper (range 9–13 across the
+ * 2017–2026 bank; avg 10.6). Marks per correct = 4, penalty −1.33 — same
+ * 4 / −1.33 scoring as every NDA section. Per-paper max ≈ 44 marks.
+ * (Note: don't confuse with Physics's ~25 q/paper or Chemistry's ~15 q/paper
+ * — Biology is the smallest of the three Part B science sections. Each
+ * section has its own q-count and contributes independently to the GAT
+ * 600-mark total.)
  */
 
 import type { Difficulty } from "@/lib/questions/filters";
@@ -56,15 +61,16 @@ export type StrategyStrand = {
   chapters: StrandChapter[];
 };
 
-/** Headline numbers shown in the strategy hero. PART B Biology is ~25 q
- *  per paper on the GAT; max marks 100 (25 × 4), penalty −1.33 per wrong. */
+/** Headline numbers shown in the strategy hero. PART B Biology is ~10–11 q
+ *  per single paper on the GAT (range 9–13 across 18 papers in the bank;
+ *  avg 10.6). Max marks per paper ≈ 44 (11 × 4), penalty −1.33 per wrong. */
 export const STRATEGY_HEADLINE = {
-  paperQ: 25,
-  totalMarks: 100,
+  paperQ: 11,
+  totalMarks: 44,
   marksPerCorrect: 4,
   penaltyPerWrong: 1.33,
-  targetMarks: 70,
-  targetAttempts: 20,
+  targetMarks: 32,
+  targetAttempts: 10,
   targetAccuracyPct: 90,
 };
 
@@ -97,7 +103,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Excretory and Reproductive Anatomy",
         "Immune System — Antibody Production",
       ],
-      expectedYieldPerPaper: "5–6 marks",
+      expectedYieldPerPaper: "~10 marks",
       studyHours: 5,
       summary:
         "52 q · 1 HARD across 10 yrs. The largest chapter. Circulatory + Digestive + Nutrition cover 27 of the 52 — drill these three subtopics first. Vitamin↔deficiency cluster on /reference-tables compounds the value.",
@@ -116,7 +122,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Cell Division and DNA Replication",
         "Microscopy",
       ],
-      expectedYieldPerPaper: "4–5 marks",
+      expectedYieldPerPaper: "~8 marks",
       studyHours: 4,
       summary:
         "44 q · 1 HARD across 10 yrs. Cell Organelles (17 q) is the dominant subtopic — memorise the ribosome/mitochondria/golgi/ER/nucleus function table cold. Osmosis (4 q, 25% HARD) is the chapter's lone Apply pocket.",
@@ -130,7 +136,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Antibiotics — Discovery",
         "Disease Vectors — Malaria",
       ],
-      expectedYieldPerPaper: "2 marks",
+      expectedYieldPerPaper: "~4 marks",
       studyHours: 2,
       summary:
         "21 q · ZERO HARD across 10 yrs. The most under-invested chapter. Disease↔pathogen pairs (13 q) are the marquee lever — drill /reference-tables → 'Diseases' cluster. Fleming-Penicillin, viruses immune to antibiotics, Anopheles for malaria — all repeat-tested.",
@@ -144,7 +150,7 @@ export const RECALL_STRAND: StrategyStrand = {
         "Plant Kingdom Classification",
         "Kingdom Fungi",
       ],
-      expectedYieldPerPaper: "1 mark",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 1.5,
       summary:
         "11 q · ZERO HARD across 10 yrs. Pure classification recall. Sponges = Porifera, mollusks = soft-bodied + shell, bryophytes = non-vascular plants. Read the 5-kingdom + 4-plant-group + animal-phylum tables once, recognise on test day.",
@@ -189,7 +195,7 @@ export const APPLY_STRAND: StrategyStrand = {
         "Transpiration, Tropisms and Plant Processes",
         "Vegetative Propagation",
       ],
-      expectedYieldPerPaper: "3 marks",
+      expectedYieldPerPaper: "~5 marks",
       studyHours: 4,
       summary:
         "29 q · 1 HARD across 10 yrs. Plant Tissues + Photosynthesis are the giant subtopics (11 + 10 = 21 of 29). Drill xylem-vs-phloem direction, apical-vs-lateral meristem, light/dark reactions. The Transpiration subtopic (3 q · 33% HARD) is the Apply hot pocket.",
@@ -204,7 +210,7 @@ export const APPLY_STRAND: StrategyStrand = {
         "Animal and Human Reproduction",
         "Meiosis and DNA in Flowering Plants",
       ],
-      expectedYieldPerPaper: "1–2 marks",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
         "13 q · 1 HARD across 10 yrs. Pollination + Fertilisation (7 q) is the biggest subtopic — self vs cross-pollination, double fertilisation arithmetic. Sexual Reproduction Principles (3 q, 33% HARD) is the chapter's HARD pocket.",
@@ -233,7 +239,7 @@ export const VERIFY_STRAND: StrategyStrand = {
         "Environment and Biodiversity",
         "Ecosystems, Biomes and Ecological Interactions",
       ],
-      expectedYieldPerPaper: "1 mark",
+      expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
         "12 q · ZERO HARD across 10 yrs. Half biome-identification (recall), half multi-statement Verify. Mutualism vs commensalism vs parasitism, biome features, food chain construction. Always state each statement explicitly before picking the option.",
@@ -265,26 +271,28 @@ export type TestDayPhase = {
 
 /** Test-day attempt order — Recall-first to bank fast high-confidence marks,
  *  then Apply for mechanism questions, Verify last for multi-statement work
- *  (the slowest per attempt). */
+ *  (the slowest per attempt). Slot budget is ~10–11 min total (PART B Biology's
+ *  share of the 150-min GAT is roughly proportional to its q-count: ~11 q ×
+ *  ~1 min ≈ 11 min). */
 export const TEST_DAY_PLAN: TestDayPhase[] = [
   {
-    durationMin: 8,
+    durationMin: 4,
     label:
       "Sweep Recall (Human Physiology + Cell Biology + Microbiology + Biodiversity + Genetics)",
     detail:
-      "Scan all ~25 Biology questions, mark every Recall-strand item (vitamin↔deficiency, organ↔function, organelle role, kingdom/phylum classification, disease↔pathogen, scientist↔discovery). Expect 14–16 Recall items per paper at ~25 sec each. Target: 13 correct in 8 min. If you don't recognise a vitamin-disease or disease-pathogen pair within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
+      "Scan all ~10–11 Biology questions, mark every Recall-strand item (vitamin↔deficiency, organ↔function, organelle role, kingdom/phylum classification, disease↔pathogen, scientist↔discovery). Expect ~7 Recall items per paper at ~25 sec each. Target: 6 correct in 4 min. If you don't recognise a vitamin-disease or disease-pathogen pair within 5 sec, skip — the −1.33 penalty makes a guess negative-EV at below ~55% confidence.",
   },
   {
-    durationMin: 10,
+    durationMin: 5,
     label: "Sweep Apply (Plant Biology + Reproduction)",
     detail:
-      "Attempt every mechanism-tracing question. Photosynthesis flow (3–4 q), plant tissue function (2–3 q), pollination + fertilisation (2 q), osmosis direction (1 q), transpiration reasoning (≤1 q). ~6–7 items × ~85 sec. Target: 5 correct. The Transpiration experimental-design questions can swallow 2+ min — if you're not sure within 90 sec, skip.",
+      "Attempt every mechanism-tracing question. Photosynthesis flow (1 q), plant tissue function (1 q), pollination + fertilisation (≤1 q), osmosis direction (≤1 q), transpiration reasoning (≤1 q). ~2–3 items × ~85 sec. Target: 2 correct. The Transpiration experimental-design questions can swallow 2+ min — if you're not sure within 90 sec, skip.",
   },
   {
-    durationMin: 7,
+    durationMin: 2,
     label: "Verify last (Ecology + Biochemistry + scattered statement-evaluation)",
     detail:
-      "Tackle multi-statement 'which of the following statements is correct?' questions last. These appear scattered across all chapters but cluster in Ecology + Biochemistry. ~2–3 dedicated Verify items + 2–3 statement-evaluation questions across other chapters. ~5 items × ~85 sec. Read each statement independently, judge true/false, then pick the option that lists exactly the correct set. Don't half-commit — if any statement is uncertain, the whole question is.",
+      "Tackle multi-statement 'which of the following statements is correct?' questions last. These appear scattered across all chapters but cluster in Ecology + Biochemistry. Typically ~1 dedicated Verify item + 1 statement-evaluation question across other chapters. ~2 items × ~60 sec. Read each statement independently, judge true/false, then pick the option that lists exactly the correct set. Don't half-commit — if any statement is uncertain, the whole question is.",
   },
 ];
 
@@ -295,9 +303,9 @@ export type TimeBudgetRow = {
 };
 
 export const TIME_BUDGET: TimeBudgetRow[] = [
-  { label: "Recall — Human Physiology + Cell Biology + Microbiology + Biodiversity + Genetics", hours: 13, outcome: "~13 marks/paper" },
-  { label: "Apply — Plant Biology + Reproduction", hours: 6, outcome: "~5 marks/paper" },
-  { label: "Verify — Ecology + Biochemistry", hours: 2.5, outcome: "~2 marks/paper" },
+  { label: "Recall — Human Physiology + Cell Biology + Microbiology + Biodiversity + Genetics", hours: 13, outcome: "~24 marks/paper" },
+  { label: "Apply — Plant Biology + Reproduction", hours: 6, outcome: "~7 marks/paper" },
+  { label: "Verify — Ecology + Biochemistry", hours: 2.5, outcome: "~3 marks/paper" },
   { label: "Reference-tables active recall (the /reference-tables page)", hours: 3, outcome: "Compounding gains across Recall" },
   { label: "Past papers, timed (last 3 years)", hours: 4, outcome: "Calibration + speed" },
 ];
