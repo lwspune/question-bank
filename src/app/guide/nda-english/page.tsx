@@ -71,40 +71,6 @@ export default async function NdaEnglishLanding() {
         Browse the full NDA English bank
       </BrowseLink>
 
-      {/* What makes English different from Maths */}
-      <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
-        <h2 className="text-base font-semibold tracking-tight">
-          Why this guide is structured differently from NDA Maths
-        </h2>
-        <div className="mt-2 space-y-2 font-serif text-sm leading-relaxed text-muted-foreground">
-          <p>
-            NDA Maths has cross-chapter principles — AM-GM appears in 10
-            chapters, Vieta in 7. So the Maths guide leads with{" "}
-            <Link href="/guide/nda-maths/principles" className="text-primary hover:underline">
-              11 principle deep-dives
-            </Link>{" "}
-            and treats each chapter as a vehicle for those principles.
-          </p>
-          <p>
-            NDA English doesn&rsquo;t work that way. Each chapter is a sealed
-            question-type. The biggest cross-chapter lever — Subject-Verb
-            Agreement, tested under both Grammar and Spotting Errors — is
-            only 27 questions across the entire bank. The lever isn&rsquo;t
-            cross-chapter; it&rsquo;s within-chapter.
-          </p>
-          <p>
-            So this guide leads with{" "}
-            <strong className="font-semibold text-foreground">
-              16 chapter-and-subtopic playbooks
-            </strong>{" "}
-            grouped by the strategic axis that DOES carry weight in English:
-            Recall vs Rule vs Reason. %HARD is almost flat (only Sentence
-            Rearrangement carries real difficulty), so the Tier-A/B/C model
-            from Maths doesn&rsquo;t transfer.
-          </p>
-        </div>
-      </section>
-
       {/* CHAPTER BREAKDOWN TABLE */}
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">

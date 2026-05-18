@@ -71,49 +71,6 @@ export default async function NdaPhysicsLanding() {
         Browse the full NDA Physics bank
       </BrowseLink>
 
-      {/* Why this guide is structured differently */}
-      <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
-        <h2 className="text-base font-semibold tracking-tight">
-          Why this guide is structured differently from NDA Maths and English
-        </h2>
-        <div className="mt-2 space-y-2 font-serif text-sm leading-relaxed text-muted-foreground">
-          <p>
-            NDA Maths has cross-chapter principles — AM-GM appears in 10
-            chapters, Vieta in 7. So the{" "}
-            <Link href="/guide/nda-maths/principles" className="text-primary hover:underline">
-              Maths guide leads with 11 principle deep-dives
-            </Link>
-            .
-          </p>
-          <p>
-            NDA Physics doesn&rsquo;t work that way. The strongest
-            cross-chapter physics lever in the bank — ratio/proportional
-            reasoning — has only 12 questions across 6 chapters. That fails
-            the threshold for a principle axis (NDA Maths&rsquo; weakest
-            curated principle still spans ~30 questions). And %HARD is
-            mid-spread, not flat like English — 5 chapters carry real HARD
-            load (E&amp;M 22%, FMPoM 30%, Heat 21%, Kinematics 25%, Oscillations
-            15%).
-          </p>
-          <p>
-            So this guide does three things differently:{" "}
-            <strong className="font-semibold text-foreground">
-              14 chapter-level playbooks
-            </strong>{" "}
-            (chapters ARE the natural unit in physics — subtopics are too
-            fine), a{" "}
-            <strong className="font-semibold text-foreground">skill-strand strategy</strong>{" "}
-            (Recall / Apply / Reason) with a %HARD-aware tier overlay, and a
-            dedicated{" "}
-            <Link href="/guide/nda-physics/formulas" className="text-primary hover:underline">
-              formula compendium
-            </Link>{" "}
-            page (the first guide where ~30 formulas covering every chapter
-            serves as a stand-alone revision artefact).
-          </p>
-        </div>
-      </section>
-
       {/* CHAPTER BREAKDOWN TABLE */}
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
