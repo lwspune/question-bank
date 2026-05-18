@@ -1,13 +1,17 @@
 import { describe, it, expect } from "vitest";
 import { getQuestionResources } from "@/lib/links/questionResources";
+import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
 
-function call(input: {
-  examName: string;
-  subjectName: string;
-  chapterName: string;
-  subtopicName: string | null;
-}) {
-  return getQuestionResources(input);
+function call(
+  input: {
+    examName: string;
+    subjectName: string;
+    chapterName: string;
+    subtopicName: string | null;
+  },
+  tags?: ResourceTags
+) {
+  return getQuestionResources(input, tags);
 }
 
 describe("getQuestionResources — exam scoping", () => {
@@ -227,5 +231,184 @@ describe("getQuestionResources — NDA subjects without a guide", () => {
     });
     expect(res.guide).toBeNull();
     expect(res.notes).toBeNull();
+  });
+});
+
+describe("getQuestionResources — principle-tag override (Tier 1.5)", () => {
+  it("replaces the generic NDA Maths chip with a principle-specific link when a TOP_11 slug is tagged", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Probability",
+        subtopicName: "Conditional Probability and Bayes",
+      },
+      {
+        principleSlugs: ["vieta-symmetric-roots"],
+        conceptTags: [],
+      }
+    );
+    expect(res.guide).not.toBeNull();
+    expect(res.guide!.href).toBe(
+      "/guide/nda-maths/principles/vieta-symmetric-roots"
+    );
+    expect(res.guide!.label.toLowerCase()).toContain("vieta");
+  });
+
+  it("uses the FIRST principle slug when a question has multiple", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Statistics",
+        subtopicName: "Measures of Central Tendency — Mean, Median, Mode",
+      },
+      {
+        principleSlugs: [
+          "am-gm-mean-inequalities",
+          "vieta-symmetric-roots",
+        ],
+        conceptTags: [],
+      }
+    );
+    expect(res.guide!.href).toBe(
+      "/guide/nda-maths/principles/am-gm-mean-inequalities"
+    );
+  });
+
+  it("falls back to the generic NDA Maths chip when the principle slug isn't TOP_11", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Probability",
+        subtopicName: "Conditional Probability and Bayes",
+      },
+      {
+        principleSlugs: ["some-long-tail-principle-with-no-detail-page"],
+        conceptTags: [],
+      }
+    );
+    expect(res.guide).not.toBeNull();
+    expect(res.guide!.href).toBe("/guide/nda-maths");
+  });
+
+  it("falls back to the playbook chip for NDA Physics (principle tags only exist for Maths today)", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Physics",
+        chapterName: "Sound",
+        subtopicName: "SONAR and Ultrasonic",
+      },
+      {
+        principleSlugs: ["am-gm-mean-inequalities"],
+        conceptTags: [],
+      }
+    );
+    // Subject isn't Mathematics — principle override should not fire even
+    // if a slug happens to be in TOP_11. The chapter playbook still wins.
+    expect(res.guide!.href).toBe("/guide/nda-physics/playbooks/sound");
+  });
+});
+
+describe("getQuestionResources — concept-tag override (Tier 1.5)", () => {
+  it("replaces the generic Concept notes chip with a concept-anchored link", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Statistics",
+        subtopicName: "Measures of Central Tendency — Mean, Median, Mode",
+      },
+      {
+        principleSlugs: [],
+        conceptTags: [
+          {
+            subtopicSlug: "central-tendency",
+            conceptSlug: "arithmetic-mean-raw",
+          },
+        ],
+      }
+    );
+    expect(res.notes).not.toBeNull();
+    expect(res.notes!.href).toBe(
+      "/notes/nda-maths/statistics/central-tendency#arithmetic-mean-raw"
+    );
+    expect(res.notes!.label.toLowerCase()).toContain("arithmetic");
+  });
+
+  it("uses the FIRST concept tag when a question has multiple", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Statistics",
+        subtopicName: "Measures of Central Tendency — Mean, Median, Mode",
+      },
+      {
+        principleSlugs: [],
+        conceptTags: [
+          {
+            subtopicSlug: "central-tendency",
+            conceptSlug: "arithmetic-mean-raw",
+          },
+          {
+            subtopicSlug: "central-tendency",
+            conceptSlug: "arithmetic-mean-grouped",
+          },
+        ],
+      }
+    );
+    expect(res.notes!.href).toBe(
+      "/notes/nda-maths/statistics/central-tendency#arithmetic-mean-raw"
+    );
+  });
+
+  it("falls back to the generic Concept notes chip when the concept slug doesn't resolve", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Statistics",
+        subtopicName: "Measures of Central Tendency — Mean, Median, Mode",
+      },
+      {
+        principleSlugs: [],
+        conceptTags: [
+          { subtopicSlug: "central-tendency", conceptSlug: "bogus-slug" },
+        ],
+      }
+    );
+    expect(res.notes).not.toBeNull();
+    expect(res.notes!.href).toBe(
+      "/notes/nda-maths/statistics/central-tendency"
+    );
+  });
+
+  it("applies both overrides when both tag kinds are present", () => {
+    const res = call(
+      {
+        examName: "NDA",
+        subjectName: "Mathematics",
+        chapterName: "Vectors",
+        subtopicName: "Dot Product and Angle",
+      },
+      {
+        principleSlugs: ["am-gm-mean-inequalities"],
+        conceptTags: [
+          {
+            subtopicSlug: "dot-product-angle",
+            conceptSlug: "perpendicularity-test",
+          },
+        ],
+      }
+    );
+    expect(res.guide!.href).toBe(
+      "/guide/nda-maths/principles/am-gm-mean-inequalities"
+    );
+    expect(res.notes!.href).toContain(
+      "/notes/nda-maths/vectors/dot-product-angle#"
+    );
   });
 });

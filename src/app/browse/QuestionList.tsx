@@ -3,15 +3,19 @@ import KatexRenderer from "@/components/math/KatexRenderer";
 import { groupBySet } from "@/lib/export/groupBySet";
 import type { QuestionRow } from "@/lib/questions/query";
 import { getQuestionResources } from "@/lib/links/questionResources";
+import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
 import QuestionCard from "./QuestionCard";
 
-function resourcesFor(q: QuestionRow) {
-  return getQuestionResources({
-    examName: q.exam.name,
-    subjectName: q.subject.name,
-    chapterName: q.chapter.name,
-    subtopicName: q.subtopic?.name ?? null,
-  });
+function resourcesFor(q: QuestionRow, tags?: ResourceTags) {
+  return getQuestionResources(
+    {
+      examName: q.exam.name,
+      subjectName: q.subject.name,
+      chapterName: q.chapter.name,
+      subtopicName: q.subtopic?.name ?? null,
+    },
+    tags
+  );
 }
 
 type Props = {
@@ -22,6 +26,9 @@ type Props = {
   supabaseUrl: string;
   /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
   includeExam: boolean;
+  /** Per-question principle + concept tags for the backlink chip row.
+   *  Questions absent from the map have no DB-backed tags. */
+  resourceTags?: Map<string, ResourceTags>;
 };
 
 /**
@@ -39,6 +46,7 @@ export default function QuestionList({
   isAdmin,
   supabaseUrl,
   includeExam,
+  resourceTags,
 }: Props) {
   const groups = groupBySet(questions);
   const idToIndex = new Map<string, number>();
@@ -56,7 +64,10 @@ export default function QuestionList({
                 isAdmin={isAdmin}
                 supabaseUrl={supabaseUrl}
                 includeExam={includeExam}
-                resources={resourcesFor(group.question)}
+                resources={resourcesFor(
+                  group.question,
+                  resourceTags?.get(group.question.id)
+                )}
               />
             </li>
           );
@@ -77,7 +88,7 @@ export default function QuestionList({
                       supabaseUrl={supabaseUrl}
                       hideContext
                       includeExam={includeExam}
-                      resources={resourcesFor(q)}
+                      resources={resourcesFor(q, resourceTags?.get(q.id))}
                     />
                   </li>
                 ))}

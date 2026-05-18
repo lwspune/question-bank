@@ -22,6 +22,8 @@ import { PLAYBOOKS as NDA_BIOLOGY_PLAYBOOKS } from "@/app/guide/nda-biology/_dat
 import { PLAYBOOKS as NDA_GEOGRAPHY_PLAYBOOKS } from "@/app/guide/nda-geography/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
+import { getPrincipleName, getConceptName } from "./tagNames";
+import type { ResourceTags } from "./getResourceTagsForQuestions";
 
 export type ResourceLink = {
   href: string;
@@ -79,23 +81,40 @@ const NDA_GEOGRAPHY_BY_CHAPTER = buildChapterMap(NDA_GEOGRAPHY_PLAYBOOKS);
 
 // ─── Public API ───────────────────────────────────────────────────────────
 
-export function getQuestionResources(input: ResourceInput): QuestionResources {
+export function getQuestionResources(
+  input: ResourceInput,
+  tags?: ResourceTags
+): QuestionResources {
   return {
-    guide: resolveGuide(input),
-    notes: resolveNotes(input),
+    guide: resolveGuide(input, tags),
+    notes: resolveNotes(input, tags),
   };
 }
 
-function resolveGuide(input: ResourceInput): ResourceLink | null {
+function resolveGuide(
+  input: ResourceInput,
+  tags?: ResourceTags
+): ResourceLink | null {
   if (input.examName !== "NDA") return null;
 
   switch (input.subjectName) {
-    case "Mathematics":
+    case "Mathematics": {
+      // Tier 1.5 — when this question is tagged with a TOP_11 principle,
+      // link to the principle's deep-dive page instead of the generic
+      // overview. First tag wins; non-TOP_11 slugs fall through.
+      const principleHit = firstResolvedPrinciple(tags?.principleSlugs);
+      if (principleHit) {
+        return {
+          href: `/guide/nda-maths/principles/${principleHit.slug}`,
+          label: `Lever: ${principleHit.name}`,
+        };
+      }
       // Template A — no per-chapter playbook page. Link to the overview.
       return {
         href: "/guide/nda-maths",
         label: "NDA Maths strategy",
       };
+    }
 
     case "English": {
       if (!input.subtopicName) return null;
@@ -140,7 +159,10 @@ function playbookLink(guideSlug: string, entry: PlaybookEntry): ResourceLink {
   };
 }
 
-function resolveNotes(input: ResourceInput): ResourceLink | null {
+function resolveNotes(
+  input: ResourceInput,
+  tags?: ResourceTags
+): ResourceLink | null {
   if (input.examName !== "NDA") return null;
   if (input.subjectName !== "Mathematics") return null;
   if (!input.subtopicName) return null;
@@ -151,8 +173,49 @@ function resolveNotes(input: ResourceInput): ResourceLink | null {
   const entry = getSubtopicNotesEntry(input.subtopicName);
   if (!entry) return null;
 
+  // Tier 1.5 — concept-tag override: anchor-jump to the specific concept
+  // within the subtopic notes page. First tag wins; tags that don't resolve
+  // (renamed concept, etc.) fall through to the generic chip.
+  const conceptHit = firstResolvedConcept(tags?.conceptTags);
+  if (conceptHit) {
+    return {
+      href: `/notes/${chapter.subjectRoute}/${chapter.chapterSlug}/${conceptHit.subtopicSlug}#${conceptHit.conceptSlug}`,
+      label: `Concept: ${conceptHit.name}`,
+    };
+  }
+
   return {
     href: `/notes/${chapter.subjectRoute}/${chapter.chapterSlug}/${entry.subtopicSlug}`,
     label: "Concept notes",
   };
+}
+
+function firstResolvedPrinciple(
+  slugs: string[] | undefined
+): { slug: string; name: string } | null {
+  if (!slugs || slugs.length === 0) return null;
+  for (const slug of slugs) {
+    const name = getPrincipleName(slug);
+    if (name) return { slug, name };
+  }
+  return null;
+}
+
+function firstResolvedConcept(
+  conceptTags: ResourceTags["conceptTags"] | undefined
+):
+  | { subtopicSlug: string; conceptSlug: string; name: string }
+  | null {
+  if (!conceptTags || conceptTags.length === 0) return null;
+  for (const t of conceptTags) {
+    const name = getConceptName(t.subtopicSlug, t.conceptSlug);
+    if (name) {
+      return {
+        subtopicSlug: t.subtopicSlug,
+        conceptSlug: t.conceptSlug,
+        name,
+      };
+    }
+  }
+  return null;
 }

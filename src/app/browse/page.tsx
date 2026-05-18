@@ -13,6 +13,7 @@ import {
 } from "@/lib/questions/filters";
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
 import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
+import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
 import QuestionList from "./QuestionList";
@@ -122,6 +123,15 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     Math.ceil(questionsResult.totalCount / DEFAULT_PAGE_SIZE)
   );
 
+  // Tier 1.5 — batched per-question tag fetch for QuestionCard backlinks.
+  // Two parallel SELECTs against the principle + concept tag tables, one
+  // round-trip total. Failures degrade gracefully — backlinks fall back to
+  // the chapter-level chips.
+  const resourceTags = await getResourceTagsForQuestions(
+    supabase,
+    questionsResult.rows.map((r) => r.id)
+  ).catch(() => new Map());
+
   const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
 
@@ -226,6 +236,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 isAdmin={member?.role === "ADMIN"}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={!filters.examId}
+                resourceTags={resourceTags}
               />
             )}
 
