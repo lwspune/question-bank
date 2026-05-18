@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Languages } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, Languages } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths and English",
+  title: "NDA Guides — Strategy for Maths, English and Physics",
   description:
-    "Evidence-led strategy guides for NDA Mathematics and NDA English (GAT). Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), and NDA PART B Physics. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -54,6 +54,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: Grammar exploded post-2024, Spotting Errors went quiet",
     ],
   },
+  {
+    href: "/guide/nda-physics",
+    exam: "NDA PART B Physics",
+    title: "How NDA Physics actually works",
+    blurb:
+      "A 449-question analysis of every PART B Physics paper, 2017–2026. Recall vs Apply vs Reason strands with a %HARD-aware drill posture, 14 chapter playbooks, formula compendium, and the trap shapes NDA reuses.",
+    qCount: 449,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Recall (Sound + Modern + Astronomy) / Apply (Light + Mechanics + Gravity) / Reason (E&M + Heat + Fluids) strands",
+      "14 chapter playbooks — one per chapter with worked PYQs",
+      "32-formula single-page revision compendium",
+      "Trends: paper hardened 22× per question 2021→2026 (2% → 44% HARD)",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -64,8 +79,8 @@ export default function NdaGuideIndex() {
         <GuideJsonLd
           type="CollectionPage"
           path="/guide/nda"
-          headline="NDA Guides — Strategy for Maths and English"
-          description="Evidence-led strategy guides for NDA Mathematics and NDA English (GAT). Every claim is measured against the live past-year question bank."
+          headline="NDA Guides — Strategy for Maths, English and Physics"
+          description="Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), and NDA PART B Physics. Every claim is measured against the live past-year question bank."
         />
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
           <ol className="flex flex-wrap items-center gap-1.5">
@@ -90,14 +105,18 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths and NDA English"
-            subtitle="Two evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English and Physics"
+            subtitle="Three evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {GUIDES.map((g) => {
-            const Icon = g.href.includes("english") ? Languages : BookOpen;
+            const Icon = g.href.includes("english")
+              ? Languages
+              : g.href.includes("physics")
+                ? Atom
+                : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -158,11 +177,13 @@ export default function NdaGuideIndex() {
             about. No claim survives that the data doesn&rsquo;t back up.
           </p>
           <p className="mt-3 font-serif text-sm leading-relaxed text-muted-foreground">
-            The two guides are also structured <em>differently</em> on purpose.
+            The three guides are also structured <em>differently</em> on purpose.
             NDA Maths has cross-chapter principles (AM-GM, Vieta), so the Maths
             guide leads with those. NDA English doesn&rsquo;t — each English
             chapter is its own question type — so the English guide leads with
-            16 chapter playbooks instead.
+            16 chapter playbooks. NDA Physics is a third pattern: skill-strand
+            strategy with a %HARD-aware tier overlay, 14 chapter playbooks, and
+            a dedicated formula compendium.
           </p>
         </section>
       </main>

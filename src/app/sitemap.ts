@@ -3,6 +3,8 @@ import { ROUTES } from "@/app/guide/nda-maths/_data/nda-maths";
 import { DETAIL_SLUGS } from "@/app/guide/nda-maths/_data/principle-details";
 import { ROUTES as ENGLISH_ROUTES } from "@/app/guide/nda-english/_data/nda-english";
 import { PLAYBOOK_SLUGS } from "@/app/guide/nda-english/_data/playbooks";
+import { ROUTES as PHYSICS_ROUTES } from "@/app/guide/nda-physics/_data/nda-physics";
+import { PLAYBOOK_SLUGS as PHYSICS_PLAYBOOK_SLUGS } from "@/app/guide/nda-physics/_data/playbooks";
 import { STATISTICS_SLUGS } from "@/app/notes/nda-maths/statistics/_data";
 import { VECTORS_SLUGS } from "@/app/notes/nda-maths/vectors/_data";
 
@@ -48,6 +50,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-english/playbooks/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...PHYSICS_ROUTES.map((r) => ({
+      url: r.slug
+        ? `${SITE_URL}/guide/nda-physics/${r.slug}`
+        : `${SITE_URL}/guide/nda-physics`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...PHYSICS_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/nda-physics/playbooks/${slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.7,

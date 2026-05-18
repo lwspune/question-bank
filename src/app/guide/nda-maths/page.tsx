@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Languages, NotebookPen } from "lucide-react";
+import { ArrowRight, Atom, Languages, NotebookPen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -86,6 +86,31 @@ export default function NdaMathsLanding() {
           <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
             16 chapter playbooks, 13 vocabulary families, 10-year drift, and
             distractor traps — across 900 GAT English questions, 2017–2026.
+          </p>
+        </div>
+        <ArrowRight
+          className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+          aria-hidden
+        />
+      </Link>
+
+      {/* Cross-link to the NDA Physics guide — same NDA cohort, PART B Physics. */}
+      <Link
+        href="/guide/nda-physics"
+        className="group mt-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4 transition-colors hover:border-primary/50 hover:bg-primary/10"
+      >
+        <Atom
+          className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+          aria-hidden
+        />
+        <div className="flex-1">
+          <p className="text-sm font-semibold tracking-tight text-foreground">
+            Also new: NDA PART B Physics strategy guide
+          </p>
+          <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+            14 chapter playbooks, 32-formula compendium, 10-year drift (paper
+            hardened 22× per question), and distractor traps — across 449
+            PART B Physics questions, 2017–2026.
           </p>
         </div>
         <ArrowRight

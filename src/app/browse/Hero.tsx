@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Languages, NotebookPen, Sparkles } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, Languages, NotebookPen, Sparkles } from "lucide-react";
 
 const SUPPORTED_EXAMS = ["MHT-CET", "NDA"];
 const COMING_SOON_EXAMS = ["IPMAT", "CUET", "NEET", "JEE Main"];
@@ -35,6 +35,19 @@ export default function Hero({
           <Languages className="h-3 w-3" aria-hidden />
           <span>
             New: <span className="font-semibold">NDA English strategy guide</span>
+          </span>
+          <ArrowRight
+            className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </Link>
+        <Link
+          href="/guide/nda-physics"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary transition-colors hover:border-primary/50 hover:bg-primary/15"
+        >
+          <Atom className="h-3 w-3" aria-hidden />
+          <span>
+            New: <span className="font-semibold">NDA Physics strategy guide</span>
           </span>
           <ArrowRight
             className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
