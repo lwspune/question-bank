@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, Languages } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Languages } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English and Physics",
+  title: "NDA Guides — Strategy for Maths, English, Physics and Chemistry",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), and NDA PART B Physics. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, and NDA PART B Chemistry. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -69,6 +69,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: paper hardened 22× per question 2021→2026 (2% → 44% HARD)",
     ],
   },
+  {
+    href: "/guide/nda-chemistry",
+    exam: "NDA PART B Chemistry",
+    title: "How NDA Chemistry actually works",
+    blurb:
+      "A 262-question analysis of every PART B Chemistry paper, 2017–2026. Recall vs Rule vs Calculate strands matched to a Recall-heavy bank, 12 chapter playbooks, 50-compound reference, and the trap shapes NDA reuses.",
+    qCount: 262,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Recall (Carbon + Matter + Industrial + Metals + Hydrogen + Everyday) / Rule (Atomic Structure + Acids/Bases + Reactions + Bonding) / Calculate (Mole) strands",
+      "12 chapter playbooks — one per chapter with worked PYQs",
+      "50-compound name↔formula↔use reference in 6 themed clusters",
+      "Trends: paper has NOT hardened (UNLIKE Physics) — drill all 10 years equally",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -105,18 +120,20 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English and Physics"
-            subtitle="Three evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics and Chemistry"
+            subtitle="Four evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
           {GUIDES.map((g) => {
             const Icon = g.href.includes("english")
               ? Languages
               : g.href.includes("physics")
                 ? Atom
-                : BookOpen;
+                : g.href.includes("chemistry")
+                  ? FlaskConical
+                  : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -177,13 +194,15 @@ export default function NdaGuideIndex() {
             about. No claim survives that the data doesn&rsquo;t back up.
           </p>
           <p className="mt-3 font-serif text-sm leading-relaxed text-muted-foreground">
-            The three guides are also structured <em>differently</em> on purpose.
+            The four guides are also structured <em>differently</em> on purpose.
             NDA Maths has cross-chapter principles (AM-GM, Vieta), so the Maths
             guide leads with those. NDA English doesn&rsquo;t — each English
             chapter is its own question type — so the English guide leads with
             16 chapter playbooks. NDA Physics is a third pattern: skill-strand
             strategy with a %HARD-aware tier overlay, 14 chapter playbooks, and
-            a dedicated formula compendium.
+            a dedicated formula compendium. NDA Chemistry follows the English
+            playbook-only pattern but with a Recall/Rule/Calculate strand split
+            and a 50-compound name↔formula reference instead of vocab families.
           </p>
         </section>
       </main>
