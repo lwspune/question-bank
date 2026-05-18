@@ -23,6 +23,8 @@ type Props = {
   /** 0-based offset of the first question on this page (e.g. (page - 1) * pageSize). */
   pageOffset: number;
   isAdmin: boolean;
+  /** True when ANY signed-in user (TEACHER or ADMIN) — drives the Report dialog. */
+  isLoggedIn: boolean;
   supabaseUrl: string;
   /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
   includeExam: boolean;
@@ -44,6 +46,7 @@ export default function QuestionList({
   questions,
   pageOffset,
   isAdmin,
+  isLoggedIn,
   supabaseUrl,
   includeExam,
   resourceTags,
@@ -62,6 +65,7 @@ export default function QuestionList({
                 question={group.question}
                 index={idToIndex.get(group.question.id)!}
                 isAdmin={isAdmin}
+                isLoggedIn={isLoggedIn}
                 supabaseUrl={supabaseUrl}
                 includeExam={includeExam}
                 resources={resourcesFor(
@@ -85,6 +89,7 @@ export default function QuestionList({
                       question={q}
                       index={idToIndex.get(q.id)!}
                       isAdmin={isAdmin}
+                      isLoggedIn={isLoggedIn}
                       supabaseUrl={supabaseUrl}
                       hideContext
                       includeExam={includeExam}

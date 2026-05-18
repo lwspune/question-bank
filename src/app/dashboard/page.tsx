@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ChevronRight,
   FileSpreadsheet,
+  Flag,
   Search,
   Upload,
 } from "lucide-react";
@@ -61,11 +62,19 @@ export default async function DashboardPage() {
   }
 
   const supabase = createSupabaseServerClient();
-  const [stats, recentUploads] = await Promise.all([
+  const [stats, recentUploads, openReportCount] = await Promise.all([
     getDashboardStats(supabase, member.orgId),
     member.role === "ADMIN"
       ? getRecentUploads(supabase, member.orgId)
       : Promise.resolve([] as RecentUpload[]),
+    member.role === "ADMIN"
+      ? supabase
+          .from("question_reports")
+          .select("id", { count: "exact", head: true })
+          .eq("org_id", member.orgId)
+          .eq("status", "open")
+          .then(({ count }) => count ?? 0)
+      : Promise.resolve(0),
   ]);
 
   const isAdmin = member.role === "ADMIN";
@@ -84,7 +93,11 @@ export default async function DashboardPage() {
           </p>
         </header>
 
-        <QuickActions isAdmin={isAdmin} isFresh={isFresh} />
+        <QuickActions
+          isAdmin={isAdmin}
+          isFresh={isFresh}
+          openReportCount={openReportCount}
+        />
 
         {!isFresh && (
           <>
@@ -149,15 +162,17 @@ function Section({
 function QuickActions({
   isAdmin,
   isFresh,
+  openReportCount,
 }: {
   isAdmin: boolean;
   isFresh: boolean;
+  openReportCount: number;
 }) {
   return (
     <div
       className={cn(
         "grid gap-4",
-        isAdmin ? "sm:grid-cols-2" : "sm:grid-cols-1"
+        isAdmin ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-1"
       )}
     >
       <ActionCard
@@ -179,6 +194,21 @@ function QuickActions({
           description="Add a new batch from an Excel file."
         />
       )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/reports"
+          icon={<Flag className="h-5 w-5" aria-hidden />}
+          title="Question reports"
+          description={
+            openReportCount > 0
+              ? `${openReportCount} open report${openReportCount === 1 ? "" : "s"} need review.`
+              : "Triage user-filed reports on your questions."
+          }
+          badge={
+            openReportCount > 0 ? String(openReportCount) : undefined
+          }
+        />
+      )}
     </div>
   );
 }
@@ -189,12 +219,14 @@ function ActionCard({
   title,
   description,
   primary,
+  badge,
 }: {
   href: string;
   icon: React.ReactNode;
   title: string;
   description: string;
   primary?: boolean;
+  badge?: string;
 }) {
   return (
     <Link
@@ -213,12 +245,19 @@ function ActionCard({
           {icon}
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="flex items-center gap-1 font-semibold">
-            {title}
-            <ArrowRight
-              className="h-4 w-4 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
-              aria-hidden
-            />
+          <h3 className="flex items-center gap-2 font-semibold">
+            <span className="flex items-center gap-1">
+              {title}
+              <ArrowRight
+                className="h-4 w-4 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+                aria-hidden
+              />
+            </span>
+            {badge && (
+              <span className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-red-500 px-1.5 text-[10px] font-semibold text-white tabular-nums">
+                {badge}
+              </span>
+            )}
           </h3>
           <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>
         </div>

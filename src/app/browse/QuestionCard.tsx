@@ -27,6 +27,7 @@ import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { buildBreadcrumb } from "./breadcrumb";
+import ReportQuestionDialog from "./ReportQuestionDialog";
 
 type OptionLabel = OptionRow["label"];
 
@@ -40,6 +41,7 @@ export default function QuestionCard({
   question,
   index,
   isAdmin,
+  isLoggedIn,
   supabaseUrl,
   hideContext = false,
   includeExam = false,
@@ -48,6 +50,8 @@ export default function QuestionCard({
   question: QuestionRow;
   index: number;
   isAdmin: boolean;
+  /** True when ANY signed-in user (TEACHER or ADMIN) — drives Report dialog behaviour. */
+  isLoggedIn: boolean;
   supabaseUrl: string;
   hideContext?: boolean;
   /** Surface the exam in the breadcrumb (used when no exam filter is active). */
@@ -290,8 +294,8 @@ export default function QuestionCard({
               </div>
             )}
 
-            {isAdmin && (
-              <div className="border-t pt-2 font-sans">
+            <div className="flex items-center justify-between gap-3 border-t pt-2 font-sans">
+              {isAdmin ? (
                 <Link
                   href={`/questions/${question.id}/edit`}
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
@@ -299,8 +303,14 @@ export default function QuestionCard({
                   <Pencil className="h-3 w-3" aria-hidden />
                   Edit question
                 </Link>
-              </div>
-            )}
+              ) : (
+                <span />
+              )}
+              <ReportQuestionDialog
+                questionId={question.id}
+                isLoggedIn={isLoggedIn}
+              />
+            </div>
           </div>
         </div>
       </div>
