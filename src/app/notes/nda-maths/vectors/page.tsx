@@ -154,17 +154,42 @@ export default async function VectorsChapterPage() {
         </ul>
       </section>
 
-      <section className="mt-12 rounded-lg border bg-card p-5">
+      <section className="mt-12 rounded-lg border-2 border-primary/30 bg-primary/5 p-5">
         <p className="flex items-center gap-2 text-sm font-semibold tracking-tight">
           <Presentation className="h-4 w-4 text-primary" aria-hidden />
           Built for the digital board
         </p>
         <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-          Every note has a <span className="font-medium">Present</span> button
-          that opens a full-screen slide deck — large fonts, keyboard navigation
-          (←/→/Space), fullscreen toggle, and a final &ldquo;drill the bank&rdquo;
-          slide that jumps straight to filtered questions for student practice.
+          Every subtopic note has a{" "}
+          <span className="font-semibold text-primary">Present mode</span> button
+          (top-right) that opens a full-screen slide deck designed for classroom
+          projection — large fonts, concept-by-concept pacing, and a final
+          &ldquo;drill the bank&rdquo; slide that jumps straight to filtered
+          questions for student practice.
         </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+          <span className="font-medium uppercase tracking-wide">Keyboard:</span>
+          <span className="inline-flex items-center gap-1">
+            <kbd className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border bg-card px-1 font-mono text-[10px] font-semibold">←</kbd>
+            <kbd className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border bg-card px-1 font-mono text-[10px] font-semibold">→</kbd>
+            <span>navigate</span>
+          </span>
+          <span className="opacity-60">·</span>
+          <span className="inline-flex items-center gap-1">
+            <kbd className="inline-flex h-5 items-center justify-center rounded border bg-card px-1.5 font-mono text-[10px] font-semibold">Space</kbd>
+            <span>next slide</span>
+          </span>
+          <span className="opacity-60">·</span>
+          <span className="inline-flex items-center gap-1">
+            <kbd className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded border bg-card px-1 font-mono text-[10px] font-semibold">F</kbd>
+            <span>fullscreen</span>
+          </span>
+          <span className="opacity-60">·</span>
+          <span className="inline-flex items-center gap-1">
+            <kbd className="inline-flex h-5 items-center justify-center rounded border bg-card px-1.5 font-mono text-[10px] font-semibold">Esc</kbd>
+            <span>exit</span>
+          </span>
+        </div>
       </section>
     </GuideShell>
   );

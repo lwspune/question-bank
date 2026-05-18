@@ -103,14 +103,29 @@ export default function NotePresenter({
 
   if (!open) {
     return (
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
-      >
-        <Presentation className="h-4 w-4" aria-hidden />
-        Present
-      </button>
+      <div className="flex flex-col items-end gap-1.5">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          title="Open full-screen slide deck — keyboard: ←/→ navigate · Space next · F fullscreen · Esc exit"
+          aria-label="Open Present mode (keyboard navigation: arrow keys, F for fullscreen, Esc to exit)"
+          className="inline-flex items-center gap-2 rounded-md border-2 border-primary/50 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-all hover:border-primary/70 hover:bg-primary/15 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Presentation className="h-4 w-4" aria-hidden />
+          <span>Present mode</span>
+        </button>
+        <div
+          className="hidden items-center gap-1 text-[10px] uppercase tracking-wide text-muted-foreground sm:flex"
+          aria-hidden
+        >
+          <KbdKey>←</KbdKey>
+          <KbdKey>→</KbdKey>
+          <span className="opacity-60">·</span>
+          <KbdKey>F</KbdKey>
+          <span className="opacity-60">·</span>
+          <KbdKey>Esc</KbdKey>
+        </div>
+      </div>
     );
   }
 
@@ -196,6 +211,14 @@ export default function NotePresenter({
         </button>
       </footer>
     </div>
+  );
+}
+
+function KbdKey({ children }: { children: React.ReactNode }) {
+  return (
+    <kbd className="inline-flex h-4 min-w-[1rem] items-center justify-center rounded border border-border bg-muted px-1 font-mono text-[9px] font-semibold leading-none">
+      {children}
+    </kbd>
   );
 }
 
