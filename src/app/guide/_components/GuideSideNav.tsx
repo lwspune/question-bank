@@ -22,19 +22,25 @@ export type SideNavItem = {
 type Props = {
   guideTitle: string;
   items: SideNavItem[];
+  /** The "landing" route — uses exact-match for active state so it doesn't
+   *  light up on every sub-route. Defaults to the first item's href, which
+   *  matches the convention that Overview is always the first nav entry. */
+  landingHref?: string;
 };
 
 /**
  * Sticky vertical list of routes on desktop (left rail); chevron-triggered
  * Sheet on mobile. Active link computed from usePathname.
  */
-export default function GuideSideNav({ guideTitle, items }: Props) {
+export default function GuideSideNav({ guideTitle, items, landingHref }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  const landing = landingHref ?? items[0]?.href;
+
   const isActive = (href: string) => {
     // Exact match for the landing page; prefix match for sub-pages.
-    if (href.endsWith("/nda-maths")) return pathname === href;
+    if (href === landing) return pathname === href;
     return pathname === href || pathname.startsWith(href + "/");
   };
 

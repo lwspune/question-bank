@@ -4,6 +4,9 @@ import type { DriftRow } from "../nda-maths/_data/trends";
 type Props = {
   rows: DriftRow[];
   years: readonly number[];
+  /** Header label for the row-label column. Defaults to "Principle"
+   *  (matches maths-guide usage); use "Chapter" for english trends. */
+  rowLabel?: string;
 };
 
 /**
@@ -14,14 +17,14 @@ type Props = {
  * Horizontal scroll on mobile (header sticks to the left); fits comfortably
  * on desktop.
  */
-export default function DriftTable({ rows, years }: Props) {
+export default function DriftTable({ rows, years, rowLabel = "Principle" }: Props) {
   return (
     <div className="overflow-x-auto rounded-md border">
       <table className="w-full min-w-[640px] text-sm">
         <thead className="border-b bg-muted/40">
           <tr>
             <th className="sticky left-0 z-10 bg-muted/40 px-3 py-2 text-left text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              Principle
+              {rowLabel}
             </th>
             {years.map((y) => (
               <th

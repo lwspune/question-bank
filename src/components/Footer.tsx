@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Mail, NotebookPen } from "lucide-react";
+import { BookOpen, Languages, Mail, NotebookPen } from "lucide-react";
 
 const REPORT_EMAIL = "connect.lwspune@gmail.com";
 
@@ -18,6 +18,13 @@ export default function Footer() {
           >
             <BookOpen className="h-3 w-3" aria-hidden />
             NDA Maths Guide
+          </Link>
+          <Link
+            href="/guide/nda-english"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Languages className="h-3 w-3" aria-hidden />
+            NDA English Guide
           </Link>
           <Link
             href="/notes/nda-maths/statistics"
