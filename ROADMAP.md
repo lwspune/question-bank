@@ -2,7 +2,7 @@
 
 Pending features, data-model changes, and content work for Question Bank. Mirrors the "deferred" annotations scattered through the `CLAUDE.md` decisions log and consolidates them in one place.
 
-**Live as of 2026-05-17:** **4,708 questions all PUBLIC** (MHT-CET 748 + NDA 3,960: Maths 2,160, English 600, Physics 299, Geography 229, Chemistry 177, History 169, Current Affairs 127, Biology 124, Polity 61, Economics 14) · public `/browse` with filter/cart/Word export + `?principle=<slug>` filter · admin `/upload` + `/uploads` index + per-question edit + concept/principle tagging UI · `/guide/nda-maths` with **17 indexable pages** (landing + 5 sections + 11 TOP_11 principle deep dives, post-Phase-3 prune) · `/notes/nda-maths/statistics` with 4 subtopic notes · cross-app sync receiver. **23 migrations** applied. **~510 tests across 71 files**.
+**Live state** — for current bank size, per-subject counts, shipped features, test counts, and migration count, see the **"Live bank size"** line at the top of `CLAUDE.md` and the **Decisions log** section below it. Don't duplicate that here; it drifts on every upload.
 
 ---
 
@@ -24,13 +24,15 @@ Currently no concurrency check — two admins editing the same question race the
 
 ## `/guide` expansion
 
-### MHT-CET strategy guide
+**Three guides shipped:** NDA Mathematics (Template A — principles-first), NDA English (Template B — playbooks-first), NDA PART B Physics (Template C — chapter-playbooks + skill-strand + formula compendium). Template choice flow + per-template editorial shape: CLAUDE.md "Guide structure templates" section. Don't propose forcing one template onto a subject whose bank shape rejects it — see [[english-guide-structure-diverges]].
 
-Replicate the NDA-Maths 7-phase template against MHT-CET's 748-question Physics / Chemistry / Maths bank. Most infrastructure (`_components/`, `_data/` shape, `resolveTaxonomy`, JSON-LD, OG image, sitemap pattern) is reusable; content + bank analysis is the new work. Principle tagging now goes through `question_principle_tags` (migration 0023) — survey methodology in `[[principle-tag-survey-methodology]]`. Subject-level taxonomy cleanup must precede the guide (Chemistry + Physics still pending — see Taxonomy section below).
+### MHT-CET strategy guides (Maths / Physics / Chemistry)
 
-### NDA other-subject guides
+Reuse the shared infra (`_components/`, `resolveTaxonomy`, JSON-LD, OG image, sitemap pattern). Subject-level taxonomy cleanup must precede each guide — Physics + Chemistry still pending (see Taxonomy section below). MHT-CET Maths is already cleanly bucketed (248 q · 56 sub). Template choice per subject after a bank-shape analysis.
 
-`/guide/nda-english`, `/guide/nda-gat-history`, etc. — for the 9 non-Maths NDA subjects. Each needs its own taxonomy of "principles" (which are more concept-based than mathematical for arts/humanities subjects).
+### NDA other-subject guides (7 remaining)
+
+The 7 NDA non-Maths/English/Physics subjects: Chemistry (262 q), Biology (190), Geography (345), History (260), Polity (90), Economics (24), Current Affairs (180). Each needs its own bank-shape analysis to pick the right template — content-heavy subjects (History, Geography) likely lean Template C with subject-specific seam (Era / Region / Concept buckets); thin subjects (Economics, Polity) may not justify a full guide. NDA Chemistry is the natural next candidate (largest of the seven).
 
 ### Future-exam guides
 
@@ -40,7 +42,7 @@ IPMAT, CUET, NEET, JEE Main — already shown in `/browse` Hero as "Coming soon.
 
 ## Taxonomy cleanup (data work)
 
-Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the `[[reclassification-sql-pattern]]` and `[[taxonomy-inline-iteration]]` memories. **Done so far (11 subjects · 132 ch · 4,058 q · 430 subtopics):** all 10 NDA subjects + MHT-CET Mathematics. NDA Maths re-Phase-D'd 2026-05-17 after 2017–2020 PYQ uploads added ~840 q (avg now 18.2 q/sub, highest density of any cleaned subject).
+Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the [[reclassification-sql-pattern]] and [[taxonomy-inline-iteration]] memories. Done counts + per-subject narratives: CLAUDE.md "Cleaned subjects · post-delta sizing" table and [[taxonomy-cleanup-progress]] memory.
 
 Pending:
 - MHT-CET Chemistry (33 chapters · ~241 subtopics)
