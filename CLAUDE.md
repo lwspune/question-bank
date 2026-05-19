@@ -37,7 +37,7 @@ src/
 │   ├── not-found.tsx                      branded 404 with AppHeader + Footer + "Browse questions" CTA
 │   ├── error.tsx                          global error boundary with "Try again" + "Browse questions"; logs error.digest
 │   ├── login/page.tsx                     email + password sign-in (client) — split-screen layout
-│   ├── nda/                               public exam-home (Tier 1 Phase 2 ship). Hero + live `getExamHomeStats` total + dual CTA (Build a paper · All six guides) + Strategy-guides grid (6 compact cards) + Teaching-notes grid (Statistics + Vectors) + closing "back to bank" banner. ISR `revalidate = 3600`, cookie-free anon client, full Metadata + `GuideJsonLd` CollectionPage. `/nda/opengraph-image` is an edge-runtime ImageResponse (purple gradient distinct from /guide's blue). Sitemap entry priority 0.95.
+│   ├── nda/                               public exam-home (Tier 1 Phase 2 ship). Hero + live `getExamHomeStats` total + dual CTA (Build a paper · All seven guides) + Strategy-guides grid (7 compact cards) + Teaching-notes grid (Statistics + Vectors) + closing "back to bank" banner. ISR `revalidate = 3600`, cookie-free anon client, full Metadata + `GuideJsonLd` CollectionPage. `/nda/opengraph-image` is an edge-runtime ImageResponse (purple gradient distinct from /guide's blue). Sitemap entry priority 0.95.
 │   ├── dashboard/                         page.tsx + loading.tsx — quick actions, stat cards, by-exam bars, recent uploads (admin). The admin Quick-Actions grid bumps to 3 cols on lg: Browse · Upload · **Question reports** card with live red open-count badge (head-count via `count: "exact"` on `question_reports.org_id + status='open'`).
 │   ├── dashboard/reports/                 admin triage page for `question_reports` (migration 0024). Server Component, admin-only via `getSessionMember` → 404 for non-admins. Status filter chips (All / Open / In review / Resolved / Won't fix / Duplicate) routed via `?status=...`. Per-report card: question breadcrumb + severity-coloured category chip + details quoted callout + Open-question link + `ReportRowActions` client island (status `<select>` → PATCH `/api/reports/[id]` → toast + router.refresh, resolution-note field visible on terminal statuses).
 │   ├── upload/                            admin-only: Stepper → Dropzone (file pick) → preview summary bar → animated success
@@ -214,6 +214,27 @@ The `/browse` QuestionCard chip row (Tier 1 + Tier 1.5, 2026-05-18) renders **tw
 
 **Why this earned a section:** The 2026-05-18 Tier 1.5 ship added tag-level overrides AFTER the Tier 1 chapter-level chips were in production. The temptation in the moment was to refactor into "one unified backlink table" or to have tag-level chips deduplicate against chapter-level chips. Both ideas are wrong — they conflate two different authoring loops (curated tagging session vs no-touch render-time mapping) and two different coverage shapes (long-tail per-question vs blanket-per-chapter). The split shipped cleanly because the function signature preserved the asymmetry: `tags?` is optional, the resolver short-circuits chapter-level chips when a more-specific tag-chip exists, and untagged questions still get the generic chip — graceful fallback throughout. Sister wall to the tag-taxonomies axis above.
 
+### Guide strand axis — execution-mode (chapter-partitioning) vs tier-style (chapter-tiering)
+
+Within Template B variants, the **strand split** is the strategic axis the strategy page renders against. There are two fundamentally different ways to construct it, and they are NOT interchangeable — picking the wrong one produces a strategy axis that sorts questions by nothing meaningful.
+
+| | Execution-mode strands | Tier-style strands |
+|---|---|---|
+| Subjects | NDA English (R/Rule/Reason), NDA Chemistry (R/Rule/Calculate), NDA Biology (R/Apply/Verify), NDA Geography (R/Apply/Verify) | NDA History (Cornerstone/Foundation Recall/Quick-Win) |
+| Strand semantics | Each strand is a SKILL bucket (recall a fact / apply a rule / trace a mechanism / evaluate a statement). Chapters get grouped into a strand by their dominant execution mode. | Each strand is a STRATEGIC TIER (cornerstone weight / foundation recall / quick-win). Chapters get grouped into a strand by their bank share + %HARD profile. |
+| Recall slot | Stable — there's always a Recall strand (named-fact recall is universal in Indian entrance exams). | Stable in spirit (Foundation Recall) but the slot SEMANTICS bent — it now groups chapters by tier, not by execution mode. |
+| When to pick | Execution modes PARTITION chapters: one cluster of chapters is 60%+ dominated by one mode, others are 20%- on that mode. | Execution modes are UNIFORM across all chapters (25–45% everywhere) — can't partition. AND/OR one chapter has dominant bank share (40%+) that warrants its own Cornerstone tier. |
+| Decision probe | For each candidate mode (recall/rule/apply/verify/calculate/reason/multi-statement/date-anchored), count `q × chapter_spread` AND per-chapter %. Top mode at 60%+ in one cluster = execution-mode strands work. | Top mode is 25–45% of every chapter = uniform = falls back to tier-style. Use bank-share + %HARD per chapter as the partition signal instead. |
+| HARD calibration | Strand-level (densest-HARD strand called out — Geography's Apply at 23% avg HARD). | Implicit in the tier-structure — Cornerstone IS the densest-HARD tier by construction (History's Cornerstone = Modern India 34% HARD). |
+
+**The wall — design intent:**
+- DON'T force execution-mode strands when modes don't partition. History's multi-statement (70 q × 4 ch · 43% HARD) and date-anchored (61 q × 4 ch · 43% HARD) cut UNIFORMLY across chapters — a Bio/Geo-style R/Apply/Verify split would force lopsided cuts (Recall 44 q : Date 163 q : Verify 53 q if grouped by chapter's dominant mode). The strategy axis would sort by nothing meaningful.
+- DON'T force tier-style strands when execution modes DO partition cleanly. English's Vocab/Idioms (Recall) and RC/Cloze (Reason) chapters are genuinely different SKILL types, not just different priorities — a Cornerstone/Foundation/Quick-Win split would lose that information.
+- DO let the decision probe pick. Test execution-mode first (Template B default); fall back to tier-style only when modes are uniform.
+- DO share infrastructure at the seam: both axes use the same `STRATEGY_STRANDS` data shape (each strand has `id`, `label`, `pitch`, `approach`, `chapters: StrandChapter[]`) and the same strategy-page renderer. The two-axis distinction is in the BUCKET MEANINGS (`PlaybookBucket = "recall" | "apply" | "verify"` for Bio/Geo vs `"cornerstone" | "foundation" | "quickwin"` for History) — same code path, different semantics.
+
+**Why this earned a section:** The 2026-05-19 NDA History ship was the first time Template B's strand axis itself bent. Before History, every Template B variant had bent the second + third SLOTS within an execution-mode axis (Rule→Apply for Bio, Calculate→Verify for Chem) — but the axis itself was always execution-mode. History exposed the next level: when execution modes don't partition chapters at all, the axis itself has to change. The temptation in the moment was to force one of the existing slot-bend patterns onto History (most naturally R/Apply/Verify like Bio + Geo) — that would have shipped a strategy page where students see "Apply chapters" and "Verify chapters" labels but no chapter actually leans either way, sorting by nothing. The tier-style fallback shipped cleanly because the strand data shape was already general (chapters grouped under labelled strands with a pitch + approach) — only the bucket vocabulary changed. Sister wall to the tag-taxonomies + cross-link-backlinks axes above: in all three, the right call is to preserve an asymmetric distinction at the shared seam rather than to flatten for elegance.
+
 ## Guide structure templates
 
 Three guide structures have shipped. They serve different bank shapes; a fourth subject's guide should pick from these (or pivot again) by analysing the bank first, not by copying precedent.
@@ -337,6 +358,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **Word export = ZIP of two files.** First version was a single .docx with a 3-way layout toggle. User asked to split: a Question Paper distributable without leaking answers, and a separate Answer Key. One ZIP keeps the bundle obvious. **Superseded 2026-05-13** — ZIP killed for mobile UX; route now returns one .docx per request via a required `kind` selector.
 - **Hard 200/export cap, no auto-split.** Vercel function timeout is the binding constraint. A clear error ("narrow filters") ships faster than a zip-of-zips. Revisit if a teacher genuinely needs 500 questions in one paper.
 - **Chapters/subtopics auto-create, subjects don't.** Subjects are top-level taxonomy curated centrally; auto-creating "Phyiscs" from a typo would corrupt the canonical list. Chapters/subtopics are per-upload working data — small typo cost, and a merge tool can clean up later.
+
+### 2026-06
+
+_No entries yet — the next month's decisions will land here. Convention reminder: newest month closest to top (so this block sits above 2026-05 once it has entries); within a month, entries stay in chronological order top-down (newest at bottom of the month's block)._
 
 ### 2026-05
 
