@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Scale } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography and History",
+  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History and Polity",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, and NDA PART A History. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, and NDA PART A Polity. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -129,6 +129,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: paper has NOT consistently hardened, but chapter mix shifted (Modern dominated 2017–20, Ancient surged 2022–24)",
     ],
   },
+  {
+    href: "/guide/nda-polity",
+    exam: "NDA PART A Polity",
+    title: "How NDA Polity actually works",
+    blurb:
+      "A 90-question analysis of every PART A Polity paper, 2017–2026. Cornerstone vs Foundation Recall vs Specialist Wildcard tier-strands, 4 chapter playbooks, ~80-entry Articles + Amendments + Bodies + Schedules reference, and the trap shapes NDA reuses.",
+    qCount: 90,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Cornerstone (Government Structure — 40% of bank) / Foundation Recall (Indian Constitution + FR/DPSP) / Specialist Wildcard (World Polity — 42% HARD) tier-strands",
+      "4 chapter playbooks — one per chapter with worked PYQs",
+      "~80-entry reference (Key Articles ↔ subject, Constitutional Amendments ↔ year ↔ theme, Constitutional Bodies ↔ function ↔ Article, Parts ↔ Schedules ↔ content)",
+      "Trends: paper has NOT consistently hardened, but 2026 NDA-1 was the hardest (50%) and most Govt-Structure-heavy (7 of 10 q)",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -165,12 +180,12 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography and History"
-            subtitle="Seven evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History and Polity"
+            subtitle="Eight evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {GUIDES.map((g) => {
             const Icon = g.href.includes("english")
               ? Languages
@@ -184,7 +199,9 @@ export default function NdaGuideIndex() {
                       ? Globe
                       : g.href.includes("history")
                         ? Landmark
-                        : BookOpen;
+                        : g.href.includes("polity")
+                          ? Scale
+                          : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -239,10 +256,11 @@ export default function NdaGuideIndex() {
             What makes these different
           </h2>
           <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-            All six guides are built the same way: pull every PUBLIC question
-            from the bank, classify it, look at the patterns. Every &ldquo;drill
-            the N questions&rdquo; link goes to the exact set we&rsquo;re
-            talking about. No claim survives that the data doesn&rsquo;t back up.
+            All eight guides are built the same way: pull every PUBLIC
+            question from the bank, classify it, look at the patterns. Every
+            &ldquo;drill the N questions&rdquo; link goes to the exact set
+            we&rsquo;re talking about. No claim survives that the data
+            doesn&rsquo;t back up.
           </p>
           <p className="mt-3 font-serif text-sm leading-relaxed text-muted-foreground">
             Each guide is shaped by its bank, not by a shared template — open

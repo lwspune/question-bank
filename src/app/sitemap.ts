@@ -13,6 +13,8 @@ import { ROUTES as GEOGRAPHY_ROUTES } from "@/app/guide/nda-geography/_data/nda-
 import { PLAYBOOK_SLUGS as GEOGRAPHY_PLAYBOOK_SLUGS } from "@/app/guide/nda-geography/_data/playbooks";
 import { ROUTES as HISTORY_ROUTES } from "@/app/guide/nda-history/_data/nda-history";
 import { PLAYBOOK_SLUGS as HISTORY_PLAYBOOK_SLUGS } from "@/app/guide/nda-history/_data/playbooks";
+import { ROUTES as POLITY_ROUTES } from "@/app/guide/nda-polity/_data/nda-polity";
+import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
 const SITE_URL = "https://question-bank-sage.vercel.app";
@@ -127,6 +129,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...HISTORY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-history/playbooks/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...POLITY_ROUTES.map((r) => ({
+      url: r.slug
+        ? `${SITE_URL}/guide/nda-polity/${r.slug}`
+        : `${SITE_URL}/guide/nda-polity`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...POLITY_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/nda-polity/playbooks/${slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.7,

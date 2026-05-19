@@ -21,6 +21,7 @@ import { PLAYBOOKS as NDA_CHEMISTRY_PLAYBOOKS } from "@/app/guide/nda-chemistry/
 import { PLAYBOOKS as NDA_BIOLOGY_PLAYBOOKS } from "@/app/guide/nda-biology/_data/playbooks";
 import { PLAYBOOKS as NDA_GEOGRAPHY_PLAYBOOKS } from "@/app/guide/nda-geography/_data/playbooks";
 import { PLAYBOOKS as NDA_HISTORY_PLAYBOOKS } from "@/app/guide/nda-history/_data/playbooks";
+import { PLAYBOOKS as NDA_POLITY_PLAYBOOKS } from "@/app/guide/nda-polity/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -80,6 +81,7 @@ const NDA_CHEMISTRY_BY_CHAPTER = buildChapterMap(NDA_CHEMISTRY_PLAYBOOKS);
 const NDA_BIOLOGY_BY_CHAPTER = buildChapterMap(NDA_BIOLOGY_PLAYBOOKS);
 const NDA_GEOGRAPHY_BY_CHAPTER = buildChapterMap(NDA_GEOGRAPHY_PLAYBOOKS);
 const NDA_HISTORY_BY_CHAPTER = buildChapterMap(NDA_HISTORY_PLAYBOOKS);
+const NDA_POLITY_BY_CHAPTER = buildChapterMap(NDA_POLITY_PLAYBOOKS);
 
 // ─── Public API ───────────────────────────────────────────────────────────
 
@@ -141,8 +143,11 @@ function resolveGuide(
     case "History":
       return chapterPlaybookLink("nda-history", input.chapterName, NDA_HISTORY_BY_CHAPTER);
 
+    case "Polity":
+      return chapterPlaybookLink("nda-polity", input.chapterName, NDA_POLITY_BY_CHAPTER);
+
     default:
-      // Polity, Economics, Current Affairs — no guide yet.
+      // Economics, Current Affairs — no guide yet.
       return null;
   }
 }

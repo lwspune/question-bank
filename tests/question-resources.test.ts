@@ -218,7 +218,6 @@ describe("getQuestionResources — NDA Chemistry / Biology / Geography", () => {
 
 describe("getQuestionResources — NDA subjects without a guide", () => {
   it.each([
-    "Polity",
     "Economics",
     "Current Affairs",
   ])("returns no guide for NDA %s (no guide shipped yet)", (subj) => {
@@ -250,6 +249,33 @@ describe("getQuestionResources — NDA History (per-chapter playbook)", () => {
     const res = call({
       examName: "NDA",
       subjectName: "History",
+      chapterName: "Imaginary Chapter",
+      subtopicName: null,
+    });
+    expect(res.guide).toBeNull();
+  });
+});
+
+describe("getQuestionResources — NDA Polity (per-chapter playbook)", () => {
+  it("returns the chapter playbook chip for NDA Polity Government Structure", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "Polity",
+      chapterName:
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies",
+      subtopicName: "Constitutional Bodies and Offices",
+    });
+    expect(res.guide?.href).toBe(
+      "/guide/nda-polity/playbooks/government-structure"
+    );
+    expect(res.guide?.label).toContain("Playbook:");
+    expect(res.notes).toBeNull();
+  });
+
+  it("returns null guide for an unknown NDA Polity chapter", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "Polity",
       chapterName: "Imaginary Chapter",
       subtopicName: null,
     });
