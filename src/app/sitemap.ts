@@ -154,6 +154,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
+    // NDA Current Affairs — single-page Template D (theme-prep checklist).
+    // Priority 0.6 — thinner than Economics's 0.7 to flag the unusual template
+    // shape for crawlers (content is shape-calibration, not memorise-this).
+    {
+      url: `${SITE_URL}/guide/nda-current-affairs`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
   ];
 
   // Notes routes derive from NOTES_CHAPTERS. Adding a chapter to that

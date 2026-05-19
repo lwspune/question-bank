@@ -154,8 +154,16 @@ function resolveGuide(
         label: "NDA Economics strategy",
       };
 
+    case "Current Affairs":
+      // Template D single-page — no playbooks array. 180 q across 8 chapters;
+      // the half-life directive + 8 anchor themes + drill CTAs live on the
+      // landing. All 8 CA chapters map to the same landing.
+      return {
+        href: "/guide/nda-current-affairs",
+        label: "NDA Current Affairs strategy",
+      };
+
     default:
-      // Current Affairs — no guide.
       return null;
   }
 }

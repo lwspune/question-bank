@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Scale, TrendingUp } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Newspaper, Scale, TrendingUp } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History, Polity and Economics",
+  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, NDA PART A Polity, and NDA PART A Economics. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, NDA PART A Polity, NDA PART A Economics, and NDA Current Affairs. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -159,6 +159,21 @@ const GUIDES: ExamGuide[] = [
       "Honest cap: ~6 marks/paper, target 3–4. Don't let it eat time from Geography/History.",
     ],
   },
+  {
+    href: "/guide/nda-current-affairs",
+    exam: "NDA Current Affairs",
+    title: "How NDA Current Affairs actually works",
+    blurb:
+      "A 180-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of questions reference events within 12 months of their paper — so this guide teaches the recurring question SHAPES, not the historical facts. Eight anchor themes with prep checklists.",
+    qCount: 180,
+    yearWindow: "2017–2026 · 18 papers",
+    highlights: [
+      "Single-page Template D — theme-prep-checklist for a short-half-life subject",
+      "8 anchor themes (5+ year recurrence) + 16 recurring + 7 occasional",
+      "Drill the bank for SHAPE; harvest THIS YEAR's facts from an external compendium",
+      "~10 q/paper · ~40 marks max · target ~24 marks at 80% on 7 attempts",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -195,8 +210,8 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History, Polity and Economics"
-            subtitle="Nine evidence-led guides — one per NDA-eligible subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs"
+            subtitle="Ten evidence-led guides — one per NDA-eligible subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
@@ -218,7 +233,9 @@ export default function NdaGuideIndex() {
                           ? Scale
                           : g.href.includes("economics")
                             ? TrendingUp
-                            : BookOpen;
+                            : g.href.includes("current-affairs")
+                              ? Newspaper
+                              : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -273,8 +290,8 @@ export default function NdaGuideIndex() {
             What makes these different
           </h2>
           <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-            All nine guides are built the same way: pull every PUBLIC
-            question from the bank, classify it, look at the patterns. Every
+            All ten guides are built the same way: pull every PUBLIC question
+            from the bank, classify it, look at the patterns. Every
             &ldquo;drill the N questions&rdquo; link goes to the exact set
             we&rsquo;re talking about. No claim survives that the data
             doesn&rsquo;t back up.

@@ -10,6 +10,7 @@ import {
   Landmark,
   Languages,
   Leaf,
+  Newspaper,
   NotebookPen,
   Scale,
   TrendingUp,
@@ -56,6 +57,7 @@ const GUIDE_PREVIEWS: GuidePreview[] = [
   { href: "/guide/nda-chemistry", exam: "Chemistry (Part B)", qCount: 262, Icon: FlaskConical },
   { href: "/guide/nda-history", exam: "History (Part A)", qCount: 260, Icon: Landmark },
   { href: "/guide/nda-biology", exam: "Biology (Part B)", qCount: 190, Icon: Leaf },
+  { href: "/guide/nda-current-affairs", exam: "Current Affairs", qCount: 180, Icon: Newspaper },
   { href: "/guide/nda-polity", exam: "Polity (Part A)", qCount: 90, Icon: Scale },
   { href: "/guide/nda-economics", exam: "Economics (Part A)", qCount: 24, Icon: TrendingUp },
 ];
@@ -144,7 +146,7 @@ export default async function NdaHomePage() {
               className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <BookOpen className="h-4 w-4" aria-hidden />
-              All nine guides
+              All ten guides
             </Link>
           </div>
         </section>
@@ -159,7 +161,7 @@ export default async function NdaHomePage() {
               href="/guide/nda"
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
             >
-              See all nine
+              See all ten
               <ArrowRight className="h-3.5 w-3.5" aria-hidden />
             </Link>
           </div>

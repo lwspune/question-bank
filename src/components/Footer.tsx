@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, NotebookPen, Scale, TrendingUp } from "lucide-react";
+import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, Scale, TrendingUp } from "lucide-react";
 
 const REPORT_EMAIL = "connect.lwspune@gmail.com";
 
@@ -74,6 +74,13 @@ export default function Footer() {
           >
             <TrendingUp className="h-3 w-3" aria-hidden />
             NDA Economics Guide
+          </Link>
+          <Link
+            href="/guide/nda-current-affairs"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Newspaper className="h-3 w-3" aria-hidden />
+            NDA Current Affairs Guide
           </Link>
           <Link
             href="/notes/nda-maths/statistics"

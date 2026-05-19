@@ -217,12 +217,10 @@ describe("getQuestionResources — NDA Chemistry / Biology / Geography", () => {
 });
 
 describe("getQuestionResources — NDA subjects without a guide", () => {
-  it.each([
-    "Current Affairs",
-  ])("returns no guide for NDA %s (no guide shipped yet)", (subj) => {
+  it("returns null for an unknown NDA subject we haven't guided", () => {
     const res = call({
       examName: "NDA",
-      subjectName: subj,
+      subjectName: "Unknown Imaginary Subject",
       chapterName: "Anything",
       subtopicName: "Anything",
     });
@@ -278,6 +276,59 @@ describe("getQuestionResources — NDA History (per-chapter playbook)", () => {
       subtopicName: null,
     });
     expect(res.guide).toBeNull();
+  });
+});
+
+describe("getQuestionResources — NDA Current Affairs (single-page Template D, no playbooks)", () => {
+  it.each([
+    [
+      "International Affairs and Relations",
+      "India's Foreign Policy and Bilateral Relations",
+    ],
+    [
+      "Government Schemes, Policy and Governance",
+      "Health, Education and Welfare Schemes",
+    ],
+    [
+      "Defence and Military Exercises",
+      "Military Exercises — Bilateral and Multilateral",
+    ],
+    ["Sports", "Cricket — Records, Tournaments and Players"],
+    ["Science and Technology", "Space Technology and Astronomy"],
+    [
+      "Awards, Honours, Books and Culture",
+      "Civilian Awards, Honours and Educational Institutions",
+    ],
+    [
+      "National Events, Persons and India General Knowledge",
+      "Indian Economy, Geography and Resources",
+    ],
+    ["Environment, Ecology and Energy", "Ramsar Sites, Wetlands and Protected Areas"],
+  ])(
+    "links the NDA Current Affairs landing for chapter %s",
+    (chapter, subtopic) => {
+      const res = call({
+        examName: "NDA",
+        subjectName: "Current Affairs",
+        chapterName: chapter,
+        subtopicName: subtopic,
+      });
+      expect(res.guide).not.toBeNull();
+      expect(res.guide!.href).toBe("/guide/nda-current-affairs");
+      expect(res.guide!.label.toLowerCase()).toContain("current affairs");
+      expect(res.notes).toBeNull();
+    }
+  );
+
+  it("still links the landing when subtopic is null (single-page guide is chapter-agnostic)", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "Current Affairs",
+      chapterName: "Sports",
+      subtopicName: null,
+    });
+    expect(res.guide).not.toBeNull();
+    expect(res.guide!.href).toBe("/guide/nda-current-affairs");
   });
 });
 
