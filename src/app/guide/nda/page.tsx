@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Scale } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Scale, TrendingUp } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History and Polity",
+  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History, Polity and Economics",
   description:
-    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, and NDA PART A Polity. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, NDA PART A Polity, and NDA PART A Economics. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },
 };
 
@@ -144,6 +144,21 @@ const GUIDES: ExamGuide[] = [
       "Trends: paper has NOT consistently hardened, but 2026 NDA-1 was the hardest (50%) and most Govt-Structure-heavy (7 of 10 q)",
     ],
   },
+  {
+    href: "/guide/nda-economics",
+    exam: "NDA PART A Economics",
+    title: "How NDA Economics actually works",
+    blurb:
+      "A 24-question analysis of every PART A Economics paper, 2017–2026. The smallest GAT topic — about 1.5 q/paper, ~6 marks max. The honest stance, the Five Year Plans timeline, on a single page.",
+    qCount: 24,
+    yearWindow: "2017–2026 · 16 papers",
+    highlights: [
+      "Single-page guide — bank too thin for a multi-route structure",
+      "75% of bank is Five Year Plans — 12-plan timeline as the recall anchor",
+      "41.7% HARD bank-wide — densest of any NDA subject, distractors are engineered",
+      "Honest cap: ~6 marks/paper, target 3–4. Don't let it eat time from Geography/History.",
+    ],
+  },
 ];
 
 export default function NdaGuideIndex() {
@@ -154,8 +169,8 @@ export default function NdaGuideIndex() {
         <GuideJsonLd
           type="CollectionPage"
           path="/guide/nda"
-          headline="NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology and Geography"
-          description="Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, and NDA PART A Geography. Every claim is measured against the live past-year question bank."
+          headline="NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History, Polity and Economics"
+          description="Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, NDA PART A Polity, and NDA PART A Economics. Every claim is measured against the live past-year question bank."
         />
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
           <ol className="flex flex-wrap items-center gap-1.5">
@@ -180,8 +195,8 @@ export default function NdaGuideIndex() {
         <div className="mt-6 sm:mt-8">
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History and Polity"
-            subtitle="Eight evidence-led guides — one per subject — built from the live past-year question bank. Pick the subject you're preparing."
+            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History, Polity and Economics"
+            subtitle="Nine evidence-led guides — one per NDA-eligible subject — built from the live past-year question bank. Pick the subject you're preparing."
           />
         </div>
 
@@ -201,7 +216,9 @@ export default function NdaGuideIndex() {
                         ? Landmark
                         : g.href.includes("polity")
                           ? Scale
-                          : BookOpen;
+                          : g.href.includes("economics")
+                            ? TrendingUp
+                            : BookOpen;
             return (
               <li key={g.href}>
                 <Link
@@ -256,7 +273,7 @@ export default function NdaGuideIndex() {
             What makes these different
           </h2>
           <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-            All eight guides are built the same way: pull every PUBLIC
+            All nine guides are built the same way: pull every PUBLIC
             question from the bank, classify it, look at the patterns. Every
             &ldquo;drill the N questions&rdquo; link goes to the exact set
             we&rsquo;re talking about. No claim survives that the data

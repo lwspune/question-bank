@@ -146,8 +146,16 @@ function resolveGuide(
     case "Polity":
       return chapterPlaybookLink("nda-polity", input.chapterName, NDA_POLITY_BY_CHAPTER);
 
+    case "Economics":
+      // Single-page landing — no playbooks array. 24 q in 1 chapter; the
+      // strategic stance + Five Year Plans reference live on the landing.
+      return {
+        href: "/guide/nda-economics",
+        label: "NDA Economics strategy",
+      };
+
     default:
-      // Economics, Current Affairs — no guide yet.
+      // Current Affairs — no guide.
       return null;
   }
 }

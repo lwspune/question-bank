@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, FlaskConical, Globe, Landmark, Languages, Leaf, NotebookPen, Scale } from "lucide-react";
+import { ArrowRight, Atom, FlaskConical, Globe, Landmark, Languages, Leaf, NotebookPen, Scale, TrendingUp } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -241,6 +241,31 @@ export default function NdaMathsLanding() {
             Schedules reference, Cornerstone/Foundation/Specialist-Wildcard
             tier strands — across 90 PART A Polity questions (the smallest
             GAT section), 2017–2026.
+          </p>
+        </div>
+        <ArrowRight
+          className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+          aria-hidden
+        />
+      </Link>
+
+      {/* Cross-link to NDA Economics — the smallest NDA guide (single page). */}
+      <Link
+        href="/guide/nda-economics"
+        className="group mt-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4 transition-colors hover:border-primary/50 hover:bg-primary/10"
+      >
+        <TrendingUp
+          className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+          aria-hidden
+        />
+        <div className="flex-1">
+          <p className="text-sm font-semibold tracking-tight text-foreground">
+            Also new: NDA PART A Economics — single-page guide
+          </p>
+          <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+            24 questions, ~1.5 q/paper, ~6 marks max. The smallest NDA topic
+            gets the thinnest treatment — the Five Year Plans timeline as a
+            recall anchor and an honest strategic cap, on one page.
           </p>
         </div>
         <ArrowRight

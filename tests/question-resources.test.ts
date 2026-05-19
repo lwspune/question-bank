@@ -218,7 +218,6 @@ describe("getQuestionResources — NDA Chemistry / Biology / Geography", () => {
 
 describe("getQuestionResources — NDA subjects without a guide", () => {
   it.each([
-    "Economics",
     "Current Affairs",
   ])("returns no guide for NDA %s (no guide shipped yet)", (subj) => {
     const res = call({
@@ -229,6 +228,32 @@ describe("getQuestionResources — NDA subjects without a guide", () => {
     });
     expect(res.guide).toBeNull();
     expect(res.notes).toBeNull();
+  });
+});
+
+describe("getQuestionResources — NDA Economics (single-page landing, no playbooks)", () => {
+  it("links the NDA Economics landing for every Economics question", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "Economics",
+      chapterName: "Indian Economy",
+      subtopicName: "Five Year Plans and Indian Planning",
+    });
+    expect(res.guide).not.toBeNull();
+    expect(res.guide!.href).toBe("/guide/nda-economics");
+    expect(res.guide!.label.toLowerCase()).toContain("economics");
+    expect(res.notes).toBeNull();
+  });
+
+  it("still links the landing when subtopic is null (single-page guide is chapter-agnostic)", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "Economics",
+      chapterName: "Indian Economy",
+      subtopicName: null,
+    });
+    expect(res.guide).not.toBeNull();
+    expect(res.guide!.href).toBe("/guide/nda-economics");
   });
 });
 

@@ -147,6 +147,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
+    // NDA Economics — single-page landing, no sub-routes.
+    {
+      url: `${SITE_URL}/guide/nda-economics`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
   ];
 
   // Notes routes derive from NOTES_CHAPTERS. Adding a chapter to that
