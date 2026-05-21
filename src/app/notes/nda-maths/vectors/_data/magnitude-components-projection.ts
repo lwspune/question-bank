@@ -6,10 +6,10 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How to measure a vector's length, decompose it along axes, project it onto another vector, and read off the angles it makes with the coordinate axes.",
   whyItMatters:
-    "11 PYQs across 2018–2024, almost entirely EASY or MODERATE — the lowest-hanging-fruit subtopic in the chapter. " +
-    "Four lever ideas account for every question: magnitude as the square root of squared components, " +
-    "direction cosines whose squares sum to 1, scalar projection as a dot-product ratio, and unit-vector construction. " +
-    "If you only have time for one Vectors subtopic, do this one — the formulas are short and the trap surface is narrow.",
+    "This is where you learn to MEASURE vectors. How long is one (its magnitude)? At what angles to the coordinate axes does it point (its direction cosines)? " +
+    "How much of one vector lies along another (its scalar projection)? And how do you build a unit vector pointing exactly where you want it? " +
+    "Each of these turns the geometric arrow from the foundations into a number you can compute with. " +
+    "11 PYQs across 2018–2024, almost entirely EASY or MODERATE — the formulas are short and the trap surface is narrow, so it's also the lowest-hanging-fruit subtopic in the chapter.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {

@@ -6,9 +6,10 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The scalar that captures how aligned two vectors are — used to compute angles, test perpendicularity, and evaluate work done by a force.",
   whyItMatters:
-    "32 PYQs across 2017–2026 — the second-biggest Vectors subtopic. " +
-    "12 EASY + 16 MODERATE + 4 HARD — almost every paper has one. " +
-    "The five concepts below cover the entire bandwidth: components-form evaluation (incl. work done = \\(\\vec{F}\\cdot\\vec{d}\\)), perpendicularity test, angle from dot product, constraint-solving when the angle is the unknown, and configurations of unit / orthogonal triples.",
+    "The dot product turns two vectors into a single number — and that number contains everything you'd ever want to know about how the two vectors RELATE. " +
+    "Are they perpendicular? At what angle do they meet? How aligned are they with each other? " +
+    "The five concepts below build that toolkit: starting with the formula itself (and its physical meaning as work done by a force \\(\\vec{F}\\cdot\\vec{d}\\)), through the perpendicularity test and the angle formula, ending with the most-tested setup — \\\"given a constraint on \\(\\vec{a}\\) and \\(\\vec{b}\\), find the angle between them.\\\" " +
+    "32 PYQs across 2017–2026 — the second-biggest Vectors subtopic; almost every paper has one — with a difficulty mix of 12 EASY + 16 MODERATE + 4 HARD.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {

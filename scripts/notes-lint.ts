@@ -174,6 +174,12 @@ async function main() {
       }
     }
     for (const c of ref.note.concepts) {
+      // Foundation concepts (no pyqExampleId) are bank-less by design — pure
+      // teaching primitives like "what is a vector" or "scalar multiplication"
+      // that don't map to a specific PYQ lever. Don't warn on missing tags
+      // for them; the warning is meant to catch FORGOTTEN tagging on
+      // bank-anchored concepts, not deliberate foundation content.
+      if (!c.pyqExampleId) continue;
       if (!taggedConceptSlugs.has(c.slug)) {
         issues.push({
           severity: "warn",

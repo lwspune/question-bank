@@ -6,11 +6,10 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The vector product whose magnitude is the area of a parallelogram, its direction the right-hand-rule perpendicular — plus the scalar and vector triple products built from it.",
   whyItMatters:
-    "37 PYQs across 2017–2026, with 27% rated HARD — the densest and toughest Vectors subtopic. " +
-    "Cross-product algebra (anti-commutative, not associative), magnitude / area / Lagrange identity, " +
-    "perpendicular-unit-vector construction, moment of a force, scalar triple product " +
-    "as determinant, cyclic / derived identities, and the vector triple product (BAC-CAB) " +
-    "together cover every question. Master these seven concepts and the chapter's HARD tail collapses.",
+    "The cross product takes two vectors and produces a THIRD vector — perpendicular to both, with magnitude equal to the area of the parallelogram they span. " +
+    "That single idea opens up a family of geometric tools: computing areas of triangles and parallelograms, building unit vectors perpendicular to a plane, expressing torque/moment of a force about a point, and detecting when three vectors lie in one plane (via the scalar triple product). " +
+    "The seven concepts below take you from the basic algebra (anti-commutative, NOT associative) through the Lagrange identity, the triple products, and the vector triple product (BAC-CAB rule). " +
+    "37 PYQs across 2017–2026, with 27% rated HARD — the densest and toughest Vectors subtopic. Master these seven and the chapter's HARD tail collapses.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
