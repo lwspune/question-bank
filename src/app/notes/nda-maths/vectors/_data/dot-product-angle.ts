@@ -8,7 +8,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
   whyItMatters:
     "The dot product turns two vectors into a single number — and that number contains everything you'd ever want to know about how the two vectors RELATE. " +
     "Are they perpendicular? At what angle do they meet? How aligned are they with each other? " +
-    "The five concepts below build that toolkit: starting with the formula itself (and its physical meaning as work done by a force \\(\\vec{F}\\cdot\\vec{d}\\)), through the perpendicularity test and the angle formula, ending with the most-tested setup — \\\"given a constraint on \\(\\vec{a}\\) and \\(\\vec{b}\\), find the angle between them.\\\" " +
+    "The five concepts below build that toolkit: starting with the formula itself (and its physical meaning as work done by a force, W = F · d), through the perpendicularity test and the angle formula, ending with the most-tested setup — \"given a constraint on two vectors a and b, find the angle between them.\" " +
     "32 PYQs across 2017–2026 — the second-biggest Vectors subtopic; almost every paper has one — with a difficulty mix of 12 EASY + 16 MODERATE + 4 HARD.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────

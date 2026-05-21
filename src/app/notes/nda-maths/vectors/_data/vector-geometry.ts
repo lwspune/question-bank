@@ -7,7 +7,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
     "Treating triangle / parallelogram / quadrilateral sides and diagonals as vectors, then using the loop identity, centroid formula and parallelogram law to extract distances and angles.",
   whyItMatters:
     "Once vectors are anchored at an origin, plane figures (triangles, parallelograms, quadrilaterals) become vector equations you can solve algebraically. " +
-    "The closed-loop identity \\(\\vec{AB}+\\vec{BC}+\\vec{CA}=\\vec{0}\\) turns a triangle into one usable relation; the centroid is the average of the three vertex position vectors; parallelogram identities link sides to diagonals; named-vertex angles drop out of dot products on position vectors. " +
+    "The closed-loop identity AB + BC + CA = 0 turns a triangle into one usable relation; the centroid is the average of the three vertex position vectors; parallelogram identities link sides to diagonals; named-vertex angles drop out of dot products on position vectors. " +
     "The four concepts below are the levers — once you spot which one is in play, every PYQ resolves to a few lines of algebra. " +
     "11 PYQs across 2017–2026, mostly MODERATE.",
   concepts: [

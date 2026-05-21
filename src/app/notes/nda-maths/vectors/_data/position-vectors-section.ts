@@ -6,7 +6,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
   subtopicName: "Position Vectors and Section",
   title: "Foundations: Vectors, Operations, and Position",
   oneLineDefinition:
-    "What a vector is, how to add and scale them, the \\(\\hat{i}\\hat{j}\\hat{k}\\) basis that turns vectors into numbers, and how anchoring at an origin turns geometry into algebra.",
+    "What a vector is, how to add and scale them, the standard î-ĵ-k̂ basis that turns vectors into numbers, and how anchoring at an origin turns geometry into algebra.",
   whyItMatters:
     "Start here. The rest of the chapter — magnitude, dot product, cross product, vector geometry — is built on the eight ideas below. " +
     "The first six are pure FOUNDATIONS (what a vector is, addition, scalar multiplication, components, types of vectors); " +
@@ -196,7 +196,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     // 5 ───────────────────────────────────────────────────────────────────────
     {
       slug: "component-form-and-basis",
-      name: "Component form: the \\(\\hat{i}, \\hat{j}, \\hat{k}\\) basis",
+      name: "Component form: the î, ĵ, k̂ basis",
       intuition:
         "Pick three mutually-perpendicular unit vectors \\(\\hat{i}, \\hat{j}, \\hat{k}\\) along the positive \\(x, y, z\\) axes. " +
         "Every 3-D vector can be uniquely written as \\(\\vec{v} = v_1\\hat{i} + v_2\\hat{j} + v_3\\hat{k}\\) — " +

@@ -7,7 +7,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
     "How two variables move together — correlation measures the strength of the link, regression draws the best-fit line.",
   whyItMatters:
     "27 PYQs across 2017–2026, with 6 HARD — the highest hard-rate of any Statistics subtopic. " +
-    "Almost every recent paper asks one of three shapes: properties of \\(r\\) under linear transformation, finding regression lines, identifying which equation is which, or computing the angle between them. " +
+    "Almost every recent paper asks one of three shapes: properties of the correlation coefficient r under linear transformation, finding regression lines, identifying which equation is which, or computing the angle between them. " +
     "Five tight concepts cover the entire surface.",
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
