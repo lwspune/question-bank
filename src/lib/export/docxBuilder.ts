@@ -132,6 +132,7 @@ export async function buildQuestionPaper(
           /* skipContextParagraph */ false
         )
       );
+      children.push(blank());
       position += 1;
       continue;
     }
@@ -144,6 +145,7 @@ export async function buildQuestionPaper(
           /* skipContextParagraph */ false
         )
       );
+      children.push(blank());
       position += 1;
       continue;
     }
@@ -159,8 +161,8 @@ export async function buildQuestionPaper(
           /* skipContextParagraph */ true
         )
       );
+      children.push(blank());
     }
-    children.push(blank());
     position += group.questions.length;
   }
 
@@ -209,6 +211,12 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
           ],
         })
       );
+    }
+    // Plain answer key stays tight (one paragraph per question, easy to
+    // skim). Solution mode adds a blank between blocks so each solution
+    // breathes — mirrors the paper's per-question rhythm.
+    if (input.includeSolutions) {
+      children.push(blank());
     }
   }
 
