@@ -14,6 +14,7 @@ import type { QuestionRow } from "@/lib/questions/query";
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
 import { readImageDimensions, fitWithinBox } from "./imageDimensions";
 import { groupBySet } from "./groupBySet";
+import { stripPassageCountPhrase } from "./stripPassageCount";
 
 const MARGIN = 720; // 0.5" in twips
 const COL_SPACE = 720;
@@ -115,6 +116,12 @@ export async function buildQuestionPaper(
 
   // Group consecutive set siblings so the shared passage prints once at the
   // top of each unbroken run. Standalone questions go through unchanged.
+  // The banner names the questions explicitly by their 1-indexed position
+  // in the export ("Common context for questions X-Y:") so a student reading
+  // the paper sees which questions share the context without inferring it
+  // from visual grouping. Set-of-1 falls through to a standalone render with
+  // the passage inline as Context — a 1-question "Set:" framing reads worst.
+  let position = 1;
   for (const group of groupBySet(input.questions)) {
     if (group.kind === "single") {
       children.push(
@@ -125,9 +132,24 @@ export async function buildQuestionPaper(
           /* skipContextParagraph */ false
         )
       );
+      position += 1;
       continue;
     }
-    children.push(...passageBanner(group.passage, builder));
+    if (group.questions.length === 1) {
+      children.push(
+        ...questionParagraphs(
+          group.questions[0],
+          builder,
+          input.imageBytes,
+          /* skipContextParagraph */ false
+        )
+      );
+      position += 1;
+      continue;
+    }
+    const firstQ = position;
+    const lastQ = position + group.questions.length - 1;
+    children.push(...passageBanner(group.passage, firstQ, lastQ, builder));
     for (const q of group.questions) {
       children.push(
         ...questionParagraphs(
@@ -139,6 +161,7 @@ export async function buildQuestionPaper(
       );
     }
     children.push(blank());
+    position += group.questions.length;
   }
 
   const doc = new Document({
@@ -330,18 +353,30 @@ function blank(): Paragraph {
 }
 
 /**
- * Print the passage shared by a question-set once, then the questions
- * follow numbered. Italicised "Set:" prefix matches the per-question
- * "Context:" prefix used elsewhere so the layout stays consistent.
+ * Print the passage shared by a question-set once, naming the questions
+ * by their 1-indexed position in the export so the student reading the
+ * paper sees exactly which questions inherit this context. The passage's
+ * own count phrase ("for the three (03) items that follow") is stripped
+ * at render so it can't contradict the banner when the user has selected
+ * a subset of the original siblings.
  */
-function passageBanner(passage: string, builder: Builder): Paragraph[] {
+function passageBanner(
+  passage: string,
+  firstQ: number,
+  lastQ: number,
+  builder: Builder
+): Paragraph[] {
   if (!passage) return [];
   return [
     new Paragraph({
       indent: { left: 0 },
       children: [
-        new TextRun({ text: "Set: ", italics: true, bold: true }),
-        ...mathRuns(passage, builder),
+        new TextRun({
+          text: `Common context for questions ${firstQ}-${lastQ}: `,
+          italics: true,
+          bold: true,
+        }),
+        ...mathRuns(stripPassageCountPhrase(passage), builder),
       ],
     }),
   ];
