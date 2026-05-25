@@ -66,7 +66,7 @@ const documentDefaults = {
             text: "%1.",
             alignment: AlignmentType.LEFT,
             style: {
-              paragraph: { indent: { left: 720, hanging: 480 } },
+              paragraph: { indent: { left: 360, hanging: 360 } },
             },
           },
         ],
@@ -226,13 +226,13 @@ function questionParagraphs(
       QUESTION_IMAGE_MAX_HEIGHT,
       FALLBACK_QUESTION_DIMS
     );
-    out.push(imageParagraph(data, dims.width, dims.height, 720));
+    out.push(imageParagraph(data, dims.width, dims.height, 0));
   }
 
   if (q.context && !skipContextParagraph) {
     out.push(
       new Paragraph({
-        indent: { left: 720 },
+        indent: { left: 0 },
         children: [
           new TextRun({ text: "Context: ", italics: true }),
           ...mathRuns(q.context, builder),
@@ -244,7 +244,7 @@ function questionParagraphs(
   for (const opt of q.options) {
     out.push(
       new Paragraph({
-        indent: { left: 720 },
+        indent: { left: 0 },
         children: [
           new TextRun({ text: `(${opt.label}) ` }),
           ...mathRuns(opt.text, builder),
@@ -259,7 +259,7 @@ function questionParagraphs(
         OPTION_IMAGE_MAX_HEIGHT,
         FALLBACK_OPTION_DIMS
       );
-      out.push(imageParagraph(data, dims.width, dims.height, 1080));
+      out.push(imageParagraph(data, dims.width, dims.height, 0));
     }
   }
 

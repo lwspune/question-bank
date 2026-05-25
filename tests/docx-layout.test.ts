@@ -72,7 +72,7 @@ describe("docx layout defaults", () => {
     const buf = await buildQuestionPaper({ title: "T", questions: [SAMPLE] });
     const numbering = await readPart(buf, "word/numbering.xml");
     expect(numbering).toContain("decimal");
-    expect(numbering).toMatch(/<w:ind\s+w:left="720"[^>]*w:hanging="480"/);
+    expect(numbering).toMatch(/<w:ind\s+w:left="360"[^>]*w:hanging="360"/);
   });
 
   it("question paragraphs reference the numbered list", async () => {
@@ -82,11 +82,12 @@ describe("docx layout defaults", () => {
     expect(xml).toMatch(/<w:numId\s+w:val="\d+"\s*\/>/);
   });
 
-  it("options are indented to align under question text (4 indented paragraphs per question)", async () => {
+  it("options sit flush at the left margin (no 720-twip indent on option/context paragraphs)", async () => {
     const buf = await buildQuestionPaper({ title: "T", questions: [SAMPLE] });
     const xml = await readPart(buf, "word/document.xml");
-    const matches = xml.match(/<w:ind\s+w:left="720"\s*\/>/g) ?? [];
-    expect(matches.length).toBeGreaterThanOrEqual(4);
+    // Previously options + context carried <w:ind w:left="720"/>; with the
+    // flush-left layout there should be no such paragraph-level indent.
+    expect(xml).not.toMatch(/<w:ind\s+w:left="720"\s*\/>/);
   });
 
   // Without this, Word falls back to its built-in math defaults
