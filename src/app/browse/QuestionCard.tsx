@@ -61,11 +61,10 @@ export default function QuestionCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
-  // Click-to-reveal: students/teachers pick an option to unlock the answer
-  // visualisation. Admins get the answer revealed by default — they're
-  // scanning content, not testing themselves.
+  // Click-to-reveal: every viewer (including admin) picks an option to
+  // unlock the answer. Admins audit content via the Edit page.
   const [picked, setPicked] = useState<OptionLabel | null>(null);
-  const revealed = isAdmin || picked !== null;
+  const revealed = picked !== null;
   const cart = useCart();
   const inCart = cart.has(question.id);
 
@@ -242,20 +241,14 @@ export default function QuestionCard({
                       showWrong && "border-l-2 border-l-red-500"
                     )}
                   >
-                    {isAdmin ? (
-                      <div className="flex items-start gap-3 p-2.5 text-sm">
-                        {optionContent}
-                      </div>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => setPicked(opt.label)}
-                        aria-pressed={isPickedByUser}
-                        className="flex w-full items-start gap-3 p-2.5 text-left text-sm transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
-                      >
-                        {optionContent}
-                      </button>
-                    )}
+                    <button
+                      type="button"
+                      onClick={() => setPicked(opt.label)}
+                      aria-pressed={isPickedByUser}
+                      className="flex w-full items-start gap-3 p-2.5 text-left text-sm transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    >
+                      {optionContent}
+                    </button>
                     {opt.imageUrl && (
                       <div className="px-2.5 pb-2.5">
                         <div className="ml-9">
@@ -271,7 +264,7 @@ export default function QuestionCard({
                 );
               })}
             </ol>
-            {!isAdmin && !revealed && (
+            {!revealed && (
               <p className="pt-1 text-center text-xs text-muted-foreground">
                 Tap an option to check your answer.
               </p>
