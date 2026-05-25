@@ -51,6 +51,66 @@ All NDA cleanup complete. Phase B/C/D template fully stable.
 
 ---
 
+## Content quality audits (data work)
+
+Per-chapter sweep for LaTeX formatting, broken math, hallucinated solutions, and **wrong correct-answer keys**. The *primary* value of this audit is the last item — LaTeX prettification is a cleanup side-effect. Two chapters audited so far (2026-05-23), and **9 of 48 audited questions across both had the wrong option flagged `is_correct=true`** in the DB (19%). On `/browse` click-to-reveal these were showing the wrong "Correct" badge to students until the flip shipped.
+
+**Completed (see CLAUDE.md decisions log entries):**
+
+| Chapter | q | Flagged | Fixed | Wrong-key flips | Held for PDF |
+|---|---|---|---|---|---|
+| NDA Maths · Matrices & Determinants | 170 | 8 | 8 | 1 (Q23 Apr 2025 NDA-2) | 0 |
+| NDA Maths · Probability | 162 | 41 | 40 | 10 + 1 misprint-noted | 1 (Q115 Apr 2018 NDA-1 — stem extraction-corrupted) |
+
+The audit has **three probes**, each cheap to run per chapter. **Run Probe 1 first** — wrong-key questions are the load-bearing class.
+
+### Probe 1 — wrong correct-answer key (highest value)
+
+Run each flagged question through derivation against the DB-stored stem. If the math gives a different option than `is_correct=true`, that's the catch. Don't trust the existing solution prose — it often hallucinates a "matches option X" line for the wrong X. Confidence comes from re-deriving against the stem only.
+
+Strong tells in the existing solution prose:
+- **`REVIEW:` / `TODO:` / `FIXME:` / `XXX:` markers** — extraction LLM hedge. Probability had 17 of these in 162 q (10%). High hit-rate for either a wrong key OR a stem-extraction error.
+- **Hedge phrases**: `is inconsistent`, `reading the equation as`, `from the visible structure`, `if \(\Delta < 0\)`, `Common mistake: misreading`, `cannot be determined from`. M&D Q23 had `is inconsistent` and was a wrong-key case.
+- **"Matches option X"** where X differs from the actual keyed correct — caught 4 of 10 Probability mismatches.
+- **Mid-derivation correction or alternative reading** appearing after the main computation — the LLM was uncertain.
+
+If derivation matches the keyed option: pure LaTeX-cleanup. If not: surface to user with the source-paper image, decide whether to flip the key (most cases) or to note an NDA-paper misprint (one case: Q117 Apr 2023 NDA-1 — computed 32/70, key has 33/70, off by 1, none of the four options is 32/70).
+
+### Probe 2 — broken stem LaTeX
+
+Two classes seen so far:
+- `\begin{...matrix}` env with rows of different `&` counts (rows of unequal column count). M&D Q9: row 3 had 4 entries vs others' 3.
+- Multi-factor matrix products with dimensionally inconsistent factors. M&D Q23: `4×3` × `2×?` = `2×1` is impossible.
+- Logically-inconsistent constraints in the stem (Probability Q115 Apr 2018: `2P(A)=3P(B)` AND `P(A)<P(B)` forces `P(B)<0`).
+
+Stems that look broken often have **fabricated solutions** that pretend the broken math works (M&D Q23 prose: "reading the equation as a `2×2` system from the visible structure"). Always read the source PDF before patching a broken stem.
+
+### Probe 3 — unicode math outside `\(...\)`
+
+Grep for `[αβγδεθλμπρσφψωΩΓΔΘΛΣΦΨ√∞∑∏∫±×÷≠≤≥∈∉⊂⊃∪∩²³⁴⁵⁶⁷⁸⁹⁰¹✓✗⇒→⟹⇔]` in `text`, `solution`, and `options.text`. Plus pipe-conditional pattern `P\(\s*\w+\s*\|\s*\w+` after masking out math zones — catches `P(A|B)` written in prose. Mechanical fixes; lowest priority. Last to ship per chapter.
+
+### Scope
+
+Bank has 132 chapters across 11 cleaned subjects + 2 pending. After M&D and Probability, **30 NDA Maths chapters remain** (~1828 q). Expected highest-leverage next candidates in descending q-count order: **Statistics** (160 q — much already touched via `/notes` editorial pass, expect lower hit-rate), **Trigonometric Identities** (138), **Functions** (109), **Vectors** (97), **Lines** (97), **3D Geometry** (89), **Sequence & Series** (89), then PART B subjects after NDA Maths is done.
+
+Don't assume a chapter is clean just because the bank size is small — the wrong-key rate has been 13–25% in the two chapters audited.
+
+### Workflow
+
+Inline chapter-by-chapter in chat (per [[taxonomy-inline-iteration]]). Suggested tier order:
+1. **Tier 1**: stems that render broken (unbalanced delimiters, malformed matrix envs). Always need PDF.
+2. **Tier 2**: solutions with explicit `REVIEW:` markers that flag uncertainty. PDF needed for any whose REVIEW disagrees with the DB key.
+3. **Tier 3**: solutions with `REVIEW:` prefix but no explicit doubt — derive each from scratch; flag any whose computed answer ≠ keyed option.
+4. **Tier 4**: pure LaTeX/unicode cleanup. No key risk if derivation agrees with key, but still verify each before shipping (caught 2 more wrong-key cases in Probability Tier 4).
+
+Recompute `content_hash` whenever the question text OR the correct-label changes (solution-only edits don't affect the hash). Recipe verified in the M&D pilot: `sha256(trim+collapse(text) + '\n' + sorted_normalized_options.join('\n') + '\n' + upper(correct_label))`. Use SQL `digest()` from `pgcrypto` with `COLLATE "C"` on the option sort.
+
+### Future hardening (not blocking the audit)
+
+After ~5 chapters audited, the failure-mode heuristics should be stable enough to lift Probe 1 + 2 + 3 into a lint script (`npm run content:lint`?). Gates pre-push hook so future uploads can't ship PUBLIC with REVIEW markers, mismatched matrix dimensions, or unicode math outside `\(...\)`. **The wrong-key class is not auto-detectable** — that always needs human derivation against the stem — but the other two classes are mechanical.
+
+---
+
 ## Admin tooling
 
 ### Per-question editing of upload-level metadata
