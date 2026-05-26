@@ -16,6 +16,10 @@ const Q_WITH_IMAGES: QuestionRow = {
   subject: { id: "s", name: "Physics" },
   chapter: { id: "c", name: "Optics" },
   subtopic: null,
+  questionNumber: null,
+  pyqYear: null,
+  pyqMonth: null,
+  pyqNote: null,
   options: [
     { label: "A", text: "First option", isCorrect: true, imageUrl: "ORG/opt-a.png" },
     { label: "B", text: "Second option", isCorrect: false, imageUrl: null },

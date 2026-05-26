@@ -16,6 +16,12 @@ export type QuestionRow = {
   solution: string | null;
   imageUrl: string | null;
   setId: string | null;
+  /** Original Q-number from the source PYQ paper's Excel "Q" column (nullable for the 150 pre-migration MHT-CET seed rows). */
+  questionNumber: string | null;
+  /** PYQ metadata — surfaced as the `[Q# · disambiguator · year]` provenance chip on the question card. */
+  pyqYear: number | null;
+  pyqMonth: string | null;
+  pyqNote: string | null;
   exam: { id: string; name: string };
   subject: { id: string; name: string };
   chapter: { id: string; name: string };
@@ -80,6 +86,7 @@ export async function queryQuestions(
     .select(
       `
       id, text, context, difficulty, solution, image_url, set_id,
+      question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
@@ -152,6 +159,10 @@ export async function queryQuestions(
     solution: string | null;
     image_url: string | null;
     set_id: string | null;
+    question_number: string | null;
+    pyq_year: number | null;
+    pyq_month: string | null;
+    pyq_note: string | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
@@ -170,6 +181,10 @@ export async function queryQuestions(
     solution: r.solution,
     imageUrl: r.image_url,
     setId: r.set_id,
+    questionNumber: r.question_number,
+    pyqYear: r.pyq_year,
+    pyqMonth: r.pyq_month,
+    pyqNote: r.pyq_note,
     exam: flatten(r.exam)!,
     subject: flatten(r.subject)!,
     chapter: flatten(r.chapter)!,
@@ -206,6 +221,7 @@ export async function queryQuestionsByIds(
     .select(
       `
       id, text, context, difficulty, solution, image_url, set_id,
+      question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
@@ -232,6 +248,10 @@ export async function queryQuestionsByIds(
     solution: string | null;
     image_url: string | null;
     set_id: string | null;
+    question_number: string | null;
+    pyq_year: number | null;
+    pyq_month: string | null;
+    pyq_note: string | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
@@ -252,6 +272,10 @@ export async function queryQuestionsByIds(
       solution: r.solution,
       imageUrl: r.image_url,
       setId: r.set_id,
+      questionNumber: r.question_number,
+      pyqYear: r.pyq_year,
+      pyqMonth: r.pyq_month,
+      pyqNote: r.pyq_note,
       exam: flatten(r.exam)!,
       subject: flatten(r.subject)!,
       chapter: flatten(r.chapter)!,

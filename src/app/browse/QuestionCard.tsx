@@ -24,6 +24,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
+import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { buildBreadcrumb } from "./breadcrumb";
@@ -288,7 +289,7 @@ export default function QuestionCard({
               </div>
             )}
 
-            <div className="flex items-center justify-between gap-3 border-t pt-2 font-sans">
+            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t pt-2 font-sans">
               {canEdit ? (
                 <Link
                   href={`/questions/${question.id}/edit`}
@@ -300,6 +301,20 @@ export default function QuestionCard({
               ) : (
                 <span />
               )}
+              {(() => {
+                const provenance = formatProvenance({
+                  examName: question.exam.name,
+                  questionNumber: question.questionNumber,
+                  pyqYear: question.pyqYear,
+                  pyqMonth: question.pyqMonth,
+                  pyqNote: question.pyqNote,
+                });
+                return provenance ? (
+                  <span className="font-mono text-[11px] text-muted-foreground/80">
+                    [{provenance}]
+                  </span>
+                ) : null;
+              })()}
               <ReportQuestionDialog
                 questionId={question.id}
                 isLoggedIn={isLoggedIn}

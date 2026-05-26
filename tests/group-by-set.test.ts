@@ -22,6 +22,10 @@ function q(
     solution: null,
     imageUrl: null,
     setId,
+    questionNumber: null,
+    pyqYear: null,
+    pyqMonth: null,
+    pyqNote: null,
     ...taxonomy,
     options: [
       { label: "A", text: "a", isCorrect: true, imageUrl: null },

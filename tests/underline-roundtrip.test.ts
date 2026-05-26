@@ -59,6 +59,10 @@ describe("underline round-trip — docx export uses native Word underline", () =
       subject: { id: "s", name: "English" },
       chapter: { id: "c", name: "Vocabulary" },
       subtopic: null,
+      questionNumber: null,
+      pyqYear: null,
+      pyqMonth: null,
+      pyqNote: null,
       options: optionTexts.map((t, i) => ({
         label: (["A", "B", "C", "D"] as const)[i],
         text: t,

@@ -29,6 +29,10 @@ const SET_SIBLING_1: QuestionRow = {
   subject: { id: "s", name: "Mathematics" },
   chapter: { id: "c", name: "Trigonometric Functions" },
   subtopic: null,
+  questionNumber: null,
+  pyqYear: null,
+  pyqMonth: null,
+  pyqNote: null,
   options: [
     { label: "A", text: "-3/4", isCorrect: true, imageUrl: null },
     { label: "B", text: "0", isCorrect: false, imageUrl: null },

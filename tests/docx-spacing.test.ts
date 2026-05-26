@@ -26,6 +26,10 @@ const BASE: QuestionRow = {
   subject: { id: "s", name: "Mathematics" },
   chapter: { id: "c", name: "Algebra" },
   subtopic: null,
+  questionNumber: null,
+  pyqYear: null,
+  pyqMonth: null,
+  pyqNote: null,
   options: [
     { label: "A", text: "1", isCorrect: true, imageUrl: null },
     { label: "B", text: "2", isCorrect: false, imageUrl: null },
