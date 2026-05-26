@@ -1,8 +1,11 @@
 /**
- * Storage RLS — verifies the bucket policies from migration 0008:
- *   - ADMIN can upload + delete inside their own org folder
- *   - ADMIN cannot write to another org's folder
- *   - TEACHER cannot write anywhere
+ * Storage RLS — verifies the bucket policies from migration 0008 as
+ * amended by migration 0025 (editor write opened to ADMIN + TEACHER):
+ *   - ADMIN A can upload + delete inside Org A's folder
+ *   - ADMIN A cannot write to Org B's folder
+ *   - TEACHER A can upload to Org A's folder (editor write, since 0025)
+ *   - TEACHER A cannot write to Org B's folder
+ *   - ADMIN B cannot delete from Org A's folder
  * Uses the live Supabase project; skipped if env is missing.
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
@@ -26,10 +29,10 @@ describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
   let admin: SupabaseClient;
   let adminAClient: SupabaseClient;
   let adminBClient: SupabaseClient;
-  let teacherClient: SupabaseClient;
+  let teacherAClient: SupabaseClient;
   let adminAUserId: string;
   let adminBUserId: string;
-  let teacherUserId: string;
+  let teacherAUserId: string;
   let orgAId: string;
   let orgBId: string;
   const uploadedPaths: string[] = [];
@@ -58,7 +61,7 @@ describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
       password: PASSWORD,
       email_confirm: true,
     });
-    teacherUserId = t.user!.id;
+    teacherAUserId = t.user!.id;
 
     const { data: orgA } = await admin
       .from("organizations")
@@ -75,16 +78,16 @@ describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
 
     await admin.from("org_members").insert([
       { org_id: orgAId, user_id: adminAUserId, role: "ADMIN" },
-      { org_id: orgAId, user_id: teacherUserId, role: "TEACHER" },
+      { org_id: orgAId, user_id: teacherAUserId, role: "TEACHER" },
       { org_id: orgBId, user_id: adminBUserId, role: "ADMIN" },
     ]);
 
     adminAClient = createClient(url, anon, { auth: { persistSession: false } });
     adminBClient = createClient(url, anon, { auth: { persistSession: false } });
-    teacherClient = createClient(url, anon, { auth: { persistSession: false } });
+    teacherAClient = createClient(url, anon, { auth: { persistSession: false } });
     await adminAClient.auth.signInWithPassword({ email: ADMIN_A_EMAIL, password: PASSWORD });
     await adminBClient.auth.signInWithPassword({ email: ADMIN_B_EMAIL, password: PASSWORD });
-    await teacherClient.auth.signInWithPassword({ email: TEACHER_A_EMAIL, password: PASSWORD });
+    await teacherAClient.auth.signInWithPassword({ email: TEACHER_A_EMAIL, password: PASSWORD });
   });
 
   afterAll(async () => {
@@ -95,7 +98,7 @@ describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
     if (orgBId) await admin.from("organizations").delete().eq("id", orgBId);
     if (adminAUserId) await admin.auth.admin.deleteUser(adminAUserId);
     if (adminBUserId) await admin.auth.admin.deleteUser(adminBUserId);
-    if (teacherUserId) await admin.auth.admin.deleteUser(teacherUserId);
+    if (teacherAUserId) await admin.auth.admin.deleteUser(teacherAUserId);
   });
 
   it("ADMIN A can upload to their own org folder", async () => {
@@ -115,18 +118,18 @@ describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
     expect(error).not.toBeNull();
   });
 
-  it("TEACHER can upload to their own org folder (migration 0025 opens editor write)", async () => {
+  it("TEACHER A can upload to their own org folder (migration 0025 opens editor write)", async () => {
     const path = `${orgAId}/${randomUUID()}.png`;
-    const { error } = await teacherClient.storage
+    const { error } = await teacherAClient.storage
       .from(BUCKET)
       .upload(path, TINY_PNG, { contentType: "image/png" });
     expect(error).toBeNull();
     uploadedPaths.push(path);
   });
 
-  it("TEACHER cannot upload to a different org's folder", async () => {
+  it("TEACHER A cannot upload to a different org's folder", async () => {
     const path = `${orgBId}/${randomUUID()}.png`;
-    const { error } = await teacherClient.storage
+    const { error } = await teacherAClient.storage
       .from(BUCKET)
       .upload(path, TINY_PNG, { contentType: "image/png" });
     expect(error).not.toBeNull();

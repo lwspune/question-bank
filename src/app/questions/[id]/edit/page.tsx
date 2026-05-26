@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import AppHeader from "@/components/AppHeader";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getTagsForQuestion } from "@/lib/tags/conceptTags";
@@ -34,6 +35,8 @@ type RawQuestion = {
   subtopic_id: string | null;
   visibility: "PUBLIC" | "PRIVATE";
   set_id: string | null;
+  last_edited_by: string | null;
+  last_edited_at: string | null;
   options: RawOption[];
 };
 
@@ -62,6 +65,7 @@ export default async function EditQuestionPage({ params }: PageProps) {
       `
       id, text, context, difficulty, solution, image_url,
       org_id, exam_id, subject_id, chapter_id, subtopic_id, visibility, set_id,
+      last_edited_by, last_edited_at,
       options(id, label, text, is_correct, image_url)
     `
     )
@@ -131,6 +135,26 @@ export default async function EditQuestionPage({ params }: PageProps) {
     setMemberCount = count ?? 0;
   }
 
+  // Last-edited attribution: looked up via the service-role admin client
+  // because `auth.users` isn't readable by the user-session client. Skipped
+  // when the question has never been edited (last_edited_by is NULL on rows
+  // created before migration 0025 or via /api/upload).
+  let lastEdited: { label: string; iso: string } | null = null;
+  if (question.last_edited_by && question.last_edited_at) {
+    try {
+      const adminClient = createSupabaseAdminClient();
+      const { data: editor } = await adminClient.auth.admin.getUserById(
+        question.last_edited_by
+      );
+      const meta = (editor.user?.user_metadata ?? {}) as { name?: string };
+      const label = meta.name?.trim() || editor.user?.email || "an org member";
+      lastEdited = { label, iso: question.last_edited_at };
+    } catch {
+      // Service-role lookup failure shouldn't block the edit page;
+      // fall back to no attribution line.
+    }
+  }
+
   // Notes concept tagging: if the question's subtopic has notes content,
   // pass the concept list + current tags so the form can render a multi-select.
   let notesEntry: NotesConceptsEntry | null = null;
@@ -161,6 +185,11 @@ export default async function EditQuestionPage({ params }: PageProps) {
       <main className="mx-auto max-w-3xl p-8">
         <header className="mb-6">
           <h1 className="text-2xl font-semibold tracking-tight">Edit question</h1>
+          {lastEdited && (
+            <p className="mt-1 text-xs italic text-muted-foreground">
+              Last edited by {lastEdited.label} · {relativeTime(lastEdited.iso)}
+            </p>
+          )}
         </header>
         <EditQuestionForm
           question={existing}
@@ -176,4 +205,19 @@ export default async function EditQuestionPage({ params }: PageProps) {
       </main>
     </>
   );
+}
+
+// Compact relative-time formatter for the "Last edited" line. Mirrors the
+// dashboard's `timeAgo`; intentionally kept inline (two surfaces, bounded
+// duplication — extract to a shared helper when a third caller arrives).
+function relativeTime(iso: string): string {
+  const diffMs = Date.now() - new Date(iso).getTime();
+  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  const min = Math.round(diffMs / 60_000);
+  if (Math.abs(min) < 60) return rtf.format(-min, "minute");
+  const hr = Math.round(diffMs / 3_600_000);
+  if (Math.abs(hr) < 24) return rtf.format(-hr, "hour");
+  const day = Math.round(diffMs / 86_400_000);
+  if (Math.abs(day) < 30) return rtf.format(-day, "day");
+  return rtf.format(-Math.round(day / 30), "month");
 }
