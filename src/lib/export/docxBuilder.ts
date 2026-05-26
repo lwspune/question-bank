@@ -353,6 +353,16 @@ function mathRuns(text: string, builder: Builder): ParagraphChild[] {
         if (i > 0) out.push(new TextRun({ break: 1 }));
         if (line) out.push(new TextRun({ text: line }));
       });
+    } else if (seg.type === "underlined-text") {
+      // Native Word underline run — bypasses the OMML borderBox path
+      // whose bottom border doesn't render under our inline-math defaults.
+      out.push(
+        new TextRun({
+          text: seg.content,
+          underline: { type: "single" },
+          italics: seg.italic ? true : undefined,
+        })
+      );
     } else {
       const idx = builder.ommlByIndex.length;
       builder.ommlByIndex.push(seg.content);

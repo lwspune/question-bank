@@ -4,7 +4,24 @@ import { parseLatex } from "@/components/math/parseLatex";
 
 export type OmmlSegment =
   | { type: "text"; content: string }
-  | { type: "math"; content: string; display: boolean };
+  | { type: "math"; content: string; display: boolean }
+  | { type: "underlined-text"; content: string; italic: boolean };
+
+// Word's <m:borderBox> with three sides hidden (the OMML mathml2omml
+// emits for \underline{\text{x}}) does not render visibly under the
+// <m:mathPr defJc="left" wrapIndent="0" lMargin="0" rMargin="0">
+// defaults we inject for fraction alignment. Bypass the math pipeline
+// for the documented underline patterns and emit a marker the docx
+// builder turns into a native Word run with <w:u w:val="single"/>.
+// Anchored to the whole inline segment + flat brace contents — any
+// other shape falls through to the OMML pipeline (broken but unchanged).
+//
+// Trailing-punctuation capture covers the real-bank pattern where
+// authors put sentence-ending punctuation inside the math delimiters
+// (e.g. `\(\underline{\text{insidious}}.\)`). When matched it's split
+// off into a separate text segment so it renders after the underline.
+export const UNDERLINE_BYPASS_RE =
+  /^\s*\\underline\{\s*\\(text|textit)\{([^{}]+)\}\s*\}\s*([.,;:!?]?)\s*$/;
 
 /**
  * Convert a LaTeX string to OMML XML. Returns null if the LaTeX cannot be parsed.
@@ -64,6 +81,18 @@ export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
     if (seg.type === "text") {
       out.push({ type: "text", content: seg.content });
       continue;
+    }
+    if (seg.type === "inline") {
+      const match = UNDERLINE_BYPASS_RE.exec(seg.content);
+      if (match) {
+        out.push({
+          type: "underlined-text",
+          content: match[2],
+          italic: match[1] === "textit",
+        });
+        if (match[3]) out.push({ type: "text", content: match[3] });
+        continue;
+      }
     }
     const isBlock = seg.type === "block";
     const omml = latexToOmml(seg.content, isBlock);

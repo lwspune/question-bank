@@ -128,3 +128,113 @@ describe("textWithMathToOmmlSegments", () => {
     expect(segs.filter((s) => s.type === "math")).toHaveLength(3);
   });
 });
+
+// Word's rendering of <m:borderBox> with three sides hidden (the OMML
+// shape mathml2omml emits for \underline{\text{x}}) is unreliable — the
+// bottom border often doesn't draw for inline math, so the export shows
+// no underline. Bypass the OMML pipeline for the documented underline
+// patterns and emit a marker segment the docx builder can render as a
+// native Word run with <w:u w:val="single"/>.
+describe("textWithMathToOmmlSegments — underline bypass", () => {
+  it("emits underlined-text segment for \\(\\underline{\\text{word}}\\)", () => {
+    const segs = textWithMathToOmmlSegments(
+      "He nodded \\(\\underline{\\text{absently}}\\) throughout the meeting."
+    );
+    expect(segs).toHaveLength(3);
+    expect(segs[0]).toEqual({ type: "text", content: "He nodded " });
+    expect(segs[1]).toEqual({
+      type: "underlined-text",
+      content: "absently",
+      italic: false,
+    });
+    expect(segs[2]).toEqual({
+      type: "text",
+      content: " throughout the meeting.",
+    });
+  });
+
+  it("emits italic underlined-text segment for \\(\\underline{\\textit{name}}\\)", () => {
+    const segs = textWithMathToOmmlSegments("\\(\\underline{\\textit{Amoeba}}\\)");
+    expect(segs).toHaveLength(1);
+    expect(segs[0]).toEqual({
+      type: "underlined-text",
+      content: "Amoeba",
+      italic: true,
+    });
+  });
+
+  it("preserves whitespace inside \\text{} as authored", () => {
+    const segs = textWithMathToOmmlSegments("\\(\\underline{\\text{ x }}\\)");
+    expect(segs).toEqual([
+      { type: "underlined-text", content: " x ", italic: false },
+    ]);
+  });
+
+  it("handles multi-word payloads", () => {
+    const segs = textWithMathToOmmlSegments(
+      "Phrase: \\(\\underline{\\text{a Nobel laureate and the author of the national anthem,}}\\) followed."
+    );
+    expect(segs.filter((s) => s.type === "underlined-text")).toEqual([
+      {
+        type: "underlined-text",
+        content: "a Nobel laureate and the author of the national anthem,",
+        italic: false,
+      },
+    ]);
+  });
+
+  // Real-bank pattern: authors sometimes put sentence-ending punctuation
+  // INSIDE the math delimiters — e.g. `\(\underline{\text{insidious}}.\)`.
+  // The trailing period must end up as a plain-text run AFTER the
+  // underlined run so the rendered sentence keeps its full stop.
+  it("splits trailing punctuation inside the math delimiters into a separate text segment", () => {
+    const segs = textWithMathToOmmlSegments(
+      "He acted in an \\(\\underline{\\text{insidious}}.\\)"
+    );
+    expect(segs).toEqual([
+      { type: "text", content: "He acted in an " },
+      { type: "underlined-text", content: "insidious", italic: false },
+      { type: "text", content: "." },
+    ]);
+  });
+
+  it("handles each accepted trailing punctuation character (. , ; : ! ?)", () => {
+    for (const punct of [".", ",", ";", ":", "!", "?"]) {
+      const segs = textWithMathToOmmlSegments(`\\(\\underline{\\text{x}}${punct}\\)`);
+      expect(segs).toEqual([
+        { type: "underlined-text", content: "x", italic: false },
+        { type: "text", content: punct },
+      ]);
+    }
+  });
+
+  it("falls through to OMML math for bare \\underline{x} (no text/textit wrapper)", () => {
+    const segs = textWithMathToOmmlSegments("\\(\\underline{x}\\)");
+    expect(segs).toHaveLength(1);
+    expect(segs[0].type).toBe("math");
+  });
+
+  it("falls through to OMML math for chained \\text{a}\\text{b} inside underline", () => {
+    const segs = textWithMathToOmmlSegments(
+      "\\(\\underline{\\text{a}\\text{b}}\\)"
+    );
+    expect(segs).toHaveLength(1);
+    expect(segs[0].type).toBe("math");
+  });
+
+  it("falls through to OMML math for \\textbf{...} (bold variant, out of scope)", () => {
+    const segs = textWithMathToOmmlSegments(
+      "\\(\\underline{\\textbf{word}}\\)"
+    );
+    expect(segs).toHaveLength(1);
+    expect(segs[0].type).toBe("math");
+  });
+
+  it("falls through to OMML math when math precedes the underline in the same segment", () => {
+    // Whole inline-math segment must be just the underline. Mixed content
+    // like "x + \underline{\text{y}}" routes through the math pipeline.
+    const segs = textWithMathToOmmlSegments("\\(x + \\underline{\\text{y}}\\)");
+    expect(segs).toHaveLength(1);
+    expect(segs[0].type).toBe("math");
+  });
+});

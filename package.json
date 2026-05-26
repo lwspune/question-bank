@@ -13,6 +13,7 @@
     "extract:taxonomy": "tsx scripts/extract-taxonomy.ts",
     "notes:lint": "tsx scripts/notes-lint.ts",
     "tags:audit": "tsx scripts/principle-tag-audit.ts",
+    "audit:underlines": "tsx scripts/audit-underline-patterns.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepush": "npm run typecheck && npm run lint && npm run build",
