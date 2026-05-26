@@ -6,6 +6,7 @@ import { validateRow } from "@/lib/upload/validate";
 import { detectCourse } from "@/lib/upload/detectCourse";
 import { resolveExam } from "@/lib/upload/resolveExam";
 import { propagateSetContext } from "@/lib/upload/propagateSetContext";
+import { isNdaCanonical } from "@/lib/upload/ndaMetadata";
 
 export const maxDuration = 60;
 
@@ -116,6 +117,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: resolved.error }, { status: 400 });
     }
     const examId = resolved.examId;
+
+    // NDA canonical-metadata guard. UPSC runs exactly Apr=NDA 1 + Sep=NDA 2;
+    // anything else is an upload-form error (see [[nda-paper-canonical]] memory).
+    // We only check when both fields are set — partial pairs are flagged too
+    // (half-filled NDA metadata is a strong signal of a misclick).
+    const resolvedExamName =
+      knownExamRows.find((e) => e.id === examId)?.name ?? null;
+    if (
+      resolvedExamName === "NDA" &&
+      !isNdaCanonical({ month: pyqMonth, note: pyqNote })
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "NDA papers follow a strict convention: April = NDA 1, September = NDA 2. " +
+            `Got pyqMonth="${pyqMonth ?? ""}" with pyqNote="${pyqNote ?? ""}". ` +
+            "Either correct the PYQ fields or leave both blank.",
+        },
+        { status: 400 }
+      );
+    }
 
     // Propagate Question Context across rows that share a Set label, and
     // surface set-level errors (drift, missing context) at the row level.

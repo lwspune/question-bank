@@ -23,6 +23,10 @@ import {
 import { Stepper, type Step } from "@/components/ui/stepper";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import {
+  NDA_MONTHS,
+  getNdaPaperFromMonth,
+} from "@/lib/upload/ndaMetadata";
 
 type Exam = { id: string; name: string };
 
@@ -66,6 +70,24 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
   const [pyqYear, setPyqYear] = useState<string>(PYQ_NONE);
   const [pyqMonth, setPyqMonth] = useState("");
   const [pyqNote, setPyqNote] = useState("");
+  // When the user explicitly selects NDA in the exam dropdown, swap the
+  // free-text Month + Note inputs for a Month dropdown that auto-pairs
+  // Note to the canonical value (Apr → NDA 1, Sep → NDA 2). The server
+  // also enforces this at preview time — see ndaMetadata.ts.
+  // When the exam is blank (auto-detect from Course column), keep
+  // free-text so non-NDA uploads still work; server still catches NDA.
+  const selectedExamIsNda =
+    examId !== "" && exams.find((e) => e.id === examId)?.name === "NDA";
+
+  function handleMonthChange(nextMonth: string) {
+    setPyqMonth(nextMonth);
+    if (selectedExamIsNda) {
+      // Force note to the canonical value when month is one of NDA's two;
+      // clear when month is reset to None.
+      const canonical = getNdaPaperFromMonth(nextMonth);
+      setPyqNote(canonical ?? "");
+    }
+  }
   const [preview, setPreview] = useState<PreviewResult | null>(null);
   const [committing, setCommitting] = useState(false);
   const [result, setResult] = useState<CommitResult | null>(null);
@@ -220,14 +242,36 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="pyq-month">Month</Label>
-                    <Input
-                      id="pyq-month"
-                      value={pyqMonth}
-                      onChange={(e) => setPyqMonth(e.target.value)}
-                      placeholder="May"
-                      maxLength={20}
-                      disabled={busy}
-                    />
+                    {selectedExamIsNda ? (
+                      <Select
+                        value={pyqMonth === "" ? PYQ_NONE : pyqMonth}
+                        onValueChange={(v) =>
+                          handleMonthChange(v === PYQ_NONE ? "" : v)
+                        }
+                        disabled={busy}
+                      >
+                        <SelectTrigger id="pyq-month">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value={PYQ_NONE}>— None —</SelectItem>
+                          {NDA_MONTHS.map((m) => (
+                            <SelectItem key={m} value={m}>
+                              {m}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    ) : (
+                      <Input
+                        id="pyq-month"
+                        value={pyqMonth}
+                        onChange={(e) => setPyqMonth(e.target.value)}
+                        placeholder="May"
+                        maxLength={20}
+                        disabled={busy}
+                      />
+                    )}
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="pyq-note">Comment</Label>
@@ -237,10 +281,22 @@ export default function UploadForm({ exams }: { exams: Exam[] }) {
                       onChange={(e) => setPyqNote(e.target.value)}
                       placeholder="Shift I"
                       maxLength={200}
-                      disabled={busy}
+                      disabled={busy || selectedExamIsNda}
+                      readOnly={selectedExamIsNda}
+                      title={
+                        selectedExamIsNda
+                          ? "NDA papers auto-pair: Apr → NDA 1, Sep → NDA 2"
+                          : undefined
+                      }
                     />
                   </div>
                 </div>
+                {selectedExamIsNda && (
+                  <p className="px-1 text-xs text-muted-foreground">
+                    <Sparkles className="mr-1 inline-block h-3 w-3" aria-hidden />
+                    NDA papers auto-pair: Apr → <code className="font-mono">NDA 1</code>, Sep → <code className="font-mono">NDA 2</code>.
+                  </p>
+                )}
               </fieldset>
 
               <div className="space-y-2">
