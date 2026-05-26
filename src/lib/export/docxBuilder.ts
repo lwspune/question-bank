@@ -6,6 +6,7 @@ import {
   TextRun,
   AlignmentType,
   LevelFormat,
+  LevelSuffix,
   PageOrientation,
   type ParagraphChild,
 } from "docx";
@@ -66,8 +67,13 @@ const documentDefaults = {
             format: LevelFormat.DECIMAL,
             text: "%1.",
             alignment: AlignmentType.LEFT,
+            // Flush-left: wrap lines come back to column 0 so the question
+            // block aligns with options, Context, and the Set banner.
+            // SPACE suffix replaces Word's default tab (which would push
+            // the first-line body to the next tab stop, ~720 twips).
+            suffix: LevelSuffix.SPACE,
             style: {
-              paragraph: { indent: { left: 360, hanging: 360 } },
+              paragraph: { indent: { left: 0, hanging: 0 } },
             },
           },
         ],
@@ -195,7 +201,7 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
         numbering: { reference: NUM_REF, level: 0 },
         children: [
           new TextRun({
-            text: `(${correct?.label ?? "?"})`,
+            text: `(${correct?.label?.toLowerCase() ?? "?"})`,
             bold: true,
           }),
         ],
@@ -277,7 +283,7 @@ function questionParagraphs(
       new Paragraph({
         indent: { left: 0 },
         children: [
-          new TextRun({ text: `(${opt.label}) ` }),
+          new TextRun({ text: `(${opt.label.toLowerCase()}) ` }),
           ...mathRuns(opt.text, builder),
         ],
       })

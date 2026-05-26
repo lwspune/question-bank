@@ -66,12 +66,15 @@ describe("buildQuestionPaper", () => {
     expect(xml).not.toContain("</undefined>");
   });
 
-  it("renders all 4 option labels", async () => {
+  it("renders all 4 option labels in lowercase", async () => {
     const buf = await buildQuestionPaper({ title: "T", questions: [Q1] });
     const xml = await readDocXml(buf);
-    for (const label of ["(A)", "(B)", "(C)", "(D)"]) {
+    for (const label of ["(a)", "(b)", "(c)", "(d)"]) {
       expect(xml).toContain(label);
     }
+    // Uppercase labels are no longer emitted in the rendered paper.
+    expect(xml).not.toContain("(A)");
+    expect(xml).not.toContain("(B)");
   });
 
   it("includes the document title", async () => {
@@ -101,16 +104,18 @@ describe("buildAnswerKey", () => {
     expect(buf.subarray(0, 4).toString("hex")).toBe("504b0304");
   });
 
-  it("includes both answer letters in a compact list", async () => {
+  it("includes both answer letters in a compact list (lowercase, matching the paper)", async () => {
     const buf = await buildAnswerKey({
       title: "T",
       questions: [Q1, Q2],
       includeSolutions: false,
     });
     const xml = await readDocXml(buf);
-    // Answer letters appear as "(A)" / "(B)" labels for compact display.
-    expect(xml).toContain("(A)");
-    expect(xml).toContain("(B)");
+    // Answer letters appear as "(a)" / "(b)" labels — matches the paper's lowercase options.
+    expect(xml).toContain("(a)");
+    expect(xml).toContain("(b)");
+    expect(xml).not.toContain("(A)");
+    expect(xml).not.toContain("(B)");
   });
 
   it("includes 'Answer Key' as a heading", async () => {

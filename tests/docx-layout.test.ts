@@ -68,11 +68,14 @@ describe("docx layout defaults", () => {
     expect(styles).toMatch(/<w:rPrDefault>[\s\S]*?<w:sz w:val="20"[\s\S]*?<\/w:rPrDefault>/);
   });
 
-  it("ships a decimal numbering definition with hanging indent for questions", async () => {
+  it("ships a flush-left decimal numbering definition with space suffix", async () => {
     const buf = await buildQuestionPaper({ title: "T", questions: [SAMPLE] });
     const numbering = await readPart(buf, "word/numbering.xml");
     expect(numbering).toContain("decimal");
-    expect(numbering).toMatch(/<w:ind\s+w:left="360"[^>]*w:hanging="360"/);
+    // Wrap lines come back to column 0 so they align with the number + options.
+    expect(numbering).toMatch(/<w:ind\s+w:left="0"[^>]*w:hanging="0"/);
+    // Single space between number and body (default 'tab' would push body to next tab stop).
+    expect(numbering).toMatch(/<w:suff\s+w:val="space"\s*\/>/);
   });
 
   it("question paragraphs reference the numbered list", async () => {
