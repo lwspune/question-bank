@@ -7,6 +7,7 @@ import {
   Flag,
   Search,
   Upload,
+  Users,
 } from "lucide-react";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -32,6 +33,11 @@ import StatCard from "./StatCard";
 
 export default async function DashboardPage() {
   const member = await getSessionMember();
+
+  // Teachers don't see the dashboard — they go straight to /browse where
+  // the editor workflow lives (clicking through to /questions/[id]/edit).
+  // Admin tooling on this page (upload, reports, members) is admin-only.
+  if (member && member.role === "TEACHER") redirect("/browse");
 
   if (!member) {
     const user = await getSessionUser();
@@ -172,7 +178,7 @@ function QuickActions({
     <div
       className={cn(
         "grid gap-4",
-        isAdmin ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-1"
+        isAdmin ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-1"
       )}
     >
       <ActionCard
@@ -207,6 +213,14 @@ function QuickActions({
           badge={
             openReportCount > 0 ? String(openReportCount) : undefined
           }
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/members"
+          icon={<Users className="h-5 w-5" aria-hidden />}
+          title="Members"
+          description="Add admins and teachers, reset passwords, manage roles."
         />
       )}
     </div>

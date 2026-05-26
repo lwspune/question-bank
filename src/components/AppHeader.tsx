@@ -13,8 +13,9 @@ export default async function AppHeader() {
     getSessionMember(),
     loadActiveExamContext(),
   ]);
-  // Brand link always lands non-admins on /browse — the dashboard is admin
-  // territory. Admins still get /dashboard so the brand acts as their home.
+  // Brand link lands ADMINs on /dashboard (their home for upload/reports/
+  // members tooling); everyone else (TEACHER + anon) lands on /browse,
+  // which is the surface where editor + reader workflows actually live.
   const homeHref = member?.role === "ADMIN" ? "/dashboard" : "/browse";
 
   return (

@@ -22,7 +22,7 @@ const ADMIN_A_EMAIL = `storage-admin-a-${RUN_ID}@test.local`;
 const ADMIN_B_EMAIL = `storage-admin-b-${RUN_ID}@test.local`;
 const TEACHER_A_EMAIL = `storage-teacher-${RUN_ID}@test.local`;
 
-describe.skipIf(!HAS_ENV)("storage RLS — admin-only writes scoped by org", () => {
+describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
   let admin: SupabaseClient;
   let adminAClient: SupabaseClient;
   let adminBClient: SupabaseClient;
@@ -115,8 +115,17 @@ describe.skipIf(!HAS_ENV)("storage RLS — admin-only writes scoped by org", () 
     expect(error).not.toBeNull();
   });
 
-  it("TEACHER cannot upload anywhere, including their own org folder", async () => {
+  it("TEACHER can upload to their own org folder (migration 0025 opens editor write)", async () => {
     const path = `${orgAId}/${randomUUID()}.png`;
+    const { error } = await teacherClient.storage
+      .from(BUCKET)
+      .upload(path, TINY_PNG, { contentType: "image/png" });
+    expect(error).toBeNull();
+    uploadedPaths.push(path);
+  });
+
+  it("TEACHER cannot upload to a different org's folder", async () => {
+    const path = `${orgBId}/${randomUUID()}.png`;
     const { error } = await teacherClient.storage
       .from(BUCKET)
       .upload(path, TINY_PNG, { contentType: "image/png" });

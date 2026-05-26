@@ -49,7 +49,11 @@ type RawSubject = { id: string; name: string; chapters: RawChapter[] };
 export default async function EditQuestionPage({ params }: PageProps) {
   const member = await getSessionMember();
   if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/dashboard");
+  // Both ADMIN and TEACHER can reach the edit form. Admin-only chrome
+  // (Delete, Visibility toggle) is hidden client-side via `isAdmin`.
+  if (member.role !== "ADMIN" && member.role !== "TEACHER") {
+    redirect("/browse");
+  }
 
   const supabase = createSupabaseServerClient();
   const { data: question } = await supabase
@@ -65,7 +69,7 @@ export default async function EditQuestionPage({ params }: PageProps) {
     .maybeSingle<RawQuestion>();
 
   if (!question) notFound();
-  if (question.org_id !== member.orgId) redirect("/dashboard");
+  if (question.org_id !== member.orgId) redirect("/browse");
 
   const { data: subjects } = await supabase
     .from("subjects")
@@ -167,6 +171,7 @@ export default async function EditQuestionPage({ params }: PageProps) {
           setMemberCount={setMemberCount}
           notesEntry={notesEntry}
           initialConceptSlugs={initialConceptSlugs}
+          isAdmin={member.role === "ADMIN"}
         />
       </main>
     </>

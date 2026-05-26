@@ -69,6 +69,12 @@ type Props = {
   notesEntry: NotesConceptsEntry | null;
   /** Concept slugs currently tagged on the question for `notesEntry.subtopicSlug`. */
   initialConceptSlugs: string[];
+  /**
+   * Caller role. ADMIN sees the Delete button + Visibility toggle.
+   * TEACHER edits content (text, options, taxonomy, tags, leave-set) but
+   * cannot delete the question or flip PUBLIC/PRIVATE.
+   */
+  isAdmin: boolean;
 };
 
 const MAX_BYTES = 1024 * 1024;
@@ -85,6 +91,7 @@ export default function EditQuestionForm({
   setMemberCount,
   notesEntry,
   initialConceptSlugs,
+  isAdmin,
 }: Props) {
   const router = useRouter();
   const initial = toFormState(question);
@@ -567,13 +574,15 @@ export default function EditQuestionForm({
                 </Select>
               </Section>
 
-              <Section heading="Visibility">
-                <VisibilityToggle
-                  value={visibility}
-                  onChange={setVisibility}
-                  disabled={busy}
-                />
-              </Section>
+              {isAdmin && (
+                <Section heading="Visibility">
+                  <VisibilityToggle
+                    value={visibility}
+                    onChange={setVisibility}
+                    disabled={busy}
+                  />
+                </Section>
+              )}
 
               <ConceptsSection
                 notesEntry={notesEntry}
@@ -602,6 +611,7 @@ export default function EditQuestionForm({
         busy={busy || deleting}
         onCancel={() => router.back()}
         onDelete={() => setDeleteOpen(true)}
+        canDelete={isAdmin}
       />
 
       <Dialog
@@ -896,27 +906,33 @@ function SaveBar({
   busy,
   onCancel,
   onDelete,
+  canDelete,
 }: {
   dirty: boolean;
   saving: boolean;
   busy: boolean;
   onCancel: () => void;
   onDelete: () => void;
+  canDelete: boolean;
 }) {
   return (
     <div className="sticky bottom-0 z-30 -mx-6 mt-8 border-t bg-background/95 px-6 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/85">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4">
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={onDelete}
-          disabled={busy}
-          className="text-destructive hover:bg-destructive/10 hover:text-destructive"
-        >
-          <Trash2 className="h-3.5 w-3.5" aria-hidden />
-          Delete
-        </Button>
+        {canDelete ? (
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={onDelete}
+            disabled={busy}
+            className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+          >
+            <Trash2 className="h-3.5 w-3.5" aria-hidden />
+            Delete
+          </Button>
+        ) : (
+          <span aria-hidden />
+        )}
         <p className="flex items-center gap-2 text-sm text-muted-foreground">
           {dirty ? (
             <>

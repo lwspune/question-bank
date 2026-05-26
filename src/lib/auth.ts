@@ -57,3 +57,18 @@ export async function requireAdmin(): Promise<SessionMember> {
   if (member.role !== "ADMIN") throw new HttpError(403, "Admin access required");
   return member;
 }
+
+/**
+ * Editor = ADMIN or TEACHER. Both can edit question content (text,
+ * options, taxonomy moves, tags, images, leave-set, audit-stamped saves).
+ * INSERT, DELETE, upload, taxonomy auto-create, visibility flip, reports
+ * triage, and member management remain admin-only and use `requireAdmin`.
+ */
+export async function requireEditor(): Promise<SessionMember> {
+  const member = await getSessionMember();
+  if (!member) throw new HttpError(401, "Not signed in");
+  if (member.role !== "ADMIN" && member.role !== "TEACHER") {
+    throw new HttpError(403, "Editor access required");
+  }
+  return member;
+}

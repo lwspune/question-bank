@@ -1,21 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireAdmin, HttpError } from "@/lib/auth";
+import { requireEditor, HttpError } from "@/lib/auth";
 
 /**
  * Detach this question from its set: clears set_id on this row only,
  * leaving siblings intact. The question's context becomes editable
  * independently after this.
  *
- * Admin-only; org-scoped via the existing RLS UPDATE policy on questions.
- * Idempotent — clearing a NULL set_id is a no-op.
+ * Available to editors (ADMIN or TEACHER); org-scoped via the existing
+ * RLS UPDATE policy on questions. Idempotent — clearing NULL is a no-op.
  */
 export async function POST(
   _request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireAdmin();
+    const member = await requireEditor();
     const supabase = createSupabaseServerClient();
 
     const { data: existing } = await supabase

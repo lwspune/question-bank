@@ -8,6 +8,7 @@ export type ApplyEditResult =
   | { kind: "ok"; orphanedImagePaths: string[] }
   | { kind: "not_found" }
   | { kind: "forbidden" }
+  | { kind: "forbidden_field"; field: string; reason: string }
   | { kind: "invalid_image_path"; field: string; path: string }
   | { kind: "invalid_taxonomy"; reason: string }
   | { kind: "invalid_concept_tag"; reason: string }
@@ -21,6 +22,7 @@ type Existing = {
   image_url: string | null;
   set_id: string | null;
   context: string | null;
+  visibility: "PUBLIC" | "PRIVATE";
   options: { id: string; label: string; image_url: string | null }[];
 };
 
@@ -29,12 +31,25 @@ export async function applyEdit(
   questionId: string,
   callerOrgId: string,
   payload: EditQuestionPayload,
-  contentHashValue: string
+  contentHashValue: string,
+  /**
+   * The user performing the edit. Stamped on the question's
+   * `last_edited_by` + `last_edited_at` columns so admins can attribute
+   * every edit. Optional only so the existing test fixtures keep compiling;
+   * callers from real routes always pass it.
+   */
+  editorUserId?: string,
+  /**
+   * Caller role. When `TEACHER`, visibility changes are rejected
+   * server-side even if a tampered request slips through the UI gating.
+   * Omit to skip the check (existing tests + admin paths).
+   */
+  callerRole?: "ADMIN" | "TEACHER"
 ): Promise<ApplyEditResult> {
   const { data: existing, error: loadErr } = await client
     .from("questions")
     .select(
-      "id, org_id, exam_id, image_url, set_id, context, options(id, label, image_url)"
+      "id, org_id, exam_id, image_url, set_id, context, visibility, options(id, label, image_url)"
     )
     .eq("id", questionId)
     .maybeSingle<Existing>();
@@ -42,6 +57,18 @@ export async function applyEdit(
   if (loadErr) return { kind: "error", message: loadErr.message };
   if (!existing) return { kind: "not_found" };
   if (existing.org_id !== callerOrgId) return { kind: "forbidden" };
+
+  // Teachers can edit content but not the publishing decision.
+  if (
+    callerRole === "TEACHER" &&
+    existing.visibility !== payload.visibility
+  ) {
+    return {
+      kind: "forbidden_field",
+      field: "visibility",
+      reason: "Only admins can change a question's visibility",
+    };
+  }
 
   const pathCheck = checkImagePathPrefix(payload, callerOrgId);
   if (pathCheck) return pathCheck;
@@ -69,6 +96,12 @@ export async function applyEdit(
       subtopic_id: payload.subtopicId,
       visibility: payload.visibility,
       content_hash: contentHashValue,
+      ...(editorUserId
+        ? {
+            last_edited_by: editorUserId,
+            last_edited_at: new Date().toISOString(),
+          }
+        : {}),
     })
     .eq("id", questionId);
 

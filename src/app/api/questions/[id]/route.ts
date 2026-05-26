@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireAdmin, HttpError } from "@/lib/auth";
+import { requireAdmin, requireEditor, HttpError } from "@/lib/auth";
 import { validateEditPayload } from "@/lib/questions/edit";
 import { applyEdit } from "@/lib/questions/applyEdit";
 import { deleteQuestion } from "@/lib/questions/deleteQuestion";
@@ -12,7 +12,7 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireAdmin();
+    const member = await requireEditor();
     const body = await request.json().catch(() => null);
     if (!body) {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
@@ -32,7 +32,9 @@ export async function PUT(
       params.id,
       member.orgId,
       validation.payload,
-      validation.contentHash
+      validation.contentHash,
+      member.user.id,
+      member.role
     );
 
     switch (result.kind) {
@@ -48,6 +50,11 @@ export async function PUT(
         );
       case "forbidden":
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      case "forbidden_field":
+        return NextResponse.json(
+          { error: result.reason, field: result.field },
+          { status: 403 }
+        );
       case "invalid_image_path":
         return NextResponse.json(
           {
