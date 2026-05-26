@@ -40,7 +40,7 @@ const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
 export default function QuestionCard({
   question,
   index,
-  isAdmin,
+  canEdit,
   isLoggedIn,
   supabaseUrl,
   hideContext = false,
@@ -49,7 +49,8 @@ export default function QuestionCard({
 }: {
   question: QuestionRow;
   index: number;
-  isAdmin: boolean;
+  /** True when the viewer can edit questions (ADMIN or TEACHER per migration 0025). */
+  canEdit: boolean;
   /** True when ANY signed-in user (TEACHER or ADMIN) — drives Report dialog behaviour. */
   isLoggedIn: boolean;
   supabaseUrl: string;
@@ -288,7 +289,7 @@ export default function QuestionCard({
             )}
 
             <div className="flex items-center justify-between gap-3 border-t pt-2 font-sans">
-              {isAdmin ? (
+              {canEdit ? (
                 <Link
                   href={`/questions/${question.id}/edit`}
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"

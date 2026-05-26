@@ -22,7 +22,8 @@ type Props = {
   questions: QuestionRow[];
   /** 0-based offset of the first question on this page (e.g. (page - 1) * pageSize). */
   pageOffset: number;
-  isAdmin: boolean;
+  /** True when the viewer can edit questions (ADMIN or TEACHER per migration 0025) — surfaces the Edit link. */
+  canEdit: boolean;
   /** True when ANY signed-in user (TEACHER or ADMIN) — drives the Report dialog. */
   isLoggedIn: boolean;
   supabaseUrl: string;
@@ -45,7 +46,7 @@ type Props = {
 export default function QuestionList({
   questions,
   pageOffset,
-  isAdmin,
+  canEdit,
   isLoggedIn,
   supabaseUrl,
   includeExam,
@@ -64,7 +65,7 @@ export default function QuestionList({
               <QuestionCard
                 question={group.question}
                 index={idToIndex.get(group.question.id)!}
-                isAdmin={isAdmin}
+                canEdit={canEdit}
                 isLoggedIn={isLoggedIn}
                 supabaseUrl={supabaseUrl}
                 includeExam={includeExam}
@@ -88,7 +89,7 @@ export default function QuestionList({
                     <QuestionCard
                       question={q}
                       index={idToIndex.get(q.id)!}
-                      isAdmin={isAdmin}
+                      canEdit={canEdit}
                       isLoggedIn={isLoggedIn}
                       supabaseUrl={supabaseUrl}
                       hideContext

@@ -246,7 +246,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               <QuestionList
                 questions={questionsResult.rows}
                 pageOffset={(filters.page - 1) * DEFAULT_PAGE_SIZE}
-                isAdmin={member?.role === "ADMIN"}
+                canEdit={member?.role === "ADMIN" || member?.role === "TEACHER"}
                 isLoggedIn={!!member}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={!filters.examId}
