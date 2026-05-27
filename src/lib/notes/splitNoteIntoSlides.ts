@@ -3,8 +3,11 @@ import type { Slide, SubtopicNote } from "@/app/notes/_types";
 /**
  * Derive the Present-mode slide deck from a SubtopicNote. Pure function.
  *
- * Slide order: title → why → (for each concept: intro → authored → pyq? → trap* → concept-drill?) → drill.
- * Optional sections are skipped — minimum deck is title + drill.
+ * Per-concept slide order:
+ *   intro → visualization? → authored → faded? → self-check? → pyq? → trap* → concept-drill?
+ *
+ * Outer order: title → why? → [concepts] → drill. Optional sections are
+ * skipped; minimum deck is title + drill.
  *
  * `drillsByConcept` is the runtime overlay from Phase 2 — for each concept slug,
  * a list of question UUIDs sourced from `question_concept_tags` at request time
@@ -37,11 +40,35 @@ export function splitNoteIntoSlides(
       formula: c.formula,
     });
 
+    if (c.visualizationSlug) {
+      slides.push({
+        kind: "visualization",
+        conceptName: c.name,
+        slug: c.visualizationSlug,
+      });
+    }
+
     slides.push({
       kind: "authored-example",
       conceptName: c.name,
       example: c.authoredExample,
     });
+
+    if (c.fadedExample) {
+      slides.push({
+        kind: "faded-example",
+        conceptName: c.name,
+        example: c.fadedExample,
+      });
+    }
+
+    if (c.selfCheckExample) {
+      slides.push({
+        kind: "self-check",
+        conceptName: c.name,
+        example: c.selfCheckExample,
+      });
+    }
 
     if (c.pyqExampleId) {
       slides.push({

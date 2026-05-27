@@ -34,6 +34,30 @@ export type AuthoredExample = {
   answer: string;
 };
 
+/**
+ * A worked example with one or more steps hidden behind a click-to-reveal,
+ * so the student attempts those steps before seeing the solution. Implements
+ * the worked-example → faded → independent ramp (Sweller / Renkl).
+ */
+export type FadedExample = AuthoredExample & {
+  /**
+   * 0-based indexes of steps whose body is hidden until the student clicks.
+   * Empty array means nothing is hidden (= same as a regular AuthoredExample).
+   */
+  hiddenStepIndexes: number[];
+};
+
+/**
+ * The stable identifier of an interactive visualization component rendered
+ * inline within a concept unit. The slug maps 1:1 to a client island under
+ * `src/app/notes/_components/visualizations/`. Locked union — adding a new
+ * visualization requires landing the component AND extending this union.
+ */
+export type VisualizationSlug =
+  | "regression-line-fit"
+  | "variance-squared-deviations"
+  | "histogram-bin-slider";
+
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
   title: string;
@@ -71,6 +95,24 @@ export type ConceptUnit = {
    * request time via `loadResolvedDrills`.
    */
   pyqExampleId?: string;
+  /**
+   * Optional faded follow-up to the worked authored example — same shape as
+   * AuthoredExample plus indexes of steps hidden behind reveal. Sits between
+   * the worked example and the self-check on the page.
+   */
+  fadedExample?: FadedExample;
+  /**
+   * Optional independent-practice problem rendered with the full solution
+   * hidden behind a single reveal. The third rung in the worked → faded →
+   * independent ramp.
+   */
+  selfCheckExample?: AuthoredExample;
+  /**
+   * Optional inline visualization that explains the concept dynamically.
+   * Rendered as a client island immediately after the concept intro. The
+   * slug controls which component renders.
+   */
+  visualizationSlug?: VisualizationSlug;
   /** Optional gotchas specific to this concept. Rendered inline within the unit. */
   traps?: TrapCallout[];
 };
@@ -122,7 +164,22 @@ export type Slide =
       formula?: FormulaSpec;
     }
   | {
+      kind: "visualization";
+      conceptName: string;
+      slug: VisualizationSlug;
+    }
+  | {
       kind: "authored-example";
+      conceptName: string;
+      example: AuthoredExample;
+    }
+  | {
+      kind: "faded-example";
+      conceptName: string;
+      example: FadedExample;
+    }
+  | {
+      kind: "self-check";
       conceptName: string;
       example: AuthoredExample;
     }

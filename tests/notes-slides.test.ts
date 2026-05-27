@@ -283,4 +283,136 @@ describe("splitNoteIntoSlides", () => {
       "C",
     ]);
   });
+
+  // ───── M1 additions: visualization, faded-example, self-check ─────
+
+  it("emits a visualization slide right after concept-intro when visualizationSlug is set", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          minimalConcept({ visualizationSlug: "regression-line-fit" }),
+        ],
+      }),
+      NO_DRILLS
+    );
+    const introIdx = slides.findIndex((s) => s.kind === "concept-intro");
+    expect(slides[introIdx + 1]).toEqual({
+      kind: "visualization",
+      conceptName: "Concept 1",
+      slug: "regression-line-fit",
+    });
+  });
+
+  it("omits visualization slide when visualizationSlug is unset", () => {
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
+    expect(slides.some((s) => s.kind === "visualization")).toBe(false);
+  });
+
+  it("emits a faded-example slide right after the authored example when fadedExample is set", () => {
+    const faded = {
+      prompt: "Faded p",
+      steps: ["S1", "S2"],
+      answer: "A",
+      hiddenStepIndexes: [1],
+    };
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [minimalConcept({ fadedExample: faded })],
+      }),
+      NO_DRILLS
+    );
+    const authoredIdx = slides.findIndex((s) => s.kind === "authored-example");
+    expect(slides[authoredIdx + 1]).toEqual({
+      kind: "faded-example",
+      conceptName: "Concept 1",
+      example: faded,
+    });
+  });
+
+  it("omits faded-example slide when fadedExample is unset", () => {
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
+    expect(slides.some((s) => s.kind === "faded-example")).toBe(false);
+  });
+
+  it("emits self-check after the faded example when both fadedExample + selfCheckExample are set", () => {
+    const selfCheck = { prompt: "s", steps: ["s"], answer: "a" };
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          minimalConcept({
+            fadedExample: {
+              prompt: "f",
+              steps: ["s"],
+              answer: "a",
+              hiddenStepIndexes: [],
+            },
+            selfCheckExample: selfCheck,
+          }),
+        ],
+      }),
+      NO_DRILLS
+    );
+    const fadedIdx = slides.findIndex((s) => s.kind === "faded-example");
+    expect(slides[fadedIdx + 1]).toEqual({
+      kind: "self-check",
+      conceptName: "Concept 1",
+      example: selfCheck,
+    });
+  });
+
+  it("emits self-check directly after authored-example when fadedExample is absent", () => {
+    const selfCheck = { prompt: "s", steps: ["s"], answer: "a" };
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [minimalConcept({ selfCheckExample: selfCheck })],
+      }),
+      NO_DRILLS
+    );
+    const authoredIdx = slides.findIndex((s) => s.kind === "authored-example");
+    expect(slides[authoredIdx + 1]).toEqual({
+      kind: "self-check",
+      conceptName: "Concept 1",
+      example: selfCheck,
+    });
+  });
+
+  it("omits self-check slide when selfCheckExample is unset", () => {
+    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
+    expect(slides.some((s) => s.kind === "self-check")).toBe(false);
+  });
+
+  it("full per-concept order with every optional field set: intro → viz → authored → faded → self-check → pyq → trap → concept-drill", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          minimalConcept({
+            visualizationSlug: "histogram-bin-slider",
+            fadedExample: {
+              prompt: "f",
+              steps: ["s"],
+              answer: "a",
+              hiddenStepIndexes: [],
+            },
+            selfCheckExample: { prompt: "s", steps: ["s"], answer: "a" },
+            pyqExampleId: "pyq-1",
+            traps: [{ title: "T", body: "b" }],
+          }),
+        ],
+      }),
+      new Map([["c1", ["d1"]]])
+    );
+    const conceptKinds = slides
+      .filter((s) => s.kind !== "title" && s.kind !== "why" && s.kind !== "drill")
+      .map((s) => s.kind);
+    expect(conceptKinds).toEqual([
+      "concept-intro",
+      "visualization",
+      "authored-example",
+      "faded-example",
+      "self-check",
+      "pyq-example",
+      "trap",
+      "concept-drill",
+    ]);
+  });
 });
