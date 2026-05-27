@@ -39,6 +39,28 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         ],
         answer: "Heights = 6, 5, 5 (in density units)",
       },
+      fadedExample: {
+        prompt:
+          "Three classes have widths 4, 8, 4 with frequencies 20, 40, 16. Find the " +
+          "height of each histogram bar.",
+        steps: [
+          "Density = frequency ÷ class width.",
+          "Class 1: \\(20/4 = 5\\). Class 2: \\(40/8 = 5\\). Class 3: \\(16/4 = 4\\).",
+          "Heights are in ratio \\(5 : 5 : 4\\) — class 2 has highest frequency but ties class 1 on height.",
+        ],
+        answer: "Heights = 5, 5, 4",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "Two classes have widths 5 and 10 with frequencies 25 and 40. Compare " +
+          "the heights of their histogram bars.",
+        steps: [
+          "Density: \\(25/5 = 5\\) and \\(40/10 = 4\\).",
+          "Despite having the lower frequency, the first class has the TALLER bar (height 5 > 4) — because its width is smaller.",
+        ],
+        answer: "Heights 5 and 4 — first class is taller despite lower frequency.",
+      },
       pyqExampleId: "d8cb68fd-9555-48d0-b0ff-7a05b3e947d0",
       traps: [
         {
@@ -76,6 +98,29 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
           "Simplify: \\(\\theta_{\\text{Science}} = \\dfrac{1}{5} \\times 360^\\circ = 72^\\circ\\).",
         ],
         answer: "\\(\\theta_{\\text{Science}} = 72^\\circ\\)",
+      },
+      fadedExample: {
+        prompt:
+          "An organisation has 80 men, 60 women, and 60 children. Find the " +
+          "pie-chart angle for the women's sector.",
+        steps: [
+          "Total \\(N = 80 + 60 + 60 = 200\\).",
+          "Apply: \\(\\theta_{\\text{women}} = \\dfrac{60}{200} \\times 360^\\circ\\).",
+          "Simplify: \\(\\theta_{\\text{women}} = 0.3 \\times 360^\\circ = 108^\\circ\\).",
+        ],
+        answer: "\\(\\theta_{\\text{women}} = 108^\\circ\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "In a pie chart, four sectors have central angles in the ratio \\(1 : 2 : 3 : 4\\). " +
+          "Find each angle.",
+        steps: [
+          "Sum of ratio parts: \\(1 + 2 + 3 + 4 = 10\\).",
+          "Each ratio unit \\(= 360^\\circ / 10 = 36^\\circ\\).",
+          "Angles: \\(36^\\circ, 72^\\circ, 108^\\circ, 144^\\circ\\) (check sum \\(= 360^\\circ\\) ✓).",
+        ],
+        answer: "\\(36^\\circ,\\ 72^\\circ,\\ 108^\\circ,\\ 144^\\circ\\)",
       },
       pyqExampleId: "0e56a091-ec3e-4ddd-8b3c-68b58018ae62",
       traps: [
@@ -117,6 +162,31 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
           "Apply: \\(M = 160 + \\dfrac{10 - 10}{7} \\times 5 = 160 + 0 = 160\\).",
         ],
         answer: "\\(M = 160\\) cm",
+      },
+      fadedExample: {
+        prompt:
+          "Marks of 25 students: \\(0{-}10 \\to 3,\\ 10{-}20 \\to 7,\\ 20{-}30 \\to 10,\\ 30{-}40 \\to 5\\). " +
+          "Find the median.",
+        steps: [
+          "Total \\(n = 3 + 7 + 10 + 5 = 25\\), so \\(n/2 = 12.5\\).",
+          "Cumulative frequencies: \\(3, 10, 20, 25\\). The 12.5th observation lies in the \\(20{-}30\\) class — that is the median class.",
+          "Identify: \\(L = 20,\\ F = 10,\\ f = 10,\\ h = 10\\).",
+          "Apply: \\(M = 20 + \\dfrac{12.5 - 10}{10} \\times 10 = 20 + 2.5 = 22.5\\).",
+        ],
+        answer: "\\(M = 22.5\\)",
+        hiddenStepIndexes: [2],
+      },
+      selfCheckExample: {
+        prompt:
+          "Weekly wages (₹) of 30 workers: \\(0{-}500 \\to 3,\\ 500{-}1000 \\to 8,\\ " +
+          "1000{-}1500 \\to 12,\\ 1500{-}2000 \\to 7\\). Find the median wage.",
+        steps: [
+          "Total \\(n = 30\\), so \\(n/2 = 15\\).",
+          "Cumulative: \\(3, 11, 23, 30\\). Median class is \\(1000{-}1500\\) (cum first reaches 15 here).",
+          "Identify: \\(L = 1000,\\ F = 11,\\ f = 12,\\ h = 500\\).",
+          "Apply: \\(M = 1000 + \\dfrac{15 - 11}{12} \\times 500 = 1000 + \\dfrac{2000}{12} \\approx 1166.67\\).",
+        ],
+        answer: "\\(M \\approx \\text{₹} 1166.67\\) (or \\(\\dfrac{3500}{3}\\))",
       },
       pyqExampleId: "720b1f0e-74e4-4d0b-ae88-3901d51119b3",
       traps: [

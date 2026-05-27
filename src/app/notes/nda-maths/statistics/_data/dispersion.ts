@@ -38,6 +38,26 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{MD} = 2.4\\)",
       },
+      fadedExample: {
+        prompt: "Find the mean deviation of \\(1, 3, 5, 7, 9\\) about the mean.",
+        steps: [
+          "Compute the mean: \\(\\bar{x} = (1+3+5+7+9)/5 = 25/5 = 5\\).",
+          "Absolute deviations from 5: \\(4, 2, 0, 2, 4\\).",
+          "Sum: \\(4 + 2 + 0 + 2 + 4 = 12\\).",
+          "\\(\\text{MD} = 12/5 = 2.4\\).",
+        ],
+        answer: "\\(\\text{MD} = 2.4\\)",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt: "Find the mean deviation of \\(3, 6, 9, 12\\) about the mean.",
+        steps: [
+          "Mean: \\(\\bar{x} = (3+6+9+12)/4 = 30/4 = 7.5\\).",
+          "Absolute deviations: \\(4.5,\\ 1.5,\\ 1.5,\\ 4.5\\). Sum = 12.",
+          "\\(\\text{MD} = 12/4 = 3\\).",
+        ],
+        answer: "\\(\\text{MD} = 3\\)",
+      },
       pyqExampleId: "20f73222-eb92-4483-ae18-494bfde621ec",
       traps: [
         {
@@ -79,6 +99,27 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma^2 = 8\\)",
       },
+      fadedExample: {
+        prompt: "Find the variance of \\(3, 6, 9, 12, 15\\).",
+        steps: [
+          "Mean: \\(\\bar{x} = (3+6+9+12+15)/5 = 45/5 = 9\\).",
+          "Squared deviations: \\((3-9)^2, (6-9)^2, (9-9)^2, (12-9)^2, (15-9)^2 = 36, 9, 0, 9, 36\\).",
+          "Sum: \\(36 + 9 + 0 + 9 + 36 = 90\\).",
+          "\\(\\sigma^2 = 90 / 5 = 18\\).",
+        ],
+        answer: "\\(\\sigma^2 = 18\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "For 5 observations, \\(\\sum x_i = 30\\) and \\(\\sum x_i^2 = 220\\). " +
+          "Find the variance.",
+        steps: [
+          "Mean: \\(\\bar{x} = 30/5 = 6\\).",
+          "Use the computational identity: \\(\\sigma^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2 = 220/5 - 36 = 44 - 36 = 8\\).",
+        ],
+        answer: "\\(\\sigma^2 = 8\\)",
+      },
       pyqExampleId: "dce15c09-9f56-43af-b675-a154d1cba3e9",
       traps: [
         {
@@ -114,6 +155,24 @@ export const DISPERSION_NOTE: SubtopicNote = {
           "Numerically, \\(\\sigma \\approx 2.83\\).",
         ],
         answer: "\\(\\sigma = 2\\sqrt{2} \\approx 2.83\\)",
+      },
+      fadedExample: {
+        prompt: "If the variance of a dataset is \\(49\\), find its standard deviation.",
+        steps: [
+          "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{49}\\).",
+          "\\(\\sigma = 7\\).",
+        ],
+        answer: "\\(\\sigma = 7\\)",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt: "Find the standard deviation of \\(1, 2, 3, 4, 5\\).",
+        steps: [
+          "Mean: \\(\\bar{x} = 3\\). Squared deviations: \\(4, 1, 0, 1, 4\\). Sum = 10.",
+          "Variance: \\(\\sigma^2 = 10/5 = 2\\).",
+          "Standard deviation: \\(\\sigma = \\sqrt{2} \\approx 1.41\\).",
+        ],
+        answer: "\\(\\sigma = \\sqrt{2} \\approx 1.41\\)",
       },
       pyqExampleId: "180027af-b87e-478d-93a1-0b1d4e271cd3",
       traps: [
@@ -155,6 +214,25 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma_Y = 12\\)",
       },
+      fadedExample: {
+        prompt:
+          "Variance of \\(X\\) is \\(5\\). Find the variance of \\(Y = 4X - 3\\).",
+        steps: [
+          "Identify \\(a = 4,\\ b = -3\\); shift has no effect on variance.",
+          "Apply: \\(\\text{Var}(Y) = a^2 \\cdot \\text{Var}(X) = 4^2 \\cdot 5 = 16 \\cdot 5\\).",
+          "Compute: \\(\\text{Var}(Y) = 80\\).",
+        ],
+        answer: "\\(\\text{Var}(Y) = 80\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt: "If the SD of \\(X\\) is \\(6\\), find the SD of \\(Y = -2X + 10\\).",
+        steps: [
+          "Identify \\(a = -2,\\ b = 10\\). Shift ignored.",
+          "Apply: \\(\\sigma_Y = |a| \\cdot \\sigma_X = 2 \\cdot 6 = 12\\).",
+        ],
+        answer: "\\(\\sigma_Y = 12\\)",
+      },
       pyqExampleId: "33af29b2-fa37-43b9-a861-deb85008bbf4",
       traps: [
         {
@@ -193,6 +271,27 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{CV} = 20\\%\\)",
       },
+      fadedExample: {
+        prompt:
+          "A dataset has mean \\(80\\) and standard deviation \\(12\\). Find its CV.",
+        steps: [
+          "Apply: \\(\\text{CV} = (\\sigma / \\bar{x}) \\times 100\\).",
+          "Substitute: \\(\\text{CV} = (12 / 80) \\times 100\\).",
+          "Compute: \\(\\text{CV} = 0.15 \\times 100 = 15\\%\\).",
+        ],
+        answer: "\\(\\text{CV} = 15\\%\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "Dataset A has mean \\(100\\), SD \\(15\\). Dataset B has mean \\(40\\), SD \\(8\\). Which is more variable?",
+        steps: [
+          "\\(\\text{CV}_A = (15 / 100) \\times 100 = 15\\%\\).",
+          "\\(\\text{CV}_B = (8 / 40) \\times 100 = 20\\%\\).",
+          "Higher CV means more variability, so B is more variable.",
+        ],
+        answer: "\\(B\\) is more variable (\\(\\text{CV}_A = 15\\%,\\ \\text{CV}_B = 20\\%\\)).",
+      },
       pyqExampleId: "e216a45f-d881-4f2c-948c-be9f7ec69f60",
       traps: [
         {
@@ -229,6 +328,26 @@ export const DISPERSION_NOTE: SubtopicNote = {
           "Compute: \\(\\sigma^2 = 28\\).",
         ],
         answer: "\\(\\sigma^2 = 28\\)",
+      },
+      fadedExample: {
+        prompt:
+          "Given \\(n = 20,\\ \\sum x_i = 100,\\ \\sum x_i^2 = 1000\\), find the variance.",
+        steps: [
+          "Mean: \\(\\bar{x} = 100/20 = 5\\).",
+          "Apply the identity: \\(\\sigma^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2 = 1000/20 - 25 = 50 - 25\\).",
+          "\\(\\sigma^2 = 25\\).",
+        ],
+        answer: "\\(\\sigma^2 = 25\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "If the mean of 4 observations is 5 and the variance is 4, find \\(\\sum x_i^2\\).",
+        steps: [
+          "Rearrange: \\(\\sum x_i^2 = n(\\bar{x}^2 + \\sigma^2)\\).",
+          "Substitute: \\(\\sum x_i^2 = 4 \\cdot (25 + 4) = 4 \\cdot 29 = 116\\).",
+        ],
+        answer: "\\(\\sum x_i^2 = 116\\)",
       },
       pyqExampleId: "65867660-2a97-4b50-8e85-577c7b1e95df",
       traps: [
