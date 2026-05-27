@@ -2,7 +2,7 @@ import type { SubtopicNote } from "@/app/notes/_types";
 
 export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
   subtopicName: "Measures of Central Tendency — Mean, Median, Mode",
-  title: "Measures of Central Tendency",
+  title: "Foundations + Measures of Central Tendency",
   oneLineDefinition:
     "A single value that summarises where a dataset is centred — mean, median, or mode.",
   whyItMatters:
@@ -13,6 +13,194 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     "Master the eleven concepts below and you cover the entire EASY + MODERATE " +
     "bandwidth reliably.",
   concepts: [
+    // F1 — what-is-data ──────────────────────────────────────────────────────
+    {
+      slug: "what-is-data",
+      name: "What is data, and why summarise it?",
+      intuition:
+        "A list of marks like 47, 52, 68, 71, 49, 55 is hard to compare against " +
+        "another class's list. A single representative number — the average, the " +
+        "middle value, the most common — compresses the list into something we " +
+        "can actually reason about.",
+      definition:
+        "Data is the set of observed values of a variable measured on a " +
+        "collection of items. The full collection is the POPULATION; a subset " +
+        "actually observed is a SAMPLE. Statistics builds summary measures from " +
+        "samples to draw conclusions about the population.",
+      authoredExample: {
+        prompt:
+          "Class A scored 60, 60, 60 on three tests. Class B scored 40, 60, 80. " +
+          "Both have mean 60. What does the mean MISS about Class B?",
+        steps: [
+          "Both datasets sum to 180, so the arithmetic mean is identical: 60.",
+          "But Class A is constant; Class B varies between 40 and 80.",
+          "The mean alone hides the SPREAD. We need a second summary (a dispersion measure) to capture it — that's why this chapter has two parts: tendency and dispersion.",
+        ],
+        answer: "Mean compresses but loses spread information.",
+      },
+    },
+
+    // F2 — types-of-data ─────────────────────────────────────────────────────
+    {
+      slug: "types-of-data",
+      name: "Types of data — qualitative vs quantitative, discrete vs continuous",
+      intuition:
+        "Some data labels things (blood group, district, brand) — that's " +
+        "QUALITATIVE. Other data measures things (height, marks, count of " +
+        "children) — that's QUANTITATIVE. Quantitative further splits into " +
+        "DISCRETE (whole-number counts) and CONTINUOUS (any value in a range, " +
+        "like 167.4 cm).",
+      definition:
+        "Qualitative (categorical) data takes labels, not numbers — operations " +
+        "like mean don't apply. Quantitative data takes numerical values; " +
+        "DISCRETE means the value jumps in integer-sized steps (kids per " +
+        "family, integer marks), CONTINUOUS means values fill an interval " +
+        "smoothly (height, weight, time).",
+      authoredExample: {
+        prompt:
+          "Classify each variable: (i) eye colour, (ii) number of siblings, " +
+          "(iii) running time for 100 m, (iv) shirt size {S, M, L, XL}.",
+        steps: [
+          "(i) Eye colour — labels (blue, brown, green) — QUALITATIVE.",
+          "(ii) Number of siblings — whole-number counts — QUANTITATIVE, DISCRETE.",
+          "(iii) Running time — any real number such as 12.47 s — QUANTITATIVE, CONTINUOUS.",
+          "(iv) Shirt size — ordered labels (S < M < L < XL) — still QUALITATIVE (ordinal).",
+        ],
+        answer:
+          "(i) qualitative, (ii) discrete, (iii) continuous, (iv) qualitative (ordinal).",
+      },
+    },
+
+    // F3 — frequency-and-tabulation ──────────────────────────────────────────
+    {
+      slug: "frequency-and-tabulation",
+      name: "Frequency and tabulation",
+      intuition:
+        "When values repeat, instead of writing the raw list, we tabulate each " +
+        "unique value with how many times it occurred. That count is the " +
+        "FREQUENCY, written \\(f\\). The total number of observations is " +
+        "\\(N = \\sum f\\).",
+      definition:
+        "A frequency distribution lists each distinct value (or class interval) " +
+        "alongside its frequency. The TOTAL FREQUENCY equals the number of " +
+        "observations: \\(N = \\sum f_i\\). Every chapter formula that involves " +
+        "grouped or repeated data uses this \\(N\\), not the count of distinct " +
+        "values.",
+      formula: {
+        label: "Total frequency",
+        latex: "N = \\sum_{i=1}^{k} f_i",
+        symbols: [
+          { symbol: "\\(k\\)", meaning: "number of distinct values or class intervals" },
+          { symbol: "\\(f_i\\)", meaning: "frequency of the \\(i\\)-th value/class" },
+          { symbol: "\\(N\\)", meaning: "total number of observations" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "Marks of 12 students: 4, 5, 4, 6, 5, 7, 5, 4, 7, 6, 5, 4. " +
+          "Build a frequency table and verify \\(N\\).",
+        steps: [
+          "Distinct values in ascending order: 4, 5, 6, 7.",
+          "Tally: \\(f(4)=4,\\ f(5)=4,\\ f(6)=2,\\ f(7)=2\\).",
+          "Check \\(N = \\sum f = 4 + 4 + 2 + 2 = 12\\) — matches the original count.",
+        ],
+        answer: "\\(f(4)=4,\\ f(5)=4,\\ f(6)=2,\\ f(7)=2;\\ N = 12\\).",
+      },
+    },
+
+    // F4 — class-marks-and-class-width ───────────────────────────────────────
+    {
+      slug: "class-marks-and-class-width",
+      name: "Class marks and class width (grouped data)",
+      intuition:
+        "Continuous data — like heights in cm — gets grouped into INTERVALS " +
+        "such as 150–160, 160–170. We no longer know each exact value, so we " +
+        "treat every observation in an interval as if it sat at the MID-POINT. " +
+        "That mid-point is the CLASS MARK. The interval's width is the CLASS WIDTH.",
+      definition:
+        "For a class interval with lower bound \\(L\\) and upper bound \\(U\\): " +
+        "the CLASS MARK is \\(x = (L + U)/2\\) and the CLASS WIDTH is " +
+        "\\(h = U - L\\). All grouped-data formulas (mean, median, mode, " +
+        "variance) use the class mark as the representative value of the interval.",
+      formula: {
+        label: "Class mark and class width",
+        latex:
+          "x_{\\text{mark}} = \\dfrac{L + U}{2} \\qquad h = U - L",
+      },
+      authoredExample: {
+        prompt:
+          "For the class interval \\(30\\)–\\(40\\), find the class mark and class width.",
+        steps: [
+          "Lower bound \\(L = 30\\), upper bound \\(U = 40\\).",
+          "Class mark: \\((30 + 40)/2 = 35\\).",
+          "Class width: \\(40 - 30 = 10\\).",
+        ],
+        answer: "Class mark \\(= 35\\), class width \\(h = 10\\).",
+      },
+    },
+
+    // F5 — summation-notation ────────────────────────────────────────────────
+    {
+      slug: "summation-notation",
+      name: "Summation notation \\(\\Sigma\\)",
+      intuition:
+        "\\(\\Sigma\\) (capital sigma) is a compact way to write \"add up many " +
+        "things\". The expression \\(\\sum_{i=1}^{n} x_i\\) means: start with " +
+        "\\(i = 1\\), plug into \\(x_i\\), keep going until \\(i = n\\), and " +
+        "add everything together.",
+      definition:
+        "For a sequence \\(x_1, x_2, \\ldots, x_n\\), " +
+        "\\(\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\cdots + x_n\\). Two identities " +
+        "are load-bearing throughout this chapter: \\(\\sum_{i=1}^{n} c = nc\\) " +
+        "(a constant summed \\(n\\) times) and " +
+        "\\(\\sum (a x_i + b) = a \\sum x_i + nb\\) (linearity).",
+      formula: {
+        label: "Definition + two identities",
+        latex:
+          "\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb",
+      },
+      authoredExample: {
+        prompt:
+          "If \\(\\sum_{i=1}^{10} x_i = 50\\), compute \\(\\sum_{i=1}^{10} (2 x_i + 3)\\).",
+        steps: [
+          "Apply linearity: \\(\\sum (2x_i + 3) = 2 \\sum x_i + \\sum 3\\).",
+          "Substitute: \\(2 \\cdot 50 + 10 \\cdot 3 = 100 + 30 = 130\\).",
+        ],
+        answer: "\\(\\sum (2 x_i + 3) = 130\\).",
+      },
+    },
+
+    // F6 — weighted-vs-unweighted-counting ───────────────────────────────────
+    {
+      slug: "weighted-vs-unweighted-counting",
+      name: "Weighted vs unweighted counting",
+      intuition:
+        "If the value \\(7\\) occurs 4 times in the data, its CONTRIBUTION to " +
+        "the total is \\(7+7+7+7 = 28\\), not just \\(7\\). That's the " +
+        "difference between unweighted (\\(\\sum x_i\\)) and weighted " +
+        "(\\(\\sum f_i x_i\\)) summation. Foreshadows every grouped-data " +
+        "formula in this chapter.",
+      definition:
+        "For raw data, the total is \\(\\sum x_i\\) and the count is \\(n\\). " +
+        "For frequency-tabulated data with distinct values \\(x_i\\) of " +
+        "frequency \\(f_i\\), the total is \\(\\sum f_i x_i\\) and the count " +
+        "is \\(N = \\sum f_i\\). Every measure has a \"raw\" form (unweighted) " +
+        "and a \"grouped\" form (weighted) — they're the same idea with " +
+        "frequencies multiplied in.",
+      authoredExample: {
+        prompt:
+          "Values \\(2, 4, 6\\) occur with frequencies \\(3, 2, 5\\) " +
+          "respectively. Find the weighted total \\(\\sum f_i x_i\\) and " +
+          "the count \\(N\\).",
+        steps: [
+          "Weighted contributions: \\(2 \\cdot 3 = 6,\\ 4 \\cdot 2 = 8,\\ 6 \\cdot 5 = 30\\).",
+          "Weighted total: \\(\\sum f_i x_i = 6 + 8 + 30 = 44\\).",
+          "Total count: \\(N = \\sum f_i = 3 + 2 + 5 = 10\\).",
+        ],
+        answer: "\\(\\sum f_i x_i = 44,\\ N = 10\\).",
+      },
+    },
+
     // 1 ───────────────────────────────────────────────────────────────────────
     {
       slug: "arithmetic-mean-raw",
@@ -41,6 +229,25 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Apply the formula: \\(\\bar{x} = \\dfrac{40}{5} = 8\\).",
         ],
         answer: "\\(\\bar{x} = 8\\)",
+      },
+      fadedExample: {
+        prompt: "Find the arithmetic mean of \\(5, 8, 11, 14, 17\\).",
+        steps: [
+          "Add up all the values: \\(5 + 8 + 11 + 14 + 17 = 55\\).",
+          "Count the observations: \\(n = 5\\).",
+          "Apply the formula: \\(\\bar{x} = \\dfrac{55}{5} = 11\\).",
+        ],
+        answer: "\\(\\bar{x} = 11\\)",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt: "Find the arithmetic mean of \\(3, 6, 9, 12, 15, 18\\).",
+        steps: [
+          "Sum: \\(3+6+9+12+15+18 = 63\\).",
+          "Count: \\(n = 6\\).",
+          "Mean: \\(\\bar{x} = 63/6 = 10.5\\).",
+        ],
+        answer: "\\(\\bar{x} = 10.5\\)",
       },
       pyqExampleId: "78e0ac87-d443-49ae-860b-09a2a4185027",
       traps: [
@@ -84,6 +291,29 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\bar{x} = 5.4\\)",
       },
+      fadedExample: {
+        prompt:
+          "Find the mean for \\(x = 1, 2, 3, 4\\) with frequencies " +
+          "\\(f = 3, 5, 7, 5\\).",
+        steps: [
+          "Compute \\(\\sum f_i = 3 + 5 + 7 + 5 = 20\\).",
+          "Compute \\(\\sum f_i x_i = 1{\\cdot}3 + 2{\\cdot}5 + 3{\\cdot}7 + 4{\\cdot}5 = 3 + 10 + 21 + 20 = 54\\).",
+          "Apply: \\(\\bar{x} = 54 / 20 = 2.7\\).",
+        ],
+        answer: "\\(\\bar{x} = 2.7\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "Find the mean for \\(x = 10, 20, 30, 40\\) with frequencies " +
+          "\\(f = 1, 2, 3, 4\\).",
+        steps: [
+          "\\(\\sum f = 1+2+3+4 = 10\\).",
+          "\\(\\sum f x = 10 + 40 + 90 + 160 = 300\\).",
+          "\\(\\bar{x} = 300/10 = 30\\).",
+        ],
+        answer: "\\(\\bar{x} = 30\\)",
+      },
       pyqExampleId: "e7f15493-52aa-4380-b0c2-8f93f48bc409",
       traps: [
         {
@@ -125,6 +355,27 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Compute: \\(\\bar{y} = 36 + 5 = 41\\).",
         ],
         answer: "\\(\\bar{y} = 41\\)",
+      },
+      fadedExample: {
+        prompt:
+          "The mean of 25 observations is 8. If each observation is multiplied by " +
+          "4 and then 3 is added, find the new mean.",
+        steps: [
+          "Identify \\(a = 4,\\ b = 3\\).",
+          "Apply: \\(\\bar{y} = a\\bar{x} + b = 4 \\cdot 8 + 3\\).",
+          "Compute: \\(\\bar{y} = 32 + 3 = 35\\).",
+        ],
+        answer: "\\(\\bar{y} = 35\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "If \\(\\bar{x} = 10\\) and \\(y_i = 2 x_i - 5\\) for every \\(i\\), find \\(\\bar{y}\\).",
+        steps: [
+          "Identify \\(a = 2,\\ b = -5\\).",
+          "Apply: \\(\\bar{y} = 2 \\cdot 10 - 5 = 15\\).",
+        ],
+        answer: "\\(\\bar{y} = 15\\)",
       },
       pyqExampleId: "fb039a72-6921-4a0e-a538-ca2081c72135",
       traps: [
@@ -175,6 +426,29 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Therefore \\(M_{\\text{new}} = 15 + 1 = 16\\).",
         ],
         answer: "\\(M_{\\text{new}} = 16\\)",
+      },
+      fadedExample: {
+        prompt:
+          "The mean of 15 observations is 20. A value recorded as 12 should have " +
+          "been 27. Find the corrected mean.",
+        steps: [
+          "Swap: wrong \\(x = 12\\), correct \\(y = 27\\), \\(n = 15\\).",
+          "Apply: \\(M_{\\text{new}} = 20 + \\dfrac{27 - 12}{15} = 20 + \\dfrac{15}{15}\\).",
+          "Compute: \\(M_{\\text{new}} = 20 + 1 = 21\\).",
+        ],
+        answer: "\\(M_{\\text{new}} = 21\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "The mean of 25 observations is 30. A value recorded as 18 was actually " +
+          "43. Find the corrected mean.",
+        steps: [
+          "Swap: \\(x = 18,\\ y = 43,\\ n = 25\\).",
+          "\\(M_{\\text{new}} = 30 + \\dfrac{43 - 18}{25} = 30 + \\dfrac{25}{25} = 30 + 1\\).",
+          "\\(M_{\\text{new}} = 31\\).",
+        ],
+        answer: "\\(M_{\\text{new}} = 31\\)",
       },
       pyqExampleId: "b97d7058-a71c-4b2f-9bba-e154e4701f8c",
       traps: [
@@ -229,6 +503,25 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Mean: \\(\\dfrac{1100}{8} = 137.5\\).",
         ],
         answer: "Mean \\(= 137.5\\)",
+      },
+      fadedExample: {
+        prompt:
+          "Find the mean of \\(5^2, 6^2, 7^2, \\ldots, 10^2\\).",
+        steps: [
+          "Number of terms: \\(10 - 5 + 1 = 6\\).",
+          "Sum as a difference: \\(\\sum_{k=1}^{10} k^2 - \\sum_{k=1}^{4} k^2 = \\dfrac{10 \\cdot 11 \\cdot 21}{6} - \\dfrac{4 \\cdot 5 \\cdot 9}{6} = 385 - 30 = 355\\).",
+          "Mean: \\(355/6\\).",
+        ],
+        answer: "Mean \\(= 355/6 \\approx 59.17\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt: "Find the arithmetic mean of the first \\(10\\) natural numbers.",
+        steps: [
+          "This is the AP \\(1, 2, \\ldots, 10\\).",
+          "Mean \\( = (a_1 + a_n)/2 = (1 + 10)/2 = 5.5\\).",
+        ],
+        answer: "Mean \\(= 5.5\\)",
       },
       pyqExampleId: "4bd4c8d9-c625-4b44-b09e-da16e52b7b49",
       traps: [
@@ -286,6 +579,28 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M_{12} = 38\\) years",
       },
+      fadedExample: {
+        prompt:
+          "Mean weight of 40 boys is 50 kg; mean weight of 60 girls is 45 kg. " +
+          "Find the combined mean weight.",
+        steps: [
+          "Group totals: \\(40 \\cdot 50 = 2000\\), \\(60 \\cdot 45 = 2700\\).",
+          "Apply: \\(M_{12} = \\dfrac{2000 + 2700}{40 + 60} = \\dfrac{4700}{100}\\).",
+          "Result: \\(M_{12} = 47\\) kg.",
+        ],
+        answer: "\\(M_{12} = 47\\) kg",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "Section A (25 students) has mean marks 72; Section B (35 students) has mean " +
+          "66. Find the combined mean.",
+        steps: [
+          "Totals: \\(25 \\cdot 72 = 1800\\); \\(35 \\cdot 66 = 2310\\).",
+          "\\(M_{12} = (1800 + 2310)/60 = 4110/60 = 68.5\\).",
+        ],
+        answer: "\\(M_{12} = 68.5\\)",
+      },
       pyqExampleId: "3c2e5644-ae19-407e-85ac-cdcb3b23fa5e",
       traps: [
         {
@@ -340,6 +655,24 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M = 7\\)",
       },
+      fadedExample: {
+        prompt: "Find the median of \\(12, 5, 9, 17, 8, 14, 11, 6\\).",
+        steps: [
+          "Sort ascending: \\(5, 6, 8, 9, 11, 12, 14, 17\\).",
+          "\\(n = 8\\) (even), so median is the average of the 4th and 5th: \\((9 + 11)/2\\).",
+          "Median \\(= 10\\).",
+        ],
+        answer: "\\(M = 10\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt: "Find the median of \\(2, 9, 4, 11, 6, 15, 7\\).",
+        steps: [
+          "Sort: \\(2, 4, 6, 7, 9, 11, 15\\). \\(n = 7\\) (odd).",
+          "Median \\( = \\tfrac{n+1}{2} = 4\\text{th value} = 7\\).",
+        ],
+        answer: "\\(M = 7\\)",
+      },
       pyqExampleId: "5d585188-bab2-476a-9078-e54725e8cdd5",
       traps: [
         {
@@ -383,6 +716,24 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M_0 = 5\\)",
       },
+      fadedExample: {
+        prompt: "Find the mode of \\(6, 9, 6, 8, 6, 11, 9, 6, 12, 8\\).",
+        steps: [
+          "Tally: \\(6\\) appears 4 times; \\(8\\) appears 2 times; \\(9\\) appears 2 times; others once.",
+          "Highest frequency is 4, only for the value \\(6\\).",
+          "Mode \\(= 6\\).",
+        ],
+        answer: "\\(M_0 = 6\\)",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt: "Find the mode of \\(3, 5, 7, 5, 9, 3, 5, 11, 3, 3\\).",
+        steps: [
+          "Tally: \\(3\\) appears 4 times; \\(5\\) appears 3 times; others once.",
+          "Highest frequency is 4, only for \\(3\\).",
+        ],
+        answer: "\\(M_0 = 3\\)",
+      },
       pyqExampleId: "8de1abbb-6597-407a-855d-bc6c986ee3b1",
       traps: [
         {
@@ -419,6 +770,24 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Multiply the values: \\(4 \\times 9 = 36\\).",
           "Take the \\(n\\)-th root with \\(n = 2\\): \\(\\sqrt{36}\\).",
           "Compute: \\(\\sqrt{36} = 6\\).",
+        ],
+        answer: "\\(\\text{GM} = 6\\)",
+      },
+      fadedExample: {
+        prompt: "Find the geometric mean of \\(2\\) and \\(32\\).",
+        steps: [
+          "Multiply: \\(2 \\times 32 = 64\\).",
+          "\\(n\\)-th root with \\(n = 2\\): \\(\\sqrt{64}\\).",
+          "\\(\\text{GM} = 8\\).",
+        ],
+        answer: "\\(\\text{GM} = 8\\)",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt: "Find the geometric mean of \\(4, 6, 9\\).",
+        steps: [
+          "Product: \\(4 \\cdot 6 \\cdot 9 = 216\\).",
+          "Take the cube root: \\(\\sqrt[3]{216} = 6\\).",
         ],
         answer: "\\(\\text{GM} = 6\\)",
       },
@@ -460,6 +829,24 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Apply the formula: \\(\\text{HM} = \\dfrac{2}{5/12} = 2 \\times \\dfrac{12}{5} = \\dfrac{24}{5} = 4.8\\).",
         ],
         answer: "\\(\\text{HM} = 4.8\\)",
+      },
+      fadedExample: {
+        prompt: "Find the harmonic mean of \\(3\\) and \\(6\\).",
+        steps: [
+          "Sum of reciprocals: \\(\\dfrac{1}{3} + \\dfrac{1}{6} = \\dfrac{2}{6} + \\dfrac{1}{6} = \\dfrac{3}{6} = \\dfrac{1}{2}\\).",
+          "\\(n = 2\\).",
+          "\\(\\text{HM} = 2 / (1/2) = 4\\).",
+        ],
+        answer: "\\(\\text{HM} = 4\\)",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt: "Find the harmonic mean of \\(2\\) and \\(8\\).",
+        steps: [
+          "Sum of reciprocals: \\(\\dfrac{1}{2} + \\dfrac{1}{8} = \\dfrac{4}{8} + \\dfrac{1}{8} = \\dfrac{5}{8}\\).",
+          "\\(\\text{HM} = 2 / (5/8) = 16/5 = 3.2\\).",
+        ],
+        answer: "\\(\\text{HM} = 3.2\\)",
       },
       pyqExampleId: "3c181502-5d9d-48e8-b19d-c3d58738909f",
       traps: [
@@ -513,6 +900,28 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Plugging in \\(n = 5,\\ \\bar{x} = 10\\) gives \\(50 - 50 = 0\\).",
         ],
         answer: "Sum of deviations \\(= 0\\)",
+      },
+      fadedExample: {
+        prompt:
+          "If the mean of 8 numbers is 25, find the sum of deviations of the " +
+          "numbers from their mean.",
+        steps: [
+          "Use the identity: \\(\\sum (x_i - \\bar{x}) = 0\\) for any dataset.",
+          "Why? \\(\\sum(x_i - \\bar{x}) = \\sum x_i - n\\bar{x} = n\\bar{x} - n\\bar{x} = 0\\).",
+          "So the answer is \\(0\\) regardless of the specific value of \\(n\\) or \\(\\bar{x}\\).",
+        ],
+        answer: "Sum of deviations \\(= 0\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "For a moderately skewed unimodal distribution, the mean is \\(30\\) " +
+          "and the median is \\(28\\). Use the empirical relation to find the mode.",
+        steps: [
+          "Apply \\(\\text{Mode} \\approx 3 \\,\\text{Median} - 2 \\,\\text{Mean}\\).",
+          "Substitute: \\(3 \\cdot 28 - 2 \\cdot 30 = 84 - 60 = 24\\).",
+        ],
+        answer: "\\(\\text{Mode} \\approx 24\\)",
       },
       pyqExampleId: "9650e9ca-cc9b-4696-8607-0262116a0753",
       traps: [

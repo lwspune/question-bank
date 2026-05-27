@@ -7,6 +7,8 @@ import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import type { ConceptUnit } from "@/app/notes/_types";
 import FormulaBlock from "./FormulaBlock";
 import WorkedExampleAuthored from "./WorkedExampleAuthored";
+import FadedExampleCard from "./FadedExampleCard";
+import SelfCheckCard from "./SelfCheckCard";
 import TrapCallout from "./TrapCallout";
 
 type Props = {
@@ -84,6 +86,20 @@ export default function ConceptUnitCard({
       <div className="mt-6">
         <WorkedExampleAuthored example={concept.authoredExample} />
       </div>
+
+      {/* Faded example — same shape, some steps hidden. The "do part of it" rung. */}
+      {concept.fadedExample && (
+        <div className="mt-4">
+          <FadedExampleCard example={concept.fadedExample} />
+        </div>
+      )}
+
+      {/* Self-check — independent attempt, solution behind one reveal. */}
+      {concept.selfCheckExample && (
+        <div className="mt-4">
+          <SelfCheckCard example={concept.selfCheckExample} />
+        </div>
+      )}
 
       {/* Bank PYQ application — same concept on a real past-year question */}
       {pyqExample && (
