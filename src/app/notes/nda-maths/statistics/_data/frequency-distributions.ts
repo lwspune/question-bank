@@ -27,6 +27,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
           { symbol: "Class width", meaning: "upper bound − lower bound of the class" },
         ],
       },
+      visualizationSlug: "histogram-bin-slider",
       authoredExample: {
         prompt:
           "Three classes have widths 5, 10, 5 with frequencies 30, 50, 25. Find the height of each histogram bar (relative).",

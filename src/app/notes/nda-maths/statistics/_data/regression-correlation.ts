@@ -102,6 +102,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           { symbol: "\\((\\bar{x},\\bar{y})\\)", meaning: "the only point on BOTH regression lines" },
         ],
       },
+      visualizationSlug: "regression-line-fit",
       authoredExample: {
         prompt:
           "Find the regression line of \\(y\\) on \\(x\\) passing through the only two data points \\((-1, 1)\\) and \\((3, 2)\\).",

@@ -89,6 +89,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
           { symbol: "\\(\\sum x_i^2\\)", meaning: "sum of squares of observations" },
         ],
       },
+      visualizationSlug: "variance-squared-deviations",
       authoredExample: {
         prompt: "Find the variance of \\(2, 4, 6, 8, 10\\).",
         steps: [

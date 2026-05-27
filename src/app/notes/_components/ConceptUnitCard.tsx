@@ -10,6 +10,21 @@ import WorkedExampleAuthored from "./WorkedExampleAuthored";
 import FadedExampleCard from "./FadedExampleCard";
 import SelfCheckCard from "./SelfCheckCard";
 import TrapCallout from "./TrapCallout";
+import RegressionLineFit from "./visualizations/RegressionLineFit";
+import VarianceSquaredDeviations from "./visualizations/VarianceSquaredDeviations";
+import HistogramBinSlider from "./visualizations/HistogramBinSlider";
+import type { VisualizationSlug } from "@/app/notes/_types";
+
+function renderVisualization(slug: VisualizationSlug) {
+  switch (slug) {
+    case "regression-line-fit":
+      return <RegressionLineFit />;
+    case "variance-squared-deviations":
+      return <VarianceSquaredDeviations />;
+    case "histogram-bin-slider":
+      return <HistogramBinSlider />;
+  }
+}
 
 type Props = {
   concept: ConceptUnit;
@@ -80,6 +95,12 @@ export default function ConceptUnitCard({
         <div className="mt-5">
           <FormulaBlock formula={concept.formula} />
         </div>
+      )}
+
+      {/* Interactive visualization — slotted between formula and the worked
+          example, matching splitNoteIntoSlides' per-concept order. */}
+      {concept.visualizationSlug && (
+        <div className="mt-6">{renderVisualization(concept.visualizationSlug)}</div>
       )}
 
       {/* Authored worked example — always visible, the core teaching */}
