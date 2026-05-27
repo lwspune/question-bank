@@ -15,6 +15,7 @@ import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint
 import ConceptUnitCard from "@/app/notes/_components/ConceptUnitCard";
 import NotePresenter from "@/app/notes/_components/NotePresenter";
 import SubtopicMasteryCheckpoint from "@/app/notes/_components/SubtopicMasteryCheckpoint";
+import SubtopicSummary from "@/app/notes/_components/SubtopicSummary";
 import {
   STATISTICS_CHAPTER,
   STATISTICS_NOTES,
@@ -233,6 +234,10 @@ export default async function SubtopicNotePage({
           />
         ))}
       </div>
+
+      {/* End-of-subtopic recap — auto-derived from concept.formula + concept.traps.
+          Renders nothing when the subtopic has neither. */}
+      <SubtopicSummary note={note} />
 
       {/* Mastery checkpoint — interleaved questions from the concept-tag pool.
           Renders nothing when checkpointRows is empty (subtopic has no drills tagged yet). */}
