@@ -341,6 +341,27 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "Collinear; \\(B\\) divides \\(AC\\) internally in the ratio \\(1 : 2\\).",
       },
+      fadedExample: {
+        prompt:
+          "Position vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\) satisfy \\(3\\vec{a} - 5\\vec{b} + 2\\vec{c} = \\vec{0}\\). Show the points are collinear and find the ratio in which \\(B\\) divides \\(AC\\).",
+        steps: [
+          "Coefficients are \\(3, -5, 2\\); their sum \\(3 + (-5) + 2 = 0\\), so the three points are collinear.",
+          "Isolate \\(\\vec{b}\\): \\(5\\vec{b} = 3\\vec{a} + 2\\vec{c}\\), so \\(\\vec{b} = \\dfrac{3\\vec{a} + 2\\vec{c}}{5}\\).",
+          "Compare with \\(\\vec{b} = \\dfrac{m\\vec{c} + n\\vec{a}}{m + n}\\): \\(m = 2\\), \\(n = 3\\), so \\(B\\) divides \\(AC\\) internally in ratio \\(AB : BC = 2 : 3\\).",
+        ],
+        answer: "Collinear; \\(B\\) divides \\(AC\\) internally in ratio \\(2 : 3\\).",
+        hiddenStepIndexes: [0],
+      },
+      selfCheckExample: {
+        prompt:
+          "Position vectors satisfy \\(\\vec{a} + 3\\vec{b} - 4\\vec{c} = \\vec{0}\\). Show the points are collinear and find the ratio in which \\(C\\) divides \\(AB\\).",
+        steps: [
+          "Coefficient sum: \\(1 + 3 + (-4) = 0\\) — collinear.",
+          "Isolate \\(\\vec{c}\\): \\(4\\vec{c} = \\vec{a} + 3\\vec{b}\\), so \\(\\vec{c} = \\dfrac{3\\vec{b} + \\vec{a}}{4}\\).",
+          "Compare with \\(\\vec{c} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\): \\(m = 3,\\ n = 1\\), so \\(AC : CB = 3 : 1\\).",
+        ],
+        answer: "Collinear; \\(C\\) divides \\(AB\\) internally in ratio \\(3 : 1\\).",
+      },
       pyqExampleId: "bf814f0f-d9fe-405d-92de-cc89ec533d10",
       traps: [
         {
@@ -395,6 +416,26 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
           "Divide: \\(\\vec{p} = 5\\hat{i} + 7\\hat{j}\\).",
         ],
         answer: "\\(\\vec{p} = 5\\hat{i} + 7\\hat{j}\\)",
+      },
+      fadedExample: {
+        prompt:
+          "Points \\(A\\) and \\(B\\) have position vectors \\(\\vec{a} = \\hat{i} + 2\\hat{j}\\) and \\(\\vec{b} = 4\\hat{i} + 8\\hat{j}\\). Find the point \\(P\\) dividing \\(AB\\) internally in the ratio \\(2 : 1\\).",
+        steps: [
+          "Internal division, \\(m = 2\\) (towards \\(B\\)), \\(n = 1\\) (towards \\(A\\)). Use the plus-sign formula.",
+          "\\(\\vec{p} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n} = \\dfrac{2(4\\hat{i}+8\\hat{j}) + 1(\\hat{i}+2\\hat{j})}{3} = \\dfrac{9\\hat{i} + 18\\hat{j}}{3}\\).",
+          "\\(\\vec{p} = 3\\hat{i} + 6\\hat{j}\\).",
+        ],
+        answer: "\\(\\vec{p} = 3\\hat{i} + 6\\hat{j}\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "Find the midpoint of the segment joining \\(A(3\\hat{i} - \\hat{j})\\) and \\(B(5\\hat{i} + 3\\hat{j})\\).",
+        steps: [
+          "Midpoint is the \\(m = n\\) special case: \\(\\vec{p} = \\dfrac{\\vec{a} + \\vec{b}}{2}\\).",
+          "\\(\\vec{p} = \\dfrac{(3+5)\\hat{i} + (-1+3)\\hat{j}}{2} = \\dfrac{8\\hat{i} + 2\\hat{j}}{2} = 4\\hat{i} + \\hat{j}\\).",
+        ],
+        answer: "\\(\\vec{p} = 4\\hat{i} + \\hat{j}\\)",
       },
       pyqExampleId: "5cc5d47f-69ab-4105-ad1b-a547313abb07",
       traps: [

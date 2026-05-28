@@ -41,6 +41,26 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{AG} = 2\\hat{i} - \\dfrac{1}{3}\\hat{j}\\)",
       },
+      fadedExample: {
+        prompt:
+          "A triangle has vertices with position vectors \\(\\vec{a} = 2\\hat{i} + \\hat{j}\\), \\(\\vec{b} = 4\\hat{i} + 3\\hat{j}\\), \\(\\vec{c} = 6\\hat{i} + 2\\hat{j}\\). Find the centroid \\(G\\).",
+        steps: [
+          "Centroid is the average of the vertex position vectors: \\(\\vec{g} = \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3}\\).",
+          "\\(\\vec{g} = \\dfrac{(2+4+6)\\hat{i} + (1+3+2)\\hat{j}}{3} = \\dfrac{12\\hat{i} + 6\\hat{j}}{3}\\).",
+          "\\(\\vec{g} = 4\\hat{i} + 2\\hat{j}\\).",
+        ],
+        answer: "\\(\\vec{g} = 4\\hat{i} + 2\\hat{j}\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "Find the centroid of the triangle with vertices \\(A(1, 2, 3)\\), \\(B(3, -1, 0)\\), \\(C(2, 2, 3)\\).",
+        steps: [
+          "\\(\\vec{g} = \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3} = \\dfrac{(1+3+2)\\hat{i} + (2-1+2)\\hat{j} + (3+0+3)\\hat{k}}{3}\\).",
+          "\\(\\vec{g} = 2\\hat{i} + \\hat{j} + 2\\hat{k}\\).",
+        ],
+        answer: "\\(\\vec{g} = 2\\hat{i} + \\hat{j} + 2\\hat{k}\\), i.e. \\((2, 1, 2)\\).",
+      },
       pyqExampleId: "e5219e5f-57ad-4606-8d5d-5b4f3f57c485",
       traps: [
         {
@@ -90,6 +110,26 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{PQ} = \\dfrac{1}{2}(\\vec{a} - \\vec{b})\\)",
       },
+      fadedExample: {
+        prompt:
+          "\\(ABCD\\) is a parallelogram (vertices in order) with \\(A(1, 1)\\), \\(B(4, 2)\\), \\(C(5, 5)\\). Find the fourth vertex \\(D\\).",
+        steps: [
+          "Fourth vertex of a parallelogram \\(ABCD\\): \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b}\\).",
+          "\\(\\vec{d} = (1 + 5 - 4)\\hat{i} + (1 + 5 - 2)\\hat{j} = 2\\hat{i} + 4\\hat{j}\\).",
+          "So \\(D = (2, 4)\\).",
+        ],
+        answer: "\\(D = (2, 4)\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "In parallelogram \\(ABCD\\), \\(\\vec{AB} = 3\\hat{i} + \\hat{j}\\) and \\(\\vec{AD} = \\hat{i} + 2\\hat{j}\\). Find the diagonal \\(\\vec{AC}\\).",
+        steps: [
+          "Diagonal \\(\\vec{AC} = \\vec{AB} + \\vec{AD}\\).",
+          "\\(= (3+1)\\hat{i} + (1+2)\\hat{j} = 4\\hat{i} + 3\\hat{j}\\).",
+        ],
+        answer: "\\(\\vec{AC} = 4\\hat{i} + 3\\hat{j}\\)",
+      },
       pyqExampleId: "fd094a97-71e2-4df2-9844-d448aef38e6f",
       traps: [
         {
@@ -138,6 +178,26 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(C = \\cos^{-1}\\!\\left(\\dfrac{1}{\\sqrt{5}}\\right)\\)",
       },
+      fadedExample: {
+        prompt:
+          "Triangle \\(ABC\\) has position vectors \\(\\vec{a} = \\vec{0}\\), \\(\\vec{b} = 3\\hat{i}\\), \\(\\vec{c} = 3\\hat{i} + 4\\hat{j}\\). Find the angle at \\(A\\).",
+        steps: [
+          "Side vectors at \\(A\\): \\(\\vec{AB} = \\vec{b} - \\vec{a} = 3\\hat{i}\\), \\(\\vec{AC} = \\vec{c} - \\vec{a} = 3\\hat{i} + 4\\hat{j}\\).",
+          "Dot: \\(\\vec{AB}\\cdot\\vec{AC} = 3\\cdot 3 + 0\\cdot 4 = 9\\). Magnitudes: \\(|\\vec{AB}| = 3\\), \\(|\\vec{AC}| = 5\\).",
+          "\\(\\cos A = \\dfrac{9}{3\\cdot 5} = \\dfrac{3}{5}\\), so \\(A = \\cos^{-1}\\!\\left(\\tfrac{3}{5}\\right)\\).",
+        ],
+        answer: "\\(A = \\cos^{-1}\\!\\left(\\dfrac{3}{5}\\right)\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt: "Find the angle between \\(\\vec{p} = \\hat{i} + \\sqrt{3}\\,\\hat{j}\\) and \\(\\vec{q} = \\hat{i}\\).",
+        steps: [
+          "Dot: \\(\\vec{p}\\cdot\\vec{q} = 1\\cdot 1 + \\sqrt{3}\\cdot 0 = 1\\).",
+          "Magnitudes: \\(|\\vec{p}| = \\sqrt{1 + 3} = 2\\), \\(|\\vec{q}| = 1\\).",
+          "\\(\\cos\\theta = \\dfrac{1}{2\\cdot 1} = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
+        ],
+        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
+      },
       pyqExampleId: "77319cff-1210-425f-9d1c-c42ddbcac754",
       traps: [
         {
@@ -185,6 +245,26 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
           "Dot product: \\(\\vec{PR}\\cdot\\vec{QS} = (-2)(0) + 0(-2) = 0\\), so the diagonals are perpendicular.",
         ],
         answer: "\\(\\vec{PQ} \\parallel \\vec{SR}\\) and \\(\\vec{PR} \\perp \\vec{QS}\\).",
+      },
+      fadedExample: {
+        prompt:
+          "Use the parallelogram law to find \\(|\\vec{a} - \\vec{b}|^2\\) given \\(|\\vec{a}| = 5\\), \\(|\\vec{b}| = 3\\), and \\(|\\vec{a} + \\vec{b}|^2 = 40\\).",
+        steps: [
+          "Parallelogram law: \\(|\\vec{a} + \\vec{b}|^2 + |\\vec{a} - \\vec{b}|^2 = 2(|\\vec{a}|^2 + |\\vec{b}|^2)\\).",
+          "Right side: \\(2(25 + 9) = 68\\); so \\(|\\vec{a} - \\vec{b}|^2 = 68 - 40\\).",
+          "\\(|\\vec{a} - \\vec{b}|^2 = 28\\).",
+        ],
+        answer: "\\(|\\vec{a} - \\vec{b}|^2 = 28\\)",
+        hiddenStepIndexes: [1],
+      },
+      selfCheckExample: {
+        prompt:
+          "For points with position vectors \\(\\vec{p} = \\hat{i}\\), \\(\\vec{q} = \\hat{j}\\), \\(\\vec{r} = -\\hat{i}\\), \\(\\vec{s} = -\\hat{j}\\), are the diagonals \\(\\vec{PR}\\) and \\(\\vec{QS}\\) perpendicular?",
+        steps: [
+          "\\(\\vec{PR} = \\vec{r} - \\vec{p} = -2\\hat{i}\\); \\(\\vec{QS} = \\vec{s} - \\vec{q} = -2\\hat{j}\\).",
+          "Dot: \\(\\vec{PR}\\cdot\\vec{QS} = (-2)(0) + (0)(-2) = 0\\) — perpendicular.",
+        ],
+        answer: "Yes — \\(\\vec{PR}\\cdot\\vec{QS} = 0\\), so \\(\\vec{PR} \\perp \\vec{QS}\\).",
       },
       pyqExampleId: "1815d449-8aa2-486f-8eff-8d12762246f5",
       traps: [
