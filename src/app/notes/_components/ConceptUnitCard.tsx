@@ -13,6 +13,9 @@ import TrapCallout from "./TrapCallout";
 import RegressionLineFit from "./visualizations/RegressionLineFit";
 import VarianceSquaredDeviations from "./visualizations/VarianceSquaredDeviations";
 import HistogramBinSlider from "./visualizations/HistogramBinSlider";
+import VectorAddition from "./visualizations/VectorAddition";
+import VectorProjection from "./visualizations/VectorProjection";
+import CrossProductArea from "./visualizations/CrossProductArea";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -23,6 +26,12 @@ function renderVisualization(slug: VisualizationSlug) {
       return <VarianceSquaredDeviations />;
     case "histogram-bin-slider":
       return <HistogramBinSlider />;
+    case "vector-addition":
+      return <VectorAddition />;
+    case "vector-projection":
+      return <VectorProjection />;
+    case "cross-product-area":
+      return <CrossProductArea />;
   }
 }
 

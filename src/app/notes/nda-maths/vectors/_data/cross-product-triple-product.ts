@@ -86,6 +86,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
     {
       slug: "cross-product-magnitude-area-and-lagrange",
       name: "Cross-product magnitude, area, and the Lagrange identity",
+      visualizationSlug: "cross-product-area",
       intuition:
         "The magnitude of \\(\\vec{a}\\times\\vec{b}\\) is the area of the parallelogram on \\(\\vec{a}\\) and \\(\\vec{b}\\), measured by \\(|\\vec{a}||\\vec{b}|\\sin\\theta\\). " +
         "Half of that is the area of the triangle. " +

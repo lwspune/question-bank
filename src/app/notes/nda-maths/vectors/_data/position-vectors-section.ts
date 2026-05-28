@@ -102,6 +102,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     {
       slug: "vector-addition",
       name: "Addition of vectors (triangle, parallelogram, polygon laws)",
+      visualizationSlug: "vector-addition",
       intuition:
         "Two vectors add by joining them tip-to-tail. Place the second arrow's tail at the first arrow's head, then draw a new arrow from the very first tail to the very last head — that resultant arrow is the sum. " +
         "Equivalently, if you draw both vectors from a common tail, the sum is the diagonal of the parallelogram they span. " +

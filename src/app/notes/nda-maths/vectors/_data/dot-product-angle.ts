@@ -153,6 +153,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
     {
       slug: "angle-via-dot-product-formula",
       name: "Angle between two vectors via the dot-product formula",
+      visualizationSlug: "vector-projection",
       intuition:
         "The dot product is the magnitude of one vector times the magnitude of the other times the cosine of the angle between them. " +
         "Rearrange and the angle drops out: divide the dot product by the product of magnitudes. " +

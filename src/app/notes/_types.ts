@@ -56,7 +56,10 @@ export type FadedExample = AuthoredExample & {
 export type VisualizationSlug =
   | "regression-line-fit"
   | "variance-squared-deviations"
-  | "histogram-bin-slider";
+  | "histogram-bin-slider"
+  | "vector-addition"
+  | "vector-projection"
+  | "cross-product-area";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

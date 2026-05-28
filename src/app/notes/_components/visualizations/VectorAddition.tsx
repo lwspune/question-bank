@@ -1,0 +1,130 @@
+"use client";
+
+import { useState } from "react";
+
+/**
+ * Interactive: set the components of two vectors a and b with sliders and
+ * watch them add tip-to-tail (triangle law) inside the parallelogram they
+ * span. The resultant a + b is the diagonal from the shared tail.
+ *
+ * Pedagogical aim: make "tip-to-tail" and "diagonal of the parallelogram"
+ * the same picture, and show that magnitudes don't simply add.
+ */
+
+const W = 360;
+const H = 280;
+const OX = W / 2;
+const OY = H / 2;
+const SCALE = 15; // px per unit
+const AXIS = 8; // axis half-range in units
+
+const sx = (x: number) => OX + x * SCALE;
+const sy = (y: number) => OY - y * SCALE;
+
+export default function VectorAddition() {
+  const [a1, setA1] = useState(4);
+  const [a2, setA2] = useState(1);
+  const [b1, setB1] = useState(1);
+  const [b2, setB2] = useState(3);
+
+  const r1 = a1 + b1;
+  const r2 = a2 + b2;
+  const mag = Math.sqrt(r1 * r1 + r2 * r2);
+  const sumMag = Math.hypot(a1, a2) + Math.hypot(b1, b2);
+
+  return (
+    <div className="rounded-lg border border-emerald-200 bg-emerald-50/30 dark:border-emerald-900/60 dark:bg-emerald-950/15 p-4">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+        Visualization · add two vectors tip-to-tail
+      </p>
+
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className="block w-full h-auto"
+        role="img"
+        aria-label="Vector addition visualization"
+      >
+        <defs>
+          <marker id="va-sky" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" className="fill-sky-600 dark:fill-sky-400" />
+          </marker>
+          <marker id="va-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" className="fill-amber-600 dark:fill-amber-400" />
+          </marker>
+          <marker id="va-indigo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" className="fill-indigo-600 dark:fill-indigo-400" />
+          </marker>
+        </defs>
+
+        {/* Axes */}
+        <line x1={sx(-AXIS)} y1={sy(0)} x2={sx(AXIS)} y2={sy(0)} stroke="currentColor" className="text-muted-foreground/30" />
+        <line x1={sx(0)} y1={sy(-AXIS)} x2={sx(0)} y2={sy(AXIS)} stroke="currentColor" className="text-muted-foreground/30" />
+
+        {/* Parallelogram (faint): O, A, R, B */}
+        <polygon
+          points={`${sx(0)},${sy(0)} ${sx(a1)},${sy(a2)} ${sx(r1)},${sy(r2)} ${sx(b1)},${sy(b2)}`}
+          className="fill-indigo-500/5 stroke-indigo-400/40"
+          strokeDasharray="3 3"
+        />
+
+        {/* b placed tip-to-tail at the head of a */}
+        <line x1={sx(a1)} y1={sy(a2)} x2={sx(r1)} y2={sy(r2)} stroke="currentColor" className="text-amber-600 dark:text-amber-400" strokeWidth={1.5} strokeDasharray="4 2" markerEnd="url(#va-amber)" />
+
+        {/* a from origin */}
+        <line x1={sx(0)} y1={sy(0)} x2={sx(a1)} y2={sy(a2)} stroke="currentColor" className="text-sky-600 dark:text-sky-400" strokeWidth={2} markerEnd="url(#va-sky)" />
+        {/* b from origin (for the parallelogram sense) */}
+        <line x1={sx(0)} y1={sy(0)} x2={sx(b1)} y2={sy(b2)} stroke="currentColor" className="text-amber-600 dark:text-amber-400" strokeWidth={2} markerEnd="url(#va-amber)" />
+        {/* resultant */}
+        <line x1={sx(0)} y1={sy(0)} x2={sx(r1)} y2={sy(r2)} stroke="currentColor" className="text-indigo-600 dark:text-indigo-400" strokeWidth={2.5} markerEnd="url(#va-indigo)" />
+
+        {/* Labels */}
+        <text x={sx(a1)} y={sy(a2) - 6} textAnchor="middle" className="fill-sky-700 dark:fill-sky-300 text-[11px] font-semibold">a</text>
+        <text x={sx(b1) - 8} y={sy(b2)} textAnchor="end" className="fill-amber-700 dark:fill-amber-300 text-[11px] font-semibold">b</text>
+        <text x={sx(r1) + 6} y={sy(r2)} textAnchor="start" className="fill-indigo-700 dark:fill-indigo-300 text-[11px] font-semibold">a+b</text>
+      </svg>
+
+      <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:grid-cols-4">
+        {([
+          ["a₁", a1, setA1, "accent-sky-600"],
+          ["a₂", a2, setA2, "accent-sky-600"],
+          ["b₁", b1, setB1, "accent-amber-600"],
+          ["b₂", b2, setB2, "accent-amber-600"],
+        ] as const).map(([label, val, setter, accent]) => (
+          <label key={label} className="flex flex-col gap-1">
+            <span className="font-medium text-foreground">
+              {label}: <span className="tabular-nums">{val}</span>
+            </span>
+            <input
+              type="range"
+              min={-AXIS}
+              max={AXIS}
+              step={1}
+              value={val}
+              onChange={(e) => setter(Number(e.target.value))}
+              className={accent}
+              aria-label={`Component ${label}`}
+            />
+          </label>
+        ))}
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-sm">
+        <span className="font-medium text-foreground">
+          a + b = <span className="tabular-nums">({r1}, {r2})</span>
+        </span>
+        <span className="text-muted-foreground">
+          |a + b| = <span className="tabular-nums">{mag.toFixed(2)}</span>
+        </span>
+        <span className="text-muted-foreground">
+          |a| + |b| = <span className="tabular-nums">{sumMag.toFixed(2)}</span>
+        </span>
+      </div>
+      <p className="mt-2 text-xs text-muted-foreground">
+        The dashed amber arrow is b moved to the head of a — the resultant
+        (indigo) runs from the shared tail to that head, which is also the
+        diagonal of the parallelogram. Notice |a + b| equals |a| + |b| only
+        when a and b point the same way.
+      </p>
+    </div>
+  );
+}
