@@ -6,6 +6,8 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
+import { deriveSummary } from "@/lib/notes/deriveSummary";
+import ChapterRevisionSheet from "@/app/notes/_components/ChapterRevisionSheet";
 
 export const revalidate = 3600;
 import {
@@ -56,6 +58,20 @@ export default async function VectorsChapterPage() {
       };
     }),
   ];
+
+  // Chapter-wide revision sheet: every formula + trap across all subtopics,
+  // grouped, auto-derived from the same data the per-subtopic summaries use.
+  const revisionGroups = VECTORS_CHAPTER.subtopicOrder
+    .map((slug) => {
+      const n = VECTORS_NOTES[slug];
+      if (!n) return null;
+      return {
+        subtopicTitle: n.title,
+        subtopicHref: `/notes/nda-maths/vectors/${slug}`,
+        summary: deriveSummary(n),
+      };
+    })
+    .filter((g): g is NonNullable<typeof g> => g !== null);
 
   return (
     <GuideShell
@@ -153,6 +169,8 @@ export default async function VectorsChapterPage() {
           })}
         </ul>
       </section>
+
+      <ChapterRevisionSheet groups={revisionGroups} />
 
       <section className="mt-12 rounded-lg border-2 border-primary/30 bg-primary/5 p-5">
         <p className="flex items-center gap-2 text-sm font-semibold tracking-tight">

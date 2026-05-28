@@ -11,8 +11,11 @@ import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { splitNoteIntoSlides } from "@/lib/notes/splitNoteIntoSlides";
 import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
+import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import ConceptUnitCard from "@/app/notes/_components/ConceptUnitCard";
 import NotePresenter from "@/app/notes/_components/NotePresenter";
+import SubtopicMasteryCheckpoint from "@/app/notes/_components/SubtopicMasteryCheckpoint";
+import SubtopicSummary from "@/app/notes/_components/SubtopicSummary";
 import {
   VECTORS_CHAPTER,
   VECTORS_NOTES,
@@ -61,7 +64,7 @@ export default async function SubtopicNotePage({
   const supabase = createSupabaseAnonClient();
 
   // Gather every PYQ UUID referenced by any concept (deduped, order preserved).
-  const pyqIds = Array.from(
+  const editorialPyqIds = Array.from(
     new Set(
       note.concepts
         .map((c) => c.pyqExampleId)
@@ -74,22 +77,36 @@ export default async function SubtopicNotePage({
   const chapter = taxonomy.chapters.get(VECTORS_CHAPTER.chapterName);
   const subtopicId = chapter?.subtopics.get(note.subtopicName) ?? null;
 
+  // Drill tags + total subtopic count fire in parallel.
   const conceptsForResolver = note.concepts.map((c) => ({
     slug: c.slug,
     pyqExampleId: c.pyqExampleId,
   }));
-  const [pyqRows, countRes, drillsByConcept] = await Promise.all([
-    loadWorkedExamples(supabase, pyqIds),
+  const [drillsByConcept, countRes] = await Promise.all([
+    loadResolvedDrills(supabase, params.subtopicSlug, conceptsForResolver),
     subtopicId
       ? supabase
           .from("questions")
           .select("id", { count: "exact", head: true })
           .eq("subtopic_id", subtopicId)
       : Promise.resolve({ count: 0 as number | null }),
-    loadResolvedDrills(supabase, params.subtopicSlug, conceptsForResolver),
   ]);
-  const pyqById = new Map(pyqRows.map((r) => [r.id, r]));
   const drillCount = countRes.count ?? 0;
+
+  // Mastery checkpoint: 5 ids picked round-robin across concepts, batched
+  // into the bank fetch alongside the editorial featured PYQs.
+  const checkpointIds = pickInterleavedCheckpoint(
+    drillsByConcept,
+    note.concepts.map((c) => c.slug),
+    5
+  );
+  const allBankIds = Array.from(new Set([...editorialPyqIds, ...checkpointIds]));
+  const pyqRows = await loadWorkedExamples(supabase, allBankIds);
+  const pyqById = new Map(pyqRows.map((r) => [r.id, r]));
+
+  const checkpointRows = checkpointIds
+    .map((id) => pyqById.get(id))
+    .filter((r): r is NonNullable<typeof r> => Boolean(r));
 
   const drillHref = subtopicId
     ? `/browse?examId=${taxonomy.examId}&subjectId=${taxonomy.subjectId}&subtopicIds=${subtopicId}`
@@ -214,6 +231,13 @@ export default async function SubtopicNotePage({
           />
         ))}
       </div>
+
+      {/* End-of-subtopic recap — auto-derived from concept.formula + concept.traps. */}
+      <SubtopicSummary note={note} />
+
+      {/* Mastery checkpoint — interleaved questions from the concept-tag pool.
+          Renders nothing when checkpointRows is empty. */}
+      <SubtopicMasteryCheckpoint questions={checkpointRows} />
 
       {/* Final drill CTA */}
       <section className="mt-12 rounded-lg border-2 border-primary/40 bg-primary/5 p-6 text-center">
