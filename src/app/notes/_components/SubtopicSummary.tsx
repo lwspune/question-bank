@@ -1,6 +1,7 @@
 import { AlertTriangle, BookCheck, Sigma } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import type { SubtopicNote } from "@/app/notes/_types";
+import { deriveSummary } from "@/lib/notes/deriveSummary";
 
 type Props = {
   note: SubtopicNote;
@@ -19,22 +20,7 @@ type Props = {
  * section silently collapses for subtopics that are intuition-only.
  */
 export default function SubtopicSummary({ note }: Props) {
-  const formulas = note.concepts
-    .filter((c) => c.formula)
-    .map((c) => ({
-      slug: c.slug,
-      conceptName: c.name,
-      label: c.formula!.label,
-      latex: c.formula!.latex,
-    }));
-
-  const traps = note.concepts.flatMap((c) =>
-    (c.traps ?? []).map((t) => ({
-      slug: c.slug,
-      conceptName: c.name,
-      title: t.title,
-    }))
-  );
+  const { formulas, traps } = deriveSummary(note);
 
   if (formulas.length === 0 && traps.length === 0) return null;
 
