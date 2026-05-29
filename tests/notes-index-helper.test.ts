@@ -9,10 +9,11 @@ describe("hasChapterNotes", () => {
   it("returns true for chapters with shipped notes content", () => {
     expect(hasChapterNotes("Statistics")).toBe(true);
     expect(hasChapterNotes("Vectors")).toBe(true);
+    expect(hasChapterNotes("Probability")).toBe(true);
   });
 
   it("returns false for chapters without notes", () => {
-    expect(hasChapterNotes("Probability")).toBe(false);
+    expect(hasChapterNotes("Differentiation")).toBe(false);
     expect(hasChapterNotes("Matrices & Determinants")).toBe(false);
     expect(hasChapterNotes("")).toBe(false);
     expect(hasChapterNotes("Made Up Chapter")).toBe(false);
@@ -25,10 +26,13 @@ describe("getNotesChapterHref", () => {
       "/notes/nda-maths/statistics"
     );
     expect(getNotesChapterHref("Vectors")).toBe("/notes/nda-maths/vectors");
+    expect(getNotesChapterHref("Probability")).toBe(
+      "/notes/nda-maths/probability"
+    );
   });
 
   it("returns null for chapters without notes", () => {
-    expect(getNotesChapterHref("Probability")).toBeNull();
+    expect(getNotesChapterHref("Differentiation")).toBeNull();
     expect(getNotesChapterHref("")).toBeNull();
   });
 });
@@ -43,6 +47,6 @@ describe("getNotesChapterLabel", () => {
   });
 
   it("returns null for chapters without notes", () => {
-    expect(getNotesChapterLabel("Probability")).toBeNull();
+    expect(getNotesChapterLabel("Differentiation")).toBeNull();
   });
 });
