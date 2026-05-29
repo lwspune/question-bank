@@ -23,6 +23,11 @@ import {
   VECTORS_NOTES,
   VECTORS_SLUGS,
 } from "@/app/notes/nda-maths/vectors/_data";
+import {
+  PROBABILITY_CHAPTER,
+  PROBABILITY_NOTES,
+  PROBABILITY_SLUGS,
+} from "@/app/notes/nda-maths/probability/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -68,6 +73,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: VECTORS_CHAPTER,
     notes: VECTORS_NOTES,
     slugs: VECTORS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "probability",
+    chipLabel: "Probability notes",
+    chapter: PROBABILITY_CHAPTER,
+    notes: PROBABILITY_NOTES,
+    slugs: PROBABILITY_SLUGS,
   },
 ];
 
