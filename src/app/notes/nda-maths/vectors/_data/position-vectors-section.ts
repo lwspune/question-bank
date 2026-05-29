@@ -57,7 +57,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
       intuition:
         "To do geometry with vectors we need to anchor them. Pick any point in space and call it the **origin** \\(O\\). Every other point \\(P\\) is then represented by its **position vector** \\(\\vec{OP}\\) — the arrow from \\(O\\) to \\(P\\). " +
         "Once points have position vectors, geometry becomes algebra: the arrow from \\(A\\) to \\(B\\) (its **displacement vector**) is just the difference of their position vectors: \\(\\vec{AB} = \\vec{b} - \\vec{a}\\). " +
-        "This single idea — point ↔ position vector — is the bridge that the entire rest of the chapter walks over.",
+        "This single idea — point \\(\\leftrightarrow\\) position vector — is the bridge that the entire rest of the chapter walks over.",
       definition:
         "Fix an origin \\(O\\). The **position vector** of a point \\(P\\) (often written \\(\\vec{p}\\)) is the vector \\(\\vec{OP}\\) from \\(O\\) to \\(P\\); its magnitude is the distance \\(OP\\), its direction is from \\(O\\) towards \\(P\\). " +
         "The **displacement vector** from \\(A\\) to \\(B\\) is " +
@@ -206,7 +206,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         {
           title: "Sign of \\(k\\) controls DIRECTION, not just signs of components",
           body:
-            "\\(k = -1\\) does more than negate components arithmetically — geometrically it FLIPS the arrow (180° rotation). " +
+            "\\(k = -1\\) does more than negate components arithmetically — geometrically it FLIPS the arrow (\\(180^\\circ\\) rotation). " +
             "That's the same operation as \\(-\\vec{v}\\), which is why subtraction reads as \\(\\vec{a} - \\vec{b} = \\vec{a} + (-1)\\vec{b}\\).",
         },
       ],
