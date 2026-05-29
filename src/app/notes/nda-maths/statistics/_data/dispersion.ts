@@ -58,6 +58,12 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{MD} = 3\\)",
       },
+      practiceSet: [
+        { prompt: "Mean deviation of \\(2, 4, 6\\) about the mean \\((\\bar{x}=4)\\)?", answer: "\\(\\tfrac{4}{3}\\)", method: "\\((2+0+2)/3\\)" },
+        { prompt: "Mean deviation of \\(1, 2, 3\\) about the mean?", answer: "\\(\\tfrac{2}{3}\\)", method: "\\(\\bar{x}=2\\); \\((1+0+1)/3\\)" },
+        { prompt: "Mean deviation of \\(10, 20\\) about the mean?", answer: "\\(5\\)", method: "\\(\\bar{x}=15\\); \\((5+5)/2\\)" },
+        { prompt: "Mean deviation of \\(5, 5, 5\\)?", answer: "\\(0\\)", method: "no spread" },
+      ],
       pyqExampleId: "20f73222-eb92-4483-ae18-494bfde621ec",
       traps: [
         {
@@ -121,6 +127,12 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma^2 = 8\\)",
       },
+      practiceSet: [
+        { prompt: "Variance of \\(1, 2, 3\\) \\((\\bar{x}=2)\\)?", answer: "\\(\\tfrac{2}{3}\\)", method: "\\((1+0+1)/3\\)" },
+        { prompt: "Variance of \\(2, 4, 6\\) \\((\\bar{x}=4)\\)?", answer: "\\(\\tfrac{8}{3}\\)", method: "\\((4+0+4)/3\\)" },
+        { prompt: "Variance of \\(5, 5, 5\\)?", answer: "\\(0\\)" },
+        { prompt: "Variance of \\(0, 10\\) \\((\\bar{x}=5)\\)?", answer: "\\(25\\)", method: "\\((25+25)/2\\)" },
+      ],
       pyqExampleId: "dce15c09-9f56-43af-b675-a154d1cba3e9",
       traps: [
         {
@@ -175,6 +187,12 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma = \\sqrt{2} \\approx 1.41\\)",
       },
+      practiceSet: [
+        { prompt: "Variance \\(16\\). Standard deviation?", answer: "\\(4\\)", method: "\\(\\sqrt{16}\\)" },
+        { prompt: "Variance \\(49\\). Standard deviation?", answer: "\\(7\\)" },
+        { prompt: "Variance \\(2\\). Standard deviation?", answer: "\\(\\sqrt{2}\\)" },
+        { prompt: "SD of \\(3, 3, 3\\)?", answer: "\\(0\\)", method: "no spread" },
+      ],
       pyqExampleId: "180027af-b87e-478d-93a1-0b1d4e271cd3",
       traps: [
         {
@@ -234,6 +252,12 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma_Y = 12\\)",
       },
+      practiceSet: [
+        { prompt: "SD is \\(5\\). SD of \\(2X\\)?", answer: "\\(10\\)", method: "\\(|2|\\cdot 5\\)" },
+        { prompt: "SD is \\(4\\). SD of \\(X + 100\\)?", answer: "\\(4\\)", method: "shift leaves SD unchanged" },
+        { prompt: "Variance is \\(9\\). Variance of \\(3X\\)?", answer: "\\(81\\)", method: "\\(3^2\\cdot 9\\)" },
+        { prompt: "SD is \\(6\\). SD of \\(-X\\)?", answer: "\\(6\\)", method: "\\(|-1|\\cdot 6\\)" },
+      ],
       pyqExampleId: "33af29b2-fa37-43b9-a861-deb85008bbf4",
       traps: [
         {
@@ -293,6 +317,12 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(B\\) is more variable (\\(\\text{CV}_A = 15\\%,\\ \\text{CV}_B = 20\\%\\)).",
       },
+      practiceSet: [
+        { prompt: "Mean \\(50\\), SD \\(5\\). CV?", answer: "\\(10\\%\\)", method: "\\((5/50)\\times 100\\)" },
+        { prompt: "Mean \\(20\\), SD \\(4\\). CV?", answer: "\\(20\\%\\)" },
+        { prompt: "Mean \\(100\\), SD \\(25\\). CV?", answer: "\\(25\\%\\)" },
+        { prompt: "Mean \\(40\\), SD \\(0\\). CV?", answer: "\\(0\\%\\)", method: "no spread" },
+      ],
       pyqExampleId: "e216a45f-d881-4f2c-948c-be9f7ec69f60",
       traps: [
         {
@@ -350,6 +380,12 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sum x_i^2 = 116\\)",
       },
+      practiceSet: [
+        { prompt: "Mean of squares \\(30\\), mean \\(5\\). Variance?", answer: "\\(5\\)", method: "\\(30 - 25\\)" },
+        { prompt: "\\(n=5\\), \\(\\sum x^2 = 100\\), \\(\\bar{x}=4\\). Variance?", answer: "\\(4\\)", method: "\\(100/5 - 16\\)" },
+        { prompt: "Variance \\(9\\), mean \\(4\\). Mean of squares?", answer: "\\(25\\)", method: "\\(\\sigma^2 + \\bar{x}^2 = 9 + 16\\)" },
+        { prompt: "Mean of squares \\(50\\), mean \\(7\\). Variance?", answer: "\\(1\\)", method: "\\(50 - 49\\)" },
+      ],
       pyqExampleId: "65867660-2a97-4b50-8e85-577c7b1e95df",
       traps: [
         {

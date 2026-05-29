@@ -62,6 +62,12 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         ],
         answer: "Heights 5 and 4 — first class is taller despite lower frequency.",
       },
+      practiceSet: [
+        { prompt: "Frequency \\(20\\), class width \\(5\\). Density?", answer: "\\(4\\)", method: "\\(20/5\\)" },
+        { prompt: "Frequency \\(30\\), class width \\(10\\). Density?", answer: "\\(3\\)" },
+        { prompt: "Two classes have equal frequency, widths \\(5\\) and \\(10\\). Which bar is taller?", answer: "the width-\\(5\\) bar", method: "smaller width \\(\\Rightarrow\\) taller" },
+        { prompt: "Frequency \\(7\\), class width \\(1\\). Density?", answer: "\\(7\\)" },
+      ],
       pyqExampleId: "d8cb68fd-9555-48d0-b0ff-7a05b3e947d0",
       traps: [
         {
@@ -123,6 +129,12 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(36^\\circ,\\ 72^\\circ,\\ 108^\\circ,\\ 144^\\circ\\)",
       },
+      practiceSet: [
+        { prompt: "A category is \\(\\tfrac{1}{4}\\) of the total. Sector angle?", answer: "\\(90^\\circ\\)", method: "\\(\\tfrac{1}{4}\\times 360^\\circ\\)" },
+        { prompt: "A category is \\(50\\) of a total \\(200\\). Angle?", answer: "\\(90^\\circ\\)", method: "\\((50/200)\\times 360^\\circ\\)" },
+        { prompt: "All sector angles of a pie chart must sum to?", answer: "\\(360^\\circ\\)" },
+        { prompt: "A category is \\(\\tfrac{1}{3}\\) of the total. Angle?", answer: "\\(120^\\circ\\)" },
+      ],
       pyqExampleId: "0e56a091-ec3e-4ddd-8b3c-68b58018ae62",
       traps: [
         {
@@ -189,6 +201,12 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(M \\approx \\text{₹} 1166.67\\) (or \\(\\dfrac{3500}{3}\\))",
       },
+      practiceSet: [
+        { prompt: "Frequencies \\(3, 5, 4\\). Cumulative frequency after the 2nd class?", answer: "\\(8\\)", method: "\\(3+5\\)" },
+        { prompt: "The modal class is the one with?", answer: "the highest frequency" },
+        { prompt: "\\(n = 20\\). The median lies at which cumulative position?", answer: "\\(n/2 = 10\\)" },
+        { prompt: "Frequencies \\(2, 4, 6\\). Last cumulative total?", answer: "\\(12\\)" },
+      ],
       pyqExampleId: "720b1f0e-74e4-4d0b-ae88-3901d51119b3",
       traps: [
         {

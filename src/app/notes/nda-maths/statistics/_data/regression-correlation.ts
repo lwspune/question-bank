@@ -65,6 +65,12 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(r_{UV} = +0.4\\)",
       },
+      practiceSet: [
+        { prompt: "\\(r\\) between \\(x, y\\) is \\(0.7\\). \\(r\\) between \\(2x\\) and \\(3y\\)?", answer: "\\(0.7\\)", method: "positive scales don't change \\(r\\)" },
+        { prompt: "\\(r\\) is \\(0.5\\). \\(r\\) between \\(x\\) and \\(-y\\)?", answer: "\\(-0.5\\)", method: "negative scale flips the sign" },
+        { prompt: "\\(r\\) is \\(-0.8\\). \\(r\\) between \\(x+5\\) and \\(y-2\\)?", answer: "\\(-0.8\\)", method: "shifts don't change \\(r\\)" },
+        { prompt: "A computation gives \\(r = 1.4\\). Possible?", answer: "No", method: "\\(r\\) must lie in \\([-1, 1]\\)" },
+      ],
       pyqExampleId: "8d536492-e15a-4d3f-b9ad-e6d295c95b19",
       traps: [
         {
@@ -137,6 +143,12 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(y = \\dfrac{x}{2} + 1\\)",
       },
+      practiceSet: [
+        { prompt: "Both regression lines always pass through which point?", answer: "\\((\\bar{x}, \\bar{y})\\)", method: "the mean point" },
+        { prompt: "Regression lines are \\(x = 2\\) and \\(y = 3\\). Find \\((\\bar{x}, \\bar{y})\\).", answer: "\\((2, 3)\\)", method: "intersection \\(=\\) mean point" },
+        { prompt: "\\(b_{yx} = r\\,\\sigma_y/\\sigma_x\\). If \\(r = 1\\) and \\(\\sigma_y = \\sigma_x = 2\\), slope?", answer: "\\(1\\)" },
+        { prompt: "Slope of the \\(y\\)-on-\\(x\\) line through \\((1,2)\\) and \\((3,6)\\)?", answer: "\\(2\\)", method: "\\((6-2)/(3-1)\\)" },
+      ],
       pyqExampleId: "81b73d8a-5776-49fc-9bc6-32e377566d5c",
       traps: [
         {
@@ -209,6 +221,12 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(r = -0.6\\)",
       },
+      practiceSet: [
+        { prompt: "\\(b_{yx} = 0.4\\), \\(b_{xy} = 0.9\\). Find \\(r^2\\).", answer: "\\(0.36\\)", method: "product of the slopes" },
+        { prompt: "\\(b_{yx} = 0.4\\), \\(b_{xy} = 0.9\\). Find \\(r\\).", answer: "\\(0.6\\)", method: "\\(\\sqrt{0.36}\\), both positive" },
+        { prompt: "\\(b_{yx} = -2\\), \\(b_{xy} = -0.5\\). Find \\(r\\).", answer: "\\(-1\\)", method: "\\(\\sqrt{1}\\), both negative" },
+        { prompt: "Can \\(b_{yx} = 2\\) and \\(b_{xy} = 0.8\\) hold for one dataset?", answer: "No", method: "product \\(1.6 = r^2 > 1\\)" },
+      ],
       pyqExampleId: "c0cb9af2-ecd0-4b1e-9923-352874cbbb49",
       traps: [
         {
@@ -273,6 +291,12 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(b_{yx} = -\\dfrac{1}{4},\\ b_{xy} = -\\dfrac{5}{2}\\)",
       },
+      practiceSet: [
+        { prompt: "A pairing gives slope product \\(1.5\\). Valid \\(b_{yx}\\cdot b_{xy}\\)?", answer: "No", method: "must be \\(\\leq 1\\)" },
+        { prompt: "Pairing A product \\(0.8\\), pairing B product \\(1.25\\). Which is correct?", answer: "A", method: "the \\(\\leq 1\\) pairing wins" },
+        { prompt: "The product of the two regression slopes equals?", answer: "\\(r^2\\)" },
+        { prompt: "Why can the wrong pairing exceed \\(1\\)?", answer: "It would force \\(r^2 > 1\\), which is impossible" },
+      ],
       pyqExampleId: "aec23a99-c901-4c50-a672-211c0d8da55d",
       traps: [
         {
@@ -343,6 +367,12 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\tan\\theta = 1\\) (\\(\\theta = 45^\\circ\\))",
       },
+      practiceSet: [
+        { prompt: "If \\(r = \\pm 1\\), the angle between the two regression lines?", answer: "\\(0^\\circ\\) (they coincide)" },
+        { prompt: "If \\(r = 0\\), the angle between the regression lines?", answer: "\\(90^\\circ\\)", method: "\\(1 + m_1 m_2 = 0\\)" },
+        { prompt: "Slopes \\(m_1 = 2\\), \\(m_2 = 3\\). Find \\(\\tan\\theta\\).", answer: "\\(\\tfrac{1}{7}\\)", method: "\\(|(2-3)/(1+6)|\\)" },
+        { prompt: "Slopes \\(m_1 = 1\\), \\(m_2 = -1\\). The lines are?", answer: "perpendicular", method: "\\(1 + m_1 m_2 = 0\\)" },
+      ],
       pyqExampleId: "4557ccee-8cb8-44b9-b085-e6923a9b15b7",
       traps: [
         {

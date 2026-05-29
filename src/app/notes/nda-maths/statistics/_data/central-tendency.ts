@@ -106,6 +106,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(f(4)=4,\\ f(5)=4,\\ f(6)=2,\\ f(7)=2;\\ N = 12\\).",
       },
+      practiceSet: [
+        { prompt: "In \\(5, 5, 7, 8, 8, 8\\), what is the frequency of \\(8\\)?", answer: "\\(3\\)", method: "count the 8s" },
+        { prompt: "A frequency table has \\(f = 2, 3, 5, 4\\). Find \\(N\\).", answer: "\\(14\\)", method: "\\(N = \\sum f = 2+3+5+4\\)" },
+        { prompt: "In \\(6, 6, 9, 6, 9\\), what is \\(f(6)\\)?", answer: "\\(3\\)" },
+        { prompt: "Frequencies \\(10, 12, 8\\) — total observations \\(N\\)?", answer: "\\(30\\)", method: "sum the frequencies" },
+      ],
     },
 
     // F4 — class-marks-and-class-width ───────────────────────────────────────
@@ -137,6 +143,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "Class mark \\(= 35\\), class width \\(h = 10\\).",
       },
+      practiceSet: [
+        { prompt: "Class mark of the interval \\(20\\)–\\(30\\)?", answer: "\\(25\\)", method: "\\((20+30)/2\\)" },
+        { prompt: "Class width of \\(40\\)–\\(55\\)?", answer: "\\(15\\)", method: "\\(55 - 40\\)" },
+        { prompt: "Class mark of \\(0\\)–\\(10\\)?", answer: "\\(5\\)" },
+        { prompt: "Class width of \\(100\\)–\\(120\\)?", answer: "\\(20\\)" },
+      ],
     },
 
     // F5 — summation-notation ────────────────────────────────────────────────
@@ -168,6 +180,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sum (2 x_i + 3) = 130\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\sum_{i=1}^{4} 3 = ?\\)", answer: "\\(12\\)", method: "constant: \\(4 \\times 3\\)" },
+        { prompt: "If \\(\\sum x_i = 20\\), find \\(\\sum 2x_i\\).", answer: "\\(40\\)", method: "\\(2\\sum x_i\\)" },
+        { prompt: "If \\(\\sum_{i=1}^{5} x_i = 15\\), find \\(\\sum (x_i + 2)\\).", answer: "\\(25\\)", method: "\\(\\sum x_i + 5\\cdot 2\\)" },
+        { prompt: "\\(\\sum_{i=1}^{3} i = ?\\)", answer: "\\(6\\)", method: "\\(1+2+3\\)" },
+      ],
     },
 
     // F6 — weighted-vs-unweighted-counting ───────────────────────────────────
@@ -199,6 +217,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sum f_i x_i = 44,\\ N = 10\\).",
       },
+      practiceSet: [
+        { prompt: "Value \\(4\\) with frequency \\(3\\) — its contribution to \\(\\sum f_i x_i\\)?", answer: "\\(12\\)", method: "\\(4 \\times 3\\)" },
+        { prompt: "\\(x = 2, 5\\) with \\(f = 3, 2\\): \\(\\sum f_i x_i\\)?", answer: "\\(16\\)", method: "\\(6 + 10\\)" },
+        { prompt: "Value \\(10\\) with frequency \\(5\\) — contribution?", answer: "\\(50\\)" },
+        { prompt: "\\(x = 1, 2, 3\\) with \\(f = 4, 1, 2\\): \\(\\sum f_i x_i\\)?", answer: "\\(12\\)", method: "\\(4 + 2 + 6\\)" },
+      ],
     },
 
     // 1 ───────────────────────────────────────────────────────────────────────
@@ -336,6 +360,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\bar{x} = 30\\)",
       },
+      practiceSet: [
+        { prompt: "\\(x = 2, 4\\) with \\(f = 1, 3\\): mean?", answer: "\\(3.5\\)", method: "\\((2+12)/4\\)" },
+        { prompt: "\\(x = 1, 2, 3\\) with \\(f = 2, 2, 2\\): mean?", answer: "\\(2\\)", method: "\\((2+4+6)/6\\)" },
+        { prompt: "\\(x = 5, 10\\) with \\(f = 3, 1\\): mean?", answer: "\\(6.25\\)", method: "\\((15+10)/4\\)" },
+        { prompt: "\\(x = 0, 10\\) with \\(f = 1, 1\\): mean?", answer: "\\(5\\)" },
+      ],
       pyqExampleId: "e7f15493-52aa-4380-b0c2-8f93f48bc409",
       traps: [
         {
@@ -399,6 +429,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\bar{y} = 15\\)",
       },
+      practiceSet: [
+        { prompt: "Mean is \\(10\\). New mean if each value is multiplied by \\(2\\)?", answer: "\\(20\\)", method: "\\(\\bar{y} = 2\\bar{x}\\)" },
+        { prompt: "Mean is \\(8\\). New mean if \\(5\\) is added to each?", answer: "\\(13\\)" },
+        { prompt: "Mean is \\(6\\). New mean for \\(y = 3x - 1\\)?", answer: "\\(17\\)", method: "\\(3\\cdot 6 - 1\\)" },
+        { prompt: "Mean is \\(12\\). New mean for \\(y = x/2\\)?", answer: "\\(6\\)" },
+      ],
       pyqExampleId: "fb039a72-6921-4a0e-a538-ca2081c72135",
       traps: [
         {
@@ -472,6 +508,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M_{\\text{new}} = 31\\)",
       },
+      practiceSet: [
+        { prompt: "Mean of \\(10\\) obs is \\(5\\). A value \\(3\\) is corrected to \\(13\\). New mean?", answer: "\\(6\\)", method: "\\(5 + (13-3)/10\\)" },
+        { prompt: "Mean of \\(5\\) obs is \\(20\\). A value \\(10\\) is corrected to \\(15\\). New mean?", answer: "\\(21\\)", method: "\\(20 + 5/5\\)" },
+        { prompt: "Mean of \\(20\\) obs is \\(8\\). A value \\(30\\) is corrected to \\(10\\). New mean?", answer: "\\(7\\)", method: "\\(8 + (10-30)/20\\)" },
+        { prompt: "Mean of \\(4\\) obs is \\(9\\). A value \\(5\\) is corrected to \\(9\\). New mean?", answer: "\\(10\\)", method: "\\(9 + 4/4\\)" },
+      ],
       pyqExampleId: "b97d7058-a71c-4b2f-9bba-e154e4701f8c",
       traps: [
         {
@@ -545,6 +587,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "Mean \\(= 5.5\\)",
       },
+      practiceSet: [
+        { prompt: "Mean of \\(1, 2, 3, \\ldots, 9\\)?", answer: "\\(5\\)", method: "\\((1+9)/2\\)" },
+        { prompt: "Mean of the first five even numbers \\(2, 4, 6, 8, 10\\)?", answer: "\\(6\\)", method: "\\((2+10)/2\\)" },
+        { prompt: "Mean of \\(10, 11, \\ldots, 20\\)?", answer: "\\(15\\)", method: "\\((10+20)/2\\)" },
+        { prompt: "Mean of an AP with first term \\(4\\) and last term \\(16\\)?", answer: "\\(10\\)", method: "\\((4+16)/2\\)" },
+      ],
       pyqExampleId: "4bd4c8d9-c625-4b44-b09e-da16e52b7b49",
       traps: [
         {
@@ -623,6 +671,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M_{12} = 68.5\\)",
       },
+      practiceSet: [
+        { prompt: "\\(20\\) boys mean \\(60\\), \\(30\\) girls mean \\(50\\). Combined mean?", answer: "\\(54\\)", method: "\\((1200+1500)/50\\)" },
+        { prompt: "Two equal-size groups, means \\(40\\) and \\(60\\). Combined mean?", answer: "\\(50\\)", method: "equal sizes \\(\\Rightarrow\\) plain average" },
+        { prompt: "\\(10\\) obs mean \\(5\\), \\(40\\) obs mean \\(10\\). Combined?", answer: "\\(9\\)", method: "\\((50+400)/50\\)" },
+        { prompt: "Group of \\(3\\) mean \\(8\\), group of \\(1\\) mean \\(4\\). Combined?", answer: "\\(7\\)", method: "\\((24+4)/4\\)" },
+      ],
       pyqExampleId: "3c2e5644-ae19-407e-85ac-cdcb3b23fa5e",
       traps: [
         {
@@ -695,6 +749,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M = 7\\)",
       },
+      practiceSet: [
+        { prompt: "Median of \\(3, 1, 2\\)?", answer: "\\(2\\)", method: "sort \\(1,2,3\\) \\(\\to\\) middle" },
+        { prompt: "Median of \\(4, 8, 6, 2\\)?", answer: "\\(5\\)", method: "sort \\(\\to (4+6)/2\\)" },
+        { prompt: "Median of \\(7, 3, 9, 5, 11\\)?", answer: "\\(7\\)", method: "sort \\(\\to 3,5,7,9,11\\)" },
+        { prompt: "Median of \\(10, 20, 30, 40\\)?", answer: "\\(25\\)", method: "\\((20+30)/2\\)" },
+      ],
       pyqExampleId: "5d585188-bab2-476a-9078-e54725e8cdd5",
       traps: [
         {
@@ -756,6 +816,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M_0 = 3\\)",
       },
+      practiceSet: [
+        { prompt: "Mode of \\(2, 3, 3, 5\\)?", answer: "\\(3\\)" },
+        { prompt: "Mode of \\(7, 7, 8, 9, 7\\)?", answer: "\\(7\\)" },
+        { prompt: "Mode of \\(1, 2, 2, 3, 3, 3\\)?", answer: "\\(3\\)" },
+        { prompt: "Mode of \\(5, 5, 6, 6, 9\\)?", answer: "\\(5\\) and \\(6\\) (bimodal)", method: "two values tie for highest" },
+      ],
       pyqExampleId: "8de1abbb-6597-407a-855d-bc6c986ee3b1",
       traps: [
         {
@@ -813,6 +879,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{GM} = 6\\)",
       },
+      practiceSet: [
+        { prompt: "GM of \\(2\\) and \\(8\\)?", answer: "\\(4\\)", method: "\\(\\sqrt{16}\\)" },
+        { prompt: "GM of \\(3\\) and \\(12\\)?", answer: "\\(6\\)", method: "\\(\\sqrt{36}\\)" },
+        { prompt: "GM of \\(1, 3, 9\\)?", answer: "\\(3\\)", method: "\\(\\sqrt[3]{27}\\)" },
+        { prompt: "GM of \\(5\\) and \\(5\\)?", answer: "\\(5\\)", method: "equal values \\(\\Rightarrow\\) GM \\(=\\) value" },
+      ],
       pyqExampleId: "319f7726-9981-4f36-93a2-1055cd03faad",
       traps: [
         {
@@ -870,6 +942,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{HM} = 3.2\\)",
       },
+      practiceSet: [
+        { prompt: "HM of \\(2\\) and \\(6\\)?", answer: "\\(3\\)", method: "\\(2 / (\\tfrac{1}{2}+\\tfrac{1}{6})\\)" },
+        { prompt: "HM of \\(3\\) and \\(6\\)?", answer: "\\(4\\)", method: "\\(2 / \\tfrac{1}{2}\\)" },
+        { prompt: "HM of \\(4\\) and \\(4\\)?", answer: "\\(4\\)", method: "equal values \\(\\Rightarrow\\) HM \\(=\\) value" },
+        { prompt: "Which is largest for distinct positives: AM, GM, or HM?", answer: "AM", method: "\\(\\text{AM} \\geq \\text{GM} \\geq \\text{HM}\\)" },
+      ],
       pyqExampleId: "3c181502-5d9d-48e8-b19d-c3d58738909f",
       traps: [
         {
@@ -945,6 +1023,12 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{Mode} \\approx 24\\)",
       },
+      practiceSet: [
+        { prompt: "Sum of deviations of any dataset about its own mean?", answer: "\\(0\\)", method: "always zero" },
+        { prompt: "Mean \\(30\\), median \\(27\\). Mode by the empirical relation?", answer: "\\(21\\)", method: "\\(3\\cdot 27 - 2\\cdot 30\\)" },
+        { prompt: "Mean of \\(7\\) numbers is \\(4\\). Find \\(\\sum (x_i - 4)\\).", answer: "\\(0\\)" },
+        { prompt: "Mode \\(12\\), mean \\(18\\). Median by the empirical relation?", answer: "\\(16\\)", method: "\\(12 = 3M - 36 \\Rightarrow M = 16\\)" },
+      ],
       pyqExampleId: "9650e9ca-cc9b-4696-8607-0262116a0753",
       traps: [
         {
