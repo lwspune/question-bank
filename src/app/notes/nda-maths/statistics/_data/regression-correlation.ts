@@ -172,7 +172,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           "Then the second line is regression of \\(x\\) on \\(y\\): \\(x = \\dfrac{-3y - 4}{2}\\), so \\(b_{xy} = -\\dfrac{3}{2}\\).",
           "Check the product: \\(b_{yx} \\cdot b_{xy} = (-1) \\times \\left(-\\dfrac{3}{2}\\right) = \\dfrac{3}{2} > 1\\). Invalid — swap the assignment.",
           "Now first line is \\(x\\) on \\(y\\): \\(x = -y - 11\\), so \\(b_{xy} = -1\\). Second is \\(y\\) on \\(x\\): \\(y = \\dfrac{-2x - 4}{3}\\), so \\(b_{yx} = -\\dfrac{2}{3}\\).",
-          "Product: \\(b_{yx} \\cdot b_{xy} = \\dfrac{2}{3} \\leq 1\\) ✓. So \\(r^2 = \\dfrac{2}{3}\\) and \\(r = -\\sqrt{2/3}\\) (negative because both slopes are negative).",
+          "Product: \\(b_{yx} \\cdot b_{xy} = \\dfrac{2}{3} \\leq 1\\) — valid. So \\(r^2 = \\dfrac{2}{3}\\) and \\(r = -\\sqrt{2/3}\\) (negative because both slopes are negative).",
         ],
         answer: "\\(r = -\\sqrt{\\dfrac{2}{3}}\\)",
       },
@@ -180,7 +180,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         prompt:
           "Given \\(b_{yx} = -1.2\\) and \\(b_{xy} = -0.3\\), find \\(r\\).",
         steps: [
-          "Product: \\((-1.2)(-0.3) = 0.36 \\leq 1\\) ✓.",
+          "Product: \\((-1.2)(-0.3) = 0.36 \\leq 1\\) — valid.",
           "\\(|r| = \\sqrt{0.36} = 0.6\\).",
           "Both slopes negative \\(\\Rightarrow r < 0\\); \\(r = -0.6\\).",
         ],
@@ -227,8 +227,8 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         prompt:
           "Two lines of regression are \\(x - 3y + 4 = 0\\) and \\(2x - 7y + 8 = 0\\). Identify which is \\(y\\) on \\(x\\) and find \\(b_{yx}\\) and \\(b_{xy}\\).",
         steps: [
-          "Pairing A: first as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{x+4}{3}\\), so \\(b_{yx} = \\dfrac{1}{3}\\). Second as \\(x\\) on \\(y\\) gives \\(x = \\dfrac{7y - 8}{2}\\), so \\(b_{xy} = \\dfrac{7}{2}\\). Product = \\(\\dfrac{7}{6} > 1\\) ✗.",
-          "Pairing B (swap): first as \\(x\\) on \\(y\\) gives \\(x = 3y - 4\\), so \\(b_{xy} = 3\\). Second as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{2x + 8}{7}\\), so \\(b_{yx} = \\dfrac{2}{7}\\). Product = \\(\\dfrac{6}{7} \\leq 1\\) ✓.",
+          "Pairing A: first as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{x+4}{3}\\), so \\(b_{yx} = \\dfrac{1}{3}\\). Second as \\(x\\) on \\(y\\) gives \\(x = \\dfrac{7y - 8}{2}\\), so \\(b_{xy} = \\dfrac{7}{2}\\). Product = \\(\\dfrac{7}{6} > 1\\) — rejected.",
+          "Pairing B (swap): first as \\(x\\) on \\(y\\) gives \\(x = 3y - 4\\), so \\(b_{xy} = 3\\). Second as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{2x + 8}{7}\\), so \\(b_{yx} = \\dfrac{2}{7}\\). Product = \\(\\dfrac{6}{7} \\leq 1\\) — valid.",
           "Conclusion: the second line is \\(y\\) on \\(x\\) (\\(b_{yx} = 2/7\\)); the first is \\(x\\) on \\(y\\) (\\(b_{xy} = 3\\)).",
         ],
         answer: "\\(b_{yx} = \\dfrac{2}{7},\\ b_{xy} = 3\\)",
@@ -238,8 +238,8 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           "Two lines of regression are \\(x + 4y - 7 = 0\\) and \\(2x + 5y - 9 = 0\\). " +
           "Identify which is \\(y\\) on \\(x\\) and report both slopes.",
         steps: [
-          "Pairing A: first as \\(y\\) on \\(x \\Rightarrow b_{yx} = -1/4\\); second as \\(x\\) on \\(y \\Rightarrow b_{xy} = -5/2\\). Product \\(= 5/8 \\leq 1\\) ✓.",
-          "(Pairing B would give product \\(= 8/5 > 1\\) ✗.)",
+          "Pairing A: first as \\(y\\) on \\(x \\Rightarrow b_{yx} = -1/4\\); second as \\(x\\) on \\(y \\Rightarrow b_{xy} = -5/2\\). Product \\(= 5/8 \\leq 1\\) — valid.",
+          "(Pairing B would give product \\(= 8/5 > 1\\) — rejected.)",
           "Conclusion: the first line is \\(y\\) on \\(x\\) (\\(b_{yx} = -1/4\\)); the second is \\(x\\) on \\(y\\) (\\(b_{xy} = -5/2\\)).",
         ],
         answer: "\\(b_{yx} = -\\dfrac{1}{4},\\ b_{xy} = -\\dfrac{5}{2}\\)",

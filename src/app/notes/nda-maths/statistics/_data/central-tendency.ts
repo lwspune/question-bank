@@ -154,7 +154,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     // F5 — summation-notation ────────────────────────────────────────────────
     {
       slug: "summation-notation",
-      name: "Summation notation \\(\\Sigma\\)",
+      name: "Summation notation Σ",
       intuition:
         "\\(\\Sigma\\) (capital sigma) is a compact way to write \"add up many " +
         "things\". The expression \\(\\sum_{i=1}^{n} x_i\\) means: start with " +

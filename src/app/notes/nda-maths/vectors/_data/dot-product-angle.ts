@@ -158,9 +158,9 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "Dot product: \\(\\vec{a}\\cdot\\vec{b} = 0\\cdot 1 + 1\\cdot 0 + 1\\cdot 1 = 1\\).",
           "Magnitudes: \\(|\\vec{a}| = \\sqrt{0+1+1} = \\sqrt{2}\\); \\(|\\vec{b}| = \\sqrt{1+0+1} = \\sqrt{2}\\).",
           "Apply the formula: \\(\\cos\\theta = \\dfrac{1}{\\sqrt{2}\\cdot\\sqrt{2}} = \\dfrac{1}{2}\\).",
-          "Hence \\(\\theta = \\dfrac{\\pi}{3} = 60°\\).",
+          "Hence \\(\\theta = \\dfrac{\\pi}{3} = 60^\\circ\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
       },
       selfCheckExample: {
         prompt: "Find the angle between \\(\\vec{a} = \\hat{i} + \\hat{j}\\) and \\(\\vec{b} = \\hat{i} - \\hat{j}\\).",
@@ -169,7 +169,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "A zero dot product (with non-zero vectors) means the vectors are perpendicular.",
           "\\(\\theta = \\dfrac{\\pi}{2}\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{2}\\) (i.e. \\(90°\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{2}\\) (i.e. \\(90^\\circ\\))",
       },
       pyqExampleId: "3da05cd8-adbc-4ef7-bbd1-b60d37b4834c",
       traps: [
@@ -218,7 +218,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "Set equal to zero: \\(-3 + 6\\vec{a}\\cdot\\vec{b} = 0 \\;\\Rightarrow\\; \\vec{a}\\cdot\\vec{b} = \\dfrac{1}{2}\\).",
           "Since \\(|\\vec{a}|=|\\vec{b}|=1\\): \\(\\cos\\theta = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
       },
       selfCheckExample: {
         prompt:
@@ -228,7 +228,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "Set equal to \\(1^2 = 1\\): \\(2 - 2(\\vec{a}\\cdot\\vec{b}) = 1\\), so \\(\\vec{a}\\cdot\\vec{b} = \\tfrac{1}{2}\\).",
           "Unit vectors, so \\(\\cos\\theta = \\tfrac{1}{2}\\), \\(\\theta = \\dfrac{\\pi}{3}\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
       },
       pyqExampleId: "d9b215a5-3a68-459f-acb4-f0c8f2c5aa49",
       traps: [
@@ -295,12 +295,12 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           title: "Three unit vectors at equal pairwise angles need not be orthonormal",
           body:
             "If \\(\\vec{a}\\cdot\\vec{b} = \\vec{b}\\cdot\\vec{c} = \\vec{c}\\cdot\\vec{a} = k\\), the triple is symmetric but only orthonormal when \\(k = 0\\). " +
-            "For other \\(k\\) values (e.g. \\(k = -1/2\\) — three coplanar vectors at \\(120°\\)) the magnitudes of linear combinations look quite different.",
+            "For other \\(k\\) values (e.g. \\(k = -1/2\\) — three coplanar vectors at \\(120^\\circ\\)) the magnitudes of linear combinations look quite different.",
         },
         {
           title: "\\(\\{\\vec{a}, \\vec{b}, \\vec{a}\\times\\vec{b}\\}\\) is orthonormal iff \\(\\vec{a}\\perp\\vec{b}\\) and both unit",
           body:
-            "If \\(\\vec{a}, \\vec{b}\\) are unit and perpendicular, then \\(|\\vec{a}\\times\\vec{b}| = \\sin 90° = 1\\) — so the triple is orthonormal. " +
+            "If \\(\\vec{a}, \\vec{b}\\) are unit and perpendicular, then \\(|\\vec{a}\\times\\vec{b}| = \\sin 90^\\circ = 1\\) — so the triple is orthonormal. " +
             "If \\(\\vec{a}\\cdot\\vec{b} \\neq 0\\), the cross product still produces a perpendicular vector, but it's not a unit vector and the basis isn't orthonormal.",
         },
       ],

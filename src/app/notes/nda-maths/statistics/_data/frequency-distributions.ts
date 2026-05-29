@@ -32,7 +32,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         prompt:
           "Three classes have widths 5, 10, 5 with frequencies 30, 50, 25. Find the height of each histogram bar (relative).",
         steps: [
-          "Density = frequency ÷ class width.",
+          "Density = frequency / class width.",
           "Class 1: \\(30 / 5 = 6\\).",
           "Class 2: \\(50 / 10 = 5\\).",
           "Class 3: \\(25 / 5 = 5\\).",
@@ -59,7 +59,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
       pyqExampleId: "d8cb68fd-9555-48d0-b0ff-7a05b3e947d0",
       traps: [
         {
-          title: "Bar height ≠ frequency when class widths differ",
+          title: "Bar height \\(\\neq\\) frequency when class widths differ",
           body:
             "If two classes have the same frequency but different widths, the wider class has the SHORTER bar — because density (height) divides frequency by width. " +
             "Students draw bars of equal height for equal frequencies; correct histograms make AREAS equal, not heights.",
@@ -101,7 +101,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         steps: [
           "Sum of ratio parts: \\(1 + 2 + 3 + 4 = 10\\).",
           "Each ratio unit \\(= 360^\\circ / 10 = 36^\\circ\\).",
-          "Angles: \\(36^\\circ, 72^\\circ, 108^\\circ, 144^\\circ\\) (check sum \\(= 360^\\circ\\) ✓).",
+          "Angles: \\(36^\\circ, 72^\\circ, 108^\\circ, 144^\\circ\\) (check: they sum to \\(360^\\circ\\)).",
         ],
         answer: "\\(36^\\circ,\\ 72^\\circ,\\ 108^\\circ,\\ 144^\\circ\\)",
       },

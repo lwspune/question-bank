@@ -12,6 +12,7 @@
     "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > src/types/db.ts",
     "extract:taxonomy": "tsx scripts/extract-taxonomy.ts",
     "notes:lint": "tsx scripts/notes-lint.ts",
+    "notes:latex": "tsx scripts/notes-latex-audit.ts",
     "tags:audit": "tsx scripts/principle-tag-audit.ts",
     "audit:underlines": "tsx scripts/audit-underline-patterns.ts",
     "test": "vitest run",

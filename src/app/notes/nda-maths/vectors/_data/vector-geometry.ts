@@ -163,7 +163,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
           "Magnitudes: \\(|\\vec{p}| = \\sqrt{1 + 3} = 2\\), \\(|\\vec{q}| = 1\\).",
           "\\(\\cos\\theta = \\dfrac{1}{2\\cdot 1} = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
       },
       pyqExampleId: "77319cff-1210-425f-9d1c-c42ddbcac754",
       traps: [

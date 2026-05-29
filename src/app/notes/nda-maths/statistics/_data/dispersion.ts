@@ -184,7 +184,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
         "If \\(Y = aX + b\\) is a linear transformation of \\(X\\), then the variance of \\(Y\\) is \\(a^2\\) times the variance of \\(X\\), " +
         "and the standard deviation of \\(Y\\) is \\(|a|\\) times the SD of \\(X\\). The shift \\(b\\) has no effect on either.",
       formula: {
-        label: "Variance and SD under \\(Y = aX + b\\)",
+        label: "Variance and SD under Y = aX + b",
         latex:
           "\\text{Var}(Y) = a^2\\,\\text{Var}(X) \\qquad \\sigma_Y = |a|\\,\\sigma_X",
         symbols: [

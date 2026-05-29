@@ -227,8 +227,8 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         {
           title: "Check that the given angles are consistent with \\(\\sum\\cos^2 = 1\\)",
           body:
-            "A vector cannot make \\(\\alpha = 60°\\) and \\(\\beta = 45°\\) with the \\(x\\) and \\(y\\) axes AND have \\(\\gamma\\) acute unless the third cosine fits. " +
-            "From \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\): \\(\\cos^2\\gamma = 1 - \\tfrac{1}{4} - \\tfrac{1}{2} = \\tfrac{1}{4}\\), so \\(\\gamma = 60°\\) (acute) or \\(120°\\).",
+            "A vector cannot make \\(\\alpha = 60^\\circ\\) and \\(\\beta = 45^\\circ\\) with the \\(x\\) and \\(y\\) axes AND have \\(\\gamma\\) acute unless the third cosine fits. " +
+            "From \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\): \\(\\cos^2\\gamma = 1 - \\tfrac{1}{4} - \\tfrac{1}{2} = \\tfrac{1}{4}\\), so \\(\\gamma = 60^\\circ\\) (acute) or \\(120^\\circ\\).",
         },
         {
           title: "Equally inclined to two axes only fixes one component pair",

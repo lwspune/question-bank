@@ -108,9 +108,9 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "\\(\\vec{a}\\) and \\(\\vec{b}\\) have magnitudes 3 and 5 with angle \\(30°\\) between them. Find the area of the parallelogram they span.",
+          "\\(\\vec{a}\\) and \\(\\vec{b}\\) have magnitudes 3 and 5 with angle \\(30^\\circ\\) between them. Find the area of the parallelogram they span.",
         steps: [
-          "Area \\(= |\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta = 3\\cdot 5\\cdot\\sin 30°\\).",
+          "Area \\(= |\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta = 3\\cdot 5\\cdot\\sin 30^\\circ\\).",
           "\\(= 15\\cdot\\tfrac{1}{2} = 7.5\\).",
         ],
         answer: "Area \\(= 7.5\\) square units",
