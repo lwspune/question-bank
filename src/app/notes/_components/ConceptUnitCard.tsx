@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Target } from "lucide-react";
+import { ArrowRight, ChevronRight, Dumbbell, Target } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import { buildBrowseUrl } from "@/lib/guide/buildBrowseUrl";
@@ -49,6 +49,13 @@ type Props = {
    * sourced via `loadResolvedDrills`. Empty array hides the drill link.
    */
   drillQuestionIds: string[];
+  /**
+   * When true, the practice rungs (faded example + self-check + Level 1
+   * reps) are tucked behind one collapsed disclosure instead of stacked
+   * inline — cuts the always-on height while keeping the teaching half
+   * (intuition → formula → worked → traps) visible. Prototype flag.
+   */
+  collapsePractice?: boolean;
 };
 
 /**
@@ -64,7 +71,35 @@ export default function ConceptUnitCard({
   total,
   pyqExample,
   drillQuestionIds,
+  collapsePractice = false,
 }: Props) {
+  const practiceParts: string[] = [];
+  if (concept.fadedExample) practiceParts.push("guided example");
+  if (concept.selfCheckExample) practiceParts.push("self-check");
+  if (concept.practiceSet && concept.practiceSet.length > 0)
+    practiceParts.push(`${concept.practiceSet.length} quick reps`);
+  const hasPractice = practiceParts.length > 0;
+
+  const practiceBlocks = (
+    <>
+      {concept.fadedExample && (
+        <div className="mt-4">
+          <FadedExampleCard example={concept.fadedExample} />
+        </div>
+      )}
+      {concept.selfCheckExample && (
+        <div className="mt-4">
+          <SelfCheckCard example={concept.selfCheckExample} />
+        </div>
+      )}
+      {concept.practiceSet && concept.practiceSet.length > 0 && (
+        <div className="mt-4">
+          <PracticeSet problems={concept.practiceSet} />
+        </div>
+      )}
+    </>
+  );
+
   return (
     <section
       id={concept.slug}
@@ -118,26 +153,33 @@ export default function ConceptUnitCard({
         <WorkedExampleAuthored example={concept.authoredExample} />
       </div>
 
-      {/* Faded example — same shape, some steps hidden. The "do part of it" rung. */}
-      {concept.fadedExample && (
-        <div className="mt-4">
-          <FadedExampleCard example={concept.fadedExample} />
-        </div>
-      )}
-
-      {/* Self-check — independent attempt, solution behind one reveal. */}
-      {concept.selfCheckExample && (
-        <div className="mt-4">
-          <SelfCheckCard example={concept.selfCheckExample} />
-        </div>
-      )}
-
-      {/* Level 1 mastery reps — short practice problems, per-rep reveal. */}
-      {concept.practiceSet && concept.practiceSet.length > 0 && (
-        <div className="mt-4">
-          <PracticeSet problems={concept.practiceSet} />
-        </div>
-      )}
+      {/* Practice rungs — faded example + self-check + Level 1 reps.
+          Collapsed behind one disclosure when collapsePractice is set,
+          otherwise stacked inline (current default). */}
+      {hasPractice &&
+        (collapsePractice ? (
+          <details className="group mt-6 rounded-lg border border-violet-200 dark:border-violet-900/60 bg-violet-50/30 dark:bg-violet-950/15">
+            <summary className="flex cursor-pointer list-none items-center gap-2 p-4 hover:bg-violet-100/40 dark:hover:bg-violet-950/30">
+              <Dumbbell
+                className="h-4 w-4 shrink-0 text-violet-700 dark:text-violet-300"
+                aria-hidden
+              />
+              <span className="flex-1 text-sm font-semibold text-violet-800 dark:text-violet-200">
+                Practice this concept
+                <span className="ml-2 text-xs font-normal text-muted-foreground">
+                  {practiceParts.join(" · ")}
+                </span>
+              </span>
+              <ChevronRight
+                className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-90"
+                aria-hidden
+              />
+            </summary>
+            <div className="px-4 pb-4">{practiceBlocks}</div>
+          </details>
+        ) : (
+          practiceBlocks
+        ))}
 
       {/* Bank PYQ application — same concept on a real past-year question */}
       {pyqExample && (
