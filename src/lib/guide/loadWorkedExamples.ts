@@ -4,6 +4,8 @@ import type { Difficulty } from "@/lib/questions/filters";
 export type WorkedExample = {
   id: string;
   text: string;
+  /** Passage shared by set-bound siblings; null for standalone questions. */
+  context: string | null;
   difficulty: Difficulty;
   solution: string | null;
   chapter: string;
@@ -32,7 +34,7 @@ export async function loadWorkedExamples(
     .from("questions")
     .select(
       `
-      id, text, difficulty, solution,
+      id, text, context, difficulty, solution,
       chapter:chapters!chapter_id(name),
       subtopic:subtopics!subtopic_id(name),
       options(label, text, is_correct)
@@ -51,6 +53,7 @@ export async function loadWorkedExamples(
   type Raw = {
     id: string;
     text: string;
+    context: string | null;
     difficulty: Difficulty;
     solution: string | null;
     chapter: RawTax;
@@ -66,6 +69,7 @@ export async function loadWorkedExamples(
     byId.set(r.id, {
       id: r.id,
       text: r.text,
+      context: r.context,
       difficulty: r.difficulty,
       solution: r.solution,
       chapter: flat(r.chapter)?.name ?? "Unknown",

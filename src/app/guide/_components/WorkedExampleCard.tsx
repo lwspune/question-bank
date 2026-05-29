@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CheckCircle2, ChevronDown, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 
 type Props = {
@@ -47,6 +48,17 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
           {example.difficulty}
         </span>
       </header>
+
+      {example.context && (
+        <div
+          className={cn(
+            "border-b bg-muted/30 font-serif italic leading-relaxed text-muted-foreground",
+            presentMode ? "px-6 py-4 text-xl sm:text-2xl" : "px-4 py-3 text-sm"
+          )}
+        >
+          <KatexRenderer text={stripPassageCountPhrase(example.context)} />
+        </div>
+      )}
 
       <div
         className={cn(
