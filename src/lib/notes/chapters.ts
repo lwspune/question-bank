@@ -31,6 +31,9 @@ export type NotesChapterRegistration = {
   subjectName: string;
   /** URL segment under /notes/ — e.g. "nda-maths". */
   subjectRoute: string;
+  /** Human display for the subject, e.g. "NDA Maths" — used in hero eyebrow,
+   *  page metadata, and the strategy-guide link label. */
+  subjectDisplay: string;
   /** URL segment for the chapter — e.g. "statistics". */
   chapterSlug: string;
   /** Short chip label, e.g. "Statistics notes". */
@@ -48,6 +51,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     examName: "NDA",
     subjectName: "Mathematics",
     subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
     chapterSlug: "statistics",
     chipLabel: "Statistics notes",
     chapter: STATISTICS_CHAPTER,
@@ -58,6 +62,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     examName: "NDA",
     subjectName: "Mathematics",
     subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
     chapterSlug: "vectors",
     chipLabel: "Vectors notes",
     chapter: VECTORS_CHAPTER,
