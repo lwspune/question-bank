@@ -863,6 +863,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     {
       slug: "sum-of-deviations-empirical",
       name: "Sum of Deviations & the Empirical Relation",
+      visualizationSlug: "skew-mean-median-mode",
       intuition:
         "Two identities every NDA aspirant should reflexively know. First: the " +
         "deviations of all observations from their mean always sum to zero. " +

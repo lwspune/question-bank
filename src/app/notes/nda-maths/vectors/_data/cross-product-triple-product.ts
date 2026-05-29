@@ -15,6 +15,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
     {
       slug: "cross-product-algebra-and-properties",
       name: "Cross product — algebra and properties",
+      visualizationSlug: "right-hand-rule-cross",
       intuition:
         "The cross product of two 3-D vectors produces a third vector perpendicular to both, with magnitude equal to the area of the parallelogram they span. " +
         "Algebraically it is anti-commutative (swap and the sign flips) and distributive over addition, but — unlike multiplication of numbers — NOT associative. " +
@@ -148,6 +149,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
     {
       slug: "unit-vector-perpendicular-via-cross",
       name: "Unit vector perpendicular to two given vectors",
+      visualizationSlug: "unit-normal-vector",
       intuition:
         "Any vector perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\) lies along the cross product direction (or its opposite). " +
         "To get the unit perpendicular, take \\(\\vec{a}\\times\\vec{b}\\) and divide by its magnitude. " +
@@ -284,6 +286,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
     {
       slug: "scalar-triple-product-and-coplanarity",
       name: "Scalar triple product and coplanarity",
+      visualizationSlug: "triple-product-box",
       intuition:
         "The scalar triple product \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = \\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\) is the signed volume of the parallelepiped on the three vectors. " +
         "Three vectors are coplanar precisely when that volume is zero — equivalently, the determinant of their component matrix vanishes. " +

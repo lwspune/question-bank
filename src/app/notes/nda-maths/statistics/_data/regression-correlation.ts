@@ -14,6 +14,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
     {
       slug: "correlation-coefficient-properties",
       name: "Correlation Coefficient and Its Properties",
+      visualizationSlug: "correlation-scatter",
       intuition:
         "Correlation coefficient \\(r\\) is a single number between \\(-1\\) and \\(+1\\) that summarises how strongly two variables move together. " +
         "\\(r = +1\\) is perfect positive (one rises, the other rises by the same proportion); \\(r = -1\\) is perfect negative; \\(r = 0\\) means no linear relationship. " +

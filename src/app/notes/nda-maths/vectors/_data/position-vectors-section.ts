@@ -412,6 +412,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     {
       slug: "section-formula-internal-external",
       name: "Section Formula — Internal and External Division",
+      visualizationSlug: "section-formula",
       intuition:
         "A point that divides a segment \\(AB\\) in a ratio \\(m : n\\) is a weighted average of the endpoints. " +
         "When the dividing point lies between \\(A\\) and \\(B\\), the division is internal and the weights add normally. " +

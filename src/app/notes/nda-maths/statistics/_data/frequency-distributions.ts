@@ -71,6 +71,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
     {
       slug: "pie-charts",
       name: "Pie Charts",
+      visualizationSlug: "pie-chart-sectors",
       intuition:
         "A pie chart shows how a whole is split into parts. Each part's sector angle is proportional to its share of the total — and all the sector angles together must add to \\(360^\\circ\\).",
       definition:

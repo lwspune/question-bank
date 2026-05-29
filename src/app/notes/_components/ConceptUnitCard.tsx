@@ -20,6 +20,19 @@ import CrossProductArea from "./visualizations/CrossProductArea";
 import DiceSumGrid from "./visualizations/DiceSumGrid";
 import VennTwoEvents from "./visualizations/VennTwoEvents";
 import ProbabilityTree from "./visualizations/ProbabilityTree";
+import SkewMeanMedianMode from "./visualizations/SkewMeanMedianMode";
+import PieChartSectors from "./visualizations/PieChartSectors";
+import CorrelationScatter from "./visualizations/CorrelationScatter";
+import RightHandRuleCrossProduct3D from "./visualizations/RightHandRuleCrossProduct3D";
+import UnitNormalVector3D from "./visualizations/UnitNormalVector3D";
+import DirectionCosines3D from "./visualizations/DirectionCosines3D";
+import TripleProductBoxSvg from "./visualizations/TripleProductBoxSvg";
+import SectionFormula from "./visualizations/SectionFormula";
+import TriangleCentroid from "./visualizations/TriangleCentroid";
+import ParallelogramDiagonals from "./visualizations/ParallelogramDiagonals";
+import ExclusiveVsIndependent from "./visualizations/ExclusiveVsIndependent";
+import ConditionalRestrict from "./visualizations/ConditionalRestrict";
+import SetOperationsVenn from "./visualizations/SetOperationsVenn";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -42,6 +55,32 @@ function renderVisualization(slug: VisualizationSlug) {
       return <VennTwoEvents />;
     case "probability-tree":
       return <ProbabilityTree />;
+    case "skew-mean-median-mode":
+      return <SkewMeanMedianMode />;
+    case "pie-chart-sectors":
+      return <PieChartSectors />;
+    case "correlation-scatter":
+      return <CorrelationScatter />;
+    case "right-hand-rule-cross":
+      return <RightHandRuleCrossProduct3D />;
+    case "unit-normal-vector":
+      return <UnitNormalVector3D />;
+    case "direction-cosines":
+      return <DirectionCosines3D />;
+    case "triple-product-box":
+      return <TripleProductBoxSvg />;
+    case "section-formula":
+      return <SectionFormula />;
+    case "triangle-centroid":
+      return <TriangleCentroid />;
+    case "parallelogram-diagonals":
+      return <ParallelogramDiagonals />;
+    case "exclusive-vs-independent":
+      return <ExclusiveVsIndependent />;
+    case "conditional-restrict":
+      return <ConditionalRestrict />;
+    case "set-operations-venn":
+      return <SetOperationsVenn />;
   }
 }
 

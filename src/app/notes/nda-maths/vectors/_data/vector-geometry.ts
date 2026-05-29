@@ -15,6 +15,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
     {
       slug: "triangle-vector-loop-and-centroid",
       name: "Triangle closed-loop and centroid formula",
+      visualizationSlug: "triangle-centroid",
       intuition:
         "Walking around a triangle from \\(A\\) to \\(B\\) to \\(C\\) and back to \\(A\\) returns you to the starting point, so the three side-vectors taken in order must sum to the zero vector. The centroid is the average of the three vertex position vectors — geometrically the meeting point of the three medians, which it divides in a \\(2:1\\) ratio.",
       definition:
@@ -77,6 +78,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
     {
       slug: "parallelogram-properties-and-diagonals",
       name: "Parallelogram properties and diagonal relations",
+      visualizationSlug: "parallelogram-diagonals",
       intuition:
         "A parallelogram has opposite sides equal and parallel as vectors. Its diagonals bisect each other, so the midpoint of one diagonal IS the midpoint of the other. Whenever a question mentions an origin \\(O\\) and a parallelogram, expect a clean linear identity built around that shared midpoint.",
       definition:

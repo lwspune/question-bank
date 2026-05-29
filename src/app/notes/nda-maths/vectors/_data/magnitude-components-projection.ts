@@ -76,6 +76,7 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
     {
       slug: "direction-cosines",
       name: "Direction Cosines",
+      visualizationSlug: "direction-cosines",
       intuition:
         "If a vector makes angles \\(\\alpha, \\beta, \\gamma\\) with the positive \\(x, y, z\\) axes, its direction cosines are \\(\\cos\\alpha, \\cos\\beta, \\cos\\gamma\\) — exactly the components of the unit vector along \\(\\vec{v}\\). " +
         "Their squares sum to 1 (Pythagoras on the unit sphere). " +

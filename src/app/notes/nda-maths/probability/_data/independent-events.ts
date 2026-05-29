@@ -14,6 +14,7 @@ export const INDEPENDENT_EVENTS_NOTE: SubtopicNote = {
     {
       slug: "independence-and-multiplication-rule",
       name: "Independence and the multiplication rule",
+      visualizationSlug: "exclusive-vs-independent",
       intuition:
         "Two events are independent when knowing one happened does not change the probability of the other — separate coins, separate machines, separate people. " +
         "For independent events, the probability that BOTH happen is the product of their probabilities.",

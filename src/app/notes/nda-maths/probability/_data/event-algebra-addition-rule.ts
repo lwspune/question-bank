@@ -16,6 +16,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
     {
       slug: "set-operations-on-events",
       name: "Events as sets: union, intersection, complement",
+      visualizationSlug: "set-operations-venn",
       intuition:
         "Events are subsets of the sample space, so the language of sets applies directly. " +
         "\\(A \\cup B\\) is \"A or B (or both)\"; \\(A \\cap B\\) is \"A and B together\"; \\(A'\\) is \"A does not happen\". " +

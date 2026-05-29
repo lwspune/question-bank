@@ -15,6 +15,7 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
     {
       slug: "conditional-probability",
       name: "Conditional probability",
+      visualizationSlug: "conditional-restrict",
       intuition:
         "Once you know event \\(B\\) has happened, the only outcomes still possible are those inside \\(B\\) — the sample space shrinks to \\(B\\). " +
         "The conditional probability of \\(A\\) given \\(B\\) is the share of that shrunken world in which \\(A\\) also holds.",

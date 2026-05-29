@@ -65,7 +65,23 @@ export type VisualizationSlug =
   | "cross-product-area"
   | "dice-sum-grid"
   | "venn-two-events"
-  | "probability-tree";
+  | "probability-tree"
+  // Statistics — batch 2
+  | "skew-mean-median-mode"
+  | "pie-chart-sectors"
+  | "correlation-scatter"
+  // Vectors — batch 2
+  | "right-hand-rule-cross"
+  | "unit-normal-vector"
+  | "direction-cosines"
+  | "triple-product-box"
+  | "section-formula"
+  | "triangle-centroid"
+  | "parallelogram-diagonals"
+  // Probability — batch 2
+  | "exclusive-vs-independent"
+  | "conditional-restrict"
+  | "set-operations-venn";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
