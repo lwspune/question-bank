@@ -231,7 +231,6 @@ export default async function SubtopicNotePage({
             total={note.concepts.length}
             pyqExample={c.pyqExampleId ? pyqById.get(c.pyqExampleId) ?? null : null}
             drillQuestionIds={drillsByConcept.get(c.slug) ?? []}
-            collapsePractice={c.slug === "arithmetic-mean-raw"}
           />
         ))}
       </div>

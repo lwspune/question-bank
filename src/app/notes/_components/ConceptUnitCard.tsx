@@ -48,13 +48,6 @@ type Props = {
    * sourced via `loadResolvedDrills`. Empty array hides the drill link.
    */
   drillQuestionIds: string[];
-  /**
-   * When true, the practice rungs (self-check + Level 1 reps) are tucked
-   * behind one collapsed disclosure instead of stacked inline — cuts the
-   * always-on height while keeping the teaching half (intuition → formula
-   * → worked → traps) visible. Prototype flag.
-   */
-  collapsePractice?: boolean;
 };
 
 /**
@@ -70,7 +63,6 @@ export default function ConceptUnitCard({
   total,
   pyqExample,
   drillQuestionIds,
-  collapsePractice = false,
 }: Props) {
   const practiceParts: string[] = [];
   if (concept.selfCheckExample) practiceParts.push("self-check");
@@ -146,32 +138,30 @@ export default function ConceptUnitCard({
         <WorkedExampleAuthored example={concept.authoredExample} />
       </div>
 
-      {/* Practice rungs — self-check + Level 1 reps. Collapsed behind one
-          disclosure when collapsePractice is set, otherwise stacked inline. */}
-      {hasPractice &&
-        (collapsePractice ? (
-          <details className="group mt-6 rounded-lg border border-violet-200 dark:border-violet-900/60 bg-violet-50/30 dark:bg-violet-950/15">
-            <summary className="flex cursor-pointer list-none items-center gap-2 p-4 hover:bg-violet-100/40 dark:hover:bg-violet-950/30">
-              <Dumbbell
-                className="h-4 w-4 shrink-0 text-violet-700 dark:text-violet-300"
-                aria-hidden
-              />
-              <span className="flex-1 text-sm font-semibold text-violet-800 dark:text-violet-200">
-                Practice this concept
-                <span className="ml-2 text-xs font-normal text-muted-foreground">
-                  {practiceParts.join(" · ")}
-                </span>
+      {/* Practice rungs — self-check + Level 1 reps, collapsed behind one
+          disclosure to keep the teaching half (intuition → formula → worked
+          → traps) visible without scrolling past every concept's practice. */}
+      {hasPractice && (
+        <details className="group mt-6 rounded-lg border border-violet-200 dark:border-violet-900/60 bg-violet-50/30 dark:bg-violet-950/15">
+          <summary className="flex cursor-pointer list-none items-center gap-2 p-4 hover:bg-violet-100/40 dark:hover:bg-violet-950/30">
+            <Dumbbell
+              className="h-4 w-4 shrink-0 text-violet-700 dark:text-violet-300"
+              aria-hidden
+            />
+            <span className="flex-1 text-sm font-semibold text-violet-800 dark:text-violet-200">
+              Practice this concept
+              <span className="ml-2 text-xs font-normal text-muted-foreground">
+                {practiceParts.join(" · ")}
               </span>
-              <ChevronRight
-                className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-90"
-                aria-hidden
-              />
-            </summary>
-            <div className="px-4 pb-4">{practiceBlocks}</div>
-          </details>
-        ) : (
-          practiceBlocks
-        ))}
+            </span>
+            <ChevronRight
+              className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-90"
+              aria-hidden
+            />
+          </summary>
+          <div className="px-4 pb-4">{practiceBlocks}</div>
+        </details>
+      )}
 
       {/* Bank PYQ application — same concept on a real past-year question */}
       {pyqExample && (
