@@ -246,6 +246,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
     {
       slug: "probability-with-dice",
       name: "Probability with dice",
+      visualizationSlug: "dice-sum-grid",
       intuition:
         "Two dice produce \\(36\\) equally-likely ordered outcomes \\((1,1)\\) through \\((6,6)\\). " +
         "Most dice questions are just \"count the \\((a,b)\\) pairs that satisfy the condition, divide by 36\". " +

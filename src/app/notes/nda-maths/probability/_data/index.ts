@@ -3,6 +3,7 @@ import { CLASSICAL_PROBABILITY_COUNTING_NOTE } from "./classical-probability-cou
 import { EVENT_ALGEBRA_ADDITION_RULE_NOTE } from "./event-algebra-addition-rule";
 import { INDEPENDENT_EVENTS_NOTE } from "./independent-events";
 import { CONDITIONAL_PROBABILITY_BAYES_NOTE } from "./conditional-probability-bayes";
+import { BOUNDS_ON_PROBABILITY_NOTE } from "./bounds-on-probability";
 
 export { PROBABILITY_CHAPTER } from "./chapter";
 
@@ -16,6 +17,7 @@ export const PROBABILITY_NOTES: Record<string, SubtopicNote> = {
   "event-algebra-addition-rule": EVENT_ALGEBRA_ADDITION_RULE_NOTE,
   "independent-events": INDEPENDENT_EVENTS_NOTE,
   "conditional-probability-bayes": CONDITIONAL_PROBABILITY_BAYES_NOTE,
+  "bounds-on-probability": BOUNDS_ON_PROBABILITY_NOTE,
 };
 
 export const PROBABILITY_SLUGS = Object.keys(PROBABILITY_NOTES);

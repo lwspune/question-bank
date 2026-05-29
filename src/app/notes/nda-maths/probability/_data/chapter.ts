@@ -17,5 +17,6 @@ export const PROBABILITY_CHAPTER: ChapterNote = {
     "event-algebra-addition-rule",
     "independent-events",
     "conditional-probability-bayes",
+    "bounds-on-probability",
   ],
 };

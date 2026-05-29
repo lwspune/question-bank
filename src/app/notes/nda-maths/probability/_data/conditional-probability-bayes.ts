@@ -134,6 +134,7 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
     {
       slug: "total-probability",
       name: "Total probability (over a partition)",
+      visualizationSlug: "probability-tree",
       intuition:
         "When an outcome can arrive through several mutually exclusive routes — pick a bag, then draw a ball — its overall probability is the weighted sum over the routes: probability of each route times the probability of the outcome along that route.",
       definition:

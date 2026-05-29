@@ -62,7 +62,10 @@ export type VisualizationSlug =
   | "histogram-bin-slider"
   | "vector-addition"
   | "vector-projection"
-  | "cross-product-area";
+  | "cross-product-area"
+  | "dice-sum-grid"
+  | "venn-two-events"
+  | "probability-tree";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

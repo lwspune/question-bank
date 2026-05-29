@@ -16,6 +16,9 @@ import HistogramBinSlider from "./visualizations/HistogramBinSlider";
 import VectorAddition from "./visualizations/VectorAddition";
 import VectorProjection from "./visualizations/VectorProjection";
 import CrossProductArea from "./visualizations/CrossProductArea";
+import DiceSumGrid from "./visualizations/DiceSumGrid";
+import VennTwoEvents from "./visualizations/VennTwoEvents";
+import ProbabilityTree from "./visualizations/ProbabilityTree";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -32,6 +35,12 @@ function renderVisualization(slug: VisualizationSlug) {
       return <VectorProjection />;
     case "cross-product-area":
       return <CrossProductArea />;
+    case "dice-sum-grid":
+      return <DiceSumGrid />;
+    case "venn-two-events":
+      return <VennTwoEvents />;
+    case "probability-tree":
+      return <ProbabilityTree />;
   }
 }
 

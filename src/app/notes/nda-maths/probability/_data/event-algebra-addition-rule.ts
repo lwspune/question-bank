@@ -58,6 +58,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
     {
       slug: "addition-rule",
       name: "The addition rule (inclusion-exclusion)",
+      visualizationSlug: "venn-two-events",
       intuition:
         "To find \\(P(A \\text{ or } B)\\) you add \\(P(A)\\) and \\(P(B)\\) — but the overlap \\(A \\cap B\\) has now been counted twice, so subtract it once.",
       definition:
