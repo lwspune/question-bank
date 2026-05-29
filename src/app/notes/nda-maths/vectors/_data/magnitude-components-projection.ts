@@ -48,6 +48,12 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(|\\vec{v}| = 7\\)",
       },
+      practiceSet: [
+        { prompt: "\\(|\\vec{v}|\\) for \\(\\vec{v} = 3\\hat{i} + 4\\hat{j}\\)?", answer: "\\(5\\)" },
+        { prompt: "\\(|\\vec{v}|\\) for \\(\\vec{v} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\)?", answer: "\\(3\\)" },
+        { prompt: "Distance \\(AB\\) for \\(A(0,0,0)\\), \\(B(1,2,2)\\)?", answer: "\\(3\\)" },
+        { prompt: "\\(|\\vec{v}|\\) for \\(\\vec{v} = 6\\hat{i} + 8\\hat{j}\\)?", answer: "\\(10\\)" },
+      ],
       pyqExampleId: "8b636e01-9ae1-42a2-8eb6-fbf5b24e7a53",
       traps: [
         {
@@ -106,6 +112,12 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\cos\\gamma = \\dfrac{1}{\\sqrt{2}}\\)",
       },
+      practiceSet: [
+        { prompt: "\\(\\cos\\alpha\\) for \\(\\vec{a} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\)?", answer: "\\(\\tfrac{1}{3}\\)", method: "\\(v_1/|\\vec{a}|\\)" },
+        { prompt: "What does \\(l^2 + m^2 + n^2\\) equal?", answer: "\\(1\\)" },
+        { prompt: "If \\(l = \\tfrac{1}{3}\\), \\(m = \\tfrac{2}{3}\\), find \\(n\\) (positive).", answer: "\\(\\tfrac{2}{3}\\)", method: "\\(l^2 + m^2 + n^2 = 1\\)" },
+        { prompt: "\\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = ?\\)", answer: "\\(2\\)" },
+      ],
       pyqExampleId: "a9ea0282-913e-41b1-ba3a-9bc58a0add3c",
       traps: [
         {
@@ -166,6 +178,12 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{5}{3}\\)",
       },
+      practiceSet: [
+        { prompt: "Scalar projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) — formula?", answer: "\\(\\tfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\)" },
+        { prompt: "\\(\\vec{a}\\cdot\\vec{b} = 6\\), \\(|\\vec{b}| = 3\\). Scalar projection?", answer: "\\(2\\)" },
+        { prompt: "Projection of \\(\\vec{a} = 2\\hat{i} + \\hat{j}\\) on \\(\\vec{b} = \\hat{i}\\)?", answer: "\\(2\\)", method: "\\((\\vec{a}\\cdot\\vec{b})/|\\vec{b}| = 2/1\\)" },
+        { prompt: "If the scalar projection is negative, the angle is?", answer: "obtuse" },
+      ],
       pyqExampleId: "3a42bc1e-6815-4bed-9c20-a8317c806cee",
       traps: [
         {
@@ -222,6 +240,12 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\hat{v} = \\dfrac{1}{5}(3\\hat{i} - 4\\hat{j})\\)",
       },
+      practiceSet: [
+        { prompt: "Unit vector along \\(\\vec{v} = \\hat{i} + \\hat{j} + \\hat{k}\\)?", answer: "\\(\\tfrac{1}{\\sqrt{3}}(\\hat{i} + \\hat{j} + \\hat{k})\\)" },
+        { prompt: "Vector of magnitude \\(10\\) along \\(3\\hat{i} + 4\\hat{j}\\)?", answer: "\\(6\\hat{i} + 8\\hat{j}\\)", method: "\\(10\\,\\hat{v}\\), since \\(|\\vec{v}| = 5\\)" },
+        { prompt: "Unit vector in the \\(xy\\)-plane at angle \\(\\theta\\) to the \\(x\\)-axis?", answer: "\\(\\cos\\theta\\,\\hat{i} + \\sin\\theta\\,\\hat{j}\\)" },
+        { prompt: "Unit vector along \\(5\\hat{i}\\)?", answer: "\\(\\hat{i}\\)" },
+      ],
       pyqExampleId: "ecbcd264-d509-4acd-9a45-99e5e7986700",
       traps: [
         {

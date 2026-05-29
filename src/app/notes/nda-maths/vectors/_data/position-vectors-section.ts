@@ -82,6 +82,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{AB} = 3\\hat{i} - 4\\hat{j}\\); \\(\\vec{BA} = -3\\hat{i} + 4\\hat{j}\\); \\(AB = 5\\) units.",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a} = \\hat{i} + \\hat{j}\\), \\(\\vec{b} = 4\\hat{i} + 5\\hat{j}\\). Find \\(\\vec{AB}\\).", answer: "\\(3\\hat{i} + 4\\hat{j}\\)", method: "\\(\\vec{b} - \\vec{a}\\)" },
+        { prompt: "For the same points, find the distance \\(AB\\).", answer: "\\(5\\)", method: "\\(\\sqrt{3^2 + 4^2}\\)" },
+        { prompt: "\\(\\vec{a} = 2\\hat{i}\\), \\(\\vec{b} = 2\\hat{i} + 3\\hat{j}\\). Find \\(\\vec{BA}\\).", answer: "\\(-3\\hat{j}\\)", method: "\\(\\vec{a} - \\vec{b}\\)" },
+        { prompt: "Find \\(\\vec{AB}\\) for \\(A(1,2,0)\\), \\(B(1,2,5)\\).", answer: "\\(5\\hat{k}\\)" },
+      ],
       traps: [
         {
           title: "Head minus tail — \\(\\vec{AB} = \\vec{b} - \\vec{a}\\), not \\(\\vec{a} - \\vec{b}\\)",
@@ -132,6 +138,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "Total displacement \\(\\vec{R} = 2\\hat{i} + 6\\hat{j}\\); distance from start \\(= 2\\sqrt{10}\\) units.",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a} = 2\\hat{i} + \\hat{j}\\), \\(\\vec{b} = \\hat{i} + 3\\hat{j}\\). Find \\(\\vec{a} + \\vec{b}\\).", answer: "\\(3\\hat{i} + 4\\hat{j}\\)" },
+        { prompt: "\\(\\vec{a} = 3\\hat{i} - \\hat{j}\\), \\(\\vec{b} = -3\\hat{i} + \\hat{j}\\). Find \\(\\vec{a} + \\vec{b}\\).", answer: "\\(\\vec{0}\\)", method: "opposite vectors cancel" },
+        { prompt: "Find \\(\\vec{a} - \\vec{b}\\) for \\(\\vec{a} = 5\\hat{i} + 2\\hat{j}\\), \\(\\vec{b} = \\hat{i} + 2\\hat{j}\\).", answer: "\\(4\\hat{i}\\)" },
+        { prompt: "\\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\), same direction. Find \\(|\\vec{a} + \\vec{b}|\\).", answer: "\\(7\\)", method: "aligned, so magnitudes add" },
+      ],
       traps: [
         {
           title: "Closed-polygon identity: if vectors form a closed loop, they sum to \\(\\vec{0}\\)",
@@ -184,6 +196,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(2\\vec{a} = 8\\hat{i} + 6\\hat{j}\\); \\(-\\tfrac{1}{2}\\vec{a} = -2\\hat{i} - \\tfrac{3}{2}\\hat{j}\\). Both magnitudes confirm the scaling rule.",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a} = 2\\hat{i} - 3\\hat{j}\\). Find \\(3\\vec{a}\\).", answer: "\\(6\\hat{i} - 9\\hat{j}\\)" },
+        { prompt: "\\(\\vec{a} = 4\\hat{i} + 2\\hat{j}\\). Find \\(-\\tfrac{1}{2}\\vec{a}\\).", answer: "\\(-2\\hat{i} - \\hat{j}\\)" },
+        { prompt: "If \\(|\\vec{a}| = 5\\), find \\(|3\\vec{a}|\\).", answer: "\\(15\\)", method: "\\(|k|\\,|\\vec{a}|\\)" },
+        { prompt: "If \\(|\\vec{a}| = 6\\), find \\(|-2\\vec{a}|\\).", answer: "\\(12\\)" },
+      ],
       traps: [
         {
           title: "Sign of \\(k\\) controls DIRECTION, not just signs of components",
@@ -231,6 +249,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(3\\vec{a} - 2\\vec{b} = 8\\hat{i} - 11\\hat{j} + 5\\hat{k}\\)",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), \\(\\vec{b} = 2\\hat{i} - \\hat{j} + \\hat{k}\\). Find \\(\\vec{a} + \\vec{b}\\).", answer: "\\(3\\hat{i} + \\hat{j} + 4\\hat{k}\\)" },
+        { prompt: "Find \\(2\\vec{a}\\) for \\(\\vec{a} = \\hat{i} - \\hat{j} + 2\\hat{k}\\).", answer: "\\(2\\hat{i} - 2\\hat{j} + 4\\hat{k}\\)" },
+        { prompt: "If \\(x\\hat{i} + 3\\hat{j} = 5\\hat{i} + y\\hat{j}\\), find \\(x\\) and \\(y\\).", answer: "\\(x = 5,\\ y = 3\\)", method: "components match one-by-one" },
+        { prompt: "Find \\(\\vec{a} - \\vec{b}\\) for \\(\\vec{a} = 3\\hat{i} + \\hat{k}\\), \\(\\vec{b} = \\hat{i} + \\hat{j} + \\hat{k}\\).", answer: "\\(2\\hat{i} - \\hat{j}\\)" },
+      ],
       traps: [
         {
           title: "Equality of vectors = ALL components match — that's 3 equations, not 1",
@@ -286,6 +310,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "(i) Parallel (anti-parallel, \\(\\vec{b} = -3\\vec{a}\\)). (ii) Neither is a unit vector. (iii) \\(\\hat{a} = (2\\hat{i} - \\hat{j})/\\sqrt{5}\\).",
       },
+      practiceSet: [
+        { prompt: "Find the unit vector along \\(\\vec{v} = 3\\hat{i} + 4\\hat{j}\\).", answer: "\\(\\tfrac{1}{5}(3\\hat{i} + 4\\hat{j})\\)", method: "\\(\\vec{v}/|\\vec{v}|\\)" },
+        { prompt: "Are \\(\\vec{a} = \\hat{i} - 2\\hat{j}\\) and \\(\\vec{b} = -2\\hat{i} + 4\\hat{j}\\) parallel?", answer: "Yes", method: "\\(\\vec{b} = -2\\vec{a}\\)" },
+        { prompt: "Is \\(\\vec{v} = \\tfrac{1}{\\sqrt{2}}(\\hat{i} + \\hat{j})\\) a unit vector?", answer: "Yes", method: "\\(|\\vec{v}| = 1\\)" },
+        { prompt: "What is the magnitude of the zero vector \\(\\vec{0}\\)?", answer: "\\(0\\)" },
+      ],
       traps: [
         {
           title: "Parallel VECTORS vs collinear POINTS — different conditions",
@@ -352,6 +382,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "Collinear; \\(C\\) divides \\(AB\\) internally in ratio \\(3 : 1\\).",
       },
+      practiceSet: [
+        { prompt: "Coefficients in \\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0}\\) are \\(1, -3, 2\\). Collinear?", answer: "Yes", method: "coefficients sum to \\(0\\)" },
+        { prompt: "Coefficients \\(2, 1, 1\\). Collinear?", answer: "No", method: "sum \\(= 4 \\neq 0\\)" },
+        { prompt: "If \\(\\vec{c} = \\tfrac{1}{2}\\vec{a} + \\tfrac{1}{2}\\vec{b}\\), are \\(A, B, C\\) collinear?", answer: "Yes", method: "the two coefficients sum to \\(1\\)" },
+        { prompt: "Three points are collinear when one displacement is a ___ of another.", answer: "scalar multiple" },
+      ],
       pyqExampleId: "bf814f0f-d9fe-405d-92de-cc89ec533d10",
       traps: [
         {
@@ -416,6 +452,12 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{p} = 4\\hat{i} + \\hat{j}\\)",
       },
+      practiceSet: [
+        { prompt: "Midpoint of \\(A(2\\hat{i})\\) and \\(B(4\\hat{i})\\)?", answer: "\\(3\\hat{i}\\)", method: "\\((\\vec{a} + \\vec{b})/2\\)" },
+        { prompt: "\\(P\\) divides \\(A(\\vec{0})\\), \\(B(6\\hat{i})\\) internally \\(1:2\\). Find \\(\\vec{p}\\).", answer: "\\(2\\hat{i}\\)", method: "\\(\\tfrac{1\\cdot 6\\hat{i} + 2\\cdot \\vec{0}}{3}\\)" },
+        { prompt: "Internal-division denominator for ratio \\(m:n\\)?", answer: "\\(m + n\\)" },
+        { prompt: "External-division denominator for ratio \\(m:n\\)?", answer: "\\(m - n\\)" },
+      ],
       pyqExampleId: "5cc5d47f-69ab-4105-ad1b-a547313abb07",
       traps: [
         {

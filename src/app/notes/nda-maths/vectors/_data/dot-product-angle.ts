@@ -52,6 +52,12 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{a}\\cdot\\vec{b} = -3\\)",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a}\\cdot\\vec{b}\\) for \\(\\vec{a} = \\hat{i} + 2\\hat{j}\\), \\(\\vec{b} = 3\\hat{i} + \\hat{j}\\)?", answer: "\\(5\\)" },
+        { prompt: "\\(\\hat{i}\\cdot\\hat{j} = ?\\)", answer: "\\(0\\)", method: "perpendicular basis vectors" },
+        { prompt: "\\(\\hat{i}\\cdot\\hat{i} = ?\\)", answer: "\\(1\\)" },
+        { prompt: "\\(\\vec{a}\\cdot\\vec{b}\\) for \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{b} = \\hat{i} + \\hat{j} - \\hat{k}\\)?", answer: "\\(0\\)", method: "\\(2 - 1 - 1\\)" },
+      ],
       pyqExampleId: "3e90da64-69f7-4372-8c82-3889be25fffe",
       traps: [
         {
@@ -110,6 +116,12 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\lambda = \\dfrac{5}{2}\\)",
       },
+      practiceSet: [
+        { prompt: "Are \\(\\hat{i} + \\hat{j}\\) and \\(\\hat{i} - \\hat{j}\\) perpendicular?", answer: "Yes", method: "dot \\(= 0\\)" },
+        { prompt: "\\(\\lambda\\) for \\(\\vec{a} = \\hat{i} + \\lambda\\hat{j}\\), \\(\\vec{b} = 2\\hat{i} - \\hat{j}\\) perpendicular?", answer: "\\(2\\)", method: "\\(2 - \\lambda = 0\\)" },
+        { prompt: "Perpendicularity condition for \\(\\vec{a}, \\vec{b}\\)?", answer: "\\(\\vec{a}\\cdot\\vec{b} = 0\\)" },
+        { prompt: "Are \\(2\\hat{i} + 3\\hat{j}\\) and \\(3\\hat{i} - 2\\hat{j}\\) perpendicular?", answer: "Yes", method: "\\(6 - 6 = 0\\)" },
+      ],
       pyqExampleId: "40bc2170-f9a9-4afc-9aed-bbf011709b7c",
       traps: [
         {
@@ -171,6 +183,12 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\theta = \\dfrac{\\pi}{2}\\) (i.e. \\(90^\\circ\\))",
       },
+      practiceSet: [
+        { prompt: "Angle between \\(\\hat{i}\\) and \\(\\hat{j}\\)?", answer: "\\(90^\\circ\\)" },
+        { prompt: "\\(\\cos\\theta\\) for \\(\\vec{a}\\cdot\\vec{b} = 6\\), \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\)?", answer: "\\(\\tfrac{1}{2}\\)", method: "\\(6/(3\\cdot 4)\\)" },
+        { prompt: "Angle between \\(\\vec{a}\\) and \\(\\vec{a}\\)?", answer: "\\(0^\\circ\\)" },
+        { prompt: "If \\(\\cos\\theta < 0\\), the angle is?", answer: "obtuse" },
+      ],
       pyqExampleId: "3da05cd8-adbc-4ef7-bbd1-b60d37b4834c",
       traps: [
         {
@@ -230,6 +248,12 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
       },
+      practiceSet: [
+        { prompt: "Expand \\((\\vec{a} + \\vec{b})\\cdot(\\vec{a} + \\vec{b})\\).", answer: "\\(|\\vec{a}|^2 + 2\\,\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2\\)" },
+        { prompt: "Unit \\(\\vec{a}, \\vec{b}\\): write \\(|\\vec{a} - \\vec{b}|^2\\) in terms of \\(\\vec{a}\\cdot\\vec{b}\\).", answer: "\\(2 - 2\\,\\vec{a}\\cdot\\vec{b}\\)" },
+        { prompt: "Unit \\(\\vec{a}, \\vec{b}\\) with \\(|\\vec{a} + \\vec{b}|^2 = 3\\). Find \\(\\vec{a}\\cdot\\vec{b}\\).", answer: "\\(\\tfrac{1}{2}\\)", method: "\\(2 + 2\\,\\vec{a}\\cdot\\vec{b} = 3\\)" },
+        { prompt: "For a unit vector, \\(\\vec{a}\\cdot\\vec{a} = ?\\)", answer: "\\(1\\)" },
+      ],
       pyqExampleId: "d9b215a5-3a68-459f-acb4-f0c8f2c5aa49",
       traps: [
         {
@@ -289,6 +313,12 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(|3\\vec{a} - 4\\vec{b}| = 5\\)",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a}, \\vec{b}, \\vec{c}\\) mutually perpendicular unit vectors. \\(|\\vec{a} + \\vec{b} + \\vec{c}|\\)?", answer: "\\(\\sqrt{3}\\)" },
+        { prompt: "Perpendicular unit \\(\\vec{a}, \\vec{b}\\): \\(|\\vec{a} + \\vec{b}|\\)?", answer: "\\(\\sqrt{2}\\)" },
+        { prompt: "Orthonormal triple: \\(\\vec{a}\\cdot\\vec{b} = ?\\)", answer: "\\(0\\)" },
+        { prompt: "Perpendicular unit \\(\\vec{a}, \\vec{b}\\): \\(|3\\vec{a} + 4\\vec{b}|\\)?", answer: "\\(5\\)", method: "\\(\\sqrt{9 + 16}\\)" },
+      ],
       pyqExampleId: "9ade7e8b-141c-4e35-96d0-80cc338b424c",
       traps: [
         {

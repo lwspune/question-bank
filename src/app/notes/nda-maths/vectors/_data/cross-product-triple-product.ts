@@ -55,6 +55,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(-3\\,\\vec{a}\\times\\vec{b}\\)",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a}\\times\\vec{a} = ?\\)", answer: "\\(\\vec{0}\\)" },
+        { prompt: "\\(\\vec{a}\\times\\vec{b} = ?\\) in terms of \\(\\vec{b}\\times\\vec{a}\\).", answer: "\\(-\\vec{b}\\times\\vec{a}\\)" },
+        { prompt: "If \\(\\vec{a}\\times\\vec{b} = \\vec{0}\\) (both non-zero), the vectors are?", answer: "parallel" },
+        { prompt: "Is the cross product associative?", answer: "No" },
+      ],
       pyqExampleId: "8f4e3041-d0ac-4896-888b-0c3e8edf2416",
       traps: [
         {
@@ -115,6 +121,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "Area \\(= 7.5\\) square units",
       },
+      practiceSet: [
+        { prompt: "Area of the parallelogram on \\(\\vec{a}, \\vec{b}\\)?", answer: "\\(|\\vec{a}\\times\\vec{b}|\\)" },
+        { prompt: "\\(|\\vec{a}\\times\\vec{b}|\\) for \\(|\\vec{a}| = 2\\), \\(|\\vec{b}| = 3\\), angle \\(30^\\circ\\)?", answer: "\\(3\\)", method: "\\(2\\cdot 3\\cdot\\tfrac{1}{2}\\)" },
+        { prompt: "Triangle area with sides \\(\\vec{a}, \\vec{b}\\)?", answer: "\\(\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}|\\)" },
+        { prompt: "Lagrange: \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = ?\\)", answer: "\\(|\\vec{a}|^2|\\vec{b}|^2\\)" },
+      ],
       pyqExampleId: "50ec4797-d961-44e3-bc2a-f866aa9e95ef",
       traps: [
         {
@@ -176,6 +188,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\hat{n} = \\pm\\hat{k}\\)",
       },
+      practiceSet: [
+        { prompt: "Unit vector perpendicular to both \\(\\vec{a}, \\vec{b}\\)?", answer: "\\(\\pm\\tfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)" },
+        { prompt: "How many unit vectors are perpendicular to two non-parallel vectors?", answer: "two (opposite)" },
+        { prompt: "\\(\\hat{i}\\times\\hat{j} = ?\\)", answer: "\\(\\hat{k}\\)" },
+        { prompt: "Unit vector perpendicular to both \\(\\hat{i}\\) and \\(\\hat{j}\\)?", answer: "\\(\\pm\\hat{k}\\)" },
+      ],
       pyqExampleId: "b60f495b-8969-4983-9278-05af6ef8d00e",
       traps: [
         {
@@ -239,6 +257,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{M} = \\hat{i} - 2\\hat{j} + \\hat{k}\\)",
       },
+      practiceSet: [
+        { prompt: "Moment of force \\(\\vec{F}\\) acting at \\(P\\) about \\(O\\)?", answer: "\\(\\overrightarrow{OP}\\times\\vec{F}\\)" },
+        { prompt: "Is the moment \\(\\vec{r}\\times\\vec{F}\\) or \\(\\vec{F}\\times\\vec{r}\\)?", answer: "\\(\\vec{r}\\times\\vec{F}\\)" },
+        { prompt: "\\(\\overrightarrow{OP} = \\hat{i}\\), \\(\\vec{F} = \\hat{j}\\). Moment about \\(O\\)?", answer: "\\(\\hat{k}\\)", method: "\\(\\hat{i}\\times\\hat{j}\\)" },
+        { prompt: "Moment of a force about a point — vector or scalar?", answer: "vector" },
+      ],
       pyqExampleId: "20886e44-e7f6-4075-bee4-904c75029793",
       traps: [
         {
@@ -302,6 +326,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "Volume \\(= 2\\) cubic units",
       },
+      practiceSet: [
+        { prompt: "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = 0\\) means the vectors are?", answer: "coplanar" },
+        { prompt: "Volume of the parallelepiped on \\(\\vec{a}, \\vec{b}, \\vec{c}\\)?", answer: "\\(|[\\vec{a}\\,\\vec{b}\\,\\vec{c}]|\\)" },
+        { prompt: "\\([\\hat{i}\\,\\hat{j}\\,\\hat{k}] = ?\\)", answer: "\\(1\\)" },
+        { prompt: "Write the STP as a dot-cross: \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = ?\\)", answer: "\\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\)" },
+      ],
       pyqExampleId: "33491eff-866f-48f8-9244-f982244f9ed8",
       traps: [
         {
@@ -362,6 +392,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)",
       },
+      practiceSet: [
+        { prompt: "Is \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = [\\vec{b}\\,\\vec{c}\\,\\vec{a}]\\)?", answer: "Yes", method: "cyclic rotation" },
+        { prompt: "\\([\\vec{a}\\,\\vec{c}\\,\\vec{b}] = ?\\) in terms of \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\).", answer: "\\(-[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)", method: "one swap flips the sign" },
+        { prompt: "\\([\\vec{a}\\,\\vec{a}\\,\\vec{b}] = ?\\)", answer: "\\(0\\)", method: "repeated vector" },
+        { prompt: "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] + [\\vec{b}\\,\\vec{c}\\,\\vec{a}] + [\\vec{c}\\,\\vec{a}\\,\\vec{b}] = ?\\)", answer: "\\(3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)" },
+      ],
       pyqExampleId: "e3f7b99f-1721-4e19-a674-58538f43a82a",
       traps: [
         {
@@ -426,6 +462,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\hat{j}\\)",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = ?\\) (BAC-CAB)", answer: "\\((\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c}\\)" },
+        { prompt: "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) lies in the plane of?", answer: "\\(\\vec{b}\\) and \\(\\vec{c}\\)" },
+        { prompt: "\\(\\hat{i}\\times(\\hat{i}\\times\\hat{j}) = ?\\)", answer: "\\(-\\hat{j}\\)", method: "\\((\\hat{i}\\cdot\\hat{j})\\hat{i} - (\\hat{i}\\cdot\\hat{i})\\hat{j}\\)" },
+        { prompt: "Does BAC-CAB apply to \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\)?", answer: "No", method: "that's a scalar triple product" },
+      ],
       pyqExampleId: "946f44d7-3367-4879-a8f1-496b0ff8d88e",
       traps: [
         {

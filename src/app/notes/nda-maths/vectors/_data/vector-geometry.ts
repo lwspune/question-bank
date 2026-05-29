@@ -50,6 +50,12 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{g} = 2\\hat{i} + \\hat{j} + 2\\hat{k}\\), i.e. \\((2, 1, 2)\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = ?\\)", answer: "\\(\\vec{0}\\)" },
+        { prompt: "Centroid of \\(A(0,0)\\), \\(B(3,0)\\), \\(C(0,3)\\)?", answer: "\\((1, 1)\\)", method: "average of the vertices" },
+        { prompt: "Centroid formula for vertices \\(\\vec{a}, \\vec{b}, \\vec{c}\\)?", answer: "\\(\\tfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3}\\)" },
+        { prompt: "The centroid divides each median in ratio?", answer: "\\(2:1\\)" },
+      ],
       pyqExampleId: "e5219e5f-57ad-4606-8d5d-5b4f3f57c485",
       traps: [
         {
@@ -108,6 +114,12 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{AC} = 4\\hat{i} + 3\\hat{j}\\)",
       },
+      practiceSet: [
+        { prompt: "In parallelogram \\(ABCD\\), \\(\\vec{AB}\\) equals which side?", answer: "\\(\\vec{DC}\\)" },
+        { prompt: "Diagonal \\(\\vec{AC}\\) in terms of the sides?", answer: "\\(\\vec{AB} + \\vec{AD}\\)" },
+        { prompt: "Fourth vertex \\(D\\) of parallelogram \\(ABCD\\)?", answer: "\\(\\vec{a} + \\vec{c} - \\vec{b}\\)" },
+        { prompt: "Do the diagonals of a parallelogram bisect each other?", answer: "Yes" },
+      ],
       pyqExampleId: "fd094a97-71e2-4df2-9844-d448aef38e6f",
       traps: [
         {
@@ -165,6 +177,12 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
       },
+      practiceSet: [
+        { prompt: "Side vector at vertex \\(C\\): \\(\\vec{CA} = ?\\)", answer: "\\(\\vec{a} - \\vec{c}\\)" },
+        { prompt: "\\(\\cos C\\) formula at vertex \\(C\\)?", answer: "\\(\\tfrac{\\vec{CA}\\cdot\\vec{CB}}{|\\vec{CA}||\\vec{CB}|}\\)" },
+        { prompt: "Angle between \\(\\hat{i} + \\hat{j}\\) and \\(\\hat{i}\\)?", answer: "\\(45^\\circ\\)", method: "\\(\\cos\\theta = 1/\\sqrt{2}\\)" },
+        { prompt: "Angle between \\(\\vec{a}\\) and \\(-\\vec{a}\\)?", answer: "\\(180^\\circ\\)" },
+      ],
       pyqExampleId: "77319cff-1210-425f-9d1c-c42ddbcac754",
       traps: [
         {
@@ -222,6 +240,12 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "Yes — \\(\\vec{PR}\\cdot\\vec{QS} = 0\\), so \\(\\vec{PR} \\perp \\vec{QS}\\).",
       },
+      practiceSet: [
+        { prompt: "Parallelogram law: \\(|\\vec{a} + \\vec{b}|^2 + |\\vec{a} - \\vec{b}|^2 = ?\\)", answer: "\\(2(|\\vec{a}|^2 + |\\vec{b}|^2)\\)" },
+        { prompt: "\\(\\vec{PQ} \\perp \\vec{RS}\\) iff?", answer: "\\(\\vec{PQ}\\cdot\\vec{RS} = 0\\)" },
+        { prompt: "Expand \\(|\\vec{q} - \\vec{p}|^2\\).", answer: "\\(|\\vec{q}|^2 - 2\\,\\vec{p}\\cdot\\vec{q} + |\\vec{p}|^2\\)" },
+        { prompt: "\\(\\vec{PQ} \\parallel \\vec{RS}\\) iff \\(\\vec{PQ}\\times\\vec{RS} = ?\\)", answer: "\\(\\vec{0}\\)" },
+      ],
       pyqExampleId: "1815d449-8aa2-486f-8eff-8d12762246f5",
       traps: [
         {
