@@ -53,61 +53,57 @@ All NDA cleanup complete. Phase B/C/D template fully stable.
 
 ## Content quality audits (data work)
 
-Per-chapter sweep for LaTeX formatting, broken math, hallucinated solutions, and **wrong correct-answer keys**. The *primary* value of this audit is the last item — LaTeX prettification is a cleanup side-effect. Two chapters audited so far (2026-05-23), and **9 of 48 audited questions across both had the wrong option flagged `is_correct=true`** in the DB (19%). On `/browse` click-to-reveal these were showing the wrong "Correct" badge to students until the flip shipped.
+Per-chapter sweep for LaTeX formatting, broken math, hallucinated solutions, and **wrong correct-answer keys**. The *primary* value of this audit is the last item — LaTeX prettification is a cleanup side-effect. Audit workflow is now stable: paired skills `/latex-cleanup` (mechanical, ASCII-safe) and `/solution-cleanup` (judgment-heavy, key flips need user approval), with autonomous gdrive PDF fetch for stem/option verification and screenshot fallback for diagram-dependent rows. See [[gdrive-pdf-fetch]] and [[unicode-in-solution-rewrites]] for the supporting workflow memories.
 
-**Completed (see CLAUDE.md decisions log entries):**
+**Done — NDA bank-wide closed at probe-flagged surface (2026-05-27):**
 
-| Chapter | q | Flagged | Fixed | Wrong-key flips | Held for PDF |
-|---|---|---|---|---|---|
-| NDA Maths · Matrices & Determinants | 170 | 8 | 8 | 1 (Q23 Apr 2025 NDA-2) | 0 |
-| NDA Maths · Probability | 162 | 41 | 40 | 10 + 1 misprint-noted | 1 (Q115 Apr 2018 NDA-1 — stem extraction-corrupted) |
+| Subject | q | Wrong-key flips | Preserved paper defects | Notes |
+|---|---|---|---|---|
+| NDA Maths (full per-chapter) | 2,160 | ~82 | 2 (Functions Q77, IT Q42) | All 31 chapters individually audited |
+| NDA English | 900 | 11 | 0 | Sentence Rearrangement dominated |
+| NDA Physics | 449 | 10 | 1 (Work Q123) | First diagram-fallback usage (Q70 circuit + Q132 B-field) |
+| NDA Geography | 345 | 8 | 0 | 1 judgment-flag flip (Q142 forest order — option set imperfect) |
+| NDA Chemistry | 262 | 5 | 0 | Q140 self-inflicted unicode regression caught + fixed |
+| NDA History | 260 | 3 | 1 (Ancient Q85 Senguttuvan) | First non-Maths preserved-defect |
+| NDA Current Affairs | 180 | 4 | 0 | Combined-pass with Polity + Economics |
+| NDA Biology | 190 | 1 | 0 | Cleanest subject (0.5% rate) |
+| NDA Polity | 90 | 0 | 1 (Q150 NCAP options all seem valid) | Combined-pass |
+| NDA Economics | 24 | 2 | 0 | Combined-pass |
+| **NDA total** | **4,860** | **~126** | **5** | All 10 subjects probe-closed; ~51% of bank |
 
-The audit has **three probes**, each cheap to run per chapter. **Run Probe 1 first** — wrong-key questions are the load-bearing class.
+Per-subject narratives + per-row decisions are in CLAUDE.md "Decisions log" 2026-05-27 entries. Per-chapter / per-flip register in [[content-audit-progress]].
 
-### Probe 1 — wrong correct-answer key (highest value)
+### Pending — MHT-CET (4,718 q · 79 chapters)
 
-Run each flagged question through derivation against the DB-stored stem. If the math gives a different option than `is_correct=true`, that's the catch. Don't trust the existing solution prose — it often hallucinates a "matches option X" line for the wrong X. Confidence comes from re-deriving against the stem only.
+| Subject | q | Chapters |
+|---|---|---|
+| MHT-CET Maths | 1,588 | 26 |
+| MHT-CET Physics | 1,577 | 24 |
+| MHT-CET Chemistry | 1,553 | 29 |
 
-Strong tells in the existing solution prose:
-- **`REVIEW:` / `TODO:` / `FIXME:` / `XXX:` markers** — extraction LLM hedge. Probability had 17 of these in 162 q (10%). High hit-rate for either a wrong key OR a stem-extraction error.
-- **Hedge phrases**: `is inconsistent`, `reading the equation as`, `from the visible structure`, `if \(\Delta < 0\)`, `Common mistake: misreading`, `cannot be determined from`. M&D Q23 had `is inconsistent` and was a wrong-key case.
-- **"Matches option X"** where X differs from the actual keyed correct — caught 4 of 10 Probability mismatches.
-- **Mid-derivation correction or alternative reading** appearing after the main computation — the LLM was uncertain.
+**Prerequisite for MHT-CET audit:** the gdrive `PYQPs/MHT-CET/` folder is enumerated (2026-05-27) with year sub-folders 2021–2025, but it's lightly populated — most years have `MHT_CET_{year}_QP.docx` + `_AK.docx` (annual), and 2025 has only 1 of ~14 per-shift PDFs (`MHT_CET_2025_14th_May_Shift_2_QP.pdf`). Compared with NDA gdrive (22 PDFs covering full years 2015–2026), MHT-CET source coverage is sparser. The audit can proceed where DB rows have year/shift metadata that matches an available source file; rows from unavailable shifts (~90% of 2025) will need to defer or rely on internal-consistency derivation only.
 
-If derivation matches the keyed option: pure LaTeX-cleanup. If not: surface to user with the source-paper image, decide whether to flip the key (most cases) or to note an NDA-paper misprint (one case: Q117 Apr 2023 NDA-1 — computed 32/70, key has 33/70, off by 1, none of the four options is 32/70).
+### Probes (stable workflow)
 
-### Probe 2 — broken stem LaTeX
+The audit uses two skills with probes baked in. Don't re-implement.
 
-Two classes seen so far:
-- `\begin{...matrix}` env with rows of different `&` counts (rows of unequal column count). M&D Q9: row 3 had 4 entries vs others' 3.
-- Multi-factor matrix products with dimensionally inconsistent factors. M&D Q23: `4×3` × `2×?` = `2×1` is impossible.
-- Logically-inconsistent constraints in the stem (Probability Q115 Apr 2018: `2P(A)=3P(B)` AND `P(A)<P(B)` forces `P(B)<0`).
+- **`/latex-cleanup <chapter>`** — Phase 1 probes: `unicode_in_qtext/solution/options`, `unbalanced_qtext/solution/options`, `pipe_cond_*`, `english_math_words_*`, `matches_option_disagrees_with_key`. Phase 4 applies Bucket A (mechanical) automatically; Bucket B (wrong_key / REVIEW / hedge / plain-text-heavy) defers.
+- **`/solution-cleanup <chapter>`** — Phase 1 probes (content-correctness only, formatting assumed clean): `matches_option_disagrees_with_key`, `review_markers`, `hedge_phrases`, `plain_text_heavy_sol`, `broken_matrix_env`. Phase 3 STOPS on every DISAGREE / PRINTED-PAPER-ERROR / STEM-BROKEN row for user approval before flipping `is_correct`.
 
-Stems that look broken often have **fabricated solutions** that pretend the broken math works (M&D Q23 prose: "reading the equation as a `2×2` system from the visible structure"). Always read the source PDF before patching a broken stem.
+The 6-row PDF-vs-bank extraction-error taxonomy ([[gdrive-pdf-fetch]]) covers the resolution shapes: option-text / stem-text / context-text / set-context-overspecification / dropped-sign / preserved-paper-defect.
 
-### Probe 3 — unicode math outside `\(...\)`
+### Patterns observed across the NDA bank-wide audit
 
-Grep for `[αβγδεθλμπρσφψωΩΓΔΘΛΣΦΨ√∞∑∏∫±×÷≠≤≥∈∉⊂⊃∪∩²³⁴⁵⁶⁷⁸⁹⁰¹✓✗⇒→⟹⇔]` in `text`, `solution`, and `options.text`. Plus pipe-conditional pattern `P\(\s*\w+\s*\|\s*\w+` after masking out math zones — catches `P(A|B)` written in prose. Mechanical fixes; lowest priority. Last to ship per chapter.
+- **Wrong-key rate correlates with derivation complexity.** Math-derivation subjects (Maths 3.8%, Physics 2.2%) significantly higher than pure-recall subjects (Biology 0.5%, Polity 0%, History 1.2%). LLM extraction handles named facts better than algebraic chains.
+- **Combined-pass for small subjects** works. Polity + Current Affairs + Economics (294 q across 13 chapters) ran in one consolidated DO block on 2026-05-27 — saves the per-subject latex+solution cleanup round-trip. Recommended pattern when individual subjects are <100 q.
+- **Diagram-dependent rows need screenshot fallback.** gdrive PDF OCR captures text but not spatial info (arrow directions, circuit topology). Two NDA Physics rows (Q70 circuit + Q132 B-field) required user-pasted screenshots after gdrive returned only text-around-the-figure. Rule embedded in `/solution-cleanup` Phase 3.
+- **Self-inflicted unicode regression risk.** When rewriting solution prose, NEVER write unicode math chars (`× ÷ ≈ ✓ ✗ → ² ³` etc.) — they'll be caught by next `/latex-cleanup`. Lesson recorded in [[unicode-in-solution-rewrites]] after the Q140 Chemistry incident.
+- **Cluster pattern by paper-batch.** Wrong-keys often cluster within a single paper sitting (Statistics 2017-Sep all 5 keyed wrong, Trig Id 2020-Apr 6 of 6). Likely an extraction-prompt batch effect — worth flagging at upload-audit time on new MHT-CET batches.
+- **Stealth wrong-key gap.** When bank's solution prose is mathematically wrong but lands on the same wrong value as the stored key, NO probe flags it. Only close-reading every flagged solution catches these (e.g. Definite Integration Q96 on 2026-05-27). For MHT-CET audits, plan to close-read every solution that surfaces for ANY reason, not just trust the matches-option probe.
 
-### Scope
+### Future hardening
 
-Bank has 132 chapters across 11 cleaned subjects + 2 pending. After M&D and Probability, **30 NDA Maths chapters remain** (~1828 q). Expected highest-leverage next candidates in descending q-count order: **Statistics** (160 q — much already touched via `/notes` editorial pass, expect lower hit-rate), **Trigonometric Identities** (138), **Functions** (109), **Vectors** (97), **Lines** (97), **3D Geometry** (89), **Sequence & Series** (89), then PART B subjects after NDA Maths is done.
-
-Don't assume a chapter is clean just because the bank size is small — the wrong-key rate has been 13–25% in the two chapters audited.
-
-### Workflow
-
-Inline chapter-by-chapter in chat (per [[taxonomy-inline-iteration]]). Suggested tier order:
-1. **Tier 1**: stems that render broken (unbalanced delimiters, malformed matrix envs). Always need PDF.
-2. **Tier 2**: solutions with explicit `REVIEW:` markers that flag uncertainty. PDF needed for any whose REVIEW disagrees with the DB key.
-3. **Tier 3**: solutions with `REVIEW:` prefix but no explicit doubt — derive each from scratch; flag any whose computed answer ≠ keyed option.
-4. **Tier 4**: pure LaTeX/unicode cleanup. No key risk if derivation agrees with key, but still verify each before shipping (caught 2 more wrong-key cases in Probability Tier 4).
-
-Recompute `content_hash` whenever the question text OR the correct-label changes (solution-only edits don't affect the hash). Recipe verified in the M&D pilot: `sha256(trim+collapse(text) + '\n' + sorted_normalized_options.join('\n') + '\n' + upper(correct_label))`. Use SQL `digest()` from `pgcrypto` with `COLLATE "C"` on the option sort.
-
-### Future hardening (not blocking the audit)
-
-After ~5 chapters audited, the failure-mode heuristics should be stable enough to lift Probe 1 + 2 + 3 into a lint script (`npm run content:lint`?). Gates pre-push hook so future uploads can't ship PUBLIC with REVIEW markers, mismatched matrix dimensions, or unicode math outside `\(...\)`. **The wrong-key class is not auto-detectable** — that always needs human derivation against the stem — but the other two classes are mechanical.
+`npm run content:lint` script that gates the pre-push hook for new uploads (mostly the formatting probes — wrong-key is not auto-detectable without human derivation). Still deferred — but the audit-skill probes are stable enough that lifting them into a script is mechanical. ~2 hours when there's appetite to wire it up.
 
 ---
 
