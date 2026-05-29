@@ -9,6 +9,7 @@ import FormulaBlock from "./FormulaBlock";
 import WorkedExampleAuthored from "./WorkedExampleAuthored";
 import FadedExampleCard from "./FadedExampleCard";
 import SelfCheckCard from "./SelfCheckCard";
+import PracticeSet from "./PracticeSet";
 import TrapCallout from "./TrapCallout";
 import RegressionLineFit from "./visualizations/RegressionLineFit";
 import VarianceSquaredDeviations from "./visualizations/VarianceSquaredDeviations";
@@ -128,6 +129,13 @@ export default function ConceptUnitCard({
       {concept.selfCheckExample && (
         <div className="mt-4">
           <SelfCheckCard example={concept.selfCheckExample} />
+        </div>
+      )}
+
+      {/* Level 1 mastery reps — short practice problems, per-rep reveal. */}
+      {concept.practiceSet && concept.practiceSet.length > 0 && (
+        <div className="mt-4">
+          <PracticeSet problems={concept.practiceSet} />
         </div>
       )}
 

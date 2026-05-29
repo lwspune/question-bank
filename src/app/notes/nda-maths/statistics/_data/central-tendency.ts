@@ -249,6 +249,28 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\bar{x} = 10.5\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Mean of \\(3, 5, 7\\)?",
+          answer: "\\(5\\)",
+          method: "sum \\(15 \\div 3\\)",
+        },
+        {
+          prompt: "Mean of \\(10, 20, 30, 40\\)?",
+          answer: "\\(25\\)",
+          method: "sum \\(100 \\div 4\\)",
+        },
+        {
+          prompt: "Mean of \\(2, 4, 4, 6, 9\\)?",
+          answer: "\\(5\\)",
+          method: "sum \\(25 \\div 5\\)",
+        },
+        {
+          prompt: "Mean of \\(7, 7, 7, 7\\)?",
+          answer: "\\(7\\)",
+          method: "all values equal, so the mean equals the value",
+        },
+      ],
       pyqExampleId: "78e0ac87-d443-49ae-860b-09a2a4185027",
       traps: [
         {

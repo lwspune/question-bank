@@ -381,7 +381,7 @@ describe("splitNoteIntoSlides", () => {
     expect(slides.some((s) => s.kind === "self-check")).toBe(false);
   });
 
-  it("full per-concept order with every optional field set: intro → viz → authored → faded → self-check → pyq → trap → concept-drill", () => {
+  it("full per-concept order with every optional field set: intro → viz → authored → faded → self-check → practice-set → pyq → trap → concept-drill", () => {
     const slides = splitNoteIntoSlides(
       baseNote({
         concepts: [
@@ -394,6 +394,7 @@ describe("splitNoteIntoSlides", () => {
               hiddenStepIndexes: [],
             },
             selfCheckExample: { prompt: "s", steps: ["s"], answer: "a" },
+            practiceSet: [{ prompt: "p", answer: "a" }],
             pyqExampleId: "pyq-1",
             traps: [{ title: "T", body: "b" }],
           }),
@@ -410,9 +411,58 @@ describe("splitNoteIntoSlides", () => {
       "authored-example",
       "faded-example",
       "self-check",
+      "practice-set",
       "pyq-example",
       "trap",
       "concept-drill",
     ]);
+  });
+
+  it("emits a practice-set slide after the self-check when practiceSet is non-empty", () => {
+    const problems = [
+      { prompt: "P1", answer: "A1", method: "m1" },
+      { prompt: "P2", answer: "A2" },
+    ];
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          minimalConcept({
+            selfCheckExample: { prompt: "s", steps: ["s"], answer: "a" },
+            practiceSet: problems,
+          }),
+        ],
+      }),
+      NO_DRILLS
+    );
+    const selfIdx = slides.findIndex((s) => s.kind === "self-check");
+    expect(slides[selfIdx + 1]).toEqual({
+      kind: "practice-set",
+      conceptName: "Concept 1",
+      problems,
+    });
+  });
+
+  it("emits practice-set directly after authored-example when faded + self-check are absent", () => {
+    const problems = [{ prompt: "P1", answer: "A1" }];
+    const slides = splitNoteIntoSlides(
+      baseNote({ concepts: [minimalConcept({ practiceSet: problems })] }),
+      NO_DRILLS
+    );
+    const authoredIdx = slides.findIndex((s) => s.kind === "authored-example");
+    expect(slides[authoredIdx + 1]).toEqual({
+      kind: "practice-set",
+      conceptName: "Concept 1",
+      problems,
+    });
+  });
+
+  it("omits practice-set slide when practiceSet is unset or empty", () => {
+    const without = splitNoteIntoSlides(baseNote(), NO_DRILLS);
+    const withEmpty = splitNoteIntoSlides(
+      baseNote({ concepts: [minimalConcept({ practiceSet: [] })] }),
+      NO_DRILLS
+    );
+    expect(without.some((s) => s.kind === "practice-set")).toBe(false);
+    expect(withEmpty.some((s) => s.kind === "practice-set")).toBe(false);
   });
 });

@@ -48,6 +48,22 @@ export type FadedExample = AuthoredExample & {
 };
 
 /**
+ * A single Level 1 mastery rep — a short, procedurally-simple practice
+ * problem for drilling one concept to fluency. Authored (not bank-derived)
+ * because per-concept EASY bank coverage is too thin and mastery reps are
+ * best when procedurally near-identical. Lighter than AuthoredExample: an
+ * answer plus an optional one-line method, no full step list.
+ */
+export type PracticeProblem = {
+  /** Short question. KaTeX-aware. */
+  prompt: string;
+  /** Final answer, revealed on click. KaTeX-aware. */
+  answer: string;
+  /** Optional one-line method/hint shown with the answer. KaTeX-aware. */
+  method?: string;
+};
+
+/**
  * The stable identifier of an interactive visualization component rendered
  * inline within a concept unit. The slug maps 1:1 to a client island under
  * `src/app/notes/_components/visualizations/`. Locked union — adding a new
@@ -110,6 +126,13 @@ export type ConceptUnit = {
    * independent ramp.
    */
   selfCheckExample?: AuthoredExample;
+  /**
+   * Optional set of Level 1 mastery reps — short, procedurally-simple
+   * problems for drilling the concept to fluency. Rendered as a compact
+   * "Practice — Level 1" block after the self-check, each with per-rep
+   * click-to-reveal.
+   */
+  practiceSet?: PracticeProblem[];
   /**
    * Optional inline visualization that explains the concept dynamically.
    * Rendered as a client island immediately after the concept intro. The
@@ -185,6 +208,11 @@ export type Slide =
       kind: "self-check";
       conceptName: string;
       example: AuthoredExample;
+    }
+  | {
+      kind: "practice-set";
+      conceptName: string;
+      problems: PracticeProblem[];
     }
   | {
       kind: "pyq-example";
