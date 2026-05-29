@@ -12,11 +12,12 @@ import { useState } from "react";
  */
 
 const W = 360;
-const H = 280;
+const H = 320;
 const OX = W / 2;
 const OY = H / 2;
-const SCALE = 15; // px per unit
-const AXIS = 8; // axis half-range in units
+// Scaled so the resultant a+b (components up to ±16) stays on canvas.
+const SCALE = 9; // px per unit
+const AXIS = 8; // slider half-range in units
 
 const sx = (x: number) => OX + x * SCALE;
 const sy = (y: number) => OY - y * SCALE;
@@ -33,8 +34,8 @@ export default function VectorAddition() {
   const sumMag = Math.hypot(a1, a2) + Math.hypot(b1, b2);
 
   return (
-    <div className="rounded-lg border border-emerald-200 bg-emerald-50/30 dark:border-emerald-900/60 dark:bg-emerald-950/15 p-4">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+    <div className="rounded-lg border border-indigo-200 bg-indigo-50/30 dark:border-indigo-900/60 dark:bg-indigo-950/15 p-4 max-w-md mx-auto">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">
         Visualization · add two vectors tip-to-tail
       </p>
 
@@ -56,9 +57,9 @@ export default function VectorAddition() {
           </marker>
         </defs>
 
-        {/* Axes */}
-        <line x1={sx(-AXIS)} y1={sy(0)} x2={sx(AXIS)} y2={sy(0)} stroke="currentColor" className="text-muted-foreground/30" />
-        <line x1={sx(0)} y1={sy(-AXIS)} x2={sx(0)} y2={sy(AXIS)} stroke="currentColor" className="text-muted-foreground/30" />
+        {/* Axes (span the full canvas so the resultant never runs off a short axis) */}
+        <line x1={0} y1={OY} x2={W} y2={OY} stroke="currentColor" className="text-muted-foreground/30" />
+        <line x1={OX} y1={0} x2={OX} y2={H} stroke="currentColor" className="text-muted-foreground/30" />
 
         {/* Parallelogram (faint): O, A, R, B */}
         <polygon

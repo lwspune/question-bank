@@ -13,10 +13,11 @@ import { useState } from "react";
  */
 
 const W = 360;
-const H = 280;
+const H = 320;
 const OX = W / 2;
 const OY = H / 2;
-const SCALE = 15;
+// Scaled so the far parallelogram vertex a+b (components up to ±16) stays on canvas.
+const SCALE = 9;
 const AXIS = 8;
 
 const sx = (x: number) => OX + x * SCALE;
@@ -35,8 +36,8 @@ export default function CrossProductArea() {
     cross > 0 ? "out of the page" : cross < 0 ? "into the page" : "zero (parallel)";
 
   return (
-    <div className="rounded-lg border border-emerald-200 bg-emerald-50/30 dark:border-emerald-900/60 dark:bg-emerald-950/15 p-4">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+    <div className="rounded-lg border border-indigo-200 bg-indigo-50/30 dark:border-indigo-900/60 dark:bg-indigo-950/15 p-4 max-w-md mx-auto">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">
         Visualization · the parallelogram area is |a × b|
       </p>
 
@@ -55,9 +56,9 @@ export default function CrossProductArea() {
           </marker>
         </defs>
 
-        {/* Axes */}
-        <line x1={sx(-AXIS)} y1={sy(0)} x2={sx(AXIS)} y2={sy(0)} stroke="currentColor" className="text-muted-foreground/30" />
-        <line x1={sx(0)} y1={sy(-AXIS)} x2={sx(0)} y2={sy(AXIS)} stroke="currentColor" className="text-muted-foreground/30" />
+        {/* Axes (span the full canvas so the far vertex never runs off a short axis) */}
+        <line x1={0} y1={OY} x2={W} y2={OY} stroke="currentColor" className="text-muted-foreground/30" />
+        <line x1={OX} y1={0} x2={OX} y2={H} stroke="currentColor" className="text-muted-foreground/30" />
 
         {/* Parallelogram O, A, A+B, B */}
         <polygon

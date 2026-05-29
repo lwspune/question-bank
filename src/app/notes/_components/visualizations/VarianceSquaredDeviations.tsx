@@ -27,8 +27,9 @@ function xToSvg(x: number) {
 }
 
 // One svg-pixel per data unit for the "side" of the squared-deviation box.
-// (Scaled so the largest square fits above the number line in the H above.)
-const SIDE_PX_PER_UNIT = 14;
+// Sized so the largest possible square (|deviation| up to ~16 over [0,20])
+// still fits above the number line without clipping the viewBox top.
+const SIDE_PX_PER_UNIT = 10;
 
 export default function VarianceSquaredDeviations() {
   const [values, setValues] = useState<number[]>(INITIAL_VALUES);
@@ -49,8 +50,8 @@ export default function VarianceSquaredDeviations() {
   const meanX = xToSvg(mean);
 
   return (
-    <div className="rounded-lg border border-emerald-200 bg-emerald-50/30 dark:border-emerald-900/60 dark:bg-emerald-950/15 p-4">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+    <div className="rounded-lg border border-indigo-200 bg-indigo-50/30 dark:border-indigo-900/60 dark:bg-indigo-950/15 p-4 max-w-md mx-auto">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">
         Visualization · move the points, watch the squared deviations
       </p>
 

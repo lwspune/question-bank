@@ -35,14 +35,14 @@ export default function VennTwoEvents() {
   const exactlyOne = round2(aOnly + bOnly);
 
   return (
-    <div className="rounded-lg border border-indigo-200 bg-indigo-50/30 dark:border-indigo-900/60 dark:bg-indigo-950/15 p-4">
+    <div className="rounded-lg border border-indigo-200 bg-indigo-50/30 dark:border-indigo-900/60 dark:bg-indigo-950/15 p-4 max-w-md mx-auto">
       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">
         Visualization · two events in the sample space
       </p>
 
       <svg
         viewBox={`0 0 ${W} ${H}`}
-        className="block w-full h-auto max-w-[360px] mx-auto"
+        className="block w-full h-auto"
         role="img"
         aria-label="Venn diagram of two overlapping events inside the sample space"
       >
