@@ -119,6 +119,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
     {
       slug: "neither-and-complement-of-union",
       name: "\"Neither\" and the complement of a union",
+      visualizationSlug: "neither-complement-union",
       intuition:
         "\"Neither A nor B\" is just the complement of \"A or B\". So compute the union, then subtract from 1. " +
         "De Morgan's law makes this exact: the outside of \\(A \\cup B\\) is \\(A' \\cap B'\\).",
@@ -234,6 +235,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
     {
       slug: "exhaustive-events",
       name: "Exhaustive events (and probabilities that sum to 1)",
+      visualizationSlug: "exhaustive-events-tiling",
       intuition:
         "A set of events is exhaustive when together they cover the whole sample space — one of them must occur. " +
         "If they are also mutually exclusive, their probabilities add up to exactly 1, which turns a ratio between them into a solvable equation.",

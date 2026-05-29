@@ -227,6 +227,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     {
       slug: "arithmetic-mean-raw",
       name: "Arithmetic Mean (raw data)",
+      visualizationSlug: "mean-balance-point",
       intuition:
         "The average. Add up every value, then split the total equally among " +
         "all the observations. It is the single most-used measure when the " +
@@ -632,6 +633,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     {
       slug: "median",
       name: "Median — Middle Value",
+      visualizationSlug: "median-middle-value",
       intuition:
         "Sort the data and pick the middle. Half the values lie below the median, " +
         "half lie above. Because it only cares about position, the median ignores " +
@@ -689,6 +691,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     {
       slug: "mode",
       name: "Mode — Most Frequent Value",
+      visualizationSlug: "mode-bar-plot",
       intuition:
         "The value that occurs most often. The mode is the only measure of " +
         "central tendency that makes sense for purely categorical data (colours, " +

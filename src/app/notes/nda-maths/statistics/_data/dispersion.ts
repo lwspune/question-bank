@@ -14,6 +14,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
     {
       slug: "mean-deviation",
       name: "Mean Deviation",
+      visualizationSlug: "mean-deviation-spread",
       intuition:
         "Average distance between each observation and a chosen centre — almost always the mean or the median. It is the simplest measure of spread, " +
         "but its absolute-value formula makes algebra clunky, which is why SD is preferred in higher statistics.",

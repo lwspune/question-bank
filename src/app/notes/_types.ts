@@ -81,7 +81,27 @@ export type VisualizationSlug =
   // Probability — batch 2
   | "exclusive-vs-independent"
   | "conditional-restrict"
-  | "set-operations-venn";
+  | "set-operations-venn"
+  // Statistics — batch 3
+  | "median-middle-value"
+  | "mode-bar-plot"
+  | "mean-balance-point"
+  | "mean-deviation-spread"
+  | "identify-regression-line"
+  | "angle-between-regression-lines"
+  // Vectors — batch 3
+  | "component-form-basis"
+  | "orthonormal-triple"
+  | "torque-moment"
+  | "position-displacement"
+  | "magnitude-right-triangle"
+  | "scalar-multiply"
+  | "dot-product-work"
+  // Probability — batch 3
+  | "sample-space-event"
+  | "coin-toss-tree"
+  | "neither-complement-union"
+  | "exhaustive-events-tiling";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

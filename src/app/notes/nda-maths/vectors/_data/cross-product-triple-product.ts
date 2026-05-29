@@ -217,6 +217,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
     {
       slug: "moment-of-force",
       name: "Moment of a force (torque)",
+      visualizationSlug: "torque-moment",
       intuition:
         "The moment of a force about a point \\(O\\) measures how strongly the force tends to rotate the body about \\(O\\). " +
         "It is the cross product of the position vector (from \\(O\\) to the point of application) with the force itself. " +

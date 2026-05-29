@@ -16,6 +16,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
     {
       slug: "what-is-probability",
       name: "What is probability? (Random experiments, sample space, events)",
+      visualizationSlug: "sample-space-event",
       intuition:
         "A random experiment is any process whose individual result you cannot predict in advance, even though you know every result that COULD occur — tossing a coin, rolling a die, drawing a card. " +
         "Each possible result is an outcome; the set of all outcomes is the sample space; any collection of outcomes you care about is an event. " +
@@ -310,6 +311,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
     {
       slug: "probability-with-coins",
       name: "Probability with coins",
+      visualizationSlug: "coin-toss-tree",
       intuition:
         "Tossing a fair coin \\(n\\) times gives \\(2^n\\) equally-likely ordered sequences. " +
         "For a biased coin with \\(P(\\text{head})=p\\), multiply \\(p\\) and \\(1-p\\) along the sequence. " +

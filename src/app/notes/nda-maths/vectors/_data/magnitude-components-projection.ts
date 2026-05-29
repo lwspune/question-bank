@@ -15,6 +15,7 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
     {
       slug: "magnitude-and-distance",
       name: "Magnitude of a vector and distance between two points",
+      visualizationSlug: "magnitude-right-triangle",
       intuition:
         "The magnitude of a vector is its length — extended Pythagoras applied to its components. The distance between two points is the magnitude of the displacement vector joining them, which is also why \\(\\overrightarrow{AB}=\\vec{b}-\\vec{a}\\): subtract the tail's position vector from the head's.",
       definition:

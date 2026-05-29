@@ -15,6 +15,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
     {
       slug: "dot-product-evaluation-and-work",
       name: "Dot product — components form and work done",
+      visualizationSlug: "dot-product-work",
       intuition:
         "The dot product of two vectors is a single number that measures how much they overlap. " +
         "Compute it by multiplying corresponding components and summing — no angles needed. " +
@@ -275,6 +276,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
     {
       slug: "unit-vector-orthogonal-triple-configurations",
       name: "Unit vectors, orthogonal triples, and decomposition",
+      visualizationSlug: "orthonormal-triple",
       intuition:
         "Three mutually-perpendicular unit vectors form an orthonormal basis — pairwise dot products are zero, self dot products are one. " +
         "Whenever a problem says \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are unit and mutually perpendicular, you can compute any linear combination's magnitude or dot in two lines. " +

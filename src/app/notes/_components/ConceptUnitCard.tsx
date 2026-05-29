@@ -33,6 +33,23 @@ import ParallelogramDiagonals from "./visualizations/ParallelogramDiagonals";
 import ExclusiveVsIndependent from "./visualizations/ExclusiveVsIndependent";
 import ConditionalRestrict from "./visualizations/ConditionalRestrict";
 import SetOperationsVenn from "./visualizations/SetOperationsVenn";
+import MedianMiddleValue from "./visualizations/MedianMiddleValue";
+import ModeBarPlot from "./visualizations/ModeBarPlot";
+import MeanBalancePoint from "./visualizations/MeanBalancePoint";
+import MeanDeviationSpread from "./visualizations/MeanDeviationSpread";
+import IdentifyRegressionLine from "./visualizations/IdentifyRegressionLine";
+import AngleBetweenRegressionLines from "./visualizations/AngleBetweenRegressionLines";
+import ComponentFormBasis3D from "./visualizations/ComponentFormBasis3D";
+import OrthogonalTriple3D from "./visualizations/OrthogonalTriple3D";
+import TorqueMoment3D from "./visualizations/TorqueMoment3D";
+import PositionDisplacementVectors from "./visualizations/PositionDisplacementVectors";
+import MagnitudeRightTriangle from "./visualizations/MagnitudeRightTriangle";
+import ScalarMultiplication from "./visualizations/ScalarMultiplication";
+import DotProductWork from "./visualizations/DotProductWork";
+import SampleSpaceEvent from "./visualizations/SampleSpaceEvent";
+import CoinTossTree from "./visualizations/CoinTossTree";
+import NeitherComplementUnion from "./visualizations/NeitherComplementUnion";
+import ExhaustiveEvents from "./visualizations/ExhaustiveEvents";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -81,6 +98,40 @@ function renderVisualization(slug: VisualizationSlug) {
       return <ConditionalRestrict />;
     case "set-operations-venn":
       return <SetOperationsVenn />;
+    case "median-middle-value":
+      return <MedianMiddleValue />;
+    case "mode-bar-plot":
+      return <ModeBarPlot />;
+    case "mean-balance-point":
+      return <MeanBalancePoint />;
+    case "mean-deviation-spread":
+      return <MeanDeviationSpread />;
+    case "identify-regression-line":
+      return <IdentifyRegressionLine />;
+    case "angle-between-regression-lines":
+      return <AngleBetweenRegressionLines />;
+    case "component-form-basis":
+      return <ComponentFormBasis3D />;
+    case "orthonormal-triple":
+      return <OrthogonalTriple3D />;
+    case "torque-moment":
+      return <TorqueMoment3D />;
+    case "position-displacement":
+      return <PositionDisplacementVectors />;
+    case "magnitude-right-triangle":
+      return <MagnitudeRightTriangle />;
+    case "scalar-multiply":
+      return <ScalarMultiplication />;
+    case "dot-product-work":
+      return <DotProductWork />;
+    case "sample-space-event":
+      return <SampleSpaceEvent />;
+    case "coin-toss-tree":
+      return <CoinTossTree />;
+    case "neither-complement-union":
+      return <NeitherComplementUnion />;
+    case "exhaustive-events-tiling":
+      return <ExhaustiveEvents />;
   }
 }
 

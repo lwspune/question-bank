@@ -54,6 +54,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     {
       slug: "position-and-displacement-vectors",
       name: "Position vectors and displacement vectors",
+      visualizationSlug: "position-displacement",
       intuition:
         "To do geometry with vectors we need to anchor them. Pick any point in space and call it the **origin** \\(O\\). Every other point \\(P\\) is then represented by its **position vector** \\(\\vec{OP}\\) — the arrow from \\(O\\) to \\(P\\). " +
         "Once points have position vectors, geometry becomes algebra: the arrow from \\(A\\) to \\(B\\) (its **displacement vector**) is just the difference of their position vectors: \\(\\vec{AB} = \\vec{b} - \\vec{a}\\). " +
@@ -164,6 +165,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     {
       slug: "scalar-multiplication",
       name: "Scalar multiplication",
+      visualizationSlug: "scalar-multiply",
       intuition:
         "Multiplying a vector by a real number scales its length. If \\(k > 0\\), \\(k\\vec{v}\\) points the SAME way as \\(\\vec{v}\\) but is \\(k\\) times as long. " +
         "If \\(k < 0\\), \\(k\\vec{v}\\) points the OPPOSITE way and has length \\(|k|\\) times the original. " +
@@ -216,6 +218,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     {
       slug: "component-form-and-basis",
       name: "Component form: the î, ĵ, k̂ basis",
+      visualizationSlug: "component-form-basis",
       intuition:
         "Pick three mutually-perpendicular unit vectors \\(\\hat{i}, \\hat{j}, \\hat{k}\\) along the positive \\(x, y, z\\) axes. " +
         "Every 3-D vector can be uniquely written as \\(\\vec{v} = v_1\\hat{i} + v_2\\hat{j} + v_3\\hat{k}\\) — " +

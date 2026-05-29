@@ -213,6 +213,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
     {
       slug: "identifying-regression-line",
       name: "Identifying Which Regression Line is Which",
+      visualizationSlug: "identify-regression-line",
       intuition:
         "When NDA gives you two equations and doesn't label them, you must figure out which is \\(y\\) on \\(x\\) and which is \\(x\\) on \\(y\\). " +
         "Use the inequality \\(b_{yx}\\,b_{xy} \\leq 1\\) as a sieve: there are only two possible pairings; one will satisfy the inequality, the other won't.",
@@ -266,6 +267,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
     {
       slug: "angle-between-regression-lines",
       name: "Angle Between the Two Regression Lines",
+      visualizationSlug: "angle-between-regression-lines",
       intuition:
         "The two regression lines coincide when correlation is perfect and stand " +
         "perpendicular when there is no correlation. In between, they make an acute " +
