@@ -10,6 +10,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
+import { formatProvenance } from "@/lib/questions/formatProvenance";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -24,8 +25,14 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
   let admin: SupabaseClient;
   let orgId: string;
   let userId: string;
+  let examName: string | null;
   let withContextId: string;
   let withoutContextId: string;
+
+  const QNUM = "42";
+  const PYEAR = 2024;
+  const PMONTH = "Apr";
+  const PNOTE = "NDA 1";
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -47,7 +54,8 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
     orgId = org!.id;
     await admin.from("org_members").insert({ org_id: orgId, user_id: userId, role: "ADMIN" });
 
-    const { data: ex } = await admin.from("exams").select("id").limit(1).single();
+    const { data: ex } = await admin.from("exams").select("id, name").limit(1).single();
+    examName = ex!.name;
     const { data: sb } = await admin.from("subjects").select("id").eq("exam_id", ex!.id).limit(1).single();
     const { data: ch } = await admin.from("chapters").select("id").eq("subject_id", sb!.id).limit(1).single();
 
@@ -64,6 +72,10 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
         content_hash: `worked-ctx-with-${RUN_ID}`,
         visibility: "PUBLIC",
         created_by: userId,
+        question_number: QNUM,
+        pyq_year: PYEAR,
+        pyq_month: PMONTH,
+        pyq_note: PNOTE,
       })
       .select("id")
       .single();
@@ -104,5 +116,25 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
   it("returns null `context` for a standalone question", async () => {
     const [row] = await loadWorkedExamples(admin, [withoutContextId]);
     expect(row.context).toBeNull();
+  });
+
+  it("composes the provenance bracket from the PYQ metadata + exam", async () => {
+    const [row] = await loadWorkedExamples(admin, [withContextId]);
+    const expected = formatProvenance({
+      examName,
+      questionNumber: QNUM,
+      pyqYear: PYEAR,
+      pyqMonth: PMONTH,
+      pyqNote: PNOTE,
+    });
+    expect(expected).not.toBeNull();
+    expect(row.provenance).toBe(expected);
+    expect(row.provenance).toContain(`Q${QNUM}`);
+    expect(row.provenance).toContain(String(PYEAR));
+  });
+
+  it("returns null `provenance` when the question has no PYQ metadata", async () => {
+    const [row] = await loadWorkedExamples(admin, [withoutContextId]);
+    expect(row.provenance).toBeNull();
   });
 });

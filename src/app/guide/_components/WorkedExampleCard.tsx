@@ -67,6 +67,16 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
         )}
       >
         <KatexRenderer text={example.text} />
+        {example.provenance && (
+          <p
+            className={cn(
+              "mt-2 font-sans tabular-nums text-muted-foreground",
+              presentMode ? "text-base" : "text-xs"
+            )}
+          >
+            [{example.provenance}]
+          </p>
+        )}
       </div>
 
       {/* Options reveal */}
