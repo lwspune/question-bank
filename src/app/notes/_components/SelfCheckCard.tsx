@@ -10,12 +10,11 @@ type Props = {
 };
 
 /**
- * The third rung of the worked → faded → independent ramp.
+ * The independent-attempt rung after the worked example.
  *
  * Student sees only the prompt and a "Show solution" button. Encourages a
  * full independent attempt before checking. Sky/cyan accent to read as
- * "checkpoint" and stay distinct from the indigo faded card above and the
- * neutral worked card above that.
+ * "checkpoint" and stay distinct from the neutral worked card above it.
  */
 export default function SelfCheckCard({ example }: Props) {
   const [showSolution, setShowSolution] = useState(false);

@@ -254,16 +254,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\bar{x} = 8\\)",
       },
-      fadedExample: {
-        prompt: "Find the arithmetic mean of \\(5, 8, 11, 14, 17\\).",
-        steps: [
-          "Add up all the values: \\(5 + 8 + 11 + 14 + 17 = 55\\).",
-          "Count the observations: \\(n = 5\\).",
-          "Apply the formula: \\(\\bar{x} = \\dfrac{55}{5} = 11\\).",
-        ],
-        answer: "\\(\\bar{x} = 11\\)",
-        hiddenStepIndexes: [0],
-      },
       selfCheckExample: {
         prompt: "Find the arithmetic mean of \\(3, 6, 9, 12, 15, 18\\).",
         steps: [
@@ -337,18 +327,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\bar{x} = 5.4\\)",
       },
-      fadedExample: {
-        prompt:
-          "Find the mean for \\(x = 1, 2, 3, 4\\) with frequencies " +
-          "\\(f = 3, 5, 7, 5\\).",
-        steps: [
-          "Compute \\(\\sum f_i = 3 + 5 + 7 + 5 = 20\\).",
-          "Compute \\(\\sum f_i x_i = 1{\\cdot}3 + 2{\\cdot}5 + 3{\\cdot}7 + 4{\\cdot}5 = 3 + 10 + 21 + 20 = 54\\).",
-          "Apply: \\(\\bar{x} = 54 / 20 = 2.7\\).",
-        ],
-        answer: "\\(\\bar{x} = 2.7\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Find the mean for \\(x = 10, 20, 30, 40\\) with frequencies " +
@@ -407,18 +385,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Compute: \\(\\bar{y} = 36 + 5 = 41\\).",
         ],
         answer: "\\(\\bar{y} = 41\\)",
-      },
-      fadedExample: {
-        prompt:
-          "The mean of 25 observations is 8. If each observation is multiplied by " +
-          "4 and then 3 is added, find the new mean.",
-        steps: [
-          "Identify \\(a = 4,\\ b = 3\\).",
-          "Apply: \\(\\bar{y} = a\\bar{x} + b = 4 \\cdot 8 + 3\\).",
-          "Compute: \\(\\bar{y} = 32 + 3 = 35\\).",
-        ],
-        answer: "\\(\\bar{y} = 35\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -484,18 +450,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Therefore \\(M_{\\text{new}} = 15 + 1 = 16\\).",
         ],
         answer: "\\(M_{\\text{new}} = 16\\)",
-      },
-      fadedExample: {
-        prompt:
-          "The mean of 15 observations is 20. A value recorded as 12 should have " +
-          "been 27. Find the corrected mean.",
-        steps: [
-          "Swap: wrong \\(x = 12\\), correct \\(y = 27\\), \\(n = 15\\).",
-          "Apply: \\(M_{\\text{new}} = 20 + \\dfrac{27 - 12}{15} = 20 + \\dfrac{15}{15}\\).",
-          "Compute: \\(M_{\\text{new}} = 20 + 1 = 21\\).",
-        ],
-        answer: "\\(M_{\\text{new}} = 21\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -568,17 +522,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "Mean \\(= 137.5\\)",
       },
-      fadedExample: {
-        prompt:
-          "Find the mean of \\(5^2, 6^2, 7^2, \\ldots, 10^2\\).",
-        steps: [
-          "Number of terms: \\(10 - 5 + 1 = 6\\).",
-          "Sum as a difference: \\(\\sum_{k=1}^{10} k^2 - \\sum_{k=1}^{4} k^2 = \\dfrac{10 \\cdot 11 \\cdot 21}{6} - \\dfrac{4 \\cdot 5 \\cdot 9}{6} = 385 - 30 = 355\\).",
-          "Mean: \\(355/6\\).",
-        ],
-        answer: "Mean \\(= 355/6 \\approx 59.17\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "Find the arithmetic mean of the first \\(10\\) natural numbers.",
         steps: [
@@ -648,18 +591,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Compute: \\(M_{12} = 38\\) years.",
         ],
         answer: "\\(M_{12} = 38\\) years",
-      },
-      fadedExample: {
-        prompt:
-          "Mean weight of 40 boys is 50 kg; mean weight of 60 girls is 45 kg. " +
-          "Find the combined mean weight.",
-        steps: [
-          "Group totals: \\(40 \\cdot 50 = 2000\\), \\(60 \\cdot 45 = 2700\\).",
-          "Apply: \\(M_{12} = \\dfrac{2000 + 2700}{40 + 60} = \\dfrac{4700}{100}\\).",
-          "Result: \\(M_{12} = 47\\) kg.",
-        ],
-        answer: "\\(M_{12} = 47\\) kg",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -731,16 +662,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M = 7\\)",
       },
-      fadedExample: {
-        prompt: "Find the median of \\(12, 5, 9, 17, 8, 14, 11, 6\\).",
-        steps: [
-          "Sort ascending: \\(5, 6, 8, 9, 11, 12, 14, 17\\).",
-          "\\(n = 8\\) (even), so median is the average of the 4th and 5th: \\((9 + 11)/2\\).",
-          "Median \\(= 10\\).",
-        ],
-        answer: "\\(M = 10\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "Find the median of \\(2, 9, 4, 11, 6, 15, 7\\).",
         steps: [
@@ -798,16 +719,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(M_0 = 5\\)",
       },
-      fadedExample: {
-        prompt: "Find the mode of \\(6, 9, 6, 8, 6, 11, 9, 6, 12, 8\\).",
-        steps: [
-          "Tally: \\(6\\) appears 4 times; \\(8\\) appears 2 times; \\(9\\) appears 2 times; others once.",
-          "Highest frequency is 4, only for the value \\(6\\).",
-          "Mode \\(= 6\\).",
-        ],
-        answer: "\\(M_0 = 6\\)",
-        hiddenStepIndexes: [0],
-      },
       selfCheckExample: {
         prompt: "Find the mode of \\(3, 5, 7, 5, 9, 3, 5, 11, 3, 3\\).",
         steps: [
@@ -861,16 +772,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{GM} = 6\\)",
       },
-      fadedExample: {
-        prompt: "Find the geometric mean of \\(2\\) and \\(32\\).",
-        steps: [
-          "Multiply: \\(2 \\times 32 = 64\\).",
-          "\\(n\\)-th root with \\(n = 2\\): \\(\\sqrt{64}\\).",
-          "\\(\\text{GM} = 8\\).",
-        ],
-        answer: "\\(\\text{GM} = 8\\)",
-        hiddenStepIndexes: [0],
-      },
       selfCheckExample: {
         prompt: "Find the geometric mean of \\(4, 6, 9\\).",
         steps: [
@@ -923,16 +824,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Apply the formula: \\(\\text{HM} = \\dfrac{2}{5/12} = 2 \\times \\dfrac{12}{5} = \\dfrac{24}{5} = 4.8\\).",
         ],
         answer: "\\(\\text{HM} = 4.8\\)",
-      },
-      fadedExample: {
-        prompt: "Find the harmonic mean of \\(3\\) and \\(6\\).",
-        steps: [
-          "Sum of reciprocals: \\(\\dfrac{1}{3} + \\dfrac{1}{6} = \\dfrac{2}{6} + \\dfrac{1}{6} = \\dfrac{3}{6} = \\dfrac{1}{2}\\).",
-          "\\(n = 2\\).",
-          "\\(\\text{HM} = 2 / (1/2) = 4\\).",
-        ],
-        answer: "\\(\\text{HM} = 4\\)",
-        hiddenStepIndexes: [0],
       },
       selfCheckExample: {
         prompt: "Find the harmonic mean of \\(2\\) and \\(8\\).",
@@ -1000,18 +891,6 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           "Plugging in \\(n = 5,\\ \\bar{x} = 10\\) gives \\(50 - 50 = 0\\).",
         ],
         answer: "Sum of deviations \\(= 0\\)",
-      },
-      fadedExample: {
-        prompt:
-          "If the mean of 8 numbers is 25, find the sum of deviations of the " +
-          "numbers from their mean.",
-        steps: [
-          "Use the identity: \\(\\sum (x_i - \\bar{x}) = 0\\) for any dataset.",
-          "Why? \\(\\sum(x_i - \\bar{x}) = \\sum x_i - n\\bar{x} = n\\bar{x} - n\\bar{x} = 0\\).",
-          "So the answer is \\(0\\) regardless of the specific value of \\(n\\) or \\(\\bar{x}\\).",
-        ],
-        answer: "Sum of deviations \\(= 0\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:

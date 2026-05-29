@@ -42,18 +42,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(r_{UV} = -0.6\\)",
       },
-      fadedExample: {
-        prompt:
-          "If \\(r\\) between \\(x\\) and \\(y\\) is \\(0.8\\), find \\(r\\) between " +
-          "\\(U = 3x - 2\\) and \\(V = 5y + 4\\).",
-        steps: [
-          "Identify \\(a = 3,\\ c = 5\\). Shifts \\(-2, 4\\) ignored.",
-          "\\(\\text{sign}(ac) = \\text{sign}(3 \\cdot 5) = +1\\).",
-          "\\(r_{UV} = +1 \\times 0.8 = 0.8\\).",
-        ],
-        answer: "\\(r_{UV} = 0.8\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "If \\(r\\) between \\(x\\) and \\(y\\) is \\(-0.4\\), find \\(r\\) between " +
@@ -119,18 +107,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           "Simplify: \\(y = \\dfrac{x + 1}{4} + 1 = \\dfrac{x + 5}{4}\\).",
         ],
         answer: "\\(y = \\dfrac{x + 5}{4}\\)  or equivalently  \\(4y - x - 5 = 0\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Find the regression line of \\(y\\) on \\(x\\) passing through the two " +
-          "points \\((1, 2)\\) and \\((5, 4)\\).",
-        steps: [
-          "Two points \\(\\Rightarrow r = \\pm 1\\); the line is the line joining them.",
-          "Slope: \\(b_{yx} = (4 - 2)/(5 - 1) = 2/4 = 1/2\\).",
-          "Point-slope through \\((1, 2)\\): \\(y - 2 = \\tfrac{1}{2}(x - 1)\\), so \\(y = \\dfrac{x + 3}{2}\\).",
-        ],
-        answer: "\\(y = \\dfrac{x + 3}{2}\\) or \\(2y - x - 3 = 0\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -200,17 +176,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(r = -\\sqrt{\\dfrac{2}{3}}\\)",
       },
-      fadedExample: {
-        prompt:
-          "Given \\(b_{yx} = 0.8\\) and \\(b_{xy} = 0.45\\), find \\(r\\).",
-        steps: [
-          "Sanity check: product \\(= 0.8 \\times 0.45 = 0.36 \\leq 1\\) ✓.",
-          "\\(r = \\pm\\sqrt{b_{yx} \\cdot b_{xy}} = \\pm\\sqrt{0.36} = \\pm 0.6\\).",
-          "Both slopes are positive, so \\(r > 0\\); \\(r = 0.6\\).",
-        ],
-        answer: "\\(r = 0.6\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Given \\(b_{yx} = -1.2\\) and \\(b_{xy} = -0.3\\), find \\(r\\).",
@@ -267,18 +232,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           "Conclusion: the second line is \\(y\\) on \\(x\\) (\\(b_{yx} = 2/7\\)); the first is \\(x\\) on \\(y\\) (\\(b_{xy} = 3\\)).",
         ],
         answer: "\\(b_{yx} = \\dfrac{2}{7},\\ b_{xy} = 3\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Two lines of regression are \\(2x + 3y - 1 = 0\\) and \\(4x + 7y - 2 = 0\\). " +
-          "Identify which is \\(y\\) on \\(x\\) and find both slopes.",
-        steps: [
-          "Pairing A: first as \\(y\\) on \\(x \\Rightarrow b_{yx} = -2/3\\); second as \\(x\\) on \\(y \\Rightarrow b_{xy} = -7/4\\). Product \\(= 14/12 = 7/6 > 1\\) ✗.",
-          "Pairing B (swap): first as \\(x\\) on \\(y \\Rightarrow b_{xy} = -3/2\\); second as \\(y\\) on \\(x \\Rightarrow b_{yx} = -4/7\\). Product \\(= 12/14 = 6/7 \\leq 1\\) ✓.",
-          "Conclusion: the second line is \\(y\\) on \\(x\\) (\\(b_{yx} = -4/7\\)); the first is \\(x\\) on \\(y\\) (\\(b_{xy} = -3/2\\)).",
-        ],
-        answer: "\\(b_{yx} = -\\dfrac{4}{7},\\ b_{xy} = -\\dfrac{3}{2}\\)",
-        hiddenStepIndexes: [0],
       },
       selfCheckExample: {
         prompt:
@@ -343,19 +296,6 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
           "Simplify: \\(\\tan\\theta = \\dfrac{1}{6} \\cdot \\dfrac{3}{4} = \\dfrac{1}{8}\\).",
         ],
         answer: "\\(\\tan\\theta = \\dfrac{1}{8}\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Two lines of regression are \\(x + y - 3 = 0\\) and \\(2x + y - 5 = 0\\). " +
-          "Find \\(\\tan\\theta\\) of the acute angle between them.",
-        steps: [
-          "Line 1: \\(y = -x + 3 \\Rightarrow m_1 = -1\\).",
-          "Line 2: \\(y = -2x + 5 \\Rightarrow m_2 = -2\\).",
-          "Apply: \\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1 m_2}\\right| = \\left|\\dfrac{-1 - (-2)}{1 + (-1)(-2)}\\right| = \\left|\\dfrac{1}{3}\\right|\\).",
-          "\\(\\tan\\theta = \\dfrac{1}{3}\\).",
-        ],
-        answer: "\\(\\tan\\theta = \\dfrac{1}{3}\\)",
-        hiddenStepIndexes: [2],
       },
       selfCheckExample: {
         prompt:

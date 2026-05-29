@@ -43,17 +43,6 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(W = 9\\) units of work",
       },
-      fadedExample: {
-        prompt:
-          "A force \\(\\vec{F} = 2\\hat{i} + \\hat{j} - \\hat{k}\\) displaces a particle from \\(A(1, 0, 2)\\) to \\(B(3, 2, 1)\\). Find the work done.",
-        steps: [
-          "Displacement: \\(\\vec{d} = \\overrightarrow{AB} = (3-1)\\hat{i} + (2-0)\\hat{j} + (1-2)\\hat{k} = 2\\hat{i} + 2\\hat{j} - \\hat{k}\\).",
-          "\\(W = \\vec{F}\\cdot\\vec{d} = 2\\cdot 2 + 1\\cdot 2 + (-1)(-1) = 4 + 2 + 1\\).",
-          "\\(W = 7\\).",
-        ],
-        answer: "\\(W = 7\\) units of work",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Evaluate \\(\\vec{a}\\cdot\\vec{b}\\) for \\(\\vec{a} = 2\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{j} - \\hat{k}\\).",
@@ -111,17 +100,6 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "Set equal to zero: \\(4\\lambda - 16 = 0 \\;\\Rightarrow\\; \\lambda = 4\\).",
         ],
         answer: "\\(\\lambda = 4\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Find \\(\\lambda\\) so that \\(\\vec{a} = 2\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\lambda\\hat{j} - \\hat{k}\\) are perpendicular.",
-        steps: [
-          "Perpendicular means \\(\\vec{a}\\cdot\\vec{b} = 0\\).",
-          "\\(\\vec{a}\\cdot\\vec{b} = 2\\cdot 1 + (-1)\\cdot\\lambda + 3\\cdot(-1) = 2 - \\lambda - 3 = -1 - \\lambda\\).",
-          "Set \\(-1 - \\lambda = 0 \\Rightarrow \\lambda = -1\\).",
-        ],
-        answer: "\\(\\lambda = -1\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -184,16 +162,6 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
       },
-      fadedExample: {
-        prompt: "Find the angle between \\(\\vec{a} = (1, 1, 0)\\) and \\(\\vec{b} = (1, 0, 1)\\).",
-        steps: [
-          "Dot product: \\(\\vec{a}\\cdot\\vec{b} = 1\\cdot 1 + 1\\cdot 0 + 0\\cdot 1 = 1\\).",
-          "Magnitudes: \\(|\\vec{a}| = \\sqrt{2}\\), \\(|\\vec{b}| = \\sqrt{2}\\).",
-          "\\(\\cos\\theta = \\dfrac{1}{\\sqrt{2}\\cdot\\sqrt{2}} = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
-        ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "Find the angle between \\(\\vec{a} = \\hat{i} + \\hat{j}\\) and \\(\\vec{b} = \\hat{i} - \\hat{j}\\).",
         steps: [
@@ -251,17 +219,6 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "Since \\(|\\vec{a}|=|\\vec{b}|=1\\): \\(\\cos\\theta = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
         ],
         answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
-      },
-      fadedExample: {
-        prompt:
-          "If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\) and \\(|\\vec{a} + \\vec{b}| = \\sqrt{37}\\), find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
-        steps: [
-          "Expand: \\(|\\vec{a} + \\vec{b}|^2 = |\\vec{a}|^2 + 2(\\vec{a}\\cdot\\vec{b}) + |\\vec{b}|^2 = 9 + 2(\\vec{a}\\cdot\\vec{b}) + 16\\).",
-          "Set equal to 37: \\(25 + 2(\\vec{a}\\cdot\\vec{b}) = 37\\), so \\(\\vec{a}\\cdot\\vec{b} = 6\\).",
-          "\\(\\cos\\theta = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|} = \\dfrac{6}{3\\cdot 4} = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
-        ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60°\\))",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -322,17 +279,6 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
           "So \\(|\\vec{A}|^2 = 3\\), giving \\(|\\vec{A}| = \\sqrt{3}\\).",
         ],
         answer: "\\(|\\vec{A}| = \\sqrt{3}\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Let \\(\\vec{a}, \\vec{b}, \\vec{c}\\) be three mutually perpendicular unit vectors and \\(\\vec{A} = 2\\vec{a} + \\vec{b} - 2\\vec{c}\\). Find \\(|\\vec{A}|\\).",
-        steps: [
-          "Expand \\(|\\vec{A}|^2 = \\vec{A}\\cdot\\vec{A} = (2\\vec{a} + \\vec{b} - 2\\vec{c})\\cdot(2\\vec{a} + \\vec{b} - 2\\vec{c})\\).",
-          "Self-dots: \\(4|\\vec{a}|^2 + |\\vec{b}|^2 + 4|\\vec{c}|^2 = 4 + 1 + 4 = 9\\). All cross-dots vanish by mutual perpendicularity.",
-          "\\(|\\vec{A}|^2 = 9\\), so \\(|\\vec{A}| = 3\\).",
-        ],
-        answer: "\\(|\\vec{A}| = 3\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:

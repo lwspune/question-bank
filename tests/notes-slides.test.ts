@@ -284,7 +284,7 @@ describe("splitNoteIntoSlides", () => {
     ]);
   });
 
-  // ───── M1 additions: visualization, faded-example, self-check ─────
+  // ───── M1 additions: visualization, self-check ─────
 
   it("emits a visualization slide right after concept-intro when visualizationSlug is set", () => {
     const slides = splitNoteIntoSlides(
@@ -308,59 +308,7 @@ describe("splitNoteIntoSlides", () => {
     expect(slides.some((s) => s.kind === "visualization")).toBe(false);
   });
 
-  it("emits a faded-example slide right after the authored example when fadedExample is set", () => {
-    const faded = {
-      prompt: "Faded p",
-      steps: ["S1", "S2"],
-      answer: "A",
-      hiddenStepIndexes: [1],
-    };
-    const slides = splitNoteIntoSlides(
-      baseNote({
-        concepts: [minimalConcept({ fadedExample: faded })],
-      }),
-      NO_DRILLS
-    );
-    const authoredIdx = slides.findIndex((s) => s.kind === "authored-example");
-    expect(slides[authoredIdx + 1]).toEqual({
-      kind: "faded-example",
-      conceptName: "Concept 1",
-      example: faded,
-    });
-  });
-
-  it("omits faded-example slide when fadedExample is unset", () => {
-    const slides = splitNoteIntoSlides(baseNote(), NO_DRILLS);
-    expect(slides.some((s) => s.kind === "faded-example")).toBe(false);
-  });
-
-  it("emits self-check after the faded example when both fadedExample + selfCheckExample are set", () => {
-    const selfCheck = { prompt: "s", steps: ["s"], answer: "a" };
-    const slides = splitNoteIntoSlides(
-      baseNote({
-        concepts: [
-          minimalConcept({
-            fadedExample: {
-              prompt: "f",
-              steps: ["s"],
-              answer: "a",
-              hiddenStepIndexes: [],
-            },
-            selfCheckExample: selfCheck,
-          }),
-        ],
-      }),
-      NO_DRILLS
-    );
-    const fadedIdx = slides.findIndex((s) => s.kind === "faded-example");
-    expect(slides[fadedIdx + 1]).toEqual({
-      kind: "self-check",
-      conceptName: "Concept 1",
-      example: selfCheck,
-    });
-  });
-
-  it("emits self-check directly after authored-example when fadedExample is absent", () => {
+  it("emits self-check directly after the authored example when selfCheckExample is set", () => {
     const selfCheck = { prompt: "s", steps: ["s"], answer: "a" };
     const slides = splitNoteIntoSlides(
       baseNote({
@@ -381,18 +329,12 @@ describe("splitNoteIntoSlides", () => {
     expect(slides.some((s) => s.kind === "self-check")).toBe(false);
   });
 
-  it("full per-concept order with every optional field set: intro → viz → authored → faded → self-check → practice-set → pyq → trap → concept-drill", () => {
+  it("full per-concept order with every optional field set: intro → viz → authored → self-check → practice-set → pyq → trap → concept-drill", () => {
     const slides = splitNoteIntoSlides(
       baseNote({
         concepts: [
           minimalConcept({
             visualizationSlug: "histogram-bin-slider",
-            fadedExample: {
-              prompt: "f",
-              steps: ["s"],
-              answer: "a",
-              hiddenStepIndexes: [],
-            },
             selfCheckExample: { prompt: "s", steps: ["s"], answer: "a" },
             practiceSet: [{ prompt: "p", answer: "a" }],
             pyqExampleId: "pyq-1",
@@ -409,7 +351,6 @@ describe("splitNoteIntoSlides", () => {
       "concept-intro",
       "visualization",
       "authored-example",
-      "faded-example",
       "self-check",
       "practice-set",
       "pyq-example",
@@ -442,7 +383,7 @@ describe("splitNoteIntoSlides", () => {
     });
   });
 
-  it("emits practice-set directly after authored-example when faded + self-check are absent", () => {
+  it("emits practice-set directly after authored-example when self-check is absent", () => {
     const problems = [{ prompt: "P1", answer: "A1" }];
     const slides = splitNoteIntoSlides(
       baseNote({ concepts: [minimalConcept({ practiceSet: problems })] }),

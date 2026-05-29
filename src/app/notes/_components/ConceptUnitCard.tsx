@@ -7,7 +7,6 @@ import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import type { ConceptUnit } from "@/app/notes/_types";
 import FormulaBlock from "./FormulaBlock";
 import WorkedExampleAuthored from "./WorkedExampleAuthored";
-import FadedExampleCard from "./FadedExampleCard";
 import SelfCheckCard from "./SelfCheckCard";
 import PracticeSet from "./PracticeSet";
 import TrapCallout from "./TrapCallout";
@@ -50,10 +49,10 @@ type Props = {
    */
   drillQuestionIds: string[];
   /**
-   * When true, the practice rungs (faded example + self-check + Level 1
-   * reps) are tucked behind one collapsed disclosure instead of stacked
-   * inline — cuts the always-on height while keeping the teaching half
-   * (intuition → formula → worked → traps) visible. Prototype flag.
+   * When true, the practice rungs (self-check + Level 1 reps) are tucked
+   * behind one collapsed disclosure instead of stacked inline — cuts the
+   * always-on height while keeping the teaching half (intuition → formula
+   * → worked → traps) visible. Prototype flag.
    */
   collapsePractice?: boolean;
 };
@@ -74,7 +73,6 @@ export default function ConceptUnitCard({
   collapsePractice = false,
 }: Props) {
   const practiceParts: string[] = [];
-  if (concept.fadedExample) practiceParts.push("guided example");
   if (concept.selfCheckExample) practiceParts.push("self-check");
   if (concept.practiceSet && concept.practiceSet.length > 0)
     practiceParts.push(`${concept.practiceSet.length} quick reps`);
@@ -82,11 +80,6 @@ export default function ConceptUnitCard({
 
   const practiceBlocks = (
     <>
-      {concept.fadedExample && (
-        <div className="mt-4">
-          <FadedExampleCard example={concept.fadedExample} />
-        </div>
-      )}
       {concept.selfCheckExample && (
         <div className="mt-4">
           <SelfCheckCard example={concept.selfCheckExample} />
@@ -153,9 +146,8 @@ export default function ConceptUnitCard({
         <WorkedExampleAuthored example={concept.authoredExample} />
       </div>
 
-      {/* Practice rungs — faded example + self-check + Level 1 reps.
-          Collapsed behind one disclosure when collapsePractice is set,
-          otherwise stacked inline (current default). */}
+      {/* Practice rungs — self-check + Level 1 reps. Collapsed behind one
+          disclosure when collapsePractice is set, otherwise stacked inline. */}
       {hasPractice &&
         (collapsePractice ? (
           <details className="group mt-6 rounded-lg border border-violet-200 dark:border-violet-900/60 bg-violet-50/30 dark:bg-violet-950/15">

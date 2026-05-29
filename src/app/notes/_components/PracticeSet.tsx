@@ -16,8 +16,8 @@ type Props = {
  * one-line method. Per-rep reveal (not reveal-all) so each is a genuine
  * attempt-then-check.
  *
- * Violet accent keeps it distinct from the worked (neutral), faded
- * (indigo) and self-check (sky) cards above it.
+ * Violet accent keeps it distinct from the worked (neutral) and
+ * self-check (sky) cards above it.
  */
 export default function PracticeSet({ problems }: Props) {
   const [revealed, setRevealed] = useState<Set<number>>(new Set());

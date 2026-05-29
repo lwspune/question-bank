@@ -46,16 +46,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
       },
-      fadedExample: {
-        prompt: "Express \\((\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b})\\) in terms of \\(\\vec{a}\\times\\vec{b}\\).",
-        steps: [
-          "Distribute: \\((\\vec{a}+\\vec{b})\\times(\\vec{a}-\\vec{b}) = \\vec{a}\\times\\vec{a} - \\vec{a}\\times\\vec{b} + \\vec{b}\\times\\vec{a} - \\vec{b}\\times\\vec{b}\\).",
-          "Drop \\(\\vec{a}\\times\\vec{a} = \\vec{b}\\times\\vec{b} = \\vec{0}\\); apply \\(\\vec{b}\\times\\vec{a} = -\\vec{a}\\times\\vec{b}\\): result \\(= -\\vec{a}\\times\\vec{b} - \\vec{a}\\times\\vec{b}\\).",
-          "\\(= -2\\,\\vec{a}\\times\\vec{b}\\).",
-        ],
-        answer: "\\((\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b}) = -2\\,\\vec{a}\\times\\vec{b}\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "Express \\((2\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b})\\) in terms of \\(\\vec{a}\\times\\vec{b}\\).",
         steps: [
@@ -115,17 +105,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
           "Solve: \\(|\\vec{b}|^2 = 9\\), hence \\(|\\vec{b}| = 3\\).",
         ],
         answer: "\\(|\\vec{b}| = 3\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Given \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = 100\\) and \\(|\\vec{a}| = 5\\), find \\(|\\vec{b}|\\).",
-        steps: [
-          "Lagrange identity: \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2\\,|\\vec{b}|^2\\).",
-          "So \\(100 = 25\\,|\\vec{b}|^2\\), giving \\(|\\vec{b}|^2 = 4\\).",
-          "\\(|\\vec{b}| = 2\\).",
-        ],
-        answer: "\\(|\\vec{b}| = 2\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -188,17 +167,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\hat{n} = \\pm\\dfrac{1}{\\sqrt{3}}(\\hat{i}+\\hat{j}-\\hat{k})\\)",
       },
-      fadedExample: {
-        prompt:
-          "Find a unit vector perpendicular to both \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\hat{j} - \\hat{k}\\).",
-        steps: [
-          "Cross product: \\(\\vec{a}\\times\\vec{b} = (1\\cdot(-1) - 1\\cdot 1)\\hat{i} - (1\\cdot(-1) - 1\\cdot 1)\\hat{j} + (1\\cdot 1 - 1\\cdot 1)\\hat{k} = -2\\hat{i} + 2\\hat{j}\\).",
-          "Magnitude: \\(|\\vec{a}\\times\\vec{b}| = \\sqrt{4 + 4} = 2\\sqrt{2}\\).",
-          "Normalise: \\(\\hat{n} = \\pm\\dfrac{-2\\hat{i} + 2\\hat{j}}{2\\sqrt{2}} = \\pm\\dfrac{1}{\\sqrt{2}}(-\\hat{i} + \\hat{j})\\).",
-        ],
-        answer: "\\(\\hat{n} = \\pm\\dfrac{1}{\\sqrt{2}}(-\\hat{i} + \\hat{j})\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Find a unit vector perpendicular to both \\(\\vec{a} = \\hat{i} + \\hat{j}\\) and \\(\\vec{b} = \\hat{i} - \\hat{j}\\).",
@@ -260,17 +228,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
             "Cross-check on \\(\\hat{k}\\): \\(-2(-2) - 8 = 4 - 8 = -4 = 2\\lambda \\Rightarrow \\lambda = -2\\). \\(\\checkmark\\)",
         ],
         answer: "\\(\\lambda = -2\\)",
-      },
-      fadedExample: {
-        prompt:
-          "A force \\(\\vec{F} = 3\\hat{i} + 2\\hat{j} - \\hat{k}\\) acts at \\(A(2, 0, 1)\\). Find its moment about the origin \\(O\\).",
-        steps: [
-          "Position vector \\(\\overrightarrow{OA} = 2\\hat{i} + \\hat{k}\\).",
-          "\\(\\vec{M} = \\overrightarrow{OA}\\times\\vec{F} = (0\\cdot(-1) - 1\\cdot 2)\\hat{i} - (2\\cdot(-1) - 1\\cdot 3)\\hat{j} + (2\\cdot 2 - 0\\cdot 3)\\hat{k}\\).",
-          "\\(\\vec{M} = -2\\hat{i} + 5\\hat{j} + 4\\hat{k}\\).",
-        ],
-        answer: "\\(\\vec{M} = -2\\hat{i} + 5\\hat{j} + 4\\hat{k}\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -335,17 +292,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
         answer: "\\(p = -1\\)",
       },
-      fadedExample: {
-        prompt:
-          "Find \\(p\\) such that \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\), \\(\\vec{b} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) and \\(\\vec{c} = \\hat{i} + 4\\hat{j} + p\\hat{k}\\) are coplanar.",
-        steps: [
-          "Coplanar means the determinant \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = 0\\).",
-          "Expand \\(\\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 4 & p \\end{vmatrix} = 1(2p - 12) - 1(p - 3) + 1(4 - 2) = 2p - 12 - p + 3 + 2 = p - 7\\).",
-          "Set \\(p - 7 = 0 \\Rightarrow p = 7\\).",
-        ],
-        answer: "\\(p = 7\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Find the volume of the parallelepiped with edge vectors \\(\\vec{a} = \\hat{i}\\), \\(\\vec{b} = \\hat{j}\\), \\(\\vec{c} = \\hat{i} + \\hat{j} + 2\\hat{k}\\).",
@@ -406,17 +352,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
           "Hence \\(\\lambda = 6\\).",
         ],
         answer: "\\(\\lambda = 6\\)",
-      },
-      fadedExample: {
-        prompt:
-          "If \\(\\vec{a} + 4\\vec{b} + 2\\vec{c} = \\vec{0}\\) and \\(\\vec{a}\\times\\vec{b} + \\vec{b}\\times\\vec{c} + \\vec{c}\\times\\vec{a} = \\lambda(\\vec{b}\\times\\vec{c})\\), find \\(\\lambda\\).",
-        steps: [
-          "From the constraint, \\(\\vec{a} = -4\\vec{b} - 2\\vec{c}\\).",
-          "\\(\\vec{a}\\times\\vec{b} = (-4\\vec{b} - 2\\vec{c})\\times\\vec{b} = -2(\\vec{c}\\times\\vec{b}) = 2(\\vec{b}\\times\\vec{c})\\); and \\(\\vec{c}\\times\\vec{a} = \\vec{c}\\times(-4\\vec{b}) = -4(\\vec{c}\\times\\vec{b}) = 4(\\vec{b}\\times\\vec{c})\\).",
-          "Sum \\(= 2(\\vec{b}\\times\\vec{c}) + (\\vec{b}\\times\\vec{c}) + 4(\\vec{b}\\times\\vec{c}) = 7(\\vec{b}\\times\\vec{c})\\), so \\(\\lambda = 7\\).",
-        ],
-        answer: "\\(\\lambda = 7\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -480,17 +415,6 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
           "Result: \\(5\\hat{i} + 4\\hat{j} - \\hat{k}\\). Sum of components: \\(5 + 4 + (-1) = 8\\).",
         ],
         answer: "Sum of components \\(= 8\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Let \\(\\vec{a} = \\hat{i} + 2\\hat{j}\\) and \\(\\vec{b} = 3\\hat{i} + \\hat{j}\\). Find \\(\\vec{a}\\times(\\vec{b}\\times\\vec{a})\\).",
-        steps: [
-          "BAC-CAB: \\(\\vec{a}\\times(\\vec{b}\\times\\vec{a}) = (\\vec{a}\\cdot\\vec{a})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{a}\\).",
-          "\\(\\vec{a}\\cdot\\vec{a} = 1 + 4 = 5\\); \\(\\vec{a}\\cdot\\vec{b} = 3 + 2 = 5\\); so result \\(= 5\\vec{b} - 5\\vec{a}\\).",
-          "\\(= 5(3\\hat{i} + \\hat{j}) - 5(\\hat{i} + 2\\hat{j}) = 10\\hat{i} - 5\\hat{j}\\).",
-        ],
-        answer: "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{a}) = 10\\hat{i} - 5\\hat{j}\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:

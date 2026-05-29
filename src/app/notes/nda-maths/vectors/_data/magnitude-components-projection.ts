@@ -40,17 +40,6 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(AB = \\sqrt{53}\\) units",
       },
-      fadedExample: {
-        prompt:
-          "Position vectors of \\(A\\) and \\(B\\) are \\(\\vec{a} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\) and \\(\\vec{b} = 4\\hat{i} + 6\\hat{j} + 2\\hat{k}\\). Find the length \\(AB\\).",
-        steps: [
-          "\\(\\overrightarrow{AB} = \\vec{b} - \\vec{a} = (4-1)\\hat{i} + (6-2)\\hat{j} + (2-2)\\hat{k} = 3\\hat{i} + 4\\hat{j}\\).",
-          "Square the components: \\(3^2 + 4^2 + 0^2 = 9 + 16 = 25\\).",
-          "\\(AB = \\sqrt{25} = 5\\).",
-        ],
-        answer: "\\(AB = 5\\) units",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "Find the magnitude of \\(\\vec{v} = 2\\hat{i} - 3\\hat{j} + 6\\hat{k}\\).",
         steps: [
@@ -107,17 +96,6 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
           "Sum of squares: \\(\\dfrac{16}{81} + \\dfrac{64}{81} + \\dfrac{1}{81} = \\dfrac{81}{81} = 1\\). \\(\\checkmark\\)",
         ],
         answer: "\\(\\cos\\alpha = \\dfrac{4}{9}\\); identity holds.",
-      },
-      fadedExample: {
-        prompt:
-          "A vector \\(\\vec{a} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\) makes angles \\(\\alpha, \\beta, \\gamma\\) with the positive axes. Find its direction cosines and verify \\(\\sum\\cos^2 = 1\\).",
-        steps: [
-          "Magnitude: \\(|\\vec{a}| = \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3\\).",
-          "Direction cosines: \\(\\cos\\alpha = \\tfrac{1}{3},\\ \\cos\\beta = \\tfrac{2}{3},\\ \\cos\\gamma = \\tfrac{2}{3}\\).",
-          "Sum of squares: \\(\\tfrac{1}{9} + \\tfrac{4}{9} + \\tfrac{4}{9} = \\tfrac{9}{9} = 1\\). \\(\\checkmark\\)",
-        ],
-        answer: "\\(\\cos\\alpha = \\tfrac{1}{3}, \\cos\\beta = \\cos\\gamma = \\tfrac{2}{3}\\); identity holds.",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -178,17 +156,6 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{2}{\\sqrt{17}}\\)",
       },
-      fadedExample: {
-        prompt:
-          "Find the length of the projection of \\(3\\hat{i} + \\hat{j} + 2\\hat{k}\\) on \\(\\hat{i} + 2\\hat{j} + 2\\hat{k}\\).",
-        steps: [
-          "Dot product: \\(3\\cdot 1 + 1\\cdot 2 + 2\\cdot 2 = 3 + 2 + 4 = 9\\).",
-          "Magnitude of the direction vector: \\(|\\vec{b}| = \\sqrt{1 + 4 + 4} = 3\\).",
-          "Projection: \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} = \\dfrac{9}{3} = 3\\).",
-        ],
-        answer: "Projection \\(= 3\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Find the scalar projection of \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\) on \\(\\vec{b} = 2\\hat{i} + 2\\hat{j} + \\hat{k}\\).",
@@ -246,17 +213,6 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
           "Square: \\(2a^2 = 4 \\Rightarrow a^2 = 2 \\Rightarrow a = \\sqrt{2}\\). Hence \\(a = b = \\sqrt{2}\\).",
         ],
         answer: "\\(a = b = \\sqrt{2}\\)",
-      },
-      fadedExample: {
-        prompt:
-          "A vector \\(\\vec{r} = a\\hat{i} + b\\hat{j}\\) is equally inclined to the \\(x\\) and \\(y\\) axes and has magnitude 4 units. Find \\(a\\) and \\(b\\) (both positive).",
-        steps: [
-          "Equally inclined means \\(|a| = |b|\\); take \\(a = b\\).",
-          "Magnitude: \\(\\sqrt{a^2 + b^2} = \\sqrt{2a^2} = 4\\), so \\(2a^2 = 16\\), \\(a^2 = 8\\).",
-          "\\(a = b = 2\\sqrt{2}\\).",
-        ],
-        answer: "\\(a = b = 2\\sqrt{2}\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt: "Find the unit vector along \\(\\vec{v} = 3\\hat{i} - 4\\hat{j}\\).",

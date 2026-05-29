@@ -41,17 +41,6 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{AG} = 2\\hat{i} - \\dfrac{1}{3}\\hat{j}\\)",
       },
-      fadedExample: {
-        prompt:
-          "A triangle has vertices with position vectors \\(\\vec{a} = 2\\hat{i} + \\hat{j}\\), \\(\\vec{b} = 4\\hat{i} + 3\\hat{j}\\), \\(\\vec{c} = 6\\hat{i} + 2\\hat{j}\\). Find the centroid \\(G\\).",
-        steps: [
-          "Centroid is the average of the vertex position vectors: \\(\\vec{g} = \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3}\\).",
-          "\\(\\vec{g} = \\dfrac{(2+4+6)\\hat{i} + (1+3+2)\\hat{j}}{3} = \\dfrac{12\\hat{i} + 6\\hat{j}}{3}\\).",
-          "\\(\\vec{g} = 4\\hat{i} + 2\\hat{j}\\).",
-        ],
-        answer: "\\(\\vec{g} = 4\\hat{i} + 2\\hat{j}\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "Find the centroid of the triangle with vertices \\(A(1, 2, 3)\\), \\(B(3, -1, 0)\\), \\(C(2, 2, 3)\\).",
@@ -110,17 +99,6 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\vec{PQ} = \\dfrac{1}{2}(\\vec{a} - \\vec{b})\\)",
       },
-      fadedExample: {
-        prompt:
-          "\\(ABCD\\) is a parallelogram (vertices in order) with \\(A(1, 1)\\), \\(B(4, 2)\\), \\(C(5, 5)\\). Find the fourth vertex \\(D\\).",
-        steps: [
-          "Fourth vertex of a parallelogram \\(ABCD\\): \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b}\\).",
-          "\\(\\vec{d} = (1 + 5 - 4)\\hat{i} + (1 + 5 - 2)\\hat{j} = 2\\hat{i} + 4\\hat{j}\\).",
-          "So \\(D = (2, 4)\\).",
-        ],
-        answer: "\\(D = (2, 4)\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "In parallelogram \\(ABCD\\), \\(\\vec{AB} = 3\\hat{i} + \\hat{j}\\) and \\(\\vec{AD} = \\hat{i} + 2\\hat{j}\\). Find the diagonal \\(\\vec{AC}\\).",
@@ -178,17 +156,6 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         ],
         answer: "\\(C = \\cos^{-1}\\!\\left(\\dfrac{1}{\\sqrt{5}}\\right)\\)",
       },
-      fadedExample: {
-        prompt:
-          "Triangle \\(ABC\\) has position vectors \\(\\vec{a} = \\vec{0}\\), \\(\\vec{b} = 3\\hat{i}\\), \\(\\vec{c} = 3\\hat{i} + 4\\hat{j}\\). Find the angle at \\(A\\).",
-        steps: [
-          "Side vectors at \\(A\\): \\(\\vec{AB} = \\vec{b} - \\vec{a} = 3\\hat{i}\\), \\(\\vec{AC} = \\vec{c} - \\vec{a} = 3\\hat{i} + 4\\hat{j}\\).",
-          "Dot: \\(\\vec{AB}\\cdot\\vec{AC} = 3\\cdot 3 + 0\\cdot 4 = 9\\). Magnitudes: \\(|\\vec{AB}| = 3\\), \\(|\\vec{AC}| = 5\\).",
-          "\\(\\cos A = \\dfrac{9}{3\\cdot 5} = \\dfrac{3}{5}\\), so \\(A = \\cos^{-1}\\!\\left(\\tfrac{3}{5}\\right)\\).",
-        ],
-        answer: "\\(A = \\cos^{-1}\\!\\left(\\dfrac{3}{5}\\right)\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "Find the angle between \\(\\vec{p} = \\hat{i} + \\sqrt{3}\\,\\hat{j}\\) and \\(\\vec{q} = \\hat{i}\\).",
         steps: [
@@ -245,17 +212,6 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
           "Dot product: \\(\\vec{PR}\\cdot\\vec{QS} = (-2)(0) + 0(-2) = 0\\), so the diagonals are perpendicular.",
         ],
         answer: "\\(\\vec{PQ} \\parallel \\vec{SR}\\) and \\(\\vec{PR} \\perp \\vec{QS}\\).",
-      },
-      fadedExample: {
-        prompt:
-          "Use the parallelogram law to find \\(|\\vec{a} - \\vec{b}|^2\\) given \\(|\\vec{a}| = 5\\), \\(|\\vec{b}| = 3\\), and \\(|\\vec{a} + \\vec{b}|^2 = 40\\).",
-        steps: [
-          "Parallelogram law: \\(|\\vec{a} + \\vec{b}|^2 + |\\vec{a} - \\vec{b}|^2 = 2(|\\vec{a}|^2 + |\\vec{b}|^2)\\).",
-          "Right side: \\(2(25 + 9) = 68\\); so \\(|\\vec{a} - \\vec{b}|^2 = 68 - 40\\).",
-          "\\(|\\vec{a} - \\vec{b}|^2 = 28\\).",
-        ],
-        answer: "\\(|\\vec{a} - \\vec{b}|^2 = 28\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:

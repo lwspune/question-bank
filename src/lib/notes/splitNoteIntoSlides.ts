@@ -4,7 +4,7 @@ import type { Slide, SubtopicNote } from "@/app/notes/_types";
  * Derive the Present-mode slide deck from a SubtopicNote. Pure function.
  *
  * Per-concept slide order:
- *   intro → visualization? → authored → faded? → self-check? → practice-set? → pyq? → trap* → concept-drill?
+ *   intro → visualization? → authored → self-check? → practice-set? → pyq? → trap* → concept-drill?
  *
  * Outer order: title → why? → [concepts] → drill. Optional sections are
  * skipped; minimum deck is title + drill.
@@ -53,14 +53,6 @@ export function splitNoteIntoSlides(
       conceptName: c.name,
       example: c.authoredExample,
     });
-
-    if (c.fadedExample) {
-      slides.push({
-        kind: "faded-example",
-        conceptName: c.name,
-        example: c.fadedExample,
-      });
-    }
 
     if (c.selfCheckExample) {
       slides.push({

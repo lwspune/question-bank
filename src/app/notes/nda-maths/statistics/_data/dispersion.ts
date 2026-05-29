@@ -38,17 +38,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\text{MD} = 2.4\\)",
       },
-      fadedExample: {
-        prompt: "Find the mean deviation of \\(1, 3, 5, 7, 9\\) about the mean.",
-        steps: [
-          "Compute the mean: \\(\\bar{x} = (1+3+5+7+9)/5 = 25/5 = 5\\).",
-          "Absolute deviations from 5: \\(4, 2, 0, 2, 4\\).",
-          "Sum: \\(4 + 2 + 0 + 2 + 4 = 12\\).",
-          "\\(\\text{MD} = 12/5 = 2.4\\).",
-        ],
-        answer: "\\(\\text{MD} = 2.4\\)",
-        hiddenStepIndexes: [0],
-      },
       selfCheckExample: {
         prompt: "Find the mean deviation of \\(3, 6, 9, 12\\) about the mean.",
         steps: [
@@ -106,17 +95,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma^2 = 8\\)",
       },
-      fadedExample: {
-        prompt: "Find the variance of \\(3, 6, 9, 12, 15\\).",
-        steps: [
-          "Mean: \\(\\bar{x} = (3+6+9+12+15)/5 = 45/5 = 9\\).",
-          "Squared deviations: \\((3-9)^2, (6-9)^2, (9-9)^2, (12-9)^2, (15-9)^2 = 36, 9, 0, 9, 36\\).",
-          "Sum: \\(36 + 9 + 0 + 9 + 36 = 90\\).",
-          "\\(\\sigma^2 = 90 / 5 = 18\\).",
-        ],
-        answer: "\\(\\sigma^2 = 18\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt:
           "For 5 observations, \\(\\sum x_i = 30\\) and \\(\\sum x_i^2 = 220\\). " +
@@ -168,15 +146,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
           "Numerically, \\(\\sigma \\approx 2.83\\).",
         ],
         answer: "\\(\\sigma = 2\\sqrt{2} \\approx 2.83\\)",
-      },
-      fadedExample: {
-        prompt: "If the variance of a dataset is \\(49\\), find its standard deviation.",
-        steps: [
-          "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{49}\\).",
-          "\\(\\sigma = 7\\).",
-        ],
-        answer: "\\(\\sigma = 7\\)",
-        hiddenStepIndexes: [0],
       },
       selfCheckExample: {
         prompt: "Find the standard deviation of \\(1, 2, 3, 4, 5\\).",
@@ -233,17 +202,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sigma_Y = 12\\)",
       },
-      fadedExample: {
-        prompt:
-          "Variance of \\(X\\) is \\(5\\). Find the variance of \\(Y = 4X - 3\\).",
-        steps: [
-          "Identify \\(a = 4,\\ b = -3\\); shift has no effect on variance.",
-          "Apply: \\(\\text{Var}(Y) = a^2 \\cdot \\text{Var}(X) = 4^2 \\cdot 5 = 16 \\cdot 5\\).",
-          "Compute: \\(\\text{Var}(Y) = 80\\).",
-        ],
-        answer: "\\(\\text{Var}(Y) = 80\\)",
-        hiddenStepIndexes: [1],
-      },
       selfCheckExample: {
         prompt: "If the SD of \\(X\\) is \\(6\\), find the SD of \\(Y = -2X + 10\\).",
         steps: [
@@ -295,17 +253,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
           "Compute: \\(\\text{CV} = 0.2 \\times 100 = 20\\%\\).",
         ],
         answer: "\\(\\text{CV} = 20\\%\\)",
-      },
-      fadedExample: {
-        prompt:
-          "A dataset has mean \\(80\\) and standard deviation \\(12\\). Find its CV.",
-        steps: [
-          "Apply: \\(\\text{CV} = (\\sigma / \\bar{x}) \\times 100\\).",
-          "Substitute: \\(\\text{CV} = (12 / 80) \\times 100\\).",
-          "Compute: \\(\\text{CV} = 0.15 \\times 100 = 15\\%\\).",
-        ],
-        answer: "\\(\\text{CV} = 15\\%\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:
@@ -359,17 +306,6 @@ export const DISPERSION_NOTE: SubtopicNote = {
           "Compute: \\(\\sigma^2 = 28\\).",
         ],
         answer: "\\(\\sigma^2 = 28\\)",
-      },
-      fadedExample: {
-        prompt:
-          "Given \\(n = 20,\\ \\sum x_i = 100,\\ \\sum x_i^2 = 1000\\), find the variance.",
-        steps: [
-          "Mean: \\(\\bar{x} = 100/20 = 5\\).",
-          "Apply the identity: \\(\\sigma^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2 = 1000/20 - 25 = 50 - 25\\).",
-          "\\(\\sigma^2 = 25\\).",
-        ],
-        answer: "\\(\\sigma^2 = 25\\)",
-        hiddenStepIndexes: [1],
       },
       selfCheckExample: {
         prompt:

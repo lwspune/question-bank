@@ -35,19 +35,6 @@ export type AuthoredExample = {
 };
 
 /**
- * A worked example with one or more steps hidden behind a click-to-reveal,
- * so the student attempts those steps before seeing the solution. Implements
- * the worked-example → faded → independent ramp (Sweller / Renkl).
- */
-export type FadedExample = AuthoredExample & {
-  /**
-   * 0-based indexes of steps whose body is hidden until the student clicks.
-   * Empty array means nothing is hidden (= same as a regular AuthoredExample).
-   */
-  hiddenStepIndexes: number[];
-};
-
-/**
  * A single Level 1 mastery rep — a short, procedurally-simple practice
  * problem for drilling one concept to fluency. Authored (not bank-derived)
  * because per-concept EASY bank coverage is too thin and mastery reps are
@@ -115,15 +102,9 @@ export type ConceptUnit = {
    */
   pyqExampleId?: string;
   /**
-   * Optional faded follow-up to the worked authored example — same shape as
-   * AuthoredExample plus indexes of steps hidden behind reveal. Sits between
-   * the worked example and the self-check on the page.
-   */
-  fadedExample?: FadedExample;
-  /**
    * Optional independent-practice problem rendered with the full solution
-   * hidden behind a single reveal. The third rung in the worked → faded →
-   * independent ramp.
+   * hidden behind a single reveal — the independent-attempt rung after the
+   * worked example.
    */
   selfCheckExample?: AuthoredExample;
   /**
@@ -198,11 +179,6 @@ export type Slide =
       kind: "authored-example";
       conceptName: string;
       example: AuthoredExample;
-    }
-  | {
-      kind: "faded-example";
-      conceptName: string;
-      example: FadedExample;
     }
   | {
       kind: "self-check";
