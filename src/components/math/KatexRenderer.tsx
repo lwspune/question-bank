@@ -2,7 +2,7 @@
 
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex";
-import { parseLatex } from "./parseLatex";
+import { parseLatex, splitBold } from "./parseLatex";
 
 interface Props {
   text: string;
@@ -36,7 +36,9 @@ export default function KatexRenderer({ text, className }: Props) {
         }
         return (
           <span key={i} style={{ whiteSpace: "pre-wrap" }}>
-            {seg.content}
+            {splitBold(seg.content).map((b, j) =>
+              b.bold ? <strong key={j}>{b.text}</strong> : <span key={j}>{b.text}</span>
+            )}
           </span>
         );
       })}

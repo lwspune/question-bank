@@ -21,10 +21,11 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
         "Each possible result is an outcome; the set of all outcomes is the sample space; any collection of outcomes you care about is an event. " +
         "Probability measures how much of the sample space an event covers.",
       definition:
-        "A **random experiment** has a known set of possible results but an unpredictable individual result. " +
-        "The **sample space** \\(S\\) is the set of all outcomes — for one die \\(S=\\{1,2,3,4,5,6\\}\\). " +
-        "An **event** \\(E\\) is any subset \\(E \\subseteq S\\); it **occurs** when the actual outcome lies in \\(E\\). " +
-        "Outcomes are **equally likely** when symmetry gives no reason to prefer one over another (a fair die, a fair coin) — this is the assumption the classical definition in the next concept rests on.",
+        "Four pieces of vocabulary the whole chapter rests on:\n" +
+        "- A **random experiment** has a known set of possible results but an unpredictable individual result.\n" +
+        "- The **sample space** \\(S\\) is the set of all outcomes — for one die \\(S=\\{1,2,3,4,5,6\\}\\).\n" +
+        "- An **event** \\(E\\) is any subset \\(E \\subseteq S\\); it **occurs** when the actual outcome lies in \\(E\\).\n" +
+        "- Outcomes are **equally likely** when symmetry gives no reason to prefer one over another (a fair die, a fair coin) — the assumption the classical definition rests on.",
       authoredExample: {
         prompt:
           "Two coins are tossed together. Write the sample space \\(S\\), then write the event \\(A\\) = \"at least one head\" and count its outcomes.",
@@ -128,9 +129,9 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
         "Probabilities live between 0 and 1; the whole sample space has probability 1; and the chance an event does NOT happen is 1 minus the chance it does. " +
         "That last fact — the complement rule — is the single most useful shortcut in the chapter: when an event is messy to count directly (\"at least one…\"), count its opposite instead.",
       definition:
-        "For any event \\(E\\): \\(0 \\le P(E) \\le 1\\), with \\(P(S)=1\\) (certain) and \\(P(\\varnothing)=0\\) (impossible). " +
-        "The **complement** \\(E'\\) (\"\\(E\\) does not occur\") satisfies \\(P(E') = 1 - P(E)\\). " +
-        "**Odds**: if the odds in favour of \\(E\\) are \\(a:b\\), then \\(P(E) = \\dfrac{a}{a+b}\\); odds against \\(E\\) of \\(a:b\\) give \\(P(E) = \\dfrac{b}{a+b}\\).",
+        "- **Range + axioms:** for any event \\(E\\), \\(0 \\le P(E) \\le 1\\), with \\(P(S)=1\\) (certain) and \\(P(\\varnothing)=0\\) (impossible).\n" +
+        "- **Complement:** \\(E'\\) (\"\\(E\\) does not occur\") satisfies \\(P(E') = 1 - P(E)\\).\n" +
+        "- **Odds:** odds in favour of \\(E\\) of \\(a:b\\) give \\(P(E) = \\dfrac{a}{a+b}\\); odds against of \\(a:b\\) give \\(P(E) = \\dfrac{b}{a+b}\\).",
       formula: {
         label: "Complement rule and range",
         latex:
@@ -252,9 +253,10 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
         "Most dice questions are just \"count the \\((a,b)\\) pairs that satisfy the condition, divide by 36\". " +
         "A \\(6 \\times 6\\) grid of pairs is the fastest way to count sums and differences.",
       definition:
-        "One die: \\(S=\\{1,\\dots,6\\}\\), \\(n(S)=6\\). Two dice: \\(n(S)=6^2=36\\) ordered pairs; the sum ranges \\(2\\) to \\(12\\) with \\(7\\) the most likely (6 ways). " +
-        "For \\(k\\) dice, \\(n(S)=6^k\\). " +
-        "A **non-standard or loaded** die (faces repeated, or weighted) no longer has equally likely faces — weight each face by its own probability rather than using \\(n(E)/6\\).",
+        "- **One die:** \\(S=\\{1,\\dots,6\\}\\), \\(n(S)=6\\).\n" +
+        "- **Two dice:** \\(n(S)=6^2=36\\) ordered pairs; the sum ranges \\(2\\) to \\(12\\) with \\(7\\) the most likely (6 ways).\n" +
+        "- **\\(k\\) dice:** \\(n(S)=6^k\\).\n" +
+        "- **Non-standard or loaded die** (faces repeated, or weighted) no longer has equally likely faces — weight each face by its own probability rather than using \\(n(E)/6\\).",
       formula: {
         label: "Two-dice sample space",
         latex:
@@ -313,9 +315,9 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
         "For a biased coin with \\(P(\\text{head})=p\\), multiply \\(p\\) and \\(1-p\\) along the sequence. " +
         "\"At least one head\" is almost always fastest through the complement.",
       definition:
-        "Fair coin, \\(n\\) tosses: \\(n(S)=2^n\\), every sequence equally likely; exactly \\(k\\) heads occurs in \\(\\binom{n}{k}\\) of them. " +
-        "Biased coin, \\(P(H)=p\\): a specific sequence with \\(h\\) heads and \\(t\\) tails has probability \\(p^{h}(1-p)^{t}\\). " +
-        "At least one head in \\(n\\) fair tosses: \\(1-\\left(\\tfrac{1}{2}\\right)^{n}\\).",
+        "- **Fair coin, \\(n\\) tosses:** \\(n(S)=2^n\\), every sequence equally likely; exactly \\(k\\) heads occurs in \\(\\binom{n}{k}\\) of them.\n" +
+        "- **Biased coin, \\(P(H)=p\\):** a specific sequence with \\(h\\) heads and \\(t\\) tails has probability \\(p^{h}(1-p)^{t}\\).\n" +
+        "- **At least one head** in \\(n\\) fair tosses: \\(1-\\left(\\tfrac{1}{2}\\right)^{n}\\).",
       formula: {
         label: "Coin tosses",
         latex:

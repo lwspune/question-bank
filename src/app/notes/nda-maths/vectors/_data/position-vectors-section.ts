@@ -114,10 +114,10 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         "Equivalently, if you draw both vectors from a common tail, the sum is the diagonal of the parallelogram they span. " +
         "Subtraction is just addition of the negative: \\(\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})\\).",
       definition:
-        "**Triangle law**: place \\(\\vec{b}\\) so its tail starts where \\(\\vec{a}\\)'s head ends; then \\(\\vec{a} + \\vec{b}\\) is the arrow from \\(\\vec{a}\\)'s tail to \\(\\vec{b}\\)'s head. " +
-        "**Parallelogram law** (equivalent): if \\(\\vec{a}\\) and \\(\\vec{b}\\) share a tail, \\(\\vec{a} + \\vec{b}\\) is the diagonal of the parallelogram on \\(\\vec{a}, \\vec{b}\\) from that shared tail. " +
-        "**Polygon law** (generalisation): the sum of any number of vectors placed tip-to-tail is the arrow from the very first tail to the very last head. " +
-        "Properties: addition is commutative (\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)), associative, has identity \\(\\vec{a} + \\vec{0} = \\vec{a}\\), and inverse \\(\\vec{a} + (-\\vec{a}) = \\vec{0}\\).",
+        "- **Triangle law:** place \\(\\vec{b}\\) so its tail starts where \\(\\vec{a}\\)'s head ends; then \\(\\vec{a} + \\vec{b}\\) is the arrow from \\(\\vec{a}\\)'s tail to \\(\\vec{b}\\)'s head.\n" +
+        "- **Parallelogram law** (equivalent): if \\(\\vec{a}\\) and \\(\\vec{b}\\) share a tail, \\(\\vec{a} + \\vec{b}\\) is the diagonal of the parallelogram on \\(\\vec{a}, \\vec{b}\\) from that shared tail.\n" +
+        "- **Polygon law** (generalisation): the sum of any number of vectors placed tip-to-tail is the arrow from the very first tail to the very last head.\n" +
+        "- **Properties:** addition is commutative (\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)), associative, has identity \\(\\vec{a} + \\vec{0} = \\vec{a}\\), and inverse \\(\\vec{a} + (-\\vec{a}) = \\vec{0}\\).",
       formula: {
         label: "Vector addition properties",
         latex:
@@ -283,14 +283,14 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         "Three or more vectors are **coplanar** if you can draw them all in one flat plane. " +
         "These names are not optional vocabulary — every PYQ uses them as shorthand for an entire concept.",
       definition:
-        "**Zero vector** \\(\\vec{0}\\) — magnitude 0, direction undefined. Acts as the additive identity. " +
-        "**Unit vector** \\(\\hat{u}\\) — magnitude exactly 1. Any non-zero \\(\\vec{v}\\) has a unique unit vector along it: \\(\\hat{v} = \\vec{v}/|\\vec{v}|\\). " +
-        "**Equal vectors** — same magnitude AND direction; position on the page is irrelevant. " +
-        "**Negative of \\(\\vec{v}\\)** — same magnitude, opposite direction, written \\(-\\vec{v}\\). " +
-        "**Parallel vectors** \\(\\vec{a} \\parallel \\vec{b}\\) — same OR opposite direction; equivalently, one is a non-zero scalar multiple of the other: \\(\\vec{a} = k\\vec{b}\\) for some \\(k \\neq 0\\). " +
-        "**Collinear points** — three or more points lying on one straight line (a stronger condition than just having parallel direction vectors). " +
-        "**Coplanar vectors / points** — all lying in one flat plane. " +
-        "**Free vs localized vector** — a free vector cares only about magnitude and direction; a localized vector additionally has a fixed application point (e.g. a force at a specific point on a body). Most NDA questions treat vectors as free.",
+        "- **Zero vector** \\(\\vec{0}\\) — magnitude 0, direction undefined. Acts as the additive identity.\n" +
+        "- **Unit vector** \\(\\hat{u}\\) — magnitude exactly 1. Any non-zero \\(\\vec{v}\\) has a unique unit vector along it: \\(\\hat{v} = \\vec{v}/|\\vec{v}|\\).\n" +
+        "- **Equal vectors** — same magnitude AND direction; position on the page is irrelevant.\n" +
+        "- **Negative of \\(\\vec{v}\\)** — same magnitude, opposite direction, written \\(-\\vec{v}\\).\n" +
+        "- **Parallel vectors** \\(\\vec{a} \\parallel \\vec{b}\\) — same OR opposite direction; equivalently, one is a non-zero scalar multiple of the other: \\(\\vec{a} = k\\vec{b}\\) for some \\(k \\neq 0\\).\n" +
+        "- **Collinear points** — three or more points lying on one straight line (a stronger condition than just having parallel direction vectors).\n" +
+        "- **Coplanar vectors / points** — all lying in one flat plane.\n" +
+        "- **Free vs localized vector** — a free vector cares only about magnitude and direction; a localized vector additionally has a fixed application point (e.g. a force at a specific point on a body). Most NDA questions treat vectors as free.",
       formula: {
         label: "Unit vector and parallelism",
         latex:

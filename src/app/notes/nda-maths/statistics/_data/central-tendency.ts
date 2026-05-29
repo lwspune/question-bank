@@ -51,11 +51,9 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         "DISCRETE (whole-number counts) and CONTINUOUS (any value in a range, " +
         "like 167.4 cm).",
       definition:
-        "Qualitative (categorical) data takes labels, not numbers — operations " +
-        "like mean don't apply. Quantitative data takes numerical values; " +
-        "DISCRETE means the value jumps in integer-sized steps (kids per " +
-        "family, integer marks), CONTINUOUS means values fill an interval " +
-        "smoothly (height, weight, time).",
+        "- **Qualitative (categorical):** takes labels, not numbers — operations like mean don't apply.\n" +
+        "- **Quantitative — discrete:** numerical, jumping in integer-sized steps (kids per family, integer marks).\n" +
+        "- **Quantitative — continuous:** numerical, filling an interval smoothly (height, weight, time).",
       authoredExample: {
         prompt:
           "Classify each variable: (i) eye colour, (ii) number of siblings, " +

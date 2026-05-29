@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ChevronRight, Dumbbell, Target } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import RichText from "@/components/math/RichText";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import { buildBrowseUrl } from "@/lib/guide/buildBrowseUrl";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
@@ -123,9 +124,10 @@ export default function ConceptUnitCard({
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Definition
           </p>
-          <div className="font-serif text-base leading-relaxed text-foreground">
-            <KatexRenderer text={concept.definition} />
-          </div>
+          <RichText
+            text={concept.definition}
+            className="font-serif text-base leading-relaxed text-foreground"
+          />
         </div>
       </div>
 

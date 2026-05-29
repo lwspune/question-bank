@@ -21,9 +21,12 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
         "\\(A \\cup B\\) is \"A or B (or both)\"; \\(A \\cap B\\) is \"A and B together\"; \\(A'\\) is \"A does not happen\". " +
         "A Venn diagram turns every two-event question into filling in regions.",
       definition:
-        "For events \\(A, B \\subseteq S\\): the **union** \\(A \\cup B\\) occurs when at least one of them occurs; the **intersection** \\(A \\cap B\\) occurs when both occur; the **complement** \\(A'\\) (or \\(\\bar{A}\\)) occurs when \\(A\\) does not. " +
-        "\"Exactly one of \\(A, B\\)\" is \\((A \\cap B') \\cup (A' \\cap B)\\); \"neither\" is \\(A' \\cap B'\\). " +
-        "De Morgan's laws: \\((A \\cup B)' = A' \\cap B'\\) and \\((A \\cap B)' = A' \\cup B'\\).",
+        "For events \\(A, B \\subseteq S\\):\n" +
+        "- **Union** \\(A \\cup B\\) — occurs when at least one of them occurs.\n" +
+        "- **Intersection** \\(A \\cap B\\) — occurs when both occur.\n" +
+        "- **Complement** \\(A'\\) (or \\(\\bar{A}\\)) — occurs when \\(A\\) does not.\n" +
+        "- **Exactly one** of \\(A, B\\) is \\((A \\cap B') \\cup (A' \\cap B)\\); **neither** is \\(A' \\cap B'\\).\n" +
+        "- **De Morgan:** \\((A \\cup B)' = A' \\cap B'\\) and \\((A \\cap B)' = A' \\cup B'\\).",
       authoredExample: {
         prompt:
           "In a group, \\(A\\) is the event \"likes tea\" and \\(B\\) is \"likes coffee\". Express in set notation: (i) likes both, (ii) likes at least one, (iii) likes neither.",

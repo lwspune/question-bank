@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import RichText from "@/components/math/RichText";
 import { buildBrowseUrl } from "@/lib/guide/buildBrowseUrl";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import type { Slide } from "@/app/notes/_types";
@@ -287,9 +288,10 @@ function SlideContent({
             <p className="text-base font-semibold uppercase tracking-wide text-muted-foreground sm:text-lg">
               Definition
             </p>
-            <div className="mt-3 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
-              <KatexRenderer text={slide.definition} />
-            </div>
+            <RichText
+              text={slide.definition}
+              className="mt-3 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl"
+            />
           </div>
           {slide.formula && (
             <FormulaBlock formula={slide.formula} presentMode />

@@ -19,10 +19,10 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         "The overlap cannot be larger than the smaller event, and when \\(P(A) + P(B)\\) exceeds 1 the events are forced to overlap by at least the excess. " +
         "The union, in turn, can never exceed the sum.",
       definition:
-        "For any two events: " +
-        "\\(\\max(0,\\ P(A) + P(B) - 1) \\le P(A \\cap B) \\le \\min(P(A), P(B))\\) (Fréchet bounds on the intersection), and " +
-        "\\(\\max(P(A), P(B)) \\le P(A \\cup B) \\le \\min(1,\\ P(A) + P(B))\\). " +
-        "The upper union bound \\(P(A \\cup B) \\le P(A) + P(B)\\) is **Boole's inequality**. All follow from \\(0 \\le P \\le 1\\) and the addition rule.",
+        "For any two events (all from \\(0 \\le P \\le 1\\) and the addition rule):\n" +
+        "- **Intersection (Fréchet):** \\(\\max(0,\\ P(A) + P(B) - 1) \\le P(A \\cap B) \\le \\min(P(A), P(B))\\).\n" +
+        "- **Union:** \\(\\max(P(A), P(B)) \\le P(A \\cup B) \\le \\min(1,\\ P(A) + P(B))\\).\n" +
+        "- **Boole's inequality:** the upper union bound \\(P(A \\cup B) \\le P(A) + P(B)\\).",
       formula: {
         label: "Bounds on intersection and union",
         latex:
