@@ -57,6 +57,18 @@ function inventoryUnicode(where: string, s: string | undefined) {
 }
 
 for (const chapter of NOTES_CHAPTERS) {
+  // Chapter-level plain-text fields. `intro` + `title` feed GuideHero,
+  // the subject-landing cards, JSON-LD, and <meta description> — none of
+  // which interpret Markdown, so `**bold**` / `\(...\)` leak literally.
+  checkPlain(
+    `${chapter.subjectRoute}/${chapter.chapterSlug} > chapter.title`,
+    chapter.chapter.title
+  );
+  checkPlain(
+    `${chapter.subjectRoute}/${chapter.chapterSlug} > chapter.intro`,
+    chapter.chapter.intro
+  );
+
   for (const [slug, note] of Object.entries(chapter.notes)) {
     const base = `${chapter.subjectRoute}/${chapter.chapterSlug}/${slug}`;
     // Plain-text fields
