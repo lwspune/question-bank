@@ -102,8 +102,8 @@ describe("resolveNotesHref", () => {
     expect(resolveNotesHref("nda")).toBe("/notes/nda-maths");
   });
 
-  it("returns /notes for mht-cet (no notes yet — falls back to index)", () => {
-    expect(resolveNotesHref("mht-cet")).toBe("/notes");
+  it("returns /notes/mht-cet-maths for mht-cet (notes subtree shipped 2026-05-30)", () => {
+    expect(resolveNotesHref("mht-cet")).toBe("/notes/mht-cet-maths");
   });
 
   it("returns /notes for null exam", () => {
