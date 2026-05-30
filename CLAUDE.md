@@ -281,7 +281,7 @@ supabase/
 │       · 0018 — `get_dashboard_stats(p_org_id)` RPC returning `{total_questions, chapters_covered, by_exam}` as jsonb — bypasses PostgREST's implicit 1000-row cap
 │       · 0019 — `get_pyq_years()` SQL aggregate function for the PYQ-year filter chip list
 │       · 0020 — `get_chapter_facets()` + `get_subtopic_facets()` RPCs powering "Chapter (N)" / "Subtopic (N)" rendering in the /browse sidebar (context-aware: counts reflect all OTHER active filters)
-│       · 0021 — `question_concept_tags` table (composite PK on (question_id, subtopic_slug, concept_slug)) linking bank questions to /notes concept slugs; RLS inherits question visibility (anon reads tags only on PUBLIC questions; ADMIN writes scoped to own-org questions)
+│       · 0021 — `question_concept_tags` table (composite PK on (question_id, subtopic_slug, concept_slug)) linking bank questions to /notes concept slugs; RLS inherits question visibility (anon reads tags only on PUBLIC questions; ADMIN writes scoped to own-org questions). **Cost note:** because subtopic_slug is part of the PK, renaming a subtopic_slug (Phase D restructure of an already-tagged chapter) invalidates every row — they must be DELETEd and reinserted with the new slugs. Cheap when Phase D runs BEFORE the first tag (the Probability and Sound-redesign pattern); paid twice when Phase D runs AFTER tagging (the Sound bank-first regression). See 2026-05-30 (redesign) decisions log.
 │       · 0022 — `questions.visibility` default flipped PRIVATE → PUBLIC + UPDATE flipped remaining 120 PRIVATE rows
 │       · 0023 — `question_principle_tags` table (composite PK on (question_id, principle_slug)) linking bank questions to /guide TOP_11 principle slugs; parallel RLS to 0021 — drives live DB-backed counts on `/guide/nda-maths/principles` and the `?principle=<slug>` /browse filter
 │       · 0024 — `question_reports` table + `report_category` (8 values) + `report_status` (5 values) enums for in-app reporting. Denormalized `org_id` from question.org_id at INSERT (helper-set, not trigger) so admin triage queries use one indexed lookup. Partial unique index on `(reported_by, question_id) WHERE status='open'` blocks duplicate open reports. 4 RLS policies: insert authenticated-as-self · select-own-reports · select-admin-own-org · update-admin-own-org. No DELETE policy — reports kept for audit.
@@ -570,7 +570,7 @@ See `feedback_english_guide_structure_diverges.md` memory for the full "trust th
 
 Why behind architectural pivots — saves future-you from "why didn't we just…?".
 
-**Convention:** topical intros (like "Foundations" below) sit at the top. Dated entries are bucketed by month — `### YYYY-MM` per month, with entries inside in date order. When a new month begins, add a new `### YYYY-MM` sub-section above the prior one (newest month closest to top, so the current month is the first thing a reader sees after the foundations). Within a month, entries stay in chronological order top-down. This lets a reader collapse historical months mentally and focus on what's recent.
+**Convention:** topical intros (like "Foundations" below) sit at the top. Dated entries are bucketed by month — `### YYYY-MM` per month. When a new month begins, add a new `### YYYY-MM` sub-section above the prior one. **Within a month, entries are ordered newest-first (reverse chronological top-down): a new entry goes at the TOP of its month's block.** Net result: the most recent entry anywhere in the log is the first dated entry a reader sees after the foundations. This lets a reader collapse historical months mentally and focus on what's recent.
 
 ### Foundations (M1–M3, 2026-05-08)
 
@@ -585,7 +585,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-06
 
-_No entries yet — the next month's decisions will land here. Convention reminder: newest month closest to top (so this block sits above 2026-05 once it has entries); within a month, entries stay in chronological order top-down (newest at bottom of the month's block)._
+_No entries yet — the next month's decisions will land here. Convention reminder: newest month closest to top (so this block sits above 2026-05 once it has entries); within a month, new entries go at the TOP (newest-first top-down)._
 
 ### 2026-05
 
