@@ -6,7 +6,7 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Break a rational integrand into simple standard pieces — arctan/log quadratic forms, completed squares, and partial fractions.",
   whyItMatters:
-    "16 PYQs. Three recognitions cover them: the standard quadratic forms 1/(x²±a²) and 1/√(a²−x²); completing the square to reach an arctan or arcsin; and partial-fraction decomposition for products of linear/quadratic factors. " +
+    "16 PYQs. Four recognitions cover them: the standard quadratic forms (arctan, log, arcsin); completing the square to reach an arctan/arcsin/log; the numerator-split (px+q over a quadratic or its root); and partial-fraction decomposition for products of linear/quadratic factors. " +
     "MHT-CET also hides quadratic-in-x² shapes (like 1/(x⁴+9x²+16)) that reduce to an arctan after a clever x + k/x substitution.",
   concepts: [
     // 1 — standard quadratic forms
@@ -17,10 +17,12 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
       intuition:
         "A short table of quadratic-denominator integrals produces every arctan and quadratic-log answer. Memorise the shapes; most rational integrals are engineered to land on one of them.",
       definition:
-        "The core forms:\n" +
+        "The core forms the bank draws on:\n" +
         "- \\(\\displaystyle\\int \\dfrac{dx}{x^2 + a^2} = \\dfrac{1}{a}\\tan^{-1}\\dfrac{x}{a} + C\\)\n" +
         "- \\(\\displaystyle\\int \\dfrac{dx}{x^2 - a^2} = \\dfrac{1}{2a}\\log\\left|\\dfrac{x-a}{x+a}\\right| + C\\)\n" +
         "- \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{a^2 - x^2}} = \\sin^{-1}\\dfrac{x}{a} + C\\)\n" +
+        "- \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{x^2 - a^2}} = \\log\\left|x + \\sqrt{x^2 - a^2}\\right| + C\\)\n" +
+        "- \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{x^2 + a^2}} = \\log\\left|x + \\sqrt{x^2 + a^2}\\right| + C\\)\n" +
         "Quadratic-in-\\(x^2\\) denominators often reduce to the first form via a \\(t = x \\pm \\dfrac{k}{x}\\) substitution.",
       formula: {
         label: "The arctan form",
@@ -109,7 +111,65 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
       ],
     },
 
-    // 3 — partial fractions
+    // 3 — px+q over a quadratic / its root (numerator split)
+    {
+      kind: "formula" as const,
+      slug: "linear-numerator-over-quadratic",
+      name: "Linear Numerator over a Quadratic (Numerator Split)",
+      intuition:
+        "When the numerator is linear (px+q) and the denominator is a quadratic or the root of one, split the numerator into 'a constant times the denominator's derivative, plus a leftover constant'. The first piece integrates to a √ or a log; the leftover becomes a complete-the-square standard form.",
+      definition:
+        "For \\(\\displaystyle\\int \\dfrac{px+q}{\\sqrt{ax^2+bx+c}}\\,dx\\) (or with the quadratic itself in the denominator), write " +
+        "\\(px + q = A\\dfrac{d}{dx}(ax^2+bx+c) + B\\). " +
+        "Match coefficients to find \\(A, B\\). Then " +
+        "\\(\\displaystyle\\int \\dfrac{A\\,(ax^2+bx+c)'}{\\sqrt{ax^2+bx+c}}\\,dx = 2A\\sqrt{ax^2+bx+c}\\), and the leftover " +
+        "\\(\\displaystyle B\\!\\int \\dfrac{dx}{\\sqrt{ax^2+bx+c}}\\) is finished by completing the square.",
+      formula: {
+        label: "Numerator as derivative-of-denominator plus constant",
+        latex: "px + q = A\\dfrac{d}{dx}(ax^2+bx+c) + B",
+        symbols: [
+          { symbol: "A", meaning: "coefficient that reproduces the \\(x\\)-term via \\((ax^2+bx+c)'\\)" },
+          { symbol: "B", meaning: "leftover constant — its integral completes the square" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "Evaluate \\(\\displaystyle\\int \\dfrac{2x+5}{\\sqrt{7-6x-x^2}}\\,dx\\) in the form \\(A\\sqrt{7-6x-x^2} + B\\sin^{-1}\\!\\left(\\dfrac{x+3}{4}\\right) + c\\).",
+        steps: [
+          "Denominator \\(D = 7-6x-x^2\\), so \\(D' = -6-2x\\). Write \\(2x+5 = A(-6-2x) + B\\).",
+          "Match: \\(x\\)-coefficient \\(2 = -2A\\Rightarrow A = -1\\); constant \\(5 = -6A + B = 6 + B\\Rightarrow B = -1\\).",
+          "First piece: \\(\\displaystyle -\\!\\int \\dfrac{D'}{\\sqrt{D}}\\,dx = -2\\sqrt{D}\\).",
+          "Leftover: \\(\\displaystyle -\\!\\int \\dfrac{dx}{\\sqrt{16-(x+3)^2}} = -\\sin^{-1}\\!\\dfrac{x+3}{4}\\) (completing the square).",
+        ],
+        answer: "\\(-2\\sqrt{7-6x-x^2} - \\sin^{-1}\\!\\left(\\dfrac{x+3}{4}\\right) + c\\) — so \\(A = -2,\\ B = -1\\).",
+      },
+      selfCheckExample: {
+        prompt:
+          "Given \\(\\displaystyle\\int \\dfrac{x-7}{\\sqrt{x^2-16x+63}}\\,dx = A\\sqrt{x^2-16x+63} + \\log\\left|(x-8)+\\sqrt{x^2-16x+63}\\right| + c\\), find \\(A\\).",
+        steps: [
+          "Denominator \\(D = x^2-16x+63\\), \\(D' = 2x-16\\). Write \\(x-7 = A(2x-16) + B\\).",
+          "Match: \\(1 = 2A\\Rightarrow A = \\tfrac12\\); \\(-7 = -16A + B = -8 + B\\Rightarrow B = 1\\).",
+          "First piece: \\(\\tfrac12\\!\\int \\dfrac{D'}{\\sqrt{D}}\\,dx = \\tfrac12\\cdot 2\\sqrt{D} = \\sqrt{D}\\); leftover \\(\\int \\dfrac{dx}{\\sqrt{(x-8)^2-1}} = \\log|(x-8)+\\sqrt{D}|\\).",
+        ],
+        answer: "\\(A = \\dfrac{1}{2}\\).",
+      },
+      practiceSet: [
+        { prompt: "For \\(\\int \\dfrac{2x+3}{x^2+3x+1}\\,dx\\), what is the numerator as \\(A D' + B\\)?", answer: "\\(A=1,\\ B=0\\)", method: "\\(D'=2x+3\\) is exactly the numerator → pure log" },
+        { prompt: "\\(\\int \\dfrac{2x+3}{x^2+3x+1}\\,dx\\)", answer: "\\(\\log|x^2+3x+1| + C\\)" },
+        { prompt: "For \\(\\int \\dfrac{x}{\\sqrt{x^2+4}}\\,dx\\), split \\(x = A(2x) + B\\).", answer: "\\(A=\\tfrac12,\\ B=0\\)" },
+        { prompt: "\\(\\int \\dfrac{x}{\\sqrt{x^2+4}}\\,dx\\)", answer: "\\(\\sqrt{x^2+4} + C\\)", method: "\\(\\tfrac12\\int (x^2+4)'/\\sqrt{x^2+4}\\)" },
+      ],
+      pyqExampleId: "74b316be-445e-47f2-b78e-350513113a0a",
+      traps: [
+        {
+          title: "Split the numerator BEFORE completing the square",
+          body:
+            "The derivative-piece must come out first (it gives the \\(\\sqrt{}\\) or log term). Only the leftover constant goes through completing the square. Completing the square first leaves the \\(x\\) in the numerator with nowhere to go.",
+        },
+      ],
+    },
+
+    // 4 — partial fractions
     {
       kind: "formula" as const,
       slug: "partial-fraction-decomposition",

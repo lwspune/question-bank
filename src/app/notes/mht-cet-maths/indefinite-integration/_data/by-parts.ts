@@ -164,6 +164,96 @@ export const BY_PARTS_NOTE: SubtopicNote = {
         },
       ],
     },
+
+    // 4 — ∫√(quadratic) dx standard forms (syllabus reference)
+    {
+      kind: "formula" as const,
+      slug: "root-quadratic-standard-results",
+      name: "Integrals of √(quadratic) — Standard Results (syllabus reference)",
+      intuition:
+        "These three results — proved by integration by parts in the textbook — give the integral of a square root of a quadratic. " +
+        "Recent MHT-CET papers in this bank have not tested them directly, but they are on the syllabus and a question can reduce to one after completing the square, so keep them on hand.",
+      definition:
+        "The three standard results (each derived by taking \\(\\sqrt{\\,\\cdot\\,}\\) as the first function and \\(1\\) as the second):\n" +
+        "- \\(\\displaystyle\\int \\sqrt{a^2 - x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2 - x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a} + C\\)\n" +
+        "- \\(\\displaystyle\\int \\sqrt{a^2 + x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2 + x^2} + \\dfrac{a^2}{2}\\log\\left|x + \\sqrt{a^2 + x^2}\\right| + C\\)\n" +
+        "- \\(\\displaystyle\\int \\sqrt{x^2 - a^2}\\,dx = \\dfrac{x}{2}\\sqrt{x^2 - a^2} - \\dfrac{a^2}{2}\\log\\left|x + \\sqrt{x^2 - a^2}\\right| + C\\)\n" +
+        "For a general \\(\\sqrt{ax^2+bx+c}\\), complete the square first, then match one of these three.",
+      formula: {
+        label: "Square root of a quadratic — the three results",
+        latex:
+          "\\int \\sqrt{a^2 - x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2 - x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a} + C",
+        symbols: [
+          { symbol: "a^2 - x^2", meaning: "arcsin result" },
+          { symbol: "a^2 + x^2,\\ x^2 - a^2", meaning: "log results (signs differ)" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\sqrt{9 - x^2}\\,dx\\).",
+        steps: [
+          "Match the first result with \\(a^2 = 9\\Rightarrow a = 3\\).",
+          "\\(\\displaystyle\\int \\sqrt{9 - x^2}\\,dx = \\dfrac{x}{2}\\sqrt{9 - x^2} + \\dfrac{9}{2}\\sin^{-1}\\dfrac{x}{3} + C\\).",
+        ],
+        answer: "\\(\\dfrac{x}{2}\\sqrt{9 - x^2} + \\dfrac{9}{2}\\sin^{-1}\\dfrac{x}{3} + C\\)",
+      },
+      practiceSet: [
+        { prompt: "\\(\\int \\sqrt{a^2-x^2}\\,dx\\) uses which inverse-trig term?", answer: "\\(\\sin^{-1}(x/a)\\)" },
+        { prompt: "\\(\\int \\sqrt{x^2-a^2}\\,dx\\) — sign before the log term?", answer: "minus", method: "\\(-\\tfrac{a^2}{2}\\log|x+\\sqrt{x^2-a^2}|\\)" },
+        { prompt: "\\(\\int \\sqrt{4-x^2}\\,dx\\)", answer: "\\(\\dfrac{x}{2}\\sqrt{4-x^2} + 2\\sin^{-1}\\dfrac{x}{2} + C\\)", method: "\\(a=2\\)" },
+        { prompt: "For \\(\\int\\sqrt{x^2+16}\\,dx\\), the constant before log is?", answer: "\\(8\\)", method: "\\(a^2/2 = 16/2\\)" },
+      ],
+      traps: [
+        {
+          title: "Syllabus result, not a current bank pattern",
+          body:
+            "This bank's recent CET questions keep the square root in a DENOMINATOR (handled by the numerator-split + completing-the-square concepts). The \\(\\int\\sqrt{\\text{quadratic}}\\,dx\\) form here is on the syllabus and could appear — but don't expect it among the tagged drills, because the live bank has none yet.",
+        },
+      ],
+    },
+
+    // 5 — tabular by-parts (syllabus reference / shortcut)
+    {
+      kind: "formula" as const,
+      slug: "tabular-by-parts",
+      name: "Generalised (Tabular) By-Parts — a shortcut",
+      intuition:
+        "When the first function is a polynomial, repeated by-parts produces an alternating pattern that you can write in one line: differentiate the polynomial down to zero, integrate the other factor repeatedly, and alternate signs. It is the same answer as ordinary by-parts, faster.",
+      definition:
+        "If \\(u\\) is a polynomial (so some derivative \\(u^{(n)} = 0\\)) and \\(v\\) the second function, then " +
+        "\\(\\displaystyle\\int u\\,v\\,dx = u\\,v_1 - u'\\,v_2 + u''\\,v_3 - u'''\\,v_4 + \\cdots\\), " +
+        "where a prime is a derivative of \\(u\\) and a subscript \\(k\\) means integrate \\(v\\) \\(k\\) times. The series terminates because the polynomial's derivatives reach zero.",
+      formula: {
+        label: "Tabular by-parts series",
+        latex:
+          "\\int u\\,v\\,dx = u\\,v_1 - u'\\,v_2 + u''\\,v_3 - u'''\\,v_4 + \\cdots",
+        symbols: [
+          { symbol: "u', u'', \\ldots", meaning: "successive derivatives of the polynomial \\(u\\)" },
+          { symbol: "v_1, v_2, \\ldots", meaning: "successive integrals of \\(v\\)" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int x^2 \\cos 3x\\,dx\\) by the tabular method.",
+        steps: [
+          "Derivatives of \\(u = x^2\\): \\(x^2,\\ 2x,\\ 2,\\ 0\\). Integrals of \\(\\cos 3x\\): \\(\\tfrac13\\sin 3x,\\ -\\tfrac19\\cos 3x,\\ -\\tfrac{1}{27}\\sin 3x\\).",
+          "Alternate signs \\(+,-,+\\): \\(x^2\\cdot\\tfrac13\\sin 3x - 2x\\cdot(-\\tfrac19\\cos 3x) + 2\\cdot(-\\tfrac{1}{27}\\sin 3x)\\).",
+          "Simplify.",
+        ],
+        answer: "\\(\\dfrac{1}{3}x^2\\sin 3x + \\dfrac{2}{9}x\\cos 3x - \\dfrac{2}{27}\\sin 3x + C\\)",
+      },
+      practiceSet: [
+        { prompt: "Tabular by-parts terminates when?", answer: "a derivative of the polynomial \\(u\\) becomes 0" },
+        { prompt: "Sign pattern across the terms?", answer: "\\(+, -, +, -, \\ldots\\)" },
+        { prompt: "\\(\\int x e^x\\,dx\\) by table: derivatives \\(x,1,0\\); integrals \\(e^x, e^x\\).", answer: "\\(x e^x - e^x + C\\)" },
+        { prompt: "Which factor should be \\(u\\) (the one you differentiate)?", answer: "the polynomial", method: "so its derivatives hit zero and the series ends" },
+      ],
+      traps: [
+        {
+          title: "Only for a polynomial first function",
+          body:
+            "The shortcut relies on the polynomial's derivatives reaching zero. If neither factor is a polynomial (e.g. \\(\\int e^x\\sin x\\,dx\\)), the table never terminates — use ordinary or cyclic by-parts instead.",
+        },
+      ],
+    },
   ],
   related: [
     {
