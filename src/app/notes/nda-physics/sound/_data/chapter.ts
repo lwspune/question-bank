@@ -5,14 +5,16 @@ export const SOUND_CHAPTER: ChapterNote = {
   title: "Sound — NDA Physics",
   intro:
     "Sound is NDA Physics's lowest-HARD chapter — 34 PYQs across 2017–2025, almost entirely EASY and MODERATE. " +
-    "Two-thirds of the bank is named-fact recall (frequency bands, SONAR, ear anatomy, sound speeds in air/water/steel); " +
-    "the other third is small-formula reasoning (v = fλ, beat frequency, echo distance). " +
-    "Five subtopics, twelve concepts, every PYQ tagged to a concept — drill the table, drill the formula, walk out with the marks.",
+    "The chapter teaches in four progressive movements: " +
+    "(1) **Foundations** — what sound IS (mechanical, longitudinal, needs medium), how we PERCEIVE it (pitch, loudness, quality), and the ear chain that does the conversion (cochlea = biological mic); " +
+    "(2) **Wave equation, speed, and bands** — v = fλ, why speed depends on the medium alone, and the named frequency bands (infrasonic, audible, ultrasonic) plus the Mach scale; " +
+    "(3) **Sound behaviours** — reflection (echo + reverberation), interference (beats), and the canonical properties checklist with the polarization trap; " +
+    "(4) **Applications** — SONAR + bats + medical imaging, electronic transducers (microphone, loudspeaker, piezoelectric), and musical instruments. " +
+    "13 concepts, every PYQ tagged — drill the table, drill the formula, walk out with the marks.",
   subtopicOrder: [
-    "properties-of-sound-waves",
-    "wave-properties",
-    "sonar-and-ultrasonic",
-    "beats-instruments-ear",
-    "echo-acoustics-reverberation",
+    "foundations",
+    "wave-equation-and-bands",
+    "sound-behaviours",
+    "applications",
   ],
 };

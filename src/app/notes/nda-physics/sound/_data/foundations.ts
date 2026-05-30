@@ -1,17 +1,18 @@
 import type { SubtopicNote } from "@/app/notes/_types";
 
-export const PROPERTIES_OF_SOUND_WAVES_NOTE: SubtopicNote = {
-  subtopicName: "Properties of Sound Waves",
-  title: "Properties of Sound Waves",
+export const FOUNDATIONS_NOTE: SubtopicNote = {
+  subtopicName: "Foundations — Sound, Perception, and the Ear",
+  title: "Foundations: What Sound Is and How We Hear It",
   oneLineDefinition:
-    "Sound is a mechanical longitudinal wave — it needs a medium, propagates as compressions and rarefactions, and the same physical signal carries pitch, loudness, and timbre.",
+    "Sound is a mechanical longitudinal wave; we perceive it via three independent attributes (pitch, loudness, quality) extracted by a four-stage ear chain (pinna → eardrum → ossicles → cochlea).",
   whyItMatters:
-    "11 PYQs across 2017–2024 — the most-tested Sound subtopic and the chapter's most reliable scoring territory, all EASY or MODERATE. " +
-    "Three concepts cover everything: (1) what KIND of wave sound is and what it CANNOT do, " +
-    "(2) the perceptual triad — pitch, loudness, quality — and their physical attributes, " +
-    "(3) a quick-reference checklist of \"sound CAN reflect / cannot polarize / cannot pass through vacuum\" facts that NDA recycles every other year.",
+    "Start here. Every later concept in the chapter builds on these three ideas: " +
+    "(1) sound is mechanical + longitudinal + needs a medium (six PYQs and the most-tested family in the chapter), " +
+    "(2) the perceptual triad — pitch tracks frequency, loudness tracks amplitude, quality tracks waveform shape — explains what each property of the wave means for the listener, " +
+    "(3) the ear's signal chain converts pressure variations into nerve impulses; the cochlea is the biological microphone. " +
+    "Together: 11 PYQs, all EASY or MODERATE.",
   concepts: [
-    // Concept 1 — mechanical + longitudinal + needs medium
+    // Concept 1 — sound is a mechanical longitudinal wave
     {
       kind: "formula" as const,
       slug: "mechanical-longitudinal-wave",
@@ -50,35 +51,19 @@ export const PROPERTIES_OF_SOUND_WAVES_NOTE: SubtopicNote = {
           "Steel > Water > Air. The order is Solid > Liquid > Gas — universally true at ordinary temperatures.",
       },
       practiceSet: [
-        {
-          prompt: "Can sound travel through vacuum?",
-          answer: "No",
-          method: "no medium → no molecular collisions → no sound",
-        },
-        {
-          prompt: "Is sound a longitudinal or transverse wave?",
-          answer: "Longitudinal",
-          method: "particles oscillate parallel to wave direction",
-        },
-        {
-          prompt: "In which medium does sound travel fastest — steel, water, or air?",
-          answer: "Steel",
-          method: "solids have the highest elasticity",
-        },
-        {
-          prompt: "Is sound a mechanical wave or an electromagnetic wave?",
-          answer: "Mechanical",
-          method: "needs a material medium; not EM (light is EM, sound is mechanical)",
-        },
+        { prompt: "Can sound travel through vacuum?", answer: "No", method: "no medium → no molecular collisions → no sound" },
+        { prompt: "Is sound a longitudinal or transverse wave?", answer: "Longitudinal", method: "particles oscillate parallel to wave direction" },
+        { prompt: "In which medium does sound travel fastest — steel, water, or air?", answer: "Steel", method: "solids have the highest elasticity" },
+        { prompt: "Is sound a mechanical wave or an electromagnetic wave?", answer: "Mechanical", method: "needs a material medium; not EM (light is EM, sound is mechanical)" },
       ],
-      pyqExampleId: "cea49ac8-cf99-458e-aef9-2481bdc07dcd", // 2023 — clean test of mechanical + longitudinal
+      pyqExampleId: "cea49ac8-cf99-458e-aef9-2481bdc07dcd", // 2023 — mechanical + longitudinal
       traps: [
         {
           title: "Sound is longitudinal — and that's exactly why it CANNOT polarize",
           body:
             "Polarization is a phenomenon of TRANSVERSE waves only — it restricts the plane of oscillation perpendicular to wave direction. " +
             "Sound oscillates ALONG the wave direction, so there is no perpendicular plane to polarize. " +
-            "NDA recycles this as a \"which of the following does NOT apply to sound waves\" trap.",
+            "(The full \"what sound can/can't do\" trap-row table is in Subtopic 3.)",
         },
         {
           title: "Sound vs light — both waves, but VERY different",
@@ -130,22 +115,11 @@ export const PROPERTIES_OF_SOUND_WAVES_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Pitch depends on which physical attribute of the sound wave?", answer: "Frequency" },
-        {
-          prompt: "Loudness depends on which physical attribute?",
-          answer: "Amplitude",
-          method: "intensity \\(\\propto A^2\\) drives perceived loudness",
-        },
-        {
-          prompt: "What distinguishes two instruments playing the same note at the same volume?",
-          answer: "Quality / timbre (waveform shape)",
-        },
-        {
-          prompt: "If a sound's pitch doubles, what happens to its frequency?",
-          answer: "Doubles",
-          method: "pitch ↔ frequency directly",
-        },
+        { prompt: "Loudness depends on which physical attribute?", answer: "Amplitude", method: "intensity \\(\\propto A^2\\) drives perceived loudness" },
+        { prompt: "What distinguishes two instruments playing the same note at the same volume?", answer: "Quality / timbre (waveform shape)" },
+        { prompt: "If a sound's pitch doubles, what happens to its frequency?", answer: "Doubles", method: "pitch ↔ frequency directly" },
       ],
-      pyqExampleId: "ff10ece4-ea24-4e4b-841d-c64a4178af19", // 2018 — clean pitch/loudness mapping test
+      pyqExampleId: "ff10ece4-ea24-4e4b-841d-c64a4178af19", // 2018 — pitch/loudness mapping
       traps: [
         {
           title: "Amplitude is measured in pressure (Pa), NOT decibels",
@@ -163,141 +137,88 @@ export const PROPERTIES_OF_SOUND_WAVES_NOTE: SubtopicNote = {
       ],
     },
 
-    // Concept 3 — reference: properties checklist of sound
+    // Concept 3 — human ear chain (REFERENCE)
     {
       kind: "reference" as const,
-      slug: "sound-properties-checklist",
-      name: "What sound CAN and CANNOT do — properties checklist",
+      slug: "human-ear-chain",
+      name: "The human ear — anatomy chain that converts pressure to nerve impulses",
       intuition:
-        "NDA recycles the same handful of \"which of the following is NOT correct about sound\" questions every other year — the distractor is always one of the canonical wave properties. " +
-        "Memorise this table once and the entire \"properties\" question family collapses to a lookup: every row is a property that either applies to sound (because it is a wave) or fails (because it is longitudinal / mechanical).",
+        "Now that you know what sound IS and how we PERCEIVE it (pitch/loudness/quality), the natural next question is HOW the ear actually does that conversion. " +
+        "The answer is a four-stage chain: outer ear catches sound, the eardrum converts it to mechanical vibration, three tiny bones amplify it, and the cochlea finally converts it to nerve signals. " +
+        "Each stage performs a specific physical transformation — memorise the chain and the NDA recall questions become a lookup.",
       definition:
-        "Properties sound SHARES with all waves (reflection, refraction, diffraction, interference, resonance, Doppler) plus the two properties it lacks (polarization, propagation through vacuum), plus the medium-dependence quick facts. Drill the table top-to-bottom; the **bold-NO** rows are the trap rows.",
+        "Five labelled parts of the ear in signal order. The single most-tested fact is **cochlea = the mechanical → electrical converter** (it's the biological microphone).",
+      visualizationSlug: "ear-anatomy",
       table: {
-        columns: ["Property / behaviour", "Sound?", "Why"],
+        columns: ["Part", "Function / mechanism", "Note"],
         rows: [
           {
             cells: [
-              "Reflection (echoes)",
-              "Yes",
-              "All waves reflect off a hard boundary",
+              "**Pinna (outer ear)**",
+              "Funnels sound into the ear canal",
+              "Acoustic collector — no signal conversion",
             ],
           },
           {
             cells: [
-              "Refraction",
-              "Yes",
-              "Speed changes between media \\(\\Rightarrow\\) wave bends",
+              "**Eardrum (tympanic membrane)**",
+              "Sound waves \\(\\to\\) mechanical vibration",
+              "Thin membrane at the end of the ear canal",
             ],
           },
           {
             cells: [
-              "Diffraction",
-              "Yes",
-              "Bends around obstacles when obstacle size \\(\\approx \\lambda\\)",
+              "**Ossicles (malleus, incus, stapes)**",
+              "Mechanical amplification & impedance matching",
+              "Three tiny bones in the middle ear",
             ],
           },
           {
             cells: [
-              "Interference (beats)",
-              "Yes",
-              "Two waves superpose \\(\\Rightarrow\\) alternating loud/soft",
-            ],
-          },
-          { cells: ["Resonance", "Yes", "Forced oscillation at the natural frequency"] },
-          {
-            cells: [
-              "Doppler effect",
-              "Yes",
-              "Observed pitch shifts with source/observer motion",
-            ],
-          },
-          {
-            cells: [
-              "**Polarization**",
-              "**NO**",
-              "Polarization requires a TRANSVERSE wave; sound is **longitudinal**",
+              "**Cochlea**",
+              "Mechanical pressure \\(\\to\\) electrical (nerve impulses)",
+              "Fluid-filled spiral in the inner ear — the biological mic",
             ],
             noteAmber:
-              "The single most-tested NDA trap — \"polarization applies to sound\" is always WRONG.",
+              "NDA 2022 Sep — the pressure \\(\\to\\) electrical converter IS the cochlea (not the eardrum, ossicles, or auditory nerve).",
           },
           {
             cells: [
-              "**Travel through vacuum**",
-              "**NO**",
-              "No medium \\(\\Rightarrow\\) no molecular collisions \\(\\Rightarrow\\) no propagation",
+              "**Auditory nerve**",
+              "Carries nerve signals from cochlea to brain",
+              "Transmission, not conversion",
             ],
-          },
-          {
-            cells: [
-              "Travel through gases / liquids / solids",
-              "Yes",
-              "Any elastic medium works; speed: solid > liquid > gas",
-            ],
-          },
-          {
-            cells: [
-              "Speed depends on temperature (in gas)",
-              "Yes",
-              "\\(v \\propto \\sqrt{T}\\) — grows as gas warms",
-            ],
-          },
-          {
-            cells: [
-              "Speed depends on pressure (at constant T)",
-              "**NO**",
-              "In \\(v = \\sqrt{\\gamma P / \\rho}\\), \\(P\\) and \\(\\rho\\) move together \\(\\Rightarrow\\) cancel",
-            ],
-            noteAmber:
-              "Tested in 2026 NDA-1: \"pressure doubled at constant T, speed becomes y, find x/y\" — answer 1.",
           },
         ],
         caption:
-          "Rows 7 (polarization) and 11 (pressure independence) account for the bulk of the bank's \"which is NOT correct\" distractors.",
+          "Each stage performs a distinct physical conversion. Distractors swap the cochlea (the converter) with the eardrum (mechanical-only) or the auditory nerve (transmission-only).",
       },
       selfCheckExample: {
         prompt:
-          "Spot the wrong statement: " +
-          "(a) Sound can be reflected off a hard wall. " +
-          "(b) Sound can be refracted between hot and cold air layers. " +
-          "(c) Sound can be polarized. " +
-          "(d) Sound can show interference and beats.",
+          "Order the four ear structures by the path a sound signal takes through them: eardrum, cochlea, ossicles, pinna. Then say which one converts pressure to electrical signals.",
         steps: [
-          "Reflection (a): TRUE — echoes.",
-          "Refraction (b): TRUE — speed changes with temperature, so sound bends between layers.",
-          "Polarization (c): **FALSE**. Polarization requires a transverse wave. Sound is longitudinal — no perpendicular plane to polarize.",
-          "Interference (d): TRUE — two close-frequency waves superpose to give beats.",
+          "Sound first enters the OUTER ear and is funnelled by the PINNA.",
+          "It hits the EARDRUM and is converted to mechanical vibration.",
+          "Three OSSICLES (malleus, incus, stapes) amplify the vibration and pass it inward.",
+          "The COCHLEA converts mechanical pressure to electrical nerve impulses, which the auditory nerve sends to the brain.",
         ],
-        answer: "(c) — sound CANNOT be polarized because it is longitudinal.",
+        answer:
+          "Pinna → Eardrum → Ossicles → Cochlea. The COCHLEA is the pressure-to-electrical converter.",
       },
       practiceSet: [
-        {
-          prompt: "Can sound waves be polarized? Why or why not?",
-          answer: "No — sound is longitudinal; polarization needs a transverse wave",
-        },
-        {
-          prompt: "Does the speed of sound in a gas depend on its pressure (temperature held constant)?",
-          answer: "No",
-          method: "in \\(v = \\sqrt{\\gamma P / \\rho}\\), \\(P\\) and \\(\\rho\\) cancel",
-        },
-        {
-          prompt: "Can ultrasonic waves be reflected and refracted like ordinary sound?",
-          answer: "Yes",
-          method: "ultrasonic is just sound at \\(f > 20\\) kHz — same properties",
-        },
-        {
-          prompt: "Does the speed of sound in air increase with temperature?",
-          answer: "Yes",
-          method: "\\(v \\propto \\sqrt{T}\\) in a gas",
-        },
+        { prompt: "Which part of the human ear converts pressure variations into electrical signals?", answer: "Cochlea" },
+        { prompt: "What converts sound waves into mechanical vibration in the ear?", answer: "Eardrum (tympanic membrane)" },
+        { prompt: "What do the three ossicles (malleus, incus, stapes) do?", answer: "Amplify mechanical vibration", method: "they bridge eardrum to cochlea, providing impedance matching" },
+        { prompt: "Where does the perception of pitch / loudness physically happen?", answer: "In the brain, on signals sent by the cochlea via the auditory nerve" },
       ],
-      pyqExampleId: "a1a79c30-d832-4e27-8078-039540b534ab", // 2017 — clean "ultrasonic CAN reflect/refract" trap
+      pyqExampleId: "320c7419-1213-45e6-a2d1-0a001a90a08d", // 2022 MOD — cochlea question
       traps: [
         {
-          title: "Ultrasonic obeys the same property rules as audible sound",
+          title: "Cochlea, not eardrum, is the mechanical \\(\\to\\) electrical converter",
           body:
-            "Ultrasonic = above 20 kHz. Other than the frequency band, it is ordinary sound — it CAN reflect, refract, diffract, get absorbed, AND it cannot polarize / cannot travel in vacuum. " +
-            "A distractor saying \"ultrasonic cannot be reflected, refracted, or absorbed\" is always WRONG.",
+            "The EARDRUM converts sound to MECHANICAL vibration (acoustic to mechanical). " +
+            "The OSSICLES amplify mechanical vibration mechanically. " +
+            "The COCHLEA is where mechanical pressure finally becomes ELECTRICAL nerve impulses. Three distinct stages — distractors often swap them.",
         },
       ],
     },

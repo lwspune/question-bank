@@ -1,16 +1,16 @@
 import type { SubtopicNote } from "@/app/notes/_types";
 
-export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
-  // DB subtopic name — must match the live taxonomy exactly.
-  subtopicName: "Wave Properties (Frequency, Wavelength, Speed)",
-  title: "Frequency, Wavelength, Speed — and Frequency Bands",
+export const WAVE_EQUATION_AND_BANDS_NOTE: SubtopicNote = {
+  subtopicName: "Wave Equation, Speed, and Frequency Bands",
+  title: "How We Measure Sound — v = fλ, Speed, and the Frequency Bands",
   oneLineDefinition:
-    "The wave equation v = fλ relates the three quantities that describe any sound — and a small set of named bands and scales (audible, ultrasonic, Mach, decibel) carries most of this subtopic's recall load.",
+    "Three quantities describe any sound — frequency, wavelength, speed — tied by v = fλ. Speed is set by the medium (not by frequency, not by pressure at constant T). The named regions on the frequency axis (infrasonic, audible, ultrasonic) are just bands.",
   whyItMatters:
-    "11 PYQs across 2017–2026, mostly EASY plus 4 MODERATE. " +
-    "Three concepts cover everything: (1) the wave equation v = fλ and what frequency / period / Hz actually mean, " +
-    "(2) the standout result that speed is a property of the MEDIUM (it does not depend on the wave's own frequency, and at constant temperature it does not depend on pressure either), " +
-    "(3) a flat reference of the bands and scales NDA recycles — audible 20 Hz to 20 kHz, ultrasonic above 20 kHz, Mach number, typical sound speeds in air/water/steel, plus the Richter scale that shows up here as a related GK item.",
+    "Now that you can identify sound, you need to MEASURE it. 13 PYQs cluster around three ideas: " +
+    "(1) the wave equation v = fλ and what hertz / period / decibel mean, " +
+    "(2) the standout result that speed depends on the MEDIUM only (it does not change with frequency, and at constant T it does not change with pressure either), " +
+    "(3) the bands and named scales NDA recycles — 20 Hz – 20 kHz audible, > 20 kHz ultrasonic, the Mach number, typical sound speeds in air / water / steel, plus the Richter scale GK item. " +
+    "Mostly EASY plus four MODERATE.",
   concepts: [
     // Concept 1 — wave equation + units
     {
@@ -56,28 +56,12 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
         answer: "3 cycles per second; \\(T = 1/3\\) s.",
       },
       practiceSet: [
-        {
-          prompt: "If \\(f = 200\\) Hz and \\(\\lambda = 1.5\\) m, find \\(v\\).",
-          answer: "\\(300\\) m/s",
-          method: "\\(v = f\\lambda = 200 \\times 1.5\\)",
-        },
-        {
-          prompt: "If \\(v = 340\\) m/s and \\(f = 170\\) Hz, find \\(\\lambda\\).",
-          answer: "\\(2\\) m",
-          method: "\\(\\lambda = v/f\\)",
-        },
-        {
-          prompt: "If \\(f = 50\\) Hz, what is the period?",
-          answer: "\\(0.02\\) s (20 ms)",
-          method: "\\(T = 1/f\\)",
-        },
-        {
-          prompt: "Which is NOT a unit of frequency: Hz, s⁻¹, min⁻¹, dB?",
-          answer: "dB",
-          method: "dB measures intensity level, not frequency",
-        },
+        { prompt: "If \\(f = 200\\) Hz and \\(\\lambda = 1.5\\) m, find \\(v\\).", answer: "\\(300\\) m/s", method: "\\(v = f\\lambda = 200 \\times 1.5\\)" },
+        { prompt: "If \\(v = 340\\) m/s and \\(f = 170\\) Hz, find \\(\\lambda\\).", answer: "\\(2\\) m", method: "\\(\\lambda = v/f\\)" },
+        { prompt: "If \\(f = 50\\) Hz, what is the period?", answer: "\\(0.02\\) s (20 ms)", method: "\\(T = 1/f\\)" },
+        { prompt: "Which is NOT a unit of frequency: Hz, s⁻¹, min⁻¹, dB?", answer: "dB", method: "dB measures intensity level, not frequency" },
       ],
-      pyqExampleId: "8da91884-a246-4048-9abe-1aebaf27af39", // 2022 — clean v = fλ application
+      pyqExampleId: "8da91884-a246-4048-9abe-1aebaf27af39", // 2022 — v = fλ application
       traps: [
         {
           title: "dB measures intensity LEVEL — not frequency, not amplitude",
@@ -89,12 +73,12 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
         {
           title: "3 Hz means 3 cycles per second — full cycles, not half or quarter",
           body:
-            "Hz is defined as one COMPLETE cycle per second. 3 Hz = 3 complete cycles per second, NOT 6 cycles (one per half-cycle counted twice) and NOT 1.5 cycles.",
+            "Hz is defined as one COMPLETE cycle per second. 3 Hz = 3 complete cycles per second, NOT 6 cycles and NOT 1.5 cycles.",
         },
       ],
     },
 
-    // Concept 2 — speed of sound depends on medium properties only
+    // Concept 2 — speed depends on medium
     {
       kind: "formula" as const,
       slug: "speed-medium-only",
@@ -113,7 +97,7 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "\\gamma", meaning: "adiabatic index (\\(C_p/C_v\\))" },
           { symbol: "P", meaning: "pressure (Pa)" },
-          { symbol: "\\rho", meaning: "density (kg/m³)" },
+          { symbol: "\\rho", meaning: "density (kg/m^3)" },
           { symbol: "T", meaning: "absolute temperature (K)" },
           { symbol: "M", meaning: "molar mass (kg/mol)" },
         ],
@@ -142,28 +126,12 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
           "Neither — both travel at the same speed. Speed depends on the medium, not on frequency.",
       },
       practiceSet: [
-        {
-          prompt: "Does the speed of sound in air depend on the wave's frequency?",
-          answer: "No",
-          method: "speed is set by the medium (T, density)",
-        },
-        {
-          prompt: "Does the speed of sound in a gas depend on its pressure at constant temperature?",
-          answer: "No",
-          method: "\\(P\\) and \\(\\rho\\) cancel in \\(v = \\sqrt{\\gamma P/\\rho}\\)",
-        },
-        {
-          prompt: "Does the speed of sound in air increase or decrease with temperature?",
-          answer: "Increases",
-          method: "\\(v \\propto \\sqrt{T}\\) in a gas",
-        },
-        {
-          prompt: "Rank speed of sound in steel, water, and air, fastest first.",
-          answer: "Steel > Water > Air",
-          method: "solid > liquid > gas",
-        },
+        { prompt: "Does the speed of sound in air depend on the wave's frequency?", answer: "No", method: "speed is set by the medium (T, density)" },
+        { prompt: "Does the speed of sound in a gas depend on its pressure at constant temperature?", answer: "No", method: "\\(P\\) and \\(\\rho\\) cancel in \\(v = \\sqrt{\\gamma P/\\rho}\\)" },
+        { prompt: "Does the speed of sound in air increase or decrease with temperature?", answer: "Increases", method: "\\(v \\propto \\sqrt{T}\\) in a gas" },
+        { prompt: "Rank speed of sound in steel, water, and air, fastest first.", answer: "Steel > Water > Air", method: "solid > liquid > gas" },
       ],
-      pyqExampleId: "4d92e75e-1222-4d5b-8ccc-d49e87845cce", // 2026 — clean "P doubled at const T → x/y = 1" test
+      pyqExampleId: "4d92e75e-1222-4d5b-8ccc-d49e87845cce", // 2026 — P doubled at const T → x/y = 1
       traps: [
         {
           title: "Pressure dependence trap — P only matters via T",
@@ -186,13 +154,14 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
       ],
     },
 
-    // Concept 3 — reference: frequency bands, sound speeds, Mach + scales
+    // Concept 3 — frequency bands + scales (REFERENCE, merged from old frequency-bands + ultrasonic-band)
     {
       kind: "reference" as const,
       slug: "frequency-bands-and-scales",
-      name: "Bands and scales — audible / ultrasonic, Mach, sound speeds, decibel, Richter",
+      name: "Bands and scales — audible / infra / ultrasonic, Mach, sound speeds, decibel, Richter",
       intuition:
-        "A handful of named bands and scales come up here every other paper — the audible frequency range, the ultrasonic threshold, the Mach number labels (subsonic / sonic / supersonic / hypersonic), typical sound speeds in air / water / steel, plus what dB and Richter actually measure. " +
+        "A handful of named bands and scales come up here every other paper — the audible frequency range (20 Hz – 20 kHz), the ultrasonic threshold, the Mach number labels (subsonic / sonic / supersonic / hypersonic), typical sound speeds in air / water / steel, plus what dB and Richter actually measure. " +
+        "Ultrasonic is just sound above the audible band — same speed in the same medium (per Subtopic 2's speed-medium-only result), shorter wavelength, higher frequency. " +
         "Memorise the table once and these recall questions become a lookup.",
       definition:
         "Six clusters of named numbers, all tested at EASY level. Drill the boundary numbers (20 Hz, 20 kHz, Mach 1) cold; the typical-speed numbers (340 / 1500 / 5000 m/s) are the most-repeated quantitative recall in the chapter.",
@@ -200,89 +169,53 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
       table: {
         columns: ["What", "Value / range", "Note"],
         rows: [
+          { cells: ["**Audible** frequency range (human ear)", "**20 Hz to 20 000 Hz**", "Drilled most years — memorise both endpoints"] },
+          { cells: ["**Infrasonic**", "< 20 Hz", "Below the lower limit of human hearing — whales, earthquakes"] },
+          { cells: ["**Ultrasonic**", "> 20 000 Hz (> 20 kHz)", "Bats, SONAR, medical imaging — applications in Subtopic 4"] },
           {
-            cells: ["**Audible** frequency range (human ear)", "**20 Hz to 20 000 Hz**", "Drilled most years — memorise both endpoints"],
+            cells: [
+              "Ultrasonic vs audible (same medium)",
+              "Same speed, higher f, shorter \\(\\lambda\\)",
+              "From \\(v = f\\lambda\\): \\(v\\) is medium-set; higher \\(f \\Rightarrow\\) shorter \\(\\lambda\\)",
+            ],
+            noteAmber: "Distractors pair higher frequency with higher SPEED — wrong; speed is set by the medium.",
           },
-          {
-            cells: ["**Infrasonic**", "< 20 Hz", "Below the lower limit of human hearing"],
-          },
-          {
-            cells: ["**Ultrasonic**", "> 20 000 Hz (> 20 kHz)", "Bats, SONAR, medical imaging"],
-          },
-          {
-            cells: ["Speed of sound in **air** (\\(20°\\)C)", "\\(\\approx 340\\) m/s", "Standard round number — memorise"],
-          },
-          {
-            cells: ["Speed of sound in **water** (\\(20°\\)C)", "\\(\\approx 1500\\) m/s", "Tested in 2019: distractors at 330 / 800 / 5000"],
-          },
-          {
-            cells: ["Speed of sound in **steel**", "\\(\\approx 5000\\) m/s", "Solid > liquid > gas"],
-          },
-          {
-            cells: ["**Mach number**", "object speed / sound speed", "Compares object's speed to local sound speed"],
-          },
-          {
-            cells: ["Mach < 1", "**Subsonic**", "Most everyday motion (cars, propeller aircraft)"],
-          },
-          {
-            cells: ["Mach = 1", "**Sonic / transonic**", "At the speed of sound — sonic boom region"],
-          },
+          { cells: ["Speed of sound in **air** (\\(20°\\)C)", "\\(\\approx 340\\) m/s", "Standard round number — memorise"] },
+          { cells: ["Speed of sound in **water** (\\(20°\\)C)", "\\(\\approx 1500\\) m/s", "Tested in 2019: distractors at 330 / 800 / 5000"] },
+          { cells: ["Speed of sound in **steel**", "\\(\\approx 5000\\) m/s", "Solid > liquid > gas"] },
+          { cells: ["**Mach number**", "object speed / sound speed", "Compares object's speed to local sound speed"] },
+          { cells: ["Mach < 1", "**Subsonic**", "Most everyday motion (cars, propeller aircraft)"] },
+          { cells: ["Mach = 1", "**Sonic / transonic**", "At the speed of sound — sonic boom region"] },
           {
             cells: ["Mach > 1", "**Supersonic**", "Faster than sound (fighter jets, Concorde)"],
             noteAmber: "NDA 2017 tested exactly this — Mach > 1 means supersonic.",
           },
-          {
-            cells: ["Mach > 5", "**Hypersonic**", "Re-entry vehicles, scramjets"],
-          },
-          {
-            cells: ["**Decibel (dB)**", "log scale of intensity ratio", "Unit of intensity LEVEL — NOT a unit of frequency or amplitude"],
-          },
-          {
-            cells: ["**Richter scale**", "log scale of earthquake energy", "Devised 1935 by C.F. Richter; no upper limit (though > 9.5 is rare)"],
-          },
+          { cells: ["Mach > 5", "**Hypersonic**", "Re-entry vehicles, scramjets"] },
+          { cells: ["**Decibel (dB)**", "log scale of intensity ratio", "Unit of intensity LEVEL — NOT a unit of frequency or amplitude"] },
+          { cells: ["**Richter scale**", "log scale of earthquake energy", "Devised 1935 by C.F. Richter; no upper limit (though > 9.5 is rare)"] },
         ],
         caption:
           "The audible-range endpoints (20 Hz, 20 kHz) and the speed-in-water number (\\(\\approx 1500\\) m/s) are the most-tested rows — they appear almost yearly.",
       },
       selfCheckExample: {
         prompt:
-          "Sort these four quantities by typical magnitude, smallest to largest: " +
-          "(i) human audible range upper limit, (ii) speed of sound in air, " +
-          "(iii) speed of sound in water, (iv) speed of sound in steel.",
+          "Compared to audible sound waves at the same temperature in the same air, ultrasonic waves have ___ frequency, ___ wavelength, and ___ speed.",
         steps: [
-          "(i) 20 000 Hz (= 20 kHz, in hertz not m/s).",
-          "(ii) 340 m/s in air.",
-          "(iii) 1500 m/s in water.",
-          "(iv) 5000 m/s in steel.",
-          "Note (i) is in Hz; the other three are in m/s — can't compare numerically across units. " +
-          "Just by m/s value: air (340) < water (1500) < steel (5000).",
+          "By definition, ultrasonic has HIGHER frequency than audible (\\(> 20\\) kHz vs \\(\\le\\) 20 kHz).",
+          "Speed of sound depends on medium + temperature, NOT on frequency — so same speed.",
+          "From \\(v = f\\lambda\\): same \\(v\\), higher \\(f \\Rightarrow\\) SHORTER wavelength.",
         ],
-        answer:
-          "By m/s: air < water < steel. The 20 kHz value is in different units (Hz) and isn't comparable.",
+        answer: "Higher frequency, shorter wavelength, SAME speed.",
       },
       practiceSet: [
-        {
-          prompt: "The human audible frequency range is approximately ___ to ___ Hz.",
-          answer: "20 Hz to 20 000 Hz",
-        },
-        {
-          prompt: "Sound waves above 20 kHz are called ___.",
-          answer: "Ultrasonic",
-        },
-        {
-          prompt: "Approximate speed of sound in water at 20°C?",
-          answer: "\\(\\approx 1500\\) m/s",
-        },
-        {
-          prompt: "A body with Mach number > 1 is called ___.",
-          answer: "Supersonic",
-        },
-        {
-          prompt: "Decibel measures ___ (frequency / amplitude / intensity level)?",
-          answer: "Intensity level",
-        },
+        { prompt: "The human audible frequency range is approximately ___ to ___ Hz.", answer: "20 Hz to 20 000 Hz" },
+        { prompt: "Sound waves above 20 kHz are called ___.", answer: "Ultrasonic" },
+        { prompt: "Sound waves below 20 Hz are called ___.", answer: "Infrasonic" },
+        { prompt: "Approximate speed of sound in water at 20°C?", answer: "\\(\\approx 1500\\) m/s" },
+        { prompt: "A body with Mach number > 1 is called ___.", answer: "Supersonic" },
+        { prompt: "Decibel measures ___ (frequency / amplitude / intensity level)?", answer: "Intensity level" },
       ],
-      pyqExampleId: "0d4b177e-8cac-45ac-b4f2-af4c27503d3c", // 2018 — clean audible range test
+      pyqExampleId: "0d4b177e-8cac-45ac-b4f2-af4c27503d3c", // 2018 — audible range
       traps: [
         {
           title: "Audible range: 20 Hz to 20 kHz — NOT 0 Hz to 20 kHz",
@@ -299,6 +232,12 @@ export const WAVE_PROPERTIES_NOTE: SubtopicNote = {
           title: "Mach > 1 is SUPERsonic, not SUBsonic",
           body:
             "Subsonic = slower than sound (Mach < 1). Supersonic = faster than sound (Mach > 1). Hypersonic kicks in around Mach 5. Easy to flip under exam pressure.",
+        },
+        {
+          title: "Ultrasonic does NOT travel faster than audible sound",
+          body:
+            "Higher frequency does NOT imply higher speed — speed is set by the medium (this is the Subtopic 2 result). " +
+            "From \\(v = f\\lambda\\): higher \\(f\\) only shrinks \\(\\lambda\\); \\(v\\) is fixed.",
         },
       ],
     },
