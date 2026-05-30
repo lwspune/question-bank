@@ -1,6 +1,15 @@
 /**
  * Notes integrity check (Phase 2 — DB-tag aware).
  *
+ * Static (no-DB) pre-check, runs first:
+ *   0. Subtopic slug GLOBALLY unique across ALL chapters. `question_concept_tags`
+ *      keys on `subtopic_slug` alone (no chapter/subject column), and
+ *      `loadConceptDrills` + the mastery checkpoint filter by it alone — so two
+ *      chapters sharing a slug (e.g. `foundations`) cross-contaminate each
+ *      other's drills + checkpoints. This catches the collision at build time,
+ *      BEFORE any tag is inserted (the DB checks below only catch it after).
+ *      See CLAUDE.md "Recurring pitfalls".
+ *
  * For each /notes data module, validates against live Supabase state:
  *   1. The note's subtopicName resolves under (exam, subject, chapter)
  *      → catches silent breakage when the taxonomy is renamed or merged.
@@ -77,6 +86,30 @@ async function main() {
   const supabase = createClient(url, key);
 
   const issues: Issue[] = [];
+
+  // 0. GLOBAL subtopic-slug uniqueness (static, no DB). question_concept_tags
+  //    keys on subtopic_slug alone, so a slug reused by two chapters silently
+  //    cross-contaminates their drill lists + mastery checkpoints. Catch it
+  //    here (build time) rather than after tags are inserted.
+  const slugOwners = new Map<string, string[]>();
+  for (const c of NOTES_CHAPTERS) {
+    for (const slug of c.slugs) {
+      const owners = slugOwners.get(slug) ?? [];
+      owners.push(`${c.subjectRoute}/${c.chapterSlug}`);
+      slugOwners.set(slug, owners);
+    }
+  }
+  for (const [slug, owners] of slugOwners) {
+    if (owners.length > 1) {
+      issues.push({
+        severity: "error",
+        note: "GLOBAL",
+        message: `subtopic slug "${slug}" is shared by ${owners.length} chapters (${owners.join(
+          ", "
+        )}) — subtopic slugs MUST be globally unique because question_concept_tags keys on subtopic_slug alone`,
+      });
+    }
+  }
 
   for (const ref of NOTES) {
     // 1. Resolve subtopic via the same name-keyed path the page uses at request time.
