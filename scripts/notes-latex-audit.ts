@@ -19,9 +19,13 @@ const delimImbalance: Hit[] = [];
 const unicodeCounts = new Map<string, { count: number; sample: string }>();
 
 const hasLatexMarkup = (s: string) => /\\\(|\\\)|\\\[|\\\]|\\[a-zA-Z]/.test(s);
+// Plain-text fields render raw (no KatexRenderer / RichText), so Markdown
+// emphasis leaks literally too: `**bold**` and leading `- ` bullet markers.
+const hasMarkdownMarkup = (s: string) => /\*\*/.test(s) || /(^|\n)\s*-\s/.test(s);
 
 function checkPlain(where: string, s: string | undefined) {
-  if (s && hasLatexMarkup(s)) plainLeaks.push({ where, detail: s.slice(0, 90) });
+  if (s && (hasLatexMarkup(s) || hasMarkdownMarkup(s)))
+    plainLeaks.push({ where, detail: s.slice(0, 90) });
 }
 
 function checkDelims(where: string, s: string | undefined) {
