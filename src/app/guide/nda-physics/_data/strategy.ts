@@ -88,7 +88,7 @@ export const RECALL_STRAND: StrategyStrand = {
     "Pure fact recall — definitions, names, units, instrument identification, scientist–discovery pairs, EM spectrum order. 79 q at an average of 2% HARD. The single highest marks-per-hour strand in the bank. Don't be too cool to drill these — Modern Physics has 0 HARD across 10 years, Astronomy has 0 HARD across 4 q.",
   approach: [
     "Read /guide/nda-physics/formulas once for the formula list, but the Recall strand needs almost none of them. The work here is flashcards + statement-truth practice.",
-    "Sound is bigger than you think (34 q). Drill all 5 subtopics: properties (amplitude/pitch/loudness mapping), wave properties (v=fλ in air), SONAR + ultrasonic uses, ear anatomy, echo formula.",
+    "Sound is bigger than you think (34 q). Drill all 4 subtopics: foundations (what sound is, pitch/loudness/quality, the ear), the wave equation v=fλ + speed + frequency bands, sound behaviours (echo, reverberation, beats), and applications (SONAR, transducers, instruments).",
     "Modern Physics is tiny (25 q) but rewards memorisation discipline: 12 scientist–discovery pairs across 10 years (Chadwick=neutron, Einstein=photoelectric, Marie Curie=radium); the 5 acronym expansions (LED, LASER, NMR, MRI, MASER); the 3-tier atomic-model history.",
   ],
   chapters: [
@@ -98,16 +98,15 @@ export const RECALL_STRAND: StrategyStrand = {
       pctHard: 3,
       posture: "drill-all",
       mustDrill: [
-        "Properties of Sound Waves",
-        "Wave Properties (Frequency, Wavelength, Speed)",
-        "SONAR and Ultrasonic",
-        "Beats, Musical Instruments and Human Ear",
-        "Echo, Acoustics and Reverberation",
+        "Foundations — Sound, Perception, and the Ear",
+        "Wave Equation, Speed, and Frequency Bands",
+        "Sound Behaviours — Reflection, Echo, Reverberation, Beats",
+        "Applications — SONAR, Transducers, Instruments",
       ],
       expectedYieldPerPaper: "3–4 marks",
       studyHours: 4,
       summary:
-        "34 q / 1 HARD in 10 yrs. Every subtopic at ≤15% HARD. Drill all five subtopics — there's no skip-list.",
+        "34 q / 1 HARD in 10 yrs. Every subtopic at ≤15% HARD. Drill all four subtopics — there's no skip-list.",
     },
     {
       chapter: "Modern Physics",

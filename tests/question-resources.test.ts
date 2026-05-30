@@ -152,7 +152,7 @@ describe("getQuestionResources — NDA Physics (chapter-grain playbooks)", () =>
       examName: "NDA",
       subjectName: "Physics",
       chapterName: "Sound",
-      subtopicName: "SONAR and Ultrasonic",
+      subtopicName: "Applications — SONAR, Transducers, Instruments",
     });
     expect(res.guide).not.toBeNull();
     expect(res.guide!.href).toBe("/guide/nda-physics/playbooks/sound");
@@ -424,7 +424,7 @@ describe("getQuestionResources — principle-tag override (Tier 1.5)", () => {
         examName: "NDA",
         subjectName: "Physics",
         chapterName: "Sound",
-        subtopicName: "SONAR and Ultrasonic",
+        subtopicName: "Applications — SONAR, Transducers, Instruments",
       },
       {
         principleSlugs: ["am-gm-mean-inequalities"],

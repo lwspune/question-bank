@@ -160,7 +160,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 7.6,
     pctHard: 3,
     focus:
-      "Properties of Sound Waves (11), Wave Properties—f/λ/v (11), SONAR+Ultrasonic (5), Beats+Instruments+Human Ear (4), Echo+Acoustics (3). The bank's lowest-HARD chapter.",
+      "Foundations—sound/perception/ear (11), Wave Equation+Speed+Bands (13), Sound Behaviours—echo/reverb/beats (5), Applications—SONAR/transducers/instruments (5). The bank's lowest-HARD chapter.",
   },
   {
     chapter: "Modern Physics",
