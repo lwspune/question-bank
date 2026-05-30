@@ -508,7 +508,7 @@ export const DOMAINS: Domain[] = [
         name: "P(at least one) = 1 − P(none)",
         qCount: 18,
         summary: "When 'at least one X' is the question, complement is almost always faster.",
-        drill: [{ chapter: "Probability", subtopic: "Probability with Dice" }],
+        drill: [{ chapter: "Probability", subtopic: "Probability via Counting" }],
       },
       {
         name: "Binomial distribution B(n, p)",
@@ -520,7 +520,7 @@ export const DOMAINS: Domain[] = [
         name: "Probability with stock constructs (dice, coins, balls)",
         qCount: 18,
         summary: "Same skeleton, different surface. Recognise the sample-space template.",
-        drill: [{ chapter: "Probability", subtopic: "Probability with Dice" }],
+        drill: [{ chapter: "Probability", subtopic: "Probability via Counting" }],
       },
     ],
   },

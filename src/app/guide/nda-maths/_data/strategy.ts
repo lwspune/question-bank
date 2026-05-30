@@ -104,7 +104,6 @@ export const TIER_A: TierChapter[] = [
     pctHard: 17,
     mustDrill: [
       "Probability via Counting",
-      "Probability with Dice",
       "Independent Events",
     ],
     skipSubtopics: [
