@@ -13,8 +13,10 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
+import { buildConceptWeightTable } from "@/lib/notes/conceptWeight";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
+import ConceptWeightTable from "./ConceptWeightTable";
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
@@ -65,6 +67,44 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       countsBySubtopic.set(id, (countsBySubtopic.get(id) ?? 0) + 1);
     }
   }
+
+  // Per-concept PYQ counts for the weightage table. Tags are keyed by
+  // subtopic_slug (globally unique) — RLS scopes anon to tags on PUBLIC
+  // questions only, matching the questions-table counts above.
+  const countsByConcept = new Map<string, number>();
+  if (meta.subtopicOrder.length > 0) {
+    const { data } = await supabase
+      .from("question_concept_tags")
+      .select("subtopic_slug, concept_slug")
+      .in("subtopic_slug", meta.subtopicOrder as string[]);
+    for (const row of data ?? []) {
+      const r = row as { subtopic_slug: string; concept_slug: string };
+      const k = `${r.subtopic_slug}::${r.concept_slug}`;
+      countsByConcept.set(k, (countsByConcept.get(k) ?? 0) + 1);
+    }
+  }
+  const chapterTotalPyqs = Array.from(countsBySubtopic.values()).reduce(
+    (a, n) => a + n,
+    0
+  );
+  const conceptWeightGroups = buildConceptWeightTable(
+    meta.subtopicOrder
+      .map((slug) => {
+        const n = chapter.notes[slug];
+        if (!n) return null;
+        return {
+          subtopicTitle: n.title,
+          subtopicHref: `${base}/${slug}`,
+          concepts: n.concepts.map((c) => ({
+            slug: c.slug,
+            name: c.name,
+            count: countsByConcept.get(`${slug}::${c.slug}`) ?? 0,
+          })),
+        };
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null),
+    chapterTotalPyqs
+  );
 
   const sideNav = [
     { href: base, label: "Chapter overview" },
@@ -182,6 +222,11 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           })}
         </ul>
       </section>
+
+      <ConceptWeightTable
+        groups={conceptWeightGroups}
+        chapterTotalPyqs={chapterTotalPyqs}
+      />
 
       <ChapterRevisionSheet groups={revisionGroups} />
 
