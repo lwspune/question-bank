@@ -1,0 +1,58 @@
+name: CI
+
+# Runs the full local gate (typecheck → lint → notes guards → tests → build)
+# on every push to main and every PR. Vercel still owns deploys; this job is
+# the correctness gate that the build-only pre-push hook can't fully cover —
+# in particular the live-taxonomy rename guards.
+#
+# REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions → New
+# repository secret). Until all three exist, the `build` step and the
+# DB-integration test/lint steps will fail (build SSGs /notes + /guide from
+# Supabase; the rename guards resolve names against live taxonomy):
+#   NEXT_PUBLIC_SUPABASE_URL
+#   NEXT_PUBLIC_SUPABASE_ANON_KEY
+#   SUPABASE_SERVICE_ROLE_KEY   (service role → catches PRIVATE rows too)
+#
+# CAVEAT — single Supabase project. There is one project (wunvtnqlzjrkvolslbnm);
+# `npm test` writes test-prefixed rows (PYQB_/QD_/UD_/EditTest…) to it and
+# global-teardown sweeps them after the run — same as running `npm test`
+# locally. Concurrency below cancels superseded runs to limit overlap, but two
+# runs on different refs can still race. If that becomes noisy, point these
+# secrets at a dedicated staging Supabase project.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Notes integrity (DB — taxonomy + tag + chapter-name resolution)
+        run: npm run notes:lint
+      - name: Notes LaTeX/Markdown audit (static)
+        run: npm run notes:latex
+      - name: Tests (incl. live-taxonomy rename guards — skip if secrets absent)
+        run: npm test
+      - name: Build
+        run: npm run build
