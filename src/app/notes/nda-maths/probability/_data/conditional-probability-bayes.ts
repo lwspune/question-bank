@@ -13,6 +13,7 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "conditional-probability",
       name: "Conditional probability",
       visualizationSlug: "conditional-restrict",
@@ -73,6 +74,7 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "multiplication-rule-and-restricted-sample-space",
       name: "Multiplication rule & restricted sample space",
       intuition:
@@ -133,6 +135,7 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "total-probability",
       name: "Total probability (over a partition)",
       visualizationSlug: "probability-tree",
@@ -193,6 +196,7 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "bayes-theorem",
       name: "Bayes' theorem (reversing the conditional)",
       intuition:

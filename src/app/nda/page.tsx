@@ -64,6 +64,7 @@ const GUIDE_PREVIEWS: GuidePreview[] = [
 
 type NotesPreview = {
   href: string;
+  subject: string;
   chapter: string;
   blurb: string;
   conceptCount: number;
@@ -72,6 +73,7 @@ type NotesPreview = {
 const NOTES_PREVIEWS: NotesPreview[] = [
   {
     href: "/notes/nda-maths/statistics",
+    subject: "NDA Mathematics",
     chapter: "Statistics",
     blurb:
       "Mean, median, mode, dispersion, regression — taught concept-by-concept with worked PYQ examples.",
@@ -79,10 +81,27 @@ const NOTES_PREVIEWS: NotesPreview[] = [
   },
   {
     href: "/notes/nda-maths/vectors",
+    subject: "NDA Mathematics",
     chapter: "Vectors",
     blurb:
       "Magnitude, dot/cross product, scalar triple, vector geometry — small but high-yield NDA Maths chapter.",
     conceptCount: 22,
+  },
+  {
+    href: "/notes/nda-maths/probability",
+    subject: "NDA Mathematics",
+    chapter: "Probability",
+    blurb:
+      "Classical probability, event algebra, independence, conditional probability, Bayes — pedagogy-first ramp from defining the sample space to bounds.",
+    conceptCount: 24,
+  },
+  {
+    href: "/notes/nda-physics/sound",
+    subject: "NDA Physics",
+    chapter: "Sound",
+    blurb:
+      "Mechanical longitudinal waves, v = fλ, frequency bands, SONAR, beats, ear anatomy, echo — 34 PYQs across five subtopics, mostly EASY.",
+    conceptCount: 12,
   },
 ];
 
@@ -219,7 +238,7 @@ export default async function NdaHomePage() {
             that subtopic.
           </p>
           <ul className="grid gap-4 sm:grid-cols-2">
-            {NOTES_PREVIEWS.map(({ href, chapter, blurb, conceptCount }) => (
+            {NOTES_PREVIEWS.map(({ href, subject, chapter, blurb, conceptCount }) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -231,7 +250,7 @@ export default async function NdaHomePage() {
                     </span>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                        NDA Mathematics
+                        {subject}
                       </p>
                       <h3 className="text-base font-semibold tracking-tight">
                         {chapter}

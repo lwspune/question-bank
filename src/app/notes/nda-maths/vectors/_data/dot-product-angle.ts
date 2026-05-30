@@ -13,6 +13,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "dot-product-evaluation-and-work",
       name: "Dot product — components form and work done",
       visualizationSlug: "dot-product-work",
@@ -78,6 +79,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "perpendicularity-test",
       name: "Perpendicularity Test",
       intuition:
@@ -142,6 +144,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "angle-via-dot-product-formula",
       name: "Angle between two vectors via the dot-product formula",
       visualizationSlug: "vector-projection",
@@ -209,6 +212,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "solve-perpendicularity-constraint-system",
       name: "Solving for an angle from a perpendicularity / magnitude constraint",
       intuition:
@@ -274,6 +278,7 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "unit-vector-orthogonal-triple-configurations",
       name: "Unit vectors, orthogonal triples, and decomposition",
       visualizationSlug: "orthonormal-triple",

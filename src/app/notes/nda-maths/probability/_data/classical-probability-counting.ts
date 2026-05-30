@@ -14,6 +14,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
     // 1 ───────────────────────────────────────────────────────────────────────
     // FOUNDATION — no bank anchor; the vocabulary the rest of the chapter uses.
     {
+      kind: "formula" as const,
       slug: "what-is-probability",
       name: "What is probability? (Random experiments, sample space, events)",
       visualizationSlug: "sample-space-event",
@@ -61,6 +62,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "classical-probability",
       name: "Classical (theoretical) probability",
       intuition:
@@ -124,6 +126,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "complement-and-axioms",
       name: "Axioms, range, complement, and odds",
       intuition:
@@ -184,6 +187,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "counting-with-combinations",
       name: "Selection probability with combinations",
       intuition:
@@ -246,6 +250,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "probability-with-dice",
       name: "Probability with dice",
       visualizationSlug: "dice-sum-grid",
@@ -309,6 +314,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 6 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "probability-with-coins",
       name: "Probability with coins",
       visualizationSlug: "coin-toss-tree",
@@ -372,6 +378,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 7 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "probability-with-arrangements",
       name: "Probability with arrangements",
       intuition:
@@ -433,6 +440,7 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
 
     // 8 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "selecting-numbers",
       name: "Choosing numbers with a property",
       intuition:

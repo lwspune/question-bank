@@ -12,6 +12,7 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "frechet-and-boole-bounds",
       name: "Fréchet and Boole bounds",
       intuition:
@@ -75,6 +76,7 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "min-max-of-combined-probabilities",
       name: "Minimum and maximum of combined probabilities",
       intuition:
@@ -134,6 +136,7 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "probability-identity-statements",
       name: "Identity-statement traps (\"which are correct?\")",
       intuition:

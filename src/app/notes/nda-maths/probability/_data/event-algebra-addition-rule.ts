@@ -14,6 +14,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
     // 1 ───────────────────────────────────────────────────────────────────────
     // FOUNDATION — the set language every later rule uses.
     {
+      kind: "formula" as const,
       slug: "set-operations-on-events",
       name: "Events as sets: union, intersection, complement",
       visualizationSlug: "set-operations-venn",
@@ -60,6 +61,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "addition-rule",
       name: "The addition rule (inclusion-exclusion)",
       visualizationSlug: "venn-two-events",
@@ -117,6 +119,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "neither-and-complement-of-union",
       name: "\"Neither\" and the complement of a union",
       visualizationSlug: "neither-complement-union",
@@ -176,6 +179,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "mutually-exclusive-events",
       name: "Mutually exclusive (disjoint) events",
       intuition:
@@ -233,6 +237,7 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "exhaustive-events",
       name: "Exhaustive events (and probabilities that sum to 1)",
       visualizationSlug: "exhaustive-events-tiling",

@@ -15,6 +15,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
   concepts: [
     // F1 — what-is-data ──────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "what-is-data",
       name: "What is data, and why summarise it?",
       intuition:
@@ -42,6 +43,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // F2 — types-of-data ─────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "types-of-data",
       name: "Types of data — qualitative vs quantitative, discrete vs continuous",
       intuition:
@@ -71,6 +73,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // F3 — frequency-and-tabulation ──────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "frequency-and-tabulation",
       name: "Frequency and tabulation",
       intuition:
@@ -114,6 +117,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // F4 — class-marks-and-class-width ───────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "class-marks-and-class-width",
       name: "Class marks and class width (grouped data)",
       intuition:
@@ -151,6 +155,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // F5 — summation-notation ────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "summation-notation",
       name: "Summation notation Σ",
       intuition:
@@ -188,6 +193,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // F6 — weighted-vs-unweighted-counting ───────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "weighted-vs-unweighted-counting",
       name: "Weighted vs unweighted counting",
       intuition:
@@ -225,6 +231,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "arithmetic-mean-raw",
       name: "Arithmetic Mean (raw data)",
       visualizationSlug: "mean-balance-point",
@@ -297,6 +304,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "arithmetic-mean-grouped",
       name: "Arithmetic Mean (frequency / grouped data)",
       intuition:
@@ -357,6 +365,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "mean-linear-transformation",
       name: "Linear Transformation of the Mean",
       intuition:
@@ -414,6 +423,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "mean-replacement-correction",
       name: "Replacement and Wrong-Value Correction of the Mean",
       intuition:
@@ -488,6 +498,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "special-case-means",
       name: "Special-Case Means — Consecutive Integers, Squares, AP, Binomial",
       intuition:
@@ -557,6 +568,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 6 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "combined-mean-weighted",
       name: "Combined Mean of Two Groups",
       intuition:
@@ -631,6 +643,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 7 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "median",
       name: "Median — Middle Value",
       visualizationSlug: "median-middle-value",
@@ -689,6 +702,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 8 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "mode",
       name: "Mode — Most Frequent Value",
       visualizationSlug: "mode-bar-plot",
@@ -748,6 +762,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 9 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "geometric-mean",
       name: "Geometric Mean (GM)",
       intuition:
@@ -801,6 +816,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 10 ──────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "harmonic-mean",
       name: "Harmonic Mean (HM)",
       intuition:
@@ -864,6 +880,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
 
     // 11 ──────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "sum-of-deviations-empirical",
       name: "Sum of Deviations & the Empirical Relation",
       visualizationSlug: "skew-mean-median-mode",

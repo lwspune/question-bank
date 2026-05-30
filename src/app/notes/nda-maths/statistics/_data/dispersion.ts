@@ -12,6 +12,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "mean-deviation",
       name: "Mean Deviation",
       visualizationSlug: "mean-deviation-spread",
@@ -67,6 +68,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "variance",
       name: "Variance",
       intuition:
@@ -125,6 +127,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "standard-deviation",
       name: "Standard Deviation",
       intuition:
@@ -176,6 +179,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "linear-transformation",
       name: "Linear Transformation of SD and Variance",
       intuition:
@@ -230,6 +234,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "coefficient-of-variation",
       name: "Coefficient of Variation (CV)",
       intuition:
@@ -284,6 +289,7 @@ export const DISPERSION_NOTE: SubtopicNote = {
 
     // 6 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "computational-identity",
       name: "Computational Identity & Minimum-SSE Property",
       intuition:

@@ -16,6 +16,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "what-is-a-vector",
       name: "What is a vector? (Scalars vs vectors)",
       intuition:
@@ -52,6 +53,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "position-and-displacement-vectors",
       name: "Position vectors and displacement vectors",
       visualizationSlug: "position-displacement",
@@ -107,6 +109,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "vector-addition",
       name: "Addition of vectors (triangle, parallelogram, polygon laws)",
       visualizationSlug: "vector-addition",
@@ -163,6 +166,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "scalar-multiplication",
       name: "Scalar multiplication",
       visualizationSlug: "scalar-multiply",
@@ -216,6 +220,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "component-form-and-basis",
       name: "Component form: the î, ĵ, k̂ basis",
       visualizationSlug: "component-form-basis",
@@ -276,6 +281,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
 
     // 6 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "types-of-vectors",
       name: "Types of vectors (zero, unit, equal, parallel, collinear, coplanar)",
       intuition:
@@ -340,6 +346,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     // Application 1: collinearity test — built on Concept 6 (parallel vectors)
     // and Concept 2 (position vectors).
     {
+      kind: "formula" as const,
       slug: "collinearity-and-vector-relations-in-figures",
       name: "Collinearity of three points (and vector relations in regular figures)",
       intuition:
@@ -413,6 +420,7 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
     // 8 ───────────────────────────────────────────────────────────────────────
     // Application 2: section formula — the foundational geometric payoff.
     {
+      kind: "formula" as const,
       slug: "section-formula-internal-external",
       name: "Section Formula — Internal and External Division",
       visualizationSlug: "section-formula",

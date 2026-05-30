@@ -13,6 +13,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "cross-product-algebra-and-properties",
       name: "Cross product — algebra and properties",
       visualizationSlug: "right-hand-rule-cross",
@@ -81,6 +82,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "cross-product-magnitude-area-and-lagrange",
       name: "Cross-product magnitude, area, and the Lagrange identity",
       visualizationSlug: "cross-product-area",
@@ -147,6 +149,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "unit-vector-perpendicular-via-cross",
       name: "Unit vector perpendicular to two given vectors",
       visualizationSlug: "unit-normal-vector",
@@ -215,6 +218,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "moment-of-force",
       name: "Moment of a force (torque)",
       visualizationSlug: "torque-moment",
@@ -285,6 +289,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "scalar-triple-product-and-coplanarity",
       name: "Scalar triple product and coplanarity",
       visualizationSlug: "triple-product-box",
@@ -354,6 +359,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
 
     // 6 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "triple-product-cyclic-and-derived-identities",
       name: "STP cyclic property and derived linear-combo identities",
       intuition:
@@ -422,6 +428,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
 
     // 7 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "vector-triple-product-bac-cab",
       name: "Vector triple product (BAC-CAB rule)",
       intuition:

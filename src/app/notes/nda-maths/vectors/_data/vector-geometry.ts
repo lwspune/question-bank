@@ -13,6 +13,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "triangle-vector-loop-and-centroid",
       name: "Triangle closed-loop and centroid formula",
       visualizationSlug: "triangle-centroid",
@@ -76,6 +77,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "parallelogram-properties-and-diagonals",
       name: "Parallelogram properties and diagonal relations",
       visualizationSlug: "parallelogram-diagonals",
@@ -140,6 +142,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "angles-and-vertices-from-position-vectors",
       name: "Angles and vertices from position vectors",
       intuition:
@@ -203,6 +206,7 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "distance-identities-in-quadrilaterals",
       name: "Distance and perpendicularity identities in quadrilaterals",
       intuition:

@@ -28,6 +28,11 @@ import {
   PROBABILITY_NOTES,
   PROBABILITY_SLUGS,
 } from "@/app/notes/nda-maths/probability/_data";
+import {
+  SOUND_CHAPTER,
+  SOUND_NOTES,
+  SOUND_SLUGS,
+} from "@/app/notes/nda-physics/sound/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -84,6 +89,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: PROBABILITY_CHAPTER,
     notes: PROBABILITY_NOTES,
     slugs: PROBABILITY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound notes",
+    chapter: SOUND_CHAPTER,
+    notes: SOUND_NOTES,
+    slugs: SOUND_SLUGS,
   },
 ];
 

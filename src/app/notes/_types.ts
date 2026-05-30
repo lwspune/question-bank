@@ -101,7 +101,13 @@ export type VisualizationSlug =
   | "sample-space-event"
   | "coin-toss-tree"
   | "neither-complement-union"
-  | "exhaustive-events-tiling";
+  | "exhaustive-events-tiling"
+  // NDA Physics — Sound chapter
+  | "compression-rarefaction-wave"
+  | "beats-envelope"
+  | "ear-anatomy"
+  | "frequency-spectrum-strip"
+  | "echo-geometry";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
@@ -110,9 +116,61 @@ export type TrapCallout = {
   body: string;
 };
 
-export type ConceptUnit = {
+/**
+ * One row of a reference table — N cell strings that line up with the
+ * parent table's column headers. KaTeX-aware via inline `\(...\)`; renders
+ * bold via `**text**` within cells (no block bullets — cells are inline).
+ */
+export type ReferenceRow = {
+  /** N strings, must satisfy `cells.length === table.columns.length`. */
+  cells: string[];
   /**
-   * Stable slug used for in-page anchors and (future) concept-tag joins to
+   * Optional amber-highlighted callout shown beneath the row — used for
+   * trap-aware annotations like "watch the units" or "this is the answer
+   * the bank tests, not the textbook one". KaTeX-aware, plain text.
+   */
+  noteAmber?: string;
+  /**
+   * Optional UUID of a PYQ that specifically tests this row's fact.
+   * Surfaces as a small `[Q]` chip on the row when set. Per-row pyq
+   * lookups are RESOLVED separately from the concept-level pyqExampleId
+   * and don't replace it.
+   */
+  pyqExampleId?: string;
+};
+
+/**
+ * A flat reference table — the "named-fact lookup" teaching primitive for
+ * recall-heavy subtopics (Sound's frequency bands, transducer chain;
+ * Modern Physics's scientist-discovery pairs; etc.). Discriminated by
+ * `ConceptUnit.kind === "reference"` and rendered via
+ * `_components/ReferenceTableBlock` in Read mode + as its own slide kind
+ * in Present mode.
+ */
+export type ReferenceTable = {
+  /**
+   * 2–5 column headers. PLAIN TEXT — no LaTeX (the audit script enforces
+   * this). Multi-column for domain-specific shapes:
+   *   - Frequency bands: `["Band", "Range", "Examples"]`
+   *   - Speed in media:  `["Medium", "Speed (m/s)"]`
+   *   - Acronyms:        `["Acronym", "Expansion", "Uses"]`
+   */
+  columns: string[];
+  /** ≥1 row; row.cells.length must equal columns.length. */
+  rows: ReferenceRow[];
+  /** Optional one-line caption shown beneath the table. KaTeX-aware. */
+  caption?: string;
+};
+
+/**
+ * Shared fields between formula- and reference-variant concept units.
+ * Both variants get the practice ramp (self-check + Level 1 reps), the
+ * featured PYQ, the visualization slot, and traps — the variant choice
+ * only swaps the *core teaching* slot (formula+worked example vs. table).
+ */
+type ConceptUnitBase = {
+  /**
+   * Stable slug used for in-page anchors and concept-tag joins to
    * questions. Lowercase, hyphenated, scoped within the subtopic.
    */
   slug: string;
@@ -120,48 +178,67 @@ export type ConceptUnit = {
   name: string;
   /** 1-2 sentences building the mental model. Plain language. */
   intuition: string;
-  /** Formal statement. May be brief — the formula does the heavy lifting. */
+  /** Formal statement. RichText — supports bold + bullet definitions. */
   definition: string;
-  /** Optional formula box. Some concepts (e.g. "always sort first") have no formula. */
+  /**
+   * Optional UUID of a real PYQ from the bank that applies this concept.
+   * Stays editorial (TS-curated) — drill-list questions live in the
+   * `question_concept_tags` DB table (migration 0021), not on this type.
+   */
+  pyqExampleId?: string;
+  /**
+   * Optional independent-practice problem rendered with the full solution
+   * hidden behind a single reveal — the independent-attempt rung after
+   * the core teaching slot.
+   */
+  selfCheckExample?: AuthoredExample;
+  /**
+   * Optional set of Level 1 mastery reps — short, procedurally-simple
+   * problems for drilling to fluency. For reference variant these are
+   * single-fact recall reps ("Q: ultrasonic range? A: > 20 kHz").
+   */
+  practiceSet?: PracticeProblem[];
+  /**
+   * Optional inline visualization. Rendered as a client island
+   * immediately after the concept intro.
+   */
+  visualizationSlug?: VisualizationSlug;
+  /** Optional gotchas specific to this concept. Rendered inline. */
+  traps?: TrapCallout[];
+};
+
+/**
+ * Formula-variant ConceptUnit — the original shape. Core teaching slot is
+ * an optional formula box + a required step-by-step authored example.
+ * Used for technique-driven concepts (`v = fλ`, `\bar{x} = Σx/n`, etc.).
+ */
+export type ConceptUnitFormula = ConceptUnitBase & {
+  kind: "formula";
+  /** Optional formula box. Some "always sort first" concepts have none. */
   formula?: FormulaSpec;
   /**
    * Authored inline example with step-by-step working — written to teach
    * the concept simply, not pulled from the bank.
    */
   authoredExample: AuthoredExample;
-  /**
-   * Optional UUID of a real PYQ from the bank that applies this concept.
-   * Rendered via the existing WorkedExampleCard so students can see how the
-   * concept shows up on the actual exam. Stays editorial (TS-curated) — it
-   * is the "featured" example, not a drill list.
-   *
-   * Drill-list questions are NOT carried on this type. They live in the
-   * `question_concept_tags` DB table (migration 0021) and are resolved at
-   * request time via `loadResolvedDrills`.
-   */
-  pyqExampleId?: string;
-  /**
-   * Optional independent-practice problem rendered with the full solution
-   * hidden behind a single reveal — the independent-attempt rung after the
-   * worked example.
-   */
-  selfCheckExample?: AuthoredExample;
-  /**
-   * Optional set of Level 1 mastery reps — short, procedurally-simple
-   * problems for drilling the concept to fluency. Rendered as a compact
-   * "Practice — Level 1" block after the self-check, each with per-rep
-   * click-to-reveal.
-   */
-  practiceSet?: PracticeProblem[];
-  /**
-   * Optional inline visualization that explains the concept dynamically.
-   * Rendered as a client island immediately after the concept intro. The
-   * slug controls which component renders.
-   */
-  visualizationSlug?: VisualizationSlug;
-  /** Optional gotchas specific to this concept. Rendered inline within the unit. */
-  traps?: TrapCallout[];
 };
+
+/**
+ * Reference-variant ConceptUnit — the named-fact lookup shape introduced
+ * for Recall-strand chapters where the bank tests memorisation of a flat
+ * table rather than a technique. Core teaching slot is a `ReferenceTable`
+ * in place of formula+authored example. Practice/PYQ/traps slots still
+ * apply: self-check becomes "hide a cell" recall, practice reps become
+ * single-fact MCQ.
+ */
+export type ConceptUnitReference = ConceptUnitBase & {
+  kind: "reference";
+  /** The table — the core teaching content. */
+  table: ReferenceTable;
+};
+
+/** Discriminated by `kind`. Adding a third variant is a breaking change. */
+export type ConceptUnit = ConceptUnitFormula | ConceptUnitReference;
 
 export type RelatedLink = {
   label: string;
@@ -218,6 +295,15 @@ export type Slide =
       kind: "authored-example";
       conceptName: string;
       example: AuthoredExample;
+    }
+  | {
+      /**
+       * Reference-variant core teaching slot — sits where `authored-example`
+       * does for formula concepts. Emitted only for `ConceptUnitReference`.
+       */
+      kind: "reference-table";
+      conceptName: string;
+      table: ReferenceTable;
     }
   | {
       kind: "self-check";

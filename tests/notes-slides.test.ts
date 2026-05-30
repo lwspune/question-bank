@@ -1,10 +1,17 @@
 import { describe, it, expect } from "vitest";
 import { splitNoteIntoSlides } from "@/lib/notes/splitNoteIntoSlides";
-import type { ConceptUnit, SubtopicNote } from "@/app/notes/_types";
+import type {
+  ConceptUnit,
+  ConceptUnitFormula,
+  ConceptUnitReference,
+  ReferenceTable,
+  SubtopicNote,
+} from "@/app/notes/_types";
 
 const minimalConcept = (
-  overrides: Partial<ConceptUnit> = {}
+  overrides: Partial<ConceptUnitFormula> = {}
 ): ConceptUnit => ({
+  kind: "formula",
   slug: "c1",
   name: "Concept 1",
   intuition: "Plain intuition.",
@@ -14,6 +21,27 @@ const minimalConcept = (
     steps: ["Step 1.", "Step 2."],
     answer: "x = 5",
   },
+  ...overrides,
+});
+
+const tinyTable = (): ReferenceTable => ({
+  columns: ["Band", "Range"],
+  rows: [
+    { cells: ["Infrasonic", "< 20 Hz"] },
+    { cells: ["Audible", "20 Hz – 20 kHz"] },
+    { cells: ["Ultrasonic", "> 20 kHz"] },
+  ],
+});
+
+const referenceConcept = (
+  overrides: Partial<ConceptUnitReference> = {}
+): ConceptUnit => ({
+  kind: "reference",
+  slug: "r1",
+  name: "Reference 1",
+  intuition: "Memorise this table.",
+  definition: "Three frequency bands.",
+  table: tinyTable(),
   ...overrides,
 });
 
@@ -405,5 +433,121 @@ describe("splitNoteIntoSlides", () => {
     );
     expect(without.some((s) => s.kind === "practice-set")).toBe(false);
     expect(withEmpty.some((s) => s.kind === "practice-set")).toBe(false);
+  });
+
+  // ───── reference-variant ConceptUnit (Sound chapter onward) ─────
+
+  it("reference concept emits a reference-table slide in place of authored-example", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({ concepts: [referenceConcept()] }),
+      NO_DRILLS
+    );
+    expect(slides.some((s) => s.kind === "reference-table")).toBe(true);
+    expect(slides.some((s) => s.kind === "authored-example")).toBe(false);
+  });
+
+  it("reference-table slide carries concept name + full table payload", () => {
+    const table = tinyTable();
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [referenceConcept({ name: "Frequency Bands", table })],
+      }),
+      NO_DRILLS
+    );
+    const ref = slides.find((s) => s.kind === "reference-table");
+    expect(ref).toEqual({
+      kind: "reference-table",
+      conceptName: "Frequency Bands",
+      table,
+    });
+  });
+
+  it("reference concept-intro slide carries name + intuition + definition but no formula", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({ concepts: [referenceConcept()] }),
+      NO_DRILLS
+    );
+    const intro = slides.find((s) => s.kind === "concept-intro");
+    expect(intro).toEqual({
+      kind: "concept-intro",
+      conceptName: "Reference 1",
+      intuition: "Memorise this table.",
+      definition: "Three frequency bands.",
+      formula: undefined,
+    });
+  });
+
+  it("reference concept full per-concept order: intro → viz → reference-table → self-check → practice-set → pyq → trap → concept-drill", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          referenceConcept({
+            visualizationSlug: "histogram-bin-slider",
+            selfCheckExample: { prompt: "s", steps: ["s"], answer: "a" },
+            practiceSet: [{ prompt: "p", answer: "a" }],
+            pyqExampleId: "pyq-1",
+            traps: [{ title: "T", body: "b" }],
+          }),
+        ],
+      }),
+      new Map([["r1", ["d1"]]])
+    );
+    const conceptKinds = slides
+      .filter((s) => s.kind !== "title" && s.kind !== "why" && s.kind !== "drill")
+      .map((s) => s.kind);
+    expect(conceptKinds).toEqual([
+      "concept-intro",
+      "visualization",
+      "reference-table",
+      "self-check",
+      "practice-set",
+      "pyq-example",
+      "trap",
+      "concept-drill",
+    ]);
+  });
+
+  it("mixed formula + reference concepts preserve declaration order", () => {
+    const slides = splitNoteIntoSlides(
+      baseNote({
+        concepts: [
+          minimalConcept({ slug: "f1", name: "F1" }),
+          referenceConcept({ slug: "r1", name: "R1" }),
+          minimalConcept({ slug: "f2", name: "F2" }),
+        ],
+      }),
+      NO_DRILLS
+    );
+    const intros = slides.filter((s) => s.kind === "concept-intro");
+    expect(
+      intros.map((s) => s.kind === "concept-intro" && s.conceptName)
+    ).toEqual(["F1", "R1", "F2"]);
+    // formula → authored-example; reference → reference-table; not the other way around
+    const f1IntroIdx = slides.findIndex(
+      (s) => s.kind === "concept-intro" && s.conceptName === "F1"
+    );
+    const r1IntroIdx = slides.findIndex(
+      (s) => s.kind === "concept-intro" && s.conceptName === "R1"
+    );
+    const f2IntroIdx = slides.findIndex(
+      (s) => s.kind === "concept-intro" && s.conceptName === "F2"
+    );
+    const f1Authored = slides.findIndex(
+      (s) =>
+        s.kind === "authored-example" && s.conceptName === "F1"
+    );
+    const r1Table = slides.findIndex(
+      (s) =>
+        s.kind === "reference-table" && s.conceptName === "R1"
+    );
+    const f2Authored = slides.findIndex(
+      (s) =>
+        s.kind === "authored-example" && s.conceptName === "F2"
+    );
+    expect(f1Authored).toBeGreaterThan(f1IntroIdx);
+    expect(f1Authored).toBeLessThan(r1IntroIdx);
+    expect(r1Table).toBeGreaterThan(r1IntroIdx);
+    expect(r1Table).toBeLessThan(f2IntroIdx);
+    expect(f2Authored).toBeGreaterThan(f2IntroIdx);
   });
 });

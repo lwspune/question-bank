@@ -63,22 +63,43 @@ for (const chapter of NOTES_CHAPTERS) {
     for (const c of note.concepts) {
       const cb = `${base} > ${c.slug}`;
       checkPlain(`${cb}.name`, c.name);
-      if (c.formula) checkPlain(`${cb}.formula.label`, c.formula.label);
 
       // KaTeX fields: delimiter balance + unicode inventory
       const katexFields: Array<[string, string | undefined]> = [
         [`${cb}.intuition`, c.intuition],
         [`${cb}.definition`, c.definition],
-        [`${cb}.formula.latex`, c.formula?.latex],
       ];
-      for (const sym of c.formula?.symbols ?? []) {
-        katexFields.push([`${cb}.formula.symbol`, sym.symbol]);
-        katexFields.push([`${cb}.formula.meaning`, sym.meaning]);
+
+      if (c.kind === "formula") {
+        if (c.formula) checkPlain(`${cb}.formula.label`, c.formula.label);
+        katexFields.push([`${cb}.formula.latex`, c.formula?.latex]);
+        for (const sym of c.formula?.symbols ?? []) {
+          katexFields.push([`${cb}.formula.symbol`, sym.symbol]);
+          katexFields.push([`${cb}.formula.meaning`, sym.meaning]);
+        }
+        const ex = c.authoredExample;
+        katexFields.push([`${cb}.authored.prompt`, ex.prompt]);
+        ex.steps.forEach((s, i) =>
+          katexFields.push([`${cb}.authored.step${i}`, s])
+        );
+        katexFields.push([`${cb}.authored.answer`, ex.answer]);
+      } else {
+        // Reference variant — column headers are PLAIN TEXT (audited the
+        // same way as formula labels); cells, captions, and per-row notes
+        // are KaTeX-aware (audited like authored-example prose).
+        c.table.columns.forEach((col, i) =>
+          checkPlain(`${cb}.table.columns[${i}]`, col)
+        );
+        c.table.rows.forEach((row, rIdx) => {
+          row.cells.forEach((cell, cIdx) =>
+            katexFields.push([`${cb}.table.row${rIdx}.cell${cIdx}`, cell])
+          );
+          if (row.noteAmber)
+            katexFields.push([`${cb}.table.row${rIdx}.noteAmber`, row.noteAmber]);
+        });
+        if (c.table.caption)
+          katexFields.push([`${cb}.table.caption`, c.table.caption]);
       }
-      const ex = c.authoredExample;
-      katexFields.push([`${cb}.authored.prompt`, ex.prompt]);
-      ex.steps.forEach((s, i) => katexFields.push([`${cb}.authored.step${i}`, s]));
-      katexFields.push([`${cb}.authored.answer`, ex.answer]);
       if (c.selfCheckExample) {
         katexFields.push([`${cb}.selfCheck.prompt`, c.selfCheckExample.prompt]);
         c.selfCheckExample.steps.forEach((s, i) =>

@@ -1,6 +1,13 @@
-import { AlertTriangle, BookCheck, ChevronRight, Sigma } from "lucide-react";
+import {
+  AlertTriangle,
+  BookCheck,
+  ChevronRight,
+  Sigma,
+  TableProperties,
+} from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import type { DerivedSummary } from "@/lib/notes/deriveSummary";
+import ReferenceTableBlock from "./ReferenceTableBlock";
 
 export type RevisionGroup = {
   subtopicTitle: string;
@@ -29,7 +36,12 @@ type Props = {
 export default function ChapterRevisionSheet({ groups }: Props) {
   const totalFormulas = groups.reduce((a, g) => a + g.summary.formulas.length, 0);
   const totalTraps = groups.reduce((a, g) => a + g.summary.traps.length, 0);
-  if (totalFormulas === 0 && totalTraps === 0) return null;
+  const totalReferences = groups.reduce(
+    (a, g) => a + g.summary.references.length,
+    0
+  );
+  if (totalFormulas === 0 && totalTraps === 0 && totalReferences === 0)
+    return null;
 
   return (
     <details className="group mt-12 rounded-lg border bg-card">
@@ -40,8 +52,10 @@ export default function ChapterRevisionSheet({ groups }: Props) {
             Formula &amp; revision sheet
           </h2>
           <p className="mt-0.5 text-xs text-muted-foreground">
-            {totalFormulas} formulas · {totalTraps} gotchas across all subtopics —
-            the exam-eve cheat-sheet
+            {totalFormulas} formulas
+            {totalReferences > 0 ? ` · ${totalReferences} reference tables` : ""}
+            {" · "}
+            {totalTraps} gotchas across all subtopics — the exam-eve cheat-sheet
           </p>
         </div>
         <ChevronRight
@@ -54,7 +68,8 @@ export default function ChapterRevisionSheet({ groups }: Props) {
         {groups.map((g) => {
           if (
             g.summary.formulas.length === 0 &&
-            g.summary.traps.length === 0
+            g.summary.traps.length === 0 &&
+            g.summary.references.length === 0
           ) {
             return null;
           }
@@ -92,6 +107,42 @@ export default function ChapterRevisionSheet({ groups }: Props) {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {g.summary.references.length > 0 && (
+                <div className="mt-3">
+                  <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                    <TableProperties className="h-3 w-3" aria-hidden />
+                    Reference tables ({g.summary.references.length})
+                  </p>
+                  <div className="space-y-2">
+                    {g.summary.references.map((r, i) => (
+                      <details
+                        key={`${r.slug}-${i}`}
+                        className="group rounded-md border bg-background"
+                      >
+                        <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-1.5 hover:bg-accent/40">
+                          <a
+                            href={`${g.subtopicHref}#${r.slug}`}
+                            className="text-[11px] font-medium text-muted-foreground hover:text-primary"
+                          >
+                            {r.conceptName}
+                          </a>
+                          <span className="text-[10px] uppercase tracking-wide text-muted-foreground/60">
+                            {r.table.rows.length} rows
+                          </span>
+                          <ChevronRight
+                            className="ml-auto h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-open:rotate-90"
+                            aria-hidden
+                          />
+                        </summary>
+                        <div className="border-t p-2">
+                          <ReferenceTableBlock table={r.table} compact />
+                        </div>
+                      </details>
+                    ))}
+                  </div>
                 </div>
               )}
 

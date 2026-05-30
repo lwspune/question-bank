@@ -12,6 +12,7 @@ export const INDEPENDENT_EVENTS_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "independence-and-multiplication-rule",
       name: "Independence and the multiplication rule",
       visualizationSlug: "exclusive-vs-independent",
@@ -70,6 +71,7 @@ export const INDEPENDENT_EVENTS_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "at-least-one-via-complement",
       name: "\"At least one\" via the complement",
       intuition:
@@ -128,6 +130,7 @@ export const INDEPENDENT_EVENTS_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "solving-a-problem-independently",
       name: "The \"problem solved by students\" archetype",
       intuition:
@@ -186,6 +189,7 @@ export const INDEPENDENT_EVENTS_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "finding-unknowns-with-independence",
       name: "Finding an unknown probability using independence",
       intuition:

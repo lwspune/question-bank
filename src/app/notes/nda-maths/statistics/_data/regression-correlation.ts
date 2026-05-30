@@ -12,6 +12,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "correlation-coefficient-properties",
       name: "Correlation Coefficient and Its Properties",
       visualizationSlug: "correlation-scatter",
@@ -78,6 +79,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "lines-of-regression",
       name: "Lines of Regression",
       intuition:
@@ -148,6 +150,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "regression-coefficients-and-r",
       name: "Regression Coefficients and Their Link to r",
       intuition:
@@ -211,6 +214,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "identifying-regression-line",
       name: "Identifying Which Regression Line is Which",
       visualizationSlug: "identify-regression-line",
@@ -265,6 +269,7 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
 
     // 5 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "angle-between-regression-lines",
       name: "Angle Between the Two Regression Lines",
       visualizationSlug: "angle-between-regression-lines",

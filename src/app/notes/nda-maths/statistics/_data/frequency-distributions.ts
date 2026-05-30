@@ -12,6 +12,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "histograms-polygons-ogives",
       name: "Histograms, Frequency Polygons & Ogives",
       intuition:
@@ -69,6 +70,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "pie-charts",
       name: "Pie Charts",
       visualizationSlug: "pie-chart-sectors",
@@ -125,6 +127,7 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "reading-frequency-tables",
       name: "Reading Frequency Tables — Mode, Cumulative, Median",
       intuition:

@@ -1,7 +1,14 @@
-import { AlertTriangle, BookCheck, Sigma } from "lucide-react";
+import {
+  AlertTriangle,
+  BookCheck,
+  ChevronRight,
+  Sigma,
+  TableProperties,
+} from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import type { SubtopicNote } from "@/app/notes/_types";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
+import ReferenceTableBlock from "./ReferenceTableBlock";
 
 type Props = {
   note: SubtopicNote;
@@ -9,20 +16,24 @@ type Props = {
 
 /**
  * End-of-subtopic recap. Auto-derived from `note.concepts` — walks each
- * concept and pulls out its formula (if any) and trap titles, no separate
- * editorial field, no manual sync. Reads as a cheat-sheet: every formula
- * in one place plus the most common gotchas in headline form.
+ * concept and pulls out its formula (if any), its reference table (if
+ * any), and trap titles, no separate editorial field, no manual sync.
+ * Reads as a cheat-sheet: every formula in one place, every reference
+ * table behind a per-concept disclosure (revision IS the table), plus
+ * the most common gotchas in headline form.
  *
  * Concept name is rendered as a small caption above each formula so the
  * student can jump back to the full explanation via the anchor (#slug).
  *
- * Returns null when the subtopic has neither formulas nor traps, so the
- * section silently collapses for subtopics that are intuition-only.
+ * Returns null when the subtopic has neither formulas, references, nor
+ * traps, so the section silently collapses for subtopics that are
+ * intuition-only.
  */
 export default function SubtopicSummary({ note }: Props) {
-  const { formulas, traps } = deriveSummary(note);
+  const { formulas, traps, references } = deriveSummary(note);
 
-  if (formulas.length === 0 && traps.length === 0) return null;
+  if (formulas.length === 0 && traps.length === 0 && references.length === 0)
+    return null;
 
   return (
     <section className="mt-12 rounded-lg border bg-card p-6">
@@ -69,6 +80,42 @@ export default function SubtopicSummary({ note }: Props) {
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {references.length > 0 && (
+        <div className="mb-6">
+          <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+            <TableProperties className="h-3.5 w-3.5" aria-hidden />
+            Reference tables ({references.length})
+          </p>
+          <div className="space-y-2">
+            {references.map((r, i) => (
+              <details
+                key={`${r.slug}-${i}`}
+                className="group rounded-md border bg-card"
+              >
+                <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-2 hover:bg-accent/40">
+                  <a
+                    href={`#${r.slug}`}
+                    className="text-xs font-medium text-muted-foreground hover:text-primary"
+                  >
+                    {r.conceptName}
+                  </a>
+                  <span className="ml-1 text-[11px] uppercase tracking-wide text-muted-foreground/70">
+                    {r.table.rows.length} rows
+                  </span>
+                  <ChevronRight
+                    className="ml-auto h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-90"
+                    aria-hidden
+                  />
+                </summary>
+                <div className="border-t p-3">
+                  <ReferenceTableBlock table={r.table} compact />
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       )}
 

@@ -13,6 +13,7 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
   concepts: [
     // 1 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "magnitude-and-distance",
       name: "Magnitude of a vector and distance between two points",
       visualizationSlug: "magnitude-right-triangle",
@@ -75,6 +76,7 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
 
     // 2 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "direction-cosines",
       name: "Direction Cosines",
       visualizationSlug: "direction-cosines",
@@ -140,6 +142,7 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
 
     // 3 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "scalar-projection",
       name: "Scalar projection of one vector on another",
       intuition:
@@ -204,6 +207,7 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
 
     // 4 ───────────────────────────────────────────────────────────────────────
     {
+      kind: "formula" as const,
       slug: "unit-vector-and-direction-construction",
       name: "Unit vectors and direction-given construction",
       intuition:

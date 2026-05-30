@@ -11,6 +11,7 @@ import WorkedExampleAuthored from "./WorkedExampleAuthored";
 import SelfCheckCard from "./SelfCheckCard";
 import PracticeSet from "./PracticeSet";
 import TrapCallout from "./TrapCallout";
+import ReferenceTableBlock from "./ReferenceTableBlock";
 import RegressionLineFit from "./visualizations/RegressionLineFit";
 import VarianceSquaredDeviations from "./visualizations/VarianceSquaredDeviations";
 import HistogramBinSlider from "./visualizations/HistogramBinSlider";
@@ -50,6 +51,11 @@ import SampleSpaceEvent from "./visualizations/SampleSpaceEvent";
 import CoinTossTree from "./visualizations/CoinTossTree";
 import NeitherComplementUnion from "./visualizations/NeitherComplementUnion";
 import ExhaustiveEvents from "./visualizations/ExhaustiveEvents";
+import CompressionRarefactionWave from "./visualizations/CompressionRarefactionWave";
+import BeatsEnvelope from "./visualizations/BeatsEnvelope";
+import EarAnatomy from "./visualizations/EarAnatomy";
+import FrequencySpectrumStrip from "./visualizations/FrequencySpectrumStrip";
+import EchoGeometry from "./visualizations/EchoGeometry";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -132,6 +138,16 @@ function renderVisualization(slug: VisualizationSlug) {
       return <NeitherComplementUnion />;
     case "exhaustive-events-tiling":
       return <ExhaustiveEvents />;
+    case "compression-rarefaction-wave":
+      return <CompressionRarefactionWave />;
+    case "beats-envelope":
+      return <BeatsEnvelope />;
+    case "ear-anatomy":
+      return <EarAnatomy />;
+    case "frequency-spectrum-strip":
+      return <FrequencySpectrumStrip />;
+    case "echo-geometry":
+      return <EchoGeometry />;
   }
 }
 
@@ -221,22 +237,27 @@ export default function ConceptUnitCard({
         </div>
       </div>
 
-      {/* Formula box */}
-      {concept.formula && (
+      {/* Formula box (formula variant only) */}
+      {concept.kind === "formula" && concept.formula && (
         <div className="mt-5">
           <FormulaBlock formula={concept.formula} />
         </div>
       )}
 
-      {/* Interactive visualization — slotted between formula and the worked
-          example, matching splitNoteIntoSlides' per-concept order. */}
+      {/* Interactive visualization — slotted between formula and the core
+          teaching slot, matching splitNoteIntoSlides' per-concept order. */}
       {concept.visualizationSlug && (
         <div className="mt-6">{renderVisualization(concept.visualizationSlug)}</div>
       )}
 
-      {/* Authored worked example — always visible, the core teaching */}
+      {/* Core teaching slot — formula variant gets a worked example;
+          reference variant gets the flat reference table in its place. */}
       <div className="mt-6">
-        <WorkedExampleAuthored example={concept.authoredExample} />
+        {concept.kind === "formula" ? (
+          <WorkedExampleAuthored example={concept.authoredExample} />
+        ) : (
+          <ReferenceTableBlock table={concept.table} />
+        )}
       </div>
 
       {/* Practice rungs — self-check + Level 1 reps, collapsed behind one

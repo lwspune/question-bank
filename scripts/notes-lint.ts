@@ -111,13 +111,56 @@ async function main() {
       });
     }
 
-    // 2. Every pyqExampleId must resolve, be PUBLIC, AND live in the parent module's subtopic.
-    //    The subtopic-match check catches the "featured question is actually in a different
-    //    subtopic" failure mode that notes-lint historically missed — see memory
-    //    feedback_pyqexampleid_must_match_subtopic.md.
-    const pyqIds: { id: string; conceptName: string }[] = [];
+    // 2a. Reference-variant tables must have valid shape: 2–5 columns,
+    //     ≥1 row, every row's cells.length === columns.length. Caught
+    //     here so silent broken tables surface before render.
     for (const c of ref.note.concepts) {
-      if (c.pyqExampleId) pyqIds.push({ id: c.pyqExampleId, conceptName: c.name });
+      if (c.kind !== "reference") continue;
+      const cols = c.table.columns.length;
+      if (cols < 2 || cols > 5) {
+        issues.push({
+          severity: "error",
+          note: ref.path,
+          message: `reference concept "${c.name}" has ${cols} columns; must be 2–5`,
+        });
+      }
+      if (c.table.rows.length === 0) {
+        issues.push({
+          severity: "error",
+          note: ref.path,
+          message: `reference concept "${c.name}" has 0 rows`,
+        });
+      }
+      c.table.rows.forEach((row, rIdx) => {
+        if (row.cells.length !== cols) {
+          issues.push({
+            severity: "error",
+            note: ref.path,
+            message: `reference concept "${c.name}" row ${rIdx} has ${row.cells.length} cells but table declares ${cols} columns`,
+          });
+        }
+      });
+    }
+
+    // 2b. Every pyqExampleId must resolve, be PUBLIC, AND live in the parent module's subtopic.
+    //     The subtopic-match check catches the "featured question is actually in a different
+    //     subtopic" failure mode that notes-lint historically missed — see memory
+    //     feedback_pyqexampleid_must_match_subtopic.md. Walks BOTH concept-level
+    //     pyqExampleId AND reference rows' per-row pyqExampleId (used for `[Q]` chips).
+    const pyqIds: { id: string; conceptName: string; where: string }[] = [];
+    for (const c of ref.note.concepts) {
+      if (c.pyqExampleId)
+        pyqIds.push({ id: c.pyqExampleId, conceptName: c.name, where: "concept" });
+      if (c.kind === "reference") {
+        c.table.rows.forEach((row, rIdx) => {
+          if (row.pyqExampleId)
+            pyqIds.push({
+              id: row.pyqExampleId,
+              conceptName: c.name,
+              where: `table.row${rIdx}`,
+            });
+        });
+      }
     }
     if (pyqIds.length > 0) {
       const { data: rows } = await supabase
@@ -135,7 +178,7 @@ async function main() {
           issues.push({
             severity: "error",
             note: ref.path,
-            message: `pyqExampleId not found in bank: ${p.id} (concept "${p.conceptName}")`,
+            message: `pyqExampleId not found in bank: ${p.id} (concept "${p.conceptName}", ${p.where})`,
           });
           continue;
         }
@@ -143,14 +186,14 @@ async function main() {
           issues.push({
             severity: "error",
             note: ref.path,
-            message: `pyqExampleId is PRIVATE — students won't see it: ${p.id} (concept "${p.conceptName}")`,
+            message: `pyqExampleId is PRIVATE — students won't see it: ${p.id} (concept "${p.conceptName}", ${p.where})`,
           });
         }
         if (expectedSubtopicId && row.subtopic_id !== expectedSubtopicId) {
           issues.push({
             severity: "error",
             note: ref.path,
-            message: `pyqExampleId ${p.id} lives in a different subtopic than "${ref.note.subtopicName}" (concept "${p.conceptName}") — concept tag would be impossible. Swap for a question in the correct subtopic.`,
+            message: `pyqExampleId ${p.id} lives in a different subtopic than "${ref.note.subtopicName}" (concept "${p.conceptName}", ${p.where}) — concept tag would be impossible. Swap for a question in the correct subtopic.`,
           });
         }
       }
@@ -174,12 +217,15 @@ async function main() {
       }
     }
     for (const c of ref.note.concepts) {
-      // Foundation concepts (no pyqExampleId) are bank-less by design — pure
-      // teaching primitives like "what is a vector" or "scalar multiplication"
-      // that don't map to a specific PYQ lever. Don't warn on missing tags
-      // for them; the warning is meant to catch FORGOTTEN tagging on
-      // bank-anchored concepts, not deliberate foundation content.
-      if (!c.pyqExampleId) continue;
+      // Foundation exemption — formula-variant only. Foundation concepts
+      // (no pyqExampleId) are bank-less by design — pure teaching
+      // primitives like "what is a vector" or "scalar multiplication"
+      // that don't map to a specific PYQ lever. Reference-variant
+      // concepts are NEVER foundation primitives — they are the bucket
+      // for a subtopic's flat-fact recall, so they MUST have tagged
+      // questions regardless of whether the concept-level pyqExampleId
+      // is set. So skip only formula-variant + no pyqExampleId.
+      if (c.kind === "formula" && !c.pyqExampleId) continue;
       if (!taggedConceptSlugs.has(c.slug)) {
         issues.push({
           severity: "warn",
