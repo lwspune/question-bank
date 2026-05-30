@@ -125,9 +125,9 @@ Today teachers upload text-only Excels and add images via the per-question edit 
 
 First admin is seeded via SQL; teacher addition is manual. A proper "invite teacher" flow is gated on SMTP being available (see Auth section).
 
-### Notes-lint guide-side rename validation
+### Notes-lint guide-side rename validation — ✅ SHIPPED 2026-05-30
 
-`scripts/notes-lint.ts` currently validates the `/notes`-side chapter names against live taxonomy. The 2026-05-18 backlink-chip system also depends on guide-side names — every `chapter` string in each guide's `PLAYBOOKS` array must resolve to a real DB chapter, or the chip silently fails to render (the "automatic" path described in CLAUDE.md "Tier 1 backlinks"). Add a check: iterate every entry in every `PLAYBOOKS` array (English / Physics / Chemistry / Biology / Geography), confirm `(examName, subjectName, chapterName)` resolves. ~45 min safety net. Catches the silent-chip-break failure mode after any taxonomy rename.
+Done via an equivalent implementation to the originally-planned notes-lint extension. Every guide's drill targets now resolve against live taxonomy in a `describe.skipIf(!HAS_ENV)` test: `tests/guide-nda-<subject>-playbooks.test.ts` (English/Physics/Chemistry/Biology/Geography/History/Polity) validate each PLAYBOOK's `chapter` + `subtopics[]`; `tests/guide-nda-current-affairs-themes.test.ts` validates theme `chapter` + `drillSubtopics`; `tests/guide-nda-maths-taxonomy.test.ts` (added this session — Template A has no PLAYBOOKS array) validates principles/compounds/strategy drill targets. The `/notes`-side chapter + subtopic names are validated by `scripts/notes-lint.ts` check 1. The `/browse` backlink chips (`getQuestionResources`) build their guide maps from the same PLAYBOOKS arrays + the `NOTES_CHAPTERS` registry, so they're covered transitively; Economics/CA chips + landing CTAs key on `examId`/`subjectId`, not chapter names. `.github/workflows/ci.yml` runs all of these on every push/PR (requires the three Supabase repo secrets). The guard caught two real broken-CTA regressions in its first session (Sound + Probability — see Decisions log). Recurring-lesson memory: [[shipped-chapter-rename-downstream-sync]].
 
 ### Derive `/nda` NOTES_PREVIEWS array from `NOTES_CHAPTERS` registry
 
