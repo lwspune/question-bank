@@ -56,6 +56,7 @@ import BeatsEnvelope from "./visualizations/BeatsEnvelope";
 import EarAnatomy from "./visualizations/EarAnatomy";
 import FrequencySpectrumStrip from "./visualizations/FrequencySpectrumStrip";
 import EchoGeometry from "./visualizations/EchoGeometry";
+import AntiderivativeFamily from "./visualizations/AntiderivativeFamily";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -148,6 +149,8 @@ function renderVisualization(slug: VisualizationSlug) {
       return <FrequencySpectrumStrip />;
     case "echo-geometry":
       return <EchoGeometry />;
+    case "antiderivative-family":
+      return <AntiderivativeFamily />;
   }
 }
 

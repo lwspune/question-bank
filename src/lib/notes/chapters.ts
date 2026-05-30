@@ -33,6 +33,11 @@ import {
   SOUND_NOTES,
   SOUND_SLUGS,
 } from "@/app/notes/nda-physics/sound/_data";
+import {
+  INDEFINITE_INTEGRATION_CHAPTER,
+  INDEFINITE_INTEGRATION_NOTES,
+  INDEFINITE_INTEGRATION_SLUGS,
+} from "@/app/notes/mht-cet-maths/indefinite-integration/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -100,6 +105,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SOUND_CHAPTER,
     notes: SOUND_NOTES,
     slugs: SOUND_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "indefinite-integration",
+    chipLabel: "Indefinite Integration notes",
+    chapter: INDEFINITE_INTEGRATION_CHAPTER,
+    notes: INDEFINITE_INTEGRATION_NOTES,
+    slugs: INDEFINITE_INTEGRATION_SLUGS,
   },
 ];
 

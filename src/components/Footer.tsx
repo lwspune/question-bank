@@ -96,6 +96,13 @@ export default function Footer() {
             <NotebookPen className="h-3 w-3" aria-hidden />
             NDA Physics Notes
           </Link>
+          <Link
+            href="/notes/mht-cet-maths"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <NotebookPen className="h-3 w-3" aria-hidden />
+            MHT-CET Maths Notes
+          </Link>
           <a
             href={`mailto:${REPORT_EMAIL}?subject=Question%20Bank%20feedback`}
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"

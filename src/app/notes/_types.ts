@@ -107,7 +107,9 @@ export type VisualizationSlug =
   | "beats-envelope"
   | "ear-anatomy"
   | "frequency-spectrum-strip"
-  | "echo-geometry";
+  | "echo-geometry"
+  // MHT-CET Maths — Indefinite Integration chapter
+  | "antiderivative-family";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

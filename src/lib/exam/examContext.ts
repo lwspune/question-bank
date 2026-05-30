@@ -38,7 +38,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     displayName: "MHT-CET",
     examName: "MHT-CET",
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/mht-cet-maths",
   },
 ] as const;
 
