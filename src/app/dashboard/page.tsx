@@ -5,6 +5,7 @@ import {
   ChevronRight,
   FileSpreadsheet,
   Flag,
+  Gem,
   Search,
   Upload,
   Users,
@@ -192,6 +193,14 @@ function QuickActions({
           icon={<Users className="h-5 w-5" aria-hidden />}
           title="Members"
           description="Add admins and teachers, reset passwords, manage roles."
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/entitlements"
+          icon={<Gem className="h-5 w-5" aria-hidden />}
+          title="Access"
+          description="Grant or revoke free premium access for students by email."
         />
       )}
     </div>
