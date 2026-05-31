@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BookOpen, Eye, EyeOff } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
@@ -54,6 +56,16 @@ export default function LoginPage() {
               Enter your email and password.
             </p>
           </header>
+
+          <GoogleSignInButton next="/browse" />
+
+          <div className="my-5 flex items-center gap-3">
+            <span className="h-px flex-1 bg-border" />
+            <span className="text-xs uppercase tracking-wide text-muted-foreground">
+              or
+            </span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
 
           <form onSubmit={onSubmit} className="space-y-4">
             <div className="space-y-2">
@@ -115,6 +127,16 @@ export default function LoginPage() {
               {submitting ? "Signing in…" : "Sign in"}
             </Button>
           </form>
+
+          <p className="mt-6 text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link
+              href="/signup"
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              Sign up
+            </Link>
+          </p>
         </div>
       </section>
 

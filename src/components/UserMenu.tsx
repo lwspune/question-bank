@@ -12,7 +12,8 @@ export default function UserMenu({
   role,
 }: {
   email: string;
-  role: "ADMIN" | "TEACHER";
+  // null = signed-in student (no org membership).
+  role: "ADMIN" | "TEACHER" | null;
 }) {
   const router = useRouter();
   const [signingOut, setSigningOut] = useState(false);
@@ -23,7 +24,7 @@ export default function UserMenu({
       const supabase = createSupabaseBrowserClient();
       await supabase.auth.signOut();
       toast.success("Signed out");
-      router.replace("/login");
+      router.replace("/browse");
       router.refresh();
     } catch (err) {
       setSigningOut(false);
@@ -55,7 +56,9 @@ export default function UserMenu({
               <User className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
               <span className="truncate">{email}</span>
             </p>
-            <p className="mt-0.5 text-xs text-muted-foreground">{role}</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              {role ?? "Student"}
+            </p>
           </div>
           <button
             type="button"

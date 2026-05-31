@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { loadActiveExamContext } from "@/lib/exam/loadActiveExamContext";
 import UserMenu from "./UserMenu";
@@ -9,10 +9,18 @@ import PrimaryNav from "./PrimaryNav";
 import ExamPill from "./ExamPill";
 
 export default async function AppHeader() {
-  const [member, examContext] = await Promise.all([
+  const [member, user, examContext] = await Promise.all([
     getSessionMember(),
+    getSessionUser(),
     loadActiveExamContext(),
   ]);
+  // A signed-in user with no org_members row is a self-serve student — they
+  // still get the account menu (so they can sign out), just no org chip/role.
+  const account = member
+    ? { email: member.user.email, role: member.role }
+    : user
+      ? { email: user.email, role: null }
+      : null;
   // Brand link lands ADMINs on /dashboard (their home for upload/reports/
   // members tooling); everyone else (TEACHER + anon) lands on /browse,
   // which is the surface where editor + reader workflows actually live.
@@ -44,16 +52,19 @@ export default async function AppHeader() {
           <ExamPill activeSlug={examContext.slug} />
           {/* Theme toggle is visible to everyone, anon included. */}
           <ThemeToggle />
-          {member ? (
+          {account ? (
             <>
-              {/* Hide org chip below md so brand + nav + pill + avatar all fit. */}
-              <span
-                className="hidden max-w-[12rem] truncate text-xs text-muted-foreground md:inline md:max-w-none"
-                title={member.orgName}
-              >
-                {member.orgName}
-              </span>
-              <UserMenu email={member.user.email} role={member.role} />
+              {/* Org chip only for org members; hidden below md so brand +
+                  nav + pill + avatar all fit. */}
+              {member && (
+                <span
+                  className="hidden max-w-[12rem] truncate text-xs text-muted-foreground md:inline md:max-w-none"
+                  title={member.orgName}
+                >
+                  {member.orgName}
+                </span>
+              )}
+              <UserMenu email={account.email} role={account.role} />
             </>
           ) : (
             <Button asChild variant="outline" size="sm">

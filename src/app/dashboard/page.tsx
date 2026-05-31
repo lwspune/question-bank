@@ -9,16 +9,9 @@ import {
   Upload,
   Users,
 } from "lucide-react";
-import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import {
   getDashboardStats,
@@ -39,33 +32,11 @@ export default async function DashboardPage() {
   // Admin tooling on this page (upload, reports, members) is admin-only.
   if (member && member.role === "TEACHER") redirect("/browse");
 
-  if (!member) {
-    const user = await getSessionUser();
-    // Anon users land on the public browse page, not the admin dashboard.
-    if (!user) redirect("/browse");
-    return (
-      <>
-        <AppHeader />
-        <main className="mx-auto max-w-2xl p-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Account not linked to an organization</CardTitle>
-              <CardDescription>
-                You are signed in as{" "}
-                <span className="font-medium">{user.email}</span>, but you have
-                not been added to any organization yet.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm">
-                Ask your administrator to add you, then refresh this page.
-              </p>
-            </CardContent>
-          </Card>
-        </main>
-      </>
-    );
-  }
+  // Anon AND self-serve students (signed in, no org_members row) both land on
+  // the public browse page — the dashboard is org-member territory only.
+  // Admins atomically get an org_members row at creation, so org-less reliably
+  // means "not staff".
+  if (!member) redirect("/browse");
 
   const supabase = createSupabaseServerClient();
   const [stats, recentUploads, openReportCount] = await Promise.all([

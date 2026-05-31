@@ -11,6 +11,15 @@
  */
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
+// Credential validators live in the client-safe module; imported for local
+// use here and re-exported so existing imports (route + tests) keep working.
+import {
+  MIN_PASSWORD_LENGTH,
+  isValidEmail,
+  isValidPassword,
+} from "@/lib/auth/credentials";
+export { MIN_PASSWORD_LENGTH, isValidEmail, isValidPassword };
+
 export type MemberRole = "ADMIN" | "TEACHER";
 
 export type MemberRow = {
@@ -20,18 +29,6 @@ export type MemberRow = {
   role: MemberRole;
   lastSignInAt: string | null;
 };
-
-export const MIN_PASSWORD_LENGTH = 8;
-
-export function isValidEmail(value: string): boolean {
-  // Permissive RFC-ish check — Supabase auth does its own canonical
-  // validation and will reject anything stricter at create time.
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-export function isValidPassword(value: string): boolean {
-  return typeof value === "string" && value.length >= MIN_PASSWORD_LENGTH;
-}
 
 export function isValidRole(value: unknown): value is MemberRole {
   return value === "ADMIN" || value === "TEACHER";
