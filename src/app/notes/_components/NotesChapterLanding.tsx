@@ -6,6 +6,7 @@ import {
   BookOpen,
   Compass,
   Presentation,
+  Sparkles,
 } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -171,6 +172,19 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           />
         </Link>
       </div>
+
+      {chapter.tier === "paid" && (
+        <div className="mb-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4">
+          <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+          <p className="text-sm text-foreground">
+            <span className="font-semibold">Premium chapter.</span>{" "}
+            <span className="text-muted-foreground">
+              Each subtopic&apos;s first concepts are free to preview; the full
+              worked examples, practice, and checkpoint unlock with access.
+            </span>
+          </p>
+        </div>
+      )}
 
       <section className="mt-2 grid gap-4 sm:mt-4">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">

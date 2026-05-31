@@ -6,7 +6,10 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { userHasAccess } from "@/lib/entitlements/query";
+import { isNotesGated, splitPreview } from "@/lib/notes/access";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { splitNoteIntoSlides } from "@/lib/notes/splitNoteIntoSlides";
@@ -15,6 +18,7 @@ import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotePresenter from "./NotePresenter";
+import NotesPaywall from "./NotesPaywall";
 import SubtopicMasteryCheckpoint from "./SubtopicMasteryCheckpoint";
 import SubtopicSummary from "./SubtopicSummary";
 
@@ -54,6 +58,36 @@ export default async function NotesSubtopicPage({
 }: Props) {
   const note = chapter.notes[subtopicSlug];
   if (!note) notFound();
+
+  // Preview-gate (paid chapters only). Reading session cookies makes a paid
+  // chapter dynamic — its [subtopicSlug] wrapper must export force-dynamic
+  // (notes-lint enforces). Free chapters skip this and stay ISR-cached.
+  let gated = false;
+  let isSignedIn = false;
+  if (chapter.tier === "paid") {
+    const [member, user] = await Promise.all([
+      getSessionMember(),
+      getSessionUser(),
+    ]);
+    isSignedIn = Boolean(member || user);
+    let hasAccess = false;
+    if (!member && user) {
+      hasAccess = await userHasAccess(
+        createSupabaseServerClient(),
+        user.id,
+        chapter.paidScope ?? "all"
+      );
+    }
+    gated = isNotesGated({
+      tier: chapter.tier,
+      isMember: Boolean(member),
+      hasAccess,
+    });
+  }
+
+  const { preview: visibleConcepts, locked: lockedConcepts } = gated
+    ? splitPreview(note.concepts, chapter.previewConceptCount ?? 2)
+    : { preview: note.concepts, locked: [] as typeof note.concepts };
 
   const base = routeBase(chapter);
   const chapterName = chapter.chapter.chapterName;
@@ -149,14 +183,16 @@ export default async function NotesSubtopicPage({
             subtitle={note.oneLineDefinition}
           />
         </div>
-        <div className="shrink-0">
-          <NotePresenter
-            slides={slides}
-            pyqExamples={pyqById}
-            drillHref={drillHref}
-            drillCount={drillCount}
-          />
-        </div>
+        {!gated && (
+          <div className="shrink-0">
+            <NotePresenter
+              slides={slides}
+              pyqExamples={pyqById}
+              drillHref={drillHref}
+              drillCount={drillCount}
+            />
+          </div>
+        )}
       </div>
 
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
@@ -218,9 +254,11 @@ export default async function NotesSubtopicPage({
         </nav>
       )}
 
-      {/* The body: concept units in sequence */}
+      {/* The body: concept units in sequence (sliced to the free preview when
+          this is a gated paid chapter). The full concept table-of-contents
+          above stays public, so the page still indexes every concept name. */}
       <div className="space-y-8">
-        {note.concepts.map((c, i) => (
+        {visibleConcepts.map((c, i) => (
           <ConceptUnitCard
             key={c.slug}
             concept={c}
@@ -232,11 +270,21 @@ export default async function NotesSubtopicPage({
         ))}
       </div>
 
-      {/* End-of-subtopic recap — auto-derived from concept.formula + concept.traps. */}
-      <SubtopicSummary note={note} />
+      {gated ? (
+        <NotesPaywall
+          lockedCount={lockedConcepts.length}
+          isSignedIn={isSignedIn}
+          subjectDisplay={chapter.subjectDisplay}
+        />
+      ) : (
+        <>
+          {/* End-of-subtopic recap — auto-derived from concept.formula + concept.traps. */}
+          <SubtopicSummary note={note} />
 
-      {/* Mastery checkpoint — interleaved questions from the concept-tag pool. */}
-      <SubtopicMasteryCheckpoint questions={checkpointRows} />
+          {/* Mastery checkpoint — interleaved questions from the concept-tag pool. */}
+          <SubtopicMasteryCheckpoint questions={checkpointRows} />
+        </>
+      )}
 
       {/* Final drill CTA */}
       <section className="mt-12 rounded-lg border-2 border-primary/40 bg-primary/5 p-6 text-center">

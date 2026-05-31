@@ -59,6 +59,23 @@ export type NotesChapterRegistration = {
   notes: Record<string, SubtopicNote>;
   /** Ordered subtopic slugs, matches the chapter page's render order. */
   slugs: readonly string[];
+  /**
+   * Access tier. Omitted/"free" = fully public (the default; keeps the SEO
+   * funnel intact). "paid" = preview-gated: the landing + first
+   * `previewConceptCount` concepts per subtopic stay public + indexable, the
+   * rest requires an entitlement (or org membership).
+   *
+   * CONTRACT: a "paid" chapter's [subtopicSlug]/page.tsx wrapper MUST
+   * `export const dynamic = "force-dynamic"` and NOT pre-render via
+   * generateStaticParams — the gate reads cookies, so a statically-cached
+   * anon render would otherwise leak the preview to entitled users.
+   * `npm run notes:lint` enforces this.
+   */
+  tier?: "free" | "paid";
+  /** Entitlement scope this chapter requires when paid. Default "all". */
+  paidScope?: string;
+  /** Concepts shown free per subtopic before the paywall. Default 2. */
+  previewConceptCount?: number;
 };
 
 export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [

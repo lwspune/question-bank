@@ -111,6 +111,48 @@ async function main() {
     }
   }
 
+  // 0b. Paid chapters must render dynamically (static, no DB). The preview-gate
+  //     reads session cookies; a statically-cached anon prerender would leak the
+  //     preview to entitled users. Enforce force-dynamic + no `revalidate` on
+  //     the subtopic wrapper. See NotesChapterRegistration.tier contract.
+  for (const c of NOTES_CHAPTERS) {
+    if (c.tier !== "paid") continue;
+    const owner = `${c.subjectRoute}/${c.chapterSlug}`;
+    const wrapper = path.join(
+      process.cwd(),
+      "src/app/notes",
+      c.subjectRoute,
+      c.chapterSlug,
+      "[subtopicSlug]",
+      "page.tsx"
+    );
+    if (!fs.existsSync(wrapper)) {
+      issues.push({
+        severity: "error",
+        note: owner,
+        message: `paid chapter wrapper not found at ${wrapper}`,
+      });
+      continue;
+    }
+    const src = fs.readFileSync(wrapper, "utf8");
+    if (!/export\s+const\s+dynamic\s*=\s*["']force-dynamic["']/.test(src)) {
+      issues.push({
+        severity: "error",
+        note: owner,
+        message:
+          'paid chapter [subtopicSlug]/page.tsx must `export const dynamic = "force-dynamic"` — the preview-gate reads cookies; static caching would leak the preview to entitled users',
+      });
+    }
+    if (/export\s+const\s+revalidate\s*=/.test(src)) {
+      issues.push({
+        severity: "error",
+        note: owner,
+        message:
+          "paid chapter [subtopicSlug]/page.tsx must NOT export `revalidate` — ISR caching is incompatible with per-user gating",
+      });
+    }
+  }
+
   for (const ref of NOTES) {
     // 1. Resolve subtopic via the same name-keyed path the page uses at request time.
     const { data: exam } = await supabase
