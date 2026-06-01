@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Presentation } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -126,19 +126,6 @@ export default async function NdaPhysicsNotesIndex() {
             );
           })}
         </ul>
-      </section>
-
-      <section className="mt-12 rounded-lg border bg-card p-5">
-        <p className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <Presentation className="h-4 w-4 text-primary" aria-hidden />
-          Built for the digital board
-        </p>
-        <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-          Every note has a <span className="font-medium">Present</span> button
-          that opens a full-screen slide deck — large fonts, keyboard navigation
-          (←/→/Space), fullscreen toggle, and a final &ldquo;drill the bank&rdquo;
-          slide that jumps straight to filtered questions for student practice.
-        </p>
       </section>
     </GuideShell>
   );
