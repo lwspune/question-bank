@@ -1,8 +1,3 @@
-import { Sparkles } from "lucide-react";
-
-const SUPPORTED_EXAMS = ["MHT-CET", "NDA"];
-const COMING_SOON_EXAMS = ["IPMAT", "CUET", "NEET", "JEE Main"];
-
 export default function Hero({
   totalPublicQuestions,
 }: {
@@ -14,7 +9,7 @@ export default function Hero({
   ];
 
   return (
-    <section className="mb-6 rounded-xl border bg-gradient-to-br from-brand-accent/10 via-background to-background p-4 shadow-sm sm:mb-8 sm:p-8">
+    <section className="mb-5 rounded-xl border bg-gradient-to-br from-brand-accent/10 via-background to-background p-4 shadow-sm sm:mb-6 sm:p-6">
       <h1
         className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}
@@ -48,39 +43,6 @@ export default function Hero({
           </div>
         ))}
       </dl>
-
-      <div
-        className="mt-3 animate-fade-in-up space-y-2 text-xs sm:mt-5"
-        style={{ animationDelay: "200ms" }}
-      >
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-          <span className="text-muted-foreground">Available now:</span>
-          {SUPPORTED_EXAMS.map((e) => (
-            <span
-              key={e}
-              className="rounded-full bg-brand-accent/10 px-2 py-0.5 font-medium text-brand-accent"
-            >
-              {e}
-            </span>
-          ))}
-        </div>
-        {/* "Coming soon" hidden on mobile so the first question card lands
-            in the initial viewport. Desktop has the room. */}
-        <div className="hidden flex-wrap items-center gap-x-2 gap-y-1.5 sm:flex">
-          <span className="inline-flex items-center gap-1 text-muted-foreground">
-            <Sparkles className="h-3 w-3" aria-hidden />
-            Coming soon:
-          </span>
-          {COMING_SOON_EXAMS.map((e) => (
-            <span
-              key={e}
-              className="rounded-full border border-border/60 bg-background px-2 py-0.5 font-medium text-muted-foreground"
-            >
-              {e}
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
