@@ -29,6 +29,7 @@ export const SPHERE_3D_NOTE: SubtopicNote = {
         latex:
           "\\text{centre} = (-u, -v, -w), \\quad r = \\sqrt{u^2 + v^2 + w^2 - d}",
       },
+      visualizationSlug: "sphere-centre-radius-3d",
       authoredExample: {
         prompt: "Find the radius of the sphere \\(x^2 + y^2 + z^2 - 6x + 8y - 10z + 1 = 0\\).",
         steps: [

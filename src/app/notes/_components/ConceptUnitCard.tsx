@@ -61,6 +61,8 @@ import OctantsCoordinatePlanes from "./visualizations/OctantsCoordinatePlanes";
 import LinePlaneIntersection from "./visualizations/LinePlaneIntersection";
 import PlaneWithNormal from "./visualizations/PlaneWithNormal";
 import SpherePlaneTangency from "./visualizations/SpherePlaneTangency";
+import AngleBetweenLines3D from "./visualizations/AngleBetweenLines3D";
+import SphereCentreRadius3D from "./visualizations/SphereCentreRadius3D";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -163,6 +165,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <PlaneWithNormal />;
     case "sphere-plane-tangency":
       return <SpherePlaneTangency />;
+    case "angle-between-lines-3d":
+      return <AngleBetweenLines3D />;
+    case "sphere-centre-radius-3d":
+      return <SphereCentreRadius3D />;
   }
 }
 

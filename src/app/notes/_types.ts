@@ -114,7 +114,9 @@ export type VisualizationSlug =
   | "octants-coordinate-planes"
   | "line-plane-intersection"
   | "plane-with-normal"
-  | "sphere-plane-tangency";
+  | "sphere-plane-tangency"
+  | "angle-between-lines-3d"
+  | "sphere-centre-radius-3d";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

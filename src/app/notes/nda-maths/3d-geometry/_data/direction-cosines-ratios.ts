@@ -190,6 +190,7 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
         latex:
           "\\cos\\theta = \\frac{|a_1 a_2 + b_1 b_2 + c_1 c_2|}{\\sqrt{a_1^2+b_1^2+c_1^2}\\,\\sqrt{a_2^2+b_2^2+c_2^2}}",
       },
+      visualizationSlug: "angle-between-lines-3d",
       authoredExample: {
         prompt:
           "Find the angle between the two lines with direction ratios \\(\\langle 6, 3, 6\\rangle\\) and \\(\\langle 3, 3, 0\\rangle\\).",
