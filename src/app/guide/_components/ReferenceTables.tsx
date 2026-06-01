@@ -1,26 +1,45 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { REFERENCE_CLUSTERS } from "@/app/guide/nda-polity/_data/reference-tables";
+
+export type ReferenceEntry = {
+  id: string;
+  name: string;
+  fact: string;
+  context: string;
+  notes?: string;
+  playbookSlug?: string;
+};
+
+export type ReferenceCluster = {
+  theme: string;
+  blurb: string;
+  columns: { name: string; fact: string; context: string };
+  entries: ReadonlyArray<ReferenceEntry>;
+};
+
+type Props = {
+  /** Guide path segment, e.g. "nda-biology". */
+  guidePath: string;
+  /** Multi-domain reference clusters (each carries its own column headers). */
+  clusters: ReadonlyArray<ReferenceCluster>;
+};
 
 /**
- * Multi-domain reference-tables renderer for /guide/nda-polity/reference-tables.
+ * Multi-domain reference-tables renderer for /guide/<guide>/reference-tables
+ * (and /guide/nda-history/timeline-and-pairs). Each cluster carries its OWN
+ * column headers because the named-fact domains differ per cluster.
  *
- * Parallel to BiologyReferenceTables + GeographyReferenceTables +
- * HistoryReferenceTables — same multi-domain shape (each cluster carries
- * its own column headers since Polity's named facts span four distinct
- * domains: Key Articles ↔ Subject / Constitutional Amendments ↔ Year ↔
- * Theme / Constitutional Bodies ↔ Function ↔ Article / Parts ↔ Schedules
- * ↔ Content). Kept as its own component because the playbook link path is
- * hard-coded per guide (same precedent as RelatedPolityPlaybooks).
+ * Generic over every guide: the call site passes its REFERENCE_CLUSTERS +
+ * guidePath. Replaces the former four per-guide copies (Biology/Geography/
+ * History/PolityReferenceTables) — they differed only by import path + href.
  *
- * Plain-text strings only — no LaTeX pipeline, page stays a server
- * component. Optional row-level trap-aware notes render under the entry
- * name in amber.
+ * Distinct from CommonCompoundsTable (chemistry, single-domain). Plain-text
+ * strings only — no LaTeX pipeline, so the page stays a server component.
  */
-export default function PolityReferenceTables() {
+export default function ReferenceTables({ guidePath, clusters }: Props) {
   return (
     <div className="mt-6 space-y-10">
-      {REFERENCE_CLUSTERS.map((cluster) => (
+      {clusters.map((cluster) => (
         <section key={cluster.theme} className="rounded-lg border bg-card">
           <header className="border-b bg-muted/30 px-5 py-3">
             <h2 className="text-base font-semibold tracking-tight sm:text-lg">
@@ -66,7 +85,7 @@ export default function PolityReferenceTables() {
                     <td className="px-5 py-3 text-right">
                       {e.playbookSlug && (
                         <Link
-                          href={`/guide/nda-polity/playbooks/${e.playbookSlug}`}
+                          href={`/guide/${guidePath}/playbooks/${e.playbookSlug}`}
                           className="group inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
                           aria-label={`Open the ${e.name} playbook`}
                         >

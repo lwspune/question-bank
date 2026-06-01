@@ -1,38 +1,78 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { PLAYBOOKS } from "@/app/guide/nda-english/_data/playbooks";
 
-type Props = {
-  /** Slugs (must exist in PLAYBOOKS). */
-  slugs: string[];
+export type RelatedItem = {
+  /** Optional because some catalogs (maths TOP_11) carry slug-less long-tail
+   *  entries; only slugged entries are ever rendered (see the filter below). */
+  slug?: string;
+  name: string;
+  /** Playbooks carry a question count; principles don't. */
+  qCount?: number;
+  pctHard?: number | null;
 };
 
-/**
- * Cross-link card row at the bottom of a /guide/nda-english/playbooks/[slug]
- * page. Editorial pick — 2–3 related playbooks per detail page. Parallel to
- * the maths-side RelatedPrinciples component but bound to the english catalog.
- */
-export default function RelatedPlaybooks({ slugs }: Props) {
-  const items = slugs
-    .map((s) => PLAYBOOKS.find((p) => p.slug === s))
-    .filter((p): p is NonNullable<typeof p> => p !== undefined);
+type Props = {
+  /** Guide path segment, e.g. "nda-biology". */
+  guidePath: string;
+  /** The full catalog the slugs index into (a guide's PLAYBOOKS or TOP_11). */
+  items: ReadonlyArray<RelatedItem>;
+  /** Which catalog entries to show (editorial pick — must exist in items). */
+  slugs: string[];
+  /** Path segment under the guide — "playbooks" (default) or "principles". */
+  pathSegment?: string;
+  /** Section heading. */
+  heading?: string;
+  /** Intro line under the heading. */
+  intro?: string;
+};
 
-  if (items.length === 0) return null;
+/** Pure href builder for a related guide item — kept exported for unit testing. */
+export function relatedItemHref(
+  guidePath: string,
+  pathSegment: string,
+  slug: string
+): string {
+  return `/guide/${guidePath}/${pathSegment}/${slug}`;
+}
+
+/**
+ * Cross-link card row at the bottom of a /guide/<guide>/playbooks/[slug] (or
+ * /principles/[slug]) detail page. Editorial pick — 2–3 related items.
+ *
+ * Generic over every guide: the call site passes its own catalog + guidePath.
+ * Replaces the former eight per-guide copies (RelatedPlaybooks (english),
+ * RelatedBiology/Chemistry/Physics/Geography/History/PolityPlaybooks, and
+ * RelatedPrinciples (maths)) — they differed only by import path + href.
+ */
+export default function RelatedPlaybooks({
+  guidePath,
+  items,
+  slugs,
+  pathSegment = "playbooks",
+  heading = "Related playbooks",
+  intro = "Often paired with this one — drill these next if you found the worked examples above tractable.",
+}: Props) {
+  const picked = slugs
+    .map((s) => items.find((p) => p.slug === s))
+    .filter((p): p is RelatedItem & { slug: string } =>
+      p !== undefined && p.slug !== undefined
+    );
+
+  if (picked.length === 0) return null;
 
   return (
     <section className="mt-12">
       <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-        Related playbooks
+        {heading}
       </h2>
       <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-        Often paired with this one — drill these next if you found the worked
-        examples above tractable.
+        {intro}
       </p>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((p) => (
+        {picked.map((p) => (
           <li key={p.slug}>
             <Link
-              href={`/guide/nda-english/playbooks/${p.slug}`}
+              href={relatedItemHref(guidePath, pathSegment, p.slug)}
               className="group flex h-full flex-col rounded-md border bg-card p-3 transition-colors hover:border-primary/40 hover:bg-accent"
             >
               <div className="flex items-start justify-between gap-2">
@@ -44,9 +84,13 @@ export default function RelatedPlaybooks({ slugs }: Props) {
                   aria-hidden
                 />
               </div>
-              <p className="mt-1 text-xs tabular-nums text-muted-foreground">
-                {p.qCount} q · {p.pctHard}% hard
-              </p>
+              {(p.qCount != null || p.pctHard != null) && (
+                <p className="mt-1 text-xs tabular-nums text-muted-foreground">
+                  {p.qCount != null
+                    ? `${p.qCount} q · ${p.pctHard}% hard`
+                    : `${p.pctHard}% hard`}
+                </p>
+              )}
             </Link>
           </li>
         ))}

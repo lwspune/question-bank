@@ -7,7 +7,7 @@ import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
-import RelatedPhysicsPlaybooks from "@/app/guide/_components/RelatedPhysicsPlaybooks";
+import RelatedPlaybooks from "@/app/guide/_components/RelatedPlaybooks";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
@@ -251,7 +251,13 @@ export default async function PlaybookDetail({ params }: { params: Params }) {
         </div>
       </section>
 
-      {detail && <RelatedPhysicsPlaybooks slugs={detail.relatedSlugs} />}
+      {detail && (
+        <RelatedPlaybooks
+          guidePath="nda-physics"
+          items={PLAYBOOKS}
+          slugs={detail.relatedSlugs}
+        />
+      )}
 
       <PrevNextNav prev={prev} next={next} />
     </GuideShell>

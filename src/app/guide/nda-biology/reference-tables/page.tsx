@@ -5,9 +5,9 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import BiologyReferenceTables from "@/app/guide/_components/BiologyReferenceTables";
+import ReferenceTables from "@/app/guide/_components/ReferenceTables";
 import { ROUTES } from "../_data/nda-biology";
-import { REFERENCE_STATS } from "../_data/reference-tables";
+import { REFERENCE_STATS, REFERENCE_CLUSTERS } from "../_data/reference-tables";
 
 export const revalidate = 3600;
 
@@ -123,7 +123,7 @@ export default function ReferenceTablesPage() {
       </section>
 
       {/* The reference tables */}
-      <BiologyReferenceTables />
+      <ReferenceTables guidePath="nda-biology" clusters={REFERENCE_CLUSTERS} />
 
       {/* Note on rendering */}
       <section className="mt-12 rounded-md border bg-muted/30 p-5 text-sm">

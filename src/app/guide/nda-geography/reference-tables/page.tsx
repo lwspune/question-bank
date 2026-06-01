@@ -5,9 +5,9 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import GeographyReferenceTables from "@/app/guide/_components/GeographyReferenceTables";
+import ReferenceTables from "@/app/guide/_components/ReferenceTables";
 import { ROUTES } from "../_data/nda-geography";
-import { REFERENCE_STATS } from "../_data/reference-tables";
+import { REFERENCE_STATS, REFERENCE_CLUSTERS } from "../_data/reference-tables";
 
 export const revalidate = 3600;
 
@@ -123,7 +123,7 @@ export default function ReferenceTablesPage() {
       </section>
 
       {/* The reference tables */}
-      <GeographyReferenceTables />
+      <ReferenceTables guidePath="nda-geography" clusters={REFERENCE_CLUSTERS} />
 
       {/* Note on rendering */}
       <section className="mt-12 rounded-md border bg-muted/30 p-5 text-sm">

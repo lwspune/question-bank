@@ -7,7 +7,7 @@ import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
-import RelatedPrinciples from "@/app/guide/_components/RelatedPrinciples";
+import RelatedPlaybooks from "@/app/guide/_components/RelatedPlaybooks";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
@@ -203,7 +203,14 @@ export default async function PrincipleDetail({ params }: { params: Params }) {
       </section>
 
       {/* Related principles */}
-      <RelatedPrinciples slugs={detail.relatedSlugs} />
+      <RelatedPlaybooks
+        guidePath="nda-maths"
+        items={TOP_11}
+        slugs={detail.relatedSlugs}
+        pathSegment="principles"
+        heading="Related principles"
+        intro="Often combined with this one — drill these next if you found the examples above tractable."
+      />
 
       <PrevNextNav prev={prev} next={next} />
     </GuideShell>

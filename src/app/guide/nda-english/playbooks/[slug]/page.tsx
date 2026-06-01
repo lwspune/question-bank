@@ -250,7 +250,13 @@ export default async function PlaybookDetail({ params }: { params: Params }) {
         </div>
       </section>
 
-      {detail && <RelatedPlaybooks slugs={detail.relatedSlugs} />}
+      {detail && (
+        <RelatedPlaybooks
+          guidePath="nda-english"
+          items={PLAYBOOKS}
+          slugs={detail.relatedSlugs}
+        />
+      )}
 
       <PrevNextNav prev={prev} next={next} />
     </GuideShell>
