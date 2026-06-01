@@ -34,7 +34,7 @@ export default async function AppHeader() {
           className="flex shrink-0 items-center gap-2 text-sm font-semibold tracking-tight"
         >
           <BookOpen
-            className="h-5 w-5 shrink-0 text-primary"
+            className="h-5 w-5 shrink-0 text-brand-accent"
             aria-hidden
           />
           {/* Wordmark hides on narrow phones so the 3-tab nav + pill fit

@@ -36,11 +36,12 @@ export default function ExamPill({ activeSlug }: { activeSlug: ExamSlug }) {
         <button
           type="button"
           aria-label={`Switch exam — currently ${active.displayName}`}
+          title="Switch exam — changes Bank, Guides & Notes"
           disabled={pending}
-          className="inline-flex h-9 items-center gap-1 rounded-full border border-input bg-background px-2.5 text-xs font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 sm:px-3"
+          className="inline-flex h-9 items-center gap-1 rounded-full border border-brand-accent/30 bg-brand-accent/5 px-2.5 text-xs font-semibold text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 sm:px-3"
         >
           <span>{active.displayName}</span>
-          <ChevronDown className="h-3 w-3 text-muted-foreground" aria-hidden />
+          <ChevronDown className="h-3 w-3 text-brand-accent/70" aria-hidden />
         </button>
       </Popover.Trigger>
       <Popover.Portal>

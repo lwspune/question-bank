@@ -43,7 +43,7 @@ export default function PrimaryNav({ bankHref, guidesHref, notesHref }: Props) {
             className={
               "group inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 " +
               (isActive
-                ? "bg-accent text-foreground"
+                ? "bg-brand-accent/10 text-brand-accent"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground")
             }
           >

@@ -114,11 +114,15 @@ export default function DownloadDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       {!hideTrigger && (
         <DialogTrigger asChild>
-          <Button disabled={filterCount === 0} className="w-full sm:w-auto">
+          <Button
+            variant="brand"
+            disabled={filterCount === 0}
+            className="w-full sm:w-auto"
+          >
             <Download className="h-4 w-4" aria-hidden />
             Download
             {filterCount > 0 && (
-              <span className="ml-1 text-primary-foreground/80">
+              <span className="ml-1 text-brand-foreground/80">
                 · {filterCount}
               </span>
             )}
@@ -215,6 +219,7 @@ export default function DownloadDialog({
             {busyKind === "key" ? "Generating…" : "Answer Key"}
           </Button>
           <Button
+            variant="brand"
             onClick={() => onDownload("paper")}
             disabled={busy || overCap || activeCount === 0}
             className="w-full sm:w-auto"

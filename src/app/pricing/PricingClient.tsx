@@ -108,7 +108,7 @@ export default function PricingClient({ planId }: { planId: string }) {
         onLoad={() => setScriptReady(true)}
         strategy="afterInteractive"
       />
-      <Button className="w-full" onClick={onBuy} disabled={busy}>
+      <Button variant="brand" className="w-full" onClick={onBuy} disabled={busy}>
         {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
         {busy ? "Opening checkout…" : "Buy premium"}
       </Button>
