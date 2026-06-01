@@ -159,17 +159,43 @@ New `saved_filters(user_id, org_id, name, filters_jsonb, created_at)` table + a 
 
 ## Auth + accounts
 
-### Custom SMTP (Resend) + magic-link sign-in (explicitly deferred)
+### Custom SMTP (Resend) — now a real need
 
-Supabase's default-SMTP cap of 2 emails/hour project-wide blocked the magic-link flow during development. User has marked Phases F (SMTP) and G (user accounts) as not currently necessary. When teachers come online, wire Resend and re-enable magic-link alongside password sign-in.
+Supabase's default-SMTP cap (~2 emails/hour project-wide) is dev-only. **Self-serve student accounts shipped 2026-06-01 with email confirmation OFF**, so signup itself sends no mail — but **password resets do** (and they run through the same throttled service), so any email/password student who forgets their password is currently stuck. Wire a custom SMTP provider (Resend or any — see CLAUDE.md "Razorpay cost" discussion; Resend isn't mandatory) before the first real paying cohort. Magic-link can be re-enabled at the same time but isn't required (password + Google OAuth cover sign-in).
 
 ### Optional user accounts — recently-built papers, drill streaks
 
-Phase C of the original M-series plan (the "saved filters" half is now a separate active scope under the **UI / IA polish** section above). Remaining: recently-built papers history, per-user drill streaks / progress, account-bound preferences. Gated on auth being teacher-friendly first.
+**Self-serve accounts now exist** (`/signup`, 2026-06-01) and the per-user `entitlements` table is live — so this is unblocked. Remaining: recently-built papers history, per-user drill streaks / progress, account-bound preferences (the "saved filters" half is a separate scope under **UI / IA polish**; the cross-device cart under **Cart / persistence** is also now unblocked). These attach to `auth.users(id)` the same way entitlements do.
 
 ### Password reset flow
 
-No UI yet — admins reset directly via SQL (see CLAUDE.md Operations). Defer until SMTP is wired.
+No UI yet — admins reset directly via SQL (see CLAUDE.md Operations). **Now a real gap, not just a teacher nicety:** self-serve email/password students shipped 2026-06-01, and they have no "forgot password" path. Needs custom SMTP (above) + a reset-request page. Google-OAuth students are unaffected. Prioritise alongside the first batch of real paying students.
+
+---
+
+## Premium / paywall (Razorpay)
+
+The 4-phase paywall shipped 2026-06-01 (signup → entitlements → comp-access UI → notes preview-gate → Razorpay checkout; see CLAUDE.md Decisions log + [[project-paywall-build]]). The code is complete and gate-green; these are the **open activation + follow-up** items.
+
+### Activate Razorpay (the only thing blocking real transactions)
+
+Checkout returns 503 until 4 env vars are set in Vercel + `.env.local`: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `NEXT_PUBLIC_RAZORPAY_KEY_ID` (= key id), `RAZORPAY_WEBHOOK_SECRET`. Steps: create a Razorpay account (test mode needs **no KYC**) → generate test keys → create an `order.paid` webhook → `https://question-bank-sage.vercel.app/api/billing/webhook` → run a test-card payment → confirm an `entitlements` row + a paid chapter unlocks. **Open question (2026-06-01):** the user's existing Razorpay login looked like a partner-linked/Route account ("Registered By: CREATOR ECONOMY TECH", limited nav, no API-keys page) — may not expose standalone keys; a fresh direct razorpay.com merchant account may be required. Going live later = KYC + swap the 4 vars to `rzp_live_…` + repoint the webhook (no code change).
+
+### Designate the first paid notes chapter
+
+All 5 current `/notes` chapters are `free` — the preview-gate machinery is dormant. Making a future chapter premium = set `tier:"paid"` (+ optional `paidScope`/`previewConceptCount`) in the `NOTES_CHAPTERS` registry AND make its `[subtopicSlug]/page.tsx` wrapper `export const dynamic = "force-dynamic"` + drop `revalidate`/`generateStaticParams` (notes-lint enforces the contract). Product decision: which chapter, and confirm the 2-concept preview line reads well for it.
+
+### Pro-plan hardening (when on Supabase Pro)
+
+`auth_leaked_password_protection` (HaveIBeenPwned check on new passwords) is **Pro-only** and currently off — worth enabling now that strangers set passwords. On Free, the lever for abuse is Attack Protection → CAPTCHA (hCaptcha/Turnstile, free-tier) — only wire if bot signups appear.
+
+### Per-chapter / multi-tier pricing (future)
+
+The entitlement model already supports non-`'all'` scopes (`scope` is free-text), so selling individual chapters or tiers needs **no migration** — add `PLANS` entries + per-chapter `paidScope` + a richer `/pricing`. Single-tier (one ₹999/365 pass) is the current shipped shape; revisit only if the catalog of paid chapters grows enough to warrant à-la-carte.
+
+### Receipts / invoices / GST (ops, not code)
+
+Razorpay dashboard handles payment receipts; GST on the price itself (if LWS is GST-registered) is a CA/tax question, not a code change. Flag for the finance side before going live.
 
 ---
 
