@@ -19,7 +19,8 @@ type Props = {
  */
 export default function DriftTable({ rows, years, rowLabel = "Principle" }: Props) {
   return (
-    <div className="overflow-x-auto rounded-md border">
+    <div className="relative">
+      <div className="overflow-x-auto rounded-md border">
       <table className="w-full min-w-[640px] text-sm">
         <thead className="border-b bg-muted/40">
           <tr>
@@ -59,12 +60,12 @@ export default function DriftTable({ rows, years, rowLabel = "Principle" }: Prop
                       className={cn(
                         "px-3 py-2 text-right tabular-nums",
                         intensity === 0 && "text-muted-foreground/60",
-                        intensity === 1 && "bg-primary/[0.04]",
-                        intensity === 2 && "bg-primary/[0.08]",
-                        intensity === 3 && "bg-primary/[0.12]",
-                        intensity === 4 && "bg-primary/[0.18]",
+                        intensity === 1 && "bg-brand-accent/[0.06]",
+                        intensity === 2 && "bg-brand-accent/[0.11]",
+                        intensity === 3 && "bg-brand-accent/[0.17]",
+                        intensity === 4 && "bg-brand-accent/[0.24]",
                         intensity === 5 &&
-                          "bg-primary/[0.25] font-semibold text-primary"
+                          "bg-brand-accent/[0.30] font-semibold text-brand-accent"
                       )}
                     >
                       {v}
@@ -76,6 +77,13 @@ export default function DriftTable({ rows, years, rowLabel = "Principle" }: Prop
           })}
         </tbody>
       </table>
+      </div>
+      {/* Mobile-only "more →" affordance — the table scrolls horizontally on
+          narrow screens; the fade hints there's more to the right. */}
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 w-8 rounded-r-md bg-gradient-to-l from-background to-transparent sm:hidden"
+        aria-hidden
+      />
     </div>
   );
 }

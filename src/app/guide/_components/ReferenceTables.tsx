@@ -49,7 +49,8 @@ export default function ReferenceTables({ guidePath, clusters }: Props) {
               {cluster.blurb}
             </p>
           </header>
-          <div className="overflow-x-auto">
+          <div className="relative">
+            <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] text-sm">
               <thead className="border-b text-xs uppercase tracking-wide text-muted-foreground">
                 <tr className="text-left">
@@ -63,7 +64,7 @@ export default function ReferenceTables({ guidePath, clusters }: Props) {
                 {cluster.entries.map((e) => (
                   <tr
                     key={e.id}
-                    className="border-b last:border-b-0 align-top"
+                    className="border-b align-top last:border-b-0 even:bg-muted/20"
                   >
                     <td className="px-5 py-3">
                       <p className="font-medium text-foreground">{e.name}</p>
@@ -86,7 +87,7 @@ export default function ReferenceTables({ guidePath, clusters }: Props) {
                       {e.playbookSlug && (
                         <Link
                           href={`/guide/${guidePath}/playbooks/${e.playbookSlug}`}
-                          className="group inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+                          className="group inline-flex items-center gap-1 text-xs font-medium text-brand-accent hover:underline"
                           aria-label={`Open the ${e.name} playbook`}
                         >
                           Playbook
@@ -101,6 +102,12 @@ export default function ReferenceTables({ guidePath, clusters }: Props) {
                 ))}
               </tbody>
             </table>
+            </div>
+            {/* Mobile-only "more →" affordance for the horizontal scroll. */}
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-card to-transparent sm:hidden"
+              aria-hidden
+            />
           </div>
         </section>
       ))}

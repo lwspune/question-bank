@@ -1,5 +1,6 @@
 import { ChevronRight, Target } from "lucide-react";
 import type { ConceptWeightGroup } from "@/lib/notes/conceptWeight";
+import { peakIndices } from "@/lib/guide/peakValues";
 
 export type { ConceptWeightGroup };
 
@@ -31,10 +32,18 @@ export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) 
     ...groups.flatMap((g) => g.concepts.map((c) => c.pct))
   );
 
+  // Chapter-wide standout concept(s) — the heaviest by PYQ share. Highlighted
+  // in brand so the single highest-yield concept jumps out of the table.
+  const weighted = groups.flatMap((g) =>
+    g.concepts.filter((c) => !c.isFoundation)
+  );
+  const peakIdx = peakIndices(weighted.map((c) => c.pct));
+  const peakSlugs = new Set([...peakIdx].map((i) => weighted[i].slug));
+
   return (
     <details className="group mt-12 rounded-lg border bg-card">
       <summary className="flex cursor-pointer list-none items-center gap-2 rounded-lg p-5 hover:bg-accent/40">
-        <Target className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+        <Target className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
         <div className="flex-1">
           <h2 className="text-lg font-semibold tracking-tight">
             PYQ weightage by concept
@@ -73,11 +82,17 @@ export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) 
                 </tr>
               </thead>
               <tbody>
-                {g.concepts.map((c) => (
+                {g.concepts.map((c) => {
+                  const isPeak = peakSlugs.has(c.slug);
+                  return (
                   <tr
                     key={c.slug}
                     className={`border-b border-border/50 ${
-                      c.isFoundation ? "text-muted-foreground/60" : ""
+                      c.isFoundation
+                        ? "text-muted-foreground/60"
+                        : isPeak
+                          ? "font-medium text-brand-accent"
+                          : ""
                     }`}
                   >
                     <td className="py-1.5 pr-2">
@@ -98,18 +113,25 @@ export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) 
                         <span className="flex items-center gap-2">
                           <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
                             <span
-                              className="block h-full rounded-full bg-primary/70"
+                              className={`block h-full rounded-full ${
+                                isPeak ? "bg-brand-accent" : "bg-brand-accent/60"
+                              }`}
                               style={{ width: `${Math.round((c.pct / maxPct) * 100)}%` }}
                             />
                           </span>
-                          <span className="w-9 shrink-0 text-right text-xs tabular-nums text-muted-foreground">
+                          <span
+                            className={`w-9 shrink-0 text-right text-xs tabular-nums ${
+                              isPeak ? "text-brand-accent" : "text-muted-foreground"
+                            }`}
+                          >
                             {c.pct}%
                           </span>
                         </span>
                       )}
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
