@@ -48,6 +48,11 @@ const config: Config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          foreground: "hsl(var(--brand-foreground))",
+          accent: "hsl(var(--brand-accent))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
