@@ -187,7 +187,12 @@ export default function QuestionCard({
         )}
       >
         <div className="overflow-hidden">
-          <div className="space-y-3 border-t bg-muted/20 px-4 pb-4 font-serif">
+          <div
+            className={cn(
+              "space-y-3 border-t bg-muted/20 px-4 pb-4 font-serif",
+              expanded && "animate-fade-in-up"
+            )}
+          >
             {question.context && !hideContext && (
               <div className="pt-3 text-sm italic text-muted-foreground">
                 <KatexRenderer text={question.context} />
