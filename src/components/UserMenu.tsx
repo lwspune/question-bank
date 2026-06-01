@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { LogOut, User } from "lucide-react";
+import { CreditCard, LogOut, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -60,6 +61,13 @@ export default function UserMenu({
               {role ?? "Student"}
             </p>
           </div>
+          <Link
+            href="/account"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+          >
+            <CreditCard className="h-4 w-4" aria-hidden />
+            Account &amp; access
+          </Link>
           <button
             type="button"
             onClick={onSignOut}
