@@ -75,13 +75,46 @@ function buildSubtopicMap(
   return map;
 }
 
+// English is the one playbook guide keyed by (chapter, subtopic).
 const NDA_ENGLISH_BY_SUBTOPIC = buildSubtopicMap(NDA_ENGLISH_PLAYBOOKS);
-const NDA_PHYSICS_BY_CHAPTER = buildChapterMap(NDA_PHYSICS_PLAYBOOKS);
-const NDA_CHEMISTRY_BY_CHAPTER = buildChapterMap(NDA_CHEMISTRY_PLAYBOOKS);
-const NDA_BIOLOGY_BY_CHAPTER = buildChapterMap(NDA_BIOLOGY_PLAYBOOKS);
-const NDA_GEOGRAPHY_BY_CHAPTER = buildChapterMap(NDA_GEOGRAPHY_PLAYBOOKS);
-const NDA_HISTORY_BY_CHAPTER = buildChapterMap(NDA_HISTORY_PLAYBOOKS);
-const NDA_POLITY_BY_CHAPTER = buildChapterMap(NDA_POLITY_PLAYBOOKS);
+
+/**
+ * Chapter-keyed playbook guides. Adding a chapter-keyed subject is now a
+ * one-row change here (import its PLAYBOOKS above + append an entry) — no new
+ * switch case. Maths (principle override), English (subtopic-keyed) and the
+ * single-page landings stay special-cased in resolveGuide.
+ */
+const CHAPTER_KEYED_GUIDES: ReadonlyArray<{
+  subject: string;
+  guideSlug: string;
+  playbooks: ReadonlyArray<{ slug: string; name: string; chapter: string }>;
+}> = [
+  { subject: "Physics", guideSlug: "nda-physics", playbooks: NDA_PHYSICS_PLAYBOOKS },
+  { subject: "Chemistry", guideSlug: "nda-chemistry", playbooks: NDA_CHEMISTRY_PLAYBOOKS },
+  { subject: "Biology", guideSlug: "nda-biology", playbooks: NDA_BIOLOGY_PLAYBOOKS },
+  { subject: "Geography", guideSlug: "nda-geography", playbooks: NDA_GEOGRAPHY_PLAYBOOKS },
+  { subject: "History", guideSlug: "nda-history", playbooks: NDA_HISTORY_PLAYBOOKS },
+  { subject: "Polity", guideSlug: "nda-polity", playbooks: NDA_POLITY_PLAYBOOKS },
+];
+
+const CHAPTER_KEYED_BY_SUBJECT = new Map<
+  string,
+  { guideSlug: string; byChapter: Map<string, PlaybookEntry> }
+>(
+  CHAPTER_KEYED_GUIDES.map((g) => [
+    g.subject,
+    { guideSlug: g.guideSlug, byChapter: buildChapterMap(g.playbooks) },
+  ])
+);
+
+/** Single-page guide landings (no playbooks array) — subject → fixed link. */
+const SINGLE_PAGE_GUIDES: Record<string, ResourceLink> = {
+  Economics: { href: "/guide/nda-economics", label: "NDA Economics strategy" },
+  "Current Affairs": {
+    href: "/guide/nda-current-affairs",
+    label: "NDA Current Affairs strategy",
+  },
+};
 
 // ─── Public API ───────────────────────────────────────────────────────────
 
@@ -101,81 +134,42 @@ function resolveGuide(
 ): ResourceLink | null {
   if (input.examName !== "NDA") return null;
 
-  switch (input.subjectName) {
-    case "Mathematics": {
-      // Tier 1.5 — when this question is tagged with a TOP_11 principle,
-      // link to the principle's deep-dive page instead of the generic
-      // overview. First tag wins; non-TOP_11 slugs fall through.
-      const principleHit = firstResolvedPrinciple(tags?.principleSlugs);
-      if (principleHit) {
-        return {
-          href: `/guide/nda-maths/principles/${principleHit.slug}`,
-          label: `Lever: ${principleHit.name}`,
-        };
-      }
-      // Template A — no per-chapter playbook page. Link to the overview.
+  // Mathematics (Template A) — no per-chapter playbook page. When the question
+  // carries a TOP_11 principle tag, link to that principle's deep-dive; first
+  // tag wins, non-TOP_11 slugs fall through to the overview.
+  if (input.subjectName === "Mathematics") {
+    const principleHit = firstResolvedPrinciple(tags?.principleSlugs);
+    if (principleHit) {
       return {
-        href: "/guide/nda-maths",
-        label: "NDA Maths strategy",
+        href: `/guide/nda-maths/principles/${principleHit.slug}`,
+        label: `Lever: ${principleHit.name}`,
       };
     }
-
-    case "English": {
-      if (!input.subtopicName) return null;
-      const key = `${input.chapterName}::${input.subtopicName}`;
-      const hit = NDA_ENGLISH_BY_SUBTOPIC.get(key);
-      if (!hit) return null;
-      return playbookLink("nda-english", hit);
-    }
-
-    case "Physics":
-      return chapterPlaybookLink("nda-physics", input.chapterName, NDA_PHYSICS_BY_CHAPTER);
-
-    case "Chemistry":
-      return chapterPlaybookLink("nda-chemistry", input.chapterName, NDA_CHEMISTRY_BY_CHAPTER);
-
-    case "Biology":
-      return chapterPlaybookLink("nda-biology", input.chapterName, NDA_BIOLOGY_BY_CHAPTER);
-
-    case "Geography":
-      return chapterPlaybookLink("nda-geography", input.chapterName, NDA_GEOGRAPHY_BY_CHAPTER);
-
-    case "History":
-      return chapterPlaybookLink("nda-history", input.chapterName, NDA_HISTORY_BY_CHAPTER);
-
-    case "Polity":
-      return chapterPlaybookLink("nda-polity", input.chapterName, NDA_POLITY_BY_CHAPTER);
-
-    case "Economics":
-      // Single-page landing — no playbooks array. 24 q in 1 chapter; the
-      // strategic stance + Five Year Plans reference live on the landing.
-      return {
-        href: "/guide/nda-economics",
-        label: "NDA Economics strategy",
-      };
-
-    case "Current Affairs":
-      // Template D single-page — no playbooks array. 180 q across 8 chapters;
-      // the half-life directive + 8 anchor themes + drill CTAs live on the
-      // landing. All 8 CA chapters map to the same landing.
-      return {
-        href: "/guide/nda-current-affairs",
-        label: "NDA Current Affairs strategy",
-      };
-
-    default:
-      return null;
+    return { href: "/guide/nda-maths", label: "NDA Maths strategy" };
   }
-}
 
-function chapterPlaybookLink(
-  guideSlug: string,
-  chapterName: string,
-  lookup: Map<string, PlaybookEntry>
-): ResourceLink | null {
-  const hit = lookup.get(chapterName);
-  if (!hit) return null;
-  return playbookLink(guideSlug, hit);
+  // English (Template B) — playbooks keyed by (chapter, subtopic).
+  if (input.subjectName === "English") {
+    if (!input.subtopicName) return null;
+    const hit = NDA_ENGLISH_BY_SUBTOPIC.get(
+      `${input.chapterName}::${input.subtopicName}`
+    );
+    return hit ? playbookLink("nda-english", hit) : null;
+  }
+
+  // Single-page landings (Economics, Current Affairs) — chapter-agnostic.
+  const singlePage = SINGLE_PAGE_GUIDES[input.subjectName];
+  if (singlePage) return singlePage;
+
+  // Chapter-keyed playbook guides (physics/chemistry/biology/geography/
+  // history/polity) — registry lookup.
+  const ck = CHAPTER_KEYED_BY_SUBJECT.get(input.subjectName);
+  if (ck) {
+    const hit = ck.byChapter.get(input.chapterName);
+    return hit ? playbookLink(ck.guideSlug, hit) : null;
+  }
+
+  return null;
 }
 
 function playbookLink(guideSlug: string, entry: PlaybookEntry): ResourceLink {
