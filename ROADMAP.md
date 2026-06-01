@@ -135,6 +135,24 @@ Mop-up of the 2026-05-18 registry refactor. The `/nda` exam home's `NOTES_PREVIE
 
 ---
 
+## Tech debt / refactoring
+
+Deferred remainder of the 2026-06-01 (later) tech-debt pass. That session shipped the guide component de-dup (12 parallel files → 2 generics), the `questionResources.ts` resolver registry, and cross-link + billing test coverage (see CLAUDE.md Decisions log). These three are the lower-urgency items it explicitly left out.
+
+### Split `EditQuestionForm` (1,154-line god-component)
+
+`src/app/questions/[id]/edit/EditQuestionForm.tsx` fuses form state, the exam→subject→chapter→subtopic cascade, concept tagging, image upload/preview/validation, set-membership, and role-gated visibility behind ~11 drilled props. Works + server-guarded, but untestable as a unit. Natural seams: `TaxonomyPicker`, `ImageSlot`, `ConceptTagger`, `VisibilityControl`. Tier-2 — do it when the edit page is next touched.
+
+### Extract `docxBuilder` paragraph-construction helpers
+
+`src/lib/export/docxBuilder.ts` (~468 lines) is dense imperative Word-layout code (numbering, set-banner + passage truncation, OMML placeholder-swap, image fitting). Cohesive but hard to follow — extract `buildSetBanner` / `buildOptions` / `applyOmmlPatch` opportunistically when next touched. Lower priority than the form split.
+
+### Collapse the `/`→`/dashboard`→`/browse` double-redirect
+
+`src/app/page.tsx` sends a signed-in org-less student to `/dashboard`, which then bounces them to `/browse` — a wasted hop, and the inline comment ("orphan-user state lives on /dashboard") is stale after the 2026-06-01 dashboard change. Route org-less users straight to `/browse` from `/`. Tier-3; ~5-minute fix.
+
+---
+
 ## UI / IA polish
 
 The 2026-05-18 Tier 1 IA + cross-linking ship (primary nav, exam pill, `/nda` exam home, backlink chips, click-to-reveal, filter recipes, in-app reports) left these student / teacher journey items as follow-ups.
