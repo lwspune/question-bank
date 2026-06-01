@@ -8,8 +8,13 @@ export default function Hero({
 }: {
   totalPublicQuestions: number;
 }) {
+  const stats = [
+    { value: totalPublicQuestions.toLocaleString("en-IN"), label: "public questions" },
+    { value: "Free", label: "forever, no sign-up" },
+  ];
+
   return (
-    <section className="mb-6 rounded-xl border bg-gradient-to-br from-primary/5 via-background to-background p-4 shadow-sm sm:mb-8 sm:p-8">
+    <section className="mb-6 rounded-xl border bg-gradient-to-br from-brand-accent/10 via-background to-background p-4 shadow-sm sm:mb-8 sm:p-8">
       <h1
         className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}
@@ -24,21 +29,36 @@ export default function Hero({
         Download the Question Paper + Answer Key as Word files. Free, no
         sign-up.
       </p>
+
+      {/* Stat band — gives the hero weight + the brand accent its first
+          appearance on the page. */}
+      <dl
+        className="mt-4 flex animate-fade-in-up flex-wrap gap-x-6 gap-y-2 sm:mt-5"
+        style={{ animationDelay: "120ms" }}
+      >
+        {stats.map((s) => (
+          <div key={s.label} className="flex items-baseline gap-1.5">
+            <dt className="sr-only">{s.label}</dt>
+            <dd className="text-xl font-semibold tabular-nums tracking-tight text-brand-accent sm:text-2xl">
+              {s.value}
+            </dd>
+            <span className="text-xs text-muted-foreground sm:text-sm">
+              {s.label}
+            </span>
+          </div>
+        ))}
+      </dl>
+
       <div
         className="mt-3 animate-fade-in-up space-y-2 text-xs sm:mt-5"
-        style={{ animationDelay: "160ms" }}
+        style={{ animationDelay: "200ms" }}
       >
-        <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border bg-card px-2.5 py-1 font-medium shadow-sm">
-            {totalPublicQuestions.toLocaleString("en-IN")} public questions
-          </span>
-        </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
           <span className="text-muted-foreground">Available now:</span>
           {SUPPORTED_EXAMS.map((e) => (
             <span
               key={e}
-              className="rounded-full bg-emerald-100 px-2 py-0.5 font-medium text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300"
+              className="rounded-full bg-brand-accent/10 px-2 py-0.5 font-medium text-brand-accent"
             >
               {e}
             </span>
