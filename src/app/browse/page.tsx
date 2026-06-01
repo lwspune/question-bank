@@ -20,6 +20,7 @@ import QuestionList from "./QuestionList";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
 import CartPill from "./CartPill";
+import BackToNotes from "./BackToNotes";
 import Hero from "./Hero";
 import ActiveFilterChips from "./ActiveFilterChips";
 import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
@@ -259,6 +260,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           </div>
         </div>
       </main>
+      <BackToNotes />
       <CartPill filters={filters} />
       <Footer />
     </>

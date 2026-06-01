@@ -151,6 +151,11 @@ export default async function NotesSubtopicPage({
 
   const slides = splitNoteIntoSlides(note, drillsByConcept);
 
+  // Return target for the /browse "← Back to notes" pill: this subtopic's URL
+  // (per-concept drills append the concept anchor) + a human label.
+  const subtopicUrl = `${base}/${subtopicSlug}`;
+  const backLabel = `${chapterName} notes`;
+
   const sideNav = [
     { href: base, label: "Chapter overview" },
     ...chapter.chapter.subtopicOrder.map((slug) => {
@@ -266,6 +271,8 @@ export default async function NotesSubtopicPage({
             total={note.concepts.length}
             pyqExample={c.pyqExampleId ? pyqById.get(c.pyqExampleId) ?? null : null}
             drillQuestionIds={drillsByConcept.get(c.slug) ?? []}
+            backHref={`${subtopicUrl}#${c.slug}`}
+            backLabel={backLabel}
           />
         ))}
       </div>
@@ -301,6 +308,8 @@ export default async function NotesSubtopicPage({
             examId={taxonomy.examId}
             subjectId={taxonomy.subjectId}
             subtopicIds={subtopicId ? [subtopicId] : []}
+            from={subtopicUrl}
+            fromLabel={backLabel}
           >
             {drillCount > 0
               ? `Drill the ${drillCount} questions`

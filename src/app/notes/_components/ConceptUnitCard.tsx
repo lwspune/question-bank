@@ -167,6 +167,14 @@ type Props = {
    * sourced via `loadResolvedDrills`. Empty array hides the drill link.
    */
   drillQuestionIds: string[];
+  /**
+   * Internal return path for the /browse "← Back to notes" pill — this
+   * subtopic's URL with the concept's anchor (`…/subtopic#concept-slug`).
+   * Threaded onto the drill link as `from=`. Omitted → no back pill.
+   */
+  backHref?: string;
+  /** Human label for the back pill, e.g. "Vectors notes". */
+  backLabel?: string;
 };
 
 /**
@@ -182,6 +190,8 @@ export default function ConceptUnitCard({
   total,
   pyqExample,
   drillQuestionIds,
+  backHref,
+  backLabel,
 }: Props) {
   const practiceParts: string[] = [];
   if (concept.selfCheckExample) practiceParts.push("self-check");
@@ -313,7 +323,11 @@ export default function ConceptUnitCard({
       {drillQuestionIds.length > 0 && (
         <div className="mt-6 flex items-center justify-end border-t pt-4">
           <Link
-            href={buildBrowseUrl({ extraIds: drillQuestionIds })}
+            href={buildBrowseUrl({
+              extraIds: drillQuestionIds,
+              from: backHref,
+              fromLabel: backLabel,
+            })}
             className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary/10"
           >
             <Target className="h-3.5 w-3.5" aria-hidden />

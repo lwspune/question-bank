@@ -75,4 +75,28 @@ describe("buildBrowseUrl", () => {
       "/browse?q=x+%2B+1%2Fx+%E2%89%A5+2"
     );
   });
+
+  it("appends an encoded from + fromLabel for the back-to-notes pill", () => {
+    expect(
+      buildBrowseUrl({
+        extraIds: ["u1", "u2"],
+        from: "/notes/nda-maths/vectors/cross-product#triple-product",
+        fromLabel: "Vectors notes",
+      })
+    ).toBe(
+      "/browse?extras=u1%2Cu2&from=%2Fnotes%2Fnda-maths%2Fvectors%2Fcross-product%23triple-product&fromLabel=Vectors+notes"
+    );
+  });
+
+  it("omits from/fromLabel when not provided", () => {
+    const url = buildBrowseUrl({ examId: "exam-1" });
+    expect(url.includes("from")).toBe(false);
+    expect(url.includes("fromLabel")).toBe(false);
+  });
+
+  it("emits from with no fromLabel when only from is set", () => {
+    expect(buildBrowseUrl({ from: "/notes/x" })).toBe(
+      "/browse?from=%2Fnotes%2Fx"
+    );
+  });
 });
