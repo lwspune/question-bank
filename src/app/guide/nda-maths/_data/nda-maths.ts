@@ -160,7 +160,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 4.1,
     pctHard: 22,
     focus:
-      "Lines & Planes (25), Direction Cosines (24), Sphere (20).",
+      "Direction Cosines (24), Foundations/Distance (20), Sphere (20), The Plane (14), Lines (11).",
   },
   {
     chapter: "Differentiation",

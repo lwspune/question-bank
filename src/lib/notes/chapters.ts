@@ -29,6 +29,11 @@ import {
   PROBABILITY_SLUGS,
 } from "@/app/notes/nda-maths/probability/_data";
 import {
+  THREE_D_GEOMETRY_CHAPTER,
+  THREE_D_GEOMETRY_NOTES,
+  THREE_D_GEOMETRY_SLUGS,
+} from "@/app/notes/nda-maths/3d-geometry/_data";
+import {
   SOUND_CHAPTER,
   SOUND_NOTES,
   SOUND_SLUGS,
@@ -111,6 +116,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: PROBABILITY_CHAPTER,
     notes: PROBABILITY_NOTES,
     slugs: PROBABILITY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "3d-geometry",
+    chipLabel: "3D Geometry notes",
+    chapter: THREE_D_GEOMETRY_CHAPTER,
+    notes: THREE_D_GEOMETRY_NOTES,
+    slugs: THREE_D_GEOMETRY_SLUGS,
   },
   {
     examName: "NDA",

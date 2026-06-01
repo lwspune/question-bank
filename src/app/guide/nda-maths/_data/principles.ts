@@ -407,7 +407,10 @@ export const DOMAINS: Domain[] = [
         name: "Line / plane / sphere in 3D",
         qCount: 25,
         summary: "Vector form, Cartesian form, foot of perpendicular, distance between skew lines.",
-        drill: [{ chapter: "3D Geometry", subtopic: "Lines and Planes in 3D" }],
+        drill: [
+          { chapter: "3D Geometry", subtopic: "The Straight Line in 3D" },
+          { chapter: "3D Geometry", subtopic: "The Plane" },
+        ],
       },
       {
         name: "Triangle / parallelogram / quadrilateral configurations",

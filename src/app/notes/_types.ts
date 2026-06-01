@@ -109,7 +109,12 @@ export type VisualizationSlug =
   | "frequency-spectrum-strip"
   | "echo-geometry"
   // MHT-CET Maths — Indefinite Integration chapter
-  | "antiderivative-family";
+  | "antiderivative-family"
+  // NDA Maths — 3D Geometry chapter
+  | "octants-coordinate-planes"
+  | "line-plane-intersection"
+  | "plane-with-normal"
+  | "sphere-plane-tangency";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

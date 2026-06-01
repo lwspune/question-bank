@@ -57,6 +57,10 @@ import EarAnatomy from "./visualizations/EarAnatomy";
 import FrequencySpectrumStrip from "./visualizations/FrequencySpectrumStrip";
 import EchoGeometry from "./visualizations/EchoGeometry";
 import AntiderivativeFamily from "./visualizations/AntiderivativeFamily";
+import OctantsCoordinatePlanes from "./visualizations/OctantsCoordinatePlanes";
+import LinePlaneIntersection from "./visualizations/LinePlaneIntersection";
+import PlaneWithNormal from "./visualizations/PlaneWithNormal";
+import SpherePlaneTangency from "./visualizations/SpherePlaneTangency";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -151,6 +155,14 @@ function renderVisualization(slug: VisualizationSlug) {
       return <EchoGeometry />;
     case "antiderivative-family":
       return <AntiderivativeFamily />;
+    case "octants-coordinate-planes":
+      return <OctantsCoordinatePlanes />;
+    case "line-plane-intersection":
+      return <LinePlaneIntersection />;
+    case "plane-with-normal":
+      return <PlaneWithNormal />;
+    case "sphere-plane-tangency":
+      return <SpherePlaneTangency />;
   }
 }
 
