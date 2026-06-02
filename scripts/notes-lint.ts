@@ -20,6 +20,9 @@
  *      → catches orphan tags after a concept rename/removal.
  *   4. Each TS concept should have ≥1 DB-tagged PUBLIC question (soft warn)
  *      → catches missed tagging sessions for newly-authored concepts.
+ *   5. A concept's worked example / self-check should be a DIFFERENT problem
+ *      from its featured PYQ (soft warn, number-overlap heuristic)
+ *      → catches the "worked example seeded from the featured PYQ" duplication.
  *
  * Read-only: makes no writes. Exits non-zero when any check fails so it
  * can gate a CI step later if desired. Today: run manually.
@@ -45,6 +48,46 @@ function loadEnv() {
 }
 
 type Issue = { severity: "error" | "warn"; note: string; message: string };
+
+/**
+ * Heuristic guard for the "worked example == featured PYQ" failure mode — the
+ * systemic duplication found in the 2026-06-02 bank-wide alignment pass, where
+ * the worked example had been seeded from its featured PYQ's exact numbers. A
+ * worked example / self-check must be a DIFFERENT problem from its featured PYQ
+ * (CLAUDE.md "Notes editorial workflow"). We can't check math, but we can flag
+ * when the example prompt re-uses (almost) all of the PYQ's distinctive numbers.
+ * WARN-level: similarity is heuristic, so a human confirms. Number-based, so it
+ * is strong on computational problems and weak on word/variable-only ones —
+ * those still rely on the manual read-through (Step 4). Needs the PYQ text,
+ * which section 2b already fetches.
+ */
+function numberMultiset(s: string): string[] {
+  return s.match(/-?\d+(?:\.\d+)?/g) ?? [];
+}
+function reusesPyqNumbers(exampleText: string, pyqText: string): boolean {
+  const pyqNums = numberMultiset(pyqText);
+  if (pyqNums.length < 3) return false; // too few numbers to be distinctive
+  const avail = new Map<string, number>();
+  for (const n of numberMultiset(exampleText)) avail.set(n, (avail.get(n) ?? 0) + 1);
+  const shared: string[] = [];
+  for (const n of pyqNums) {
+    const c = avail.get(n) ?? 0;
+    if (c > 0) {
+      shared.push(n);
+      avail.set(n, c - 1);
+    }
+  }
+  if (shared.length / pyqNums.length < 0.8) return false;
+  // Guard against coincidental overlap on small structural integers (1,2,3,4 —
+  // exponents, small coefficients). Require either a lot of shared numbers
+  // (coordinate/matrix-heavy problems) OR ≥2 distinctive ones (|n|≥5, multi-digit,
+  // or decimal). This is what separates a genuine "same problem" from two
+  // unrelated polynomial integrals that both happen to use 1, 2, 4.
+  const distinctive = (n: string) =>
+    Math.abs(parseFloat(n)) >= 5 || n.includes(".") || n.replace("-", "").length >= 2;
+  const distinctiveShared = shared.filter(distinctive).length;
+  return shared.length >= 5 || distinctiveShared >= 2;
+}
 
 type NoteRef = {
   /** Display path used in messages. */
@@ -240,9 +283,9 @@ async function main() {
     if (pyqIds.length > 0) {
       const { data: rows } = await supabase
         .from("questions")
-        .select("id, visibility, subtopic_id")
+        .select("id, visibility, subtopic_id, text")
         .in("id", pyqIds.map((p) => p.id));
-      type Row = { id: string; visibility: string; subtopic_id: string | null };
+      type Row = { id: string; visibility: string; subtopic_id: string | null; text: string | null };
       const rowById = new Map<string, Row>(
         ((rows ?? []) as Row[]).map((r) => [r.id, r])
       );
@@ -270,6 +313,30 @@ async function main() {
             note: ref.path,
             message: `pyqExampleId ${p.id} lives in a different subtopic than "${ref.note.subtopicName}" (concept "${p.conceptName}", ${p.where}) — concept tag would be impossible. Swap for a question in the correct subtopic.`,
           });
+        }
+      }
+
+      // 2c. Duplication WARN: a concept's worked example / self-check must be a
+      //     DIFFERENT problem from its featured PYQ. Flags when the example
+      //     re-uses (almost) all of the PYQ's distinctive numbers. See
+      //     feedback_notes_concept_content_alignment.
+      for (const c of ref.note.concepts) {
+        if (!c.pyqExampleId) continue;
+        const pyqText = rowById.get(c.pyqExampleId)?.text;
+        if (!pyqText) continue;
+        const candidates: { slot: string; text: string }[] = [];
+        if (c.kind === "formula")
+          candidates.push({ slot: "worked example", text: c.authoredExample.prompt });
+        if (c.selfCheckExample)
+          candidates.push({ slot: "self-check", text: c.selfCheckExample.prompt });
+        for (const cand of candidates) {
+          if (reusesPyqNumbers(cand.text, pyqText)) {
+            issues.push({
+              severity: "warn",
+              note: ref.path,
+              message: `concept "${c.name}" ${cand.slot} re-uses the featured PYQ's numbers (${c.pyqExampleId}) — likely the same problem; author a DIFFERENT problem (rule: worked example/self-check must differ from the featured PYQ)`,
+            });
+          }
         }
       }
     }
