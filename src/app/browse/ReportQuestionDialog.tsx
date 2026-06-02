@@ -33,7 +33,7 @@ type Props = {
   isLoggedIn: boolean;
 };
 
-const REPORT_EMAIL = "report@questionbank.lwspune.org";
+const REPORT_EMAIL = "connect.lwspune@gmail.com";
 
 export default function ReportQuestionDialog({
   questionId,
