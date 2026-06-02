@@ -44,6 +44,11 @@ import {
   SOUND_SLUGS,
 } from "@/app/notes/nda-physics/sound/_data";
 import {
+  ELECTRICITY_AND_MAGNETISM_CHAPTER,
+  ELECTRICITY_AND_MAGNETISM_NOTES,
+  ELECTRICITY_AND_MAGNETISM_SLUGS,
+} from "@/app/notes/nda-physics/electricity-and-magnetism/_data";
+import {
   INDEFINITE_INTEGRATION_CHAPTER,
   INDEFINITE_INTEGRATION_NOTES,
   INDEFINITE_INTEGRATION_SLUGS,
@@ -154,6 +159,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SOUND_CHAPTER,
     notes: SOUND_NOTES,
     slugs: SOUND_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "electricity-and-magnetism",
+    chipLabel: "Electricity & Magnetism notes",
+    chapter: ELECTRICITY_AND_MAGNETISM_CHAPTER,
+    notes: ELECTRICITY_AND_MAGNETISM_NOTES,
+    slugs: ELECTRICITY_AND_MAGNETISM_SLUGS,
   },
   {
     examName: "MHT-CET",

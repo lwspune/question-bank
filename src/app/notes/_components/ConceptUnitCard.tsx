@@ -67,6 +67,13 @@ import SphereCentreRadius3D from "./visualizations/SphereCentreRadius3D";
 import DeterminantAsArea from "./visualizations/DeterminantAsArea";
 import CofactorSignGrid from "./visualizations/CofactorSignGrid";
 import SarrusRule from "./visualizations/SarrusRule";
+import FieldLinesCharge from "./visualizations/FieldLinesCharge";
+import IVCharacteristicGraph from "./visualizations/IVCharacteristicGraph";
+import ResistanceWireGeometry from "./visualizations/ResistanceWireGeometry";
+import ResistorsSeriesParallel from "./visualizations/ResistorsSeriesParallel";
+import EmfInternalResistance from "./visualizations/EmfInternalResistance";
+import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
+import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -179,6 +186,20 @@ function renderVisualization(slug: VisualizationSlug) {
       return <CofactorSignGrid />;
     case "sarrus-rule":
       return <SarrusRule />;
+    case "field-lines-charge":
+      return <FieldLinesCharge />;
+    case "iv-characteristic-graph":
+      return <IVCharacteristicGraph />;
+    case "resistance-wire-geometry":
+      return <ResistanceWireGeometry />;
+    case "resistors-series-parallel":
+      return <ResistorsSeriesParallel />;
+    case "emf-internal-resistance":
+      return <EmfInternalResistance />;
+    case "magnetic-field-around-wire":
+      return <MagneticFieldAroundWire />;
+    case "flemings-left-hand-rule":
+      return <FlemingsLeftHandRule />;
   }
 }
 

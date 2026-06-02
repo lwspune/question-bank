@@ -120,7 +120,15 @@ export type VisualizationSlug =
   // NDA Maths — Matrices & Determinants chapter
   | "determinant-as-area"
   | "cofactor-sign-grid"
-  | "sarrus-rule";
+  | "sarrus-rule"
+  // NDA Physics — Electricity & Magnetism chapter
+  | "field-lines-charge"
+  | "iv-characteristic-graph"
+  | "resistance-wire-geometry"
+  | "resistors-series-parallel"
+  | "emf-internal-resistance"
+  | "magnetic-field-around-wire"
+  | "flemings-left-hand-rule";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
