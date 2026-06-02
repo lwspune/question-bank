@@ -10,13 +10,17 @@ describe("hasChapterNotes", () => {
     expect(hasChapterNotes("Statistics")).toBe(true);
     expect(hasChapterNotes("Vectors")).toBe(true);
     expect(hasChapterNotes("Probability")).toBe(true);
+    expect(hasChapterNotes("3D Geometry")).toBe(true);
+    expect(hasChapterNotes("Matrices & Determinants")).toBe(true);
   });
 
   it("returns false for chapters without notes", () => {
-    expect(hasChapterNotes("Differentiation")).toBe(false);
-    expect(hasChapterNotes("Matrices & Determinants")).toBe(false);
-    expect(hasChapterNotes("")).toBe(false);
+    // Use synthetic / not-yet-noted chapter names — real chapters can gain
+    // notes later (Matrices & Determinants did, 2026-06-02), which would
+    // silently flip a literal here. Keep negative cases note-proof.
     expect(hasChapterNotes("Made Up Chapter")).toBe(false);
+    expect(hasChapterNotes("Not A Real Chapter")).toBe(false);
+    expect(hasChapterNotes("")).toBe(false);
   });
 });
 
