@@ -143,17 +143,17 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
           "Direction ratios: \\(\\left\\langle 1,\\ \\tfrac12,\\ -1 \\right\\rangle\\), or clearing fractions \\(\\langle 2, 1, -2\\rangle\\).",
           "Magnitude \\(\\sqrt{4+1+4} = 3\\) → direction cosines \\(\\left\\langle \\tfrac23, \\tfrac13, -\\tfrac23\\right\\rangle\\).",
         ],
-        answer: "\\(\\left\\langle \\tfrac23, \\tfrac13, -\\tfrac23 \\right\\rangle\\) (so \\(l^4+m^4+n^4 = \\tfrac{16+1+16}{81} = \\tfrac{33}{81} = \\tfrac{11}{27}\\)).",
+        answer: "\\(\\left\\langle \\tfrac23, \\tfrac13, -\\tfrac23 \\right\\rangle\\).",
       },
       selfCheckExample: {
         prompt:
-          "A point on a line is \\((p+1,\\ p-3,\\ \\sqrt2\\,p)\\) for real \\(p\\). Find its direction cosines.",
+          "A line is given in parametric form as \\((2 + t,\\ 1 - 2t,\\ 3 + 2t)\\). Find its direction cosines.",
         steps: [
-          "Coefficients of the parameter \\(p\\) give direction ratios: \\(\\langle 1, 1, \\sqrt2\\rangle\\).",
-          "Magnitude: \\(\\sqrt{1 + 1 + 2} = 2\\).",
-          "Direction cosines: \\(\\left\\langle \\tfrac12, \\tfrac12, \\tfrac{\\sqrt2}{2}\\right\\rangle\\).",
+          "The coefficients of the parameter \\(t\\) give the direction ratios: \\(\\langle 1, -2, 2\\rangle\\).",
+          "Magnitude: \\(\\sqrt{1 + 4 + 4} = 3\\).",
+          "Direction cosines: \\(\\left\\langle \\tfrac13, -\\tfrac23, \\tfrac23\\right\\rangle\\).",
         ],
-        answer: "\\(\\left\\langle \\tfrac12, \\tfrac12, \\tfrac{1}{\\sqrt2}\\right\\rangle\\).",
+        answer: "\\(\\left\\langle \\tfrac13, -\\tfrac23, \\tfrac23\\right\\rangle\\).",
       },
       practiceSet: [
         { prompt: "DRs of \\(\\frac{x-1}{3} = \\frac{y}{4} = \\frac{z+2}{5}\\)?", answer: "\\(\\langle 3,4,5\\rangle\\)" },
@@ -193,14 +193,14 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
       visualizationSlug: "angle-between-lines-3d",
       authoredExample: {
         prompt:
-          "Find the angle between the two lines with direction ratios \\(\\langle 6, 3, 6\\rangle\\) and \\(\\langle 3, 3, 0\\rangle\\).",
+          "Find the angle between the two lines with direction ratios \\(\\langle 1, 1, 0\\rangle\\) and \\(\\langle 0, 1, 1\\rangle\\).",
         steps: [
-          "Dot product: \\(6(3) + 3(3) + 6(0) = 18 + 9 + 0 = 27\\).",
-          "Magnitudes: \\(\\sqrt{36+9+36} = \\sqrt{81} = 9\\) and \\(\\sqrt{9+9+0} = \\sqrt{18} = 3\\sqrt2\\).",
-          "\\(\\cos\\theta = \\dfrac{27}{9 \\cdot 3\\sqrt2} = \\dfrac{27}{27\\sqrt2} = \\dfrac{1}{\\sqrt2}\\).",
-          "So \\(\\theta = 45°\\).",
+          "Dot product: \\(1(0) + 1(1) + 0(1) = 1\\).",
+          "Magnitudes: \\(\\sqrt{1+1+0} = \\sqrt2\\) and \\(\\sqrt{0+1+1} = \\sqrt2\\).",
+          "\\(\\cos\\theta = \\dfrac{1}{\\sqrt2 \\cdot \\sqrt2} = \\dfrac{1}{2}\\).",
+          "So \\(\\theta = 60°\\).",
         ],
-        answer: "\\(\\theta = 45°\\) (i.e. \\(\\tfrac{\\pi}{4}\\)).",
+        answer: "\\(\\theta = 60°\\) (i.e. \\(\\tfrac{\\pi}{3}\\)).",
       },
       selfCheckExample: {
         prompt: "Find the angle between the lines \\(2x = 3y = -z\\) and \\(6x = -y = -4z\\).",
@@ -289,13 +289,12 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
         latex: "\\text{proj} = (x_2-x_1)\\,l + (y_2-y_1)\\,m + (z_2-z_1)\\,n",
       },
       authoredExample: {
-        prompt: "Find the projection of the segment joining \\(A(1, 7, -5)\\) and \\(B(-3, 4, -2)\\) on the y-axis.",
+        prompt: "Find the projection of the segment joining \\(A(2, -1, 4)\\) and \\(B(7, 3, 1)\\) on the x-axis.",
         steps: [
-          "Projection on the y-axis = difference of y-coordinates.",
-          "\\(y_2 - y_1 = 4 - 7 = -3\\).",
-          "Magnitude of the projection is \\(3\\) (sign indicates direction).",
+          "Projection on the x-axis = difference of x-coordinates.",
+          "\\(x_2 - x_1 = 7 - 2 = 5\\).",
         ],
-        answer: "\\(-3\\) (length \\(3\\) along the y-axis).",
+        answer: "\\(5\\) (length \\(5\\) along the x-axis).",
       },
       selfCheckExample: {
         prompt:
@@ -348,13 +347,13 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "A line makes angles \\(\\alpha, \\beta, \\gamma\\) with the axes. Find \\(\\cos(\\alpha+\\beta)\\cos(\\alpha-\\beta) + \\cos^2\\gamma\\).",
+          "A line makes \\(60°\\) with the x-axis and \\(60°\\) with the y-axis. What acute angle does it make with the z-axis?",
         steps: [
-          "\\(\\cos(\\alpha+\\beta)\\cos(\\alpha-\\beta) = \\cos^2\\alpha - \\sin^2\\beta = \\cos^2\\alpha - (1 - \\cos^2\\beta)\\).",
-          "\\(= \\cos^2\\alpha + \\cos^2\\beta - 1\\).",
-          "Add \\(\\cos^2\\gamma\\): \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma - 1 = 1 - 1 = 0\\).",
+          "Use \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\) with \\(\\alpha = \\beta = 60°\\).",
+          "\\(\\cos^2 60° + \\cos^2 60° + \\cos^2\\gamma = 1 \\Rightarrow \\tfrac14 + \\tfrac14 + \\cos^2\\gamma = 1\\).",
+          "\\(\\cos^2\\gamma = \\tfrac12 \\Rightarrow \\cos\\gamma = \\tfrac{1}{\\sqrt2} \\Rightarrow \\gamma = 45°\\).",
         ],
-        answer: "\\(0\\).",
+        answer: "\\(45°\\).",
       },
       practiceSet: [
         { prompt: "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = ?\\)", answer: "\\(1\\)" },

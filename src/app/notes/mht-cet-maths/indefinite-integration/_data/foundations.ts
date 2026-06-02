@@ -108,13 +108,13 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
         latex: "\\int [a\\,f(x) + b\\,g(x)]\\,dx = a\\!\\int f(x)\\,dx + b\\!\\int g(x)\\,dx",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x^4 + x^2 + 1}{x^2 - x + 1}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x^4 - 1}{x^2 + 1}\\,dx\\).",
         steps: [
-          "Factor the numerator: \\(x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)\\).",
-          "Cancel the denominator: the integrand becomes \\(x^2 + x + 1\\).",
-          "Integrate term by term: \\(\\int (x^2 + x + 1)\\,dx = \\dfrac{x^3}{3} + \\dfrac{x^2}{2} + x + C\\).",
+          "Factor the numerator: \\(x^4 - 1 = (x^2 - 1)(x^2 + 1)\\).",
+          "Cancel the denominator: the integrand becomes \\(x^2 - 1\\).",
+          "Integrate term by term: \\(\\int (x^2 - 1)\\,dx = \\dfrac{x^3}{3} - x + C\\).",
         ],
-        answer: "\\(\\dfrac{x^3}{3} + \\dfrac{x^2}{2} + x + C\\)",
+        answer: "\\(\\dfrac{x^3}{3} - x + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x^2}{x+1}\\,dx\\).",
@@ -160,13 +160,13 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "If \\(f'(x) = x - \\dfrac{5}{x^5}\\) and \\(f(1) = 4\\), find \\(f(x)\\).",
+          "If \\(f'(x) = 3x^2 + \\dfrac{2}{x^3}\\) and \\(f(1) = 2\\), find \\(f(x)\\).",
         steps: [
-          "Integrate: \\(\\int\\!\\left(x - 5x^{-5}\\right)dx = \\dfrac{x^2}{2} - 5\\cdot\\dfrac{x^{-4}}{-4} = \\dfrac{x^2}{2} + \\dfrac{5}{4x^4} + C\\).",
-          "Apply \\(f(1) = 4\\): \\(\\dfrac{1}{2} + \\dfrac{5}{4} + C = 4\\).",
-          "So \\(C = 4 - \\dfrac{7}{4} = \\dfrac{9}{4}\\).",
+          "Integrate: \\(\\int\\!\\left(3x^2 + 2x^{-3}\\right)dx = x^3 + 2\\cdot\\dfrac{x^{-2}}{-2} + C = x^3 - \\dfrac{1}{x^2} + C\\).",
+          "Apply \\(f(1) = 2\\): \\(1 - 1 + C = 2\\).",
+          "So \\(C = 2\\).",
         ],
-        answer: "\\(f(x) = \\dfrac{x^2}{2} + \\dfrac{5}{4x^4} + \\dfrac{9}{4}\\)",
+        answer: "\\(f(x) = x^3 - \\dfrac{1}{x^2} + 2\\)",
       },
       selfCheckExample: {
         prompt:
@@ -211,13 +211,13 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "If \\(f(x) = \\dfrac{x}{x+1}\\) and \\((f\\circ f)(x) = F(x)\\), find \\(\\displaystyle\\int F(x)\\,dx\\).",
+          "If \\(f(x) = \\dfrac{1}{1 - x}\\) and \\((f\\circ f)(x) = F(x)\\), find \\(\\displaystyle\\int F(x)\\,dx\\).",
         steps: [
-          "Compute \\(f(f(x)) = \\dfrac{\\frac{x}{x+1}}{\\frac{x}{x+1} + 1} = \\dfrac{\\frac{x}{x+1}}{\\frac{2x+1}{x+1}} = \\dfrac{x}{2x+1}\\).",
-          "Rewrite for integration: \\(\\dfrac{x}{2x+1} = \\dfrac{1}{2}\\cdot\\dfrac{2x+1-1}{2x+1} = \\dfrac{1}{2}\\!\\left(1 - \\dfrac{1}{2x+1}\\right)\\).",
-          "Integrate: \\(\\dfrac{1}{2}\\!\\left(x - \\dfrac{1}{2}\\log|2x+1|\\right) + C\\).",
+          "Compute \\(f(f(x)) = \\dfrac{1}{1 - \\frac{1}{1-x}} = \\dfrac{1}{\\frac{1-x-1}{1-x}} = \\dfrac{1-x}{-x} = \\dfrac{x-1}{x}\\).",
+          "Rewrite for integration: \\(\\dfrac{x-1}{x} = 1 - \\dfrac{1}{x}\\).",
+          "Integrate: \\(\\int\\!\\left(1 - \\dfrac{1}{x}\\right)dx = x - \\log|x| + C\\).",
         ],
-        answer: "\\(\\dfrac{x}{2} - \\dfrac{1}{4}\\log|2x+1| + C\\)",
+        answer: "\\(x - \\log|x| + C\\)",
       },
       selfCheckExample: {
         prompt:

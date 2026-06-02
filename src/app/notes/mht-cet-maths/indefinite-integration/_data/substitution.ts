@@ -30,14 +30,14 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         ],
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{\\tan(1/x)}{x^2}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{\\sin(1/x)}{x^2}\\,dx\\).",
         steps: [
           "Let \\(u = \\dfrac{1}{x}\\). Then \\(du = -\\dfrac{1}{x^2}\\,dx\\), so \\(\\dfrac{dx}{x^2} = -\\,du\\).",
-          "Rewrite: \\(\\int \\tan u \\,(-du) = -\\int \\tan u\\,du\\).",
-          "Standard form: \\(-\\log|\\sec u| + C = \\log|\\cos u| + C\\).",
+          "Rewrite: \\(\\int \\sin u \\,(-du) = -\\int \\sin u\\,du\\).",
+          "Standard form: \\(-(-\\cos u) + C = \\cos u + C\\).",
           "Back-substitute \\(u = 1/x\\).",
         ],
-        answer: "\\(\\log\\left|\\cos\\dfrac{1}{x}\\right| + C\\)",
+        answer: "\\(\\cos\\dfrac{1}{x} + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{(\\log x)^2}{x}\\,dx\\).",
@@ -85,24 +85,21 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Evaluate \\(\\displaystyle\\int \\dfrac{4e^x - 25}{2e^x - 5}\\,dx = Ax + B\\log|2e^x - 5| + c\\) and find \\(A, B\\).",
+          "Evaluate \\(\\displaystyle\\int \\dfrac{2x + 3}{x^2 + 3x + 5}\\,dx\\).",
         steps: [
-          "Write the numerator as \\(A'(2e^x - 5) + B'(2e^x)\\) so each piece matches the denominator or its derivative \\((2e^x)\\).",
-          "Match: \\(4e^x - 25 = 2(2e^x - 5) + (-15)\\). The \\(-15\\) must come from the \\(\\frac{d}{dx}\\) term: \\(\\dfrac{-15}{2}\\cdot\\dfrac{2e^x}{2e^x-5}\\)... instead split directly: \\(\\dfrac{4e^x-25}{2e^x-5} = 2 - \\dfrac{15}{2e^x-5}\\).",
-          "For \\(\\int \\dfrac{dx}{2e^x-5}\\), write \\(\\dfrac{1}{2e^x-5} = \\dfrac{1}{5}\\!\\left(\\dfrac{2e^x - (2e^x-5)}{2e^x-5}\\right) = \\dfrac{1}{5}\\!\\left(\\dfrac{2e^x}{2e^x-5} - 1\\right)\\).",
-          "Now \\(\\int \\dfrac{2e^x}{2e^x-5}\\,dx = \\log|2e^x-5|\\) (numerator = derivative of denominator). Combine all pieces.",
+          "The denominator is \\(f = x^2 + 3x + 5\\); its derivative is \\(f' = 2x + 3\\) — exactly the numerator.",
+          "So the integrand has the form \\(f'/f\\), which integrates to \\(\\log|f|\\).",
+          "\\(\\int \\dfrac{2x+3}{x^2+3x+5}\\,dx = \\log|x^2+3x+5| + C\\).",
         ],
-        answer: "\\(A = 5,\\ B = -3\\) (so the integral is \\(5x - 3\\log|2e^x-5| + c\\)).",
+        answer: "\\(\\log|x^2 + 3x + 5| + C\\)",
       },
       selfCheckExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{2x^3 - 1}{x^4 + x}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{3x^2 + 2x}{x^3 + x^2 + 1}\\,dx\\).",
         steps: [
-          "Denominator \\(f = x^4 + x\\); its derivative is \\(f' = 4x^3 + 1\\).",
-          "Hmm — numerator is \\(2x^3 - 1\\), not a clean multiple. Factor instead: \\(x^4 + x = x(x^3+1)\\) and split, OR note \\(\\dfrac{2x^3-1}{x^4+x}\\) can be matched as \\(\\tfrac12\\cdot\\dfrac{4x^3+...}{...}\\). Simplest: divide num and den by \\(x\\): \\(\\dfrac{2x^2 - 1/x}{x^3+1}\\) — not cleaner. Use the f'/f recognition on \\(x^4+x\\) after writing numerator \\(2x^3-1 = \\tfrac12(4x^3+1) - \\tfrac32\\).",
-          "So \\(\\int \\dfrac{\\frac12(4x^3+1)}{x^4+x}\\,dx - \\int \\dfrac{3/2}{x^4+x}\\,dx = \\tfrac12\\log|x^4+x| - \\tfrac32\\int\\dfrac{dx}{x(x^3+1)}\\).",
+          "Denominator \\(f = x^3 + x^2 + 1\\); its derivative \\(f' = 3x^2 + 2x\\) is exactly the numerator.",
+          "So \\(\\int \\dfrac{f'}{f}\\,dx = \\log|x^3 + x^2 + 1| + C\\).",
         ],
-        answer:
-          "\\(\\tfrac12\\log|x^4 + x| - \\tfrac32\\displaystyle\\int\\dfrac{dx}{x(x^3+1)}\\) — the first term is the f'/f piece; the leftover goes to partial fractions.",
+        answer: "\\(\\log|x^3 + x^2 + 1| + C\\)",
       },
       practiceSet: [
         { prompt: "\\(\\int \\dfrac{2x}{x^2+1}\\,dx\\)", answer: "\\(\\log(x^2+1) + C\\)", method: "top = derivative of bottom" },
@@ -135,13 +132,13 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         latex: "\\int [f(x)]^n\\,f'(x)\\,dx = \\dfrac{[f(x)]^{n+1}}{n+1} + C \\quad (n \\neq -1)",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{2 + \\cos x}{(2x + \\sin x)^2}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int (x^3 + 2x + 1)^4\\,(3x^2 + 2)\\,dx\\).",
         steps: [
-          "Let \\(u = 2x + \\sin x\\). Then \\(du = (2 + \\cos x)\\,dx\\) — exactly the numerator.",
-          "Rewrite: \\(\\int \\dfrac{du}{u^2} = \\int u^{-2}\\,du = -u^{-1} + C\\).",
+          "Let \\(u = x^3 + 2x + 1\\). Then \\(du = (3x^2 + 2)\\,dx\\) — exactly the second factor.",
+          "Rewrite: \\(\\int u^4\\,du = \\dfrac{u^5}{5} + C\\).",
           "Back-substitute.",
         ],
-        answer: "\\(-\\dfrac{1}{2x + \\sin x} + C\\)",
+        answer: "\\(\\dfrac{(x^3 + 2x + 1)^5}{5} + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int (x^2+1)^3\\,(2x)\\,dx\\).",
@@ -182,14 +179,14 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         latex: "t = \\sqrt{ax+b}\\ \\Rightarrow\\ x = \\dfrac{t^2 - b}{a},\\quad dx = \\dfrac{2t}{a}\\,dt",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{\\sqrt{x}}{x+1}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{1}{1 + \\sqrt{x}}\\,dx\\).",
         steps: [
           "Let \\(t = \\sqrt{x}\\), so \\(x = t^2\\) and \\(dx = 2t\\,dt\\).",
-          "Rewrite: \\(\\int \\dfrac{t}{t^2+1}\\,(2t\\,dt) = 2\\int \\dfrac{t^2}{t^2+1}\\,dt = 2\\int\\!\\left(1 - \\dfrac{1}{t^2+1}\\right)dt\\).",
-          "Integrate: \\(2\\big(t - \\tan^{-1}t\\big) + C\\).",
+          "Rewrite: \\(\\int \\dfrac{1}{1+t}\\,(2t\\,dt) = 2\\int \\dfrac{t}{1+t}\\,dt = 2\\int\\!\\left(1 - \\dfrac{1}{1+t}\\right)dt\\).",
+          "Integrate: \\(2\\big(t - \\log|1+t|\\big) + C\\).",
           "Back-substitute \\(t = \\sqrt{x}\\).",
         ],
-        answer: "\\(2\\sqrt{x} - 2\\tan^{-1}\\!\\sqrt{x} + C\\)",
+        answer: "\\(2\\sqrt{x} - 2\\log\\!\\left|1 + \\sqrt{x}\\right| + C\\)",
       },
       selfCheckExample: {
         prompt:
@@ -232,14 +229,13 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         latex: "t = e^{x}\\ \\Rightarrow\\ dt = e^{x}\\,dx",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\sqrt{e^x - 1}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{e^x}{1 + e^{2x}}\\,dx\\).",
         steps: [
-          "Let \\(t = \\sqrt{e^x - 1}\\), so \\(t^2 = e^x - 1\\) and \\(e^x = t^2 + 1\\).",
-          "Differentiate: \\(2t\\,dt = e^x\\,dx = (t^2+1)\\,dx\\), so \\(dx = \\dfrac{2t}{t^2+1}\\,dt\\).",
-          "Rewrite: \\(\\int t\\cdot\\dfrac{2t}{t^2+1}\\,dt = 2\\int\\!\\left(1 - \\dfrac{1}{t^2+1}\\right)dt = 2\\big(t - \\tan^{-1}t\\big) + C\\).",
-          "Back-substitute \\(t = \\sqrt{e^x-1}\\).",
+          "Let \\(t = e^x\\), so \\(dt = e^x\\,dx\\). Note \\(e^{2x} = (e^x)^2 = t^2\\).",
+          "Rewrite: \\(\\int \\dfrac{dt}{1 + t^2} = \\tan^{-1}t + C\\).",
+          "Back-substitute \\(t = e^x\\).",
         ],
-        answer: "\\(2\\sqrt{e^x - 1} - 2\\tan^{-1}\\!\\sqrt{e^x - 1} + C\\)",
+        answer: "\\(\\tan^{-1}(e^x) + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int 3^{3^x}\\cdot 3^x\\,dx\\).",

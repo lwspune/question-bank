@@ -44,13 +44,13 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Express the line \\(\\frac{x-1}{2} = \\frac{y-2}{3} = \\frac{z-3}{4}\\) as the intersection of two planes.",
+          "Express the line \\(\\frac{x+2}{3} = \\frac{y-1}{1} = \\frac{z}{2}\\) as the intersection of two planes.",
         steps: [
           "Take two of the three equalities.",
-          "First pair: \\(\\frac{x-1}{2} = \\frac{y-2}{3} \\Rightarrow 3(x-1) = 2(y-2) \\Rightarrow 3x - 2y + 1 = 0\\).",
-          "Second pair: \\(\\frac{y-2}{3} = \\frac{z-3}{4} \\Rightarrow 4(y-2) = 3(z-3) \\Rightarrow 4y - 3z + 1 = 0\\).",
+          "First pair: \\(\\frac{x+2}{3} = \\frac{y-1}{1} \\Rightarrow x + 2 = 3(y-1) \\Rightarrow x - 3y + 5 = 0\\).",
+          "Second pair: \\(\\frac{y-1}{1} = \\frac{z}{2} \\Rightarrow 2(y-1) = z \\Rightarrow 2y - z - 2 = 0\\).",
         ],
-        answer: "\\(3x - 2y + 1 = 0\\) and \\(4y - 3z + 1 = 0\\) (any valid pair works).",
+        answer: "\\(x - 3y + 5 = 0\\) and \\(2y - z - 2 = 0\\) (any valid pair works).",
       },
       practiceSet: [
         { prompt: "DRs of the line through \\((0,0,0)\\) and \\((2,3,4)\\)?", answer: "\\(\\langle 2,3,4\\rangle\\)" },
@@ -76,13 +76,13 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
         "reproduces \\(q\\) and \\(r\\).",
       authoredExample: {
         prompt:
-          "Find a point on the line \\(\\frac{x-1}{1} = \\frac{y-3}{2} = \\frac{z+2}{7}\\) other than \\((1,3,-2)\\).",
+          "Find a point on the line \\(\\frac{x-2}{3} = \\frac{y+1}{1} = \\frac{z-4}{2}\\) other than \\((2,-1,4)\\).",
         steps: [
-          "Set the chain equal to \\(t\\): point \\(= (1+t,\\ 3+2t,\\ -2+7t)\\).",
-          "Take \\(t = 1\\): \\((2, 5, 5)\\).",
-          "Check: \\(\\frac{2-1}{1} = 1,\\ \\frac{5-3}{2} = 1,\\ \\frac{5+2}{7} = 1\\) — all equal. ✓",
+          "Set the chain equal to \\(t\\): point \\(= (2+3t,\\ -1+t,\\ 4+2t)\\).",
+          "Take \\(t = 1\\): \\((5, 0, 6)\\).",
+          "Check: \\(\\frac{5-2}{3} = 1,\\ \\frac{0+1}{1} = 1,\\ \\frac{6-4}{2} = 1\\) — all equal. ✓",
         ],
-        answer: "\\((2, 5, 5)\\) (any \\(t \\neq 0\\) works).",
+        answer: "\\((5, 0, 6)\\) (any \\(t \\neq 0\\) works).",
       },
       selfCheckExample: {
         prompt:
@@ -120,13 +120,13 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
       visualizationSlug: "line-plane-intersection",
       authoredExample: {
         prompt:
-          "Find where the line joining \\((-3, 4, -8)\\) and \\((5, -6, 4)\\) meets the XY-plane.",
+          "Find where the line joining \\((2, -1, 3)\\) and \\((4, 3, -1)\\) meets the XY-plane.",
         steps: [
-          "Direction \\(= \\langle 8, -10, 12\\rangle\\). Point \\(= (-3+8t,\\ 4-10t,\\ -8+12t)\\).",
-          "XY-plane: \\(z = 0 \\Rightarrow -8 + 12t = 0 \\Rightarrow t = \\tfrac{2}{3}\\).",
-          "Then \\(x = -3 + 8(\\tfrac23) = -3 + \\tfrac{16}{3} = \\tfrac{7}{3}\\) and \\(y = 4 - 10(\\tfrac23) = 4 - \\tfrac{20}{3} = -\\tfrac{8}{3}\\).",
+          "Direction \\(= \\langle 2, 4, -4\\rangle\\). Point \\(= (2+2t,\\ -1+4t,\\ 3-4t)\\).",
+          "XY-plane: \\(z = 0 \\Rightarrow 3 - 4t = 0 \\Rightarrow t = \\tfrac{3}{4}\\).",
+          "Then \\(x = 2 + 2(\\tfrac34) = \\tfrac{7}{2}\\) and \\(y = -1 + 4(\\tfrac34) = 2\\).",
         ],
-        answer: "\\(\\left( \\tfrac{7}{3}, -\\tfrac{8}{3}, 0 \\right)\\).",
+        answer: "\\(\\left( \\tfrac{7}{2}, 2, 0 \\right)\\).",
       },
       selfCheckExample: {
         prompt:
@@ -164,14 +164,14 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
       visualizationSlug: "line-plane-intersection",
       authoredExample: {
         prompt:
-          "A line through \\((1, -1, 2)\\) with direction ratios \\(\\langle 3, 2, 2\\rangle\\) meets the plane \\(x + 2y + 3z = 18\\). Find the point of intersection.",
+          "A line through \\((1, 0, -1)\\) with direction ratios \\(\\langle 1, 2, 1\\rangle\\) meets the plane \\(x + y + z = 8\\). Find the point of intersection.",
         steps: [
-          "Parametrise: \\((1+3t,\\ -1+2t,\\ 2+2t)\\).",
-          "Substitute into the plane: \\((1+3t) + 2(-1+2t) + 3(2+2t) = 18\\).",
-          "\\(1 + 3t - 2 + 4t + 6 + 6t = 18 \\Rightarrow 13t + 5 = 18 \\Rightarrow t = 1\\).",
-          "Back-substitute \\(t = 1\\): \\((4, 1, 4)\\).",
+          "Parametrise: \\((1+t,\\ 2t,\\ -1+t)\\).",
+          "Substitute into the plane: \\((1+t) + 2t + (-1+t) = 8\\).",
+          "\\(4t = 8 \\Rightarrow t = 2\\).",
+          "Back-substitute \\(t = 2\\): \\((3, 4, 1)\\).",
         ],
-        answer: "\\((4, 1, 4)\\).",
+        answer: "\\((3, 4, 1)\\).",
       },
       selfCheckExample: {
         prompt:
@@ -211,13 +211,13 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "If the line \\(\\frac{x-4}{1} = \\frac{y-2}{1} = \\frac{z-k}{2}\\) lies in the plane \\(2x - 4y + z = 7\\), find \\(k\\).",
+          "If the line \\(\\frac{x-1}{2} = \\frac{y-m}{1} = \\frac{z-3}{1}\\) lies in the plane \\(2x - 3y - z = 2\\), find \\(m\\).",
         steps: [
-          "Direction \\(\\langle 1,1,2\\rangle\\), normal \\(\\langle 2,-4,1\\rangle\\): dot \\(= 2 - 4 + 2 = 0\\) ✓ (so it can lie in the plane).",
-          "Now the point \\((4, 2, k)\\) must satisfy the plane: \\(2(4) - 4(2) + k = 7\\).",
-          "\\(8 - 8 + k = 7 \\Rightarrow k = 7\\).",
+          "Direction \\(\\langle 2,1,1\\rangle\\), normal \\(\\langle 2,-3,-1\\rangle\\): dot \\(= 4 - 3 - 1 = 0\\) ✓ (so it can lie in the plane).",
+          "Now the point \\((1, m, 3)\\) must satisfy the plane: \\(2(1) - 3(m) - 3 = 2\\).",
+          "\\(-3m - 1 = 2 \\Rightarrow m = -1\\).",
         ],
-        answer: "\\(k = 7\\).",
+        answer: "\\(m = -1\\).",
       },
       selfCheckExample: {
         prompt:

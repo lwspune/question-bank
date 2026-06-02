@@ -291,7 +291,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
           method: "all values equal, so the mean equals the value",
         },
       ],
-      pyqExampleId: "78e0ac87-d443-49ae-860b-09a2a4185027",
+      pyqExampleId: "28c1b7f9-8cf0-4e54-96ae-acea8a9c956f", // 2023 — means of subsets of a raw list
       traps: [
         {
           title: "Outliers move the mean — sometimes a lot",
@@ -523,14 +523,13 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         ],
       },
       authoredExample: {
-        prompt: "Find the arithmetic mean of \\(8^2, 9^2, 10^2, \\ldots, 15^2\\).",
+        prompt: "Find the arithmetic mean of \\(1^2, 2^2, 3^2, \\ldots, 13^2\\).",
         steps: [
-          "Number of terms: \\(15 - 8 + 1 = 8\\).",
-          "Write the sum as a difference: \\(\\sum_{k=1}^{15} k^2 - \\sum_{k=1}^{7} k^2 = \\dfrac{15 \\cdot 16 \\cdot 31}{6} - \\dfrac{7 \\cdot 8 \\cdot 15}{6}\\).",
-          "Compute each: \\(\\dfrac{7440}{6} - \\dfrac{840}{6} = 1240 - 140 = 1100\\).",
-          "Mean: \\(\\dfrac{1100}{8} = 137.5\\).",
+          "These are the first \\(n = 13\\) perfect squares, so use the closed form for the mean of squares.",
+          "Mean of \\(1^2\\) to \\(n^2\\) is \\(\\dfrac{(n+1)(2n+1)}{6}\\).",
+          "Substitute \\(n = 13\\): \\(\\dfrac{(14)(27)}{6} = \\dfrac{378}{6} = 63\\).",
         ],
-        answer: "Mean \\(= 137.5\\)",
+        answer: "Mean \\(= 63\\)",
       },
       selfCheckExample: {
         prompt: "Find the arithmetic mean of the first \\(10\\) natural numbers.",

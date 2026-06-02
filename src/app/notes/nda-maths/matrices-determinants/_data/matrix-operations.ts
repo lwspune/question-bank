@@ -107,13 +107,13 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         latex: "A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}",
       },
       authoredExample: {
-        prompt: "If \\(A\\) is \\(3\\times5\\) and \\(B\\) is \\(5\\times3\\), what are the orders of \\(AB\\) and \\(BA\\)?",
+        prompt: "If \\(A\\) is \\(4\\times3\\) and \\(B\\) is \\(3\\times2\\), find the orders of \\(AB\\) and \\(BA\\) (or state if undefined).",
         steps: [
-          "\\(AB\\): inner dims \\(5 = 5\\) match → order = outer dims = \\(3\\times3\\).",
-          "\\(BA\\): inner dims \\(3 = 3\\) match → order = \\(5\\times5\\).",
-          "Both exist but have different orders — so \\(AB \\neq BA\\) here.",
+          "\\(AB\\): inner dims \\(3 = 3\\) match → order = outer dims = \\(4\\times2\\).",
+          "\\(BA\\): inner dims would be 2 (\\(B\\)'s columns) vs 4 (\\(A\\)'s rows) — \\(2 \\neq 4\\), so \\(BA\\) is undefined.",
+          "\\(AB\\) exists but \\(BA\\) does not — another way \\(AB \\neq BA\\).",
         ],
-        answer: "\\(AB\\) is \\(3\\times3\\); \\(BA\\) is \\(5\\times5\\).",
+        answer: "\\(AB\\) is \\(4\\times2\\); \\(BA\\) is undefined.",
       },
       selfCheckExample: {
         prompt: "If \\(A\\) is \\(2\\times3\\) and \\(AB\\) is \\(2\\times5\\), what is the order of \\(B\\)?",
@@ -221,12 +221,13 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         "swap matrix \\(\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\) squares to \\(I\\), so even powers " +
         "are \\(I\\). A rotation by \\(\\theta\\) to the \\(n\\)th power is rotation by \\(n\\theta\\).",
       authoredExample: {
-        prompt: "If \\(A = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\), find \\(A^4\\).",
+        prompt: "If \\(A = \\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\), find \\(A^3\\).",
         steps: [
-          "\\(A^2 = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix} = \\begin{pmatrix}1&0\\\\0&1\\end{pmatrix} = I\\).",
-          "So \\(A^4 = (A^2)^2 = I^2 = I\\).",
+          "\\(A^2 = \\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix} = \\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\).",
+          "\\(A^3 = A^2 A = \\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix} = \\begin{pmatrix}1&3\\\\0&1\\end{pmatrix}\\).",
+          "(Pattern: \\(A^n = \\begin{pmatrix}1&n\\\\0&1\\end{pmatrix}\\).)",
         ],
-        answer: "\\(A^4 = I\\) (the identity).",
+        answer: "\\(A^3 = \\begin{pmatrix}1&3\\\\0&1\\end{pmatrix}\\).",
       },
       selfCheckExample: {
         prompt: "If \\(A = \\begin{pmatrix}-2&2\\\\2&-2\\end{pmatrix}\\), express \\(A^2\\) in terms of \\(A\\).",
@@ -264,13 +265,13 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         latex: "A^2 - (a+d)\\,A + (ad - bc)\\,I = O",
       },
       authoredExample: {
-        prompt: "If \\(A = \\begin{pmatrix}1&2\\\\2&3\\end{pmatrix}\\) and \\(A^2 - kA - I_2 = O\\), find \\(k\\).",
+        prompt: "If \\(A = \\begin{pmatrix}3&1\\\\2&4\\end{pmatrix}\\) and \\(A^2 - kA + 10I_2 = O\\), find \\(k\\).",
         steps: [
-          "Trace \\(= 1 + 3 = 4\\); determinant \\(= 1\\cdot3 - 2\\cdot2 = -1\\).",
-          "Cayley–Hamilton: \\(A^2 - 4A + (-1)I = O\\), i.e. \\(A^2 - 4A - I = O\\).",
-          "Compare with \\(A^2 - kA - I = O\\): \\(k = 4\\).",
+          "Trace \\(= 3 + 4 = 7\\); determinant \\(= 3\\cdot4 - 1\\cdot2 = 10\\).",
+          "Cayley–Hamilton: \\(A^2 - (\\text{trace})A + (\\det)I = O\\), i.e. \\(A^2 - 7A + 10I = O\\).",
+          "Compare with \\(A^2 - kA + 10I = O\\): \\(k = 7\\).",
         ],
-        answer: "\\(k = 4\\) (the trace).",
+        answer: "\\(k = 7\\) (the trace).",
       },
       selfCheckExample: {
         prompt: "If \\(A = \\begin{pmatrix}1&2&2\\\\2&1&2\\\\2&2&1\\end{pmatrix}\\), find \\(A^2 - 4A\\).",

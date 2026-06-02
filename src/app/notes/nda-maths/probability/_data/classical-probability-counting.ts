@@ -84,13 +84,13 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "A card is drawn from a well-shuffled deck of 52 cards. What is the probability that it is a king?",
+          "A box contains 5 red, 4 white, and 3 black balls. One ball is drawn at random. What is the probability that it is red?",
         steps: [
-          "Total outcomes: \\(n(S)=52\\) (each card equally likely).",
-          "Favourable: there are 4 kings, so \\(n(E)=4\\).",
-          "Divide: \\(P(\\text{king}) = \\dfrac{4}{52} = \\dfrac{1}{13}\\).",
+          "Total outcomes: \\(n(S) = 5 + 4 + 3 = 12\\) (each ball equally likely).",
+          "Favourable: there are 5 red balls, so \\(n(E) = 5\\).",
+          "Divide: \\(P(\\text{red}) = \\dfrac{5}{12}\\).",
         ],
-        answer: "\\(\\dfrac{1}{13}\\)",
+        answer: "\\(\\dfrac{5}{12}\\)",
       },
       selfCheckExample: {
         prompt:

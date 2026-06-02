@@ -35,13 +35,13 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       visualizationSlug: "plane-with-normal",
       authoredExample: {
         prompt:
-          "Find the equation of the plane through \\((1, 1, 1)\\) perpendicular to the line with direction ratios \\(\\langle 3, 2, 1\\rangle\\).",
+          "Find the equation of the plane through \\((2, -1, 3)\\) perpendicular to the line with direction ratios \\(\\langle 1, 4, 2\\rangle\\).",
         steps: [
-          "Perpendicular to that line → the plane's normal IS \\(\\langle 3, 2, 1\\rangle\\).",
-          "Point-normal form: \\(3(x-1) + 2(y-1) + 1(z-1) = 0\\).",
-          "Expand: \\(3x + 2y + z - 6 = 0\\).",
+          "Perpendicular to that line → the plane's normal IS \\(\\langle 1, 4, 2\\rangle\\).",
+          "Point-normal form: \\(1(x-2) + 4(y+1) + 2(z-3) = 0\\).",
+          "Expand: \\(x + 4y + 2z - 4 = 0\\).",
         ],
-        answer: "\\(3x + 2y + z = 6\\).",
+        answer: "\\(x + 4y + 2z = 4\\).",
       },
       selfCheckExample: {
         prompt:
@@ -81,12 +81,12 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the equation of the plane which cuts an intercept of 5 units on the z-axis and is parallel to the XY-plane.",
+          "Find the equation of the plane that cuts intercepts of 2, 3 and 4 on the x-, y- and z-axes respectively.",
         steps: [
-          "Parallel to the XY-plane → the plane is of the form \\(z = k\\).",
-          "It cuts the z-axis at 5, so \\(k = 5\\).",
+          "Intercept form: \\(\\frac{x}{2} + \\frac{y}{3} + \\frac{z}{4} = 1\\).",
+          "Multiply through by 12: \\(6x + 4y + 3z = 12\\).",
         ],
-        answer: "\\(z = 5\\).",
+        answer: "\\(6x + 4y + 3z = 12\\).",
       },
       selfCheckExample: {
         prompt:
@@ -127,22 +127,23 @@ export const PLANE_3D_NOTE: SubtopicNote = {
           "\\begin{vmatrix} x-x_1 & y-y_1 & z-z_1 \\\\ x_2-x_1 & y_2-y_1 & z_2-z_1 \\\\ x_3-x_1 & y_3-y_1 & z_3-z_1 \\end{vmatrix} = 0",
       },
       authoredExample: {
-        prompt: "Find the plane through \\((1,0,0)\\), \\((0,1,0)\\) and \\((0,0,1)\\).",
+        prompt: "Find the equation of the plane through \\(A(1,1,0)\\), \\(B(2,0,1)\\) and \\(C(0,1,2)\\).",
         steps: [
-          "These are the unit intercepts on the three axes.",
-          "By intercept form with \\(a=b=c=1\\): \\(\\frac{x}{1}+\\frac{y}{1}+\\frac{z}{1} = 1\\).",
-          "So \\(x + y + z = 1\\).",
+          "Form two edge vectors: \\(\\overrightarrow{AB} = B - A = \\langle 1, -1, 1\\rangle\\) and \\(\\overrightarrow{AC} = C - A = \\langle -1, 0, 2\\rangle\\).",
+          "The normal is their cross product: \\(\\vec n = \\overrightarrow{AB} \\times \\overrightarrow{AC} = \\langle (-1)(2)-(1)(0),\\ (1)(-1)-(1)(2),\\ (1)(0)-(-1)(-1)\\rangle = \\langle -2, -3, -1\\rangle\\).",
+          "Point-normal form through \\(A\\): \\(-2(x-1) - 3(y-1) - 1(z-0) = 0\\).",
+          "Simplify: \\(2x + 3y + z = 5\\). (Check: \\(A\\) gives \\(2+3+0=5\\) ✓.)",
         ],
-        answer: "\\(x + y + z = 1\\).",
+        answer: "\\(2x + 3y + z = 5\\).",
       },
       selfCheckExample: {
-        prompt: "Find the normal to the plane through \\(A(1,0,0), B(0,1,0), C(0,0,1)\\) via the cross product.",
+        prompt: "Find the equation of the plane through \\(P(2,1,1)\\), \\(Q(1,2,1)\\) and \\(R(1,1,2)\\) using the cross product.",
         steps: [
-          "\\(\\overrightarrow{AB} = \\langle -1, 1, 0\\rangle\\), \\(\\overrightarrow{AC} = \\langle -1, 0, 1\\rangle\\).",
-          "Cross product: \\(i(1\\cdot1 - 0\\cdot0) - j((-1)(1) - 0(-1)) + k((-1)(0) - 1(-1))\\).",
-          "\\(= \\langle 1, 1, 1\\rangle\\) — matching the plane \\(x+y+z=1\\).",
+          "Edge vectors: \\(\\overrightarrow{PQ} = \\langle -1, 1, 0\\rangle\\), \\(\\overrightarrow{PR} = \\langle -1, 0, 1\\rangle\\).",
+          "Normal: \\(\\vec n = \\overrightarrow{PQ} \\times \\overrightarrow{PR} = \\langle 1, 1, 1\\rangle\\).",
+          "Point-normal through \\(P\\): \\((x-2)+(y-1)+(z-1)=0 \\Rightarrow x+y+z=4\\).",
         ],
-        answer: "Normal \\(\\langle 1, 1, 1\\rangle\\).",
+        answer: "\\(x + y + z = 4\\).",
       },
       practiceSet: [
         { prompt: "The normal to a 3-point plane comes from which operation?", answer: "cross product of two edge vectors" },
@@ -183,14 +184,14 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the distance between the parallel planes \\(4x - 2y + 4z + 9 = 0\\) and \\(8x - 4y + 8z + 21 = 0\\).",
+          "Find the distance between the parallel planes \\(2x - y + 2z + 3 = 0\\) and \\(4x - 2y + 4z + 5 = 0\\).",
         steps: [
-          "Scale the second by \\(\\tfrac12\\) so the normals match: \\(4x - 2y + 4z + 10.5 = 0\\).",
-          "Constants now \\(d_1 = 9,\\ d_2 = 10.5\\): difference \\(|9 - 10.5| = 1.5\\).",
-          "Normal length \\(\\sqrt{16 + 4 + 16} = 6\\).",
-          "Distance \\(= \\tfrac{1.5}{6} = \\tfrac14\\).",
+          "Scale the second by \\(\\tfrac12\\) so the normals match: \\(2x - y + 2z + 2.5 = 0\\).",
+          "Constants now \\(d_1 = 3,\\ d_2 = 2.5\\): difference \\(|3 - 2.5| = 0.5\\).",
+          "Normal length \\(\\sqrt{4 + 1 + 4} = 3\\).",
+          "Distance \\(= \\tfrac{0.5}{3} = \\tfrac16\\).",
         ],
-        answer: "\\(\\tfrac14\\) unit.",
+        answer: "\\(\\tfrac16\\) unit.",
       },
       practiceSet: [
         { prompt: "Distance of origin from \\(x + 2y - 2z = 9\\)?", answer: "\\(3\\)", method: "\\(|{-9}|/\\sqrt{1+4+4}=9/3\\)" },
@@ -274,14 +275,14 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the plane through the intersection of \\(2x + y + 2z = 9\\) and \\(4x - 5y - 4z = 1\\) that passes through \\((3, 2, 1)\\).",
+          "Find the plane through the intersection of \\(x + y + z = 3\\) and \\(2x - y + z = 4\\) that passes through \\((3, 1, 1)\\).",
         steps: [
-          "Family: \\((2x+y+2z-9) + \\lambda(4x-5y-4z-1) = 0\\).",
-          "Substitute \\((3,2,1)\\): \\((6+2+2-9) + \\lambda(12-10-4-1) = 0 \\Rightarrow 1 + \\lambda(-3) = 0\\).",
-          "\\(\\lambda = \\tfrac13\\).",
-          "Plug back and clear: \\(3(2x+y+2z-9) + (4x-5y-4z-1) = 0 \\Rightarrow 10x - 2y + 2z - 28 = 0\\), i.e. \\(5x - y + z = 14\\).",
+          "Family: \\((x+y+z-3) + \\lambda(2x-y+z-4) = 0\\).",
+          "Substitute \\((3,1,1)\\): \\((3+1+1-3) + \\lambda(6-1+1-4) = 0 \\Rightarrow 2 + 2\\lambda = 0\\).",
+          "\\(\\lambda = -1\\).",
+          "Plug back: \\((x+y+z-3) - (2x-y+z-4) = -x + 2y + 1 = 0\\), i.e. \\(x - 2y = 1\\).",
         ],
-        answer: "\\(5x - y + z = 14\\).",
+        answer: "\\(x - 2y = 1\\).",
       },
       selfCheckExample: {
         prompt:

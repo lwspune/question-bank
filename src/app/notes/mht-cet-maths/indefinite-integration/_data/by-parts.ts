@@ -40,13 +40,13 @@ export const BY_PARTS_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Evaluate \\(\\displaystyle\\int \\sin^{-1}\\!\\left(\\dfrac{2x}{1+x^2}\\right)dx\\).",
+          "Evaluate \\(\\displaystyle\\int x^2 e^x\\,dx\\).",
         steps: [
-          "Recognise \\(\\dfrac{2x}{1+x^2} = \\sin(2\\tan^{-1}x)\\), so \\(\\sin^{-1}\\!\\left(\\dfrac{2x}{1+x^2}\\right) = 2\\tan^{-1}x\\) (for \\(|x|\\le 1\\)).",
-          "Now integrate \\(\\int 2\\tan^{-1}x\\,dx\\) by parts with \\(u = \\tan^{-1}x,\\ dv = dx\\): \\(2\\big(x\\tan^{-1}x - \\int \\tfrac{x}{1+x^2}\\,dx\\big)\\).",
-          "The leftover is \\(\\tfrac12\\log(1+x^2)\\): result \\(2x\\tan^{-1}x - \\log(1+x^2) + C\\).",
+          "By LIATE, take \\(u = x^2\\) (Algebraic) and \\(dv = e^x\\,dx\\), so \\(du = 2x\\,dx,\\ v = e^x\\).",
+          "Apply parts: \\(\\int x^2 e^x\\,dx = x^2 e^x - \\int 2x\\,e^x\\,dx\\).",
+          "The leftover \\(\\int 2x\\,e^x\\,dx = 2(x e^x - e^x)\\) (parts again), so the result is \\(x^2 e^x - 2x e^x + 2e^x\\).",
         ],
-        answer: "\\(2x\\tan^{-1}x - \\log(1+x^2) + C\\)",
+        answer: "\\(e^x(x^2 - 2x + 2) + C\\)",
       },
       practiceSet: [
         { prompt: "In \\(\\int x e^x\\,dx\\), what is \\(u\\) by LIATE?", answer: "\\(u = x\\) (Algebraic before Exponential)" },
@@ -79,13 +79,13 @@ export const BY_PARTS_NOTE: SubtopicNote = {
         latex: "\\int e^{ax}\\sin bx\\,dx = \\dfrac{e^{ax}(a\\sin bx - b\\cos bx)}{a^2 + b^2} + C",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\sin(\\log x)\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int e^{2x} \\sin 3x\\,dx\\).",
         steps: [
-          "Let \\(x = e^t\\) so \\(\\log x = t\\) and \\(dx = e^t\\,dt\\): the integral becomes \\(\\int e^t \\sin t\\,dt\\).",
-          "Apply parts twice (or use the cyclic formula with \\(a = b = 1\\)): \\(\\int e^t\\sin t\\,dt = \\dfrac{e^t(\\sin t - \\cos t)}{2}\\).",
-          "Back-substitute \\(t = \\log x,\\ e^t = x\\).",
+          "This is a cyclic integral — applying parts twice returns the original integral, so use the cyclic formula directly.",
+          "\\(\\int e^{ax}\\sin bx\\,dx = \\dfrac{e^{ax}(a\\sin bx - b\\cos bx)}{a^2 + b^2}\\).",
+          "Substitute \\(a = 2,\\ b = 3\\): \\(\\dfrac{e^{2x}(2\\sin 3x - 3\\cos 3x)}{4 + 9}\\).",
         ],
-        answer: "\\(\\dfrac{x}{2}\\big[\\sin(\\log x) - \\cos(\\log x)\\big] + C\\)",
+        answer: "\\(\\dfrac{e^{2x}(2\\sin 3x - 3\\cos 3x)}{13} + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\cos(\\log x)\\,dx\\).",
@@ -132,13 +132,13 @@ export const BY_PARTS_NOTE: SubtopicNote = {
         ],
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int e^x\\big(1 - \\cot x + \\cot^2 x\\big)\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int e^x\\!\\left(\\log x + \\dfrac{1}{x}\\right)dx\\).",
         steps: [
-          "Group using \\(1 + \\cot^2 x = \\csc^2 x\\): the bracket is \\(\\csc^2 x - \\cot x = -\\cot x + \\csc^2 x\\).",
-          "Set \\(f(x) = -\\cot x\\). Then \\(f'(x) = \\csc^2 x\\). So the bracket is exactly \\(f(x) + f'(x)\\).",
-          "Apply the shortcut: \\(\\int e^x[f + f']\\,dx = e^x f(x) = -e^x\\cot x + C\\).",
+          "The bracket is \\(f(x) + f'(x)\\) with \\(f(x) = \\log x\\), since \\(f'(x) = \\dfrac{1}{x}\\).",
+          "Apply the shortcut \\(\\int e^x[f + f']\\,dx = e^x f(x)\\).",
+          "So the integral is \\(e^x \\log x + C\\).",
         ],
-        answer: "\\(-e^x \\cot x + C\\)",
+        answer: "\\(e^x \\log x + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int e^x\\!\\left(\\dfrac{x - 1}{x^2}\\right)dx\\).",

@@ -26,13 +26,13 @@ export const LINEAR_SYSTEMS_NOTE: SubtopicNote = {
         "whether the equations are genuinely contradictory or just dependent (e.g. two equations the " +
         "same scaling but different constants → no solution).",
       authoredExample: {
-        prompt: "Classify the system \\(x+2y+z=4,\\ 2x+4y+2z=8,\\ 3x+6y+3z=10\\).",
+        prompt: "Classify the system \\(x+y+z=6,\\ x-y+z=2,\\ 2x+y-z=1\\).",
         steps: [
-          "Equation 2 is exactly \\(2\\times\\) equation 1 (consistent, dependent).",
-          "Equation 3 is \\(3\\times\\) the left side of equation 1 but the constant is 10, not \\(3\\times4 = 12\\).",
-          "So equation 3 contradicts equation 1 → the system is inconsistent.",
+          "Form the coefficient determinant \\(|A| = \\begin{vmatrix}1&1&1\\\\1&-1&1\\\\2&1&-1\\end{vmatrix}\\).",
+          "Expand along row 1: \\(1(1-1) - 1(-1-2) + 1(1+2) = 0 + 3 + 3 = 6\\).",
+          "\\(|A| = 6 \\neq 0\\), so the coefficient matrix is non-singular.",
         ],
-        answer: "No solution (inconsistent).",
+        answer: "Unique solution — consistent and independent (\\(|A| = 6 \\neq 0\\)).",
       },
       selfCheckExample: {
         prompt: "The equations \\(2x - 3y - 5 = 0\\) and \\(10x - 15y + 50 = 0\\): how many solutions?",

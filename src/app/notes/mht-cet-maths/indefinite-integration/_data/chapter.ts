@@ -11,16 +11,16 @@ export const INDEFINITE_INTEGRATION_CHAPTER: ChapterNote = {
     "(1) Foundations — what an antiderivative is, the +C, the standard-formula table, and the algebra you do BEFORE integrating; " +
     "(2) Substitution — the single highest-yield method (44 PYQs), built on the f'(x)/f(x) → log pattern; " +
     "(3) Trigonometric Integrals I — power-reduction and identity simplification; " +
-    "(4) Trigonometric Integrals II — rational-in-sin/cos, the half-angle (Weierstrass) substitution, and the fractional-power tan trick, the chapter's hard core; " +
-    "(5) Rational Functions and Partial Fractions — standard quadratic forms, completing the square, and decomposition; " +
+    "(4) Rational Functions and Partial Fractions — standard quadratic forms, completing the square, and decomposition (the arctan-quadratic machinery the next movement leans on); " +
+    "(5) Trigonometric Integrals II — rational-in-sin/cos, the half-angle (Weierstrass) substitution, and the fractional-power tan trick, the chapter's hard core; " +
     "(6) Integration by Parts — LIATE, the cyclic integrals, and the recurring eˣ[f(x)+f'(x)] family. " +
     "Every PYQ is tagged — learn the pattern, drill the bank, recover the marks.",
   subtopicOrder: [
     "fundamentals",
     "substitution",
     "trigonometric-integrals-powers",
-    "trigonometric-integrals-rational",
     "rational-and-partial-fractions",
+    "trigonometric-integrals-rational",
     "integration-by-parts",
   ],
 };

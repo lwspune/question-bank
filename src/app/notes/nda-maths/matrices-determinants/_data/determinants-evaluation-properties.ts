@@ -167,14 +167,14 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "equations \\(\\det(\\cdot) = 0\\) become polynomial equations once expanded; simplify first " +
         "with row operations to lower the degree of work.",
       authoredExample: {
-        prompt: "Find \\(x\\) if \\(\\begin{vmatrix}x & 1 & 3\\\\0 & 0 & 1\\\\1 & x & 4\\end{vmatrix} = 0\\).",
+        prompt: "Find \\(x\\) if \\(\\begin{vmatrix}1 & 2 & 3\\\\2 & x & 6\\\\0 & 0 & 1\\end{vmatrix} = 0\\).",
         steps: [
-          "Expand along row 2 (it has two zeros): only the \\((2,3)\\) entry \\(= 1\\) contributes.",
-          "Cofactor of \\((2,3)\\): \\((-1)^{2+3}\\begin{vmatrix}x&1\\\\1&x\\end{vmatrix} = -(x^2 - 1)\\).",
-          "So the determinant \\(= 1 \\cdot [-(x^2-1)] = -(x^2 - 1) = 0\\).",
-          "\\(x^2 = 1 \\Rightarrow x = \\pm 1\\).",
+          "Expand along row 3 (it has two zeros): only the \\((3,3)\\) entry \\(= 1\\) contributes.",
+          "Cofactor of \\((3,3)\\): \\((+1)\\begin{vmatrix}1&2\\\\2&x\\end{vmatrix} = x - 4\\).",
+          "So the determinant \\(= 1 \\cdot (x - 4) = 0\\).",
+          "\\(x = 4\\).",
         ],
-        answer: "\\(x = \\pm 1\\).",
+        answer: "\\(x = 4\\).",
       },
       selfCheckExample: {
         prompt: "For what value of \\(x\\) does \\(\\begin{pmatrix}2 & 4\\\\-8 & x\\end{pmatrix}\\) fail to have an inverse?",
@@ -298,13 +298,13 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "telescoping expression. Then sum with \\(\\sum_{k=1}^{n} k = \\tfrac{n(n+1)}{2}\\), " +
         "\\(\\sum k^2 = \\tfrac{n(n+1)(2n+1)}{6}\\), or telescoping cancellation.",
       authoredExample: {
-        prompt: "If \\(A_k = \\begin{pmatrix}k-1 & k\\\\k-2 & k+1\\end{pmatrix}\\), find \\(\\sum_{k=1}^{100}\\det(A_k)\\).",
+        prompt: "If \\(A_k = \\begin{pmatrix}k & 1\\\\2 & 3\\end{pmatrix}\\), find \\(\\sum_{k=1}^{100}\\det(A_k)\\).",
         steps: [
-          "\\(\\det(A_k) = (k-1)(k+1) - k(k-2) = (k^2 - 1) - (k^2 - 2k) = 2k - 1\\).",
-          "\\(\\sum_{k=1}^{100}(2k - 1) = 2\\sum k - 100 = 2\\cdot\\tfrac{100\\cdot101}{2} - 100 = 10100 - 100\\).",
-          "\\(= 10000\\).",
+          "\\(\\det(A_k) = (k)(3) - (1)(2) = 3k - 2\\).",
+          "\\(\\sum_{k=1}^{100}(3k - 2) = 3\\sum k - 2\\cdot100 = 3\\cdot\\tfrac{100\\cdot101}{2} - 200 = 15150 - 200\\).",
+          "\\(= 14950\\).",
         ],
-        answer: "\\(10000\\) (it's the sum of the first 100 odd numbers, \\(100^2\\)).",
+        answer: "\\(14950\\).",
       },
       selfCheckExample: {
         prompt: "If \\(M_k = \\begin{pmatrix}k & k-1\\\\k-1 & k\\end{pmatrix}\\), find \\(\\det(M_1) + \\det(M_2) + \\dots + \\det(M_n)\\).",

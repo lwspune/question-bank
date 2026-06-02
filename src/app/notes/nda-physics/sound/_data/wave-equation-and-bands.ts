@@ -38,13 +38,13 @@ export const WAVE_EQUATION_AND_BANDS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "A sound wave has frequency 1 kHz and wavelength 50 cm. Find its speed and the time it takes to travel 1 km.",
+          "A sound wave travels through air at 340 m/s with a wavelength of 0.85 m. Find its frequency and period.",
         steps: [
-          "Convert units: \\(f = 1000\\) Hz, \\(\\lambda = 0.5\\) m, distance \\(d = 1000\\) m.",
-          "Apply the wave equation: \\(v = f\\lambda = 1000 \\times 0.5 = 500\\) m/s.",
-          "Time = distance / speed: \\(t = d/v = 1000/500 = 2\\) s.",
+          "Rearrange the wave equation for frequency: \\(f = v/\\lambda\\).",
+          "\\(f = 340 / 0.85 = 400\\) Hz.",
+          "Period is the reciprocal: \\(T = 1/f = 1/400 = 0.0025\\) s \\(= 2.5\\) ms.",
         ],
-        answer: "\\(v = 500\\) m/s; time to cover 1 km \\(= 2\\) s.",
+        answer: "\\(f = 400\\) Hz; \\(T = 2.5\\) ms.",
       },
       selfCheckExample: {
         prompt:
@@ -104,14 +104,13 @@ export const WAVE_EQUATION_AND_BANDS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "The speed of sound in a sealed container of air is \\(x\\) m/s. The pressure inside is then doubled while the temperature is held constant. The new speed is \\(y\\). Find \\(x/y\\).",
+          "The speed of sound in a gas at 300 K is 330 m/s. If the temperature is raised to 1200 K (same gas), what is the new speed?",
         steps: [
-          "Speed of sound in a gas: \\(v = \\sqrt{\\gamma P/\\rho}\\).",
-          "At constant temperature, doubling pressure also doubles density (gas obeys \\(P \\propto \\rho\\) at fixed T — ideal gas law).",
-          "Both \\(P\\) and \\(\\rho\\) double, so the ratio \\(P/\\rho\\) is unchanged.",
-          "Therefore \\(v\\) is unchanged: \\(y = x\\), and \\(x/y = 1\\).",
+          "In a gas, speed depends on temperature as \\(v \\propto \\sqrt{T}\\) (from \\(v = \\sqrt{\\gamma RT/M}\\); the gas, hence \\(\\gamma\\) and \\(M\\), is unchanged).",
+          "Take the ratio: \\(v_2/v_1 = \\sqrt{T_2/T_1} = \\sqrt{1200/300} = \\sqrt{4} = 2\\).",
+          "So \\(v_2 = 2 \\times 330 = 660\\) m/s.",
         ],
-        answer: "\\(x/y = 1\\). Speed is independent of pressure at constant temperature.",
+        answer: "\\(660\\) m/s — speed scales with \\(\\sqrt{T}\\), the one thing that does change it.",
       },
       selfCheckExample: {
         prompt:

@@ -140,12 +140,12 @@ export const EVENT_ALGEBRA_ADDITION_RULE_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "In a school, 50% of students play cricket and 40% play football; 10% play both. What percentage play neither?",
+          "In a town, 70% of households take a newspaper and 50% take a magazine; 30% take both. What percentage take neither?",
         steps: [
-          "Play at least one: \\(P(C \\cup F) = 0.50 + 0.40 - 0.10 = 0.80\\).",
-          "Play neither: \\(1 - 0.80 = 0.20 = 20\\%\\).",
+          "Take at least one: \\(P(N \\cup M) = 0.70 + 0.50 - 0.30 = 0.90\\).",
+          "Take neither: \\(1 - 0.90 = 0.10 = 10\\%\\).",
         ],
-        answer: "\\(20\\%\\)",
+        answer: "\\(10\\%\\)",
       },
       selfCheckExample: {
         prompt:

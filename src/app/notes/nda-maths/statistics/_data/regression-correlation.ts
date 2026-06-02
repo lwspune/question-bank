@@ -102,14 +102,14 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
       visualizationSlug: "regression-line-fit",
       authoredExample: {
         prompt:
-          "Find the regression line of \\(y\\) on \\(x\\) passing through the only two data points \\((-1, 1)\\) and \\((3, 2)\\).",
+          "Find the regression line of \\(y\\) on \\(x\\) passing through the only two data points \\((1, 1)\\) and \\((5, 9)\\).",
         steps: [
           "With only two points, the regression line is the line joining them — correlation is perfect (\\(r = \\pm 1\\)).",
-          "Compute slope: \\(b_{yx} = \\dfrac{2 - 1}{3 - (-1)} = \\dfrac{1}{4}\\).",
-          "Use point-slope through \\((-1, 1)\\): \\(y - 1 = \\dfrac{1}{4}(x - (-1))\\).",
-          "Simplify: \\(y = \\dfrac{x + 1}{4} + 1 = \\dfrac{x + 5}{4}\\).",
+          "Compute slope: \\(b_{yx} = \\dfrac{9 - 1}{5 - 1} = \\dfrac{8}{4} = 2\\).",
+          "Use point-slope through \\((1, 1)\\): \\(y - 1 = 2(x - 1)\\).",
+          "Simplify: \\(y = 2x - 1\\).",
         ],
-        answer: "\\(y = \\dfrac{x + 5}{4}\\)  or equivalently  \\(4y - x - 5 = 0\\)",
+        answer: "\\(y = 2x - 1\\)  or equivalently  \\(2x - y - 1 = 0\\)",
       },
       selfCheckExample: {
         prompt:
@@ -170,15 +170,14 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Two lines of regression are \\(x + y + 11 = 0\\) and \\(2x + 3y + 4 = 0\\). Find the correlation coefficient \\(r\\) between \\(x\\) and \\(y\\).",
+          "Two lines of regression are \\(3x - 5y + 10 = 0\\) and \\(5x - 3y - 6 = 0\\). Find the correlation coefficient \\(r\\) between \\(x\\) and \\(y\\).",
         steps: [
-          "Try assigning the first line as regression of \\(y\\) on \\(x\\): \\(y = -x - 11\\), so \\(b_{yx} = -1\\).",
-          "Then the second line is regression of \\(x\\) on \\(y\\): \\(x = \\dfrac{-3y - 4}{2}\\), so \\(b_{xy} = -\\dfrac{3}{2}\\).",
-          "Check the product: \\(b_{yx} \\cdot b_{xy} = (-1) \\times \\left(-\\dfrac{3}{2}\\right) = \\dfrac{3}{2} > 1\\). Invalid — swap the assignment.",
-          "Now first line is \\(x\\) on \\(y\\): \\(x = -y - 11\\), so \\(b_{xy} = -1\\). Second is \\(y\\) on \\(x\\): \\(y = \\dfrac{-2x - 4}{3}\\), so \\(b_{yx} = -\\dfrac{2}{3}\\).",
-          "Product: \\(b_{yx} \\cdot b_{xy} = \\dfrac{2}{3} \\leq 1\\) — valid. So \\(r^2 = \\dfrac{2}{3}\\) and \\(r = -\\sqrt{2/3}\\) (negative because both slopes are negative).",
+          "Pairing A — first line as \\(y\\) on \\(x\\): \\(y = \\dfrac{3x + 10}{5}\\), so \\(b_{yx} = \\dfrac{3}{5}\\). Second line as \\(x\\) on \\(y\\): \\(x = \\dfrac{3y + 6}{5}\\), so \\(b_{xy} = \\dfrac{3}{5}\\).",
+          "Check the product: \\(b_{yx} \\cdot b_{xy} = \\dfrac{9}{25} = 0.36 \\leq 1\\) — valid.",
+          "Pairing B (the swap) would give both slopes \\(\\dfrac{5}{3}\\), product \\(\\dfrac{25}{9} > 1\\) — impossible, so pairing A is correct.",
+          "Hence \\(r^2 = 0.36\\). Both slopes are positive, so \\(r = +\\sqrt{0.36} = 0.6\\).",
         ],
-        answer: "\\(r = -\\sqrt{\\dfrac{2}{3}}\\)",
+        answer: "\\(r = 0.6\\)",
       },
       selfCheckExample: {
         prompt:
@@ -231,13 +230,13 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Two lines of regression are \\(x - 3y + 4 = 0\\) and \\(2x - 7y + 8 = 0\\). Identify which is \\(y\\) on \\(x\\) and find \\(b_{yx}\\) and \\(b_{xy}\\).",
+          "Two lines of regression are \\(2x - 3y + 1 = 0\\) and \\(4x - 5y + 3 = 0\\). Identify which is \\(y\\) on \\(x\\) and find \\(b_{yx}\\) and \\(b_{xy}\\).",
         steps: [
-          "Pairing A: first as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{x+4}{3}\\), so \\(b_{yx} = \\dfrac{1}{3}\\). Second as \\(x\\) on \\(y\\) gives \\(x = \\dfrac{7y - 8}{2}\\), so \\(b_{xy} = \\dfrac{7}{2}\\). Product = \\(\\dfrac{7}{6} > 1\\) — rejected.",
-          "Pairing B (swap): first as \\(x\\) on \\(y\\) gives \\(x = 3y - 4\\), so \\(b_{xy} = 3\\). Second as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{2x + 8}{7}\\), so \\(b_{yx} = \\dfrac{2}{7}\\). Product = \\(\\dfrac{6}{7} \\leq 1\\) — valid.",
-          "Conclusion: the second line is \\(y\\) on \\(x\\) (\\(b_{yx} = 2/7\\)); the first is \\(x\\) on \\(y\\) (\\(b_{xy} = 3\\)).",
+          "Pairing A: first as \\(y\\) on \\(x\\) gives \\(y = \\dfrac{2x+1}{3}\\), so \\(b_{yx} = \\dfrac{2}{3}\\). Second as \\(x\\) on \\(y\\) gives \\(x = \\dfrac{5y - 3}{4}\\), so \\(b_{xy} = \\dfrac{5}{4}\\). Product = \\(\\dfrac{5}{6} \\leq 1\\) — valid.",
+          "Pairing B (swap): first as \\(x\\) on \\(y\\) gives \\(b_{xy} = \\dfrac{3}{2}\\); second as \\(y\\) on \\(x\\) gives \\(b_{yx} = \\dfrac{4}{5}\\). Product = \\(\\dfrac{6}{5} > 1\\) — rejected.",
+          "Conclusion: the first line is \\(y\\) on \\(x\\) (\\(b_{yx} = 2/3\\)); the second is \\(x\\) on \\(y\\) (\\(b_{xy} = 5/4\\)).",
         ],
-        answer: "\\(b_{yx} = \\dfrac{2}{7},\\ b_{xy} = 3\\)",
+        answer: "\\(b_{yx} = \\dfrac{2}{3},\\ b_{xy} = \\dfrac{5}{4}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -295,15 +294,15 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Two lines of regression are \\(x + 2y + 1 = 0\\) and \\(2x + 3y + 4 = 0\\). " +
+          "Two lines of regression are \\(x + 3y + 2 = 0\\) and \\(2x + 5y + 1 = 0\\). " +
           "Find the tangent of the acute angle between them.",
         steps: [
-          "Solve each line for \\(y\\). Line 1: \\(y = -\\tfrac{1}{2}x - \\tfrac{1}{2}\\), so \\(m_1 = -\\tfrac{1}{2}\\).",
-          "Line 2: \\(y = -\\tfrac{2}{3}x - \\tfrac{4}{3}\\), so \\(m_2 = -\\tfrac{2}{3}\\).",
-          "Apply the formula: \\(\\tan\\theta = \\left|\\dfrac{-1/2 - (-2/3)}{1 + (-1/2)(-2/3)}\\right| = \\left|\\dfrac{1/6}{4/3}\\right|\\).",
-          "Simplify: \\(\\tan\\theta = \\dfrac{1}{6} \\cdot \\dfrac{3}{4} = \\dfrac{1}{8}\\).",
+          "Solve each line for \\(y\\). Line 1: \\(y = -\\tfrac{1}{3}x - \\tfrac{2}{3}\\), so \\(m_1 = -\\tfrac{1}{3}\\).",
+          "Line 2: \\(y = -\\tfrac{2}{5}x - \\tfrac{1}{5}\\), so \\(m_2 = -\\tfrac{2}{5}\\).",
+          "Apply the formula: \\(\\tan\\theta = \\left|\\dfrac{-1/3 - (-2/5)}{1 + (-1/3)(-2/5)}\\right| = \\left|\\dfrac{1/15}{17/15}\\right|\\).",
+          "Simplify: \\(\\tan\\theta = \\dfrac{1}{17}\\).",
         ],
-        answer: "\\(\\tan\\theta = \\dfrac{1}{8}\\)",
+        answer: "\\(\\tan\\theta = \\dfrac{1}{17}\\)",
       },
       selfCheckExample: {
         prompt:

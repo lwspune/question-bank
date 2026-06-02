@@ -100,14 +100,14 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "In parallelogram \\(PQRS\\), let \\(\\vec{PR} = \\vec{a}\\) and \\(\\vec{QS} = \\vec{b}\\). " +
-          "Find \\(\\vec{PQ}\\) in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+          "In parallelogram \\(ABCD\\) (vertices in order), the position vectors of \\(A, B, C\\) are " +
+          "\\(\\vec{a} = 2\\hat{i} + \\hat{j}\\), \\(\\vec{b} = 4\\hat{i} + 3\\hat{j}\\), \\(\\vec{c} = 6\\hat{i} - \\hat{j}\\). Find the position vector of \\(D\\).",
         steps: [
-          "Diagonal \\(\\vec{PR}\\) goes from \\(P\\) to \\(R\\); diagonal \\(\\vec{QS}\\) goes from \\(Q\\) to \\(S\\). In a parallelogram, walking \\(P\\to Q\\to R\\) gives \\(\\vec{PR} = \\vec{PQ} + \\vec{QR}\\); walking \\(Q\\to S\\) via \\(R\\) gives \\(\\vec{QS} = \\vec{QR} + \\vec{RS} = \\vec{QR} - \\vec{PQ}\\) (since \\(\\vec{RS} = -\\vec{PQ}\\)).",
-          "Add the two: \\(\\vec{a} + \\vec{b} = 2\\vec{QR}\\), so \\(\\vec{QR} = \\dfrac{\\vec{a}+\\vec{b}}{2}\\).",
-          "Subtract: \\(\\vec{a} - \\vec{b} = 2\\vec{PQ}\\), so \\(\\vec{PQ} = \\dfrac{\\vec{a}-\\vec{b}}{2}\\).",
+          "In a parallelogram, \\(\\vec{AD} = \\vec{BC}\\), which gives \\(\\vec{d} - \\vec{a} = \\vec{c} - \\vec{b}\\).",
+          "So \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b} = (2+6-4)\\hat{i} + (1-1-3)\\hat{j}\\).",
+          "\\(= 4\\hat{i} - 3\\hat{j}\\).",
         ],
-        answer: "\\(\\vec{PQ} = \\dfrac{1}{2}(\\vec{a} - \\vec{b})\\)",
+        answer: "\\(\\vec{d} = 4\\hat{i} - 3\\hat{j}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -239,12 +239,13 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "For points with position vectors \\(\\vec{p} = \\hat{i}\\), \\(\\vec{q} = \\hat{j}\\), \\(\\vec{r} = -\\hat{i}\\), \\(\\vec{s} = -\\hat{j}\\), are the diagonals \\(\\vec{PR}\\) and \\(\\vec{QS}\\) perpendicular?",
+          "For \\(\\vec{p} = 2\\hat{i} + \\hat{j}\\) and \\(\\vec{q} = \\hat{i} - 3\\hat{j}\\), verify the parallelogram law \\(|\\vec{p}+\\vec{q}|^2 + |\\vec{p}-\\vec{q}|^2 = 2(|\\vec{p}|^2 + |\\vec{q}|^2)\\).",
         steps: [
-          "\\(\\vec{PR} = \\vec{r} - \\vec{p} = -2\\hat{i}\\); \\(\\vec{QS} = \\vec{s} - \\vec{q} = -2\\hat{j}\\).",
-          "Dot: \\(\\vec{PR}\\cdot\\vec{QS} = (-2)(0) + (0)(-2) = 0\\) — perpendicular.",
+          "\\(\\vec{p}+\\vec{q} = 3\\hat{i} - 2\\hat{j} \\Rightarrow |\\vec{p}+\\vec{q}|^2 = 9 + 4 = 13\\); \\(\\vec{p}-\\vec{q} = \\hat{i} + 4\\hat{j} \\Rightarrow |\\vec{p}-\\vec{q}|^2 = 1 + 16 = 17\\). LHS \\(= 30\\).",
+          "\\(|\\vec{p}|^2 = 4 + 1 = 5\\), \\(|\\vec{q}|^2 = 1 + 9 = 10 \\Rightarrow\\) RHS \\(= 2(5 + 10) = 30\\).",
+          "LHS \\(=\\) RHS \\(= 30\\), confirming the law.",
         ],
-        answer: "Yes — \\(\\vec{PR}\\cdot\\vec{QS} = 0\\), so \\(\\vec{PR} \\perp \\vec{QS}\\).",
+        answer: "Both sides equal \\(30\\).",
       },
       practiceSet: [
         { prompt: "Parallelogram law: \\(|\\vec{a} + \\vec{b}|^2 + |\\vec{a} - \\vec{b}|^2 = ?\\)", answer: "\\(2(|\\vec{a}|^2 + |\\vec{b}|^2)\\)" },

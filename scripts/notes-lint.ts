@@ -20,6 +20,9 @@
  *      → catches orphan tags after a concept rename/removal.
  *   4. Each TS concept should have ≥1 DB-tagged PUBLIC question (soft warn)
  *      → catches missed tagging sessions for newly-authored concepts.
+ *   5. A concept's worked example / self-check should be a DIFFERENT problem
+ *      from its featured PYQ (soft warn, number-overlap heuristic)
+ *      → catches the "worked example seeded from the featured PYQ" duplication.
  *
  * Read-only: makes no writes. Exits non-zero when any check fails so it
  * can gate a CI step later if desired. Today: run manually.
@@ -34,6 +37,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
+import { reusesPyqNumbers } from "../src/lib/notes/pyqDuplication";
 import type { SubtopicNote } from "../src/app/notes/_types";
 
 function loadEnv() {
@@ -45,6 +49,10 @@ function loadEnv() {
 }
 
 type Issue = { severity: "error" | "warn"; note: string; message: string };
+
+// `reusesPyqNumbers` (check #5's duplication heuristic) + `numberMultiset` live
+// in src/lib/notes/pyqDuplication.ts so they're unit-testable (tests/notes-pyq-
+// duplication.test.ts); imported above. See [[notes-concept-content-alignment]].
 
 type NoteRef = {
   /** Display path used in messages. */
@@ -240,9 +248,9 @@ async function main() {
     if (pyqIds.length > 0) {
       const { data: rows } = await supabase
         .from("questions")
-        .select("id, visibility, subtopic_id")
+        .select("id, visibility, subtopic_id, text")
         .in("id", pyqIds.map((p) => p.id));
-      type Row = { id: string; visibility: string; subtopic_id: string | null };
+      type Row = { id: string; visibility: string; subtopic_id: string | null; text: string | null };
       const rowById = new Map<string, Row>(
         ((rows ?? []) as Row[]).map((r) => [r.id, r])
       );
@@ -270,6 +278,30 @@ async function main() {
             note: ref.path,
             message: `pyqExampleId ${p.id} lives in a different subtopic than "${ref.note.subtopicName}" (concept "${p.conceptName}", ${p.where}) — concept tag would be impossible. Swap for a question in the correct subtopic.`,
           });
+        }
+      }
+
+      // 2c. Duplication WARN: a concept's worked example / self-check must be a
+      //     DIFFERENT problem from its featured PYQ. Flags when the example
+      //     re-uses (almost) all of the PYQ's distinctive numbers. See
+      //     feedback_notes_concept_content_alignment.
+      for (const c of ref.note.concepts) {
+        if (!c.pyqExampleId) continue;
+        const pyqText = rowById.get(c.pyqExampleId)?.text;
+        if (!pyqText) continue;
+        const candidates: { slot: string; text: string }[] = [];
+        if (c.kind === "formula")
+          candidates.push({ slot: "worked example", text: c.authoredExample.prompt });
+        if (c.selfCheckExample)
+          candidates.push({ slot: "self-check", text: c.selfCheckExample.prompt });
+        for (const cand of candidates) {
+          if (reusesPyqNumbers(cand.text, pyqText)) {
+            issues.push({
+              severity: "warn",
+              note: ref.path,
+              message: `concept "${c.name}" ${cand.slot} re-uses the featured PYQ's numbers (${c.pyqExampleId}) — likely the same problem; author a DIFFERENT problem (rule: worked example/self-check must differ from the featured PYQ)`,
+            });
+          }
         }
       }
     }

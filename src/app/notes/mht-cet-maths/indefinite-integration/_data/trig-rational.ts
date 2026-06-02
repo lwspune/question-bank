@@ -26,14 +26,14 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
         latex: "t = \\tan\\dfrac{x}{2}:\\quad \\sin x = \\dfrac{2t}{1+t^2},\\ \\cos x = \\dfrac{1-t^2}{1+t^2},\\ dx = \\dfrac{2\\,dt}{1+t^2}",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{5 + 4\\sin x}\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{5 + 3\\cos x}\\).",
         steps: [
-          "Substitute: \\(\\sin x = \\dfrac{2t}{1+t^2}\\), \\(dx = \\dfrac{2\\,dt}{1+t^2}\\).",
-          "Denominator: \\(5 + 4\\cdot\\dfrac{2t}{1+t^2} = \\dfrac{5(1+t^2) + 8t}{1+t^2} = \\dfrac{5t^2 + 8t + 5}{1+t^2}\\).",
-          "Integral becomes \\(\\int \\dfrac{2\\,dt}{5t^2 + 8t + 5}\\). Complete the square: \\(5t^2+8t+5 = 5\\!\\left(t+\\tfrac45\\right)^2 + \\tfrac95\\).",
-          "So \\(\\int \\dfrac{2\\,dt}{5(t+\\frac45)^2 + \\frac95} = \\dfrac{2}{3}\\tan^{-1}\\!\\left(\\dfrac{5t+4}{3}\\right) + C\\).",
+          "Substitute \\(t = \\tan(x/2)\\): \\(\\cos x = \\dfrac{1-t^2}{1+t^2}\\), \\(dx = \\dfrac{2\\,dt}{1+t^2}\\).",
+          "Denominator: \\(5 + 3\\cdot\\dfrac{1-t^2}{1+t^2} = \\dfrac{5(1+t^2) + 3(1-t^2)}{1+t^2} = \\dfrac{8 + 2t^2}{1+t^2}\\).",
+          "Integral becomes \\(\\int \\dfrac{2\\,dt}{8 + 2t^2} = \\int \\dfrac{dt}{4 + t^2} = \\dfrac{1}{2}\\tan^{-1}\\dfrac{t}{2}\\) (the cosine form needs no completing-the-square — there is no linear \\(t\\) term).",
+          "Back-substitute \\(t = \\tan(x/2)\\).",
         ],
-        answer: "\\(\\dfrac{2}{3}\\tan^{-1}\\!\\left(\\dfrac{5\\tan(x/2) + 4}{3}\\right) + C\\)",
+        answer: "\\(\\dfrac{1}{2}\\tan^{-1}\\!\\left(\\dfrac{\\tan(x/2)}{2}\\right) + C\\)",
       },
       selfCheckExample: {
         prompt: "Set up \\(\\displaystyle\\int \\dfrac{dx}{1 + \\sin x}\\) with the half-angle substitution.",
@@ -75,14 +75,14 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{1 + 3\\sin^2 x} = \\dfrac{1}{2}\\tan^{-1}(f(x)) + c\\) and find \\(f(x)\\).",
+          "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{4\\cos^2 x + 9\\sin^2 x}\\).",
         steps: [
-          "Divide top and bottom by \\(\\cos^2 x\\): \\(\\dfrac{\\sec^2 x}{\\sec^2 x + 3\\tan^2 x}\\).",
-          "Use \\(\\sec^2 x = 1 + \\tan^2 x\\): denominator \\(= 1 + \\tan^2 x + 3\\tan^2 x = 1 + 4\\tan^2 x\\).",
-          "Let \\(t = \\tan x\\), \\(dt = \\sec^2 x\\,dx\\): \\(\\int \\dfrac{dt}{1 + 4t^2} = \\dfrac{1}{2}\\tan^{-1}(2t) + c\\).",
+          "Divide top and bottom by \\(\\cos^2 x\\): \\(\\dfrac{\\sec^2 x}{4 + 9\\tan^2 x}\\).",
+          "Let \\(t = \\tan x\\), \\(dt = \\sec^2 x\\,dx\\): the integral becomes \\(\\int \\dfrac{dt}{4 + 9t^2}\\).",
+          "Standard arctan-quadratic form: \\(\\int \\dfrac{dt}{4 + 9t^2} = \\dfrac{1}{6}\\tan^{-1}\\dfrac{3t}{2}\\).",
           "Back-substitute \\(t = \\tan x\\).",
         ],
-        answer: "\\(f(x) = 2\\tan x\\) (so the integral is \\(\\tfrac12\\tan^{-1}(2\\tan x) + c\\)).",
+        answer: "\\(\\dfrac{1}{6}\\tan^{-1}\\!\\left(\\dfrac{3\\tan x}{2}\\right) + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{1 + \\tan^2 x}\\) using this idea.",
@@ -124,14 +124,14 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
         latex: "\\int \\sin^m x\\,\\cos^n x\\,dx \\xrightarrow{\\,t=\\tan x\\,} \\int t^{m}\\,(1+t^2)^{\\frac{m+n}{2}-1}\\,dt",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\cos^{-3/7}x\\,\\sin^{-11/7}x\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\sin^{-5/3}x\\,\\cos^{-1/3}x\\,dx\\).",
         steps: [
-          "Exponents: \\(m = -\\tfrac{11}{7}\\) (sin), \\(n = -\\tfrac{3}{7}\\) (cos); sum \\(m+n = -\\tfrac{14}{7} = -2\\), an even negative integer — the trick applies.",
-          "Rewrite: \\(\\sin^{-11/7}x\\,\\cos^{-3/7}x = \\tan^{-11/7}x\\cdot\\cos^{-2}x = \\tan^{-11/7}x\\,\\sec^2 x\\).",
-          "Let \\(t = \\tan x,\\ dt = \\sec^2 x\\,dx\\): \\(\\int t^{-11/7}\\,dt = \\dfrac{t^{-4/7}}{-4/7} = -\\dfrac{7}{4}\\,t^{-4/7}\\).",
+          "Exponents: \\(m = -\\tfrac{5}{3}\\) (sin), \\(n = -\\tfrac{1}{3}\\) (cos); sum \\(m+n = -2\\), an even negative integer — the trick applies.",
+          "Rewrite: \\(\\sin^{-5/3}x\\,\\cos^{-1/3}x = \\tan^{-5/3}x\\cdot\\cos^{-2}x = \\tan^{-5/3}x\\,\\sec^2 x\\).",
+          "Let \\(t = \\tan x,\\ dt = \\sec^2 x\\,dx\\): \\(\\int t^{-5/3}\\,dt = \\dfrac{t^{-2/3}}{-2/3} = -\\dfrac{3}{2}\\,t^{-2/3}\\).",
           "Back-substitute \\(t = \\tan x\\).",
         ],
-        answer: "\\(-\\dfrac{7}{4}(\\tan x)^{-4/7} + C\\)",
+        answer: "\\(-\\dfrac{3}{2}(\\tan x)^{-2/3} + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\sec^{2/3}x\\,\\csc^{4/3}x\\,dx\\) by the same route.",
@@ -175,14 +175,13 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Given \\(\\displaystyle\\int \\dfrac{5\\tan x}{\\tan x - 2}\\,dx = x + a\\log|\\sin x - 2\\cos x| + c\\), find \\(a\\).",
+          "Evaluate \\(\\displaystyle\\int \\dfrac{2\\sin x + 3\\cos x}{\\sin x + \\cos x}\\,dx\\).",
         steps: [
-          "Multiply top and bottom by \\(\\cos x\\): \\(\\dfrac{5\\sin x}{\\sin x - 2\\cos x}\\). Denominator \\(D = \\sin x - 2\\cos x\\), so \\(D' = \\cos x + 2\\sin x\\).",
-          "Write \\(5\\sin x = A\\,D + B\\,D' = A(\\sin x - 2\\cos x) + B(\\cos x + 2\\sin x)\\).",
-          "Match coefficients — \\(\\sin x\\): \\(A + 2B = 5\\); \\(\\cos x\\): \\(-2A + B = 0\\Rightarrow B = 2A\\). So \\(A + 4A = 5\\Rightarrow A = 1,\\ B = 2\\).",
-          "Integrate: \\(\\int\\!\\left(A + B\\dfrac{D'}{D}\\right)dx = x + 2\\log|\\sin x - 2\\cos x| + c\\).",
+          "Denominator \\(D = \\sin x + \\cos x\\), so \\(D' = \\cos x - \\sin x\\). Write \\(2\\sin x + 3\\cos x = A\\,D + B\\,D'\\).",
+          "Match coefficients — \\(\\sin x\\): \\(A - B = 2\\); \\(\\cos x\\): \\(A + B = 3\\). Solve: \\(A = \\tfrac52,\\ B = \\tfrac12\\).",
+          "Integrate: \\(\\int\\!\\left(A + B\\dfrac{D'}{D}\\right)dx = \\dfrac{5}{2}x + \\dfrac{1}{2}\\log|\\sin x + \\cos x| + C\\).",
         ],
-        answer: "\\(a = 2\\)",
+        answer: "\\(\\dfrac{5}{2}x + \\dfrac{1}{2}\\log|\\sin x + \\cos x| + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{\\sin x + \\cos x}\\).",

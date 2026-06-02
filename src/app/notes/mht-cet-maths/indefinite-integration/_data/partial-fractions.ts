@@ -30,14 +30,14 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Evaluate \\(\\displaystyle\\int \\dfrac{x^2 - 4}{x^4 + 9x^2 + 16}\\,dx = \\tan^{-1}(f(x)) + c\\) and find \\(f(2)\\).",
+          "Evaluate \\(\\displaystyle\\int \\dfrac{x^2 + 1}{x^4 - x^2 + 1}\\,dx\\).",
         steps: [
-          "Divide top and bottom by \\(x^2\\): \\(\\dfrac{1 - 4/x^2}{x^2 + 9 + 16/x^2}\\).",
-          "Note \\(\\dfrac{d}{dx}\\!\\left(x + \\dfrac{4}{x}\\right) = 1 - \\dfrac{4}{x^2}\\) — exactly the numerator. Let \\(t = x + \\dfrac{4}{x}\\).",
-          "Then \\(t^2 = x^2 + 8 + \\dfrac{16}{x^2}\\), so \\(x^2 + \\dfrac{16}{x^2} = t^2 - 8\\) and the denominator \\(= t^2 - 8 + 9 = t^2 + 1\\).",
-          "Integral \\(= \\int \\dfrac{dt}{t^2 + 1} = \\tan^{-1}t = \\tan^{-1}\\!\\left(x + \\dfrac{4}{x}\\right) + c\\).",
+          "Divide top and bottom by \\(x^2\\): \\(\\dfrac{1 + 1/x^2}{x^2 - 1 + 1/x^2}\\).",
+          "Note \\(\\dfrac{d}{dx}\\!\\left(x - \\dfrac{1}{x}\\right) = 1 + \\dfrac{1}{x^2}\\) — exactly the numerator. Let \\(t = x - \\dfrac{1}{x}\\).",
+          "Then \\(t^2 = x^2 - 2 + \\dfrac{1}{x^2}\\), so \\(x^2 + \\dfrac{1}{x^2} = t^2 + 2\\) and the denominator \\(= t^2 + 2 - 1 = t^2 + 1\\).",
+          "Integral \\(= \\int \\dfrac{dt}{t^2 + 1} = \\tan^{-1}t = \\tan^{-1}\\!\\left(x - \\dfrac{1}{x}\\right) + C\\).",
         ],
-        answer: "\\(f(x) = x + \\dfrac{4}{x}\\), so \\(f(2) = 2 + 2 = 4\\).",
+        answer: "\\(\\tan^{-1}\\!\\left(x - \\dfrac{1}{x}\\right) + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{x^2 + 9}\\).",
@@ -78,13 +78,13 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
         latex: "ax^2 + bx + c = a\\left(x + \\dfrac{b}{2a}\\right)^2 + \\left(c - \\dfrac{b^2}{4a}\\right)",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{7 - 6x - x^2}}\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{5 - 4x - x^2}}\\).",
         steps: [
-          "Complete the square inside the root: \\(7 - 6x - x^2 = -(x^2 + 6x - 7) = -\\big((x+3)^2 - 16\\big) = 16 - (x+3)^2\\).",
-          "Match the arcsin form with \\(k = 4\\): \\(\\int \\dfrac{dx}{\\sqrt{16 - (x+3)^2}}\\).",
-          "Integrate: \\(\\sin^{-1}\\dfrac{x+3}{4} + C\\).",
+          "Complete the square inside the root: \\(5 - 4x - x^2 = -(x^2 + 4x - 5) = -\\big((x+2)^2 - 9\\big) = 9 - (x+2)^2\\).",
+          "Match the arcsin form with \\(k = 3\\): \\(\\int \\dfrac{dx}{\\sqrt{9 - (x+2)^2}}\\).",
+          "Integrate: \\(\\sin^{-1}\\dfrac{x+2}{3} + C\\).",
         ],
-        answer: "\\(\\sin^{-1}\\dfrac{x+3}{4} + C\\)",
+        answer: "\\(\\sin^{-1}\\dfrac{x+2}{3} + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{7 + 6x - x^2}\\).",
@@ -134,14 +134,14 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Evaluate \\(\\displaystyle\\int \\dfrac{2x+5}{\\sqrt{7-6x-x^2}}\\,dx\\) in the form \\(A\\sqrt{7-6x-x^2} + B\\sin^{-1}\\!\\left(\\dfrac{x+3}{4}\\right) + c\\).",
+          "Evaluate \\(\\displaystyle\\int \\dfrac{3x+2}{\\sqrt{x^2+4x+5}}\\,dx\\).",
         steps: [
-          "Denominator \\(D = 7-6x-x^2\\), so \\(D' = -6-2x\\). Write \\(2x+5 = A(-6-2x) + B\\).",
-          "Match: \\(x\\)-coefficient \\(2 = -2A\\Rightarrow A = -1\\); constant \\(5 = -6A + B = 6 + B\\Rightarrow B = -1\\).",
-          "First piece: \\(\\displaystyle -\\!\\int \\dfrac{D'}{\\sqrt{D}}\\,dx = -2\\sqrt{D}\\).",
-          "Leftover: \\(\\displaystyle -\\!\\int \\dfrac{dx}{\\sqrt{16-(x+3)^2}} = -\\sin^{-1}\\!\\dfrac{x+3}{4}\\) (completing the square).",
+          "Denominator \\(D = x^2+4x+5\\), so \\(D' = 2x+4\\). Write \\(3x+2 = A(2x+4) + B\\).",
+          "Match: \\(x\\)-coefficient \\(3 = 2A\\Rightarrow A = \\tfrac32\\); constant \\(2 = 4A + B = 6 + B\\Rightarrow B = -4\\).",
+          "First piece: \\(\\displaystyle \\tfrac32\\!\\int \\dfrac{D'}{\\sqrt{D}}\\,dx = \\tfrac32\\cdot 2\\sqrt{D} = 3\\sqrt{x^2+4x+5}\\).",
+          "Leftover: \\(\\displaystyle -4\\!\\int \\dfrac{dx}{\\sqrt{(x+2)^2+1}} = -4\\log\\left|(x+2)+\\sqrt{x^2+4x+5}\\right|\\) (completing the square).",
         ],
-        answer: "\\(-2\\sqrt{7-6x-x^2} - \\sin^{-1}\\!\\left(\\dfrac{x+3}{4}\\right) + c\\) — so \\(A = -2,\\ B = -1\\).",
+        answer: "\\(3\\sqrt{x^2+4x+5} - 4\\log\\left|(x+2)+\\sqrt{x^2+4x+5}\\right| + C\\)",
       },
       selfCheckExample: {
         prompt:
@@ -187,13 +187,13 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
         latex: "\\dfrac{px + q}{(x-a)(x-b)} = \\dfrac{A}{x-a} + \\dfrac{B}{x-b}",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x}{(x-1)(x-2)}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{2x+1}{x(x+1)}\\,dx\\).",
         steps: [
-          "Decompose: \\(\\dfrac{x}{(x-1)(x-2)} = \\dfrac{A}{x-1} + \\dfrac{B}{x-2}\\).",
-          "Cover-up at \\(x = 1\\): \\(A = \\dfrac{1}{1-2} = -1\\). At \\(x = 2\\): \\(B = \\dfrac{2}{2-1} = 2\\).",
-          "Integrate: \\(-\\log|x-1| + 2\\log|x-2| + C\\).",
+          "Decompose: \\(\\dfrac{2x+1}{x(x+1)} = \\dfrac{A}{x} + \\dfrac{B}{x+1}\\).",
+          "Cover-up at \\(x = 0\\): \\(A = \\dfrac{0+1}{0+1} = 1\\). At \\(x = -1\\): \\(B = \\dfrac{2(-1)+1}{-1} = 1\\).",
+          "Integrate: \\(\\int\\!\\left(\\dfrac{1}{x} + \\dfrac{1}{x+1}\\right)dx = \\log|x| + \\log|x+1| + C\\).",
         ],
-        answer: "\\(2\\log|x-2| - \\log|x-1| + C\\)",
+        answer: "\\(\\log|x(x+1)| + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{3x - 2}{(x+1)(x-2)^2}\\,dx\\).",
