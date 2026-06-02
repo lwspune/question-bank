@@ -189,13 +189,13 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
       visualizationSlug: "triangle-centroid",
       authoredExample: {
         prompt:
-          "Find the centroid of the triangle with vertices \\(A(2,-3,3)\\), \\(B(5,-3,-4)\\) and \\(C(2,-3,-2)\\).",
+          "Find the centroid of the triangle with vertices \\(A(1,2,3)\\), \\(B(4,-1,0)\\) and \\(C(7,2,3)\\).",
         steps: [
-          "Average the x-coordinates: \\((2+5+2)/3 = 9/3 = 3\\).",
-          "Average the y-coordinates: \\((-3-3-3)/3 = -9/3 = -3\\).",
-          "Average the z-coordinates: \\((3-4-2)/3 = -3/3 = -1\\).",
+          "Average the x-coordinates: \\((1+4+7)/3 = 12/3 = 4\\).",
+          "Average the y-coordinates: \\((2-1+2)/3 = 3/3 = 1\\).",
+          "Average the z-coordinates: \\((3+0+3)/3 = 6/3 = 2\\).",
         ],
-        answer: "\\(G = (3, -3, -1)\\).",
+        answer: "\\(G = (4, 1, 2)\\).",
       },
       selfCheckExample: {
         prompt: "The midpoint of \\(A\\) and \\(B(4, 2, 8)\\) is \\((3, 1, 5)\\). Find \\(A\\).",

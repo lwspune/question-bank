@@ -164,14 +164,14 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
       visualizationSlug: "line-plane-intersection",
       authoredExample: {
         prompt:
-          "A line through \\((1, -1, 2)\\) with direction ratios \\(\\langle 3, 2, 2\\rangle\\) meets the plane \\(x + 2y + 3z = 18\\). Find the point of intersection.",
+          "A line through \\((1, 0, -1)\\) with direction ratios \\(\\langle 1, 2, 1\\rangle\\) meets the plane \\(x + y + z = 8\\). Find the point of intersection.",
         steps: [
-          "Parametrise: \\((1+3t,\\ -1+2t,\\ 2+2t)\\).",
-          "Substitute into the plane: \\((1+3t) + 2(-1+2t) + 3(2+2t) = 18\\).",
-          "\\(1 + 3t - 2 + 4t + 6 + 6t = 18 \\Rightarrow 13t + 5 = 18 \\Rightarrow t = 1\\).",
-          "Back-substitute \\(t = 1\\): \\((4, 1, 4)\\).",
+          "Parametrise: \\((1+t,\\ 2t,\\ -1+t)\\).",
+          "Substitute into the plane: \\((1+t) + 2t + (-1+t) = 8\\).",
+          "\\(4t = 8 \\Rightarrow t = 2\\).",
+          "Back-substitute \\(t = 2\\): \\((3, 4, 1)\\).",
         ],
-        answer: "\\((4, 1, 4)\\).",
+        answer: "\\((3, 4, 1)\\).",
       },
       selfCheckExample: {
         prompt:
