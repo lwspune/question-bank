@@ -31,22 +31,23 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
       },
       visualizationSlug: "determinant-as-area",
       authoredExample: {
-        prompt: "Evaluate \\(\\begin{vmatrix}1 & 1 & 1\\\\1 & 1+xyz & 1\\\\1 & 1 & 1+xyz\\end{vmatrix}\\).",
+        prompt: "Evaluate \\(\\begin{vmatrix}1 & 2 & 3\\\\0 & 4 & 5\\\\1 & 0 & 6\\end{vmatrix}\\) by expanding along the first column.",
         steps: [
-          "Subtract row 1 from rows 2 and 3: \\(R_2 \\to R_2 - R_1,\\ R_3 \\to R_3 - R_1\\).",
-          "New rows: \\((1,1,1),\\ (0, xyz, 0),\\ (0, 0, xyz)\\).",
-          "Now upper-triangular → determinant = product of diagonal = \\(1 \\cdot xyz \\cdot xyz = (xyz)^2\\).",
+          "Down column 1 the entries are \\(1, 0, 1\\) with cofactor signs \\(+, -, +\\) — the middle (zero) term drops out.",
+          "\\(= 1\\cdot\\begin{vmatrix}4 & 5\\\\0 & 6\\end{vmatrix} + 1\\cdot\\begin{vmatrix}2 & 3\\\\4 & 5\\end{vmatrix}\\).",
+          "\\(\\begin{vmatrix}4 & 5\\\\0 & 6\\end{vmatrix} = 24\\); \\(\\begin{vmatrix}2 & 3\\\\4 & 5\\end{vmatrix} = 10 - 12 = -2\\).",
+          "Sum: \\(1(24) + 1(-2) = 22\\).",
         ],
-        answer: "\\((xyz)^2\\).",
+        answer: "\\(22\\).",
       },
       selfCheckExample: {
-        prompt: "Evaluate \\(\\begin{vmatrix}2 & 4\\\\-8 & x\\end{vmatrix}\\) and find \\(x\\) so it is singular.",
+        prompt: "Evaluate \\(\\begin{vmatrix}2 & 0 & 1\\\\3 & 1 & 2\\\\1 & 0 & 4\\end{vmatrix}\\).",
         steps: [
-          "Determinant \\(= 2x - 4(-8) = 2x + 32\\).",
-          "Singular means determinant \\(= 0\\): \\(2x + 32 = 0\\).",
-          "\\(x = -16\\).",
+          "Column 2 is \\((0, 1, 0)\\) — expand along it; only the middle entry contributes.",
+          "\\(= 1 \\cdot (+1)\\begin{vmatrix}2 & 1\\\\1 & 4\\end{vmatrix}\\) (cofactor sign at \\((2,2)\\) is \\(+\\)).",
+          "\\(= 8 - 1 = 7\\).",
         ],
-        answer: "Determinant \\(= 2x + 32\\); singular when \\(x = -16\\).",
+        answer: "\\(7\\).",
       },
       practiceSet: [
         { prompt: "\\(\\begin{vmatrix}3&1\\\\2&4\\end{vmatrix}\\)?", answer: "\\(10\\)", method: "\\(12 - 2\\)" },
