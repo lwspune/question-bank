@@ -150,21 +150,21 @@ export const DOMAINS: Domain[] = [
       TOP_11.find((p) => p.slug === "ap-three-term")!,
       {
         name: "GP three-term: b² = ac",
-        qCount: 37,
+        qCount: 19,
         summary: "Multiplicative counterpart to AP. Pairs with AM-GM in the bank's highest-yield compound recipe.",
-        drill: [{ chapter: "Sequence & Series", subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations" }],
+        drill: [{ chapter: "Sequence & Series", subtopic: "Geometric Progressions" }],
       },
       {
         name: "Sum of n terms (S_n) — AP / GP / special series",
-        qCount: 43,
+        qCount: 42,
         summary: "Sₙ for AP, GP, and special telescoping series. Knowing the closed forms saves 2-3 minutes per question.",
-        drill: [{ chapter: "Sequence & Series", subtopic: "Arithmetic Progression — Sum, nth Term, Ratios" }],
+        drill: [{ chapter: "Sequence & Series", subtopic: "Arithmetic Progressions" }],
       },
       {
         name: "AM ≥ GM ≥ HM chain",
-        qCount: 37,
+        qCount: 5,
         summary: "Stronger than AM-GM alone — chains three means with equality iff all values equal.",
-        drill: [{ chapter: "Sequence & Series", subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations" }],
+        drill: [{ chapter: "Sequence & Series", subtopic: "Harmonic Progressions and the Three Means" }],
       },
       {
         name: "Algebraic identity expansion: (a±b)², (a+b+c)², a³+b³+c³−3abc",

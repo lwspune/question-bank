@@ -39,6 +39,11 @@ import {
   MATRICES_DETERMINANTS_SLUGS,
 } from "@/app/notes/nda-maths/matrices-determinants/_data";
 import {
+  SEQUENCE_SERIES_CHAPTER,
+  SEQUENCE_SERIES_NOTES,
+  SEQUENCE_SERIES_SLUGS,
+} from "@/app/notes/nda-maths/sequence-series/_data";
+import {
   SOUND_CHAPTER,
   SOUND_NOTES,
   SOUND_SLUGS,
@@ -148,6 +153,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MATRICES_DETERMINANTS_CHAPTER,
     notes: MATRICES_DETERMINANTS_NOTES,
     slugs: MATRICES_DETERMINANTS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "sequence-series",
+    chipLabel: "Sequence & Series notes",
+    chapter: SEQUENCE_SERIES_CHAPTER,
+    notes: SEQUENCE_SERIES_NOTES,
+    slugs: SEQUENCE_SERIES_SLUGS,
   },
   {
     examName: "NDA",

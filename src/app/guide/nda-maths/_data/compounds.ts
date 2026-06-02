@@ -63,8 +63,8 @@ export const COMPOUNDS: CompoundRecipe[] = [
     ],
     drillFilter: {
       chapter: "Sequence & Series",
-      subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations",
-      note: "Best single drill — the GP/HP/AM-GM-HM subtopic is the compound's natural home.",
+      subtopic: "Interrelating AP, GP and HP",
+      note: "Best single drill — the interrelating-progressions subtopic is where GP meets the means.",
     },
     soloA: {
       chapter: "Application of Derivatives",
@@ -73,8 +73,8 @@ export const COMPOUNDS: CompoundRecipe[] = [
     },
     soloB: {
       chapter: "Sequence & Series",
-      subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations",
-      qCount: 37,
+      subtopic: "Geometric Progressions",
+      qCount: 19,
     },
   },
   {
@@ -92,17 +92,17 @@ export const COMPOUNDS: CompoundRecipe[] = [
     ],
     drillFilter: {
       chapter: "Sequence & Series",
-      subtopic: "Arithmetic Progression — Sum, nth Term, Ratios",
+      subtopic: "Interrelating AP, GP and HP",
     },
     soloA: {
       chapter: "Sequence & Series",
-      subtopic: "Arithmetic Progression — Sum, nth Term, Ratios",
-      qCount: 43,
+      subtopic: "Arithmetic Progressions",
+      qCount: 42,
     },
     soloB: {
       chapter: "Sequence & Series",
-      subtopic: "Geometric and Harmonic Progressions, AM-GM-HM Relations",
-      qCount: 37,
+      subtopic: "Geometric Progressions",
+      qCount: 19,
     },
   },
   {

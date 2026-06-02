@@ -77,6 +77,7 @@ import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
 import MagneticForceTriad from "./visualizations/MagneticForceTriad";
 import BarMagnetFieldLines from "./visualizations/BarMagnetFieldLines";
 import SolenoidFieldLines from "./visualizations/SolenoidFieldLines";
+import AmGmHmMeans from "./visualizations/AmGmHmMeans";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -209,6 +210,8 @@ function renderVisualization(slug: VisualizationSlug) {
       return <BarMagnetFieldLines />;
     case "solenoid-field-lines":
       return <SolenoidFieldLines />;
+    case "am-gm-hm-means":
+      return <AmGmHmMeans />;
   }
 }
 

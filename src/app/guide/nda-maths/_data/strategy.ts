@@ -121,10 +121,11 @@ export const TIER_A: TierChapter[] = [
     pctEasy: 31,
     pctHard: 21,
     mustDrill: [
-      "Arithmetic Progression — Sum, nth Term, Ratios",
-      "Geometric and Harmonic Progressions, AM-GM-HM Relations",
+      "Arithmetic Progressions",
+      "Geometric Progressions",
+      "Interrelating AP, GP and HP",
     ],
-    skipSubtopics: ["Special Series — Factorials, Telescoping, Repunits"],
+    skipSubtopics: ["Special Series and Special Sums"],
     expectedYieldPerPaper: "4–5 marks",
     studyHours: 3,
     summary:

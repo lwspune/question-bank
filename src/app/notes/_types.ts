@@ -131,7 +131,9 @@ export type VisualizationSlug =
   | "flemings-left-hand-rule"
   | "magnetic-force-triad"
   | "bar-magnet-field-lines"
-  | "solenoid-field-lines";
+  | "solenoid-field-lines"
+  // NDA Maths — Sequence & Series chapter
+  | "am-gm-hm-means";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
