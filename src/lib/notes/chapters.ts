@@ -34,6 +34,11 @@ import {
   THREE_D_GEOMETRY_SLUGS,
 } from "@/app/notes/nda-maths/3d-geometry/_data";
 import {
+  MATRICES_DETERMINANTS_CHAPTER,
+  MATRICES_DETERMINANTS_NOTES,
+  MATRICES_DETERMINANTS_SLUGS,
+} from "@/app/notes/nda-maths/matrices-determinants/_data";
+import {
   SOUND_CHAPTER,
   SOUND_NOTES,
   SOUND_SLUGS,
@@ -127,6 +132,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: THREE_D_GEOMETRY_CHAPTER,
     notes: THREE_D_GEOMETRY_NOTES,
     slugs: THREE_D_GEOMETRY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "matrices-determinants",
+    chipLabel: "Matrices & Determinants notes",
+    chapter: MATRICES_DETERMINANTS_CHAPTER,
+    notes: MATRICES_DETERMINANTS_NOTES,
+    slugs: MATRICES_DETERMINANTS_SLUGS,
   },
   {
     examName: "NDA",

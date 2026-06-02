@@ -116,7 +116,11 @@ export type VisualizationSlug =
   | "plane-with-normal"
   | "sphere-plane-tangency"
   | "angle-between-lines-3d"
-  | "sphere-centre-radius-3d";
+  | "sphere-centre-radius-3d"
+  // NDA Maths — Matrices & Determinants chapter
+  | "determinant-as-area"
+  | "cofactor-sign-grid"
+  | "sarrus-rule";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

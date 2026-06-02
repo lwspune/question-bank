@@ -63,6 +63,9 @@ import PlaneWithNormal from "./visualizations/PlaneWithNormal";
 import SpherePlaneTangency from "./visualizations/SpherePlaneTangency";
 import AngleBetweenLines3D from "./visualizations/AngleBetweenLines3D";
 import SphereCentreRadius3D from "./visualizations/SphereCentreRadius3D";
+import DeterminantAsArea from "./visualizations/DeterminantAsArea";
+import CofactorSignGrid from "./visualizations/CofactorSignGrid";
+import SarrusRule from "./visualizations/SarrusRule";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -169,6 +172,12 @@ function renderVisualization(slug: VisualizationSlug) {
       return <AngleBetweenLines3D />;
     case "sphere-centre-radius-3d":
       return <SphereCentreRadius3D />;
+    case "determinant-as-area":
+      return <DeterminantAsArea />;
+    case "cofactor-sign-grid":
+      return <CofactorSignGrid />;
+    case "sarrus-rule":
+      return <SarrusRule />;
   }
 }
 
