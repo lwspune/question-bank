@@ -96,12 +96,12 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "up",
     title: "E&M tripled in 2022 and held — 5 q → 16 q overnight",
     description:
-      "Through 2017–2021 the E&M chapter held a steady 5–10 q/year. 2022 jumped to 16 q (highest single-year for any chapter in the bank). 2023–2025 settled at 11–12 q. If you've calibrated your prep against the 2017–2021 baseline, you're underweighting the bank's #1 HARD pool by half. Resistance and Circuits (the 42% HARD subtopic) absorbed most of the new q.",
+      "Through 2017–2021 the E&M chapter held a steady 5–10 q/year. 2022 jumped to 16 q (highest single-year for any chapter in the bank). 2023–2025 settled at 11–12 q. If you've calibrated your prep against the 2017–2021 baseline, you're underweighting the bank's #1 HARD pool by half. Combination of Resistors (the 38% HARD subtopic) absorbed most of the new q.",
     drill: {
       chapter: "Electricity and Magnetism",
-      subtopic: "Resistance and Circuit Combinations",
-      qCount: 26,
-      label: "Drill the 26-q Resistance HARD pool",
+      subtopic: "Combination of Resistors",
+      qCount: 16,
+      label: "Drill the 16-q Combination-of-Resistors HARD pool",
     },
   },
   {

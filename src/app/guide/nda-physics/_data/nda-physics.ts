@@ -136,7 +136,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 20.7,
     pctHard: 22,
     focus:
-      "Resistance+Circuits (26 · 42% HARD — the bank's biggest HARD pool), Current Electricity (18), Electrical Devices (15), Electrostatics (13), Magnetism (13 · 23%), EM Rules (8).",
+      "Magnetism+Effects (16 · 13%), Combination of Resistors (16 · 38% HARD — the bank's biggest HARD pool), Electrical Devices (15 · recall), Electrostatics (13), Power+Energy+Heating (10 · 30%), Current+Ohm's Law (9), Resistance+Resistivity (6), Magnetic Force+Fleming (5 · 40%), Cells+EMF+Kirchhoff (3).",
   },
   {
     chapter: "Laws of Motion and Forces",
