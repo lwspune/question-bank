@@ -58,6 +58,11 @@ import {
   INDEFINITE_INTEGRATION_NOTES,
   INDEFINITE_INTEGRATION_SLUGS,
 } from "@/app/notes/mht-cet-maths/indefinite-integration/_data";
+import {
+  NDA_INDEFINITE_INTEGRATION_CHAPTER,
+  NDA_INDEFINITE_INTEGRATION_NOTES,
+  NDA_INDEFINITE_INTEGRATION_SLUGS,
+} from "@/app/notes/nda-maths/indefinite-integration/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -164,6 +169,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SEQUENCE_SERIES_CHAPTER,
     notes: SEQUENCE_SERIES_NOTES,
     slugs: SEQUENCE_SERIES_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "indefinite-integration",
+    chipLabel: "Indefinite Integration notes",
+    chapter: NDA_INDEFINITE_INTEGRATION_CHAPTER,
+    notes: NDA_INDEFINITE_INTEGRATION_NOTES,
+    slugs: NDA_INDEFINITE_INTEGRATION_SLUGS,
   },
   {
     examName: "NDA",
