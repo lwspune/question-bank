@@ -39,14 +39,14 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         ],
       },
       authoredExample: {
-        prompt: "Find \\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b})\\) in terms of \\(\\vec{a}\\times\\vec{b}\\).",
+        prompt: "Express \\((3\\vec{a} + \\vec{b}) \\times (\\vec{a} - 2\\vec{b})\\) in terms of \\(\\vec{a}\\times\\vec{b}\\).",
         steps: [
-          "Distribute: \\((\\vec{a}-\\vec{b})\\times(\\vec{a}+\\vec{b}) = \\vec{a}\\times\\vec{a} + \\vec{a}\\times\\vec{b} - \\vec{b}\\times\\vec{a} - \\vec{b}\\times\\vec{b}\\).",
-          "Apply \\(\\vec{a}\\times\\vec{a} = \\vec{b}\\times\\vec{b} = \\vec{0}\\) to drop the diagonal terms.",
-          "Apply anti-commutativity: \\(-\\vec{b}\\times\\vec{a} = +\\vec{a}\\times\\vec{b}\\).",
-          "Combine: \\(\\vec{a}\\times\\vec{b} + \\vec{a}\\times\\vec{b} = 2\\,\\vec{a}\\times\\vec{b}\\).",
+          "Distribute: \\(3(\\vec{a}\\times\\vec{a}) - 6(\\vec{a}\\times\\vec{b}) + (\\vec{b}\\times\\vec{a}) - 2(\\vec{b}\\times\\vec{b})\\).",
+          "Drop the zero diagonal terms \\(\\vec{a}\\times\\vec{a} = \\vec{b}\\times\\vec{b} = \\vec{0}\\).",
+          "Apply anti-commutativity \\(\\vec{b}\\times\\vec{a} = -\\vec{a}\\times\\vec{b}\\): \\(-6(\\vec{a}\\times\\vec{b}) - (\\vec{a}\\times\\vec{b})\\).",
+          "Combine: \\(-7\\,\\vec{a}\\times\\vec{b}\\).",
         ],
-        answer: "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
+        answer: "\\((3\\vec{a} + \\vec{b}) \\times (\\vec{a} - 2\\vec{b}) = -7\\,\\vec{a}\\times\\vec{b}\\)",
       },
       selfCheckExample: {
         prompt: "Express \\((2\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b})\\) in terms of \\(\\vec{a}\\times\\vec{b}\\).",
@@ -107,13 +107,12 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Given \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = 144\\) and \\(|\\vec{a}| = 4\\), find \\(|\\vec{b}|\\).",
+          "Find the area of the triangle whose two adjacent sides are \\(\\vec{a} = 2\\hat{i} + \\hat{j}\\) and \\(\\vec{b} = \\hat{i} + 3\\hat{j}\\).",
         steps: [
-          "Recognise the Lagrange identity: \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2\\,|\\vec{b}|^2\\).",
-          "So \\(144 = |\\vec{a}|^2 |\\vec{b}|^2 = 16\\,|\\vec{b}|^2\\).",
-          "Solve: \\(|\\vec{b}|^2 = 9\\), hence \\(|\\vec{b}| = 3\\).",
+          "Cross product: \\(\\vec{a}\\times\\vec{b} = (2\\cdot 3 - 1\\cdot 1)\\hat{k} = 5\\hat{k}\\), so \\(|\\vec{a}\\times\\vec{b}| = 5\\).",
+          "Triangle area is half the parallelogram area: \\(\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}| = \\tfrac{1}{2}\\cdot 5 = 2.5\\).",
         ],
-        answer: "\\(|\\vec{b}| = 3\\)",
+        answer: "Area \\(= 2.5\\) square units",
       },
       selfCheckExample: {
         prompt:
@@ -173,16 +172,16 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find a unit vector perpendicular to both \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = 3\\hat{i} - 4\\hat{j} - \\hat{k}\\).",
+          "Find a unit vector perpendicular to both \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} - \\hat{j} + \\hat{k}\\).",
         steps: [
           "Compute \\(\\vec{a}\\times\\vec{b}\\) as a determinant: " +
-            "\\(\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 3 & -4 & -1 \\end{vmatrix}\\).",
-          "Expand: \\(\\hat{i}\\big((-1)(-1) - (1)(-4)\\big) - \\hat{j}\\big((2)(-1) - (1)(3)\\big) + \\hat{k}\\big((2)(-4) - (-1)(3)\\big) = \\hat{i}(1+4) - \\hat{j}(-2-3) + \\hat{k}(-8+3)\\).",
-          "Simplify: \\(\\vec{a}\\times\\vec{b} = 5\\hat{i} + 5\\hat{j} - 5\\hat{k}\\).",
-          "Magnitude: \\(|\\vec{a}\\times\\vec{b}| = \\sqrt{25+25+25} = 5\\sqrt{3}\\).",
-          "Normalise: \\(\\hat{n} = \\pm\\dfrac{5\\hat{i} + 5\\hat{j} - 5\\hat{k}}{5\\sqrt{3}} = \\pm\\dfrac{1}{\\sqrt{3}}(\\hat{i}+\\hat{j}-\\hat{k})\\).",
+            "\\(\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 1 \\\\ 1 & -1 & 1 \\end{vmatrix}\\).",
+          "Expand: \\(\\hat{i}\\big((1)(1) - (1)(-1)\\big) - \\hat{j}\\big((1)(1) - (1)(1)\\big) + \\hat{k}\\big((1)(-1) - (1)(1)\\big) = \\hat{i}(2) - \\hat{j}(0) + \\hat{k}(-2)\\).",
+          "Simplify: \\(\\vec{a}\\times\\vec{b} = 2\\hat{i} - 2\\hat{k}\\).",
+          "Magnitude: \\(|\\vec{a}\\times\\vec{b}| = \\sqrt{4+0+4} = 2\\sqrt{2}\\).",
+          "Normalise: \\(\\hat{n} = \\pm\\dfrac{2\\hat{i} - 2\\hat{k}}{2\\sqrt{2}} = \\pm\\dfrac{1}{\\sqrt{2}}(\\hat{i}-\\hat{k})\\).",
         ],
-        answer: "\\(\\hat{n} = \\pm\\dfrac{1}{\\sqrt{3}}(\\hat{i}+\\hat{j}-\\hat{k})\\)",
+        answer: "\\(\\hat{n} = \\pm\\dfrac{1}{\\sqrt{2}}(\\hat{i}-\\hat{k})\\)",
       },
       selfCheckExample: {
         prompt:
@@ -241,18 +240,14 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "A force \\(\\vec{F} = 2\\hat{i} - \\lambda\\hat{j} + 5\\hat{k}\\) is applied at \\(A(1,2,5)\\). " +
-          "If its moment about \\(B(-1,-2,3)\\) is \\(16\\hat{i} - 6\\hat{j} + 2\\lambda\\hat{k}\\), find \\(\\lambda\\).",
+          "A force \\(\\vec{F} = \\hat{i} + 3\\hat{j} - 2\\hat{k}\\) acts at the point \\(A(3, -1, 2)\\). Find its moment about the point \\(B(1, 0, 1)\\).",
         steps: [
-          "Compute \\(\\overrightarrow{BA} = A - B = (1-(-1))\\hat{i} + (2-(-2))\\hat{j} + (5-3)\\hat{k} = 2\\hat{i} + 4\\hat{j} + 2\\hat{k}\\).",
+          "Position vector from the pivot: \\(\\overrightarrow{BA} = A - B = 2\\hat{i} - \\hat{j} + \\hat{k}\\).",
           "Set up the cross product \\(\\overrightarrow{BA} \\times \\vec{F}\\) as a determinant: " +
-            "\\(\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 4 & 2 \\\\ 2 & -\\lambda & 5 \\end{vmatrix}\\).",
-          "Expand: \\(\\hat{i}(4\\cdot 5 - 2\\cdot(-\\lambda)) - \\hat{j}(2\\cdot 5 - 2\\cdot 2) + \\hat{k}(2\\cdot(-\\lambda) - 4\\cdot 2) = (20 + 2\\lambda)\\hat{i} - 6\\hat{j} + (-2\\lambda - 8)\\hat{k}\\).",
-          "Match the given moment component-by-component: " +
-            "\\(\\hat{i}\\) gives \\(20 + 2\\lambda = 16 \\Rightarrow \\lambda = -2\\). " +
-            "Cross-check on \\(\\hat{k}\\): \\(-2(-2) - 8 = 4 - 8 = -4 = 2\\lambda \\Rightarrow \\lambda = -2\\). \\(\\checkmark\\)",
+            "\\(\\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 1 & 3 & -2 \\end{vmatrix}\\).",
+          "Expand: \\(\\hat{i}\\big((-1)(-2) - (1)(3)\\big) - \\hat{j}\\big((2)(-2) - (1)(1)\\big) + \\hat{k}\\big((2)(3) - (-1)(1)\\big) = -\\hat{i} + 5\\hat{j} + 7\\hat{k}\\).",
         ],
-        answer: "\\(\\lambda = -2\\)",
+        answer: "\\(\\vec{M} = -\\hat{i} + 5\\hat{j} + 7\\hat{k}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -315,15 +310,15 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find \\(p\\) such that \\(\\vec{a} = 2\\hat{i} - 3\\hat{j} + \\hat{k}\\), \\(\\vec{b} = \\hat{i} + 2\\hat{j} - 3\\hat{k}\\) and \\(\\vec{c} = \\hat{j} + p\\hat{k}\\) are coplanar.",
+          "Find \\(\\lambda\\) such that \\(\\vec{a} = \\hat{i} + \\hat{j} - \\hat{k}\\), \\(\\vec{b} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{c} = \\hat{i} + \\lambda\\hat{j} + 3\\hat{k}\\) are coplanar.",
         steps: [
           "Coplanar \\(\\Rightarrow\\) the determinant \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\) is zero.",
-          "Set up: \\(\\begin{vmatrix} 2 & -3 & 1 \\\\ 1 & 2 & -3 \\\\ 0 & 1 & p \\end{vmatrix} = 0\\).",
-          "Expand along the third row: \\(0\\cdot\\big[(-3)(-3) - (1)(2)\\big] - 1\\cdot\\big[(2)(-3) - (1)(1)\\big] + p\\cdot\\big[(2)(2) - (-3)(1)\\big]\\).",
-          "Simplify each cofactor: \\(0 - 1\\cdot(-6 - 1) + p(4 + 3) = 0 + 7 + 7p = 0\\).",
-          "Solve: \\(7p = -7 \\Rightarrow p = -1\\).",
+          "Set up: \\(\\begin{vmatrix} 1 & 1 & -1 \\\\ 2 & -1 & 1 \\\\ 1 & \\lambda & 3 \\end{vmatrix} = 0\\).",
+          "Expand along the first row: \\(1\\cdot\\big[(-1)(3) - (1)(\\lambda)\\big] - 1\\cdot\\big[(2)(3) - (1)(1)\\big] + (-1)\\cdot\\big[(2)(\\lambda) - (-1)(1)\\big]\\).",
+          "Simplify: \\((-3 - \\lambda) - (6 - 1) - (2\\lambda + 1) = -9 - 3\\lambda = 0\\).",
+          "Solve: \\(\\lambda = -3\\).",
         ],
-        answer: "\\(p = -1\\)",
+        answer: "\\(\\lambda = -3\\)",
       },
       selfCheckExample: {
         prompt:
@@ -408,7 +403,7 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         { prompt: "\\([\\vec{a}\\,\\vec{a}\\,\\vec{b}] = ?\\)", answer: "\\(0\\)", method: "repeated vector" },
         { prompt: "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] + [\\vec{b}\\,\\vec{c}\\,\\vec{a}] + [\\vec{c}\\,\\vec{a}\\,\\vec{b}] = ?\\)", answer: "\\(3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)" },
       ],
-      pyqExampleId: "e3f7b99f-1721-4e19-a674-58538f43a82a",
+      pyqExampleId: "639a6610-0cf4-4cf9-8e91-a41d2b9aa00e", // 2021 — coplanar ⇒ cyclic STP sum = 0
       traps: [
         {
           title: "Anti-cyclic = sign flip — don't accidentally drop it",
@@ -452,16 +447,13 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Let \\(\\vec{a} = \\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{j} - \\hat{k}\\). " +
-          "Find \\(\\vec{a}\\times(\\vec{b}\\times\\vec{a})\\) and compute the sum of its components.",
+          "For \\(\\vec{a} = 2\\hat{i} + \\hat{j}\\), \\(\\vec{b} = \\hat{i} - \\hat{k}\\) and \\(\\vec{c} = \\hat{j} + \\hat{k}\\), find \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) using the BAC-CAB rule.",
         steps: [
-          "Apply BAC-CAB with the middle vector \\(\\vec{b}\\) and outer/repeated \\(\\vec{a}\\): " +
-            "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{a}) = (\\vec{a}\\cdot\\vec{a})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{a}\\).",
-          "Compute \\(\\vec{a}\\cdot\\vec{a} = 1 + 1 + 1 = 3\\) and \\(\\vec{a}\\cdot\\vec{b} = 1 - 2 - 1 = -2\\).",
-          "Substitute: \\(3\\vec{b} - (-2)\\vec{a} = 3\\vec{b} + 2\\vec{a} = 3(\\hat{i}+2\\hat{j}-\\hat{k}) + 2(\\hat{i}-\\hat{j}+\\hat{k}) = (3+2)\\hat{i} + (6-2)\\hat{j} + (-3+2)\\hat{k}\\).",
-          "Result: \\(5\\hat{i} + 4\\hat{j} - \\hat{k}\\). Sum of components: \\(5 + 4 + (-1) = 8\\).",
+          "Apply BAC-CAB: \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c}\\).",
+          "Compute \\(\\vec{a}\\cdot\\vec{c} = 2\\cdot 0 + 1\\cdot 1 + 0\\cdot 1 = 1\\) and \\(\\vec{a}\\cdot\\vec{b} = 2\\cdot 1 + 1\\cdot 0 + 0\\cdot(-1) = 2\\).",
+          "Substitute: \\(1\\cdot\\vec{b} - 2\\cdot\\vec{c} = (\\hat{i} - \\hat{k}) - 2(\\hat{j} + \\hat{k}) = \\hat{i} - 2\\hat{j} - 3\\hat{k}\\).",
         ],
-        answer: "Sum of components \\(= 8\\)",
+        answer: "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\hat{i} - 2\\hat{j} - 3\\hat{k}\\)",
       },
       selfCheckExample: {
         prompt:

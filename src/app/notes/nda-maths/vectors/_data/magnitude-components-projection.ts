@@ -34,13 +34,13 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Position vectors of points \\(A\\) and \\(B\\) are \\(\\vec{a} = 3\\hat{i} - 2\\hat{j} + \\hat{k}\\) and \\(\\vec{b} = 2\\hat{i} + 4\\hat{j} - 3\\hat{k}\\). Find the length \\(AB\\).",
+          "Position vectors of points \\(A\\) and \\(B\\) are \\(\\vec{a} = 2\\hat{i} + \\hat{j} - \\hat{k}\\) and \\(\\vec{b} = 5\\hat{i} + 5\\hat{j} + 11\\hat{k}\\). Find the length \\(AB\\).",
         steps: [
-          "Subtract position vectors: \\(\\overrightarrow{AB} = \\vec{b} - \\vec{a} = (2-3)\\hat{i} + (4-(-2))\\hat{j} + (-3-1)\\hat{k} = -\\hat{i} + 6\\hat{j} - 4\\hat{k}\\).",
-          "Square each component: \\((-1)^2 + 6^2 + (-4)^2 = 1 + 36 + 16 = 53\\).",
-          "Take the square root: \\(AB = \\sqrt{53}\\).",
+          "Subtract position vectors: \\(\\overrightarrow{AB} = \\vec{b} - \\vec{a} = (5-2)\\hat{i} + (5-1)\\hat{j} + (11-(-1))\\hat{k} = 3\\hat{i} + 4\\hat{j} + 12\\hat{k}\\).",
+          "Square each component: \\(3^2 + 4^2 + 12^2 = 9 + 16 + 144 = 169\\).",
+          "Take the square root: \\(AB = \\sqrt{169} = 13\\).",
         ],
-        answer: "\\(AB = \\sqrt{53}\\) units",
+        answer: "\\(AB = 13\\) units",
       },
       selfCheckExample: {
         prompt: "Find the magnitude of \\(\\vec{v} = 2\\hat{i} - 3\\hat{j} + 6\\hat{k}\\).",
@@ -147,9 +147,9 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
       name: "Scalar projection of one vector on another",
       intuition:
         "The scalar projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) measures how far \\(\\vec{a}\\) reaches in the direction of \\(\\vec{b}\\) — drop a perpendicular from the tip of \\(\\vec{a}\\) onto the line through \\(\\vec{b}\\), and the signed length from the foot back to the origin is the projection. " +
-        "Algebraically it's just \\((\\vec{a}\\cdot\\vec{b})/|\\vec{b}|\\): the dot product divided by the length you're projecting onto.",
+        "Algebraically it's just \\((\\vec{a}\\cdot\\vec{b})/|\\vec{b}|\\), where the **dot product** \\(\\vec{a}\\cdot\\vec{b} = a_1b_1 + a_2b_2 + a_3b_3\\) is the sum of products of corresponding components (it gets its own full treatment in the next subtopic) — divided by the length you're projecting onto.",
       definition:
-        "The scalar projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\). " +
+        "The scalar projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\), with \\(\\vec{a}\\cdot\\vec{b} = a_1b_1 + a_2b_2 + a_3b_3\\). " +
         "It is a signed scalar (positive when the projection lands in the direction of \\(\\vec{b}\\), negative when opposite). " +
         "The corresponding vector projection — projecting and keeping a vector — is " +
         "\\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\vec{b}\\).",
@@ -165,13 +165,13 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the length of the projection of \\(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\) on \\(2\\hat{i} + 3\\hat{j} - 2\\hat{k}\\).",
+          "Find the scalar projection of \\(\\vec{a} = 3\\hat{i} + \\hat{j} - \\hat{k}\\) on \\(\\vec{b} = 2\\hat{i} + 2\\hat{j} + \\hat{k}\\).",
         steps: [
-          "Dot product: \\(1\\cdot 2 + 2\\cdot 3 + 3\\cdot(-2) = 2 + 6 - 6 = 2\\).",
-          "Magnitude of the direction vector: \\(|\\vec{b}| = \\sqrt{4 + 9 + 4} = \\sqrt{17}\\).",
-          "Projection length: \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} = \\dfrac{2}{\\sqrt{17}}\\).",
+          "Dot product: \\(\\vec{a}\\cdot\\vec{b} = 3\\cdot 2 + 1\\cdot 2 + (-1)\\cdot 1 = 6 + 2 - 1 = 7\\).",
+          "Magnitude of \\(\\vec{b}\\): \\(|\\vec{b}| = \\sqrt{4 + 4 + 1} = 3\\).",
+          "Scalar projection: \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} = \\dfrac{7}{3}\\).",
         ],
-        answer: "\\(\\dfrac{2}{\\sqrt{17}}\\)",
+        answer: "\\(\\dfrac{7}{3}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -230,13 +230,13 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "A vector \\(\\vec{r} = a\\hat{i} + b\\hat{j}\\) is equally inclined to both \\(x\\) and \\(y\\) axes. If its magnitude is 2 units, find the values of \\(a\\) and \\(b\\).",
+          "Find a vector of magnitude 15 in the direction of \\(4\\hat{i} - 3\\hat{k}\\).",
         steps: [
-          "Equally inclined to \\(x\\) and \\(y\\) axes means \\(\\cos\\alpha = \\cos\\beta\\), i.e. \\(|a| = |b|\\). Take both positive: \\(a = b\\).",
-          "Apply the magnitude condition: \\(|\\vec{r}| = \\sqrt{a^2 + b^2} = 2\\), so \\(\\sqrt{2a^2} = 2\\).",
-          "Square: \\(2a^2 = 4 \\Rightarrow a^2 = 2 \\Rightarrow a = \\sqrt{2}\\). Hence \\(a = b = \\sqrt{2}\\).",
+          "Magnitude of the direction vector: \\(|\\vec{v}| = \\sqrt{4^2 + (-3)^2} = \\sqrt{25} = 5\\).",
+          "Unit vector: \\(\\hat{v} = \\dfrac{4\\hat{i} - 3\\hat{k}}{5}\\).",
+          "Scale to magnitude 15: \\(15\\,\\hat{v} = 3(4\\hat{i} - 3\\hat{k}) = 12\\hat{i} - 9\\hat{k}\\).",
         ],
-        answer: "\\(a = b = \\sqrt{2}\\)",
+        answer: "\\(12\\hat{i} - 9\\hat{k}\\)",
       },
       selfCheckExample: {
         prompt: "Find the unit vector along \\(\\vec{v} = 3\\hat{i} - 4\\hat{j}\\).",

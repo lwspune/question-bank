@@ -37,13 +37,13 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "A force \\(\\vec{F} = \\hat{i} + 3\\hat{j} + 2\\hat{k}\\) displaces a particle from \\(A(\\hat{i} + 2\\hat{j} - 3\\hat{k})\\) to \\(B(3\\hat{i} - \\hat{j} + 5\\hat{k})\\). Find the work done.",
+          "A force \\(\\vec{F} = 2\\hat{i} + \\hat{j} - \\hat{k}\\) displaces a particle from \\(A(1, 0, 2)\\) to \\(B(3, 2, 1)\\). Find the work done.",
         steps: [
-          "Compute the displacement: \\(\\vec{d} = \\overrightarrow{AB} = (3-1)\\hat{i} + (-1-2)\\hat{j} + (5-(-3))\\hat{k} = 2\\hat{i} - 3\\hat{j} + 8\\hat{k}\\).",
-          "Apply \\(W = \\vec{F}\\cdot\\vec{d} = 1\\cdot 2 + 3\\cdot(-3) + 2\\cdot 8 = 2 - 9 + 16\\).",
-          "Sum: \\(W = 9\\).",
+          "Compute the displacement: \\(\\vec{d} = \\overrightarrow{AB} = (3-1)\\hat{i} + (2-0)\\hat{j} + (1-2)\\hat{k} = 2\\hat{i} + 2\\hat{j} - \\hat{k}\\).",
+          "Apply \\(W = \\vec{F}\\cdot\\vec{d} = 2\\cdot 2 + 1\\cdot 2 + (-1)\\cdot(-1) = 4 + 2 + 1\\).",
+          "Sum: \\(W = 7\\).",
         ],
-        answer: "\\(W = 9\\) units of work",
+        answer: "\\(W = 7\\) units of work",
       },
       selfCheckExample: {
         prompt:
@@ -102,13 +102,13 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the value of \\(\\lambda\\) so that \\(\\vec{a} = 3\\hat{i} + 4\\hat{j} - \\hat{k}\\) and \\(\\vec{b} = -2\\hat{i} + \\lambda\\hat{j} + 10\\hat{k}\\) are perpendicular.",
+          "Find the value of \\(\\lambda\\) so that \\(\\vec{a} = 2\\hat{i} - 3\\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\lambda\\hat{j} - 5\\hat{k}\\) are perpendicular.",
         steps: [
           "Apply the perpendicularity test \\(\\vec{a}\\cdot\\vec{b} = 0\\).",
-          "Compute the dot: \\(3\\cdot(-2) + 4\\cdot\\lambda + (-1)\\cdot 10 = -6 + 4\\lambda - 10 = 4\\lambda - 16\\).",
-          "Set equal to zero: \\(4\\lambda - 16 = 0 \\;\\Rightarrow\\; \\lambda = 4\\).",
+          "Compute the dot: \\(2\\cdot 1 + (-3)\\cdot\\lambda + 1\\cdot(-5) = 2 - 3\\lambda - 5 = -3 - 3\\lambda\\).",
+          "Set equal to zero: \\(-3 - 3\\lambda = 0 \\;\\Rightarrow\\; \\lambda = -1\\).",
         ],
-        answer: "\\(\\lambda = 4\\)",
+        answer: "\\(\\lambda = -1\\)",
       },
       selfCheckExample: {
         prompt:
@@ -169,14 +169,14 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the angle between \\(\\vec{a} = (0, 1, 1)\\) and \\(\\vec{b} = (1, 0, 1)\\).",
+          "Find the angle between \\(\\vec{a} = \\hat{i} + \\hat{j}\\) and \\(\\vec{b} = \\hat{i}\\).",
         steps: [
-          "Dot product: \\(\\vec{a}\\cdot\\vec{b} = 0\\cdot 1 + 1\\cdot 0 + 1\\cdot 1 = 1\\).",
-          "Magnitudes: \\(|\\vec{a}| = \\sqrt{0+1+1} = \\sqrt{2}\\); \\(|\\vec{b}| = \\sqrt{1+0+1} = \\sqrt{2}\\).",
-          "Apply the formula: \\(\\cos\\theta = \\dfrac{1}{\\sqrt{2}\\cdot\\sqrt{2}} = \\dfrac{1}{2}\\).",
-          "Hence \\(\\theta = \\dfrac{\\pi}{3} = 60^\\circ\\).",
+          "Dot product: \\(\\vec{a}\\cdot\\vec{b} = 1\\cdot 1 + 1\\cdot 0 = 1\\).",
+          "Magnitudes: \\(|\\vec{a}| = \\sqrt{1+1} = \\sqrt{2}\\); \\(|\\vec{b}| = 1\\).",
+          "Apply the formula: \\(\\cos\\theta = \\dfrac{1}{\\sqrt{2}\\cdot 1} = \\dfrac{1}{\\sqrt{2}}\\).",
+          "Hence \\(\\theta = \\dfrac{\\pi}{4} = 45^\\circ\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{4}\\) (i.e. \\(45^\\circ\\))",
       },
       selfCheckExample: {
         prompt: "Find the angle between \\(\\vec{a} = \\hat{i} + \\hat{j}\\) and \\(\\vec{b} = \\hat{i} - \\hat{j}\\).",
@@ -234,14 +234,14 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Let \\(\\vec{a}, \\vec{b}\\) be unit vectors such that \\((\\vec{a}+2\\vec{b}) \\perp (5\\vec{a}-4\\vec{b})\\). Find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+          "Let \\(\\vec{a}, \\vec{b}\\) be unit vectors such that \\((2\\vec{a}+\\vec{b}) \\perp (\\vec{a}-2\\vec{b})\\). Find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
         steps: [
-          "Set \\((\\vec{a}+2\\vec{b})\\cdot(5\\vec{a}-4\\vec{b}) = 0\\).",
-          "Expand: \\(5|\\vec{a}|^2 + (-4 + 10)\\,\\vec{a}\\cdot\\vec{b} - 8|\\vec{b}|^2 = 5 + 6\\vec{a}\\cdot\\vec{b} - 8\\) (using \\(|\\vec{a}|=|\\vec{b}|=1\\)).",
-          "Set equal to zero: \\(-3 + 6\\vec{a}\\cdot\\vec{b} = 0 \\;\\Rightarrow\\; \\vec{a}\\cdot\\vec{b} = \\dfrac{1}{2}\\).",
-          "Since \\(|\\vec{a}|=|\\vec{b}|=1\\): \\(\\cos\\theta = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\).",
+          "Set \\((2\\vec{a}+\\vec{b})\\cdot(\\vec{a}-2\\vec{b}) = 0\\).",
+          "Expand: \\(2|\\vec{a}|^2 + (-4 + 1)\\,\\vec{a}\\cdot\\vec{b} - 2|\\vec{b}|^2 = 2 - 3\\vec{a}\\cdot\\vec{b} - 2\\) (using \\(|\\vec{a}|=|\\vec{b}|=1\\)).",
+          "Set equal to zero: \\(-3\\vec{a}\\cdot\\vec{b} = 0 \\;\\Rightarrow\\; \\vec{a}\\cdot\\vec{b} = 0\\).",
+          "Unit vectors with \\(\\vec{a}\\cdot\\vec{b} = 0\\): \\(\\cos\\theta = 0\\), so \\(\\theta = \\dfrac{\\pi}{2}\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{\\pi}{3}\\) (i.e. \\(60^\\circ\\))",
+        answer: "\\(\\theta = \\dfrac{\\pi}{2}\\) (i.e. \\(90^\\circ\\))",
       },
       selfCheckExample: {
         prompt:
@@ -303,13 +303,13 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Let \\(\\vec{a}, \\vec{b}, \\vec{c}\\) be three mutually perpendicular unit vectors and let \\(\\vec{A} = \\vec{a} + \\vec{b} + \\vec{c}\\). Find \\(|\\vec{A}|\\).",
+          "Let \\(\\vec{a}, \\vec{b}, \\vec{c}\\) be three mutually perpendicular unit vectors. Find \\(|2\\vec{a} - \\vec{b} + 2\\vec{c}|\\).",
         steps: [
-          "Use the dot-product expansion: \\(|\\vec{A}|^2 = \\vec{A}\\cdot\\vec{A} = (\\vec{a}+\\vec{b}+\\vec{c})\\cdot(\\vec{a}+\\vec{b}+\\vec{c})\\).",
-          "Distribute. Self-dots: \\(|\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 = 1+1+1 = 3\\). Cross-dots: all six pairwise products are zero by mutual perpendicularity.",
-          "So \\(|\\vec{A}|^2 = 3\\), giving \\(|\\vec{A}| = \\sqrt{3}\\).",
+          "Expand the square: \\(|2\\vec{a} - \\vec{b} + 2\\vec{c}|^2 = 4|\\vec{a}|^2 + |\\vec{b}|^2 + 4|\\vec{c}|^2 + \\text{(cross terms)}\\).",
+          "Self-dots: \\(4(1) + 1(1) + 4(1) = 9\\). All pairwise products vanish by mutual perpendicularity.",
+          "So \\(|2\\vec{a} - \\vec{b} + 2\\vec{c}|^2 = 9\\), giving \\(|2\\vec{a} - \\vec{b} + 2\\vec{c}| = 3\\).",
         ],
-        answer: "\\(|\\vec{A}| = \\sqrt{3}\\)",
+        answer: "\\(|2\\vec{a} - \\vec{b} + 2\\vec{c}| = 3\\)",
       },
       selfCheckExample: {
         prompt:
