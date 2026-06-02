@@ -21,6 +21,7 @@ export const MAGNETIC_FORCE_NOTE: SubtopicNote = {
         "- **Maximum** (\\(F = qvB\\)) when \\(v \\perp B\\) (\\(\\theta = 90°\\)).\n" +
         "- **Zero** when \\(v \\parallel B\\) or antiparallel (\\(\\theta = 0°\\) or \\(180°\\)).\n" +
         "Positive and negative charges feel forces in **opposite** directions, so a beam of mixed charge separates.",
+      visualizationSlug: "magnetic-force-triad",
       formula: {
         label: "Magnetic force on a moving charge",
         latex: "F = qvB\\sin\\theta",

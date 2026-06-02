@@ -74,6 +74,9 @@ import ResistorsSeriesParallel from "./visualizations/ResistorsSeriesParallel";
 import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
+import MagneticForceTriad from "./visualizations/MagneticForceTriad";
+import BarMagnetFieldLines from "./visualizations/BarMagnetFieldLines";
+import SolenoidFieldLines from "./visualizations/SolenoidFieldLines";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -200,6 +203,12 @@ function renderVisualization(slug: VisualizationSlug) {
       return <MagneticFieldAroundWire />;
     case "flemings-left-hand-rule":
       return <FlemingsLeftHandRule />;
+    case "magnetic-force-triad":
+      return <MagneticForceTriad />;
+    case "bar-magnet-field-lines":
+      return <BarMagnetFieldLines />;
+    case "solenoid-field-lines":
+      return <SolenoidFieldLines />;
   }
 }
 

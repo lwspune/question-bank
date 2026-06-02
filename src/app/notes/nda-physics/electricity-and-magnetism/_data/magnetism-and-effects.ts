@@ -22,6 +22,7 @@ export const MAGNETISM_AND_EFFECTS_NOTE: SubtopicNote = {
         "- They are **denser where the field is stronger** (near the poles).\n" +
         "- A magnetic field is a **vector** (magnitude and direction).\n" +
         "A bar magnet in a UNIFORM field feels equal and opposite pole forces — so **zero net force**, only a torque that aligns it.",
+      visualizationSlug: "bar-magnet-field-lines",
       authoredExample: {
         prompt:
           "Can two magnetic field lines ever cross each other? Explain.",
@@ -224,6 +225,7 @@ export const MAGNETISM_AND_EFFECTS_NOTE: SubtopicNote = {
         "Inside a long solenoid the field is **uniform** and given by\n" +
         "**\\(B = \\mu_0 n I\\)** — proportional to the **turns per unit length \\(n\\)** and the **current \\(I\\)**. " +
         "It does NOT depend on the solenoid's diameter. Inserting a **soft-iron core** greatly increases the field. A current-carrying solenoid behaves like a bar magnet.",
+      visualizationSlug: "solenoid-field-lines",
       formula: {
         label: "Field inside a solenoid",
         latex: "B = \\mu_0 n I",

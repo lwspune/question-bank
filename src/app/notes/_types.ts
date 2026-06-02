@@ -128,7 +128,10 @@ export type VisualizationSlug =
   | "resistors-series-parallel"
   | "emf-internal-resistance"
   | "magnetic-field-around-wire"
-  | "flemings-left-hand-rule";
+  | "flemings-left-hand-rule"
+  | "magnetic-force-triad"
+  | "bar-magnet-field-lines"
+  | "solenoid-field-lines";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
