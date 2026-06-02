@@ -12,6 +12,7 @@ import SelfCheckCard from "./SelfCheckCard";
 import PracticeSet from "./PracticeSet";
 import TrapCallout from "./TrapCallout";
 import ReferenceTableBlock from "./ReferenceTableBlock";
+import ReportConceptDialog from "./ReportConceptDialog";
 import RegressionLineFit from "./visualizations/RegressionLineFit";
 import VarianceSquaredDeviations from "./visualizations/VarianceSquaredDeviations";
 import HistogramBinSlider from "./visualizations/HistogramBinSlider";
@@ -183,6 +184,8 @@ function renderVisualization(slug: VisualizationSlug) {
 
 type Props = {
   concept: ConceptUnit;
+  /** Globally-unique slug of the parent subtopic — threaded to the report dialog. */
+  subtopicSlug: string;
   /** 1-based index used for visual numbering ("Concept 3 of 8"). */
   index: number;
   /** Total concepts in the subtopic — drives the "of N" label. */
@@ -213,6 +216,7 @@ type Props = {
  */
 export default function ConceptUnitCard({
   concept,
+  subtopicSlug,
   index,
   total,
   pyqExample,
@@ -344,11 +348,17 @@ export default function ConceptUnitCard({
         </div>
       )}
 
-      {/* Per-concept drill — sends to /browse filtered to exactly these UUIDs.
-          IDs sourced at request time from question_concept_tags via
-          loadResolvedDrills (Phase 2). Hidden silently when zero. */}
-      {drillQuestionIds.length > 0 && (
-        <div className="mt-6 flex items-center justify-end border-t pt-4">
+      {/* Footer — report affordance (always) on the left + per-concept drill
+          (when tagged questions exist) on the right. The drill sends to
+          /browse filtered to exactly these UUIDs, sourced at request time from
+          question_concept_tags via loadResolvedDrills. */}
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-t pt-4">
+        <ReportConceptDialog
+          subtopicSlug={subtopicSlug}
+          conceptSlug={concept.slug}
+          conceptName={concept.name}
+        />
+        {drillQuestionIds.length > 0 && (
           <Link
             href={buildBrowseUrl({
               extraIds: drillQuestionIds,
@@ -361,8 +371,8 @@ export default function ConceptUnitCard({
             Drill {drillQuestionIds.length} more on {concept.name.toLowerCase()}
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }

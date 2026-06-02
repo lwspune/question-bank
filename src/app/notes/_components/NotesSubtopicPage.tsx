@@ -267,6 +267,7 @@ export default async function NotesSubtopicPage({
           <ConceptUnitCard
             key={c.slug}
             concept={c}
+            subtopicSlug={subtopicSlug}
             index={i + 1}
             total={note.concepts.length}
             pyqExample={c.pyqExampleId ? pyqById.get(c.pyqExampleId) ?? null : null}

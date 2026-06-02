@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
   ArrowRight,
+  BookOpen,
   ChevronRight,
   FileSpreadsheet,
   Flag,
@@ -40,20 +41,29 @@ export default async function DashboardPage() {
   if (!member) redirect("/browse");
 
   const supabase = createSupabaseServerClient();
-  const [stats, recentUploads, openReportCount] = await Promise.all([
-    getDashboardStats(supabase, member.orgId),
-    member.role === "ADMIN"
-      ? getRecentUploads(supabase, member.orgId)
-      : Promise.resolve([] as RecentUpload[]),
-    member.role === "ADMIN"
-      ? supabase
-          .from("question_reports")
-          .select("id", { count: "exact", head: true })
-          .eq("org_id", member.orgId)
-          .eq("status", "open")
-          .then(({ count }) => count ?? 0)
-      : Promise.resolve(0),
-  ]);
+  const [stats, recentUploads, openReportCount, openConceptReportCount] =
+    await Promise.all([
+      getDashboardStats(supabase, member.orgId),
+      member.role === "ADMIN"
+        ? getRecentUploads(supabase, member.orgId)
+        : Promise.resolve([] as RecentUpload[]),
+      member.role === "ADMIN"
+        ? supabase
+            .from("question_reports")
+            .select("id", { count: "exact", head: true })
+            .eq("org_id", member.orgId)
+            .eq("status", "open")
+            .then(({ count }) => count ?? 0)
+        : Promise.resolve(0),
+      member.role === "ADMIN"
+        ? supabase
+            .from("concept_reports")
+            .select("id", { count: "exact", head: true })
+            .eq("org_id", member.orgId)
+            .eq("status", "open")
+            .then(({ count }) => count ?? 0)
+        : Promise.resolve(0),
+    ]);
 
   const isAdmin = member.role === "ADMIN";
   const isFresh = stats.totalQuestions === 0;
@@ -75,6 +85,7 @@ export default async function DashboardPage() {
           isAdmin={isAdmin}
           isFresh={isFresh}
           openReportCount={openReportCount}
+          openConceptReportCount={openConceptReportCount}
         />
 
         {!isFresh && (
@@ -141,10 +152,12 @@ function QuickActions({
   isAdmin,
   isFresh,
   openReportCount,
+  openConceptReportCount,
 }: {
   isAdmin: boolean;
   isFresh: boolean;
   openReportCount: number;
+  openConceptReportCount: number;
 }) {
   return (
     <div
@@ -184,6 +197,23 @@ function QuickActions({
           }
           badge={
             openReportCount > 0 ? String(openReportCount) : undefined
+          }
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/notes-reports"
+          icon={<BookOpen className="h-5 w-5" aria-hidden />}
+          title="Concept reports"
+          description={
+            openConceptReportCount > 0
+              ? `${openConceptReportCount} open report${openConceptReportCount === 1 ? "" : "s"} on notes concepts.`
+              : "Triage user-filed reports on /notes concepts."
+          }
+          badge={
+            openConceptReportCount > 0
+              ? String(openConceptReportCount)
+              : undefined
           }
         />
       )}
