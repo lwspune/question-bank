@@ -26,14 +26,14 @@ export const TRIG_POWERS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Evaluate \\(\\displaystyle\\int \\tan^4 x\\,dx = a\\tan^3 x + b\\tan x + cx + k\\) and find \\(a - b + c\\).",
+          "Evaluate \\(\\displaystyle\\int \\cot^4 x\\,dx\\).",
         steps: [
-          "Write \\(\\tan^4 x = \\tan^2 x(\\sec^2 x - 1) = \\tan^2 x\\sec^2 x - \\tan^2 x\\).",
-          "Replace the leftover: \\(-\\tan^2 x = -(\\sec^2 x - 1) = -\\sec^2 x + 1\\).",
-          "Integrate: \\(\\int \\tan^2 x\\sec^2 x\\,dx = \\dfrac{\\tan^3 x}{3}\\); \\(\\int -\\sec^2 x\\,dx = -\\tan x\\); \\(\\int 1\\,dx = x\\).",
-          "So the integral is \\(\\dfrac{\\tan^3 x}{3} - \\tan x + x + k\\): \\(a = \\tfrac13,\\ b = -1,\\ c = 1\\).",
+          "Write \\(\\cot^4 x = \\cot^2 x(\\csc^2 x - 1) = \\cot^2 x\\csc^2 x - \\cot^2 x\\).",
+          "Replace the leftover: \\(-\\cot^2 x = -(\\csc^2 x - 1) = -\\csc^2 x + 1\\).",
+          "Integrate: \\(\\int \\cot^2 x\\csc^2 x\\,dx = -\\dfrac{\\cot^3 x}{3}\\) (\\(u = \\cot x\\)); \\(\\int -\\csc^2 x\\,dx = \\cot x\\); \\(\\int 1\\,dx = x\\).",
+          "So \\(\\int \\cot^4 x\\,dx = -\\dfrac{\\cot^3 x}{3} + \\cot x + x + C\\).",
         ],
-        answer: "\\(a - b + c = \\tfrac13 - (-1) + 1 = \\dfrac{7}{3}\\)",
+        answer: "\\(-\\dfrac{\\cot^3 x}{3} + \\cot x + x + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\tan^2 x\\,dx\\).",
@@ -77,13 +77,13 @@ export const TRIG_POWERS_NOTE: SubtopicNote = {
         latex: "\\tan x + \\cot x = \\dfrac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = \\dfrac{2}{\\sin 2x} = 2\\csc 2x",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int (\\tan x + \\cot x)\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int 2\\cos^2 x\\,dx\\).",
         steps: [
-          "Combine over a common denominator: \\(\\tan x + \\cot x = \\dfrac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = \\dfrac{1}{\\sin x\\cos x}\\).",
-          "Use \\(\\sin x\\cos x = \\tfrac12\\sin 2x\\): the integrand is \\(\\dfrac{2}{\\sin 2x} = 2\\csc 2x\\).",
-          "Integrate: \\(\\int 2\\csc 2x\\,dx = 2\\cdot\\tfrac12\\log\\left|\\tan x\\right| = \\log|\\tan x| + C\\).",
+          "Use the double-angle identity \\(2\\cos^2 x = 1 + \\cos 2x\\) to collapse the power.",
+          "The integrand is now a standard sum: \\(\\int (1 + \\cos 2x)\\,dx\\).",
+          "Integrate: \\(x + \\dfrac{\\sin 2x}{2} + C\\).",
         ],
-        answer: "\\(\\log|\\tan x| + C\\)",
+        answer: "\\(x + \\dfrac{\\sin 2x}{2} + C\\)",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(\\displaystyle\\int (1 - \\cos x)\\csc^2 x\\,dx\\).",
