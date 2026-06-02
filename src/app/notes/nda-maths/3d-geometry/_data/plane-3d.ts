@@ -275,14 +275,14 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the plane through the intersection of \\(2x + y + 2z = 9\\) and \\(4x - 5y - 4z = 1\\) that passes through \\((3, 2, 1)\\).",
+          "Find the plane through the intersection of \\(x + y + z = 3\\) and \\(2x - y + z = 4\\) that passes through \\((3, 1, 1)\\).",
         steps: [
-          "Family: \\((2x+y+2z-9) + \\lambda(4x-5y-4z-1) = 0\\).",
-          "Substitute \\((3,2,1)\\): \\((6+2+2-9) + \\lambda(12-10-4-1) = 0 \\Rightarrow 1 + \\lambda(-3) = 0\\).",
-          "\\(\\lambda = \\tfrac13\\).",
-          "Plug back and clear: \\(3(2x+y+2z-9) + (4x-5y-4z-1) = 0 \\Rightarrow 10x - 2y + 2z - 28 = 0\\), i.e. \\(5x - y + z = 14\\).",
+          "Family: \\((x+y+z-3) + \\lambda(2x-y+z-4) = 0\\).",
+          "Substitute \\((3,1,1)\\): \\((3+1+1-3) + \\lambda(6-1+1-4) = 0 \\Rightarrow 2 + 2\\lambda = 0\\).",
+          "\\(\\lambda = -1\\).",
+          "Plug back: \\((x+y+z-3) - (2x-y+z-4) = -x + 2y + 1 = 0\\), i.e. \\(x - 2y = 1\\).",
         ],
-        answer: "\\(5x - y + z = 14\\).",
+        answer: "\\(x - 2y = 1\\).",
       },
       selfCheckExample: {
         prompt:

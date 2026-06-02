@@ -141,14 +141,14 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
       visualizationSlug: "section-formula",
       authoredExample: {
         prompt:
-          "In what ratio does the XY-plane divide the segment joining \\((-1, 3, 4)\\) and \\((2, -5, 6)\\)?",
+          "In what ratio does the XY-plane divide the segment joining \\((1, 2, 4)\\) and \\((3, -1, 2)\\)?",
         steps: [
           "The XY-plane is \\(z = 0\\). Let it divide \\(AB\\) in ratio \\(k:1\\).",
-          "The \\(z\\)-coordinate of the dividing point is \\(\\dfrac{k(6) + 1(4)}{k+1}\\).",
-          "Set it to 0: \\(6k + 4 = 0 \\Rightarrow k = -\\tfrac{2}{3}\\).",
-          "A negative ratio means external division: the plane divides \\(AB\\) externally in \\(2:3\\).",
+          "The \\(z\\)-coordinate of the dividing point is \\(\\dfrac{k(2) + 1(4)}{k+1}\\).",
+          "Set it to 0: \\(2k + 4 = 0 \\Rightarrow k = -2\\).",
+          "A negative ratio means external division: the plane divides \\(AB\\) externally in \\(2:1\\).",
         ],
-        answer: "Externally in the ratio \\(2 : 3\\).",
+        answer: "Externally in the ratio \\(2 : 1\\).",
       },
       selfCheckExample: {
         prompt:
@@ -233,14 +233,14 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
         "rectangle additionally has equal diagonals.",
       authoredExample: {
         prompt:
-          "If the points \\((x, y, -3)\\), \\((2, 0, -1)\\) and \\((4, 2, 3)\\) are collinear, find \\(x\\) and \\(y\\).",
+          "If the points \\(A(1, -1, 2)\\), \\(B(3, k, 4)\\) and \\(C(5, 3, 6)\\) are collinear, find \\(k\\).",
         steps: [
-          "Direction ratios of the segment from \\((2,0,-1)\\) to \\((4,2,3)\\): \\(\\langle 2, 2, 4 \\rangle\\), i.e. \\(\\langle 1,1,2\\rangle\\).",
-          "Direction ratios from \\((2,0,-1)\\) to \\((x,y,-3)\\): \\(\\langle x-2,\\ y,\\ -2\\rangle\\).",
-          "For collinearity these are proportional: \\(\\dfrac{x-2}{1} = \\dfrac{y}{1} = \\dfrac{-2}{2} = -1\\).",
-          "So \\(x - 2 = -1 \\Rightarrow x = 1\\) and \\(y = -1\\).",
+          "Direction ratios of \\(\\overrightarrow{AC} = C - A = \\langle 4, 4, 4\\rangle\\), i.e. \\(\\langle 1,1,1\\rangle\\).",
+          "Direction ratios of \\(\\overrightarrow{AB} = B - A = \\langle 2,\\ k+1,\\ 2\\rangle\\).",
+          "For collinearity these are proportional: \\(\\dfrac{2}{1} = \\dfrac{k+1}{1} = \\dfrac{2}{1} = 2\\).",
+          "So \\(k + 1 = 2 \\Rightarrow k = 1\\).",
         ],
-        answer: "\\(x = 1,\\ y = -1\\).",
+        answer: "\\(k = 1\\).",
       },
       selfCheckExample: {
         prompt:

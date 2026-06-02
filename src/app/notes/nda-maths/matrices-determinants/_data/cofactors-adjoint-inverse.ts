@@ -31,13 +31,13 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         latex: "\\sum_j a_{ij}C_{ij} = \\det A, \\qquad \\sum_j a_{ij}C_{kj} = 0\\ (k \\neq i)",
       },
       authoredExample: {
-        prompt: "For a \\(3\\times3\\) matrix \\(A\\), what is \\(a_{21}C_{11} + a_{22}C_{12} + a_{23}C_{13}\\)?",
+        prompt: "For \\(A = \\begin{pmatrix}2&1&3\\\\0&5&4\\\\1&2&1\\end{pmatrix}\\), find the cofactor \\(C_{31}\\).",
         steps: [
-          "Row 2 entries are multiplied by row 1's cofactors — these are ALIEN cofactors.",
-          "A row combined with another row's cofactors always sums to 0.",
-          "(Equivalently, it's the determinant of a matrix with row 1 replaced by row 2 — two equal rows → 0.)",
+          "Minor \\(M_{31}\\): delete row 3 and column 1, take the determinant: \\(\\begin{vmatrix}1&3\\\\5&4\\end{vmatrix} = 4 - 15 = -11\\).",
+          "Cofactor \\(C_{31} = (-1)^{3+1} M_{31} = (+1)(-11)\\).",
+          "\\(= -11\\).",
         ],
-        answer: "\\(0\\) (alien-cofactor expansion).",
+        answer: "\\(C_{31} = -11\\).",
       },
       selfCheckExample: {
         prompt: "What is the sign of the cofactor \\(C_{23}\\), and what is \\(a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}\\)?",
@@ -118,13 +118,13 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         latex: "|\\operatorname{adj}A| = |A|^{\\,n-1}, \\qquad \\operatorname{adj}(\\operatorname{adj}A) = |A|^{\\,n-2}A",
       },
       authoredExample: {
-        prompt: "If \\(M = \\begin{pmatrix}2&0&0\\\\0&2&0\\\\0&0&2\\end{pmatrix}\\), find \\(|M|\\cdot|\\operatorname{adj}M|\\).",
+        prompt: "For a \\(3\\times3\\) matrix \\(A\\) with \\(|A| = 3\\), find \\(|\\operatorname{adj}(\\operatorname{adj}A)|\\).",
         steps: [
-          "\\(|M| = 2^3 = 8\\) (diagonal).",
-          "\\(|\\operatorname{adj}M| = |M|^{n-1} = 8^{2} = 64\\).",
-          "Product \\(= 8 \\times 64 = 512\\).",
+          "For a \\(3\\times3\\) matrix, \\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{n-2}A = |A|^{1}A = 3A\\).",
+          "So \\(|\\operatorname{adj}(\\operatorname{adj}A)| = |3A| = 3^3\\,|A| = 27 \\cdot 3\\).",
+          "\\(= 81\\).",
         ],
-        answer: "\\(512\\).",
+        answer: "\\(81\\) (\\(= |A|^{(n-1)^2} = 3^4\\)).",
       },
       selfCheckExample: {
         prompt: "For a \\(3\\times3\\) matrix \\(A\\) with \\(|A| = 4\\), find \\(|2\\,\\operatorname{adj}(3A)|\\).",
@@ -161,13 +161,13 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         latex: "A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A \\quad (|A| \\neq 0)",
       },
       authoredExample: {
-        prompt: "Find the inverse of the diagonal matrix \\(A = \\begin{pmatrix}a&0&0\\\\0&b&0\\\\0&0&c\\end{pmatrix}\\) (\\(a,b,c \\neq 0\\)).",
+        prompt: "Find the inverse of \\(A = \\begin{pmatrix}3&5\\\\1&2\\end{pmatrix}\\) using the adjoint.",
         steps: [
-          "Diagonal matrices invert entrywise: reciprocate each diagonal entry.",
-          "\\(A^{-1} = \\begin{pmatrix}1/a&0&0\\\\0&1/b&0\\\\0&0&1/c\\end{pmatrix}\\).",
-          "(Consistent with \\(\\operatorname{adj}A/|A|\\) since \\(|A| = abc\\).)",
+          "\\(|A| = 3\\cdot2 - 5\\cdot1 = 1\\).",
+          "\\(\\operatorname{adj}A = \\begin{pmatrix}2&-5\\\\-1&3\\end{pmatrix}\\) (swap the diagonal, negate the off-diagonal).",
+          "\\(A^{-1} = \\dfrac{1}{|A|}\\operatorname{adj}A = \\begin{pmatrix}2&-5\\\\-1&3\\end{pmatrix}\\).",
         ],
-        answer: "\\(A^{-1} = \\operatorname{diag}(1/a,\\ 1/b,\\ 1/c)\\).",
+        answer: "\\(A^{-1} = \\begin{pmatrix}2&-5\\\\-1&3\\end{pmatrix}\\).",
       },
       selfCheckExample: {
         prompt: "Find \\(A^{-1}\\) for \\(A = \\begin{pmatrix}2&1\\\\3&2\\end{pmatrix}\\).",
@@ -241,13 +241,12 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "**Orthogonal / rotation:** \\(A^{-1} = A^T\\) (and for a rotation \\(R(\\theta)^{-1} = R(-\\theta)\\)). " +
         "**Involutory:** \\(A^{-1} = A\\). Use these instead of the adjoint route when the type is clear.",
       authoredExample: {
-        prompt: "Find the inverse of \\(A = \\begin{pmatrix}\\cos\\theta & \\sin\\theta & 0\\\\-\\sin\\theta & \\cos\\theta & 0\\\\0 & 0 & 1\\end{pmatrix}\\).",
+        prompt: "Find the inverse of \\(A = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\).",
         steps: [
-          "The top-left block is a rotation; the whole matrix is orthogonal (\\(AA^T = I\\)).",
-          "So \\(A^{-1} = A^T\\).",
-          "\\(A^{-1} = \\begin{pmatrix}\\cos\\theta & -\\sin\\theta & 0\\\\\\sin\\theta & \\cos\\theta & 0\\\\0 & 0 & 1\\end{pmatrix}\\).",
+          "Compute \\(A^2 = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix} = \\begin{pmatrix}1&0\\\\0&1\\end{pmatrix} = I\\).",
+          "\\(A^2 = I\\) means \\(A\\) is **involutory**, so \\(A^{-1} = A\\).",
         ],
-        answer: "\\(A^{-1} = A^T\\) (transpose of the rotation).",
+        answer: "\\(A^{-1} = A = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\).",
       },
       practiceSet: [
         { prompt: "Inverse of an orthogonal matrix?", answer: "\\(A^T\\)" },

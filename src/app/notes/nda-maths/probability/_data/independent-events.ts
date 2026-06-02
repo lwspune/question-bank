@@ -159,12 +159,12 @@ export const INDEPENDENT_EVENTS_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Three students solve a problem independently with probabilities \\(\\dfrac{1}{3}, \\dfrac{1}{4}, \\dfrac{1}{5}\\). What is the probability that at least one solves it?",
+          "Three students solve a problem independently with probabilities \\(\\dfrac{2}{3}, \\dfrac{3}{4}, \\dfrac{4}{5}\\). What is the probability that at least one solves it?",
         steps: [
-          "None solves it: \\(\\dfrac{2}{3} \\cdot \\dfrac{3}{4} \\cdot \\dfrac{4}{5} = \\dfrac{24}{60} = \\dfrac{2}{5}\\).",
-          "At least one: \\(1 - \\dfrac{2}{5} = \\dfrac{3}{5}\\).",
+          "None solves it: \\(\\left(1-\\dfrac{2}{3}\\right)\\left(1-\\dfrac{3}{4}\\right)\\left(1-\\dfrac{4}{5}\\right) = \\dfrac{1}{3} \\cdot \\dfrac{1}{4} \\cdot \\dfrac{1}{5} = \\dfrac{1}{60}\\).",
+          "At least one: \\(1 - \\dfrac{1}{60} = \\dfrac{59}{60}\\).",
         ],
-        answer: "\\(\\dfrac{3}{5}\\)",
+        answer: "\\(\\dfrac{59}{60}\\)",
       },
       practiceSet: [
         { prompt: "Solvers \\(\\tfrac{1}{2}, \\tfrac{1}{2}\\). \\(P(\\text{solved})\\)?", answer: "\\(\\dfrac{3}{4}\\)" },

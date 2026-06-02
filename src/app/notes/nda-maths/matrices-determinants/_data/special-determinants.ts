@@ -25,12 +25,12 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
         "\\(A + B + C = \\pi\\). Many such determinants are identically 0 because a trig identity makes " +
         "rows dependent. Expand only after simplifying with the identity.",
       authoredExample: {
-        prompt: "Evaluate \\(\\begin{vmatrix}\\cos^2\\tfrac{\\theta}{2} & \\sin^2\\tfrac{\\theta}{2}\\\\ \\sin^2\\tfrac{\\theta}{2} & \\cos^2\\tfrac{\\theta}{2}\\end{vmatrix}\\).",
+        prompt: "Evaluate \\(\\begin{vmatrix}\\sin\\theta & \\cos\\theta\\\\ -\\cos\\theta & \\sin\\theta\\end{vmatrix}\\).",
         steps: [
-          "\\(= \\cos^4\\tfrac\\theta2 - \\sin^4\\tfrac\\theta2 = (\\cos^2\\tfrac\\theta2 - \\sin^2\\tfrac\\theta2)(\\cos^2\\tfrac\\theta2 + \\sin^2\\tfrac\\theta2)\\).",
-          "Second factor \\(= 1\\); first factor \\(= \\cos\\theta\\) (double-angle).",
+          "\\(= (\\sin\\theta)(\\sin\\theta) - (\\cos\\theta)(-\\cos\\theta) = \\sin^2\\theta + \\cos^2\\theta\\).",
+          "By the Pythagorean identity this is \\(1\\) for all \\(\\theta\\).",
         ],
-        answer: "\\(\\cos\\theta\\).",
+        answer: "\\(1\\).",
       },
       selfCheckExample: {
         prompt: "In triangle \\(ABC\\), evaluate the determinant whose rows force a triangle identity such that two rows coincide. What is the typical value?",
@@ -68,13 +68,13 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
         latex: "i = i,\\quad i^2 = -1,\\quad i^3 = -i,\\quad i^4 = 1",
       },
       authoredExample: {
-        prompt: "Evaluate \\(\\begin{vmatrix} i & i^2 & i^3 \\\\ i^4 & i^6 & i^8 \\\\ i^9 & i^{12} & i^{15}\\end{vmatrix}\\).",
+        prompt: "Evaluate \\(\\begin{vmatrix} 1+i & 1-i \\\\ 1-i & 1+i\\end{vmatrix}\\) where \\(i = \\sqrt{-1}\\).",
         steps: [
-          "Reduce powers mod 4: row 1 \\((i, -1, -i)\\); row 2 \\((1, i^2{=}-1, i^0{=}1) = (1, -1, 1)\\); row 3 \\((i^1{=}i, i^0{=}1, i^3{=}-i) = (i, 1, -i)\\).",
-          "Determinant of \\(\\begin{pmatrix}i&-1&-i\\\\1&-1&1\\\\i&1&-i\\end{pmatrix}\\): note rows 1 and 3 share columns 1,3 \\((i,-i)\\); expand.",
-          "Expanding gives 0 (rows become dependent after reduction).",
+          "\\(= (1+i)^2 - (1-i)^2\\).",
+          "\\((1+i)^2 = 2i\\) and \\((1-i)^2 = -2i\\).",
+          "So the determinant \\(= 2i - (-2i) = 4i\\).",
         ],
-        answer: "\\(0\\).",
+        answer: "\\(4i\\).",
       },
       selfCheckExample: {
         prompt: "If a complex determinant evaluates to \\(6 + 11i\\) and you must find real unknowns \\(x, y\\) inside it, what's the method?",
@@ -145,13 +145,13 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
         "**Determinant as polynomial:** expand to a polynomial in \\(x\\) and equate coefficients, " +
         "or argue the degree to find a specific coefficient.",
       authoredExample: {
-        prompt: "Evaluate \\(\\begin{vmatrix}1! & 2! & 3!\\\\2! & 3! & 4!\\\\3! & 4! & 5!\\end{vmatrix}\\).",
+        prompt: "Evaluate \\(\\begin{vmatrix}1 & 1 & 1\\\\1 & 2 & 3\\\\1 & 4 & 9\\end{vmatrix}\\).",
         steps: [
-          "Write entries: \\(\\begin{vmatrix}1&2&6\\\\2&6&24\\\\6&24&120\\end{vmatrix}\\).",
-          "Factor 2 from \\(R_2\\) and 6 from \\(R_3\\): \\(2\\cdot6\\begin{vmatrix}1&2&6\\\\1&3&12\\\\1&4&20\\end{vmatrix}\\).",
-          "\\(R_2\\to R_2-R_1,\\ R_3\\to R_3-R_1\\): \\(12\\begin{vmatrix}1&2&6\\\\0&1&6\\\\0&2&14\\end{vmatrix} = 12(1\\cdot(14-12)) = 12\\cdot2\\).",
+          "Subtract \\(C_1\\) from \\(C_2\\) and \\(C_3\\): \\(\\begin{vmatrix}1&0&0\\\\1&1&2\\\\1&3&8\\end{vmatrix}\\).",
+          "Expand along row 1: \\(1\\cdot\\begin{vmatrix}1&2\\\\3&8\\end{vmatrix} = 1\\cdot(8-6)\\).",
+          "\\(= 2\\). (This is a Vandermonde determinant in columns \\(1, k, k^2\\).)",
         ],
-        answer: "\\(24\\).",
+        answer: "\\(2\\).",
       },
       selfCheckExample: {
         prompt: "If \\(a, b, c\\) are in AP, what is \\(\\begin{vmatrix}x+1&x+2&x+3\\\\x+2&x+3&x+4\\\\x+a&x+b&x+c\\end{vmatrix}\\)?",

@@ -118,12 +118,12 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
         latex: "\\det D = \\prod_i d_i, \\qquad D^{-1} = \\operatorname{diag}\\!\\left(\\tfrac{1}{d_1}, \\dots, \\tfrac{1}{d_n}\\right)",
       },
       authoredExample: {
-        prompt: "For \\(A = \\begin{pmatrix}2&0&0\\\\0&3&0\\\\0&0&4\\end{pmatrix}\\), find \\(\\det A\\) and \\(\\det(A^2)\\).",
+        prompt: "For \\(A = \\begin{pmatrix}3&0&0\\\\0&2&0\\\\0&0&5\\end{pmatrix}\\), find \\(\\det A\\) and \\(\\det(A^2)\\).",
         steps: [
-          "Diagonal → \\(\\det A = 2\\cdot3\\cdot4 = 24\\).",
-          "\\(A^2 = \\text{diag}(4, 9, 16)\\), so \\(\\det(A^2) = 4\\cdot9\\cdot16 = 576 = 24^2\\).",
+          "Diagonal → \\(\\det A = 3\\cdot2\\cdot5 = 30\\).",
+          "\\(A^2 = \\text{diag}(9, 4, 25)\\), so \\(\\det(A^2) = 9\\cdot4\\cdot25 = 900 = 30^2\\).",
         ],
-        answer: "\\(\\det A = 24\\), \\(\\det(A^2) = 576\\).",
+        answer: "\\(\\det A = 30\\), \\(\\det(A^2) = 900\\).",
       },
       practiceSet: [
         { prompt: "\\(\\det(\\text{diag}(1,5,2))\\)?", answer: "\\(10\\)" },

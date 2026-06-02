@@ -62,7 +62,12 @@ type Issue = { severity: "error" | "warn"; note: string; message: string };
  * which section 2b already fetches.
  */
 function numberMultiset(s: string): string[] {
-  return s.match(/-?\d+(?:\.\d+)?/g) ?? [];
+  // Strip subscripts first — they are indices/labels (I_2, A_k, C_{11}, a_{ij},
+  // x_1), not problem magnitudes, and would otherwise inject spurious shared
+  // digits (e.g. the "2" in I_2). Superscripts are kept: a power like A^4 IS
+  // often the distinguishing datum of the problem.
+  const noSubscripts = s.replace(/_\{[^}]*\}/g, "").replace(/_\d+/g, "");
+  return noSubscripts.match(/-?\d+(?:\.\d+)?/g) ?? [];
 }
 function reusesPyqNumbers(exampleText: string, pyqText: string): boolean {
   const pyqNums = numberMultiset(pyqText);
