@@ -1,22 +1,22 @@
 #!/bin/sh
-# Local gate before pushing to remote. Catches the class of regression
-# documented under "Recurring pitfalls" in CLAUDE.md — specifically
-# server↔client prop serialization issues that compile under `next dev`
-# but fail under `next start` (and therefore on Vercel).
+# Local gate before pushing to remote. Runs the SAME chain as CI
+# (.github/workflows/ci.yml) via `npm run prepush` — typecheck, lint,
+# notes:lint, notes:latex, test, build — so a green pre-push means a
+# green CI. Single source of truth: the `prepush` script in package.json.
 #
-# Escape hatch: `git push --no-verify` — but you should know why before
-# you reach for it. See the 2026-05-13 Pagination revert decision-log
-# entry for the kind of bug this gate exists to prevent.
+# Why the full chain (not just build): pre-push used to run only
+# typecheck+lint+build, so a broken TEST passed pre-push and only failed
+# in CI (2026-06-02 — notes-index-helper after shipping a notes chapter).
+# Catching that class locally is the point. It also still catches the
+# server<->client prop-serialization regressions that only fail under
+# `next build` (the 2026-05-13 Pagination revert).
+#
+# Cost: slow (~3-4 min — full test suite + build). Escape hatch for WIP
+# pushes: `git push --no-verify` — but know why before you reach for it.
 
 set -e
 
-echo "[pre-push] typecheck..."
-npm run typecheck --silent
-
-echo "[pre-push] lint..."
-npm run lint --silent
-
-echo "[pre-push] build..."
-npm run build --silent
+echo "[pre-push] running full gate (npm run prepush) — mirrors CI..."
+npm run prepush --silent
 
 echo "[pre-push] all gates passed"
