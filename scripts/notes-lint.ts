@@ -37,6 +37,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
+import { reusesPyqNumbers } from "../src/lib/notes/pyqDuplication";
 import type { SubtopicNote } from "../src/app/notes/_types";
 
 function loadEnv() {
@@ -49,50 +50,9 @@ function loadEnv() {
 
 type Issue = { severity: "error" | "warn"; note: string; message: string };
 
-/**
- * Heuristic guard for the "worked example == featured PYQ" failure mode — the
- * systemic duplication found in the 2026-06-02 bank-wide alignment pass, where
- * the worked example had been seeded from its featured PYQ's exact numbers. A
- * worked example / self-check must be a DIFFERENT problem from its featured PYQ
- * (CLAUDE.md "Notes editorial workflow"). We can't check math, but we can flag
- * when the example prompt re-uses (almost) all of the PYQ's distinctive numbers.
- * WARN-level: similarity is heuristic, so a human confirms. Number-based, so it
- * is strong on computational problems and weak on word/variable-only ones —
- * those still rely on the manual read-through (Step 4). Needs the PYQ text,
- * which section 2b already fetches.
- */
-function numberMultiset(s: string): string[] {
-  // Strip subscripts first — they are indices/labels (I_2, A_k, C_{11}, a_{ij},
-  // x_1), not problem magnitudes, and would otherwise inject spurious shared
-  // digits (e.g. the "2" in I_2). Superscripts are kept: a power like A^4 IS
-  // often the distinguishing datum of the problem.
-  const noSubscripts = s.replace(/_\{[^}]*\}/g, "").replace(/_\d+/g, "");
-  return noSubscripts.match(/-?\d+(?:\.\d+)?/g) ?? [];
-}
-function reusesPyqNumbers(exampleText: string, pyqText: string): boolean {
-  const pyqNums = numberMultiset(pyqText);
-  if (pyqNums.length < 3) return false; // too few numbers to be distinctive
-  const avail = new Map<string, number>();
-  for (const n of numberMultiset(exampleText)) avail.set(n, (avail.get(n) ?? 0) + 1);
-  const shared: string[] = [];
-  for (const n of pyqNums) {
-    const c = avail.get(n) ?? 0;
-    if (c > 0) {
-      shared.push(n);
-      avail.set(n, c - 1);
-    }
-  }
-  if (shared.length / pyqNums.length < 0.8) return false;
-  // Guard against coincidental overlap on small structural integers (1,2,3,4 —
-  // exponents, small coefficients). Require either a lot of shared numbers
-  // (coordinate/matrix-heavy problems) OR ≥2 distinctive ones (|n|≥5, multi-digit,
-  // or decimal). This is what separates a genuine "same problem" from two
-  // unrelated polynomial integrals that both happen to use 1, 2, 4.
-  const distinctive = (n: string) =>
-    Math.abs(parseFloat(n)) >= 5 || n.includes(".") || n.replace("-", "").length >= 2;
-  const distinctiveShared = shared.filter(distinctive).length;
-  return shared.length >= 5 || distinctiveShared >= 2;
-}
+// `reusesPyqNumbers` (check #5's duplication heuristic) + `numberMultiset` live
+// in src/lib/notes/pyqDuplication.ts so they're unit-testable (tests/notes-pyq-
+// duplication.test.ts); imported above. See [[notes-concept-content-alignment]].
 
 type NoteRef = {
   /** Display path used in messages. */
