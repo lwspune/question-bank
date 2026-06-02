@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
@@ -992,12 +993,12 @@ function PreviewPane({
         Difficulty: {difficulty.charAt(0) + difficulty.slice(1).toLowerCase()}
       </p>
       {context.trim() && (
-        <p className="mb-3 italic text-muted-foreground">
-          <KatexRenderer text={context} />
-        </p>
+        <div className="mb-3 italic text-muted-foreground">
+          <BlockText text={context} />
+        </div>
       )}
       <div className="mb-4 text-[15px] leading-relaxed">
-        <KatexRenderer text={text} />
+        <BlockText text={text} />
       </div>
       {imagePath && (
         <div className="mb-4">

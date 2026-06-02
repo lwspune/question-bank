@@ -8,10 +8,16 @@ import {
   LevelFormat,
   LevelSuffix,
   PageOrientation,
+  Table,
+  TableRow,
+  TableCell,
+  WidthType,
+  BorderStyle,
   type ParagraphChild,
 } from "docx";
 import JSZip from "jszip";
 import type { QuestionRow } from "@/lib/questions/query";
+import { parseTableBlocks, type TableBlock } from "@/components/math/parseTableBlocks";
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
 import { readImageDimensions, fitWithinBox } from "./imageDimensions";
 import { groupBySet } from "./groupBySet";
@@ -115,7 +121,7 @@ export async function buildQuestionPaper(
   input: QuestionPaperInput
 ): Promise<Buffer> {
   const builder: Builder = { ommlByIndex: [] };
-  const children: Paragraph[] = [];
+  const children: (Paragraph | Table)[] = [];
 
   children.push(titleParagraph(input.title));
   children.push(blank());
@@ -245,15 +251,34 @@ function questionParagraphs(
   builder: Builder,
   imageBytes: Map<string, Buffer> | undefined,
   skipContextParagraph: boolean
-): Paragraph[] {
-  const out: Paragraph[] = [];
+): (Paragraph | Table)[] {
+  const out: (Paragraph | Table)[] = [];
 
-  out.push(
-    new Paragraph({
-      numbering: { reference: NUM_REF, level: 0 },
-      children: mathRuns(q.text, builder),
-    })
-  );
+  // Stem: split into prose + GFM-table blocks. The question NUMBER rides on the
+  // first PARAGRAPH; if the stem opens with a table, emit a numbered empty
+  // paragraph first so the number still prints.
+  const stemBlocks = parseTableBlocks(q.text);
+  let numbered = false;
+  for (const b of stemBlocks) {
+    if (b.kind === "text") {
+      out.push(
+        new Paragraph({
+          ...(numbered ? {} : { numbering: { reference: NUM_REF, level: 0 } }),
+          children: mathRuns(b.text, builder),
+        })
+      );
+      numbered = true;
+    } else {
+      if (!numbered) {
+        out.push(new Paragraph({ numbering: { reference: NUM_REF, level: 0 }, children: [] }));
+        numbered = true;
+      }
+      out.push(docxTable(b, builder));
+    }
+  }
+  if (!numbered) {
+    out.push(new Paragraph({ numbering: { reference: NUM_REF, level: 0 }, children: [] }));
+  }
 
   if (q.imageUrl && imageBytes?.has(q.imageUrl)) {
     const data = imageBytes.get(q.imageUrl)!;
@@ -267,15 +292,33 @@ function questionParagraphs(
   }
 
   if (q.context && !skipContextParagraph) {
-    out.push(
-      new Paragraph({
-        indent: { left: 0 },
-        children: [
-          new TextRun({ text: "Context: ", italics: true }),
-          ...mathRuns(q.context, builder),
-        ],
-      })
-    );
+    const ctxBlocks = parseTableBlocks(q.context);
+    if (ctxBlocks.some((b) => b.kind === "table")) {
+      // Table-bearing context: label line, then prose paragraphs + table(s).
+      out.push(
+        new Paragraph({
+          indent: { left: 0 },
+          children: [new TextRun({ text: "Context:", italics: true })],
+        })
+      );
+      for (const b of ctxBlocks) {
+        if (b.kind === "text") {
+          out.push(new Paragraph({ indent: { left: 0 }, children: mathRuns(b.text, builder) }));
+        } else {
+          out.push(docxTable(b, builder));
+        }
+      }
+    } else {
+      out.push(
+        new Paragraph({
+          indent: { left: 0 },
+          children: [
+            new TextRun({ text: "Context: ", italics: true }),
+            ...mathRuns(q.context, builder),
+          ],
+        })
+      );
+    }
   }
 
   for (const opt of q.options) {
@@ -301,6 +344,40 @@ function questionParagraphs(
   }
 
   return out;
+}
+
+function docxTable(block: TableBlock, builder: Builder): Table {
+  const ncols = Math.max(1, block.headers.length);
+  const colPct = Math.floor(100 / ncols);
+  const edge = { style: BorderStyle.SINGLE, size: 4, color: "999999" } as const;
+  const cell = (content: string, header: boolean): TableCell =>
+    new TableCell({
+      width: { size: colPct, type: WidthType.PERCENTAGE },
+      shading: header ? { fill: "EEEEEE" } : undefined,
+      // mathRuns (not a plain TextRun) so a math header like \(x\) renders;
+      // the header row's shading is what visually distinguishes it.
+      children: [new Paragraph({ children: mathRuns(content, builder) })],
+    });
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: {
+      top: edge,
+      bottom: edge,
+      left: edge,
+      right: edge,
+      insideHorizontal: edge,
+      insideVertical: edge,
+    },
+    rows: [
+      new TableRow({
+        tableHeader: true,
+        children: block.headers.map((h) => cell(h, true)),
+      }),
+      ...block.rows.map(
+        (r) => new TableRow({ children: r.map((c) => cell(c, false)) })
+      ),
+    ],
+  });
 }
 
 function pickDims(

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import {
@@ -143,7 +144,11 @@ export default function QuestionCard({
                   : "overflow-x-auto [&_.katex]:max-w-full"
               )}
             >
-              <KatexRenderer text={question.text} />
+              {expanded ? (
+                <BlockText text={question.text} />
+              ) : (
+                <KatexRenderer text={question.text} />
+              )}
             </div>
           </div>
           <ChevronDown
@@ -195,7 +200,7 @@ export default function QuestionCard({
           >
             {question.context && !hideContext && (
               <div className="pt-3 text-sm italic text-muted-foreground">
-                <KatexRenderer text={question.context} />
+                <BlockText text={question.context} />
               </div>
             )}
 

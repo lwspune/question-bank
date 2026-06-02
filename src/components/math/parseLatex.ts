@@ -31,6 +31,28 @@ export function splitBold(text: string): { bold: boolean; text: string }[] {
   return out;
 }
 
+/**
+ * Mask every math zone (`\(...\)`, `\[...\]`, `$...$`, `$$...$$`) to an opaque
+ * Private-Use-Area sentinel and return the masked string plus an `unmask` that
+ * restores the ORIGINAL math verbatim. Lets line/pipe/structure scanners (e.g.
+ * the table parser) operate without mistaking a `|` inside `\(|A|\)` for a
+ * column separator. Pure; additive — `parseRichText` keeps its own inline copy.
+ */
+export function maskMathZones(input: string): {
+  masked: string;
+  unmask: (s: string) => string;
+} {
+  const zones: string[] = [];
+  const masked = input.replace(MATH_PATTERN, (raw) => {
+    const i = zones.length;
+    zones.push(raw);
+    return MASK_OPEN + i + MASK_CLOSE;
+  });
+  const re = new RegExp(MASK_OPEN + "(\\d+)" + MASK_CLOSE, "g");
+  const unmask = (s: string) => s.replace(re, (_, i) => zones[Number(i)] ?? "");
+  return { masked, unmask };
+}
+
 export type RichInline =
   | { type: "text"; content: string }
   | { type: "bold"; content: string }
