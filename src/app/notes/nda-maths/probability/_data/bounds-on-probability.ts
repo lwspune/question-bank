@@ -96,12 +96,13 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "If \\(P(A) = \\dfrac{3}{4}\\) and \\(P(B) = \\dfrac{5}{8}\\), what is the minimum value of \\(P(A \\cup B)\\)?",
+          "If \\(P(A) = \\dfrac{2}{3}\\) and \\(P(B) = \\dfrac{3}{5}\\), find the minimum value of \\(P(A \\cup B)\\) and the maximum value of \\(P(A \\cap B)\\).",
         steps: [
-          "Minimum union is reached when \\(B\\) sits as far inside \\(A\\) as possible: \\(\\min P(A \\cup B) = \\max(P(A), P(B))\\).",
-          "\\(= \\max\\left(\\dfrac{3}{4}, \\dfrac{5}{8}\\right) = \\dfrac{3}{4}\\).",
+          "Both extremes occur at maximum overlap (\\(B\\) pushed as far inside \\(A\\) as possible).",
+          "Minimum union: \\(\\min P(A \\cup B) = \\max(P(A), P(B)) = \\max\\left(\\dfrac{2}{3}, \\dfrac{3}{5}\\right) = \\dfrac{2}{3}\\).",
+          "Maximum intersection: \\(\\max P(A \\cap B) = \\min(P(A), P(B)) = \\min\\left(\\dfrac{2}{3}, \\dfrac{3}{5}\\right) = \\dfrac{3}{5}\\).",
         ],
-        answer: "\\(\\dfrac{3}{4}\\)",
+        answer: "\\(\\min P(A \\cup B) = \\dfrac{2}{3}\\); \\(\\max P(A \\cap B) = \\dfrac{3}{5}\\).",
       },
       selfCheckExample: {
         prompt:
