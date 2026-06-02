@@ -51,7 +51,7 @@ export const APPLICATIONS_NOTE: SubtopicNote = {
         answer: "Emits an ultrasonic pulse; SONAR uses ultrasonic, NOT audible sound.",
       },
       practiceSet: [
-        { prompt: "SONAR stands for ___.", answer: "Sound Navigation And Ranging" },
+        { prompt: "Which device measures sea depth or detects submarines by emitting an ultrasonic pulse and timing its echo?", answer: "SONAR (Sound Navigation And Ranging)" },
         { prompt: "What kind of waves does SONAR use?", answer: "Ultrasonic", method: "NOT audible sound — ultrasonic gives better resolution + immunity to audible noise" },
         { prompt: "Bats detect obstacles by receiving reflected ___ waves.", answer: "Ultrasonic" },
         { prompt: "RADAR uses what kind of waves?", answer: "Radio waves (electromagnetic)", method: "RAdio Detection And Ranging" },
@@ -127,7 +127,7 @@ export const APPLICATIONS_NOTE: SubtopicNote = {
           "Microphone: sound → electrical. Loudspeaker: electrical → sound.",
       },
       practiceSet: [
-        { prompt: "A microphone converts ___ to ___.", answer: "Sound waves to electrical signals" },
+        { prompt: "When you speak into a microphone, sound energy is converted into ___.", answer: "An electrical signal" },
         { prompt: "A loudspeaker converts ___ to ___.", answer: "Electrical signals to sound waves", method: "loudspeaker = microphone run in reverse" },
         { prompt: "What kind of crystal can convert electrical pulses into ultrasonic mechanical vibrations?", answer: "Piezoelectric crystal", method: "used in SONAR + medical-imaging probes" },
       ],
