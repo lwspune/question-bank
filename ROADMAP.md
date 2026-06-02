@@ -73,13 +73,16 @@ Per-chapter sweep for LaTeX formatting, broken math, hallucinated solutions, and
 
 Per-subject narratives + per-row decisions are in CLAUDE.md "Decisions log" 2026-05-27 entries. Per-chapter / per-flip register in [[content-audit-progress]].
 
-### Pending — MHT-CET (4,718 q · 79 chapters)
+### Pending — MHT-CET Chemistry only (1,553 q · 29 chapters)
+
+MHT-CET **Maths** (1,587 q) and **Physics** (1,574 q) closed at probe-flagged + screenshot-verified surface on 2026-06-02 — see CLAUDE.md "Decisions log" (Physics contributed 22 wrong-key flips). Only Chemistry remains.
 
 | Subject | q | Chapters |
 |---|---|---|
-| MHT-CET Maths | 1,588 | 26 |
-| MHT-CET Physics | 1,577 | 24 |
 | MHT-CET Chemistry | 1,553 | 29 |
+
+**Pre-flagged rows deferred from closed audits — revisit on the next content pass:**
+- `5044c336` (MHT-CET Sequences & Series · "sin(θ−α), sinθ, sin(θ+α) in H.P. → cos²θ"): **probable wrong-key** (a stealth case — bank solution likely agrees with a wrong key, so the matches-option probe never flagged it). Surfaced 2026-06-02 by cross-referencing its Trig-II sibling `b358ae2f` ("…→ cos2θ", answer `(1−4cos²α)/2`): `5044c336`'s `(1−2cos²α)/2` doesn't reconcile. Also arguably misfiled to Sequences (it's a trigonometry question). Derive the HP→cos²θ result independently, flip the key if wrong, and consider moving it to Trigonometry-II. Not touched during the 2026-06-02 Sequences bank-hygiene fix (out of hygiene scope).
 
 **Prerequisite for MHT-CET audit:** the gdrive `PYQPs/MHT-CET/` folder is enumerated (2026-05-27) with year sub-folders 2021–2025, but it's lightly populated — most years have `MHT_CET_{year}_QP.docx` + `_AK.docx` (annual), and 2025 has only 1 of ~14 per-shift PDFs (`MHT_CET_2025_14th_May_Shift_2_QP.pdf`). Compared with NDA gdrive (22 PDFs covering full years 2015–2026), MHT-CET source coverage is sparser. The audit can proceed where DB rows have year/shift metadata that matches an available source file; rows from unavailable shifts (~90% of 2025) will need to defer or rely on internal-consistency derivation only.
 
