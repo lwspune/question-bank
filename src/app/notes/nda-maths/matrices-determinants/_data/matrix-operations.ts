@@ -60,14 +60,14 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         "to solve for unknown entries.",
       authoredExample: {
         prompt:
-          "If \\(\\begin{pmatrix} x+y & y \\\\ x & x-y \\end{pmatrix} \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ -1 \\end{pmatrix}\\), find \\(x\\) and \\(y\\).",
+          "If \\(3A - B = \\begin{pmatrix} 4 & 5 \\\\ 9 & 1 \\end{pmatrix}\\), where \\(A = \\begin{pmatrix} x & 2 \\\\ 3 & 1 \\end{pmatrix}\\) and \\(B = \\begin{pmatrix} 2 & 1 \\\\ 0 & y \\end{pmatrix}\\), find \\(x\\) and \\(y\\).",
         steps: [
-          "Multiply out the left side: \\(\\begin{pmatrix} 3(x+y) - 2y \\\\ 3x - 2(x-y) \\end{pmatrix} = \\begin{pmatrix} 3x + y \\\\ x + 2y \\end{pmatrix}\\).",
-          "Equate entries: \\(3x + y = 3\\) and \\(x + 2y = -1\\).",
-          "Solve: from the first, \\(y = 3 - 3x\\); substitute: \\(x + 2(3-3x) = -1 \\Rightarrow -5x + 6 = -1 \\Rightarrow x = \\tfrac75\\)... ",
-          "Re-solve cleanly: \\(6x + 2y = 6\\) and \\(x + 2y = -1\\); subtract → \\(5x = 7 \\Rightarrow x = \\tfrac{7}{5},\\ y = 3 - \\tfrac{21}{5} = -\\tfrac{6}{5}\\).",
+          "Scalar-multiply: \\(3A = \\begin{pmatrix} 3x & 6 \\\\ 9 & 3 \\end{pmatrix}\\).",
+          "Subtract entrywise: \\(3A - B = \\begin{pmatrix} 3x - 2 & 5 \\\\ 9 & 3 - y \\end{pmatrix}\\).",
+          "Equate with \\(\\begin{pmatrix} 4 & 5 \\\\ 9 & 1 \\end{pmatrix}\\): \\(3x - 2 = 4\\) and \\(3 - y = 1\\).",
+          "Solve: \\(x = 2,\\ y = 2\\). (The off-diagonal entries 5 and 9 already match — a built-in consistency check.)",
         ],
-        answer: "\\(x = \\tfrac{7}{5},\\ y = -\\tfrac{6}{5}\\) (equate entries, then solve the linear pair).",
+        answer: "\\(x = 2,\\ y = 2\\).",
       },
       selfCheckExample: {
         prompt:
@@ -84,7 +84,7 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         { prompt: "If \\(\\begin{pmatrix}x\\\\2\\end{pmatrix} = \\begin{pmatrix}5\\\\y\\end{pmatrix}\\), find x, y.", answer: "\\(x=5,\\ y=2\\)" },
         { prompt: "Two matrices are equal when?", answer: "Same order and all corresponding entries equal" },
       ],
-      pyqExampleId: "66be5b2d-1d73-4dfe-a01b-724f4ee89f1f", // 2017 — solve x,y by equating
+      pyqExampleId: "a79ab046-7433-4f42-96d5-821b7a6a763f", // 2017 — scalar multiple kA (k = 1/2i)
     },
 
     // C3 — multiplication
