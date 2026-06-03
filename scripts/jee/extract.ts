@@ -1,16 +1,18 @@
 /**
- * JEE Mains pilot extractor — Paper 1 only.
+ * JEE Mains extractor — one paper.
  *
- *   npx tsx scripts/jee/extract.ts "C:/tmp/PYQPs/JEE_Mains/2021/Paper 1.docx"
+ *   npx tsx scripts/jee/extract.ts "<path/to/Paper N.docx>" <paperId>
+ *   e.g. npx tsx scripts/jee/extract.ts "C:/tmp/PYQPs/JEE_Mains/2021/Paper 2.docx" 2021-p2
  *
  * Runs pandoc (OMML -> LaTeX + media extraction), segments MCQs, joins the
  * answer key + worked solution from the sibling " soln.docx", and writes an
- * inspectable JSON artifact. NOTHING is written to the database here.
+ * inspectable JSON artifact (out/<paperId>.records.json). NOTHING hits the DB.
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { contentHash } from "../../src/lib/upload/hash";
+import { mdPath, solnMdPath, mediaDir, recordsPath, requirePaperId } from "./config";
 import {
   segmentQuestions,
   parseAnswerTokens,
@@ -76,15 +78,15 @@ function main() {
   const solnDocx = join(dirname(questionDocx), basename(questionDocx).replace(/\.docx$/i, " soln.docx"));
   if (!existsSync(solnDocx)) throw new Error(`solution docx not found: ${solnDocx}`);
 
+  const paperId = requirePaperId(process.argv, 3, 'extract.ts "<Paper N.docx>" <paperId>');
   const pandoc = findPandoc();
-  const outDir = join(__dirname, "out");
-  const mediaDir = join(outDir, "media");
-  mkdirSync(mediaDir, { recursive: true });
+  const media = mediaDir(paperId);
+  mkdirSync(media, { recursive: true });
 
-  const qMd = join(outDir, "paper1.md");
-  const sMd = join(outDir, "paper1_soln.md");
+  const qMd = mdPath(paperId);
+  const sMd = solnMdPath(paperId);
   console.log(`[pandoc] ${basename(questionDocx)} -> markdown (+media)`);
-  pandocToMd(pandoc, questionDocx, qMd, mediaDir);
+  pandocToMd(pandoc, questionDocx, qMd, media);
   console.log(`[pandoc] ${basename(solnDocx)} -> markdown`);
   pandocToMd(pandoc, solnDocx, sMd);
 
@@ -145,13 +147,13 @@ function main() {
     };
   });
 
-  const jsonPath = join(outDir, "paper1.records.json");
+  const jsonPath = recordsPath(paperId);
   writeFileSync(jsonPath, JSON.stringify(records, null, 2), "utf8");
 
   // ---- summary ----
   const by = (pred: (r: PilotRecord) => boolean) => records.filter(pred).length;
   const subj = (s: JeeSubject) => records.filter((r) => r.subject === s);
-  console.log(`\n=== Paper 1 extraction summary ===`);
+  console.log(`\n=== ${paperId} extraction summary ===`);
   console.log(`total blocks:        ${records.length}`);
   for (const s of ["Physics", "Chemistry", "Maths"] as JeeSubject[]) {
     const arr = subj(s);
