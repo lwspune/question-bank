@@ -53,13 +53,18 @@ async function main() {
   // Image-only / empty source solutions: fall back to a hand-authored text solution
   // if one exists, else write NULL (the bank solution field is text-only).
   const prepared = mcq.map((r) => {
-    const cleaned = applyFixes(r.questionNumber, r.solution ?? "", paper.solutionFixes);
-    let solution: string | null = cleaned.trim() ? cleaned : null;
-    let src: "source" | "authored" | "none" = solution ? "source" : "none";
+    // An authored solution WINS over source — we only author where the source was
+    // empty OR broken (e.g. a piecewise-matrix derivation KaTeX can't render).
     const authoredText = paper.authoredSolutions?.[String(r.questionNumber)];
-    if (!solution && authoredText) {
+    let solution: string | null;
+    let src: "source" | "authored" | "none";
+    if (authoredText) {
       solution = normalizeNewlines(authoredText);
       src = "authored";
+    } else {
+      const cleaned = applyFixes(r.questionNumber, r.solution ?? "", paper.solutionFixes);
+      solution = cleaned.trim() ? cleaned : null;
+      src = solution ? "source" : "none";
     }
     return { num: r.questionNumber, solution, src, check: solution ? mathOk(solution) : { ok: true } };
   });
