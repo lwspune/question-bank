@@ -6,7 +6,7 @@
  * Rich Results test reads this without executing JS.
  */
 
-const SITE_URL = "https://question-bank-sage.vercel.app";
+const SITE_URL = "https://www.pyqvault.com";
 const PUBLISHER_NAME = "LWS Pune — Question Bank";
 const DATE_PUBLISHED = "2026-05-13";
 

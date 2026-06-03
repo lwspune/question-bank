@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://question-bank-sage.vercel.app";
+const SITE_URL = "https://www.pyqvault.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {

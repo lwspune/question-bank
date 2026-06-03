@@ -105,7 +105,7 @@ export default function NdaChemistryOpenGraphImage() {
             color: "#bbf7d0",
           }}
         >
-          <span>question-bank-sage.vercel.app/guide/nda-chemistry</span>
+          <span>pyqvault.com/guide/nda-chemistry</span>
         </div>
       </div>
     ),

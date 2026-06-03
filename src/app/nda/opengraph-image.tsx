@@ -105,7 +105,7 @@ export default function NdaHomeOpenGraphImage() {
             color: "#94a3b8",
           }}
         >
-          <span>question-bank-sage.vercel.app/nda</span>
+          <span>pyqvault.com/nda</span>
         </div>
       </div>
     ),

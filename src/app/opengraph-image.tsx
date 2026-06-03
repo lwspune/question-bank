@@ -88,7 +88,7 @@ export default function OpenGraphImage() {
             color: "#64748b",
           }}
         >
-          <span>question-bank-sage.vercel.app</span>
+          <span>pyqvault.com</span>
         </div>
       </div>
     ),
