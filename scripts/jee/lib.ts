@@ -45,7 +45,10 @@ export function sanitizeLatex(s: string): string {
 
 // Bare math operators that render as italic variable products (l·o·g) unless
 // upgraded to their upright macro (\log). Longest-first so `sinh` wins over `sin`.
-const MATH_FUNCS = "sinh|cosh|tanh|cosec|csc|sec|sin|cos|tan|cot|log|ln|lim|exp";
+// `sec` is deliberately EXCLUDED — it collides with the time unit "sec"/"m/sec",
+// and source secants are already written `\sec`; the false-positive risk on units
+// outweighs the rare bare-secant upgrade.
+const MATH_FUNCS = "sinh|cosh|tanh|cosec|csc|sin|cos|tan|cot|log|ln|lim|exp";
 const FUNC_RE = new RegExp("(?<![\\\\A-Za-z])(" + MATH_FUNCS + ")([A-Za-z]?)", "g");
 
 function fixFuncsInZone(zone: string): string {
@@ -114,6 +117,20 @@ export function parseAnswerTokens(solnMd: string): Map<number, string> {
 }
 
 /**
+ * Solution numbers that appear more than once — a source-doc typo (a block
+ * mis-numbered as an earlier question) silently corrupts the answer key via
+ * Map last-wins. Surface it so the affected keys get an answerOverride.
+ */
+export function findDuplicateSolutionNumbers(solnMd: string): number[] {
+  const counts = new Map<number, number>();
+  for (const m of solnMd.matchAll(ANSWER_TOKEN)) {
+    const n = Number(m[1]);
+    counts.set(n, (counts.get(n) ?? 0) + 1);
+  }
+  return [...counts.entries()].filter(([, c]) => c > 1).map(([n]) => n).sort((a, b) => a - b);
+}
+
+/**
  * JEE Mains 2021: each subject part is 30 questions — 20 MCQ (Section A)
  * then 10 numerical (Section B). Position is the reliable A/B discriminator;
  * stray `(a)..(d)` markers inside a "Number of ... among the following" count
@@ -165,16 +182,24 @@ const MARKERS = ["(a)", "(b)", "(c)", "(d)"] as const;
 export function parseOptionsFromText(
   text: string
 ): { stem: string; options: string[] } | null {
+  // Find `marker` at/after `from`, skipping match-list codes like `(a)-(ii)`
+  // where the paren is immediately followed by a hyphen (not an option marker).
+  const nextMarker = (marker: string, from: number): number => {
+    let i = text.indexOf(marker, from);
+    while (i !== -1 && text[i + 3] === "-") i = text.indexOf(marker, i + 1);
+    return i;
+  };
+
   const aIdxs: number[] = [];
-  for (let i = text.indexOf("(a)"); i !== -1; i = text.indexOf("(a)", i + 1)) aIdxs.push(i);
+  for (let i = nextMarker("(a)", 0); i !== -1; i = nextMarker("(a)", i + 1)) aIdxs.push(i);
 
   for (let k = aIdxs.length - 1; k >= 0; k--) {
     const idxA = aIdxs[k];
-    const idxB = text.indexOf("(b)", idxA + 3);
+    const idxB = nextMarker("(b)", idxA + 3);
     if (idxB === -1) continue;
-    const idxC = text.indexOf("(c)", idxB + 3);
+    const idxC = nextMarker("(c)", idxB + 3);
     if (idxC === -1) continue;
-    const idxD = text.indexOf("(d)", idxC + 3);
+    const idxD = nextMarker("(d)", idxC + 3);
     if (idxD === -1) continue;
 
     const stem = text.slice(0, idxA).trim();
@@ -195,7 +220,7 @@ const PART_SUBJECT: { re: RegExp; subject: JeeSubject }[] = [
   { re: /PART-?\s*III\b.*MATHEMATIC/i, subject: "Maths" },
 ];
 
-const Q_START = /^(\d+)\.\s/;
+const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 const SECTION_OR_PART = /PART-|SECTION/i;
 
 /** Segment the whole question markdown into per-question blocks. */
@@ -247,7 +272,7 @@ export function segmentQuestions(md: string): RawQuestion[] {
     if (SECTION_OR_PART.test(line)) continue; // stray section headers
     if (line.trim() === "" || line.trim() === "<!-- -->") continue;
 
-    cur.textParts.push(line.replace(/\\$/, "").trim()); // drop pandoc hard-break backslash
+    cur.textParts.push(line.replace(/(?<!\\)\\$/, "").trim()); // drop a single pandoc hard-break `\`, but keep matrix `\\`
   }
   flush();
   return out;
