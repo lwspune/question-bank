@@ -41,7 +41,7 @@ export function latexToOmml(
     if (!omml || typeof omml !== "string" || !omml.includes("m:oMath")) {
       return null;
     }
-    return sanitizeOmmlForXml(omml);
+    return wrapMatrixDelimiters(sanitizeOmmlForXml(omml));
   } catch {
     return null;
   }
@@ -61,6 +61,51 @@ export function sanitizeOmmlForXml(omml: string): string {
     /<m:t(\s[^>]*)?>([\s\S]*?)<\/m:t>/g,
     (_, attrs, content) => `<m:t${attrs ?? ""}>${escapeXmlText(content)}</m:t>`
   );
+}
+
+// mml2omml converts a LaTeX matrix environment's grid to a proper OMML
+// matrix (<m:m>), but renders the surrounding stretchy fence operators
+// (the (), [], or || from pmatrix/bmatrix/vmatrix) as plain single-line
+// text runs flanking the grid — so Word draws tiny, detached brackets
+// that don't enclose the matrix. Rewrite the `fence-run + <m:m> + fence-run`
+// shape into a real OMML delimiter object (<m:d>) whose begChr/endChr Word
+// stretches to the matrix height — turning vmatrix into a proper
+// determinant and pmatrix/bmatrix into proper bracketed matrices.
+//
+// Only a fence run IMMEDIATELY adjacent to <m:m> is consumed, so ordinary
+// parenthesised math (f(x)) and a fence-less \begin{matrix} are untouched.
+const MATRIX_FENCE_CLOSE: Record<string, string> = {
+  "(": ")",
+  "[": "]",
+  "|": "|",
+  "{": "}",
+  "‖": "‖",
+};
+
+const MATRIX_DELIM_RE = new RegExp(
+  // opening fence run, immediately before the matrix
+  "<m:r>(?:<m:rPr>[\\s\\S]*?</m:rPr>)?<m:t[^>]*>([(\\[|{‖])</m:t></m:r>" +
+    // the matrix grid (matrices don't nest in this bank)
+    "(<m:m>[\\s\\S]*?</m:m>)" +
+    // closing fence run, immediately after
+    "<m:r>(?:<m:rPr>[\\s\\S]*?</m:rPr>)?<m:t[^>]*>([)\\]|}‖])</m:t></m:r>",
+  "g"
+);
+
+export function wrapMatrixDelimiters(omml: string): string {
+  return omml.replace(MATRIX_DELIM_RE, (whole, open, matrix, close) => {
+    // Only wrap when the captured chars form a recognised fence pair; a
+    // mismatched open/close is left untouched (defensive — shouldn't occur
+    // for temml-emitted matrices).
+    if (MATRIX_FENCE_CLOSE[open] !== close) return whole;
+    return (
+      "<m:d><m:dPr>" +
+      `<m:begChr m:val="${open}"/>` +
+      `<m:endChr m:val="${close}"/>` +
+      "<m:ctrlPr/></m:dPr>" +
+      `<m:e>${matrix}</m:e></m:d>`
+    );
+  });
 }
 
 function escapeXmlText(s: string): string {
