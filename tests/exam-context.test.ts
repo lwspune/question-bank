@@ -11,10 +11,11 @@ import {
 } from "@/lib/exam/examContext";
 
 describe("EXAM_REGISTRY", () => {
-  it("includes NDA and MHT-CET as known exams", () => {
+  it("includes NDA, MHT-CET and JEE Mains as known exams", () => {
     const slugs = EXAM_REGISTRY.map((e) => e.slug);
     expect(slugs).toContain("nda");
     expect(slugs).toContain("mht-cet");
+    expect(slugs).toContain("jee-mains");
   });
 
   it("each exam has a non-empty display name and exam name", () => {
@@ -35,6 +36,7 @@ describe("isExamSlug", () => {
   it("accepts known slugs", () => {
     expect(isExamSlug("nda")).toBe(true);
     expect(isExamSlug("mht-cet")).toBe(true);
+    expect(isExamSlug("jee-mains")).toBe(true);
   });
 
   it("rejects unknown values", () => {
@@ -104,6 +106,10 @@ describe("resolveNotesHref", () => {
 
   it("returns /notes/mht-cet-maths for mht-cet (notes subtree shipped 2026-05-30)", () => {
     expect(resolveNotesHref("mht-cet")).toBe("/notes/mht-cet-maths");
+  });
+
+  it("returns /notes for jee-mains (no notes subtree yet — falls back to index)", () => {
+    expect(resolveNotesHref("jee-mains")).toBe("/notes");
   });
 
   it("returns /notes for null exam", () => {
