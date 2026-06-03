@@ -7,8 +7,14 @@ import { parseLatex } from "../../src/components/math/parseLatex";
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-type Opt = { label: string; text: string };
-type Row = { question_number: string; text: string; context: string | null; solution: string | null; options: Opt[] };
+type Opt = { label: string; text: string; image_url: string | null };
+type Row = { question_number: string; text: string; context: string | null; solution: string | null; image_url: string | null; options: Opt[] };
+
+// Stem references a visual element (reaction scheme / figure / circuit / graph /
+// diagram) that should have an image. A figure that silently failed to extract
+// passes every render/leak/artifact scan yet leaves the question unanswerable.
+const VISUAL_REF =
+  /\b(following|given|above|below)\s+(chemical\s+)?(reaction|figure|circuit|diagram|graph|structure|scheme)\b|\bshown\s+(in\s+the\s+\w+|above|below)\b|\bin\s+the\s+(figure|circuit|diagram|graph)\b|\bradial\s+distribution\b|\bgiven\s+below\s+are\s+the\s+(plots|graphs|figures)\b/i;
 
 function check(text: string): string | null {
   for (const seg of parseLatex(text)) {
@@ -28,7 +34,7 @@ async function main() {
   });
   const { data, error } = await client
     .from("questions")
-    .select("question_number, text, context, solution, options(label, text)")
+    .select("question_number, text, context, solution, image_url, options(label, text, image_url)")
     .eq("exam_id", EXAM_ID);
   if (error) throw new Error(error.message);
   const rows = (data ?? []) as Row[];
@@ -37,7 +43,16 @@ async function main() {
   let broken = 0;
   let mdLeaks = 0;
   let artifacts = 0;
+  let incomplete = 0;
   for (const r of rows) {
+    // Completeness ≠ renderability: a visual-referencing stem with no image
+    // anywhere is probably missing a figure that failed to extract.
+    // Skip if the stem renders the content in display math (`\[...\]`) — the
+    // reaction/figure is shown as text, not a missing image (e.g. P1 Q42).
+    if (VISUAL_REF.test(r.text) && !/\\\[/.test(r.text) && !r.image_url && r.options.every((o) => !o.image_url)) {
+      incomplete++;
+      console.log(`Q${r.question_number} [INCOMPLETE?] visual-ref stem but no image: ${r.text.slice(0, 70)}`);
+    }
     const fields: [string, string][] = [["text", r.text]];
     if (r.context) fields.push(["context", r.context]);
     if (r.solution) fields.push(["solution", r.solution]);
@@ -64,7 +79,7 @@ async function main() {
       }
     }
   }
-  console.log(`\n${rows.length} questions checked | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts}`);
+  console.log(`\n${rows.length} questions checked | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts} | incomplete? ${incomplete} (soft — review each)`);
 }
 
 main().catch((e) => {
