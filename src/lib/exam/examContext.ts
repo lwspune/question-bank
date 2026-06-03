@@ -10,7 +10,7 @@
  * redirect to a sensible default.
  */
 
-export type ExamSlug = "nda" | "mht-cet";
+export type ExamSlug = "nda" | "mht-cet" | "jee-mains";
 
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
@@ -39,6 +39,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "MHT-CET",
     guidesPath: null,
     notesPath: "/notes/mht-cet-maths",
+  },
+  {
+    slug: "jee-mains",
+    displayName: "JEE Mains",
+    examName: "JEE Mains", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: null, // no /notes subtree yet — falls back to the index
   },
 ] as const;
 
