@@ -17,7 +17,7 @@ import { ROUTES as POLITY_ROUTES } from "@/app/guide/nda-polity/_data/nda-polity
 import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
-const SITE_URL = "https://question-bank-sage.vercel.app";
+const SITE_URL = "https://www.pyqvault.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -105,7 +105,7 @@ export default function GuideOpenGraphImage() {
             color: "#64748b",
           }}
         >
-          <span>question-bank-sage.vercel.app/guide</span>
+          <span>pyqvault.com/guide</span>
         </div>
       </div>
     ),

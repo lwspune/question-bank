@@ -18,7 +18,7 @@ const sourceSerif = Source_Serif_4({
   variable: "--font-serif",
 });
 
-const SITE_URL = "https://question-bank-sage.vercel.app";
+const SITE_URL = "https://www.pyqvault.com";
 const SITE_NAME = "Question Bank";
 const SITE_DESCRIPTION =
   "Build a question paper in 60 seconds. Free past-year questions for entrance exams — filter by exam, chapter, difficulty, and download Question Paper + Answer Key as Word. MHT-CET available; NDA, IPMAT, CUET, NEET, JEE Main coming soon.";

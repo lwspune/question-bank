@@ -105,7 +105,7 @@ export default function NdaBiologyOpenGraphImage() {
             color: "#bbf7d0",
           }}
         >
-          <span>question-bank-sage.vercel.app/guide/nda-biology</span>
+          <span>pyqvault.com/guide/nda-biology</span>
         </div>
       </div>
     ),
