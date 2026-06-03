@@ -68,6 +68,11 @@ describe("cleanText", () => {
   it("strips pandoc <!-- --> separators", () => {
     expect(cleanText("step one <!-- --> step two")).toBe("step one step two");
   });
+
+  it("strips a leaked trailing hard-break backslash but keeps math closes", () => {
+    expect(cleanText("S stands for :\\")).toBe("S stands for :");
+    expect(cleanText("the value is $x$")).toBe("the value is \\(x\\)"); // trailing \) kept
+  });
 });
 
 describe("parseAnswerKey", () => {

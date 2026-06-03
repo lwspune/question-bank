@@ -93,6 +93,7 @@ export function cleanText(s: string): string {
   out = out.replace(/\$\$([\s\S]+?)\$\$/g, "\\[$1\\]");
   out = out.replace(/\$([^$]+?)\$/g, "\\($1\\)");
   out = out.replace(/\s+/g, " ").trim();
+  out = out.replace(/(?<!\\)\\$/, "").trimEnd(); // strip a leaked trailing hard-break `\` (keeps `\\` and `\)`)
   return out;
 }
 

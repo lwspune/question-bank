@@ -76,7 +76,8 @@ function repairGluedMacros(text: string): string {
 }
 
 /** Full cosmetic + repair transform for one field. */
-const fix = (s: string): string => repairGluedMacros(normalizeMathFunctions(s));
+const fix = (s: string): string =>
+  repairGluedMacros(normalizeMathFunctions(s)).replace(/(?<!\\)\\\s*$/, "").trimEnd();
 
 async function main() {
   const apply = process.argv.includes("--apply");
