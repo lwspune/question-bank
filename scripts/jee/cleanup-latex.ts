@@ -75,9 +75,23 @@ function repairGluedMacros(text: string): string {
   });
 }
 
+/**
+ * Repair split `\(...\)` delimiters: pandoc breaks an option's math at the field
+ * boundary, leaving the OPEN `\(` dangling at the end of the previous field and
+ * the next field starting mid-math. Per field: drop a trailing dangling `\(`, and
+ * prepend `\(` when the first delimiter seen is a `\)` (field starts inside math).
+ */
+function repairSplitDelimiters(s: string): string {
+  let out = s.replace(/\s*\\\(\s*$/, ""); // trailing dangling open
+  const fo = out.indexOf("\\(");
+  const fc = out.indexOf("\\)");
+  if (fc !== -1 && (fo === -1 || fc < fo)) out = "\\(" + out; // missing leading open
+  return out;
+}
+
 /** Full cosmetic + repair transform for one field. */
 const fix = (s: string): string =>
-  repairGluedMacros(normalizeMathFunctions(s)).replace(/(?<!\\)\\\s*$/, "").trimEnd();
+  repairSplitDelimiters(repairGluedMacros(normalizeMathFunctions(s)).replace(/(?<!\\)\\\s*$/, "").trimEnd());
 
 async function main() {
   const apply = process.argv.includes("--apply");
