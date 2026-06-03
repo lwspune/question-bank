@@ -14,7 +14,7 @@ import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { SOLUTION_FIXES } from "./classification";
+import { SOLUTION_FIXES, AUTHORED_SOLUTIONS } from "./classification";
 
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
 
@@ -48,19 +48,26 @@ async function main() {
   const records: Rec[] = JSON.parse(readFileSync(join(__dirname, "out", "paper1.records.json"), "utf8"));
   const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
 
-  // Image-only source solutions clean to "" — the bank solution field is text-only,
-  // so write NULL (clears any stale value) rather than garbage.
+  // Image-only / empty source solutions: fall back to a hand-authored text solution
+  // if one exists, else write NULL (the bank solution field is text-only).
   const prepared = mcq.map((r) => {
     const cleaned = applyFixes(r.questionNumber, r.solution ?? "");
-    const solution = cleaned.trim() ? cleaned : null;
-    return { num: r.questionNumber, solution, check: solution ? mathOk(solution) : { ok: true } };
+    let solution: string | null = cleaned.trim() ? cleaned : null;
+    let src: "source" | "authored" | "none" = solution ? "source" : "none";
+    if (!solution && AUTHORED_SOLUTIONS[r.questionNumber]) {
+      solution = normalizeNewlines(AUTHORED_SOLUTIONS[r.questionNumber]);
+      src = "authored";
+    }
+    return { num: r.questionNumber, solution, src, check: solution ? mathOk(solution) : { ok: true } };
   });
 
   const broken = prepared.filter((p) => !p.check.ok);
   const cleared = prepared.filter((p) => p.solution === null);
-  const text = prepared.filter((p) => p.solution !== null && p.check.ok);
-  console.log(`solutions: ${prepared.length} total | ${text.length} text | ${cleared.length} image-only (→ null) | ${broken.length} broken (skip)`);
-  if (cleared.length) console.log(`  cleared: ${cleared.map((p) => "Q" + p.num).join(", ")}`);
+  const source = prepared.filter((p) => p.src === "source" && p.check.ok);
+  const authored = prepared.filter((p) => p.src === "authored" && p.check.ok);
+  console.log(`solutions: ${prepared.length} total | ${source.length} source | ${authored.length} authored | ${cleared.length} still null | ${broken.length} broken (skip)`);
+  if (authored.length) console.log(`  authored: ${authored.map((p) => "Q" + p.num).join(", ")}`);
+  if (cleared.length) console.log(`  null (no solution): ${cleared.map((p) => "Q" + p.num).join(", ")}`);
   for (const b of broken) console.log(`  broken Q${b.num}: ${b.check.err}`);
 
   if (!apply) {
