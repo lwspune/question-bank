@@ -85,9 +85,20 @@ async function main() {
   // skips ones that weren't committed (e.g. an un-resolved needs_review row).
   const imgRecs = records.filter((r) => r.status !== "skipped_numerical" && r.imageRefs.length > 0);
 
+  // Records whose image layout planFor can't resolve (e.g. an unusual count like a
+  // 2-scheme + 4-option question) are skipped with a warning and handled by a
+  // dedicated one-off (composite the stem schemes + attach options manually).
+  const skip = new Set<number>();
   console.log(`${imgRecs.length} image-bearing questions.`);
   for (const r of imgRecs) {
-    const plan = planFor(r);
+    let plan: ReturnType<typeof planFor>;
+    try {
+      plan = planFor(r);
+    } catch (e) {
+      skip.add(r.questionNumber);
+      console.warn(`  ${(e as Error).message} — SKIPPING (handle manually)`);
+      continue;
+    }
     console.log(`Q${r.questionNumber} [${r.status}] qImage=${plan.qImage ? "yes" : "-"} optImages=[${Object.keys(plan.optImages).join("")}]`);
   }
   if (!apply) {
@@ -102,6 +113,7 @@ async function main() {
   let qSet = 0;
   let optSet = 0;
   for (const r of imgRecs) {
+    if (skip.has(r.questionNumber)) continue;
     const plan = planFor(r);
     const { data: q } = await client
       .from("questions")

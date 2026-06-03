@@ -221,6 +221,17 @@ const PART_SUBJECT: { re: RegExp; subject: JeeSubject }[] = [
   { re: /PART-?\s*III\b.*MATHEMATIC/i, subject: "Maths" },
 ];
 
+/**
+ * Subject from the global question number — the authoritative discriminator.
+ * JEE Mains numbering is rigidly continuous: Physics 1-30, Chemistry 31-60,
+ * Maths 61-90. This is more reliable than parsing PART headers, whose wording
+ * varies per paper (e.g. Paper 6's Chemistry header didn't match PART_SUBJECT,
+ * leaving Q31-60 mislabelled Physics until this override).
+ */
+export function subjectForNumber(n: number): JeeSubject {
+  return n <= 30 ? "Physics" : n <= 60 ? "Chemistry" : "Maths";
+}
+
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 const SECTION_OR_PART = /PART-|SECTION/i;
 
@@ -243,7 +254,7 @@ export function segmentQuestions(md: string): RawQuestion[] {
     const parsed = parseOptionsFromText(cleaned);
     out.push({
       number: cur.number,
-      subject: cur.subject,
+      subject: subjectForNumber(cur.number),
       stem: parsed ? parsed.stem : cleaned,
       options: parsed ? parsed.options : null,
       imageRefs,

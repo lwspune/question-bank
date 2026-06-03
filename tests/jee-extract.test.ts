@@ -5,6 +5,7 @@ import {
   parseAnswerTokens,
   findDuplicateSolutionNumbers,
   localSection,
+  subjectForNumber,
   matchValueToOption,
   splitSolutions,
   parseOptionsFromText,
@@ -132,6 +133,17 @@ describe("localSection", () => {
     expect(localSection(55)).toBe("B"); // chemistry numerical count
     expect(localSection(62)).toBe("A"); // maths MCQ
     expect(localSection(81)).toBe("B");
+  });
+});
+
+describe("subjectForNumber", () => {
+  it("maps the continuous 1-90 numbering to Physics/Chemistry/Maths", () => {
+    expect(subjectForNumber(1)).toBe("Physics");
+    expect(subjectForNumber(30)).toBe("Physics");
+    expect(subjectForNumber(31)).toBe("Chemistry");
+    expect(subjectForNumber(60)).toBe("Chemistry");
+    expect(subjectForNumber(61)).toBe("Maths");
+    expect(subjectForNumber(90)).toBe("Maths");
   });
 });
 
