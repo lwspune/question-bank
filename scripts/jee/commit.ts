@@ -48,7 +48,15 @@ function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
     if (!answer) throw new Error(`Q${r.questionNumber}: no answer — add an answerOverride in papers/${paperId}.json`);
 
     const optOverrides = paper.optionOverrides?.[key] ?? {};
-    const options = (r.options ?? []).map((o) => ({
+    const LABELS = ["A", "B", "C", "D"] as const;
+    // A needs_review row whose options didn't parse (r.options null/empty) can be
+    // fully supplied via optionOverrides — if all four labels are present, synthesize
+    // the base set from them; otherwise patch the parsed options as usual.
+    let base = r.options ?? [];
+    if (base.length === 0 && LABELS.every((l) => optOverrides[l])) {
+      base = LABELS.map((l) => ({ label: l, text: optOverrides[l] as string, isCorrect: false }));
+    }
+    const options = base.map((o) => ({
       label: o.label,
       text: normalizeNewlines(optOverrides[o.label] ?? o.text),
       isCorrect: o.label === answer,
