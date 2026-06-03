@@ -1,8 +1,10 @@
 /** KaTeX-validate the extracted MCQ math the same way the app splits it. */
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
+import { recordsPath, requirePaperId } from "./config";
+
+const paperId = requirePaperId(process.argv, 2, "validate.ts <paperId>");
 
 type Rec = {
   questionNumber: number;
@@ -12,7 +14,7 @@ type Rec = {
   options: { label: string; text: string }[] | null;
 };
 
-const records: Rec[] = JSON.parse(readFileSync(join(__dirname, "out", "paper1.records.json"), "utf8"));
+const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
 const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
 
 const bad: { q: number; where: string; math: string; err: string }[] = [];

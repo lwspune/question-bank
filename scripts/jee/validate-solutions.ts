@@ -1,11 +1,12 @@
 /** KaTeX-validate the extracted SOLUTION math, the same way the app splits it. */
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
+import { recordsPath, requirePaperId } from "./config";
 
+const paperId = requirePaperId(process.argv, 2, "validate-solutions.ts <paperId>");
 type Rec = { questionNumber: number; status: string; solution: string | null };
-const records: Rec[] = JSON.parse(readFileSync(join(__dirname, "out", "paper1.records.json"), "utf8"));
+const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
 const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
 const withSol = mcq.filter((r) => r.solution && r.solution.trim());
 

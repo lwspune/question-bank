@@ -1,12 +1,13 @@
 /**
- * Commit the Paper 1 pilot (60 MCQ) into the bank — PRIVATE — via the existing
- * commitStaged pipeline (dedup / taxonomy auto-create / content_hash).
+ * Commit one JEE paper into the bank — PRIVATE — via the existing commitStaged
+ * pipeline (dedup / taxonomy auto-create / content_hash) + an upload_jobs row.
  *
- *   npx tsx scripts/jee/commit.ts          # dry-run (prints what it would insert)
- *   npx tsx scripts/jee/commit.ts --apply  # actually write
+ *   npx tsx scripts/jee/commit.ts <paperId>          # dry-run
+ *   npx tsx scripts/jee/commit.ts <paperId> --apply  # write
  *
- * Idempotent: re-running upserts on content_hash, so dupes are skipped.
- * Images are NOT handled here — see attach-images.ts (Phase 3b).
+ * Reads out/<paperId>.records.json (from extract) + papers/<paperId>.json
+ * (authored classification). Idempotent: re-running upserts on content_hash.
+ * Images + solutions are separate passes (attach-images.ts, attach-solutions.ts).
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -15,14 +16,7 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
-import { CLASSIFICATION, OPTION_OVERRIDES } from "./classification";
-
-const ORG_ID = "5d528776-1263-4d77-bc12-f2836fd6073f"; // LWS Pune
-const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679"; // JEE Mains
-const CREATED_BY = "28528215-c968-40bf-abac-acdc19cc306f"; // admin
-const SOURCE_FILE = "JEE_2021_Paper1.docx";
-const PYQ_YEAR = 2021;
-const PYQ_NOTE = "Paper 1"; // disambiguator only; year is carried separately (avoids "2021 Paper 1 · 2021")
+import { ORG_ID, EXAM_ID, CREATED_BY, loadPaper, recordsPath, requirePaperId, type PaperData } from "./config";
 
 type Rec = {
   questionNumber: number;
@@ -37,14 +31,14 @@ function loadEnv() {
   dotenv.config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
-function buildRows(): ParsedRowPayload[] {
-  const records: Rec[] = JSON.parse(readFileSync(join(__dirname, "out", "paper1.records.json"), "utf8"));
+function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
+  const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
   const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
 
   return mcq.map((r) => {
-    const cls = CLASSIFICATION[r.questionNumber];
-    if (!cls) throw new Error(`no classification for Q${r.questionNumber}`);
-    const overrides = OPTION_OVERRIDES[r.questionNumber] ?? {};
+    const cls = paper.classification[String(r.questionNumber)];
+    if (!cls) throw new Error(`no classification for Q${r.questionNumber} in ${paperId}`);
+    const overrides = paper.optionOverrides?.[String(r.questionNumber)] ?? {};
     const text = normalizeNewlines(r.stem);
     const options = (r.options ?? []).map((o) => ({
       label: o.label,
@@ -72,10 +66,13 @@ function buildRows(): ParsedRowPayload[] {
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  const paperId = requirePaperId(process.argv, 2, "commit.ts <paperId> [--apply]");
   loadEnv();
-  const rows = buildRows();
+  const paper = loadPaper(paperId);
+  const { sourceFile, pyqYear, pyqNote } = paper;
+  const rows = buildRows(paperId, paper);
 
-  console.log(`Built ${rows.length} MCQ rows for JEE Mains Paper 1 (2021).`);
+  console.log(`Built ${rows.length} MCQ rows for JEE Mains ${paperId} (${sourceFile}).`);
   const byChapter = new Map<string, number>();
   for (const r of rows) byChapter.set(`${r.subjectName} · ${r.chapterName}`, (byChapter.get(`${r.subjectName} · ${r.chapterName}`) ?? 0) + 1);
   console.log("\nchapters that will auto-create:");
@@ -97,14 +94,14 @@ async function main() {
     .from("upload_jobs")
     .select("id")
     .eq("org_id", ORG_ID)
-    .eq("filename", SOURCE_FILE)
+    .eq("filename", sourceFile)
     .limit(1)
     .maybeSingle();
   let jobId = existingJob?.id as string | undefined;
   if (!jobId) {
     const { data: job, error: jErr } = await client
       .from("upload_jobs")
-      .insert({ org_id: ORG_ID, filename: SOURCE_FILE, created_by: CREATED_BY, status: "PROCESSING", total_rows: rows.length })
+      .insert({ org_id: ORG_ID, filename: sourceFile, created_by: CREATED_BY, status: "PROCESSING", total_rows: rows.length })
       .select("id")
       .single();
     if (jErr) throw new Error(`upload_jobs insert failed: ${jErr.message}`);
@@ -115,12 +112,12 @@ async function main() {
   const result = await commitStaged(client, {
     orgId: ORG_ID,
     examId: EXAM_ID,
-    filename: SOURCE_FILE,
+    filename: sourceFile,
     createdBy: CREATED_BY,
     rows,
     uploadJobId: jobId,
-    pyqYear: PYQ_YEAR,
-    pyqNote: PYQ_NOTE,
+    pyqYear: pyqYear,
+    pyqNote: pyqNote,
   });
   console.log(`\ncommit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
@@ -131,7 +128,7 @@ async function main() {
     .from("questions")
     .update({ upload_job_id: jobId })
     .eq("exam_id", EXAM_ID)
-    .eq("source_file", SOURCE_FILE)
+    .eq("source_file", sourceFile)
     .is("upload_job_id", null);
 
   // Pilot stays PRIVATE until verified in /browse.
@@ -139,16 +136,16 @@ async function main() {
     .from("questions")
     .update({ visibility: "PRIVATE" }, { count: "exact" })
     .eq("exam_id", EXAM_ID)
-    .eq("source_file", SOURCE_FILE);
+    .eq("source_file", sourceFile);
   if (vErr) throw new Error(`visibility flip failed: ${vErr.message}`);
-  console.log(`set ${count} JEE Paper-1 rows to PRIVATE.`);
+  console.log(`set ${count} JEE rows to PRIVATE.`);
 
   // Finalize the job with accurate, run-count-independent totals.
   const { count: linked } = await client
     .from("questions")
     .select("id", { count: "exact", head: true })
     .eq("exam_id", EXAM_ID)
-    .eq("source_file", SOURCE_FILE);
+    .eq("source_file", sourceFile);
   const total = linked ?? 0;
   const { error: fErr } = await client
     .from("upload_jobs")

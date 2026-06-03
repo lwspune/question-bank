@@ -1,12 +1,13 @@
 /**
- * Phase 3c — attach worked solutions to the JEE Paper 1 pilot questions.
+ * Phase 3c — attach worked solutions to one JEE paper's questions.
  *
- *   npx tsx scripts/jee/attach-solutions.ts          # dry-run (validate only)
- *   npx tsx scripts/jee/attach-solutions.ts --apply  # write questions.solution
+ *   npx tsx scripts/jee/attach-solutions.ts <paperId>          # dry-run (validate only)
+ *   npx tsx scripts/jee/attach-solutions.ts <paperId> --apply  # write questions.solution
  *
- * Applies SOLUTION_FIXES + normalizeNewlines, then KaTeX-guards each solution
- * before writing — a still-broken solution is skipped + reported, never written.
- * Idempotent: re-running overwrites with the same value.
+ * Applies solutionFixes + normalizeNewlines (falling back to authoredSolutions
+ * when the source solution is empty), then KaTeX-guards each solution before
+ * writing — a still-broken one is skipped, never written. Idempotent. Rows are
+ * scoped by source_file so question numbers can't collide across papers.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -14,9 +15,7 @@ import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { SOLUTION_FIXES, AUTHORED_SOLUTIONS } from "./classification";
-
-const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
+import { EXAM_ID, loadPaper, recordsPath, requirePaperId, type PaperData } from "./config";
 
 type Rec = { questionNumber: number; status: string; solution: string | null };
 
@@ -24,9 +23,9 @@ function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
-function applyFixes(num: number, sol: string): string {
+function applyFixes(num: number, sol: string, fixes: PaperData["solutionFixes"]): string {
   let out = sol;
-  for (const [from, to] of SOLUTION_FIXES[num] ?? []) out = out.split(from).join(to);
+  for (const [from, to] of fixes?.[String(num)] ?? []) out = out.split(from).join(to);
   return normalizeNewlines(out);
 }
 
@@ -44,18 +43,22 @@ function mathOk(text: string): { ok: boolean; err?: string } {
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  const paperId = requirePaperId(process.argv, 2, "attach-solutions.ts <paperId> [--apply]");
   loadEnv();
-  const records: Rec[] = JSON.parse(readFileSync(join(__dirname, "out", "paper1.records.json"), "utf8"));
+  const paper = loadPaper(paperId);
+  const { sourceFile } = paper;
+  const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
   const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
 
   // Image-only / empty source solutions: fall back to a hand-authored text solution
   // if one exists, else write NULL (the bank solution field is text-only).
   const prepared = mcq.map((r) => {
-    const cleaned = applyFixes(r.questionNumber, r.solution ?? "");
+    const cleaned = applyFixes(r.questionNumber, r.solution ?? "", paper.solutionFixes);
     let solution: string | null = cleaned.trim() ? cleaned : null;
     let src: "source" | "authored" | "none" = solution ? "source" : "none";
-    if (!solution && AUTHORED_SOLUTIONS[r.questionNumber]) {
-      solution = normalizeNewlines(AUTHORED_SOLUTIONS[r.questionNumber]);
+    const authoredText = paper.authoredSolutions?.[String(r.questionNumber)];
+    if (!solution && authoredText) {
+      solution = normalizeNewlines(authoredText);
       src = "authored";
     }
     return { num: r.questionNumber, solution, src, check: solution ? mathOk(solution) : { ok: true } };
@@ -87,6 +90,7 @@ async function main() {
       .from("questions")
       .update({ solution: p.solution })
       .eq("exam_id", EXAM_ID)
+      .eq("source_file", sourceFile)
       .eq("question_number", String(p.num));
     if (error) throw new Error(`Q${p.num} solution: ${error.message}`);
     if (p.solution === null) clearedCount++;
