@@ -43,6 +43,27 @@ export function sanitizeLatex(s: string): string {
     .replace(DEGLUE_RE, "\\$1 ");
 }
 
+// Bare math operators that render as italic variable products (l·o·g) unless
+// upgraded to their upright macro (\log). Longest-first so `sinh` wins over `sin`.
+const MATH_FUNCS = "sinh|cosh|tanh|cosec|csc|sec|sin|cos|tan|cot|log|ln|lim|exp";
+const FUNC_RE = new RegExp("(?<![\\\\A-Za-z])(" + MATH_FUNCS + ")([A-Za-z]?)", "g");
+
+function fixFuncsInZone(zone: string): string {
+  return zone.replace(FUNC_RE, (_m, fn: string, next: string) => {
+    const macro = fn === "cosec" ? "\\csc" : "\\" + fn;
+    return next ? `${macro} ${next}` : macro; // re-space a function glued to a variable
+  });
+}
+
+/**
+ * Cosmetic LaTeX cleanup: upgrade bare function names (log, sin, cos, ...) to
+ * their upright macros, ONLY inside `\(...\)` / `\[...\]` math zones (so prose
+ * like "log table" is untouched). Idempotent; longer functions (sinh) protected.
+ */
+export function normalizeMathFunctions(text: string): string {
+  return text.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, (zone) => fixFuncsInZone(zone));
+}
+
 /**
  * Normalise one pandoc-markdown fragment to the bank's LaTeX convention.
  * Order matters: strip bold + \mathbf, unescape pandoc literal escapes,

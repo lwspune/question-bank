@@ -8,6 +8,7 @@ import {
   splitSolutions,
   parseOptionsFromText,
   segmentQuestions,
+  normalizeMathFunctions,
 } from "../scripts/jee/lib";
 
 describe("cleanText", () => {
@@ -170,6 +171,42 @@ describe("parseOptionsFromText", () => {
 
   it("returns null when 4 ordered markers are absent (numerical question)", () => {
     expect(parseOptionsFromText("Calculate the quality factor of this resonator is")).toBeNull();
+  });
+});
+
+describe("normalizeMathFunctions", () => {
+  it("upgrades a bare function glued to a variable, inserting a space", () => {
+    expect(normalizeMathFunctions("\\(logn\\)")).toBe("\\(\\log n\\)");
+    expect(normalizeMathFunctions("\\(2sinx\\)")).toBe("\\(2\\sin x\\)");
+  });
+
+  it("upgrades a bare function followed by a non-letter without adding a space", () => {
+    expect(normalizeMathFunctions("\\(cos45^{\\circ}\\)")).toBe("\\(\\cos45^{\\circ}\\)");
+    expect(normalizeMathFunctions("\\(log\\frac{1}{n}\\)")).toBe("\\(\\log\\frac{1}{n}\\)");
+  });
+
+  it("is idempotent on already-correct macros", () => {
+    expect(normalizeMathFunctions("\\(\\sin x\\)")).toBe("\\(\\sin x\\)");
+    expect(normalizeMathFunctions("\\(\\lim_{x\\to0}\\)")).toBe("\\(\\lim_{x\\to0}\\)");
+  });
+
+  it("does not split longer function names (sinh/cosh/tanh)", () => {
+    expect(normalizeMathFunctions("\\(tanh y\\)")).toBe("\\(\\tanh y\\)");
+    expect(normalizeMathFunctions("\\(\\cosh x\\)")).toBe("\\(\\cosh x\\)");
+  });
+
+  it("maps cosec to \\csc", () => {
+    expect(normalizeMathFunctions("\\(cosec\\theta\\)")).toBe("\\(\\csc\\theta\\)");
+  });
+
+  it("leaves prose (outside math zones) untouched", () => {
+    expect(normalizeMathFunctions("read the log table and sin curve")).toBe("read the log table and sin curve");
+  });
+
+  it("handles a full expression with several functions", () => {
+    expect(normalizeMathFunctions("\\[\\frac{2sinx}{sinx+\\sqrt{3}cosx}\\]")).toBe(
+      "\\[\\frac{2\\sin x}{\\sin x+\\sqrt{3}\\cos x}\\]"
+    );
   });
 });
 
