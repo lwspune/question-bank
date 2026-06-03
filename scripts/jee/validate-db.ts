@@ -33,8 +33,10 @@ async function main() {
   if (error) throw new Error(error.message);
   const rows = (data ?? []) as Row[];
 
+  const cnt = (s: string, re: RegExp) => (s.match(re) || []).length;
   let broken = 0;
   let mdLeaks = 0;
+  let artifacts = 0;
   for (const r of rows) {
     const fields: [string, string][] = [["text", r.text]];
     if (r.context) fields.push(["context", r.context]);
@@ -50,9 +52,19 @@ async function main() {
         mdLeaks++;
         console.log(`Q${r.question_number} [${where}] markdown leak`);
       }
+      // Dangling artifacts KaTeX-on-complete-segments misses: unbalanced math
+      // delimiters (split across options) and a leaked trailing hard-break `\`.
+      if (cnt(val, /\\\(/g) !== cnt(val, /\\\)/g) || cnt(val, /\\\[/g) !== cnt(val, /\\\]/g)) {
+        artifacts++;
+        console.log(`Q${r.question_number} [${where}] unbalanced delimiters: ...${val.slice(-40)}`);
+      }
+      if (/(?<!\\)\\\s*$/.test(val)) {
+        artifacts++;
+        console.log(`Q${r.question_number} [${where}] trailing backslash: ...${val.slice(-40)}`);
+      }
     }
   }
-  console.log(`\n${rows.length} questions checked | KaTeX-broken segments: ${broken} | markdown leaks: ${mdLeaks}`);
+  console.log(`\n${rows.length} questions checked | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts}`);
 }
 
 main().catch((e) => {
