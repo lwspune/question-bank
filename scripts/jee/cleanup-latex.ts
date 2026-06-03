@@ -35,6 +35,49 @@ function mathOk(text: string): boolean {
   return true;
 }
 
+// KaTeX-validated de-glue: when a macro ran into the next token (`\inR`, `\veeq`)
+// it renders as "Undefined control sequence". Find the longest prefix split that
+// renders. Fires only on real failures, so it can't break `\infty` / `\simeq`.
+function repairZone(inner: string): string {
+  let s = inner;
+  for (let i = 0; i < 15; i++) {
+    try {
+      katex.renderToString(s, { throwOnError: true, strict: false });
+      return s;
+    } catch (e) {
+      const m = String((e as Error).message).match(/Undefined control sequence: \\([A-Za-z]+)/);
+      if (!m) return s; // not a glued-macro error (e.g. matrix / nesting) — leave it
+      const name = m[1];
+      // Longest prefix that is itself a valid macro (validated in ISOLATION, so a
+      // second glued macro elsewhere in the zone doesn't block the split).
+      let k = 0;
+      for (let j = name.length - 1; j >= 1; j--) {
+        try {
+          katex.renderToString("\\" + name.slice(0, j) + " x", { throwOnError: true, strict: false });
+          k = j;
+          break;
+        } catch {
+          /* try a shorter prefix */
+        }
+      }
+      if (!k) return s; // no valid prefix — give up on this segment
+      s = s.replace("\\" + name, "\\" + name.slice(0, k) + " " + name.slice(k));
+    }
+  }
+  return s;
+}
+
+function repairGluedMacros(text: string): string {
+  return text.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, (zone) => {
+    const open = zone.startsWith("\\[") ? "\\[" : "\\(";
+    const close = open === "\\[" ? "\\]" : "\\)";
+    return open + repairZone(zone.slice(2, -2)) + close;
+  });
+}
+
+/** Full cosmetic + repair transform for one field. */
+const fix = (s: string): string => repairGluedMacros(normalizeMathFunctions(s));
+
 async function main() {
   const apply = process.argv.includes("--apply");
   loadEnv();
@@ -56,10 +99,10 @@ async function main() {
   const samples: string[] = [];
 
   for (const r of rows) {
-    const newText = normalizeMathFunctions(r.text);
-    const newContext = r.context ? normalizeMathFunctions(r.context) : r.context;
-    const newSolution = r.solution ? normalizeMathFunctions(r.solution) : r.solution;
-    const newOpts = r.options.map((o) => ({ ...o, newText: normalizeMathFunctions(o.text) }));
+    const newText = fix(r.text);
+    const newContext = r.context ? fix(r.context) : r.context;
+    const newSolution = r.solution ? fix(r.solution) : r.solution;
+    const newOpts = r.options.map((o) => ({ ...o, newText: fix(o.text) }));
 
     const textChanged = newText !== r.text || newContext !== r.context;
     const optsChanged = newOpts.some((o) => o.newText !== o.text);
@@ -75,7 +118,7 @@ async function main() {
 
     if (samples.length < 6) {
       const before = r.options.find((o, i) => newOpts[i].newText !== o.text)?.text ?? r.text;
-      const after = normalizeMathFunctions(before);
+      const after = fix(before);
       if (before !== after) samples.push(`Q${r.question_number}: ${before.slice(0, 50)}  ->  ${after.slice(0, 50)}`);
     }
 

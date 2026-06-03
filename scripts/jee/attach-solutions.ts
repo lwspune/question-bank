@@ -15,7 +15,7 @@ import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { EXAM_ID, loadPaper, recordsPath, requirePaperId, type PaperData } from "./config";
+import { EXAM_ID, loadPaper, recordsPath, requirePaperId, isCommittable, type PaperData } from "./config";
 
 type Rec = { questionNumber: number; status: string; solution: string | null };
 
@@ -48,7 +48,7 @@ async function main() {
   const paper = loadPaper(paperId);
   const { sourceFile } = paper;
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
-  const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
+  const mcq = records.filter((r) => isCommittable(r.status, r.questionNumber, paper));
 
   // Image-only / empty source solutions: fall back to a hand-authored text solution
   // if one exists, else write NULL (the bank solution field is text-only).

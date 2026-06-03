@@ -19,7 +19,12 @@ import { uploadImage } from "../../src/lib/storage/images";
 import type { AllowedMime } from "../../src/lib/storage/images";
 import { ORG_ID, EXAM_ID, loadPaper, recordsPath, mediaDir, requirePaperId } from "./config";
 
-type Rec = { questionNumber: number; status: string; imageRefs: string[] };
+type Rec = {
+  questionNumber: number;
+  status: string;
+  imageRefs: string[];
+  options: { label: string; text: string }[] | null;
+};
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -38,11 +43,19 @@ function resolveImage(ref: string, fallbackDir: string): string | null {
   return existsSync(fb) ? fb : null;
 }
 
-/** [questionImage | null, {label->image}] for a record, per the mapping above. */
+/**
+ * [questionImage | null, {label->image}] for a record. Branches on whether the
+ * options carry TEXT (not on status): options-with-text means every image is a
+ * stem/question figure (incl. a match-list rendered as an image); blank options
+ * mean the choices themselves are pictures.
+ */
 function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, string> } {
   const refs = rec.imageRefs;
-  if (rec.status === "ok") return { qImage: refs[0] ?? null, optImages: {} };
-  // option-image
+  const hasOptionText = rec.options === null || rec.options.some((o) => o.text.trim() !== "");
+  if (hasOptionText) {
+    if (refs.length > 1) console.warn(`  Q${rec.questionNumber}: ${refs.length} stem figures, only the first is attached`);
+    return { qImage: refs[0] ?? null, optImages: {} };
+  }
   const labels = ["A", "B", "C", "D"];
   if (refs.length === 5) {
     return { qImage: refs[0], optImages: Object.fromEntries(labels.map((l, i) => [l, refs[i + 1]])) };
@@ -50,7 +63,7 @@ function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, s
   if (refs.length === 4) {
     return { qImage: null, optImages: Object.fromEntries(labels.map((l, i) => [l, refs[i]])) };
   }
-  throw new Error(`Q${rec.questionNumber}: unexpected image count ${refs.length}`);
+  throw new Error(`Q${rec.questionNumber}: unexpected option-image count ${refs.length}`);
 }
 
 async function uploadRef(client: SupabaseClient, ref: string, fallbackDir: string): Promise<string> {
@@ -68,7 +81,9 @@ async function main() {
   const { sourceFile } = loadPaper(paperId);
   const fallbackDir = join(mediaDir(paperId), "media");
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
-  const imgRecs = records.filter((r) => (r.status === "ok" || r.status === "image_options") && r.imageRefs.length > 0);
+  // Any image-bearing non-numerical record; the per-question DB lookup below
+  // skips ones that weren't committed (e.g. an un-resolved needs_review row).
+  const imgRecs = records.filter((r) => r.status !== "skipped_numerical" && r.imageRefs.length > 0);
 
   console.log(`${imgRecs.length} image-bearing questions.`);
   for (const r of imgRecs) {

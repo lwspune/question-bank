@@ -3,6 +3,7 @@ import {
   cleanText,
   parseAnswerKey,
   parseAnswerTokens,
+  findDuplicateSolutionNumbers,
   localSection,
   matchValueToOption,
   splitSolutions,
@@ -102,6 +103,21 @@ describe("parseAnswerTokens", () => {
   });
 });
 
+describe("findDuplicateSolutionNumbers", () => {
+  it("flags a number that appears more than once (mis-numbered soln block)", () => {
+    const md = `1.  **(b)** zener explanation
+
+1.  **(a)**
+
+3.  **(b)** next`;
+    expect(findDuplicateSolutionNumbers(md)).toEqual([1]);
+  });
+
+  it("returns empty when all solution numbers are unique", () => {
+    expect(findDuplicateSolutionNumbers("1.  **(a)**\n\n2.  **(b)**")).toEqual([]);
+  });
+});
+
 describe("localSection", () => {
   it("maps the first 20 of each 30-block part to A, last 10 to B", () => {
     expect(localSection(1)).toBe("A");
@@ -171,6 +187,19 @@ describe("parseOptionsFromText", () => {
 
   it("returns null when 4 ordered markers are absent (numerical question)", () => {
     expect(parseOptionsFromText("Calculate the quality factor of this resonator is")).toBeNull();
+  });
+
+  it("does not treat a match-list code like (a)-(ii) as an option marker", () => {
+    const res = parseOptionsFromText(
+      "Choose: (a) (a)-(i), (b)-(ii) (b) (a)-(ii), (b)-(i) (c) (a)-(iii), (b)-(iv) (d) (a)-(iv), (b)-(iii)"
+    );
+    expect(res!.stem).toBe("Choose:");
+    expect(res!.options).toEqual([
+      "(a)-(i), (b)-(ii)",
+      "(a)-(ii), (b)-(i)",
+      "(a)-(iii), (b)-(iv)",
+      "(a)-(iv), (b)-(iii)",
+    ]);
   });
 });
 
@@ -261,5 +290,34 @@ describe("segmentQuestions", () => {
 
   it("captures image refs in a block", () => {
     expect(qs.find((q) => q.number === 2)!.imageRefs).toEqual(["media/media/image1.jpeg"]);
+  });
+
+  it("preserves matrix row separators (\\\\) at end of line, not just pandoc hard-breaks", () => {
+    const md = `1.  Let \\[\\begin{matrix} a \\\\
+    b \\end{matrix}\\] hold.\\
+    (a) p (b) q (c) r (d) s`;
+    const out = segmentQuestions(md);
+    expect(out[0].stem).toContain("\\\\"); // the matrix row break survived
+    expect(out[0].stem).toContain("\\begin{matrix}");
+  });
+
+  it("segments a question whose number is alone on its line (stem after an image)", () => {
+    // pandoc renders `9.  ` with the stem after an interspersed figure; trimEnd
+    // strips the trailing space, so the start anchor must allow end-of-line.
+    const md = `1.  **First -**\\
+    (a) $1$ (b) $2$ (c) $3$ (d) $4$
+
+<!-- -->
+
+9.
+
+![](media/media/image2.png){width="2in" height="1in"}
+
+The logic circuit shown above is equivalent to (a) p (b) q (c) r (d) s`;
+    const out = segmentQuestions(md);
+    expect(out.map((q) => q.number)).toEqual([1, 9]);
+    const q9 = out.find((q) => q.number === 9)!;
+    expect(q9.stem).toContain("The logic circuit");
+    expect(q9.imageRefs).toEqual(["media/media/image2.png"]);
   });
 });

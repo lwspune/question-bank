@@ -16,7 +16,7 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
-import { ORG_ID, EXAM_ID, CREATED_BY, loadPaper, recordsPath, requirePaperId, type PaperData } from "./config";
+import { ORG_ID, EXAM_ID, CREATED_BY, loadPaper, recordsPath, requirePaperId, isCommittable, type PaperData } from "./config";
 
 type Rec = {
   questionNumber: number;
@@ -33,21 +33,31 @@ function loadEnv() {
 
 function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
-  const mcq = records.filter((r) => r.status === "ok" || r.status === "image_options");
+  const eligible = records.filter((r) => isCommittable(r.status, r.questionNumber, paper));
 
-  return mcq.map((r) => {
-    const cls = paper.classification[String(r.questionNumber)];
+  return eligible.map((r) => {
+    const key = String(r.questionNumber);
+    const cls = paper.classification[key];
     if (!cls) throw new Error(`no classification for Q${r.questionNumber} in ${paperId}`);
-    const overrides = paper.optionOverrides?.[String(r.questionNumber)] ?? {};
-    const text = normalizeNewlines(r.stem);
+
+    const text = normalizeNewlines(paper.stemOverrides?.[key] ?? r.stem);
+    if (!text.trim()) throw new Error(`Q${r.questionNumber}: empty stem — add a stemOverride in papers/${paperId}.json`);
+
+    // Answer: an explicit override (corrects a mis-keyed soln) wins over the extracted key.
+    const answer = paper.answerOverrides?.[key] ?? r.options?.find((o) => o.isCorrect)?.label;
+    if (!answer) throw new Error(`Q${r.questionNumber}: no answer — add an answerOverride in papers/${paperId}.json`);
+
+    const optOverrides = paper.optionOverrides?.[key] ?? {};
     const options = (r.options ?? []).map((o) => ({
       label: o.label,
-      text: normalizeNewlines(overrides[o.label] ?? o.text),
-      isCorrect: o.isCorrect,
+      text: normalizeNewlines(optOverrides[o.label] ?? o.text),
+      isCorrect: o.label === answer,
     }));
+    if (options.length !== 4) throw new Error(`Q${r.questionNumber}: expected 4 options, got ${options.length}`);
+
     return {
       sourceRow: r.questionNumber,
-      questionNumber: String(r.questionNumber),
+      questionNumber: key,
       subjectName: r.subject,
       chapterName: cls.chapter,
       subtopicName: cls.subtopic,
@@ -55,11 +65,7 @@ function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
       difficulty: "MODERATE" as const,
       solution: undefined, // solutions attached in a later pass to keep this commit lean
       options,
-      contentHash: contentHash(
-        text,
-        options.map((o) => o.text),
-        options.find((o) => o.isCorrect)?.label ?? ""
-      ),
+      contentHash: contentHash(text, options.map((o) => o.text), answer),
     };
   });
 }

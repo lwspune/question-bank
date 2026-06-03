@@ -18,9 +18,22 @@ export type PaperData = {
   pyqNote: string; // provenance disambiguator (year is carried separately)
   classification: Record<string, { chapter: string; subtopic: string }>;
   optionOverrides?: Record<string, Partial<Record<OptionLabel, string>>>;
+  stemOverrides?: Record<string, string>; // supply/replace stem text (e.g. a match-list rendered as an image)
+  answerOverrides?: Record<string, OptionLabel>; // correct the answer when the soln doc mis-keyed it (duplicate/missing number)
   solutionFixes?: Record<string, [string, string][]>;
   authoredSolutions?: Record<string, string>;
 };
+
+/**
+ * Whether a record should be committed: clean MCQs always, plus any question the
+ * per-paper data explicitly resolves via a stem/answer override (lets us recover
+ * needs_review / no_answer_key rows instead of silently dropping them).
+ */
+export function isCommittable(status: string, questionNumber: number, paper: PaperData): boolean {
+  if (status === "ok" || status === "image_options") return true;
+  const k = String(questionNumber);
+  return Boolean(paper.stemOverrides?.[k] || paper.answerOverrides?.[k]);
+}
 
 const OUT = join(__dirname, "out");
 const PAPERS = join(__dirname, "papers");

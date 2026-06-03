@@ -16,6 +16,7 @@ import { mdPath, solnMdPath, mediaDir, recordsPath, requirePaperId } from "./con
 import {
   segmentQuestions,
   parseAnswerTokens,
+  findDuplicateSolutionNumbers,
   localSection,
   matchValueToOption,
   splitSolutions,
@@ -94,6 +95,13 @@ function main() {
   const solnText = readFileSync(sMd, "utf8");
   const tokens = parseAnswerTokens(solnText);
   const solutions = splitSolutions(solnText);
+
+  // A duplicate solution number means a mis-numbered block silently overwrote an
+  // earlier answer key (Map last-wins) — BOTH need an answerOverride.
+  const dupSoln = findDuplicateSolutionNumbers(solnText);
+  if (dupSoln.length) {
+    console.warn(`[warn] solution doc has DUPLICATE numbers ${dupSoln.join(", ")} — the key for each (and the question it shadowed) is unreliable; set answerOverrides`);
+  }
 
   // Sanity: each subject part should be exactly 30 questions (20 MCQ + 10 numerical).
   for (const s of ["Physics", "Chemistry", "Maths"] as JeeSubject[]) {
