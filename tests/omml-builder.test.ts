@@ -88,6 +88,77 @@ describe("latexToOmml", () => {
   });
 });
 
+// mml2omml emits a delimited matrix as a bare <m:m> grid flanked by plain,
+// single-line-height <m:r><m:t>(</m:t></m:r> fence runs — Word then renders
+// the brackets/determinant-bars detached and non-stretching beside the
+// matrix. wrapMatrixDelimiters rewrites the fence-run + <m:m> + fence-run
+// pattern into a proper stretchy <m:d> delimiter object.
+describe("latexToOmml — matrix/determinant delimiters", () => {
+  const innerText = (omml: string) =>
+    [...omml.matchAll(/<m:t(?:\s[^>]*)?>([\s\S]*?)<\/m:t>/g)]
+      .map((m) => m[1])
+      .join("");
+
+  it("wraps a pmatrix in a stretchy delimiter with ( ) characters", () => {
+    const omml = latexToOmml("\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}");
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:m>");
+    expect(omml!).toContain("<m:d>");
+    expect(omml!).toMatch(/<m:begChr m:val="\("\/>/);
+    expect(omml!).toMatch(/<m:endChr m:val="\)"\/>/);
+    // the matrix grid lives inside the delimiter's <m:e>
+    expect(omml!).toMatch(/<m:d>[\s\S]*<m:e>[\s\S]*<m:m>[\s\S]*<\/m:m>[\s\S]*<\/m:e>[\s\S]*<\/m:d>/);
+    // no leftover bare fence run beside the matrix
+    expect(omml!).not.toMatch(/<m:t[^>]*>\(<\/m:t><\/m:r><m:m>/);
+  });
+
+  it("wraps a bmatrix in a stretchy delimiter with [ ] characters", () => {
+    const omml = latexToOmml("\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}");
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:d>");
+    expect(omml!).toMatch(/<m:begChr m:val="\["\/>/);
+    expect(omml!).toMatch(/<m:endChr m:val="\]"\/>/);
+  });
+
+  it("wraps a vmatrix (determinant) in a stretchy delimiter with | | bars", () => {
+    const omml = latexToOmml("\\begin{vmatrix}1&2\\\\3&4\\end{vmatrix}");
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:d>");
+    expect(omml!).toMatch(/<m:begChr m:val="\|"\/>/);
+    expect(omml!).toMatch(/<m:endChr m:val="\|"\/>/);
+  });
+
+  it("preserves the matrix grid contents after wrapping", () => {
+    const omml = latexToOmml("\\begin{pmatrix}3&-3&4\\\\2&-3&4\\\\0&-1&1\\end{pmatrix}");
+    expect(omml).not.toBeNull();
+    expect(innerText(omml!)).toContain("3");
+    expect(innerText(omml!)).toContain("−3");
+    expect(innerText(omml!)).toContain("1");
+    // three matrix rows survive
+    expect([...omml!.matchAll(/<m:mr>/g)]).toHaveLength(3);
+  });
+
+  it("keeps surrounding text outside the delimiter (A = (matrix))", () => {
+    const omml = latexToOmml("A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}");
+    expect(omml).not.toBeNull();
+    // the "A=" run must stay before the delimiter, not be swallowed into it
+    expect(omml!).toMatch(/<m:t[^>]*>A=<\/m:t><\/m:r><m:d>/);
+  });
+
+  it("does NOT wrap ordinary parenthesised math like f(x)", () => {
+    const omml = latexToOmml("f(x) = x^2");
+    expect(omml).not.toBeNull();
+    expect(omml!).not.toContain("<m:d>");
+  });
+
+  it("leaves a fence-less \\begin{matrix} as a bare <m:m> (no delimiter)", () => {
+    const omml = latexToOmml("\\begin{matrix}1&2\\\\3&4\\end{matrix}");
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:m>");
+    expect(omml!).not.toContain("<m:d>");
+  });
+});
+
 describe("textWithMathToOmmlSegments", () => {
   it("returns a single text segment for plain prose", () => {
     expect(textWithMathToOmmlSegments("hello world")).toEqual([
