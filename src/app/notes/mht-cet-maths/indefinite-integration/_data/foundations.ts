@@ -90,7 +90,61 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
       ],
     },
 
-    // 3 — linearity + algebraic prep (anchored)
+    // 3 — linear-argument rule (foundation)
+    {
+      kind: "formula" as const,
+      slug: "linear-argument-rule",
+      name: "The Linear-Argument Rule (replace x with ax + b)",
+      intuition:
+        "Every formula in the standard table is written for a bare \\(x\\). If the inside is a LINEAR expression \\(ax+b\\) instead, the same formula still works — you just divide the whole answer by \\(a\\). It is the cheapest substitution in the chapter, done by eye.",
+      definition:
+        "If \\(\\int f(x)\\,dx = F(x) + C\\), then for a **linear** inner argument " +
+        "\\(\\int f(ax+b)\\,dx = \\dfrac{1}{a}\\,F(ax+b) + C\\). " +
+        "The \\(\\dfrac{1}{a}\\) is the leftover from \\(d(ax+b) = a\\,dx\\). This covers the whole table at once:\n" +
+        "- \\(\\int (ax+b)^n\\,dx = \\dfrac{(ax+b)^{n+1}}{a(n+1)} + C\\)\n" +
+        "- \\(\\int \\dfrac{dx}{ax+b} = \\dfrac{1}{a}\\log|ax+b| + C\\)\n" +
+        "- \\(\\int e^{ax+b}\\,dx = \\dfrac{1}{a}e^{ax+b} + C\\), \\(\\int \\sin(ax+b)\\,dx = -\\dfrac{1}{a}\\cos(ax+b) + C\\)",
+      formula: {
+        label: "Linear-argument rule",
+        latex: "\\int f(ax+b)\\,dx = \\dfrac{1}{a}\\,F(ax+b) + C \\quad\\text{where}\\quad \\int f(x)\\,dx = F(x)+C",
+        symbols: [
+          { symbol: "a", meaning: "coefficient of \\(x\\) inside — you divide by it" },
+          { symbol: "ax+b", meaning: "the argument; must be LINEAR for the shortcut to hold" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int (3x+2)^5\\,dx\\).",
+        steps: [
+          "The bare formula is \\(\\int x^5\\,dx = \\dfrac{x^6}{6}\\). The inside is the linear \\(3x+2\\), so apply the rule with \\(a = 3\\).",
+          "Write the bare answer at \\(3x+2\\), then divide by \\(a = 3\\): \\(\\dfrac{1}{3}\\cdot\\dfrac{(3x+2)^6}{6}\\).",
+          "Simplify the constant.",
+        ],
+        answer: "\\(\\dfrac{(3x+2)^6}{18} + C\\)",
+      },
+      selfCheckExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\sec^2(5x-4)\\,dx\\).",
+        steps: [
+          "Bare formula: \\(\\int \\sec^2 x\\,dx = \\tan x\\). Inside is linear \\(5x-4\\), so \\(a = 5\\).",
+          "Answer at \\(5x-4\\), divided by \\(5\\): \\(\\dfrac{1}{5}\\tan(5x-4) + C\\).",
+        ],
+        answer: "\\(\\dfrac{1}{5}\\tan(5x-4) + C\\)",
+      },
+      practiceSet: [
+        { prompt: "\\(\\int (2x+1)^4\\,dx\\)", answer: "\\(\\dfrac{(2x+1)^5}{10} + C\\)", method: "divide by \\(a=2\\)" },
+        { prompt: "\\(\\int \\sin 3x\\,dx\\)", answer: "\\(-\\dfrac{\\cos 3x}{3} + C\\)" },
+        { prompt: "\\(\\int e^{4x-1}\\,dx\\)", answer: "\\(\\dfrac{e^{4x-1}}{4} + C\\)" },
+        { prompt: "\\(\\int \\dfrac{dx}{2x+5}\\)", answer: "\\(\\dfrac{1}{2}\\log|2x+5| + C\\)" },
+      ],
+      traps: [
+        {
+          title: "Only LINEAR insides get the 1/a shortcut",
+          body:
+            "The rule holds because \\(\\dfrac{d}{dx}(ax+b) = a\\) is a constant. For a non-linear inside like \\(x^2+1\\) or \\(\\sqrt{x}\\), the derivative is not constant — you must do a full substitution, not just divide by a number.",
+        },
+      ],
+    },
+
+    // 4 — linearity + algebraic prep (anchored)
     {
       kind: "formula" as const,
       slug: "algebraic-pre-processing",
