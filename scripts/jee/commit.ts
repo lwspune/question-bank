@@ -66,7 +66,9 @@ function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
     return {
       sourceRow: r.questionNumber,
       questionNumber: key,
-      subjectName: r.subject,
+      // Content-based subject (cls.subject) wins over the position-derived one
+      // (r.subject) — required for non-standard compilations; see PaperData.
+      subjectName: cls.subject ?? r.subject,
       chapterName: cls.chapter,
       subtopicName: cls.subtopic,
       text,
