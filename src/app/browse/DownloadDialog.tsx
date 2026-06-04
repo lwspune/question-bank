@@ -48,7 +48,7 @@ export default function DownloadDialog({
 
   const cart = useCart();
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
-  const [title, setTitle] = useState("Question Bank Export");
+  const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const [error, setError] = useState<string | null>(null);

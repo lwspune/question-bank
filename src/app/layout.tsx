@@ -19,9 +19,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 const SITE_URL = "https://www.pyqvault.com";
-const SITE_NAME = "Question Bank";
+const SITE_NAME = "PYQ Vault";
 const SITE_DESCRIPTION =
-  "Build a question paper in 60 seconds. Free past-year questions for entrance exams — filter by exam, chapter, difficulty, and download Question Paper + Answer Key as Word. MHT-CET available; NDA, IPMAT, CUET, NEET, JEE Main coming soon.";
+  "Build a question paper in 60 seconds. Free past-year questions for entrance exams — filter by exam, chapter, difficulty, and download Question Paper + Answer Key as Word. MHT-CET, NDA and JEE Main live; IPMAT, CUET, NEET coming soon.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

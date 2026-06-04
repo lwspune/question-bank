@@ -11,7 +11,7 @@ import PricingClient from "./PricingClient";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Premium — Question Bank",
+  title: "Premium",
   description:
     "Unlock every premium notes chapter: full worked examples, practice sets, and mastery checkpoints.",
 };

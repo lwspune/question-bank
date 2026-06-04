@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Question Bank — Build a question paper in 60 seconds";
+export const alt = "PYQ Vault — Build a question paper in 60 seconds";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
           >
             Q
           </div>
-          <span>Question Bank</span>
+          <span>PYQ Vault</span>
         </div>
 
         <div
@@ -74,8 +74,8 @@ export default function OpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            Free past-year questions for MHT-CET. NDA, IPMAT, CUET, NEET,
-            JEE Main coming soon.
+            Free past-year questions for MHT-CET, NDA and JEE Main.
+            IPMAT, CUET, NEET coming soon.
           </div>
         </div>
 

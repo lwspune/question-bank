@@ -69,7 +69,7 @@ export default function PricingClient({ planId }: { planId: string }) {
         order_id: order.orderId,
         amount: order.amount ?? 0,
         currency: order.currency ?? "INR",
-        name: "Question Bank",
+        name: "PYQ Vault",
         description: order.planLabel,
         prefill: order.email ? { email: order.email } : undefined,
         theme: { color: "#4f46e5" },

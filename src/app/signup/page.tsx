@@ -64,7 +64,7 @@ export default function SignupPage() {
           <div className="mb-8 flex items-center gap-2 md:hidden">
             <BookOpen className="h-5 w-5 text-primary" aria-hidden />
             <span className="text-sm font-semibold tracking-tight">
-              Question Bank
+              PYQ Vault
             </span>
           </div>
 
@@ -210,7 +210,7 @@ function BrandPanel() {
       <div className="relative flex h-full flex-col justify-between p-12 text-primary-foreground">
         <div className="flex items-center gap-2 text-sm font-semibold tracking-tight">
           <BookOpen className="h-5 w-5" aria-hidden />
-          <span>Question Bank</span>
+          <span>PYQ Vault</span>
         </div>
         <div>
           <p className="font-serif text-3xl leading-snug tracking-tight lg:text-4xl">

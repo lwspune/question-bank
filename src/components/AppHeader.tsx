@@ -39,7 +39,7 @@ export default async function AppHeader() {
           />
           {/* Wordmark hides on narrow phones so the 3-tab nav + pill fit
               comfortably at 360px viewport widths. The brand mark stays. */}
-          <span className="hidden sm:inline">Question Bank</span>
+          <span className="hidden sm:inline">PYQ Vault</span>
         </Link>
 
         <PrimaryNav

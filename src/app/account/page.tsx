@@ -11,7 +11,7 @@ import { isEntitlementActive } from "@/lib/entitlements/access";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Your account — Question Bank",
+  title: "Your account",
   robots: { index: false },
 };
 
