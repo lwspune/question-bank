@@ -16,7 +16,11 @@ export type PaperData = {
   sourceFile: string; // questions.source_file + upload_jobs.filename (rollback/dedup key)
   pyqYear: number;
   pyqNote: string; // provenance disambiguator (year is carried separately)
-  classification: Record<string, { chapter: string; subtopic: string }>;
+  // `subject` is optional — only needed for NON-STANDARD compilations where the
+  // Physics 1-30 / Chemistry 31-60 / Maths 61-90 position blocks don't hold (e.g.
+  // the "Paper 11-16" topic compilations, which group subjects at different
+  // boundaries). When set, it overrides the position-derived subject at commit.
+  classification: Record<string, { subject?: string; chapter: string; subtopic: string }>;
   optionOverrides?: Record<string, Partial<Record<OptionLabel, string>>>;
   stemOverrides?: Record<string, string>; // supply/replace stem text (e.g. a match-list rendered as an image)
   answerOverrides?: Record<string, OptionLabel>; // correct the answer when the soln doc mis-keyed it (duplicate/missing number)

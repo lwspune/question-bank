@@ -80,6 +80,12 @@ function main() {
   if (!existsSync(solnDocx)) throw new Error(`solution docx not found: ${solnDocx}`);
 
   const paperId = requirePaperId(process.argv, 3, 'extract.ts "<Paper N.docx>" <paperId>');
+  // Non-standard "compilation" papers (e.g. the 2021 Paper 11-16 topic sets) don't
+  // follow the rigid Physics 1-30 / Chem 31-60 / Maths 61-90 layout, so the
+  // position-based Section-B skip mislabels real MCQ as numerical. With this flag,
+  // MCQ-vs-numerical is decided purely by whether 4 options parse, and subjects are
+  // assigned per-question via classification (see PaperData.classification.subject).
+  const compilation = process.argv.includes("--compilation");
   const pandoc = findPandoc();
   const media = mediaDir(paperId);
   mkdirSync(media, { recursive: true });
@@ -104,9 +110,12 @@ function main() {
   }
 
   // Sanity: each subject part should be exactly 30 questions (20 MCQ + 10 numerical).
-  for (const s of ["Physics", "Chemistry", "Maths"] as JeeSubject[]) {
-    const n = questions.filter((q) => q.subject === s).length;
-    if (n !== 30) console.warn(`[warn] ${s} has ${n} blocks (expected 30) — section split may be off`);
+  // Skipped for compilations, whose subject boundaries are non-standard by design.
+  if (!compilation) {
+    for (const s of ["Physics", "Chemistry", "Maths"] as JeeSubject[]) {
+      const n = questions.filter((q) => q.subject === s).length;
+      if (n !== 30) console.warn(`[warn] ${s} has ${n} blocks (expected 30) — section split may be off`);
+    }
   }
 
   const records: PilotRecord[] = questions.map((q) => {
@@ -119,8 +128,10 @@ function main() {
       solution: solutions.get(q.number) ?? null,
     };
 
-    // Position is the authoritative Section A/B discriminator (not option count).
-    if (localSection(q.number) === "B") {
+    // Position is the authoritative Section A/B discriminator (not option count) —
+    // EXCEPT for compilations, where it doesn't hold, so numerical questions are
+    // detected by the absence of parsed options (the `q.options === null` check below).
+    if (!compilation && localSection(q.number) === "B") {
       return { ...base, status: "skipped_numerical", options: null, correctLabel: null, contentHash: null };
     }
 
