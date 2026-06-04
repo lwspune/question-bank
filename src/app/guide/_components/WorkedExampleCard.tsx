@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CheckCircle2, ChevronDown, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 
@@ -56,7 +57,7 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
             presentMode ? "px-6 py-4 text-xl sm:text-2xl" : "px-4 py-3 text-sm"
           )}
         >
-          <KatexRenderer text={stripPassageCountPhrase(example.context)} />
+          <BlockText text={stripPassageCountPhrase(example.context)} />
         </div>
       )}
 
@@ -66,7 +67,7 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
           presentMode ? "px-6 py-5 text-2xl sm:text-3xl" : "px-4 py-3 text-sm"
         )}
       >
-        <KatexRenderer text={example.text} />
+        <BlockText text={example.text} />
         {example.provenance && (
           <p
             className={cn(
