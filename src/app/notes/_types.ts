@@ -133,7 +133,12 @@ export type VisualizationSlug =
   | "bar-magnet-field-lines"
   | "solenoid-field-lines"
   // NDA Maths — Sequence & Series chapter
-  | "am-gm-hm-means";
+  | "am-gm-hm-means"
+  // NDA Maths — Binomial Distribution chapter
+  | "binomial-pmf-interactive"
+  | "binomial-coefficient-tree"
+  | "binomial-tail-shading"
+  | "binomial-mean-spread";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

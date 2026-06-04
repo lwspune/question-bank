@@ -78,6 +78,10 @@ import MagneticForceTriad from "./visualizations/MagneticForceTriad";
 import BarMagnetFieldLines from "./visualizations/BarMagnetFieldLines";
 import SolenoidFieldLines from "./visualizations/SolenoidFieldLines";
 import AmGmHmMeans from "./visualizations/AmGmHmMeans";
+import BinomialPmfInteractive from "./visualizations/BinomialPmfInteractive";
+import BinomialCoefficientTree from "./visualizations/BinomialCoefficientTree";
+import BinomialTailShading from "./visualizations/BinomialTailShading";
+import BinomialMeanSpread from "./visualizations/BinomialMeanSpread";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -212,6 +216,14 @@ function renderVisualization(slug: VisualizationSlug) {
       return <SolenoidFieldLines />;
     case "am-gm-hm-means":
       return <AmGmHmMeans />;
+    case "binomial-pmf-interactive":
+      return <BinomialPmfInteractive />;
+    case "binomial-coefficient-tree":
+      return <BinomialCoefficientTree />;
+    case "binomial-tail-shading":
+      return <BinomialTailShading />;
+    case "binomial-mean-spread":
+      return <BinomialMeanSpread />;
   }
 }
 
