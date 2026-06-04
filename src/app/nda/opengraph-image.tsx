@@ -48,7 +48,7 @@ export default function NdaHomeOpenGraphImage() {
           >
             Q
           </div>
-          <span>Question Bank · NDA</span>
+          <span>PYQ Vault · NDA</span>
         </div>
 
         <div

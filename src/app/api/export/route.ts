@@ -170,7 +170,7 @@ export async function POST(request: NextRequest) {
     const title =
       typeof options.title === "string" && options.title.trim()
         ? options.title.trim()
-        : "Question Bank Export";
+        : "PYQ Vault Export";
     const includeSolutions = !!options.includeSolutions;
     const safeName = sanitizeFilename(title);
 
