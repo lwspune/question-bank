@@ -23,7 +23,9 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
         "- \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{a^2 - x^2}} = \\sin^{-1}\\dfrac{x}{a} + C\\)\n" +
         "- \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{x^2 - a^2}} = \\log\\left|x + \\sqrt{x^2 - a^2}\\right| + C\\)\n" +
         "- \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{x^2 + a^2}} = \\log\\left|x + \\sqrt{x^2 + a^2}\\right| + C\\)\n" +
-        "Quadratic-in-\\(x^2\\) denominators often reduce to the first form via a \\(t = x \\pm \\dfrac{k}{x}\\) substitution.",
+        "- \\(\\displaystyle\\int \\dfrac{dx}{x\\sqrt{x^2 - a^2}} = \\dfrac{1}{a}\\sec^{-1}\\dfrac{x}{a} + C\\)\n" +
+        "One companion reflex from substitution closes the set: \\(\\displaystyle\\int \\dfrac{f'(x)}{\\sqrt{f(x)}}\\,dx = 2\\sqrt{f(x)} + C\\) — the \\(\\sqrt{}\\) term that appears whenever a numerator is the derivative of what's under the root. " +
+        "Quadratic-in-\\(x^2\\) denominators often reduce to the arctan form via a \\(t = x \\pm \\dfrac{k}{x}\\) substitution (taught in Substitution → reciprocal substitutions).",
       formula: {
         label: "The arctan form",
         latex: "\\int \\dfrac{dx}{x^2 + a^2} = \\dfrac{1}{a}\\tan^{-1}\\dfrac{x}{a} + C",

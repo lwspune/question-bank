@@ -6,9 +6,9 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The hard trig core — fractions in sine and cosine, handled by the half-angle (Weierstrass) substitution, the divide-by-cosine-squared move, the fractional-power tangent trick, and numerator-matching.",
   whyItMatters:
-    "26 PYQs and the chapter's HARDEST pocket — 25 of the 26 are HARD. These are the integrals that decide a top score. " +
-    "Four named techniques cover almost all of them: Weierstrass t = tan(x/2) for 1/(a+b sin x); divide-by-cos² for 1/(a+b sin²x); the fractional-power tan trick for cos/sin power products; and writing a numerator as 'denominator + its derivative'. " +
-    "Learn to RECOGNISE which of the four a question wants — that recognition is the whole skill.",
+    "26 PYQs and the chapter's HARDEST pocket — 25 of the 26 are HARD. These are the integrals that decide a top score, and they lean on the standard arctan/log forms you met in Rational Functions & Partial Fractions. " +
+    "Six named techniques cover almost all of them: Weierstrass t = tan(x/2) for 1/(a+b sin x); divide-by-cos² for 1/(a+b sin²x) (and tan x = t for the 2x version); the product-of-sines split for 1/(sin(x−a)sin(x−b)); the trig-to-partial-fraction bridge when a substitution makes it rational; the fractional-power tan trick for cos/sin power products; and writing a numerator as 'denominator + its derivative'. " +
+    "Learn to RECOGNISE which one a question wants — that recognition is the whole skill.",
   concepts: [
     // 1 — Weierstrass
     {
@@ -68,7 +68,8 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
         "When the denominator is built from \\(\\sin^2 x\\) and \\(\\cos^2 x\\), divide top and bottom by \\(\\cos^2 x\\). Everything turns into \\(\\tan x\\) and \\(\\sec^2 x\\), and \\(t = \\tan x\\) finishes it as an arctan.",
       definition:
         "For \\(\\displaystyle\\int \\dfrac{dx}{a + b\\sin^2 x}\\) (or with \\(\\cos^2 x\\)): divide numerator and denominator by \\(\\cos^2 x\\), using \\(\\dfrac{1}{\\cos^2 x} = \\sec^2 x\\) and \\(\\dfrac{\\sin^2 x}{\\cos^2 x} = \\tan^2 x\\). " +
-        "Then \\(t = \\tan x,\\ dt = \\sec^2 x\\,dx\\) gives \\(\\int \\dfrac{dt}{A + Bt^2}\\), a standard arctan.",
+        "Then \\(t = \\tan x,\\ dt = \\sec^2 x\\,dx\\) gives \\(\\int \\dfrac{dt}{A + Bt^2}\\), a standard arctan.\n" +
+        "**Double-angle version**: for \\(\\displaystyle\\int \\dfrac{dx}{a\\sin 2x + b\\cos 2x + c}\\), substitute \\(t = \\tan x\\) directly — then \\(\\sin 2x = \\dfrac{2t}{1+t^2}\\), \\(\\cos 2x = \\dfrac{1-t^2}{1+t^2}\\), \\(dx = \\dfrac{dt}{1+t^2}\\), and the integral reduces to \\(\\int \\dfrac{dt}{At^2+Bt+C}\\). This is the \\(2x\\) analogue of Weierstrass (which uses \\(t=\\tan\\tfrac{x}{2}\\) for the plain-angle case).",
       formula: {
         label: "After dividing by cos²x",
         latex: "\\int \\dfrac{\\sec^2 x\\,dx}{A + B\\tan^2 x} \\xrightarrow{\\,t=\\tan x\\,} \\int \\dfrac{dt}{A + Bt^2}",
@@ -101,14 +102,115 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
       pyqExampleId: "581102aa-41ee-47ab-ac9a-2a16af2ae814",
       traps: [
         {
-          title: "Even powers → divide by cos²; odd → Weierstrass",
+          title: "Three sin/cos denominators, three substitutions",
           body:
-            "Denominator has \\(\\sin^2/\\cos^2\\) (even): divide by \\(\\cos^2 x\\), use \\(t=\\tan x\\). Denominator has plain \\(\\sin x/\\cos x\\) (odd): use Weierstrass \\(t=\\tan(x/2)\\). Picking the wrong one makes the algebra explode.",
+            "Denominator has \\(\\sin^2/\\cos^2\\) (even, plain angle): divide by \\(\\cos^2 x\\), use \\(t=\\tan x\\). Denominator has \\(\\sin 2x/\\cos 2x\\) (double angle): use \\(t=\\tan x\\) with the \\(2x\\) formulae. Denominator has plain \\(\\sin x/\\cos x\\) (odd, single power): use Weierstrass \\(t=\\tan(x/2)\\). Picking the wrong one makes the algebra explode.",
         },
       ],
     },
 
-    // 3 — fractional power tan trick
+    // 3 — product of two shifted sines/cosines
+    {
+      kind: "formula" as const,
+      slug: "product-of-sines",
+      name: "Product of Two Shifted Sines (or Cosines)",
+      intuition:
+        "For \\(\\dfrac{1}{\\sin(x-a)\\sin(x-b)}\\), don't substitute — split it. Writing the constant \\(\\sin(a-b)\\) as \\(\\sin\\) of the angle DIFFERENCE turns the product into a difference of cotangents, each a clean log. One identity, one line.",
+      definition:
+        "Use \\(\\sin\\big((x-a)-(x-b)\\big) = \\sin(b-a)\\), a constant. Expanding and dividing by \\(\\sin(x-a)\\sin(x-b)\\) gives " +
+        "\\(\\dfrac{1}{\\sin(x-a)\\sin(x-b)} = \\dfrac{1}{\\sin(b-a)}\\big[\\cot(x-b) - \\cot(x-a)\\big]\\), which integrates to a difference of \\(\\log|\\sin|\\) terms. " +
+        "The same idea handles \\(\\dfrac{1}{\\cos(x-a)\\cos(x-b)}\\) (difference of \\(\\tan\\)s) and \\(\\dfrac{1}{\\sin(x-a)\\cos(x-b)}\\).",
+      formula: {
+        label: "Shifted-angle split",
+        latex: "\\dfrac{1}{\\sin(x-a)\\sin(x-b)} = \\dfrac{1}{\\sin(b-a)}\\big[\\cot(x-b) - \\cot(x-a)\\big]",
+        symbols: [
+          { symbol: "\\sin(b-a)", meaning: "constant divisor — the sine of the difference of the two shifts" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{\\sin x\\,\\sin(x+a)}\\).",
+        steps: [
+          "Write \\(\\sin a = \\sin\\big((x+a)-x\\big) = \\sin(x+a)\\cos x - \\cos(x+a)\\sin x\\).",
+          "Divide by \\(\\sin x\\,\\sin(x+a)\\): \\(\\dfrac{\\sin a}{\\sin x\\,\\sin(x+a)} = \\cot x - \\cot(x+a)\\).",
+          "So the integrand is \\(\\dfrac{1}{\\sin a}\\big[\\cot x - \\cot(x+a)\\big]\\).",
+          "Integrate: \\(\\dfrac{1}{\\sin a}\\big[\\log|\\sin x| - \\log|\\sin(x+a)|\\big]\\).",
+        ],
+        answer: "\\(\\dfrac{1}{\\sin a}\\log\\left|\\dfrac{\\sin x}{\\sin(x+a)}\\right| + C\\)",
+      },
+      selfCheckExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{\\cos x\\,\\cos(x+a)}\\).",
+        steps: [
+          "Write \\(\\sin a = \\sin\\big((x+a)-x\\big) = \\sin(x+a)\\cos x - \\cos(x+a)\\sin x\\).",
+          "Divide by \\(\\cos x\\,\\cos(x+a)\\): \\(\\dfrac{\\sin a}{\\cos x\\,\\cos(x+a)} = \\tan(x+a) - \\tan x\\).",
+          "Integrate \\(\\dfrac{1}{\\sin a}\\big[\\tan(x+a) - \\tan x\\big]\\): \\(\\dfrac{1}{\\sin a}\\big[\\log|\\sec(x+a)| - \\log|\\sec x|\\big]\\).",
+        ],
+        answer: "\\(\\dfrac{1}{\\sin a}\\log\\left|\\dfrac{\\cos x}{\\cos(x+a)}\\right| + C\\)",
+      },
+      practiceSet: [
+        { prompt: "For \\(\\dfrac{1}{\\sin(x-a)\\sin(x-b)}\\), write 1 using which identity?", answer: "\\(\\sin\\big((x-a)-(x-b)\\big)=\\sin(b-a)\\)" },
+        { prompt: "\\(\\dfrac{1}{\\sin x\\,\\sin(x+a)}\\) splits into?", answer: "\\(\\dfrac{1}{\\sin a}\\big(\\cot x - \\cot(x+a)\\big)\\)" },
+        { prompt: "\\(\\int\\big(\\cot x - \\cot(x+a)\\big)\\,dx\\)?", answer: "\\(\\log\\left|\\dfrac{\\sin x}{\\sin(x+a)}\\right| + C\\)" },
+        { prompt: "\\(\\dfrac{1}{\\cos x\\,\\cos(x+a)}\\) splits into a difference of?", answer: "\\(\\tan(x+a) - \\tan x\\) (over \\(\\sin a\\))" },
+      ],
+      pyqExampleId: "a53f9bb5-ccec-4933-a734-0f34a46a9694",
+      traps: [
+        {
+          title: "Split it — don't reach for Weierstrass",
+          body:
+            "Weierstrass on a product of two shifted sines produces a quartic in \\(t\\) and stalls. The shifted-angle split is one identity and one line. Keep the constant \\(\\sin(b-a)\\) out front — it is NOT a function of \\(x\\).",
+        },
+      ],
+    },
+
+    // 4 — trig to partial fractions
+    {
+      kind: "formula" as const,
+      slug: "trig-to-partial-fraction",
+      name: "Trig to Partial Fractions (substitute, then decompose)",
+      intuition:
+        "A trig integrand that becomes a RATIONAL function after one substitution hands straight off to the partial-fraction machinery from the previous movement. When there's a spare \\(\\cos x\\,dx\\) (\\(=d(\\sin x)\\)) or \\(\\sin x\\,dx\\) (\\(=-d(\\cos x)\\)), substitute and decompose.",
+      definition:
+        "Spot the bridge: if substituting \\(t=\\sin x\\) (needs a spare \\(\\cos x\\,dx\\)) or \\(t=\\cos x\\) (needs a spare \\(\\sin x\\,dx\\)) leaves a rational function of \\(t\\), do it — then split by partial fractions and integrate each piece as a log/arctan. " +
+        "An **odd power** of the 'spare' function is the signal: e.g. \\(\\cos^3 x = \\cos x(1-\\sin^2 x)\\) frees one \\(\\cos x\\,dx\\) for \\(t=\\sin x\\). Rewrite any \\(\\cos^2 x\\) as \\(1-\\sin^2 x\\) (or \\(\\sin^2 x\\) as \\(1-\\cos^2 x\\)) so the rest is rational in \\(t\\).",
+      formula: {
+        label: "The bridge",
+        latex: "\\int R(\\sin x)\\,\\cos x\\,dx \\;\\xrightarrow{\\,t=\\sin x\\,}\\; \\int R(t)\\,dt \\;\\;(\\text{now rational — decompose})",
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{\\cos x}{(1+\\sin x)(3+\\sin x)}\\,dx\\).",
+        steps: [
+          "Substitute \\(t = \\sin x\\), \\(dt = \\cos x\\,dx\\): the integral becomes \\(\\int \\dfrac{dt}{(1+t)(3+t)}\\).",
+          "Partial fractions: \\(\\dfrac{1}{(1+t)(3+t)} = \\dfrac{1}{2}\\!\\left(\\dfrac{1}{1+t} - \\dfrac{1}{3+t}\\right)\\).",
+          "Integrate: \\(\\dfrac{1}{2}\\big[\\log|1+t| - \\log|3+t|\\big]\\). Back-substitute \\(t=\\sin x\\).",
+        ],
+        answer: "\\(\\dfrac{1}{2}\\log\\left|\\dfrac{1+\\sin x}{3+\\sin x}\\right| + C\\)",
+      },
+      selfCheckExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{\\sin x}{\\cos^2 x - 3\\cos x + 2}\\,dx\\).",
+        steps: [
+          "Substitute \\(t = \\cos x\\), \\(dt = -\\sin x\\,dx\\): integral becomes \\(-\\int \\dfrac{dt}{(t-1)(t-2)}\\).",
+          "Partial fractions: \\(\\dfrac{1}{(t-1)(t-2)} = \\dfrac{1}{t-2} - \\dfrac{1}{t-1}\\).",
+          "So \\(-\\int\\!\\left(\\dfrac{1}{t-2} - \\dfrac{1}{t-1}\\right)dt = \\log|t-1| - \\log|t-2|\\). Back-substitute.",
+        ],
+        answer: "\\(\\log\\left|\\dfrac{\\cos x - 1}{\\cos x - 2}\\right| + C\\)",
+      },
+      practiceSet: [
+        { prompt: "\\(\\int\\dfrac{\\cos x}{\\sin^2 x+\\sin x}\\,dx\\) — substitute?", answer: "\\(t=\\sin x\\)" },
+        { prompt: "\\(\\dfrac{1}{(1+t)(3+t)}\\) decomposes to?", answer: "\\(\\dfrac12\\!\\left(\\dfrac{1}{1+t}-\\dfrac{1}{3+t}\\right)\\)" },
+        { prompt: "\\(\\int\\dfrac{\\sin x}{\\cos^2 x-3\\cos x+2}\\,dx\\) — substitute?", answer: "\\(t=\\cos x\\) (\\(dt=-\\sin x\\,dx\\))" },
+        { prompt: "After \\(t=\\sin x\\), \\(\\int\\dfrac{\\cos^3 x}{\\sin^2 x+\\sin x}\\,dx\\) becomes?", answer: "\\(\\int\\dfrac{1-t^2}{t^2+t}\\,dt\\)" },
+      ],
+      pyqExampleId: "274d00d5-6410-4165-847d-e87b773118ae",
+      traps: [
+        {
+          title: "No spare cos/sin → no bridge",
+          body:
+            "The substitution only works if exactly one \\(\\cos x\\,dx\\) (or \\(\\sin x\\,dx\\)) is available to become \\(dt\\) and everything else turns rational in \\(t\\). If both \\(\\sin x\\) and \\(\\cos x\\) appear in odd/mixed ways with nothing spare, fall back to Weierstrass.",
+        },
+      ],
+    },
+
+    // 5 — fractional power tan trick
     {
       kind: "formula" as const,
       slug: "fractional-power-tan-trick",
@@ -158,7 +260,7 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
       ],
     },
 
-    // 4 — linear combination numerator
+    // 6 — linear combination numerator
     {
       kind: "formula" as const,
       slug: "linear-combination-numerator",

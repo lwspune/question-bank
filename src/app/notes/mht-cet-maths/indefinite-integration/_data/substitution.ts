@@ -214,7 +214,61 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
       ],
     },
 
-    // 5 — exponential / special subs
+    // 5 — reciprocal / take-out-the-power substitutions (the HARD signature)
+    {
+      kind: "formula" as const,
+      slug: "reciprocal-power-substitution",
+      name: "Reciprocal and Take-out-the-Power Substitutions",
+      intuition:
+        "When \\(x\\) is trapped inside high powers or a root, divide through by a power of \\(x\\) (or factor the dominant power out of the root). What's left is a reciprocal combination like \\(1+x^{-4}\\) or \\(x\\pm\\dfrac{k}{x}\\) whose derivative is sitting right there in the numerator — substitute it and the mess collapses. This is the chapter's single most-repeated HARD substitution.",
+      definition:
+        "Two faces of the same idea:\n" +
+        "- **Take-out-the-power**: for \\(\\displaystyle\\int \\dfrac{dx}{x^2(x^4+1)^{3/4}}\\)-type integrals, pull the dominant power out of the root — \\((x^4+1)^{3/4}=x^3(1+x^{-4})^{3/4}\\) — then substitute \\(u = 1 + x^{-4}\\).\n" +
+        "- **Reciprocal \\(t = x \\pm \\dfrac{k}{x}\\)**: for a denominator quadratic in \\(x^2\\) with a matching numerator, divide top and bottom by \\(x^2\\). Then \\(\\dfrac{d}{dx}\\!\\left(x\\mp\\dfrac{k}{x}\\right) = 1\\pm\\dfrac{k}{x^2}\\) is exactly the new numerator, and the integral becomes a standard \\(t^2+1\\) arctan (or a clean power).",
+      formula: {
+        label: "The reciprocal substitution",
+        latex: "t = x \\pm \\dfrac{k}{x} \\;\\Rightarrow\\; dt = \\left(1 \\mp \\dfrac{k}{x^2}\\right)dx",
+        symbols: [
+          { symbol: "\\pm k/x", meaning: "sign chosen so \\(dt\\) matches the numerator after dividing by \\(x^2\\)" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{x^2(x^4+1)^{3/4}}\\).",
+        steps: [
+          "Take the dominant power out of the root: \\((x^4+1)^{3/4} = x^3\\,(1+x^{-4})^{3/4}\\).",
+          "Integrand \\(= \\dfrac{1}{x^2\\cdot x^3(1+x^{-4})^{3/4}} = x^{-5}\\,(1+x^{-4})^{-3/4}\\).",
+          "Let \\(u = 1 + x^{-4}\\), so \\(du = -4x^{-5}\\,dx\\), i.e. \\(x^{-5}\\,dx = -\\tfrac14\\,du\\).",
+          "Integrate: \\(-\\tfrac14\\!\\int u^{-3/4}\\,du = -\\tfrac14\\cdot 4u^{1/4} = -u^{1/4}\\). Back-substitute.",
+        ],
+        answer: "\\(-\\dfrac{(x^4+1)^{1/4}}{x} + C\\)",
+      },
+      selfCheckExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x^2-1}{x^3\\sqrt{2x^4-2x^2+1}}\\,dx\\).",
+        steps: [
+          "Take \\(x^4\\) out of the root: \\(\\sqrt{2x^4-2x^2+1} = x^2\\sqrt{2 - \\tfrac{2}{x^2} + \\tfrac{1}{x^4}}\\).",
+          "Integrand \\(= \\dfrac{x^2-1}{x^3\\cdot x^2\\sqrt{\\,\\cdot\\,}} = \\dfrac{\\tfrac{1}{x^3}-\\tfrac{1}{x^5}}{\\sqrt{2 - \\tfrac{2}{x^2} + \\tfrac{1}{x^4}}}\\).",
+          "Let \\(u = 2 - \\tfrac{2}{x^2} + \\tfrac{1}{x^4}\\); then \\(du = \\left(\\tfrac{4}{x^3} - \\tfrac{4}{x^5}\\right)dx\\), so the numerator \\(dx = \\tfrac14\\,du\\).",
+          "Integrate: \\(\\tfrac14\\!\\int u^{-1/2}\\,du = \\tfrac14\\cdot 2\\sqrt{u} = \\tfrac12\\sqrt{u}\\).",
+        ],
+        answer: "\\(\\dfrac{\\sqrt{2x^4-2x^2+1}}{2x^2} + C\\)",
+      },
+      practiceSet: [
+        { prompt: "In \\(\\int \\dfrac{dx}{x^2(x^4+1)^{3/4}}\\), what do you pull out of the root?", answer: "\\(x^4\\Rightarrow x^3(1+x^{-4})^{3/4}\\)" },
+        { prompt: "Derivative of \\(x + \\dfrac{4}{x}\\)?", answer: "\\(1 - \\dfrac{4}{x^2}\\)", method: "the reciprocal-substitution signal" },
+        { prompt: "\\(\\int \\dfrac{x^2-4}{x^4+9x^2+16}\\,dx\\) — which substitution?", answer: "\\(t = x + \\dfrac{4}{x}\\)", method: "divide N,D by \\(x^2\\); numerator \\(=1-4/x^2=t'\\)" },
+        { prompt: "After \\(t = x + \\dfrac{4}{x}\\), \\(\\dfrac{x^4+9x^2+16}{x^2}\\) becomes?", answer: "\\(t^2 + 1\\)", method: "\\(x^2+16/x^2 = t^2-8\\), then \\(+9\\)" },
+      ],
+      pyqExampleId: "fe26934e-b655-4968-99e1-07dcce2b63c3",
+      traps: [
+        {
+          title: "Pick the sign of t = x ± k/x from the numerator",
+          body:
+            "After dividing by \\(x^2\\), if the numerator is \\(1 - \\dfrac{k}{x^2}\\) use \\(t = x + \\dfrac{k}{x}\\); if it is \\(1 + \\dfrac{k}{x^2}\\) use \\(t = x - \\dfrac{k}{x}\\). The substitution only works when \\(dt\\) reproduces the numerator exactly.",
+        },
+      ],
+    },
+
+    // 6 — exponential / special subs
     {
       kind: "formula" as const,
       slug: "exponential-and-special-subs",
