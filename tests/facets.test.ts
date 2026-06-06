@@ -89,4 +89,58 @@ describe("mergeAndSortFacets", () => {
     );
     expect(result).toEqual([{ id: "a", name: "Apples", count: 3 }]);
   });
+
+  describe("orderIndex (teaching order)", () => {
+    it("sorts by orderIndex ascending ahead of count when present", () => {
+      // Teaching order must win over volume: a low-count early-taught
+      // subtopic precedes a high-count late-taught one.
+      const result = mergeAndSortFacets(
+        [
+          { id: "props", name: "Determinant Properties", orderIndex: 3 },
+          { id: "matops", name: "Matrix Operations", orderIndex: 1 },
+          { id: "special", name: "Special Matrices", orderIndex: 2 },
+        ],
+        [facet("props", 59), facet("matops", 33), facet("special", 22)]
+      );
+      expect(result.map((r) => r.id)).toEqual(["matops", "special", "props"]);
+    });
+
+    it("places options with no orderIndex (null/undefined) last", () => {
+      const result = mergeAndSortFacets(
+        [
+          { id: "ordered", name: "Ordered", orderIndex: 1 },
+          { id: "nullish", name: "Nullish", orderIndex: null },
+          { id: "missing", name: "Missing" },
+        ],
+        [facet("ordered", 1), facet("nullish", 99), facet("missing", 50)]
+      );
+      // ordered (orderIndex 1) first despite the lowest count; the two
+      // order-less options fall back to count desc among themselves.
+      expect(result.map((r) => r.id)).toEqual(["ordered", "nullish", "missing"]);
+    });
+
+    it("falls back to count desc then name when no option has an orderIndex", () => {
+      const result = mergeAndSortFacets(
+        [
+          { id: "a", name: "Apples" },
+          { id: "b", name: "Bananas" },
+          { id: "c", name: "Cherries" },
+        ],
+        [facet("a", 1), facet("b", 10), facet("c", 5)]
+      );
+      expect(result.map((r) => r.id)).toEqual(["b", "c", "a"]);
+    });
+
+    it("breaks an orderIndex tie by count desc then name", () => {
+      const result = mergeAndSortFacets(
+        [
+          { id: "a", name: "Zeta", orderIndex: 5 },
+          { id: "b", name: "Alpha", orderIndex: 5 },
+        ],
+        [facet("a", 10), facet("b", 3)]
+      );
+      // same orderIndex → higher count first
+      expect(result.map((r) => r.id)).toEqual(["a", "b"]);
+    });
+  });
 });

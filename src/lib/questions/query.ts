@@ -90,7 +90,7 @@ export async function queryQuestions(
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
-      subtopic:subtopics!subtopic_id(id, name),
+      subtopic:subtopics!subtopic_id(id, name, order_index),
       options(label, text, is_correct, image_url)
     `,
       { count: "exact" }
@@ -130,6 +130,24 @@ export async function queryQuestions(
 
   const start = (filters.page - 1) * pageSize;
   const end = start + pageSize - 1;
+  // When a chapter is in scope, lead with the subtopic's teaching order so a
+  // chapter's questions read in the order the chapter is taught (matrix-ops
+  // before special-matrices, etc. — sourced from /notes via order_index).
+  // NULLs (subtopics with no teaching order — every chapter outside the ~11
+  // noted ones) sort last and so tie, leaving the historical ordering intact.
+  // Skipped entirely on the unfiltered/all-questions view, where a global
+  // order_index sort would meaninglessly interleave unrelated chapters.
+  if (filters.chapterIds.length > 0) {
+    // PostgREST orders the PARENT result by an embedded to-one column via the
+    // `embed(col)` order spec, using the SELECT alias ("subtopic"), NOT the
+    // `{ referencedTable }` option (that orders the child collection, a no-op
+    // for a to-one embed). supabase-js has no typed form for this, so the
+    // column is passed as the literal embed-alias string.
+    q = q.order("subtopic(order_index)", {
+      ascending: true,
+      nullsFirst: false,
+    });
+  }
   // Bulk uploads insert rows with identical created_at timestamps;
   // source_row breaks the tie (so within one upload, Excel-row order is
   // preserved — Q34 before Q35 in the same set, etc.). id is the final
