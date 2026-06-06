@@ -159,3 +159,149 @@ describe.skipIf(!HAS_ENV)("queryQuestions · within-upload sort order", () => {
     expect(returnedSourceRows).toEqual([1, 2, 3, 4, 5]);
   });
 });
+
+/**
+ * Verifies the chapter-scoped teaching-order sort: when a chapter is filtered,
+ * questions lead with their subtopic's order_index (migration 0029), so a
+ * chapter reads in the order it is taught. NULL order_index (subtopics with no
+ * teaching order) sorts LAST. This also proves the PostgREST embedded-resource
+ * ordering (`referencedTable: "subtopic"`) actually works against live PostgREST.
+ */
+describe.skipIf(!HAS_ENV)("queryQuestions · subtopic teaching order", () => {
+  let admin: SupabaseClient;
+  let orgId: string;
+  let examId: string;
+  let subjectId: string;
+  let chapterId: string;
+  let userId: string;
+
+  // Three subtopics whose order_index is the OPPOSITE of their questions'
+  // source_row, so the old sort (source_row ASC) and the new sort
+  // (subtopic.order_index ASC NULLS LAST) disagree deterministically:
+  //   subB: order_index 1,    source_row 5
+  //   subA: order_index 2,    source_row 1
+  //   subC: order_index NULL,  source_row 0
+  // Old sort would return source_row [0, 1, 5] → order_index [NULL, 2, 1].
+  // New sort returns order_index [1, 2, NULL].
+  const subIds = {
+    A: "00000000-0000-0000-0000-0000000000a1",
+    B: "00000000-0000-0000-0000-0000000000b1",
+    C: "00000000-0000-0000-0000-0000000000c1",
+  };
+  let orderById: Map<string, number | null>;
+
+  beforeAll(async () => {
+    admin = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      { auth: { persistSession: false } }
+    );
+
+    const { data: u } = await admin.auth.admin.createUser({
+      email: `teach-order-${RUN_ID}@test.local`,
+      password: "to-pw-1234",
+      email_confirm: true,
+    });
+    userId = u.user!.id;
+
+    const { data: org } = await admin
+      .from("organizations")
+      .insert({ name: `TeachOrderOrg_${RUN_ID}` })
+      .select("id")
+      .single();
+    orgId = org!.id;
+
+    await admin
+      .from("org_members")
+      .insert({ org_id: orgId, user_id: userId, role: "ADMIN" });
+
+    const { data: exam } = await admin
+      .from("exams")
+      .select("id")
+      .eq("name", "MHT-CET")
+      .single();
+    examId = exam!.id;
+
+    const { data: subj } = await admin
+      .from("subjects")
+      .insert({ exam_id: examId, name: `TeachOrderSubj_${RUN_ID}` })
+      .select("id")
+      .single();
+    subjectId = subj!.id;
+
+    const { data: ch } = await admin
+      .from("chapters")
+      .insert({
+        subject_id: subjectId,
+        name: `TeachOrderChapter_${RUN_ID}`,
+        order_index: 0,
+      })
+      .select("id")
+      .single();
+    chapterId = ch!.id;
+
+    await admin.from("subtopics").insert([
+      { id: subIds.A, chapter_id: chapterId, name: `subA_${RUN_ID}`, order_index: 2 },
+      { id: subIds.B, chapter_id: chapterId, name: `subB_${RUN_ID}`, order_index: 1 },
+      { id: subIds.C, chapter_id: chapterId, name: `subC_${RUN_ID}`, order_index: null },
+    ]);
+
+    const fixture = [
+      { sub: subIds.A, sourceRow: 1 },
+      { sub: subIds.B, sourceRow: 5 },
+      { sub: subIds.C, sourceRow: 0 },
+    ];
+    const inserts = fixture.map((f, i) => ({
+      org_id: orgId,
+      exam_id: examId,
+      subject_id: subjectId,
+      chapter_id: chapterId,
+      subtopic_id: f.sub,
+      text: `TQ${i}_${RUN_ID}`,
+      difficulty: "EASY" as const,
+      content_hash: contentHash(`TQ${i}_${RUN_ID}`, ["a", "b", "c", "d"], "A"),
+      source_row: f.sourceRow,
+      source_file: `teach-order-${RUN_ID}.xlsx`,
+      created_by: userId,
+    }));
+    const { data: rows } = await admin
+      .from("questions")
+      .insert(inserts)
+      .select("id, subtopic_id");
+
+    const subOrder = new Map<string, number | null>([
+      [subIds.A, 2],
+      [subIds.B, 1],
+      [subIds.C, null],
+    ]);
+    orderById = new Map(
+      rows!.map((r) => [r.id, subOrder.get(r.subtopic_id as string) ?? null])
+    );
+
+    const optionRows = rows!.flatMap((r) => [
+      { question_id: r.id, label: "A", text: "a", is_correct: true },
+      { question_id: r.id, label: "B", text: "b", is_correct: false },
+      { question_id: r.id, label: "C", text: "c", is_correct: false },
+      { question_id: r.id, label: "D", text: "d", is_correct: false },
+    ]);
+    await admin.from("options").insert(optionRows);
+  });
+
+  afterAll(async () => {
+    if (orgId) await admin.from("organizations").delete().eq("id", orgId);
+    if (subjectId) await admin.from("subjects").delete().eq("id", subjectId);
+    if (userId) await admin.auth.admin.deleteUser(userId);
+  });
+
+  it("orders questions by subtopic order_index (NULLs last) when a chapter is filtered", async () => {
+    const result = await queryQuestions(
+      admin,
+      orgId,
+      { ...EMPTY_FILTERS, examId, subjectId, chapterIds: [chapterId] },
+      25
+    );
+    expect(result.totalCount).toBe(3);
+    const returnedOrder = result.rows.map((r) => orderById.get(r.id) ?? null);
+    expect(returnedOrder).toEqual([1, 2, null]);
+  });
+});

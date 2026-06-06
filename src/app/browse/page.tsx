@@ -96,11 +96,16 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     filters.chapterIds.length > 0
       ? supabase
           .from("subtopics")
-          .select("id, name, chapter_id")
+          .select("id, name, chapter_id, order_index")
           .in("chapter_id", filters.chapterIds)
           .order("name")
       : Promise.resolve({
-          data: [] as { id: string; name: string; chapter_id: string }[],
+          data: [] as {
+            id: string;
+            name: string;
+            chapter_id: string;
+            order_index: number | null;
+          }[],
         }),
     filters.subjectId
       ? supabase.rpc("get_chapter_facets", facetArgs)
@@ -152,7 +157,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     chapterFacetRows.map((f) => ({ id: f.chapter_id, count: f.q_count }))
   );
   const subtopicOpts: FacetedOption[] = mergeAndSortFacets(
-    (subtopics ?? []).map((s) => ({ id: s.id, name: s.name })),
+    (subtopics ?? []).map((s) => ({
+      id: s.id,
+      name: s.name,
+      orderIndex: s.order_index,
+    })),
     subtopicFacetRows.map((f) => ({
       id: f.subtopic_id,
       count: f.q_count,

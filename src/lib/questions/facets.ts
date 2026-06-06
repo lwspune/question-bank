@@ -1,14 +1,17 @@
-export type Option = { id: string; name: string };
+export type Option = { id: string; name: string; orderIndex?: number | null };
 export type FacetedOption = Option & { count: number };
 export type FacetCount = { id: string; count: number };
 
 /**
  * Merge per-id facet counts into a list of options. Used by the browse filter
- * sidebar to render chapter and subtopic lists as `Name (N)` sorted by volume.
+ * sidebar to render chapter and subtopic lists as `Name (N)`.
  *
  * - Options without a positive count are dropped (zero or missing → hidden).
- * - Output is sorted by count descending, with case-insensitive name as the
- *   stable tiebreaker.
+ * - Sort precedence: `orderIndex` ascending (a curated *teaching order*, e.g.
+ *   subtopics of a /notes chapter) → then count descending → then
+ *   case-insensitive name. Options with no `orderIndex` (null/undefined) sort
+ *   last, so a chapter with no teaching order keeps the historical count-desc
+ *   behaviour untouched.
  */
 export function mergeAndSortFacets(
   options: Option[],
@@ -17,11 +20,14 @@ export function mergeAndSortFacets(
   const counts = new Map<string, number>();
   for (const f of facets) counts.set(f.id, f.count);
 
+  const rank = (o: Option) => o.orderIndex ?? Infinity;
+
   return options
     .map((o) => ({ ...o, count: counts.get(o.id) ?? 0 }))
     .filter((o) => o.count > 0)
     .sort(
       (a, b) =>
+        rank(a) - rank(b) ||
         b.count - a.count ||
         a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
     );
