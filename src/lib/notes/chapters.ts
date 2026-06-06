@@ -68,6 +68,11 @@ import {
   BINOMIAL_DISTRIBUTION_NOTES,
   BINOMIAL_DISTRIBUTION_SLUGS,
 } from "@/app/notes/nda-maths/binomial-distribution/_data";
+import {
+  FUNCTIONS_CHAPTER,
+  FUNCTIONS_NOTES,
+  FUNCTIONS_SLUGS,
+} from "@/app/notes/nda-maths/functions/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -196,6 +201,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: BINOMIAL_DISTRIBUTION_CHAPTER,
     notes: BINOMIAL_DISTRIBUTION_NOTES,
     slugs: BINOMIAL_DISTRIBUTION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "functions",
+    chipLabel: "Functions notes",
+    chapter: FUNCTIONS_CHAPTER,
+    notes: FUNCTIONS_NOTES,
+    slugs: FUNCTIONS_SLUGS,
   },
   {
     examName: "NDA",

@@ -82,6 +82,12 @@ import BinomialPmfInteractive from "./visualizations/BinomialPmfInteractive";
 import BinomialCoefficientTree from "./visualizations/BinomialCoefficientTree";
 import BinomialTailShading from "./visualizations/BinomialTailShading";
 import BinomialMeanSpread from "./visualizations/BinomialMeanSpread";
+import FunctionMappingDiagram from "./visualizations/FunctionMappingDiagram";
+import DomainRangeGraph from "./visualizations/DomainRangeGraph";
+import EvenOddSymmetry from "./visualizations/EvenOddSymmetry";
+import CompositionMachine from "./visualizations/CompositionMachine";
+import InverseReflectionLine from "./visualizations/InverseReflectionLine";
+import GreatestIntegerStaircase from "./visualizations/GreatestIntegerStaircase";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -224,6 +230,18 @@ function renderVisualization(slug: VisualizationSlug) {
       return <BinomialTailShading />;
     case "binomial-mean-spread":
       return <BinomialMeanSpread />;
+    case "function-mapping-diagram":
+      return <FunctionMappingDiagram />;
+    case "function-domain-range-graph":
+      return <DomainRangeGraph />;
+    case "even-odd-symmetry":
+      return <EvenOddSymmetry />;
+    case "composition-machine":
+      return <CompositionMachine />;
+    case "inverse-reflection-line":
+      return <InverseReflectionLine />;
+    case "greatest-integer-staircase":
+      return <GreatestIntegerStaircase />;
   }
 }
 
