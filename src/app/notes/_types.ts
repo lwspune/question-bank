@@ -138,7 +138,14 @@ export type VisualizationSlug =
   | "binomial-pmf-interactive"
   | "binomial-coefficient-tree"
   | "binomial-tail-shading"
-  | "binomial-mean-spread";
+  | "binomial-mean-spread"
+  // NDA Maths — Functions chapter
+  | "function-mapping-diagram"
+  | "function-domain-range-graph"
+  | "even-odd-symmetry"
+  | "composition-machine"
+  | "inverse-reflection-line"
+  | "greatest-integer-staircase";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
