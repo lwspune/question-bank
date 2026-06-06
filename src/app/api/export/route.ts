@@ -32,6 +32,7 @@ type ExportKind = "paper" | "key";
 type ExportOptions = {
   title?: string;
   includeSolutions?: boolean;
+  groupBySubtopic?: boolean;
 };
 
 // Either filter-mode or cart-mode; never both. Front-end picks one.
@@ -172,16 +173,27 @@ export async function POST(request: NextRequest) {
         ? options.title.trim()
         : "PYQ Vault Export";
     const includeSolutions = !!options.includeSolutions;
+    const groupBySubtopic = !!options.groupBySubtopic;
     const safeName = sanitizeFilename(title);
 
     let docxBuf: Buffer;
     let filename: string;
     if (kind === "paper") {
       const imageBytes = await fetchImageBytes(questions);
-      docxBuf = await buildQuestionPaper({ title, questions, imageBytes });
+      docxBuf = await buildQuestionPaper({
+        title,
+        questions,
+        imageBytes,
+        groupBySubtopic,
+      });
       filename = `QP_${safeName}.docx`;
     } else {
-      docxBuf = await buildAnswerKey({ title, questions, includeSolutions });
+      docxBuf = await buildAnswerKey({
+        title,
+        questions,
+        includeSolutions,
+        groupBySubtopic,
+      });
       filename = `Answers_${safeName}.docx`;
     }
 

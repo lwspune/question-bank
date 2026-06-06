@@ -50,6 +50,7 @@ export default function DownloadDialog({
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
   const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
+  const [groupBySubtopic, setGroupBySubtopic] = useState(false);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -63,10 +64,11 @@ export default function DownloadDialog({
     setBusyKind(kind);
     setError(null);
     try {
+      const exportOptions = { title, includeSolutions, groupBySubtopic };
       const body =
         mode === "cart"
-          ? { kind, questionIds: cart.ids, options: { title, includeSolutions } }
-          : { kind, filters, options: { title, includeSolutions } };
+          ? { kind, questionIds: cart.ids, options: exportOptions }
+          : { kind, filters, options: exportOptions };
       const res = await fetch("/api/export", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -192,6 +194,16 @@ export default function DownloadDialog({
               className="h-4 w-4"
             />
             <span>Include solutions in the Answer Key</span>
+          </label>
+          <label className="flex cursor-pointer items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={groupBySubtopic}
+              onChange={(e) => setGroupBySubtopic(e.target.checked)}
+              disabled={busy}
+              className="h-4 w-4"
+            />
+            <span>Group by subtopic (section headings)</span>
           </label>
           {error && (
             <p className="text-sm text-destructive" role="alert">

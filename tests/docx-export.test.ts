@@ -177,3 +177,74 @@ describe("buildAnswerKey", () => {
     expect(xml).not.toContain("Solution:");
   });
 });
+
+describe("groupBySubtopic — section headings", () => {
+  const withSub = (
+    id: string,
+    text: string,
+    sub: { id: string; name: string } | null
+  ): QuestionRow => ({
+    ...Q1,
+    id,
+    text,
+    setId: null,
+    subtopic: sub,
+  });
+
+  const MATOPS = { id: "st1", name: "Matrix Operations" };
+  const SPECIAL = { id: "st2", name: "Special Matrices" };
+  const ordered = [
+    withSub("a", "Stem one.", MATOPS),
+    withSub("b", "Stem two.", MATOPS),
+    withSub("c", "Stem three.", SPECIAL),
+  ];
+
+  it("paper: prints each subtopic heading once, in order, only when enabled", async () => {
+    const buf = await buildQuestionPaper({
+      title: "T",
+      questions: ordered,
+      groupBySubtopic: true,
+    });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("Matrix Operations");
+    expect(xml).toContain("Special Matrices");
+    // single heading per contiguous run
+    expect(xml.match(/Matrix Operations/g)?.length).toBe(1);
+    // teaching order preserved
+    expect(xml.indexOf("Matrix Operations")).toBeLessThan(
+      xml.indexOf("Special Matrices")
+    );
+  });
+
+  it("paper: no headings when the flag is off", async () => {
+    const buf = await buildQuestionPaper({ title: "T", questions: ordered });
+    const xml = await readDocXml(buf);
+    expect(xml).not.toContain("Matrix Operations");
+    expect(xml).not.toContain("Special Matrices");
+  });
+
+  it("answer key: prints subtopic headings when enabled", async () => {
+    const buf = await buildAnswerKey({
+      title: "T",
+      questions: ordered,
+      includeSolutions: false,
+      groupBySubtopic: true,
+    });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("Matrix Operations");
+    expect(xml).toContain("Special Matrices");
+    expect(xml.indexOf("Matrix Operations")).toBeLessThan(
+      xml.indexOf("Special Matrices")
+    );
+  });
+
+  it('falls back to "Other" for a null subtopic', async () => {
+    const buf = await buildQuestionPaper({
+      title: "T",
+      questions: [withSub("z", "Untagged stem.", null)],
+      groupBySubtopic: true,
+    });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("Other");
+  });
+});
