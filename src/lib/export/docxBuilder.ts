@@ -20,7 +20,8 @@ import type { QuestionRow } from "@/lib/questions/query";
 import { parseTableBlocks, type TableBlock } from "@/components/math/parseTableBlocks";
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
 import { readImageDimensions, fitWithinBox } from "./imageDimensions";
-import { groupBySet } from "./groupBySet";
+import { groupBySet, type Group } from "./groupBySet";
+import { headingsOnChange } from "./subtopicHeadings";
 import { stripPassageCountPhrase } from "./stripPassageCount";
 
 const MARGIN = 720; // 0.5" in twips
@@ -93,6 +94,8 @@ export type QuestionPaperInput = {
   questions: QuestionRow[];
   /** Storage path → image bytes. If omitted or a path is missing, the image is silently skipped. */
   imageBytes?: Map<string, Buffer>;
+  /** When true, print a bold subtopic heading before each new subtopic run. */
+  groupBySubtopic?: boolean;
 };
 
 export type AnswerKeyInput = {
@@ -101,7 +104,12 @@ export type AnswerKeyInput = {
   includeSolutions: boolean;
   /** Accepted for symmetry with QuestionPaperInput; ignored — answer key never embeds images. */
   imageBytes?: Map<string, Buffer>;
+  /** When true, print a bold subtopic heading before each new subtopic run. */
+  groupBySubtopic?: boolean;
 };
+
+// Heading text for a question with no subtopic — keeps the grouping total.
+const NO_SUBTOPIC_LABEL = "Other";
 
 // Maximum render boxes (px). Images smaller than the cap render at their
 // natural size; larger images scale-to-fit while preserving aspect ratio.
@@ -133,8 +141,20 @@ export async function buildQuestionPaper(
   // the paper sees which questions share the context without inferring it
   // from visual grouping. Set-of-1 falls through to a standalone render with
   // the passage inline as Context — a 1-question "Set:" framing reads worst.
+  // Subtopic section headings (opt-in). Computed per set-group so a passage
+  // set stays under one heading; the label comes from the group's first
+  // question (set siblings are co-located on one subtopic by invariant).
+  const groups = groupBySet(input.questions);
+  const headings = input.groupBySubtopic
+    ? headingsOnChange(groups.map((g) => groupSubtopicLabel(g)))
+    : [];
+
   let position = 1;
-  for (const group of groupBySet(input.questions)) {
+  for (let gi = 0; gi < groups.length; gi++) {
+    const group = groups[gi];
+    if (input.groupBySubtopic && headings[gi]) {
+      children.push(subtopicHeading(headings[gi]!));
+    }
     if (group.kind === "single") {
       children.push(
         ...questionParagraphs(
@@ -200,7 +220,17 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
   );
   children.push(blank());
 
-  for (const q of input.questions) {
+  const keyHeadings = input.groupBySubtopic
+    ? headingsOnChange(
+        input.questions.map((q) => q.subtopic?.name ?? NO_SUBTOPIC_LABEL)
+      )
+    : [];
+
+  for (let i = 0; i < input.questions.length; i++) {
+    const q = input.questions[i];
+    if (input.groupBySubtopic && keyHeadings[i]) {
+      children.push(subtopicHeading(keyHeadings[i]!));
+    }
     const correct = q.options.find((o) => o.isCorrect);
     children.push(
       new Paragraph({
@@ -243,6 +273,23 @@ function titleParagraph(title: string): Paragraph {
   return new Paragraph({
     alignment: AlignmentType.CENTER,
     children: [new TextRun({ text: title, bold: true, size: TITLE_SIZE })],
+  });
+}
+
+/** Subtopic of a set-group, taken from its first question (siblings co-located). */
+function groupSubtopicLabel(group: Group): string {
+  const q = group.kind === "single" ? group.question : group.questions[0];
+  return q.subtopic?.name ?? NO_SUBTOPIC_LABEL;
+}
+
+/** Bold, underlined section heading printed before a new subtopic run. */
+function subtopicHeading(name: string): Paragraph {
+  return new Paragraph({
+    spacing: { before: 160, after: 40 },
+    border: {
+      bottom: { style: BorderStyle.SINGLE, size: 4, color: "999999", space: 1 },
+    },
+    children: [new TextRun({ text: name, bold: true, size: SUBTITLE_SIZE })],
   });
 }
 
