@@ -36,7 +36,9 @@ describe("getNotesChapterHref", () => {
   });
 
   it("returns null for chapters without notes", () => {
-    expect(getNotesChapterHref("Differentiation")).toBeNull();
+    // Synthetic chapter name that will never gain notes (real chapters get
+    // notes over time and would flip this assertion — see [[prepush-excludes-npm-test]]).
+    expect(getNotesChapterHref("No Such Chapter XYZ")).toBeNull();
     expect(getNotesChapterHref("")).toBeNull();
   });
 });
@@ -51,6 +53,6 @@ describe("getNotesChapterLabel", () => {
   });
 
   it("returns null for chapters without notes", () => {
-    expect(getNotesChapterLabel("Differentiation")).toBeNull();
+    expect(getNotesChapterLabel("No Such Chapter XYZ")).toBeNull();
   });
 });

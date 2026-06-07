@@ -73,6 +73,11 @@ import {
   FUNCTIONS_NOTES,
   FUNCTIONS_SLUGS,
 } from "@/app/notes/nda-maths/functions/_data";
+import {
+  DIFFERENTIATION_CHAPTER,
+  DIFFERENTIATION_NOTES,
+  DIFFERENTIATION_SLUGS,
+} from "@/app/notes/nda-maths/differentiation/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -212,6 +217,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: FUNCTIONS_CHAPTER,
     notes: FUNCTIONS_NOTES,
     slugs: FUNCTIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "differentiation",
+    chipLabel: "Differentiation notes",
+    chapter: DIFFERENTIATION_CHAPTER,
+    notes: DIFFERENTIATION_NOTES,
+    slugs: DIFFERENTIATION_SLUGS,
   },
   {
     examName: "NDA",
