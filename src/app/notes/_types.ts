@@ -163,7 +163,10 @@ export type VisualizationSlug =
   | "lines-angle-between-diagram"
   | "lines-distance-point-line"
   // NDA Maths — Permutation & Combination chapter
-  | "pc-geometric-counting-diagram";
+  | "pc-geometric-counting-diagram"
+  // NDA Maths — Complex Numbers chapter
+  | "cn-argand-plane"
+  | "cn-cube-roots-circle";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

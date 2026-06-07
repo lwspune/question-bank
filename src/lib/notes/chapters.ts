@@ -103,6 +103,11 @@ import {
   PERMUTATION_COMBINATION_NOTES,
   PERMUTATION_COMBINATION_SLUGS,
 } from "@/app/notes/nda-maths/permutation-combination/_data";
+import {
+  COMPLEX_NUMBERS_CHAPTER,
+  COMPLEX_NUMBERS_NOTES,
+  COMPLEX_NUMBERS_SLUGS,
+} from "@/app/notes/nda-maths/complex-numbers/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -308,6 +313,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: PERMUTATION_COMBINATION_CHAPTER,
     notes: PERMUTATION_COMBINATION_NOTES,
     slugs: PERMUTATION_COMBINATION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "complex-numbers",
+    chipLabel: "Complex Numbers notes",
+    chapter: COMPLEX_NUMBERS_CHAPTER,
+    notes: COMPLEX_NUMBERS_NOTES,
+    slugs: COMPLEX_NUMBERS_SLUGS,
   },
   {
     examName: "NDA",

@@ -100,6 +100,8 @@ import AodExtremaCurve from "./visualizations/AodExtremaCurve";
 import LinesAngleBetween from "./visualizations/LinesAngleBetween";
 import LinesDistancePointLine from "./visualizations/LinesDistancePointLine";
 import PcGeometricCounting from "./visualizations/PcGeometricCounting";
+import CnArgandPlane from "./visualizations/CnArgandPlane";
+import CnCubeRootsCircle from "./visualizations/CnCubeRootsCircle";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -278,6 +280,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <LinesDistancePointLine />;
     case "pc-geometric-counting-diagram":
       return <PcGeometricCounting />;
+    case "cn-argand-plane":
+      return <CnArgandPlane />;
+    case "cn-cube-roots-circle":
+      return <CnCubeRootsCircle />;
   }
 }
 
