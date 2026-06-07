@@ -145,7 +145,11 @@ export type VisualizationSlug =
   | "even-odd-symmetry"
   | "composition-machine"
   | "inverse-reflection-line"
-  | "greatest-integer-staircase";
+  | "greatest-integer-staircase"
+  // NDA Maths — Differentiation chapter
+  | "diff-tangent-slope"
+  | "diff-modulus-corner"
+  | "diff-piecewise-join";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

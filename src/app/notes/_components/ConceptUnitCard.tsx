@@ -88,6 +88,9 @@ import EvenOddSymmetry from "./visualizations/EvenOddSymmetry";
 import CompositionMachine from "./visualizations/CompositionMachine";
 import InverseReflectionLine from "./visualizations/InverseReflectionLine";
 import GreatestIntegerStaircase from "./visualizations/GreatestIntegerStaircase";
+import DiffTangentSlope from "./visualizations/DiffTangentSlope";
+import DiffModulusCorner from "./visualizations/DiffModulusCorner";
+import DiffPiecewiseJoin from "./visualizations/DiffPiecewiseJoin";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -242,6 +245,12 @@ function renderVisualization(slug: VisualizationSlug) {
       return <InverseReflectionLine />;
     case "greatest-integer-staircase":
       return <GreatestIntegerStaircase />;
+    case "diff-tangent-slope":
+      return <DiffTangentSlope />;
+    case "diff-modulus-corner":
+      return <DiffModulusCorner />;
+    case "diff-piecewise-join":
+      return <DiffPiecewiseJoin />;
   }
 }
 
