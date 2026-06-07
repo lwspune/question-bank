@@ -62,6 +62,14 @@ function skeleton(zone: string): string {
 // spurious `\p` macro (and pollute fragments). Strip them before tokenizing.
 const stripBreaks = (zone: string) => zone.replace(/\\\\(\s*\[[^\]]*\])?/g, " ");
 
+// Derivative operators are a TECHNIQUE signal, but their giveaway macro
+// (`\frac{d}{dx}`) hides behind the allowlisted `\frac` — so detect the
+// derivative FORM directly and emit a synthetic `[d/dx]` token. Catches
+// Leibniz `\frac{d...}` / `d/dx`, partials, and function-prime `f'(` / `f''(`.
+// Prime MUST be followed by `(` so transpose notation `A'` (= Aᵀ) is NOT a
+// false positive. (Blind spot found 2026-06-07: the determinant-derivative gap.)
+const DERIV_RE = /frac\s*\{\s*d|\bd\/dx|\\partial|[a-zA-Z]'+\(/;
+
 function tokensFromZones(zones: string[]): { macros: Set<string>; frags: Set<string> } {
   const macros = new Set<string>();
   const frags = new Set<string>();
@@ -69,6 +77,7 @@ function tokensFromZones(zones: string[]): { macros: Set<string>; frags: Set<str
     const zone = stripBreaks(raw);
     for (const mac of zone.match(/\\[a-zA-Z]+/g) ?? [])
       if (!COMMON_MACROS.has(mac)) macros.add(mac);
+    if (DERIV_RE.test(zone)) macros.add("[d/dx]"); // synthetic technique token
     const skel = skeleton(zone);
     for (const piece of skel.split(/[=,;]/)) {
       for (const frag of piece.match(/[@^/*+\-().]{4,}/g) ?? []) {
@@ -171,10 +180,14 @@ async function main() {
       for (const mac of t.macros) if (!vocab.macros.has(mac)) macroCount.set(mac, (macroCount.get(mac) ?? 0) + 1);
       for (const fr of t.frags) if (!vocab.frags.has(fr)) fragCount.set(fr, (fragCount.get(fr) ?? 0) + 1);
     }
-    const flagMac = [...macroCount].filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]);
+    // Synthetic technique tokens like [d/dx] flag at >=1 (a single untaught
+    // technique is worth surfacing); ordinary \macros stay >=2 (notation noise).
+    const flagMac = [...macroCount]
+      .filter(([m, n]) => (m.startsWith("[") ? n >= 1 : n >= 2))
+      .sort((a, b) => b[1] - a[1]);
     const flagFr = [...fragCount].filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]);
     console.log(`\n## ${subName}  (${solutions.length} solutions, notes frags=${vocab.frags.size})`);
-    console.log(`  macros in solutions but not notes (>=2 q): ${flagMac.length ? flagMac.map(([m, n]) => `${m}(${n})`).join("  ") : "none"}`);
+    console.log(`  macros/techniques in solutions but not notes (\\macro>=2, [technique]>=1): ${flagMac.length ? flagMac.map(([m, n]) => `${m}(${n})`).join("  ") : "none"}`);
     if (flagFr.length) {
       console.log(`  structural fragments in solutions but not notes (>=2 q), top 15:`);
       for (const [f, n] of flagFr.slice(0, 15)) console.log(`     ${n}x   ${f}`);
