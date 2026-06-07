@@ -95,6 +95,7 @@ export const FUNCTIONS_DEFINITION_CLASSIFICATION_NOTE: SubtopicNote = {
         "- **Injective:** \\(f(x_1)=f(x_2)\\Rightarrow x_1=x_2\\) (equivalently, every horizontal line meets the graph at most once).\n" +
         "- **Surjective:** range \\(=\\) codomain, i.e. every \\(y\\in B\\) has a pre-image.\n" +
         "- **Bijective:** injective **and** surjective. Only bijections have an inverse.\n" +
+        "- **Monotonic ⇒ injective:** a **strictly increasing or strictly decreasing** function is automatically one-one — the fastest injectivity test. If it is also onto its codomain, it is a bijection. (You can often see monotonicity directly, without calculus: \\(x|x|\\) is \\(-x^2\\) then \\(x^2\\), both increasing and meeting at 0, so it is strictly increasing and one-one.)\n" +
         "Onto depends on the **codomain you declare** — shrinking the codomain to the range makes any function onto.",
       visualizationSlug: "function-mapping-diagram",
       authoredExample: {
@@ -116,12 +117,25 @@ export const FUNCTIONS_DEFINITION_CLASSIFICATION_NOTE: SubtopicNote = {
         ],
         answer: "Yes — a non-constant linear map on \\(\\mathbb{R}\\) is always bijective.",
       },
+      practiceSet: [
+        { prompt: "Is a strictly increasing function one-one?", answer: "Yes — strict monotonicity \\(\\Rightarrow\\) injective" },
+        { prompt: "Is \\(f(x)=x^3\\) on \\(\\mathbb{R}\\) a bijection?", answer: "Yes — strictly increasing and onto \\(\\mathbb{R}\\)" },
+        { prompt: "Why is \\(\\cos(\\pi x)\\) on \\((-1,1)\\) NOT one-one?", answer: "It is not monotone — it peaks at \\(x=0\\), so \\(\\cos(\\pi\\cdot\\tfrac12)=\\cos(-\\pi\\cdot\\tfrac12)\\)" },
+        { prompt: "Does monotonic alone guarantee a bijection?", answer: "No — it gives one-one; you still need onto the declared codomain" },
+      ],
       traps: [
         {
           title: "'Onto' is not absolute — it depends on the codomain",
           body:
             "\\(f:\\mathbb{N}\\to\\mathbb{N}\\), \\(f(x)=x+1\\) is one-one but **not** onto (nothing maps to 1). The " +
             "same rule on \\(\\mathbb{Z}\\to\\mathbb{Z}\\) **is** onto. Read the declared domain and codomain before deciding.",
+        },
+        {
+          title: "A non-monotone function usually fails one-one (and often onto)",
+          body:
+            "On a symmetric interval, an even-ish function doubles back: \\(\\cos(\\pi x)\\) on \\((-1,1)\\) hits its " +
+            "maximum at \\(x=0\\), so it is neither one-one nor onto \\((-1,1)\\). Contrast \\(x|x|\\), which is " +
+            "strictly increasing and **is** a bijection of \\((-1,1)\\). Check monotonicity before declaring a bijection.",
         },
       ],
       pyqExampleId: "54c319fd-4b22-4d87-97ea-e4db6c457889", // 2021 — x+1 on Z (bijective) vs N (one-one not onto)
