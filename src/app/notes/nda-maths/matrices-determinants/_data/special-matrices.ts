@@ -19,7 +19,8 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
       intuition:
         "Each special matrix is defined by one equation relating \\(A\\) to \\(A^T\\), \\(A^{-1}\\), or " +
         "a power of itself. Recognising that equation is the whole game — it pins down the determinant, " +
-        "the inverse, and the diagonal at a glance.",
+        "the inverse, and the diagonal at a glance. For **complex** matrices, the conjugate-transpose " +
+        "\\((\\bar{A})^T\\) plays the role of \\(A^T\\) (Hermitian / skew-Hermitian).",
       definition:
         "Memorise the defining property of each type; the exam tests recognition more than computation.",
       table: {
@@ -34,6 +35,11 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
           { cells: ["Orthogonal", "\\(AA^T = I\\)", "\\(A^{-1} = A^T\\); \\(\\det = \\pm 1\\)"] },
           { cells: ["Idempotent", "\\(A^2 = A\\)", "\\(\\det \\in \\{0, 1\\}\\)"] },
           { cells: ["Involutory", "\\(A^2 = I\\)", "\\(A^{-1} = A\\); \\(\\det = \\pm 1\\)"] },
+          {
+            cells: ["Hermitian", "\\((\\bar{A})^T = A\\)", "complex analogue of symmetric; diagonal entries are real; \\(A+(\\bar{A})^T\\) is always Hermitian"],
+            noteAmber: "For a REAL matrix, Hermitian \\(=\\) symmetric. The conjugate-transpose \\((\\bar{A})^T\\) is also written \\(A^{*}\\) or \\(A^{\\dagger}\\).",
+          },
+          { cells: ["Skew-Hermitian", "\\((\\bar{A})^T = -A\\)", "complex analogue of skew-symmetric; diagonal entries are 0 or purely imaginary"] },
         ],
         caption: "Recognise the defining equation first; the determinant and inverse follow immediately.",
       },
@@ -51,6 +57,8 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
         { prompt: "\\(A^2 = I\\) defines which type?", answer: "Involutory" },
         { prompt: "Diagonal entries of a skew-symmetric matrix?", answer: "All 0" },
         { prompt: "\\(\\det\\) of an orthogonal matrix?", answer: "\\(\\pm 1\\)" },
+        { prompt: "Defining property of a Hermitian matrix?", answer: "\\((\\bar{A})^T = A\\) (conjugate-transpose equals itself)" },
+        { prompt: "For a real matrix, Hermitian is the same as which type?", answer: "Symmetric" },
       ],
       pyqExampleId: "018b0cb6-7902-487c-afda-c697c548ae9b", // 2019 — [[0,1],[1,0]] is a/an
     },

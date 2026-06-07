@@ -124,6 +124,57 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
       ],
     },
 
+    {
+      kind: "formula" as const,
+      slug: "geometric-probability",
+      name: "Geometric probability (length / area / volume ratio)",
+      intuition:
+        "When a point is chosen at random from a continuous region — a segment, a disc, a solid — there are " +
+        "infinitely many outcomes, so you cannot count. Probability becomes a **ratio of measures**: the size " +
+        "of the favourable region over the size of the whole region (length in 1-D, area in 2-D, volume in 3-D).",
+      definition:
+        "For a point chosen uniformly at random over a region, \\(P(E) = \\dfrac{\\text{measure of favourable region}}{\\text{measure of whole region}}\\). " +
+        "Use **length** on a line, **area** in a plane, **volume** in space. This is the continuous analogue of " +
+        "the classical \\(n(E)/n(S)\\) ratio — counting is replaced by measuring.",
+      formula: {
+        label: "Geometric probability",
+        latex: "P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\quad(\\text{length / area / volume})",
+      },
+      authoredExample: {
+        prompt: "A dart lands at a random point on a square board of side \\(4\\). What is the probability it lands inside the inscribed circle (radius \\(2\\))?",
+        steps: [
+          "Total measure = area of the square = \\(4 \\times 4 = 16\\).",
+          "Favourable = area of the inscribed circle = \\(\\pi(2)^2 = 4\\pi\\).",
+          "\\(P = \\dfrac{4\\pi}{16} = \\dfrac{\\pi}{4}\\).",
+        ],
+        answer: "\\(\\dfrac{\\pi}{4}\\).",
+      },
+      selfCheckExample: {
+        prompt: "A point is chosen at random on a rod of length \\(12\\). What is the probability it lies in the segment from \\(3\\) to \\(7\\)?",
+        steps: [
+          "This is 1-D, so use length. Favourable length \\(= 7 - 3 = 4\\).",
+          "\\(P = \\dfrac{4}{12} = \\dfrac{1}{3}\\).",
+        ],
+        answer: "\\(\\dfrac{1}{3}\\).",
+      },
+      practiceSet: [
+        { prompt: "Geometric probability formula?", answer: "favourable measure / total measure" },
+        { prompt: "Point random on \\([0,10]\\); \\(P(\\text{point} > 8)\\)?", answer: "\\(\\tfrac{1}{5}\\)", method: "length \\(2/10\\)" },
+        { prompt: "Point in a disc, closer to the centre than to the boundary (within \\(r/2\\)). \\(P\\)?", answer: "\\(\\tfrac{1}{4}\\)", method: "area \\((r/2)^2/r^2\\)" },
+        { prompt: "Why not count outcomes here?", answer: "The region is continuous — infinitely many points" },
+      ],
+      pyqExampleId: "40ef1a76-c227-448c-bae7-03a5024e627d", // point closer to centre than boundary → 1/4
+      traps: [
+        {
+          title: "Use the right MEASURE — \"closer to the centre\" is an AREA ratio, not a radius ratio",
+          body:
+            "Distance from the centre \\(< r/2\\) is a DISC of radius \\(r/2\\), whose area is \\(\\pi(r/2)^2\\). " +
+            "The probability is the area ratio \\((r/2)^2/r^2 = \\tfrac14\\), NOT the radius ratio \\(\\tfrac12\\). " +
+            "Matching the measure to the dimension is the whole trap.",
+        },
+      ],
+    },
+
     // 3 ───────────────────────────────────────────────────────────────────────
     {
       kind: "formula" as const,

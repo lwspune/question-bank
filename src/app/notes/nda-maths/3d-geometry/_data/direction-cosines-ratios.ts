@@ -235,7 +235,9 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
         "- **Parallel** iff \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} = \\dfrac{c_1}{c_2}\\).\n" +
         "- **Perpendicular** iff \\(a_1a_2 + b_1b_2 + c_1c_2 = 0\\).\n" +
         "A line **perpendicular to both** has direction ratios equal to their **cross product** " +
-        "\\(\\langle a_1,b_1,c_1\\rangle \\times \\langle a_2,b_2,c_2\\rangle\\).",
+        "\\(\\langle a_1,b_1,c_1\\rangle \\times \\langle a_2,b_2,c_2\\rangle\\).\n" +
+        "- **Line of intersection of two planes:** it lies in both planes, so it is perpendicular to " +
+        "BOTH normals — its direction ratios are \\(\\vec{n_1} \\times \\vec{n_2}\\) (cross product of the plane normals).",
       formula: {
         label: "Perpendicularity condition",
         latex: "a_1 a_2 + b_1 b_2 + c_1 c_2 = 0",
@@ -266,6 +268,7 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
         { prompt: "Are \\(\\langle 1,0,0\\rangle\\) and \\(\\langle 0,2,0\\rangle\\) perpendicular?", answer: "Yes", method: "dot product 0" },
         { prompt: "Perpendicular-to-both is found via which operation?", answer: "Cross product" },
         { prompt: "Find k if \\(\\langle 1,k,2\\rangle \\perp \\langle 2,3,-1\\rangle\\).", answer: "\\(0\\)", method: "\\(2+3k-2=0\\)" },
+        { prompt: "Direction ratios of the line where two planes with normals \\(\\vec{n_1},\\vec{n_2}\\) intersect?", answer: "\\(\\vec{n_1}\\times\\vec{n_2}\\)" },
       ],
       pyqExampleId: "c442ea69-837d-4d85-bd73-0ec661e68193", // 2017 — perpendicular condition
     },

@@ -881,23 +881,26 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "sum-of-deviations-empirical",
-      name: "Sum of Deviations & the Empirical Relation",
+      name: "Sum of Deviations & Empirical Relations",
       visualizationSlug: "skew-mean-median-mode",
       intuition:
-        "Two identities every NDA aspirant should reflexively know. First: the " +
+        "Identities every NDA aspirant should reflexively know. First: the " +
         "deviations of all observations from their mean always sum to zero. " +
         "Second: for moderately skewed unimodal data, mode, median and mean lie " +
-        "in a fixed empirical ratio.",
+        "in a fixed empirical ratio. Third: for the same data, mean deviation " +
+        "and standard deviation sit in a fixed ratio too.",
       definition:
         "\\(\\sum (x_i - \\bar{x}) = 0\\) for any dataset — this is a defining " +
         "property of the mean. The empirical relation \\(\\text{Mode} \\approx " +
         "3\\,\\text{Median} - 2\\,\\text{Mean}\\) holds approximately for " +
         "moderately skewed unimodal distributions and is used to recover the " +
-        "third measure when two are known.",
+        "third measure when two are known. For the same moderately-skewed regime, " +
+        "**Mean Deviation \\(\\approx \\tfrac{4}{5}\\,\\text{Standard Deviation}\\)** — " +
+        "equivalently \\(4\\,\\text{SD} = 5\\,\\text{MD}\\) (MD measured about the mean).",
       formula: {
-        label: "Two identities to memorise",
+        label: "Identities to memorise",
         latex:
-          "\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0 \\qquad \\text{and} \\qquad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}",
+          "\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}",
       },
       authoredExample: {
         prompt:
@@ -925,6 +928,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         { prompt: "Mean \\(30\\), median \\(27\\). Mode by the empirical relation?", answer: "\\(21\\)", method: "\\(3\\cdot 27 - 2\\cdot 30\\)" },
         { prompt: "Mean of \\(7\\) numbers is \\(4\\). Find \\(\\sum (x_i - 4)\\).", answer: "\\(0\\)" },
         { prompt: "Mode \\(12\\), mean \\(18\\). Median by the empirical relation?", answer: "\\(16\\)", method: "\\(12 = 3M - 36 \\Rightarrow M = 16\\)" },
+        { prompt: "Moderately skewed data: relation between MD and SD?", answer: "\\(\\text{MD}\\approx\\tfrac{4}{5}\\text{SD}\\)  (i.e. \\(4\\,\\text{SD}=5\\,\\text{MD}\\))" },
       ],
       pyqExampleId: "9650e9ca-cc9b-4696-8607-0262116a0753",
       traps: [

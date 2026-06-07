@@ -118,8 +118,10 @@ export const GEOMETRIC_PROGRESSIONS_NOTE: SubtopicNote = {
       name: "Sum of an infinite GP",
       intuition:
         "If the ratio is between \\(-1\\) and \\(1\\), the terms shrink toward zero fast enough that the " +
-        "whole unending sum settles on a finite number. That single formula cracks repeating decimals, " +
-        "nested continued fractions, and infinite products (take logs first for products).",
+        "whole unending sum settles on a finite number. That single formula cracks repeating decimals " +
+        "and infinite products (take logs first for products). A **periodic continued fraction or nested " +
+        "radical is NOT a GP** — those refer to themselves and are solved by a self-referential equation; " +
+        "see the next concept.",
       definition:
         "For \\(|r| < 1\\), the infinite GP converges:\n" +
         "\\[ S_\\infty = \\frac{a}{1 - r}. \\]\n" +
@@ -159,6 +161,57 @@ export const GEOMETRIC_PROGRESSIONS_NOTE: SubtopicNote = {
             "\\(S_\\infty = \\tfrac{a}{1-r}\\) is only valid for \\(|r| < 1\\). If a problem's ratio has " +
             "\\(|r| \\ge 1\\), the sum genuinely has no finite value — there is no number to find. Always " +
             "check \\(|r|\\) before reaching for the formula.",
+        },
+      ],
+    },
+
+    {
+      kind: "formula" as const,
+      slug: "self-referential-continued-fractions",
+      name: "Periodic continued fractions & nested radicals",
+      intuition:
+        "A repeating continued fraction or nested radical contains a copy of ITSELF. The trick is not a " +
+        "GP sum: set the whole expression equal to \\(x\\), notice the part inside is the same whole \\(x\\) " +
+        "again, replace it, and solve the (usually quadratic) equation that results.",
+      definition:
+        "For a periodic continued fraction \\(x = a + \\dfrac{1}{a + \\dfrac{1}{a + \\cdots}}\\), the tail equals " +
+        "the whole, so \\(x = a + \\dfrac{1}{x} \\Rightarrow x^2 - ax - 1 = 0\\). For a nested radical " +
+        "\\(x = \\sqrt{a + \\sqrt{a + \\cdots}}\\), squaring gives \\(x^2 = a + x\\). In both cases take the " +
+        "**positive** root (the expression is positive).",
+      formula: {
+        label: "Self-referential equations",
+        latex: "x = a + \\tfrac{1}{x}\\ \\Rightarrow\\ x^2 - ax - 1 = 0, \\qquad x = \\sqrt{a + x}\\ \\Rightarrow\\ x^2 - x - a = 0",
+      },
+      authoredExample: {
+        prompt: "Evaluate the golden continued fraction \\(x = 1 + \\dfrac{1}{1 + \\dfrac{1}{1 + \\cdots}}\\).",
+        steps: [
+          "The expression repeats, so replace the inner copy with \\(x\\): \\(x = 1 + \\tfrac{1}{x}\\).",
+          "Multiply by \\(x\\): \\(x^2 = x + 1 \\Rightarrow x^2 - x - 1 = 0\\).",
+          "Positive root: \\(x = \\dfrac{1 + \\sqrt5}{2}\\) (the golden ratio).",
+        ],
+        answer: "\\(x = \\dfrac{1+\\sqrt5}{2}\\).",
+      },
+      selfCheckExample: {
+        prompt: "Find \\(x = \\sqrt{6 + \\sqrt{6 + \\sqrt{6 + \\cdots}}}\\).",
+        steps: [
+          "Self-reference: \\(x = \\sqrt{6 + x}\\), so \\(x^2 = 6 + x\\).",
+          "\\(x^2 - x - 6 = 0 \\Rightarrow (x-3)(x+2) = 0\\); take the positive root.",
+        ],
+        answer: "\\(x = 3\\).",
+      },
+      practiceSet: [
+        { prompt: "\\(x = 2 + \\tfrac{1}{x}\\) gives which equation?", answer: "\\(x^2 - 2x - 1 = 0\\)" },
+        { prompt: "Is a periodic continued fraction a GP sum?", answer: "No — solve it by self-reference" },
+        { prompt: "\\(x = \\sqrt{2 + \\sqrt{2 + \\cdots}}\\)?", answer: "\\(2\\)", method: "\\(x^2 = 2 + x \\Rightarrow x = 2\\)" },
+        { prompt: "Which root do you keep?", answer: "The positive one (the expression is positive)" },
+      ],
+      pyqExampleId: "b05e5dc6-a9da-4e69-8a75-ddf9f6dd6c9a", // 2+1/(2+...) = √2+1
+      traps: [
+        {
+          title: "It is NOT an infinite GP",
+          body:
+            "Reaching for \\(\\tfrac{a}{1-r}\\) here is wrong — there is no common ratio. The structure is " +
+            "self-referential: set it to \\(x\\), substitute the inner copy, solve the quadratic, keep the positive root.",
         },
       ],
     },

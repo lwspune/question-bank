@@ -268,7 +268,8 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       definition:
         "The family (pencil) of planes through the intersection of \\(P_1: a_1x+b_1y+c_1z+d_1 = 0\\) and " +
         "\\(P_2: a_2x+b_2y+c_2z+d_2 = 0\\) is \\(P_1 + \\lambda P_2 = 0\\). Determine \\(\\lambda\\) from " +
-        "the extra constraint (point on the plane, or perpendicularity to a given plane via the normal dot product).",
+        "the extra constraint (point on the plane, or perpendicularity to a given plane via the normal dot product). " +
+        "The **direction** of the line of intersection itself is \\(\\vec{n_1} \\times \\vec{n_2}\\) — perpendicular to both normals.",
       formula: {
         label: "Pencil of planes",
         latex: "P_1 + \\lambda P_2 = 0",
@@ -299,6 +300,7 @@ export const PLANE_3D_NOTE: SubtopicNote = {
         { prompt: "λ is fixed using how many extra conditions?", answer: "one" },
         { prompt: "To pass through a point, you substitute the point and solve for?", answer: "\\(\\lambda\\)" },
         { prompt: "Perpendicular-to-a-plane condition uses which product of normals?", answer: "dot product = 0" },
+        { prompt: "Direction ratios of the line of intersection of \\(P_1, P_2\\)?", answer: "\\(\\vec{n_1}\\times\\vec{n_2}\\) (cross product of normals)" },
       ],
       pyqExampleId: "e3c7f647-fff9-42a3-bdad-cde0ab6b49e6", // 2019 — plane through intersection + point
     },

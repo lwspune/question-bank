@@ -28,7 +28,9 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
         "points \\(A, B\\), the direction ratios are \\(\\langle x_2-x_1, y_2-y_1, z_2-z_1\\rangle\\). " +
         "Setting the chain equal to a parameter \\(t\\) gives the **parametric form** " +
         "\\((x_0+at,\\ y_0+bt,\\ z_0+ct)\\). Splitting the chain into two equalities expresses the line " +
-        "as the **intersection of two planes**.",
+        "as the **intersection of two planes**. Conversely, when a line is GIVEN as the intersection of " +
+        "two planes \\(P_1, P_2\\), its direction ratios are \\(\\vec{n_1} \\times \\vec{n_2}\\) — the cross " +
+        "product of the two normals (the line lies in both planes, so it is perpendicular to both normals).",
       formula: {
         label: "Symmetric form of a line",
         latex: "\\frac{x - x_0}{a} = \\frac{y - y_0}{b} = \\frac{z - z_0}{c} = t",
@@ -57,6 +59,7 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
         { prompt: "Parametric point of \\(\\frac{x-1}{2}=\\frac{y}{3}=\\frac{z+1}{4}=t\\)?", answer: "\\((1+2t, 3t, -1+4t)\\)" },
         { prompt: "A line in space is the intersection of how many planes?", answer: "Two" },
         { prompt: "Symmetric form needs how many things to be fixed?", answer: "A point and a direction" },
+        { prompt: "DRs of a line given as the intersection of planes with normals \\(\\vec{n_1},\\vec{n_2}\\)?", answer: "\\(\\vec{n_1}\\times\\vec{n_2}\\)" },
       ],
       pyqExampleId: "35ad3726-324a-4889-bffa-585d76c0aa5a", // 2018 — line given as intersection of planes
     },

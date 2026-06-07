@@ -389,6 +389,50 @@ export const ARITHMETIC_PROGRESSIONS_NOTE: SubtopicNote = {
       ],
       pyqExampleId: "db82ffea-485d-49be-8f25-537e7227a406", // 2018 — sum of two-digit numbers, remainder 2 mod 3
     },
+
+    {
+      kind: "formula" as const,
+      slug: "common-terms-of-two-aps",
+      name: "Common terms of two APs",
+      intuition:
+        "The numbers that appear in BOTH of two APs themselves form an AP. Its first term is the first " +
+        "value common to both; its common difference is the **LCM** of the two original common " +
+        "differences (the spacing at which the two sequences re-align).",
+      definition:
+        "If AP\\(_1\\) has common difference \\(d_1\\) and AP\\(_2\\) has \\(d_2\\), their common terms form " +
+        "an AP with common difference \\(\\operatorname{lcm}(d_1, d_2)\\), starting at the first shared " +
+        "value. To **count** them, take the new AP up to the smaller of the two last terms and apply " +
+        "\\(n = \\big\\lfloor \\tfrac{L - a}{\\operatorname{lcm}(d_1,d_2)} \\big\\rfloor + 1\\), where \\(a\\) is " +
+        "the first common term and \\(L\\) is the largest value not exceeding either list's last term.",
+      formula: {
+        label: "Common-terms AP",
+        latex: "d_{\\text{common}} = \\operatorname{lcm}(d_1, d_2)",
+      },
+      authoredExample: {
+        prompt: "How many terms are common to \\(3, 7, 11, \\ldots, 99\\) and \\(2, 8, 14, \\ldots, 98\\)?",
+        steps: [
+          "First common value: \\(11\\) (the first number in both lists).",
+          "New common difference \\(= \\operatorname{lcm}(4, 6) = 12\\), so common terms are \\(11, 23, 35, \\ldots\\).",
+          "Largest \\(\\le \\min(99, 98) = 98\\) of this form is \\(95\\); count \\(= \\big\\lfloor\\tfrac{95-11}{12}\\big\\rfloor + 1 = 7 + 1 = 8\\).",
+        ],
+        answer: "\\(8\\) common terms.",
+      },
+      selfCheckExample: {
+        prompt: "The APs \\(5, 8, 11, \\ldots\\) and \\(5, 9, 13, \\ldots\\) share which AP of common terms?",
+        steps: [
+          "First common value \\(= 5\\); common differences are \\(3\\) and \\(4\\).",
+          "New common difference \\(= \\operatorname{lcm}(3,4) = 12\\).",
+        ],
+        answer: "\\(5, 17, 29, \\ldots\\) (first term 5, common difference 12).",
+      },
+      practiceSet: [
+        { prompt: "Common difference of the common terms of APs with \\(d_1=2, d_2=3\\)?", answer: "\\(6\\)", method: "\\(\\operatorname{lcm}(2,3)\\)" },
+        { prompt: "Do the common terms of two APs form an AP?", answer: "Yes" },
+        { prompt: "\\(d_1=4, d_2=6\\): spacing of common terms?", answer: "\\(12\\)" },
+        { prompt: "First term of the common-terms AP?", answer: "The first value present in both APs" },
+      ],
+      pyqExampleId: "5ee7c025-de37-4e2c-a373-bf07a0fae15e", // 2-AP common terms, d = lcm
+    },
   ],
   related: [
     { label: "Geometric Progressions", href: "/notes/nda-maths/sequence-series/seq-geometric-progressions" },

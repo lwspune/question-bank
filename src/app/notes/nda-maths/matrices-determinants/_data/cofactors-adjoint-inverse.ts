@@ -113,7 +113,8 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "- **Determinant:** \\(|\\operatorname{adj}A| = |A|^{n-1}\\)\n" +
         "- **Double adjoint:** \\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{n-2}A\\)\n" +
         "- **Scalar:** \\(\\operatorname{adj}(kA) = k^{n-1}\\operatorname{adj}A\\)\n" +
-        "- **Reversal:** \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\)",
+        "- **Reversal:** \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\)\n" +
+        "- **Transpose:** \\(\\operatorname{adj}(A^T) = (\\operatorname{adj}A)^T\\) (adjoint commutes with transpose, so \\(\\operatorname{adj}A^T - (\\operatorname{adj}A)^T = O\\))",
       formula: {
         label: "Adjoint of an n×n matrix",
         latex: "|\\operatorname{adj}A| = |A|^{\\,n-1}, \\qquad \\operatorname{adj}(\\operatorname{adj}A) = |A|^{\\,n-2}A",
@@ -141,6 +142,7 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         { prompt: "\\(\\operatorname{adj}(\\operatorname{adj}A)\\) for 3×3?", answer: "\\(|A|\\,A\\)", method: "\\(|A|^{n-2}A = |A|^1 A\\)" },
         { prompt: "\\(\\operatorname{adj}(kA)\\) for n×n?", answer: "\\(k^{n-1}\\operatorname{adj}A\\)" },
         { prompt: "\\(\\operatorname{adj}(AB) = ?\\)", answer: "\\(\\operatorname{adj}B\\,\\operatorname{adj}A\\) (reversal)" },
+        { prompt: "\\(\\operatorname{adj}(A^T) - (\\operatorname{adj}A)^T = ?\\)", answer: "\\(O\\) (null matrix — adjoint commutes with transpose)" },
       ],
       pyqExampleId: "221e8350-71d7-4600-972a-78a6775d559b", // 2026 — |M|·|adj M|
     },
