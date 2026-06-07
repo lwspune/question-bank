@@ -99,6 +99,7 @@ import AodSignOfDerivative from "./visualizations/AodSignOfDerivative";
 import AodExtremaCurve from "./visualizations/AodExtremaCurve";
 import LinesAngleBetween from "./visualizations/LinesAngleBetween";
 import LinesDistancePointLine from "./visualizations/LinesDistancePointLine";
+import PcGeometricCounting from "./visualizations/PcGeometricCounting";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -275,6 +276,8 @@ function renderVisualization(slug: VisualizationSlug) {
       return <LinesAngleBetween />;
     case "lines-distance-point-line":
       return <LinesDistancePointLine />;
+    case "pc-geometric-counting-diagram":
+      return <PcGeometricCounting />;
   }
 }
 
