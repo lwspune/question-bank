@@ -95,6 +95,8 @@ import TrigAstcQuadrants from "./visualizations/TrigAstcQuadrants";
 import TrigAmplitudePhase from "./visualizations/TrigAmplitudePhase";
 import LimDiscontinuityTypes from "./visualizations/LimDiscontinuityTypes";
 import LimOneSidedApproach from "./visualizations/LimOneSidedApproach";
+import AodSignOfDerivative from "./visualizations/AodSignOfDerivative";
+import AodExtremaCurve from "./visualizations/AodExtremaCurve";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -263,6 +265,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <LimDiscontinuityTypes />;
     case "lim-one-sided-approach":
       return <LimOneSidedApproach />;
+    case "aod-sign-of-derivative":
+      return <AodSignOfDerivative />;
+    case "aod-extrema-curve":
+      return <AodExtremaCurve />;
   }
 }
 
