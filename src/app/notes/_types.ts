@@ -158,7 +158,10 @@ export type VisualizationSlug =
   | "lim-one-sided-approach"
   // NDA Maths — Application of Derivatives chapter
   | "aod-sign-of-derivative"
-  | "aod-extrema-curve";
+  | "aod-extrema-curve"
+  // NDA Maths — Lines chapter
+  | "lines-angle-between-diagram"
+  | "lines-distance-point-line";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
