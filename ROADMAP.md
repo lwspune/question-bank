@@ -8,6 +8,20 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ## Data model
 
+### Cross-topic questions — decouple concept tags from the home subtopic (2-phase)
+
+**Diagnosis (2026-06-07):** `subtopic_id` is overloaded — it does *filing/navigation* (where a question shows on `/browse`, which paper it belongs to) AND *concept membership* (because a concept tag is welded to the home subtopic: `question_concept_tags.subtopic_slug` must equal the question's subtopic). That weld causes every cross-topic friction point: the **same technique re-taught across N subtopics** (e.g. line-of-intersection = n₁×n₂ taught 3× in DC&Ratios/Straight-Line/Plane), **invisible cross-chapter prerequisites** (a Functions question needs `f'(1)` but links nowhere), and **move-as-the-only-fix** for mis-filing (move ⇒ forced retag). Today's footprint is small — 13 multi-concept-tag questions, 0 cross-subtopic tags (the wall holds), ~5–6 cross-chapter-prerequisite questions found in the MODERATE sweep.
+
+**Ideal model (keep one canonical home; decouple membership):**
+- Keep a **single canonical home** (chapter+subtopic) for navigation — `/browse`, the PYQ paper-builder, Word export, and guides all need one answer to "which paper/chapter." Do NOT multi-home or go fully tag-only; the chapter tree is load-bearing.
+- **Drop `subtopic_slug` from the concept tag** (`concept_slug` is already globally unique; derive the subtopic from the concept). Then a question filed under *Functions/Domain* can point at the *Differentiation/derivative-at-a-point* concept without moving — kills the re-teaching duplication (one canonical teaching home per technique, removes **rename-rot** risk) and makes cross-chapter membership expressible.
+- Add a **tag role** `primary | secondary | prerequisite`. Formalises the hand-applied rules: *home follows primary* (mis-filing mostly disappears); coverage gaps = primary/secondary not taught (prerequisites are expected-elsewhere, not flagged — automating the sweep's "exclude cross-chapter prerequisite" rule); and **prerequisite** unlocks the chip in Phase 1 below.
+- Keep the **principles-vs-concepts authoring distinction** (curated/selective vs coverage/per-upload) — as a flag/role, not necessarily a merge; the authoring-loop reason for the wall is real.
+
+**Phasing — trigger-gated, do NOT migrate preemptively:**
+- **Phase 1 (cheap, no schema change to the home model): prerequisite links.** Surface "Needs: Differentiation →" cross-chapter pointers so a cross-topic question links the student to the missing prerequisite instead of stranding them. Curated TS map rendered through the existing `getQuestionResources` → `ResourceChip` cross-link infra; seed with the cross-topic questions already known (the `[d/dx]` Functions/Sequence ones, binomial-variance-in-Statistics, etc.). Highest UX value, no migration. **← do this first.**
+- **Phase 2 (the decouple migration): only when rename-rot actually bites** — i.e. the first time renaming a shipped concept silently breaks its re-taught copies across subtopics. Drop `subtopic_slug` from the tag PK; rework `loadConceptDrills` / mastery-checkpoint queries / `getQuestionResources`; re-derive. Real regression surface for currently-low volume — the rename-rot incident is the trigger, not a calendar date.
+
 ### Cross-batch passage reuse — `passages` table (option C)
 
 Promote `set_id` (currently a string `"<uploadJobId>:<setLabel>"`) into a real table so the same passage can be reused across batches. Tradeoff documented in the 2026-05-12 "Question sets" decision-log entry: option B (current per-upload scope) is sufficient for now; user said re-upload is their preferred backfill anyway. Migration B → C is mechanical when wanted.
