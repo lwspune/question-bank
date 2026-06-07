@@ -44,7 +44,7 @@ High-level shape:
 - `src/app/` — Next.js App Router pages: `/browse` (paper builder), `/guide` (10 NDA strategy guides), `/notes` (11 teaching-notes chapters), `/dashboard` (admin), `/upload`, `/signup`·`/login`·`/pricing`·`/account`, plus the `/api/*` route handlers.
 - `src/lib/` — server/pure helpers by domain: `supabase/`, `auth*`, `questions/`, `guide/`, `notes/`, `links/`, `export/` (Word/OMML), `entitlements/`, `billing/`, `reports/`+`notes-reports/`, `upload/`, `tags/`.
 - `src/components/` — `AppHeader`/nav, `math/` renderers (`KatexRenderer`·`RichText`·`BlockText`·`parseTableBlocks`), shadcn `ui/` primitives.
-- `supabase/migrations/` — `0001…0028` (append-only). `scripts/` — seeds, `notes-lint`, `notes-latex-audit`, `jee/` ingestion. `tests/` — Vitest unit + DB-integration.
+- `supabase/migrations/` — `0001…0029` (append-only; 0029 = `subtopics.order_index` for /notes teaching order). `scripts/` — seeds, `notes-lint`, `notes-latex-audit`, `notes:order` sync, `jee/` ingestion. `tests/` — Vitest unit + DB-integration.
 
 ## Commands
 
