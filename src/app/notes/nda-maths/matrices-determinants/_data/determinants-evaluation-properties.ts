@@ -360,5 +360,57 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
       ],
       pyqExampleId: "de0e9002-1c3f-4165-a5a8-575b68daf59f", // 2021 — a_ij = 2(i+j)
     },
+
+    {
+      kind: "formula" as const,
+      slug: "differentiating-a-determinant",
+      name: "Differentiating a Determinant",
+      intuition:
+        "To differentiate a determinant whose entries are functions of \\(x\\), do NOT expand it first. " +
+        "Differentiate **one row (or column) at a time**, leaving the others alone, and add the results. " +
+        "A constant row differentiates to a zero row, so only the rows that actually depend on \\(x\\) contribute.",
+      definition:
+        "For \\(f(x)=\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix}\\) (rows \\(R_i\\) of functions):\n" +
+        "- **Row-by-row rule:** \\(f'(x)=\\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix}+\\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix}+\\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\) — differentiate ONE row per term.\n" +
+        "- The same works column-by-column.\n" +
+        "- A **constant** row differentiates to a zero row → that term's determinant is 0; ignore constant rows.\n" +
+        "- Watch for the shortcut: after differentiating, if two rows become equal or proportional, the determinant is 0.",
+      formula: {
+        label: "Derivative of a 3-row determinant",
+        latex:
+          "\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}",
+      },
+      authoredExample: {
+        prompt: "Find \\(f'(x)\\) for \\(f(x)=\\begin{vmatrix}x & x^2\\\\ 1 & 2x\\end{vmatrix}\\).",
+        steps: [
+          "Differentiate row 1, then row 2, and add: \\(f'(x)=\\begin{vmatrix}1 & 2x\\\\ 1 & 2x\\end{vmatrix}+\\begin{vmatrix}x & x^2\\\\ 0 & 2\\end{vmatrix}\\).",
+          "First determinant has two equal rows → \\(0\\); second \\(=2x-0=2x\\).",
+          "Check by direct expansion: \\(f(x)=2x^2-x^2=x^2\\), so \\(f'(x)=2x\\) — matches.",
+        ],
+        answer: "\\(f'(x)=2x\\).",
+      },
+      selfCheckExample: {
+        prompt: "Find \\(f'(x)\\) for \\(f(x)=\\begin{vmatrix}\\sin x & \\cos x\\\\ 1 & 1\\end{vmatrix}\\).",
+        steps: [
+          "Row 2 is constant → its term is 0; differentiate row 1 only.",
+          "\\(f'(x)=\\begin{vmatrix}\\cos x & -\\sin x\\\\ 1 & 1\\end{vmatrix}=\\cos x+\\sin x\\).",
+        ],
+        answer: "\\(f'(x)=\\cos x+\\sin x\\).",
+      },
+      practiceSet: [
+        { prompt: "Differentiating a determinant gives a SUM of how many determinants (3rd order)?", answer: "\\(3\\) — one per differentiated row" },
+        { prompt: "A constant row, once differentiated, becomes?", answer: "A zero row → that determinant is \\(0\\)" },
+        { prompt: "After differentiating, two rows are equal. The determinant is?", answer: "\\(0\\)" },
+        { prompt: "\\(\\dfrac{d}{dx}\\begin{vmatrix}x & 1\\\\ 1 & x\\end{vmatrix}\\)?", answer: "\\(2x\\) (direct: \\(x^2-1\\))" },
+      ],
+      pyqExampleId: "1cb6a8fe-86a5-4133-a440-630b9873cebf", // 2026 — d²/dx²|...| at x=0
+      traps: [
+        {
+          title: "It is a SUM of determinants, not one determinant with every row differentiated",
+          body:
+            "\\(\\dfrac{d}{dx}\\det\\neq\\) the determinant of all-rows-differentiated. Differentiate exactly one row per term and add. For higher derivatives, apply the rule again to each surviving term.",
+        },
+      ],
+    },
   ],
 };
