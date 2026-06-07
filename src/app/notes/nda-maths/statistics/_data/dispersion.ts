@@ -232,6 +232,69 @@ export const DISPERSION_NOTE: SubtopicNote = {
       ],
     },
 
+    // 4b ──────────────────────────────────────────────────────────────────────
+    {
+      kind: "formula" as const,
+      slug: "special-case-variance",
+      name: "Special-Case Variance & SD — Natural Numbers and AP",
+      intuition:
+        "Just as there are closed-form MEANS for structured sequences, there is a closed-form " +
+        "VARIANCE for the first n natural numbers — and, by the linear-transformation rule, for any AP. " +
+        "Recognise the structure and skip the term-by-term sum.",
+      definition:
+        "For the first \\(n\\) natural numbers \\(1, 2, \\ldots, n\\):\n" +
+        "- **Variance:** \\(\\sigma^2 = \\dfrac{n^2 - 1}{12}\\)\n" +
+        "- **SD:** \\(\\sigma = \\sqrt{\\dfrac{n^2 - 1}{12}}\\)\n" +
+        "- **Any AP** with common difference \\(d\\) and \\(n\\) terms is \\(d \\times (\\text{natural numbers}) + \\text{shift}\\); the shift leaves variance unchanged and the scale squares it, so \\(\\sigma^2_{\\text{AP}} = d^2\\,\\dfrac{n^2 - 1}{12}\\).",
+      formula: {
+        label: "Variance of the first n natural numbers and of an AP",
+        latex:
+          "\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12} \\qquad \\sigma^2_{\\text{AP}} = d^2\\,\\dfrac{n^2 - 1}{12}",
+        symbols: [
+          { symbol: "\\(n\\)", meaning: "number of terms" },
+          { symbol: "\\(d\\)", meaning: "common difference of the AP (\\(=1\\) for natural numbers)" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Find the variance of the first \\(7\\) natural numbers.",
+        steps: [
+          "Use \\(\\sigma^2 = \\dfrac{n^2 - 1}{12}\\) with \\(n = 7\\).",
+          "\\(\\sigma^2 = \\dfrac{49 - 1}{12} = \\dfrac{48}{12} = 4\\).",
+        ],
+        answer: "Variance \\(= 4\\)",
+      },
+      selfCheckExample: {
+        prompt: "Find the variance of the AP \\(2, 4, 6, \\ldots, 20\\).",
+        steps: [
+          "This is \\(2 \\times (1, 2, \\ldots, 10)\\): common difference \\(d = 2\\), \\(n = 10\\).",
+          "\\(\\sigma^2 = d^2\\,\\dfrac{n^2 - 1}{12} = 4 \\times \\dfrac{99}{12} = 4 \\times 8.25\\).",
+        ],
+        answer: "Variance \\(= 33\\)",
+      },
+      practiceSet: [
+        { prompt: "Variance of the first \\(5\\) natural numbers?", answer: "\\(2\\)", method: "\\((25-1)/12\\)" },
+        { prompt: "Variance of the first \\(13\\) natural numbers?", answer: "\\(14\\)", method: "\\((169-1)/12\\)" },
+        { prompt: "Variance of \\(3, 6, 9, \\ldots, 30\\)?", answer: "\\(74.25\\)", method: "\\(3^2 \\times (10^2-1)/12\\)" },
+        { prompt: "SD of the first \\(5\\) natural numbers?", answer: "\\(\\sqrt{2}\\)", method: "\\(\\sqrt{(25-1)/12}\\)" },
+      ],
+      pyqExampleId: "2a327f1d-60a2-4684-bbb7-dee0c1e8564d",
+      traps: [
+        {
+          title: "It is \\((n^2 - 1)/12\\), not \\(n^2/12\\) or \\((n^2 + 1)/12\\)",
+          body:
+            "The exact constant is \\(\\dfrac{n^2 - 1}{12}\\) — memorise the \\(-1\\). A frequent slip is " +
+            "writing \\(n^2/12\\) (forgetting the \\(-1\\)) or confusing it with the mean-of-squares formula.",
+        },
+        {
+          title: "For an AP, only the common difference matters — not the starting value",
+          body:
+            "Adding a constant shifts every term but not the spread, so \\(\\{3, 6, \\ldots, 60\\}\\) and " +
+            "the natural numbers \\(\\{1, \\ldots, 20\\}\\) scaled by 3 have the SAME variance " +
+            "\\(\\left(3^2 \\times \\dfrac{20^2-1}{12} = 299.25\\right)\\). Only \\(d\\) and \\(n\\) enter the formula.",
+        },
+      ],
+    },
+
     // 5 ───────────────────────────────────────────────────────────────────────
     {
       kind: "formula" as const,
