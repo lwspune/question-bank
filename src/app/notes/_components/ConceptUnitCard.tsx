@@ -97,6 +97,8 @@ import LimDiscontinuityTypes from "./visualizations/LimDiscontinuityTypes";
 import LimOneSidedApproach from "./visualizations/LimOneSidedApproach";
 import AodSignOfDerivative from "./visualizations/AodSignOfDerivative";
 import AodExtremaCurve from "./visualizations/AodExtremaCurve";
+import LinesAngleBetween from "./visualizations/LinesAngleBetween";
+import LinesDistancePointLine from "./visualizations/LinesDistancePointLine";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -269,6 +271,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <AodSignOfDerivative />;
     case "aod-extrema-curve":
       return <AodExtremaCurve />;
+    case "lines-angle-between-diagram":
+      return <LinesAngleBetween />;
+    case "lines-distance-point-line":
+      return <LinesDistancePointLine />;
   }
 }
 

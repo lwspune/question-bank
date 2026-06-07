@@ -93,6 +93,11 @@ import {
   APPLICATION_OF_DERIVATIVES_NOTES,
   APPLICATION_OF_DERIVATIVES_SLUGS,
 } from "@/app/notes/nda-maths/application-of-derivatives/_data";
+import {
+  LINES_CHAPTER,
+  LINES_NOTES,
+  LINES_SLUGS,
+} from "@/app/notes/nda-maths/lines/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -276,6 +281,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: APPLICATION_OF_DERIVATIVES_CHAPTER,
     notes: APPLICATION_OF_DERIVATIVES_NOTES,
     slugs: APPLICATION_OF_DERIVATIVES_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "lines",
+    chipLabel: "Lines notes",
+    chapter: LINES_CHAPTER,
+    notes: LINES_NOTES,
+    slugs: LINES_SLUGS,
   },
   {
     examName: "NDA",
