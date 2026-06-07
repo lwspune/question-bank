@@ -149,7 +149,10 @@ export type VisualizationSlug =
   // NDA Maths — Differentiation chapter
   | "diff-tangent-slope"
   | "diff-modulus-corner"
-  | "diff-piecewise-join";
+  | "diff-piecewise-join"
+  // NDA Maths — Trigonometric Identities chapter
+  | "trig-astc-quadrants"
+  | "trig-amplitude-phase";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

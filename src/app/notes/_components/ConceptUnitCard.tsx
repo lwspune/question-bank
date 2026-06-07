@@ -91,6 +91,8 @@ import GreatestIntegerStaircase from "./visualizations/GreatestIntegerStaircase"
 import DiffTangentSlope from "./visualizations/DiffTangentSlope";
 import DiffModulusCorner from "./visualizations/DiffModulusCorner";
 import DiffPiecewiseJoin from "./visualizations/DiffPiecewiseJoin";
+import TrigAstcQuadrants from "./visualizations/TrigAstcQuadrants";
+import TrigAmplitudePhase from "./visualizations/TrigAmplitudePhase";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -251,6 +253,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <DiffModulusCorner />;
     case "diff-piecewise-join":
       return <DiffPiecewiseJoin />;
+    case "trig-astc-quadrants":
+      return <TrigAstcQuadrants />;
+    case "trig-amplitude-phase":
+      return <TrigAmplitudePhase />;
   }
 }
 

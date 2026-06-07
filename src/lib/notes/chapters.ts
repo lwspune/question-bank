@@ -78,6 +78,11 @@ import {
   DIFFERENTIATION_NOTES,
   DIFFERENTIATION_SLUGS,
 } from "@/app/notes/nda-maths/differentiation/_data";
+import {
+  TRIGONOMETRIC_IDENTITIES_CHAPTER,
+  TRIGONOMETRIC_IDENTITIES_NOTES,
+  TRIGONOMETRIC_IDENTITIES_SLUGS,
+} from "@/app/notes/nda-maths/trigonometric-identities/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -228,6 +233,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: DIFFERENTIATION_CHAPTER,
     notes: DIFFERENTIATION_NOTES,
     slugs: DIFFERENTIATION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "trigonometric-identities",
+    chipLabel: "Trig Identities notes",
+    chapter: TRIGONOMETRIC_IDENTITIES_CHAPTER,
+    notes: TRIGONOMETRIC_IDENTITIES_NOTES,
+    slugs: TRIGONOMETRIC_IDENTITIES_SLUGS,
   },
   {
     examName: "NDA",
