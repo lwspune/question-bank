@@ -155,7 +155,10 @@ export type VisualizationSlug =
   | "trig-amplitude-phase"
   // NDA Maths — Limits & Continuity chapter
   | "lim-discontinuity-types"
-  | "lim-one-sided-approach";
+  | "lim-one-sided-approach"
+  // NDA Maths — Application of Derivatives chapter
+  | "aod-sign-of-derivative"
+  | "aod-extrema-curve";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

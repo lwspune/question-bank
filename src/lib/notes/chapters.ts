@@ -88,6 +88,11 @@ import {
   LIMITS_CONTINUITY_NOTES,
   LIMITS_CONTINUITY_SLUGS,
 } from "@/app/notes/nda-maths/limits-continuity/_data";
+import {
+  APPLICATION_OF_DERIVATIVES_CHAPTER,
+  APPLICATION_OF_DERIVATIVES_NOTES,
+  APPLICATION_OF_DERIVATIVES_SLUGS,
+} from "@/app/notes/nda-maths/application-of-derivatives/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -260,6 +265,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: LIMITS_CONTINUITY_CHAPTER,
     notes: LIMITS_CONTINUITY_NOTES,
     slugs: LIMITS_CONTINUITY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "application-of-derivatives",
+    chipLabel: "Application of Derivatives notes",
+    chapter: APPLICATION_OF_DERIVATIVES_CHAPTER,
+    notes: APPLICATION_OF_DERIVATIVES_NOTES,
+    slugs: APPLICATION_OF_DERIVATIVES_SLUGS,
   },
   {
     examName: "NDA",
