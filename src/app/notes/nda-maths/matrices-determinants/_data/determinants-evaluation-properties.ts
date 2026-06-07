@@ -75,7 +75,8 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "- **Power:** \\(\\det(A^m) = (\\det A)^m\\)\n" +
         "- **Inverse:** \\(\\det(A^{-1}) = 1/\\det A\\)\n" +
         "- **Conjugation:** \\(\\det(B^{-1}AB) = \\det A\\)\n" +
-        "- **Gram:** \\(\\det(AA^T) = (\\det A)^2\\)",
+        "- **Gram:** \\(\\det(AA^T) = (\\det A)^2\\)\n" +
+        "- **Rank-1 update (matrix-determinant lemma):** \\(\\det(I + AA^T) = 1 + A^T A\\); for a column vector \\(A\\), \\(A^T A\\) is just the **sum of squares of its entries**.",
       formula: {
         label: "Multiplicativity and scaling",
         latex: "\\det(AB) = \\det A\\,\\det B, \\qquad \\det(kA) = k^{\\,n}\\det A",
@@ -102,6 +103,7 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         { prompt: "\\(\\det(A^{-1})\\)?", answer: "\\(1/\\det A\\)" },
         { prompt: "\\(\\det(B^{-1}AB)\\)?", answer: "\\(\\det A\\)" },
         { prompt: "\\(\\det(A^T)\\) vs \\(\\det A\\)?", answer: "Equal" },
+        { prompt: "\\(\\det(I+AA^T)\\) for \\(A=\\begin{pmatrix}1\\\\2\\end{pmatrix}\\)?", answer: "\\(1+(1^2+2^2)=6\\)" },
       ],
       pyqExampleId: "b22a925b-d5ac-487f-92c2-a625bdd40274", // 2026 — |AA^T| with |A|=-2
       traps: [
@@ -111,6 +113,12 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
             "Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the " +
             "whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The " +
             "single most common determinant mistake in this bank.",
+        },
+        {
+          title: "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace",
+          body:
+            "For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add " +
+            "\\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
         },
       ],
     },
@@ -409,6 +417,58 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
           title: "It is a SUM of determinants, not one determinant with every row differentiated",
           body:
             "\\(\\dfrac{d}{dx}\\det\\neq\\) the determinant of all-rows-differentiated. Differentiate exactly one row per term and add. For higher derivatives, apply the rule again to each surviving term.",
+        },
+      ],
+    },
+
+    {
+      kind: "formula" as const,
+      slug: "binomial-coefficient-determinants",
+      name: "Binomial-Coefficient Determinants (Pascal's Identity)",
+      intuition:
+        "When a determinant's entries are binomial coefficients \\(\\binom{n}{r}\\), do NOT compute the numbers. " +
+        "Use **Pascal's identity** as a row/column operation — it usually turns one column into the sum of two " +
+        "others, so a single operation produces a zero column (determinant 0) or pins down an unknown index.",
+      definition:
+        "**Pascal's identity:** \\(\\binom{n}{r}+\\binom{n}{r+1}=\\binom{n+1}{r+1}\\). So a column of \\(\\binom{n+1}{r+1}\\) " +
+        "entries equals the sum of the matching \\(\\binom{n}{r}\\) and \\(\\binom{n}{r+1}\\) columns. The move: spot the " +
+        "Pascal relation among the columns, apply \\(C_i \\to C_i - C_j - C_k\\), and the column collapses to zeros " +
+        "(or to a condition on the unknown).",
+      formula: {
+        label: "Pascal's identity (the only tool needed)",
+        latex: "\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}",
+      },
+      authoredExample: {
+        prompt:
+          "Without computing the entries, evaluate \\(\\begin{vmatrix}\\binom{6}{2}&\\binom{6}{3}&\\binom{7}{3}\\\\ \\binom{8}{2}&\\binom{8}{3}&\\binom{9}{3}\\\\ \\binom{10}{2}&\\binom{10}{3}&\\binom{11}{3}\\end{vmatrix}\\).",
+        steps: [
+          "Pascal in each row: \\(\\binom{6}{2}+\\binom{6}{3}=\\binom{7}{3}\\), \\(\\binom{8}{2}+\\binom{8}{3}=\\binom{9}{3}\\), \\(\\binom{10}{2}+\\binom{10}{3}=\\binom{11}{3}\\).",
+          "So column 3 \\(=\\) column 1 \\(+\\) column 2. Apply \\(C_3 \\to C_3 - C_1 - C_2\\): column 3 becomes all zeros.",
+          "A zero column makes the determinant 0.",
+        ],
+        answer: "\\(0\\) — column 3 is the Pascal sum of columns 1 and 2.",
+      },
+      selfCheckExample: {
+        prompt: "Using Pascal's identity, write \\(\\binom{8}{3}+\\binom{8}{4}\\) as a single coefficient.",
+        steps: [
+          "Pascal with \\(n=8,\\ r=3\\): \\(\\binom{n}{r}+\\binom{n}{r+1}=\\binom{n+1}{r+1}\\).",
+          "\\(=\\binom{9}{4}\\).",
+        ],
+        answer: "\\(\\binom{9}{4}\\).",
+      },
+      practiceSet: [
+        { prompt: "\\(\\binom{6}{2}+\\binom{6}{3}=?\\)", answer: "\\(\\binom{7}{3}\\)" },
+        { prompt: "If column 3 = column 1 + column 2, the determinant is?", answer: "\\(0\\)" },
+        { prompt: "\\(\\binom{n}{0}+\\binom{n}{1}=?\\)", answer: "\\(\\binom{n+1}{1}=n+1\\)" },
+        { prompt: "First move on a determinant of binomial coefficients?", answer: "Apply Pascal as a column/row operation — don't compute the numbers" },
+      ],
+      pyqExampleId: "d4a4b8f6-0bfe-4d45-b461-8c8aa9c8d369", // 2024 — find n via Pascal column op
+      traps: [
+        {
+          title: "Don't evaluate the coefficients — use Pascal to collapse a column",
+          body:
+            "Computing \\(\\binom{9}{4}\\), \\(\\binom{11}{6}\\), … and expanding is slow and error-prone. The whole " +
+            "design is that one column is the Pascal sum of two others; the right move is a single column operation.",
         },
       ],
     },
