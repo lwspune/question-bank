@@ -152,7 +152,10 @@ export type VisualizationSlug =
   | "diff-piecewise-join"
   // NDA Maths — Trigonometric Identities chapter
   | "trig-astc-quadrants"
-  | "trig-amplitude-phase";
+  | "trig-amplitude-phase"
+  // NDA Maths — Limits & Continuity chapter
+  | "lim-discontinuity-types"
+  | "lim-one-sided-approach";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

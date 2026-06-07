@@ -93,6 +93,8 @@ import DiffModulusCorner from "./visualizations/DiffModulusCorner";
 import DiffPiecewiseJoin from "./visualizations/DiffPiecewiseJoin";
 import TrigAstcQuadrants from "./visualizations/TrigAstcQuadrants";
 import TrigAmplitudePhase from "./visualizations/TrigAmplitudePhase";
+import LimDiscontinuityTypes from "./visualizations/LimDiscontinuityTypes";
+import LimOneSidedApproach from "./visualizations/LimOneSidedApproach";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -257,6 +259,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <TrigAstcQuadrants />;
     case "trig-amplitude-phase":
       return <TrigAmplitudePhase />;
+    case "lim-discontinuity-types":
+      return <LimDiscontinuityTypes />;
+    case "lim-one-sided-approach":
+      return <LimOneSidedApproach />;
   }
 }
 

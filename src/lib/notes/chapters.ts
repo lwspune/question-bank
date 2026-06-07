@@ -83,6 +83,11 @@ import {
   TRIGONOMETRIC_IDENTITIES_NOTES,
   TRIGONOMETRIC_IDENTITIES_SLUGS,
 } from "@/app/notes/nda-maths/trigonometric-identities/_data";
+import {
+  LIMITS_CONTINUITY_CHAPTER,
+  LIMITS_CONTINUITY_NOTES,
+  LIMITS_CONTINUITY_SLUGS,
+} from "@/app/notes/nda-maths/limits-continuity/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -244,6 +249,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: TRIGONOMETRIC_IDENTITIES_CHAPTER,
     notes: TRIGONOMETRIC_IDENTITIES_NOTES,
     slugs: TRIGONOMETRIC_IDENTITIES_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "limits-continuity",
+    chipLabel: "Limits & Continuity notes",
+    chapter: LIMITS_CONTINUITY_CHAPTER,
+    notes: LIMITS_CONTINUITY_NOTES,
+    slugs: LIMITS_CONTINUITY_SLUGS,
   },
   {
     examName: "NDA",
