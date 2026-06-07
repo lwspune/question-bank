@@ -107,9 +107,9 @@ The 6-row PDF-vs-bank extraction-error taxonomy ([[gdrive-pdf-fetch]]) covers th
 
 `npm run content:lint` script that gates the pre-push hook for new uploads (mostly the formatting probes — wrong-key is not auto-detectable without human derivation). Still deferred — but the audit-skill probes are stable enough that lifting them into a script is mechanical. ~2 hours when there's appetite to wire it up.
 
-### Notes-coverage probe — formulas used in solutions but not taught in notes
+### Notes-coverage probe — ✅ SHIPPED 2026-06-07 (`npm run notes:coverage`)
 
-Heuristic auditor: per `/notes`-covered subtopic, extract the distinctive LaTeX macros / formula tokens from that subtopic's PUBLIC question SOLUTIONS, and flag tokens that never appear in any of the subtopic's notes concept bodies — surfacing *candidates* for "the solution relies on a formula the notes don't teach" (precedent: the `(n^2-1)/12` variance-of-natural-numbers gap, found by eye 2026-06-07 and filled as the `special-case-variance` concept). Inherently noisy (notation variance → false positives; semantic matches a string scan misses), so it's a **triage aid for human review, not a gate**. Scope to the ~12 noted chapters. ~2–3 hours. Raised 2026-06-07.
+`scripts/notes-coverage.ts [subjectRoute] [chapterSlug]` (default `nda-maths statistics`). Per `/notes`-covered subtopic, diffs the math in that subtopic's PUBLIC question SOLUTIONS against the math in its notes bodies (incl. `formula.latex` + reference-table cells, which are raw LaTeX outside `\(...\)`), reporting two token kinds appearing in ≥2 solutions but 0 notes: **macros** (`\[a-z]+`, minus a common/relational-operator allowlist) and **structural fragments** (operands abstracted to `@`, so `(20^2-1)/12` ≡ `(n^2-1)/12`). The macro channel is the high-signal one; structural fragments are noisy (generic arithmetic) → human-review triage, **not a gate**. Validated on Statistics: it would have flagged the `(n²−1)/12` gap pre-fill and shows it resolved post-fill; no other gaps surfaced. **Remaining for other chapters:** run it across the other 11 noted chapters and triage. Inherently misses "present-but-under-emphasised" (it finds ABSENCE) and semantic equivalents in different notation.
 
 ---
 
