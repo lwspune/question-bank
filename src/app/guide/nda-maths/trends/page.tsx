@@ -6,11 +6,18 @@ import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
+import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
-import { DRIFT_CALLOUTS, DRIFT_ROWS, YEARS } from "../_data/trends";
+import {
+  DRIFT_CALLOUTS,
+  DRIFT_ROWS,
+  YEARS,
+  EXAM_PAPERS,
+  EXAM_MATRIX,
+} from "../_data/trends";
 
 export const metadata: Metadata = {
   title: "NDA Mathematics Trends — How the exam shifted (2017–2026)",
@@ -126,6 +133,34 @@ export default async function Trends() {
         </p>
         <div className="mt-4">
           <DriftTable rows={DRIFT_ROWS} years={YEARS} />
+        </div>
+      </section>
+
+      {/* Every paper side by side */}
+      <section className="mt-14">
+        <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          Every paper, side by side
+        </h2>
+        <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
+          The year view averages each year&rsquo;s two papers together. This
+          one doesn&rsquo;t — every column is a single 120-question sitting.
+          Under each year, <strong>1</strong> is NDA-1 (April) and{" "}
+          <strong>2</strong> is NDA-2 (September); 2020 and 2026 show only NDA-1
+          (NDA-2 2020 was COVID-cancelled, NDA-2 2026 isn&rsquo;t written yet).
+          Cells are tinted by each chapter&rsquo;s row, and the bottom row
+          confirms every paper sums to 120.
+        </p>
+        <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
+          The two sittings have different personalities. <strong>April papers
+          front-load Statistics and Trigonometric Identities</strong> — together
+          ~5 questions heavier than September. <strong>September papers lean
+          Probability and differential calculus</strong> (Differentiation,
+          Limits): NDA-2 is reliably a 10-question Probability paper, NDA-1 only
+          ~7–8. Matrices &amp; Determinants (~9–10) and 3D Geometry / Vectors
+          (~5) hold steady in both — the metronome regardless of sitting.
+        </p>
+        <div className="mt-4">
+          <ExamPaperMatrix papers={EXAM_PAPERS} rows={EXAM_MATRIX} />
         </div>
       </section>
 

@@ -67,6 +67,77 @@ export type DriftCallout = {
   };
 };
 
+/**
+ * Per-exam-paper distribution: chapter × every individual sitting. Each NDA
+ * Maths paper is exactly 120 q; "Apr" papers are NDA-1, "Sep" papers are NDA-2
+ * (the project's canonical convention). 2020 and 2026 have an April paper only
+ * (NDA-2 2020 COVID-cancelled; NDA-2 2026 not yet written) → 18 papers, 2,160 q.
+ * SQL-derived snapshot; integrity-checked in tests/exam-matrix.test.ts (every
+ * column sums to 120, every row total matches its cells).
+ */
+export type ExamPaper = {
+  /** Stable id, e.g. "24A" = NDA-1 2024. */
+  id: string;
+  year: number;
+  /** "1" = NDA-1 (April), "2" = NDA-2 (September). */
+  sitting: "1" | "2";
+};
+
+export const EXAM_PAPERS: ExamPaper[] = [
+  { id: "17A", year: 2017, sitting: "1" }, { id: "17S", year: 2017, sitting: "2" },
+  { id: "18A", year: 2018, sitting: "1" }, { id: "18S", year: 2018, sitting: "2" },
+  { id: "19A", year: 2019, sitting: "1" }, { id: "19S", year: 2019, sitting: "2" },
+  { id: "20A", year: 2020, sitting: "1" },
+  { id: "21A", year: 2021, sitting: "1" }, { id: "21S", year: 2021, sitting: "2" },
+  { id: "22A", year: 2022, sitting: "1" }, { id: "22S", year: 2022, sitting: "2" },
+  { id: "23A", year: 2023, sitting: "1" }, { id: "23S", year: 2023, sitting: "2" },
+  { id: "24A", year: 2024, sitting: "1" }, { id: "24S", year: 2024, sitting: "2" },
+  { id: "25A", year: 2025, sitting: "1" }, { id: "25S", year: 2025, sitting: "2" },
+  { id: "26A", year: 2026, sitting: "1" },
+];
+
+export type ExamMatrixRow = {
+  chapter: string;
+  total: number;
+  /** Counts aligned 1:1 to EXAM_PAPERS order. */
+  counts: number[];
+};
+
+// Columns:                          17A 17S 18A 18S 19A 19S 20A 21A 21S 22A 22S 23A 23S 24A 24S 25A 25S 26A
+export const EXAM_MATRIX: ExamMatrixRow[] = [
+  { chapter: "Matrices & Determinants",     total: 170, counts: [12, 11,  3, 14,  8,  5,  8, 11, 10, 10,  9,  9, 11, 10,  8, 11, 10, 10] },
+  { chapter: "Probability",                 total: 162, counts: [ 8,  9,  7,  6, 14,  8,  9,  4,  8,  4, 10,  6, 12, 10, 13,  7, 14, 13] },
+  { chapter: "Statistics",                  total: 160, counts: [11,  8, 11, 11,  5, 11, 10, 14, 12, 12,  7, 11,  5,  8,  5,  9,  4,  6] },
+  { chapter: "Trigonometric Identities",    total: 138, counts: [10,  3,  5,  6, 15,  9, 16, 11,  2,  6,  9,  6,  7,  6,  5,  9,  5,  8] },
+  { chapter: "Functions",                   total: 109, counts: [ 7,  6,  6,  4,  6,  8,  6,  3,  3,  5,  8,  7,  9,  6, 11,  8,  5,  1] },
+  { chapter: "Vectors",                     total:  97, counts: [ 5,  5,  5,  8,  5,  5,  5,  5,  5,  5,  5,  4,  5,  5,  5,  5,  7,  8] },
+  { chapter: "Lines",                       total:  97, counts: [ 7,  5,  9,  5,  5,  4,  6,  7,  6,  6,  3,  2,  5,  7,  5,  5,  6,  4] },
+  { chapter: "Sequence & Series",           total:  89, counts: [ 7,  5,  7,  5,  4,  8,  1,  4,  6,  6,  4,  4,  7,  2,  6,  4,  5,  4] },
+  { chapter: "3D Geometry",                 total:  89, counts: [ 5,  6,  5,  4,  5,  5,  5,  5,  5,  5,  4,  6,  5,  5,  6,  5,  4,  4] },
+  { chapter: "Differentiation",            total:  85, counts: [ 4,  8,  4,  9,  2,  7,  2,  4,  4,  3,  5,  8,  4,  1,  2,  6,  7,  5] },
+  { chapter: "Limits & Continuity",         total:  81, counts: [ 4,  7,  4,  5,  2,  3,  6,  4,  5,  2,  4,  6,  7,  2,  3,  6,  4,  7] },
+  { chapter: "Permutation & Combination",   total:  78, counts: [ 3,  2,  4,  5,  4,  5,  3,  2,  6,  6,  5,  8,  2,  5,  4,  6,  4,  4] },
+  { chapter: "Application of Derivatives",  total:  73, counts: [ 4,  5,  5,  4,  3,  3,  4,  5,  8,  5,  3,  1,  4,  5,  3,  3,  4,  4] },
+  { chapter: "Complex Numbers",             total:  72, counts: [ 6,  3,  7,  2,  4,  3,  2,  5,  5,  2,  3,  5,  6,  5,  5,  3,  3,  3] },
+  { chapter: "Sets & Relations",            total:  69, counts: [ 4,  4,  4,  3,  7,  6,  5,  3,  4,  6,  6,  0,  3,  2,  4,  0,  4,  4] },
+  { chapter: "Definite Integration",        total:  66, counts: [ 3,  2,  6,  3,  2,  2,  1,  2,  5,  2,  3,  8,  3,  8,  5,  5,  2,  4] },
+  { chapter: "Quadratic Equations",         total:  63, counts: [ 3,  4,  1,  2,  3,  6,  2,  4,  5,  4,  2,  4,  4,  4,  4,  1,  6,  4] },
+  { chapter: "Differential Equations",      total:  63, counts: [ 5,  4,  5,  5,  5,  3,  5,  5,  3,  4,  3,  3,  2,  4,  2,  0,  3,  2] },
+  { chapter: "Binomial Theorem",            total:  54, counts: [ 1,  2,  4,  2,  2,  3,  3,  4,  2,  4,  4,  2,  3,  5,  4,  3,  1,  5] },
+  { chapter: "Properties of Triangle",      total:  49, counts: [ 1,  4,  2,  0,  2,  3,  4,  3,  1,  2,  4,  6,  2,  3,  4,  5,  0,  3] },
+  { chapter: "Indefinite Integration",      total:  40, counts: [ 3,  2,  1,  3,  2,  2,  4,  3,  3,  2,  3,  0,  0,  4,  2,  1,  3,  2] },
+  { chapter: "Conics",                      total:  38, counts: [ 1,  3,  1,  1,  3,  1,  2,  2,  2,  2,  2,  2,  5,  2,  2,  3,  2,  2] },
+  { chapter: "Inverse Trigonometry",        total:  34, counts: [ 1,  2,  3,  1,  3,  1,  0,  2,  2,  2,  1,  0,  3,  3,  2,  4,  2,  2] },
+  { chapter: "Trigonometric Equations",     total:  33, counts: [ 0,  0,  2,  3,  2,  1,  3,  2,  3,  4,  1,  2,  1,  1,  2,  1,  4,  1] },
+  { chapter: "Binomial Distribution",       total:  30, counts: [ 1,  3,  1,  1,  1,  1,  1,  1,  0,  3,  3,  2,  2,  1,  2,  4,  2,  1] },
+  { chapter: "Logarithms",                  total:  27, counts: [ 0,  2,  4,  3,  1,  1,  2,  1,  2,  0,  1,  2,  0,  3,  1,  0,  3,  1] },
+  { chapter: "Circles",                     total:  27, counts: [ 2,  1,  0,  2,  2,  0,  2,  1,  2,  1,  1,  2,  2,  1,  3,  2,  1,  2] },
+  { chapter: "Applications of Integration", total:  25, counts: [ 0,  1,  1,  0,  1,  2,  1,  1,  1,  2,  3,  1,  1,  2,  2,  0,  2,  4] },
+  { chapter: "Height & Distance",           total:  24, counts: [ 1,  2,  2,  2,  2,  1,  0,  2,  0,  2,  4,  2,  0,  0,  0,  2,  0,  2] },
+  { chapter: "Binary Numbers",              total:  13, counts: [ 1,  1,  1,  1,  0,  1,  1,  0,  0,  2,  0,  1,  0,  0,  0,  1,  3,  0] },
+  { chapter: "Linear Inequalities",         total:   5, counts: [ 0,  0,  0,  0,  0,  2,  1,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0] },
+];
+
 export const DRIFT_CALLOUTS: DriftCallout[] = [
   {
     icon: "up",
