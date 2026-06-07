@@ -159,6 +159,67 @@ describe("latexToOmml — matrix/determinant delimiters", () => {
   });
 });
 
+// mml2omml maps single-base accents (\bar \hat \vec \dot \tilde) to an over-LIMIT
+// <m:limUpp>, which Word renders as a tiny detached mark above the base. wrapAccents
+// rewrites these to a proper <m:acc>, and \overline's top-only <m:borderBox> to
+// <m:bar pos=top>.
+describe("latexToOmml — accents (bar/hat/vec/dot/overline)", () => {
+  it("converts \\bar{x} to an accent (not a limit)", () => {
+    const omml = latexToOmml("\\bar{x}");
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).toContain('<m:chr m:val="̅"/>'); // combining overline
+    expect(omml!).not.toContain("<m:limUpp>");
+  });
+
+  it("converts \\hat{i} to a circumflex accent", () => {
+    const omml = latexToOmml("\\hat{i}");
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).toContain('<m:chr m:val="̂"/>'); // combining circumflex
+    expect(omml!).not.toContain("<m:limUpp>");
+  });
+
+  it("converts \\vec{a} to an arrow accent", () => {
+    const omml = latexToOmml("\\vec{a}");
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).toContain('<m:chr m:val="⃗"/>'); // combining arrow above
+  });
+
+  it("converts \\dot{x} to a dot accent", () => {
+    const omml = latexToOmml("\\dot{x}");
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).toContain('<m:chr m:val="̇"/>'); // combining dot above
+  });
+
+  it("preserves the base under the accent", () => {
+    const omml = latexToOmml("\\bar{x}-x_n+k");
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).toMatch(/<m:acc>.*<m:t[^>]*>x<\/m:t>.*<\/m:acc>/s);
+    // the rest of the expression survives
+    expect(omml!).toContain("<m:sSub>"); // x_n
+  });
+
+  it("converts \\overline{x} to a top bar (not an invisible borderBox)", () => {
+    const omml = latexToOmml("\\overline{x}");
+    expect(omml!).toContain("<m:bar>");
+    expect(omml!).toContain('<m:pos m:val="top"/>');
+    expect(omml!).not.toContain("<m:borderBox>");
+  });
+
+  it("leaves \\overrightarrow{AB} as a stretchy groupChr (already correct)", () => {
+    const omml = latexToOmml("\\overrightarrow{AB}");
+    expect(omml!).toContain("<m:groupChr>");
+    expect(omml!).not.toContain("<m:acc>");
+  });
+
+  it("does NOT turn a real \\lim into an accent", () => {
+    // \lim_{x\to 0} uses limit constructs but its limit is not an accent char
+    const omml = latexToOmml("\\lim_{x \\to 0} f(x)");
+    expect(omml).not.toBeNull();
+    expect(omml!).not.toContain("<m:acc>");
+  });
+});
+
 describe("textWithMathToOmmlSegments", () => {
   it("returns a single text segment for plain prose", () => {
     expect(textWithMathToOmmlSegments("hello world")).toEqual([

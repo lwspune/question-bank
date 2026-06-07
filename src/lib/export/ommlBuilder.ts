@@ -41,7 +41,7 @@ export function latexToOmml(
     if (!omml || typeof omml !== "string" || !omml.includes("m:oMath")) {
       return null;
     }
-    return wrapMatrixDelimiters(sanitizeOmmlForXml(omml));
+    return wrapAccents(wrapMatrixDelimiters(sanitizeOmmlForXml(omml)));
   } catch {
     return null;
   }
@@ -106,6 +106,66 @@ export function wrapMatrixDelimiters(omml: string): string {
       `<m:e>${matrix}</m:e></m:d>`
     );
   });
+}
+
+// mml2omml maps temml's single-base accents (\bar \hat \vec \dot \tilde) to an
+// over-LIMIT <m:limUpp> whose <m:lim> is the accent character. Word renders a
+// limit at reduced size, detached above the base — so x-bar shows as a tiny
+// floating dash instead of a proper bar. Rewrite a limUpp whose lim is exactly
+// one recognised accent char into <m:acc> with the matching COMBINING char,
+// which Word draws as a full-size accent bound to the base. A limUpp with any
+// other lim content (real \lim / \overset / \overbrace) is left untouched.
+const ACCENT_COMBINING: Record<string, string> = {
+  "‾": "̅", // ‾ overline       → combining overline   (\bar)
+  "¯": "̅", // ¯ macron         → combining overline
+  "^": "̂", //       circumflex      → combining circumflex  (\hat)
+  "ˆ": "̂", // ˆ modifier hat   → combining circumflex
+  "→": "⃗", // → right arrow    → combining arrow above (\vec)
+  "˙": "̇", // ˙ dot above      → combining dot above   (\dot)
+  "~": "̃", //       tilde           → combining tilde       (\tilde)
+  "˜": "̃", // ˜ small tilde    → combining tilde
+};
+
+const LIMUPP_ACCENT_RE = new RegExp(
+  "<m:limUpp><m:e>([\\s\\S]*?)</m:e>" +
+    "<m:lim><m:r>(?:<m:rPr>[\\s\\S]*?</m:rPr>)?<m:t[^>]*>([\\s\\S])</m:t></m:r></m:lim>" +
+    "</m:limUpp>",
+  "g"
+);
+
+// \overline in math mode maps to a <m:borderBox> with bottom+left+right hidden
+// (a top-only border) that does NOT render under our injected math defaults.
+// Rewrite that top-only box → <m:bar pos=top> (overline), which Word draws
+// reliably. A bottom-only box (\underline in math) is LEFT as a borderBox — the
+// \underline text bypass (native <w:u>) already covers the common case, and the
+// borderBox fallback for rare bare-\underline shapes is intentionally preserved
+// (see tests/underline-roundtrip.test.ts).
+const BORDERBOX_RE = new RegExp(
+  "<m:borderBox><m:borderBoxPr>([\\s\\S]*?)</m:borderBoxPr><m:e>([\\s\\S]*?)</m:e></m:borderBox>",
+  "g"
+);
+
+export function wrapAccents(omml: string): string {
+  let out = omml.replace(LIMUPP_ACCENT_RE, (whole, base, chr) => {
+    const combining = ACCENT_COMBINING[chr];
+    if (!combining) return whole; // not an accent (real limit) — leave alone
+    return (
+      `<m:acc><m:accPr><m:chr m:val="${combining}"/><m:ctrlPr/></m:accPr>` +
+      `<m:e>${base}</m:e></m:acc>`
+    );
+  });
+  out = out.replace(BORDERBOX_RE, (whole, pr, base) => {
+    const hideTop = pr.includes("m:hideTop");
+    const hideBot = pr.includes("m:hideBot");
+    const hideLeft = pr.includes("m:hideLeft");
+    const hideRight = pr.includes("m:hideRight");
+    // overline: only the top border is drawn (bot+left+right hidden)
+    if (hideBot && hideLeft && hideRight && !hideTop)
+      return `<m:bar><m:barPr><m:pos m:val="top"/><m:ctrlPr/></m:barPr><m:e>${base}</m:e></m:bar>`;
+    // underline (bottom-only) and any other box are LEFT alone — see note above.
+    return whole;
+  });
+  return out;
 }
 
 function escapeXmlText(s: string): string {
