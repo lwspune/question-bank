@@ -107,6 +107,10 @@ The 6-row PDF-vs-bank extraction-error taxonomy ([[gdrive-pdf-fetch]]) covers th
 
 `npm run content:lint` script that gates the pre-push hook for new uploads (mostly the formatting probes — wrong-key is not auto-detectable without human derivation). Still deferred — but the audit-skill probes are stable enough that lifting them into a script is mechanical. ~2 hours when there's appetite to wire it up.
 
+### Notes-coverage probe — formulas used in solutions but not taught in notes
+
+Heuristic auditor: per `/notes`-covered subtopic, extract the distinctive LaTeX macros / formula tokens from that subtopic's PUBLIC question SOLUTIONS, and flag tokens that never appear in any of the subtopic's notes concept bodies — surfacing *candidates* for "the solution relies on a formula the notes don't teach" (precedent: the `(n^2-1)/12` variance-of-natural-numbers gap, found by eye 2026-06-07 and filled as the `special-case-variance` concept). Inherently noisy (notation variance → false positives; semantic matches a string scan misses), so it's a **triage aid for human review, not a gate**. Scope to the ~12 noted chapters. ~2–3 hours. Raised 2026-06-07.
+
 ---
 
 ## Admin tooling
