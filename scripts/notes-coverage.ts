@@ -67,8 +67,11 @@ const stripBreaks = (zone: string) => zone.replace(/\\\\(\s*\[[^\]]*\])?/g, " ")
 // derivative FORM directly and emit a synthetic `[d/dx]` token. Catches
 // Leibniz `\frac{d...}` / `d/dx`, partials, and function-prime `f'(` / `f''(`.
 // Prime MUST be followed by `(` so transpose notation `A'` (= Aᵀ) is NOT a
-// false positive. (Blind spot found 2026-06-07: the determinant-derivative gap.)
-const DERIV_RE = /frac\s*\{\s*d|\bd\/dx|\\partial|[a-zA-Z]'+\(/;
+// false positive. The Leibniz form requires BOTH numerator and denominator to
+// start with `d` (`\frac{d}{dx}`, `\frac{d^2}{dx^2}`, `\frac{dy}{dx}`) so a
+// fraction with a variable numerator named d — `\frac{d}{x}` — is not matched.
+// (Blind spots found 2026-06-07: determinant-derivative gap; 2026-06-07 \frac{d}/x.)
+const DERIV_RE = /frac\s*\{\s*d[^{}]*\}\s*\{\s*d|\bd\/dx|\\partial|[a-zA-Z]'+\(/;
 
 function tokensFromZones(zones: string[]): { macros: Set<string>; frags: Set<string> } {
   const macros = new Set<string>();
