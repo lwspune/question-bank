@@ -62,8 +62,10 @@ npm run notes:latex        # audit /notes for LaTeX-in-plain-text leaks + delimi
 npm run notes:order        # populate subtopics.order_index from each /notes chapter's subtopicOrder (teaching order on /browse); --dry previews
 npm run tags:audit         # principle-tag audit (read-only)
 npm run audit:underlines   # scan PUBLIC questions for \underline{...} segments not covered by the docx-export bypass
+npm run stats              # report live bank size (PUBLIC by exam/subject) + taxonomy + /notes chapter & diagram counts — for verifying the header lines instead of hand-maintaining them
 npm run db:types           # supabase gen types (requires SUPABASE_PROJECT_REF env)
 npm run prepush            # the chained gate, MIRRORS CI: typecheck → lint → notes:lint → notes:latex → test → build; run by .githooks/pre-push
+npm run gate [target]      # wrapper that runs `npm run <target>` (default prepush) and prints a GATE_RESULT: PASS/FAIL sentinel as its LAST line — so the result survives `| tail` even though a pipe masks the exit code
 ```
 
 > **Pre-push gate.** `.githooks/pre-push` runs `npm run prepush` before any push — which now **mirrors CI exactly**: typecheck → lint → notes:lint → notes:latex → **test** → build (single source of truth: the `prepush` script). So a green pre-push means a green CI. Widened 2026-06-02 from the old build-only chain after a broken test passed pre-push and only failed in CI (it didn't run `npm test`). Cost: ~3–4 min (full suite + build). Activated by the `prepare` script (`git config core.hooksPath .githooks`) on `npm install`. `.gitattributes` pins LF on `.githooks/*` so the shebang resolves on Linux/WSL contributors. Escape hatch for WIP pushes: `git push --no-verify` — don't reach for it unless you know why.

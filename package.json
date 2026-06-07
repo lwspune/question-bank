@@ -19,6 +19,8 @@
     "notes:order": "tsx scripts/sync-subtopic-order.ts",
     "tags:audit": "tsx scripts/principle-tag-audit.ts",
     "audit:underlines": "tsx scripts/audit-underline-patterns.ts",
+    "stats": "tsx scripts/stats.ts",
+    "gate": "sh scripts/gate.sh",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepush": "npm run typecheck && npm run lint && npm run notes:lint && npm run notes:latex && npm run test && npm run build",
