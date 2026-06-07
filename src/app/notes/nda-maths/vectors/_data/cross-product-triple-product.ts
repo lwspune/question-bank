@@ -22,13 +22,13 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         "Algebraically it is anti-commutative (swap and the sign flips) and distributive over addition, but — unlike multiplication of numbers — NOT associative. " +
         "A null cross product means the two vectors are parallel (or one of them is the zero vector).",
       definition:
-        "For vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\) and scalar \\(k\\): " +
-        "\\(\\vec{a}\\times\\vec{b} = -\\vec{b}\\times\\vec{a}\\) (anti-commutative); " +
-        "\\(\\vec{a}\\times(\\vec{b}+\\vec{c}) = \\vec{a}\\times\\vec{b} + \\vec{a}\\times\\vec{c}\\) (distributive); " +
-        "\\((k\\vec{a})\\times\\vec{b} = k(\\vec{a}\\times\\vec{b})\\) (scalar associative); " +
-        "\\(\\vec{a}\\times\\vec{a} = \\vec{0}\\); " +
-        "\\(\\vec{a}\\times\\vec{b} = \\vec{0} \\iff \\vec{a}\\,\\|\\,\\vec{b}\\) (or one is zero); " +
-        "\\((\\vec{a}\\times\\vec{b})\\times\\vec{c} \\neq \\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) in general.",
+        "For vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\) and scalar \\(k\\):\n" +
+        "- **Anti-commutative:** \\(\\vec{a}\\times\\vec{b} = -\\vec{b}\\times\\vec{a}\\)\n" +
+        "- **Distributive:** \\(\\vec{a}\\times(\\vec{b}+\\vec{c}) = \\vec{a}\\times\\vec{b} + \\vec{a}\\times\\vec{c}\\)\n" +
+        "- **Scalar:** \\((k\\vec{a})\\times\\vec{b} = k(\\vec{a}\\times\\vec{b})\\)\n" +
+        "- **Self:** \\(\\vec{a}\\times\\vec{a} = \\vec{0}\\)\n" +
+        "- **Parallel test:** \\(\\vec{a}\\times\\vec{b} = \\vec{0} \\iff \\vec{a}\\,\\|\\,\\vec{b}\\) (or one is zero)\n" +
+        "- **Not associative:** \\((\\vec{a}\\times\\vec{b})\\times\\vec{c} \\neq \\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) in general",
       formula: {
         label: "Difference-of-squares-style identity",
         latex:

@@ -83,9 +83,11 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         "To find the extreme value of \\(P(A \\cup B)\\), \\(P(A \\cap B)\\) or \\(P(A)+P(B)\\), push the overlap to whichever boundary the bounds allow. " +
         "The identity \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\) converts between them.",
       definition:
-        "Minimum \\(P(A \\cup B) = \\max(P(A), P(B))\\); maximum \\(P(A \\cup B) = \\min(1,\\ P(A)+P(B))\\). " +
-        "Minimum \\(P(A \\cap B) = \\max(0,\\ P(A)+P(B)-1)\\); maximum \\(P(A \\cap B) = \\min(P(A), P(B))\\). " +
-        "Because \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\), a constraint on the union and intersection bounds their sum directly.",
+        "The four extreme values (linked by \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)):\n" +
+        "- **Union, min:** \\(P(A \\cup B) = \\max(P(A), P(B))\\)\n" +
+        "- **Union, max:** \\(P(A \\cup B) = \\min(1,\\ P(A)+P(B))\\)\n" +
+        "- **Intersection, min:** \\(P(A \\cap B) = \\max(0,\\ P(A)+P(B)-1)\\)\n" +
+        "- **Intersection, max:** \\(P(A \\cap B) = \\min(P(A), P(B))\\)",
       formula: {
         label: "Linking identity",
         latex:
@@ -144,10 +146,12 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         "NDA loves the format \"consider the following statements\" with a list of probability identities, where one is subtly wrong. " +
         "Test each against the definitions — the planted error is almost always the exactly-one formula or a mis-aimed subtraction.",
       definition:
-        "Reliable identities: \\(P(A \\cap \\bar{B}) = P(A) - P(A \\cap B)\\) (subtract the overlap from the SAME event); " +
-        "\\(P(\\text{exactly one of } A, B) = P(A) + P(B) - 2P(A \\cap B)\\); " +
-        "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\); and if \\(B \\subseteq A\\) then \\(P(A \\cap \\bar{B}) = P(A) - P(B)\\). " +
-        "The classic planted error writes \"exactly one\" with a single \\(-P(A \\cap B)\\) (that is the union) instead of \\(-2P(A \\cap B)\\).",
+        "Reliable identities:\n" +
+        "- **Only A:** \\(P(A \\cap \\bar{B}) = P(A) - P(A \\cap B)\\) (subtract the overlap from the SAME event)\n" +
+        "- **Exactly one:** \\(P(\\text{exactly one of } A, B) = P(A) + P(B) - 2P(A \\cap B)\\)\n" +
+        "- **Union:** \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)\n" +
+        "- **Subset:** if \\(B \\subseteq A\\) then \\(P(A \\cap \\bar{B}) = P(A) - P(B)\\)\n" +
+        "- **Planted error:** \"exactly one\" written with a single \\(-P(A \\cap B)\\) (that is the union) instead of \\(-2P(A \\cap B)\\)",
       formula: {
         label: "Exactly one vs union",
         latex:

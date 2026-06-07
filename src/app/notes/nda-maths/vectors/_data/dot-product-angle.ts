@@ -86,11 +86,10 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         "Two non-zero vectors are perpendicular precisely when their dot product is zero. " +
         "This single test has three equivalent disguises that PYQs love to switch between: \\(\\vec{a}\\cdot\\vec{b}=0\\) directly; \\(|\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\) (the diagonals of a parallelogram are equal iff it's a rectangle); and \\((\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{b}) = |\\vec{a}|^2 + |\\vec{b}|^2\\) (the Pythagoras identity).",
       definition:
-        "For non-zero \\(\\vec{a}, \\vec{b}\\), all three of the following are equivalent: " +
-        "\\(\\vec{a}\\cdot\\vec{b} = 0\\); " +
-        "\\(|\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\); " +
-        "\\((\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{b}) = |\\vec{a}|^2 + |\\vec{b}|^2\\). " +
-        "Each says \\(\\vec{a} \\perp \\vec{b}\\).",
+        "For non-zero \\(\\vec{a}, \\vec{b}\\), all three are equivalent — each says \\(\\vec{a} \\perp \\vec{b}\\):\n" +
+        "- \\(\\vec{a}\\cdot\\vec{b} = 0\\)\n" +
+        "- \\(|\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)\n" +
+        "- \\((\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{b}) = |\\vec{a}|^2 + |\\vec{b}|^2\\)",
       formula: {
         label: "Equivalent perpendicularity statements",
         latex:
