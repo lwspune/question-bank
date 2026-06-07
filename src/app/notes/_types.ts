@@ -161,7 +161,9 @@ export type VisualizationSlug =
   | "aod-extrema-curve"
   // NDA Maths — Lines chapter
   | "lines-angle-between-diagram"
-  | "lines-distance-point-line";
+  | "lines-distance-point-line"
+  // NDA Maths — Permutation & Combination chapter
+  | "pc-geometric-counting-diagram";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
