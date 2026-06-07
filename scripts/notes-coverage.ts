@@ -57,10 +57,16 @@ function skeleton(zone: string): string {
   return z;
 }
 
+// LaTeX row/line breaks `\\` (and `\\[4pt]` spacing) are NOT macros — but the
+// second `\` sits right before the next row's entry, so `\\p` would match as a
+// spurious `\p` macro (and pollute fragments). Strip them before tokenizing.
+const stripBreaks = (zone: string) => zone.replace(/\\\\(\s*\[[^\]]*\])?/g, " ");
+
 function tokensFromZones(zones: string[]): { macros: Set<string>; frags: Set<string> } {
   const macros = new Set<string>();
   const frags = new Set<string>();
-  for (const zone of zones) {
+  for (const raw of zones) {
+    const zone = stripBreaks(raw);
     for (const mac of zone.match(/\\[a-zA-Z]+/g) ?? [])
       if (!COMMON_MACROS.has(mac)) macros.add(mac);
     const skel = skeleton(zone);
@@ -76,10 +82,22 @@ function tokensFromZones(zones: string[]): { macros: Set<string>; frags: Set<str
 
 const tokens = (text: string) => tokensFromZones(mathZones(text));
 
+// Collect every string field value (recursively) WITHOUT JSON-escaping — using
+// JSON.stringify would double every backslash (`\cos` -> `\\cos`), which then
+// trips stripBreaks and consistency with the raw (single-backslash) solution
+// text. Walk the object instead so notes + solution zones are escaped alike.
+function collectStrings(v: unknown, out: string[]): void {
+  if (typeof v === "string") out.push(v);
+  else if (Array.isArray(v)) for (const x of v) collectStrings(x, out);
+  else if (v && typeof v === "object") for (const x of Object.values(v)) collectStrings(x, out);
+}
+
 // Notes math lives BOTH in \(...\) zones (intuition/definition/examples) AND in
 // raw `formula.latex` / reference-table cells (NOT delimited). Gather all of it.
 function noteZones(note: SubtopicNote): string[] {
-  const zones = mathZones(JSON.stringify(note));
+  const strings: string[] = [];
+  collectStrings(note, strings);
+  const zones = strings.flatMap(mathZones);
   for (const c of note.concepts) {
     if (c.kind === "formula" && c.formula?.latex) zones.push(c.formula.latex);
     if (c.kind === "reference")
