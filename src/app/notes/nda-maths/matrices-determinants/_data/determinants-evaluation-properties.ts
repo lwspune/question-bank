@@ -68,9 +68,14 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "trap is scaling: pulling a scalar out of the WHOLE matrix multiplies the determinant by " +
         "\\(k^n\\) (not \\(k\\)), because it scales all \\(n\\) rows.",
       definition:
-        "For \\(n\\times n\\) matrices: \\(\\det(AB) = \\det A\\,\\det B\\); \\(\\det(A^T) = \\det A\\); " +
-        "\\(\\det(kA) = k^n \\det A\\); \\(\\det(A^m) = (\\det A)^m\\); \\(\\det(A^{-1}) = 1/\\det A\\); " +
-        "\\(\\det(B^{-1}AB) = \\det A\\); \\(\\det(AA^T) = (\\det A)^2\\).",
+        "For \\(n\\times n\\) matrices:\n" +
+        "- **Product:** \\(\\det(AB) = \\det A\\,\\det B\\)\n" +
+        "- **Transpose:** \\(\\det(A^T) = \\det A\\)\n" +
+        "- **Scalar:** \\(\\det(kA) = k^n \\det A\\) (all \\(n\\) rows scale)\n" +
+        "- **Power:** \\(\\det(A^m) = (\\det A)^m\\)\n" +
+        "- **Inverse:** \\(\\det(A^{-1}) = 1/\\det A\\)\n" +
+        "- **Conjugation:** \\(\\det(B^{-1}AB) = \\det A\\)\n" +
+        "- **Gram:** \\(\\det(AA^T) = (\\det A)^2\\)",
       formula: {
         label: "Multiplicativity and scaling",
         latex: "\\det(AB) = \\det A\\,\\det B, \\qquad \\det(kA) = k^{\\,n}\\det A",

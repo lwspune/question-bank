@@ -109,10 +109,11 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "\\(|\\operatorname{adj}A| = |A|^{n-1}\\) and \\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{n-2}A\\) " +
         "for an \\(n\\times n\\) matrix.",
       definition:
-        "For an \\(n\\times n\\) non-singular matrix: \\(|\\operatorname{adj}A| = |A|^{n-1}\\); " +
-        "\\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{n-2}A\\); " +
-        "\\(\\operatorname{adj}(kA) = k^{n-1}\\operatorname{adj}A\\); " +
-        "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) (reversal).",
+        "For an \\(n\\times n\\) non-singular matrix:\n" +
+        "- **Determinant:** \\(|\\operatorname{adj}A| = |A|^{n-1}\\)\n" +
+        "- **Double adjoint:** \\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{n-2}A\\)\n" +
+        "- **Scalar:** \\(\\operatorname{adj}(kA) = k^{n-1}\\operatorname{adj}A\\)\n" +
+        "- **Reversal:** \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\)",
       formula: {
         label: "Adjoint of an n×n matrix",
         latex: "|\\operatorname{adj}A| = |A|^{\\,n-1}, \\qquad \\operatorname{adj}(\\operatorname{adj}A) = |A|^{\\,n-2}A",
@@ -197,8 +198,12 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "transpose and adjoint. Other staples: inverting twice returns \\(A\\), and the determinant of " +
         "the inverse is the reciprocal.",
       definition:
-        "\\((AB)^{-1} = B^{-1}A^{-1}\\) (reversal); \\((A^{-1})^{-1} = A\\); " +
-        "\\(\\det(A^{-1}) = 1/\\det A\\); \\((A^T)^{-1} = (A^{-1})^T\\); \\((kA)^{-1} = \\tfrac1k A^{-1}\\).",
+        "Key inverse identities:\n" +
+        "- **Reversal:** \\((AB)^{-1} = B^{-1}A^{-1}\\) (order flips)\n" +
+        "- **Double inverse:** \\((A^{-1})^{-1} = A\\)\n" +
+        "- **Determinant:** \\(\\det(A^{-1}) = 1/\\det A\\)\n" +
+        "- **Transpose:** \\((A^T)^{-1} = (A^{-1})^T\\)\n" +
+        "- **Scalar:** \\((kA)^{-1} = \\tfrac1k A^{-1}\\)",
       formula: {
         label: "Reversal law for inverses",
         latex: "(AB)^{-1} = B^{-1}A^{-1}",

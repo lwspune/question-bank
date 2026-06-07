@@ -183,9 +183,11 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         "The transpose \\(A^T\\) (or \\(A'\\)) flips rows into columns. The one rule that trips people " +
         "up is the **reversal** law: the transpose of a product reverses the order — \\((AB)^T = B^T A^T\\).",
       definition:
-        "\\((A^T)_{ij} = a_{ji}\\). Rules: \\((A^T)^T = A\\); \\((A+B)^T = A^T + B^T\\); " +
-        "\\((kA)^T = kA^T\\); and **\\((AB)^T = B^T A^T\\)** (order reverses). \\(A^T\\) has the " +
-        "transposed order: an \\(m\\times n\\) matrix transposes to \\(n\\times m\\).",
+        "\\((A^T)_{ij} = a_{ji}\\) — an \\(m\\times n\\) matrix transposes to \\(n\\times m\\). Rules:\n" +
+        "- **Self-inverse:** \\((A^T)^T = A\\)\n" +
+        "- **Sum:** \\((A+B)^T = A^T + B^T\\)\n" +
+        "- **Scalar:** \\((kA)^T = kA^T\\)\n" +
+        "- **Reversal:** \\((AB)^T = B^T A^T\\) (order reverses)",
       formula: {
         label: "Transpose of a product (reversal law)",
         latex: "(AB)^T = B^T A^T",

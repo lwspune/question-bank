@@ -109,11 +109,10 @@ export const TRIG_POWERS_NOTE: SubtopicNote = {
       intuition:
         "Many trig integrands look exotic but collapse to something standard after ONE identity — a half-angle, a sum-to-product, or just writing everything over \\(\\sin\\) and \\(\\cos\\). Always try to simplify before substituting.",
       definition:
-        "Common collapses: " +
-        "\\(\\tan x + \\cot x = \\dfrac{1}{\\sin x\\cos x} = 2\\csc 2x\\); " +
-        "\\(\\dfrac{1}{1+\\cos x} = \\dfrac{1}{2}\\sec^2\\dfrac{x}{2}\\); " +
-        "and ratios like \\(\\dfrac{\\sin(5x/2)}{\\sin(x/2)}\\) expand into a sum of cosines. " +
-        "After the identity, the integral is a standard form.",
+        "Common collapses (after which the integral is a standard form):\n" +
+        "- \\(\\tan x + \\cot x = \\dfrac{1}{\\sin x\\cos x} = 2\\csc 2x\\)\n" +
+        "- \\(\\dfrac{1}{1+\\cos x} = \\dfrac{1}{2}\\sec^2\\dfrac{x}{2}\\)\n" +
+        "- ratios like \\(\\dfrac{\\sin(5x/2)}{\\sin(x/2)}\\) expand into a sum of cosines",
       formula: {
         label: "A workhorse collapse",
         latex: "\\tan x + \\cot x = \\dfrac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = \\dfrac{2}{\\sin 2x} = 2\\csc 2x",
