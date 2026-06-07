@@ -151,7 +151,9 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         "- **Exactly one:** \\(P(\\text{exactly one of } A, B) = P(A) + P(B) - 2P(A \\cap B)\\)\n" +
         "- **Union:** \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)\n" +
         "- **Subset:** if \\(B \\subseteq A\\) then \\(P(A \\cap \\bar{B}) = P(A) - P(B)\\)\n" +
-        "- **Planted error:** \"exactly one\" written with a single \\(-P(A \\cap B)\\) (that is the union) instead of \\(-2P(A \\cap B)\\)",
+        "- **At least two of \\(A,B,C\\):** \\(P(A\\cap B)+P(B\\cap C)+P(C\\cap A)-2P(A\\cap B\\cap C)\\)\n" +
+        "- **Exactly two of \\(A,B,C\\):** \\(P(A\\cap B)+P(B\\cap C)+P(C\\cap A)-3P(A\\cap B\\cap C)\\)\n" +
+        "- **Planted error:** \"exactly one\" written with a single \\(-P(A \\cap B)\\) (that is the union) instead of \\(-2P(A \\cap B)\\); for three events, the wrong coefficient on \\(P(A\\cap B\\cap C)\\)",
       formula: {
         label: "Exactly one vs union",
         latex:
@@ -184,6 +186,8 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         { prompt: "\\(P(A)=0.6,P(A\\cap B)=0.25\\). \\(P(A\\cap\\bar{B})\\)?", answer: "\\(0.35\\)", method: "\\(P(A)-P(A\\cap B)\\)" },
         { prompt: "\\(P(A)=0.5,P(B)=0.4,P(A\\cap B)=0.2\\). \\(P(\\text{exactly one})\\)?", answer: "\\(0.5\\)", method: "\\(0.5+0.4-2(0.2)\\)" },
         { prompt: "If \\(B\\subseteq A\\), is \\(P(A\\cap B)=P(B)\\)?", answer: "Yes" },
+        { prompt: "\\(P(\\text{at least two of } A,B,C)\\)?", answer: "\\(\\sum P(\\text{pairwise})-2P(A\\cap B\\cap C)\\)" },
+        { prompt: "\\(P(\\text{exactly two of } A,B,C)\\)?", answer: "\\(\\sum P(\\text{pairwise})-3P(A\\cap B\\cap C)\\)" },
       ],
       pyqExampleId: "1781db50-479a-42c6-ae29-1913cddb6f51",
       traps: [
@@ -191,6 +195,11 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
           title: "\"Exactly one\" subtracts the overlap TWICE",
           body:
             "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B)\\). Writing a single \\(-P(A \\cap B)\\) gives the union — the most common planted error in these statement questions.",
+        },
+        {
+          title: "\"At least two of three\" subtracts the triple overlap TWICE (−2), not −1 or −3",
+          body:
+            "\\(P(\\text{at least two of }A,B,C)=\\sum P(\\text{pairwise})-2P(A\\cap B\\cap C)\\). The pairwise sum counts the all-three region three times; you want it once, so remove it twice. (\"Exactly two\" removes it three times → \\(-3\\); the NDA option list dangles \\(-1,-2,-3\\) to catch this.)",
         },
         {
           title: "\\(P(A \\cap \\bar{B}) = P(A) - P(A \\cap B)\\), not \\(P(A) - P(B)\\)",
