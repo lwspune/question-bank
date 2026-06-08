@@ -147,6 +147,7 @@ export async function assembleNextQuiz(
     subject,
     title: `NDA ${chapterDisplay} — ${themeLabel} ${n}`,
     chapter: chapterDisplay,
+    theme: opts.theme ?? "mixed",
     questions: specs,
   });
 

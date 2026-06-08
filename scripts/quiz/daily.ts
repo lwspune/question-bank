@@ -38,6 +38,8 @@ export type DailyQuizSpec = {
   subject: string;
   title: string;
   chapter: string;
+  /** Quiz theme for filtering on nda-tracker (Formulas / Traps / Mixed …). */
+  theme?: string;
   marking?: { correct: number; wrong: number };
   questions: QuestionSpec[];
 };
@@ -80,6 +82,9 @@ export function defineDailyQuiz(spec: DailyQuizSpec): DraftQuiz {
     id: spec.slug,
     title: spec.title,
     subject: spec.subject,
+    exam: spec.exam,
+    chapter: spec.chapter,
+    theme: spec.theme ?? "mixed",
     marking: spec.marking ?? { correct: 1, wrong: 0 },
     questions: spec.questions.map((s, i) =>
       toQuestion(s, `${spec.slug}:${i}`, i + 1, spec.chapter)
