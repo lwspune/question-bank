@@ -45,9 +45,7 @@ async function main() {
       break;
     }
     made++;
-    console.log(
-      `✓ ${r.slug} (${r.questionCount} Q) ${r.pushed ? "→ draft in nda-tracker" : "(recorded, not pushed)"} · ${r.remaining} ready left`
-    );
+    console.log(`✓ ${r.slug} (${r.questionCount} Q) — ${r.pushDetail} · ${r.remaining} ready left`);
     if (r.remaining < size) break;
   }
   console.log(`\nDone. Assembled ${made} quiz(zes).${made > 0 ? " Open nda-tracker → Daily Quiz to publish." : ""}`);

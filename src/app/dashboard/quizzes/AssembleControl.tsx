@@ -27,11 +27,9 @@ export default function AssembleControl({ chapters }: { chapters: ChapterOption[
     start(async () => {
       const r = await assembleQuizAction(route, chapter);
       if (r.ok) {
-        toast.success(
-          `Built “${r.title}” (${r.questionCount} Q) — ${
-            r.pushed ? "pushed to nda-tracker" : "recorded (push not configured)"
-          }. ${r.remaining} ready left.`
-        );
+        const msg = `Built “${r.title}” (${r.questionCount} Q) — ${r.pushDetail}. ${r.remaining} ready left.`;
+        if (r.pushed) toast.success(msg);
+        else toast.warning(msg);
       } else {
         toast.error(r.error);
       }

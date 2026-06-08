@@ -37,7 +37,17 @@ export type ReadyAtom = {
 };
 
 export type AssembleResult =
-  | { ok: true; slug: string; title: string; questionCount: number; pushed: boolean; remaining: number }
+  | {
+      ok: true;
+      slug: string;
+      title: string;
+      questionCount: number;
+      pushed: boolean;
+      /** Human-readable reason the push did/didn't happen — for diagnosing the
+       *  deployed button (env missing vs HTTP failure vs network error). */
+      pushDetail: string;
+      remaining: number;
+    }
   | { ok: false; error: string };
 
 export async function readReadyAtoms(db: SupabaseClient, route: string, chapter: string): Promise<ReadyAtom[]> {
@@ -132,17 +142,27 @@ export async function assembleNextQuiz(
   if (mErr) return { ok: false, error: `record questions failed: ${mErr.message}` };
 
   let pushed = false;
-  if (opts.push) {
-    const res = await fetch(opts.push.url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${opts.push.secret}` },
-      body: JSON.stringify(buildImportPayload(draft)),
-    });
-    if (res.ok) {
-      pushed = true;
-      await db.from("quizzes").update({ status: "pushed", pushed_at: new Date().toISOString() }).eq("id", id);
+  let pushDetail: string;
+  if (!opts.push) {
+    pushDetail = "not pushed — NDA_TRACKER_IMPORT_URL / QUIZ_IMPORT_SECRET not set in the server env";
+  } else {
+    try {
+      const res = await fetch(opts.push.url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${opts.push.secret}` },
+        body: JSON.stringify(buildImportPayload(draft)),
+      });
+      if (res.ok) {
+        pushed = true;
+        pushDetail = "pushed to nda-tracker";
+        await db.from("quizzes").update({ status: "pushed", pushed_at: new Date().toISOString() }).eq("id", id);
+      } else {
+        pushDetail = `push failed: HTTP ${res.status} ${(await res.text()).slice(0, 140)}`;
+      }
+    } catch (e) {
+      pushDetail = `push error: ${e instanceof Error ? e.message : String(e)}`;
     }
   }
 
-  return { ok: true, slug, title: draft.title, questionCount: atoms.length, pushed, remaining: fresh.length - atoms.length };
+  return { ok: true, slug, title: draft.title, questionCount: atoms.length, pushed, pushDetail, remaining: fresh.length - atoms.length };
 }
