@@ -30,10 +30,18 @@ export type AssembledQuiz = {
   exam: string;
   subject: string;
   chapter: string;
+  theme: string;
   status: string;
   pushedAt: string | null;
   questions: QuizQuestionView[];
 };
+
+/** Theme is encoded in the slug (`<route>-<chapter>-<theme>-N`, or `-daily-` for
+ *  mixed) rather than stored as a column — derive it for the filter. */
+export function themeFromSlug(slug: string): string {
+  const m = slug.match(/-(formula|property|computation|fact|trap)-\d+$/);
+  return m ? m[1] : "mixed";
+}
 
 /** Distinct (route, chapter) pairs that have at least one READY atom — drives
  *  the dashboard's assemble dropdown. NOTE: reads ready rows then dedups; fine
@@ -123,6 +131,7 @@ export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]>
     exam: q.exam,
     subject: q.subject,
     chapter: q.chapter,
+    theme: themeFromSlug(q.slug),
     status: q.status,
     pushedAt: q.pushed_at,
     questions: (byQuiz.get(q.id) ?? []).sort((a, b) => a.position - b.position),
