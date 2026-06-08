@@ -11,9 +11,9 @@
  * draft IF push credentials are supplied (otherwise records only).
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { orderForVariety, chunkFull } from "../../../scripts/quiz/atoms";
-import { defineDailyQuiz, fromAtom, type QuestionSpec } from "../../../scripts/quiz/daily";
-import { buildImportPayload, slugToUuid } from "../../../scripts/quiz/quizPayload";
+import { orderForVariety, chunkFull } from "./atoms";
+import { defineDailyQuiz, fromAtom, type QuestionSpec } from "./daily";
+import { buildImportPayload, slugToUuid } from "./quizPayload";
 
 const SUBJECT_DISPLAY: Record<string, string> = {
   "nda-maths": "Maths",
@@ -129,7 +129,13 @@ export async function assembleNextQuiz(
   const id = slugToUuid(slug);
   const subject = SUBJECT_DISPLAY[opts.route] ?? titleCase(opts.route);
   const chapterDisplay = titleCase(opts.chapter);
-  const themeLabel = opts.theme ? THEME_LABEL[opts.theme] : "Daily";
+  // Label by the quiz's ACTUAL content, not the requested filter: a "mixed"
+  // assemble that happens to draw one theme is really that theme. Keeps the title
+  // + the theme pushed to nda-tracker accurate (and consistent with the dashboard,
+  // which derives theme from the same atom composition).
+  const distinctThemes = [...new Set(atoms.map((a) => a.theme).filter(Boolean))] as QuizTheme[];
+  const quizTheme: QuizTheme | "mixed" = distinctThemes.length === 1 ? distinctThemes[0] : "mixed";
+  const themeLabel = quizTheme === "mixed" ? "Daily" : THEME_LABEL[quizTheme];
 
   const specs: QuestionSpec[] = atoms.map((a) =>
     fromAtom({
@@ -147,7 +153,7 @@ export async function assembleNextQuiz(
     subject,
     title: `NDA ${chapterDisplay} — ${themeLabel} ${n}`,
     chapter: chapterDisplay,
-    theme: opts.theme ?? "mixed",
+    theme: quizTheme,
     questions: specs,
   });
 

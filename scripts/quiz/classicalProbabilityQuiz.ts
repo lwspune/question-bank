@@ -11,7 +11,7 @@
  * Marking defaults to +1 / 0 (low-stakes daily habit); adjust in the editor before
  * publishing if you want negative marking.
  */
-import type { DraftQuiz } from "./quizPayload";
+import type { DraftQuiz } from "../../src/lib/quiz/quizPayload";
 
 const COMMON = { chapter: "Probability", subtopic: "Probability via Counting", difficulty: "Easy" };
 

@@ -16,7 +16,7 @@ import {
   chunkFull,
   type HarvestCtx,
   type QuizAtom,
-} from "../scripts/quiz/atoms";
+} from "../src/lib/quiz/atoms";
 import type { ConceptUnit, ReferenceTable } from "../src/app/notes/_types";
 
 const CTX: HarvestCtx = {

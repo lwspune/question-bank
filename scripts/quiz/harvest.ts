@@ -12,7 +12,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { NOTES_CHAPTERS } from "../../src/lib/notes/chapters";
-import { harvestConcept, type HarvestCtx, type QuizAtom } from "./atoms";
+import { harvestConcept, type HarvestCtx, type QuizAtom } from "../../src/lib/quiz/atoms";
 
 const DEFAULT_CHAPTERS = [
   "nda-maths/probability", // semi: practiceSet-heavy

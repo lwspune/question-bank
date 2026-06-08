@@ -13,7 +13,7 @@ import "dotenv/config";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { planSync, type QuizAtom, type QuizAtomRow } from "./atoms";
+import { planSync, type QuizAtom, type QuizAtomRow } from "../../src/lib/quiz/atoms";
 
 function loadEnvLocal() {
   const local = path.join(process.cwd(), ".env.local");
