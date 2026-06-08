@@ -74,6 +74,11 @@ import {
   DEFINITE_INTEGRATION_SLUGS,
 } from "@/app/notes/nda-maths/definite-integration/_data";
 import {
+  DIFFERENTIAL_EQUATIONS_CHAPTER,
+  DIFFERENTIAL_EQUATIONS_NOTES,
+  DIFFERENTIAL_EQUATIONS_SLUGS,
+} from "@/app/notes/nda-maths/differential-equations/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -361,6 +366,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: DEFINITE_INTEGRATION_CHAPTER,
     notes: DEFINITE_INTEGRATION_NOTES,
     slugs: DEFINITE_INTEGRATION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "differential-equations",
+    chipLabel: "Differential Equations notes",
+    chapter: DIFFERENTIAL_EQUATIONS_CHAPTER,
+    notes: DIFFERENTIAL_EQUATIONS_NOTES,
+    slugs: DIFFERENTIAL_EQUATIONS_SLUGS,
   },
   {
     examName: "NDA",

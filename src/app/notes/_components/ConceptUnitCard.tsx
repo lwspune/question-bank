@@ -116,6 +116,8 @@ import DefintAreaRegion from "./visualizations/DefintAreaRegion";
 import DefintKingsReflection from "./visualizations/DefintKingsReflection";
 import DefintGreatestIntegerArea from "./visualizations/DefintGreatestIntegerArea";
 import DefintAbsoluteValueFold from "./visualizations/DefintAbsoluteValueFold";
+import DefeqFamilyOfCurves from "./visualizations/DefeqFamilyOfCurves";
+import DefeqGrowthDecay from "./visualizations/DefeqGrowthDecay";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -326,6 +328,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <DefintGreatestIntegerArea />;
     case "defint-absolute-value-fold":
       return <DefintAbsoluteValueFold />;
+    case "defeq-family-of-curves":
+      return <DefeqFamilyOfCurves />;
+    case "defeq-growth-decay":
+      return <DefeqGrowthDecay />;
   }
 }
 
