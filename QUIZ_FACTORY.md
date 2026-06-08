@@ -98,7 +98,7 @@ Snapshot **2026-06-09** — refresh with:
 | Chapter | Ready | Needs review | Quizzes | State |
 |---|---|---|---|---|
 | nda-maths / **probability** | 157 | 41* | **10** | ✅ **Complete** (all themes; *41 = 34 overlapping trap seeds + 7 non-MCQ-clean, left unauthored) |
-| nda-maths / **statistics** | 168 | 46* | **11** | ✅ **Complete** (formula + property + computation; *46 = 38 trap seeds + 8 non-MCQ-clean, left unauthored; 3 property atoms carry forward below band) |
+| nda-maths / **statistics** | 185 | 29* | **12** | ✅ **Complete** (all themes — formula + property + computation + traps; *29 = 21 overlapping/duplicate trap seeds + 8 non-MCQ-clean, left unauthored; 3 property atoms carry forward below band) |
 | nda-biology / human-physiology | 56 | 122 | 3 | Harvested; `fact` auto ready; practice/traps **not approved** |
 | nda-maths / matrices-determinants | 29 | 187 | 1 | Harvested; `formula` auto ready; **not approved** |
 | nda-maths / vectors | 27 | 185 | 1 | Harvested; `formula` auto ready; **not approved** |
