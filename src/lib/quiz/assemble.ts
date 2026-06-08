@@ -11,7 +11,7 @@
  * draft IF push credentials are supplied (otherwise records only).
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { orderForVariety, chunkFull } from "./atoms";
+import { orderForVariety, balancedSizes } from "./atoms";
 import { defineDailyQuiz, fromAtom, type QuestionSpec } from "./daily";
 import { buildImportPayload, slugToUuid } from "./quizPayload";
 
@@ -102,21 +102,24 @@ export async function assembleNextQuiz(
   db: SupabaseClient,
   opts: { route: string; chapter: string; size?: number; theme?: QuizTheme; push?: { url: string; secret: string } | null }
 ): Promise<AssembleResult> {
-  const size = opts.size ?? 15;
+  const target = opts.size ?? 15;
   const [ready, used] = await Promise.all([
     readReadyAtoms(db, opts.route, opts.chapter, opts.theme),
     readUsedAtomIds(db),
   ]);
   const fresh = ready.filter((a) => !used.has(a.id));
-  const chunks = chunkFull(orderForVariety(fresh, (a) => a.source_kind), size);
-  if (chunks.length === 0) {
+  // Balanced sizing: take the first near-target chunk of the unused pool; the
+  // next call re-partitions what's left (no clean-multiple-of-15 requirement).
+  const ordered = orderForVariety(fresh, (a) => a.source_kind);
+  const sizes = balancedSizes(ordered.length, target);
+  if (sizes.length === 0) {
     const themeNote = opts.theme ? ` ${THEME_LABEL[opts.theme].toLowerCase()}` : "";
     return {
       ok: false,
-      error: `Only ${fresh.length} ready, unused${themeNote} question(s) in ${opts.route}/${opts.chapter} — need ${size} for a full quiz. Approve more first.`,
+      error: `Only ${fresh.length} ready, unused${themeNote} question(s) in ${opts.route}/${opts.chapter} — need at least 12 for a quiz. Approve more first.`,
     };
   }
-  const atoms = chunks[0];
+  const atoms = ordered.slice(0, sizes[0]);
 
   // Themed quizzes number/slug per (chapter, theme); mixed keeps the -daily- slug.
   const slugBase = opts.theme ? `${opts.route}-${opts.chapter}-${opts.theme}` : `${opts.route}-${opts.chapter}-daily`;
