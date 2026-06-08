@@ -64,6 +64,11 @@ import {
   HUMAN_PHYSIOLOGY_SLUGS,
 } from "@/app/notes/nda-biology/human-physiology/_data";
 import {
+  SETS_RELATIONS_CHAPTER,
+  SETS_RELATIONS_NOTES,
+  SETS_RELATIONS_SLUGS,
+} from "@/app/notes/nda-maths/sets-relations/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -329,6 +334,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: COMPLEX_NUMBERS_CHAPTER,
     notes: COMPLEX_NUMBERS_NOTES,
     slugs: COMPLEX_NUMBERS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "sets-relations",
+    chipLabel: "Sets & Relations notes",
+    chapter: SETS_RELATIONS_CHAPTER,
+    notes: SETS_RELATIONS_NOTES,
+    slugs: SETS_RELATIONS_SLUGS,
   },
   {
     examName: "NDA",
