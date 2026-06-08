@@ -36,12 +36,6 @@ export type AssembledQuiz = {
   questions: QuizQuestionView[];
 };
 
-/** Theme is encoded in the slug (`<route>-<chapter>-<theme>-N`, or `-daily-` for
- *  mixed) rather than stored as a column — derive it for the filter. */
-export function themeFromSlug(slug: string): string {
-  const m = slug.match(/-(formula|property|computation|fact|trap)-\d+$/);
-  return m ? m[1] : "mixed";
-}
 
 /** Distinct (route, chapter) pairs that have at least one READY atom — drives
  *  the dashboard's assemble dropdown. NOTE: reads ready rows then dedups; fine
@@ -101,16 +95,23 @@ export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]>
   const ids = rows.map((q) => q.id);
   const { data: maps, error: mErr } = await db
     .from("quiz_atoms_map")
-    .select("quiz_id, position, quiz_atoms(stem, options, answer, concept_slug)")
+    .select("quiz_id, position, quiz_atoms(stem, options, answer, concept_slug, theme)")
     .in("quiz_id", ids)
     .order("position");
   if (mErr) throw new Error(`list quiz questions failed: ${mErr.message}`);
 
   const byQuiz = new Map<string, QuizQuestionView[]>();
+  const themesByQuiz = new Map<string, Set<string>>();
   for (const m of (maps ?? []) as unknown as Array<{
     quiz_id: string;
     position: number;
-    quiz_atoms: { stem: string; options: QuizQuestionView["options"]; answer: string | null; concept_slug: string } | null;
+    quiz_atoms: {
+      stem: string;
+      options: QuizQuestionView["options"];
+      answer: string | null;
+      concept_slug: string;
+      theme: string | null;
+    } | null;
   }>) {
     if (!m.quiz_atoms) continue;
     const list = byQuiz.get(m.quiz_id) ?? [];
@@ -122,18 +123,27 @@ export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]>
       conceptSlug: m.quiz_atoms.concept_slug,
     });
     byQuiz.set(m.quiz_id, list);
+    if (m.quiz_atoms.theme) {
+      const set = themesByQuiz.get(m.quiz_id) ?? new Set<string>();
+      set.add(m.quiz_atoms.theme);
+      themesByQuiz.set(m.quiz_id, set);
+    }
   }
 
-  return rows.map((q) => ({
-    id: q.id,
-    slug: q.slug,
-    title: q.title,
-    exam: q.exam,
-    subject: q.subject,
-    chapter: q.chapter,
-    theme: themeFromSlug(q.slug),
-    status: q.status,
-    pushedAt: q.pushed_at,
-    questions: (byQuiz.get(q.id) ?? []).sort((a, b) => a.position - b.position),
-  }));
+  return rows.map((q) => {
+    const themes = themesByQuiz.get(q.id);
+    return {
+      id: q.id,
+      slug: q.slug,
+      title: q.title,
+      exam: q.exam,
+      subject: q.subject,
+      chapter: q.chapter,
+      // Theme = the quiz's actual content: one distinct atom theme → that, else "mixed".
+      theme: themes && themes.size === 1 ? [...themes][0] : "mixed",
+      status: q.status,
+      pushedAt: q.pushed_at,
+      questions: (byQuiz.get(q.id) ?? []).sort((a, b) => a.position - b.position),
+    };
+  });
 }

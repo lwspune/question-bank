@@ -17,7 +17,7 @@
  * Tip: harvested candidates live in scripts/quiz/atoms/*.json — finalize a
  * needs_review atom's distractors, then drop it in here (or use fromAtom()).
  */
-import { defineDailyQuiz } from "../daily";
+import { defineDailyQuiz } from "../../../src/lib/quiz/daily";
 
 export default defineDailyQuiz({
   slug: "REPLACE-ME-unique-slug",

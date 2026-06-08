@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { defineDailyQuiz, fromAtom, type DailyQuizSpec } from "../scripts/quiz/daily";
-import { buildImportPayload } from "../scripts/quiz/quizPayload";
+import { defineDailyQuiz, fromAtom, type DailyQuizSpec } from "../src/lib/quiz/daily";
+import { buildImportPayload } from "../src/lib/quiz/quizPayload";
 
 const SPEC: DailyQuizSpec = {
   slug: "nda-test-1",

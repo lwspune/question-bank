@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildImportPayload, slugToUuid, isUuid, type DraftQuiz } from "../scripts/quiz/quizPayload";
+import { buildImportPayload, slugToUuid, isUuid, type DraftQuiz } from "../src/lib/quiz/quizPayload";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 

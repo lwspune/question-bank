@@ -15,7 +15,7 @@ import "dotenv/config";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { buildVerifyUpdate } from "./atoms";
+import { buildVerifyUpdate } from "../../src/lib/quiz/atoms";
 import type { VerifiedEntry } from "./verify/nda-maths__probability";
 
 function loadEnvLocal() {

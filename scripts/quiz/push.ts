@@ -17,7 +17,7 @@
 import "dotenv/config";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { buildImportPayload, type DraftQuiz } from "./quizPayload";
+import { buildImportPayload, type DraftQuiz } from "../../src/lib/quiz/quizPayload";
 import { CLASSICAL_PROBABILITY_QUIZ } from "./classicalProbabilityQuiz";
 
 /** Load the quiz to push: a daily/<slug> module (default or named `quiz`
