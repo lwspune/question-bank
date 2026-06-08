@@ -11,6 +11,7 @@ import {
   harvestConcept,
   atomToRow,
   planSync,
+  buildVerifyUpdate,
   type HarvestCtx,
   type QuizAtom,
 } from "../scripts/quiz/atoms";
@@ -246,5 +247,31 @@ describe("planSync (staleness-preserving upsert plan)", () => {
     );
     expect(plan.upserts).toHaveLength(1);
     expect(plan.skippedVerified).toBe(0);
+  });
+});
+
+describe("buildVerifyUpdate", () => {
+  it("places the key at the answer letter with three distractors", () => {
+    const r = buildVerifyUpdate("k:practiceSet:0", "\\(\\dfrac{1}{2}\\)", [
+      "\\(\\dfrac{1}{3}\\)",
+      "\\(\\dfrac{1}{4}\\)",
+      "\\(\\dfrac{2}{3}\\)",
+    ]);
+    expect(r.options[r.answer]).toBe("\\(\\dfrac{1}{2}\\)");
+    expect(Object.values(r.options).filter((v) => v === "\\(\\dfrac{1}{2}\\)")).toHaveLength(1);
+  });
+
+  it("strips a trailing period off the key", () => {
+    const r = buildVerifyUpdate("k:1", "\\(\\dfrac{1}{3}\\).", ["a", "b", "c"]);
+    expect(r.options[r.answer]).toBe("\\(\\dfrac{1}{3}\\)");
+  });
+
+  it("rejects a distractor equal to the key", () => {
+    expect(() => buildVerifyUpdate("k:2", "5", ["5", "6", "7"])).toThrow(/equals the correct/i);
+  });
+
+  it("rejects duplicate distractors and wrong counts", () => {
+    expect(() => buildVerifyUpdate("k:3", "5", ["6", "6", "7"])).toThrow(/distinct/i);
+    expect(() => buildVerifyUpdate("k:4", "5", ["6", "7"])).toThrow(/exactly 3/i);
   });
 });
