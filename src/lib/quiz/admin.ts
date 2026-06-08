@@ -1,0 +1,106 @@
+import "server-only";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+
+/**
+ * Read-only admin views over the Quiz Factory (quiz_atoms + quizzes). Used by
+ * /dashboard/quizzes. Service-role reads (the page is admin-guarded); counts use
+ * the exact-count head form so they never hit the PostgREST 1000-row cap.
+ */
+
+export type QuizPoolStats = {
+  total: number;
+  auto: number;
+  verified: number;
+  needsReview: number;
+  ready: number; // auto + verified
+};
+
+export type QuizQuestionView = {
+  position: number;
+  stem: string;
+  options: { A: string; B: string; C: string; D: string } | null;
+  answer: string | null;
+  conceptSlug: string;
+};
+
+export type AssembledQuiz = {
+  id: string;
+  slug: string;
+  title: string;
+  exam: string;
+  subject: string;
+  chapter: string;
+  status: string;
+  pushedAt: string | null;
+  questions: QuizQuestionView[];
+};
+
+export async function getQuizPoolStats(): Promise<QuizPoolStats> {
+  const db = createSupabaseAdminClient();
+  const countFor = async (status?: string) => {
+    let q = db.from("quiz_atoms").select("id", { count: "exact", head: true });
+    if (status) q = q.eq("status", status);
+    const { count, error } = await q;
+    if (error) throw new Error(`pool count failed: ${error.message}`);
+    return count ?? 0;
+  };
+  const [total, auto, verified, needsReview] = await Promise.all([
+    countFor(),
+    countFor("auto"),
+    countFor("verified"),
+    countFor("needs_review"),
+  ]);
+  return { total, auto, verified, needsReview, ready: auto + verified };
+}
+
+/** Most-recent assembled quizzes with their questions (capped to keep the
+ *  question fetch under the 1000-row cap: 60 quizzes × 15 ≈ 900). */
+export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]> {
+  const db = createSupabaseAdminClient();
+  const { data: quizzes, error } = await db
+    .from("quizzes")
+    .select("id, slug, title, exam, subject, chapter, status, pushed_at, created_at")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error) throw new Error(`list quizzes failed: ${error.message}`);
+  const rows = quizzes ?? [];
+  if (rows.length === 0) return [];
+
+  const ids = rows.map((q) => q.id);
+  const { data: maps, error: mErr } = await db
+    .from("quiz_atoms_map")
+    .select("quiz_id, position, quiz_atoms(stem, options, answer, concept_slug)")
+    .in("quiz_id", ids)
+    .order("position");
+  if (mErr) throw new Error(`list quiz questions failed: ${mErr.message}`);
+
+  const byQuiz = new Map<string, QuizQuestionView[]>();
+  for (const m of (maps ?? []) as unknown as Array<{
+    quiz_id: string;
+    position: number;
+    quiz_atoms: { stem: string; options: QuizQuestionView["options"]; answer: string | null; concept_slug: string } | null;
+  }>) {
+    if (!m.quiz_atoms) continue;
+    const list = byQuiz.get(m.quiz_id) ?? [];
+    list.push({
+      position: m.position,
+      stem: m.quiz_atoms.stem,
+      options: m.quiz_atoms.options,
+      answer: m.quiz_atoms.answer,
+      conceptSlug: m.quiz_atoms.concept_slug,
+    });
+    byQuiz.set(m.quiz_id, list);
+  }
+
+  return rows.map((q) => ({
+    id: q.id,
+    slug: q.slug,
+    title: q.title,
+    exam: q.exam,
+    subject: q.subject,
+    chapter: q.chapter,
+    status: q.status,
+    pushedAt: q.pushed_at,
+    questions: (byQuiz.get(q.id) ?? []).sort((a, b) => a.position - b.position),
+  }));
+}
