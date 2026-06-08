@@ -100,16 +100,16 @@ describe("resolveGuidesHref", () => {
 });
 
 describe("resolveNotesHref", () => {
-  it("returns /notes/nda-maths for the nda slug (only chapter notes today)", () => {
-    expect(resolveNotesHref("nda")).toBe("/notes/nda-maths");
+  it("returns the /notes/nda exam hub for the nda slug", () => {
+    expect(resolveNotesHref("nda")).toBe("/notes/nda");
   });
 
-  it("returns /notes/mht-cet-maths for mht-cet (notes subtree shipped 2026-05-30)", () => {
-    expect(resolveNotesHref("mht-cet")).toBe("/notes/mht-cet-maths");
+  it("returns the /notes/mht-cet exam hub for mht-cet", () => {
+    expect(resolveNotesHref("mht-cet")).toBe("/notes/mht-cet");
   });
 
-  it("returns /notes for jee-mains (no notes subtree yet — falls back to index)", () => {
-    expect(resolveNotesHref("jee-mains")).toBe("/notes");
+  it("returns the /notes/jee-mains hub for jee-mains (shows coming-soon until notes ship)", () => {
+    expect(resolveNotesHref("jee-mains")).toBe("/notes/jee-mains");
   });
 
   it("returns /notes for null exam", () => {

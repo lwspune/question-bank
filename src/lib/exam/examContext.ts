@@ -5,9 +5,10 @@
  * resolved at render time against the `exams` table by `loadActiveExam` so the
  * Bank tab can emit `/browse?examId=<uuid>` without hard-coding ids in TS.
  *
- * Exams that don't have a `/guide` or `/notes` subtree yet (e.g. MHT-CET today)
- * fall back to the `/guide` and `/notes` indexes, both of which already
- * redirect to a sensible default.
+ * Exams that don't have a `/guide` subtree yet fall back to the `/guide`
+ * index. Notes route to a per-exam hub (`/notes/<slug>`) that lists every
+ * notes subject for that exam (or an honest "coming soon" when none have
+ * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
 
 export type ExamSlug = "nda" | "mht-cet" | "jee-mains";
@@ -21,7 +22,7 @@ export type ExamEntry = {
   examName: string;
   /** `/guide/<slug>` subtree if shipped; null falls back to `/guide`. */
   guidesPath: string | null;
-  /** `/notes/<slug-subject>` default landing if shipped; null falls back to `/notes`. */
+  /** Per-exam notes hub `/notes/<slug>`; null falls back to the `/notes` index. */
   notesPath: string | null;
 };
 
@@ -31,21 +32,21 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     displayName: "NDA",
     examName: "NDA",
     guidesPath: "/guide/nda",
-    notesPath: "/notes/nda-maths",
+    notesPath: "/notes/nda", // exam hub: lists Maths + Physics + Biology notes
   },
   {
     slug: "mht-cet",
     displayName: "MHT-CET",
     examName: "MHT-CET",
     guidesPath: null,
-    notesPath: "/notes/mht-cet-maths",
+    notesPath: "/notes/mht-cet", // exam hub: MHT-CET Maths notes
   },
   {
     slug: "jee-mains",
     displayName: "JEE Mains",
     examName: "JEE Mains", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
-    notesPath: null, // no /notes subtree yet — falls back to the index
+    notesPath: "/notes/jee-mains", // exam hub: "coming soon" until JEE notes ship
   },
 ] as const;
 

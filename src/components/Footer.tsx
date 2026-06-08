@@ -83,32 +83,18 @@ export default function Footer() {
             NDA Current Affairs Guide
           </Link>
           <Link
-            href="/notes/nda-maths"
+            href="/notes/nda"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
           >
             <NotebookPen className="h-3 w-3" aria-hidden />
-            NDA Maths Notes
+            NDA Notes
           </Link>
           <Link
-            href="/notes/nda-physics"
+            href="/notes/mht-cet"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
           >
             <NotebookPen className="h-3 w-3" aria-hidden />
-            NDA Physics Notes
-          </Link>
-          <Link
-            href="/notes/nda-biology"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <NotebookPen className="h-3 w-3" aria-hidden />
-            NDA Biology Notes
-          </Link>
-          <Link
-            href="/notes/mht-cet-maths"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <NotebookPen className="h-3 w-3" aria-hidden />
-            MHT-CET Maths Notes
+            MHT-CET Notes
           </Link>
           <a
             href={`mailto:${REPORT_EMAIL}?subject=Question%20Bank%20feedback`}
