@@ -44,7 +44,7 @@ High-level shape:
 - `src/app/` — Next.js App Router pages: `/browse` (paper builder), `/guide` (10 NDA strategy guides), `/notes` (cross-exam index → `/notes/<examSlug>` per-exam hubs → 20 teaching-notes chapters), `/dashboard` (admin), `/upload`, `/signup`·`/login`·`/pricing`·`/account`, plus the `/api/*` route handlers.
 - `src/lib/` — server/pure helpers by domain: `supabase/`, `auth*`, `questions/`, `guide/`, `notes/`, `links/`, `export/` (Word/OMML), `entitlements/`, `billing/`, `reports/`+`notes-reports/`, `upload/`, `tags/`.
 - `src/components/` — `AppHeader`/nav, `math/` renderers (`KatexRenderer`·`RichText`·`BlockText`·`parseTableBlocks`), shadcn `ui/` primitives.
-- `supabase/migrations/` — `0001…0029` (append-only; 0029 = `subtopics.order_index` for /notes teaching order). `scripts/` — seeds, `notes-lint`, `notes-latex-audit`, `notes:order` sync, `jee/` ingestion. `tests/` — Vitest unit + DB-integration.
+- `supabase/migrations/` — `0001…0031` (append-only; 0029 = `subtopics.order_index` for /notes teaching order; 0030 = `quiz_atoms` Quiz-Factory pool; 0031 = `quizzes` + `quiz_atoms_map`). `scripts/` — seeds, `notes-lint`, `notes-latex-audit`, `notes:order` sync, `jee/` ingestion, `quiz/` (harvest /notes → atoms JSON → `quiz:sync` → DB; daily-quiz template + push to nda-tracker). `tests/` — Vitest unit + DB-integration.
 
 ## Commands
 
