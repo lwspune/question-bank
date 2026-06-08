@@ -183,7 +183,10 @@ export type VisualizationSlug =
   | "defint-area-region"
   | "defint-kings-reflection"
   | "defint-greatest-integer-area"
-  | "defint-absolute-value-fold";
+  | "defint-absolute-value-fold"
+  // NDA Maths — Differential Equations chapter
+  | "defeq-family-of-curves"
+  | "defeq-growth-decay";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
