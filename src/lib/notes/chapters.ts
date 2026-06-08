@@ -69,6 +69,11 @@ import {
   SETS_RELATIONS_SLUGS,
 } from "@/app/notes/nda-maths/sets-relations/_data";
 import {
+  DEFINITE_INTEGRATION_CHAPTER,
+  DEFINITE_INTEGRATION_NOTES,
+  DEFINITE_INTEGRATION_SLUGS,
+} from "@/app/notes/nda-maths/definite-integration/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -345,6 +350,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SETS_RELATIONS_CHAPTER,
     notes: SETS_RELATIONS_NOTES,
     slugs: SETS_RELATIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "definite-integration",
+    chipLabel: "Definite Integration notes",
+    chapter: DEFINITE_INTEGRATION_CHAPTER,
+    notes: DEFINITE_INTEGRATION_NOTES,
+    slugs: DEFINITE_INTEGRATION_SLUGS,
   },
   {
     examName: "NDA",
