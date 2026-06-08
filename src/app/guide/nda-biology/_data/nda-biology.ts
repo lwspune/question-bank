@@ -145,7 +145,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 27.4,
     pctHard: 2,
     focus:
-      "Circulatory and Lymphatic System (13 · pure recall, RBC/WBC/blood groups), Digestive System and Enzymes (7 · 14% HARD), Nutrition, Vitamins and Minerals (7 · vitamin↔deficiency table), Nervous System and Sense Organs (6), Endocrine System and Hormones (5), Respiratory System (5), Connective and Epithelial Tissues (4), Excretory and Reproductive Anatomy (3), Immune System (2).",
+      "Connective and Epithelial Tissues (8 · the building-block tissues), Nervous System and Sense Organs (8 · neurons, reflex arc, eye), Nutrition, Vitamins and Minerals (8 · vitamin↔deficiency table), Digestive System and Enzymes (7 · 14% HARD), Circulatory and Lymphatic System (6 · heart, vessels, clotting), Endocrine System and Hormones (5), Respiratory System (5), Excretory and Reproductive Anatomy (3), Immune System (2).",
   },
   {
     chapter: "Cell Biology",

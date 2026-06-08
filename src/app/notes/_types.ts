@@ -166,7 +166,14 @@ export type VisualizationSlug =
   | "pc-geometric-counting-diagram"
   // NDA Maths — Complex Numbers chapter
   | "cn-argand-plane"
-  | "cn-cube-roots-circle";
+  | "cn-cube-roots-circle"
+  // NDA Biology — Human Physiology chapter
+  | "hp-heart-chambers"
+  | "hp-eye-cross-section"
+  | "hp-nephron-schematic"
+  | "hp-reflex-arc"
+  | "hp-lung-volumes"
+  | "hp-alveolus-gas-exchange";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
