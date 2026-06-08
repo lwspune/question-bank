@@ -12,6 +12,8 @@ import {
   atomToRow,
   planSync,
   buildVerifyUpdate,
+  orderForVariety,
+  chunkFull,
   type HarvestCtx,
   type QuizAtom,
 } from "../scripts/quiz/atoms";
@@ -273,5 +275,21 @@ describe("buildVerifyUpdate", () => {
   it("rejects duplicate distractors and wrong counts", () => {
     expect(() => buildVerifyUpdate("k:3", "5", ["6", "6", "7"])).toThrow(/distinct/i);
     expect(() => buildVerifyUpdate("k:4", "5", ["6", "7"])).toThrow(/exactly 3/i);
+  });
+});
+
+describe("orderForVariety + chunkFull (quiz assembly)", () => {
+  const k = (x: { kind: string }) => x.kind;
+  it("interleaves kinds round-robin, preserving within-kind order", () => {
+    const items = [
+      { kind: "f", id: 1 }, { kind: "f", id: 2 }, { kind: "f", id: 3 },
+      { kind: "p", id: 4 }, { kind: "p", id: 5 },
+    ];
+    expect(orderForVariety(items, k).map((x) => x.id)).toEqual([1, 4, 2, 5, 3]);
+  });
+
+  it("chunkFull keeps only complete chunks", () => {
+    expect(chunkFull([1, 2, 3, 4, 5], 2)).toEqual([[1, 2], [3, 4]]);
+    expect(chunkFull([1, 2], 5)).toEqual([]);
   });
 });
