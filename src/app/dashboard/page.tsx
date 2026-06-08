@@ -7,6 +7,7 @@ import {
   FileSpreadsheet,
   Flag,
   Gem,
+  ListChecks,
   Search,
   Upload,
   Users,
@@ -231,6 +232,14 @@ function QuickActions({
           icon={<Gem className="h-5 w-5" aria-hidden />}
           title="Access"
           description="Grant or revoke free premium access for students by email."
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/quizzes"
+          icon={<ListChecks className="h-5 w-5" aria-hidden />}
+          title="Daily Quizzes"
+          description="View quizzes assembled from the /notes question pool and their status."
         />
       )}
     </div>
