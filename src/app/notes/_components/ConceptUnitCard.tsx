@@ -108,6 +108,10 @@ import HpNephronSchematic from "./visualizations/HpNephronSchematic";
 import HpReflexArc from "./visualizations/HpReflexArc";
 import HpLungVolumes from "./visualizations/HpLungVolumes";
 import HpAlveolusGasExchange from "./visualizations/HpAlveolusGasExchange";
+import SetsVennTwo from "./visualizations/SetsVennTwo";
+import SetsVennThree from "./visualizations/SetsVennThree";
+import SetsRelationDigraph from "./visualizations/SetsRelationDigraph";
+import SetsCartesianGrid from "./visualizations/SetsCartesianGrid";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -302,6 +306,14 @@ function renderVisualization(slug: VisualizationSlug) {
       return <HpLungVolumes />;
     case "hp-alveolus-gas-exchange":
       return <HpAlveolusGasExchange />;
+    case "sets-venn-two":
+      return <SetsVennTwo />;
+    case "sets-venn-three":
+      return <SetsVennThree />;
+    case "sets-relation-digraph":
+      return <SetsRelationDigraph />;
+    case "sets-cartesian-grid":
+      return <SetsCartesianGrid />;
   }
 }
 

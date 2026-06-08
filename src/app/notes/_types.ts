@@ -173,7 +173,12 @@ export type VisualizationSlug =
   | "hp-nephron-schematic"
   | "hp-reflex-arc"
   | "hp-lung-volumes"
-  | "hp-alveolus-gas-exchange";
+  | "hp-alveolus-gas-exchange"
+  // NDA Maths — Sets & Relations chapter
+  | "sets-venn-two"
+  | "sets-venn-three"
+  | "sets-relation-digraph"
+  | "sets-cartesian-grid";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
