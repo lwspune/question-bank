@@ -52,17 +52,18 @@ async function main() {
   const correctByKey = new Map((rows ?? []).map((r) => [r.atom_key, r.correct as string]));
 
   // Build + validate every update before writing anything (fail fast).
-  const updates: { key: string; options: unknown; answer: string; theme?: string }[] = [];
+  const updates: { key: string; options: unknown; answer: string; theme?: string; stem?: string; correct?: string }[] = [];
   const problems: string[] = [];
   for (const e of entries) {
-    const correct = correctByKey.get(e.atomKey);
+    // `correct` comes from the entry (trap atoms override it) or the DB.
+    const correct = e.correct ?? correctByKey.get(e.atomKey);
     if (correct === undefined) {
       problems.push(`${e.atomKey}: not found in quiz_atoms (harvest+sync first?)`);
       continue;
     }
     try {
       const { options, answer } = buildVerifyUpdate(e.atomKey, correct, e.distractors);
-      updates.push({ key: e.atomKey, options, answer, theme: e.theme });
+      updates.push({ key: e.atomKey, options, answer, theme: e.theme, stem: e.stem, correct: e.correct });
     } catch (err) {
       problems.push(err instanceof Error ? err.message : String(err));
     }
@@ -77,6 +78,8 @@ async function main() {
   for (const u of updates) {
     const patch: Record<string, unknown> = { options: u.options, answer: u.answer, status: "verified", verified_at: now };
     if (u.theme) patch.theme = u.theme;
+    if (u.stem) patch.stem = u.stem;
+    if (u.correct !== undefined) patch.correct = u.correct;
     const { error: upErr } = await db.from("quiz_atoms").update(patch).eq("atom_key", u.key);
     if (upErr) throw new Error(`update ${u.key} failed: ${upErr.message}`);
   }
