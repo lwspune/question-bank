@@ -102,6 +102,12 @@ import LinesDistancePointLine from "./visualizations/LinesDistancePointLine";
 import PcGeometricCounting from "./visualizations/PcGeometricCounting";
 import CnArgandPlane from "./visualizations/CnArgandPlane";
 import CnCubeRootsCircle from "./visualizations/CnCubeRootsCircle";
+import HpHeartChambers from "./visualizations/HpHeartChambers";
+import HpEyeCrossSection from "./visualizations/HpEyeCrossSection";
+import HpNephronSchematic from "./visualizations/HpNephronSchematic";
+import HpReflexArc from "./visualizations/HpReflexArc";
+import HpLungVolumes from "./visualizations/HpLungVolumes";
+import HpAlveolusGasExchange from "./visualizations/HpAlveolusGasExchange";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -284,6 +290,18 @@ function renderVisualization(slug: VisualizationSlug) {
       return <CnArgandPlane />;
     case "cn-cube-roots-circle":
       return <CnCubeRootsCircle />;
+    case "hp-heart-chambers":
+      return <HpHeartChambers />;
+    case "hp-eye-cross-section":
+      return <HpEyeCrossSection />;
+    case "hp-nephron-schematic":
+      return <HpNephronSchematic />;
+    case "hp-reflex-arc":
+      return <HpReflexArc />;
+    case "hp-lung-volumes":
+      return <HpLungVolumes />;
+    case "hp-alveolus-gas-exchange":
+      return <HpAlveolusGasExchange />;
   }
 }
 

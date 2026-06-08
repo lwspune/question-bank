@@ -49,7 +49,7 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "human-physiology",
     name: "Human Physiology",
     summary:
-      "52 q · 2% HARD — the largest chapter. Circulatory + Lymphatic (13 q · RBC/WBC/blood groups), Digestive + Enzymes (7 · 14% HARD), Nutrition + Vitamins + Minerals (7 · vitamin↔deficiency table), plus nervous/endocrine/respiratory/tissues. Pure named-fact recall — drill /reference-tables → 'Vitamins' and 'Hormones' clusters side-by-side.",
+      "52 q · 2% HARD — the largest chapter. Body Tissues (8 q · the building blocks), Nervous + Sense Organs (8 · neurons/reflex arc/eye), Nutrition + Vitamins + Minerals (8 · vitamin↔deficiency table), Digestive + Enzymes (7 · 14% HARD), Circulatory + Lymphatic (6 · heart/vessels/clotting), plus endocrine/respiratory. Pure named-fact recall — drill /reference-tables → 'Vitamins' and 'Hormones' clusters side-by-side.",
     chapter: "Human Physiology",
     subtopics: [
       "Circulatory and Lymphatic System",

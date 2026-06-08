@@ -84,7 +84,7 @@ export const RECALL_STRAND: StrategyStrand = {
     "Pure fact recall — vitamin↔disease, organ↔function, organelle↔role, kingdom↔example, scientist↔discovery, pathogen↔disease. 132 q at an average of 1.5% HARD. The highest marks-per-hour strand in the bank, and the strand where Biology most rewards methodical prep. 4 of these 5 chapters carry ZERO HARD across 10 years (only Cell Biology has 1 HARD across 44 q). Drill the /reference-tables page side-by-side with this strand — it covers the highest-leverage named-fact memorisation surface (50+ disease↔pathogen + vitamin↔deficiency + hormone↔gland + scientist↔discovery pairs).",
   approach: [
     "Read /guide/nda-biology/reference-tables end-to-end first. That's the 50+ named-fact pairs the recall strand keeps re-testing. Active-recall it in 4 passes (cover the right column, read the name, write the pair).",
-    "Human Physiology is the bank's largest chapter (52 q). Almost a quarter of it is the Circulatory + Lymphatic subtopic (13 q) — blood groups, RBC vs WBC counts, lymph vs blood. The other big chunks: Digestive + Enzymes (7 q · pepsin/trypsin/amylase), Nutrition + Vitamins (7 q · vitamin↔deficiency table). Drill these subtopics separately.",
+    "Human Physiology is the bank's largest chapter (52 q). Its weight is spread evenly across body systems — the three biggest subtopics are Body Tissues (8 q · the four tissue types), Nervous + Sense Organs (8 q · neurons/reflex arc/eye), and Nutrition + Vitamins (8 q · vitamin↔deficiency table), then Digestive + Enzymes (7 q · pepsin/trypsin/amylase). Drill these subtopics separately.",
     "Microbiology and Disease (21 q · 0% HARD) is the chapter most under-invested in. Disease↔pathogen pairs appear year after year (elephantiasis-Wuchereria, sleeping sickness-Trypanosoma, smallpox-virus, TB-Mycobacterium, cholera-Vibrio, malaria-Plasmodium). Memorise the table cold — it's 13 of the chapter's 21 q.",
   ],
   chapters: [
@@ -106,7 +106,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~10 marks",
       studyHours: 5,
       summary:
-        "52 q · 1 HARD across 10 yrs. The largest chapter. Circulatory + Digestive + Nutrition cover 27 of the 52 — drill these three subtopics first. Vitamin↔deficiency cluster on /reference-tables compounds the value.",
+        "52 q · 1 HARD across 10 yrs. The largest chapter. Tissues + Nervous + Nutrition cover 24 of the 52 — drill these three subtopics first. Vitamin↔deficiency cluster on /reference-tables compounds the value.",
     },
     {
       chapter: "Cell Biology",

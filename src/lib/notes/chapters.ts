@@ -59,6 +59,11 @@ import {
   INDEFINITE_INTEGRATION_SLUGS,
 } from "@/app/notes/mht-cet-maths/indefinite-integration/_data";
 import {
+  HUMAN_PHYSIOLOGY_CHAPTER,
+  HUMAN_PHYSIOLOGY_NOTES,
+  HUMAN_PHYSIOLOGY_SLUGS,
+} from "@/app/notes/nda-biology/human-physiology/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -357,6 +362,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: INDEFINITE_INTEGRATION_CHAPTER,
     notes: INDEFINITE_INTEGRATION_NOTES,
     slugs: INDEFINITE_INTEGRATION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "human-physiology",
+    chipLabel: "Human Physiology notes",
+    chapter: HUMAN_PHYSIOLOGY_CHAPTER,
+    notes: HUMAN_PHYSIOLOGY_NOTES,
+    slugs: HUMAN_PHYSIOLOGY_SLUGS,
   },
 ];
 
