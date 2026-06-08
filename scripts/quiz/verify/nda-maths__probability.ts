@@ -11,7 +11,13 @@
  *
  * 40 atoms ≈ enough for ~2–3 daily quizzes once assembled.
  */
-export type VerifiedEntry = { atomKey: string; distractors: string[] };
+export type VerifiedEntry = {
+  atomKey: string;
+  distractors: string[];
+  /** Optional theme override (default stays the harvested one, usually
+   *  'computation'). Set to 'property' for identity/rule questions, etc. */
+  theme?: "formula" | "property" | "computation" | "fact" | "trap";
+};
 
 const f = (s: string) => `\\(${s}\\)`;
 

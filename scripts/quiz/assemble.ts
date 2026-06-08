@@ -4,14 +4,17 @@
  * as a DRAFT. Thin wrapper around assembleNextQuiz (src/lib/quiz/assemble.ts) —
  * same core the dashboard "Assemble" button uses.
  *
- * Run:  npm run quiz:assemble nda-maths probability          # all full quizzes
- *       npm run quiz:assemble nda-maths probability 2 15     # max 2 quizzes of 15
+ * Run:  npm run quiz:assemble nda-maths probability                 # mixed, all full quizzes
+ *       npm run quiz:assemble nda-maths probability 2 15            # max 2 quizzes of 15
+ *       npm run quiz:assemble nda-maths probability -- --theme=formula   # themed
  */
 import "dotenv/config";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { assembleNextQuiz } from "../../src/lib/quiz/assemble";
+import { assembleNextQuiz, type QuizTheme } from "../../src/lib/quiz/assemble";
+
+const THEMES: QuizTheme[] = ["formula", "property", "computation", "fact", "trap"];
 
 function loadEnvLocal() {
   const local = path.join(process.cwd(), ".env.local");
@@ -31,15 +34,18 @@ async function main() {
   const push = importUrl && secret ? { url: importUrl, secret } : null;
   if (!push) console.warn("  (no NDA_TRACKER_IMPORT_URL/QUIZ_IMPORT_SECRET — recording only, not pushing)");
 
-  const route = process.argv[2] ?? "nda-maths";
-  const chapter = process.argv[3] ?? "probability";
-  const maxQuizzes = process.argv[4] ? parseInt(process.argv[4], 10) : Infinity;
-  const size = process.argv[5] ? parseInt(process.argv[5], 10) : 15;
+  const pos = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+  const themeArg = process.argv.find((a) => a.startsWith("--theme="))?.split("=")[1];
+  const theme = THEMES.includes(themeArg as QuizTheme) ? (themeArg as QuizTheme) : undefined;
+  const route = pos[0] ?? "nda-maths";
+  const chapter = pos[1] ?? "probability";
+  const maxQuizzes = pos[2] ? parseInt(pos[2], 10) : Infinity;
+  const size = pos[3] ? parseInt(pos[3], 10) : 15;
   const db = createClient(url, serviceRole, { auth: { persistSession: false } });
 
   let made = 0;
   for (let i = 0; i < maxQuizzes; i++) {
-    const r = await assembleNextQuiz(db, { route, chapter, size, push });
+    const r = await assembleNextQuiz(db, { route, chapter, size, theme, push });
     if (!r.ok) {
       if (made === 0) console.log(`  ${r.error}`);
       break;

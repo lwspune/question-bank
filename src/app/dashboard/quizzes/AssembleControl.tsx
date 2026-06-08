@@ -8,8 +8,18 @@ import { assembleQuizAction } from "./actions";
 
 export type ChapterOption = { value: string; label: string }; // value = "route/chapter"
 
+const THEME_OPTIONS = [
+  { value: "", label: "Mixed" },
+  { value: "formula", label: "Formulas" },
+  { value: "property", label: "Properties" },
+  { value: "computation", label: "Practice" },
+  { value: "fact", label: "Key Facts" },
+  { value: "trap", label: "Common Traps" },
+];
+
 export default function AssembleControl({ chapters }: { chapters: ChapterOption[] }) {
   const [sel, setSel] = useState(chapters[0]?.value ?? "");
+  const [theme, setTheme] = useState("");
   const [pending, start] = useTransition();
 
   if (chapters.length === 0) {
@@ -25,7 +35,7 @@ export default function AssembleControl({ chapters }: { chapters: ChapterOption[
   const run = () => {
     const [route, chapter] = sel.split("/");
     start(async () => {
-      const r = await assembleQuizAction(route, chapter);
+      const r = await assembleQuizAction(route, chapter, theme || undefined);
       if (r.ok) {
         const msg = `Built “${r.title}” (${r.questionCount} Q) — ${r.pushDetail}. ${r.remaining} ready left.`;
         if (r.pushed) toast.success(msg);
@@ -52,12 +62,25 @@ export default function AssembleControl({ chapters }: { chapters: ChapterOption[
           </option>
         ))}
       </select>
+      <select
+        value={theme}
+        onChange={(e) => setTheme(e.target.value)}
+        disabled={pending}
+        className="h-9 rounded-md border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+        aria-label="Quiz theme"
+      >
+        {THEME_OPTIONS.map((t) => (
+          <option key={t.value} value={t.value}>
+            {t.label}
+          </option>
+        ))}
+      </select>
       <Button variant="brand" size="sm" onClick={run} disabled={pending || !sel}>
         {pending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Wand2 className="h-4 w-4" aria-hidden />}
         Assemble
       </Button>
       <span className="text-xs text-muted-foreground">
-        Builds 15 unused questions → records + pushes a draft.
+        15 unused questions of the chosen theme → records + pushes a draft.
       </span>
     </div>
   );
