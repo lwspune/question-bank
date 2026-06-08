@@ -13,7 +13,7 @@ import {
   planSync,
   buildVerifyUpdate,
   orderForVariety,
-  chunkFull,
+  balancedSizes,
   type HarvestCtx,
   type QuizAtom,
 } from "../src/lib/quiz/atoms";
@@ -301,7 +301,7 @@ describe("buildVerifyUpdate", () => {
   });
 });
 
-describe("orderForVariety + chunkFull (quiz assembly)", () => {
+describe("orderForVariety (quiz assembly)", () => {
   const k = (x: { kind: string }) => x.kind;
   it("interleaves kinds round-robin, preserving within-kind order", () => {
     const items = [
@@ -310,9 +310,39 @@ describe("orderForVariety + chunkFull (quiz assembly)", () => {
     ];
     expect(orderForVariety(items, k).map((x) => x.id)).toEqual([1, 4, 2, 5, 3]);
   });
+});
 
-  it("chunkFull keeps only complete chunks", () => {
-    expect(chunkFull([1, 2, 3, 4, 5], 2)).toEqual([[1, 2], [3, 4]]);
-    expect(chunkFull([1, 2], 5)).toEqual([]);
+describe("balancedSizes", () => {
+  it("returns [] below the minimum quiz size", () => {
+    expect(balancedSizes(11)).toEqual([]);
+    expect(balancedSizes(0)).toEqual([]);
+  });
+
+  it("uses the whole pool when it fits one quiz (12..18)", () => {
+    expect(balancedSizes(12)).toEqual([12]);
+    expect(balancedSizes(16)).toEqual([16]);
+    expect(balancedSizes(18)).toEqual([18]);
+  });
+
+  it("splits larger pools into near-equal chunks that consume everything", () => {
+    expect(balancedSizes(28)).toEqual([14, 14]);
+    expect(balancedSizes(65)).toEqual([17, 16, 16, 16]); // sum 65
+    expect(balancedSizes(24)).toEqual([12, 12]);
+  });
+
+  it("handles the dead zone (max < n < 2·min) with one full quiz + carry", () => {
+    expect(balancedSizes(20)).toEqual([18]); // 2 carry forward
+    expect(balancedSizes(23)).toEqual([18]); // 5 carry forward
+  });
+
+  it("keeps every chunk within [12,18] and never over-allocates", () => {
+    for (let n = 12; n <= 200; n++) {
+      const sizes = balancedSizes(n);
+      expect(sizes.reduce((a, b) => a + b, 0)).toBeLessThanOrEqual(n);
+      for (const s of sizes) {
+        expect(s).toBeGreaterThanOrEqual(12);
+        expect(s).toBeLessThanOrEqual(18);
+      }
+    }
   });
 });
