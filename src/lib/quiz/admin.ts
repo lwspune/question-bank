@@ -35,6 +35,30 @@ export type AssembledQuiz = {
   questions: QuizQuestionView[];
 };
 
+/** Distinct (route, chapter) pairs that have at least one READY atom — drives
+ *  the dashboard's assemble dropdown. NOTE: reads ready rows then dedups; fine
+ *  while the ready-atom count stays < 1000, switch to an RPC aggregate if it ever
+ *  exceeds that (PostgREST row cap). */
+export async function getPoolChapters(): Promise<{ subjectRoute: string; chapterSlug: string }[]> {
+  const db = createSupabaseAdminClient();
+  const { data, error } = await db
+    .from("quiz_atoms")
+    .select("subject_route, chapter_slug")
+    .in("status", ["auto", "verified"])
+    .limit(1000);
+  if (error) throw new Error(`pool chapters failed: ${error.message}`);
+  const seen = new Set<string>();
+  const out: { subjectRoute: string; chapterSlug: string }[] = [];
+  for (const r of data ?? []) {
+    const key = `${r.subject_route}/${r.chapter_slug}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      out.push({ subjectRoute: r.subject_route as string, chapterSlug: r.chapter_slug as string });
+    }
+  }
+  return out.sort((a, b) => `${a.subjectRoute}/${a.chapterSlug}`.localeCompare(`${b.subjectRoute}/${b.chapterSlug}`));
+}
+
 export async function getQuizPoolStats(): Promise<QuizPoolStats> {
   const db = createSupabaseAdminClient();
   const countFor = async (status?: string) => {

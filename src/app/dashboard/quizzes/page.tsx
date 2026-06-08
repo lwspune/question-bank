@@ -4,9 +4,17 @@ import { getSessionMember } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import KatexRenderer from "@/components/math/KatexRenderer";
-import { getQuizPoolStats, listAssembledQuizzes, type AssembledQuiz } from "@/lib/quiz/admin";
+import { getQuizPoolStats, getPoolChapters, listAssembledQuizzes, type AssembledQuiz } from "@/lib/quiz/admin";
+import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import AssembleControl, { type ChapterOption } from "./AssembleControl";
 
 export const dynamic = "force-dynamic";
+
+function chapterLabel(route: string, chapter: string): string {
+  const reg = NOTES_CHAPTERS.find((c) => c.subjectRoute === route && c.chapterSlug === chapter);
+  if (reg) return `${reg.subjectDisplay} — ${reg.chapter.chapterName}`;
+  return `${route} / ${chapter}`;
+}
 
 const STATUS_STYLES: Record<string, string> = {
   draft: "bg-muted text-muted-foreground",
@@ -21,7 +29,15 @@ export default async function QuizzesPage() {
   if (!member) redirect("/login");
   if (member.role !== "ADMIN") redirect("/browse");
 
-  const [stats, quizzes] = await Promise.all([getQuizPoolStats(), listAssembledQuizzes()]);
+  const [stats, quizzes, poolChapters] = await Promise.all([
+    getQuizPoolStats(),
+    listAssembledQuizzes(),
+    getPoolChapters(),
+  ]);
+  const chapterOptions: ChapterOption[] = poolChapters.map((c) => ({
+    value: `${c.subjectRoute}/${c.chapterSlug}`,
+    label: chapterLabel(c.subjectRoute, c.chapterSlug),
+  }));
 
   return (
     <>
@@ -42,6 +58,8 @@ export default async function QuizzesPage() {
           <StatCard kind="numeric" value={stats.needsReview} label="Need review" />
           <StatCard kind="numeric" value={stats.total} label="Total in pool" />
         </div>
+
+        <AssembleControl chapters={chapterOptions} />
 
         {quizzes.length === 0 ? (
           <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
