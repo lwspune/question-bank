@@ -178,7 +178,12 @@ export type VisualizationSlug =
   | "sets-venn-two"
   | "sets-venn-three"
   | "sets-relation-digraph"
-  | "sets-cartesian-grid";
+  | "sets-cartesian-grid"
+  // NDA Maths — Definite Integration chapter
+  | "defint-area-region"
+  | "defint-kings-reflection"
+  | "defint-greatest-integer-area"
+  | "defint-absolute-value-fold";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
