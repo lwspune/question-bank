@@ -52,7 +52,7 @@ async function main() {
   const correctByKey = new Map((rows ?? []).map((r) => [r.atom_key, r.correct as string]));
 
   // Build + validate every update before writing anything (fail fast).
-  const updates: { key: string; options: unknown; answer: string }[] = [];
+  const updates: { key: string; options: unknown; answer: string; theme?: string }[] = [];
   const problems: string[] = [];
   for (const e of entries) {
     const correct = correctByKey.get(e.atomKey);
@@ -62,7 +62,7 @@ async function main() {
     }
     try {
       const { options, answer } = buildVerifyUpdate(e.atomKey, correct, e.distractors);
-      updates.push({ key: e.atomKey, options, answer });
+      updates.push({ key: e.atomKey, options, answer, theme: e.theme });
     } catch (err) {
       problems.push(err instanceof Error ? err.message : String(err));
     }
@@ -75,10 +75,9 @@ async function main() {
 
   const now = new Date().toISOString();
   for (const u of updates) {
-    const { error: upErr } = await db
-      .from("quiz_atoms")
-      .update({ options: u.options, answer: u.answer, status: "verified", verified_at: now })
-      .eq("atom_key", u.key);
+    const patch: Record<string, unknown> = { options: u.options, answer: u.answer, status: "verified", verified_at: now };
+    if (u.theme) patch.theme = u.theme;
+    const { error: upErr } = await db.from("quiz_atoms").update(patch).eq("atom_key", u.key);
     if (upErr) throw new Error(`update ${u.key} failed: ${upErr.message}`);
   }
   console.log(`✓ verified ${updates.length} atoms (status='verified').`);

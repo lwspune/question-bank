@@ -24,12 +24,23 @@ const SUBJECT_DISPLAY: Record<string, string> = {
 const titleCase = (slug: string) =>
   slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
+export type QuizTheme = "formula" | "property" | "computation" | "fact" | "trap";
+
+const THEME_LABEL: Record<QuizTheme, string> = {
+  formula: "Formulas",
+  property: "Properties",
+  computation: "Practice",
+  fact: "Key Facts",
+  trap: "Common Traps",
+};
+
 export type ReadyAtom = {
   id: string;
   exam: string;
   concept_slug: string;
   subtopic_slug: string;
   source_kind: string;
+  theme: string | null;
   stem: string;
   correct: string;
   options: { A: string; B: string; C: string; D: string };
@@ -50,18 +61,24 @@ export type AssembleResult =
     }
   | { ok: false; error: string };
 
-export async function readReadyAtoms(db: SupabaseClient, route: string, chapter: string): Promise<ReadyAtom[]> {
+export async function readReadyAtoms(
+  db: SupabaseClient,
+  route: string,
+  chapter: string,
+  theme?: QuizTheme
+): Promise<ReadyAtom[]> {
   const out: ReadyAtom[] = [];
   const PAGE = 1000;
   for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
+    let query = db
       .from("quiz_atoms")
-      .select("id, exam, concept_slug, subtopic_slug, source_kind, stem, correct, options, answer")
+      .select("id, exam, concept_slug, subtopic_slug, source_kind, theme, stem, correct, options, answer")
       .eq("subject_route", route)
       .eq("chapter_slug", chapter)
       .in("status", ["auto", "verified"])
-      .not("options", "is", null)
-      .range(from, from + PAGE - 1);
+      .not("options", "is", null);
+    if (theme) query = query.eq("theme", theme);
+    const { data, error } = await query.range(from, from + PAGE - 1);
     if (error) throw new Error(`read ready atoms failed: ${error.message}`);
     out.push(...((data ?? []) as ReadyAtom[]));
     if (!data || data.length < PAGE) break;
@@ -83,32 +100,36 @@ export async function readUsedAtomIds(db: SupabaseClient): Promise<Set<string>> 
 
 export async function assembleNextQuiz(
   db: SupabaseClient,
-  opts: { route: string; chapter: string; size?: number; push?: { url: string; secret: string } | null }
+  opts: { route: string; chapter: string; size?: number; theme?: QuizTheme; push?: { url: string; secret: string } | null }
 ): Promise<AssembleResult> {
   const size = opts.size ?? 15;
   const [ready, used] = await Promise.all([
-    readReadyAtoms(db, opts.route, opts.chapter),
+    readReadyAtoms(db, opts.route, opts.chapter, opts.theme),
     readUsedAtomIds(db),
   ]);
   const fresh = ready.filter((a) => !used.has(a.id));
   const chunks = chunkFull(orderForVariety(fresh, (a) => a.source_kind), size);
   if (chunks.length === 0) {
+    const themeNote = opts.theme ? ` ${THEME_LABEL[opts.theme].toLowerCase()}` : "";
     return {
       ok: false,
-      error: `Only ${fresh.length} ready, unused question(s) in ${opts.route}/${opts.chapter} — need ${size} for a full quiz. Approve more first.`,
+      error: `Only ${fresh.length} ready, unused${themeNote} question(s) in ${opts.route}/${opts.chapter} — need ${size} for a full quiz. Approve more first.`,
     };
   }
   const atoms = chunks[0];
 
+  // Themed quizzes number/slug per (chapter, theme); mixed keeps the -daily- slug.
+  const slugBase = opts.theme ? `${opts.route}-${opts.chapter}-${opts.theme}` : `${opts.route}-${opts.chapter}-daily`;
   const { count: prior } = await db
     .from("quizzes")
     .select("id", { count: "exact", head: true })
-    .like("slug", `${opts.route}-${opts.chapter}-daily-%`);
+    .like("slug", `${slugBase}-%`);
   const n = (prior ?? 0) + 1;
-  const slug = `${opts.route}-${opts.chapter}-daily-${n}`;
+  const slug = `${slugBase}-${n}`;
   const id = slugToUuid(slug);
   const subject = SUBJECT_DISPLAY[opts.route] ?? titleCase(opts.route);
   const chapterDisplay = titleCase(opts.chapter);
+  const themeLabel = opts.theme ? THEME_LABEL[opts.theme] : "Daily";
 
   const specs: QuestionSpec[] = atoms.map((a) =>
     fromAtom({
@@ -124,7 +145,7 @@ export async function assembleNextQuiz(
     slug,
     exam: atoms[0].exam,
     subject,
-    title: `NDA ${chapterDisplay} — Daily ${n}`,
+    title: `NDA ${chapterDisplay} — ${themeLabel} ${n}`,
     chapter: chapterDisplay,
     questions: specs,
   });

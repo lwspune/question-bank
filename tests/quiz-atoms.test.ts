@@ -183,13 +183,36 @@ describe("harvestConcept", () => {
     expect(atoms[0].trapHints[0]).toContain("exclusive and independent");
   });
 
-  it("maps an atom to its snake_case DB row", () => {
+  it("maps an atom to its snake_case DB row (incl. theme)", () => {
     const atom = harvestFormulaConcept(CTX, "X", "a=b", ["c=d", "e=f", "g=h"]);
     const row = atomToRow(atom);
     expect(row.atom_key).toBe(atom.atomId);
     expect(row.source_kind).toBe("formula");
     expect(row.subject_route).toBe("nda-maths");
     expect(row.source_fingerprint).toBe(atom.sourceFingerprint);
+    expect(row.theme).toBe("formula");
+  });
+
+  it("defaults theme from source kind", () => {
+    expect(harvestFormulaConcept(CTX, "X", "a=b", ["c", "d", "e"]).theme).toBe("formula");
+    const refAtoms = harvestReferenceTable(CTX, {
+      columns: ["A", "B"],
+      rows: [{ cells: ["1", "x"] }, { cells: ["2", "y"] }],
+    });
+    expect(refAtoms[0].theme).toBe("fact");
+    const concept: ConceptUnit = {
+      kind: "reference",
+      slug: "c",
+      name: "C",
+      intuition: "i",
+      definition: "d",
+      table: { columns: ["A", "B"], rows: [{ cells: ["1", "x"] }] },
+      practiceSet: [{ prompt: "p?", answer: "1" }],
+      traps: [{ title: "t", body: "b" }],
+    };
+    const atoms = harvestConcept(CTX, concept, []);
+    expect(atoms.find((a) => a.sourceKind === "practiceSet")!.theme).toBe("computation");
+    expect(atoms.find((a) => a.sourceKind === "trap")!.theme).toBe("trap");
   });
 
   it("is idempotent — same concept harvests to identical atoms", () => {
