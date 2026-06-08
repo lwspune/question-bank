@@ -17,6 +17,11 @@ export type VerifiedEntry = {
   /** Optional theme override (default stays the harvested one, usually
    *  'computation'). Set to 'property' for identity/rule questions, etc. */
   theme?: "formula" | "property" | "computation" | "fact" | "trap";
+  /** Optional stem/correct override — needed for `trap` atoms, whose harvested
+   *  stem is a placeholder ("Spot the common mistake — …") and whose `correct`
+   *  is empty. Supply the full authored question for those. */
+  stem?: string;
+  correct?: string;
 };
 
 const f = (s: string) => `\\(${s}\\)`;
