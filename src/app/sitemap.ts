@@ -16,6 +16,7 @@ import { PLAYBOOK_SLUGS as HISTORY_PLAYBOOK_SLUGS } from "@/app/guide/nda-histor
 import { ROUTES as POLITY_ROUTES } from "@/app/guide/nda-polity/_data/nda-polity";
 import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -166,10 +167,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Notes routes derive from NOTES_CHAPTERS. Adding a chapter to that
-  // registry automatically adds: the subject-route landing (once per
-  // distinct subjectRoute), the chapter landing, and one entry per slug.
+  // registry automatically adds: the cross-exam index, each per-exam hub,
+  // the subject-route landing (once per distinct subjectRoute), the chapter
+  // landing, and one entry per slug.
+  const notesEntries: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/notes`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+  ];
+  for (const g of getNotesExamGroups()) {
+    notesEntries.push({
+      url: `${SITE_URL}/notes/${g.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+  }
   const subjectRoutesSeen = new Set<string>();
-  const notesEntries: MetadataRoute.Sitemap = [];
   for (const c of NOTES_CHAPTERS) {
     if (!subjectRoutesSeen.has(c.subjectRoute)) {
       subjectRoutesSeen.add(c.subjectRoute);
