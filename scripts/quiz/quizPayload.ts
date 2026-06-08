@@ -58,6 +58,12 @@ export type DraftQuiz = {
   subject: string;
   questions: QuizQuestion[];
   marking?: { correct: number; wrong: number };
+  /** Quiz-level classification carried to nda-tracker for filtering (exam /
+   *  chapter / theme). Optional so hand-authored quizzes can omit them; the
+   *  import payload passes them through via the spread in buildImportPayload. */
+  exam?: string;
+  chapter?: string;
+  theme?: string;
 };
 
 export type ImportPayload = DraftQuiz & { status: "draft"; questions: QuizQuestion[] };

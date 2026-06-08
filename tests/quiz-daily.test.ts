@@ -42,6 +42,17 @@ describe("defineDailyQuiz", () => {
     expect(quiz.questions.map((q) => q.q)).toEqual([1, 2]);
   });
 
+  it("carries quiz-level exam/chapter/theme for nda-tracker filtering", () => {
+    const quiz = defineDailyQuiz({ ...SPEC, theme: "formula" });
+    expect(quiz.exam).toBe("NDA");
+    expect(quiz.chapter).toBe("Probability");
+    expect(quiz.theme).toBe("formula");
+    // default theme is "mixed" when unset, and it survives buildImportPayload
+    expect(defineDailyQuiz(SPEC).theme).toBe("mixed");
+    const out = buildImportPayload(defineDailyQuiz({ ...SPEC, theme: "trap" }));
+    expect(out).toMatchObject({ exam: "NDA", chapter: "Probability", theme: "trap" });
+  });
+
   it("honors the explicit options form unchanged", () => {
     const quiz = defineDailyQuiz(SPEC);
     expect(quiz.questions[1].optionA).toBe("1-P(E)");
