@@ -97,6 +97,13 @@ export default function Footer() {
             NDA Physics Notes
           </Link>
           <Link
+            href="/notes/nda-biology"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <NotebookPen className="h-3 w-3" aria-hidden />
+            NDA Biology Notes
+          </Link>
+          <Link
             href="/notes/mht-cet-maths"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
           >
