@@ -346,21 +346,19 @@ function CartToggle({
   disabled: boolean;
   onClick: () => void;
 }) {
+  const label = inCart ? "Remove from paper" : disabled ? "Paper is full" : "Add to paper";
   return (
     <button
       type="button"
       onClick={onClick}
       disabled={disabled}
       aria-pressed={inCart}
-      title={
-        inCart
-          ? "Remove from paper"
-          : disabled
-          ? "Paper is full"
-          : "Add to paper"
-      }
+      aria-label={label}
+      title={label}
       className={cn(
-        "-mt-0.5 inline-flex h-10 min-w-[44px] shrink-0 select-none items-center justify-center gap-1.5 rounded-md border px-3 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed sm:h-9",
+        // Icon-only on phones (label hidden) so the breadcrumb keeps its width
+        // and the card reads content-first; "+ Add" / "✓ Added" returns from sm: up.
+        "-mt-0.5 inline-flex h-10 min-w-[44px] shrink-0 select-none items-center justify-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:cursor-not-allowed sm:h-9 sm:px-3",
         inCart
           ? "border-primary/40 bg-primary/10 text-primary hover:bg-primary/15"
           : disabled
@@ -371,12 +369,12 @@ function CartToggle({
       {inCart ? (
         <>
           <Check className="h-4 w-4" aria-hidden />
-          <span>Added</span>
+          <span className="hidden sm:inline">Added</span>
         </>
       ) : (
         <>
           <Plus className="h-4 w-4" aria-hidden />
-          <span>Add</span>
+          <span className="hidden sm:inline">Add</span>
         </>
       )}
     </button>
