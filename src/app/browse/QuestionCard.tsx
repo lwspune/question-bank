@@ -119,17 +119,21 @@ export default function QuestionCard({
           className="flex min-w-0 flex-1 items-start gap-2 rounded text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <div className="min-w-0 flex-1">
-            <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-              <span className="font-mono text-muted-foreground/80 sm:hidden">
+            {/* Single non-wrapping line: the breadcrumb truncates (min-w-0 makes
+                the truncate actually engage on a flex item); the difficulty +
+                separators stay pinned (shrink-0) so the difficulty never orphans
+                onto a second line. */}
+            <div className="mb-1.5 flex min-w-0 items-center gap-x-2 text-xs text-muted-foreground">
+              <span className="shrink-0 font-mono text-muted-foreground/80 sm:hidden">
                 #{index}
               </span>
-              <span className="truncate">{breadcrumb}</span>
-              <span aria-hidden>·</span>
-              <span>{DIFFICULTY_LABEL[question.difficulty]}</span>
+              <span className="min-w-0 truncate">{breadcrumb}</span>
+              <span className="shrink-0" aria-hidden>·</span>
+              <span className="shrink-0">{DIFFICULTY_LABEL[question.difficulty]}</span>
               {question.imageUrl && (
                 <>
-                  <span aria-hidden>·</span>
-                  <span className="inline-flex items-center gap-1">
+                  <span className="shrink-0" aria-hidden>·</span>
+                  <span className="inline-flex shrink-0 items-center gap-1">
                     <ImageIcon className="h-3 w-3" aria-hidden />
                     <span className="sr-only">Has image</span>
                   </span>
