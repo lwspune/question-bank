@@ -155,7 +155,9 @@ function QuizRow({ quiz }: { quiz: AssembledQuiz }) {
           <li key={q.position} className="space-y-2">
             <div className="flex gap-2 font-serif text-sm">
               <span className="shrink-0 font-mono text-xs text-muted-foreground">{q.position}.</span>
-              <KatexRenderer text={q.stem} />
+              <div className="min-w-0 flex-1 overflow-x-auto">
+                <KatexRenderer text={q.stem} />
+              </div>
             </div>
             <ul className="ml-6 grid gap-1 sm:grid-cols-2">
               {q.options
@@ -169,7 +171,9 @@ function QuizRow({ quiz }: { quiz: AssembledQuiz }) {
                         }`}
                       >
                         <span className="font-mono text-xs text-muted-foreground">({L.toLowerCase()})</span>
-                        <KatexRenderer text={q.options![L]} />
+                        <span className="min-w-0 flex-1 overflow-x-auto">
+                          <KatexRenderer text={q.options![L]} />
+                        </span>
                         {correct && <Check className="ml-auto h-3.5 w-3.5 shrink-0 text-emerald-600" aria-hidden />}
                       </li>
                     );

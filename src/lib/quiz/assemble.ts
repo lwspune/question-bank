@@ -14,6 +14,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { orderForVariety, balancedSizes } from "./atoms";
 import { defineDailyQuiz, fromAtom, type QuestionSpec } from "./daily";
 import { buildImportPayload, slugToUuid } from "./quizPayload";
+import { NOTES_CHAPTERS } from "../notes/chapters";
 
 const SUBJECT_DISPLAY: Record<string, string> = {
   "nda-maths": "Maths",
@@ -137,7 +138,13 @@ export async function assembleNextQuiz(
   const slug = `${slugBase}-${n}`;
   const id = slugToUuid(slug);
   const subject = SUBJECT_DISPLAY[opts.route] ?? titleCase(opts.route);
-  const chapterDisplay = titleCase(opts.chapter);
+  // Real chapter name from the notes registry (keeps "&" etc. that titleCase
+  // drops, e.g. "matrices-determinants" → "Matrices & Determinants"); titleCase
+  // fallback for any future non-noted quiz chapter.
+  const chapterReg = NOTES_CHAPTERS.find(
+    (c) => c.subjectRoute === opts.route && c.chapterSlug === opts.chapter
+  );
+  const chapterDisplay = chapterReg?.chapter.chapterName ?? titleCase(opts.chapter);
   // Label by the quiz's ACTUAL content, not the requested filter: a "mixed"
   // assemble that happens to draw one theme is really that theme. Keeps the title
   // + the theme pushed to nda-tracker accurate (and consistent with the dashboard,
