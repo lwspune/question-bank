@@ -109,6 +109,31 @@ import {
   TRIGONOMETRIC_EQUATIONS_SLUGS,
 } from "@/app/notes/nda-maths/trigonometric-equations/_data";
 import {
+  CIRCLES_CHAPTER,
+  CIRCLES_NOTES,
+  CIRCLES_SLUGS,
+} from "@/app/notes/nda-maths/circles/_data";
+import {
+  LOGARITHMS_CHAPTER,
+  LOGARITHMS_NOTES,
+  LOGARITHMS_SLUGS,
+} from "@/app/notes/nda-maths/logarithms/_data";
+import {
+  APPLICATIONS_OF_INTEGRATION_CHAPTER,
+  APPLICATIONS_OF_INTEGRATION_NOTES,
+  APPLICATIONS_OF_INTEGRATION_SLUGS,
+} from "@/app/notes/nda-maths/applications-of-integration/_data";
+import {
+  HEIGHT_DISTANCE_CHAPTER,
+  HEIGHT_DISTANCE_NOTES,
+  HEIGHT_DISTANCE_SLUGS,
+} from "@/app/notes/nda-maths/height-distance/_data";
+import {
+  BINARY_NUMBERS_CHAPTER,
+  BINARY_NUMBERS_NOTES,
+  BINARY_NUMBERS_SLUGS,
+} from "@/app/notes/nda-maths/binary-numbers/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -473,6 +498,61 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: TRIGONOMETRIC_EQUATIONS_CHAPTER,
     notes: TRIGONOMETRIC_EQUATIONS_NOTES,
     slugs: TRIGONOMETRIC_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "circles",
+    chipLabel: "Circles notes",
+    chapter: CIRCLES_CHAPTER,
+    notes: CIRCLES_NOTES,
+    slugs: CIRCLES_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "logarithms",
+    chipLabel: "Logarithms notes",
+    chapter: LOGARITHMS_CHAPTER,
+    notes: LOGARITHMS_NOTES,
+    slugs: LOGARITHMS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "applications-of-integration",
+    chipLabel: "Applications of Integration notes",
+    chapter: APPLICATIONS_OF_INTEGRATION_CHAPTER,
+    notes: APPLICATIONS_OF_INTEGRATION_NOTES,
+    slugs: APPLICATIONS_OF_INTEGRATION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "height-distance",
+    chipLabel: "Height & Distance notes",
+    chapter: HEIGHT_DISTANCE_CHAPTER,
+    notes: HEIGHT_DISTANCE_NOTES,
+    slugs: HEIGHT_DISTANCE_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "binary-numbers",
+    chipLabel: "Binary Numbers notes",
+    chapter: BINARY_NUMBERS_CHAPTER,
+    notes: BINARY_NUMBERS_NOTES,
+    slugs: BINARY_NUMBERS_SLUGS,
   },
   {
     examName: "NDA",
