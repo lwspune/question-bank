@@ -120,9 +120,9 @@ Snapshot **2026-06-09** — refresh with:
 | nda-biology / **human-physiology** | ~166 | ~5 | ✅ **Complete** (fact + recall + traps; all distractors hand-authored) |
 | nda-maths / **matrices-determinants** | ~222 | ~12 | ✅ **Complete** (formula + computation; 5 trap atoms <12 → no standalone trap quiz) |
 | nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) |
-| nda-maths / **trigonometric-identities** | ~108 | 6 | 🟡 **computation done** (6 quizzes, Wave 1, 2 agents subtopic-split); formula pending bundle-author (only 3 auto-ready); traps pending |
-| nda-maths / **lines** | ~53 | 3 | 🟡 **computation done** (3 quizzes, Wave 1); auto=0 (no formula quiz); traps pending |
-| nda-maths / **functions** | ~24 | 1 | 🟡 **computation done** (1 quiz, Wave 1); auto=0; traps pending |
+| nda-maths / **trigonometric-identities** | ~120 | 7 | ✅ **Complete** — computation (6, 2 agents subtopic-split) + formula (1; 12 bundle atoms hand-authored); 11 reference + 0 trap atoms parked (<12) |
+| nda-maths / **lines** | ~53 | 4 | ✅ **Complete** — computation (4 quizzes); 0 formula/trap atoms harvestable |
+| nda-maths / **functions** | ~24 | 2 | ✅ **Complete** (computation, 2 quizzes); formula (6) + trap (14 seeds) parked (<12 for a standalone quiz) |
 | nda-maths / **3d-geometry** · **sequence-series** · **differentiation** | harvested+synced (~133/145/85 needs_review clean) | — | 🟠 **Wave 2** — atoms in pool, distractors pending |
 | _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 
