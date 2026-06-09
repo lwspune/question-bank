@@ -11,22 +11,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Magnitude of a vector and distance between two points?",
     "correct": "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)",
-    "options": {
-      "A": "\\(\\cos C = \\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}|\\,|\\vec{b} - \\vec{c}|}\\)",
-      "B": "\\(\\cos\\theta = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\,|\\vec{b}|}\\)",
-      "C": "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)",
-      "D": "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\cos C = \\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}|\\,|\\vec{b} - \\vec{c}|}\\)",
+      "\\(\\cos\\theta = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\,|\\vec{b}|}\\)",
+      "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "\\(\\overrightarrow{AB}\\) is \\(\\vec{b} - \\vec{a}\\) — head minus tail: Reverse the subtraction and you get \\(\\overrightarrow{BA}\\) — the magnitude is the same but the displacement points the other way. Direction matters whenever the result feeds into a dot product or angle.",
       "Lagrange identity gives you the missing magnitude: Whenever a question gives \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = k\\) together with one magnitude, use the identity \\(|\\vec{a}|^2|\\vec{b}|^2 = |\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2\\) to read the other magnitude off directly. (The same identity is the central formula of \\(\\vec{a}\\times\\vec{b}\\) magnitude work — see the cross-product note.)"
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "eed2504de0461bbd586b037eaf49696c8435279c",
+    "sourceFingerprint": "b9a1110b59f314c097090c5be283257ddca66370",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "magnitude-components-projection",
+    "conceptSlug": "magnitude-and-distance",
+    "atomId": "magnitude-and-distance:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Magnitude of a vector and distance between two points?",
+    "correct": "\\(AB = |\\vec{b} - \\vec{a}|\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\hat{n} = \\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)",
+      "\\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\)",
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\overrightarrow{AB}\\) is \\(\\vec{b} - \\vec{a}\\) — head minus tail: Reverse the subtraction and you get \\(\\overrightarrow{BA}\\) — the magnitude is the same but the displacement points the other way. Direction matters whenever the result feeds into a dot product or angle.",
+      "Lagrange identity gives you the missing magnitude: Whenever a question gives \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = k\\) together with one magnitude, use the identity \\(|\\vec{a}|^2|\\vec{b}|^2 = |\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2\\) to read the other magnitude off directly. (The same identity is the central formula of \\(\\vec{a}\\times\\vec{b}\\) magnitude work — see the cross-product note.)"
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "df645f849df8637fc2a94f2ffa2a2c9d9f24129a",
     "timeEstimateSec": 45
   },
   {
@@ -232,22 +260,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Direction Cosines?",
     "correct": "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)",
-    "options": {
-      "A": "\\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma = 0\\)",
-      "B": "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)",
-      "C": "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)",
-      "D": "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)"
-    },
-    "answer": "B",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma = 0\\)",
+      "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)",
+      "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Factor-of-2 trap: \\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = 2\\), not 1: From \\(\\sum\\cos^2 = 1\\) and \\(\\sin^2 = 1 - \\cos^2\\), summing three times: \\(\\sum\\sin^2 = 3 - \\sum\\cos^2 = 3 - 1 = 2\\). The distractor \\(= 1\\) (copying the cosine identity) is the single most common wrong answer in this concept.",
       "Direction cosines can be negative: An obtuse angle with an axis gives a negative cosine — totally fine. Some students try to force \\(l, m, n \\geq 0\\); don't. The identity \\(l^2 + m^2 + n^2 = 1\\) holds with signs."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "ed0ad69c49f7271d28870892ac556c9410fc7d82",
+    "sourceFingerprint": "0a255d972aec119fac5a902389228711056d1bc5",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "magnitude-components-projection",
+    "conceptSlug": "direction-cosines",
+    "atomId": "direction-cosines:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Direction Cosines?",
+    "correct": "\\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = 2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Factor-of-2 trap: \\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = 2\\), not 1: From \\(\\sum\\cos^2 = 1\\) and \\(\\sin^2 = 1 - \\cos^2\\), summing three times: \\(\\sum\\sin^2 = 3 - \\sum\\cos^2 = 3 - 1 = 2\\). The distractor \\(= 1\\) (copying the cosine identity) is the single most common wrong answer in this concept.",
+      "Direction cosines can be negative: An obtuse angle with an axis gives a negative cosine — totally fine. Some students try to force \\(l, m, n \\geq 0\\); don't. The identity \\(l^2 + m^2 + n^2 = 1\\) holds with signs."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "95e2ea72694f8bffc2b5e54ca5346eaca245399e",
     "timeEstimateSec": 45
   },
   {
@@ -457,22 +513,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Scalar projection of one vector on another?",
     "correct": "\\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\)",
-    "options": {
-      "A": "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
-      "B": "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
-      "C": "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)",
-      "D": "\\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\)"
-    },
-    "answer": "D",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
+      "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Divide by \\(|\\vec{b}|\\), not \\(|\\vec{b}|^2\\), for the scalar projection: Vector projection has \\(|\\vec{b}|^2\\) in the denominator because it carries the direction \\(\\vec{b}\\) back into the answer; scalar projection drops the direction and divides only once. Mixing the two is a frequent factor-of-\\(|\\vec{b}|\\) bug.",
       "Sign of the scalar projection encodes obtuse/acute: If the projection comes out negative, the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is obtuse. Don't reach for absolute value automatically — the sign is the information."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "b4382651d85b6dab8d7eea86ee404a537fd3c8c9",
+    "sourceFingerprint": "1a8b501fb65f36a60323e9744759b89a294cb915",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "magnitude-components-projection",
+    "conceptSlug": "scalar-projection",
+    "atomId": "scalar-projection:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Scalar projection of one vector on another?",
+    "correct": "\\(\\overrightarrow{\\text{proj}_{\\vec{b}}\\vec{a}} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\,\\vec{b}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
+      "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)",
+      "\\((\\alpha\\vec{a}+\\beta\\vec{b})\\cdot(\\gamma\\vec{a}+\\delta\\vec{b}) = \\alpha\\gamma|\\vec{a}|^2 + (\\alpha\\delta+\\beta\\gamma)\\,\\vec{a}\\cdot\\vec{b} + \\beta\\delta|\\vec{b}|^2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Divide by \\(|\\vec{b}|\\), not \\(|\\vec{b}|^2\\), for the scalar projection: Vector projection has \\(|\\vec{b}|^2\\) in the denominator because it carries the direction \\(\\vec{b}\\) back into the answer; scalar projection drops the direction and divides only once. Mixing the two is a frequent factor-of-\\(|\\vec{b}|\\) bug.",
+      "Sign of the scalar projection encodes obtuse/acute: If the projection comes out negative, the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is obtuse. Don't reach for absolute value automatically — the sign is the information."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "18065e96d44482700a1889fea221e8d7469ce75b",
     "timeEstimateSec": 45
   },
   {
@@ -678,22 +762,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Unit vectors and direction-given construction?",
     "correct": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)",
-    "options": {
-      "A": "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)",
-      "B": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)",
-      "C": "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
-      "D": "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
-    },
-    "answer": "B",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)",
+      "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Check that the given angles are consistent with \\(\\sum\\cos^2 = 1\\): A vector cannot make \\(\\alpha = 60^\\circ\\) and \\(\\beta = 45^\\circ\\) with the \\(x\\) and \\(y\\) axes AND have \\(\\gamma\\) acute unless the third cosine fits. From \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\): \\(\\cos^2\\gamma = 1 - \\tfrac{1}{4} - \\tfrac{1}{2} = \\tfrac{1}{4}\\), so \\(\\gamma = 60^\\circ\\) (acute) or \\(120^\\circ\\).",
       "Equally inclined to two axes only fixes one component pair: \\\"Vector inclined equally to \\(x\\) and \\(y\\) axes\\\" means \\(a_1 = a_2\\), which combined with the magnitude pins down both. Don't read it as \\(a_1 = a_2 = a_3\\) — that's three axes, a different constraint."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "2d19eb3c6388b1b66cc789b851b590102ee625d9",
+    "sourceFingerprint": "3fca1166ede95615bf94391920d2e6bc6d242d9f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "magnitude-components-projection",
+    "conceptSlug": "unit-vector-and-direction-construction",
+    "atomId": "unit-vector-and-direction-construction:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Unit vectors and direction-given construction?",
+    "correct": "\\(\\vec{v} = r(\\cos\\alpha\\,\\hat{i} + \\cos\\beta\\,\\hat{j} + \\cos\\gamma\\,\\hat{k})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\)",
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check that the given angles are consistent with \\(\\sum\\cos^2 = 1\\): A vector cannot make \\(\\alpha = 60^\\circ\\) and \\(\\beta = 45^\\circ\\) with the \\(x\\) and \\(y\\) axes AND have \\(\\gamma\\) acute unless the third cosine fits. From \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\): \\(\\cos^2\\gamma = 1 - \\tfrac{1}{4} - \\tfrac{1}{2} = \\tfrac{1}{4}\\), so \\(\\gamma = 60^\\circ\\) (acute) or \\(120^\\circ\\).",
+      "Equally inclined to two axes only fixes one component pair: \\\"Vector inclined equally to \\(x\\) and \\(y\\) axes\\\" means \\(a_1 = a_2\\), which combined with the magnitude pins down both. Don't read it as \\(a_1 = a_2 = a_3\\) — that's three axes, a different constraint."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "53a1d8797c1f97650419bc3559d33a80cd065ec6",
     "timeEstimateSec": 45
   },
   {
@@ -903,22 +1015,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Dot product — components form and work done?",
     "correct": "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)",
-    "options": {
-      "A": "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
-      "B": "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)",
-      "C": "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} = 0 \\iff \\vec{a},\\vec{b},\\vec{c}\\text{ coplanar}\\)",
-      "D": "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)"
-    },
-    "answer": "B",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} = 0 \\iff \\vec{a},\\vec{b},\\vec{c}\\text{ coplanar}\\)",
+      "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Dot product gives a scalar; cross product gives a vector: An MCQ option that returns a vector for \\(\\vec{a}\\cdot\\vec{b}\\), or a scalar for \\(\\vec{a}\\times\\vec{b}\\), can be eliminated on type grounds alone. This dimension-check rejects ~25% of trap options.",
       "Work done is signed — negative work is fine: If the force has any component opposite to the displacement, the dot product (and the work) can come out negative. Don't reach for absolute value automatically; the sign tells you whether the force is helping or hindering."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "ee9061cb228c30b6d46184f7a939b806505e7d46",
+    "sourceFingerprint": "e08ca6979f9f988bd7eae54a175a7aab9a7ae669",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "dot-product-angle",
+    "conceptSlug": "dot-product-evaluation-and-work",
+    "atomId": "dot-product-evaluation-and-work:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Dot product — components form and work done?",
+    "correct": "\\(W = \\vec{F}\\cdot\\vec{d}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\)",
+      "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)",
+      "\\(\\hat{n} = \\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Dot product gives a scalar; cross product gives a vector: An MCQ option that returns a vector for \\(\\vec{a}\\cdot\\vec{b}\\), or a scalar for \\(\\vec{a}\\times\\vec{b}\\), can be eliminated on type grounds alone. This dimension-check rejects ~25% of trap options.",
+      "Work done is signed — negative work is fine: If the force has any component opposite to the displacement, the dot product (and the work) can come out negative. Don't reach for absolute value automatically; the sign tells you whether the force is helping or hindering."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "979442eb4eede5006c978c9bfb9e9264a66286f3",
     "timeEstimateSec": 45
   },
   {
@@ -1139,7 +1279,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "49e939887debdb5bed225c79c310a364cc0b260a",
+    "sourceFingerprint": "d47cfb062be2c2f75e13b383513cc2d0192e5c4e",
     "timeEstimateSec": 45
   },
   {
@@ -1360,7 +1500,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "f31b3ad1cb528d55d5a4cfe25805c20056c8c035",
+    "sourceFingerprint": "24e67e1b56b95b6ddadd069bf79602f586d0c608",
     "timeEstimateSec": 45
   },
   {
@@ -1585,7 +1725,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "8f63302a9bd4a222a5fc8f24428a5c495da3a609",
+    "sourceFingerprint": "54095e68a28020988ae4871de12782f6cd1bb92d",
     "timeEstimateSec": 45
   },
   {
@@ -1795,22 +1935,79 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Unit vectors, orthogonal triples, and decomposition?",
     "correct": "\\(\\vec{a}\\cdot\\vec{a} = 1\\)",
-    "options": {
-      "A": "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)",
-      "B": "\\(\\cos C = \\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}|\\,|\\vec{b} - \\vec{c}|}\\)",
-      "C": "\\(\\vec{a}\\cdot\\vec{a} = 1\\)",
-      "D": "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)",
+      "\\(\\cos C = \\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}|\\,|\\vec{b} - \\vec{c}|}\\)",
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Three unit vectors at equal pairwise angles need not be orthonormal: If \\(\\vec{a}\\cdot\\vec{b} = \\vec{b}\\cdot\\vec{c} = \\vec{c}\\cdot\\vec{a} = k\\), the triple is symmetric but only orthonormal when \\(k = 0\\). For other \\(k\\) values (e.g. \\(k = -1/2\\) — three coplanar vectors at \\(120^\\circ\\)) the magnitudes of linear combinations look quite different.",
       "\\(\\{\\vec{a}, \\vec{b}, \\vec{a}\\times\\vec{b}\\}\\) is orthonormal iff \\(\\vec{a}\\perp\\vec{b}\\) and both unit: If \\(\\vec{a}, \\vec{b}\\) are unit and perpendicular, then \\(|\\vec{a}\\times\\vec{b}| = \\sin 90^\\circ = 1\\) — so the triple is orthonormal. If \\(\\vec{a}\\cdot\\vec{b} \\neq 0\\), the cross product still produces a perpendicular vector, but it's not a unit vector and the basis isn't orthonormal."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "85839407f52e4967b7c88041743c447b731ee066",
+    "sourceFingerprint": "3ae7f7c5e896e197be7ec9e4f6efb4041db81582",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "dot-product-angle",
+    "conceptSlug": "unit-vector-orthogonal-triple-configurations",
+    "atomId": "unit-vector-orthogonal-triple-configurations:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Unit vectors, orthogonal triples, and decomposition?",
+    "correct": "\\(\\vec{a}\\cdot\\vec{b} = 0 \\;\\;(\\text{if } \\vec{a}\\neq\\vec{b})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)",
+      "\\(|\\vec{p}+\\vec{q}|^2 + |\\vec{p}-\\vec{q}|^2 = 2(|\\vec{p}|^2 + |\\vec{q}|^2)\\)",
+      "\\(\\cos\\theta = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\,|\\vec{b}|}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Three unit vectors at equal pairwise angles need not be orthonormal: If \\(\\vec{a}\\cdot\\vec{b} = \\vec{b}\\cdot\\vec{c} = \\vec{c}\\cdot\\vec{a} = k\\), the triple is symmetric but only orthonormal when \\(k = 0\\). For other \\(k\\) values (e.g. \\(k = -1/2\\) — three coplanar vectors at \\(120^\\circ\\)) the magnitudes of linear combinations look quite different.",
+      "\\(\\{\\vec{a}, \\vec{b}, \\vec{a}\\times\\vec{b}\\}\\) is orthonormal iff \\(\\vec{a}\\perp\\vec{b}\\) and both unit: If \\(\\vec{a}, \\vec{b}\\) are unit and perpendicular, then \\(|\\vec{a}\\times\\vec{b}| = \\sin 90^\\circ = 1\\) — so the triple is orthonormal. If \\(\\vec{a}\\cdot\\vec{b} \\neq 0\\), the cross product still produces a perpendicular vector, but it's not a unit vector and the basis isn't orthonormal."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "b603c43d9ee4197f6dc56c10fea306f88c819c6f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "dot-product-angle",
+    "conceptSlug": "unit-vector-orthogonal-triple-configurations",
+    "atomId": "unit-vector-orthogonal-triple-configurations:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Unit vectors, orthogonal triples, and decomposition?",
+    "correct": "\\(\\text{for an orthonormal triple}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
+      "\\(|\\vec{p}+\\vec{q}|^2 + |\\vec{p}-\\vec{q}|^2 = 2(|\\vec{p}|^2 + |\\vec{q}|^2)\\)",
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Three unit vectors at equal pairwise angles need not be orthonormal: If \\(\\vec{a}\\cdot\\vec{b} = \\vec{b}\\cdot\\vec{c} = \\vec{c}\\cdot\\vec{a} = k\\), the triple is symmetric but only orthonormal when \\(k = 0\\). For other \\(k\\) values (e.g. \\(k = -1/2\\) — three coplanar vectors at \\(120^\\circ\\)) the magnitudes of linear combinations look quite different.",
+      "\\(\\{\\vec{a}, \\vec{b}, \\vec{a}\\times\\vec{b}\\}\\) is orthonormal iff \\(\\vec{a}\\perp\\vec{b}\\) and both unit: If \\(\\vec{a}, \\vec{b}\\) are unit and perpendicular, then \\(|\\vec{a}\\times\\vec{b}| = \\sin 90^\\circ = 1\\) — so the triple is orthonormal. If \\(\\vec{a}\\cdot\\vec{b} \\neq 0\\), the cross product still produces a perpendicular vector, but it's not a unit vector and the basis isn't orthonormal."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "50a102e2359d168ab91839e36df082715b38b12e",
     "timeEstimateSec": 45
   },
   {
@@ -2035,7 +2232,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "2110c4a0e7536c895187f3d948fdd46fdf953894",
+    "sourceFingerprint": "98d79b5744eec3b2b19278436640d85740c851de",
     "timeEstimateSec": 45
   },
   {
@@ -2245,22 +2442,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Cross-product magnitude, area, and the Lagrange identity?",
     "correct": "\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\)",
-    "options": {
-      "A": "\\(\\vec{AB} = \\vec{b} - \\vec{a}\\)",
-      "B": "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
-      "C": "\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\)",
-      "D": "\\(\\hat{n} = \\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{AB} = \\vec{b} - \\vec{a}\\)",
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\(\\hat{n} = \\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Area of a triangle is \\(\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}|\\), NOT \\(|\\vec{a}\\times\\vec{b}|\\): A frequently-tested statement: \\\"\\(|\\vec{a}\\times\\vec{b}|\\) is the area of a triangle with sides \\(\\vec{a}\\) and \\(\\vec{b}\\)\\\" — this is FALSE; it's the parallelogram area. The factor-of-2 lives here. Halving gives the triangle.",
       "\\(\\sin\\theta\\) is always non-negative for \\(\\theta\\in[0,\\pi]\\): Unlike \\(\\cos\\theta\\), the sine in the cross-product magnitude formula never goes negative — the magnitude is a length. If a question gives \\(\\vec{a}\\times\\vec{b}\\) as a specific vector and asks for the acute angle, take magnitudes of BOTH sides before solving for \\(\\sin\\theta\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "0974bffdb17a5d8b01330c1a067c57b6f48bb310",
+    "sourceFingerprint": "9266c90dd31f0eda36a1eacb806f7e205ad49b48",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "cross-product-triple-product",
+    "conceptSlug": "cross-product-magnitude-area-and-lagrange",
+    "atomId": "cross-product-magnitude-area-and-lagrange:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Cross-product magnitude, area, and the Lagrange identity?",
+    "correct": "\\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2 |\\vec{b}|^2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)",
+      "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
+      "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\,\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\,\\vec{c}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area of a triangle is \\(\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}|\\), NOT \\(|\\vec{a}\\times\\vec{b}|\\): A frequently-tested statement: \\\"\\(|\\vec{a}\\times\\vec{b}|\\) is the area of a triangle with sides \\(\\vec{a}\\) and \\(\\vec{b}\\)\\\" — this is FALSE; it's the parallelogram area. The factor-of-2 lives here. Halving gives the triangle.",
+      "\\(\\sin\\theta\\) is always non-negative for \\(\\theta\\in[0,\\pi]\\): Unlike \\(\\cos\\theta\\), the sine in the cross-product magnitude formula never goes negative — the magnitude is a length. If a question gives \\(\\vec{a}\\times\\vec{b}\\) as a specific vector and asks for the acute angle, take magnitudes of BOTH sides before solving for \\(\\sin\\theta\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "e29daf11b22f93f6691b32c5bfb53f6cb71073b4",
     "timeEstimateSec": 45
   },
   {
@@ -2485,7 +2710,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "d6a02c45633c62b4d071dea4c6cdce28e5e04ef8",
+    "sourceFingerprint": "56afa076839a6d8665bf0dcaa21cce4411c6cd2c",
     "timeEstimateSec": 45
   },
   {
@@ -2710,7 +2935,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "7c3c3c5f7cace07c3032126c41aa0675a606fddc",
+    "sourceFingerprint": "2a852970b6ae77f60ec18134ec609f79c89eaa18",
     "timeEstimateSec": 45
   },
   {
@@ -2935,7 +3160,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "149305f598bfb89d841189de2b640286ad24cf7a",
+    "sourceFingerprint": "f42722deb268a7ab7b43763a173fb604830189de",
     "timeEstimateSec": 45
   },
   {
@@ -3160,7 +3385,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "b052970b137857aa45d6889f44ea55649fea1f38",
+    "sourceFingerprint": "34eabd0923fd7bc7ac4c26cd1cd351e4c9296d15",
     "timeEstimateSec": 45
   },
   {
@@ -3386,7 +3611,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "f37f70d7badb4ec0a1cc8e0cebe866e1209355fb",
+    "sourceFingerprint": "25f387804452c530379c5514cb7d238bcb2d9c2f",
     "timeEstimateSec": 45
   },
   {
@@ -3629,22 +3854,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Triangle closed-loop and centroid formula?",
     "correct": "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
-    "options": {
-      "A": "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)",
-      "B": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)",
-      "C": "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
-      "D": "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)"
-    },
-    "answer": "D",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)",
+      "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)",
+      "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Direction matters in the loop — \\(\\vec{BA} = -\\vec{AB}\\): The identity \\(\\vec{AB}+\\vec{BC}+\\vec{CA}=\\vec{0}\\) requires the sides to be traversed in one consistent direction around the triangle. If a statement reads \\(\\vec{AB}+\\vec{BC}-\\vec{CA}=\\vec{0}\\), it's wrong — that's saying \\(\\vec{AC}\\) instead of \\(\\vec{CA}\\), which reverses one side.",
       "\\(\\vec{AG}\\) is NOT \\(\\vec{g}/3\\) — it is \\(\\vec{g} - \\vec{a}\\): A common factor-of-3 distractor. \\(\\vec{AG}\\) is the displacement from \\(A\\) to \\(G\\), so it equals \\(\\vec{g} - \\vec{a}\\). After algebra \\(\\vec{AG} = \\dfrac{(\\vec{b}-\\vec{a}) + (\\vec{c}-\\vec{a})}{3}\\) — two-thirds of the median from \\(A\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "a03ef128da899e4cc3fdeb92f0c3596197438f60",
+    "sourceFingerprint": "b1b4ad9e594e7b14c0372021ccfc4935ec1e8ada",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "vector-geometry",
+    "conceptSlug": "triangle-vector-loop-and-centroid",
+    "atomId": "triangle-vector-loop-and-centroid:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Triangle closed-loop and centroid formula?",
+    "correct": "\\(\\vec{g} = \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{AB} = \\vec{b} - \\vec{a}\\)",
+      "\\(\\vec{v} = v_1\\hat{i} + v_2\\hat{j} + v_3\\hat{k}\\)",
+      "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Direction matters in the loop — \\(\\vec{BA} = -\\vec{AB}\\): The identity \\(\\vec{AB}+\\vec{BC}+\\vec{CA}=\\vec{0}\\) requires the sides to be traversed in one consistent direction around the triangle. If a statement reads \\(\\vec{AB}+\\vec{BC}-\\vec{CA}=\\vec{0}\\), it's wrong — that's saying \\(\\vec{AC}\\) instead of \\(\\vec{CA}\\), which reverses one side.",
+      "\\(\\vec{AG}\\) is NOT \\(\\vec{g}/3\\) — it is \\(\\vec{g} - \\vec{a}\\): A common factor-of-3 distractor. \\(\\vec{AG}\\) is the displacement from \\(A\\) to \\(G\\), so it equals \\(\\vec{g} - \\vec{a}\\). After algebra \\(\\vec{AG} = \\dfrac{(\\vec{b}-\\vec{a}) + (\\vec{c}-\\vec{a})}{3}\\) — two-thirds of the median from \\(A\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "0e82f1cee2d77178f781fa021cfd348517480f74",
     "timeEstimateSec": 45
   },
   {
@@ -3854,22 +4107,79 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Parallelogram properties and diagonal relations?",
     "correct": "\\(\\vec{AB} = \\tfrac{1}{2}(\\vec{AC} - \\vec{BD})\\)",
-    "options": {
-      "A": "\\(\\hat{n} = \\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)",
-      "B": "\\(\\vec{AB} = \\tfrac{1}{2}(\\vec{AC} - \\vec{BD})\\)",
-      "C": "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
-      "D": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)"
-    },
-    "answer": "B",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\hat{n} = \\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}\\)",
+      "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
+      "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Vertex order \\(ABCD\\) matters: If the vertices are listed in a non-cyclic order, the figure is NOT a parallelogram in the standard sense. \\(\\vec{AB} = \\vec{DC}\\) (not \\(\\vec{CD}\\)) — the equal sides are the ones going in the SAME direction around the figure.",
       "The fourth vertex of a parallelogram: \\(D = A + C - B\\): If \\(A, B, C\\) are three consecutive vertices, \\(\\vec{AD} = \\vec{BC}\\) forces \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b}\\). A factor-of-2 distractor here often offers \\(\\vec{a} + \\vec{c} - 2\\vec{b}\\); reject it."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "9d9a4e5f8259491aec648c7f9994a711c2d69de9",
+    "sourceFingerprint": "7a32d91c04efd1ae29b2c434a9a8b1ab49b38abd",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "vector-geometry",
+    "conceptSlug": "parallelogram-properties-and-diagonals",
+    "atomId": "parallelogram-properties-and-diagonals:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Parallelogram properties and diagonal relations?",
+    "correct": "\\(\\vec{AD} = \\tfrac{1}{2}(\\vec{AC} + \\vec{BD})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma = 0\\)",
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Vertex order \\(ABCD\\) matters: If the vertices are listed in a non-cyclic order, the figure is NOT a parallelogram in the standard sense. \\(\\vec{AB} = \\vec{DC}\\) (not \\(\\vec{CD}\\)) — the equal sides are the ones going in the SAME direction around the figure.",
+      "The fourth vertex of a parallelogram: \\(D = A + C - B\\): If \\(A, B, C\\) are three consecutive vertices, \\(\\vec{AD} = \\vec{BC}\\) forces \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b}\\). A factor-of-2 distractor here often offers \\(\\vec{a} + \\vec{c} - 2\\vec{b}\\); reject it."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "5fcb6ed2806cc01bdfa6367b8e3e60283d5b94b6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "vector-geometry",
+    "conceptSlug": "parallelogram-properties-and-diagonals",
+    "atomId": "parallelogram-properties-and-diagonals:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Parallelogram properties and diagonal relations?",
+    "correct": "\\(\\vec{OA}+\\vec{OC} = \\vec{OB}+\\vec{OD}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
+      "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
+      "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Vertex order \\(ABCD\\) matters: If the vertices are listed in a non-cyclic order, the figure is NOT a parallelogram in the standard sense. \\(\\vec{AB} = \\vec{DC}\\) (not \\(\\vec{CD}\\)) — the equal sides are the ones going in the SAME direction around the figure.",
+      "The fourth vertex of a parallelogram: \\(D = A + C - B\\): If \\(A, B, C\\) are three consecutive vertices, \\(\\vec{AD} = \\vec{BC}\\) forces \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b}\\). A factor-of-2 distractor here often offers \\(\\vec{a} + \\vec{c} - 2\\vec{b}\\); reject it."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "5bcd120fb746fe99a90edcf0fc5e7b67dcbdba9e",
     "timeEstimateSec": 45
   },
   {
@@ -4094,7 +4404,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "b5234512cdce3a9a53da6eda0f4205018710882b",
+    "sourceFingerprint": "2e5c98a9a31420b5a30ec0cec592109502bafc0e",
     "timeEstimateSec": 45
   },
   {
@@ -4319,7 +4629,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "0c82b9d57d5227ea396512c8b14cbe29a600fe2d",
+    "sourceFingerprint": "3691e1369d60a8bc57f72ed75a1d50d39e72e8af",
     "timeEstimateSec": 45
   },
   {
@@ -4553,22 +4863,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Position vectors and displacement vectors?",
     "correct": "\\(\\vec{AB} = \\vec{b} - \\vec{a}\\)",
-    "options": {
-      "A": "\\(\\vec{AB} = \\vec{b} - \\vec{a}\\)",
-      "B": "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)",
-      "C": "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)",
-      "D": "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\,\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\,\\vec{c}\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)",
+      "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)",
+      "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\,\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\,\\vec{c}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Head minus tail — \\(\\vec{AB} = \\vec{b} - \\vec{a}\\), not \\(\\vec{a} - \\vec{b}\\): Reverse the subtraction and you compute \\(\\vec{BA}\\) instead. The magnitudes match (\\(|\\vec{AB}| = |\\vec{BA}|\\)), but the directions are opposite. Direction matters whenever the result feeds into a dot product, an angle, or a cross product downstream.",
       "Position vectors depend on the choice of origin; displacement vectors do NOT: If you move the origin from \\(O\\) to \\(O'\\), every position vector changes (they all shift by the same fixed amount), but the displacement \\(\\vec{AB}\\) is unchanged — that's why displacements are the more \\\"physical\\\" quantity and most theorems are stated in terms of them."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "76815bccdb0e158b9be3bc02f519cd2278689b1b",
+    "sourceFingerprint": "c42829eb997db3605a4c3e0a358912156984ba89",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "position-vectors-section",
+    "conceptSlug": "position-and-displacement-vectors",
+    "atomId": "position-and-displacement-vectors:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Position vectors and displacement vectors?",
+    "correct": "\\(AB = |\\vec{b} - \\vec{a}|\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)",
+      "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
+      "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Head minus tail — \\(\\vec{AB} = \\vec{b} - \\vec{a}\\), not \\(\\vec{a} - \\vec{b}\\): Reverse the subtraction and you compute \\(\\vec{BA}\\) instead. The magnitudes match (\\(|\\vec{AB}| = |\\vec{BA}|\\)), but the directions are opposite. Direction matters whenever the result feeds into a dot product, an angle, or a cross product downstream.",
+      "Position vectors depend on the choice of origin; displacement vectors do NOT: If you move the origin from \\(O\\) to \\(O'\\), every position vector changes (they all shift by the same fixed amount), but the displacement \\(\\vec{AB}\\) is unchanged — that's why displacements are the more \\\"physical\\\" quantity and most theorems are stated in terms of them."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "c820ffc1493a4fef625ee1260dce3dc72be07c6b",
     "timeEstimateSec": 45
   },
   {
@@ -4749,22 +5087,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Addition of vectors (triangle, parallelogram, polygon laws)?",
     "correct": "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
-    "options": {
-      "A": "\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\)",
-      "B": "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} = 0 \\iff \\vec{a},\\vec{b},\\vec{c}\\text{ coplanar}\\)",
-      "C": "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
-      "D": "\\(\\vec{AB} = \\tfrac{1}{2}(\\vec{AC} - \\vec{BD})\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\)",
+      "\\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} = 0 \\iff \\vec{a},\\vec{b},\\vec{c}\\text{ coplanar}\\)",
+      "\\(\\vec{AB} = \\tfrac{1}{2}(\\vec{AC} - \\vec{BD})\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Closed-polygon identity: if vectors form a closed loop, they sum to \\(\\vec{0}\\): Tip-to-tail vectors that return to the starting point span a closed polygon, so their sum is the zero vector. The triangle identity \\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\) is exactly this rule for a triangle — used heavily in the Vector Geometry subtopic later.",
       "Magnitudes don't add: \\(|\\vec{a} + \\vec{b}| \\neq |\\vec{a}| + |\\vec{b}|\\) in general: Two arrows of length 3 don't always combine to length 6 — they combine to length 6 only if perfectly aligned, length 0 if perfectly opposed, and anything in between otherwise. The triangle inequality \\(|\\vec{a} + \\vec{b}| \\leq |\\vec{a}| + |\\vec{b}|\\) is the correct bound."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "5774797d9342eb087f8c173071c4ecb3b67baffe",
+    "sourceFingerprint": "b2279dfb39e0940521d84e9a14e28015af7887b6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "position-vectors-section",
+    "conceptSlug": "vector-addition",
+    "atomId": "vector-addition:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Addition of vectors (triangle, parallelogram, polygon laws)?",
+    "correct": "\\(\\vec{a} - \\vec{b} = \\vec{a} + (-\\vec{b})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\(\\cos C = \\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}|\\,|\\vec{b} - \\vec{c}|}\\)",
+      "\\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = 3[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Closed-polygon identity: if vectors form a closed loop, they sum to \\(\\vec{0}\\): Tip-to-tail vectors that return to the starting point span a closed polygon, so their sum is the zero vector. The triangle identity \\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\) is exactly this rule for a triangle — used heavily in the Vector Geometry subtopic later.",
+      "Magnitudes don't add: \\(|\\vec{a} + \\vec{b}| \\neq |\\vec{a}| + |\\vec{b}|\\) in general: Two arrows of length 3 don't always combine to length 6 — they combine to length 6 only if perfectly aligned, length 0 if perfectly opposed, and anything in between otherwise. The triangle inequality \\(|\\vec{a} + \\vec{b}| \\leq |\\vec{a}| + |\\vec{b}|\\) is the correct bound."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "ea465fe984e31366cae96bb839eca24e4bd8dfff",
     "timeEstimateSec": 45
   },
   {
@@ -4945,21 +5311,48 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Scalar multiplication?",
     "correct": "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
-    "options": {
-      "A": "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
-      "B": "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
-      "C": "\\((\\alpha\\vec{a}+\\beta\\vec{b})\\cdot(\\gamma\\vec{a}+\\delta\\vec{b}) = \\alpha\\gamma|\\vec{a}|^2 + (\\alpha\\delta+\\beta\\gamma)\\,\\vec{a}\\cdot\\vec{b} + \\beta\\delta|\\vec{b}|^2\\)",
-      "D": "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b}) = 2\\,\\vec{a}\\times\\vec{b}\\)",
+      "\\((\\alpha\\vec{a}+\\beta\\vec{b})\\cdot(\\gamma\\vec{a}+\\delta\\vec{b}) = \\alpha\\gamma|\\vec{a}|^2 + (\\alpha\\delta+\\beta\\gamma)\\,\\vec{a}\\cdot\\vec{b} + \\beta\\delta|\\vec{b}|^2\\)",
+      "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Sign of \\(k\\) controls DIRECTION, not just signs of components: \\(k = -1\\) does more than negate components arithmetically — geometrically it FLIPS the arrow (\\(180^\\circ\\) rotation). That's the same operation as \\(-\\vec{v}\\), which is why subtraction reads as \\(\\vec{a} - \\vec{b} = \\vec{a} + (-1)\\vec{b}\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "9d1c440212fc20f105ca8163b2d015ff6498f9d1",
+    "sourceFingerprint": "10cc715426bf85cbbb55c8738452c7c1f360b1d4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "position-vectors-section",
+    "conceptSlug": "scalar-multiplication",
+    "atomId": "scalar-multiplication:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Scalar multiplication?",
+    "correct": "\\(k(\\vec{a} + \\vec{b}) = k\\vec{a} + k\\vec{b}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)",
+      "\\(\\cos\\theta = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\,|\\vec{b}|}\\)",
+      "\\(\\vec{AB} = \\tfrac{1}{2}(\\vec{AC} - \\vec{BD})\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Sign of \\(k\\) controls DIRECTION, not just signs of components: \\(k = -1\\) does more than negate components arithmetically — geometrically it FLIPS the arrow (\\(180^\\circ\\) rotation). That's the same operation as \\(-\\vec{v}\\), which is why subtraction reads as \\(\\vec{a} - \\vec{b} = \\vec{a} + (-1)\\vec{b}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "17de051e9c81270d70de264f9e2c809fa2d31090",
     "timeEstimateSec": 45
   },
   {
@@ -5110,22 +5503,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Component form: the î, ĵ, k̂ basis?",
     "correct": "\\(\\vec{v} = v_1\\hat{i} + v_2\\hat{j} + v_3\\hat{k}\\)",
-    "options": {
-      "A": "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
-      "B": "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)",
-      "C": "\\(\\vec{v} = v_1\\hat{i} + v_2\\hat{j} + v_3\\hat{k}\\)",
-      "D": "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
+      "\\(\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|\\)",
+      "\\(|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Equality of vectors = ALL components match — that's 3 equations, not 1: A statement \\\"\\(\\vec{a} = \\vec{b}\\)\\\" with unknowns hidden in the components is implicitly giving you a SYSTEM of equations (one per component). PYQs use this often: given \\(\\vec{a} = \\vec{b}\\) and unknowns \\(x, y, z\\) in the components, equate \\(a_1 = b_1\\), \\(a_2 = b_2\\), \\(a_3 = b_3\\) and solve.",
       "Components depend on the basis; the vector itself does not: Rotate the coordinate axes and the components \\((v_1, v_2, v_3)\\) change, but the underlying vector (the arrow in space) is the same. All NDA questions stick with the standard \\(\\hat{i}, \\hat{j}, \\hat{k}\\) basis, so this is rarely an issue in practice — but it explains why some identities are \\\"basis-free\\\" (magnitudes, dot products, angles)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "9a1cc8cb2ba8091fd6ee9606300c80251a96b729",
+    "sourceFingerprint": "3f60c74e62a59383e96244038009abc78499aa21",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "position-vectors-section",
+    "conceptSlug": "component-form-and-basis",
+    "atomId": "component-form-and-basis:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Component form: the î, ĵ, k̂ basis?",
+    "correct": "\\(\\vec{a} + \\vec{b} = (a_1+b_1)\\hat{i} + (a_2+b_2)\\hat{j} + (a_3+b_3)\\hat{k}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\,\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\,\\vec{c}\\)",
+      "\\(\\cos C = \\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}|\\,|\\vec{b} - \\vec{c}|}\\)",
+      "\\(\\vec{a}\\cdot\\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Equality of vectors = ALL components match — that's 3 equations, not 1: A statement \\\"\\(\\vec{a} = \\vec{b}\\)\\\" with unknowns hidden in the components is implicitly giving you a SYSTEM of equations (one per component). PYQs use this often: given \\(\\vec{a} = \\vec{b}\\) and unknowns \\(x, y, z\\) in the components, equate \\(a_1 = b_1\\), \\(a_2 = b_2\\), \\(a_3 = b_3\\) and solve.",
+      "Components depend on the basis; the vector itself does not: Rotate the coordinate axes and the components \\((v_1, v_2, v_3)\\) change, but the underlying vector (the arrow in space) is the same. All NDA questions stick with the standard \\(\\hat{i}, \\hat{j}, \\hat{k}\\) basis, so this is rarely an issue in practice — but it explains why some identities are \\\"basis-free\\\" (magnitudes, dot products, angles)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "75f2b5ade3574298016906ef9ae4a30a4922fdc9",
     "timeEstimateSec": 45
   },
   {
@@ -5306,22 +5727,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Types of vectors (zero, unit, equal, parallel, collinear, coplanar)?",
     "correct": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)",
-    "options": {
-      "A": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)",
-      "B": "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
-      "C": "\\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma = 0\\)",
-      "D": "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
+      "\\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma = 0\\)",
+      "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "Parallel VECTORS vs collinear POINTS — different conditions: Two vectors are parallel when they share a DIRECTION (regardless of where they start). Three or more points are collinear when they all lie on one LINE — a stricter condition that requires them to share a line, not just share a direction. Points \\(A, B, C\\) are collinear iff \\(\\vec{AB} \\parallel \\vec{AC}\\) (the next concept turns this into a usable test).",
       "Zero vector is parallel to everything and to nothing: Because \\(\\vec{0} = 0 \\cdot \\vec{v}\\) for any \\(\\vec{v}\\), the zero vector technically satisfies the scalar-multiple definition for every direction. PYQs sidestep the ambiguity by implicitly assuming non-zero vectors when talking about parallelism — read the question carefully if the hypothesis is loose."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "a4b65dc17e1b88541a8b41189a48382132b95074",
+    "sourceFingerprint": "a6f87b16f993e316f370f8de481afa7030a2184d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "position-vectors-section",
+    "conceptSlug": "types-of-vectors",
+    "atomId": "types-of-vectors:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Types of vectors (zero, unit, equal, parallel, collinear, coplanar)?",
+    "correct": "\\(\\vec{a} \\parallel \\vec{b} \\iff \\vec{a} = k\\vec{b} \\text{ for some } k \\neq 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{M} = \\overrightarrow{OP} \\times \\vec{F}\\)",
+      "\\(\\vec{a} + \\vec{b} = \\vec{b} + \\vec{a}\\)",
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Parallel VECTORS vs collinear POINTS — different conditions: Two vectors are parallel when they share a DIRECTION (regardless of where they start). Three or more points are collinear when they all lie on one LINE — a stricter condition that requires them to share a line, not just share a direction. Points \\(A, B, C\\) are collinear iff \\(\\vec{AB} \\parallel \\vec{AC}\\) (the next concept turns this into a usable test).",
+      "Zero vector is parallel to everything and to nothing: Because \\(\\vec{0} = 0 \\cdot \\vec{v}\\) for any \\(\\vec{v}\\), the zero vector technically satisfies the scalar-multiple definition for every direction. PYQs sidestep the ambiguity by implicitly assuming non-zero vectors when talking about parallelism — read the question carefully if the hypothesis is loose."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "1bd85adc11949a765baa606b1c53a0e29edb39b6",
     "timeEstimateSec": 45
   },
   {
@@ -5513,7 +5962,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "d8a900eeabe2c8e078af7163baff699e128ab3cf",
+    "sourceFingerprint": "cf204832c0fab8d6bd5bfb6d5f209fd15d745d13",
     "timeEstimateSec": 45
   },
   {
@@ -5719,22 +6168,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Section Formula — Internal and External Division?",
     "correct": "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)",
-    "options": {
-      "A": "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
-      "B": "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
-      "C": "\\(\\vec{p}_{\\text{int}} = \\dfrac{m\\vec{b} + n\\vec{a}}{m + n}\\)",
-      "D": "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)",
+      "\\(|k\\vec{v}| = |k|\\,|\\vec{v}|\\)",
+      "\\(\\hat{v} = \\dfrac{\\vec{v}}{|\\vec{v}|}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "External division: denominator is \\(m - n\\), not \\(m + n\\): The most common bug. The external-section formula reverses one sign in the numerator AND swaps the denominator's plus for a minus. If \\(m = n\\), external division is undefined (the point is at infinity) — another way to spot you've mis-set up an internal problem as external.",
       "Watch the ratio order — \\(m : n\\) means \\(AP : PB\\), not \\(AP : AB\\): PYQs often phrase it as \\\"divides \\(AB\\) in ratio \\(2 : 3\\)\\\" — that is \\(AP : PB = 2 : 3\\), so \\(m = 2\\) (the part nearer \\(B\\)) and \\(n = 3\\) (the part nearer \\(A\\)). Reversing them gives the wrong answer."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "4323d38a42d745b40026d0e7e1d4254d52f84759",
+    "sourceFingerprint": "d62b0b8dfc1a4b08f84fdb80486b696be473a43a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "vectors",
+    "subtopicSlug": "position-vectors-section",
+    "conceptSlug": "section-formula-internal-external",
+    "atomId": "section-formula-internal-external:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Section Formula — Internal and External Division?",
+    "correct": "\\(\\vec{p}_{\\text{ext}} = \\dfrac{m\\vec{b} - n\\vec{a}}{m - n}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\vec{a}\\cdot\\vec{a} = 1\\)",
+      "\\(\\vec{v} = v_1\\hat{i} + v_2\\hat{j} + v_3\\hat{k}\\)",
+      "\\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "External division: denominator is \\(m - n\\), not \\(m + n\\): The most common bug. The external-section formula reverses one sign in the numerator AND swaps the denominator's plus for a minus. If \\(m = n\\), external division is undefined (the point is at infinity) — another way to spot you've mis-set up an internal problem as external.",
+      "Watch the ratio order — \\(m : n\\) means \\(AP : PB\\), not \\(AP : AB\\): PYQs often phrase it as \\\"divides \\(AB\\) in ratio \\(2 : 3\\)\\\" — that is \\(AP : PB = 2 : 3\\), so \\(m = 2\\) (the part nearer \\(B\\)) and \\(n = 3\\) (the part nearer \\(A\\)). Reversing them gives the wrong answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "4dcc68917300d32d7ca41373e094805168425c5e",
     "timeEstimateSec": 45
   },
   {

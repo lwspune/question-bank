@@ -257,7 +257,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": true,
-    "sourceFingerprint": "166ff2faf055a8ebcffec7d46143556d39d8e4f8",
+    "sourceFingerprint": "abb33c55cb31ed0d141b30fabf9155b25f72c01b",
     "timeEstimateSec": 45
   },
   {
@@ -544,7 +544,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": true,
-    "sourceFingerprint": "a31ea9b9e6d65ce7c7d77462e6a20d5b9a8bf634",
+    "sourceFingerprint": "b5dc2d569f078859842034378df893398f36be46",
     "timeEstimateSec": 45
   },
   {
@@ -801,7 +801,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "2bb8af49d4280376d61420a40512a09ed5bf5aea",
+    "sourceFingerprint": "56f68c3fbc3274133a068b290110ca672e59515d",
     "timeEstimateSec": 45
   },
   {
@@ -1488,7 +1488,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "2c84d3576ec68dc61d2f1b0f93ddcb1e293fa1f4",
+    "sourceFingerprint": "2279d8f5ba867aa32d004392baa31031bc7b389b",
     "timeEstimateSec": 45
   },
   {
@@ -1633,19 +1633,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Diagonal, scalar, and identity matrices?",
     "correct": "\\(\\det D = \\prod_i d_i\\)",
-    "options": {
-      "A": "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
-      "B": "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
-      "C": "\\(\\det D = \\prod_i d_i\\)",
-      "D": "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "6974977e91d49ed47ae36d873c1dbab3cd4a2a2d",
+    "sourceFingerprint": "7c7dc987bfffe5782e4eb249aa679970e946b41b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "diagonal-scalar-identity",
+    "atomId": "diagonal-scalar-identity:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Diagonal, scalar, and identity matrices?",
+    "correct": "\\(D^{-1} = \\operatorname{diag}\\!\\left(\\tfrac{1}{d_1}, \\dots, \\tfrac{1}{d_n}\\right)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^T = B^T A^T\\)",
+      "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
+      "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "52443b7a169b6a9f0b5ab83669c364f260626118",
     "timeEstimateSec": 45
   },
   {
@@ -1764,19 +1789,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Orthogonal matrices?",
     "correct": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
-    "options": {
-      "A": "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)",
-      "B": "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
-      "C": "\\((AB)^T = B^T A^T\\)",
-      "D": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)"
-    },
-    "answer": "D",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\((AB)^T = B^T A^T\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "ade610a279904b2415a6d274c8d16bb81f4dc65b",
+    "sourceFingerprint": "1a540edd089235df383fec44e8225c566874f6d8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "orthogonal-matrices",
+    "atomId": "orthogonal-matrices:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Orthogonal matrices?",
+    "correct": "\\(\\det A = \\pm 1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "2bc8984e40cbfb75f734e96d90c1a4b43ff53d0b",
     "timeEstimateSec": 45
   },
   {
@@ -1921,19 +1971,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Rotation matrices?",
     "correct": "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
-    "options": {
-      "A": "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
-      "B": "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
-      "C": "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\)",
-      "D": "\\(\\det D = \\prod_i d_i\\)"
-    },
-    "answer": "B",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\)",
+      "\\(\\det D = \\prod_i d_i\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "444afc8d40fd0fcac27919fa859ab1d371ead9aa",
+    "sourceFingerprint": "cc2b9dd1592bea3631f12f6393dad74448ac172d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "rotation-matrices",
+    "atomId": "rotation-matrices:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Rotation matrices?",
+    "correct": "\\(R(\\theta)^n = R(n\\theta)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "e50a5a730e0603d0c34028721147ba46ac1bf626",
     "timeEstimateSec": 45
   },
   {
@@ -2164,7 +2239,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "f66d76ec1ff0b2469930a3441b37d6fc39472996",
+    "sourceFingerprint": "e3c5e288f293c4f3527c4cf95014d4d2e85a533a",
     "timeEstimateSec": 45
   },
   {
@@ -2309,22 +2384,50 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Determinant of products, scalars, and powers?",
     "correct": "\\(\\det(AB) = \\det A\\,\\det B\\)",
-    "options": {
-      "A": "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
-      "B": "\\(i = i\\)",
-      "C": "\\(\\det(AB) = \\det A\\,\\det B\\)",
-      "D": "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
+      "\\(i = i\\)",
+      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
       "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "31d91867f69663d71c14f2eab372385fc2017c3e",
+    "sourceFingerprint": "c5b2cfa828844ffa517d774218e1e5bb58b8345d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "det-products-scalar-powers",
+    "atomId": "det-products-scalar-powers:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinant of products, scalars, and powers?",
+    "correct": "\\(\\det(kA) = k^{\\,n}\\det A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "4a9dad1254ddede0c57852e6dbd5c90e2277ccbf",
     "timeEstimateSec": 45
   },
   {
@@ -2835,7 +2938,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "4bc03f3c39de2e68141074b48afe8ce8c00c3ecf",
+    "sourceFingerprint": "094a1f561a4ba07a71ce9f759919993d1491b6a8",
     "timeEstimateSec": 45
   },
   {
@@ -2992,7 +3095,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "7c2be87814a4f2210cee3cc0dc32f305c11c25c0",
+    "sourceFingerprint": "9cfdb035c8208fd1b4c1858c405d49bf99c51869",
     "timeEstimateSec": 45
   },
   {
@@ -3381,7 +3484,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "e90141fe21d089b8b956b5f8c81092ad7fb7c1ed",
+    "sourceFingerprint": "3088ef0f6b184d7932c4e5a04ed1570a99aaa164",
     "timeEstimateSec": 45
   },
   {
@@ -3574,7 +3677,7 @@
     ],
     "status": "auto",
     "looksMcqClean": true,
-    "sourceFingerprint": "174f41a8a5dfa134979060c1959e53d55bc974ea",
+    "sourceFingerprint": "92e3f0c1266a449213e575036c22e3075f078bbe",
     "timeEstimateSec": 45
   },
   {
@@ -3883,19 +3986,96 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Determinants with complex entries?",
     "correct": "\\(i = i\\)",
-    "options": {
-      "A": "\\(i = i\\)",
-      "B": "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
-      "C": "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
-      "D": "\\((AB)^{-1} = B^{-1}A^{-1}\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
+      "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "466e05073efe359ef8b7f2c09650af191acd84db",
+    "sourceFingerprint": "688fb2f938b78e7fea0b9ee0404f0bccc34d773c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-determinants",
+    "conceptSlug": "complex-entry-determinants",
+    "atomId": "complex-entry-determinants:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinants with complex entries?",
+    "correct": "\\(i^2 = -1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "c908629bb539bb08b3dfdb94218d92e950c3d70e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-determinants",
+    "conceptSlug": "complex-entry-determinants",
+    "atomId": "complex-entry-determinants:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinants with complex entries?",
+    "correct": "\\(i^3 = -i\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "b6e5074f93ec2d6f38a116ff38a6eb54b1da6c1b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-determinants",
+    "conceptSlug": "complex-entry-determinants",
+    "atomId": "complex-entry-determinants:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinants with complex entries?",
+    "correct": "\\(i^4 = 1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "ce641fef45d30d2c57e7ca45469090af0b58d8be",
     "timeEstimateSec": 45
   },
   {
@@ -4040,19 +4220,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Cube-root-of-unity determinants?",
     "correct": "\\(\\omega^3 = 1\\)",
-    "options": {
-      "A": "\\(\\omega^3 = 1\\)",
-      "B": "\\(\\det D = \\prod_i d_i\\)",
-      "C": "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
-      "D": "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det D = \\prod_i d_i\\)",
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "8eaf9288c21bac0787b5839c8d8620a112c606db",
+    "sourceFingerprint": "b69af929d5bd3f506d2e834443d44f7965e73ec0",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-determinants",
+    "conceptSlug": "roots-of-unity-determinants",
+    "atomId": "roots-of-unity-determinants:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Cube-root-of-unity determinants?",
+    "correct": "\\(1 + \\omega + \\omega^2 = 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
+      "\\(i = i\\)",
+      "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "f3710d3794792c9f2422ab341a9ae0b28bd3a51e",
     "timeEstimateSec": 45
   },
   {
@@ -4301,19 +4506,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Minors, cofactors, and expansion?",
     "correct": "\\(\\sum_j a_{ij}C_{ij} = \\det A\\)",
-    "options": {
-      "A": "\\(\\omega^3 = 1\\)",
-      "B": "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
-      "C": "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
-      "D": "\\(\\sum_j a_{ij}C_{ij} = \\det A\\)"
-    },
-    "answer": "D",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\omega^3 = 1\\)",
+      "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
+      "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "39c6170cf32dbeafdfdea493684e8398cad0bc23",
+    "sourceFingerprint": "66434fca96930b097a923e6b88b371f307014438",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "minors-and-cofactors",
+    "atomId": "minors-and-cofactors:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Minors, cofactors, and expansion?",
+    "correct": "\\(\\sum_j a_{ij}C_{kj} = 0\\ (k \\neq i)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(\\det D = \\prod_i d_i\\)",
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "ee5df14d8c97c60130bfdb8ceb0dc9c61d0ad28d",
     "timeEstimateSec": 45
   },
   {
@@ -4470,7 +4700,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "cab3afb201a2fee8a6d974069619570f37193fd7",
+    "sourceFingerprint": "e3e53d5bba7149ece4345bdc07cb95e6fa749322",
     "timeEstimateSec": 45
   },
   {
@@ -4615,19 +4845,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Adjoint power formulas?",
     "correct": "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
-    "options": {
-      "A": "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
-      "B": "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\)",
-      "C": "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
-      "D": "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
-    "sourceFingerprint": "484705d4ffab54bbfc3076741eb3c467c8e3e71d",
+    "sourceFingerprint": "d23f1d70d3929fffb500b784f7a1eece9cdadc18",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "adjoint-properties",
+    "atomId": "adjoint-properties:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Adjoint power formulas?",
+    "correct": "\\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{\\,n-2}A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^T = B^T A^T\\)",
+      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
+      "\\(x = \\frac{\\Delta_x}{\\Delta}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "4a61b4322934658e00cfadae357af5af9eba3725",
     "timeEstimateSec": 45
   },
   {
@@ -4798,19 +5053,44 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Inverse via the adjoint?",
     "correct": "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
-    "options": {
-      "A": "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
-      "B": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
-      "C": "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
-      "D": "\\(\\det D = \\prod_i d_i\\)"
-    },
-    "answer": "A",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
+      "\\(\\det D = \\prod_i d_i\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "2466abc1bb152f4d4e0c114aefaf5dbb69ceb27c",
+    "sourceFingerprint": "7ed7341c77e3a9c7c4d6dfca70adff7c60c1a533",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-via-adjoint",
+    "atomId": "inverse-via-adjoint:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Inverse via the adjoint?",
+    "correct": "\\((|A| \\neq 0)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\(\\det(AB) = \\det A\\,\\det B\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "534d80dfe64f29d300f6ad5c3303c40ba9fbe0a4",
     "timeEstimateSec": 45
   },
   {
@@ -4967,7 +5247,7 @@
     "trapHints": [],
     "status": "auto",
     "looksMcqClean": true,
-    "sourceFingerprint": "01696837adfbb96ad7767c95e121777ea41a981e",
+    "sourceFingerprint": "26fc38c77be543dc4a744d6e2620cbc9d5d30368",
     "timeEstimateSec": 45
   },
   {
@@ -5346,19 +5626,70 @@
     "theme": "formula",
     "stem": "Which of the following is the formula for Cramer's rule?",
     "correct": "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
-    "options": {
-      "A": "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
-      "B": "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
-      "C": "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
-      "D": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)"
-    },
-    "answer": "C",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)"
+    ],
+    "distractorSource": null,
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": true,
-    "sourceFingerprint": "71828bea01b681305bf4435d6bad8d4118391e77",
+    "sourceFingerprint": "7c929c5a16e231f19c4560c27e42561fb18fed0b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "linear-systems",
+    "conceptSlug": "cramers-rule",
+    "atomId": "cramers-rule:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Cramer's rule?",
+    "correct": "\\(y = \\frac{\\Delta_y}{\\Delta}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(i = i\\)",
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "aa67ebf84377d0d63827a27f16f4a6c078111843",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "linear-systems",
+    "conceptSlug": "cramers-rule",
+    "atomId": "cramers-rule:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Cramer's rule?",
+    "correct": "\\(z = \\frac{\\Delta_z}{\\Delta}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
+      "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "43a99329945e5861776c4df5a96866df00b17b12",
     "timeEstimateSec": 45
   },
   {

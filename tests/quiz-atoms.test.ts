@@ -119,45 +119,40 @@ describe("isBundleFormula", () => {
 });
 
 describe("harvestFormulaConcept", () => {
-  it("uses the LEAD formula as the correct answer for a BUNDLE concept (clean single-formula auto MCQ)", () => {
-    const atom = harvestFormulaConcept(
+  it("splits a BUNDLE concept into one needs_review slot per piece (for hand-authoring)", () => {
+    const atoms = harvestFormulaConcept(
       CTX,
       "Sum of Deviations & Empirical Relations",
-      "\\sum(x_i-\\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}",
+      "\\sum(x_i-\\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}",
       ["P=1-P(E')", "x = \\dfrac{L+U}{2}", "\\sigma^2 = \\dfrac{n^2-1}{12}"]
     );
-    expect(atom.status).toBe("auto"); // clean now — back in the publishable pool
-    expect(atom.correct).toBe("\\(\\sum(x_i-\\bar{x}) = 0\\)"); // lead piece only
-    expect(atom.options![atom.answer!]).toBe("\\(\\sum(x_i-\\bar{x}) = 0\\)");
+    expect(atoms).toHaveLength(3);
+    expect(atoms.every((a) => a.status === "needs_review")).toBe(true);
+    expect(atoms[0].correct).toBe("\\(\\sum(x_i-\\bar{x}) = 0\\)"); // trailing comma stripped
+    expect(atoms[1].correct).toContain("Mode");
+    expect(atoms.map((a) => a.atomId)).toEqual([
+      "classical-probability:formula:0",
+      "classical-probability:formula:1",
+      "classical-probability:formula:2",
+    ]);
   });
 
-  it("drops a trailing CONDITION from a bundle's correct answer", () => {
-    const atom = harvestFormulaConcept(
-      CTX,
-      "Inverse via the adjoint",
-      "A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A \\quad (|A| \\neq 0)",
-      ["\\det(AB) = \\det A\\,\\det B", "x = \\dfrac{L+U}{2}", "\\sigma^2 = \\dfrac{n^2-1}{12}"]
-    );
-    expect(atom.correct).toBe("\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)");
-  });
-
-  it("builds an AUTO atom with sibling-formula distractors", () => {
-    const atom = harvestFormulaConcept(
+  it("builds ONE AUTO atom for a single-formula concept", () => {
+    const [atom, ...rest] = harvestFormulaConcept(
       CTX,
       "Classical probability",
       "P=\\dfrac{n(E)}{n(S)}",
       ["P=1-P(E')", "P(A\\cup B)=P(A)+P(B)", "P=n(E)\\times n(S)"]
     );
+    expect(rest).toHaveLength(0);
     expect(atom.status).toBe("auto");
-    expect(atom.options).not.toBeNull();
-    expect(atom.answer).not.toBeNull();
     expect(atom.options![atom.answer!]).toBe("\\(P=\\dfrac{n(E)}{n(S)}\\)");
     expect(atom.distractorSource).toBe("sibling");
     expect(atom.atomId).toBe("classical-probability:formula:0");
   });
 
-  it("reduces bundled sibling formulas to their lead expression in the options", () => {
-    const atom = harvestFormulaConcept(
+  it("reduces bundled SIBLING formulas to their lead expression in the options", () => {
+    const [atom] = harvestFormulaConcept(
       CTX,
       "Standard deviation",
       "\\sigma = \\sqrt{\\dfrac{1}{n}\\sum (x_i-\\bar{x})^2}",
@@ -168,15 +163,14 @@ describe("harvestFormulaConcept", () => {
       ]
     );
     const distractorVals = Object.values(atom.options!).filter((v) => v !== atom.options![atom.answer!]);
-    // No option still carries a \qquad/\quad bundle separator.
     for (const v of distractorVals) {
-      expect(v).not.toMatch(/\\qquad|\\quad/);
+      expect(v).not.toMatch(/\\qquad|\\quad/); // no bundled separator survives
     }
     expect(distractorVals).toContain("\\(r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y}\\)");
   });
 
   it("falls back to needs_review when siblings are too few", () => {
-    const atom = harvestFormulaConcept(CTX, "X", "a=b", ["c=d"]);
+    const [atom] = harvestFormulaConcept(CTX, "X", "a=b", ["c=d"]);
     expect(atom.status).toBe("needs_review");
     expect(atom.options).toBeNull();
   });
@@ -268,7 +262,7 @@ describe("harvestConcept", () => {
   });
 
   it("maps an atom to its snake_case DB row (incl. theme)", () => {
-    const atom = harvestFormulaConcept(CTX, "X", "a=b", ["c=d", "e=f", "g=h"]);
+    const [atom] = harvestFormulaConcept(CTX, "X", "a=b", ["c=d", "e=f", "g=h"]);
     const row = atomToRow(atom);
     expect(row.atom_key).toBe(atom.atomId);
     expect(row.source_kind).toBe("formula");
@@ -278,7 +272,7 @@ describe("harvestConcept", () => {
   });
 
   it("defaults theme from source kind", () => {
-    expect(harvestFormulaConcept(CTX, "X", "a=b", ["c", "d", "e"]).theme).toBe("formula");
+    expect(harvestFormulaConcept(CTX, "X", "a=b", ["c", "d", "e"])[0].theme).toBe("formula");
     const refAtoms = harvestReferenceTable(CTX, {
       columns: ["A", "B"],
       rows: [{ cells: ["1", "x"] }, { cells: ["2", "y"] }],
