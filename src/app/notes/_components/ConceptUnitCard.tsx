@@ -123,6 +123,8 @@ import QeRootsInInterval from "./visualizations/QeRootsInInterval";
 import BtPascalTriangle from "./visualizations/BtPascalTriangle";
 import PtTriangleLabeled from "./visualizations/PtTriangleLabeled";
 import PtCircumIncircle from "./visualizations/PtCircumIncircle";
+import ConicsParabolaDiagram from "./visualizations/ConicsParabolaDiagram";
+import ConicsEllipseDiagram from "./visualizations/ConicsEllipseDiagram";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -347,6 +349,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <PtTriangleLabeled />;
     case "pt-circumcircle-incircle":
       return <PtCircumIncircle />;
+    case "conics-parabola-diagram":
+      return <ConicsParabolaDiagram />;
+    case "conics-ellipse-diagram":
+      return <ConicsEllipseDiagram />;
   }
 }
 
