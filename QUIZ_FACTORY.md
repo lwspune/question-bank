@@ -126,6 +126,34 @@ Snapshot **2026-06-09** — refresh with:
 
 ---
 
+## Changing the harvester (`src/lib/quiz/atoms.ts`)
+
+The committed `scripts/quiz/atoms/*.json` are GENERATOR OUTPUT — they're only as
+current as the harvester code that last produced them. So when you change
+`atoms.ts`, a chapter's JSON that predates the change will show a diff on the next
+`quiz:harvest` **even though nobody edited the notes** — that's the generator, not
+content drift. Two such changes are baked in:
+
+- **Formula stems use the concept `name`**, not `formula.label` (a pedagogical
+  nickname like "Sieve Inequality" is meaningless standalone). Changing the stem
+  subject also re-keys its `sourceFingerprint`.
+- **`leadFormula()` declutters distractors.** Sibling formula LaTeX is often a
+  multi-formula bundle (`… \qquad … \qquad …`) — fine as a correct answer, noisy
+  as a distractor. `leadFormula` trims a bundle to its leading expression (splits
+  on `\qquad`/`\quad` only, never commas; strips a trailing comma) for distractor
+  use; the **correct answer keeps full form**.
+
+**Procedure when you edit the harvester:** re-harvest EVERY chapter whose atoms
+the change touches (e.g. all chapters with `formula` atoms — `grep -l
+'"sourceKind": ?"formula"' scripts/quiz/atoms/*.json`), then `quiz:sync`. Before
+committing the regenerated JSON, **diff and confirm `correct` + `answer` are
+unchanged** (`git diff <json> | grep -E '"(correct|answer)":'` → empty) so no
+question's key moved — stem/fingerprint/options changes are expected and safe.
+Don't leave a subset regenerated: a JSON that disagrees with the generator
+produces a "mystery diff" for the next person to harvest.
+
+---
+
 ## Maintenance
 
 Update this file when: a chapter changes state (edit the **Chapter Status** table),
