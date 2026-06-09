@@ -13,6 +13,7 @@ import {
   getPublicQuizBySlug,
   getGradingBySlug,
   recordLead,
+  resolvePublicQuizForChapter,
 } from "@/lib/quiz/publicQuiz";
 
 const HAS_ENV =
@@ -22,6 +23,9 @@ const HAS_ENV =
 const STAMP = Date.now();
 const QUIZ_ID = "00000000-0000-4000-8000-" + String(STAMP).padStart(12, "0").slice(-12);
 const PUBLIC_SLUG = `pubtest-${STAMP}`;
+// Chapter token so the published quiz's slug follows the `${route}-${chapter}-…`
+// convention that resolvePublicQuizForChapter matches on.
+const CH = `resq${STAMP}`;
 const PRIVATE_SLUG_QUIZ_ID = "00000000-0000-4000-8001-" + String(STAMP).padStart(12, "0").slice(-12);
 const MOBILE = "91" + String(9000000000 + (STAMP % 1000000000));
 
@@ -38,7 +42,7 @@ describe.skipIf(!HAS_ENV)("public-quiz server reads + lead recording", () => {
 
     // A PUBLIC quiz + a PRIVATE one (public_slug null) to prove the gate.
     await admin.from("quizzes").insert([
-      { id: QUIZ_ID, slug: `pubtest-pub-${STAMP}`, exam: "NDA", subject: "Maths", title: "Public Test Quiz", chapter: "Probability", status: "published", public_slug: PUBLIC_SLUG },
+      { id: QUIZ_ID, slug: `nda-maths-${CH}-formula-1`, exam: "NDA", subject: "Maths", title: "Public Test Quiz", chapter: "Probability", status: "published", public_slug: PUBLIC_SLUG },
       { id: PRIVATE_SLUG_QUIZ_ID, slug: `pubtest-priv-${STAMP}`, exam: "NDA", subject: "Maths", title: "Private Test Quiz", chapter: "Probability", status: "draft" },
     ]);
 
@@ -95,6 +99,15 @@ describe.skipIf(!HAS_ENV)("public-quiz server reads + lead recording", () => {
     expect(g!.quizId).toBe(QUIZ_ID);
     expect(g!.questions.map((q) => q.answer)).toEqual(["A", "B", "C"]);
     expect(g!.questions[0]).toMatchObject({ q: 1, subjectRoute: "nda-maths", chapterSlug: "probability" });
+  });
+
+  it("resolves the newest published quiz for a chapter; null when none", async () => {
+    const ref = await resolvePublicQuizForChapter(admin, "nda-maths", CH);
+    expect(ref).not.toBeNull();
+    expect(ref!.publicSlug).toBe(PUBLIC_SLUG);
+    expect(ref!.title).toBe("Public Test Quiz");
+    expect(ref!.questionCount).toBe(3);
+    expect(await resolvePublicQuizForChapter(admin, "nda-maths", "no-such-chapter-xyz")).toBeNull();
   });
 
   it("records a lead, and a retake bumps attempts + keeps best_score (one row)", async () => {

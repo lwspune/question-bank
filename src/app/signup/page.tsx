@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BookOpen, Eye, EyeOff, MailCheck } from "lucide-react";
@@ -21,6 +21,18 @@ export default function SignupPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmSent, setConfirmSent] = useState(false);
+  // Honour ?next= (e.g. a quiz CTA → /pricing) and ?utm_source= (attribution:
+  // which quiz drove this signup). Read from window to avoid a useSearchParams
+  // Suspense boundary on this client page.
+  const [next, setNext] = useState("/browse");
+  const [signupSource, setSignupSource] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const n = params.get("next");
+    if (n && n.startsWith("/")) setNext(n);
+    setSignupSource(params.get("utm_source") ?? undefined);
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -37,6 +49,7 @@ export default function SignupPage() {
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
+      options: signupSource ? { data: { signup_source: signupSource } } : undefined,
     });
 
     if (signUpError) {
@@ -49,7 +62,7 @@ export default function SignupPage() {
     // If a project leaves confirmation ON, there's no session; show the
     // check-your-email state instead of failing silently.
     if (data.session) {
-      router.replace("/browse");
+      router.replace(next);
       router.refresh();
       return;
     }
@@ -94,7 +107,7 @@ export default function SignupPage() {
                 </p>
               </header>
 
-              <GoogleSignInButton next="/browse" />
+              <GoogleSignInButton next={next} signupSource={signupSource} />
 
               <div className="my-5 flex items-center gap-3">
                 <span className="h-px flex-1 bg-border" />

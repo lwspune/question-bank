@@ -115,6 +115,39 @@ export async function getGradingBySlug(
   };
 }
 
+export type PublicQuizRef = { publicSlug: string; title: string; questionCount: number };
+
+/**
+ * The newest PUBLISHED public quiz for a notes chapter, for the "Test yourself"
+ * CTA on /notes pages — or null if none is published. Matches on the assembled
+ * slug convention `${route}-${chapter}-${theme}-N` (see assemble.ts), so it needs
+ * no atoms join; public_slug NOT NULL is the published gate.
+ */
+export async function resolvePublicQuizForChapter(
+  db: SupabaseClient,
+  route: string,
+  chapter: string
+): Promise<PublicQuizRef | null> {
+  const { data } = await db
+    .from("quizzes")
+    .select("id, public_slug, title")
+    .like("slug", `${route}-${chapter}-%`)
+    .not("public_slug", "is", null)
+    .order("created_at", { ascending: false })
+    .limit(1);
+  if (!data || data.length === 0) return null;
+  const quiz = data[0];
+  const { count } = await db
+    .from("quiz_atoms_map")
+    .select("atom_id", { count: "exact", head: true })
+    .eq("quiz_id", quiz.id as string);
+  return {
+    publicSlug: quiz.public_slug as string,
+    title: quiz.title as string,
+    questionCount: count ?? 0,
+  };
+}
+
 export type RecordLeadInput = {
   quizId: string;
   name: string;

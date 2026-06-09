@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, BookOpen, Compass } from "lucide-react";
+import { ArrowUpRight, BookOpen, Compass, Sparkles } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { resolvePublicQuizForChapter } from "@/lib/quiz/publicQuiz";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { isNotesGated, splitPreview } from "@/lib/notes/access";
@@ -93,6 +95,20 @@ export default async function NotesSubtopicPage({
   const chapterName = chapter.chapter.chapterName;
   const guideHref = `/guide/${chapter.subjectRoute}`;
   const metaSuffix = `${chapter.subjectDisplay} ${chapterName} notes`;
+
+  // "Test yourself" CTA — the newest published public quiz for this chapter, if
+  // any (null hides the CTA). Read-self-recall funnel into the lead capture.
+  // Guarded so a DB/env hiccup never fails the (ISR-prerendered) notes page.
+  let publicQuiz = null;
+  try {
+    publicQuiz = await resolvePublicQuizForChapter(
+      createSupabaseAdminClient(),
+      chapter.subjectRoute,
+      chapter.chapterSlug
+    );
+  } catch {
+    publicQuiz = null;
+  }
 
   const supabase = createSupabaseAnonClient();
 
@@ -257,6 +273,20 @@ export default async function NotesSubtopicPage({
             ))}
           </ol>
         </nav>
+      )}
+
+      {publicQuiz && !gated && (
+        <Link
+          href={`/quiz/${publicQuiz.publicSlug}`}
+          className="mb-10 flex items-center gap-3 rounded-lg border border-brand/30 bg-brand/5 p-4 transition-colors hover:bg-brand/10"
+        >
+          <Sparkles className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
+          <span className="flex-1 text-sm">
+            <span className="font-medium">Test yourself</span> — a quick{" "}
+            {publicQuiz.questionCount}-question {chapterName} recall quiz, instant score.
+          </span>
+          <ArrowUpRight className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+        </Link>
       )}
 
       {/* The body: concept units in sequence (sliced to the free preview when

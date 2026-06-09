@@ -16,9 +16,13 @@ import { cn } from "@/lib/utils";
  */
 export default function GoogleSignInButton({
   next = "/browse",
+  signupSource,
   className,
 }: {
   next?: string;
+  /** Attribution (e.g. "quiz") — forwarded to the callback, which stamps it onto
+   *  user_metadata.signup_source for first-time OAuth sign-ups. */
+  signupSource?: string;
   className?: string;
 }) {
   const [loading, setLoading] = useState(false);
@@ -28,7 +32,8 @@ export default function GoogleSignInButton({
     setLoading(true);
     setError(null);
     const supabase = createSupabaseBrowserClient();
-    const redirectTo = `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(next)}`;
+    const src = signupSource ? `&signup_source=${encodeURIComponent(signupSource)}` : "";
+    const redirectTo = `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(next)}${src}`;
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo },
