@@ -99,6 +99,11 @@ import {
   CONICS_SLUGS,
 } from "@/app/notes/nda-maths/conics/_data";
 import {
+  INVERSE_TRIGONOMETRY_CHAPTER,
+  INVERSE_TRIGONOMETRY_NOTES,
+  INVERSE_TRIGONOMETRY_SLUGS,
+} from "@/app/notes/nda-maths/inverse-trigonometry/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -441,6 +446,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CONICS_CHAPTER,
     notes: CONICS_NOTES,
     slugs: CONICS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "inverse-trigonometry",
+    chipLabel: "Inverse Trigonometry notes",
+    chapter: INVERSE_TRIGONOMETRY_CHAPTER,
+    notes: INVERSE_TRIGONOMETRY_NOTES,
+    slugs: INVERSE_TRIGONOMETRY_SLUGS,
   },
   {
     examName: "NDA",

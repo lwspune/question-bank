@@ -197,7 +197,9 @@ export type VisualizationSlug =
   | "pt-circumcircle-incircle"
   // NDA Maths — Conics chapter
   | "conics-parabola-diagram"
-  | "conics-ellipse-diagram";
+  | "conics-ellipse-diagram"
+  // NDA Maths — Inverse Trigonometry chapter
+  | "it-principal-ranges";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
