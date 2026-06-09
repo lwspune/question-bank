@@ -40,15 +40,18 @@ export default function PrimaryNav({ bankHref, guidesHref, notesHref }: Props) {
             key={id}
             href={href}
             aria-current={isActive ? "page" : undefined}
+            aria-label={label}
             className={
-              "group inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 " +
+              // Icon-only on phones (label hidden) so the 3 tabs + exam pill +
+              // account all fit at 360px; label returns from sm: up.
+              "group inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 sm:py-1.5 " +
               (isActive
                 ? "bg-brand-accent/10 text-brand-accent"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground")
             }
           >
-            <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            <span>{label}</span>
+            <Icon className="h-4 w-4 shrink-0 sm:h-3.5 sm:w-3.5" aria-hidden />
+            <span className="hidden sm:inline">{label}</span>
           </Link>
         );
       })}
