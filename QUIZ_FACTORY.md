@@ -170,6 +170,17 @@ question's key moved — stem/fingerprint/options changes are expected and safe.
 Don't leave a subset regenerated: a JSON that disagrees with the generator
 produces a "mystery diff" for the next person to harvest.
 
+**⚠️ Re-harvesting breaks quizzes that already CONTAIN the changed atoms.** A
+quiz stores a `quiz_atoms_map` → `atom_id` and reads each question's options LIVE.
+So if an atom already in an assembled quiz changes status to non-ready (e.g. a
+bundle-formula `auto` atom split into `needs_review` slots, options → null), that
+quiz now renders a question with NO options. After any re-harvest/re-classify,
+run **`npm run quiz:lint`** — its "quiz integrity" section lists every assembled
+quiz that maps a broken (optionless / non-ready) atom. Fix by **re-assembling**
+those chapters (the new quizzes pull the current clean atoms) or **deleting** the
+stale quizzes from `quizzes` (cascade clears the map). Pushed/published copies on
+nda-tracker are orphaned until re-pushed or deleted there.
+
 ---
 
 ## Maintenance
