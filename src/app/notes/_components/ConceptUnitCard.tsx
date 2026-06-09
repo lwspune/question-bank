@@ -118,6 +118,8 @@ import DefintGreatestIntegerArea from "./visualizations/DefintGreatestIntegerAre
 import DefintAbsoluteValueFold from "./visualizations/DefintAbsoluteValueFold";
 import DefeqFamilyOfCurves from "./visualizations/DefeqFamilyOfCurves";
 import DefeqGrowthDecay from "./visualizations/DefeqGrowthDecay";
+import QeDiscriminantParabola from "./visualizations/QeDiscriminantParabola";
+import QeRootsInInterval from "./visualizations/QeRootsInInterval";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -332,6 +334,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <DefeqFamilyOfCurves />;
     case "defeq-growth-decay":
       return <DefeqGrowthDecay />;
+    case "qe-discriminant-parabola":
+      return <QeDiscriminantParabola />;
+    case "qe-roots-in-interval":
+      return <QeRootsInInterval />;
   }
 }
 
