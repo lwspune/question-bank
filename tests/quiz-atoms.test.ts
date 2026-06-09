@@ -119,15 +119,26 @@ describe("isBundleFormula", () => {
 });
 
 describe("harvestFormulaConcept", () => {
-  it("holds a BUNDLE-formula concept at needs_review (out of the auto pool)", () => {
+  it("uses the LEAD formula as the correct answer for a BUNDLE concept (clean single-formula auto MCQ)", () => {
     const atom = harvestFormulaConcept(
       CTX,
       "Sum of Deviations & Empirical Relations",
       "\\sum(x_i-\\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}",
       ["P=1-P(E')", "x = \\dfrac{L+U}{2}", "\\sigma^2 = \\dfrac{n^2-1}{12}"]
     );
-    expect(atom.status).toBe("needs_review");
-    expect(atom.options).not.toBeNull(); // options still built, just held for review
+    expect(atom.status).toBe("auto"); // clean now — back in the publishable pool
+    expect(atom.correct).toBe("\\(\\sum(x_i-\\bar{x}) = 0\\)"); // lead piece only
+    expect(atom.options![atom.answer!]).toBe("\\(\\sum(x_i-\\bar{x}) = 0\\)");
+  });
+
+  it("drops a trailing CONDITION from a bundle's correct answer", () => {
+    const atom = harvestFormulaConcept(
+      CTX,
+      "Inverse via the adjoint",
+      "A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A \\quad (|A| \\neq 0)",
+      ["\\det(AB) = \\det A\\,\\det B", "x = \\dfrac{L+U}{2}", "\\sigma^2 = \\dfrac{n^2-1}{12}"]
+    );
+    expect(atom.correct).toBe("\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)");
   });
 
   it("builds an AUTO atom with sibling-formula distractors", () => {

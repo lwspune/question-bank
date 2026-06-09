@@ -138,10 +138,23 @@ content drift. Two such changes are baked in:
   nickname like "Sieve Inequality" is meaningless standalone). Changing the stem
   subject also re-keys its `sourceFingerprint`.
 - **`leadFormula()` declutters distractors.** Sibling formula LaTeX is often a
-  multi-formula bundle (`… \qquad … \qquad …`) — fine as a correct answer, noisy
-  as a distractor. `leadFormula` trims a bundle to its leading expression (splits
-  on `\qquad`/`\quad` only, never commas; strips a trailing comma) for distractor
-  use; the **correct answer keeps full form**.
+  multi-formula bundle (`… \qquad … \qquad …`) — noisy as a distractor.
+  `leadFormula` trims a bundle to its leading expression (splits on `\qquad`/`\quad`
+  only, never commas; strips a trailing comma) for distractor use.
+- **Bundle-formula concepts: the CORRECT answer is the LEAD formula, not the whole
+  bundle.** A concept whose `formula.latex` bundles several identities (e.g.
+  `Σ(xᵢ−x̄)=0 \quad Mode≈3Med−2Mean \quad MD≈⅘SD`) can't be a fair "which is THE
+  formula?" MCQ with the whole bundle as the answer — the correct option would be a
+  multi-formula blob beside single-formula distractors (a length tell). So
+  `harvestFormulaConcept` sets the correct answer to `leadFormula(latex)` (the
+  primary formula; trailing conditions like `\quad (|A|≠0)` are dropped too). The
+  result is a clean single-formula recall MCQ per concept, all `auto`. The
+  COMPANION identities are dropped from *recall* but stay testable (applied) via
+  the concept's `practiceSet` atoms. `isBundleFormula()` detects the bundle;
+  `quiz:lint` flags any bundle-correct atom that slips through (e.g. a verified
+  override). If a concept's *lead* piece isn't its most exam-relevant formula
+  (e.g. you'd rather test the empirical relation than `Σ(xᵢ−x̄)=0`), hand-tune that
+  one atom via a verify `stem`+`correct`+`distractors` override.
 
 **Procedure when you edit the harvester:** re-harvest EVERY chapter whose atoms
 the change touches (e.g. all chapters with `formula` atoms — `grep -l
