@@ -120,6 +120,7 @@ import DefeqFamilyOfCurves from "./visualizations/DefeqFamilyOfCurves";
 import DefeqGrowthDecay from "./visualizations/DefeqGrowthDecay";
 import QeDiscriminantParabola from "./visualizations/QeDiscriminantParabola";
 import QeRootsInInterval from "./visualizations/QeRootsInInterval";
+import BtPascalTriangle from "./visualizations/BtPascalTriangle";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -338,6 +339,8 @@ function renderVisualization(slug: VisualizationSlug) {
       return <QeDiscriminantParabola />;
     case "qe-roots-in-interval":
       return <QeRootsInInterval />;
+    case "bt-pascal-triangle":
+      return <BtPascalTriangle />;
   }
 }
 

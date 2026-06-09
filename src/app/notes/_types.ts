@@ -189,7 +189,9 @@ export type VisualizationSlug =
   | "defeq-growth-decay"
   // NDA Maths — Quadratic Equations chapter
   | "qe-discriminant-parabola"
-  | "qe-roots-in-interval";
+  | "qe-roots-in-interval"
+  // NDA Maths — Binomial Theorem chapter
+  | "bt-pascal-triangle";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
