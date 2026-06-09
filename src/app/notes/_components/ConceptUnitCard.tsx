@@ -486,8 +486,8 @@ export default function ConceptUnitCard({
         </div>
       )}
 
-      {/* Interactive visualization — slotted between formula and the core
-          teaching slot, matching splitNoteIntoSlides' per-concept order. */}
+      {/* Interactive visualization — slotted between the formula and the core
+          teaching slot in per-concept teaching order. */}
       {concept.visualizationSlug && (
         <div className="mt-6">{renderVisualization(concept.visualizationSlug)}</div>
       )}

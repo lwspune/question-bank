@@ -14,12 +14,10 @@ import { userHasAccess } from "@/lib/entitlements/query";
 import { isNotesGated, splitPreview } from "@/lib/notes/access";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
-import { splitNoteIntoSlides } from "@/lib/notes/splitNoteIntoSlides";
 import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ConceptUnitCard from "./ConceptUnitCard";
-import NotePresenter from "./NotePresenter";
 import NotesPaywall from "./NotesPaywall";
 import SubtopicMasteryCheckpoint from "./SubtopicMasteryCheckpoint";
 import SubtopicSummary from "./SubtopicSummary";
@@ -165,7 +163,6 @@ export default async function NotesSubtopicPage({
     ? `/browse?examId=${taxonomy.examId}&subjectId=${taxonomy.subjectId}&subtopicIds=${subtopicId}`
     : "/browse";
 
-  const slides = splitNoteIntoSlides(note, drillsByConcept);
 
   // Return target for the /browse "← Back to notes" pill: this subtopic's URL
   // (per-concept drills append the concept anchor) + a human label.
@@ -196,25 +193,11 @@ export default async function NotesSubtopicPage({
         description={note.oneLineDefinition}
       />
 
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex-1">
-          <GuideHero
-            eyebrow={`${chapter.subjectDisplay} · ${chapterName}`}
-            title={note.title}
-            subtitle={note.oneLineDefinition}
-          />
-        </div>
-        {!gated && (
-          <div className="shrink-0">
-            <NotePresenter
-              slides={slides}
-              pyqExamples={pyqById}
-              drillHref={drillHref}
-              drillCount={drillCount}
-            />
-          </div>
-        )}
-      </div>
+      <GuideHero
+        eyebrow={`${chapter.subjectDisplay} · ${chapterName}`}
+        title={note.title}
+        subtitle={note.oneLineDefinition}
+      />
 
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
         <Link
