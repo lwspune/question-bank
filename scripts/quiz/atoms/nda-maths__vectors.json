@@ -24,7 +24,7 @@
       "\\(\\overrightarrow{AB}\\) is \\(\\vec{b} - \\vec{a}\\) — head minus tail: Reverse the subtraction and you get \\(\\overrightarrow{BA}\\) — the magnitude is the same but the displacement points the other way. Direction matters whenever the result feeds into a dot product or angle.",
       "Lagrange identity gives you the missing magnitude: Whenever a question gives \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = k\\) together with one magnitude, use the identity \\(|\\vec{a}|^2|\\vec{b}|^2 = |\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2\\) to read the other magnitude off directly. (The same identity is the central formula of \\(\\vec{a}\\times\\vec{b}\\) magnitude work — see the cross-product note.)"
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "7b5f3ad84021f1e625c425b091eb3338777d0f5d",
     "timeEstimateSec": 45
@@ -245,7 +245,7 @@
       "Factor-of-2 trap: \\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = 2\\), not 1: From \\(\\sum\\cos^2 = 1\\) and \\(\\sin^2 = 1 - \\cos^2\\), summing three times: \\(\\sum\\sin^2 = 3 - \\sum\\cos^2 = 3 - 1 = 2\\). The distractor \\(= 1\\) (copying the cosine identity) is the single most common wrong answer in this concept.",
       "Direction cosines can be negative: An obtuse angle with an axis gives a negative cosine — totally fine. Some students try to force \\(l, m, n \\geq 0\\); don't. The identity \\(l^2 + m^2 + n^2 = 1\\) holds with signs."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "e0489d2db988fc612c251a483b9fde64d6c4358d",
     "timeEstimateSec": 45
@@ -470,7 +470,7 @@
       "Divide by \\(|\\vec{b}|\\), not \\(|\\vec{b}|^2\\), for the scalar projection: Vector projection has \\(|\\vec{b}|^2\\) in the denominator because it carries the direction \\(\\vec{b}\\) back into the answer; scalar projection drops the direction and divides only once. Mixing the two is a frequent factor-of-\\(|\\vec{b}|\\) bug.",
       "Sign of the scalar projection encodes obtuse/acute: If the projection comes out negative, the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is obtuse. Don't reach for absolute value automatically — the sign is the information."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "c2ca181c2390c43997a088897a8eb6cd9e411d37",
     "timeEstimateSec": 45
@@ -691,7 +691,7 @@
       "Check that the given angles are consistent with \\(\\sum\\cos^2 = 1\\): A vector cannot make \\(\\alpha = 60^\\circ\\) and \\(\\beta = 45^\\circ\\) with the \\(x\\) and \\(y\\) axes AND have \\(\\gamma\\) acute unless the third cosine fits. From \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\): \\(\\cos^2\\gamma = 1 - \\tfrac{1}{4} - \\tfrac{1}{2} = \\tfrac{1}{4}\\), so \\(\\gamma = 60^\\circ\\) (acute) or \\(120^\\circ\\).",
       "Equally inclined to two axes only fixes one component pair: \\\"Vector inclined equally to \\(x\\) and \\(y\\) axes\\\" means \\(a_1 = a_2\\), which combined with the magnitude pins down both. Don't read it as \\(a_1 = a_2 = a_3\\) — that's three axes, a different constraint."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "78f2bec78019d274f25ab1ca56d6519d68667079",
     "timeEstimateSec": 45
@@ -916,7 +916,7 @@
       "Dot product gives a scalar; cross product gives a vector: An MCQ option that returns a vector for \\(\\vec{a}\\cdot\\vec{b}\\), or a scalar for \\(\\vec{a}\\times\\vec{b}\\), can be eliminated on type grounds alone. This dimension-check rejects ~25% of trap options.",
       "Work done is signed — negative work is fine: If the force has any component opposite to the displacement, the dot product (and the work) can come out negative. Don't reach for absolute value automatically; the sign tells you whether the force is helping or hindering."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "c4e3a3434884458f327acc0ca347138534ddefdf",
     "timeEstimateSec": 45
@@ -1808,7 +1808,7 @@
       "Three unit vectors at equal pairwise angles need not be orthonormal: If \\(\\vec{a}\\cdot\\vec{b} = \\vec{b}\\cdot\\vec{c} = \\vec{c}\\cdot\\vec{a} = k\\), the triple is symmetric but only orthonormal when \\(k = 0\\). For other \\(k\\) values (e.g. \\(k = -1/2\\) — three coplanar vectors at \\(120^\\circ\\)) the magnitudes of linear combinations look quite different.",
       "\\(\\{\\vec{a}, \\vec{b}, \\vec{a}\\times\\vec{b}\\}\\) is orthonormal iff \\(\\vec{a}\\perp\\vec{b}\\) and both unit: If \\(\\vec{a}, \\vec{b}\\) are unit and perpendicular, then \\(|\\vec{a}\\times\\vec{b}| = \\sin 90^\\circ = 1\\) — so the triple is orthonormal. If \\(\\vec{a}\\cdot\\vec{b} \\neq 0\\), the cross product still produces a perpendicular vector, but it's not a unit vector and the basis isn't orthonormal."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "6a4c67ab2a1412f68af68e3635859a0cedb8fb07",
     "timeEstimateSec": 45
@@ -2258,7 +2258,7 @@
       "Area of a triangle is \\(\\tfrac{1}{2}|\\vec{a}\\times\\vec{b}|\\), NOT \\(|\\vec{a}\\times\\vec{b}|\\): A frequently-tested statement: \\\"\\(|\\vec{a}\\times\\vec{b}|\\) is the area of a triangle with sides \\(\\vec{a}\\) and \\(\\vec{b}\\)\\\" — this is FALSE; it's the parallelogram area. The factor-of-2 lives here. Halving gives the triangle.",
       "\\(\\sin\\theta\\) is always non-negative for \\(\\theta\\in[0,\\pi]\\): Unlike \\(\\cos\\theta\\), the sine in the cross-product magnitude formula never goes negative — the magnitude is a length. If a question gives \\(\\vec{a}\\times\\vec{b}\\) as a specific vector and asks for the acute angle, take magnitudes of BOTH sides before solving for \\(\\sin\\theta\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "72b2f37e3cc86243f9227271050442ea881f4688",
     "timeEstimateSec": 45
@@ -3642,7 +3642,7 @@
       "Direction matters in the loop — \\(\\vec{BA} = -\\vec{AB}\\): The identity \\(\\vec{AB}+\\vec{BC}+\\vec{CA}=\\vec{0}\\) requires the sides to be traversed in one consistent direction around the triangle. If a statement reads \\(\\vec{AB}+\\vec{BC}-\\vec{CA}=\\vec{0}\\), it's wrong — that's saying \\(\\vec{AC}\\) instead of \\(\\vec{CA}\\), which reverses one side.",
       "\\(\\vec{AG}\\) is NOT \\(\\vec{g}/3\\) — it is \\(\\vec{g} - \\vec{a}\\): A common factor-of-3 distractor. \\(\\vec{AG}\\) is the displacement from \\(A\\) to \\(G\\), so it equals \\(\\vec{g} - \\vec{a}\\). After algebra \\(\\vec{AG} = \\dfrac{(\\vec{b}-\\vec{a}) + (\\vec{c}-\\vec{a})}{3}\\) — two-thirds of the median from \\(A\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "437fd13ddadb7deda6ef3841c61e6b4137a99136",
     "timeEstimateSec": 45
@@ -3867,7 +3867,7 @@
       "Vertex order \\(ABCD\\) matters: If the vertices are listed in a non-cyclic order, the figure is NOT a parallelogram in the standard sense. \\(\\vec{AB} = \\vec{DC}\\) (not \\(\\vec{CD}\\)) — the equal sides are the ones going in the SAME direction around the figure.",
       "The fourth vertex of a parallelogram: \\(D = A + C - B\\): If \\(A, B, C\\) are three consecutive vertices, \\(\\vec{AD} = \\vec{BC}\\) forces \\(\\vec{d} = \\vec{a} + \\vec{c} - \\vec{b}\\). A factor-of-2 distractor here often offers \\(\\vec{a} + \\vec{c} - 2\\vec{b}\\); reject it."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "48397adc12c4df129b84608fe8965d580722425c",
     "timeEstimateSec": 45
@@ -4566,7 +4566,7 @@
       "Head minus tail — \\(\\vec{AB} = \\vec{b} - \\vec{a}\\), not \\(\\vec{a} - \\vec{b}\\): Reverse the subtraction and you compute \\(\\vec{BA}\\) instead. The magnitudes match (\\(|\\vec{AB}| = |\\vec{BA}|\\)), but the directions are opposite. Direction matters whenever the result feeds into a dot product, an angle, or a cross product downstream.",
       "Position vectors depend on the choice of origin; displacement vectors do NOT: If you move the origin from \\(O\\) to \\(O'\\), every position vector changes (they all shift by the same fixed amount), but the displacement \\(\\vec{AB}\\) is unchanged — that's why displacements are the more \\\"physical\\\" quantity and most theorems are stated in terms of them."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "f24906e9373e8f48f99abe122c2812a08573f903",
     "timeEstimateSec": 45
@@ -4762,7 +4762,7 @@
       "Closed-polygon identity: if vectors form a closed loop, they sum to \\(\\vec{0}\\): Tip-to-tail vectors that return to the starting point span a closed polygon, so their sum is the zero vector. The triangle identity \\(\\vec{AB} + \\vec{BC} + \\vec{CA} = \\vec{0}\\) is exactly this rule for a triangle — used heavily in the Vector Geometry subtopic later.",
       "Magnitudes don't add: \\(|\\vec{a} + \\vec{b}| \\neq |\\vec{a}| + |\\vec{b}|\\) in general: Two arrows of length 3 don't always combine to length 6 — they combine to length 6 only if perfectly aligned, length 0 if perfectly opposed, and anything in between otherwise. The triangle inequality \\(|\\vec{a} + \\vec{b}| \\leq |\\vec{a}| + |\\vec{b}|\\) is the correct bound."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "dc5be54a7def680299c9ad654f73761ee8f42ac5",
     "timeEstimateSec": 45
@@ -4957,7 +4957,7 @@
     "trapHints": [
       "Sign of \\(k\\) controls DIRECTION, not just signs of components: \\(k = -1\\) does more than negate components arithmetically — geometrically it FLIPS the arrow (\\(180^\\circ\\) rotation). That's the same operation as \\(-\\vec{v}\\), which is why subtraction reads as \\(\\vec{a} - \\vec{b} = \\vec{a} + (-1)\\vec{b}\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "4771b8b12f29e31734381172110552be556ef0f2",
     "timeEstimateSec": 45
@@ -5123,7 +5123,7 @@
       "Equality of vectors = ALL components match — that's 3 equations, not 1: A statement \\\"\\(\\vec{a} = \\vec{b}\\)\\\" with unknowns hidden in the components is implicitly giving you a SYSTEM of equations (one per component). PYQs use this often: given \\(\\vec{a} = \\vec{b}\\) and unknowns \\(x, y, z\\) in the components, equate \\(a_1 = b_1\\), \\(a_2 = b_2\\), \\(a_3 = b_3\\) and solve.",
       "Components depend on the basis; the vector itself does not: Rotate the coordinate axes and the components \\((v_1, v_2, v_3)\\) change, but the underlying vector (the arrow in space) is the same. All NDA questions stick with the standard \\(\\hat{i}, \\hat{j}, \\hat{k}\\) basis, so this is rarely an issue in practice — but it explains why some identities are \\\"basis-free\\\" (magnitudes, dot products, angles)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "7ded752247dd1a034d85602124c4fa2fa628eb1a",
     "timeEstimateSec": 45
@@ -5319,7 +5319,7 @@
       "Parallel VECTORS vs collinear POINTS — different conditions: Two vectors are parallel when they share a DIRECTION (regardless of where they start). Three or more points are collinear when they all lie on one LINE — a stricter condition that requires them to share a line, not just share a direction. Points \\(A, B, C\\) are collinear iff \\(\\vec{AB} \\parallel \\vec{AC}\\) (the next concept turns this into a usable test).",
       "Zero vector is parallel to everything and to nothing: Because \\(\\vec{0} = 0 \\cdot \\vec{v}\\) for any \\(\\vec{v}\\), the zero vector technically satisfies the scalar-multiple definition for every direction. PYQs sidestep the ambiguity by implicitly assuming non-zero vectors when talking about parallelism — read the question carefully if the hypothesis is loose."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "54a9d59219eb4da3501b85f1d5ce93ca45084c90",
     "timeEstimateSec": 45
@@ -5732,7 +5732,7 @@
       "External division: denominator is \\(m - n\\), not \\(m + n\\): The most common bug. The external-section formula reverses one sign in the numerator AND swaps the denominator's plus for a minus. If \\(m = n\\), external division is undefined (the point is at infinity) — another way to spot you've mis-set up an internal problem as external.",
       "Watch the ratio order — \\(m : n\\) means \\(AP : PB\\), not \\(AP : AB\\): PYQs often phrase it as \\\"divides \\(AB\\) in ratio \\(2 : 3\\)\\\" — that is \\(AP : PB = 2 : 3\\), so \\(m = 2\\) (the part nearer \\(B\\)) and \\(n = 3\\) (the part nearer \\(A\\)). Reversing them gives the wrong answer."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "1cc177e0ebc1f60cb2600c61fe5a8b785ce07819",
     "timeEstimateSec": 45

@@ -148,7 +148,7 @@
     "candidateDistractors": [],
     "distractorSource": "sibling",
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "aa52746235ae62febd9a91885c58174247178cf0",
     "timeEstimateSec": 45
@@ -279,7 +279,7 @@
     "candidateDistractors": [],
     "distractorSource": "sibling",
     "trapHints": [],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "97188e5ffd18e816c5105574f08f9a891c999d9e",
     "timeEstimateSec": 45
@@ -894,7 +894,7 @@
     "trapHints": [
       "Shift moves the mean, but not the SD: Adding a constant \\(b\\) shifts \\(\\bar{x}\\) by \\(b\\) but leaves the standard deviation unchanged. Multiplying by \\(a\\) scales both. Don't apply the mean rule to dispersion questions."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "9fed79e541a08f43b43b5c3de126d43b644c9851",
     "timeEstimateSec": 45
@@ -1313,7 +1313,7 @@
       "AP shortcut fails for GPs and other non-uniform spacings: The mean \\((a_1 + a_n)/2\\) works only because in an AP every term sits at equal distance around the centre. For \\(1, 2, 4, 8, \\ldots\\) (GP) the shortcut gives the wrong answer — you must sum properly or use the GP sum formula.",
       "Binomial-weighted means use \\(\\sum \\binom{n}{k} = 2^n\\): When asked the mean of \\(1, 2, \\ldots, n+1\\) with frequencies \\(\\binom{n}{0}, \\binom{n}{1}, \\ldots, \\binom{n}{n}\\), the denominator is \\(2^n\\) (sum of one row of Pascal's triangle) — not the number of distinct values. Use \\(\\sum k \\binom{n}{k} = n \\cdot 2^{n-1}\\) for the numerator."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "04c4caa8acd158a98d57ec4221f2eca34914cbc7",
     "timeEstimateSec": 45
@@ -1762,7 +1762,7 @@
     "trapHints": [
       "Always sort before reading off the middle: The median of an unsorted list is not the middle of the original order. PYQs sometimes hand you data in random order to catch this."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "2f50fdfb995e2d85763a7697798fd62b3442221c",
     "timeEstimateSec": 45
@@ -2559,7 +2559,7 @@
       "Sum of deviations is zero only about the mean: About any other reference point \\(c\\), the sum equals \\(\\sum x_i - nc = n(\\bar{x} - c)\\) — non-zero unless \\(c = \\bar{x}\\). PYQs often plant a non-mean reference point to test exactly this.",
       "Empirical relation is approximate, not exact: It works for moderately skewed unimodal data. For symmetric data (mean = median = mode) it is trivially true. For multimodal or heavily skewed data it can be misleading."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "1779faa52d1e5232d319c37e6604ed63248c74a2",
     "timeEstimateSec": 45
@@ -3391,7 +3391,7 @@
     "trapHints": [
       "Squaring \\(a\\) for variance, taking absolute value for SD: Students often write \\(\\sigma_Y^2 = a\\,\\sigma_X^2\\) (forgetting the square) or \\(\\sigma_Y = a\\,\\sigma_X\\) (forgetting the modulus). If \\(a\\) is negative, \\(|a|\\) is the correct scale for SD — SD is non-negative by definition."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "b2235f8962a29f35bb971c9567b912ae59e8104f",
     "timeEstimateSec": 45
@@ -3585,7 +3585,7 @@
       "It is \\((n^2 - 1)/12\\), not \\(n^2/12\\) or \\((n^2 + 1)/12\\): The exact constant is \\(\\dfrac{n^2 - 1}{12}\\) — memorise the \\(-1\\). A frequent slip is writing \\(n^2/12\\) (forgetting the \\(-1\\)) or confusing it with the mean-of-squares formula.",
       "For an AP, only the common difference matters — not the starting value: Adding a constant shifts every term but not the spread, so \\(\\{3, 6, \\ldots, 60\\}\\) and the natural numbers \\(\\{1, \\ldots, 20\\}\\) scaled by 3 have the SAME variance \\(\\left(3^2 \\times \\dfrac{20^2-1}{12} = 299.25\\right)\\). Only \\(d\\) and \\(n\\) enter the formula."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "26ba7d686f1a78d085bbaad9ef80ee961653b089",
     "timeEstimateSec": 45
@@ -4003,7 +4003,7 @@
       "\\(\\overline{x^2} \\neq (\\bar{x})^2\\) — they differ by exactly \\(\\sigma^2\\): Mean of the squares is NOT the square of the mean. Their difference is the variance: \\(\\overline{x^2} - \\bar{x}^2 = \\sigma^2 \\geq 0\\). PYQs plant this trap by asking for \"mean of squares\" or \"\\(M^2 + \\sigma^2\\)\" and expecting you to recognise it as \\(\\sum x_i^2/n\\).",
       "Scaling inside the deviation moves the minimiser too: For \\(S(a) = \\sum (c\\,x_i - a)^2\\), expand and minimise: the minimum is at \\(a = c\\,\\bar{x}\\), NOT \\(a = \\bar{x}\\). PYQs commonly use \\(c = 2\\) (e.g. \\(S = \\sum (2x_i - a)^2\\)) and expect you to identify the minimiser as \\(2\\bar{x}\\) — twice the mean, not the mean."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "f4631d00b6a2d98d49300c43fe18ee2fa18a9cc4",
     "timeEstimateSec": 45
@@ -4228,7 +4228,7 @@
       "\\(r\\) is bounded by \\(-1\\) and \\(+1\\) — always: If a calculation gives \\(|r| > 1\\), the arithmetic is wrong. Use this as a sanity check at the end of any correlation computation.",
       "Shift does not change \\(r\\); only scale-with-negative-sign flips it: Adding constants to either variable is invisible to \\(r\\). Multiplying by a positive constant is also invisible. Only a negative multiplier flips the sign — and even then, the magnitude is preserved."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "c6660bfac8744523e751e89fb7c841750b2f25c6",
     "timeEstimateSec": 45
@@ -4453,7 +4453,7 @@
       "Both regression lines always pass through \\((\\bar{x}, \\bar{y})\\): If a PYQ gives you two regression lines and asks for the means, solve the two equations simultaneously — their intersection is exactly \\((\\bar{x}, \\bar{y})\\). No need to compute anything from raw data.",
       "From raw bivariate data, compute \\(b_{yx}\\) via the Pearson form: When given \\(n\\) raw paired points (e.g. four \\((x_i, y_i)\\) values), use the computational formula \\(b_{yx} = \\dfrac{n\\sum x_i y_i - \\sum x_i \\sum y_i}{n\\sum x_i^2 - (\\sum x_i)^2}\\) with \\(\\bar{x}, \\bar{y}\\) read straight from the column sums. The regression line is then \\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\). Faster than the deviation-from-mean form because it works directly off the column totals."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "009f9f424434e63b0ab624595f1ee853aefe1e24",
     "timeEstimateSec": 45
@@ -4678,7 +4678,7 @@
       "\\(b_{yx} \\cdot b_{xy} \\leq 1\\) is non-negotiable: If your computed product exceeds 1, you have assigned the wrong line to \\(y\\) on \\(x\\). Swap the assignment and recompute — the inequality \\(b_{yx} b_{xy} = r^2 \\leq 1\\) picks the correct pairing every time.",
       "Both slopes share the sign of \\(r\\): You cannot have \\(b_{yx} > 0\\) and \\(b_{xy} < 0\\) — if a problem seems to suggest this, the lines have been labelled wrong."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "7b8551733d925374535b42047e5e16a8781d4f61",
     "timeEstimateSec": 45
@@ -5513,7 +5513,7 @@
     "trapHints": [
       "All angles MUST sum to \\(360^\\circ\\): If your computed angles don't add to 360, you have an arithmetic error. PYQs that give angle relations (\"\\(9p = 3q = 2r = 6s\\)\") use \\(p + q + r + s = 360\\) as the closing equation — without that, the system is underdetermined."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "e09cdac19066608918883453b3102c652e7fdb46",
     "timeEstimateSec": 45

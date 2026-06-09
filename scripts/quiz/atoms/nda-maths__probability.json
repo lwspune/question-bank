@@ -409,7 +409,7 @@
     "trapHints": [
       "Use the right MEASURE — \"closer to the centre\" is an AREA ratio, not a radius ratio: Distance from the centre \\(< r/2\\) is a DISC of radius \\(r/2\\), whose area is \\(\\pi(r/2)^2\\). The probability is the area ratio \\((r/2)^2/r^2 = \\tfrac14\\), NOT the radius ratio \\(\\tfrac12\\). Matching the measure to the dimension is the whole trap."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "87aab893a66a53d0bf1454574ee05fa20cd15247",
     "timeEstimateSec": 45
@@ -603,7 +603,7 @@
       "Odds are not probability: \\(a:b\\) in favour means \\(\\dfrac{a}{a+b}\\), not \\(\\dfrac{a}{b}\\): Convert odds to a probability by putting the favourable parts over the TOTAL parts. Odds in favour \\(3:2\\) is \\(\\tfrac{3}{5}\\); odds against \\(3:2\\) is \\(\\tfrac{2}{5}\\).",
       "\"At least one…\" almost always means use the complement: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). Counting the cases directly (exactly one, exactly two, …) is slower and a frequent source of arithmetic slips."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "205814f2b45891e664cff99caed2c87f5548bdac",
     "timeEstimateSec": 45
@@ -1053,7 +1053,7 @@
       "Two-dice outcomes are ORDERED pairs: \\((2,3)\\) and \\((3,2)\\) are different: The sample space has \\(36\\) outcomes, not \\(21\\). Counting unordered pairs undercounts every non-doublet event by a factor of two.",
       "Loaded or non-standard dice: faces are NOT equally likely: If a die has two faces showing 4, or even faces are twice as likely as odd, you cannot use \\(n(E)/36\\). Assign each face its probability first, then add up the favourable outcomes' probabilities."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "1dea6ef826ce5e1224de48bd087356e3614e0c66",
     "timeEstimateSec": 45
@@ -1274,7 +1274,7 @@
       "Sequences are ordered: \\(HT \\ne TH\\): Count the \\(2^n\\) ordered sequences, not the \\(n+1\\) \"number of heads\" buckets — those buckets are not equally likely (\"exactly 1 head in 2 tosses\" has 2 sequences, \"2 heads\" has 1).",
       "Biased coin: do not use \\(2^n\\) equally-likely counting: When \\(P(H) \\ne \\tfrac{1}{2}\\), each sequence has its own probability \\(p^{h}(1-p)^{t}\\). Counting outcomes and dividing by \\(2^n\\) is only valid for a fair coin."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "0206ea2948cd70617964882b811ecc4adf69378e",
     "timeEstimateSec": 45
@@ -3911,7 +3911,7 @@
       "Mind which event is the condition: \\(P(A\\mid B) \\ne P(B\\mid A)\\) in general: The denominator is the probability of the GIVEN event. \\(P(A\\mid B)\\) divides by \\(P(B)\\); \\(P(B\\mid A)\\) divides by \\(P(A)\\). They are equal only when \\(P(A) = P(B)\\).",
       "The condition must have positive probability: \\(P(A\\mid B)\\) is undefined when \\(P(B) = 0\\). Check the condition is possible before dividing."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "ee15ee706482f09be9137b7b6e0ece8235e3cc64",
     "timeEstimateSec": 45
@@ -4136,7 +4136,7 @@
       "Under a condition, the TOTAL changes to \\(n(B)\\), not 36 (or 6): \"Given that …\" shrinks the sample space. Divide by the number of outcomes in the condition, not by the original total. Forgetting to restrict is the classic conditional-probability error.",
       "The general multiplication rule needs \\(P(A \\mid B)\\), not \\(P(A)\\): \\(P(A \\cap B) = P(A)P(B)\\) is only the independent case. In general use \\(P(A \\cap B) = P(B)P(A \\mid B)\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "a50a7c705b00b1138b31b3bf38c06994ff95f1f2",
     "timeEstimateSec": 45
@@ -5262,7 +5262,7 @@
       "\"At least two of three\" subtracts the triple overlap TWICE (−2), not −1 or −3: \\(P(\\text{at least two of }A,B,C)=\\sum P(\\text{pairwise})-2P(A\\cap B\\cap C)\\). The pairwise sum counts the all-three region three times; you want it once, so remove it twice. (\"Exactly two\" removes it three times → \\(-3\\); the NDA option list dangles \\(-1,-2,-3\\) to catch this.)",
       "\\(P(A \\cap \\bar{B}) = P(A) - P(A \\cap B)\\), not \\(P(A) - P(B)\\): Subtract the overlap from the SAME event you are restricting. \\(P(A) - P(B)\\) is only valid in the special case \\(B \\subseteq A\\)."
     ],
-    "status": "auto",
+    "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "d49bdabd39c40d27707257c036ff4c4ed973cf29",
     "timeEstimateSec": 45

@@ -14,6 +14,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { flagStem } from "../../src/lib/quiz/stemLint";
+import { isBundleFormula } from "../../src/lib/quiz/atoms";
 
 function loadEnvLocal() {
   const local = path.join(process.cwd(), ".env.local");
@@ -34,7 +35,7 @@ async function main() {
 
   let query = db
     .from("quiz_atoms")
-    .select("atom_key, subject_route, chapter_slug, source_kind, stem")
+    .select("atom_key, subject_route, chapter_slug, source_kind, stem, correct")
     .in("status", ["auto", "verified"])
     .limit(2000);
   if (route) query = query.eq("subject_route", route);
@@ -45,7 +46,15 @@ async function main() {
   const rows = data ?? [];
 
   const flagged = rows
-    .map((r) => ({ ...r, reasons: flagStem(r.stem as string) }))
+    .map((r) => {
+      const reasons = flagStem(r.stem as string);
+      // A formula atom whose CORRECT answer is a multi-formula bundle is a
+      // lopsided/ill-posed recall MCQ (long correct option vs single distractors).
+      if (r.source_kind === "formula" && isBundleFormula(String(r.correct ?? ""))) {
+        reasons.push("bundle correct answer (multi-formula — lopsided MCQ)");
+      }
+      return { ...r, reasons };
+    })
     .filter((r) => r.reasons.length > 0)
     .sort((a, b) => `${a.subject_route}/${a.chapter_slug}`.localeCompare(`${b.subject_route}/${b.chapter_slug}`));
 

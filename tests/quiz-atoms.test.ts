@@ -7,6 +7,7 @@ import {
   stripMarkup,
   formatTraps,
   leadFormula,
+  isBundleFormula,
   harvestFormulaConcept,
   harvestReferenceTable,
   harvestConcept,
@@ -106,7 +107,29 @@ describe("leadFormula", () => {
   });
 });
 
+describe("isBundleFormula", () => {
+  it("is true for a \\qquad / \\quad-joined bundle of identities", () => {
+    expect(isBundleFormula("a = b \\qquad c = d")).toBe(true);
+    expect(isBundleFormula("\\sum(x_i-\\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\text{Med}-2\\text{Mean}")).toBe(true);
+  });
+  it("is false for a single formula", () => {
+    expect(isBundleFormula("\\sigma^2 = \\dfrac{\\sum(x_i-\\bar{x})^2}{n}")).toBe(false);
+    expect(isBundleFormula("\\text{Cov}(X,Y) = E[XY] - E[X]E[Y]")).toBe(false);
+  });
+});
+
 describe("harvestFormulaConcept", () => {
+  it("holds a BUNDLE-formula concept at needs_review (out of the auto pool)", () => {
+    const atom = harvestFormulaConcept(
+      CTX,
+      "Sum of Deviations & Empirical Relations",
+      "\\sum(x_i-\\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}",
+      ["P=1-P(E')", "x = \\dfrac{L+U}{2}", "\\sigma^2 = \\dfrac{n^2-1}{12}"]
+    );
+    expect(atom.status).toBe("needs_review");
+    expect(atom.options).not.toBeNull(); // options still built, just held for review
+  });
+
   it("builds an AUTO atom with sibling-formula distractors", () => {
     const atom = harvestFormulaConcept(
       CTX,
