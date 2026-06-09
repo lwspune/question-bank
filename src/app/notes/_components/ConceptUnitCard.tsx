@@ -127,6 +127,12 @@ import ConicsParabolaDiagram from "./visualizations/ConicsParabolaDiagram";
 import ConicsEllipseDiagram from "./visualizations/ConicsEllipseDiagram";
 import ItPrincipalRanges from "./visualizations/ItPrincipalRanges";
 import TeSolutionCounting from "./visualizations/TeSolutionCounting";
+import CircCircleAnatomy from "./visualizations/CircCircleAnatomy";
+import CircInscribedAngle from "./visualizations/CircInscribedAngle";
+import AoiAreaUnderCurveRegion from "./visualizations/AoiAreaUnderCurveRegion";
+import AoiAreaBetweenCurvesRegion from "./visualizations/AoiAreaBetweenCurvesRegion";
+import HdElevationTriangle from "./visualizations/HdElevationTriangle";
+import HdShadowSun from "./visualizations/HdShadowSun";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -359,6 +365,18 @@ function renderVisualization(slug: VisualizationSlug) {
       return <ItPrincipalRanges />;
     case "te-solution-counting":
       return <TeSolutionCounting />;
+    case "circ-circle-anatomy":
+      return <CircCircleAnatomy />;
+    case "circ-inscribed-angle":
+      return <CircInscribedAngle />;
+    case "aoi-area-under-curve-region":
+      return <AoiAreaUnderCurveRegion />;
+    case "aoi-area-between-curves-region":
+      return <AoiAreaBetweenCurvesRegion />;
+    case "hd-elevation-triangle":
+      return <HdElevationTriangle />;
+    case "hd-shadow-sun":
+      return <HdShadowSun />;
   }
 }
 

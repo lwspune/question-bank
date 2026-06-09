@@ -201,7 +201,16 @@ export type VisualizationSlug =
   // NDA Maths — Inverse Trigonometry chapter
   | "it-principal-ranges"
   // NDA Maths — Trigonometric Equations chapter
-  | "te-solution-counting";
+  | "te-solution-counting"
+  // NDA Maths — Circles chapter
+  | "circ-circle-anatomy"
+  | "circ-inscribed-angle"
+  // NDA Maths — Applications of Integration chapter
+  | "aoi-area-under-curve-region"
+  | "aoi-area-between-curves-region"
+  // NDA Maths — Height & Distance chapter
+  | "hd-elevation-triangle"
+  | "hd-shadow-sun";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
