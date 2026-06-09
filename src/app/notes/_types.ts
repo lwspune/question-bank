@@ -199,7 +199,9 @@ export type VisualizationSlug =
   | "conics-parabola-diagram"
   | "conics-ellipse-diagram"
   // NDA Maths — Inverse Trigonometry chapter
-  | "it-principal-ranges";
+  | "it-principal-ranges"
+  // NDA Maths — Trigonometric Equations chapter
+  | "te-solution-counting";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
