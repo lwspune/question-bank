@@ -94,6 +94,11 @@ import {
   PROPERTIES_OF_TRIANGLE_SLUGS,
 } from "@/app/notes/nda-maths/properties-of-triangle/_data";
 import {
+  CONICS_CHAPTER,
+  CONICS_NOTES,
+  CONICS_SLUGS,
+} from "@/app/notes/nda-maths/conics/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -425,6 +430,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: PROPERTIES_OF_TRIANGLE_CHAPTER,
     notes: PROPERTIES_OF_TRIANGLE_NOTES,
     slugs: PROPERTIES_OF_TRIANGLE_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "conics",
+    chipLabel: "Conics notes",
+    chapter: CONICS_CHAPTER,
+    notes: CONICS_NOTES,
+    slugs: CONICS_SLUGS,
   },
   {
     examName: "NDA",

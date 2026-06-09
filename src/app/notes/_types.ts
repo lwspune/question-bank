@@ -194,7 +194,10 @@ export type VisualizationSlug =
   | "bt-pascal-triangle"
   // NDA Maths — Properties of Triangle chapter
   | "pt-triangle-labeled"
-  | "pt-circumcircle-incircle";
+  | "pt-circumcircle-incircle"
+  // NDA Maths — Conics chapter
+  | "conics-parabola-diagram"
+  | "conics-ellipse-diagram";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
