@@ -84,6 +84,11 @@ import {
   QUADRATIC_EQUATIONS_SLUGS,
 } from "@/app/notes/nda-maths/quadratic-equations/_data";
 import {
+  BINOMIAL_THEOREM_CHAPTER,
+  BINOMIAL_THEOREM_NOTES,
+  BINOMIAL_THEOREM_SLUGS,
+} from "@/app/notes/nda-maths/binomial-theorem/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -393,6 +398,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: QUADRATIC_EQUATIONS_CHAPTER,
     notes: QUADRATIC_EQUATIONS_NOTES,
     slugs: QUADRATIC_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "binomial-theorem",
+    chipLabel: "Binomial Theorem notes",
+    chapter: BINOMIAL_THEOREM_CHAPTER,
+    notes: BINOMIAL_THEOREM_NOTES,
+    slugs: BINOMIAL_THEOREM_SLUGS,
   },
   {
     examName: "NDA",
