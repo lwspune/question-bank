@@ -83,7 +83,7 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       intuition:
         "Any line through the intersection of \\(L_1=0\\) and \\(L_2=0\\) can be written \\(L_1+\\lambda L_2=0\\) — without ever finding the intersection point. Choose \\(\\lambda\\) from one extra condition. Three lines are concurrent when their intersection is shared.",
       definition:
-        "**Family (pencil):** through \\(L_1\\cap L_2\\), every line is \\(L_1+\\lambda L_2=0\\); fix \\(\\lambda\\) from a point or a slope condition. **Parallel/perpendicular through a point:** keep the same (or negative-reciprocal) slope. **Concurrency:** three lines are concurrent iff \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0\\). If coefficients \\(A,B,C\\) are in AP, \\(Ax+2By+C=0\\) passes through the fixed point \\((1,-2)\\).",
+        "**Family (pencil):** through \\(L_1\\cap L_2\\), every line is \\(L_1+\\lambda L_2=0\\); fix \\(\\lambda\\) from a point or a slope condition. **Parallel/perpendicular through a point:** keep the same (or negative-reciprocal) slope. **Concurrency:** three lines are concurrent iff \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0\\). If coefficients \\(A,B,C\\) are in AP, \\(Ax+2By+C=0\\) passes through the fixed point \\((1,-1)\\) (since \\(C=2B-A\\) gives \\(A(x-1)+2B(y+1)=0\\)).",
       authoredExample: {
         prompt: "Find the line through the intersection of \\(x+y-1=0\\) and \\(2x-y-2=0\\) that passes through \\((1,2)\\).",
         steps: [
@@ -105,7 +105,7 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         { prompt: "Family of lines through \\(L_1\\cap L_2\\)?", answer: "\\(L_1+\\lambda L_2=0\\)" },
         { prompt: "Concurrency condition for 3 lines?", answer: "Determinant of coefficients \\(=0\\)" },
         { prompt: "Parallel lines have slopes that are?", answer: "Equal" },
-        { prompt: "\\(Ax+2By+C=0\\) with \\(A,B,C\\) in AP passes through?", answer: "\\((1,-2)\\)" },
+        { prompt: "\\(Ax+2By+C=0\\) with \\(A,B,C\\) in AP passes through?", answer: "\\((1,-1)\\)" },
       ],
       pyqExampleId: "ccb085f6-15cd-4bb9-acf5-22cb8485814a", // 3 lines concurrent
     },

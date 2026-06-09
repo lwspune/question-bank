@@ -111,16 +111,22 @@ exam/subject/chapter/theme/status. **Recorded quizzes are an immutable snapshot
 Snapshot **2026-06-09** — refresh with:
 `SELECT subject_route, chapter_slug, count(*) FILTER (WHERE status IN ('auto','verified')) ready, count(*) FILTER (WHERE status='needs_review') needs_review FROM quiz_atoms GROUP BY 1,2;`
 
-**5 chapters complete.** All quizzes are snapshot-backed (0035); counts below are post the 2026-06-09 clean reset (deleted all 24 pre-split drafts, re-assembled fresh).
+**5 chapters complete + Wave 1 of the prioritized-subset campaign** (2026-06-09: parallel sub-agents author distractors — one per chapter, heavy chapters split by subtopic; the main agent harvests/syncs/verifies/assembles/pushes serially). All quizzes are snapshot-backed (0035).
 
 | Chapter | Ready | Quizzes | State |
 |---|---|---|---|
 | nda-maths / **probability** | ~163 | ~9 | ✅ **Complete** (formula/computation/property/trap) |
 | nda-maths / **statistics** | ~197 | ~11 | ✅ **Complete** (formula/computation/property/trap) |
-| nda-biology / **human-physiology** | ~166 | ~5 | ✅ **Complete** (fact + recall + traps; all distractors hand-authored — sibling-row candidates were unusable) |
-| nda-maths / **matrices-determinants** | ~222 | ~12 | ✅ **Complete** (formula + computation; 5 trap atoms verified but <12 → no standalone trap quiz) |
+| nda-biology / **human-physiology** | ~166 | ~5 | ✅ **Complete** (fact + recall + traps; all distractors hand-authored) |
+| nda-maths / **matrices-determinants** | ~222 | ~12 | ✅ **Complete** (formula + computation; 5 trap atoms <12 → no standalone trap quiz) |
 | nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) |
-| _rest of NDA Maths (~12 ch), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested — the remaining frontier |
+| nda-maths / **trigonometric-identities** | ~108 | 6 | 🟡 **computation done** (6 quizzes, Wave 1, 2 agents subtopic-split); formula pending bundle-author (only 3 auto-ready); traps pending |
+| nda-maths / **lines** | ~53 | 3 | 🟡 **computation done** (3 quizzes, Wave 1); auto=0 (no formula quiz); traps pending |
+| nda-maths / **functions** | ~24 | 1 | 🟡 **computation done** (1 quiz, Wave 1); auto=0; traps pending |
+| nda-maths / **3d-geometry** · **sequence-series** · **differentiation** | harvested+synced (~133/145/85 needs_review clean) | — | 🟠 **Wave 2** — atoms in pool, distractors pending |
+| _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
+
+**Known quality catch (Wave 1):** the quiz build re-derives every practiceSet/selfCheck answer, surfacing **notes errors** the way notes-building surfaces wrong keys — Lines `lines-family-and-concurrency:practiceSet:3` had answer `(1,-2)` (should be `(1,-1)`); fixed in the notes `_data`, atom left parked (will correct on next harvest).
 
 ---
 
