@@ -5,6 +5,26 @@ Each item is outside the scope of the work that surfaced it. Strike through when
 
 ---
 
+## 2026-06-09
+
+### Distractor-verify the remaining harvested quiz chapters before public-publishing
+
+The public quiz funnel can publish ANY assembled quiz, but only **NDA Probability + Statistics** have had the full per-chapter distractor approval (`quiz:verify`). The other harvested chapters — **vectors, matrices-determinants, human-physiology** — only have `formula`/`fact` (auto) atoms ready; their practice/property/trap themes are still `needs_review`. So a public quiz from those chapters can only be a Formulas/Key-Facts quiz today.
+
+**Why:** the funnel's value is sharing good quizzes; a half-approved chapter limits theme variety and could surface thin quizzes. Approving them widens the publishable pool. Also run `npm run quiz:lint <route> <chapter>` on each before publishing (notes prompts can be sequence-dependent / unfair standalone).
+
+**How to apply:** per chapter the user names — query its `needs_review` + `looks_mcq_clean` practiceSet/selfCheck atoms, author 3 distractors each into `scripts/quiz/verify/<route>__<chapter>.ts` (tag identity/rule Qs `theme:"property"`), `npm run quiz:verify`, then `quiz:lint` + fix flagged stems via the `stem` override. Chapter-by-chapter, on request (the agreed cadence).
+
+### Phone-link signup attribution (deferred — attribution-only shipped)
+
+The lead→buyer link is **attribution-only** today: `utm_source=quiz:<slug>` rides the lead + signup → `user_metadata.signup_source`, so you can see WHICH quiz drove a signup, but not join an exact mobile lead to an exact paying account (mobile vs email identity gap).
+
+**Why:** if precise per-lead conversion tracking becomes valuable (e.g. proving a specific lead bought), phone-link closes it. Deferred because Google OAuth gives no phone — it needs a pre-filled phone field on email signup PLUS a post-OAuth "complete profile" step for Google, and the number is self-reported/unverified.
+
+**How to apply:** add an optional phone field to `/signup` (pre-filled from the lead's localStorage mobile), pass `options.data.phone` to `signUp`; for Google, stash it and stamp `user_metadata.phone` in `/api/auth/callback` (first-time only). Then the leads dashboard can join `quiz_leads.mobile` ↔ `auth.users.meta->>'phone'`.
+
+---
+
 ## 2026-06-08
 
 ### ~~Consolidate the per-subject notes pages into a dynamic `[subjectRoute]` route~~ — **DONE 2026-06-08** (commit `b40f025`)
