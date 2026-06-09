@@ -34,7 +34,7 @@ export default async function PublicQuizPage({ params }: { params: Params }) {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-2xl overflow-x-hidden px-4 py-8 sm:px-6">
         <QuizTaker slug={params.slug} quiz={quiz} />
       </main>
     </>

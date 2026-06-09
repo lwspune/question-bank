@@ -194,7 +194,9 @@ function TakingView({
       <div className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
         <div className="flex gap-3 font-serif text-[17px] leading-relaxed">
           <span className="mt-0.5 shrink-0 font-sans text-sm font-medium text-muted-foreground">{q.q}.</span>
-          <KatexRenderer text={q.stem} />
+          <div className="min-w-0 flex-1 overflow-x-auto">
+            <KatexRenderer text={q.stem} />
+          </div>
         </div>
         <div className="mt-5 space-y-2.5">
           {LETTERS.map((L) => {
@@ -216,7 +218,7 @@ function TakingView({
                 >
                   {on ? <Check className="h-4 w-4" /> : L}
                 </span>
-                <span className="min-w-0 flex-1 font-serif text-[15px]">
+                <span className="min-w-0 flex-1 overflow-x-auto font-serif text-[15px]">
                   <KatexRenderer text={q.options[L]} />
                 </span>
               </button>
@@ -576,7 +578,9 @@ function Results({
                   <div className="min-w-0 flex-1 space-y-2.5">
                     <div className="flex gap-2 font-serif text-sm">
                       <span className="shrink-0 font-sans text-xs font-medium text-muted-foreground">{q.q}.</span>
-                      <KatexRenderer text={q.stem} />
+                      <div className="min-w-0 flex-1 overflow-x-auto">
+                        <KatexRenderer text={q.stem} />
+                      </div>
                     </div>
                     <div className="space-y-1.5">
                       {LETTERS.map((L) => {
@@ -594,7 +598,7 @@ function Results({
                             }`}
                           >
                             <span className="font-sans text-xs text-muted-foreground">({L.toLowerCase()})</span>
-                            <span className="min-w-0 flex-1">
+                            <span className="min-w-0 flex-1 overflow-x-auto">
                               <KatexRenderer text={q.options[L]} />
                             </span>
                             {isCorrect && <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" aria-label="correct answer" />}
