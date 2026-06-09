@@ -126,6 +126,7 @@ import PtCircumIncircle from "./visualizations/PtCircumIncircle";
 import ConicsParabolaDiagram from "./visualizations/ConicsParabolaDiagram";
 import ConicsEllipseDiagram from "./visualizations/ConicsEllipseDiagram";
 import ItPrincipalRanges from "./visualizations/ItPrincipalRanges";
+import TeSolutionCounting from "./visualizations/TeSolutionCounting";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -356,6 +357,8 @@ function renderVisualization(slug: VisualizationSlug) {
       return <ConicsEllipseDiagram />;
     case "it-principal-ranges":
       return <ItPrincipalRanges />;
+    case "te-solution-counting":
+      return <TeSolutionCounting />;
   }
 }
 

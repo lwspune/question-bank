@@ -104,6 +104,11 @@ import {
   INVERSE_TRIGONOMETRY_SLUGS,
 } from "@/app/notes/nda-maths/inverse-trigonometry/_data";
 import {
+  TRIGONOMETRIC_EQUATIONS_CHAPTER,
+  TRIGONOMETRIC_EQUATIONS_NOTES,
+  TRIGONOMETRIC_EQUATIONS_SLUGS,
+} from "@/app/notes/nda-maths/trigonometric-equations/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -457,6 +462,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: INVERSE_TRIGONOMETRY_CHAPTER,
     notes: INVERSE_TRIGONOMETRY_NOTES,
     slugs: INVERSE_TRIGONOMETRY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "trigonometric-equations",
+    chipLabel: "Trigonometric Equations notes",
+    chapter: TRIGONOMETRIC_EQUATIONS_CHAPTER,
+    notes: TRIGONOMETRIC_EQUATIONS_NOTES,
+    slugs: TRIGONOMETRIC_EQUATIONS_SLUGS,
   },
   {
     examName: "NDA",
