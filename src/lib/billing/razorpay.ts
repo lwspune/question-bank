@@ -9,6 +9,13 @@
  */
 import { createHmac, timingSafeEqual } from "node:crypto";
 
+/** True when the server has the keys to take a payment (checkout won't 503).
+ *  Drives the public-quiz results screen's premium-CTA gate — the CTA appears
+ *  automatically once these env vars are set, no code change. */
+export function isBillingConfigured(): boolean {
+  return !!process.env.RAZORPAY_KEY_ID && !!process.env.RAZORPAY_KEY_SECRET;
+}
+
 function safeEqualHex(a: string, b: string): boolean {
   // timingSafeEqual throws on length mismatch — guard first (a length diff is
   // already a definitive "not equal", so returning false leaks nothing useful).
