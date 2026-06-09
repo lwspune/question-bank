@@ -123,11 +123,17 @@ export async function assembleNextQuiz(
 
   // Themed quizzes number/slug per (chapter, theme); mixed keeps the -daily- slug.
   const slugBase = opts.theme ? `${opts.route}-${opts.chapter}-${opts.theme}` : `${opts.route}-${opts.chapter}-daily`;
-  const { count: prior } = await db
+  // Next index = MAX existing suffix + 1, NOT count + 1 — count collides when a
+  // middle slug was deleted (gap) and silently overwrites in a multi-quiz loop.
+  const { data: priorRows } = await db
     .from("quizzes")
-    .select("id", { count: "exact", head: true })
+    .select("slug")
     .like("slug", `${slugBase}-%`);
-  const n = (prior ?? 0) + 1;
+  const maxN = (priorRows ?? []).reduce((m, r) => {
+    const match = /-(\d+)$/.exec(r.slug as string);
+    return match ? Math.max(m, parseInt(match[1], 10)) : m;
+  }, 0);
+  const n = maxN + 1;
   const slug = `${slugBase}-${n}`;
   const id = slugToUuid(slug);
   const subject = SUBJECT_DISPLAY[opts.route] ?? titleCase(opts.route);

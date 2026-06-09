@@ -23,7 +23,7 @@ export const NUTRITION_NOTE: SubtopicNote = {
         "- **B2 (Riboflavin)**, **B12 (Cobalamin)** — B12 is uniquely **made by intestinal bacteria** and found in animal foods.\n" +
         "- **C (Ascorbic acid)** — deficiency: **scurvy** (bleeding gums); source: citrus fruits.\n" +
         "- **D (Calciferol)** — deficiency: **rickets** (bone deformity); source: sunlight.\n" +
-        "- **K** — needed for **blood clotting**; source: leafy greens + gut bacteria.\n" +
+        "- **K (Phylloquinone)** — needed for **blood clotting**; source: leafy greens + gut bacteria.\n" +
         "- **A (Retinol)** — deficiency: night blindness. **E (Tocopherol)** — antioxidant.",
       table: {
         columns: ["Vitamin", "Chemical name", "Deficiency disease", "Source"],
@@ -36,7 +36,7 @@ export const NUTRITION_NOTE: SubtopicNote = {
             noteAmber: "NDA 2019 — Vitamin C deficiency = scurvy (NOT rickets, which is Vitamin D).",
           },
           { cells: ["D", "Calciferol", "**Rickets**", "Sunlight"] },
-          { cells: ["K", "—", "Poor blood clotting", "Leafy greens, gut bacteria"] },
+          { cells: ["K", "Phylloquinone", "Poor blood clotting", "Leafy greens, gut bacteria"] },
         ],
         caption: "Deficiency diseases only. Rabies and hepatitis are INFECTIOUS — never the answer to a deficiency question.",
       },
