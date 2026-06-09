@@ -186,7 +186,10 @@ export type VisualizationSlug =
   | "defint-absolute-value-fold"
   // NDA Maths — Differential Equations chapter
   | "defeq-family-of-curves"
-  | "defeq-growth-decay";
+  | "defeq-growth-decay"
+  // NDA Maths — Quadratic Equations chapter
+  | "qe-discriminant-parabola"
+  | "qe-roots-in-interval";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

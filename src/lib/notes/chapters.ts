@@ -79,6 +79,11 @@ import {
   DIFFERENTIAL_EQUATIONS_SLUGS,
 } from "@/app/notes/nda-maths/differential-equations/_data";
 import {
+  QUADRATIC_EQUATIONS_CHAPTER,
+  QUADRATIC_EQUATIONS_NOTES,
+  QUADRATIC_EQUATIONS_SLUGS,
+} from "@/app/notes/nda-maths/quadratic-equations/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -377,6 +382,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: DIFFERENTIAL_EQUATIONS_CHAPTER,
     notes: DIFFERENTIAL_EQUATIONS_NOTES,
     slugs: DIFFERENTIAL_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "quadratic-equations",
+    chipLabel: "Quadratic Equations notes",
+    chapter: QUADRATIC_EQUATIONS_CHAPTER,
+    notes: QUADRATIC_EQUATIONS_NOTES,
+    slugs: QUADRATIC_EQUATIONS_SLUGS,
   },
   {
     examName: "NDA",
