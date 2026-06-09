@@ -160,9 +160,31 @@ export async function assembleNextQuiz(
     questions: specs,
   });
 
+  // Snapshot the questions onto the quiz row (immutable display source, decoupled
+  // from the live atom pool — a later atom change can't break this quiz). Same
+  // QuizQuestionView shape the dashboard renders. quiz_atoms_map still records the
+  // atom refs for coverage-dedup.
+  const questionSnapshot = atoms.map((a, i) => ({
+    position: i + 1,
+    stem: a.stem,
+    options: a.options,
+    answer: a.answer,
+    conceptSlug: a.concept_slug,
+  }));
+
   // Record FIRST (ledger is the source of truth), then attempt push.
   const { error: qErr } = await db.from("quizzes").upsert(
-    { id, slug, exam: atoms[0].exam, subject, title: draft.title, chapter: chapterDisplay, status: "draft" },
+    {
+      id,
+      slug,
+      exam: atoms[0].exam,
+      subject,
+      title: draft.title,
+      chapter: chapterDisplay,
+      theme: quizTheme,
+      questions: questionSnapshot,
+      status: "draft",
+    },
     { onConflict: "id" }
   );
   if (qErr) return { ok: false, error: `record quiz failed: ${qErr.message}` };

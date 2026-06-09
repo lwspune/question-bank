@@ -100,14 +100,17 @@ async function main() {
     brokenByQuiz.set(q.slug, e);
   }
 
-  console.log(`\n→ quiz integrity — ${brokenByQuiz.size} assembled quiz(zes) reference a broken (optionless / non-ready) atom.`);
+  console.log(`\n→ quiz integrity — ${brokenByQuiz.size} assembled quiz(zes) map a changed (non-ready) source atom.`);
   if (brokenByQuiz.size === 0) {
     console.log("  none — every assembled quiz maps only ready atoms. ✓");
   } else {
     for (const [slug, e] of brokenByQuiz) {
       console.log(`  • ${slug} (${e.status}): ${e.atoms.join(", ")}`);
     }
-    console.log(`\nRe-assemble these (the atom pool changed under them), or delete the stale quizzes.`);
+    // Snapshot-backed quizzes (migration 0035) still DISPLAY fine — this means
+    // their snapshot is STALE vs the pool. Pre-0035 quizzes render the changed
+    // question broken. Either way: re-assemble to refresh, or delete if obsolete.
+    console.log(`\nStale vs the current pool — re-assemble to refresh (pre-0035 quizzes also render broken), or delete if obsolete.`);
   }
 }
 

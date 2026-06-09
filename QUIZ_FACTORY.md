@@ -170,16 +170,17 @@ question's key moved — stem/fingerprint/options changes are expected and safe.
 Don't leave a subset regenerated: a JSON that disagrees with the generator
 produces a "mystery diff" for the next person to harvest.
 
-**⚠️ Re-harvesting breaks quizzes that already CONTAIN the changed atoms.** A
-quiz stores a `quiz_atoms_map` → `atom_id` and reads each question's options LIVE.
-So if an atom already in an assembled quiz changes status to non-ready (e.g. a
-bundle-formula `auto` atom split into `needs_review` slots, options → null), that
-quiz now renders a question with NO options. After any re-harvest/re-classify,
-run **`npm run quiz:lint`** — its "quiz integrity" section lists every assembled
-quiz that maps a broken (optionless / non-ready) atom. Fix by **re-assembling**
-those chapters (the new quizzes pull the current clean atoms) or **deleting** the
-stale quizzes from `quizzes` (cascade clears the map). Pushed/published copies on
-nda-tracker are orphaned until re-pushed or deleted there.
+**Recorded quizzes are an IMMUTABLE snapshot (migration 0035).** A quiz stores its
+questions as a JSON snapshot on the `quizzes.questions` column at assemble time;
+the dashboard reads that, NOT the live atoms. So re-harvesting/re-classifying an
+atom that's already in a quiz can't break the recorded quiz — it keeps the
+questions it was assembled with. (`quiz_atoms_map` stays, but only as the coverage
+ledger.) Two residual notes: (1) a quiz's snapshot can go STALE vs the current
+pool — `npm run quiz:lint`'s "quiz integrity" section lists quizzes whose mapped
+source atoms changed; re-assemble to refresh. (2) Quizzes assembled BEFORE 0035
+have an empty snapshot and fall back to the live join, so they CAN still render
+broken — re-assemble or delete them. (3) Pushed copies on nda-tracker are frozen
+snapshots too; re-push the same slug to update, or delete orphans there.
 
 ---
 

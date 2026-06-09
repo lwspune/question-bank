@@ -81,71 +81,86 @@ export async function getQuizPoolStats(): Promise<QuizPoolStats> {
   return { total, auto, verified, needsReview, ready: auto + verified };
 }
 
-/** Most-recent assembled quizzes with their questions (capped to keep the
- *  question fetch under the 1000-row cap: 60 quizzes × 15 ≈ 900). */
+/** Most-recent assembled quizzes with their questions. Reads the IMMUTABLE
+ *  question SNAPSHOT stored on the quiz row (migration 0035) — decoupled from the
+ *  live atom pool, so a later atom change can't break a recorded quiz. Quizzes
+ *  assembled BEFORE 0035 have an empty snapshot and fall back to the live
+ *  map→atoms join. */
 export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]> {
   const db = createSupabaseAdminClient();
   const { data: quizzes, error } = await db
     .from("quizzes")
-    .select("id, slug, title, exam, subject, chapter, status, pushed_at, public_slug, created_at")
+    .select("id, slug, title, exam, subject, chapter, status, pushed_at, public_slug, theme, questions, created_at")
     .order("created_at", { ascending: false })
     .limit(limit);
   if (error) throw new Error(`list quizzes failed: ${error.message}`);
   const rows = quizzes ?? [];
   if (rows.length === 0) return [];
 
-  const ids = rows.map((q) => q.id);
-  const { data: maps, error: mErr } = await db
-    .from("quiz_atoms_map")
-    .select("quiz_id, position, quiz_atoms(stem, options, answer, concept_slug, theme)")
-    .in("quiz_id", ids)
-    .order("position");
-  if (mErr) throw new Error(`list quiz questions failed: ${mErr.message}`);
+  const hasSnapshot = (q: { questions: unknown }) =>
+    Array.isArray(q.questions) && (q.questions as unknown[]).length > 0;
 
+  // Live-join fallback ONLY for legacy (pre-0035) quizzes without a snapshot.
+  const legacyIds = rows.filter((q) => !hasSnapshot(q)).map((q) => q.id);
   const byQuiz = new Map<string, QuizQuestionView[]>();
   const themesByQuiz = new Map<string, Set<string>>();
-  for (const m of (maps ?? []) as unknown as Array<{
-    quiz_id: string;
-    position: number;
-    quiz_atoms: {
-      stem: string;
-      options: QuizQuestionView["options"];
-      answer: string | null;
-      concept_slug: string;
-      theme: string | null;
-    } | null;
-  }>) {
-    if (!m.quiz_atoms) continue;
-    const list = byQuiz.get(m.quiz_id) ?? [];
-    list.push({
-      position: m.position,
-      stem: m.quiz_atoms.stem,
-      options: m.quiz_atoms.options,
-      answer: m.quiz_atoms.answer,
-      conceptSlug: m.quiz_atoms.concept_slug,
-    });
-    byQuiz.set(m.quiz_id, list);
-    if (m.quiz_atoms.theme) {
-      const set = themesByQuiz.get(m.quiz_id) ?? new Set<string>();
-      set.add(m.quiz_atoms.theme);
-      themesByQuiz.set(m.quiz_id, set);
+  if (legacyIds.length > 0) {
+    const { data: maps, error: mErr } = await db
+      .from("quiz_atoms_map")
+      .select("quiz_id, position, quiz_atoms(stem, options, answer, concept_slug, theme)")
+      .in("quiz_id", legacyIds)
+      .order("position");
+    if (mErr) throw new Error(`list quiz questions failed: ${mErr.message}`);
+    for (const m of (maps ?? []) as unknown as Array<{
+      quiz_id: string;
+      position: number;
+      quiz_atoms: {
+        stem: string;
+        options: QuizQuestionView["options"];
+        answer: string | null;
+        concept_slug: string;
+        theme: string | null;
+      } | null;
+    }>) {
+      if (!m.quiz_atoms) continue;
+      const list = byQuiz.get(m.quiz_id) ?? [];
+      list.push({
+        position: m.position,
+        stem: m.quiz_atoms.stem,
+        options: m.quiz_atoms.options,
+        answer: m.quiz_atoms.answer,
+        conceptSlug: m.quiz_atoms.concept_slug,
+      });
+      byQuiz.set(m.quiz_id, list);
+      if (m.quiz_atoms.theme) {
+        const set = themesByQuiz.get(m.quiz_id) ?? new Set<string>();
+        set.add(m.quiz_atoms.theme);
+        themesByQuiz.set(m.quiz_id, set);
+      }
     }
   }
 
   return rows.map((q) => {
-    const themes = themesByQuiz.get(q.id);
-    return {
+    const base = {
       id: q.id,
       slug: q.slug,
       title: q.title,
       exam: q.exam,
       subject: q.subject,
       chapter: q.chapter,
-      // Theme = the quiz's actual content: one distinct atom theme → that, else "mixed".
-      theme: themes && themes.size === 1 ? [...themes][0] : "mixed",
       status: q.status,
       pushedAt: q.pushed_at,
       publicSlug: (q as { public_slug: string | null }).public_slug ?? null,
+    };
+    if (hasSnapshot(q)) {
+      const snapshot = (q.questions as QuizQuestionView[]).slice().sort((a, b) => a.position - b.position);
+      return { ...base, theme: ((q as { theme: string | null }).theme as string) ?? "mixed", questions: snapshot };
+    }
+    // legacy fallback
+    const themes = themesByQuiz.get(q.id);
+    return {
+      ...base,
+      theme: themes && themes.size === 1 ? [...themes][0] : "mixed",
       questions: (byQuiz.get(q.id) ?? []).sort((a, b) => a.position - b.position),
     };
   });
