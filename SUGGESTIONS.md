@@ -7,13 +7,33 @@ Each item is outside the scope of the work that surfaced it. Strike through when
 
 ## 2026-06-09
 
-### Distractor-verify the remaining harvested quiz chapters before public-publishing
+### Bypass KaTeX for underline-only words in the web renderer
 
-The public quiz funnel can publish ANY assembled quiz, but only **NDA Probability + Statistics** have had the full per-chapter distractor approval (`quiz:verify`). The other harvested chapters — **vectors, matrices-determinants, human-physiology** — only have `formula`/`fact` (auto) atoms ready; their practice/property/trap themes are still `needs_review`. So a public quiz from those chapters can only be a Formulas/Key-Facts quiz today.
+English (vocab/idioms) and Biology (taxonomy) questions store the underlined word as a KaTeX math zone — `\(\underline{\text{absently}}\)` / `\(\underline{\textit{...}}\)`. So `KatexRenderer` typesets that one word in KaTeX's font (KaTeX_Main) instead of the body Source Serif → it looks like a different typeface dropped mid-sentence, AND the `.katex` inline-block breaks `-webkit-line-clamp` (the mid-sentence "tha…" truncation artifact on `/browse` collapsed cards).
 
-**Why:** the funnel's value is sharing good quizzes; a half-approved chapter limits theme variety and could surface thin quizzes. Approving them widens the publishable pool. Also run `npm run quiz:lint <route> <chapter>` on each before publishing (notes prompts can be sequence-dependent / unfair standalone).
+**Why:** it's bank-wide (all NDA English + Biology underline questions) and visibly "weird"; KaTeX is the wrong tool just to underline an English word. The `.docx` export already solves this with `UNDERLINE_BYPASS_RE` in `src/lib/export/ommlBuilder.ts` (emits a native underlined run instead of routing through the math pipeline) — so there's a sanctioned pattern to mirror.
 
-**How to apply:** per chapter the user names — query its `needs_review` + `looks_mcq_clean` practiceSet/selfCheck atoms, author 3 distractors each into `scripts/quiz/verify/<route>__<chapter>.ts` (tag identity/rule Qs `theme:"property"`), `npm run quiz:verify`, then `quiz:lint` + fix flagged stems via the `stem` override. Chapter-by-chapter, on request (the agreed cadence).
+**How to apply:** in the web renderer (`KatexRenderer` or a small pre-pass in `parseLatex`), detect the simple `\(\underline{\text{…}}\)` / `\(\underline{\textit{…}}\)` zone and emit a real underlined `<span>` (`underline`, optional `italic`) in the body font instead of `<InlineMath>`. Fixes both the font mismatch and the line-clamp artifact, and removes the inline-block from the flow. Decide scope: shared `KatexRenderer` (notes/guides/editor-preview all benefit) vs just `/browse`. Leave genuine math (`\(x^2\)`, matrices) untouched — only the bare `\underline{\text{…}}`/`\textit` pattern. See [[mobile-render-gotchas]].
+
+### ~~Distractor-verify the remaining harvested quiz chapters before public-publishing~~ — **DONE 2026-06-09**
+
+Completed all three named chapters — **Human Physiology** (87 recall + 23 traps), **Matrices & Determinants** (182 computation + 5 traps), **Vectors** (130 computation + 55 traps) — by hand-authoring every distractor (the harvest's sibling-row candidates were cross-category/unusable). All `verified`, 0 lint flags, assembled + pushed. Quiz Factory now has 5 complete chapters. The same cadence applies to any *future* harvested chapter (see "Harvest + verify the unstarted chapters" below).
+
+### Harvest + verify the remaining ~15 /notes chapters (the Quiz Factory frontier)
+
+5 chapters are complete; **~15 noted chapters are not yet harvested** — ~12 NDA Maths (3D Geometry, Sequence & Series, Indefinite Integration, Binomial, Functions, Differentiation, Trig Identities, Limits, App of Derivatives, Lines, P&C, Complex Numbers) + 2 NDA Physics (Sound, E&M) + 1 MHT-CET (Indefinite Integration).
+
+**Why:** more chapters = a deeper daily-quiz supply + a wider public-funnel pool. Each is ~the same effort as the 3 finished this session (harvest is free; the hand-authored distractors for practice/computation + traps are the bottleneck).
+
+**How to apply:** per chapter, `npm run quiz:harvest <route>/<chapter>` → `quiz:sync` → author distractors into `scripts/quiz/verify/<route>__<chapter>-{computation,formulas,traps}.ts` (formula bundles split into per-piece slots; computation = numeric/expression with plausible wrong-variant distractors; traps = full "spot the mistake" MCQs) → `quiz:verify` → `quiz:lint` → `quiz:assemble … -- --theme=X`. Chapter-by-chapter, on the user's cue.
+
+### Cross-chapter "traps/properties of the day" assembly for thin themes
+
+Some themes are permanently thin per chapter (Matrices has only 5 trap atoms — verified but below the 12-atom minimum for a standalone quiz, so stranded). A cross-chapter assembler ("Traps of the day" pulling trap atoms across all NDA Maths chapters) would use them.
+
+**Why:** otherwise low-count themes never form a quiz and the atoms sit unused. Already noted in QUIZ_FACTORY "Known gaps."
+
+**How to apply:** extend `assembleNextQuiz` (or a sibling) to select ready-unused atoms by `(exam, theme)` across chapters instead of `(route, chapter, theme)`; slug like `nda-maths-traps-N`. Keep the coverage-dedup ledger.
 
 ### Phone-link signup attribution (deferred — attribution-only shipped)
 

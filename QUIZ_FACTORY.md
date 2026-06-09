@@ -111,14 +111,16 @@ exam/subject/chapter/theme/status. **Recorded quizzes are an immutable snapshot
 Snapshot **2026-06-09** — refresh with:
 `SELECT subject_route, chapter_slug, count(*) FILTER (WHERE status IN ('auto','verified')) ready, count(*) FILTER (WHERE status='needs_review') needs_review FROM quiz_atoms GROUP BY 1,2;`
 
-| Chapter | Ready | Needs review | Quizzes | State |
-|---|---|---|---|---|
-| nda-maths / **probability** | 157 | 41* | **10** | ✅ **Complete** (all themes; *41 = 34 overlapping trap seeds + 7 non-MCQ-clean, left unauthored) |
-| nda-maths / **statistics** | 185 | 29* | **12** | ✅ **Complete** (all themes — formula + property + computation + traps; *29 = 21 overlapping/duplicate trap seeds + 8 non-MCQ-clean, left unauthored; 3 property atoms carry forward below band) |
-| nda-biology / human-physiology | 56 | 122 | 3 | Harvested; `fact` auto ready; practice/traps **not approved** |
-| nda-maths / matrices-determinants | 29 | 187 | 1 | Harvested; `formula` auto ready; **not approved** |
-| nda-maths / vectors | 27 | 185 | 1 | Harvested; `formula` auto ready; **not approved** |
-| _rest of NDA Maths (~23 ch), NDA Physics, MHT-CET, JEE_ | — | — | — | Not harvested |
+**5 chapters complete.** All quizzes are snapshot-backed (0035); counts below are post the 2026-06-09 clean reset (deleted all 24 pre-split drafts, re-assembled fresh).
+
+| Chapter | Ready | Quizzes | State |
+|---|---|---|---|
+| nda-maths / **probability** | ~163 | ~9 | ✅ **Complete** (formula/computation/property/trap) |
+| nda-maths / **statistics** | ~197 | ~11 | ✅ **Complete** (formula/computation/property/trap) |
+| nda-biology / **human-physiology** | ~166 | ~5 | ✅ **Complete** (fact + recall + traps; all distractors hand-authored — sibling-row candidates were unusable) |
+| nda-maths / **matrices-determinants** | ~222 | ~12 | ✅ **Complete** (formula + computation; 5 trap atoms verified but <12 → no standalone trap quiz) |
+| nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) |
+| _rest of NDA Maths (~12 ch), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested — the remaining frontier |
 
 ---
 
