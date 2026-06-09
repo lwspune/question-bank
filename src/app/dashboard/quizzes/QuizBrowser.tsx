@@ -43,8 +43,33 @@ export default function QuizBrowser({ quizzes }: { quizzes: AssembledQuiz[] }) {
     );
   }
 
-  const optionsFor = (key: FilterKey) =>
-    [...new Set(quizzes.map((q) => q[key]).filter(Boolean))].sort();
+  // Cascade: a dropdown's options reflect the OTHER active filters, so e.g.
+  // Subject=Maths lists only Maths chapters (not NDA Biology's Human Physiology).
+  const optsGiven = (state: Record<FilterKey, string>, key: FilterKey) =>
+    [
+      ...new Set(
+        quizzes
+          .filter((q) => FILTER_DEFS.every((f) => f.key === key || !state[f.key] || q[f.key] === state[f.key]))
+          .map((q) => q[key])
+          .filter(Boolean)
+      ),
+    ].sort();
+  const optionsFor = (key: FilterKey) => optsGiven(filters, key);
+  // Setting a value can make another active filter an impossible combo (e.g.
+  // Subject=Biology while Chapter=Vectors) — clear those so the UI never holds a
+  // hidden contradiction and the count stays sane.
+  const setFilter = (key: FilterKey, value: string) =>
+    setFilters((cur) => {
+      const next = { ...cur, [key]: value };
+      if (value) {
+        for (const f of FILTER_DEFS) {
+          if (f.key !== key && next[f.key] && !optsGiven(next, f.key).includes(next[f.key])) {
+            next[f.key] = "";
+          }
+        }
+      }
+      return next;
+    });
   const filtered = quizzes.filter((q) =>
     FILTER_DEFS.every((f) => !filters[f.key] || q[f.key] === filters[f.key])
   );
@@ -60,7 +85,7 @@ export default function QuizBrowser({ quizzes }: { quizzes: AssembledQuiz[] }) {
             <select
               key={f.key}
               value={filters[f.key]}
-              onChange={(e) => setFilters((s) => ({ ...s, [f.key]: e.target.value }))}
+              onChange={(e) => setFilter(f.key, e.target.value)}
               className="h-9 rounded-md border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label={f.all}
             >
