@@ -9,6 +9,7 @@ import {
 } from "@/lib/questions/query";
 import type { Filters } from "@/lib/questions/filters";
 import { checkAndIncrement } from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/http";
 import {
   buildQuestionPaper,
   buildAnswerKey,
@@ -209,14 +210,6 @@ export async function POST(request: NextRequest) {
     console.error("export route error", err);
     return NextResponse.json({ error: "internal error" }, { status: 500 });
   }
-}
-
-function getClientIp(request: NextRequest): string {
-  const xff = request.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0].trim();
-  const xri = request.headers.get("x-real-ip");
-  if (xri) return xri.trim();
-  return "unknown";
 }
 
 function formatRetry(seconds: number): string {

@@ -33,6 +33,8 @@ export type AssembledQuiz = {
   theme: string;
   status: string;
   pushedAt: string | null;
+  /** Set when the quiz is published to the public funnel (/quiz/<publicSlug>). */
+  publicSlug: string | null;
   questions: QuizQuestionView[];
 };
 
@@ -85,7 +87,7 @@ export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]>
   const db = createSupabaseAdminClient();
   const { data: quizzes, error } = await db
     .from("quizzes")
-    .select("id, slug, title, exam, subject, chapter, status, pushed_at, created_at")
+    .select("id, slug, title, exam, subject, chapter, status, pushed_at, public_slug, created_at")
     .order("created_at", { ascending: false })
     .limit(limit);
   if (error) throw new Error(`list quizzes failed: ${error.message}`);
@@ -143,6 +145,7 @@ export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]>
       theme: themes && themes.size === 1 ? [...themes][0] : "mixed",
       status: q.status,
       pushedAt: q.pushed_at,
+      publicSlug: (q as { public_slug: string | null }).public_slug ?? null,
       questions: (byQuiz.get(q.id) ?? []).sort((a, b) => a.position - b.position),
     };
   });

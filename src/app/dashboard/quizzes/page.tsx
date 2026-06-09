@@ -37,9 +37,10 @@ export default async function QuizzesPage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Daily Quizzes</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Quizzes assembled from the /notes question pool, pushed to nda-tracker as drafts.
-            Read-only view — build with <code className="rounded bg-muted px-1 py-0.5 text-xs">npm run quiz:assemble</code>,
-            publish in nda-tracker.
+            Quizzes assembled from the /notes question pool. Push to nda-tracker for student
+            delivery, or <strong>Publish to public</strong> for a shareable lead-magnet link
+            (<code className="rounded bg-muted px-1 py-0.5 text-xs">/quiz/&lt;slug&gt;</code>) —
+            leads land in <a href="/dashboard/leads" className="underline">Leads</a>.
           </p>
         </header>
 

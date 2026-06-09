@@ -17,10 +17,32 @@ import { ROUTES as POLITY_ROUTES } from "@/app/guide/nda-polity/_data/nda-polity
 import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 const SITE_URL = "https://www.pyqvault.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+/** Published public quizzes (DB). Guarded so a missing-env build still produces
+ *  the static sitemap rather than failing. */
+async function publicQuizEntries(now: Date): Promise<MetadataRoute.Sitemap> {
+  try {
+    const db = createSupabaseAdminClient();
+    const { data } = await db
+      .from("quizzes")
+      .select("public_slug, updated_at")
+      .not("public_slug", "is", null)
+      .limit(1000);
+    return (data ?? []).map((q) => ({
+      url: `${SITE_URL}/quiz/${q.public_slug}`,
+      lastModified: q.updated_at ? new Date(q.updated_at as string) : now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const guideEntries: MetadataRoute.Sitemap = [
@@ -217,6 +239,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const quizEntries = await publicQuizEntries(now);
+
   return [
     {
       url: `${SITE_URL}/browse`,
@@ -227,6 +251,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...examHomeEntries,
     ...guideEntries,
     ...notesEntries,
+    ...quizEntries,
+    {
+      url: `${SITE_URL}/privacy`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     {
       url: `${SITE_URL}/login`,
       lastModified: now,
