@@ -89,6 +89,11 @@ import {
   BINOMIAL_THEOREM_SLUGS,
 } from "@/app/notes/nda-maths/binomial-theorem/_data";
 import {
+  PROPERTIES_OF_TRIANGLE_CHAPTER,
+  PROPERTIES_OF_TRIANGLE_NOTES,
+  PROPERTIES_OF_TRIANGLE_SLUGS,
+} from "@/app/notes/nda-maths/properties-of-triangle/_data";
+import {
   NDA_INDEFINITE_INTEGRATION_CHAPTER,
   NDA_INDEFINITE_INTEGRATION_NOTES,
   NDA_INDEFINITE_INTEGRATION_SLUGS,
@@ -409,6 +414,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: BINOMIAL_THEOREM_CHAPTER,
     notes: BINOMIAL_THEOREM_NOTES,
     slugs: BINOMIAL_THEOREM_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Mathematics",
+    subjectRoute: "nda-maths",
+    subjectDisplay: "NDA Maths",
+    chapterSlug: "properties-of-triangle",
+    chipLabel: "Properties of Triangle notes",
+    chapter: PROPERTIES_OF_TRIANGLE_CHAPTER,
+    notes: PROPERTIES_OF_TRIANGLE_NOTES,
+    slugs: PROPERTIES_OF_TRIANGLE_SLUGS,
   },
   {
     examName: "NDA",

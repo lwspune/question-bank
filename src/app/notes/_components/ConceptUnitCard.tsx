@@ -121,6 +121,8 @@ import DefeqGrowthDecay from "./visualizations/DefeqGrowthDecay";
 import QeDiscriminantParabola from "./visualizations/QeDiscriminantParabola";
 import QeRootsInInterval from "./visualizations/QeRootsInInterval";
 import BtPascalTriangle from "./visualizations/BtPascalTriangle";
+import PtTriangleLabeled from "./visualizations/PtTriangleLabeled";
+import PtCircumIncircle from "./visualizations/PtCircumIncircle";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -341,6 +343,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <QeRootsInInterval />;
     case "bt-pascal-triangle":
       return <BtPascalTriangle />;
+    case "pt-triangle-labeled":
+      return <PtTriangleLabeled />;
+    case "pt-circumcircle-incircle":
+      return <PtCircumIncircle />;
   }
 }
 

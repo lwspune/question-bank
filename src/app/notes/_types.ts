@@ -191,7 +191,10 @@ export type VisualizationSlug =
   | "qe-discriminant-parabola"
   | "qe-roots-in-interval"
   // NDA Maths — Binomial Theorem chapter
-  | "bt-pascal-triangle";
+  | "bt-pascal-triangle"
+  // NDA Maths — Properties of Triangle chapter
+  | "pt-triangle-labeled"
+  | "pt-circumcircle-incircle";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
