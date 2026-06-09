@@ -12,10 +12,10 @@
     "stem": "Which of the following is the formula for Frequency and tabulation?",
     "correct": "\\(N = \\sum_{i=1}^{k} f_i\\)",
     "options": {
-      "A": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)",
-      "B": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}\\)",
+      "A": "\\(M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}\\)",
+      "B": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2\\)",
       "C": "\\(N = \\sum_{i=1}^{k} f_i\\)",
-      "D": "\\(M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}\\)"
+      "D": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -272,7 +272,7 @@
     "options": {
       "A": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)",
       "B": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
-      "C": "\\(y_i = a\\,x_i + b \\quad\\Longrightarrow\\quad \\bar{y} = a\\,\\bar{x} + b\\)",
+      "C": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases}\\)",
       "D": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)"
     },
     "answer": "A",
@@ -501,8 +501,8 @@
     "stem": "Which of the following is the formula for Arithmetic Mean (raw data)?",
     "correct": "\\(\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}\\)",
     "options": {
-      "A": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)",
-      "B": "\\(M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}\\)",
+      "A": "\\(M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}\\)",
+      "B": "\\(b_{yx} \\cdot b_{xy} = r^2\\)",
       "C": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
       "D": "\\(\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}\\)"
     },
@@ -691,9 +691,9 @@
     "correct": "\\(\\bar{x} = \\dfrac{\\sum f_i x_i}{\\sum f_i}\\)",
     "options": {
       "A": "\\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\)",
-      "B": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)",
+      "B": "\\(N = \\sum_{i=1}^{k} f_i\\)",
       "C": "\\(\\bar{x} = \\dfrac{\\sum f_i x_i}{\\sum f_i}\\)",
-      "D": "\\(N = \\sum_{i=1}^{k} f_i\\)"
+      "D": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -883,10 +883,10 @@
     "stem": "Which of the following is the formula for Linear Transformation of the Mean?",
     "correct": "\\(y_i = a\\,x_i + b \\quad\\Longrightarrow\\quad \\bar{y} = a\\,\\bar{x} + b\\)",
     "options": {
-      "A": "\\(\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}\\)",
-      "B": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)",
+      "A": "\\(\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12}\\)",
+      "B": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\)",
       "C": "\\(y_i = a\\,x_i + b \\quad\\Longrightarrow\\quad \\bar{y} = a\\,\\bar{x} + b\\)",
-      "D": "\\(b_{yx} \\cdot b_{xy} = r^2, \\qquad r = \\pm\\sqrt{b_{yx}\\,b_{xy}}\\)"
+      "D": "\\(b_{yx} \\cdot b_{xy} = r^2\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -1077,8 +1077,8 @@
     "correct": "\\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\)",
     "options": {
       "A": "\\(\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}\\)",
-      "B": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases} \\qquad \\text{Grouped: } M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)",
-      "C": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
+      "B": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
+      "C": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0\\)",
       "D": "\\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\)"
     },
     "answer": "D",
@@ -1303,8 +1303,8 @@
     "options": {
       "A": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}\\)",
       "B": "\\(\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}\\)",
-      "C": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)",
-      "D": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)"
+      "C": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n\\)",
+      "D": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -1753,8 +1753,8 @@
     "options": {
       "A": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases} \\qquad \\text{Grouped: } M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)",
       "B": "\\(M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}\\)",
-      "C": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2 \\qquad \\text{and} \\qquad \\arg\\min_{a}\\sum_{i}(x_i - a)^2 = \\bar{x}\\)",
-      "D": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)"
+      "C": "\\(x_{\\text{mark}} = \\dfrac{L + U}{2}\\)",
+      "D": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -1944,9 +1944,9 @@
     "stem": "Which of the following is the formula for Mode — Most Frequent Value?",
     "correct": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
     "options": {
-      "A": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}\\)",
+      "A": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0\\)",
       "B": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
-      "C": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2 \\qquad \\text{and} \\qquad \\arg\\min_{a}\\sum_{i}(x_i - a)^2 = \\bar{x}\\)",
+      "C": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\)",
       "D": "\\(\\text{MD}(A) = \\dfrac{1}{n}\\sum_{i=1}^{n}|x_i - A|\\)"
     },
     "answer": "B",
@@ -2133,9 +2133,9 @@
     "stem": "Which of the following is the formula for Geometric Mean (GM)?",
     "correct": "\\(\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}\\)",
     "options": {
-      "A": "\\(\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12} \\qquad \\sigma^2_{\\text{AP}} = d^2\\,\\dfrac{n^2 - 1}{12}\\)",
-      "B": "\\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1\\,m_2}\\right|\\)",
-      "C": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2 \\qquad \\text{and} \\qquad \\arg\\min_{a}\\sum_{i}(x_i - a)^2 = \\bar{x}\\)",
+      "A": "\\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1\\,m_2}\\right|\\)",
+      "B": "\\(M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}\\)",
+      "C": "\\(x_{\\text{mark}} = \\dfrac{L + U}{2}\\)",
       "D": "\\(\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}\\)"
     },
     "answer": "D",
@@ -2329,7 +2329,7 @@
       "A": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
       "B": "\\(\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}} = \\dfrac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}\\)",
       "C": "\\(\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2\\)",
-      "D": "\\(\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}\\)"
+      "D": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -2548,9 +2548,9 @@
     "correct": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}\\)",
     "options": {
       "A": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}\\)",
-      "B": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
-      "C": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases} \\qquad \\text{Grouped: } M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)",
-      "D": "\\(\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}\\)"
+      "B": "\\(x_{\\text{mark}} = \\dfrac{L + U}{2}\\)",
+      "C": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2\\)",
+      "D": "\\(\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -2803,8 +2803,8 @@
     "options": {
       "A": "\\(\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2\\)",
       "B": "\\(\\text{MD}(A) = \\dfrac{1}{n}\\sum_{i=1}^{n}|x_i - A|\\)",
-      "C": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)",
-      "D": "\\(M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)"
+      "C": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0\\)",
+      "D": "\\(\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12}\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -2995,9 +2995,9 @@
     "correct": "\\(\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2\\)",
     "options": {
       "A": "\\(\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2\\)",
-      "B": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)",
-      "C": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
-      "D": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}\\)"
+      "B": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
+      "C": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
+      "D": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -3188,9 +3188,9 @@
     "correct": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
     "options": {
       "A": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
-      "B": "\\(r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y} \\qquad r_{(aX+b,\\,cY+d)} = \\text{sign}(ac)\\,r_{XY}\\)",
-      "C": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}\\)",
-      "D": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x}) \\qquad x - \\bar{x} = b_{xy}(y - \\bar{y})\\)"
+      "B": "\\(\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}\\)",
+      "C": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
+      "D": "\\(x_{\\text{mark}} = \\dfrac{L + U}{2}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -3381,8 +3381,8 @@
     "correct": "\\(\\text{Var}(Y) = a^2\\,\\text{Var}(X) \\qquad \\sigma_Y = |a|\\,\\sigma_X\\)",
     "options": {
       "A": "\\(\\text{Var}(Y) = a^2\\,\\text{Var}(X) \\qquad \\sigma_Y = |a|\\,\\sigma_X\\)",
-      "B": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
-      "C": "\\(y_i = a\\,x_i + b \\quad\\Longrightarrow\\quad \\bar{y} = a\\,\\bar{x} + b\\)",
+      "B": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2}\\)",
+      "C": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
       "D": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)"
     },
     "answer": "A",
@@ -3575,7 +3575,7 @@
     "options": {
       "A": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
       "B": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
-      "C": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}\\)",
+      "C": "\\(\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}\\)",
       "D": "\\(\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12} \\qquad \\sigma^2_{\\text{AP}} = d^2\\,\\dfrac{n^2 - 1}{12}\\)"
     },
     "answer": "D",
@@ -3800,8 +3800,8 @@
     "options": {
       "A": "\\(\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2\\)",
       "B": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
-      "C": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}\\)",
-      "D": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)"
+      "C": "\\(\\sigma^2_{1..n} = \\dfrac{n^2 - 1}{12}\\)",
+      "D": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -3991,10 +3991,10 @@
     "stem": "Which of the following is the formula for Computational Identity & Minimum-SSE Property?",
     "correct": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2 \\qquad \\text{and} \\qquad \\arg\\min_{a}\\sum_{i}(x_i - a)^2 = \\bar{x}\\)",
     "options": {
-      "A": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
+      "A": "\\(\\text{Var}(Y) = a^2\\,\\text{Var}(X)\\)",
       "B": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2 \\qquad \\text{and} \\qquad \\arg\\min_{a}\\sum_{i}(x_i - a)^2 = \\bar{x}\\)",
-      "C": "\\(\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}, \\quad \\text{MD} \\approx \\tfrac{4}{5}\\,\\text{SD}\\)",
-      "D": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)"
+      "C": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
+      "D": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -4217,9 +4217,9 @@
     "correct": "\\(r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y} \\qquad r_{(aX+b,\\,cY+d)} = \\text{sign}(ac)\\,r_{XY}\\)",
     "options": {
       "A": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
-      "B": "\\(\\sum_{i=1}^{n} x_i = x_1 + \\cdots + x_n,\\quad \\sum_{i=1}^{n} c = nc,\\quad \\sum (a x_i + b) = a\\sum x_i + nb\\)",
+      "B": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
       "C": "\\(r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y} \\qquad r_{(aX+b,\\,cY+d)} = \\text{sign}(ac)\\,r_{XY}\\)",
-      "D": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)"
+      "D": "\\(\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}} = \\dfrac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -4441,10 +4441,10 @@
     "stem": "Which of the following is the formula for Lines of Regression?",
     "correct": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x}) \\qquad x - \\bar{x} = b_{xy}(y - \\bar{y})\\)",
     "options": {
-      "A": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)",
+      "A": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ\\)",
       "B": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x}) \\qquad x - \\bar{x} = b_{xy}(y - \\bar{y})\\)",
-      "C": "\\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1\\,m_2}\\right|\\)",
-      "D": "\\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\)"
+      "C": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)",
+      "D": "\\(\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1\\,m_2}\\right|\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -4668,7 +4668,7 @@
     "options": {
       "A": "\\(\\text{MD}(A) = \\dfrac{1}{n}\\sum_{i=1}^{n}|x_i - A|\\)",
       "B": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)",
-      "C": "\\(\\dfrac{\\sum x_i^2}{n} = \\bar{x}^2 + \\sigma^2 \\qquad \\text{and} \\qquad \\arg\\min_{a}\\sum_{i}(x_i - a)^2 = \\bar{x}\\)",
+      "C": "\\(N = \\sum_{i=1}^{k} f_i\\)",
       "D": "\\(b_{yx} \\cdot b_{xy} = r^2, \\qquad r = \\pm\\sqrt{b_{yx}\\,b_{xy}}\\)"
     },
     "answer": "D",
@@ -4891,10 +4891,10 @@
     "stem": "Which of the following is the formula for Identifying Which Regression Line is Which?",
     "correct": "\\(\\text{Correct pairing satisfies } b_{yx}\\,b_{xy} \\leq 1; \\text{ wrong pairing gives } > 1.\\)",
     "options": {
-      "A": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)",
+      "A": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases}\\)",
       "B": "\\(\\text{Correct pairing satisfies } b_{yx}\\,b_{xy} \\leq 1; \\text{ wrong pairing gives } > 1.\\)",
       "C": "\\(\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}} = \\dfrac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}\\)",
-      "D": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases} \\qquad \\text{Grouped: } M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)"
+      "D": "\\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -5310,9 +5310,9 @@
     "correct": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)",
     "options": {
       "A": "\\(\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class width}}\\)",
-      "B": "\\(\\text{Var}(Y) = a^2\\,\\text{Var}(X) \\qquad \\sigma_Y = |a|\\,\\sigma_X\\)",
-      "C": "\\(\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}} = \\dfrac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}\\)",
-      "D": "\\(\\bar{x}_{a..b} = \\dfrac{a+b}{2} \\qquad \\overline{k^2}\\big|_{1}^{n} = \\dfrac{(n+1)(2n+1)}{6} \\qquad \\bar{x}_{\\text{AP}} = \\dfrac{a_1 + a_n}{2}\\)"
+      "B": "\\(\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}} = \\dfrac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}\\)",
+      "C": "\\(r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y}\\)",
+      "D": "\\(\\text{CV} = \\dfrac{\\sigma}{\\bar{x}} \\times 100 \\%\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -5503,9 +5503,9 @@
     "correct": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)",
     "options": {
       "A": "\\(M_{\\text{new}} = M + \\dfrac{y - x}{n}\\)",
-      "B": "\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)",
+      "B": "\\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\)",
       "C": "\\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ\\)",
-      "D": "\\(\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}\\)"
+      "D": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases}\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -5694,7 +5694,7 @@
       "A": "\\(\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\dfrac{\\sum x_i^2}{n} - \\bar{x}^2\\)",
       "B": "\\(M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)",
       "C": "\\(M_0 = L + \\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\,h\\)",
-      "D": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases} \\qquad \\text{Grouped: } M = L + \\dfrac{\\tfrac{n}{2} - F}{f}\\,h\\)"
+      "D": "\\(\\text{Raw: } M = \\begin{cases} x_{(n+1)/2} & n \\text{ odd} \\\\[4pt] \\dfrac{x_{n/2} + x_{n/2+1}}{2} & n \\text{ even} \\end{cases}\\)"
     },
     "answer": "B",
     "candidateDistractors": [],

@@ -175,13 +175,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Classical probability?",
+    "stem": "Which of the following is the formula for Classical (theoretical) probability?",
     "correct": "\\(P(E) = \\dfrac{n(E)}{n(S)} = \\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}\\)",
     "options": {
       "A": "\\(P(E) = \\dfrac{n(E)}{n(S)} = \\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}\\)",
-      "B": "\\(0 \\le P(E) \\le 1, \\qquad P(S)=1, \\qquad P(E') = 1 - P(E)\\)",
-      "C": "\\(P(A \\cap B) = P(A)\\,P(B)\\)",
-      "D": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\quad(\\text{length / area / volume})\\)"
+      "B": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\)",
+      "C": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B)\\)",
+      "D": "\\(P(A \\cap B) = P(A)\\,P(B)\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -192,7 +192,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "94f745acd277bb2c92247ae1fd4248c729e640d5",
+    "sourceFingerprint": "c1cda926cf255be748b81b011bfc3c3ed43fcdf1",
     "timeEstimateSec": 45
   },
   {
@@ -395,13 +395,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Geometric probability?",
+    "stem": "Which of the following is the formula for Geometric probability (length / area / volume ratio)?",
     "correct": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\quad(\\text{length / area / volume})\\)",
     "options": {
       "A": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\quad(\\text{length / area / volume})\\)",
-      "B": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
-      "C": "\\(P = \\dfrac{\\#\\{x : x \\text{ has the property}\\}}{n}\\)",
-      "D": "\\(P(A' \\cap B') = 1 - P(A \\cup B) = 1 - P(A) - P(B) + P(A \\cap B)\\)"
+      "B": "\\(n(S)=2^{n}\\)",
+      "C": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
+      "D": "\\(P = \\dfrac{\\#\\{x : x \\text{ has the property}\\}}{n}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -411,7 +411,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "f04b766b1620edaf6dffcbfc6d597f98729a8975",
+    "sourceFingerprint": "87aab893a66a53d0bf1454574ee05fa20cd15247",
     "timeEstimateSec": 45
   },
   {
@@ -588,13 +588,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Complement rule and range?",
+    "stem": "Which of the following is the formula for Axioms, range, complement, and odds?",
     "correct": "\\(0 \\le P(E) \\le 1, \\qquad P(S)=1, \\qquad P(E') = 1 - P(E)\\)",
     "options": {
       "A": "\\(P(A' \\cap B') = 1 - P(A \\cup B) = 1 - P(A) - P(B) + P(A \\cap B)\\)",
       "B": "\\(0 \\le P(E) \\le 1, \\qquad P(S)=1, \\qquad P(E') = 1 - P(E)\\)",
-      "C": "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)",
-      "D": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)"
+      "C": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B)\\)",
+      "D": "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -605,7 +605,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "3413afe61422191d9cc580b73c0979c8a455fa93",
+    "sourceFingerprint": "205814f2b45891e664cff99caed2c87f5548bdac",
     "timeEstimateSec": 45
   },
   {
@@ -813,12 +813,12 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Selection probability (combinations)?",
+    "stem": "Which of the following is the formula for Selection probability with combinations?",
     "correct": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)",
     "options": {
-      "A": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
-      "B": "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)",
-      "C": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)",
+      "A": "\\(0 \\le P(E) \\le 1\\)",
+      "B": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
+      "C": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
       "D": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)"
     },
     "answer": "D",
@@ -830,7 +830,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "a2155b6c5013cb2899d28f593c6cf9ba1c5fb310",
+    "sourceFingerprint": "d0481f01404327a08c1de4237b3d3c3e8023974c",
     "timeEstimateSec": 45
   },
   {
@@ -1038,12 +1038,12 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Two-dice sample space?",
+    "stem": "Which of the following is the formula for Probability with dice?",
     "correct": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)",
     "options": {
-      "A": "\\(n(S)=2^{n}, \\qquad P(\\text{at least one head in } n) = 1 - \\left(\\tfrac{1}{2}\\right)^{n}\\)",
-      "B": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
-      "C": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
+      "A": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
+      "B": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
+      "C": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
       "D": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)"
     },
     "answer": "D",
@@ -1055,7 +1055,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "72726c238bd4212ddb42f1356bdfaa8671ce082d",
+    "sourceFingerprint": "1dea6ef826ce5e1224de48bd087356e3614e0c66",
     "timeEstimateSec": 45
   },
   {
@@ -1259,13 +1259,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Coin tosses?",
+    "stem": "Which of the following is the formula for Probability with coins?",
     "correct": "\\(n(S)=2^{n}, \\qquad P(\\text{at least one head in } n) = 1 - \\left(\\tfrac{1}{2}\\right)^{n}\\)",
     "options": {
-      "A": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
-      "B": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}, \\qquad P(B) > 0\\)",
+      "A": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
+      "B": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B)\\)",
       "C": "\\(n(S)=2^{n}, \\qquad P(\\text{at least one head in } n) = 1 - \\left(\\tfrac{1}{2}\\right)^{n}\\)",
-      "D": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)"
+      "D": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -1276,7 +1276,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "4d8f306c9e2d2dae5d7c4d35c7cacc04077c2b1a",
+    "sourceFingerprint": "0206ea2948cd70617964882b811ecc4adf69378e",
     "timeEstimateSec": 45
   },
   {
@@ -1484,11 +1484,11 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Arrangement probability (two together)?",
+    "stem": "Which of the following is the formula for Probability with arrangements?",
     "correct": "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)",
     "options": {
       "A": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
-      "B": "\\(0 \\le P(E) \\le 1, \\qquad P(S)=1, \\qquad P(E') = 1 - P(E)\\)",
+      "B": "\\(0 \\le P(E) \\le 1\\)",
       "C": "\\(P(A' \\cap B') = 1 - P(A \\cup B) = 1 - P(A) - P(B) + P(A \\cap B)\\)",
       "D": "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)"
     },
@@ -1501,7 +1501,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "6092ab31ae071459c62807d41419ae43f6297ee2",
+    "sourceFingerprint": "505b9dd2f20aedb0e0bb1a46fee43fcdaef9b123",
     "timeEstimateSec": 45
   },
   {
@@ -1709,13 +1709,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Counting favourable numbers?",
+    "stem": "Which of the following is the formula for Choosing numbers with a property?",
     "correct": "\\(P = \\dfrac{\\#\\{x : x \\text{ has the property}\\}}{n}\\)",
     "options": {
       "A": "\\(P(A' \\cap B') = 1 - P(A \\cup B) = 1 - P(A) - P(B) + P(A \\cap B)\\)",
       "B": "\\(P = \\dfrac{\\#\\{x : x \\text{ has the property}\\}}{n}\\)",
-      "C": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B), \\qquad P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
-      "D": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)"
+      "C": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
+      "D": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -1726,7 +1726,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "bba442c5a492643cfce8996dcdc7d9076994eeeb",
+    "sourceFingerprint": "b1fe7dc19541e09f11bb7f8bcf3511d306b6fc25",
     "timeEstimateSec": 45
   },
   {
@@ -2100,13 +2100,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Addition rule?",
+    "stem": "Which of the following is the formula for The addition rule (inclusion-exclusion)?",
     "correct": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
     "options": {
       "A": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
-      "B": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)",
-      "C": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\quad(\\text{length / area / volume})\\)",
-      "D": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)"
+      "B": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
+      "C": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B)\\)",
+      "D": "\\(0 \\le P(E) \\le 1\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -2117,7 +2117,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "5afb1d6e503ad79102e02a07def5f00e83b589a3",
+    "sourceFingerprint": "8c25733d859d137b1bbc3d8f2a73857627cc3cc5",
     "timeEstimateSec": 45
   },
   {
@@ -2325,7 +2325,7 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Complement of a union (De Morgan)?",
+    "stem": "Which of the following is the formula for \"Neither\" and the complement of a union?",
     "correct": "\\(P(A' \\cap B') = 1 - P(A \\cup B) = 1 - P(A) - P(B) + P(A \\cap B)\\)",
     "options": {
       "A": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
@@ -2342,7 +2342,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "c6becb8860fd91e5d625bfff3c89d87818aaa78c",
+    "sourceFingerprint": "07523399a7a2f263563c3a692f368a41e8482318",
     "timeEstimateSec": 45
   },
   {
@@ -2550,13 +2550,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Addition rule for mutually exclusive events?",
+    "stem": "Which of the following is the formula for Mutually exclusive (disjoint) events?",
     "correct": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
     "options": {
-      "A": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}, \\qquad P(B) > 0\\)",
-      "B": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
+      "A": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
+      "B": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)",
       "C": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
-      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "D": "\\(0 \\le P(E) \\le 1\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -2567,7 +2567,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "32eb6da1e105230bbb861cfd0f1fc5cf863bbb77",
+    "sourceFingerprint": "cb8cfb16dba3585c8e8c3bf0a06c0ceb7f63140a",
     "timeEstimateSec": 45
   },
   {
@@ -2775,13 +2775,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Mutually exclusive AND exhaustive?",
+    "stem": "Which of the following is the formula for Exhaustive events (and probabilities that sum to 1)?",
     "correct": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
     "options": {
-      "A": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B), \\qquad P(A \\mid B) = \\dfrac{n(A \\cap B)}{n(B)}\\)",
-      "B": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
+      "A": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
+      "B": "\\(0 \\le P(E) \\le 1\\)",
       "C": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
-      "D": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)"
+      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -2792,7 +2792,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "3709aad33f2ebe17b942f318815fe3c1025c8187",
+    "sourceFingerprint": "22e2e1f03d939be49a6f8d119383fc51c0a641df",
     "timeEstimateSec": 45
   },
   {
@@ -2996,7 +2996,7 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Multiplication rule (independent events)?",
+    "stem": "Which of the following is the formula for Independence and the multiplication rule?",
     "correct": "\\(P(A \\cap B) = P(A)\\,P(B)\\)",
     "options": {
       "A": "\\(P(E) = \\dfrac{n(E)}{n(S)} = \\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}\\)",
@@ -3013,7 +3013,7 @@
     ],
     "status": "auto",
     "looksMcqClean": true,
-    "sourceFingerprint": "1d528371eb77111809a3d04f5efa62ef3e01d35b",
+    "sourceFingerprint": "34611b86b512e8fec1ba2649c225f3f876ad63f1",
     "timeEstimateSec": 45
   },
   {
@@ -3221,7 +3221,7 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for At least one (independent trials)?",
+    "stem": "Which of the following is the formula for \"At least one\" via the complement?",
     "correct": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
     "options": {
       "A": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)",
@@ -3238,7 +3238,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "ae124684fa04069c9c5259ce96fe0cdb1a15e59c",
+    "sourceFingerprint": "8e8fb5bc1c6710c312a0e4904e4c926802bc13c0",
     "timeEstimateSec": 45
   },
   {
@@ -3446,13 +3446,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Problem solved by at least one solver?",
+    "stem": "Which of the following is the formula for The \"problem solved by students\" archetype?",
     "correct": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
     "options": {
       "A": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
       "B": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)",
       "C": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
-      "D": "\\(0 \\le P(E) \\le 1, \\qquad P(S)=1, \\qquad P(E') = 1 - P(E)\\)"
+      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -3463,7 +3463,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "c548dbf069826bcd2ccc2e5f2e5d754fa070d167",
+    "sourceFingerprint": "7bfc2a6c62bb1a15be1d1d41987fe201b6189c3a",
     "timeEstimateSec": 45
   },
   {
@@ -3671,13 +3671,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Union of independent events?",
+    "stem": "Which of the following is the formula for Finding an unknown probability using independence?",
     "correct": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)",
     "options": {
-      "A": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)",
-      "B": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
+      "A": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
+      "B": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
       "C": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)",
-      "D": "\\(n(S)=2^{n}, \\qquad P(\\text{at least one head in } n) = 1 - \\left(\\tfrac{1}{2}\\right)^{n}\\)"
+      "D": "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -3688,7 +3688,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "cff07cd34da2e740029c933ab385bf16903294c8",
+    "sourceFingerprint": "50c0216060f61c1f6232025d79db8df14e550931",
     "timeEstimateSec": 45
   },
   {
@@ -3899,10 +3899,10 @@
     "stem": "Which of the following is the formula for Conditional probability?",
     "correct": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}, \\qquad P(B) > 0\\)",
     "options": {
-      "A": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)",
+      "A": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
       "B": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}, \\qquad P(B) > 0\\)",
       "C": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
-      "D": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B), \\qquad P(A \\mid B) = \\dfrac{n(A \\cap B)}{n(B)}\\)"
+      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -4121,12 +4121,12 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Multiplication rule / restricted counting?",
+    "stem": "Which of the following is the formula for Multiplication rule & restricted sample space?",
     "correct": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B), \\qquad P(A \\mid B) = \\dfrac{n(A \\cap B)}{n(B)}\\)",
     "options": {
       "A": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B), \\qquad P(A \\mid B) = \\dfrac{n(A \\cap B)}{n(B)}\\)",
       "B": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
-      "C": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}, \\qquad P(B) > 0\\)",
+      "C": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B)\\)",
       "D": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)"
     },
     "answer": "A",
@@ -4138,7 +4138,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "2efc47849ee5d08b1b38281b7c7209650bb71198",
+    "sourceFingerprint": "a50a7c705b00b1138b31b3bf38c06994ff95f1f2",
     "timeEstimateSec": 45
   },
   {
@@ -4346,12 +4346,12 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Total probability?",
+    "stem": "Which of the following is the formula for Total probability (over a partition)?",
     "correct": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
     "options": {
-      "A": "\\(P(A \\cap B) = P(B)\\,P(A \\mid B), \\qquad P(A \\mid B) = \\dfrac{n(A \\cap B)}{n(B)}\\)",
-      "B": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)",
-      "C": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
+      "A": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)",
+      "B": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
+      "C": "\\(P(A \\cap B) = P(A)\\,P(B)\\)",
       "D": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)"
     },
     "answer": "D",
@@ -4363,7 +4363,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "d8455a35ab4bb8364f018582c78bc253591019ff",
+    "sourceFingerprint": "94ff33d08a370e75ac9e5dd808918fc415193447",
     "timeEstimateSec": 45
   },
   {
@@ -4571,12 +4571,12 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Bayes' theorem?",
+    "stem": "Which of the following is the formula for Bayes' theorem (reversing the conditional)?",
     "correct": "\\(P(B_k \\mid A) = \\dfrac{P(B_k)\\,P(A \\mid B_k)}{\\displaystyle\\sum_{i} P(B_i)\\,P(A \\mid B_i)}\\)",
     "options": {
-      "A": "\\(n(S)=2^{n}, \\qquad P(\\text{at least one head in } n) = 1 - \\left(\\tfrac{1}{2}\\right)^{n}\\)",
+      "A": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
       "B": "\\(P(B_k \\mid A) = \\dfrac{P(B_k)\\,P(A \\mid B_k)}{\\displaystyle\\sum_{i} P(B_i)\\,P(A \\mid B_i)}\\)",
-      "C": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
+      "C": "\\(n(S)=2^{n}\\)",
       "D": "\\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 1 - P(A')\\,P(B')\\)"
     },
     "answer": "B",
@@ -4588,7 +4588,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "68b7ef3d281bfbeee48259c147d6f1613826e809",
+    "sourceFingerprint": "2a6be3f3061ae61ab57ff2e44a4ee87cbb7c5f0b",
     "timeEstimateSec": 45
   },
   {
@@ -4796,13 +4796,13 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Bounds on intersection and union?",
+    "stem": "Which of the following is the formula for Fréchet and Boole bounds?",
     "correct": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
     "options": {
-      "A": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B), \\qquad P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
-      "B": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
+      "A": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
+      "B": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)",
       "C": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
-      "D": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)"
+      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -4813,7 +4813,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "6e2553eca68e2c0b34d68f20de1d943d2b121127",
+    "sourceFingerprint": "e48541023df1a60530118973a67ef93df91fc3c9",
     "timeEstimateSec": 45
   },
   {
@@ -5021,12 +5021,12 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Linking identity?",
+    "stem": "Which of the following is the formula for Minimum and maximum of combined probabilities?",
     "correct": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)",
     "options": {
-      "A": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
-      "B": "\\(P = \\dfrac{\\#\\{x : x \\text{ has the property}\\}}{n}\\)",
-      "C": "\\(P(B_k \\mid A) = \\dfrac{P(B_k)\\,P(A \\mid B_k)}{\\displaystyle\\sum_{i} P(B_i)\\,P(A \\mid B_i)}\\)",
+      "A": "\\(0 \\le P(E) \\le 1\\)",
+      "B": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
+      "C": "\\(n(S) = 6^2 = 36\\)",
       "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
     },
     "answer": "D",
@@ -5038,7 +5038,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "8f8168d4278057d8e7a9d9b4d8723d4fe2096a6a",
+    "sourceFingerprint": "8e99ee70996b7beb3ede17bd60ea2cf757afec92",
     "timeEstimateSec": 45
   },
   {
@@ -5246,11 +5246,11 @@
     "sourceKind": "formula",
     "sourceIndex": 0,
     "theme": "formula",
-    "stem": "Which of the following is the formula for Exactly one vs union?",
+    "stem": "Which of the following is the formula for Identity-statement traps (\"which are correct?\")?",
     "correct": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B), \\qquad P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)",
     "options": {
       "A": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
-      "B": "\\(n(S) = 6^2 = 36, \\qquad P(\\text{sum}=7) = \\dfrac{6}{36} = \\dfrac{1}{6}\\)",
+      "B": "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
       "C": "\\(P(A \\cap B) = P(A)\\,P(B)\\)",
       "D": "\\(P(\\text{exactly one}) = P(A) + P(B) - 2P(A \\cap B), \\qquad P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)"
     },
@@ -5264,7 +5264,7 @@
     ],
     "status": "auto",
     "looksMcqClean": false,
-    "sourceFingerprint": "6fbd6f6a2ae95edbf85a6394e55cf19353530963",
+    "sourceFingerprint": "d49bdabd39c40d27707257c036ff4c4ed973cf29",
     "timeEstimateSec": 45
   },
   {

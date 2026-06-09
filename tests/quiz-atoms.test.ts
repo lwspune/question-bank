@@ -6,6 +6,7 @@ import {
   looksMcqClean,
   stripMarkup,
   formatTraps,
+  leadFormula,
   harvestFormulaConcept,
   harvestReferenceTable,
   harvestConcept,
@@ -75,6 +76,36 @@ describe("looksMcqClean", () => {
   });
 });
 
+describe("leadFormula", () => {
+  it("returns a single formula unchanged", () => {
+    expect(leadFormula("\\sigma = \\sqrt{\\dfrac{1}{n}\\sum (x_i-\\bar{x})^2}")).toBe(
+      "\\sigma = \\sqrt{\\dfrac{1}{n}\\sum (x_i-\\bar{x})^2}"
+    );
+  });
+
+  it("keeps only the lead expression of a \\qquad-joined bundle", () => {
+    expect(
+      leadFormula(
+        "r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y} \\qquad r_{(aX+b,\\,cY+d)} = \\text{sign}(ac)\\,r_{XY}"
+      )
+    ).toBe("r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y}");
+  });
+
+  it("splits on \\quad and strips a trailing separator comma", () => {
+    expect(
+      leadFormula(
+        "\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}"
+      )
+    ).toBe("\\sum_{i=1}^{n}(x_i - \\bar{x}) = 0");
+  });
+
+  it("never splits on a comma inside a function/argument list", () => {
+    expect(leadFormula("\\text{Cov}(X,Y) = E[XY] - E[X]E[Y]")).toBe(
+      "\\text{Cov}(X,Y) = E[XY] - E[X]E[Y]"
+    );
+  });
+});
+
 describe("harvestFormulaConcept", () => {
   it("builds an AUTO atom with sibling-formula distractors", () => {
     const atom = harvestFormulaConcept(
@@ -89,6 +120,25 @@ describe("harvestFormulaConcept", () => {
     expect(atom.options![atom.answer!]).toBe("\\(P=\\dfrac{n(E)}{n(S)}\\)");
     expect(atom.distractorSource).toBe("sibling");
     expect(atom.atomId).toBe("classical-probability:formula:0");
+  });
+
+  it("reduces bundled sibling formulas to their lead expression in the options", () => {
+    const atom = harvestFormulaConcept(
+      CTX,
+      "Standard deviation",
+      "\\sigma = \\sqrt{\\dfrac{1}{n}\\sum (x_i-\\bar{x})^2}",
+      [
+        "r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y} \\qquad r_{(aX+b,\\,cY+d)} = \\text{sign}(ac)\\,r_{XY}",
+        "y - \\bar{y} = b_{yx}(x - \\bar{x}) \\qquad x - \\bar{x} = b_{xy}(y - \\bar{y})",
+        "\\sum (x_i - \\bar{x}) = 0, \\quad \\text{Mode} \\approx 3\\,\\text{Median} - 2\\,\\text{Mean}",
+      ]
+    );
+    const distractorVals = Object.values(atom.options!).filter((v) => v !== atom.options![atom.answer!]);
+    // No option still carries a \qquad/\quad bundle separator.
+    for (const v of distractorVals) {
+      expect(v).not.toMatch(/\\qquad|\\quad/);
+    }
+    expect(distractorVals).toContain("\\(r = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X\\,\\sigma_Y}\\)");
   });
 
   it("falls back to needs_review when siblings are too few", () => {
