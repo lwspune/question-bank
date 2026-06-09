@@ -1,0 +1,73 @@
+/**
+ * quiz:lint — flag quiz atoms whose stems aren't self-contained (likely unfair
+ * as standalone, shuffled public-quiz questions). Triage only: it prints a
+ * review list; a human rewrites the flagged stems via the verify `stem` override.
+ *
+ * Run:  npm run quiz:lint                       # all READY atoms
+ *       npm run quiz:lint nda-maths statistics  # one chapter
+ *
+ * Scans status auto|verified (the publishable pool). Exit 0 always — it's a
+ * triage aid, not a gate.
+ */
+import "dotenv/config";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { createClient } from "@supabase/supabase-js";
+import { flagStem } from "../../src/lib/quiz/stemLint";
+
+function loadEnvLocal() {
+  const local = path.join(process.cwd(), ".env.local");
+  if (fs.existsSync(local)) {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require("dotenv").config({ path: local, override: true });
+  }
+}
+
+async function main() {
+  loadEnvLocal();
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceRole = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !serviceRole) throw new Error("Supabase env missing in .env.local");
+  const db = createClient(url, serviceRole, { auth: { persistSession: false } });
+
+  const [route, chapter] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+
+  let query = db
+    .from("quiz_atoms")
+    .select("atom_key, subject_route, chapter_slug, source_kind, stem")
+    .in("status", ["auto", "verified"])
+    .limit(2000);
+  if (route) query = query.eq("subject_route", route);
+  if (chapter) query = query.eq("chapter_slug", chapter);
+
+  const { data, error } = await query;
+  if (error) throw new Error(`read atoms failed: ${error.message}`);
+  const rows = data ?? [];
+
+  const flagged = rows
+    .map((r) => ({ ...r, reasons: flagStem(r.stem as string) }))
+    .filter((r) => r.reasons.length > 0)
+    .sort((a, b) => `${a.subject_route}/${a.chapter_slug}`.localeCompare(`${b.subject_route}/${b.chapter_slug}`));
+
+  const scope = chapter ? `${route}/${chapter}` : route ? route : "all ready atoms";
+  console.log(`→ quiz:lint — ${rows.length} ready atom(s) in ${scope}; ${flagged.length} flagged.\n`);
+
+  let lastChapter = "";
+  for (const r of flagged) {
+    const ch = `${r.subject_route}/${r.chapter_slug}`;
+    if (ch !== lastChapter) {
+      console.log(`\n## ${ch}`);
+      lastChapter = ch;
+    }
+    console.log(`  • ${r.atom_key}  [${r.reasons.join("; ")}]`);
+    console.log(`      ${r.stem}`);
+  }
+
+  if (flagged.length === 0) console.log("  none — every stem looks self-contained. ✓");
+  else console.log(`\nRewrite flagged stems via the verify \`stem\` override, then re-run quiz:verify.`);
+}
+
+main().catch((e) => {
+  console.error("✗", e instanceof Error ? e.message : e);
+  process.exit(1);
+});

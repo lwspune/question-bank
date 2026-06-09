@@ -137,7 +137,14 @@ export const VERIFIED: VerifiedEntry[] = [
   { atomKey: "regression-coefficients-and-r:practiceSet:0", distractors: [f("0.6"), f("0.13"), f("1.3")] }, // 0.4·0.9 = 0.36
   { atomKey: "correlation-coefficient-properties:practiceSet:0", distractors: [f("4.2"), f("0.117"), f("1")], theme: "property" }, // scale-invariant → 0.7
   { atomKey: "regression-coefficients-and-r:practiceSet:1", distractors: [f("0.36"), f("0.65"), f("1.3")] }, // √0.36 = 0.6
-  { atomKey: "identifying-regression-line:practiceSet:1", distractors: ["B", "Both", "Neither"], theme: "property" }, // product ≤ 1 → A
+  // Stem rewritten to be self-contained (was "Pairing A product 0.8…", which
+  // back-referenced the notes' running context — flagged by quiz:lint).
+  {
+    atomKey: "identifying-regression-line:practiceSet:1",
+    stem: "A valid pair of regression coefficients must satisfy \\(b_{yx}\\cdot b_{xy} \\leq 1\\). Pairing A gives a product of \\(0.8\\); pairing B gives \\(1.25\\). Which pairing is valid?",
+    distractors: ["B", "Both", "Neither"],
+    theme: "property",
+  }, // product ≤ 1 → A
   { atomKey: "correlation-coefficient-properties:practiceSet:1", distractors: [f("0.5"), f("-0.25"), f("0")], theme: "property" }, // sign flips → -0.5
   { atomKey: "lines-of-regression:practiceSet:1", distractors: [f("(3, 2)"), f("(2.5, 2.5)"), f("(0, 0)")], theme: "property" }, // (x̄, ȳ) = (2, 3)
   { atomKey: "angle-between-regression-lines:practiceSet:1", distractors: [f("0^\\circ"), f("45^\\circ"), f("180^\\circ")], theme: "property" }, // r = 0 → 90°

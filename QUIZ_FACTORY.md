@@ -81,9 +81,20 @@ The user says **"approve `<chapter>`"** (or "do `<chapter>` traps") and Claude r
 npm run quiz:harvest [route/chapter ...]   # /notes → atoms JSON (default: 3 sample chapters)
 npm run quiz:sync                          # atoms JSON → quiz_atoms DB (preserves verified)
 npm run quiz:verify [name]                 # promote needs_review → verified from verify/<name>.ts
+npm run quiz:lint [route] [chapter]        # flag stems that aren't self-contained (triage, not a gate)
 npm run quiz:assemble <route> <chapter> [max] [size] [-- --theme=X]   # assemble + record + push
 npm run quiz:push [daily/<slug>]           # push a single hand-authored DraftQuiz module
 ```
+
+**Stem self-containment (`quiz:lint`).** Notes practiceSet/selfCheck prompts are
+authored as a *connected sequence* read under a concept (item 2 says "the product"
+because item 1 defined it). Harvested into standalone, shuffled atoms, those
+back-references become unfair to a cold quiz-taker. `quiz:lint` flags the
+offenders (back-references, criterion-less "which is correct?", deictic openers,
+bare fragments) so you rewrite **only the flagged few** via the verify `stem`
+override — not every stem. Formula stems use the concept **name**, not a
+pedagogical `formula.label` nickname like "Sieve Inequality" (fixed at harvest).
+**Run `quiz:lint <route> <chapter>` before publishing a chapter's quizzes public.**
 
 Filter/view: **PYQ Vault** `/dashboard/quizzes` (pool stats + filterable list + Assemble button) ·
 **nda-tracker** Daily Quiz page (filter by exam/subject/chapter/theme/status).
