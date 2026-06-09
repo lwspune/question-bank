@@ -105,25 +105,29 @@ export default function QuestionCard({
         inCart && "border-primary/60 ring-2 ring-primary/20"
       )}
     >
-      <div className="flex w-full items-start gap-2 p-3 sm:gap-3 sm:p-4">
-        {/* Desktop / tablet: standalone Q-badge column. Hidden on phone to
-            reclaim horizontal space — the index reappears inline in the
-            breadcrumb row below as a compact `#N`. */}
-        <span className="mt-0.5 hidden h-7 w-9 shrink-0 items-center justify-center rounded-full bg-muted px-2 font-mono text-xs text-muted-foreground sm:inline-flex">
-          Q{index}
-        </span>
-        <button
-          type="button"
-          onClick={toggleExpanded}
-          aria-expanded={expanded}
-          className="flex min-w-0 flex-1 items-start gap-2 rounded text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          <div className="min-w-0 flex-1">
+      {/* Two stacked rows: a compact META row (badge + breadcrumb + expand
+          chevron + Add), then the question text FULL-WIDTH below it. The old
+          single-row `items-start` layout reserved a full-height right column for
+          the chevron + Add, leaving a dead gutter beside multi-line questions and
+          a gap below short ones; stacking removes both and lets the text wrap
+          the full card width. */}
+      <div className="p-3 sm:p-4">
+        <div className="flex items-center gap-2">
+          {/* Desktop / tablet: standalone Q-badge; phone uses the inline #N. */}
+          <span className="hidden h-7 w-9 shrink-0 items-center justify-center rounded-full bg-muted px-2 font-mono text-xs text-muted-foreground sm:inline-flex">
+            Q{index}
+          </span>
+          <button
+            type="button"
+            onClick={toggleExpanded}
+            aria-expanded={expanded}
+            aria-label={expanded ? "Collapse question" : "Expand question"}
+            className="flex min-w-0 flex-1 items-center gap-2 rounded py-1 text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
             {/* Single non-wrapping line: the breadcrumb truncates (min-w-0 makes
-                the truncate actually engage on a flex item); the difficulty +
-                separators stay pinned (shrink-0) so the difficulty never orphans
-                onto a second line. */}
-            <div className="mb-1.5 flex min-w-0 items-center gap-x-2 text-xs text-muted-foreground">
+                truncate engage on a flex item); difficulty + separators stay
+                pinned (shrink-0) so the difficulty never orphans to a 2nd line. */}
+            <div className="flex min-w-0 flex-1 items-center gap-x-2 text-xs text-muted-foreground">
               <span className="shrink-0 font-mono text-muted-foreground/80 sm:hidden">
                 #{index}
               </span>
@@ -140,34 +144,41 @@ export default function QuestionCard({
                 </>
               )}
             </div>
-            <div
+            <ChevronDown
               className={cn(
-                "font-serif text-[15px] leading-relaxed",
-                !expanded
-                  ? "line-clamp-2"
-                  : "overflow-x-auto [&_.katex]:max-w-full"
+                "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
+                expanded && "rotate-180"
               )}
-            >
-              {expanded ? (
-                <BlockText text={question.text} />
-              ) : (
-                <KatexRenderer text={question.text} />
-              )}
-            </div>
-          </div>
-          <ChevronDown
-            className={cn(
-              "mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
-              expanded && "rotate-180"
-            )}
-            aria-hidden
+              aria-hidden
+            />
+          </button>
+          <CartToggle
+            inCart={inCart}
+            disabled={cart.isFull && !inCart}
+            onClick={onToggleCart}
           />
+        </div>
+
+        <button
+          type="button"
+          onClick={toggleExpanded}
+          aria-expanded={expanded}
+          aria-label={expanded ? "Collapse question" : "Expand question"}
+          className="mt-2 block w-full rounded text-left transition-colors hover:bg-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <div
+            className={cn(
+              "font-serif text-[15px] leading-relaxed",
+              !expanded ? "line-clamp-2" : "overflow-x-auto [&_.katex]:max-w-full"
+            )}
+          >
+            {expanded ? (
+              <BlockText text={question.text} />
+            ) : (
+              <KatexRenderer text={question.text} />
+            )}
+          </div>
         </button>
-        <CartToggle
-          inCart={inCart}
-          disabled={cart.isFull && !inCart}
-          onClick={onToggleCart}
-        />
       </div>
 
       {(resources?.guide || resources?.notes) && (
