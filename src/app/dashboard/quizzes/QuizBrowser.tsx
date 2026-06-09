@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, Globe, Copy, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import type { AssembledQuiz } from "@/lib/quiz/admin";
+import { setQuizPublicAction } from "./actions";
 
 const STATUS_STYLES: Record<string, string> = {
   draft: "bg-muted text-muted-foreground",
@@ -121,6 +123,8 @@ function QuizRow({ quiz }: { quiz: AssembledQuiz }) {
         </div>
       </summary>
 
+      <PublishControls quiz={quiz} />
+
       <ol className="space-y-4 border-t px-4 py-4">
         {quiz.questions.map((q) => (
           <li key={q.position} className="space-y-2">
@@ -152,5 +156,60 @@ function QuizRow({ quiz }: { quiz: AssembledQuiz }) {
         ))}
       </ol>
     </details>
+  );
+}
+
+function PublishControls({ quiz }: { quiz: AssembledQuiz }) {
+  const [publicSlug, setPublicSlug] = useState<string | null>(quiz.publicSlug);
+  const [busy, setBusy] = useState(false);
+
+  async function toggle(publish: boolean) {
+    setBusy(true);
+    try {
+      const r = await setQuizPublicAction(quiz.id, publish);
+      if (!r.ok) return toast.error(r.error);
+      setPublicSlug(publish ? r.publicSlug : null);
+      toast.success(publish ? "Published — public link is live." : "Unpublished.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function copyLink() {
+    const url = `${window.location.origin}/quiz/${publicSlug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success("Public link copied.");
+    } catch {
+      toast.error("Couldn't copy — the link is /quiz/" + publicSlug);
+    }
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2 border-t bg-muted/30 px-4 py-2.5">
+      {publicSlug ? (
+        <>
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <Globe className="h-3.5 w-3.5" /> Public
+          </span>
+          <code className="rounded bg-background px-1.5 py-0.5 text-xs text-muted-foreground">/quiz/{publicSlug}</code>
+          <button onClick={copyLink} className="inline-flex items-center gap-1 rounded-md border px-2.5 py-1 text-xs font-medium hover:bg-muted">
+            <Copy className="h-3.5 w-3.5" /> Copy link
+          </button>
+          <button onClick={() => toggle(false)} disabled={busy} className="text-xs text-muted-foreground underline disabled:opacity-50">
+            Unpublish
+          </button>
+        </>
+      ) : (
+        <button
+          onClick={() => toggle(true)}
+          disabled={busy}
+          className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground disabled:opacity-50"
+        >
+          {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Globe className="h-3.5 w-3.5" />}
+          Publish to public
+        </button>
+      )}
+    </div>
   );
 }
