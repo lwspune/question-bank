@@ -83,6 +83,7 @@ npm run quiz:sync                          # atoms JSON → quiz_atoms DB (prese
 npm run quiz:verify [name]                 # promote needs_review → verified from verify/<name>.ts
 npm run quiz:lint [route] [chapter]        # flag stems that aren't self-contained (triage, not a gate)
 npm run quiz:assemble <route> <chapter> [max] [size] [-- --theme=X]   # assemble + record + push
+npm run quiz:delete <slug>                 # delete a quiz here AND propagate the delete to nda-tracker
 npm run quiz:push [daily/<slug>]           # push a single hand-authored DraftQuiz module
 ```
 
@@ -96,8 +97,12 @@ override — not every stem. Formula stems use the concept **name**, not a
 pedagogical `formula.label` nickname like "Sieve Inequality" (fixed at harvest).
 **Run `quiz:lint <route> <chapter>` before publishing a chapter's quizzes public.**
 
-Filter/view: **PYQ Vault** `/dashboard/quizzes` (pool stats + filterable list + Assemble button) ·
-**nda-tracker** Daily Quiz page (filter by exam/subject/chapter/theme/status).
+Assembly + delete are **CLI-only** (the dashboard is a read-only view — assembling
+from a web UI was friction). `/dashboard/quizzes` shows pool stats + the assembled-
+quiz list + Publish-to-public; nda-tracker's Daily Quiz page filters by
+exam/subject/chapter/theme/status. **Recorded quizzes are an immutable snapshot
+(0035)** — `quiz:delete` removes one here and propagates the delete to nda-tracker
+(guarded to drafts there; a published quiz with attempts is never deleted).
 
 ---
 
