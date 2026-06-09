@@ -4,13 +4,13 @@ import type { FormulaSpec } from "@/app/notes/_types";
 
 type Props = {
   formula: FormulaSpec;
-  /** Bump font size + spacing for Present mode. */
+  /** Vestigial — scaled fonts for the (removed 2026-06-09) Present mode; no caller passes it now. */
   presentMode?: boolean;
 };
 
 /**
- * Boxed, prominent formula display with optional symbol legend.
- * In read mode the box is compact; in Present mode it scales for board legibility.
+ * Boxed, prominent formula display with optional symbol legend. The box is
+ * compact by default; `presentMode` scaled it for board legibility (now unused).
  */
 export default function FormulaBlock({ formula, presentMode }: Props) {
   return (
