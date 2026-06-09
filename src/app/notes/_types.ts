@@ -1,13 +1,10 @@
 /**
- * Editorial types for /notes — per-subtopic teaching content for digital-board
- * use AND student self-study. Notes are authored as TS modules under each
- * chapter's _data/ directory and rendered in two modes:
- *
- *  - Read mode (default, scrollable, indexable) — every concept rendered
- *    end-to-end with intuition + definition + formula + worked example +
- *    PYQ + trap, in sequence. Students can read top-to-bottom.
- *  - Present mode (full-bleed slide deck, keyboard nav) — same content
- *    paced as slides, projector-friendly, for live teaching.
+ * Editorial types for /notes — per-subtopic teaching content for student
+ * self-study (and digital-board teaching). Notes are authored as TS modules
+ * under each chapter's _data/ directory and rendered top-to-bottom (scrollable,
+ * indexable): every concept end-to-end with intuition + definition + formula +
+ * worked example + PYQ + trap, in sequence. (A slide-deck "Present mode" existed
+ * until 2026-06-09 and was removed.)
  *
  * The atomic block is the ConceptUnit, not the subtopic. A subtopic is an
  * ordered list of concept units; each unit is a self-contained mini-lesson.

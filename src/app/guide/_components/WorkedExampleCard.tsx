@@ -11,7 +11,7 @@ import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 type Props = {
   rank: number;
   example: WorkedExample;
-  /** Scale fonts + spacing for digital-board projection. Used by /notes Present mode. */
+  /** Vestigial — scaled fonts for the (removed 2026-06-09) Present mode; no caller passes it now. */
   presentMode?: boolean;
 };
 
