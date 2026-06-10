@@ -21,7 +21,7 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
         "- \\(2\\sin A\\sin B=\\cos(A-B)-\\cos(A+B)\\).",
       formula: {
         label: "The four product-to-sum identities",
-        latex: "2\\sin A\\cos B=\\sin(A+B)+\\sin(A-B),\\quad 2\\cos A\\cos B=\\cos(A+B)+\\cos(A-B)",
+        latex: "2\\sin A\\cos B=\\sin(A+B)+\\sin(A-B),\\qquad 2\\cos A\\cos B=\\cos(A+B)+\\cos(A-B),\\qquad 2\\cos A\\sin B=\\sin(A+B)-\\sin(A-B),\\qquad 2\\sin A\\sin B=\\cos(A-B)-\\cos(A+B)",
       },
       authoredExample: {
         prompt: "Evaluate \\(2\\sin 75°\\cos 15°\\).",
@@ -59,8 +59,8 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
         "- \\(\\cos C+\\cos D=2\\cos\\tfrac{C+D}{2}\\cos\\tfrac{C-D}{2}\\); \\(\\;\\cos C-\\cos D=-2\\sin\\tfrac{C+D}{2}\\sin\\tfrac{C-D}{2}\\).\n" +
         "Corollary: \\(\\dfrac{\\sin C+\\sin D}{\\cos C+\\cos D}=\\tan\\tfrac{C+D}{2}\\).",
       formula: {
-        label: "Sum-to-product",
-        latex: "\\sin C+\\sin D=2\\sin\\tfrac{C+D}{2}\\cos\\tfrac{C-D}{2},\\quad \\cos C-\\cos D=-2\\sin\\tfrac{C+D}{2}\\sin\\tfrac{C-D}{2}",
+        label: "The four sum-to-product identities",
+        latex: "\\sin C+\\sin D=2\\sin\\tfrac{C+D}{2}\\cos\\tfrac{C-D}{2},\\qquad \\cos C-\\cos D=-2\\sin\\tfrac{C+D}{2}\\sin\\tfrac{C-D}{2},\\qquad \\sin C-\\sin D=2\\cos\\tfrac{C+D}{2}\\sin\\tfrac{C-D}{2},\\qquad \\cos C+\\cos D=2\\cos\\tfrac{C+D}{2}\\cos\\tfrac{C-D}{2}",
       },
       authoredExample: {
         prompt: "Simplify \\(\\dfrac{\\sin 5x-\\sin 3x}{\\cos 5x+\\cos 3x}\\).",

@@ -19,8 +19,8 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         "- \\(\\cos 2A=\\cos^2 A-\\sin^2 A=1-2\\sin^2 A=2\\cos^2 A-1=\\dfrac{1-\\tan^2 A}{1+\\tan^2 A}\\).\n" +
         "- \\(\\tan 2A=\\dfrac{2\\tan A}{1-\\tan^2 A}\\). Also \\(\\tan A+\\cot A=\\dfrac{2}{\\sin 2A}\\).",
       formula: {
-        label: "The three forms of cos 2A",
-        latex: "\\cos 2A=\\cos^2 A-\\sin^2 A=1-2\\sin^2 A=2\\cos^2 A-1",
+        label: "Double-angle formulas",
+        latex: "\\sin 2A=2\\sin A\\cos A,\\qquad \\cos 2A=\\cos^2 A-\\sin^2 A=1-2\\sin^2 A=2\\cos^2 A-1,\\qquad \\tan 2A=\\dfrac{2\\tan A}{1-\\tan^2 A}",
       },
       authoredExample: {
         prompt: "If \\(\\tan A=\\tfrac34\\), find \\(\\sin 2A\\).",
@@ -58,8 +58,8 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         "- \\(\\cos 3A=4\\cos^3 A-3\\cos A\\).\n" +
         "- \\(\\tan 3A=\\dfrac{3\\tan A-\\tan^3 A}{1-3\\tan^2 A}\\).",
       formula: {
-        label: "Triple angle",
-        latex: "\\sin 3A=3\\sin A-4\\sin^3 A,\\qquad \\cos 3A=4\\cos^3 A-3\\cos A",
+        label: "Triple-angle formulas",
+        latex: "\\sin 3A=3\\sin A-4\\sin^3 A,\\qquad \\cos 3A=4\\cos^3 A-3\\cos A,\\qquad \\tan 3A=\\dfrac{3\\tan A-\\tan^3 A}{1-3\\tan^2 A}",
       },
       authoredExample: {
         prompt: "Simplify \\(3\\sin 20°-4\\sin^3 20°\\).",
@@ -97,6 +97,10 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         "- \\(\\tan\\tfrac A2=\\dfrac{\\sin A}{1+\\cos A}=\\dfrac{1-\\cos A}{\\sin A}\\).\n" +
         "- \\(\\csc A+\\cot A=\\cot\\tfrac A2\\), \\(\\;\\csc A-\\cot A=\\tan\\tfrac A2\\).\n" +
         "- \\(1\\pm\\sin A=\\left(\\sin\\tfrac A2\\pm\\cos\\tfrac A2\\right)^2\\) (mind the sign when taking the root).",
+      formula: {
+        label: "Half-angle formulas",
+        latex: "\\sin\\tfrac A2=\\pm\\sqrt{\\tfrac{1-\\cos A}{2}},\\qquad \\cos\\tfrac A2=\\pm\\sqrt{\\tfrac{1+\\cos A}{2}},\\qquad \\tan\\tfrac A2=\\dfrac{1-\\cos A}{\\sin A}=\\dfrac{\\sin A}{1+\\cos A}",
+      },
       authoredExample: {
         prompt: "Simplify \\(\\dfrac{1-\\cos 2\\theta}{\\sin 2\\theta}\\).",
         steps: [
