@@ -37,20 +37,21 @@ Each atom carries a **status** (`auto` | `needs_review` | `verified`) and a
 
 ---
 
-## Recipe: complete a chapter end-to-end
+## Recipe: complete a chapter end-to-end (the per-chapter CADENCE)
 
-The user says **"approve `<chapter>`"** (or "do `<chapter>` traps") and Claude runs:
+The user says **"approve `<chapter>`"** and Claude runs this cadence. **Building a chapter is also when its /notes get enriched** — the quiz themes have notes-source dependencies (see [[quiz-formula-coverage-gap]]), so closing a theme's gap means editing the notes, and that edit improves the student notes too. The cadence folds that in rather than leaving it as an afterthought.
 
-1. **Harvest** (if not already): `npm run quiz:harvest <route>/<chapter>` → `npm run quiz:sync`.
-   - `formula` + `reference` atoms become **`auto`** (ready immediately — key + sibling distractors correct by construction).
-   - `practiceSet` / `selfCheck` → **`needs_review`** (key correct, distractors pending).
-   - `trap` → **`needs_review`** seeds (placeholder stem, empty key — a *full* MCQ to author).
-2. **Approve the clean questions**: query the chapter's `needs_review` + `looks_mcq_clean` `practiceSet`/`selfCheck` atoms (SELECT atom_key/subtopic/source_kind/stem/correct — **drop `trap_hints`, it overflows**); Claude authors 3 distractors each into `scripts/quiz/verify/<route>__<chapter>.ts` (tag identity/rule questions `theme:"property"`); `npm run quiz:verify <route>__<chapter>`.
-3. **Approve the traps** (optional, for a Common-Traps theme): author full "spot the tempting error" MCQs into `scripts/quiz/verify/<route>__<chapter>-traps.ts` using the **`stem` + `correct` overrides** (trap atoms have neither); skip the ~⅔ that overlap the practice/property content. `npm run quiz:verify <route>__<chapter>-traps`.
-4. **Assemble** themed quizzes: `npm run quiz:assemble <route> <chapter> -- --theme=<formula|property|computation|fact|trap>` (or no `--theme` for mixed). Records + pushes drafts to nda-tracker.
-5. **Commit** the verify data file(s). **Publish** is the user's step in nda-tracker.
+1. **Harvest + sync**: `npm run quiz:harvest <route>/<chapter>` → `npm run quiz:sync`.
+   - `formula` + `reference` → **`auto`** (ready); `practiceSet`/`selfCheck` → **`needs_review`** (key correct, distractors pending); `trap` → **`needs_review`** seeds (placeholder stem/key).
+2. **Coverage check (the cadence gate)**: `npm run quiz:coverage <route> <chapter>` → records the chapter's **formula gaps** (empty-`formula.latex` concepts, the `✗`) and **trap gap** (`<12` callouts). This drives steps 5–6 — decide per chapter which gaps are worth closing.
+3. **Computation**: query `needs_review`+`looks_mcq_clean` `practiceSet`/`selfCheck` atoms (drop `trap_hints` — overflows); author 3 distractors each into `scripts/quiz/verify/<route>__<chapter>-computation*.ts` (parallel agents subtopic-split for heavy chapters); `quiz:verify`. **Re-deriving each `correct` IS the chapter's correctness check** — fix any notes errors found (e.g. Seq-Series `S_n=5n-2n²`→a₃=−5).
+4. **Formula** (author): if the chapter already has ≥12 formula atoms, **no notes edit needed** — just author the `needs_review` bundle pieces into `-formulas.ts` (full-equation permutation distractors, no bare-RHS tell); tag genuine rule-identities `theme:"property"` (classify theme on the FIRST pass — re-theming later is churn).
+5. **Formula enrichment** (notes edit, *conditional*): if step 2 flagged real recall-formula gaps, **triage the `✗` flags first** (the probe over-flags prose derivation steps), then **append** the genuine formulas to the concept's `formula.latex` (append-only — preserves piece indices/fingerprints; safe on EMPTY concepts, watch the single→bundle `auto`-flip on non-empty ones) → re-harvest → author only the new pieces.
+6. **Traps** (notes edit, *conditional*): if `<12` callouts, **author ~5–7 misconception callouts** (`{title, body}`) into the chapter's notes concepts (a real "common mistakes" section students gain) → re-harvest → author the "spot the mistake" MCQs into `-traps.ts` via the **`stem`+`correct` overrides**; skip the ~⅔ that overlap practice/property content.
+7. **Assemble** per theme: `npm run quiz:assemble <route> <chapter> -- --theme=<formula|property|computation|fact|trap>` (loop until `0 ready left`). `quiz:lint` (integrity + stems) before/after.
+8. **Gate + commit** per theme/notes edit (`notes:lint`+`notes:latex` whenever notes change). **Publish** is the user's step in nda-tracker.
 
-**Worked template:** NDA Probability (10 quizzes — 4 mixed + 4 Practice + 1 Properties + 1 Common Traps).
+**Worked templates:** NDA Probability (10 quizzes, all themes); Wave 2 3D-Geo/Seq-Series/Diff (computation 8/8/6 via parallel agents).
 
 ---
 
@@ -124,9 +125,9 @@ Snapshot **2026-06-09** — refresh with:
 | nda-maths / **trigonometric-identities** | ~144 | 9 | ✅ **Complete** — computation (6, 2 agents subtopic-split) + formula (2; ALL 25 identity formulas, 2026-06-10 formula.latex enrichment) + **trap (1; 14 common-mistake callouts authored into the notes 2026-06-10)**; 11 reference atoms parked (<12) |
 | nda-maths / **lines** | ~92 | 7 | ✅ **Complete** — computation (4) + formula (2; 26 pieces) + trap (1; 13 callouts) — formula.latex + traps authored from scratch 2026-06-10 (both were 0) |
 | nda-maths / **functions** | ~54 | 4 | ✅ **Complete** — computation (2) + formula (1; 16 pieces after 2026-06-10 formula.latex enrichment) + trap (1; 14 pre-existing seeds authored) |
-| nda-maths / **3d-geometry** | ~133 | 8 | 🟡 **Wave 2 — computation done** (8 quizzes, 126 atoms, 3 agents subtopic-split 2026-06-10); formula (7 atoms + 5 empty-latex concepts to enrich) + traps (7 callouts <12) pending |
-| nda-maths / **sequence-series** | ~177 | 8 | 🟡 **Wave 2 — computation done** (8 quizzes, 121 atoms, 3 agents 2026-06-10); re-derivation caught a notes error (`S_n=5n-2n²` → a₃=−5 not −7, fixed). formula (22 atoms, ready) + traps (5 <12) pending |
-| nda-maths / **differentiation** | ~129 | 6 | 🟡 **Wave 2 — computation done** (6 quizzes, 83 atoms, 2 agents 2026-06-10; all correct re-derived clean); formula (2 atoms <12 + 5 empty-latex concepts) + traps (6 <12) pending |
+| nda-maths / **3d-geometry** | ~133 | 10 | 🟡 **Wave 2 — computation (8) + formula (2) done** 2026-06-10; traps (7 callouts <12) pending |
+| nda-maths / **sequence-series** | ~177 | 10 | 🟡 **Wave 2 — computation (8) + formula (2) done** 2026-06-10 (re-derivation caught a notes error `S_n=5n-2n²`→a₃=−5 not −7, fixed); traps (5 <12) pending |
+| nda-maths / **differentiation** | ~129 | 7 | 🟡 **Wave 2 — computation (6) + formula (1) done** 2026-06-10; traps (6 <12) pending |
 | _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 
 **Known quality catch (Wave 1):** the quiz build re-derives every practiceSet/selfCheck answer, surfacing **notes errors** the way notes-building surfaces wrong keys — Lines `lines-family-and-concurrency:practiceSet:3` had answer `(1,-2)` (should be `(1,-1)`); fixed in the notes `_data`, atom left parked (will correct on next harvest).
