@@ -108,6 +108,10 @@ import HpNephronSchematic from "./visualizations/HpNephronSchematic";
 import HpReflexArc from "./visualizations/HpReflexArc";
 import HpLungVolumes from "./visualizations/HpLungVolumes";
 import HpAlveolusGasExchange from "./visualizations/HpAlveolusGasExchange";
+import CarbAllotropeStructures from "./visualizations/CarbAllotropeStructures";
+import AtomBohrShells from "./visualizations/AtomBohrShells";
+import AtomPeriodicTrends from "./visualizations/AtomPeriodicTrends";
+import MattStatesOfMatter from "./visualizations/MattStatesOfMatter";
 import SetsVennTwo from "./visualizations/SetsVennTwo";
 import SetsVennThree from "./visualizations/SetsVennThree";
 import SetsRelationDigraph from "./visualizations/SetsRelationDigraph";
@@ -327,6 +331,14 @@ function renderVisualization(slug: VisualizationSlug) {
       return <HpLungVolumes />;
     case "hp-alveolus-gas-exchange":
       return <HpAlveolusGasExchange />;
+    case "carb-allotrope-structures":
+      return <CarbAllotropeStructures />;
+    case "atom-bohr-shells":
+      return <AtomBohrShells />;
+    case "atom-periodic-trends":
+      return <AtomPeriodicTrends />;
+    case "matt-states-of-matter":
+      return <MattStatesOfMatter />;
     case "sets-venn-two":
       return <SetsVennTwo />;
     case "sets-venn-three":

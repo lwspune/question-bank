@@ -68,6 +68,7 @@ export const MODELS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "the-four-models",
       name: "The four atomic models and what each could not explain",
+      visualizationSlug: "atom-bohr-shells",
       intuition:
         "Each model fixed a flaw in the one before. Dalton's solid ball had no internal parts; Thomson's plum pudding had no dense centre; Rutherford's nuclear atom could not say where the electrons sat; Bohr's fixed orbits finally placed the electrons. " +
         "The bank's favourite trap is the 'which finding is NOT part of Rutherford's model' question — and the answer is always a Bohr idea (fixed energy orbits) or a wrong charge on the nucleus.",

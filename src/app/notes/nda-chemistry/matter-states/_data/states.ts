@@ -14,6 +14,7 @@ export const STATES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "three-states-of-matter",
       name: "The three states of matter",
+      visualizationSlug: "matt-states-of-matter",
       intuition:
         "Everything around you is one of three states. The difference is only how tightly the particles are packed and how freely they move: locked in place (solid), touching but sliding (liquid), or far apart and flying free (gas). Heating loosens the packing; cooling tightens it.",
       definition:

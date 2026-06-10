@@ -127,6 +127,7 @@ export const PERIODIC_TRENDS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "reactivity-and-oxidising-trends",
       name: "Reactivity and oxidising-power trends",
+      visualizationSlug: "atom-periodic-trends",
       intuition:
         "Properties change smoothly along a group. For the halogens, oxidising power falls down the group (fluorine is the strongest). For the alkali metals, reactivity with water rises down the group (lithium is the least reactive). " +
         "The bank asks you to order them or pick the extreme.",
