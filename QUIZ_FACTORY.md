@@ -176,6 +176,7 @@ content drift. Two such changes are baked in:
   `quiz:lint` flags any bundle-correct atom that slips into the ready pool. The
   4 NDA-Maths formula chapters (statistics/probability/matrices/vectors) are done:
   80 hand-authored recall MCQs + 55 auto single-formula + 21 parked slots.
+- **`errorTransforms()` seeds candidate distractors for NUMERIC atoms (2026-06-10).** For a practiceSet/selfCheck atom whose answer is a simple numeric (integer, decimal, `\dfrac/\tfrac/\frac{a}{b}`, `a/b`), `harvestProblem` now fills `candidate_distractors` with **mechanical wrong-variants** (sign flip, double, off-by-one, fraction swap) in the answer's format, before falling back to sibling answers — so the verify pass sees a usable starting point instead of cold-authoring (e.g. `8` → `[-8, 16, 9]`). Non-numeric answers (expressions, vectors, words) get `[]` and keep the sibling pool. It is a PROPOSAL the verify pass accepts/edits — never auto-accepted (distractor quality stays human; a transform can land on a correct alternative). Pure + TDD'd (`tests/quiz-error-transforms.test.ts`).
 
 **Procedure when you edit the harvester:** re-harvest EVERY chapter whose atoms
 the change touches (e.g. all chapters with `formula` atoms — `grep -l
