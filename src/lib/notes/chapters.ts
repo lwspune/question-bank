@@ -188,6 +188,36 @@ import {
   CARBON_NOTES,
   CARBON_SLUGS,
 } from "@/app/notes/nda-chemistry/carbon-and-its-compounds/_data";
+import {
+  ATOMIC_STRUCTURE_CHAPTER,
+  ATOMIC_STRUCTURE_NOTES,
+  ATOMIC_STRUCTURE_SLUGS,
+} from "@/app/notes/nda-chemistry/atomic-structure/_data";
+import {
+  ACIDS_BASES_SALTS_CHAPTER,
+  ACIDS_BASES_SALTS_NOTES,
+  ACIDS_BASES_SALTS_SLUGS,
+} from "@/app/notes/nda-chemistry/acids-bases-salts/_data";
+import {
+  MATTER_STATES_CHAPTER,
+  MATTER_STATES_NOTES,
+  MATTER_STATES_SLUGS,
+} from "@/app/notes/nda-chemistry/matter-states/_data";
+import {
+  CHEMICAL_REACTIONS_CHAPTER,
+  CHEMICAL_REACTIONS_NOTES,
+  CHEMICAL_REACTIONS_SLUGS,
+} from "@/app/notes/nda-chemistry/chemical-reactions/_data";
+import {
+  INDUSTRIAL_CHEMISTRY_CHAPTER,
+  INDUSTRIAL_CHEMISTRY_NOTES,
+  INDUSTRIAL_CHEMISTRY_SLUGS,
+} from "@/app/notes/nda-chemistry/industrial-chemistry/_data";
+import {
+  MOLE_CONCEPT_CHAPTER,
+  MOLE_CONCEPT_NOTES,
+  MOLE_CONCEPT_SLUGS,
+} from "@/app/notes/nda-chemistry/mole-concept/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -613,6 +643,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CARBON_CHAPTER,
     notes: CARBON_NOTES,
     slugs: CARBON_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "atomic-structure",
+    chipLabel: "Atomic Structure notes",
+    chapter: ATOMIC_STRUCTURE_CHAPTER,
+    notes: ATOMIC_STRUCTURE_NOTES,
+    slugs: ATOMIC_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "acids-bases-salts",
+    chipLabel: "Acids, Bases & Salts notes",
+    chapter: ACIDS_BASES_SALTS_CHAPTER,
+    notes: ACIDS_BASES_SALTS_NOTES,
+    slugs: ACIDS_BASES_SALTS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "matter-states",
+    chipLabel: "Matter & Its States notes",
+    chapter: MATTER_STATES_CHAPTER,
+    notes: MATTER_STATES_NOTES,
+    slugs: MATTER_STATES_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "chemical-reactions",
+    chipLabel: "Chemical Reactions notes",
+    chapter: CHEMICAL_REACTIONS_CHAPTER,
+    notes: CHEMICAL_REACTIONS_NOTES,
+    slugs: CHEMICAL_REACTIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "industrial-chemistry",
+    chipLabel: "Industrial Chemistry notes",
+    chapter: INDUSTRIAL_CHEMISTRY_CHAPTER,
+    notes: INDUSTRIAL_CHEMISTRY_NOTES,
+    slugs: INDUSTRIAL_CHEMISTRY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "mole-concept",
+    chipLabel: "Mole Concept notes",
+    chapter: MOLE_CONCEPT_CHAPTER,
+    notes: MOLE_CONCEPT_NOTES,
+    slugs: MOLE_CONCEPT_SLUGS,
   },
 ];
 
