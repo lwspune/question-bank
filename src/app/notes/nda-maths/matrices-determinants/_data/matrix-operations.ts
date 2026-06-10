@@ -130,6 +130,15 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         { prompt: "Order of \\([x\\ y\\ z]_{1\\times3}\\,M_{3\\times3}\\,[x\\ y\\ z]^T_{3\\times1}\\)?", answer: "\\(1\\times1\\) (a scalar)" },
       ],
       pyqExampleId: "ed22764c-666a-4b81-b0a8-c3bc74369ff3", // 2020 — order of AB
+      traps: [
+        {
+          title: "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\)",
+          body:
+            "Order matters: \\(AB\\) and \\(BA\\) are generally **different matrices** (and one may not even exist). " +
+            "Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with " +
+            "\\(BA\\) is the classic trap.",
+        },
+      ],
     },
 
     // C4 — counting matrices
@@ -207,6 +216,15 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         { prompt: "\\((A + B)^T = ?\\)", answer: "\\(A^T + B^T\\)" },
       ],
       pyqExampleId: "d26a370a-1dc8-48b4-a58e-2f3fc45eccb0", // 2018 — transpose statements
+      traps: [
+        {
+          title: "\\((AB)^T = B^T A^T\\) — the order REVERSES",
+          body:
+            "The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). " +
+            "Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. " +
+            "Writing \\(A^T B^T\\) is the trap.",
+        },
+      ],
     },
 
     // C6 — powers
@@ -331,6 +349,13 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
             "Every number identity that secretly uses commutativity can break for matrices. " +
             "\\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an " +
             "option assumes one of these, it's almost always the trap answer.",
+        },
+        {
+          title: "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\)",
+          body:
+            "Unlike numbers, matrices have **zero divisors**: two non-zero matrices can multiply to the zero " +
+            "matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). " +
+            "So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap.",
         },
       ],
     },

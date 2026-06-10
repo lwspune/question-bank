@@ -106,6 +106,15 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
         { prompt: "\\(A - A^T\\) is always?", answer: "Skew-symmetric" },
       ],
       pyqExampleId: "9cb25813-95d1-4b1f-8df8-fe394e8ba43e", // 2024 — skew order 3 det
+      traps: [
+        {
+          title: "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0",
+          body:
+            "From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so **every diagonal entry is 0**. " +
+            "And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). " +
+            "Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)",
+        },
+      ],
     },
 
     // C3 — diagonal/scalar/identity

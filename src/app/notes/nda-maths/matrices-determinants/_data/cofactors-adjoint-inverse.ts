@@ -145,6 +145,22 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         { prompt: "\\(\\operatorname{adj}(A^T) - (\\operatorname{adj}A)^T = ?\\)", answer: "\\(O\\) (null matrix — adjoint commutes with transpose)" },
       ],
       pyqExampleId: "221e8350-71d7-4600-972a-78a6775d559b", // 2026 — |M|·|adj M|
+      traps: [
+        {
+          title: "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\)",
+          body:
+            "The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. " +
+            "For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) " +
+            "or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+        },
+        {
+          title: "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES",
+          body:
+            "Like transpose and inverse, the adjoint of a product flips the factors: " +
+            "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not " +
+            "\\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap.",
+        },
+      ],
     },
 
     // C4 — inverse via adjoint
@@ -233,6 +249,20 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         { prompt: "\\((A^T)^{-1} = ?\\)", answer: "\\((A^{-1})^T\\)" },
       ],
       pyqExampleId: "aec7ab59-a716-43d2-9b8b-3b0366895500", // 2018 — (AB)^-1
+      traps: [
+        {
+          title: "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\)",
+          body:
+            "The inverse of a product **reverses** the order of factors — the single most-missed inverse fact. " +
+            "It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+        },
+        {
+          title: "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose",
+          body:
+            "Transpose and inverse **commute**: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) " +
+            "and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer.",
+        },
+      ],
     },
 
     // C6 — inverse of special matrices

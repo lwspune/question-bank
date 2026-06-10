@@ -254,7 +254,9 @@
     "answer": "C",
     "candidateDistractors": [],
     "distractorSource": "sibling",
-    "trapHints": [],
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
     "status": "auto",
     "looksMcqClean": true,
     "sourceFingerprint": "abb33c55cb31ed0d141b30fabf9155b25f72c01b",
@@ -280,7 +282,9 @@
       "No — inner dims 2 ≠ 3"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "041f68b147468c79e2ad4fc48dfdf0f150962299",
@@ -306,7 +310,9 @@
       "No — multiplication is not commutative"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "8d86e6038f0bd8f79a45e97dcf5f92c68bf73923",
@@ -332,7 +338,9 @@
       "\\(1\\times1\\) (a scalar)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "8e68fd16c9a69bdc0c656fbd4099406ad3175889",
@@ -358,7 +366,9 @@
       "No — inner dims 2 ≠ 3"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "07c5beb41416089d3d712165ebab2834efd39bfb",
@@ -384,10 +394,36 @@
       "\\(2\\times1\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "be8e4a1c2488c73022a53b715b6badc3413c6f4e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "matrix-multiplication",
+    "atomId": "matrix-multiplication:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Matrix multiplication is NOT commutative — \\(AB \\neq BA\\)",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Matrix multiplication is NOT commutative — \\(AB \\neq BA\\): Order matters: \\(AB\\) and \\(BA\\) are generally different matrices (and one may not even exist). Never reorder factors inside a product. If a question gives \\(AB\\), compute \\(AB\\) — answering with \\(BA\\) is the classic trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "00885fffdf2ad2a214949e2275783aab4dea49ec",
     "timeEstimateSec": 45
   },
   {
@@ -541,7 +577,9 @@
     "answer": "B",
     "candidateDistractors": [],
     "distractorSource": "sibling",
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^T = B^T A^T\\) — the order REVERSES: The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. Writing \\(A^T B^T\\) is the trap."
+    ],
     "status": "auto",
     "looksMcqClean": true,
     "sourceFingerprint": "b5dc2d569f078859842034378df893398f36be46",
@@ -567,7 +605,9 @@
       "\\(A^T + B^T\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^T = B^T A^T\\) — the order REVERSES: The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. Writing \\(A^T B^T\\) is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "60ee83ff44dcbe0cca2087356819318a924af717",
@@ -593,7 +633,9 @@
       "\\(A^T + B^T\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^T = B^T A^T\\) — the order REVERSES: The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. Writing \\(A^T B^T\\) is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "7395c9f61860e83e4848a23605b4ecbed006ac6f",
@@ -619,7 +661,9 @@
       "\\(A^T + B^T\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^T = B^T A^T\\) — the order REVERSES: The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. Writing \\(A^T B^T\\) is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "696d97bb2a76b17f74ba9c7010fbbefb79c95919",
@@ -645,10 +689,36 @@
       "\\(5\\times2\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^T = B^T A^T\\) — the order REVERSES: The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. Writing \\(A^T B^T\\) is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "fd3df17cb7f0fef7f21c68b748b53ae4542ead35",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "transpose-rules",
+    "atomId": "transpose-rules:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\((AB)^T = B^T A^T\\) — the order REVERSES",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "\\((AB)^T = B^T A^T\\) — the order REVERSES: The transpose of a product flips the factors: \\((AB)^T = B^T A^T\\), not \\(A^T B^T\\). Sum and scalar transposes keep their order (\\((A+B)^T = A^T+B^T\\)); only the PRODUCT reverses. Writing \\(A^T B^T\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "fc244fb846852fc68d93dc9d4d865e8200d3baca",
     "timeEstimateSec": 45
   },
   {
@@ -954,7 +1024,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer."
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -981,7 +1052,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer."
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1008,7 +1080,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer."
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1035,7 +1108,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer."
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1059,11 +1133,37 @@
     "candidateDistractors": [],
     "distractorSource": null,
     "trapHints": [
-      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer."
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "411692921548db5d6a664a1e64741d1701ff363a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "matrix-algebra-caveats",
+    "atomId": "matrix-algebra-caveats:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\)",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "863a16abe1899b26384a3a9a6922f78f143879ab",
     "timeEstimateSec": 45
   },
   {
@@ -1485,7 +1585,9 @@
     "answer": "D",
     "candidateDistractors": [],
     "distractorSource": "sibling",
-    "trapHints": [],
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
     "status": "auto",
     "looksMcqClean": false,
     "sourceFingerprint": "2279d8f5ba867aa32d004392baa31031bc7b389b",
@@ -1511,7 +1613,9 @@
       "Skew-symmetric"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "4f8ca7896053043b5339bda183d4a5494dcd19c2",
@@ -1537,7 +1641,9 @@
       "Skew-symmetric"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "3622148f3aafa701aa9646797bf8a8897250e9be",
@@ -1563,7 +1669,9 @@
       "\\(0\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "9637c332a6788067706d436d1261e7a522a91bb6",
@@ -1589,7 +1697,9 @@
       "All 0"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "4ab6d581d314ae998d48084378df8efd6ef4ecbb",
@@ -1615,10 +1725,36 @@
       "Symmetric"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "17ddcee6e03e714606ce8252b834cb89fcd1ed48",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "symmetric-and-skew-symmetric",
+    "atomId": "symmetric-and-skew-symmetric:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Odd-order skew-symmetric \\(\\Rightarrow \\det = 0\\); diagonal entries are 0: From \\(A^T = -A\\): the diagonal satisfies \\(a_{ii} = -a_{ii}\\), so every diagonal entry is 0. And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)"
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "1f7e1a721aaa0f362e8fdaf1b57f2d0f4d75f2bf",
     "timeEstimateSec": 45
   },
   {
@@ -2394,7 +2530,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2423,7 +2560,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
@@ -2452,7 +2590,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2481,7 +2620,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2510,7 +2650,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2539,7 +2680,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2568,7 +2710,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2597,7 +2740,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -2622,7 +2766,8 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
@@ -2647,11 +2792,38 @@
     "distractorSource": null,
     "trapHints": [
       "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
-      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand."
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "9af434f07bbfbbb6e3c11933e3f676f95e12e69e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "det-products-scalar-powers",
+    "atomId": "det-products-scalar-powers:trap:2",
+    "sourceKind": "trap",
+    "sourceIndex": 2,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\(\\det(A+B) \\neq \\det A + \\det B\\)",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "1023aef22e1980100fe942c1dbdae9a390ac8b32",
     "timeEstimateSec": 45
   },
   {
@@ -4853,7 +5025,10 @@
       "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "d23f1d70d3929fffb500b784f7a1eece9cdadc18",
@@ -4879,7 +5054,10 @@
       "\\(x = \\frac{\\Delta_x}{\\Delta}\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "4a61b4322934658e00cfadae357af5af9eba3725",
@@ -4905,7 +5083,10 @@
       "\\(|A|\\,A\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "b339e80329453ed0aee849ca35beaa65ff220a4b",
@@ -4931,7 +5112,10 @@
       "\\(O\\) (null matrix — adjoint commutes with transpose)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "352fbf90845b6690f4f01fb251aa2460a78fd2a7",
@@ -4957,7 +5141,10 @@
       "\\(9\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "4b35b09bc667e48c00ee18c3a582b806508326aa",
@@ -4983,7 +5170,10 @@
       "\\(k^{n-1}\\operatorname{adj}A\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "3dc7651ab6f72362d85c7236c0624f44b5306d6d",
@@ -5009,7 +5199,10 @@
       "\\(\\operatorname{adj}B\\,\\operatorname{adj}A\\) (reversal)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "d2b6f1707840a93d312630b5d34d96718be8ef48",
@@ -5035,10 +5228,63 @@
       "\\(|A|\\,A\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "3f58aac5a6264ce16ab82ebf6d78125ad4663f7b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "adjoint-properties",
+    "atomId": "adjoint-properties:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\)",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "33e77832e08bad35e82da0d863ea0e8ab8c4dc7e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "adjoint-properties",
+    "atomId": "adjoint-properties:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\), NOT \\(|A|\\) or \\(|A|^n\\): The determinant of the adjoint carries the exponent \\(n-1\\), where \\(n\\) is the ORDER. For a \\(3\\times3\\) matrix it is \\(|A|^2\\) — students who answer \\(|A|\\) (forgetting the power) or \\(|A|^3\\) (over-counting) walk into the two standard distractors.",
+      "\\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\) — the order REVERSES: Like transpose and inverse, the adjoint of a product flips the factors: \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\), not \\(\\operatorname{adj}A\\,\\operatorname{adj}B\\). Keeping the original order is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "a97e3571b2da16cedbf4adc7cfc4f54dff5b4760",
     "timeEstimateSec": 45
   },
   {
@@ -5244,7 +5490,10 @@
     "answer": "C",
     "candidateDistractors": [],
     "distractorSource": "sibling",
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
     "status": "auto",
     "looksMcqClean": true,
     "sourceFingerprint": "26fc38c77be543dc4a744d6e2620cbc9d5d30368",
@@ -5270,7 +5519,10 @@
       "\\((A^{-1})^T\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "e16528ff6ece1691ecb96a01e8e75df5c75320e1",
@@ -5296,7 +5548,10 @@
       "\\((A^{-1})^T\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "c8027b1b2df59324ecc97d401b1b4c067815f9b8",
@@ -5322,7 +5577,10 @@
       "\\(B^{-1}A^{-1}\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "eceeebc9c6a6e0eb274bc8515832948afc5f6235",
@@ -5348,7 +5606,10 @@
       "\\(1/\\det A\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "57c91da133c18df1904d62d5990017e23f13efb0",
@@ -5374,10 +5635,63 @@
       "\\((A^{-1})^T\\)"
     ],
     "distractorSource": null,
-    "trapHints": [],
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "f7181af6d93dc70f1a654f74fea45bd2c7d11a5f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-properties",
+    "atomId": "inverse-properties:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\)",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "8cea17036b145bb3e8abcaea8340e47ba55f7956",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-properties",
+    "atomId": "inverse-properties:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — \\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\), NOT \\(A^{-1}B^{-1}\\): The inverse of a product reverses the order of factors — the single most-missed inverse fact. It must, so that \\((AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I\\). Writing \\(A^{-1}B^{-1}\\) is the trap.",
+      "\\((A^T)^{-1} = (A^{-1})^T\\) — don't drop the transpose: Transpose and inverse commute: \\((A^T)^{-1} = (A^{-1})^T\\). The slip is to compute \\(A^{-1}\\) and forget to transpose it (or vice-versa), reporting plain \\(A^{-1}\\) as the answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "72cff1ebec13fc1378364debc0753ccf90617c88",
     "timeEstimateSec": 45
   },
   {
