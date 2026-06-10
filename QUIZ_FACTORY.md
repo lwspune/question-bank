@@ -115,11 +115,11 @@ Snapshot **2026-06-09** — refresh with:
 
 | Chapter | Ready | Quizzes | State |
 |---|---|---|---|
-| nda-maths / **probability** | ~163 | ~9 | ✅ **Complete** (formula/computation/property/trap) |
-| nda-maths / **statistics** | ~197 | ~11 | ✅ **Complete** (formula/computation/property/trap) |
+| nda-maths / **probability** | ~163 | ~9 | ✅ **Complete** (formula/computation/property/trap) — formula spot-check 2026-06-10: CLEAN |
+| nda-maths / **statistics** | ~197 | ~11 | ✅ **Complete** (formula/computation/property/trap) — formula spot-check 2026-06-10: CLEAN |
 | nda-biology / **human-physiology** | ~166 | ~5 | ✅ **Complete** (fact + recall + traps; all distractors hand-authored) |
-| nda-maths / **matrices-determinants** | ~222 | ~12 | ✅ **Complete** (formula + computation; 5 trap atoms <12 → no standalone trap quiz) |
-| nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) |
+| nda-maths / **matrices-determinants** | ~236 | 13 | ✅ **Complete** (formula + computation + **trap (1; +9 callouts → 14 atoms, 2026-06-10)**) |
+| nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) — formula coverage spot-check 2026-06-10: CLEAN |
 | nda-maths / **trigonometric-identities** | ~144 | 9 | ✅ **Complete** — computation (6, 2 agents subtopic-split) + formula (2; ALL 25 identity formulas, 2026-06-10 formula.latex enrichment) + **trap (1; 14 common-mistake callouts authored into the notes 2026-06-10)**; 11 reference atoms parked (<12) |
 | nda-maths / **lines** | ~92 | 7 | ✅ **Complete** — computation (4) + formula (2; 26 pieces) + trap (1; 13 callouts) — formula.latex + traps authored from scratch 2026-06-10 (both were 0) |
 | nda-maths / **functions** | ~54 | 4 | ✅ **Complete** — computation (2) + formula (1; 16 pieces after 2026-06-10 formula.latex enrichment) + trap (1; 14 pre-existing seeds authored) |

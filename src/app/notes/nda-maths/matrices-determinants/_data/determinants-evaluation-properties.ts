@@ -120,6 +120,13 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
             "For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add " +
             "\\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
         },
+        {
+          title: "\\(\\det(A+B) \\neq \\det A + \\det B\\)",
+          body:
+            "Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but **NOT additive**. " +
+            "\\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. " +
+            "Splitting it as \\(\\det A + \\det B\\) is the trap.",
+        },
       ],
     },
 
