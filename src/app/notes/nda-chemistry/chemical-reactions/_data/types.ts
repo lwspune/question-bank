@@ -14,6 +14,7 @@ export const TYPES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "four-reaction-types",
       name: "The four reaction shapes",
+      visualizationSlug: "rxn-reaction-types",
       intuition:
         "Look at how many reactants and products there are, and whether atoms swap partners. One product from many = combination. Many products from one = decomposition. One element kicks another out = displacement. Two compounds swap ions = double displacement.",
       definition:

@@ -212,7 +212,16 @@ export type VisualizationSlug =
   | "carb-allotrope-structures"
   | "atom-bohr-shells"
   | "atom-periodic-trends"
-  | "matt-states-of-matter";
+  | "matt-states-of-matter"
+  // NDA Chemistry — batch 2 (spatial-answer concepts)
+  | "carb-micelle"
+  | "carb-functional-groups"
+  | "acid-ph-scale-strip"
+  | "matt-distillation-apparatus"
+  | "matt-colloid-tyndall"
+  | "bond-ionic-covalent-formation"
+  | "hyd-water-hydrogen-bonding"
+  | "rxn-reaction-types";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

@@ -13,6 +13,7 @@ export const SEPARATION_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "distillation-methods",
       name: "Distillation, fractional distillation and the separating funnel",
+      visualizationSlug: "matt-distillation-apparatus",
       intuition:
         "How you split two liquids depends on whether they mix. If they mix (miscible) and boil at different temperatures, distil them. If their boiling points are close, use fractional distillation. If they don't mix (immiscible, like oil and water), just let them settle into layers and run off the bottom one — a separating funnel.",
       definition:

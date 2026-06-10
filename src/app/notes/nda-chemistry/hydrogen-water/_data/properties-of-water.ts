@@ -14,6 +14,7 @@ export const PROPERTIES_OF_WATER_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "structure-and-hydrogen-bonding",
       name: "Structure of water and hydrogen bonding",
+      visualizationSlug: "hyd-water-hydrogen-bonding",
       intuition:
         "A water molecule is H₂O — one oxygen sharing electrons with two hydrogens. Oxygen pulls the shared electrons towards itself, so the molecule has a slightly negative oxygen end and slightly positive hydrogen ends: it is polar. " +
         "These oppositely charged ends attract neighbouring molecules through hydrogen bonds, and almost every special property of water traces back to that network of hydrogen bonds.",
