@@ -126,7 +126,7 @@ Snapshot **2026-06-09** — refresh with:
 | nda-maths / **lines** | ~92 | 7 | ✅ **Complete** — computation (4) + formula (2; 26 pieces) + trap (1; 13 callouts) — formula.latex + traps authored from scratch 2026-06-10 (both were 0) |
 | nda-maths / **functions** | ~54 | 4 | ✅ **Complete** — computation (2) + formula (1; 16 pieces after 2026-06-10 formula.latex enrichment) + trap (1; 14 pre-existing seeds authored) |
 | nda-maths / **3d-geometry** | ~133 | 10 | 🟡 **Wave 2 — computation (8) + formula (2) done** 2026-06-10; traps (7 callouts <12) pending |
-| nda-maths / **sequence-series** | ~177 | 10 | 🟡 **Wave 2 — computation (8) + formula (2) done** 2026-06-10 (re-derivation caught a notes error `S_n=5n-2n²`→a₃=−5 not −7, fixed); traps (5 <12) pending |
+| nda-maths / **sequence-series** | ~186 | 11 | 🟢 **Wave 2 COMPLETE** — computation 8 + formula 2 + traps 1 (2026-06-10; 9 misconception callouts authored into notes → re-harvest → Common-Traps quiz; re-derivation fixed `S_n=5n-2n²`→a₃=−5). First chapter to run the full notes-enrichment cadence end-to-end. |
 | nda-maths / **differentiation** | ~129 | 7 | 🟡 **Wave 2 — computation (6) + formula (1) done** 2026-06-10; traps (6 <12) pending |
 | _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 

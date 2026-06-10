@@ -55,6 +55,16 @@ export const HARMONIC_MEANS_NOTE: SubtopicNote = {
         { prompt: "There is a formula for the sum of an HP — true or false?", answer: "False" },
       ],
       pyqExampleId: "f0e6f0c2-b3ce-4682-b74a-e4c08c946447", // 2023 — (a+b),2b,(b+c) in HP -> a,b,c in GP
+      traps: [
+        {
+          title: "You cannot average HP terms directly",
+          body:
+            "The middle term of three numbers in HP is NOT \\(\\tfrac{a+c}{2}\\) — that is the arithmetic " +
+            "mean. The HP middle is the harmonic mean \\(b = \\dfrac{2ac}{a+c}\\) (equivalently, " +
+            "\\(\\tfrac1a, \\tfrac1b, \\tfrac1c\\) are in AP). For \\(a = 2, c = 6\\) the HP middle is " +
+            "\\(\\dfrac{2\\cdot 2\\cdot 6}{8} = 3\\), not \\(\\tfrac{2+6}{2} = 4\\). Flip to reciprocals first, always.",
+        },
+    ],
     },
 
     // C2 — the three means + AM>=GM>=HM
@@ -110,6 +120,23 @@ export const HARMONIC_MEANS_NOTE: SubtopicNote = {
             "The ordering and the equality-when-equal rule need \\(a, b > 0\\). A common NDA setup gives " +
             "AM and GM and asks for HM — reach straight for \\(\\text{HM} = \\tfrac{\\text{GM}^2}{\\text{AM}}\\) " +
             "rather than solving for \\(a, b\\) first.",
+        },
+        {
+          title: "Don't swap the three mean formulas",
+          body:
+            "Keep them straight: \\(\\text{AM} = \\dfrac{a+b}{2}\\) (sum over 2), " +
+            "\\(\\text{GM} = \\sqrt{ab}\\) (root of the product), and \\(\\text{HM} = \\dfrac{2ab}{a+b}\\) " +
+            "(twice the product over the sum). The classic slip is using \\(\\dfrac{a+b}{2ab}\\) — that is " +
+            "the reciprocal of the HM, not the HM. For \\(3\\) and \\(6\\): \\(\\text{HM} = \\dfrac{2\\cdot 18}{9} = 4\\), " +
+            "not \\(\\dfrac{9}{36} = \\tfrac14\\).",
+        },
+        {
+          title: "The identity is \\(\\text{GM}^2 = \\text{AM}\\cdot\\text{HM}\\)",
+          body:
+            "The geometric mean is the geometric mean of the OTHER two: \\(\\text{GM}^2 = \\text{AM}\\cdot\\text{HM}\\), " +
+            "so \\(\\text{GM} = \\sqrt{\\text{AM}\\cdot\\text{HM}}\\). It is NOT \\(\\text{AM}^2 = \\text{GM}\\cdot\\text{HM}\\) " +
+            "and the three means are in GP (not AP). Given AM \\(= 9\\), GM \\(= 6\\): " +
+            "\\(\\text{HM} = \\dfrac{\\text{GM}^2}{\\text{AM}} = \\dfrac{36}{9} = 4\\), not \\(\\dfrac{\\text{AM}^2}{\\text{GM}} = \\dfrac{81}{6}\\).",
         },
       ],
     },
