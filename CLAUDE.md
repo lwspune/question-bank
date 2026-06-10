@@ -70,6 +70,7 @@ npm run quiz:harvest [route/chapter ...]   # /notes ConceptUnits → MCQ atoms J
 npm run quiz:sync          # upsert harvested atoms → public.quiz_atoms (staleness-aware: preserves verified, re-flags changed)
 npm run quiz:verify [name] # promote needs_review atoms → 'verified' from scripts/quiz/verify/<name>.ts (Claude-authored distractors)
 npm run quiz:lint [route] [chapter]   # flag quiz-atom stems that aren't self-contained (back-refs, criterion-less "which is correct?", fragments) — triage, run before publishing a quiz public
+npm run quiz:coverage [route] [chapter] [--review]   # flag formulas/traps TAUGHT in /notes prose but not harvestable (formula.latex empty / <12 traps) — the theme-coverage guardrail; triage, not a gate
 npm run quiz:assemble <route> <chapter> [max] [size] [-- --theme=X]   # ready atoms → quiz → record (quizzes+map) → push nda-tracker draft
 npm run quiz:delete <slug>   # delete an assembled quiz here + propagate the delete to nda-tracker (drafts only there)
 npm run quiz:push [daily/<slug>]   # push a single DraftQuiz module to nda-tracker (default: the hand-authored classical quiz)
