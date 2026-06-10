@@ -221,7 +221,39 @@ export type VisualizationSlug =
   | "matt-colloid-tyndall"
   | "bond-ionic-covalent-formation"
   | "hyd-water-hydrogen-bonding"
-  | "rxn-reaction-types";
+  | "rxn-reaction-types"
+  // NDA Physics — Light and Optics chapter
+  | "opt-concave-mirror-rays"
+  | "opt-convex-mirror-rays"
+  | "opt-refraction-tir"
+  | "opt-convex-lens-rays"
+  | "opt-prism-dispersion"
+  | "opt-human-eye"
+  // NDA Physics — Laws of Motion chapter
+  | "lmf-free-body-diagram"
+  | "lmf-action-reaction-pair"
+  | "lmf-resultant-parallelogram"
+  | "lmf-friction-incline"
+  // NDA Physics — Heat and Thermodynamics chapter
+  | "ht-heat-transfer-modes"
+  | "ht-pv-process-diagram"
+  | "ht-anomalous-water-expansion"
+  // NDA Physics — Modern Physics chapter
+  | "mp-photoelectric-setup"
+  | "mp-bohr-energy-levels"
+  | "mp-radiation-penetration"
+  // NDA Physics — Kinematics chapter
+  | "kin-velocity-time-graph"
+  | "kin-position-time-graph"
+  | "kin-projectile-parabola"
+  // NDA Physics — Fluid Mechanics chapter
+  | "fluid-pressure-depth"
+  | "surface-tension-meniscus"
+  | "archimedes-floating-block"
+  | "pascal-hydraulic-press"
+  // NDA Physics — Work, Energy and Power chapter
+  | "wep-work-at-angle"
+  | "wep-energy-conservation-track";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
