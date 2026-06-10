@@ -273,6 +273,21 @@ import {
   WORK_ENERGY_POWER_NOTES,
   WORK_ENERGY_POWER_SLUGS,
 } from "@/app/notes/nda-physics/work-energy-power/_data";
+import {
+  GRAVITATION_CHAPTER,
+  GRAVITATION_NOTES,
+  GRAVITATION_SLUGS,
+} from "@/app/notes/nda-physics/gravitation/_data";
+import {
+  UNITS_MEASUREMENT_CHAPTER,
+  UNITS_MEASUREMENT_NOTES,
+  UNITS_MEASUREMENT_SLUGS,
+} from "@/app/notes/nda-physics/units-measurement-dimensions/_data";
+import {
+  OSCILLATIONS_CHAPTER,
+  OSCILLATIONS_NOTES,
+  OSCILLATIONS_SLUGS,
+} from "@/app/notes/nda-physics/oscillations-waves/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -885,6 +900,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: WORK_ENERGY_POWER_CHAPTER,
     notes: WORK_ENERGY_POWER_NOTES,
     slugs: WORK_ENERGY_POWER_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: GRAVITATION_CHAPTER,
+    notes: GRAVITATION_NOTES,
+    slugs: GRAVITATION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "units-measurement-dimensions",
+    chipLabel: "Units & Measurement notes",
+    chapter: UNITS_MEASUREMENT_CHAPTER,
+    notes: UNITS_MEASUREMENT_NOTES,
+    slugs: UNITS_MEASUREMENT_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "oscillations-waves",
+    chipLabel: "Oscillations & Waves notes",
+    chapter: OSCILLATIONS_CHAPTER,
+    notes: OSCILLATIONS_NOTES,
+    slugs: OSCILLATIONS_SLUGS,
   },
 ];
 

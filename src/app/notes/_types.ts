@@ -253,7 +253,17 @@ export type VisualizationSlug =
   | "pascal-hydraulic-press"
   // NDA Physics — Work, Energy and Power chapter
   | "wep-work-at-angle"
-  | "wep-energy-conservation-track";
+  | "wep-energy-conservation-track"
+  // NDA Physics — Gravitation chapter
+  | "grav-kepler-orbit"
+  | "grav-composite-sphere"
+  | "grav-field-vs-potential"
+  // NDA Physics — Units, Measurement and Dimensions chapter
+  | "umd-least-count-ruler"
+  // NDA Physics — Oscillations and Waves chapter
+  | "osc-shm-displacement-time"
+  | "osc-pendulum-restoring-force"
+  | "osc-wave-types";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
