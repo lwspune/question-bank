@@ -218,6 +218,26 @@ import {
   MOLE_CONCEPT_NOTES,
   MOLE_CONCEPT_SLUGS,
 } from "@/app/notes/nda-chemistry/mole-concept/_data";
+import {
+  METALS_NON_METALS_CHAPTER,
+  METALS_NON_METALS_NOTES,
+  METALS_NON_METALS_SLUGS,
+} from "@/app/notes/nda-chemistry/metals-non-metals/_data";
+import {
+  HYDROGEN_WATER_CHAPTER,
+  HYDROGEN_WATER_NOTES,
+  HYDROGEN_WATER_SLUGS,
+} from "@/app/notes/nda-chemistry/hydrogen-water/_data";
+import {
+  CHEMICAL_BONDING_CHAPTER,
+  CHEMICAL_BONDING_NOTES,
+  CHEMICAL_BONDING_SLUGS,
+} from "@/app/notes/nda-chemistry/chemical-bonding/_data";
+import {
+  EVERYDAY_LIFE_CHAPTER,
+  EVERYDAY_LIFE_NOTES,
+  EVERYDAY_LIFE_SLUGS,
+} from "@/app/notes/nda-chemistry/everyday-life/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -709,6 +729,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MOLE_CONCEPT_CHAPTER,
     notes: MOLE_CONCEPT_NOTES,
     slugs: MOLE_CONCEPT_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "metals-non-metals",
+    chipLabel: "Metals & Non-Metals notes",
+    chapter: METALS_NON_METALS_CHAPTER,
+    notes: METALS_NON_METALS_NOTES,
+    slugs: METALS_NON_METALS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "hydrogen-water",
+    chipLabel: "Hydrogen & Water notes",
+    chapter: HYDROGEN_WATER_CHAPTER,
+    notes: HYDROGEN_WATER_NOTES,
+    slugs: HYDROGEN_WATER_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    chapter: CHEMICAL_BONDING_CHAPTER,
+    notes: CHEMICAL_BONDING_NOTES,
+    slugs: CHEMICAL_BONDING_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "everyday-life",
+    chipLabel: "Chemistry in Everyday Life notes",
+    chapter: EVERYDAY_LIFE_CHAPTER,
+    notes: EVERYDAY_LIFE_NOTES,
+    slugs: EVERYDAY_LIFE_SLUGS,
   },
 ];
 

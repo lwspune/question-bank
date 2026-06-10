@@ -14,6 +14,7 @@ export const ALLOTROPES_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "crystalline-allotropes",
       name: "Crystalline allotropes — structure, hybridisation and properties",
+      visualizationSlug: "carb-allotrope-structures",
       intuition:
         "Allotropes are different structural forms of the same element. For carbon, the bonding pattern decides everything: a 3-D tetrahedral network gives the hardest natural substance (diamond); flat sheets that slide give a soft conductor (graphite); a closed cage gives the purest form (fullerene); a single sheet gives the thinnest, strongest material (graphene). " +
         "Same element, four completely different materials.",

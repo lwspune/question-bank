@@ -207,7 +207,12 @@ export type VisualizationSlug =
   | "aoi-area-between-curves-region"
   // NDA Maths — Height & Distance chapter
   | "hd-elevation-triangle"
-  | "hd-shadow-sun";
+  | "hd-shadow-sun"
+  // NDA Chemistry
+  | "carb-allotrope-structures"
+  | "atom-bohr-shells"
+  | "atom-periodic-trends"
+  | "matt-states-of-matter";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
