@@ -19,6 +19,18 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         "- **Slope-intercept:** \\(y=mx+c\\). **Point-slope:** \\(y-y_1=m(x-x_1)\\).\n" +
         "- **Two-point:** \\(\\dfrac{y-y_1}{x-x_1}=\\dfrac{y_2-y_1}{x_2-x_1}\\).\n" +
         "- **General:** \\(ax+by+c=0\\) has slope \\(-a/b\\). **Normal form:** \\(x\\cos\\theta+y\\sin\\theta=p\\) (\\(p\\) = distance from origin).",
+      formula: {
+        label: "Slope and forms of a line",
+        latex:
+          "m=\\dfrac{y_2-y_1}{x_2-x_1}\\qquad m_{ax+by+c=0}=-\\dfrac{a}{b}\\qquad y-y_1=m(x-x_1)\\qquad y=mx+c",
+      },
+      traps: [
+        {
+          title: "Slope is \\(\\Delta y/\\Delta x\\), not \\(\\Delta x/\\Delta y\\) — and a vertical line has **undefined** slope",
+          body:
+            "Two slips. First, slope is **rise over run**: \\(m=\\dfrac{y_2-y_1}{x_2-x_1}\\), not \\(\\dfrac{x_2-x_1}{y_2-y_1}\\) — keep the \\(y\\)-difference on top. Second, a **vertical** line \\(x=k\\) has *undefined* slope (the run is \\(0\\)), **not** slope \\(0\\) — that's a *horizontal* line \\(y=k\\). Likewise, the slope of \\(ax+by+c=0\\) is \\(-a/b\\), with the **minus sign** — dropping it flips the line.",
+        },
+      ],
       authoredExample: {
         prompt: "Find the equation of the line through \\((2,3)\\) with slope \\(4\\).",
         steps: [
@@ -51,6 +63,18 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         "When a line's x- and y-intercepts matter, the intercept form \\(\\tfrac{x}{a}+\\tfrac{y}{b}=1\\) reads them off directly. Many questions give a relation between the intercepts (their sum, or a midpoint) and ask for the line.",
       definition:
         "**Intercept form:** \\(\\dfrac{x}{a}+\\dfrac{y}{b}=1\\), where \\(a\\) is the x-intercept and \\(b\\) the y-intercept. From \\(ax+by+c=0\\): x-intercept \\(=-c/a\\), y-intercept \\(=-c/b\\). If \\((h,k)\\) is the midpoint of the intercept segment, then \\(a=2h\\), \\(b=2k\\).",
+      formula: {
+        label: "Intercept form and intercepts",
+        latex:
+          "\\dfrac{x}{a}+\\dfrac{y}{b}=1\\qquad x\\text{-intercept}=-\\dfrac{c}{a}\\qquad y\\text{-intercept}=-\\dfrac{c}{b}",
+      },
+      traps: [
+        {
+          title: "Intercept form needs the constant on the **RHS as \\(1\\)** — \\(a,b\\) are the intercepts only then",
+          body:
+            "You can read the intercepts straight off \\(\\dfrac{x}{a}+\\dfrac{y}{b}=1\\) **only when the right side is exactly \\(1\\)**. From \\(ax+by=c\\) the x-intercept is \\(c/a\\), **not** \\(a\\): divide through by \\(c\\) first to reach \\(\\dfrac{x}{c/a}+\\dfrac{y}{c/b}=1\\). Grabbing the coefficients before normalising to \\(1\\) is the classic error.",
+        },
+      ],
       authoredExample: {
         prompt: "A line has x-intercept \\(4\\) and y-intercept \\(2\\). Find its equation and the sum of intercepts.",
         steps: [
@@ -84,6 +108,18 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         "Any line through the intersection of \\(L_1=0\\) and \\(L_2=0\\) can be written \\(L_1+\\lambda L_2=0\\) — without ever finding the intersection point. Choose \\(\\lambda\\) from one extra condition. Three lines are concurrent when their intersection is shared.",
       definition:
         "**Family (pencil):** through \\(L_1\\cap L_2\\), every line is \\(L_1+\\lambda L_2=0\\); fix \\(\\lambda\\) from a point or a slope condition. **Parallel/perpendicular through a point:** keep the same (or negative-reciprocal) slope. **Concurrency:** three lines are concurrent iff \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0\\). If coefficients \\(A,B,C\\) are in AP, \\(Ax+2By+C=0\\) passes through the fixed point \\((1,-1)\\) (since \\(C=2B-A\\) gives \\(A(x-1)+2B(y+1)=0\\)).",
+      formula: {
+        label: "Family of lines and concurrency",
+        latex:
+          "L_1+\\lambda L_2=0\\qquad \\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0",
+      },
+      traps: [
+        {
+          title: "The pencil is \\(L_1+\\lambda L_2=0\\) — keep each \\(L_i\\) in the form \\(=0\\) first",
+          body:
+            "The family through \\(L_1\\cap L_2\\) is \\(L_1+\\lambda L_2=0\\), where **each \\(L_i\\) is the whole expression \\(a_ix+b_iy+c_i\\)** moved to one side so the line reads \\(L_i=0\\). Combining \\(2x+3y=5\\) and \\(x-y=1\\) means using \\(L_1=2x+3y-5\\) and \\(L_2=x-y-1\\) — forgetting to move the constants over (using \\(2x+3y\\) and \\(x-y\\)) silently shifts the pencil off the intersection.",
+        },
+      ],
       authoredExample: {
         prompt: "Find the line through the intersection of \\(x+y-1=0\\) and \\(2x-y-2=0\\) that passes through \\((1,2)\\).",
         steps: [
@@ -118,6 +154,13 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         "The image of a point in a line is its mirror reflection: the line is the perpendicular bisector of the segment joining the point and its image. Use 'midpoint lies on the line' plus 'segment ⟂ line' to find the image, or recover the mirror from a point–image pair.",
       definition:
         "If \\(P'\\) is the image of \\(P\\) in line \\(L\\): the midpoint of \\(PP'\\) lies on \\(L\\), and \\(PP'\\perp L\\). These two conditions pin down \\(P'\\) (or the mirror line). Foot of perpendicular from \\(P\\) to \\(L\\) is the midpoint of \\(PP'\\).",
+      traps: [
+        {
+          title: "The **foot** of the perpendicular is the *midpoint* of \\(PP'\\), not the image itself",
+          body:
+            "The foot of the perpendicular \\(F\\) from \\(P\\) to the line is **halfway** to the image: \\(F\\) is the *midpoint* of \\(P\\) and \\(P'\\). So the image is \\(P'=2F-P\\) — you must **double** the displacement from \\(P\\) to \\(F\\). Reporting the foot \\(F\\) as the reflected image gives a point only half as far across the line.",
+        },
+      ],
       authoredExample: {
         prompt: "Find the image of \\((1,2)\\) in the line \\(y=x\\).",
         steps: [

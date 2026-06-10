@@ -58,6 +58,10 @@ export const FUNCTIONS_COMPOSITION_INVERSE_NOTE: SubtopicNote = {
         "Composition is **associative** \\((f\\circ(g\\circ h)=(f\\circ g)\\circ h)\\) but **not commutative** " +
         "\\((f\\circ g\\neq g\\circ f\\) in general\\()\\). Iterating \\(f\\circ f\\circ\\cdots\\) just repeats the substitution.",
       visualizationSlug: "composition-machine",
+      formula: {
+        label: "Composition and its inverse",
+        latex: "(f\\circ g)(x)=f(g(x))\\qquad (f\\circ g)^{-1}=g^{-1}\\circ f^{-1}",
+      },
       authoredExample: {
         prompt:
           "With \\(f(x)=2x+1\\) and \\(g(x)=x^2\\), find \\((f\\circ g)(x)\\) and \\((g\\circ f)(x)\\).",
@@ -102,7 +106,7 @@ export const FUNCTIONS_COMPOSITION_INVERSE_NOTE: SubtopicNote = {
         "condition \\(ad+b=bc+d\\), i.e. \\(b(c-1)=d(a-1)\\).",
       formula: {
         label: "Commuting condition for linear f, g",
-        latex: "f(x)=ax+b,\\ g(x)=cx+d:\\quad f\\circ g=g\\circ f \\iff b(c-1)=d(a-1)",
+        latex: "f\\circ g=g\\circ f\\iff b(c-1)=d(a-1)\\ \\ [f=ax+b,\\ g=cx+d]",
       },
       authoredExample: {
         prompt:
@@ -129,6 +133,10 @@ export const FUNCTIONS_COMPOSITION_INVERSE_NOTE: SubtopicNote = {
         "Domain and range swap: \\(\\text{dom}(f^{-1})=\\text{range}(f)\\). Properties: \\(f^{-1}\\circ f=\\text{id}\\), " +
         "and the graph of \\(f^{-1}\\) is the reflection of \\(f\\) in \\(y=x\\). Note \\(f^{-1}(x)\\neq\\dfrac{1}{f(x)}\\).",
       visualizationSlug: "inverse-reflection-line",
+      formula: {
+        label: "Inverse of a linear function",
+        latex: "f(x)=ax+b\\ (a\\neq0)\\ \\Rightarrow\\ f^{-1}(x)=\\dfrac{x-b}{a}",
+      },
       authoredExample: {
         prompt: "Find the inverse of \\(f(x)=\\dfrac{3x+2}{x-1}\\), \\(x\\neq1\\).",
         steps: [

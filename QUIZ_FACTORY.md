@@ -121,8 +121,8 @@ Snapshot **2026-06-09** — refresh with:
 | nda-maths / **matrices-determinants** | ~222 | ~12 | ✅ **Complete** (formula + computation; 5 trap atoms <12 → no standalone trap quiz) |
 | nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) |
 | nda-maths / **trigonometric-identities** | ~144 | 9 | ✅ **Complete** — computation (6, 2 agents subtopic-split) + formula (2; ALL 25 identity formulas, 2026-06-10 formula.latex enrichment) + **trap (1; 14 common-mistake callouts authored into the notes 2026-06-10)**; 11 reference atoms parked (<12) |
-| nda-maths / **lines** | ~53 | 4 | ✅ **Complete** — computation (4 quizzes); 0 formula/trap atoms harvestable |
-| nda-maths / **functions** | ~24 | 2 | ✅ **Complete** (computation, 2 quizzes); formula (6) + trap (14 seeds) parked (<12 for a standalone quiz) |
+| nda-maths / **lines** | ~92 | 7 | ✅ **Complete** — computation (4) + formula (2; 26 pieces) + trap (1; 13 callouts) — formula.latex + traps authored from scratch 2026-06-10 (both were 0) |
+| nda-maths / **functions** | ~54 | 4 | ✅ **Complete** — computation (2) + formula (1; 16 pieces after 2026-06-10 formula.latex enrichment) + trap (1; 14 pre-existing seeds authored) |
 | nda-maths / **3d-geometry** · **sequence-series** · **differentiation** | harvested+synced (~133/145/85 needs_review clean) | — | 🟠 **Wave 2** — atoms in pool, distractors pending |
 | _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 

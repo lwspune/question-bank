@@ -68,6 +68,11 @@ export const FUNCTIONS_FUNCTIONAL_EQUATIONS_NOTE: SubtopicNote = {
         "- \\(f(xy)=f(x)f(y)\\): power-type, \\(f(x)=x^k\\); useful values come from \\(f(1)=1\\) and \\(f(1/a)=1/f(a)\\).\n" +
         "- \\(f(x+y)=f(x)f(y)\\): exponential, \\(f(x)=a^x\\); so \\(f(x)f(y)f(z)=f(x+y+z)\\).\n" +
         "- \\(f(x+y)=f(x)+f(y)\\): additive (Cauchy), \\(f(x)=cx\\).",
+      formula: {
+        label: "Signature functional-equation solutions",
+        latex:
+          "f(xy)=f(x)f(y)\\Rightarrow f(x)=x^{k}\\qquad f(x+y)=f(x)f(y)\\Rightarrow f(x)=a^{x}\\qquad f(x+y)=f(x)+f(y)\\Rightarrow f(x)=cx",
+      },
       authoredExample: {
         prompt: "If \\(f(x+y)=f(x)f(y)\\) for all \\(x,y\\) and \\(f(1)=3\\), find \\(f(3)\\).",
         steps: [
