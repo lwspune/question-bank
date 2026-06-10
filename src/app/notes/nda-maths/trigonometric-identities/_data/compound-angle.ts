@@ -43,6 +43,13 @@ export const COMPOUND_ANGLE_NOTE: SubtopicNote = {
         { prompt: "\\(\\sin 75°\\)?", answer: "\\(\\tfrac{\\sqrt3+1}{2\\sqrt2}\\)" },
         { prompt: "\\(\\cos(A-B)-\\cos(A+B)=?\\)", answer: "\\(2\\sin A\\sin B\\)" },
       ],
+      traps: [
+        {
+          title: "\\(\\sin(A+B)\\neq\\sin A+\\sin B\\) — sine is NOT linear",
+          body:
+            "The single most common error in the chapter: treating \\(\\sin(A+B)\\) as \\(\\sin A+\\sin B\\) (or \\(\\cos(A+B)\\) as \\(\\cos A+\\cos B\\)). A quick disproof: \\(\\sin(30°+60°)=\\sin 90°=1\\), but \\(\\sin 30°+\\sin 60°=\\tfrac12+\\tfrac{\\sqrt3}{2}\\approx1.37\\). You **must** expand: \\(\\sin(A+B)=\\sin A\\cos B+\\cos A\\sin B\\).",
+        },
+      ],
       pyqExampleId: "3053d523-d1b3-4a8c-b94b-9fea0b70d329", // sin105+cos105
     },
 
@@ -78,6 +85,13 @@ export const COMPOUND_ANGLE_NOTE: SubtopicNote = {
         { prompt: "\\(\\tan(45°+\\theta)=?\\)", answer: "\\(\\dfrac{1+\\tan\\theta}{1-\\tan\\theta}\\)" },
         { prompt: "\\(\\tan 75°\\)?", answer: "\\(2+\\sqrt3\\)" },
         { prompt: "If \\(\\tan A\\tan B=1\\), \\(\\tan(A+B)\\) is?", answer: "Undefined (\\(A+B=90°\\))" },
+      ],
+      traps: [
+        {
+          title: "The \\(\\tan(A+B)\\) denominator is \\(1-\\tan A\\tan B\\), and the signs OPPOSE",
+          body:
+            "Two errors cluster here: forgetting the denominator entirely (writing \\(\\tan(A+B)=\\tan A+\\tan B\\)), and getting the denominator sign wrong. The rule is \\(\\tan(A+B)=\\dfrac{\\tan A+\\tan B}{1-\\tan A\\tan B}\\) — **the bottom sign is opposite the top**, so a *sum* on top means a *minus* on the bottom. (And \\(\\tan(A-B)=\\dfrac{\\tan A-\\tan B}{1+\\tan A\\tan B}\\).)",
+        },
       ],
       pyqExampleId: "e7c7822c-5396-4f31-8a24-c363068101b0", // tan 54°
     },
@@ -147,6 +161,13 @@ export const COMPOUND_ANGLE_NOTE: SubtopicNote = {
         { prompt: "\\(\\dfrac{1+\\tan^2\\theta}{1+\\cot^2\\theta}=?\\)", answer: "\\(\\tan^2\\theta\\)" },
         { prompt: "\\(\\sqrt{\\sec^2\\alpha-1}\\) for acute \\(\\alpha\\)?", answer: "\\(\\tan\\alpha\\)" },
         { prompt: "\\(2\\sin^2x+\\cos^2x=\\tfrac{3}{2}\\Rightarrow\\sin^2x=?\\)", answer: "\\(\\tfrac12\\)" },
+      ],
+      traps: [
+        {
+          title: "\\(\\cos(A+B)\\cos(A-B)=\\cos^2 A-\\sin^2 B\\), not \\(\\cos^2 A-\\cos^2 B\\)",
+          body:
+            "When collapsing a product like \\(\\cos(A+B)\\cos(A-B)\\), students misremember the result as \\(\\cos^2 A-\\cos^2 B\\). Expanding gives \\(\\cos^2 A-\\sin^2 B\\) (equivalently \\(\\cos^2 B-\\sin^2 A\\)). The companion is \\(\\sin(A+B)\\sin(A-B)=\\sin^2 A-\\sin^2 B\\). **The leftover square is \\(\\sin^2 B\\), a different function from the \\(\\cos^2 A\\) it sits beside.**",
+        },
       ],
       pyqExampleId: "d39ff110-fcd7-406a-9331-5951671efbfa", // (1+tan²)/(1+cot²)
     },

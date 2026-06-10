@@ -44,6 +44,13 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         { prompt: "\\(\\tan A+\\cot A=?\\)", answer: "\\(\\dfrac{2}{\\sin 2A}\\)" },
         { prompt: "\\(\\dfrac{2\\tan\\theta}{1+\\tan^2\\theta}=?\\)", answer: "\\(\\sin 2\\theta\\)" },
       ],
+      traps: [
+        {
+          title: "\\(\\sin 2A=2\\sin A\\cos A\\) — not \\(2\\sin A\\), and \\((\\sin A)^2\\neq\\sin 2A\\)",
+          body:
+            "Two slips: dropping the \\(\\cos A\\) (writing \\(\\sin 2A=2\\sin A\\)), and confusing the double angle with a square (\\(\\sin 2A\\) is **not** \\(\\sin^2 A\\)). The identity is \\(\\sin 2A=2\\sin A\\cos A\\). Check with \\(A=30°\\): \\(\\sin 60°=\\tfrac{\\sqrt3}{2}\\), while \\(2\\sin 30°=1\\) and \\(\\sin^2 30°=\\tfrac14\\) — all three differ.",
+        },
+      ],
       pyqExampleId: "9a84f0b6-0a11-4274-a1d4-6f148fe6b635", // 2sin2α+cos2α, tanα=3/4
     },
 
@@ -82,6 +89,13 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         { prompt: "\\(\\cos 3A=?\\)", answer: "\\(4\\cos^3 A-3\\cos A\\)" },
         { prompt: "\\(4\\cos^3 10°-3\\cos 10°=?\\)", answer: "\\(\\cos 30°=\\tfrac{\\sqrt3}{2}\\)" },
         { prompt: "\\(\\tan 3A=?\\)", answer: "\\(\\dfrac{3\\tan A-\\tan^3 A}{1-3\\tan^2 A}\\)" },
+      ],
+      traps: [
+        {
+          title: "Watch the sign pattern: \\(\\sin 3A=3\\sin A-4\\sin^3 A\\) but \\(\\cos 3A=4\\cos^3 A-3\\cos A\\)",
+          body:
+            "Students mix up the order and signs of the two triple-angle formulas. **Sine starts with the linear term and subtracts the cube** (\\(3\\sin A-4\\sin^3 A\\)); **cosine starts with the cube and subtracts the linear term** (\\(4\\cos^3 A-3\\cos A\\)). Writing \\(\\sin 3A=4\\sin^3 A-3\\sin A\\) flips the whole sign — a guaranteed wrong answer.",
+        },
       ],
       pyqExampleId: "9a6a0aff-0b23-45b1-a114-415518ef1387", // sin3x+cos3x+4sin³x-3sinx
     },
@@ -122,6 +136,13 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         { prompt: "\\(1+\\cos A=?\\)", answer: "\\(2\\cos^2\\tfrac A2\\)" },
         { prompt: "\\(\\csc A+\\cot A=?\\)", answer: "\\(\\cot\\tfrac A2\\)" },
         { prompt: "\\(\\sqrt{\\tfrac{1-\\cos A}{1+\\cos A}}=?\\) (acute \\(A\\))", answer: "\\(\\tan\\tfrac A2\\)" },
+      ],
+      traps: [
+        {
+          title: "The \\(\\pm\\) on a half-angle is fixed BY the quadrant of \\(A/2\\), not free",
+          body:
+            "From \\(\\sin\\tfrac A2=\\pm\\sqrt{\\tfrac{1-\\cos A}{2}}\\) students grab the positive root automatically. But the sign is decided by which quadrant \\(A/2\\) lies in. E.g. if \\(A=300°\\) then \\(A/2=150°\\) (quadrant II), so \\(\\sin\\tfrac A2>0\\) but \\(\\cos\\tfrac A2<0\\). Likewise \\(\\sqrt{1\\pm\\sin A}=\\big|\\sin\\tfrac A2\\pm\\cos\\tfrac A2\\big|\\) — **take the modulus, then resolve the sign from the quadrant.**",
+        },
       ],
       pyqExampleId: "707296b0-d778-4458-83ea-9019bd8b3150", // tan(3π/8)
     },

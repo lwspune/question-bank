@@ -45,6 +45,13 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
         { prompt: "\\(2\\cos A\\cos B=?\\)", answer: "\\(\\cos(A+B)+\\cos(A-B)\\)" },
         { prompt: "When do you reach for product-to-sum?", answer: "A product you want to telescope or cancel" },
       ],
+      traps: [
+        {
+          title: "\\(2\\sin A\\sin B=\\cos(A-B)-\\cos(A+B)\\) — cosines, and the difference comes FIRST",
+          body:
+            "The two-sine product is the most error-prone: it converts to **cosines**, not sines, and the order is \\(\\cos(A-B)-\\cos(A+B)\\) (difference minus sum). Students write \\(\\cos(A+B)-\\cos(A-B)\\) and get the whole sign backwards. Contrast \\(2\\cos A\\cos B=\\cos(A+B)+\\cos(A-B)\\), which is a **plus**. Tip: the \\(2\\sin A\\sin B\\) one is the only product-to-sum identity with a leading minus.",
+        },
+      ],
       pyqExampleId: "22e36307-6bf1-4ff3-8a64-533f887fc0fc", // 1/sin10 - √3/cos10
     },
 
@@ -83,6 +90,13 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
         { prompt: "\\(\\cos C-\\cos D=?\\)", answer: "\\(-2\\sin\\tfrac{C+D}{2}\\sin\\tfrac{C-D}{2}\\)" },
         { prompt: "\\(\\dfrac{\\sin C+\\sin D}{\\cos C+\\cos D}=?\\)", answer: "\\(\\tan\\tfrac{C+D}{2}\\)" },
         { prompt: "\\(\\sin 5x-\\sin 3x=?\\)", answer: "\\(2\\cos 4x\\sin x\\)" },
+      ],
+      traps: [
+        {
+          title: "Half-SUM and half-DIFFERENCE go in fixed slots — don't swap them",
+          body:
+            "In \\(\\sin C+\\sin D=2\\sin\\tfrac{C+D}{2}\\cos\\tfrac{C-D}{2}\\), the **half-sum \\(\\tfrac{C+D}{2}\\) sits inside the leading function** and the half-difference \\(\\tfrac{C-D}{2}\\) inside the trailing one. Students swap them, or use \\(C-D\\) and \\(C+D\\) without halving. Also remember \\(\\cos C-\\cos D=-2\\sin\\tfrac{C+D}{2}\\sin\\tfrac{C-D}{2}\\) carries a **leading minus** (so if \\(C>D\\) and both are acute, the difference is negative).",
+        },
       ],
       pyqExampleId: "c71a28f6-e903-4072-928e-e01889413f35", // cos48-cos12
     },
@@ -154,6 +168,13 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
         { prompt: "\\(A+B+C=90°\\): \\(\\sum\\tan A\\tan B=?\\)", answer: "\\(1\\)" },
         { prompt: "\\(A+B+C=180°\\): \\(\\sin 2A+\\sin 2B+\\sin 2C=?\\)", answer: "\\(4\\sin A\\sin B\\sin C\\)" },
         { prompt: "What triggers these identities?", answer: "An angle-sum condition (90° or 180°)" },
+      ],
+      traps: [
+        {
+          title: "\\(\\tan A+\\tan B+\\tan C=\\tan A\\tan B\\tan C\\) only when \\(A+B+C=180°\\)",
+          body:
+            "These are **conditional** identities — they hold only under the stated angle-sum, not for arbitrary angles. The \\(\\sum\\tan=\\prod\\tan\\) relation needs \\(A+B+C=180°\\); the \\(\\sum\\tan A\\tan B=1\\) relation needs \\(A+B+C=90°\\). Applying the wrong one (or applying either to angles that don't sum correctly) is the trap. **Verify the angle-sum condition before invoking the identity.**",
+        },
       ],
       pyqExampleId: "4e366b0b-3cb8-4bbb-9f7c-6e8763583d77", // tan25tan15+...=1
     },

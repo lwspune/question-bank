@@ -39,6 +39,13 @@ export const MAX_MIN_NOTE: SubtopicNote = {
         { prompt: "Range of \\(2+\\sin x+\\cos x\\)?", answer: "\\([2-\\sqrt2,\\ 2+\\sqrt2]\\)" },
         { prompt: "Max of \\(\\cos x+\\sqrt3\\sin x\\)?", answer: "\\(2\\)" },
       ],
+      traps: [
+        {
+          title: "Max of \\(a\\sin x+b\\cos x\\) is \\(\\sqrt{a^2+b^2}\\), NOT \\(a+b\\)",
+          body:
+            "Because \\(\\sin x\\) and \\(\\cos x\\) hit \\(1\\) at *different* values of \\(x\\), you cannot add their maxima — the peak is \\(\\sqrt{a^2+b^2}\\), reached when the single sinusoid \\(R\\sin(x+\\varphi)\\) equals \\(1\\). For \\(3\\sin x+4\\cos x\\) the maximum is \\(\\sqrt{9+16}=5\\), not \\(3+4=7\\). **Whenever you see \\(a\\sin x+b\\cos x\\), reach for the amplitude \\(\\sqrt{a^2+b^2}\\), never the coefficient sum.**",
+        },
+      ],
       pyqExampleId: "fce04eb8-c903-4550-8a5e-89aa6f9847c0", // max sin(x+π/6)+cos(x+π/6)
     },
 
