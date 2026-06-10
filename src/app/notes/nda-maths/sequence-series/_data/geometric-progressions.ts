@@ -290,6 +290,10 @@ export const GEOMETRIC_PROGRESSIONS_NOTE: SubtopicNote = {
         "a_1 \\cdot a_n\\). Consequently the **product of the first \\(2m-1\\) terms equals the middle " +
         "term raised to the power \\(2m-1\\)**: if the middle term is \\(M\\), the product is \\(M^{2m-1}\\). " +
         "This is why \"the kth term is given\" is often enough to find a product.",
+      formula: {
+        label: "GP product symmetry",
+        latex: "a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n \\qquad \\prod_{i=1}^{2m-1} a_i = M^{2m-1}",
+      },
       authoredExample: {
         prompt: "The 4th term of a GP is 2. Find the product of its first 7 terms.",
         steps: [

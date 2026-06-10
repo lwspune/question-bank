@@ -292,6 +292,11 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
         "- \\(\\tan^{-1}\\!\\dfrac{2x}{1-x^2},\\ \\sin^{-1}\\!\\dfrac{2x}{1+x^2},\\ \\cos^{-1}\\!\\dfrac{1-x^2}{1+x^2}\\): put \\(x=\\tan\\theta\\Rightarrow 2\\theta = 2\\tan^{-1}x\\).\n" +
         "- \\(\\cos^{-1}(\\sin x) = \\tfrac{\\pi}{2}-x\\); \\(\\tan^{-1}\\!\\dfrac{a-b}{1+ab}=\\tan^{-1}a-\\tan^{-1}b\\).\n" +
         "Differentiate the collapsed form (often \\(\\pm 1\\), \\(\\pm 2/(1+x^2)\\), etc.).",
+      formula: {
+        label: "Standard inverse-trig collapses",
+        latex:
+          "\\tan^{-1}\\dfrac{2x}{1-x^2} = 2\\tan^{-1}x \\qquad \\sin^{-1}\\dfrac{2x}{1+x^2} = 2\\tan^{-1}x \\qquad \\cos^{-1}\\dfrac{1-x^2}{1+x^2} = 2\\tan^{-1}x \\qquad \\cos^{-1}(\\sin x) = \\dfrac{\\pi}{2} - x \\qquad \\tan^{-1}\\dfrac{a-b}{1+ab} = \\tan^{-1}a - \\tan^{-1}b",
+      },
       authoredExample: {
         prompt: "Differentiate \\(y = \\tan^{-1}\\!\\left(\\dfrac{2x}{1-x^2}\\right)\\).",
         steps: [

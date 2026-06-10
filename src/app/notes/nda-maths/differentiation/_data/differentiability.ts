@@ -237,6 +237,10 @@ export const DIFFERENTIABILITY_NOTE: SubtopicNote = {
         "When a point is special — a modulus, a \\(\\ln|x|\\), or a value patched in by hand (\\(f(0)=0\\)) — the rule-based derivative may not apply directly. Fall back to the **definition**: \\(f'(c)=\\lim_{h\\to 0}\\frac{f(c+h)-f(c)}{h}\\) and evaluate the limit.",
       definition:
         "At a point where the usual rules are unsafe, compute \\(f'(c)=\\lim_{h\\to 0}\\dfrac{f(c+h)-f(c)}{h}\\) directly. If the limit exists (and is the same from both sides), that value is the derivative; if it doesn't, \\(f\\) is not differentiable at \\(c\\).",
+      formula: {
+        label: "Derivative from first principles",
+        latex: "f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}",
+      },
       authoredExample: {
         prompt:
           "For \\(f(x)=x^2\\ln|x|\\) with \\(f(0)=0\\), find \\(f'(0)\\).",

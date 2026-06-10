@@ -61,4 +61,11 @@ export const VERIFIED: VerifiedEntry[] = [
   // ── Vieta's relations ──
   { atomKey: "vieta-progression-conditions:formula:0", stem: "For ax² + bx + c = 0, what is the sum of the roots?", distractors: [f("\\alpha + \\beta = \\frac{b}{a}"), f("\\alpha + \\beta = -\\frac{c}{a}"), f("\\alpha + \\beta = -\\frac{b}{c}")], theme: "formula" },
   { atomKey: "vieta-progression-conditions:formula:1", stem: "For ax² + bx + c = 0, what is the product of the roots?", distractors: [f("\\alpha\\beta = -\\frac{c}{a}"), f("\\alpha\\beta = \\frac{b}{a}"), f("\\alpha\\beta = \\frac{a}{c}")], theme: "formula" },
+
+  // ── Bucket 2 enrichment 2026-06-10 (clever AP identities + GP product symmetry) ──
+  { atomKey: "ap-clever-identities:formula:0", stem: "If \\(S_m = n\\) and \\(S_n = m\\) (AP, \\(m\\ne n\\)), then \\(S_{m+n} = ?\\)", distractors: [f("S_{m+n} = m+n"), f("S_{m+n} = 0"), f("S_{m+n} = -(m-n)")], theme: "formula" },
+  { atomKey: "ap-clever-identities:formula:1", stem: "If \\(p\\,a_p = q\\,a_q\\) (AP, \\(p\\ne q\\)), then which holds?", distractors: [f("a_{p+q} = p+q"), f("a_{pq} = 0"), f("a_{p+q} = 1")], theme: "formula" },
+  { atomKey: "ap-clever-identities:formula:2", stem: "If \\(S_p = S_q\\) (AP, \\(p\\ne q\\)), then which holds?", distractors: [f("S_{p+q} = p+q"), f("S_{p+q} = -(p+q)"), f("S_{pq} = 0")], theme: "formula" },
+  { atomKey: "gp-product-symmetry:formula:0", stem: "In a GP, the product of terms equidistant from the ends equals:", distractors: [f("a_k \\cdot a_{n+1-k} = a_1 + a_n"), f("a_k \\cdot a_{n+1-k} = a_1 \\cdot a_{n-1}"), f("a_k + a_{n+1-k} = a_1 \\cdot a_n")], theme: "formula" },
+  { atomKey: "gp-product-symmetry:formula:1", stem: "The product of the first \\(2m-1\\) terms of a GP (middle term \\(M\\)) is:", distractors: [f("\\prod_{i=1}^{2m-1} a_i = M^{2m}"), f("\\prod_{i=1}^{2m-1} a_i = (2m-1)M"), f("\\prod_{i=1}^{2m-1} a_i = M^{m}")], theme: "formula" },
 ];

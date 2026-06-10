@@ -345,6 +345,11 @@ export const ARITHMETIC_PROGRESSIONS_NOTE: SubtopicNote = {
         "- If \\(p\\,a_p = q\\,a_q\\) (with \\(p \\ne q\\)), then \\(a_{p+q} = 0\\).\n" +
         "- If \\(S_p = S_q\\) (with \\(p \\ne q\\)), then \\(S_{p+q} = 0\\).\n" +
         "All three come from the same idea: a linear/quadratic in the index, pinned by two conditions.",
+      formula: {
+        label: "Clever AP identities",
+        latex:
+          "S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n) \\qquad p\\,a_p = q\\,a_q \\Rightarrow a_{p+q} = 0 \\qquad S_p = S_q \\Rightarrow S_{p+q} = 0",
+      },
       authoredExample: {
         prompt:
           "In an AP, \\(p\\) times the \\(p\\)th term equals \\(q\\) times the \\(q\\)th term, with \\(p \\ne q\\). Show that the \\((p+q)\\)th term is 0.",

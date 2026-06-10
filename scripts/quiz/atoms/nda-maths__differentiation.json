@@ -13,8 +13,8 @@
     "correct": "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
     "options": {
       "A": "\\(f(x+y)=f(x)f(y) \\;\\Rightarrow\\; f'(x) = f'(0)\\,f(x)\\)",
-      "B": "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)",
-      "C": "\\(\\frac{du}{dv} = \\frac{du/dx}{dv/dx}\\)",
+      "B": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)",
+      "C": "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)",
       "D": "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)"
     },
     "answer": "D",
@@ -742,7 +742,7 @@
     "candidateDistractors": [
       "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
       "\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)",
-      "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)"
+      "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -771,7 +771,7 @@
     "candidateDistractors": [
       "\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)\\)",
       "\\(f(x+y)=f(x)f(y) \\;\\Rightarrow\\; f'(x) = f'(0)\\,f(x)\\)",
-      "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)"
+      "\\(\\tan^{-1}\\dfrac{2x}{1-x^2} = 2\\tan^{-1}x\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -1184,9 +1184,9 @@
     "stem": "Which of the following is the formula for Logarithmic differentiation?",
     "correct": "\\(y = f(x)^{g(x)} \\;\\Rightarrow\\; \\frac{1}{y}\\frac{dy}{dx} = g'(x)\\ln f(x) + g(x)\\frac{f'(x)}{f(x)}\\)",
     "options": {
-      "A": "\\(\\frac{d}{dx}\\big[\\,y\\text{-term}\\,\\big] = (\\text{its derivative})\\cdot\\frac{dy}{dx}\\)",
-      "B": "\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)",
-      "C": "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
+      "A": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)",
+      "B": "\\(\\frac{d}{dx}\\big[\\,y\\text{-term}\\,\\big] = (\\text{its derivative})\\cdot\\frac{dy}{dx}\\)",
+      "C": "\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)",
       "D": "\\(y = f(x)^{g(x)} \\;\\Rightarrow\\; \\frac{1}{y}\\frac{dy}{dx} = g'(x)\\ln f(x) + g(x)\\frac{f'(x)}{f(x)}\\)"
     },
     "answer": "D",
@@ -1483,6 +1483,146 @@
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "9a263ba8b6544fe7aa2ac307734183dbba5a7abc",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differentiation",
+    "subtopicSlug": "diff-core-techniques",
+    "conceptSlug": "diff-inverse-trig-simplify",
+    "atomId": "diff-inverse-trig-simplify:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Simplify the inverse-trig first, then differentiate?",
+    "correct": "\\(\\tan^{-1}\\dfrac{2x}{1-x^2} = 2\\tan^{-1}x\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)",
+      "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
+      "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't quotient-rule the raw inverse-trig: Differentiating \\(\\tan^{-1}\\frac{2x}{1-x^2}\\) directly with the chain + quotient rule is slow and error-prone. The intended path is the \\(x=\\tan\\theta\\) collapse to \\(2\\tan^{-1}x\\) first."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "cd40639061182b39bc558573128242e3e7ae6832",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differentiation",
+    "subtopicSlug": "diff-core-techniques",
+    "conceptSlug": "diff-inverse-trig-simplify",
+    "atomId": "diff-inverse-trig-simplify:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Simplify the inverse-trig first, then differentiate?",
+    "correct": "\\(\\sin^{-1}\\dfrac{2x}{1+x^2} = 2\\tan^{-1}x\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
+      "\\(f(x+y)=f(x)f(y) \\;\\Rightarrow\\; f'(x) = f'(0)\\,f(x)\\)",
+      "\\(y = f(x)^{g(x)} \\;\\Rightarrow\\; \\frac{1}{y}\\frac{dy}{dx} = g'(x)\\ln f(x) + g(x)\\frac{f'(x)}{f(x)}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't quotient-rule the raw inverse-trig: Differentiating \\(\\tan^{-1}\\frac{2x}{1-x^2}\\) directly with the chain + quotient rule is slow and error-prone. The intended path is the \\(x=\\tan\\theta\\) collapse to \\(2\\tan^{-1}x\\) first."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d1b23ab954c23b403a635dfa4872e2219273d4e0",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differentiation",
+    "subtopicSlug": "diff-core-techniques",
+    "conceptSlug": "diff-inverse-trig-simplify",
+    "atomId": "diff-inverse-trig-simplify:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Simplify the inverse-trig first, then differentiate?",
+    "correct": "\\(\\cos^{-1}\\dfrac{1-x^2}{1+x^2} = 2\\tan^{-1}x\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
+      "\\(f'(c^-) = f'(c^+) \\iff f \\text{ differentiable at } c\\)",
+      "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't quotient-rule the raw inverse-trig: Differentiating \\(\\tan^{-1}\\frac{2x}{1-x^2}\\) directly with the chain + quotient rule is slow and error-prone. The intended path is the \\(x=\\tan\\theta\\) collapse to \\(2\\tan^{-1}x\\) first."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "344a316e0cd1cb25d221ead5d67416a91476f811",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differentiation",
+    "subtopicSlug": "diff-core-techniques",
+    "conceptSlug": "diff-inverse-trig-simplify",
+    "atomId": "diff-inverse-trig-simplify:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Simplify the inverse-trig first, then differentiate?",
+    "correct": "\\(\\cos^{-1}(\\sin x) = \\dfrac{\\pi}{2} - x\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(f(x+y)=f(x)f(y) \\;\\Rightarrow\\; f'(x) = f'(0)\\,f(x)\\)",
+      "\\((uv)' = u'v + uv'\\)",
+      "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't quotient-rule the raw inverse-trig: Differentiating \\(\\tan^{-1}\\frac{2x}{1-x^2}\\) directly with the chain + quotient rule is slow and error-prone. The intended path is the \\(x=\\tan\\theta\\) collapse to \\(2\\tan^{-1}x\\) first."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "0e78916bf7f6df667fddd6db7e3a7403d68c1c1c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differentiation",
+    "subtopicSlug": "diff-core-techniques",
+    "conceptSlug": "diff-inverse-trig-simplify",
+    "atomId": "diff-inverse-trig-simplify:formula:4",
+    "sourceKind": "formula",
+    "sourceIndex": 4,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Simplify the inverse-trig first, then differentiate?",
+    "correct": "\\(\\tan^{-1}\\dfrac{a-b}{1+ab} = \\tan^{-1}a - \\tan^{-1}b\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)",
+      "\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)\\)",
+      "\\(\\frac{d}{dx}\\big[\\,y\\text{-term}\\,\\big] = (\\text{its derivative})\\cdot\\frac{dy}{dx}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't quotient-rule the raw inverse-trig: Differentiating \\(\\tan^{-1}\\frac{2x}{1-x^2}\\) directly with the chain + quotient rule is slow and error-prone. The intended path is the \\(x=\\tan\\theta\\) collapse to \\(2\\tan^{-1}x\\) first."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "0aefebecc2aafd31da753487ed8771534e30a5fc",
     "timeEstimateSec": 45
   },
   {
@@ -1820,9 +1960,9 @@
     "correct": "\\(\\frac{d}{dx}\\big[\\,y\\text{-term}\\,\\big] = (\\text{its derivative})\\cdot\\frac{dy}{dx}\\)",
     "options": {
       "A": "\\(\\frac{d}{dx}\\big[\\,y\\text{-term}\\,\\big] = (\\text{its derivative})\\cdot\\frac{dy}{dx}\\)",
-      "B": "\\(\\frac{du}{dv} = \\frac{du/dx}{dv/dx}\\)",
-      "C": "\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)\\)",
-      "D": "\\((uv)' = u'v + uv'\\)"
+      "B": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)",
+      "C": "\\(\\frac{du}{dv} = \\frac{du/dx}{dv/dx}\\)",
+      "D": "\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -2143,8 +2283,8 @@
     "correct": "\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)",
     "options": {
       "A": "\\(f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}\\)",
-      "B": "\\(y = f(x)^{g(x)} \\;\\Rightarrow\\; \\frac{1}{y}\\frac{dy}{dx} = g'(x)\\ln f(x) + g(x)\\frac{f'(x)}{f(x)}\\)",
-      "C": "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)",
+      "B": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)",
+      "C": "\\(y = f(x)^{g(x)} \\;\\Rightarrow\\; \\frac{1}{y}\\frac{dy}{dx} = g'(x)\\ln f(x) + g(x)\\frac{f'(x)}{f(x)}\\)",
       "D": "\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)"
     },
     "answer": "D",
@@ -2529,8 +2669,8 @@
     "correct": "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)",
     "options": {
       "A": "\\(y = f(x)^{g(x)} \\;\\Rightarrow\\; \\frac{1}{y}\\frac{dy}{dx} = g'(x)\\ln f(x) + g(x)\\frac{f'(x)}{f(x)}\\)",
-      "B": "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)",
-      "C": "\\(\\frac{du}{dv} = \\frac{du/dx}{dv/dx}\\)",
+      "B": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)",
+      "C": "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)",
       "D": "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)"
     },
     "answer": "D",
@@ -3015,10 +3155,10 @@
     "stem": "Which of the following is the formula for The left-hand = right-hand derivative test?",
     "correct": "\\(f'(c^-) = f'(c^+) \\iff f \\text{ differentiable at } c\\)",
     "options": {
-      "A": "\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)\\)",
-      "B": "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)",
+      "A": "\\(\\tan^{-1}\\dfrac{2x}{1-x^2} = 2\\tan^{-1}x\\)",
+      "B": "\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)\\)",
       "C": "\\(f'(c^-) = f'(c^+) \\iff f \\text{ differentiable at } c\\)",
-      "D": "\\(\\frac{d}{dx}\\big[\\,y\\text{-term}\\,\\big] = (\\text{its derivative})\\cdot\\frac{dy}{dx}\\)"
+      "D": "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -3615,6 +3755,33 @@
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "56c4503f1fd2d301687bfd6ad9361c58595ea6e1",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differentiation",
+    "subtopicSlug": "diff-differentiability",
+    "conceptSlug": "diff-via-limit-definition",
+    "atomId": "diff-via-limit-definition:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Derivative at an awkward point via the limit definition?",
+    "correct": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)",
+    "options": {
+      "A": "\\(\\frac{d^2x}{dy^2} = -\\frac{d^2y/dx^2}{\\left(dy/dx\\right)^{3}}\\)",
+      "B": "\\(\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)\\)",
+      "C": "\\((uv)' = u'v + uv'\\)",
+      "D": "\\(f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}\\)"
+    },
+    "answer": "D",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "cb82f6607d384b1352bb97360fde23b4c3264f18",
     "timeEstimateSec": 45
   },
   {
