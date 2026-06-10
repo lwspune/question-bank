@@ -43,6 +43,13 @@ export const PARAMETRIC_IMPLICIT_HIGHER_NOTE: SubtopicNote = {
         { prompt: "Must you isolate \\(y\\) first?", answer: "No" },
       ],
       pyqExampleId: "35463eb2-c9f5-451b-aa83-1ed1b617b679", // 2020 — x^m y^n = a^{m+n}
+      traps: [
+        {
+          title: "Every \\(y\\)-term needs a \\(\\frac{dy}{dx}\\) factor",
+          body:
+            "Differentiating \\(y^2\\) w.r.t. \\(x\\) gives \\(2y\\dfrac{dy}{dx}\\), NOT \\(2y\\). Because \\(y\\) is a function of \\(x\\), the chain rule attaches a \\(\\frac{dy}{dx}\\) to every \\(y\\)-term. Forgetting it is the defining error of implicit differentiation — you'd never recover \\(\\frac{dy}{dx}\\) to solve for.",
+        },
+      ],
     },
 
     {
@@ -115,6 +122,13 @@ export const PARAMETRIC_IMPLICIT_HIGHER_NOTE: SubtopicNote = {
         { prompt: "Condition for the formula?", answer: "\\(dx/dt \\neq 0\\)" },
       ],
       pyqExampleId: "1d527f2b-2acb-481e-a17f-442fb96c3f51", // 2021 — x=e^t cos t, y=e^t sin t
+      traps: [
+        {
+          title: "Don't invert the parametric ratio",
+          body:
+            "\\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt}\\) — the \\(y\\)-rate is on TOP, the \\(x\\)-rate on the bottom (it cancels like a fraction: \\(\\frac{dy}{dt}\\div\\frac{dx}{dt}\\)). Writing \\(\\frac{dx/dt}{dy/dt}\\) gives the reciprocal \\(\\frac{dx}{dy}\\) instead. For \\(x=t^2, y=t^3\\) the slope is \\(\\frac{3t^2}{2t}=\\frac{3t}{2}\\), not \\(\\frac{2}{3t}\\).",
+        },
+      ],
     },
 
     {
@@ -152,6 +166,13 @@ export const PARAMETRIC_IMPLICIT_HIGHER_NOTE: SubtopicNote = {
         { prompt: "Evaluate at a point — before or after differentiating?", answer: "After" },
       ],
       pyqExampleId: "393016a8-2dbf-47a2-b874-affb9f727620", // 2019 — d^2y/dx^2 at x=1
+      traps: [
+        {
+          title: "\\(\\frac{d^2y}{dx^2}\\) is not \\(\\left(\\frac{dy}{dx}\\right)^2\\)",
+          body:
+            "The second derivative means 'differentiate the first derivative AGAIN', not 'square the first derivative'. For \\(y=x^3\\): \\(\\frac{dy}{dx}=3x^2\\), so \\(\\frac{d^2y}{dx^2}=6x\\) — whereas \\(\\left(\\frac{dy}{dx}\\right)^2 = 9x^4\\), a completely different (and wrong) object.",
+        },
+      ],
     },
 
     {

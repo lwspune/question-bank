@@ -246,6 +246,14 @@ export const STRAIGHT_LINE_3D_NOTE: SubtopicNote = {
             "Direction ⟂ normal (dot = 0) only means the line doesn't tilt toward the plane — it could be " +
             "strictly parallel (misses) OR contained (lies in). You MUST then test a point: on the plane → contained; off → parallel.",
         },
+        {
+          title: "direction · normal = 0 means the line is PARALLEL to the plane, not perpendicular",
+          body:
+            "A line is PERPENDICULAR to a plane when its direction is PARALLEL to the normal — the " +
+            "direction ratios are proportional to \\(\\langle A,B,C\\rangle\\). When the direction-normal " +
+            "dot product is \\(0\\), the line is perpendicular to the NORMAL, hence PARALLEL to (or lying " +
+            "in) the plane. Don't read \"dot = 0\" as \"line ⟂ plane\" — it's the exact opposite.",
+        },
       ],
     },
   ],
