@@ -142,7 +142,7 @@ export const ARITHMETIC_PROGRESSIONS_NOTE: SubtopicNote = {
         { prompt: "If \\(S_n = n^2\\), find \\(a_n\\).", answer: "\\(2n - 1\\)", method: "\\(n^2 - (n-1)^2\\)" },
         { prompt: "If \\(S_n = 3n^2\\), the common difference is?", answer: "\\(6\\)", method: "\\(d = 2A\\) with \\(A = 3\\)" },
         { prompt: "If \\(S_n = n(2n+1)\\), find \\(a_n\\).", answer: "\\(4n - 1\\)" },
-        { prompt: "If \\(S_n = 5n - 2n^2\\), find \\(a_3\\).", answer: "\\(-7\\)", method: "\\(S_3 - S_2 = (-3) - 4\\)" },
+        { prompt: "If \\(S_n = 5n - 2n^2\\), find \\(a_3\\).", answer: "\\(-5\\)", method: "\\(S_3 - S_2 = (-3) - 2\\)" },
       ],
       pyqExampleId: "d9190cd6-55b3-4d21-9871-6dd7fa3d3048", // 2026 — Sn=3n^2+5n, mth term 68 -> m
     },
