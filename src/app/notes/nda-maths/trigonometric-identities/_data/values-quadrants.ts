@@ -44,6 +44,13 @@ export const VALUES_QUADRANTS_NOTE: SubtopicNote = {
         { prompt: "\\(\\sec^2\\theta-\\tan^2\\theta=?\\)", answer: "\\(1\\)" },
         { prompt: "\\(\\sqrt{\\sec^2\\alpha-1}=?\\) (acute \\(\\alpha\\))", answer: "\\(\\tan\\alpha\\)" },
       ],
+      traps: [
+        {
+          title: "It's \\(1+\\tan^2\\theta=\\sec^2\\theta\\), never \\(1-\\tan^2\\theta\\)",
+          body:
+            "The classic slip is writing \\(\\sec^2\\theta-\\tan^2\\theta\\) as anything other than \\(1\\), or \"remembering\" \\(1-\\tan^2\\theta=\\sec^2\\theta\\). The Pythagorean form is \\(1+\\tan^2\\theta=\\sec^2\\theta\\) (so \\(\\sec^2\\theta-\\tan^2\\theta=1\\)) and \\(1+\\cot^2\\theta=\\csc^2\\theta\\). The **plus sign** is what makes them work — \\(\\sec\\theta\\ge 1\\) means \\(\\sec^2\\theta\\) must be the *larger* term.",
+        },
+      ],
     },
 
     {
@@ -78,6 +85,13 @@ export const VALUES_QUADRANTS_NOTE: SubtopicNote = {
         { prompt: "\\(\\cos 30°\\)?", answer: "\\(\\tfrac{\\sqrt3}{2}\\)" },
         { prompt: "\\(\\sin(180°-\\theta)=?\\)", answer: "\\(\\sin\\theta\\)" },
         { prompt: "\\(\\cos(90°+\\theta)=?\\)", answer: "\\(-\\sin\\theta\\)" },
+      ],
+      traps: [
+        {
+          title: "Don't swap sin and cos at 30° and 60°",
+          body:
+            "Under exam pressure students write \\(\\sin 30°=\\tfrac{\\sqrt3}{2}\\) — that's actually \\(\\cos 30°\\). The correct pair is \\(\\sin 30°=\\tfrac12,\\ \\cos 30°=\\tfrac{\\sqrt3}{2}\\) and \\(\\sin 60°=\\tfrac{\\sqrt3}{2},\\ \\cos 60°=\\tfrac12\\). **Anchor on the small angle:** the *smaller* angle has the *smaller* sine, so \\(\\sin 30°=\\tfrac12\\) is the small one.",
+        },
       ],
       pyqExampleId: "9ce41d7d-6d9e-4ff6-8015-a78e94565c65", // csc(7π/6)
     },
@@ -116,6 +130,13 @@ export const VALUES_QUADRANTS_NOTE: SubtopicNote = {
         { prompt: "\\(\\sin\\theta=-\\tfrac12\\), \\(\\tan\\theta>0\\): quadrant?", answer: "III" },
         { prompt: "Is \\(\\sqrt{1+\\sin A}\\) always \\(+(\\sin\\tfrac A2+\\cos\\tfrac A2)\\)?", answer: "No — the sign depends on the quadrant of \\(A/2\\)" },
       ],
+      traps: [
+        {
+          title: "An allied angle can FLIP the sign — don't assume the ratio stays positive",
+          body:
+            "Students apply \\(\\cos(180°-\\theta)=\\cos\\theta\\) (dropping the minus) or treat \\(\\sin(180°+\\theta)\\) as \\(+\\sin\\theta\\). Use ASTC: in quadrant II only sine/cosec are positive, in III only tan/cot, in IV only cos/sec — so \\(\\cos(180°-\\theta)=-\\cos\\theta\\) and \\(\\sin(180°+\\theta)=-\\sin\\theta\\). **Decide the sign from the quadrant of the whole angle first**, then attach it.",
+        },
+      ],
       pyqExampleId: "dfcd683a-0e46-438b-b7c8-e90c7d567a81", // cos80+cos40-cos20
     },
 
@@ -148,6 +169,13 @@ export const VALUES_QUADRANTS_NOTE: SubtopicNote = {
         { prompt: "What extra fact fixes the signs?", answer: "The quadrant" },
         { prompt: "\\(\\tan\\theta=\\tfrac{21}{20}\\), Q I: \\(\\sec\\theta\\)?", answer: "\\(\\tfrac{29}{20}\\)" },
         { prompt: "From \\(\\cos\\theta\\) alone, is \\(\\sin\\theta\\) determined?", answer: "Only up to sign — need the quadrant" },
+      ],
+      traps: [
+        {
+          title: "One ratio fixes magnitudes only — the QUADRANT fixes the sign",
+          body:
+            "Given \\(\\cos\\theta=\\tfrac35\\), students write \\(\\sin\\theta=\\tfrac45\\) and stop — but \\(\\sin\\theta=\\pm\\tfrac45\\) until the quadrant is used. If \\(\\theta\\) is in quadrant IV then \\(\\sin\\theta=-\\tfrac45\\) and \\(\\tan\\theta=-\\tfrac43\\). **Never default to the positive root**: from a single ratio every other ratio is determined only up to sign, and the quadrant supplies that sign.",
+        },
       ],
       pyqExampleId: "b815579a-7f6c-4256-907a-77626484cf08", // cscθ=29/21
     },
