@@ -277,6 +277,10 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "**Diagonal:** \\(\\operatorname{diag}(d_i)^{-1} = \\operatorname{diag}(1/d_i)\\). " +
         "**Orthogonal / rotation:** \\(A^{-1} = A^T\\) (and for a rotation \\(R(\\theta)^{-1} = R(-\\theta)\\)). " +
         "**Involutory:** \\(A^{-1} = A\\). Use these instead of the adjoint route when the type is clear.",
+      formula: {
+        label: "Inverse properties of special matrices",
+        latex: "(A^{-1})^{-1} = A \\qquad (A^T)^{-1} = (A^{-1})^T \\qquad (kA)^{-1} = \\frac{1}{k}A^{-1} \\qquad (A^n)^{-1} = (A^{-1})^n",
+      },
       authoredExample: {
         prompt: "Find the inverse of \\(A = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\).",
         steps: [

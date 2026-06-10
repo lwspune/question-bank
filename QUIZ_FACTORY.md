@@ -119,7 +119,7 @@ Snapshot **2026-06-09** — refresh with:
 | nda-maths / **probability** | ~163 | ~9 | ✅ **Complete** (formula/computation/property/trap) — formula spot-check 2026-06-10: CLEAN |
 | nda-maths / **statistics** | ~197 | ~11 | ✅ **Complete** (formula/computation/property/trap) — formula spot-check 2026-06-10: CLEAN |
 | nda-biology / **human-physiology** | ~166 | ~5 | ✅ **Complete** (fact + recall + traps; all distractors hand-authored) |
-| nda-maths / **matrices-determinants** | ~236 | 13 | ✅ **Complete** (formula + computation + **trap (1; +9 callouts → 14 atoms, 2026-06-10)**) |
+| nda-maths / **matrices-determinants** | ~262 | 15 | ✅ **Complete** (formula + computation + trap + **property (2; 25 rule-identities enriched from prose → formula.latex, themed property, 2026-06-10)**) — also closed most empty-formula.latex coverage flags. transpose/symmetric extra-property appends deferred (single→bundle flip would dirty shipped formula quizzes). |
 | nda-maths / **vectors** | ~223 | ~13 | ✅ **Complete** (formula + computation + trap) — formula coverage spot-check 2026-06-10: CLEAN |
 | nda-maths / **trigonometric-identities** | ~144 | 9 | ✅ **Complete** — computation (6, 2 agents subtopic-split) + formula (2; ALL 25 identity formulas, 2026-06-10 formula.latex enrichment) + **trap (1; 14 common-mistake callouts authored into the notes 2026-06-10)**; 11 reference atoms parked (<12) |
 | nda-maths / **lines** | ~92 | 7 | ✅ **Complete** — computation (4) + formula (2; 26 pieces) + trap (1; 13 callouts) — formula.latex + traps authored from scratch 2026-06-10 (both were 0) |

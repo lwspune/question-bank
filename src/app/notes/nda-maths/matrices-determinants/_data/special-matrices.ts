@@ -132,7 +132,7 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
         "(when all \\(d_i \\neq 0\\)). A **scalar matrix** is \\(kI\\); \\(\\det(kI_n) = k^n\\).",
       formula: {
         label: "Diagonal determinant and inverse",
-        latex: "\\det D = \\prod_i d_i, \\qquad D^{-1} = \\operatorname{diag}\\!\\left(\\tfrac{1}{d_1}, \\dots, \\tfrac{1}{d_n}\\right)",
+        latex: "\\det D = \\prod_i d_i, \\qquad D^{-1} = \\operatorname{diag}\\!\\left(\\tfrac{1}{d_1}, \\dots, \\tfrac{1}{d_n}\\right) \\qquad D^k = \\operatorname{diag}(d_1^k, \\dots, d_n^k) \\qquad \\det(kI_n) = k^n",
       },
       authoredExample: {
         prompt: "For \\(A = \\begin{pmatrix}3&0&0\\\\0&2&0\\\\0&0&5\\end{pmatrix}\\), find \\(\\det A\\) and \\(\\det(A^2)\\).",
@@ -166,7 +166,7 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
         "standard example.",
       formula: {
         label: "Orthogonality",
-        latex: "AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T,\\quad \\det A = \\pm 1",
+        latex: "AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T,\\quad \\det A = \\pm 1 \\qquad AA^T = A^T A = I",
       },
       authoredExample: {
         prompt: "A square matrix \\(A\\) is called orthogonal under which condition?",
@@ -241,6 +241,10 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
         "**Idempotent:** \\(A^2 = A\\) (so \\(A^n = A\\) for all \\(n \\ge 1\\); \\(\\det A \\in \\{0,1\\}\\)). " +
         "**Involutory:** \\(A^2 = I\\) (so \\(A^{-1} = A\\); even powers are \\(I\\), odd powers are \\(A\\)). " +
         "A common test matrix is the all-ones matrix \\(J\\), where \\(J^2 = nJ\\) for order \\(n\\).",
+      formula: {
+        label: "Idempotent, involutory, all-ones, nilpotent",
+        latex: "A^2 = A \\Rightarrow A^n = A \\qquad A^2 = I \\Rightarrow A^{-1} = A \\qquad J_n^2 = nJ_n \\qquad A^k = O \\text{ (nilpotent)}",
+      },
       authoredExample: {
         prompt: "For \\(A = \\begin{pmatrix}1&1&1\\\\1&1&1\\\\1&1&1\\end{pmatrix}\\), express \\(A^2\\) in terms of \\(A\\), and state whether \\(A\\) is invertible.",
         steps: [

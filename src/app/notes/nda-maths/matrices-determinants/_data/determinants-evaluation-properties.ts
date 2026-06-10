@@ -79,7 +79,7 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "- **Rank-1 update (matrix-determinant lemma):** \\(\\det(I + AA^T) = 1 + A^T A\\); for a column vector \\(A\\), \\(A^T A\\) is just the **sum of squares of its entries**.",
       formula: {
         label: "Multiplicativity and scaling",
-        latex: "\\det(AB) = \\det A\\,\\det B, \\qquad \\det(kA) = k^{\\,n}\\det A",
+        latex: "\\det(AB) = \\det A\\,\\det B, \\qquad \\det(kA) = k^{\\,n}\\det A \\qquad \\det(A^T) = \\det A \\qquad \\det(A^m) = (\\det A)^m \\qquad \\det(A^{-1}) = \\frac{1}{\\det A} \\qquad \\det(B^{-1}AB) = \\det A",
       },
       authoredExample: {
         prompt: "If \\(A\\) is a square matrix with \\(|A| = -2\\), find \\(|AA^T|\\).",
@@ -145,6 +145,10 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "- **Equal/proportional:** two identical or proportional rows/columns \\(\\Rightarrow \\det = 0\\).\n" +
         "- **Common factor:** a factor common to a row/column pulls outside.\n" +
         "- **Row operation:** \\(R_i \\to R_i + \\lambda R_j\\) leaves the determinant unchanged (the key simplification move).",
+      formula: {
+        label: "Core row/column properties",
+        latex: "R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det \\qquad \\text{two identical/proportional rows} \\Rightarrow \\det = 0 \\qquad \\det(kR_i\\text{-scaled}) = k\\det A",
+      },
       visualizationSlug: "sarrus-rule",
       authoredExample: {
         prompt:
@@ -186,6 +190,10 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "\\(A\\) is **singular** \\(\\iff \\det A = 0 \\iff A^{-1}\\) does not exist. Determinant " +
         "equations \\(\\det(\\cdot) = 0\\) become polynomial equations once expanded; simplify first " +
         "with row operations to lower the degree of work.",
+      formula: {
+        label: "Singular matrix",
+        latex: "A \\text{ singular} \\iff |A| = 0 \\qquad |A| = 0 \\Rightarrow A^{-1} \\text{ does not exist}",
+      },
       authoredExample: {
         prompt: "Find \\(x\\) if \\(\\begin{vmatrix}1 & 2 & 3\\\\2 & x & 6\\\\0 & 0 & 1\\end{vmatrix} = 0\\).",
         steps: [
@@ -317,6 +325,10 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "Evaluate \\(\\det(A_k)\\) symbolically in \\(k\\); it is frequently a constant, linear, or " +
         "telescoping expression. Then sum with \\(\\sum_{k=1}^{n} k = \\tfrac{n(n+1)}{2}\\), " +
         "\\(\\sum k^2 = \\tfrac{n(n+1)(2n+1)}{6}\\), or telescoping cancellation.",
+      formula: {
+        label: "Determinant is not additive",
+        latex: "\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}",
+      },
       authoredExample: {
         prompt: "If \\(A_k = \\begin{pmatrix}k & 1\\\\2 & 3\\end{pmatrix}\\), find \\(\\sum_{k=1}^{100}\\det(A_k)\\).",
         steps: [
