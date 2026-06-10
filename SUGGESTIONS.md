@@ -12,7 +12,7 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 | Learning | Existing-work candidate | Status (2026-06-10) |
 |---|---|---|
 | Theme-coverage gap — a chapter can ship "complete" while a theme (formula/trap) is missing from the notes source ([[quiz-formula-coverage-gap]]) | The ~23 un-quiz-built /notes chapters: (a) **correctness** — hand-authored practiceSet/selfCheck answers never independently re-derived (the Lines `(1,-2)` class of bug); (b) **completeness** — empty `formula.latex` / <12 `traps` (run `npm run quiz:coverage`) | **Analysed** (full audit done). User decision: NO blanket campaign — **fold correctness re-derivation + formula/trap enrichment into per-chapter quiz-building (Wave 2+)**. Targeted correctness pass available on request for any chapter that's a live LWS lesson plan. |
-| Matrices is formula- + property-rich; `quiz:coverage` flags ~10 empty-`formula.latex` concepts | Matrices & Determinants /notes — enrich `formula.latex` → more formula atoms; consider property re-tag | **Deferred by user** ("we will revisit later"). |
+| Matrices is formula- + property-rich; `quiz:coverage` flagged ~10 empty-`formula.latex` concepts | Matrices & Determinants /notes — property quiz + formula-coverage | **Path A DONE 2026-06-10** — 25 rule-identities enriched from prose → `formula.latex` (fresh + append-only), themed `property` → 2 property quizzes; 0 existing quizzes disrupted (0 stale). **Still deferred:** the `transpose-rules`/`symmetric-and-skew` extra properties (single→bundle flip needs a re-author + re-assemble of the shipped formula quizzes) + Path B (re-theme existing rule-formulas formula→property for a pure split). |
 
 ---
 

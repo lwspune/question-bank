@@ -247,9 +247,9 @@
     "correct": "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
     "options": {
       "A": "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
-      "B": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "B": "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)",
       "C": "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
-      "D": "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
+      "D": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -727,6 +727,58 @@
     "chapterSlug": "matrices-determinants",
     "subtopicSlug": "matrix-operations",
     "conceptSlug": "powers-of-a-matrix",
+    "atomId": "powers-of-a-matrix:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Powers of a matrix?",
+    "correct": "\\(A^2 = A\\cdot A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^T = B^T A^T\\)",
+      "\\(A \\text{ singular} \\iff |A| = 0\\)",
+      "\\(\\sum_j a_{ij}C_{ij} = \\det A\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "475880aadff2cb13ef6a363da4ee292fc1653a23",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "powers-of-a-matrix",
+    "atomId": "powers-of-a-matrix:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Powers of a matrix?",
+    "correct": "\\(A^n = A^{n-1}A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
+      "\\(i = i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "fd3f8dc2bb4dea4f0db775184574582e37caa883",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "powers-of-a-matrix",
     "atomId": "powers-of-a-matrix:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -1002,6 +1054,64 @@
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "cb51b6bad66afe97e7e55dada0955efa369ef12e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "matrix-algebra-caveats",
+    "atomId": "matrix-algebra-caveats:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Matrix algebra — where numbers' rules break?",
+    "correct": "\\((A+B)^2 = A^2 + AB + BA + B^2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det\\)",
+      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "339969b08a106c2bcd234dab5f2a9e42f806613c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "matrix-operations",
+    "conceptSlug": "matrix-algebra-caveats",
+    "atomId": "matrix-algebra-caveats:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Matrix algebra — where numbers' rules break?",
+    "correct": "\\((A+B)(A-B) = A^2 - AB + BA - B^2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det D = \\prod_i d_i\\)",
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't import \\(a^2 - b^2 = (a+b)(a-b)\\) into matrices: Every number identity that secretly uses commutativity can break for matrices. \\((A+B)(A-B)\\), \\((A+B)^2\\), \\((AB)^2 = A^2B^2\\) all FAIL unless \\(AB = BA\\). When an option assumes one of these, it's almost always the trap answer.",
+      "\\(AB = O\\) does NOT force \\(A = O\\) or \\(B = O\\): Unlike numbers, matrices have zero divisors: two non-zero matrices can multiply to the zero matrix (e.g. \\(\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix} = O\\)). So you may NOT 'cancel' a matrix; concluding \\(A=O\\) or \\(B=O\\) from \\(AB=O\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "a67690e3cf972c14322ee04cb5582c6787a5e3a7",
     "timeEstimateSec": 45
   },
   {
@@ -1579,7 +1689,7 @@
     "options": {
       "A": "\\((AB)^T = B^T A^T\\)",
       "B": "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
-      "C": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "C": "\\(A \\text{ singular} \\iff |A| = 0\\)",
       "D": "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
     },
     "answer": "D",
@@ -1815,6 +1925,58 @@
     "chapterSlug": "matrices-determinants",
     "subtopicSlug": "special-matrices",
     "conceptSlug": "diagonal-scalar-identity",
+    "atomId": "diagonal-scalar-identity:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Diagonal, scalar, and identity matrices?",
+    "correct": "\\(D^k = \\operatorname{diag}(d_1^k, \\dots, d_n^k)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((A^{-1})^{-1} = A\\)",
+      "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\)",
+      "\\(\\det(AB) = \\det A\\,\\det B\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "eeb97a05a2760606baabe5cd46e95806a4686ca9",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "diagonal-scalar-identity",
+    "atomId": "diagonal-scalar-identity:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Diagonal, scalar, and identity matrices?",
+    "correct": "\\(\\det(kI_n) = k^n\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)",
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
+      "\\(\\omega^3 = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "ed3b41abd8eeedc12593c9f35436d81a9df401e8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "diagonal-scalar-identity",
     "atomId": "diagonal-scalar-identity:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -1928,9 +2090,9 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
+      "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)",
       "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)",
-      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
-      "\\((AB)^T = B^T A^T\\)"
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -1954,15 +2116,41 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
+      "\\(A \\text{ singular} \\iff |A| = 0\\)",
       "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
-      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
-      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "2bc8984e40cbfb75f734e96d90c1a4b43ff53d0b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "orthogonal-matrices",
+    "atomId": "orthogonal-matrices:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Orthogonal matrices?",
+    "correct": "\\(AA^T = A^T A = I\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "31547304d3e18b1beadf46ba4ad63d7d312b9c66",
     "timeEstimateSec": 45
   },
   {
@@ -2257,6 +2445,110 @@
     "chapterSlug": "matrices-determinants",
     "subtopicSlug": "special-matrices",
     "conceptSlug": "idempotent-involutory",
+    "atomId": "idempotent-involutory:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Idempotent and involutory matrices?",
+    "correct": "\\(A^2 = A \\Rightarrow A^n = A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\(\\det D = \\prod_i d_i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "527308a0343a2b4c450478b4a68f940ebe6ab191",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "idempotent-involutory",
+    "atomId": "idempotent-involutory:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Idempotent and involutory matrices?",
+    "correct": "\\(A^2 = I \\Rightarrow A^{-1} = A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((A^{-1})^{-1} = A\\)",
+      "\\((A+B)^2 = A^2 + AB + BA + B^2\\)",
+      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "b61caa289cb32b24f14c282304b8e01d9fac9c77",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "idempotent-involutory",
+    "atomId": "idempotent-involutory:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Idempotent and involutory matrices?",
+    "correct": "\\(J_n^2 = nJ_n\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\((A^{-1})^{-1} = A\\)",
+      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "a14353bdce41d67d46bf3458ebbaf40450f72c60",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "idempotent-involutory",
+    "atomId": "idempotent-involutory:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Idempotent and involutory matrices?",
+    "correct": "\\(A^k = O \\text{ (nilpotent)}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\sum_j a_{ij}C_{ij} = \\det A\\)",
+      "\\(A^2 = A\\cdot A\\)",
+      "\\(\\det D = \\prod_i d_i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d5b76f2a03b1f067a67ca3f52e5970dcb71b1c3e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "special-matrices",
+    "conceptSlug": "idempotent-involutory",
     "atomId": "idempotent-involutory:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -2364,10 +2656,10 @@
     "stem": "Which of the following is the formula for Evaluating 2×2 and 3×3 determinants?",
     "correct": "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\)",
     "options": {
-      "A": "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
-      "B": "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
+      "A": "\\(A^2 = A \\Rightarrow A^n = A\\)",
+      "B": "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
       "C": "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\)",
-      "D": "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
+      "D": "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -2523,9 +2815,9 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
-      "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
-      "\\(i = i\\)",
-      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
+      "\\(A \\text{ singular} \\iff |A| = 0\\)",
+      "\\(A^2 = A\\cdot A\\)",
+      "\\((A^{-1})^{-1} = A\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -2566,6 +2858,126 @@
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "4a9dad1254ddede0c57852e6dbd5c90e2277ccbf",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "det-products-scalar-powers",
+    "atomId": "det-products-scalar-powers:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinant of products, scalars, and powers?",
+    "correct": "\\(\\det(A^T) = \\det A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det\\)",
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
+      "\\(\\det D = \\prod_i d_i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "e0b050c9f8339984378dd38359651d21990a397b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "det-products-scalar-powers",
+    "atomId": "det-products-scalar-powers:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinant of products, scalars, and powers?",
+    "correct": "\\(\\det(A^m) = (\\det A)^m\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)",
+      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "cfdcfcc5b7f32130c812bfb4692c0c02f8830e0b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "det-products-scalar-powers",
+    "atomId": "det-products-scalar-powers:formula:4",
+    "sourceKind": "formula",
+    "sourceIndex": 4,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinant of products, scalars, and powers?",
+    "correct": "\\(\\det(A^{-1}) = \\frac{1}{\\det A}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)",
+      "\\((A+B)^2 = A^2 + AB + BA + B^2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "47112425330035d0b674a5861ae3df4887617a98",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "det-products-scalar-powers",
+    "atomId": "det-products-scalar-powers:formula:5",
+    "sourceKind": "formula",
+    "sourceIndex": 5,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Determinant of products, scalars, and powers?",
+    "correct": "\\(\\det(B^{-1}AB) = \\det A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
+      "\\(i = i\\)",
+      "\\((AB)^T = B^T A^T\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "\\(\\det(kA) = k^n \\det A\\), NOT \\(k\\det A\\): Pulling a scalar out of a determinant works one ROW at a time. Factoring \\(k\\) from the whole \\(n\\times n\\) matrix factors it from each of the \\(n\\) rows → \\(k^n\\). The single most common determinant mistake in this bank.",
+      "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace: For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add \\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+      "\\(\\det(A+B) \\neq \\det A + \\det B\\): Determinant is multiplicative (\\(\\det(AB)=\\det A\\,\\det B\\)) but NOT additive. \\(\\det(A+B)\\) has no shortcut — you must add the matrices first, then take ONE determinant. Splitting it as \\(\\det A + \\det B\\) is the trap."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "1277a38f6a5ad31275164ac214593ec2923e99c1",
     "timeEstimateSec": 45
   },
   {
@@ -2832,6 +3244,84 @@
     "chapterSlug": "matrices-determinants",
     "subtopicSlug": "determinants-evaluation-properties",
     "conceptSlug": "core-determinant-properties",
+    "atomId": "core-determinant-properties:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Core row and column properties?",
+    "correct": "\\(R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((AB)^T = B^T A^T\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
+      "\\(A^2 = A\\cdot A\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "a6110ea16979947dd237aa6a3a6c106a1a1bf917",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "core-determinant-properties",
+    "atomId": "core-determinant-properties:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Core row and column properties?",
+    "correct": "\\(\\text{two identical/proportional rows} \\Rightarrow \\det = 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\)",
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "9036b4353be0dd21e19f194434ebe673b1909589",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "core-determinant-properties",
+    "atomId": "core-determinant-properties:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Core row and column properties?",
+    "correct": "\\(\\det(kR_i\\text{-scaled}) = k\\det A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
+      "\\(A^2 = A \\Rightarrow A^n = A\\)",
+      "\\(\\sum_j a_{ij}C_{ij} = \\det A\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "ed47bc7cf39104d0a87d0928ced789563ee300a3",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "core-determinant-properties",
     "atomId": "core-determinant-properties:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -2954,6 +3444,58 @@
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "2d39aa7e3f85a5a579bb3978e21d327fd56bc291",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "singular-and-determinant-equations",
+    "atomId": "singular-and-determinant-equations:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Singular matrices and determinant equations?",
+    "correct": "\\(A \\text{ singular} \\iff |A| = 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)",
+      "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "f73b8a9e2b2f868eeb84eeb6b1b4e9da3b39e4d5",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "singular-and-determinant-equations",
+    "atomId": "singular-and-determinant-equations:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Singular matrices and determinant equations?",
+    "correct": "\\(|A| = 0 \\Rightarrow A^{-1} \\text{ does not exist}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\)",
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "edb266a7bc1701a94d770e75c039112643bab62a",
     "timeEstimateSec": 45
   },
   {
@@ -3258,8 +3800,8 @@
     "options": {
       "A": "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
       "B": "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
-      "C": "\\(\\det D = \\prod_i d_i\\)",
-      "D": "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+      "C": "\\(R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det\\)",
+      "D": "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -3398,6 +3940,33 @@
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "3c8b559b081015bae0e524398e12542137e50746",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "determinants-evaluation-properties",
+    "conceptSlug": "sum-of-determinants",
+    "atomId": "sum-of-determinants:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Sums and sequences of determinants?",
+    "correct": "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)",
+    "options": {
+      "A": "\\((A+B)^2 = A^2 + AB + BA + B^2\\)",
+      "B": "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
+      "C": "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)",
+      "D": "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)"
+    },
+    "answer": "C",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "f5f3b81e9b1ae0ab4c671ca47fb780c0ec2c5dff",
     "timeEstimateSec": 45
   },
   {
@@ -3644,8 +4213,8 @@
     "correct": "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)",
     "options": {
       "A": "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
-      "B": "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
-      "C": "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
+      "B": "\\((A+B)^2 = A^2 + AB + BA + B^2\\)",
+      "C": "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
       "D": "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)"
     },
     "answer": "D",
@@ -3836,9 +4405,9 @@
     "stem": "Which of the following is the formula for Binomial-Coefficient Determinants (Pascal's Identity)?",
     "correct": "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)",
     "options": {
-      "A": "\\(i = i\\)",
-      "B": "\\(\\sum_j a_{ij}C_{ij} = \\det A\\)",
-      "C": "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
+      "A": "\\(A \\text{ singular} \\iff |A| = 0\\)",
+      "B": "\\(R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det\\)",
+      "C": "\\(i = i\\)",
       "D": "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
     },
     "answer": "D",
@@ -4187,9 +4756,9 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
+      "\\((A^{-1})^{-1} = A\\)",
       "\\((AB)^{-1} = B^{-1}A^{-1}\\)",
-      "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
-      "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)"
+      "\\(A \\text{ singular} \\iff |A| = 0\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -4215,7 +4784,7 @@
     "candidateDistractors": [
       "\\(\\det(AB) = \\det A\\,\\det B\\)",
       "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)",
-      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
+      "\\((A^{-1})^{-1} = A\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -4397,7 +4966,7 @@
     "candidateDistractors": [
       "\\(\\det D = \\prod_i d_i\\)",
       "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
-      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)"
+      "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -4422,8 +4991,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
-      "\\(i = i\\)",
-      "\\(\\frac{d}{dx}\\begin{vmatrix}R_1\\\\R_2\\\\R_3\\end{vmatrix} = \\begin{vmatrix}R_1'\\\\R_2\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2'\\\\R_3\\end{vmatrix} + \\begin{vmatrix}R_1\\\\R_2\\\\R_3'\\end{vmatrix}\\)"
+      "\\(A^2 = A\\cdot A\\)",
+      "\\(\\det(A+B) \\neq \\det A + \\det B \\text{ (in general)}\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -4708,8 +5277,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(\\det(AB) = \\det A\\,\\det B\\)",
-      "\\(\\det D = \\prod_i d_i\\)",
-      "\\(\\binom{n}{r} + \\binom{n}{r+1} = \\binom{n+1}{r+1}\\)"
+      "\\((A+B)^2 = A^2 + AB + BA + B^2\\)",
+      "\\(A \\text{ singular} \\iff |A| = 0\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -5050,8 +5619,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\((AB)^T = B^T A^T\\)",
-      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)",
-      "\\(x = \\frac{\\Delta_x}{\\Delta}\\)"
+      "\\(R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det\\)",
+      "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -5328,9 +5897,9 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
+      "\\(A^2 = A\\cdot A\\)",
       "\\(AA^T = I \\;\\Longrightarrow\\; A^{-1} = A^T\\)",
-      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)",
-      "\\(\\det(AB) = \\det A\\,\\det B\\)"
+      "\\(A^2 - (a+d)\\,A + (ad - bc)\\,I = O\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -5700,6 +6269,110 @@
     "chapterSlug": "matrices-determinants",
     "subtopicSlug": "cofactors-adjoint-inverse",
     "conceptSlug": "inverse-of-special-matrices",
+    "atomId": "inverse-of-special-matrices:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Inverses of special matrices?",
+    "correct": "\\((A^{-1})^{-1} = A\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(|\\operatorname{adj}A| = |A|^{\\,n-1}\\)",
+      "\\(A_{m\\times n}\\, B_{n\\times p} = (AB)_{m\\times p}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "241d9dbba7ab0572dfa5a964ab80e367dae66112",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-of-special-matrices",
+    "atomId": "inverse-of-special-matrices:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Inverses of special matrices?",
+    "correct": "\\((A^T)^{-1} = (A^{-1})^T\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)",
+      "\\(A \\text{ singular} \\iff |A| = 0\\)",
+      "\\((A+B)^2 = A^2 + AB + BA + B^2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "34c23bee7a979205760969838c3442fd0a82dbda",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-of-special-matrices",
+    "atomId": "inverse-of-special-matrices:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Inverses of special matrices?",
+    "correct": "\\((kA)^{-1} = \\frac{1}{k}A^{-1}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\det(AB) = \\det A\\,\\det B\\)",
+      "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\)",
+      "\\(\\det D = \\prod_i d_i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "b50f8acbb34bc07ed727505665a3840ff157e83a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-of-special-matrices",
+    "atomId": "inverse-of-special-matrices:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Inverses of special matrices?",
+    "correct": "\\((A^n)^{-1} = (A^{-1})^n\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(x = \\frac{\\Delta_x}{\\Delta}\\)",
+      "\\(\\det D = \\prod_i d_i\\)",
+      "\\((AB)^{-1} = B^{-1}A^{-1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "92e9d2c1f0611848937cc94fbe16ba15c9f0d11b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "matrices-determinants",
+    "subtopicSlug": "cofactors-adjoint-inverse",
+    "conceptSlug": "inverse-of-special-matrices",
     "atomId": "inverse-of-special-matrices:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -5969,9 +6642,9 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
+      "\\(A^2 = A\\cdot A\\)",
       "\\(\\det(AB) = \\det A\\,\\det B\\)",
-      "\\(i = i\\)",
-      "\\(A = \\underbrace{\\tfrac12(A + A^T)}_{\\text{symmetric}} + \\underbrace{\\tfrac12(A - A^T)}_{\\text{skew-symmetric}}\\)"
+      "\\(i = i\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -5996,8 +6669,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(R(\\theta)\\,R(\\phi) = R(\\theta + \\phi)\\)",
-      "\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\)",
-      "\\(A(\\operatorname{adj}A) = (\\operatorname{adj}A)A = |A|\\,I_n\\)"
+      "\\((A+B)^2 = A^2 + AB + BA + B^2\\)",
+      "\\(A^2 = A\\cdot A\\)"
     ],
     "distractorSource": null,
     "trapHints": [],

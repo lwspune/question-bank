@@ -198,7 +198,7 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         "- **Scalar:** \\((kA)^T = kA^T\\)\n" +
         "- **Reversal:** \\((AB)^T = B^T A^T\\) (order reverses)",
       formula: {
-        label: "Transpose of a product (reversal law)",
+        label: "Transpose rules",
         latex: "(AB)^T = B^T A^T",
       },
       authoredExample: {
@@ -240,6 +240,10 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         "For square \\(A\\): \\(A^2 = A\\cdot A\\), \\(A^n = A^{n-1}A\\). Look for cycles: e.g. a " +
         "swap matrix \\(\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\) squares to \\(I\\), so even powers " +
         "are \\(I\\). A rotation by \\(\\theta\\) to the \\(n\\)th power is rotation by \\(n\\theta\\).",
+      formula: {
+        label: "Powers of a matrix",
+        latex: "A^2 = A\\cdot A \\qquad A^n = A^{n-1}A",
+      },
       authoredExample: {
         prompt: "If \\(A = \\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\), find \\(A^3\\).",
         steps: [
@@ -326,6 +330,10 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
         "- \\((A+B)^2 = A^2 + AB + BA + B^2\\).\n" +
         "- \\(AB = O\\) is possible with both \\(A \\neq O\\) and \\(B \\neq O\\) (zero divisors exist).\n" +
         "Transpose/adjoint/inverse of a product all **reverse order**.",
+      formula: {
+        label: "Non-commutative expansions",
+        latex: "(A+B)^2 = A^2 + AB + BA + B^2 \\qquad (A+B)(A-B) = A^2 - AB + BA - B^2",
+      },
       authoredExample: {
         prompt: "For matrices \\(A, B\\) of the same order, is \\((A+B)(A-B) = A^2 - B^2\\) always true?",
         steps: [
