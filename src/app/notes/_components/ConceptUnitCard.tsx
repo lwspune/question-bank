@@ -145,6 +145,13 @@ import ArchimedesFloatingBlock from "./visualizations/ArchimedesFloatingBlock";
 import PascalHydraulicPress from "./visualizations/PascalHydraulicPress";
 import WepWorkAtAngle from "./visualizations/WepWorkAtAngle";
 import WepEnergyConservationTrack from "./visualizations/WepEnergyConservationTrack";
+import GravKeplerOrbit from "./visualizations/GravKeplerOrbit";
+import GravCompositeSphere from "./visualizations/GravCompositeSphere";
+import GravFieldVsPotential from "./visualizations/GravFieldVsPotential";
+import UmdLeastCountRuler from "./visualizations/UmdLeastCountRuler";
+import OscShmDisplacementTime from "./visualizations/OscShmDisplacementTime";
+import OscPendulumRestoringForce from "./visualizations/OscPendulumRestoringForce";
+import OscWaveTypes from "./visualizations/OscWaveTypes";
 import SetsVennTwo from "./visualizations/SetsVennTwo";
 import SetsVennThree from "./visualizations/SetsVennThree";
 import SetsRelationDigraph from "./visualizations/SetsRelationDigraph";
@@ -438,6 +445,20 @@ function renderVisualization(slug: VisualizationSlug) {
       return <WepWorkAtAngle />;
     case "wep-energy-conservation-track":
       return <WepEnergyConservationTrack />;
+    case "grav-kepler-orbit":
+      return <GravKeplerOrbit />;
+    case "grav-composite-sphere":
+      return <GravCompositeSphere />;
+    case "grav-field-vs-potential":
+      return <GravFieldVsPotential />;
+    case "umd-least-count-ruler":
+      return <UmdLeastCountRuler />;
+    case "osc-shm-displacement-time":
+      return <OscShmDisplacementTime />;
+    case "osc-pendulum-restoring-force":
+      return <OscPendulumRestoringForce />;
+    case "osc-wave-types":
+      return <OscWaveTypes />;
     case "sets-venn-two":
       return <SetsVennTwo />;
     case "sets-venn-three":
