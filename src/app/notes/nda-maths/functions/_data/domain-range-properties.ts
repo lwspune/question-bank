@@ -141,6 +141,10 @@ export const FUNCTIONS_DOMAIN_RANGE_NOTE: SubtopicNote = {
         "- **Odd:** \\(f(-x)=-f(x)\\) for all \\(x\\) (e.g. \\(x^3,\\ \\sin x,\\ x\\)). An odd function defined at 0 has \\(f(0)=0\\).\n" +
         "- Test by computing \\(f(-x)\\) and comparing. If it matches neither, the function is **neither**.",
       visualizationSlug: "even-odd-symmetry",
+      formula: {
+        label: "Even and odd tests",
+        latex: "f\\text{ even}\\iff f(-x)=f(x)\\qquad f\\text{ odd}\\iff f(-x)=-f(x)",
+      },
       authoredExample: {
         prompt: "Classify \\(f(x)=x^3-x\\) as even, odd, or neither.",
         steps: [
@@ -185,7 +189,8 @@ export const FUNCTIONS_DOMAIN_RANGE_NOTE: SubtopicNote = {
         "- Period of a **sum** is the LCM of the individual periods.",
       formula: {
         label: "Period after scaling the argument",
-        latex: "\\text{period of }\\sin(kx)=\\frac{2\\pi}{|k|},\\qquad \\text{period of }\\tan(kx)=\\frac{\\pi}{|k|}",
+        latex:
+          "\\text{period of }\\sin(kx)=\\dfrac{2\\pi}{|k|}\\qquad \\text{period of }\\tan(kx)=\\dfrac{\\pi}{|k|}\\qquad \\text{period of }f(ax+b)=\\dfrac{T}{|a|}",
       },
       authoredExample: {
         prompt: "Find the period of \\(f(x)=\\cos\\!\\left(\\dfrac{x}{2}\\right)\\).",

@@ -156,7 +156,8 @@ export const FUNCTIONS_DEFINITION_CLASSIFICATION_NOTE: SubtopicNote = {
         "- **Onto** (general): inclusion–exclusion; for \\(n=2\\) it is \\(2^m-2\\).",
       formula: {
         label: "Number of functions A → B",
-        latex: "|A|=m,\\ |B|=n\\ \\Rightarrow\\ \\text{functions}=n^{m},\\quad \\text{injections}={}^{n}P_{m}",
+        latex:
+          "\\text{functions }A\\to B=n^{m}\\qquad \\text{injections}={}^{n}P_{m}=\\dfrac{n!}{(n-m)!}\\qquad \\text{bijections }(m=n)=n!\\qquad \\text{relations}=2^{mn}",
       },
       authoredExample: {
         prompt:
