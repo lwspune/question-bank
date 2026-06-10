@@ -5,6 +5,17 @@ Each item is outside the scope of the work that surfaced it. Strike through when
 
 ---
 
+## Backfill ledger
+
+Standing list of **new learnings that may apply to EXISTING/shipped work** — so they survive across sessions and aren't silently forgotten. Per [[learning-propagation-protocol]]: a candidate here is reworked ONLY after a 360 analysis + explicit user permission. Status: *identified → analysed → awaiting-permission → approved / declined → done*.
+
+| Learning | Existing-work candidate | Status (2026-06-10) |
+|---|---|---|
+| Theme-coverage gap — a chapter can ship "complete" while a theme (formula/trap) is missing from the notes source ([[quiz-formula-coverage-gap]]) | The ~23 un-quiz-built /notes chapters: (a) **correctness** — hand-authored practiceSet/selfCheck answers never independently re-derived (the Lines `(1,-2)` class of bug); (b) **completeness** — empty `formula.latex` / <12 `traps` (run `npm run quiz:coverage`) | **Analysed** (full audit done). User decision: NO blanket campaign — **fold correctness re-derivation + formula/trap enrichment into per-chapter quiz-building (Wave 2+)**. Targeted correctness pass available on request for any chapter that's a live LWS lesson plan. |
+| Matrices is formula- + property-rich; `quiz:coverage` flags ~10 empty-`formula.latex` concepts | Matrices & Determinants /notes — enrich `formula.latex` → more formula atoms; consider property re-tag | **Deferred by user** ("we will revisit later"). |
+
+---
+
 ## 2026-06-09
 
 ### ~~Build /notes for the 6 remaining un-noted NDA Maths chapters~~ — **DONE 2026-06-09** (5 of 6, parallel build)
