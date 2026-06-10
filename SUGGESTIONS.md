@@ -16,6 +16,18 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-10
+
+### Structured distractor-candidate generators in the harvester
+
+The distractor-authoring bottleneck is fully manual (parallel agents hand-write 3 wrong options per atom). But many wrong answers follow MECHANICAL error-transforms — sign flip, reciprocal, off-by-a-factor, swapped operands, `1±x` vs `1∓x`, `a+b` vs `√(a²+b²)`. The harvester could PROPOSE candidate distractors by applying these transforms to the correct answer, so the human refines rather than authors from scratch.
+
+**Why:** distractor authoring is the single bottleneck of the whole factory (harvest/sync/assemble take seconds; the agents are the token cost). Even a partial reduction (formula/structured atoms) compounds across the ~17 remaining chapters. Raised in the 2026-06-10 "workflow vs template" discussion as the genuine "better method".
+
+**How to apply:** add an `errorTransforms(correct, theme)` helper emitting candidate wrong-variants per theme (formula → permutation transforms; numeric → ±factor/sign), surfaced as `candidate_distractors` the verify pass can accept/edit — replacing the current cross-category sibling guesses. Keep it a PROPOSAL: the human still approves (distractor quality is the value). Math-aware distractors are problem-specific, so it helps formula/structured atoms more than word problems.
+
+---
+
 ## 2026-06-09
 
 ### ~~Build /notes for the 6 remaining un-noted NDA Maths chapters~~ — **DONE 2026-06-09** (5 of 6, parallel build)
@@ -52,9 +64,9 @@ English (vocab/idioms) and Biology (taxonomy) questions store the underlined wor
 
 Completed all three named chapters — **Human Physiology** (87 recall + 23 traps), **Matrices & Determinants** (182 computation + 5 traps), **Vectors** (130 computation + 55 traps) — by hand-authoring every distractor (the harvest's sibling-row candidates were cross-category/unusable). All `verified`, 0 lint flags, assembled + pushed. Quiz Factory now has 5 complete chapters. The same cadence applies to any *future* harvested chapter (see "Harvest + verify the unstarted chapters" below).
 
-### Harvest + verify the remaining ~15 /notes chapters (the Quiz Factory frontier)
+### Wave 2+ : harvest + verify the remaining /notes chapters (the Quiz Factory frontier)
 
-5 chapters are complete; **~15 noted chapters are not yet harvested** — ~12 NDA Maths (3D Geometry, Sequence & Series, Indefinite Integration, Binomial, Functions, Differentiation, Trig Identities, Limits, App of Derivatives, Lines, P&C, Complex Numbers) + 2 NDA Physics (Sound, E&M) + 1 MHT-CET (Indefinite Integration).
+**7 NDA Maths chapters now complete** across all harvestable themes (Stats/Prob/Vectors/Matrices + **Functions/Lines/Trig-Identities**, 2026-06-10) + HP (Bio). **Wave 2 = 3D-Geometry · Sequence-Series · Differentiation** — already harvested + synced (distractors pending; all <12 traps, so each build doubles as its completeness fix). ~17 other chapters behind (the recent autonomous-batch ones — Binomial, Conics, Circles, etc. — are mostly formula-only).
 
 **Why:** more chapters = a deeper daily-quiz supply + a wider public-funnel pool. Each is ~the same effort as the 3 finished this session (harvest is free; the hand-authored distractors for practice/computation + traps are the bottleneck).
 
@@ -62,7 +74,7 @@ Completed all three named chapters — **Human Physiology** (87 recall + 23 trap
 
 ### Cross-chapter "traps/properties of the day" assembly for thin themes
 
-Some themes are permanently thin per chapter (Matrices has only 5 trap atoms — verified but below the 12-atom minimum for a standalone quiz, so stranded). A cross-chapter assembler ("Traps of the day" pulling trap atoms across all NDA Maths chapters) would use them.
+Some themes are permanently thin per chapter (e.g. Functions' 6 formula atoms + Trig-Id's 11 reference atoms sit below the 12-atom minimum for a standalone quiz, so stranded; `quiz:coverage` flags <12-trap chapters). A cross-chapter assembler ("Traps of the day" / "Formulas of the day" pulling atoms by theme across all NDA Maths chapters) would use them.
 
 **Why:** otherwise low-count themes never form a quiz and the atoms sit unused. Already noted in QUIZ_FACTORY "Known gaps."
 
