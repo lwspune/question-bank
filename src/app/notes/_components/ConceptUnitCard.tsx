@@ -120,6 +120,31 @@ import MattColloidTyndall from "./visualizations/MattColloidTyndall";
 import BondIonicCovalentFormation from "./visualizations/BondIonicCovalentFormation";
 import HydWaterHydrogenBonding from "./visualizations/HydWaterHydrogenBonding";
 import RxnReactionTypes from "./visualizations/RxnReactionTypes";
+import OptConcaveMirrorRays from "./visualizations/OptConcaveMirrorRays";
+import OptConvexMirrorRays from "./visualizations/OptConvexMirrorRays";
+import OptRefractionTIR from "./visualizations/OptRefractionTIR";
+import OptConvexLensRays from "./visualizations/OptConvexLensRays";
+import OptPrismDispersion from "./visualizations/OptPrismDispersion";
+import OptHumanEye from "./visualizations/OptHumanEye";
+import LmfFreeBodyDiagram from "./visualizations/LmfFreeBodyDiagram";
+import LmfActionReactionPair from "./visualizations/LmfActionReactionPair";
+import LmfResultantParallelogram from "./visualizations/LmfResultantParallelogram";
+import LmfFrictionIncline from "./visualizations/LmfFrictionIncline";
+import HtHeatTransferModes from "./visualizations/HtHeatTransferModes";
+import HtPvProcessDiagram from "./visualizations/HtPvProcessDiagram";
+import HtAnomalousWaterExpansion from "./visualizations/HtAnomalousWaterExpansion";
+import PhotoelectricSetup from "./visualizations/PhotoelectricSetup";
+import BohrEnergyLevels from "./visualizations/BohrEnergyLevels";
+import RadiationPenetration from "./visualizations/RadiationPenetration";
+import KinVelocityTimeGraph from "./visualizations/KinVelocityTimeGraph";
+import KinPositionTimeGraph from "./visualizations/KinPositionTimeGraph";
+import KinProjectileParabola from "./visualizations/KinProjectileParabola";
+import FluidPressureDepth from "./visualizations/FluidPressureDepth";
+import SurfaceTensionMeniscus from "./visualizations/SurfaceTensionMeniscus";
+import ArchimedesFloatingBlock from "./visualizations/ArchimedesFloatingBlock";
+import PascalHydraulicPress from "./visualizations/PascalHydraulicPress";
+import WepWorkAtAngle from "./visualizations/WepWorkAtAngle";
+import WepEnergyConservationTrack from "./visualizations/WepEnergyConservationTrack";
 import SetsVennTwo from "./visualizations/SetsVennTwo";
 import SetsVennThree from "./visualizations/SetsVennThree";
 import SetsRelationDigraph from "./visualizations/SetsRelationDigraph";
@@ -363,6 +388,56 @@ function renderVisualization(slug: VisualizationSlug) {
       return <HydWaterHydrogenBonding />;
     case "rxn-reaction-types":
       return <RxnReactionTypes />;
+    case "opt-concave-mirror-rays":
+      return <OptConcaveMirrorRays />;
+    case "opt-convex-mirror-rays":
+      return <OptConvexMirrorRays />;
+    case "opt-refraction-tir":
+      return <OptRefractionTIR />;
+    case "opt-convex-lens-rays":
+      return <OptConvexLensRays />;
+    case "opt-prism-dispersion":
+      return <OptPrismDispersion />;
+    case "opt-human-eye":
+      return <OptHumanEye />;
+    case "lmf-free-body-diagram":
+      return <LmfFreeBodyDiagram />;
+    case "lmf-action-reaction-pair":
+      return <LmfActionReactionPair />;
+    case "lmf-resultant-parallelogram":
+      return <LmfResultantParallelogram />;
+    case "lmf-friction-incline":
+      return <LmfFrictionIncline />;
+    case "ht-heat-transfer-modes":
+      return <HtHeatTransferModes />;
+    case "ht-pv-process-diagram":
+      return <HtPvProcessDiagram />;
+    case "ht-anomalous-water-expansion":
+      return <HtAnomalousWaterExpansion />;
+    case "mp-photoelectric-setup":
+      return <PhotoelectricSetup />;
+    case "mp-bohr-energy-levels":
+      return <BohrEnergyLevels />;
+    case "mp-radiation-penetration":
+      return <RadiationPenetration />;
+    case "kin-velocity-time-graph":
+      return <KinVelocityTimeGraph />;
+    case "kin-position-time-graph":
+      return <KinPositionTimeGraph />;
+    case "kin-projectile-parabola":
+      return <KinProjectileParabola />;
+    case "fluid-pressure-depth":
+      return <FluidPressureDepth />;
+    case "surface-tension-meniscus":
+      return <SurfaceTensionMeniscus />;
+    case "archimedes-floating-block":
+      return <ArchimedesFloatingBlock />;
+    case "pascal-hydraulic-press":
+      return <PascalHydraulicPress />;
+    case "wep-work-at-angle":
+      return <WepWorkAtAngle />;
+    case "wep-energy-conservation-track":
+      return <WepEnergyConservationTrack />;
     case "sets-venn-two":
       return <SetsVennTwo />;
     case "sets-venn-three":

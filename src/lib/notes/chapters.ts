@@ -238,6 +238,41 @@ import {
   EVERYDAY_LIFE_NOTES,
   EVERYDAY_LIFE_SLUGS,
 } from "@/app/notes/nda-chemistry/everyday-life/_data";
+import {
+  LIGHT_OPTICS_CHAPTER,
+  LIGHT_OPTICS_NOTES,
+  LIGHT_OPTICS_SLUGS,
+} from "@/app/notes/nda-physics/light-optics/_data";
+import {
+  LAWS_OF_MOTION_CHAPTER,
+  LAWS_OF_MOTION_NOTES,
+  LAWS_OF_MOTION_SLUGS,
+} from "@/app/notes/nda-physics/laws-of-motion/_data";
+import {
+  HEAT_THERMODYNAMICS_CHAPTER,
+  HEAT_THERMODYNAMICS_NOTES,
+  HEAT_THERMODYNAMICS_SLUGS,
+} from "@/app/notes/nda-physics/heat-thermodynamics/_data";
+import {
+  MODERN_PHYSICS_CHAPTER,
+  MODERN_PHYSICS_NOTES,
+  MODERN_PHYSICS_SLUGS,
+} from "@/app/notes/nda-physics/modern-physics/_data";
+import {
+  KINEMATICS_CHAPTER,
+  KINEMATICS_NOTES,
+  KINEMATICS_SLUGS,
+} from "@/app/notes/nda-physics/kinematics/_data";
+import {
+  FLUID_MECHANICS_CHAPTER,
+  FLUID_MECHANICS_NOTES,
+  FLUID_MECHANICS_SLUGS,
+} from "@/app/notes/nda-physics/fluid-mechanics/_data";
+import {
+  WORK_ENERGY_POWER_CHAPTER,
+  WORK_ENERGY_POWER_NOTES,
+  WORK_ENERGY_POWER_SLUGS,
+} from "@/app/notes/nda-physics/work-energy-power/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -773,6 +808,83 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: EVERYDAY_LIFE_CHAPTER,
     notes: EVERYDAY_LIFE_NOTES,
     slugs: EVERYDAY_LIFE_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "light-optics",
+    chipLabel: "Light & Optics notes",
+    chapter: LIGHT_OPTICS_CHAPTER,
+    notes: LIGHT_OPTICS_NOTES,
+    slugs: LIGHT_OPTICS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion notes",
+    chapter: LAWS_OF_MOTION_CHAPTER,
+    notes: LAWS_OF_MOTION_NOTES,
+    slugs: LAWS_OF_MOTION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "heat-thermodynamics",
+    chipLabel: "Heat & Thermodynamics notes",
+    chapter: HEAT_THERMODYNAMICS_CHAPTER,
+    notes: HEAT_THERMODYNAMICS_NOTES,
+    slugs: HEAT_THERMODYNAMICS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "modern-physics",
+    chipLabel: "Modern Physics notes",
+    chapter: MODERN_PHYSICS_CHAPTER,
+    notes: MODERN_PHYSICS_NOTES,
+    slugs: MODERN_PHYSICS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "kinematics",
+    chipLabel: "Kinematics notes",
+    chapter: KINEMATICS_CHAPTER,
+    notes: KINEMATICS_NOTES,
+    slugs: KINEMATICS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "fluid-mechanics",
+    chipLabel: "Fluid Mechanics notes",
+    chapter: FLUID_MECHANICS_CHAPTER,
+    notes: FLUID_MECHANICS_NOTES,
+    slugs: FLUID_MECHANICS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Physics",
+    subjectRoute: "nda-physics",
+    subjectDisplay: "NDA Physics",
+    chapterSlug: "work-energy-power",
+    chipLabel: "Work, Energy & Power notes",
+    chapter: WORK_ENERGY_POWER_CHAPTER,
+    notes: WORK_ENERGY_POWER_NOTES,
+    slugs: WORK_ENERGY_POWER_SLUGS,
   },
 ];
 
