@@ -183,6 +183,11 @@ import {
   COMPLEX_NUMBERS_NOTES,
   COMPLEX_NUMBERS_SLUGS,
 } from "@/app/notes/nda-maths/complex-numbers/_data";
+import {
+  CARBON_CHAPTER,
+  CARBON_NOTES,
+  CARBON_SLUGS,
+} from "@/app/notes/nda-chemistry/carbon-and-its-compounds/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -597,6 +602,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HUMAN_PHYSIOLOGY_CHAPTER,
     notes: HUMAN_PHYSIOLOGY_NOTES,
     slugs: HUMAN_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Chemistry",
+    subjectRoute: "nda-chemistry",
+    subjectDisplay: "NDA Chemistry",
+    chapterSlug: "carbon-and-its-compounds",
+    chipLabel: "Carbon notes",
+    chapter: CARBON_CHAPTER,
+    notes: CARBON_NOTES,
+    slugs: CARBON_SLUGS,
   },
 ];
 
