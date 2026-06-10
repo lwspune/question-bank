@@ -55,6 +55,24 @@ export const SPHERE_3D_NOTE: SubtopicNote = {
         { prompt: "Must the coefficients of \\(x^2,y^2,z^2\\) be?", answer: "each 1 (divide first)" },
       ],
       pyqExampleId: "ad6994cc-2d26-4f2e-a9bd-427e375b895c", // 2019 — radius of sphere
+      traps: [
+        {
+          title: "The centre is \\((-u, -v, -w)\\) — NEGATE the half-coefficients",
+          body:
+            "From \\(x^2+y^2+z^2+2ux+2vy+2wz+d=0\\), the centre is \\((-u,-v,-w)\\), NOT \\((u,v,w)\\). " +
+            "So a \\(+2x\\) term (\\(2u=2,\\ u=1\\)) puts the centre at \\(x=-1\\), and a \\(-4x\\) term " +
+            "(\\(u=-2\\)) puts it at \\(x=+2\\). The sign FLIPS. First read \\(u,v,w\\) as HALF the linear " +
+            "coefficients, then negate to get the centre.",
+        },
+        {
+          title: "Radius is \\(\\sqrt{u^2+v^2+w^2-d}\\) — mind the \\(-d\\) sign and don't drop the \\(\\sqrt{}\\)",
+          body:
+            "The radius is \\(\\sqrt{u^2+v^2+w^2-d}\\). The constant is SUBTRACTED, so a negative " +
+            "\\(d\\) (e.g. the \\(-2\\) in \\(\\ldots-2=0\\)) ADDS to the radical: \\(-(-2)=+2\\). Treating " +
+            "the radius as \\(u^2+v^2+w^2-d\\) (forgetting the \\(\\sqrt{}\\)) gives \\(r^2\\), not \\(r\\); " +
+            "and ensure \\(x^2,y^2,z^2\\) each have coefficient 1 before reading \\(u,v,w,d\\).",
+        },
+      ],
     },
 
     // C2 — diameter form

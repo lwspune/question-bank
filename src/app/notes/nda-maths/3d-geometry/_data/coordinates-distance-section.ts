@@ -111,6 +111,17 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
         { prompt: "Distance from \\((0,6,8)\\) to the y-axis?", answer: "\\(8\\)", method: "\\(\\sqrt{x^2+z^2}=\\sqrt{0+64}\\)" },
       ],
       pyqExampleId: "778decc7-566f-43ea-8764-a3fdbd6d5274", // 2020 — perp distance point to x-axis
+      traps: [
+        {
+          title: "Don't forget the square root — or any one of the three squared terms",
+          body:
+            "The distance is \\(\\sqrt{(\\Delta x)^2 + (\\Delta y)^2 + (\\Delta z)^2}\\), not the bare " +
+            "sum \\((\\Delta x)^2 + (\\Delta y)^2 + (\\Delta z)^2\\) (that's \\(AB^2\\)). In 3D it is easy " +
+            "to carry only two of the three coordinate differences — Pythagoras runs over ALL THREE axes " +
+            "here, so the \\(z\\)-term must be included. Leaving out the \\(\\sqrt{}\\) gives the squared " +
+            "distance; dropping a term gives a too-small answer.",
+        },
+      ],
     },
 
     // C3 — section formula
@@ -166,6 +177,17 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
         { prompt: "In ratio \\(k:1\\), the YZ-plane gives which equation?", answer: "x-coordinate of divider \\(= 0\\)" },
       ],
       pyqExampleId: "b70487e2-2f6b-4e1d-bf07-70ec9597547a", // 2021 — xy-plane divides segment
+      traps: [
+        {
+          title: "The ratio m : n weights the FAR endpoint by m — don't swap the weights",
+          body:
+            "For \\(P\\) dividing \\(AB\\) in ratio \\(m:n\\), the coordinate is " +
+            "\\(\\dfrac{m x_2 + n x_1}{m+n}\\) — the larger weight \\(m\\) multiplies \\(x_2\\) (the point " +
+            "\\(P\\) is NEARER to \\(B\\)). Writing \\(\\dfrac{m x_1 + n x_2}{m+n}\\) silently divides in " +
+            "ratio \\(n:m\\) and lands you on the wrong point. Also: \\(m:n\\) is the midpoint ONLY when " +
+            "\\(m=n\\) — never average the endpoints for a \\(2:1\\) or \\(1:3\\) split.",
+        },
+      ],
     },
 
     // C4 — midpoint + centroid

@@ -94,6 +94,16 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
           body:
             "\\(\\frac{d}{dx}\\sin(x^{\\circ}) = \\frac{\\pi}{180}\\cos(x^{\\circ})\\), NOT \\(\\cos(x^{\\circ})\\). The standard table holds only for radian arguments; a degree symbol injects a \\(\\pi/180\\) factor by the chain rule.",
         },
+        {
+          title: "Don't power-rule an exponential",
+          body:
+            "\\(\\frac{d}{dx}(a^x) = a^x\\ln a\\), NOT \\(x\\,a^{x-1}\\). The power rule \\(\\frac{d}{dx}(x^n)=nx^{n-1}\\) applies only when the BASE is the variable. When the variable is in the EXPONENT, the derivative carries the base unchanged and picks up a \\(\\ln a\\) factor. (And \\(\\frac{d}{dx}e^x = e^x\\), since \\(\\ln e = 1\\).)",
+        },
+        {
+          title: "Derivative of \\(\\ln x\\) is \\(1/x\\), not \\(\\ln x\\) or \\(x\\)",
+          body:
+            "\\(\\frac{d}{dx}(\\ln x) = \\dfrac{1}{x}\\). It is neither \\(\\ln x\\) (that's its own integral mistake) nor \\(x\\). For a general base, \\(\\frac{d}{dx}(\\log_a x) = \\dfrac{1}{x\\ln a}\\) — the extra \\(\\ln a\\) lives in the DENOMINATOR here, the opposite of where it sits for \\(a^x\\).",
+        },
       ],
     },
 
@@ -134,6 +144,18 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
         { prompt: "Is \\((uv)' = u'v'\\)?", answer: "No" },
       ],
       pyqExampleId: "7151655a-04ba-478c-8a64-7fa4d9b5bbbd", // 2019 — h=5f(x)-xg(x), h'
+      traps: [
+        {
+          title: "The product rule is not the product of derivatives",
+          body:
+            "\\((uv)' \\neq u'v'\\). The correct rule is \\((uv)' = u'v + uv'\\) — differentiate one factor at a time and add. For \\(x^2\\sin x\\), the answer is \\(2x\\sin x + x^2\\cos x\\), not \\((2x)(\\cos x)\\).",
+        },
+        {
+          title: "Quotient rule — order and sign in the numerator matter",
+          body:
+            "\\(\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}\\), NOT \\(\\dfrac{uv' - u'v}{v^2}\\) and NOT \\(\\dfrac{u'v + uv'}{v^2}\\). The derivative-of-the-top term comes first and the two terms are SUBTRACTED. Flipping the order negates the whole answer.",
+        },
+      ],
     },
 
     {
@@ -171,6 +193,13 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
         { prompt: "\\(\\frac{d}{dx}(\\ln(\\cos x))\\)?", answer: "\\(-\\tan x\\)" },
       ],
       pyqExampleId: "531cd2cc-b68a-4bb8-bc2f-4504b6678734", // 2018 — e^{x^2} sin 2x at x=π
+      traps: [
+        {
+          title: "Don't forget the derivative of the inner function",
+          body:
+            "\\(\\frac{d}{dx}\\sin(3x^2) = \\cos(3x^2)\\cdot 6x\\), NOT just \\(\\cos(3x^2)\\). The chain rule multiplies by the inner derivative \\(6x\\); leaving it out is the single most common slip in the chapter. Every layer contributes its own factor.",
+        },
+      ],
     },
 
     {

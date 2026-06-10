@@ -71,6 +71,14 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
             "Only after normalising do you get direction cosines — and even then a line has TWO sets " +
             "(\\(\\pm\\)) for its two orientations. Sum of squares of ratios is NOT 1; only the cosines satisfy that.",
         },
+        {
+          title: "You must NORMALISE direction ratios into cosines — and the identity is = 1, not = 0",
+          body:
+            "Direction ratios \\(\\langle a,b,c\\rangle\\) are NOT direction cosines until you divide each " +
+            "by the magnitude \\(\\sqrt{a^2+b^2+c^2}\\). Treating raw ratios like \\(\\langle 2,-1,2\\rangle\\) " +
+            "as cosines is wrong — their square-sum is \\(9\\), not \\(1\\). And the defining identity is " +
+            "\\(l^2 + m^2 + n^2 = 1\\) (a UNIT vector), never \\(= 0\\); \\(= 0\\) would force all three to vanish.",
+        },
       ],
     },
 
@@ -219,6 +227,17 @@ export const DIRECTION_COSINES_RATIOS_NOTE: SubtopicNote = {
         { prompt: "\\(\\cos\\theta\\) for \\(\\langle1,1,0\\rangle\\),\\(\\langle1,0,0\\rangle\\)?", answer: "\\(\\tfrac{1}{\\sqrt2}\\) (45°)", method: "\\(1/(\\sqrt2\\cdot1)\\)" },
       ],
       pyqExampleId: "19746fec-a6af-467b-b021-bade60caccdf", // 2021 — angle between DRs
+      traps: [
+        {
+          title: "For two LINES use their DIRECTIONS, not normals; divide by BOTH magnitudes",
+          body:
+            "The angle between two lines comes from the dot product of their DIRECTION ratios " +
+            "\\(\\cos\\theta = \\dfrac{|a_1a_2+b_1b_2+c_1c_2|}{\\sqrt{a_1^2+b_1^2+c_1^2}\\,\\sqrt{a_2^2+b_2^2+c_2^2}}\\). " +
+            "Two common slips: (1) forgetting to divide by the product of the magnitudes (the bare dot " +
+            "product is only \\(\\cos\\theta\\) when both are unit vectors / true direction cosines), and " +
+            "(2) borrowing a plane's normal — that's for plane angles. Lines: directions. Planes: normals.",
+        },
+      ],
     },
 
     // C5 — perpendicular / parallel conditions

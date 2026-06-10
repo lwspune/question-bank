@@ -207,6 +207,14 @@ export const PLANE_3D_NOTE: SubtopicNote = {
             "\\(4x-2y+4z+9=0\\) and \\(8x-4y+8z+21=0\\) look like they differ by 12 in the constant — but the " +
             "normals differ by a factor of 2. Halve the second plane first; only then is \\(|d_1-d_2|/|n|\\) valid.",
         },
+        {
+          title: "Always divide by \\(\\sqrt{a^2+b^2+c^2}\\) — the numerator alone is NOT the distance",
+          body:
+            "The distance is \\(\\dfrac{|ax_1+by_1+cz_1+d|}{\\sqrt{a^2+b^2+c^2}}\\). Plugging the point into " +
+            "\\(|ax_1+by_1+cz_1+d|\\) and stopping there forgets the normalisation by the normal's length — " +
+            "it only equals the distance when \\(\\sqrt{a^2+b^2+c^2}=1\\). For \\((1,2,2)\\) and " +
+            "\\(2x+y+2z+5=0\\): numerator \\(=13\\), but the distance is \\(13/3\\), not \\(13\\).",
+        },
       ],
     },
 
