@@ -99,6 +99,23 @@ export const ARITHMETIC_PROGRESSIONS_NOTE: SubtopicNote = {
         { prompt: "How many terms in \\(7, 11, \\ldots, 79\\)?", answer: "\\(19\\)", method: "\\(\\tfrac{79-7}{4}+1\\)" },
       ],
       pyqExampleId: "1453dac4-28e7-4f04-ba85-76287fa753cd", // 2017 — sum of two-digit odd numbers
+      traps: [
+        {
+          title: "The nth term uses \\((n-1)d\\), not \\(nd\\)",
+          body:
+            "The first term already sits at position 1 with zero steps taken, so reaching position " +
+            "\\(n\\) needs \\((n-1)\\) steps: \\(a_n = a + (n-1)d\\). Writing \\(a + nd\\) overshoots by " +
+            "one full step. For \\(2, 5, 8, \\ldots\\) the 10th term is \\(2 + 9(3) = 29\\), not " +
+            "\\(2 + 10(3) = 32\\).",
+        },
+        {
+          title: "The sum has \\((n-1)d\\) inside the bracket",
+          body:
+            "The sum is \\(S_n = \\tfrac{n}{2}[\\,2a + (n-1)d\\,]\\) — the same \\((n-1)\\) off-by-one " +
+            "lives inside. A frequent slip is \\(\\tfrac{n}{2}[\\,2a + nd\\,]\\). For \\(3, 7, 11, \\ldots\\) " +
+            "the sum of 20 terms is \\(\\tfrac{20}{2}[6 + 19(4)] = 820\\), not \\(\\tfrac{20}{2}[6 + 20(4)] = 860\\).",
+        },
+    ],
     },
 
     // C3 — recover nth term from a sum-formula
@@ -192,6 +209,16 @@ export const ARITHMETIC_PROGRESSIONS_NOTE: SubtopicNote = {
         { prompt: "Insert one AM between \\(7\\) and \\(17\\).", answer: "\\(12\\)" },
       ],
       pyqExampleId: "ae62e269-8a7d-4c2c-830f-9f0219aaa2df", // 2023 — p,q,r,s in AP, p+s=8, qr=15
+      traps: [
+        {
+          title: "Inserting \\(k\\) means makes \\(k+1\\) gaps, not \\(k\\)",
+          body:
+            "Putting \\(k\\) arithmetic means between \\(a\\) and \\(b\\) builds a \\((k+2)\\)-term AP, " +
+            "which has \\(k+1\\) equal steps between the endpoints — so the common difference is " +
+            "\\(d = \\dfrac{b-a}{k+1}\\), NOT \\(\\dfrac{b-a}{k}\\). Inserting 3 means between 2 and 14 " +
+            "gives \\(d = \\tfrac{12}{4} = 3\\) (means \\(5, 8, 11\\)), not \\(\\tfrac{12}{3} = 4\\).",
+        },
+    ],
     },
 
     // C5 — three-in-AP condition + linear transforms

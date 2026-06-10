@@ -52,6 +52,17 @@ export const SPECIAL_SERIES_NOTE: SubtopicNote = {
         { prompt: "\\(\\sum_{k=1}^{4} k^2\\)?", answer: "\\(30\\)", method: "\\(1+4+9+16\\)" },
         { prompt: "\\(\\sum k^3\\) equals the square of?", answer: "\\(\\sum k\\)" },
       ],
+      traps: [
+        {
+          title: "Don't confuse the three power-sum formulas",
+          body:
+            "Keep them distinct: \\(\\sum k = \\dfrac{n(n+1)}{2}\\), " +
+            "\\(\\sum k^2 = \\dfrac{n(n+1)(2n+1)}{6}\\), and \\(\\sum k^3 = \\left[\\dfrac{n(n+1)}{2}\\right]^2\\). " +
+            "Only the cube-sum is a square. A frequent error is using the \\(\\sum k\\) formula where " +
+            "\\(\\sum k^2\\) is needed — the squares formula carries the extra \\((2n+1)\\) and divides by 6. " +
+            "For \\(n = 4\\): \\(\\sum k^2 = \\dfrac{4\\cdot 5\\cdot 9}{6} = 30\\), not \\(\\dfrac{4\\cdot 5}{2} = 10\\).",
+        },
+      ],
     },
 
     // C2 — arithmetic-geometric series

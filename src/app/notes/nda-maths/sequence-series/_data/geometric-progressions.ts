@@ -57,6 +57,16 @@ export const GEOMETRIC_PROGRESSIONS_NOTE: SubtopicNote = {
         { prompt: "Common ratio of \\(81, 27, 9, \\ldots\\)?", answer: "\\(\\tfrac{1}{3}\\)" },
       ],
       pyqExampleId: "7c70cd60-62eb-493b-b0c7-2048a512dd6b", // 2019 — nth term of 25,-125,625
+      traps: [
+        {
+          title: "The GP nth term is \\(a\\,r^{n-1}\\), not \\(a\\,r^{n}\\)",
+          body:
+            "The first term has the ratio applied zero times, so position \\(n\\) carries \\(r^{n-1}\\): " +
+            "\\(a_n = a\\,r^{\\,n-1}\\). Using \\(a\\,r^{n}\\) overshoots by one factor of \\(r\\). For " +
+            "\\(3, 6, 12, \\ldots\\) the 5th term is \\(3\\cdot 2^{4} = 48\\), not \\(3\\cdot 2^{5} = 96\\) " +
+            "(that is the 6th term).",
+        },
+    ],
     },
 
     // C2 — finite sum
@@ -161,6 +171,14 @@ export const GEOMETRIC_PROGRESSIONS_NOTE: SubtopicNote = {
             "\\(S_\\infty = \\tfrac{a}{1-r}\\) is only valid for \\(|r| < 1\\). If a problem's ratio has " +
             "\\(|r| \\ge 1\\), the sum genuinely has no finite value — there is no number to find. Always " +
             "check \\(|r|\\) before reaching for the formula.",
+        },
+        {
+          title: "It is \\(\\dfrac{a}{1-r}\\), watch the sign in the denominator",
+          body:
+            "The infinite sum is \\(S_\\infty = \\dfrac{a}{1-r}\\) — first term over \\((1 - r)\\). Flipping " +
+            "it to \\(\\dfrac{a}{r-1}\\) negates the answer. For \\(4 + 2 + 1 + \\cdots\\) with \\(r = \\tfrac12\\), " +
+            "\\(S_\\infty = \\dfrac{4}{1 - \\tfrac12} = 8\\); the wrong \\(\\dfrac{4}{\\tfrac12 - 1} = -8\\) is " +
+            "negative even though every term is positive.",
         },
       ],
     },
