@@ -124,7 +124,8 @@ Snapshot **2026-06-09** — refresh with:
 | nda-maths / **trigonometric-identities** | ~144 | 9 | ✅ **Complete** — computation (6, 2 agents subtopic-split) + formula (2; ALL 25 identity formulas, 2026-06-10 formula.latex enrichment) + **trap (1; 14 common-mistake callouts authored into the notes 2026-06-10)**; 11 reference atoms parked (<12) |
 | nda-maths / **lines** | ~92 | 7 | ✅ **Complete** — computation (4) + formula (2; 26 pieces) + trap (1; 13 callouts) — formula.latex + traps authored from scratch 2026-06-10 (both were 0) |
 | nda-maths / **functions** | ~54 | 4 | ✅ **Complete** — computation (2) + formula (1; 16 pieces after 2026-06-10 formula.latex enrichment) + trap (1; 14 pre-existing seeds authored) |
-| nda-maths / **3d-geometry** · **sequence-series** · **differentiation** | harvested+synced (~133/145/85 needs_review clean) | — | 🟠 **Wave 2** — atoms in pool, distractors pending |
+| nda-maths / **3d-geometry** | ~133 | 8 | 🟡 **Wave 2 — computation done** (8 quizzes, 126 atoms, 3 agents subtopic-split 2026-06-10); formula (7 atoms + 5 empty-latex concepts to enrich) + traps (7 callouts <12) pending |
+| nda-maths / **sequence-series** · **differentiation** | harvested+synced (~145/85 needs_review clean) | — | 🟠 **Wave 2** — atoms in pool, distractors pending |
 | _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 
 **Known quality catch (Wave 1):** the quiz build re-derives every practiceSet/selfCheck answer, surfacing **notes errors** the way notes-building surfaces wrong keys — Lines `lines-family-and-concurrency:practiceSet:3` had answer `(1,-2)` (should be `(1,-1)`); fixed in the notes `_data`, atom left parked (will correct on next harvest).
