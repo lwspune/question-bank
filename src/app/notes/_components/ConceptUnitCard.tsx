@@ -112,6 +112,14 @@ import CarbAllotropeStructures from "./visualizations/CarbAllotropeStructures";
 import AtomBohrShells from "./visualizations/AtomBohrShells";
 import AtomPeriodicTrends from "./visualizations/AtomPeriodicTrends";
 import MattStatesOfMatter from "./visualizations/MattStatesOfMatter";
+import CarbMicelle from "./visualizations/CarbMicelle";
+import CarbFunctionalGroups from "./visualizations/CarbFunctionalGroups";
+import AcidPhScaleStrip from "./visualizations/AcidPhScaleStrip";
+import MattDistillationApparatus from "./visualizations/MattDistillationApparatus";
+import MattColloidTyndall from "./visualizations/MattColloidTyndall";
+import BondIonicCovalentFormation from "./visualizations/BondIonicCovalentFormation";
+import HydWaterHydrogenBonding from "./visualizations/HydWaterHydrogenBonding";
+import RxnReactionTypes from "./visualizations/RxnReactionTypes";
 import SetsVennTwo from "./visualizations/SetsVennTwo";
 import SetsVennThree from "./visualizations/SetsVennThree";
 import SetsRelationDigraph from "./visualizations/SetsRelationDigraph";
@@ -339,6 +347,22 @@ function renderVisualization(slug: VisualizationSlug) {
       return <AtomPeriodicTrends />;
     case "matt-states-of-matter":
       return <MattStatesOfMatter />;
+    case "carb-micelle":
+      return <CarbMicelle />;
+    case "carb-functional-groups":
+      return <CarbFunctionalGroups />;
+    case "acid-ph-scale-strip":
+      return <AcidPhScaleStrip />;
+    case "matt-distillation-apparatus":
+      return <MattDistillationApparatus />;
+    case "matt-colloid-tyndall":
+      return <MattColloidTyndall />;
+    case "bond-ionic-covalent-formation":
+      return <BondIonicCovalentFormation />;
+    case "hyd-water-hydrogen-bonding":
+      return <HydWaterHydrogenBonding />;
+    case "rxn-reaction-types":
+      return <RxnReactionTypes />;
     case "sets-venn-two":
       return <SetsVennTwo />;
     case "sets-venn-three":

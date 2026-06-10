@@ -15,6 +15,7 @@ export const IONIC_COVALENT_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "octet-rule-and-bond-types",
       name: "The octet rule and the four types of chemical bond",
+      visualizationSlug: "bond-ionic-covalent-formation",
       intuition:
         "Noble gases (He, Ne, Ar…) are unreactive because their outer shell is already full. Every other atom bonds to reach that same full outer shell of eight electrons — the octet. " +
         "There are only four ways to do it: hand electrons over (ionic), share them (covalent), have one atom donate both shared electrons (coordinate), or pool them across many atoms (metallic).",

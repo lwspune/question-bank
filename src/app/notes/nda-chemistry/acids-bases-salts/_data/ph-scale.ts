@@ -60,6 +60,7 @@ export const PH_SCALE_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "ph-of-common-substances",
       name: "pH values of common substances",
+      visualizationSlug: "acid-ph-scale-strip",
       intuition:
         "The bank asks you to recall or rank the pH of everyday solutions. Gastric juice is strongly acidic (about pH 1.5), pure water is 7, milk of magnesia is basic (about pH 10). Learn the landmarks.",
       definition:

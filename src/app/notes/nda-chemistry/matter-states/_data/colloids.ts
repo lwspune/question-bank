@@ -14,6 +14,7 @@ export const COLLOIDS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "colloid-suspension-properties",
       name: "True solution, colloid and suspension",
+      visualizationSlug: "matt-colloid-tyndall",
       intuition:
         "Three mixtures, sorted by particle size. A true solution has particles so small they dissolve and never settle. A suspension has particles so big they settle and can be seen. A colloid is in between — invisible to the eye, never settles on standing, but big enough to scatter a light beam (the Tyndall effect).",
       definition:

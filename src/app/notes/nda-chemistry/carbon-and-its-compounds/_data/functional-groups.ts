@@ -14,6 +14,7 @@ export const FUNCTIONAL_GROUPS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "functional-group-families",
       name: "Functional groups and their families",
+      visualizationSlug: "carb-functional-groups",
       intuition:
         "The functional group is the small cluster of atoms that gives an organic molecule its character. Swap the group and you change the family — an -OH makes an alcohol, a -COOH makes an acid, a -COO- makes a sweet-smelling ester.",
       definition:

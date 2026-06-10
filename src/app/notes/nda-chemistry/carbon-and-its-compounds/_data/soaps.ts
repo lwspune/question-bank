@@ -14,6 +14,7 @@ export const SOAPS_NOTE: SubtopicNote = {
       kind: "reference" as const,
       slug: "soaps-saponification-micelles",
       name: "Soaps, saponification and micelles",
+      visualizationSlug: "carb-micelle",
       intuition:
         "A soap molecule has two ends: a long oily tail that grabs grease, and an ionic head that loves water. In water the molecules cluster into a micelle — tails pointing inward onto the oil droplet, heads facing out into the water — which lifts the dirt away. " +
         "Soap itself is made by boiling a fat or oil with alkali (saponification).",
