@@ -28,6 +28,14 @@ The distractor-authoring bottleneck is fully manual (parallel agents hand-write 
 
 **How to apply:** add an `errorTransforms(correct, theme)` helper emitting candidate wrong-variants per theme (formula → permutation transforms; numeric → ±factor/sign), surfaced as `candidate_distractors` the verify pass can accept/edit — replacing the current cross-category sibling guesses. Keep it a PROPOSAL: the human still approves (distractor quality is the value). Math-aware distractors are problem-specific, so it helps formula/structured atoms more than word problems.
 
+### Bucket 2 — enrich the empty-`formula.latex` concepts flagged by `quiz:coverage` (Wave 2 chapters + future)
+
+`quiz:coverage` flags concepts that teach a formula in `definition` prose but leave `formula.latex` EMPTY (3D-Geo 5, Seq-Series 6, Diff 5 at last run). Enriching these would add formula-recall atoms + render the notes' formula blocks fuller. **Deferred deliberately** in Wave 2: all 3 chapters already cleared 12 formula atoms from their non-empty concepts, so a formula quiz didn't need it — this is *completeness*, not blocking.
+
+**Why:** completeness of the formula theme + better student notes. Low priority — no quiz is missing because of it.
+
+**How to apply:** per flagged concept, **triage first** (the probe over-flags prose derivation steps — only genuine recallable formulas count), then **append** the formula to the concept's `formula.latex` (append-only preserves piece indices/fingerprints; safe on EMPTY concepts) → re-harvest → author the new pieces in `-formulas.ts` → delete + re-assemble that chapter's formula quiz. Same mechanism as Matrices Path A. Fold into a chapter's build when convenient, not as a separate campaign.
+
 ---
 
 ## 2026-06-09
@@ -66,13 +74,13 @@ English (vocab/idioms) and Biology (taxonomy) questions store the underlined wor
 
 Completed all three named chapters — **Human Physiology** (87 recall + 23 traps), **Matrices & Determinants** (182 computation + 5 traps), **Vectors** (130 computation + 55 traps) — by hand-authoring every distractor (the harvest's sibling-row candidates were cross-category/unusable). All `verified`, 0 lint flags, assembled + pushed. Quiz Factory now has 5 complete chapters. The same cadence applies to any *future* harvested chapter (see "Harvest + verify the unstarted chapters" below).
 
-### Wave 2+ : harvest + verify the remaining /notes chapters (the Quiz Factory frontier)
+### Wave 3+ : harvest + verify the remaining /notes chapters (the Quiz Factory frontier)
 
-**7 NDA Maths chapters now complete** across all harvestable themes (Stats/Prob/Vectors/Matrices + **Functions/Lines/Trig-Identities**, 2026-06-10) + HP (Bio). **Wave 2 = 3D-Geometry · Sequence-Series · Differentiation** — already harvested + synced (distractors pending; all <12 traps, so each build doubles as its completeness fix). ~17 other chapters behind (the recent autonomous-batch ones — Binomial, Conics, Circles, etc. — are mostly formula-only).
+**10 NDA Maths chapters now complete** across all themes (Stats/Prob/Vectors/Matrices/Functions/Lines/Trig-Id + **Wave 2: 3D-Geometry · Sequence-Series · Differentiation**, 2026-06-10) + HP (Bio). **~15 chapters remain** (~12 NDA Maths — the autonomous-batch ones: Binomial, Conics, Circles, etc., mostly formula-heavy — + 2 NDA Physics + 1 MHT-CET).
 
-**Why:** more chapters = a deeper daily-quiz supply + a wider public-funnel pool. Each is ~the same effort as the 3 finished this session (harvest is free; the hand-authored distractors for practice/computation + traps are the bottleneck).
+**Why:** more chapters = a deeper daily-quiz supply + a wider public-funnel pool.
 
-**How to apply:** per chapter, `npm run quiz:harvest <route>/<chapter>` → `quiz:sync` → author distractors into `scripts/quiz/verify/<route>__<chapter>-{computation,formulas,traps}.ts` (formula bundles split into per-piece slots; computation = numeric/expression with plausible wrong-variant distractors; traps = full "spot the mistake" MCQs) → `quiz:verify` → `quiz:lint` → `quiz:assemble … -- --theme=X`. Chapter-by-chapter, on the user's cue.
+**How to apply:** run the per-chapter **CADENCE** now codified in QUIZ_FACTORY "Recipe" — harvest → `quiz:coverage` (completeness gate) → computation (re-derivation = correctness check) → formula author → conditional formula-enrichment + trap-callouts (notes edits) → `quiz:assemble … -- --theme=X`. Each chapter ≈ 2–3 parallel agents (computation subtopic-split) + 1 formula + 1 trap agent; the trap agent authors misconception callouts INTO the notes (predict atom keys `<concept>:trap:<existing+pos>`, verify fail-fast catches misses). Chapter-by-chapter, on the user's cue.
 
 ### Cross-chapter "traps/properties of the day" assembly for thin themes
 
