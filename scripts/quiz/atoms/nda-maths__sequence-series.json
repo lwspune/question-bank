@@ -196,9 +196,9 @@
     "options": null,
     "answer": null,
     "candidateDistractors": [
+      "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)",
       "\\(a_n = \\frac{1}{a + (n-1)d}\\)",
-      "\\(\\frac{a-b}{b-c} = \\begin{cases} 1 & \\text{AP} \\\\[2pt] a/b & \\text{GP} \\\\[2pt] a/c & \\text{HP} \\end{cases}\\)",
-      "\\(\\text{AM} = \\frac{a + b}{2}\\)"
+      "\\(\\frac{a-b}{b-c} = \\begin{cases} 1 & \\text{AP} \\\\[2pt] a/b & \\text{GP} \\\\[2pt] a/c & \\text{HP} \\end{cases}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -629,9 +629,9 @@
     "stem": "Which of the following is the formula for The arithmetic mean and symmetric terms?",
     "correct": "\\(\\text{AM} = \\frac{a + b}{2}\\)",
     "options": {
-      "A": "\\(\\text{HM} = \\frac{n}{\\sum_{i=1}^{n} \\frac{1}{x_i}}\\)",
-      "B": "\\(\\frac{1}{u}, \\frac{1}{v}, \\frac{1}{w} \\text{ in HP} \\iff u, v, w \\text{ in AP}\\)",
-      "C": "\\(\\alpha + \\beta = -\\frac{b}{a}\\)",
+      "A": "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)",
+      "B": "\\(\\text{HM} = \\frac{n}{\\sum_{i=1}^{n} \\frac{1}{x_i}}\\)",
+      "C": "\\(\\frac{1}{u}, \\frac{1}{v}, \\frac{1}{w} \\text{ in HP} \\iff u, v, w \\text{ in AP}\\)",
       "D": "\\(\\text{AM} = \\frac{a + b}{2}\\)"
     },
     "answer": "D",
@@ -824,8 +824,8 @@
     "options": {
       "A": "\\(a,\\ b,\\ c \\text{ in AP} \\iff 2b = a + c\\)",
       "B": "\\(a_n = a\\,r^{\\,n-1}\\)",
-      "C": "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)",
-      "D": "\\(x, y, z \\text{ in GP} \\iff \\log x, \\log y, \\log z \\text{ in AP}\\)"
+      "C": "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)",
+      "D": "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)"
     },
     "answer": "A",
     "candidateDistractors": [],
@@ -1017,7 +1017,7 @@
     "candidateDistractors": [
       "\\(d_{\\text{common}} = \\operatorname{lcm}(d_1, d_2)\\)",
       "\\(x = a + \\tfrac{1}{x}\\ \\Rightarrow\\ x^2 - ax - 1 = 0\\)",
-      "\\(\\text{AM} = \\frac{a + b}{2}\\)"
+      "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)"
     ],
     "distractorSource": null,
     "trapHints": [],
@@ -1206,6 +1206,84 @@
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "a9fe7df86618adbb637a857076b0a8117548c432",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "sequence-series",
+    "subtopicSlug": "seq-arithmetic-progressions",
+    "conceptSlug": "ap-clever-identities",
+    "atomId": "ap-clever-identities:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The clever AP identities?",
+    "correct": "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\sum k = \\frac{n(n+1)}{2}\\)",
+      "\\(a_n = \\frac{1}{a + (n-1)d}\\)",
+      "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "d3ee290602fa4bfea00f4b87bf847973a9820f0c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "sequence-series",
+    "subtopicSlug": "seq-arithmetic-progressions",
+    "conceptSlug": "ap-clever-identities",
+    "atomId": "ap-clever-identities:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The clever AP identities?",
+    "correct": "\\(p\\,a_p = q\\,a_q \\Rightarrow a_{p+q} = 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(a_n = S_n - S_{n-1}\\)",
+      "\\(a,\\ b,\\ c \\text{ in AP} \\iff 2b = a + c\\)",
+      "\\(\\frac{a_n}{a_n'} = \\frac{f(2n-1)}{g(2n-1)}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "e3b96d772c8bf6324687c644423b9b2766ca22b9",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "sequence-series",
+    "subtopicSlug": "seq-arithmetic-progressions",
+    "conceptSlug": "ap-clever-identities",
+    "atomId": "ap-clever-identities:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The clever AP identities?",
+    "correct": "\\(S_p = S_q \\Rightarrow S_{p+q} = 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\alpha + \\beta = -\\frac{b}{a}\\)",
+      "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)",
+      "\\(a_n = a + (n-1)d\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "ee72c5151e1eb48238636d9868c8476606d54eb5",
     "timeEstimateSec": 45
   },
   {
@@ -1475,10 +1553,10 @@
     "stem": "Which of the following is the formula for Common terms of two APs?",
     "correct": "\\(d_{\\text{common}} = \\operatorname{lcm}(d_1, d_2)\\)",
     "options": {
-      "A": "\\(\\sum k = \\frac{n(n+1)}{2}\\)",
+      "A": "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)",
       "B": "\\(d_{\\text{common}} = \\operatorname{lcm}(d_1, d_2)\\)",
-      "C": "\\(S_\\infty = \\frac{a}{1 - r}\\)",
-      "D": "\\(a_n = S_n - S_{n-1}\\)"
+      "C": "\\(\\sum k = \\frac{n(n+1)}{2}\\)",
+      "D": "\\(S_\\infty = \\frac{a}{1 - r}\\)"
     },
     "answer": "B",
     "candidateDistractors": [],
@@ -2104,8 +2182,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(n\\cdot n! = (n+1)! - n! \\;\\Rightarrow\\; \\sum_{k=1}^{n} k\\cdot k! = (n+1)! - 1\\)",
-      "\\(\\frac{a_n}{a_n'} = \\frac{f(2n-1)}{g(2n-1)}\\)",
-      "\\(S_n = \\frac{a\\,(r^n - 1)}{r - 1}\\)"
+      "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)",
+      "\\(\\frac{a_n}{a_n'} = \\frac{f(2n-1)}{g(2n-1)}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -2664,6 +2742,58 @@
     "chapterSlug": "sequence-series",
     "subtopicSlug": "seq-geometric-progressions",
     "conceptSlug": "gp-product-symmetry",
+    "atomId": "gp-product-symmetry:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Product of terms and the middle-term trick?",
+    "correct": "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(x = a + \\tfrac{1}{x}\\ \\Rightarrow\\ x^2 - ax - 1 = 0\\)",
+      "\\(\\text{AM} = \\frac{a+b}{2}\\)",
+      "\\(a_n = a + (n-1)d\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "cd47844497a3f1cfcefd1ba3539f0ba018d52bfb",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "sequence-series",
+    "subtopicSlug": "seq-geometric-progressions",
+    "conceptSlug": "gp-product-symmetry",
+    "atomId": "gp-product-symmetry:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Product of terms and the middle-term trick?",
+    "correct": "\\(\\prod_{i=1}^{2m-1} a_i = M^{2m-1}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(x = a + \\tfrac{1}{x}\\ \\Rightarrow\\ x^2 - ax - 1 = 0\\)",
+      "\\(\\alpha + \\beta = -\\frac{b}{a}\\)",
+      "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "9bf0614d70a2c8523a59ab3d3a1cd38642c0e3d6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "sequence-series",
+    "subtopicSlug": "seq-geometric-progressions",
+    "conceptSlug": "gp-product-symmetry",
     "atomId": "gp-product-symmetry:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -2833,7 +2963,7 @@
     "candidateDistractors": [
       "\\(\\frac{a_n}{a_n'} = \\frac{f(2n-1)}{g(2n-1)}\\)",
       "\\(\\frac{a-b}{b-c} = \\begin{cases} 1 & \\text{AP} \\\\[2pt] a/b & \\text{GP} \\\\[2pt] a/c & \\text{HP} \\end{cases}\\)",
-      "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)"
+      "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -3024,8 +3154,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)",
-      "\\(a_n = a\\,r^{\\,n-1}\\)",
-      "\\(\\text{HM} = \\frac{n}{\\sum_{i=1}^{n} \\frac{1}{x_i}}\\)"
+      "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)",
+      "\\(a_n = a\\,r^{\\,n-1}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -3682,10 +3812,10 @@
     "stem": "Which of the following is the formula for The log bridge: a GP becomes an AP?",
     "correct": "\\(x, y, z \\text{ in GP} \\iff \\log x, \\log y, \\log z \\text{ in AP}\\)",
     "options": {
-      "A": "\\(S_n = \\frac{a\\,(r^n - 1)}{r - 1}\\)",
-      "B": "\\(a_n = a + (n-1)d\\)",
+      "A": "\\(a_k \\cdot a_{n+1-k} = a_1 \\cdot a_n\\)",
+      "B": "\\(S_n = \\frac{a\\,(r^n - 1)}{r - 1}\\)",
       "C": "\\(x, y, z \\text{ in GP} \\iff \\log x, \\log y, \\log z \\text{ in AP}\\)",
-      "D": "\\(S_\\infty = \\frac{a}{1 - r}\\)"
+      "D": "\\(a_n = a + (n-1)d\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -4312,7 +4442,7 @@
     "candidateDistractors": [
       "\\(\\text{AM} = \\frac{a + b}{2}\\)",
       "\\(a,\\ b,\\ c \\text{ in AP} \\iff 2b = a + c\\)",
-      "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)"
+      "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -4686,9 +4816,9 @@
     "stem": "Which of the following is the formula for Factorial sums — telescoping and remainders?",
     "correct": "\\(n\\cdot n! = (n+1)! - n! \\;\\Rightarrow\\; \\sum_{k=1}^{n} k\\cdot k! = (n+1)! - 1\\)",
     "options": {
-      "A": "\\(\\frac{1}{u}, \\frac{1}{v}, \\frac{1}{w} \\text{ in HP} \\iff u, v, w \\text{ in AP}\\)",
-      "B": "\\(\\text{AM} = \\frac{a+b}{2}\\)",
-      "C": "\\(a,\\ b,\\ c \\text{ in AP} \\iff 2b = a + c\\)",
+      "A": "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)",
+      "B": "\\(\\frac{1}{u}, \\frac{1}{v}, \\frac{1}{w} \\text{ in HP} \\iff u, v, w \\text{ in AP}\\)",
+      "C": "\\(\\text{AM} = \\frac{a+b}{2}\\)",
       "D": "\\(n\\cdot n! = (n+1)! - n! \\;\\Rightarrow\\; \\sum_{k=1}^{n} k\\cdot k! = (n+1)! - 1\\)"
     },
     "answer": "D",
@@ -4846,7 +4976,7 @@
       "A": "\\(\\text{AM} = \\frac{a+b}{2}\\)",
       "B": "\\(\\text{HM} = \\frac{n}{\\sum_{i=1}^{n} \\frac{1}{x_i}}\\)",
       "C": "\\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)",
-      "D": "\\(a,\\ b,\\ c \\text{ in AP} \\iff 2b = a + c\\)"
+      "D": "\\(S_m = n,\\ S_n = m \\Rightarrow S_{m+n} = -(m+n)\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
