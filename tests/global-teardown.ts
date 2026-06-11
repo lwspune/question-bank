@@ -1,45 +1,49 @@
 /**
- * Runs once after every `npm test`. Sweeps any leftover test taxonomy out
- * of the live Supabase project so the public /browse Subject + Chapter
- * filters don't show garbage values.
+ * Runs once after every `npm test`. Sweeps any leftover test data out of the
+ * live Supabase project so the public /browse Subject + Chapter filters (and
+ * the bank counts) don't show garbage values.
  *
- * Catches three kinds of leak:
- *  - Test-named subjects (PYQB_/QD_/UD_/EditTest...) that survived a
- *    crashed afterAll. Their chapters/subtopics cascade.
- *  - Non-canonical chapters auto-created by `goodXlsxBuffer` commits
- *    under canonical subjects (currently only "Chemical Thermodynamics"
- *    under Chemistry).
- *  - Non-canonical subtopics auto-created by `goodXlsxBuffer` under
- *    canonical chapters (currently only "Chain Rule" under Differentiation).
+ * Primary mechanism — ORG SWEEP. Every integration test creates throwaway
+ * rows under a throwaway organization whose name carries an 8-hex run-id token
+ * (see `isTestOrgName`). Deleting that org CASCADES to its questions (→ which
+ * cascade to options / concept_tags / principle_tags / reports), its
+ * org_members, and its upload_jobs (verified delete_rules, 2026-06-11). The
+ * one non-cascading edge is `question_reports.org_id` (RESTRICT), so reports
+ * are cleared first. This single signal catches EVERY leaked fixture class —
+ * including the upload-flow fixtures that use a real sha256 content_hash and
+ * sit under canonical taxonomy, which no content/text pattern could catch.
  *
- * Per-suite afterAll hooks ALSO clean up — this is a safety net, not the
- * primary mechanism. Why both: vitest runs files in parallel and a
- * cleanup helper that runs at file-end races with other files still
- * mid-flight. The afterAll handles the run-id-scoped subjects (no race
- * because no other file shares a RUN_ID); this teardown handles the
- * canonical-adjacent auto-creates (would race if done per-file).
+ * Secondary sweeps:
+ *  - Test taxonomy (global, no org_id, so it can't cascade from the org):
+ *    subjects whose name carries a run-id token, deleted only when empty.
+ *  - Canonical-adjacent auto-creates by `goodXlsxBuffer` under canonical
+ *    subjects/chapters (Chemistry > "Chemical Thermodynamics",
+ *    Differentiation > "Chain Rule"), deleted only when empty + exam-scoped so
+ *    a real same-named chapter (e.g. JEE Mains > Chemistry > Chemical
+ *    Thermodynamics) is never touched.
+ *  - Auth users: the org cascade clears `org_members` but NOT the `auth.users`
+ *    rows behind them, so `@test.local` fixtures are swept via the admin API.
  *
- * NEVER deletes:
- *  - Subtopics with attached questions (Lens Formula and Magnification,
- *    Resonance and Tuning Forks — these hold real LWS Pune seed questions).
- *  - Anything matching the canonical taxonomy in supabase/seed/taxonomy.json.
+ * Guardrail: after every sweep it re-asserts zero test orgs / test subjects /
+ * test auth users remain and THROWS if any survived — turning a silent prod
+ * leak into a red run. (Safe to assert "zero" only because globalTeardown runs
+ * after the whole suite, with no other file still mid-flight.)
+ *
+ * Per-suite afterAll hooks still clean up on the happy path; this is the
+ * safety net for crashed / killed / parallel-interrupted runs.
+ *
+ * Why this rewrite (2026-06-11): the old teardown swept only test-NAMED
+ * subjects by a hardcoded prefix list (which had already rotted —
+ * `EditSetSubj_` was missing) and two canonical-adjacent nodes. It had NO
+ * mechanism for test questions inserted under canonical taxonomy, so 18 test
+ * questions (11 PUBLIC) + 12 orgs leaked into production. See the Decisions log.
  */
 import { config } from "dotenv";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { isTestOrgName, isTestTaxonomyName, isTestAuthEmail } from "./global-teardown-helpers";
 
-const TEST_SUBJECT_PREFIXES = [
-  "PYQB_Subject_",
-  "QD_Subject_",
-  "UD_Subject_",
-  "UD_DelSubject_",
-  "EditTestSubject",
-];
-
-// Vitest globalSetup module: default export is the setup function, which
-// returns the teardown function. We do nothing on setup; all the work is
-// in the returned teardown.
 export default async function setup() {
   return async function teardown(): Promise<void> {
     const envFile = path.join(process.cwd(), ".env.local");
@@ -49,49 +53,147 @@ export default async function setup() {
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!url || !key) return; // tests skipped — nothing to clean
 
-    const admin = createClient(url, key, {
-      auth: { persistSession: false },
-    });
+    const admin = createClient(url, key, { auth: { persistSession: false } });
 
-    // 1) Test-named subjects (cascades chapters + subtopics).
-    for (const prefix of TEST_SUBJECT_PREFIXES) {
-      await admin.from("subjects").delete().like("name", `${prefix}%`);
+    // ── 1) ORG SWEEP (primary) ────────────────────────────────────────────
+    const { data: orgs } = await admin.from("organizations").select("id, name");
+    const testOrgIds = (orgs ?? [])
+      .filter((o) => isTestOrgName(o.name))
+      .map((o) => o.id);
+
+    if (testOrgIds.length > 0) {
+      // question_reports.org_id is RESTRICT — clear it before the org cascade.
+      await admin.from("question_reports").delete().in("org_id", testOrgIds);
+      // Cascades questions (→ options/tags/reports), org_members, upload_jobs.
+      await admin.from("organizations").delete().in("id", testOrgIds);
     }
 
-    // 2) Non-canonical chapter under Chemistry.
-    const { data: chem } = await admin
-      .from("subjects")
-      .select("id")
-      .eq("name", "Chemistry")
-      .maybeSingle();
-    if (chem?.id) {
-      await admin
-        .from("chapters")
-        .delete()
-        .eq("subject_id", chem.id)
-        .eq("name", "Chemical Thermodynamics");
+    // ── 2) TEST TAXONOMY (global, no org_id) ──────────────────────────────
+    const { data: subjects } = await admin.from("subjects").select("id, name");
+    const testSubjectIds = (subjects ?? [])
+      .filter((s) => isTestTaxonomyName(s.name))
+      .map((s) => s.id);
+    for (const subjectId of testSubjectIds) {
+      // Only drop a test subject once the org sweep has emptied it.
+      const { count } = await admin
+        .from("questions")
+        .select("id", { count: "exact", head: true })
+        .eq("subject_id", subjectId);
+      if (!count) await admin.from("subjects").delete().eq("id", subjectId);
     }
 
-    // 3) Non-canonical subtopic "Chain Rule" under canonical Maths>Differentiation.
-    const { data: maths } = await admin
-      .from("subjects")
+    // ── 3) CANONICAL-ADJACENT AUTO-CREATES (empty + exam-scoped) ──────────
+    await deleteEmptyCanonicalAdjacentChapter(admin, "Chemistry", "Chemical Thermodynamics");
+    await deleteEmptyCanonicalAdjacentSubtopic(admin, ["Maths", "Mathematics"], "Differentiation", "Chain Rule");
+
+    // ── 4) AUTH USERS (admin API; org cascade leaves auth.users behind) ───
+    const testUserIds = await listTestAuthUserIds(admin);
+    if (testUserIds.length > 0) {
+      // entitlements.user_id → auth.users; clear before deleting the user.
+      await admin.from("entitlements").delete().in("user_id", testUserIds);
+      for (const id of testUserIds) await admin.auth.admin.deleteUser(id);
+    }
+
+    // ── 5) GUARDRAIL — fail the run loudly if the sweep left pollution ─────
+    await assertNoLeakedTestData(admin);
+  };
+}
+
+/** Page through auth.users and collect the @test.local fixture accounts. */
+async function listTestAuthUserIds(admin: SupabaseClient): Promise<string[]> {
+  const ids: string[] = [];
+  for (let page = 1; ; page++) {
+    const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
+    if (error) break;
+    const users = data?.users ?? [];
+    for (const u of users) if (isTestAuthEmail(u.email)) ids.push(u.id);
+    if (users.length < 1000) break;
+  }
+  return ids;
+}
+
+/**
+ * Post-sweep invariant: no test-signature rows survived. Runs after the whole
+ * suite (this is globalTeardown), so unlike a normal test it CAN assert "zero
+ * test orgs" — there are no other files still mid-flight. Throwing here turns a
+ * silent prod leak into a red run.
+ */
+async function assertNoLeakedTestData(admin: SupabaseClient): Promise<void> {
+  const problems: string[] = [];
+
+  const { data: orgs } = await admin.from("organizations").select("name");
+  const leakedOrgs = (orgs ?? []).filter((o) => isTestOrgName(o.name)).map((o) => o.name);
+  if (leakedOrgs.length) problems.push(`orgs: ${leakedOrgs.join(", ")}`);
+
+  const { data: subjects } = await admin.from("subjects").select("name");
+  const leakedSubjects = (subjects ?? []).filter((s) => isTestTaxonomyName(s.name)).map((s) => s.name);
+  if (leakedSubjects.length) problems.push(`subjects: ${leakedSubjects.join(", ")}`);
+
+  const leakedUsers = await listTestAuthUserIds(admin);
+  if (leakedUsers.length) problems.push(`auth users: ${leakedUsers.length}`);
+
+  if (problems.length) {
+    throw new Error(
+      `global-teardown left test data in the LIVE project — ${problems.join(" | ")}. ` +
+        `Investigate the sweep before trusting bank counts.`
+    );
+  }
+}
+
+async function deleteEmptyCanonicalAdjacentChapter(
+  admin: SupabaseClient,
+  subjectName: string,
+  chapterName: string
+): Promise<void> {
+  const { data: subjects } = await admin
+    .from("subjects")
+    .select("id")
+    .eq("name", subjectName);
+  for (const s of subjects ?? []) {
+    const { data: chapters } = await admin
+      .from("chapters")
       .select("id")
-      .eq("name", "Maths")
-      .maybeSingle();
-    if (maths?.id) {
-      const { data: diff } = await admin
-        .from("chapters")
+      .eq("subject_id", s.id)
+      .eq("name", chapterName);
+    for (const c of chapters ?? []) {
+      const { count } = await admin
+        .from("questions")
+        .select("id", { count: "exact", head: true })
+        .eq("chapter_id", c.id);
+      if (!count) await admin.from("chapters").delete().eq("id", c.id);
+    }
+  }
+}
+
+async function deleteEmptyCanonicalAdjacentSubtopic(
+  admin: SupabaseClient,
+  subjectNames: string[],
+  chapterName: string,
+  subtopicName: string
+): Promise<void> {
+  const { data: subjects } = await admin
+    .from("subjects")
+    .select("id")
+    .in("name", subjectNames);
+  for (const s of subjects ?? []) {
+    const { data: chapters } = await admin
+      .from("chapters")
+      .select("id")
+      .eq("subject_id", s.id)
+      .eq("name", chapterName);
+    for (const c of chapters ?? []) {
+      const { data: subtopics } = await admin
+        .from("subtopics")
         .select("id")
-        .eq("subject_id", maths.id)
-        .eq("name", "Differentiation")
-        .maybeSingle();
-      if (diff?.id) {
-        await admin
-          .from("subtopics")
-          .delete()
-          .eq("chapter_id", diff.id)
-          .eq("name", "Chain Rule");
+        .eq("chapter_id", c.id)
+        .eq("name", subtopicName);
+      for (const st of subtopics ?? []) {
+        const { count } = await admin
+          .from("questions")
+          .select("id", { count: "exact", head: true })
+          .eq("subtopic_id", st.id);
+        if (!count) await admin.from("subtopics").delete().eq("id", st.id);
       }
     }
-  };
+  }
 }
