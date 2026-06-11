@@ -18,13 +18,13 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-06-11
 
-### Purge the `pubtest` test quizzes + dummy atoms
+### ~~Sweep leaked `auth.users` test accounts~~ — **DONE 2026-06-11**
 
-`quiz:lint` (now paginated) flags exactly 3 atoms across the whole 1762-atom pool, all dummy test data: `pubtest-1781117516622:practiceSet:0/1/2` ("Test stem 0/1/2"). There are also 2 near-empty test quizzes on the dashboard — `nda-maths-resq1781117516622-formula-1` (0 q, published, `public_slug=pubtest-1781117516622`) and `pubtest-priv-1781117516622` (0 q, draft) — left over from validating the public funnel.
+Cleaned 11 orphaned `@test.local` accounts (guarded: test domain, no `org_members`, never the real admin) and added a permanent auth-user sweep to `global-teardown` (`isTestAuthEmail`, via `admin.auth.admin.listUsers`/`deleteUser`) + a guardrail that throws if any test orgs/subjects/auth-users survive. See [[test-data-leak-org-signal]].
 
-**Why:** they're the only noise in an otherwise-clean lint sweep, they clutter the (now-uncapped) `/dashboard/quizzes` list, and the published one holds a `public_slug` (a live but empty `/quiz/pubtest-…` page). Tiny.
+### ~~Purge the `pubtest` test quizzes + dummy atoms~~ — **DONE 2026-06-11**
 
-**How to apply:** `npm run quiz:delete nda-maths-resq1781117516622-formula-1` + `… pubtest-priv-1781117516622` (propagates to nda-tracker), then delete the 3 dummy atoms (`DELETE FROM quiz_atoms WHERE atom_key LIKE 'pubtest-%'`). Confirm `quiz:lint` is then 0-flagged. Skip if the user is still using them as a live funnel test.
+Deleted both quizzes (`nda-maths-resq1781117516622-formula-1` + `pubtest-priv-1781117516622`) via `quiz:delete` (propagated to nda-tracker) and the 3 `pubtest-%` dummy atoms via SQL. `quiz:lint` is now 0-flagged.
 
 ### Publish the now-clean formula quizzes (carry-forward)
 
