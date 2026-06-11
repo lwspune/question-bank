@@ -129,6 +129,10 @@ The 6-row PDF-vs-bank extraction-error taxonomy ([[gdrive-pdf-fetch]]) covers th
 
 ## Admin tooling
 
+### `/dashboard/quizzes` — server-side filtering + pagination (past ~1000 quizzes)
+
+`listAssembledQuizzes` now returns up to 1000 quizzes (raised from a silent 60-cap that hid older quizzes once the bank crossed 60 — fixed 2026-06-11) and `QuizBrowser` filters them client-side. This is fine at the current ~100 quizzes but ships every quiz's full `questions` snapshot to the client. Past ~1000 quizzes (the PostgREST page size) the list would silently truncate again. The scalable fix: push the exam/subject/chapter/theme/status filters into the query (server-side), drop the per-quiz `questions` payload from the list (lazy-load on row expand via a server action), and paginate. The "Quizzes built" stat already uses a true `count:"exact"` (`countAssembledQuizzes`), so it stays honest even if the list is capped.
+
 ### Per-question editing of upload-level metadata
 
 `/questions/[id]/edit` doesn't currently expose `pyq_year`, `pyq_month`, `pyq_note`, or `question_number`. Those are set at upload time or via `/uploads/[id]` bulk-PATCH. Per-question override is sometimes needed (correcting a single row after upload).

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { getSessionMember } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
-import { getQuizPoolStats, listAssembledQuizzes } from "@/lib/quiz/admin";
+import { getQuizPoolStats, listAssembledQuizzes, countAssembledQuizzes } from "@/lib/quiz/admin";
 import QuizBrowser from "./QuizBrowser";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +12,11 @@ export default async function QuizzesPage() {
   if (!member) redirect("/login");
   if (member.role !== "ADMIN") redirect("/browse");
 
-  const [stats, quizzes] = await Promise.all([getQuizPoolStats(), listAssembledQuizzes()]);
+  const [stats, quizzes, quizCount] = await Promise.all([
+    getQuizPoolStats(),
+    listAssembledQuizzes(),
+    countAssembledQuizzes(),
+  ]);
 
   return (
     <>
@@ -30,7 +34,7 @@ export default async function QuizzesPage() {
         </header>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatCard kind="numeric" value={quizzes.length} label="Quizzes built" />
+          <StatCard kind="numeric" value={quizCount} label="Quizzes built" />
           <StatCard kind="numeric" value={stats.ready} label="Questions ready" />
           <StatCard kind="numeric" value={stats.needsReview} label="Need review" />
           <StatCard kind="numeric" value={stats.total} label="Total in pool" />
