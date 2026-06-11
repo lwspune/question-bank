@@ -77,7 +77,13 @@ export async function readReadyAtoms(
       .eq("subject_route", route)
       .eq("chapter_slug", chapter)
       .in("status", ["auto", "verified"])
-      .not("options", "is", null);
+      .not("options", "is", null)
+      // Hard guard: the harvester's placeholder formula stem ("Which of the
+      // following is the formula for <name>?") is never publish-ready (generic +
+      // guessable). It must go through the verify pass for a concrete stem first.
+      // Added 2026-06-11 after a Probability formula quiz built entirely from
+      // these atoms shipped and read "off". See stemLint.GENERIC_FORMULA_TEMPLATE.
+      .not("stem", "ilike", "Which of the following is the formula for%");
     if (theme) query = query.eq("theme", theme);
     const { data, error } = await query.range(from, from + PAGE - 1);
     if (error) throw new Error(`read ready atoms failed: ${error.message}`);

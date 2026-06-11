@@ -141,6 +141,13 @@ Snapshot **2026-06-09** — refresh with:
 
 ---
 
+## Guard: `auto` formula atoms are NEVER publish-ready (2026-06-11)
+
+A `formula`-theme atom harvested with `status='auto'` carries the placeholder stem **"Which of the following is the formula for `<concept name>`?"** + random sibling-concept distractors. This reads "off" (generic phrasing, guessable by elimination) and must go through `quiz:verify` for a concrete scenario stem + tight permutation distractors BEFORE it can ship. Two guards now enforce this:
+- **`quiz:lint`** flags the pattern (`stemLint.GENERIC_FORMULA_TEMPLATE`) — run it before publishing.
+- **`assembleNextQuiz` hard-excludes** any atom whose stem matches `Which of the following is the formula for%`, so it can never be assembled regardless of status.
+So the formula-recall flow is: harvest → **verify each piece** (concrete stem + distractors in `verify/<chapter>-formulas.ts`) → assemble. A bare-harvested formula atom will simply be skipped by the assembler until verified. (Triggered by a Probability formula quiz that shipped built entirely from unverified auto atoms — fixed across all 7 NDA-Maths formula chapters; see the 2026-06-11 Decisions-log entry.)
+
 ## Known gaps / deferred
 
 - **Cross-chapter, theme-first assembly** — for permanently-thin themes (Properties/Traps cap low per chapter). A "Properties of the day" pulling property atoms across all NDA Maths chapters. Not built.
