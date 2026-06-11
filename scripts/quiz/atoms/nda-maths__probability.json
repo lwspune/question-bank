@@ -435,7 +435,7 @@
     "candidateDistractors": [
       "\\(P(B_k \\mid A) = \\dfrac{P(B_k)\\,P(A \\mid B_k)}{\\displaystyle\\sum_{i} P(B_i)\\,P(A \\mid B_i)}\\)",
       "\\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\)",
-      "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -656,7 +656,7 @@
     "candidateDistractors": [
       "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
       "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
-      "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -2703,9 +2703,9 @@
     "correct": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
     "options": {
       "A": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
-      "B": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)",
+      "B": "\\(0 \\le P(E) \\le 1\\)",
       "C": "\\(A \\cap B = \\varnothing \\;\\Rightarrow\\; P(A \\cup B) = P(A) + P(B)\\)",
-      "D": "\\(0 \\le P(E) \\le 1\\)"
+      "D": "\\(P = \\dfrac{\\#\\{x : x \\text{ has the property}\\}}{n}\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -2930,7 +2930,7 @@
       "A": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
       "B": "\\(0 \\le P(E) \\le 1\\)",
       "C": "\\(A_1 \\cup \\dots \\cup A_n = S \\;\\text{ and disjoint} \\;\\Rightarrow\\; \\sum_{i} P(A_i) = 1\\)",
-      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "D": "\\(n(S)=2^{n}\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -3604,7 +3604,7 @@
       "A": "\\(P(A) = \\sum_{i=1}^{n} P(B_i)\\,P(A \\mid B_i)\\)",
       "B": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)",
       "C": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
-      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "D": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -4055,7 +4055,7 @@
     "candidateDistractors": [
       "\\(P(E) = \\dfrac{\\text{favourable measure}}{\\text{total measure}}\\)",
       "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
-      "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -5010,7 +5010,7 @@
       "A": "\\(P(\\text{at least one}) = 1 - \\prod_{i}\\big(1 - P(A_i)\\big)\\)",
       "B": "\\(P = \\dfrac{\\dbinom{a}{k}\\dbinom{b}{r-k}}{\\dbinom{a+b}{r}}\\)",
       "C": "\\(\\max\\big(0,\\,P(A)+P(B)-1\\big) \\le P(A \\cap B) \\le \\min\\big(P(A),\\,P(B)\\big)\\)",
-      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
+      "D": "\\(n(S) = 6^2 = 36\\)"
     },
     "answer": "C",
     "candidateDistractors": [],
@@ -5217,36 +5217,6 @@
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "6d5bffed0630ef3cd6636ae03e3d1f03d1e30102",
-    "timeEstimateSec": 45
-  },
-  {
-    "exam": "NDA",
-    "subjectRoute": "nda-maths",
-    "chapterSlug": "probability",
-    "subtopicSlug": "bounds-on-probability",
-    "conceptSlug": "min-max-of-combined-probabilities",
-    "atomId": "min-max-of-combined-probabilities:formula:0",
-    "sourceKind": "formula",
-    "sourceIndex": 0,
-    "theme": "formula",
-    "stem": "Which of the following is the formula for Minimum and maximum of combined probabilities?",
-    "correct": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)",
-    "options": {
-      "A": "\\(0 \\le P(E) \\le 1\\)",
-      "B": "\\(P(\\text{solved}) = 1 - \\prod_{i}(1 - p_i)\\)",
-      "C": "\\(n(S) = 6^2 = 36\\)",
-      "D": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)"
-    },
-    "answer": "D",
-    "candidateDistractors": [],
-    "distractorSource": "sibling",
-    "trapHints": [
-      "Minimum union = max of the two probabilities, maximum union = their sum (capped at 1): Students often swap these. The union is SMALLEST when overlap is largest (one event inside the other) and LARGEST when overlap is smallest (disjoint).",
-      "Convert via \\(P(A)+P(B) = P(A\\cup B) + P(A\\cap B)\\): When a question constrains the union and intersection and asks for \\(P(A)+P(B)\\) (or vice-versa), this identity is the bridge — minimise/maximise the two right-hand terms independently within their allowed ranges."
-    ],
-    "status": "auto",
-    "looksMcqClean": false,
-    "sourceFingerprint": "d112692cfa024d256835467f420a8562982f8399",
     "timeEstimateSec": 45
   },
   {
