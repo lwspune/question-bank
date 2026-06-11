@@ -16,6 +16,26 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-11
+
+### Purge the `pubtest` test quizzes + dummy atoms
+
+`quiz:lint` (now paginated) flags exactly 3 atoms across the whole 1762-atom pool, all dummy test data: `pubtest-1781117516622:practiceSet:0/1/2` ("Test stem 0/1/2"). There are also 2 near-empty test quizzes on the dashboard — `nda-maths-resq1781117516622-formula-1` (0 q, published, `public_slug=pubtest-1781117516622`) and `pubtest-priv-1781117516622` (0 q, draft) — left over from validating the public funnel.
+
+**Why:** they're the only noise in an otherwise-clean lint sweep, they clutter the (now-uncapped) `/dashboard/quizzes` list, and the published one holds a `public_slug` (a live but empty `/quiz/pubtest-…` page). Tiny.
+
+**How to apply:** `npm run quiz:delete nda-maths-resq1781117516622-formula-1` + `… pubtest-priv-1781117516622` (propagates to nda-tracker), then delete the 3 dummy atoms (`DELETE FROM quiz_atoms WHERE atom_key LIKE 'pubtest-%'`). Confirm `quiz:lint` is then 0-flagged. Skip if the user is still using them as a live funnel test.
+
+### Publish the now-clean formula quizzes (carry-forward)
+
+Carry-forward of the still-open "Publish more public-funnel quizzes" entry below (2026-06-10) — **now unblocked**: the 20 formula quizzes are reworked to publish quality (0 broken stems), so a "Formulas of the day" share link is viable alongside the trap/HP suggestions already noted there. No new spec; see that entry.
+
+### Dashboard `/dashboard/quizzes` server-side filtering + pagination (carry-forward → ROADMAP)
+
+The 60-cap was fixed 2026-06-11 (limit→1000 + true count), good to ~1000 quizzes. The scalable version (push filters into the query, drop per-quiz `questions` from the list payload + lazy-load on expand, paginate) is fully specced in **ROADMAP.md → Admin tooling**. Surface here only as a pointer; act on it when the bank nears ~1000 quizzes.
+
+---
+
 ## 2026-06-10
 
 ### ~~Structured distractor-candidate generators in the harvester~~ — **DONE 2026-06-10** (numeric atoms)
