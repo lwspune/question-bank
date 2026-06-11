@@ -81,12 +81,30 @@ export async function getQuizPoolStats(): Promise<QuizPoolStats> {
   return { total, auto, verified, needsReview, ready: auto + verified };
 }
 
+/** True count of assembled quizzes (head request, never hits the 1000-row cap).
+ *  The dashboard "Quizzes built" stat must use this, NOT the (capped) length of
+ *  `listAssembledQuizzes`, or it silently under-reports once the bank crosses the
+ *  list limit. */
+export async function countAssembledQuizzes(): Promise<number> {
+  const db = createSupabaseAdminClient();
+  const { count, error } = await db.from("quizzes").select("id", { count: "exact", head: true });
+  if (error) throw new Error(`count quizzes failed: ${error.message}`);
+  return count ?? 0;
+}
+
 /** Most-recent assembled quizzes with their questions. Reads the IMMUTABLE
  *  question SNAPSHOT stored on the quiz row (migration 0035) — decoupled from the
  *  live atom pool, so a later atom change can't break a recorded quiz. Quizzes
  *  assembled BEFORE 0035 have an empty snapshot and fall back to the live
- *  map→atoms join. */
-export async function listAssembledQuizzes(limit = 60): Promise<AssembledQuiz[]> {
+ *  map→atoms join.
+ *
+ *  `limit` defaults to 1000 (the PostgREST page size) so the client receives the
+ *  FULL set and its cascade filters apply across every quiz — the old default of
+ *  60 silently hid the oldest quizzes once the bank crossed 60 (it now has 100+),
+ *  e.g. a chapter's older non-formula quizzes vanished from the filtered view.
+ *  Past ~1000 quizzes this needs server-side filtering / pagination + dropping
+ *  the per-quiz `questions` payload (lazy-load on expand) — see ROADMAP. */
+export async function listAssembledQuizzes(limit = 1000): Promise<AssembledQuiz[]> {
   const db = createSupabaseAdminClient();
   const { data: quizzes, error } = await db
     .from("quizzes")
