@@ -83,19 +83,18 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         "To find the extreme value of \\(P(A \\cup B)\\), \\(P(A \\cap B)\\) or \\(P(A)+P(B)\\), push the overlap to whichever boundary the bounds allow. " +
         "The identity \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\) converts between them.",
       definition:
-        "The four extreme values (linked by \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)):\n" +
+        "The four extreme values (linked by the identity \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B)\\)):\n" +
         "- **Union, min:** \\(P(A \\cup B) = \\max(P(A), P(B))\\)\n" +
         "- **Union, max:** \\(P(A \\cup B) = \\min(1,\\ P(A)+P(B))\\)\n" +
         "- **Intersection, min:** \\(P(A \\cap B) = \\max(0,\\ P(A)+P(B)-1)\\)\n" +
         "- **Intersection, max:** \\(P(A \\cap B) = \\min(P(A), P(B))\\)",
-      formula: {
-        label: "Linking identity",
-        latex:
-          "P(A) + P(B) = P(A \\cup B) + P(A \\cap B)",
-        symbols: [
-          { symbol: "use", meaning: "to bound \\(P(A)+P(B)\\) from bounds on the union and intersection (and vice-versa)" },
-        ],
-      },
+      // No standalone `formula` box: the concept's real content is the four
+      // bounds above (which overlap frechet-and-boole-bounds + the union-bounds
+      // concept, so they're not duplicated into a formula slot here), and the
+      // linking identity is already taught in the intuition, definition, and a
+      // trap. Harvesting a single "formula" here produced a mislabelled recall
+      // atom ("the formula for Minimum and maximum…" → the linking identity);
+      // dropping the slot stops that at the source. (2026-06-11)
       authoredExample: {
         prompt:
           "If \\(P(A) = \\dfrac{2}{3}\\) and \\(P(B) = \\dfrac{3}{5}\\), find the minimum value of \\(P(A \\cup B)\\) and the maximum value of \\(P(A \\cap B)\\).",

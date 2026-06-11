@@ -33,17 +33,24 @@ async function main() {
 
   const [route, chapter] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 
-  let query = db
-    .from("quiz_atoms")
-    .select("atom_key, subject_route, chapter_slug, source_kind, stem, correct")
-    .in("status", ["auto", "verified"])
-    .limit(2000);
-  if (route) query = query.eq("subject_route", route);
-  if (chapter) query = query.eq("chapter_slug", chapter);
-
-  const { data, error } = await query;
-  if (error) throw new Error(`read atoms failed: ${error.message}`);
-  const rows = data ?? [];
+  // Paginate — PostgREST caps a single response at 1000 rows even with an
+  // explicit .limit(), so a bare select silently misses atoms past 1000 (the
+  // ready pool is ~1800). Page through in 1000-row windows.
+  type AtomRow = { atom_key: string; subject_route: string; chapter_slug: string; source_kind: string; stem: string; correct: string | null };
+  const rows: AtomRow[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    let query = db
+      .from("quiz_atoms")
+      .select("atom_key, subject_route, chapter_slug, source_kind, stem, correct")
+      .in("status", ["auto", "verified"]);
+    if (route) query = query.eq("subject_route", route);
+    if (chapter) query = query.eq("chapter_slug", chapter);
+    const { data, error } = await query.order("atom_key").range(from, from + PAGE - 1);
+    if (error) throw new Error(`read atoms failed: ${error.message}`);
+    rows.push(...((data ?? []) as AtomRow[]));
+    if (!data || data.length < PAGE) break;
+  }
 
   const flagged = rows
     .map((r) => {
@@ -79,14 +86,21 @@ async function main() {
   // optionless atom. This breaks when atoms already mapped into a quiz are
   // re-harvested/re-classified (e.g. a bundle-formula auto atom split into
   // needs_review slots) — the quiz then renders a question with NO options.
-  const { data: mapRows, error: mapErr } = await db
-    .from("quiz_atoms_map")
-    .select("quizzes(slug, status), quiz_atoms(atom_key, status, options)")
-    .limit(5000);
-  if (mapErr) throw new Error(`read quiz_atoms_map failed: ${mapErr.message}`);
+  // Paginate (same 1000-row cap) — map rows scale with quizzes×questions (~1600+).
+  const mapRows: unknown[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error: mapErr } = await db
+      .from("quiz_atoms_map")
+      .select("quizzes(slug, status), quiz_atoms(atom_key, status, options)")
+      .order("quiz_id")
+      .range(from, from + PAGE - 1);
+    if (mapErr) throw new Error(`read quiz_atoms_map failed: ${mapErr.message}`);
+    mapRows.push(...(data ?? []));
+    if (!data || data.length < PAGE) break;
+  }
 
   const brokenByQuiz = new Map<string, { status: string; atoms: string[] }>();
-  for (const r of (mapRows ?? []) as unknown as Array<{
+  for (const r of mapRows as unknown as Array<{
     quizzes: { slug: string; status: string } | null;
     quiz_atoms: { atom_key: string; status: string; options: unknown } | null;
   }>) {
