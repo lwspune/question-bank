@@ -25,6 +25,21 @@ describe("flagStem — flags NON-self-contained stems", () => {
   it("flags an ultra-short telegraphic stem", () => {
     expect(flagStem("Valid?")).not.toEqual([]);
   });
+
+  // The auto-harvest placeholder formula stem — reversed 2026-06-11 from a
+  // tolerated case to a flagged one (a Probability formula quiz built entirely
+  // from these read "off"). The assembler also hard-excludes the pattern.
+  it("flags the generic auto-harvest formula template", () => {
+    expect(flagStem("Which of the following is the formula for Standard Deviation?")).not.toEqual([]);
+    expect(flagStem("Which of the following is the formula for The addition rule (inclusion-exclusion)?")).not.toEqual(
+      []
+    );
+  });
+
+  it("does NOT flag a concrete formula stem that names what it computes", () => {
+    expect(flagStem("The variance \\(\\sigma^2\\) of \\(n\\) observations is:")).toEqual([]);
+    expect(flagStem("Which is the multiplication rule for \\(P(A \\cap B)\\)?")).toEqual([]);
+  });
 });
 
 describe("flagStem — passes self-contained stems", () => {
@@ -52,10 +67,6 @@ describe("flagStem — passes self-contained stems", () => {
     expect(flagStem("Find the median of \\(5, 9, 2, 7, 1\\).")).toEqual([]);
   });
 
-  // Real false-positives caught when first running quiz:lint on the live bank.
-  it("does not flag the standard harvest template ('Which of the following…')", () => {
-    expect(flagStem("Which of the following is the formula for Standard Deviation?")).toEqual([]);
-  });
 
   it("does not flag 'the same unit as the data'", () => {
     expect(

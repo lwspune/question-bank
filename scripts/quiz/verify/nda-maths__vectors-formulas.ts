@@ -223,4 +223,126 @@ export const VERIFIED: VerifiedEntry[] = [
     ],
     theme: "formula",
   },
+
+  // ── auto-atom fixes (2026-06-11) ──────────────────────────────────
+  {
+    atomKey: "angle-via-dot-product-formula:formula:0",
+    stem: "The angle \\(\\theta\\) between non-zero vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) satisfies \\(\\cos\\theta=\\):",
+    distractors: [
+      f("\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}| + |\\vec{b}|}"),
+      f("\\dfrac{|\\vec{a}\\times\\vec{b}|}{|\\vec{a}|\\,|\\vec{b}|}"),
+      f("\\dfrac{|\\vec{a}|\\,|\\vec{b}|}{\\vec{a}\\cdot\\vec{b}}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "angles-and-vertices-from-position-vectors:formula:0",
+    stem: "For a triangle \\(ABC\\) with position vectors \\(\\vec{a},\\vec{b},\\vec{c}\\), the angle at vertex \\(C\\) satisfies \\(\\cos C=\\):",
+    distractors: [
+      f("\\dfrac{(\\vec{a} - \\vec{c})\\cdot(\\vec{b} - \\vec{c})}{|\\vec{a} - \\vec{c}| + |\\vec{b} - \\vec{c}|}"),
+      f("\\dfrac{(\\vec{a} - \\vec{b})\\cdot(\\vec{c} - \\vec{b})}{|\\vec{a} - \\vec{b}|\\,|\\vec{c} - \\vec{b}|}"),
+      f("\\dfrac{(\\vec{a} + \\vec{c})\\cdot(\\vec{b} + \\vec{c})}{|\\vec{a} + \\vec{c}|\\,|\\vec{b} + \\vec{c}|}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "collinearity-and-vector-relations-in-figures:formula:0",
+    stem: "Points with position vectors \\(\\vec{a},\\vec{b},\\vec{c}\\) are COLLINEAR if there exist scalars (not all zero) such that:",
+    distractors: [
+      f("\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma = 1"),
+      f("\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha\\beta\\gamma = 0"),
+      f("\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0} \\;\\text{ with }\\; \\alpha + \\beta + \\gamma \\neq 0"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "cross-product-algebra-and-properties:formula:0",
+    stem: "The cross product \\((\\vec{a} - \\vec{b}) \\times (\\vec{a} + \\vec{b})\\) equals:",
+    distractors: [
+      f("2\\,\\vec{b}\\times\\vec{a}"),
+      f("\\vec{a}\\times\\vec{b}"),
+      f("\\vec{0}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "distance-identities-in-quadrilaterals:formula:0",
+    stem: "By the parallelogram law, for any vectors \\(\\vec{p},\\vec{q}\\), \\(|\\vec{p}+\\vec{q}|^2 + |\\vec{p}-\\vec{q}|^2=\\):",
+    distractors: [
+      f("2(|\\vec{p}|^2 - |\\vec{q}|^2)"),
+      f("4(|\\vec{p}|^2 + |\\vec{q}|^2)"),
+      f("|\\vec{p}|^2 + |\\vec{q}|^2"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "moment-of-force:formula:0",
+    stem: "The moment \\(\\vec{M}\\) of a force \\(\\vec{F}\\) (acting at \\(P\\)) about a point \\(O\\) is:",
+    distractors: [
+      f("\\vec{M} = \\vec{F} \\times \\overrightarrow{OP}"),
+      f("\\vec{M} = \\overrightarrow{OP} \\cdot \\vec{F}"),
+      f("\\vec{M} = |\\overrightarrow{OP}|\\,|\\vec{F}|"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "perpendicularity-test:formula:0",
+    stem: "Which correctly states the perpendicularity test for non-zero vectors \\(\\vec{a},\\vec{b}\\)?",
+    distractors: [
+      f("\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\times\\vec{b} = \\vec{0} \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|"),
+      f("\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 0 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}| + |\\vec{b}|"),
+      f("\\vec{a}\\perp\\vec{b} \\;\\Longleftrightarrow\\; \\vec{a}\\cdot\\vec{b} = 1 \\;\\Longleftrightarrow\\; |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "scalar-triple-product-and-coplanarity:formula:0",
+    stem: "Three vectors \\(\\vec{a},\\vec{b},\\vec{c}\\) are COPLANAR if and only if:",
+    distractors: [
+      f("\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} \\neq 0"),
+      f("\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} = 1"),
+      f("\\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix} = 1"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "solve-perpendicularity-constraint-system:formula:0",
+    stem: "Expanding the dot product, \\((\\alpha\\vec{a}+\\beta\\vec{b})\\cdot(\\gamma\\vec{a}+\\delta\\vec{b})\\) equals:",
+    distractors: [
+      f("\\alpha\\gamma|\\vec{a}|^2 + (\\alpha\\delta-\\beta\\gamma)\\,\\vec{a}\\cdot\\vec{b} + \\beta\\delta|\\vec{b}|^2"),
+      f("\\alpha\\gamma|\\vec{a}|^2 + \\beta\\delta|\\vec{b}|^2"),
+      f("\\alpha\\gamma|\\vec{a}|^2 + (\\alpha\\delta+\\beta\\gamma)\\,|\\vec{a}|\\,|\\vec{b}| + \\beta\\delta|\\vec{b}|^2"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "triple-product-cyclic-and-derived-identities:formula:0",
+    stem: "The cyclic sum \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} + (\\vec{c}\\times\\vec{a})\\cdot\\vec{b}\\) equals:",
+    distractors: [
+      f("[\\vec{a}\\,\\vec{b}\\,\\vec{c}]"),
+      f("2[\\vec{a}\\,\\vec{b}\\,\\vec{c}]"),
+      f("\\vec{0}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "unit-vector-perpendicular-via-cross:formula:0",
+    stem: "A unit vector \\(\\hat{n}\\) perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\) is:",
+    distractors: [
+      f("\\hat{n} = \\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}|\\,|\\vec{b}|}"),
+      f("\\hat{n} = \\pm\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}\\times\\vec{b}|}"),
+      f("\\hat{n} = \\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|^2}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "vector-triple-product-bac-cab:formula:0",
+    stem: "By the BAC-CAB rule, the vector triple product \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) equals:",
+    distractors: [
+      f("(\\vec{a}\\cdot\\vec{b})\\,\\vec{c} - (\\vec{a}\\cdot\\vec{c})\\,\\vec{b}"),
+      f("(\\vec{a}\\cdot\\vec{c})\\,\\vec{c} - (\\vec{a}\\cdot\\vec{b})\\,\\vec{b}"),
+      f("(\\vec{a}\\cdot\\vec{b})\\,\\vec{b} - (\\vec{a}\\cdot\\vec{c})\\,\\vec{c}"),
+    ],
+    theme: "formula",
+  },
 ];

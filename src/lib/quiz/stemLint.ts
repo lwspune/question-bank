@@ -33,6 +33,16 @@ const VAGUE_CHOICE = /\bwhich (?:is|one is|of (?:these|them) is)?\s*(?:correct|r
 // Opens with a pronoun whose antecedent is missing once the atom stands alone.
 const DEICTIC_OPEN = /^\s*(this|these|those|it)\b/i;
 
+// The harvester's placeholder formula stem — "Which of the following is the
+// formula for <concept name>?". Never publish-ready: the concept name is a
+// descriptive phrase that reads off ('…for The addition rule?'), and the
+// auto-distractors are random sibling formulas (guessable by elimination). It
+// needs a concrete, scenario-based stem authored in the verify pass.
+// (Reversed 2026-06-11: this template was previously TOLERATED — see the test
+// history — until a Probability formula quiz built entirely from these atoms
+// shipped and read "off". The assembler also hard-excludes this pattern.)
+const GENERIC_FORMULA_TEMPLATE = /^\s*which of the following is the formula for\b/i;
+
 // Alphanumeric content of the RAW stem (math kept — "Mode of \(5,5,6,6,9\)?" is
 // self-contained; only true fragments like "Valid?" should trip this).
 const MIN_CONTENT_CHARS = 10;
@@ -45,6 +55,8 @@ export function flagStem(stem: string): string[] {
   if (DEICTIC_OPEN.test(prose)) reasons.push("deictic opener (missing antecedent)");
   if (BACK_REF.test(prose)) reasons.push("anaphoric back-reference to an undefined entity");
   if (VAGUE_CHOICE.test(prose)) reasons.push("criterion-less choice question");
+  if (GENERIC_FORMULA_TEMPLATE.test(prose))
+    reasons.push("generic auto-harvest formula template (needs a concrete stem)");
   // Too short = a fragment ("Valid?", "Why?"). A terse but math-complete stem
   // ("GM of \(2\) and \(8\)?", "\(\sum i\)=?") is self-contained — exempt anything
   // carrying a math zone.

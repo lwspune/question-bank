@@ -204,4 +204,182 @@ export const VERIFIED: VerifiedEntry[] = [
     distractors: [f("r = \\pm\\sqrt{b_{yx} + b_{xy}}"), f("r = b_{yx}\\,b_{xy}"), f("r = \\pm\\dfrac{b_{yx}}{b_{xy}}")],
     theme: "formula",
   },
+
+  // ── auto-atom fixes (2026-06-11) ─────────────────────────────────
+  // Means
+  {
+    atomKey: "arithmetic-mean-raw:formula:0",
+    stem: "For \\(n\\) observations \\(x_1, x_2, \\ldots, x_n\\), the arithmetic mean \\(\\bar{x}\\) is:",
+    correct: f("\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i"),
+    distractors: [
+      f("\\bar{x} = \\sum_{i=1}^{n} x_i"),
+      f("\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i^2"),
+      f("\\bar{x} = n\\sum_{i=1}^{n} x_i"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "arithmetic-mean-grouped:formula:0",
+    stem: "For a frequency distribution where value \\(x_i\\) occurs with frequency \\(f_i\\), the mean \\(\\bar{x}\\) is:",
+    distractors: [
+      f("\\bar{x} = \\dfrac{\\sum f_i x_i}{n}"),
+      f("\\bar{x} = \\dfrac{\\sum f_i}{\\sum f_i x_i}"),
+      f("\\bar{x} = \\dfrac{\\sum x_i}{\\sum f_i}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "combined-mean-weighted:formula:0",
+    stem: "For two groups of sizes \\(n_1, n_2\\) with means \\(M_1, M_2\\), the combined mean is:",
+    distractors: [
+      f("M_{12} = \\dfrac{M_1 + M_2}{n_1 + n_2}"),
+      f("M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{M_1 + M_2}"),
+      f("M_{12} = \\dfrac{M_1 + M_2}{2}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "geometric-mean:formula:0",
+    stem: "For \\(n\\) positive observations \\(x_1, x_2, \\ldots, x_n\\), the geometric mean is:",
+    correct: f("\\text{GM} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}"),
+    distractors: [
+      f("\\text{GM} = \\left(\\prod_{i=1}^{n} x_i\\right)^{n}"),
+      f("\\text{GM} = \\dfrac{1}{n}\\prod_{i=1}^{n} x_i"),
+      f("\\text{GM} = \\left(\\sum_{i=1}^{n} x_i\\right)^{1/n}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "harmonic-mean:formula:0",
+    stem: "For \\(n\\) positive observations \\(x_1, x_2, \\ldots, x_n\\), the harmonic mean is:",
+    correct: f("\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}}"),
+    distractors: [
+      f("\\text{HM} = \\dfrac{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}}{n}"),
+      f("\\text{HM} = \\dfrac{1}{n}\\sum_{i=1}^{n} x_i"),
+      f("\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} x_i}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "mean-replacement-correction:formula:0",
+    stem: "The mean of \\(n\\) observations is \\(M\\). A value \\(x\\) is replaced by \\(y\\). The new mean is:",
+    distractors: [
+      f("M_{\\text{new}} = M + \\dfrac{x - y}{n}"),
+      f("M_{\\text{new}} = M + (y - x)"),
+      f("M_{\\text{new}} = M + \\dfrac{y - x}{n - 1}"),
+    ],
+    theme: "formula",
+  },
+
+  // Median & Mode (grouped interpolation)
+  {
+    atomKey: "reading-frequency-tables:formula:0",
+    stem: "For grouped data (median class: lower boundary \\(L\\), c.f. before \\(F\\), frequency \\(f\\), width \\(h\\), total \\(n\\)), the median is:",
+    distractors: [
+      f("M = L + \\dfrac{\\tfrac{n}{2} - F}{f}"),
+      f("M = L + \\dfrac{F - \\tfrac{n}{2}}{f}\\,h"),
+      f("M = L + \\dfrac{\\tfrac{n}{2} - f}{F}\\,h"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "mode:formula:0",
+    stem: "For grouped data (modal class: lower boundary \\(L\\), modal frequency \\(f_1\\), pre/post frequencies \\(f_0, f_2\\), width \\(h\\)), the mode is:",
+    distractors: [
+      f("M_0 = L + \\dfrac{f_1 - f_0}{2f_1 + f_0 + f_2}\\,h"),
+      f("M_0 = L + \\dfrac{f_1 - f_0}{f_1 - f_0 - f_2}\\,h"),
+      f("M_0 = L + \\dfrac{f_0 - f_1}{2f_1 - f_0 - f_2}\\,h"),
+    ],
+    theme: "formula",
+  },
+
+  // Dispersion
+  {
+    atomKey: "variance:formula:0",
+    stem: "The variance \\(\\sigma^2\\) of \\(n\\) observations with mean \\(\\bar{x}\\) is:",
+    correct: f("\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2"),
+    distractors: [
+      f("\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})"),
+      f("\\sigma^2 = \\dfrac{1}{n}\\sum_{i=1}^{n}|x_i - \\bar{x}|"),
+      f("\\sigma^2 = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "standard-deviation:formula:0",
+    stem: "The standard deviation \\(\\sigma\\) of \\(n\\) observations with mean \\(\\bar{x}\\) is:",
+    correct: f("\\sigma = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}"),
+    distractors: [
+      f("\\sigma = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2"),
+      f("\\sigma = \\sqrt{\\dfrac{1}{n}\\sum_{i=1}^{n}|x_i - \\bar{x}|}"),
+      f("\\sigma = \\dfrac{1}{n}\\sqrt{\\sum_{i=1}^{n}(x_i - \\bar{x})^2}"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "mean-deviation:formula:0",
+    stem: "The mean deviation of \\(n\\) observations about a reference value \\(A\\) is:",
+    correct: f("\\text{MD}(A) = \\dfrac{1}{n}\\sum_{i=1}^{n}|x_i - A|"),
+    distractors: [
+      f("\\text{MD}(A) = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - A)"),
+      f("\\text{MD}(A) = \\dfrac{1}{n}\\sum_{i=1}^{n}(x_i - A)^2"),
+      f("\\text{MD}(A) = \\sum_{i=1}^{n}|x_i - A|"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "coefficient-of-variation:formula:0",
+    stem: "The coefficient of variation (CV) of a dataset with mean \\(\\bar{x}\\) and standard deviation \\(\\sigma\\) is:",
+    distractors: [
+      f("\\text{CV} = \\dfrac{\\sigma}{\\bar{x}}"),
+      f("\\text{CV} = \\dfrac{\\bar{x}}{\\sigma} \\times 100 \\%"),
+      f("\\text{CV} = \\sigma \\times \\bar{x} \\times 100 \\%"),
+    ],
+    theme: "formula",
+  },
+
+  // Frequency-distribution basics
+  {
+    atomKey: "frequency-and-tabulation:formula:0",
+    stem: "In a frequency distribution with frequencies \\(f_1, f_2, \\ldots, f_k\\), the total number of observations \\(N\\) is:",
+    distractors: [
+      f("N = \\sum_{i=1}^{k} f_i x_i"),
+      f("N = \\sum_{i=1}^{k} x_i"),
+      f("N = \\max_{i} f_i"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "histograms-polygons-ogives:formula:0",
+    stem: "In a histogram with unequal class widths, the height of a bar (frequency density) is:",
+    distractors: [
+      f("\\text{Density} = \\dfrac{\\text{Class width}}{\\text{Frequency}}"),
+      f("\\text{Density} = \\text{Frequency} \\times \\text{Class width}"),
+      f("\\text{Density} = \\dfrac{\\text{Frequency}}{\\text{Class mark}}"),
+    ],
+    theme: "formula",
+  },
+
+  // Regression
+  {
+    atomKey: "angle-between-regression-lines:formula:0",
+    stem: "The acute angle \\(\\theta\\) between two regression lines with slopes \\(m_1, m_2\\) satisfies:",
+    distractors: [
+      f("\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 - m_1\\,m_2}\\right|"),
+      f("\\tan\\theta = \\left|\\dfrac{m_1 + m_2}{1 + m_1\\,m_2}\\right|"),
+      f("\\tan\\theta = \\left|\\dfrac{1 + m_1\\,m_2}{m_1 - m_2}\\right|"),
+    ],
+    theme: "formula",
+  },
+  {
+    atomKey: "identifying-regression-line:formula:0",
+    stem: "Two regression slopes \\(b_{yx}, b_{xy}\\) form a valid (correctly-paired) set of regression lines only if:",
+    correct: f("b_{yx}\\,b_{xy} \\le 1"),
+    distractors: [
+      f("b_{yx}\\,b_{xy} \\ge 1"),
+      f("b_{yx}\\,b_{xy} = 1"),
+      f("b_{yx}\\,b_{xy} \\le 0"),
+    ],
+    theme: "formula",
+  },
 ];
