@@ -16,6 +16,11 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         "A complex number \\(z=a+ib\\) bundles a real part and an imaginary part, with \\(i^2=-1\\). Add and multiply like binomials, replacing \\(i^2\\) by \\(-1\\). Two complex numbers are equal only when both their real and imaginary parts match.",
       definition:
         "\\(z=a+ib\\), \\(a=\\operatorname{Re}(z)\\), \\(b=\\operatorname{Im}(z)\\), \\(i^2=-1\\). **Equality:** \\(a+ib=c+id\\iff a=c\\) and \\(b=d\\). **Arithmetic:** add/subtract componentwise; multiply as binomials (\\((a+ib)(c+id)=(ac-bd)+i(ad+bc)\\)). Divide by multiplying top and bottom by the denominator's conjugate.",
+      formula: {
+        label: "Fundamentals of a complex number",
+        latex:
+          "i^2=-1 \\qquad a+ib=c+id \\iff a=c,\\ b=d \\qquad (a+ib)(c+id)=(ac-bd)+i(ad+bc)",
+      },
       authoredExample: {
         prompt: "Express \\((2+3i)(1-i)\\) in the form \\(a+ib\\).",
         steps: [
@@ -51,6 +56,11 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         "- \\(z\\bar z=|z|^2=a^2+b^2\\); \\(z+\\bar z=2\\operatorname{Re}(z)\\); \\(z-\\bar z=2i\\operatorname{Im}(z)\\).\n" +
         "- **Purely real** \\(\\iff z=\\bar z\\) (imaginary part 0). **Purely imaginary** \\(\\iff z=-\\bar z\\) (real part 0).\n" +
         "- \\(\\overline{z_1z_2}=\\bar z_1\\bar z_2\\), \\(\\overline{z_1/z_2}=\\bar z_1/\\bar z_2\\). A real-coefficient equation has complex roots in **conjugate pairs**.",
+      formula: {
+        label: "Conjugate identities",
+        latex:
+          "\\overline{a+ib}=a-ib \\qquad z\\bar z=|z|^2 \\qquad \\operatorname{Re}(z)=\\dfrac{z+\\bar z}{2} \\qquad \\operatorname{Im}(z)=\\dfrac{z-\\bar z}{2i} \\qquad \\overline{z_1z_2}=\\bar z_1\\,\\bar z_2",
+      },
       authoredExample: {
         prompt: "For what real \\(x\\) is \\(z=(x-2)+3i\\) purely imaginary?",
         steps: [
@@ -74,6 +84,13 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         { prompt: "Real-coefficient equation: complex roots come as?", answer: "Conjugate pairs" },
       ],
       pyqExampleId: "0cf5be92-2e68-4666-90a5-2d4109ec575d", // (z-1)/(z+1) purely imaginary
+      traps: [
+        {
+          title: "**Purely imaginary** is the real-part-zero condition, not the imaginary-part-zero one",
+          body:
+            "A number is **purely imaginary** when \\(z=-\\bar z\\) (its **real** part is 0), and **purely real** when \\(z=\\bar z\\) (its **imaginary** part is 0). Students routinely swap these. For \\(z=(x-2)+3i\\) to be purely imaginary you set the **real** part \\(x-2=0\\), not the imaginary part.",
+        },
+      ],
     },
 
     {
@@ -84,6 +101,11 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         "The modulus \\(|z|\\) is the distance from the origin, so it multiplies and divides cleanly across products and quotients. For sums and differences it doesn't — there you reach for the triangle inequality, which is exactly what 'maximum/minimum of \\(|z\\pm c|\\)' questions want.",
       definition:
         "\\(|z|=\\sqrt{a^2+b^2}\\). Properties: \\(|z_1z_2|=|z_1||z_2|\\), \\(\\left|\\dfrac{z_1}{z_2}\\right|=\\dfrac{|z_1|}{|z_2|}\\), \\(|z^n|=|z|^n\\), \\(|\\bar z|=|z|\\). **Triangle inequality:** \\(\\big||z_1|-|z_2|\\big|\\le|z_1\\pm z_2|\\le|z_1|+|z_2|\\) — gives the max/min of \\(|z\\pm c|\\) on a disc \\(|z-a|\\le r\\).",
+      formula: {
+        label: "Modulus properties",
+        latex:
+          "|z|=\\sqrt{a^2+b^2} \\qquad |z_1z_2|=|z_1|\\,|z_2| \\qquad \\left|\\dfrac{z_1}{z_2}\\right|=\\dfrac{|z_1|}{|z_2|} \\qquad |z|^2=z\\bar z \\qquad |z_1+z_2|\\le|z_1|+|z_2|",
+      },
       authoredExample: {
         prompt: "Find \\(|(3+4i)(1-2i)|\\).",
         steps: [
@@ -105,6 +127,18 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         { prompt: "\\(|3+4i|\\)?", answer: "\\(5\\)" },
       ],
       pyqExampleId: "85cb2a07-6e8a-4c07-b3de-5707dfbd4266", // |12+5i|+|12-5i|
+      traps: [
+        {
+          title: "\\(z\\bar z=|z|^2\\), **not** \\(|z|\\)",
+          body:
+            "The product \\(z\\bar z\\) equals the modulus **squared**: \\(z\\bar z=a^2+b^2=|z|^2\\). Forgetting the square (writing \\(z\\bar z=|z|\\)) is the single most common modulus slip. So for \\(z=3+4i\\), \\(z\\bar z=25\\), while \\(|z|=5\\).",
+        },
+        {
+          title: "Modulus does **not** distribute over a sum",
+          body:
+            "\\(|z_1+z_2|\\ne|z_1|+|z_2|\\) in general — that's only an **inequality** (\\(|z_1+z_2|\\le|z_1|+|z_2|\\)), with equality only when \\(z_1,z_2\\) point the same way. Modulus DOES distribute over products and quotients: \\(|z_1z_2|=|z_1||z_2|\\). For maxima/minima of \\(|z\\pm c|\\), reach for the triangle inequality, never term-by-term addition.",
+        },
+      ],
     },
 
     {
@@ -115,6 +149,11 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         "Plot \\(z\\) on the Argand plane: its modulus is the distance from the origin, its argument the angle from the positive real axis. The catch is the **principal argument** — you must use the quadrant of \\((a,b)\\), not just \\(\\tan^{-1}(b/a)\\), to land it in \\((-\\pi,\\pi]\\).",
       definition:
         "**Polar form:** \\(z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta}\\), \\(r=|z|\\), \\(\\theta=\\arg z\\). The **principal argument** lies in \\((-\\pi,\\pi]\\); compute \\(\\tan^{-1}\\big|\\tfrac{b}{a}\\big|\\) then adjust for the quadrant of \\((a,b)\\). Arguments add under multiplication: \\(\\arg(z_1z_2)=\\arg z_1+\\arg z_2\\), \\(\\arg(z_1/z_2)=\\arg z_1-\\arg z_2\\).",
+      formula: {
+        label: "Polar form and argument",
+        latex:
+          "z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta} \\qquad \\arg(z_1z_2)=\\arg z_1+\\arg z_2 \\qquad \\arg\\!\\left(\\dfrac{z_1}{z_2}\\right)=\\arg z_1-\\arg z_2",
+      },
       visualizationSlug: "cn-argand-plane",
       authoredExample: {
         prompt: "Find the modulus and principal argument of \\(z=1+i\\).",
@@ -139,6 +178,13 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
         { prompt: "Principal arg of \\(1+i\\)?", answer: "\\(\\tfrac\\pi4\\)" },
       ],
       pyqExampleId: "f1db1a64-6269-425d-b811-5f3629d04070", // modulus and principal argument
+      traps: [
+        {
+          title: "The principal argument depends on the **quadrant**, not just \\(\\tan^{-1}(b/a)\\)",
+          body:
+            "\\(\\tan^{-1}(b/a)\\) alone can't tell apart \\(a+ib\\) from \\(-a-ib\\) (same ratio, opposite quadrants). Find the reference angle \\(\\tan^{-1}\\big|\\tfrac{b}{a}\\big|\\), then place it by the signs of \\((a,b)\\) so the result lands in \\((-\\pi,\\pi]\\). For \\(-1+i\\) (2nd quadrant) the argument is \\(\\tfrac{3\\pi}4\\), **not** \\(\\tan^{-1}(-1)=-\\tfrac\\pi4\\).",
+        },
+      ],
     },
   ],
   related: [

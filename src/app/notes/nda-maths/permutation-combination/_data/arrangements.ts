@@ -38,6 +38,12 @@ export const ARRANGEMENTS_NOTE: SubtopicNote = {
         { prompt: "Why divide by repeat-factorials?", answer: "Identical arrangements are over-counted" },
         { prompt: "Arrangements of LEVEL?", answer: "\\(30\\)" },
       ],
+      traps: [
+        {
+          title: "Repeated letters → divide by the repeat-factorials",
+          body: "The arrangements of a word with repeated letters is **not** \\(n!\\). For each letter repeated \\(p\\) times, swapping those identical copies gives the *same* word, so you over-count by \\(p!\\). Divide: MATHEMATICS (M, A, T each twice) has \\(\\dfrac{11!}{2!\\,2!\\,2!}\\), not \\(11!\\).",
+        },
+      ],
       pyqExampleId: "7c0c76a0-ac2d-45ef-8823-3ed7364b9493", // letters of a word
     },
 

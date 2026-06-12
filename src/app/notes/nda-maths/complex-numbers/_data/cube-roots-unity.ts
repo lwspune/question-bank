@@ -19,6 +19,11 @@ export const CUBE_ROOTS_UNITY_NOTE: SubtopicNote = {
         "- **\\(\\omega^3=1\\)** — so \\(\\omega^n=\\omega^{\\,n\\bmod 3}\\) (powers cycle every 3).\n" +
         "- **\\(1+\\omega+\\omega^2=0\\)** — so \\(\\omega+\\omega^2=-1\\) and \\(\\omega^2=-1-\\omega\\).\n" +
         "Also \\(\\omega\\cdot\\omega^2=1\\) (they are reciprocals/conjugates), and \\(|\\omega|=1\\).",
+      formula: {
+        label: "Cube roots of unity identities",
+        latex:
+          "\\omega^3=1 \\qquad 1+\\omega+\\omega^2=0 \\qquad \\bar\\omega=\\omega^2 \\qquad \\omega^n=\\omega^{\\,n\\bmod 3}",
+      },
       visualizationSlug: "cn-cube-roots-circle",
       authoredExample: {
         prompt: "Simplify \\(1+\\omega^4+\\omega^8\\), where \\(\\omega\\) is a non-real cube root of unity.",
@@ -40,9 +45,16 @@ export const CUBE_ROOTS_UNITY_NOTE: SubtopicNote = {
         { prompt: "\\(\\omega^3=\\)?", answer: "\\(1\\)" },
         { prompt: "\\(1+\\omega+\\omega^2=\\)?", answer: "\\(0\\)" },
         { prompt: "\\(\\omega^2\\) equals which other quantity?", answer: "\\(\\bar\\omega\\) (the conjugate)" },
-        { prompt: "\\(1+\\omega+\\omega^4=\\)?", answer: "\\(0\\) (\\(\\omega^4=\\omega\\))" },
+        { prompt: "\\(1+\\omega^4+\\omega^8=\\)?", answer: "\\(0\\) (\\(\\omega^4=\\omega,\\ \\omega^8=\\omega^2\\))" },
       ],
       pyqExampleId: "674e10ff-8a12-430a-8595-8fcf9f5d17d3", // 1,ω,ω² cube roots
+      traps: [
+        {
+          title: "\\(\\omega^2=\\bar\\omega\\), but \\(\\omega^2\\ne-\\omega\\)",
+          body:
+            "\\(\\omega^2\\) is the **conjugate** \\(\\bar\\omega\\) (both unit-circle cube roots, 120° apart). From \\(1+\\omega+\\omega^2=0\\) you get \\(\\omega^2=-1-\\omega\\) — **not** \\(-\\omega\\). Treating \\(\\omega^2\\) as \\(-\\omega\\) (or forgetting to reduce \\(\\omega^n\\) by \\(n\\bmod 3\\) first) wrecks the algebra. Also note \\(\\omega\\cdot\\omega^2=\\omega^3=1\\).",
+        },
+      ],
     },
 
     {

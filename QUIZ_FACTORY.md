@@ -115,10 +115,10 @@ exam/subject/chapter/theme/status. **Recorded quizzes are an immutable snapshot
 
 ## Chapter status
 
-Snapshot **2026-06-09** — refresh with:
+Snapshot **2026-06-12** — refresh with:
 `SELECT subject_route, chapter_slug, count(*) FILTER (WHERE status IN ('auto','verified')) ready, count(*) FILTER (WHERE status='needs_review') needs_review FROM quiz_atoms GROUP BY 1,2;`
 
-**5 chapters complete + Wave 1 of the prioritized-subset campaign** (2026-06-09: parallel sub-agents author distractors — one per chapter, heavy chapters split by subtopic; the main agent harvests/syncs/verifies/assembles/pushes serially). All quizzes are snapshot-backed (0035).
+**14 NDA Maths chapters + HP complete through Wave 3** (the prioritized-subset campaign: parallel sub-agents author distractors + notes enrichment — one per chapter, heavy chapters split by subtopic; the main agent harvests/syncs/verifies/assembles/pushes serially). Wave 3 (2026-06-12) = the next 4 by exam weight: limits-continuity, permutation-combination, application-of-derivatives, complex-numbers — 16 quizzes / 225 q; all 4 needed formula+trap enrichment from scratch (0 of each pre-harvest); all 12 agent-predicted verify keys matched on first run. All quizzes are snapshot-backed (0035).
 
 | Chapter | Ready | Quizzes | State |
 |---|---|---|---|
@@ -133,7 +133,11 @@ Snapshot **2026-06-09** — refresh with:
 | nda-maths / **3d-geometry** | ~141 | 11 | 🟢 **Wave 2 COMPLETE** — computation 8 + formula 2 + traps 1 (2026-06-10; 8 callouts into notes; Bucket 2 triage → 0 genuine formulas, all 5 flagged concepts are techniques) |
 | nda-maths / **sequence-series** | ~191 | 12 | 🟢 **Wave 2 COMPLETE** — computation 8 + formula 3 + traps 1 (2026-06-10; 9 callouts into notes → Common-Traps quiz; Bucket 2 +5 formulas: clever-AP-identities + GP-product-symmetry; re-derivation fixed `S_n=5n-2n²`→a₃=−5). First chapter to run the full cadence end-to-end. |
 | nda-maths / **differentiation** | ~137 | 8 | 🟢 **Wave 2 COMPLETE** — computation 6 + formula 1 (18 Q) + traps 1 (2026-06-10; 8 callouts into notes; Bucket 2 +6 formulas: first-principles + inverse-trig collapses) |
-| _rest of NDA Maths (~17 ch — mostly formula-only chapters I recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
+| nda-maths / **limits-continuity** | ~77 | 4 | 🟣 **Wave 3 (2026-06-12)** — computation 4 (58 q). Technique-heavy: 7 of 9 formula flags SKIPPED, only 2 genuine formulas enriched (xⁿ−aⁿ limit, continuity test) → formula 3 + trap 9 + fact 7 all PARKED (<12 floor, carry forward). Standard limits live as `fact` reference atoms. |
+| nda-maths / **permutation-combination** | ~61 | 4 | 🟣 **Wave 3 (2026-06-12)** — computation 3 (42 q) + formula 1 (13; ⁿPᵣ/ⁿCᵣ, Pascal, row-sum, absorption, circular, points/polygons). trap 6 parked (<12). number-divisibility formula skipped (criteria not equations). |
+| nda-maths / **application-of-derivatives** | ~60 | 3 | 🟣 **Wave 3 (2026-06-12)** — computation 3 (45 q). formula 8 (tangent/normal/rate/approx + AM-GM) + trap 7 PARKED (<12 floor). 6 of the test/method concepts triaged out as techniques. |
+| nda-maths / **complex-numbers** | ~73 | 5 | 🟣 **Wave 3 (2026-06-12)** — computation 3 (39 q) + formula 2 (28; the formula-richest Wave-3 chapter — conjugate/modulus/argument/powers-of-i/De-Moivre/cube-roots identities, 7 concepts enriched). trap 6 parked. Re-derivation fixed a notes error (`1+ω+ω⁴`→`1+ω⁴+ω⁸`). |
+| _rest of NDA Maths (~16 ch — mostly formula-only chapters recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 
 **Known quality catch (Wave 1):** the quiz build re-derives every practiceSet/selfCheck answer, surfacing **notes errors** the way notes-building surfaces wrong keys — Lines `lines-family-and-concurrency:practiceSet:3` had answer `(1,-2)` (should be `(1,-1)`); fixed in the notes `_data`, atom left parked (will correct on next harvest).
 

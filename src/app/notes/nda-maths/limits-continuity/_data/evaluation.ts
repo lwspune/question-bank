@@ -50,6 +50,10 @@ export const EVALUATION_NOTE: SubtopicNote = {
       definition:
         "- **Factor/cancel:** use \\(x^n-a^n=(x-a)(x^{n-1}+\\cdots+a^{n-1})\\); the standard result \\(\\lim_{x\\to a}\\dfrac{x^n-a^n}{x-a}=n\\,a^{n-1}\\).\n" +
         "- **Rationalise:** multiply numerator and denominator by the conjugate of the surd to turn \\(\\sqrt{A}-\\sqrt{B}\\) into \\(A-B\\), then cancel.",
+      formula: {
+        label: "The x^n − a^n standard limit",
+        latex: "\\lim_{x\\to a}\\dfrac{x^n-a^n}{x-a}=n\\,a^{n-1}",
+      },
       authoredExample: {
         prompt: "Evaluate \\(\\lim_{x\\to 2}\\dfrac{x^2-4}{x-2}\\).",
         steps: [
@@ -111,6 +115,16 @@ export const EVALUATION_NOTE: SubtopicNote = {
         { prompt: "\\(\\lim_{x\\to0}\\dfrac{\\sin 5x}{x}\\)?", answer: "\\(5\\)" },
       ],
       pyqExampleId: "3571c999-e231-43b5-af03-e7dd2dc1619c", // (10^sinx -1)/tan x
+      traps: [
+        {
+          title: "sin x / x → 1 only as x → 0",
+          body: "The standard limit \\(\\dfrac{\\sin x}{x}\\to 1\\) holds **only** as \\(x\\to 0\\). As \\(x\\to\\pi\\), \\(\\dfrac{\\sin x}{x}\\) is just \\(\\dfrac{\\sin\\pi}{\\pi}=0\\) by direct substitution — there is no indeterminate form, so the standard result does not apply.",
+        },
+        {
+          title: "Scale the argument, scale the value",
+          body: "\\(\\dfrac{\\sin ax}{x}\\to a\\), not \\(1\\) — and \\(\\dfrac{\\sin ax}{bx}\\to\\dfrac{a}{b}\\). Forgetting the multiplier is the most common slip: \\(\\dfrac{\\sin 5x}{x}\\to 5\\), and \\(\\dfrac{\\tan 3x}{\\sin 2x}\\to\\dfrac{3}{2}\\).",
+        },
+      ],
     },
 
     {
@@ -144,6 +158,16 @@ export const EVALUATION_NOTE: SubtopicNote = {
         { prompt: "Can you use it on \\(\\tfrac{2}{3}\\)?", answer: "No — only on indeterminate forms" },
       ],
       pyqExampleId: "3ff1f370-7d46-4658-b27e-caa8892a9b14", // (e^x-(1+x))/x^2
+      traps: [
+        {
+          title: "L'Hôpital only on indeterminate forms",
+          body: "Differentiating top and bottom is valid **only** when the limit is genuinely \\(\\tfrac00\\) or \\(\\tfrac{\\infty}{\\infty}\\). Applying it to a determinate form like \\(\\dfrac{2}{3}\\) or \\(\\dfrac{\\sin x}{x+1}\\) at \\(x=0\\) (which is \\(\\tfrac01=0\\)) gives a WRONG answer.",
+        },
+        {
+          title: "Differentiate top and bottom separately — not the quotient",
+          body: "L'Hôpital replaces \\(\\dfrac{f}{g}\\) by \\(\\dfrac{f'}{g'}\\) — you do NOT apply the quotient rule. Differentiating \\(\\dfrac{f}{g}\\) as a single function via the quotient rule is a different (and wrong) operation here.",
+        },
+      ],
     },
 
     {
