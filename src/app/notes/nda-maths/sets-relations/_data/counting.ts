@@ -22,6 +22,10 @@ export const COUNTING_NOTE: SubtopicNote = {
         "- **Supersets of a fixed set** \\(\\{x\\}\\): fix x as 'in', let the other \\(n-1\\) elements vary \\(\\Rightarrow 2^{n-1}\\) subsets contain x.\n" +
         "- **Count carefully when elements are themselves sets**: \\(A=\\{\\{1,2,3\\}\\}\\) has ONE element, so \\(|P(A)|=2\\).\n" +
         "- **Symmetry trick**: in a \\((2n+1)\\)-element set, the subsets of size \\(\\le n\\) are exactly half of all subsets \\(= \\tfrac{1}{2}\\cdot 2^{2n+1} = 2^{2n}\\).",
+      formula: {
+        label: "Counting subsets",
+        latex: "|P(A)| = 2^n \\qquad \\text{proper subsets} = 2^n - 1 \\qquad \\text{subsets containing a fixed element} = 2^{n-1}",
+      },
       authoredExample: {
         prompt:
           "A set S has \\(2n+1\\) elements. The number of subsets of S with at most n elements is 256. Find n.",
@@ -70,6 +74,10 @@ export const COUNTING_NOTE: SubtopicNote = {
         "- \\(|A\\cup B| = |A| + |B| - |A\\cap B|\\).\n" +
         "- For sets of multiples, \\(A\\cap B\\) uses the **LCM**: multiples of 3 \\(\\cap\\) multiples of 2 are multiples of 6.\n" +
         "- **Least overlap**: \\(|A\\cap B| \\ge |A|+|B|-|U|\\) (when the union can't exceed the universe). **Most overlap**: \\(|A\\cap B| \\le \\min(|A|,|B|)\\).",
+      formula: {
+        label: "Inclusion–exclusion (two sets)",
+        latex: "|A \\cup B| = |A| + |B| - |A \\cap B| \\qquad |A \\cap B| \\ge |A| + |B| - |U|",
+      },
       visualizationSlug: "sets-venn-two",
       authoredExample: {
         prompt:
@@ -118,6 +126,10 @@ export const COUNTING_NOTE: SubtopicNote = {
         "- \\(|A\\cup B\\cup C| = |A|+|B|+|C| - |A\\cap B| - |B\\cap C| - |A\\cap C| + |A\\cap B\\cap C|\\).\n" +
         "- This equals the sum of the **seven disjoint Venn regions**.\n" +
         "- **Maximising/minimising the union**: the only free quantity is the triple overlap \\(x = |A\\cap B\\cap C|\\). The union grows with x; x is bounded by \\(0 \\le x \\le \\min\\) of the pairwise intersections.",
+      formula: {
+        label: "Inclusion–exclusion (three sets)",
+        latex: "|A \\cup B \\cup C| = |A| + |B| + |C| - |A \\cap B| - |B \\cap C| - |A \\cap C| + |A \\cap B \\cap C|",
+      },
       visualizationSlug: "sets-venn-three",
       authoredExample: {
         prompt:
@@ -167,6 +179,10 @@ export const COUNTING_NOTE: SubtopicNote = {
         "- **Sum of pairwise intersections** \\(= (\\text{exactly two}) + 3\\cdot(\\text{all three})\\), so **exactly two** \\(= \\sum\\text{pairwise} - 3\\cdot(\\text{all three})\\).\n" +
         "- **At least two** \\(= (\\text{exactly two}) + (\\text{all three})\\).\n" +
         "- **Exactly one** \\(= \\text{total} - (\\text{at least two})\\).",
+      formula: {
+        label: "Survey accounting identities",
+        latex: "\\text{exactly two} = \\textstyle\\sum\\text{pairwise} - 3\\,(\\text{all three}) \\qquad \\text{at least two} = \\text{exactly two} + (\\text{all three})",
+      },
       visualizationSlug: "sets-venn-three",
       authoredExample: {
         prompt:

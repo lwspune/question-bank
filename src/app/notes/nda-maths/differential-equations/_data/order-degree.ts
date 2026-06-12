@@ -21,6 +21,12 @@ export const ORDER_DEGREE_NOTE: SubtopicNote = {
         "- **Degree** = the **power of the highest-order derivative** AFTER the equation is made free of radicals and fractional powers (made polynomial in the derivatives).\n" +
         "- **Degree is undefined** when a derivative appears inside a transcendental function, e.g. \\(\\cos\\!\\big(\\tfrac{dy}{dx}\\big)\\) or \\(\\ln\\!\\big(\\tfrac{dy}{dx}\\big)\\).\n" +
         "- Tip: \\(\\dfrac{dx}{dy} = \\Big(\\dfrac{dy}{dx}\\Big)^{-1}\\) — rewrite mixed derivatives in one form before reading the degree.",
+      formula: {
+        label: "Order and degree",
+        latex:
+          "\\text{order} = \\text{order of the highest derivative present} \\qquad " +
+          "\\text{degree} = \\text{power of the highest-order derivative, after making it polynomial in the derivatives}",
+      },
       authoredExample: {
         prompt:
           "Find the order and degree of \\(\\Big(\\dfrac{d^2y}{dx^2}\\Big)^{2} = 1 + \\Big(\\dfrac{dy}{dx}\\Big)^{3}\\).",
@@ -53,6 +59,11 @@ export const ORDER_DEGREE_NOTE: SubtopicNote = {
           title: "Clear fractional powers BEFORE reading the degree",
           body:
             "The degree is NOT the fractional exponent you see. For \\(\\big(2-(y')^2\\big)^{0.6} = y''\\), raise to the 5th power to get \\(\\big(2-(y')^2\\big)^3 = (y'')^5\\): the degree is 5, not 0.6. Make it polynomial first.",
+        },
+        {
+          title: "Degree is undefined when a derivative sits inside a transcendental",
+          body:
+            "For \\(\\dfrac{d^2y}{dx^2} + \\sin\\!\\big(\\tfrac{dy}{dx}\\big) = 0\\) the order is 2 but the degree does NOT exist — you can never make it polynomial in \\(\\tfrac{dy}{dx}\\). Writing \"degree 1\" because you see a first power is the trap; a derivative inside \\(\\sin\\), \\(\\cos\\), \\(\\ln\\) or \\(e^{(\\cdot)}\\) kills the degree.",
         },
       ],
     },
@@ -88,7 +99,7 @@ export const ORDER_DEGREE_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "A general solution has 3 arbitrary constants. The ODE's order is?", answer: "3" },
         { prompt: "Which has periodic solutions: \\(y''+9y=0\\) or \\(y''-9y=0\\)?", answer: "\\(y''+9y=0\\)", method: "the \\(+\\) sign gives SHM" },
-        { prompt: "Order of the ODE of all circles with centre on the x-axis (one free constant)?", answer: "1... actually 2 constants (centre + radius) → 2", method: "count independent constants" },
+        { prompt: "Order of the ODE of all circles with centre on the x-axis?", answer: "\\(2\\)", method: "\\((x-a)^2+y^2=r^2\\) has 2 arbitrary constants \\((a, r)\\) ⇒ order 2" },
       ],
       pyqExampleId: "54a4d934-8474-40b4-ab90-9245e4339c14", // order of y=acosx+bsinx
       traps: [

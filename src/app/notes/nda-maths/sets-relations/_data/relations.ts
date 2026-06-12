@@ -22,6 +22,10 @@ export const RELATIONS_NOTE: SubtopicNote = {
         "- A **relation** from A to B is any subset of \\(A\\times B\\); the number of relations is \\(2^{|A||B|}\\).\n" +
         "- **Domain** = set of first coordinates that occur; **range** = set of second coordinates; **codomain** = B (range may be smaller).\n" +
         "- Useful identity: \\((A\\times B)\\cap(B\\times A) = (A\\cap B)\\times(A\\cap B)\\).",
+      formula: {
+        label: "Cartesian product and relation counts",
+        latex: "|A \\times B| = |A|\\,|B| \\qquad \\text{number of relations} = 2^{|A||B|} \\qquad (A \\times B) \\cap (B \\times A) = (A \\cap B) \\times (A \\cap B)",
+      },
       visualizationSlug: "sets-cartesian-grid",
       authoredExample: {
         prompt:

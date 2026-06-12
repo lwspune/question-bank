@@ -115,10 +115,10 @@ exam/subject/chapter/theme/status. **Recorded quizzes are an immutable snapshot
 
 ## Chapter status
 
-Snapshot **2026-06-12** — refresh with:
+Snapshot **2026-06-12 (Wave 4)** — refresh with:
 `SELECT subject_route, chapter_slug, count(*) FILTER (WHERE status IN ('auto','verified')) ready, count(*) FILTER (WHERE status='needs_review') needs_review FROM quiz_atoms GROUP BY 1,2;`
 
-**14 NDA Maths chapters + HP complete through Wave 3** (the prioritized-subset campaign: parallel sub-agents author distractors + notes enrichment — one per chapter, heavy chapters split by subtopic; the main agent harvests/syncs/verifies/assembles/pushes serially). Wave 3 (2026-06-12) = the next 4 by exam weight: limits-continuity, permutation-combination, application-of-derivatives, complex-numbers — 16 quizzes / 225 q; all 4 needed formula+trap enrichment from scratch (0 of each pre-harvest); all 12 agent-predicted verify keys matched on first run. All quizzes are snapshot-backed (0035).
+**18 NDA Maths chapters + HP complete through Wave 4** (the prioritized-subset campaign: parallel sub-agents author distractors + notes enrichment — one per chapter, heavy chapters split by subtopic; the main agent harvests/syncs/verifies/assembles/pushes serially). Wave 3 (2026-06-12) = limits-continuity, permutation-combination, application-of-derivatives, complex-numbers — 16 quizzes / 225 q (all 4 needed formula+trap from scratch). Wave 4 (2026-06-12) = the next 4 by weight: sets-relations, definite-integration, quadratic-equations, differential-equations — 15 quizzes / 225 q (these were RICHER — all 4 already had trap callouts, QE coverage was fully clean; all 12 agent-predicted verify keys matched first run incl. def-int's re-indexed FTC/King's pieces). All quizzes are snapshot-backed (0035).
 
 | Chapter | Ready | Quizzes | State |
 |---|---|---|---|
@@ -137,7 +137,11 @@ Snapshot **2026-06-12** — refresh with:
 | nda-maths / **permutation-combination** | ~61 | 4 | 🟣 **Wave 3 (2026-06-12)** — computation 3 (42 q) + formula 1 (13; ⁿPᵣ/ⁿCᵣ, Pascal, row-sum, absorption, circular, points/polygons). trap 6 parked (<12). number-divisibility formula skipped (criteria not equations). |
 | nda-maths / **application-of-derivatives** | ~60 | 3 | 🟣 **Wave 3 (2026-06-12)** — computation 3 (45 q). formula 8 (tangent/normal/rate/approx + AM-GM) + trap 7 PARKED (<12 floor). 6 of the test/method concepts triaged out as techniques. |
 | nda-maths / **complex-numbers** | ~73 | 5 | 🟣 **Wave 3 (2026-06-12)** — computation 3 (39 q) + formula 2 (28; the formula-richest Wave-3 chapter — conjugate/modulus/argument/powers-of-i/De-Moivre/cube-roots identities, 7 concepts enriched). trap 6 parked. Re-derivation fixed a notes error (`1+ω+ω⁴`→`1+ω⁴+ω⁸`). |
-| _rest of NDA Maths (~16 ch — mostly formula-only chapters recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
+| nda-maths / **sets-relations** | ~77 | 5 | 🔵 **Wave 4 (2026-06-12)** — computation 3 (42 q) + formula 1 (14; De Morgan/IE/power-set/cartesian, 7 concepts enriched — set-algebra-laws is a `reference` concept so its laws ride as `fact` atoms) + trap 1 (13 pre-existing callouts). fact 8 parked. |
+| nda-maths / **definite-integration** | ~75 | 5 | 🔵 **Wave 4 (2026-06-12)** — computation 3 (41 q) + formula 1 (18; symmetry-odd-even/King's-property/periodic/GIF/area, several enriched + FTC/King's re-indexed) + trap 1 (13; +2 callouts to clear 12). formula 3 parked. |
+| nda-maths / **quadratic-equations** | ~61 | 3 | 🔵 **Wave 4 (2026-06-12)** — formula 2 (35; coverage was already CLEAN — verified all 11 auto + 24 needs_review pieces) + trap 1 (18 of 19 callouts). computation 7 parked (<12; QE is formula/trap-heavy, few practiceSet). |
+| nda-maths / **differential-equations** | ~50 | 2 | 🔵 **Wave 4 (2026-06-12)** — computation 2 (31 q). formula 8 (order/degree, separable, linear-ODE IF, growth-decay) + trap 11 PARKED (<12). Re-derivation fixed a garbled notes answer (circles-on-x-axis order). |
+| _rest of NDA Maths (~12 ch — mostly formula-only chapters recently built), NDA Physics (2), MHT-CET (1)_ | — | — | Not harvested |
 
 **Known quality catch (Wave 1):** the quiz build re-derives every practiceSet/selfCheck answer, surfacing **notes errors** the way notes-building surfaces wrong keys — Lines `lines-family-and-concurrency:practiceSet:3` had answer `(1,-2)` (should be `(1,-1)`); fixed in the notes `_data`, atom left parked (will correct on next harvest).
 

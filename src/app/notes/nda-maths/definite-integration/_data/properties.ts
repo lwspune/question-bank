@@ -25,8 +25,12 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         "- Works on \\(\\int_0^{\\pi/2}\\frac{\\sin x}{\\sin x+\\cos x}\\,dx = \\frac{\\pi}{4}\\) and the whole \\(\\frac{a\\cos x+b\\sin x}{\\sin x+\\cos x}\\) family.",
       visualizationSlug: "defint-kings-reflection",
       formula: {
-        label: "King's property",
-        latex: "\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx",
+        label: "King's property and its companions",
+        latex:
+          "\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx \\qquad " +
+          "\\int_a^b f(x)\\,dx = \\int_a^b f(a+b-x)\\,dx \\qquad " +
+          "\\int_0^{2a} f(x)\\,dx = \\int_0^a \\big[f(x)+f(2a-x)\\big]\\,dx \\qquad " +
+          "\\int_0^a \\frac{f(x)}{f(x)+f(a-x)}\\,dx = \\frac{a}{2}",
       },
       authoredExample: {
         prompt:
@@ -60,6 +64,11 @@ export const PROPERTIES_NOTE: SubtopicNote = {
           body:
             "King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
         },
+        {
+          title: "King's reflection only works with the matching limits",
+          body:
+            "The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails.",
+        },
       ],
     },
 
@@ -77,6 +86,13 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         "- **The \\(1+c^x\\) property**: for even \\(f\\), \\(\\displaystyle\\int_{-a}^{a}\\frac{f(x)}{1+c^{x}}\\,dx = \\frac12\\int_{-a}^{a} f(x)\\,dx = \\int_0^a f(x)\\,dx\\).\n" +
         "- Also \\(\\displaystyle\\int_{-a}^{a} h(x)\\,dx = \\int_0^a [h(x)+h(-x)]\\,dx\\).",
       visualizationSlug: "defint-area-region",
+      formula: {
+        label: "Odd/even symmetry over a symmetric interval",
+        latex:
+          "\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd}) \\qquad " +
+          "\\int_{-a}^{a} f(x)\\,dx = 2\\int_0^a f(x)\\,dx \\;\\;(f\\text{ even}) \\qquad " +
+          "\\int_{-a}^{a} \\frac{f(x)}{1+c^{x}}\\,dx = \\int_0^a f(x)\\,dx \\;\\;(f\\text{ even})",
+      },
       authoredExample: {
         prompt: "Evaluate \\(\\displaystyle\\int_{-\\pi/4}^{\\pi/4} (\\sin x - \\tan x)\\,dx\\).",
         steps: [
@@ -123,6 +139,13 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         "- \\(\\sin^4x+\\cos^4x = \\dfrac{3+\\cos 4x}{4}\\), so \\(\\int_0^{\\pi}(\\sin^4x+\\cos^4x)\\,dx=\\tfrac{3\\pi}{4}\\).\n" +
         "- \\(1+\\cos\\theta = 2\\cos^2\\tfrac{\\theta}{2}\\), \\(1-\\cos\\theta=2\\sin^2\\tfrac{\\theta}{2}\\) (half-angle).\n" +
         "- **Beta function**: \\(\\displaystyle\\int_0^1 x^{m}(1-x)^{n}\\,dx = \\frac{m!\\,n!}{(m+n+1)!}\\).",
+      formula: {
+        label: "Standard definite-integral results",
+        latex:
+          "\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2} \\qquad " +
+          "\\int_0^1 x^{m}(1-x)^{n}\\,dx = \\frac{m!\\,n!}{(m+n+1)!} \\qquad " +
+          "\\int_0^{\\pi/2}\\sin^{2}x\\,dx = \\int_0^{\\pi/2}\\cos^{2}x\\,dx = \\frac{\\pi}{4}",
+      },
       authoredExample: {
         prompt: "Evaluate \\(\\displaystyle\\int_0^1 x^2(1-x)^3\\,dx\\) using the Beta result.",
         steps: [

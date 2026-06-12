@@ -24,8 +24,11 @@ export const FTC_NOTE: SubtopicNote = {
         "- Simplify the integrand first: \\(e^{\\ln(\\cos x)} = \\cos x\\); \\(\\frac{d}{dx}\\tan^{-1}\\frac1x = \\frac{-1}{1+x^2}\\).",
       visualizationSlug: "defint-area-region",
       formula: {
-        label: "Fundamental Theorem of Calculus",
-        latex: "\\int_a^b f(x)\\,dx = F(b)-F(a),\\quad F'=f",
+        label: "Fundamental Theorem of Calculus and its corollaries",
+        latex:
+          "\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f) \\qquad " +
+          "\\int_a^b f'(x)\\,dx = f(b)-f(a) \\qquad " +
+          "\\int \\frac{f'(x)}{f(x)}\\,dx = \\ln|f(x)|",
       },
       authoredExample: {
         prompt: "Evaluate \\(\\displaystyle\\int_1^3 (2x-1)\\,dx\\).",
@@ -72,6 +75,12 @@ export const FTC_NOTE: SubtopicNote = {
         "- If \\(f\\) has period \\(T\\), then \\(\\displaystyle\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\).\n" +
         "- Find the period first: \\(\\sin^4x+\\cos^4x\\) has period \\(\\tfrac{\\pi}{2}\\); \\(|\\sin x|\\) has period \\(\\pi\\).\n" +
         "- Two integrals can be **equal** without being computed — a substitution like \\(x=e^t\\) can turn one into the other.",
+      formula: {
+        label: "Integral of a periodic function",
+        latex:
+          "\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx \\qquad " +
+          "\\int_{a}^{a+nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx",
+      },
       authoredExample: {
         prompt: "Given \\(|\\sin x|\\) has period \\(\\pi\\) and \\(\\int_0^{\\pi}|\\sin x|\\,dx = 2\\), find \\(\\int_0^{8\\pi}|\\sin x|\\,dx\\).",
         steps: [
