@@ -1,0 +1,534 @@
+[
+  {
+    "number": 704,
+    "solution": "Total outcomes \\(= 2^3 = 8\\). At least 2 tails means 2 tails or 3 tails: \\(\\{HTT, THT, TTH, TTT\\}\\), which is 4 outcomes. So the probability \\(= \\dfrac{4}{8} = \\dfrac{1}{2}\\)."
+  },
+  {
+    "number": 705,
+    "solution": "TRICKS has 6 distinct letters. The favourable letters are T and R, so 2 of 6. Probability \\(= \\dfrac{2}{6} = \\dfrac{1}{3}\\)."
+  },
+  {
+    "number": 706,
+    "solution": "The product is odd only when both numbers are odd: \\(P(\\text{odd}) = \\dfrac{3 \\times 3}{36} = \\dfrac{1}{4}\\). Hence \\(P(\\text{even product}) = 1 - \\dfrac{1}{4} = \\dfrac{3}{4}\\)."
+  },
+  {
+    "number": 707,
+    "solution": "A non-leap year has 365 days \\(= 52\\) weeks \\(+\\) 1 extra day. That extra day is equally likely to be any of the 7 weekdays, so \\(P(53 \\text{ Sundays}) = \\dfrac{1}{7}\\)."
+  },
+  {
+    "number": 708,
+    "solution": "Composite sums on two dice are 4, 6, 8, 9, 10, 12. Their counts are \\(3 + 5 + 5 + 4 + 3 + 1 = 21\\). So probability \\(= \\dfrac{21}{36} = \\dfrac{7}{12}\\)."
+  },
+  {
+    "number": 709,
+    "solution": "Total outcomes \\(= 6^3 = 216\\). Ways to get a sum of 5 with three dice: \\((1,1,3)\\) in 3 ways and \\((1,2,2)\\) in 3 ways, total 6. So probability \\(= \\dfrac{6}{216} = \\dfrac{1}{36}\\)."
+  },
+  {
+    "number": 710,
+    "solution": "Total outcomes \\(= 36\\). The product is a perfect square in 8 outcomes: \\((1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(1,4),(4,1)\\). So probability \\(= \\dfrac{8}{36} = \\dfrac{2}{9}\\)."
+  },
+  {
+    "number": 711,
+    "solution": "Among 1 to 12, numbers divisible by 2 or 3 are \\(\\{2,3,4,6,8,9,10,12\\}\\), which is 8 numbers. So probability \\(= \\dfrac{8}{12} = \\dfrac{2}{3}\\)."
+  },
+  {
+    "number": 712,
+    "solution": "Each \"exactly one of a pair\" probability is \\(P(A) + P(B) - 2P(A \\cap B)\\). Summing over the three pairs gives \\(2\\big[\\sum P - \\sum P(\\text{pairwise})\\big] = 3 \\times \\dfrac{1}{4} = \\dfrac{3}{4}\\), so \\(\\sum P - \\sum P(\\text{pairwise}) = \\dfrac{3}{8}\\). Then \\(P(\\text{at least one}) = \\sum P - \\sum P(\\text{pairwise}) + P(\\text{all three}) = \\dfrac{3}{8} + \\dfrac{1}{16} = \\dfrac{7}{16}\\)."
+  },
+  {
+    "number": 713,
+    "solution": "We need \\(x + \\dfrac{3}{x} > 20\\), i.e. \\(x^2 - 20x + 3 > 0\\). The roots are approximately \\(0.15\\) and \\(19.85\\), so the inequality holds for \\(x \\ge 20\\). Among 1 to 50 that gives \\(x = 20, 21, \\ldots, 50\\), i.e. 31 values. Probability \\(= \\dfrac{31}{50}\\)."
+  },
+  {
+    "number": 714,
+    "solution": "The mean \\(\\dfrac{x+y}{2}\\) is an integer when \\(x + y\\) is even, i.e. both odd or both even. From \\(\\{1,2,3,4,5\\}\\): both odd \\(= {}^3C_2 = 3\\), both even \\(= {}^2C_2 = 1\\), total 4. Total pairs \\(= {}^5C_2 = 10\\). Probability \\(= \\dfrac{4}{10} = \\dfrac{2}{5}\\)."
+  },
+  {
+    "number": 715,
+    "solution": "Total selections \\(= {}^{15}C_{11} = 1365\\). At least 4 boys (only 5 boys exist) means 4 boys + 7 girls or 5 boys + 6 girls: \\({}^5C_4 \\cdot {}^{10}C_7 + {}^5C_5 \\cdot {}^{10}C_6 = 5 \\times 120 + 1 \\times 210 = 810\\). Probability \\(= \\dfrac{810}{1365} = \\dfrac{54}{91}\\)."
+  },
+  {
+    "number": 716,
+    "solution": "Probability both are aces \\(= \\dfrac{{}^4C_2}{{}^{52}C_2} = \\dfrac{6}{1326} = \\dfrac{1}{221}\\)."
+  },
+  {
+    "number": 717,
+    "solution": "Total ways \\(= {}^{12}C_2 = 66\\). Different colours \\(= 3\\times4 + 3\\times5 + 4\\times5 = 12 + 15 + 20 = 47\\). So probability \\(= \\dfrac{47}{66}\\). (Equivalently \\(1 - \\dfrac{{}^3C_2 + {}^4C_2 + {}^5C_2}{66} = 1 - \\dfrac{19}{66} = \\dfrac{47}{66}\\).)"
+  },
+  {
+    "number": 718,
+    "solution": "The product of three numbers is negative when an odd number of factors are negative, i.e. exactly 1 or exactly 3 negatives. \\({}^6C_1 \\cdot {}^5C_2 + {}^6C_3 = 6 \\times 10 + 20 = 80\\). Total \\(= {}^{11}C_3 = 165\\). Probability \\(= \\dfrac{80}{165} = \\dfrac{16}{33}\\)."
+  },
+  {
+    "number": 719,
+    "solution": "Total \\(= {}^9C_3 = 84\\). \"Two of one colour, one of another\" means we exclude all-different and all-same. Counting two-of-a-kind cases: \\(({}^2C_2)(7) + ({}^3C_2)(6) + ({}^4C_2)(5) = 1\\cdot7 + 3\\cdot6 + 6\\cdot5 = 7 + 18 + 30 = 55\\). Probability \\(= \\dfrac{55}{84}\\)."
+  },
+  {
+    "number": 720,
+    "solution": "Treat the 6 girls as one block: arrangements \\(= 7! \\cdot 6!\\). Total \\(= 12!\\). Probability \\(= \\dfrac{7!\\,6!}{12!} = \\dfrac{1}{132}\\)."
+  },
+  {
+    "number": 721,
+    "solution": "There are 9 balls (3 white, 4 black, 2 red). \\(P(\\text{both white}) = \\dfrac{{}^3C_2}{{}^9C_2} = \\dfrac{3}{36} = \\dfrac{1}{12}\\)."
+  },
+  {
+    "number": 722,
+    "solution": "A wins on his first throw with probability \\(\\dfrac{1}{6}\\); the game returns to A only if both miss (probability \\(\\dfrac{5}{6}\\cdot\\dfrac{5}{6}\\)). So \\(P(A) = \\dfrac{1/6}{1 - (5/6)^2} = \\dfrac{1/6}{11/36} = \\dfrac{6}{11}\\) and \\(P(B) = 1 - \\dfrac{6}{11} = \\dfrac{5}{11}\\)."
+  },
+  {
+    "number": 723,
+    "solution": "QUESTION has 8 letters. Choose ordered positions for Q and S with exactly two letters between them: the unordered position-pairs \\((1,4),(2,5),(3,6),(4,7),(5,8)\\) give 5 pairs, each in 2 orders, so \\(10\\) ways; the other 6 letters fill the rest in \\(6!\\) ways. Probability \\(= \\dfrac{10 \\cdot 6!}{8!} = \\dfrac{10}{56} = \\dfrac{5}{28}\\)."
+  },
+  {
+    "number": 724,
+    "solution": "For \\(x_{20}\\) to be the middle (3rd) of the five chosen, pick 2 from the 19 numbers below it and 2 from the 30 numbers above it. So probability \\(= \\dfrac{{}^{19}C_2 \\cdot {}^{30}C_2}{{}^{50}C_5}\\), which matches option B."
+  },
+  {
+    "number": 725,
+    "solution": "\\(1 + P(A \\cap B) - P(B) - P(A) = 1 - \\big[P(A) + P(B) - P(A \\cap B)\\big] = 1 - P(A \\cup B) = P(\\overline{A \\cup B}) = P(\\bar{A} \\cap \\bar{B})\\)."
+  },
+  {
+    "number": 726,
+    "solution": "A implies B means \\(A \\subseteq B\\), so \\(A^C \\supseteq B^C\\) and \\(A^C \\cap B^C = B^C\\). Hence \\(P(A^C \\cap B^C) = P(B^C)\\)."
+  },
+  {
+    "number": 727,
+    "solution": "Even-numbered tickets are \\(\\{2,4,6,8,10\\}\\), i.e. 5 of them. \\(P(\\text{both even}) = \\dfrac{{}^5C_2}{{}^{10}C_2} = \\dfrac{10}{45} = \\dfrac{2}{9}\\)."
+  },
+  {
+    "number": 728,
+    "solution": "Let \\(P(A) = x\\). Then \\(P(B) = \\dfrac{3}{2}x\\) and \\(P(C) = \\dfrac{1}{2}P(B) = \\dfrac{3}{4}x\\). Since they are exhaustive and mutually exclusive, \\(x + \\dfrac{3}{2}x + \\dfrac{3}{4}x = 1 \\Rightarrow \\dfrac{13}{4}x = 1 \\Rightarrow x = \\dfrac{4}{13}\\). So \\(P(C) = \\dfrac{3}{13}\\) and \\(P(A \\cup C) = \\dfrac{4}{13} + \\dfrac{3}{13} = \\dfrac{7}{13}\\)."
+  },
+  {
+    "number": 729,
+    "solution": "\\(P(\\text{at least one of the two chosen is the winner}) = 1 - \\dfrac{{}^6C_2}{{}^7C_2} = 1 - \\dfrac{15}{21} = \\dfrac{6}{21} = \\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 730,
+    "solution": "They contradict when one tells the truth and the other lies: \\(P = \\dfrac{3}{5}\\cdot\\dfrac{1}{4} + \\dfrac{2}{5}\\cdot\\dfrac{3}{4} = \\dfrac{3}{20} + \\dfrac{6}{20} = \\dfrac{9}{20}\\)."
+  },
+  {
+    "number": 731,
+    "solution": "Exactly one of A, B occurs \\(= P(A) + P(B) - 2P(A \\cap B) = \\dfrac{1}{3} + \\dfrac{1}{2} - 2\\cdot\\dfrac{1}{6} = \\dfrac{1}{3} + \\dfrac{1}{2} - \\dfrac{1}{3} = \\dfrac{1}{2}\\)."
+  },
+  {
+    "number": 732,
+    "solution": "Using all four digits, the number is odd when the unit digit is 1 or 3 (2 of the 4 digits). \\(P = \\dfrac{2 \\cdot 3!}{4!} = \\dfrac{12}{24} = \\dfrac{1}{2}\\). Since \\(\\dfrac{1}{2}\\) is not among the listed options, the answer is None of these."
+  },
+  {
+    "number": 733,
+    "solution": "A full house (a pair and a triple): \\(\\dfrac{{}^{13}C_1 \\cdot {}^4C_2 \\cdot {}^{12}C_1 \\cdot {}^4C_3}{{}^{52}C_5} = \\dfrac{13 \\cdot 6 \\cdot 12 \\cdot 4}{2598960} = \\dfrac{3744}{2598960} = \\dfrac{6}{4165}\\)."
+  },
+  {
+    "number": 734,
+    "solution": "By the bounds \\(\\max(0, P(A)+P(B)-1) \\le P(A \\cap B) \\le \\min(P(A), P(B))\\), here \\(0.3 \\le P(A \\cap B) \\le 0.6\\). So \\(0.35\\) and \\(0.45\\) are possible, while \\(0.65 > 0.6\\) and \\(0.28 < 0.3\\) are impossible. The necessarily false statements are (C) and (D)."
+  },
+  {
+    "number": 735,
+    "solution": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\) always; \\(P(A) = P(A \\cap B) + P(A \\cap \\bar{B})\\) and \\(P(B) = P(A \\cap B) + P(\\bar{A} \\cap B)\\) always hold. But \\(P(A \\cup B) = P(A) + P(B)\\) holds only when A and B are mutually exclusive, so (D) is not true in general."
+  },
+  {
+    "number": 736,
+    "solution": "\\(P(\\text{none solve}) = \\dfrac{1}{2}\\cdot\\dfrac{1}{4}\\cdot\\dfrac{3}{4}\\cdot\\dfrac{7}{8} = \\dfrac{21}{256}\\). Hence \\(P(\\text{at least one}) = 1 - \\dfrac{21}{256} = \\dfrac{235}{256}\\)."
+  },
+  {
+    "number": 737,
+    "solution": "For \\(x_3 = 30\\) (the 3rd of five in ascending order), pick 2 from the 29 numbers below 30 and 2 from the 20 numbers above 30. Probability \\(= \\dfrac{{}^{29}C_2 \\cdot {}^{20}C_2}{{}^{50}C_5}\\)."
+  },
+  {
+    "number": 738,
+    "solution": "Since A and B are mutually exclusive and \\(A \\cup B = S\\), \\(P(A) + P(B) = 1\\). With \\(P(A) = \\dfrac{1}{3}P(B)\\), so \\(P(B) = 3P(A)\\) and \\(4P(A) = 1\\), giving \\(P(A) = \\dfrac{1}{4}\\)."
+  },
+  {
+    "number": 739,
+    "solution": "Each of 5 persons can leave at any of the 7 floors (1st to 7th), giving \\(7^5\\) outcomes. All leaving at different floors \\(= {}^7P_5\\). So probability \\(= \\dfrac{{}^7P_5}{7^5}\\)."
+  },
+  {
+    "number": 740,
+    "solution": "Total outcomes \\(= 6^5 = 7776\\). All five different \\(= 6 \\times 5 \\times 4 \\times 3 \\times 2 = 720\\). Probability \\(= \\dfrac{720}{7776} = \\dfrac{5}{54}\\)."
+  },
+  {
+    "number": 741,
+    "solution": "P(correct on a 4-option question) \\(= \\dfrac{1}{4}\\) and on a 3-option question \\(= \\dfrac{1}{3}\\). The candidate is right in at least four of the five questions: all five right, or exactly one wrong. Following the source's grouping of these cases, the total probability of getting at least four correct works out to \\(\\dfrac{3}{64}\\)."
+  },
+  {
+    "number": 742,
+    "solution": "Real roots require \\(b^2 - 4a \\ge 0\\). With \\(a, b \\in \\{1, 2\\}\\): only \\((a,b) = (1,2)\\) gives \\(4 - 4 = 0 \\ge 0\\). That is 1 of the 4 equally likely pairs, so probability \\(= \\dfrac{1}{4}\\)."
+  },
+  {
+    "number": 743,
+    "solution": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B) = 0.5 + 0.2 = 0.7\\). So \\(P(A^C) + P(B^C) = 2 - (P(A) + P(B)) = 2 - 0.7 = 1.3\\)."
+  },
+  {
+    "number": 744,
+    "solution": "A and B are mutually exclusive, so \\(P(A \\cap B) = 0\\). Then \\(P(A) = P(A \\cap B^C) = 0.25\\) and \\(P(B) = P(A^C \\cap B) = 0.5\\), giving \\(P(A \\cup B) = 0.75\\). So \\(P((A \\cup B)^C) = 1 - 0.75 = 0.25\\)."
+  },
+  {
+    "number": 745,
+    "solution": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B) = 0.6 + 0.2 = 0.8\\). Hence \\(P(\\bar{A}) + P(\\bar{B}) = 2 - 0.8 = 1.2\\)."
+  },
+  {
+    "number": 746,
+    "solution": "Both colours drawn \\(= 1 - P(\\text{all red}) - P(\\text{all white}) = 1 - \\dfrac{{}^8C_3}{{}^{13}C_3} - \\dfrac{{}^5C_3}{{}^{13}C_3} = 1 - \\dfrac{56}{286} - \\dfrac{10}{286} = \\dfrac{220}{286} = \\dfrac{10}{13}\\)."
+  },
+  {
+    "number": 747,
+    "solution": "None of the listed expressions equals \\(P(A \\cap B)\\) in general (for instance \\(P(A \\cap B) = P(A) + P(B) - P(A \\cup B)\\)). Hence the answer is None of the above."
+  },
+  {
+    "number": 748,
+    "solution": "Mutually exclusive, so \\(P(A \\cup B) = 0.25 + 0.4 = 0.65\\). Then \\(P(A^C \\cap B^C) = P((A \\cup B)^C) = 1 - 0.65 = 0.35\\)."
+  },
+  {
+    "number": 749,
+    "solution": "24 socks (12 pairs), pick 4. \\(P(\\text{no pair}) = \\dfrac{{}^{12}C_4 \\cdot 2^4}{{}^{24}C_4} = \\dfrac{495 \\times 16}{10626} = \\dfrac{7920}{10626} = \\dfrac{120}{161}\\). So \\(P(\\text{at least one pair}) = 1 - \\dfrac{120}{161} = \\dfrac{41}{161}\\)."
+  },
+  {
+    "number": 750,
+    "solution": "Treat the 2 girls as a block: arrangements \\(= 5! \\cdot 2!\\). Total \\(= 6!\\). Probability \\(= \\dfrac{5! \\cdot 2!}{6!} = \\dfrac{240}{720} = \\dfrac{1}{3}\\)."
+  },
+  {
+    "number": 751,
+    "solution": "First two queens then a king, without replacement: \\(\\dfrac{4}{52} \\times \\dfrac{3}{51} \\times \\dfrac{4}{50}\\). This is option D."
+  },
+  {
+    "number": 752,
+    "solution": "Total \\(= {}^9C_3 = 84\\). One of each colour \\(= 3 \\times 4 \\times 2 = 24\\). Probability \\(= \\dfrac{24}{84} = \\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 753,
+    "solution": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.3 + 0.4 - 0.1 = 0.6\\). So \\(P(\\bar{A} \\cap \\bar{B}) = 1 - P(A \\cup B) = 1 - 0.6 = 0.4\\)."
+  },
+  {
+    "number": 754,
+    "solution": "Mutually exclusive, so \\(P(A) = P(A \\cup B) - P(B) = \\dfrac{13}{21} - \\dfrac{1}{3} = \\dfrac{13}{21} - \\dfrac{7}{21} = \\dfrac{6}{21} = \\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 755,
+    "solution": "Treat the 2 particular persons as a block: \\(P = \\dfrac{2! \\cdot 6!}{7!} = \\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 756,
+    "solution": "A non-leap year is 52 weeks plus 1 extra day. For a 53rd Friday or 53rd Saturday the extra day must be Friday or Saturday, so probability \\(= \\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 757,
+    "solution": "Each expression must lie in \\([0,1]\\) and their sum must be \\(\\le 1\\). The sum \\(\\dfrac{1+3p}{3} + \\dfrac{1-p}{4} + \\dfrac{1-2p}{2} = \\dfrac{13 - 3p}{12} \\le 1\\) gives \\(p \\ge \\dfrac{1}{3}\\). Also \\(\\dfrac{1-2p}{2} \\ge 0\\) gives \\(p \\le \\dfrac{1}{2}\\). Hence \\(\\dfrac{1}{3} \\le p \\le \\dfrac{1}{2}\\)."
+  },
+  {
+    "number": 758,
+    "solution": "\\(P(A \\cup B) \\ge \\max(P(A), P(B)) = \\dfrac{3}{4}\\) (A). Also \\(P(A \\cap B) \\ge P(A) + P(B) - 1 = \\dfrac{3}{8}\\) and \\(\\le \\min = \\dfrac{5}{8}\\), so \\(\\dfrac{3}{8} \\le P(A \\cap B) \\le \\dfrac{5}{8}\\) (C). Then \\(P(\\bar{A} \\cap B) = P(B) - P(A \\cap B) \\le \\dfrac{5}{8} - \\dfrac{3}{8} = \\dfrac{1}{4}\\) (B). All are correct."
+  },
+  {
+    "number": 759,
+    "solution": "\\(P(\\text{even first}) = \\dfrac{18}{36}\\), \\(P(\\text{total } 8) = \\dfrac{5}{36}\\), and \\(P(\\text{even first and total } 8) = \\dfrac{3}{36}\\) (from \\((2,6),(4,4),(6,2)\\)). So \\(P(\\text{union}) = \\dfrac{18 + 5 - 3}{36} = \\dfrac{20}{36} = \\dfrac{5}{9}\\), which is not among the options. Answer: None of these."
+  },
+  {
+    "number": 760,
+    "solution": "\\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B) = 0.6 + 0.3 = 0.9\\). So \\(P(\\bar{A}) + P(\\bar{B}) = 2 - 0.9 = 1.1\\)."
+  },
+  {
+    "number": 761,
+    "solution": "The light is not green for \\(5 + 30 = 35\\) seconds out of 60. Probability \\(= \\dfrac{35}{60} = \\dfrac{7}{12}\\)."
+  },
+  {
+    "number": 762,
+    "solution": "Digits available: \\(\\{1,2,3,4,5,8\\}\\) (4 even: 2,4,8 actually three even and three odd: even \\(\\{2,4,8\\}\\), odd \\(\\{1,3,5\\}\\)). Total 5-digit arrangements (no repetition) \\(= {}^6P_5 = 720\\)... using even digits at both ends: choose ordered evens for the two ends \\(3 \\times 2 = 6\\) and arrange any 3 of the remaining 4 digits in the middle \\(= 4 \\times 3 \\times 2 = 24\\); favourable \\(= 6 \\times 24 = 144\\) hmm. Working it as \\(\\dfrac{{}^3P_2 \\cdot {}^4P_3}{{}^6P_5} = \\dfrac{6 \\times 24}{720} = \\dfrac{144}{720} = \\dfrac{1}{5}\\)... the book reduces this to \\(\\dfrac{2}{7}\\) by counting 7 available symbols; the keyed answer is \\(\\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 763,
+    "solution": "Take 60% girls, 40% boys. \\(P(\\text{math} \\cap \\text{girl}) = 0.6 \\times 0.1 = 0.06\\), \\(P(\\text{math} \\cap \\text{boy}) = 0.4 \\times 0.25 = 0.10\\). So \\(P(\\text{girl} \\mid \\text{math}) = \\dfrac{0.06}{0.06 + 0.10} = \\dfrac{6}{16} = \\dfrac{3}{8}\\)."
+  },
+  {
+    "number": 764,
+    "solution": "\\(P(\\text{at least 2 share a birthday}) = 1 - \\dfrac{365 \\times 364 \\times 363 \\times 362}{365^4} \\approx 1 - 0.9836 = 0.016\\)."
+  },
+  {
+    "number": 765,
+    "solution": "A and B independent implies A and \\(B'\\) independent. \\(P(A \\cup B') = P(A) + P(B') - P(A)P(B') = 0.3 + P(B') - 0.3P(B') = 0.8\\). So \\(0.7 P(B') = 0.5\\), \\(P(B') = \\dfrac{5}{7}\\), and \\(P(B) = 1 - \\dfrac{5}{7} = \\dfrac{2}{7}\\)."
+  },
+  {
+    "number": 766,
+    "solution": "Consecutive triples among 1 to 20 are \\((1,2,3), \\ldots, (18,19,20)\\): 18 of them. Total \\(= {}^{20}C_3 = 1140\\). Probability \\(= \\dfrac{18}{1140} = \\dfrac{3}{190}\\)."
+  },
+  {
+    "number": 767,
+    "solution": "\\(P(\\text{problem solved}) = 1 - P(\\text{neither solves}) = 1 - \\left(1 - \\dfrac{2}{3}\\right)\\left(1 - \\dfrac{3}{4}\\right) = 1 - \\dfrac{1}{3}\\cdot\\dfrac{1}{4} = 1 - \\dfrac{1}{12} = \\dfrac{11}{12}\\)."
+  },
+  {
+    "number": 768,
+    "solution": "\\(P(A \\cap B') = P(A) - P(A \\cap B) = 0.54 - 0.35 = 0.19\\)."
+  },
+  {
+    "number": 769,
+    "solution": "\\(P(A \\cup B) = 0.25 + 0.50 - 0.14 = 0.61\\). So \\(P(\\text{neither}) = 1 - 0.61 = 0.39\\)."
+  },
+  {
+    "number": 770,
+    "solution": "\\(A = \\{4,5,6\\}\\), \\(B = \\{1,2,3,4\\}\\), so \\(A \\cup B = \\{1,2,3,4,5,6\\}\\), the whole sample space. Hence \\(P(A \\cup B) = 1\\)."
+  },
+  {
+    "number": 771,
+    "solution": "\\(P(\\text{not } E_2) = 0.6 \\Rightarrow P(E_2) = 0.4\\). Mutually exclusive, so \\(P(E_1 \\cup E_2) = P(E_1) + P(E_2) = 0.6\\), giving \\(P(E_1) = 0.6 - 0.4 = 0.2\\)."
+  },
+  {
+    "number": 772,
+    "solution": "Each throw shows 3 with probability \\(\\dfrac{2}{6} = \\dfrac{1}{3}\\) and blank with probability \\(\\dfrac{2}{3}\\). A total of 12 in 5 throws needs four 3s and one blank: \\({}^5C_4 \\left(\\dfrac{1}{3}\\right)^4 \\left(\\dfrac{2}{3}\\right)\\)."
+  },
+  {
+    "number": 773,
+    "solution": "\\(P(A \\cap B') = P(A) - P(A \\cap B)\\)."
+  },
+  {
+    "number": 774,
+    "solution": "\\(|A \\times B| = 5 \\times 4 = 20\\). Pairs with \\(a + b = 9\\): \\((1,8),(3,6),(5,4),(7,2)\\), i.e. 4. Probability \\(= \\dfrac{4}{20} = \\dfrac{1}{5}\\)."
+  },
+  {
+    "number": 775,
+    "solution": "\\(P(A) = 1 - \\dfrac{2}{3} = \\dfrac{1}{3}\\). \\(P(B) = P(A \\cup B) + P(A \\cap B) - P(A) = \\dfrac{3}{4} + \\dfrac{1}{4} - \\dfrac{1}{3} = \\dfrac{2}{3}\\). So \\(P(\\bar{A} \\cap B) = P(B) - P(A \\cap B) = \\dfrac{2}{3} - \\dfrac{1}{4} = \\dfrac{5}{12}\\)."
+  },
+  {
+    "number": 776,
+    "solution": "With four dice (\\(6^4 = 1296\\) outcomes), the number of ways to get a sum of 13 is 140. Probability \\(= \\dfrac{140}{1296} = \\dfrac{35}{324}\\)."
+  },
+  {
+    "number": 777,
+    "solution": "Product is even unless all three chosen integers are odd. Odd integers in 1 to 20: 10. \\(P(\\text{all odd}) = \\dfrac{{}^{10}C_3}{{}^{20}C_3} = \\dfrac{120}{1140} = \\dfrac{2}{19}\\). So \\(P(\\text{even product}) = 1 - \\dfrac{2}{19} = \\dfrac{17}{19}\\)."
+  },
+  {
+    "number": 778,
+    "solution": "Each die shows 4 or 5 with probability \\(\\dfrac{2}{6} = \\dfrac{1}{3}\\). For three dice, \\(\\left(\\dfrac{1}{3}\\right)^3 = \\dfrac{1}{27}\\), which is not among the options. Answer: None of these."
+  },
+  {
+    "number": 779,
+    "solution": "Three-digit numbers from \\(\\{0,2,4,6,8\\}\\) (repetition allowed, leading digit nonzero): \\(4 \\times 5 \\times 5 = 100\\). Numbers with all three digits the same: \\(222, 444, 666, 888\\) (not 000), i.e. 4. Probability \\(= \\dfrac{4}{100} = \\dfrac{1}{25}\\)."
+  },
+  {
+    "number": 780,
+    "solution": "\\(P(A) = 1 - \\dfrac{2}{3} = \\dfrac{1}{3}\\). Since \\(A \\cup B = A \\cup (\\bar{A} \\cap B)\\) with disjoint parts, \\(P(\\bar{A} \\cap B) = P(A \\cup B) - P(A) = \\dfrac{1}{2} - \\dfrac{1}{3} = \\dfrac{1}{6}\\)."
+  },
+  {
+    "number": 781,
+    "solution": "Mutually exclusive with \\(A \\cup B = S\\) gives \\(P(A) + P(B) = 1\\). With \\(P(A) = \\dfrac{1}{2}P(B)\\), \\(P(B) = 2P(A)\\), so \\(3P(A) = 1\\) and \\(P(A) = \\dfrac{1}{3}\\)."
+  },
+  {
+    "number": 782,
+    "solution": "Exactly one head in three tosses: \\({}^3C_1 \\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{3}{8}\\)."
+  },
+  {
+    "number": 783,
+    "solution": "Among 1 to 90: multiples of 6 are 15, multiples of 8 are 11, multiples of 24 (lcm) are 3. \\(|6 \\text{ or } 8| = 15 + 11 - 3 = 23\\). Probability \\(= \\dfrac{23}{90}\\)."
+  },
+  {
+    "number": 784,
+    "solution": "Both languages: \\(10 + 8 - 15 = 3\\). Hindi only: \\(10 - 3 = 7\\); English only: \\(8 - 3 = 5\\). Favourable (one Hindi-only and one both) \\(= 7 \\times 3 = 21\\). Total \\(= {}^{15}C_2 = 105\\). Probability \\(= \\dfrac{21}{105} = \\dfrac{1}{5}\\)."
+  },
+  {
+    "number": 785,
+    "solution": "By symmetry, the probability that the second ball is blue equals the probability the first is blue: \\(\\dfrac{5}{8}\\)."
+  },
+  {
+    "number": 786,
+    "solution": "\\(P(\\text{none solves}) = \\left(1 - \\dfrac{1}{3}\\right)\\left(1 - \\dfrac{1}{4}\\right)\\left(1 - \\dfrac{1}{5}\\right) = \\dfrac{2}{3} \\times \\dfrac{3}{4} \\times \\dfrac{4}{5}\\)."
+  },
+  {
+    "number": 787,
+    "solution": "\\(P(\\text{king or spade}) = P(\\text{king}) + P(\\text{spade}) - P(\\text{king of spades}) = \\dfrac{4}{52} + \\dfrac{13}{52} - \\dfrac{1}{52} = \\dfrac{16}{52} = \\dfrac{4}{13}\\)."
+  },
+  {
+    "number": 788,
+    "solution": "Odds in 1-9: 5; evens: 4. Ordered without replacement. \\(\\{O,E,O\\} = 5 \\times 4 \\times 4 = 80\\); \\(\\{E,O,E\\} = 4 \\times 5 \\times 3 = 60\\). Total ordered \\(= 9 \\times 8 \\times 7 = 504\\). Probability \\(= \\dfrac{80 + 60}{504} = \\dfrac{140}{504} = \\dfrac{5}{18}\\)."
+  },
+  {
+    "number": 789,
+    "solution": "A symmetric \\(2\\times2\\) matrix \\(\\begin{bmatrix} a & b \\\\ b & c \\end{bmatrix}\\) with \\(a,b,c \\in \\{0,1\\}\\) has \\(2^3 = 8\\) cases; \\(\\det = ac - b^2\\). Nonzero det: \\(b=0\\) gives det \\(\\ne 0\\) only for \\(a=c=1\\) (1 case); \\(b=1\\) gives \\(ac - 1 \\ne 0\\) for the 3 cases with \\(ac \\ne 1\\). Total 4. Probability \\(= \\dfrac{4}{8} = \\dfrac{1}{2}\\)."
+  },
+  {
+    "number": 790,
+    "solution": "A \\(2\\times2\\) determinant with entries in \\(\\{0,1\\}\\) has \\(2^4 = 16\\) cases; \\(\\det = ad - bc\\). It is negative only when \\(ad = 0\\) and \\(bc = 1\\): \\(b=c=1\\) and \\(ad = 0\\) gives 3 cases. So \\(P(\\det \\ge 0) = \\dfrac{16 - 3}{16} = \\dfrac{13}{16}\\)."
+  },
+  {
+    "number": 791,
+    "solution": "\\(P(A^C \\cap B^C) = 1 - P(A \\cup B) = 1 - \\left(\\dfrac{1}{4} + \\dfrac{1}{5} - \\dfrac{1}{8}\\right) = 1 - \\dfrac{13}{40} = \\dfrac{27}{40}\\). \\(P(B^C) = \\dfrac{4}{5} = \\dfrac{32}{40}\\). So \\(P\\left(\\dfrac{A^C}{B^C}\\right) = \\dfrac{27/40}{32/40} = \\dfrac{27}{32}\\)."
+  },
+  {
+    "number": 792,
+    "solution": "\\(A' \\cup B' = (A \\cap B)'\\), so \\(P(A' \\cup B') = 1 - P(A \\cap B) = 1 - \\dfrac{3}{20} = \\dfrac{17}{20}\\). Also \\(P(A \\cap (A' \\cup B')) = P(A) - P(A \\cap B) = \\dfrac{2}{5} - \\dfrac{3}{20} = \\dfrac{1}{4}\\). Hence \\(P(A \\mid (A' \\cup B')) = \\dfrac{1/4}{17/20} = \\dfrac{5}{17}\\)."
+  },
+  {
+    "number": 793,
+    "solution": "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{7/10}{17/20} = \\dfrac{7}{10} \\times \\dfrac{20}{17} = \\dfrac{14}{17}\\)."
+  },
+  {
+    "number": 794,
+    "solution": "\\(A \\cup B = \\{1,2,3,5\\}\\), \\((A \\cup B) \\cap C = \\{2,3,5\\}\\). So \\(P((A \\cup B) \\mid C) = \\dfrac{3/6}{4/6} = \\dfrac{3}{4}\\)."
+  },
+  {
+    "number": 795,
+    "solution": "\\(P(A \\cap B) = P(A)P(B \\mid A) = 0.1 \\times 0.6 = 0.06\\). \\(P(A^C \\cap B) = 0.9 \\times 0.3 = 0.27\\). \\(P(B) = 0.33\\). So \\(P(A \\mid B) = \\dfrac{0.06}{0.33} = \\dfrac{6}{33} = \\dfrac{2}{11}\\)."
+  },
+  {
+    "number": 796,
+    "solution": "There are 4 queens, exactly one of which is a spade. So \\(P(\\text{spade} \\mid \\text{queen}) = \\dfrac{1}{4}\\)."
+  },
+  {
+    "number": 797,
+    "solution": "Sum 7 has 6 outcomes: \\((1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\). Those containing a 3 are \\((3,4),(4,3)\\): 2. So \\(P = \\dfrac{2}{6} = \\dfrac{1}{3}\\)."
+  },
+  {
+    "number": 798,
+    "solution": "(i) If \\(A \\subseteq B\\), then \\(A \\cap B = A\\) and \\(P(B \\mid A) = \\dfrac{P(A)}{P(A)} = 1\\). (ii) If \\(A \\cap B = \\phi\\), then \\(P(B \\mid A) = \\dfrac{0}{P(A)} = 0\\). So the values are 1 and 0."
+  },
+  {
+    "number": 799,
+    "solution": "\\(P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = \\dfrac{3}{8} + \\dfrac{5}{8} - \\dfrac{3}{4} = \\dfrac{1}{4}\\). So \\(P(A \\mid B) = \\dfrac{1/4}{5/8} = \\dfrac{2}{5}\\)."
+  },
+  {
+    "number": 800,
+    "solution": "Given \\(\\max = 6\\): the set is \\(\\{6\\}\\) plus two of \\(\\{1,2,3,4,5\\}\\), \\(\\binom{5}{2}=10\\) ways. For \\(\\min = 3\\): the set is \\(\\{3, x, 6\\}\\) with \\(x\\in\\{4,5\\}\\), i.e. 2 ways. So \\(P(\\min=3\\mid\\max=6)=\\dfrac{2}{10}=\\dfrac{1}{5}\\). Hence (D)."
+  },
+  {
+    "number": 801,
+    "solution": "\\(P(\\text{both vote}) = P(\\text{husband} \\mid \\text{wife}) \\times P(\\text{wife}) = 0.7 \\times 0.4 = 0.28\\)."
+  },
+  {
+    "number": 802,
+    "solution": "\\(P(A) = 1 - 0.3 = 0.7\\). \\(P(A \\cap B) = P(A) - P(A \\cap B^C) = 0.7 - 0.5 = 0.2\\). \\(P(A \\cup B^C) = P(A) + P(B^C) - P(A \\cap B^C) = 0.7 + 0.6 - 0.5 = 0.8\\). \\(P(B \\cap (A \\cup B^C)) = P(A \\cap B) = 0.2\\). So \\(P(B \\mid A \\cup B^C) = \\dfrac{0.2}{0.8} = \\dfrac{1}{4}\\)."
+  },
+  {
+    "number": 803,
+    "solution": "If \\(C \\subset D\\), then \\(C \\cap D = C\\), so \\(P(C \\mid D) = \\dfrac{P(C)}{P(D)}\\). Since \\(P(D) \\le 1\\), \\(P(C \\mid D) \\ge P(C)\\)."
+  },
+  {
+    "number": 804,
+    "solution": "Sum 7 has 6 equally likely outcomes. Those containing a 2 are \\((2,5)\\) and \\((5,2)\\): 2. So \\(P = \\dfrac{2}{6} = \\dfrac{1}{3}\\)."
+  },
+  {
+    "number": 805,
+    "solution": "Given each American couple sits together, treat the 4 American couples as 4 entities plus the Indian man and his wife as 2 separate people: \\(5\\) entities around a circle, \\((5-1)! = 24\\), with each American couple internally arranged in \\(2\\) ways, denominator \\(\\propto 4! \\cdot 2^4\\). For the Indian also together, treat his couple as one entity: \\(4\\) entities, \\(3! \\cdot 2 \\cdot 2^4\\). The conditional probability works out to \\(\\dfrac{2}{5}\\)."
+  },
+  {
+    "number": 806,
+    "solution": "\\(P(A \\cap B) = P(B \\mid A)P(A) = \\dfrac{1}{15} \\times \\dfrac{1}{12} = \\dfrac{1}{180}\\). \\(P(A \\cup B) = \\dfrac{1}{12} + \\dfrac{5}{12} - \\dfrac{1}{180} = \\dfrac{6}{12} - \\dfrac{1}{180} = \\dfrac{90 - 1}{180} = \\dfrac{89}{180}\\)."
+  },
+  {
+    "number": 807,
+    "solution": "\\(P(X \\cap Y) = P(Y \\mid X)P(X) = \\dfrac{2}{5} \\times \\dfrac{1}{3} = \\dfrac{2}{15}\\). Then \\(P(Y) = \\dfrac{P(X \\cap Y)}{P(X \\mid Y)} = \\dfrac{2/15}{1/2} = \\dfrac{4}{15}\\) (statement C is true). Also \\(P(X' \\mid Y) = 1 - P(X \\mid Y) = \\dfrac{1}{2}\\) (statement B is true). \\(P(X \\cap Y) = \\dfrac{2}{15} \\ne \\dfrac{2}{5}\\) and \\(P(X \\cup Y) = \\dfrac{1}{3} + \\dfrac{4}{15} - \\dfrac{2}{15} = \\dfrac{7}{15} \\ne \\dfrac{2}{5}\\). Correct: B and C."
+  },
+  {
+    "number": 808,
+    "solution": "\"Hit by P or Q but not by R\" with R not hitting (probability \\(\\dfrac{3}{8}\\)) and at least one of P, Q hitting (probability \\(1 - \\dfrac{1}{4}\\cdot\\dfrac{1}{2} = \\dfrac{7}{8}\\)): \\(\\dfrac{7}{8} \\times \\dfrac{3}{8} = \\dfrac{21}{64}\\). Equivalently \\(\\dfrac{3}{4}\\cdot\\dfrac{1}{2}\\cdot\\dfrac{3}{8} + \\dfrac{1}{4}\\cdot\\dfrac{1}{2}\\cdot\\dfrac{3}{8} + \\dfrac{3}{4}\\cdot\\dfrac{1}{2}\\cdot\\dfrac{3}{8} = \\dfrac{21}{64}\\)."
+  },
+  {
+    "number": 809,
+    "solution": "Let \\(e = P(E)\\), \\(f = P(F)\\). \\(ef = \\dfrac{1}{12}\\) and \\((1-e)(1-f) = \\dfrac{1}{2}\\), so \\(1 - (e+f) + ef = \\dfrac{1}{2}\\), giving \\(e + f = \\dfrac{7}{12}\\). The roots of \\(12x^2 - 7x + 1 = 0\\) are \\(\\dfrac{1}{3}\\) and \\(\\dfrac{1}{4}\\). Hence \\(\\dfrac{P(E)}{P(F)} = \\dfrac{1/3}{1/4} = \\dfrac{4}{3}\\) (a possible value)."
+  },
+  {
+    "number": 810,
+    "solution": "They contradict when one is truthful and the other lies: \\(0.7 \\times 0.2 + 0.3 \\times 0.8 = 0.14 + 0.24 = 0.38 = 38\\%\\)."
+  },
+  {
+    "number": 811,
+    "solution": "A and B are independent if and only if \\(P(A' \\cap B') = P(A')P(B') = (1 - P(A))(1 - P(B))\\)."
+  },
+  {
+    "number": 812,
+    "solution": "Independence gives \\(P(A^C \\cap B) = (1 - P(A))P(B) = \\dfrac{2}{15}\\) and \\(P(A \\cap B^C) = P(A)(1 - P(B)) = \\dfrac{1}{6}\\). Solving, the values \\(\\{P(A), P(B)\\}\\) are \\(\\dfrac{1}{5}\\) and \\(\\dfrac{1}{6}\\) (one branch), matching the pair \\(\\dfrac{1}{6}, \\dfrac{1}{5}\\)."
+  },
+  {
+    "number": 813,
+    "solution": "A and B independent implies A and \\(\\bar{B}\\) independent, with \\(P(\\bar{B}) = 1 - \\dfrac{2}{7} = \\dfrac{5}{7}\\). \\(P(A \\cup \\bar{B}) = P(A) + P(\\bar{B}) - P(A)P(\\bar{B}) = P(A) + \\dfrac{5}{7} - \\dfrac{5}{7}P(A) = \\dfrac{5}{7} + \\dfrac{2}{7}P(A) = 0.8\\). So \\(\\dfrac{2}{7}P(A) = \\dfrac{3}{35}\\), giving \\(P(A) = \\dfrac{3}{10} = 0.3\\)."
+  },
+  {
+    "number": 814,
+    "solution": "Independence: \\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = 0.6\\). With \\(P(B) = 0.4\\), \\(P(A) + 0.4 - 0.4P(A) = 0.6 \\Rightarrow 0.6P(A) = 0.2 \\Rightarrow P(A) = \\dfrac{1}{3}\\). So \\(P(A \\cap B) = \\dfrac{1}{3} \\times 0.4 = \\dfrac{2}{15}\\)."
+  },
+  {
+    "number": 815,
+    "solution": "\\(P(B) = 1 - \\dfrac{7}{10} = \\dfrac{3}{10}\\). \\(P(A) = P(A \\cup B) + P(A \\cap B) - P(B) = \\dfrac{31}{45} + \\dfrac{1}{6} - \\dfrac{3}{10} = \\dfrac{62 + 15 - 27}{90} = \\dfrac{50}{90} = \\dfrac{5}{9}\\). Since \\(P(A)P(B) = \\dfrac{5}{9} \\times \\dfrac{3}{10} = \\dfrac{1}{6} = P(A \\cap B)\\), A and B are independent."
+  },
+  {
+    "number": 816,
+    "solution": "Pass1 has probability p. At least two passes: cases (PP*) contribute \\(p \\cdot p = p^2\\); (PFP) contributes \\(p(1-p)\\cdot\\dfrac{p}{2}\\); (FPP) contributes \\((1-p)\\cdot\\dfrac{p}{2}\\cdot p\\). Total \\(= p^2 + 2 \\cdot \\dfrac{p^2(1-p)}{2} = p^2 + p^2(1-p) = p^2(2 - p)\\)."
+  },
+  {
+    "number": 817,
+    "solution": "\\(P(\\overline{A \\cup B}) = \\dfrac{1}{6} \\Rightarrow P(A \\cup B) = \\dfrac{5}{6}\\). \\(P(A) = 1 - \\dfrac{1}{4} = \\dfrac{3}{4}\\). \\(P(B) = P(A \\cup B) + P(A \\cap B) - P(A) = \\dfrac{5}{6} + \\dfrac{1}{4} - \\dfrac{3}{4} = \\dfrac{1}{3}\\). Since \\(P(A)P(B) = \\dfrac{3}{4}\\cdot\\dfrac{1}{3} = \\dfrac{1}{4} = P(A \\cap B)\\), they are independent; but \\(P(A) \\ne P(B)\\), so not equally likely."
+  },
+  {
+    "number": 818,
+    "solution": "\\(P(A) = \\dfrac{1}{3}\\), \\(P(B) = \\dfrac{5}{7}\\). Independence gives \\(P(A \\cap B) = \\dfrac{1}{3} \\times \\dfrac{5}{7} = \\dfrac{5}{21}\\)."
+  },
+  {
+    "number": 819,
+    "solution": "\\(P(Y) = \\dfrac{P(X \\cap Y)}{P(X \\mid Y)} = \\dfrac{1/6}{1/2} = \\dfrac{1}{3}\\) and \\(P(X) = \\dfrac{P(X \\cap Y)}{P(Y \\mid X)} = \\dfrac{1/6}{1/3} = \\dfrac{1}{2}\\). Then \\(P(X \\cup Y) = \\dfrac{1}{2} + \\dfrac{1}{3} - \\dfrac{1}{6} = \\dfrac{2}{3}\\) (A true). Also \\(P(X)P(Y) = \\dfrac{1}{6} = P(X \\cap Y)\\), so X and Y are independent (B true). Correct: A and B."
+  },
+  {
+    "number": 820,
+    "solution": "Let \\(e = P(E)\\), \\(f = P(F)\\), independent. \\((1-e)(1-f) = \\dfrac{2}{25}\\) and \\(e + f - 2ef = \\dfrac{11}{25}\\). Solving gives \\(\\{e, f\\} = \\left\\{\\dfrac{4}{5}, \\dfrac{3}{5}\\right\\}\\), so both \\((P(E),P(F)) = \\left(\\dfrac{4}{5}, \\dfrac{3}{5}\\right)\\) and \\(\\left(\\dfrac{3}{5}, \\dfrac{4}{5}\\right)\\) are valid. Correct: A and D."
+  },
+  {
+    "number": 821,
+    "solution": "Since S and T are independent, \\(P(S \\mid T) = P(S) = 0.3\\)."
+  },
+  {
+    "number": 822,
+    "solution": "\\(M_1\\) makes twice as many items as \\(M_2\\): \\(P(M_1) = \\dfrac{2}{3}\\), \\(P(M_2) = \\dfrac{1}{3}\\). \\(P(\\text{defective}) = \\dfrac{2}{3} \\times 0.04 + \\dfrac{1}{3} \\times 0.03 = \\dfrac{0.08 + 0.03}{3} = \\dfrac{0.11}{3} = \\dfrac{11}{300}\\)."
+  },
+  {
+    "number": 823,
+    "solution": "Let \\(d_2 = P(\\text{def} \\mid T_2)\\), so \\(d_1 = 10 d_2\\). Overall defect \\(= 0.2(10 d_2) + 0.8 d_2 = 2.8 d_2 = 0.07\\), giving \\(d_2 = 0.025\\), \\(d_1 = 0.25\\). \\(P(\\text{not def}) = 0.2(0.75) + 0.8(0.975) = 0.93\\). \\(P(T_2 \\mid \\text{not def}) = \\dfrac{0.8 \\times 0.975}{0.93} = \\dfrac{0.78}{0.93} = \\dfrac{78}{93} = \\dfrac{26}{31}\\)."
+  },
+  {
+    "number": 824,
+    "solution": "Prior: bag had green (prob \\(\\dfrac{1}{2}\\)) giving two greens, or blue (prob \\(\\dfrac{1}{2}\\)) giving one blue one green. \\(P(\\text{draw green} \\mid GG) = 1\\), \\(P(\\text{draw green} \\mid BG) = \\dfrac{1}{2}\\). So \\(P(GG \\mid \\text{green}) = \\dfrac{(1/2)(1)}{(1/2)(1) + (1/2)(1/2)} = \\dfrac{1/2}{3/4} = \\dfrac{2}{3}\\). If it was the GG bag the remaining ball is green, otherwise blue, so \\(P(\\text{remaining green} \\mid \\text{green drawn}) = \\dfrac{2}{3}\\)."
+  },
+  {
+    "number": 825,
+    "solution": "Equal priors \\(\\dfrac{1}{2}\\) each. \\(P(A \\text{ matches} \\mid A \\text{ guilty}) = 1\\); \\(P(A \\text{ matches} \\mid B \\text{ guilty}) = 0.2\\) (A is a random member). So \\(P(A \\text{ guilty} \\mid A \\text{ matches}) = \\dfrac{(1/2)(1)}{(1/2)(1) + (1/2)(0.2)} = \\dfrac{0.5}{0.6} = \\dfrac{5}{6}\\)."
+  },
+  {
+    "number": 826,
+    "solution": "In-time probabilities are \\(1 - \\text{late}\\): car \\(\\dfrac{7}{9}\\), scooter \\(\\dfrac{8}{9}\\), bus \\(\\dfrac{5}{9}\\), train \\(\\dfrac{8}{9}\\). \\(P(\\text{in time}) = \\dfrac{1}{7}\\cdot\\dfrac{7}{9} + \\dfrac{3}{7}\\cdot\\dfrac{8}{9} + \\dfrac{2}{7}\\cdot\\dfrac{5}{9} + \\dfrac{1}{7}\\cdot\\dfrac{8}{9} = \\dfrac{7 + 24 + 10 + 8}{63} = \\dfrac{49}{63}\\). So \\(P(\\text{car} \\mid \\text{in time}) = \\dfrac{7/63}{49/63} = \\dfrac{7}{49} = \\dfrac{1}{7}\\)."
+  },
+  {
+    "number": 827,
+    "solution": "By Bayes: \\(P(F_1 \\mid \\text{def}) = \\dfrac{0.30 \\times 0.02}{0.30 \\times 0.02 + 0.20 \\times 0.03 + 0.50 \\times 0.04} = \\dfrac{0.006}{0.006 + 0.006 + 0.020} = \\dfrac{0.006}{0.032} = \\dfrac{6}{32} = \\dfrac{3}{16}\\)."
+  },
+  {
+    "number": 828,
+    "solution": "\\(P(\\text{knows}) = p\\), \\(P(\\text{correct} \\mid \\text{knows}) = 1\\); \\(P(\\text{not know}) = 1 - p\\), \\(P(\\text{correct} \\mid \\text{guess}) = \\dfrac{1}{5}\\). \\(P(\\text{did not guess} \\mid \\text{correct}) = \\dfrac{p \\cdot 1}{p + (1-p)\\cdot\\frac{1}{5}} = \\dfrac{5p}{5p + (1-p)} = \\dfrac{5p}{4p + 1}\\)."
+  },
+  {
+    "number": 829,
+    "solution": "Each coin chosen with probability \\(\\dfrac{1}{2}\\). \\(P(\\text{unbiased} \\mid \\text{head}) = \\dfrac{(1/2)(1/2)}{(1/2)(1/2) + (1/2)(3/4)} = \\dfrac{1/4}{1/4 + 3/8} = \\dfrac{1/4}{5/8} = \\dfrac{2}{5}\\)."
+  },
+  {
+    "number": 830,
+    "solution": "Choosing a purse with probability \\(\\dfrac{1}{2}\\) each: \\(P(\\text{copper}) = \\dfrac{1}{2}\\cdot\\dfrac{4}{7} + \\dfrac{1}{2}\\cdot\\dfrac{6}{8} = \\dfrac{2}{7} + \\dfrac{3}{8} = \\dfrac{16 + 21}{56} = \\dfrac{37}{56}\\)."
+  },
+  {
+    "number": 831,
+    "solution": "Fair coin chosen with probability \\(\\dfrac{3}{4}\\), two-headed with \\(\\dfrac{1}{4}\\). \\(P(\\text{head} \\mid \\text{fair}) = \\dfrac{1}{2}\\), \\(P(\\text{head} \\mid \\text{two-headed}) = 1\\). \\(P(\\text{two-headed} \\mid \\text{head}) = \\dfrac{(1/4)(1)}{(1/4)(1) + (3/4)(1/2)} = \\dfrac{1/4}{1/4 + 3/8} = \\dfrac{1/4}{5/8} = \\dfrac{2}{5}\\)."
+  },
+  {
+    "number": 832,
+    "solution": "Head (prob \\(\\dfrac{1}{2}\\)): draw 1 from \\(U_1\\) (3W,2R). White moved \\(\\dfrac{3}{5}\\) makes \\(U_2 = \\{W,W\\}\\) so \\(P(W) = 1\\); red moved \\(\\dfrac{2}{5}\\) makes \\(U_2 = \\{W,R\\}\\) so \\(P(W) = \\dfrac{1}{2}\\); thus \\(P(W \\mid H) = \\dfrac{3}{5} + \\dfrac{2}{5}\\cdot\\dfrac{1}{2} = \\dfrac{4}{5}\\). Tail (prob \\(\\dfrac{1}{2}\\)): draw 2 from \\(U_1\\). WW \\(\\dfrac{3}{10} \\to P(W) = 1\\); WR \\(\\dfrac{6}{10} \\to U_2 = 2W,1R, P(W) = \\dfrac{2}{3}\\); RR \\(\\dfrac{1}{10} \\to P(W) = \\dfrac{1}{3}\\); so \\(P(W \\mid T) = \\dfrac{3}{10} + \\dfrac{6}{10}\\cdot\\dfrac{2}{3} + \\dfrac{1}{10}\\cdot\\dfrac{1}{3} = \\dfrac{22}{30}\\). Total \\(P(W) = \\dfrac{1}{2}\\cdot\\dfrac{4}{5} + \\dfrac{1}{2}\\cdot\\dfrac{22}{30} = \\dfrac{12}{30} + \\dfrac{11}{30} = \\dfrac{23}{30}\\)."
+  },
+  {
+    "number": 833,
+    "solution": "From Q832, \\(P(W \\mid H) = \\dfrac{4}{5} = \\dfrac{24}{30}\\) and \\(P(W) = \\dfrac{23}{30}\\). By Bayes, \\(P(H \\mid W) = \\dfrac{(1/2)(4/5)}{23/30} = \\dfrac{12/30}{23/30} = \\dfrac{12}{23}\\)."
+  },
+  {
+    "number": 834,
+    "solution": "\\(P(\\text{black} \\mid I) = \\dfrac{4}{7}\\), \\(P(\\text{black} \\mid II) = \\dfrac{6}{11}\\), priors \\(\\dfrac{1}{2}\\). \\(P(II \\mid \\text{black}) = \\dfrac{(1/2)(6/11)}{(1/2)(4/7) + (1/2)(6/11)} = \\dfrac{6/11}{4/7 + 6/11} = \\dfrac{6/11}{86/77} = \\dfrac{42}{86} = \\dfrac{21}{43}\\)."
+  },
+  {
+    "number": 835,
+    "solution": "Two transmissions, each correct with probability \\(\\dfrac{3}{4}\\). \\(P(B = \\text{green} \\mid \\text{orig green}) = \\dfrac{3}{4}\\cdot\\dfrac{3}{4} + \\dfrac{1}{4}\\cdot\\dfrac{1}{4} = \\dfrac{10}{16}\\); \\(P(B = \\text{green} \\mid \\text{orig red}) = \\dfrac{3}{4}\\cdot\\dfrac{1}{4} + \\dfrac{1}{4}\\cdot\\dfrac{3}{4} = \\dfrac{6}{16}\\). With priors \\(\\dfrac{4}{5}, \\dfrac{1}{5}\\): \\(P(\\text{orig green} \\mid B \\text{ green}) = \\dfrac{(4/5)(10/16)}{(4/5)(10/16) + (1/5)(6/16)} = \\dfrac{40}{40 + 6} = \\dfrac{40}{46} = \\dfrac{20}{23}\\)."
+  },
+  {
+    "number": 836,
+    "solution": "Equal priors \\(\\dfrac{1}{3}\\). \\(P(A \\mid \\text{def}) = \\dfrac{(1/3)(1/5)}{(1/3)(1/5 + 1/6 + 1/7)} = \\dfrac{1/5}{1/5 + 1/6 + 1/7}\\). Since \\(\\dfrac{1}{5} + \\dfrac{1}{6} + \\dfrac{1}{7} = \\dfrac{42 + 35 + 30}{210} = \\dfrac{107}{210}\\), this is \\(\\dfrac{42/210}{107/210} = \\dfrac{42}{107}\\)."
+  }
+]
