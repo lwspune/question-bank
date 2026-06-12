@@ -135,6 +135,66 @@ export const TOPICS: Record<string, Topic> = {
       "Special Quadratics — Parametric, Logarithmic, Constructed",
     ],
   },
+
+  // Algebra → Sets & Relations, Q1–86 (source sections Sets Q1–35 + Relation
+  // Q36–86, merged into the single NDA Maths "Sets & Relations" chapter).
+  // Complex Numbers starts at Q87 on page 5, so this runs through Q86.
+  "sets-relations": {
+    id: "sets-relations",
+    chapterName: "Sets & Relations",
+    qFrom: 1,
+    qTo: 86,
+    sourceFile: "NDA_Maths_Practice__Algebra__Sets_and_Relations.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [1, 2, 3, 4, 5] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-1 page 187-210.pdf"), pages: [0, 1, 2, 3, 4] },
+    subtopics: [
+      "Counting Sets, Subsets, and Inclusion-Exclusion",
+      "Relations — Properties, Cartesian Product, and Counting",
+      "Set Operations, Identities, and Cartesian Products of Sets",
+    ],
+  },
+
+  // Algebra → Permutation & Combination, Q233–340 (source sections Permutation
+  // Q233–282 + Combination Q283–340, merged into the single NDA Maths chapter).
+  // Binomial Theorem starts at Q341.
+  "permutation-combination": {
+    id: "permutation-combination",
+    chapterName: "Permutation & Combination",
+    qFrom: 233,
+    qTo: 340,
+    sourceFile: "NDA_Maths_Practice__Algebra__Permutation_and_Combination.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [11, 12, 13, 14, 15] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-1 page 187-210.pdf"), pages: [13, 14, 15, 16, 17, 18, 19, 20] },
+    subtopics: [
+      "Arrangements with Restrictions",
+      "Combinations",
+      "Factorials and Binomial Coefficients",
+      "Forming Numbers from Digits",
+      "Geometric Counting",
+    ],
+  },
+
+  // Algebra → Binomial Theorem, Q341–405. Solutions Q341–387 are in sol-1
+  // (pages 20–23); Q388–405 spill into sol-2 page 0 — render that ad-hoc if a
+  // late-question key dispute arises. Sequence & Series starts at Q406.
+  "binomial-theorem": {
+    id: "binomial-theorem",
+    chapterName: "Binomial Theorem",
+    qFrom: 341,
+    qTo: 405,
+    sourceFile: "NDA_Maths_Practice__Algebra__Binomial_Theorem.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [16, 17, 18] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-1 page 187-210.pdf"), pages: [20, 21, 22, 23] },
+    subtopics: [
+      "Coefficients and Specific Terms in Expansion",
+      "Integer and Fractional Parts of Binomial Expressions",
+      "Remainders and Divisibility via Binomial Expansion",
+      "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);

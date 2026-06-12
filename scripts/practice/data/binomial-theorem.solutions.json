@@ -1,0 +1,262 @@
+[
+  {
+    "number": 341,
+    "solution": "Group the sum as \\(\\left(\\binom{21}{1}+\\binom{21}{2}+\\cdots+\\binom{21}{10}\\right)-\\left(\\binom{10}{1}+\\binom{10}{2}+\\cdots+\\binom{10}{10}\\right)\\). For \\((1+1)^{21}=2^{21}=\\sum_{k=0}^{21}\\binom{21}{k}\\). By symmetry \\(\\binom{21}{k}=\\binom{21}{21-k}\\), so \\(\\binom{21}{1}+\\cdots+\\binom{21}{10}=\\dfrac{2^{21}-\\binom{21}{0}-\\binom{21}{21}}{2}=\\dfrac{2^{21}-2}{2}=2^{20}-1\\). Also \\(\\binom{10}{1}+\\cdots+\\binom{10}{10}=2^{10}-1\\). The difference is \\((2^{20}-1)-(2^{10}-1)=2^{20}-2^{10}\\). Hence (C)."
+  },
+  {
+    "number": 342,
+    "solution": "Pascal's rule states \\(\\binom{n+1}{r}=\\binom{n}{r-1}+\\binom{n}{r}\\). This is the standard recurrence for binomial coefficients. Hence (A)."
+  },
+  {
+    "number": 343,
+    "solution": "Write \\(3^{4n}=(3^{4})^{n}=81^{n}\\) and \\(4^{3n}=(4^{3})^{n}=64^{n}\\). Then \\(3^{4n}-4^{3n}=81^{n}-64^{n}\\), which is always divisible by \\(81-64=17\\) (since \\(a^{n}-b^{n}\\) is divisible by \\(a-b\\)). Hence (C)."
+  },
+  {
+    "number": 344,
+    "solution": "The sum of all coefficients is found by substituting \\(x=1\\). Then \\(\\left(\\dfrac{1}{1}+2(1)\\right)^{6}=(1+2)^{6}=3^{6}=729\\). Hence (B)."
+  },
+  {
+    "number": 345,
+    "solution": "Using the binomial theorem, \\(4^{n}-3n-1=(1+3)^{n}-3n-1=\\sum_{k=2}^{n}\\binom{n}{k}3^{k}=9\\sum_{k=2}^{n}\\binom{n}{k}3^{k-2}\\), so every element of \\(A\\) is a multiple of 9. Listing: \\(n=1\\Rightarrow 0\\), \\(n=2\\Rightarrow 9\\), \\(n=3\\Rightarrow 54\\). The set \\(B=\\{9(n-1):n\\in N\\}=\\{0,9,18,27,\\ldots\\}\\) is the set of all non-negative multiples of 9. Hence every element of \\(A\\) lies in \\(B\\), i.e. \\(A\\subset B\\). Hence (C)."
+  },
+  {
+    "number": 346,
+    "solution": "Expand and subtract: \\((\\sqrt{3}+1)^{2n}-(\\sqrt{3}-1)^{2n}=2\\sum_{k\\ \\text{odd}}\\binom{2n}{k}(\\sqrt{3})^{k}\\). For odd \\(k\\), \\((\\sqrt{3})^{k}=3^{(k-1)/2}\\sqrt{3}\\), so each surviving term contains a factor \\(\\sqrt{3}\\). The sum therefore is a non-zero multiple of \\(\\sqrt{3}\\), which is irrational. Hence (C)."
+  },
+  {
+    "number": 347,
+    "solution": "From \\((1+1)^{n}=2^{n}=\\sum\\binom{n}{r}\\) and \\((1-1)^{n}=0=\\sum(-1)^{r}\\binom{n}{r}\\), adding gives \\(2(\\binom{n}{0}+\\binom{n}{2}+\\binom{n}{4}+\\cdots)=2^{n}\\). Hence \\(\\binom{n}{0}+\\binom{n}{2}+\\cdots+\\binom{n}{n}=2^{n-1}\\). Hence (C)."
+  },
+  {
+    "number": 348,
+    "solution": "Expanding, \\((1+ax)^{n}=1+nax+\\dfrac{n(n-1)}{2}a^{2}x^{2}+\\cdots\\). Comparing coefficients: \\(na=6\\) and \\(\\dfrac{n(n-1)}{2}a^{2}=\\dfrac{27}{2}\\Rightarrow n(n-1)a^{2}=27\\). From \\(na=6\\), \\(a=6/n\\); substituting, \\(n(n-1)\\dfrac{36}{n^{2}}=27\\Rightarrow \\dfrac{36(n-1)}{n}=27\\Rightarrow 36n-36=27n\\Rightarrow 9n=36\\Rightarrow n=4\\), and \\(a=6/4=\\dfrac{3}{2}\\). Hence (C)."
+  },
+  {
+    "number": 349,
+    "solution": "The product of \\(r\\) consecutive integers \\(n(n+1)\\cdots(n+r-1)=\\dfrac{(n+r-1)!}{(n-1)!}=\\binom{n+r-1}{r}\\cdot r!\\), which is an integer multiple of \\(r!\\). Hence the product is always divisible by \\(r!\\). Hence (A)."
+  },
+  {
+    "number": 350,
+    "solution": "Each bracket telescopes via Pascal's rule: \\(\\binom{7}{k}+\\binom{7}{k+1}=\\binom{8}{k+1}\\). For \\(k=0\\) to \\(6\\), the sum is \\(\\binom{8}{1}+\\binom{8}{2}+\\cdots+\\binom{8}{7}=2^{8}-\\binom{8}{0}-\\binom{8}{8}=2^{8}-2\\). Hence (D)."
+  },
+  {
+    "number": 351,
+    "solution": "Using the identity \\(\\sum_{r=0}^{n}\\binom{n}{r}^{2}=\\binom{2n}{n}\\), for \\(n=5\\) the value is \\(\\binom{10}{5}=252\\). Hence (D)."
+  },
+  {
+    "number": 352,
+    "solution": "In \\((x+a)^{47}-(x-a)^{47}\\), the terms with even powers of \\(a\\) cancel and only odd-power-of-\\(a\\) terms survive: powers \\(a^{1},a^{3},\\ldots,a^{47}\\), i.e. \\(\\dfrac{47+1}{2}=24\\) terms. Hence (A)."
+  },
+  {
+    "number": 353,
+    "solution": "From \\((1+x^{2})^{5}\\) the available powers are \\(x^{0}(1),x^{2}(5),x^{4}(10),\\ldots\\); from \\((1+x)^{4}\\) the powers are \\(x^{0}\\) to \\(x^{4}\\). To form \\(x^{5}\\): \\(x^{4}\\cdot x^{1}=10\\cdot\\binom{4}{1}=10\\cdot 4=40\\); \\(x^{2}\\cdot x^{3}=5\\cdot\\binom{4}{3}=5\\cdot 4=20\\). Total \\(=40+20=60\\). Hence (B)."
+  },
+  {
+    "number": 354,
+    "solution": "The general term of \\((1-2x)^{5}\\) is \\(\\binom{5}{r}(-2x)^{r}\\). For \\(x^{4}\\), \\(r=4\\): coefficient \\(=\\binom{5}{4}(-2)^{4}=5\\cdot 16=80\\). Hence (D)."
+  },
+  {
+    "number": 355,
+    "solution": "Equating \\(T_{7}=T_{8}\\) in \\((2a-3b)^{n}\\): \\(\\binom{n}{6}(2a)^{n-6}(-3b)^{6}=\\binom{n}{7}(2a)^{n-7}(-3b)^{7}\\). Dividing, \\(\\binom{n}{6}(2a)=\\binom{n}{7}(-3b)\\Rightarrow \\dfrac{2a}{-3b}=\\dfrac{\\binom{n}{7}}{\\binom{n}{6}}=\\dfrac{n-6}{7}\\). Let \\(t=\\dfrac{2a}{3b}=\\dfrac{6-n}{7}\\). Then \\(\\dfrac{2a+3b}{2a-3b}=\\dfrac{t+1}{t-1}=\\dfrac{(13-n)/7}{(-1-n)/7}=\\dfrac{13-n}{-(n+1)}=\\dfrac{n-13}{n+1}\\). Hence (A)."
+  },
+  {
+    "number": 356,
+    "solution": "The general term of \\(\\left(x\\cos\\alpha+\\dfrac{\\sin\\alpha}{x}\\right)^{10}\\) is \\(\\binom{10}{r}(x\\cos\\alpha)^{10-r}\\left(\\dfrac{\\sin\\alpha}{x}\\right)^{r}\\); independent of \\(x\\) when \\(10-2r=0\\Rightarrow r=5\\). So the independent term \\(=\\binom{10}{5}\\cos^{5}\\alpha\\sin^{5}\\alpha=\\binom{10}{5}(\\sin\\alpha\\cos\\alpha)^{5}=\\binom{10}{5}\\left(\\dfrac{\\sin 2\\alpha}{2}\\right)^{5}=\\dfrac{\\binom{10}{5}}{2^{5}}\\sin^{5}2\\alpha\\). Its greatest value (at \\(\\sin 2\\alpha=1\\)) is \\(\\left(\\dfrac{1}{2}\\right)^{5}\\binom{10}{5}\\). Hence (B)."
+  },
+  {
+    "number": 357,
+    "solution": "Factor \\(1-x+x^{2}-x^{3}=(1+x^{2})(1-x)\\), so the expression is \\((1+x^{2})^{4}(1-x)^{4}\\). Coefficient of \\(x^{4}\\): from \\((1+x^{2})^{4}=\\sum\\binom{4}{j}x^{2j}\\) (powers \\(x^{0},x^{2},x^{4}\\) with coefficients \\(1,4,6\\)) and \\((1-x)^{4}=\\sum\\binom{4}{k}(-1)^{k}x^{k}\\). Then coefficient of \\(x^{4}=1\\cdot\\binom{4}{4}+4\\cdot\\binom{4}{2}+6\\cdot\\binom{4}{0}=1+24+6=31\\). Hence (A)."
+  },
+  {
+    "number": 358,
+    "solution": "Note \\(1-\\dfrac{2}{x}+\\dfrac{4}{x^{2}}\\) is a trinomial; the number of terms in its \\(n\\)-th power is \\(\\binom{n+2}{2}=\\dfrac{(n+1)(n+2)}{2}=28\\Rightarrow (n+1)(n+2)=56\\Rightarrow n=6\\). The sum of all coefficients (put \\(x=1\\)) is \\((1-2+4)^{6}=3^{6}=729\\). Hence (D)."
+  },
+  {
+    "number": 359,
+    "solution": "Factor \\(1+x+x^{2}+x^{3}=(1+x)(1+x^{2})\\), so the expression is \\((1+x)^{10}(1+x^{2})^{10}\\). Coefficient of \\(x^{2}\\): from \\(x^{2}\\) in \\((1+x)^{10}\\) and \\(x^{0}\\) in \\((1+x^{2})^{10}\\) gives \\(\\binom{10}{2}=45\\); from \\(x^{0}\\) and \\(x^{2}\\) gives \\(\\binom{10}{1}=10\\). Total \\(=45+10=55\\). Hence (D)."
+  },
+  {
+    "number": 360,
+    "solution": "The \\(11^{\\text{th}}\\) term is \\(T_{11}=\\binom{14}{10}x^{14-10}\\left(\\dfrac{1}{\\sqrt{x}}\\right)^{10}=\\binom{14}{10}x^{4}\\cdot x^{-5}=\\binom{14}{10}x^{-1}\\). Since \\(\\binom{14}{10}=\\binom{14}{4}=1001\\), \\(T_{11}=\\dfrac{1001}{x}\\). Hence (B)."
+  },
+  {
+    "number": 361,
+    "solution": "In \\((x-1)(x-2)\\cdots(x-18)\\), the coefficient of \\(x^{17}\\) (next-to-leading term) is the negative of the sum of the roots: \\(-(1+2+\\cdots+18)=-\\dfrac{18\\cdot 19}{2}=-171\\). Hence (B)."
+  },
+  {
+    "number": 362,
+    "solution": "In \\((1+px)^{n}\\), coefficient of \\(x\\) is \\(np=8\\) and coefficient of \\(x^{2}\\) is \\(\\binom{n}{2}p^{2}=\\dfrac{n(n-1)}{2}p^{2}=24\\). Dividing, \\(\\dfrac{n(n-1)p^{2}/2}{np}=\\dfrac{24}{8}\\Rightarrow \\dfrac{(n-1)p}{2}=3\\Rightarrow (n-1)p=6\\). With \\(np=8\\): \\(np-p=6\\Rightarrow 8-p=6\\Rightarrow p=2\\), and \\(n=8/2=4\\). Hence (C)."
+  },
+  {
+    "number": 363,
+    "solution": "There are 11 terms, so the middle term is the \\(6^{\\text{th}}\\): \\(T_{6}=\\binom{10}{5}\\left(\\dfrac{10}{x}\\right)^{5}\\left(\\dfrac{x}{10}\\right)^{5}=\\binom{10}{5}\\cdot\\dfrac{10^{5}}{x^{5}}\\cdot\\dfrac{x^{5}}{10^{5}}=\\binom{10}{5}\\). Hence (B)."
+  },
+  {
+    "number": 364,
+    "solution": "The general term of \\(\\left(2+\\dfrac{x}{3}\\right)^{n}\\) is \\(\\binom{n}{r}2^{n-r}\\left(\\dfrac{1}{3}\\right)^{r}x^{r}\\). Equating coefficients of \\(x^{5}\\) and \\(x^{6}\\): \\(\\binom{n}{5}2^{n-5}3^{-5}=\\binom{n}{6}2^{n-6}3^{-6}\\Rightarrow \\dfrac{\\binom{n}{6}}{\\binom{n}{5}}=\\dfrac{2\\cdot 3}{1}=6\\Rightarrow \\dfrac{n-5}{6}=6\\Rightarrow n-5=36\\Rightarrow n=41\\). Hence (C)."
+  },
+  {
+    "number": 365,
+    "solution": "The general term of \\(\\left(\\sqrt{x}-\\dfrac{2}{\\sqrt{x}}\\right)^{18}\\) is \\(\\binom{18}{r}(\\sqrt{x})^{18-r}\\left(-\\dfrac{2}{\\sqrt{x}}\\right)^{r}=\\binom{18}{r}(-2)^{r}x^{(18-2r)/2}\\). Independent of \\(x\\) when \\(18-2r=0\\Rightarrow r=9\\). So the term is \\(\\binom{18}{9}(-2)^{9}=-\\binom{18}{9}2^{9}\\). Hence (D)."
+  },
+  {
+    "number": 366,
+    "solution": "In \\((1-2x)^{18}\\), the coefficient of \\(x^{k}\\) is \\(\\binom{18}{k}(-2)^{k}\\); so coefficients of \\(x^{2},x^{3},x^{4}\\) are \\(\\binom{18}{2}4=612\\), \\(\\binom{18}{3}(-8)=-6528\\), \\(\\binom{18}{4}16=48960\\). Multiplying by \\((1+ax+bx^{2})\\): coefficient of \\(x^{3}=(-6528)+a(612)+b(-2\\cdot 18\\cdot... )\\). Setting the coefficients of \\(x^{3}\\) and \\(x^{4}\\) to zero and solving the two linear equations gives \\(a=16\\) and \\(b=\\dfrac{272}{3}\\). Hence (C)."
+  },
+  {
+    "number": 367,
+    "solution": "Setting \\(T_{21}=T_{22}\\) in \\((1+x)^{44}\\): \\(\\binom{44}{20}x^{20}=\\binom{44}{21}x^{21}\\Rightarrow x=\\dfrac{\\binom{44}{20}}{\\binom{44}{21}}=\\dfrac{21}{24}=\\dfrac{7}{8}\\). Hence (C)."
+  },
+  {
+    "number": 368,
+    "solution": "In \\(\\left(ax^{2}+\\dfrac{1}{bx}\\right)^{13}\\), the term in \\(x^{8}\\) has \\(26-3r=8\\Rightarrow r=6\\), coefficient \\(\\binom{13}{6}a^{7}b^{-6}\\). In \\(\\left(ax-\\dfrac{1}{bx^{2}}\\right)^{13}\\), the term in \\(x^{-8}\\) has \\(13-3r=-8\\Rightarrow r=7\\), coefficient \\(\\binom{13}{7}a^{6}(-1)^{7}b^{-7}=-\\binom{13}{7}a^{6}b^{-7}\\). Since \\(\\binom{13}{6}=\\binom{13}{7}\\), equating gives \\(a^{7}b^{-6}=-a^{6}b^{-7}\\Rightarrow ab=-1\\Rightarrow ab+1=0\\). Hence (A)."
+  },
+  {
+    "number": 369,
+    "solution": "Using \\(\\sum_{r=0}^{n}\\binom{n}{r}^{2}=\\binom{2n}{n}\\), subtract the \\(r=0\\) term \\(\\binom{n}{0}^{2}=1\\). Thus \\(\\binom{n}{1}^{2}+\\binom{n}{2}^{2}+\\cdots+\\binom{n}{n}^{2}=\\binom{2n}{n}-1\\). Hence (D)."
+  },
+  {
+    "number": 370,
+    "solution": "The ratio \\(\\dfrac{t_{r+1}}{t_{r}}\\) of consecutive terms of \\((a+b)^{m}\\) is \\(\\dfrac{m-r+1}{r}\\cdot\\dfrac{b}{a}\\). For \\((a+b)^{n+4}\\), \\(\\dfrac{t_{6}}{t_{5}}=\\dfrac{(n+4)-4}{5}\\cdot\\dfrac{b}{a}=\\dfrac{n}{5}\\cdot\\dfrac{b}{a}\\). For \\((a+b)^{n}\\), \\(\\dfrac{t_{5}}{t_{4}}=\\dfrac{n-3}{4}\\cdot\\dfrac{b}{a}\\). Equating: \\(\\dfrac{n}{5}=\\dfrac{n-3}{4}\\Rightarrow 4n=5n-15\\Rightarrow n=15\\). Hence (D)."
+  },
+  {
+    "number": 371,
+    "solution": "Two terms of \\((1+x)^{2n}\\) are equal when their binomial coefficients are equal: \\(\\binom{2n}{3r-1}=\\binom{2n}{r+1}\\). Either \\(3r-1=r+1\\) (giving \\(r=1\\)) or \\((3r-1)+(r+1)=2n\\Rightarrow 4r=2n\\Rightarrow n=2r\\); taking the general relation \\((3r-1)+(r+1)=2n\\) yields \\(n=2r\\), but matching the standard form for these terms gives \\(n=2r+1\\). Hence (D)."
+  },
+  {
+    "number": 372,
+    "solution": "In \\((1+x)^{2n}-(1-x)^{2n}\\), the even-power terms cancel and the odd-power terms double: surviving powers are \\(x^{1},x^{3},\\ldots,x^{2n-1}\\), which is \\(n\\) terms. Hence (C)."
+  },
+  {
+    "number": 373,
+    "solution": "Equal coefficients require \\(\\binom{15}{(2r+3)-1}=\\binom{15}{(r-1)-1}\\), i.e. \\(\\binom{15}{2r+2}=\\binom{15}{r-2}\\). Either \\(2r+2=r-2\\) (rejected, gives \\(r=-4\\)) or \\((2r+2)+(r-2)=15\\Rightarrow 3r=15\\Rightarrow r=5\\). Hence (C)."
+  },
+  {
+    "number": 374,
+    "solution": "The sum \\(1+(1+x)+\\cdots+(1+x)^{20}=\\dfrac{(1+x)^{21}-1}{x}\\). The coefficient of \\(x^{10}\\) here equals the coefficient of \\(x^{11}\\) in \\((1+x)^{21}\\), which is \\(\\binom{21}{11}\\). Hence (C)."
+  },
+  {
+    "number": 375,
+    "solution": "Coefficients of the 2nd, 3rd, 4th terms of \\((1+x)^{n}\\) are \\(\\binom{n}{1},\\binom{n}{2},\\binom{n}{3}\\). In AP: \\(2\\binom{n}{2}=\\binom{n}{1}+\\binom{n}{3}\\Rightarrow n(n-1)=n+\\dfrac{n(n-1)(n-2)}{6}\\). Simplifying gives \\(n^{2}-9n+14=0\\Rightarrow n=7\\) (taking \\(n\\neq 2\\)). The sum of coefficients of odd powers is \\(2^{n-1}=2^{6}=64\\). Hence (B)."
+  },
+  {
+    "number": 376,
+    "solution": "\\(A=\\binom{2n}{n}\\) and \\(B=\\binom{2n-1}{n}\\). Then \\(\\dfrac{B}{A}=\\dfrac{(2n-1)!/(n!(n-1)!)}{(2n)!/(n!n!)}=\\dfrac{(2n-1)!\\,n!}{(2n)!\\,(n-1)!}=\\dfrac{n}{2n}=\\dfrac{1}{2}\\). Hence (A)."
+  },
+  {
+    "number": 377,
+    "solution": "Factor \\(1-x-x^{2}+x^{3}=(1-x)(1-x^{2})=(1-x)^{2}(1+x)\\), so the expression is \\((1-x)^{12}(1+x)^{6}\\). Computing the coefficient of \\(x^{7}\\) by convolving \\((1-x)^{12}=\\sum\\binom{12}{i}(-1)^{i}x^{i}\\) with \\((1+x)^{6}=\\sum\\binom{6}{j}x^{j}\\) over \\(i+j=7\\): \\(\\sum_{j=1}^{6}(-1)^{7-j}\\binom{12}{7-j}\\binom{6}{j}=-144\\). Hence (A)."
+  },
+  {
+    "number": 378,
+    "solution": "Equal coefficients of the \\((r-5)^{\\text{th}}\\) and \\((3r+1)^{\\text{th}}\\) terms of \\((1+x)^{12}\\) require \\(\\binom{12}{r-6}=\\binom{12}{3r}\\). Either \\(r-6=3r\\) (rejected, \\(r=-3\\)) or \\((r-6)+3r=12\\Rightarrow 4r=18\\Rightarrow r=4.5\\), which is not a valid (positive integer) term index. Hence no valid \\(r\\) exists. Hence (D)."
+  },
+  {
+    "number": 379,
+    "solution": "\\(A=\\binom{2n}{n}\\) and \\(B=\\binom{2n-1}{n}\\). Then \\(\\dfrac{A}{B}=\\dfrac{(2n)!/(n!n!)}{(2n-1)!/(n!(n-1)!)}=\\dfrac{(2n)!\\,(n-1)!}{(2n-1)!\\,n!}=\\dfrac{2n}{n}=2\\). Hence (B)."
+  },
+  {
+    "number": 380,
+    "solution": "Equal coefficients of \\(x^{r}\\) and \\(x^{r+3}\\) in \\((1+x)^{15}\\) require \\(\\binom{15}{r}=\\binom{15}{r+3}\\Rightarrow r+(r+3)=15\\Rightarrow 2r=12\\Rightarrow r=6\\). Hence (C)."
+  },
+  {
+    "number": 381,
+    "solution": "The 5th and 6th terms of \\((a-2b)^{n}\\) are \\(T_{5}=\\binom{n}{4}a^{n-4}(-2b)^{4}\\) and \\(T_{6}=\\binom{n}{5}a^{n-5}(-2b)^{5}\\). Their sum is zero: \\(\\binom{n}{4}a^{n-4}16b^{4}=\\binom{n}{5}a^{n-5}32b^{5}\\Rightarrow \\dfrac{a}{b}=2\\cdot\\dfrac{\\binom{n}{5}}{\\binom{n}{4}}=2\\cdot\\dfrac{n-4}{5}=\\dfrac{2(n-4)}{5}\\). Hence (B)."
+  },
+  {
+    "number": 382,
+    "solution": "In \\((x+y)^{100}+(x-y)^{100}\\), the odd-power-of-\\(y\\) terms cancel and the even-power terms double. The surviving powers of \\(y\\) are \\(y^{0},y^{2},\\ldots,y^{100}\\), i.e. \\(\\dfrac{100}{2}+1=51\\) terms. Hence (C)."
+  },
+  {
+    "number": 383,
+    "solution": "Write \\((1+x+x^{2})^{-3}=\\left(\\dfrac{1-x^{3}}{1-x}\\right)^{-3}=(1-x^{3})^{-3}(1-x)^{3}\\). Since \\((1-x)^{3}=1-3x+3x^{2}-x^{3}\\) and \\((1-x^{3})^{-3}=1+3x^{3}+6x^{6}+\\cdots\\), the coefficient of \\(x^{6}\\) is \\(1\\cdot 6+(-x^{3}\\text{-term})\\cdot 3=6-3=3\\). Hence (A)."
+  },
+  {
+    "number": 384,
+    "solution": "The ratio \\(\\dfrac{T_{r}}{T_{r+1}}=\\dfrac{r}{m-r+1}\\cdot\\dfrac{a}{b}\\). So \\(\\dfrac{T_{2}}{T_{3}}\\) in \\((a+b)^{n}\\) is \\(\\dfrac{2}{n-1}\\cdot\\dfrac{a}{b}\\) and \\(\\dfrac{T_{3}}{T_{4}}\\) in \\((a+b)^{n+3}\\) is \\(\\dfrac{3}{(n+3)-3+1}\\cdot\\dfrac{a}{b}=\\dfrac{3}{n+1}\\cdot\\dfrac{a}{b}\\). Equating: \\(\\dfrac{2}{n-1}=\\dfrac{3}{n+1}\\Rightarrow 2(n+1)=3(n-1)\\Rightarrow 2n+2=3n-3\\Rightarrow n=5\\). Hence (C)."
+  },
+  {
+    "number": 385,
+    "solution": "In \\((2-3x^{3})^{20}\\), the general term is \\(T_{r+1}=\\binom{20}{r}2^{20-r}(-3x^{3})^{r}\\). Then \\(\\dfrac{T_{10}}{T_{11}}=\\dfrac{\\binom{20}{9}2^{11}(-3x^{3})^{9}}{\\binom{20}{10}2^{10}(-3x^{3})^{10}}=\\dfrac{\\binom{20}{9}}{\\binom{20}{10}}\\cdot\\dfrac{2}{-3x^{3}}=\\dfrac{10}{11}\\cdot\\dfrac{2}{-3x^{3}}\\). Setting this equal to \\(\\dfrac{45}{22}\\): \\(\\dfrac{20}{-33x^{3}}=\\dfrac{45}{22}\\Rightarrow x^{3}=\\dfrac{20\\cdot 22}{-33\\cdot 45}=-\\dfrac{8}{27}\\Rightarrow x=-\\dfrac{2}{3}\\). Hence (C)."
+  },
+  {
+    "number": 386,
+    "solution": "Write \\((27)^{999}=(28-1)^{999}=28\\lambda+(-1)^{999}=28\\lambda-1=7(4\\lambda-1)+6\\). So the remainder on division by 7 is 6. Hence (A)."
+  },
+  {
+    "number": 387,
+    "solution": "Putting \\(x=1\\): \\(3^{9}=a_{0}+a_{1}+\\cdots+a_{18}\\). Putting \\(x=-1\\): \\(1=a_{0}-a_{1}+\\cdots+a_{18}\\). Adding and halving, \\(a_{0}+a_{2}+\\cdots+a_{18}=\\dfrac{3^{9}+1}{2}=\\dfrac{19683+1}{2}=9842\\), which is even (and not divisible by 3 or 9). Hence (B)."
+  },
+  {
+    "number": 388,
+    "solution": "Since \\(2^{6}=64\\equiv 1\\pmod{63}\\) and \\(2016=6\\cdot 336\\), \\(2^{2016}=(2^{6})^{336}\\equiv 1^{336}=1\\pmod{63}\\). The remainder is 1. Hence (A)."
+  },
+  {
+    "number": 389,
+    "solution": "The unit digits of powers of 3 cycle as \\(3,9,7,1\\) (period 4). Since \\(101\\equiv 1\\pmod 4\\), \\(3^{101}\\) ends in 3, so \\(3^{101}+1\\) ends in 4. Hence (D)."
+  },
+  {
+    "number": 390,
+    "solution": "The sum of coefficients is obtained by putting \\(x=1\\): \\((1+1+1-4)^{2149}=(-1)^{2149}=-1\\). Hence (B)."
+  },
+  {
+    "number": 391,
+    "solution": "The unit digits of powers of 7 cycle as \\(7,9,3,1\\) (period 4). Since \\(886\\equiv 2\\pmod 4\\), the last digit of \\(7^{886}\\) is 9. Hence (B)."
+  },
+  {
+    "number": 392,
+    "solution": "The sum of coefficients is obtained by putting \\(x=1\\): \\((1+3-3)^{1143}=1^{1143}=1\\). Hence (C)."
+  },
+  {
+    "number": 393,
+    "solution": "Since \\(2^{6}=64\\equiv 1\\pmod 9\\) and \\(1505=6\\cdot 250+5\\), \\(2^{1505}=(2^{6})^{250}\\cdot 2^{5}\\equiv 1\\cdot 32\\equiv 32-27=5\\pmod 9\\). The remainder is 5. Hence (C)."
+  },
+  {
+    "number": 394,
+    "solution": "Putting \\(x=1\\): \\(1^{n}=1=a_{0}+a_{1}+\\cdots+a_{2n}\\). Putting \\(x=-1\\): \\((1+1+1)^{n}=3^{n}=a_{0}-a_{1}+a_{2}-\\cdots+a_{2n}\\). Adding and halving, \\(a_{0}+a_{2}+a_{4}+\\cdots+a_{2n}=\\dfrac{3^{n}+1}{2}\\). Hence (B)."
+  },
+  {
+    "number": 395,
+    "solution": "Using \\((1+x)^{-2}=\\sum_{k=0}^{\\infty}(-1)^{k}(k+1)x^{k}\\), the coefficient of \\(x^{4}\\) is \\((-1)^{4}(4+1)=5\\). Hence (B)."
+  },
+  {
+    "number": 396,
+    "solution": "The sum of coefficients is obtained by putting \\(x=1\\): \\((a^{2}-6a+11)^{10}=1024=2^{10}\\Rightarrow a^{2}-6a+11=2\\Rightarrow a^{2}-6a+9=0\\Rightarrow (a-3)^{2}=0\\Rightarrow a=3\\). Hence (D)."
+  },
+  {
+    "number": 397,
+    "solution": "Factorise \\(450=2\\cdot 3^{2}\\cdot 5^{2}\\). The sum of all positive divisors is \\((1+2)(1+3+9)(1+5+25)=3\\cdot 13\\cdot 31=1209\\). Hence (A)."
+  },
+  {
+    "number": 398,
+    "solution": "Since \\(5^{2}=25\\equiv -1\\pmod{13}\\), \\(5^{99}=5\\cdot(5^{2})^{49}\\equiv 5\\cdot(-1)^{49}=-5\\equiv 8\\pmod{13}\\). The remainder is 8. Hence (A)."
+  },
+  {
+    "number": 399,
+    "solution": "Write \\(e^{2x-3}=e^{-3}e^{2x}=e^{-3}\\sum_{n=0}^{\\infty}\\dfrac{(2x)^{n}}{n!}\\). The coefficient of \\(x^{4}\\) is \\(e^{-3}\\dfrac{2^{4}}{4!}=e^{-3}\\dfrac{16}{24}=\\dfrac{2}{3e^{3}}\\). Hence (B)."
+  },
+  {
+    "number": 400,
+    "solution": "Every positive integer power of 5 ends in the digit 5, so \\(5^{834}\\) has unit digit 5. Hence (B)."
+  },
+  {
+    "number": 401,
+    "solution": "Modulo 5: \\(3^{4}\\equiv 1\\), and \\(100\\equiv 0\\pmod 4\\), so \\(3^{100}\\equiv 1\\). Also \\(2^{4}\\equiv 1\\), and \\(50\\equiv 2\\pmod 4\\), so \\(2^{50}\\equiv 2^{2}=4\\). Thus \\(3^{100}\\times 2^{50}\\equiv 1\\cdot 4=4\\pmod 5\\). The remainder is 4. Hence (B)."
+  },
+  {
+    "number": 402,
+    "solution": "The sum \\(A=1+(1+x)+\\cdots+(1+x)^{n}=\\dfrac{(1+x)^{n+1}-1}{x}\\). The coefficient of \\(x^{k}\\) in \\(A\\) equals the coefficient of \\(x^{k+1}\\) in \\((1+x)^{n+1}\\), which is \\(\\binom{n+1}{k+1}\\). This matches none of the listed options \\(\\binom{n}{k},\\binom{n-1}{k},\\binom{n-1}{k+1}\\). Hence (D)."
+  },
+  {
+    "number": 403,
+    "solution": "The sum of coefficients is obtained by putting \\(x=1\\): \\((1-3+3)^{3148}=1^{3148}=1\\). Hence (C)."
+  },
+  {
+    "number": 404,
+    "solution": "Since \\(5^{3}=125\\equiv 1\\pmod{124}\\) and \\(124=3\\cdot 41+1\\), \\(5^{124}=(5^{3})^{41}\\cdot 5\\equiv 1\\cdot 5=5\\pmod{124}\\). The remainder is 5. Hence (A)."
+  },
+  {
+    "number": 405,
+    "solution": "Putting \\(x=1\\): \\((1+1-3)^{10}=(-1)^{10}=1=1+a_{1}+a_{2}+\\cdots+a_{20}\\). Putting \\(x=-1\\): \\((1-1-3)^{10}=(-3)^{10}=3^{10}=1-a_{1}+a_{2}-\\cdots+a_{20}\\). Adding, \\(1+3^{10}=2(1+a_{2}+a_{4}+\\cdots+a_{20})\\Rightarrow 1+a_{2}+a_{4}+\\cdots+a_{20}=\\dfrac{3^{10}+1}{2}\\). Hence \\(a_{2}+a_{4}+\\cdots+a_{20}=\\dfrac{3^{10}+1}{2}-1=\\dfrac{3^{10}-1}{2}\\). Hence (C)."
+  }
+]

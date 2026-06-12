@@ -1,0 +1,5 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong (verified by re-derivation + zoom-crop of the source). Q57 and Q82 are EXCLUDED (omitted from questions.json) — the source prints only the number with no stem/options (blank). They surface as intentional coverage gaps. Q60 is genuinely multi-key (B,C) per the answer file — an 'is/are true' question — kept as-is.",
+  "50": { "answer": "D", "reason": "key file 'a' wrong: xRy iff xy>=0 is reflexive (x^2>=0) AND symmetric (xy>=0 => yx>=0) but not transitive (x=1,y=0,z=-1) = option D 'reflexive and symmetric but not transitive'" },
+  "65": { "answer": "C", "reason": "key file 'd' (equivalence) wrong: 1+ab>0 on Z is reflexive+symmetric but NOT transitive (a=1,b=0,c=-1: 1+0>0 and 1+0>0 but 1-1=0 is not >0) = option C; sibling Q53 of the same structure is keyed not-transitive" }
+}
