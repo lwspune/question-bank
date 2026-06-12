@@ -1,0 +1,166 @@
+[
+  {
+    "number": 837,
+    "solution": "The probabilities must sum to 1. So \\(0.3 + k + 2k + 2k = 1 \\Rightarrow 0.3 + 5k = 1 \\Rightarrow 5k = 0.7 \\Rightarrow k = 0.14\\). Matches option D."
+  },
+  {
+    "number": 838,
+    "solution": "For a distribution function, \\(P(3 < X \\le 5) = F(5) - F(3) = 0.85 - 0.48 = 0.37\\). Matches option B."
+  },
+  {
+    "number": 839,
+    "solution": "Total probability is 1: \\((k + 2k + 2k + 3k) + (k^2 + 2k^2 + 7k^2 + k) = 1 \\Rightarrow 10k^2 + 9k - 1 = 0\\). Solving, \\(k = \\frac{-9 + 11}{20} = \\frac{1}{10}\\) (taking the positive root). Then \\(P(0 < X < 5) = P(1) + P(2) + P(3) + P(4) = k + 2k + 2k + 3k = 8k = \\frac{8}{10}\\). Matches option C."
+  },
+  {
+    "number": 840,
+    "solution": "Sum of probabilities: \\(k + 2k + 3k + 2k + k = 9k = 1 \\Rightarrow k = \\frac{1}{9}\\). Mean \\(= \\sum xP(x) = k(1 + 4 + 9 + 8 + 5) = 27k = 3\\). \\(E(X^2) = k(1 + 8 + 27 + 32 + 25) = 93k = \\frac{93}{9} = \\frac{31}{3}\\). Variance \\(= E(X^2) - (\\text{Mean})^2 = \\frac{31}{3} - 9 = \\frac{31 - 27}{3} = \\frac{4}{3}\\). Matches option A."
+  },
+  {
+    "number": 841,
+    "solution": "Sum over \\(x = 0, 1, 2, 3, 4\\): \\(k\\left(1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16}\\right) = k \\cdot \\frac{31}{16} = 1 \\Rightarrow k = \\frac{16}{31}\\). This value is not among options a, b, c. Matches option D (None of these)."
+  },
+  {
+    "number": 842,
+    "solution": "With replacement, this is binomial. \\(p(\\text{green}) = \\frac{15}{25} = \\frac{3}{5}\\), \\(q = \\frac{2}{5}\\), \\(n = 10\\). Variance \\(= npq = 10 \\times \\frac{3}{5} \\times \\frac{2}{5} = \\frac{60}{25} = \\frac{12}{5}\\). Matches option D."
+  },
+  {
+    "number": 843,
+    "solution": "\\(P(\\text{at least one head and at least one tail}) = 1 - P(\\text{all heads}) - P(\\text{all tails}) = 1 - \\left(\\frac{1}{2}\\right)^8 - \\left(\\frac{1}{2}\\right)^8 = 1 - \\frac{2}{256} = \\frac{254}{256} = \\frac{127}{128}\\). Matches option C."
+  },
+  {
+    "number": 844,
+    "solution": "Binomial with \\(p(\\text{defective}) = \\frac{10}{100} = \\frac{1}{10}\\), \\(q = \\frac{9}{10}\\), \\(n = 5\\). \\(P(\\text{at most one defective}) = P(0) + P(1) = \\left(\\frac{9}{10}\\right)^5 + {}^5C_1\\left(\\frac{1}{10}\\right)\\left(\\frac{9}{10}\\right)^4 = \\left(\\frac{9}{10}\\right)^5 + \\frac{1}{2}\\left(\\frac{9}{10}\\right)^4\\). Matches option C."
+  },
+  {
+    "number": 845,
+    "solution": "\\(p = 0.8\\), \\(n = 8\\). \\(P(\\text{all 8 develop immunity}) = p^8 = (0.8)^8\\). Matches option B."
+  },
+  {
+    "number": 846,
+    "solution": "Mean \\(np = 4\\), variance \\(npq = 2 \\Rightarrow q = \\frac{2}{4} = \\frac{1}{2}\\), so \\(p = \\frac{1}{2}\\), \\(n = 8\\). \\(P(X = 2) = {}^8C_2\\left(\\frac{1}{2}\\right)^2\\left(\\frac{1}{2}\\right)^6 = \\frac{28}{256} = \\frac{7}{64}\\). Matches option D."
+  },
+  {
+    "number": 847,
+    "solution": "Success twice as often as failure: \\(p = 2q\\) and \\(p + q = 1 \\Rightarrow p = \\frac{2}{3}, q = \\frac{1}{3}\\), \\(n = 6\\). \\(P(\\text{at least 5}) = P(5) + P(6) = {}^6C_5\\left(\\frac{2}{3}\\right)^5\\left(\\frac{1}{3}\\right) + \\left(\\frac{2}{3}\\right)^6 = \\frac{192}{729} + \\frac{64}{729} = \\frac{256}{729}\\). Matches option D."
+  },
+  {
+    "number": 848,
+    "solution": "Across 4 matches each scoring 0, 1, or 2 points (with probabilities 0.45, 0.05, 0.50), at least 7 points means total of 7 or 8. Total 8: all four give 2 points \\(= (0.50)^4 = 0.0625\\). Total 7: three give 2 and one gives 1 \\(= {}^4C_1 (0.50)^3 (0.05) = 4 \\times 0.125 \\times 0.05 = 0.025\\). Sum \\(= 0.0625 + 0.025 = 0.0875\\). Matches option A."
+  },
+  {
+    "number": 849,
+    "solution": "\\(P(\\text{event does not happen}) = 0.8 \\Rightarrow p(\\text{happens}) = 0.2\\), \\(q = 0.8\\), \\(n = 3\\). \\(P(\\text{at most once}) = P(0) + P(1) = (0.8)^3 + {}^3C_1(0.2)(0.8)^2 = 0.512 + 0.384 = 0.896\\). Matches option A."
+  },
+  {
+    "number": 850,
+    "solution": "Mean \\(np = 8\\), variance \\(npq = 4 \\Rightarrow q = \\frac{1}{2}, p = \\frac{1}{2}, n = 16\\). \\(P(X < 3) = P(0) + P(1) + P(2) = \\left[{}^{16}C_0 + {}^{16}C_1 + {}^{16}C_2\\right]\\left(\\frac{1}{2}\\right)^{16} = \\frac{1 + 16 + 120}{2^{16}} = \\frac{137}{2^{16}}\\). Matches option A."
+  },
+  {
+    "number": 851,
+    "solution": "Mean \\(np = 2\\), variance \\(npq = 1 \\Rightarrow q = \\frac{1}{2}, p = \\frac{1}{2}, n = 4\\). \\(P(X \\ge 1) = 1 - P(0) = 1 - \\left(\\frac{1}{2}\\right)^4 = 1 - \\frac{1}{16} = \\frac{15}{16}\\). Matches option D."
+  },
+  {
+    "number": 852,
+    "solution": "Success \\(= \\) number greater than 4 (i.e. 5 or 6): \\(p = \\frac{2}{6} = \\frac{1}{3}\\), \\(q = \\frac{2}{3}\\), \\(n = 6\\). \\(P(\\text{at least 2}) = 1 - P(0) - P(1) = 1 - \\left(\\frac{2}{3}\\right)^6 - {}^6C_1\\left(\\frac{1}{3}\\right)\\left(\\frac{2}{3}\\right)^5 = 1 - \\frac{64}{729} - \\frac{192}{729} = 1 - \\frac{256}{729} = \\frac{473}{729} \\approx 0.649\\). Matches option A."
+  },
+  {
+    "number": 853,
+    "solution": "In \\(2n\\) tosses, heads equal tails only when there are exactly n heads: \\(P(\\text{equal}) = {}^{2n}C_n\\left(\\frac{1}{2}\\right)^{2n} = \\frac{(2n)!}{(n!)^2}\\cdot\\frac{1}{4^n}\\). So \\(P(\\text{not equal}) = 1 - \\frac{(2n)!}{(n!)^2}\\cdot\\frac{1}{4^n}\\). Matches option C."
+  },
+  {
+    "number": 854,
+    "solution": "11 steps, forward \\(p = 0.4\\), backward \\(q = 0.6\\). One step away from start means net displacement \\(\\pm 1\\). Net \\(+1\\): 6 forward, 5 backward; net \\(-1\\): 5 forward, 6 backward. Total probability \\(= {}^{11}C_6 (0.4)^6 (0.6)^5 + {}^{11}C_5 (0.4)^5 (0.6)^6\\). Since \\({}^{11}C_6 = {}^{11}C_5\\), factor out: \\(= {}^{11}C_5 (0.4)^5 (0.6)^5 (0.4 + 0.6) = {}^{11}C_6 (0.24)^5\\) (using \\(0.4 \\times 0.6 = 0.24\\)). Matches option A."
+  },
+  {
+    "number": 855,
+    "solution": "Fair coin, \\(p = \\frac{1}{2}\\). \\(P(\\text{exactly 3}) = P(\\text{exactly 5}) \\Rightarrow {}^nC_3 = {}^nC_5 \\Rightarrow n = 3 + 5 = 8\\). \\(P(\\text{exactly 1 head}) = {}^8C_1\\left(\\frac{1}{2}\\right)^8 = \\frac{8}{256} = \\frac{1}{32}\\). Matches option B."
+  },
+  {
+    "number": 856,
+    "solution": "Mean \\(np = 4\\), variance \\(npq = 2 \\Rightarrow q = \\frac{1}{2}, p = \\frac{1}{2}, n = 8\\). \\(P(X = 1) = {}^8C_1\\left(\\frac{1}{2}\\right)\\left(\\frac{1}{2}\\right)^7 = \\frac{8}{256} = \\frac{1}{32}\\). Matches option D."
+  },
+  {
+    "number": 857,
+    "solution": "\\(p(\\text{defective}) = \\frac{10}{100} = \\frac{1}{10}\\), so \\(p(\\text{non-defective}) = \\frac{9}{10}\\), \\(n = 5\\). \\(P(\\text{none defective}) = \\left(\\frac{9}{10}\\right)^5\\). Matches option C."
+  },
+  {
+    "number": 858,
+    "solution": "\\(p(\\text{correct guess}) = \\frac{1}{3}\\), \\(q = \\frac{2}{3}\\), \\(n = 5\\). \\(P(4 \\text{ or more}) = P(4) + P(5) = {}^5C_4\\left(\\frac{1}{3}\\right)^4\\left(\\frac{2}{3}\\right) + \\left(\\frac{1}{3}\\right)^5 = \\frac{10}{3^5} + \\frac{1}{3^5} = \\frac{11}{3^5}\\). Matches option D."
+  },
+  {
+    "number": 859,
+    "solution": "Mean \\(np = 2\\), variance \\(npq = 1 \\Rightarrow q = \\frac{1}{2}, p = \\frac{1}{2}, n = 4\\). \\(P(X \\ge 1) = 1 - P(0) = 1 - \\left(\\frac{1}{2}\\right)^4 = \\frac{15}{16}\\). Matches option D."
+  },
+  {
+    "number": 860,
+    "solution": "\\(p = 0.4\\), \\(q = 0.6\\), \\(n = 3\\). \\(P(\\text{at least once}) = 1 - P(0) = 1 - (0.6)^3 = 1 - 0.216 = 0.784\\). Matches option B."
+  },
+  {
+    "number": 861,
+    "solution": "For a fair coin, the probability of an odd number of tails in any number of tosses equals \\(\\frac{1}{2}\\) (the even and odd cases split the binomial expansion equally when \\(p = q = \\frac{1}{2}\\)). So \\(P(\\text{odd number of tails}) = \\frac{1}{2}\\). Matches option A."
+  },
+  {
+    "number": 862,
+    "solution": "\\(P(\\text{at least one failure}) = 1 - p^5 \\ge \\frac{31}{32} \\Rightarrow p^5 \\le \\frac{1}{32} \\Rightarrow p \\le \\frac{1}{2}\\). Since \\(p \\ge 0\\), \\(p \\in \\left[0, \\frac{1}{2}\\right]\\). Matches option A."
+  },
+  {
+    "number": 863,
+    "solution": "\\(P(\\text{at least one head}) = 1 - \\left(\\frac{1}{2}\\right)^n > 0.9 \\Rightarrow \\left(\\frac{1}{2}\\right)^n < 0.1 \\Rightarrow 2^n > 10 \\Rightarrow n \\ge 4\\). Matches option C."
+  },
+  {
+    "number": 864,
+    "solution": "Mean \\(np = 20\\), variance \\(npq = 16 \\Rightarrow q = \\frac{16}{20} = \\frac{4}{5}\\), so \\(p = \\frac{1}{5}\\). Then \\(n = \\frac{20}{p} = 20 \\times 5 = 100\\). Pair \\((m, p) = \\left(100, \\frac{1}{5}\\right)\\). Matches option A."
+  },
+  {
+    "number": 865,
+    "solution": "\\(p(\\text{sum} = 7 \\text{ on two dice}) = \\frac{6}{36} = \\frac{1}{6}\\), \\(q = \\frac{5}{6}\\), \\(n = 6\\). \\(P(\\text{exactly 4}) = {}^6C_4\\left(\\frac{1}{6}\\right)^4\\left(\\frac{5}{6}\\right)^2 = 15 \\times \\frac{1}{1296} \\times \\frac{25}{36} = \\frac{375}{46656} = \\frac{125}{15552}\\). Matches option C."
+  },
+  {
+    "number": 866,
+    "solution": "\\(p = \\frac{1}{4}\\), \\(q = \\frac{3}{4}\\). \\(P(\\text{at least one success}) = 1 - \\left(\\frac{3}{4}\\right)^n \\ge \\frac{9}{10} \\Rightarrow \\left(\\frac{3}{4}\\right)^n \\le \\frac{1}{10}\\). Taking \\(\\log_{10}\\): \\(n(\\log_{10} 3 - \\log_{10} 4) \\le -1\\). Dividing by the negative quantity flips the inequality: \\(n(\\log_{10} 4 - \\log_{10} 3) \\ge 1 \\Rightarrow n \\ge \\frac{1}{\\log_{10} 4 - \\log_{10} 3}\\). This is option D. NOTE: the supplied answer key marks A, but both this derivation and the book's own printed solution give \\(\\frac{1}{\\log_{10} 4 - \\log_{10} 3}\\) = option D."
+  },
+  {
+    "number": 867,
+    "solution": "Tossing until a six: X is geometric with success \\(\\frac{1}{6}\\). \\(P(X = 3) = \\left(\\frac{5}{6}\\right)^2\\left(\\frac{1}{6}\\right) = \\frac{25}{216}\\). Matches option A."
+  },
+  {
+    "number": 868,
+    "solution": "\\(P(X \\ge 3) = P(\\text{first two tosses are not six}) = \\left(\\frac{5}{6}\\right)^2 = \\frac{25}{36}\\). Matches option B."
+  },
+  {
+    "number": 869,
+    "solution": "\\(P(X \\ge 6 \\mid X > 3) = \\frac{P(X \\ge 6)}{P(X > 3)} = \\frac{P(X \\ge 6)}{P(X \\ge 4)} = \\frac{(5/6)^5}{(5/6)^3} = \\left(\\frac{5}{6}\\right)^2 = \\frac{25}{36}\\). Matches option D."
+  },
+  {
+    "number": 870,
+    "solution": "\\(p(\\text{double six}) = \\frac{1}{36}\\), \\(q = \\frac{35}{36}\\), n trials. \\(P(\\text{at least once}) = 1 - P(\\text{none}) = 1 - \\left(\\frac{35}{36}\\right)^n\\). Matches option B."
+  },
+  {
+    "number": 871,
+    "solution": "Range \\(\\{0,\\dots,6\\}\\) gives \\(n = 6\\). \\(P(X = 2) = 4P(X = 4) \\Rightarrow {}^6C_2 p^2 q^4 = 4 \\cdot {}^6C_4 p^4 q^2\\). Since \\({}^6C_2 = {}^6C_4 = 15\\), this gives \\(q^2 = 4p^2 \\Rightarrow q = 2p\\). With \\(p + q = 1\\): \\(p + 2p = 1 \\Rightarrow p = \\frac{1}{3}\\). Matches option A."
+  },
+  {
+    "number": 872,
+    "solution": "\\(p(\\text{survive}) = \\frac{3}{4}\\), \\(q = \\frac{1}{4}\\), \\(n = 4\\). \\(P(\\text{exactly 2}) = {}^4C_2\\left(\\frac{3}{4}\\right)^2\\left(\\frac{1}{4}\\right)^2 = 6 \\times \\frac{9}{16} \\times \\frac{1}{16} = \\frac{54}{256} = \\frac{27}{128}\\). Matches option D."
+  },
+  {
+    "number": 873,
+    "solution": "For a binomial distribution, mean \\(\\alpha = np\\) and variance \\(\\beta = npq\\). Since \\(0 < q < 1\\), we have \\(\\beta = npq < np = \\alpha\\), and both are positive. So \\(0 < \\beta < \\alpha\\). Matches option B."
+  },
+  {
+    "number": 874,
+    "solution": "\\(p(\\text{score} = 9) = \\) ways \\((3,6),(4,5),(5,4),(6,3) = \\frac{4}{36} = \\frac{1}{9}\\), \\(q = \\frac{8}{9}\\), \\(n = 3\\). \\(P(\\text{exactly 9 twice}) = {}^3C_2\\left(\\frac{1}{9}\\right)^2\\left(\\frac{8}{9}\\right) = 3 \\times \\frac{1}{81} \\times \\frac{8}{9} = \\frac{24}{729} = \\frac{8}{243}\\). Matches option B."
+  },
+  {
+    "number": 875,
+    "solution": "Mean \\(np = 4\\), variance \\(npq = 2 \\Rightarrow q = \\frac{1}{2}, p = \\frac{1}{2}, n = 8\\). \\(P(X > 6) = P(7) + P(8) = {}^8C_7\\left(\\frac{1}{2}\\right)^8 + {}^8C_8\\left(\\frac{1}{2}\\right)^8 = \\frac{8 + 1}{256} = \\frac{9}{256}\\). Matches option C."
+  },
+  {
+    "number": 876,
+    "solution": "Equally strong players: \\(p = q = \\frac{1}{2}\\) per game, \\(n = 4\\). \\(P(\\text{A wins exactly 3 of 4}) = {}^4C_3\\left(\\frac{1}{2}\\right)^3\\left(\\frac{1}{2}\\right) = 4 \\times \\frac{1}{16} = \\frac{4}{16} = \\frac{1}{4}\\). Matches option C."
+  },
+  {
+    "number": 877,
+    "solution": "\\(P(X = r)\\) is maximised at the mode of the binomial. With \\(n = 100\\), \\(p = \\frac{1}{3}\\): \\((n + 1)p = 101 \\times \\frac{1}{3} = 33.67\\), which is not an integer, so the mode is \\(\\lfloor (n+1)p \\rfloor = 33\\). Hence \\(r = 33\\). Matches option C."
+  }
+]

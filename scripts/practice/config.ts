@@ -195,6 +195,69 @@ export const TOPICS: Record<string, Topic> = {
       "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
     ],
   },
+
+  // Algebra → Matrices & Determinants, Q490–703 (source sections Matrices
+  // Q490–546 + Determinants Q547–676 + System of Equations Q677–703, all merged
+  // into the single NDA Maths chapter — System maps to the "Linear Systems"
+  // subtopic). Probability starts at Q704.
+  "matrices-determinants": {
+    id: "matrices-determinants",
+    chapterName: "Matrices & Determinants",
+    qFrom: 490,
+    qTo: 703,
+    sourceFile: "NDA_Maths_Practice__Algebra__Matrices_and_Determinants.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-2 page 211-240.pdf"), pages: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+    subtopics: [
+      "Cofactors, Adjoint, and Inverse",
+      "Determinant Properties, Operations, and Sums",
+      "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+      "Matrix Operations, Polynomials, and Equations",
+      "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+      "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    ],
+  },
+
+  // Algebra → Probability, Q704–836 (source sections Probability Q704–790 +
+  // Conditional Probability Q791–836 + Baye's Theorem, merged into the single
+  // NDA Maths "Probability" chapter). Probability Distribution starts at Q837.
+  probability: {
+    id: "probability",
+    chapterName: "Probability",
+    qFrom: 704,
+    qTo: 836,
+    sourceFile: "NDA_Maths_Practice__Algebra__Probability.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [33, 34, 35, 36, 37, 38, 39, 40] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-2 page 211-240.pdf"), pages: [22, 23, 24, 25, 26, 27, 28, 29] },
+    subtopics: [
+      "Bounds on Probability",
+      "Conditional Probability, Total Probability, and Bayes' Theorem",
+      "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+      "Independent Events",
+      "Probability via Counting",
+    ],
+  },
+
+  // Algebra → Binomial Distribution, Q837–877 (source section "Probability
+  // Distribution" — random-variable distributions, mean/variance, and binomial
+  // distribution; NDA Maths' only distribution chapter is Binomial Distribution).
+  // Statistics starts at Q878. Solutions Q837–877 are in the sol-2 (241–253) file.
+  "binomial-distribution": {
+    id: "binomial-distribution",
+    chapterName: "Binomial Distribution",
+    qFrom: 837,
+    qTo: 877,
+    sourceFile: "NDA_Maths_Practice__Algebra__Binomial_Distribution.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [40, 41, 42, 43] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-2 page 241-253.pdf"), pages: [0, 1, 2, 3] },
+    subtopics: [
+      "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+      "Mean, Variance, and Parameter Estimation in B(n, p)",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
