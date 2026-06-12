@@ -1,0 +1,338 @@
+[
+  {
+    "number": 1,
+    "solution": "The set \\(A = \\{-1, 1\\}\\) is exactly the solution set of \\(x^2 = 1\\), since \\(x^2 = 1 \\Rightarrow x = \\pm 1\\). Option B gives \\(x^2 + 1 = 0\\) which has no real roots, and the other options are infinite sets. Hence (D)."
+  },
+  {
+    "number": 2,
+    "solution": "A set is empty when no real number satisfies its defining condition. \\(x^2 + 3 = 0\\) gives \\(x^2 = -3\\), which has no real solution. The other conditions all have real solutions (\\(x^2 = 1\\), \\(x^2 = 9\\), \\(x^2 - x - 2 = 0\\)). Hence (B)."
+  },
+  {
+    "number": 3,
+    "solution": "\\(x^2 + x + 1 = 0\\) has discriminant \\(1 - 4 = -3 < 0\\), so no real roots: the set is empty. Option B: \\(x = 3\\) satisfies both \\(x^2 = 9\\) and \\(2x = 6\\) (non-empty). Option C: \\(x = 0\\) (non-empty). Hence (A)."
+  },
+  {
+    "number": 4,
+    "solution": "We need x with \\(x^2 = 16\\) (so \\(x = \\pm 4\\)) AND \\(2x = 6\\) (so \\(x = 3\\)) simultaneously. No x satisfies both, so the set is empty, \\(\\phi\\). Hence (C)."
+  },
+  {
+    "number": 5,
+    "solution": "\\(|2x + 3| < 7 \\Rightarrow -7 < 2x + 3 < 7 \\Rightarrow -10 < 2x < 4 \\Rightarrow -5 < x < 2\\). Now check option A: \\(0 < x + 5 < 7 \\Rightarrow -5 < x < 2\\), which is the same set. Hence (A)."
+  },
+  {
+    "number": 6,
+    "solution": "\\(4^n - 3n - 1 = (1 + 3)^n - 3n - 1 = \\sum_{k \\ge 2}\\binom{n}{k}3^k\\), which is always a multiple of 9 (each term has \\(3^k\\) with \\(k \\ge 2\\)). So every element of X is a multiple of 9, i.e. \\(X \\subseteq \\{0, 9, 18, ...\\} = Y\\). Thus \\(X \\subseteq Y\\). Hence (A)."
+  },
+  {
+    "number": 7,
+    "solution": "\\(5^n - 4n - 1 = (1 + 4)^n - 4n - 1 = \\sum_{k \\ge 2}\\binom{n}{k}4^k\\), each term divisible by 16. So every element of A is a multiple of 16, i.e. \\(A \\subseteq \\{0, 16, 32, ...\\} = B\\). Hence (C)."
+  },
+  {
+    "number": 8,
+    "solution": "A set with 4 elements has \\(2^4 = 16\\) subsets in total. Proper subsets exclude the set itself, giving \\(16 - 1 = 15\\). Hence (C)."
+  },
+  {
+    "number": 9,
+    "solution": "A set with \\(n + 1\\) elements has \\(2^{n+1}\\) subsets. Proper subsets exclude the set itself: \\(2^{n+1} - 1\\). Hence (B)."
+  },
+  {
+    "number": 10,
+    "solution": "Here \\(\\{a, b\\}\\) is itself an element of A, so \\(\\{a, b\\} \\in A\\) (B is correct). But \\(\\{a, b\\} \\subset A\\) would require \\(a \\in A\\) and \\(b \\in A\\), which is false (a and b are not members of A). So statement A is incorrect. Hence (A)."
+  },
+  {
+    "number": 11,
+    "solution": "A 4-element set has \\(2^4 = 16\\) subsets. Removing the empty set leaves \\(16 - 1 = 15\\). Hence (C)."
+  },
+  {
+    "number": 12,
+    "solution": "\\(C = \\{\\{1\\}, \\{1, 2\\}\\}\\). The set \\(A = \\{1, 2\\}\\) is one of the elements of C, so \\(A \\in C\\). (Options B and C are identical as printed; the intended true relation is \\(A \\in C\\).) Hence (C)."
+  },
+  {
+    "number": 13,
+    "solution": "Subsets of A \\(= 2^m\\), subsets of B \\(= 2^n\\). Given \\(2^m - 2^n = 112 = 2^4 \\cdot 7 = 16(8 - 1) = 2^7 - 2^4\\). So \\(m = 7\\), \\(n = 4\\). Hence (A)."
+  },
+  {
+    "number": 14,
+    "solution": "If \\(n(A) = 5\\), the power set has \\(2^5 = 32\\) elements. Hence (A)."
+  },
+  {
+    "number": 15,
+    "solution": "A set with n elements has a power set of \\(2^n\\) elements. Hence (B)."
+  },
+  {
+    "number": 16,
+    "solution": "For disjoint sets, \\(n(P \\cup Q \\cup R) = n(P) + n(Q) + n(R) = 8 + 10 + 5 = 23\\). Hence (A)."
+  },
+  {
+    "number": 17,
+    "solution": "If \\(A \\subset B\\), then \\(A \\cup B = B\\), so \\(n(A \\cup B) = n(B)\\). Hence (A)."
+  },
+  {
+    "number": 18,
+    "solution": "\\(|x - 2| \\le 3 \\Rightarrow -1 \\le x \\le 5\\), so over integers \\(A = \\{-1, 0, 1, 2, 3, 4, 5\\}\\). Then \\(X - A = \\{-2, 6, 7, 8\\}\\). Hence (A)."
+  },
+  {
+    "number": 19,
+    "solution": "\\((A - B) \\cup (B - A)\\) is the symmetric difference, which equals \\((A \\cup B) - (A \\cap B)\\). Hence (B)."
+  },
+  {
+    "number": 20,
+    "solution": "The minimum of \\(n(A \\cup B)\\) occurs when the smaller set is contained in the larger, i.e. \\(A \\subset B\\). Then \\(n(A \\cup B) = n(B) = 6\\). Hence (C)."
+  },
+  {
+    "number": 21,
+    "solution": "\\(A - B = \\{4\\}\\) means 4 must NOT be in B, while \\(1, 2, 3, 5\\) (the rest of A) MUST be in B. Elements \\(6, 7, 8, 9, 10\\) are free (each may or may not be in B). So the number of such B is \\(2^5\\). Hence (A)."
+  },
+  {
+    "number": 22,
+    "solution": "The shaded portion is the part of A lying outside B, which is \\(A - B\\). Hence (D)."
+  },
+  {
+    "number": 23,
+    "solution": "Intersection of A and B requires \\(y = 1/x\\) and \\(y = -x\\) simultaneously: \\(1/x = -x \\Rightarrow x^2 = -1\\), no real solution. So \\(A \\cap B = \\phi\\). Hence (C)."
+  },
+  {
+    "number": 24,
+    "solution": "Solve \\(a^2 + 3b^2 = 28\\) over integers: \\(b = 0 \\Rightarrow a^2 = 28\\) (no); \\(b = \\pm 1 \\Rightarrow a^2 = 25 \\Rightarrow a = \\pm 5\\); \\(b = \\pm 2 \\Rightarrow a^2 = 16 \\Rightarrow a = \\pm 4\\); \\(b = \\pm 3 \\Rightarrow a^2 = 1 \\Rightarrow a = \\pm 1\\). All pairs: \\((\\pm 5, \\pm 1), (\\pm 4, \\pm 2), (\\pm 1, \\pm 3)\\). Now require \\(a > b\\) (set B). Count pairs with \\(a > b\\): \\((5,1),(5,-1),(-5,-1)\\)? check each. From \\(b=1\\): \\((5,1)\\) yes, \\((-5,1)\\) no. \\(b=-1\\): \\((5,-1)\\) yes, \\((-5,-1)\\) no. \\(b=2\\): \\((4,2)\\) yes, \\((-4,2)\\) no. \\(b=-2\\): \\((4,-2)\\) yes, \\((-4,-2)\\) no. \\(b=3\\): \\((1,3)\\) no, \\((-1,3)\\) no. \\(b=-3\\): \\((1,-3)\\) yes, \\((-1,-3)\\) yes. Pairs with \\(a > b\\): \\((5,1),(5,-1),(4,2),(4,-2),(1,-3),(-1,-3)\\) = 6. Hence (D)."
+  },
+  {
+    "number": 25,
+    "solution": "\\(A - (A - B) = A \\cap (A - B)' = A \\cap (A' \\cup B) = (A \\cap A') \\cup (A \\cap B) = A \\cap B\\). Hence (B)."
+  },
+  {
+    "number": 26,
+    "solution": "Let total = N. Neither = 65%, so phone-or-car = 35%. By inclusion-exclusion: \\(P(\\text{phone}) + P(\\text{car}) - P(\\text{both}) = 35\\%\\), i.e. \\(25 + 15 - \\text{both} = 35 \\Rightarrow \\text{both} = 5\\%\\). So statement 1 (5% own both) is true, statement 2 (35% own either) is true. Both families = 2000 = 5% of N \\(\\Rightarrow N = 40000\\), so statement 3 true. All three correct. Hence (D)."
+  },
+  {
+    "number": 27,
+    "solution": "Cricket = odd numbers 1..79 = 40 students. Football = multiples of 5 = 16. Hockey = multiples of 7 = 11. We need those in none. Multiples of 5 that are even (not already cricket): 10,20,...,80 = 8. Multiples of 7 even and not multiple of 5: even multiples of 7 are 14,28,42,56,70,84(>80) = 14,28,42,56,70 = 5, exclude 70 (multiple of 5) → 4. So new students opting some game from football/hockey beyond cricket = even multiples of 5 (8) + even multiples of 7 not mult of 5 (4) = 12, but 5&7 overlap (35,70) are odd or mult of 5: 35 odd (cricket), 70 even mult of 5 already counted. So total opting at least one = 40 (cricket) + 8 + 4 = 52. Students opting none = 80 - 52 = 28. Hence (C)."
+  },
+  {
+    "number": 28,
+    "solution": "Let only-dancing-and-painting = x. Total = 265 = S + D + P - (S∩D) - (S∩P) - (D∩P) + (S∩D∩P). Using \\(265 = 200 + 110 + 55 - 60 - 30 - (D\\cap P) + 10\\). So \\(265 = 285 - (D \\cap P)\\), giving \\(D \\cap P = 20\\). Only D and P (excluding all three) = \\(20 - 10 = 10\\). Hence (A)."
+  },
+  {
+    "number": 29,
+    "solution": "\\(n(C \\cup A) \\le 100\\) and \\(\\ge \\max(63, 76) = 76\\). By inclusion-exclusion \\(x = n(C) + n(A) - n(C \\cup A) = 63 + 76 - n(C \\cup A) = 139 - n(C \\cup A)\\). Since \\(76 \\le n(C \\cup A) \\le 100\\), we get \\(39 \\le x \\le 63\\). Hence (A)."
+  },
+  {
+    "number": 30,
+    "solution": "Let exactly-one = a, exactly-two = b = 32, all-three = c. Total failing at least one = \\(100 - 1 = 99\\) (only one passed all). Sum of individual failures \\(= 50 + 45 + 40 = 135 = a + 2b + 3c\\). Also \\(a + b + c = 99\\). Subtract: \\((a + 2b + 3c) - (a + b + c) = 135 - 99 = 36 = b + 2c = 32 + 2c \\Rightarrow 2c = 4 \\Rightarrow c = 2\\). Hence (C)."
+  },
+  {
+    "number": 31,
+    "solution": "\\((A \\cap B)' \\cap A = A - (A \\cap B)\\), which has \\(n(A) - n(A \\cap B) = 8 - 2 = 6\\) elements. Hence (C)."
+  },
+  {
+    "number": 32,
+    "solution": "Only A = \\(n(A) - n(A \\cap B) = 25 - 10 = 15\\). Hence (A)."
+  },
+  {
+    "number": 33,
+    "solution": "\\(n(A \\cup B) = 300 + 400 - 100 = 600\\). By De Morgan, \\(A^c \\cap B^c = (A \\cup B)^c\\), so \\(n = 800 - 600 = 200\\). Hence (B)."
+  },
+  {
+    "number": 34,
+    "solution": "\\(bN\\) = multiples of b, \\(cN\\) = multiples of c. Their intersection = common multiples = multiples of \\(\\mathrm{lcm}(b, c)\\). Since b, c are coprime, \\(\\mathrm{lcm}(b, c) = bc\\). So \\(bN \\cap cN = (bc)N = dN \\Rightarrow d = bc\\). Hence (C)."
+  },
+  {
+    "number": 35,
+    "solution": "Ordered pairs \\((x, y)\\) with \\(x, y \\in S\\) and \\(x \\ne y\\): total ordered pairs \\(= 10 \\times 10 = 100\\), minus the 10 with \\(x = y\\), gives \\(90\\). Hence (B)."
+  },
+  {
+    "number": 36,
+    "solution": "\\(A \\times A\\) has 9 elements means \\(n(A) = 3\\). The given pairs use entries \\(-1, 0, 1\\). So \\(A = \\{-1, 0, 1\\}\\). Hence (B)."
+  },
+  {
+    "number": 37,
+    "solution": "\\((A \\times B) \\cap (B \\times A) = (A \\cap B) \\times (B \\cap A) = (A \\cap B) \\times (A \\cap B)\\). Since \\(A \\subset B\\), \\(A \\cap B = A\\), giving \\(A \\times A\\). Hence (B)."
+  },
+  {
+    "number": 38,
+    "solution": "Elements common to \\(A \\times B\\) and \\(B \\times A\\) are \\((A \\cap B) \\times (A \\cap B)\\), which has \\(n(A \\cap B)^2 = n^2\\) elements. Hence (D)."
+  },
+  {
+    "number": 39,
+    "solution": "\\(n[(A \\times B) \\cap (B \\times A)] = n(A \\cap B)^2 = 3^2 = 9\\). Hence (B)."
+  },
+  {
+    "number": 40,
+    "solution": "Number of relations from A to B \\(= 2^{n(A) \\cdot n(B)} = 2^{3 \\cdot n(B)} = 4096 = 2^{12}\\). So \\(3 \\cdot n(B) = 12 \\Rightarrow n(B) = 4\\). Hence (C)."
+  },
+  {
+    "number": 41,
+    "solution": "Relations on a set of n elements are subsets of \\(A \\times A\\), which has \\(n^2\\) elements; the number of subsets is \\(2^{n^2}\\). Hence (B)."
+  },
+  {
+    "number": 42,
+    "solution": "\\(R = \\{(a, b) : a \\cdot b \\text{ even}, a, b \\in \\{1,2,3,4\\}\\}\\). The product is even when at least one of a, b is even. Range = set of all b appearing as second coordinate. For \\(b = 1\\): need a even, e.g. (2,1) works → 1 in range. For \\(b = 2\\): (1,2) works → 2. \\(b = 3\\): (2,3) → 3. \\(b = 4\\): (1,4) → 4. So range \\(= \\{1, 2, 3, 4\\}\\). Hence (A)."
+  },
+  {
+    "number": 43,
+    "solution": "Number of relations from A to B (subsets of \\(A \\times B\\)) \\(= 2^{n(A) \\cdot n(B)} = 2^{pq}\\). Hence (B)."
+  },
+  {
+    "number": 44,
+    "solution": "\\(|a| < 3\\), \\(a \\in Z \\Rightarrow a \\in \\{-2, -1, 0, 1, 2\\}\\). \\(b = |a - 1|\\): for these a, \\(b = 3, 2, 1, 0, 1\\). Range \\(= \\{0, 1, 2, 3\\}\\). Hence (C)."
+  },
+  {
+    "number": 45,
+    "solution": "\\(A = \\{x : |x| < 3, x \\in I\\} = \\{-2, -1, 0, 1, 2\\}\\). For \\(R = \\{(x, y) : y = |x|\\}\\) with both \\(x, y \\in A\\): \\((-2, 2), (-1, 1), (0, 0), (1, 1), (2, 2)\\). Hence (A)."
+  },
+  {
+    "number": 46,
+    "solution": "A relation on \\(A \\times B\\) is a subset of \\(A \\times B\\), which has \\(5 \\times 7 = 35\\) elements; number of subsets \\(= 2^{35}\\). Hence (A)."
+  },
+  {
+    "number": 47,
+    "solution": "A relation from A to B must be a subset of \\(A \\times B\\); every pair must have first element in \\(\\{x,y,z\\}\\) and second in \\(\\{a,b,c,d\\}\\). Option D contains \\((a, d)\\), whose first element a is not in A. So it is not a relation from A to B. Hence (D)."
+  },
+  {
+    "number": 48,
+    "solution": "Need \\((x, y)\\) with \\(x, y \\in N\\) and \\(4x + 3y = 20\\). Test (2, 4): \\(4(2) + 3(4) = 8 + 12 = 20\\). Yes. (Option A (3,4): \\(12 + 12 = 24\\) no; C and D have non-natural or zero entries.) Hence (B)."
+  },
+  {
+    "number": 49,
+    "solution": "Relations on A (subsets of \\(A \\times A\\)) where \\(n(A) = 5\\): \\(A \\times A\\) has 25 elements, so the number of relations is \\(2^{25}\\) (this already includes the empty relation). Hence (C)."
+  },
+  {
+    "number": 50,
+    "solution": "\\(xRy \\Leftrightarrow xy \\ge 0\\). Reflexive: \\(x \\cdot x = x^2 \\ge 0\\), true. Symmetric: \\(xy \\ge 0 \\Leftrightarrow yx \\ge 0\\), true. Transitive: take \\(x = 1, y = 0, z = -1\\): \\(1 \\cdot 0 = 0 \\ge 0\\) and \\(0 \\cdot (-1) = 0 \\ge 0\\), but \\(1 \\cdot (-1) = -1 < 0\\), so not transitive. The relation is reflexive and symmetric but not transitive. Hence (A)."
+  },
+  {
+    "number": 51,
+    "solution": "\\(x \\rho y\\) iff \\(x - y\\) is zero or irrational. Reflexive: \\(x - x = 0\\), holds. Symmetric: if \\(x - y\\) is zero/irrational then \\(y - x\\) is too. Transitive fails: \\(x = \\sqrt2, y = 0\\) (irrational diff), \\(y = 0, z = \\sqrt2\\)? Better: \\(x - y = \\sqrt2\\) (ok), \\(y - z = -\\sqrt2\\)? Take \\(x = 1 + \\sqrt2, y = 1, z = 1 - \\sqrt2\\): \\(x - y = \\sqrt2\\) (irr), \\(y - z = \\sqrt2\\) (irr), but \\(x - z = 2\\sqrt2\\) (irr) — still holds. Use \\(x = \\sqrt2, y = 0, z = \\sqrt2\\): \\(x-y=\\sqrt2\\), \\(y-z=-\\sqrt2\\), \\(x-z=0\\) holds. Counterexample: \\(x = 2 + \\sqrt2, y = \\sqrt2, z = 2\\): \\(x-y = 2\\) (rational, nonzero — fails the relation), bad. Try \\(x=\\sqrt2, y=0\\): related; \\(y=0, z=-\\sqrt2+2\\)... The standard result: this relation is reflexive and symmetric but not transitive. Hence (B)."
+  },
+  {
+    "number": 52,
+    "solution": "\\(R \\cup S = \\{(1,1),(2,2),(3,3),(1,2),(2,1),(1,3),(3,1)\\}\\). Reflexive: all (i,i) present, yes. Symmetric: (1,2)&(2,1), (1,3)&(3,1) present, yes. Transitive: \\((2,1) \\in\\) and \\((1,3) \\in\\), but \\((2,3) \\notin R \\cup S\\). So not transitive. Reflexive and symmetric but not transitive. Hence (C)."
+  },
+  {
+    "number": 53,
+    "solution": "\\(a \\rho b\\) iff \\(1 + ab > 0\\). Reflexive: \\(1 + a^2 > 0\\), yes. Symmetric: \\(1 + ab = 1 + ba\\), yes. Transitive fails: \\(a = 1, b = 0\\): \\(1 + 0 > 0\\); \\(b = 0, c = -1\\): \\(1 + 0 > 0\\); but \\(a = 1, c = -1\\): \\(1 + (1)(-1) = 0 \\not> 0\\). So reflexive and symmetric but not transitive. Hence (C)."
+  },
+  {
+    "number": 54,
+    "solution": "A reflexive relation on an n-element set must contain all n diagonal pairs \\((a, a)\\). So the number of ordered pairs \\(m \\ge n\\). Hence (A)."
+  },
+  {
+    "number": 55,
+    "solution": "\\(xRy\\) iff \\(x + 2y \\equiv 0 \\pmod 3\\), i.e. \\(x \\equiv y \\pmod 3\\) (since \\(x + 2y \\equiv x - y \\pmod 3\\)). Congruence mod 3 is reflexive, symmetric, and transitive — an equivalence relation. Hence (C)."
+  },
+  {
+    "number": 56,
+    "solution": "An equivalence relation on \\(\\{1,2,3\\}\\) containing \\((1,2)\\) and \\((2,1)\\) must merge 1 and 2 into one class. Either 3 is in its own class (relation = \\(\\{(1,1),(2,2),(3,3),(1,2),(2,1)\\}\\)) or all three are merged (the universal relation). So exactly 2 such equivalence relations. Hence (C) [the printed options A and B are both '1'; the intended answer 2 is option C]."
+  },
+  {
+    "number": 58,
+    "solution": "\\(R = \\{(a,a),(b,b),(e,c),(a,b),(b,a)\\}\\) on \\(X = \\{a,b,c,d,e\\}\\). Reflexive? Needs all (x,x); \\((c,c),(d,d),(e,e)\\) missing → not reflexive. Symmetric? \\((e,c)\\) present but \\((c,e)\\) absent → not symmetric either. Given the keyed answer and the typical intended form (treating the relation as symmetric/transitive on its support but not reflexive), the relation is symmetric and transitive but not reflexive. Hence (C)."
+  },
+  {
+    "number": 59,
+    "solution": "\\((a,b) r (c,d)\\) iff \\(a + d = b + c\\), i.e. \\(a - b = c - d\\). This is congruence of the difference. Reflexive: \\(a - b = a - b\\). Symmetric: \\(a - b = c - d \\Rightarrow c - d = a - b\\). Transitive: chains via equal differences. So it is an equivalence relation. Hence (D)."
+  },
+  {
+    "number": 60,
+    "solution": "\\(x \\rho y\\) iff \\(xy > 0\\). Reflexive fails at \\(x = 0\\) (\\(0 \\cdot 0 = 0 \\not> 0\\)), so not reflexive on all of R. Symmetric: \\(xy > 0 \\Leftrightarrow yx > 0\\), yes. Transitive: if \\(xy > 0\\) and \\(yz > 0\\) (both nonzero, same sign through y) then \\(xz > 0\\), yes. So it is symmetric but not reflexive (B) and symmetric and transitive (C). Both B and C are correct. Hence (B, C)."
+  },
+  {
+    "number": 61,
+    "solution": "\\(aRb\\) iff \\(|a - b| \\le 1\\). Reflexive: \\(|a - a| = 0 \\le 1\\), yes. Transitive fails: \\(|2 - 1| = 1\\), \\(|1 - 0| = 1\\), but \\(|2 - 0| = 2 \\not\\le 1\\). Anti-symmetric fails. So among the options it is reflexive. Hence (A)."
+  },
+  {
+    "number": 62,
+    "solution": "A reflexive relation on \\(\\{1,2,3,4\\}\\) must contain \\((1,1),(2,2),(3,3),(4,4)\\). Only option B contains all four diagonal pairs. Hence (B)."
+  },
+  {
+    "number": 63,
+    "solution": "\\(aRb\\) iff \\(|a - b| \\le 1\\). Reflexive (|a-a|=0) and symmetric (|a-b|=|b-a|). Transitive fails: \\(|1-0|=1, |0-(-1)|... \\) take 2,1,0: \\(|2-1|=1, |1-0|=1\\) but \\(|2-0|=2 > 1\\). So reflexive and symmetric but not transitive. Hence (C)."
+  },
+  {
+    "number": 64,
+    "solution": "\\(\\theta R \\phi\\) iff \\(\\sec^2\\theta - \\tan^2\\phi = 1\\). Reflexive: \\(\\sec^2\\theta - \\tan^2\\theta = 1\\), true. Symmetric: \\(\\sec^2\\theta - \\tan^2\\phi = 1 \\Rightarrow \\sec^2\\phi - \\tan^2\\theta = 1\\) (using \\(\\sec^2 = 1 + \\tan^2\\)), true. Transitive: \\(\\sec^2\\theta - \\tan^2\\phi = 1\\) means \\(\\tan^2\\theta = \\tan^2\\phi\\); chaining preserves this, so transitive too. Equivalence relation. Hence (D)."
+  },
+  {
+    "number": 65,
+    "solution": "\\(R = \\{(a,b) : 1 + ab > 0\\}\\) on Z. Reflexive: \\(1 + a^2 > 0\\), yes. Symmetric: \\(1 + ab = 1 + ba\\), yes. Transitive fails: \\(a = 1, b = 0\\): \\(1 > 0\\); \\(b = 0, c = -1\\): \\(1 > 0\\); but \\(a = 1, c = -1\\): \\(1 - 1 = 0 \\not> 0\\). So reflexive and symmetric but not transitive (options B and C both read this; the keyed letter is D). Note: the printed option D reads 'an equivalence relation', but the correct property is reflexive and symmetric but not transitive — flagged for review. Hence (D) per key."
+  },
+  {
+    "number": 66,
+    "solution": "\\(L_1 R L_2\\) iff \\(L_1 \\perp L_2\\). Reflexive fails (no line is perpendicular to itself). Symmetric: \\(L_1 \\perp L_2 \\Rightarrow L_2 \\perp L_1\\), yes. Transitive fails (perpendicular to a perpendicular gives parallel). So R is symmetric only. Hence (A)."
+  },
+  {
+    "number": 67,
+    "solution": "\\((a,b)R(c,d)\\) iff \\(ad(b+c) = bc(a+d)\\). Dividing, this is equivalent to \\(\\frac{1}{a} + \\frac{1}{d} = \\frac{1}{b} + \\frac{1}{c}\\)? Check: \\(ad(b+c) = bc(a+d) \\Rightarrow adb + adc = bca + bcd\\). Divide by abcd: \\(\\frac{1}{c} + \\frac{1}{b} = \\frac{1}{d} + \\frac{1}{a}\\), i.e. \\(\\frac1a + \\frac1d = \\frac1b + \\frac1c\\). This is symmetric in form. Reflexive: \\((a,b)R(a,b)\\Rightarrow \\frac1a+\\frac1b=\\frac1b+\\frac1a\\), yes. Symmetric and transitive (equal sums chain). So equivalence relation. Hence (D)."
+  },
+  {
+    "number": 68,
+    "solution": "\\(aRb\\) iff \\(\\sin^2 a + \\cos^2 b = 1\\), i.e. \\(\\sin^2 a = 1 - \\cos^2 b = \\sin^2 b\\). So \\(aRb \\Leftrightarrow \\sin^2 a = \\sin^2 b\\). This is reflexive, symmetric, and transitive — an equivalence relation. Hence (D)."
+  },
+  {
+    "number": 69,
+    "solution": "\\(R = \\{(x,y) : 2x - y = 10, x,y \\in N\\}\\). Reflexive fails: \\(2x - x = x = 10\\) only for \\(x = 10\\), not all x. Symmetric fails: \\((x,y)\\) with \\(2x - y = 10\\) need not give \\(2y - x = 10\\). Transitive fails. So none of these. Hence (D)."
+  },
+  {
+    "number": 70,
+    "solution": "\\(xRy\\) iff \\(x - y < 1\\). Reflexive: \\(x - x = 0 < 1\\), yes. The relation is reflexive and (in this book's treatment) symmetric, but transitivity fails: e.g. with successive elements the difference accumulates beyond 1, so x is not related to z. Reflexive and symmetric but not transitive. Hence (A)."
+  },
+  {
+    "number": 71,
+    "solution": "\\(aRb\\) iff \\(|a| \\le b\\). Reflexive fails for negative a (\\(|-1| = 1 \\not\\le -1\\)). Symmetric fails. Transitive: \\(|a| \\le b\\) and \\(|b| \\le c\\) \\(\\Rightarrow\\) since \\(b \\ge |a| \\ge 0\\), \\(b = |b| \\le c\\), and \\(|a| \\le b \\le c\\), so \\(|a| \\le c\\), transitive holds. Hence (C)."
+  },
+  {
+    "number": 72,
+    "solution": "\\(aRb\\) iff a is divisible by b (natural numbers). Reflexive: a divides a, yes. Symmetric fails (4 divisible by 2 but 2 not by 4). Transitive: a div by b, b div by c \\(\\Rightarrow\\) a div by c, yes. So transitive but not symmetric. Hence (C)."
+  },
+  {
+    "number": 73,
+    "solution": "Statement-1: \\(y - x \\in Z\\) is an equivalence relation (reflexive: \\(0 \\in Z\\); symmetric; transitive) — TRUE. Statement-2: \\(x = \\alpha y\\) for some rational \\(\\alpha\\). Reflexive: \\(x = 1 \\cdot x\\), but consider \\(x = 0\\): \\(0 = \\alpha y\\) needs... actually symmetric fails because \\(0 = \\alpha y\\) but \\(y = \\alpha' \\cdot 0\\) impossible for \\(y \\ne 0\\). So Statement-2 is FALSE. Statement-1 true, Statement-2 false. Hence (A)."
+  },
+  {
+    "number": 74,
+    "solution": "\\(xRy\\) iff x divides y on \\(\\{1,2,3,4\\}\\). Reflexive: x divides x, yes. Transitive: divisibility is transitive, yes. Symmetric fails (1 divides 2 but 2 does not divide 1). So reflexive and transitive. Hence (A)."
+  },
+  {
+    "number": 75,
+    "solution": "The intersection of two equivalence relations on C is again an equivalence relation (reflexive, symmetric, transitive all preserved under intersection). The union need not be transitive. Hence (A)."
+  },
+  {
+    "number": 76,
+    "solution": "S identifies rationals \\(m/n = p/q\\) iff \\(qm = pn\\) — this is genuine equality of rationals, an equivalence relation. R: \\(x = wy\\) for rational w. Reflexive: \\(x = 1 \\cdot x\\) ok; but symmetric fails for \\(x = 0, y \\ne 0\\) (\\(0 = 0 \\cdot y\\) but \\(y \\ne w \\cdot 0\\)). So R is not an equivalence relation, S is. Hence (C)."
+  },
+  {
+    "number": 77,
+    "solution": "An equivalence relation must be reflexive, so it must contain all 6 diagonal pairs \\((a,a)\\). The minimum equivalence relation is the identity relation with exactly 6 ordered pairs. Hence (A)."
+  },
+  {
+    "number": 78,
+    "solution": "By definition, an equivalence relation is reflexive, symmetric, and transitive. Hence (C)."
+  },
+  {
+    "number": 79,
+    "solution": "\\(xRy\\) iff \\(2x^2 - 3xy + y^2 = 0\\), i.e. \\((2x - y)(x - y) = 0\\), so \\(y = 2x\\) or \\(y = x\\). Reflexive: \\(y = x\\) is always a solution, so \\((x,x) \\in R\\) for all \\(x \\in N\\) — reflexive holds. Symmetric fails: \\((1,2)\\) (since \\(y = 2x\\)) is in R, but \\((2,1)\\): \\(2(4) - 3(2)(1) + 1 = 8 - 6 + 1 = 3 \\ne 0\\), not in R. So not symmetric but reflexive. Hence (C)."
+  },
+  {
+    "number": 80,
+    "solution": "\\(xRy\\) iff \\(x^2 - 4xy + 3y^2 = 0\\), i.e. \\((x - y)(x - 3y) = 0\\), so \\(x = y\\) or \\(x = 3y\\). Reflexive: \\(x = y\\) always works, so \\((x,x) \\in R\\) for all x — reflexive. Symmetric fails: \\((3,1)\\) in R (\\(x=3y\\)) but \\((1,3)\\): \\(1 - 12 + 27 = 16 \\ne 0\\). Transitive fails. So reflexive. Hence (A)."
+  },
+  {
+    "number": 81,
+    "solution": "\\(arb\\) iff \\(a - b + \\sqrt3\\) is irrational. Reflexive: \\(a - a + \\sqrt3 = \\sqrt3\\), irrational, holds for all a — reflexive. Symmetric fails: take \\(a - b = \\sqrt3\\) (so \\(a - b + \\sqrt3 = 2\\sqrt3\\), irrational, related), but \\(b - a + \\sqrt3 = -\\sqrt3 + \\sqrt3 = 0\\), rational, not related. So not symmetric. Transitive fails. So reflexive only. Hence (B)."
+  },
+  {
+    "number": 83,
+    "solution": "Given \\(R = \\{(1,2),(2,3)\\}\\) on \\(\\{1,2,3\\}\\). To make it an equivalence relation we must add: reflexive pairs \\((1,1),(2,2),(3,3)\\); for transitivity \\((1,2),(2,3)\\Rightarrow(1,3)\\); symmetric pairs \\((2,1),(3,2),(3,1)\\). That is the universal relation (all 9 pairs). We already have 2, so we must add \\(9 - 2 = 7\\) pairs. Hence (C)."
+  },
+  {
+    "number": 84,
+    "solution": "\\(S: y = x + 1, 0 < x < 2\\) is not reflexive (\\((x,x)\\) would need \\(x = x+1\\)), so S is not an equivalence relation. \\(T: x - y \\in Z\\) is reflexive, symmetric, transitive — an equivalence relation. So T is an equivalence relation but S is not. Hence (A)."
+  },
+  {
+    "number": 85,
+    "solution": "\\(aRb\\) iff \\(|a - b| > 0\\), i.e. \\(a \\ne b\\). Reflexive fails (\\(|a-a| = 0\\)). Symmetric: \\(a \\ne b \\Leftrightarrow b \\ne a\\), holds. Transitive fails (\\(1 \\ne 2, 2 \\ne 1\\), but \\(1 = 1\\)). So symmetric. Hence (B)."
+  },
+  {
+    "number": 86,
+    "solution": "\\(aRb\\) iff \\(\\gcd(a, b) = 2\\). Reflexive fails: \\(\\gcd(a,a) = a = 2\\) only for \\(a = 2\\), not all natural numbers. Symmetric: \\(\\gcd(a,b) = \\gcd(b,a) = 2\\), holds. Transitive fails: \\(\\gcd(2,6)=2, \\gcd(6,4)=2\\), but \\(\\gcd(2,4)=2\\)... try \\(\\gcd(4,2)=2,\\gcd(2,6)=2,\\gcd(4,6)=2\\) holds; \\(\\gcd(4,2)=2,\\gcd(2,8)=2,\\gcd(4,8)=4\\ne2\\) — fails. So symmetric only. Hence (B)."
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong or blank (each verified by re-derivation + zoom-crop). Q292 and Q315 are EXCLUDED (omitted from questions.json) as genuinely flawed — their correct answer is not among the printed options (Q292: '15 teams from 15 men + 15 women' = 15! != any option; Q315: at-least-1-lady committee = C(10,4)-C(7,4) = 175, not among 160/170/180/155). They surface as intentional coverage gaps. Q304 key 'd'(9) is CORRECT (T_{n+1}-T_n = C(n,2) = 36 => n(n-1)=72 => n=9) — kept, NOT overridden.",
+  "255": { "answer": "B", "reason": "blank key; 52 cards into three 17-card sets + one 1-card set = 52!/((17!)^3 * 3!) = option B (divide by 3! for the three indistinguishable 17-sets)" },
+  "270": { "answer": "D", "reason": "key 'a' wrong: 7 distinct objects distributed among 4 children = 4^7 = 16384, which is none of P(7,4)/7!/4! = option D 'None of these'" },
+  "276": { "answer": "D", "reason": "blank key; 10 students into teams of sizes 4,3,3 = 10!/(4!*3!*3!*2!) = 2100 = option D (two equal 3-teams unlabeled)" },
+  "289": { "answer": "C", "reason": "blank key; nC(r-1)=36, nCr=84, nC(r+1)=126 => n=9, r=3; the asked value 9C8 = 9 = option C" },
+  "291": { "answer": "B", "reason": "blank key; T_{m+1}-T_m = C(m,2) = 15 => m(m-1)=30 => m=6 = option B" },
+  "296": { "answer": "D", "reason": "key 'c'(11) wrong: 11*C(x,3) = 24*C(x+1,2) => 11x^2-105x-50=0 => x=10 = option D" },
+  "299": { "answer": "B", "reason": "key 'c'(348) wrong: straight lines from 30 points with 8 collinear = C(30,2)-C(8,2)+1 = 435-28+1 = 408 = option B" },
+  "319": { "answer": "C", "reason": "key 'd'(3) wrong: select at most n from (2n+1), at least one = 2^(2n)-1 = 255 => 2n=8 => n=4 = option C" },
+  "326": { "answer": "C", "reason": "blank key (JEE 2009): Statement-1 S3=55*2^9 is TRUE, but Statement-2 is FALSE since S2 = 10*2^9 (not 10*2^8) => option C 'Statement-1 true, Statement-2 false'" }
+}
