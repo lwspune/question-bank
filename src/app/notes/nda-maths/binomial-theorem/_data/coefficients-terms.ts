@@ -37,6 +37,7 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "How many terms are in the expansion of \\((1+x)^{15}\\)?", answer: "16", method: "\\(n+1 = 15+1\\)." },
         { prompt: "Write \\(T_{r+1}\\) for \\((x+2)^{10}\\).", answer: "\\(\\binom{10}{r} x^{10-r} 2^{r}\\)" },
+        { prompt: "How many terms are in the expansion of \\((x+y)^{20}\\)?", answer: "21", method: "\\(n+1 = 20+1\\)." },
       ],
       traps: [
         {
@@ -110,6 +111,10 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(252\\).",
       },
+      practiceSet: [
+        { prompt: "Find the coefficient of \\(x^3\\) in \\((1+x)^6\\).", answer: "20", method: "\\(\\binom{6}{3} = 20\\)." },
+        { prompt: "Find the coefficient of \\(x^2\\) in \\((1+2x)^5\\).", answer: "40", method: "\\(\\binom{5}{2}2^2 = 10\\cdot 4\\)." },
+      ],
       traps: [
         {
           title: "Collect every power of x first",
@@ -144,6 +149,10 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(70\\,x^4\\).",
       },
+      practiceSet: [
+        { prompt: "Which term is the middle term in the expansion of \\((a+b)^{10}\\)?", answer: "\\(T_6\\) (the 6th term)", method: "\\(n=10\\) even: \\(T_{n/2+1}=T_6\\)." },
+        { prompt: "How many middle terms does \\((a+b)^9\\) have?", answer: "2", method: "\\(n=9\\) odd \\(\\Rightarrow\\) two middle terms." },
+      ],
       traps: [
         {
           title: "Odd n has two middle terms",
@@ -176,6 +185,10 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(180\\).",
       },
+      practiceSet: [
+        { prompt: "Find the term independent of \\(x\\) in \\(\\left(x + \\dfrac{1}{x}\\right)^6\\).", answer: "20", method: "Exponent \\(6-2r=0\\Rightarrow r=3\\); \\(\\binom{6}{3}=20\\)." },
+        { prompt: "Find the term independent of \\(x\\) in \\(\\left(x^2 + \\dfrac{1}{x}\\right)^6\\).", answer: "15", method: "Exponent \\(12-3r=0\\Rightarrow r=4\\); \\(\\binom{6}{4}=15\\)." },
+      ],
     },
 
     // 6 — coefficient conditions
@@ -232,6 +245,9 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(15\\) terms.",
       },
+      practiceSet: [
+        { prompt: "How many distinct terms are in the expansion of \\((a+b+c)^5\\)?", answer: "21", method: "\\(\\binom{5+2}{2}=\\binom{7}{2}=21\\)." },
+      ],
       traps: [
         {
           title: "Multiply the bases before raising the power",

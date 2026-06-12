@@ -69,6 +69,13 @@ export const ELLIPSE_NOTE: SubtopicNote = {
         ],
         answer: "\\(8\\).",
       },
+      traps: [
+        {
+          title: "Constant focal sum is \\(2a\\) (major axis), not \\(2b\\)",
+          body:
+            "\\(PF_1 + PF_2 = 2a\\) uses the SEMI-MAJOR axis \\(a\\) (the larger denominator), giving the full major-axis length. Using \\(2b\\) (the minor axis) or the value \\(a\\) itself gives the wrong constant. For \\(\\tfrac{x^2}{16}+\\tfrac{y^2}{7}=1\\), \\(a=4\\), so the sum is \\(8\\).",
+        },
+      ],
     },
 
     // from conditions
@@ -97,6 +104,13 @@ export const ELLIPSE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1\\).",
       },
+      traps: [
+        {
+          title: "Ellipse latus rectum is \\(\\dfrac{2b^2}{a}\\) — semi-MINOR squared over semi-major",
+          body:
+            "The latus rectum is \\(\\dfrac{2b^2}{a}\\): the SMALLER axis squared on top, the LARGER axis on the bottom. Flipping it to \\(\\dfrac{2a^2}{b}\\) makes it longer than the major axis, which is impossible for an ellipse.",
+        },
+      ],
     },
   ],
 };

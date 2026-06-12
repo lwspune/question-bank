@@ -32,6 +32,10 @@ export const COEFFICIENT_SUMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(3125\\).",
       },
+      practiceSet: [
+        { prompt: "Find the sum of all binomial coefficients in the expansion of \\((1+x)^8\\).", answer: "256", method: "\\(2^8 = 256\\)." },
+        { prompt: "Find the sum of all coefficients in the expansion of \\((2x-1)^3\\).", answer: "1", method: "\\(f(1)=(2-1)^3=1\\)." },
+      ],
       traps: [
         {
           title: "Sum of coefficients uses x = 1, not x = 0",
@@ -95,6 +99,9 @@ export const COEFFICIENT_SUMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(n\\,2^{\\,n-1}\\).",
       },
+      practiceSet: [
+        { prompt: "Evaluate \\(\\binom{4}{1} + 2\\binom{4}{2} + 3\\binom{4}{3} + 4\\binom{4}{4}\\).", answer: "32", method: "\\(\\sum r\\binom{n}{r}=n\\,2^{n-1}=4\\cdot 8\\)." },
+      ],
       traps: [
         {
           title: "Differentiate first, substitute second",

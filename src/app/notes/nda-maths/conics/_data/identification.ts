@@ -67,6 +67,13 @@ export const IDENTIFICATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(e = \\dfrac{5}{4}\\).",
       },
+      traps: [
+        {
+          title: "Ellipse and hyperbola use OPPOSITE sign relations",
+          body:
+            "For the **ellipse**, \\(b^2 = a^2(1 - e^2)\\) (so \\(e<1\\)); for the **hyperbola**, \\(b^2 = a^2(e^2 - 1)\\) (so \\(e>1\\)). Using the ellipse's relation on a hyperbola — or vice versa — gives an impossible (negative) \\(b^2\\) and the wrong eccentricity.",
+        },
+      ],
     },
 
     // general second-degree identification

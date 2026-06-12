@@ -42,6 +42,11 @@ export const PARABOLA_NOTE: SubtopicNote = {
           body:
             "\\(x^2 = -3y\\) opens DOWNWARD (negative coefficient), so the focus is below the vertex and the directrix above. Reading it as upward flips both — the most common parabola error.",
         },
+        {
+          title: "Directrix of \\(y^2=4ax\\) is \\(x=-a\\), on the OTHER side of the vertex",
+          body:
+            "The focus is at \\((a,0)\\) and the directrix is \\(x = -a\\) — the directrix sits on the opposite side of the vertex from the focus. Writing the directrix as \\(x = a\\) (the focus's coordinate) is a frequent slip.",
+        },
       ],
     },
 
@@ -67,6 +72,13 @@ export const PARABOLA_NOTE: SubtopicNote = {
         ],
         answer: "\\(12\\).",
       },
+      traps: [
+        {
+          title: "Parabola latus rectum is \\(4a\\), not \\(2a\\)",
+          body:
+            "The full chord through the focus is \\(4a\\) long — its half-length (focus to one endpoint) is \\(2a\\). Quoting \\(2a\\) as the latus rectum halves the answer. Read \\(4a\\) straight off the coefficient: for \\(y^2 = 12x\\), \\(4a = 12\\), so the latus rectum is \\(12\\).",
+        },
+      ],
     },
 
     // focal distance
@@ -94,6 +106,13 @@ export const PARABOLA_NOTE: SubtopicNote = {
         ],
         answer: "\\(x_1 = 4\\).",
       },
+      traps: [
+        {
+          title: "Focal distance is \\(x_1 + a\\), not \\(x_1 - a\\)",
+          body:
+            "By the focus–directrix property, the distance to the focus equals the distance to the directrix \\(x=-a\\), which is \\(x_1 + a\\) (you ADD \\(a\\)). Using \\(x_1 - a\\) (distance to the focus's x-coordinate) is wrong because the directrix, not the focus, sets the measurement.",
+        },
+      ],
     },
 
     // tangents & chords
