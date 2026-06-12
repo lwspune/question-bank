@@ -40,6 +40,11 @@ export const HYPERBOLA_NOTE: SubtopicNote = {
           body:
             "The ellipse has \\(c^2 = a^2 - b^2\\); the hyperbola has \\(c^2 = a^2 + b^2\\). Carrying the ellipse's minus sign into a hyperbola is the single most common slip in this subtopic.",
         },
+        {
+          title: "A hyperbola's eccentricity is always greater than 1",
+          body:
+            "Since \\(c^2 = a^2 + b^2 > a^2\\), we have \\(c > a\\) and so \\(e = \\dfrac{c}{a} > 1\\) for every hyperbola. An eccentricity computed as \\(<1\\) means you used the ellipse relation \\(c^2 = a^2 - b^2\\) by mistake.",
+        },
       ],
     },
 
@@ -66,6 +71,13 @@ export const HYPERBOLA_NOTE: SubtopicNote = {
         ],
         answer: "\\(e = \\dfrac{3}{2}\\).",
       },
+      traps: [
+        {
+          title: "\\((a\\sec\\theta, b\\tan\\theta)\\) traces a HYPERBOLA, not an ellipse",
+          body:
+            "The eliminating identity is \\(\\sec^2\\theta - \\tan^2\\theta = 1\\), which gives \\(\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1\\) — a hyperbola. The ellipse uses \\((a\\cos\\theta, b\\sin\\theta)\\) with \\(\\cos^2\\theta + \\sin^2\\theta = 1\\). Confusing the two parametrisations flips the conic.",
+        },
+      ],
     },
   ],
 };

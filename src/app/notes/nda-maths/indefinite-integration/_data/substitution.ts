@@ -35,6 +35,18 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(e^{x^2} + C\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\cos(5x)\\,dx\\).",
+          answer: "\\(\\dfrac{1}{5}\\sin(5x) + C\\)",
+          method: "Substitute \\(u=5x\\), \\(du=5\\,dx\\): the integral is \\(\\tfrac15\\int\\cos u\\,du\\). The \\(\\tfrac15\\) comes from \\(dx=\\tfrac15 du\\).",
+        },
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int (2x+1)^7\\,dx\\).",
+          answer: "\\(\\dfrac{(2x+1)^8}{16} + C\\)",
+          method: "Let \\(u=2x+1\\), \\(du=2\\,dx\\): \\(\\tfrac12\\int u^7\\,du = \\tfrac12\\cdot\\tfrac{u^8}{8} = \\tfrac{u^8}{16}\\).",
+        },
+      ],
       traps: [
         {
           title: "Every x must disappear before you integrate in u",
@@ -103,6 +115,18 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\ln|x^2+x+5| + C\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\tan x\\,dx\\).",
+          answer: "\\(\\ln|\\sec x| + C\\)",
+          method: "\\(\\tan x=\\dfrac{\\sin x}{\\cos x}=\\dfrac{-(\\cos x)'}{\\cos x}\\): the \\(f'/f\\) pattern gives \\(-\\ln|\\cos x|=\\ln|\\sec x|\\).",
+        },
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{2x}{x^2+1}\\,dx\\).",
+          answer: "\\(\\ln(x^2+1) + C\\)",
+          method: "Numerator \\(2x\\) is exactly \\((x^2+1)'\\): the \\(f'/f\\to\\ln|f|\\) pattern.",
+        },
+      ],
       traps: [
         {
           title: "Adjust by a constant, never by a variable",

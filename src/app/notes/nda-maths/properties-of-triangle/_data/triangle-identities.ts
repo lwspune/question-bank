@@ -33,6 +33,13 @@ export const TRIANGLE_IDENTITIES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\cos\\dfrac{A+B}{2} = \\sin\\dfrac{C}{2}\\).",
       },
+      traps: [
+        {
+          title: "\\(\\sin(B+C) = +\\sin A\\), but \\(\\cos(B+C) = -\\cos A\\)",
+          body:
+            "Both \\(B+C\\) and \\(A\\) sum to \\(\\pi\\), so \\(\\sin(B+C) = \\sin A\\) (same sign) but \\(\\cos(B+C) = -\\cos A\\) (opposite sign). Forgetting the minus on the cosine is the standard error.",
+        },
+      ],
     },
 
     // tan / cot product identity

@@ -64,11 +64,33 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         ],
         answer: "\\(R = 5\\).",
       },
+      practiceSet: [
+        {
+          prompt: "In \\(\\triangle ABC\\), \\(A = 30^\\circ\\), \\(B = 45^\\circ\\) and \\(a = 8\\). Find side \\(b\\).",
+          answer: "\\(b = 8\\sqrt2\\).",
+          method: "\\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B}\\Rightarrow b = a\\,\\dfrac{\\sin B}{\\sin A} = 8\\cdot\\dfrac{1/\\sqrt2}{1/2} = 8\\sqrt2\\).",
+        },
+        {
+          prompt: "In \\(\\triangle ABC\\), \\(B = 90^\\circ\\) and \\(b = 10\\). Find the circumradius \\(R\\).",
+          answer: "\\(R = 5\\).",
+          method: "\\(\\dfrac{b}{\\sin B} = 2R\\Rightarrow 2R = \\dfrac{10}{\\sin 90^\\circ} = 10\\), so \\(R = 5\\).",
+        },
+      ],
       traps: [
         {
           title: "Side over sine of its OWN opposite angle",
           body:
             "The sine rule pairs each side with the angle facing it: \\(\\frac{a}{\\sin A}\\), never \\(\\frac{a}{\\sin B}\\). Pairing a side with the wrong angle is the classic slip.",
+        },
+        {
+          title: "The ratio is \\(2R\\), not \\(R\\)",
+          body:
+            "The common ratio \\(\\frac{a}{\\sin A}\\) equals the DIAMETER of the circumcircle, \\(2R\\) — not the radius \\(R\\). So \\(a = 2R\\sin A\\); forgetting the factor 2 halves your circumradius.",
+        },
+        {
+          title: "The ambiguous SSA case can give TWO triangles",
+          body:
+            "Given two sides and a non-included angle, the sine rule can yield a sine value that fits two angles (\\(\\theta\\) and \\(180^\\circ-\\theta\\)), producing two valid triangles. Don't assume the answer is unique without checking the angle sum.",
         },
       ],
     },
@@ -97,11 +119,28 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\cos A = \\dfrac{2}{3}\\).",
       },
+      practiceSet: [
+        {
+          prompt: "A triangle has sides \\(3,\\ 5,\\ 7\\). Find its largest angle.",
+          answer: "\\(120^\\circ\\).",
+          method: "Largest angle faces side \\(7\\): \\(\\cos\\theta = \\dfrac{3^2+5^2-7^2}{2\\cdot3\\cdot5} = \\dfrac{-15}{30} = -\\tfrac12\\Rightarrow\\theta = 120^\\circ\\).",
+        },
+        {
+          prompt: "In \\(\\triangle ABC\\), \\(b = 4,\\ c = 6,\\ A = 60^\\circ\\). Find side \\(a\\).",
+          answer: "\\(a = 2\\sqrt7\\).",
+          method: "\\(a^2 = b^2 + c^2 - 2bc\\cos A = 16 + 36 - 2\\cdot4\\cdot6\\cdot\\tfrac12 = 52 - 24 = 28\\), so \\(a = 2\\sqrt7\\).",
+        },
+      ],
       traps: [
         {
           title: "Put the opposite side as the one being squared on the left",
           body:
             "For angle \\(C\\), the formula has \\(c^2\\) (the side opposite \\(C\\)) isolated and \\(-2ab\\cos C\\). Mixing up which side is opposite the angle flips the sign of the cosine and the verdict on acute/obtuse.",
+        },
+        {
+          title: "A negative cosine means an OBTUSE angle",
+          body:
+            "When \\(\\cos C = \\frac{a^2+b^2-c^2}{2ab}\\) comes out negative, the angle is obtuse (between \\(90^\\circ\\) and \\(180^\\circ\\)) — don't discard it as 'impossible'. It is acute only when the numerator \\(a^2+b^2-c^2 > 0\\).",
         },
       ],
     },
@@ -132,6 +171,13 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         ],
         answer: "Right-angled isosceles triangle.",
       },
+      traps: [
+        {
+          title: "Test \\(a^2+b^2 = c^2\\) on the LARGEST side only",
+          body:
+            "The right-angle test \\(a^2 + b^2 = c^2\\) must use the largest side as \\(c\\). Plugging a shorter side in for \\(c\\) will fail even for a genuine right triangle — the right angle always faces the longest side.",
+        },
+      ],
     },
 
     // area
@@ -160,6 +206,30 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\Delta = 84\\).",
       },
+      practiceSet: [
+        {
+          prompt: "Find the area of \\(\\triangle ABC\\) with \\(a = 6,\\ b = 8\\) and included angle \\(C = 30^\\circ\\).",
+          answer: "\\(\\Delta = 12\\).",
+          method: "Two sides + included angle: \\(\\Delta = \\tfrac12 ab\\sin C = \\tfrac12\\cdot6\\cdot8\\cdot\\sin30^\\circ = 24\\cdot\\tfrac12 = 12\\).",
+        },
+        {
+          prompt: "A triangle has area \\(\\Delta = 30\\) and inradius \\(r = 2\\). Find its semi-perimeter \\(s\\).",
+          answer: "\\(s = 15\\).",
+          method: "\\(\\Delta = rs\\Rightarrow s = \\dfrac{\\Delta}{r} = \\dfrac{30}{2} = 15\\).",
+        },
+      ],
+      traps: [
+        {
+          title: "Area uses \\(\\sin\\) of the angle, not \\(\\cos\\)",
+          body:
+            "The two-sides-and-included-angle area is \\(\\Delta = \\tfrac12 ab\\sin C\\). Writing \\(\\tfrac12 ab\\cos C\\) is a classic slip — \\(\\cos\\) belongs to the cosine rule, not the area.",
+        },
+        {
+          title: "Heron's \\(s\\) is the SEMI-perimeter",
+          body:
+            "In \\(\\Delta = \\sqrt{s(s-a)(s-b)(s-c)}\\), \\(s = \\frac{a+b+c}{2}\\) — half the perimeter. Using the full perimeter \\(a+b+c\\) gives a badly wrong area.",
+        },
+      ],
     },
 
     // angles <-> sides relations
@@ -186,6 +256,18 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         ],
         answer: "\\(1 : \\sqrt{3} : 2\\).",
       },
+      practiceSet: [
+        {
+          prompt: "The angles of a triangle are in AP. What is the middle angle?",
+          answer: "\\(60^\\circ\\).",
+          method: "Angles in AP: \\(2B = A + C\\). With \\(A+B+C = 180^\\circ\\), \\(3B = 180^\\circ\\), so \\(B = 60^\\circ\\).",
+        },
+        {
+          prompt: "In \\(\\triangle ABC\\), \\(\\dfrac{a}{\\sin A} = 12\\) and \\(A = 30^\\circ\\). Find \\(a\\).",
+          answer: "\\(a = 6\\).",
+          method: "\\(a = 12\\sin A = 12\\sin30^\\circ = 12\\cdot\\tfrac12 = 6\\).",
+        },
+      ],
     },
 
     // sine rule in configurations

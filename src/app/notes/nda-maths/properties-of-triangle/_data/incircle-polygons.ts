@@ -34,6 +34,30 @@ export const INCIRCLE_POLYGONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(R\\sqrt{2}\\).",
       },
+      practiceSet: [
+        {
+          prompt: "Find the circumradius \\(R\\) of a triangle with sides \\(3,\\ 4,\\ 5\\).",
+          answer: "\\(R = \\dfrac{5}{2}\\).",
+          method: "Area \\(\\Delta = 6\\) (right triangle, \\(\\tfrac12\\cdot3\\cdot4\\)); \\(R = \\dfrac{abc}{4\\Delta} = \\dfrac{3\\cdot4\\cdot5}{4\\cdot6} = \\dfrac{60}{24} = \\dfrac52\\).",
+        },
+        {
+          prompt: "Find the inradius \\(r\\) of a triangle with sides \\(3,\\ 4,\\ 5\\).",
+          answer: "\\(r = 1\\).",
+          method: "\\(s = \\tfrac{3+4+5}{2} = 6\\), \\(\\Delta = 6\\); \\(r = \\dfrac{\\Delta}{s} = \\dfrac{6}{6} = 1\\).",
+        },
+      ],
+      traps: [
+        {
+          title: "Inradius \\(r\\) vs circumradius \\(R\\) — different formulas",
+          body:
+            "The INradius (inside, touching the sides) is \\(r = \\frac{\\Delta}{s}\\); the CIRCUMradius (through the vertices) is \\(R = \\frac{abc}{4\\Delta}\\). Swapping the two — using \\(\\frac{\\Delta}{s}\\) when the circle passes through the vertices — is the most common error here.",
+        },
+        {
+          title: "Central angle is TWICE the inscribed angle",
+          body:
+            "An arc subtends \\(\\angle BOC = 2\\,\\angle BAC\\) at the centre — twice, not half, the inscribed angle. Halving it instead of doubling reverses the relation.",
+        },
+      ],
     },
 
     // regular polygon

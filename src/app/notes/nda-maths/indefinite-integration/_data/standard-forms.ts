@@ -86,6 +86,23 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{2}{3}x^{3/2} + \\tan x + C\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int x^4\\,dx\\).",
+          answer: "\\(\\dfrac{x^5}{5} + C\\)",
+          method: "Power rule: add 1 to the exponent (\\(4\\to5\\)) and divide by the new exponent.",
+        },
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{1}{x}\\,dx\\).",
+          answer: "\\(\\ln|x| + C\\)",
+          method: "The \\(n=-1\\) special row — NOT the power rule. The modulus keeps it valid for \\(x<0\\).",
+        },
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int 3^x\\,dx\\).",
+          answer: "\\(\\dfrac{3^x}{\\ln 3} + C\\)",
+          method: "Exponential-base row \\(\\int a^x\\,dx = \\dfrac{a^x}{\\ln a}\\) with \\(a=3\\); the \\(\\ln a\\) goes in the denominator.",
+        },
+      ],
       traps: [
         {
           title: "The power rule excludes \\(n=-1\\)",
@@ -228,6 +245,18 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{1}{3}\\tan^{-1}\\!\\Big(\\dfrac{x+2}{3}\\Big) + C\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{x^2+25}\\).",
+          answer: "\\(\\dfrac{1}{5}\\tan^{-1}\\!\\Big(\\dfrac{x}{5}\\Big) + C\\)",
+          method: "Standard arctan form with \\(k=5\\): \\(\\int\\dfrac{dx}{x^2+k^2}=\\tfrac1k\\tan^{-1}\\tfrac{x}{k}\\).",
+        },
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{x^2+2x+5}\\).",
+          answer: "\\(\\dfrac{1}{2}\\tan^{-1}\\!\\Big(\\dfrac{x+1}{2}\\Big) + C\\)",
+          method: "Complete the square: \\(x^2+2x+5=(x+1)^2+2^2\\); arctan form with \\(k=2\\).",
+        },
+      ],
       traps: [
         {
           title: "Factor out the leading coefficient first",
@@ -319,7 +348,16 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         "Some NDA items are reasoning questions: they ask whether an antiderivative inherits a property of its integrand — most often periodicity. The key fact is that integrating ADDS a linear term, which can destroy periodicity even when the integrand is periodic.",
       definition:
         "A function \\(g\\) is periodic with period \\(p\\) if \\(g(x+p) = g(x)\\). " +
-        "Integrating a periodic function need NOT give a periodic result. Example: \\(\\sin^2 x = \\dfrac{1-\\cos 2x}{2}\\) is periodic, but \\(\\int \\sin^2 x\\,dx = \\dfrac{x}{2} - \\dfrac{\\sin 2x}{4} + C\\) carries a \\(\\dfrac{x}{2}\\) term that grows without bound. So 'the integrand is periodic' is true, while 'the antiderivative is periodic' is false — two statements that look linked but are not.",
+        "Integrating a periodic function need NOT give a periodic result. Example: \\(\\sin^2 x = \\dfrac{1-\\cos 2x}{2}\\) is periodic, but \\(\\int \\sin^2 x\\,dx = \\dfrac{x}{2} - \\dfrac{\\sin 2x}{4} + C\\) carries a \\(\\dfrac{x}{2}\\) term that grows without bound. So 'the integrand is periodic' is true, while 'the antiderivative is periodic' is false — two statements that look linked but are not. " +
+        "Two inverse relations underpin all of this: integrating a derivative returns the function (up to \\(+C\\)), and differentiating an integral returns the integrand.",
+      formula: {
+        label: "Integration and differentiation are inverse",
+        latex:
+          "\\int F'(x)\\,dx = F(x) + C \\qquad \\dfrac{d}{dx}\\!\\int f(x)\\,dx = f(x)",
+        symbols: [
+          { symbol: "F'(x)", meaning: "a derivative; integrating it recovers \\(F\\) up to a constant" },
+        ],
+      },
       authoredExample: {
         prompt:
           "Is \\(\\displaystyle\\int(1+\\cos 2x)\\,dx\\) a periodic function of \\(x\\)?",

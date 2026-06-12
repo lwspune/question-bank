@@ -44,6 +44,18 @@ export const BY_PARTS_NOTE: SubtopicNote = {
         ],
         answer: "\\(e^x(x-1) + C\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int x\\,\\cos x\\,dx\\).",
+          answer: "\\(x\\sin x + \\cos x + C\\)",
+          method: "LIATE: \\(u=x\\), \\(dv=\\cos x\\,dx\\) so \\(v=\\sin x\\). Then \\(x\\sin x-\\int\\sin x\\,dx=x\\sin x+\\cos x\\).",
+        },
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int x\\,e^{2x}\\,dx\\).",
+          answer: "\\(\\dfrac{e^{2x}}{2}\\Big(x-\\dfrac12\\Big) + C\\)",
+          method: "\\(u=x\\), \\(dv=e^{2x}dx\\) so \\(v=\\tfrac12 e^{2x}\\): \\(\\tfrac{x}{2}e^{2x}-\\tfrac12\\int e^{2x}dx=\\tfrac{x}{2}e^{2x}-\\tfrac14 e^{2x}\\).",
+        },
+      ],
       traps: [
         {
           title: "Choosing u backwards makes it worse",
@@ -78,6 +90,13 @@ export const BY_PARTS_NOTE: SubtopicNote = {
         ],
         answer: "\\(3(x\\ln x - x) + C = 3x\\ln x - 3x + C\\)",
       },
+      practiceSet: [
+        {
+          prompt: "Evaluate \\(\\displaystyle\\int \\ln x\\,dx\\).",
+          answer: "\\(x\\ln x - x + C\\)",
+          method: "By parts with \\(u=\\ln x\\), \\(dv=dx\\): \\(x\\ln x-\\int x\\cdot\\tfrac1x\\,dx=x\\ln x-x\\).",
+        },
+      ],
       traps: [
         {
           title: "ln x has no naive antiderivative",
