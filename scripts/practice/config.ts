@@ -116,6 +116,25 @@ export const TOPICS: Record<string, Topic> = {
       "Cube Roots of Unity",
     ],
   },
+
+  // Algebra → Quadratic Equations, Q169–232 (64 q), question pages 8–11.
+  // (Starts at Q169 on page 8's right column after the Quadratic header;
+  // Permutation starts at Q233 on page 11, so Quadratic runs through Q232.)
+  "quadratic-equations": {
+    id: "quadratic-equations",
+    chapterName: "Quadratic Equations",
+    qFrom: 169,
+    qTo: 232,
+    sourceFile: "NDA_Maths_Practice__Algebra__Quadratic_Equations.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [8, 9, 10, 11] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-1 page 187-210.pdf"), pages: [9, 10, 11, 12, 13, 14] },
+    subtopics: [
+      "Nature of Roots and Boundary Conditions",
+      "Vieta's Relations and Root-Coefficient Identities",
+      "Special Quadratics — Parametric, Logarithmic, Constructed",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
