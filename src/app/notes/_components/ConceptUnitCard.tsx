@@ -177,6 +177,21 @@ import AoiAreaUnderCurveRegion from "./visualizations/AoiAreaUnderCurveRegion";
 import AoiAreaBetweenCurvesRegion from "./visualizations/AoiAreaBetweenCurvesRegion";
 import HdElevationTriangle from "./visualizations/HdElevationTriangle";
 import HdShadowSun from "./visualizations/HdShadowSun";
+import CellFluidMosaicMembrane from "./visualizations/CellFluidMosaicMembrane";
+import CellAnimalPlantStructure from "./visualizations/CellAnimalPlantStructure";
+import CellOrganelleMap from "./visualizations/CellOrganelleMap";
+import CellProkaryoteEukaryote from "./visualizations/CellProkaryoteEukaryote";
+import CellOsmosisTonicity from "./visualizations/CellOsmosisTonicity";
+import PlantPhotosynthesisFlow from "./visualizations/PlantPhotosynthesisFlow";
+import PlantTropismBending from "./visualizations/PlantTropismBending";
+import PlantSeedParts from "./visualizations/PlantSeedParts";
+import MicroPathogenTree from "./visualizations/MicroPathogenTree";
+import MicroMalariaCycle from "./visualizations/MicroMalariaCycle";
+import ReproFlowerStructure from "./visualizations/ReproFlowerStructure";
+import ReproDoubleFertilisation from "./visualizations/ReproDoubleFertilisation";
+import EcoFoodChainPyramid from "./visualizations/EcoFoodChainPyramid";
+import BiodivFiveKingdoms from "./visualizations/BiodivFiveKingdoms";
+import BiodivPlantProgression from "./visualizations/BiodivPlantProgression";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -509,6 +524,36 @@ function renderVisualization(slug: VisualizationSlug) {
       return <HdElevationTriangle />;
     case "hd-shadow-sun":
       return <HdShadowSun />;
+    case "cell-fluid-mosaic-membrane":
+      return <CellFluidMosaicMembrane />;
+    case "cell-animal-plant-structure":
+      return <CellAnimalPlantStructure />;
+    case "cell-organelle-map":
+      return <CellOrganelleMap />;
+    case "cell-prokaryote-eukaryote":
+      return <CellProkaryoteEukaryote />;
+    case "cell-osmosis-tonicity":
+      return <CellOsmosisTonicity />;
+    case "plant-photosynthesis-flow":
+      return <PlantPhotosynthesisFlow />;
+    case "plant-tropism-bending":
+      return <PlantTropismBending />;
+    case "plant-seed-parts":
+      return <PlantSeedParts />;
+    case "micro-pathogen-tree":
+      return <MicroPathogenTree />;
+    case "micro-malaria-cycle":
+      return <MicroMalariaCycle />;
+    case "repro-flower-structure":
+      return <ReproFlowerStructure />;
+    case "repro-double-fertilisation":
+      return <ReproDoubleFertilisation />;
+    case "eco-food-chain-pyramid":
+      return <EcoFoodChainPyramid />;
+    case "biodiv-five-kingdoms":
+      return <BiodivFiveKingdoms />;
+    case "biodiv-plant-progression":
+      return <BiodivPlantProgression />;
   }
 }
 
