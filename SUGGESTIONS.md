@@ -34,6 +34,22 @@ The 2026-06-10/11 Chemistry + Physics notes and this session's 8 new NDA Biology
 
 **How to apply:** same per-chapter cadence; recall subjects lean `fact` (reference-table) + `trap` themes rather than computation. HP (Biology) is already done as the template for a recall-heavy chapter.
 
+### Review + flip the practice pilot PUBLIC (Sequence & Series, 84 q)
+
+The 84 NDA Maths Sequence & Series practice questions are committed **PRIVATE** (`question_kind='practice'`, `source_file='NDA_Maths_Practice__Algebra__Sequence_and_Series.pdf'`), pending the user's review of the preview HTML. They're invisible to the public + excluded from PYQ counts until flipped.
+
+**Why:** the pilot's value is only realised once it's live; and the verification surfaced 7 source-key corrections (in `overrides.json`) worth a human glance before publishing. The /browse Practice toggle stays dark for anon until something practice is PUBLIC.
+
+**How to apply:** regenerate/open `npx tsx scripts/practice/preview.ts sequence-series` (or `/uploads/a682f27a-…`), eyeball the override-badged questions, then `update questions set visibility='PUBLIC' where source_file='NDA_Maths_Practice__Algebra__Sequence_and_Series.pdf';`. Then browser-smoke the /browse PYQ/Practice/All toggle on the live site (the DoD step not yet done — the toggle is test- + RPC-verified but never clicked in a running app).
+
+### Scale practice ingestion to more topics/subjects (carry-forward)
+
+The practice book has ~thousands of questions across Algebra / Trig / 2D / 3D / Calculus (the loose PDFs under `C:\tmp\Practice\Maths\`); only Algebra→Sequence&Series is ingested. Each topic = a `TOPICS` entry in `scripts/practice/config.ts` + the render→transcribe→commit→preview loop.
+
+**Why:** broadens the practice bank once the pilot is validated. But it is a **workflow, not automation** — budget the per-section vision-transcription + verification pass (~6 key fixes + several transcription fixes per ~80 q in the pilot). Do it topic-by-topic on the user's cue, not as a blind batch.
+
+**How to apply:** follow `scripts/practice/README.md`. Pick the next topic (e.g. Algebra's other sub-topics share the same question/answer/solution PDFs already mapped), add its `qFrom`/`qTo` + page indices to `config.ts`, run the loop. Reuse the existing 5-subtopic mapping where the chapter matches; map onto existing DB subtopics, never auto-create a parallel taxonomy.
+
 ---
 
 ## 2026-06-11
