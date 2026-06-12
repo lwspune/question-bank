@@ -346,6 +346,62 @@
     "chapterSlug": "binomial-distribution",
     "subtopicSlug": "bd-computing-probabilities",
     "conceptSlug": "complement-at-least-one",
+    "atomId": "complement-at-least-one:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "A fair coin is tossed 5 times. Find the probability of getting at least one head.",
+    "correct": "\\(\\dfrac{31}{32}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\dfrac{32}{31}\\)",
+      "\\(\\dfrac{-31}{32}\\)",
+      "\\(\\dfrac{32}{32}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "'At most' can also flip to a complement: 'At most 4 tails in 5 tosses' has five terms the long way, but its complement 'exactly 5 tails' is one term: \\(1 - (\\tfrac12)^5 = \\tfrac{31}{32}\\). Read the count and complement whichever side is shorter."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "e2861eaf16d8c4edb245f2db6606c69079f09292",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binomial-distribution",
+    "subtopicSlug": "bd-computing-probabilities",
+    "conceptSlug": "complement-at-least-one",
+    "atomId": "complement-at-least-one:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "5% of the bulbs in a batch are defective. In a random sample of 3, find the probability of at least one defective bulb.",
+    "correct": "\\(\\dfrac{1141}{8000}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\dfrac{8000}{1141}\\)",
+      "\\(\\dfrac{-1141}{8000}\\)",
+      "\\(\\dfrac{1142}{8000}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "'At most' can also flip to a complement: 'At most 4 tails in 5 tosses' has five terms the long way, but its complement 'exactly 5 tails' is one term: \\(1 - (\\tfrac12)^5 = \\tfrac{31}{32}\\). Read the count and complement whichever side is shorter."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "1d1db52ba4208e683283ac62f43858f188787c6f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binomial-distribution",
+    "subtopicSlug": "bd-computing-probabilities",
+    "conceptSlug": "complement-at-least-one",
     "atomId": "complement-at-least-one:trap:0",
     "sourceKind": "trap",
     "sourceIndex": 0,
@@ -814,6 +870,58 @@
     "status": "auto",
     "looksMcqClean": false,
     "sourceFingerprint": "b61145b877c7f25dc9f5eb3ee91b4f7507f0aa21",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binomial-distribution",
+    "subtopicSlug": "bd-mean-variance",
+    "conceptSlug": "mean-variance-relation",
+    "atomId": "mean-variance-relation:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "In a binomial distribution the mean is twice the variance. Find p.",
+    "correct": "\\(p = \\tfrac12\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(q = \\tfrac13\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Cancel np, do not cancel the wrong factor: From \\(np = c\\,npq\\), the surviving factor is \\(q\\) (giving \\(q = 1/c\\)). Cancelling to leave \\(p\\) instead — a common slip — inverts the answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "902f3753ce289376ec5fba5e21fad2c8575176f1",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binomial-distribution",
+    "subtopicSlug": "bd-mean-variance",
+    "conceptSlug": "mean-variance-relation",
+    "atomId": "mean-variance-relation:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "For a binomial variable the mean is 3 times the variance. Find q.",
+    "correct": "\\(q = \\tfrac13\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(p = \\tfrac12\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Cancel np, do not cancel the wrong factor: From \\(np = c\\,npq\\), the surviving factor is \\(q\\) (giving \\(q = 1/c\\)). Cancelling to leave \\(p\\) instead — a common slip — inverts the answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "65b099e6ac2e2160eb7a47387459982c000957c2",
     "timeEstimateSec": 45
   },
   {

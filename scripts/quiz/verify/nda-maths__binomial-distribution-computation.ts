@@ -77,4 +77,30 @@ export const VERIFIED: VerifiedEntry[] = [
     f("p = \\tfrac12"), // assumed symmetry (the B(5,p) case, not B(4,p))
     f("p = \\tfrac23"),
   ]),
+
+  // ── top-up 2026-06-12: practiceSet added to reach the 12-atom computation floor ──
+  // complement-at-least-one — coin x5, P(≥1 head) = 1 − (1/2)^5 = 31/32
+  e("complement-at-least-one:practiceSet:0", [
+    f("\\tfrac{1}{32}"), // q^n instead of 1−q^n
+    f("\\tfrac{5}{32}"),
+    f("\\tfrac{1}{2}"),
+  ]),
+  // complement-at-least-one — 5% defective, n=3, P(≥1) = 1 − (19/20)^3 = 1141/8000
+  e("complement-at-least-one:practiceSet:1", [
+    f("\\tfrac{6859}{8000}"), // q^3 (forgot to subtract from 1)
+    f("\\tfrac{3}{20}"), // 3 × 0.05 (treated as additive)
+    f("\\tfrac{1}{8000}"),
+  ]),
+  // mean-variance-relation — mean = 2·var ⇒ 1 = 2q ⇒ q = 1/2 ⇒ p = 1/2
+  e("mean-variance-relation:practiceSet:0", [
+    f("p = \\tfrac13"), // solved 1 = 2p instead of 1 = 2q
+    f("p = \\tfrac23"),
+    f("p = \\tfrac14"),
+  ]),
+  // mean-variance-relation — mean = 3·var ⇒ q = 1/3
+  e("mean-variance-relation:practiceSet:1", [
+    f("q = 3"), // forgot the reciprocal (q = c instead of 1/c)
+    f("q = \\tfrac23"),
+    f("q = \\tfrac12"),
+  ]),
 ];

@@ -160,6 +160,18 @@ export const MEAN_VARIANCE_NOTE: SubtopicNote = {
         ],
         answer: "\\(p = \\tfrac34\\)",
       },
+      practiceSet: [
+        {
+          prompt: "In a binomial distribution the mean is twice the variance. Find p.",
+          answer: "\\(p = \\tfrac12\\)",
+          method: "\\(np = 2(npq) \\Rightarrow q = \\tfrac12 \\Rightarrow p = \\tfrac12\\)",
+        },
+        {
+          prompt: "For a binomial variable the mean is 3 times the variance. Find q.",
+          answer: "\\(q = \\tfrac13\\)",
+          method: "\\(1 = 3q \\Rightarrow q = \\tfrac13\\)",
+        },
+      ],
       traps: [
         {
           title: "Cancel np, do not cancel the wrong factor",
