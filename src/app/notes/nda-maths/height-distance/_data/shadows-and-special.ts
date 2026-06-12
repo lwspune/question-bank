@@ -82,6 +82,15 @@ export const SHADOWS_AND_SPECIAL_NOTE: SubtopicNote = {
         ],
         answer: "\\(30^\\circ < \\theta < 45^\\circ\\) (about \\(40.9^\\circ\\)).",
       },
+      practiceSet: [
+        {
+          prompt:
+            "A vertical pole of height \\(10\\sqrt{3}\\) m casts a shadow. When the shadow length is \\(30\\) m, what is the sun's angle of elevation?",
+          answer: "\\(30^\\circ\\)",
+          method:
+            "\\(\\tan\\theta = h/s = 10\\sqrt{3}/30 = 1/\\sqrt{3}\\Rightarrow\\theta = 30^\\circ\\).",
+        },
+      ],
       traps: [
         {
           title: "The new shadow is old + increase, not just the increase",
@@ -153,6 +162,15 @@ export const SHADOWS_AND_SPECIAL_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sqrt{2-\\sqrt{2}}\\) units.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "A chord of a circle of radius \\(10\\) cm subtends an angle of \\(60^\\circ\\) at the centre. Find the chord's length.",
+          answer: "\\(10\\) cm",
+          method:
+            "Chord \\(= 2r\\sin(\\theta/2) = 2\\cdot 10\\cdot\\sin 30^\\circ = 20\\cdot\\tfrac12 = 10\\) cm.",
+        },
+      ],
       traps: [
         {
           title: "Half the angle, not the whole angle",

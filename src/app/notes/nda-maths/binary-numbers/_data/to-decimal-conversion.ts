@@ -51,6 +51,11 @@ export const TO_DECIMAL_CONVERSION_NOTE: SubtopicNote = {
           body:
             "The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
         },
+        {
+          title: "No subscript means DECIMAL, not binary",
+          body:
+            "A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits.",
+        },
       ],
     },
 
@@ -151,6 +156,11 @@ export const TO_DECIMAL_CONVERSION_NOTE: SubtopicNote = {
           title: "Read the division remainders from the BOTTOM up",
           body:
             "Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+        },
+        {
+          title: "Keep a 0 in every skipped power — don't drop empty places",
+          body:
+            "With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number.",
         },
       ],
     },

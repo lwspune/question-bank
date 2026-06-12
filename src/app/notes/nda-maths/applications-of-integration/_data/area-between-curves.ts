@@ -42,6 +42,11 @@ export const AREA_BETWEEN_CURVES_NOTE: SubtopicNote = {
           body:
             "Solving \\(x^2 = 2x\\) gives 2 points, but \\(x^2 = 2|x|\\) gives 3 — the modulus mirrors a solution to the negative side. Always account for both signs of \\(|x|\\) when counting crossings.",
         },
+        {
+          title: "The intersection x-values are the limits — don't guess them",
+          body:
+            "The limits \\(a\\) and \\(b\\) of an area-between-curves integral are the x-coordinates where the curves actually cross, found by solving \\(f(x) = g(x)\\). Using the interval given in the problem text (or the y-intercepts) instead of the true crossings gives the wrong region and the wrong area.",
+        },
       ],
     },
 
@@ -83,6 +88,14 @@ export const AREA_BETWEEN_CURVES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\tfrac{2}{3}\\) square unit.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "Find the area between \\(y = x^2\\) and \\(y = x\\) for \\(0 \\le x \\le 1\\).",
+          answer: "\\(\\tfrac{1}{6}\\)",
+          method: "On \\((0,1)\\), \\(x > x^2\\), so top \\(= x\\): \\(\\int_0^1 (x - x^2)\\,dx = [\\tfrac{x^2}{2} - \\tfrac{x^3}{3}]_0^1 = \\tfrac{1}{2} - \\tfrac{1}{3} = \\tfrac{1}{6}\\).",
+        },
+      ],
       traps: [
         {
           title: "Subtract top minus bottom, not in equation order",
@@ -120,6 +133,14 @@ export const AREA_BETWEEN_CURVES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\tfrac{1}{3}\\) square unit.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "Find the area enclosed between the parabola \\(y^2 = 2x\\) and the line \\(y = x\\).",
+          answer: "\\(\\tfrac{2}{3}\\)",
+          method: "Intersections \\(x = 0, 2\\); upper branch \\(\\sqrt{2x}\\) above \\(x\\): \\(\\int_0^2 (\\sqrt{2x} - x)\\,dx = \\tfrac{8}{3} - 2 = \\tfrac{2}{3}\\).",
+        },
+      ],
       traps: [
         {
           title: "Pick the correct branch of a sideways parabola",

@@ -240,6 +240,22 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(T = \\dfrac{f}{2}\\).",
       },
+      practiceSet: [
+        {
+          prompt:
+            "A \\(7\\) m flagstaff stands on a tower. From a ground point the tower top is at \\(45^\\circ\\) and the flagstaff top at \\(60^\\circ\\). What is the horizontal distance \\(d\\) from that point to the foot, given the tower height \\(T\\) satisfies \\(T = d\\)?",
+          answer: "\\(d = \\dfrac{7}{\\sqrt{3}-1}\\) m",
+          method:
+            "Tower top: \\(\\tan 45^\\circ = T/d = 1\\Rightarrow T = d\\). Flagstaff top: \\(\\tan 60^\\circ = (T+7)/d = \\sqrt{3}\\Rightarrow d+7 = \\sqrt{3}d\\Rightarrow d = 7/(\\sqrt{3}-1)\\).",
+        },
+        {
+          prompt:
+            "A tower of height \\(T\\) carries a flagstaff. From a point on the ground the tower top is seen at \\(30^\\circ\\) and the flagstaff top at \\(60^\\circ\\). The flagstaff height is what multiple of \\(T\\)?",
+          answer: "\\(2T\\)",
+          method:
+            "\\(d = \\sqrt{3}T\\) from the \\(30^\\circ\\) reading; \\(\\tan 60^\\circ = (T+f)/d = \\sqrt{3}\\Rightarrow T+f = 3T\\Rightarrow f = 2T\\).",
+        },
+      ],
       traps: [
         {
           title: "The lower angle goes with the lower height",
@@ -348,6 +364,15 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(h = \\dfrac{b\\sqrt{3}}{\\sqrt{3}-1}\\) (rationalise to \\(\\tfrac{b\\sqrt{3}(\\sqrt{3}+1)}{2}\\)).",
       },
+      practiceSet: [
+        {
+          prompt:
+            "A tower of height \\(h\\) is seen at \\(30^\\circ\\) from a point \\(P\\) and at \\(60^\\circ\\) from a nearer point \\(Q\\) on the same line. Express the gap \\(PQ\\) in terms of \\(h\\).",
+          answer: "\\(PQ = \\dfrac{2h}{\\sqrt{3}}\\)",
+          method:
+            "\\(PN = h\\cot 30^\\circ = h\\sqrt{3}\\), \\(QN = h\\cot 60^\\circ = h/\\sqrt{3}\\). \\(PQ = h\\sqrt{3} - h/\\sqrt{3} = h(3-1)/\\sqrt{3} = 2h/\\sqrt{3}\\).",
+        },
+      ],
       traps: [
         {
           title: "Bigger angle ⇒ nearer point ⇒ smaller cotangent",
@@ -420,6 +445,15 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(H = 40\\) m.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "From a point \\(h\\) metres above a lake, a cloud is at elevation \\(30^\\circ\\) and its reflection at depression \\(60^\\circ\\). Find the cloud's height above the lake in terms of \\(h\\).",
+          answer: "\\(2h\\)",
+          method:
+            "\\(\\tan 30^\\circ = (H-h)/d\\) and \\(\\tan 60^\\circ = (H+h)/d\\). Dividing: \\((H-h)/(H+h) = \\tan30/\\tan60 = 1/3\\Rightarrow 3H-3h = H+h\\Rightarrow H = 2h\\).",
+        },
+      ],
       traps: [
         {
           title: "Image depth is H + observer height, not H",
@@ -456,6 +490,15 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(h = r\\) (and generally \\(\\dfrac{r\\sin\\beta}{\\sin(\\alpha/2)}\\)).",
       },
+      practiceSet: [
+        {
+          prompt:
+            "A balloon of radius \\(r\\) subtends an angle of \\(60^\\circ\\) at an observer's eye. How far is the centre of the balloon from the eye?",
+          answer: "\\(2r\\)",
+          method:
+            "\\(\\sin(\\alpha/2) = r/R\\) with \\(\\alpha = 60^\\circ\\): \\(\\sin 30^\\circ = 1/2 = r/R\\Rightarrow R = 2r\\).",
+        },
+      ],
       traps: [
         {
           title: "Use half the subtended angle",

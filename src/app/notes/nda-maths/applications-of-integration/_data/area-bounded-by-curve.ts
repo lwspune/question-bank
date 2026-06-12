@@ -58,6 +58,18 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
           answer: "Negative; \\(-\\tfrac{1}{2}\\).",
           method: "\\(y = x\\) is below the axis on \\([-1, 0]\\): \\([x^2/2]_{-1}^0 = -\\tfrac{1}{2}\\).",
         },
+        {
+          prompt:
+            "Find the area under \\(y = x^2\\), the x-axis, and the lines \\(x = 1\\) and \\(x = 2\\).",
+          answer: "\\(\\tfrac{7}{3}\\)",
+          method: "\\(\\int_1^2 x^2\\,dx = [x^3/3]_1^2 = \\tfrac{8}{3} - \\tfrac{1}{3} = \\tfrac{7}{3}\\).",
+        },
+        {
+          prompt:
+            "Find the area bounded by \\(y = \\sin x\\), the x-axis, from \\(x = 0\\) to \\(x = \\pi\\).",
+          answer: "\\(2\\)",
+          method: "\\(\\sin x \\ge 0\\) on \\([0, \\pi]\\): \\(\\int_0^{\\pi}\\sin x\\,dx = [-\\cos x]_0^{\\pi} = 1 + 1 = 2\\).",
+        },
       ],
     },
 
@@ -98,6 +110,20 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         ],
         answer: "\\(1\\) square unit.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "Find the area of the upper semicircle \\(y = \\sqrt{16 - x^2}\\) above the x-axis.",
+          answer: "\\(8\\pi\\)",
+          method: "It is the upper half of \\(x^2 + y^2 = 16\\) (radius \\(4\\)): \\(\\tfrac{1}{2}\\pi r^2 = \\tfrac{1}{2}\\pi(16) = 8\\pi\\).",
+        },
+        {
+          prompt:
+            "Find the area bounded by \\(y = \\sqrt{x}\\), the x-axis, and the lines \\(x = 0\\), \\(x = 4\\).",
+          answer: "\\(\\tfrac{16}{3}\\)",
+          method: "\\(\\int_0^4 x^{1/2}\\,dx = [\\tfrac{2}{3}x^{3/2}]_0^4 = \\tfrac{2}{3}(8) = \\tfrac{16}{3}\\).",
+        },
+      ],
       traps: [
         {
           title: "Integrate only where the curve stays above the axis",
@@ -136,11 +162,30 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\tfrac{1}{2}\\) square unit.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "Find the geometric area between \\(y = x^3\\) and the x-axis from \\(x = -2\\) to \\(x = 2\\).",
+          answer: "\\(8\\)",
+          method: "Symmetric: \\(2\\int_0^2 x^3\\,dx = 2[x^4/4]_0^2 = 2(4) = 8\\) (the raw integral \\(\\int_{-2}^2 x^3\\,dx = 0\\) is NOT the area).",
+        },
+        {
+          prompt:
+            "Find the total area between \\(y = x\\) and the x-axis from \\(x = -2\\) to \\(x = 2\\).",
+          answer: "\\(4\\)",
+          method: "Split at \\(0\\): \\(|\\int_{-2}^0 x\\,dx| + \\int_0^2 x\\,dx = 2 + 2 = 4\\) (each half is a triangle of area \\(2\\)).",
+        },
+      ],
       traps: [
         {
           title: "The raw integral can be zero while the area is not",
           body:
             "For an odd function over a symmetric interval, \\(\\int_{-a}^{a} f\\,dx = 0\\). That is the signed integral, not the area. Whenever a region straddles the axis, split and take absolute values — and a symmetric region doubles one half rather than cancelling it.",
+        },
+        {
+          title: "A negative area answer means a missing modulus",
+          body:
+            "Geometric area is always positive. If a region lies below the axis, \\(\\int_a^b f\\,dx\\) comes out negative — that is the SIGNED value, and the area is its magnitude \\(\\left|\\int_a^b f\\,dx\\right|\\). Reporting a negative number as 'the area' (forgetting the \\(|\\cdot|\\)) is the single most common slip in this chapter.",
         },
       ],
     },
@@ -173,6 +218,18 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         ],
         answer: "\\(24\\) square units.",
       },
+      practiceSet: [
+        {
+          prompt: "Find the area of the region \\(|x| + |y| = 1\\).",
+          answer: "\\(2\\)",
+          method: "A tilted square (diamond) with diagonals of length \\(2\\) each: area \\(= \\tfrac{1}{2}d_1 d_2 = \\tfrac{1}{2}(2)(2) = 2\\).",
+        },
+        {
+          prompt: "Find the area of the region bounded by \\(|x| \\le 2\\) and \\(|y| \\le 5\\).",
+          answer: "\\(40\\)",
+          method: "Rectangle of width \\(2(2) = 4\\) and height \\(2(5) = 10\\): area \\(= 4 \\times 10 = 40\\).",
+        },
+      ],
       traps: [
         {
           title: "|x| ≤ p gives a side of length 2p, not p",
@@ -210,6 +267,14 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\tfrac{32}{3}\\) square units.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "Find the area enclosed by the parabola \\(y^2 = 4x\\) and its latus rectum.",
+          answer: "\\(\\tfrac{8}{3}\\)",
+          method: "\\(4a = 4 \\Rightarrow a = 1\\); area \\(= \\tfrac{8}{3}a^2 = \\tfrac{8}{3}(1) = \\tfrac{8}{3}\\).",
+        },
+      ],
       traps: [
         {
           title: "Double the half-region, and use the right limit",
@@ -246,6 +311,14 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         ],
         answer: "\\(1\\) square unit.",
       },
+      practiceSet: [
+        {
+          prompt:
+            "Find the area bounded by \\(y = [x]\\), the x-axis, and the lines \\(x = -1.8\\) and \\(x = -1.5\\).",
+          answer: "\\(0.6\\)",
+          method: "On \\([-1.8, -1.5]\\), \\([x] = -2\\); height \\(= |-2| = 2\\), width \\(= 0.3\\): area \\(= 2 \\times 0.3 = 0.6\\).",
+        },
+      ],
       traps: [
         {
           title: "Negative step values still give positive area",
