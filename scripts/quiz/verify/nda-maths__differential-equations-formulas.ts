@@ -116,4 +116,36 @@ export const VERIFIED: VerifiedEntry[] = [
     ],
     theme: "formula",
   },
+
+  // ── top-up 2026-06-12: exact differentials + linear-in-x IF + Bernoulli (to clear the 12-floor) ──
+  {
+    atomKey: "reducible-by-substitution:formula:0",
+    stem: "Which exact-differential identity is correct?",
+    distractors: [f("x\\,dy + y\\,dx = d\\!\\left(\\tfrac{x}{y}\\right)"), f("x\\,dy - y\\,dx = d(xy)"), f("x\\,dy + y\\,dx = d(x+y)")],
+    theme: "formula",
+  },
+  {
+    atomKey: "reducible-by-substitution:formula:1",
+    stem: "Which exact-differential identity is correct?",
+    distractors: [f("\\frac{x\\,dy - y\\,dx}{y^2} = d\\!\\left(\\tfrac{y}{x}\\right)"), f("\\frac{y\\,dx - x\\,dy}{y^2} = d\\!\\left(\\tfrac{x}{y}\\right)"), f("\\frac{x\\,dy - y\\,dx}{x^2} = d\\!\\left(\\tfrac{x}{y}\\right)")],
+    theme: "formula",
+  },
+  {
+    atomKey: "reducible-by-substitution:formula:2",
+    stem: "Which exact-differential identity is correct?",
+    distractors: [f("x\\,dx + y\\,dy = d(x^2+y^2)"), f("x\\,dx - y\\,dy = \\tfrac12\\,d(x^2+y^2)"), f("x\\,dx + y\\,dy = \\tfrac12\\,d(x^2-y^2)")],
+    theme: "formula",
+  },
+  {
+    atomKey: "linear-equations-integrating-factor:formula:3",
+    stem: "For an equation LINEAR IN x, \\(\\dfrac{dx}{dy}+P(y)\\,x=Q(y)\\), which integrating factor is correct?",
+    distractors: [f("\\frac{dx}{dy}+P(y)\\,x=Q(y):\\ \\mu=e^{\\int P(y)\\,dx}"), f("\\frac{dx}{dy}+P(y)\\,x=Q(y):\\ \\mu=e^{-\\int P(y)\\,dy}"), f("\\frac{dx}{dy}+P(y)\\,x=Q(y):\\ \\mu=e^{\\int Q(y)\\,dy}")],
+    theme: "formula",
+  },
+  {
+    atomKey: "linear-equations-integrating-factor:formula:4",
+    stem: "To linearise the Bernoulli equation \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), which substitution is correct?",
+    distractors: [f("\\frac{dy}{dx}+Py=Qy^{n}:\\ v=y^{n-1}"), f("\\frac{dy}{dx}+Py=Qy^{n}:\\ v=y^{n}"), f("\\frac{dy}{dx}+Py=Qy^{n}:\\ v=y^{1+n}")],
+    theme: "formula",
+  },
 ];
