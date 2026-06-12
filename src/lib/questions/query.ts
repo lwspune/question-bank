@@ -120,6 +120,9 @@ export async function queryQuestions(
   }
   if (filters.difficulties.length > 0)
     q = q.in("difficulty", filters.difficulties);
+  // PYQ (default) / Practice / All — the question_kind axis (migration 0036).
+  // 'all' applies no filter; otherwise narrow to the chosen corpus.
+  if (filters.kind !== "all") q = q.eq("question_kind", filters.kind);
   if (filters.pyqYears.length > 0) q = q.in("pyq_year", filters.pyqYears);
   if (filters.q.trim()) {
     q = q.textSearch("search_vector", filters.q.trim(), {

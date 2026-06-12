@@ -11,6 +11,7 @@ const SEEDED: Filters = {
   pyqYears: [2024, 2023],
   extraIds: [],
   principleSlug: null,
+  kind: "pyq",
   q: "vectors",
   page: 4,
 };
