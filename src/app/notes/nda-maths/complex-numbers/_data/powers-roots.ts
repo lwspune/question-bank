@@ -16,6 +16,11 @@ export const POWERS_ROOTS_NOTE: SubtopicNote = {
         "Powers of \\(i\\) repeat every four: \\(i,-1,-i,1,\\) then back to \\(i\\). So any \\(i^n\\) is decided by \\(n \\bmod 4\\), and any block of four consecutive powers sums to zero — which collapses long sums instantly.",
       definition:
         "\\(i^1=i,\\;i^2=-1,\\;i^3=-i,\\;i^4=1\\); thereafter \\(i^n=i^{\\,n\\bmod 4}\\). **Block sum:** \\(i^k+i^{k+1}+i^{k+2}+i^{k+3}=0\\) for any \\(k\\). So \\(\\sum\\) of \\(i^n\\) over a full set of consecutive 4 is 0 — only the leftover terms survive.",
+      formula: {
+        label: "Powers of i",
+        latex:
+          "i^2=-1 \\qquad i^3=-i \\qquad i^4=1 \\qquad i^{4k+r}=i^r \\qquad i^k+i^{k+1}+i^{k+2}+i^{k+3}=0",
+      },
       authoredExample: {
         prompt: "Evaluate \\(i^{1000}+i^{1001}+i^{1002}+i^{1003}\\).",
         steps: [
@@ -38,6 +43,13 @@ export const POWERS_ROOTS_NOTE: SubtopicNote = {
         { prompt: "\\(i^{102}\\)?", answer: "\\(-1\\) (\\(102\\bmod4=2\\))" },
       ],
       pyqExampleId: "f6e225e5-c2f3-49c7-8b78-258c9d30d3fc", // i^{2n}+i^{2n+1}+...
+      traps: [
+        {
+          title: "Reduce the **exponent** of \\(i\\) mod 4 — and watch the remainder",
+          body:
+            "\\(i^n=i^{\\,n\\bmod 4}\\): take the exponent mod 4, not the whole number mod something else. Remainder \\(0\\to1\\), \\(1\\to i\\), \\(2\\to-1\\), \\(3\\to-i\\). So \\(i^{102}\\): \\(102\\bmod4=2\\Rightarrow i^{102}=-1\\) (a frequent error is reading remainder 2 as \\(i\\) instead of \\(-1\\)).",
+        },
+      ],
     },
 
     {
@@ -48,6 +60,11 @@ export const POWERS_ROOTS_NOTE: SubtopicNote = {
         "To raise a complex number to a power, put it in polar form and multiply the angle: \\((\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta\\). Running it backwards gives the \\(n\\) nth-roots, equally spaced around a circle. Square roots of \\(a+ib\\) can also be found by solving \\((x+iy)^2=a+ib\\).",
       definition:
         "**De Moivre:** \\((\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta\\) (also for the modulus: \\(z^n=r^n e^{in\\theta}\\)). **nth roots** of \\(re^{i\\theta}\\): \\(r^{1/n}e^{i(\\theta+2k\\pi)/n}\\), \\(k=0,\\ldots,n-1\\) — \\(n\\) points on a circle of radius \\(r^{1/n}\\). **Square root** of \\(a+ib\\): set \\((x+iy)^2=a+ib\\), match parts (\\(x^2-y^2=a\\), \\(2xy=b\\)).",
+      formula: {
+        label: "De Moivre's theorem and nth roots",
+        latex:
+          "(\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta \\qquad z^n=r^n e^{in\\theta} \\qquad z^{1/n}=r^{1/n}e^{i(\\theta+2k\\pi)/n},\\ k=0,\\ldots,n-1",
+      },
       authoredExample: {
         prompt: "Use De Moivre to find \\((1+i)^4\\).",
         steps: [

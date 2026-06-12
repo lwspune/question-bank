@@ -84,6 +84,10 @@ export const FORMING_NUMBERS_NOTE: SubtopicNote = {
         "By symmetry, each digit lands in each position the same number of times. So the sum of all numbers formed is (sum of digits) × (times each appears per place) × (place-value repunit).",
       definition:
         "Using \\(n\\) distinct digits to form all \\(n\\)-digit numbers: each digit appears in each place \\((n-1)!\\) times. Sum \\(=(n-1)!\\times(\\text{sum of digits})\\times\\underbrace{111\\ldots1}_{n}\\). Adjust the repeat count and place-value string for \\(r\\)-digit selections.",
+      formula: {
+        label: "Sum of all numbers formed from n distinct digits",
+        latex: "\\text{Sum}=(n-1)!\\times(\\text{sum of digits})\\times\\underbrace{111\\ldots1}_{n\\text{ ones}}",
+      },
       authoredExample: {
         prompt: "Find the sum of all 3-digit numbers formed using \\(3,4,5\\) without repetition.",
         steps: [

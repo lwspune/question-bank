@@ -39,6 +39,12 @@ export const MONOTONICITY_EXTREMA_NOTE: SubtopicNote = {
         { prompt: "\\(f(x)=x^3-3x\\) decreasing on?", answer: "\\((-1,1)\\)" },
         { prompt: "\\(x^2-kx\\) monotonic increasing on \\(x>1\\) needs?", answer: "\\(k\\le 2\\)" },
       ],
+      traps: [
+        {
+          title: "Monotonicity is decided by the sign of \\(f'\\), not \\(f\\)",
+          body: "\\(f\\) increasing \\(\\iff f'(x)\\ge 0\\) on the interval (and \\(f'(x)\\le 0\\) for decreasing). A large or positive VALUE of \\(f\\) says nothing — read the sign of the DERIVATIVE. Sign-test \\(f'\\) on each piece between its zeros.",
+        },
+      ],
       pyqExampleId: "0ef63ae6-e18d-45e1-84ac-f2909b277b42", // x^3/3 - 5x^2/2 + 6x intervals
     },
 
@@ -73,6 +79,16 @@ export const MONOTONICITY_EXTREMA_NOTE: SubtopicNote = {
         { prompt: "First-derivative test: \\(+\\to-\\) ⇒?", answer: "Local maximum" },
         { prompt: "\\(f''=0\\) at a critical point means?", answer: "Test is inconclusive" },
       ],
+      traps: [
+        {
+          title: "\\(f''>0\\) is a MINIMUM, not a maximum",
+          body: "Second-derivative test: at a critical point \\(f''>0\\) means the curve is concave up ⇒ a local **minimum**; \\(f''<0\\) ⇒ a local **maximum**. The sign is the opposite of what students often guess. (\\(f''=0\\) is inconclusive — fall back to the first-derivative test.)",
+        },
+        {
+          title: "\\(f'=0\\) is NECESSARY, not sufficient, for an extremum",
+          body: "A critical point is only a CANDIDATE. \\(f'=0\\) can be a point of inflection with no extremum (e.g. \\(f(x)=x^3\\) at \\(x=0\\)). You must still confirm a genuine sign change of \\(f'\\) (or check \\(f''\\)).",
+        },
+      ],
       pyqExampleId: "1ae142a5-88c8-49fb-9138-f48c3da99fc3", // local max, find a
     },
 
@@ -105,6 +121,12 @@ export const MONOTONICITY_EXTREMA_NOTE: SubtopicNote = {
         { prompt: "Most common mistake in these problems?", answer: "Forgetting the endpoints" },
         { prompt: "On an open interval, is the sup always attained?", answer: "No" },
         { prompt: "Greatest of \\(2\\sin x+1\\) on \\([0,\\pi]\\)?", answer: "\\(3\\)" },
+      ],
+      traps: [
+        {
+          title: "On a closed interval, ALWAYS test the endpoints",
+          body: "The absolute max/min on \\([a,b]\\) is the largest/smallest among the critical-point values AND \\(f(a),f(b)\\). The extreme value frequently sits at an endpoint, not at a turning point — comparing only critical points is the classic error.",
+        },
       ],
       pyqExampleId: "b4262de7-21bc-4a3b-b6de-ee58efa1133c", // greatest value of f
     },
@@ -139,6 +161,12 @@ export const MONOTONICITY_EXTREMA_NOTE: SubtopicNote = {
         { prompt: "Discriminant of \\(3x^2+2x+k\\)?", answer: "\\(4-12k\\)" },
         { prompt: "To count extrema, count sign-changes of?", answer: "\\(f'\\)" },
         { prompt: "\\(x^3+x^2+kx\\) monotonic for \\(k\\)?", answer: "\\(k>\\tfrac13\\)" },
+      ],
+      traps: [
+        {
+          title: "Count genuine SIGN-CHANGES of \\(f'\\), not just roots of \\(f'\\)",
+          body: "A root of \\(f'\\) is an extremum only if \\(f'\\) actually flips sign there. A repeated root (e.g. \\(f'=(x-2)^2\\)) touches zero without changing sign — no extremum. For a cubic to have NO extremum, force \\(f'\\) (a quadratic) to have discriminant \\(<0\\) so it never changes sign.",
+        },
       ],
       pyqExampleId: "25b913ec-a83a-461e-85bd-7f106631359d", // no extremum condition
     },

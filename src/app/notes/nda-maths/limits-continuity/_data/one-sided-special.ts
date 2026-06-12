@@ -41,6 +41,12 @@ export const ONE_SIDED_SPECIAL_NOTE: SubtopicNote = {
         { prompt: "If LHL \\(=1\\), RHL \\(=-1\\), limit?", answer: "Does not exist" },
       ],
       pyqExampleId: "328bc8a1-8629-4eee-90b5-beb1c00a4d78", // lim x→0 piecewise f
+      traps: [
+        {
+          title: "One-sided limits must AGREE for the limit to exist",
+          body: "If LHL \\(=2\\) and RHL \\(=2\\) the limit is \\(2\\); but if LHL \\(\\neq\\) RHL — say \\(1\\) and \\(-1\\) — the two-sided limit **does not exist**. Don't average them or pick one side: disagreement means DNE.",
+        },
+      ],
     },
 
     {
@@ -74,6 +80,12 @@ export const ONE_SIDED_SPECIAL_NOTE: SubtopicNote = {
         { prompt: "\\(\\lfloor x\\rfloor\\) on \\((2,3)\\)?", answer: "\\(2\\) (constant)" },
       ],
       pyqExampleId: "0f2d5dfc-ddbb-46b5-9d49-4b3bd4a715f2", // [x]/|x|
+      traps: [
+        {
+          title: "⌊x⌋ jumps at integers — the limit there does NOT exist",
+          body: "Approaching an integer \\(n\\): \\(\\lim_{x\\to n^-}\\lfloor x\\rfloor=n-1\\) while \\(\\lim_{x\\to n^+}\\lfloor x\\rfloor=n\\). The off-by-one is the trap — just below \\(3\\), \\(\\lfloor x\\rfloor=2\\), not \\(3\\). Between integers \\(\\lfloor x\\rfloor\\) is constant, so the limit exists only at non-integers.",
+        },
+      ],
     },
 
     {
@@ -107,6 +119,16 @@ export const ONE_SIDED_SPECIAL_NOTE: SubtopicNote = {
         { prompt: "Does \\(\\lim_{x\\to0}\\dfrac{x}{|x|}\\) exist?", answer: "No" },
       ],
       pyqExampleId: "1d8e2d3e-c275-4508-ba64-ccd9ea58be18", // (5-x)/|x-5|
+      traps: [
+        {
+          title: "x / |x| is +1 on the right, −1 on the left",
+          body: "Because \\(|x|=x\\) for \\(x>0\\) and \\(-x\\) for \\(x<0\\), \\(\\dfrac{x}{|x|}=+1\\) as \\(x\\to0^+\\) and \\(-1\\) as \\(x\\to0^-\\). The two-sided \\(\\lim_{x\\to0}\\dfrac{x}{|x|}\\) therefore **does not exist** — it is never \\(0\\) or \\(1\\).",
+        },
+        {
+          title: "A square root hides a modulus",
+          body: "\\(\\sqrt{A^2}=|A|\\), not \\(A\\). So \\(\\sqrt{1-\\cos\\theta}=\\sqrt2\\,\\bigl|\\sin\\tfrac\\theta2\\bigr|\\), which is sign-sensitive — the right and left limits of \\(\\dfrac{\\sqrt{1-\\cos\\theta}}{\\theta}\\) come out \\(\\pm\\tfrac{1}{\\sqrt2}\\).",
+        },
+      ],
     },
   ],
   related: [

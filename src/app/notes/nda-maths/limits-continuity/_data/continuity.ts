@@ -17,6 +17,10 @@ export const CONTINUITY_NOTE: SubtopicNote = {
         "Continuous at \\(a\\) means the graph has no break there: the value you approach equals the value you land on. Three things must all be equal — the left limit, the right limit, and \\(f(a)\\).",
       definition:
         "\\(f\\) is **continuous at \\(a\\)** iff \\(\\lim_{x\\to a^-}f(x)=\\lim_{x\\to a^+}f(x)=f(a)\\) (all three exist and are equal). Polynomials, \\(\\sin\\), \\(\\cos\\), \\(e^x\\) are continuous everywhere; rational functions are continuous except where the denominator vanishes. A **removable** discontinuity (a 0/0 hole) is patched by defining \\(f(a)=\\lim_{x\\to a}f(x)\\).",
+      formula: {
+        label: "Continuity test at a point",
+        latex: "\\lim_{x\\to a^-}f(x)=\\lim_{x\\to a^+}f(x)=f(a)",
+      },
       authoredExample: {
         prompt: "Is \\(f(x)=\\begin{cases}\\dfrac{x^2-1}{x-1},&x\\neq 1\\\\ 2,&x=1\\end{cases}\\) continuous at \\(x=1\\)?",
         steps: [
@@ -40,6 +44,12 @@ export const CONTINUITY_NOTE: SubtopicNote = {
         { prompt: "Where can a rational function be discontinuous?", answer: "Where the denominator is 0" },
       ],
       pyqExampleId: "e83db430-6b41-4737-861c-5241637785a2", // (x^2-9)/(x^2-2x-3) removable
+      traps: [
+        {
+          title: "Continuity needs the limit to EQUAL the value",
+          body: "A function can have a perfectly good limit at \\(a\\) and still be discontinuous — if \\(\\lim_{x\\to a}f(x)\\neq f(a)\\). All three of LHL, RHL, and \\(f(a)\\) must coincide. \"The limit exists\" alone is not continuity.",
+        },
+      ],
     },
 
     {
@@ -110,6 +120,12 @@ export const CONTINUITY_NOTE: SubtopicNote = {
         { prompt: "\\(\\lfloor x\\rfloor\\) has which discontinuity at integers?", answer: "Jump" },
       ],
       pyqExampleId: "53071075-d332-4eea-95f8-553a9261ce04", // sin(1/x^2) statements
+      traps: [
+        {
+          title: "Removable vs jump — the limit's existence is the divider",
+          body: "A **removable** discontinuity has a single limit (LHL \\(=\\) RHL) that just misses \\(f(a)\\) — it can be patched. A **jump** has LHL \\(\\neq\\) RHL (both finite), which can **never** be patched. \\(\\lfloor x\\rfloor\\) at integers is a jump, not removable.",
+        },
+      ],
     },
 
     {

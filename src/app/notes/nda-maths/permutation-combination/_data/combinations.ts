@@ -37,6 +37,12 @@ export const COMBINATIONS_NOTE: SubtopicNote = {
         { prompt: "\\(^8C_3=\\)?", answer: "\\(56\\)" },
         { prompt: "\\(k\\) compulsory members of \\(r\\) from \\(n\\)?", answer: "\\(^{n-k}C_{r-k}\\)" },
       ],
+      traps: [
+        {
+          title: "Use \\(^nC_r=\\,^nC_{n-r}\\) — and count the empty set",
+          body: "Symmetry \\(^nC_r=\\,^nC_{n-r}\\) means choosing \\(r\\) to *keep* equals choosing \\(n-r\\) to *leave out* — so compute the easier one (\\(^{50}C_{48}=\\,^{50}C_2\\)). Separately, the number of subsets of an \\(n\\)-set is \\(2^n\\), which **includes the empty set**; \\(2^n-1\\) is the count of *non-empty* subsets only.",
+        },
+      ],
       pyqExampleId: "ed8034ae-da8d-46e8-abac-8d973ef6d053", // team of 5
     },
 
@@ -68,6 +74,12 @@ export const COMBINATIONS_NOTE: SubtopicNote = {
         { prompt: "'At most \\(k\\)' selections?", answer: "\\(^nC_0+\\cdots+^nC_k\\)" },
         { prompt: "At least one typist, 5 of 6+4, none\\(=^6C_5\\): answer?", answer: "\\(252-6=246\\)" },
         { prompt: "When do you sum cases?", answer: "When the constraint forces disjoint sub-situations" },
+      ],
+      traps: [
+        {
+          title: "'At least one' = total − none (don't sum cases)",
+          body: "For 'at least one X', count the **complement**: \\(\\text{total}-(\\text{none of X})\\). Summing the cases 'exactly 1, exactly 2, …' is slower and easy to miscount. E.g. at least one typist when choosing 5 from 6 programmers + 4 typists is \\(^{10}C_5-\\,^6C_5=252-6=246\\), not a sum of four separate terms.",
+        },
       ],
       pyqExampleId: "0ec810a7-c5b1-4287-9c8e-1d2abb833b1b", // 7 relatives
     },
