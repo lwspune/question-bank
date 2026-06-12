@@ -77,6 +77,25 @@ export const TOPICS: Record<string, Topic> = {
       "Solving Logarithmic Equations and Applications",
     ],
   },
+
+  // Algebra → Statistics, Q878–958 (81 q), question pages 43–46. (Q876–877 are
+  // the tail of the preceding Probability Distribution section — excluded.)
+  statistics: {
+    id: "statistics",
+    chapterName: "Statistics",
+    qFrom: 878,
+    qTo: 958,
+    sourceFile: "NDA_Maths_Practice__Algebra__Statistics.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [43, 44, 45, 46] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-2 page 241-253.pdf"), pages: [4, 5, 6, 7, 8, 9] },
+    subtopics: [
+      "Measures of Central Tendency — Mean, Median, Mode",
+      "Dispersion — Standard Deviation, Variance, Mean Deviation",
+      "Frequency Distributions and Graphical Representation",
+      "Regression and Correlation",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
