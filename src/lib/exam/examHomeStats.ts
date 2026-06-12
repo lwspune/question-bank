@@ -31,7 +31,8 @@ export async function getExamHomeStats(
     .from("questions")
     .select("id", { count: "exact", head: true })
     .eq("exam_id", exam.id)
-    .eq("visibility", "PUBLIC");
+    .eq("visibility", "PUBLIC")
+    .eq("question_kind", "pyq"); // PYQ-first stat — exclude practice (migration 0036)
 
   return {
     examId: exam.id,

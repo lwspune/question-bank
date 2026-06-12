@@ -61,7 +61,8 @@ export default async function NotesChapterLanding({ chapter }: Props) {
     const { data } = await supabase
       .from("questions")
       .select("subtopic_id")
-      .in("subtopic_id", subtopicIds);
+      .in("subtopic_id", subtopicIds)
+      .eq("question_kind", "pyq"); // PYQ-only weightage counts (migration 0036)
     for (const row of data ?? []) {
       const id = (row as { subtopic_id: string }).subtopic_id;
       countsBySubtopic.set(id, (countsBySubtopic.get(id) ?? 0) + 1);

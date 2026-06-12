@@ -16,9 +16,22 @@ describe("parseFilters", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      kind: "pyq",
       q: "",
       page: 1,
     });
+  });
+
+  it("defaults kind to 'pyq' and parses valid kind values", () => {
+    expect(parseFilters(new URLSearchParams("")).kind).toBe("pyq");
+    expect(parseFilters(new URLSearchParams("kind=practice")).kind).toBe("practice");
+    expect(parseFilters(new URLSearchParams("kind=all")).kind).toBe("all");
+    expect(parseFilters(new URLSearchParams("kind=pyq")).kind).toBe("pyq");
+  });
+
+  it("falls back to 'pyq' for an unknown kind", () => {
+    expect(parseFilters(new URLSearchParams("kind=garbage")).kind).toBe("pyq");
+    expect(parseFilters(new URLSearchParams("kind=")).kind).toBe("pyq");
   });
 
   it("parses ?principle=<slug> into principleSlug", () => {
@@ -108,12 +121,20 @@ describe("buildSearchParams", () => {
     pyqYears: [],
     extraIds: [],
     principleSlug: null,
+    kind: "pyq",
     q: "",
     page: 1,
   };
 
   it("emits no params when filters are at defaults", () => {
     expect(buildSearchParams(empty).toString()).toBe("");
+  });
+
+  it("omits kind when 'pyq' (default) and emits it otherwise; round-trips", () => {
+    expect(buildSearchParams({ ...empty, kind: "pyq" }).has("kind")).toBe(false);
+    expect(buildSearchParams({ ...empty, kind: "practice" }).get("kind")).toBe("practice");
+    expect(buildSearchParams({ ...empty, kind: "all" }).get("kind")).toBe("all");
+    expect(parseFilters(buildSearchParams({ ...empty, kind: "practice" })).kind).toBe("practice");
   });
 
   it("serializes set values", () => {
@@ -126,6 +147,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      kind: "pyq",
       q: "lens",
       page: 2,
     });
@@ -148,6 +170,7 @@ describe("buildSearchParams", () => {
       pyqYears: [2024, 2022],
       extraIds: [],
       principleSlug: null,
+      kind: "pyq",
       q: "wave",
       page: 3,
     };
@@ -170,6 +193,7 @@ describe("buildSearchParams", () => {
         "33333333-3333-3333-3333-333333333333",
       ],
       principleSlug: null,
+      kind: "pyq",
       q: "",
       page: 1,
     };
@@ -188,6 +212,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: "vieta-symmetric-roots",
+      kind: "pyq",
       q: "",
       page: 1,
     };
@@ -206,6 +231,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      kind: "pyq",
       q: "",
       page: 1,
     });
@@ -222,6 +248,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      kind: "pyq",
       q: "",
       page: 1,
     });
@@ -238,6 +265,7 @@ describe("buildSearchParams", () => {
       pyqYears: [2024, 2023],
       extraIds: [],
       principleSlug: null,
+      kind: "pyq",
       q: "",
       page: 1,
     });

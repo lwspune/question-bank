@@ -140,6 +140,7 @@ export default async function NotesSubtopicPage({
           .from("questions")
           .select("id", { count: "exact", head: true })
           .eq("subtopic_id", subtopicId)
+          .eq("question_kind", "pyq") // drill count is PYQ-only (migration 0036)
       : Promise.resolve({ count: 0 as number | null }),
   ]);
   const drillCount = countRes.count ?? 0;

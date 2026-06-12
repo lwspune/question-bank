@@ -71,7 +71,8 @@ export default async function NotesSubjectLanding({
     const { data } = await supabase
       .from("questions")
       .select("chapter_id")
-      .in("chapter_id", chapterIds);
+      .in("chapter_id", chapterIds)
+      .eq("question_kind", "pyq"); // PYQ-only per-chapter counts (migration 0036)
     for (const row of data ?? []) {
       const id = (row as { chapter_id: string }).chapter_id;
       countsByChapter.set(id, (countsByChapter.get(id) ?? 0) + 1);

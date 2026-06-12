@@ -21,6 +21,7 @@ const EMPTY_FILTERS: Filters = {
   pyqYears: [],
   extraIds: [],
   principleSlug: null,
+  kind: "pyq",
   q: "",
   page: 1,
 };

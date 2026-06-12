@@ -105,6 +105,7 @@ export default function FilterBar({
     pyqYears: [],
     extraIds: [],
     principleSlug: null,
+    kind: "pyq",
     q: "",
     page: 1,
   };
@@ -116,12 +117,43 @@ export default function FilterBar({
     filters.subtopicIds.length > 0 ||
     filters.difficulties.length > 0 ||
     filters.pyqYears.length > 0 ||
+    filters.kind !== "pyq" ||
     !!filters.q;
 
   // Sections keyed for ordered rendering. Mobile sheet leads with difficulty
   // and PYQ year (the multi-pick filters teachers reach for most), pushing
   // the long chapter/subtopic accordions below the fold.
   const sections: Record<SectionKey, JSX.Element> = {
+    kind: (
+      <div className="space-y-1.5">
+        <Label>Question type</Label>
+        <div
+          role="group"
+          aria-label="Question type"
+          className="inline-flex w-full rounded-md border border-input bg-background p-0.5"
+        >
+          {KINDS.map((k) => {
+            const on = filters.kind === k.value;
+            return (
+              <button
+                key={k.value}
+                type="button"
+                onClick={() => update({ kind: k.value })}
+                className={cn(
+                  "flex-1 rounded-sm px-3 py-1.5 text-xs font-medium transition-colors",
+                  on
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                aria-pressed={on}
+              >
+                {k.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    ),
     exam: (
       <div className="space-y-1.5">
         <Label htmlFor="exam">Exam</Label>
@@ -363,6 +395,7 @@ export default function FilterBar({
 }
 
 type SectionKey =
+  | "kind"
   | "exam"
   | "subject"
   | "chapters"
@@ -371,7 +404,16 @@ type SectionKey =
   | "difficulty"
   | "search";
 
+// Question-type corpus toggle. PYQ-first by default; Practice is the opt-in
+// supplementary bank (migration 0036).
+const KINDS: { value: Filters["kind"]; label: string }[] = [
+  { value: "pyq", label: "PYQ" },
+  { value: "practice", label: "Practice" },
+  { value: "all", label: "All" },
+];
+
 const LIVE_ORDER: SectionKey[] = [
+  "kind",
   "exam",
   "subject",
   "chapters",
@@ -382,6 +424,7 @@ const LIVE_ORDER: SectionKey[] = [
 ];
 
 const STAGED_ORDER: SectionKey[] = [
+  "kind",
   "exam",
   "subject",
   "difficulty",

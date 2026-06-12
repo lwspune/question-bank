@@ -64,6 +64,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       filters.difficulties.length > 0 ? filters.difficulties : null,
     p_pyq_years: filters.pyqYears.length > 0 ? filters.pyqYears : null,
     p_q: filters.q || null,
+    p_kind: filters.kind,
   };
 
   const [
@@ -308,6 +309,7 @@ function countActiveFilters(f: Filters): number {
   if (f.difficulties.length > 0) n++;
   if (f.pyqYears.length > 0) n++;
   if (f.principleSlug) n++;
+  if (f.kind !== "pyq") n++;
   if (f.q) n++;
   return n;
 }

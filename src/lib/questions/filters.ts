@@ -1,5 +1,9 @@
 export type Difficulty = "EASY" | "MODERATE" | "HARD";
 
+/** Which question corpus to browse. Default 'pyq' keeps the PYQ-first product
+ *  promise; 'practice' is the opt-in supplementary bank; 'all' is the union. */
+export type QuestionKind = "pyq" | "practice" | "all";
+
 export type Filters = {
   examId: string | null;
   subjectId: string | null;
@@ -20,11 +24,14 @@ export type Filters = {
    *  `question_principle_tags` (migration 0023). AND-composes with all other
    *  filters. Single value — only one principle can be active at a time. */
   principleSlug: string | null;
+  /** PYQ (default) / Practice / All — the question_kind axis (migration 0036). */
+  kind: QuestionKind;
   q: string;
   page: number;
 };
 
 const ALL_DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
+const KINDS: QuestionKind[] = ["pyq", "practice", "all"];
 const MIN_YEAR = 1900;
 const MAX_YEAR = 2100;
 // UUID v1-v5 shape — relaxed enough to also accept v7/v8 variants.
@@ -42,6 +49,7 @@ export const EMPTY_FILTERS: Filters = {
   pyqYears: [],
   extraIds: [],
   principleSlug: null,
+  kind: "pyq",
   q: "",
   page: 1,
 };
@@ -65,6 +73,10 @@ export function parseFilters(params: URLSearchParams): Filters {
   const rawPrinciple = params.get("principle");
   const principleSlug =
     rawPrinciple && PRINCIPLE_SLUG_RE.test(rawPrinciple) ? rawPrinciple : null;
+  const rawKind = params.get("kind");
+  const kind: QuestionKind = KINDS.includes(rawKind as QuestionKind)
+    ? (rawKind as QuestionKind)
+    : "pyq";
   const q = params.get("q") ?? "";
   const pageRaw = parseInt(params.get("page") ?? "1", 10);
   const page = Number.isNaN(pageRaw) || pageRaw < 1 ? 1 : pageRaw;
@@ -77,6 +89,7 @@ export function parseFilters(params: URLSearchParams): Filters {
     pyqYears,
     extraIds,
     principleSlug,
+    kind,
     q,
     page,
   };
@@ -97,6 +110,7 @@ export function buildSearchParams(filters: Filters): URLSearchParams {
   if (filters.extraIds.length > 0)
     sp.set("extras", filters.extraIds.join(","));
   if (filters.principleSlug) sp.set("principle", filters.principleSlug);
+  if (filters.kind !== "pyq") sp.set("kind", filters.kind);
   if (filters.q) sp.set("q", filters.q);
   if (filters.page > 1) sp.set("page", String(filters.page));
   return sp;
