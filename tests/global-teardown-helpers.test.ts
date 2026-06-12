@@ -4,6 +4,7 @@ import {
   isTestTaxonomyName,
   hasRunIdToken,
   isTestAuthEmail,
+  sweepUntilClean,
 } from "./global-teardown-helpers";
 
 describe("global-teardown helpers", () => {
@@ -107,6 +108,61 @@ describe("global-teardown helpers", () => {
       expect(hasRunIdToken("decaffeinated")).toBe(false); // 8 hex buried mid-word
       expect(hasRunIdToken("Affiliated College")).toBe(false);
       expect(hasRunIdToken("abc123")).toBe(false); // only 6 hex
+    });
+  });
+
+  describe("sweepUntilClean (delete-visibility race resilience)", () => {
+    const noSleep = async () => {};
+
+    it("returns [] and never sweeps when the first check is already clean", async () => {
+      let sweeps = 0;
+      const result = await sweepUntilClean(
+        async () => [],
+        async () => {
+          sweeps++;
+        },
+        { attempts: 3, delayMs: 1, sleep: noSleep }
+      );
+      expect(result).toEqual([]);
+      expect(sweeps).toBe(0); // no re-sweep when clean
+    });
+
+    it("re-sweeps and clears when the leak is just an un-committed-yet delete (race)", async () => {
+      // Survivor visible on the first check, gone after one more sweep.
+      let checks = 0;
+      let sweeps = 0;
+      const result = await sweepUntilClean(
+        async () => (checks++ === 0 ? ["orgs: Quiz Org df51f58f"] : []),
+        async () => {
+          sweeps++;
+        },
+        { attempts: 3, delayMs: 1, sleep: noSleep }
+      );
+      expect(result).toEqual([]); // cleared on retry → no throw upstream
+      expect(sweeps).toBe(1); // one extra sweep was enough
+    });
+
+    it("returns the surviving problems after exhausting attempts on a REAL persistent leak", async () => {
+      let sweeps = 0;
+      const result = await sweepUntilClean(
+        async () => ["orgs: Real Leak"],
+        async () => {
+          sweeps++;
+        },
+        { attempts: 3, delayMs: 1, sleep: noSleep }
+      );
+      expect(result).toEqual(["orgs: Real Leak"]); // persists → upstream throws
+      expect(sweeps).toBe(3); // tried the full budget before giving up
+    });
+
+    it("sleeps between attempts via the injected sleep (no real delay in tests)", async () => {
+      const delays: number[] = [];
+      await sweepUntilClean(
+        async () => ["x"],
+        async () => {},
+        { attempts: 2, delayMs: 750, sleep: async (ms) => void delays.push(ms) }
+      );
+      expect(delays).toEqual([750, 750]); // one sleep before each of the 2 retries
     });
   });
 });
