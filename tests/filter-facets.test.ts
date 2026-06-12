@@ -83,12 +83,15 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
         .single();
       expect(chapter).toBeTruthy();
 
+      // The facet RPCs default to p_kind='pyq', so the ground-truth direct count
+      // must also filter to PYQ (the chapter now also holds practice questions).
       const { count } = await client
         .from("questions")
         .select("id", { count: "exact", head: true })
         .eq("exam_id", ndaExamId)
         .eq("subject_id", mathsSubjectId)
-        .eq("chapter_id", chapter!.id);
+        .eq("chapter_id", chapter!.id)
+        .eq("question_kind", "pyq");
 
       expect(facetMap.get(chapter!.id)).toBe(count);
     });
@@ -205,11 +208,14 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
         .single();
       expect(subtopic).toBeTruthy();
 
+      // Ground truth must match the RPC's p_kind='pyq' default (the subtopic now
+      // also holds practice questions).
       const { count } = await client
         .from("questions")
         .select("id", { count: "exact", head: true })
         .eq("chapter_id", chapter!.id)
-        .eq("subtopic_id", subtopic!.id);
+        .eq("subtopic_id", subtopic!.id)
+        .eq("question_kind", "pyq");
 
       expect(facetMap.get(subtopic!.id)).toBe(count);
     });
