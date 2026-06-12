@@ -1,0 +1,1788 @@
+[
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for What Base 2 Means — Place Values Are Powers of 2?",
+    "correct": "\\(\\begin{array}{c|ccccccccc} 2^n & 2^9 & 2^8 & 2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 \\\\ \\hline \\text{value} & 512 & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\end{array}\\)",
+    "options": {
+      "A": "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)",
+      "B": "\\(1 + 1 = (10)_2\\)",
+      "C": "\\(\\begin{array}{c|ccccccccc} 2^n & 2^9 & 2^8 & 2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 \\\\ \\hline \\text{value} & 512 & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\end{array}\\)",
+      "D": "\\(A = B\\,Q + R\\)"
+    },
+    "answer": "C",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "25eb976a491c14fa89382d82ff395118f42e44d5",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "What is the place value of the leftmost bit of \\((100000)_2\\)?",
+    "correct": "\\(2^5 = 32\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(15\\)",
+      "No — base 2 allows only the digits 0 and 1, and it contains a 2.",
+      "Three 1s; the least significant bit is the rightmost (value \\(2^0 = 1\\))."
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "9b6924cd0e1abb4005afa99fa6a71ee4a0d52e2d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "How many bits are 1 in \\((1101)_2\\), and which is the least significant bit?",
+    "correct": "Three 1s; the least significant bit is the rightmost (value \\(2^0 = 1\\)).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "No — base 2 allows only the digits 0 and 1, and it contains a 2.",
+      "\\(2^5 = 32\\)",
+      "\\(15\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "2890113554e271cc8a274830fc1b4ca7ec839ecc",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Without converting, what is \\((1111)_2\\) using the all-ones shortcut?",
+    "correct": "\\(15\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-15\\)",
+      "\\(30\\)",
+      "\\(16\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "8e9f9962591c3d0d5777fbd054432a4cfc9214cd",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "Is \\((1021)_2\\) a valid binary number?",
+    "correct": "No — base 2 allows only the digits 0 and 1, and it contains a 2.",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(2^5 = 32\\)",
+      "Three 1s; the least significant bit is the rightmost (value \\(2^0 = 1\\)).",
+      "\\(15\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "d14b19b74a424463a429212fd2fc8ebd3de9b6cc",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Place values grow leftward, from 2⁰ on the RIGHT",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "92804e44f54066ce86321b01031b12725b53cc6a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-place-value-foundation",
+    "atomId": "bin-place-value-foundation:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — No subscript means DECIMAL, not binary",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Place values grow leftward, from 2⁰ on the RIGHT: The rightmost bit is the \\(2^0 = 1\\) place, not the \\(2^1\\) place. Counting the powers from the left, or starting at \\(2^1\\), shifts every weight and is the most common conversion slip.",
+      "No subscript means DECIMAL, not binary: A string like \\(1011\\) written with no base subscript is the decimal number one thousand eleven — only \\((1011)_2\\) is binary (which equals \\(11_{10}\\)). When a question gives a plain number to convert TO binary, read it as base 10; don't treat its digits as bits."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "8c952b035333cab5aa3f983866e5b3ab61fcf7be",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Converting Binary to Decimal?",
+    "correct": "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)",
+    "options": {
+      "A": "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)",
+      "B": "\\(1 + 1 = (10)_2\\)",
+      "C": "\\(A = B\\,Q + R\\)",
+      "D": "\\(x^3 + y^3 = (x+y)(x^2 - xy + y^2);\\)"
+    },
+    "answer": "A",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "149b64c73ddb885b6981f90809a39f0a36def200",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Convert \\((1010)_2\\) to decimal.",
+    "correct": "\\(10\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-10\\)",
+      "\\(20\\)",
+      "\\(11\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "6490421f38fe4854e05672d0f29cf3dfe8b88d0f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "Convert \\((1101)_2\\) to decimal.",
+    "correct": "\\(13\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-13\\)",
+      "\\(26\\)",
+      "\\(14\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d0ae8a7ceb6df97617da93248003678c53644cdb",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Convert \\((111000)_2\\) to decimal.",
+    "correct": "\\(56\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-56\\)",
+      "\\(112\\)",
+      "\\(57\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "838a86fa967f6888f793bb8863746b9f9daeb4f4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "Convert \\((100001)_2\\) to decimal.",
+    "correct": "\\(33\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-33\\)",
+      "\\(66\\)",
+      "\\(34\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "5217488337db6966f1f90950f12cb5dd22e770b7",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Convert \\((100110)_2\\) to decimal.",
+    "correct": "\\((100110)_2 = 38_{10}\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(10\\)",
+      "\\(56\\)",
+      "\\(13\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "c7e02419147dd034b39019870a9118f23ba5d184",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-binary-to-decimal",
+    "atomId": "bin-binary-to-decimal:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — A 0 bit contributes nothing — don't add its place value",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "A 0 bit contributes nothing — don't add its place value: Only positions holding a 1 are summed. The fastest error is to add every place value you wrote down. Cross out the 0-bit places before adding so only the active weights remain."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "aa04e5eab0a591f98779a7a09323e343695afa07",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Converting Decimal to Binary?",
+    "correct": "\\(N \\xrightarrow{\\div 2} (q_1, r_1) \\xrightarrow{\\div 2} (q_2, r_2) \\to \\cdots \\to 0;\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(x^3 + y^3 = (x+y)(x^2 - xy + y^2);\\)",
+      "\\(\\begin{array}{c|ccccccccc} 2^n & 2^9 & 2^8 & 2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 \\\\ \\hline \\text{value} & 512 & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\end{array}\\)",
+      "\\(2^{k-1} \\le N \\le 2^k - 1 \\ \\Longrightarrow\\ N \\text{ uses } k \\text{ bits}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "bc41575eacb8250a4c890051ca1c6bb182229fda",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Converting Decimal to Binary?",
+    "correct": "\\(N = (\\,r_k \\ldots r_2\\, r_1)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1 + 1 = (10)_2\\)",
+      "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)",
+      "\\(A = B\\,Q + R\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "0d8efd2919043bade2228937fe766d16fe4e8dc8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Convert \\(8_{10}\\) to binary.",
+    "correct": "\\((1000)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((111111)_2\\)",
+      "\\((1111)_2\\)",
+      "\\((10100)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "622a79b742b953b13c768aabf7f131af667c7e88",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "Convert \\(15_{10}\\) to binary.",
+    "correct": "\\((1111)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1000)_2\\)",
+      "\\((111111)_2\\)",
+      "\\((10100)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "b88111d61619855569f0e7268a4de3bcb5ac0ff6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Convert \\(20_{10}\\) to binary.",
+    "correct": "\\((10100)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1000)_2\\)",
+      "\\((1111)_2\\)",
+      "\\((111111)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "82a27414e38e8eab3f86613e3907226e9bd8004d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "Convert \\(63_{10}\\) to binary.",
+    "correct": "\\((111111)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1111)_2\\)",
+      "\\((1000)_2\\)",
+      "\\((10100)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "c0a8b8dfb294d57650877185705f4bffffb4f9b9",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Convert \\(26_{10}\\) to binary.",
+    "correct": "\\(26_{10} = (11010)_2\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((10100)_2\\)",
+      "\\((1000)_2\\)",
+      "\\((1111)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "1c7f36d65edb377f1f50974d6b35e4a6bd4d9e45",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Read the division remainders from the BOTTOM up",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "9b07adeb4aedd6e1c791a4fa95915540625dae70",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-to-decimal-conversion",
+    "conceptSlug": "bin-decimal-to-binary",
+    "atomId": "bin-decimal-to-binary:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Keep a 0 in every skipped power — don't drop empty places",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Read the division remainders from the BOTTOM up: Repeated division produces the least significant bit first. Reading the remainders top-to-bottom reverses the number. The first remainder you write is the rightmost bit of the answer.",
+      "Keep a 0 in every skipped power — don't drop empty places: With the greedy method, every power of 2 you pass over still needs a 0 in its column. Writing only the powers you used (e.g. \\(20 = 16 + 4\\) as \\(11\\) instead of \\((10100)_2\\)) silently deletes the empty \\(8\\), \\(2\\) and \\(1\\) places and gives the wrong number."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "d6dd7a7f6793484eaf0c0469e1a850e519ef7af2",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Binary Addition, Subtraction & Unknown-Digit Puzzles?",
+    "correct": "\\(1 + 1 = (10)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(N \\xrightarrow{\\div 2} (q_1, r_1) \\xrightarrow{\\div 2} (q_2, r_2) \\to \\cdots \\to 0;\\)",
+      "\\(x^3 + y^3 = (x+y)(x^2 - xy + y^2);\\)",
+      "\\(1 + 3 + 5 + \\cdots + (2n - 1) = n^2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "44dcc65637a9f554e56713345f6c30da86b76ccf",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Binary Addition, Subtraction & Unknown-Digit Puzzles?",
+    "correct": "\\(1 + 1 + 1 = (11)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(2^{k-1} \\le N \\le 2^k - 1 \\ \\Longrightarrow\\ N \\text{ uses } k \\text{ bits}\\)",
+      "\\(x^3 + y^3 = (x+y)(x^2 - xy + y^2);\\)",
+      "\\(\\begin{array}{c|ccccccccc} 2^n & 2^9 & 2^8 & 2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 \\\\ \\hline \\text{value} & 512 & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\end{array}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "37626cc24627152ebd31b0b9b8fff599bc782dba",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Find \\((101)_2 + (11)_2\\) in binary.",
+    "correct": "\\((1000)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1001)_2\\)",
+      "\\(x = 1\\)",
+      "\\((10000)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "9e65b48827e08769c8f3cc005af10ca3aea376ac",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "Find \\((1110)_2 - (101)_2\\) in binary.",
+    "correct": "\\((1001)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1000)_2\\)",
+      "\\(x = 1\\)",
+      "\\((10000)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "2be9ba8552b81314dd47300efd6dfddf86e49c48",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Find \\((1111)_2 + (1)_2\\) in binary.",
+    "correct": "\\((10000)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1001)_2\\)",
+      "\\((1000)_2\\)",
+      "\\(x = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "cc2b2f648f80bd49f8dd8ec45f7eaac083f3811a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "If \\((1x0)_2 = 6\\), what is the bit \\(x\\)?",
+    "correct": "\\(x = 1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1001)_2\\)",
+      "\\((10000)_2\\)",
+      "\\((1000)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "331677bcc42dfbae0a0d0c4af0c614ef222eb836",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "In \\((11p1)_2 + (101)_2 = (10100)_2\\), where \\(p\\) is a binary digit, find \\(p\\).",
+    "correct": "\\(p = 1\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((1001)_2\\)",
+      "\\((10000)_2\\)",
+      "\\(x = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "abf984f7c50406f097be6ebb095b8fb06771ce4f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Every unknown is a BIT — only 0 or 1 is allowed",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "aac24081cfffeac5901aefad89ef36411f93b6da",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-addition-subtraction",
+    "atomId": "bin-addition-subtraction:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Convert the FINAL answer back to binary",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Every unknown is a BIT — only 0 or 1 is allowed: When you solve for \\(p, q, r, x, y\\), the value must be 0 or 1. A solution like \\(p = 2\\) is impossible in base 2 — it means you mis-set the place values. Check each unknown lands in \\(\\{0, 1\\}\\) before choosing an option.",
+      "Convert the FINAL answer back to binary: If the question gives the numbers in binary, the options are usually binary too. Doing the addition in decimal is fine — but don't forget the last step of converting your decimal total back to base 2."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "eb50511f6bb770238f5c650439b2af098a14d341",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Binary Division — Quotient and Remainder?",
+    "correct": "\\(A = B\\,Q + R\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1 + 3 + 5 + \\cdots + (2n - 1) = n^2\\)",
+      "\\(2^{k-1} \\le N \\le 2^k - 1 \\ \\Longrightarrow\\ N \\text{ uses } k \\text{ bits}\\)",
+      "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "1cf9c24401b7fa9ba4d08542e65e3c0716058a3e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Binary Division — Quotient and Remainder?",
+    "correct": "\\(0 \\le R < B\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1 + 1 = (10)_2\\)",
+      "\\(\\begin{array}{c|ccccccccc} 2^n & 2^9 & 2^8 & 2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 \\\\ \\hline \\text{value} & 512 & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\end{array}\\)",
+      "\\(1 + 3 + 5 + \\cdots + (2n - 1) = n^2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "60b404f8c6fe14fec1ddf4fe607bc4ad4c2f368e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Find \\((1010)_2 \\div (10)_2\\).",
+    "correct": "\\((101)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "Quotient \\((11)_2\\), remainder \\((10)_2\\)",
+      "Yes — \\(15 \\div 5 = 3 = (11)_2\\), remainder 0.",
+      "\\((110)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "fb8c69387787d25390e4e954827411cf74592e82",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "Quotient and remainder of \\((1011)_2 \\div (11)_2\\)?",
+    "correct": "Quotient \\((11)_2\\), remainder \\((10)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((101)_2\\)",
+      "Yes — \\(15 \\div 5 = 3 = (11)_2\\), remainder 0.",
+      "\\((110)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "769b72b6992444e57defba87ae04209b8df9d1dc",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Find \\((110000)_2 \\div (1000)_2\\).",
+    "correct": "\\((110)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "Yes — \\(15 \\div 5 = 3 = (11)_2\\), remainder 0.",
+      "Quotient \\((11)_2\\), remainder \\((10)_2\\)",
+      "\\((101)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "e1deecff22bd713cf1ef719a44333ab482b31371",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "Is \\((1111)_2 \\div (101)_2\\) exact?",
+    "correct": "Yes — \\(15 \\div 5 = 3 = (11)_2\\), remainder 0.",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((110)_2\\)",
+      "Quotient \\((11)_2\\), remainder \\((10)_2\\)",
+      "\\((101)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "cdac0985a62eee41ab4ea4cc8fc4964089ed6786",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "What is \\((100100)_2 \\div (110)_2\\)?",
+    "correct": "\\((110)_2\\) (exact, remainder 0).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\((101)_2\\)",
+      "Yes — \\(15 \\div 5 = 3 = (11)_2\\), remainder 0.",
+      "\\((110)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "54be97433fabab716c48128585420910e72716d6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-division",
+    "atomId": "bin-division:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Quotient and remainder are usually asked in BINARY",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Quotient and remainder are usually asked in BINARY: After dividing in decimal you have two numbers to convert back — both the quotient and the remainder. Reading the remainder option in decimal (e.g. picking 4 instead of \\((100)_2\\)) is the standard slip."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "6ba95b87bca59a2d206778d566d2824b24e7de77",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Algebraic Identities with Binary-Given Values?",
+    "correct": "\\(x^3 + y^3 = (x+y)(x^2 - xy + y^2);\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\begin{array}{c|ccccccccc} 2^n & 2^9 & 2^8 & 2^7 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 \\\\ \\hline \\text{value} & 512 & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\end{array}\\)",
+      "\\(1 + 3 + 5 + \\cdots + (2n - 1) = n^2\\)",
+      "\\(A = B\\,Q + R\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "a1b969906092b2a6d58e7f0f2fb2448837a3c174",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Algebraic Identities with Binary-Given Values?",
+    "correct": "\\(a = b + c \\ \\Rightarrow\\ a^3 - b^3 - c^3 - 3abc = 0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1 + 1 = (10)_2\\)",
+      "\\(2^{k-1} \\le N \\le 2^k - 1 \\ \\Longrightarrow\\ N \\text{ uses } k \\text{ bits}\\)",
+      "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "eb51e52c588825a1d34ff8b7414cba2aa73337b7",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "If \\(x + y = 5\\) and \\(xy = 6\\), find \\((x - y)^2\\).",
+    "correct": "\\(1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(7\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d3239ec3c7adcc62efafcaf6638eb96d976f9f64",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "If \\(a = b + c\\), what is \\(a^3 - b^3 - c^3 - 3abc\\)?",
+    "correct": "\\(0\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1\\)",
+      "\\((x+y)(x^2 - xy + y^2)\\)",
+      "\\(7\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "834b2eabb06cf774b3e658bade2507a091a47474",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Factor \\(x^3 + y^3\\).",
+    "correct": "\\((x+y)(x^2 - xy + y^2)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(7\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "245c09f259c0d04a224362acb23b21dd932a58e3",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "If \\(x^3 + y^3 = 35\\) and \\(x + y = 5\\), find \\(x^2 - xy + y^2\\).",
+    "correct": "\\(7\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-7\\)",
+      "\\(14\\)",
+      "\\(8\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "933cf0d143caa4803541bae1a1bbcb4773513489",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "If \\(x + y = (1010)_2\\) and \\(xy = (10101)_2\\), find \\(x^2 + y^2\\) in decimal.",
+    "correct": "\\(x^2 + y^2 = 58\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(7\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "34b58583265fc960ca245a48de1ae3c7cc441cc8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Spot the identity before cubing anything",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "6945558e518c5c78dbb9e1a0af55a5535f135e1d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-arithmetic",
+    "conceptSlug": "bin-algebraic-identities",
+    "atomId": "bin-algebraic-identities:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — (x − y)² + xy equals x² − xy + y²",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the identity before cubing anything: Cubing two-digit numbers by hand is slow and error-prone. The questions are engineered so that, after converting, either \\(a = b + c\\) or a sum/difference-of-cubes factoring applies. Look for that structure first — the brute-force route is the trap.",
+      "(x − y)² + xy equals x² − xy + y²: Expanding, \\((x-y)^2 + xy = x^2 - 2xy + y^2 + xy = x^2 - xy + y^2\\). So a question asking for \\((x-y)^2 + xy\\) is secretly asking for the cube-sum cofactor \\(x^2 - xy + y^2\\) — recognise them as the same target."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "2e3eadf8ac85d360084afff4faee3f92474aab97",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Representing a Number in Binary & Counting Its Bits?",
+    "correct": "\\(2^{k-1} \\le N \\le 2^k - 1 \\ \\Longrightarrow\\ N \\text{ uses } k \\text{ bits}\\)",
+    "options": {
+      "A": "\\(N \\xrightarrow{\\div 2} (q_1, r_1) \\xrightarrow{\\div 2} (q_2, r_2) \\to \\cdots \\to 0;\\)",
+      "B": "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)",
+      "C": "\\(2^{k-1} \\le N \\le 2^k - 1 \\ \\Longrightarrow\\ N \\text{ uses } k \\text{ bits}\\)",
+      "D": "\\(1 + 1 = (10)_2\\)"
+    },
+    "answer": "C",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "ea9f0948b280f1323bc5fcad3dcfa4530bb23551",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "How many bits to write \\(31_{10}\\)?",
+    "correct": "\\(5\\) bits",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(15\\)",
+      "\\(6\\) bits",
+      "\\((11001000)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "80e58640c51bfd875fbb690b74392d72b7facbcf",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "How many bits to write \\(32_{10}\\)?",
+    "correct": "\\(6\\) bits",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(5\\) bits",
+      "\\(15\\)",
+      "\\((11001000)_2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "cce37fc9519ae47874efdae2839f9a6f02dbb0c8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "What is the largest number representable in 4 bits?",
+    "correct": "\\(15\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-15\\)",
+      "\\(30\\)",
+      "\\(16\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "2693db4f3f8950ddfe20dee5a506a512b6befb9d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "Convert \\(200_{10}\\) to binary.",
+    "correct": "\\((11001000)_2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(15\\)",
+      "\\(5\\) bits",
+      "\\(6\\) bits"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "9b5851dfdc55b9ee8eabcffcc17679511199801d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "How many bits does \\(250_{10}\\) need in binary?",
+    "correct": "\\(8\\) bits.",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(15\\)",
+      "\\((11001000)_2\\)",
+      "\\(6\\) bits"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "5a49874958f438ace5847fbe6ca5e1569e0cec59",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-representation-bit-count",
+    "atomId": "bin-representation-bit-count:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Watch the digit COUNT in the options",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Watch the digit COUNT in the options: Representation questions often offer distractors with the wrong number of bits (one too few or too many). Bracket \\(N\\) between consecutive powers of 2 first to know how many bits the correct answer must have, then convert."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "17723c427f8659c4ad72d6f85aee53abea93b580",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Number-Theory One-Liners — Remainder Cycles & Sum of Odd Numbers?",
+    "correct": "\\(1 + 3 + 5 + \\cdots + (2n - 1) = n^2\\)",
+    "options": {
+      "A": "\\((b_n\\ldots b_1 b_0)_2 = \\sum_{i=0}^{n} b_i\\, 2^i\\)",
+      "B": "\\(1 + 1 = (10)_2\\)",
+      "C": "\\(1 + 3 + 5 + \\cdots + (2n - 1) = n^2\\)",
+      "D": "\\(N \\xrightarrow{\\div 2} (q_1, r_1) \\xrightarrow{\\div 2} (q_2, r_2) \\to \\cdots \\to 0;\\)"
+    },
+    "answer": "C",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "d4289f407ea4060fe51b53145d343da73c3c07c0",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Sum of the first 10 odd numbers?",
+    "correct": "\\(100\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-100\\)",
+      "\\(200\\)",
+      "\\(101\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "93929e7c2cd67c8a337468333535e0fafff85e25",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(1 + 3 + 5 + \\cdots = 169\\): how many terms?",
+    "correct": "\\(13\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-13\\)",
+      "\\(26\\)",
+      "\\(14\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "ef46d1c41b77985e62c39137ba13bbff30759c3b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Remainder of \\(2^{10}\\) divided by 3?",
+    "correct": "\\(1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(13\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "12de56eee63ee4315025261946ea0f2789f642b4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "Remainder of \\(7^{4} \\) divided by 5?",
+    "correct": "\\(1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(100\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "b2f9241b097cd78104943527d388f0544bb5ca49",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "How many terms of \\(1 + 3 + 5 + 7 + \\cdots\\) are needed for the sum to equal \\(441\\)?",
+    "correct": "\\(21\\) terms.",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1\\)",
+      "\\(100\\)",
+      "\\(13\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "4fba976044c763328c27b88d34be2a3ae11d18b9",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Reduce the exponent by the CYCLE length, not the modulus",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "34314dd818bfcc85a225ffc6833247084a3fce8c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "binary-numbers",
+    "subtopicSlug": "bin-representation-number-theory",
+    "conceptSlug": "bin-number-theory-facts",
+    "atomId": "bin-number-theory-facts:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Sum of odd numbers is a PERFECT SQUARE",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the exponent by the CYCLE length, not the modulus: For \\(5^{99} \\bmod 13\\), the powers cycle with period 4 (not 13). Reduce \\(99\\) modulo 4, not modulo 13. Find the actual cycle length first by listing remainders until one repeats.",
+      "Sum of odd numbers is a PERFECT SQUARE: If a sum of \\(1 + 3 + 5 + \\cdots\\) is given, the term count is \\(\\sqrt{\\text{sum}}\\). Recognising a value like \\(12345678987654321\\) as \\(111111111^2\\) is the intended shortcut — don't try to add the series term by term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "40ec69307d61c744079b0dfa4aed292040b43eaa",
+    "timeEstimateSec": 45
+  }
+]
