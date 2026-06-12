@@ -26,19 +26,15 @@ The 2026-06-11 guardrail (`assertNoLeakedTestData` in `tests/global-teardown.ts`
 
 **How to apply:** make `assertNoLeakedTestData` resilient before throwing — e.g. on a non-empty survivor set, re-run the org/subject/auth sweep once + re-query after a short delay (or a 2–3× poll loop), and only throw if survivors persist. Keep the throw (real leaks must still fail) — just don't trip on the eventual-consistency window. Pure test-infra change; the gate covers it.
 
-### Quiz Wave 5 — the next 4 NDA Maths chapters by exam weight
+### ~~Quiz Waves 5-7 — finish NDA Maths~~ — **DONE 2026-06-12**
 
-Waves 3 + 4 completed the top-18 NDA Maths chapters by weight (33 quizzes / 476 q). The next tier by PUBLIC q-count: **Binomial Theorem 54 · Properties of Triangle 49 · Indefinite Integration 40 · Conics 38**. After that: Inverse Trig 34 · Trig Equations 33 · Binomial Distribution 30 · Circles 27 · Logarithms 27 · Applications of Integration 25 · Height & Distance 24 · Binary Numbers 13 (~8 more, tailing off).
-
-**Why:** continues the daily-quiz supply + public-funnel pool. The cadence is proven and reliable (24/24 predicted keys matched across Waves 3-4), so each wave is low-risk.
-
-**How to apply:** same cadence as Waves 3-4 — `npm run quiz:harvest nda-maths/<ch> …` → `quiz:sync` → `quiz:coverage` per chapter → 4 parallel agents (computation distractors + triaged formula/trap notes-enrichment + 3 verify files each) → main agent re-harvests/verifies/assembles/pushes. **Apply the sharpened triage** ([[quiz-formula-coverage-gap]]): when a formula/trap theme parks at 8–11, re-examine the skipped concepts for genuine named identities before accepting the park (the diff-eq lesson). User can say "proceed wave 5 without my intervention."
+Waves 5 (binomial-theorem/properties-of-triangle/indefinite-integration/conics), 6 (inverse-trigonometry/trigonometric-equations/circles/logarithms), 7 (applications-of-integration/height-distance/binary-numbers) + the binomial-distribution single-add **completed all 30 noted NDA Maths chapters** (~120 quizzes built). Every predicted verify key matched first run. The bulk of the work was computation top-ups (the "MCQ-clean" count conflates formula pieces with computation → most chapters had near-zero practiceSet) + trap-callout top-ups; honest parks where content was genuinely thin (binary formula 8, conics computation 3). See QUIZ_FACTORY.md + [[daily-quiz-pilot]] + [[quiz-formula-coverage-gap]].
 
 ### Harvest the new NDA Chemistry (11) + Physics (9) + Biology (8) notes chapters for quizzes (carry-forward)
 
 The 2026-06-10/11 Chemistry + Physics notes and this session's 8 new NDA Biology chapters are all authored quiz-ready (Step 1b) but **unharvested** — a large fresh frontier beyond NDA Maths. Chemistry/Biology are recall-heavy (rich `fact`/`trap` themes); Physics is formula-heavy.
 
-**Why:** broadens the daily-quiz beyond Maths into the other NDA subjects; these chapters were built quiz-ready specifically so the harvest needs no rework. Carry-forward of the "Wave 3+ harvest frontier" entry below (now updated: 18 Maths chapters done).
+**Why:** **NDA Maths is now 30/30 complete (2026-06-12), so this is the PRIMARY next-session frontier.** Broadens the daily-quiz beyond Maths into the other NDA subjects; these chapters were built quiz-ready specifically so the harvest needs no rework. (Note the recall-subject difference: Chemistry/Biology lean `fact`+`trap` themes, so expect computation to be thin/parked and `fact` from reference tables to be the bulk — different shape from Maths.)
 
 **How to apply:** same per-chapter cadence; recall subjects lean `fact` (reference-table) + `trap` themes rather than computation. HP (Biology) is already done as the template for a recall-heavy chapter.
 
