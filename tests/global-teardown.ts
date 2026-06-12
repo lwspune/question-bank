@@ -42,7 +42,7 @@ import { config } from "dotenv";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { isTestOrgName, isTestTaxonomyName, isTestAuthEmail } from "./global-teardown-helpers";
+import { isTestOrgName, isTestTaxonomyName, isTestAuthEmail, sweepUntilClean } from "./global-teardown-helpers";
 
 export default async function setup() {
   return async function teardown(): Promise<void> {
@@ -55,48 +55,58 @@ export default async function setup() {
 
     const admin = createClient(url, key, { auth: { persistSession: false } });
 
-    // ── 1) ORG SWEEP (primary) ────────────────────────────────────────────
-    const { data: orgs } = await admin.from("organizations").select("id, name");
-    const testOrgIds = (orgs ?? [])
-      .filter((o) => isTestOrgName(o.name))
-      .map((o) => o.id);
+    await sweepTestData(admin);
 
-    if (testOrgIds.length > 0) {
-      // question_reports.org_id is RESTRICT — clear it before the org cascade.
-      await admin.from("question_reports").delete().in("org_id", testOrgIds);
-      // Cascades questions (→ options/tags/reports), org_members, upload_jobs.
-      await admin.from("organizations").delete().in("id", testOrgIds);
-    }
-
-    // ── 2) TEST TAXONOMY (global, no org_id) ──────────────────────────────
-    const { data: subjects } = await admin.from("subjects").select("id, name");
-    const testSubjectIds = (subjects ?? [])
-      .filter((s) => isTestTaxonomyName(s.name))
-      .map((s) => s.id);
-    for (const subjectId of testSubjectIds) {
-      // Only drop a test subject once the org sweep has emptied it.
-      const { count } = await admin
-        .from("questions")
-        .select("id", { count: "exact", head: true })
-        .eq("subject_id", subjectId);
-      if (!count) await admin.from("subjects").delete().eq("id", subjectId);
-    }
-
-    // ── 3) CANONICAL-ADJACENT AUTO-CREATES (empty + exam-scoped) ──────────
-    await deleteEmptyCanonicalAdjacentChapter(admin, "Chemistry", "Chemical Thermodynamics");
-    await deleteEmptyCanonicalAdjacentSubtopic(admin, ["Maths", "Mathematics"], "Differentiation", "Chain Rule");
-
-    // ── 4) AUTH USERS (admin API; org cascade leaves auth.users behind) ───
-    const testUserIds = await listTestAuthUserIds(admin);
-    if (testUserIds.length > 0) {
-      // entitlements.user_id → auth.users; clear before deleting the user.
-      await admin.from("entitlements").delete().in("user_id", testUserIds);
-      for (const id of testUserIds) await admin.auth.admin.deleteUser(id);
-    }
-
-    // ── 5) GUARDRAIL — fail the run loudly if the sweep left pollution ─────
+    // GUARDRAIL — fail the run loudly if pollution survived. Resilient to the
+    // delete-visibility race: re-sweeps + re-checks before throwing on a leak
+    // that genuinely persists (see assertNoLeakedTestData).
     await assertNoLeakedTestData(admin);
   };
+}
+
+/**
+ * The four-stage sweep. Idempotent + re-runnable, so the guardrail can call it
+ * again when a post-sweep read still sees a (likely already-doomed) survivor.
+ */
+async function sweepTestData(admin: SupabaseClient): Promise<void> {
+  // ── 1) ORG SWEEP (primary) ──────────────────────────────────────────────
+  const { data: orgs } = await admin.from("organizations").select("id, name");
+  const testOrgIds = (orgs ?? [])
+    .filter((o) => isTestOrgName(o.name))
+    .map((o) => o.id);
+
+  if (testOrgIds.length > 0) {
+    // question_reports.org_id is RESTRICT — clear it before the org cascade.
+    await admin.from("question_reports").delete().in("org_id", testOrgIds);
+    // Cascades questions (→ options/tags/reports), org_members, upload_jobs.
+    await admin.from("organizations").delete().in("id", testOrgIds);
+  }
+
+  // ── 2) TEST TAXONOMY (global, no org_id) ────────────────────────────────
+  const { data: subjects } = await admin.from("subjects").select("id, name");
+  const testSubjectIds = (subjects ?? [])
+    .filter((s) => isTestTaxonomyName(s.name))
+    .map((s) => s.id);
+  for (const subjectId of testSubjectIds) {
+    // Only drop a test subject once the org sweep has emptied it.
+    const { count } = await admin
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .eq("subject_id", subjectId);
+    if (!count) await admin.from("subjects").delete().eq("id", subjectId);
+  }
+
+  // ── 3) CANONICAL-ADJACENT AUTO-CREATES (empty + exam-scoped) ────────────
+  await deleteEmptyCanonicalAdjacentChapter(admin, "Chemistry", "Chemical Thermodynamics");
+  await deleteEmptyCanonicalAdjacentSubtopic(admin, ["Maths", "Mathematics"], "Differentiation", "Chain Rule");
+
+  // ── 4) AUTH USERS (admin API; org cascade leaves auth.users behind) ─────
+  const testUserIds = await listTestAuthUserIds(admin);
+  if (testUserIds.length > 0) {
+    // entitlements.user_id → auth.users; clear before deleting the user.
+    await admin.from("entitlements").delete().in("user_id", testUserIds);
+    for (const id of testUserIds) await admin.auth.admin.deleteUser(id);
+  }
 }
 
 /** Page through auth.users and collect the @test.local fixture accounts. */
@@ -112,13 +122,8 @@ async function listTestAuthUserIds(admin: SupabaseClient): Promise<string[]> {
   return ids;
 }
 
-/**
- * Post-sweep invariant: no test-signature rows survived. Runs after the whole
- * suite (this is globalTeardown), so unlike a normal test it CAN assert "zero
- * test orgs" — there are no other files still mid-flight. Throwing here turns a
- * silent prod leak into a red run.
- */
-async function assertNoLeakedTestData(admin: SupabaseClient): Promise<void> {
+/** One read pass: the list of surviving test-signature "problems" (empty = clean). */
+async function collectLeaks(admin: SupabaseClient): Promise<string[]> {
   const problems: string[] = [];
 
   const { data: orgs } = await admin.from("organizations").select("name");
@@ -132,9 +137,31 @@ async function assertNoLeakedTestData(admin: SupabaseClient): Promise<void> {
   const leakedUsers = await listTestAuthUserIds(admin);
   if (leakedUsers.length) problems.push(`auth users: ${leakedUsers.length}`);
 
+  return problems;
+}
+
+/**
+ * Post-sweep invariant: no test-signature rows survived. Runs after the whole
+ * suite (this is globalTeardown), so it CAN assert "zero test orgs" — no other
+ * file is still mid-flight. Throwing here turns a silent prod leak into a red run.
+ *
+ * RESILIENT to the delete-visibility race (the cascade-delete can lag on the
+ * shared pooled connection): `sweepUntilClean` re-sweeps + re-checks up to 3
+ * times (750 ms apart) before failing, so an already-doomed survivor clears on
+ * retry instead of false-throwing and blocking the push. A GENUINE leak persists
+ * through every re-sweep and still fails the run.
+ */
+async function assertNoLeakedTestData(admin: SupabaseClient): Promise<void> {
+  const problems = await sweepUntilClean(
+    () => collectLeaks(admin),
+    () => sweepTestData(admin),
+    { attempts: 3, delayMs: 750 }
+  );
+
   if (problems.length) {
     throw new Error(
-      `global-teardown left test data in the LIVE project — ${problems.join(" | ")}. ` +
+      `global-teardown left test data in the LIVE project (persisted through 3 re-sweeps — ` +
+        `not a visibility race) — ${problems.join(" | ")}. ` +
         `Investigate the sweep before trusting bank counts.`
     );
   }

@@ -52,3 +52,36 @@ export function isTestTaxonomyName(name: string): boolean {
 export function isTestAuthEmail(email: string | null | undefined): boolean {
   return typeof email === "string" && email.trim().toLowerCase().endsWith("@test.local");
 }
+
+const defaultSleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * Resilient leak check for the global-teardown guardrail. `check()` returns the
+ * list of surviving test-data "problems" (empty = clean). If the first check is
+ * dirty it RE-SWEEPS and re-checks up to `attempts` more times, sleeping
+ * `delayMs` between tries, before giving up — and returns whatever survives.
+ *
+ * Why: the cascade-delete in the sweep can be slow to become visible on the
+ * shared pooled connection (an eventual-consistency / delete-visibility race),
+ * so a single post-sweep read intermittently sees an already-doomed org and
+ * false-throws, blocking a push (the [[shared-db-test-flake]] class — vitest's
+ * `retry:1` doesn't apply to globalTeardown). Re-sweeping both re-attempts the
+ * delete (in case the first didn't apply) and waits out the visibility lag; a
+ * GENUINE leak still survives all attempts and is returned for the caller to
+ * throw on. `sleep` is injectable so unit tests run with no real delay.
+ */
+export async function sweepUntilClean(
+  check: () => Promise<string[]>,
+  sweep: () => Promise<void>,
+  opts: { attempts: number; delayMs: number; sleep?: (ms: number) => Promise<void> }
+): Promise<string[]> {
+  const sleep = opts.sleep ?? defaultSleep;
+  let problems = await check();
+  for (let i = 0; problems.length > 0 && i < opts.attempts; i++) {
+    await sleep(opts.delayMs);
+    await sweep();
+    problems = await check();
+  }
+  return problems;
+}

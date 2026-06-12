@@ -18,13 +18,9 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-06-12
 
-### Harden `global-teardown`'s leak-assertion against the delete-visibility race
+### ~~Harden `global-teardown`'s leak-assertion against the delete-visibility race~~ — **DONE 2026-06-12**
 
-The 2026-06-11 guardrail (`assertNoLeakedTestData` in `tests/global-teardown.ts`) throws if any test org/subject/auth-user survives the sweep — but it **false-positived once 2026-06-12**, blocking a push: it reported `Quiz Org df51f58f` leaked, yet the org was already gone on a follow-up query (and `isTestOrgName` matches the name fine). The cascade-delete simply hadn't become visible before the assertion's read on the shared pooled connection — the [[shared-db-test-flake]] class, but in teardown where vitest's `retry:1` doesn't apply. A bare re-push passed.
-
-**Why:** an intermittent false-throw blocks pushes (~4-min gate each retry) and erodes trust in a guardrail that's otherwise valuable. It will recur.
-
-**How to apply:** make `assertNoLeakedTestData` resilient before throwing — e.g. on a non-empty survivor set, re-run the org/subject/auth sweep once + re-query after a short delay (or a 2–3× poll loop), and only throw if survivors persist. Keep the throw (real leaks must still fail) — just don't trip on the eventual-consistency window. Pure test-infra change; the gate covers it.
+Extracted the 4-stage sweep into a re-runnable `sweepTestData(admin)` and added a pure, injectable `sweepUntilClean(check, sweep, {attempts, delayMs, sleep})` helper in `tests/global-teardown-helpers.ts` (TDD: 4 new cases — clean-first/race-clears/persists/sleeps-between). `assertNoLeakedTestData` now re-sweeps + re-checks up to 3× (750 ms apart) before throwing, so an already-doomed survivor clears on retry instead of false-throwing; a genuine leak persists through every re-sweep and still fails the run. 12 helper tests green. See [[shared-db-test-flake]].
 
 ### ~~Quiz Waves 5-7 — finish NDA Maths~~ — **DONE 2026-06-12**
 
