@@ -40,7 +40,8 @@ describe.skipIf(!HAS_ENV)("getExamHomeStats", () => {
       .from("questions")
       .select("id", { count: "exact", head: true })
       .eq("exam_id", exam!.id)
-      .eq("visibility", "PUBLIC");
+      .eq("visibility", "PUBLIC")
+      .eq("question_kind", "pyq"); // examHomeStats is a PYQ-first stat — excludes practice (migration 0036)
     expect(truth).not.toBeNull();
     expect(stats.totalPublicQuestions).toBe(truth);
   });
