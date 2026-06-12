@@ -16,6 +16,26 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-12
+
+### Quiz Wave 5 — the next 4 NDA Maths chapters by exam weight
+
+Waves 3 + 4 completed the top-18 NDA Maths chapters by weight (33 quizzes / 476 q). The next tier by PUBLIC q-count: **Binomial Theorem 54 · Properties of Triangle 49 · Indefinite Integration 40 · Conics 38**. After that: Inverse Trig 34 · Trig Equations 33 · Binomial Distribution 30 · Circles 27 · Logarithms 27 · Applications of Integration 25 · Height & Distance 24 · Binary Numbers 13 (~8 more, tailing off).
+
+**Why:** continues the daily-quiz supply + public-funnel pool. The cadence is proven and reliable (24/24 predicted keys matched across Waves 3-4), so each wave is low-risk.
+
+**How to apply:** same cadence as Waves 3-4 — `npm run quiz:harvest nda-maths/<ch> …` → `quiz:sync` → `quiz:coverage` per chapter → 4 parallel agents (computation distractors + triaged formula/trap notes-enrichment + 3 verify files each) → main agent re-harvests/verifies/assembles/pushes. **Apply the sharpened triage** ([[quiz-formula-coverage-gap]]): when a formula/trap theme parks at 8–11, re-examine the skipped concepts for genuine named identities before accepting the park (the diff-eq lesson). User can say "proceed wave 5 without my intervention."
+
+### Harvest the new NDA Chemistry (11) + Physics (9) + Biology (8) notes chapters for quizzes (carry-forward)
+
+The 2026-06-10/11 Chemistry + Physics notes and this session's 8 new NDA Biology chapters are all authored quiz-ready (Step 1b) but **unharvested** — a large fresh frontier beyond NDA Maths. Chemistry/Biology are recall-heavy (rich `fact`/`trap` themes); Physics is formula-heavy.
+
+**Why:** broadens the daily-quiz beyond Maths into the other NDA subjects; these chapters were built quiz-ready specifically so the harvest needs no rework. Carry-forward of the "Wave 3+ harvest frontier" entry below (now updated: 18 Maths chapters done).
+
+**How to apply:** same per-chapter cadence; recall subjects lean `fact` (reference-table) + `trap` themes rather than computation. HP (Biology) is already done as the template for a recall-heavy chapter.
+
+---
+
 ## 2026-06-11
 
 ### ~~Sweep leaked `auth.users` test accounts~~ — **DONE 2026-06-11**
@@ -115,6 +135,8 @@ English (vocab/idioms) and Biology (taxonomy) questions store the underlined wor
 Completed all three named chapters — **Human Physiology** (87 recall + 23 traps), **Matrices & Determinants** (182 computation + 5 traps), **Vectors** (130 computation + 55 traps) — by hand-authoring every distractor (the harvest's sibling-row candidates were cross-category/unusable). All `verified`, 0 lint flags, assembled + pushed. Quiz Factory now has 5 complete chapters. The same cadence applies to any *future* harvested chapter (see "Harvest + verify the unstarted chapters" below).
 
 ### Wave 3+ : harvest + verify the remaining /notes chapters (the Quiz Factory frontier)
+
+**CARRY-FORWARD (2026-06-12): superseded by the 2026-06-12 entries above — Waves 3 + 4 completed the top-18 NDA Maths chapters; ~12 NDA Maths + the new Chem 11/Phys 9/Bio 8 remain. The counts below are the 2026-06-10 snapshot, kept for the cadence detail.**
 
 **10 NDA Maths chapters now complete** across all themes (Stats/Prob/Vectors/Matrices/Functions/Lines/Trig-Id + **Wave 2: 3D-Geometry · Sequence-Series · Differentiation**, 2026-06-10) + HP (Bio). **The harvest frontier GREW sharply 2026-06-10**: the notes corpus jumped from ~31 to **52 chapters** (NDA Chemistry 11 + NDA Physics 7 shipped this day), all authored quiz-ready (Step 1b) but **none harvested**. So **~41 chapters now await harvest** — the new NDA Chemistry 11 + NDA Physics 9 + ~12 autonomous-batch NDA Maths (Binomial, Conics, Circles, etc.) + 1 MHT-CET. The new Chemistry/Physics chapters are the freshest, highest-value targets (recall-heavy `fact`/`trap` themes for Chemistry; formula-heavy for Physics).
 
