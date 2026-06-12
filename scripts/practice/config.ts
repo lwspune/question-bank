@@ -96,6 +96,26 @@ export const TOPICS: Record<string, Topic> = {
       "Regression and Correlation",
     ],
   },
+
+  // Algebra → Complex Numbers, Q87–168 (~82 q), question pages 5–8. (Q80–86 are
+  // the tail of the preceding Relations section — excluded; the Complex Numbers
+  // header sits mid-page-5. Quadratic Equations starts at Q169 on page 8's right
+  // column, so Complex Numbers runs through Q168 — including the page-8 spillover.)
+  "complex-numbers": {
+    id: "complex-numbers",
+    chapterName: "Complex Numbers",
+    qFrom: 87,
+    qTo: 168,
+    sourceFile: "NDA_Maths_Practice__Algebra__Complex_Numbers.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [5, 6, 7, 8] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-1 page 187-210.pdf"), pages: [4, 5, 6, 7, 8, 9] },
+    subtopics: [
+      "Modulus, Argument, and Conjugate",
+      "Powers and Roots",
+      "Cube Roots of Unity",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
