@@ -208,6 +208,18 @@ export const COMPUTING_PROBABILITIES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{91}{216}\\)",
       },
+      practiceSet: [
+        {
+          prompt: "A fair coin is tossed 5 times. Find the probability of getting at least one head.",
+          answer: "\\(\\dfrac{31}{32}\\)",
+          method: "\\(1 - (\\tfrac12)^5\\)",
+        },
+        {
+          prompt: "5% of the bulbs in a batch are defective. In a random sample of 3, find the probability of at least one defective bulb.",
+          answer: "\\(\\dfrac{1141}{8000}\\)",
+          method: "\\(1 - q^3\\) with \\(q = \\tfrac{19}{20}\\)",
+        },
+      ],
       traps: [
         {
           title: "'At most' can also flip to a complement",
