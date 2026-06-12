@@ -61,6 +61,22 @@ export const TOPICS: Record<string, Topic> = {
       "Special Series and Special Sums",
     ],
   },
+
+  // Algebra → Logarithms, Q959–984 (26 q), all on question page 47.
+  logarithms: {
+    id: "logarithms",
+    chapterName: "Logarithms",
+    qFrom: 959,
+    qTo: 984,
+    sourceFile: "NDA_Maths_Practice__Algebra__Logarithms.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "01. Algebra_questions.pdf"), pages: [47] },
+    answerKey: { pdf: join(SOURCE_ROOT, "01. Algebra", "algebra answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "01. Algebra", "Solutions", "1st Algebra sol-2 page 241-253.pdf"), pages: [9, 10, 11] },
+    subtopics: [
+      "Logarithm Identities, Change of Base, and Sums",
+      "Solving Logarithmic Equations and Applications",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
