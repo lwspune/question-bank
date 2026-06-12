@@ -318,6 +318,16 @@ import {
   BIODIVERSITY_NOTES,
   BIODIVERSITY_SLUGS,
 } from "@/app/notes/nda-biology/biodiversity-and-classification/_data";
+import {
+  GENETICS_EVOLUTION_CHAPTER,
+  GENETICS_EVOLUTION_NOTES,
+  GENETICS_EVOLUTION_SLUGS,
+} from "@/app/notes/nda-biology/genetics-and-evolution/_data";
+import {
+  BIOCHEMISTRY_CHAPTER,
+  BIOCHEMISTRY_NOTES,
+  BIOCHEMISTRY_SLUGS,
+} from "@/app/notes/nda-biology/biochemistry/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -798,6 +808,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: ECOLOGY_CHAPTER,
     notes: ECOLOGY_NOTES,
     slugs: ECOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "genetics-and-evolution",
+    chipLabel: "Genetics & Evolution notes",
+    chapter: GENETICS_EVOLUTION_CHAPTER,
+    notes: GENETICS_EVOLUTION_NOTES,
+    slugs: GENETICS_EVOLUTION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "biochemistry",
+    chipLabel: "Biochemistry notes",
+    chapter: BIOCHEMISTRY_CHAPTER,
+    notes: BIOCHEMISTRY_NOTES,
+    slugs: BIOCHEMISTRY_SLUGS,
   },
   {
     examName: "NDA",

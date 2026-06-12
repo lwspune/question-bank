@@ -192,6 +192,8 @@ import ReproDoubleFertilisation from "./visualizations/ReproDoubleFertilisation"
 import EcoFoodChainPyramid from "./visualizations/EcoFoodChainPyramid";
 import BiodivFiveKingdoms from "./visualizations/BiodivFiveKingdoms";
 import BiodivPlantProgression from "./visualizations/BiodivPlantProgression";
+import GenDnaBasePairing from "./visualizations/GenDnaBasePairing";
+import BiochemProteinStructureLevels from "./visualizations/BiochemProteinStructureLevels";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -554,6 +556,10 @@ function renderVisualization(slug: VisualizationSlug) {
       return <BiodivFiveKingdoms />;
     case "biodiv-plant-progression":
       return <BiodivPlantProgression />;
+    case "gen-dna-base-pairing":
+      return <GenDnaBasePairing />;
+    case "biochem-protein-structure-levels":
+      return <BiochemProteinStructureLevels />;
   }
 }
 
