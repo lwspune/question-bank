@@ -284,7 +284,11 @@ export type VisualizationSlug =
   | "eco-food-chain-pyramid"
   // NDA Biology — Biodiversity and Classification chapter
   | "biodiv-five-kingdoms"
-  | "biodiv-plant-progression";
+  | "biodiv-plant-progression"
+  // NDA Biology — Genetics and Evolution chapter
+  | "gen-dna-base-pairing"
+  // NDA Biology — Biochemistry chapter
+  | "biochem-protein-structure-levels";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
