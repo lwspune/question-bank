@@ -73,6 +73,13 @@ export const SOLVING_NOTE: SubtopicNote = {
         "Two reduction tricks:\n" +
         "- **Substitute the combination**: if the equation depends on \\(x+y\\) (or \\(y-x\\)), set \\(v=x+y\\), so \\(\\tfrac{dv}{dx}=1+\\tfrac{dy}{dx}\\), and the equation becomes separable in \\(v\\).\n" +
         "- **Recognise exact differentials**: \\(x\\,dy+y\\,dx=d(xy)\\); \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\big(\\tfrac{x}{y}\\big)\\); \\(x\\,dx+y\\,dy=\\tfrac12 d(x^2+y^2)\\).",
+      formula: {
+        label: "Exact differentials to recognise",
+        latex:
+          "x\\,dy + y\\,dx = d(xy) \\qquad " +
+          "\\frac{x\\,dy - y\\,dx}{y^2} = d\\!\\left(\\frac{x}{y}\\right) \\qquad " +
+          "x\\,dx + y\\,dy = \\tfrac12\\,d(x^2+y^2)",
+      },
       authoredExample: {
         prompt: "Solve \\(\\dfrac{dy}{dx} = \\cos(y-x) + 1\\).",
         steps: [
@@ -103,6 +110,11 @@ export const SOLVING_NOTE: SubtopicNote = {
           body:
             "If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
         },
+        {
+          title: "Memorise the exact differentials with the right sign",
+          body:
+            "\\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer.",
+        },
       ],
     },
 
@@ -121,7 +133,7 @@ export const SOLVING_NOTE: SubtopicNote = {
         "- **Bernoulli** \\(\\dfrac{dy}{dx}+Py = Qy^{n}\\): substitute \\(v=y^{1-n}\\) to make it linear.",
       formula: {
         label: "Integrating factor",
-        latex: "\\mu = e^{\\int P(x)\\,dx},\\qquad \\frac{d}{dx}(\\mu y) = \\mu Q,\\qquad y\\,\\mu = \\int Q\\,\\mu\\,dx + c",
+        latex: "\\mu = e^{\\int P(x)\\,dx},\\qquad \\frac{d}{dx}(\\mu y) = \\mu Q,\\qquad y\\,\\mu = \\int Q\\,\\mu\\,dx + c,\\qquad \\frac{dx}{dy}+P(y)\\,x=Q(y):\\ \\mu=e^{\\int P(y)\\,dy},\\qquad \\frac{dy}{dx}+Py=Qy^{n}:\\ v=y^{1-n}",
       },
       authoredExample: {
         prompt: "Solve \\(\\dfrac{dy}{dx} + \\dfrac{y}{x} = x\\).",
@@ -152,6 +164,11 @@ export const SOLVING_NOTE: SubtopicNote = {
           title: "Put the equation in STANDARD form before reading off P",
           body:
             "The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+        },
+        {
+          title: "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\)",
+          body:
+            "To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation.",
         },
       ],
     },

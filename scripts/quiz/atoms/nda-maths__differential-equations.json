@@ -16,7 +16,7 @@
     "candidateDistractors": [
       "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
       "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
-      "\\(\\mu = e^{\\int P(x)\\,dx}\\)"
+      "\\(x\\,dy + y\\,dx = d(xy)\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -45,7 +45,7 @@
     "candidateDistractors": [
       "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
       "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
-      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)"
+      "\\(x\\,dy + y\\,dx = d(xy)\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -694,9 +694,9 @@
     "stem": "Which of the following is the formula for Separation of variables?",
     "correct": "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
     "options": {
-      "A": "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
-      "B": "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
-      "C": "\\(\\text{order} = \\text{order of the highest derivative present}\\)",
+      "A": "\\(x\\,dy + y\\,dx = d(xy)\\)",
+      "B": "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
+      "C": "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
       "D": "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)"
     },
     "answer": "D",
@@ -912,6 +912,93 @@
     "chapterSlug": "differential-equations",
     "subtopicSlug": "defeq-solving",
     "conceptSlug": "reducible-by-substitution",
+    "atomId": "reducible-by-substitution:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Reducible to separable by substitution?",
+    "correct": "\\(x\\,dy + y\\,dx = d(xy)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
+      "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
+      "\\(\\text{order} = \\text{order of the highest derivative present}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "02122495304b3987ac53aeb75688e55ee5bf46b6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "reducible-by-substitution",
+    "atomId": "reducible-by-substitution:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Reducible to separable by substitution?",
+    "correct": "\\(\\frac{x\\,dy - y\\,dx}{y^2} = d\\!\\left(\\frac{x}{y}\\right)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
+      "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
+      "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "5d449864d668e01259c804df52d5eb780ab678ed",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "reducible-by-substitution",
+    "atomId": "reducible-by-substitution:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Reducible to separable by substitution?",
+    "correct": "\\(x\\,dx + y\\,dy = \\tfrac12\\,d(x^2+y^2)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
+      "\\(\\text{order} = \\text{order of the highest derivative present}\\)",
+      "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "313441decfc24242b8b0e40842cc6a1ac5d6e2e6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "reducible-by-substitution",
     "atomId": "reducible-by-substitution:practiceSet:0",
     "sourceKind": "practiceSet",
     "sourceIndex": 0,
@@ -926,7 +1013,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere."
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -953,7 +1041,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere."
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -980,7 +1069,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere."
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1008,7 +1098,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere."
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1032,11 +1123,37 @@
     "candidateDistractors": [],
     "distractorSource": null,
     "trapHints": [
-      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere."
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "e2785064e4992ef70812e1a6e7a05b717d3279e6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "reducible-by-substitution",
+    "atomId": "reducible-by-substitution:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Memorise the exact differentials with the right sign",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Spot the glued combination first: If you cannot separate directly, look for \\(x+y\\) or \\(y-x\\) appearing as a unit — that is the signal to substitute \\(v\\) for it. Trying to force separation without the substitution leads nowhere.",
+      "Memorise the exact differentials with the right sign: \\(x\\,dy+y\\,dx=d(xy)\\) (a PLUS), but \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\left(\\tfrac{x}{y}\\right)\\) (a MINUS, over \\(y^2\\)). Swapping the sign or the denominator — e.g. writing \\(\\tfrac{y\\,dx-x\\,dy}{y^2}=d(x/y)\\) — gives \\(-d(x/y)\\) and the wrong answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "d6d04714b6c51ae3d9bd105f7fe808ae49fddba3",
     "timeEstimateSec": 45
   },
   {
@@ -1055,12 +1172,13 @@
     "answer": null,
     "candidateDistractors": [
       "\\(\\text{order} = \\text{order of the highest derivative present}\\)",
-      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
-      "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)"
+      "\\(x\\,dy + y\\,dx = d(xy)\\)",
+      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)"
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
@@ -1083,12 +1201,13 @@
     "answer": null,
     "candidateDistractors": [
       "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
-      "\\(\\text{order} = \\text{order of the highest derivative present}\\)",
-      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)"
+      "\\(x\\,dy + y\\,dx = d(xy)\\)",
+      "\\(\\text{order} = \\text{order of the highest derivative present}\\)"
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1116,11 +1235,70 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
     "sourceFingerprint": "8c590613151b2a0066fd94110be7c8143757dda0",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "linear-equations-integrating-factor",
+    "atomId": "linear-equations-integrating-factor:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Linear equations and the integrating factor?",
+    "correct": "\\(\\frac{dx}{dy}+P(y)\\,x=Q(y):\\ \\mu=e^{\\int P(y)\\,dy}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
+      "\\(x\\,dy + y\\,dx = d(xy)\\)",
+      "\\(\\text{order} = \\text{order of the highest derivative present}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "226e86a878f8174e19374d68181e0d6355b32d66",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "linear-equations-integrating-factor",
+    "atomId": "linear-equations-integrating-factor:formula:4",
+    "sourceKind": "formula",
+    "sourceIndex": 4,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Linear equations and the integrating factor?",
+    "correct": "\\(\\frac{dy}{dx}+Py=Qy^{n}:\\ v=y^{1-n}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt}\\)",
+      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
+      "\\(\\text{order} = \\text{order of the highest derivative present}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "08106f99c2337b49daba52f634de537284a0db46",
     "timeEstimateSec": 45
   },
   {
@@ -1143,7 +1321,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
@@ -1170,7 +1349,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1197,7 +1377,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1225,7 +1406,8 @@
     ],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": true,
@@ -1249,11 +1431,37 @@
     "candidateDistractors": [],
     "distractorSource": null,
     "trapHints": [
-      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor."
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
     ],
     "status": "needs_review",
     "looksMcqClean": false,
     "sourceFingerprint": "c9610f2516c3c061f21e1acade57c6379456a23b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "differential-equations",
+    "subtopicSlug": "defeq-solving",
+    "conceptSlug": "linear-equations-integrating-factor",
+    "atomId": "linear-equations-integrating-factor:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\)",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Put the equation in STANDARD form before reading off P: The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
+      "Bernoulli substitution is \\(v=y^{1-n}\\), not \\(y^{n-1}\\): To linearise \\(\\dfrac{dy}{dx}+Py=Qy^{n}\\), substitute \\(v=y^{1-n}\\) (exponent \\(1-n\\)). For \\(n=2\\) that is \\(v=y^{-1}\\), NOT \\(v=y^{1}\\). Getting the exponent backwards (\\(y^{n-1}\\)) flips the sign of the resulting linear equation."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "3e476b54b4d2cdb4f109763813e1050d3e04daff",
     "timeEstimateSec": 45
   },
   {
@@ -1272,8 +1480,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
-      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
-      "\\(\\text{order} = \\text{order of the highest derivative present}\\)"
+      "\\(x\\,dy + y\\,dx = d(xy)\\)",
+      "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)"
     ],
     "distractorSource": null,
     "trapHints": [
@@ -1300,8 +1508,8 @@
     "answer": null,
     "candidateDistractors": [
       "\\(\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C\\)",
-      "\\(\\mu = e^{\\int P(x)\\,dx}\\)",
-      "\\(\\text{order} = \\text{order of the highest derivative present}\\)"
+      "\\(x\\,dy + y\\,dx = d(xy)\\)",
+      "\\(\\mu = e^{\\int P(x)\\,dx}\\)"
     ],
     "distractorSource": null,
     "trapHints": [

@@ -98,6 +98,14 @@ export const VERIFIED: VerifiedEntry[] = [
     distractors: [f("v = xy"), f("v = x/y"), f("v = y/x")],
     theme: "trap",
   },
+  {
+    // exact-differential sign — NEW callout (top-up 2026-06-12)
+    atomKey: "reducible-by-substitution:trap:1",
+    stem: "Which exact-differential identity has the CORRECT sign?",
+    correct: f("\\frac{x\\,dy - y\\,dx}{y^2} = d\\!\\left(\\tfrac{x}{y}\\right)"),
+    distractors: [f("\\frac{y\\,dx - x\\,dy}{y^2} = d\\!\\left(\\tfrac{x}{y}\\right)"), f("\\frac{x\\,dy + y\\,dx}{y^2} = d\\!\\left(\\tfrac{x}{y}\\right)"), f("\\frac{x\\,dy - y\\,dx}{x^2} = d\\!\\left(\\tfrac{x}{y}\\right)")],
+    theme: "trap",
+  },
 
   // ── linear-equations-integrating-factor ──
   {
@@ -109,11 +117,12 @@ export const VERIFIED: VerifiedEntry[] = [
     theme: "trap",
   },
   {
-    // put in standard form before reading P: x y' - y = x² → P = -1/x → μ = 1/x — NEW callout
+    // Bernoulli substitution exponent — NEW callout (top-up 2026-06-12); the
+    // notes callout at this index is the Bernoulli v=y^{1-n} warning.
     atomKey: "linear-equations-integrating-factor:trap:1",
-    stem: "For \\(x\\dfrac{dy}{dx} - y = x^2\\), what is the integrating factor \\(\\mu\\)?",
-    correct: f("\\tfrac1x"),
-    distractors: [f("e^{-x}"), f("x"), f("e^{x}")],
+    stem: "To linearise the Bernoulli equation \\(\\dfrac{dy}{dx}+Py=Qy^{2}\\), which substitution is correct?",
+    correct: f("v = y^{-1}"),
+    distractors: [f("v = y"), f("v = y^{2}"), f("v = y^{-2}")],
     theme: "trap",
   },
 
