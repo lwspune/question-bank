@@ -32,11 +32,21 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{\\pi}{6}\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\sin^{-1}\\!\\left(\\sin\\dfrac{2\\pi}{3}\\right) = ?\\)", answer: "\\(\\tfrac{\\pi}{3}\\)", method: "\\(\\tfrac{2\\pi}{3}\\) is out of range; \\(\\sin\\tfrac{2\\pi}{3}=\\sin(\\pi-\\tfrac{2\\pi}{3})=\\sin\\tfrac{\\pi}{3}\\)." },
+        { prompt: "\\(\\cos^{-1}\\!\\left(\\cos\\dfrac{4\\pi}{3}\\right) = ?\\)", answer: "\\(\\tfrac{2\\pi}{3}\\)", method: "\\(\\tfrac{4\\pi}{3}\\in[\\pi,2\\pi]\\): \\(\\cos^{-1}(\\cos x)=2\\pi-x = 2\\pi-\\tfrac{4\\pi}{3}\\)." },
+        { prompt: "\\(\\tan^{-1}\\!\\left(\\tan\\dfrac{3\\pi}{4}\\right) = ?\\)", answer: "\\(-\\tfrac{\\pi}{4}\\)", method: "\\(\\tfrac{3\\pi}{4}\\) is out of \\((-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2})\\); \\(\\tan\\tfrac{3\\pi}{4}=-1\\Rightarrow\\tan^{-1}(-1)=-\\tfrac{\\pi}{4}\\)." },
+      ],
       traps: [
         {
           title: "sin⁻¹(sin x) ≠ x outside the principal range",
           body:
             "\\(\\sin^{-1}(\\sin\\tfrac{2\\pi}{3})\\) is NOT \\(\\tfrac{2\\pi}{3}\\) (that is outside \\([-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}]\\)). Reduce the inner angle into the principal range first.",
+        },
+        {
+          title: "Each cancellation uses a DIFFERENT reduction rule",
+          body:
+            "For \\(x\\) just past the range: \\(\\sin^{-1}(\\sin x)=\\pi-x\\), but \\(\\cos^{-1}(\\cos x)=2\\pi-x\\) (for \\(x\\in[\\pi,2\\pi]\\)) and \\(\\tan^{-1}(\\tan x)=x-\\pi\\). Don't reuse the \\(\\pi-x\\) rule for all three — match the reduction to the function's own principal range.",
         },
       ],
     },
@@ -66,6 +76,17 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{5}{12}\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\tan\\!\\left(2\\tan^{-1}\\tfrac{1}{3}\\right) = ?\\)", answer: "\\(\\tfrac{3}{4}\\)", method: "\\(\\dfrac{2\\cdot\\frac13}{1-\\frac19}=\\dfrac{2/3}{8/9}\\)." },
+        { prompt: "\\(2\\tan^{-1}\\tfrac{1}{3} = \\tan^{-1}? \\)", answer: "\\(\\tan^{-1}\\tfrac{3}{4}\\)", method: "\\(2\\tan^{-1}x=\\tan^{-1}\\dfrac{2x}{1-x^2}=\\tan^{-1}\\dfrac{2/3}{8/9}\\)." },
+      ],
+      traps: [
+        {
+          title: "Double-angle tangent has 1 − tan²θ, not 1 + tan²θ",
+          body:
+            "\\(\\tan 2\\theta = \\dfrac{2\\tan\\theta}{1-\\tan^2\\theta}\\). The denominator is \\(1-\\tan^2\\theta\\); using \\(1+\\tan^2\\theta\\) (which is \\(\\sec^2\\theta\\)) is a common confusion that produces the wrong value.",
+        },
+      ],
     },
 
     // converting to a common tangent
@@ -90,6 +111,17 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{56}{33}\\).",
       },
+      practiceSet: [
+        { prompt: "Write \\(\\sin^{-1}\\tfrac{3}{5}\\) as a \\(\\tan^{-1}\\).", answer: "\\(\\tan^{-1}\\tfrac{3}{4}\\)", method: "3-4-5 triangle: opposite 3, adjacent 4, so \\(\\tan=\\tfrac34\\)." },
+        { prompt: "Write \\(\\cos^{-1}\\tfrac{12}{13}\\) as a \\(\\tan^{-1}\\).", answer: "\\(\\tan^{-1}\\tfrac{5}{12}\\)", method: "5-12-13 triangle: adjacent 12, opposite 5, so \\(\\tan=\\tfrac{5}{12}\\)." },
+      ],
+      traps: [
+        {
+          title: "Convert sin⁻¹/cos⁻¹ to tan⁻¹ via the TRIANGLE, not the value",
+          body:
+            "For \\(\\sin^{-1}\\tfrac35\\), the tangent is \\(\\tfrac34\\) (opposite 3, adjacent \\(\\sqrt{5^2-3^2}=4\\)) — NOT \\(\\tfrac35\\). Build the right triangle and read off the missing side before taking the tangent.",
+        },
+      ],
     },
   ],
 };

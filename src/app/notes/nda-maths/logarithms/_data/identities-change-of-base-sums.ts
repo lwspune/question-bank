@@ -48,6 +48,11 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
           body:
             "The product law splits a log of a **product**, not a log of a **sum**. \\(\\log_a(M+N)\\) has no simplification — only \\(\\log_a(MN)\\) splits into \\(\\log_a M+\\log_a N\\).",
         },
+        {
+          title: "The base must be \\(>0\\) and \\(\\neq 1\\)",
+          body:
+            "\\(\\log_a N\\) is only defined for a base \\(a > 0,\\ a \\neq 1\\). A base of \\(1\\) is forbidden because \\(1^x = 1\\) for every \\(x\\), so \\(\\log_1 N\\) has no unique value; a base \\(\\le 0\\) breaks the exponential entirely.",
+        },
       ],
     },
 
@@ -86,6 +91,9 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(3\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\log_2 32 - \\log_2 2 = ?\\)", answer: "\\(4\\)", method: "Quotient law: \\(\\log_2 16 = 4\\)." },
+      ],
       traps: [
         {
           title: "Keep the base when you pull out a power",
@@ -130,11 +138,19 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(1\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\log_4 64 = ?\\)", answer: "\\(3\\)", method: "\\(\\log_4 64 = \\dfrac{\\log_2 64}{\\log_2 4} = \\dfrac{6}{2} = 3\\)." },
+      ],
       traps: [
         {
           title: "Reciprocal flips the base and the argument together",
           body:
             "\\(\\dfrac{1}{\\log_a b} = \\log_b a\\) — the base and argument **swap**. It does NOT equal \\(\\log_a(1/b)\\) (which would be \\(-\\log_a b\\)). Keep the two operations separate.",
+        },
+        {
+          title: "Change of base does NOT invert the fraction",
+          body:
+            "\\(\\log_b a = \\dfrac{\\log a}{\\log b}\\) — the NEW argument \\(a\\) goes on top, the NEW base \\(b\\) on the bottom. Writing it upside-down as \\(\\dfrac{\\log b}{\\log a}\\) gives \\(\\log_a b\\), the reciprocal, and flips the whole answer.",
         },
       ],
     },

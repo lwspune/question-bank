@@ -126,6 +126,11 @@ export const SOLVING_EQUATIONS_APPLICATIONS_NOTE: SubtopicNote = {
           body:
             "\\(x-1 = (x-3)^2\\) gives \\(x = 2\\) and \\(x = 5\\), but \\(x = 2\\) makes \\(x-3 = -1 < 0\\), so \\(\\log_2(x-3)\\) is undefined. Only \\(x = 5\\) is a genuine solution — always re-substitute into the ORIGINAL equation.",
         },
+        {
+          title: "The argument must be strictly positive — \\(0\\) is not allowed",
+          body:
+            "\\(\\log_a x\\) is undefined for \\(x \\le 0\\), and that includes \\(x = 0\\): there is no power of \\(a\\) that gives \\(0\\). A root that makes ANY argument equal to \\(0\\) (not just negative) must be rejected — the domain requires every argument \\(> 0\\), strictly.",
+        },
       ],
     },
 

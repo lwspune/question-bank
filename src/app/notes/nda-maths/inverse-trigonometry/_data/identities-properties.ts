@@ -37,12 +37,25 @@ export const IDENTITIES_PROPERTIES_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "\\(\\sin^{-1}(-1) = ?\\)", answer: "\\(-\\tfrac{\\pi}{2}\\)", method: "\\(\\sin^{-1}\\) is odd; \\(\\sin^{-1}1 = \\tfrac{\\pi}{2}\\)." },
         { prompt: "Range of \\(\\tan^{-1}x\\)?", answer: "\\(\\left(-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}\\right)\\) — open ends." },
+        { prompt: "\\(\\cos^{-1}\\!\\left(-\\tfrac{1}{2}\\right) = ?\\)", answer: "\\(\\tfrac{2\\pi}{3}\\)", method: "\\(\\cos^{-1}(-x)=\\pi-\\cos^{-1}x = \\pi - \\tfrac{\\pi}{3}\\)." },
+        { prompt: "\\(\\tan^{-1}(-\\sqrt3) = ?\\)", answer: "\\(-\\tfrac{\\pi}{3}\\)", method: "\\(\\tan^{-1}\\) is odd; \\(\\tan^{-1}\\sqrt3 = \\tfrac{\\pi}{3}\\)." },
+        { prompt: "\\(\\sin^{-1}\\!\\left(\\tfrac{\\sqrt3}{2}\\right) = ?\\)", answer: "\\(\\tfrac{\\pi}{3}\\)", method: "Standard value; in range \\([-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}]\\)." },
       ],
       traps: [
         {
           title: "cos⁻¹ and cot⁻¹ are NOT odd",
           body:
             "\\(\\cos^{-1}(-x) = \\pi - \\cos^{-1}x\\), not \\(-\\cos^{-1}x\\) — because the range \\([0,\\pi]\\) has no negative angles. The same holds for \\(\\cot^{-1}\\). Treating them as odd is the classic error.",
+        },
+        {
+          title: "tan⁻¹ is odd, but its range is OPEN",
+          body:
+            "\\(\\tan^{-1}x \\in \\left(-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right)\\) — the endpoints are never attained, because \\(\\tan(\\pm\\tfrac{\\pi}{2})\\) is undefined. Writing \\(\\tan^{-1}x = \\tfrac{\\pi}{2}\\) for any finite \\(x\\) is wrong.",
+        },
+        {
+          title: "Inverse-trig answers must LAND in the principal range",
+          body:
+            "After any manipulation, check the result lies in the function's principal range: \\(\\sin^{-1}\\in[-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}]\\), \\(\\cos^{-1}\\in[0,\\pi]\\). An angle like \\(\\tfrac{5\\pi}{6}\\) is a valid \\(\\cos^{-1}\\) output but can NEVER be a \\(\\sin^{-1}\\) output.",
         },
       ],
     },
@@ -71,6 +84,18 @@ export const IDENTITIES_PROPERTIES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\sin^{-1}x = \\dfrac{\\pi}{2}\\) (so \\(x = 1\\)).",
       },
+      practiceSet: [
+        { prompt: "If \\(\\sin^{-1}x = \\tfrac{\\pi}{6}\\), find \\(\\cos^{-1}x\\).", answer: "\\(\\tfrac{\\pi}{3}\\)", method: "\\(\\cos^{-1}x = \\tfrac{\\pi}{2} - \\sin^{-1}x = \\tfrac{\\pi}{2}-\\tfrac{\\pi}{6}\\)." },
+        { prompt: "\\(\\sin^{-1}\\tfrac{1}{2} + \\cos^{-1}\\tfrac{1}{2} = ?\\)", answer: "\\(\\tfrac{\\pi}{2}\\)", method: "Complementary identity holds for ANY valid \\(x\\) — no need to evaluate each term." },
+        { prompt: "\\(\\tan^{-1}3 + \\cot^{-1}3 = ?\\)", answer: "\\(\\tfrac{\\pi}{2}\\)", method: "\\(\\tan^{-1}x + \\cot^{-1}x = \\tfrac{\\pi}{2}\\) for all real \\(x\\)." },
+      ],
+      traps: [
+        {
+          title: "sin⁻¹x + cos⁻¹x = π/2 always — don't evaluate term by term",
+          body:
+            "\\(\\sin^{-1}x + \\cos^{-1}x = \\tfrac{\\pi}{2}\\) for EVERY valid \\(x\\), not just nice values. Students waste time evaluating each inverse separately; the sum is fixed. The same fixed-sum holds for \\(\\tan^{-1}x+\\cot^{-1}x\\) and \\(\\sec^{-1}x+\\csc^{-1}x\\).",
+        },
+      ],
     },
 
     // sum-difference formulas
@@ -98,11 +123,21 @@ export const IDENTITIES_PROPERTIES_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\dfrac{\\pi}{4}\\).",
       },
+      practiceSet: [
+        { prompt: "\\(\\tan^{-1}\\tfrac{1}{2} + \\tan^{-1}\\tfrac{1}{3} = ?\\)", answer: "\\(\\tfrac{\\pi}{4}\\)", method: "\\(ab=\\tfrac16<1\\); \\(\\tan^{-1}\\dfrac{\\frac12+\\frac13}{1-\\frac16}=\\tan^{-1}1\\)." },
+        { prompt: "\\(\\tan^{-1}2 + \\tan^{-1}3 = ?\\)", answer: "\\(\\tfrac{3\\pi}{4}\\)", method: "\\(ab=6>1\\): \\(\\tan^{-1}\\dfrac{5}{1-6}=\\tan^{-1}(-1)=-\\tfrac{\\pi}{4}\\), then ADD \\(\\pi\\)." },
+        { prompt: "\\(\\tan^{-1}\\tfrac{1}{2} - \\tan^{-1}\\tfrac{1}{3} = ?\\)", answer: "\\(\\tan^{-1}\\tfrac{1}{7}\\)", method: "\\(\\tan^{-1}\\dfrac{\\frac12-\\frac13}{1+\\frac16}=\\tan^{-1}\\dfrac{1/6}{7/6}\\)." },
+      ],
       traps: [
         {
           title: "Check ab < 1 before using the sum formula",
           body:
             "\\(\\tan^{-1}a + \\tan^{-1}b = \\tan^{-1}\\frac{a+b}{1-ab}\\) only when \\(ab<1\\). If \\(ab>1\\) (positive \\(a,b\\)) the true value exceeds \\(\\tfrac{\\pi}{2}\\) and you must add \\(\\pi\\). Skipping this gives an answer in the wrong quadrant.",
+        },
+        {
+          title: "Difference formula uses 1 + ab in the denominator",
+          body:
+            "\\(\\tan^{-1}a - \\tan^{-1}b = \\tan^{-1}\\frac{a-b}{1+ab}\\) — the denominator is \\(1+ab\\), NOT \\(1-ab\\). Mixing up the sign of the \\(ab\\) term between the sum and difference forms is a frequent slip.",
         },
       ],
     },
@@ -133,6 +168,17 @@ export const IDENTITIES_PROPERTIES_NOTE: SubtopicNote = {
         ],
         answer: "\\(2\\tan^{-1}x\\).",
       },
+      practiceSet: [
+        { prompt: "Simplify \\(\\tan^{-1}\\dfrac{2x}{1-x^2}\\) (for \\(|x|<1\\)).", answer: "\\(2\\tan^{-1}x\\)", method: "Double-angle pattern: with \\(x=\\tan\\theta\\), \\(\\dfrac{2x}{1-x^2}=\\tan 2\\theta\\)." },
+        { prompt: "Simplify \\(\\sin^{-1}\\dfrac{2x}{1+x^2}\\) (for \\(|x|\\le1\\)).", answer: "\\(2\\tan^{-1}x\\)", method: "\\(\\dfrac{2x}{1+x^2}=\\sin 2\\theta\\) with \\(\\theta=\\tan^{-1}x\\)." },
+      ],
+      traps: [
+        {
+          title: "The 2 tan⁻¹ substitutions need a validity range",
+          body:
+            "\\(\\sin^{-1}\\dfrac{2x}{1+x^2} = 2\\tan^{-1}x\\) holds only for \\(|x|\\le 1\\); \\(\\tan^{-1}\\dfrac{2x}{1-x^2} = 2\\tan^{-1}x\\) only for \\(|x|<1\\). Outside the range you must add or subtract \\(\\pi\\) — applying the identity blindly gives an out-of-range angle.",
+        },
+      ],
     },
   ],
 };

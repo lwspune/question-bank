@@ -32,6 +32,10 @@ export const SOLVING_EQUATIONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(x = \\tfrac{1}{2}\\).",
       },
+      practiceSet: [
+        { prompt: "Solve \\(2\\sin^{-1}x + \\cos^{-1}x = \\pi\\).", answer: "\\(x = 1\\)", method: "\\(\\cos^{-1}x=\\tfrac{\\pi}{2}-\\sin^{-1}x\\Rightarrow\\sin^{-1}x=\\tfrac{\\pi}{2}\\Rightarrow x=1\\)." },
+        { prompt: "If \\(\\sin^{-1}x + \\sin^{-1}y = \\pi\\), find the relation between \\(x,y\\).", answer: "\\(x = y\\) (both \\(=\\tfrac{\\pi}{2}\\) outputs force \\(x=y=1\\))", method: "Each \\(\\sin^{-1}\\le\\tfrac{\\pi}{2}\\); the sum reaches \\(\\pi\\) only when both equal \\(\\tfrac{\\pi}{2}\\)." },
+      ],
       traps: [
         {
           title: "Reject roots that break the sum-formula validity",
@@ -65,6 +69,17 @@ export const SOLVING_EQUATIONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(\\tan(\\angle) = \\dfrac{16}{37}\\).",
       },
+      practiceSet: [
+        { prompt: "A point is 4 m from the base of a 4 m tower. Find the angle of elevation of its top.", answer: "\\(\\tfrac{\\pi}{4}\\)", method: "\\(\\theta=\\tan^{-1}\\tfrac{h}{d}=\\tan^{-1}\\tfrac{4}{4}=\\tan^{-1}1\\)." },
+        { prompt: "From 1 m away, the angle subtended by a wall between heights \\(h_1=1, h_2=2\\): find \\(\\tan\\).", answer: "\\(\\tfrac{1}{3}\\)", method: "\\(\\dfrac{(h_2-h_1)d}{d^2+h_1h_2}=\\dfrac{1\\cdot1}{1+2}\\)." },
+      ],
+      traps: [
+        {
+          title: "Subtended-angle denominator is d² + h₁h₂",
+          body:
+            "For the angle between two heights at distance \\(d\\): \\(\\tan^{-1}\\dfrac{h_2}{d}-\\tan^{-1}\\dfrac{h_1}{d}=\\tan^{-1}\\dfrac{(h_2-h_1)d}{d^2+h_1h_2}\\). The denominator is \\(d^2+h_1h_2\\) (the \\(1+ab\\) of the difference formula), not \\(d^2-h_1h_2\\). Getting that sign wrong flips the answer.",
+        },
+      ],
     },
   ],
 };
