@@ -33,6 +33,13 @@ export const SPECIFIC_FORMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(-1\\).",
       },
+      traps: [
+        {
+          title: "Vieta's product is \\(c/a\\), not \\(-c/a\\)",
+          body:
+            "For \\(ax^2+bx+c=0\\) the sum of roots is \\(-\\tfrac{b}{a}\\) (sign flips) but the product is \\(+\\tfrac{c}{a}\\) (no sign flip). Putting a minus on the product, or forgetting it on the sum, breaks the \\(\\tan(\\alpha+\\beta)\\) computation.",
+        },
+      ],
     },
 
     // product & sum forms
@@ -84,6 +91,13 @@ export const SPECIFIC_FORMS_NOTE: SubtopicNote = {
         ],
         answer: "\\(x = \\dfrac{\\pi}{4}\\).",
       },
+      traps: [
+        {
+          title: "A log base must be positive and \\(\\ne 1\\)",
+          body:
+            "In \\(\\log_{\\cos x}\\sin x\\) the base \\(\\cos x\\) must satisfy \\(\\cos x > 0\\) and \\(\\cos x \\ne 1\\), and the argument needs \\(\\sin x > 0\\). After solving \\(\\tan x = 1\\), keep only roots in the first quadrant — \\(x = \\tfrac{\\pi}{4}\\) — and reject any where the base/argument condition fails.",
+        },
+      ],
     },
   ],
 };

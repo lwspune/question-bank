@@ -24,7 +24,7 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         "for \\(n \\in \\mathbb{Z}\\). The **principal solution** is the one in the first cycle; the **general solution** adds the periodic family. (Special: \\(\\sin\\theta=0 \\Rightarrow \\theta=n\\pi\\); \\(\\cos\\theta=0 \\Rightarrow \\theta=(2n+1)\\tfrac{\\pi}{2}\\).)",
       formula: {
         label: "General solutions",
-        latex: "\\sin\\theta=\\sin\\alpha:\\ \\theta=n\\pi+(-1)^n\\alpha; \\quad \\cos\\theta=\\cos\\alpha:\\ \\theta=2n\\pi\\pm\\alpha; \\quad \\tan\\theta=\\tan\\alpha:\\ \\theta=n\\pi+\\alpha",
+        latex: "\\sin\\theta=\\sin\\alpha:\\ \\theta=n\\pi+(-1)^n\\alpha; \\quad \\cos\\theta=\\cos\\alpha:\\ \\theta=2n\\pi\\pm\\alpha; \\quad \\tan\\theta=\\tan\\alpha:\\ \\theta=n\\pi+\\alpha; \\quad \\sin\\theta=0:\\ \\theta=n\\pi; \\quad \\cos\\theta=0:\\ \\theta=(2n+1)\\tfrac{\\pi}{2}; \\quad \\sin^2\\theta=\\sin^2\\alpha:\\ \\theta=n\\pi\\pm\\alpha",
       },
       authoredExample: {
         prompt: "Find the general solution of \\(\\cos\\theta = \\tfrac{1}{2}\\).",
@@ -36,12 +36,31 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "General solution of \\(\\tan\\theta = 1\\)?", answer: "\\(\\theta = n\\pi + \\tfrac{\\pi}{4}\\)", method: "\\(\\tan\\theta = \\tan\\tfrac{\\pi}{4}\\)." },
         { prompt: "General solution of \\(\\sin\\theta = 0\\)?", answer: "\\(\\theta = n\\pi\\)." },
+        { prompt: "General solution of \\(\\sin\\theta = \\tfrac{1}{2}\\)?", answer: "\\(\\theta = n\\pi + (-1)^n\\tfrac{\\pi}{6}\\)", method: "\\(\\sin\\theta = \\sin\\tfrac{\\pi}{6}\\); sine uses \\(n\\pi+(-1)^n\\alpha\\)." },
+        { prompt: "General solution of \\(\\cos\\theta = -\\tfrac{1}{2}\\)?", answer: "\\(\\theta = 2n\\pi \\pm \\tfrac{2\\pi}{3}\\)", method: "\\(\\cos\\theta = \\cos\\tfrac{2\\pi}{3}\\); cosine uses \\(2n\\pi\\pm\\alpha\\)." },
+        { prompt: "General solution of \\(\\tan\\theta = \\sqrt3\\)?", answer: "\\(\\theta = n\\pi + \\tfrac{\\pi}{3}\\)", method: "\\(\\tan\\theta = \\tan\\tfrac{\\pi}{3}\\)." },
+        { prompt: "General solution of \\(\\cos\\theta = 0\\)?", answer: "\\(\\theta = (2n+1)\\tfrac{\\pi}{2}\\)", method: "Cosine vanishes at odd multiples of \\(\\tfrac{\\pi}{2}\\)." },
       ],
       traps: [
         {
           title: "sin and cos use DIFFERENT general forms",
           body:
             "\\(\\sin\\theta=\\sin\\alpha\\) uses \\(n\\pi+(-1)^n\\alpha\\); \\(\\cos\\theta=\\cos\\alpha\\) uses \\(2n\\pi\\pm\\alpha\\). Swapping them is the most common error and changes which solutions you count.",
+        },
+        {
+          title: "The \\((-1)^n\\) belongs to SINE only",
+          body:
+            "The alternating factor \\((-1)^n\\) appears ONLY in the sine general solution \\(\\theta=n\\pi+(-1)^n\\alpha\\). Cosine uses \\(2n\\pi\\pm\\alpha\\) and tangent uses \\(n\\pi+\\alpha\\) — neither carries a \\((-1)^n\\). Writing \\(\\cos\\theta=\\cos\\alpha\\Rightarrow\\theta=n\\pi+(-1)^n\\alpha\\) is wrong.",
+        },
+        {
+          title: "The \\(\\pm\\) is the whole point of the cosine form",
+          body:
+            "\\(\\cos\\theta=\\cos\\alpha\\) gives BOTH branches \\(2n\\pi+\\alpha\\) and \\(2n\\pi-\\alpha\\), so the formula is \\(2n\\pi\\pm\\alpha\\). Dropping the \\(\\pm\\) and writing only \\(2n\\pi+\\alpha\\) loses half the solutions.",
+        },
+        {
+          title: "tan and sin share \\(n\\pi\\) but differ in the add-on",
+          body:
+            "\\(\\tan\\theta=\\tan\\alpha\\) gives \\(\\theta=n\\pi+\\alpha\\) — note it is \\(n\\pi\\) (period \\(\\pi\\)), NOT \\(2n\\pi\\). Tangent repeats every \\(\\pi\\), so its general solution steps by \\(\\pi\\), unlike cosine's \\(2n\\pi\\).",
         },
       ],
     },
@@ -78,6 +97,16 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
           body:
             "\\(1 + \\cos x = \\sqrt3\\sin x\\) squared gives a quadratic whose roots include \\(\\cos x = -1\\) — which makes the original \\(\\csc x + \\cot x\\) undefined. Substitute every root back before counting.",
         },
+        {
+          title: "Dividing by \\(\\cos x\\) (or \\(\\sin x\\)) can LOSE roots",
+          body:
+            "Going from \\(\\sin x = \\cos x\\) to \\(\\tan x = 1\\) by dividing by \\(\\cos x\\) silently assumes \\(\\cos x \\ne 0\\). That is fine here, but in general dividing by a trig factor throws away every solution where that factor is zero — factor instead of divide.",
+        },
+        {
+          title: "\\(\\sin x = 2\\) has NO solution",
+          body:
+            "After reducing, always check the range: \\(\\sin x\\) and \\(\\cos x\\) live in \\([-1,1]\\). An equation that forces \\(\\sin x = 2\\) (or \\(\\cos x = -3\\)) has no real solution at all — don't write a general solution for it.",
+        },
       ],
     },
 
@@ -108,6 +137,24 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(4\\) solutions.",
       },
+      practiceSet: [
+        { prompt: "How many solutions does \\(\\sin x = \\tfrac{1}{2}\\) have on \\(0 \\le x < 2\\pi\\)?", answer: "\\(2\\)", method: "\\(x = \\tfrac{\\pi}{6}, \\tfrac{5\\pi}{6}\\) — sine hits a positive value twice per cycle." },
+        { prompt: "How many solutions does \\(\\tan x = 1\\) have on \\(0 \\le x < 2\\pi\\)?", answer: "\\(2\\)", method: "\\(x = \\tfrac{\\pi}{4}, \\tfrac{5\\pi}{4}\\) — tangent has period \\(\\pi\\)." },
+        { prompt: "How many solutions does \\(\\sin 2x = \\tfrac{1}{2}\\) have on \\(0 \\le x < 2\\pi\\)?", answer: "\\(4\\)", method: "Let \\(u = 2x \\in [0,4\\pi)\\); \\(\\sin u = \\tfrac12\\) has 2 per cycle \\(\\times 2 = 4\\)." },
+        { prompt: "How many solutions does \\(\\cos 3x = 1\\) have on \\(0 \\le x < 2\\pi\\)?", answer: "\\(3\\)", method: "\\(3x \\in [0,6\\pi)\\); \\(\\cos = 1\\) at \\(3x = 0, 2\\pi, 4\\pi \\Rightarrow x = 0, \\tfrac{2\\pi}{3}, \\tfrac{4\\pi}{3}\\)." },
+      ],
+      traps: [
+        {
+          title: "Scale the interval when the angle is multiplied",
+          body:
+            "For \\(\\sin 2x = k\\) on \\(0 \\le x < 2\\pi\\), substitute \\(u = 2x\\) so \\(u\\) runs over \\([0, 4\\pi)\\) — TWICE the length. Counting solutions in the original \\(x\\)-interval instead of the stretched \\(u\\)-interval halves the count.",
+        },
+        {
+          title: "Discard solutions where the equation is undefined",
+          body:
+            "When a reduced equation like \\(\\cos 5x = 0\\) came from \\(\\cot 2x\\,\\cot 3x = 1\\), drop any value of \\(x\\) where \\(\\cot 2x\\) or \\(\\cot 3x\\) blows up — those are not genuine solutions of the original, even though they satisfy the reduced form.",
+        },
+      ],
     },
 
     // range & existence
@@ -134,6 +181,17 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         ],
         answer: "\\(7\\) values.",
       },
+      practiceSet: [
+        { prompt: "For how many integers \\(k\\) does \\(\\sin x = \\tfrac{k}{2}\\) have a solution?", answer: "\\(5\\)", method: "\\(\\tfrac{k}{2} \\in [-1,1] \\Rightarrow k \\in \\{-2,-1,0,1,2\\}\\)." },
+        { prompt: "Does \\(2\\sin x = 3\\) have any solution?", answer: "No", method: "\\(\\sin x = \\tfrac32 > 1\\), outside the range \\([-1,1]\\)." },
+      ],
+      traps: [
+        {
+          title: "Count integers INCLUSIVELY across the range",
+          body:
+            "For \\(3\\cos x = k\\) the bound is \\(k \\in [-3,3]\\), which contains \\(7\\) integers \\(-3,\\dots,3\\) — not \\(6\\). Endpoints \\(\\pm 3\\) are achievable (at \\(\\cos x = \\pm 1\\)), so include them; forgetting one or both endpoints is the classic off-by-one.",
+        },
+      ],
     },
   ],
 };

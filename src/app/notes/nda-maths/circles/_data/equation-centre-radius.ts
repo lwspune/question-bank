@@ -84,6 +84,10 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
         ],
         answer: "\\(r = 2\\).",
       },
+      practiceSet: [
+        { prompt: "Find the centre of \\(x^2+y^2+4x-6y-12=0\\).", answer: "\\((-2,3)\\)", method: "\\(2g=4,\\ 2f=-6\\Rightarrow(-g,-f)=(-2,3)\\)." },
+        { prompt: "Find the radius of \\(x^2+y^2-6x+8y=0\\).", answer: "\\(r = 5\\)", method: "\\(g=-3,f=4,c=0\\Rightarrow\\sqrt{9+16}=5\\)." },
+      ],
       traps: [
         {
           title: "Divide by the leading coefficient BEFORE reading g, f, c",
@@ -159,6 +163,10 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
         ],
         answer: "\\(6\\) units.",
       },
+      practiceSet: [
+        { prompt: "Find the length of the chord \\(x^2+y^2-4x-5=0\\) cuts on the x-axis.", answer: "\\(6\\)", method: "\\(y=0:\\ x^2-4x-5=0\\Rightarrow x=5,-1\\); gap \\(6\\)." },
+        { prompt: "Find the length of the chord \\(x^2+y^2-6y-7=0\\) cuts on the y-axis.", answer: "\\(8\\)", method: "\\(x=0:\\ y^2-6y-7=0\\Rightarrow y=7,-1\\); gap \\(8\\)." },
+      ],
       traps: [
         {
           title: "Intercept is the GAP between roots, not a single root",
@@ -194,6 +202,10 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
         ],
         answer: "Midpoint \\((2,2)\\).",
       },
+      practiceSet: [
+        { prompt: "A chord of \\(x^2+y^2=25\\) is \\(3\\) units from the centre. Find its length.", answer: "\\(8\\)", method: "\\(2\\sqrt{r^2-d^2}=2\\sqrt{25-9}=8\\)." },
+        { prompt: "A chord of length \\(24\\) lies in a circle of radius \\(13\\). How far is it from the centre?", answer: "\\(5\\)", method: "\\(d=\\sqrt{r^2-(\\tfrac{\\text{chord}}2)^2}=\\sqrt{169-144}=5\\)." },
+      ],
       traps: [
         {
           title: "Use the NEGATIVE-reciprocal slope for the perpendicular",
@@ -234,6 +246,10 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
         ],
         answer: "\\((x-3)^2+(y-3)^2=9\\), i.e. \\(x^2+y^2-6x-6y+9=0\\).",
       },
+      practiceSet: [
+        { prompt: "A circle in the first quadrant touches both axes and has radius \\(4\\). Find its centre.", answer: "\\((4,4)\\)", method: "Centre \\((r,r)=(4,4)\\)." },
+        { prompt: "A circle with centre \\((3,5)\\) touches the x-axis. Find its radius.", answer: "\\(5\\)", method: "Touches x-axis \\(\\Rightarrow r=|k|=5\\)." },
+      ],
       traps: [
         {
           title: "Touching an axis is |coordinate| = r, not coordinate = r",
@@ -270,6 +286,10 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
         ],
         answer: "\\(4 < r < 8\\).",
       },
+      practiceSet: [
+        { prompt: "Two circles of radii \\(3\\) and \\(4\\) touch externally. What is the distance between their centres?", answer: "\\(7\\)", method: "External touch \\(\\Rightarrow d=r_1+r_2=7\\)." },
+        { prompt: "Two circles of radii \\(9\\) and \\(4\\) touch internally. What is the distance between their centres?", answer: "\\(5\\)", method: "Internal touch \\(\\Rightarrow d=|r_1-r_2|=5\\)." },
+      ],
       traps: [
         {
           title: "Both inequalities matter — it's a band, not a single bound",
