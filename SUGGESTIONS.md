@@ -34,21 +34,17 @@ The 2026-06-10/11 Chemistry + Physics notes and this session's 8 new NDA Biology
 
 **How to apply:** same per-chapter cadence; recall subjects lean `fact` (reference-table) + `trap` themes rather than computation. HP (Biology) is already done as the template for a recall-heavy chapter.
 
-### Review + flip the practice pilot PUBLIC (Sequence & Series, 84 q)
+### ~~Review + flip the practice pilot PUBLIC (Sequence & Series, 84 q)~~ — **DONE 2026-06-12**
 
-The 84 NDA Maths Sequence & Series practice questions are committed **PRIVATE** (`question_kind='practice'`, `source_file='NDA_Maths_Practice__Algebra__Sequence_and_Series.pdf'`), pending the user's review of the preview HTML. They're invisible to the public + excluded from PYQ counts until flipped.
+All 3 ingested practice topics flipped PUBLIC after preview review (Sequence & Series 84 + Logarithms 26 + Statistics 81 = 191 q). Live /browse smoke confirmed the PYQ/Practice/All toggle works on production (kind=practice → "84 questions match" for Sequence & Series).
 
-**Why:** the pilot's value is only realised once it's live; and the verification surfaced 7 source-key corrections (in `overrides.json`) worth a human glance before publishing. The /browse Practice toggle stays dark for anon until something practice is PUBLIC.
+### Scale practice ingestion to more topics/subjects (carry-forward — partially done)
 
-**How to apply:** regenerate/open `npx tsx scripts/practice/preview.ts sequence-series` (or `/uploads/a682f27a-…`), eyeball the override-badged questions, then `update questions set visibility='PUBLIC' where source_file='NDA_Maths_Practice__Algebra__Sequence_and_Series.pdf';`. Then browser-smoke the /browse PYQ/Practice/All toggle on the live site (the DoD step not yet done — the toggle is test- + RPC-verified but never clicked in a running app).
+**Progress 2026-06-12:** ingested Logarithms (26 q) + Statistics (81 q) on top of the Sequence & Series pilot — 3 NDA Maths topics now PUBLIC. STILL OPEN: Algebra's other sub-topics (Sets/Relations/Complex Numbers/Quadratics/Permutation/Combination/Binomial/Matrices/Determinants/Probability — each maps to an existing NDA Maths chapter) + the Trig / 2D / 3D / Calculus folders (different source PDFs → new `TOPICS` entries).
 
-### Scale practice ingestion to more topics/subjects (carry-forward)
+**Why:** broadens the practice bank. It is a **workflow, not automation** — budget the per-section vision-transcription + verification pass. The 3 done averaged near-0 wrong keys, but number-dense topics (Statistics) needed half-column crops to read values reliably.
 
-The practice book has ~thousands of questions across Algebra / Trig / 2D / 3D / Calculus (the loose PDFs under `C:\tmp\Practice\Maths\`); only Algebra→Sequence&Series is ingested. Each topic = a `TOPICS` entry in `scripts/practice/config.ts` + the render→transcribe→commit→preview loop.
-
-**Why:** broadens the practice bank once the pilot is validated. But it is a **workflow, not automation** — budget the per-section vision-transcription + verification pass (~6 key fixes + several transcription fixes per ~80 q in the pilot). Do it topic-by-topic on the user's cue, not as a blind batch.
-
-**How to apply:** follow `scripts/practice/README.md`. Pick the next topic (e.g. Algebra's other sub-topics share the same question/answer/solution PDFs already mapped), add its `qFrom`/`qTo` + page indices to `config.ts`, run the loop. Reuse the existing 5-subtopic mapping where the chapter matches; map onto existing DB subtopics, never auto-create a parallel taxonomy.
+**How to apply:** follow `scripts/practice/README.md`. Per topic: verify the answer-key + solution Q-ranges exist for that section (solution coverage varies by source PDF), confirm the practice section maps to an **existing** NDA Maths chapter (skip ones with no home, e.g. Mathematical Induction / System of Equations — never auto-create), add a `TOPICS` entry, run render→transcribe→commit→preview→flip. For number-dense sections render half-column crops, not just per-column.
 
 ---
 
