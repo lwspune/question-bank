@@ -288,6 +288,36 @@ import {
   OSCILLATIONS_NOTES,
   OSCILLATIONS_SLUGS,
 } from "@/app/notes/nda-physics/oscillations-waves/_data";
+import {
+  CELL_BIOLOGY_CHAPTER,
+  CELL_BIOLOGY_NOTES,
+  CELL_BIOLOGY_SLUGS,
+} from "@/app/notes/nda-biology/cell-biology/_data";
+import {
+  PLANT_BIOLOGY_CHAPTER,
+  PLANT_BIOLOGY_NOTES,
+  PLANT_BIOLOGY_SLUGS,
+} from "@/app/notes/nda-biology/plant-biology/_data";
+import {
+  MICROBIOLOGY_CHAPTER,
+  MICROBIOLOGY_NOTES,
+  MICROBIOLOGY_SLUGS,
+} from "@/app/notes/nda-biology/microbiology-and-disease/_data";
+import {
+  REPRODUCTION_CHAPTER,
+  REPRODUCTION_NOTES,
+  REPRODUCTION_SLUGS,
+} from "@/app/notes/nda-biology/reproduction/_data";
+import {
+  ECOLOGY_CHAPTER,
+  ECOLOGY_NOTES,
+  ECOLOGY_SLUGS,
+} from "@/app/notes/nda-biology/ecology-and-environment/_data";
+import {
+  BIODIVERSITY_CHAPTER,
+  BIODIVERSITY_NOTES,
+  BIODIVERSITY_SLUGS,
+} from "@/app/notes/nda-biology/biodiversity-and-classification/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -702,6 +732,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: HUMAN_PHYSIOLOGY_CHAPTER,
     notes: HUMAN_PHYSIOLOGY_NOTES,
     slugs: HUMAN_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "cell-biology",
+    chipLabel: "Cell Biology notes",
+    chapter: CELL_BIOLOGY_CHAPTER,
+    notes: CELL_BIOLOGY_NOTES,
+    slugs: CELL_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "microbiology-and-disease",
+    chipLabel: "Microbiology & Disease notes",
+    chapter: MICROBIOLOGY_CHAPTER,
+    notes: MICROBIOLOGY_NOTES,
+    slugs: MICROBIOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "biodiversity-and-classification",
+    chipLabel: "Biodiversity & Classification notes",
+    chapter: BIODIVERSITY_CHAPTER,
+    notes: BIODIVERSITY_NOTES,
+    slugs: BIODIVERSITY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "plant-biology",
+    chipLabel: "Plant Biology notes",
+    chapter: PLANT_BIOLOGY_CHAPTER,
+    notes: PLANT_BIOLOGY_NOTES,
+    slugs: PLANT_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "reproduction",
+    chipLabel: "Reproduction notes",
+    chapter: REPRODUCTION_CHAPTER,
+    notes: REPRODUCTION_NOTES,
+    slugs: REPRODUCTION_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Biology",
+    subjectRoute: "nda-biology",
+    subjectDisplay: "NDA Biology",
+    chapterSlug: "ecology-and-environment",
+    chipLabel: "Ecology & Environment notes",
+    chapter: ECOLOGY_CHAPTER,
+    notes: ECOLOGY_NOTES,
+    slugs: ECOLOGY_SLUGS,
   },
   {
     examName: "NDA",

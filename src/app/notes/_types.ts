@@ -263,7 +263,28 @@ export type VisualizationSlug =
   // NDA Physics — Oscillations and Waves chapter
   | "osc-shm-displacement-time"
   | "osc-pendulum-restoring-force"
-  | "osc-wave-types";
+  | "osc-wave-types"
+  // NDA Biology — Cell Biology chapter
+  | "cell-fluid-mosaic-membrane"
+  | "cell-animal-plant-structure"
+  | "cell-organelle-map"
+  | "cell-prokaryote-eukaryote"
+  | "cell-osmosis-tonicity"
+  // NDA Biology — Plant Biology chapter
+  | "plant-photosynthesis-flow"
+  | "plant-tropism-bending"
+  | "plant-seed-parts"
+  // NDA Biology — Microbiology and Disease chapter
+  | "micro-pathogen-tree"
+  | "micro-malaria-cycle"
+  // NDA Biology — Reproduction chapter
+  | "repro-flower-structure"
+  | "repro-double-fertilisation"
+  // NDA Biology — Ecology and Environment chapter
+  | "eco-food-chain-pyramid"
+  // NDA Biology — Biodiversity and Classification chapter
+  | "biodiv-five-kingdoms"
+  | "biodiv-plant-progression";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
