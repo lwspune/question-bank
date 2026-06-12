@@ -20,6 +20,10 @@ export const SOLVING_NOTE: SubtopicNote = {
         "- Write the equation as \\(g(y)\\,dy = f(x)\\,dx\\), then integrate both sides — don't forget the single arbitrary constant.\n" +
         "- Exponentials separate: \\(\\ln\\big(\\tfrac{dy}{dx}\\big) = ax+by \\Rightarrow \\tfrac{dy}{dx}=e^{ax}e^{by} \\Rightarrow e^{-by}\\,dy=e^{ax}\\,dx\\).\n" +
         "- A constant derivative integrates trivially: \\(\\cos\\big(\\tfrac{dy}{dx}\\big)=p \\Rightarrow \\tfrac{dy}{dx}=\\cos^{-1}p \\Rightarrow y = x\\cos^{-1}p + C\\).",
+      formula: {
+        label: "Separation of variables",
+        latex: "\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C",
+      },
       authoredExample: {
         prompt: "Solve \\(\\dfrac{dy}{dx} = (1+y^2)\\) — i.e. \\(dy = (1+y^2)\\,dx\\).",
         steps: [
@@ -49,6 +53,11 @@ export const SOLVING_NOTE: SubtopicNote = {
           title: "Take logs / exponentials to unlock separation",
           body:
             "Equations like \\(\\ln(dy/dx)=ax+by\\) look non-separable until you exponentiate: \\(dy/dx=e^{ax}e^{by}\\) splits cleanly. Always check whether one rewrite makes the variables come apart before reaching for a heavier method.",
+        },
+        {
+          title: "One arbitrary constant only — and add it at the integration step",
+          body:
+            "After separating, integrating BOTH sides produces just ONE arbitrary constant for a first-order equation, not one per side. \\(\\int e^{y}\\,dy = \\int e^{x}\\,dx\\) gives \\(e^{y}=e^{x}+c\\), never \\(e^{y}+c_1=e^{x}+c_2\\). Dropping the constant entirely — or writing two — is the classic separable-method slip.",
         },
       ],
     },
@@ -112,7 +121,7 @@ export const SOLVING_NOTE: SubtopicNote = {
         "- **Bernoulli** \\(\\dfrac{dy}{dx}+Py = Qy^{n}\\): substitute \\(v=y^{1-n}\\) to make it linear.",
       formula: {
         label: "Integrating factor",
-        latex: "\\mu = e^{\\int P(x)\\,dx},\\qquad \\frac{d}{dx}(\\mu y) = \\mu Q",
+        latex: "\\mu = e^{\\int P(x)\\,dx},\\qquad \\frac{d}{dx}(\\mu y) = \\mu Q,\\qquad y\\,\\mu = \\int Q\\,\\mu\\,dx + c",
       },
       authoredExample: {
         prompt: "Solve \\(\\dfrac{dy}{dx} + \\dfrac{y}{x} = x\\).",
@@ -140,9 +149,9 @@ export const SOLVING_NOTE: SubtopicNote = {
       pyqExampleId: "38c9ec71-cb06-4e17-b468-93f24866e8c2", // y dx-(x+2y²)dy=0 → x=2y²+cy
       traps: [
         {
-          title: "If it is not linear in y, try linear in x",
+          title: "Put the equation in STANDARD form before reading off P",
           body:
-            "\\(y\\,dx - (x+2y^2)\\,dy = 0\\) is not linear in \\(y\\), but rewriting as \\(\\frac{dx}{dy}-\\frac{x}{y}=2y\\) makes it linear in \\(x\\). Flipping to \\(dx/dy\\) is the move when y-as-the-function fails.",
+            "The integrating factor is \\(e^{\\int P\\,dx}\\) only when the equation is written as \\(\\dfrac{dy}{dx}+Py=Q\\) with coefficient \\(+1\\) on \\(\\tfrac{dy}{dx}\\). For \\(x\\dfrac{dy}{dx}-y=x^2\\) you must first divide by \\(x\\) to get \\(P=-\\tfrac1x\\) (so \\(\\mu=\\tfrac1x\\)); using \\(P=-1\\) or forgetting the sign gives the wrong factor.",
         },
       ],
     },
@@ -159,6 +168,12 @@ export const SOLVING_NOTE: SubtopicNote = {
         "- **Growth/decay**: \\(\\dfrac{dy}{dt} = ky\\) has solution \\(y = y_0 e^{kt}\\) (\\(k>0\\) growth, \\(k<0\\) decay — radioactivity, cooling).\n" +
         "- **IVP**: find the general solution, then use the condition (e.g. \\(y(0)=y_0\\)) to fix the constant.\n" +
         "- **Verify** a candidate by substituting it into the ODE; a factored equation like \\((y')^2 - x\\,y' = 0\\) splits into \\(y'=0\\) and \\(y'=x\\), giving two solution families.",
+      formula: {
+        label: "Growth/decay and order",
+        latex:
+          "\\frac{dN}{dt} = kN \\;\\Rightarrow\\; N = N_0 e^{kt} \\qquad " +
+          "\\text{number of arbitrary constants} = \\text{order}",
+      },
       visualizationSlug: "defeq-growth-decay",
       authoredExample: {
         prompt: "A particle starts at the origin with \\(\\dfrac{dx}{dt} = x + 1\\). How long to travel 24 m?",

@@ -1,0 +1,2124 @@
+[
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The Fundamental Theorem of Calculus?",
+    "correct": "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)",
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "852692c441b37ae3f2aaaf8835ee01e446055c1b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The Fundamental Theorem of Calculus?",
+    "correct": "\\(\\int_a^b f'(x)\\,dx = f(b)-f(a)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)",
+      "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2}\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "63c40d4be14a9f461c796fdce06f8696d383e115",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The Fundamental Theorem of Calculus?",
+    "correct": "\\(\\int \\frac{f'(x)}{f(x)}\\,dx = \\ln|f(x)|\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2}\\)",
+      "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "34cd7c2ea032b04db4536b4b747a17814a47a0da",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "If \\(f(1)=f(4)\\), what is \\(\\int_1^4 f'(x)\\,dx\\)?",
+    "correct": "0",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "1",
+      "\\(\\ln 2^{10}/2^2 = \\ln 2^8 = 8\\ln 2\\)",
+      "\\(\\int_0^{\\pi/2}\\cos x\\,dx = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "fab563252904e28015b503802de51cb346f79913",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int_2^{10}\\frac{f'(x)}{f(x)}\\,dx\\) with \\(f(x)=2^x\\) equals?",
+    "correct": "\\(\\ln 2^{10}/2^2 = \\ln 2^8 = 8\\ln 2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_0^{\\pi/2}\\cos x\\,dx = 1\\)",
+      "0"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "0b23cca42ac1ba240b405370dc4b9a3cc603e275",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Simplify \\(\\int_0^{\\pi/2} e^{\\ln(\\cos x)}\\,dx\\).",
+    "correct": "\\(\\int_0^{\\pi/2}\\cos x\\,dx = 1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "0",
+      "\\(\\ln 2^{10}/2^2 = \\ln 2^8 = 8\\ln 2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "76f427fe022a70a07fd8bcc685e1d2b1bd2143a5",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "If \\(\\displaystyle\\int_a^b x^3\\,dx = 0\\) and \\(\\displaystyle\\int_a^b x^2\\,dx = \\tfrac23\\), find a and b.",
+    "correct": "\\(a=-1,\\ b=1\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\ln 2^{10}/2^2 = \\ln 2^8 = 8\\ln 2\\)",
+      "0",
+      "\\(\\int_0^{\\pi/2}\\cos x\\,dx = 1\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "c702f65ff66ab6d79235a8067efb816e021335b6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "fundamental-theorem",
+    "atomId": "fundamental-theorem:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Integrating a derivative is not always trivial",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Integrating a derivative is not always trivial: \\(\\int_{-1}^{1}\\frac{d}{dx}\\big(\\tan^{-1}\\frac1x\\big)\\,dx\\) is NOT \\([\\tan^{-1}\\frac1x]_{-1}^1\\) naively, because the function jumps at \\(x=0\\). Compute the derivative \\(\\frac{-1}{1+x^2}\\) first, then integrate to get \\(-\\frac{\\pi}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "b59285604b9eb41233a63541d7400354c07b8fcd",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Integrals of periodic functions?",
+    "correct": "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "3c19b85fe38b63ec41d24c3990b50b9bc68f25b4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Integrals of periodic functions?",
+    "correct": "\\(\\int_{a}^{a+nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "2dfddd0b49791d55810c743b081f7e6d91d1845d",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Period of \\(\\sin^4x+\\cos^4x\\)?",
+    "correct": "\\(\\pi/2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "8",
+      "\\(n\\int_0^T f\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "3c49583b514cb2d3f8c0117ac022b1eb831648a6",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int_0^{4\\pi}|\\sin x|\\,dx\\) given one period gives 2?",
+    "correct": "8",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "-8",
+      "16",
+      "9"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "fe3cfa48ed195aa0e867bca5789e2510c1af5d41",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "\\(\\int_0^{nT}f = ?\\) for period-\\(T\\) \\(f\\).",
+    "correct": "\\(n\\int_0^T f\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "8",
+      "\\(\\pi/2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d84f1de27e62e65ef5afa4f17499ad0f99bdbbea",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(\\displaystyle\\int_0^{6\\pi}\\sin^2x\\,dx\\).",
+    "correct": "\\(3\\pi\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\pi/2\\)",
+      "\\(n\\int_0^T f\\)",
+      "8"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "879b551cef0726a520f9a60072ec467f3bb305bc",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "periodic-integrals",
+    "atomId": "periodic-integrals:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Use the function's period, not the trig argument's",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Use the function's period, not the trig argument's: \\(\\sin^4x+\\cos^4x\\) does NOT have period \\(2\\pi\\) — squaring and adding shrinks the period to \\(\\tfrac{\\pi}{2}\\). Always determine the actual period of the whole integrand before counting how many fit."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "c9cd912d6f9dcb1c23997316474a3d92ac118aa4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "leibniz-rule",
+    "atomId": "leibniz-rule:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for The Leibniz rule — differentiating an integral?",
+    "correct": "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)",
+    "options": {
+      "A": "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+      "B": "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)",
+      "C": "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "D": "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)"
+    },
+    "answer": "B",
+    "candidateDistractors": [],
+    "distractorSource": "sibling",
+    "trapHints": [
+      "Don't forget the chain-rule factor: \\(\\frac{d}{dx}\\int_a^{g(x)} f\\) is \\(f(g(x))\\cdot g'(x)\\), NOT just \\(f(g(x))\\). The \\(g'(x)\\) factor is the most commonly dropped term."
+    ],
+    "status": "auto",
+    "looksMcqClean": false,
+    "sourceFingerprint": "cf11143f32b283eeb928567131b34629f352b339",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "leibniz-rule",
+    "atomId": "leibniz-rule:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "\\(\\frac{d}{dx}\\int_0^{x} e^{t^2}\\,dt = ?\\)",
+    "correct": "\\(e^{x^2}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(3x^2\\ln(x^3)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't forget the chain-rule factor: \\(\\frac{d}{dx}\\int_a^{g(x)} f\\) is \\(f(g(x))\\cdot g'(x)\\), NOT just \\(f(g(x))\\). The \\(g'(x)\\) factor is the most commonly dropped term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "67f295e07855ab69fdd36fc39e9463854a1c89fa",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "leibniz-rule",
+    "atomId": "leibniz-rule:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\frac{d}{dx}\\int_1^{x^3} \\ln t\\,dt = ?\\)",
+    "correct": "\\(3x^2\\ln(x^3)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(e^{x^2}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't forget the chain-rule factor: \\(\\frac{d}{dx}\\int_a^{g(x)} f\\) is \\(f(g(x))\\cdot g'(x)\\), NOT just \\(f(g(x))\\). The \\(g'(x)\\) factor is the most commonly dropped term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "7e52ebc8ae3a517080d9b77315c17318120bc192",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "leibniz-rule",
+    "atomId": "leibniz-rule:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "If \\(\\phi(a)=\\displaystyle\\int_0^{a} t f(t)\\,dt\\), what is \\(\\phi'(a)\\)?",
+    "correct": "\\(\\phi'(a)=a\\,f(a)\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(e^{x^2}\\)",
+      "\\(3x^2\\ln(x^3)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't forget the chain-rule factor: \\(\\frac{d}{dx}\\int_a^{g(x)} f\\) is \\(f(g(x))\\cdot g'(x)\\), NOT just \\(f(g(x))\\). The \\(g'(x)\\) factor is the most commonly dropped term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "f1dda568cfbf8819db715e26e374643a92de8a54",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-ftc",
+    "conceptSlug": "leibniz-rule",
+    "atomId": "leibniz-rule:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Don't forget the chain-rule factor",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Don't forget the chain-rule factor: \\(\\frac{d}{dx}\\int_a^{g(x)} f\\) is \\(f(g(x))\\cdot g'(x)\\), NOT just \\(f(g(x))\\). The \\(g'(x)\\) factor is the most commonly dropped term."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "da1111c3cc60f2c292dccb262884e961bb606426",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for King's property — the reflection trick?",
+    "correct": "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "51163f20aef41c9e4439eeab1d1db76b3e9ff897",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for King's property — the reflection trick?",
+    "correct": "\\(\\int_a^b f(x)\\,dx = \\int_a^b f(a+b-x)\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "99e22291c3955661b4d48c7440a54f8ad09c26b2",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for King's property — the reflection trick?",
+    "correct": "\\(\\int_0^{2a} f(x)\\,dx = \\int_0^a \\big[f(x)+f(2a-x)\\big]\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+      "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2}\\)",
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "e097ecca1954bc3526e72f08cc667a6ceb342bc9",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:formula:3",
+    "sourceKind": "formula",
+    "sourceIndex": 3,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for King's property — the reflection trick?",
+    "correct": "\\(\\int_0^a \\frac{f(x)}{f(x)+f(a-x)}\\,dx = \\frac{a}{2}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)",
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "cf434453a8f6d2a24673f1da1614507d8c531deb",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "\\(\\int_0^a \\frac{f(a-x)}{f(x)+f(a-x)}\\,dx = ?\\)",
+    "correct": "\\(a/2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\pi/4\\)",
+      "0"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "bcbb5268c5a1979a4713abcf99f6ec2d575b5f03",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int_0^{\\pi/2}\\frac{\\cos x}{\\sin x+\\cos x}\\,dx = ?\\)",
+    "correct": "\\(\\pi/4\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "0",
+      "\\(a/2\\)",
+      "\\(\\int_0^a f(a-x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "96fce80aff7a1bb2c5b56cac32e24ca9408a504a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "King's property: \\(\\int_0^a f(x)\\,dx = ?\\)",
+    "correct": "\\(\\int_0^a f(a-x)\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\pi/4\\)",
+      "0",
+      "\\(a/2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "22ad07221b2acdd177c021357f4fc8bd4a39ac37",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:practiceSet:3",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 3,
+    "theme": "computation",
+    "stem": "\\(\\int_0^1 \\ln\\!\\big(\\tfrac{1-x}{x}\\big)dx = ?\\)",
+    "correct": "0",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "1",
+      "\\(\\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\pi/4\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "6da3136c4a87f0c1cce8848c2bcf914b28238584",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(I=\\displaystyle\\int_0^{\\pi}\\frac{x\\sin x}{1+\\cos^2x}\\,dx\\).",
+    "correct": "\\(\\frac{\\pi^2}{4}\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(a/2\\)",
+      "0",
+      "\\(\\pi/4\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "053006f46db61ab3589a800a0739127b785ec35a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Add the reflected form — don't just substitute and stop",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "58c932d575a14318afff3ee598aa67700a3536f9",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "kings-property",
+    "atomId": "kings-property:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — King's reflection only works with the matching limits",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Add the reflected form — don't just substitute and stop: King's property by itself only rewrites \\(I\\); the magic is ADDING the original and the reflected integral so the numerator becomes the denominator. If you substitute and forget to add, you go in a circle.",
+      "King's reflection only works with the matching limits: The reflection is \\(x\\to a+b-x\\) for limits \\([a,b]\\) — NOT a fixed \\(x\\to a-x\\). On \\(\\int_2^5 f\\,dx\\) you must replace \\(x\\) by \\(7-x\\), not \\(2-x\\). Using the wrong reflection sends the limits outside the interval and the cancellation fails."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "a68cfab9c728dcb7a47461e19dc218882785b9f7",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Odd/even symmetry over a symmetric interval?",
+    "correct": "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)",
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "f49837ef03036d64861d9cd17a02bb2520821496",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Odd/even symmetry over a symmetric interval?",
+    "correct": "\\(\\int_{-a}^{a} f(x)\\,dx = 2\\int_0^a f(x)\\,dx \\;\\;(f\\text{ even})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "ae895af4116d176772d1f5e10ccdda354192e1f8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Odd/even symmetry over a symmetric interval?",
+    "correct": "\\(\\int_{-a}^{a} \\frac{f(x)}{1+c^{x}}\\,dx = \\int_0^a f(x)\\,dx \\;\\;(f\\text{ even})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "136438d311611b28d54f965d8019d9ed59f63731",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "\\(\\int_{-a}^{a}\\) of an odd function?",
+    "correct": "0",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "1",
+      "\\(\\int_0^1 x^2\\,dx = 1/3\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d74b759172d1b54550668f090d1cfd07ac4dadef",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int_{-2}^{2} x^3\\cos x\\,dx = ?\\)",
+    "correct": "0",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "1",
+      "\\(\\int_0^1 x^2\\,dx = 1/3\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d8b9c8624a5209d52293d8c6a21bdd7ed8a0cb92",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "\\(\\int_{-1}^{1}\\frac{x^2}{1+5^x}\\,dx = ?\\)",
+    "correct": "\\(\\int_0^1 x^2\\,dx = 1/3\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "0"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "f968be6ab38989c332f413f591226a04908eaa05",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(\\displaystyle\\int_{-\\pi/2}^{\\pi/2}(e^{\\cos x}\\sin x + e^{\\sin x}\\cos x)\\,dx\\).",
+    "correct": "\\(\\frac{e^2-1}{e}\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_0^1 x^2\\,dx = 1/3\\)",
+      "0"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "75554de55a81a2fa58696721c9e0eb4411977af8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "symmetry-odd-even",
+    "atomId": "symmetry-odd-even:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Check parity of the WHOLE integrand",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Check parity of the WHOLE integrand: A sum can have one odd part and one non-odd part. Split it: the odd piece dies, but the rest must still be integrated. Don't declare the whole integral zero just because one term is odd."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "d80ae307eb2954d2de5b4751c8035a59d1e9a493",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Standard results and trig reductions?",
+    "correct": "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "8f45371cdac5cf7617191c4909b26d233cee2b29",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Standard results and trig reductions?",
+    "correct": "\\(\\int_0^1 x^{m}(1-x)^{n}\\,dx = \\frac{m!\\,n!}{(m+n+1)!}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "5f42a38ad35101f48e12307c0573c58f60b6e36c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Standard results and trig reductions?",
+    "correct": "\\(\\int_0^{\\pi/2}\\sin^{2}x\\,dx = \\int_0^{\\pi/2}\\cos^{2}x\\,dx = \\frac{\\pi}{4}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\int_0^{nT} f(x)\\,dx = n\\int_0^{T} f(x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "123ab582fdd7414d8a6092af19b2cfe8a10f9d59",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = ?\\)",
+    "correct": "\\(\\pi/\\sqrt2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{1!\\,9!}{11!}=\\frac{1}{110}\\)",
+      "\\(2\\sin^2(\\theta/2)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "8815d3434049173208e718ba1b329a936495a28e",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "Write \\(1-\\cos\\theta\\) as a half-angle square.",
+    "correct": "\\(2\\sin^2(\\theta/2)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{1!\\,9!}{11!}=\\frac{1}{110}\\)",
+      "\\(\\pi/\\sqrt2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "da695674541b44f74ba36eea198e99757e011aa8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "\\(\\int_0^1 x(1-x)^9\\,dx = ?\\)",
+    "correct": "\\(\\frac{1!\\,9!}{11!}=\\frac{1}{110}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\pi/\\sqrt2\\)",
+      "\\(2\\sin^2(\\theta/2)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "fad6ee46b8d93afa0f40a1da7e14c81273c07fa8",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(\\displaystyle\\int_0^{\\pi/2}\\frac{d\\theta}{1+\\cos\\theta}\\).",
+    "correct": "1.",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(2\\sin^2(\\theta/2)\\)",
+      "\\(\\frac{1!\\,9!}{11!}=\\frac{1}{110}\\)",
+      "\\(\\pi/\\sqrt2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "3e048e08c0ab0a687afa6a653bee3bc1fcfe48f5",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "standard-results-and-reductions",
+    "atomId": "standard-results-and-reductions:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Reduce the power BEFORE integrating",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Reduce the power BEFORE integrating: Don't integrate \\(\\sin^4x\\) and \\(\\cos^4x\\) separately — combine them via \\(\\sin^4x+\\cos^4x=\\frac{3+\\cos4x}{4}\\) first. The reduction turns a tedious computation into a one-line answer."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "2d3d61f57ee9cd8994011276276d9bdd06ce5f69",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "direct-evaluation",
+    "atomId": "direct-evaluation:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Simplify \\(\\tan^3x+\\tan x\\).",
+    "correct": "\\(\\tan x\\,\\sec^2x\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{e^x(\\sin x-\\cos x)}{2}\\)",
+      "\\(\\frac{e^2+1}{4}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Transform the limits when you substitute: When you substitute \\(u=g(x)\\) in a definite integral, change the limits to \\(g(a)\\) and \\(g(b)\\) and you never need to back-substitute. Forgetting to convert the limits is the classic definite-integral error."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "d6924df20adddaa756f96005e755e793548f6033",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "direct-evaluation",
+    "atomId": "direct-evaluation:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int e^x\\sin x\\,dx = ?\\)",
+    "correct": "\\(\\frac{e^x(\\sin x-\\cos x)}{2}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\tan x\\,\\sec^2x\\)",
+      "\\(\\frac{e^2+1}{4}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Transform the limits when you substitute: When you substitute \\(u=g(x)\\) in a definite integral, change the limits to \\(g(a)\\) and \\(g(b)\\) and you never need to back-substitute. Forgetting to convert the limits is the classic definite-integral error."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "2571f22832116e9d1aa7bc58daf20ef5e5c75071",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "direct-evaluation",
+    "atomId": "direct-evaluation:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "\\(\\int_1^e x\\ln x\\,dx = ?\\)",
+    "correct": "\\(\\frac{e^2+1}{4}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{e^x(\\sin x-\\cos x)}{2}\\)",
+      "\\(\\tan x\\,\\sec^2x\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Transform the limits when you substitute: When you substitute \\(u=g(x)\\) in a definite integral, change the limits to \\(g(a)\\) and \\(g(b)\\) and you never need to back-substitute. Forgetting to convert the limits is the classic definite-integral error."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "42661e1c9929f06555563ca5a217ffbd4d6f5814",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "direct-evaluation",
+    "atomId": "direct-evaluation:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(\\displaystyle\\int_0^{\\pi/4}(\\tan^3x+\\tan x)\\,dx\\).",
+    "correct": "\\(\\frac12\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{e^x(\\sin x-\\cos x)}{2}\\)",
+      "\\(\\tan x\\,\\sec^2x\\)",
+      "\\(\\frac{e^2+1}{4}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Transform the limits when you substitute: When you substitute \\(u=g(x)\\) in a definite integral, change the limits to \\(g(a)\\) and \\(g(b)\\) and you never need to back-substitute. Forgetting to convert the limits is the classic definite-integral error."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "089b1137f325aea8b328f55a8527554b19af5f59",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-properties",
+    "conceptSlug": "direct-evaluation",
+    "atomId": "direct-evaluation:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Transform the limits when you substitute",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Transform the limits when you substitute: When you substitute \\(u=g(x)\\) in a definite integral, change the limits to \\(g(a)\\) and \\(g(b)\\) and you never need to back-substitute. Forgetting to convert the limits is the classic definite-integral error."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "c31ed9685cd0a31c50a899bfc44dad11448593d0",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-absolute-value",
+    "atomId": "integrating-absolute-value:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Where do you split \\(\\int|x^2-1|\\,dx\\)?",
+    "correct": "At \\(x=\\pm1\\) (the zeros of \\(x^2-1\\))",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-1\\)",
+      "\\(q \\ge |p|\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Find the zeros first — don't drop the absolute value: \\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
+      "Split |x| at 0, even when 0 is interior to the interval: For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "bd1b0310c682d489e2c5c800cf9930dd1185137a",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-absolute-value",
+    "atomId": "integrating-absolute-value:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int_{-2}^{-1}\\frac{x}{|x|}\\,dx = ?\\)",
+    "correct": "\\(-1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1\\)",
+      "\\(-2\\)",
+      "\\(0\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Find the zeros first — don't drop the absolute value: \\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
+      "Split |x| at 0, even when 0 is interior to the interval: For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "5251e713c4f24f12c6a594477e73443a7464032b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-absolute-value",
+    "atomId": "integrating-absolute-value:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "If \\(\\int_a^b f = p\\) and \\(\\int_a^b|f| = q\\), which is larger?",
+    "correct": "\\(q \\ge |p|\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-1\\)",
+      "At \\(x=\\pm1\\) (the zeros of \\(x^2-1\\))"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Find the zeros first — don't drop the absolute value: \\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
+      "Split |x| at 0, even when 0 is interior to the interval: For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "593bffbdb1cdb99288d43408eafb8f663b8c2553",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-absolute-value",
+    "atomId": "integrating-absolute-value:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(\\displaystyle\\int_0^{\\pi/2} |\\sin x - \\cos x|\\,dx\\).",
+    "correct": "\\(2(\\sqrt2-1)\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(q \\ge |p|\\)",
+      "\\(-1\\)",
+      "At \\(x=\\pm1\\) (the zeros of \\(x^2-1\\))"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Find the zeros first — don't drop the absolute value: \\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
+      "Split |x| at 0, even when 0 is interior to the interval: For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "9151154416e4f3cd45855183cdc70b05c9ea8c90",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-absolute-value",
+    "atomId": "integrating-absolute-value:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Find the zeros first — don't drop the absolute value",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Find the zeros first — don't drop the absolute value: \\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
+      "Split |x| at 0, even when 0 is interior to the interval: For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "812c5696df5ad039348a998fe2f8672d8f2936cc",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-absolute-value",
+    "atomId": "integrating-absolute-value:trap:1",
+    "sourceKind": "trap",
+    "sourceIndex": 1,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Split |x| at 0, even when 0 is interior to the interval",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Find the zeros first — don't drop the absolute value: \\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
+      "Split |x| at 0, even when 0 is interior to the interval: For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\)."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "99b38d212539835effb0ad4cc51b17b874b4c780",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Integrating greatest-integer (floor) functions?",
+    "correct": "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)",
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "1d54ff392b2dea60c5c1c9641d95795c6bcb249c",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Integrating greatest-integer (floor) functions?",
+    "correct": "\\(\\lfloor x\\rfloor + \\lfloor -x\\rfloor = -1 \\;\\;(x\\notin\\mathbb{Z})\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+      "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2}\\)",
+      "\\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "52dffaaa7c19bf63b23d8a7f183e64b6ee2fe689",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:formula:2",
+    "sourceKind": "formula",
+    "sourceIndex": 2,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Integrating greatest-integer (floor) functions?",
+    "correct": "\\(\\int_0^{n}\\lfloor x\\rfloor\\,dx = \\frac{n(n-1)}{2}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)",
+      "\\(\\frac{d}{dx}\\int_{a}^{g(x)} f(t)\\,dt = f(g(x))\\,g'(x)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "a221b2b629943611e3ca5be622ab99fe737eb61f",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Value of \\(\\lfloor x\\rfloor\\) on \\([-1,0)\\)?",
+    "correct": "\\(-1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1\\)",
+      "\\(-2\\)",
+      "\\(0\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "fb8a77b3d5b020ccd6eabf66098b4db4471343b3",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "\\(\\int_n^{n+1}(x-\\lfloor x\\rfloor)\\,dx = ?\\)",
+    "correct": "\\(1/2\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(2/1\\)",
+      "\\(-1/2\\)",
+      "\\(2/2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "30c1fdf335950182e18dc4dfc9e2907bf10cfd06",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "\\(\\lfloor x\\rfloor + \\lfloor -x\\rfloor\\) for non-integer x?",
+    "correct": "\\(-1\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(1\\)",
+      "\\(-2\\)",
+      "\\(0\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "3c018cc43299e08e20363cfd805d87579e0141c4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Evaluate \\(\\displaystyle\\int_0^{\\sqrt2} \\lfloor x^2\\rfloor\\,dx\\).",
+    "correct": "\\(\\sqrt2-1\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "aafde8fd87ae90ae9b7d947a22f90fda6447faf5",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-piecewise",
+    "conceptSlug": "integrating-greatest-integer",
+    "atomId": "integrating-greatest-integer:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — ⌊x⌋ on [−1, 0) is −1, not 0",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "⌊x⌋ on [−1, 0) is −1, not 0: The floor of a negative non-integer rounds DOWN: \\(\\lfloor -0.3\\rfloor = -1\\). A common slip is using \\(\\lfloor x\\rfloor=0\\) on \\([-1,0)\\) — it is \\(-1\\) there, which flips the sign of the contribution."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "970f5fb0072119ac5b7380ba2db6e84e0f5af727",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:formula:0",
+    "sourceKind": "formula",
+    "sourceIndex": 0,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Area between curves?",
+    "correct": "\\(A = \\int_a^b |f(x)|\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)",
+      "\\(\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\frac{\\pi}{\\sqrt2}\\)",
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "57c9a0aa7b0ef584ac0fc573db89703f63c61eeb",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:formula:1",
+    "sourceKind": "formula",
+    "sourceIndex": 1,
+    "theme": "formula",
+    "stem": "Which of the following is the formula for Area between curves?",
+    "correct": "\\(A = \\int_a^b |f(x)-g(x)|\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12\\)",
+      "\\(\\int_{-a}^{a} f(x)\\,dx = 0 \\;\\;(f\\text{ odd})\\)",
+      "\\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\;\\;(F'=f)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "6b8fab9d4705ecf3583110e7def97d8facd08321",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Area between \\(y=f(x)\\) and x-axis on \\([a,b]\\)?",
+    "correct": "\\(\\int_a^b |f(x)|\\,dx\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(2\\int_0^2(4-x^2)\\,dx = \\frac{32}{3}\\)",
+      "Solve \\(f(x)=g(x)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "7647acc5f7cfe7453935edc8b6076cf5d3de6630",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "How do you find the limits for area between two curves?",
+    "correct": "Solve \\(f(x)=g(x)\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_a^b |f(x)|\\,dx\\)",
+      "\\(2\\int_0^2(4-x^2)\\,dx = \\frac{32}{3}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "41901abb3a51b4ba90bd8018d940d3e120757f59",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "Area between \\(y=4-x^2\\) and the x-axis on \\([-2,2]\\)?",
+    "correct": "\\(2\\int_0^2(4-x^2)\\,dx = \\frac{32}{3}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "Solve \\(f(x)=g(x)\\)",
+      "\\(\\int_a^b |f(x)|\\,dx\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "4e493d07235d8fdea812f3ab78e64c9bad4537ed",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "Find the area bounded by \\(y=|x^2-1|\\) and the x-axis between its roots.",
+    "correct": "\\(\\frac43\\).",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\int_a^b |f(x)|\\,dx\\)",
+      "\\(2\\int_0^2(4-x^2)\\,dx = \\frac{32}{3}\\)",
+      "Solve \\(f(x)=g(x)\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "503174b50257c7cc49cdd34445f10e9ed9226a81",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-area",
+    "conceptSlug": "area-under-curves",
+    "atomId": "area-under-curves:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — Area is unsigned — use the absolute value",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "Area is unsigned — use the absolute value: Plain \\(\\int_{-1}^{1}(x^2-1)\\,dx\\) gives a NEGATIVE number, which cannot be an area. Take \\(|f|\\) (or split at the roots and add magnitudes) so the region below the axis still adds positively."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "340cd868fe590f1e8c359ede7bae8f9313385fbd",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-function-conditions",
+    "conceptSlug": "integral-function-conditions",
+    "atomId": "integral-function-conditions:practiceSet:0",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "How many independent conditions to fix 3 unknown coefficients?",
+    "correct": "3",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "-3",
+      "6",
+      "4"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "One condition, one equation — match the counts: You need as many independent conditions as unknown parameters. With three unknowns P, Q, R you must extract three equations (e.g. a value, an integral, and a derivative) before the system is solvable."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "7c005f2599c91025b5bf18ea30d1eec76bf2cea4",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-function-conditions",
+    "conceptSlug": "integral-function-conditions",
+    "atomId": "integral-function-conditions:practiceSet:1",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 1,
+    "theme": "computation",
+    "stem": "For \\(f=Pe^x+Qe^{2x}+Re^{3x}\\), write \\(f'(0)\\).",
+    "correct": "\\(P+2Q+3R\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(\\frac{e^{2c}-1}{2}\\)",
+      "3"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "One condition, one equation — match the counts: You need as many independent conditions as unknown parameters. With three unknowns P, Q, R you must extract three equations (e.g. a value, an integral, and a derivative) before the system is solvable."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "295469adc72bb918a798e19ff46d0e605306621b",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-function-conditions",
+    "conceptSlug": "integral-function-conditions",
+    "atomId": "integral-function-conditions:practiceSet:2",
+    "sourceKind": "practiceSet",
+    "sourceIndex": 2,
+    "theme": "computation",
+    "stem": "\\(\\int_0^{c} e^{2x}\\,dx = ?\\)",
+    "correct": "\\(\\frac{e^{2c}-1}{2}\\)",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "\\(P+2Q+3R\\)",
+      "3"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "One condition, one equation — match the counts: You need as many independent conditions as unknown parameters. With three unknowns P, Q, R you must extract three equations (e.g. a value, an integral, and a derivative) before the system is solvable."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "4e09d166b534e18d3ea71308e9b179495dff5400",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-function-conditions",
+    "conceptSlug": "integral-function-conditions",
+    "atomId": "integral-function-conditions:selfCheck:0",
+    "sourceKind": "selfCheck",
+    "sourceIndex": 0,
+    "theme": "computation",
+    "stem": "For \\(f(x)=Pe^x+Qe^{2x}+Re^{3x}\\) it is found that \\(P=1,Q=2,R=3\\). What is \\(f'(0)\\)?",
+    "correct": "14.",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [
+      "3",
+      "\\(P+2Q+3R\\)",
+      "\\(\\frac{e^{2c}-1}{2}\\)"
+    ],
+    "distractorSource": null,
+    "trapHints": [
+      "One condition, one equation — match the counts: You need as many independent conditions as unknown parameters. With three unknowns P, Q, R you must extract three equations (e.g. a value, an integral, and a derivative) before the system is solvable."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": true,
+    "sourceFingerprint": "7f5a3202bcddfaad0891d4fbd808af4a0d7dff81",
+    "timeEstimateSec": 45
+  },
+  {
+    "exam": "NDA",
+    "subjectRoute": "nda-maths",
+    "chapterSlug": "definite-integration",
+    "subtopicSlug": "defint-function-conditions",
+    "conceptSlug": "integral-function-conditions",
+    "atomId": "integral-function-conditions:trap:0",
+    "sourceKind": "trap",
+    "sourceIndex": 0,
+    "theme": "trap",
+    "stem": "Spot the common mistake — One condition, one equation — match the counts",
+    "correct": "",
+    "options": null,
+    "answer": null,
+    "candidateDistractors": [],
+    "distractorSource": null,
+    "trapHints": [
+      "One condition, one equation — match the counts: You need as many independent conditions as unknown parameters. With three unknowns P, Q, R you must extract three equations (e.g. a value, an integral, and a derivative) before the system is solvable."
+    ],
+    "status": "needs_review",
+    "looksMcqClean": false,
+    "sourceFingerprint": "bb9b6d18d843635c559b60bb045c2250cab940e5",
+    "timeEstimateSec": 45
+  }
+]

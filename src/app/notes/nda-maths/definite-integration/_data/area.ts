@@ -20,6 +20,12 @@ export const AREA_NOTE: SubtopicNote = {
         "- Area between two curves is \\(\\displaystyle\\int_a^b |f(x)-g(x)|\\,dx\\), with \\(a,b\\) the intersection points (solve \\(f=g\\)).\n" +
         "- Use **symmetry**: if the region is symmetric about a vertical line, integrate one half and double.",
       visualizationSlug: "defint-area-region",
+      formula: {
+        label: "Area as a definite integral",
+        latex:
+          "A = \\int_a^b |f(x)|\\,dx \\qquad " +
+          "A = \\int_a^b |f(x)-g(x)|\\,dx",
+      },
       authoredExample: {
         prompt: "Find the area enclosed between \\(y=x^2\\) and \\(y=x\\).",
         steps: [

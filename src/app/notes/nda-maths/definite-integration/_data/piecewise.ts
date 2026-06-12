@@ -52,6 +52,11 @@ export const PIECEWISE_NOTE: SubtopicNote = {
           body:
             "\\(\\int_{-1}^{1}(1-x^2)\\,dx\\) (no bars) gives a SIGNED area, but \\(\\int_{-1}^{1}|x^2-1|\\,dx\\) needs the sign of \\(x^2-1\\) on each piece. Forgetting the bars (or the split) gives the wrong, signed value.",
         },
+        {
+          title: "Split |x| at 0, even when 0 is interior to the interval",
+          body:
+            "For \\(\\int_{-2}^{3}|x|\\,dx\\) you cannot just use \\(\\tfrac{x^2}{2}\\) across the whole range: \\(|x|=-x\\) on \\([-2,0]\\) and \\(|x|=x\\) on \\([0,3]\\). Split at the break-point inside the interval and add \\(2 + \\tfrac{9}{2} = \\tfrac{13}{2}\\); skipping the split gives the wrong \\(\\tfrac{5}{2}\\).",
+        },
       ],
     },
 
@@ -69,6 +74,13 @@ export const PIECEWISE_NOTE: SubtopicNote = {
         "- Useful identity: \\(\\lfloor x\\rfloor + \\lfloor -x\\rfloor = -1\\) for non-integer \\(x\\), so \\(\\int_a^b(\\lfloor x\\rfloor+\\lfloor -x\\rfloor)\\,dx = a-b\\).\n" +
         "- The fractional part \\(x-\\lfloor x\\rfloor\\) has \\(\\int_n^{n+1}(x-\\lfloor x\\rfloor)\\,dx = \\tfrac12\\).",
       visualizationSlug: "defint-greatest-integer-area",
+      formula: {
+        label: "Greatest-integer (floor) results",
+        latex:
+          "\\int_n^{n+1}\\big(x-\\lfloor x\\rfloor\\big)\\,dx = \\frac12 \\qquad " +
+          "\\lfloor x\\rfloor + \\lfloor -x\\rfloor = -1 \\;\\;(x\\notin\\mathbb{Z}) \\qquad " +
+          "\\int_0^{n}\\lfloor x\\rfloor\\,dx = \\frac{n(n-1)}{2}",
+      },
       authoredExample: {
         prompt: "Evaluate \\(\\displaystyle\\int_0^{1.5} \\lfloor x\\rfloor\\,dx\\).",
         steps: [

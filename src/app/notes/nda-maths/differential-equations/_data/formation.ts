@@ -52,6 +52,11 @@ export const FORMATION_NOTE: SubtopicNote = {
           body:
             "A one-constant family needs one differentiation (order 1); a two-constant family like \\(y^2=4a(x-b)\\) needs two (order 2, giving \\(yy''+(y')^2=0\\)). Differentiating too few times leaves a constant stranded in the answer.",
         },
+        {
+          title: "The order of the resulting ODE equals the number of constants",
+          body:
+            "Before you differentiate, the family \\(y=Ae^{2x}+Be^{-3x}\\) has 2 arbitrary constants, so the eliminated ODE is order 2 — guaranteed. Reading the order off the highest derivative you happen to reach mid-working (or stopping early) gives the wrong order; count the independent constants first and that IS the order.",
+        },
       ],
     },
 

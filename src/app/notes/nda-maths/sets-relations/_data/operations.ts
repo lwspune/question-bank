@@ -71,6 +71,10 @@ export const OPERATIONS_NOTE: SubtopicNote = {
         "- \\(A \\cup B\\) (union), \\(A \\cap B\\) (intersection), \\(A'\\) (complement, relative to the universal set), \\(A - B = A \\cap B'\\) (difference).\n" +
         "- **Complement is an involution**: \\((A')' = A\\). A long nested complement like \\(E-(E-(E-A))\\) collapses by cancelling in pairs.\n" +
         "- A set can be defined by a condition — solving it gives the set: \\((x-a)(x-b) > 0\\) (with \\(a<b\\)) gives \\(x < a\\) or \\(x > b\\); multiples of 2 AND 3 are the multiples of 6.",
+      formula: {
+        label: "Difference and complement identities",
+        latex: "A - B = A \\cap B' \\qquad (A')' = A",
+      },
       visualizationSlug: "sets-venn-two",
       authoredExample: {
         prompt:
@@ -183,6 +187,10 @@ export const OPERATIONS_NOTE: SubtopicNote = {
         "- **Symmetric difference**: \\(A \\triangle B = (A-B)\\cup(B-A) = (A\\cup B)-(A\\cap B) = (A\\cap B')\\cup(A'\\cap B)\\).\n" +
         "- \\(A \\triangle B = \\emptyset \\iff A = B\\); also \\(A\\cup B = A\\cap B \\iff A = B\\).\n" +
         "- **Cancellation fails**: \\(A\\cap B = A\\cap C\\) does NOT force \\(B=C\\); \\(A\\cup C = B\\cup C\\) forces \\(A=B\\) only when C is **disjoint** from both.",
+      formula: {
+        label: "Symmetric difference",
+        latex: "A \\triangle B = (A - B) \\cup (B - A) = (A \\cup B) - (A \\cap B)",
+      },
       authoredExample: {
         prompt:
           "Sets satisfy \\(A\\cap C = B\\cap C\\) with \\(C\\) disjoint from both \\(A\\) and \\(B\\). Also \\(A\\cup C = B\\cup C\\). What can you conclude?",
