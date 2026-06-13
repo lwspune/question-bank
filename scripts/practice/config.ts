@@ -411,6 +411,61 @@ export const TOPICS: Record<string, Topic> = {
       "Parametric, Implicit, and Higher-Order Derivatives",
     ],
   },
+
+  "application-of-derivatives": {
+    id: "application-of-derivatives",
+    chapterName: "Application of Derivatives",
+    qFrom: 2498,
+    qTo: 2677,
+    sourceFile: "NDA_Maths_Practice__Calculus__Application_of_Derivatives.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 126-143.pdf"), pages: [5, 6, 7, 8, 9, 10, 11, 12, 13] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-2 sol page 353-368.pdf"), pages: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
+    subtopics: [
+      "Monotonicity, Extrema, and Critical Points",
+      "Optimisation — Geometric, Trigonometric, AM-GM",
+      "Tangents and Slopes",
+    ],
+  },
+
+  "indefinite-integration": {
+    id: "indefinite-integration",
+    chapterName: "Indefinite Integration",
+    qFrom: 2678,
+    qTo: 2748,
+    sourceFile: "NDA_Maths_Practice__Calculus__Indefinite_Integration.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 126-143.pdf"), pages: [13, 14, 15, 16, 17] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-3 sol page 369-388.pdf"), pages: [0, 1, 2, 3, 4, 5, 6, 7] },
+    subtopics: [
+      "Integration by Partial Fractions",
+      "Integration by Parts",
+      "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+      "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    ],
+  },
+
+  // Definite Integration Q2749-2885: Q2749-2757 are on the LAST page of the
+  // 2nd question PDF (page 126-143, index 17); Q2758-2885 are on the 3rd PDF
+  // (page 145-161, indices 0-5). questionPages points at the 3rd PDF; the 9
+  // spillover questions on PDF-2 p17 are rendered in separately (see render note).
+  "definite-integration": {
+    id: "definite-integration",
+    chapterName: "Definite Integration",
+    qFrom: 2749,
+    qTo: 2885,
+    sourceFile: "NDA_Maths_Practice__Calculus__Definite_Integration.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 145-161.pdf"), pages: [0, 1, 2, 3, 4, 5] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-3 sol page 369-388.pdf"), pages: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] },
+    subtopics: [
+      "Area Under Curves",
+      "Definite Integrals in Function Conditions",
+      "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+      "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+      "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);

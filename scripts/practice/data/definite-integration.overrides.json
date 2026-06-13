@@ -1,0 +1,5 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong (each verified by re-derivation + zoom-crop). Q2816 is an exact duplicate of Q2780 (correctly keyed B); the duplicate was mis-keyed C — overriding to B makes them consistent (commitStaged content-hash dedup will then skip one copy).",
+  "2816": { "answer": "B", "reason": "key 'c' wrong: with u=x^2, integral = int_0^{pi/4} u sin u du = (1/sqrt2)(1 - pi/4) = option B (identical to Q2780 which is correctly keyed B)" },
+  "2827": { "answer": "C", "reason": "key 'a' wrong: sqrt(1-cos^2 theta)=|sin theta|, so int_{-pi/2}^{pi/2} |sin theta| d theta = 2*int_0^{pi/2} sin = 2 = option C (the integrand is non-negative so the value cannot be 0)" }
+}

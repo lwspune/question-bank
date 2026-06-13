@@ -1,0 +1,286 @@
+[
+  {
+    "number": 2678,
+    "solution": "Using \\(e^{k\\log x} = x^k\\), the integrand becomes \\(\\dfrac{x^6 - x^5}{x^4 - x^3} = \\dfrac{x^5(x - 1)}{x^3(x - 1)} = x^2\\). Hence \\(\\displaystyle\\int x^2\\,dx = \\dfrac{x^3}{3} + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2679,
+    "solution": "If \\(\\displaystyle\\int \\dfrac{f(x)}{\\log(\\sin x)}\\,dx = \\log[\\log \\sin x] + c\\), differentiate the right side: \\(\\dfrac{d}{dx}\\log[\\log \\sin x] = \\dfrac{1}{\\log \\sin x}\\cdot \\dfrac{\\cos x}{\\sin x} = \\dfrac{\\cot x}{\\log \\sin x}\\). Comparing, \\(f(x) = \\cot x\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2680,
+    "solution": "\\(\\dfrac{\\sin^2 x}{1 + \\cos x} = \\dfrac{1 - \\cos^2 x}{1 + \\cos x} = \\dfrac{(1 - \\cos x)(1 + \\cos x)}{1 + \\cos x} = 1 - \\cos x\\). Therefore \\(\\displaystyle\\int (1 - \\cos x)\\,dx = x - \\sin x + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2681,
+    "solution": "Since \\(f''(x) = g''(x)\\), the function \\(f'(x) - g'(x)\\) is constant, equal to \\(f'(1) - g'(1) = 4 - 6 = -2\\). Integrating, \\(f(x) - g(x) = -2x + k\\). At \\(x = 2\\): \\(f(2) - g(2) = 3 - 9 = -6 = -4 + k\\), so \\(k = -2\\). Then \\(f(1) - g(1) = -2 + (-2) = -4\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2682,
+    "solution": "Given \\(f'(1) = 4\\) and \\(g'(1) = 2\\), \\(f(2) = 9\\) and \\(g(2) = 3\\). Since \\(f'' - g'' = 0\\), \\(f'(x) - g'(x)\\) is constant equal to \\(4 - 2 = 2\\), so \\(f(x) - g(x) = 2x + k\\). At \\(x = 2\\): \\(9 - 3 = 6 = 4 + k\\), so \\(k = 2\\). At \\(x = 3/2\\): \\(f - g = 2\\cdot\\tfrac{3}{2} + 2 = 3 + 2 = 5\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2683,
+    "solution": "Differentiate \\(\\displaystyle\\int f(x)\\,dx = \\dfrac{f(x)}{2} + C\\): we get \\(f(x) = \\dfrac{f'(x)}{2}\\), i.e. \\(f'(x) = 2f(x)\\). The solution of this differential equation is \\(f(x) = e^{2x}\\) (an exponential, no additive constant). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2684,
+    "solution": "Differentiate \\(-\\log(\\log \\cos x) + C\\): \\(\\dfrac{d}{dx}[-\\log(\\log \\cos x)] = -\\dfrac{1}{\\log \\cos x}\\cdot\\dfrac{-\\sin x}{\\cos x} = \\dfrac{\\tan x}{\\log \\cos x}\\). Comparing with \\(\\dfrac{f(x)}{\\log \\cos x}\\), \\(f(x) = \\tan x\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2685,
+    "solution": "Since \\(1 + \\sin 2x = (\\sin x + \\cos x)^2\\), \\(\\sqrt{1 + \\sin 2x} = |\\sin x + \\cos x|\\). The integrand equals \\(\\dfrac{\\sin x + \\cos x}{|\\sin x + \\cos x|} = \\pm 1\\); taking the positive branch, \\(I = \\displaystyle\\int 1\\,dx = x\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2686,
+    "solution": "\\(e^{x\\log a} = a^x\\), so the integrand is \\(a^x e^x = (ae)^x\\). Then \\(\\displaystyle\\int (ae)^x\\,dx = \\dfrac{(ae)^x}{\\log(ae)} + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2687,
+    "solution": "Test option A: let \\(f(x) = \\dfrac{2}{(b^2 - a^2)\\cos 2x}\\). Then \\(\\log f(x) = \\log 2 - \\log(b^2 - a^2) - \\log(\\cos 2x)\\), so \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{2(b^2 - a^2)}\\log f(x)\\right] = \\dfrac{1}{2(b^2 - a^2)}\\cdot 2\\tan 2x = \\dfrac{\\tan 2x}{b^2 - a^2}\\). The integrand \\(f(x)\\sin x \\cos x = \\dfrac{2}{(b^2 - a^2)\\cos 2x}\\cdot\\dfrac{\\sin 2x}{2} = \\dfrac{\\tan 2x}{b^2 - a^2}\\), which matches. Hence (A)."
+  },
+  {
+    "number": 2688,
+    "solution": "By definition of the derivative, \\(f(x) = \\dfrac{d}{dx}(\\sin^2 x) = 2\\sin x\\cos x = \\sin 2x\\). Then \\(\\displaystyle\\int 4f(x)\\,dx = \\int 4\\sin 2x\\,dx = -2\\cos 2x + c\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2689,
+    "solution": "\\(\\dfrac{2^{x+1} - 5^{x-1}}{10^x} = 2\\cdot\\dfrac{2^x}{10^x} - \\dfrac{1}{5}\\cdot\\dfrac{5^x}{10^x} = 2\\left(\\dfrac{1}{5}\\right)^x - \\dfrac{1}{5}\\left(\\dfrac{1}{2}\\right)^x\\). Integrating: \\(\\displaystyle\\int 2\\,(1/5)^x\\,dx = \\dfrac{-2}{\\log 5}5^{-x}\\) and \\(\\displaystyle\\int -\\tfrac{1}{5}(1/2)^x\\,dx = \\dfrac{1}{5\\log 2}2^{-x}\\). Sum \\(= \\dfrac{-2}{\\log 5}5^{-x} + \\dfrac{1}{5\\log 2}2^{-x} + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2690,
+    "solution": "Differentiate \\(\\dfrac{1}{2}f^2(x) + c\\): we get \\(f(x)f'(x)\\). Comparing with the integrand \\(f(x)\\cos x\\), we need \\(f'(x) = \\cos x\\), so \\(f(x) = \\sin x\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2691,
+    "solution": "\\(1 + \\cos 8x = 2\\cos^2 4x\\), so \\(\\displaystyle\\int \\dfrac{1}{2\\cos^2 4x}\\,dx = \\dfrac{1}{2}\\int \\sec^2 4x\\,dx = \\dfrac{1}{2}\\cdot\\dfrac{\\tan 4x}{4} = \\dfrac{\\tan 4x}{8} + C\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2692,
+    "solution": "\\(\\sin^6 x + \\cos^6 x = (\\sin^2 x + \\cos^2 x)^3 - 3\\sin^2 x\\cos^2 x(\\sin^2 x + \\cos^2 x) = 1 - 3\\sin^2 x\\cos^2 x\\). Therefore the integrand \\(= 1 - 3\\sin^2 x\\cos^2 x + 3\\sin^2 x\\cos^2 x = 1\\). Hence \\(\\displaystyle\\int 1\\,dx = x + c\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2693,
+    "solution": "\\(\\cos 2x - \\cos 2\\theta = (2\\cos^2 x - 1) - (2\\cos^2\\theta - 1) = 2(\\cos^2 x - \\cos^2\\theta) = 2(\\cos x - \\cos\\theta)(\\cos x + \\cos\\theta)\\). Dividing by \\(\\cos x - \\cos\\theta\\) gives \\(2(\\cos x + \\cos\\theta)\\). Then \\(\\displaystyle\\int 2(\\cos x + \\cos\\theta)\\,dx = 2(\\sin x + x\\cos\\theta) + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2694,
+    "solution": "\\(\\displaystyle\\int \\dfrac{1}{\\sqrt{9 - 16x^2}}\\,dx = \\dfrac{1}{4}\\int \\dfrac{1}{\\sqrt{(3/4)^2 - x^2}}\\,dx = \\dfrac{1}{4}\\sin^{-1}\\!\\left(\\dfrac{4x}{3}\\right) + c\\). So \\(\\alpha = \\dfrac{1}{4}\\) and \\(\\beta = \\dfrac{4}{3}\\), giving \\(\\alpha + \\dfrac{1}{\\beta} = \\dfrac{1}{4} + \\dfrac{3}{4} = 1\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2695,
+    "solution": "\\(\\sqrt{\\dfrac{x - 5}{x - 7}} = \\dfrac{x - 5}{\\sqrt{(x - 5)(x - 7)}} = \\dfrac{x - 5}{\\sqrt{x^2 - 12x + 35}}\\). Write \\(x - 5 = \\tfrac{1}{2}(2x - 12) + 1\\). Then \\(\\displaystyle\\int \\dfrac{\\tfrac{1}{2}(2x - 12)}{\\sqrt{x^2 - 12x + 35}}\\,dx = \\sqrt{x^2 - 12x + 35}\\) and \\(\\displaystyle\\int \\dfrac{1}{\\sqrt{(x - 6)^2 - 1}}\\,dx = \\log\\left|x - 6 + \\sqrt{x^2 - 12x + 35}\\right|\\). Thus the coefficient \\(A = 1\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2696,
+    "solution": "Let \\(u = \\log(\\sec x - \\tan x)\\). Then \\(du = \\dfrac{\\sec x\\tan x - \\sec^2 x}{\\sec x - \\tan x}\\,dx = \\dfrac{-\\sec x(\\sec x - \\tan x)}{\\sec x - \\tan x}\\,dx = -\\sec x\\,dx\\), so \\(\\sec x\\,dx = -du\\). Hence \\(\\displaystyle\\int u(-du) = -\\dfrac{u^2}{2} = -\\dfrac{1}{2}\\{\\log(\\sec x - \\tan x)\\}^2 + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2697,
+    "solution": "Let \\(u = e^x \\cdot x\\). Then \\(du = (e^x + e^x x)\\,dx = e^x(1 + x)\\,dx\\). The integral becomes \\(\\displaystyle\\int \\dfrac{du}{\\cos^2 u} = \\int \\sec^2 u\\,du = \\tan u + c = \\tan(e^x \\cdot x) + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2698,
+    "solution": "\\(\\tan^3 x + \\tan x = \\tan x(\\tan^2 x + 1) = \\tan x\\sec^2 x\\), so the integrand is \\(\\sec^m x\\cdot\\tan x\\sec^2 x = \\sec^{m+1} x\\,(\\sec x\\tan x)\\). With \\(u = \\sec x,\\ du = \\sec x\\tan x\\,dx\\), \\(\\displaystyle\\int u^{m+1}\\,du = \\dfrac{u^{m+2}}{m + 2} = \\dfrac{\\sec^{m+2} x}{m + 2} + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2699,
+    "solution": "\\(\\dfrac{1}{\\sin x\\cos x} = \\dfrac{\\sec^2 x}{\\tan x}\\). With \\(u = \\tan x,\\ du = \\sec^2 x\\,dx\\), \\(\\displaystyle\\int \\dfrac{du}{u} = \\log|u| = \\log|\\tan x| + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2700,
+    "solution": "Let \\(u = x + \\tan^{-1} x\\). Then \\(du = \\left(1 + \\dfrac{1}{1 + x^2}\\right)dx = \\dfrac{x^2 + 2}{x^2 + 1}\\,dx\\). The integral becomes \\(\\displaystyle\\int a^u\\,du = \\dfrac{a^u}{\\log a} = \\dfrac{a^{x + \\tan^{-1} x}}{\\log a} + c\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2701,
+    "solution": "Let \\(u = \\log\\!\\left(\\dfrac{g(x)}{f(x)}\\right) = \\log g(x) - \\log f(x)\\). Then \\(du = \\left(\\dfrac{g'}{g} - \\dfrac{f'}{f}\\right)dx = \\dfrac{fg' - f'g}{fg}\\,dx\\). The integral is \\(\\displaystyle\\int u\\,du = \\dfrac{u^2}{2} = \\dfrac{1}{2}\\left[\\log\\!\\left(\\dfrac{g(x)}{f(x)}\\right)\\right]^2 + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2702,
+    "solution": "Take \\(x^4\\) out of \\((x^4 + 1)^{3/4}\\): denominator \\(= x^2\\cdot x^3(1 + x^{-4})^{3/4} = x^5(1 + x^{-4})^{3/4}\\). So the integral is \\(\\displaystyle\\int x^{-5}(1 + x^{-4})^{-3/4}\\,dx\\). Let \\(u = 1 + x^{-4},\\ du = -4x^{-5}\\,dx\\); then \\(\\displaystyle\\int -\\tfrac{1}{4}u^{-3/4}\\,du = -u^{1/4} = -\\left(\\dfrac{x^4 + 1}{x^4}\\right)^{1/4} + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2703,
+    "solution": "\\(\\dfrac{1}{\\sqrt{\\sin^3 x\\cos x}} = \\dfrac{\\sec^2 x}{\\tan^{3/2} x}\\) (divide numerator and denominator by \\(\\cos^2 x\\)). With \\(u = \\tan x,\\ du = \\sec^2 x\\,dx\\), \\(\\displaystyle\\int u^{-3/2}\\,du = \\dfrac{u^{-1/2}}{-1/2} = \\dfrac{-2}{\\sqrt{\\tan x}} + c\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2704,
+    "solution": "Let \\(\\theta = \\sin^{-1} x\\), so \\(d\\theta = \\dfrac{dx}{\\sqrt{1 - x^2}}\\). The integral becomes \\(\\displaystyle\\int \\sec^2\\theta\\,d\\theta = \\tan\\theta + c = \\tan(\\sin^{-1} x) + c\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2705,
+    "solution": "\\(\\dfrac{1}{1 + e^x} = 1 - \\dfrac{e^x}{1 + e^x}\\), so \\(\\displaystyle\\int \\dfrac{1}{1 + e^x}\\,dx = x - \\log(1 + e^x) + C\\). Since \\(x - \\log(1 + e^x) = x - \\log[e^x(1 + e^{-x})] = -\\log(1 + e^{-x})\\), the answer is \\(-\\log(1 + e^{-x}) + C\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2706,
+    "solution": "\\(\\dfrac{\\cos^{n-1} x}{\\sin^{n+1} x} = \\dfrac{\\cos^{n-1} x}{\\sin^{n-1} x}\\cdot\\dfrac{1}{\\sin^2 x} = \\cot^{n-1} x\\,\\operatorname{cosec}^2 x\\). With \\(u = \\cot x,\\ du = -\\operatorname{cosec}^2 x\\,dx\\), \\(\\displaystyle\\int u^{n-1}(-du) = -\\dfrac{u^n}{n} = \\dfrac{-\\cot^n x}{n} + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2707,
+    "solution": "Multiply numerator and denominator by \\(e^x\\): \\(\\dfrac{e^x(\\sin x + \\cos x)}{1 + e^x\\sin x}\\). The numerator equals \\(\\dfrac{d}{dx}(1 + e^x\\sin x) = e^x\\sin x + e^x\\cos x\\). Hence the integral is \\(\\log|1 + e^x\\sin x| + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2708,
+    "solution": "Write \\(\\cos x = \\tfrac{1}{2}[(\\sin x + \\cos x) + (\\cos x - \\sin x)]\\). Then \\(\\displaystyle\\int \\dfrac{\\cos x}{\\sin x + \\cos x}\\,dx = \\dfrac{1}{2}\\int 1\\,dx + \\dfrac{1}{2}\\int \\dfrac{\\cos x - \\sin x}{\\sin x + \\cos x}\\,dx = \\dfrac{1}{2}[x + \\log|\\sin x + \\cos x|] + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2709,
+    "solution": "Let \\(u = 3^x,\\ du = 3^x\\ln 3\\,dx\\). Then \\(\\displaystyle\\int \\dfrac{3^x}{\\sqrt{1 - (3^x)^2}}\\,dx = \\dfrac{1}{\\log 3}\\int \\dfrac{du}{\\sqrt{1 - u^2}} = \\dfrac{1}{\\log 3}\\sin^{-1}(3^x) + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2710,
+    "solution": "Let \\(u = \\log(\\log x)\\). Then \\(du = \\dfrac{1}{\\log x}\\cdot\\dfrac{1}{x}\\,dx = \\dfrac{1}{x\\log x}\\,dx\\). The integral becomes \\(\\displaystyle\\int \\dfrac{du}{u} = \\log|u| = \\log|\\log(\\log x)| + C\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2711,
+    "solution": "\\(\\frac{d}{dx}\\left[x\\,e^{x+1/x}\\right]=e^{x+1/x}\\left(1+x-\\frac1x\\right)\\), exactly the integrand, so the integral is \\(x\\,e^{x+1/x}+C\\). Hence (C)."
+  },
+  {
+    "number": 2712,
+    "solution": "\\(\\dfrac{\\sqrt{\\tan x}}{\\sin 2x} = \\dfrac{\\sqrt{\\tan x}}{2\\sin x\\cos x} = \\dfrac{\\sqrt{\\tan x}}{2\\tan x\\cos^2 x} = \\dfrac{\\sec^2 x}{2\\sqrt{\\tan x}}\\). With \\(u = \\tan x,\\ du = \\sec^2 x\\,dx\\), \\(\\displaystyle\\int \\dfrac{du}{2\\sqrt{u}} = \\sqrt{u} = \\sqrt{\\tan x} + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2713,
+    "solution": "\\(\\dfrac{\\sqrt{\\cot x}}{\\sin x\\cos x} = \\sqrt{\\cot x}\\cdot\\operatorname{cosec}^2 x\\cdot\\tan x = \\operatorname{cosec}^2 x\\,\\cot^{-1/2} x\\). With \\(u = \\cot x,\\ du = -\\operatorname{cosec}^2 x\\,dx\\), \\(\\displaystyle\\int u^{-1/2}(-du) = -2u^{1/2} = -2\\sqrt{\\cot x}\\). Thus \\(P = -2\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2714,
+    "solution": "Put \\(t = \\tan(x/2)\\), so \\(\\cos x = \\dfrac{1 - t^2}{1 + t^2}\\) and \\(dx = \\dfrac{2}{1 + t^2}\\,dt\\). Then \\(\\displaystyle\\int \\dfrac{dx}{5 + 4\\cos x} = \\int \\dfrac{2}{5(1 + t^2) + 4(1 - t^2)}\\,dt = \\int \\dfrac{2}{9 + t^2}\\,dt = \\dfrac{2}{3}\\tan^{-1}\\dfrac{t}{3}\\). So \\(P = \\dfrac{2}{3}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2715,
+    "solution": "Numerator \\(\\sin^8 x - \\cos^8 x = (\\sin^4 x - \\cos^4 x)(\\sin^4 x + \\cos^4 x) = (\\sin^2 x - \\cos^2 x)(\\sin^4 x + \\cos^4 x)\\), and \\(\\sin^4 x + \\cos^4 x = 1 - 2\\sin^2 x\\cos^2 x\\). Dividing by the denominator gives \\(\\sin^2 x - \\cos^2 x = -\\cos 2x\\). Hence \\(\\displaystyle\\int -\\cos 2x\\,dx = -\\dfrac{1}{2}\\sin 2x + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2716,
+    "solution": "Put \\(x = t^2,\\ dx = 2t\\,dt,\\ \\sqrt{x} = t\\). Then \\(\\displaystyle\\int \\dfrac{t}{t^2(t^2 + 1)}\\cdot 2t\\,dt = \\int \\dfrac{2}{t^2 + 1}\\,dt = 2\\tan^{-1} t = 2\\tan^{-1}\\sqrt{x}\\). So \\(k = 2,\\ m = \\sqrt{x}\\), i.e. \\((2, \\sqrt{x})\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2717,
+    "solution": "Put \\(u=\\log(x+\\sqrt{1+x^2})\\), so \\(du=\\dfrac{dx}{\\sqrt{1+x^2}}\\). The integral becomes \\(\\int u\\,du=\\tfrac12\\left[\\log(x+\\sqrt{1+x^2})\\right]^2+C\\). Hence (C)."
+  },
+  {
+    "number": 2718,
+    "solution": "Numerator \\(x^{e-1} + e^{x-1} = \\dfrac{1}{e}(e\\,x^{e-1} + e^x) = \\dfrac{1}{e}\\dfrac{d}{dx}(x^e + e^x)\\). Hence \\(\\displaystyle\\int \\dfrac{x^{e-1} + e^{x-1}}{x^e + e^x}\\,dx = \\dfrac{1}{e}\\log(x^e + e^x) + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2719,
+    "solution": "\\(1 + \\cos x = 2\\cos^2(x/2)\\), so \\(\\sqrt{1 + \\cos x} = \\sqrt{2}\\,\\cos(x/2)\\). Then \\(\\displaystyle\\int \\sqrt{2}\\cos(x/2)\\,dx = \\sqrt{2}\\cdot 2\\sin(x/2) = 2\\sqrt{2}\\sin\\dfrac{x}{2} + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2720,
+    "solution": "Put \\(t = \\sqrt{1 - x}\\), so \\(x = 1 - t^2,\\ dx = -2t\\,dt\\). Then \\(\\displaystyle\\int \\dfrac{(1 - t^2)^2}{t}(-2t)\\,dt = -2\\int (1 - 2t^2 + t^4)\\,dt = -2\\!\\left[t - \\dfrac{2t^3}{3} + \\dfrac{t^5}{5}\\right]\\). Factoring \\(-2t\\) and substituting \\(t^2 = 1 - x\\), the bracket simplifies to \\(\\dfrac{3x^2 + 4x + 8}{15}\\). Thus the integral \\(= -\\dfrac{2}{15}\\sqrt{1 - x}\\,(3x^2 + 4x + 8)\\), so \\(P = -\\dfrac{2}{15}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2721,
+    "solution": "Let \\(u = 5^{5^{5^x}}\\). Differentiating, \\(\\dfrac{du}{dx} = 5^{5^{5^x}}\\cdot 5^{5^x}\\cdot 5^x\\,(\\log 5)^3\\). Hence the integrand equals \\(\\dfrac{1}{(\\log 5)^3}\\,du\\), and \\(\\displaystyle\\int = \\dfrac{u}{(\\log 5)^3} = \\dfrac{5^{5^{5^x}}}{(\\log 5)^3} + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2722,
+    "solution": "Write \\(\\sin x = \\sin((x - \\alpha) + \\alpha) = \\sin(x - \\alpha)\\cos\\alpha + \\cos(x - \\alpha)\\sin\\alpha\\). Then \\(\\dfrac{\\sin x}{\\sin(x - \\alpha)} = \\cos\\alpha + \\sin\\alpha\\cot(x - \\alpha)\\), so \\(\\displaystyle\\int = x\\cos\\alpha + \\sin\\alpha\\log|\\sin(x - \\alpha)| + K\\). Thus \\(A = \\cos\\alpha,\\ B = \\sin\\alpha\\), and \\(A - B = \\cos\\alpha - \\sin\\alpha\\). At \\(\\alpha = \\dfrac{\\pi}{2}\\), \\(A - B = 0 - 1 = -1\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2723,
+    "solution": "Let \\(u = \\log(\\tan x)\\). Then \\(du = \\dfrac{\\sec^2 x}{\\tan x}\\,dx = \\dfrac{1}{\\sin x\\cos x}\\,dx\\). The integral becomes \\(\\displaystyle\\int u\\,du = \\dfrac{u^2}{2} = \\dfrac{1}{2}(\\log_e\\tan x)^2 + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2724,
+    "solution": "Put \\(x = \\cos\\theta\\), so \\(\\dfrac{1 - x}{1 + x} = \\dfrac{1 - \\cos\\theta}{1 + \\cos\\theta} = \\tan^2(\\theta/2)\\) and \\(\\sqrt{\\cdot} = \\tan(\\theta/2)\\). Then \\(\\tan^{-1}(\\tan(\\theta/2)) = \\theta/2\\), and \\(\\cos\\{2\\cdot\\theta/2\\} = \\cos\\theta = x\\). Hence the integral \\(= \\displaystyle\\int x\\,dx = \\dfrac{x^2}{2} + c\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2725,
+    "solution": "Divide numerator and denominator by \\(x^2\\): \\(\\dfrac{1 + 1/x^2}{x^2 - 1 + 1/x^2}\\). Let \\(u = x - \\dfrac{1}{x},\\ du = \\left(1 + \\dfrac{1}{x^2}\\right)dx\\); the denominator becomes \\(u^2 + 1\\). So \\(\\displaystyle\\int \\dfrac{du}{u^2 + 1} = \\tan^{-1} u = \\tan^{-1}\\!\\left(\\dfrac{x^2 - 1}{x}\\right) + c\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2726,
+    "solution": "Complete the square: \\(8 + 2x - x^2 = 9 - (x - 1)^2\\). Then \\(\\displaystyle\\int \\dfrac{1}{\\sqrt{9 - (x - 1)^2}}\\,dx = \\sin^{-1}\\!\\left(\\dfrac{x - 1}{3}\\right) + c\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2727,
+    "solution": "This is the standard form \\(\\displaystyle\\int \\dfrac{1}{\\sqrt{a^2 - x^2}}\\,dx = \\sin^{-1}\\dfrac{x}{a}\\) with \\(a = \\sqrt{7}\\). Hence \\(\\displaystyle\\int \\dfrac{1}{\\sqrt{7 - x^2}}\\,dx = \\sin^{-1}\\!\\left(\\dfrac{x}{\\sqrt{7}}\\right) + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2728,
+    "solution": "\\(x^2 + x - 2 = (x + 2)(x - 1)\\). Partial fractions: \\(\\dfrac{1}{(x + 2)(x - 1)} = \\dfrac{1}{3}\\!\\left[\\dfrac{1}{x - 1} - \\dfrac{1}{x + 2}\\right]\\). Integrating, \\(\\dfrac{1}{3}\\log\\left|\\dfrac{x - 1}{x + 2}\\right| + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2729,
+    "solution": "Multiply \\(J\\) top and bottom by \\(e^{4x}\\): \\(J = \\displaystyle\\int \\dfrac{e^{3x}}{e^{4x} + e^{2x} + 1}\\,dx\\). Then \\(J - I = \\displaystyle\\int \\dfrac{e^x(e^{2x} - 1)}{e^{4x} + e^{2x} + 1}\\,dx\\). With \\(t = e^x\\), this is \\(\\displaystyle\\int \\dfrac{t^2 - 1}{t^4 + t^2 + 1}\\,dt\\); dividing by \\(t^2\\) and putting \\(u = t + \\tfrac{1}{t}\\) gives \\(\\displaystyle\\int \\dfrac{du}{u^2 - 1} = \\dfrac{1}{2}\\log\\left|\\dfrac{u - 1}{u + 1}\\right| = \\dfrac{1}{2}\\log\\!\\left(\\dfrac{e^{2x} - e^x + 1}{e^{2x} + e^x + 1}\\right) + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2730,
+    "solution": "\\(\\dfrac{x^2 + 1}{x^2 - 1} = 1 + \\dfrac{2}{x^2 - 1}\\). Then \\(\\displaystyle\\int 1\\,dx + 2\\int \\dfrac{dx}{x^2 - 1} = x + 2\\cdot\\dfrac{1}{2}\\log\\left|\\dfrac{x - 1}{x + 1}\\right| = x + \\log\\left(\\dfrac{x - 1}{x + 1}\\right) + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2731,
+    "solution": "Partial fractions in \\(x^2\\): \\(\\dfrac{1}{(x^2 + 4)(x^2 + 9)} = \\dfrac{1}{5}\\!\\left[\\dfrac{1}{x^2 + 4} - \\dfrac{1}{x^2 + 9}\\right]\\). Integrating: \\(\\dfrac{1}{5}\\cdot\\dfrac{1}{2}\\tan^{-1}\\dfrac{x}{2} - \\dfrac{1}{5}\\cdot\\dfrac{1}{3}\\tan^{-1}\\dfrac{x}{3}\\), so \\(A = \\dfrac{1}{10},\\ B = -\\dfrac{1}{15}\\). Then \\(A - B = \\dfrac{1}{10} + \\dfrac{1}{15} = \\dfrac{3 + 2}{30} = \\dfrac{1}{6}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2732,
+    "solution": "Write \\(\\dfrac{3x - 2}{(x + 3)(x + 1)^2} = \\dfrac{A}{x + 3} + \\dfrac{B}{x + 1} + \\dfrac{C}{(x + 1)^2}\\). At \\(x = -3\\): \\(-11 = 4A \\Rightarrow A = -\\tfrac{11}{4}\\). At \\(x = -1\\): \\(-5 = 2C \\Rightarrow C = -\\tfrac{5}{2}\\). Matching \\(x^2\\): \\(0 = A + B \\Rightarrow B = \\tfrac{11}{4}\\). Integrating: \\(-\\tfrac{11}{4}\\log|x + 3| + \\tfrac{11}{4}\\log|x + 1| + \\tfrac{5}{2(x + 1)} = \\dfrac{11}{4}\\log\\left|\\dfrac{x + 1}{x + 3}\\right| + \\dfrac{5}{2(x + 1)} + C\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2733,
+    "solution": "\\(\\dfrac{1}{x(x + 1)} = \\dfrac{1}{x} - \\dfrac{1}{x + 1}\\). Integrating, \\(\\log|x| - \\log|x + 1| = \\log\\left|\\dfrac{x}{x + 1}\\right| + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2734,
+    "solution": "\\(\\dfrac{x + 3}{(x + 4)^2} = \\dfrac{(x + 4) - 1}{(x + 4)^2} = \\dfrac{1}{x + 4} - \\dfrac{1}{(x + 4)^2}\\). With \\(f = \\dfrac{1}{x + 4},\\ f' = -\\dfrac{1}{(x + 4)^2}\\), the integral is of the form \\(\\displaystyle\\int e^x(f + f')\\,dx = e^x f = \\dfrac{e^x}{x + 4} + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2735,
+    "solution": "Integrating by parts twice (or using the standard result), \\(\\displaystyle\\int \\cos(\\log x)\\,dx = \\dfrac{x}{2}[\\cos(\\log x) + \\sin(\\log x)] + c\\). So \\(F(x) = \\dfrac{x}{2}[\\cos(\\log x) + \\sin(\\log x)]\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2736,
+    "solution": "By parts, \\(\\displaystyle\\int \\log(a^2 + x^2)\\,dx = x\\log(a^2 + x^2) - \\int \\dfrac{2x^2}{a^2 + x^2}\\,dx = x\\log(a^2 + x^2) - 2\\int\\!\\left(1 - \\dfrac{a^2}{a^2 + x^2}\\right)dx = x\\log(a^2 + x^2) - 2x + 2a\\tan^{-1}\\!\\left(\\dfrac{x}{a}\\right)\\). So \\(h(x) = x\\log(a^2 + x^2) - 2x + 2a\\tan^{-1}\\dfrac{x}{a}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2737,
+    "solution": "\\(1 + \\cos 2x = 2\\cos^2 x\\), so the integrand \\(= \\dfrac{2x + 2\\sin x\\cos x}{2\\cos^2 x} = x\\sec^2 x + \\tan x\\). Now \\(\\displaystyle\\int x\\sec^2 x\\,dx = x\\tan x - \\int \\tan x\\,dx\\), and adding the remaining \\(\\displaystyle\\int \\tan x\\,dx\\) cancels it, leaving \\(x\\tan x + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2738,
+    "solution": "Write \\(\\dfrac{x^2 + 1}{(x + 1)^2} = \\dfrac{(x^2 - 1) + 2}{(x + 1)^2} = \\dfrac{x - 1}{x + 1} + \\dfrac{2}{(x + 1)^2}\\). With \\(f = \\dfrac{x - 1}{x + 1},\\ f' = \\dfrac{2}{(x + 1)^2}\\), the integral is \\(\\displaystyle\\int e^x(f + f')\\,dx = e^x f = e^x\\!\\left(\\dfrac{x - 1}{x + 1}\\right) + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2739,
+    "solution": "\\(\\dfrac{1 + \\sin x}{1 + \\cos x} = \\dfrac{1 + 2\\sin(x/2)\\cos(x/2)}{2\\cos^2(x/2)} = \\dfrac{1}{2}\\sec^2(x/2) + \\tan(x/2)\\). With \\(f = \\tan(x/2),\\ f' = \\dfrac{1}{2}\\sec^2(x/2)\\), the integral is \\(\\displaystyle\\int e^x(f + f')\\,dx = e^x\\tan(x/2) + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2740,
+    "solution": "\\(\\dfrac{2 + \\sin x}{1 + \\cos x} = \\dfrac{2}{2\\cos^2(x/2)} + \\dfrac{2\\sin(x/2)\\cos(x/2)}{2\\cos^2(x/2)} = \\sec^2(x/2) + \\tan(x/2)\\). Since \\(\\dfrac{d}{dx}\\!\\left[e^{x/2}\\tan(x/2)\\right] = \\dfrac{1}{2}e^{x/2}[\\tan(x/2) + \\sec^2(x/2)]\\), we get \\(\\displaystyle\\int e^{x/2}[\\sec^2(x/2) + \\tan(x/2)]\\,dx = 2e^{x/2}\\tan\\dfrac{x}{2} + C\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2741,
+    "solution": "\\(\\dfrac{x - 1}{(x + 1)^3} = \\dfrac{(x + 1) - 2}{(x + 1)^3} = \\dfrac{1}{(x + 1)^2} - \\dfrac{2}{(x + 1)^3}\\). With \\(f = \\dfrac{1}{(x + 1)^2},\\ f' = -\\dfrac{2}{(x + 1)^3}\\), the integral is \\(\\displaystyle\\int e^x(f + f')\\,dx = e^x f = \\dfrac{e^x}{(x + 1)^2} + C\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2742,
+    "solution": "\\(\\dfrac{x}{(1 + x)^2} = \\dfrac{(1 + x) - 1}{(1 + x)^2} = \\dfrac{1}{1 + x} - \\dfrac{1}{(1 + x)^2}\\). With \\(g = \\dfrac{1}{1 + x},\\ g' = -\\dfrac{1}{(1 + x)^2}\\), \\(\\displaystyle\\int e^x(g + g')\\,dx = e^x g = \\dfrac{e^x}{1 + x}\\). So \\(f(x) = \\dfrac{1}{1 + x}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2743,
+    "solution": "\\(\\dfrac{e^x}{x}(x\\log x + 1) = e^x\\!\\left(\\log x + \\dfrac{1}{x}\\right)\\). With \\(f = \\log x,\\ f' = \\dfrac{1}{x}\\), the integral is \\(\\displaystyle\\int e^x(f + f')\\,dx = e^x\\log x = e^x\\log|x| + C\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2744,
+    "solution": "\\(\\dfrac{\\sin x + \\cos x}{1 - \\sin^2 x} = \\dfrac{\\sin x + \\cos x}{\\cos^2 x} = \\sec x\\tan x + \\sec x\\). With \\(f = \\sec x,\\ f' = \\sec x\\tan x\\), the integral is \\(\\displaystyle\\int e^x(f + f')\\,dx = e^x\\sec x + c\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2745,
+    "solution": "For \\(x>0\\), \\(\\cos^{-1}\\dfrac{1-x^2}{1+x^2}=2\\tan^{-1}x\\), so \\(\\int 2\\tan^{-1}x\\,dx=2x\\tan^{-1}x-\\log(1+x^2)+C\\). Hence (D)."
+  },
+  {
+    "number": 2746,
+    "solution": "By parts, \\(\\displaystyle\\int \\sin^{-1} x\\,dx = x\\sin^{-1} x - \\int \\dfrac{x}{\\sqrt{1 - x^2}}\\,dx = x\\sin^{-1} x + \\sqrt{1 - x^2} + c\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2747,
+    "solution": "By parts, \\(\\displaystyle\\int (\\log x)^2\\,dx = x(\\log x)^2 - 2x\\log x + 2x + C = x(\\log x)^2 - 2x(\\log x - 1) + C\\). Comparing with \\(x[f(x)]^2 + Ax[f(x) - 1]\\): \\(f(x) = \\log x\\) and \\(Ax(\\log x - 1) = -2x(\\log x - 1)\\), so \\(A = -2\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2748,
+    "solution": "\\(f(x) = \\displaystyle\\int_0^x (t^2 + t + 1)\\,dt = \\dfrac{x^3}{3} + \\dfrac{x^2}{2} + x\\). Since \\(f'(x) = x^2 + x + 1 > 0\\), \\(f\\) is increasing on \\([2, 3]\\). Maximum at \\(x = 3\\): \\(9 + \\tfrac{9}{2} + 3 = \\tfrac{33}{2}\\); minimum at \\(x = 2\\): \\(\\tfrac{8}{3} + 2 + 2 = \\tfrac{20}{3}\\). Difference \\(= \\tfrac{33}{2} - \\tfrac{20}{3} = \\dfrac{99 - 40}{6} = \\dfrac{59}{6}\\). Matches option C. Hence (C)."
+  }
+]
