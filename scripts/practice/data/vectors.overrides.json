@@ -1,0 +1,10 @@
+{
+  "_comment": "Answer overrides where the source key is wrong (each verified by re-derivation + zoom-crop of the source PDF). Content fixes applied directly in questions.json (agent option/component misreads, keys then correct or per override): 1869 b->3i-4j+2k (|a|=sqrt29=key d, NOT overridden), 1870 P->(2,4,5) (angle 90=key a, NOT overridden), 1884 vectors->source a=li+2j+2k,b=2i+2j+lk (override C, diff=0 for any perpendicular pair), 1940 A->i+2j+3k (override D, t=5). Q1950 EXCLUDED (stem lists only 3 PVs for a 'four points coplanar' item; key d=0 unverifiable). Agent false alarms left as-keyed: 1882 (d=15/4), 1897 (d=-1/2), 1908 (c), 1924 (b=6(bxc)), 1796 (c=8).",
+  "1865": { "answer": "B", "reason": "key 'c' (10) wrong: proj=|a|cos(5pi/6)=-9/sqrt3 gives |a|=6 = option B" },
+  "1884": { "answer": "C", "reason": "key 'd' (-1) wrong: for a perpendicular to b, |a+b|=|a-b| so the difference is 0 = option C" },
+  "1904": { "answer": "A", "reason": "key 'b' (sqrt56) wrong: |a+b+c|^2=56+44=100 so |a+b+c|=10 = option A" },
+  "1907": { "answer": "D", "reason": "key 'b' (P perp Q) wrong: |PxQ|=|P.Q| gives tan(theta)=1 => 45deg, neither parallel nor perpendicular = option D (None)" },
+  "1929": { "answer": "A", "reason": "key 'd' (None) wrong: (axb)^2+(a.b)^2=|a|^2|b|^2=676, |b|=2 gives |a|=13 = option A" },
+  "1940": { "answer": "D", "reason": "key 'a' (1/5) wrong: (A+tB).C=5-t=0 gives t=5 = option D" },
+  "1960": { "answer": "D", "reason": "key 'a' (-4) wrong: scalar triple product |3*lambda-10|=2 gives lambda=4 = option D" }
+}

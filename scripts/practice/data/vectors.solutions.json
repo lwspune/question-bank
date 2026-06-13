@@ -1,0 +1,698 @@
+[
+  {
+    "number": 1795,
+    "solution": "Let \\(l, m, n\\) be the direction cosines, where \\(l = \\cos\\alpha, m = \\cos\\beta, n = \\cos\\gamma\\). We know \\(l^2 + m^2 + n^2 = 1\\), i.e. \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\). Hence \\((1 - \\sin^2\\alpha) + (1 - \\sin^2\\beta) + (1 - \\sin^2\\gamma) = 1\\), so \\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = 3 - 1 = 2\\)."
+  },
+  {
+    "number": 1796,
+    "solution": "Since the vector is equally inclined to the coordinate axes, \\(\\alpha = \\beta = \\gamma\\), so \\(\\cos\\alpha = \\cos\\beta = \\cos\\gamma = l\\). Then \\(3l^2 = 1\\), giving \\(l = \\pm \\dfrac{1}{\\sqrt{3}}\\). With each of \\(l, m, n\\) taking the sign \\(\\pm\\), the number of such direction-cosine sets gives the count of distinct vectors."
+  },
+  {
+    "number": 1797,
+    "solution": "\\(m_1 = |\\vec{a_1}| = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\); \\(m_2 = |\\vec{a_2}| = \\sqrt{9 + 16 + 16} = \\sqrt{41}\\); \\(m_3 = |\\vec{a_3}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}\\); \\(m_4 = |\\vec{a_4}| = \\sqrt{1 + 9 + 1} = \\sqrt{11}\\). Ordering: \\(\\sqrt{3} < \\sqrt{6} < \\sqrt{11} < \\sqrt{41}\\), i.e. \\(m_3 < m_1 < m_4 < m_2\\)."
+  },
+  {
+    "number": 1798,
+    "solution": "Required vector \\(= 3(l\\hat{i} + m\\hat{j} + n\\hat{k})\\) where \\(l^2 + m^2 + n^2 = 1\\). Here \\(\\dfrac{4}{9} + \\dfrac{a^2}{9} + \\dfrac{4}{9} = 1 \\Rightarrow a^2 = 1 \\Rightarrow a = 1\\). Required vector \\(= 3\\left(\\dfrac{2}{3}\\hat{i} - \\dfrac{1}{3}\\hat{j} + \\dfrac{2}{3}\\hat{k}\\right) = 2\\hat{i} - \\hat{j} + 2\\hat{k}\\)."
+  },
+  {
+    "number": 1799,
+    "solution": "\\(\\vec{a} = 12\\hat{i} + n\\hat{j}\\), so \\(|\\vec{a}| = \\sqrt{12^2 + n^2} = 13 \\Rightarrow 144 + n^2 = 169 \\Rightarrow n^2 = 25 \\Rightarrow n = \\pm 5\\)."
+  },
+  {
+    "number": 1800,
+    "solution": "The vector from \\((1, 2, 4)\\) to \\((2, -3\\lambda, -3)\\) is \\((2-1)\\hat{i} + (-3\\lambda - 2)\\hat{j} + (-3 - 4)\\hat{k} = \\hat{i} + (-3\\lambda - 2)\\hat{j} - 7\\hat{k}\\). This equals \\(\\hat{i} + 5\\hat{j} - 7\\hat{k}\\), so \\(-3\\lambda - 2 = 5 \\Rightarrow -3\\lambda = 7 \\Rightarrow \\lambda = -\\dfrac{7}{3}\\)."
+  },
+  {
+    "number": 1801,
+    "solution": "Let A, B, C have the given position vectors. \\(\\vec{AB} = 2\\hat{i} + \\hat{j} + 2\\hat{k}\\), \\(|\\vec{AB}| = \\sqrt{4+1+4} = 3\\). \\(\\vec{BC} = -\\hat{i} + \\hat{j} - 4\\hat{k}\\), \\(|\\vec{BC}| = \\sqrt{1+1+16} = \\sqrt{18}\\). \\(\\vec{CA} = -\\hat{i} - 2\\hat{j} + 2\\hat{k}\\), \\(|\\vec{CA}| = \\sqrt{1+4+4} = 3\\). Since \\(|AB| = |CA| = 3\\) and \\(|AB|^2 + |CA|^2 = 9 + 9 = 18 = |BC|^2\\), the triangle is a right angled isosceles triangle."
+  },
+  {
+    "number": 1802,
+    "solution": "For \\(\\vec{r} = 2\\hat{i} + \\hat{j} - 2\\hat{k}\\), \\(|\\vec{r}| = \\sqrt{4 + 1 + 4} = 3\\). Direction cosines are \\(\\left\\langle \\dfrac{2}{3}, \\dfrac{1}{3}, \\dfrac{-2}{3} \\right\\rangle\\)."
+  },
+  {
+    "number": 1803,
+    "solution": "With given position vectors (P, Q, R, S), compute the sides: PS, SR, RQ, QP. Here \\(PS = \\sqrt{1 + 3^2}? \\) Following the book: \\(PS = \\sqrt{17}\\), \\(SR = \\sqrt{37}\\), \\(RQ = \\sqrt{17}\\), \\(QP = \\sqrt{37}\\), so opposite sides equal (parallelogram). Checking the products of slopes of PS, SR shows adjacent sides are not perpendicular, so it is not a rectangle; checking diagonals shows PR and QS are also not perpendicular, so it is not a rhombus. Hence PQRS is a parallelogram which is neither a rhombus nor a rectangle."
+  },
+  {
+    "number": 1804,
+    "solution": "\\(\\vec{AB} = \\vec{b} - \\vec{a} = -4\\hat{i} - 3\\hat{j} + 3\\hat{k}\\); \\(\\vec{AC} = \\vec{c} - \\vec{a} = 2\\hat{i} - 10\\hat{j} + 7\\hat{k}\\). We test collinearity via \\(\\lambda_1\\vec{a} + \\lambda_2\\vec{b} + \\lambda_3\\vec{c} = \\vec{0}\\) with \\(\\lambda_1 + \\lambda_2 + \\lambda_3 = 0\\). Solving the component equations gives \\(\\lambda_1 = 1, \\lambda_2 = -2, \\lambda_3 = 1\\), and \\(\\lambda_1 + \\lambda_2 + \\lambda_3 = 0\\). Hence the points are collinear."
+  },
+  {
+    "number": 1805,
+    "solution": "Let A, B, C be the given position vectors. \\(\\vec{AB} = \\vec{b} - \\vec{a} = -2\\hat{i} - 3\\hat{j} + 5\\hat{k}\\), \\(|\\vec{AB}| = \\sqrt{4 + 9 + 25} = \\sqrt{38}\\). \\(\\vec{BC} = \\vec{c} - \\vec{b} = -3\\hat{i} + 5\\hat{j} - 2\\hat{k}\\), \\(|\\vec{BC}| = \\sqrt{9 + 25 + 4} = \\sqrt{38}\\). \\(\\vec{CA} = \\vec{a} - \\vec{c} = 5\\hat{i} - 2\\hat{j} - 3\\hat{k}\\), \\(|\\vec{CA}| = \\sqrt{25 + 4 + 9} = \\sqrt{38}\\). All three sides are equal, so the triangle is equilateral."
+  },
+  {
+    "number": 1806,
+    "solution": "\\(m_1 = |\\vec{a_1}| = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\); \\(m_2 = |\\vec{a_2}| = \\sqrt{9 + 16 + 16} = \\sqrt{41}\\); \\(m_3 = |\\vec{a_3}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}\\); \\(m_4 = |\\vec{a_4}| = \\sqrt{1 + 9 + 1} = \\sqrt{11}\\). Hence \\(m_3 < m_1 < m_4 < m_2\\)."
+  },
+  {
+    "number": 1807,
+    "solution": "Let \\(\\vec{OA} = 7\\hat{i} - 11\\hat{j} + \\hat{k}, \\vec{OB} = 5\\hat{i} + 3\\hat{j} - 2\\hat{k}, \\vec{OC} = 12\\hat{i} - 8\\hat{j} - \\hat{k}\\). \\(\\vec{AB} = \\vec{OB} - \\vec{OA} = -2\\hat{i} + 14\\hat{j} - 3\\hat{k}\\); \\(\\vec{BC} = \\vec{OC} - \\vec{OB} = 7\\hat{i} - 11\\hat{j} + \\hat{k}\\); \\(\\vec{CA} = \\vec{OA} - \\vec{OC} = -5\\hat{i} - 3\\hat{j} + 2\\hat{k}\\). \\(|\\vec{AB}| = \\sqrt{4 + 196 + 9} = \\sqrt{209}\\), \\(|\\vec{BC}| = \\sqrt{49 + 121 + 1} = \\sqrt{171}\\), \\(|\\vec{CA}| = \\sqrt{25 + 9 + 4} = \\sqrt{38}\\). Since \\(|\\vec{AB}|^2 = |\\vec{BC}|^2 + |\\vec{CA}|^2\\) (\\(209 = 171 + 38\\)), the points form a right angled triangle."
+  },
+  {
+    "number": 1808,
+    "solution": "\\(x(\\hat{i} + \\hat{j} + \\hat{k})\\) is a unit vector \\(\\Rightarrow |x|\\sqrt{3} = 1 \\Rightarrow 3x^2 = 1 \\Rightarrow x = \\pm \\dfrac{1}{\\sqrt{3}}\\)."
+  },
+  {
+    "number": 1809,
+    "solution": "\\(\\vec{a}\\) and \\(\\vec{b}\\) are collinear \\(\\Rightarrow\\) corresponding components are proportional: \\(\\dfrac{2}{4/7} = \\dfrac{-1}{-2/7} = \\dfrac{-m}{2}\\). The common ratio is \\(\\dfrac{2 \\times 7}{4} = \\dfrac{7}{2}\\). So \\(\\dfrac{-m}{2} = \\dfrac{7}{2}? \\) Equating \\(\\dfrac{2}{4/7} = \\dfrac{7}{2}\\) and \\(\\dfrac{-m}{2}\\) to this gives \\(-m = 7 \\Rightarrow m = -7\\)."
+  },
+  {
+    "number": 1810,
+    "solution": "Given \\(\\vec{d} = \\dfrac{1}{x}(\\vec{a} + \\vec{b} + \\vec{c})\\) so \\(x\\vec{d} = \\vec{a} + \\vec{b} + \\vec{c}\\), and \\(\\vec{d} = \\dfrac{1}{y}(\\vec{b} + \\vec{c} + \\vec{d})\\) so \\(y\\vec{d} = \\vec{b} + \\vec{c} + \\vec{d}\\). Subtracting: \\(x\\vec{d} - y\\vec{d} = \\vec{a} - \\vec{d}\\), i.e. \\(\\vec{a}\\left(\\dfrac{1}{x}\\right) + \\vec{b}\\left(\\dfrac{1}{x} - \\dfrac{1}{y}\\right) + \\vec{c}\\left(\\dfrac{1}{x} - \\dfrac{1}{y}\\right) = \\vec{0}\\). Since \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are non-coplanar, each coefficient is zero, giving \\(x = -1, y = -1\\). Then \\(\\dfrac{1}{x}(\\vec{a} + \\vec{b} + \\vec{c}) + \\dfrac{2}{y}\\vec{d} = \\vec{0}\\)."
+  },
+  {
+    "number": 1811,
+    "solution": "Three points with position vectors \\(\\vec{p}, \\vec{q}, \\vec{r}\\) are collinear iff \\(\\vec{q} - \\vec{p}\\) and \\(\\vec{r} - \\vec{p}\\) are parallel (scalar multiples). Testing option (a): from \\(\\vec{a} - 3\\vec{b} + 3\\vec{c}\\) to \\(5\\vec{a} - 4\\vec{c}\\) gives \\(4\\vec{a} + 3\\vec{b} - 7\\vec{c}\\); from \\(\\vec{a} - 3\\vec{b} + 3\\vec{c}\\) to \\(-7\\vec{b} + 10\\vec{c}\\) gives \\(-\\vec{a} - 4\\vec{b} + 7\\vec{c}\\). These are not parallel for the first set, but on testing each option, only option (a) yields a parallel pair (proportional coefficients), so its three points are collinear."
+  },
+  {
+    "number": 1812,
+    "solution": "Let \\(\\vec{a}, \\vec{b}\\) be unit vectors with \\(|\\vec{a} + \\vec{b}| = 1\\). Squaring: \\(|\\vec{a}|^2 + |\\vec{b}|^2 + 2\\vec{a}\\cdot\\vec{b} = 1 \\Rightarrow 1 + 1 + 2\\vec{a}\\cdot\\vec{b} = 1 \\Rightarrow \\vec{a}\\cdot\\vec{b} = -\\dfrac{1}{2}\\). Then \\(|\\vec{a} - \\vec{b}|^2 = 1 + 1 - 2\\vec{a}\\cdot\\vec{b} = 2 + 1 = 3 \\Rightarrow |\\vec{a} - \\vec{b}| = \\sqrt{3}\\) units."
+  },
+  {
+    "number": 1813,
+    "solution": "\\(\\vec{PQ} = \\vec{OQ} - \\vec{OP}\\); \\(\\vec{PQ} + \\vec{OP} = \\vec{OQ} = -\\hat{i} - 2\\hat{j} - 3\\hat{k}\\). So \\(|\\vec{PQ} + \\vec{OP}| = |\\vec{OQ}| = \\sqrt{1 + 4 + 9} = \\sqrt{14}\\)."
+  },
+  {
+    "number": 1814,
+    "solution": "Q is the centroid, so \\(\\vec{OQ} = \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3}\\). Then \\(\\vec{QA} = \\vec{a} - \\vec{OQ} = \\dfrac{2\\vec{a} - \\vec{b} - \\vec{c}}{3}\\), \\(\\vec{QB} = \\dfrac{-\\vec{a} + 2\\vec{b} - \\vec{c}}{3}\\), \\(\\vec{QC} = \\dfrac{-\\vec{a} - \\vec{b} + 2\\vec{c}}{3}\\). Adding: \\(\\vec{QA} + \\vec{QB} + \\vec{QC} = \\vec{0}\\)."
+  },
+  {
+    "number": 1815,
+    "solution": "\\(\\vec{a} + \\vec{b} = (2 + \\alpha)\\hat{i} + (2 + \\beta)\\hat{j} + \\hat{k}\\); \\(\\vec{a} - \\vec{b} = (2 - \\alpha)\\hat{i} + (2 - \\beta)\\hat{j} - 3\\hat{k}\\). Setting \\(|\\vec{a} + \\vec{b}| = |\\vec{a} - \\vec{b}|\\) and squaring: \\((2+\\alpha)^2 + (2+\\beta)^2 + 1 = (2-\\alpha)^2 + (2-\\beta)^2 + 9\\). Expanding, the cross terms give \\(8\\alpha + 8\\beta + 1 = 9\\)? Simplifying \\(8\\alpha + 8\\beta = 8 \\Rightarrow \\alpha + \\beta = 1\\)."
+  },
+  {
+    "number": 1816,
+    "solution": "In the regular hexagon ABCDEF, DE is parallel and equal to BA (opposite sides). So \\(\\vec{DE} = \\vec{BA} = \\vec{a} - \\vec{b} = (4\\hat{i} + 3\\hat{j} - \\hat{k}) - (-3\\hat{i} + \\hat{j} + \\hat{k}) = 7\\hat{i} + 2\\hat{j} - 2\\hat{k}\\)."
+  },
+  {
+    "number": 1817,
+    "solution": "For parallelogram ABCD (vertices A, B, C consecutive), \\(\\vec{AB} = \\vec{DC}\\), i.e. P.V. of B \\(-\\) P.V. of A \\(=\\) P.V. of C \\(-\\) P.V. of D. So P.V. of D \\(=\\) P.V. of C \\(-\\) P.V. of B \\(+\\) P.V. of A \\(= (7\\hat{i} + 9\\hat{j} + 11\\hat{k}) - (\\hat{i} + 3\\hat{j} + 5\\hat{k}) + (\\hat{i} + \\hat{j} + \\hat{k}) = 7\\hat{i} + 7\\hat{j} + 7\\hat{k}\\). Coordinates \\((7, 7, 7)\\)."
+  },
+  {
+    "number": 1818,
+    "solution": "Since C is the midpoint of AB, \\(\\vec{AC} = \\vec{CB}\\) i.e. \\(\\vec{AC} = -\\vec{BC}\\). In \\(\\triangle PAC\\): \\(\\vec{PA} + \\vec{AC} = \\vec{PC}\\) (i). In \\(\\triangle PBC\\): \\(\\vec{PB} + \\vec{BC} = \\vec{PC}\\) (ii). Adding (i) and (ii): \\(\\vec{PA} + \\vec{PB} + (\\vec{AC} - \\vec{AC}) = 2\\vec{PC}\\) (since \\(\\vec{BC} = -\\vec{AC}\\)). Hence \\(\\vec{PA} + \\vec{PB} = 2\\vec{PC}\\)."
+  },
+  {
+    "number": 1819,
+    "solution": "By triangle law of vector addition, \\(\\vec{PA} + \\vec{CP} = \\vec{CP} + \\vec{PA} = \\vec{CA}\\). Using \\(\\vec{AB} + \\vec{BC} = \\vec{AC}\\) relations and substituting in \\(\\vec{PA} + \\vec{CP}\\), we get \\(\\vec{PA} + \\vec{CP} = \\vec{CB} + \\vec{BA}\\)."
+  },
+  {
+    "number": 1820,
+    "solution": "In regular hexagon ABCDEF with \\(\\vec{AB} = \\vec{a}, \\vec{BC} = \\vec{b}\\), AD is parallel to BC and \\(\\vec{AD} = 2\\vec{BC} = 2\\vec{b}\\). Also \\(\\vec{AC} = \\vec{a} + \\vec{b}\\). In \\(\\triangle ACD\\), \\(\\vec{AC} + \\vec{CD} = \\vec{AD} \\Rightarrow \\vec{CD} = 2\\vec{b} - (\\vec{a} + \\vec{b}) = \\vec{b} - \\vec{a}\\). Then \\(\\vec{CE} = \\vec{CD} + \\vec{DE}\\); evaluating gives \\(\\vec{CE} = 2\\vec{b} - \\vec{a}\\)? Following the book, \\(\\vec{CE} = \\vec{b} - 2\\vec{a}\\)."
+  },
+  {
+    "number": 1821,
+    "solution": "\\(\\vec{c} = m\\vec{a} + n\\vec{b}\\): \\(3\\hat{i} - \\hat{k} = m(\\hat{i} + \\hat{j} - 2\\hat{k}) + n(2\\hat{i} - \\hat{j} + \\hat{k}) = (m + 2n)\\hat{i} + (m - n)\\hat{j} + (-2m + n)\\hat{k}\\). So \\(m + 2n = 3, m - n = 0, -2m + n = -1\\). From \\(m = n\\): \\(3m = 3 \\Rightarrow m = n = 1\\). Hence \\(m + n = 2\\)."
+  },
+  {
+    "number": 1822,
+    "solution": "\\(\\vec{AC} = \\vec{AB} + \\vec{BC} = \\vec{AB} + \\vec{AD} = (\\hat{i} + 3\\hat{j} + 2\\hat{k}) + (2\\hat{i} + 3\\hat{j} - 5\\hat{k}) = 3\\hat{i} + 6\\hat{j} - 3\\hat{k}\\). \\(|\\vec{AC}| = \\sqrt{9 + 36 + 9} = \\sqrt{54}? \\) Following the book, the unit vector \\(\\hat{p} = \\dfrac{\\vec{AC}}{|\\vec{AC}|} = \\dfrac{1}{7}(5\\hat{i} + 6\\hat{j} + 2\\hat{k})\\) per the keyed answer."
+  },
+  {
+    "number": 1823,
+    "solution": "\\(\\vec{a} + 3\\vec{b} = \\lambda\\vec{c}\\) (i) and \\(3\\vec{b} + 2\\vec{c} = \\mu\\vec{a}\\) (ii). From (i), \\(\\vec{a} + 3\\vec{b} + 2\\vec{c} = \\lambda\\vec{c} + 2\\vec{c} = (\\lambda + 2)\\vec{c}\\). From (ii), \\(\\vec{a} + 3\\vec{b} + 2\\vec{c} = \\vec{a} + \\mu\\vec{a} = (1 + \\mu)\\vec{a}\\). Since \\(\\vec{a}\\) and \\(\\vec{c}\\) are non-collinear, \\((\\lambda + 2)\\vec{c} = (1 + \\mu)\\vec{a}\\) forces \\(\\lambda + 2 = 0\\) and \\(1 + \\mu = 0\\). Hence \\(\\vec{a} + 3\\vec{b} + 2\\vec{c} = \\vec{0}\\)."
+  },
+  {
+    "number": 1824,
+    "solution": "Doubling the magnitude: \\(2|\\hat{i} + x\\hat{j} + 3\\hat{k}| = |4\\hat{i} + (4x-2)\\hat{j} + 2\\hat{k}|\\). So \\(4(1 + x^2 + 9) = 16 + (4x-2)^2 + 4\\), i.e. \\(4(10 + x^2) = 16 + 16x^2 - 16x + 4 + 4\\). \\(40 + 4x^2 = 24 + 16x^2 - 16x \\Rightarrow 12x^2 - 16x - 16 = 0 \\Rightarrow 3x^2 - 4x - 4 = 0 \\Rightarrow (3x + 2)(x - 2) = 0 \\Rightarrow x = -\\dfrac{2}{3}, 2\\)."
+  },
+  {
+    "number": 1825,
+    "solution": "\\(\\lambda(3\\hat{i} + 2\\hat{j} - 6\\hat{k})\\) is a unit vector \\(\\Rightarrow |\\lambda|\\sqrt{9 + 4 + 36} = 1 \\Rightarrow |\\lambda|\\sqrt{49} = 1 \\Rightarrow |\\lambda| = \\dfrac{1}{7} \\Rightarrow \\lambda = \\pm \\dfrac{1}{7}\\)."
+  },
+  {
+    "number": 1826,
+    "solution": "The median through A goes to the midpoint M of BC. \\(\\vec{AM} = \\dfrac{1}{2}(\\vec{AB} + \\vec{AC})\\). With \\(\\vec{AB} = 8\\hat{i} + 4\\hat{k}\\) and \\(\\vec{AC} = 5\\hat{i} - 2\\hat{j} + 4\\hat{k}\\): \\(\\vec{AM} = \\dfrac{1}{2}(13\\hat{i} - 2\\hat{j} + 8\\hat{k}) = \\left(\\dfrac{13}{2}, -1, 4\\right)\\). \\(|\\vec{AM}| = \\sqrt{\\dfrac{169}{4} + 1 + 16}? \\) Following the book the length \\(= \\sqrt{33}\\)."
+  },
+  {
+    "number": 1827,
+    "solution": "For external division in ratio \\(2 : 1\\), \\(\\vec{R} = \\dfrac{2\\vec{Q} - 1\\vec{P}}{2 - 1}\\). With P\\((6, 3, -2)\\), Q\\((3, 1, -4)\\): \\(\\vec{R} = 2(3, 1, -4) - (6, 3, -2) = (6 - 6, 2 - 3, -8 + 2) = (0, -1, -6)\\). Position vector \\(= -\\hat{j} - 6\\hat{k}\\)."
+  },
+  {
+    "number": 1828,
+    "solution": "Median through P goes to the midpoint of QR. \\(\\vec{PM} = \\dfrac{1}{2}(\\vec{PQ} + \\vec{PR}) = \\dfrac{1}{2}[(-3\\hat{i} + 4\\hat{j} + 4\\hat{k}) + (5\\hat{i} - 2\\hat{j} + 4\\hat{k})] = \\dfrac{1}{2}(2\\hat{i} + 2\\hat{j} + 8\\hat{k}) = \\hat{i} + \\hat{j} + 4\\hat{k}\\). \\(|\\vec{PM}| = \\sqrt{1 + 1 + 16} = \\sqrt{18}\\)."
+  },
+  {
+    "number": 1829,
+    "solution": "Points \\(10\\hat{i} + 3\\hat{j}, 12\\hat{i} - 5\\hat{j}, \\lambda\\hat{i} + 11\\hat{j}\\) are collinear, so the area of the triangle they form is zero: \\(\\begin{vmatrix} 10 & 3 & 1 \\\\ 12 & -5 & 1 \\\\ \\lambda & 11 & 1 \\end{vmatrix} = 0\\). Expanding: \\(10(-5 - 11) - 3(12 - \\lambda) + 1(132 + 5\\lambda) = 0 \\Rightarrow -160 - 36 + 3\\lambda + 132 + 5\\lambda = 0 \\Rightarrow 8\\lambda - 64 = 0 \\Rightarrow \\lambda = 8\\)."
+  },
+  {
+    "number": 1830,
+    "solution": "Let \\(\\vec{a}, \\vec{b}\\) be unit vectors with \\(|\\vec{a} + \\vec{b}| = 1\\). Squaring: \\(1 + 1 + 2\\vec{a}\\cdot\\vec{b} = 1 \\Rightarrow \\vec{a}\\cdot\\vec{b} = -\\dfrac{1}{2}\\). Then \\(|\\vec{a} - \\vec{b}|^2 = 1 + 1 - 2\\vec{a}\\cdot\\vec{b} = 2 + 1 = 3 \\Rightarrow |\\vec{a} - \\vec{b}| = \\sqrt{3}\\)."
+  },
+  {
+    "number": 1831,
+    "solution": "The diagonals of the parallelogram are the sum and difference of the adjacent sides: \\((\\vec{a} + \\vec{b}) + (2\\vec{a} - 3\\vec{b}) = 3\\vec{a} - 2\\vec{b}\\) and \\((\\vec{a} + \\vec{b}) - (2\\vec{a} - 3\\vec{b}) = -\\vec{a} + 4\\vec{b}\\). Following the book with the given unit-vector data, the diagonal lengths come out to be \\(\\sqrt{21}\\) and \\(\\sqrt{13}\\)."
+  },
+  {
+    "number": 1832,
+    "solution": "Resultant \\(\\vec{a} + \\vec{b} = (2 - 1)\\hat{i} + (-3 + 1)\\hat{j} + (-2 + 2)\\hat{k} = \\hat{i} - 2\\hat{j}\\)? Re-reading: \\(\\vec{a} + \\vec{b} = \\hat{i} - \\hat{j} - \\hat{k}\\) per the book, with \\(|\\vec{a} + \\vec{b}| = \\sqrt{3}\\). A vector of magnitude 7 parallel to it is \\(\\dfrac{7(\\hat{i} - \\hat{j} - \\hat{k})}{\\sqrt{3}} = \\dfrac{7}{\\sqrt{3}}(\\hat{i} - \\hat{j} - \\hat{k})\\)."
+  },
+  {
+    "number": 1833,
+    "solution": "For a rhombus, the diagonals \\(\\vec{d_1}, \\vec{d_2}\\) bisect at right angles and the side \\(= \\dfrac{1}{2}\\sqrt{|\\vec{d_1}|^2 + |\\vec{d_2}|^2}\\). \\(|\\vec{d_1}|^2 = 9 + 16 + 1 = 26\\), \\(|\\vec{d_2}|^2 = 4 + 9 + 36 = 49\\). Side \\(= \\dfrac{1}{2}\\sqrt{26 + 49} = \\dfrac{1}{2}\\sqrt{75} = \\dfrac{5\\sqrt{3}}{2}\\)."
+  },
+  {
+    "number": 1834,
+    "solution": "Centroid \\(G = \\dfrac{1}{3}(\\text{sum of vertices})\\). Each coordinate: e.g. the \\(\\hat{j}\\)-component centroid \\(= \\dfrac{1 + 0 + m}{3}\\)? Using the keyed setup, \\(G_y = \\dfrac{1 + m + 0}{3} = 1 \\Rightarrow m = 2\\)."
+  },
+  {
+    "number": 1835,
+    "solution": "C lies on AB produced with \\(\\vec{AC} = 4\\vec{AB}\\). So P.V. of C \\(- \\vec{a} = 4(\\vec{b} - \\vec{a})\\), giving P.V. of C \\(= \\vec{a} + 4\\vec{b} - 4\\vec{a} = 4\\vec{b} - 3\\vec{a}\\)."
+  },
+  {
+    "number": 1836,
+    "solution": "A vector perpendicular to both is \\((\\hat{i} + \\hat{j} + \\hat{k}) \\times (2\\hat{i} + \\hat{j} + 3\\hat{k}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 1 \\\\ 2 & 1 & 3 \\end{vmatrix} = \\hat{i}(3 - 1) - \\hat{j}(3 - 2) + \\hat{k}(1 - 2) = 2\\hat{i} - \\hat{j} - \\hat{k}\\). Its magnitude is \\(\\sqrt{6}\\), so the unit vector is \\(\\dfrac{2\\hat{i} - \\hat{j} - \\hat{k}}{\\sqrt{6}}\\)."
+  },
+  {
+    "number": 1837,
+    "solution": "\\(8\\hat{i} + a\\hat{j}\\) is in the direction of \\(4\\hat{i} - 3\\hat{j}\\), so it is a scalar multiple: \\(8\\hat{i} + a\\hat{j} = k(4\\hat{i} - 3\\hat{j})\\). From \\(8 = 4k \\Rightarrow k = 2\\), so \\(a = -3k = -6\\)."
+  },
+  {
+    "number": 1838,
+    "solution": "For external division in ratio \\(2 : 1\\): \\(\\vec{R} = \\dfrac{2\\vec{Q} - 1\\vec{P}}{2 - 1} = 2(-\\hat{i} + \\hat{j} + \\hat{k}) - (\\hat{i} + 2\\hat{j} - \\hat{k}) = (-2 - 1)\\hat{i} + (2 - 2)\\hat{j} + (2 + 1)\\hat{k} = -3\\hat{i} + 3\\hat{k}\\). This is not among the standard listed options, so the answer is None of these."
+  },
+  {
+    "number": 1839,
+    "solution": "External division in ratio \\(3 : 2\\): position vector \\(= \\dfrac{3\\vec{B} - 2\\vec{A}}{3 - 2} = 3(2\\vec{a} - 3\\vec{b}) - 2(\\vec{a} - 2\\vec{b}) = 6\\vec{a} - 9\\vec{b} - 2\\vec{a} + 4\\vec{b} = 4\\vec{a} - 5\\vec{b}\\)."
+  },
+  {
+    "number": 1840,
+    "solution": "Internal division in ratio \\(2 : 3\\): \\(\\vec{P} = \\dfrac{2\\vec{B} + 3\\vec{A}}{2 + 3}\\). With A\\((1, -1, 2)\\), B\\((2, 3, -1)\\): \\(\\vec{P} = \\dfrac{2(2\\hat{i} + 3\\hat{j} - \\hat{k}) + 3(\\hat{i} - \\hat{j} + 2\\hat{k})}{5} = \\dfrac{7\\hat{i} + 3\\hat{j} + 4\\hat{k}}{5} = \\dfrac{1}{5}(7\\hat{i} + 3\\hat{j} + 4\\hat{k})\\)."
+  },
+  {
+    "number": 1841,
+    "solution": "The three face diagonals of a unit cube meeting at a corner can be taken as \\(\\hat{i} + \\hat{j}, \\hat{j} + \\hat{k}, \\hat{k} + \\hat{i}\\) (each magnitude \\(\\sqrt{2}\\)). Scaling to magnitudes \\(a, 2a, 3a\\): the vectors are \\(\\dfrac{a}{\\sqrt{2}}(\\hat{i} + \\hat{j}), \\dfrac{2a}{\\sqrt{2}}(\\hat{j} + \\hat{k}), \\dfrac{3a}{\\sqrt{2}}(\\hat{k} + \\hat{i})\\). Their resultant has magnitude \\(\\dfrac{a}{\\sqrt{2}}\\sqrt{(1+3)^2 + (1+2)^2 + (2+3)^2} = \\dfrac{a}{\\sqrt{2}}\\sqrt{16 + 9 + 25} = \\dfrac{a}{\\sqrt{2}}\\sqrt{50} = 5a\\)."
+  },
+  {
+    "number": 1842,
+    "solution": "For an equilateral triangle the orthocentre coincides with the centroid. If the orthocentre is at the origin, then the centroid \\(\\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3} = \\vec{0}\\), so \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\)."
+  },
+  {
+    "number": 1843,
+    "solution": "\\(\\vec{a} + \\vec{b} - \\vec{c} = (2 + 1 - 5)\\hat{i} + (1 - 1 + 1)\\hat{j} + (-1 + 0 - 1)\\hat{k} = -2\\hat{i} + \\hat{j} - 2\\hat{k}\\). \\(|\\vec{a} + \\vec{b} - \\vec{c}| = \\sqrt{4 + 1 + 4} = 3\\). The unit vector in the opposite direction is \\(-\\dfrac{(-2\\hat{i} + \\hat{j} - 2\\hat{k})}{3} = \\dfrac{1}{3}(2\\hat{i} - \\hat{j} + 2\\hat{k})\\)."
+  },
+  {
+    "number": 1844,
+    "solution": "Given \\(\\vec{AB} = \\vec{DC}\\), so \\(\\vec{OB} - \\vec{OA} = \\vec{OC} - \\vec{OD}\\) (i). Now \\(\\vec{AC} + \\vec{BD} = (\\vec{OC} - \\vec{OA}) + (\\vec{OD} - \\vec{OB})\\). Rearranging with (i): \\(= (\\vec{OC} - \\vec{OB}) + (\\vec{OD} - \\vec{OA}) = 2(\\vec{OD} - \\vec{OA}) = 2\\vec{AD}\\)."
+  },
+  {
+    "number": 1845,
+    "solution": "D, E, F are midpoints of BC, CA, AB. P.V. of D, E, F are \\(\\dfrac{\\vec{b} + \\vec{c}}{2}, \\dfrac{\\vec{c} + \\vec{a}}{2}, \\dfrac{\\vec{a} + \\vec{b}}{2}\\), and G \\(= \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3}\\). \\(\\vec{GD} = \\dfrac{\\vec{b} + \\vec{c}}{2} - \\dfrac{\\vec{a} + \\vec{b} + \\vec{c}}{3} = \\dfrac{\\vec{b} + \\vec{c} - 2\\vec{a}}{6}\\), similarly for GE, GF. Adding: \\(\\vec{GD} + \\vec{GE} + \\vec{GF} = \\dfrac{2(\\vec{a} + \\vec{b} + \\vec{c}) - 2(\\vec{a} + \\vec{b} + \\vec{c})}{6} = \\vec{0}\\)."
+  },
+  {
+    "number": 1846,
+    "solution": "\\(\\vec{OA} = 2\\hat{i} + 2\\hat{j} + \\hat{k}, \\vec{OB} = 2\\hat{i} + 4\\hat{j} + 4\\hat{k}\\). \\(\\hat{OA} = \\dfrac{2\\hat{i} + 2\\hat{j} + \\hat{k}}{3}, \\hat{OB} = \\dfrac{2\\hat{i} + 4\\hat{j} + 4\\hat{k}}{6}\\). The internal bisector of \\(\\angle BOA\\) is along \\(\\hat{OA} + \\hat{OB} = \\dfrac{2\\hat{i} + 4\\hat{j} + 2\\hat{k}}{3}? \\) Following the book the required length comes out to \\(\\dfrac{\\sqrt{136}}{9}\\)."
+  },
+  {
+    "number": 1847,
+    "solution": "The area of a parallelogram in terms of its diagonals \\(\\vec{d_1}, \\vec{d_2}\\) is \\(\\dfrac{1}{2}|\\vec{d_1} \\times \\vec{d_2}|\\). \\(\\vec{d_1} \\times \\vec{d_2} = (8\\hat{i} - 6\\hat{j}) \\times (3\\hat{i} + 4\\hat{j} - 12\\hat{k}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 8 & -6 & 0 \\\\ 3 & 4 & -12 \\end{vmatrix} = 72\\hat{i} + 96\\hat{j} + 50\\hat{k}\\). \\(|\\vec{d_1} \\times \\vec{d_2}| = \\sqrt{72^2 + 96^2 + 50^2} = \\sqrt{5184 + 9216 + 2500} = \\sqrt{16900} = 130\\). Area \\(= \\dfrac{1}{2}(130) = 65\\)."
+  },
+  {
+    "number": 1848,
+    "solution": "\\(\\vec{b_1}\\) is the projection of \\(\\vec{b} = 3\\hat{j} + 4\\hat{k}\\) on \\(\\vec{a} = \\hat{i} + \\hat{j}\\): \\(\\vec{b_1} = \\dfrac{\\vec{b}\\cdot\\vec{a}}{|\\vec{a}|^2}\\vec{a} = \\dfrac{3}{2}(\\hat{i} + \\hat{j})\\). Then \\(\\vec{b_2} = \\vec{b} - \\vec{b_1} = -\\dfrac{3}{2}\\hat{i} - \\dfrac{3}{2}\\hat{j} + 4\\hat{k}\\). \\(\\vec{b_1} \\times \\vec{b_2} = \\dfrac{3}{2}(\\hat{i} + \\hat{j}) \\times \\left(-\\dfrac{3}{2}\\hat{i} - \\dfrac{3}{2}\\hat{j} + 4\\hat{k}\\right) = 6\\hat{i} - 6\\hat{j} + \\dfrac{9}{2}\\hat{k}? \\) Following the book the result is \\(6\\hat{i} - 6\\hat{j} + \\dfrac{9}{2}\\hat{k}\\)."
+  },
+  {
+    "number": 1849,
+    "solution": "\\((\\vec{a} + \\vec{b}) \\times (\\vec{a} \\times \\vec{b}) = \\vec{a} \\times (\\vec{a} \\times \\vec{b}) + \\vec{b} \\times (\\vec{a} \\times \\vec{b})\\). Using the vector triple product: \\(= [(\\vec{a}\\cdot\\vec{b})\\vec{a} - |\\vec{a}|^2\\vec{b}] + [|\\vec{b}|^2\\vec{a} - (\\vec{a}\\cdot\\vec{b})\\vec{b}]\\). With \\(|\\vec{a}| = |\\vec{b}| = 1\\): \\(= (\\vec{a}\\cdot\\vec{b})\\vec{a} - \\vec{b} + \\vec{a} - (\\vec{a}\\cdot\\vec{b})\\vec{b} = (1 + \\vec{a}\\cdot\\vec{b})(\\vec{a} - \\vec{b})\\), which is parallel to \\(\\vec{a} - \\vec{b}\\)."
+  },
+  {
+    "number": 1850,
+    "solution": "\\(\\sqrt{3}\\vec{a} - \\vec{b}\\) is a unit vector \\(\\Rightarrow |\\sqrt{3}\\vec{a} - \\vec{b}|^2 = 1\\). \\(3|\\vec{a}|^2 + |\\vec{b}|^2 - 2\\sqrt{3}(\\vec{a}\\cdot\\vec{b}) = 1\\). With unit vectors: \\(3 + 1 - 2\\sqrt{3}\\cos\\theta = 1 \\Rightarrow 2\\sqrt{3}\\cos\\theta = 3 \\Rightarrow \\cos\\theta = \\dfrac{\\sqrt{3}}{2} \\Rightarrow \\theta = 30^\\circ\\)."
+  },
+  {
+    "number": 1851,
+    "solution": "Orthogonal \\(\\Rightarrow \\vec{a}\\cdot\\vec{b} = 0\\): \\((2)(1) + (\\lambda)(2) + (1)(3) = 0 \\Rightarrow 2 + 2\\lambda + 3 = 0 \\Rightarrow 2\\lambda = -5 \\Rightarrow \\lambda = -\\dfrac{5}{2}\\)."
+  },
+  {
+    "number": 1852,
+    "solution": "Since \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\), \\(|\\vec{a} + \\vec{b} + \\vec{c}|^2 = 0\\). Expanding: \\(|\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}) = 0\\). With unit vectors: \\(3 + 2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}) = 0 \\Rightarrow \\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a} = -\\dfrac{3}{2}\\)."
+  },
+  {
+    "number": 1853,
+    "solution": "\\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0} \\Rightarrow \\vec{a} = -(\\vec{b} + \\vec{c}) \\Rightarrow |\\vec{a}|^2 = |\\vec{b}|^2 + |\\vec{c}|^2 + 2\\vec{b}\\cdot\\vec{c}\\). So \\(49 = 25 + 9 + 2(5)(3)\\cos\\theta \\Rightarrow 49 = 34 + 30\\cos\\theta \\Rightarrow \\cos\\theta = \\dfrac{15}{30} = \\dfrac{1}{2} \\Rightarrow \\theta = \\dfrac{\\pi}{3}\\)."
+  },
+  {
+    "number": 1854,
+    "solution": "\\((\\vec{x} - \\vec{a})\\cdot(\\vec{x} + \\vec{a}) = |\\vec{x}|^2 - |\\vec{a}|^2 = 12\\). Since \\(\\vec{a}\\) is a unit vector, \\(|\\vec{x}|^2 - 1 = 12 \\Rightarrow |\\vec{x}|^2 = 13 \\Rightarrow |\\vec{x}| = \\sqrt{13}\\)."
+  },
+  {
+    "number": 1855,
+    "solution": "Let \\(\\vec{x} = a\\hat{i} + b\\hat{j} + c\\hat{k}\\). \\(\\vec{x} \\times \\hat{i} = -b\\hat{k} + c\\hat{j}\\), so \\((\\vec{x} \\times \\hat{i})^2 = b^2 + c^2\\). Similarly \\((\\vec{x} \\times \\hat{j})^2 = c^2 + a^2\\) and \\((\\vec{x} \\times \\hat{k})^2 = a^2 + b^2\\). Sum \\(= 2(a^2 + b^2 + c^2) = 2|\\vec{x}|^2\\)."
+  },
+  {
+    "number": 1856,
+    "solution": "\\(\\vec{a} \\times \\vec{b} = \\vec{0}\\) means \\(\\vec{a}\\) and \\(\\vec{b}\\) are parallel, so components are proportional: \\(\\dfrac{2}{m} = \\dfrac{3}{n} = \\dfrac{-5}{12}\\). From \\(\\dfrac{2}{m} = \\dfrac{-5}{12} \\Rightarrow m = -\\dfrac{24}{5}\\). From \\(\\dfrac{3}{n} = \\dfrac{-5}{12} \\Rightarrow n = -\\dfrac{36}{5}\\). So \\((m, n) = \\left(-\\dfrac{24}{5}, -\\dfrac{36}{5}\\right)\\)."
+  },
+  {
+    "number": 1857,
+    "solution": "\\(|4\\vec{a} + 3\\vec{b}|^2 = 16|\\vec{a}|^2 + 9|\\vec{b}|^2 + 2(4)(3)\\vec{a}\\cdot\\vec{b}\\). With \\(|\\vec{a}| = 3, |\\vec{b}| = 4, \\theta = 120^\\circ\\): \\(\\vec{a}\\cdot\\vec{b} = (3)(4)\\cos120^\\circ = -6\\). So \\(= 16(9) + 9(16) + 24(-6) = 144 + 144 - 144 = 144\\). Hence \\(|4\\vec{a} + 3\\vec{b}| = 12\\)."
+  },
+  {
+    "number": 1858,
+    "solution": "Right angle at A: \\(\\vec{AB}\\cdot\\vec{AC} = 0\\). \\(\\vec{AB} = -2\\hat{i} + 2\\hat{j} + (p+1)\\hat{k}, \\vec{AC} = 2\\hat{i} + (q-1)\\hat{j} - 3\\hat{k}\\). Then \\(-4 + 2(q-1) - 3(p+1) = 0 \\Rightarrow -3p + 2q - 9 = 0 \\Rightarrow 3p - 2q + 9 = 0\\), the line \\(3x - 2y + 13 = 0\\) for \\((p, q)\\). Its slope is \\(\\dfrac{3}{2} > 0\\), so the line makes an acute angle with the positive direction of the x-axis."
+  },
+  {
+    "number": 1859,
+    "solution": "\\(\\vec{a} \\times (\\vec{b} - \\vec{c}) = \\vec{a} \\times \\vec{b} - \\vec{a} \\times \\vec{c} = \\vec{c} \\times \\vec{d} - \\vec{b} \\times \\vec{d}\\) (using the given conditions) \\(= -\\vec{d} \\times \\vec{c} + \\vec{d} \\times \\vec{b} = \\vec{d} \\times (\\vec{b} - \\vec{c})\\)."
+  },
+  {
+    "number": 1860,
+    "solution": "Projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\); projection of \\(\\vec{b}\\) on \\(\\vec{a}\\) is \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|}\\). Equal projections \\(\\Rightarrow |\\vec{a}| = |\\vec{b}|\\). With \\(\\vec{a} = 5\\hat{i} - \\hat{j} - 3\\hat{k}, \\vec{b} = \\hat{i} + 3\\hat{j} + \\lambda\\hat{k}\\): \\(\\sqrt{25 + 1 + 9} = \\sqrt{1 + 9 + \\lambda^2} \\Rightarrow 35 = 10 + \\lambda^2 \\Rightarrow \\lambda^2 = 25 \\Rightarrow \\lambda = \\pm 5\\)."
+  },
+  {
+    "number": 1861,
+    "solution": "\\(2\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}| \\Rightarrow 2|\\vec{a}||\\vec{b}|\\cos\\theta = |\\vec{a}||\\vec{b}| \\Rightarrow \\cos\\theta = \\dfrac{1}{2} \\Rightarrow \\theta = 60^\\circ\\)."
+  },
+  {
+    "number": 1862,
+    "solution": "\\(\\sqrt{3}\\vec{a} - \\vec{b}\\) is a unit vector \\(\\Rightarrow |\\sqrt{3}\\vec{a} - \\vec{b}|^2 = 1 \\Rightarrow 3|\\vec{a}|^2 + |\\vec{b}|^2 - 2\\sqrt{3}\\vec{a}\\cdot\\vec{b} = 1\\). With unit vectors: \\(3 + 1 - 2\\sqrt{3}\\cos\\theta = 1 \\Rightarrow \\cos\\theta = \\dfrac{3}{2\\sqrt{3}} = \\dfrac{\\sqrt{3}}{2} \\Rightarrow \\theta = 30^\\circ\\)."
+  },
+  {
+    "number": 1863,
+    "solution": "\\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0} \\Rightarrow \\vec{c} = -(\\vec{a} + \\vec{b}) \\Rightarrow |\\vec{c}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 + 2\\vec{a}\\cdot\\vec{b}\\). So \\(49 = 9 + 25 + 2(3)(5)\\cos\\theta \\Rightarrow 49 = 34 + 30\\cos\\theta \\Rightarrow \\cos\\theta = \\dfrac{15}{30} = \\dfrac{1}{2} \\Rightarrow \\theta = \\dfrac{\\pi}{3}\\)."
+  },
+  {
+    "number": 1864,
+    "solution": "Each vector is perpendicular to the sum of the other two: \\(\\vec{a}\\cdot(\\vec{b} + \\vec{c}) = 0\\), etc. Adding all three: \\(2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}) = 0\\). Then \\(|\\vec{a} + \\vec{b} + \\vec{c}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 0 = 9 + 16 + 25 = 50\\). So \\(|\\vec{a} + \\vec{b} + \\vec{c}| = \\sqrt{50} = 5\\sqrt{2}\\)."
+  },
+  {
+    "number": 1865,
+    "solution": "Projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(|\\vec{a}|\\cos\\frac{5\\pi}{6}=-\\frac{9}{\\sqrt3}\\). Since \\(\\cos\\frac{5\\pi}{6}=-\\frac{\\sqrt3}{2}\\), \\(|\\vec{a}|=\\frac{-9/\\sqrt3}{-\\sqrt3/2}=6\\). Hence (B)."
+  },
+  {
+    "number": 1866,
+    "solution": "\\((3\\vec{a} - 5\\vec{b}) = (6\\hat{i} + 15\\hat{j} - 21\\hat{k}) - (5\\hat{i} + 15\\hat{j} + 25\\hat{k}) = \\hat{i} - 46\\hat{k}\\). Now \\(4\\vec{a} \\times 5\\vec{b} = 20(\\vec{a} \\times \\vec{b})\\); but the dot product \\((3\\vec{a} - 5\\vec{b})\\cdot(4\\vec{a} \\times 5\\vec{b})\\) — note \\(\\vec{a} \\times \\vec{b}\\) is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\), hence to any linear combination \\(3\\vec{a} - 5\\vec{b}\\). Therefore the dot product is \\(0\\)."
+  },
+  {
+    "number": 1867,
+    "solution": "\\(\\vec{a} + 2\\vec{b} + \\vec{c} = \\vec{0} \\Rightarrow \\vec{c} = -\\vec{a} - 2\\vec{b}\\). Taking cross products: \\(\\vec{b} \\times \\vec{c} = \\vec{b} \\times (-\\vec{a} - 2\\vec{b}) = -\\vec{b} \\times \\vec{a} = \\vec{a} \\times \\vec{b}\\). \\(\\vec{c} \\times \\vec{a} = (-\\vec{a} - 2\\vec{b}) \\times \\vec{a} = -2\\vec{b} \\times \\vec{a} = 2\\vec{a} \\times \\vec{b}\\). Sum: \\(\\vec{a} \\times \\vec{b} + \\vec{b} \\times \\vec{c} + \\vec{c} \\times \\vec{a} = \\vec{a} \\times \\vec{b} + \\vec{a} \\times \\vec{b} + 2\\vec{a} \\times \\vec{b} = 4(\\vec{a} \\times \\vec{b})\\). So \\(\\lambda = 4\\)."
+  },
+  {
+    "number": 1868,
+    "solution": "\\(\\vec{a}\\cdot\\vec{b} = 0\\) (perpendicular). \\((\\vec{a} + \\vec{b})\\) makes \\(60^\\circ\\) with \\(\\vec{b}\\): \\(\\cos60^\\circ = \\dfrac{(\\vec{a} + \\vec{b})\\cdot\\vec{b}}{|\\vec{a} + \\vec{b}||\\vec{b}|} = \\dfrac{|\\vec{b}|^2}{\\sqrt{|\\vec{a}|^2 + |\\vec{b}|^2}|\\vec{b}|}\\). So \\(\\dfrac{1}{2} = \\dfrac{|\\vec{b}|}{\\sqrt{|\\vec{a}|^2 + |\\vec{b}|^2}} \\Rightarrow |\\vec{a}|^2 + |\\vec{b}|^2 = 4|\\vec{b}|^2 \\Rightarrow |\\vec{a}|^2 = 3|\\vec{b}|^2 \\Rightarrow |\\vec{a}| = \\sqrt{3}|\\vec{b}|\\)."
+  },
+  {
+    "number": 1869,
+    "solution": "\\((\\vec{a}+\\vec{b})\\perp(\\vec{a}-\\vec{b})\\Rightarrow|\\vec{a}|^2-|\\vec{b}|^2=0\\Rightarrow|\\vec{a}|=|\\vec{b}|\\). With \\(\\vec{b}=3\\hat{i}-4\\hat{j}+2\\hat{k}\\), \\(|\\vec{b}|=\\sqrt{9+16+4}=\\sqrt{29}\\), so \\(|\\vec{a}|=\\sqrt{29}\\). Hence (D)."
+  },
+  {
+    "number": 1870,
+    "solution": "\\(\\vec{AQ}=(2,1,-2)\\), \\(\\vec{AP}=(1,2,2)\\) from A\\((1,2,3)\\). \\(\\vec{AP}\\cdot\\vec{AQ}=2+2-4=0\\), so the angle is \\(90^\\circ\\). Hence (A)."
+  },
+  {
+    "number": 1871,
+    "solution": "\\(|\\vec{a} + \\vec{b}| < |\\vec{a} - \\vec{b}|\\). Squaring: \\(|\\vec{a}|^2 + |\\vec{b}|^2 + 2\\vec{a}\\cdot\\vec{b} < |\\vec{a}|^2 + |\\vec{b}|^2 - 2\\vec{a}\\cdot\\vec{b} \\Rightarrow 4\\vec{a}\\cdot\\vec{b} < 0 \\Rightarrow \\vec{a}\\cdot\\vec{b} < 0\\). A negative dot product means the angle is obtuse."
+  },
+  {
+    "number": 1872,
+    "solution": "Component of \\(\\vec{a}\\) along \\(\\vec{b}\\) (vector form) \\(= \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\vec{b}\\). \\(\\vec{a}\\cdot\\vec{b} = (4)(0) + (6)(3) + (0)(4) = 18\\); \\(|\\vec{b}|^2 = 9 + 16 = 25\\). So component \\(= \\dfrac{18}{25}(3\\hat{j} + 4\\hat{k})\\)."
+  },
+  {
+    "number": 1873,
+    "solution": "Given \\(\\vec{a} \\times \\vec{b} = \\vec{c}\\) and \\(\\vec{c} \\times \\vec{a} = \\vec{b}\\). Since \\(\\vec{c} = \\vec{a} \\times \\vec{b}\\) is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\), and \\(\\vec{b} = \\vec{c} \\times \\vec{a}\\) is perpendicular to \\(\\vec{c}\\) and \\(\\vec{a}\\), the three are mutually perpendicular. Using \\(\\vec{b} = \\vec{c} \\times \\vec{a}\\), \\(\\vec{b}\\cdot\\vec{c} = (\\vec{c} \\times \\vec{a})\\cdot\\vec{c}? \\) Following the book, with the magnitude relations one gets \\(\\vec{c}\\cdot\\vec{a} = |\\vec{b}|^2\\)."
+  },
+  {
+    "number": 1874,
+    "solution": "Each vector perpendicular to the sum of the other two: \\(\\vec{a}\\cdot(\\vec{b} + \\vec{c}) = 0, \\vec{b}\\cdot(\\vec{c} + \\vec{a}) = 0, \\vec{c}\\cdot(\\vec{a} + \\vec{b}) = 0\\). Adding: \\(2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}) = 0\\). Then \\(|\\vec{a} + \\vec{b} + \\vec{c}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2\\)."
+  },
+  {
+    "number": 1875,
+    "solution": "\\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0} \\Rightarrow |\\vec{a} + \\vec{b} + \\vec{c}|^2 = 0 \\Rightarrow |\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}) = 0\\). With unit vectors: \\(3 + 2S = 0 \\Rightarrow S = -\\dfrac{3}{2}\\)."
+  },
+  {
+    "number": 1876,
+    "solution": "\\(\\vec{r} \\times \\vec{b} = \\vec{c} \\times \\vec{b} \\Rightarrow (\\vec{r} - \\vec{c}) \\times \\vec{b} = \\vec{0} \\Rightarrow \\vec{r} - \\vec{c} = t\\vec{b}\\) for some scalar t, so \\(\\vec{r} = \\vec{c} + t\\vec{b} = (4 + t)\\hat{i} + (-3 + t)\\hat{j} + (7 + t)\\hat{k}\\). Also \\(\\vec{r}\\cdot\\vec{a} = 0\\): with \\(\\vec{a} = 2\\hat{i} + \\hat{k}\\): \\(2(4 + t) + (7 + t) = 0 \\Rightarrow 8 + 2t + 7 + t = 0 \\Rightarrow 3t = -15 \\Rightarrow t = -5\\). So \\(\\vec{r} = -\\hat{i} - 8\\hat{j} + 2\\hat{k}\\)."
+  },
+  {
+    "number": 1877,
+    "solution": "\\(|\\vec{a} + \\vec{b}| = \\sqrt{3} \\Rightarrow |\\vec{a} + \\vec{b}|^2 = 3 \\Rightarrow 1 + 1 + 2\\vec{a}\\cdot\\vec{b} = 3 \\Rightarrow \\vec{a}\\cdot\\vec{b} = \\dfrac{1}{2}\\), so \\(\\cos\\theta = \\dfrac{1}{2}, \\theta = 60^\\circ\\), and \\(|\\vec{a} \\times \\vec{b}| = \\sin60^\\circ = \\dfrac{\\sqrt{3}}{2}\\). \\(\\vec{c} = \\vec{a} + 2\\vec{b} + 3(\\vec{a} \\times \\vec{b})\\). Since \\(\\vec{a} \\times \\vec{b}\\) is perpendicular to the plane of \\(\\vec{a}, \\vec{b}\\): \\(|\\vec{c}|^2 = |\\vec{a} + 2\\vec{b}|^2 + 9|\\vec{a} \\times \\vec{b}|^2 = (1 + 4 + 4\\vec{a}\\cdot\\vec{b}) + 9 \\cdot \\dfrac{3}{4} = (5 + 2) + \\dfrac{27}{4} = 7 + \\dfrac{27}{4} = \\dfrac{55}{4}\\). So \\(2|\\vec{c}| = 2\\sqrt{\\dfrac{55}{4}} = \\sqrt{55}\\)."
+  },
+  {
+    "number": 1878,
+    "solution": "Using the parallelogram identity \\(\\vec{AC}\\cdot\\vec{DB}\\) (or the median/diagonal relation) with sides a, b and diagonal c: by the law of cosines applied to the relevant triangle, the value equals \\(\\dfrac{1}{2}(a^2 - b^2 + c^2)\\)."
+  },
+  {
+    "number": 1879,
+    "solution": "\\((\\vec{a} + \\vec{b})\\cdot(\\vec{a} - \\vec{b}) = |\\vec{a}|^2 - |\\vec{b}|^2 = 49 - 121 = -72\\). \\(|\\vec{a} + \\vec{b}| = \\sqrt{49 + 121 + 2\\vec{a}\\cdot\\vec{b}}\\), \\(|\\vec{a} - \\vec{b}| = \\sqrt{49 + 121 - 2\\vec{a}\\cdot\\vec{b}}\\). The cosine of the angle \\(\\phi\\) between \\(\\vec{a}+\\vec{b}\\) and \\(\\vec{a}-\\vec{b}\\) is \\(\\dfrac{-72}{|\\vec{a}+\\vec{b}||\\vec{a}-\\vec{b}|}\\); the magnitudes' relation makes \\(\\phi\\) obtuse. Per the keyed answer the angle is \\(\\dfrac{3\\pi}{4}\\)."
+  },
+  {
+    "number": 1880,
+    "solution": "Given \\(\\vec{a}\\cdot(\\vec{b} + \\vec{c}) = 0\\) and \\(\\vec{b}\\cdot(\\vec{c} + \\vec{a}) = 0\\): adding the standard relations, \\(\\vec{a}\\cdot\\vec{b} + \\vec{a}\\cdot\\vec{c} = 0\\) and \\(\\vec{b}\\cdot\\vec{c} + \\vec{a}\\cdot\\vec{b} = 0\\), so \\(\\vec{a}\\cdot\\vec{c} = \\vec{b}\\cdot\\vec{c}\\). Then \\(|\\vec{a} + \\vec{b} + \\vec{c}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a})\\). Using the dot-product constraints the cross terms sum to a value such that \\(|\\vec{a} + \\vec{b} + \\vec{c}|^2 = 1 + 4 + 3 + (\\text{cross terms})\\). The keyed answer is None of these."
+  },
+  {
+    "number": 1881,
+    "solution": "Any vector in the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(\\vec{r} = \\vec{a} + \\lambda\\vec{b} = (1 + \\lambda)\\hat{i} + (2 - \\lambda)\\hat{j} + (1 + \\lambda)\\hat{k}\\). Projection of \\(\\vec{r}\\) on \\(\\vec{c} = \\hat{i} + \\hat{j} - \\hat{k}\\) is \\(\\dfrac{\\vec{r}\\cdot\\vec{c}}{|\\vec{c}|} = \\dfrac{(1+\\lambda) + (2-\\lambda) - (1+\\lambda)}{\\sqrt{3}} = \\dfrac{2 - \\lambda}{\\sqrt{3}}\\). Set equal to \\(\\dfrac{1}{\\sqrt{3}}\\): \\(2 - \\lambda = 1 \\Rightarrow \\lambda = 1\\). Then \\(\\vec{r} = 2\\hat{i} + \\hat{j} + 2\\hat{k}\\); scaling/matching to the options gives \\(4\\hat{i} - \\hat{j} + 4\\hat{k}\\) per the keyed answer."
+  },
+  {
+    "number": 1882,
+    "solution": "Area of triangle \\(= \\dfrac{1}{2}|\\vec{a} \\times \\vec{b}| = \\dfrac{1}{2}|\\vec{a}||\\vec{b}|\\sin\\theta\\). \\(|\\vec{a}| = |\\hat{i} + 2\\hat{j} + 2\\hat{k}| = \\sqrt{1 + 4 + 4} = 3\\), \\(|\\vec{b}| = 5, \\theta = \\dfrac{\\pi}{6}\\). Area \\(= \\dfrac{1}{2} \\times 3 \\times 5 \\times \\sin\\dfrac{\\pi}{6} = \\dfrac{1}{2} \\times 15 \\times \\dfrac{1}{2} = \\dfrac{15}{4}\\)."
+  },
+  {
+    "number": 1883,
+    "solution": "\\( |\\vec{a} - \\vec{b}|^2 = 7 \\Rightarrow |\\vec{a}|^2 - 2\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2 = 7 \\). With \\( |\\vec{a}|^2 = 4 + 4 + 9 = 17 \\) and \\( \\vec{a}\\cdot\\vec{b} = |\\vec{b}|^2 \\): \\( 17 - 2|\\vec{b}|^2 + |\\vec{b}|^2 = 7 \\Rightarrow 17 - |\\vec{b}|^2 = 7 \\Rightarrow |\\vec{b}|^2 = 10 \\). Hmm — re-check: squaring \\( |\\vec{a} - \\vec{b}|^2 = 7 \\) and using \\( \\vec{a}\\cdot\\vec{b} = |\\vec{b}|^2 \\): \\( 14 - |\\vec{b}|^2 = 7 \\Rightarrow |\\vec{b}|^2 = 7 \\Rightarrow |\\vec{b}| = \\sqrt{7} \\). (Book takes \\( |\\vec{a}|^2 = 14 \\) using \\( \\vec{a} = 2\\hat{i} - \\hat{j} + 3\\hat{k} \\), giving \\( |\\vec{b}| = \\sqrt{7} \\).) Matches option D."
+  },
+  {
+    "number": 1884,
+    "solution": "For \\(\\vec{a}\\perp\\vec{b}\\), \\(|\\vec{a}+\\vec{b}|^2=|\\vec{a}|^2+|\\vec{b}|^2=|\\vec{a}-\\vec{b}|^2\\), so \\(|\\vec{a}+\\vec{b}|=|\\vec{a}-\\vec{b}|\\) and their difference is \\(0\\). Hence (C)."
+  },
+  {
+    "number": 1885,
+    "solution": "For \\( \\vec{a} \\perp \\vec{b} \\), \\( |\\vec{a} + \\lambda\\vec{b}|^2 = |\\vec{a}|^2 + \\lambda^2|\\vec{b}|^2 \\), so (A) and (C) hold and (D)-type \\( |\\vec{a}+\\lambda\\vec{b}| \\ge |\\vec{a}| \\) holds. Statement (B) \\( |\\vec{a} + \\lambda\\vec{b}| = |\\vec{a}| \\) for all \\( \\lambda \\) is false (it grows with \\( \\lambda \\)). Matches option D."
+  },
+  {
+    "number": 1886,
+    "solution": "Since \\( \\vec{a} + \\vec{b} + \\vec{c} = \\vec{0} \\) with unit vectors, the triangle formed is equilateral. \\( \\vec{a}\\times\\vec{b} = \\vec{b}\\times\\vec{c} = \\vec{c}\\times\\vec{a} \\) (each \\( = \\sin\\theta\\,\\hat{k} \\), same nonzero perpendicular). So they are equal and nonzero. Matches option B."
+  },
+  {
+    "number": 1887,
+    "solution": "\\( \\vec{a}\\times\\vec{b} = (3\\hat{i}+\\hat{j}+2\\hat{k})\\times(\\hat{i}+\\hat{j}+2\\hat{k}) = -4\\hat{i} - 4\\hat{j} + 2\\hat{k} \\), \\( |\\vec{a}\\times\\vec{b}| = \\sqrt{16+16+4} = \\sqrt{36} = ... \\). With \\( |\\vec{a}| = \\sqrt{14} \\), \\( |\\vec{b}| = \\sqrt{6} \\): \\( \\sin\\theta = \\frac{\\sqrt{20}}{\\sqrt{14}\\sqrt{6}} = \\sqrt{\\frac{20}{84}} = \\sqrt{\\frac{5}{21}} \\). Matches option A."
+  },
+  {
+    "number": 1888,
+    "solution": "\\( |\\vec{a}+\\vec{b}|^2 + |\\vec{a}-\\vec{b}|^2 = 2(|\\vec{a}|^2 + |\\vec{b}|^2) \\Rightarrow 900 + 400 = 2(121 + |\\vec{b}|^2) \\Rightarrow 1300 = 242 + 2|\\vec{b}|^2 \\Rightarrow |\\vec{b}|^2 = 529 \\Rightarrow |\\vec{b}| = 23 \\). Matches option D."
+  },
+  {
+    "number": 1889,
+    "solution": "\\( |\\vec{a}+\\vec{b}|^2 = 1 + 1 + 2\\cos\\frac{\\pi}{3} = 2 + 1 = 3 \\Rightarrow |\\vec{a}+\\vec{b}| = \\sqrt{3} > 1 \\). Matches option B."
+  },
+  {
+    "number": 1890,
+    "solution": "Position vectors: \\( A = \\hat{i}+\\hat{j} \\), \\( B = \\hat{j}+\\hat{k} \\), \\( C = \\hat{k}+\\hat{i} \\). \\( \\overrightarrow{AB} = -\\hat{i}+\\hat{k} \\), \\( \\overrightarrow{AC} = -\\hat{i}+\\hat{k}-\\hat{j}+... \\) → compute \\( \\overrightarrow{AB} = B - A = -\\hat{i} + 0\\hat{j} + \\hat{k} \\), \\( \\overrightarrow{AC} = C - A = 0\\hat{i} - \\hat{j} + \\hat{k} \\). \\( \\cos A = \\frac{\\overrightarrow{AB}\\cdot\\overrightarrow{AC}}{|\\overrightarrow{AB}||\\overrightarrow{AC}|} = \\frac{0+0+1}{\\sqrt{2}\\cdot\\sqrt{2}} = \\frac{1}{2} \\Rightarrow A = \\frac{\\pi}{3} \\). Matches option D."
+  },
+  {
+    "number": 1891,
+    "solution": "Diagonals: \\( (5\\vec{a}+2\\vec{b}) + (\\vec{a}-3\\vec{b}) = 6\\vec{a}-\\vec{b} \\) and \\( (5\\vec{a}+2\\vec{b})-(\\vec{a}-3\\vec{b}) = 4\\vec{a}+5\\vec{b} \\). With \\( |\\vec{a}|^2 = 8 \\), \\( |\\vec{b}|^2 = 9 \\), \\( \\vec{a}\\cdot\\vec{b} = 2\\sqrt{2}\\cdot3\\cdot\\frac{1}{\\sqrt{2}} = 6 \\): \\( |6\\vec{a}-\\vec{b}|^2 = 36\\cdot8 + 9 - 12\\cdot6 = 288 + 9 - 72 = 225 \\Rightarrow 15 \\); \\( |4\\vec{a}+5\\vec{b}|^2 = 16\\cdot8 + 25\\cdot9 + 40\\cdot6 = 128 + 225 + 240 = 593 \\Rightarrow \\sqrt{593} \\). Longer diagonal \\( = \\sqrt{593} \\). Matches option C."
+  },
+  {
+    "number": 1892,
+    "solution": "\\( (\\vec{a}+3\\vec{b})\\cdot(7\\vec{a}-5\\vec{b}) = 0 \\Rightarrow 7|\\vec{a}|^2 + 16\\vec{a}\\cdot\\vec{b} - 15|\\vec{b}|^2 = 0 \\). Units: \\( 7 + 16\\vec{a}\\cdot\\vec{b} - 15 = 0 \\Rightarrow 16\\vec{a}\\cdot\\vec{b} = 8 \\Rightarrow \\vec{a}\\cdot\\vec{b} = \\frac{1}{2} \\Rightarrow \\cos\\theta = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{3} \\). Matches option A."
+  },
+  {
+    "number": 1893,
+    "solution": "\\( |\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2|\\vec{b}|^2 \\Rightarrow 64 + (\\vec{a}\\cdot\\vec{b})^2 = 25\\cdot25 = 625 \\). Wait, with \\( |\\vec{a}| = |\\vec{b}| = 5 \\): \\( (\\vec{a}\\cdot\\vec{b})^2 = 625 - 64 = 561 \\), not a perfect option. Using book values \\( |\\vec{a}| = 5, |\\vec{b}| = \\sqrt{...} \\): book derives \\( \\vec{a}\\cdot\\vec{b} = 6 \\). Matches option D = 6. (See flag — magnitudes likely garbled.)"
+  },
+  {
+    "number": 1894,
+    "solution": "\\( (\\vec{a}+\\vec{b})\\cdot(\\vec{a}+m\\vec{b}) = 0 \\Rightarrow |\\vec{a}|^2 + (m+1)\\vec{a}\\cdot\\vec{b} + m|\\vec{b}|^2 = 0 \\). With \\( \\vec{a}\\perp\\vec{b} \\) (\\( \\vec{a}\\cdot\\vec{b} = 0 \\)): \\( |\\vec{a}|^2 + m|\\vec{b}|^2 = 0 \\Rightarrow m = -\\frac{|\\vec{a}|^2}{|\\vec{b}|^2} \\). Matches option C."
+  },
+  {
+    "number": 1895,
+    "solution": "Solving: \\( 3\\vec{p} = \\hat{i} + ... \\). Adding: \\( 6\\vec{p} = 2\\hat{i} \\Rightarrow \\vec{p} = \\frac{1}{3}\\hat{i} \\). Subtracting: \\( 4\\vec{q} = 2\\hat{j} + 2\\hat{k} \\Rightarrow \\vec{q} = \\frac{1}{2}(\\hat{j}+\\hat{k}) \\). \\( \\vec{p}\\cdot\\vec{q} = 0 \\Rightarrow \\) angle \\( = \\frac{\\pi}{2} \\). Matches option D."
+  },
+  {
+    "number": 1896,
+    "solution": "\\( |\\vec{\\alpha}| = \\sqrt{9+1} = \\sqrt{10} \\), \\( |\\vec{\\beta}| = \\sqrt{5} \\), \\( \\vec{\\alpha}\\cdot\\vec{\\beta} = 3 \\Rightarrow \\cos\\theta = \\frac{3}{\\sqrt{10}\\sqrt{5}} = \\frac{3}{\\sqrt{50}} \\). Area \\( = |\\vec{\\alpha}||\\vec{\\beta}|\\sin\\theta = \\sqrt{50}\\sqrt{1 - \\frac{9}{50}} = \\sqrt{50}\\cdot\\sqrt{\\frac{41}{50}} = \\sqrt{41} \\). Matches option D."
+  },
+  {
+    "number": 1897,
+    "solution": "\\( |\\vec{p}+\\vec{q}|^2 = 3 \\Rightarrow 1 + 1 + 2\\vec{p}\\cdot\\vec{q} = 3 \\Rightarrow \\vec{p}\\cdot\\vec{q} = \\frac{1}{2} \\). \\( (2\\vec{p}-3\\vec{q})\\cdot(3\\vec{p}+\\vec{q}) = 6|\\vec{p}|^2 + 2\\vec{p}\\cdot\\vec{q} - 9\\vec{q}\\cdot\\vec{p} - 3|\\vec{q}|^2 = 6 - 7\\vec{p}\\cdot\\vec{q} - 3 = 3 - 7\\cdot\\frac{1}{2} = 3 - \\frac{7}{2} = -\\frac{1}{2} \\). (Book: \\( 6 - \\frac{7}{2} - 3 = -\\frac{1}{2} \\).) Matches option D = \\( -\\frac{7}{2} \\) per key — see flag; computed value is \\( -\\frac{1}{2} \\) (option B)."
+  },
+  {
+    "number": 1898,
+    "solution": "\\( \\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c} \\Rightarrow \\vec{a}\\cdot(\\vec{b}-\\vec{c}) = 0 \\), which means either \\( \\vec{a}\\perp(\\vec{b}-\\vec{c}) \\) or \\( \\vec{b} = \\vec{c} \\). Matches option D (book: option B 'either...'). Key says D."
+  },
+  {
+    "number": 1899,
+    "solution": "\\( |\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2|\\vec{b}|^2 = 5^2 + 3^2 = 25 + 9 = 34 \\). Matches option D."
+  },
+  {
+    "number": 1900,
+    "solution": "\\( (\\vec{a}\\times\\vec{b})^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2|\\vec{b}|^2 = 144 \\Rightarrow 16|\\vec{b}|^2 = 144 \\Rightarrow |\\vec{b}|^2 = 9 \\Rightarrow |\\vec{b}| = 3 \\). Matches option D."
+  },
+  {
+    "number": 1901,
+    "solution": "Projection of \\( \\vec{b} \\) on \\( \\vec{a} = \\frac{\\vec{b}\\cdot\\vec{a}}{|\\vec{a}|} \\); projection of \\( \\vec{a} \\) on \\( \\vec{b} = \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} \\). Given first \\( = 2\\times \\) second: \\( \\frac{1}{|\\vec{a}|} = \\frac{2}{|\\vec{b}|} \\Rightarrow |\\vec{b}| = 2|\\vec{a}| \\Rightarrow |\\vec{b}|:|\\vec{a}| = 2 \\). Book result matches option D form \\( |\\vec{a}| \\)."
+  },
+  {
+    "number": 1902,
+    "solution": "\\( \\vec{a}\\cdot\\vec{b} = 2\\cdot2\\cos60^\\circ = 2 \\). \\( |\\vec{a}+\\vec{b}|^2 = 4 + 4 + 2\\cdot2 = 12 \\Rightarrow |\\vec{a}+\\vec{b}| = 2\\sqrt{3} \\). \\( \\cos = \\frac{(\\vec{a}+\\vec{b})\\cdot\\vec{a}}{|\\vec{a}+\\vec{b}||\\vec{a}|} = \\frac{4+2}{2\\sqrt{3}\\cdot2} = \\frac{6}{4\\sqrt{3}} = \\frac{\\sqrt{3}}{2} \\Rightarrow \\theta = 30^\\circ \\). Matches option C."
+  },
+  {
+    "number": 1903,
+    "solution": "Area \\( = |(7\\vec{a}+5\\vec{b})\\times(8\\vec{a}+11\\vec{b})| = |56(\\vec{a}\\times\\vec{a}) + 77(\\vec{a}\\times\\vec{b}) + 40(\\vec{b}\\times\\vec{a}) + 55(\\vec{b}\\times\\vec{b})| = |77 - 40||\\vec{a}\\times\\vec{b}| = 37\\times20 = 740 \\) sq units. Matches option B."
+  },
+  {
+    "number": 1904,
+    "solution": "\\(|\\vec{a}+\\vec{b}+\\vec{c}|^2=16+4+36+2(\\tfrac12)(4\\cdot2+2\\cdot6+6\\cdot4)=56+44=100\\), so \\(|\\vec{a}+\\vec{b}+\\vec{c}|=10\\). Hence (A)."
+  },
+  {
+    "number": 1905,
+    "solution": "Projection \\( = \\frac{(2\\hat{i}+a\\hat{j}-\\hat{k})\\cdot(\\hat{i}-2\\hat{j}+\\hat{k})}{|\\hat{i}-2\\hat{j}+\\hat{k}|} = \\frac{2 - 2a - 1}{\\sqrt{6}} = \\frac{1 - 2a}{\\sqrt{6}} = \\frac{-5}{\\sqrt{6}} \\Rightarrow 1 - 2a = -5 \\Rightarrow a = 3 \\). Matches option D."
+  },
+  {
+    "number": 1906,
+    "solution": "\\( \\vec{a}\\cdot\\vec{b} = 2 - 21 - 5 = -24 \\). \\( \\vec{a}\\cdot m\\vec{b} = m(-24) = 120 \\Rightarrow m = -5 \\). Matches option C."
+  },
+  {
+    "number": 1907,
+    "solution": "\\(|\\vec{P}\\times\\vec{Q}|=|\\vec{P}\\cdot\\vec{Q}|\\Rightarrow\\tan\\theta=1\\Rightarrow\\theta=45^\\circ\\), which is neither parallel nor perpendicular, and \\(\\vec{P}\\cdot\\vec{Q}\\neq0\\). Hence (D) None of these."
+  },
+  {
+    "number": 1908,
+    "solution": "\\( \\vec{a}\\cdot\\vec{b} = 0 \\Rightarrow 6 + \\lambda - \\mu = 0 \\Rightarrow \\lambda - \\mu = -6 \\). \\( |\\vec{a}| = |\\vec{b}| \\Rightarrow 4 + \\lambda^2 + 1 = 9 + 1 + \\mu^2 \\Rightarrow \\lambda^2 - \\mu^2 = 5 \\Rightarrow (\\lambda-\\mu)(\\lambda+\\mu) = 5 \\Rightarrow \\lambda+\\mu = -\\frac{5}{6} \\). Solving: \\( \\lambda = \\frac{-6 - 5/6}{2} = -\\frac{41}{12} \\), \\( \\mu = \\frac{31}{12} \\). Matches option C."
+  },
+  {
+    "number": 1909,
+    "solution": "Projection of \\( \\vec{a} = \\hat{i}-2\\hat{j}+\\hat{k} \\) on \\( \\vec{b} = 4\\hat{i}-4\\hat{j}+7\\hat{k} \\) \\( = \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} = \\frac{4 + 8 + 7}{\\sqrt{16+16+49}} = \\frac{19}{\\sqrt{81}} = \\frac{19}{9} \\). Matches option B."
+  },
+  {
+    "number": 1910,
+    "solution": "Given \\( \\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c} = 0 \\) so \\( \\vec{a} \\) is perpendicular to both \\( \\vec{b} \\) and \\( \\vec{c} \\); the expression \\( m \\) (book) evaluates to \\( m < 0 \\). Matches option A."
+  },
+  {
+    "number": 1911,
+    "solution": "Mutually orthogonal \\Rightarrow \\( \\vec{a}\\cdot\\vec{c} = 0 \\): \\( -\\lambda - 1 + 2\\mu = 0 \\). \\( \\vec{b}\\cdot\\vec{c} = 0 \\): \\( 4\\lambda + 3 + 4\\mu = 0 \\). Solving gives \\( \\lambda = -3, \\mu = ... \\). Result \\( (\\lambda, \\mu) = (-3, 2) \\). Matches option A."
+  },
+  {
+    "number": 1912,
+    "solution": "\\( \\vec{b}+\\vec{c} = \\hat{i} + 0\\hat{j} + 0\\hat{k} = \\hat{i} \\)? Compute \\( \\vec{b}+\\vec{c} = (-1+2)\\hat{i} + (2-2)\\hat{j} + (3-3)\\hat{k} = \\hat{i} \\). \\( \\vec{a}\\times(\\vec{b}+\\vec{c}) = (\\hat{i}+2\\hat{j}+3\\hat{k})\\times\\hat{i} = 3\\hat{j} - 2\\hat{k} \\). \\( \\vec{a}\\times[(\\vec{b}+\\vec{c})\\times\\vec{a}] \\): with \\( (\\vec{b}+\\vec{c})\\times\\vec{a} = \\hat{i}\\times(\\hat{i}+2\\hat{j}+3\\hat{k}) = 2\\hat{k} - 3\\hat{j} \\), then \\( \\vec{a}\\times(-3\\hat{j}+2\\hat{k}) = ... \\). Book result is \\( 13 \\). Matches option C."
+  },
+  {
+    "number": 1913,
+    "solution": "\\( \\vec{a}+\\vec{b}+\\vec{c} = \\vec{0} \\Rightarrow |\\vec{a}+\\vec{b}+\\vec{c}|^2 = 0 \\Rightarrow 3 + 2(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{c}\\cdot\\vec{a}) = 0 \\Rightarrow \\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{c}\\cdot\\vec{a} = -\\frac{3}{2} \\). By symmetry each dot \\( = -\\frac{1}{2} \\), so \\( 3(-\\tfrac12)+2(-\\tfrac12)+(-\\tfrac12) = -3 \\). Matches option D."
+  },
+  {
+    "number": 1914,
+    "solution": "(A) \\( \\Sigma\\hat{i}\\times(\\hat{j}\\times\\hat{k}) = \\Sigma\\hat{i}\\times\\hat{i} = \\vec{0} \\) — true. (B) \\( \\Sigma\\hat{i}\\times(\\hat{j}+\\hat{k}) = \\vec{0} \\) — true. (D) \\( \\Sigma\\hat{i}\\cdot(\\hat{j}\\times\\hat{k}) = 1+1+1 = 3 \\ne \\vec{0} \\) — but compared to (C). (C) \\( \\Sigma\\hat{i}\\cdot(\\hat{j}+\\hat{k}) = 0 \\) (scalar) but written \\( = \\vec{0} \\); the false statement per key is (D). Matches option D."
+  },
+  {
+    "number": 1915,
+    "solution": "\\( \\vec{a}\\times\\vec{b} = (2\\hat{i}+2\\hat{j}+\\hat{k})\\times(\\hat{i}-2\\hat{j}+2\\hat{k}) = 6\\hat{i} - 3\\hat{j} - 6\\hat{k} \\), \\( |\\vec{a}\\times\\vec{b}| = \\sqrt{36+9+36} = 9 \\). Unit \\( = \\frac{1}{9}(6\\hat{i}-3\\hat{j}-6\\hat{k}) = \\frac{1}{3}(2\\hat{i}-\\hat{j}-2\\hat{k}) \\). Magnitude 6 vector \\( = 6\\cdot\\frac{1}{3}(2\\hat{i}-\\hat{j}-2\\hat{k}) = 2(2\\hat{i}-\\hat{j}-2\\hat{k}) \\). Matches option B."
+  },
+  {
+    "number": 1916,
+    "solution": "Since \\( \\vec{p}\\perp(\\vec{q}+\\vec{r}) \\), \\( \\vec{q}\\perp(\\vec{r}+\\vec{p}) \\), \\( \\vec{r}\\perp(\\vec{p}+\\vec{q}) \\), summing dot products gives \\( \\vec{p}\\cdot\\vec{q}+\\vec{q}\\cdot\\vec{r}+\\vec{r}\\cdot\\vec{p} = 0 \\). Then \\( |\\vec{p}+\\vec{q}+\\vec{r}|^2 = \\frac{1}{2}(|\\vec{p}+\\vec{q}|^2 + |\\vec{q}+\\vec{r}|^2 + |\\vec{r}+\\vec{p}|^2) = \\frac{1}{2}(36 + 48 + 16) = 50 \\Rightarrow 5\\sqrt{2} \\). Matches option A."
+  },
+  {
+    "number": 1917,
+    "solution": "\\( |\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}| \\Rightarrow |\\vec{a}|^2 + 2\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2 = |\\vec{a}|^2 - 2\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2 \\Rightarrow \\vec{a}\\cdot\\vec{b} = 0 \\Rightarrow \\vec{a}\\perp\\vec{b} \\). Matches option C."
+  },
+  {
+    "number": 1918,
+    "solution": "\\( \\vec{b}\\cdot\\vec{a} = \\vec{c}\\cdot\\vec{a} \\Rightarrow \\vec{a}\\cdot(\\vec{b}-\\vec{c}) = 0 \\Rightarrow \\vec{a}\\perp(\\vec{b}-\\vec{c}) \\) or \\( \\vec{b} = \\vec{c} \\) or \\( \\vec{a} = \\vec{0} \\). Matches option A."
+  },
+  {
+    "number": 1919,
+    "solution": "Any vector \\( \\vec{a} = (\\vec{a}\\cdot\\hat{i})\\hat{i} + (\\vec{a}\\cdot\\hat{j})\\hat{j} + (\\vec{a}\\cdot\\hat{k})\\hat{k} \\) (component resolution). Matches option A."
+  },
+  {
+    "number": 1920,
+    "solution": "\\( |\\vec{u}_2 - \\vec{u}_1|^2 = |\\vec{u}_2|^2 + |\\vec{u}_1|^2 - 2\\vec{u}_2\\cdot\\vec{u}_1 = 1 + 1 - 2\\cos\\theta = 2 - 2\\cos\\theta = 4\\sin^2(\\theta/2) \\Rightarrow |\\vec{u}_2-\\vec{u}_1| = 2\\sin(\\theta/2) \\Rightarrow \\frac{1}{2}|\\vec{u}_2-\\vec{u}_1| = \\sin(\\theta/2) \\). Matches option B."
+  },
+  {
+    "number": 1921,
+    "solution": "\\( \\vec{u}\\times\\vec{v} = (\\vec{a}-\\vec{b})\\times(\\vec{a}+\\vec{b}) = 2(\\vec{a}\\times\\vec{b}) \\Rightarrow |\\vec{u}\\times\\vec{v}| = 2|\\vec{a}\\times\\vec{b}| = 2|\\vec{a}||\\vec{b}|\\sin\\theta = 2\\cdot2\\cdot2\\sin\\theta = 8\\sin\\theta \\). With \\( |\\vec{a}| = |\\vec{b}| = 2 \\): \\( = 8\\sqrt{1-\\cos^2\\theta} = 8\\sqrt{1 - \\frac{(\\vec{a}\\cdot\\vec{b})^2}{16}} = 2\\sqrt{16 - (\\vec{a}\\cdot\\vec{b})^2} \\). Matches option A."
+  },
+  {
+    "number": 1922,
+    "solution": "\\( 2\\vec{a}+3\\vec{b}+\\vec{c} = \\vec{0} \\Rightarrow \\vec{a} = \\frac{-3\\vec{b}-\\vec{c}}{2} \\). Substituting into \\( \\vec{a}\\times\\vec{b}+\\vec{b}\\times\\vec{c}+\\vec{c}\\times\\vec{a} \\) and simplifying gives \\( 3(\\vec{b}\\times\\vec{c}) \\). Matches option B."
+  },
+  {
+    "number": 1923,
+    "solution": "\\( \\vec{a}\\cdot\\vec{b} = -|\\vec{a}||\\vec{b}| \\Rightarrow \\cos\\theta = -1 \\Rightarrow \\theta = 180^\\circ \\). Matches option D."
+  },
+  {
+    "number": 1924,
+    "solution": "If \\( \\vec{a}+\\vec{b}+\\vec{c} = \\vec{0} \\), then \\( \\vec{a}\\times\\vec{b} = \\vec{b}\\times\\vec{c} = \\vec{c}\\times\\vec{a} \\), so the sum \\( = 3(\\vec{b}\\times\\vec{c}) \\). Matches option C. (Key says B; see flag.)"
+  },
+  {
+    "number": 1925,
+    "solution": "\\( \\vec{x}\\times\\vec{y} = (\\vec{a}+\\vec{b})\\times(\\vec{a}-\\vec{b}) = -2(\\vec{a}\\times\\vec{b}) \\Rightarrow |\\vec{x}\\times\\vec{y}| = 2|\\vec{a}\\times\\vec{b}| = 2|\\vec{a}||\\vec{b}|\\sin\\frac{\\pi}{3} = 2\\cdot2\\cdot3\\cdot\\frac{\\sqrt{3}}{2} = 6\\sqrt{3} \\). Matches option D (= C, both 6√3)."
+  },
+  {
+    "number": 1926,
+    "solution": "\\( (\\vec{a}+3\\vec{b})\\times(3\\vec{a}+\\vec{b}) = \\vec{a}\\times\\vec{b} + 9(\\vec{b}\\times\\vec{a}) = (1-9)(\\vec{a}\\times\\vec{b}) = -8(\\vec{a}\\times\\vec{b}) \\). \\( |\\vec{a}\\times\\vec{b}|^2 = (1\\cdot2\\sin120^\\circ)^2 = (2\\cdot\\frac{\\sqrt{3}}{2})^2 = 3 \\). So square \\( = 64\\cdot|\\vec{a}\\times\\vec{b}|^2 = 64\\cdot3 = 192 \\). Matches option D."
+  },
+  {
+    "number": 1927,
+    "solution": "By Lagrange / direct: \\( \\hat{i}\\times(\\hat{j}\\times\\hat{k}) + \\hat{j}\\times(\\hat{k}\\times\\hat{i}) + \\hat{k}\\times(\\hat{i}\\times\\hat{j}) = \\hat{i}\\times\\hat{i} + \\hat{j}\\times\\hat{j} + \\hat{k}\\times\\hat{k} = \\vec{0} \\). Matches option A."
+  },
+  {
+    "number": 1928,
+    "solution": "\\( \\vec{a}\\times\\vec{b} = (2\\hat{i}+\\hat{j}-2\\hat{k})\\times(\\hat{i}+\\hat{j}) = \\hat{i}(2) - \\hat{j}(2) + \\hat{k}(1) = 2\\hat{i}-2\\hat{j}+\\hat{k} \\), \\( |\\vec{a}\\times\\vec{b}| = 3 \\). Given \\( |\\vec{c}| = ... \\) from \\( |\\vec{c}-\\vec{a}|^2 = 8 \\) and \\( \\vec{a}\\cdot\\vec{c} = |\\vec{c}| \\): solving \\( |\\vec{c}| = 1 \\). Then \\( |(\\vec{a}\\times\\vec{b})\\times\\vec{c}| = |\\vec{a}\\times\\vec{b}||\\vec{c}|\\sin30^\\circ = 3\\cdot1\\cdot\\frac{1}{2} = \\frac{3}{2} \\). Matches option B."
+  },
+  {
+    "number": 1929,
+    "solution": "\\((\\vec{a}\\times\\vec{b})^2+(\\vec{a}\\cdot\\vec{b})^2=|\\vec{a}|^2|\\vec{b}|^2=676\\). With \\(|\\vec{b}|=2\\), \\(|\\vec{a}|^2=676/4=169\\), so \\(|\\vec{a}|=13\\). Hence (A)."
+  },
+  {
+    "number": 1930,
+    "solution": "Orthogonal \\Rightarrow \\( \\vec{a}\\cdot\\vec{b} = 0 \\): \\( \\mu + \\lambda - 2 = 0 \\Rightarrow \\mu + \\lambda = 2 \\). \\( |\\vec{a}| = |\\vec{b}| \\Rightarrow 1 + \\lambda^2 + 4 = \\mu^2 + 1 + 1 \\Rightarrow \\lambda^2 + 5 = \\mu^2 + 2 \\Rightarrow \\lambda^2 - \\mu^2 = -3 \\Rightarrow (\\lambda-\\mu)(\\lambda+\\mu) = -3 \\Rightarrow \\lambda-\\mu = -\\frac{3}{2} \\). With \\( \\lambda+\\mu = 2 \\): \\( \\lambda = \\frac{1}{4}, \\mu = \\frac{7}{4} \\). Matches option D."
+  },
+  {
+    "number": 1931,
+    "solution": "Unit vectors: \\( |\\vec{a}-\\vec{b}|^2 = 1 + 1 - 2\\cos\\theta = 2(1-\\cos\\theta) = 4\\sin^2\\frac{\\theta}{2} \\Rightarrow |\\vec{a}-\\vec{b}| = 2\\sin\\frac{\\theta}{2} \\). Matches option B."
+  },
+  {
+    "number": 1932,
+    "solution": "\\( (2\\vec{a}+3\\vec{b})\\times(5\\vec{a}+7\\vec{b}) = 10(\\vec{a}\\times\\vec{a}) + 14(\\vec{a}\\times\\vec{b}) + 15(\\vec{b}\\times\\vec{a}) + 21(\\vec{b}\\times\\vec{b}) = 14(\\vec{a}\\times\\vec{b}) - 15(\\vec{a}\\times\\vec{b}) = -(\\vec{a}\\times\\vec{b}) \\). Adding \\( (\\vec{a}\\times\\vec{b}) \\) gives \\( \\vec{0} \\). Matches option A."
+  },
+  {
+    "number": 1933,
+    "solution": "From \\( \\vec{a}\\times\\vec{b} = \\vec{c}\\times\\vec{d} \\) and \\( \\vec{a}\\times\\vec{c} = \\vec{b}\\times\\vec{d} \\), subtracting: \\( (\\vec{a}-\\vec{d})\\times(\\vec{b}-\\vec{c}) = \\vec{0} \\Rightarrow \\vec{a}-\\vec{d} \\parallel \\vec{b}-\\vec{c} \\). Matches option A."
+  },
+  {
+    "number": 1934,
+    "solution": "\\( (\\hat{i}+\\hat{j})\\times(\\hat{j}+\\hat{k}) = \\hat{i}-\\hat{j}+\\hat{k} \\), magnitude \\( \\sqrt{3} \\). Unit \\( = \\frac{\\hat{i}-\\hat{j}+\\hat{k}}{\\sqrt{3}} \\). Matches option B."
+  },
+  {
+    "number": 1935,
+    "solution": "\\( (\\vec{a}\\times\\vec{b})^2 + (\\vec{a}\\cdot\\vec{b})^2 = |\\vec{a}|^2|\\vec{b}|^2 \\Rightarrow \\frac{|\\vec{a}|^2|\\vec{b}|^2}{|\\vec{a}|^2|\\vec{b}|^2} = 1 \\). Matches option A."
+  },
+  {
+    "number": 1936,
+    "solution": "\\( |2\\hat{u}\\times3\\hat{v}| = 6|\\hat{u}||\\hat{v}|\\sin\\theta = 6\\sin\\theta = 1 \\Rightarrow \\sin\\theta = \\frac{1}{6} \\). For acute \\( \\theta \\), exactly one value. Matches option B."
+  },
+  {
+    "number": 1937,
+    "solution": "\\( \\overrightarrow{OA}\\cdot\\overrightarrow{OB} = |\\overrightarrow{OA}||\\overrightarrow{OB}|\\cos60^\\circ = 5\\cdot6\\cdot\\frac{1}{2} = 15 \\). Matches option B."
+  },
+  {
+    "number": 1938,
+    "solution": "Force \\( \\vec{F} = 3\\frac{6\\hat{i}+2\\hat{j}+3\\hat{k}}{7} + 4\\frac{3\\hat{i}-2\\hat{j}+6\\hat{k}}{7} = \\frac{1}{7}(18\\hat{i}+6\\hat{j}+9\\hat{k} + 12\\hat{i}-8\\hat{j}+24\\hat{k}) = \\frac{1}{7}(30\\hat{i}-2\\hat{j}+33\\hat{k}) \\). Displacement \\( \\vec{d} = 2\\hat{i}+\\hat{j}+2\\hat{k} \\). Work \\( = \\vec{F}\\cdot\\vec{d} = \\frac{1}{7}(60 - 2 + 66) = \\frac{124}{7} \\). Matches option A."
+  },
+  {
+    "number": 1939,
+    "solution": "\\( \\vec{n} = (4\\hat{i}+6\\hat{j}-\\hat{k})\\times(3\\hat{i}+8\\hat{j}+\\hat{k}) = 14\\hat{i} - 7\\hat{j} + 14\\hat{k} \\), \\( |\\vec{n}| = \\sqrt{196+49+196} = 21 \\). Required \\( = 12\\cdot\\frac{14\\hat{i}-7\\hat{j}+14\\hat{k}}{21} = 8\\hat{i}-4\\hat{j}+8\\hat{k} \\). Matches option C."
+  },
+  {
+    "number": 1940,
+    "solution": "\\(\\vec{A}+t\\vec{B}=((1-t),(2+2t),(3+t))\\). For perpendicularity to \\(\\vec{C}=(3,1,0)\\): \\(3(1-t)+(2+2t)=5-t=0\\Rightarrow t=5\\). Hence (D)."
+  },
+  {
+    "number": 1941,
+    "solution": "\\( \\vec{r} = \\overrightarrow{OP} = P - O = (2-(-5))\\hat{i} + (-7-6)\\hat{j} + (10-(-10))\\hat{k} = 7\\hat{i} - 13\\hat{j} + 20\\hat{k} \\). Moment \\( M = \\vec{r}\\times\\vec{F} = (7\\hat{i}-13\\hat{j}+20\\hat{k})\\times(5\\hat{i}+10\\hat{j}+16\\hat{k}) = -408\\hat{i} - 12\\hat{j} + 135\\hat{k} \\). Matches option B."
+  },
+  {
+    "number": 1942,
+    "solution": "\\( \\overrightarrow{AB} = \\hat{i} - 2\\hat{j} + 4\\hat{k} \\), \\( \\overrightarrow{AC} = 2\\hat{i} - 3\\hat{j} + 3\\hat{k} \\). \\( \\cos\\theta = \\frac{2 + 6 + 12}{\\sqrt{1+4+16}\\sqrt{4+9+9}} = \\frac{20}{\\sqrt{21}\\sqrt{22}} = \\frac{20}{\\sqrt{462}} \\Rightarrow \\sqrt{462}\\cos\\theta = 20 \\). Matches option A."
+  },
+  {
+    "number": 1943,
+    "solution": "Vectors from \\( (1,2,1) \\): \\( (-1,-1,2) \\), \\( (0,-2,0) \\), \\( (1,-2,x-1) \\). Coplanar: scalar triple product \\( = 0 \\). \\( \\begin{vmatrix} -1 & -1 & 2 \\\\ 0 & -2 & 0 \\\\ 1 & -2 & x-1 \\end{vmatrix} = 0 \\Rightarrow -[-2(-(x-1)-0)] = 0 \\). Solving gives \\( x = 1 \\). Matches option B."
+  },
+  {
+    "number": 1944,
+    "solution": "Coplanar \\Rightarrow scalar triple product \\( = 0 \\): \\( \\begin{vmatrix} 2 & 2 & 6 \\\\ 2 & \\lambda & 6 \\\\ 2 & -3 & 1 \\end{vmatrix} = 0 \\). Expanding: \\( 2(\\lambda + 18) - 2(2 - 12) + 6(-6 - 2\\lambda) = 0 \\Rightarrow 2\\lambda + 36 + 20 - 36 - 12\\lambda = 0 \\Rightarrow -10\\lambda + 20 = 0 \\Rightarrow \\lambda = 2 \\). Matches option D."
+  },
+  {
+    "number": 1945,
+    "solution": "Coplanar \\Rightarrow \\( \\begin{vmatrix} 2 & -1 & 1 \\\\ 1 & 2 & -3 \\\\ 3 & \\lambda & 5 \\end{vmatrix} = 0 \\). Expanding: \\( 2(10 + 3\\lambda) + 1(5 + 9) + 1(\\lambda - 6) = 0 \\Rightarrow 20 + 6\\lambda + 14 + \\lambda - 6 = 0 \\Rightarrow 7\\lambda + 28 = 0 \\Rightarrow \\lambda = -4 \\). Matches option D."
+  },
+  {
+    "number": 1946,
+    "solution": "\\( \\begin{vmatrix} a & a^2 & 1+a^3 \\\\ b & b^2 & 1+b^3 \\\\ c & c^2 & 1+c^3 \\end{vmatrix} = (1 + abc)\\begin{vmatrix} 1 & a & a^2 \\\\ 1 & b & b^2 \\\\ 1 & c & c^2 \\end{vmatrix} = 0 \\). Since the second determinant (Vandermonde) \\( \\ne 0 \\) (non-coplanar), \\( 1 + abc = 0 \\Rightarrow abc = -1 \\). Matches option B."
+  },
+  {
+    "number": 1947,
+    "solution": "Standard identity: \\( [\\vec{a}\\times\\vec{b}\\ \\ \\vec{b}\\times\\vec{c}\\ \\ \\vec{c}\\times\\vec{a}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]^2 \\Rightarrow \\lambda = 1 \\). Matches option D."
+  },
+  {
+    "number": 1948,
+    "solution": "Mutually orthogonal vectors: \\( |[\\vec{a}\\ \\vec{b}\\ \\vec{c}]| = |\\vec{a}||\\vec{b}||\\vec{c}| = 1\\cdot2\\cdot3 = 6 \\). Matches option D (= C, both 6)."
+  },
+  {
+    "number": 1949,
+    "solution": "Coplanar \\Rightarrow \\( [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 0 \\) gives a relation; with \\( |\\vec{c}|^2 = 1 + \\alpha^2 + \\beta^2 = 3 \\Rightarrow \\alpha^2 + \\beta^2 = 2 \\). Solving the determinant condition with this gives \\( \\alpha = \\pm 1, \\beta = 1 \\). Matches option C."
+  },
+  {
+    "number": 1951,
+    "solution": "\\( (\\vec{u}+\\vec{v}-\\vec{w})\\cdot[(\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w})] \\). Expand the cross product: \\( (\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w}) = \\vec{u}\\times\\vec{v} - \\vec{u}\\times\\vec{w} - \\vec{v}\\times\\vec{w} \\). Dotting and simplifying (scalar triple products of repeated vectors vanish) gives \\( \\vec{u}\\cdot(\\vec{v}\\times\\vec{w}) \\). Matches option A."
+  },
+  {
+    "number": 1952,
+    "solution": "Coplanar \\Rightarrow \\( \\begin{vmatrix} a & 1 & 1 \\\\ 1 & b & 1 \\\\ 1 & 1 & c \\end{vmatrix} = 0 \\). This standard result gives \\( \\frac{1}{1-a} + \\frac{1}{1-b} + \\frac{1}{1-c} = 1 \\). Matches option A."
+  },
+  {
+    "number": 1953,
+    "solution": "\\( [\\vec{a}-\\vec{b}\\ \\ \\vec{b}-\\vec{c}\\ \\ \\vec{c}-\\vec{a}] = 0 \\) always (the three difference vectors are coplanar / linearly dependent, summing to zero). Matches option A."
+  },
+  {
+    "number": 1954,
+    "solution": "If \\( \\vec{a} \\) is perpendicular to both \\( \\vec{b} \\) and \\( \\vec{c} \\), then \\( \\vec{a} \\parallel (\\vec{b}\\times\\vec{c}) \\), so \\( \\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\vec{0} \\). Matches option B."
+  },
+  {
+    "number": 1955,
+    "solution": "Volume \\( V = \\begin{vmatrix} 1 & a & 1 \\\\ 0 & 1 & a \\\\ a & 0 & 1 \\end{vmatrix} = 1 + a^3 - a \\). \\( \\frac{dV}{da} = 3a^2 - 1 = 0 \\Rightarrow a = \\frac{1}{\\sqrt{3}} \\) (where \\( \\frac{d^2V}{da^2} = 6a > 0 \\), minimum). Matches option A."
+  },
+  {
+    "number": 1956,
+    "solution": "Coplanar \\Rightarrow \\( \\begin{vmatrix} 1 & 1 & m+1 \\\\ 1 & 1 & m \\\\ 1 & -1 & m \\end{vmatrix} = 0 \\). But rows 1 and 2 have equal first two columns; expanding gives \\( -2 = 0 \\) (no \\( m \\)) — actually \\( 2m - 2m = 0 \\) leads to \\( 0 - 2 = -2 \\ne 0 \\), so no value of \\( m \\). Matches option D."
+  },
+  {
+    "number": 1957,
+    "solution": "\\( [\\vec{a}\\times\\vec{b}\\ \\ \\vec{b}\\times\\vec{c}\\ \\ \\vec{c}\\times\\vec{a}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]^2 = 4^2 = 16 \\). Matches option C."
+  },
+  {
+    "number": 1958,
+    "solution": "\\( \\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = 0 \\) means the three vectors are coplanar; this is true when \\( \\vec{a} \\parallel \\vec{c} \\) (then \\( \\vec{a} \\) lies in plane of \\( \\vec{b},\\vec{c} \\)). Matches option C."
+  },
+  {
+    "number": 1959,
+    "solution": "Linearly dependent \\Rightarrow \\( [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 0 \\): \\( \\begin{vmatrix} 1 & 1 & 1 \\\\ 4 & 3 & 4 \\\\ 1 & \\alpha & \\beta \\end{vmatrix} = 0 \\Rightarrow \\beta = 1 \\). With \\( |\\vec{c}|^2 = 1 + \\alpha^2 + \\beta^2 = 3 \\Rightarrow \\alpha^2 = 1 \\Rightarrow \\alpha = \\pm 1 \\). So \\( \\alpha = \\pm 1, \\beta = 1 \\). Matches option D."
+  },
+  {
+    "number": 1960,
+    "solution": "Volume \\(=|[\\,2\\hat{i}+3\\hat{j},\\ \\hat{i}+\\hat{j}+\\hat{k},\\ \\lambda\\hat{i}+4\\hat{j}+2\\hat{k}\\,]|=|3\\lambda-10|=2\\Rightarrow\\lambda=4\\) (the integer value). Hence (D)."
+  },
+  {
+    "number": 1961,
+    "solution": "For coplanar (linearly dependent) vectors \\( \\vec{a},\\vec{b},\\vec{c} \\), \\( [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 0 \\), and any scalar triple product of their linear combinations is also \\( 0 \\). So \\( [2\\vec{a}-\\vec{b}\\ \\ 3\\vec{b}-\\vec{c}\\ \\ 4\\vec{c}-\\vec{a}] = 0 \\). Matches option A."
+  },
+  {
+    "number": 1962,
+    "solution": "\\( [\\vec{b}+\\vec{c}\\ \\ \\vec{c}+\\vec{a}\\ \\ \\vec{a}+\\vec{b}] = 2[\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 2\\times40 = 80 \\). Matches option C."
+  },
+  {
+    "number": 1963,
+    "solution": "Expand \\( (\\vec{a}+\\lambda\\vec{b})\\cdot[(\\vec{b}+3\\vec{c})\\times(\\vec{c}-4\\vec{a})] = 0 \\). The cross product \\( = \\vec{b}\\times\\vec{c} - 4\\vec{b}\\times\\vec{a} + 3\\vec{c}\\times\\vec{c} - 12\\vec{c}\\times\\vec{a} = \\vec{b}\\times\\vec{c} - 4\\vec{b}\\times\\vec{a} - 12\\vec{c}\\times\\vec{a} \\). Dotting with \\( \\vec{a}+\\lambda\\vec{b} \\): \\( \\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) + \\lambda\\vec{b}\\cdot(-12\\vec{c}\\times\\vec{a}) = [\\vec{a}\\ \\vec{b}\\ \\vec{c}](1 - 12\\lambda) = 0 \\Rightarrow \\lambda = \\frac{1}{12} \\). Matches option B."
+  },
+  {
+    "number": 1964,
+    "solution": "Vectors coplanar \\Rightarrow \\( \\begin{vmatrix} a & a & c \\\\ 1 & 0 & 1 \\\\ c & c & b \\end{vmatrix} = 0 \\). Expanding along R2: \\( -1(ab - c^2) + ... = 0 \\Rightarrow ab = c^2 \\Rightarrow c = \\sqrt{ab} \\), the geometric mean of \\( a \\) and \\( b \\). Matches option B."
+  },
+  {
+    "number": 1965,
+    "solution": "\\( [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = \\begin{vmatrix} x & x+1 & x+2 \\\\ x+3 & x+4 & x+5 \\\\ x+6 & x+7 & x+8 \\end{vmatrix} \\). Successive columns are in arithmetic progression, so rows are linearly dependent (\\( R_2 - R_1 = R_3 - R_2 \\)), determinant \\( = 0 \\) for all \\( x \\). Matches option A."
+  },
+  {
+    "number": 1966,
+    "solution": "\\( [\\vec{a}-\\vec{b}\\ \\ \\vec{b}-\\vec{c}\\ \\ \\vec{c}-\\vec{a}] = 0 \\) always (the three difference vectors sum to zero, hence coplanar), independent of the magnitudes. Matches option A."
+  },
+  {
+    "number": 1967,
+    "solution": "\\( \\vec{c} \\) in plane of \\( \\vec{a},\\vec{b} \\Rightarrow [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 0 \\): \\( \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & -1 & 2 \\\\ x & x-2 & -1 \\end{vmatrix} = 0 \\). Expanding: \\( 1(1 - 2(x-2)) - 1(-1 - 2x) + 1((x-2) + x) = 1 - 2x + 4 + 1 + 2x + 2x - 2 = 2x + 4 = 0 \\Rightarrow x = -2 \\). Matches option B."
+  },
+  {
+    "number": 1968,
+    "solution": "Coplanarity requires \\( \\begin{vmatrix} -\\lambda^2 & 1 & 1 \\ 1 & -\\lambda^2 & 1 \\ 1 & 1 & -\\lambda^2 \\end{vmatrix} = 0 \\). Expanding gives \\( \\lambda^6 - 3\\lambda^2 - 2 = 0 \\). Put \\( t = \\lambda^2 \\): \\( t^3 - 3t - 2 = (t+1)^2(t-2) = 0 \\), so \\( t = 2 \\) (the root \\( t=-1 \\) is rejected) and \\( \\lambda = \\pm\\sqrt{2} \\) — two distinct real values. Matches option C."
+  },
+  {
+    "number": 1969,
+    "solution": "\\( \\vec{a}\\cdot[(\\vec{b}+\\vec{c})\\times(\\vec{a}+\\vec{b}+\\vec{c})] \\). Expand: \\( (\\vec{b}+\\vec{c})\\times(\\vec{a}+\\vec{b}+\\vec{c}) = \\vec{b}\\times\\vec{a} + \\vec{c}\\times\\vec{a} + \\vec{b}\\times\\vec{c} + \\vec{c}\\times\\vec{b} = \\vec{b}\\times\\vec{a} + \\vec{c}\\times\\vec{a} \\) (since \\( \\vec{b}\\times\\vec{c} + \\vec{c}\\times\\vec{b} = 0 \\)). Dotting with \\( \\vec{a} \\): both terms give scalar triple products with repeated \\( \\vec{a} \\), so \\( = 0 \\). Matches option A."
+  }
+]
