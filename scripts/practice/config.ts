@@ -258,6 +258,65 @@ export const TOPICS: Record<string, Topic> = {
       "Mean, Variance, and Parameter Estimation in B(n, p)",
     ],
   },
+
+  // ─── Trigonometry folder (02. Trigo) — questions numbered Q1001–1410. ───
+  // The answer key is the LAST page of the questions PDF (page index 19), NOT a
+  // separate file; a full-PDF text parse mis-grabs ~15 keys from question-page
+  // stems that start with an a–d letter, so the key page was extracted to a
+  // standalone `_trig_answers.pdf` (the parse source). Section boundaries:
+  // Identities 1001–1174 · Equations 1175–1239 · Properties 1240–1290 ·
+  // Inverse Trig 1291–1394 · Heights & Distances 1395–1410.
+
+  "trigonometric-identities": {
+    id: "trigonometric-identities",
+    chapterName: "Trigonometric Identities",
+    qFrom: 1001,
+    qTo: 1174,
+    sourceFile: "NDA_Maths_Practice__Trigonometry__Trigonometric_Identities.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "2 Trigonometry page 53-72.pdf"), pages: [1, 2, 3, 4, 5, 6, 7] },
+    answerKey: { pdf: join(SOURCE_ROOT, "02. Trigo", "_trig_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "Solutions", "2nd Trigonometry sol page 255-283.pdf"), pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+    subtopics: [
+      "Compound Angle Formulas",
+      "Maximum and Minimum of Trigonometric Expressions",
+      "Multiple and Half-Angle Formulas",
+      "Product-to-Sum and Sum-to-Product Identities",
+      "Specific Values and Quadrants",
+    ],
+  },
+
+  "trigonometric-equations": {
+    id: "trigonometric-equations",
+    chapterName: "Trigonometric Equations",
+    qFrom: 1175,
+    qTo: 1239,
+    sourceFile: "NDA_Maths_Practice__Trigonometry__Trigonometric_Equations.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "2 Trigonometry page 53-72.pdf"), pages: [8, 9, 10] },
+    answerKey: { pdf: join(SOURCE_ROOT, "02. Trigo", "_trig_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "Solutions", "2nd Trigonometry sol page 255-283.pdf"), pages: [11, 12, 13, 14, 15, 16] },
+    subtopics: [
+      "General Solutions and Counting Solutions of Trigonometric Equations",
+      "Simultaneous and Combined Trigonometric Systems",
+      "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+    ],
+  },
+
+  // Source section "Properties of Triangles" -> NDA Maths "Properties of Triangle".
+  "properties-of-triangle": {
+    id: "properties-of-triangle",
+    chapterName: "Properties of Triangle",
+    qFrom: 1240,
+    qTo: 1290,
+    sourceFile: "NDA_Maths_Practice__Trigonometry__Properties_of_Triangle.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "2 Trigonometry page 53-72.pdf"), pages: [10, 11, 12] },
+    answerKey: { pdf: join(SOURCE_ROOT, "02. Trigo", "_trig_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "Solutions", "2nd Trigonometry sol page 255-283.pdf"), pages: [16, 17, 18, 19, 20, 21] },
+    subtopics: [
+      "In-circle and Regular Polygon Geometry",
+      "Sine and Cosine Rules — Solving Triangles",
+      "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);

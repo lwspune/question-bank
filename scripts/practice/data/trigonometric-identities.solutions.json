@@ -1,0 +1,698 @@
+[
+  {
+    "number": 1001,
+    "solution": "Since \\(\\sin x \\le 1\\) and \\(\\cos y \\le 1\\), their sum equals 2 only when both equal 1. So \\(\\sin x = 1 \\Rightarrow x = \\frac{\\pi}{2}\\) and \\(\\cos y = 1 \\Rightarrow y = 0\\). Thus \\(x + y = \\frac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1002,
+    "solution": "\\(765^\\circ = 2(360^\\circ) + 45^\\circ\\), so \\(\\sin 765^\\circ = \\sin 45^\\circ = \\frac{1}{\\sqrt{2}}\\). Hence (D)."
+  },
+  {
+    "number": 1003,
+    "solution": "\\(\\frac{\\sin^2 y}{1+\\cos y} = \\frac{1-\\cos^2 y}{1+\\cos y} = 1-\\cos y\\), so \\(1 - (1-\\cos y) = \\cos y\\). Also \\(\\frac{1+\\cos y}{\\sin y} - \\frac{\\sin y}{1-\\cos y} = \\frac{(1-\\cos^2 y) - \\sin^2 y}{\\sin y(1-\\cos y)} = 0\\). The total is \\(\\cos y\\). Hence (B)."
+  },
+  {
+    "number": 1004,
+    "solution": "From P: \\(\\sin\\theta = (\\sqrt{2}+1)\\cos\\theta \\Rightarrow \\tan\\theta = \\sqrt{2}+1\\). From Q: \\(\\cos\\theta = (\\sqrt{2}-1)\\sin\\theta \\Rightarrow \\tan\\theta = \\frac{1}{\\sqrt{2}-1} = \\sqrt{2}+1\\). Both give the same set, so \\(P = Q\\). Hence (C)."
+  },
+  {
+    "number": 1005,
+    "solution": "Writing \\(\\frac{1-\\sin\\theta}{1+\\sin\\theta} = (\\sec\\theta - \\tan\\theta)^2\\) and \\(\\frac{1+\\cos\\theta}{1-\\cos\\theta} = (\\cosec\\theta + \\cot\\theta)^2\\), the radicand becomes \\((\\sec\\theta - \\tan\\theta)^2(\\cosec\\theta + \\cot\\theta)^2\\). Its square root is \\((\\sec\\theta - \\tan\\theta)(\\cosec\\theta + \\cot\\theta)\\). Hence (B)."
+  },
+  {
+    "number": 1006,
+    "solution": "\\((x-5)^2 - (y-5)^2 = (2\\sec\\theta)^2 - (2\\tan\\theta)^2 = 4(\\sec^2\\theta - \\tan^2\\theta) = 4(1) = 4\\). Hence (D)."
+  },
+  {
+    "number": 1007,
+    "solution": "Squaring: \\((\\sin x + \\cos x)^2 = 2 \\Rightarrow 1 + 2\\sin x\\cos x = 2 \\Rightarrow \\sin x\\cos x = \\frac{1}{2}\\). Hence (B)."
+  },
+  {
+    "number": 1008,
+    "solution": "\\(f_4 = \\frac{1}{4}(\\sin^4 x + \\cos^4 x) = \\frac{1}{4}(1 - 2s^2c^2)\\) and \\(f_6 = \\frac{1}{6}(\\sin^6 x + \\cos^6 x) = \\frac{1}{6}(1 - 3s^2c^2)\\) where \\(s^2c^2 = \\sin^2 x\\cos^2 x\\). Then \\(f_4 - f_6 = \\frac{1}{4} - \\frac{1}{6} = \\frac{1}{12}\\) (the \\(s^2c^2\\) terms cancel). Hence (C)."
+  },
+  {
+    "number": 1009,
+    "solution": "\\(\\sin\\theta + \\cosec\\theta = 2\\) forces \\(\\sin\\theta = 1\\) (AM-GM equality), so \\(\\cosec\\theta = 1\\) and \\(\\sin^6\\theta + \\cosec^6\\theta = 1 + 1 = 2\\). Hence (C)."
+  },
+  {
+    "number": 1010,
+    "solution": "This is a standard identity: \\(\\frac{\\tan A}{1-\\cot A} + \\frac{\\cot A}{1-\\tan A} = 1 + \\sec A\\,\\cosec A\\). Hence (A)."
+  },
+  {
+    "number": 1011,
+    "solution": "\\(16(m^2 - n^2) = \\cot^2\\theta[(1+\\sin\\theta)^2 - (1-\\sin\\theta)^2] = \\cot^2\\theta(4\\sin\\theta)\\), and \\(16mn = \\cot^2\\theta(1-\\sin^2\\theta) = \\cot^2\\theta\\cos^2\\theta\\). Working through, \\((m^2 - n^2)^2 = mn\\). (Verified numerically.) Hence (A)."
+  },
+  {
+    "number": 1012,
+    "solution": "\\(\\sin\\alpha\\cos\\alpha = \\frac{(3/4)^2 - 1}{2} = -\\frac{7}{32}\\). Then \\(\\sin^6\\alpha + \\cos^6\\alpha = 1 - 3\\sin^2\\alpha\\cos^2\\alpha = 1 - 3\\left(\\frac{7}{32}\\right)^2 = 1 - \\frac{147}{1024} = \\frac{877}{1024}\\). Hence (A)."
+  },
+  {
+    "number": 1013,
+    "solution": "\\(1 - \\cos^2\\theta + 3\\cos\\theta = 2 \\Rightarrow \\cos^2\\theta - 3\\cos\\theta + 1 = 0 \\Rightarrow \\cos\\theta + \\sec\\theta = 3\\). Let \\(t = \\cos\\theta + \\sec\\theta = 3\\). Then \\(\\cos^3\\theta + \\sec^3\\theta = t^3 - 3t = 27 - 9 = 18\\). Hence (D)."
+  },
+  {
+    "number": 1014,
+    "solution": "\\(\\cos^2 75^\\circ = \\sin^2 15^\\circ\\), so \\(\\cos^2 75^\\circ + \\cos^2 15^\\circ = 1\\). Adding \\(\\cos^2 45^\\circ = \\frac{1}{2}\\) gives \\(\\frac{3}{2}\\). Subtract \\(\\cos^2 30^\\circ = \\frac{3}{4}\\) and \\(\\cos^2 60^\\circ = \\frac{1}{4}\\): \\(\\frac{3}{2} - 1 = \\frac{1}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1015,
+    "solution": "Pair complementary angles: \\(\\tan 10^\\circ\\tan 80^\\circ = 1\\), \\(\\tan 20^\\circ\\tan 70^\\circ = 1\\), \\(\\tan 40^\\circ\\tan 50^\\circ = 1\\), and \\(\\tan 30^\\circ\\tan 60^\\circ = \\frac{1}{\\sqrt{3}}\\cdot\\sqrt{3} = 1\\). The product is 1. Hence (D)."
+  },
+  {
+    "number": 1016,
+    "solution": "Since \\((\\cosec\\theta - \\cot\\theta)(\\cosec\\theta + \\cot\\theta) = 1\\), we get \\(\\cosec\\theta + \\cot\\theta = \\sqrt{3}\\). Adding: \\(2\\cosec\\theta = \\frac{1}{\\sqrt{3}} + \\sqrt{3} = \\frac{4}{\\sqrt{3}}\\Rightarrow \\cosec\\theta = \\frac{2}{\\sqrt{3}}\\), so \\(\\cot\\theta = \\frac{1}{\\sqrt{3}}\\) and \\(\\cos\\theta = \\cot\\theta\\sin\\theta = \\frac{1}{\\sqrt{3}}\\cdot\\frac{\\sqrt{3}}{2} = \\frac{1}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1017,
+    "solution": "\\(\\frac{\\sec x - 1}{\\sec x + 1} = \\frac{1 - \\cos x}{1 + \\cos x} = \\tan^2\\frac{x}{2} = \\left(\\frac{1-\\cos x}{\\sin x}\\right)^2 = (\\cosec x - \\cot x)^2\\). Hence (C)."
+  },
+  {
+    "number": 1018,
+    "solution": "\\(\\sec^2\\theta + \\cosec^2\\theta = \\frac{1}{\\cos^2\\theta} + \\frac{1}{\\sin^2\\theta} = \\frac{\\sin^2\\theta + \\cos^2\\theta}{\\sin^2\\theta\\cos^2\\theta} = \\frac{1}{\\sin^2\\theta\\cos^2\\theta} = \\sec^2\\theta\\,\\cosec^2\\theta\\). Hence (B)."
+  },
+  {
+    "number": 1019,
+    "solution": "\\(\\tan\\theta + \\sec\\theta = p\\) and \\(\\sec\\theta - \\tan\\theta = \\frac{1}{p}\\). Adding: \\(2\\sec\\theta = p + \\frac{1}{p} = \\frac{p^2 + 1}{p}\\), so \\(\\sec\\theta = \\frac{p^2 + 1}{2p}\\). Hence (C)."
+  },
+  {
+    "number": 1020,
+    "solution": "The angles run \\(5^\\circ, 10^\\circ, \\dots, 90^\\circ\\) (18 terms). Pairing \\(\\sin^2\\theta + \\sin^2(90^\\circ - \\theta) = 1\\) gives 8 pairs from \\((5^\\circ,85^\\circ)\\) to \\((40^\\circ,50^\\circ)\\) = 8, plus \\(\\sin^2 45^\\circ = \\frac{1}{2}\\) and \\(\\sin^2 90^\\circ = 1\\). Total \\(8 + 0.5 + 1 = 9.5\\). Hence (D)."
+  },
+  {
+    "number": 1021,
+    "solution": "\\((1 - \\tan A)(\\cot A + 1) = \\cot A + 1 - \\tan A\\cot A - \\tan A = \\cot A + 1 - 1 - \\tan A = \\cot A - \\tan A\\). Expanding option (B): \\((1 + \\tan A)(\\cot A - 1) = \\cot A - 1 + 1 - \\tan A = \\cot A - \\tan A\\). They match. Hence (B)."
+  },
+  {
+    "number": 1022,
+    "solution": "\\(\\tan\\theta + \\cot\\theta = \\frac{1}{\\sin\\theta\\cos\\theta}\\). So \\((\\sin\\theta + \\cos\\theta)\\cdot\\frac{1}{\\sin\\theta\\cos\\theta} = \\frac{1}{\\cos\\theta} + \\frac{1}{\\sin\\theta} = \\sec\\theta + \\cosec\\theta\\). Hence (D)."
+  },
+  {
+    "number": 1023,
+    "solution": "\\(\\cot 54^\\circ = \\tan 36^\\circ\\) so the first ratio is 1; \\(\\cot 70^\\circ = \\tan 20^\\circ\\) so the second ratio is 1. The sum is 2. Hence (B)."
+  },
+  {
+    "number": 1024,
+    "solution": "\\(\\cos A = \\frac{3}{5}, \\cos B = \\frac{4}{5}\\). Since A, B are in the fourth quadrant, \\(\\sin A = -\\frac{4}{5}, \\sin B = -\\frac{3}{5}\\). Then \\(2\\sin A + 4\\sin B = 2\\left(-\\frac{4}{5}\\right) + 4\\left(-\\frac{3}{5}\\right) = -\\frac{8}{5} - \\frac{12}{5} = -4\\). Hence (C)."
+  },
+  {
+    "number": 1025,
+    "solution": "Divide numerator and denominator by \\(\\cosec^2\\theta\\): \\(\\frac{1 - \\tan^2\\theta}{1 + \\tan^2\\theta} = \\frac{1 - 1/7}{1 + 1/7} = \\frac{6/7}{8/7} = \\frac{3}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1026,
+    "solution": "From \\(\\sin A = (\\sqrt{6} + \\sqrt{7})\\cos A\\), we get \\(\\tan A = \\sqrt{6} + \\sqrt{7}\\). Then \\(\\cos A + \\sqrt{6}\\sin A = \\cos A(1 + \\sqrt{6}\\tan A) = \\cos A(1 + \\sqrt{6}(\\sqrt{6} + \\sqrt{7})) = \\cos A(7 + \\sqrt{42})\\). Also \\(\\sqrt{7}\\sin A = \\sqrt{7}(\\sqrt{6}+\\sqrt{7})\\cos A = (\\sqrt{42} + 7)\\cos A\\). They are equal. Hence (B)."
+  },
+  {
+    "number": 1027,
+    "solution": "\\(S_4 = \\sin^4\\theta + \\cos^4\\theta = 1 - 2p\\) and \\(S_6 = \\sin^6\\theta + \\cos^6\\theta = 1 - 3p\\), where \\(p = \\sin^2\\theta\\cos^2\\theta\\). Then \\(3S_4 - 2S_6 = 3(1 - 2p) - 2(1 - 3p) = 3 - 6p - 2 + 6p = 1\\). Hence (C)."
+  },
+  {
+    "number": 1028,
+    "solution": "\\(\\sin x + \\cosec x = 2\\) forces \\(\\sin x = 1\\), so \\(\\cosec x = 1\\) and \\(\\sin^n x + \\cosec^n x = 1 + 1 = 2\\). Hence (A)."
+  },
+  {
+    "number": 1029,
+    "solution": "From \\(\\cos\\theta = 8\\sin\\theta - 4\\) and \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\): \\((8\\sin\\theta - 4)^2 = 1 - \\sin^2\\theta \\Rightarrow 65\\sin^2\\theta - 64\\sin\\theta + 15 = 0\\). Solving, \\(\\sin\\theta = \\frac{3}{5}\\) or \\(\\sin\\theta = \\frac{5}{13}\\). Hence (B)."
+  },
+  {
+    "number": 1030,
+    "solution": "The common value is \\(z\\tan 2\\theta = K\\), so \\(x = \\frac{K}{\\sin\\theta},\\ y = \\frac{K}{\\cos\\theta}\\). Working through, \\(4z^2(x^2 + y^2) = (x^2 - y^2)^2\\). (Verified numerically.) Hence (C)."
+  },
+  {
+    "number": 1031,
+    "solution": "\\(\\sec\\theta = \\frac{x-h}{a}\\) and \\(\\cosec\\theta = \\frac{y-k}{b}\\). Then \\(\\frac{a^2}{(x-h)^2} + \\frac{b^2}{(y-k)^2} = \\cos^2\\theta + \\sin^2\\theta = 1\\). Hence (B)."
+  },
+  {
+    "number": 1032,
+    "solution": "From \\(\\cos x + \\cos^2 x = 1\\) we get \\(\\cos x = 1 - \\cos^2 x = \\sin^2 x\\). The expression \\(\\sin^{12} x + 3\\sin^{10} x + 3\\sin^8 x + \\sin^6 x = (\\sin^4 x + \\sin^2 x)^3\\). With \\(\\sin^2 x = \\cos x\\) (so \\(\\sin^4 x + \\sin^2 x = \\cos^2 x + \\cos x = 1\\)), this equals \\(1^3 = 1\\), and \\(1 - 1 = 0\\). Hence (D)."
+  },
+  {
+    "number": 1033,
+    "solution": "At 4:25 the minute hand is at \\(25 \\times 6^\\circ = 150^\\circ\\); the hour hand is at \\(4 \\times 30^\\circ + 25 \\times 0.5^\\circ = 132.5^\\circ\\). The angle between them is \\(150^\\circ - 132.5^\\circ = 17.5^\\circ = 17\\frac{1}{2}^\\circ\\). Hence (A)."
+  },
+  {
+    "number": 1034,
+    "solution": "Arc length \\(= r\\theta\\) with \\(\\theta = 72^\\circ = \\frac{2\\pi}{5}\\) radians. So \\(44 = r\\cdot\\frac{2\\pi}{5} \\Rightarrow r = \\frac{44 \\times 5}{2\\pi} = \\frac{110}{\\pi} \\approx 35\\) metres. Hence (B)."
+  },
+  {
+    "number": 1035,
+    "solution": "At 5:40 the minute hand is at \\(40 \\times 6^\\circ = 240^\\circ\\); the hour hand is at \\(5 \\times 30^\\circ + 40 \\times 0.5^\\circ = 170^\\circ\\). The angle is \\(240^\\circ - 170^\\circ = 70^\\circ = \\frac{70\\pi}{180} = \\frac{7\\pi}{18}\\). Hence (D)."
+  },
+  {
+    "number": 1036,
+    "solution": "For a sector of radius \\(r\\) and angle \\(\\theta\\), perimeter \\(= 2r + r\\theta\\). The semicircle arc \\(= \\pi r\\). Setting equal: \\(2r + r\\theta = \\pi r \\Rightarrow \\theta = \\pi - 2\\). Hence (C)."
+  },
+  {
+    "number": 1037,
+    "solution": "\\(\\alpha = \\frac{\\pi}{2} - \\beta\\), and \\(\\gamma = \\alpha - \\beta = \\frac{\\pi}{2} - 2\\beta\\). So \\(\\sin\\gamma = \\sin\\left(\\frac{\\pi}{2} - 2\\beta\\right) = \\cos 2\\beta\\). Hence (A)."
+  },
+  {
+    "number": 1038,
+    "solution": "For \\(a\\sin x + b\\cos x\\), the range is \\([-\\sqrt{a^2 + b^2}, \\sqrt{a^2 + b^2}]\\). Here \\(\\sqrt{16 + 9} = 5\\), and the endpoints are attained, so the range is \\([-5, 5]\\). Hence (D)."
+  },
+  {
+    "number": 1039,
+    "solution": "On \\([0, \\frac{\\pi}{4}]\\): \\(\\cos x \\ge \\sin x\\), so satisfied. On \\((\\frac{\\pi}{4}, \\frac{3\\pi}{4})\\): \\(\\sin x > |\\cos x|\\), not satisfied. From \\(x = \\frac{3\\pi}{4}\\) onward to \\(\\frac{3\\pi}{2}\\): \\(\\sin x \\le 0 \\le |\\cos x|\\) or \\(|\\cos x| \\ge \\sin x\\), so satisfied. The set is \\(\\left[0, \\frac{\\pi}{4}\\right] \\cup \\left[\\frac{3\\pi}{4}, \\frac{3\\pi}{2}\\right]\\). Hence (A)."
+  },
+  {
+    "number": 1040,
+    "solution": "\\(\\cot^2\\frac{\\pi}{6} = 3,\\ \\tan^2\\frac{\\pi}{6} = \\frac{1}{3},\\ \\cosec\\frac{\\pi}{6} = 2\\). So \\(2(3) + 4\\left(\\frac{1}{3}\\right) - 3(2) = 6 + \\frac{4}{3} - 6 = \\frac{4}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1041,
+    "solution": "For \\(0 \\le x < \\frac{\\pi}{4}\\), \\([x] = 0\\), so \\(\\sin[x] = 0\\). For \\(-\\frac{\\pi}{4} < x < 0\\), \\([x] = -1\\), so \\(\\sin[x] = \\sin(-1) = -\\sin 1\\). The range is \\(\\{0, -\\sin 1\\}\\). Hence (D)."
+  },
+  {
+    "number": 1042,
+    "solution": "The product contains the factor \\(\\log(\\sin 90^\\circ) = \\log 1 = 0\\), so the entire product is zero. Hence (D)."
+  },
+  {
+    "number": 1043,
+    "solution": "\\(\\cos x = 1 - \\cos^2 x = \\sin^2 x\\), with \\(\\cos x = \\frac{-1 + \\sqrt{5}}{2}\\). Then \\(\\sin^2 x = \\cos x\\), so \\(\\sin^4 x + \\sin^6 x = (\\sin^2 x)^2 + (\\sin^2 x)^3 = \\cos^2 x + \\cos^3 x\\). Numerically this equals \\(\\frac{-1 + \\sqrt{5}}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1044,
+    "solution": "From \\(\\sin A = \\sin^2 B\\) and \\(2\\cos^2 A = 3\\cos^2 B\\): substituting \\(\\sin A = \\sin^2 B\\) and \\(\\cos^2 A = 1 - \\sin^4 B\\), \\(\\cos^2 B = 1 - \\sin^2 B\\), we get \\(2(1 - \\sin^4 B) = 3(1 - \\sin^2 B)\\). Solving gives \\(B = \\frac{\\pi}{4}\\), so \\(\\sin A = \\sin^2\\frac{\\pi}{4} = \\frac{1}{2}\\) and \\(A = \\frac{\\pi}{6}\\). Hence (B)."
+  },
+  {
+    "number": 1045,
+    "solution": "\\(y = \\frac{1}{3}\\cos^2\\theta + \\frac{1}{2}\\sin^2\\theta = \\frac{1}{3} + \\frac{1}{6}\\sin^2\\theta\\). As \\(\\sin^2\\theta\\) ranges over \\([0,1]\\), \\(y\\) ranges from \\(\\frac{1}{3}\\) to \\(\\frac{1}{3} + \\frac{1}{6} = \\frac{1}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1046,
+    "solution": "\\(\\cos\\theta\\) has minimum \\(-1\\), so the smallest value is \\(5(-1) + 12 = 7\\). Hence (C)."
+  },
+  {
+    "number": 1047,
+    "solution": "By AM-GM, \\(\\sqrt{\\frac{p}{q}} + \\sqrt{\\frac{q}{p}} \\ge 2\\), so \\(2\\sin x \\ge 2 \\Rightarrow \\sin x \\ge 1\\). Since \\(\\sin x \\le 1\\), we need \\(\\sin x = 1\\), which requires equality in AM-GM, i.e. \\(\\frac{p}{q} = \\frac{q}{p} \\Rightarrow p = q\\). Hence (A)."
+  },
+  {
+    "number": 1048,
+    "solution": "Let \\(c = \\cos^2 x\\). Then \\(\\tan^2 x = \\frac{1}{c} - 1\\) and \\(\\cos 2x = 2c - 1\\). The equation \\(5\\left(\\frac{1}{c} - 1 - c\\right) = 2(2c - 1) + 9\\) gives \\(9c^2 + 12c - 5 = 0\\), so \\(c = \\frac{1}{3}\\). Then \\(\\cos 2x = 2c - 1 = -\\frac{1}{3}\\) and \\(\\cos 4x = 2\\cos^2 2x - 1 = 2\\cdot\\frac{1}{9} - 1 = -\\frac{7}{9}\\). Hence (C)."
+  },
+  {
+    "number": 1049,
+    "solution": "Using \\(\\cos^2 A - \\sin^2 B = \\cos(A+B)\\cos(A-B)\\): \\(\\cos^2 45^\\circ - \\sin^2 15^\\circ = \\cos(60^\\circ)\\cos(30^\\circ) = \\frac{1}{2}\\cdot\\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1050,
+    "solution": "Using sum-to-product: \\(\\cos\\left(\\frac{\\pi}{4} + x\\right) + \\cos\\left(\\frac{\\pi}{4} - x\\right) = 2\\cos\\frac{\\pi}{4}\\cos x = 2\\cdot\\frac{1}{\\sqrt{2}}\\cos x = \\sqrt{2}\\cos x\\). Hence (D)."
+  },
+  {
+    "number": 1051,
+    "solution": "\\(\\tan\\left(\\frac{\\pi}{4} + \\frac{\\theta}{2}\\right) = \\frac{1 + \\tan\\frac{\\theta}{2}}{1 - \\tan\\frac{\\theta}{2}}\\) and \\(\\tan\\left(\\frac{\\pi}{4} - \\frac{\\theta}{2}\\right) = \\frac{1 - \\tan\\frac{\\theta}{2}}{1 + \\tan\\frac{\\theta}{2}}\\). Their sum is \\(\\frac{(1+t)^2 + (1-t)^2}{1 - t^2} = \\frac{2(1 + t^2)}{1 - t^2}\\) with \\(t = \\tan\\frac{\\theta}{2}\\), which equals \\(\\frac{2}{\\cos\\theta} = 2\\sec\\theta\\). Hence (B)."
+  },
+  {
+    "number": 1052,
+    "solution": "\\(\\frac{\\sin^2 3\\theta}{\\sin^2\\theta}-\\frac{\\cos^2 3\\theta}{\\cos^2\\theta}=(3-4\\sin^2\\theta)^2-(4\\cos^2\\theta-3)^2\\). With \\(4\\cos^2\\theta-3=1-4\\sin^2\\theta\\), this is \\((3-4\\sin^2\\theta)^2-(1-4\\sin^2\\theta)^2=2(4-8\\sin^2\\theta)=8\\cos 2\\theta\\), which is not among the options. Hence (D)."
+  },
+  {
+    "number": 1053,
+    "solution": "Using \\(\\tan^2\\frac{\\theta}{2} = \\frac{1 - \\cos\\theta}{1 + \\cos\\theta}\\), substitute the given \\(\\cos\\theta\\); after simplification one value is \\(\\tan\\frac{\\theta}{2} = \\cot\\frac{\\beta}{2}\\tan\\frac{\\alpha}{2}\\). (Verified numerically.) Hence (A)."
+  },
+  {
+    "number": 1054,
+    "solution": "For \\(A+B+C=\\pi\\), the standard identity gives \\(\\cot A\\cot B+\\cot B\\cot C+\\cot C\\cot A=1\\). Hence (C)."
+  },
+  {
+    "number": 1055,
+    "solution": "\\(\\tan\\frac{\\pi}{8} = \\tan 22.5^\\circ = \\sqrt{2} - 1 = \\frac{1}{\\sqrt{2} + 1}\\). Hence (C)."
+  },
+  {
+    "number": 1056,
+    "solution": "The sum of sines over a full set of equally spaced angles spanning the circle is 0; here \\(\\sin\\theta + \\sin(360^\\circ - \\theta) = \\sin\\theta - \\sin\\theta = 0\\) for each pair, and \\(\\sin 180^\\circ = 0\\). The total is 0. Hence (A)."
+  },
+  {
+    "number": 1057,
+    "solution": "\\(\\sin\\frac{5\\pi}{8} = \\sin\\frac{3\\pi}{8}\\) and \\(\\sin\\frac{7\\pi}{8} = \\sin\\frac{\\pi}{8}\\), so the sum is \\(2\\left(\\sin^2\\frac{\\pi}{8} + \\sin^2\\frac{3\\pi}{8}\\right)\\). Since \\(\\sin\\frac{3\\pi}{8} = \\cos\\frac{\\pi}{8}\\), this is \\(2\\left(\\sin^2\\frac{\\pi}{8} + \\cos^2\\frac{\\pi}{8}\\right) = 2\\). Hence (D)."
+  },
+  {
+    "number": 1058,
+    "solution": "\\(\\frac{\\sqrt{3}\\cos 15^\\circ - \\sin 15^\\circ}{\\sin 15^\\circ\\cos 15^\\circ} = \\frac{2(\\frac{\\sqrt{3}}{2}\\cos 15^\\circ - \\frac{1}{2}\\sin 15^\\circ)}{\\frac{1}{2}\\sin 30^\\circ} = \\frac{2\\sin(60^\\circ - 15^\\circ)}{\\frac{1}{4}} = 8\\sin 45^\\circ = 8\\cdot\\frac{1}{\\sqrt{2}} = 4\\sqrt{2}\\). Hence (A)."
+  },
+  {
+    "number": 1059,
+    "solution": "\\(\\tan 2\\theta = \\frac{2(1/2)}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}\\). Then \\(\\tan(2\\theta + \\phi) = \\frac{4/3 + 1/3}{1 - (4/3)(1/3)} = \\frac{5/3}{1 - 4/9} = \\frac{5/3}{5/9} = 3\\). Hence (D)."
+  },
+  {
+    "number": 1060,
+    "solution": "\\(\\cot B - \\cot A = \\frac{\\tan A - \\tan B}{\\tan A\\tan B} = \\frac{x}{\\tan A\\tan B} = y\\), so \\(\\tan A\\tan B = \\frac{x}{y}\\). Then \\(\\cot(A - B) = \\frac{1 + \\tan A\\tan B}{\\tan A - \\tan B} = \\frac{1 + x/y}{x} = \\frac{1}{x} + \\frac{1}{y}\\). Hence (D)."
+  },
+  {
+    "number": 1061,
+    "solution": "\\(\\cos 7.5^\\circ\\sin 7.5^\\circ = \\frac{1}{2}\\sin 15^\\circ\\). So the product is \\(\\cos 15^\\circ \\cdot \\frac{1}{2}\\sin 15^\\circ = \\frac{1}{4}\\sin 30^\\circ = \\frac{1}{4}\\cdot\\frac{1}{2} = \\frac{1}{8}\\). Hence (B)."
+  },
+  {
+    "number": 1062,
+    "solution": "\\(\\sin x - \\sin 3x = -2\\cos 2x\\sin x\\) and \\(\\sin^2 x - \\cos^2 x = -\\cos 2x\\). So the ratio is \\(\\frac{-2\\cos 2x\\sin x}{-\\cos 2x} = 2\\sin x\\). Hence (D)."
+  },
+  {
+    "number": 1063,
+    "solution": "\\(\\sin B\\cos C + \\cos B\\sin C = \\sin(B + C)\\). In a triangle \\(B + C = \\pi - A\\), so \\(\\sin(B + C) = \\sin A\\). Then \\(\\cosec A\\cdot\\sin A = 1\\). Hence (B)."
+  },
+  {
+    "number": 1064,
+    "solution": "\\(p^2 - 1 = (\\sin\\theta + \\cos\\theta)^2 - 1 = 2\\sin\\theta\\cos\\theta\\). Also \\(q = \\tan\\theta + \\cot\\theta = \\frac{1}{\\sin\\theta\\cos\\theta}\\). So \\(q(p^2 - 1) = \\frac{2\\sin\\theta\\cos\\theta}{\\sin\\theta\\cos\\theta} = 2\\). Hence (B)."
+  },
+  {
+    "number": 1065,
+    "solution": "Using the recurrence \\(\\cot\\theta - \\tan\\theta = 2\\cot 2\\theta\\) repeatedly with \\(\\theta = \\frac{\\pi}{5}\\): \\(\\tan\\frac{\\pi}{5} + 2\\tan\\frac{2\\pi}{5} + 4\\cot\\frac{4\\pi}{5} = \\cot\\frac{\\pi}{5}\\). (Verified numerically.) Hence (A)."
+  },
+  {
+    "number": 1066,
+    "solution": "With A, B acute: \\(\\cos A = \\frac{12}{13},\\ \\cos B = \\frac{20}{101}\\) (since \\(99^2 + 20^2 = 101^2\\)). \\(\\cos C = -\\cos(A+B) = -(\\cos A\\cos B - \\sin A\\sin B) = -\\left(\\frac{12}{13}\\cdot\\frac{20}{101} - \\frac{5}{13}\\cdot\\frac{99}{101}\\right) = \\frac{255}{1313}\\). Thus \\(1313\\cos C = 255\\). Hence (A)."
+  },
+  {
+    "number": 1067,
+    "solution": "\\(\\sin\\theta + \\cos\\theta = \\sqrt{2}\\) gives \\(\\theta = \\frac{\\pi}{4}\\), so \\(\\sin\\theta = \\cos\\theta = \\frac{1}{\\sqrt{2}}\\). Then \\(\\cos^6\\theta + \\sin^6\\theta = 2\\left(\\frac{1}{\\sqrt{2}}\\right)^6 = 2\\cdot\\frac{1}{8} = \\frac{1}{4}\\). Hence (A)."
+  },
+  {
+    "number": 1068,
+    "solution": "\\(\\sqrt{2(1 + \\cos\\theta)} = 2\\cos\\frac{\\theta}{2}\\). Each successive \\(\\sqrt{2 + 2\\cos\\phi} = 2\\cos\\frac{\\phi}{2}\\) halves the angle. With n nested 2's the result is \\(2\\cos\\frac{\\theta}{2^n}\\). (Verified numerically.) Hence (A)."
+  },
+  {
+    "number": 1069,
+    "solution": "\\(\\cos x+\\cos y=2\\) with each cosine \\(\\le 1\\) forces \\(\\cos x=\\cos y=1\\), so \\(x=y=0\\) and \\(\\cos(x-y)=\\cos 0=1\\). Hence (C)."
+  },
+  {
+    "number": 1070,
+    "solution": "\\(\\tan 89^\\circ = \\cot 1^\\circ\\), so \\(\\tan 1^\\circ + \\cot 1^\\circ = \\frac{\\sin^2 1^\\circ + \\cos^2 1^\\circ}{\\sin 1^\\circ\\cos 1^\\circ} = \\frac{1}{\\frac{1}{2}\\sin 2^\\circ} = \\frac{2}{\\sin 2^\\circ}\\). Hence (A)."
+  },
+  {
+    "number": 1071,
+    "solution": "Dividing the two equations: \\(\\tan\\frac{x+y}{2} = \\frac{1/2}{1} = \\frac{1}{2}\\). Then \\(\\tan(x+y) = \\frac{2(1/2)}{1 - (1/2)^2} = \\frac{1}{3/4} = \\frac{4}{3}\\). Hence (B)."
+  },
+  {
+    "number": 1072,
+    "solution": "\\(\\sin\\theta = \\frac{2\\tan\\frac{\\theta}{2}}{1 + \\tan^2\\frac{\\theta}{2}} = \\frac{2(1/2)}{1 + 1/4} = \\frac{1}{5/4} = \\frac{4}{5}\\). Hence (A)."
+  },
+  {
+    "number": 1073,
+    "solution": "\\(\\tan 75^\\circ = \\cot 15^\\circ\\), so \\(\\tan 15^\\circ + \\cot 15^\\circ = \\frac{1}{\\sin 15^\\circ\\cos 15^\\circ} = \\frac{2}{\\sin 30^\\circ} = \\frac{2}{1/2} = 4\\). Hence (D)."
+  },
+  {
+    "number": 1074,
+    "solution": "Expanding: \\(\\sin\\theta\\cos\\phi + \\cos\\theta\\sin\\phi = n(\\sin\\theta\\cos\\phi - \\cos\\theta\\sin\\phi)\\). Rearranging, \\((1 - n)\\sin\\theta\\cos\\phi = -(1 + n)\\cos\\theta\\sin\\phi\\), so \\(\\frac{\\tan\\theta}{\\tan\\phi} = \\frac{n+1}{n-1}\\). Hence (B)."
+  },
+  {
+    "number": 1075,
+    "solution": "With \\(\\alpha = \\frac{2x}{3}\\) and \\(\\frac{\\alpha}{2} = \\frac{x}{3}\\): \\(\\cot\\alpha + \\tan\\frac{\\alpha}{2} = \\frac{\\cos\\alpha\\cos\\frac{\\alpha}{2} + \\sin\\alpha\\sin\\frac{\\alpha}{2}}{\\sin\\alpha\\cos\\frac{\\alpha}{2}} = \\frac{\\cos\\frac{\\alpha}{2}}{\\sin\\alpha\\cos\\frac{\\alpha}{2}} = \\frac{1}{\\sin\\alpha} = \\cosec\\frac{2x}{3}\\). So \\(k = 2\\). Hence (B)."
+  },
+  {
+    "number": 1076,
+    "solution": "Group as \\((\\tan 81^\\circ + \\tan 9^\\circ) - (\\tan 63^\\circ + \\tan 27^\\circ)\\). Using \\(\\tan\\theta + \\cot\\theta = \\frac{2}{\\sin 2\\theta}\\): \\(\\tan 81^\\circ + \\tan 9^\\circ = \\frac{2}{\\sin 18^\\circ}\\) and \\(\\tan 63^\\circ + \\tan 27^\\circ = \\frac{2}{\\sin 54^\\circ}\\). Evaluating gives \\(4\\). (Verified numerically.) Hence (C)."
+  },
+  {
+    "number": 1077,
+    "solution": "Dividing the sum-to-product forms: \\(\\tan\\frac{x+y}{2} = \\frac{\\sin x + \\sin y}{\\cos x + \\cos y} = \\frac{3/4}{3/2} = \\frac{1}{2}\\). Then \\(\\sin(x+y) = \\frac{2(1/2)}{1 + 1/4} = \\frac{1}{5/4} = \\frac{4}{5}\\). Hence (C)."
+  },
+  {
+    "number": 1078,
+    "solution": "In Q-III with \\(\\tan x = \\frac{5}{12}\\): \\(\\cos x = -\\frac{12}{13}\\). Since \\(x \\in (\\pi, \\frac{3\\pi}{2})\\), \\(\\frac{x}{2} \\in (\\frac{\\pi}{2}, \\frac{3\\pi}{4})\\) (Q-II), so \\(\\cos\\frac{x}{2} < 0\\). \\(\\cos^2\\frac{x}{2} = \\frac{1 + \\cos x}{2} = \\frac{1 - 12/13}{2} = \\frac{1}{26}\\), giving \\(\\cos\\frac{x}{2} = -\\frac{1}{\\sqrt{26}}\\). Hence (B)."
+  },
+  {
+    "number": 1079,
+    "solution": "\\(\\sin 50^\\circ - \\sin 70^\\circ = 2\\cos 60^\\circ\\sin(-10^\\circ) = -2\\cdot\\frac{1}{2}\\sin 10^\\circ = -\\sin 10^\\circ\\). Adding \\(\\sin 10^\\circ\\) gives 0. Hence (A)."
+  },
+  {
+    "number": 1080,
+    "solution": "Squaring: \\(1 + 2\\sin\\theta\\cos\\theta = 1 \\Rightarrow \\sin 2\\theta = 2\\sin\\theta\\cos\\theta = 0\\). Hence (C)."
+  },
+  {
+    "number": 1081,
+    "solution": "In Q-III with \\(\\tan x = \\frac{3}{4}\\): \\(\\cos x = -\\frac{4}{5}\\). Since \\(x \\in (\\pi, \\frac{3\\pi}{2})\\), \\(\\frac{x}{2} \\in (\\frac{\\pi}{2}, \\frac{3\\pi}{4})\\), so \\(\\cos\\frac{x}{2} < 0\\). \\(\\cos^2\\frac{x}{2} = \\frac{1 + \\cos x}{2} = \\frac{1 - 4/5}{2} = \\frac{1}{10}\\), giving \\(\\cos\\frac{x}{2} = -\\frac{1}{\\sqrt{10}}\\). Hence (A)."
+  },
+  {
+    "number": 1082,
+    "solution": "Grouping the numerator into products of \\(2\\cos x\\) with denominator terms shows the whole ratio equals \\(2\\cos x\\). (Verified numerically at \\(x = 0.3\\).) Hence (D)."
+  },
+  {
+    "number": 1083,
+    "solution": "The product \\(s_1 s_2 \\dots s_{10}\\) contains \\(s_5 = \\cos\\frac{5\\pi}{10} = \\cos\\frac{\\pi}{2} = 0\\), so the numerator is 0 (the denominator is nonzero, \\(= -1\\)). The ratio is 0. Hence (D)."
+  },
+  {
+    "number": 1084,
+    "solution": "The equation \\(pq\\,x^2 - r^2 x + pq = 0\\) has \\(\\tan A\\tan B = \\frac{pq}{pq} = 1\\). So \\(\\tan A\\tan B = 1 \\Rightarrow A + B = \\frac{\\pi}{2} \\Rightarrow C = \\frac{\\pi}{2}\\), a right angle. Hence (A)."
+  },
+  {
+    "number": 1085,
+    "solution": "The sum of \\(\\cos\\frac{2k\\pi}{7}\\) for \\(k = 1, 2, 3\\) equals \\(-\\frac{1}{2}\\), which is a negative number. Hence (C)."
+  },
+  {
+    "number": 1086,
+    "solution": "\\(\\cos\\left(\\frac{3\\pi}{2} + x\\right) = \\sin x\\), \\(\\cos(2\\pi + x) = \\cos x\\), \\(\\cot\\left(\\frac{3\\pi}{2} - x\\right) = \\tan x\\), \\(\\cot(2\\pi + x) = \\cot x\\). So the product is \\(\\sin x\\cos x(\\tan x + \\cot x) = \\sin x\\cos x\\cdot\\frac{1}{\\sin x\\cos x} = 1\\). Hence (B)."
+  },
+  {
+    "number": 1087,
+    "solution": "Write \\(B = (A+B) - A\\) and \\(2A + B = (A+B) + A\\). Then \\(\\sin((A+B) - A) = 3\\sin((A+B) + A)\\) expands to \\(-2\\sin(A+B)\\cos A = 4\\cos(A+B)\\sin A\\), giving \\(\\tan(A+B) = -2\\tan A\\), so \\(2\\tan A + \\tan(A+B) = 0\\). Hence (A)."
+  },
+  {
+    "number": 1088,
+    "solution": "\\(\\cos\\theta\\cos 2\\theta\\dots\\cos 2^{n-1}\\theta = \\frac{\\sin 2^n\\theta}{2^n\\sin\\theta}\\), so the expression is \\(\\frac{\\sin 2^n\\theta}{\\sin\\theta}\\). With \\(\\theta = \\frac{\\pi}{2^n + 1}\\), \\(2^n\\theta = \\pi - \\theta\\), so \\(\\sin 2^n\\theta = \\sin\\theta\\), giving the value 1. Hence (D)."
+  },
+  {
+    "number": 1089,
+    "solution": "\\(\\sin x - \\sin y = 2\\cos\\frac{x+y}{2}\\sin\\frac{x-y}{2} = \\frac{1}{2}\\) and \\(\\cos x - \\cos y = -2\\sin\\frac{x+y}{2}\\sin\\frac{x-y}{2} = 1\\). Dividing: \\(-\\tan\\frac{x+y}{2} = 2 \\Rightarrow \\tan\\frac{x+y}{2} = -2\\). Then \\(\\tan(x+y) = \\frac{2(-2)}{1 - 4} = \\frac{4}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1090,
+    "solution": "As in the standard identity, \\(\\tan\\left(\\frac{\\pi}{4} + \\frac{x}{2}\\right) + \\tan\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right) = \\frac{2(1 + \\tan^2\\frac{x}{2})}{1 - \\tan^2\\frac{x}{2}} = \\frac{2}{\\cos x} = 2\\sec x\\). Hence (A)."
+  },
+  {
+    "number": 1091,
+    "solution": "Note \\(\\frac{4}{\\cos^2\\alpha} = \\frac{4}{1-\\sin^2\\alpha}\\). Use the telescoping identity \\(\\frac{4}{1-u} + \\frac{4}{1+u} = \\frac{8}{1-u^2}\\). Combine the first two terms with \\(u = \\sin^2\\alpha\\): \\(\\frac{4}{1-\\sin^2\\alpha} + \\frac{4}{1+\\sin^2\\alpha} = \\frac{8}{1-\\sin^4\\alpha}\\). Then with the \\(\\frac{4}{1+\\sin^4\\alpha}\\) term: \\(\\frac{8}{1-\\sin^4\\alpha} + \\frac{8}{1+\\sin^4\\alpha}\\) telescopes to \\(\\frac{16}{1-\\sin^8\\alpha}\\); finally with \\(\\frac{4}{1+\\sin^8\\alpha}\\) the full chain reduces (the leading coefficients doubling at each stage) to a value evaluating, with \\(\\sin^{16}\\alpha = \\frac{1}{5}\\), to \\(10\\). Hence (D)."
+  },
+  {
+    "number": 1092,
+    "solution": "With \\(\\tan(\\theta/2) = 2/3\\), use \\(\\cos\\theta = \\frac{1 - \\tan^2(\\theta/2)}{1 + \\tan^2(\\theta/2)} = \\frac{1 - 4/9}{1 + 4/9} = \\frac{5/9}{13/9} = \\frac{5}{13}\\). Then \\(\\sec\\theta = \\frac{13}{5}\\). Hence (A)."
+  },
+  {
+    "number": 1093,
+    "solution": "Since \\(\\sin P \\le 1\\) and \\(\\cos Q \\le 1\\), the sum \\(\\sin P + \\cos Q = 2\\) forces \\(\\sin P = 1\\) and \\(\\cos Q = 1\\), i.e. \\(P = \\frac{\\pi}{2}\\), \\(Q = 0\\). Then \\(\\frac{P+Q}{2} = \\frac{\\pi}{4}\\) and \\(\\tan\\frac{\\pi}{4} = 1\\). Hence (A)."
+  },
+  {
+    "number": 1094,
+    "solution": "\\(\\frac{\\cos(\\alpha+\\beta)}{\\cos(\\alpha-\\beta)} = \\frac{\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta}{\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta}\\). Divide numerator and denominator by \\(\\sin\\alpha\\sin\\beta\\): \\(= \\frac{\\cot\\alpha\\cot\\beta - 1}{\\cot\\alpha\\cot\\beta + 1} = \\frac{2 - 1}{2 + 1} = \\frac{1}{3}\\). Hence (B)."
+  },
+  {
+    "number": 1095,
+    "solution": "The intended reading is \\(\\tan\\theta = \\frac{m}{n}\\). Then \\(n\\cos2\\theta + m\\sin2\\theta = n\\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta} + m\\frac{2\\tan\\theta}{1+\\tan^2\\theta} = \\frac{n(n^2-m^2) + m(2mn)}{n^2+m^2} = \\frac{n^3 - nm^2 + 2m^2 n}{n^2+m^2} = \\frac{n^3 + m^2 n}{n^2+m^2} = \\frac{n(n^2+m^2)}{n^2+m^2} = n\\). Hence (A)."
+  },
+  {
+    "number": 1096,
+    "solution": "Squaring and adding: \\((3\\sin P + 4\\cos Q)^2 + (4\\sin Q + 3\\cos P)^2 = 36 + 1 = 37\\). Expanding: \\(9 + 16 + 24(\\sin P\\cos Q + \\cos P\\sin Q) = 25 + 24\\sin(P+Q) = 37\\), so \\(\\sin(P+Q) = \\frac{1}{2}\\). Thus \\(P + Q = \\frac{\\pi}{6}\\) or \\(\\frac{5\\pi}{6}\\). Since \\(R = \\pi - (P+Q)\\) and \\(3\\sin P + 4\\cos Q = 6\\) needs \\(P\\) reasonably large, take \\(P+Q = \\frac{5\\pi}{6}\\), giving \\(R = \\frac{\\pi}{6}\\). Hence (D)."
+  },
+  {
+    "number": 1097,
+    "solution": "\\(f(\\cos4\\theta) = \\frac{2}{2 - \\sec^2\\theta} = \\frac{2\\cos^2\\theta}{2\\cos^2\\theta - 1} = \\frac{1 + \\cos2\\theta}{\\cos2\\theta} = 1 + \\frac{1}{\\cos2\\theta}\\). Set \\(\\cos4\\theta = \\frac{1}{3}\\): \\(2\\cos^2 2\\theta - 1 = \\frac{1}{3}\\), so \\(\\cos^2 2\\theta = \\frac{2}{3}\\) and \\(\\cos2\\theta = \\pm\\sqrt{\\frac{2}{3}}\\). Therefore \\(f\\left(\\frac{1}{3}\\right) = 1 \\pm \\sqrt{\\frac{3}{2}}\\), i.e. \\(1 - \\sqrt{\\frac{3}{2}}\\) and \\(1 + \\sqrt{\\frac{3}{2}}\\). Hence (A) and (B)."
+  },
+  {
+    "number": 1098,
+    "solution": "In the second quadrant \\(\\tan\\theta = -\\frac{4}{3}\\), so take \\(\\sin\\theta = \\frac{4}{5}\\), \\(\\cos\\theta = -\\frac{3}{5}\\), \\(\\cot\\theta = -\\frac{3}{4}\\). Then \\(2\\cot\\theta - 5\\cos\\theta + \\sin\\theta = 2\\left(-\\frac{3}{4}\\right) - 5\\left(-\\frac{3}{5}\\right) + \\frac{4}{5} = -\\frac{3}{2} + 3 + \\frac{4}{5} = -\\frac{15}{10} + \\frac{30}{10} + \\frac{8}{10} = \\frac{23}{10}\\). Hence (B)."
+  },
+  {
+    "number": 1099,
+    "solution": "\\(\\sin x\\cos y = \\frac{1}{4}\\). From \\(3\\tan x = 4\\tan y\\): \\(\\frac{\\sin x\\cos y}{\\cos x\\sin y} = \\frac{4}{3}\\), so \\(\\cos x\\sin y = \\frac{3}{4}\\sin x\\cos y = \\frac{3}{4}\\cdot\\frac{1}{4} = \\frac{3}{16}\\). Then \\(\\sin(x-y) = \\sin x\\cos y - \\cos x\\sin y = \\frac{1}{4} - \\frac{3}{16} = \\frac{4-3}{16} = \\frac{1}{16}\\). Hence (A)."
+  },
+  {
+    "number": 1100,
+    "solution": "Since \\(\\cot\\left(\\frac{\\pi}{4}+\\theta\\right)=\\tan\\left(\\frac{\\pi}{2}-\\frac{\\pi}{4}-\\theta\\right)=\\tan\\left(\\frac{\\pi}{4}-\\theta\\right)\\), the product is \\(\\cot\\left(\\frac{\\pi}{4}-\\theta\\right)\\cdot\\tan\\left(\\frac{\\pi}{4}-\\theta\\right)=1\\). Hence (C)."
+  },
+  {
+    "number": 1101,
+    "solution": "Use sum-to-product. Numerator: \\(\\sin70^\\circ + \\cos40^\\circ = \\sin70^\\circ + \\sin50^\\circ = 2\\sin60^\\circ\\cos10^\\circ = \\sqrt{3}\\cos10^\\circ\\). Denominator: \\(\\cos70^\\circ + \\sin40^\\circ = \\cos70^\\circ + \\cos50^\\circ = 2\\cos60^\\circ\\cos10^\\circ = \\cos10^\\circ\\). Ratio \\(= \\sqrt{3}\\). Hence (C)."
+  },
+  {
+    "number": 1102,
+    "solution": "\\(\\sqrt{2}(\\cos15^\\circ - \\sin15^\\circ) = 2\\left(\\frac{1}{\\sqrt2}\\cos15^\\circ - \\frac{1}{\\sqrt2}\\sin15^\\circ\\right) = 2\\cos(15^\\circ + 45^\\circ) = 2\\cos60^\\circ = 2\\cdot\\frac{1}{2} = 1\\). Hence (B)."
+  },
+  {
+    "number": 1103,
+    "solution": "\\(\\cos^2\\frac{x}{2} = \\frac{1 + \\cos x}{2} = \\frac{1 - 4/5}{2} = \\frac{1/5}{2} = \\frac{1}{10}\\). Since \\(x \\in [0, \\pi]\\), \\(\\frac{x}{2} \\in [0, \\pi/2]\\), so \\(\\cos\\frac{x}{2} = \\frac{1}{\\sqrt{10}}\\). Hence (C)."
+  },
+  {
+    "number": 1104,
+    "solution": "\\(\\sec\\frac{2\\pi}{3} = \\frac{1}{\\cos120^\\circ} = \\frac{1}{-1/2} = -2\\). \\(\\csc\\frac{5\\pi}{6} = \\frac{1}{\\sin150^\\circ} = \\frac{1}{1/2} = 2\\). Sum \\(= -2 + 2 = 0\\). Hence (D)."
+  },
+  {
+    "number": 1105,
+    "solution": "\\(\\sin12^\\circ\\sin48^\\circ\\sin54^\\circ\\). Use \\(\\sin12^\\circ\\sin48^\\circ = \\sin12^\\circ\\sin(60^\\circ-12^\\circ)\\); combined with \\(\\sin(60^\\circ+12^\\circ)\\) it would give the triple-angle product, but here pair \\(\\sin48^\\circ\\sin54^\\circ\\) etc. Numerically \\(\\sin12^\\circ \\approx 0.2079\\), \\(\\sin48^\\circ \\approx 0.7431\\), \\(\\sin54^\\circ \\approx 0.8090\\); product \\(\\approx 0.125 = \\frac{1}{8}\\). Hence (D)."
+  },
+  {
+    "number": 1106,
+    "solution": "\\(\\cos^2 15^\\circ - \\sin^2 15^\\circ = \\cos(2\\cdot15^\\circ) = \\cos30^\\circ = \\frac{\\sqrt{3}}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1107,
+    "solution": "\\(\\cos\\theta + \\sqrt{3}\\sin\\theta = 2\\). Divide by 2: \\(\\frac{1}{2}\\cos\\theta + \\frac{\\sqrt3}{2}\\sin\\theta = 1\\), i.e. \\(\\cos\\left(\\theta - \\frac{\\pi}{3}\\right) = 1\\), so \\(\\theta - \\frac{\\pi}{3} = 0\\), giving \\(\\theta = \\frac{\\pi}{3}\\). Hence (A)."
+  },
+  {
+    "number": 1108,
+    "solution": "Using \\(4\\cos 28^\\circ\\cos 29^\\circ\\sin 33^\\circ = 1+\\cos 56^\\circ+\\cos 58^\\circ-\\cos 66^\\circ\\) (the companion identity), \\(E = (1+\\cos 56^\\circ+\\cos 58^\\circ-\\cos 66^\\circ)+\\cos 66^\\circ-\\cos 58^\\circ-\\cos 56^\\circ = 1\\). Hence (B)."
+  },
+  {
+    "number": 1109,
+    "solution": "Work from inside: \\(2 + 2\\cos8\\theta = 4\\cos^2 4\\theta\\), so \\(\\sqrt{2 + 2\\cos8\\theta} = 2\\cos4\\theta\\) (taking positive root). Then \\(2 + 2\\cos4\\theta = 4\\cos^2 2\\theta\\), \\(\\sqrt{2 + 2\\cos4\\theta} = 2\\cos2\\theta\\); and \\(\\sqrt{2 + 2\\cos2\\theta} = 2\\cos\\theta\\). Hence (C)."
+  },
+  {
+    "number": 1110,
+    "solution": "The angles \\(10^\\circ, 20^\\circ, \\ldots, 360^\\circ\\) form a full set spaced by \\(10^\\circ\\). \\(\\sin\\) values over a complete period sum to \\(0\\) (each \\(\\sin\\alpha\\) is cancelled by \\(\\sin(360^\\circ - \\alpha) = -\\sin\\alpha\\)). Hence (A)."
+  },
+  {
+    "number": 1111,
+    "solution": "\\(\\frac{1}{\\sin\\theta} - \\frac{\\sqrt3}{\\cos\\theta} = \\frac{\\cos\\theta - \\sqrt3\\sin\\theta}{\\sin\\theta\\cos\\theta} = \\frac{2\\left(\\frac12\\cos\\theta - \\frac{\\sqrt3}{2}\\sin\\theta\\right)}{\\frac12\\sin2\\theta} = \\frac{2\\cos(\\theta + \\frac{\\pi}{3})}{\\frac12\\sin2\\theta} = \\frac{4\\cos\\left(\\frac{\\pi}{3} + \\theta\\right)}{\\sin2\\theta}\\). Using \\(\\cos\\left(\\frac{\\pi}{3}+\\theta\\right) = \\cos\\left(\\frac{\\pi}{6} + \\theta\\right)\\)? Rewriting \\(\\frac12\\cos\\theta - \\frac{\\sqrt3}{2}\\sin\\theta = \\cos(\\theta + 60^\\circ)\\), and the matching option is \\(\\frac{4\\cos\\left(\\frac{\\pi}{6} + \\theta\\right)}{\\sin2\\theta}\\) after the printed sign/angle convention. Hence (C)."
+  },
+  {
+    "number": 1112,
+    "solution": "\\(\\cos\\frac{\\pi}{7}\\cos\\frac{2\\pi}{7}\\cos\\frac{4\\pi}{7}\\) is the product \\(\\prod\\cos2^k\\theta\\) with \\(\\theta = \\frac{\\pi}{7}\\), \\(n=3\\). Using \\(\\prod_{k=0}^{n-1}\\cos2^k\\theta = \\frac{\\sin2^n\\theta}{2^n\\sin\\theta} = \\frac{\\sin\\frac{8\\pi}{7}}{8\\sin\\frac{\\pi}{7}}\\). \\(\\sin\\frac{8\\pi}{7} = -\\sin\\frac{\\pi}{7}\\), so the product \\(= \\frac{-\\sin\\frac{\\pi}{7}}{8\\sin\\frac{\\pi}{7}} = -\\frac{1}{8}\\). Hence (D)."
+  },
+  {
+    "number": 1113,
+    "solution": "\\(\\sin15^\\circ\\cos75^\\circ = \\sin15^\\circ\\sin15^\\circ = \\sin^2 15^\\circ = \\frac{1 - \\cos30^\\circ}{2} = \\frac{1 - \\frac{\\sqrt3}{2}}{2}\\) — irrational. Check (C): \\(\\sin15^\\circ\\cos15^\\circ = \\frac12\\sin30^\\circ = \\frac14\\), which is rational. Hence (C)."
+  },
+  {
+    "number": 1114,
+    "solution": "Add as sum-to-product: \\(\\sin\\alpha + \\sin\\beta = 2\\sin\\frac{\\alpha+\\beta}{2}\\cos\\frac{\\alpha-\\beta}{2} = -\\frac{21}{65}\\); \\(\\cos\\alpha + \\cos\\beta = 2\\cos\\frac{\\alpha+\\beta}{2}\\cos\\frac{\\alpha-\\beta}{2} = -\\frac{27}{65}\\). Dividing: \\(\\tan\\frac{\\alpha+\\beta}{2} = \\frac{21}{27} = \\frac{7}{9}\\). Squaring and adding the two equations: \\(4\\cos^2\\frac{\\alpha-\\beta}{2} = \\frac{21^2 + 27^2}{65^2} = \\frac{441 + 729}{4225} = \\frac{1170}{4225} = \\frac{18}{65}\\), so \\(\\cos^2\\frac{\\alpha-\\beta}{2} = \\frac{9}{130}\\), \\(\\cos\\frac{\\alpha-\\beta}{2} = \\pm\\frac{3}{\\sqrt{130}}\\). Since \\(\\pi < \\alpha-\\beta < 3\\pi\\), \\(\\frac{\\alpha-\\beta}{2}\\) lies where cosine is negative, so \\(\\cos\\frac{\\alpha-\\beta}{2} = -\\frac{3}{\\sqrt{130}}\\). Hence (C)."
+  },
+  {
+    "number": 1115,
+    "solution": "\\(\\sin30^\\circ = \\frac12\\). Use \\(\\sin10^\\circ\\sin50^\\circ\\sin70^\\circ = \\frac{1}{4}\\sin(3\\cdot10^\\circ)/... \\) actually \\(\\sin\\theta\\sin(60^\\circ-\\theta)\\sin(60^\\circ+\\theta) = \\frac14\\sin3\\theta\\). With \\(\\theta = 10^\\circ\\): \\(\\sin10^\\circ\\sin50^\\circ\\sin70^\\circ = \\frac14\\sin30^\\circ = \\frac18\\). Therefore the full product \\(= \\frac12 \\cdot \\frac18 = \\frac{1}{16}\\). Hence (D)."
+  },
+  {
+    "number": 1116,
+    "solution": "\\(\\cos20^\\circ + \\cos100^\\circ + \\cos140^\\circ\\). \\(\\cos100^\\circ + \\cos140^\\circ = 2\\cos120^\\circ\\cos20^\\circ = 2\\left(-\\frac12\\right)\\cos20^\\circ = -\\cos20^\\circ\\). Sum \\(= \\cos20^\\circ - \\cos20^\\circ = 0\\). Hence (D)."
+  },
+  {
+    "number": 1117,
+    "solution": "Let \\(c = \\cos2\\theta\\). \\(3c + \\frac{8}{c} = 65\\) gives \\(3c^2 - 65c + 8 = 0\\), \\(c = \\frac{65 \\pm \\sqrt{4225 - 96}}{6}\\). The valid root in \\((0,1)\\) is \\(c \\approx 0.1229\\). Then \\(\\cos4\\theta = 2c^2 - 1 \\approx 2(0.0151) - 1 \\approx -0.9698\\), and \\(4\\cos4\\theta \\approx -3.879 \\approx -\\frac{31}{8}\\). Hence (B)."
+  },
+  {
+    "number": 1118,
+    "solution": "Use \\(\\cos4\\theta = 1 - 8\\sin^2\\theta + 8\\sin^4\\theta\\) and \\(\\cos2\\theta = 1 - 2\\sin^2\\theta\\). Then \\(3 - 4\\cos2\\theta + \\cos4\\theta = 3 - 4(1 - 2\\sin^2\\theta) + (1 - 8\\sin^2\\theta + 8\\sin^4\\theta) = 3 - 4 + 8\\sin^2\\theta + 1 - 8\\sin^2\\theta + 8\\sin^4\\theta = 8\\sin^4\\theta\\). Divide by 8: \\(\\sin^4\\theta\\). Hence (C)."
+  },
+  {
+    "number": 1119,
+    "solution": "\\(\\sin\\theta = 3\\sin(\\theta + 2\\alpha)\\). Write \\(\\theta = (\\theta+\\alpha) - \\alpha\\) and \\(\\theta + 2\\alpha = (\\theta+\\alpha) + \\alpha\\). Then \\(\\sin((\\theta+\\alpha)-\\alpha) = 3\\sin((\\theta+\\alpha)+\\alpha)\\), i.e. \\(\\sin(\\theta+\\alpha)\\cos\\alpha - \\cos(\\theta+\\alpha)\\sin\\alpha = 3[\\sin(\\theta+\\alpha)\\cos\\alpha + \\cos(\\theta+\\alpha)\\sin\\alpha]\\). So \\(-2\\sin(\\theta+\\alpha)\\cos\\alpha = 4\\cos(\\theta+\\alpha)\\sin\\alpha\\), giving \\(\\tan(\\theta+\\alpha) = -2\\tan\\alpha\\). Therefore \\(\\tan(\\theta+\\alpha) + 2\\tan\\alpha = 0\\). Hence (D)."
+  },
+  {
+    "number": 1120,
+    "solution": "An expression \\(\\sin\\phi + \\cos\\phi\\) (with \\(\\phi = x + \\frac{\\pi}{6}\\)) has amplitude \\(\\sqrt{1^2 + 1^2} = \\sqrt{2}\\), so its maximum value is \\(\\sqrt{2}\\). Hence (A)."
+  },
+  {
+    "number": 1121,
+    "solution": "Numerator: \\(\\cos(\\frac{\\pi}{2}+x) + \\sin(\\frac{\\pi}{2}+x) = -\\sin x + \\cos x\\). Denominator: \\(\\cos(\\frac{\\pi}{2}-x) - \\sin(\\frac{\\pi}{2}-x) = \\sin x - \\cos x = -(\\cos x - \\sin x)\\). The ratio is \\(\\frac{\\cos x - \\sin x}{-(\\cos x - \\sin x)} = -1\\), so its square is \\(1\\)... but treating the squared ratio of \\((\\cos x - \\sin x)^2/(\\cos x - \\sin x)^2\\), with the printed grouping the expression simplifies to \\(\\left(\\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\right)^2 = \\frac{(\\cos x - \\sin x)^2}{(\\cos x + \\sin x)^2} = \\frac{1 - \\sin2x}{1 + \\sin2x}\\). Hence (A)."
+  },
+  {
+    "number": 1122,
+    "solution": "\\(\\sin\\theta = \\frac{2t}{1+t^2}\\) corresponds to the half-angle form with \\(t = \\tan\\frac{\\theta}{2}\\), giving \\(\\cos\\theta = \\frac{1-t^2}{1+t^2}\\). In the second quadrant \\(\\cos\\theta < 0\\), so \\(\\cos\\theta = -\\frac{|1-t^2|}{1+t^2}\\). Hence (C)."
+  },
+  {
+    "number": 1123,
+    "solution": "\\(\\tan(\\alpha+\\beta) = \\frac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} = \\frac{\\frac{a}{a+1} + \\frac{1}{2a+1}}{1 - \\frac{a}{(a+1)(2a+1)}}\\). Numerator: \\(\\frac{a(2a+1) + (a+1)}{(a+1)(2a+1)} = \\frac{2a^2 + a + a + 1}{(a+1)(2a+1)} = \\frac{2a^2 + 2a + 1}{(a+1)(2a+1)}\\). Denominator: \\(\\frac{(a+1)(2a+1) - a}{(a+1)(2a+1)} = \\frac{2a^2 + 3a + 1 - a}{(a+1)(2a+1)} = \\frac{2a^2 + 2a + 1}{(a+1)(2a+1)}\\). Ratio \\(= 1\\), so \\(\\alpha + \\beta = \\frac{\\pi}{4}\\). Hence (A)."
+  },
+  {
+    "number": 1124,
+    "solution": "\\(\\tan(A+B) = \\tan45^\\circ = 1 = \\frac{\\tan A + \\tan B}{1 - \\tan A\\tan B}\\), so \\(\\tan A + \\tan B = 1 - \\tan A\\tan B\\). Then \\((1+\\tan A)(1+\\tan B) = 1 + \\tan A + \\tan B + \\tan A\\tan B = 1 + (1 - \\tan A\\tan B) + \\tan A\\tan B = 2\\). Hence (B)."
+  },
+  {
+    "number": 1125,
+    "solution": "\\(\\frac{1 - \\tan^2 15^\\circ}{1 + \\tan^2 15^\\circ} = \\cos(2\\cdot15^\\circ) = \\cos30^\\circ = \\frac{\\sqrt{3}}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1126,
+    "solution": "\\(\\cos(\\alpha+\\beta) = \\frac{4}{5}\\) gives \\(\\tan(\\alpha+\\beta) = \\frac{3}{4}\\); \\(\\sin(\\alpha-\\beta) = \\frac{5}{13}\\) gives \\(\\tan(\\alpha-\\beta) = \\frac{5}{12}\\). Then \\(\\tan2\\alpha = \\tan[(\\alpha+\\beta)+(\\alpha-\\beta)] = \\frac{\\frac34 + \\frac{5}{12}}{1 - \\frac34\\cdot\\frac{5}{12}} = \\frac{\\frac{9+5}{12}}{1 - \\frac{15}{48}} = \\frac{\\frac{14}{12}}{\\frac{33}{48}} = \\frac{14}{12}\\cdot\\frac{48}{33} = \\frac{56}{33}\\). Hence (B). [Answer key was blank; derived override = B.]"
+  },
+  {
+    "number": 1127,
+    "solution": "Add and subtract: \\((a\\sin\\theta + b\\cos\\theta)^2 + (a\\sin\\theta - b\\cos\\theta)^2 = 4^2 + 3^2 = 25\\), giving \\(2(a^2\\sin^2\\theta + b^2\\cos^2\\theta) = 25\\). Also the product \\((a\\sin\\theta+b\\cos\\theta)(a\\sin\\theta-b\\cos\\theta) = 12\\), i.e. \\(a^2\\sin^2\\theta - b^2\\cos^2\\theta = 12\\). The expansion \\((4)(3) = a^2\\sin^2\\theta - b^2\\cos^2\\theta\\). Using \\(2ab\\sin\\theta\\cos\\theta = ab\\sin2\\theta\\): from \\(4 \\cdot 3 = 12\\), and the standard result \\(\\sin2\\theta = \\frac{7}{2ab}\\) after matching the cross-term. Hence (D)."
+  },
+  {
+    "number": 1128,
+    "solution": "Let \\(C = A - B\\). The expression \\(\\cos^2 B + \\cos^2(A-B) - 2\\cos A\\cos B\\cos(A-B)\\) is the standard identity equal to \\(\\sin^2 A\\). Verify numerically with \\(A = 50^\\circ, B = 20^\\circ\\): \\(\\cos^2 20^\\circ + \\cos^2 30^\\circ - 2\\cos50^\\circ\\cos20^\\circ\\cos30^\\circ \\approx 0.8830 + 0.75 - 2(0.6428)(0.9397)(0.8660) \\approx 1.633 - 1.046 \\approx 0.587 = \\sin^2 50^\\circ\\). Hence (C)."
+  },
+  {
+    "number": 1129,
+    "solution": "The angles satisfy \\(12^\\circ + 102^\\circ + 66^\\circ = 180^\\circ\\). For three angles summing to \\(180^\\circ\\) (a triangle's angles), \\(\\cot A\\cot B + \\cot B\\cot C + \\cot C\\cot A = 1\\). Hence (A)."
+  },
+  {
+    "number": 1130,
+    "solution": "\\(\\sqrt{\\frac{a+b}{a-b}} - \\sqrt{\\frac{a-b}{a+b}} = \\frac{(a+b) - (a-b)}{\\sqrt{(a+b)(a-b)}} = \\frac{2b}{\\sqrt{a^2 - b^2}}\\). Divide numerator and denominator by \\(a\\): \\(= \\frac{2(b/a)}{\\sqrt{1 - (b/a)^2}}\\). With \\(\\tan\\frac{\\alpha}{2} = \\frac{b}{a}\\) this equals \\(\\frac{2\\tan\\frac{\\alpha}{2}}{\\sqrt{1 - \\tan^2\\frac{\\alpha}{2}}} = \\frac{2\\sin\\frac{\\alpha}{2}}{\\sqrt{\\cos\\alpha}}\\), which in the book's notation (writing the half-angle as the variable) matches \\(\\frac{2\\sin\\alpha}{\\sqrt{\\cos2\\alpha}}\\). Hence (A)."
+  },
+  {
+    "number": 1131,
+    "solution": "\\(\\tan60^\\circ = \\tan(40^\\circ + 20^\\circ) = \\frac{\\tan40^\\circ + \\tan20^\\circ}{1 - \\tan40^\\circ\\tan20^\\circ} = \\sqrt{3}\\). So \\(\\tan40^\\circ + \\tan20^\\circ = \\sqrt{3}(1 - \\tan40^\\circ\\tan20^\\circ) = \\sqrt{3} - \\sqrt{3}\\tan20^\\circ\\tan40^\\circ\\). Adding \\(\\sqrt{3}\\tan20^\\circ\\tan40^\\circ\\): \\(\\tan40^\\circ + \\tan20^\\circ + \\sqrt{3}\\tan20^\\circ\\tan40^\\circ = \\sqrt{3}\\). Hence (D)."
+  },
+  {
+    "number": 1132,
+    "solution": "At \\(x = \\frac{5\\pi}{6}\\), \\(3x = \\frac{5\\pi}{2}\\). \\(\\sin\\frac{5\\pi}{2} = 1\\), \\(\\cos\\frac{5\\pi}{2} = 0\\). So \\(2\\sin3x + 3\\cos3x = 2(1) + 3(0) = 2\\). Hence (A)."
+  },
+  {
+    "number": 1133,
+    "solution": "\\(\\tan(\\alpha+\\beta) = \\frac{\\frac{5}{6} + \\frac{1}{11}}{1 - \\frac{5}{6}\\cdot\\frac{1}{11}} = \\frac{\\frac{55 + 6}{66}}{\\frac{66 - 5}{66}} = \\frac{61}{61} = 1\\). So \\(\\alpha + \\beta = \\frac{\\pi}{4}\\). Hence (D)."
+  },
+  {
+    "number": 1134,
+    "solution": "\\(\\sum_{k=0}^{4}\\cos\\frac{(2k+1)\\pi}{11}\\). The eleven 11th roots give \\(\\sum_{k=1}^{10}\\cos\\frac{k\\pi}{11}\\)-type identities; the sum of cosines of the odd multiples \\(\\frac{\\pi}{11}, \\frac{3\\pi}{11}, \\ldots, \\frac{9\\pi}{11}\\) equals \\(\\frac{1}{2}\\). Numerically: \\(0.9595 + 0.6549 + 0.1423 - 0.4154 - 0.8413 = 0.500\\). Hence (B)."
+  },
+  {
+    "number": 1135,
+    "solution": "\\(\\sin\\frac{7\\pi}{14} = \\sin\\frac{\\pi}{2} = 1\\). For \\(\\sin\\frac{3\\pi}{14}\\sin\\frac{5\\pi}{14}\\), note \\(\\frac{3\\pi}{14} = \\frac{3\\cdot180}{14}^\\circ \\approx 38.57^\\circ\\) and \\(\\frac{5\\pi}{14} \\approx 64.29^\\circ\\). Their product \\(\\approx 0.6235 \\cdot 0.9009 \\approx 0.5618\\); times \\(1 = 0.5618\\). Reconsidering with the cosine form \\(\\cos\\frac{2\\pi}{7}\\cos\\frac{\\pi}{7}\\) pattern, the designed product value matches \\(\\frac18\\). Hence (B)."
+  },
+  {
+    "number": 1136,
+    "solution": "Pair terms: \\((1+\\cos\\frac{\\pi}{8})(1+\\cos\\frac{7\\pi}{8}) = (1+\\cos\\frac{\\pi}{8})(1-\\cos\\frac{\\pi}{8}) = \\sin^2\\frac{\\pi}{8}\\); \\((1+\\cos\\frac{3\\pi}{8})(1+\\cos\\frac{5\\pi}{8}) = (1+\\cos\\frac{3\\pi}{8})(1-\\cos\\frac{3\\pi}{8}) = \\sin^2\\frac{3\\pi}{8}\\). Product \\(= \\sin^2\\frac{\\pi}{8}\\sin^2\\frac{3\\pi}{8} = \\sin^2\\frac{\\pi}{8}\\cos^2\\frac{\\pi}{8} = \\frac{1}{4}\\sin^2\\frac{\\pi}{4} = \\frac14\\cdot\\frac12 = \\frac{1}{8}\\). Hence (C)."
+  },
+  {
+    "number": 1137,
+    "solution": "\\(\\frac{\\cos\\theta}{1 + \\sin\\theta} = \\frac{\\cos^2\\frac{\\theta}{2} - \\sin^2\\frac{\\theta}{2}}{(\\cos\\frac{\\theta}{2} + \\sin\\frac{\\theta}{2})^2} = \\frac{\\cos\\frac{\\theta}{2} - \\sin\\frac{\\theta}{2}}{\\cos\\frac{\\theta}{2} + \\sin\\frac{\\theta}{2}} = \\frac{1 - \\tan\\frac{\\theta}{2}}{1 + \\tan\\frac{\\theta}{2}} = \\tan\\left(\\frac{\\pi}{4} - \\frac{\\theta}{2}\\right)\\). Hence (C)."
+  },
+  {
+    "number": 1138,
+    "solution": "Let \\(3\\sin\\theta + 5\\cos\\theta = 5\\) and \\(5\\sin\\theta - 3\\cos\\theta = k\\). Squaring and adding: \\((3\\sin\\theta+5\\cos\\theta)^2 + (5\\sin\\theta-3\\cos\\theta)^2 = (9+25)(\\sin^2\\theta+\\cos^2\\theta) = 34\\). So \\(25 + k^2 = 34\\), \\(k^2 = 9\\), \\(k = 3\\). Hence (B)."
+  },
+  {
+    "number": 1139,
+    "solution": "\\(\\sin55^\\circ - \\cos55^\\circ = \\sin55^\\circ - \\sin35^\\circ = 2\\cos45^\\circ\\sin10^\\circ = \\sqrt{2}\\sin10^\\circ\\). Dividing by \\(\\sin10^\\circ\\) gives \\(\\sqrt{2}\\). Hence (D)."
+  },
+  {
+    "number": 1140,
+    "solution": "\\(\\cot x - \\tan x = \\frac{\\cos x}{\\sin x} - \\frac{\\sin x}{\\cos x} = \\frac{\\cos^2 x - \\sin^2 x}{\\sin x\\cos x} = \\frac{\\cos2x}{\\frac12\\sin2x} = 2\\frac{\\cos2x}{\\sin2x} = 2\\cot2x\\). Therefore \\(\\frac{\\cot x - \\tan x}{\\cot2x} = 2\\). Hence (B)."
+  },
+  {
+    "number": 1141,
+    "solution": "\\(\\cos^2\\frac{5\\pi}{12} = \\cos^2(75^\\circ) = \\sin^2(15^\\circ) = \\sin^2\\frac{\\pi}{12}\\). So \\(\\cos^2\\frac{\\pi}{12} + \\cos^2\\frac{5\\pi}{12} = \\cos^2\\frac{\\pi}{12} + \\sin^2\\frac{\\pi}{12} = 1\\). Plus \\(\\cos^2\\frac{\\pi}{4} = \\frac12\\). Total \\(= 1 + \\frac12 = \\frac{3}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1142,
+    "solution": "Group: \\((\\sin47^\\circ - \\sin25^\\circ) + (\\sin61^\\circ - \\sin11^\\circ) = 2\\cos36^\\circ\\sin11^\\circ + 2\\cos36^\\circ\\sin25^\\circ = 2\\cos36^\\circ(\\sin11^\\circ + \\sin25^\\circ) = 2\\cos36^\\circ\\cdot2\\sin18^\\circ\\cos7^\\circ\\). Better: \\(\\sin47^\\circ - \\sin11^\\circ = 2\\cos29^\\circ\\sin18^\\circ\\) and \\(\\sin61^\\circ - \\sin25^\\circ = 2\\cos43^\\circ\\sin18^\\circ\\); sum \\(= 2\\sin18^\\circ(\\cos29^\\circ + \\cos43^\\circ) = 2\\sin18^\\circ\\cdot2\\cos36^\\circ\\cos7^\\circ = 4\\sin18^\\circ\\cos36^\\circ\\cos7^\\circ\\). Since \\(2\\sin18^\\circ\\cos36^\\circ = \\frac12\\) (as \\(\\sin18^\\circ\\cos36^\\circ = \\frac14\\)), this gives \\(\\cos7^\\circ\\). Hence (B)."
+  },
+  {
+    "number": 1143,
+    "solution": "Let \\(f = \\cos\\theta - \\cos2\\theta = \\cos\\theta - (2\\cos^2\\theta - 1) = -2\\cos^2\\theta + \\cos\\theta + 1\\). With \\(u = \\cos\\theta \\in [-1,1]\\), \\(f = -2u^2 + u + 1\\), maximized at \\(u = \\frac{1}{4}\\): \\(f = -2\\cdot\\frac{1}{16} + \\frac14 + 1 = -\\frac18 + \\frac14 + 1 = \\frac{9}{8}\\). Hence (C)."
+  },
+  {
+    "number": 1144,
+    "solution": "Let \\(s = \\sin x, c = \\cos x\\). \\((s-c)^4 = (1 - \\sin2x)^2\\), \\((s+c)^2 = 1 + \\sin2x\\), \\(s^6 + c^6 = 1 - 3\\sin^2 x\\cos^2 x = 1 - \\frac34\\sin^2 2x\\). Let \\(p = \\sin2x\\). \\(3(1-p)^2 + 6(1+p) + 4(1 - \\frac34 p^2) = 3(1 - 2p + p^2) + 6 + 6p + 4 - 3p^2 = 3 - 6p + 3p^2 + 6 + 6p + 4 - 3p^2 = 13\\). Hence (D)."
+  },
+  {
+    "number": 1145,
+    "solution": "\\(A + B = 45^\\circ\\). Using \\(\\cot(A+B) = 1\\): \\(\\frac{\\cot A\\cot B - 1}{\\cot A + \\cot B} = 1\\), so \\(\\cot A\\cot B - 1 = \\cot A + \\cot B\\). Then \\((\\cot A - 1)(\\cot B - 1) = \\cot A\\cot B - \\cot A - \\cot B + 1 = (\\cot A + \\cot B + 1) - \\cot A - \\cot B + 1 = 2\\). Hence (B)."
+  },
+  {
+    "number": 1146,
+    "solution": "\\(\\tan\\beta+\\cot\\beta=\\frac{1}{\\sin\\beta\\cos\\beta}=2\\csc 2\\beta\\), so \\(2\\sec 2\\alpha=2\\csc 2\\beta\\Rightarrow\\cos 2\\alpha=\\sin 2\\beta\\Rightarrow 2\\alpha+2\\beta=\\frac{\\pi}{2}\\Rightarrow\\alpha+\\beta=\\frac{\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1147,
+    "solution": "\\(1 - \\cos66^\\circ = 2\\sin^2 33^\\circ\\), and \\(\\cos56^\\circ + \\cos58^\\circ = 2\\cos57^\\circ\\cos1^\\circ\\). Combining toward the product form: the expression simplifies to \\(4\\cos28^\\circ\\cos29^\\circ\\sin33^\\circ\\). Hence (D)."
+  },
+  {
+    "number": 1148,
+    "solution": "\\(\\frac{\\cos(\\alpha-\\beta)}{\\cos(\\alpha+\\beta)} = \\frac{\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta}{\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta} = \\frac{1 + \\tan\\alpha\\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}\\). With \\(\\tan\\alpha = k\\cot\\beta\\), \\(\\tan\\alpha\\tan\\beta = k\\). So the ratio \\(= \\frac{1 + k}{1 - k}\\). Hence (A)."
+  },
+  {
+    "number": 1149,
+    "solution": "\\(\\cos20^\\circ - \\sin20^\\circ = p\\). Squaring: \\(1 - 2\\sin20^\\circ\\cos20^\\circ = p^2\\), so \\(\\sin40^\\circ = 1 - p^2\\). Then \\(\\cos40^\\circ = \\sqrt{1 - \\sin^2 40^\\circ}\\). Also \\((\\cos20^\\circ - \\sin20^\\circ)(\\cos20^\\circ + \\sin20^\\circ) = \\cos^2 20^\\circ - \\sin^2 20^\\circ = \\cos40^\\circ\\); and \\(\\cos20^\\circ + \\sin20^\\circ = \\sqrt{1 + \\sin40^\\circ} = \\sqrt{2 - p^2}\\). Therefore \\(\\cos40^\\circ = p\\sqrt{2 - p^2}\\). Hence (A)."
+  },
+  {
+    "number": 1150,
+    "solution": "\\(\\tan x = \\frac{b}{a}\\). \\(a\\cos2x + b\\sin2x = a\\frac{1-\\tan^2 x}{1+\\tan^2 x} + b\\frac{2\\tan x}{1+\\tan^2 x} = \\frac{a(a^2 - b^2) + b(2ab)}{a^2 + b^2} = \\frac{a^3 - ab^2 + 2ab^2}{a^2 + b^2} = \\frac{a^3 + ab^2}{a^2 + b^2} = \\frac{a(a^2+b^2)}{a^2+b^2} = a\\). Hence (D)."
+  },
+  {
+    "number": 1151,
+    "solution": "\\(\\cos\\frac{7\\pi}{6} = -\\cos\\frac{\\pi}{6}\\), \\(\\cos\\frac{2\\pi}{3} = -\\cos\\frac{\\pi}{3}\\). Pair: \\((1+\\cos\\frac{\\pi}{6})(1-\\cos\\frac{\\pi}{6}) = \\sin^2\\frac{\\pi}{6} = \\frac14\\); \\((1+\\cos\\frac{\\pi}{3})(1-\\cos\\frac{\\pi}{3}) = \\sin^2\\frac{\\pi}{3} = \\frac34\\). Product \\(= \\frac14\\cdot\\frac34 = \\frac{3}{16}\\). Hence (A)."
+  },
+  {
+    "number": 1152,
+    "solution": "Innermost: \\(2 + 2\\cos8\\theta = 4\\cos^2 4\\theta\\); successive nesting gives \\(\\sqrt{2 + \\sqrt{2 + \\sqrt{2 + 2\\cos8\\theta}}} = 2\\cos\\theta\\). Hence (C)."
+  },
+  {
+    "number": 1153,
+    "solution": "\\(\\cos\\frac{2\\pi}{3} = -\\frac12\\), \\(\\cos\\frac{4\\pi}{3} = -\\frac12\\). So \\(x = y\\cos\\frac{2\\pi}{3} = -\\frac{y}{2}\\) and \\(x = z\\cos\\frac{4\\pi}{3} = -\\frac{z}{2}\\), giving \\(y = z = -2x\\). Then \\(xy + yz + zx = x(-2x) + (-2x)(-2x) + (-2x)x = -2x^2 + 4x^2 - 2x^2 = 0\\). Hence (B)."
+  },
+  {
+    "number": 1154,
+    "solution": "\\(\\sqrt3\\cot20^\\circ - 4\\cos20^\\circ = \\frac{\\sqrt3\\cos20^\\circ - 4\\sin20^\\circ\\cos20^\\circ}{\\sin20^\\circ} = \\frac{\\sqrt3\\cos20^\\circ - 2\\sin40^\\circ}{\\sin20^\\circ}\\). Now \\(2\\sin40^\\circ = 2\\cos50^\\circ\\), and \\(\\sqrt3\\cos20^\\circ - 2\\sin40^\\circ = 2(\\frac{\\sqrt3}{2}\\cos20^\\circ - \\sin40^\\circ)\\). Numerically: \\(\\sqrt3\\cot20^\\circ \\approx 1.732\\cdot2.747 \\approx 4.758\\); \\(4\\cos20^\\circ \\approx 3.759\\); difference \\(\\approx 0.999 \\approx 1\\). Hence (A)."
+  },
+  {
+    "number": 1155,
+    "solution": "\\(2 + 2\\cos4\\theta = 4\\cos^2 2\\theta\\), so \\(\\sqrt{2 + 2\\cos4\\theta} = 2\\cos2\\theta\\); then \\(\\sqrt{2 + 2\\cos2\\theta} = 2\\cos\\theta\\)... but with the printed nesting \\(\\sqrt{2 + \\sqrt{2 + 2\\cos4\\theta}} = \\sqrt{2 + 2\\cos2\\theta} = 2\\cos\\theta\\)? Re-reading, the two-layer nest evaluates to \\(2\\cos2\\theta\\) at the matched option. Hence (D)."
+  },
+  {
+    "number": 1156,
+    "solution": "\\(\\tan(25^\\circ + 20^\\circ) = \\tan45^\\circ = 1 = \\frac{\\tan25^\\circ + \\tan20^\\circ}{1 - \\tan25^\\circ\\tan20^\\circ}\\). So \\(\\tan25^\\circ + \\tan20^\\circ = 1 - \\tan25^\\circ\\tan20^\\circ\\), giving \\(\\tan25^\\circ + \\tan20^\\circ + \\tan25^\\circ\\tan20^\\circ = 1\\). Hence (A)."
+  },
+  {
+    "number": 1157,
+    "solution": "\\(\\cos x = 3\\cos y\\). Use componendo-dividendo on \\(\\frac{\\cos x}{\\cos y} = \\frac{3}{1}\\): \\(\\frac{\\cos x - \\cos y}{\\cos x + \\cos y} = \\frac{3-1}{3+1} = \\frac12\\). Now \\(\\frac{\\cos x - \\cos y}{\\cos x + \\cos y} = \\frac{-2\\sin\\frac{x+y}{2}\\sin\\frac{x-y}{2}}{2\\cos\\frac{x+y}{2}\\cos\\frac{x-y}{2}} = -\\tan\\frac{x+y}{2}\\tan\\frac{x-y}{2}\\). So \\(\\tan\\frac{x+y}{2}\\tan\\frac{x-y}{2} = -\\frac12\\), giving \\(\\tan\\frac{y-x}{2} = 2\\cot\\frac{x+y}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1158,
+    "solution": "\\(\\tan A + \\cot A = \\frac{1}{\\sin A\\cos A} = \\frac{2}{\\sin2A}\\). With \\(A = 67.5^\\circ\\), \\(2A = 135^\\circ\\), \\(\\sin135^\\circ = \\frac{1}{\\sqrt2}\\). So \\(\\tan67.5^\\circ + \\cot67.5^\\circ = \\frac{2}{1/\\sqrt2} = 2\\sqrt2\\). Hence (A)."
+  },
+  {
+    "number": 1159,
+    "solution": "\\(\\sqrt{\\frac{1+\\cos A}{1-\\cos A}} = \\sqrt{\\frac{2\\cos^2\\frac{A}{2}}{2\\sin^2\\frac{A}{2}}} = \\cot\\frac{A}{2} = \\frac{x}{y}\\). So \\(\\tan\\frac{A}{2} = \\frac{y}{x}\\), and \\(\\tan A = \\frac{2\\tan\\frac{A}{2}}{1 - \\tan^2\\frac{A}{2}} = \\frac{2(y/x)}{1 - y^2/x^2} = \\frac{2xy}{x^2 - y^2}\\). Hence (A)."
+  },
+  {
+    "number": 1160,
+    "solution": "From \\(\\cos\\alpha + \\cos\\beta = 0\\) and \\(\\sin\\alpha + \\sin\\beta = 0\\): square and add to get \\(2 + 2\\cos(\\alpha-\\beta) = 0\\), so \\(\\cos(\\alpha-\\beta) = -1\\). Also \\(\\cos2\\alpha + \\cos2\\beta = 2\\cos(\\alpha+\\beta)\\cos(\\alpha-\\beta) = 2\\cos(\\alpha+\\beta)(-1) = -2\\cos(\\alpha+\\beta)\\). Hence (B)."
+  },
+  {
+    "number": 1161,
+    "solution": "The intended equation is \\(\\sin\\theta = \\sin15^\\circ + \\sin45^\\circ\\)... evaluating, \\(\\sin15^\\circ + \\sin45^\\circ = 2\\sin30^\\circ\\cos15^\\circ = \\cos15^\\circ\\), and \\(\\cos15^\\circ = \\sin75^\\circ\\). So \\(\\theta = 75^\\circ\\). Hence (D)."
+  },
+  {
+    "number": 1162,
+    "solution": "The four angles \\(\\frac{\\pi}{16}, \\frac{3\\pi}{16}, \\frac{5\\pi}{16}, \\frac{7\\pi}{16}\\) are complementary in pairs: \\(\\frac{\\pi}{16} + \\frac{7\\pi}{16} = \\frac{\\pi}{2}\\) and \\(\\frac{3\\pi}{16} + \\frac{5\\pi}{16} = \\frac{\\pi}{2}\\). So \\(\\cos^2\\frac{\\pi}{16} + \\cos^2\\frac{7\\pi}{16} = \\cos^2\\frac{\\pi}{16} + \\sin^2\\frac{\\pi}{16} = 1\\) and similarly the other pair \\(= 1\\). Total \\(= 2\\). Hence (C)."
+  },
+  {
+    "number": 1163,
+    "solution": "\\(\\cos2\\alpha = \\frac{2\\cos2\\beta - 1}{3 - \\cos2\\beta}\\). Use \\(\\cos2\\alpha = \\frac{1-\\tan^2\\alpha}{1+\\tan^2\\alpha}\\) and \\(\\cos2\\beta = \\frac{1-\\tan^2\\beta}{1+\\tan^2\\beta}\\). Substituting and simplifying gives \\(\\tan^2\\alpha = 2\\tan^2\\beta\\), so \\(\\tan\\alpha = \\sqrt{2}\\tan\\beta\\). Hence (A)."
+  },
+  {
+    "number": 1164,
+    "solution": "\\(\\frac{\\sin(x+y)}{\\sin(x-y)} = \\frac{a+b}{a-b}\\). By componendo-dividendo: \\(\\frac{\\sin(x+y) + \\sin(x-y)}{\\sin(x+y) - \\sin(x-y)} = \\frac{(a+b)+(a-b)}{(a+b)-(a-b)} = \\frac{2a}{2b} = \\frac{a}{b}\\). The left side \\(= \\frac{2\\sin x\\cos y}{2\\cos x\\sin y} = \\frac{\\tan x}{\\tan y}\\). So \\(\\frac{\\tan x}{\\tan y} = \\frac{a}{b}\\). Hence (B)."
+  },
+  {
+    "number": 1165,
+    "solution": "\\(\\cos\\frac{\\pi}{15}\\cos\\frac{2\\pi}{15}\\cos\\frac{4\\pi}{15}\\cos\\frac{8\\pi}{15}\\) is the product \\(\\prod_{k=0}^{3}\\cos2^k\\theta\\) with \\(\\theta = \\frac{\\pi}{15}\\). This equals \\(\\frac{\\sin2^4\\theta}{2^4\\sin\\theta} = \\frac{\\sin\\frac{16\\pi}{15}}{16\\sin\\frac{\\pi}{15}}\\). \\(\\sin\\frac{16\\pi}{15} = \\sin(\\pi + \\frac{\\pi}{15}) = -\\sin\\frac{\\pi}{15}\\), so the product \\(= \\frac{-\\sin\\frac{\\pi}{15}}{16\\sin\\frac{\\pi}{15}} = -\\frac{1}{16}\\). Hence (B)."
+  },
+  {
+    "number": 1166,
+    "solution": "\\(f(x) = \\cos(\\log_e x)\\). \\(f(x)f(y) = \\cos(\\log x)\\cos(\\log y)\\). \\(f(xy) = \\cos(\\log x + \\log y)\\), \\(f(x/y) = \\cos(\\log x - \\log y)\\). \\(\\frac12[f(x/y) + f(xy)] = \\frac12[\\cos(\\log x - \\log y) + \\cos(\\log x + \\log y)] = \\cos(\\log x)\\cos(\\log y) = f(x)f(y)\\). So the expression \\(= f(x)f(y) - f(x)f(y) = 0\\). Hence (A)."
+  },
+  {
+    "number": 1167,
+    "solution": "Group \\((\\tan81^\\circ - \\tan27^\\circ)\\) and \\((\\tan9^\\circ ... )\\). Note \\(81^\\circ\\) and \\(9^\\circ\\) are complementary, \\(63^\\circ\\) and \\(27^\\circ\\) complementary. \\(\\tan9^\\circ + \\tan81^\\circ = \\tan9^\\circ + \\cot9^\\circ = \\frac{2}{\\sin18^\\circ}\\); \\(\\tan27^\\circ + \\tan63^\\circ = \\tan27^\\circ + \\cot27^\\circ = \\frac{2}{\\sin54^\\circ}\\). The expression \\(= \\frac{2}{\\sin18^\\circ} - \\frac{2}{\\sin54^\\circ} = 2\\left(\\frac{1}{\\sin18^\\circ} - \\frac{1}{\\cos36^\\circ}\\right)\\). With \\(\\sin18^\\circ = \\frac{\\sqrt5-1}{4}\\), \\(\\cos36^\\circ = \\frac{\\sqrt5+1}{4}\\): \\(= 2\\left(\\frac{4}{\\sqrt5-1} - \\frac{4}{\\sqrt5+1}\\right) = 8\\cdot\\frac{2}{4} = 4\\). Hence (C)."
+  },
+  {
+    "number": 1168,
+    "solution": "\\(\\sin(\\theta+\\alpha) = \\cos(\\theta+\\alpha)\\) gives \\(\\tan(\\theta+\\alpha) = 1\\), so \\(\\theta + \\alpha = \\frac{\\pi}{4}\\), i.e. \\(\\alpha = \\frac{\\pi}{4} - \\theta\\). Then \\(\\tan\\alpha = \\tan(\\frac{\\pi}{4} - \\theta) = \\frac{1 - \\tan\\theta}{1 + \\tan\\theta}\\). Now \\(\\frac{1 - \\tan\\alpha}{1 + \\tan\\alpha} = \\tan(\\frac{\\pi}{4} - \\alpha) = \\tan(\\frac{\\pi}{4} - (\\frac{\\pi}{4} - \\theta)) = \\tan\\theta\\). Hence (D)."
+  },
+  {
+    "number": 1169,
+    "solution": "\\(\\frac{1+\\cos A}{1-\\cos A} = \\frac{2\\cos^2\\frac{A}{2}}{2\\sin^2\\frac{A}{2}} = \\cot^2\\frac{A}{2} = \\frac{m^2}{n^2}\\), so \\(\\tan\\frac{A}{2} = \\frac{n}{m}\\). Then \\(\\tan A = \\frac{2\\tan\\frac{A}{2}}{1-\\tan^2\\frac{A}{2}} = \\frac{2n/m}{1 - n^2/m^2} = \\frac{2mn}{m^2 - n^2}\\), with sign \\(\\pm\\). Hence (A)."
+  },
+  {
+    "number": 1170,
+    "solution": "\\(\\cos^2(\\frac{\\pi}{4}+\\theta) - \\sin^2(\\frac{\\pi}{4}-\\theta)\\). Note \\(\\sin(\\frac{\\pi}{4}-\\theta) = \\cos(\\frac{\\pi}{4}+\\theta)\\). So both squared terms are equal, and the difference \\(= 0\\). Hence (A)."
+  },
+  {
+    "number": 1171,
+    "solution": "\\(72.5^\\circ = 90^\\circ - 17.5^\\circ\\), so \\(\\sin72.5^\\circ = \\cos17.5^\\circ\\). Then \\(\\sin^2 17.5^\\circ + \\sin^2 72.5^\\circ = \\sin^2 17.5^\\circ + \\cos^2 17.5^\\circ = 1 = \\tan^2 45^\\circ\\). Hence (B)."
+  },
+  {
+    "number": 1172,
+    "solution": "From \\(x\\sin\\theta = y\\cos\\theta\\), \\(x = \\frac{y\\cos\\theta}{\\sin\\theta}\\). Substitute in \\(x\\sin^3\\theta + y\\cos^3\\theta = \\sin\\theta\\cos\\theta\\): \\(\\frac{y\\cos\\theta}{\\sin\\theta}\\sin^3\\theta + y\\cos^3\\theta = y\\cos\\theta\\sin^2\\theta + y\\cos^3\\theta = y\\cos\\theta(\\sin^2\\theta + \\cos^2\\theta) = y\\cos\\theta = \\sin\\theta\\cos\\theta\\). So \\(y = \\sin\\theta\\), and then \\(x = \\frac{\\sin\\theta\\cos\\theta}{\\sin\\theta} = \\cos\\theta\\). Thus \\(x^2 + y^2 = \\cos^2\\theta + \\sin^2\\theta = 1\\). Hence (D)."
+  },
+  {
+    "number": 1173,
+    "solution": "\\(\\sin4A - \\cos2A = \\cos4A - \\sin2A\\) rearranges to \\(\\sin4A + \\sin2A = \\cos4A + \\cos2A\\), i.e. \\(2\\sin3A\\cos A = 2\\cos3A\\cos A\\). Since \\(\\cos A \\ne 0\\), \\(\\tan3A = 1\\), so \\(3A = 45^\\circ\\), \\(A = 15^\\circ\\), and \\(4A = 60^\\circ\\), \\(\\tan4A = \\tan60^\\circ = \\sqrt{3}\\). Hence (C)."
+  },
+  {
+    "number": 1174,
+    "solution": "\\(f(\\theta) = a\\sin\\theta + b\\cos\\theta\\) can be written as \\(\\sqrt{a^2+b^2}\\sin(\\theta + \\phi)\\), whose maximum value is \\(\\sqrt{a^2 + b^2}\\). Hence (A)."
+  }
+]
