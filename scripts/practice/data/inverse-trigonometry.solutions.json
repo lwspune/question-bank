@@ -1,0 +1,418 @@
+[
+  {
+    "number": 1291,
+    "solution": "The range of \\(\\sec^{-1}x\\) is the principal-value set \\([0, \\pi]\\) excluding the point \\(\\frac{\\pi}{2}\\) (where \\(\\sec\\) is undefined). Hence (B)."
+  },
+  {
+    "number": 1292,
+    "solution": "Let \\(\\theta = \\tan^{-1}\\frac{3}{4}\\), so \\(\\tan\\theta = \\frac{3}{4}\\). Then opposite \\(= 3\\), adjacent \\(= 4\\), hypotenuse \\(= \\sqrt{3^2+4^2} = 5\\). Thus \\(\\cos\\theta = \\frac{4}{5}\\). Hence (A)."
+  },
+  {
+    "number": 1293,
+    "solution": "For \\(x\\): \\(\\sin\\left(2\\tan^{-1}\\frac{1}{3}\\right) = \\frac{2t}{1+t^2}\\) with \\(t = \\frac{1}{3}\\), giving \\(\\frac{2/3}{1+1/9} = \\frac{2/3}{10/9} = \\frac{6}{10} = 0.6\\). For \\(y\\): let \\(\\phi = \\tan^{-1}\\frac{4}{3}\\), so \\(\\sin\\phi = \\frac{4}{5}\\), \\(\\cos\\phi = \\frac{3}{5}\\). Then \\(\\sin\\frac{\\phi}{2} = \\sqrt{\\frac{1-\\cos\\phi}{2}} = \\sqrt{\\frac{1-3/5}{2}} = \\sqrt{\\frac{1}{5}} \\approx 0.447\\). Since \\(0.6 > 0.447\\), \\(x > y\\). Hence (A)."
+  },
+  {
+    "number": 1294,
+    "solution": "Let \\(\\theta = \\cot^{-1}x\\), so \\(\\cot\\theta = x\\). Taking adjacent \\(= x\\), opposite \\(= 1\\), hypotenuse \\(= \\sqrt{1+x^2}\\). Then \\(\\sin\\theta = \\frac{1}{\\sqrt{1+x^2}}\\). Hence (D)."
+  },
+  {
+    "number": 1295,
+    "solution": "From \\(\\sin^{-1}x + \\sin^{-1}y = \\frac{\\pi}{2}\\), we get \\(\\sin^{-1}x = \\frac{\\pi}{2} - \\sin^{-1}y = \\cos^{-1}y\\). So \\(x = \\sin(\\cos^{-1}y) = \\sqrt{1-y^2}\\), giving \\(x^2 = 1 - y^2\\). Hence (A)."
+  },
+  {
+    "number": 1296,
+    "solution": "Numerator: \\(\\tan^{-1}\\sqrt{3} = \\frac{\\pi}{3}\\); \\(\\sec^{-1}(-2) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\). So numerator \\(= \\frac{\\pi}{3} - \\frac{2\\pi}{3} = -\\frac{\\pi}{3}\\). Denominator: \\(\\operatorname{cosec}^{-1}(-\\sqrt{2}) = -\\frac{\\pi}{4}\\); \\(\\cos^{-1}\\left(-\\frac{1}{2}\\right) = \\frac{2\\pi}{3}\\). So denominator \\(= -\\frac{\\pi}{4} + \\frac{2\\pi}{3} = \\frac{-3\\pi + 8\\pi}{12} = \\frac{5\\pi}{12}\\). The ratio \\(= \\frac{-\\pi/3}{5\\pi/12} = -\\frac{1}{3} \\cdot \\frac{12}{5} = -\\frac{4}{5}\\). Hence (B)."
+  },
+  {
+    "number": 1297,
+    "solution": "Given \\(\\tan(x+y) = 33\\) and \\(\\tan x = 3\\). Then \\(\\tan y = \\tan((x+y) - x) = \\frac{\\tan(x+y) - \\tan x}{1 + \\tan(x+y)\\tan x} = \\frac{33 - 3}{1 + 99} = \\frac{30}{100} = \\frac{3}{10}\\). Therefore \\(y = \\tan^{-1}\\frac{3}{10}\\). Hence (D)."
+  },
+  {
+    "number": 1298,
+    "solution": "\\(6\\sin^{-1}(x^3 - 6x^2 + 8x + 1/2) = \\pi\\) gives \\(\\sin^{-1}(\\cdot) = \\frac{\\pi}{6}\\), so \\(x^3 - 6x^2 + 8x + \\frac{1}{2} = \\sin\\frac{\\pi}{6} = \\frac{1}{2}\\). Thus \\(x^3 - 6x^2 + 8x = 0\\), i.e. \\(x(x-2)(x-4) = 0\\), giving roots \\(0, 2, 4\\) which are in A.P. (common difference 2). Hence (A)."
+  },
+  {
+    "number": 1299,
+    "solution": "For \\(\\sin^{-1}x = 2\\sin^{-1}2a\\) to have a real solution, the right side must lie in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\): \\(-\\frac{\\pi}{2} \\le 2\\sin^{-1}2a \\le \\frac{\\pi}{2}\\), so \\(-\\frac{\\pi}{4} \\le \\sin^{-1}2a \\le \\frac{\\pi}{4}\\), giving \\(|2a| \\le \\sin\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\). Therefore \\(|a| \\le \\frac{1}{2\\sqrt{2}}\\). Hence (D)."
+  },
+  {
+    "number": 1300,
+    "solution": "The series \\(x - \\frac{x^2}{2} + \\frac{x^3}{4} - \\frac{x^4}{8} + \\ldots\\) is geometric: \\(x\\left(1 - \\frac{x}{2} + \\frac{x^2}{4} - \\ldots\\right) = \\frac{x}{1 + x/2} = \\frac{2x}{2+x}\\). Setting \\(\\frac{2x}{2+x} = \\sin\\frac{\\pi}{6} = \\frac{1}{2}\\) gives \\(4x = 2 + x\\), so \\(3x = 2\\), \\(x = \\frac{2}{3}\\). Hence (A)."
+  },
+  {
+    "number": 1301,
+    "solution": "\\(x + \\frac{1}{x} = 2\\) gives \\(x^2 - 2x + 1 = 0\\), i.e. \\((x-1)^2 = 0\\), so \\(x = 1\\). Then \\(\\sin^{-1}(1) = \\frac{\\pi}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1302,
+    "solution": "Let \\(t = \\tan^{-1}\\frac{1}{5}\\), so \\(\\tan t = \\frac{1}{5}\\). Then \\(\\tan 3t = \\frac{3t' - t'^3}{1 - 3t'^2}\\) with \\(t' = \\frac{1}{5}\\): \\(\\tan 3t = \\frac{3/5 - 1/125}{1 - 3/25} = \\frac{74/125}{22/25} = \\frac{74}{125} \\cdot \\frac{25}{22} = \\frac{37}{55}\\). Now \\(\\tan\\left(3t - \\frac{\\pi}{4}\\right) = \\frac{\\tan 3t - 1}{1 + \\tan 3t} = \\frac{37/55 - 1}{1 + 37/55} = \\frac{-18/55}{92/55} = -\\frac{18}{92} = -\\frac{9}{46}\\). Hence (D)."
+  },
+  {
+    "number": 1303,
+    "solution": "From \\(3x + 1 = A(x+3) + B(x-1)\\): putting \\(x = 1\\) gives \\(4 = 4A\\), so \\(A = 1\\); putting \\(x = -3\\) gives \\(-8 = -4B\\), so \\(B = 2\\). Then \\(\\sin^{-1}\\frac{A}{B} = \\sin^{-1}\\frac{1}{2} = \\frac{\\pi}{6}\\). Hence (D)."
+  },
+  {
+    "number": 1304,
+    "solution": "Let \\(\\theta = \\sin^{-1}\\frac{2}{3}\\), so \\(\\sin\\theta = \\frac{2}{3}\\). Then \\(\\cos\\theta = \\sqrt{1 - \\frac{4}{9}} = \\sqrt{\\frac{5}{9}} = \\frac{\\sqrt{5}}{3}\\). Hence (D)."
+  },
+  {
+    "number": 1305,
+    "solution": "For \\(\\sin^{-1}\\left(\\frac{x+5}{2}\\right)\\) we need \\(-1 \\le \\frac{x+5}{2} \\le 1\\), so \\(-2 \\le x+5 \\le 2\\), giving \\(-7 \\le x \\le -3\\). Domain \\(= [-7, -3]\\). Hence (D)."
+  },
+  {
+    "number": 1306,
+    "solution": "Let \\(\\theta = \\cot^{-1}x\\), so \\(\\cot\\theta = x\\). With adjacent \\(= x\\), opposite \\(= 1\\), hypotenuse \\(= \\sqrt{1+x^2}\\), we get \\(\\sin\\theta = \\frac{1}{\\sqrt{1+x^2}}\\). Hence (B)."
+  },
+  {
+    "number": 1307,
+    "solution": "Need \\(4 - x^2 \\ge 0\\), i.e. \\(-2 \\le x \\le 2\\); need \\(\\sin^{-1}(2-x)\\) defined, i.e. \\(-1 \\le 2-x \\le 1\\), giving \\(1 \\le x \\le 3\\); and denominator \\(\\sin^{-1}(2-x) \\ne 0\\), i.e. \\(2 - x \\ne 0\\), so \\(x \\ne 2\\). Intersection \\([1, 2]\\) with \\(x \\ne 2\\) gives \\([1, 2)\\). Hence (C)."
+  },
+  {
+    "number": 1308,
+    "solution": "Since each \\(\\sin^{-1}\\) is at most \\(\\frac{\\pi}{2}\\) and the sum is \\(\\frac{3\\pi}{2}\\), each term must equal \\(\\frac{\\pi}{2}\\), so \\(x = y = z = 1\\). Then \\(x^9 + y^9 + z^9 - \\frac{1}{x^9 y^9 z^9} = 3 - \\frac{1}{1} = 2\\). Hence (C)."
+  },
+  {
+    "number": 1309,
+    "solution": "Since each \\(\\cos^{-1}\\) is at most \\(\\pi\\) and the sum is \\(3\\pi\\), each must equal \\(\\pi\\), so \\(x = y = z = -1\\). Then \\(xy + yz + zx = 1 + 1 + 1 = 3\\). Hence (D)."
+  },
+  {
+    "number": 1310,
+    "solution": "Need \\(-1 \\le x - 3 \\le 1\\), i.e. \\(2 \\le x \\le 4\\); and \\(9 - x^2 > 0\\), i.e. \\(-3 < x < 3\\). Intersection gives \\([2, 3)\\). Hence (C)."
+  },
+  {
+    "number": 1311,
+    "solution": "Need \\(-1 \\le \\log_2\\left(\\frac{x}{2}\\right) \\le 1\\), so \\(\\frac{1}{2} \\le \\frac{x}{2} \\le 2\\), giving \\(1 \\le x \\le 4\\). Hence (C)."
+  },
+  {
+    "number": 1312,
+    "solution": "Need \\(-1 \\le \\log_2(x^2 + 5x + 8) \\le 1\\), so \\(\\frac{1}{2} \\le x^2 + 5x + 8 \\le 2\\). The upper bound: \\(x^2 + 5x + 6 \\le 0\\), i.e. \\((x+2)(x+3) \\le 0\\), giving \\(-3 \\le x \\le -2\\). The lower bound: \\(x^2 + 5x + 7.5 \\ge 0\\) has negative discriminant, so it holds for all \\(x\\). Domain \\(= [-3, -2]\\). Hence (D)."
+  },
+  {
+    "number": 1313,
+    "solution": "Here \\(\\tan(B+C) = \\frac{1/2 + 1/3}{1 - (1/2)(1/3)} = \\frac{5/6}{5/6} = 1\\), so \\(B + C = \\frac{\\pi}{4}\\) and \\(A = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}\\). By the sine rule \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B}\\): \\(\\sin A = \\sin\\frac{3\\pi}{4} = \\frac{1}{\\sqrt{2}}\\), and with \\(\\tan B = \\frac{1}{2}\\), \\(\\sin B = \\frac{1}{\\sqrt{5}}\\). So \\(b = a \\cdot \\frac{\\sin B}{\\sin A} = 2 \\cdot \\frac{1/\\sqrt{5}}{1/\\sqrt{2}} = \\frac{2\\sqrt{2}}{\\sqrt{5}}\\). Thus \\((A, b) = \\left(\\frac{3\\pi}{4}, \\frac{2\\sqrt{2}}{\\sqrt{5}}\\right)\\). Hence (D)."
+  },
+  {
+    "number": 1314,
+    "solution": "As \\(x\\) varies, \\(\\frac{x^2}{1+x^2}\\) ranges over \\([0, 1)\\) (equals 0 at \\(x = 0\\), approaches 1 as \\(|x| \\to \\infty\\)). Therefore \\(y = \\sin^{-1}\\) of values in \\([0, 1)\\) ranges over \\(\\left[0, \\frac{\\pi}{2}\\right)\\). Hence (B)."
+  },
+  {
+    "number": 1315,
+    "solution": "Each \\(\\cos^{-1}\\le\\pi\\) and the four terms sum to \\(4\\pi\\), so each equals \\(\\pi\\), giving \\(x=y=z=t=\\cos\\pi=-1\\). Then \\(x^2+y^2+z^2+t^2=4\\). Hence (C)."
+  },
+  {
+    "number": 1316,
+    "solution": "Let the third angle be \\(C = \\pi - \\tan^{-1}2 - \\tan^{-1}3\\). Now \\(\\tan(\\tan^{-1}2 + \\tan^{-1}3) = \\frac{2 + 3}{1 - 6} = \\frac{5}{-5} = -1\\), so \\(\\tan^{-1}2 + \\tan^{-1}3 = \\frac{3\\pi}{4}\\). Thus \\(C = \\pi - \\frac{3\\pi}{4} = \\frac{\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1317,
+    "solution": "Let \\(\\theta = \\sin^{-1}x\\), with \\(\\theta \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), so \\(\\sin\\theta = x\\) and \\(\\cos\\theta = \\sqrt{1-x^2} > 0\\). Then \\(\\tan\\theta = \\frac{x}{\\sqrt{1-x^2}}\\). Hence (C)."
+  },
+  {
+    "number": 1318,
+    "solution": "Let \\(\\alpha = \\cot^{-1}x\\), so \\(\\sin\\alpha = \\frac{1}{\\sqrt{1+x^2}}\\). Let \\(\\beta = \\tan^{-1}\\left(\\frac{1}{\\sqrt{1+x^2}}\\right)\\), so \\(\\tan\\beta = \\frac{1}{\\sqrt{1+x^2}}\\) and \\(\\cos\\beta = \\frac{\\sqrt{1+x^2}}{\\sqrt{(1+x^2)+1}} = \\frac{\\sqrt{1+x^2}}{\\sqrt{2+x^2}}\\). Therefore the value is \\(\\sqrt{\\frac{x^2+1}{x^2+2}}\\). Hence (D)."
+  },
+  {
+    "number": 1319,
+    "solution": "The angle \\(\\cos^{-1}\\frac{5}{13}\\) has cosine \\(\\frac{5}{13}\\) and sine \\(\\frac{12}{13}\\), so \\(\\cos^{-1}\\frac{5}{13} = \\sin^{-1}\\frac{12}{13}\\). Their difference is \\(0\\), so \\(\\cos^{-1}x = 0\\), giving \\(x = \\cos 0 = 1\\). Hence (A)."
+  },
+  {
+    "number": 1320,
+    "solution": "Let \\(\\theta = \\frac{1}{2}\\cos^{-1}\\frac{a}{b}\\). Then \\(\\tan\\left(\\frac{\\pi}{4}+\\theta\\right) + \\tan\\left(\\frac{\\pi}{4}-\\theta\\right) = \\frac{1+\\tan\\theta}{1-\\tan\\theta} + \\frac{1-\\tan\\theta}{1+\\tan\\theta} = \\frac{(1+\\tan\\theta)^2 + (1-\\tan\\theta)^2}{1-\\tan^2\\theta} = \\frac{2(1+\\tan^2\\theta)}{1-\\tan^2\\theta}\\). Since \\(\\cos 2\\theta = \\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta}\\), this equals \\(\\frac{2}{\\cos 2\\theta} = 2\\sec\\left(\\cos^{-1}\\frac{a}{b}\\right) = \\frac{2}{a/b} = \\frac{2b}{a}\\). Hence (B)."
+  },
+  {
+    "number": 1321,
+    "solution": "Let \\(\\theta = \\tan^{-1}x\\), so \\(\\tan\\theta = x\\). With opposite \\(= x\\), adjacent \\(= 1\\), hypotenuse \\(= \\sqrt{1+x^2}\\), we get \\(\\sin\\theta = \\frac{x}{\\sqrt{1+x^2}}\\). Hence (B)."
+  },
+  {
+    "number": 1322,
+    "solution": "From \\(x^2 - 61x + 820 = 0\\): \\(b + c = 61\\) and \\(bc = 820\\). With \\(A = \\tan^{-1}\\frac{4}{3}\\), \\(\\cos A = \\frac{3}{5}\\). By the cosine rule, \\(a^2 = b^2 + c^2 - 2bc\\cos A = (b+c)^2 - 2bc - 2bc\\cos A = 61^2 - 2(820) - 2(820)\\cdot\\frac{3}{5} = 3721 - 1640 - 984 = 1097\\). Hence (C)."
+  },
+  {
+    "number": 1323,
+    "solution": "\\(\\cos^{-1}\\left(-\\frac{\\sqrt{3}}{2}\\right)\\) has principal value in \\([0, \\pi]\\): it equals \\(\\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\). Hence (C)."
+  },
+  {
+    "number": 1324,
+    "solution": "For \\(\\sqrt{1-2x}\\) need \\(1 - 2x \\ge 0\\), i.e. \\(x \\le \\frac{1}{2}\\). For \\(\\sin^{-1}\\left(\\frac{3x-1}{2}\\right)\\) need \\(-1 \\le \\frac{3x-1}{2} \\le 1\\), i.e. \\(-2 \\le 3x - 1 \\le 2\\), so \\(-\\frac{1}{3} \\le x \\le 1\\). Intersection gives \\(\\left[-\\frac{1}{3}, \\frac{1}{2}\\right]\\). Hence (D)."
+  },
+  {
+    "number": 1325,
+    "solution": "Need \\(-1 \\le |x-1| - 2 \\le 1\\), i.e. \\(1 \\le |x-1| \\le 3\\). From \\(|x-1| \\ge 1\\): \\(x \\ge 2\\) or \\(x \\le 0\\). From \\(|x-1| \\le 3\\): \\(-2 \\le x \\le 4\\). Combining: \\([-2, 0] \\cup [2, 4]\\). Hence (C)."
+  },
+  {
+    "number": 1326,
+    "solution": "\\(\\cos(\\tan^{-1}\\sqrt{3}) = \\cos\\frac{\\pi}{3} = \\frac{1}{2}\\). Also \\(\\cot(\\sin^{-1}x) = \\frac{\\sqrt{1-x^2}}{x}\\). Setting \\(\\frac{\\sqrt{1-x^2}}{x} = \\frac{1}{2}\\) gives \\(2\\sqrt{1-x^2} = x\\), so \\(4(1-x^2) = x^2\\), i.e. \\(4 = 5x^2\\), \\(x^2 = \\frac{4}{5}\\), \\(x = \\frac{2}{\\sqrt{5}}\\). Hence (D)."
+  },
+  {
+    "number": 1327,
+    "solution": "Put \\(y = |x| \\ge 0\\): \\(y^2 + 5y - 6 = 0\\) gives \\((y+6)(y-1) = 0\\), so \\(y = 1\\) (\\(y = -6\\) rejected). Thus \\(|x| = 1\\), giving roots \\(\\alpha = 1\\), \\(\\beta = -1\\). Then \\(|\\tan^{-1}1 - \\tan^{-1}(-1)| = \\left|\\frac{\\pi}{4} - \\left(-\\frac{\\pi}{4}\\right)\\right| = \\frac{\\pi}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1328,
+    "solution": "\\(\\cot\\frac{\\pi}{2} = 0\\), so \\(\\cos^{-1}(0) = \\frac{\\pi}{2}\\). And \\(\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}\\), so \\(\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{6}\\). Sum \\(= \\frac{\\pi}{2} + \\frac{\\pi}{6} = \\frac{4\\pi}{6} = \\frac{2\\pi}{3}\\). Hence (A)."
+  },
+  {
+    "number": 1329,
+    "solution": "Using \\(\\tan^{-1}a + \\tan^{-1}b = \\frac{\\pi}{4}\\) means \\(\\frac{a+b}{1-ab} = 1\\). With \\(a = \\frac{x-1}{x-2}\\), \\(b = \\frac{x+1}{x+2}\\): \\(a + b = \\frac{2x^2 - 4}{x^2 - 4}\\) and \\(1 - ab = \\frac{(x^2-4) - (x^2-1)}{x^2-4} = \\frac{-3}{x^2-4}\\). So \\(\\frac{2x^2-4}{-3} = 1\\), giving \\(2x^2 - 4 = -3\\), \\(2x^2 = 1\\), \\(x = \\pm\\frac{1}{\\sqrt{2}}\\). Hence (A)."
+  },
+  {
+    "number": 1330,
+    "solution": "Check candidates of \\(\\sin^{-1}x = 2\\tan^{-1}x\\): at \\(x = 0\\), both sides \\(0\\); at \\(x = 1\\), \\(\\sin^{-1}1 = \\frac{\\pi}{2}\\) and \\(2\\tan^{-1}1 = \\frac{\\pi}{2}\\); at \\(x = -1\\), \\(\\sin^{-1}(-1) = -\\frac{\\pi}{2}\\) and \\(2\\tan^{-1}(-1) = -\\frac{\\pi}{2}\\). So the solution set is \\(\\{-1, 1, 0\\}\\). Hence (C)."
+  },
+  {
+    "number": 1331,
+    "solution": "Regroup using complementary identities: \\((\\sin^{-1}x + \\cos^{-1}x) - (\\tan^{-1}x + \\cot^{-1}x) + (\\sec^{-1}x + \\operatorname{cosec}^{-1}x) = \\frac{\\pi}{2} - \\frac{\\pi}{2} + \\frac{\\pi}{2} = \\frac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1332,
+    "solution": "When \\(\\cos^{-1}x + \\cos^{-1}y + \\cos^{-1}z = \\pi\\), the standard identity gives \\(x^2 + y^2 + z^2 + 2xyz = 1\\). Then \\((x+y+z)^2 = x^2 + y^2 + z^2 + 2(xy+yz+zx) = (1 - 2xyz) + 2(xy+yz+zx) = 2(xy+yz+zx-xyz) + 1\\). Hence (B)."
+  },
+  {
+    "number": 1333,
+    "solution": "\\(\\frac{53\\pi}{5} = 10\\pi + \\frac{3\\pi}{5}\\), so \\(\\cos\\frac{53\\pi}{5} = \\cos\\frac{3\\pi}{5}\\). Now \\(\\cos\\frac{3\\pi}{5} = \\sin\\left(\\frac{\\pi}{2} - \\frac{3\\pi}{5}\\right) = \\sin\\left(-\\frac{\\pi}{10}\\right)\\). Therefore \\(\\sin^{-1}\\left(\\sin\\left(-\\frac{\\pi}{10}\\right)\\right) = -\\frac{\\pi}{10}\\). Hence (D)."
+  },
+  {
+    "number": 1334,
+    "solution": "Using \\(\\tan^{-1}a - \\tan^{-1}b = \\tan^{-1}\\frac{a-b}{1+ab}\\) with \\(a = \\frac{x}{y}\\), \\(b = \\frac{x-y}{x+y}\\): both \\(a - b\\) and \\(1 + ab\\) simplify to \\(\\frac{x^2+y^2}{y(x+y)}\\), so \\(\\frac{a-b}{1+ab} = 1\\). Therefore the expression \\(= \\tan^{-1}1 = \\frac{\\pi}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1335,
+    "solution": "\\(\\tan^{-1}x = \\tan^{-1}\\frac{7}{4} - \\tan^{-1}\\frac{2}{3}\\). Then \\(\\tan(\\tan^{-1}x) = \\frac{7/4 - 2/3}{1 + (7/4)(2/3)} = \\frac{(21-8)/12}{(12+14)/12} = \\frac{13/12}{26/12} = \\frac{13}{26} = \\frac{1}{2}\\). So \\(x = \\frac{1}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1336,
+    "solution": "Using \\(\\cot^{-1}t = \\frac{\\pi}{2} - \\tan^{-1}t\\): \\(\\cot^{-1}x + \\cot^{-1}y = \\pi - (\\tan^{-1}x + \\tan^{-1}y) = \\pi - \\frac{2\\pi}{3} = \\frac{\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1337,
+    "solution": "Since \\(\\cos^{-1}x + \\sin^{-1}x = \\frac{\\pi}{2}\\), the inequality \\(\\cos^{-1}x > \\sin^{-1}x\\) means \\(\\cos^{-1}x > \\frac{\\pi}{4}\\), so \\(x < \\cos\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\). Within the domain \\([-1, 1]\\), \\(x \\in \\left[-1, \\frac{1}{\\sqrt{2}}\\right)\\). Hence (D)."
+  },
+  {
+    "number": 1338,
+    "solution": "Write \\(\\cot^{-1}21 = \\tan^{-1}\\frac{1}{21}\\), \\(\\cot^{-1}13 = \\tan^{-1}\\frac{1}{13}\\), and \\(\\cot^{-1}(-8) = \\pi - \\tan^{-1}\\frac{1}{8}\\). Now \\(\\tan^{-1}\\frac{1}{21} + \\tan^{-1}\\frac{1}{13} = \\tan^{-1}\\frac{1/21 + 1/13}{1 - 1/(273)} = \\tan^{-1}\\frac{34/273}{272/273} = \\tan^{-1}\\frac{1}{8}\\). Adding the third term: \\(\\tan^{-1}\\frac{1}{8} + \\pi - \\tan^{-1}\\frac{1}{8} = \\pi\\). Hence (C)."
+  },
+  {
+    "number": 1339,
+    "solution": "For \\(x > 1\\), \\(\\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right) = \\pi - 2\\tan^{-1}x\\). Therefore \\(f(x) = 2\\tan^{-1}x + \\pi - 2\\tan^{-1}x = \\pi\\) for all \\(x > 1\\), so \\(f(5) = \\pi\\). Hence (B)."
+  },
+  {
+    "number": 1340,
+    "solution": "Let \\(\\theta = \\sin^{-1}\\frac{2}{5}\\), so \\(\\sin\\theta = \\frac{2}{5}\\) and \\(\\cos\\theta = \\frac{\\sqrt{21}}{5}\\). Then \\(\\cos 3\\theta = 4\\cos^3\\theta - 3\\cos\\theta = \\cos\\theta(4\\cos^2\\theta - 3) = \\frac{\\sqrt{21}}{5}\\left(\\frac{4 \\cdot 21}{25} - 3\\right) = \\frac{\\sqrt{21}}{5} \\cdot \\frac{84 - 75}{25} = \\frac{9\\sqrt{21}}{125}\\). Hence (D)."
+  },
+  {
+    "number": 1341,
+    "solution": "\\(\\tan^2(\\sec^{-1}2) = \\sec^2(\\sec^{-1}2) - 1 = 4 - 1 = 3\\). \\(\\cot^2(\\operatorname{cosec}^{-1}3) = \\operatorname{cosec}^2(\\operatorname{cosec}^{-1}3) - 1 = 9 - 1 = 8\\). Sum \\(= 3 + 8 = 11\\). Hence (C)."
+  },
+  {
+    "number": 1342,
+    "solution": "Let \\(a = \\frac{2\\sqrt{2}}{3}\\), \\(b = \\frac{1}{3}\\). Then \\(\\sqrt{1-a^2} = \\sqrt{1 - \\frac{8}{9}} = \\frac{1}{3}\\) and \\(\\sqrt{1-b^2} = \\sqrt{1 - \\frac{1}{9}} = \\frac{2\\sqrt{2}}{3}\\). Using \\(\\sin^{-1}a + \\sin^{-1}b = \\sin^{-1}\\left(a\\sqrt{1-b^2} + b\\sqrt{1-a^2}\\right)\\): \\(a\\sqrt{1-b^2} + b\\sqrt{1-a^2} = \\frac{2\\sqrt{2}}{3}\\cdot\\frac{2\\sqrt{2}}{3} + \\frac{1}{3}\\cdot\\frac{1}{3} = \\frac{8}{9} + \\frac{1}{9} = 1\\). So the value is \\(\\sin^{-1}(1) = \\frac{\\pi}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1343,
+    "solution": "We use \\(\\tan^{-1}\\left(\\dfrac{1-x}{1+x}\\right) = \\dfrac{\\pi}{4} - \\tan^{-1}x\\). The equation becomes \\(\\dfrac{\\pi}{4} - \\tan^{-1}x = \\dfrac{1}{2}\\tan^{-1}x\\), so \\(\\dfrac{\\pi}{4} = \\dfrac{3}{2}\\tan^{-1}x\\), giving \\(\\tan^{-1}x = \\dfrac{\\pi}{6}\\). Hence \\(x = \\tan\\dfrac{\\pi}{6} = \\dfrac{1}{\\sqrt{3}}\\). Hence (B)."
+  },
+  {
+    "number": 1344,
+    "solution": "Using \\(\\sin^{-1}x = \\dfrac{\\pi}{2} - \\cos^{-1}x\\), we get \\(\\sin^{-1}x + \\sin^{-1}y = \\pi - (\\cos^{-1}x + \\cos^{-1}y) = \\pi - \\dfrac{2\\pi}{7} = \\dfrac{5\\pi}{7}\\). Hence (D)."
+  },
+  {
+    "number": 1345,
+    "solution": "Write \\(\\cot^{-1}\\dfrac{1}{2} = \\tan^{-1}2\\) and \\(\\cot^{-1}\\dfrac{4}{3} = \\tan^{-1}\\dfrac{3}{4}\\). Numerically \\(\\tan^{-1}2 \\approx 63.43^{\\circ}\\), so \\(2\\tan^{-1}2 \\approx 126.87^{\\circ}\\), and \\(\\tan^{-1}\\dfrac{3}{4} \\approx 36.87^{\\circ}\\). Thus \\(2\\cot^{-1}\\dfrac{1}{2} - \\cot^{-1}\\dfrac{4}{3} \\approx 126.87^{\\circ} - 36.87^{\\circ} = 90^{\\circ} = \\dfrac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1346,
+    "solution": "Since \\(\\dfrac{2\\pi}{3}\\) lies outside \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\), write \\(\\sin\\dfrac{2\\pi}{3} = \\sin\\left(\\pi - \\dfrac{2\\pi}{3}\\right) = \\sin\\dfrac{\\pi}{3}\\). Hence \\(\\sin^{-1}\\left[\\sin\\dfrac{2\\pi}{3}\\right] = \\dfrac{\\pi}{3}\\), which is not among the listed options. Hence (D)."
+  },
+  {
+    "number": 1347,
+    "solution": "Let \\(\\theta = \\tan^{-1}x\\), so \\(\\tan\\theta = x\\). Then \\(\\sin(2\\theta) = \\dfrac{2\\tan\\theta}{1+\\tan^2\\theta} = \\dfrac{2x}{1+x^2}\\). Hence (D)."
+  },
+  {
+    "number": 1348,
+    "solution": "Let \\(\\theta = \\sin^{-1}0.8\\), so \\(\\sin\\theta = 0.8\\) and \\(\\cos\\theta = 0.6\\). Then \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta = 2(0.8)(0.6) = 0.96\\). Hence (D)."
+  },
+  {
+    "number": 1349,
+    "solution": "\\(\\sec^2(\\tan^{-1}3) = 1 + \\tan^2(\\tan^{-1}3) = 1 + 9 = 10\\) and \\(\\operatorname{cosec}^2(\\cot^{-1}2) = 1 + \\cot^2(\\cot^{-1}2) = 1 + 4 = 5\\). Their sum is \\(10 + 5 = 15\\). Hence (C)."
+  },
+  {
+    "number": 1350,
+    "solution": "Since \\(\\dfrac{7\\pi}{5}\\) lies in \\((\\pi, 2\\pi)\\), use \\(\\cos\\dfrac{7\\pi}{5} = \\cos\\left(2\\pi - \\dfrac{7\\pi}{5}\\right) = \\cos\\dfrac{3\\pi}{5}\\). As \\(\\dfrac{3\\pi}{5}\\) lies in the principal range \\([0, \\pi]\\), \\(\\cos^{-1}\\left(\\cos\\dfrac{7\\pi}{5}\\right) = \\dfrac{3\\pi}{5}\\). Hence (A)."
+  },
+  {
+    "number": 1351,
+    "solution": "Using \\(\\cos^{-1}\\left(\\dfrac{1-a^2}{1+a^2}\\right) = 2\\tan^{-1}a\\) and similarly for b, the left side equals \\(2\\tan^{-1}a + 2\\tan^{-1}b = 2(\\tan^{-1}a + \\tan^{-1}b) = 2\\tan^{-1}\\left(\\dfrac{a+b}{1-ab}\\right)\\). Comparing with \\(2\\tan^{-1}x\\) gives \\(x = \\dfrac{a+b}{1-ab}\\). Hence (D)."
+  },
+  {
+    "number": 1352,
+    "solution": "Let \\(A = \\sin^{-1}\\dfrac{2\\sqrt{2}}{3}\\) so \\(\\sin A = \\dfrac{2\\sqrt{2}}{3},\\ \\cos A = \\dfrac{1}{3}\\); and \\(B = \\sin^{-1}\\dfrac{1}{3}\\) so \\(\\sin B = \\dfrac{1}{3},\\ \\cos B = \\dfrac{2\\sqrt{2}}{3}\\). Then \\(\\sin(A+B) = \\dfrac{2\\sqrt{2}}{3}\\cdot\\dfrac{2\\sqrt{2}}{3} + \\dfrac{1}{3}\\cdot\\dfrac{1}{3} = \\dfrac{8}{9} + \\dfrac{1}{9} = 1\\). Hence \\(A + B = \\dfrac{\\pi}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1353,
+    "solution": "\\(\\operatorname{cosec}^{-1}\\dfrac{13}{12} = \\sin^{-1}\\dfrac{12}{13}\\). The equation gives \\(\\sin^{-1}\\dfrac{x}{13} = \\dfrac{\\pi}{2} - \\sin^{-1}\\dfrac{12}{13} = \\cos^{-1}\\dfrac{12}{13} = \\sin^{-1}\\dfrac{5}{13}\\). Therefore \\(\\dfrac{x}{13} = \\dfrac{5}{13}\\), so \\(x = 5\\). Hence (A)."
+  },
+  {
+    "number": 1354,
+    "solution": "Write \\(\\cos^{-1}\\dfrac{3}{5} = \\tan^{-1}\\dfrac{4}{3}\\). Then \\(\\tan^{-1}\\dfrac{4}{3} + \\tan^{-1}\\dfrac{2}{3} = \\tan^{-1}\\dfrac{\\frac{4}{3}+\\frac{2}{3}}{1 - \\frac{4}{3}\\cdot\\frac{2}{3}} = \\tan^{-1}\\dfrac{2}{\\frac{1}{9}} = \\tan^{-1}18\\). Hence the required value of the tangent is 18. Hence (A)."
+  },
+  {
+    "number": 1355,
+    "solution": "Since x, y, z are in A.P., \\(2y = x + z\\). Since \\(\\tan^{-1}x,\\ \\tan^{-1}y,\\ \\tan^{-1}z\\) are in A.P., \\(2\\tan^{-1}y = \\tan^{-1}x + \\tan^{-1}z\\), i.e. \\(\\tan^{-1}\\dfrac{2y}{1-y^2} = \\tan^{-1}\\dfrac{x+z}{1-xz}\\). Using \\(x + z = 2y\\), this forces \\(1 - y^2 = 1 - xz\\), so \\(y^2 = xz\\). Together with \\(2y = x + z\\) this gives \\(x = y = z\\). Hence (D)."
+  },
+  {
+    "number": 1356,
+    "solution": "Here \\(\\sum_{k=1}^{n}2k = n(n+1)\\), so each term is \\(\\cot^{-1}(1 + n(n+1)) = \\cot^{-1}(n^2+n+1) = \\tan^{-1}\\dfrac{1}{1+n(n+1)} = \\tan^{-1}(n+1) - \\tan^{-1}n\\). Summing from \\(n = 1\\) to \\(23\\) telescopes to \\(\\tan^{-1}24 - \\tan^{-1}1 = \\tan^{-1}\\dfrac{24-1}{1+24} = \\tan^{-1}\\dfrac{23}{25}\\). Therefore the cotangent of this angle is \\(\\dfrac{25}{23}\\). Hence (B)."
+  },
+  {
+    "number": 1357,
+    "solution": "\\(\\sin^{-1}(\\sin\\frac{5\\pi}{6})\\): since \\(\\sin\\frac{5\\pi}{6}=\\frac12\\), the principal value is \\(\\frac{\\pi}{6}\\); and \\(\\tan^{-1}(\\tan\\frac{\\pi}{6})=\\frac{\\pi}{6}\\). Sum \\(=\\frac{\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1358,
+    "solution": "Write \\(\\cos^{-1}\\dfrac{4}{5} = \\tan^{-1}\\dfrac{3}{4}\\). Then \\(\\tan^{-1}\\dfrac{3}{4} + \\tan^{-1}\\dfrac{3}{5} = \\tan^{-1}\\dfrac{\\frac{3}{4}+\\frac{3}{5}}{1 - \\frac{3}{4}\\cdot\\frac{3}{5}} = \\tan^{-1}\\dfrac{\\frac{27}{20}}{\\frac{11}{20}} = \\tan^{-1}\\dfrac{27}{11}\\). Hence (B)."
+  },
+  {
+    "number": 1359,
+    "solution": "Group as \\(\\cos\\left[\\cos^{-1}\\dfrac{1}{5} + \\left(\\cos^{-1}\\dfrac{1}{5} + \\sin^{-1}\\dfrac{1}{5}\\right)\\right] = \\cos\\left[\\cos^{-1}\\dfrac{1}{5} + \\dfrac{\\pi}{2}\\right] = -\\sin\\left(\\cos^{-1}\\dfrac{1}{5}\\right) = -\\sqrt{1 - \\dfrac{1}{25}} = -\\dfrac{2\\sqrt{6}}{5}\\). Hence (B)."
+  },
+  {
+    "number": 1360,
+    "solution": "Each term satisfies \\(\\cot^{-1}\\dfrac{ab+1}{a-b} = \\tan^{-1}\\dfrac{a-b}{1+ab} = \\tan^{-1}a - \\tan^{-1}b\\). The sum is \\((\\tan^{-1}a - \\tan^{-1}b) + (\\tan^{-1}b - \\tan^{-1}c) + (\\tan^{-1}c - \\tan^{-1}a) = 0\\). Hence (D)."
+  },
+  {
+    "number": 1361,
+    "solution": "Using \\(\\cos^{-1}\\dfrac{1-x^2}{1+x^2} = 2\\tan^{-1}x\\), the equation becomes \\(2\\tan^{-1}x + 2\\tan^{-1}y = \\dfrac{\\pi}{2}\\), so \\(\\tan^{-1}x + \\tan^{-1}y = \\dfrac{\\pi}{4}\\), i.e. \\(\\tan^{-1}\\dfrac{x+y}{1-xy} = \\dfrac{\\pi}{4}\\). Thus \\(\\dfrac{x+y}{1-xy} = 1\\), giving \\(x + y + xy = 1\\). Hence (D)."
+  },
+  {
+    "number": 1362,
+    "solution": "\\(\\tan^{-1}(-x) = -\\tan^{-1}x\\) and \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\dfrac{2\\pi}{3}\\). The equation becomes \\(-\\tan^{-1}x + \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{2}\\), so \\(\\tan^{-1}x = \\dfrac{2\\pi}{3} - \\dfrac{\\pi}{2} = \\dfrac{\\pi}{6}\\). Hence \\(x = \\tan\\dfrac{\\pi}{6} = \\dfrac{1}{\\sqrt{3}}\\). Hence (C)."
+  },
+  {
+    "number": 1363,
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\theta = \\tan^{-1}x\\). Then \\(\\operatorname{cosec}(\\tan^{-1}x) = \\dfrac{\\sqrt{1+x^2}}{x}\\) and \\(\\tan(\\cot^{-1}x) = \\dfrac{1}{x}\\). The inner expression is \\(\\dfrac{\\sqrt{1+x^2} - 1}{x} = \\dfrac{1 - \\cos\\theta}{\\sin\\theta} = \\tan\\dfrac{\\theta}{2}\\). Therefore \\(2\\tan^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right) = \\theta = \\tan^{-1}x\\). Hence (A)."
+  },
+  {
+    "number": 1364,
+    "solution": "For \\(\\tan^{-1}\\dfrac{a}{x} + \\tan^{-1}\\dfrac{b}{x} = \\dfrac{\\pi}{2}\\), the product of the arguments must be 1: \\(\\dfrac{a}{x}\\cdot\\dfrac{b}{x} = 1\\), so \\(x^2 = ab\\). Therefore \\(x = \\sqrt{ab}\\). Hence (D)."
+  },
+  {
+    "number": 1365,
+    "solution": "First \\(\\tan\\left(2\\tan^{-1}\\dfrac{1}{2}\\right) = \\dfrac{2\\cdot\\frac{1}{2}}{1 - \\frac{1}{4}} = \\dfrac{4}{3}\\), so \\(2\\tan^{-1}\\dfrac{1}{2} = \\tan^{-1}\\dfrac{4}{3}\\) and \\(\\cot\\left(\\tan^{-1}\\dfrac{4}{3}\\right) = \\dfrac{3}{4}\\). Let \\(\\alpha = \\cos^{-1}\\dfrac{3}{4}\\), so \\(\\cos\\alpha = \\dfrac{3}{4},\\ \\sin\\alpha = \\dfrac{\\sqrt{7}}{4}\\). Then \\(\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2\\cdot\\dfrac{\\sqrt{7}}{4}\\cdot\\dfrac{3}{4} = \\dfrac{3\\sqrt{7}}{8}\\). Hence (A)."
+  },
+  {
+    "number": 1366,
+    "solution": "\\(\\tan^{-1}2x+\\tan^{-1}3x=\\frac{\\pi}{2}\\) requires the product of arguments \\(=1\\): \\((2x)(3x)=1\\Rightarrow 6x^2=1\\Rightarrow x=\\frac{1}{\\sqrt6}\\). Hence (A)."
+  },
+  {
+    "number": 1367,
+    "solution": "Using \\(2\\tan^{-1}t=\\tan^{-1}\\frac{2t}{1-t^2}\\): \\(\\tan^{-1}\\frac{2\\cos x}{\\sin^2 x}=\\tan^{-1}(2\\csc x)=\\tan^{-1}\\frac{2}{\\sin x}\\Rightarrow \\frac{2\\cos x}{\\sin^2 x}=\\frac{2}{\\sin x}\\Rightarrow \\cos x=\\sin x\\Rightarrow x=\\frac{\\pi}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1368,
+    "solution": "Both arguments are positive and their product \\(2\\cdot 3 = 6 > 1\\), so the sum lies in the second quadrant: \\(\\tan^{-1}2 + \\tan^{-1}3 = \\pi + \\tan^{-1}\\dfrac{2+3}{1-6} = \\pi + \\tan^{-1}(-1) = \\pi - \\dfrac{\\pi}{4} = \\dfrac{3\\pi}{4}\\). Hence (A)."
+  },
+  {
+    "number": 1369,
+    "solution": "From \\(2\\sin^{-1}x - \\cos^{-1}x = \\dfrac{\\pi}{2}\\) and \\(\\sin^{-1}x + \\cos^{-1}x = \\dfrac{\\pi}{2}\\), add the two: \\(3\\sin^{-1}x = \\pi\\), so \\(\\sin^{-1}x = \\dfrac{\\pi}{3}\\) and \\(x = \\sin\\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1370,
+    "solution": "Write the inequation as \\(\\dfrac{\\pi}{2} - \\sin^{-1}x < \\sin^{-1}x\\), so \\(\\sin^{-1}x > \\dfrac{\\pi}{4}\\), i.e. \\(\\dfrac{\\pi}{4} < \\sin^{-1}x \\le \\dfrac{\\pi}{2}\\). This gives \\(\\dfrac{1}{\\sqrt{2}} < x \\le 1\\), i.e. \\(x \\in \\left(\\dfrac{1}{\\sqrt{2}}, 1\\right]\\). Hence (D)."
+  },
+  {
+    "number": 1371,
+    "solution": "Convert \\(2\\tan^{-1}\\dfrac{1}{3} = \\sin^{-1}\\dfrac{2\\cdot\\frac{1}{3}}{1+\\frac{1}{9}} = \\sin^{-1}\\dfrac{3}{5}\\). Then \\(\\sin^{-1}\\dfrac{4}{5} + \\sin^{-1}\\dfrac{3}{5}\\): using \\(\\sin(A+B) = \\dfrac{4}{5}\\cdot\\dfrac{4}{5} + \\dfrac{3}{5}\\cdot\\dfrac{3}{5} = \\dfrac{16}{25} + \\dfrac{9}{25} = 1\\), so the sum is \\(\\sin^{-1}(1) = \\dfrac{\\pi}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1372,
+    "solution": "Reduce the angle: \\(4095^{\\circ} - 11\\cdot 360^{\\circ} = 4095^{\\circ} - 3960^{\\circ} = 135^{\\circ}\\), so \\(\\cos(4095^{\\circ}) = \\cos 135^{\\circ} = -\\dfrac{1}{\\sqrt{2}}\\). Then \\(\\sin^{-1}\\left(-\\dfrac{1}{\\sqrt{2}}\\right) = -\\dfrac{\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1373,
+    "solution": "Rewrite as \\(\\tan^{-1}(x+2) + \\tan^{-1}(x-2) = \\tan^{-1}\\dfrac{1}{2}\\), so \\(\\dfrac{(x+2)+(x-2)}{1-(x+2)(x-2)} = \\dfrac{1}{2}\\), i.e. \\(\\dfrac{2x}{5-x^2} = \\dfrac{1}{2}\\). Then \\(4x = 5 - x^2\\), giving \\(x^2 + 4x - 5 = 0\\), so \\((x+5)(x-1) = 0\\) and \\(x = 1\\) or \\(x = -5\\). One of the values is \\(x = 1\\). Hence (D)."
+  },
+  {
+    "number": 1374,
+    "solution": "Let \\(\\cos^{-1}\\dfrac{x}{a} = A\\) and \\(\\cos^{-1}\\dfrac{y}{b} = B\\), so \\(A + B = \\alpha\\). Using the standard identity, \\(\\dfrac{x^2}{a^2} - 2\\cdot\\dfrac{x}{a}\\cdot\\dfrac{y}{b}\\cos\\alpha + \\dfrac{y^2}{b^2} = \\sin^2\\alpha\\). Hence (B)."
+  },
+  {
+    "number": 1375,
+    "solution": "\\(\\sin^{-1}\\left(-\\dfrac{\\sqrt{3}}{2}\\right) = -\\dfrac{\\pi}{3}\\). Then \\(\\sin\\left[\\dfrac{\\pi}{2} - \\left(-\\dfrac{\\pi}{3}\\right)\\right] = \\sin\\left(\\dfrac{\\pi}{2} + \\dfrac{\\pi}{3}\\right) = \\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1376,
+    "solution": "Since \\(\\sin^{-1}x + \\cos^{-1}x = \\dfrac{\\pi}{2}\\) for all valid x, and adding the ranges of the three terms, the expression \\(\\sin^{-1}x + \\cos^{-1}x + \\tan^{-1}x\\) varies between \\(0\\) and \\(\\pi\\). Hence \\(a = 0,\\ b = \\pi\\). Hence (A)."
+  },
+  {
+    "number": 1377,
+    "solution": "From \\(\\cos^{-1}x - \\cos^{-1}y = \\dfrac{\\pi}{3}\\), using \\(\\cos^{-1}t = \\dfrac{\\pi}{2} - \\sin^{-1}t\\) gives \\(\\sin^{-1}y - \\sin^{-1}x = \\dfrac{\\pi}{3}\\). Adding this to \\(\\sin^{-1}x + \\sin^{-1}y = \\dfrac{2\\pi}{3}\\) gives \\(2\\sin^{-1}y = \\pi\\), so \\(\\sin^{-1}y = \\dfrac{\\pi}{2}\\), i.e. \\(y = 1\\). Then \\(\\sin^{-1}x = \\dfrac{2\\pi}{3} - \\dfrac{\\pi}{2} = \\dfrac{\\pi}{6}\\), so \\(x = \\dfrac{1}{2}\\). Thus \\((x, y) = \\left(\\dfrac{1}{2}, 1\\right)\\). Hence (B)."
+  },
+  {
+    "number": 1378,
+    "solution": "Since \\(\\dfrac{5\\pi}{6}\\) lies outside \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\), write \\(\\sin\\dfrac{5\\pi}{6} = \\sin\\left(\\pi - \\dfrac{5\\pi}{6}\\right) = \\sin\\dfrac{\\pi}{6}\\). Hence \\(\\sin^{-1}\\left(\\sin\\dfrac{5\\pi}{6}\\right) = \\dfrac{\\pi}{6}\\). Hence (A)."
+  },
+  {
+    "number": 1379,
+    "solution": "Write \\(\\dfrac{\\sin 2 - 1}{\\cos 2} = -\\dfrac{1 - \\sin 2}{\\cos 2} = -\\dfrac{(\\cos 1 - \\sin 1)^2}{\\cos^2 1 - \\sin^2 1} = -\\dfrac{\\cos 1 - \\sin 1}{\\cos 1 + \\sin 1} = -\\tan\\left(\\dfrac{\\pi}{4} - 1\\right)\\). Therefore \\(\\tan^{-1}\\left(\\dfrac{\\sin 2 - 1}{\\cos 2}\\right) = -\\left(\\dfrac{\\pi}{4} - 1\\right) = 1 - \\dfrac{\\pi}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1380,
+    "solution": "Let \\(\\theta = \\tan^{-1}x\\), so \\(\\cos\\theta = \\dfrac{1}{\\sqrt{1+x^2}}\\). Then \\(\\cot^{-1}\\left(\\dfrac{1}{\\sqrt{1+x^2}}\\right)\\) is an angle whose cotangent is \\(\\dfrac{1}{\\sqrt{1+x^2}}\\); its sine is \\(\\dfrac{1}{\\sqrt{1 + \\frac{1}{1+x^2}}} = \\sqrt{\\dfrac{1+x^2}{2+x^2}}\\). Hence (A)."
+  },
+  {
+    "number": 1381,
+    "solution": "\\(\\sin\\dfrac{7\\pi}{6} = \\sin\\left(\\pi + \\dfrac{\\pi}{6}\\right) = -\\sin\\dfrac{\\pi}{6} = -\\dfrac{1}{2}\\). Then \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\dfrac{2\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1382,
+    "solution": "\\(\\cos^{-1}x + \\cos^{-1}y = \\left(\\dfrac{\\pi}{2} - \\sin^{-1}x\\right) + \\left(\\dfrac{\\pi}{2} - \\sin^{-1}y\\right) = \\pi - (\\sin^{-1}x + \\sin^{-1}y) = \\pi - \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1383,
+    "solution": "First \\(\\tan^{-1}\\dfrac{1}{2} + \\tan^{-1}\\dfrac{1}{3} = \\tan^{-1}\\dfrac{\\frac{1}{2}+\\frac{1}{3}}{1-\\frac{1}{6}} = \\tan^{-1}(1)\\). Then \\(\\tan^{-1}(1) + \\tan^{-1}\\dfrac{7}{8} = \\tan^{-1}\\dfrac{1+\\frac{7}{8}}{1-\\frac{7}{8}} = \\tan^{-1}\\dfrac{\\frac{15}{8}}{\\frac{1}{8}} = \\tan^{-1}15\\). Hence (C)."
+  },
+  {
+    "number": 1384,
+    "solution": "Evaluate each: \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\dfrac{2\\pi}{3}\\), \\(\\sin^{-1}\\dfrac{1}{2} = \\dfrac{\\pi}{6}\\), \\(\\cos^{-1}\\left(-\\dfrac{1}{\\sqrt{2}}\\right) = \\dfrac{3\\pi}{4}\\), \\(\\tan^{-1}(-1) = -\\dfrac{\\pi}{4}\\). So the expression \\(= \\dfrac{2\\pi}{3} - 2\\cdot\\dfrac{\\pi}{6} + 3\\cdot\\dfrac{3\\pi}{4} - 4\\cdot\\left(-\\dfrac{\\pi}{4}\\right) = \\dfrac{2\\pi}{3} - \\dfrac{\\pi}{3} + \\dfrac{9\\pi}{4} + \\pi = \\dfrac{4\\pi + 27\\pi + 12\\pi}{12} = \\dfrac{43\\pi}{12}\\). Hence (D)."
+  },
+  {
+    "number": 1385,
+    "solution": "Group as \\(\\sin\\left[\\left(\\sin^{-1}\\dfrac{2}{3} + \\cos^{-1}\\dfrac{2}{3}\\right) + \\cos^{-1}\\dfrac{2}{3}\\right] = \\sin\\left[\\dfrac{\\pi}{2} + \\cos^{-1}\\dfrac{2}{3}\\right] = \\cos\\left(\\cos^{-1}\\dfrac{2}{3}\\right) = \\dfrac{2}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1386,
+    "solution": "Put \\(x = a\\sin\\theta\\), so \\(\\sqrt{a^2 - x^2} = a\\cos\\theta\\). Then \\(\\tan^{-1}\\dfrac{x}{\\sqrt{a^2-x^2}} = \\tan^{-1}\\dfrac{a\\sin\\theta}{a\\cos\\theta} = \\tan^{-1}(\\tan\\theta) = \\theta = \\sin^{-1}\\dfrac{x}{a}\\). Hence (C)."
+  },
+  {
+    "number": 1387,
+    "solution": "Using \\(\\sin(2A) = 2\\sin A\\cos A\\) with \\(\\sin A = \\sqrt{\\dfrac{63}{65}}\\) and \\(\\cos A = \\sqrt{1 - \\dfrac{63}{65}} = \\sqrt{\\dfrac{2}{65}}\\), we get \\(\\sin\\left(2\\sin^{-1}\\sqrt{\\dfrac{63}{65}}\\right) = 2\\sqrt{\\dfrac{63}{65}}\\cdot\\sqrt{\\dfrac{2}{65}} = \\dfrac{2\\sqrt{126}}{65}\\). Hence (C)."
+  },
+  {
+    "number": 1388,
+    "solution": "Combine \\(\\tan^{-1}(x-1) + \\tan^{-1}(x+1) = \\tan^{-1}\\dfrac{2x}{1-(x^2-1)} = \\tan^{-1}\\dfrac{2x}{2-x^2}\\), and \\(\\tan^{-1}3x - \\tan^{-1}x = \\tan^{-1}\\dfrac{2x}{1+3x^2}\\). Equating \\(\\dfrac{2x}{2-x^2} = \\dfrac{2x}{1+3x^2}\\) gives either \\(x = 0\\), or \\(2 - x^2 = 1 + 3x^2\\), i.e. \\(4x^2 = 1\\), so \\(x = \\pm\\dfrac{1}{2}\\). Thus \\(x = 0,\\ \\pm\\dfrac{1}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1389,
+    "solution": "\\(\\tan\\left(-\\dfrac{5\\pi}{4}\\right) = -\\tan\\dfrac{5\\pi}{4} = -\\tan\\left(\\pi + \\dfrac{\\pi}{4}\\right) = -\\tan\\dfrac{\\pi}{4} = -1\\). Wait, reduce carefully: \\(\\tan\\dfrac{5\\pi}{4} = \\tan\\left(\\pi + \\dfrac{\\pi}{4}\\right) = \\tan\\dfrac{\\pi}{4} = 1\\), so \\(\\tan\\left(-\\dfrac{5\\pi}{4}\\right) = -1\\) only if symmetric; instead the book uses \\(\\sin^{-1}\\left[\\tan\\left(-\\dfrac{5\\pi}{4}\\right)\\right] = -\\sin^{-1}\\left[\\tan\\dfrac{5\\pi}{4}\\right] = -\\sin^{-1}\\left[\\tan\\dfrac{\\pi}{4}\\right] = -\\sin^{-1}(1) = -\\dfrac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1390,
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\sin^{-1}\\dfrac{2x}{1+x^2} = 2\\theta\\) and \\(\\cos^{-1}\\dfrac{1-x^2}{1+x^2} = 2\\theta\\). The expression becomes \\(\\tan\\left[\\dfrac{1}{2}(2\\theta) + \\dfrac{1}{2}(2\\theta)\\right] = \\tan(2\\theta) = \\tan(2\\tan^{-1}x) = \\dfrac{2x}{1-x^2}\\). Hence (C)."
+  },
+  {
+    "number": 1391,
+    "solution": "\\(\\tan^{-1}\\dfrac{m}{n} - \\tan^{-1}\\dfrac{m-n}{m+n} = \\tan^{-1}\\dfrac{\\frac{m}{n} - \\frac{m-n}{m+n}}{1 + \\frac{m}{n}\\cdot\\frac{m-n}{m+n}}\\). The numerator is \\(\\dfrac{m(m+n) - n(m-n)}{n(m+n)} = \\dfrac{m^2+n^2}{n(m+n)}\\) and the denominator is \\(\\dfrac{n(m+n) + m(m-n)}{n(m+n)} = \\dfrac{m^2+n^2}{n(m+n)}\\). The ratio is 1, so the value is \\(\\tan^{-1}(1) = \\dfrac{\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1392,
+    "solution": "From \\(\\tan^{-1}x + \\tan^{-1}y + \\tan^{-1}z = \\pi\\), write \\(\\tan^{-1}y + \\tan^{-1}z = \\pi - \\tan^{-1}x\\), so \\(\\dfrac{y+z}{1-yz} = -x\\). Then \\(y + z = -x(1 - yz) = -x + xyz\\), giving \\(x + y + z = xyz\\). Hence (A)."
+  },
+  {
+    "number": 1393,
+    "solution": "Write \\(\\cos^{-1}[\\cos(\\sin^{-1}x)] = \\cos^{-1}\\left[\\sin\\left(\\dfrac{\\pi}{2} - \\sin^{-1}x\\right)\\right]\\) carefully: using \\(\\cos(\\sin^{-1}x) = \\sin(\\cos^{-1}x)\\) symmetry, both terms reduce so that \\(\\cos^{-1}[\\cos(\\sin^{-1}x)] + \\cos^{-1}[\\sin(\\cos^{-1}x)] = \\left(\\dfrac{\\pi}{2} - \\sin^{-1}x\\right) + \\left(\\dfrac{\\pi}{2} - \\cos^{-1}x\\right) = \\pi - (\\sin^{-1}x + \\cos^{-1}x) = \\pi - \\dfrac{\\pi}{2} = \\dfrac{\\pi}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1394,
+    "solution": "Using \\(\\sin^{-1}t = \\dfrac{\\pi}{2} - \\cos^{-1}t\\), rewrite \\(\\sin^{-1}x + \\sin^{-1}y = \\dfrac{\\pi}{2}\\) as \\(\\left(\\dfrac{\\pi}{2} - \\cos^{-1}x\\right) + \\left(\\dfrac{\\pi}{2} - \\cos^{-1}y\\right) = \\dfrac{\\pi}{2}\\), so \\(\\cos^{-1}x + \\cos^{-1}y = \\dfrac{\\pi}{2}\\). Hence (A)."
+  }
+]
