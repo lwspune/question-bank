@@ -317,6 +317,38 @@ export const TOPICS: Record<string, Topic> = {
       "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
     ],
   },
+
+  "inverse-trigonometry": {
+    id: "inverse-trigonometry",
+    chapterName: "Inverse Trigonometry",
+    qFrom: 1291,
+    qTo: 1394,
+    sourceFile: "NDA_Maths_Practice__Trigonometry__Inverse_Trigonometry.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "2 Trigonometry page 53-72.pdf"), pages: [13, 14, 15, 16, 17] },
+    answerKey: { pdf: join(SOURCE_ROOT, "02. Trigo", "_trig_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "Solutions", "2nd Trigonometry sol page 255-283.pdf"), pages: [21, 22, 23, 24, 25, 26, 27, 28] },
+    subtopics: [
+      "Evaluation of Composite Inverse Trigonometric Expressions",
+      "Identities, Properties, and Sum-Difference Formulas",
+      "Solving Inverse Trigonometric Equations and Geometric Applications",
+    ],
+  },
+
+  // Source section "Heights & Distances" -> NDA Maths "Height & Distance".
+  "height-distance": {
+    id: "height-distance",
+    chapterName: "Height & Distance",
+    qFrom: 1395,
+    qTo: 1410,
+    sourceFile: "NDA_Maths_Practice__Trigonometry__Height_and_Distance.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "2 Trigonometry page 53-72.pdf"), pages: [17, 18] },
+    answerKey: { pdf: join(SOURCE_ROOT, "02. Trigo", "_trig_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "02. Trigo", "Solutions", "2nd Trigonometry sol page 255-283.pdf"), pages: [28, 29, 30] },
+    subtopics: [
+      "Heights and Distances from Angles of Elevation",
+      "Shadows, Leaning Structures, and Special Geometry",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
