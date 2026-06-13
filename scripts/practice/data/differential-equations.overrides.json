@@ -1,0 +1,6 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong (each verified by re-derivation + zoom-crop; all three book-solution-backed). Content fixes applied directly in questions.json (NOT overrides): Q3040 stem restored to 'dy/dx - 1 = e^(x-y)' (the agent dropped the '-1'; with it, the solution is e^(y-x)=x+c = key D, which is correct); Q3065 options reordered to match the source (A=straight lines, B=parabola, C=hyperbola, D=ellipse) — the family 1+y^2=k(1+x^2) is hyperbolas = key C (correct). Q3019 multi-key (A,C) from the answer file is genuine. Q3021 kept as keyed (A) with an honest note (source stem appears garbled). Q3040 is NOT excluded (the earlier 'exclude' was an agent misread of the dropped '-1').",
+  "2966": { "answer": "C", "reason": "key 'b' wrong: (1+5 y')^(3/2) = 10 y''' has highest derivative y''', so order = 3 = option C (book solution states order 3)" },
+  "2968": { "answer": "B", "reason": "key 'c' wrong: clearing the radical gives (y'')^3 = (5y+y')^2, so degree = 3 = option B (book solution states degree 3)" },
+  "2986": { "answer": "C", "reason": "key 'a' wrong: in (y')^2 - x y' + y = 0, y=2x-4 satisfies it (4-2x+2x-4=0); y=2x does not = option C (book solution gives y=2x-4)" }
+}
