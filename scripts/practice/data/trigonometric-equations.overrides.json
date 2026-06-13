@@ -1,0 +1,7 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong (each verified by re-derivation + zoom-crop; the book's own printed solution agrees in every case). Content fix applied directly in questions.json (not an override): Q1238 stem interval '-2pi < theta < 2pi' -> '0 <= theta <= 2pi' (the literal open range gives 11 solutions, not an option; on [0,2pi] it is 7 = key D).",
+  "1187": { "answer": "D", "reason": "key 'b' wrong: sin^8 x + cos^6 x = 1 on [0,2pi] requires sin x = 0 (x=0,pi,2pi) or cos x = 0 (x=pi/2,3pi/2) -> 5 solutions = option D (the book's solution states '5 solutions exist')" },
+  "1217": { "answer": "B", "reason": "key 'c' wrong: tan((pi/2)sin t)=cot((pi/2)cos t) -> sin t + cos t = 1+2n; theta=2r*pi+pi/2 makes the LHS tan(pi/2) UNDEFINED and must be rejected, leaving theta=2r*pi = option B (book rejects the pi/2 branch)" },
+  "1221": { "answer": "B", "reason": "key 'a' wrong: tan t + tan(3pi/4 + t) = 2 -> tan^2 t = 3 -> t = n*pi +/- pi/3 = option B (tan has period pi, so 2n*pi is too restrictive)" },
+  "1224": { "answer": "C", "reason": "key 'd' wrong: sin^2 x - cos2x = 2 - sin2x reduces to cos x (2 sin x - 3 cos x) = 0; with 3cos x != 2 sin x, cos x = 0 -> x = (4n +/- 1) pi/2 = option C (option d = (2n-1)pi means cos x = -1, wrong)" }
+}

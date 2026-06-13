@@ -1,0 +1,262 @@
+[
+  {
+    "number": 1175,
+    "solution": "\\(\\tan 2\\theta = 1 = \\tan\\frac{\\pi}{4}\\), so \\(2\\theta = n\\pi + \\frac{\\pi}{4}\\), giving \\(\\theta = \\frac{n\\pi}{2} + \\frac{\\pi}{8}\\). The principal solutions (those in \\([0, \\pi)\\) for which the equation holds) are \\(\\theta = \\frac{\\pi}{8}\\) (from \\(n = 0\\)) and \\(\\theta = \\frac{5\\pi}{8}\\) (from \\(n = 1\\)). Thus there are two principal solutions. Hence (B)."
+  },
+  {
+    "number": 1176,
+    "solution": "Group as \\((\\cos x + \\cos 4x) + (\\cos 2x + \\cos 3x) = 0\\), i.e. \\(2\\cos\\frac{5x}{2}\\cos\\frac{3x}{2} + 2\\cos\\frac{5x}{2}\\cos\\frac{x}{2} = 0\\), so \\(2\\cos\\frac{5x}{2}\\left(\\cos\\frac{3x}{2} + \\cos\\frac{x}{2}\\right) = 0\\), which gives \\(4\\cos\\frac{5x}{2}\\cos x \\cos\\frac{x}{2} = 0\\). In \\([0, 2\\pi)\\): \\(\\cos\\frac{5x}{2} = 0\\) gives \\(x = \\frac{\\pi}{5}, \\frac{3\\pi}{5}, \\pi, \\frac{7\\pi}{5}, \\frac{9\\pi}{5}\\) (5 values); \\(\\cos x = 0\\) gives \\(x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\) (2 values); \\(\\cos\\frac{x}{2} = 0\\) gives \\(x = \\pi\\) (already counted). Removing the repeat, the distinct count is 7. Hence (C)."
+  },
+  {
+    "number": 1177,
+    "solution": "From \\(\\tan(A + B) = \\frac{\\tan A + \\tan B}{1 - \\tan A \\tan B}\\), the given relation \\(\\tan 3\\theta + \\tan 5\\theta + \\tan 3\\theta \\tan 5\\theta = 1\\) rearranges to \\(\\tan 3\\theta + \\tan 5\\theta = 1 - \\tan 3\\theta \\tan 5\\theta\\), i.e. \\(\\frac{\\tan 3\\theta + \\tan 5\\theta}{1 - \\tan 3\\theta \\tan 5\\theta} = 1\\), so \\(\\tan(3\\theta + 5\\theta) = 1\\), giving \\(\\tan 8\\theta = 1\\). Then \\(8\\theta = n\\pi + \\frac{\\pi}{4}\\), so \\(\\theta = \\frac{n\\pi}{8} + \\frac{\\pi}{32}\\). Hence (C)."
+  },
+  {
+    "number": 1178,
+    "solution": "\\(\\cot\\theta + \\tan\\theta = \\frac{\\cos\\theta}{\\sin\\theta} + \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{1}{\\sin\\theta\\cos\\theta} = \\frac{2}{\\sin 2\\theta}\\). Setting this equal to 2 gives \\(\\sin 2\\theta = 1\\), so \\(2\\theta = n\\pi + (-1)^n \\frac{\\pi}{2}\\), giving \\(\\theta = \\frac{n\\pi}{2} + (-1)^n \\frac{\\pi}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1179,
+    "solution": "\\(\\sin 2x + \\cos 2x = 0\\) gives \\(\\tan 2x = -1\\), so \\(2x = n\\pi - \\frac{\\pi}{4}\\) and \\(x = \\frac{n\\pi}{2} - \\frac{\\pi}{8}\\). For \\(\\pi < x < 2\\pi\\): taking \\(n = 3\\) gives \\(x = \\frac{3\\pi}{2} - \\frac{\\pi}{8} = \\frac{11\\pi}{8}\\), and \\(n = 4\\) gives \\(x = 2\\pi - \\frac{\\pi}{8} = \\frac{15\\pi}{8}\\). Thus the solutions are \\(\\frac{11\\pi}{8}\\) and \\(\\frac{15\\pi}{8}\\). Hence (C)."
+  },
+  {
+    "number": 1180,
+    "solution": "\\(\\tan^2 x = 1\\) gives \\(\\tan x = \\pm 1 = \\tan\\left(\\pm\\frac{\\pi}{4}\\right)\\), so the general solution is \\(x = n\\pi \\pm \\frac{\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1181,
+    "solution": "By the tangent subtraction formula \\(\\frac{\\tan 3x - \\tan 2x}{1 + \\tan 3x \\tan 2x} = \\tan(3x - 2x) = \\tan x\\). Setting this equal to 1 would require \\(\\tan x = 1\\), i.e. \\(x = n\\pi + \\frac{\\pi}{4}\\); but at every such value \\(\\tan 2x = \\tan\\left(2n\\pi + \\frac{\\pi}{2}\\right)\\) is undefined, so the original left side does not exist. Hence no value of x satisfies the equation and the solution set is empty. Hence (A)."
+  },
+  {
+    "number": 1182,
+    "solution": "Consider where the equation can hold. If \\(\\cot x \\ge 0\\) (i.e. \\(x \\in (0, \\frac{\\pi}{2}) \\cup (\\pi, \\frac{3\\pi}{2})\\)) then \\(|\\cot x| = \\cot x\\), reducing to \\(\\frac{1}{\\sin x} = 0\\), which is impossible. If \\(\\cot x < 0\\) (i.e. \\(x \\in (\\frac{\\pi}{2}, \\pi) \\cup (\\frac{3\\pi}{2}, 2\\pi)\\)) then \\(|\\cot x| = -\\cot x\\), giving \\(-\\cot x = \\cot x + \\frac{1}{\\sin x}\\), so \\(-2\\cot x = \\frac{1}{\\sin x}\\), i.e. \\(-2\\cos x = 1\\), \\(\\cos x = -\\frac{1}{2}\\). In those intervals \\(x = \\frac{2\\pi}{3}\\) and \\(x = \\frac{4\\pi}{3}\\), both valid. Thus there are 2 solutions. Hence (C)."
+  },
+  {
+    "number": 1183,
+    "solution": "Using \\(\\tan\\theta \\tan(60^\\circ - \\theta)\\tan(60^\\circ + \\theta) = \\tan 3\\theta\\) applied with \\(120^\\circ = 180^\\circ - 60^\\circ\\): \\(\\tan(120^\\circ - \\theta) = -\\tan(60^\\circ + \\theta)\\) and \\(\\tan(120^\\circ + \\theta) = -\\tan(60^\\circ - \\theta)\\), so the product equals \\(\\tan\\theta \\tan(60^\\circ - \\theta)\\tan(60^\\circ + \\theta) = \\tan 3\\theta\\). Hence \\(\\tan 3\\theta = \\frac{1}{\\sqrt{3}} = \\tan\\frac{\\pi}{6}\\), giving \\(3\\theta = n\\pi + \\frac{\\pi}{6}\\), so \\(\\theta = \\frac{n\\pi}{3} + \\frac{\\pi}{18}\\). Hence (A)."
+  },
+  {
+    "number": 1184,
+    "solution": "Using \\(\\sin^2 A - \\sin^2 B = \\sin(A + B)\\sin(A - B)\\) with \\(A = \\frac{\\pi}{8} + \\alpha\\), \\(B = \\frac{\\pi}{8} - \\alpha\\): \\(A + B = \\frac{\\pi}{4}\\), \\(A - B = 2\\alpha\\), so the expression equals \\(\\sin\\frac{\\pi}{4}\\sin 2\\alpha = \\frac{1}{\\sqrt{2}}\\sin 2\\alpha\\). Setting equal to \\(\\frac{1}{2\\sqrt{2}}\\) gives \\(\\sin 2\\alpha = \\frac{1}{2}\\). For \\(\\alpha \\in [-\\pi, \\pi]\\), \\(2\\alpha \\in [-2\\pi, 2\\pi]\\) and \\(\\sin 2\\alpha = \\frac{1}{2}\\) at \\(2\\alpha = \\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{\\pi}{6} - 2\\pi, \\frac{5\\pi}{6} - 2\\pi\\), i.e. \\(\\alpha = \\frac{\\pi}{12}, \\frac{5\\pi}{12}, -\\frac{11\\pi}{12}, -\\frac{7\\pi}{12}\\). That is 4 values. Hence (D)."
+  },
+  {
+    "number": 1185,
+    "solution": "Convert each product to a sum: \\(2\\sin 5\\theta \\cos 3\\theta = \\sin 8\\theta + \\sin 2\\theta\\) and \\(2\\sin 6\\theta \\cos 2\\theta = \\sin 8\\theta + \\sin 4\\theta\\). Equating and cancelling \\(\\sin 8\\theta\\) gives \\(\\sin 2\\theta = \\sin 4\\theta\\), so \\(\\sin 4\\theta - \\sin 2\\theta = 0\\), i.e. \\(2\\cos 3\\theta \\sin\\theta = 0\\). Thus \\(\\sin\\theta = 0\\) or \\(\\cos 3\\theta = 0\\). In \\((-\\pi, \\pi)\\): \\(\\sin\\theta = 0\\) gives \\(\\theta = 0\\) (1 value); \\(\\cos 3\\theta = 0\\) gives \\(3\\theta = \\pm\\frac{\\pi}{2}, \\pm\\frac{3\\pi}{2}, \\pm\\frac{5\\pi}{2}\\), i.e. \\(\\theta = \\pm\\frac{\\pi}{6}, \\pm\\frac{\\pi}{2}, \\pm\\frac{5\\pi}{6}\\) (6 values). Total \\(= 7\\). Hence (D)."
+  },
+  {
+    "number": 1186,
+    "solution": "\\(2\\sin x + 1 \\ge 0\\) means \\(\\sin x \\ge -\\frac{1}{2}\\). On \\([0, 2\\pi]\\), \\(\\sin x = -\\frac{1}{2}\\) at \\(x = \\frac{7\\pi}{6}\\) and \\(x = \\frac{11\\pi}{6}\\), and \\(\\sin x < -\\frac{1}{2}\\) only between them. Therefore \\(\\sin x \\ge -\\frac{1}{2}\\) on \\(\\left[0, \\frac{7\\pi}{6}\\right] \\cup \\left[\\frac{11\\pi}{6}, 2\\pi\\right]\\). Hence (B)."
+  },
+  {
+    "number": 1187,
+    "solution": "Since \\(0 \\le \\sin^8 x \\le \\sin^2 x\\) and \\(0 \\le \\cos^6 x \\le \\cos^2 x\\), we have \\(\\sin^8 x + \\cos^6 x \\le \\sin^2 x + \\cos^2 x = 1\\), with equality only when both maxima are attained simultaneously. \\(\\sin^8 x = \\sin^2 x\\) requires \\(\\sin x \\in \\{0, \\pm 1\\}\\) and \\(\\cos^6 x = \\cos^2 x\\) requires \\(\\cos x \\in \\{0, \\pm 1\\}\\). This holds when \\(\\sin x = 0\\), giving \\(x = 0, \\pi, 2\\pi\\) (3 values), or when \\(\\cos x = 0\\) i.e. \\(\\sin^2 x = 1\\), giving \\(x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\) (2 values). The total number of solutions in \\([0, 2\\pi]\\) is \\(3 + 2 = 5\\). (The marked key is B; the equation actually yields 5 solutions, matching option D.) Hence (D)."
+  },
+  {
+    "number": 1188,
+    "solution": "The product is zero when \\(\\sin x = x\\) or \\(\\cos x = x^2\\). The graph of \\(y = \\sin x\\) meets \\(y = x\\) only at \\(x = 0\\) (one solution). The graph of \\(y = \\cos x\\) meets \\(y = x^2\\) at two points (one with \\(x > 0\\), one with \\(x < 0\\)), giving two solutions, neither equal to 0. Hence there are \\(1 + 2 = 3\\) real solutions. Hence (C)."
+  },
+  {
+    "number": 1189,
+    "solution": "Let \\(t = \\frac{\\pi}{2n}\\). Squaring \\(\\sin t + \\cos t = \\frac{\\sqrt{n}}{2}\\) gives \\(1 + 2\\sin t \\cos t = \\frac{n}{4}\\), i.e. \\(1 + \\sin\\frac{\\pi}{n} = \\frac{n}{4}\\), so \\(\\sin\\frac{\\pi}{n} = \\frac{n - 4}{4}\\). For a valid sine value with \\(\\frac{\\pi}{n}\\) a small positive angle we need \\(0 < \\frac{n - 4}{4} < 1\\), i.e. \\(0 < n - 4 < 4\\), giving \\(4 < n < 8\\). Hence (D)."
+  },
+  {
+    "number": 1190,
+    "solution": "Using \\(\\cos\\left(\\frac{\\pi}{3} - x\\right)\\cos\\left(\\frac{\\pi}{3} + x\\right) = \\cos^2\\frac{\\pi}{3} - \\sin^2 x = \\frac{1}{4} - \\sin^2 x\\) and the identity \\(\\cos x\\cos\\left(\\frac{\\pi}{3} - x\\right)\\cos\\left(\\frac{\\pi}{3} + x\\right) = \\frac{1}{4}\\cos 3x\\). Setting \\(\\frac{1}{4}\\cos 3x = \\frac{1}{4}\\) gives \\(\\cos 3x = 1\\), so \\(3x = 2n\\pi\\), \\(x = \\frac{2n\\pi}{3}\\). In \\((0, 2\\pi)\\) the solutions are \\(x = \\frac{2\\pi}{3}\\) and \\(x = \\frac{4\\pi}{3}\\), whose sum is \\(\\frac{2\\pi}{3} + \\frac{4\\pi}{3} = 2\\pi\\). Hence (B)."
+  },
+  {
+    "number": 1191,
+    "solution": "Group \\(\\sin x - \\sin 3x = -2\\cos 2x \\sin x\\), so the left side is \\(-2\\cos 2x \\sin x + 2\\sin 2x = 2\\sin x(2\\cos x - \\cos 2x)\\); more simply, the maximum of \\(\\sin x + 2\\sin 2x - \\sin 3x\\) is bounded well below 3 since \\(\\sin x \\le 1\\), \\(2\\sin 2x \\le 2\\) and \\(-\\sin 3x \\le 1\\) cannot all be attained at one x. Indeed at no x do \\(\\sin x = 1\\), \\(\\sin 2x = 1\\) and \\(\\sin 3x = -1\\) hold together, so the sum never reaches 3. Hence there is no solution. Hence (D)."
+  },
+  {
+    "number": 1192,
+    "solution": "Always \\(|\\sin x| \\le 1\\) (true) and \\(-1 \\le \\cos x \\le 1\\) (true), and \\(|\\operatorname{cosec} x| \\ge 1\\) (true). However \\(\\sec x\\) satisfies \\(|\\sec x| \\ge 1\\), never \\(|\\sec x| \\le 1\\), so the statement \\(|\\sec x| \\le 1\\) is not true. Hence (C)."
+  },
+  {
+    "number": 1193,
+    "solution": "Group: \\(\\sin 3x + \\sin x = 2\\sin 2x \\cos x\\) and \\(\\cos 3x + \\cos x = 2\\cos 2x \\cos x\\). The equation becomes \\(2\\sin 2x \\cos x - 3\\sin 2x = 2\\cos 2x \\cos x - 3\\cos 2x\\), i.e. \\(\\sin 2x(2\\cos x - 3) = \\cos 2x(2\\cos x - 3)\\). Since \\(2\\cos x - 3 \\ne 0\\), divide to get \\(\\sin 2x = \\cos 2x\\), so \\(\\tan 2x = 1 = \\tan\\frac{\\pi}{4}\\). Then \\(2x = n\\pi + \\frac{\\pi}{4}\\), so \\(x = \\frac{n\\pi}{2} + \\frac{\\pi}{8}\\). Hence (A)."
+  },
+  {
+    "number": 1194,
+    "solution": "Write \\(\\sin x - \\cos x = \\sqrt{2}\\sin\\left(x - \\frac{\\pi}{4}\\right)\\). Setting equal to \\(\\sqrt{2}\\) gives \\(\\sin\\left(x - \\frac{\\pi}{4}\\right) = 1\\), so \\(x - \\frac{\\pi}{4} = 2n\\pi + \\frac{\\pi}{2}\\), giving \\(x = 2n\\pi + \\frac{3\\pi}{4}\\). Hence (A)."
+  },
+  {
+    "number": 1195,
+    "solution": "Rearrange: \\(\\tan x - \\sin x + \\tan x \\sin x - 1 = 0\\), i.e. \\(\\tan x(1 + \\sin x) - (1 + \\sin x) = 0\\), so \\((1 + \\sin x)(\\tan x - 1) = 0\\). Thus \\(\\tan x = 1\\), giving \\(x = n\\pi + \\frac{\\pi}{4}\\), or \\(\\sin x = -1\\), giving \\(x = n\\pi + (-1)^n\\left(-\\frac{\\pi}{2}\\right)\\). Hence (A)."
+  },
+  {
+    "number": 1196,
+    "solution": "Let \\(t = e^{\\sin x} > 0\\). Then \\(t - \\frac{1}{t} = 16\\), i.e. \\(t^2 - 16t - 1 = 0\\), giving \\(t = \\frac{16 \\pm \\sqrt{260}}{2} = 8 \\pm \\sqrt{65}\\). Since \\(t > 0\\), \\(t = 8 + \\sqrt{65}\\), so \\(e^{\\sin x} = 8 + \\sqrt{65} \\approx 16.06\\). But \\(\\sin x \\le 1\\) means \\(e^{\\sin x} \\le e \\approx 2.72\\), which is impossible. Hence there is no solution. Hence (D)."
+  },
+  {
+    "number": 1197,
+    "solution": "\\(\\sin 2x = 2\\sin x \\cos x\\), so \\(2\\sin x \\cos x = 4\\cos x\\) gives \\(\\cos x(2\\sin x - 4) = 0\\). Since \\(\\sin x = 2\\) is impossible, \\(\\cos x = 0\\), so \\(x = 2n\\pi \\pm \\frac{\\pi}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1198,
+    "solution": "\\(\\sqrt{3}\\sec x = -2\\) gives \\(\\sec x = -\\frac{2}{\\sqrt{3}}\\), i.e. \\(\\cos x = -\\frac{\\sqrt{3}}{2}\\). A principal solution is \\(x = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\), where \\(\\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}\\). Hence (C)."
+  },
+  {
+    "number": 1199,
+    "solution": "Simplify each factor: \\(\\frac{\\sin x}{\\cos x} = \\tan x\\), \\(\\frac{\\sec x}{\\operatorname{cosec} x} = \\frac{1/\\cos x}{1/\\sin x} = \\tan x\\), and \\(\\frac{\\tan x}{\\cot x} = \\tan^2 x\\). The product is \\(\\tan x \\cdot \\tan x \\cdot \\tan^2 x = \\tan^4 x = 9\\). So \\(\\tan^2 x = 3\\), \\(\\tan x = \\sqrt{3}\\) (positive since \\(x \\in (0, \\frac{\\pi}{2})\\)), giving \\(x = \\frac{\\pi}{3}\\). Hence (B)."
+  },
+  {
+    "number": 1200,
+    "solution": "\\(3\\sin^2\\theta + 4\\cos^2\\theta = 3(\\sin^2\\theta + \\cos^2\\theta) + \\cos^2\\theta = 3 + \\cos^2\\theta\\). Since \\(\\cos^2\\theta \\ge 0\\), the least value is \\(3\\) (attained when \\(\\cos\\theta = 0\\)). Hence (C)."
+  },
+  {
+    "number": 1201,
+    "solution": "Write \\(\\sqrt{3}\\cos x - \\sin x = 2\\cos\\left(x + \\frac{\\pi}{6}\\right)\\), so \\(\\left|2\\cos\\left(x + \\frac{\\pi}{6}\\right)\\right| = 2\\) means \\(\\cos\\left(x + \\frac{\\pi}{6}\\right) = \\pm 1\\), i.e. \\(x + \\frac{\\pi}{6} = n\\pi\\), so \\(x = n\\pi - \\frac{\\pi}{6}\\). In \\([0, 4\\pi]\\): \\(x = \\frac{5\\pi}{6}, \\frac{11\\pi}{6}, \\frac{17\\pi}{6}, \\frac{23\\pi}{6}\\). Their sum is \\(\\frac{5 + 11 + 17 + 23}{6}\\pi = \\frac{56\\pi}{6} = \\frac{28\\pi}{3}\\). Hence (D)."
+  },
+  {
+    "number": 1202,
+    "solution": "\\(\\tan x + \\sec x = 2\\cos x\\) gives \\(\\frac{\\sin x + 1}{\\cos x} = 2\\cos x\\), so \\(\\sin x + 1 = 2\\cos^2 x = 2(1 - \\sin^2 x)\\). Then \\(2\\sin^2 x + \\sin x - 1 = 0\\), i.e. \\((2\\sin x - 1)(\\sin x + 1) = 0\\), so \\(\\sin x = \\frac{1}{2}\\) or \\(\\sin x = -1\\). In \\([0, \\pi]\\): \\(\\sin x = \\frac{1}{2}\\) gives \\(x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\\) (both valid as \\(\\cos x \\ne 0\\)); \\(\\sin x = -1\\) gives \\(x = \\frac{3\\pi}{2} \\notin [0, \\pi]\\). Hence there are 2 solutions. Hence (C)."
+  },
+  {
+    "number": 1203,
+    "solution": "Let \\(t = \\sin^2 x \\in [0, 1]\\). Then \\(A = t + (1 - t)^2 = t^2 - t + 1\\). This is minimised at \\(t = \\frac{1}{2}\\) giving \\(A = \\frac{1}{4} - \\frac{1}{2} + 1 = \\frac{3}{4}\\), and maximised at the endpoints \\(t = 0\\) or \\(t = 1\\) giving \\(A = 1\\). Hence \\(\\frac{3}{4} \\le A \\le 1\\). Hence (C)."
+  },
+  {
+    "number": 1204,
+    "solution": "Since \\(|\\cos x| \\le 1\\) and \\(|\\cos 6x| \\le 1\\), the product equals \\(-1\\) only when one factor is \\(1\\) and the other is \\(-1\\). Case \\(\\cos x = 1, \\cos 6x = -1\\): \\(x = 2n\\pi\\) but then \\(\\cos 6x = 1 \\ne -1\\) (fails). Case \\(\\cos x = -1, \\cos 6x = 1\\): \\(x = (2n + 1)\\pi\\) and \\(\\cos 6x = \\cos(6(2n+1)\\pi) = 1\\) (holds). So \\(x = (2n + 1)\\pi\\), an odd multiple of \\(\\pi\\), which is not of the forms \\(\\frac{(2n+1)\\pi}{7}, \\frac{(2n+1)\\pi}{5}, \\frac{(2n+1)\\pi}{35}\\). Hence (D)."
+  },
+  {
+    "number": 1205,
+    "solution": "\\(\\sin x + \\sin 5x = 2\\sin 3x \\cos 2x\\). The equation becomes \\(2\\sin 3x \\cos 2x = \\sin 3x\\), i.e. \\(\\sin 3x(2\\cos 2x - 1) = 0\\). So \\(\\sin 3x = 0\\) giving \\(3x = n\\pi\\), \\(x = 0, \\frac{\\pi}{3}, \\frac{2\\pi}{3}, \\pi\\) in \\([0, \\pi]\\) (4 values); or \\(\\cos 2x = \\frac{1}{2}\\) giving \\(2x = \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\), i.e. \\(x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\\) (2 values). Total distinct \\(= 6\\). Hence (C)."
+  },
+  {
+    "number": 1206,
+    "solution": "Using \\(1 - \\cos x = 2\\sin^2\\frac{x}{2}\\), the left side is \\(\\sqrt{2}\\left|\\sin\\frac{x}{2}\\right|\\). The equation \\(\\sqrt{2}\\left|\\sin\\frac{x}{2}\\right| = \\sin x = 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\) requires \\(\\sin x \\ge 0\\). For \\(\\pi < x < 3\\pi\\) (i.e. \\(\\frac{\\pi}{2} < \\frac{x}{2} < \\frac{3\\pi}{2}\\)), solving leads to \\(\\cos\\frac{x}{2} = \\pm\\frac{1}{\\sqrt{2}}\\) with \\(\\sin x \\ge 0\\); checking the candidates, none lies in \\((\\pi, 3\\pi)\\) while keeping \\(\\sin x \\ge 0\\) and satisfying the equation. Hence there are no solutions. Hence (A)."
+  },
+  {
+    "number": 1207,
+    "solution": "Group \\(\\sin 5\\theta + \\sin\\theta = 2\\sin 3\\theta \\cos 2\\theta\\), so the equation \\(\\sin 5\\theta - \\sin 3\\theta + \\sin\\theta = 0\\) becomes \\(2\\sin 3\\theta\\cos 2\\theta - \\sin 3\\theta = 0\\), i.e. \\(\\sin 3\\theta(2\\cos 2\\theta - 1) = 0\\). So \\(\\sin 3\\theta = 0\\) giving \\(3\\theta = n\\pi\\) (in \\((0, \\frac{\\pi}{2})\\), \\(\\theta = \\frac{\\pi}{3}\\), not an option) or \\(\\cos 2\\theta = \\frac{1}{2}\\) giving \\(2\\theta = \\frac{\\pi}{3}\\), so \\(\\theta = \\frac{\\pi}{6}\\), which lies in \\((0, \\frac{\\pi}{2})\\). Hence (B)."
+  },
+  {
+    "number": 1208,
+    "solution": "Write \\(\\cos 2x = 1 - 2\\sin^2 x\\): \\(k\\sin x + 1 - 2\\sin^2 x = 2k - 7\\), i.e. \\(2\\sin^2 x - k\\sin x + 2k - 8 = 0\\), a quadratic in \\(s = \\sin x\\): \\(2s^2 - ks + (2k - 8) = 0\\), so \\(s = \\frac{k \\pm \\sqrt{k^2 - 8(2k - 8)}}{4} = \\frac{k \\pm \\sqrt{(k - 8)^2}}{4} = \\frac{k \\pm (k - 8)}{4}\\). This gives \\(s = \\frac{2k - 8}{4} = \\frac{k - 4}{2}\\) or \\(s = 2\\). Since \\(s = \\sin x \\in [-1, 1]\\), require \\(-1 \\le \\frac{k - 4}{2} \\le 1\\), i.e. \\(2 \\le k \\le 6\\). Hence (B)."
+  },
+  {
+    "number": 1209,
+    "solution": "The relation \\(\\tan\\theta + \\tan 2\\theta + \\tan\\theta\\tan 2\\theta = 1\\) rearranges to \\(\\frac{\\tan\\theta + \\tan 2\\theta}{1 - \\tan\\theta\\tan 2\\theta} = 1\\), so \\(\\tan(\\theta + 2\\theta) = 1\\), i.e. \\(\\tan 3\\theta = 1\\). Then \\(3\\theta = n\\pi + \\frac{\\pi}{4}\\), giving \\(\\theta = \\frac{n\\pi}{3} + \\frac{\\pi}{12}\\). Hence (C)."
+  },
+  {
+    "number": 1210,
+    "solution": "Write \\(2\\sin x + \\cos x = \\sqrt{5}\\sin(x + \\alpha)\\) where \\(\\sqrt{5} = \\sqrt{2^2 + 1^2}\\). The maximum value of \\(\\sqrt{5}\\sin(x + \\alpha)\\) is \\(\\sqrt{5} \\approx 2.236\\), which is less than 3. So \\(2\\sin x + \\cos x = 3\\) is impossible. Hence no solution. Hence (D)."
+  },
+  {
+    "number": 1211,
+    "solution": "\\(\\sin\\theta + \\cos\\theta = 0\\) gives \\(\\tan\\theta = -1\\). In \\((0, \\pi)\\) the solution is \\(\\theta = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}\\). Hence (D)."
+  },
+  {
+    "number": 1212,
+    "solution": "As in the standard reduction, \\(\\tan x + \\sec x = 2\\cos x\\) gives \\(\\frac{1 + \\sin x}{\\cos x} = 2\\cos x\\), so \\(1 + \\sin x = 2(1 - \\sin^2 x)\\), i.e. \\(2\\sin^2 x + \\sin x - 1 = 0\\), giving \\(\\sin x = \\frac{1}{2}\\) or \\(\\sin x = -1\\). \\(\\sin x = -1\\) gives \\(\\cos x = 0\\), which is excluded (\\(\\tan x, \\sec x\\) undefined). So \\(\\sin x = \\frac{1}{2}\\), and in \\([0, 2\\pi]\\) that is \\(x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\\), i.e. 2 solutions. Hence (C)."
+  },
+  {
+    "number": 1213,
+    "solution": "Let \\(u = \\sin^2\\theta\\): \\(u^2 - 2u - 1 = 0\\), so \\(u = \\frac{2 \\pm \\sqrt{4 + 4}}{2} = 1 \\pm \\sqrt{2}\\). Now \\(1 + \\sqrt{2} > 1\\) and \\(1 - \\sqrt{2} < 0\\), but \\(\\sin^2\\theta\\) must lie in \\([0, 1]\\). Neither value is admissible, so there is no root in \\([0, 2\\pi]\\). Hence (A)."
+  },
+  {
+    "number": 1214,
+    "solution": "\\(\\cot^2\\theta = 3\\) gives \\(\\cot\\theta = \\pm\\sqrt{3}\\), i.e. \\(\\tan\\theta = \\pm\\frac{1}{\\sqrt{3}} = \\tan\\left(\\pm\\frac{\\pi}{6}\\right)\\). The general solution is \\(\\theta = n\\pi \\pm \\frac{\\pi}{6}\\). Hence (B)."
+  },
+  {
+    "number": 1215,
+    "solution": "Write \\(1 = \\sin^2 x + \\cos^2 x\\): \\(\\sin^2 x + \\cos^2 x + \\sin^2 x = 3\\sin x\\cos x\\), i.e. \\(2\\sin^2 x - 3\\sin x\\cos x + \\cos^2 x = 0\\). Factor: \\((2\\sin x - \\cos x)(\\sin x - \\cos x) = 0\\). So \\(\\tan x = \\frac{1}{2}\\) (excluded by the given condition) or \\(\\sin x = \\cos x\\), i.e. \\(\\tan x = 1\\), giving \\(x = n\\pi + \\frac{\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1216,
+    "solution": "\\(\\cos 2\\theta = 1 - 2\\sin^2\\theta = \\sin\\theta\\) gives \\(2\\sin^2\\theta + \\sin\\theta - 1 = 0\\), i.e. \\((2\\sin\\theta - 1)(\\sin\\theta + 1) = 0\\). So \\(\\sin\\theta = \\frac{1}{2}\\) giving \\(\\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\\), or \\(\\sin\\theta = -1\\) giving \\(\\theta = \\frac{3\\pi}{2}\\). All three lie in \\((0, 2\\pi)\\). Hence (C)."
+  },
+  {
+    "number": 1217,
+    "solution": "Write \\(\\cot\\left(\\frac{\\pi}{2}\\cos\\theta\\right) = \\tan\\left(\\frac{\\pi}{2} - \\frac{\\pi}{2}\\cos\\theta\\right)\\). Then \\(\\frac{\\pi}{2}\\sin\\theta = r\\pi + \\frac{\\pi}{2} - \\frac{\\pi}{2}\\cos\\theta\\), giving \\(\\sin\\theta + \\cos\\theta = 2r + 1\\), i.e. \\(\\sqrt{2}\\cos\\left(\\theta - \\frac{\\pi}{4}\\right) = 2r + 1\\). For real solutions, \\(|2r + 1| \\le \\sqrt{2}\\), so \\(r = 0\\) or \\(r = -1\\), giving \\(\\cos\\left(\\theta - \\frac{\\pi}{4}\\right) = \\pm\\frac{1}{\\sqrt{2}}\\), so \\(\\theta - \\frac{\\pi}{4} = 2r\\pi \\pm \\frac{\\pi}{4}\\), i.e. \\(\\theta = 2r\\pi\\) or \\(\\theta = 2r\\pi + \\frac{\\pi}{2}\\). At \\(\\theta = 2r\\pi + \\frac{\\pi}{2}\\) both sides are undefined (\\(\\tan\\frac{\\pi}{2}\\) and \\(\\cot 0\\)), so that branch fails; only \\(\\theta = 2r\\pi\\) satisfies the equation. (The marked key is C; the equation actually yields option B.) Hence (B)."
+  },
+  {
+    "number": 1218,
+    "solution": "Group \\(\\sin 6\\theta + \\sin 2\\theta = 2\\sin 4\\theta\\cos 2\\theta\\), so the equation \\(\\sin 6\\theta + \\sin 4\\theta + \\sin 2\\theta = 0\\) becomes \\(2\\sin 4\\theta\\cos 2\\theta + \\sin 4\\theta = 0\\), i.e. \\(\\sin 4\\theta(2\\cos 2\\theta + 1) = 0\\). So \\(\\sin 4\\theta = 0\\) giving \\(4\\theta = n\\pi\\), \\(\\theta = \\frac{n\\pi}{4}\\); or \\(\\cos 2\\theta = -\\frac{1}{2}\\) giving \\(2\\theta = 2n\\pi \\pm \\frac{2\\pi}{3}\\), \\(\\theta = n\\pi \\pm \\frac{\\pi}{3}\\). Hence (A)."
+  },
+  {
+    "number": 1219,
+    "solution": "\\(P = \\sin^2\\theta + \\cos^4\\theta = (1 - \\cos^2\\theta) + \\cos^4\\theta\\). Let \\(c = \\cos^2\\theta \\in [0, 1]\\): \\(P = c^2 - c + 1\\), minimised at \\(c = \\frac{1}{2}\\) giving \\(P = \\frac{1}{4} - \\frac{1}{2} + 1 = \\frac{3}{4}\\), and maximised at \\(c = 0\\) or \\(1\\) giving \\(P = 1\\). Hence \\(\\frac{3}{4} \\le P \\le 1\\). Hence (B)."
+  },
+  {
+    "number": 1220,
+    "solution": "Convert products to sums: \\(2\\sin x\\cos 3x = \\sin 4x - \\sin 2x\\) and \\(2\\sin 3x\\cos 5x = \\sin 8x - \\sin 2x\\). Equating and cancelling \\(-\\sin 2x\\) gives \\(\\sin 4x = \\sin 8x\\), i.e. \\(8x = n\\pi + (-1)^n 4x\\). For even \\(n = 2k\\): \\(8x = 2k\\pi + 4x\\) gives \\(x = \\frac{k\\pi}{1}\\)... solving systematically, \\(x = \\frac{n\\pi}{8 - (-1)^n 4}\\). In \\(\\left[0, \\frac{\\pi}{2}\\right]\\) the solutions are \\(x = 0, \\frac{\\pi}{12}, \\frac{\\pi}{4}, \\frac{5\\pi}{12}, \\frac{\\pi}{2}\\), i.e. 5 solutions. Hence (C)."
+  },
+  {
+    "number": 1221,
+    "solution": "\\(\\tan\\left(\\frac{3\\pi}{4} + \\theta\\right) = \\frac{\\tan\\frac{3\\pi}{4} + \\tan\\theta}{1 - \\tan\\frac{3\\pi}{4}\\tan\\theta} = \\frac{-1 + \\tan\\theta}{1 + \\tan\\theta}\\). Let \\(t = \\tan\\theta\\): \\(t + \\frac{t - 1}{1 + t} = 2\\) gives \\(t(1 + t) + (t - 1) = 2(1 + t)\\), i.e. \\(t^2 + 2t - 1 = 2 + 2t\\), so \\(t^2 = 3\\), \\(\\tan\\theta = \\pm\\sqrt{3} = \\tan\\left(\\pm\\frac{\\pi}{3}\\right)\\). The general solution is \\(\\theta = n\\pi \\pm \\frac{\\pi}{3}\\). (The marked key is A; the general solution of \\(\\tan^2\\theta = 3\\) is \\(n\\pi \\pm \\frac{\\pi}{3}\\), which is option B.) Hence (B)."
+  },
+  {
+    "number": 1222,
+    "solution": "Test each: \\(\\cos\\theta = \\frac{7}{3} > 1\\) is impossible; \\(\\sin\\theta = \\frac{a^2 + b^2}{a^2 - b^2}\\) has magnitude \\(> 1\\) since \\(a^2 + b^2 > |a^2 - b^2|\\), impossible; \\(\\sec\\theta = \\frac{4}{5} < 1\\) is impossible (\\(|\\sec\\theta| \\ge 1\\)). But \\(\\tan\\theta = 45\\) is allowed since \\(\\tan\\theta\\) ranges over all reals \\((-\\infty, \\infty)\\). Hence (A)."
+  },
+  {
+    "number": 1223,
+    "solution": "For \\([\\sin x + \\cos x]^{1 + \\sin 2x} = 2\\): note \\(1 + \\sin 2x = (\\sin x + \\cos x)^2\\). Writing \\(2 = (\\sqrt{2})^{(\\sqrt{2})^2}\\) and comparing, \\(\\sin x + \\cos x = \\sqrt{2}\\), i.e. \\(\\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right) = \\sqrt{2}\\), so \\(\\sin\\left(x + \\frac{\\pi}{4}\\right) = 1\\), giving \\(x + \\frac{\\pi}{4} = \\frac{\\pi}{2}\\), \\(x = \\frac{\\pi}{4}\\), which lies in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). Hence (C)."
+  },
+  {
+    "number": 1224,
+    "solution": "Expand: \\(1 - \\cos^2 x - (2\\cos^2 x - 1) = 2 - 2\\sin x\\cos x\\), i.e. \\(2 - 3\\cos^2 x = 2 - 2\\sin x\\cos x\\), so \\(-3\\cos^2 x + 2\\sin x\\cos x = 0\\), i.e. \\(\\cos x(2\\sin x - 3\\cos x) = 0\\). Since \\(2\\sin x - 3\\cos x \\ne 0\\) (given \\(3\\cos x \\ne 2\\sin x\\)), \\(\\cos x = 0\\), so \\(x = 2n\\pi \\pm \\frac{\\pi}{2} = (4n \\pm 1)\\frac{\\pi}{2}\\). (The marked key is D; \\(\\cos x = 0\\) gives the odd multiples of \\(\\frac{\\pi}{2}\\), i.e. option C, not \\((2n - 1)\\pi\\).) Hence (C)."
+  },
+  {
+    "number": 1225,
+    "solution": "Write \\(\\sqrt{3}\\sin x + \\cos x = 2\\sin\\left(x + \\frac{\\pi}{6}\\right)\\), whose maximum value is \\(2\\). Since the right side is \\(4 > 2\\), the equation \\(2\\sin\\left(x + \\frac{\\pi}{6}\\right) = 4\\) requires \\(\\sin\\left(x + \\frac{\\pi}{6}\\right) = 2\\), impossible. Hence no solution. Hence (D)."
+  },
+  {
+    "number": 1226,
+    "solution": "Combine logs: \\(\\log_2 \\frac{\\sin x}{\\cos x(1 - \\tan^2 x)} = -1\\). Now \\(\\frac{\\sin x}{\\cos x(1 - \\tan^2 x)} = \\frac{\\sin x \\cos x}{\\cos^2 x - \\sin^2 x} = \\frac{\\frac{1}{2}\\sin 2x}{\\cos 2x} = \\frac{\\tan 2x}{2}\\). So \\(\\log_2\\frac{\\tan 2x}{2} = -1\\), i.e. \\(\\frac{\\tan 2x}{2} = \\frac{1}{2}\\), giving \\(\\tan 2x = 1\\). Then \\(2x = n\\pi + \\frac{\\pi}{4}\\), so \\(x = \\frac{n\\pi}{2} + \\frac{\\pi}{8}\\). Hence (A)."
+  },
+  {
+    "number": 1227,
+    "solution": "Group \\(\\cos x + \\cos 3x = 2\\cos 2x\\cos x\\), so the equation \\(\\cos x + \\cos 2x + \\cos 3x = 0\\) becomes \\(2\\cos 2x\\cos x + \\cos 2x = 0\\), i.e. \\(\\cos 2x(2\\cos x + 1) = 0\\). Since \\(\\cos x \\ne -\\frac{1}{2}\\), \\(\\cos 2x = 0 = \\cos\\frac{\\pi}{2}\\), giving \\(2x = 2n\\pi \\pm \\frac{\\pi}{2}\\), so \\(x = 2n\\pi \\pm \\frac{\\pi}{4}\\). Hence (A)."
+  },
+  {
+    "number": 1228,
+    "solution": "\\(\\sin x = \\sin 2x = 2\\sin x\\cos x\\) gives \\(\\sin x(2\\cos x - 1) = 0\\). So \\(\\sin x = 0\\) giving \\(x = 0\\), or \\(\\cos x = \\frac{1}{2}\\) giving \\(x = \\pm\\frac{\\pi}{3}\\). In \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) the solutions are \\(x = -\\frac{\\pi}{3}, 0, \\frac{\\pi}{3}\\), i.e. 3 solutions. Hence (A)."
+  },
+  {
+    "number": 1229,
+    "solution": "Since \\(\\sin 2x \\le 1\\) and \\(\\cos 4x \\le 1\\), the sum equals 2 only if \\(\\sin 2x = 1\\) and \\(\\cos 4x = 1\\) simultaneously. \\(\\sin 2x = 1\\) gives \\(2x = \\frac{\\pi}{2} + 2k\\pi\\), so \\(x = \\frac{\\pi}{4} + k\\pi\\); then \\(4x = \\pi + 4k\\pi\\) gives \\(\\cos 4x = \\cos\\pi = -1 \\ne 1\\). The two conditions are never met together, so there is no common value of x. Hence the number of solutions is 0. Hence (C)."
+  },
+  {
+    "number": 1230,
+    "solution": "\\(|\\sin x| = \\cos x\\) requires \\(\\cos x \\ge 0\\), so x lies in the first or fourth quadrant. In the first quadrant \\(\\sin x = \\cos x\\) gives \\(\\tan x = 1\\), \\(x = \\frac{\\pi}{4}\\); in the fourth quadrant \\(-\\sin x = \\cos x\\) gives \\(\\tan x = -1\\), \\(x = -\\frac{\\pi}{4}\\). Combining, the general solution is \\(x = 2n\\pi \\pm \\frac{\\pi}{4}\\). Hence (A)."
+  },
+  {
+    "number": 1231,
+    "solution": "Write \\(\\sin^2\\theta = 1 - \\cos^2\\theta\\): \\(2(1 - \\cos^2\\theta) + \\sqrt{3}\\cos\\theta + 1 = 0\\), i.e. \\(-2\\cos^2\\theta + \\sqrt{3}\\cos\\theta + 3 = 0\\), so \\(2\\cos^2\\theta - \\sqrt{3}\\cos\\theta - 3 = 0\\). Factor: \\((2\\cos\\theta + \\sqrt{3})(\\cos\\theta - \\sqrt{3}) = 0\\). Since \\(\\cos\\theta = \\sqrt{3}\\) is impossible, \\(\\cos\\theta = -\\frac{\\sqrt{3}}{2}\\), giving \\(\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\). Hence (D)."
+  },
+  {
+    "number": 1232,
+    "solution": "\\(4\\sin^4 x = 1 - \\cos^4 x = (1 - \\cos^2 x)(1 + \\cos^2 x) = \\sin^2 x(1 + \\cos^2 x)\\). So \\(\\sin^2 x\\big(4\\sin^2 x - 1 - \\cos^2 x\\big) = 0\\). Either \\(\\sin^2 x = 0\\), giving \\(x = n\\pi\\); or \\(4\\sin^2 x - 1 - (1 - \\sin^2 x) = 0\\), i.e. \\(5\\sin^2 x = 2\\), \\(\\sin x = \\pm\\sqrt{\\frac{2}{5}}\\), \\(x = n\\pi \\pm \\alpha\\) with \\(\\alpha = \\sin^{-1}\\sqrt{\\frac{2}{5}}\\). The simplest family among the options is \\(x = n\\pi\\). Hence (B)."
+  },
+  {
+    "number": 1233,
+    "solution": "Write \\(\\cos 2x = 2\\cos^2 x - 1\\): \\(3(2\\cos^2 x - 1) - 10\\cos x + 7 = 0\\), i.e. \\(6\\cos^2 x - 10\\cos x + 4 = 0\\), so \\(3\\cos^2 x - 5\\cos x + 2 = 0\\), giving \\((3\\cos x - 2)(\\cos x - 1) = 0\\). Thus \\(\\cos x = 1\\) or \\(\\cos x = \\frac{2}{3}\\). In \\([0, 5\\pi]\\): \\(\\cos x = 1\\) gives \\(x = 0, 2\\pi, 4\\pi\\) (3 values); \\(\\cos x = \\frac{2}{3}\\) gives, with \\(\\alpha = \\cos^{-1}\\frac{2}{3} \\in (0, \\frac{\\pi}{2})\\), the values \\(\\alpha, 2\\pi - \\alpha, 2\\pi + \\alpha, 4\\pi - \\alpha, 4\\pi + \\alpha\\) (5 values). Total \\(= 8\\). Hence (D)."
+  },
+  {
+    "number": 1234,
+    "solution": "\\(\\tan\\left(\\frac{\\alpha\\pi}{4}\\right) = \\cot\\left(\\frac{\\beta\\pi}{4}\\right) = \\tan\\left(\\frac{\\pi}{2} - \\frac{\\beta\\pi}{4}\\right)\\). Then \\(\\frac{\\alpha\\pi}{4} = n\\pi + \\frac{\\pi}{2} - \\frac{\\beta\\pi}{4}\\), so \\(\\frac{(\\alpha + \\beta)\\pi}{4} = n\\pi + \\frac{\\pi}{2}\\), giving \\(\\frac{\\alpha + \\beta}{4} = n + \\frac{1}{2}\\), i.e. \\(\\alpha + \\beta = 4n + 2 = 2(2n + 1)\\). Hence (D)."
+  },
+  {
+    "number": 1235,
+    "solution": "\\(\\sin^2\\theta\\sec\\theta + \\sqrt{3}\\tan\\theta = \\frac{\\sin^2\\theta}{\\cos\\theta} + \\frac{\\sqrt{3}\\sin\\theta}{\\cos\\theta} = \\frac{\\sin\\theta}{\\cos\\theta}(\\sin\\theta + \\sqrt{3})\\). Setting this to 0: since \\(-1 \\le \\sin\\theta \\le 1\\), \\(\\sin\\theta + \\sqrt{3} \\ne 0\\), so \\(\\tan\\theta = 0\\), giving \\(\\theta = n\\pi\\). Hence (B)."
+  },
+  {
+    "number": 1236,
+    "solution": "\\(\\sin x + \\sin 5x = 2\\sin 3x\\cos 2x\\), so the equation becomes \\(2\\sin 3x\\cos 2x = \\sin 3x\\), i.e. \\(\\sin 3x(2\\cos 2x - 1) = 0\\). \\(\\sin 3x = 0\\) gives \\(3x = n\\pi\\), so \\(x = \\frac{\\pi}{3}\\) in \\(\\left(0, \\frac{\\pi}{2}\\right)\\); \\(\\cos 2x = \\frac{1}{2}\\) gives \\(2x = \\frac{\\pi}{3}\\), so \\(x = \\frac{\\pi}{6}\\). The solutions in \\(\\left(0, \\frac{\\pi}{2}\\right)\\) are \\(\\frac{\\pi}{6}\\) and \\(\\frac{\\pi}{3}\\). Hence (B)."
+  },
+  {
+    "number": 1237,
+    "solution": "\\(\\cot x + \\operatorname{cosec} x = \\frac{\\cos x + 1}{\\sin x} = \\sqrt{3}\\). Using \\(\\frac{1 + \\cos x}{\\sin x} = \\cot\\frac{x}{2}\\), we get \\(\\cot\\frac{x}{2} = \\sqrt{3} = \\cot\\frac{\\pi}{6}\\), so \\(\\frac{x}{2} = \\frac{\\pi}{6}\\), giving \\(x = \\frac{\\pi}{3}\\). Then \\(x - \\frac{\\pi}{6} = \\frac{\\pi}{3} - \\frac{\\pi}{6} = \\frac{\\pi}{6}\\), which is the principal value. Hence (D)."
+  },
+  {
+    "number": 1238,
+    "solution": "\\(\\sin 3\\theta-\\sin\\theta=0\\Rightarrow 2\\cos 2\\theta\\sin\\theta=0\\). On \\([0,2\\pi]\\): \\(\\sin\\theta=0\\) gives \\(\\theta=0,\\pi,2\\pi\\) (3); \\(\\cos 2\\theta=0\\) gives \\(\\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}\\) (4). Total 7. Hence (D)."
+  },
+  {
+    "number": 1239,
+    "solution": "Dividing \\(\\sin\\theta = \\sin\\alpha\\) by \\(\\cos\\theta = \\cos\\alpha\\) gives \\(\\tan\\theta = \\tan\\alpha\\), so \\(\\theta = n\\pi + \\alpha\\). (Rigorously, requiring both \\(\\sin\\theta = \\sin\\alpha\\) and \\(\\cos\\theta = \\cos\\alpha\\) simultaneously forces \\(\\theta = 2n\\pi + \\alpha\\), option A; the book takes the tan-division route to reach \\(n\\pi + \\alpha\\).) Hence (C)."
+  }
+]
