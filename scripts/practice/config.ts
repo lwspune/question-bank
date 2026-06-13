@@ -499,6 +499,62 @@ export const TOPICS: Record<string, Topic> = {
       "Solving and Verifying ODEs — Separable, IVP, and Applications",
     ],
   },
+
+  // ─── 2D Geometry folder (03. 2D) — questions Q1411-1794 in one PDF (page 73-92).
+  // Answer key = last page (index 19) -> extracted to `_2d_answers.pdf` (Trig gotcha).
+  // Sections: Cartesian System 1411-1443 + Straight Line 1444-1553 -> Lines;
+  // Circle 1554-1684 -> Circles; Ellipse 1685-1747 + Hyperbola 1748-1794 -> Conics.
+  "lines": {
+    id: "lines",
+    chapterName: "Lines",
+    qFrom: 1411,
+    qTo: 1553,
+    sourceFile: "NDA_Maths_Practice__2D__Lines.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "03. 2D", "3. 2D Geometry page 73-92.pdf"), pages: [1, 2, 3, 4, 5, 6, 7] },
+    answerKey: { pdf: join(SOURCE_ROOT, "03. 2D", "_2d_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "03. 2D", "3rd 2D Geometry sol page 285-310.pdf"), pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+    subtopics: [
+      "Angle Between Lines, Parallelism, and Perpendicularity",
+      "Distance, Section, and Locus",
+      "Equation, Slope, and Family of Lines",
+      "Triangles, Quadrilaterals, and Polygons",
+    ],
+  },
+
+  "circles": {
+    id: "circles",
+    chapterName: "Circles",
+    qFrom: 1554,
+    qTo: 1640,
+    sourceFile: "NDA_Maths_Practice__2D__Circles.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "03. 2D", "3. 2D Geometry page 73-92.pdf"), pages: [7, 8, 9, 10, 11, 12, 13] },
+    answerKey: { pdf: join(SOURCE_ROOT, "03. 2D", "_2d_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "03. 2D", "3rd 2D Geometry sol page 285-310.pdf"), pages: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18] },
+    subtopics: [
+      "Circle Equation — Centre, Radius, Diameter, and Properties",
+      "Circles Through Given Points and Concyclicity",
+      "Inscribed Geometry, Tangents, and Segments",
+    ],
+  },
+
+  // Source sections "Parabola" (1641-1684) + "Ellipse" (1685-1747) + "Hyperbola"
+  // (1748-1794) -> NDA Maths "Conics". (The TOC omitted the Parabola section.)
+  "conics": {
+    id: "conics",
+    chapterName: "Conics",
+    qFrom: 1641,
+    qTo: 1794,
+    sourceFile: "NDA_Maths_Practice__2D__Conics.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "03. 2D", "3. 2D Geometry page 73-92.pdf"), pages: [11, 12, 13, 14, 15, 16, 17, 18] },
+    answerKey: { pdf: join(SOURCE_ROOT, "03. 2D", "_2d_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "03. 2D", "3rd 2D Geometry sol page 285-310.pdf"), pages: [18, 19, 20, 21, 22, 23, 24, 25] },
+    subtopics: [
+      "Conic Sections — Identification and Eccentricity Comparison",
+      "Ellipse — Foci, Eccentricity, and Focal Distances",
+      "Hyperbola — Foci and Eccentricity",
+      "Parabola — Equation, Properties, and Latus Rectum",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
