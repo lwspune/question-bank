@@ -1,0 +1,6 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong (each verified by re-derivation + zoom-crop). Q2324 and Q2375 are backed by the book's own printed worked solutions; Q2362 is a determinant series-expansion (no printed solution, verified independently). Q2241 (limit DNE: LHL=1/3, RHL=0) and Q2373 (key C agrees with the book solution though standard analysis gives 1 point) were left as keyed with honest solution notes.",
+  "2324": { "answer": "C", "reason": "key 'd' wrong: lim_{x->1} (x^2 - sqrt x)/(sqrt x - 1) by L'Hopital = (2 - 1/2)/(1/2) = 3 = option C (book solution gives 3)" },
+  "2362": { "answer": "A", "reason": "key 'b' wrong: expanding the determinant f(x), the lowest-order term is +x^2, so lim_{x->0} f(x)/x^2 = 1 = option A" },
+  "2375": { "answer": "D", "reason": "key 'c' wrong: discontinuities occur where 1-cos4x=0, i.e. x = n*pi/2, giving {0, pi/2, ...} = option D (book solution derives n*pi/2)" }
+}

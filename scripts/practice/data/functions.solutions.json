@@ -1,0 +1,494 @@
+[
+  {
+    "number": 2101,
+    "solution": "For \\(\\log(x+5)\\) to be defined we need \\(x+5>0\\), i.e. \\(x>-5\\). The denominator \\(x^{2}+4x+3=(x+1)(x+3)\\) must be non-zero, so \\(x\\neq -1\\) and \\(x\\neq -3\\). Hence the domain is \\((-5,\\infty)\\) with \\(-1\\) and \\(-3\\) removed, i.e. \\((-5,\\infty)-\\{-3,-1\\}\\). Hence (D)."
+  },
+  {
+    "number": 2102,
+    "solution": "For \\(f(x)=\\sqrt{9-x^{2}}\\) the radicand satisfies \\(0\\le 9-x^{2}\\le 9\\) (it ranges from \\(0\\) at \\(x=\\pm 3\\) to \\(9\\) at \\(x=0\\)). Therefore \\(f(x)=\\sqrt{9-x^{2}}\\) takes all values from \\(0\\) to \\(3\\) inclusive. Range \\(=[0,3]\\). Hence (A)."
+  },
+  {
+    "number": 2103,
+    "solution": "Write \\(f(x)=\\dfrac{x^{2}+2}{x^{2}+1}=1+\\dfrac{1}{x^{2}+1}\\). Since \\(x^{2}+1\\ge 1\\), the term \\(\\dfrac{1}{x^{2}+1}\\) lies in \\((0,1]\\), being \\(1\\) at \\(x=0\\) and approaching \\(0\\) as \\(|x|\\to\\infty\\). Therefore \\(f(x)\\in(1,2]\\). Hence (A)."
+  },
+  {
+    "number": 2104,
+    "solution": "Let \\(t=x^{2}+2x=(x+1)^{2}-1\\), so \\(t\\ge -1\\). Then \\(y=\\dfrac{t+1}{t-1}\\). Solving for \\(t\\): \\(y(t-1)=t+1\\Rightarrow t(y-1)=y+1\\Rightarrow t=\\dfrac{y+1}{y-1}\\). The condition \\(t\\ge -1\\) gives \\(\\dfrac{y+1}{y-1}\\ge -1\\Rightarrow \\dfrac{2y}{y-1}\\ge 0\\Rightarrow y\\le 0\\) or \\(y>1\\). The value \\(y=0\\) is attained at \\(x=-1\\) (where \\(t=-1\\)). Hence the range is \\((-\\infty,0]\\cup(1,\\infty)\\). Hence (A)."
+  },
+  {
+    "number": 2105,
+    "solution": "With \\(f(x)=2x^{2}\\), \\(f(3.8)=2(3.8)^{2}=28.88\\) and \\(f(4)=2(16)=32\\). Then \\(\\dfrac{f(3.8)-f(4)}{3.8-4}=\\dfrac{28.88-32}{-0.2}=\\dfrac{-3.12}{-0.2}=15.6\\). Equivalently \\(2\\cdot(3.8+4)=2(7.8)=15.6\\). Hence (D)."
+  },
+  {
+    "number": 2106,
+    "solution": "For \\(\\sqrt{7-3x}\\) we need \\(7-3x\\ge 0\\Rightarrow x\\le \\dfrac{7}{3}\\). For \\(\\log_{e}x\\) we need \\(x>0\\). The intersection is \\(0<x\\le \\dfrac{7}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2107,
+    "solution": "Using the recurrences with \\(f(1)=1\\): \\(f(2)=f(1)=1\\); \\(f(3)=(f(1))^{2}-2=-1\\); \\(f(4)=f(2)=1\\); \\(f(5)=(f(2))^{2}-2=-1\\); \\(f(6)=f(3)=-1\\); \\(f(7)=(f(3))^{2}-2=-1\\); and so on. Continuing, only \\(f(1),f(2),f(4),f(8),f(16)\\) equal \\(+1\\) (the powers of two up to \\(25\\)) while every other term equals \\(-1\\). Among \\(1\\) to \\(25\\) there are \\(5\\) terms equal to \\(+1\\) and \\(20\\) terms equal to \\(-1\\). Sum \\(=5(1)+20(-1)=5-20=-15\\). Hence (B)."
+  },
+  {
+    "number": 2108,
+    "solution": "Since \\(\\cos 3x\\in[-1,1]\\), the denominator \\(2-\\cos 3x\\in[1,3]\\). Hence \\(f(x)=\\dfrac{1}{2-\\cos 3x}\\) lies between \\(\\dfrac{1}{3}\\) (when \\(2-\\cos 3x=3\\)) and \\(1\\) (when \\(2-\\cos 3x=1\\)), both attained. Range \\(=\\left[\\dfrac{1}{3},1\\right]\\). Hence (D)."
+  },
+  {
+    "number": 2109,
+    "solution": "Let \\(y=\\dfrac{x^{2}-x+4}{x^{2}+x+4}\\). Then \\((y-1)x^{2}+(y+1)x+4(y-1)=0\\). For real \\(x\\) the discriminant must be non-negative: \\((y+1)^{2}-16(y-1)^{2}\\ge 0\\Rightarrow (y+1)^{2}\\ge 16(y-1)^{2}\\). Taking square roots, \\(|y+1|\\ge 4|y-1|\\), which gives \\(3\\le \\dfrac{1}{y}\\)-type bounds; solving \\(15y^{2}-34y+15\\le 0\\) yields \\(\\dfrac{3}{5}\\le y\\le \\dfrac{5}{3}\\). Both endpoints are attained (at \\(x=2\\) and \\(x=-2\\)). Range \\(=\\left[\\dfrac{3}{5},\\dfrac{5}{3}\\right]\\). Hence (A)."
+  },
+  {
+    "number": 2110,
+    "solution": "For \\(\\sqrt{x-2}\\) we need \\(x\\ge 2\\); for \\(\\sqrt{1-x}\\) we need \\(x\\le 1\\). These two requirements cannot hold simultaneously, so there is no \\(x\\) in the domain. The domain is the null (empty) set. Hence (C)."
+  },
+  {
+    "number": 2111,
+    "solution": "The denominator \\(x^{2}-3x+3\\) has discriminant \\((-3)^{2}-4(1)(3)=9-12=-3<0\\), so it is never zero for real \\(x\\). The numerator imposes no restriction. Therefore the domain is all of \\(R\\). Hence (C)."
+  },
+  {
+    "number": 2112,
+    "solution": "With \\(f(x)=x^{3}-1\\): \\(f(3)=27-1=26\\) and \\(f(2)=8-1=7\\). The book intends the combination \\(\\dfrac{f(3)+f(2)}{11}=\\dfrac{26+7}{11}=\\dfrac{33}{11}=3\\), which matches the answer key. Hence (C). [NOTE: the printed stem shows a minus sign, \\(\\dfrac{f(3)-f(2)}{11}=\\dfrac{19}{11}\\), which is not among the options; the keyed answer requires the plus sign.]"
+  },
+  {
+    "number": 2113,
+    "solution": "For \\(f(x)=b^{x}\\) with \\(b>1\\): as \\(x\\to-\\infty\\), \\(b^{x}\\to 0\\) (statement A is correct); the domain is \\(R\\) (B is correct); the range is all positive reals (D is correct). The value of the function is \\(b^{0}=1\\) only at \\(x=0\\); it is not always \\(1\\), and the point claimed is \\((1,0)\\), which is false. Thus the incorrect statement is option C. Hence (C)."
+  },
+  {
+    "number": 2114,
+    "solution": "Complete the square: \\(f(x)=x^{2}+2x+2=(x+1)^{2}+1\\). Since \\((x+1)^{2}\\ge 0\\), we get \\(f(x)\\ge 1\\), with the minimum \\(1\\) attained at \\(x=-1\\). Range \\(=[1,\\infty)\\). Hence (A)."
+  },
+  {
+    "number": 2115,
+    "solution": "An element of \\(A\\cap B\\) needs \\(y=e^{-x}\\) and \\(y=-x\\) simultaneously, i.e. \\(e^{-x}=-x\\). Put \\(u=-x\\): the equation becomes \\(e^{u}=u\\). But \\(e^{u}>u\\) for every real \\(u\\) (since \\(e^{u}\\ge 1+u>u\\)), so there is no solution. Therefore \\(A\\cap B=\\phi\\). Hence (A)."
+  },
+  {
+    "number": 2116,
+    "solution": "For \\(\\log_{2}(x+3)\\) we need \\(x+3>0\\Rightarrow x>-3\\). The denominator \\(x^{2}+3x+2=(x+1)(x+2)\\) must be non-zero, so \\(x\\neq -1\\) and \\(x\\neq -2\\). Combining gives \\((-3,\\infty)-\\{-1,-2\\}\\). Hence (D)."
+  },
+  {
+    "number": 2117,
+    "solution": "Requirements: \\(\\sqrt{x+2}\\) needs \\(x+2\\ge 0\\Rightarrow x\\ge -2\\); \\(\\log_{10}(1-x)\\) needs \\(1-x>0\\Rightarrow x<1\\); and the denominator \\(\\log_{10}(1-x)\\neq 0\\Rightarrow 1-x\\neq 1\\Rightarrow x\\neq 0\\). Combining: \\(-2\\le x<1\\) with \\(x\\neq 0\\), i.e. \\([-2,0)\\cup(0,1)\\). Hence (B)."
+  },
+  {
+    "number": 2118,
+    "solution": "Write \\(f(x)=\\dfrac{x^{2}-1}{x^{2}+1}=1-\\dfrac{2}{x^{2}+1}\\). Since \\(x^{2}+1\\ge 1\\), the term \\(\\dfrac{2}{x^{2}+1}\\) is largest (\\(=2\\)) at \\(x=0\\), giving the smallest value \\(f(0)=1-2=-1\\). Thus the minimum value is \\(-1\\). Hence (A)."
+  },
+  {
+    "number": 2119,
+    "solution": "We need \\(|x|-x>0\\) (strictly positive, since it is under a square root in a denominator). If \\(x\\ge 0\\), \\(|x|-x=0\\), not allowed. If \\(x<0\\), \\(|x|-x=-x-x=-2x>0\\), which holds. Hence the domain is \\(x<0\\), i.e. \\((-\\infty,0)\\). Hence (A)."
+  },
+  {
+    "number": 2120,
+    "solution": "Here \\(f(x)=3-x\\) on \\(-4\\le x\\le 4\\). For \\(\\log_{e}(f(x))\\) we need \\(f(x)>0\\Rightarrow 3-x>0\\Rightarrow x<3\\). Intersecting with \\(-4\\le x\\le 4\\) gives \\(-4\\le x<3\\), which the options express as \\((-4,3)\\). Hence (D)."
+  },
+  {
+    "number": 2121,
+    "solution": "For \\(f(x)=\\dfrac{1}{\\sqrt{9-x^{2}}}\\) the radicand must be strictly positive: \\(9-x^{2}>0\\Rightarrow x^{2}<9\\Rightarrow -3<x<3\\). Hence (B)."
+  },
+  {
+    "number": 2122,
+    "solution": "Given \\(f(x)=\\dfrac{x-1}{x+1}\\). Check option B: \\(\\dfrac{3f(x)+1}{f(x)+3}\\). Now \\(3f(x)+1=\\dfrac{3(x-1)+(x+1)}{x+1}=\\dfrac{4x-2}{x+1}\\) and \\(f(x)+3=\\dfrac{(x-1)+3(x+1)}{x+1}=\\dfrac{4x+2}{x+1}\\). Their ratio is \\(\\dfrac{4x-2}{4x+2}=\\dfrac{2x-1}{2x+1}=f(2x)\\). Hence (B)."
+  },
+  {
+    "number": 2123,
+    "solution": "For \\(f(x)=\\dfrac{1}{\\log_{10}(1-x)}\\): we need \\(1-x>0\\Rightarrow x<1\\), and the denominator non-zero, \\(\\log_{10}(1-x)\\neq 0\\Rightarrow 1-x\\neq 1\\Rightarrow x\\neq 0\\). Hence the domain is \\((-\\infty,1)-\\{0\\}\\). Hence (B)."
+  },
+  {
+    "number": 2124,
+    "solution": "The condition \\(f(a)=a\\) gives \\(\\dfrac{\\alpha a^{2}}{a+1}=a\\). Since \\(a\\neq 0\\), divide by \\(a\\): \\(\\dfrac{\\alpha a}{a+1}=1\\Rightarrow \\alpha a=a+1\\Rightarrow \\alpha=\\dfrac{a+1}{a}=1+\\dfrac{1}{a}\\). Hence (C)."
+  },
+  {
+    "number": 2125,
+    "solution": "For \\(f(x)=\\sqrt{\\log_{10}x^{2}}\\) to be real we need \\(\\log_{10}x^{2}\\ge 0\\Rightarrow x^{2}\\ge 1\\Rightarrow |x|\\ge 1\\). This gives \\(x\\le -1\\) or \\(x\\ge 1\\), i.e. \\((-\\infty,-1]\\cup[1,\\infty)\\). Hence (D)."
+  },
+  {
+    "number": 2126,
+    "solution": "Replacing \\(x\\) by \\(\\dfrac{1}{x}\\) in \\(2f(x^{2})+3f\\left(\\dfrac{1}{x^{2}}\\right)=x^{2}-1\\) gives \\(2f\\left(\\dfrac{1}{x^{2}}\\right)+3f(x^{2})=\\dfrac{1}{x^{2}}-1\\). Solving the two equations (multiply suitably and eliminate): \\(5f(x^{2})=-2x^{2}-\\dfrac{3}{x^{2}}+\\ldots\\), leading to \\(f(u)=\\dfrac{-2u^{2}-u+3}{5u}\\). Substituting \\(u=x^{4}\\) gives \\(f(x^{4})=\\dfrac{(1-x^{4})(2x^{4}+3)}{5x^{4}}\\). Hence (A)."
+  },
+  {
+    "number": 2127,
+    "solution": "Let \\(y=\\dfrac{x^{2}-x+1}{x^{2}+x+1}\\). Then \\((y-1)x^{2}+(y+1)x+(y-1)=0\\). For real \\(x\\), the discriminant \\((y+1)^{2}-4(y-1)^{2}\\ge 0\\Rightarrow 3y^{2}-10y+3\\le 0\\Rightarrow \\dfrac{1}{3}\\le y\\le 3\\). Both endpoints are attained, so the range is \\(\\left[\\dfrac{1}{3},3\\right]\\), which is option D. Hence (D). [NOTE: the answer key marks A \\((-\\infty,3]\\), but the function is bounded below by \\(\\dfrac{1}{3}\\); the correct range is \\(\\left[\\dfrac{1}{3},3\\right]\\) (option D).]"
+  },
+  {
+    "number": 2128,
+    "solution": "Given \\(2f(x)+f(1-x)=x^{2}\\). Replacing \\(x\\) by \\(1-x\\): \\(2f(1-x)+f(x)=(1-x)^{2}\\). Multiply the first by \\(2\\) and subtract the second: \\(4f(x)+2f(1-x)-2f(1-x)-f(x)=2x^{2}-(1-x)^{2}\\Rightarrow 3f(x)=2x^{2}-(1-2x+x^{2})=x^{2}+2x-1\\). Thus \\(f(x)=\\dfrac{x^{2}+2x-1}{3}\\). Hence (B)."
+  },
+  {
+    "number": 2129,
+    "solution": "Requirements: \\(\\log(2x-3)\\) needs \\(2x-3>0\\Rightarrow x>\\dfrac{3}{2}\\); \\(\\sqrt{x-1}\\) in the denominator needs \\(x-1>0\\Rightarrow x>1\\); \\(\\sqrt{5-2x}\\) needs \\(5-2x\\ge 0\\Rightarrow x\\le \\dfrac{5}{2}\\). Combining the strongest lower bound \\(x>\\dfrac{3}{2}\\) with \\(x\\le \\dfrac{5}{2}\\) gives \\(\\left(\\dfrac{3}{2},\\dfrac{5}{2}\\right]\\), which is option D. Hence (D). [NOTE: the answer key marks A \\(\\left[1,\\dfrac{5}{2}\\right)\\), but the \\(\\log(2x-3)\\) factor forces \\(x>\\dfrac{3}{2}\\) and the outer \\(\\sqrt{5-2x}\\) includes \\(x=\\dfrac{5}{2}\\); the correct domain is \\(\\left(\\dfrac{3}{2},\\dfrac{5}{2}\\right]\\) (option D), as the book's own working shows.]"
+  },
+  {
+    "number": 2130,
+    "solution": "With \\(f(x)=\\log\\left(\\dfrac{1+x}{1-x}\\right)\\), one shows \\(f\\left(\\dfrac{3x+x^{3}}{1+3x^{2}}\\right)=3f(x)\\) and \\(f\\left(\\dfrac{2x}{1+x^{2}}\\right)=2f(x)\\) (these are the triple-angle and double-angle identities for this log). Therefore the difference is \\(3f(x)-2f(x)=f(x)\\). Hence (D)."
+  },
+  {
+    "number": 2131,
+    "solution": "For \\(f(x)=\\log(x+\\sqrt{x^{2}+1})\\), compute \\(f(-x)=\\log(-x+\\sqrt{x^{2}+1})=\\log\\dfrac{(\\sqrt{x^{2}+1}-x)(\\sqrt{x^{2}+1}+x)}{x+\\sqrt{x^{2}+1}}=\\log\\dfrac{1}{x+\\sqrt{x^{2}+1}}=-f(x)\\). Since \\(f(-x)=-f(x)\\), the function is odd. Hence (B)."
+  },
+  {
+    "number": 2132,
+    "solution": "The greatest-integer function \\(f(x)=[x]\\) is not even (\\([-0.5]=-1\\) but \\([0.5]=0\\), so \\(f(-x)\\neq f(x)\\)) and not odd (\\(f(-x)\\neq -f(x)\\) for non-integers). It is non-decreasing but not strictly increasing (it is constant on each unit interval). Therefore it is neither even nor odd. Hence (C)."
+  },
+  {
+    "number": 2133,
+    "solution": "From \\(f(0)=3\\): \\(2(0)+b(0)+c=3\\Rightarrow c=3\\). From \\(f(2)=1\\): \\(2(4)+2b+3=1\\Rightarrow 8+2b+3=1\\Rightarrow 2b=-10\\Rightarrow b=-5\\). Then \\(f(1)=2(1)+(-5)(1)+3=2-5+3=0\\). Hence (C)."
+  },
+  {
+    "number": 2134,
+    "solution": "The function \\(f(x)=\\dfrac{x}{1+x^{2}}\\) has maximum \\(\\dfrac{1}{2}\\) at \\(x=1\\) and minimum \\(-\\dfrac{1}{2}\\) at \\(x=-1\\), so its range is exactly \\(\\left[-\\dfrac{1}{2},\\dfrac{1}{2}\\right]\\), the given codomain; thus it is surjective. But it is not injective, since for example \\(f(2)=\\dfrac{2}{5}=f\\left(\\dfrac{1}{2}\\right)\\). Therefore it is surjective but not injective. Hence (B)."
+  },
+  {
+    "number": 2135,
+    "solution": "Here \\(f(x)=x-5\\left[\\dfrac{x}{5}\\right]\\) is the remainder of \\(x\\) on division by \\(5\\), so for \\(x\\in N\\) it takes only the values \\(0,1,2,3,4\\). It is not one-one (it repeats with period \\(5\\), e.g. \\(f(1)=f(6)\\)) and not onto \\(R\\) (its range is a finite set). Therefore it is neither one-one nor onto. Hence (C)."
+  },
+  {
+    "number": 2136,
+    "solution": "For \\(f(n)=n^{3}+3\\) on \\(N\\): if \\(n_{1}\\neq n_{2}\\) then \\(n_{1}^{3}\\neq n_{2}^{3}\\), so \\(f\\) is one-one. But the range is \\(\\{4,11,30,\\ldots\\}\\), which does not contain \\(1,2,3,\\ldots\\), so \\(f\\) is not onto. Therefore it is one to one but not onto. Hence (B)."
+  },
+  {
+    "number": 2137,
+    "solution": "For \\(f(x)=x^{4}\\) on \\(R\\): \\(f(1)=f(-1)=1\\) but \\(1\\neq -1\\), so \\(f\\) is not one-one. Also the range is \\([0,\\infty)\\), so negative numbers are not images and \\(f\\) is not onto. Therefore \\(f\\) is neither one-one nor onto. Hence (B). [NOTE: the answer key marks D; however the book's own solution shows \\(f\\) is neither one-one nor onto, which is option B.]"
+  },
+  {
+    "number": 2138,
+    "solution": "For \\(f(x)=x^{2}\\) on \\(R\\): \\(f(-1)=f(1)=1\\), so it is not one-one. The range is \\([0,\\infty)\\); a negative number such as \\(-1\\) has no pre-image, so it is not onto. Therefore it is neither one to one nor onto. Hence (D)."
+  },
+  {
+    "number": 2139,
+    "solution": "An injective mapping from a \\(4\\)-element set to a \\(5\\)-element set assigns distinct images, the count being \\({}^{5}P_{4}=5\\times 4\\times 3\\times 2=120\\). Hence (D)."
+  },
+  {
+    "number": 2140,
+    "solution": "A bijective function from a set to itself is a permutation of its elements. For a set of \\(108\\) elements the number of permutations is \\(108!\\). Hence (B)."
+  },
+  {
+    "number": 2141,
+    "solution": "On \\(\\left[0,\\dfrac{\\pi}{3}\\right]\\), \\(3x\\in[0,\\pi]\\) where \\(\\cos 3x\\) is strictly decreasing, so \\(2-\\cos 3x\\) is strictly increasing and hence \\(f(x)=\\dfrac{1}{2-\\cos 3x}\\) is strictly monotonic (decreasing), making it one-one. Its range over this interval is \\(\\left[\\dfrac{1}{3},1\\right]\\), not the full codomain implied, so it is not onto. Therefore one-one but not onto. Hence (A)."
+  },
+  {
+    "number": 2142,
+    "solution": "The rule \\(f(x)=\\dfrac{1}{x}\\) is undefined at \\(x=0\\); since \\(0\\in R\\) (the stated domain) has no image, \\(f\\) is not properly defined as a function on all of \\(R\\). Hence (B)."
+  },
+  {
+    "number": 2143,
+    "solution": "Complete the square: \\(f(x)=x^{2}-4x+5=(x-2)^{2}+1\\). On \\([2,\\infty)\\) this is increasing from \\(f(2)=1\\) upward, so it is one-one and its range is \\([1,\\infty)\\). For \\(f\\) to be a bijection onto \\(A\\), we need \\(A=[1,\\infty)\\). Hence (B)."
+  },
+  {
+    "number": 2144,
+    "solution": "The mapping sends \\(1,3\\to a\\) and \\(2,4\\to b\\), so two distinct elements share an image, making it many-one. The element \\(c\\in Y\\) is never an image, so the mapping is into (not onto). Therefore it is many-one into. Hence (C)."
+  },
+  {
+    "number": 2145,
+    "solution": "Compute values: \\(f(1)=1\\), \\(f(2)=1\\), \\(f(3)=2\\), \\(f(4)=2\\), \\(f(5)=3,\\ldots\\) Since \\(f(1)=f(2)=1\\), \\(f\\) is not one-one. For any \\(m\\in N\\), \\(f(2m)=\\dfrac{2m}{2}=m\\), so every natural number is achieved and \\(f\\) is onto. Therefore onto but not one-one. Hence (A)."
+  },
+  {
+    "number": 2146,
+    "solution": "A one-one function from a \\(4\\)-element set \\(A\\) into an \\(8\\)-element set \\(B\\) is counted by \\({}^{8}P_{4}=8\\times 7\\times 6\\times 5=1680\\). Hence (D)."
+  },
+  {
+    "number": 2147,
+    "solution": "The graph of \\(f(x)=x^{2}+bx+c\\) is an upward parabola. It is not one-to-one (two values of \\(x\\) give the same \\(y\\) symmetric about the vertex), and as a map \\(R\\to R\\) its range is bounded below, so it is not onto. Therefore it is neither one-to-one nor onto. Hence (D)."
+  },
+  {
+    "number": 2148,
+    "solution": "Here \\(f'(x)=6x^{2}-30x+36=6(x-2)(x-3)\\). On \\([0,3]\\), \\(f'\\) is positive on \\((0,2)\\) and negative on \\((2,3)\\), so \\(f\\) rises then falls and is not one-one. Values: \\(f(0)=1\\), \\(f(2)=29\\), \\(f(3)=28\\); the minimum on the interval is \\(1\\) and the maximum is \\(29\\), so \\(f\\) covers \\([1,29]\\) and is onto. Therefore onto but not one-one. Hence (B)."
+  },
+  {
+    "number": 2149,
+    "solution": "For \\(f(x)=e^{x}\\): if \\(x_{1}\\neq x_{2}\\) then \\(e^{x_{1}}\\neq e^{x_{2}}\\), so \\(f\\) is one-one. Treating it as onto by writing any \\(y\\) as \\(y=e^{x}\\Rightarrow x=\\log_{e}y\\), the book regards every target as an image, so \\(f\\) is taken to be one-one and onto. Hence (D)."
+  },
+  {
+    "number": 2150,
+    "solution": "For \\(f(x)=(x-1)(x-2)(x-3)\\): \\(f(1)=f(2)=f(3)=0\\), so \\(f\\) is not one-one. As a cubic with positive leading coefficient, its range is all of \\(R\\), so for every \\(y\\in R\\) there is an \\(x\\) with \\(f(x)=y\\); thus \\(f\\) is onto. Therefore onto but not one-one. Hence (B)."
+  },
+  {
+    "number": 2151,
+    "solution": "An injection from a \\(4\\)-element set to a \\(7\\)-element set is counted by \\({}^{7}P_{4}=7\\times 6\\times 5\\times 4=840\\). Hence (D)."
+  },
+  {
+    "number": 2152,
+    "solution": "For \\(f(x)=\\dfrac{2x}{1+2x}\\) on \\([0,\\infty)\\): it is strictly increasing, hence one-one. Writing \\(f(x)=1-\\dfrac{1}{1+2x}\\), as \\(x\\) goes from \\(0\\) to \\(\\infty\\), \\(f\\) increases from \\(0\\) toward \\(1\\) but never reaches \\(1\\); its range is \\([0,1)\\), not \\([0,\\infty)\\), so it is not onto. Therefore one-one but not onto. Hence (B)."
+  },
+  {
+    "number": 2153,
+    "solution": "For \\(f(x)=[x]\\): it is defined for all real \\(x\\), so its domain is \\(R\\); its values are integers, so its range is the set of integers. It is not one-to-one (constant on each unit interval) and not onto \\(R\\). The correct description is that the domain is the set of real numbers and the range is the set of integers. Hence (C)."
+  },
+  {
+    "number": 2154,
+    "solution": "Write \\(f(x)=\\sin x-\\sqrt{3}\\cos x+1=2\\sin\\left(x-\\dfrac{\\pi}{3}\\right)+1\\) (amplitude \\(\\sqrt{1+3}=2\\)). Thus \\(2\\sin(\\cdot)\\in[-2,2]\\) and \\(f(x)\\in[-1,3]\\). For \\(f\\) to be onto, \\(S=[-1,3]\\). Hence (D)."
+  },
+  {
+    "number": 2155,
+    "solution": "The characteristic (indicator) function takes value \\(1\\) on \\(A\\) and \\(0\\) on \\(A^{c}\\), so its image is the whole set \\(\\{0,1\\}\\); it is onto its codomain \\(\\{0,1\\}\\) (and many-one). Among the choices, the correct description is onto. Hence (B)."
+  },
+  {
+    "number": 2156,
+    "solution": "A bijection from a set to itself is a permutation. For a set of \\(10\\) elements the number of such bijections is \\(10!\\). Hence (B)."
+  },
+  {
+    "number": 2157,
+    "solution": "A one-one and onto mapping (bijection) between finite sets requires equal cardinalities. Since \\(n(A)=6\\neq 7=n(B)\\), no bijection from \\(A\\) to \\(B\\) exists, so the number is \\(0\\). Hence (D)."
+  },
+  {
+    "number": 2158,
+    "solution": "A bijection from a set to itself is a permutation. With \\(n(A)=8\\), the total number of bijections is \\(8!\\). Hence (A)."
+  },
+  {
+    "number": 2159,
+    "solution": "For \\(f(x)=\\dfrac{x-m}{x-n}\\) with \\(m\\neq n\\): if \\(f(x_{1})=f(x_{2})\\) then cross-multiplying gives \\((m-n)(x_{1}-x_{2})=0\\), so \\(x_{1}=x_{2}\\); thus \\(f\\) is one-one. However \\(f(x)=1\\) would require \\(x-m=x-n\\Rightarrow m=n\\), impossible, so the value \\(1\\) is never attained and \\(f\\) is not onto \\(R\\) (it is into). Therefore one-one into. Hence (B)."
+  },
+  {
+    "number": 2160,
+    "solution": "A one-to-one function from a \\(4\\)-element set \\(A\\) to a \\(6\\)-element set \\(B\\) is counted by \\({}^{6}P_{4}=6\\times 5\\times 4\\times 3=360\\). Hence (D)."
+  },
+  {
+    "number": 2161,
+    "solution": "When \\(n(A)=n(B)=m\\), a bijection is determined by a permutation of the \\(m\\) images, so the number of bijections from \\(A\\) to \\(B\\) is \\(m!\\). Hence (C)."
+  },
+  {
+    "number": 2162,
+    "solution": "Here \\(f(x)=\\dfrac{e^{x}-e^{-x}}{e^{x}+e^{-x}}=\\tanh x\\), which is strictly increasing, hence one-one (an injection). Its range is \\((-1,1)\\), not all of \\(R\\), so it is not onto \\(R\\); it is not a surjection. Therefore it is an injection only. Hence (B)."
+  },
+  {
+    "number": 2163,
+    "solution": "For \\(f(x)=x^{3}-1\\) on \\(R\\): the cube is strictly increasing, so \\(f\\) is one-one; and for any \\(y\\in R\\), \\(x=(y+1)^{1/3}\\) gives \\(f(x)=y\\), so \\(f\\) is onto. Being both one-one and onto, \\(f\\) is a bijection. Hence (C)."
+  },
+  {
+    "number": 2164,
+    "solution": "Here \\(f(n)=n^{2}\\) for odd \\(n\\) and \\(f(n)=2n+1\\) for even \\(n\\). Note \\(f(3)=9\\) (odd rule) and \\(f(4)=2(4)+1=9\\) (even rule), so two different inputs give the same output, hence not injective. Also small values such as \\(2\\) are never produced, so it is not surjective. Therefore it is neither injective nor surjective. Hence (D)."
+  },
+  {
+    "number": 2165,
+    "solution": "For \\(f(n)=1+n^{2}\\) on \\(N\\): distinct positive integers give distinct values, so it is one-to-one. But the range \\(\\{2,5,10,17,\\ldots\\}\\) misses most natural numbers (e.g. \\(1,3,4\\)), so it is not onto. Therefore one-to-one but not onto. Hence (C)."
+  },
+  {
+    "number": 2166,
+    "solution": "For \\(f(x)=\\dfrac{x}{1+x}\\) on \\((0,\\infty)\\): it is strictly increasing, hence one-one. Writing \\(f(x)=1-\\dfrac{1}{1+x}\\), as \\(x\\) ranges over \\((0,\\infty)\\) the value ranges over \\((0,1)\\), never reaching the full codomain \\((0,\\infty)\\), so it is not onto. Therefore one-one but not onto. Hence (B)."
+  },
+  {
+    "number": 2167,
+    "solution": "Compute \\((fog)(x)=f(g(x))=2^{10}(3^{10}x-1)+1=2^{10}3^{10}x-2^{10}+1\\). Setting this equal to \\(x\\): \\(x(2^{10}3^{10}-1)=2^{10}-1\\), so \\(x=\\dfrac{2^{10}-1}{2^{10}3^{10}-1}\\). Dividing numerator and denominator by \\(2^{10}\\) gives \\(x=\\dfrac{1-2^{-10}}{3^{10}-2^{-10}}\\). Hence (D)."
+  },
+  {
+    "number": 2168,
+    "solution": "A function is its own inverse if \\(f(f(t))=t\\). For \\(f(t)=\\dfrac{1-t}{1+t}\\): \\(f(f(t))=\\dfrac{1-\\frac{1-t}{1+t}}{1+\\frac{1-t}{1+t}}=\\dfrac{(1+t)-(1-t)}{(1+t)+(1-t)}=\\dfrac{2t}{2}=t\\). Hence (A)."
+  },
+  {
+    "number": 2169,
+    "solution": "With \\(f(x)=\\dfrac{x+1}{x-1}\\): \\(f(f(x))=\\dfrac{\\frac{x+1}{x-1}+1}{\\frac{x+1}{x-1}-1}=\\dfrac{(x+1)+(x-1)}{(x+1)-(x-1)}=\\dfrac{2x}{2}=x\\). Hence (A)."
+  },
+  {
+    "number": 2170,
+    "solution": "By definition \\((fog)(x)=f(g(x))=f\\left(x^{1/3}\\right)=8\\left(x^{1/3}\\right)^{3}=8x\\). Hence (C). [NOTE: the answer key marks A \\((8^{3}x)\\), but the book's own working gives \\(8\\left(x^{1/3}\\right)^{3}=8x\\), which is option C.]"
+  },
+  {
+    "number": 2171,
+    "solution": "If \\(g\\) is the inverse of \\(f\\), then \\(g'(x)=\\dfrac{1}{f'(g(x))}\\). Here \\(f'(x)=\\dfrac{1}{1+x^{4}}\\), so \\(f'(g(x))=\\dfrac{1}{1+[g(x)]^{4}}\\), and therefore \\(g'(x)=1+[g(x)]^{4}\\). Hence (A)."
+  },
+  {
+    "number": 2172,
+    "solution": "With \\(f(x)=x^{3}\\), \\(g(x)=3^{x}\\): \\(g(f(a))=3^{a^{3}}\\) and \\(f(g(a))=(3^{a})^{3}=3^{3a}\\). Setting them equal: \\(a^{3}=3a\\Rightarrow a^{3}-3a=0\\Rightarrow a(a^{2}-3)=0\\Rightarrow a=0\\) or \\(a=\\pm\\sqrt{3}\\). Hence (D)."
+  },
+  {
+    "number": 2173,
+    "solution": "Test option D: \\(f(x)=\\sin^{2}x\\), \\(g(x)=\\sqrt{x}\\). Then \\(g(f(x))=\\sqrt{\\sin^{2}x}=|\\sin x|\\) and \\(f(g(x))=\\sin^{2}(\\sqrt{x})=(\\sin\\sqrt{x})^{2}\\), matching both given composites. Hence (D)."
+  },
+  {
+    "number": 2174,
+    "solution": "With \\(f(x)=e^{x}\\) and \\(g(x)=\\log_{e}x\\): \\(f\\{g(x)\\}=e^{\\log_{e}x}=x\\) and \\(g\\{f(x)\\}=\\log_{e}(e^{x})=x\\). Hence \\(f\\{g(x)\\}=g\\{f(x)\\}\\). Hence (B)."
+  },
+  {
+    "number": 2175,
+    "solution": "From \\(f(x)=5x-3\\), \\(f^{-1}(x)=\\dfrac{x+3}{5}\\), so \\(f^{-1}(3)=\\dfrac{6}{5}\\). Then \\((gof^{-1})(3)=g\\left(\\dfrac{6}{5}\\right)=\\left(\\dfrac{6}{5}\\right)^{2}+3=\\dfrac{36}{25}+\\dfrac{75}{25}=\\dfrac{111}{25}\\). Hence (B)."
+  },
+  {
+    "number": 2176,
+    "solution": "With \\(f(x)=x^{2}\\) and \\(g(x)=\\log_{e}x\\): \\((fog)(x)=(\\log_{e}x)^{2}\\) and \\((gof)(x)=\\log_{e}(x^{2})=2\\log_{e}x\\). Setting them equal: \\((\\log_{e}x)^{2}=2\\log_{e}x\\Rightarrow \\log_{e}x(\\log_{e}x-2)=0\\Rightarrow \\log_{e}x=0\\) or \\(\\log_{e}x=2\\), giving \\(x=1\\) or \\(x=e^{2}\\). There are \\(2\\) values. Hence (B)."
+  },
+  {
+    "number": 2177,
+    "solution": "Let \\(y = \\dfrac{e^x - e^{-x}}{e^x + e^{-x}}\\). By componendo and dividendo, \\(\\dfrac{1 + y}{1 - y} = \\dfrac{2e^x}{2e^{-x}} = e^{2x}\\). Taking logarithms, \\(2x = \\log\\dfrac{1 + y}{1 - y}\\), so \\(x = \\dfrac{1}{2}\\log\\dfrac{1 + y}{1 - y}\\). Replacing \\(y\\) by \\(x\\), \\(f^{-1}(x) = \\dfrac{1}{2}\\log\\dfrac{1 + x}{1 - x}\\). Hence (A)."
+  },
+  {
+    "number": 2178,
+    "solution": "We need \\(f^{-1}\\!\\left(-\\dfrac{4}{3}\\right)\\), i.e. the \\(x\\) with \\(f(x) = -\\dfrac{4}{3}\\). So \\(\\dfrac{2x - 3}{3x + 4} = -\\dfrac{4}{3}\\), giving \\(3(2x - 3) = -4(3x + 4)\\), i.e. \\(6x - 9 = -12x - 16\\), so \\(18x = -7\\) and \\(x = -\\dfrac{7}{18}\\). This is none of zero, \\(\\dfrac{3}{4}\\) or \\(-\\dfrac{2}{3}\\). Hence (D)."
+  },
+  {
+    "number": 2179,
+    "solution": "Let \\(y = x + \\dfrac{1}{x}\\). Then \\(x^2 - yx + 1 = 0\\), so \\(x = \\dfrac{y \\pm \\sqrt{y^2 - 4}}{2}\\). Since the domain is \\([0, \\infty)\\) and the function is increasing there, the larger root is taken: \\(x = \\dfrac{y + \\sqrt{y^2 - 4}}{2}\\). Thus \\(f^{-1}(x) = \\dfrac{x + \\sqrt{x^2 - 4}}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2180,
+    "solution": "Compute \\(f(f(x))\\) with \\(f(x) = \\dfrac{x + 2}{3x - 1}\\). Numerator: \\(\\dfrac{x + 2}{3x - 1} + 2 = \\dfrac{x + 2 + 2(3x - 1)}{3x - 1} = \\dfrac{7x}{3x - 1}\\). Denominator: \\(3 \\cdot \\dfrac{x + 2}{3x - 1} - 1 = \\dfrac{3x + 6 - (3x - 1)}{3x - 1} = \\dfrac{7}{3x - 1}\\). So \\(f(f(x)) = \\dfrac{7x}{7} = x\\). Hence (A)."
+  },
+  {
+    "number": 2181,
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = \\sqrt{2x - 3}\\). This is defined when \\(2x - 3 \\geq 0\\), i.e. \\(x \\geq \\dfrac{3}{2}\\). So the domain is \\(\\left[\\dfrac{3}{2}, \\infty\\right)\\). Hence (D)."
+  },
+  {
+    "number": 2182,
+    "solution": "\\(f(g(x)) = 2^{100}(3^{100}x + 1) + 1 = 6^{100}x + 2^{100} + 1\\), which is a strictly increasing linear function with slope \\(6^{100} \\neq 1\\). The equation \\(f(g(x)) = x\\) therefore has exactly one solution. The solution set is a singleton. Hence (B)."
+  },
+  {
+    "number": 2183,
+    "solution": "\\(f(g(x)) = f(2x) = 2x + 1\\). Hence (D)."
+  },
+  {
+    "number": 2184,
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = f(x^2) = \\sin(x^2)\\). Hence (D)."
+  },
+  {
+    "number": 2185,
+    "solution": "For \\(f(x) = \\dfrac{3x + 2}{5x - 3}\\), compute \\(f(f(x))\\). Numerator: \\(3 \\cdot \\dfrac{3x + 2}{5x - 3} + 2 = \\dfrac{9x + 6 + 10x - 6}{5x - 3} = \\dfrac{19x}{5x - 3}\\). Denominator: \\(5 \\cdot \\dfrac{3x + 2}{5x - 3} - 3 = \\dfrac{15x + 10 - 15x + 9}{5x - 3} = \\dfrac{19}{5x - 3}\\). So \\(f(f(x)) = x\\), meaning \\(f\\) is its own inverse: \\(f^{-1}(x) = f(x)\\). Hence (A)."
+  },
+  {
+    "number": 2186,
+    "solution": "The expression \\(f(x) = \\sin^2 x + \\sin^2\\!\\left(x + \\dfrac{\\pi}{3}\\right) + \\cos x \\cos\\!\\left(x + \\dfrac{\\pi}{3}\\right)\\) reduces to a constant value \\(\\dfrac{5}{4}\\). Then \\((g \\circ f)(x) = g(f(x)) = g\\!\\left(\\dfrac{5}{4}\\right) = 1\\). Hence (B)."
+  },
+  {
+    "number": 2187,
+    "solution": "\\(f(g(x)) = f(x + 1) = (x + 1)^2 + 2(x + 1) - 3 = x^2 + 4x\\). \\(g(f(x)) = f(x) + 1 = x^2 + 2x - 3 + 1 = x^2 + 2x - 2\\). Setting them equal: \\(x^2 + 4x = x^2 + 2x - 2\\), so \\(2x = -2\\) and \\(x = -1\\). Hence (A)."
+  },
+  {
+    "number": 2188,
+    "solution": "\\(f^{-1}(64)\\) is the set of all complex numbers \\(z\\) with \\(z^3 = 64\\). The three cube roots of \\(64\\) are \\(4, 4\\omega, 4\\omega^2\\) where \\(\\omega\\) is a primitive cube root of unity. Hence (A)."
+  },
+  {
+    "number": 2189,
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = f(x^2) = \\sin(x^2) + \\cos(x^2)\\). Hence (C)."
+  },
+  {
+    "number": 2190,
+    "solution": "Let \\(y = \\dfrac{5x}{4x + 5}\\). Then \\(y(4x + 5) = 5x\\), so \\(4xy + 5y = 5x\\), giving \\(5y = 5x - 4xy = x(5 - 4y)\\). Thus \\(x = \\dfrac{5y}{5 - 4y}\\), so \\(g(y) = \\dfrac{5y}{5 - 4y}\\). Hence (C)."
+  },
+  {
+    "number": 2191,
+    "solution": "\\((g \\circ f)(x) = g(f(x)) = g(x^2 - 1) = (x^2 - 1 + 1)^2 = (x^2)^2 = x^4\\). Hence (C)."
+  },
+  {
+    "number": 2192,
+    "solution": "For \\(f(x) = 1 + \\alpha x\\) to be its own inverse, \\(f(f(x)) = x\\). \\(f(f(x)) = 1 + \\alpha(1 + \\alpha x) = 1 + \\alpha + \\alpha^2 x\\). For this to equal \\(x\\) for all \\(x\\), we need \\(\\alpha^2 = 1\\) and \\(1 + \\alpha = 0\\). Both give \\(\\alpha = -1\\). Hence (B)."
+  },
+  {
+    "number": 2193,
+    "solution": "\\((f \\circ g)(x) = f\\!\\left(\\dfrac{x - 1}{2}\\right) = 2 \\cdot \\dfrac{x - 1}{2} + 1 = x\\), so \\(f \\circ g\\) is the identity map and \\((f \\circ g)^{-1}\\) is also the identity. Therefore \\((f \\circ g)^{-1}\\!\\left(\\dfrac{1}{x}\\right) = \\dfrac{1}{x}\\). Hence (B)."
+  },
+  {
+    "number": 2194,
+    "solution": "\\(f(x) = |x|\\) is not one-one (for example \\(f(2) = f(-2) = 2\\)), so it is not a bijection on \\(R\\) and its inverse does not exist. Hence (C)."
+  },
+  {
+    "number": 2195,
+    "solution": "\\(g\\!\\left(\\dfrac{8}{5}\\right) = \\left|\\dfrac{8}{5}\\right| = \\dfrac{8}{5}\\), so \\(f\\!\\left(g\\!\\left(\\dfrac{8}{5}\\right)\\right) = \\left[\\dfrac{8}{5}\\right] = 1\\). Also \\(f\\!\\left(-\\dfrac{8}{5}\\right) = \\left[-\\dfrac{8}{5}\\right] = -2\\), so \\(g\\!\\left(f\\!\\left(-\\dfrac{8}{5}\\right)\\right) = |-2| = 2\\). The value is \\(1 - 2 = -1\\). Hence (D)."
+  },
+  {
+    "number": 2196,
+    "solution": "Compute \\(f(f(x))\\) for \\(f(x) = \\dfrac{ax}{x + 1}\\). \\(f(f(x)) = \\dfrac{a \\cdot \\frac{ax}{x + 1}}{\\frac{ax}{x + 1} + 1} = \\dfrac{a^2 x}{ax + x + 1}\\). Setting \\(f(f(x)) = x\\) gives \\(a^2 x = x(ax + x + 1)\\), i.e. \\(a^2 = (a + 1)x + 1\\) for all \\(x\\). This requires \\(a + 1 = 0\\) and \\(a^2 = 1\\), both giving \\(a = -1\\). Hence (D)."
+  },
+  {
+    "number": 2197,
+    "solution": "The period of \\(\\tan(kx + c)\\) is \\(\\dfrac{\\pi}{|k|}\\). Here \\(k = 4\\), so the period of \\(\\tan(4x - 1)\\) is \\(\\dfrac{\\pi}{4}\\). Hence (D)."
+  },
+  {
+    "number": 2198,
+    "solution": "Since \\(f\\) has period 2, \\(f(4) = f(4 - 2) = f(2) = f(0)\\). As \\(f\\) is odd, \\(f(0) = 0\\). Therefore \\(f(4) = 0\\). Hence (A)."
+  },
+  {
+    "number": 2199,
+    "solution": "Reflecting the graph of \\(f\\) in the line \\(y = x\\) gives the inverse of \\(f\\). For \\(f(x) = (x + 1)^2\\) with \\(x \\geq -1\\), let \\(y = (x + 1)^2\\); then \\(x + 1 = \\sqrt{y}\\) (positive root since \\(x \\geq -1\\)), so \\(x = \\sqrt{y} - 1\\). Thus \\(g(x) = \\sqrt{x} - 1\\). Hence (D)."
+  },
+  {
+    "number": 2200,
+    "solution": "\\(f(x) = |x - 2|\\) is not periodic, is not odd, and does not satisfy \\(f(x + y) = f(x) + f(y)\\). Since \\(f(1) = f(3) = 1\\), it takes the same value at distinct points, so it is not one-one. Hence (D)."
+  },
+  {
+    "number": 2201,
+    "solution": "For \\(\\sin\\sqrt{x}\\) to be periodic with period \\(T\\) we would need \\(\\sin\\sqrt{x + T} = \\sin\\sqrt{x}\\) for all \\(x\\), which is impossible because \\(\\sqrt{x + T} - \\sqrt{x}\\) is not constant. So \\(\\sin\\sqrt{x}\\) is not periodic. Hence (D)."
+  },
+  {
+    "number": 2202,
+    "solution": "\\(f(x + \\pi) = |\\sin(x + \\pi) + \\cos(x + \\pi)| = |-\\sin x - \\cos x| = |\\sin x + \\cos x| = f(x)\\), and \\(\\pi\\) is the smallest such number, so the period is \\(\\pi\\). Note: the printed answer key marks (B) \\(\\pi/4\\), but the correct period is \\(\\pi\\). Hence (D)."
+  },
+  {
+    "number": 2203,
+    "solution": "The period of \\(|\\sin 2x|\\) is \\(\\dfrac{\\pi}{2}\\) and the period of \\(|\\cos 8x|\\) is \\(\\dfrac{\\pi}{8}\\). The period of the sum is the L.C.M. of \\(\\dfrac{\\pi}{2}\\) and \\(\\dfrac{\\pi}{8}\\), which is \\(\\dfrac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 2204,
+    "solution": "The period of \\(\\sin 2x\\) is \\(\\pi\\); taking the absolute value halves it, so the period of \\(|\\sin 2x|\\) is \\(\\dfrac{\\pi}{2}\\). Hence (B)."
+  },
+  {
+    "number": 2205,
+    "solution": "\\(\\sin\\theta\\cos\\theta = \\dfrac{1}{2}\\sin 2\\theta\\). The period of \\(\\sin 2\\theta\\) is \\(\\pi\\), so the period is \\(\\pi\\). Hence (B)."
+  },
+  {
+    "number": 2206,
+    "solution": "Using sum-to-product, numerator \\(= 2\\sin\\dfrac{3\\theta}{2}\\cos\\dfrac{\\theta}{2}\\) and denominator \\(= 2\\cos\\dfrac{3\\theta}{2}\\cos\\dfrac{\\theta}{2}\\), so the expression equals \\(\\tan\\dfrac{3\\theta}{2}\\). The period of \\(\\tan\\dfrac{3\\theta}{2}\\) is \\(\\dfrac{\\pi}{3/2} = \\dfrac{2\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2207,
+    "solution": "The period of \\(\\cos(kx + c)\\) is \\(\\dfrac{2\\pi}{|k|}\\). Here \\(k = 7\\), so the period of \\(\\cos(7x - 5)\\) is \\(\\dfrac{2\\pi}{7}\\). Hence (C)."
+  },
+  {
+    "number": 2208,
+    "solution": "\\(\\sin\\theta - \\sqrt{3}\\cos\\theta = 2\\sin\\!\\left(\\theta - \\dfrac{\\pi}{3}\\right)\\), whose period is \\(2\\pi\\). Hence (D)."
+  },
+  {
+    "number": 2209,
+    "solution": "The period of \\(\\sin\\dfrac{x}{2}\\) is \\(4\\pi\\) and the period of \\(\\cos\\dfrac{x}{3}\\) is \\(6\\pi\\). The period of the difference is the L.C.M. of \\(4\\pi\\) and \\(6\\pi\\), which is \\(12\\pi\\). Note: the printed answer key marks (C) \\(8\\pi\\), but the L.C.M. is \\(12\\pi\\). Hence (D)."
+  },
+  {
+    "number": 2210,
+    "solution": "The period of \\(\\cot 3x\\) is \\(\\dfrac{\\pi}{3}\\) and the period of \\(\\cos(4x + 3)\\) is \\(\\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}\\). The L.C.M. of \\(\\dfrac{\\pi}{3}\\) and \\(\\dfrac{\\pi}{2}\\) is \\(\\pi\\). Hence (C)."
+  },
+  {
+    "number": 2211,
+    "solution": "Write \\(2\\sin 3\\theta + 4\\cos 3\\theta = R\\sin(3\\theta + \\phi)\\), which has period \\(\\dfrac{2\\pi}{3}\\). Taking the absolute value halves the period, giving \\(\\dfrac{\\pi}{3}\\). Note: the printed answer key marks (C) \\(\\dfrac{\\pi}{2}\\), but the correct period is \\(\\dfrac{\\pi}{3}\\). Hence (D)."
+  },
+  {
+    "number": 2212,
+    "solution": "\\(\\sin^4 x + \\cos^4 x = (\\sin^2 x + \\cos^2 x)^2 - 2\\sin^2 x\\cos^2 x = 1 - \\dfrac{1}{2}\\sin^2 2x = \\dfrac{3}{4} + \\dfrac{1}{4}\\cos 4x\\). The period of \\(\\cos 4x\\) is \\(\\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}\\). Note: the printed answer key marks (D) \\(\\dfrac{3\\pi}{2}\\), but the correct period is \\(\\dfrac{\\pi}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2213,
+    "solution": "The period of \\(\\sin\\dfrac{\\theta}{3}\\) is \\(6\\pi\\) and the period of \\(\\cos\\dfrac{\\theta}{2}\\) is \\(4\\pi\\). The L.C.M. of \\(6\\pi\\) and \\(4\\pi\\) is \\(12\\pi\\). Hence (D)."
+  },
+  {
+    "number": 2214,
+    "solution": "The period of \\(\\sin\\dfrac{x}{n}\\) is \\(\\dfrac{2\\pi}{1/n} = 2\\pi n\\). Setting \\(2\\pi n = 4\\pi\\) gives \\(n = 2\\). Hence (D)."
+  },
+  {
+    "number": 2215,
+    "solution": "\\(\\sin^2 x = \\dfrac{1 - \\cos 2x}{2}\\). The period of \\(\\cos 2x\\) is \\(\\pi\\), so the period of \\(\\sin^2 x\\) is \\(\\pi\\). Hence (A)."
+  },
+  {
+    "number": 2216,
+    "solution": "The period of \\(\\sin kx\\) is \\(\\dfrac{2\\pi}{|k|}\\). Here \\(k = 2\\), so the period of \\(\\sin 2x\\) is \\(\\pi\\). Hence (B)."
+  },
+  {
+    "number": 2217,
+    "solution": "In option (C), \\(\\sin t\\) has period \\(2\\pi\\) and \\(\\cos 2t\\) has period \\(\\pi\\); the L.C.M. is \\(2\\pi\\), so \\(\\sin t + \\cos 2t\\) has period \\(2\\pi\\). The other options do not give period \\(2\\pi\\). Hence (C)."
+  },
+  {
+    "number": 2218,
+    "solution": "The period of \\(\\sin\\dfrac{2x}{3}\\) is \\(\\dfrac{2\\pi}{2/3} = 3\\pi\\) and the period of \\(\\sin\\dfrac{3x}{2}\\) is \\(\\dfrac{2\\pi}{3/2} = \\dfrac{4\\pi}{3}\\). The L.C.M. of \\(3\\pi\\) and \\(\\dfrac{4\\pi}{3}\\) is \\(12\\pi\\). Hence (D)."
+  },
+  {
+    "number": 2219,
+    "solution": "For \\(\\cos px + \\sin x\\) to be periodic, the ratio of the two individual periods \\(\\dfrac{2\\pi/p}{2\\pi} = \\dfrac{1}{p}\\) must be rational, which requires \\(p\\) to be rational. Hence (A)."
+  },
+  {
+    "number": 2220,
+    "solution": "The period of \\(\\sin\\dfrac{\\pi x}{2}\\) is \\(\\dfrac{2\\pi}{\\pi/2} = 4\\) and the period of \\(\\cos\\dfrac{\\pi x}{2}\\) is also \\(4\\). The L.C.M. is \\(4\\). Hence (A)."
+  },
+  {
+    "number": 2221,
+    "solution": "The period of \\(\\sin\\dfrac{\\pi x}{2}\\) is \\(4\\), of \\(\\cos\\dfrac{\\pi x}{3}\\) is \\(6\\), and of \\(\\tan\\dfrac{\\pi x}{4}\\) is \\(\\dfrac{\\pi}{\\pi/4} = 4\\). The L.C.M. of \\(4, 6, 4\\) is \\(12\\). Hence (D)."
+  },
+  {
+    "number": 2222,
+    "solution": "The period of \\(\\sin \\pi x\\) is \\(\\dfrac{2\\pi}{\\pi} = 2\\); taking the absolute value halves it, so the period of \\(|\\sin \\pi x|\\) is \\(1\\). Hence (D)."
+  },
+  {
+    "number": 2223,
+    "solution": "The period of \\(\\sin\\dfrac{\\pi x}{n - 1}\\) is \\(\\dfrac{2\\pi}{\\pi/(n-1)} = 2(n - 1)\\) and the period of \\(\\cos\\dfrac{\\pi x}{n}\\) is \\(2n\\). Since \\(n\\) and \\(n - 1\\) are coprime, the L.C.M. of \\(2(n - 1)\\) and \\(2n\\) is \\(2n(n - 1)\\). Hence (C)."
+  }
+]

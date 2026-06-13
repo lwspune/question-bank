@@ -349,6 +349,68 @@ export const TOPICS: Record<string, Topic> = {
       "Shadows, Leaning Structures, and Special Geometry",
     ],
   },
+
+  // ─── Calculus folder (05. Calculus) — questions Q2101–3068 across 3 question
+  // PDFs (page 111-125 / 126-143 / 145-161). The answer key is the LAST 2 pages
+  // of the 3rd PDF (same gotcha as Trig) → extracted to `_calc_answers.pdf`.
+  // Section→NDA-chapter map (first-Q pinned from body headers):
+  //   Functions 2101-2223 (Domain&Range + Mapping + Composite&Inverse + Periodic)
+  //   Limits & Continuity 2224-2381 (Limits + Continuity)
+  //   Differentiation 2382-2497 (Differentiability)
+  //   Application of Derivatives 2498-2677 (LMV/Rolle + Rate + Inc/Dec + Tangents + Maxima/Minima)
+  //   Indefinite Integration 2678-2748 · Definite Integration 2749-2885
+  //   Applications of Integration 2886-2950 (Area Under the Curve)
+  //   Differential Equations 2951-3068 (Order&Degree + Formation&General Solution)
+
+  "functions": {
+    id: "functions",
+    chapterName: "Functions",
+    qFrom: 2101,
+    qTo: 2223,
+    sourceFile: "NDA_Maths_Practice__Calculus__Functions.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 111-125.pdf"), pages: [1, 2, 3, 4, 5, 6] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-1 sol page 333-352.pdf"), pages: [0, 1, 2, 3, 4, 5, 6, 7] },
+    subtopics: [
+      "Composition and Inverse of Functions",
+      "Domain, Range, and Function Properties",
+      "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+      "Functional Equations",
+      "Greatest Integer Function",
+    ],
+  },
+
+  "limits-continuity": {
+    id: "limits-continuity",
+    chapterName: "Limits & Continuity",
+    qFrom: 2224,
+    qTo: 2381,
+    sourceFile: "NDA_Maths_Practice__Calculus__Limits_and_Continuity.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 111-125.pdf"), pages: [7, 8, 9, 10, 11, 12, 13, 14] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-1 sol page 333-352.pdf"), pages: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] },
+    subtopics: [
+      "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+      "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+      "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    ],
+  },
+
+  "differentiation": {
+    id: "differentiation",
+    chapterName: "Differentiation",
+    qFrom: 2382,
+    qTo: 2497,
+    sourceFile: "NDA_Maths_Practice__Calculus__Differentiation.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 126-143.pdf"), pages: [0, 1, 2, 3, 4, 5] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-2 sol page 353-368.pdf"), pages: [0, 1, 2, 3, 4, 5, 6] },
+    subtopics: [
+      "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+      "Parametric, Implicit, and Higher-Order Derivatives",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
