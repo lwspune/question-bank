@@ -328,6 +328,11 @@ import {
   BIOCHEMISTRY_NOTES,
   BIOCHEMISTRY_SLUGS,
 } from "@/app/notes/nda-biology/biochemistry/_data";
+import {
+  EARTHS_STRUCTURE_CHAPTER,
+  EARTHS_STRUCTURE_NOTES,
+  EARTHS_STRUCTURE_SLUGS,
+} from "@/app/notes/nda-geography/earths-structure/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -1061,6 +1066,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: OSCILLATIONS_CHAPTER,
     notes: OSCILLATIONS_NOTES,
     slugs: OSCILLATIONS_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "earths-structure",
+    chipLabel: "Earth's Structure notes",
+    chapter: EARTHS_STRUCTURE_CHAPTER,
+    notes: EARTHS_STRUCTURE_NOTES,
+    slugs: EARTHS_STRUCTURE_SLUGS,
   },
 ];
 

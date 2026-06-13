@@ -288,7 +288,16 @@ export type VisualizationSlug =
   // NDA Biology — Genetics and Evolution chapter
   | "gen-dna-base-pairing"
   // NDA Biology — Biochemistry chapter
-  | "biochem-protein-structure-levels";
+  | "biochem-protein-structure-levels"
+  // NDA Geography — Earth's Structure, Landforms and Geological Time chapter
+  | "esl-earth-interior-layers"
+  | "esl-plate-boundary-types"
+  | "esl-earthquake-focus-epicentre"
+  | "esl-seismic-wave-types"
+  | "esl-seismic-shadow-zones"
+  | "esl-volcano-types"
+  | "esl-rock-cycle"
+  | "esl-fluvial-landforms";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

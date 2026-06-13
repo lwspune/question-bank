@@ -194,6 +194,14 @@ import BiodivFiveKingdoms from "./visualizations/BiodivFiveKingdoms";
 import BiodivPlantProgression from "./visualizations/BiodivPlantProgression";
 import GenDnaBasePairing from "./visualizations/GenDnaBasePairing";
 import BiochemProteinStructureLevels from "./visualizations/BiochemProteinStructureLevels";
+import EslEarthInteriorLayers from "./visualizations/EslEarthInteriorLayers";
+import EslPlateBoundaryTypes from "./visualizations/EslPlateBoundaryTypes";
+import EslEarthquakeFocusEpicentre from "./visualizations/EslEarthquakeFocusEpicentre";
+import EslSeismicWaveTypes from "./visualizations/EslSeismicWaveTypes";
+import EslSeismicShadowZones from "./visualizations/EslSeismicShadowZones";
+import EslVolcanoTypes from "./visualizations/EslVolcanoTypes";
+import EslRockCycle from "./visualizations/EslRockCycle";
+import EslFluvialLandforms from "./visualizations/EslFluvialLandforms";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -560,6 +568,22 @@ function renderVisualization(slug: VisualizationSlug) {
       return <GenDnaBasePairing />;
     case "biochem-protein-structure-levels":
       return <BiochemProteinStructureLevels />;
+    case "esl-earth-interior-layers":
+      return <EslEarthInteriorLayers />;
+    case "esl-plate-boundary-types":
+      return <EslPlateBoundaryTypes />;
+    case "esl-earthquake-focus-epicentre":
+      return <EslEarthquakeFocusEpicentre />;
+    case "esl-seismic-wave-types":
+      return <EslSeismicWaveTypes />;
+    case "esl-seismic-shadow-zones":
+      return <EslSeismicShadowZones />;
+    case "esl-volcano-types":
+      return <EslVolcanoTypes />;
+    case "esl-rock-cycle":
+      return <EslRockCycle />;
+    case "esl-fluvial-landforms":
+      return <EslFluvialLandforms />;
   }
 }
 
