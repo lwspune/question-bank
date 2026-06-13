@@ -40,7 +40,7 @@ All 3 ingested practice topics flipped PUBLIC after preview review (Sequence & S
 
 ### Scale practice ingestion to more topics/subjects (carry-forward — partially done)
 
-**Progress 2026-06-12:** ingested Logarithms (26 q) + Statistics (81 q) on top of the Sequence & Series pilot — 3 NDA Maths topics now PUBLIC. STILL OPEN: Algebra's other sub-topics (Sets/Relations/Complex Numbers/Quadratics/Permutation/Combination/Binomial/Matrices/Determinants/Probability — each maps to an existing NDA Maths chapter) + the Trig / 2D / 3D / Calculus folders (different source PDFs → new `TOPICS` entries).
+**Progress 2026-06-12:** ingested Logarithms (26 q) + Statistics (81 q) + Complex Numbers (82 q) + Quadratic Equations (62 q) on top of the Sequence & Series pilot — **5 NDA Maths topics now PUBLIC (335 q)**. STILL OPEN: Algebra's remaining sub-topics (Sets/Relations/Permutation/Combination/Binomial/Matrices/Determinants/Probability — each maps to an existing NDA Maths chapter; next contiguous in the book is Permutation & Combination at Q233+) + the Trig / 2D / 3D / Calculus folders (different source PDFs → new `TOPICS` entries). New per-topic finding banked this run: a 3rd-party book ships **genuinely-flawed MCQs** (correct answer not among the printed options) → **exclude them** (don't transcribe; they show as intentional coverage gaps), never ship a guessed key — see the override/stem-fix/EXCLUDE triage in [[practice-pdf-vision-ingestion]].
 
 **Why:** broadens the practice bank. It is a **workflow, not automation** — budget the per-section vision-transcription + verification pass. The 3 done averaged near-0 wrong keys, but number-dense topics (Statistics) needed half-column crops to read values reliably.
 

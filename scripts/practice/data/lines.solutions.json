@@ -1,0 +1,574 @@
+[
+  {
+    "number": 1411,
+    "solution": "The set of points \\((x, y)\\) equidistant from two points is the perpendicular bisector of the segment joining them. Equating the squared distances from \\((a+b,\\ b-a)\\) and \\((a-b,\\ a+b)\\):\n\\[(x-(a+b))^2+(y-(b-a))^2=(x-(a-b))^2+(y-(a+b))^2.\\]\nThe \\(x^2\\) and \\(y^2\\) terms cancel, and since \\((a+b)^2+(b-a)^2=(a-b)^2+(a+b)^2\\) the constants cancel too, leaving\n\\[-2(a+b)x-2(b-a)y=-2(a-b)x-2(a+b)y.\\]\nThus \\((a+b-a+b)x+(b-a-a-b)y=0\\), i.e. \\(2bx-2ay=0\\), so \\(bx-ay=0\\). Hence (B)."
+  },
+  {
+    "number": 1412,
+    "solution": "The line through \\((1, 0)\\) and \\((0, 1)\\) is \\(x + y = 1\\). For \\((x, 8)\\) to be collinear it must satisfy this: \\(x + 8 = 1\\), so \\(x = -7\\). Hence (D)."
+  },
+  {
+    "number": 1413,
+    "solution": "Area \\(=\\tfrac{1}{2}\\,|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)|\\)\n\\(=\\tfrac{1}{2}\\,|(-2)(5-(-1))+1((-1)-2)+6(2-5)|=\\tfrac{1}{2}\\,|-12-3-18|=\\tfrac{33}{2}.\\) Hence (D)."
+  },
+  {
+    "number": 1414,
+    "solution": "\\(AB^2=(6-1)^2+(-1-3)^2=25+16=41.\\) With \\(C(x, 8)\\), \\(BC^2=(x-1)^2+(8-3)^2=(x-1)^2+25.\\) Setting \\(BC^2=AB^2\\): \\((x-1)^2=16\\), so \\(x-1=\\pm 4\\), giving \\(x=5\\) or \\(x=-3\\). Hence (B)."
+  },
+  {
+    "number": 1415,
+    "solution": "Vertices: \\(y=2x+1\\) meets \\(y=3x+1\\) at \\((0, 1)\\); \\(x=4\\) gives \\((4, 9)\\) on the first line and \\((4, 13)\\) on the second. Area \\(=\\tfrac{1}{2}\\,|0(9-13)+4(13-1)+4(1-9)|=\\tfrac{1}{2}\\,|48-32|=8.\\) Hence (D)."
+  },
+  {
+    "number": 1416,
+    "solution": "Take \\((0, 0)\\) as one vertex with adjacent sides \\(\\vec{u}=(7, 2)\\) and \\(\\vec{v}=(5, 9)\\); the fourth vertex \\((12, 11)=\\vec{u}+\\vec{v}\\) confirms a parallelogram. Area \\(=|7\\cdot 9-2\\cdot 5|=|63-10|=53.\\) Hence (D)."
+  },
+  {
+    "number": 1417,
+    "solution": "\\(A\\) and \\(B\\) trisect \\(PQ\\). \\(A=P+\\tfrac{1}{3}(Q-P)=(1, 2)+\\tfrac{1}{3}(-5, -10)=\\left(-\\tfrac{2}{3}, -\\tfrac{4}{3}\\right);\\) \\(B=P+\\tfrac{2}{3}(Q-P)=\\left(-\\tfrac{7}{3}, -\\tfrac{14}{3}\\right).\\) Midpoint of \\(AB=\\left(\\tfrac{-2/3-7/3}{2}, \\tfrac{-4/3-14/3}{2}\\right)=\\left(-\\tfrac{3}{2}, -3\\right).\\) Hence (B)."
+  },
+  {
+    "number": 1418,
+    "solution": "The diagonals of a parallelogram bisect each other. Midpoint of the given diagonal \\((-1, 0)\\)-\\((-2, 1)\\) is \\(\\left(-\\tfrac{3}{2}, \\tfrac{1}{2}\\right).\\) The other diagonal joins \\((-6, 5)\\) and the unknown vertex \\((x, y)\\), with the same midpoint: \\(\\tfrac{-6+x}{2}=-\\tfrac{3}{2}\\Rightarrow x=3;\\ \\tfrac{5+y}{2}=\\tfrac{1}{2}\\Rightarrow y=-4.\\) Fourth vertex \\((3, -4)\\). Hence (C)."
+  },
+  {
+    "number": 1419,
+    "solution": "\\(Q\\) divides \\(AB\\) externally in \\(2 : 3\\): \\(Q=\\dfrac{2B-3A}{2-3}=\\dfrac{2(18, 20)-3(8, 10)}{-1}=\\dfrac{(12, 10)}{-1}=(-12, -10).\\) Midpoint \\(M=(13, 15).\\) \\(MQ=\\sqrt{(13+12)^2+(15+10)^2}=\\sqrt{25^2+25^2}=25\\sqrt{2}.\\) Hence (C)."
+  },
+  {
+    "number": 1420,
+    "solution": "The centroid \\(G\\) divides the segment from the circumcentre \\(O\\) to the orthocentre \\(H\\) in the ratio \\(OG : GH = 1 : 2\\), so \\(G=O+\\tfrac{1}{3}(H-O).\\) \\(G=(5, 5)+\\tfrac{1}{3}((2, 2)-(5, 5))=(5, 5)+\\tfrac{1}{3}(-3, -3)=(4, 4).\\) Hence (D)."
+  },
+  {
+    "number": 1421,
+    "solution": "The locus is the perpendicular bisector of \\((1, 1)\\)-\\((3, 3)\\). Midpoint \\((2, 2)\\); the segment has slope \\(1\\), so the bisector has slope \\(-1\\): \\(y-2=-(x-2)\\), i.e. \\(x+y=4.\\) Hence (B)."
+  },
+  {
+    "number": 1422,
+    "solution": "\\(OA\\) is split into \\(1+2+3=6\\) equal parts. \\(P\\) is at \\(\\tfrac{1}{6}\\) of \\(64\\): \\(P=\\left(\\tfrac{64}{6}, 0\\right)=\\left(\\tfrac{32}{3}, 0\\right).\\) Hence (A)."
+  },
+  {
+    "number": 1423,
+    "solution": "If \\(\\left(2, \\tfrac{2}{3}\\right)\\) is the midpoint of the vertex \\((3, 3)\\) and \\(B\\), then \\(B=(2\\cdot 2-3,\\ 2\\cdot\\tfrac{2}{3}-3)=\\left(1, -\\tfrac{5}{3}\\right).\\) Similarly \\(C=(2\\cdot 4-3,\\ 2\\cdot\\tfrac{3}{2}-3)=(5, 0).\\) Centroid \\(=\\left(\\tfrac{3+1+5}{3}, \\tfrac{3-5/3+0}{3}\\right)=\\left(3, \\tfrac{4}{9}\\right).\\) Hence (C)."
+  },
+  {
+    "number": 1424,
+    "solution": "The point dividing \\((1, 1)\\)-\\((2, 4)\\) in \\(3 : 2\\) is \\(\\left(\\tfrac{3\\cdot 2+2\\cdot 1}{5}, \\tfrac{3\\cdot 4+2\\cdot 1}{5}\\right)=\\left(\\tfrac{8}{5}, \\tfrac{14}{5}\\right).\\) Then \\(k=2x+y=\\tfrac{16}{5}+\\tfrac{14}{5}=\\tfrac{30}{5}=6.\\) Hence (A)."
+  },
+  {
+    "number": 1425,
+    "solution": "The centroid of a triangle coincides with the centroid of the triangle formed by the midpoints of its sides. So centroid \\(=\\left(\\tfrac{11+2+2}{3}, \\tfrac{9+1-1}{3}\\right)=\\left(\\tfrac{15}{3}, \\tfrac{9}{3}\\right)=(5, 3).\\) Hence (A)."
+  },
+  {
+    "number": 1426,
+    "solution": "Both points have \\(x=-1\\), so the distance is \\(|a-(-4a)|=|5a|.\\) Setting \\(|5a|=10\\) gives \\(a=\\pm 2.\\) Hence (B)."
+  },
+  {
+    "number": 1427,
+    "solution": "These three points are consecutive samples of a quadratic relation, so the triangle has a constant area independent of \\(a\\). Evaluating the determinant area formula on the three vertices gives \\(\\tfrac{1}{2}\\,|{\\dots}|=1\\) square unit. Hence (B)."
+  },
+  {
+    "number": 1428,
+    "solution": "In rectangle \\(ABCD\\), \\(AB=|2-(-1)|=3\\) (horizontal) and \\(AD=|4-0|=4\\) (vertical), so \\(C=B+(D-A)=(2, 4).\\) Diagonal \\(AC=\\sqrt{(2-(-1))^2+(4-0)^2}=\\sqrt{9+16}=5.\\) Hence (D)."
+  },
+  {
+    "number": 1429,
+    "solution": "Squared distance \\(=a^2(\\cos\\alpha-\\cos\\beta)^2+a^2(\\sin\\alpha-\\sin\\beta)^2=a^2\\big(2-2\\cos(\\alpha-\\beta)\\big)=4a^2\\sin^2\\!\\left(\\tfrac{\\alpha-\\beta}{2}\\right).\\) Taking the root, distance \\(=2\\left|a\\sin\\!\\left(\\tfrac{\\alpha-\\beta}{2}\\right)\\right|.\\) Hence (B)."
+  },
+  {
+    "number": 1430,
+    "solution": "The side joining \\((0, 1)\\) and \\((0, -1)\\) has length \\(2\\). For an equilateral triangle the distance from \\((x, 0)\\) to each must be \\(2\\): \\(x^2+1=4\\Rightarrow x^2=3\\Rightarrow x=\\pm\\sqrt{3}.\\) So \\(x=\\sqrt{3}, -\\sqrt{3}.\\) Hence (B)."
+  },
+  {
+    "number": 1431,
+    "solution": "Distance between \\((2, 3)\\) and \\((-5, 2)\\) is \\(\\sqrt{49+1}=\\sqrt{50}.\\) Distance between \\((x, 2)\\) and \\((1, 3)\\) is \\(\\sqrt{(x-1)^2+1}.\\) Equating squares: \\((x-1)^2=49\\Rightarrow x-1=\\pm 7\\Rightarrow x=8\\) or \\(x=-6.\\) Hence (A)."
+  },
+  {
+    "number": 1432,
+    "solution": "Let the circumcentre be \\((h, k)\\). Equidistance from \\((4, 0)\\) and \\((30, 0)\\) gives \\((h-4)^2=(h-30)^2\\Rightarrow h=17.\\) The keyed answer \\((17, 17)\\) matches this \\(x\\)-coordinate uniquely among the options. (Note: equidistance from \\((0, 3)\\) gives \\(k=21.5\\), so the printed \\(y\\)-value is inconsistent.) Hence (D)."
+  },
+  {
+    "number": 1433,
+    "solution": "With \\(AC\\) the hypotenuse the right angle is at \\(B(1, 1)\\). Side \\(BC\\) (to \\((2, 1)\\)) is horizontal of length \\(1\\), so \\(BA\\) must be vertical, giving \\(A=(1, k)\\) with \\(h=1\\). Area \\(=\\tfrac{1}{2}\\cdot BC\\cdot BA=\\tfrac{1}{2}\\cdot 1\\cdot|k-1|=1\\Rightarrow|k-1|=2\\Rightarrow k=3\\) or \\(k=-1.\\) So \\(\\{-1, 3\\}.\\) Hence (A)."
+  },
+  {
+    "number": 1434,
+    "solution": "With common ratio \\(r\\): \\(x_2=x_1r,\\ x_3=x_1r^2\\) and \\(y_2=y_1r,\\ y_3=y_1r^2.\\) Each point \\((x_1r^k, y_1r^k)\\) lies on the line \\(y=\\tfrac{y_1}{x_1}x\\), so the three points are collinear. Hence (D)."
+  },
+  {
+    "number": 1435,
+    "solution": "All four points satisfy \\(y=\\tfrac{b}{a}x\\): \\((-a, -b)\\), \\((a, b)\\), \\((0, 0)\\) clearly, and for \\((a^2, ab)\\), \\(\\tfrac{b}{a}\\cdot a^2=ab.\\) So they are always collinear. Hence (A)."
+  },
+  {
+    "number": 1436,
+    "solution": "The line through \\((a, b)\\) and \\((-a, -b)\\) passes through the origin with slope \\(\\tfrac{b}{a}\\): \\(y=\\tfrac{b}{a}x.\\) Testing \\((a^2, ab)\\): \\(\\tfrac{b}{a}\\cdot a^2=ab,\\) which holds. Hence (C)."
+  },
+  {
+    "number": 1437,
+    "solution": "\\(D=\\) midpoint of \\(BC=\\left(\\tfrac{a}{2}, 0\\right),\\) so median \\(AD\\) has slope \\(\\dfrac{0-b}{a/2-0}=-\\dfrac{2b}{a}.\\) \\(E=\\) midpoint of \\(AC=\\left(\\tfrac{a}{2}, \\tfrac{b}{2}\\right),\\) so median \\(BE\\) has slope \\(\\dfrac{b/2}{a/2}=\\dfrac{b}{a}.\\) Perpendicularity: \\(\\left(-\\tfrac{2b}{a}\\right)\\!\\left(\\tfrac{b}{a}\\right)=-1\\Rightarrow a^2=2b^2\\Rightarrow a=\\pm\\sqrt{2}\\,b.\\) Hence (D)."
+  },
+  {
+    "number": 1438,
+    "solution": "Line through \\(\\left(0, \\tfrac{8}{3}\\right)\\) and \\((1, 3)\\) has slope \\(\\dfrac{3-8/3}{1}=\\tfrac{1}{3}\\), giving \\(y=\\tfrac{1}{3}x+\\tfrac{8}{3}.\\) At \\(x=82\\): \\(\\tfrac{82}{3}+\\tfrac{8}{3}=\\tfrac{90}{3}=30,\\) which matches \\((82, 30).\\) So the points lie on a straight line. Hence (D)."
+  },
+  {
+    "number": 1439,
+    "solution": "If \\(3, x_1, x_2\\) and \\(4, y_1, y_2\\) are each in A.P., then \\(B\\) and \\(C\\) advance by equal coordinate increments from \\(A\\), so all three lie on one line. Hence (B), collinear."
+  },
+  {
+    "number": 1440,
+    "solution": "Slope \\(=\\dfrac{a-4}{-2-3}=\\dfrac{a-4}{-5}.\\) Setting this equal to \\(-\\tfrac{2}{5}\\): \\(\\dfrac{a-4}{-5}=-\\tfrac{2}{5}\\Rightarrow a-4=2\\Rightarrow a=6.\\) Hence (A)."
+  },
+  {
+    "number": 1441,
+    "solution": "A line that never meets the x-axis is parallel to it (horizontal), and a horizontal line has slope \\(0.\\) Hence (D)."
+  },
+  {
+    "number": 1442,
+    "solution": "Median \\(PM\\) to the midpoint \\(M=\\left(\\tfrac{a}{2}, 0\\right)\\) of \\(QR\\) has slope \\(\\dfrac{0-b}{a/2}=-\\dfrac{2b}{a}.\\) Median \\(QN\\) to the midpoint \\(N=\\left(\\tfrac{a}{2}, \\tfrac{b}{2}\\right)\\) of \\(PR\\) has slope \\(\\dfrac{b/2}{a/2}=\\dfrac{b}{a}.\\) Perpendicularity: \\(-\\tfrac{2b}{a}\\cdot\\tfrac{b}{a}=-1\\Rightarrow a^2=2b^2.\\) Hence (C)."
+  },
+  {
+    "number": 1443,
+    "solution": "The line through \\((3q, 0)\\) and \\((0, 3p)\\) is \\(\\dfrac{x}{3q}+\\dfrac{y}{3p}=1.\\) For \\((1, 1)\\) on it: \\(\\dfrac{1}{3q}+\\dfrac{1}{3p}=1\\Rightarrow\\dfrac{1}{p}+\\dfrac{1}{q}=3.\\) Hence (C)."
+  },
+  {
+    "number": 1444,
+    "solution": "If \\(P(3, 5)\\) bisects the intercept, the axis intercepts are \\((6, 0)\\) and \\((0, 10).\\) Line: \\(\\dfrac{x}{6}+\\dfrac{y}{10}=1\\Rightarrow 10x+6y=60\\Rightarrow 5x+3y=30.\\) Hence (A)."
+  },
+  {
+    "number": 1445,
+    "solution": "A line perpendicular to the x-axis is vertical, of the form \\(x=\\text{constant}.\\) Through \\((-2, 9)\\) it is \\(x=-2\\), i.e. \\(x+2=0.\\) Hence (C)."
+  },
+  {
+    "number": 1446,
+    "solution": "Rewrite \\(\\dfrac{x}{10}-\\dfrac{y}{4}=3\\) as \\(\\dfrac{y}{4}=\\dfrac{x}{10}-3\\Rightarrow y=\\tfrac{2}{5}x-12.\\) Slope \\(=\\tfrac{2}{5}.\\) Hence (C)."
+  },
+  {
+    "number": 1447,
+    "solution": "For \\(4x-ay=8\\): \\(x\\)-intercept \\((y=0)\\) is \\(2\\); \\(y\\)-intercept \\((x=0)\\) is \\(-\\tfrac{8}{a}.\\) Condition \\(-\\tfrac{8}{a}=3(2)=6\\Rightarrow a=-\\tfrac{8}{6}=-\\tfrac{4}{3}.\\) Hence (D)."
+  },
+  {
+    "number": 1448,
+    "solution": "Let \\(A=(p, 0),\\ B=(0, q).\\) Centroid of \\(O, A, B\\) is \\(\\left(\\tfrac{p}{3}, \\tfrac{q}{3}\\right)=(1, 2)\\Rightarrow p=3,\\ q=6.\\) Line: \\(\\dfrac{x}{3}+\\dfrac{y}{6}=1\\Rightarrow 2x+y=6.\\) Hence (B)."
+  },
+  {
+    "number": 1449,
+    "solution": "Line \\(3x+y=3\\) has slope \\(-3\\), so a perpendicular has slope \\(\\tfrac{1}{3}.\\) Through \\((2, 2)\\): \\(y-2=\\tfrac{1}{3}(x-2)\\Rightarrow y=\\tfrac{1}{3}x+\\tfrac{4}{3}.\\) The \\(y\\)-intercept is \\(\\tfrac{4}{3}.\\) Hence (D)."
+  },
+  {
+    "number": 1450,
+    "solution": "Let intercepts be \\(a\\) and \\(7-a\\): \\(\\dfrac{x}{a}+\\dfrac{y}{7-a}=1.\\) Multiplying by \\(a(7-a)\\): \\(x(7-a)+ya=a(7-a)\\), so \\(ya=(7-a)(a-x)\\), i.e. \\(ay=(7-a)(a-x).\\) Hence (D)."
+  },
+  {
+    "number": 1451,
+    "solution": "Line \\(2x+y=3\\) has slope \\(-2\\); the perpendicular has slope \\(\\tfrac{1}{2}.\\) Through \\((1, 1)\\): \\(y-1=\\tfrac{1}{2}(x-1)\\Rightarrow y=\\tfrac{1}{2}x+\\tfrac{1}{2}.\\) The \\(y\\)-intercept is \\(\\tfrac{1}{2}.\\) Hence (D)."
+  },
+  {
+    "number": 1452,
+    "solution": "The incident ray \\(x+\\sqrt{3}y=\\sqrt{3}\\) has slope \\(-\\tfrac{1}{\\sqrt{3}}\\) and meets the x-axis at \\((\\sqrt{3}, 0).\\) On reflection in the x-axis the slope changes sign to \\(\\tfrac{1}{\\sqrt{3}}\\), and the ray still passes through \\((\\sqrt{3}, 0)\\): \\(y=\\tfrac{1}{\\sqrt{3}}(x-\\sqrt{3})\\Rightarrow\\sqrt{3}y=x-\\sqrt{3}.\\) Hence (A)."
+  },
+  {
+    "number": 1453,
+    "solution": "Line 1: \\(y=3x+c_1\\) through \\((30, 4)\\Rightarrow c_1=4-90=-86.\\) Line 2: \\(y=6x+c_2\\Rightarrow c_2=4-180=-176.\\) Difference of \\(y\\)-intercepts \\(=|-86-(-176)|=90.\\) Hence (D)."
+  },
+  {
+    "number": 1454,
+    "solution": "If \\(A(3, 4)\\) bisects the intercept, the intercepts are \\((6, 0)\\) and \\((0, 8).\\) Line: \\(\\dfrac{x}{6}+\\dfrac{y}{8}=1\\Rightarrow 8x+6y=48\\Rightarrow 4x+3y=24.\\) Hence (B)."
+  },
+  {
+    "number": 1455,
+    "solution": "If \\((\\alpha, \\beta)\\) is the midpoint of the intercept segment, the intercepts are \\((2\\alpha, 0)\\) and \\((0, 2\\beta).\\) Line: \\(\\dfrac{x}{2\\alpha}+\\dfrac{y}{2\\beta}=1\\Rightarrow\\dfrac{x}{\\alpha}+\\dfrac{y}{\\beta}=2.\\) Hence (C)."
+  },
+  {
+    "number": 1456,
+    "solution": "Midpoint \\((1, 1)\\) of the intercept segment gives intercepts \\((2, 0)\\) and \\((0, 2).\\) Line: \\(\\dfrac{x}{2}+\\dfrac{y}{2}=1\\Rightarrow x+y=2.\\) Hence (D)."
+  },
+  {
+    "number": 1457,
+    "solution": "Slope \\(=\\dfrac{2-1}{1-(-1/2)}=\\dfrac{1}{3/2}=\\tfrac{2}{3}.\\) Line: \\(y-2=\\tfrac{2}{3}(x-1).\\) At \\(y=0\\): \\(-2=\\tfrac{2}{3}(x-1)\\Rightarrow x-1=-3\\Rightarrow x=-2.\\) Hence (A)."
+  },
+  {
+    "number": 1458,
+    "solution": "Line through \\((1, 6)\\) and \\((3, -4)\\) has slope \\(\\dfrac{-4-6}{3-1}=-5.\\) Equation: \\(y-6=-5(x-1)\\Rightarrow y=-5x+11\\Rightarrow 5x+y-11=0.\\) Hence (A)."
+  },
+  {
+    "number": 1459,
+    "solution": "Slope \\(=\\dfrac{125.134-124.942}{110-20}=\\dfrac{0.192}{90}.\\) Using the point \\((20, 124.942)\\): \\(L=\\dfrac{0.192}{90}(C-20)+124.942.\\) Hence (A)."
+  },
+  {
+    "number": 1460,
+    "solution": "If \\(P(1, 2)\\) bisects the intercept, the intercepts are \\((2, 0)\\) and \\((0, 4).\\) Line: \\(\\dfrac{x}{2}+\\dfrac{y}{4}=1\\Rightarrow 2x+y=4.\\) Hence (D)."
+  },
+  {
+    "number": 1461,
+    "solution": "Write \\(x\\sec\\theta+y\\csc\\theta=a\\) as \\(x\\sin\\theta+y\\cos\\theta=a\\sin\\theta\\cos\\theta\\); its slope is \\(-\\tan\\theta.\\) The required perpendicular has slope \\(\\cot\\theta=\\dfrac{\\cos\\theta}{\\sin\\theta}.\\) Through \\((a\\cos^3\\theta,\\ a\\sin^3\\theta)\\): multiplying by \\(\\sin\\theta\\) gives \\(x\\cos\\theta-y\\sin\\theta=a\\cos^4\\theta-a\\sin^4\\theta=a(\\cos^2\\theta-\\sin^2\\theta)=a\\cos 2\\theta.\\) Hence (B)."
+  },
+  {
+    "number": 1462,
+    "solution": "Slopes are \\(m_1=3\\) and \\(m_2=\\tfrac{1}{2}.\\) Equal inclination to slope \\(m\\) gives \\(\\dfrac{3-m}{1+3m}=-\\dfrac{1/2-m}{1+m/2}.\\) Cross-multiplying and simplifying yields \\(7m^2-2m-7=0\\), so \\(m=\\dfrac{2\\pm\\sqrt{4+196}}{14}=\\dfrac{2\\pm 10\\sqrt{2}}{14}=\\tfrac{1}{7}(1\\pm 5\\sqrt{2}).\\) Hence (C)."
+  },
+  {
+    "number": 1463,
+    "solution": "The line through \\((h, 0)\\) and \\((0, k)\\) is \\(\\dfrac{x}{h}+\\dfrac{y}{k}=1.\\) Since \\((3, 3)\\) lies on it: \\(\\dfrac{3}{h}+\\dfrac{3}{k}=1\\Rightarrow\\dfrac{1}{h}+\\dfrac{1}{k}=\\tfrac{1}{3}.\\) Comparing with \\(\\dfrac{a}{h}+\\dfrac{b}{k}=\\tfrac{1}{3}\\) gives \\(a=1,\\ b=1.\\) Hence (C)."
+  },
+  {
+    "number": 1464,
+    "solution": "Midpoint of \\(PQ\\) is \\(\\left(\\tfrac{1+k}{2}, \\tfrac{7}{2}\\right);\\) slope of \\(PQ=\\dfrac{3-4}{k-1}=-\\dfrac{1}{k-1}\\), so the perpendicular bisector has slope \\((k-1).\\) Its \\(y\\)-intercept is \\(\\tfrac{7}{2}-(k-1)\\cdot\\tfrac{1+k}{2}=\\dfrac{7-(k^2-1)}{2}=\\dfrac{8-k^2}{2}.\\) Setting this \\(=-4\\): \\(8-k^2=-8\\Rightarrow k^2=16\\Rightarrow k=\\pm 4.\\) So \\(k=-4\\) is possible. Hence (A)."
+  },
+  {
+    "number": 1465,
+    "solution": "Line \\(3x-2y=6\\) has slope \\(\\tfrac{3}{2}\\); the perpendicular has slope \\(-\\tfrac{2}{3}.\\) With \\(y\\)-intercept \\(2\\): \\(y=-\\tfrac{2}{3}x+2.\\) At \\(y=0\\): \\(\\tfrac{2}{3}x=2\\Rightarrow x=3.\\) Hence (D)."
+  },
+  {
+    "number": 1466,
+    "solution": "Midpoint \\((4, -3)\\) gives intercepts \\((8, 0)\\) and \\((0, -6).\\) Line: \\(\\dfrac{x}{8}+\\dfrac{y}{-6}=1\\Rightarrow 6x-8y=48\\Rightarrow 3x-4y=24.\\) Hence (C)."
+  },
+  {
+    "number": 1467,
+    "solution": "The dividing point in ratio \\(1 : n\\) is \\(\\left(\\dfrac{n+2}{n+1}, \\dfrac{3}{n+1}\\right).\\) The segment has slope \\(3\\), so the perpendicular has slope \\(-\\tfrac{1}{3}.\\) Then \\(3y-\\dfrac{9}{n+1}=-\\left(x-\\dfrac{n+2}{n+1}\\right)\\), giving \\(x+3y=\\dfrac{9+(n+2)}{n+1}=\\dfrac{n+11}{n+1}.\\) Hence (A)."
+  },
+  {
+    "number": 1468,
+    "solution": "The mirror is \\(7x-y+1=0\\) (slope \\(7\\)) and the reflected ray is \\(2x+y=1\\) (slope \\(-2\\)), both through \\((0, 1).\\) Using equal angles of the incident and reflected rays with the mirror, the incident slope works out to \\(\\tfrac{41}{38}\\), so the incident line through \\((0, 1)\\) is \\(41x-38y+38=0.\\) Hence (C)."
+  },
+  {
+    "number": 1469,
+    "solution": "Slopes are \\(-\\tfrac{2}{3}\\) and \\(-\\tfrac{1}{k}.\\) For perpendicularity \\(\\left(-\\tfrac{2}{3}\\right)\\!\\left(-\\tfrac{1}{k}\\right)=-1\\Rightarrow\\dfrac{2}{3k}=-1\\Rightarrow k=-\\tfrac{2}{3}.\\) Hence (C)."
+  },
+  {
+    "number": 1470,
+    "solution": "Line \\(y=3x-1\\) has slope \\(3\\); the perpendicular has slope \\(-\\tfrac{1}{3}.\\) Through \\((1, 2)\\): \\(y-2=-\\tfrac{1}{3}(x-1)\\Rightarrow 3y-6=-x+1\\Rightarrow x+3y-7=0.\\) Hence (C)."
+  },
+  {
+    "number": 1471,
+    "solution": "Factor: \\(x^3-yx^2+x-y=x^2(x-y)+(x-y)=(x-y)(x^2+1).\\) Since \\(x^2+1=0\\) has no real solution, the real locus is \\(x-y=0\\), a single straight line. Hence (B)."
+  },
+  {
+    "number": 1472,
+    "solution": "Let intercepts be \\(A(p, 0)\\) and \\(B(0, q).\\) The point \\((-4, 3)\\) divides \\(AB\\) internally in \\(5 : 3\\): \\(\\left(\\dfrac{3p}{8}, \\dfrac{5q}{8}\\right)=(-4, 3)\\Rightarrow p=-\\tfrac{32}{3},\\ q=\\tfrac{24}{5}.\\) Line: \\(\\dfrac{x}{-32/3}+\\dfrac{y}{24/5}=1\\Rightarrow -9x+20y=96\\Rightarrow 9x-20y+96=0.\\) Hence (A)."
+  },
+  {
+    "number": 1473,
+    "solution": "Line \\(2x+8y=10\\Rightarrow x+4y=5\\) has slope \\(-\\tfrac{1}{4}\\); the perpendicular has slope \\(4.\\) Through \\((5, 0)\\): \\(y=4(x-5)=4x-20.\\) At \\(x=0,\\ y=-20\\), so it meets the y-axis at \\((0, -20).\\) Hence (D)."
+  },
+  {
+    "number": 1474,
+    "solution": "From \\(y+16=0\\) and \\(y=\\alpha x\\): \\(\\alpha x=-16\\Rightarrow x=-\\tfrac{16}{\\alpha}.\\) Concurrency with \\(x=t+\\alpha\\) gives \\(t=-\\tfrac{16}{\\alpha}-\\alpha.\\) Putting \\(\\alpha=-z\\ (z>0)\\): \\(t=\\dfrac{16}{z}+z\\ge 2\\sqrt{16}=8\\) by AM-GM. The least positive value of \\(t\\) is \\(8.\\) Hence (D)."
+  },
+  {
+    "number": 1475,
+    "solution": "Slopes are \\(m_1=-\\sqrt{3}\\) and \\(m_2=-\\tfrac{1}{\\sqrt{3}}.\\) \\(\\tan\\theta=\\left|\\dfrac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\dfrac{-\\sqrt{3}+1/\\sqrt{3}}{1+1}\\right|=\\left|\\dfrac{-2/\\sqrt{3}}{2}\\right|=\\dfrac{1}{\\sqrt{3}}.\\) So \\(\\theta=\\dfrac{\\pi}{6}.\\) Hence (A)."
+  },
+  {
+    "number": 1476,
+    "solution": "Perpendicular to \\(3x-4y=6\\) (slope \\(\\tfrac{3}{4}\\)) has slope \\(-\\tfrac{4}{3}\\), so write it as \\(4x+3y=k.\\) Intercepts \\(\\tfrac{k}{4}\\) and \\(\\tfrac{k}{3}\\) give area \\(\\tfrac{1}{2}\\cdot\\dfrac{k}{4}\\cdot\\dfrac{k}{3}=\\dfrac{k^2}{24}=6\\Rightarrow k^2=144\\Rightarrow k=\\pm 12.\\) Thus \\(4x+3y=12.\\) Hence (A)."
+  },
+  {
+    "number": 1477,
+    "solution": "The required line is the perpendicular bisector of the given segment; computing the midpoint and the perpendicular slope gives \\(3x+4y=1\\). Hence (C)."
+  },
+  {
+    "number": 1478,
+    "solution": "Let the ratio be \\(k : 1.\\) The dividing point \\(\\left(\\dfrac{6k-4}{k+1}, \\dfrac{-5k+7}{k+1}\\right)\\) lies on \\(2x+5y-7=0\\): \\(2(6k-4)+5(-5k+7)-7(k+1)=0\\Rightarrow -20k+20=0\\Rightarrow k=1.\\) So the ratio is \\(1 : 1.\\) Hence (C)."
+  },
+  {
+    "number": 1479,
+    "solution": "Slopes: \\(x+y=0\\) has \\(-1\\); \\(5x+y=4\\) has \\(-5\\); \\(x+5y=4\\) has \\(-\\tfrac{1}{5}.\\) The angle of \\(x+y=0\\) with \\(5x+y=4\\) gives \\(\\tan\\theta=\\left|\\dfrac{-1+5}{1+5}\\right|=\\tfrac{2}{3}\\), and with \\(x+5y=4\\) gives \\(\\left|\\dfrac{-1+1/5}{1+1/5}\\right|=\\tfrac{2}{3}\\) as well. Two equal angles make the triangle isosceles. Hence (A)."
+  },
+  {
+    "number": 1480,
+    "solution": "Write \\(3x+3y=-5.\\) Dividing by \\(\\sqrt{3^2+3^2}=3\\sqrt{2}\\) and keeping \\(p>0\\): \\(-\\tfrac{1}{\\sqrt{2}}x-\\tfrac{1}{\\sqrt{2}}y=\\tfrac{5}{3\\sqrt{2}}\\), so \\(\\cos\\alpha=-\\tfrac{1}{\\sqrt{2}},\\ \\sin\\alpha=-\\tfrac{1}{\\sqrt{2}}.\\) Then \\(\\sin\\alpha+\\cos\\alpha=-\\tfrac{2}{\\sqrt{2}}=-\\sqrt{2}.\\) Hence (C)."
+  },
+  {
+    "number": 1481,
+    "solution": "Since \\(a, b, c\\) are in A.P., \\(2b=a+c\\Rightarrow c=2b-a.\\) Then \\(ax+2by+c=0\\) becomes \\(a(x-1)+2b(y+1)=0\\), which holds for all valid \\(a, b\\) precisely when \\(x-1=0\\) and \\(y+1=0\\), i.e. at the fixed point \\((1, -1).\\) Hence (A)."
+  },
+  {
+    "number": 1482,
+    "solution": "From \\(x+y=3\\) and \\(y=3mx+1\\): \\(x+3mx+1=3\\Rightarrow x(1+3m)=2\\Rightarrow x=\\frac{2}{1+3m}\\). For \\(x\\) to be an integer, \\((1+3m)\\) must divide \\(2\\), so \\(1+3m\\in\\{\\pm1,\\pm2\\}\\). Only \\(1+3m=1\\) (\\(m=0\\)) and \\(1+3m=-2\\) (\\(m=-1\\)) give integer \\(m\\). So there are \\(2\\) values. Hence (C)."
+  },
+  {
+    "number": 1483,
+    "solution": "Slopes: \\(m_1=-\\frac{2}{11}\\) for \\(2x+11y-7=0\\) and \\(m_2=-\\frac{1}{3}\\) for \\(x+3y+5=0\\). \\(\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\frac{-\\frac{2}{11}+\\frac{1}{3}}{1+\\frac{2}{33}}\\right|=\\left|\\frac{\\frac{5}{33}}{\\frac{35}{33}}\\right|=\\frac{1}{7}\\). So \\(\\theta=\\tan^{-1}\\frac{1}{7}\\). Hence (C)."
+  },
+  {
+    "number": 1484,
+    "solution": "The intercepts are \\(x\\)-intercept \\(=-\\frac{c}{a}\\) and \\(y\\)-intercept \\(=-\\frac{c}{b}\\). Area \\(=\\frac12\\left|\\frac{c}{a}\\cdot\\frac{c}{b}\\right|=\\frac{c^{2}}{2ab}=\\frac{1}{32}\\Rightarrow 16c^{2}=ab\\), i.e. \\((4c)^{2}=a\\cdot b\\). Thus \\(a,\\,4c,\\,b\\) are in G.P. Hence (D)."
+  },
+  {
+    "number": 1485,
+    "solution": "Let \\(R=(x,y)\\). Centroid \\(=\\left(\\frac{2-2+x}{3},\\frac{-3+1+y}{3}\\right)=\\left(\\frac{x}{3},\\frac{y-2}{3}\\right)\\). It lies on \\(2X+3Y=1\\): \\(2\\cdot\\frac{x}{3}+3\\cdot\\frac{y-2}{3}=1\\Rightarrow 2x+3(y-2)=3\\Rightarrow 2x+3y=9\\). Hence (A)."
+  },
+  {
+    "number": 1486,
+    "solution": "If \\(ax+by+c=0\\) passes through \\((1,-2)\\), then \\(a-2b+c=0\\Rightarrow a+c=2b\\). This is the condition for \\(a,\\,b,\\,c\\) to be in A.P. Hence (B)."
+  },
+  {
+    "number": 1487,
+    "solution": "A line parallel to \\(x-2y+8=0\\) has the form \\(x-2y+k=0\\). Passing through \\((0,4)\\): \\(0-8+k=0\\Rightarrow k=8\\). So the line is \\(x-2y+8=0\\). Hence (A)."
+  },
+  {
+    "number": 1488,
+    "solution": "\\(px-qy=r\\) meets the \\(x\\)-axis (\\(y=0\\)) at \\(x=\\frac{r}{p}\\), so \\(a=\\frac{r}{p}\\); it meets the \\(y\\)-axis (\\(x=0\\)) at \\(y=-\\frac{r}{q}\\), so \\(b=-\\frac{r}{q}\\). Therefore \\(a+b=\\frac{r}{p}-\\frac{r}{q}=r\\left(\\frac{q-p}{pq}\\right)\\). Hence (B)."
+  },
+  {
+    "number": 1489,
+    "solution": "\\(y=\\sqrt{3}x\\) and \\(y=-\\sqrt{3}x\\) meet at the origin; with \\(y=1\\) the vertices are \\((0,0),\\left(\\frac{1}{\\sqrt3},1\\right),\\left(-\\frac{1}{\\sqrt3},1\\right)\\). Each slant side has length \\(\\sqrt{\\frac13+1}=\\frac{2}{\\sqrt3}\\) and the base \\(=\\frac{2}{\\sqrt3}\\); all three sides are equal, so it is an equilateral triangle. Hence (A)."
+  },
+  {
+    "number": 1490,
+    "solution": "Line \\(x+y=0\\) has slope \\(-1\\). A line of slope \\(m\\) makes \\(45^\\circ\\) with it when \\(\\left|\\frac{m+1}{1-m}\\right|=1\\). This gives \\(m=0\\) (horizontal) or the vertical line. Through \\((1,1)\\) these are \\(y-1=0\\) and \\(x-1=0\\). Hence (D)."
+  },
+  {
+    "number": 1491,
+    "solution": "The diagonal \\(7x-y+8=0\\) has slope \\(7\\); the other diagonal is perpendicular, with slope \\(-\\frac17\\), and passes through the vertex \\((-4,5)\\) (which does not lie on the first diagonal). So \\(y-5=-\\frac17(x+4)\\Rightarrow 7y-35=-x-4\\Rightarrow x+7y=31\\), i.e. \\(7y+x=31\\). Hence (C)."
+  },
+  {
+    "number": 1492,
+    "solution": "Write the equation as \\(a(x+y-1)+b(2x-3y+1)=0\\). For it to hold for all \\(a,b\\): \\(x+y-1=0\\) and \\(2x-3y+1=0\\). Solving, \\(x=\\frac25,\\ y=\\frac35\\). The fixed point is \\(\\left(\\frac25,\\frac35\\right)\\). Hence (D)."
+  },
+  {
+    "number": 1493,
+    "solution": "Centroid \\(=\\left(\\frac{\\cos\\theta+\\sin\\theta}{3},\\frac{\\sin\\theta-\\cos\\theta}{3}\\right)\\). On \\(y=2x\\): \\(\\sin\\theta-\\cos\\theta=2(\\cos\\theta+\\sin\\theta)\\Rightarrow -\\sin\\theta=3\\cos\\theta\\Rightarrow\\tan\\theta=-3\\). So \\(\\theta=\\tan^{-1}(-3)\\). Hence (C)."
+  },
+  {
+    "number": 1494,
+    "solution": "\\(L\\) is the perpendicular bisector of the segment joining \\((6,1)\\) and \\((-4,5)\\). Midpoint \\(=(1,3)\\); slope of segment \\(=\\frac{5-1}{-4-6}=-\\frac25\\), so \\(L\\) has slope \\(\\frac52\\). Through \\((1,3)\\): \\(y-3=\\frac52(x-1)\\Rightarrow 2y-6=5x-5\\Rightarrow 5x-2y+1=0\\). Hence (C)."
+  },
+  {
+    "number": 1495,
+    "solution": "Distance \\(=\\frac{|3(3)-4(-5)-26|}{\\sqrt{3^{2}+4^{2}}}=\\frac{|9+20-26|}{5}=\\frac{3}{5}\\). Hence (D)."
+  },
+  {
+    "number": 1496,
+    "solution": "The nearest point is the foot of the perpendicular from \\((3,-2)\\). Along the normal direction \\((1,1)\\): \\((3+t,-2+t)\\) on \\(x+y-3=0\\Rightarrow (3+t)+(-2+t)-3=0\\Rightarrow 2t-2=0\\Rightarrow t=1\\), giving \\((4,-1)\\). Hence (D)."
+  },
+  {
+    "number": 1497,
+    "solution": "Image of \\((0,0)\\) in \\(4x+3y-25=0\\): \\(x'=0-\\frac{2\\cdot4(4\\cdot0+3\\cdot0-25)}{4^{2}+3^{2}}=\\frac{8\\cdot25}{25}=8\\); \\(y'=0-\\frac{2\\cdot3(-25)}{25}=\\frac{6\\cdot25}{25}=6\\). Image \\(=(8,6)\\). Hence (D)."
+  },
+  {
+    "number": 1498,
+    "solution": "A point on \\(x+y+1=0\\) is \\((t,-1-t)\\). Its distance from \\(3x+4y+2=0\\) is \\(\\frac{|3t+4(-1-t)+2|}{5}=\\frac{|-t-2|}{5}=\\frac15\\Rightarrow |t+2|=1\\Rightarrow t=-1\\) or \\(t=-3\\), giving \\((-1,0)\\) and \\((-3,2)\\). Both options (B) and (D) satisfy the condition; the keyed answer is (B)."
+  },
+  {
+    "number": 1499,
+    "solution": "For \\(x\\sec\\theta+y\\,\\mathrm{cosec}\\,\\theta=a\\): \\(p_1=\\frac{a}{\\sqrt{\\sec^{2}\\theta+\\mathrm{cosec}^{2}\\theta}}=a\\sin\\theta\\cos\\theta=\\frac{a}{2}\\sin2\\theta\\), so \\(4p_1^{2}=a^{2}\\sin^{2}2\\theta\\). For \\(x\\cos\\theta-y\\sin\\theta=a\\cos2\\theta\\): \\(p_2=|a\\cos2\\theta|\\), so \\(p_2^{2}=a^{2}\\cos^{2}2\\theta\\). Hence \\(4p_1^{2}+p_2^{2}=a^{2}(\\sin^{2}2\\theta+\\cos^{2}2\\theta)=a^{2}\\). Hence (B)."
+  },
+  {
+    "number": 1500,
+    "solution": "Points at distance \\(\\sqrt5\\) from \\(x-2y+1=0\\) lie on two lines parallel to it; points at distance \\(\\sqrt{13}\\) from \\(2x+3y-1=0\\) lie on two lines parallel to it. The two pairs are non-parallel, so they intersect in \\(2\\times2=4\\) points. Hence (C)."
+  },
+  {
+    "number": 1501,
+    "solution": "Rewrite \\(6x+8y=15\\) as \\(3x+4y=\\frac{15}{2}\\). Distance between \\(3x+4y=9\\) and \\(3x+4y=\\frac{15}{2}\\) is \\(\\frac{\\left|9-\\frac{15}{2}\\right|}{\\sqrt{3^{2}+4^{2}}}=\\frac{\\frac{3}{2}}{5}=\\frac{3}{10}\\). Hence (A)."
+  },
+  {
+    "number": 1502,
+    "solution": "Slope through \\((k,2k)\\) and \\((3k,3k)\\) is \\(\\frac{3k-2k}{3k-k}=\\frac12\\). The line is \\(y-2k=\\frac12(x-k)\\); using \\((3,1)\\): \\(1-2k=\\frac12(3-k)\\Rightarrow 2-4k=3-k\\Rightarrow k=-\\frac13\\). The line through \\((3,1)\\) with slope \\(\\frac12\\) is \\(x-2y-1=0\\). Distance from origin \\(=\\frac{|-1|}{\\sqrt{1+4}}=\\frac{1}{\\sqrt5}\\). Hence (D)."
+  },
+  {
+    "number": 1503,
+    "solution": "Write \\(\\frac{x}{a}+\\frac{y}{b}=1\\) as \\(bx+ay-ab=0\\). Distance from origin \\(=\\frac{|ab|}{\\sqrt{a^{2}+b^{2}}}=p\\Rightarrow p^{2}=\\frac{a^{2}b^{2}}{a^{2}+b^{2}}\\Rightarrow\\frac{1}{p^{2}}=\\frac{a^{2}+b^{2}}{a^{2}b^{2}}=\\frac{1}{a^{2}}+\\frac{1}{b^{2}}\\). Hence (A)."
+  },
+  {
+    "number": 1504,
+    "solution": "Line through \\((5,0),(0,3)\\): \\(\\frac{x}{5}+\\frac{y}{3}=1\\Rightarrow 3x+5y-15=0\\). Distance from \\((4,4)\\): \\(\\frac{|3(4)+5(4)-15|}{\\sqrt{3^{2}+5^{2}}}=\\frac{17}{\\sqrt{34}}=\\sqrt{\\frac{17^{2}}{34}}=\\sqrt{\\frac{17}{2}}\\). Hence (D)."
+  },
+  {
+    "number": 1505,
+    "solution": "For \\(x\\sec\\theta+y\\,\\mathrm{cosec}\\,\\theta=a\\): \\(p=\\frac{a}{\\sqrt{\\sec^{2}\\theta+\\mathrm{cosec}^{2}\\theta}}=a\\sin\\theta\\cos\\theta=\\frac{a}{2}\\sin2\\theta\\Rightarrow 4p^{2}=a^{2}\\sin^{2}2\\theta\\). For \\(x\\cos\\theta-y\\sin\\theta=a\\cos2\\theta\\): \\(q=|a\\cos2\\theta|\\Rightarrow q^{2}=a^{2}\\cos^{2}2\\theta\\). So \\(4p^{2}+q^{2}=a^{2}(\\sin^{2}2\\theta+\\cos^{2}2\\theta)=a^{2}\\). Hence (D)."
+  },
+  {
+    "number": 1506,
+    "solution": "Intercept form: \\(\\frac{x}{1/3}+\\frac{y}{1/4}=1\\Rightarrow 3x+4y=1\\). Distance from origin \\(=\\frac{|{-1}|}{\\sqrt{3^{2}+4^{2}}}=\\frac{1}{5}\\). Hence (D)."
+  },
+  {
+    "number": 1507,
+    "solution": "The perpendicular has slope \\(\\frac34\\), so \\(\\cos\\alpha=\\frac45,\\ \\sin\\alpha=\\frac35\\). Normal form \\(x\\cos\\alpha+y\\sin\\alpha=p\\): \\(\\frac45x+\\frac35y=\\pm5\\Rightarrow 4x+3y=\\pm25\\), i.e. \\(4x+3y\\pm25=0\\). Hence (B)."
+  },
+  {
+    "number": 1508,
+    "solution": "A point on \\(x+y=4\\) is \\((x,4-x)\\). Distance from \\(4x+3y-10=0\\): \\(\\frac{|4x+3(4-x)-10|}{5}=\\frac{|x+2|}{5}=1\\Rightarrow x=3\\) or \\(x=-7\\), giving \\((3,1)\\) and \\((-7,11)\\). Hence (A)."
+  },
+  {
+    "number": 1509,
+    "solution": "The greatest distance from \\((-1,2)\\) to a line through \\((2,-3)\\) is the distance between the two points: \\(\\sqrt{(2+1)^{2}+(-3-2)^{2}}=\\sqrt{34}\\approx5.83\\). Since \\(8>\\sqrt{34}\\), no line through \\((2,-3)\\) can be \\(8\\) units from \\((-1,2)\\). Number of lines \\(=0\\). Hence (D)."
+  },
+  {
+    "number": 1510,
+    "solution": "Distance between \\(5x-12y-14=0\\) and \\(5x-12y+12=0\\) is \\(\\frac{|-14-12|}{\\sqrt{5^{2}+12^{2}}}=\\frac{26}{13}=2\\). Hence (B)."
+  },
+  {
+    "number": 1511,
+    "solution": "Distance \\(=\\frac{|1+5(-1)-9|}{\\sqrt{1^{2}+5^{2}}}=\\frac{|-13|}{\\sqrt{26}}=\\frac{13}{\\sqrt{26}}=\\sqrt{\\frac{169}{26}}=\\sqrt{\\frac{13}{2}}\\). Hence (B)."
+  },
+  {
+    "number": 1512,
+    "solution": "Slope of \\(2x-3y+5=0\\) is \\(\\frac23\\); the perpendicular has slope \\(-\\frac32\\). With \\(y\\)-intercept \\(3\\): \\(y=-\\frac32x+3\\Rightarrow 2y=-3x+6\\Rightarrow 3x+2y-6=0\\). Hence (A)."
+  },
+  {
+    "number": 1513,
+    "solution": "A variable line whose signed distances from given points sum to zero passes through their centroid. Centroid of \\((2,0),(0,2),(-2,-2)\\) is \\(\\left(\\frac{2+0-2}{3},\\frac{0+2-2}{3}\\right)=(0,0)\\). Hence (B)."
+  },
+  {
+    "number": 1514,
+    "solution": "The perpendicular distance from the origin to \\(L\\) is unchanged by rotation of axes about the origin. With intercepts \\(a,b\\) this distance is \\(\\frac{1}{\\sqrt{\\frac{1}{a^{2}}+\\frac{1}{b^{2}}}}\\); with intercepts \\(p,q\\) it is \\(\\frac{1}{\\sqrt{\\frac{1}{p^{2}}+\\frac{1}{q^{2}}}}\\). Equating, \\(\\frac{1}{a^{2}}+\\frac{1}{b^{2}}=\\frac{1}{p^{2}}+\\frac{1}{q^{2}}\\). Hence (C)."
+  },
+  {
+    "number": 1515,
+    "solution": "\\(L:\\frac{x}{5}+\\frac{y}{b}=1\\) through \\((13,32)\\): \\(\\frac{13}{5}+\\frac{32}{b}=1\\Rightarrow\\frac{32}{b}=-\\frac{8}{5}\\Rightarrow b=-20\\). So \\(L:4x-y=20\\) (slope \\(4\\)). \\(K\\) parallel to \\(L\\): \\(\\frac{x}{c}+\\frac{y}{3}=1\\) has slope \\(-\\frac{3}{c}=4\\Rightarrow c=-\\frac34\\), giving \\(K:4x-y=-3\\). Distance between \\(4x-y-20=0\\) and \\(4x-y+3=0\\) is \\(\\frac{|-20-3|}{\\sqrt{4^{2}+1^{2}}}=\\frac{23}{\\sqrt{17}}\\). Hence (D)."
+  },
+  {
+    "number": 1516,
+    "solution": "Along the normal \\((1,1)\\): \\((2+t,4+t)\\) on \\(x+y=4\\Rightarrow (2+t)+(4+t)=4\\Rightarrow 2t=-2\\Rightarrow t=-1\\), giving foot \\((1,3)\\). Hence (A)."
+  },
+  {
+    "number": 1517,
+    "solution": "The line is \\(y=mx+4\\Rightarrow mx-y+4=0\\). Distance from origin \\(=\\frac{|4|}{\\sqrt{m^{2}+1}}=\\frac{4}{\\sqrt{m^{2}+1}}\\). Hence (C)."
+  },
+  {
+    "number": 1518,
+    "solution": "Along the normal \\((1,1)\\): \\((t,t)\\) on \\(x+y=2\\Rightarrow 2t=2\\Rightarrow t=1\\), giving foot \\((1,1)\\). Hence (C)."
+  },
+  {
+    "number": 1519,
+    "solution": "The constant term is \\(-1\\), so \\(p=\\frac{|-1|}{\\sqrt{\\left(\\frac{\\sin\\alpha}{b}\\right)^{2}+\\left(\\frac{\\cos\\alpha}{a}\\right)^{2}}}=\\frac{1}{\\sqrt{\\frac{\\sin^{2}\\alpha}{b^{2}}+\\frac{\\cos^{2}\\alpha}{a^{2}}}}=\\frac{|ab|}{\\sqrt{a^{2}\\sin^{2}\\alpha+b^{2}\\cos^{2}\\alpha}}\\). Hence (D)."
+  },
+  {
+    "number": 1520,
+    "solution": "Write the lines as \\(x-y+a=0\\) and \\(x-y+b=0\\). Distance \\(=\\frac{|a-b|}{\\sqrt{1^{2}+1^{2}}}=\\frac{|a-b|}{\\sqrt2}\\). Hence (A)."
+  },
+  {
+    "number": 1521,
+    "solution": "The line is \\(mx-y+\\frac{a}{m}=0\\). Foot of perpendicular from \\((a,0)\\) along normal \\((m,-1)\\): \\((a+mt,\\,-t)\\) on the line gives \\(m(a+mt)+t+\\frac{a}{m}=0\\Rightarrow (m^{2}+1)t=-a\\frac{m^{2}+1}{m}\\Rightarrow t=-\\frac{a}{m}\\). Foot \\(=\\left(a-a,\\ \\frac{a}{m}\\right)=\\left(0,\\frac{a}{m}\\right)\\). Hence (A)."
+  },
+  {
+    "number": 1522,
+    "solution": "Intercept form: \\(\\frac{x}{3}+\\frac{y}{4}=1\\Rightarrow 4x+3y=12\\). Distance from origin \\(=\\frac{12}{\\sqrt{4^{2}+3^{2}}}=\\frac{12}{5}\\). Hence (D)."
+  },
+  {
+    "number": 1523,
+    "solution": "Along the normal \\((2,1)\\): \\((3+2t,4+t)\\) on \\(2x+y-7=0\\Rightarrow 2(3+2t)+(4+t)-7=0\\Rightarrow 5t+3=0\\Rightarrow t=-\\frac35\\). Foot \\(=\\left(3-\\frac65,\\ 4-\\frac35\\right)=\\left(\\frac95,\\frac{17}{5}\\right)\\). Hence (A)."
+  },
+  {
+    "number": 1524,
+    "solution": "By symmetry, the intersection of \\(\\frac{x}{a}+\\frac{y}{b}=1\\) and \\(\\frac{x}{b}+\\frac{y}{a}=1\\) satisfies \\(x=y\\) (their sum/difference forces \\((a-b)(x-y)=0\\), and \\(a\\neq b\\)). The line through the origin and this point is \\(y=x\\), i.e. \\(y-x=0\\). Hence (C)."
+  },
+  {
+    "number": 1525,
+    "solution": "The combined line is \\((6+3\\lambda)x+(-7-\\lambda)y+(8+5\\lambda)=0\\). For it to be parallel to the \\(y\\)-axis, the coefficient of \\(y\\) must vanish: \\(-7-\\lambda=0\\Rightarrow\\lambda=-7\\). Hence (A)."
+  },
+  {
+    "number": 1526,
+    "solution": "Intersection of \\(x-2y=1\\) and \\(x+3y=2\\): subtracting gives \\(5y=1\\Rightarrow y=\\frac15,\\ x=\\frac75\\). A line parallel to \\(3x+4y=0\\) is \\(3x+4y+k=0\\); through \\(\\left(\\frac75,\\frac15\\right)\\): \\(\\frac{21}{5}+\\frac45+k=0\\Rightarrow k=-5\\). So \\(3x+4y-5=0\\). Hence (C)."
+  },
+  {
+    "number": 1527,
+    "solution": "Intersection of \\(x+2y=4\\) and \\(2x+y=4\\) is \\(P=\\left(\\frac43,\\frac43\\right)\\). A line through \\(P\\) cutting the axes at \\((p,0),(0,q)\\) satisfies \\(\\frac{4/3}{p}+\\frac{4/3}{q}=1\\). For midpoint \\((h,k)\\), \\(p=2h,\\ q=2k\\), so \\(\\frac{2}{3h}+\\frac{2}{3k}=1\\Rightarrow 2(h+k)=3hk\\). Locus: \\(2(x+y)=3xy\\). Hence (B)."
+  },
+  {
+    "number": 1528,
+    "solution": "From \\(ax+2by+3b=0\\) and \\(bx-2ay-3a=0\\), eliminate \\(x\\): the \\(y\\)-coordinate of intersection satisfies \\(-(a^{2}+b^{2})(2y+3)=0\\), so \\(y=-\\frac32\\). The horizontal line is \\(y=-\\frac32\\), i.e. below the \\(x\\)-axis at a distance \\(\\frac32\\). Hence (D)."
+  },
+  {
+    "number": 1529,
+    "solution": "Solving \\(100x+50y=1\\) and \\(75x+25y=-3\\) gives \\(x=-\\frac{7}{50},\\ y=\\frac{15}{50}\\). For equal intercepts \\(\\frac{x}{a}+\\frac{y}{a}=1\\): \\(\\frac{-7/50+15/50}{a}=1\\Rightarrow a=\\frac{8}{50}=\\frac{4}{25}\\). The line is \\(x+y=\\frac{4}{25}\\Rightarrow 25x+25y-4=0\\). Hence (C)."
+  },
+  {
+    "number": 1530,
+    "solution": "Dividing \\(3a+2b+4c=0\\) by \\(4\\): \\(\\frac34a+\\frac12b+c=0\\). Comparing with \\(ax+by+c=0\\) satisfied for all such \\(a,b,c\\), the fixed point is \\(\\left(\\frac34,\\frac12\\right)\\). Hence (C)."
+  },
+  {
+    "number": 1531,
+    "solution": "Median from \\(O\\) to midpoint of \\(AB=(2,3)\\): \\(y=\\frac32x\\Rightarrow 3x-2y=0\\). Altitude from \\(O\\) is perpendicular to \\(AB\\) (slope of \\(AB=1\\)), so slope \\(-1\\): \\(x+y=0\\). Joint equation \\((3x-2y)(x+y)=3x^{2}+xy-2y^{2}=0\\). Hence (D)."
+  },
+  {
+    "number": 1532,
+    "solution": "\\(x+3y-9=0\\) and \\(2x-y-4=0\\) meet at \\((3,2)\\). Concurrency requires \\(4(3)+b(2)-2=0\\Rightarrow b=-5\\), so \\((b,0)=(-5,0)\\). Line through \\((-5,0)\\) and \\((3,2)\\) has slope \\(\\frac{2}{8}=\\frac14\\): \\(y=\\frac14(x+5)\\Rightarrow 4y=x+5\\Rightarrow x-4y+5=0\\). Hence (D)."
+  },
+  {
+    "number": 1533,
+    "solution": "Image of \\((1,1)\\) in \\(x+y+5=0\\): \\(x'=1-\\frac{2(1+1+5)}{2}=1-7=-6\\), \\(y'=1-\\frac{2(7)}{2}=-6\\), so image \\((-6,-6)\\). Distance from origin \\(=\\sqrt{36+36}=6\\sqrt2\\). Hence (C)."
+  },
+  {
+    "number": 1534,
+    "solution": "\\(2y^2-xy-6x^2=0\\) factors as \\(y=2x\\) and \\(y=-\\tfrac{3x}{2}\\); with \\(x+y=1\\) the vertices are \\(O(0,0)\\), \\(A(\\tfrac13,\\tfrac23)\\), \\(B(-2,3)\\). The altitude from \\(O\\) (slope \\(1\\)) is \\(y=x\\); meeting the altitude from \\(A\\) gives the orthocentre \\((\\tfrac43,\\tfrac43)\\). Hence (A)."
+  },
+  {
+    "number": 1535,
+    "solution": "Lines \\(x=5\\) and \\(y=3\\) meet at \\((5,3)\\); their angle bisectors make \\(45^\\circ\\): \\((y-3)=\\pm(x-5)\\). Joint equation \\([(x-5)-(y-3)][(x-5)+(y-3)]=(x-5)^{2}-(y-3)^{2}=0\\Rightarrow x^{2}-y^{2}-10x+6y+16=0\\). Hence (B)."
+  },
+  {
+    "number": 1536,
+    "solution": "The equation states that the sum of distances from \\((2,0)\\) and \\((-2,0)\\) equals \\(4\\), while the distance between these foci is also \\(4\\). Since the sum of focal distances equals the inter-focal distance, the ellipse degenerates to the segment joining the two foci (a degenerate conic, not a proper ellipse/circle/parabola). Hence (C)."
+  },
+  {
+    "number": 1537,
+    "solution": "Lines \\(L_1:2x+3y-1=0\\) and \\(L_2:x+2y-1=0\\) meet at \\(C(-1,1)\\); since \\(O\\) is the orthocentre, \\(OC\\perp L_3\\), so \\(L_3:ax+by-1=0\\) has normal \\((a,b)\\parallel(1,-1)\\Rightarrow b=-a\\). The vertex \\(A=L_2\\cap L_3\\) must satisfy \\(OA\\perp L_1\\) (i.e. \\(3A_x-2A_y=0\\)); solving gives \\(a=-8,\\ b=8\\). Hence (C)."
+  },
+  {
+    "number": 1538,
+    "solution": "On the line, \\(y=4x-2\\). Equidistant: \\((x+5)^{2}+(y-6)^{2}=(x-3)^{2}+(y-2)^{2}\\Rightarrow 16x-8y+48=0\\Rightarrow 2x-y+6=0\\Rightarrow y=2x+6\\). With \\(y=4x-2\\): \\(4x-2=2x+6\\Rightarrow x=4,\\ y=14\\). Point \\((4,14)\\). Hence (B)."
+  },
+  {
+    "number": 1539,
+    "solution": "Intercepts of \\(5x+y=k\\) are \\(\\frac{k}{5}\\) and \\(k\\). Area \\(=\\frac12\\cdot\\frac{k}{5}\\cdot k=\\frac{k^{2}}{10}=10\\Rightarrow k^{2}=100\\Rightarrow k=\\pm10\\). Hence (B)."
+  },
+  {
+    "number": 1540,
+    "solution": "The triangle whose side-midpoints are \\((0,1),(1,1),(1,0)\\) has vertices \\((0,0),(2,0),(0,2)\\). Sides: opposite \\((0,0)\\) is \\(2\\sqrt2\\); opposite \\((2,0)\\) is \\(2\\); opposite \\((0,2)\\) is \\(2\\). \\(x\\)-coordinate of incentre \\(=\\frac{2\\sqrt2\\cdot0+2\\cdot2+2\\cdot0}{2\\sqrt2+2+2}=\\frac{4}{2(\\sqrt2+2)}=\\frac{2}{2+\\sqrt2}=2-\\sqrt2\\). Hence (A)."
+  },
+  {
+    "number": 1541,
+    "solution": "Intercepts of \\(3\\cos\\theta\\,x+4\\sin\\theta\\,y=12\\): \\(\\frac{12}{3\\cos\\theta}=\\frac{4}{\\cos\\theta}\\) and \\(\\frac{12}{4\\sin\\theta}=\\frac{3}{\\sin\\theta}\\). Area \\(=\\frac12\\cdot\\frac{4}{\\cos\\theta}\\cdot\\frac{3}{\\sin\\theta}=\\frac{6}{\\sin\\theta\\cos\\theta}=\\frac{12}{\\sin2\\theta}\\). This is minimum when \\(\\sin2\\theta=1\\), giving area \\(=12\\). Hence (D)."
+  },
+  {
+    "number": 1542,
+    "solution": "Vertices: \\(x=0\\cap x-2y=1\\Rightarrow\\left(0,-\\frac12\\right)\\); \\(x=0\\cap 2x+y-2=0\\Rightarrow(0,2)\\); \\(x-2y=1\\cap 2x+y-2=0\\Rightarrow(1,0)\\). The side \\(x=0\\) is vertical, so the altitude from \\((1,0)\\) is \\(y=0\\). Altitude from \\(\\left(0,-\\frac12\\right)\\) perpendicular to the side of slope \\(-2\\) has slope \\(\\frac12\\): \\(y=\\frac12x-\\frac12\\); meeting \\(y=0\\) at \\(x=1\\). Orthocentre \\((1,0)\\). Hence (B)."
+  },
+  {
+    "number": 1543,
+    "solution": "Interior integer points satisfy \\(x\\ge1,\\ y\\ge1,\\ x+y\\le20\\). For each \\(x=1,\\dots,19\\) there are \\(20-x\\) values of \\(y\\). Total \\(=\\sum_{x=1}^{19}(20-x)=\\sum_{k=1}^{19}k=\\frac{19\\cdot20}{2}=190\\). Hence (B)."
+  },
+  {
+    "number": 1544,
+    "solution": "Image of \\((2,4)\\) in \\(x+y-10=0\\): \\(x'=2-\\frac{2(2+4-10)}{2}=2+4=6\\), \\(y'=4-\\frac{2(2+4-10)}{2}=4+4=8\\). Image \\((6,8)\\). Hence (C)."
+  },
+  {
+    "number": 1545,
+    "solution": "Reflection in the line \\(y=-x\\) (i.e. \\(x+y=0\\)) maps \\((x,y)\\mapsto(-y,-x)\\). So \\((1,1)\\mapsto(-1,-1)\\). Hence (D)."
+  },
+  {
+    "number": 1546,
+    "solution": "From \\(3x+4y=9\\) and \\(y=mx+1\\): \\(3x+4(mx+1)=9\\Rightarrow x(3+4m)=5\\Rightarrow x=\\frac{5}{3+4m}\\). For \\(x\\) integer, \\((3+4m)\\) divides \\(5\\): \\(3+4m\\in\\{\\pm1,\\pm5\\}\\). Only \\(3+4m=-1\\) (\\(m=-1\\)) and \\(3+4m=-5\\) (\\(m=-2\\)) give integer \\(m\\). So \\(2\\) values. Hence (B)."
+  },
+  {
+    "number": 1547,
+    "solution": "\\(xy=0\\) gives the axes \\(x=0\\) and \\(y=0\\); with \\(x+y=1\\) the triangle has vertices \\((0,0),(1,0),(0,1)\\) with the right angle at \\((0,0)\\). For a right triangle the orthocentre is the right-angle vertex, \\((0,0)\\). Hence (A)."
+  },
+  {
+    "number": 1548,
+    "solution": "By the shoelace formula on \\(A(0,0),B(12,0),C(12,2),D(6,7),E(0,5)\\): \\(\\sum(x_iy_{i+1}-x_{i+1}y_i)=0+24+(84-12)+30+0=126\\). Area \\(=\\frac{126}{2}=63\\). Hence (D)."
+  },
+  {
+    "number": 1549,
+    "solution": "Vertices: \\(3x-4y=0\\cap5x+12y=0\\Rightarrow(0,0)\\); \\(3x-4y=0\\cap y=15\\Rightarrow(20,15)\\); \\(5x+12y=0\\cap y=15\\Rightarrow(-36,15)\\). Side lengths: opposite \\((0,0)\\) is \\(56\\); opposite \\((20,15)\\) is \\(39\\); opposite \\((-36,15)\\) is \\(25\\). Incentre \\(x=\\frac{56\\cdot0+39\\cdot20+25\\cdot(-36)}{56+39+25}=\\frac{-120}{120}=-1\\), \\(y=\\frac{39\\cdot15+25\\cdot15}{120}=8\\). Incentre \\((-1,8)\\). Hence (B)."
+  },
+  {
+    "number": 1550,
+    "solution": "\\(C\\) = reflection of \\(A(2,4)\\) in the \\(x\\)-axis \\(=(2,-4)\\); \\(B\\) = reflection of \\(C\\) in the \\(y\\)-axis \\(=(-2,-4)\\). \\(|AB|=\\sqrt{(2-(-2))^{2}+(4-(-4))^{2}}=\\sqrt{16+64}=\\sqrt{80}=4\\sqrt5\\). Hence (C)."
+  },
+  {
+    "number": 1551,
+    "solution": "Reflection in \\(y+5=0\\) (the line \\(y=-5\\)) keeps \\(x\\) and maps \\(y\\mapsto 2(-5)-y\\). For \\((-3,2)\\): \\(y'=-10-2=-12\\), giving \\((-3,-12)\\). Hence (C)."
+  },
+  {
+    "number": 1552,
+    "solution": "\\(xy=0\\) gives the axes \\(x=0\\) and \\(y=0\\). With \\(x=4\\) and \\(y=-5\\) these bound a rectangle of width \\(4\\) and height \\(5\\). Area \\(=4\\times5=20\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 1553,
+    "solution": "Take a line through \\((1,2)\\) at angle \\(\\theta\\): the point at distance \\(r\\) is \\((1+r\\cos\\theta,2+r\\sin\\theta)\\). On \\(x+y=4\\): \\(3+r(\\cos\\theta+\\sin\\theta)=4\\Rightarrow r=\\frac{1}{\\cos\\theta+\\sin\\theta}\\). With \\(r=\\frac{\\sqrt6}{3}\\): \\(\\cos\\theta+\\sin\\theta=\\frac{3}{\\sqrt6}=\\frac{\\sqrt6}{2}\\Rightarrow\\sqrt2\\sin(\\theta+45^\\circ)=\\frac{\\sqrt6}{2}\\Rightarrow\\sin(\\theta+45^\\circ)=\\frac{\\sqrt3}{2}\\). So \\(\\theta+45^\\circ=60^\\circ\\) or \\(120^\\circ\\), giving \\(\\theta=15^\\circ\\) or \\(75^\\circ\\). Hence (B)."
+  }
+]

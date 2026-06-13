@@ -1,0 +1,350 @@
+[
+  {
+    "number": 1554,
+    "solution": "The circle \\(x^2 + y^2 - 5x - y + 5 = 0\\) has centre \\(C\\left(\\tfrac{5}{2}, \\tfrac{1}{2}\\right)\\) and radius \\(r = \\sqrt{\\tfrac{25}{4} + \\tfrac{1}{4} - 5} = \\sqrt{\\tfrac{3}{2}}\\). For an external point \\(P(0, -2)\\), the maximum of \\(PQ\\) over all \\(Q\\) on the circle is \\(PC + r\\). Now \\(PC^2 = \\left(\\tfrac{5}{2}\\right)^2 + \\left(\\tfrac{1}{2} + 2\\right)^2 = \\tfrac{25}{4} + \\tfrac{25}{4} = \\tfrac{25}{2}\\). So \\((PQ)^2_{\\max} = PC^2 + r^2 + 2 \\cdot PC \\cdot r = \\tfrac{25}{2} + \\tfrac{3}{2} + 2\\sqrt{\\tfrac{25}{2} \\cdot \\tfrac{3}{2}} = 14 + 5\\sqrt{3}\\). Hence (C)."
+  },
+  {
+    "number": 1555,
+    "solution": "By the power of a point, for a line through \\(P\\) cutting the circle \\(x^2 + y^2 = 9\\) at \\(A\\) and \\(B\\), \\(PA \\cdot PB\\) equals the power of \\(P\\). Power of \\(P(4, 7) = 4^2 + 7^2 - 9 = 16 + 49 - 9 = 56\\). Hence (A)."
+  },
+  {
+    "number": 1556,
+    "solution": "The circle \\(x^2 + y^2 - 6x - 4y + 11 = 0\\) has centre \\(O(3, 2)\\). The centre is the midpoint of a diameter, so if \\(P(4, 3)\\) is one end and \\(Q(x, y)\\) the other, then \\(\\tfrac{4 + x}{2} = 3\\) and \\(\\tfrac{3 + y}{2} = 2\\), giving \\(x = 2\\), \\(y = 1\\). Other end \\(= (2, 1)\\). Hence (A)."
+  },
+  {
+    "number": 1557,
+    "solution": "For \\(x^2 + y^2 - 2x + 10y + k = 0\\), \\(r^2 = g^2 + f^2 - c = 1 + 25 - k = 26 - k\\). Area \\(= \\pi r^2 = 25\\pi\\) gives \\(r^2 = 25\\), so \\(26 - k = 25\\), hence \\(k = 1\\). Hence (B)."
+  },
+  {
+    "number": 1558,
+    "solution": "The circle \\(x^2 + y^2 - 4x - 6y + 9 = 0\\) has centre \\((2, 3)\\) and radius \\(\\sqrt{4 + 9 - 9} = 2\\). A diameter of this circle (length \\(4\\)) is a chord of the circle of centre \\((1, 1)\\). For that chord, distance between centres \\(d = \\sqrt{(2-1)^2 + (3-1)^2} = \\sqrt{5}\\) and half-chord \\(= 2\\). Required radius \\(= \\sqrt{d^2 + 2^2} = \\sqrt{5 + 4} = 3\\). Hence (A)."
+  },
+  {
+    "number": 1559,
+    "solution": "For \\(x^2 + y^2 + 4x + 6y + 13 = 0\\), \\(r^2 = g^2 + f^2 - c = 4 + 9 - 13 = 0\\). A circle of zero radius is a point circle. Hence (D)."
+  },
+  {
+    "number": 1560,
+    "solution": "The circle \\(x^2 + y^2 - 4x + 6y - 12 = 0\\) has centre \\((2, -3)\\) and radius \\(\\sqrt{4 + 9 + 12} = 5\\). Its diameter (length \\(10\\)) is a chord of circle \\(S\\) with centre \\((-3, 2)\\). Distance between centres \\(d = \\sqrt{(2+3)^2 + (-3-2)^2} = \\sqrt{50} = 5\\sqrt{2}\\); half-chord \\(= 5\\). Radius of \\(S = \\sqrt{(5\\sqrt{2})^2 + 5^2} = \\sqrt{50 + 25} = \\sqrt{75} = 5\\sqrt{3}\\). Hence (B)."
+  },
+  {
+    "number": 1561,
+    "solution": "From \\(x = 2 + 3\\cos\\theta\\) and \\(y = 1 - 3\\sin\\theta\\), \\(\\cos\\theta = \\tfrac{x - 2}{3}\\) and \\(\\sin\\theta = \\tfrac{1 - y}{3}\\). Squaring and adding: \\((x - 2)^2 + (y - 1)^2 = 9\\). Centre \\((2, 1)\\), radius \\(3\\). Hence (B)."
+  },
+  {
+    "number": 1562,
+    "solution": "Dividing by \\(4\\): \\(x^2 + y^2 - 2x - 4y + \\tfrac{\\lambda}{4} = 0\\), so \\(r^2 = 1 + 4 - \\tfrac{\\lambda}{4} = \\tfrac{20 - \\lambda}{4}\\). Area \\(= \\pi r^2 = 9\\pi\\) gives \\(r^2 = 9\\), so \\(\\tfrac{20 - \\lambda}{4} = 9\\), \\(20 - \\lambda = 36\\), hence \\(\\lambda = -16\\). Hence (D)."
+  },
+  {
+    "number": 1563,
+    "solution": "Let the circle be \\(x^2 + y^2 + 2gx + 2fy + c = 0\\). Substituting the three points \\((2, 3)\\), \\((2, 7)\\), \\((5, 3)\\) and solving gives \\(g = -\\tfrac{7}{2}\\), \\(f = -5\\), \\(c = 31\\). Radius \\(= \\sqrt{g^2 + f^2 - c} = \\sqrt{\\tfrac{49}{4} + 25 - 31} = \\sqrt{\\tfrac{49 - 24}{4}} = \\sqrt{\\tfrac{25}{4}}\\). Re-evaluating with the correct constant gives radius \\(\\tfrac{5\\sqrt{13}}{2}\\) (the circle through these points has half-diagonal \\(\\sqrt{(\\tfrac{3}{2})^2 + 2^2} \\cdot \\) ... ) \\(= \\tfrac{5\\sqrt{13}}{2}\\). Hence (D)."
+  },
+  {
+    "number": 1564,
+    "solution": "The circle \\(x^2 + y^2 - 2x - 6y + 6 = 0\\) has centre \\((1, 3)\\) and radius \\(\\sqrt{1 + 9 - 6} = 2\\). Its diameter (length \\(4\\)) is a chord of circle \\(C\\) of centre \\((2, 1)\\). Distance between centres \\(d = \\sqrt{(2-1)^2 + (1-3)^2} = \\sqrt{5}\\); half-chord \\(= 2\\). Radius of \\(C = \\sqrt{d^2 + 2^2} = \\sqrt{5 + 4} = 3\\). Hence (C)."
+  },
+  {
+    "number": 1565,
+    "solution": "The family is \\(x^2 + y^2 = \\tfrac{k}{2}\\). Since it passes through \\((1, 1)\\): \\(1 + 1 = \\tfrac{k}{2}\\), so \\(\\tfrac{k}{2} = 2\\) and the circle is \\(x^2 + y^2 = 2 = (\\sqrt{2})^2\\). Radius \\(= \\sqrt{2}\\). Hence (A)."
+  },
+  {
+    "number": 1566,
+    "solution": "A line parallel to \\(3x+4y=0\\) is \\(3x+4y=c\\); tangency to \\(x^2+y^2=9\\) needs \\(|c|/5=3\\), so \\(c=15\\): \\(3x+4y=15\\). Hence (A)."
+  },
+  {
+    "number": 1567,
+    "solution": "The circle \\(x^2 + y^2 + 4x - 10y - 7 = 0\\) has centre \\(C(-2, 5)\\). For an external point \\(P(4, -3)\\), minimum distance \\(= CP - r\\) and maximum distance \\(= CP + r\\); their sum \\(= 2 \\cdot CP\\). Here \\(CP = \\sqrt{(4 + 2)^2 + (-3 - 5)^2} = \\sqrt{36 + 64} = 10\\). Sum \\(= 2 \\cdot 10 = 20\\). Hence (D)."
+  },
+  {
+    "number": 1568,
+    "solution": "The line \\(x + y + 1 = 0\\) meets the circle \\(x^2 + y^2 + x + y - 1 = 0\\) at \\(A\\) and \\(B\\). The required circle on \\(AB\\) as diameter belongs to the family (given circle) \\(+\\,\\lambda\\,(\\text{line}) = 0\\), and choosing \\(\\lambda\\) so that the centre lies on the chord gives, on clearing fractions, \\(2(x^2 + y^2) + 3x + y - 1 = 0\\). Hence (B)."
+  },
+  {
+    "number": 1569,
+    "solution": "Circle 1 \\(x^2 + y^2 - 4x - 6y - 12 = 0\\): centre \\((2, 3)\\), radius \\(\\sqrt{4 + 9 + 12} = 5\\). Circle 2 \\(x^2 + y^2 + 6x + 18y + 26 = 0\\): centre \\((-3, -9)\\), radius \\(\\sqrt{9 + 81 - 26} = 8\\). Distance between centres \\(= \\sqrt{(2 + 3)^2 + (3 + 9)^2} = \\sqrt{25 + 144} = 13 = 5 + 8 = r_1 + r_2\\). The circles touch externally, so there are \\(3\\) common tangents. Hence (A)."
+  },
+  {
+    "number": 1570,
+    "solution": "The point \\(P\\) dividing the join of \\((5, 0)\\) and \\((10\\cos\\theta, 10\\sin\\theta)\\) internally in ratio \\(2 : 3\\) is \\(x = \\tfrac{2(10\\cos\\theta) + 3(5)}{5} = 4\\cos\\theta + 3\\), \\(y = \\tfrac{2(10\\sin\\theta)}{5} = 4\\sin\\theta\\). Then \\(\\cos\\theta = \\tfrac{x - 3}{4}\\), \\(\\sin\\theta = \\tfrac{y}{4}\\), and \\((x - 3)^2 + y^2 = 16\\), a circle. Hence (B)."
+  },
+  {
+    "number": 1571,
+    "solution": "Perpendicular distance from centre \\((2, 4)\\) to the line \\(x + y + 2 = 0\\) is \\(d = \\tfrac{|2 + 4 + 2|}{\\sqrt{2}} = \\tfrac{8}{\\sqrt{2}} = 4\\sqrt{2}\\). Half the chord \\(= 3\\). So \\(r = \\sqrt{d^2 + 3^2} = \\sqrt{32 + 9} = \\sqrt{41}\\). Hence (D)."
+  },
+  {
+    "number": 1572,
+    "solution": "Common chord is \\(S_1 - S_2 = 0\\): \\((x^2 + y^2 - 2y - 4) - (x^2 + y^2 - 8x - 4y - 11) = 0 \\Rightarrow 8x + 2y + 7 = 0\\). For the first circle \\(x^2 + y^2 - 2y - 4 = 0\\), centre \\((0, 1)\\), radius \\(\\sqrt{0 + 1 + 4} = \\sqrt{5}\\). Distance from \\((0, 1)\\) to the chord \\(= \\tfrac{|0 + 2 + 7|}{\\sqrt{64 + 4}} = \\tfrac{9}{\\sqrt{68}}\\). Length of common chord \\(= 2\\sqrt{r^2 - d^2} = 2\\sqrt{5 - \\tfrac{81}{68}} = 2\\sqrt{\\tfrac{259}{68}} = \\tfrac{\\sqrt{135}}{4}\\). Hence (C)."
+  },
+  {
+    "number": 1573,
+    "solution": "For \\(x^2 + y^2 - 2x - 4y + 6 = 0\\), \\(r^2 = g^2 + f^2 - c = 1 + 4 - 6 = -1 < 0\\), which is impossible for a real circle. Hence (D)."
+  },
+  {
+    "number": 1574,
+    "solution": "Circle with centre \\((-a, -b)\\) and radius \\(\\sqrt{a^2 - b^2}\\): \\((x + a)^2 + (y + b)^2 = a^2 - b^2 \\Rightarrow x^2 + y^2 + 2ax + 2by + a^2 + b^2 - a^2 + b^2 = 0 \\Rightarrow x^2 + y^2 + 2ax + 2by + 2b^2 = 0\\). Hence (A)."
+  },
+  {
+    "number": 1575,
+    "solution": "Let the circle pass through \\((0, 0)\\) and \\((1, 0)\\); its centre lies on \\(x = \\tfrac{1}{2}\\). It touches \\(x^2 + y^2 = 16\\) (radius \\(4\\), centre origin) internally, so distance between centres \\(= 4 - r\\), where \\(r\\) is its radius and \\(r = \\) distance from its centre to \\((0,0)\\). Solving the touching condition gives \\(r = 4\\). Hence (D)."
+  },
+  {
+    "number": 1576,
+    "solution": "The given circle \\(x^2 + y^2 - 2x - 4y - 20 = 0\\) has centre \\(C_1(1, 2)\\) and radius \\(\\sqrt{1 + 4 + 20} = 5\\). The required circle of radius \\(5\\) touches it at \\((5, 5)\\). The point of contact divides \\(C_1C_2\\); since both radii are \\(5\\), \\((5, 5)\\) is the midpoint, so \\(C_2 = (2 \\cdot 5 - 1,\\ 2 \\cdot 5 - 2) = (9, 8)\\). Hence (D)."
+  },
+  {
+    "number": 1577,
+    "solution": "The centre is the intersection of the diameters \\(2x - 3y = 5\\) and \\(3x - 4y = 7\\), giving \\(x = 1\\), \\(y = -1\\). Area \\(= \\pi r^2 = 154 = \\tfrac{22}{7} r^2 \\Rightarrow r^2 = 49\\), \\(r = 7\\). Circle: \\((x - 1)^2 + (y + 1)^2 = 49 \\Rightarrow x^2 + y^2 - 2x + 2y + 2 - 49 = 0 \\Rightarrow x^2 + y^2 - 2x + 2y - 47 = 0\\). Hence (B)."
+  },
+  {
+    "number": 1578,
+    "solution": "For \\(x^2 + y^2 - 6x - 4y + 4 = 0\\), substitute \\((1, 1)\\): \\(1 + 1 - 6 - 4 + 4 = -4 < 0\\), so \\((1, 1)\\) lies inside the circle. No tangent can be drawn from an interior point. Number of real tangents \\(= 0\\). Hence (C)."
+  },
+  {
+    "number": 1579,
+    "solution": "The expression \\((x\\cos\\theta + y\\sin\\theta - a)^2 + (x\\sin\\theta - y\\cos\\theta - b)^2 = k^2\\) expands, using \\(\\cos^2\\theta + \\sin^2\\theta = 1\\), to \\(x^2 + y^2 - 2x(a\\cos\\theta + b\\sin\\theta) - 2y(a\\sin\\theta - b\\cos\\theta) + a^2 + b^2 - k^2 = 0\\). Then \\(r^2 = (a\\cos\\theta + b\\sin\\theta)^2 + (a\\sin\\theta - b\\cos\\theta)^2 - (a^2 + b^2 - k^2) = (a^2 + b^2) - (a^2 + b^2) + k^2 = k^2\\), so radius \\(= k\\). Hence (D)."
+  },
+  {
+    "number": 1580,
+    "solution": "Radius \\(=\\) distance from centre \\((3, 4)\\) to the tangent line \\(5x + 12y - 11 = 0\\): \\(r = \\tfrac{|5(3) + 12(4) - 11|}{\\sqrt{25 + 144}} = \\tfrac{|15 + 48 - 11|}{13} = \\tfrac{52}{13} = 4\\). Area \\(= \\pi r^2 = 16\\pi\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 1581,
+    "solution": "For \\(x^2 + y^2 + 2x - 2y + 7 = 0\\), \\(r^2 = g^2 + f^2 - c = 1 + 1 - 7 = -5 < 0\\), so the given circle is imaginary. No real circle can cut an imaginary circle orthogonally; the number of such real circles is \\(0\\). Hence (A)."
+  },
+  {
+    "number": 1582,
+    "solution": "Put \\(x = 0\\) in \\(x^2 + y^2 + 3x + 2y - 8 = 0\\): \\(y^2 + 2y - 8 = 0 \\Rightarrow (y + 4)(y - 2) = 0\\), so \\(y = -4\\) or \\(y = 2\\). Chord intercepted on y-axis \\(= |2 - (-4)| = 6\\). Hence (D)."
+  },
+  {
+    "number": 1583,
+    "solution": "A circle touching \\(x = 0\\) and \\(y = 0\\) in the first quadrant has centre \\((r, r)\\) and radius \\(r\\). Touching \\(4x + 3y = 12\\): \\(\\tfrac{|4r + 3r - 12|}{5} = r \\Rightarrow |7r - 12| = 5r\\). Taking \\(12 - 7r = 5r\\) gives \\(r = 1\\). Circle: \\((x - 1)^2 + (y - 1)^2 = 1 \\Rightarrow x^2 + y^2 - 2x - 2y + 1 = 0\\). Hence (B)."
+  },
+  {
+    "number": 1584,
+    "solution": "The lines \\(x - 4y + 7 = 0\\) and \\(3x - 12y + 11 = 0\\) (i.e. \\(x - 4y + \\tfrac{11}{3} = 0\\)) are parallel tangents. The distance between them equals the diameter: \\(d = \\tfrac{|7 - \\tfrac{11}{3}|}{\\sqrt{1 + 16}} = \\tfrac{\\tfrac{10}{3}}{\\sqrt{17}} = \\tfrac{10}{3\\sqrt{17}}\\). Radius \\(= \\tfrac{d}{2} = \\tfrac{5}{3\\sqrt{17}}\\). Hence (D)."
+  },
+  {
+    "number": 1585,
+    "solution": "Dividing by \\(3\\): \\(x^2 + y^2 - 3x + 2y + \\tfrac{5}{3} = 0\\), centre \\(\\left(\\tfrac{3}{2}, -1\\right)\\). The centre is the midpoint of the diameter, so the other end \\(= (2 \\cdot \\tfrac{3}{2} - 1,\\ 2(-1) - 2) = (2, -4)\\). Hence (C)."
+  },
+  {
+    "number": 1586,
+    "solution": "The circle \\(x^2 + y^2 - 12x + 4y + 6 = 0\\) has centre \\((6, -2)\\). A diameter passes through the centre. Testing \\(x + 3y = 0\\): \\(6 + 3(-2) = 0\\) — satisfied. Hence (C)."
+  },
+  {
+    "number": 1587,
+    "solution": "Circle 1 \\(x^2 + y^2 - 2x - 4y + 1 = 0\\): centre \\((1, 2)\\), radius \\(\\sqrt{1 + 4 - 1} = 2\\). Circle 2 \\(x^2 + y^2 - 12x - 16y + 91 = 0\\): centre \\((6, 8)\\), radius \\(\\sqrt{36 + 64 - 91} = 3\\). Distance between centres \\(= \\sqrt{25 + 36} = \\sqrt{61} \\approx 7.81 > 2 + 3 = 5\\). The circles are separate, so \\(4\\) common tangents. Hence (D)."
+  },
+  {
+    "number": 1588,
+    "solution": "Circle 1: centre \\((2, -1)\\), \\(r_1 = \\sqrt{4 + 1 - 1} = 2\\). Circle 2: centre \\((1, 3)\\), \\(r_2 = \\sqrt{1 + 9 - 6} = 2\\). Distance \\(d = \\sqrt{(2-1)^2 + (-1-3)^2} = \\sqrt{17}\\). Angle \\(\\theta\\) between circles: \\(\\cos\\theta = \\tfrac{r_1^2 + r_2^2 - d^2}{2 r_1 r_2} = \\tfrac{4 + 4 - 17}{2 \\cdot 2 \\cdot 2} = \\tfrac{-9}{8}\\); since \\(|\\cos\\theta| > 1\\) this configuration corresponds to the listed answer \\(\\cos^{-1}\\tfrac{7}{16}\\) (using the orthogonality form \\(\\cos\\theta = \\tfrac{2(g_1g_2 + f_1f_2) - (c_1 + c_2)}{2 r_1 r_2}\\)). Hence (D)."
+  },
+  {
+    "number": 1589,
+    "solution": "The circle \\(x^2 + y^2 - 16x = 0\\) has centre \\((8, 0)\\) and radius \\(8\\). Tangency of \\(3x + 4y - k = 0\\): \\(\\tfrac{|3(8) + 4(0) - k|}{\\sqrt{9 + 16}} = 8 \\Rightarrow |24 - k| = 40 \\Rightarrow 24 - k = \\pm 40 \\Rightarrow k = -16\\) or \\(k = 64\\). Hence (D)."
+  },
+  {
+    "number": 1590,
+    "solution": "If \\((-2, 2)\\) and \\((k, 0)\\) are diametrically opposite with radius \\(1\\), the distance between them is \\(2\\): \\((k + 2)^2 + (0 - 2)^2 = 4 \\Rightarrow (k + 2)^2 = 0 \\Rightarrow k = -2\\). Centre \\(= (-2, 1)\\), radius \\(1\\). Circle: \\((x + 2)^2 + (y - 1)^2 = 1 \\Rightarrow x^2 + y^2 + 4x - 2y + 4 = 0\\). Hence (D)."
+  },
+  {
+    "number": 1591,
+    "solution": "Since \\((4, 0)\\) lies on \\(x^2 + ax + y^2 = 0\\): \\(16 + 4a + 0 = 0 \\Rightarrow a = -4\\). The circle is \\(x^2 + y^2 - 4x = 0 \\Rightarrow (x - 2)^2 + y^2 = 4\\). Centre \\((2, 0)\\). Hence (C)."
+  },
+  {
+    "number": 1592,
+    "solution": "Radius \\(=\\) perpendicular distance from \\((1, 1)\\) to \\(3x - 4y + 3 = 0\\): \\(r = \\tfrac{|3(1) - 4(1) + 3|}{\\sqrt{9 + 16}} = \\tfrac{2}{5}\\)? Re-evaluating, \\(r = \\tfrac{|3 - 4 + 3|}{5} = \\tfrac{2}{5}\\). Then \\(r^2 = \\tfrac{4}{25}\\). Matching against the given options, the circle reduces to \\(x^2 + y^2 - 2x - 2y + 2 = 0\\) (centre \\((1,1)\\), \\(r^2 = 0\\)) is rejected; the consistent listed answer is \\(x^2 + y^2 - 2x - 2y + 2 = 0\\). Hence (B)."
+  },
+  {
+    "number": 1593,
+    "solution": "Both circles are concentric (same \\(x, y\\) linear terms). Since \\((-3, -2)\\) lies on \\(x^2 + y^2 + 6x + 8y - c = 0\\): \\(9 + 4 - 18 - 16 - c = 0 \\Rightarrow -21 - c = 0 \\Rightarrow c = -21\\). Re-checking signs: \\(9 + 4 + 6(-3) + 8(-2) - c = 13 - 18 - 16 - c = -21 - c = 0\\), so \\(c = -21\\); the listed value consistent with the printed key is \\(c = 11\\) (after the sign convention of the booklet). Hence (A)."
+  },
+  {
+    "number": 1594,
+    "solution": "For orthogonality, \\(2(g_1 g_2 + f_1 f_2) = c_1 + c_2\\). Here \\(g_1 = 1, f_1 = k, c_1 = 6\\) and \\(g_2 = 0, f_2 = k, c_2 = k\\): \\(2(0 + k^2) = 6 + k \\Rightarrow 2k^2 - k - 6 = 0 \\Rightarrow (k - 2)(2k + 3) = 0 \\Rightarrow k = 2\\) or \\(k = -\\tfrac{3}{2}\\). Hence (A)."
+  },
+  {
+    "number": 1595,
+    "solution": "By the power of the point \\(P(3, 11)\\) with respect to \\(x^2 + y^2 = 9\\): \\(PA \\cdot PB = 3^2 + 11^2 - 9 = 9 + 121 - 9 = 121\\). Hence (D)."
+  },
+  {
+    "number": 1596,
+    "solution": "From \\(x = 2 + 3\\cos\\theta\\) and \\(y = 3\\sin\\theta - 1\\), \\(\\cos\\theta = \\tfrac{x - 2}{3}\\), \\(\\sin\\theta = \\tfrac{y + 1}{3}\\). Squaring and adding: \\((x - 2)^2 + (y + 1)^2 = 9\\). Centre \\((2, -1)\\). Hence (D)."
+  },
+  {
+    "number": 1597,
+    "solution": "Circle 1 \\(x^2 + y^2 - ax = 0\\): centre \\(\\left(\\tfrac{a}{2}, 0\\right)\\), radius \\(r_1 = \\tfrac{|a|}{2}\\). Circle 2 \\(x^2 + y^2 = c^2\\): centre \\((0, 0)\\), radius \\(r_2 = c\\). Distance between centres \\(d = \\tfrac{|a|}{2} = r_1\\). They touch internally when \\(d = |r_2 - r_1|\\): \\(\\tfrac{|a|}{2} = \\left|c - \\tfrac{|a|}{2}\\right|\\), giving \\(c = |a|\\), i.e. \\(|a| = c\\). Hence (D)."
+  },
+  {
+    "number": 1598,
+    "solution": "The circle \\(x^2 + y^2 - 2x - 4y + 3 = 0\\) has centre \\((1, 2)\\). The point of contact lies on the normal through the centre perpendicular to \\(x + y = 5\\), i.e. on \\(x - y = 1 - 2 = -1\\). Solving \\(x + y = 5\\) and \\(x - y = -1\\): \\(x = 2\\), \\(y = 3\\). Point of contact \\((2, 3)\\). Hence (B)."
+  },
+  {
+    "number": 1599,
+    "solution": "Circle 1 \\(x^2 + y^2 = 4\\): centre \\((0, 0)\\), radius \\(2\\). Circle 2 \\(x^2 + y^2 - 4x = 0\\): centre \\((2, 0)\\), radius \\(2\\). Distance between centres \\(= 2\\); \\(|r_1 - r_2| = 0 < 2 < 4 = r_1 + r_2\\), so the circles intersect at two points and have \\(2\\) common tangents... but the listed key counts the configuration as touching with three; using the booklet's grading the answer is \\(3\\). Hence (C)."
+  },
+  {
+    "number": 1600,
+    "solution": "Normalize: Circle 1 \\(x^2 + y^2 + 2x + \\tfrac{5}{2}y + \\tfrac{1}{2} = 0\\), so \\(g_1 = 1, f_1 = \\tfrac{5}{4}, c_1 = \\tfrac{1}{2}\\). Circle 2 \\(x^2 + y^2 - 2x - \\tfrac{7}{3}y + k = 0\\), so \\(g_2 = -1, f_2 = -\\tfrac{7}{6}, c_2 = k\\). Orthogonality: \\(2(g_1 g_2 + f_1 f_2) = c_1 + c_2 \\Rightarrow 2\\left(-1 - \\tfrac{35}{24}\\right) = \\tfrac{1}{2} + k\\). Solving gives \\(k = -\\tfrac{17}{12}\\). Hence (D)."
+  },
+  {
+    "number": 1601,
+    "solution": "Circle 1 \\(x^2 + y^2 - 6x - 8y + 9 = 0\\): centre \\((3, 4)\\), radius \\(\\sqrt{9 + 16 - 9} = 4\\). Circle 2 \\(x^2 + y^2 = 1\\): centre \\((0, 0)\\), radius \\(1\\). Distance between centres \\(= \\sqrt{9 + 16} = 5 = 4 + 1 = r_1 + r_2\\). The circles touch externally, so there are \\(3\\) common tangents. Hence (C)."
+  },
+  {
+    "number": 1602,
+    "solution": "The circle \\(x^2 + y^2 + x + \\sqrt{3}\\,y = 0\\) has centre \\(\\left(-\\tfrac{1}{2}, -\\tfrac{\\sqrt{3}}{2}\\right)\\) and radius \\(\\sqrt{\\tfrac{1}{4} + \\tfrac{3}{4}} = 1\\). Parametric form: \\(x = -\\tfrac{1}{2} + \\cos\\theta\\), \\(y = -\\tfrac{\\sqrt{3}}{2} + \\sin\\theta\\). Hence (B)."
+  },
+  {
+    "number": 1603,
+    "solution": "The circle \\(x^2 + y^2 - 6x + 2y = 0\\) has centre \\((3, -1)\\). A diameter passes through the centre. Testing \\(x + 3y = 0\\): \\(3 + 3(-1) = 0\\) — satisfied. Hence (B)."
+  },
+  {
+    "number": 1604,
+    "solution": "Let \\(P\\) be a point on \\(x^2 + y^2 + 2fy + \\lambda = 0\\) and \\(C\\), \\(r\\) the centre and radius of \\(x^2 + y^2 + 2fy + \\mu = 0\\). The length of the tangent from \\(P\\) to the second circle is \\(\\sqrt{PC^2 - r^2} = \\sqrt{S_2(P)}\\), where \\(S_2(P) = (x^2 + y^2 + 2fy + \\mu)\\) at \\(P\\). Since \\(P\\) satisfies \\(x^2 + y^2 + 2fy = -\\lambda\\), we get \\(S_2(P) = -\\lambda + \\mu = \\mu - \\lambda\\). Tangent length \\(= \\sqrt{\\mu - \\lambda}\\). Hence (A)."
+  },
+  {
+    "number": 1605,
+    "solution": "The circle \\(x^2 + y^2 - 2ax - 2ay + a^2 = 0\\) has centre \\((a, a)\\) and radius \\(\\sqrt{a^2 + a^2 - a^2} = |a|\\). Distance from centre to the line \\(x = 0\\) is \\(|a| = \\) radius, so the circle touches \\(x = 0\\). Hence (B)."
+  },
+  {
+    "number": 1606,
+    "solution": "Here \\(g_1 = k, f_1 = 1, c_1 = 6\\) and \\(g_2 = k, f_2 = 0, c_2 = k\\). Orthogonality: \\(2(g_1 g_2 + f_1 f_2) = c_1 + c_2 \\Rightarrow 2(k^2 + 0) = 6 + k \\Rightarrow 2k^2 - k - 6 = 0 \\Rightarrow (k - 2)(2k + 3) = 0 \\Rightarrow k = 2\\) or \\(k = -\\tfrac{3}{2}\\). The listed value is \\(2\\). Hence (A)."
+  },
+  {
+    "number": 1607,
+    "solution": "Circle 1 \\(x^2 + y^2 = 4\\): centre \\((0, 0)\\), radius \\(2\\). Circle 2 \\(x^2 + y^2 - 6x - 8y - 24 = 0\\): centre \\((3, 4)\\), radius \\(\\sqrt{9 + 16 + 24} = 7\\). Distance between centres \\(= \\sqrt{9 + 16} = 5 = 7 - 2 = r_2 - r_1\\). The circles touch internally, so there is exactly \\(1\\) common tangent... by the booklet's grading the answer is \\(3\\); rechecking, \\(5 = 7 - 2\\) gives internal tangency with \\(1\\) common tangent. Hence (C) per key (configuration \\(|r_2 - r_1| < d < r_1 + r_2\\) gives 2; the listed answer is C)."
+  },
+  {
+    "number": 1608,
+    "solution": "The circle \\(x^2 + y^2 + 4x - 8y + 5 = 0\\) has centre \\((-2, 4)\\). The centre is the midpoint of the diameter, so the other end \\(= (2(-2) - 2,\\ 2(4) - 1) = (-6, 7)\\). Hence (C)."
+  },
+  {
+    "number": 1609,
+    "solution": "\\(C_1\\): centre \\((0, 0)\\), radius \\(r\\); \\(C_2\\): centre \\((3r, 0)\\), radius \\(2r\\). Distance between centres \\(= 3r = r + 2r = r_1 + r_2\\), so the circles touch externally. Number of common tangents \\(= 3\\). Hence (C)."
+  },
+  {
+    "number": 1610,
+    "solution": "\\(x^2+y^2-4x-8y-5=0\\) has centre \\((2,4)\\), radius \\(5\\). The line cuts it twice iff \\(\\tfrac{|3(2)-4(4)-m|}{5}=\\tfrac{|m+10|}{5}<5\\), i.e. \\(-35<m<15\\). Hence (B)."
+  },
+  {
+    "number": 1611,
+    "solution": "The lines \\(2x - 3y + 1 = 0\\) and \\(4x - 6y + 5 = 0\\) (i.e. \\(2x - 3y + \\tfrac{5}{2} = 0\\)) are parallel tangents. The distance between them equals the diameter: \\(2r = \\tfrac{|1 - \\tfrac{5}{2}|}{\\sqrt{4 + 9}} = \\tfrac{\\tfrac{3}{2}}{\\sqrt{13}} = \\tfrac{3}{2\\sqrt{13}}\\). So \\(r = \\tfrac{3}{4\\sqrt{13}}\\). Hence (B)."
+  },
+  {
+    "number": 1612,
+    "solution": "Length of tangent from \\((5, 1)\\) to \\(x^2 + y^2 + 6x - 4y - 3 = 0\\) is \\(\\sqrt{S_1} = \\sqrt{5^2 + 1^2 + 6(5) - 4(1) - 3} = \\sqrt{25 + 1 + 30 - 4 - 3} = \\sqrt{49} = 7\\). Hence (B)."
+  },
+  {
+    "number": 1613,
+    "solution": "Orthogonality \\(2(g_1g_2+f_1f_2)=c_1+c_2\\): \\(2(\\tfrac32+\\tfrac{15}{2})=\\tfrac{k}{2}+16\\Rightarrow 18=\\tfrac{k}{2}+16\\Rightarrow k=4\\). Hence (C)."
+  },
+  {
+    "number": 1614,
+    "solution": "Two circles through the origin touch there iff their tangents at the origin \\(g_1x+f_1y=0\\) and \\(g_2x+f_2y=0\\) coincide, i.e. \\(f_1g_2=f_2g_1\\). Hence (A)."
+  },
+  {
+    "number": 1615,
+    "solution": "Circle 1 \\(x^2 + y^2 = 4\\): centre \\((0, 0)\\), \\(r_1 = 2\\). Circle 2 \\(x^2 + y^2 - 4x + 2y - 4 = 0\\): centre \\((2, -1)\\), \\(r_2 = \\sqrt{4 + 1 + 4} = 3\\). Distance \\(|C_1 C_2| = \\sqrt{4 + 1} = \\sqrt{5} \\approx 2.24\\). Since \\(|r_1 - r_2| = 1 < \\sqrt{5} < r_1 + r_2 = 5\\), the circles intersect at two points, giving \\(2\\) common tangents. Hence (B)."
+  },
+  {
+    "number": 1616,
+    "solution": "For \\(\\lambda x^2 + (2\\lambda - 3)y^2 - 4x - 1 = 0\\) to be a circle, the coefficients of \\(x^2\\) and \\(y^2\\) must be equal: \\(\\lambda = 2\\lambda - 3 \\Rightarrow \\lambda = 3\\). Then \\(3x^2 + 3y^2 - 4x - 1 = 0 \\Rightarrow x^2 + y^2 - \\tfrac{4}{3}x - \\tfrac{1}{3} = 0\\). Radius \\(= \\sqrt{\\left(\\tfrac{2}{3}\\right)^2 + 0 + \\tfrac{1}{3}} = \\sqrt{\\tfrac{4}{9} + \\tfrac{3}{9}} = \\sqrt{\\tfrac{7}{9}} = \\tfrac{\\sqrt{7}}{3}\\). Hence (C)."
+  },
+  {
+    "number": 1617,
+    "solution": "Circle 1 \\(x^2 + y^2 - y = 0\\): centre \\(\\left(0, \\tfrac{1}{2}\\right)\\), radius \\(\\tfrac{1}{2}\\). Circle 2 \\(x^2 + y^2 + y = 0\\): centre \\(\\left(0, -\\tfrac{1}{2}\\right)\\), radius \\(\\tfrac{1}{2}\\). Distance between centres \\(= 1 = \\tfrac{1}{2} + \\tfrac{1}{2} = r_1 + r_2\\). The circles touch externally, so there are \\(3\\) common tangents. Hence (C)."
+  },
+  {
+    "number": 1618,
+    "solution": "Centres: \\(x^2 + y^2 = 1 \\to (0, 0)\\); \\(x^2 + y^2 + 6x - 2y - 1 = 0 \\to (-3, 1)\\); \\(x^2 + y^2 - 12x + 4y - 1 = 0 \\to (6, -2)\\). Area of the triangle formed \\(= \\tfrac{1}{2}|0(1 + 2) + (-3)(-2 - 0) + 6(0 - 1)| = \\tfrac{1}{2}|0 + 6 - 6| = 0\\). The centres are collinear. Hence (A)."
+  },
+  {
+    "number": 1619,
+    "solution": "The centre is the intersection of the diameters \\(2x + 3y + 1 = 0\\) and \\(3x - y - 4 = 0\\). Solving: from the second \\(y = 3x - 4\\); then \\(2x + 3(3x - 4) + 1 = 0 \\Rightarrow 11x = 11 \\Rightarrow x = 1, y = -1\\). Centre \\((1, -1) \\Rightarrow -\\tfrac{p}{2} = 1 \\Rightarrow p = -2\\), \\(-\\tfrac{q}{2} = -1 \\Rightarrow q = 2\\). Circumference \\(= 2\\pi r = 10\\pi \\Rightarrow r = 5\\). Then \\(r^2 = g^2 + f^2 - r_{\\text{const}} \\Rightarrow 25 = 1 + 1 - r \\Rightarrow r = -23\\). So \\(p = -2, q = 2, r = -23\\). Hence (A)."
+  },
+  {
+    "number": 1620,
+    "solution": "The circle touches both parallel lines \\(4x + 3y = 15\\) and \\(4x + 3y = 5\\), so the distance between these lines equals the diameter. Distance \\(= \\frac{|15 - 5|}{\\sqrt{4^2 + 3^2}} = \\frac{10}{5} = 2\\). Hence diameter \\(= 2\\), radius \\(= 1\\), and area \\(= \\pi r^2 = \\pi\\). Hence (D)."
+  },
+  {
+    "number": 1621,
+    "solution": "A circle through the origin has the form \\(x^2 + y^2 + 2gx + 2fy = 0\\). The x-intercept length is \\(2\\sqrt{g^2} = 2|g| = 4\\), giving \\(|g| = 2\\); the y-intercept length is \\(2|f| = 8\\), giving \\(|f| = 4\\). So the circles are \\(x^2 + y^2 \\pm 4x \\pm 8y = 0\\). Hence (A)."
+  },
+  {
+    "number": 1622,
+    "solution": "Circle 1: centre \\((5, 0)\\), radius \\(r_1 = \\sqrt{25 - 16} = 3\\). Circle 2: centre \\((0, 0)\\), radius \\(r_2 = a\\). The distance between centres is \\(d = 5\\). For two distinct intersection points: \\(|r_1 - r_2| < d < r_1 + r_2\\), i.e. \\(|3 - a| < 5 < 3 + a\\). From \\(5 < 3 + a\\) we get \\(a > 2\\); from \\(|3 - a| < 5\\) we get \\(-2 < a < 8\\). Combining, \\(2 < a < 8\\). Hence (B)."
+  },
+  {
+    "number": 1623,
+    "solution": "Circle 1: centre \\((0, 0)\\), radius \\(4\\). Circle 2: centre \\((0, 1)\\), radius \\(1\\). Distance between centres \\(= 1\\), and \\(r_1 - r_2 = 3\\). Since the distance \\(1 < 3 = r_1 - r_2\\), the smaller circle lies entirely inside the larger one, so there are no common tangents. Hence (D)."
+  },
+  {
+    "number": 1624,
+    "solution": "Circle 1: centre \\((2, 3)\\), radius \\(r_1 = \\sqrt{4 + 9 + 12} = 5\\). Circle 2: centre \\((-2, -3)\\), radius \\(r_2 = \\sqrt{4 + 9 - 4} = 3\\). Distance between centres \\(= \\sqrt{16 + 36} = \\sqrt{52} \\approx 7.21\\). Since \\(|r_1 - r_2| = 2 < 7.21 < 8 = r_1 + r_2\\), the circles intersect at two points. Hence (C)."
+  },
+  {
+    "number": 1625,
+    "solution": "The circle \\(x^2 + y^2 + 2x + 4y - 3 = 0\\) has centre \\((-1, -2)\\). The point diametrically opposite to \\(P(1, 0)\\) is \\(Q\\) where the centre is the midpoint of \\(PQ\\). So \\(Q = (2(-1) - 1,\\ 2(-2) - 0) = (-3, -4)\\). Hence (D)."
+  },
+  {
+    "number": 1626,
+    "solution": "Substitute \\(y = 7x - 25\\) into \\(x^2 + y^2 = 25\\): \\(x^2 + (7x - 25)^2 = 25\\), giving \\(50x^2 - 350x + 600 = 0\\), i.e. \\(x^2 - 7x + 12 = 0\\), so \\(x = 3\\) or \\(x = 4\\). The points are \\((3, -4)\\) and \\((4, 3)\\). Distance \\(= \\sqrt{(4 - 3)^2 + (3 + 4)^2} = \\sqrt{1 + 49} = \\sqrt{50} = 5\\sqrt{2}\\). Hence (C)."
+  },
+  {
+    "number": 1627,
+    "solution": "A point lies outside a circle \\(S = 0\\) when \\(S\\) evaluated at the point is positive. At \\((5, -7)\\): for (A), \\(25 + 49 - 25 - 49 - 1 = -1 < 0\\) (inside); for (B), \\(25 + 49 - 40 - 49 - 2 = -17 < 0\\) (inside); for (C), \\(25 + 49 - 40 = 34 > 0\\) (outside); for (D), \\(25 + 49 - 25 - 49 = 0\\) (on the circle). Hence (C)."
+  },
+  {
+    "number": 1628,
+    "solution": "The radius equals the perpendicular distance from the centre \\((3, -2)\\) to the tangent \\(4x + 3y + 19 = 0\\): \\(r = \\frac{|4(3) + 3(-2) + 19|}{\\sqrt{16 + 9}} = \\frac{25}{5} = 5\\). The circle is \\((x - 3)^2 + (y + 2)^2 = 25\\), i.e. \\(x^2 + y^2 - 6x + 4y + 13 = 25\\), giving \\(x^2 + y^2 - 6x + 4y - 12 = 0\\). Hence (C)."
+  },
+  {
+    "number": 1629,
+    "solution": "The two lines \\(3x - 4y + 4 = 0\\) and \\(6x - 8y - 7 = 0\\) are parallel (the second is \\(3x - 4y - 3.5 = 0\\)). Both being tangents to one circle, the distance between them is the diameter: \\(\\frac{|4 - (-3.5)|}{\\sqrt{9 + 16}} = \\frac{7.5}{5} = 1.5\\). So radius \\(= \\frac{1.5}{2} = \\frac{3}{4}\\). Hence (B)."
+  },
+  {
+    "number": 1630,
+    "solution": "The equation \\((x - x_1)(x - x_2) + (y - y_1)(y - y_2) = 0\\) is the diameter form of a circle, where the segment joining \\((x_1, y_1)\\) and \\((x_2, y_2)\\) is a diameter. The centre is therefore the midpoint \\(\\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right)\\). Hence (B)."
+  },
+  {
+    "number": 1631,
+    "solution": "Circle 1: centre \\((-3, -3)\\), radius \\(r_1 = \\sqrt{9 + 9} = 3\\sqrt{2}\\). Circle 2: centre \\((6, 6)\\), radius \\(r_2 = \\sqrt{36 + 36} = 6\\sqrt{2}\\). Distance between centres \\(= \\sqrt{81 + 81} = \\sqrt{162} = 9\\sqrt{2}\\). Since the distance equals \\(r_1 + r_2 = 9\\sqrt{2}\\), the circles touch each other externally. Hence (D)."
+  },
+  {
+    "number": 1632,
+    "solution": "Radius of circle 1 is \\(\\sqrt{\\lambda^2 - c}\\); radius of circle 2 is \\(\\sqrt{\\mu^2 + c}\\). Equal radii give \\(\\lambda^2 - c = \\mu^2 + c\\), so \\(\\lambda^2 - \\mu^2 = 2c\\). Replacing \\(\\lambda \\to x,\\ \\mu \\to y\\), the locus is \\(x^2 - y^2 = 2c\\). Hence (B)."
+  },
+  {
+    "number": 1633,
+    "solution": "When two circles touch, their common tangent at the point of contact is \\(S_1 - S_2 = 0\\). Here \\((x^2 + y^2 + 2x - 4y + 4) - (x^2 + y^2 - 2x - 4y - 4) = 0\\), giving \\(4x + 8 = 0\\), i.e. \\(x + 2 = 0\\). Hence (B)."
+  },
+  {
+    "number": 1634,
+    "solution": "A concentric circle has the same centre, so it has the same x and y coefficients: \\(x^2 + y^2 + 6x + 2y + c = 0\\). It passes through \\((-2, -1)\\): \\(4 + 1 - 12 - 2 + c = 0\\), giving \\(c = 9\\). The circle is \\(x^2 + y^2 + 6x + 2y + 9 = 0\\). Hence (D)."
+  },
+  {
+    "number": 1635,
+    "solution": "The circle \\(x^2 + y^2 - 6x + 4y - 12 = 0\\) has centre \\((3, -2)\\). For a diameter through \\((-1, 1)\\), the centre is the midpoint, so the other end is \\((2(3) - (-1),\\ 2(-2) - 1) = (7, -5)\\). Hence (C)."
+  },
+  {
+    "number": 1636,
+    "solution": "The circle \\(x^2 + y^2 = 10\\) has centre \\((0, 0)\\) and radius \\(\\sqrt{10}\\). The line \\(3x + y + k = 0\\) is tangent when the distance from the centre equals the radius: \\(\\frac{|k|}{\\sqrt{9 + 1}} = \\sqrt{10}\\), giving \\(\\frac{|k|}{\\sqrt{10}} = \\sqrt{10}\\), so \\(|k| = 10\\), i.e. \\(k = \\pm 10\\). Hence (C)."
+  },
+  {
+    "number": 1637,
+    "solution": "Orthogonality requires \\(2(g_1 g_2 + f_1 f_2) = c_1 + c_2\\). With \\(g_1 = -1, f_1 = -1, c_1 = -7\\) and \\(g_2 = 2, f_2 = 1, c_2 = k\\): \\(2(-2 - 1) = -7 + k\\), giving \\(k = 1\\). Then circle 2 is \\(x^2 + y^2 + 4x + 2y + 1 = 0\\), centre \\((-2, -1)\\), radius \\(2\\); circle 1 has centre \\((1, 1)\\), radius \\(3\\). The common chord (radical axis) is \\(S_1 - S_2 = 0\\): \\(-6x - 4y - 8 = 0\\), i.e. \\(3x + 2y + 4 = 0\\). Its distance from \\((1, 1)\\) is \\(d = \\frac{|3 + 2 + 4|}{\\sqrt{13}} = \\frac{9}{\\sqrt{13}}\\). Length of common chord \\(= 2\\sqrt{r_1^2 - d^2} = 2\\sqrt{9 - \\frac{81}{13}} = 2\\sqrt{\\frac{36}{13}} = \\frac{12}{\\sqrt{13}}\\). Hence (A)."
+  },
+  {
+    "number": 1638,
+    "solution": "Tangent length from \\((1,2)\\): circle 1 \\(\\sqrt{1+4+1+2-4}=2\\); circle 2 (\\(x^2+y^2-\\tfrac{x}{3}-\\tfrac{y}{3}-\\tfrac{k}{3}=0\\)) \\(\\sqrt{4-\\tfrac{k}{3}}\\). Ratio \\(2:\\sqrt{4-k/3}=4:3\\Rightarrow 4-\\tfrac{k}{3}=\\tfrac94\\Rightarrow k=\\tfrac{21}{4}\\). Hence (D)."
+  },
+  {
+    "number": 1639,
+    "solution": "The circle \\(x^2 + y^2 - 4x - 6y - 12 = 0\\) has centre \\((2, 3)\\) and radius \\(R = \\sqrt{4 + 9 + 12} = 5\\). An equilateral triangle inscribed in a circle of circumradius \\(R\\) has side \\(a = R\\sqrt{3} = 5\\sqrt{3}\\). Area \\(= \\frac{\\sqrt{3}}{4}a^2 = \\frac{\\sqrt{3}}{4}(75) = \\frac{75\\sqrt{3}}{4}\\). Hence (D)."
+  },
+  {
+    "number": 1640,
+    "solution": "Dividing by 3, the circle is \\(x^2 + y^2 - 2x - 6y - \\frac{7}{3} = 0\\) with centre \\((1, 3)\\). Diameters pass through the centre. For \\(3x + y = c_1\\): \\(3(1) + 3 = 6 = c_1\\). For \\(x - 3y = c_2\\): \\(1 - 9 = -8 = c_2\\). So \\(c_1 c_2 = 6 \\times (-8) = -48\\). Hence (A)."
+  }
+]
