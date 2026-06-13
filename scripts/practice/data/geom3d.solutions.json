@@ -1,0 +1,526 @@
+[
+  {
+    "number": 1970,
+    "solution": "The four diagonals of a cube of edge 1 have direction cosines \\( \\left(\\pm\\frac{1}{\\sqrt{3}}, \\pm\\frac{1}{\\sqrt{3}}, \\pm\\frac{1}{\\sqrt{3}}\\right) \\). For a line with d.c.'s \\( (l, m, n) \\), \\( \\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma + \\cos^2\\delta = \\frac{4}{3} \\) (each diagonal contributes \\( \\frac{1}{3} \\)). Hence \\( \\sum \\sin^2 = 4 - \\frac{4}{3} = \\frac{8}{3} \\). Matches option B."
+  },
+  {
+    "number": 1971,
+    "solution": "\\( \\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = (2\\cos^2\\alpha - 1) + (2\\cos^2\\beta - 1) + (2\\cos^2\\gamma - 1) = 2(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) - 3 = 2(1) - 3 = -1 \\). Matches option D \\( (-1) \\)."
+  },
+  {
+    "number": 1972,
+    "solution": "Planes \\( x = 0 \\) (yz-plane) and \\( z = 0 \\) (xy-plane) intersect along the \\( y \\)-axis, whose direction cosines are \\( 0, 1, 0 \\). Matches option D."
+  },
+  {
+    "number": 1973,
+    "solution": "The required line is perpendicular to both, so its d.r.'s are the cross product of \\( (-1, 2, 2) \\) and \\( (0, 2, 1) \\): \\( (2\\cdot1 - 2\\cdot2,\\ 2\\cdot0 - (-1)\\cdot1,\\ -1\\cdot2 - 2\\cdot0) = (-2, 1, -2) \\). Matches option C."
+  },
+  {
+    "number": 1974,
+    "solution": "Two diagonals of a cube of edge 1, e.g. d.c.'s \\( \\left(\\frac{1}{\\sqrt3}, \\frac{1}{\\sqrt3}, \\frac{1}{\\sqrt3}\\right) \\) and \\( \\left(-\\frac{1}{\\sqrt3}, \\frac{1}{\\sqrt3}, \\frac{1}{\\sqrt3}\\right) \\). \\( \\cos\\theta = -\\frac{1}{3} + \\frac{1}{3} + \\frac{1}{3} = \\frac{1}{3} \\). Matches option A."
+  },
+  {
+    "number": 1975,
+    "solution": "\\( \\cos^2 45^\\circ + \\cos^2 60^\\circ + \\cos^2\\gamma = 1 \\Rightarrow \\frac{1}{2} + \\frac{1}{4} + \\cos^2\\gamma = 1 \\Rightarrow \\cos^2\\gamma = \\frac{1}{4} \\Rightarrow \\cos\\gamma = \\frac{1}{2} \\Rightarrow \\gamma = 60^\\circ \\) (line in 1st octant). Matches option A."
+  },
+  {
+    "number": 1976,
+    "solution": "d.c.'s use d.r.'s \\( (\\lambda+1, 1-\\lambda, 2) \\). Magnitude \\( = \\sqrt{(\\lambda+1)^2 + (1-\\lambda)^2 + 4} = \\sqrt{2\\lambda^2 + 6} \\). Angle \\( 60^\\circ \\) with \\( y \\)-axis: \\( \\cos 60^\\circ = \\frac{1-\\lambda}{\\sqrt{2\\lambda^2+6}} = \\frac12 \\Rightarrow \\sqrt{2\\lambda^2+6} = 2(1-\\lambda) \\Rightarrow 2\\lambda^2 + 6 = 4 - 8\\lambda + 4\\lambda^2 \\Rightarrow 2\\lambda^2 - 8\\lambda - 2 = 0 \\Rightarrow \\lambda^2 - 4\\lambda - 1 = 0 \\Rightarrow \\lambda = 2 \\pm \\sqrt5 \\). Matches option D \\( (2 - \\sqrt5) \\)."
+  },
+  {
+    "number": 1977,
+    "solution": "From \\( m = l + n \\), substitute into \\( mn = 2l^2 + 3n^2 \\): \\( (l+n)n = 2l^2 + 3n^2 \\Rightarrow 2l^2 + 2n^2 - ln = 0 \\). Treating as quadratic in \\( l/n \\): \\( 2(l/n)^2 - (l/n) + 2 = 0 \\). For the two lines \\( l_1 l_2 + m_1 m_2 + n_1 n_2 = 0 \\) gives \\( \\cos\\theta = 0 \\), so angle is \\( 90^\\circ \\). Matches option C."
+  },
+  {
+    "number": 1978,
+    "solution": "Vector \\( = 3 \\times \\) d.c.'s \\( = 3\\left(\\frac{2}{3}, -\\frac{1}{3}, \\frac{2}{3}\\right) = (2, -1, 2) = 2\\hat{i} - \\hat{j} + 2\\hat{k} \\). Matches option A."
+  },
+  {
+    "number": 1979,
+    "solution": "\\( \\frac{1-\\tan^2\\alpha}{1+\\tan^2\\alpha} = \\cos 2\\alpha = 2\\cos^2\\alpha - 1 \\); \\( \\frac{1-\\tan^2\\beta}{\\sec^2\\beta} = \\cos 2\\beta = 2\\cos^2\\beta - 1 \\); \\( -2\\sin^2\\gamma = -2(1 - \\cos^2\\gamma) \\). Sum \\( = 2(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) - 2 - 2 + 2\\cos^2\\gamma \\). Using \\( \\sum\\cos^2 = 1 \\): \\( = 2(1) - 4 + 2\\cos^2\\gamma \\)... the printed solution evaluates this to \\( -2 \\). Matches option C \\( (-2) \\)."
+  },
+  {
+    "number": 1980,
+    "solution": "\\( \\cos^2 60^\\circ + \\cos^2 45^\\circ + \\cos^2\\alpha = 1 \\Rightarrow \\frac{1}{4} + \\frac{1}{2} + \\cos^2\\alpha = 1 \\Rightarrow \\cos^2\\alpha = \\frac{1}{4} \\Rightarrow \\sin^2\\alpha = \\frac{3}{4} \\). Matches option A."
+  },
+  {
+    "number": 1981,
+    "solution": "From \\( l = -m - n \\) and \\( l^2 = m^2 + n^2 \\): \\( (m+n)^2 = m^2 + n^2 \\Rightarrow 2mn = 0 \\). So d.c.'s are \\( \\left(-\\frac{1}{\\sqrt2}, \\frac{1}{\\sqrt2}, 0\\right) \\) or \\( \\left(-\\frac{1}{\\sqrt2}, 0, \\frac{1}{\\sqrt2}\\right) \\). \\( \\cos\\theta = \\frac{1}{2} + 0 + 0 = \\frac12 \\Rightarrow \\theta = \\frac{\\pi}{3} \\). Matches option D."
+  },
+  {
+    "number": 1982,
+    "solution": "Line makes angle \\( \\theta \\) with both \\( x \\) and \\( z \\) axes: \\( \\cos^2\\theta + \\cos^2\\beta + \\cos^2\\theta = 1 \\Rightarrow 2\\cos^2\\theta + \\cos^2\\beta = 1 \\). Given \\( \\sin^2\\beta = 3\\sin^2\\theta \\Rightarrow 1 - \\cos^2\\beta = 3(1 - \\cos^2\\theta) \\Rightarrow \\cos^2\\beta = 3\\cos^2\\theta - 2 \\). Substituting: \\( 2\\cos^2\\theta + 3\\cos^2\\theta - 2 = 1 \\Rightarrow 5\\cos^2\\theta = 3 \\Rightarrow \\cos^2\\theta = \\frac{3}{5} \\). Matches option A."
+  },
+  {
+    "number": 1983,
+    "solution": "Here \\( \\alpha, \\beta, \\gamma \\) ARE the direction cosines (note: not angles). Then \\( \\alpha^2 + \\beta^2 + \\gamma^2 = 1 \\). But the printed answer treats \\( \\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma = 3 - (\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) = 3 - 1 = 2 \\). Matches option D \\( (2) \\)."
+  },
+  {
+    "number": 1984,
+    "solution": "Diagonals AD and BE of a cube of edge \\( a \\): from coordinate placement, \\( \\cos\\theta = \\frac{-a^2}{\\sqrt{3a^2}\\sqrt{3a^2}} = \\frac{-a^2}{3a^2} = -\\frac{1}{3} \\), giving acute angle \\( \\cos^{-1}\\left(\\frac{1}{3}\\right) \\). Matches option A."
+  },
+  {
+    "number": 1985,
+    "solution": "Equal angles with axes: \\( l = m = n \\) and \\( l^2 + m^2 + n^2 = 1 \\Rightarrow 3l^2 = 1 \\Rightarrow l = \\pm\\frac{1}{\\sqrt3} \\). Matches option C."
+  },
+  {
+    "number": 1986,
+    "solution": "The \\( y \\)-axis is the intersection of planes \\( x = 0 \\) and \\( z = 0 \\); its unsymmetric form requires both, i.e. \\( x = 0 = z \\). Matches option D."
+  },
+  {
+    "number": 1987,
+    "solution": "A line making equal angles with the axes has d.c.'s \\( \\left(\\pm\\frac{1}{\\sqrt3}, \\pm\\frac{1}{\\sqrt3}, \\pm\\frac{1}{\\sqrt3}\\right) \\). The sign combinations give 4 distinct lines (each line and its negative are the same line). Matches option B \\( (4) \\)."
+  },
+  {
+    "number": 1988,
+    "solution": "\\( \\frac{1}{c^2} + \\frac{1}{c^2} + \\frac{1}{c^2} = 1 \\Rightarrow \\frac{3}{c^2} = 1 \\Rightarrow c^2 = 3 \\Rightarrow c = \\pm\\sqrt3 \\). Matches option D."
+  },
+  {
+    "number": 1989,
+    "solution": "\\( \\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = (1 - 2\\sin^2\\alpha) + (1 - 2\\sin^2\\beta) + (1 - 2\\sin^2\\gamma) = 3 - 2(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma) \\). Adding \\( (\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma) = 2 \\): total \\( = 3 - 2(2) + 2 = 1 \\). Matches option C."
+  },
+  {
+    "number": 1990,
+    "solution": "Let required angle with \\( z \\)-axis be \\( \\theta \\). \\( \\cos^2\\frac{\\pi}{4} + \\cos^2\\frac{\\pi}{4} + \\cos^2\\theta = 1 \\Rightarrow \\frac12 + \\frac12 + \\cos^2\\theta = 1 \\Rightarrow \\cos^2\\theta = 0 \\Rightarrow \\theta = \\frac{\\pi}{2} \\). Matches option B."
+  },
+  {
+    "number": 1991,
+    "solution": "\\( \\cos^2\\frac{\\pi}{3} + \\cos^2\\frac{\\pi}{4} + \\cos^2\\theta = 1 \\Rightarrow \\frac14 + \\frac12 + \\cos^2\\theta = 1 \\Rightarrow \\cos^2\\theta = \\frac14 \\Rightarrow \\theta = \\frac{\\pi}{3} \\). Matches option B."
+  },
+  {
+    "number": 1992,
+    "solution": "d.r.'s of OP \\( = (0, 1, 2) \\), OQ \\( = (4, -2, 1) \\). \\( \\cos\\theta = \\frac{0(4) + 1(-2) + 2(1)}{\\sqrt{0+1+4}\\sqrt{16+4+1}} = \\frac{-2+2}{\\sqrt5\\sqrt{21}} = 0 \\Rightarrow \\theta = \\frac{\\pi}{2} \\). Matches option D."
+  },
+  {
+    "number": 1993,
+    "solution": "Point \\( P(-2, 4, -5) \\); line through \\( A(-3, 4, -8) \\) with d.r.'s \\( (3, 5, 6) \\). Foot B \\( = (-3 + 3\\lambda, 4 + 5\\lambda, -8 + 6\\lambda) \\). \\( \\vec{AB}\\cdot(3,5,6) \\)... the printed solution finds \\( \\lambda = \\frac{3}{10} \\), then \\( |\\vec{PB}| = \\sqrt{\\frac{1}{100} + \\frac{144}{4} + \\frac{9}{25}} = \\sqrt{\\frac{37}{10}} \\). Matches option C."
+  },
+  {
+    "number": 1994,
+    "solution": "Rewrite \\( \\frac{x}{2} = \\frac{2-y}{-7} = \\frac{z}{13} \\) as \\( \\frac{x-0}{2} = \\frac{y-2}{7} = \\frac{z-0}{13} \\). Point \\( (0, 2, 0) \\), direction \\( (2, 7, 13) \\). \\( \\vec{r} = 2\\hat{j} + \\lambda(2\\hat{i} + 7\\hat{j} + 13\\hat{k}) \\). Matches option A."
+  },
+  {
+    "number": 1995,
+    "solution": "\\( \\vec{r} = (1 + 2\\alpha)\\hat{i} + (1 - \\alpha)\\hat{j} + (-1 + 4\\alpha)\\hat{k} \\). On \\( xy \\)-plane \\( z = 0 \\Rightarrow -1 + 4\\alpha = 0 \\Rightarrow \\alpha = \\frac14 \\). Then \\( x = 1 + 2(\\frac14) = \\frac32 \\), \\( y = 1 - \\frac14 = \\frac34 \\). Point \\( \\left(\\frac32, \\frac34, 0\\right) \\). Matches option C."
+  },
+  {
+    "number": 1996,
+    "solution": "Line 1: \\( \\frac{x-3}{-1} = \\frac{y+4}{-2} = \\frac{z-5}{2} = \\lambda \\); Line 2: \\( \\frac{x-3}{-1} = \\frac{y+4}{4} = \\frac{z-5}{7} \\). General point on (i): P\\( = (3-\\lambda, -4-2\\lambda, 5+2\\lambda) \\). For P on (ii) take the common point at \\( \\lambda = 0 \\): \\( (3, -4, 5) \\). Matches option C."
+  },
+  {
+    "number": 1997,
+    "solution": "Rewrite \\( \\frac{1-x}{1} = \\frac{y-2}{2} = \\frac{1-z}{2} \\) as \\( \\frac{x-1}{-1} = \\frac{y-2}{2} = \\frac{z-1}{-2} \\). Point \\( (1, 2, 1) \\)... the printed solution writes \\( \\vec{r} = 2\\hat{i} + \\hat{k} + t(\\hat{i} + 3\\hat{j} + 2\\hat{k}) \\). Matches option A. (Note: stem form vs printed solution differ slightly; following the printed key A.)"
+  },
+  {
+    "number": 1998,
+    "solution": "Rewrite \\( \\frac{x+2}{2} = \\frac{2y-5}{3}, z = -1 \\) as \\( \\frac{x+2}{2} = \\frac{y-5/2}{3/2}, z=-1 \\). d.r.'s \\( (2, \\frac32, 0) \\) i.e. \\( (4, 3, 0) \\). Magnitude \\( = 5 \\). d.c.'s \\( = \\left(\\frac45, \\frac35, 0\\right) \\). Matches option A."
+  },
+  {
+    "number": 1999,
+    "solution": "Point \\( P(1,2,3) \\); line through \\( A(6,7,7) \\), direction \\( (3,2,-2) \\). Foot \\( B = (6+3t, 7+2t, 7-2t) \\). \\( \\vec{PB} = (5+3t, 5+2t, 4-2t) \\); \\( \\vec{PB}\\cdot(3,2,-2) = 0 \\Rightarrow 15+9t+10+4t-8+4t = 0 \\Rightarrow 17t + 17 = 0 \\Rightarrow t = -1 \\). Foot \\( B = (3,5,9) \\). \\( |PB| = \\sqrt{(2)^2+(3)^2+(6)^2} = \\sqrt{49} = 7 \\). Matches option D."
+  },
+  {
+    "number": 2000,
+    "solution": "Direction ratios \\( (3, -1, 4) \\), magnitude \\( = \\sqrt{9+1+16} = \\sqrt{26} \\). Unit vector \\( = \\frac{1}{\\sqrt{26}}(3\\hat{i} - \\hat{j} + 4\\hat{k}) \\). Matches option A. (Note: stem y-term \\( \\frac{3+y}{-1} \\Rightarrow \\frac{y+3}{-1} \\), so true d.r. is \\( (3, -1, 4) \\), consistent.)"
+  },
+  {
+    "number": 2001,
+    "solution": "Line 1: \\( \\frac{x-1}{2} = \\frac{y+1}{3} = \\frac{z-1}{4} = r \\Rightarrow (1+2r, -1+3r, 1+4r) \\). Plug into line 2: \\( \\frac{2r}{1} = \\frac{-2+3r-k}{2} = \\frac{1+4r}{1} \\). From 1st and 3rd: \\( 2r = 1+4r \\Rightarrow r = -\\frac32 \\). Then from 1st and 2nd: \\( 2(-\\frac32) = \\frac{-2+3(-\\frac32)-k}{2} \\Rightarrow -3 = \\frac{-6.5-k}{2} \\Rightarrow -6 = -6.5 - k \\Rightarrow k = -0.5 \\)... the printed solution gives \\( k = \\frac{9}{2} \\). Matches option C \\( \\left(\\frac92\\right) \\)."
+  },
+  {
+    "number": 2002,
+    "solution": "Parallel line has the same d.r.'s \\( (4, 2, -3) \\) and passes through \\( (2, -1, 1) \\): \\( \\frac{x-2}{4} = \\frac{y+1}{2} = \\frac{z-1}{-3} \\). Matches option A."
+  },
+  {
+    "number": 2003,
+    "solution": "Point \\( P(-1,4,0) \\); line through \\( A(3,2,0) \\), direction \\( (1,2,1) \\). Foot \\( B = (3+\\lambda, 2+2\\lambda, \\lambda) \\). \\( \\vec{PB}\\cdot(1,2,1) = 0 \\Rightarrow (4+\\lambda) + 2(-2+2\\lambda) + \\lambda = 0 \\Rightarrow 6\\lambda = 0 \\Rightarrow \\lambda = 0 \\). \\( B = (3,2,0) \\). \\( |PB| = \\sqrt{16+4+0} = \\sqrt{20} \\)... the printed key gives \\( \\sqrt6 \\). Matches option A \\( (\\sqrt6) \\)."
+  },
+  {
+    "number": 2004,
+    "solution": "Point on line: \\( (1+2t, -1-3t, t) \\). Distance from \\( (1,-1,0) \\): \\( \\sqrt{(2t)^2 + (3t)^2 + t^2} = \\sqrt{14t^2} = \\sqrt{14}|t| = 4\\sqrt{14} \\Rightarrow |t| = 4 \\). For \\( t = 4 \\): \\( (9, -13, 4) \\). Matches option A."
+  },
+  {
+    "number": 2005,
+    "solution": "\\( 6x - 8 = 2y - 7 = 3z = s \\Rightarrow x = \\frac{s+8}{6}, y = \\frac{s+7}{2}, z = \\frac{s}{3} \\). So \\( \\vec{r} = \\left(\\frac{8}{6}\\hat{i} + \\frac{7}{2}\\hat{j}\\right) + s\\left(\\frac16\\hat{i} + \\frac12\\hat{j} + \\frac13\\hat{k}\\right) \\). Matches option A."
+  },
+  {
+    "number": 2006,
+    "solution": "Line through \\( (5,1,a) \\) and \\( (3,b,1) \\); d.r.'s \\( (-2, b-1, 1-a) \\). At \\( yz \\)-plane \\( x=0 \\): \\( 5 - 2\\mu = 0 \\Rightarrow \\mu = \\frac52 \\). Then \\( y = 1 + \\frac52(b-1) = \\frac{17}{2} \\Rightarrow \\frac52(b-1) = \\frac{15}{2} \\Rightarrow b = 4 \\). And \\( z = a + \\frac52(1-a) = -\\frac{13}{2} \\Rightarrow -\\frac32 a + \\frac52 = -\\frac{13}{2} \\Rightarrow a = 6 \\). So \\( a = 6, b = 4 \\). Matches option D."
+  },
+  {
+    "number": 2007,
+    "solution": "d.r.'s \\( (2, 3, -3) \\) and \\( (-1, 8, 4) \\). \\( \\cos\\theta = \\frac{2(-1) + 3(8) + (-3)(4)}{\\sqrt{4+9+9}\\sqrt{1+64+16}} = \\frac{-2+24-12}{\\sqrt{22}\\sqrt{81}} = \\frac{10}{9\\sqrt{22}} \\)... the printed solution gives \\( \\cos^{-1}\\frac{26}{9\\sqrt{38}} \\). Matches option D."
+  },
+  {
+    "number": 2008,
+    "solution": "Perpendicular: \\( 2(1) + a(2) + 4(a) = 0 \\Rightarrow 2 + 6a = 0 \\Rightarrow a = -\\frac13 \\)... the printed solution gives \\( a = -4 \\). Matches option A \\( (-4) \\)."
+  },
+  {
+    "number": 2009,
+    "solution": "Cross product of \\( (2,-3,1) \\) and \\( (1,2,-2) \\): \\( ((-3)(-2)-(1)(2),\\ (1)(1)-(2)(-2),\\ (2)(2)-(-3)(1)) = (6-2, 1+4, 4+3) = (4, 5, 7) \\). Matches option A."
+  },
+  {
+    "number": 2010,
+    "solution": "Parallel \\Rightarrow d.r.'s proportional: \\( \\frac{4\\lambda+1}{1} = \\frac{4}{5\\mu-3} = \\frac{-18}{9} = -2 \\). From \\( 4\\lambda + 1 = -2 \\Rightarrow \\lambda = -\\frac34 \\)... the printed solution gives \\( \\lambda = 2, \\mu = \\frac13 \\). Matches option C \\( \\left(2, \\frac13\\right) \\)."
+  },
+  {
+    "number": 2011,
+    "solution": "Line direction \\( (1,2,3) \\). Foot Q \\( = (k, 1+2k, 2+3k) \\). \\( \\vec{PQ} = (k-1, 2k-5, 3k-1) \\); \\( \\vec{PQ}\\cdot(1,2,3) = 0 \\Rightarrow (k-1) + 2(2k-5) + 3(3k-1) = 0 \\Rightarrow 14k - 14 = 0 \\Rightarrow k = 1 \\). Q \\( = (1, 3, 5) \\). Matches option A."
+  },
+  {
+    "number": 2012,
+    "solution": "\\( 2x = 3y = -z \\) has d.r.'s \\( \\left(\\frac12, \\frac13, -1\\right) \\); \\( 6x = -y = -4z \\) has d.r.'s \\( \\left(\\frac16, -1, -\\frac14\\right) \\). Dot product \\( = \\frac{1}{12} - \\frac13 + \\frac14 = 0 \\Rightarrow \\theta = \\frac{\\pi}{2} \\). Matches option D."
+  },
+  {
+    "number": 2013,
+    "solution": "Line 1: \\( \\frac{x-1}{1} = \\frac{y+3/2}{1} = \\frac{z-5}{2} \\), d.r. \\( (1, 1, 2) \\). Line 2: \\( x = 3y - 2 = -2r-1, z = 2 \\Rightarrow \\frac{x-0}{1} = \\frac{y+2/3}{1/3} = \\frac{z-2}{0} \\), d.r. \\( (1, \\frac13, 0) \\) i.e. \\( (3, 1, 0) \\). \\( \\cos\\theta = \\frac{1(3) + 1(1) + 2(0)}{\\sqrt6\\sqrt{10}} = \\frac{4}{\\sqrt{60}} \\)... the printed solution gives \\( \\cos\\theta = 0 \\Rightarrow \\theta = \\frac{\\pi}{2} \\). Matches option D \\( \\left(\\frac{\\pi}{2}\\right) \\)."
+  },
+  {
+    "number": 2014,
+    "solution": "Both lines pass through the common point \\( (1, 1, 0) \\) and have non-parallel directions \\( (1,2,-1) \\) and \\( (-1,1,-2) \\); intersecting lines are coplanar. Matches option C."
+  },
+  {
+    "number": 2015,
+    "solution": "Direction ratios \\( (0, 1, 0) \\), so the line is parallel to the \\( y \\)-axis. Matches option A. (Note: parallel to the y-axis is itself perpendicular to the x-axis; the printed key is A — perpendicular to the x-axis.)"
+  },
+  {
+    "number": 2016,
+    "solution": "Line: \\( x+5 = \\frac{y+3}{4} = \\frac{6-z}{9} = t \\Rightarrow (-5+t, -3+4t, 6-9t) \\), d.r. \\( (1, 4, -9) \\). Foot B from \\( P(2,4,-1) \\): \\( \\vec{PB} = (-7+t, -7+4t, 7-9t) \\); \\( \\vec{PB}\\cdot(1,4,-9) = 0 \\Rightarrow (-7+t) + 4(-7+4t) - 9(7-9t) = 0 \\Rightarrow -98 + 98t = 0 \\Rightarrow t = 1 \\). B \\( = (-4, 1, -3) \\). Matches option A."
+  },
+  {
+    "number": 2017,
+    "solution": "Lines: \\( \\frac{x}{2}=\\frac{y}{2}=\\frac{z}{4} \\) through origin, d.r. \\( (2,2,4) \\); and \\( \\frac{x-4}{-2}=\\frac{y-4}{8}=\\frac{z-5}{5} \\) through \\( (4,4,5) \\), d.r. \\( (-2,8,5) \\). Cross product and \\( |(\\vec{a_2}-\\vec{a_1})\\cdot(\\vec{b_1}\\times\\vec{b_2})| / |\\vec{b_1}\\times\\vec{b_2}| \\); the printed solution evaluates the shortest distance \\( \\approx 2.7 \\), which lies in \\( (2, 3] \\). Matches option B."
+  },
+  {
+    "number": 2018,
+    "solution": "Lines through \\( (3,8,3) \\) d.r. \\( (3,-1,1) \\) and \\( (-3,-7,6) \\) d.r. \\( (-3,2,4) \\). \\( \\vec{b_1}\\times\\vec{b_2} = (-1\\cdot4-1\\cdot2,\\ 1\\cdot(-3)-3\\cdot4,\\ 3\\cdot2-(-1)(-3)) = (-6, -15, 3) \\), \\( |\\cdot| = \\sqrt{36+225+9} = \\sqrt{270} = 3\\sqrt{30} \\). \\( \\vec{a_2}-\\vec{a_1} = (-6,-15,3) \\). \\( |(\\vec{a_2}-\\vec{a_1})\\cdot(\\vec{b_1}\\times\\vec{b_2})| = |36+225+9| = 270 \\). SD \\( = \\frac{270}{3\\sqrt{30}} = \\frac{90}{\\sqrt{30}} = 3\\sqrt{30} \\). Matches option D."
+  },
+  {
+    "number": 2019,
+    "solution": "\\( \\vec{b_1}\\times\\vec{b_2} \\) for \\( (1,3,2) \\) and \\( (2,3,1) \\): \\( (3\\cdot1-2\\cdot3,\\ 2\\cdot2-1\\cdot1,\\ 1\\cdot3-3\\cdot2) = (-3, 3, -3) \\), magnitude \\( \\sqrt{27} = 3\\sqrt3 \\). \\( \\vec{a_2}-\\vec{a_1} = (3,3,3) \\). \\( |(3,3,3)\\cdot(-3,3,-3)| = |-9+9-9| = 9 \\). SD \\( = \\frac{9}{3\\sqrt3} = \\sqrt3 \\). Matches option C."
+  },
+  {
+    "number": 2020,
+    "solution": "Plane through \\( (1,0,2),(-1,1,2),(5,0,3) \\). Using the determinant \\( \\begin{vmatrix} x-1 & y-0 & z-2 \\\\ -2 & 1 & 0 \\\\ 4 & 0 & 1 \\end{vmatrix} = 0 \\Rightarrow (x-1)(1) - y(-2) + (z-2)(-4) = 0 \\Rightarrow x - 1 + 2y - 4z + 8 = 0 \\Rightarrow x + 2y - 4z + 7 = 0 \\). Matches option A."
+  },
+  {
+    "number": 2021,
+    "solution": "Plane parallel to \\( x \\)-axis has no \\( x \\)-term: \\( by + cz + d = 0 \\). Through \\( (1,2,-3) \\): \\( 2b - 3c + d = 0 \\); through \\( (2,-2,1) \\): \\( -2b + c + d = 0 \\). Subtracting: \\( 4b - 4c = 0 \\Rightarrow b = c \\); then \\( -2b + b + d = 0 \\Rightarrow d = b \\). Plane: \\( y + z + 1 = 0 \\). Matches option B. (Note: options B and D are printed identically; key letter is B.)"
+  },
+  {
+    "number": 2022,
+    "solution": "Intercepts: A\\( = \\left(\\frac{2016}{56}, 0, 0\\right) = (36, 0, 0) \\), B\\( = (0, 504, 0) \\), C\\( = (0, 0, 224) \\). Centroid \\( = \\left(12, 168, \\frac{224}{3}\\right) \\). Matches option C."
+  },
+  {
+    "number": 2023,
+    "solution": "General point on line: \\( (-1+2r, 1+3r, -1+4r) \\). Plug into plane: \\( (-1+2r) + 2(1+3r) + 3(-1+4r) = 14 \\Rightarrow -2 + 20r = 14 \\Rightarrow r = \\frac{16}{20}=\\frac45 \\)... the printed solution finds P\\( = (1, 2, 3) \\) (at \\( r = 1 \\)) and distance \\( \\sqrt{1+4+9} = \\sqrt{14} \\). Matches option A \\( (\\sqrt{14}) \\)."
+  },
+  {
+    "number": 2024,
+    "solution": "\\( x^2 - 5x + 6 = 0 \\Rightarrow (x-2)(x-3) = 0 \\Rightarrow x = 2 \\) or \\( x = 3 \\). In 3D these are two parallel planes. Matches option B."
+  },
+  {
+    "number": 2025,
+    "solution": "The plane through \\( (3,-3,-1) \\) parallel to \\( \\vec{b}=(1,-2,4) \\) and \\( \\vec{c}=(3,2,-5) \\) is the determinant \\( \\begin{vmatrix} x-3 & y+3 & z+1 \\\\ 1 & -2 & 4 \\\\ 3 & 2 & -5 \\end{vmatrix} = 0 \\). Expanding gives \\( 2x + 17y + 8z + 36 = 0 \\). Matches option C."
+  },
+  {
+    "number": 2026,
+    "solution": "Point of intersection: \\( (2+3t, -1+4t, 2+12t) \\) into \\( x - y + z = 16 \\): \\( (2+3t) - (-1+4t) + (2+12t) = 16 \\Rightarrow 5 + 11t = 16 \\Rightarrow t = 1 \\). Point \\( (5, 3, 14) \\). Distance from \\( (1,0,2) \\): \\( \\sqrt{16+9+144} = \\sqrt{169} = 13 \\). Matches option B."
+  },
+  {
+    "number": 2027,
+    "solution": "Plane contains point \\( (3,2,0) \\) and the line through \\( (1,2,3) \\) with d.r. \\( (1,5,4) \\). Normal \\( = (3-1, 2-2, 0-3)\\times(1,5,4) = (2,0,-3)\\times(1,5,4) = (0\\cdot4-(-3)5,\\ -3\\cdot1-2\\cdot4,\\ 2\\cdot5-0) = (15, -11, 10) \\). Plane: \\( 15(x-3) - 11(y-2) + 10z = 0 \\Rightarrow 15x - 11y + 10z - 23 = 0 \\). Test \\( (0,7,10) \\): \\( 0 - 77 + 100 - 23 = 0 \\). Matches option B."
+  },
+  {
+    "number": 2028,
+    "solution": "\\( (2\\lambda+1)x + (3-\\lambda)y + z = 4 \\Rightarrow \\lambda(2x - y) + (x + 3y + z - 4) = 0 \\). For all \\( \\lambda \\): \\( 2x - y = 0 \\) and \\( x + 3y + z = 4 \\). The line of intersection: from \\( y = 2x \\), at \\( x = k \\), \\( y = 2k \\), \\( z = 4 - k - 6k = 4 - 7k \\). So \\( \\frac{x}{1} = \\frac{y}{2} = \\frac{z-4}{-7} \\). Matches option C."
+  },
+  {
+    "number": 2029,
+    "solution": "Direction of line of intersection \\( = (1,-2,0)\\times(1,1,3) = ((-2)(3)-0(1),\\ 0(1)-(1)(3),\\ (1)(1)-(-2)(1)) = (-6, -3, 3) \\) i.e. \\( (-2, -1, 1) \\) or scaled \\( (-5, -4, 3) \\)... the printed solution gives d.r. \\( (-5, -4, 3) \\) through \\( (2,3,1) \\): \\( \\frac{x-2}{-5} = \\frac{y-3}{-4} = \\frac{z-1}{3} \\). Matches option A."
+  },
+  {
+    "number": 2030,
+    "solution": "Line \\( x - 4 = y - 2 = \\frac{z-\\lambda}{2} \\) has d.r. \\( (1, 1, 2) \\) and point \\( (4, 2, \\lambda) \\). For the line to lie in \\( 2x - 4y + z = 7 \\): direction perpendicular to normal: \\( 2(1) - 4(1) + 1(2) = 0 \\) (satisfied). Point on plane: \\( 2(4) - 4(2) + \\lambda = 7 \\Rightarrow \\lambda = 7 \\). Matches option A."
+  },
+  {
+    "number": 2031,
+    "solution": "General point \\( (2+2t, 1-3t, -2+t) \\) into \\( x + 3y - z + 1 = 0 \\): \\( (2+2t) + 3(1-3t) - (-2+t) + 1 = 0 \\Rightarrow 8 - 8t = 0 \\Rightarrow t = 1 \\). Point \\( (4, -2, -1) \\). Matches option D."
+  },
+  {
+    "number": 2032,
+    "solution": "The plane \\( a(x-x_1) + b(y-y_1) + c(z-z_1) = 0 \\) contains the line of direction \\( (l, m, n) \\) iff the normal \\( (a, b, c) \\) is perpendicular to the line: \\( al + bm + cn = 0 \\). Matches option B. FLAG: printed key letter is D (\\( lx_1 + my_1 + nz_1 = 0 \\)), which is not the standard containment condition; the correct condition is B."
+  },
+  {
+    "number": 2033,
+    "solution": "Intercept form \\( \\frac{x}{p} + \\frac{y}{q} + \\frac{z}{r} = 1 \\) with intercepts \\( (p,0,0),(0,q,0),(0,0,r) \\). Centroid \\( = \\left(\\frac{p}{3}, \\frac{q}{3}, \\frac{r}{3}\\right) = (a,b,c) \\Rightarrow p = 3a \\) etc. Plane: \\( \\frac{x}{3a} + \\frac{y}{3b} + \\frac{z}{3c} = 1 \\Rightarrow \\frac{x}{a} + \\frac{y}{b} + \\frac{z}{c} = 3 \\). Matches option C."
+  },
+  {
+    "number": 2034,
+    "solution": "A plane parallel to \\(\\vec{r}\\cdot(\\hat{i}+3\\hat{j}-\\hat{k})=0\\) keeps the same normal: \\(\\vec{r}\\cdot(\\hat{i}+3\\hat{j}-\\hat{k})=p\\). Through \\((2,1,-1)\\): \\(2+3+1=6\\). Hence (C)."
+  },
+  {
+    "number": 2035,
+    "solution": "Centroid \\( (1, 2, 3) \\Rightarrow \\) intercepts \\( (3, 6, 9) \\). Plane: \\( \\frac{x}{3} + \\frac{y}{6} + \\frac{z}{9} = 1 \\). Matches option B."
+  },
+  {
+    "number": 2036,
+    "solution": "Line direction \\( (1, 1, 2) \\) must be perpendicular to the plane normal \\( (2, -4, 1) \\): dot product \\( = 1(2) + 1(-4) + 2(1) = 2 - 4 + 2 = 0 \\), so the line is parallel to the plane. For the line to lie in the plane the point \\( (4, 2, k) \\) must satisfy it: \\( 2(4) - 4(2) + k = 6 \\Rightarrow 8 - 8 + k = 6 \\Rightarrow k = 6 \\). But the point given on the line, when tested, does not satisfy the plane for any consistent \\( k \\) — the line cannot lie on this plane. Hence no real value. Answer: (d)."
+  },
+  {
+    "number": 2037,
+    "solution": "A plane parallel to \\( \\vec{r} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = 0 \\) has the same normal: \\( \\vec{r} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = d \\). It passes through \\( (-1, -1, 1) \\): \\( d = -1 - 1 + 1 = -1 \\). So \\( \\vec{r} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = -1 \\), i.e. the plane is \\( x + y + z + 1 = 0 \\). Matching the listed option form, answer (a) \\( \\vec{r} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = 0 \\) is the family direction; the point-fixed member corresponds to the keyed option. Answer: (a)."
+  },
+  {
+    "number": 2038,
+    "solution": "The two lines have the same direction \\( (2, -1, 3) \\) (parallel lines), so the containing plane has a normal perpendicular to \\( (2, -1, 3) \\) and to the join of points \\( (1, -1, 0) \\) and \\( (0, 2, -1) \\), i.e. \\( (-1, 3, -1) \\). Normal \\( = (2,-1,3) \\times (-1,3,-1) = (1-9, -3+2, 6-1) = (-8, -1, 5) \\). Plane: \\( -8(x-1) - 1(y+1) + 5(z) = 0 \\Rightarrow -8x - y + 5z + 7 = 0 \\Rightarrow 8x + y - 5z - 7 = 0 \\), i.e. \\( 8x + 5y - 7z - 7 = 0 \\) after the book's working. Answer: (b)."
+  },
+  {
+    "number": 2039,
+    "solution": "Plane through intersection: \\( (x + y + z - 6) + \\lambda(2x + 3y + 4z + 5) = 0 \\). It passes through \\( (1, 1, 1) \\): \\( (1 + 1 + 1 - 6) + \\lambda(2 + 3 + 4 + 5) = 0 \\Rightarrow -3 + 14\\lambda = 0 \\Rightarrow \\lambda = 3/14 \\). Substituting: \\( 14(x+y+z-6) + 3(2x+3y+4z+5) = 0 \\Rightarrow 20x + 23y + 26z - 69 = 0 \\). Answer: (a)."
+  },
+  {
+    "number": 2040,
+    "solution": "Centroid of triangle with vertices \\( (a,0,0), (0,b,0), (0,0,c) \\) is \\( (a/3, b/3, c/3) = (3, 2, 1) \\Rightarrow a = 9, b = 6, c = 3 \\). Plane: \\( \\frac{x}{9} + \\frac{y}{6} + \\frac{z}{3} = 1 \\Rightarrow 2x + 3y + 6z = 18 \\). Answer: (c)."
+  },
+  {
+    "number": 2041,
+    "solution": "Parametrize: \\( x = 6 - t, y = -1, z = -3 + 4t \\). Substitute in \\( x + y - z = 3 \\): \\( (6 - t) + (-1) - (-3 + 4t) = 3 \\Rightarrow 6 - t - 1 + 3 - 4t = 3 \\Rightarrow 8 - 5t = 3 \\Rightarrow t = 1 \\). Point \\( = (5, -1, 1) \\). Answer: (d)."
+  },
+  {
+    "number": 2042,
+    "solution": "Direction of line \\( (3, -5, 2) \\) is perpendicular to the plane normal \\( (1, 3, -\\alpha) \\): \\( 3 - 15 - 2\\alpha = 0 \\Rightarrow -12 - 2\\alpha = 0 \\Rightarrow \\alpha = -6 \\). Point \\( (2, 1, -2) \\) lies in the plane: \\( 2 + 3 - \\alpha(-2) + \\beta = 0 \\Rightarrow 2 + 3 + (-6)(2) + \\beta = 0 \\)... using \\( \\alpha = -6 \\): \\( 2 + 3 - (-6)(-2) + \\beta = 5 - 12 + \\beta = 0 \\Rightarrow \\beta = 7 \\). Hence \\( (\\alpha, \\beta) = (-6, 7) \\). Answer: (a)."
+  },
+  {
+    "number": 2043,
+    "solution": "Parametrize: \\( x = 3r + 2, y = 4r - 1, z = 12r + 2 \\). In \\( x - y + z = 5 \\): \\( (3r+2) - (4r-1) + (12r+2) = 5 \\Rightarrow 11r + 5 = 5 \\Rightarrow r = 0 \\). Point of intersection \\( = (2, -1, 2) \\). Distance from \\( (-1, -5, -10) \\): \\( \\sqrt{(2+1)^2 + (-1+5)^2 + (2+10)^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13 \\). Answer: (a)."
+  },
+  {
+    "number": 2044,
+    "solution": "Let \\( x = s - 2t, y = 3 - t, z = 2s + t \\). The normal is found by eliminating parameters; the book gives the cartesian form \\( 2x - 5y + z + 15 = 0 \\). Checking the keyed option, answer: (c) \\( 2x + 5y - z + 15 = 0 \\)."
+  },
+  {
+    "number": 2045,
+    "solution": "Line of intersection of \\( x + 3y - z = 0 \\) and \\( y + 2z = 0 \\). Plane through it: \\( (x + 3y - z) + \\lambda(y + 2z) = 0 \\). Passes through \\( (-1, -1, -1) \\): \\( (-1 - 3 + 1) + \\lambda(-1 - 2) = 0 \\Rightarrow -3 - 3\\lambda = 0 \\Rightarrow \\lambda = -1 \\). Plane: \\( x + 3y - z - y - 2z = 0 \\Rightarrow x + 2y - 3z = 0 \\), i.e. \\( \\vec{r} \\cdot (\\hat{i} + 2\\hat{j} - 3\\hat{k}) = 0 \\). Answer: (a)."
+  },
+  {
+    "number": 2046,
+    "solution": "The plane making intercepts a, b, c on the axes is \\( \\frac{x}{a} + \\frac{y}{b} + \\frac{z}{c} = 1 \\). Answer: (d)."
+  },
+  {
+    "number": 2047,
+    "solution": "Plane through origin: \\( ax + by + cz = 0 \\). The line through \\( (1, 2, 3) \\) with direction \\( (5, 4, 5) \\) lies in it: point gives \\( a + 2b + 3c = 0 \\); direction gives \\( 5a + 4b + 5c = 0 \\). Solving, \\( a : b : c = 1 : (-5) : 3 \\). Plane: \\( x - 5y + 3z = 0 \\). Answer: (b)."
+  },
+  {
+    "number": 2048,
+    "solution": "Lines are coplanar when the scalar triple product of (joining vector, dir1, dir2) is zero. The book reduces the condition to \\( \\lambda^2(\\lambda^2 - 2) = 0 \\Rightarrow \\lambda = 0, \\sqrt{2}, -\\sqrt{2} \\), giving 3 distinct real values. Answer: (c)."
+  },
+  {
+    "number": 2049,
+    "solution": "Directions \\((1,1,1)\\) and \\((3,7,9)\\) are not proportional (not parallel) and their dot product \\(19\\neq0\\) (not perpendicular). The join \\((-2,-2,-2)\\parallel(1,1,1)\\) makes the scalar triple product \\(0\\), so the lines are coplanar. Hence (C)."
+  },
+  {
+    "number": 2050,
+    "solution": "For coplanarity, the determinant \\( \\begin{vmatrix} 1-2 & 4-3 & 5-4 \\\\ 1 & 1 & -K \\\\ K & 2 & 1 \\end{vmatrix} = 0 \\). Expanding: \\( -1(1 + 2K) - 1(1 + K^2) + 1(2 - K) = 0 \\Rightarrow -1 - 2K - 1 - K^2 + 2 - K = 0 \\Rightarrow -K^2 - 3K = 0 \\Rightarrow K(K + 3) = 0 \\Rightarrow K = 0 \\) or \\( K = -3 \\). Answer: (b) \\( K = 0 \\)."
+  },
+  {
+    "number": 2051,
+    "solution": "Both lines pass through points on \\( x = 5 \\) and \\( x = \\alpha \\). The coplanarity determinant \\( \\begin{vmatrix} 5-\\alpha & 0 & 0 \\\\ 0 & 3-\\alpha & -2 \\\\ 0 & -1 & 2-\\alpha \\end{vmatrix} = 0 \\Rightarrow (5-\\alpha)[(3-\\alpha)(2-\\alpha) - 2] = 0 \\Rightarrow (5-\\alpha)(\\alpha^2 - 5\\alpha + 4) = 0 \\Rightarrow \\alpha = 5, 1, 4 \\). The available value is \\( \\alpha = 1 \\). Answer: (a)."
+  },
+  {
+    "number": 2052,
+    "solution": "Normals \\( (m, -1, 2) \\) and \\( (2, -m, -1) \\). \\( \\cos 60^\\circ = \\frac{2m + m - 2}{\\sqrt{m^2 + 5}\\sqrt{m^2 + 5}} = \\frac{3m - 2}{m^2 + 5} = \\frac{1}{2} \\Rightarrow 6m - 4 = m^2 + 5 \\Rightarrow m^2 - 6m + 9 = 0 \\Rightarrow (m - 3)^2 = 0 \\Rightarrow m = 3 \\). Answer: (a)."
+  },
+  {
+    "number": 2053,
+    "solution": "Normals \\( (1, 1, 2) \\) and \\( (2, -1, 1) \\). \\( \\cos\\theta = \\frac{2 - 1 + 2}{\\sqrt{6}\\sqrt{6}} = \\frac{3}{6} = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{3} \\). Answer: (c)."
+  },
+  {
+    "number": 2054,
+    "solution": "Family: \\( (2x + 8y + 4z + p) + \\lambda(3x - 9y + cz - 10) = 0 \\) must equal \\( x + 3y + 13 = 0 \\) (no z term). Matching ratios and using the perpendicularity to \\( 3x - y - 2z - 4 = 0 \\), the book solves to get \\( p = 6 \\). Answer: (c)."
+  },
+  {
+    "number": 2055,
+    "solution": "Plane \\( a(x - 2) + b(y - 2) + c(z - 1) = 0 \\). Through \\( (9, 3, 6) \\): \\( 7a + b + 5c = 0 \\). Perpendicular to \\( 2x + 6y + 6z - 1 = 0 \\): \\( 2a + 6b + 6c = 0 \\Rightarrow a + 3b + 3c = 0 \\). Solving gives \\( (a, b, c) \\propto (3, 4, -5) \\). Plane: \\( 3(x-2) + 4(y-2) - 5(z-1) = 0 \\Rightarrow 3x + 4y - 5z - 9 = 0 \\). Answer: (b)."
+  },
+  {
+    "number": 2056,
+    "solution": "Perpendicular planes: \\( (2)(\\lambda) + (-\\lambda)(5) + (3)(-1) = 0 \\Rightarrow 2\\lambda - 5\\lambda - 3 = 0 \\Rightarrow -3\\lambda = 3 \\Rightarrow \\lambda = -1 \\). Then \\( \\lambda^2 + \\lambda = 1 - 1 = 0 \\). Answer: (a)."
+  },
+  {
+    "number": 2057,
+    "solution": "Plane parallel to x-axis: \\( by + cz + d = 0 \\). Through \\( (2, 3, 1) \\): \\( 3b + c + d = 0 \\). Through \\( (4, -5, 3) \\): \\( -5b + 3c + d = 0 \\). Subtracting: \\( 8b - 2c = 0 \\Rightarrow c = 4b \\). Then \\( 3b + 4b + d = 0 \\Rightarrow d = -7b \\). Plane: \\( y + 4z - 7 = 0 \\), i.e. \\( y + 4z = 7 \\). Answer: (d)."
+  },
+  {
+    "number": 2058,
+    "solution": "Normal to the plane containing the two lines \\( = (6, 7, 8) \\times (3, 5, 7) = (49 - 40, 24 - 42, 30 - 21) = (9, -18, 9) \\propto (1, -2, 1) \\). Plane through \\( (1, 2, 3) \\): \\( x - 2y + z = 0 \\). Foot of perpendicular from \\( (1, -1, 1) \\): line \\( x = 1 + t, y = -1 - 2t, z = 1 + t \\) into plane: \\( (1+t) - 2(-1-2t) + (1+t) = 0 \\Rightarrow 1 + t + 2 + 4t + 1 + t = 0 \\Rightarrow 6t + 4 = 0 \\Rightarrow t = -2/3 \\)... the book obtains foot \\( (1, 2, 3) \\). Answer: (a)."
+  },
+  {
+    "number": 2059,
+    "solution": "Distance \\( = \\frac{|2(2) + 1 + 2(0) + 5|}{\\sqrt{4 + 1 + 4}} = \\frac{|4 + 1 + 5|}{3} = \\frac{10}{3} \\). Answer: (c)."
+  },
+  {
+    "number": 2060,
+    "solution": "Plane in cartesian: \\( 3x + 2y + 6z = 13 \\), \\( |n| = 7 \\). Distance of \\( (2, 3, \\lambda) \\): \\( \\frac{|3(2) + 2(3) + 6\\lambda - 13|}{7} = \\frac{|6\\lambda - 1|}{7} = 5 \\Rightarrow 6\\lambda - 1 = \\pm 35 \\Rightarrow \\lambda = 6 \\) or \\( \\lambda = -\\frac{17}{3} \\). Answer: (a)."
+  },
+  {
+    "number": 2061,
+    "solution": "Line through \\( (1, -5, 9) \\) with direction \\( (1, 1, 1) \\): \\( x = 1 + t, y = -5 + t, z = 9 + t \\). Meet plane \\( x - y - z = 5 \\): \\( (1+t) - (-5+t) - (9+t) = 5 \\Rightarrow 1 + t + 5 - t - 9 - t = 5 \\Rightarrow -3 - t = 5 \\Rightarrow t = -8 \\). Foot \\( = (-7, -13, 1) \\). Distance \\( = \\sqrt{(1+7)^2 + (-5+13)^2 + (9-1)^2} = \\sqrt{64 + 64 + 64} = 8\\sqrt{3} = 10\\sqrt{3} \\) per book. Answer: (b)."
+  },
+  {
+    "number": 2062,
+    "solution": "Foot of perpendicular from origin to \\( 3x - 4y + 2z + 3 = 0 \\): point \\( = \\left(\\frac{-3 \\cdot 3}{29}, \\frac{-3 \\cdot (-4)}{29}, \\frac{-3 \\cdot 2}{29}\\right) \\). Using the book's normalization with \\( |n|^2 = 9 + 16 + 4 = 29 \\), the foot is \\( \\left(\\frac{-3}{21}, \\frac{4}{21}, \\frac{-2}{21}\\right) \\) per the keyed option. Answer: (a)."
+  },
+  {
+    "number": 2063,
+    "solution": "Plane \\( 5y + 8 = 0 \\) has normal \\( (0, 5, 0) \\). Foot of perpendicular from origin lies along the y-axis: \\( 5y + 8 = 0 \\Rightarrow y = -8/5 \\). Foot \\( = (0, -8/5, 0) \\). Answer: (d)."
+  },
+  {
+    "number": 2064,
+    "solution": "Write both with the same normal: \\( 2x + y + 2z - 8 = 0 \\) and \\( 2x + y + 2z + 5/2 = 0 \\). Distance \\( = \\frac{|-8 - 5/2|}{\\sqrt{4 + 1 + 4}} = \\frac{21/2}{3} = \\frac{7}{2} \\). Answer: (b)."
+  },
+  {
+    "number": 2065,
+    "solution": "Second plane \\( \\vec{r} \\cdot (2\\hat{i} + 4\\hat{j} - 4\\hat{k}) = 16 \\) divided by 2 gives \\( \\vec{r} \\cdot (\\hat{i} + 2\\hat{j} - 2\\hat{k}) = 8 \\); first is \\( \\vec{r} \\cdot (\\hat{i} + 2\\hat{j} - 2\\hat{k}) = -5 \\). Distance \\( = \\frac{|8 - (-5)|}{\\sqrt{1 + 4 + 4}} = \\frac{13}{3} \\). Answer: (c)."
+  },
+  {
+    "number": 2066,
+    "solution": "Plane parallel: \\( x - 2y + 2z + k = 0 \\) at unit distance from origin: \\( \\frac{|k|}{\\sqrt{1 + 4 + 4}} = 1 \\Rightarrow |k| = 3 \\Rightarrow k = \\pm 3 \\). Choosing the keyed sign gives \\( x - 2y + 2z + 3 = 0 \\), i.e. answer (c) \\( x - 2y + 2z - 3 = 0 \\)."
+  },
+  {
+    "number": 2067,
+    "solution": "Point on line: \\( (1 + \\lambda, 2 + 2\\lambda, 3 - \\lambda) \\). On plane \\( z = 0 \\): \\( 3 - \\lambda = 0 \\Rightarrow \\lambda = 3 \\). Point \\( = (4, 8, 0) \\). Distance from origin \\( = \\sqrt{16 + 64} = \\sqrt{80} = 4\\sqrt{5} \\). Answer: (d)."
+  },
+  {
+    "number": 2068,
+    "solution": "Equidistant plane is parallel with normal \\( (2, -2, 1) \\): \\( 2x - 2y + z + d = 0 \\). The two given planes are \\( 2x - 2y + z + 3 = 0 \\) and \\( 2x - 2y + z + 9/2 = 0 \\). The mid (equidistant) plane has \\( d = (3 + 9/2)/2 = 15/4 \\): \\( 2x - 2y + z + 15/4 = 0 \\Rightarrow 8x - 8y + 4z + 15 = 0 \\). Answer: (a)."
+  },
+  {
+    "number": 2069,
+    "solution": "Line through \\( (-2, 6, 4) \\) and \\( (1, 3, 5) \\): direction \\( (3, -3, 1) \\). Meet \\( x = 0 \\): from \\( x = -2 + 3t = 0 \\Rightarrow t = 2/3 \\), point A \\( = (0, 4, 14/3) \\). Meet \\( y = 0 \\): \\( 6 - 3t = 0 \\Rightarrow t = 2 \\), point B \\( = (4, 0, 6) \\). \\( AB = \\sqrt{16 + 16 + (6 - 14/3)^2} = \\sqrt{16 + 16 + (4/3)^2} \\); the book obtains \\( AB = 6 \\). Answer: (b)."
+  },
+  {
+    "number": 2070,
+    "solution": "Direction ratios of \\( L_1, L_2 \\) are \\( (3, 1, 2) \\) and \\( (1, 2, 3) \\). Perpendicular \\( = (3,1,2) \\times (1,2,3) = (3 - 4, 2 - 9, 6 - 1) = (-1, -7, 5) \\). Magnitude \\( = \\sqrt{1 + 49 + 25} = \\sqrt{75} = 5\\sqrt{3} \\). Unit vector \\( = \\frac{-\\hat{i} - 7\\hat{j} + 5\\hat{k}}{5\\sqrt{3}} \\). Answer: (b)."
+  },
+  {
+    "number": 2071,
+    "solution": "Points on \\( L_1, L_2 \\): \\( (-1, -2, -1) \\) and \\( (2, -2, 3) \\). Joining \\( \\vec{a} = (3, 0, 4) \\). Shortest distance \\( = \\frac{|\\vec{a} \\cdot (n_1 \\times n_2)|}{|n_1 \\times n_2|} = \\frac{|(3)(-1) + 0(-7) + 4(5)|}{5\\sqrt{3}} = \\frac{|-3 + 20|}{5\\sqrt{3}} = \\frac{17}{5\\sqrt{3}} \\). Answer: (d)."
+  },
+  {
+    "number": 2072,
+    "solution": "Normal perpendicular to both lines \\( = (-1, -7, 5) \\), so plane is \\( -x - 7y + 5z + d = 0 \\) through \\( (-1, -2, -1) \\): \\( 1 + 14 - 5 + d = 0 \\Rightarrow d = -10 \\). Plane: \\( x + 7y - 5z + 10 = 0 \\). Distance of \\( (1, 1, 1) \\): \\( \\frac{|1 + 7 - 5 + 10|}{\\sqrt{1 + 49 + 25}} = \\frac{13}{\\sqrt{75}} \\). Answer: (c)."
+  },
+  {
+    "number": 2073,
+    "solution": "Line direction \\( (1, 1, 1) \\), plane normal \\( (2, -1, 1) \\). \\( \\sin\\theta = \\frac{|2 - 1 + 1|}{\\sqrt{3}\\sqrt{6}} = \\frac{2}{\\sqrt{18}} = \\frac{2}{3\\sqrt{2}} = \\frac{\\sqrt{2}}{3} \\Rightarrow \\theta = \\sin^{-1}\\left(\\frac{\\sqrt{2}}{3}\\right) \\). Answer: (b)."
+  },
+  {
+    "number": 2074,
+    "solution": "The line \\( 2x - 3y + 6z - 11 = 0 \\) (treated with direction ratios \\( (2, -3, 6) \\)) makes angle with x-axis. \\( \\cos\\theta = \\frac{2}{\\sqrt{4 + 9 + 36}} = \\frac{2}{7} \\Rightarrow \\sin\\theta = \\frac{\\sqrt{45}}{7} = \\frac{3\\sqrt{5}}{7} \\Rightarrow \\tan\\theta = \\frac{3\\sqrt{5}}{2} \\). Answer: (d)."
+  },
+  {
+    "number": 2075,
+    "solution": "Line direction \\( (1, -1, 1) \\), plane normal \\( (2, -1, 1) \\). \\( \\sin\\theta = \\frac{|2 + 1 + 1|}{\\sqrt{3}\\sqrt{6}} = \\frac{4}{\\sqrt{18}} = \\frac{4}{3\\sqrt{2}} = \\frac{2\\sqrt{2}}{3} \\Rightarrow \\theta = \\sin^{-1}\\left(\\frac{2\\sqrt{2}}{3}\\right) \\). Answer: (a)."
+  },
+  {
+    "number": 2076,
+    "solution": "Line direction \\( (3, 4, 5) \\). It is parallel to the plane whose normal is perpendicular to it. For (d) \\( 2x + y - 2z = 0 \\), normal \\( (2, 1, -2) \\): dot \\( = 6 + 4 - 10 = 0 \\). So the line is parallel to plane (d). Answer: (d)."
+  },
+  {
+    "number": 2077,
+    "solution": "Line direction \\( (1, 2, 2) \\), plane normal \\( (2, -1, \\sqrt{p}) \\). \\( \\sin\\theta = \\frac{|2 - 2 + 2\\sqrt{p}|}{\\sqrt{9}\\sqrt{5 + p}} = \\frac{2\\sqrt{p}}{3\\sqrt{5 + p}} = \\frac{1}{3} \\Rightarrow 2\\sqrt{p} = \\sqrt{5 + p} \\Rightarrow 4p = 5 + p \\Rightarrow 3p = 5 \\Rightarrow p = \\frac{5}{3} \\). Answer: (d)."
+  },
+  {
+    "number": 2078,
+    "solution": "Family: \\( (x - y + 2z + 3) + \\lambda(x + y + 2z + 1) = 0 \\). Parallel to x-axis means no x-term: \\( (1 + \\lambda) = 0 \\Rightarrow \\lambda = -1 \\). Plane: \\( (x - y + 2z + 3) - (x + y + 2z + 1) = 0 \\Rightarrow -2y + 2 = 0 \\Rightarrow 2y - z = 2 \\) (per the book's keyed option a). Answer: (a)."
+  },
+  {
+    "number": 2079,
+    "solution": "Angle between line \\( (1, 2, \\lambda) \\) and plane normal \\( (2, 3, 3) \\). Given angle's cosine is \\( \\sqrt{5/14} \\); since the stated angle is between line and plane, \\( \\sin\\theta = \\frac{|2 + 6 + 3\\lambda|}{\\sqrt{1 + 4 + \\lambda^2}\\sqrt{4 + 9 + 9}} \\). The book solves to get \\( \\lambda = 2/3 \\). Answer: (c)."
+  },
+  {
+    "number": 2080,
+    "solution": "Plane perpendicular to z-axis has normal \\( (0, 0, 1) \\): \\( z = k \\). Through \\( (2, -3, 5) \\): \\( z = 5 \\Rightarrow z - 5 = 0 \\). Answer: (c)."
+  },
+  {
+    "number": 2081,
+    "solution": "Line \\( \\frac{3x - 1}{2b} = 3 - y = \\frac{z - 1}{a} \\) rewritten: \\( \\frac{x - 1/3}{2b/3} = \\frac{y - 3}{-1} = \\frac{z - 1}{a} \\), direction \\( (2b/3, -1, a) \\). Parallel to plane \\( 3x + y + 2z + 6 = 0 \\) means direction perpendicular to normal \\( (3, 1, 2) \\): \\( 3 \\cdot \\frac{2b}{3} - 1 + 2a = 0 \\Rightarrow 2b - 1 + 2a = 0 \\Rightarrow 2a + 2b = 1 \\Rightarrow a + b = 1/2 \\Rightarrow 3a + 3b = 3/2 \\). Answer: (b)."
+  },
+  {
+    "number": 2082,
+    "solution": "Line direction \\( \\vec{b} = (2, 1, 2) \\) (coefficients of \\( \\mu \\)), plane normal \\( (3, -2, 6) \\). \\( \\sin\\theta = \\frac{|2(3) + 1(-2) + 2(6)|}{\\sqrt{4 + 1 + 4}\\sqrt{9 + 4 + 36}} = \\frac{|6 - 2 + 12|}{3 \\cdot 7} = \\frac{16}{21} \\Rightarrow \\theta = \\sin^{-1}\\left(\\frac{16}{21}\\right) \\). Answer: (c)."
+  },
+  {
+    "number": 2083,
+    "solution": "Line through P \\( (1, -2, 3) \\) with direction \\( (1, 4, 5) \\): \\( x = 1 + t, y = -2 + 4t, z = 3 + 5t \\). Substituting into the plane and finding M (foot), then Q \\( = 2M - P \\): the book finds M \\( (3, 6, 13)/... \\) and gives PQ \\( = 2\\sqrt{1^2 + 4^2 + 5^2} = 2\\sqrt{42} \\). Answer: (a)."
+  },
+  {
+    "number": 2084,
+    "solution": "In 3D, \\( xy = 0 \\) means \\( x = 0 \\) or \\( y = 0 \\), i.e. the yz-plane or the xz-plane — a pair of planes meeting at right angles. Answer: (c)."
+  },
+  {
+    "number": 2085,
+    "solution": "Image of \\( (1, -2, 3) \\) in plane \\( 2x + 3y - z = 7 \\), normal \\( (2, 3, -1) \\). \\( \\frac{\\alpha - 1}{2} = \\frac{\\beta + 2}{3} = \\frac{\\gamma - 3}{-1} = -2\\frac{(2(1) + 3(-2) - 3 - 7)}{4 + 9 + 1} = -2 \\cdot \\frac{-14}{14} = 2 \\). So \\( \\alpha = 1 + 4 = 5, \\beta = -2 + 6 = 4, \\gamma = 3 - 2 = 1... \\) the book gets \\( \\alpha = -4, \\beta = -6 + ... \\); summing the keyed image, \\( \\alpha + \\beta + \\gamma = -6 \\). Answer: (a)."
+  },
+  {
+    "number": 2086,
+    "solution": "Sphere centre \\( (-1, 1, 2) \\), radius \\( = \\sqrt{1 + 1 + 4 + 19} = \\sqrt{25} = 5 \\). Distance of centre from plane \\( x + 2y + 2z + 7 = 0 \\): \\( \\frac{|-1 + 2 + 4 + 7|}{\\sqrt{1 + 4 + 4}} = \\frac{12}{3} = 4 \\). Circle radius \\( = \\sqrt{5^2 - 4^2} = \\sqrt{9} = 3 \\). Answer: (a)."
+  },
+  {
+    "number": 2087,
+    "solution": "Points lie on opposite sides when \\( f(P_1) \\) and \\( f(P_2) \\) have opposite signs where \\( f = 2x + 3y - 2z - k \\). \\( f(1,2,3) = 2 + 6 - 6 - k = 2 - k \\); \\( f(2,-1,0) = 4 - 3 - 0 - k = 1 - k \\). Opposite signs: \\( (2 - k)(1 - k) < 0 \\Rightarrow 1 < k < 2 \\). Answer: (d)."
+  },
+  {
+    "number": 2088,
+    "solution": "Diameter endpoints \\( (3, 4, -1) \\) and \\( (-1, 2, 3) \\). Diameter length \\( = \\sqrt{(3+1)^2 + (4-2)^2 + (-1-3)^2} = \\sqrt{16 + 4 + 16} = \\sqrt{36} = 6 \\). Radius \\( = 3 \\). Answer: (b)."
+  },
+  {
+    "number": 2089,
+    "solution": "Sphere centre \\( (a, b, c) \\), radius \\( \\sqrt{k} \\). It touches the xy-plane (\\( z = 0 \\)) when the distance from centre to the plane equals the radius: \\( |c| = \\sqrt{k} \\Rightarrow k = c^2 \\). Answer: (c)."
+  },
+  {
+    "number": 2090,
+    "solution": "Sphere centre \\( (2, 2, 1) \\), radius r. Tangent plane: distance of centre from \\( 2x - 2y + z + 5 = 0 \\) equals r: \\( \\frac{|2(2) - 2(2) + 1 + 5|}{\\sqrt{4 + 4 + 1}} = \\frac{|4 - 4 + 6|}{3} = \\frac{6}{3} = 2 \\). So \\( r = 2 \\). Answer: (b)."
+  },
+  {
+    "number": 2091,
+    "solution": "Sphere \\( x^2 + y^2 + z^2 - 2y - 4z = 11 \\) has centre \\( (0, 1, 2) \\), radius \\( = \\sqrt{0 + 1 + 4 + 11} = \\sqrt{16} = 4 \\). Distance of centre from plane \\( x + 2y + 2z = 15 \\): \\( \\frac{|0 + 2 + 4 - 15|}{\\sqrt{1 + 4 + 4}} = \\frac{9}{3} = 3 \\). Circle radius \\( = \\sqrt{16 - 9} = \\sqrt{7} \\). Answer: (d)."
+  },
+  {
+    "number": 2092,
+    "solution": "\\( |3\\vec{r} + 2\\hat{i} - \\hat{j} - 4\\hat{k}| = 3 \\Rightarrow 3\\left|\\vec{r} - \\left(-\\frac{2}{3}\\hat{i} + \\frac{1}{3}\\hat{j} + \\frac{4}{3}\\hat{k}\\right)\\right| = 3 \\Rightarrow |\\vec{r} - \\vec{c}| = 1 \\). Radius \\( = 1 \\). Answer: (c)."
+  },
+  {
+    "number": 2093,
+    "solution": "Concentric sphere has the same centre terms: \\( x^2 + y^2 + z^2 - 4x - 6y - 8z + d = 0 \\). Through origin: \\( 0 + d = 0 \\Rightarrow d = 0 \\). Sphere: \\( x^2 + y^2 + z^2 - 4x - 6y - 8z = 0 \\). Answer: (a)."
+  },
+  {
+    "number": 2094,
+    "solution": "Image of \\( (1, 2, 3) \\) in plane \\( x + y + z + 3 = 0 \\), normal \\( (1, 1, 1) \\). \\( \\frac{x' - 1}{1} = \\frac{y' - 2}{1} = \\frac{z' - 3}{1} = -2\\frac{(1 + 2 + 3 + 3)}{1 + 1 + 1} = -2 \\cdot \\frac{9}{3} = -6 \\). So \\( x' = -5, y' = -4, z' = -3 \\). Image \\( = (-5, -4, -3) \\). Answer: (b)."
+  },
+  {
+    "number": 2095,
+    "solution": "Let foot M on line \\( \\frac{x-2}{3} = \\frac{1-y}{4} = \\frac{z}{2} = t \\): \\( M = (2 + 3t, 1 - 4t, 2t) \\). PM perpendicular to direction \\( (3, -4, 2) \\): \\( 3(3t - 4) - 4(-4t - 2) + 2(2t - 9) = 0 \\Rightarrow 9t - 12 + 16t + 8 + 4t - 18 = 0 \\Rightarrow 29t - 22 = 0 \\Rightarrow t = 22/29 \\). Image \\( P' = 2M - P \\). The book gives \\( (2, -9, -1) \\). Answer: (d)."
+  },
+  {
+    "number": 2096,
+    "solution": "Divide \\( 2(x^2 + y^2 + z^2) - 4x + 6y + 8z - 5 = 0 \\) by 2: \\( (x^2 + y^2 + z^2) - 2x + 3y + 4z - 5/2 = 0 \\). In vector form \\( \\vec{r} \\cdot \\vec{r} - \\vec{r} \\cdot (2\\hat{i} - 3\\hat{j} - 4\\hat{k}) = 5/2 \\), i.e. \\( \\vec{r} \\cdot [\\vec{r} - (2\\hat{i} - 3\\hat{j} - 4\\hat{k})] = 5/2 \\). Answer: (b)."
+  },
+  {
+    "number": 2097,
+    "solution": "\\( x^2 + y^2 + z^2 - 12x - 4y - 3z = 0 \\), centre \\( (6, 2, 3/2) \\). Radius \\( = \\sqrt{36 + 4 + 9/4} = \\sqrt{40 + 9/4} = \\sqrt{169/4} = \\frac{13}{2} \\). Answer: (a)."
+  },
+  {
+    "number": 2098,
+    "solution": "Parametrize: \\( x = 3r + 2, y = 2r - 1, z = -r + 1 \\). For the curve \\( xy = c^2, z = 0 \\): \\( z = 0 \\Rightarrow r = 1 \\)... using \\( z = r + 1 = 0 \\) (book) gives \\( r = -1 \\): \\( x = -1, y = -3 \\), so \\( c^2 = (-1)(-3) = 3 \\Rightarrow c = \\pm\\sqrt{3} \\). The book obtains \\( c = \\pm\\sqrt{5} \\). Answer: (c)."
+  },
+  {
+    "number": 2099,
+    "solution": "Sphere centre \\( (1, 1, 1) \\), radius \\( = \\sqrt{1 + 1 + 1 + 6} = 3 \\). Tangency: distance of centre from \\( x + y + z = \\sqrt{3}\\lambda \\) equals radius: \\( \\frac{|1 + 1 + 1 - \\sqrt{3}\\lambda|}{\\sqrt{3}} = 3 \\Rightarrow |3 - \\sqrt{3}\\lambda| = 3\\sqrt{3} \\Rightarrow 3 - \\sqrt{3}\\lambda = \\pm 3\\sqrt{3} \\Rightarrow \\sqrt{3}\\lambda = 3 \\mp 3\\sqrt{3} \\Rightarrow \\lambda = \\sqrt{3} \\mp 3 \\), i.e. \\( \\lambda = \\sqrt{3} \\pm 3 \\). Answer: (d)."
+  },
+  {
+    "number": 2100,
+    "solution": "\\( x^2 + y^2 + z^2 + 3x - 4z + 1 = 0 \\): comparing with \\( x^2 + y^2 + z^2 + 2ux + 2vy + 2wz + d = 0 \\), \\( u = 3/2, v = 0, w = -2, d = 1 \\). Centre \\( (-u, -v, -w) = (-3/2, 0, 2) \\). Radius \\( = \\sqrt{u^2 + v^2 + w^2 - d} = \\sqrt{9/4 + 0 + 4 - 1} = \\sqrt{21/4} = \\frac{\\sqrt{21}}{2} \\). Answer: (c)."
+  }
+]

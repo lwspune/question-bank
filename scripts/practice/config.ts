@@ -555,6 +555,44 @@ export const TOPICS: Record<string, Topic> = {
       "Parabola — Equation, Properties, and Latus Rectum",
     ],
   },
+  // 3D folder (04. 3D) — the source book's 6 sections span TWO NDA chapters:
+  // Vector Algebra + Scalar Product (Q1795–1969) → Vectors; Direction Ratios &
+  // Cosines + Lines + Planes + Sphere (Q1970–2100) → 3D Geometry. Answer key is
+  // the LAST page of the questions PDF → extracted to _3d_answers.pdf.
+  "vectors": {
+    id: "vectors",
+    chapterName: "Vectors",
+    qFrom: 1795,
+    qTo: 1969,
+    sourceFile: "NDA_Maths_Practice__3D__Vectors.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "04. 3D", "3. 3D Geometry page 93-109.pdf"), pages: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
+    answerKey: { pdf: join(SOURCE_ROOT, "04. 3D", "_3d_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "04. 3D", "4th 3D Geometry sol page 311-332.pdf"), pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+    subtopics: [
+      "Position Vectors and Section",
+      "Magnitude, Components, Projection, and Direction Cosines",
+      "Dot Product and Angle",
+      "Cross Product and Triple Product",
+      "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
+    ],
+  },
+  "geom3d": {
+    id: "geom3d",
+    chapterName: "3D Geometry",
+    qFrom: 1970,
+    qTo: 2100,
+    sourceFile: "NDA_Maths_Practice__3D__3D_Geometry.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "04. 3D", "3. 3D Geometry page 93-109.pdf"), pages: [9, 10, 11, 12, 13, 14, 15] },
+    answerKey: { pdf: join(SOURCE_ROOT, "04. 3D", "_3d_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "04. 3D", "4th 3D Geometry sol page 311-332.pdf"), pages: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21] },
+    subtopics: [
+      "Direction Cosines and Ratios",
+      "The Straight Line in 3D",
+      "The Plane",
+      "Sphere",
+      "Distance, Section, and Collinearity in 3D",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
