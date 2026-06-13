@@ -1,0 +1,5 @@
+{
+  "_comment": "Answer overrides where the source key file is wrong (verified by re-derivation + zoom-crop). Q2438 is EXCLUDED (omitted from questions.json) as genuinely flawed: it asks for a numeric value of x in (1,2) with f'(x)=0 for f=x^3-3x^2+2x+10 (= 1+1/sqrt3), but all four printed options are expressions in x (1/sqrt(1-x^2) etc.) belonging to a different question. Content fix applied directly in questions.json (not an override): Q2414 stem '|x-2|+|x+5|' -> '|x-2|+|x-5|' (printed '+5' is a typo; with '-5' f is constant 3 on [2,5] so f'(4)=0 and f(2)=f(5), making key A consistent).",
+  "2419": { "answer": "B", "reason": "key 'd' wrong: tan^-1(cos x/(1+sin x)) = pi/4 - x/2, so its derivative is -1/2 = option B here (book solution gives -1/2; note Q2428 has -1/2 at option D, where its key D is correct)" },
+  "2445": { "answer": "A", "reason": "key 'c' wrong: f=cot^-1((3x-x^3)/(1-3x^2))=pi/2-3arctan x (f'=-3/(1+x^2)); g=cos^-1((1-x^2)/(1+x^2))=2arctan x (g'=2/(1+x^2)); f'(a)/g'(a) = -3/2 = option A" }
+}

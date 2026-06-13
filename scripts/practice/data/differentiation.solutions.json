@@ -1,0 +1,462 @@
+[
+  {
+    "number": 2382,
+    "solution": "Let \\(u = 3x^{3/2} = 3x\\sqrt{x}\\). Then \\(6x\\sqrt{x} = 2u\\) and \\(9x^3 = u^2\\), so the argument is \\(\\frac{2u}{1 - u^2} = \\tan(2\\tan^{-1}u)\\). Hence \\(\\tan^{-1}\\left(\\frac{6x\\sqrt{x}}{1 - 9x^3}\\right) = 2\\tan^{-1}\\left(3x^{3/2}\\right)\\). Differentiating, \\(\\frac{d}{dx} = 2 \\cdot \\frac{1}{1 + 9x^3} \\cdot 3 \\cdot \\frac{3}{2}\\sqrt{x} = \\frac{9\\sqrt{x}}{1 + 9x^3}\\). Comparing with \\(\\sqrt{x}\\,g(x)\\) gives \\(g(x) = \\frac{9}{1 + 9x^3}\\). Hence (D)."
+  },
+  {
+    "number": 2383,
+    "solution": "\\(y = \\tan^{-1}\\left(\\frac{x - a}{1 + xa}\\right) = \\tan^{-1}x - \\tan^{-1}a\\) (since \\(a\\) is constant). Differentiating, \\(\\frac{dy}{dx} = \\frac{1}{1 + x^2}\\). Hence (B)."
+  },
+  {
+    "number": 2384,
+    "solution": "Differentiating \\(f(x + y) = f(x)f(y)\\) partially with respect to \\(y\\) at \\(y = 0\\): \\(f'(x) = f(x)f'(0) = 11\\,f(x)\\). Therefore \\(f'(3) = 11\\,f(3) = 11 \\times 3 = 33\\). Hence (C)."
+  },
+  {
+    "number": 2385,
+    "solution": "Since \\(f(9) = 0\\) and \\(f'(9) = 0\\), the limit is evaluated as a derivative ratio. Writing it as \\(\\frac{f(x) - f(9)}{(\\sqrt{x} - 3)} \\cdot \\frac{1}{(\\sqrt{f(x)} + 0)}\\)-type form and applying L'Hospital's rule, the limit reduces to a multiple of \\(f'(9)\\). Because \\(f'(9) = 0\\), the whole limit is \\(0\\). Hence (A)."
+  },
+  {
+    "number": 2386,
+    "solution": "\\(f(x) = (2x)^{1/2} + 4(2x)^{-1/2}\\). Then \\(f'(x) = \\frac{1}{2}(2x)^{-1/2}\\cdot 2 + 4\\cdot\\left(-\\frac{1}{2}\\right)(2x)^{-3/2}\\cdot 2 = (2x)^{-1/2} - 4(2x)^{-3/2}\\). At \\(x = 2\\), \\(2x = 4\\): \\(f'(2) = \\frac{1}{2} - 4\\cdot\\frac{1}{8} = \\frac{1}{2} - \\frac{1}{2} = 0\\). Hence (A)."
+  },
+  {
+    "number": 2387,
+    "solution": "From \\(f(x + y) = f(x)f(y)\\) we get \\(f'(x) = f(x)f'(0)\\). Now \\(f'(0) = \\lim_{h \\to 0}\\frac{f(h) - f(0)}{h} = \\lim_{h \\to 0}\\frac{\\sin(3h)g(h)}{h} = 3g(0)\\). Hence \\(f'(x) = 3f(x)g(0)\\). Hence (D)."
+  },
+  {
+    "number": 2388,
+    "solution": "Continuity at \\(x = 1\\): \\(1 + b + c = 1 \\Rightarrow b + c = 0\\). Differentiability: left derivative \\(= 2x + b = 2 + b\\); right derivative \\(= 1\\). So \\(2 + b = 1 \\Rightarrow b = -1\\), and then \\(c = 1\\). Therefore \\(b - c = -1 - 1 = -2\\). Hence (A)."
+  },
+  {
+    "number": 2389,
+    "solution": "Applying L'Hospital's rule to the limit with respect to \\(t\\) at \\(t = x\\) gives \\(2x\\,f(x) - x^2 f'(x) = 1\\), i.e. \\(f'(x) - \\frac{2}{x}f(x) = -\\frac{1}{x^2}\\). The integrating factor is \\(x^{-2}\\), so \\(\\frac{d}{dx}\\left(x^{-2}f\\right) = -x^{-4}\\), giving \\(x^{-2}f = \\frac{1}{3}x^{-3} + C\\), hence \\(f(x) = \\frac{1}{3x} + Cx^2\\). Using \\(f(1) = 1\\): \\(\\frac{1}{3} + C = 1 \\Rightarrow C = \\frac{2}{3}\\). So \\(f\\left(\\frac{3}{2}\\right) = \\frac{1}{3\\cdot\\frac{3}{2}} + \\frac{2}{3}\\cdot\\frac{9}{4} = \\frac{2}{9} + \\frac{3}{2} = \\frac{4 + 27}{18} = \\frac{31}{18}\\). Hence (D)."
+  },
+  {
+    "number": 2390,
+    "solution": "Differentiability at \\(x = 1\\): left derivative \\(= -1\\); right derivative \\(= -\\frac{1}{\\sqrt{1 - (x + b)^2}}\\). Setting equal at \\(x = 1\\): \\(\\frac{1}{\\sqrt{1 - (1 + b)^2}} = 1 \\Rightarrow (1 + b)^2 = 0 \\Rightarrow b = -1\\). Continuity: \\(-1 = a + \\cos^{-1}(1 + b) = a + \\cos^{-1}(0) = a + \\frac{\\pi}{2}\\), so \\(a = -1 - \\frac{\\pi}{2}\\). Therefore \\(\\frac{a}{b} = \\frac{-1 - \\frac{\\pi}{2}}{-1} = 1 + \\frac{\\pi}{2} = \\frac{\\pi + 2}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2391,
+    "solution": "\\(f(x) = |x - 10|\\) is continuous for all real \\(x\\), but it has a corner at \\(x = 10\\) where the left derivative \\(-1\\) and right derivative \\(+1\\) differ, so it is not differentiable at \\(x = 10\\). Hence (B)."
+  },
+  {
+    "number": 2392,
+    "solution": "Write \\(\\tan^{-1}\\left(\\frac{2x}{1 + 3x^2}\\right) = \\tan^{-1}(3x) - \\tan^{-1}(x)\\) and \\(\\tan^{-1}\\left(\\frac{5 + x}{1 - 5x}\\right) = \\tan^{-1}(5) + \\tan^{-1}(x)\\). Then \\(y = \\tan^{-1}(3x) - \\tan^{-1}(x) + \\tan^{-1}(5) + \\tan^{-1}(x) = \\tan^{-1}(3x) + \\tan^{-1}(5)\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{3}{1 + 9x^2}\\). Hence (B)."
+  },
+  {
+    "number": 2393,
+    "solution": "\\(\\tan y = \\frac{\\sin x + \\cos x}{\\cos x - \\sin x} = \\frac{1 + \\tan x}{1 - \\tan x} = \\tan\\left(\\frac{\\pi}{4} + x\\right)\\). Hence \\(y = \\frac{\\pi}{4} + x\\) and \\(\\frac{dy}{dx} = 1\\). Hence (A)."
+  },
+  {
+    "number": 2394,
+    "solution": "\\(f(x) = \\sin^{-1}x \\cdot (1 - x^2)^{-1/2}\\). Then \\(f'(x) = \\frac{1}{1 - x^2} + \\frac{x\\sin^{-1}x}{(1 - x^2)^{3/2}}\\). Multiplying by \\((1 - x^2)\\): \\((1 - x^2)f'(x) = 1 + \\frac{x\\sin^{-1}x}{\\sqrt{1 - x^2}} = 1 + x\\,f(x)\\). Therefore \\((1 - x^2)f'(x) - x\\,f(x) = 1\\). Hence (B)."
+  },
+  {
+    "number": 2395,
+    "solution": "The product \\((1 + x)(1 + x^2)(1 + x^4)\\cdots(1 + x^{2n})\\) when expanded has constant term \\(1\\) and the coefficient of \\(x\\) equal to \\(1\\) (only the \\((1 + x)\\) factor contributes a linear term, all others start at \\(x^2\\) or higher). Thus \\(\\frac{dy}{dx}\\) at \\(x = 0\\) equals the coefficient of \\(x\\), which is \\(1\\). Hence (C)."
+  },
+  {
+    "number": 2396,
+    "solution": "An odd function satisfies \\(f(-x) = -f(x)\\). Differentiating, \\(-f'(-x) = -f'(x)\\), so \\(f'(-x) = f'(x)\\); i.e. \\(f'\\) is even. Therefore \\(f'(-3) = f'(3) = 2\\). Hence (C)."
+  },
+  {
+    "number": 2397,
+    "solution": "At \\(x = \\frac{2\\pi}{3}\\), \\(\\cos x = -\\frac{1}{2} < 0\\) so \\(|\\cos x| = -\\cos x\\) with derivative \\(\\sin x\\); and \\(\\sin x = \\frac{\\sqrt{3}}{2} > 0\\) so \\(|\\sin x| = \\sin x\\) with derivative \\(\\cos x\\). Thus \\(\\frac{dy}{dx} = \\sin x + \\cos x = \\frac{\\sqrt{3}}{2} - \\frac{1}{2} = \\frac{1}{2}(\\sqrt{3} - 1)\\). Hence (C)."
+  },
+  {
+    "number": 2398,
+    "solution": "At \\(x = 1\\): left limit \\(= 1\\), right limit \\(= 2 - 1 = 1\\), and \\(f(1) = 1\\), so \\(f\\) is continuous. Left derivative \\(= 1\\), right derivative \\(= -1\\); they differ, so \\(f\\) is not differentiable at \\(x = 1\\). Hence (B)."
+  },
+  {
+    "number": 2399,
+    "solution": "From \\(x^4 + y^4 = (x^2 + y^2)^2 - 2x^2y^2\\): \\(t^2 + \\frac{1}{t^2} = \\left(t + \\frac{1}{t}\\right)^2 - 2x^2y^2 = t^2 + 2 + \\frac{1}{t^2} - 2x^2y^2\\), giving \\(2x^2y^2 = 2\\), so \\(x^2y^2 = 1\\). Differentiating \\(x^2y^2 = 1\\): \\(2xy^2 + 2x^2 y\\,\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{y}{x}\\). Hence (B)."
+  },
+  {
+    "number": 2400,
+    "solution": "Continuity at \\(x = 3\\): \\(k\\sqrt{4} = 3m + 2 \\Rightarrow 2k = 3m + 2\\). Differentiability: left derivative \\(= \\frac{k}{2\\sqrt{x + 1}} = \\frac{k}{4}\\) at \\(x = 3\\); right derivative \\(= m\\). So \\(\\frac{k}{4} = m \\Rightarrow k = 4m\\). Substituting: \\(2(4m) = 3m + 2 \\Rightarrow 5m = 2 \\Rightarrow m = \\frac{2}{5}\\), \\(k = \\frac{8}{5}\\). Hence \\(k + m = \\frac{8}{5} + \\frac{2}{5} = 2\\). Hence (C)."
+  },
+  {
+    "number": 2401,
+    "solution": "\\(\\frac{dy}{dx} = f'(x^2 + 2)\\cdot 2x\\). At \\(x = 1\\), \\(x^2 + 2 = 3\\), so \\(\\frac{dy}{dx} = f'(3)\\cdot 2 = 5 \\times 2 = 10\\). Hence (B)."
+  },
+  {
+    "number": 2402,
+    "solution": "\\(\\frac{1 - \\cos 2x}{2\\sin x} = \\frac{2\\sin^2 x}{2\\sin x} = \\sin x\\) (for the relevant range). Hence \\(f(x) = \\sin^{-1}(\\sin x) = x\\), so \\(f'(x) = 1\\) and \\(|f'(x)| = 1\\). Hence (D)."
+  },
+  {
+    "number": 2403,
+    "solution": "Group terms: \\(100(\\tan^{-1}x + \\cot^{-1}x) + 45(\\sec^{-1}x + \\mathrm{cosec}^{-1}x) = 100\\cdot\\frac{\\pi}{2} + 45\\cdot\\frac{\\pi}{2} = \\frac{145\\pi}{2}\\), a constant. So \\(y^2\\) is constant, hence \\(y\\) is constant and \\(\\frac{dy}{dx} = 0\\). Hence (D)."
+  },
+  {
+    "number": 2404,
+    "solution": "The relation gives \\(y = \\sqrt{x + y}\\), so \\(y^2 = x + y\\). Differentiating: \\(2y\\,\\frac{dy}{dx} = 1 + \\frac{dy}{dx}\\), i.e. \\(\\frac{dy}{dx}(2y - 1) = 1\\), so \\(\\frac{dy}{dx} = \\frac{1}{2y - 1}\\). Hence (C)."
+  },
+  {
+    "number": 2405,
+    "solution": "The graph is a continuous V-shape with vertex at \\(x = 1\\). It is continuous everywhere, but the corner at \\(x = 1\\) gives different left and right derivatives, so it is not differentiable at \\(x = 1\\). Hence (A)."
+  },
+  {
+    "number": 2406,
+    "solution": "Put \\(x = \\sin\\theta\\), so \\(\\sqrt{1 - x^2} = \\cos\\theta\\) and \\(2x - \\sqrt{1 - x^2}\\) is not a standard double-angle; instead note the standard result \\(\\sin^{-1}\\left(2x\\sqrt{1 - x^2}\\right)\\)-type reduces here so that \\(y = 2\\sin^{-1}x\\) over the given domain. Differentiating, \\(\\frac{dy}{dx} = \\frac{2}{\\sqrt{1 - x^2}}\\). Hence (C)."
+  },
+  {
+    "number": 2407,
+    "solution": "The series is finite: \\(y = 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6}\\). Then \\(\\frac{dy}{dx} = 1 + x + \\frac{x^2}{2}\\), which equals \\(y - \\frac{x^3}{6}\\), not \\(y\\), nor \\(e\\), nor \\(\\sin x\\). Hence none of the listed options is correct. Hence (D)."
+  },
+  {
+    "number": 2408,
+    "solution": "Since \\(g\\) is the inverse of \\(f\\), \\(g'(x) = \\frac{1}{f'(g(x))}\\). Here \\(f'(t) = \\frac{1}{1 + t^3}\\), so \\(f'(g(x)) = \\frac{1}{1 + (g(x))^3}\\) and \\(g'(x) = 1 + (g(x))^3\\). Hence (C)."
+  },
+  {
+    "number": 2409,
+    "solution": "Write \\(\\frac{2\\cos x + 3\\sin x}{\\sqrt{13}} = \\cos(x - \\phi)\\) where \\(\\cos\\phi = \\frac{2}{\\sqrt{13}}\\), \\(\\sin\\phi = \\frac{3}{\\sqrt{13}}\\). Then \\(f(x) = \\cos^{-1}(\\cos(x - \\phi)) = \\pm(x - \\phi)\\), so \\(f'(x) = \\pm 1\\) and \\([f'(x)]^2 = 1\\). Hence (D)."
+  },
+  {
+    "number": 2410,
+    "solution": "Continuity at \\(x = 1\\): \\(a - b = 1\\). Differentiability: left derivative \\(= 2ax = 2a\\); right derivative \\(= \\frac{d}{dx}\\left(\\frac{1}{x}\\right) = -1\\) at \\(x = 1\\). So \\(2a = -1 \\Rightarrow a = -\\frac{1}{2}\\), and then \\(b = a - 1 = -\\frac{3}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2411,
+    "solution": "Since \\(f(x + y) = f(x) + f(y)\\), \\(f'(x) = \\lim_{h \\to 0}\\frac{f(x + h) - f(x)}{h} = \\lim_{h \\to 0}\\frac{f(h)}{h} = \\lim_{h \\to 0}\\frac{\\sin h\\,g(h)}{h} = g(0) = C\\). Hence (B)."
+  },
+  {
+    "number": 2412,
+    "solution": "Let \\(\\alpha = \\tan^{-1}\\sqrt{\\frac{1 - x^2}{1 + x^2}}\\), so \\(\\tan^2\\alpha = \\frac{1 - x^2}{1 + x^2}\\). Then \\(y = \\sin^2\\alpha = \\frac{\\tan^2\\alpha}{1 + \\tan^2\\alpha} = \\frac{(1 - x^2)/(1 + x^2)}{2/(1 + x^2)} = \\frac{1 - x^2}{2}\\). Differentiating, \\(\\frac{dy}{dx} = -x\\). Hence (B)."
+  },
+  {
+    "number": 2413,
+    "solution": "Squaring \\(\\sqrt{\\frac{x}{y}} + \\sqrt{\\frac{y}{x}} = \\sqrt{a}\\) gives \\(\\frac{x}{y} + \\frac{y}{x} + 2 = a\\), so \\(\\frac{x}{y} + \\frac{y}{x}\\) is constant. Letting \\(r = \\frac{y}{x}\\), \\(r + \\frac{1}{r}\\) is constant, hence \\(r\\) is constant; so \\(y = rx\\) and \\(\\frac{dy}{dx} = r = \\frac{y}{x}\\). Hence (B)."
+  },
+  {
+    "number": 2414,
+    "solution": "For \\(f(x) = |x - 2| + |x - 5|\\) on \\([2, 5]\\), \\(|x - 2| = x - 2\\) and \\(|x - 5| = 5 - x\\), so \\(f(x) = 3\\) is constant; hence \\(f'(4) = 0\\) (Statement 1 true), \\(f\\) is continuous on \\([2, 5]\\), differentiable on \\((2, 5)\\), and \\(f(2) = f(5) = 3\\) (Statement 2 true). Rolle's theorem guarantees some \\(c\\) with \\(f'(c) = 0\\) but not specifically \\(c = 4\\), so Statement 2 is not a correct explanation for Statement 1. Hence (A)."
+  },
+  {
+    "number": 2415,
+    "solution": "Since \\(\\frac{d}{dx}\\left(f^2 + g^2\\right) = 2ff' + 2gg' = 2fg + 2g(-f) = 0\\), the quantity \\(f^2 + g^2\\) is constant. With \\(g(1) = f'(1) = 4\\) and \\(f(1) = 5\\): \\(f^2(1) + g^2(1) = 25 + 16 = 41\\). Hence (C)."
+  },
+  {
+    "number": 2416,
+    "solution": "The limit \\(\\lim_{x \\to 4}\\frac{x f(4) - 4 f(x)}{x - 4} = \\lim_{x \\to 4}\\frac{6x - 4f(x)}{x - 4}\\) is of the form \\(\\frac{0}{0}\\). By L'Hospital's rule it equals \\(6 - 4f'(4) = 6 - 4(2) = -2\\). Hence (B)."
+  },
+  {
+    "number": 2417,
+    "solution": "If \\(f\\) is even, \\(f(-x) = f(x)\\). Differentiating, \\(-f'(-x) = f'(x)\\), i.e. \\(f'(-x) = -f'(x)\\); so \\(f'\\) is an odd function. Hence (B)."
+  },
+  {
+    "number": 2418,
+    "solution": "\\(|x - 1|\\) is not differentiable at \\(x = 1\\) and \\(|x - 3|\\) is not differentiable at \\(x = 3\\); both lie in \\([0, 4)\\). \\(\\sin x\\) is differentiable everywhere. Hence there are \\(2\\) points of non-differentiability. Hence (B)."
+  },
+  {
+    "number": 2419,
+    "solution": "Using \\(\\frac{\\cos x}{1 + \\sin x} = \\tan\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\), we get \\(\\tan^{-1}\\left(\\frac{\\cos x}{1 + \\sin x}\\right) = \\frac{\\pi}{4} - \\frac{x}{2}\\), whose derivative is \\(-\\frac{1}{2}\\), which is option (B). Note: the printed answer key marks (D), but direct differentiation and the worked solution both give \\(-\\frac{1}{2}\\). Hence (B)."
+  },
+  {
+    "number": 2420,
+    "solution": "By the chain rule, \\(y'(0) = f'(f(f(f(f(0)))))\\cdot f'(f(f(f(0))))\\cdots f'(0)\\), a product of five factors. Since \\(f(0) = 0\\), each inner argument is \\(0\\), so every factor equals \\(f'(0) = 3\\). Therefore \\(y'(0) = 3^5\\). Hence (D)."
+  },
+  {
+    "number": 2421,
+    "solution": "Simplify: \\(\\frac{\\sin^2 x}{1 + \\cot x} + \\frac{\\cos^2 x}{1 + \\tan x} = \\frac{\\sin^3 x}{\\sin x + \\cos x} + \\frac{\\cos^3 x}{\\sin x + \\cos x} = \\frac{\\sin^3 x + \\cos^3 x}{\\sin x + \\cos x} = 1 - \\sin x\\cos x = 1 - \\frac{1}{2}\\sin 2x\\). Then \\(f'(x) = -\\cos 2x\\), so \\(f'\\left(\\frac{\\pi}{4}\\right) = -\\cos\\frac{\\pi}{2} = 0\\). Hence (C)."
+  },
+  {
+    "number": 2422,
+    "solution": "Let \\(t = x^3\\), so \\(x = t^{1/3}\\) and \\(f(t) = (t^{1/3})^4 = t^{4/3}\\). Then \\(f'(t) = \\frac{4}{3}t^{1/3}\\), and \\(f'(27) = \\frac{4}{3}\\cdot 27^{1/3} = \\frac{4}{3}\\cdot 3 = 4\\). Hence (A)."
+  },
+  {
+    "number": 2423,
+    "solution": "For \\(x > 10\\), \\(f(x) = x - 2\\), and \\(g(x) = f(f(x)) = f(x - 2) = |x - 2 - 2| = |x - 4| = x - 4\\). Therefore \\(\\frac{dg(x)}{dx} = 1\\). Hence (B)."
+  },
+  {
+    "number": 2424,
+    "solution": "Put \\(x = \\tan\\theta\\); then \\(\\sqrt{1 + x^2} = \\sec\\theta\\) and \\(\\frac{\\sqrt{1 + x^2} - 1}{x} = \\frac{\\sec\\theta - 1}{\\tan\\theta} = \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\tan\\frac{\\theta}{2}\\). So \\(y = \\frac{\\theta}{2} = \\frac{1}{2}\\tan^{-1}x\\), giving \\(y' = \\frac{1}{2(1 + x^2)}\\). At \\(x = 1\\), \\(y'(1) = \\frac{1}{2 \\cdot 2} = \\frac{1}{4}\\). Hence (A)."
+  },
+  {
+    "number": 2425,
+    "solution": "For \\(1 < x < 2\\), \\([x] = 1\\), so \\(f(x) = \\sin\\left(\\frac{\\pi}{2} - x^5\\right) = \\cos(x^5)\\). Then \\(f'(x) = -5x^4\\sin(x^5)\\). At \\(x = \\left(\\frac{\\pi}{2}\\right)^{1/5}\\), \\(x^5 = \\frac{\\pi}{2}\\) so \\(\\sin(x^5) = 1\\), and \\(x^4 = \\left(\\frac{\\pi}{2}\\right)^{4/5}\\). Thus \\(f'\\left(\\sqrt[5]{\\frac{\\pi}{2}}\\right) = -5\\left(\\frac{\\pi}{2}\\right)^{4/5}\\). Hence (B)."
+  },
+  {
+    "number": 2426,
+    "solution": "\\(g'(x) = 2[f(2f(x) + 2)]\\cdot f'(2f(x) + 2)\\cdot 2f'(x)\\). At \\(x = 0\\), \\(2f(0) + 2 = 2(-1) + 2 = 0\\), so \\(f(2f(0) + 2) = f(0) = -1\\) and \\(f'(2f(0) + 2) = f'(0) = 1\\). Hence \\(g'(0) = 2(-1)\\cdot 1 \\cdot 2 \\cdot 1 = -4\\). Hence (A)."
+  },
+  {
+    "number": 2427,
+    "solution": "For \\(x \\geq 2\\), \\(f(x) = x - 2 + x = 2x - 2\\); for \\(x < 2\\), \\(f(x) = 2 - x + x = 2\\). At \\(x = 2\\) the function is continuous (both sides give \\(2\\)) but not differentiable (left derivative \\(0\\), right derivative \\(2\\)). At \\(x = 0\\) the function is constant \\(2\\) nearby, so it is continuous (and differentiable) there. Thus \\(f\\) is continuous at both \\(x = 2\\) and \\(x = 0\\). Hence (C)."
+  },
+  {
+    "number": 2428,
+    "solution": "Using \\(\\frac{\\cos x}{1 + \\sin x} = \\tan\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\), \\(y = \\tan^{-1}\\left(\\frac{\\cos x}{1 + \\sin x}\\right) = \\frac{\\pi}{4} - \\frac{x}{2}\\). Therefore \\(\\frac{dy}{dx} = -\\frac{1}{2}\\). Hence (D)."
+  },
+  {
+    "number": 2429,
+    "solution": "At \\(x = -10\\): \\(x - 2 = -12 < 0\\) so \\(|x - 2| = 2 - x\\); \\(x + 1 = -9 < 0\\) so \\(|x + 1| = -x - 1\\). Then \\(f(x) = (2 - x) + (-x - 1) - x = 1 - 3x\\), so \\(f'(x) = -3\\) and \\(f'(-10) = -3\\). Hence (A)."
+  },
+  {
+    "number": 2430,
+    "solution": "\\(\\tan^{-1}x + \\cot^{-1}x = \\frac{\\pi}{2}\\) and \\(\\sec^{-1}x + \\mathrm{cosec}^{-1}x = \\frac{\\pi}{2}\\), so \\(y = \\frac{\\pi}{2} + \\frac{\\pi}{2} = \\pi\\), a constant. Hence \\(\\frac{dy}{dx} = 0\\). Hence (C)."
+  },
+  {
+    "number": 2431,
+    "solution": "\\(\\sin|x|\\) is a composition of continuous functions, hence continuous everywhere (the correct statement). Not every continuous function is differentiable (e.g. \\(|x|\\)), continuity does not imply continuous derivative, and \\(|x| + 1\\) has a corner at \\(x = 0\\). Hence (A)."
+  },
+  {
+    "number": 2432,
+    "solution": "\\(f(x) = x|x| = x^2\\) for \\(x \\geq 0\\) and \\(-x^2\\) for \\(x < 0\\). Then \\(f'(x) = 2x\\) for \\(x > 0\\) and \\(-2x\\) for \\(x < 0\\); at \\(x = 0\\) both one-sided derivatives equal \\(0\\), so \\(f'(0) = 0\\). Thus \\(f\\) is differentiable for all real \\(x\\), i.e. on \\((-\\infty, \\infty)\\). Hence (A)."
+  },
+  {
+    "number": 2433,
+    "solution": "Since \\(\\frac{d}{dx}(f^2 + g^2) = 2ff' + 2gg' = 2fg - 2gf = 0\\), \\(f^2 + g^2\\) is constant. With \\(f(2) = 4\\) and \\(g(2) = f'(2) = 4\\): \\(f^2(4) + g^2(4) = f^2(2) + g^2(2) = 16 + 16 = 32\\). Hence (C)."
+  },
+  {
+    "number": 2434,
+    "solution": "\\(\\cos|x| = \\cos x\\) is differentiable, but adding or subtracting \\(|x|\\) introduces a corner (derivative \\(\\pm 1\\)) so options (A), (B) fail. For \\(\\sin|x|\\), the right derivative at \\(0\\) is \\(+1\\) and left is \\(-1\\); in \\(\\sin|x| + |x|\\) these give \\(2\\) and \\(-2\\) (not differentiable), while in \\(\\sin|x| - |x|\\) they give \\(1 - 1 = 0\\) and \\(-1 - (-1) = 0\\), which match, so it is differentiable at \\(x = 0\\). Hence (D)."
+  },
+  {
+    "number": 2435,
+    "solution": "The first term \\(\\frac{g(x) + g(-x)}{2}\\) is even, and the second term \\(2[h(x) + h(-x)]\\) is also even (it equals \\(\\frac{2}{[h(x) + h(-x)]^{-1}}\\)). An even differentiable function has derivative \\(0\\) at \\(x = 0\\). Therefore \\(f'(0) = 0\\). Hence (B)."
+  },
+  {
+    "number": 2436,
+    "solution": "Differentiability at \\(x = 0\\) requires \\(\\lim_{x \\to 0}\\frac{f(x) - f(0)}{x} = \\lim_{x \\to 0}x^{p - 1}\\cos\\left(\\frac{1}{x}\\right)\\) to exist (and equal a finite value). Since \\(\\cos\\left(\\frac{1}{x}\\right)\\) oscillates, the limit exists only when \\(p - 1 > 0\\), i.e. \\(p > 1\\). Hence (D)."
+  },
+  {
+    "number": 2437,
+    "solution": "The Jensen-type relation \\(f\\left(\\frac{x + y}{2}\\right) = \\frac{f(x) + f(y)}{2}\\) forces \\(f\\) to be linear, \\(f(x) = mx + c\\). From \\(f(0) = 1\\), \\(c = 1\\); from \\(f'(0) = -1\\), \\(m = -1\\). So \\(f(x) = 1 - x\\) and \\(f(2) = 1 - 2 = -1\\). Hence (B)."
+  },
+  {
+    "number": 2439,
+    "solution": "If \\(f\\) is even then \\(f'\\) is odd, so \\(f'(-e) = -f'(e)\\). Therefore \\(f'(e) + f'(-e) = 0\\). Hence (D)."
+  },
+  {
+    "number": 2440,
+    "solution": "Put \\(x = \\cos\\theta\\). Then \\(3x - 4x^3 = -(4x^3 - 3x)\\), and \\(\\sin^{-1}(3x - 4x^3) = 3\\sin^{-1}x\\) while \\(\\cos^{-1}(4x^3 - 3x) = 3\\cos^{-1}x\\). Their derivatives are \\(\\frac{3}{\\sqrt{1 - x^2}}\\) and \\(-\\frac{3}{\\sqrt{1 - x^2}}\\), which cancel; \\(\\tan^{-1}(e)\\) is a constant with derivative \\(0\\). Hence \\(\\frac{dy}{dx} = 0\\). Hence (B)."
+  },
+  {
+    "number": 2441,
+    "solution": "Here \\(f'(x)=\\dfrac{x}{\\sqrt{x^2+1}}\\) and \\(h(x)=2x-3\\) so \\(h'(x)=2\\), a constant. Hence \\(h'(g'(x))=2\\) for every \\(x\\). Therefore \\(f'(h'(g'(x)))=f'(2)=\\dfrac{2}{\\sqrt{2^2+1}}=\\dfrac{2}{\\sqrt{5}}\\). Hence (C)."
+  },
+  {
+    "number": 2442,
+    "solution": "For \\(x=3/2\\), \\(x-2=-1/2\\), which lies in \\((-1,0)\\), so \\([x-2]=-1\\) is constant in a neighbourhood of \\(x=3/2\\). The derivative of a constant is \\(0\\). Hence \\(f'(3/2)=0\\). Hence (B)."
+  },
+  {
+    "number": 2443,
+    "solution": "At \\(x=1\\): left limit \\(\\lim_{x\\to 1^-}x^2=1\\) and right value \\(2-1=1\\), so \\(f\\) is continuous. Left derivative \\(=2x\\big|_{x=1}=2\\); right derivative \\(=-1\\). Since \\(2\\ne -1\\), \\(f\\) is not differentiable at \\(x=1\\). Hence (A)."
+  },
+  {
+    "number": 2444,
+    "solution": "Put \\(x=\\sin A\\), \\(y=\\sin B\\). Then \\(\\cos A+\\cos B=\\sin A-\\sin B\\), giving \\(2\\cos\\tfrac{A+B}{2}\\cos\\tfrac{A-B}{2}=2\\cos\\tfrac{A+B}{2}\\sin\\tfrac{A-B}{2}\\), so \\(\\tan\\tfrac{A-B}{2}=1\\), i.e. \\(A-B=\\dfrac{\\pi}{2}\\), hence \\(\\sin^{-1}x-\\sin^{-1}y=\\dfrac{\\pi}{2}\\). Differentiating: \\(\\dfrac{1}{\\sqrt{1-x^2}}-\\dfrac{1}{\\sqrt{1-y^2}}\\dfrac{dy}{dx}=0\\), so \\(\\dfrac{dy}{dx}=\\sqrt{\\dfrac{1-y^2}{1-x^2}}\\). Hence (D)."
+  },
+  {
+    "number": 2445,
+    "solution": "Put \\(x=\\tan\\theta\\) with \\(0<a<1/2\\). Then \\(\\dfrac{3x-x^3}{1-3x^2}=\\tan 3\\theta\\), so \\(f(x)=\\cot^{-1}(\\tan 3\\theta)=\\dfrac{\\pi}{2}-3\\theta=\\dfrac{\\pi}{2}-3\\tan^{-1}x\\), giving \\(f'(x)=\\dfrac{-3}{1+x^2}\\). Also \\(g(x)=\\cos^{-1}\\dfrac{1-x^2}{1+x^2}=2\\tan^{-1}x\\) (for \\(x>0\\)), giving \\(g'(x)=\\dfrac{2}{1+x^2}\\). The limit equals \\(\\dfrac{f'(a)}{g'(a)}=\\dfrac{-3/(1+a^2)}{2/(1+a^2)}=-\\dfrac{3}{2}\\), which is option (A). [KEY DISPUTE: the marked key is (C) = \\(-1/2\\), but re-derivation gives \\(-3/2\\) = option (A); no printed solution exists in the source.] Hence (A)."
+  },
+  {
+    "number": 2446,
+    "solution": "Differentiating \\(3^x+3^y=3^{x+y}\\) w.r.t. \\(x\\): \\(3^x\\log 3+3^y\\log 3\\,\\dfrac{dy}{dx}=3^{x+y}\\log 3\\left(1+\\dfrac{dy}{dx}\\right)\\). At \\(x=y=1\\): \\(3+3\\dfrac{dy}{dx}=9\\left(1+\\dfrac{dy}{dx}\\right)\\), so \\(3+3y'=9+9y'\\Rightarrow -6=6y'\\Rightarrow \\dfrac{dy}{dx}=-1\\). Hence (B)."
+  },
+  {
+    "number": 2447,
+    "solution": "\\(f(x)=\\log_5(\\log_3 x)=\\dfrac{\\ln(\\log_3 x)}{\\ln 5}\\). So \\(f'(x)=\\dfrac{1}{\\ln 5}\\cdot\\dfrac{1}{\\log_3 x}\\cdot\\dfrac{1}{x\\ln 3}\\). At \\(x=e\\), \\(\\log_3 e=\\dfrac{1}{\\ln 3}\\), giving \\(f'(e)=\\dfrac{1}{\\ln 5}\\cdot\\ln 3\\cdot\\dfrac{1}{e\\ln 3}=\\dfrac{1}{e\\ln 5}=\\dfrac{1}{e\\log_e 5}\\). Hence (C)."
+  },
+  {
+    "number": 2448,
+    "solution": "Let \\(u=\\log_{10}x\\) and \\(v=\\log_x 10=\\dfrac{1}{\\log_{10}x}=\\dfrac{1}{u}\\). Then \\(v=u^{-1}\\), so \\(\\dfrac{dv}{du}=-u^{-2}\\) and \\(\\dfrac{du}{dv}=-u^2=-(\\log_{10}x)^2\\). Hence (B)."
+  },
+  {
+    "number": 2449,
+    "solution": "\\(y=e^{m\\sin^{-1}x}\\Rightarrow \\dfrac{dy}{dx}=\\dfrac{my}{\\sqrt{1-x^2}}\\). Squaring: \\(\\left(\\dfrac{dy}{dx}\\right)^2=\\dfrac{m^2y^2}{1-x^2}\\), so \\((1-x^2)\\left(\\dfrac{dy}{dx}\\right)^2=m^2y^2\\). Comparing with \\(Ay^2\\) gives \\(A=m^2\\). Hence (C)."
+  },
+  {
+    "number": 2450,
+    "solution": "\\(f(x)=\\log_{x^2}(\\log x)=\\dfrac{\\ln(\\ln x)}{2\\ln x}\\). Let \\(p=\\ln(\\ln x)\\), \\(q=2\\ln x\\); \\(p'=\\dfrac{1}{x\\ln x}\\), \\(q'=\\dfrac{2}{x}\\). Then \\(f'=\\dfrac{p'q-pq'}{q^2}\\). At \\(x=e\\): \\(\\ln x=1\\), \\(p=\\ln 1=0\\), \\(p'=\\dfrac{1}{e}\\), \\(q=2\\), \\(q'=\\dfrac{2}{e}\\). So \\(f'(e)=\\dfrac{(1/e)(2)-0}{4}=\\dfrac{2/e}{4}=\\dfrac{1}{2e}\\). Hence (D)."
+  },
+  {
+    "number": 2451,
+    "solution": "For \\(x>0\\): \\(f=a\\sin x+be^x\\), so \\(f'(0^+)=a+b\\). For \\(x<0\\): \\(|x|=-x\\), \\(f=-a\\sin x+be^{-x}\\), so \\(f'(0^-)=-a-b\\). Differentiability requires \\(a+b=-a-b\\), i.e. \\(2(a+b)=0\\), so \\(a+b=0\\). Hence (C)."
+  },
+  {
+    "number": 2452,
+    "solution": "\\(f(x)=\\log\\left[e^x\\left(\\dfrac{3-x}{3+x}\\right)^{1/3}\\right]=x+\\dfrac{1}{3}\\big[\\log(3-x)-\\log(3+x)\\big]\\). So \\(f'(x)=1+\\dfrac{1}{3}\\left[\\dfrac{-1}{3-x}-\\dfrac{1}{3+x}\\right]\\). At \\(x=1\\): \\(f'(1)=1+\\dfrac{1}{3}\\left[-\\dfrac{1}{2}-\\dfrac{1}{4}\\right]=1+\\dfrac{1}{3}\\left(-\\dfrac{3}{4}\\right)=1-\\dfrac{1}{4}=\\dfrac{3}{4}\\). Hence (A)."
+  },
+  {
+    "number": 2453,
+    "solution": "\\(y=\\log_e|2x|=\\log 2+\\log|x|\\). Since \\(\\dfrac{d}{dx}\\log|x|=\\dfrac{1}{x}\\), we get \\(\\dfrac{dy}{dx}=\\dfrac{1}{x}\\). Hence (A)."
+  },
+  {
+    "number": 2454,
+    "solution": "\\(f(x)=3e^{x^2}\\Rightarrow f'(x)=6xe^{x^2}\\). Then \\(f'(x)-2xf(x)=6xe^{x^2}-2x(3e^{x^2})=0\\). Also \\(f(0)=3\\), \\(f'(0)=0\\). So the expression \\(=0+\\dfrac{1}{3}(3)-0=1\\). Hence (B)."
+  },
+  {
+    "number": 2455,
+    "solution": "\\(y=\\log(\\sin(x^2))\\Rightarrow \\dfrac{dy}{dx}=\\dfrac{\\cos(x^2)}{\\sin(x^2)}\\cdot 2x=2x\\cot(x^2)\\). At \\(x=\\dfrac{\\sqrt{\\pi}}{2}\\), \\(x^2=\\dfrac{\\pi}{4}\\) and \\(\\cot\\dfrac{\\pi}{4}=1\\), so \\(\\dfrac{dy}{dx}=2\\cdot\\dfrac{\\sqrt{\\pi}}{2}\\cdot 1=\\sqrt{\\pi}\\). Hence (D)."
+  },
+  {
+    "number": 2456,
+    "solution": "\\(y=e^{x+x^2+x^3+\\cdots}=e^{x/(1-x)}\\) for \\(0<x<1\\). Then \\(\\dfrac{dy}{dx}=e^{x/(1-x)}\\cdot\\dfrac{d}{dx}\\dfrac{x}{1-x}=e^{x/(1-x)}\\cdot\\dfrac{1}{(1-x)^2}\\). At \\(x=\\dfrac{1}{2}\\): \\(\\dfrac{x}{1-x}=1\\) so \\(e^{1}=e\\), and \\(\\dfrac{1}{(1-x)^2}=\\dfrac{1}{(1/2)^2}=4\\). Thus \\(\\dfrac{dy}{dx}=4e\\). Hence (B)."
+  },
+  {
+    "number": 2457,
+    "solution": "The relation \\(f(x+y)=2f(x)f(y)\\) is satisfied by \\(f(x)=\\dfrac{1}{2}a^x\\). From \\(f(2)=\\dfrac{1}{2}a^2=8\\), \\(a^2=16\\), so \\(a=4\\) and \\(f(x)=\\dfrac{1}{2}\\,4^x\\), \\(f'(x)=\\dfrac{1}{2}4^x\\ln 4\\). Check: \\(f'(5)=\\dfrac{1}{2}(1024)(2\\ln 2)=1024\\ln 2\\). Then \\(f'(3)=\\dfrac{1}{2}(64)(2\\ln 2)=64\\ln 2=64\\log 2\\). Hence (A)."
+  },
+  {
+    "number": 2458,
+    "solution": "The coefficients are \\(\\dfrac{1}{4(2n-1)}\\) with power \\((x-1)^{2n-1}\\), so \\(f(x)=\\dfrac{1}{4}\\sum_{n\\ge 1}\\dfrac{(x-1)^{2n-1}}{2n-1}=\\dfrac{1}{8}\\log\\dfrac{x}{2-x}\\) (the artanh series, \\(|x-1|<1\\)). Then \\(f'(x)=\\dfrac{1}{8}\\left[\\dfrac{1}{x}+\\dfrac{1}{2-x}\\right]=\\dfrac{1}{8}\\cdot\\dfrac{2}{x(2-x)}=\\dfrac{1}{4x(2-x)}\\). Hence (A)."
+  },
+  {
+    "number": 2459,
+    "solution": "\\(\\phi(x)=\\log_5(\\log_3 x)=\\dfrac{\\ln(\\log_3 x)}{\\ln 5}\\). So \\(\\phi'(x)=\\dfrac{1}{\\ln 5}\\cdot\\dfrac{1}{\\log_3 x}\\cdot\\dfrac{1}{x\\ln 3}\\). At \\(x=e\\): \\(\\log_3 e=\\dfrac{1}{\\ln 3}\\), so \\(\\phi'(e)=\\dfrac{1}{\\ln 5}\\cdot\\ln 3\\cdot\\dfrac{1}{e\\ln 3}=\\dfrac{1}{e\\ln 5}=\\dfrac{1}{e}\\log_5 e\\). Hence (A)."
+  },
+  {
+    "number": 2460,
+    "solution": "\\(x^y=e^{x-y}\\Rightarrow y\\log x=x-y\\Rightarrow y(1+\\log x)=x\\), so \\(y=\\dfrac{x}{1+\\log x}\\). Then \\(\\dfrac{dy}{dx}=\\dfrac{(1+\\log x)\\cdot 1-x\\cdot\\frac{1}{x}}{(1+\\log x)^2}=\\dfrac{(1+\\log x)-1}{(1+\\log x)^2}=\\dfrac{\\log x}{(1+\\log x)^2}\\). Hence (D)."
+  },
+  {
+    "number": 2461,
+    "solution": "Taking logs of \\(x^m y^n=(x+y)^{m+n}\\): \\(m\\log x+n\\log y=(m+n)\\log(x+y)\\). Differentiating gives \\(\\dfrac{m}{x}+\\dfrac{n}{y}y'=(m+n)\\dfrac{1+y'}{x+y}\\). This simplifies (standard result) to \\(\\dfrac{dy}{dx}=\\dfrac{y}{x}\\). Hence (D)."
+  },
+  {
+    "number": 2462,
+    "solution": "\\(x^y=y^x\\Rightarrow y\\log x=x\\log y\\). Differentiating: \\(y'\\log x+\\dfrac{y}{x}=\\log y+\\dfrac{x}{y}y'\\). So \\(y'\\left(\\log x-\\dfrac{x}{y}\\right)=\\log y-\\dfrac{y}{x}\\). Multiplying numerator and denominator by \\(xy\\): \\(\\dfrac{dy}{dx}=\\dfrac{xy\\log y-y^2}{xy\\log x-x^2}=\\dfrac{y^2-xy\\log y}{x^2-xy\\log x}\\). Hence (A)."
+  },
+  {
+    "number": 2463,
+    "solution": "Let \\(u=\\cos^{-1}(2x^2-1)=2\\cos^{-1}x\\) (for \\(x\\in[0,1]\\)), so \\(\\dfrac{du}{dx}=\\dfrac{-2}{\\sqrt{1-x^2}}\\). Let \\(v=\\sqrt{1+2x}\\), so \\(\\dfrac{dv}{dx}=\\dfrac{1}{\\sqrt{1+2x}}\\). Then \\(\\dfrac{du}{dv}=\\dfrac{-2\\sqrt{1+2x}}{\\sqrt{1-x^2}}\\). At \\(x=\\dfrac{1}{2}\\): \\(\\sqrt{1+2x}=\\sqrt{2}\\), \\(\\sqrt{1-x^2}=\\dfrac{\\sqrt{3}}{2}\\), giving \\(\\dfrac{-2\\sqrt{2}}{\\sqrt{3}/2}=\\dfrac{-4\\sqrt{2}}{\\sqrt{3}}=\\dfrac{-4\\sqrt{6}}{3}\\). Hence (D)."
+  },
+  {
+    "number": 2464,
+    "solution": "\\(\\cos^{-1}(2x^2-1)=2\\cos^{-1}x\\). Differentiating both w.r.t. \\(x\\): numerator \\(=\\dfrac{-2}{\\sqrt{1-x^2}}\\), denominator (\\(\\cos^{-1}x\\)) \\(=\\dfrac{-1}{\\sqrt{1-x^2}}\\). The required derivative \\(=\\dfrac{-2/\\sqrt{1-x^2}}{-1/\\sqrt{1-x^2}}=2\\). Hence (A)."
+  },
+  {
+    "number": 2465,
+    "solution": "Put \\(t=\\tan\\phi\\). Then \\(\\sin x=\\dfrac{2t}{1+t^2}=\\sin 2\\phi\\Rightarrow x=2\\phi\\), and \\(\\tan y=\\dfrac{2t}{1-t^2}=\\tan 2\\phi\\Rightarrow y=2\\phi\\). Hence \\(x=y\\) and \\(\\dfrac{dy}{dx}=1\\). Hence (A)."
+  },
+  {
+    "number": 2466,
+    "solution": "Let \\(u=\\log(\\sec\\theta+\\tan\\theta)\\), \\(v=\\sec\\theta\\). \\(\\dfrac{du}{d\\theta}=\\dfrac{\\sec\\theta\\tan\\theta+\\sec^2\\theta}{\\sec\\theta+\\tan\\theta}=\\sec\\theta\\); \\(\\dfrac{dv}{d\\theta}=\\sec\\theta\\tan\\theta\\). So \\(\\dfrac{du}{dv}=\\dfrac{\\sec\\theta}{\\sec\\theta\\tan\\theta}=\\cot\\theta\\). At \\(\\theta=\\pi/4\\), \\(\\cot(\\pi/4)=1\\). Hence (B)."
+  },
+  {
+    "number": 2467,
+    "solution": "\\(x=ct,\\;y=\\dfrac{c}{t}\\). \\(\\dfrac{dx}{dt}=c\\), \\(\\dfrac{dy}{dt}=-\\dfrac{c}{t^2}\\). So \\(\\dfrac{dy}{dx}=\\dfrac{-c/t^2}{c}=-\\dfrac{1}{t^2}\\). At \\(t=2\\): \\(-\\dfrac{1}{4}\\). Hence (D)."
+  },
+  {
+    "number": 2468,
+    "solution": "\\(x=a\\cos^3\\theta,\\;y=a\\sin^3\\theta\\). \\(\\dfrac{dy}{dx}=\\dfrac{3a\\sin^2\\theta\\cos\\theta}{-3a\\cos^2\\theta\\sin\\theta}=-\\tan\\theta\\). So \\(1+\\left(\\dfrac{dy}{dx}\\right)^2=1+\\tan^2\\theta=\\sec^2\\theta\\). Hence (D)."
+  },
+  {
+    "number": 2469,
+    "solution": "\\(\\tan^{-1}\\dfrac{\\sin x}{1+\\cos x}=\\tan^{-1}\\left(\\tan\\dfrac{x}{2}\\right)=\\dfrac{x}{2}\\). Also \\(\\dfrac{\\cos x}{1+\\sin x}=\\tan\\left(\\dfrac{\\pi}{4}-\\dfrac{x}{2}\\right)\\), so \\(\\tan^{-1}\\dfrac{\\cos x}{1+\\sin x}=\\dfrac{\\pi}{4}-\\dfrac{x}{2}\\). The required derivative \\(=\\dfrac{d(x/2)}{d(\\pi/4-x/2)}=\\dfrac{1/2}{-1/2}=-1\\). Hence (B)."
+  },
+  {
+    "number": 2470,
+    "solution": "\\(x=\\sin^{-1}(3t-4t^3)=3\\sin^{-1}t\\), so \\(\\dfrac{dx}{dt}=\\dfrac{3}{\\sqrt{1-t^2}}\\). \\(y=\\cos^{-1}(\\sqrt{1-t^2})=\\sin^{-1}t\\) (for \\(t>0\\)), so \\(\\dfrac{dy}{dt}=\\dfrac{1}{\\sqrt{1-t^2}}\\). Hence \\(\\dfrac{dy}{dx}=\\dfrac{1/\\sqrt{1-t^2}}{3/\\sqrt{1-t^2}}=\\dfrac{1}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2471,
+    "solution": "\\(\\dfrac{dx}{d\\theta}=2\\left(-\\sin\\theta+\\dfrac{1}{\\sin\\theta}\\right)=\\dfrac{2\\cos^2\\theta}{\\sin\\theta}\\) (using \\(\\dfrac{d}{d\\theta}\\log\\tan\\tfrac{\\theta}{2}=\\dfrac{1}{\\sin\\theta}\\)). \\(\\dfrac{dy}{d\\theta}=2\\cos\\theta\\). So \\(\\dfrac{dy}{dx}=\\dfrac{2\\cos\\theta}{2\\cos^2\\theta/\\sin\\theta}=\\dfrac{\\sin\\theta}{\\cos\\theta}=\\tan\\theta\\). Hence (C)."
+  },
+  {
+    "number": 2472,
+    "solution": "As in 2468, \\(\\dfrac{dy}{dx}=-\\tan\\theta\\). Since \\(\\sin\\theta=\\left(\\dfrac{y}{a}\\right)^{1/3}\\) and \\(\\cos\\theta=\\left(\\dfrac{x}{a}\\right)^{1/3}\\), \\(\\tan\\theta=\\left(\\dfrac{y}{x}\\right)^{1/3}\\). Thus \\(\\dfrac{dy}{dx}=-\\sqrt[3]{\\dfrac{y}{x}}\\). Hence (C)."
+  },
+  {
+    "number": 2473,
+    "solution": "Let \\(u=\\log_{10}x\\), \\(v=x^2\\). \\(\\dfrac{du}{dx}=\\dfrac{\\log_{10}e}{x}\\), \\(\\dfrac{dv}{dx}=2x\\). So \\(\\dfrac{du}{dv}=\\dfrac{\\log_{10}e/x}{2x}=\\dfrac{\\log_{10}e}{2x^2}\\). Hence (B)."
+  },
+  {
+    "number": 2474,
+    "solution": "Required \\(=\\dfrac{\\frac{d}{dx}f(\\tan x)}{\\frac{d}{dx}g(\\sec x)}=\\dfrac{f'(\\tan x)\\sec^2x}{g'(\\sec x)\\sec x\\tan x}\\). At \\(x=\\pi/4\\): \\(\\tan x=1\\), \\(\\sec x=\\sqrt{2}\\). \\(=\\dfrac{f'(1)\\cdot 2}{g'(\\sqrt 2)\\cdot\\sqrt 2\\cdot 1}=\\dfrac{2\\cdot 2}{4\\sqrt 2}=\\dfrac{4}{4\\sqrt 2}=\\dfrac{1}{\\sqrt 2}\\). Hence (A)."
+  },
+  {
+    "number": 2475,
+    "solution": "\\(f(x)=x^2+e^x\\): \\(f_1=2x+e^x\\), \\(f_2=2+e^x\\), \\(f_3=e^x\\), \\(f_4=e^x\\). Thus \\(f_n=f_{n+1}\\) first holds at \\(n=3\\) (\\(f_3=e^x=f_4\\)). Hence (D)."
+  },
+  {
+    "number": 2476,
+    "solution": "\\(\\dfrac{dy}{dx}=\\dfrac{g'(t)}{f'(t)}\\). Then \\(\\dfrac{d^2y}{dx^2}=\\dfrac{d}{dt}\\left(\\dfrac{g'}{f'}\\right)\\cdot\\dfrac{1}{f'}=\\dfrac{f'g''-g'f''}{(f')^2}\\cdot\\dfrac{1}{f'}=\\dfrac{f'(t)g''(t)-g'(t)f''(t)}{[f'(t)]^3}\\). Hence (A)."
+  },
+  {
+    "number": 2477,
+    "solution": "Using Taylor expansion \\(f(ax)\\approx f(0)+ax f'(0)+\\dfrac{a^2x^2}{2}f''(0)\\). The constant and linear terms cancel: \\(2-3+1=0\\) and \\(2(1)-3(2)+1(4)=0\\). The \\(x^2\\) coefficient is \\(\\dfrac{f''(0)}{2}\\big(2(1)^2-3(2)^2+1(4)^2\\big)=\\dfrac{k}{2}(2-12+16)=\\dfrac{k}{2}(6)=3k\\). Hence the limit is \\(3k\\). Hence (C)."
+  },
+  {
+    "number": 2478,
+    "solution": "\\(G(x)=h(g(f(x)))=\\log_e((\\sin x)^2)=2\\log|\\sin x|\\). So \\(G'(x)=2\\cdot\\dfrac{\\cos x}{\\sin x}=2\\cot x\\) and \\(G''(x)=2(-\\mathrm{cosec}^2x)=-2\\,\\mathrm{cosec}^2x\\). Hence (D)."
+  },
+  {
+    "number": 2479,
+    "solution": "Since \\(f=\\int g\\,dx+c\\), \\(f'=g\\). Then \\(h=f^2+g^2=f^2+(f')^2\\), so \\(h'=2ff'+2f'f''=2f'(f+f'')=2f'(0)=0\\) (using \\(f''+f=0\\)). Hence \\(h\\) is constant, so \\(h(2015)=h(2014)=5\\) and \\(h(2015)-h(2014)=0\\). Hence (C)."
+  },
+  {
+    "number": 2480,
+    "solution": "\\(x=at^2,\\;y=2at\\). \\(\\dfrac{dy}{dx}=\\dfrac{2a}{2at}=\\dfrac{1}{t}\\). \\(\\dfrac{d^2y}{dx^2}=\\dfrac{d}{dt}\\left(\\dfrac{1}{t}\\right)\\cdot\\dfrac{1}{dx/dt}=\\left(-\\dfrac{1}{t^2}\\right)\\cdot\\dfrac{1}{2at}=-\\dfrac{1}{2at^3}\\). At \\(t=\\dfrac{1}{2}\\): \\(t^3=\\dfrac{1}{8}\\), so \\(-\\dfrac{1}{2a(1/8)}=-\\dfrac{4}{a}\\). Hence (D)."
+  },
+  {
+    "number": 2481,
+    "solution": "\\(f'(x)=g(x+1)\\Rightarrow f''(x)=g'(x+1)=h((x+1)-1)=h(x)\\) (using \\(g'(x)=h(x-1)\\)). Hence \\(f''(2x)=h(2x)\\). Hence (A)."
+  },
+  {
+    "number": 2482,
+    "solution": "\\(y=(\\sin^{-1}x)^2\\Rightarrow y_1=\\dfrac{2\\sin^{-1}x}{\\sqrt{1-x^2}}\\Rightarrow \\sqrt{1-x^2}\\,y_1=2\\sin^{-1}x\\). Squaring: \\((1-x^2)y_1^2=4(\\sin^{-1}x)^2=4y\\). Differentiating: \\(-2xy_1^2+(1-x^2)2y_1y_2=4y_1\\). Dividing by \\(2y_1\\): \\((1-x^2)y_2-xy_1=2\\). Hence (B)."
+  },
+  {
+    "number": 2483,
+    "solution": "\\(y=(\\tan^{-1}x)^2\\Rightarrow y_1=\\dfrac{2\\tan^{-1}x}{1+x^2}\\Rightarrow (1+x^2)y_1=2\\tan^{-1}x\\). Differentiating: \\(2xy_1+(1+x^2)y_2=\\dfrac{2}{1+x^2}\\). Multiplying by \\((1+x^2)\\): \\((1+x^2)^2y_2+2x(1+x^2)y_1=2\\). Hence (C)."
+  },
+  {
+    "number": 2484,
+    "solution": "With \\(g=[f]^2+[f']^2\\) and \\(f''+f=0\\): \\(g'=2ff'+2f'f''=2f'(f+f'')=0\\), so \\(g\\) is constant. Therefore \\(g(8)=g(3)=8\\). Hence (D)."
+  },
+  {
+    "number": 2485,
+    "solution": "\\(\\dfrac{dx}{dt}=\\dfrac{-(1+t)-(1-t)}{(1+t)^2}=\\dfrac{-2}{(1+t)^2}\\); \\(\\dfrac{dy}{dt}=\\dfrac{2(1+t)-2t}{(1+t)^2}=\\dfrac{2}{(1+t)^2}\\). So \\(\\dfrac{dy}{dx}=\\dfrac{2/(1+t)^2}{-2/(1+t)^2}=-1\\), a constant. Hence \\(\\dfrac{d^2y}{dx^2}=0\\). Hence (D)."
+  },
+  {
+    "number": 2486,
+    "solution": "The series \\(1+x+\\dfrac{x^2}{2!}+\\dfrac{x^3}{3!}+\\cdots=e^x\\). Every derivative of \\(e^x\\) is again \\(e^x\\), so the \\(10^{\\text{th}}\\) derivative is \\(e^x\\). Hence (C)."
+  },
+  {
+    "number": 2487,
+    "solution": "\\(\\dfrac{dx}{dy}=\\dfrac{1}{dy/dx}\\). Then \\(\\dfrac{d^2x}{dy^2}=\\dfrac{d}{dy}\\left(\\dfrac{1}{y'}\\right)=\\dfrac{d}{dx}\\left(\\dfrac{1}{y'}\\right)\\cdot\\dfrac{dx}{dy}=\\left(-\\dfrac{y''}{(y')^2}\\right)\\cdot\\dfrac{1}{y'}=-\\dfrac{y''}{(y')^3}=-\\left(\\dfrac{d^2y}{dx^2}\\right)\\left(\\dfrac{dy}{dx}\\right)^{-3}\\). Hence (B)."
+  },
+  {
+    "number": 2488,
+    "solution": "\\(f(x)=\\tan^{-1}x\\): \\(f'(x)=\\dfrac{1}{1+x^2}\\), \\(f''(x)=\\dfrac{-2x}{(1+x^2)^2}\\). \\(f'+f''=0\\Rightarrow \\dfrac{1}{1+x^2}=\\dfrac{2x}{(1+x^2)^2}\\Rightarrow (1+x^2)=2x\\Rightarrow (x-1)^2=0\\Rightarrow x=1\\). Hence (B)."
+  },
+  {
+    "number": 2489,
+    "solution": "\\(\\dfrac{dx}{d\\theta}=a(-\\sin\\theta+\\sin\\theta+\\theta\\cos\\theta)=a\\theta\\cos\\theta\\); \\(\\dfrac{dy}{d\\theta}=a(\\cos\\theta-\\cos\\theta+\\theta\\sin\\theta)=a\\theta\\sin\\theta\\). So \\(\\dfrac{dy}{dx}=\\tan\\theta\\). Then \\(\\dfrac{d^2y}{dx^2}=\\sec^2\\theta\\cdot\\dfrac{1}{a\\theta\\cos\\theta}=\\dfrac{1}{a\\theta\\cos^3\\theta}\\). At \\(\\theta=\\dfrac{\\pi}{4}\\): \\(\\cos^3(\\pi/4)=\\dfrac{1}{2\\sqrt 2}\\) and \\(\\theta=\\dfrac{\\pi}{4}\\), so \\(\\dfrac{d^2y}{dx^2}=\\dfrac{1}{a\\cdot(\\pi/4)\\cdot(1/2\\sqrt 2)}=\\dfrac{8\\sqrt 2}{a\\pi}\\). Hence (A)."
+  },
+  {
+    "number": 2490,
+    "solution": "\\(\\log y=m\\tan^{-1}x\\Rightarrow \\dfrac{y_1}{y}=\\dfrac{m}{1+x^2}\\Rightarrow (1+x^2)y_1=my\\). Differentiating: \\(2xy_1+(1+x^2)y_2=my_1\\), i.e. \\((1+x^2)y_2+(2x-m)y_1=0\\). Hence (B)."
+  },
+  {
+    "number": 2491,
+    "solution": "\\(\\dfrac{dx}{d\\theta}=-a\\sin\\theta\\); \\(\\dfrac{dy}{d\\theta}=a(1+\\cos\\theta)\\). So \\(\\dfrac{dy}{dx}=\\dfrac{1+\\cos\\theta}{-\\sin\\theta}=-\\cot\\dfrac{\\theta}{2}\\). Then \\(\\dfrac{d^2y}{dx^2}=\\dfrac{d}{d\\theta}\\left(-\\cot\\dfrac{\\theta}{2}\\right)\\cdot\\dfrac{1}{dx/d\\theta}=\\dfrac{1}{2}\\mathrm{cosec}^2\\dfrac{\\theta}{2}\\cdot\\dfrac{1}{-a\\sin\\theta}\\). At \\(\\theta=\\dfrac{\\pi}{2}\\): \\(\\mathrm{cosec}^2(\\pi/4)=2\\), so the first factor is \\(\\dfrac{1}{2}(2)=1\\); \\(\\sin(\\pi/2)=1\\). Thus \\(\\dfrac{d^2y}{dx^2}=1\\cdot\\dfrac{1}{-a}=-\\dfrac{1}{a}\\). Hence (A)."
+  },
+  {
+    "number": 2492,
+    "solution": "From \\(y^2=P\\): \\(2yy'=P'\\) and \\(2(y')^2+2yy''=P''\\). Then \\(y^3y''=y^2(yy'')=P\\left(\\dfrac{P''}{2}-(y')^2\\right)=\\dfrac{PP''}{2}-P(y')^2\\). Since \\((y')^2=\\dfrac{(P')^2}{4P}\\), \\(P(y')^2=\\dfrac{(P')^2}{4}\\), so \\(y^3y''=\\dfrac{PP''}{2}-\\dfrac{(P')^2}{4}\\). Hence \\(2\\dfrac{d}{dx}(y^3y'')=2\\left(\\dfrac{P'P''+PP'''}{2}-\\dfrac{2P'P''}{4}\\right)=PP'''\\). Hence (C)."
+  },
+  {
+    "number": 2493,
+    "solution": "\\(f(x)=x|x|\\) gives \\(f'(x)=2|x|\\), continuous, with \\(f'(0)=0\\). Then \\(g\\circ f=\\sin(x|x|)\\) and \\((g\\circ f)'=\\cos(x|x|)\\cdot 2|x|\\), which equals \\(0\\) at \\(x=0\\) and is continuous there, so Statement-1 is true. But \\(f''(x)=2\\,\\mathrm{sgn}(x)\\) is discontinuous at \\(0\\), so \\(g\\circ f\\) is not twice differentiable at \\(x=0\\); Statement-2 is false. Hence (B)."
+  },
+  {
+    "number": 2494,
+    "solution": "\\(x=\\log t\\Rightarrow t=e^x\\); \\(y=t^2-1\\). \\(\\dfrac{dy}{dt}=2t\\), \\(\\dfrac{dx}{dt}=\\dfrac{1}{t}\\), so \\(\\dfrac{dx}{dy}=\\dfrac{1/t}{2t}=\\dfrac{1}{2t^2}\\). Then \\(\\dfrac{d^2x}{dy^2}=\\dfrac{d}{dt}\\left(\\dfrac{1}{2t^2}\\right)\\cdot\\dfrac{dt}{dy}=\\left(-\\dfrac{1}{t^3}\\right)\\cdot\\dfrac{1}{2t}=-\\dfrac{1}{2t^4}=-\\dfrac{1}{2}e^{-4x}\\). Hence (B)."
+  },
+  {
+    "number": 2495,
+    "solution": "By Taylor's theorem, \\(f(0)+f'(0)+\\dfrac{f''(0)}{2!}+\\cdots+\\dfrac{f^n(0)}{n!}=\\sum_{k}\\dfrac{f^{(k)}(0)}{k!}\\) is the value of \\(f\\) at \\(x=1\\), i.e. \\(f(1)=(1-1)^n=0\\). Hence (A)."
+  },
+  {
+    "number": 2496,
+    "solution": "\\(y=e^{a\\sin^{-1}x}\\Rightarrow y_1=\\dfrac{ay}{\\sqrt{1-x^2}}\\Rightarrow (1-x^2)y_1^2=a^2y^2\\). Differentiating and dividing by \\(2y_1\\): \\((1-x^2)y_2-xy_1-a^2y=0\\). Applying Leibniz's rule for the \\(n^{\\text{th}}\\) derivative gives \\((1-x^2)y_{n+2}-(2n+1)xy_{n+1}-(n^2+a^2)y_n=0\\), so \\((1-x^2)y_{n+2}-(2n+1)xy_{n+1}=(n^2+a^2)y_n\\). Hence (C)."
+  },
+  {
+    "number": 2497,
+    "solution": "\\(\\dfrac{dx}{dt}=e^t(\\sin t+\\cos t)\\), \\(\\dfrac{dy}{dt}=e^t(\\cos t-\\sin t)\\), so \\(\\dfrac{dy}{dx}=\\dfrac{\\cos t-\\sin t}{\\cos t+\\sin t}\\). Differentiating w.r.t. \\(t\\): \\(\\dfrac{d}{dt}\\dfrac{dy}{dx}=\\dfrac{-2}{(\\cos t+\\sin t)^2}\\). Hence \\(\\dfrac{d^2y}{dx^2}=\\dfrac{-2/(\\cos t+\\sin t)^2}{e^t(\\sin t+\\cos t)}\\). At \\(t=\\pi\\): \\(\\cos t=-1,\\sin t=0\\), so \\((\\cos t+\\sin t)^2=1\\) and the first factor is \\(-2\\); \\(\\dfrac{dx}{dt}=e^\\pi(-1)=-e^\\pi\\). Thus \\(\\dfrac{d^2y}{dx^2}=\\dfrac{-2}{-e^\\pi}=\\dfrac{2}{e^\\pi}\\). Hence (D)."
+  }
+]

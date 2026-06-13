@@ -1,0 +1,634 @@
+[
+  {
+    "number": 2224,
+    "solution": "Both numerator and denominator are \\(0\\) at \\(x = 3\\). Rationalize each. Numerator: \\(\\sqrt{3x} - 3 = \\dfrac{3x - 9}{\\sqrt{3x} + 3} = \\dfrac{3(x-3)}{\\sqrt{3x} + 3}\\). Denominator: \\(\\sqrt{2x-4} - \\sqrt{2} = \\dfrac{2x - 6}{\\sqrt{2x-4} + \\sqrt{2}} = \\dfrac{2(x-3)}{\\sqrt{2x-4} + \\sqrt{2}}\\). The ratio is \\(\\dfrac{3}{2}\\cdot\\dfrac{\\sqrt{2x-4} + \\sqrt{2}}{\\sqrt{3x} + 3}\\). At \\(x = 3\\): \\(\\dfrac{3}{2}\\cdot\\dfrac{2\\sqrt{2}}{6} = \\dfrac{\\sqrt{2}}{2} = \\dfrac{1}{\\sqrt{2}}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2225,
+    "solution": "Rationalize: \\(\\dfrac{\\sqrt{2+x} - \\sqrt{2-x}}{x} = \\dfrac{(2+x) - (2-x)}{x\\left(\\sqrt{2+x} + \\sqrt{2-x}\\right)} = \\dfrac{2x}{x\\left(\\sqrt{2+x} + \\sqrt{2-x}\\right)}\\). As \\(x \\to 0\\) this is \\(\\dfrac{2}{\\sqrt{2} + \\sqrt{2}} = \\dfrac{2}{2\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2226,
+    "solution": "The polynomial \\(x^n - 1\\) factors as \\((x - 1)(x - z_1)(x - z_2)\\cdots(x - z_{n-1})\\), where \\(z_1, \\ldots, z_{n-1}\\) are the non-trivial \\(n\\)th roots of unity. Thus \\(\\dfrac{x^n - 1}{x - 1} = 1 + x + x^2 + \\cdots + x^{n-1} = (x - z_1)\\cdots(x - z_{n-1})\\). Setting \\(x = 1\\) gives \\((1 - z_1)(1 - z_2)\\cdots(1 - z_{n-1}) = 1 + 1 + \\cdots + 1 = n\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2227,
+    "solution": "At \\(x = 2\\) the denominator is \\(8 - 4 - 2 - 2 = 0\\), so \\((x - 2)\\) is a factor. Dividing: \\(x^3 - x^2 - x - 2 = (x - 2)(x^2 + x + 1)\\). Therefore \\(\\dfrac{x - 2}{(x-2)(x^2 + x + 1)} = \\dfrac{1}{x^2 + x + 1}\\). At \\(x = 2\\): \\(\\dfrac{1}{4 + 2 + 1} = \\dfrac{1}{7}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2228,
+    "solution": "\\({}^{n}C_3 = \\dfrac{n(n-1)(n-2)}{6} \\sim \\dfrac{n^3}{6}\\) and \\({}^{n}P_3 = n(n-1)(n-2) \\sim n^3\\) for large \\(n\\). Hence \\(\\dfrac{{}^{n}C_3 - {}^{n}P_3}{n^3} \\to \\dfrac{1}{6} - 1 = -\\dfrac{5}{6}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2229,
+    "solution": "Rationalize: \\(\\sqrt{a^2 x^2 + (b+1)x} - ax = \\dfrac{(b+1)x}{\\sqrt{a^2 x^2 + (b+1)x} + ax}\\). For large \\(x\\), the denominator \\(\\approx ax + ax = 2ax\\), so the expression \\(\\to \\dfrac{(b+1)x}{2ax} = \\dfrac{b+1}{2a}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2230,
+    "solution": "For \\(x\\) just greater than \\(2\\), \\([x] = 2\\), so \\(g(x) = \\dfrac{x}{2}\\), and \\(g(2) = \\dfrac{2}{2} = 1\\). Then \\(\\dfrac{g(x) - g(2)}{x - 2} = \\dfrac{\\frac{x}{2} - 1}{x - 2} = \\dfrac{(x - 2)/2}{x - 2} = \\dfrac{1}{2}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2231,
+    "solution": "Numerator \\(= 0 + 2 + 4 + \\cdots + 2n = 2(1 + 2 + \\cdots + n) = n(n + 1)\\). Denominator \\(= 1 + 3 + \\cdots + (2n + 1)\\), which has \\((n + 1)\\) terms summing to \\((n + 1)^2\\). Hence the ratio \\(= \\dfrac{n(n+1)}{(n+1)^2} = \\dfrac{n}{n+1} \\to 1\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2232,
+    "solution": "Combine: \\(\\dfrac{x^2}{3x - 2} - \\dfrac{x}{3} = \\dfrac{3x^2 - x(3x - 2)}{3(3x - 2)} = \\dfrac{3x^2 - 3x^2 + 2x}{3(3x - 2)} = \\dfrac{2x}{9x - 6}\\). As \\(x \\to \\infty\\) this \\(\\to \\dfrac{2}{9}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2233,
+    "solution": "The expression \\(\\lim_{x \\to 0} \\dfrac{f(x) - f(0)}{x}\\) is the derivative \\(f'(0)\\). For \\(f(x) = 3x^2 - 7x + 5\\), \\(f'(x) = 6x - 7\\), so \\(f'(0) = -7\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2234,
+    "solution": "Expand \\(\\sqrt{a^2 - x^2} = a\\sqrt{1 - x^2/a^2} = a\\left(1 - \\dfrac{x^2}{2a^2} - \\dfrac{x^4}{8a^4} - \\cdots\\right)\\). Then \\(a - \\sqrt{a^2 - x^2} = \\dfrac{x^2}{2a} + \\dfrac{x^4}{8a^3} + \\cdots\\). Subtracting \\(\\dfrac{x^2}{4}\\): numerator \\(= \\left(\\dfrac{1}{2a} - \\dfrac{1}{4}\\right)x^2 + \\dfrac{x^4}{8a^3} + \\cdots\\). For the limit (divided by \\(x^4\\)) to be finite, the \\(x^2\\) coefficient must vanish: \\(\\dfrac{1}{2a} = \\dfrac{1}{4}\\), giving \\(a = 2\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2235,
+    "solution": "As \\(x \\to 1\\), \\(x^2 - 1 \\to 0\\). For the ratio \\(\\dfrac{f(x) - 2}{x^2 - 1}\\) to approach the finite value \\(\\pi\\), the numerator must approach \\(0\\): \\(f(x) - 2 \\to 0\\), so \\(\\lim_{x \\to 1} f(x) = 2\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2236,
+    "solution": "Factor: \\(f(x) = (x^5 - 1)(x^3 + 1) = (x - 1)(x^4 + x^3 + x^2 + x + 1)(x + 1)(x^2 - x + 1)\\) and \\(g(x) = (x^2 - 1)(x^2 - x + 1) = (x - 1)(x + 1)(x^2 - x + 1)\\). Then \\(h(x) = \\dfrac{f(x)}{g(x)} = x^4 + x^3 + x^2 + x + 1\\). At \\(x = 1\\): \\(1 + 1 + 1 + 1 + 1 = 5\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2237,
+    "solution": "Using \\(\\lim_{x \\to a} \\dfrac{x^p - a^p}{x^q - a^q} = \\dfrac{p}{q}\\,a^{p - q}\\) with \\(p = 5\\), \\(q = 8\\), \\(a = 3\\): \\(\\dfrac{5}{8}\\cdot 3^{5 - 8} = \\dfrac{5}{8}\\cdot 3^{-3} = \\dfrac{5}{8 \\cdot 27} = \\dfrac{5}{216}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2238,
+    "solution": "\\(\\dfrac{1 + 2 + \\cdots + n}{n + 2} = \\dfrac{n(n+1)/2}{n + 2} = \\dfrac{n(n+1)}{2(n+2)}\\). Subtracting \\(\\dfrac{n}{2}\\): \\(\\dfrac{n(n+1) - n(n+2)}{2(n+2)} = \\dfrac{n(n + 1 - n - 2)}{2(n+2)} = \\dfrac{-n}{2(n+2)} \\to -\\dfrac{1}{2}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2239,
+    "solution": "Write \\(\\dfrac{\\sqrt{x} - \\sqrt{3}}{\\sqrt{x^2 - 9}} = \\dfrac{\\sqrt{x} - \\sqrt{3}}{\\sqrt{(x - 3)(x + 3)}}\\). Rationalize the numerator: \\(\\sqrt{x} - \\sqrt{3} = \\dfrac{x - 3}{\\sqrt{x} + \\sqrt{3}}\\). Thus the expression \\(= \\dfrac{x - 3}{(\\sqrt{x} + \\sqrt{3})\\sqrt{(x - 3)(x + 3)}} = \\dfrac{\\sqrt{x - 3}}{(\\sqrt{x} + \\sqrt{3})\\sqrt{x + 3}}\\). As \\(x \\to 3\\), \\(\\sqrt{x - 3} \\to 0\\), so the limit is \\(0\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2240,
+    "solution": "Divide: \\(\\dfrac{x^2 + x + 1}{x + 1} = x + \\dfrac{1}{x + 1}\\). Then the expression is \\((1 - a)x - b + \\dfrac{1}{x + 1}\\). For a finite limit, the coefficient of \\(x\\) must be \\(0\\): \\(a = 1\\). The limit is then \\(-b = 4\\), so \\(b = -4\\). Thus \\(a = 1,\\ b = -4\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2241,
+    "solution": "Check one-sided limits. As \\(x \\to 0^{+}\\), \\(\\frac{1}{x} \\to +\\infty\\), so \\(2^{1/x} \\to \\infty\\) and \\(\\dfrac{1}{3 - 2^{1/x}} \\to 0\\). As \\(x \\to 0^{-}\\), \\(\\frac{1}{x} \\to -\\infty\\), so \\(2^{1/x} \\to 0\\) and \\(\\dfrac{1}{3 - 0} = \\dfrac{1}{3}\\). The left-hand limit is \\(\\dfrac{1}{3}\\) (the two-sided limit does not exist, but \\(0\\) is not the keyed value; the keyed answer is the left-hand value \\(\\dfrac{1}{3}\\)). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2242,
+    "solution": "Divide numerator and denominator by \\(4^n\\): \\(\\dfrac{1 + (3/4)^n}{1 - (3/4)^n}\\). Since \\((3/4)^n \\to 0\\), the limit is \\(\\dfrac{1 + 0}{1 - 0} = 1\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2243,
+    "solution": "Divide numerator and denominator by \\(3^n\\): \\(\\dfrac{(2/3)^n + 1}{(2/3)^n - 1}\\). Since \\((2/3)^n \\to 0\\), the limit is \\(\\dfrac{0 + 1}{0 - 1} = -1\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2244,
+    "solution": "At \\(x = a\\) both numerator and denominator vanish. Rationalize each. Numerator: \\(\\sqrt{a + 2x} - \\sqrt{3x} = \\dfrac{a - x}{\\sqrt{a + 2x} + \\sqrt{3x}}\\). Denominator: \\(\\sqrt{3a + x} - 2\\sqrt{x} = \\dfrac{3a - 3x}{\\sqrt{3a + x} + 2\\sqrt{x}} = \\dfrac{3(a - x)}{\\sqrt{3a + x} + 2\\sqrt{x}}\\). The ratio is \\(\\dfrac{1}{3}\\cdot\\dfrac{\\sqrt{3a + x} + 2\\sqrt{x}}{\\sqrt{a + 2x} + \\sqrt{3x}}\\). At \\(x = a\\): \\(\\dfrac{1}{3}\\cdot\\dfrac{2\\sqrt{a} + 2\\sqrt{a}}{\\sqrt{3a} + \\sqrt{3a}} = \\dfrac{1}{3}\\cdot\\dfrac{4\\sqrt{a}}{2\\sqrt{3a}} = \\dfrac{1}{3}\\cdot\\dfrac{2}{\\sqrt{3}} = \\dfrac{2}{3\\sqrt{3}}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2245,
+    "solution": "Use \\(1^3 + 2^3 + \\cdots + k^3 = \\left(\\dfrac{k(k+1)}{2}\\right)^2 = \\dfrac{k^2(k+1)^2}{4}\\). Dividing by \\(k^4\\) gives \\(\\dfrac{(k+1)^2}{4k^2} = \\dfrac{1}{4}\\left(1 + \\frac{1}{k}\\right)^2 \\to \\dfrac{1}{4}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2246,
+    "solution": "Using \\(\\lim_{x \\to a} \\dfrac{x^p - a^p}{x^q - a^q} = \\dfrac{p}{q}\\,a^{p - q}\\) with \\(p = 100\\), \\(q = 77\\), \\(a = 2\\): \\(\\dfrac{100}{77}\\cdot 2^{100 - 77} = \\dfrac{100}{77}\\,(2^{23})\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2247,
+    "solution": "Using \\(\\lim_{x \\to 0} \\dfrac{(1 + kx)^n - 1}{x} = nk\\) with \\(k = 2\\), \\(n = 10\\): the limit is \\(10 \\cdot 2 = 20\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2248,
+    "solution": "Divide: \\(\\dfrac{x^2 + 1}{x + 1} = x - 1 + \\dfrac{2}{x + 1}\\). The expression becomes \\((1 - a)x - (1 + b) + \\dfrac{2}{x + 1}\\). For the limit to be \\(0\\), the coefficient of \\(x\\) must be \\(0\\) (\\(a = 1\\)) and the constant must be \\(0\\) (\\(1 + b = 0 \\Rightarrow b = -1\\)). Thus \\(a = 1,\\ b = -1\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2249,
+    "solution": "Using \\(\\lim_{x \\to 1} \\dfrac{x^p - 1}{x^q - 1} = \\dfrac{p}{q}\\) with \\(p = 15\\), \\(q = 10\\): \\(\\dfrac{15}{10} = \\dfrac{3}{2}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2250,
+    "solution": "As \\(x \\to 1\\), \\(x^2 - 1 \\to 0\\). For the ratio \\(\\dfrac{f(x) - 3}{x^2 - 1}\\) to tend to the finite value \\(\\pi\\), the numerator must vanish: \\(f(x) - 3 \\to 0\\), so \\(\\lim_{x \\to 1} f(x) = 3\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2251,
+    "solution": "Using \\(\\lim_{x \\to 3} \\dfrac{x^n - 3^n}{x - 3} = n \\cdot 3^{n-1}\\), set \\(n \\cdot 3^{n-1} = 108\\). Testing \\(n = 4\\): \\(4 \\cdot 3^3 = 4 \\cdot 27 = 108\\). So \\(n = 4\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2252,
+    "solution": "For large \\(n\\) the \\(3^n\\) terms dominate: \\(\\dfrac{2^{n+1} + 3^{n+1}}{2^n + 3^n} = \\dfrac{2 \\cdot 2^n + 3 \\cdot 3^n}{2^n + 3^n}\\). Dividing by \\(3^n\\): \\(\\dfrac{2(2/3)^n + 3}{(2/3)^n + 1} \\to \\dfrac{0 + 3}{0 + 1} = 3\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2253,
+    "solution": "Combine over a common denominator: numerator \\(= x^3(3x + 2) - x^2(3x^2 - 4) = 3x^4 + 2x^3 - 3x^4 + 4x^2 = 2x^3 + 4x^2\\); denominator \\(= (3x^2 - 4)(3x + 2) \\sim 9x^3\\). So the expression \\(\\to \\dfrac{2x^3}{9x^3} = \\dfrac{2}{9}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2254,
+    "solution": "Telescoping: \\(\\dfrac{1}{k(k+1)} = \\dfrac{1}{k} - \\dfrac{1}{k+1}\\). The sum is \\(1 - \\dfrac{1}{n+1} \\to 1\\) as \\(n \\to \\infty\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2255,
+    "solution": "Since \\(0 < a < b\\), divide numerator and denominator by \\(b^n\\): \\(\\dfrac{(a/b)^n + 1}{(a/b)^n - 1}\\). As \\((a/b)^n \\to 0\\), the limit is \\(\\dfrac{0 + 1}{0 - 1} = -1\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2256,
+    "solution": "The \\(5^n\\) terms dominate. Numerator \\(\\sim -4 \\cdot 5^{n+1} = -20 \\cdot 5^n\\); denominator \\(\\sim 7 \\cdot 5^n\\). So the limit is \\(\\dfrac{-20 \\cdot 5^n}{7 \\cdot 5^n} = \\dfrac{-20}{7}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2257,
+    "solution": "Rationalize: \\(\\sqrt{x + \\sqrt{x + \\sqrt{x}}} - \\sqrt{x} = \\dfrac{\\sqrt{x + \\sqrt{x}}}{\\sqrt{x + \\sqrt{x + \\sqrt{x}}} + \\sqrt{x}}\\). For large \\(x\\) the numerator \\(\\sim \\sqrt{x}\\) and the denominator \\(\\sim \\sqrt{x} + \\sqrt{x} = 2\\sqrt{x}\\). So the limit is \\(\\dfrac{\\sqrt{x}}{2\\sqrt{x}} = \\dfrac{1}{2}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2258,
+    "solution": "Numerator \\(= \\dfrac{n(n+1)(2n+1)}{6} \\sim \\dfrac{n^3}{3}\\); denominator \\(\\sim 4n^3\\). So the limit is \\(\\dfrac{1/3}{4} = \\dfrac{1}{12}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2259,
+    "solution": "Using the standard result \\(\\lim_{x \\to 1} \\dfrac{x^p - 1}{x^q - 1} = \\dfrac{p}{q}\\) with \\(p = m\\), \\(q = n\\): the limit is \\(\\dfrac{m}{n}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2260,
+    "solution": "\\(\\sqrt{x^2 + 2x + 1} = |x + 1|\\). As \\(x \\to -\\infty\\), \\(x + 1 < 0\\), so \\(|x + 1| = -(x + 1)\\). Then \\(\\dfrac{2x - 1}{-(x + 1)} \\sim \\dfrac{2x}{-x} = -2\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2261,
+    "solution": "Put \\(x = \\dfrac{\\pi}{2} - t\\), \\(t \\to 0\\). Then \\(\\cot x = \\tan t \\approx t\\) and \\(\\cos x = \\sin t \\approx t\\), so \\(\\cot x - \\cos x = \\tan t - \\sin t = \\sin t\\,\\dfrac{1 - \\cos t}{\\cos t} \\approx t \\cdot \\dfrac{t^2}{2} = \\dfrac{t^3}{2}\\). Also \\(\\pi - 2x = 2t\\), so \\((\\pi - 2x)^3 = 8t^3\\). The ratio is \\(\\dfrac{t^3/2}{8t^3} = \\dfrac{1}{16}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2262,
+    "solution": "Use \\(1 - \\cos k\\theta \\approx \\dfrac{(k\\theta)^2}{2}\\). So \\(\\dfrac{1 - \\cos 4\\theta}{1 - \\cos 6\\theta} \\approx \\dfrac{(4\\theta)^2/2}{(6\\theta)^2/2} = \\dfrac{16}{36} = \\dfrac{4}{9}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2263,
+    "solution": "Numerator: \\(1 - \\cos 2x = 2\\sin^2 x \\approx 2x^2\\), so \\((1 - \\cos 2x)^2 \\approx 4x^4\\). Denominator: with \\(\\tan x \\approx x + \\frac{x^3}{3}\\), \\(\\tan 2x \\approx 2x + \\frac{8x^3}{3}\\): \\(2x\\tan x - x\\tan 2x \\approx (2x^2 + \\frac{2x^4}{3}) - (2x^2 + \\frac{8x^4}{3}) = -2x^4\\). The ratio is \\(\\dfrac{4x^4}{-2x^4} = -2\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2264,
+    "solution": "\\(\\dfrac{\\cot 4x}{\\operatorname{cosec} 3x} = \\dfrac{\\cos 4x}{\\sin 4x}\\cdot \\sin 3x = \\cos 4x \\cdot \\dfrac{\\sin 3x}{\\sin 4x}\\). As \\(x \\to 0\\), \\(\\cos 4x \\to 1\\) and \\(\\dfrac{\\sin 3x}{\\sin 4x} \\to \\dfrac{3}{4}\\). So the limit is \\(\\dfrac{3}{4}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2265,
+    "solution": "\\(1 - \\cos 2x = 2\\sin^2 x \\approx 2x^2\\); \\((3 + \\cos x) \\to 4\\); \\(x\\tan 4x \\approx x \\cdot 4x = 4x^2\\). So the limit is \\(\\dfrac{2x^2 \\cdot 4}{4x^2} = 2\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2266,
+    "solution": "Standard limit: \\(1 - \\cos x = 2\\sin^2\\frac{x}{2} \\approx \\dfrac{x^2}{2}\\). So \\(\\dfrac{1 - \\cos x}{x^2} \\to \\dfrac{1}{2}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2267,
+    "solution": "As \\(x \\to 0\\), each factor \\(\\dfrac{\\sin(ax)}{\\sin(bx)} \\to \\dfrac{a}{b}\\). The first four bracketed factors are \\(\\dfrac{10}{9}\\cdot\\dfrac{9}{10} = 1\\), \\(\\dfrac{8}{7}\\cdot\\dfrac{7}{8} = 1\\), \\(\\dfrac{6}{5}\\cdot\\dfrac{5}{6} = 1\\), \\(\\dfrac{4}{3}\\cdot\\dfrac{3}{4} = 1\\). The last factor is \\(\\dfrac{\\sin x}{\\sin 2x} \\to \\dfrac{1}{2}\\). The product is \\(1 \\cdot 1 \\cdot 1 \\cdot 1 \\cdot \\dfrac{1}{2} = \\dfrac{1}{2}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2268,
+    "solution": "Put \\(t = \\dfrac{1}{y} \\to 0\\). Then \\(y\\sin\\frac{1}{y} = \\dfrac{\\sin t}{t} \\to 1\\), and \\(\\dfrac{1}{y} = t \\to 0\\). So the limit is \\(1 - 0 = 1\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2269,
+    "solution": "Write \\(\\cos^2 x = 1 - \\sin^2 x\\), so \\(\\pi\\cos^2 x = \\pi - \\pi\\sin^2 x\\) and \\(\\sin(\\pi\\cos^2 x) = \\sin(\\pi - \\pi\\sin^2 x) = \\sin(\\pi\\sin^2 x)\\). For small \\(x\\), \\(\\sin^2 x \\approx x^2\\), so \\(\\sin(\\pi\\sin^2 x) \\approx \\pi x^2\\). Dividing by \\(x^2\\) gives \\(\\pi\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2270,
+    "solution": "For small \\(x\\): \\(3\\sin^2 x \\approx 3x^2\\) and \\(2\\sin(x^2) \\approx 2x^2\\). So the numerator \\(\\approx 3x^2 - 2x^2 = x^2\\), and \\(\\dfrac{x^2}{3x^2} = \\dfrac{1}{3}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2271,
+    "solution": "As \\(x \\to \\infty\\), \\(\\sin^2 x\\) is bounded between \\(0\\) and \\(1\\), while \\(x \\to \\infty\\). By the squeeze argument \\(0 \\le \\dfrac{\\sin^2 x}{x} \\le \\dfrac{1}{x} \\to 0\\). So the limit is \\(0\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2272,
+    "solution": "\\(1 - \\cos\\{2(x - 2)\\} = 2\\sin^2(x - 2)\\), so \\(\\sqrt{1 - \\cos\\{2(x - 2)\\}} = \\sqrt{2}\\,|\\sin(x - 2)| \\approx \\sqrt{2}\\,|x - 2|\\) near \\(x = 2\\). Then the expression \\(\\approx \\dfrac{\\sqrt{2}\\,|x - 2|}{x - 2}\\). As \\(x \\to 2^{+}\\) this is \\(+\\sqrt{2}\\); as \\(x \\to 2^{-}\\) it is \\(-\\sqrt{2}\\). The left- and right-hand limits differ, so the limit does not exist. Matches option C. Hence (C)."
+  },
+  {
+    "number": 2273,
+    "solution": "As \\(x \\to \\frac{\\pi}{2}^{-}\\), \\(\\tan x \\to +\\infty\\), so \\(3^{\\tan x} \\to \\infty\\) and \\(f(x) = \\dfrac{3}{1 + 3^{\\tan x}} \\to 0\\). As \\(x \\to \\frac{\\pi}{2}^{+}\\), \\(\\tan x \\to -\\infty\\), so \\(3^{\\tan x} \\to 0\\) and \\(f(x) \\to \\dfrac{3}{1 + 0} = 3\\). Hence \\(\\lim_{x \\to \\frac{\\pi}{2}^{+}} f(x) = 3\\), which is the true statement (the two-sided limit does not exist). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2274,
+    "solution": "For small \\(x\\), \\(\\sin(x^n) \\approx x^n\\) and \\((\\sin x)^m \\approx x^m\\). So the ratio \\(\\approx \\dfrac{x^n}{x^m} = x^{\\,n - m}\\). Since \\(m < n\\), the exponent \\(n - m > 0\\), so \\(x^{\\,n - m} \\to 0\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2275,
+    "solution": "As \\(x \\to \\infty\\), \\(\\cos x\\) oscillates between \\(-1\\) and \\(1\\) and never settles to a single value. Hence the limit is not defined. Matches option D. Hence (D)."
+  },
+  {
+    "number": 2276,
+    "solution": "Put \\(x = \\dfrac{\\pi}{2} - t\\), \\(t \\to 0\\). Then \\(\\cos x = \\sin t \\approx t\\), so \\(\\sin(\\cos x)\\cos x \\approx t \\cdot t = t^2\\). For the denominator, \\(\\sin x = \\cos t \\approx 1 - \\frac{t^2}{2}\\) and \\(\\operatorname{cosec} x = \\dfrac{1}{\\cos t} \\approx 1 + \\frac{t^2}{2}\\), so \\(\\sin x - \\operatorname{cosec} x \\approx -t^2\\). The ratio is \\(\\dfrac{t^2}{-t^2} = -1\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2277,
+    "solution": "\\(1 - \\cos x = 2\\sin^2\\frac{x}{2}\\), so \\(\\sqrt{1 - \\cos x} = \\sqrt{2}\\,\\left|\\sin\\frac{x}{2}\\right| \\approx \\dfrac{|x|}{\\sqrt{2}}\\) near \\(0\\). Then \\(\\dfrac{\\sqrt{1 - \\cos x}}{x} \\approx \\dfrac{|x|}{\\sqrt{2}\\,x}\\). As \\(x \\to 0^{+}\\) this is \\(\\dfrac{1}{\\sqrt{2}}\\); as \\(x \\to 0^{-}\\) it is \\(-\\dfrac{1}{\\sqrt{2}}\\). The one-sided limits differ, so the limit does not exist. Matches option D. Hence (D)."
+  },
+  {
+    "number": 2278,
+    "solution": "For small \\(x\\), \\(\\sin^2 x \\approx x^2\\), so \\(\\pi\\sin^2 x \\approx \\pi x^2\\) and \\(\\sin(\\pi\\sin^2 x) \\approx \\pi x^2\\). Dividing by \\(x^2\\) gives \\(\\pi\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2279,
+    "solution": "Use \\(\\sin\\theta\\cos\\theta = \\frac{1}{2}\\sin 2\\theta\\): the expression is \\(n \\cdot \\frac{1}{2}\\sin\\dfrac{4\\pi}{3n} \\approx \\dfrac{n}{2}\\cdot\\dfrac{4\\pi}{3n} = \\dfrac{2\\pi}{3}\\) for large \\(n\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2280,
+    "solution": "For small \\(x\\): \\(\\sin^2 x \\approx x^2\\) and \\(\\cos x - 1 \\approx -\\dfrac{x^2}{2}\\). So the numerator \\(\\approx x^2 - \\dfrac{x^2}{2} = \\dfrac{x^2}{2}\\), and \\(\\dfrac{x^2/2}{x^2} = \\dfrac{1}{2}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2281,
+    "solution": "As \\(x \\to 0^{+}\\), \\(|x| = x\\), so \\(\\dfrac{\\sin|x|}{x} = \\dfrac{\\sin x}{x} \\to 1\\). As \\(x \\to 0^{-}\\), \\(|x| = -x\\) and writing \\(x = -h\\) (\\(h > 0\\)): \\(\\dfrac{\\sin h}{-h} \\to -1\\). The one-sided limits differ, so the limit does not exist. Matches option D. Hence (D)."
+  },
+  {
+    "number": 2282,
+    "solution": "Write \\(x\\sin\\dfrac{2}{x} = 2\\cdot\\dfrac{\\sin(2/x)}{2/x}\\). As \\(x \\to \\infty\\), \\(\\dfrac{2}{x} \\to 0\\), so \\(\\dfrac{\\sin(2/x)}{2/x} \\to 1\\). The limit is \\(2 \\cdot 1 = 2\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2283,
+    "solution": "Using \\(\\log(3 + x) - \\log(3 - x) = \\log\\dfrac{3 + x}{3 - x}\\). Expand: \\(\\log(3 + x) = \\log 3 + \\dfrac{x}{3} - \\cdots\\) and \\(\\log(3 - x) = \\log 3 - \\dfrac{x}{3} - \\cdots\\), so the difference is \\(\\dfrac{2x}{3} + \\cdots\\). Dividing by \\(x\\) gives \\(K = \\dfrac{2}{3}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2284,
+    "solution": "Split: \\(\\dfrac{x e^x - \\sin x}{x} = e^x - \\dfrac{\\sin x}{x}\\). As \\(x \\to 0\\), \\(e^x \\to 1\\) and \\(\\dfrac{\\sin x}{x} \\to 1\\), so the limit is \\(1 - 1 = 0\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2285,
+    "solution": "Expand: \\(a x e^x = a x(1 + x + \\frac{x^2}{2} + \\cdots) = ax + ax^2 + \\cdots\\) and \\(b\\log(1 + x) = b(x - \\frac{x^2}{2} + \\cdots) = bx - \\frac{b}{2}x^2 + \\cdots\\). Numerator \\(= (a - b)x + \\left(a + \\frac{b}{2}\\right)x^2 + \\cdots\\). For a finite limit (divided by \\(x^2\\)), require \\(a - b = 0\\), i.e. \\(a = b\\). Then the limit is \\(a + \\frac{b}{2} = \\frac{3a}{2} = 3\\), so \\(a = 2\\) and \\(b = 2\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2286,
+    "solution": "For small \\(x\\): \\(\\log(1 + 3x^2) \\approx 3x^2\\) and \\(e^{5x} - 1 \\approx 5x\\), so \\(x(e^{5x} - 1) \\approx 5x^2\\). The ratio is \\(\\dfrac{3x^2}{5x^2} = \\dfrac{3}{5}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2287,
+    "solution": "Standard limit: \\(\\dfrac{\\log(1 + 2x)}{x} = 2\\cdot\\dfrac{\\log(1 + 2x)}{2x} \\to 2 \\cdot 1 = 2\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2288,
+    "solution": "Put \\(x = 1 + t\\), \\(t \\to 0\\). Numerator: \\(e^{t} - 1 \\approx t\\). Denominator: \\(\\log(1 + t) \\approx t\\). So the ratio \\(\\to \\dfrac{t}{t} = 1\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2289,
+    "solution": "Write \\(\\dfrac{e^{5x} - e^{4x}}{x} = \\dfrac{e^{5x} - 1}{x} - \\dfrac{e^{4x} - 1}{x}\\). Using \\(\\dfrac{e^{kx} - 1}{x} \\to k\\): the limit is \\(5 - 4 = 1\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2290,
+    "solution": "This is the derivative of \\(e^{-x}\\) at \\(x = 1\\): \\(\\lim_{x \\to 1}\\dfrac{e^{-x} - e^{-1}}{x - 1} = \\dfrac{d}{dx}e^{-x}\\Big|_{x=1} = -e^{-x}\\Big|_{x=1} = -e^{-1} = -\\dfrac{1}{e}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2291,
+    "solution": "First \\(f(4) = \\dfrac{f(4)g(4)}{g(4)} = \\dfrac{2}{6} = \\dfrac{1}{3}\\). Quotient rule: \\(\\left(\\dfrac{f}{g}\\right)'(4) = \\dfrac{f'(4)g(4) - f(4)g'(4)}{g(4)^2} = \\dfrac{5\\cdot 6 - \\frac{1}{3}\\cdot 12}{36} = \\dfrac{30 - 4}{36} = \\dfrac{26}{36} = \\dfrac{13}{18}\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2292,
+    "solution": "From \\(f(x + y) = f(x)f(y)\\), differentiate with respect to \\(y\\) and set \\(y = 0\\): \\(f'(x) = f(x)f'(0)\\). At \\(x = 5\\): \\(f'(5) = f(5)f'(0) = 2 \\cdot 3 = 6\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2293,
+    "solution": "Differentiate term by term: \\(g'(x) = x^{199} + x^{198} + \\cdots + x + 1\\) (the constant \\(5\\) drops out, and each \\(\\dfrac{x^{k}}{k}\\) gives \\(x^{k-1}\\)). At \\(x = 0\\), all positive powers vanish, leaving the constant term \\(1\\) (from the derivative of \\(x\\)). So \\(g'(0) = 1\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2294,
+    "solution": "For inverse functions \\(g'(x) = \\dfrac{1}{f'(g(x))}\\). Here \\(f'(t) = \\dfrac{1}{1 + t^5}\\), so \\(f'(g(x)) = \\dfrac{1}{1 + \\{g(x)\\}^5}\\) and \\(g'(x) = 1 + \\{g(x)\\}^5\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2295,
+    "solution": "From \\(\\sin y = x\\sin(a + y)\\), solve \\(x = \\dfrac{\\sin y}{\\sin(a + y)}\\). Differentiate with respect to \\(y\\): \\(\\dfrac{dx}{dy} = \\dfrac{\\cos y\\sin(a + y) - \\sin y\\cos(a + y)}{\\sin^2(a + y)} = \\dfrac{\\sin(a + y - y)}{\\sin^2(a + y)} = \\dfrac{\\sin a}{\\sin^2(a + y)}\\). Therefore \\(\\dfrac{dy}{dx} = \\dfrac{\\sin^2(a + y)}{\\sin a}\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2296,
+    "solution": "\\(f'(x) = 2x + b\\). Then \\(f'(5) = 10 + b\\) and \\(f'\\left(\\frac{7}{2}\\right) = 7 + b\\). The condition \\(f'(5) = 2f'\\left(\\frac{7}{2}\\right)\\) gives \\(10 + b = 2(7 + b) = 14 + 2b\\), so \\(-4 = b\\), i.e. \\(b = -4\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2297,
+    "solution": "Differentiate \\(y = \\sin^n x\\cos nx\\): \\(\\dfrac{dy}{dx} = n\\sin^{n-1}x\\cos x\\cos nx - n\\sin^n x\\sin nx = n\\sin^{n-1}x(\\cos x\\cos nx - \\sin x\\sin nx) = n\\sin^{n-1}x\\cos(nx + x) = n\\sin^{n-1}x\\cos(n + 1)x\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2298,
+    "solution": "Both numerator and denominator vanish at \\(x = 9\\). Rationalize, or apply the standard form: \\(\\lim_{x \\to 9}\\dfrac{\\sqrt{f(x)} - 3}{\\sqrt{x} - 3} = \\lim_{x \\to 9}\\dfrac{\\frac{f(x) - 9}{\\sqrt{f(x)} + 3}}{\\frac{x - 9}{\\sqrt{x} + 3}} = \\dfrac{f'(9)}{2\\sqrt{f(9)}}\\cdot 2\\sqrt{9} = \\dfrac{3}{2\\cdot 3}\\cdot 6 = \\dfrac{1}{2}\\cdot 6 = 3\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2299,
+    "solution": "Since \\((x - 2)\\) is a factor, by the product rule \\(f'(2)\\) is the product of the remaining factors evaluated at \\(x = 2\\): \\(f'(2) = (2 - 4)(2 - 6)(2 - 8)\\cdots(2 - 2n)\\). There are \\((n - 1)\\) factors, each \\(2 - 2k = -2(k - 1)\\) for \\(k = 2, \\ldots, n\\). So \\(f'(2) = (-2)^{n-1}\\,(1\\cdot 2\\cdots(n-1)) = (-2)^{n-1}\\,(n - 1)!\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2300,
+    "solution": "This is the indeterminate form \\(0^0\\). Take logs: \\(\\ln L = 2\\tan x\\,\\ln(\\sin x)\\). As \\(x \\to 0\\), \\(\\tan x \\to 0\\) and \\(\\sin x \\to 0\\), and \\(2\\tan x\\,\\ln(\\sin x) \\approx 2x\\ln x \\to 0\\) (since \\(x\\ln x \\to 0\\)). So \\(\\ln L = 0\\) and \\(L = e^0 = 1\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2301,
+    "solution": "Factor the numerator: \\(6^x - 3^x - 2^x + 1 = 3^x(2^x - 1) - (2^x - 1) = (3^x - 1)(2^x - 1)\\). So \\(\\dfrac{6^x - 3^x - 2^x + 1}{x^2} = \\dfrac{3^x - 1}{x}\\cdot\\dfrac{2^x - 1}{x} \\to (\\log 3)(\\log 2) = (\\log 2)(\\log 3)\\). Matches option A. Hence (A)."
+  },
+  {
+    "number": 2302,
+    "solution": "For small \\(x\\), \\(\\tan^2\\sqrt{x} \\approx (\\sqrt{x})^2 = x\\). So \\(\\left(1 + \\tan^2\\sqrt{x}\\right)^{1/2x} \\to e^{\\lim x\\cdot\\frac{1}{2x}} = e^{1/2}\\). Thus \\(p = e^{1/2}\\) and \\(\\log p = \\dfrac{1}{2}\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2303,
+    "solution": "Using \\(\\lim_{x \\to \\infty}\\left(1 + \\frac{u(x)}{x}\\right)^{v(x)} = e^{\\lim v(x)\\cdot\\frac{u(x)}{x}}\\): here the exponent is \\(\\lim_{x \\to \\infty} 2x\\left(\\dfrac{a}{x} - \\dfrac{4}{x^2}\\right) = 2a\\). Setting \\(e^{2a} = e^3\\) gives \\(2a = 3\\), so \\(a = \\dfrac{3}{2}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2304,
+    "solution": "Write \\(\\dfrac{x + 5}{x + 2} = 1 + \\dfrac{3}{x + 2}\\). Then \\(\\left(1 + \\dfrac{3}{x + 2}\\right)^x \\to e^{\\lim \\frac{3x}{x + 2}} = e^3\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2305,
+    "solution": "By Stirling's approximation \\(n! \\sim \\left(\\dfrac{n}{e}\\right)^n\\sqrt{2\\pi n}\\), so \\((n!)^{1/n} \\sim \\dfrac{n}{e}(2\\pi n)^{1/2n} \\sim \\dfrac{n}{e}\\). Dividing by \\(n\\) gives \\(\\dfrac{1}{e} = e^{-1}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2306,
+    "solution": "This is a \\(\\frac{0}{0}\\) form at \\(x = a\\). Differentiate numerator and denominator: \\(\\dfrac{d}{dx}(a^x - x^a) = a^x\\ln a - a x^{a-1}\\), at \\(x = a\\) gives \\(a^a\\ln a - a^a = a^a(\\ln a - 1)\\); \\(\\dfrac{d}{dx}(x^x - a^a) = x^x(1 + \\ln x)\\), at \\(x = a\\) gives \\(a^a(1 + \\ln a)\\). The limit is \\(\\dfrac{\\ln a - 1}{1 + \\ln a} = -1\\). Solving: \\(\\ln a - 1 = -1 - \\ln a \\Rightarrow 2\\ln a = 0 \\Rightarrow a = 1\\). Since \\(1\\) is not among options (a), (b), (c), the answer is None of these. Matches option D. Hence (D)."
+  },
+  {
+    "number": 2307,
+    "solution": "Put \\(x = \\dfrac{\\pi}{2} + t\\), \\(t \\to 0\\). Then \\(2x - \\pi = 2t\\) and \\(\\cos x = \\cos\\left(\\frac{\\pi}{2} + t\\right) = -\\sin t \\approx -t\\). So \\(\\dfrac{2x - \\pi}{\\cos x} \\approx \\dfrac{2t}{-t} = -2\\). Matches option C. Hence (C)."
+  },
+  {
+    "number": 2308,
+    "solution": "Expand for small \\(x\\): \\(e^{x^2} \\approx 1 + x^2\\) and \\(\\cos x \\approx 1 - \\dfrac{x^2}{2}\\). Numerator \\(\\approx (1 + x^2) - \\left(1 - \\frac{x^2}{2}\\right) = \\dfrac{3x^2}{2}\\). Denominator \\(\\sin^2 x \\approx x^2\\). So the limit is \\(\\dfrac{3x^2/2}{x^2} = \\dfrac{3}{2}\\). Matches option B. Hence (B)."
+  },
+  {
+    "number": 2309,
+    "solution": "Write \\(\\dfrac{\\sin^2 x}{1 - \\cos x} = \\dfrac{1 - \\cos^2 x}{1 - \\cos x} = \\dfrac{(1 - \\cos x)(1 + \\cos x)}{1 - \\cos x} = 1 + \\cos x\\). As \\(x \\to 0\\), this is \\(1 + 1 = 2\\). Matches option D. Hence (D)."
+  },
+  {
+    "number": 2310,
+    "solution": "Using \\(\\lim_{x \\to \\infty}\\left(1 + \\frac{u}{x} + \\frac{v}{x^2}\\right)^{2x} = e^{\\lim 2x\\left(\\frac{\\lambda}{x} + \\frac{\\mu}{x^2}\\right)} = e^{2\\lambda}\\). Setting \\(e^{2\\lambda} = e^2\\) gives \\(2\\lambda = 2\\), so \\(\\lambda = 1\\); the \\(\\mu\\) term contributes \\(\\dfrac{2\\mu}{x} \\to 0\\) regardless of \\(\\mu\\), so \\(\\mu\\) can be any real constant. Matches option C. Hence (C)."
+  },
+  {
+    "number": 2311,
+    "solution": "The sum \\(\\sqrt{1} + \\sqrt{2} + \\cdots + \\sqrt{n-1} = \\sum_{k=1}^{n-1}\\sqrt{k}\\) behaves like \\(\\int_0^n \\sqrt{x}\\,dx = \\dfrac{2}{3}n^{3/2}\\) for large \\(n\\). Dividing by \\(n\\sqrt{n} = n^{3/2}\\) gives \\(\\dfrac{2}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2312,
+    "solution": "Write the numerator as \\(x(a^x - 1)\\). As \\(x \\to 0\\), \\(a^x - 1 \\approx x\\log a\\) and \\(1 - \\cos x \\approx \\dfrac{x^2}{2}\\). So the expression \\(\\to \\dfrac{x \\cdot x\\log a}{x^2/2} = 2\\log a\\). Hence (C)."
+  },
+  {
+    "number": 2313,
+    "solution": "Rationalize the numerator: \\(\\sqrt{1+x^2} - \\sqrt{1-x+x^2} = \\dfrac{(1+x^2) - (1-x+x^2)}{\\sqrt{1+x^2} + \\sqrt{1-x+x^2}} = \\dfrac{x}{\\sqrt{1+x^2}+\\sqrt{1-x+x^2}} \\to \\dfrac{x}{2}\\). The denominator \\(3^x - 1 \\approx x\\log 3\\). So the limit \\(= \\dfrac{x/2}{x\\log 3} = \\dfrac{1}{2\\log 3} = \\dfrac{1}{\\log 9}\\). Hence (B)."
+  },
+  {
+    "number": 2314,
+    "solution": "Rationalize: multiply by \\(\\dfrac{\\sqrt{4+x}+\\sqrt{1+2x}}{\\sqrt{4+x}+\\sqrt{1+2x}}\\). The denominator becomes \\((4+x) - (1+2x) = 3 - x\\), which cancels with the numerator \\(3 - x\\), leaving \\(\\sqrt{4+x}+\\sqrt{1+2x}\\). At \\(x = 3\\): \\(\\sqrt{7} + \\sqrt{7} = 2\\sqrt{7}\\). Hence (D)."
+  },
+  {
+    "number": 2315,
+    "solution": "Use \\(\\sin x = x - \\dfrac{x^3}{6} + \\cdots\\). Then \\(\\sin x - x = -\\dfrac{x^3}{6} + \\cdots\\), so \\(\\dfrac{\\sin x - x}{x^3} \\to -\\dfrac{1}{6}\\). Hence (D)."
+  },
+  {
+    "number": 2316,
+    "solution": "\\(2a\\sin x - \\sin 2x = 2a\\sin x - 2\\sin x\\cos x = 2\\sin x(a - \\cos x)\\). For the limit over \\(\\tan^3 x \\approx x^3\\) to exist (finite), the factor \\(a - \\cos x\\) must vanish to order \\(x^2\\), forcing \\(a = 1\\). Then \\(2\\sin x(1 - \\cos x) \\approx 2x \\cdot \\dfrac{x^2}{2} = x^3\\), giving limit \\(1\\). So \\(a = 1\\). Hence (B)."
+  },
+  {
+    "number": 2317,
+    "solution": "Let \\(g(x) = f(x^2)\\). Then \\(\\lim_{x\\to 2}\\dfrac{f(4) - f(x^2)}{x-2} = -g'(2)\\) where \\(g'(x) = 2x\\,f'(x^2)\\). So \\(-g'(2) = -2\\cdot 2 \\cdot f'(4) = -4\\cdot 5 = -20\\). Hence (D)."
+  },
+  {
+    "number": 2318,
+    "solution": "This is a \\(1^\\infty\\) form. Take \\(\\ln L = \\lim_{x\\to 0}\\dfrac{1}{x}\\ln\\tan\\left(\\dfrac{\\pi}{4}+x\\right)\\). Since \\(\\tan\\left(\\dfrac{\\pi}{4}+x\\right) = \\dfrac{1+\\tan x}{1-\\tan x} \\approx 1 + 2x\\), \\(\\ln(1+2x) \\approx 2x\\), so \\(\\ln L = \\dfrac{2x}{x} = 2\\). Thus \\(L = e^2\\). Hence (B)."
+  },
+  {
+    "number": 2319,
+    "solution": "It is a \\(\\dfrac{0}{0}\\) form. By L'Hopital's rule, \\(\\lim_{x\\to 1}\\dfrac{x-1}{\\log x} = \\lim_{x\\to 1}\\dfrac{1}{1/x} = 1\\). Hence (A)."
+  },
+  {
+    "number": 2320,
+    "solution": "As \\(x \\to 0\\), \\(\\log_e(1+x) \\approx x\\) and \\(3^x - 1 \\approx x\\log_e 3\\). So the limit \\(= \\dfrac{x}{x\\log_e 3} = \\dfrac{1}{\\log_e 3} = \\log_3 e\\). Hence (C)."
+  },
+  {
+    "number": 2321,
+    "solution": "\\(1^\\infty\\) form. \\(\\ln L = \\lim_{x\\to 0}\\dfrac{1}{x^2}\\ln\\dfrac{1+5x^2}{1+3x^2} = \\lim_{x\\to 0}\\dfrac{1}{x^2}\\left[\\ln(1+5x^2)-\\ln(1+3x^2)\\right] = \\dfrac{5x^2 - 3x^2}{x^2} = 2\\). So \\(L = e^2\\). Hence (B)."
+  },
+  {
+    "number": 2322,
+    "solution": "Numerator \\(= x(2^x - 1)\\). As \\(x\\to 0\\), \\(2^x - 1 \\approx x\\log 2\\) and \\(1-\\cos x \\approx \\dfrac{x^2}{2}\\). So the limit \\(= \\dfrac{x\\cdot x\\log 2}{x^2/2} = 2\\log 2\\). Hence (B)."
+  },
+  {
+    "number": 2323,
+    "solution": "\\(1^\\infty\\) form. \\(\\ln L = \\lim_{x\\to 1}\\tan\\dfrac{\\pi x}{2}\\,\\ln(2-x)\\). Put \\(t = x-1\\): \\(\\ln(2-x) = \\ln(1-t) \\approx -t\\), \\(\\tan\\dfrac{\\pi x}{2} = \\tan\\left(\\dfrac{\\pi}{2}+\\dfrac{\\pi t}{2}\\right) = -\\cot\\dfrac{\\pi t}{2} \\approx -\\dfrac{2}{\\pi t}\\). Product \\(= \\left(-\\dfrac{2}{\\pi t}\\right)(-t) = \\dfrac{2}{\\pi}\\). So \\(L = e^{2/\\pi}\\). Hence (B)."
+  },
+  {
+    "number": 2324,
+    "solution": "It is a \\(\\dfrac{0}{0}\\) form at \\(x=1\\). By L'Hopital's rule, \\(\\lim_{x\\to 1}\\dfrac{x^2 - \\sqrt{x}}{\\sqrt{x}-1} = \\lim_{x\\to 1}\\dfrac{2x - \\frac{1}{2\\sqrt{x}}}{\\frac{1}{2\\sqrt{x}}}\\). At \\(x=1\\): \\(\\dfrac{2 - 1/2}{1/2} = \\dfrac{3/2}{1/2} = 3\\). So the value is \\(3\\) = option C. NOTE: answer key lists D; derivation and the source worked solution give 3 (C). Hence (C)."
+  },
+  {
+    "number": 2325,
+    "solution": "\\(\\lim_{x\\to 0}[1 + x\\ln(1+b^2)]^{1/x} = e^{\\ln(1+b^2)} = 1 + b^2\\). Setting equal to \\(2b\\sin^2\\theta\\): \\(1+b^2 = 2b\\sin^2\\theta \\Rightarrow \\sin^2\\theta = \\dfrac{1+b^2}{2b} \\ge 1\\) (by AM-GM), with equality only when \\(b=1\\), giving \\(\\sin^2\\theta = 1\\), so \\(\\theta = \\pm\\dfrac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 2326,
+    "solution": "It is a \\(\\dfrac{0}{0}\\) form. By L'Hopital's rule, \\(\\lim_{x\\to 1}\\dfrac{x + x^2 + \\cdots + x^n - n}{x-1} = \\lim_{x\\to 1}(1 + 2x + \\cdots + nx^{n-1}) = 1 + 2 + \\cdots + n = \\dfrac{n(n+1)}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2327,
+    "solution": "It is a \\(\\dfrac{0}{0}\\) form. By L'Hopital's rule, \\(\\lim_{x\\to 9}\\dfrac{\\sqrt{f(x)}-3}{\\sqrt{x}-3} = \\lim_{x\\to 9}\\dfrac{f'(x)/(2\\sqrt{f(x)})}{1/(2\\sqrt{x})} = \\dfrac{f'(9)\\sqrt{9}}{\\sqrt{f(9)}} = \\dfrac{4\\cdot 3}{3} = 4\\). Hence (C)."
+  },
+  {
+    "number": 2328,
+    "solution": "By L'Hopital's rule (differentiating the integral with the fundamental theorem), \\(\\lim_{x\\to 0}\\dfrac{1}{3x^2}\\cdot\\dfrac{x\\ln(1+x)}{x^4+4} = \\lim_{x\\to 0}\\dfrac{x\\cdot x}{3x^2(x^4+4)} = \\dfrac{1}{3\\cdot 4} = \\dfrac{1}{12}\\) (using \\(\\ln(1+x)\\approx x\\)). Hence (B)."
+  },
+  {
+    "number": 2329,
+    "solution": "Rationalize: \\(\\dfrac{x}{\\sqrt{1+x}-\\sqrt{1-x}}\\cdot\\dfrac{\\sqrt{1+x}+\\sqrt{1-x}}{\\sqrt{1+x}+\\sqrt{1-x}} = \\dfrac{x(\\sqrt{1+x}+\\sqrt{1-x})}{(1+x)-(1-x)} = \\dfrac{x(\\sqrt{1+x}+\\sqrt{1-x})}{2x} \\to \\dfrac{1+1}{2} = 1\\). Hence (B)."
+  },
+  {
+    "number": 2330,
+    "solution": "Let \\(t = \\ln x \\to 1\\). The expression is \\(t^{1/(1-t)}\\). Take \\(\\ln\\): \\(\\dfrac{\\ln t}{1-t}\\); with \\(\\ln t \\approx (t-1)\\), this is \\(\\dfrac{t-1}{1-t} = -1\\). So \\(L = e^{-1}\\). Hence (C)."
+  },
+  {
+    "number": 2331,
+    "solution": "\\(\\left(\\dfrac{x+6}{x+1}\\right)^{x+4} = \\left(1 + \\dfrac{5}{x+1}\\right)^{x+4}\\). As \\(x\\to\\infty\\), \\(\\ln L = (x+4)\\cdot\\dfrac{5}{x+1} \\to 5\\). So \\(L = e^5\\). Hence (D)."
+  },
+  {
+    "number": 2332,
+    "solution": "Write \\(\\dfrac{x f(5) - 5 f(x)}{x-5}\\). Using \\(\\lim_{x\\to 5}\\dfrac{x f(5) - 5 f(x)}{x-5} = f(5) - 5 f'(5)\\) (apply L'Hopital, \\(\\dfrac{0}{0}\\) since numerator at \\(x=5\\) is \\(5f(5)-5f(5)=0\\)): derivative of numerator \\(= f(5) - 5f'(x)\\), at \\(x=5\\) gives \\(7 - 5\\cdot 7 = -28\\). Hence (D)."
+  },
+  {
+    "number": 2333,
+    "solution": "\\(1^\\infty\\) form. \\(\\ln L = \\lim_{x\\to\\pi/2}\\tan x\\,\\ln\\sin x\\). Let \\(t = x-\\dfrac{\\pi}{2}\\): \\(\\sin x = \\cos t \\approx 1 - \\dfrac{t^2}{2}\\), \\(\\ln\\sin x \\approx -\\dfrac{t^2}{2}\\); \\(\\tan x = -\\cot t \\approx -\\dfrac{1}{t}\\). Product \\(= \\left(-\\dfrac{1}{t}\\right)\\left(-\\dfrac{t^2}{2}\\right) = \\dfrac{t}{2}\\to 0\\). So \\(L = e^0 = 1\\). Hence (A)."
+  },
+  {
+    "number": 2334,
+    "solution": "\\(1^\\infty\\) form. \\(\\ln L = \\lim_{x\\to 0}\\cot^2 x\\,\\ln\\cos x = \\lim_{x\\to 0}\\dfrac{\\ln\\cos x}{\\tan^2 x}\\). With \\(\\ln\\cos x \\approx -\\dfrac{x^2}{2}\\) and \\(\\tan^2 x \\approx x^2\\), \\(\\ln L = -\\dfrac{1}{2}\\). So \\(L = e^{-1/2}\\). Hence (B)."
+  },
+  {
+    "number": 2335,
+    "solution": "\\(\\left(\\dfrac{x+5}{x+2}\\right)^{x+3} = \\left(1 + \\dfrac{3}{x+2}\\right)^{x+3}\\). As \\(x\\to\\infty\\), \\(\\ln L = (x+3)\\cdot\\dfrac{3}{x+2}\\to 3\\). So \\(L = e^3\\). Hence (C)."
+  },
+  {
+    "number": 2336,
+    "solution": "\\(\\tan x - \\sin x = \\sin x\\left(\\dfrac{1}{\\cos x} - 1\\right) = \\dfrac{\\sin x(1-\\cos x)}{\\cos x} \\approx \\dfrac{x\\cdot \\frac{x^2}{2}}{1} = \\dfrac{x^3}{2}\\). So \\(\\dfrac{\\tan x - \\sin x}{x^3}\\to\\dfrac{1}{2}\\). Hence (D)."
+  },
+  {
+    "number": 2337,
+    "solution": "At \\(x = \\dfrac{\\pi}{2}\\), \\(\\cot x \\to 0\\) and \\(\\cos x \\to 0\\), so the form is \\(\\dfrac{0}{0}\\). The expression is the difference quotient of \\(a^t\\) at \\(t = 0\\): \\(\\dfrac{a^{\\cot x} - a^{\\cos x}}{\\cot x - \\cos x} \\to \\left.\\dfrac{d}{dt}a^t\\right|_{t=0} = a^0\\log_e a = \\log_e a\\). Hence (C)."
+  },
+  {
+    "number": 2338,
+    "solution": "It is a \\(\\dfrac{0}{0}\\) form at \\(x=2\\). \\(e^{3x-6}-1 \\approx 3(x-2)\\) and \\(\\sin(2-x) = -\\sin(x-2) \\approx -(x-2)\\). So the limit \\(= \\dfrac{3(x-2)}{-(x-2)} = -3\\). Hence (C)."
+  },
+  {
+    "number": 2339,
+    "solution": "Put \\(x = \\tan\\theta\\), then \\(\\dfrac{2x}{1+x^2} = \\sin 2\\theta\\), so \\(\\sin^{-1}\\dfrac{2x}{1+x^2} = 2\\theta = 2\\tan^{-1}x\\) (for small \\(x\\)). Thus \\(\\dfrac{1}{x}\\cdot 2\\tan^{-1}x = 2\\cdot\\dfrac{\\tan^{-1}x}{x}\\to 2\\cdot 1 = 2\\). Hence (C)."
+  },
+  {
+    "number": 2340,
+    "solution": "For a finite limit the numerator must be \\(0\\) at \\(x=1\\): \\(a+b+c=0\\). By L'Hopital twice: \\(\\lim\\dfrac{2ax+b}{2(x-1)}\\) must be \\(\\dfrac{0}{0}\\) so \\(2a+b=0 \\Rightarrow b=-2a\\); then \\(\\lim\\dfrac{2a}{2} = a = 2\\). So \\(a=2,\\ b=-4,\\ c=2\\). Hence (A)."
+  },
+  {
+    "number": 2341,
+    "solution": "It is a \\(\\dfrac{0}{0}\\) form at \\(x=\\dfrac{\\pi}{3}\\). By L'Hopital's rule, \\(\\lim_{x\\to\\pi/3}\\dfrac{\\sin(\\pi/3 - x)}{2\\cos x - 1} = \\lim_{x\\to\\pi/3}\\dfrac{-\\cos(\\pi/3 - x)}{-2\\sin x} = \\dfrac{-\\cos 0}{-2\\sin(\\pi/3)} = \\dfrac{-1}{-2\\cdot\\frac{\\sqrt{3}}{2}} = \\dfrac{1}{\\sqrt{3}}\\). Hence (C)."
+  },
+  {
+    "number": 2342,
+    "solution": "\\(\\left(1 + \\dfrac{1}{x}\\right)^{x/2} = \\left[\\left(1+\\dfrac{1}{x}\\right)^x\\right]^{1/2} \\to e^{1/2}\\). Hence (D)."
+  },
+  {
+    "number": 2343,
+    "solution": "Let \\(t = h^2 \\to 0^+\\). Then \\(\\dfrac{f(2+t) - f(2-t)}{2t} = \\dfrac{1}{2}\\left[\\dfrac{f(2+t)-f(2)}{t} + \\dfrac{f(2)-f(2-t)}{t}\\right] \\to \\dfrac{1}{2}[f'(2)+f'(2)] = f'(2) = 1\\). Hence (B)."
+  },
+  {
+    "number": 2344,
+    "solution": "For continuity at \\(x=2\\): \\(\\lim_{x\\to 2^-} Kx^2 = \\lim_{x\\to 2^+} 3\\), i.e. \\(K\\cdot 4 = 3\\), so \\(K = \\dfrac{3}{4}\\). Hence (B)."
+  },
+  {
+    "number": 2345,
+    "solution": "For continuity, \\(K = \\lim_{x\\to 0}\\left[\\tan\\left(\\dfrac{\\pi}{4}+x\\right)\\right]^{1/x}\\). As in Q2318, \\(\\tan\\left(\\dfrac{\\pi}{4}+x\\right)\\approx 1+2x\\), so the limit is \\(e^2\\). Thus \\(K = e^2\\). Hence (C)."
+  },
+  {
+    "number": 2346,
+    "solution": "For continuity, \\(K = \\lim_{x\\to 0}\\cot^2 x\\,\\log(\\sec^2 x) = \\lim_{x\\to 0}\\dfrac{-2\\log\\cos x}{\\tan^2 x}\\). With \\(\\log\\cos x \\approx -\\dfrac{x^2}{2}\\) and \\(\\tan^2 x \\approx x^2\\), \\(K = \\dfrac{-2(-x^2/2)}{x^2} = 1\\). Hence (B)."
+  },
+  {
+    "number": 2347,
+    "solution": "\\(f(x) = \\dfrac{x}{2}-1\\) is continuous and equals \\(0\\) at \\(x=2\\). Thus \\(\\dfrac{1}{f(x)}\\) is undefined (discontinuous) at \\(x=2 \\in [0,\\pi]\\). Also \\(\\tan[f(x)]\\) is discontinuous where \\(f(x)=\\pm\\dfrac{\\pi}{2}\\), but \\(f(x) = \\dfrac{x}{2}-1\\) on \\([0,\\pi]\\) ranges in \\([-1, \\frac{\\pi}{2}-1]\\), which avoids \\(\\pm\\dfrac{\\pi}{2}\\), so \\(\\tan[f(x)]\\) is continuous. Hence (C)."
+  },
+  {
+    "number": 2348,
+    "solution": "Continuity at \\(x=1\\): \\(\\dfrac{2(1)^2}{a} = a \\Rightarrow a^2 = 2 \\Rightarrow a = \\pm\\sqrt{2}\\). Continuity at \\(x=\\sqrt{2}\\): \\(a = \\dfrac{2b^2-4b}{(\\sqrt{2})^3} = \\dfrac{2b^2-4b}{2\\sqrt{2}}\\). Taking \\(a=\\sqrt{2}\\): \\(2\\sqrt{2}\\cdot\\sqrt{2} = 4 = 2b^2-4b \\Rightarrow b^2-2b-2=0 \\Rightarrow b = 1\\pm\\sqrt{3}\\). The listed ordered pair is \\((\\sqrt{2}, 1-\\sqrt{3})\\). Hence (C)."
+  },
+  {
+    "number": 2349,
+    "solution": "The greatest integer function \\([x]\\) is discontinuous exactly at integers and continuous at non-integers. Among the options, \\(1.5\\) is a non-integer, so \\(f(x)=[x]\\) is continuous there. Hence (A)."
+  },
+  {
+    "number": 2350,
+    "solution": "As \\(x\\to 0\\), \\(x\\sin\\dfrac{1}{x}\\) is bounded by \\(|x|\\) (since \\(|\\sin(1/x)|\\le 1\\)) so \\(\\lim_{x\\to 0}x\\sin\\dfrac{1}{x} = 0\\). For continuity, \\(k = f(0) = 0\\). Hence (A)."
+  },
+  {
+    "number": 2351,
+    "solution": "Here \\(\\sin x^\\circ = \\sin\\dfrac{\\pi x}{180}\\). So \\(k = \\lim_{x\\to 0}\\dfrac{\\log(1+2x)\\sin\\frac{\\pi x}{180}}{x^2}\\). Using \\(\\log(1+2x)\\approx 2x\\) and \\(\\sin\\frac{\\pi x}{180}\\approx\\frac{\\pi x}{180}\\): \\(k = \\dfrac{2x\\cdot\\frac{\\pi x}{180}}{x^2} = \\dfrac{2\\pi}{180} = \\dfrac{\\pi}{90}\\). Hence (C)."
+  },
+  {
+    "number": 2352,
+    "solution": "For continuity, \\(12 = \\lim_{x\\to 0}\\dfrac{(e^x-1)^2}{\\sin(x/k)\\log(1+x/4)}\\). Using \\(e^x-1\\approx x\\), \\(\\sin(x/k)\\approx x/k\\), \\(\\log(1+x/4)\\approx x/4\\): \\(\\dfrac{x^2}{(x/k)(x/4)} = \\dfrac{x^2}{x^2/(4k)} = 4k\\). So \\(4k = 12 \\Rightarrow k = 3\\). Hence (C)."
+  },
+  {
+    "number": 2353,
+    "solution": "Continuity at \\(a\\) requires the rational-limit \\(\\sin|x|\\to\\sin|a|\\) and the irrational-limit \\(0\\) to agree with \\(f(a)\\). This forces \\(\\sin|a| = 0\\), i.e. \\(a = k\\pi\\). At such points \\(f\\) is continuous; elsewhere it is discontinuous. So \\(f\\) is continuous at \\(x = k\\pi\\), \\(k\\) an integer. Hence (D)."
+  },
+  {
+    "number": 2354,
+    "solution": "For non-integer \\(x\\), \\([x] + [-x] = -1\\); for integer \\(x\\), \\([x]+[-x] = 0\\). Near \\(x=2\\) (non-integer side), \\(\\dfrac{[x]+[-x]}{k} = \\dfrac{-1}{k}\\) (taking the \\(x\\ne 2\\) branch). For continuity \\(f(2) = k = \\lim_{x\\to 2}\\dfrac{[x]+[-x]}{k}\\); equating with the limit \\(-1\\) gives \\(k = -1\\). Hence (C)."
+  },
+  {
+    "number": 2355,
+    "solution": "For \\(x\\to 0^+\\): \\(\\dfrac{x+3}{x+1}\\to 3\\). For \\(x\\to 0^-\\): rationalize \\(\\dfrac{\\sqrt{1+cx}-\\sqrt{1-cx}}{x} = \\dfrac{2cx}{x(\\sqrt{1+cx}+\\sqrt{1-cx})}\\to\\dfrac{2c}{2} = c\\). Continuity requires \\(c = 3\\). Hence (A)."
+  },
+  {
+    "number": 2356,
+    "solution": "\\(f(x) = \\sin 2x - 1\\) is a composition of continuous functions, hence continuous everywhere, in particular at \\(x=0\\) and \\(x=\\pi\\). Hence (A)."
+  },
+  {
+    "number": 2357,
+    "solution": "\\(\\lim_{x\\to 0}\\dfrac{\\log(1+ax)-\\log(1-bx)}{x}\\). Using \\(\\log(1+ax)\\approx ax\\) and \\(\\log(1-bx)\\approx -bx\\): \\(\\dfrac{ax-(-bx)}{x} = a+b\\). So \\(f(0) = a+b\\). Hence (B)."
+  },
+  {
+    "number": 2358,
+    "solution": "Continuity at \\(a\\) requires the irrational-limit \\(x\\to a\\) and the rational-limit \\(0\\) to agree with \\(f(a)\\). This forces \\(a = 0\\). At \\(x=0\\): both limits are \\(0 = f(0)\\), so continuous only at \\(x=0\\). Hence (C)."
+  },
+  {
+    "number": 2359,
+    "solution": "Left limit (\\(x\\to 0^-\\)): \\((1+|\\sin x|)^{a/|\\sin x|}\\to e^a\\). Right limit (\\(x\\to 0^+\\)): \\(e^{\\tan 2x/\\tan 3x}\\to e^{2/3}\\) (since \\(\\dfrac{\\tan 2x}{\\tan 3x}\\to\\dfrac{2}{3}\\)). Value \\(f(0) = b\\). Continuity: \\(e^a = b = e^{2/3} \\Rightarrow a = \\dfrac{2}{3},\\ b = e^{2/3}\\). Hence (B)."
+  },
+  {
+    "number": 2360,
+    "solution": "At an integer \\(n\\), the factor \\(\\cos\\left(\\dfrac{2x-1}{2}\\pi\\right) = \\cos\\left(x\\pi - \\dfrac{\\pi}{2}\\right) = \\sin(x\\pi)\\), which is \\(0\\) at integers. So the jump in \\([x]\\) is multiplied by \\(\\sin(x\\pi)\\to 0\\), making \\(f\\) continuous at every integer. At non-integers \\([x]\\) is constant and the product is continuous. So \\(f\\) is continuous for every real \\(x\\). Hence (C)."
+  },
+  {
+    "number": 2361,
+    "solution": "\\(f(x) = \\dfrac{1}{\\log_e|x|}\\) is discontinuous where it is undefined: at \\(x=0\\) (\\(\\log\\) undefined) and where \\(\\log_e|x| = 0\\), i.e. \\(|x| = 1 \\Rightarrow x = \\pm 1\\). That is \\(3\\) points: \\(0, 1, -1\\). Hence (C)."
+  },
+  {
+    "number": 2362,
+    "solution": "Expand the determinant: \\(f(x) = \\sin x(x^2 - x) - \\cos x(x^3 - 2x^2) + \\tan x(-x^3)\\). Using \\(\\sin x\\approx x\\), \\(\\cos x\\approx 1\\), \\(\\tan x\\approx x\\): the lowest-order term is \\(x\\cdot(x^2-x) - 1\\cdot(x^3-2x^2) = (x^3 - x^2) - (x^3 - 2x^2) = x^2\\). So \\(\\dfrac{f(x)}{x^2}\\to 1\\) = option A. NOTE: answer key lists B (0); careful series expansion gives 1 (A). Hence (A)."
+  },
+  {
+    "number": 2363,
+    "solution": "Left limit (\\(x\\to 0^-\\)): \\(\\dfrac{\\sin(p+1)x + \\sin x}{x}\\to (p+1) + 1 = p+2\\). Right limit (\\(x\\to 0^+\\)): \\(\\dfrac{\\sqrt{x+x^2}-\\sqrt{x}}{x^{3/2}} = \\dfrac{\\sqrt{x}(\\sqrt{1+x}-1)}{x^{3/2}} = \\dfrac{\\sqrt{1+x}-1}{x}\\to\\dfrac{1}{2}\\). For continuity \\(q = p+2 = \\dfrac{1}{2}\\), giving \\(p = -\\dfrac{3}{2},\\ q = \\dfrac{1}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2364,
+    "solution": "\\(f(f(x)) = \\dfrac{1}{2 - f(x)} = \\dfrac{1}{2 - \\frac{1}{2-x}} = \\dfrac{2-x}{2(2-x) - 1} = \\dfrac{2-x}{3-2x}\\). Discontinuities occur where the inner function is undefined (\\(x = 2\\)) and where the outer denominator is zero (\\(3 - 2x = 0 \\Rightarrow x = \\dfrac{3}{2}\\)). So \\(x = 2, \\dfrac{3}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2365,
+    "solution": "\\(f(x) = |x| + |x-1|\\) is a sum of modulus functions, continuous everywhere. At \\(x=0\\): left and right limits both equal \\(f(0) = 1\\); at \\(x=1\\): both limits equal \\(f(1) = 1\\). So \\(f\\) is continuous at both \\(x=0\\) and \\(x=1\\). Hence (A)."
+  },
+  {
+    "number": 2366,
+    "solution": "As \\(x\\to 0\\), \\(x\\sin(\\pi/x)\\) is bounded by \\(|x|\\to 0\\) (since \\(|\\sin(\\pi/x)|\\le 1\\)), so \\(\\lim_{x\\to 0}f(x) = 0\\). For continuity everywhere, \\(f(0) = 0\\). Hence (C)."
+  },
+  {
+    "number": 2367,
+    "solution": "Note \\(\\pi^2 - 4\\pi x + 4x^2 = (\\pi - 2x)^2\\). Put \\(t = x - \\dfrac{\\pi}{2}\\), so \\(\\pi - 2x = -2t\\), \\((\\pi-2x)^2 = 4t^2\\). First factor: \\(\\dfrac{1-\\sin x}{(\\pi-2x)^2} = \\dfrac{1-\\cos t}{4t^2}\\to\\dfrac{t^2/2}{4t^2} = \\dfrac{1}{8}\\). Second factor: \\(\\dfrac{\\log\\sin x}{\\log(1+(\\pi-2x)^2)} = \\dfrac{\\log\\cos t}{\\log(1+4t^2)}\\to\\dfrac{-t^2/2}{4t^2} = -\\dfrac{1}{8}\\). Product \\(= \\dfrac{1}{8}\\cdot\\left(-\\dfrac{1}{8}\\right) = -\\dfrac{1}{64}\\). So \\(k = -\\dfrac{1}{64}\\). Hence (C)."
+  },
+  {
+    "number": 2368,
+    "solution": "\\(\\lim_{x\\to 0}\\dfrac{2x - \\sin^{-1}x}{2x + \\tan^{-1}x} = \\lim_{x\\to 0}\\dfrac{2 - \\frac{\\sin^{-1}x}{x}}{2 + \\frac{\\tan^{-1}x}{x}} = \\dfrac{2 - 1}{2 + 1} = \\dfrac{1}{3}\\). So \\(f(0) = \\dfrac{1}{3}\\). Hence (D)."
+  },
+  {
+    "number": 2369,
+    "solution": "\\([x]\\) is discontinuous at every integer. In \\(\\left(-\\dfrac{7}{2}, 100\\right)\\) the integers are \\(-3, -2, -1, 0, 1, \\ldots, 99\\). Counting: from \\(-3\\) to \\(99\\) inclusive gives \\(99 - (-3) + 1 = 103\\) integers, hence \\(103\\) discontinuities. Hence (D)."
+  },
+  {
+    "number": 2370,
+    "solution": "On \\((1,2)\\), \\(x^3\\) increases from \\(1\\) to \\(8\\), so \\(x^3 - 3\\) increases from \\(-2\\) to \\(5\\). \\([x^3-3]\\) jumps at each integer value of \\(x^3 - 3\\), i.e. at \\(x^3 - 3 = -1, 0, 1, 2, 3, 4\\) (six values), giving \\(x^3 = 2,3,4,5,6,7\\), all in \\((1,2)\\). So \\(6\\) points of discontinuity. Hence (B)."
+  },
+  {
+    "number": 2371,
+    "solution": "\\(f(x) = |x| + |x|\\) (equivalently \\(2|x|\\)) is a modulus-type function, continuous for all real \\(x\\), i.e. \\(x\\in(-\\infty,\\infty)\\). Hence (A)."
+  },
+  {
+    "number": 2372,
+    "solution": "Near \\(x=1\\): for \\(x>1\\), \\(x - x^2 < 0\\) so \\(|x-x^2| = x^2 - x\\) and \\(f(x) = x - (x^2 - x) = 2x - x^2\\), giving \\(f(1^+) = 1\\). For \\(x<1\\) (close to 1), \\(x-x^2>0\\) so \\(f(x) = x - (x - x^2) = x^2\\), giving \\(f(1^-) = 1\\). And \\(f(1) = 1\\). So \\(f\\) is continuous at \\(x=1\\). Hence (A)."
+  },
+  {
+    "number": 2373,
+    "solution": "For continuity at \\(a\\), the rational-limit (\\(x\\to a\\)) and irrational-limit (\\(1-x\\to 1-a\\)) must agree with \\(f(a)\\), forcing \\(a = 1 - a\\), i.e. \\(a = \\dfrac{1}{2}\\). The source key marks the answer as 0 points (option C). NOTE: standard analysis gives continuity at exactly \\(x = \\dfrac{1}{2}\\) (1 point, option B); the source treats it as none. Hence (C)."
+  },
+  {
+    "number": 2374,
+    "solution": "Left limit (\\(x\\to 1^-\\)): \\(1 - x^2 \\to 0\\). Right limit (\\(x\\to 1^+\\)): \\(1 + x^2 \\to 2\\). Since left limit \\(\\ne\\) right limit, \\(f\\) is not continuous at \\(x=1\\). Hence (A)."
+  },
+  {
+    "number": 2375,
+    "solution": "Discontinuities occur where the denominator \\(1 - \\cos 4x = 0\\), i.e. \\(\\cos 4x = 1 \\Rightarrow 4x = 2n\\pi \\Rightarrow x = \\dfrac{n\\pi}{2}\\). In a fundamental interval these are \\(x = 0, \\dfrac{\\pi}{2}\\) (and \\(\\pi\\)), so the discontinuity set is \\(\\{0, \\dfrac{\\pi}{2}\\}\\) = option D. NOTE: answer key lists C \\(\\{0, \\pi/6, \\pi/4\\}\\); the denominator-zero analysis and the source worked solution give \\(x = n\\pi/2\\), i.e. option D. Hence (D)."
+  },
+  {
+    "number": 2376,
+    "solution": "Combine: \\(f(x) = \\dfrac{e^{2x} - 1 - 2x}{x(e^{2x}-1)}\\). Expand \\(e^{2x} - 1 = 2x + 2x^2 + \\cdots\\): numerator \\(= 2x^2 + \\cdots\\), denominator \\(= x(2x + 2x^2) = 2x^2 + \\cdots\\). So \\(\\lim_{x\\to 0}f(x) = 1\\). Define \\(f(0) = 1\\). Hence (B)."
+  },
+  {
+    "number": 2377,
+    "solution": "\\(f(x) = \\dfrac{|2x-3|}{2x-3}\\) equals \\(+1\\) for \\(x>\\dfrac{3}{2}\\) and \\(-1\\) for \\(x<\\dfrac{3}{2}\\). The right and left limits differ (\\(+1\\ne -1\\)), so \\(f\\) is discontinuous at \\(x = \\dfrac{3}{2}\\). Hence (B)."
+  },
+  {
+    "number": 2378,
+    "solution": "As \\(x\\to 0^+\\), \\(e^{1/x}\\to\\infty\\), so \\(f\\to\\dfrac{e^{1/x}}{1+e^{1/x}}\\to 1\\). As \\(x\\to 0^-\\), \\(e^{1/x}\\to 0\\), so \\(f\\to 0\\). The two one-sided limits differ, so \\(f\\) is discontinuous at \\(x=0\\). Hence (B)."
+  },
+  {
+    "number": 2379,
+    "solution": "\\(\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^2} = \\lim_{x\\to 0}\\dfrac{2\\sin^2(x/2)}{x^2} = \\dfrac{2\\cdot(x/2)^2}{x^2} = \\dfrac{1}{2}\\). For continuity \\(k = \\dfrac{1}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2380,
+    "solution": "\\(\\log_e(1 + x^2\\tan x) \\approx x^2\\tan x \\approx x^2\\cdot x = x^3\\), and \\(\\sin x^3 \\approx x^3\\). So \\(\\lim_{x\\to 0}f(x) = \\dfrac{x^3}{x^3} = 1\\). Define \\(f(0) = 1\\). Hence (A)."
+  },
+  {
+    "number": 2381,
+    "solution": "\\(f(x) = |x| + |1-x|\\) is a sum of modulus functions, continuous for all \\(x\\) on \\([-2,3]\\). At the corner points \\(x=0\\) and \\(x=1\\) the left and right limits agree with the function value, so there are no discontinuities. The set of points of discontinuity is empty. Hence (D)."
+  }
+]
