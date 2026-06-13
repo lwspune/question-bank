@@ -1,0 +1,262 @@
+[
+  {
+    "number": 2886,
+    "solution": "The curve \\(y = \\ln(x + e)\\) meets the \\(x\\)-axis where \\(\\ln(x + e) = 0 \\Rightarrow x + e = 1 \\Rightarrow x = 1 - e\\), and meets the \\(y\\)-axis at \\(x = 0\\), giving \\(y = \\ln e = 1\\). The region enclosed with the axes is \\(\\int_{1-e}^{0} \\ln(x + e)\\,dx\\). Put \\(u = x + e\\): \\(\\int_{1}^{e} \\ln u\\,du = [u\\ln u - u]_{1}^{e} = (e - e) - (0 - 1) = 1\\). Hence (A)."
+  },
+  {
+    "number": 2887,
+    "solution": "The curve \\(y = x^2\\) meets \\(y = 16\\) at \\(x = \\pm 4\\). Area \\(= \\int_{-4}^{4}(16 - x^2)\\,dx = 2\\int_{0}^{4}(16 - x^2)\\,dx = 2\\left[16x - \\frac{x^3}{3}\\right]_{0}^{4} = 2\\left(64 - \\frac{64}{3}\\right) = 2\\cdot\\frac{128}{3} = \\frac{256}{3}\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2888,
+    "solution": "Over \\([0, \\pi]\\), \\(\\cos x\\) is positive on \\([0, \\pi/2]\\) and negative on \\([\\pi/2, \\pi]\\), so the area is \\(\\int_{0}^{\\pi}|\\cos x|\\,dx = 2\\int_{0}^{\\pi/2}\\cos x\\,dx = 2[\\sin x]_{0}^{\\pi/2} = 2(1) = 2\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2889,
+    "solution": "The parabola \\(y = 3 - x^2\\) meets \\(y = 0\\) at \\(x = \\pm\\sqrt{3}\\). Area \\(= \\int_{-\\sqrt{3}}^{\\sqrt{3}}(3 - x^2)\\,dx = 2\\left[3x - \\frac{x^3}{3}\\right]_{0}^{\\sqrt{3}} = 2\\left(3\\sqrt{3} - \\frac{3\\sqrt{3}}{3}\\right) = 2(3\\sqrt{3} - \\sqrt{3}) = 4\\sqrt{3}\\). Hence (C)."
+  },
+  {
+    "number": 2890,
+    "solution": "The locus \\(|x| + |y| = 1\\) joins the points \\((1,0), (0,1), (-1,0), (0,-1)\\) by straight segments, forming a square (a rhombus with equal diagonals) of diagonal length \\(2\\) along each axis. Hence (A) a square."
+  },
+  {
+    "number": 2891,
+    "solution": "The lines \\(y = 2x + 1\\) and \\(y = 3x + 1\\) meet where \\(2x + 1 = 3x + 1 \\Rightarrow x = 0\\). For \\(0 \\le x \\le 4\\) the difference is \\((3x + 1) - (2x + 1) = x\\). Area \\(= \\int_{0}^{4} x\\,dx = \\left[\\frac{x^2}{2}\\right]_{0}^{4} = 8\\) sq. units. Hence (D)."
+  },
+  {
+    "number": 2892,
+    "solution": "The line \\(x = \\sqrt{3}\\,y\\), i.e. \\(y = \\frac{x}{\\sqrt{3}}\\), makes an angle of \\(30^\\circ\\) with the \\(x\\)-axis. The region bounded by this line, the \\(x\\)-axis and the circle \\(x^2 + y^2 = 4\\) (radius \\(2\\)) in the first quadrant is a circular sector of angle \\(30^\\circ = \\frac{\\pi}{6}\\). Its area \\(= \\frac{1}{2}r^2\\theta = \\frac{1}{2}(4)\\cdot\\frac{\\pi}{6} = \\frac{\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2893,
+    "solution": "Integrating with respect to \\(y\\) between \\(y = 1\\) and \\(y = 4\\), with \\(x = \\sqrt{y}\\): Area \\(= \\int_{1}^{4}\\sqrt{y}\\,dy = \\left[\\frac{2}{3}y^{3/2}\\right]_{1}^{4} = \\frac{2}{3}(8 - 1) = \\frac{14}{3}\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2894,
+    "solution": "The curves \\(y^2 = 2x\\) and \\(y = x\\) meet where \\(x^2 = 2x \\Rightarrow x = 0, 2\\). The parabola \\(y = \\sqrt{2x}\\) lies above the line on \\([0,2]\\). Area \\(= \\int_{0}^{2}(\\sqrt{2x} - x)\\,dx = \\left[\\sqrt{2}\\cdot\\frac{2}{3}x^{3/2} - \\frac{x^2}{2}\\right]_{0}^{2} = \\frac{2\\sqrt{2}}{3}\\cdot 2\\sqrt{2} - 2 = \\frac{8}{3} - 2 = \\frac{2}{3}\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2895,
+    "solution": "\\(y^2 = 16 - x^2\\) is the circle \\(x^2 + y^2 = 16\\) of radius \\(4\\); with \\(y = 0\\), \\(x = 0\\) and the first quadrant, the region is a quarter circle. Area \\(= \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi(16) = 4\\pi\\) square units. Hence (D)."
+  },
+  {
+    "number": 2896,
+    "solution": "The line \\(y = 2x + 2\\) meets \\(y = 4\\) at \\(x = 1\\) and meets the \\(y\\)-axis (\\(x = 0\\)) at \\(y = 2\\). The bounded region is a triangle with vertices \\((0, 2), (0, 4), (1, 4)\\). Area \\(= \\frac{1}{2}\\times 2 \\times 1 = 1\\) square unit. Hence (A)."
+  },
+  {
+    "number": 2897,
+    "solution": "\\(y = 2x - x^2\\) meets the \\(x\\)-axis at \\(x = 0, 2\\) and is positive between them. Area \\(= \\int_{0}^{2}(2x - x^2)\\,dx = \\left[x^2 - \\frac{x^3}{3}\\right]_{0}^{2} = 4 - \\frac{8}{3} = \\frac{4}{3}\\) sq. units. Hence (B)."
+  },
+  {
+    "number": 2898,
+    "solution": "On \\([-2, 0]\\), \\(y = x^3\\) is negative, so its contribution to area is \\(\\int_{-2}^{0}(-x^3)\\,dx = -\\left[\\frac{x^4}{4}\\right]_{-2}^{0} = -\\left(0 - \\frac{16}{4}\\right) = 4\\). On \\([0, 1]\\), \\(\\int_{0}^{1}x^3\\,dx = \\frac{1}{4}\\). Total area \\(= 4 + \\frac{1}{4} = \\frac{17}{4}\\) sq. units. Hence (D)."
+  },
+  {
+    "number": 2899,
+    "solution": "For \\(y^2 = 4x\\), \\(2y\\,y' = 4 \\Rightarrow y' = \\frac{2}{y}\\). At \\((1, 2)\\) the slope is \\(1\\), so the normal slope is \\(-1\\): \\(y - 2 = -(x - 1) \\Rightarrow y = -x + 3\\), meeting the \\(x\\)-axis at \\(x = 3\\). Area \\(=\\) (area under parabola from \\(0\\) to \\(1\\)) \\(+\\) (triangle under the normal from \\(1\\) to \\(3\\)) \\(= \\int_{0}^{1}2\\sqrt{x}\\,dx + \\frac{1}{2}\\cdot 2 \\cdot 2 = \\frac{4}{3} + 2 = \\frac{10}{3}\\). Hence (A)."
+  },
+  {
+    "number": 2900,
+    "solution": "\\(y^2 = 9x\\) and \\(y = 3x\\) meet where \\((3x)^2 = 9x \\Rightarrow 9x^2 = 9x \\Rightarrow x = 0, 1\\). The parabola \\(y = 3\\sqrt{x}\\) is above the line on \\([0,1]\\). Area \\(= \\int_{0}^{1}(3\\sqrt{x} - 3x)\\,dx = 3\\left[\\frac{2}{3}x^{3/2} - \\frac{x^2}{2}\\right]_{0}^{1} = 3\\left(\\frac{2}{3} - \\frac{1}{2}\\right) = 3\\cdot\\frac{1}{6} = \\frac{1}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2901,
+    "solution": "\\(y = |x| - 1\\) and \\(y = -|x| + 1\\) meet where \\(|x| - 1 = -|x| + 1 \\Rightarrow |x| = 1\\), at \\((\\pm 1, 0)\\); they also meet the \\(y\\)-axis at \\((0, -1)\\) and \\((0, 1)\\). The enclosed region is a square (rhombus) with diagonals of length \\(2\\) each. Area \\(= \\frac{1}{2}d_1 d_2 = \\frac{1}{2}(2)(2) = 2\\) sq. units. Hence (B)."
+  },
+  {
+    "number": 2902,
+    "solution": "Bounded by \\(y = x^3\\), \\(y = 8\\) and the \\(y\\)-axis. Integrating with respect to \\(y\\) with \\(x = y^{1/3}\\): Area \\(= \\int_{0}^{8}y^{1/3}\\,dy = \\left[\\frac{3}{4}y^{4/3}\\right]_{0}^{8} = \\frac{3}{4}\\cdot 16 = 12\\) sq. units. Hence (D)."
+  },
+  {
+    "number": 2903,
+    "solution": "The tangent to \\(y = x^3\\) at \\((1, 1)\\) has slope \\(3\\): \\(y = 3x - 2\\), meeting the \\(x\\)-axis at \\(x = \\frac{2}{3}\\). The required area \\(=\\) (area under the curve from \\(0\\) to \\(1\\)) \\(-\\) (triangle under the tangent from \\(\\frac{2}{3}\\) to \\(1\\)) \\(= \\int_{0}^{1}x^3\\,dx - \\frac{1}{2}\\left(1 - \\frac{2}{3}\\right)(1) = \\frac{1}{4} - \\frac{1}{6} = \\frac{1}{12}\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2904,
+    "solution": "\\(y = |x|\\) and \\(y = -|x| + 2\\) meet where \\(|x| = 1\\), at \\((\\pm 1, 1)\\). For \\(-1 \\le x \\le 1\\) the upper curve is \\(-|x| + 2\\). Area \\(= \\int_{-1}^{1}\\big((-|x| + 2) - |x|\\big)\\,dx = 2\\int_{0}^{1}(2 - 2x)\\,dx = 2\\left[2x - x^2\\right]_{0}^{1} = 2(1) = 2\\) sq. units. Hence (C)."
+  },
+  {
+    "number": 2905,
+    "solution": "On \\([-1, 2]\\), \\(y = x^2 + 1\\) lies above \\(y = 2x - 2\\) since \\((x^2 + 1) - (2x - 2) = x^2 - 2x + 3 > 0\\). Area \\(= \\int_{-1}^{2}(x^2 - 2x + 3)\\,dx = \\left[\\frac{x^3}{3} - x^2 + 3x\\right]_{-1}^{2} = \\frac{14}{3} - \\left(-\\frac{13}{3}\\right) = \\frac{27}{3} = 9\\) sq. units. Hence (C)."
+  },
+  {
+    "number": 2906,
+    "solution": "\\(y = x^3\\) and \\(y = x\\) meet at \\(x = 0, \\pm 1\\). By symmetry the total enclosed area \\(= 2\\int_{0}^{1}(x - x^3)\\,dx = 2\\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_{0}^{1} = 2\\left(\\frac{1}{2} - \\frac{1}{4}\\right) = 2\\cdot\\frac{1}{4} = \\frac{1}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2907,
+    "solution": "Area \\(= \\int_{1}^{2} mx\\,dx = m\\left[\\frac{x^2}{2}\\right]_{1}^{2} = m\\left(2 - \\frac{1}{2}\\right) = \\frac{3m}{2}\\). Setting \\(\\frac{3m}{2} = 6\\) gives \\(m = 4\\). Hence (D)."
+  },
+  {
+    "number": 2908,
+    "solution": "The curve \\(y = \\sqrt{x}\\) (i.e. \\(x = y^2\\)) and the line \\(x = 2y + 3\\) meet where \\(2\\sqrt{x} - x + 3 = 0\\); with \\(t = \\sqrt{x}\\), \\(t^2 - 2t - 3 = 0 \\Rightarrow t = 3\\), so \\(x = 9, y = 3\\). Integrating with respect to \\(y\\) from \\(0\\) to \\(3\\): Area \\(= \\int_{0}^{3}\\big((2y + 3) - y^2\\big)\\,dy = \\left[y^2 + 3y - \\frac{y^3}{3}\\right]_{0}^{3} = 9 + 9 - 9 = 9\\) sq. units. (The book's key marks (C) \\(\\frac{27}{4}\\), but both this derivation and the book's own worked solution give \\(9\\).) Hence (D)."
+  },
+  {
+    "number": 2909,
+    "solution": "The line \\(y = x\\) bisects the first quadrant of the circle \\(x^2 + y^2 = 16\\). The first-quadrant quarter circle has area \\(\\frac{1}{4}\\pi(16) = 4\\pi\\); the line divides it into two equal parts, each of area \\(2\\pi\\). Hence (C)."
+  },
+  {
+    "number": 2910,
+    "solution": "The area bounded by \\(y^2=4ax\\) and its latus rectum is \\(\\dfrac{8a^2}{3}\\). Hence (B)."
+  },
+  {
+    "number": 2911,
+    "solution": "On \\([0, 3\\pi]\\), \\(\\sin\\frac{x}{3} \\ge 0\\). Area \\(= \\int_{0}^{3\\pi}\\sin\\frac{x}{3}\\,dx = \\left[-3\\cos\\frac{x}{3}\\right]_{0}^{3\\pi} = -3\\cos\\pi + 3\\cos 0 = 3 + 3 = 6\\). Hence (C)."
+  },
+  {
+    "number": 2912,
+    "solution": "\\(y = \\log(x - 2)\\) meets the \\(x\\)-axis where \\(x - 2 = 1 \\Rightarrow x = 3\\). Area \\(= \\int_{3}^{4}\\log(x - 2)\\,dx\\). Put \\(u = x - 2\\): \\(\\int_{1}^{2}\\log u\\,du = [u\\log u - u]_{1}^{2} = (2\\log 2 - 2) - (0 - 1) = 2\\log 2 - 1\\). Hence (D)."
+  },
+  {
+    "number": 2913,
+    "solution": "The parabola \\(x = y^2\\) and line \\(x = \\frac{y}{m}\\) meet at \\(y = 0\\) and \\(y = \\frac{1}{m}\\). Area \\(= \\int_{0}^{1/m}\\left(\\frac{y}{m} - y^2\\right)\\,dy = \\left[\\frac{y^2}{2m} - \\frac{y^3}{3}\\right]_{0}^{1/m} = \\frac{1}{2m^3} - \\frac{1}{3m^3} = \\frac{1}{6m^3}\\). Setting \\(\\frac{1}{6|m|^3} = \\frac{1}{48}\\) gives \\(|m|^3 = 8 \\Rightarrow |m| = 2\\), so \\(m = 2\\) or \\(m = -2\\). Hence (A) and (D)."
+  },
+  {
+    "number": 2914,
+    "solution": "\\(y = x^2\\) and \\(y = x + 2\\) meet where \\(x^2 - x - 2 = 0 \\Rightarrow x = -1, 2\\). In the first quadrant take \\(x\\) from \\(0\\) to \\(2\\) with the line above the curve. Area \\(= \\int_{0}^{2}(x + 2 - x^2)\\,dx = \\left[\\frac{x^2}{2} + 2x - \\frac{x^3}{3}\\right]_{0}^{2} = 2 + 4 - \\frac{8}{3} = \\frac{10}{3}\\). Hence (A)."
+  },
+  {
+    "number": 2915,
+    "solution": "\\(2|x| + 3|y| \\le 6\\) is a rhombus with vertices \\((\\pm 3, 0)\\) and \\((0, \\pm 2)\\), so its diagonals are \\(6\\) and \\(4\\). Area \\(= \\frac{1}{2}d_1 d_2 = \\frac{1}{2}(6)(4) = 12\\). Hence (A)."
+  },
+  {
+    "number": 2916,
+    "solution": "\\(y = x + 2\\) and \\(y = 2 - x\\) meet at \\((0, 2)\\); they meet the \\(x\\)-axis at \\(x = -2\\) and \\(x = 2\\). The region is a triangle with base \\(4\\) and height \\(2\\). Area \\(= \\frac{1}{2}(4)(2) = 4\\) square units. Hence (C)."
+  },
+  {
+    "number": 2917,
+    "solution": "The line \\(y = 2\\) meets \\(y^2 = 4x\\) at \\(x = 1\\). Integrating with respect to \\(y\\) from \\(0\\) to \\(2\\) (region between the \\(y\\)-axis and the parabola \\(x = \\frac{y^2}{4}\\)): Area \\(= \\int_{0}^{2}\\frac{y^2}{4}\\,dy = \\left[\\frac{y^3}{12}\\right]_{0}^{2} = \\frac{8}{12} = \\frac{2}{3}\\) sq. unit. Hence (C)."
+  },
+  {
+    "number": 2918,
+    "solution": "Bounded by \\(y = \\sin^{-1}x\\), \\(x = 0\\) and \\(y = \\pm\\frac{\\pi}{2}\\). By symmetry, area \\(= 2\\int_{0}^{\\pi/2}\\sin y\\,dy\\) (since \\(x = \\sin y\\)) \\(= 2[-\\cos y]_{0}^{\\pi/2} = 2(0 + 1) = 2\\). Hence (B)."
+  },
+  {
+    "number": 2919,
+    "solution": "Total area between \\(y = \\sin x\\) and the \\(x\\)-axis over \\([0, 2\\pi]\\) is \\(\\int_{0}^{2\\pi}|\\sin x|\\,dx = 2\\int_{0}^{\\pi}\\sin x\\,dx = 2(2) = 4\\) sq. units. Hence (D)."
+  },
+  {
+    "number": 2920,
+    "solution": "On \\([3, 5]\\), \\(y = 3x - 5 > 0\\). Area \\(= \\int_{3}^{5}(3x - 5)\\,dx = \\left[\\frac{3x^2}{2} - 5x\\right]_{3}^{5} = \\left(\\frac{75}{2} - 25\\right) - \\left(\\frac{27}{2} - 15\\right) = \\frac{25}{2} - \\left(-\\frac{3}{2}\\right) = 14\\) sq. units. Hence (D)."
+  },
+  {
+    "number": 2921,
+    "solution": "\\(y^2 = x\\) and \\(y = x\\) meet at \\(x = 0, 1\\), with the parabola above the line. Area \\(= \\int_{0}^{1}(\\sqrt{x} - x)\\,dx = \\left[\\frac{2}{3}x^{3/2} - \\frac{x^2}{2}\\right]_{0}^{1} = \\frac{2}{3} - \\frac{1}{2} = \\frac{1}{6}\\) sq. unit. Hence (D)."
+  },
+  {
+    "number": 2922,
+    "solution": "\\(y = 3x + 2\\) meets the \\(x\\)-axis at \\(x = -\\frac{2}{3}\\). Taking the magnitude of area on each side: \\(\\int_{-1}^{-2/3}|3x + 2|\\,dx = \\frac{1}{6}\\) and \\(\\int_{-2/3}^{1}(3x + 2)\\,dx = \\frac{25}{6}\\). Total \\(= \\frac{1}{6} + \\frac{25}{6} = \\frac{26}{6} = \\frac{13}{3}\\). Hence (A)."
+  },
+  {
+    "number": 2923,
+    "solution": "On \\([0, \\pi]\\), \\(\\sin x \\ge 0\\). Area \\(= \\int_{0}^{\\pi}\\sin x\\,dx = [-\\cos x]_{0}^{\\pi} = 1 + 1 = 2\\) sq. units. Hence (C)."
+  },
+  {
+    "number": 2924,
+    "solution": "\\(y^2 = x\\) requires \\(x \\ge 0\\), so \\(y = |x| = x\\) here. They meet where \\(x^2 = x \\Rightarrow x = 0, 1\\), with \\(\\sqrt{x} \\ge x\\) on \\([0,1]\\). Area \\(= \\int_{0}^{1}(\\sqrt{x} - x)\\,dx = \\frac{2}{3} - \\frac{1}{2} = \\frac{1}{6}\\). Hence (A)."
+  },
+  {
+    "number": 2925,
+    "solution": "The region bounded by \\(y = e^x\\), \\(x = 0\\) and \\(y = e\\) has area \\(\\int_{0}^{1}(e - e^x)\\,dx = e - (e - 1) = 1\\); this is option (C). Integrating with respect to \\(y\\), \\(x = \\ln y\\) from \\(y = 1\\) to \\(e\\) gives \\(\\int_{1}^{e}\\ln y\\,dy = 1\\), option (D). The substitution \\(u = e + 1 - y\\) shows \\(\\int_{1}^{e}\\ln(e + 1 - y)\\,dy = 1\\), option (B). Option (A) \\(e - 1 \\ne 1\\). Hence (B), (C) and (D)."
+  },
+  {
+    "number": 2926,
+    "solution": "Writing \\(x = \\frac{y^2}{4}\\) and \\(x = \\frac{y + 4}{2}\\), they meet where \\(y^2 = 2y + 8 \\Rightarrow y = 4, -2\\). Area \\(= \\int_{-2}^{4}\\left(\\frac{y + 4}{2} - \\frac{y^2}{4}\\right)\\,dy = \\left[\\frac{y^2}{4} + 2y - \\frac{y^3}{12}\\right]_{-2}^{4} = \\frac{20}{3} - \\left(-\\frac{7}{3}\\right) = \\frac{27}{3} = 9\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2927,
+    "solution": "\\(y = 1 - |x|\\) meets the \\(x\\)-axis at \\((\\pm 1, 0)\\), forming a triangle with base \\(2\\) and height \\(1\\). Area \\(= \\frac{1}{2}(2)(1) = 1\\) sq. unit. Hence (A)."
+  },
+  {
+    "number": 2928,
+    "solution": "The parabola \\(x = 4 - y^2\\) meets the \\(Y\\)-axis (\\(x = 0\\)) at \\(y = \\pm 2\\). Area \\(= \\int_{-2}^{2}(4 - y^2)\\,dy = 2\\left[4y - \\frac{y^3}{3}\\right]_{0}^{2} = 2\\left(8 - \\frac{8}{3}\\right) = 2\\cdot\\frac{16}{3} = \\frac{32}{3}\\) sq. units. Hence (C)."
+  },
+  {
+    "number": 2929,
+    "solution": "For \\(y^2 = 8x\\), \\(4a = 8 \\Rightarrow a = 2\\), so the latus rectum is \\(x = 2\\). Area \\(= 2\\int_{0}^{2}\\sqrt{8x}\\,dx = 2\\cdot 2\\sqrt{2}\\cdot\\frac{2}{3}x^{3/2}\\Big|_{0}^{2} = 2\\cdot 2\\sqrt{2}\\cdot\\frac{2}{3}\\cdot 2\\sqrt{2} = \\frac{32}{3}\\) sq. units. Hence (B)."
+  },
+  {
+    "number": 2930,
+    "solution": "Area \\(= \\int_{1}^{4}\\sqrt{x}\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_{1}^{4} = \\frac{2}{3}(8 - 1) = \\frac{14}{3}\\) sq. units, which is not among options (A), (B) or (C). Hence (D) None of these."
+  },
+  {
+    "number": 2931,
+    "solution": "\\(|x| + |y| = 1\\) is a square with vertices \\((\\pm 1, 0), (0, \\pm 1)\\), having diagonals of length \\(2\\) each. Area \\(= \\frac{1}{2}(2)(2) = 2\\). Hence (A)."
+  },
+  {
+    "number": 2932,
+    "solution": "The circle \\(x^2 + y^2 = 4\\) and parabola \\(y^2 = 3x\\) meet where \\(x^2 + 3x - 4 = 0 \\Rightarrow x = 1\\) (\\(y = \\pm\\sqrt{3}\\)). By symmetry the smaller enclosed area \\(= 2\\left[\\int_{0}^{1}\\sqrt{3x}\\,dx + \\int_{1}^{2}\\sqrt{4 - x^2}\\,dx\\right] = 2\\left[\\frac{2\\sqrt{3}}{3} + \\left(\\frac{2\\pi}{3} - \\frac{\\sqrt{3}}{2}\\right)\\right] = 2\\left[\\frac{\\sqrt{3}}{6} + \\frac{2\\pi}{3}\\right] = \\frac{1}{\\sqrt{3}} + \\frac{4\\pi}{3}\\). Hence (D)."
+  },
+  {
+    "number": 2933,
+    "solution": "The region lies inside the quarter circle \\(x^2 + y^2 \\le 4x\\) (i.e. \\((x-2)^2 + y^2 \\le 4\\)) but outside the parabola \\(y^2 \\ge 2x\\), in the first quadrant; the boundaries meet at \\((0,0)\\) and \\((2, 2)\\). Area \\(=\\) (first-quadrant quarter circle of radius \\(2\\), area \\(\\pi\\)) \\(-\\) (area under \\(y = \\sqrt{2x}\\) from \\(0\\) to \\(2\\)). Now \\(\\int_{0}^{2}\\sqrt{2x}\\,dx = \\sqrt{2}\\cdot\\frac{2}{3}(2)^{3/2} = \\frac{8}{3}\\), so area \\(= \\pi - \\frac{8}{3}\\). (The book's key marks (C) \\(\\pi - \\frac{4\\sqrt{2}}{3}\\), but this derivation and the book's own worked solution give \\(\\pi - \\frac{8}{3}\\).) Hence (B)."
+  },
+  {
+    "number": 2934,
+    "solution": "\\(\\sin x\\) and \\(\\cos x\\) meet at \\(x = \\frac{\\pi}{4}\\) on \\([0, \\frac{\\pi}{2}]\\). Area bounded with the \\(x\\)-axis \\(= \\int_{0}^{\\pi/4}\\cos x\\,dx + \\int_{\\pi/4}^{\\pi/2}\\sin x\\,dx = [\\sin x]_{0}^{\\pi/4} + [-\\cos x]_{\\pi/4}^{\\pi/2} = \\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}} = \\sqrt{2} - 1\\). Hence (A)."
+  },
+  {
+    "number": 2935,
+    "solution": "Inside the circle \\(x^2 + y^2 \\le 1\\) and bounded by the parabola \\(y^2 = 1 - x\\). By symmetry about the \\(x\\)-axis, area \\(= 2\\left[\\int_{-1}^{0}\\sqrt{1 - x^2}\\,dx + \\int_{0}^{1}\\sqrt{1 - x}\\,dx\\right] = 2\\left[\\frac{\\pi}{4} + \\frac{2}{3}\\right] = \\frac{\\pi}{2} + \\frac{4}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2936,
+    "solution": "The parabolas \\(y = x^2\\) and \\(x = y^2\\) meet at \\((0,0)\\) and \\((1,1)\\), with \\(y = \\sqrt{x}\\) above \\(y = x^2\\) on \\([0,1]\\). Area \\(= \\int_{0}^{1}(\\sqrt{x} - x^2)\\,dx = \\frac{2}{3} - \\frac{1}{3} = \\frac{1}{3}\\). Hence (B)."
+  },
+  {
+    "number": 2937,
+    "solution": "On \\([0, 1]\\), \\(e^x \\ge e^{-x}\\). Area \\(= \\int_{0}^{1}(e^x - e^{-x})\\,dx = \\left[e^x + e^{-x}\\right]_{0}^{1} = \\left(e + \\frac{1}{e}\\right) - 2 = e + \\frac{1}{e} - 2\\). Hence (C)."
+  },
+  {
+    "number": 2938,
+    "solution": "In the first quadrant the quarter of the circle \\(x^2 + y^2 = \\pi^2\\) (radius \\(\\pi\\)) has area \\(\\frac{1}{4}\\pi\\cdot\\pi^2 = \\frac{\\pi^3}{4}\\). Subtracting the area under \\(y = \\sin x\\) from \\(0\\) to \\(\\pi\\), which is \\(\\int_{0}^{\\pi}\\sin x\\,dx = 2\\), gives \\(\\frac{\\pi^3}{4} - 2 = \\frac{\\pi^3 - 8}{4}\\). Hence (A)."
+  },
+  {
+    "number": 2939,
+    "solution": "\\(y = x^3\\) and \\(y = \\frac{1}{x}\\) meet where \\(x^4 = 1 \\Rightarrow x = 1\\). On \\([1, 2]\\), \\(x^3 \\ge \\frac{1}{x}\\). Area \\(= \\int_{1}^{2}\\left(x^3 - \\frac{1}{x}\\right)\\,dx = \\left[\\frac{x^4}{4} - \\ln x\\right]_{1}^{2} = \\left(4 - \\ln 2\\right) - \\frac{1}{4} = \\frac{15}{4} - \\log_e 2\\). Hence (D)."
+  },
+  {
+    "number": 2940,
+    "solution": "\\(y = x^3\\) and \\(y = \\sqrt{x}\\) meet where \\(x^6 = x \\Rightarrow x = 0, 1\\), with \\(\\sqrt{x} \\ge x^3\\) on \\([0,1]\\). Area \\(= \\int_{0}^{1}(\\sqrt{x} - x^3)\\,dx = \\frac{2}{3} - \\frac{1}{4} = \\frac{5}{12}\\). Hence (C)."
+  },
+  {
+    "number": 2941,
+    "solution": "\\(y = x\\) and \\(y = \\frac{1}{x}\\) meet at \\(x = 1\\). The region above the \\(x\\)-axis is bounded by \\(y = x\\) from \\(0\\) to \\(1\\) and by \\(y = \\frac{1}{x}\\) from \\(1\\) to \\(e\\). Area \\(= \\int_{0}^{1}x\\,dx + \\int_{1}^{e}\\frac{1}{x}\\,dx = \\frac{1}{2} + [\\ln x]_{1}^{e} = \\frac{1}{2} + 1 = \\frac{3}{2}\\) square units. Hence (A)."
+  },
+  {
+    "number": 2942,
+    "solution": "\\(y^2 = 4x\\) and \\(x^2 = 4y\\) meet at \\((0,0)\\) and \\((4,4)\\). Area \\(= \\int_{0}^{4}\\left(2\\sqrt{x} - \\frac{x^2}{4}\\right)\\,dx = \\left[\\frac{4}{3}x^{3/2} - \\frac{x^3}{12}\\right]_{0}^{4} = \\frac{32}{3} - \\frac{16}{3} = \\frac{16}{3}\\) sq. units. Hence (B)."
+  },
+  {
+    "number": 2943,
+    "solution": "On \\([0, \\frac{3\\pi}{2}]\\), \\(\\cos x\\) and \\(\\sin x\\) cross at \\(x = \\frac{\\pi}{4}\\) and \\(x = \\frac{5\\pi}{4}\\). Area \\(= \\int_{0}^{\\pi/4}(\\cos x - \\sin x)\\,dx + \\int_{\\pi/4}^{5\\pi/4}(\\sin x - \\cos x)\\,dx + \\int_{5\\pi/4}^{3\\pi/2}(\\cos x - \\sin x)\\,dx = (\\sqrt{2} - 1) + 2\\sqrt{2} + (\\sqrt{2} - 1) = 4\\sqrt{2} - 2\\). Hence (A)."
+  },
+  {
+    "number": 2944,
+    "solution": "The curve is \\(y = x^2\\) for \\(x < 0\\) and \\(y = x\\) for \\(x \\ge 0\\); the line \\(y = 4\\) meets the \\(x^2\\)-branch at \\(x = -2\\) and the \\(x\\)-branch at \\(x = 4\\). Area \\(= \\int_{-2}^{0}(4 - x^2)\\,dx + \\int_{0}^{4}(4 - x)\\,dx = \\frac{16}{3} + 8 = \\frac{40}{3}\\). Hence (D)."
+  },
+  {
+    "number": 2945,
+    "solution": "On \\([-\\pi, \\pi]\\), \\(y = |\\sin x| \\ge 0\\). Area \\(= \\int_{-\\pi}^{\\pi}|\\sin x|\\,dx = 2\\int_{0}^{\\pi}\\sin x\\,dx = 2(2) = 4\\) sq. units. Hence (C)."
+  },
+  {
+    "number": 2946,
+    "solution": "\\(y^2 = 8x\\) and \\(x^2 = 8y\\) (here \\(4a = 8\\)) meet at \\((0,0)\\) and \\((8,8)\\). Area \\(= \\int_{0}^{8}\\left(\\sqrt{8x} - \\frac{x^2}{8}\\right)\\,dx = \\frac{128}{3} - \\frac{64}{3} = \\frac{64}{3}\\) sq. units. Hence (A)."
+  },
+  {
+    "number": 2947,
+    "solution": "\\(y^2 = 3x\\) (so \\(y = \\sqrt{3x}\\)) and \\(y = x^2\\) meet at \\(x = 0\\) and \\(x = 3^{1/3}\\). Area \\(= \\int_{0}^{3^{1/3}}(\\sqrt{3x} - x^2)\\,dx = \\left[\\frac{2\\sqrt{3}}{3}x^{3/2} - \\frac{x^3}{3}\\right]_{0}^{3^{1/3}}\\). At \\(x = 3^{1/3}\\), \\(x^{3/2} = \\sqrt{3}\\) and \\(x^3 = 3\\), giving \\(\\frac{2\\sqrt{3}}{3}\\cdot\\sqrt{3} - 1 = 2 - 1 = 1\\) sq. unit. Hence (C)."
+  },
+  {
+    "number": 2948,
+    "solution": "\\(y = x^3\\) and \\(y = 2x^2\\) meet where \\(x^3 = 2x^2 \\Rightarrow x = 0, 2\\), with \\(2x^2 \\ge x^3\\) on \\([0,2]\\). Area \\(= \\int_{0}^{2}(2x^2 - x^3)\\,dx = \\left[\\frac{2x^3}{3} - \\frac{x^4}{4}\\right]_{0}^{2} = \\frac{16}{3} - 4 = \\frac{4}{3}\\). Hence (A)."
+  },
+  {
+    "number": 2949,
+    "solution": "\\(y = \\sqrt{|x|}\\) is symmetric about the \\(y\\)-axis. In the first quadrant \\(y = \\sqrt{x}\\) and \\(y = x\\) meet at \\(x = 0, 1\\), enclosing \\(\\int_{0}^{1}(\\sqrt{x} - x)\\,dx = \\frac{1}{6}\\). By symmetry with the line \\(y = -x\\) on the left, the total enclosed area \\(= 2\\cdot\\frac{1}{6} = \\frac{1}{3}\\) sq. units. Hence (C)."
+  },
+  {
+    "number": 2950,
+    "solution": "Bounded by \\(y = 1 + x^2\\), the \\(y\\)-axis and \\(y = 5\\). Integrating with respect to \\(y\\) from \\(1\\) to \\(5\\) with \\(x = \\sqrt{y - 1}\\): Area \\(= \\int_{1}^{5}\\sqrt{y - 1}\\,dy = \\left[\\frac{2}{3}(y - 1)^{3/2}\\right]_{1}^{5} = \\frac{2}{3}\\cdot 8 = \\frac{16}{3}\\) square units. Hence (D)."
+  }
+]

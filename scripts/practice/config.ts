@@ -466,6 +466,39 @@ export const TOPICS: Record<string, Topic> = {
       "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
     ],
   },
+
+  // Source section "Area Under the Curve" -> NDA Maths "Applications of Integration".
+  "applications-of-integration": {
+    id: "applications-of-integration",
+    chapterName: "Applications of Integration",
+    qFrom: 2886,
+    qTo: 2950,
+    sourceFile: "NDA_Maths_Practice__Calculus__Applications_of_Integration.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 145-161.pdf"), pages: [5, 6, 7, 8] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-3 sol page 389-404.pdf"), pages: [0, 1, 2, 3, 4, 5, 6] },
+    subtopics: [
+      "Area Between Two Curves and Intersection Points",
+      "Area Bounded by a Curve, Lines, and Axes",
+    ],
+  },
+
+  // Source sections "Order and Degree" + "Formation & General Solution" -> NDA Maths "Differential Equations".
+  "differential-equations": {
+    id: "differential-equations",
+    chapterName: "Differential Equations",
+    qFrom: 2951,
+    qTo: 3068,
+    sourceFile: "NDA_Maths_Practice__Calculus__Differential_Equations.pdf",
+    questionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "4. Calculus page 145-161.pdf"), pages: [8, 9, 10, 11, 12, 13, 14] },
+    answerKey: { pdf: join(SOURCE_ROOT, "05. Calculus", "_calc_answers.pdf") },
+    solutionPages: { pdf: join(SOURCE_ROOT, "05. Calculus", "Solutions", "5th Calculus-3 sol page 389-404.pdf"), pages: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
+    subtopics: [
+      "Formation of ODE from Curves and General Solutions",
+      "Order, Degree, and Solutions of ODE",
+      "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    ],
+  },
 };
 
 export const questionsJsonPath = (topicId: string) => join(DATA, `${topicId}.questions.json`);
