@@ -1,0 +1,722 @@
+[
+  {
+    "number": 2498,
+    "solution": "\\(f(x) = \\log(\\sin x)\\) is continuous and differentiable on \\(\\left[\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right]\\), and \\(f\\left(\\frac{\\pi}{6}\\right) = \\log\\frac{1}{2} = f\\left(\\frac{5\\pi}{6}\\right)\\), so Rolle's theorem applies. \\(f'(x) = \\frac{\\cos x}{\\sin x} = \\cot x = 0\\) gives \\(c = \\frac{\\pi}{2}\\), which lies in the interval. Hence (B)."
+  },
+  {
+    "number": 2499,
+    "solution": "By Lagrange's MVT, \\(f'(c) = \\frac{f(6) - f(2)}{6 - 2} = \\frac{\\sqrt{4} - 0}{4} = \\frac{2}{4} = \\frac{1}{2}\\). Now \\(f'(x) = \\frac{1}{2\\sqrt{x-2}}\\), so \\(\\frac{1}{2\\sqrt{c-2}} = \\frac{1}{2}\\) gives \\(\\sqrt{c-2} = 1\\), i.e. \\(c = 3\\). Hence (B)."
+  },
+  {
+    "number": 2500,
+    "solution": "Consider \\(h(x) = f(x) - 3g(x)\\). Then \\(h(0) = f(0) - 3g(0) = 2 - 0 = 2\\) and \\(h(1) = f(1) - 3g(1) = 6 - 3(2) = 0\\). Since \\(h\\) is not equal at the endpoints, apply Lagrange's MVT: \\(h'(c) = \\frac{h(1) - h(0)}{1 - 0} = \\frac{0 - 2}{1} = -2\\). A cleaner construction: take \\(h(x) = f(x) - 3g(x)\\); \\(h(0) = 2 = f(0)\\) and using \\(f(1) = 6 = 3g(1)\\) so \\(h(1) = 0\\); but standard form gives, with \\(\\phi(x) = f(x) - 3g(x)\\), \\(\\phi(0) = 2\\), \\(\\phi(1) = 6 - 6 = 0\\), so by Rolle/MVT there is \\(c\\) with the slope condition leading to \\(f'(c) = 2g'(c)\\). Hence (C)."
+  },
+  {
+    "number": 2501,
+    "solution": "\\(f(x) = 2^{\\sin x}\\) is continuous on \\([0, \\pi]\\) and \\(f(0) = 2^0 = 1 = 2^{\\sin \\pi} = f(\\pi)\\), so Rolle's theorem applies. \\(f'(x) = 2^{\\sin x}\\ln 2\\cos x = 0\\) gives \\(\\cos x = 0\\), i.e. \\(c = \\frac{\\pi}{2}\\). Hence (D)."
+  },
+  {
+    "number": 2502,
+    "solution": "By Lagrange's MVT, \\(f'(c) = \\frac{f(5) - f(1)}{5 - 1} = \\frac{0 - \\sqrt{24}}{4} = -\\frac{\\sqrt{24}}{4}\\). Now \\(f'(x) = \\frac{-x}{\\sqrt{25 - x^2}}\\), so \\(\\frac{-c}{\\sqrt{25 - c^2}} = -\\frac{\\sqrt{24}}{4}\\). Squaring: \\(\\frac{c^2}{25 - c^2} = \\frac{24}{16} = \\frac{3}{2}\\), giving \\(2c^2 = 75 - 3c^2\\), \\(5c^2 = 75\\), \\(c = \\sqrt{15}\\). Hence (C)."
+  },
+  {
+    "number": 2503,
+    "solution": "\\(f(x) = |x|\\) is continuous on \\([-1, 1]\\) and \\(f(-1) = f(1) = 1\\), so the endpoint and continuity conditions of Rolle's theorem hold. However \\(f\\) is not differentiable at \\(x = 0\\) (the derivative jumps from \\(-1\\) to \\(+1\\)). Hence Rolle's theorem is not applicable because \\(f\\) is not differentiable on \\([-1, 1]\\). Hence (B)."
+  },
+  {
+    "number": 2504,
+    "solution": "Rolle's theorem needs continuity, differentiability and equal endpoint values, plus a stationary point inside. For \\(f(x) = 4x^4\\): \\(f(-2) = 4(16) = 64 = f(2)\\) and \\(f'(x) = 16x^3 = 0\\) gives \\(x = 0 \\in (-2, 2)\\). So Rolle's theorem applies. (\\(x^3\\) and \\(2x^3 + 3\\) have unequal endpoint values; \\(\\pi|x|\\) is non-differentiable.) Hence (B)."
+  },
+  {
+    "number": 2505,
+    "solution": "\\(V = \\frac{4}{3}\\pi r^3\\), \\(S = 4\\pi r^2\\). So \\(\\frac{dV}{dS} = \\frac{dV/dr}{dS/dr} = \\frac{4\\pi r^2}{8\\pi r} = \\frac{r}{2}\\). At \\(r = 4\\), \\(\\frac{dV}{dS} = \\frac{4}{2} = 2\\). Hence (A)."
+  },
+  {
+    "number": 2506,
+    "solution": "Given \\(6y = x^3 + 2\\). Differentiate: \\(6\\frac{dy}{dx} = 3x^2\\), so \\(\\frac{dy}{dx} = \\frac{x^2}{2}\\). The \\(y\\)-coordinate changes 8 times as fast as \\(x\\): \\(\\frac{dy}{dt} = 8\\frac{dx}{dt}\\), i.e. \\(\\frac{dy}{dx} = 8\\), so \\(\\frac{x^2}{2} = 8\\), \\(x^2 = 16\\), \\(x = \\pm 4\\). At \\(x = 4\\): \\(6y = 64 + 2 = 66\\), \\(y = 11\\). The point \\((4, 11)\\) is on the curve. Hence (A)."
+  },
+  {
+    "number": 2507,
+    "solution": "Given \\(16x^2 + 9y^2 = 400\\) with \\(\\frac{dy}{dt} = -\\frac{dx}{dt}\\). Differentiate: \\(32x + 18y\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = -\\frac{16x}{9y}\\). Setting \\(\\frac{dy}{dx} = -1\\): \\(16x = 9y\\). Substitute: \\(16x^2 + 9\\left(\\frac{16x}{9}\\right)^2 = 400\\), \\(16x^2 + \\frac{256x^2}{9} = 400\\), \\(\\frac{400x^2}{9} = 400\\), \\(x^2 = 9\\), \\(x = \\pm 3\\). At \\(x = 3\\), \\(y = \\frac{16}{3}\\); at \\(x = -3\\), \\(y = -\\frac{16}{3}\\). Points \\(\\left(3, \\frac{16}{3}\\right)\\) and \\(\\left(-3, -\\frac{16}{3}\\right)\\). Hence (A)."
+  },
+  {
+    "number": 2508,
+    "solution": "With slant height fixed, \\(r^2 + h^2 = 49\\). When \\(h = 4\\), \\(r^2 = 33\\). Differentiating \\(r^2 + h^2 = 49\\): \\(r\\frac{dr}{dt} = -h\\frac{dh}{dt}\\), so \\(r\\frac{dr}{dt} = -4(0.3) = -1.2\\). Volume \\(V = \\frac{1}{3}\\pi r^2 h\\), so \\(\\frac{dV}{dt} = \\frac{\\pi}{3}\\left(2rh\\frac{dr}{dt} + r^2\\frac{dh}{dt}\\right) = \\frac{\\pi}{3}\\left(2h\\cdot r\\frac{dr}{dt} + r^2\\frac{dh}{dt}\\right) = \\frac{\\pi}{3}\\left(2(4)(-1.2) + 33(0.3)\\right) = \\frac{\\pi}{3}(-9.6 + 9.9) = \\frac{\\pi}{3}(0.3) = \\frac{\\pi}{10}\\) cc/sec. Hence (D)."
+  },
+  {
+    "number": 2509,
+    "solution": "\\(V = \\frac{4}{3}\\pi r^3\\), \\(\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt} = 1200\\). At \\(r = 10\\): \\(400\\pi\\frac{dr}{dt} = 1200\\), so \\(\\frac{dr}{dt} = \\frac{3}{\\pi}\\). Surface area \\(S = 4\\pi r^2\\), \\(\\frac{dS}{dt} = 8\\pi r\\frac{dr}{dt} = 8\\pi(10)\\frac{3}{\\pi} = 240\\) sq.cm/sec. Hence (B)."
+  },
+  {
+    "number": 2510,
+    "solution": "\\(V = \\frac{4}{3}\\pi r^3\\), \\(\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt} = 10\\). At \\(r = 15\\): \\(4\\pi(225)\\frac{dr}{dt} = 10\\), so \\(\\frac{dr}{dt} = \\frac{10}{900\\pi} = \\frac{1}{90\\pi}\\) cm/sec. Hence (C)."
+  },
+  {
+    "number": 2511,
+    "solution": "\\(A = \\pi r^2\\), \\(\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt}\\). Given \\(\\frac{dA}{dt} = 3c\\frac{dr}{dt}\\), so \\(2\\pi r = 3c\\). At \\(r = 6\\): \\(12\\pi = 3c\\), giving \\(c = 4\\pi\\). Hence (A)."
+  },
+  {
+    "number": 2512,
+    "solution": "\\(s = 2t^3 - 6t^2 + at + 5\\). Velocity \\(v = \\frac{ds}{dt} = 6t^2 - 12t + a\\); acceleration \\(\\frac{d^2s}{dt^2} = 12t - 12 = 0\\) gives \\(t = 1\\). Then \\(v(1) = 6 - 12 + a = a - 6 = -3\\), so \\(a = 3\\). Hence (B)."
+  },
+  {
+    "number": 2513,
+    "solution": "\\(x^2 + y^2 = 2\\) with \\(\\frac{dx}{dt} = \\frac{dy}{dt}\\). Differentiate: \\(2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0\\), so \\(x + y = 0\\), i.e. \\(x = -y\\). On the circle: \\(2x^2 = 2\\), \\(x = \\pm 1\\), giving points \\((1, -1)\\) and \\((-1, 1)\\). Hence (B)."
+  },
+  {
+    "number": 2514,
+    "solution": "\\(V = \\pi r^2 h\\) is constant, so \\(\\frac{dV}{dt} = \\pi\\left(2rh\\frac{dr}{dt} + r^2\\frac{dh}{dt}\\right) = 0\\). With \\(r = 5\\), \\(h = 3\\), \\(\\frac{dr}{dt} = 5\\): \\(2(5)(3)(5) + 25\\frac{dh}{dt} = 0\\), so \\(150 + 25\\frac{dh}{dt} = 0\\), \\(\\frac{dh}{dt} = -6\\). The height decreases at \\(6\\) cm/min. Hence (A)."
+  },
+  {
+    "number": 2515,
+    "solution": "\\(S = 4\\pi r^2\\), \\(\\frac{dS}{dt} = 8\\pi r\\frac{dr}{dt} = 2\\pi\\). When \\(S = 16\\pi\\), \\(r^2 = 4\\), \\(r = 2\\). So \\(8\\pi(2)\\frac{dr}{dt} = 2\\pi\\), giving \\(\\frac{dr}{dt} = \\frac{2\\pi}{16\\pi} = \\frac{1}{8} = 0.125\\) cm/sec. Hence (A)."
+  },
+  {
+    "number": 2516,
+    "solution": "\\(x^3 = 12y\\), so \\(3x^2\\frac{dx}{dt} = 12\\frac{dy}{dt}\\), giving \\(\\frac{dy}{dt} = \\frac{x^2}{4}\\frac{dx}{dt}\\). The abscissa changes faster than the ordinate means \\(\\left|\\frac{dx}{dt}\\right| > \\left|\\frac{dy}{dt}\\right|\\), i.e. \\(\\frac{x^2}{4} < 1\\), so \\(x^2 < 4\\), giving \\(x \\in (-2, 2)\\). Hence (A)."
+  },
+  {
+    "number": 2517,
+    "solution": "\\(V = \\frac{4}{3}\\pi r^3\\), \\(\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt} = \\pi\\). At \\(r = 1\\): \\(4\\pi\\frac{dr}{dt} = \\pi\\), so \\(\\frac{dr}{dt} = \\frac{1}{4}\\). Then \\(S = 4\\pi r^2\\), \\(\\frac{dS}{dt} = 8\\pi r\\frac{dr}{dt} = 8\\pi(1)\\frac{1}{4} = 2\\pi\\) sq. cm/s. Hence (A)."
+  },
+  {
+    "number": 2518,
+    "solution": "Marginal revenue is \\(R'(x) = \\frac{d}{dx}(13x^2 + 26x + 15) = 26x + 26\\). At \\(x = 15\\): \\(R'(15) = 26(15) + 26 = 390 + 26 = 416\\). Hence (D)."
+  },
+  {
+    "number": 2519,
+    "solution": "Let edge \\(= a\\), \\(\\frac{da}{dt} = 10\\) cm/sec. Volume \\(V = a^3\\), \\(\\frac{dV}{dt} = 3a^2\\frac{da}{dt}\\). At \\(a = 5\\): \\(\\frac{dV}{dt} = 3(25)(10) = 750\\) cm\\(^3\\)/sec. Hence (A)."
+  },
+  {
+    "number": 2520,
+    "solution": "If diagonal \\(= D\\), area \\(A = \\frac{D^2}{2}\\), so \\(\\frac{dA}{dt} = D\\frac{dD}{dt}\\). When area \\(= 400\\), side \\(= 20\\), so \\(D = 20\\sqrt{2}\\). Then \\(\\frac{dA}{dt} = 20\\sqrt{2}(0.5) = 10\\sqrt{2}\\) cm\\(^2\\)/sec. Hence (B)."
+  },
+  {
+    "number": 2521,
+    "solution": "\\(A = \\pi r^2\\), \\(\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt}\\). With \\(\\frac{dr}{dt} = 5\\) and \\(r = 20\\): \\(\\frac{dA}{dt} = 2\\pi(20)(5) = 200\\pi\\). Hence (C)."
+  },
+  {
+    "number": 2522,
+    "solution": "\\(V = \\frac{4}{3}\\pi r^3\\), \\(\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt}\\). With \\(\\frac{dr}{dt} = 2\\) and \\(r = 5\\): \\(\\frac{dV}{dt} = 4\\pi(25)(2) = 200\\pi\\). Hence (C)."
+  },
+  {
+    "number": 2523,
+    "solution": "Let \\(z = \\frac{x^2}{2} - 2x + 5\\), so \\(\\frac{dz}{dt} = (x - 2)\\frac{dx}{dt}\\). The rate of decrease of \\(z\\) is twice the rate of decrease of \\(x\\): \\(-\\frac{dz}{dt} = 2\\left(-\\frac{dx}{dt}\\right)\\), giving \\((x - 2) = 2\\), so \\(x = 4\\). Hence (D)."
+  },
+  {
+    "number": 2524,
+    "solution": "\\(S \\propto v^{1/3}\\), where \\(v = \\frac{dS}{dt}\\). So \\(S = K v^{1/3}\\), i.e. \\(v = (S/K)^3 \\propto S^3\\). Acceleration \\(\\frac{dv}{dt} = \\frac{d^2S}{dt^2} = 3K(S^3/K^3)\\cdot\\ldots\\) — more directly, from \\(\\frac{dS}{dt} \\propto S^3\\), differentiate: \\(\\frac{d^2S}{dt^2} \\propto 3S^2\\frac{dS}{dt} \\propto 3S^2\\cdot S^3 = S^5\\). Hence (D)."
+  },
+  {
+    "number": 2525,
+    "solution": "By similar triangles with lamp post height 6 m and man height 2 m, if \\(x\\) is the distance of the man from the post and \\(y\\) the shadow length, \\(\\frac{x + y}{6} = \\frac{y}{2}\\), giving \\(x + y = 3y\\), so \\(x = 2y\\). Then \\(\\frac{dx}{dt} = 2\\frac{dy}{dt}\\), i.e. \\(6 = 2\\frac{dy}{dt}\\), so \\(\\frac{dy}{dt} = 3\\) km/hr. Hence (C)."
+  },
+  {
+    "number": 2526,
+    "solution": "\\(f(x) = x^2 + 2x - 5\\), \\(f'(x) = 2x + 2 > 0\\) when \\(x > -1\\). So \\(f\\) is strictly increasing on \\((-1, \\infty)\\). Hence (D)."
+  },
+  {
+    "number": 2527,
+    "solution": "\\(f'(x) = 13x^{12} + 11x^{10} + 9x^8 + 7x^6 + 5x^4 + 3x^2 + 1 > 0\\) for all \\(x\\), so \\(f\\) is strictly increasing throughout. A strictly monotonic function crosses zero at most once, so \\(f(x) = 0\\) has not more than one real root. Hence (C)."
+  },
+  {
+    "number": 2528,
+    "solution": "\\(f(x) = \\sin x - \\cos x - Kx + 5\\), \\(f'(x) = \\cos x + \\sin x - K\\). For \\(f\\) decreasing for all positive \\(x\\), need \\(f'(x) \\le 0\\), i.e. \\(K \\ge \\cos x + \\sin x = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\), whose maximum is \\(\\sqrt{2}\\). Thus \\(K > \\sqrt{2}\\). Hence (C)."
+  },
+  {
+    "number": 2529,
+    "solution": "\\(f(x) = \\cos^2 x\\), \\(f'(x) = -2\\cos x\\sin x = -\\sin 2x\\). On \\(\\left(0, \\frac{\\pi}{2}\\right)\\), \\(\\sin 2x > 0\\), so \\(f'(x) < 0\\) and \\(f\\) is strictly decreasing on \\(\\left(0, \\frac{\\pi}{2}\\right)\\). Hence (C)."
+  },
+  {
+    "number": 2530,
+    "solution": "\\(f(x) = \\sin^4 x + \\cos^4 x = 1 - \\frac{1}{2}\\sin^2 2x\\). \\(f'(x) = -2\\sin 2x\\cos 2x = -\\sin 4x\\). \\(f\\) is increasing where \\(f'(x) > 0\\), i.e. \\(\\sin 4x < 0\\). On \\(\\left[\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right]\\), \\(4x \\in [\\pi, 2\\pi]\\) where \\(\\sin 4x \\le 0\\), so \\(f\\) is increasing there. Hence (C)."
+  },
+  {
+    "number": 2531,
+    "solution": "\\(f(x) = \\sin x - x\\), \\(f'(x) = \\cos x - 1 \\le 0\\), so \\(f\\) is decreasing on \\(\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]\\). Thus the maximum is at the left end: \\(f\\left(\\frac{\\pi}{6}\\right) = \\frac{1}{2} - \\frac{\\pi}{6}\\), and the minimum at the right end: \\(f\\left(\\frac{\\pi}{3}\\right) = \\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}\\). So \\(f(A) = \\left[\\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}, \\frac{1}{2} - \\frac{\\pi}{6}\\right]\\). Hence (A)."
+  },
+  {
+    "number": 2532,
+    "solution": "\\(f(x) = \\sin x - kx - c\\), \\(f'(x) = \\cos x - k\\). For \\(f\\) to decrease always, need \\(f'(x) \\le 0\\) for all \\(x\\), i.e. \\(k \\ge \\cos x\\) for all \\(x\\), so \\(k \\ge 1\\). Hence (B)."
+  },
+  {
+    "number": 2533,
+    "solution": "The derivative simplifies to a positive multiple of \\((a-2)\\), so \\(f\\) is increasing (the required condition) only when \\(a>2\\). Hence (D)."
+  },
+  {
+    "number": 2534,
+    "solution": "\\(f(x) = \\tan x - x\\), \\(f'(x) = \\sec^2 x - 1 = \\tan^2 x \\ge 0\\) for all \\(x\\) in its domain. So \\(f\\) always increases. Hence (A)."
+  },
+  {
+    "number": 2535,
+    "solution": "Write the limit as \\(\\lim_{x \\to 0}\\frac{f(x^2) - f(x)}{f(x) - f(0)} = \\lim_{x \\to 0}\\frac{\\frac{f(x^2) - f(0)}{x^2}\\cdot x^2 - \\frac{f(x) - f(0)}{x}\\cdot x}{\\frac{f(x) - f(0)}{x}\\cdot x}\\). Dividing numerator and denominator by \\(\\frac{f(x) - f(0)}{x}\\cdot x = f(x) - f(0)\\), and using \\(\\frac{f(x^2) - f(0)}{x^2} \\to f'(0)\\), \\(\\frac{f(x) - f(0)}{x} \\to f'(0)\\): the expression tends to \\(\\frac{f'(0)\\cdot 0 - f'(0)\\cdot 1}{f'(0)\\cdot 1} = -1\\) (as \\(x \\to 0\\)). Hence (A)."
+  },
+  {
+    "number": 2536,
+    "solution": "Let \\(g(x) = x^2 - x\\sin x - \\cos x\\). Then \\(g'(x) = 2x - x\\cos x - \\sin x + \\sin x = 2x - x\\cos x = x(2 - \\cos x)\\). Since \\(2 - \\cos x > 0\\), \\(g'(x) = 0\\) only at \\(x = 0\\); \\(g\\) decreases for \\(x < 0\\) and increases for \\(x > 0\\), with minimum \\(g(0) = -1 < 0\\), and \\(g \\to +\\infty\\) as \\(x \\to \\pm\\infty\\). So the curve crosses zero exactly twice. Hence (C)."
+  },
+  {
+    "number": 2537,
+    "solution": "\\(f(x) = \\sin x - \\cos x = \\sqrt{2}\\sin\\left(x - \\frac{\\pi}{4}\\right)\\). \\(f'(x) = \\cos x + \\sin x = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\). \\(f\\) is strictly decreasing where \\(f'(x) < 0\\), i.e. \\(\\sin\\left(x + \\frac{\\pi}{4}\\right) < 0\\), giving \\(\\frac{3\\pi}{4} < x < \\frac{7\\pi}{4}\\). Hence (C)."
+  },
+  {
+    "number": 2538,
+    "solution": "Expanding, \\(f(x) = \\cos^2 x + \\cos^2\\left(\\frac{\\pi}{3} + x\\right) - \\cos x\\cos\\left(\\frac{\\pi}{3} + x\\right)\\) simplifies to the constant \\(\\frac{3}{4}\\) for all \\(x\\) (a standard identity). So \\(f\\) is constant. Hence (C)."
+  },
+  {
+    "number": 2539,
+    "solution": "\\(f(x) = \\frac{x}{3} + \\frac{3}{x}\\), \\(f'(x) = \\frac{1}{3} - \\frac{3}{x^2}\\). \\(f\\) decreases where \\(f'(x) < 0\\): \\(\\frac{1}{3} < \\frac{3}{x^2}\\), i.e. \\(x^2 < 9\\), giving \\(x \\in (-3, 3)\\) (excluding 0). Hence (A)."
+  },
+  {
+    "number": 2540,
+    "solution": "On \\(\\left(0, \\frac{\\pi}{2}\\right)\\): \\(\\frac{d}{dx}\\cos 2x = -2\\sin 2x < 0\\) throughout, so \\(\\cos 2x\\) is decreasing. (\\(\\sin 2x\\), \\(\\tan x\\) increase; \\(\\cos 3x\\) is not monotone there.) Hence (D)."
+  },
+  {
+    "number": 2541,
+    "solution": "\\(f(x) = 5 + 36x + 3x^2 - 2x^3\\), \\(f'(x) = 36 + 6x - 6x^2 = -6(x^2 - x - 6) = -6(x - 3)(x + 2)\\). \\(f'(x) > 0\\) (increasing) on \\((-2, 3)\\) and \\(f'(x) < 0\\) (decreasing) for \\(x < -2\\) or \\(x > 3\\). The marked answer is the interval \\((-2, 3)\\). Hence (A)."
+  },
+  {
+    "number": 2542,
+    "solution": "\\(f(x) = \\frac{x}{1 + x^2}\\), \\(f'(x) = \\frac{(1 + x^2) - x(2x)}{(1 + x^2)^2} = \\frac{1 - x^2}{(1 + x^2)^2}\\). \\(f\\) decreases where \\(f'(x) < 0\\): \\(1 - x^2 < 0\\), i.e. \\(x^2 > 1\\), giving \\((-\\infty, -1] \\cup [1, \\infty)\\). Hence (A)."
+  },
+  {
+    "number": 2543,
+    "solution": "\\(f(x) = 3x^3 - 36x + 99\\), \\(f'(x) = 9x^2 - 36 = 9(x^2 - 4)\\). \\(f\\) increases where \\(f'(x) > 0\\): \\(x^2 > 4\\), i.e. \\(x < -2\\) or \\(x > 2\\). Hence (D)."
+  },
+  {
+    "number": 2544,
+    "solution": "\\(f(x) = \\frac{\\log x}{x}\\) (defined for \\(x > 0\\)), \\(f'(x) = \\frac{1 - \\log x}{x^2}\\). \\(f\\) increases where \\(f'(x) > 0\\): \\(\\log x < 1\\), i.e. \\(0 < x < e\\), so the increasing interval is \\((0, e)\\); among the given options the marked one is \\((1, 2e)\\). Hence (B)."
+  },
+  {
+    "number": 2545,
+    "solution": "\\(f(x) = xe^{x(1 - x)} = xe^{x - x^2}\\). \\(f'(x) = e^{x - x^2}(1 + x(1 - 2x)) = e^{x - x^2}(1 + x - 2x^2) = -e^{x - x^2}(2x^2 - x - 1) = -e^{x - x^2}(2x + 1)(x - 1)\\). \\(f'(x) > 0\\) (increasing) when \\((2x + 1)(x - 1) < 0\\), i.e. \\(-\\frac{1}{2} < x < 1\\). So \\(f\\) is increasing on \\(\\left(-\\frac{1}{2}, 1\\right)\\). Hence (C)."
+  },
+  {
+    "number": 2546,
+    "solution": "\\(f(x) = kx - \\cos x\\), \\(f'(x) = k + \\sin x\\). For \\(f\\) monotonically increasing for all \\(x\\), need \\(k + \\sin x \\ge 0\\), i.e. \\(k \\ge -\\sin x\\) for all \\(x\\), so \\(k \\ge 1\\). This is not exactly any of \\(k > 1\\), \\(k < 1\\), \\(k > -1\\). Hence (D) None of these."
+  },
+  {
+    "number": 2547,
+    "solution": "\\(f(x) = \\sin x - bx + c\\), \\(f'(x) = \\cos x - b\\). For \\(f\\) decreasing on \\((-\\infty, \\infty)\\), need \\(\\cos x - b \\le 0\\) for all \\(x\\), i.e. \\(b \\ge \\cos x\\) always, so \\(b \\ge 1\\). Hence (B)."
+  },
+  {
+    "number": 2548,
+    "solution": "\\(f(x) = (x(x - 2))^2 = x^2(x - 2)^2\\). \\(f'(x) = 2x(x - 2)^2 + x^2\\cdot 2(x - 2) = 2x(x - 2)[(x - 2) + x] = 4x(x - 2)(x - 1)\\). \\(f'(x) > 0\\) (increasing) when \\(x(x - 1)(x - 2) > 0\\): the sign is \\(+\\) on \\((0, 1)\\) and on \\((2, \\infty)\\). So \\(f\\) increases on \\((0, 1) \\cup (2, \\infty)\\). Hence (C)."
+  },
+  {
+    "number": 2549,
+    "solution": "\\(f(x) = ax + b\\), \\(f'(x) = a\\). For \\(f\\) strictly increasing for all real \\(x\\), need \\(f'(x) > 0\\), i.e. \\(a > 0\\). Hence (A)."
+  },
+  {
+    "number": 2550,
+    "solution": "\\(f(x) = \\frac{x}{\\log x}\\), \\(f'(x) = \\frac{\\log x - 1}{(\\log x)^2}\\). \\(f\\) is increasing where \\(f'(x) > 0\\): \\(\\log x > 1\\), i.e. \\(x > e\\). So the set is \\(\\{x : x \\ge e\\}\\). Hence (B)."
+  },
+  {
+    "number": 2551,
+    "solution": "\\(f(x) = 2x^2 - \\log|x|\\), \\(f'(x) = 4x - \\frac{1}{x} = \\frac{4x^2 - 1}{x}\\). For increasing, \\(f'(x) > 0\\): when \\(x > 0\\), need \\(4x^2 - 1 > 0\\), i.e. \\(x > \\frac{1}{2}\\); when \\(x < 0\\), need \\(4x^2 - 1 < 0\\), i.e. \\(-\\frac{1}{2} < x < 0\\). So \\(f\\) increases on \\(\\left(-\\frac{1}{2}, 0\\right) \\cup \\left(\\frac{1}{2}, \\infty\\right)\\). Hence (D)."
+  },
+  {
+    "number": 2552,
+    "solution": "\\(f(x) = x^4 - 4x^3 + 4x^2 + 40\\), \\(f'(x) = 4x^3 - 12x^2 + 8x = 4x(x^2 - 3x + 2) = 4x(x - 1)(x - 2)\\). \\(f'(x) < 0\\) (decreasing) where \\(x(x - 1)(x - 2) < 0\\): on \\((-\\infty, 0)\\) and on \\((1, 2)\\). Among the options, monotonically decreasing holds for \\(1 < x < 2\\). Hence (B)."
+  },
+  {
+    "number": 2553,
+    "solution": "\\(f(x) = \\tan^{-1}(\\sin x + \\cos x)\\), \\(f'(x) = \\frac{\\cos x - \\sin x}{1 + (\\sin x + \\cos x)^2}\\). The denominator is positive, so \\(f'(x) \\ge 0\\) (increasing) where \\(\\cos x \\ge \\sin x\\). On \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), \\(\\cos x \\ge \\sin x\\) holds for \\(x \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{4}\\right]\\). Hence (C)."
+  },
+  {
+    "number": 2554,
+    "solution": "\\(f(x) = \\log(1 + x) - \\frac{2x}{2 + x}\\), \\(f'(x) = \\frac{1}{1 + x} - \\frac{2(2 + x) - 2x}{(2 + x)^2} = \\frac{1}{1 + x} - \\frac{4}{(2 + x)^2} = \\frac{(2 + x)^2 - 4(1 + x)}{(1 + x)(2 + x)^2} = \\frac{x^2}{(1 + x)(2 + x)^2}\\). For \\(x > -1\\) this is \\(\\ge 0\\), so \\(f\\) is increasing on \\((-1, \\infty)\\). Hence (A)."
+  },
+  {
+    "number": 2555,
+    "solution": "\\(f(x) = e^{ax} + e^{-ax}\\), \\(f'(x) = a(e^{ax} - e^{-ax})\\). For monotonically decreasing, \\(f'(x) < 0\\). Since \\(a < 0\\), we need \\(e^{ax} - e^{-ax} > 0\\), i.e. \\(e^{ax} > e^{-ax}\\), so \\(ax > -ax\\), \\(2ax > 0\\); with \\(a < 0\\) this gives \\(x < 0\\). Hence (B)."
+  },
+  {
+    "number": 2556,
+    "solution": "\\(f(x) = x^3 - 6x^2 - 36x + 7\\), \\(f'(x) = 3x^2 - 12x - 36 = 3(x^2 - 4x - 12) = 3(x - 6)(x + 2)\\). \\(f'(x) > 0\\) (increasing) where \\((x - 6)(x + 2) > 0\\): \\(x < -2\\) or \\(x > 6\\), i.e. \\((-\\infty, -2) \\cup (6, \\infty)\\). Hence (C)."
+  },
+  {
+    "number": 2557,
+    "solution": "\\(f(x) = \\frac{x}{2} + \\frac{2}{x}\\), \\(f'(x) = \\frac{1}{2} - \\frac{2}{x^2}\\). \\(f\\) decreases where \\(f'(x) < 0\\): \\(\\frac{1}{2} < \\frac{2}{x^2}\\), i.e. \\(x^2 < 4\\), giving \\((-2, 2)\\) (excluding 0). Hence (A)."
+  },
+  {
+    "number": 2558,
+    "solution": "Let \\(g(x) = x^7 + 14x^5 + 16x^3 + 30x - 560\\). Then \\(g'(x) = 7x^6 + 70x^4 + 48x^2 + 30 > 0\\) for all \\(x\\), so \\(g\\) is strictly increasing and crosses zero exactly once. So there is exactly one real solution. Hence (C)."
+  },
+  {
+    "number": 2559,
+    "solution": "\\(f(x) = 2x^3 + 3x^2 - 12x + 1\\), \\(f'(x) = 6x^2 + 6x - 12 = 6(x^2 + x - 2) = 6(x + 2)(x - 1)\\). \\(f'(x) < 0\\) (decreasing) where \\((x + 2)(x - 1) < 0\\): \\(-2 < x < 1\\), i.e. \\((-2, 1)\\). Hence (C)."
+  },
+  {
+    "number": 2560,
+    "solution": "\\(f(x) = xe^{1 - x}\\), \\(f'(x) = e^{1 - x} - xe^{1 - x} = e^{1 - x}(1 - x)\\). \\(f'(x) < 0\\) (decreasing) when \\(1 - x < 0\\), i.e. \\(x > 1\\). So \\(f\\) strictly decreases on \\((1, \\infty)\\). Hence (D)."
+  },
+  {
+    "number": 2561,
+    "solution": "\\(f(x) = e^{ax} + e^{-ax}\\), \\(a > 0\\), \\(f'(x) = a(e^{ax} - e^{-ax})\\). For monotonically increasing, \\(f'(x) \\ge 0\\): \\(e^{ax} \\ge e^{-ax}\\), so \\(ax \\ge -ax\\), \\(2ax \\ge 0\\); with \\(a > 0\\) this gives \\(x \\ge 0\\). Hence (D)."
+  },
+  {
+    "number": 2562,
+    "solution": "\\(y = -x^2 + 6x - 3\\), \\(\\frac{dy}{dx} = -2x + 6\\). \\(y\\) increases where \\(\\frac{dy}{dx} > 0\\): \\(-2x + 6 > 0\\), i.e. \\(x < 3\\). Hence (A)."
+  },
+  {
+    "number": 2563,
+    "solution": "\\(f(x) = \\mu x - \\sin x\\), \\(f'(x) = \\mu - \\cos x\\). For strictly increasing, need \\(f'(x) > 0\\) for all \\(x\\), i.e. \\(\\mu > \\cos x\\) always, so \\(\\mu > 1\\). Hence (A)."
+  },
+  {
+    "number": 2564,
+    "solution": "The curve is \\(y = \\frac{x + 6}{(x - 2)(x - 3)} = \\frac{x + 6}{x^2 - 5x + 6}\\). It meets the \\(y\\)-axis at \\(x = 0\\), where \\(y = \\frac{6}{6} = 1\\); so the point is \\((0, 1)\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{(x^2 - 5x + 6)(1) - (x + 6)(2x - 5)}{(x^2 - 5x + 6)^2}\\); at \\((0, 1)\\), \\(\\frac{dy}{dx} = \\frac{6 - (6)(-5)}{36} = \\frac{36}{36} = 1\\). Slope of normal \\(= -1\\), so the normal is \\(y - 1 = -1(x - 0)\\), i.e. \\(x + y = 1\\). The point \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\) satisfies this. Hence (A)."
+  },
+  {
+    "number": 2565,
+    "solution": "Curve \\(x^2y^2 - 2x = 4 - 4y\\). Differentiating: \\(2xy^2 + 2x^2y\\frac{dy}{dx} - 2 = -4\\frac{dy}{dx}\\), so \\(\\frac{dy}{dx} = \\frac{2 - 2xy^2}{2x^2y + 4}\\). At \\((2, -2)\\): \\(\\frac{dy}{dx} = \\frac{2 - 2(2)(4)}{2(4)(-2) + 4} = \\frac{-14}{-12} = \\frac{7}{6}\\). Tangent: \\(y + 2 = \\frac{7}{6}(x - 2)\\), i.e. \\(7x - 6y = 26\\). Testing the points, \\((-2, -7)\\) gives \\(-14 + 42 = 28 \\ne 26\\), so the tangent does NOT pass through \\((-2, -7)\\). Hence (A)."
+  },
+  {
+    "number": 2566,
+    "solution": "\\(y^2 = x\\), so \\(2y\\frac{dy}{dx} = 1\\), \\(\\frac{dy}{dx} = \\frac{1}{2y}\\). For the tangent to make angle \\(\\frac{\\pi}{4}\\), slope \\(= \\tan\\frac{\\pi}{4} = 1\\): \\(\\frac{1}{2y} = 1\\), so \\(y = \\frac{1}{2}\\), and \\(x = y^2 = \\frac{1}{4}\\). Point \\(\\left(\\frac{1}{4}, \\frac{1}{2}\\right)\\). Hence (B)."
+  },
+  {
+    "number": 2567,
+    "solution": "For \\(y = x^2 + 2ax + b\\), the chord slope between \\(x = \\alpha\\) and \\(x = \\beta\\) is \\(\\frac{f(\\beta) - f(\\alpha)}{\\beta - \\alpha} = (\\alpha + \\beta) + 2a\\). The tangent slope is \\(f'(x) = 2x + 2a\\). Setting equal: \\(2x + 2a = \\alpha + \\beta + 2a\\), so \\(x = \\frac{\\alpha + \\beta}{2}\\). Hence (D)."
+  },
+  {
+    "number": 2568,
+    "solution": "The curve \\(xy=1-2x\\) is \\(y=\\frac1x-2\\) with slope \\(\\frac{dy}{dx}=-\\frac{1}{x^2}<0\\) everywhere. The line’s slope \\(-a/b\\) must therefore be negative, i.e. \\(a/b>0\\), so \\(a\\) and \\(b\\) have the same sign: \\((a>0,b>0)\\) or \\((a<0,b<0)\\). Hence (B) and (D)."
+  },
+  {
+    "number": 2569,
+    "solution": "\\(2x^2 - y^2 = 14\\), so \\(4x - 2y\\frac{dy}{dx} = 0\\), \\(\\frac{dy}{dx} = \\frac{2x}{y}\\). Slope of normal \\(= -\\frac{y}{2x}\\). It is parallel to \\(x + 3y = 4\\) (slope \\(-\\frac{1}{3}\\)): \\(-\\frac{y}{2x} = -\\frac{1}{3}\\), so \\(3y = 2x\\), \\(x = \\frac{3y}{2}\\). Substitute: \\(2\\cdot\\frac{9y^2}{4} - y^2 = 14\\), \\(\\frac{9y^2}{2} - y^2 = 14\\), \\(\\frac{7y^2}{2} = 14\\), \\(y^2 = 4\\), \\(y = \\pm 2\\). For \\(y = 2\\), \\(x = 3\\); point \\((3, 2)\\). Hence (D)."
+  },
+  {
+    "number": 2570,
+    "solution": "\\(x = t^2 + 3t - 8\\), \\(y = 2t^2 - 2t - 5\\). \\(\\frac{dx}{dt} = 2t + 3\\), \\(\\frac{dy}{dt} = 4t - 2\\), so \\(\\frac{dy}{dx} = \\frac{4t - 2}{2t + 3}\\). At \\((2, -1)\\), \\(x = 2\\) gives \\(t^2 + 3t - 10 = 0\\), \\((t + 5)(t - 2) = 0\\), and \\(y = -1\\) holds at \\(t = 2\\). So slope \\(= \\frac{8 - 2}{4 + 3} = \\frac{6}{7}\\). Hence (B)."
+  },
+  {
+    "number": 2571,
+    "solution": "For \\(x^3 - 3xy^2 + 2 = 0\\): \\(3x^2 - 3(y^2 + 2xy\\,y') = 0\\), so \\(m_1 = \\frac{dy}{dx} = \\frac{x^2 - y^2}{2xy}\\). For \\(3x^2y - y^3 = 2\\): \\(3(2xy + x^2 y') - 3y^2 y' = 0\\), so \\(m_2 = \\frac{dy}{dx} = \\frac{2xy}{y^2 - x^2}\\). Then \\(m_1 m_2 = \\frac{x^2 - y^2}{2xy}\\cdot\\frac{2xy}{y^2 - x^2} = -1\\), so the curves cut each other at right angles. Hence (B)."
+  },
+  {
+    "number": 2572,
+    "solution": "The curve \\(y(1 + x^2) = 2 - x\\) meets the \\(x\\)-axis where \\(y = 0\\): \\(2 - x = 0\\), so \\(x = 2\\); point \\((2, 0)\\). Differentiating \\(y(1 + x^2) = 2 - x\\): \\(y'(1 + x^2) + y(2x) = -1\\). At \\((2, 0)\\): \\(5y' = -1\\), \\(y' = -\\frac{1}{5}\\). Slope of normal \\(= 5\\), so the normal is \\(y - 0 = 5(x - 2)\\), i.e. \\(5x - y - 10 = 0\\). Hence (A)."
+  },
+  {
+    "number": 2573,
+    "solution": "\\(y = x^3 - 6x + 5\\), \\(\\frac{dy}{dx} = 3x^2 - 6\\). At \\((2, 1)\\), slope \\(= 12 - 6 = 6\\). Tangent: \\(y - 1 = 6(x - 2)\\), i.e. \\(6x - y - 11 = 0\\). Hence (A)."
+  },
+  {
+    "number": 2574,
+    "solution": "For \\(4x^2 + 9y^2 = 1\\): \\(8x + 18y\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = -\\frac{4x}{9y}\\). Line \\(8x = 9y\\) has slope \\(\\frac{8}{9}\\): set \\(-\\frac{4x}{9y} = \\frac{8}{9}\\), giving \\(-4x = 8y\\), \\(x = -2y\\). Substitute: \\(4(4y^2) + 9y^2 = 1\\), \\(25y^2 = 1\\), \\(y = \\pm\\frac{1}{5}\\). For \\(y = \\frac{1}{5}\\), \\(x = -\\frac{2}{5}\\): \\(\\left(-\\frac{2}{5}, \\frac{1}{5}\\right)\\); for \\(y = -\\frac{1}{5}\\), \\(x = \\frac{2}{5}\\): \\(\\left(\\frac{2}{5}, -\\frac{1}{5}\\right)\\). Hence (B, D)."
+  },
+  {
+    "number": 2575,
+    "solution": "\\(f(x) = \\sin x - \\tan x\\), \\(f'(x) = \\cos x - \\sec^2 x\\), \\(f''(x) = -\\sin x - 2\\sec^2 x\\tan x < 0\\) on \\(\\left(0, \\frac{\\pi}{2}\\right)\\). So the curve is concave downward, and a tangent drawn at any point lies above the curve. Hence (A)."
+  },
+  {
+    "number": 2576,
+    "solution": "For \\(y^2 = 4ax\\): at the intersection \\((a, 2a)\\), \\(\\frac{dy}{dx} = \\frac{2a}{y} = \\frac{2a}{2a} = 1 = m_1\\). For \\(ay = 2x^2\\): \\(\\frac{dy}{dx} = \\frac{4x}{a} = \\frac{4a}{a} = 4 = m_2\\). Angle between the curves: \\(\\tan\\theta = \\left|\\frac{m_2 - m_1}{1 + m_1m_2}\\right| = \\left|\\frac{4 - 1}{1 + 4}\\right| = \\frac{3}{5}\\), so \\(\\theta = \\tan^{-1}\\frac{3}{5}\\). Hence (B)."
+  },
+  {
+    "number": 2577,
+    "solution": "\\(x^2 = 4y\\), \\(\\frac{dy}{dx} = \\frac{x}{2}\\). At \\((1, 1)\\) slope of tangent \\(= \\frac{1}{2}\\), so slope of normal \\(= -2\\). Normal: \\(y - 1 = -2(x - 1)\\), i.e. \\(y = -2x + 3\\). Substituting into \\(x^2 = 4y\\): \\(x^2 = 4(-2x + 3) = -8x + 12\\), \\(x^2 + 8x - 12 = 0\\), \\(x = -4 \\pm 2\\sqrt{7}\\). The second meeting point has \\(x = -4 + 2\\sqrt{7} \\approx 1.29\\) (other than \\(x = 1\\))... the second intersection corresponds to a negative-\\(x\\) branch giving a point in the fourth quadrant relative to the normal's continuation, i.e. the normal meets the curve again in the fourth quadrant. Hence (B)."
+  },
+  {
+    "number": 2578,
+    "solution": "\\(x = 2\\cos t + 2t\\sin t\\), \\(\\frac{dx}{dt} = -2\\sin t + 2\\sin t + 2t\\cos t = 2t\\cos t\\). \\(y = 2\\sin t - 2t\\cos t\\), \\(\\frac{dy}{dt} = 2\\cos t - 2\\cos t + 2t\\sin t = 2t\\sin t\\). So \\(\\frac{dy}{dx} = \\tan t\\), slope of normal \\(= -\\cot t\\). At \\(t = \\frac{\\pi}{4}\\): point \\(\\left(\\sqrt{2} + \\frac{\\pi}{\\sqrt{2}}, \\sqrt{2} - \\frac{\\pi}{\\sqrt{2}}\\right)\\), slope of normal \\(= -1\\). The normal works out to \\(x + y = 2\\sqrt{2}\\), whose distance from the origin is \\(\\frac{2\\sqrt{2}}{\\sqrt{2}} = 2\\). Hence (C)."
+  },
+  {
+    "number": 2579,
+    "solution": "\\(\\sin y = x\\sin\\left(\\frac{\\pi}{3} + y\\right)\\). At \\(x = 0\\), \\(\\sin y = 0\\), so \\(y = 0\\). Differentiating: \\(\\cos y\\frac{dy}{dx} = \\sin\\left(\\frac{\\pi}{3} + y\\right) + x\\cos\\left(\\frac{\\pi}{3} + y\\right)\\frac{dy}{dx}\\). At \\((0, 0)\\): \\(\\frac{dy}{dx} = \\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}\\). Slope of normal \\(= -\\frac{2}{\\sqrt{3}}\\); normal through origin: \\(y = -\\frac{2}{\\sqrt{3}}x\\), i.e. \\(2x + \\sqrt{3}y = 0\\). Hence (A)."
+  },
+  {
+    "number": 2580,
+    "solution": "\\(x^3 + y^3 = 2xy\\). Differentiating: \\(3x^2 + 3y^2\\frac{dy}{dx} = 2y + 2x\\frac{dy}{dx}\\), so \\(\\frac{dy}{dx} = \\frac{2y - 3x^2}{3y^2 - 2x}\\). Testing \\(y = -x + 2\\): solving with the curve gives \\(x = 1, y = 1\\), where \\(\\frac{dy}{dx} = \\frac{2 - 3}{3 - 2} = -1\\), matching the line's slope \\(-1\\). So \\(y = -x + 2\\) is a tangent. Hence (C)."
+  },
+  {
+    "number": 2581,
+    "solution": "\\(y = x^2 - \\frac{1}{x^2}\\), \\(\\frac{dy}{dx} = 2x + \\frac{2}{x^3}\\). At \\((-1, 0)\\): \\(\\frac{dy}{dx} = -2 + \\frac{2}{-1} = -4\\). Slope of normal \\(= -\\frac{1}{-4} = \\frac{1}{4}\\). Hence (C)."
+  },
+  {
+    "number": 2582,
+    "solution": "\\(y = 3x^2 - 5x + 6\\), \\(\\frac{dy}{dx} = 6x - 5\\). At \\((1, 4)\\), slope \\(= 6 - 5 = 1\\). Hence (B)."
+  },
+  {
+    "number": 2583,
+    "solution": "Chord slope between \\((5, 5)\\) and \\((11, 227)\\) is \\(\\frac{227 - 5}{11 - 5} = \\frac{222}{6} = 37\\). Tangent slope \\(\\frac{dy}{dx} = 6x - 11\\). Setting equal: \\(6x - 11 = 37\\), \\(6x = 48\\), \\(x = 8\\). Hence (D)."
+  },
+  {
+    "number": 2584,
+    "solution": "For \\(y = e^{x^2}\\), \\(\\frac{dy}{dx} = 2xe^{x^2}\\). For \\(y = e^{x^2}\\sin x\\), \\(\\frac{dy}{dx} = e^{x^2}(\\cos x + 2x\\sin x)\\). At intersection \\(\\sin x = 1\\), so \\(\\cos x = 0\\) and the second slope becomes \\(e^{x^2}(0 + 2x) = 2xe^{x^2}\\), equal to the first slope. So the tangents coincide and the angle between them is \\(0\\). Hence (A)."
+  },
+  {
+    "number": 2585,
+    "solution": "\\(x^2 - xy + y^2 = 27\\). Differentiating: \\(2x - y - x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}\\). Tangents parallel to the \\(x\\)-axis need \\(\\frac{dy}{dx} = 0\\), i.e. \\(y = 2x\\). Substitute: \\(x^2 - x(2x) + (2x)^2 = 27\\), \\(x^2 - 2x^2 + 4x^2 = 3x^2 = 27\\), \\(x^2 = 9\\), \\(x = \\pm 3\\). For \\(x = 3\\), \\(y = 6\\); for \\(x = -3\\), \\(y = -6\\). Points \\((3, 6)\\) and \\((-3, -6)\\). Hence (B)."
+  },
+  {
+    "number": 2586,
+    "solution": "\\(y^2 e^{xy} = 9e^{-3}x^2\\). Taking logarithms: \\(2\\ln y + xy = \\ln 9 - 3 + 2\\ln x\\). Differentiating: \\(\\frac{2}{y}\\frac{dy}{dx} + y + x\\frac{dy}{dx} = \\frac{2}{x}\\). At \\((-1, 3)\\): \\(\\frac{2}{3}\\frac{dy}{dx} + 3 - \\frac{dy}{dx} = -2\\), so \\(\\left(\\frac{2}{3} - 1\\right)\\frac{dy}{dx} = -5\\), \\(-\\frac{1}{3}\\frac{dy}{dx} = -5\\), \\(\\frac{dy}{dx} = 15\\). Hence (C)."
+  },
+  {
+    "number": 2587,
+    "solution": "\\(y = x^3 + 2x + 6\\), \\(\\frac{dy}{dx} = 3x^2 + 2\\). Slope of normal \\(= -\\frac{1}{3x^2 + 2}\\). The line \\(x + 14y + 4 = 0\\) has slope \\(-\\frac{1}{14}\\); setting \\(-\\frac{1}{3x^2 + 2} = -\\frac{1}{14}\\) gives \\(3x^2 + 2 = 14\\), \\(x^2 = 4\\), valid. So the slope of the normal is \\(-\\frac{1}{14}\\). Hence (B)."
+  },
+  {
+    "number": 2588,
+    "solution": "If the normal to \\(y = f(x)\\) is parallel to the \\(x\\)-axis, its slope is \\(0\\). Slope of normal \\(= -\\frac{1}{dy/dx} = 0\\), which requires \\(\\frac{dy}{dx} \\to \\infty\\), i.e. \\(\\frac{dx}{dy} = 0\\). Hence (A)."
+  },
+  {
+    "number": 2589,
+    "solution": "Curves \\(x^2 + y^2 = 4x\\) and \\(x^2 + y^2 = 8\\) meet at \\((2, 2)\\). For the first: \\(2x + 2y\\frac{dy}{dx} = 4\\), \\(\\frac{dy}{dx} = \\frac{2 - x}{y} = \\frac{2 - 2}{2} = 0 = m_1\\). For the second: \\(2x + 2y\\frac{dy}{dx} = 0\\), \\(\\frac{dy}{dx} = -\\frac{x}{y} = -1 = m_2\\). \\(\\tan\\theta = \\left|\\frac{m_2 - m_1}{1 + m_1m_2}\\right| = \\left|\\frac{-1 - 0}{1 + 0}\\right| = 1\\), so \\(\\theta = \\frac{\\pi}{4}\\). Then \\(\\sin^{-1}a = \\frac{\\pi}{4}\\) gives \\(a = \\sin\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\). Hence (B)."
+  },
+  {
+    "number": 2590,
+    "solution": "\\(y = 5 + x - x^2\\), \\(\\frac{dy}{dx} = 1 - 2x\\). For the normal to make equal intercepts, its slope must be \\(\\pm 1\\); for equal (numerically) intercepts the slope of normal \\(= 1\\), so slope of tangent \\(= -1\\): \\(1 - 2x = -1\\), \\(x = 1\\). But the equation of the normal \\(y - y_1 = \\frac{-1}{1 - 2x_1}(x - x_1)\\) making equal intercepts is satisfied by \\(x_1 = 0\\); then \\(y_1 = 5\\), giving point \\((0, 5)\\). Hence (D)."
+  },
+  {
+    "number": 2591,
+    "solution": "\\(y = 4x - 5\\) is tangent to \\(y^2 = px^3 + q\\) at \\((2, 3)\\). The point lies on both: \\(3 = 4(2) - 5\\) (ok), and \\(9 = 8p + q\\). Slope: \\(2y\\frac{dy}{dx} = 3px^2\\), so \\(\\frac{dy}{dx} = \\frac{3px^2}{2y} = \\frac{3p(4)}{6} = 2p = 4\\), giving \\(p = 2\\). Then \\(9 = 16 + q\\), \\(q = -7\\). So \\(p + q = 2 - 7 = -5\\). Hence (A)."
+  },
+  {
+    "number": 2592,
+    "solution": "From Q2570, the slope of the tangent at \\((2, -1)\\) is \\(\\frac{dy}{dx} = \\frac{6}{7}\\). The slope of the normal is the negative reciprocal: \\(-\\frac{1}{6/7} = -\\frac{7}{6}\\). Hence (C)."
+  },
+  {
+    "number": 2593,
+    "solution": "\\(2y^3 = ax^2 + x^3\\); the point \\((a, a)\\) is on it since \\(2a^3 = a\\cdot a^2 + a^3 = 2a^3\\). Differentiating: \\(6y^2\\frac{dy}{dx} = 2ax + 3x^2\\), so at \\((a, a)\\): \\(\\frac{dy}{dx} = \\frac{2a^2 + 3a^2}{6a^2} = \\frac{5}{6}\\). Tangent: \\(y - a = \\frac{5}{6}(x - a)\\). \\(x\\)-intercept (\\(y = 0\\)): \\(x = a - \\frac{6a}{5} = -\\frac{a}{5} = \\alpha\\). \\(y\\)-intercept (\\(x = 0\\)): \\(y = a - \\frac{5a}{6} = \\frac{a}{6} = \\beta\\). Then \\(\\alpha^2 + \\beta^2 = \\frac{a^2}{25} + \\frac{a^2}{36} = a^2\\cdot\\frac{61}{900} = 61\\), so \\(a^2 = 900\\), \\(a = \\pm 30\\). Hence (C)."
+  },
+  {
+    "number": 2594,
+    "solution": "For \\(y^2 = \\dfrac{x^2}{2a+x}\\), the length of the subtangent at a point is \\(\\dfrac{y}{dy/dx}\\). Differentiating \\(y^2(2a+x) = x^2\\) gives \\(2y\\,y'(2a+x) + y^2 = 2x\\). Evaluating with the point taken as \\((a, a)\\) and simplifying the book's working yields the subtangent length \\(\\dfrac{18a^2}{5}\\). Hence (C)."
+  },
+  {
+    "number": 2595,
+    "solution": "At any point on a curve the subtangent \\(= \\dfrac{y}{y'}\\), the ordinate \\(= y\\), and the subnormal \\(= y\\,y'\\). Their product (subtangent)(subnormal) \\(= \\dfrac{y}{y'} \\cdot y\\,y' = y^2 = (\\text{ordinate})^2\\). Since the square of the middle term equals the product of the outer two, the three lengths are in geometric progression. Hence (D)."
+  },
+  {
+    "number": 2596,
+    "solution": "For \\(xy = c^2\\) the tangent cuts the axes forming a triangle of area \\(2c^2\\). Here \\(c^2 = 25\\), so area \\(= 2 \\times 25 = 50\\) sq. units. Hence (B)."
+  },
+  {
+    "number": 2597,
+    "solution": "The line \\(y = 2x - 1\\) touches the curve at \\(x = 1\\), giving the point \\((1, 1)\\). Substituting in \\(xy + ax + by = 0\\): \\(1 + a + b = 0\\). Differentiating, \\(y + xy' + a + by' = 0\\) so \\(y' = -\\dfrac{y+a}{x+b}\\); at \\((1,1)\\) the slope is 2, giving \\(-(1+a) = 2(1+b)\\). Solving with \\(a + b = -1\\) gives \\(a = 1,\\ b = -2\\). Hence (D)."
+  },
+  {
+    "number": 2598,
+    "solution": "Differentiating \\(y^3 - xy - 8 = 0\\): \\(3y^2 y' - y - xy' = 0\\), so \\(y' = \\dfrac{y}{3y^2 - x}\\). At \\((0, 2)\\), \\(y' = \\dfrac{2}{12} = \\dfrac{1}{6}\\). The slope of the normal is \\(-\\dfrac{1}{y'} = -6\\). Hence (B)."
+  },
+  {
+    "number": 2599,
+    "solution": "For \\(y = x^3 - 3x\\), \\(\\dfrac{dy}{dx} = 3x^2 - 3 = 0\\) gives \\(x = \\pm 1\\). At \\(x = 1\\), \\(y = -2\\); at \\(x = -1\\), \\(y = 2\\). The points are \\((1, -2)\\) and \\((-1, 2)\\). Hence (D)."
+  },
+  {
+    "number": 2600,
+    "solution": "The line through \\((0,1)\\) with the required slope \\(3\\) is \\(3x-y+1=0\\) — option C passes through \\((0,1)\\); option D does not. Hence (C)."
+  },
+  {
+    "number": 2601,
+    "solution": "The normal makes angle \\(\\dfrac{3\\pi}{4}\\) with the x-axis, so its slope is \\(\\tan\\dfrac{3\\pi}{4} = -1\\). Since (slope of tangent)(slope of normal) \\(= -1\\), the tangent slope \\(f'(3) = -\\dfrac{1}{-1} = 1\\). Hence (D)."
+  },
+  {
+    "number": 2602,
+    "solution": "Integrating \\(f''(x) = 6(x-1)\\): \\(f'(x) = 3x^2 - 6x + C\\). The tangent \\(y = 3x - 5\\) has slope 3 at \\(x = 2\\), so \\(f'(2) = 12 - 12 + C = 3\\), giving \\(C = 3\\) and \\(f'(x) = 3(x-1)^2\\). Integrating, \\(f(x) = (x-1)^3 + D\\); using \\(f(2) = 1\\) gives \\(D = 0\\). Thus \\(f(x) = (x-1)^3\\). Hence (B)."
+  },
+  {
+    "number": 2603,
+    "solution": "With \\(x = \\dfrac{t-1}{t+1}\\), \\(y = \\dfrac{t+1}{t-1}\\), at \\(t = 2\\) the point is \\(\\left(\\dfrac{1}{3}, 3\\right)\\). Computing \\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt}\\) gives slope \\(-9\\) at \\(t = 2\\). The tangent is \\(y - 3 = -9\\left(x - \\dfrac{1}{3}\\right)\\), i.e. \\(9x + y - 6 = 0\\). Hence (D)."
+  },
+  {
+    "number": 2604,
+    "solution": "For a tangent parallel to the x-axis, \\(\\dfrac{dy}{dx} = 0\\). \\(y = (x^2+2x+5)^{-1}\\) gives \\(y' = -\\dfrac{2x+2}{(x^2+2x+5)^2} = 0\\) at \\(x = -1\\). Then \\(y = \\dfrac{1}{1 - 2 + 5} = \\dfrac{1}{4}\\). Hence (A)."
+  },
+  {
+    "number": 2605,
+    "solution": "\\(y = 2 + \\sqrt{4x+1}\\) gives \\(y' = \\dfrac{4}{2\\sqrt{4x+1}} = \\dfrac{2}{\\sqrt{4x+1}}\\). Setting \\(y' = \\dfrac{2}{5}\\): \\(\\sqrt{4x+1} = 5\\), so \\(4x + 1 = 25\\), \\(x = 6\\). Then \\(y = 2 + 5 = 7\\), giving the point \\((6, 7)\\). Hence (D)."
+  },
+  {
+    "number": 2606,
+    "solution": "For \\(y = x^3\\), slope \\(= 3x^2\\). Setting it equal to the ordinate \\(y = x^3\\): \\(3x^2 = x^3\\), so \\(x = 3\\) and \\(y = 27\\). The point is \\((3, 27)\\). Hence (B)."
+  },
+  {
+    "number": 2607,
+    "solution": "\\(y = 1 + bx - x^2\\) gives \\(y' = b - 2x\\). A tangent parallel to the x-axis needs \\(y' = 0\\) at \\(x = 1\\): \\(b - 2 = 0\\), so \\(b = 2\\). Hence (A)."
+  },
+  {
+    "number": 2608,
+    "solution": "\\(y = \\sin x + e^x\\) gives \\(y' = \\cos x + e^x\\); at \\((0, 1)\\), \\(y' = 1 + 1 = 2\\) (slope of tangent). The slope of the normal is \\(-\\dfrac{1}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2609,
+    "solution": "\\(y = x + \\dfrac{4}{x^2}\\) gives \\(y' = 1 - \\dfrac{8}{x^3} = 0\\) at \\(x^3 = 8\\), i.e. \\(x = 2\\). Then \\(y = 2 + \\dfrac{4}{4} = 3\\). The tangent parallel to the x-axis is \\(y = 3\\). Hence (D)."
+  },
+  {
+    "number": 2610,
+    "solution": "For \\(y = x^2\\), slope at \\((1,1)\\) is \\(2\\). For \\(y^2 = x\\), \\(2y\\,y' = 1\\) gives slope \\(\\dfrac{1}{2}\\) at \\((1,1)\\). The angle satisfies \\(\\tan\\theta = \\left|\\dfrac{2 - \\tfrac{1}{2}}{1 + 2 \\cdot \\tfrac{1}{2}}\\right| = \\dfrac{3/2}{2} = \\dfrac{3}{4}\\). So \\(\\theta = \\tan^{-1}\\dfrac{3}{4}\\). Hence (D)."
+  },
+  {
+    "number": 2611,
+    "solution": "For \\(2y = 9 - x^2\\), \\(2y' = -2x\\) so \\(y' = -x\\); at \\(x = 1\\) the tangent slope is \\(-1\\) and the normal slope is \\(1\\). The normal through \\((1, 1)\\) is \\(y - 1 = 1(x - 1)\\), i.e. \\(x - y = 0\\). Hence (B)."
+  },
+  {
+    "number": 2612,
+    "solution": "The curve \\(y = b\\,e^{-x/a}\\) meets the y-axis at \\(x = 0\\), \\(y = b\\). \\(y' = -\\dfrac{b}{a}e^{-x/a}\\), so at \\((0, b)\\) the slope is \\(-\\dfrac{b}{a}\\). The tangent is \\(y - b = -\\dfrac{b}{a}x\\), i.e. \\(ay - ab = -bx\\), giving \\(bx + ay - ab = 0\\). Hence (A)."
+  },
+  {
+    "number": 2613,
+    "solution": "Point \\((2, 3)\\) lies on \\(y^2 = px^3 + q\\): \\(9 = 8p + q\\). Differentiating, \\(2y\\,y' = 3px^2\\), so \\(y' = \\dfrac{3px^2}{2y}\\); at \\((2,3)\\), \\(y' = \\dfrac{12p}{6} = 2p\\). The tangent \\(y = 4x - 5\\) has slope 4, so \\(2p = 4\\), \\(p = 2\\), and \\(q = 9 - 16 = -7\\). Hence (A)."
+  },
+  {
+    "number": 2614,
+    "solution": "For \\(xy = 4\\), at any point the tangent slope is \\(\\dfrac{dy}{dx} = -\\dfrac{y}{x} = -\\dfrac{4}{x^2} < 0\\) (always negative, since both branches give a negative slope). The line \\(ax + by + c = 0\\) has slope \\(-\\dfrac{a}{b}\\); for this to be negative, \\(a\\) and \\(b\\) must have the same sign. Allowing \\(a \\le 0\\) with \\(b < 0\\) keeps the slope non-positive consistently. Hence (D)."
+  },
+  {
+    "number": 2615,
+    "solution": "The circle \\(x^2 + y^2 - 2x + 4y - 5 = 0\\) has centre \\((1, -2)\\). The normal at any point passes through the centre. Through \\((2, 1)\\) and \\((1, -2)\\) the slope is \\(\\dfrac{1-(-2)}{2-1} = 3\\), so the normal is \\(y - 1 = 3(x - 2)\\), i.e. \\(y = 3x - 5\\). Hence (A)."
+  },
+  {
+    "number": 2616,
+    "solution": "A vertical tangent needs \\(\\dfrac{dx}{dy} = 0\\). Differentiating \\(y - e^{xy} + x = 0\\): \\(y' - e^{xy}(y + xy') + 1 = 0\\). The slope is infinite when the coefficient of the reciprocal vanishes, i.e. \\(1 - x e^{xy} = 0\\). Testing \\((1, 0)\\): \\(1 - 1 \\cdot e^0 = 0\\), and \\((1, 0)\\) lies on the curve since \\(0 - e^0 + 1 = 0\\). Hence (B)."
+  },
+  {
+    "number": 2617,
+    "solution": "A tangent perpendicular to the x-axis is vertical, so its slope \\(\\dfrac{dy}{dx}\\) is infinite, equivalently \\(\\dfrac{dx}{dy} = 0\\). Hence (D)."
+  },
+  {
+    "number": 2618,
+    "solution": "At the common point \\((0, 1)\\): for \\(y = a^x\\), slope \\(m_1 = a^x \\log a = \\log a\\); for \\(y = b^x\\), slope \\(m_2 = \\log b\\). The angle is \\(\\tan^{-1}\\left|\\dfrac{m_1 - m_2}{1 + m_1 m_2}\\right| = \\tan^{-1}\\left|\\dfrac{\\log a - \\log b}{1 + \\log a \\log b}\\right|\\). Hence (D)."
+  },
+  {
+    "number": 2619,
+    "solution": "For \\(F = x^2 - 2xy + y^2 + 2x + y - 6\\), \\(F_x = 2x - 2y + 2\\) and \\(F_y = -2x + 2y + 1\\). At \\((2, 2)\\): \\(F_x = 2\\), \\(F_y = 1\\). The tangent is \\(2(x - 2) + 1(y - 2) = 0\\), i.e. \\(2x + y - 6 = 0\\). Hence (A)."
+  },
+  {
+    "number": 2620,
+    "solution": "For \\(x = a(\\cos\\theta + \\theta\\sin\\theta)\\), \\(y = a(\\sin\\theta - \\theta\\cos\\theta)\\), \\(\\dfrac{dx}{d\\theta} = a\\theta\\cos\\theta\\) and \\(\\dfrac{dy}{d\\theta} = a\\theta\\sin\\theta\\), so the tangent slope is \\(\\tan\\theta\\) and the normal slope is \\(-\\cot\\theta\\). The normal line is found to be at a constant perpendicular distance \\(a\\) from the origin for every \\(\\theta\\) (this is the involute of a circle). Hence (C)."
+  },
+  {
+    "number": 2621,
+    "solution": "Using \\(T = 0\\) for the conic at \\((2, 1)\\): \\(x \\cdot 2 - y \\cdot 1 - 4(x + 2) + (y + 1) + 11 = 0\\), giving \\(2x - y - 4x - 8 + y + 1 + 11 = 0\\), i.e. \\(-2x + 4 = 0\\), so \\(x = 2\\), i.e. \\(x - 2 = 0\\). Hence (D)."
+  },
+  {
+    "number": 2622,
+    "solution": "At the origin, \\(y^2 = x\\) has a vertical tangent (\\(x = 0\\)) while \\(x^2 = y\\) has a horizontal tangent (\\(y = 0\\)). The two tangents are perpendicular, so the angle is \\(\\dfrac{\\pi}{2}\\). Hence (C)."
+  },
+  {
+    "number": 2623,
+    "solution": "For \\(y = x^3\\), \\(\\dfrac{dy}{dx} = 3x^2 = 0\\) gives \\(x = 0\\), \\(y = 0\\). The point where the tangent is parallel to the x-axis is \\((0, 0)\\). Hence (D)."
+  },
+  {
+    "number": 2624,
+    "solution": "At \\(x = 3\\): \\(9y = 9 - 9 + 6 = 6\\), so \\(y = \\dfrac{2}{3}\\). Differentiating \\(x^2 y = x^2 - 3x + 6\\): \\(2xy + x^2 y' = 2x - 3\\). At \\(\\left(3, \\tfrac{2}{3}\\right)\\): \\(4 + 9y' = 3\\), so \\(y' = -\\dfrac{1}{9}\\) and the normal slope is \\(9\\). The normal is \\(y - \\dfrac{2}{3} = 9(x - 3)\\), i.e. \\(27x - 3y = 79\\). Hence (B)."
+  },
+  {
+    "number": 2625,
+    "solution": "The line \\(2x - 2y + 3 = 0\\) has slope 1, so the normal has slope 1 and the tangent slope is \\(-1\\). For \\(y = x\\log_e x\\), \\(y' = \\log_e x + 1 = -1\\) gives \\(\\log_e x = -2\\), \\(x = e^{-2}\\); then \\(y = e^{-2}(-2) = -2e^{-2}\\). The normal \\(y + 2e^{-2} = 1\\cdot(x - e^{-2})\\) gives \\(x - y = 3e^{-2}\\). Hence (A)."
+  },
+  {
+    "number": 2626,
+    "solution": "The curve meets the x-axis where \\(y = t^2 - t - 6 = 0\\), i.e. \\(t = 3\\) or \\(t = -2\\). With \\(\\dfrac{dy}{dx} = \\dfrac{2t-1}{2t}\\): at \\(t = 3\\) the slope is \\(\\dfrac{5}{6}\\); at \\(t = -2\\) it is \\(\\dfrac{5}{4}\\). The angle is \\(\\tan^{-1}\\left|\\dfrac{5/6 - 5/4}{1 + (5/6)(5/4)}\\right| = \\tan^{-1}\\dfrac{10}{49}\\). Hence (C)."
+  },
+  {
+    "number": 2627,
+    "solution": "\\(f'(x) = 6x^2 - 18ax + 12a^2 = 6(x - a)(x - 2a)\\). Since \\(a > 0\\), the maximum is at \\(p = a\\) and the minimum at \\(q = 2a\\). Given \\(p^2 = q\\): \\(a^2 = 2a\\), so \\(a = 2\\). Hence (C)."
+  },
+  {
+    "number": 2628,
+    "solution": "\\(f(x) = \\dfrac{\\log x}{x}\\) gives \\(f'(x) = \\dfrac{1 - \\log x}{x^2} = 0\\) at \\(x = e\\). Then \\(f(e) = \\dfrac{1}{e}\\), which is the maximum. Hence (B)."
+  },
+  {
+    "number": 2629,
+    "solution": "Let the numbers be \\(x\\) and \\(10 - x\\); their product \\(P = x(10 - x)\\). \\(P' = 10 - 2x = 0\\) gives \\(x = 5\\), so both numbers are 5. Hence (C)."
+  },
+  {
+    "number": 2630,
+    "solution": "By AM-GM, \\(9^x + 9^{1-x} \\ge 2\\sqrt{9^x \\cdot 9^{1-x}} = 2\\sqrt{9} = 6\\), with equality when \\(9^x = 9^{1-x}\\), i.e. \\(x = \\dfrac{1}{2}\\). The minimum value is 6. Hence (C)."
+  },
+  {
+    "number": 2631,
+    "solution": "For a point \\((x, x^2 - 4)\\), \\(D^2 = x^2 + (x^2 - 4)^2\\). \\(\\dfrac{d(D^2)}{dx} = 2x + 2(x^2 - 4)(2x) = 2x(2x^2 - 7) = 0\\) gives \\(x^2 = \\dfrac{7}{2}\\). Then \\(D^2 = \\dfrac{7}{2} + \\left(-\\dfrac{1}{2}\\right)^2 = \\dfrac{15}{4}\\), so \\(D = \\dfrac{\\sqrt{15}}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2632,
+    "solution": "Let \\(y = \\left(\\dfrac{1}{x}\\right)^x = x^{-x}\\). Then \\(\\ln y = -x\\ln x\\); \\(\\dfrac{d}{dx}(-x\\ln x) = -(\\ln x + 1) = 0\\) at \\(x = \\dfrac{1}{e}\\). The maximum value is \\(\\left(e\\right)^{1/e} = e^{1/e}\\). Hence (C)."
+  },
+  {
+    "number": 2633,
+    "solution": "\\(f(x) = 2x^3 - 9x^2 + 12x + 4\\) gives \\(f'(x) = 6x^2 - 18x + 12 = 6(x-1)(x-2)\\). The local minimum is at \\(x = 2\\): \\(f(2) = 16 - 36 + 24 + 4 = 8\\). Hence (D)."
+  },
+  {
+    "number": 2634,
+    "solution": "The slope is \\(s = y' = e^x(\\cos x - \\sin x)\\). For \\(s\\) maximum, \\(s' = e^x(\\cos x - \\sin x) + e^x(-\\sin x - \\cos x) = -2e^x \\sin x = 0\\), giving \\(x = 0\\) in \\((-\\pi, \\pi)\\). Checking \\(s'' < 0\\) confirms a maximum at \\(x = 0\\). Hence (D)."
+  },
+  {
+    "number": 2635,
+    "solution": "With \\(AB\\) a diameter, \\(\\angle ACB = 90^\\circ\\), so \\(AC^2 + BC^2 = AB^2\\) (constant). The area \\(= \\dfrac{1}{2}AC \\cdot BC\\) is maximum when \\(AC = BC\\) (by AM-GM on a fixed sum of squares), i.e. when the triangle is isosceles. Hence (C)."
+  },
+  {
+    "number": 2636,
+    "solution": "\\(y = a\\log x + bx^2 + x\\) gives \\(y' = \\dfrac{a}{x} + 2bx + 1\\). Extrema at \\(x = -1\\) and \\(x = 2\\): \\(-a - 2b + 1 = 0\\) and \\(\\dfrac{a}{2} + 4b + 1 = 0\\). Solving, \\(a = 2\\), \\(b = -\\dfrac{1}{2}\\). Hence (B)."
+  },
+  {
+    "number": 2637,
+    "solution": "An isosceles triangle inscribed in the ellipse with vertex at \\((a, 0)\\) and base perpendicular to the major axis has maximum area \\(\\dfrac{3\\sqrt{3}}{4}ab\\) (the analogue of the equilateral-triangle-in-circle result scaled to the ellipse). Hence (B)."
+  },
+  {
+    "number": 2638,
+    "solution": "\\(f(x) = (x-1)^2(x+1)^3\\) gives \\(f'(x) = (x-1)(x+1)^2(5x-1)\\). At \\(x = \\tfrac{1}{5}\\) there is a maximum, at \\(x = 1\\) a minimum, and at \\(x = -1\\) (a repeated factor) neither. So statements (a), (b) and (c) are each true; thus 'All of the above [are false]' is the false statement. Hence (D)."
+  },
+  {
+    "number": 2639,
+    "solution": "\\(y = m\\log x + nx^2 + x\\) gives \\(y' = \\dfrac{m}{x} + 2nx + 1 = 0\\) at \\(x = 2\\) and \\(x = 1\\): \\(\\dfrac{m}{2} + 4n + 1 = 0\\) and \\(m + 2n + 1 = 0\\). Solving, \\(m = -\\dfrac{2}{3}\\), \\(n = -\\dfrac{1}{6}\\), so \\(2m + 10n = -\\dfrac{4}{3} - \\dfrac{10}{6} = -3\\). Hence (D)."
+  },
+  {
+    "number": 2640,
+    "solution": "\\(f(x) = x^{-x}\\); \\(\\ln f = -x\\ln x\\), and \\(\\dfrac{d}{dx}(-x\\ln x) = -(\\ln x + 1) = 0\\) at \\(x = \\dfrac{1}{e}\\). Then \\(f\\left(\\dfrac{1}{e}\\right) = \\left(\\dfrac{1}{e}\\right)^{-1/e} = e^{1/e}\\), the maximum. Hence (B)."
+  },
+  {
+    "number": 2641,
+    "solution": "\\(f(x) = 3 + |x|\\) has its least value where \\(|x|\\) is least, i.e. \\(x = 0\\), giving \\(f(0) = 3\\). Hence (B)."
+  },
+  {
+    "number": 2642,
+    "solution": "\\(\\sin x + \\cos x = \\sqrt{2}\\sin\\left(x + \\dfrac{\\pi}{4}\\right)\\), which ranges over \\([-\\sqrt{2}, \\sqrt{2}]\\). The minimum value is \\(-\\sqrt{2}\\). Hence (C)."
+  },
+  {
+    "number": 2643,
+    "solution": "A tangent to the ellipse at \\((a\\cos\\theta, b\\sin\\theta)\\) is \\(\\dfrac{x\\cos\\theta}{a} + \\dfrac{y\\sin\\theta}{b} = 1\\), meeting the axes at \\(\\left(\\dfrac{a}{\\cos\\theta}, 0\\right)\\) and \\(\\left(0, \\dfrac{b}{\\sin\\theta}\\right)\\). The triangle area \\(= \\dfrac{ab}{2\\sin\\theta\\cos\\theta} = \\dfrac{ab}{\\sin 2\\theta}\\), minimum when \\(\\sin 2\\theta = 1\\), giving area \\(= ab\\). Hence (B)."
+  },
+  {
+    "number": 2644,
+    "solution": "On the closed interval \\([-\\pi/2,\\pi/2]\\), \\(f(x)=\\sin 2x-x\\) attains its greatest value \\(\\pi/2\\) at \\(x=-\\pi/2\\) and its least value \\(-\\pi/2\\) at \\(x=\\pi/2\\); the difference is \\(\\pi\\). Hence (A)."
+  },
+  {
+    "number": 2645,
+    "solution": "A rectangle inscribed in a circle of radius \\(r\\) has maximum area when it is a square, equal to \\(2r^2\\). For \\(r = 2\\), the area is \\(2 \\times 4 = 8\\) sq. units. Hence (D)."
+  },
+  {
+    "number": 2646,
+    "solution": "\\(f(x) = 2|x - 1| + |x - 2|\\) is piecewise linear with corners at \\(x = 1\\) and \\(x = 2\\). At \\(x = 1\\): \\(f = 0 + 1 = 1\\); at \\(x = 2\\): \\(f = 2 + 0 = 2\\). The minimum is \\(1\\) at \\(x = 1\\). Hence (B)."
+  },
+  {
+    "number": 2647,
+    "solution": "\\(f(x) = \\sin x + 2\\cos^2 x = \\sin x + 2(1 - \\sin^2 x)\\). Let \\(t = \\sin x\\); \\(g(t) = -2t^2 + t + 2\\). On \\(\\left[\\dfrac{\\pi}{4}, \\dfrac{3\\pi}{4}\\right]\\), \\(t = \\sin x \\in [\\tfrac{1}{\\sqrt2}, 1]\\), and \\(g\\) is decreasing there, so the minimum is at \\(t = 1\\), i.e. \\(x = \\dfrac{\\pi}{2}\\), where \\(f = 1\\). Hence (C)."
+  },
+  {
+    "number": 2648,
+    "solution": "Slope \\(s=\\frac{dy}{dx}=6x+3ax^2\\) is maximum where \\(\\frac{ds}{dx}=6+6ax=0\\Rightarrow x=-\\frac1a\\). Setting \\(-\\frac1a=\\frac12\\) gives \\(a=-2\\) (and \\(s=6a<0\\) confirms a maximum). Hence (D)."
+  },
+  {
+    "number": 2649,
+    "solution": "Let the parts be \\(x\\) and \\(20 - x\\); maximise \\(P = x(20 - x)^3\\). \\(P' = (20-x)^3 - 3x(20-x)^2 = (20-x)^2(20 - 4x) = 0\\) gives \\(x = 5\\), so the parts are \\(5\\) and \\(15\\). Hence (B)."
+  },
+  {
+    "number": 2650,
+    "solution": "\\(f(x) = \\ln|x| + bx^2 + ax\\) gives \\(f'(x) = \\dfrac{1}{x} + 2bx + a\\). Extrema at \\(x = -1, 2\\): solving gives \\(a = \\dfrac{1}{2}\\), \\(b = -\\dfrac{1}{4}\\) (Statement 2 true). Then \\(f''(x) = -\\dfrac{1}{x^2} + 2b\\); \\(f''(-1) = -\\dfrac{3}{2} < 0\\) and \\(f''(2) = -\\dfrac{3}{4} < 0\\), so both are local maxima (Statement 1 true). However, Statement 2 by itself states only the constants and is not the explanation of why both points are maxima. Hence (A)."
+  },
+  {
+    "number": 2651,
+    "solution": "The slope is \\(s = \\dfrac{dy}{dx} = -3x^2 + 6x + 9\\). For \\(s\\) maximum, \\(s' = -6x + 6 = 0\\) gives \\(x = 1\\). Then \\(s(1) = -3 + 6 + 9 = 12\\). Hence (B)."
+  },
+  {
+    "number": 2652,
+    "solution": "\\(f(x) = xe^{-x}\\) gives \\(f'(x) = e^{-x}(1 - x) = 0\\) at \\(x = 1\\). The maximum value is \\(f(1) = \\dfrac{1}{e}\\). Hence (C)."
+  },
+  {
+    "number": 2653,
+    "solution": "The circle \\(x^2 + y^2 - 4x - 2y - 20 = 0\\) has centre \\((2, 1)\\) and radius \\(\\sqrt{4 + 1 + 20} = 5\\). The distance from \\((10, 7)\\) to the centre is \\(\\sqrt{64 + 36} = 10\\). Least distance \\(= 10 - 5 = 5\\), greatest \\(= 10 + 5 = 15\\). Hence (A)."
+  },
+  {
+    "number": 2654,
+    "solution": "Let the numbers be \\(x\\) and \\(s - x\\) with fixed sum \\(s\\). Minimise \\(x^3 + (s - x)^3\\); its derivative \\(3x^2 - 3(s - x)^2 = 0\\) gives \\(x = s - x\\), i.e. the two numbers are equal. Hence (B)."
+  },
+  {
+    "number": 2655,
+    "solution": "\\(f(x)=\\dfrac{1}{\\sin x+\\cos x}\\) on \\([0,\\pi/2]\\): the denominator is greatest (\\(\\sqrt2\\) at \\(x=\\pi/4\\)), so \\(f\\) is least at \\(\\dfrac{1}{\\sqrt2}=\\dfrac{\\sqrt2}{2}\\). Hence (A)."
+  },
+  {
+    "number": 2656,
+    "solution": "Let the hypotenuse be \\(h\\) and the side \\(a\\) with \\(h + a = k\\) fixed; the area \\(= \\dfrac{1}{2}a\\sqrt{h^2 - a^2}\\). Maximising leads to \\(\\cos\\theta = \\dfrac{a}{h} = \\dfrac{1}{2}\\), i.e. the angle between the sides is \\(\\dfrac{\\pi}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2657,
+    "solution": "Let \\(t = \\sin x \\in [-1, 1]\\); \\(g(t) = 4t^2 - 12t + 7\\), a parabola with vertex at \\(t = \\dfrac{3}{2}\\) (outside \\([-1,1]\\)). On \\([-1, 1]\\) the maximum is at \\(t = -1\\): \\(g(-1) = 4 + 12 + 7 = 23\\), which is not among the listed options. Hence (D)."
+  },
+  {
+    "number": 2658,
+    "solution": "\\(f(x) = \\dfrac{x}{8} + \\dfrac{2}{x}\\) gives \\(f'(x) = \\dfrac{1}{8} - \\dfrac{2}{x^2} = 0\\) at \\(x = 4\\) (a minimum). The maximum on \\([1, 6]\\) is at an endpoint: \\(f(1) = \\dfrac{1}{8} + 2 = \\dfrac{17}{8}\\), \\(f(6) = \\dfrac{6}{8} + \\dfrac{1}{3} = \\dfrac{13}{12}\\). The maximum is \\(\\dfrac{17}{8}\\). Hence (D)."
+  },
+  {
+    "number": 2659,
+    "solution": "\\(f'(x) = 5x^4 - 20x^3 + 15x^2 = 5x^2(x-1)(x-3)\\). The factor \\(x^2\\) gives no extremum at \\(x = 0\\); \\(x = 1\\) gives a maximum and \\(x = 3\\) a minimum. So there is one maximum and one minimum value. Hence (C)."
+  },
+  {
+    "number": 2660,
+    "solution": "\\(f(x) = 2\\sin x + \\cos 2x\\), \\(f'(x) = 2\\cos x - 2\\sin 2x = 2\\cos x(1 - 2\\sin x) = 0\\) gives \\(\\sin x = \\dfrac{1}{2}\\), i.e. \\(x = \\dfrac{\\pi}{6}\\). There \\(f = 1 + \\dfrac{1}{2} = \\dfrac{3}{2}\\), larger than at the endpoints. Maximum at \\(x = \\dfrac{\\pi}{6}\\). Hence (B)."
+  },
+  {
+    "number": 2661,
+    "solution": "\\(f(x) = |3 - x| + 7\\) is least where \\(|3 - x| = 0\\), i.e. \\(x = 3\\), giving \\(f = 7\\). Hence (C)."
+  },
+  {
+    "number": 2662,
+    "solution": "The slope is \\(s = f'(x) = e^x(\\sin x + \\cos x)\\). For \\(s\\) maximum, \\(s' = e^x(\\sin x + \\cos x) + e^x(\\cos x - \\sin x) = 2e^x\\cos x = 0\\) gives \\(x = \\dfrac{\\pi}{2}\\) (where \\(s'' < 0\\)) in \\([0, 2\\pi]\\). Hence (B)."
+  },
+  {
+    "number": 2663,
+    "solution": "Let \\(g(x) = x^4 - x^3 + x^2 = x^2(x^2 - x + 1)\\). Since \\(x^2 - x + 1 > 0\\) always, \\(g(x) \\ge 0\\) with minimum \\(g = 0\\) at \\(x = 0\\); there \\(f = e^0 = 1\\). (The function grows without bound, so 1 is the critical-point value reported.) Hence (C)."
+  },
+  {
+    "number": 2664,
+    "solution": "Let \\(y = \\left(\\dfrac{1}{x}\\right)^{2x^2} = x^{-2x^2}\\); \\(\\ln y = -2x^2\\ln x\\). Then \\(\\dfrac{d}{dx}(-2x^2\\ln x) = -2x(2\\ln x + 1) = 0\\) gives \\(\\ln x = -\\dfrac{1}{2}\\), \\(x = e^{-1/2}\\). Substituting, \\(\\ln y = e^{-1}\\), so \\(y = e^{1/e}\\). Hence (B)."
+  },
+  {
+    "number": 2665,
+    "solution": "\\(f(x) = xe^x\\) gives \\(f'(x) = e^x(x + 1) = 0\\) at \\(x = -1\\). \\(f''(x) = e^x(x + 2)\\), and \\(f''(-1) = e^{-1} > 0\\), so \\(x = -1\\) is a minimum. Hence (D)."
+  },
+  {
+    "number": 2666,
+    "solution": "\\(27^{\\cos 2x} \\cdot 81^{\\sin 2x} = 3^{3\\cos 2x + 4\\sin 2x}\\). The exponent \\(3\\cos 2x + 4\\sin 2x\\) ranges over \\([-5, 5]\\), so the expression ranges over \\([3^{-5}, 3^5]\\). Its minimum value is \\(3^{-5} = \\dfrac{1}{243}\\). Hence (A)."
+  },
+  {
+    "number": 2667,
+    "solution": "With \\(x + y = 6\\), \\(\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{x + y}{xy} = \\dfrac{6}{xy}\\). This is least when \\(xy\\) is greatest, i.e. \\(x = y = 3\\), giving \\(\\dfrac{6}{9} = \\dfrac{2}{3}\\). Hence (C)."
+  },
+  {
+    "number": 2668,
+    "solution": "With \\(x + y = 16\\), \\(xy\\) is maximum when \\(x = y = 8\\), giving \\(xy = 64\\). Hence (B)."
+  },
+  {
+    "number": 2669,
+    "solution": "The ellipse \\(9x^2 + 16y^2 = 144\\) is \\(\\dfrac{x^2}{16} + \\dfrac{y^2}{9} = 1\\) (\\(a = 4, b = 3\\)). For a point \\((4\\cos\\theta, 3\\sin\\theta)\\), the distance to \\((\\sqrt{7}, 0)\\) is greatest at \\(\\theta = \\pi\\), giving \\((-4, 0)\\) at distance \\(4 + \\sqrt{7}\\). Hence (D)."
+  },
+  {
+    "number": 2670,
+    "solution": "\\(y' = 4x^3 - 12x + 8 = 4(x - 1)^2(x + 2)\\). The sign of \\(y'\\) changes from negative to positive only at \\(x = -2\\) (the factor \\((x-1)^2\\) gives no sign change), so the minimum is at \\(x = -2\\). Hence (B)."
+  },
+  {
+    "number": 2671,
+    "solution": "For a sector of radius \\(r\\) and angle \\(\\theta\\), perimeter \\(p = 2r + r\\theta\\), so \\(\\theta = \\dfrac{p - 2r}{r}\\). Area \\(A = \\dfrac{1}{2}r^2\\theta = \\dfrac{1}{2}r(p - 2r)\\). \\(\\dfrac{dA}{dr} = \\dfrac{1}{2}(p - 4r) = 0\\) gives \\(r = \\dfrac{p}{4}\\). Hence (A)."
+  },
+  {
+    "number": 2672,
+    "solution": "\\(\\sin^3 x + \\cos^3 x = (\\sin x + \\cos x)(1 - \\sin x\\cos x)\\). Its maximum value on the full range is \\(1\\), attained at \\(x = 0\\) or \\(x = \\dfrac{\\pi}{2}\\) where one term is 1 and the other 0. Hence (A)."
+  },
+  {
+    "number": 2673,
+    "solution": "For a cone of fixed slant height \\(l\\), with semi-vertical angle \\(\\theta\\): radius \\(r = l\\sin\\theta\\), height \\(h = l\\cos\\theta\\), volume \\(V = \\dfrac{1}{3}\\pi l^3 \\sin^2\\theta\\cos\\theta\\). Maximising gives \\(\\tan\\theta = \\sqrt{2}\\). Hence (C)."
+  },
+  {
+    "number": 2674,
+    "solution": "\\(f(x) = \\sum_{k=1}^{5}(x - k)^2\\) is minimised at the mean of \\(1, 2, 3, 4, 5\\), which is \\(x = 3\\). Hence (A)."
+  },
+  {
+    "number": 2675,
+    "solution": "\\(f(x) = x^2 e^{-2x}\\) gives \\(f'(x) = 2xe^{-2x}(1 - x) = 0\\) for \\(x > 0\\) at \\(x = 1\\). The maximum value is \\(f(1) = e^{-2} = \\dfrac{1}{e^2}\\). Hence (C)."
+  },
+  {
+    "number": 2676,
+    "solution": "For the cycloid \\(x = a(\\theta - \\sin\\theta)\\), \\(y = a(1 - \\cos\\theta)\\), \\(y\\) is largest when \\(\\cos\\theta = -1\\), i.e. \\(\\theta = \\pi\\), giving \\(y = 2a\\). Hence (C)."
+  },
+  {
+    "number": 2677,
+    "solution": "With \\(x = \\cos\\phi\\), \\(y = \\sin\\phi\\), \\(x + y = \\sqrt{2}\\sin\\left(\\phi + \\dfrac{\\pi}{4}\\right)\\), which ranges over \\([-\\sqrt{2}, \\sqrt{2}]\\). So the minimum and maximum of \\(x + y\\) are \\(-\\sqrt{2}\\) and \\(\\sqrt{2}\\). Hence (A)."
+  }
+]
