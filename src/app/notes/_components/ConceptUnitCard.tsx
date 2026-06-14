@@ -202,6 +202,21 @@ import EslSeismicShadowZones from "./visualizations/EslSeismicShadowZones";
 import EslVolcanoTypes from "./visualizations/EslVolcanoTypes";
 import EslRockCycle from "./visualizations/EslRockCycle";
 import EslFluvialLandforms from "./visualizations/EslFluvialLandforms";
+import IgeCroppingCalendar from "./visualizations/IgeCroppingCalendar";
+import IgpPhysiographicCrossSection from "./visualizations/IgpPhysiographicCrossSection";
+import IgpHimalayanRanges from "./visualizations/IgpHimalayanRanges";
+import ClimAtmosphereLayers from "./visualizations/ClimAtmosphereLayers";
+import ClimPressureBeltsWinds from "./visualizations/ClimPressureBeltsWinds";
+import ClimTropicalCycloneStructure from "./visualizations/ClimTropicalCycloneStructure";
+import ClimWarmColdFront from "./visualizations/ClimWarmColdFront";
+import WhgCanalsMap from "./visualizations/WhgCanalsMap";
+import EisLatLongGrid from "./visualizations/EisLatLongGrid";
+import EisRotationRevolution from "./visualizations/EisRotationRevolution";
+import EisSolarSystemOrder from "./visualizations/EisSolarSystemOrder";
+import EisTimeZonesIdl from "./visualizations/EisTimeZonesIdl";
+import OcnSeaFloorProfile from "./visualizations/OcnSeaFloorProfile";
+import OcnSpringNeapTides from "./visualizations/OcnSpringNeapTides";
+import OcnCoralReefTypes from "./visualizations/OcnCoralReefTypes";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 function renderVisualization(slug: VisualizationSlug) {
@@ -584,6 +599,36 @@ function renderVisualization(slug: VisualizationSlug) {
       return <EslRockCycle />;
     case "esl-fluvial-landforms":
       return <EslFluvialLandforms />;
+    case "ige-cropping-calendar":
+      return <IgeCroppingCalendar />;
+    case "igp-physiographic-cross-section":
+      return <IgpPhysiographicCrossSection />;
+    case "igp-himalayan-ranges":
+      return <IgpHimalayanRanges />;
+    case "clim-atmosphere-layers":
+      return <ClimAtmosphereLayers />;
+    case "clim-pressure-belts-winds":
+      return <ClimPressureBeltsWinds />;
+    case "clim-tropical-cyclone-structure":
+      return <ClimTropicalCycloneStructure />;
+    case "clim-warm-cold-front":
+      return <ClimWarmColdFront />;
+    case "whg-canals-map":
+      return <WhgCanalsMap />;
+    case "eis-lat-long-grid":
+      return <EisLatLongGrid />;
+    case "eis-rotation-revolution":
+      return <EisRotationRevolution />;
+    case "eis-solar-system-order":
+      return <EisSolarSystemOrder />;
+    case "eis-time-zones-idl":
+      return <EisTimeZonesIdl />;
+    case "ocn-seafloor-profile":
+      return <OcnSeaFloorProfile />;
+    case "ocn-spring-neap-tides":
+      return <OcnSpringNeapTides />;
+    case "ocn-coral-reef-types":
+      return <OcnCoralReefTypes />;
   }
 }
 

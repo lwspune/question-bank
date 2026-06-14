@@ -333,6 +333,36 @@ import {
   EARTHS_STRUCTURE_NOTES,
   EARTHS_STRUCTURE_SLUGS,
 } from "@/app/notes/nda-geography/earths-structure/_data";
+import {
+  INDIAN_GEOGRAPHY_ECONOMY_CHAPTER,
+  INDIAN_GEOGRAPHY_ECONOMY_NOTES,
+  INDIAN_GEOGRAPHY_ECONOMY_SLUGS,
+} from "@/app/notes/nda-geography/indian-geography-economy/_data";
+import {
+  INDIAN_GEOGRAPHY_PHYSICAL_CHAPTER,
+  INDIAN_GEOGRAPHY_PHYSICAL_NOTES,
+  INDIAN_GEOGRAPHY_PHYSICAL_SLUGS,
+} from "@/app/notes/nda-geography/indian-geography-physical/_data";
+import {
+  CLIMATOLOGY_CHAPTER,
+  CLIMATOLOGY_NOTES,
+  CLIMATOLOGY_SLUGS,
+} from "@/app/notes/nda-geography/climatology/_data";
+import {
+  WORLD_HUMAN_GEOGRAPHY_CHAPTER,
+  WORLD_HUMAN_GEOGRAPHY_NOTES,
+  WORLD_HUMAN_GEOGRAPHY_SLUGS,
+} from "@/app/notes/nda-geography/world-human-geography/_data";
+import {
+  EARTH_IN_SPACE_CHAPTER,
+  EARTH_IN_SPACE_NOTES,
+  EARTH_IN_SPACE_SLUGS,
+} from "@/app/notes/nda-geography/earth-in-space/_data";
+import {
+  OCEANOGRAPHY_CHAPTER,
+  OCEANOGRAPHY_NOTES,
+  OCEANOGRAPHY_SLUGS,
+} from "@/app/notes/nda-geography/oceanography/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -1077,6 +1107,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: EARTHS_STRUCTURE_CHAPTER,
     notes: EARTHS_STRUCTURE_NOTES,
     slugs: EARTHS_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "indian-geography-economy",
+    chipLabel: "Indian Geography — Economy notes",
+    chapter: INDIAN_GEOGRAPHY_ECONOMY_CHAPTER,
+    notes: INDIAN_GEOGRAPHY_ECONOMY_NOTES,
+    slugs: INDIAN_GEOGRAPHY_ECONOMY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "indian-geography-physical",
+    chipLabel: "Indian Geography — Physical notes",
+    chapter: INDIAN_GEOGRAPHY_PHYSICAL_CHAPTER,
+    notes: INDIAN_GEOGRAPHY_PHYSICAL_NOTES,
+    slugs: INDIAN_GEOGRAPHY_PHYSICAL_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "climatology",
+    chipLabel: "Climatology notes",
+    chapter: CLIMATOLOGY_CHAPTER,
+    notes: CLIMATOLOGY_NOTES,
+    slugs: CLIMATOLOGY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "world-human-geography",
+    chipLabel: "World & Human Geography notes",
+    chapter: WORLD_HUMAN_GEOGRAPHY_CHAPTER,
+    notes: WORLD_HUMAN_GEOGRAPHY_NOTES,
+    slugs: WORLD_HUMAN_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "earth-in-space",
+    chipLabel: "Earth in Space notes",
+    chapter: EARTH_IN_SPACE_CHAPTER,
+    notes: EARTH_IN_SPACE_NOTES,
+    slugs: EARTH_IN_SPACE_SLUGS,
+  },
+  {
+    examName: "NDA",
+    subjectName: "Geography",
+    subjectRoute: "nda-geography",
+    subjectDisplay: "NDA Geography",
+    chapterSlug: "oceanography",
+    chipLabel: "Oceanography notes",
+    chapter: OCEANOGRAPHY_CHAPTER,
+    notes: OCEANOGRAPHY_NOTES,
+    slugs: OCEANOGRAPHY_SLUGS,
   },
 ];
 
