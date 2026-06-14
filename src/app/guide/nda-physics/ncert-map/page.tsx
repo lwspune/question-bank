@@ -63,7 +63,7 @@ const STATUS_META: Record<
   },
 };
 
-function NcertChip({ ref: r }: { ref: NcertRef }) {
+function NcertChip({ item: r }: { item: NcertRef }) {
   const status = r.signal ? signalStatus(r.signal) : null;
   return (
     <span className="inline-flex flex-wrap items-center gap-1.5">
@@ -207,7 +207,7 @@ export default async function NcertMapPage() {
                   {hasNcert ? (
                     <div className="mt-3 flex flex-col gap-2">
                       {row.ncert.map((r) => (
-                        <NcertChip key={r.name} ref={r} />
+                        <NcertChip key={r.name} item={r} />
                       ))}
                     </div>
                   ) : (
