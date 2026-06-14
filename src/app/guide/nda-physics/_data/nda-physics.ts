@@ -75,6 +75,12 @@ export const ROUTES: GuideRoute[] = [
     blurb:
       "Distractor shapes NDA Physics reuses — series-vs-parallel swap, sign-convention flip, dimensional mismatch, ratio inversion.",
   },
+  {
+    slug: "ncert-map",
+    label: "NCERT Map",
+    blurb:
+      "Which NCERT Class 9–12 chapters each NDA bucket absorbs — plus a watch-list of Class-12 topics to flag a syllabus drift early.",
+  },
 ];
 
 export type Overview = {
