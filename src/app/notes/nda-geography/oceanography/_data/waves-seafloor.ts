@@ -6,7 +6,7 @@ export const WAVES_SEAFLOOR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The ocean basin is built in zones — shelf, slope, abyssal plain, trench and mid-ocean ridge — and across its surface waves carry energy (not water) from the wind that raised them.",
   whyItMatters:
-    "4 PYQs, leaning MODERATE. Two ideas earn the marks: the named sea-floor zones (and which one is deepest — the trench), and what a wave really is — wind-built, energy-carrying, with its height set by wind speed, duration and fetch. The salinity/temperature 'cline' words (halocline, thermocline, pycnocline) are a recurring single-fact trap.",
+    "5 PYQs, leaning MODERATE. Two ideas earn the marks: the named sea-floor zones (and which one is deepest — the trench, e.g. the Mariana Trench in the Western Pacific), and what a wave really is — wind-built, energy-carrying, with its height set by wind speed, duration and fetch. The salinity/temperature 'cline' words (halocline, thermocline, pycnocline) are a recurring single-fact trap.",
   concepts: [
     // 1. sea-floor topography (FOUNDATION-ish, formula + diagram)
     {

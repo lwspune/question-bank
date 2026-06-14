@@ -61,7 +61,7 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "indian-geography-economy",
     name: "Indian Geography — Economy, Resources and Transport",
     summary:
-      "81 q · 24% HARD — the largest chapter AND the densest-HARD recall chapter. Agriculture, Crops, Soils and Land Use (36 q · 17% HARD — kharif/rabi crops, RAD scheme, leading-producer states), Minerals and Mining (11 · 36% HARD — densest HARD subtopic, critical-mineral identifications), Energy and Industries (12 · 25% HARD), plus Schemes/Transport/Ports. Recall-heavy but trap-aware — drill /reference-tables → 'Mineral & Crop Producer States' cluster.",
+      "81 q · 24% HARD — the largest chapter AND the densest-HARD recall chapter. Agriculture, Crops, Soils and Land Use (20 q · 10% HARD — kharif/rabi crops, RAD scheme, leading-producer states), Economic Sectors and Government Schemes (15 · 20% HARD), Energy and Industries (14 · 21% HARD), Minerals and Mining (14 · 36% HARD — densest HARD subtopic, critical-mineral identifications), plus Transport/Ports. Recall-heavy but trap-aware — drill /reference-tables → 'Mineral & Crop Producer States' cluster.",
     chapter: "Indian Geography — Economy, Resources and Transport",
     subtopics: [
       "Agriculture, Crops, Soils and Land Use",
@@ -97,7 +97,7 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "world-and-human-geography",
     name: "World and Human Geography",
     summary:
-      "25 q · 8% HARD — lightest %HARD of any chapter. Human Geography — Megacities and Population (15 · 0% HARD — megacity identification, population basics, guaranteed marks), World — Rivers, Canals and Water Bodies (6 · 33% HARD — Helmand/Suez/Panama identification), World — Coordinates, Time and Place (4). Recall-heavy world-atlas facts; the smallest chapter that rewards a one-pass read.",
+      "25 q · 8% HARD — lightest %HARD of any chapter. Human Geography — Megacities and Population (15 · 0% HARD — megacity identification, population basics, guaranteed marks), World — Rivers, Canals and Water Bodies (6 · 17% HARD — Helmand/Suez/Panama identification), World — Coordinates, Time and Place (4 · 0% HARD). Recall-heavy world-atlas facts; the smallest chapter that rewards a one-pass read.",
     chapter: "World and Human Geography",
     subtopics: [
       "Human Geography — Megacities and Population",
@@ -114,7 +114,7 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "climatology-atmosphere-weather",
     name: "Climatology, Atmosphere and Weather",
     summary:
-      "57 q · 28% HARD — the densest-HARD chapter. Atmospheric Layers (14 · 21% HARD — troposphere/stratosphere/mesosphere/thermosphere, aurora), Cyclones, Fronts and Local Winds (14 · 29% HARD — tropical vs extratropical cyclones, named local winds), Humidity + Clouds + Precipitation (10), Climate Classification (8 · 38% HARD — Koeppen zones), Atmospheric Pressure + Winds (6 · 50% HARD — Coriolis, trade winds, jet streams), Insolation + Temperature (5). Apply strand because mechanism-tracing dominates: cyclogenesis, monsoon dynamics, pressure-belt formation.",
+      "57 q · 28% HARD — the densest-HARD chapter. Cyclones, Fronts and Local Winds (16 · 25% HARD — tropical vs extratropical cyclones, formation conditions, named local winds), Atmospheric Layers (12 · 25% HARD — troposphere/stratosphere/mesosphere/thermosphere, aurora), Humidity + Clouds + Precipitation (10), Climate Classification (8 · 38% HARD — Koeppen zones), Atmospheric Pressure + Winds (6 · 50% HARD — Coriolis, trade winds, jet streams), Insolation + Temperature (5). Apply strand because mechanism-tracing dominates: cyclogenesis, monsoon dynamics, pressure-belt formation.",
     chapter: "Climatology, Atmosphere and Weather",
     subtopics: [
       "Atmospheric Layers, Composition and Aurora",
@@ -132,7 +132,7 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "earths-structure-landforms",
     name: "Earth's Structure, Landforms and Geological Time",
     summary:
-      "74 q · 20% HARD. Earth's Interior, Crust and Plate Tectonics (18 · 28% HARD — densest HARD subtopic, plate-boundary types, seismic-wave layering), Landforms and Mass Movements (15 · 13% HARD), Rocks, Minerals and Geological Time (14 · 29% HARD — igneous/sedimentary/metamorphic identification), Weathering and Denudation (9 · 0% HARD — guaranteed marks pocket), Earthquakes (8 · 37% HARD), plus Volcanoes + Soils. Apply strand because mechanism-tracing dominates: tectonic processes, rock-cycle classification, weathering chemistry.",
+      "74 q · 20% HARD. Earth's Interior, Crust and Plate Tectonics (15 · 33% HARD — densest HARD subtopic, plate-boundary types, seismic-wave layering), Landforms and Mass Movements (15 · 13% HARD), Rocks, Minerals and Geological Time (15 · 27% HARD — igneous/sedimentary/metamorphic identification), Weathering and Denudation (10 · 0% HARD — guaranteed marks pocket), Earthquakes (9 · 33% HARD), plus Volcanoes + Soils. Apply strand because mechanism-tracing dominates: tectonic processes, rock-cycle classification, weathering chemistry.",
     chapter: "Earth's Structure, Landforms and Geological Time",
     subtopics: [
       "Earth's Interior, Crust and Plate Tectonics",

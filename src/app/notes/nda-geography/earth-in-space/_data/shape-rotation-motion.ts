@@ -215,12 +215,16 @@ export const SHAPE_ROTATION_MOTION_NOTE: SubtopicNote = {
         { prompt: "Can the Sun be overhead at 40 deg N?", answer: "No (poleward of the Tropic of Cancer)" },
         { prompt: "Which tropic passes through India?", answer: "Tropic of Cancer (~23.5 deg N)" },
       ],
-      pyqExampleId: "8584266a-d85e-4f74-9480-721f7dff5542", // states where Sun rays never perpendicular: Bihar & Chhattisgarh-region reasoning
       traps: [
         {
           title: "Tilt limits the overhead Sun to 23.5 degrees",
           body:
             "Because the axis is tilted 23.5 degrees, the overhead point shifts only between the two Tropics over a year. Any latitude **beyond 23.5 degrees** never sees a perpendicular Sun — that is the key to the 'which state never has overhead Sun' question.",
+        },
+        {
+          title: "Which Indian states NEVER get a perpendicular Sun — go by the Tropic",
+          body:
+            "Only states lying **wholly north of the Tropic of Cancer** qualify. Among Bihar, Chhattisgarh, Manipur and Rajasthan, the Tropic of Cancer CROSSES Chhattisgarh and southern Rajasthan (so their southern parts DO get an overhead Sun), while **Bihar and Manipur** lie entirely north — so the geographically-correct answer is **Bihar and Manipur**. (A 2024 NDA-2 paper recorded 'Bihar and Chhattisgarh', which is contested — Chhattisgarh is one of the eight states the Tropic passes through.)",
         },
       ],
     },

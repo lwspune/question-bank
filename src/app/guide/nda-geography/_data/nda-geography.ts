@@ -141,7 +141,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 23.5,
     pctHard: 24,
     focus:
-      "Agriculture, Crops, Soils and Land Use (36 · 17% HARD — kharif/rabi, RAD schemes, leading-producer states), Energy and Industries — Power, Petroleum, Iron and Steel (12 · 25% HARD), Minerals and Mining (11 · 36% HARD — densest HARD pool, critical-mineral identifications), Economic Sectors and Government Schemes (10 · 30% HARD), Highways, Railways and Transport Corridors (7 · 43% HARD), Ports and Maritime Infrastructure (5 · 0% HARD).",
+      "Agriculture, Crops, Soils and Land Use (20 · 10% HARD — kharif/rabi, RAD schemes, leading-producer states), Economic Sectors and Government Schemes (15 · 20% HARD), Energy and Industries — Power, Petroleum, Iron and Steel (14 · 21% HARD), Minerals and Mining (14 · 36% HARD — densest HARD pool, critical-mineral identifications), Highways, Railways and Transport Corridors (10 · 50% HARD), Ports and Maritime Infrastructure (8 · 13% HARD).",
   },
   {
     chapter: "Earth's Structure, Landforms and Geological Time",
@@ -149,7 +149,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 21.4,
     pctHard: 20,
     focus:
-      "Earth's Interior, Crust and Plate Tectonics (18 · 28% HARD — densest HARD subtopic), Landforms and Mass Movements (15 · 13% HARD), Rocks, Minerals and Geological Time (14 · 29% HARD), Weathering and Denudation (9 · 0% HARD — guaranteed marks pocket), Earthquakes and Seismic Waves (8 · 37% HARD), Soils (5), Volcanoes and Igneous Activity (5 · 0% HARD).",
+      "Earth's Interior, Crust and Plate Tectonics (15 · 33% HARD — densest HARD subtopic), Landforms and Mass Movements (15 · 13% HARD), Rocks, Minerals and Geological Time (15 · 27% HARD), Weathering and Denudation (10 · 0% HARD — guaranteed marks pocket), Earthquakes and Seismic Waves (9 · 33% HARD), Soils (5 · 20% HARD), Volcanoes and Igneous Activity (5 · 0% HARD).",
   },
   {
     chapter: "Indian Geography — Physical Features",
@@ -165,7 +165,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 16.5,
     pctHard: 28,
     focus:
-      "Atmospheric Layers, Composition and Aurora (14 · 21% HARD — troposphere/stratosphere/aurora basics), Cyclones, Fronts and Local Winds (14 · 29% HARD — tropical vs extratropical cyclones, Loo/Chinook/Foehn identification), Humidity, Condensation, Clouds and Precipitation (10 · 20% HARD), Climate Classification and Zones (8 · 38% HARD), Atmospheric Pressure and Winds (6 · 50% HARD — Coriolis, trade winds, jet streams), Insolation, Temperature and Solar Geometry (5 · 20% HARD).",
+      "Cyclones, Fronts and Local Winds (16 · 25% HARD — tropical vs extratropical cyclones, cyclone-formation conditions, Loo/Chinook/Foehn identification), Atmospheric Layers, Composition and Aurora (12 · 25% HARD — troposphere/stratosphere/aurora basics), Humidity, Condensation, Clouds and Precipitation (10 · 20% HARD), Climate Classification and Zones (8 · 38% HARD), Atmospheric Pressure and Winds (6 · 50% HARD — Coriolis, trade winds, jet streams), Insolation, Temperature and Solar Geometry (5 · 20% HARD).",
   },
   {
     chapter: "World and Human Geography",

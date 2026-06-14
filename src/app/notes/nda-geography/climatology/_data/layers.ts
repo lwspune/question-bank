@@ -6,7 +6,7 @@ export const LAYERS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The atmosphere is built in five shells — troposphere, stratosphere, mesosphere, thermosphere, exosphere — each with its own temperature behaviour, gases and phenomena, from all our weather down low to the ozone shield and the aurora high up.",
   whyItMatters:
-    "14 PYQs — the single largest slice of the chapter, and a steady source of HARD multi-statement traps. Two ideas earn most of the marks: the ORDER of the layers and what happens in each (weather in the troposphere, ozone in the stratosphere, burning meteors in the mesosphere), and the lapse rate (temperature falls ~6.5 degrees C per km in the troposphere). Get the layer sequence and 'which layer does what' cold.",
+    "12 PYQs — one of the largest slices of the chapter, and a steady source of HARD multi-statement traps. Two ideas earn most of the marks: the ORDER of the layers and what happens in each (weather in the troposphere, ozone in the stratosphere, burning meteors in the mesosphere), and the lapse rate (temperature falls ~6.5 degrees C per km in the troposphere). Get the layer sequence and 'which layer does what' cold.",
   concepts: [
     // 1. layer structure + sequence (FOUNDATION, formula + diagram)
     {
@@ -205,78 +205,39 @@ export const LAYERS_NOTE: SubtopicNote = {
       ],
     },
 
-    // 5. tropical-cyclone formation conditions (formula) — DB-filed here
-    {
-      kind: "formula" as const,
-      slug: "tropical-cyclone-conditions",
-      name: "Conditions for a tropical cyclone to form",
-      intuition:
-        "A tropical cyclone is born only when several ingredients line up in the FORMATIVE stage: a very warm sea (above 26 degrees C) to feed it energy, plenty of moisture high in the atmosphere, and an unstable atmosphere that lets air keep rising. These belong to the initial formation stage, not maturity or decay.",
-      definition:
-        "Ingredients required in the **formation / initial stage** of a tropical cyclone:\n" +
-        "- A warm **sea-surface temperature above ~26 degrees C** (the energy source).\n" +
-        "- **High relative humidity** in the atmosphere up to a good height (above ~700 m / mid-troposphere).\n" +
-        "- **Atmospheric instability** so warm moist air keeps rising and condensing.\n" +
-        "These conditions define the BIRTH of the storm — the formative stage, not full maturity or decay.",
-      authoredExample: {
-        prompt:
-          "A warm sea (above 26 degrees C), high humidity aloft and an unstable atmosphere are associated with which stage of a tropical cyclone's life?",
-        steps: [
-          "These are the supply conditions a storm needs to get started.",
-          "They describe the storm being created, not an already-mature or dying storm.",
-        ],
-        answer: "The formation (initial) stage.",
-      },
-      practiceSet: [
-        { prompt: "What minimum sea temperature feeds a tropical cyclone?", answer: "About 26 degrees C" },
-        { prompt: "Warm sea + humidity + instability describe which stage?", answer: "Formation / initial stage" },
-      ],
-      pyqExampleId: "0a31bbd8-69ba-435d-aa4b-b588a52f6e6a", // warm sea/humidity/instability = formation stage
-    },
-
-    // 6. world vegetation + named-wind recall (reference) — DB-filed here
+    // 5. world vegetation recall (reference) — DB-filed here
     {
       kind: "reference" as const,
       slug: "regional-recall",
-      name: "Regional climate-vegetation and a cold local wind",
+      name: "Regional climate-vegetation recall",
       intuition:
-        "A handful of pure-recall facts the bank files in this subtopic: the savanna grasslands of South America have local names (Campos, Llanos), south-east China carries subtropical broadleaf evergreen forest, and the Mistral is a famously COLD local wind. Memorise the pairing — these reward recall, not reasoning.",
+        "A couple of pure world-biome recall facts the bank files in this subtopic: the savanna grasslands of South America carry local names (Campos, Llanos), and south-east China is covered by subtropical broadleaf evergreen forest. Memorise the place-to-vegetation pairing — these reward recall, not reasoning.",
       definition:
-        "- **Campos** and **Llanos** are the local names for the **tropical savanna grasslands of South America**.\n" +
-        "- The natural vegetation of **south-east China** is **subtropical broadleaf evergreen forest**.\n" +
-        "- The **Mistral** is a **COLD** local wind (it blows cold and dry down the Rhone valley toward the Mediterranean) — contrast the warm winds Santa Ana, Chinook and Loo.",
+        "- **Campos** (the Brazilian Highlands) and **Llanos** (the Orinoco basin of Venezuela/Colombia) are the local names for the **tropical savanna grasslands of South America**.\n" +
+        "- The natural vegetation of **south-east China** is **subtropical broadleaf evergreen forest** (a warm, humid monsoon climate).",
       table: {
         columns: ["Fact", "Answer", "Note"],
         rows: [
-          { cells: ["Campos / Llanos grasslands", "**South America**", "Tropical savanna by local name"] },
-          { cells: ["Natural vegetation of SE China", "**Subtropical broadleaf evergreen forest**", "Warm, humid south-east"] },
           {
-            cells: ["A COLD local wind", "**Mistral**", "Santa Ana / Chinook / Loo are WARM"],
-            noteAmber: "NDA 2020 — Mistral is the cold one among warm-wind distractors.",
+            cells: ["Campos / Llanos grasslands", "**South America**", "Tropical savanna by local name"],
+            noteAmber: "NDA 2019 — Campos and Llanos are South American savanna grasslands.",
           },
+          { cells: ["Natural vegetation of SE China", "**Subtropical broadleaf evergreen forest**", "Warm, humid south-east"] },
         ],
       },
       selfCheckExample: {
-        prompt: "Among Santa Ana, Chinook, Mistral and Loo, which is a COLD local wind?",
+        prompt: "Campos and Llanos, the tropical savanna grasslands, are found on which continent?",
         steps: [
-          "Santa Ana, Chinook and Loo are all warm/hot winds.",
-          "The Mistral is cold and dry.",
+          "Campos is the savanna of the Brazilian Highlands; Llanos is the savanna of the Orinoco basin.",
+          "Both lie in South America.",
         ],
-        answer: "The Mistral.",
+        answer: "South America.",
       },
       practiceSet: [
         { prompt: "Campos and Llanos savanna grasslands are found in which continent?", answer: "South America" },
-        { prompt: "Which is a cold local wind: Santa Ana, Chinook, Mistral, Loo?", answer: "Mistral" },
         { prompt: "Natural vegetation of SE China?", answer: "Subtropical broadleaf evergreen forest" },
       ],
-      pyqExampleId: "33049725-cf15-4278-9231-965ead67129f", // cold local wind = Mistral
-      traps: [
-        {
-          title: "Mistral is cold; its lookalikes are warm",
-          body:
-            "Grouped with **Santa Ana, Chinook, Loo** — all warm/hot winds — the **Mistral** stands out as the COLD one. The warm-dry descent winds (Chinook/Foehn type) are the opposite.",
-        },
-      ],
+      pyqExampleId: "df7d1537-50b2-4a75-8c6c-ce2a4f83caf9", // Campos/Llanos = South America
     },
   ],
 };

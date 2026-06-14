@@ -103,7 +103,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "spike",
     title: "Climatology 2024 spike (11 q) and 2025 (8 q) — paper got more weather-heavy",
     description:
-      "Through 2017–2023 the Climatology chapter held 2–10 q/year (avg ~4.6). 2024 jumped to 11 (chapter all-time high), 2025 held at 8, 2026 NDA-1 dropped to 5. The growth concentrated in Atmospheric Layers + Cyclones (14 + 14 = 28 of 57 chapter q overall). If your prep is from a coaching-class syllabus that pre-dates 2024, you're under-investing in this chapter — it's grown into the 4th-largest after the two Indian Geography chapters + Earth's Structure.",
+      "Through 2017–2023 the Climatology chapter held 2–10 q/year (avg ~4.6). 2024 jumped to 11 (chapter all-time high), 2025 held at 8, 2026 NDA-1 dropped to 5. The growth concentrated in Cyclones + Atmospheric Layers (16 + 12 = 28 of 57 chapter q overall). If your prep is from a coaching-class syllabus that pre-dates 2024, you're under-investing in this chapter — it's grown into the 4th-largest after the two Indian Geography chapters + Earth's Structure.",
     drill: {
       chapter: "Climatology, Atmosphere and Weather",
       pyqYears: [2024, 2025],
@@ -115,7 +115,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "up",
     title: "Earth's Structure dominated since 2021 (58 of 74 chapter q from 2021–26)",
     description:
-      "2017–2020 carried only 16 of the chapter's 74 q. Since 2021: 12 + 12 + 10 + 7 + 8 + 9 = 58 q. The chapter has cemented as a recall + apply workhorse. Earth's Interior + Plate Tectonics (18 q · 28% HARD) is the densest-HARD subtopic in the chapter — drill it cold. Plate-boundary type, seismic-wave shadow zones, rock-cycle classification are all repeat-tested across these years.",
+      "2017–2020 carried only 16 of the chapter's 74 q. Since 2021: 12 + 12 + 10 + 7 + 8 + 9 = 58 q. The chapter has cemented as a recall + apply workhorse. Earth's Interior + Plate Tectonics (15 q · 33% HARD) is the densest-HARD subtopic in the chapter — drill it cold. Plate-boundary type, seismic-wave shadow zones, rock-cycle classification are all repeat-tested across these years.",
     drill: {
       chapter: "Earth's Structure, Landforms and Geological Time",
       pyqYears: [2021, 2022, 2023, 2024, 2025, 2026],
