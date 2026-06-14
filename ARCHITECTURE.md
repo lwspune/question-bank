@@ -15,7 +15,7 @@ src/
 │   │       + /guide + /guide/nda landing
 │   │       + nda-maths landing + 5 sections + **11 principle deep-dive pages**
 │   │       + nda-english landing + 5 sections + **16 playbook detail pages** pulled from PLAYBOOK_SLUGS
-│   │       + nda-physics landing + 6 sections + **14 chapter playbook detail pages** pulled from PHYSICS_PLAYBOOK_SLUGS
+│   │       + nda-physics landing + 7 sections (incl. ncert-map) + **14 chapter playbook detail pages** pulled from PHYSICS_PLAYBOOK_SLUGS
 │   │       + nda-chemistry landing + 6 sections + **12 chapter playbook detail pages** pulled from CHEMISTRY_PLAYBOOK_SLUGS
 │   │       + nda-biology landing + 6 sections + **9 chapter playbook detail pages** pulled from BIOLOGY_PLAYBOOK_SLUGS
 │   │       + nda-geography landing + 5 sections + **7 chapter playbook detail pages** pulled from GEOGRAPHY_PLAYBOOK_SLUGS
@@ -103,12 +103,13 @@ src/
 │   │   │           - `trends.ts` — 10-yr DRIFT_ROWS + 4 callouts (Grammar exploded post-2024 from 0→40 q/yr, Spotting Errors went silent 2024–25)
 │   │   │           - `traps.ts` — 9 English-specific trap shapes bucketed by Recall/Rule/Reason; meaning-based not numeric so no SIGN_FLIP_CELLS analog
 │   │   │       · No DB-backed `question_playbook_tags` table — cross-chapter lever in English is too thin (max 27 q) to justify the infra; per-playbook drills use `subtopicIds` from `resolveTaxonomy` at request time.
-│   │   ├── nda-physics/                   22 indexable pages: landing + 6 sections (strategy, playbooks index, formulas, trends, traps — and the **new `/formulas` page kind**) + **14 chapter playbook detail pages** at /playbooks/[slug] pre-rendered via generateStaticParams.
+│   │   ├── nda-physics/                   23 indexable pages: landing + 7 sections (strategy, playbooks index, formulas, trends, traps, **ncert-map** — the NCERT↔NDA chapter cross-walk + Class-12 weak-signal detector, 2026-06-14) + **14 chapter playbook detail pages** at /playbooks/[slug] pre-rendered via generateStaticParams.
 │   │   │       · **Template C** (Decisions log 2026-05-18): chapter-playbooks + skill-strand strategy + formula compendium — distinct from BOTH nda-maths (Template A, principles-first) and nda-english (Template B, playbooks-only).
 │   │   │       · Cross-chapter physics lever maxes at 12 q × 6 chapters (ratio-proportional, fails Template A's ≥40 q × ≥4 ch gate) AND %HARD is mid-spread (5 of 14 chapters > 15% HARD, so flat-Template-B is wrong too). Playbooks are 1:1 with chapters (subtopics too fine — 50 of them with several at 1–3 q).
 │   │   │       · Strategy strands: Recall (Sound + Modern + Astronomy + Energy + Units = 79 q) / Apply (Light + Mechanics + Gravity + Oscillations = 215 q) / Reason (E&M + Heat + Fluids = 155 q), with per-chapter **DrillPosture** overlay (drill-all / drill-all-target-hard / cherry-pick-easy-mod / skim) so strategy reflects both the strand AND the HARD-pool concentration.
 │   │   │       · `_data/` editorial modules:
-│   │   │           - `nda-physics.ts` — OVERVIEW + ROUTES + 14-row CHAPTER_TABLE
+│   │   │           - `nda-physics.ts` — OVERVIEW + ROUTES (7 routes incl. ncert-map) + 14-row CHAPTER_TABLE
+│   │   │           - `ncert-map.ts` — NCERT↔NDA map (NDA-keyed, 14 rows → NCERT Cl 9–12 refs) + pure `signalStatus()` (live/watch/dormant by bank recency) + `UNMAPPED_NCERT` reverse-gap list. Authored recency snapshot (`SIGNAL_SNAPSHOT`); the page is a server component (resolveTaxonomy → BrowseLink per row).
 │   │   │           - `strategy.ts` — 3 STRATEGY_STRANDS + TEST_DAY_PLAN + TIME_BUDGET; STRATEGY_HEADLINE per 25-q PART B Physics paper
 │   │   │           - `playbooks.ts` — 14 entries (slug + chapter + ALL subtopics in the chapter + qCount + pctHard + bucket)
 │   │   │           - `playbook-details.ts` — per-slug trigger + story + sub-skills + traps + 2 worked-example UUIDs per chapter (most-recent + HARD where available)
