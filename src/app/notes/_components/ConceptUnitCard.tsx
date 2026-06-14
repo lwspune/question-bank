@@ -205,6 +205,7 @@ import EslFluvialLandforms from "./visualizations/EslFluvialLandforms";
 import IgeCroppingCalendar from "./visualizations/IgeCroppingCalendar";
 import IgpPhysiographicCrossSection from "./visualizations/IgpPhysiographicCrossSection";
 import IgpHimalayanRanges from "./visualizations/IgpHimalayanRanges";
+import IgpIndiaExtent from "./visualizations/IgpIndiaExtent";
 import ClimAtmosphereLayers from "./visualizations/ClimAtmosphereLayers";
 import ClimPressureBeltsWinds from "./visualizations/ClimPressureBeltsWinds";
 import ClimTropicalCycloneStructure from "./visualizations/ClimTropicalCycloneStructure";
@@ -605,6 +606,8 @@ function renderVisualization(slug: VisualizationSlug) {
       return <IgpPhysiographicCrossSection />;
     case "igp-himalayan-ranges":
       return <IgpHimalayanRanges />;
+    case "igp-india-extent":
+      return <IgpIndiaExtent />;
     case "clim-atmosphere-layers":
       return <ClimAtmosphereLayers />;
     case "clim-pressure-belts-winds":

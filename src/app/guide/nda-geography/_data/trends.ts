@@ -28,8 +28,8 @@
  *      chapter q from 2021–26). The chapter has cemented as a recall +
  *      apply workhorse.
  *   4. Indian Geography Physical had 2017 spike (14 q, then declined).
- *      Recent years (2019–2026) average 5–10 q/year. The Forests subtopic
- *      (34 q chapter total) drives most of the volume.
+ *      Recent years (2019–2026) average 5–10 q/year. The Rivers subtopic
+ *      (27 q) is the biggest pool; Forests (14 q) carries the densest HARD.
  */
 
 export type DriftRow = {
@@ -127,7 +127,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "down",
     title: "Indian Geography Physical had 2017 spike (14 q), then declined — still tested, less so",
     description:
-      "2017 carried 14 of the chapter's 67 q in a single year — the chapter's all-time high (driven by a big Forests + Rivers + Mountains batch). Since 2018, the chapter has averaged 6–8 q/year. 2026 NDA-1 dropped to 1 (could come back in 2026 NDA-2). Don't drop the chapter — Forests + Natural Vegetation (34 q · 12% HARD) remains the workhorse subtopic, and the Mountains subtopic (7 q · 43% HARD) is the chapter's densest HARD pool. But adjust expectations: it's no longer the 14-q chapter it was in 2017.",
+      "2017 carried 14 of the chapter's 67 q in a single year — the chapter's all-time high (driven by a big Forests + Rivers + Mountains batch). Since 2018, the chapter has averaged 6–8 q/year. 2026 NDA-1 dropped to 1 (could come back in 2026 NDA-2). Don't drop the chapter — Indian Rivers, Lakes and Water Bodies (27 q · 11% HARD) is the workhorse subtopic, and Forests + Natural Vegetation (14 q · 29% HARD) now carries the chapter's densest HARD pool. But adjust expectations: it's no longer the 14-q chapter it was in 2017.",
     drill: {
       chapter: "Indian Geography — Physical Features",
       pyqYears: [2024],

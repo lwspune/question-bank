@@ -6,7 +6,7 @@ export const SOILS_CLIMATE_AGRICULTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "India's soils — alluvial, black (regur), red, laterite, desert — each suit particular crops, and the monsoon's timing, variability and regional swings govern when and where those crops grow.",
   whyItMatters:
-    "7 PYQs. The marks split between (1) soil-to-crop pairings (black cotton soil = regur = cotton; laterite's nutrient profile) and (2) the monsoon (its variability, duration, and the special winter rains from western disturbances). Both are flat recall once you pin the soil-crop table and the monsoon facts.",
+    "10 PYQs. The marks split between (1) soil-to-crop pairings (black cotton soil = regur = cotton; laterite's nutrient profile) and (2) the monsoon (its variability, ~100-140 day duration, the dominance of the South-West Monsoon, and the special winter rains western disturbances bring to Kashmir). Both are flat recall once you pin the soil-crop table and the monsoon facts.",
   concepts: [
     // 1. soils and crops (reference)
     {

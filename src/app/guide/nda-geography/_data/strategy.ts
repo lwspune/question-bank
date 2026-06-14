@@ -89,7 +89,7 @@ export const RECALL_STRAND: StrategyStrand = {
   approach: [
     "Read /guide/nda-geography/reference-tables end-to-end first. That's the ~70 named-fact pairs the recall strand keeps re-testing. Active-recall it in 4 passes (cover the right column, read the name, write the pair).",
     "Indian Geography Economy is the bank's largest chapter (81 q · 24% HARD) AND the densest-HARD recall chapter. The Agriculture, Crops, Soils and Land Use subtopic alone is 36 q (kharif vs rabi, leading-producer states per crop, soil-crop matching). Minerals and Mining (11 q · 36% HARD) is the bank's most-trap-aware named-fact subtopic — drill the critical-mineral list (lithium, cobalt, gallium, neodymium, dysprosium, tellurium) cold.",
-    "Indian Geography Physical (67 q · 15% HARD) is the named-fact workhorse. Forests and Natural Vegetation (34 q) is the chapter's giant subtopic — biodiversity hotspots, tropical/temperate/alpine forest types, key sanctuary↔state pairs. Indian Rivers (15 q · 13% HARD) tests river↔state pairs and tributary identification (Yamuna's tributaries: Chambal, Betwa, Ken). Mountains, Plateaus and Plains (7 q · 43% HARD) is the densest-HARD subtopic — Himalayan passes ↔ ranges + state borders.",
+    "Indian Geography Physical (67 q · 15% HARD) is the named-fact workhorse. Indian Rivers (27 q · 11% HARD) is the chapter's biggest subtopic — river↔state pairs, tributary identification (Yamuna's tributaries: Chambal, Betwa, Ken), alternative river names, confluences and dam↔river pairs. Forests and Natural Vegetation (14 q · 29% HARD) covers biodiversity hotspots, forest types and forest-cover rankings. Location, Extent and Frontiers (5 q) anchors the east-west sunrise gap, coastline and land-neighbour facts.",
     "World and Human Geography (25 q · 8% HARD) is the lightest %HARD chapter — guaranteed marks pocket. Megacities + Population (15 q · 0% HARD) is pure recall. World Rivers + Canals (6 q · 33% HARD) tests Helmand/Hindu Kush, Suez/Panama, landlocked-water-body identification. Don't over-invest beyond the read.",
   ],
   chapters: [
@@ -124,7 +124,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~10 marks",
       studyHours: 6,
       summary:
-        "67 q · 15% HARD. Forests + Natural Vegetation (34 q) is the chapter's giant subtopic. Rivers (15 q) tests river↔state pairs + tributaries. Mountains (7 q · 43% HARD) carries the chapter's HARD pool — Himalayan passes ↔ ranges. Reference-tables 'Indian Rivers' + 'Mountain Peaks' clusters compound the value.",
+        "67 q · 15% HARD. Indian Rivers (27 q) is the chapter's biggest subtopic — river↔state pairs, tributaries, alternative names + dams. Forests + Natural Vegetation (14 q · 29% HARD) carries the chapter's densest HARD pool now. Location, Extent and Frontiers (5 q) covers the sunrise gap, coastline and neighbours. Reference-tables 'Indian Rivers' + 'Mountain Peaks' clusters compound the value.",
     },
     {
       chapter: "World and Human Geography",
