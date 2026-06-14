@@ -177,7 +177,7 @@ export const REFERENCE_CLUSTERS: ReferenceCluster[] = [
   {
     theme: "Indian Mountain Peaks & Ranges",
     blurb:
-      "Peak↔range↔state and Himalayan-pass identifications appear every paper. Greater Himalayas, Pir Panjal, Karakoram, peninsular ghats. Drill against /playbooks/indian-geography-physical (densest-HARD: Mountains subtopic 43% HARD).",
+      "Peak↔range↔state and Himalayan-pass identifications appear every paper. Greater Himalayas, Pir Panjal, Karakoram, peninsular ghats. Drill against /playbooks/indian-geography-physical (Mountains subtopic — peak/pass/range identifications).",
     columns: {
       name: "Peak / Pass",
       fact: "Range",

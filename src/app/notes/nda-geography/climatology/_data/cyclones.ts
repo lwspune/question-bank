@@ -6,7 +6,7 @@ export const CYCLONES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Cyclones are low-pressure storms with inward-spiralling winds — tropical ones born over warm seas, temperate ones born along fronts where air masses meet — and around them swirl the named local winds the NDA loves to test.",
   whyItMatters:
-    "14 PYQs — tied for the largest subtopic, and rich in HARD multi-statement traps. Three blocks of marks: tropical vs temperate (extratropical) cyclones and their rotation/formation; fronts and air masses; and the named local winds (Mistral, Sirocco, Chinook, Santa Ana, Loo, Bora, Purga...). The local-wind names are pure recall — drill them to reflex.",
+    "16 PYQs — the largest subtopic in the chapter, and rich in HARD multi-statement traps. Three blocks of marks: tropical vs temperate (extratropical) cyclones and their rotation/formation conditions; fronts and air masses; and the named local winds (Mistral, Sirocco, Chinook, Santa Ana, Loo, Bora, Purga...). The local-wind names are pure recall — drill them to reflex.",
   concepts: [
     // 1. tropical vs temperate cyclones (FOUNDATION, formula + diagram)
     {
@@ -182,6 +182,35 @@ export const CYCLONES_NOTE: SubtopicNote = {
             "The Chinook is a warm, dry descending wind that raises temperatures quickly in winter (true). The doldrums is a belt of **calm** equatorial winds — a pressure belt, not a local wind.",
         },
       ],
+    },
+
+    // tropical-cyclone formation conditions (formula)
+    {
+      kind: "formula" as const,
+      slug: "tropical-cyclone-conditions",
+      name: "Conditions for a tropical cyclone to form",
+      intuition:
+        "A tropical cyclone is born only when several ingredients line up in the FORMATIVE stage: a very warm sea (above 26 degrees C) to feed it energy, plenty of moisture high in the atmosphere, and an unstable atmosphere that lets air keep rising. These belong to the initial formation stage, not maturity or decay.",
+      definition:
+        "Ingredients required in the **formation / initial stage** of a tropical cyclone:\n" +
+        "- A warm **sea-surface temperature above ~26 degrees C** (the energy source).\n" +
+        "- **High relative humidity** in the atmosphere up to a good height (above ~700 m / mid-troposphere).\n" +
+        "- **Atmospheric instability** so warm moist air keeps rising and condensing.\n" +
+        "These conditions define the BIRTH of the storm — the formative stage, not full maturity or decay.",
+      authoredExample: {
+        prompt:
+          "A warm sea (above 26 degrees C), high humidity aloft and an unstable atmosphere are associated with which stage of a tropical cyclone's life?",
+        steps: [
+          "These are the supply conditions a storm needs to get started.",
+          "They describe the storm being created, not an already-mature or dying storm.",
+        ],
+        answer: "The formation (initial) stage.",
+      },
+      practiceSet: [
+        { prompt: "What minimum sea temperature feeds a tropical cyclone?", answer: "About 26 degrees C" },
+        { prompt: "Warm sea + humidity + instability describe which stage?", answer: "Formation / initial stage" },
+      ],
+      pyqExampleId: "0a31bbd8-69ba-435d-aa4b-b588a52f6e6a", // warm sea/humidity/instability = formation stage
     },
   ],
 };

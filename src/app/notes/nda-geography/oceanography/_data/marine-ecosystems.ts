@@ -6,7 +6,7 @@ export const MARINE_ECOSYSTEMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Coral reefs are living limestone structures built by tiny coral animals in warm, shallow, clear, sunlit tropical seas — and the most fragile marine ecosystem, vulnerable to bleaching and predators.",
   whyItMatters:
-    "3 PYQs, spanning EASY to HARD. The marks come from two things: the three reef types and the conditions corals need (warm, shallow, clear, salty tropical water), and a couple of named-feature facts (the Mariana Trench's ocean; reef bleaching by the crown-of-thorns starfish). This subtopic also catches a stray ocean-feature question, so the warm/cold-current lists stay relevant here too.",
+    "1 PYQ, but a high-yield idea: the three coral-reef types (fringing, barrier, atoll) and the conditions corals need — warm, shallow, clear, salty tropical water — plus what bleaches them (the crown-of-thorns starfish, rising sea temperatures).",
   concepts: [
     // 1. coral reef types + conditions (reference + diagram)
     {
@@ -61,59 +61,6 @@ export const MARINE_ECOSYSTEMS_NOTE: SubtopicNote = {
           title: "Atoll = island gone, barrier = lagoon between",
           body:
             "Don't mix the stages: a **barrier reef** still has an island inside its lagoon; an **atoll** is the ring left AFTER the island has sunk completely.",
-        },
-      ],
-    },
-
-    // 2. named ocean features (reference) — catches Mariana Trench + Pacific current
-    {
-      kind: "reference" as const,
-      slug: "named-ocean-features",
-      name: "Named ocean features and currents to place",
-      intuition:
-        "The NDA likes single-fact 'which ocean / which is the odd one out' questions about named marine features. Two recur here: the Mariana Trench (the deepest point, in the WESTERN Pacific) and identifying which current belongs to a given ocean. Tie these to the sea-floor and current lists you already learned.",
-      definition:
-        "- **Mariana Trench** — the deepest point on Earth, in the **Western Pacific Ocean** (NOT the Atlantic, NOT the eastern Pacific).\n" +
-        "- **Pacific Ocean currents** include **Oyashio**, **Alaska**, and **California** currents.\n" +
-        "- The **Agulhas Current** belongs to the **Indian Ocean**, so it is NOT a Pacific current — the classic odd-one-out.",
-      table: {
-        columns: ["Feature", "Where it belongs"],
-        rows: [
-          {
-            cells: ["**Mariana Trench**", "Western Pacific Ocean (deepest point)"],
-            noteAmber: "NDA 2017 — Mariana Trench is in the Western Pacific, not the Atlantic.",
-          },
-          { cells: ["Oyashio, Alaska, California currents", "Pacific Ocean"] },
-          {
-            cells: ["**Agulhas Current**", "Indian Ocean (NOT Pacific)"],
-            noteAmber: "NDA 2020 — Agulhas is the non-Pacific current in the list.",
-          },
-        ],
-      },
-      selfCheckExample: {
-        prompt: "Which of these is NOT a current of the Pacific Ocean: Oyashio, Alaska, Agulhas, California?",
-        steps: [
-          "Oyashio, Alaska and California are all Pacific currents.",
-          "The Agulhas Current flows in the Indian Ocean, off south-east Africa.",
-        ],
-        answer: "Agulhas current (it is an Indian Ocean current).",
-      },
-      practiceSet: [
-        { prompt: "In which ocean is the Mariana Trench?", answer: "Western Pacific Ocean" },
-        { prompt: "Which ocean does the Agulhas current belong to?", answer: "The Indian Ocean" },
-        { prompt: "Name one Pacific Ocean current.", answer: "Oyashio / Alaska / California (any)" },
-      ],
-      pyqExampleId: "c18ce16c-cd9b-4458-acae-ccfe75ec87dc", // Mariana Trench = Western Pacific
-      traps: [
-        {
-          title: "Mariana Trench is in the WESTERN Pacific",
-          body:
-            "Not the Atlantic and not the EASTERN Pacific — the Mariana Trench (deepest point on Earth) lies in the **Western Pacific Ocean**, near Guam.",
-        },
-        {
-          title: "Agulhas is the non-Pacific current",
-          body:
-            "In a 'which is NOT a Pacific current' list, **Agulhas** is the trap answer — it is an **Indian Ocean** current. Oyashio, Alaska and California are the genuine Pacific ones.",
         },
       ],
     },

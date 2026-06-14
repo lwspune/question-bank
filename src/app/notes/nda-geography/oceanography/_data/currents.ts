@@ -6,7 +6,7 @@ export const CURRENTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Ocean currents are great steady flows of surface water, driven by wind, the Coriolis force, gravity and solar heating — warm currents carry tropical water poleward, cold currents carry polar water toward the equator.",
   whyItMatters:
-    "7 PYQs — the most-tested subtopic in the chapter, and almost every question is a WARM-vs-COLD recall list. The marks are pure memorisation: learn which named currents are warm and which are cold (and which ocean each belongs to), plus the four forces that drive currents (Coriolis, gravity, solar heating, wind). Get the cold-current list cold and you bank five marks.",
+    "8 PYQs — the most-tested subtopic in the chapter, and almost every question is a WARM-vs-COLD recall list (including 'which is NOT a Pacific current' — Agulhas is the Indian-Ocean odd-one-out). The marks are pure memorisation: learn which named currents are warm and which are cold (and which ocean each belongs to), plus the four forces that drive currents (Coriolis, gravity, solar heating, wind). Get the cold-current list cold and you bank five marks.",
   concepts: [
     // 1. what drives currents (FOUNDATION, formula)
     {

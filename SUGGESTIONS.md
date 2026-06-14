@@ -16,6 +16,40 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-14
+
+### ~~Refresh the nda-geography guide's per-subtopic %HARD numbers (Mountains, States are stale)~~ — **DONE 2026-06-14**
+
+Synced all per-subtopic counts/%HARD across the 5 nda-geography guide `_data` files for every chapter this session's reclassifications changed (Economy: Agriculture 36→20 etc.; Earth's Structure: Interior 18→15, Earthquakes 8→9 etc.; Physical: Mountains 43→14% + dropped the stale "densest-HARD" framing; Climatology + Oceanography after the #2 catch-all moves). Other NDA guide subjects' banks didn't change this session, so their drift (pre-existing) is left for a separate audit.
+
+The Physical "Forests" Phase-D split synced the guide prose for the subtopics it touched (Rivers/Forests/Soils/Climate + the new Location subtopic), but while editing those sentences I noticed two **pre-existing** stale figures the split did NOT cause: the guide quotes "Mountains, Plateaus and Plains (7 q · **43% HARD** — densest HARD pool)" and "Indian States and Islands (4 · **25% HARD**)", whereas `npm run stats`-class live queries show Mountains at **14% HARD** and States at **0% HARD**. These predate this session (the guide was built on older/different data) and are outside the split's blast radius, so I left them.
+
+**Why:** the guide's "densest-HARD subtopic" framing now points at the wrong subtopic (post-split, Forests at 29% is the densest, not Mountains). Low-stakes (editorial prose, no test depends on the numbers), but it's a visible inaccuracy a student could act on.
+
+**How to apply:** run a per-subtopic `COUNT(*) FILTER (WHERE difficulty='HARD')` for all 6 NDA Geography chapters (one query), then update the %HARD figures in `src/app/guide/nda-geography/_data/{nda-geography,playbooks,playbook-details,strategy,trends}.ts`. Consider doing the same one-query audit for the other 6 guide subjects — the guide %HARD numbers have drifted as the bank grew. ~20 min.
+
+### ~~Review other reorder-only catch-all subtopics for a Phase-D split~~ — **DONE 2026-06-14**
+
+Split two more: Climatology "Atmospheric Layers" (4/14 off-topic) — moved the tropical-cyclone-formation + cold-local-wind questions to "Cyclones, Fronts and Local Winds" (relocated the concept + retag; the local-winds concept already taught Mistral), leaving 2 world-vegetation stragglers under an honest `regional-recall` concept. Oceanography "Marine Ecosystems — Coral Reefs" (2/3 off-topic) — moved the Mariana-Trench question to "Ocean Waves and Sea-Floor Topography" and the Agulhas-current question to "Ocean Currents" (both pure retags — the target concepts already taught the facts), removing the `named-ocean-features` concept. Coverage + mistag clean; guide figures synced.
+
+The Geography notes agents kept everything reorder-only, which surfaced (and we fixed) the Physical "Forests" catch-all. Their handoffs flagged at least one more residual mini-catch-all left as-is: Climatology's **"Atmospheric Layers, Composition and Aurora"** DB subtopic houses misfiled recall (world-vegetation/savanna, a cold-local-wind item, a tropical-cyclone-formation item — tagged honestly under `regional-recall`/`tropical-cyclone-conditions` concepts). Other recall chapters across subjects may have similar low-grade catch-alls.
+
+**Why:** a catch-all subtopic makes the /notes page read as a mixed bag and rots `/browse` filtering. The Forests split proved the cleanup is cheap when the facts are already taught in the right concepts ([[notes-self-sufficient-template]]).
+
+**How to apply:** per suspect subtopic, SQL-read the stems; if a meaningful fraction is off-topic, Phase-D-split them into existing subtopics (+ a new subtopic only where nothing fits). Cheap because the relocated facts usually already have a home concept — re-derive the tags, not the teaching. Only worth it for the worst offenders (≥~30% off-topic); a couple of stragglers are fine left as honestly-named concepts.
+
+### ~~Source-verify the remaining agent-flagged Geography UNCERTAIN items (low priority)~~ — **DONE 2026-06-14**
+
+Source-verified the two genuinely-suspect items against the GAT PDFs: `8584266a` (2024 NDA-2, "which states never get perpendicular Sun") — extraction faithful, but key A (Bihar & Chhattisgarh) is geographically wrong; the Tropic crosses Chhattisgarh, so the answer is Bihar & Manipur (B). `9a0a10a4` (2018 NDA-2, NE-places sunrise order) — key C places Imphal last despite it being easternmost; by longitude the answer is B. Both keys PRESERVED (no source key page to confirm the official answer) with honest solutions deriving B + flagging the discrepancy; the featured perpendicular-Sun card was de-featured + a trap added so the notes teach the correct answer. The other flagged items are option-bound recall taught at the correct-principle level — no wrong fact, left as-is.
+
+The 6-agent Geography build flagged a handful of option-bound or report-year-dependent facts the agents handled honestly (taught "among the listed states", taught both forest-cover report years, hedged the Coriolis framing, taught the Bihar/Chhattisgarh perpendicular-rays *principle*). I source-verified only the two clear-cut ones (Assam-China, chert/shale). The rest are taught at the correct-principle level and don't depend on a possibly-wrong key.
+
+**Why:** completeness — but genuinely low priority; none teaches a wrong fact, they're just option-bound answers where the official key could be contested.
+
+**How to apply:** the GAT PYQ PDFs are local at `C:\tmp\PYQPs\NDA\GAT_Edited\` — render the relevant page (PyMuPDF → Read, per [[gdrive-pdf-fetch]]) only if a specific flagged item is challenged. Not worth a batch pass.
+
+---
+
 ## 2026-06-12
 
 ### ~~Harden `global-teardown`'s leak-assertion against the delete-visibility race~~ — **DONE 2026-06-12**
