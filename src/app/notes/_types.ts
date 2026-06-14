@@ -297,7 +297,28 @@ export type VisualizationSlug =
   | "esl-seismic-shadow-zones"
   | "esl-volcano-types"
   | "esl-rock-cycle"
-  | "esl-fluvial-landforms";
+  | "esl-fluvial-landforms"
+  // NDA Geography — Indian Geography Economy chapter
+  | "ige-cropping-calendar"
+  // NDA Geography — Indian Geography Physical Features chapter
+  | "igp-physiographic-cross-section"
+  | "igp-himalayan-ranges"
+  // NDA Geography — Climatology, Atmosphere and Weather chapter
+  | "clim-atmosphere-layers"
+  | "clim-pressure-belts-winds"
+  | "clim-tropical-cyclone-structure"
+  | "clim-warm-cold-front"
+  // NDA Geography — World and Human Geography chapter
+  | "whg-canals-map"
+  // NDA Geography — Earth in Space, Maps and Coordinates chapter
+  | "eis-lat-long-grid"
+  | "eis-rotation-revolution"
+  | "eis-solar-system-order"
+  | "eis-time-zones-idl"
+  // NDA Geography — Oceanography chapter
+  | "ocn-seafloor-profile"
+  | "ocn-spring-neap-tides"
+  | "ocn-coral-reef-types";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
