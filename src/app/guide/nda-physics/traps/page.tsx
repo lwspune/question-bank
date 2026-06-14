@@ -230,7 +230,7 @@ export default async function Traps() {
 
       <PrevNextNav
         prev={{ href: "/guide/nda-physics/trends", label: "Trends" }}
-        next={{ href: "/guide/nda-physics", label: "Back to Overview" }}
+        next={{ href: "/guide/nda-physics/ncert-map", label: "NCERT Map" }}
       />
     </GuideShell>
   );
