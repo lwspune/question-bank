@@ -303,6 +303,7 @@ export type VisualizationSlug =
   // NDA Geography — Indian Geography Physical Features chapter
   | "igp-physiographic-cross-section"
   | "igp-himalayan-ranges"
+  | "igp-india-extent"
   // NDA Geography — Climatology, Atmosphere and Weather chapter
   | "clim-atmosphere-layers"
   | "clim-pressure-belts-winds"

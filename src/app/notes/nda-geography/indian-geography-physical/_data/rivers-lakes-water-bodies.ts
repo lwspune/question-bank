@@ -6,7 +6,7 @@ export const RIVERS_LAKES_WATER_BODIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "India's drainage splits into the snow-fed, perennial Himalayan rivers (Indus, Ganga, Brahmaputra systems) and the rain-fed Peninsular rivers (Godavari, Krishna, Narmada, Tapti), with a scatter of famous lakes and a growing inland-waterway network.",
   whyItMatters:
-    "15 PYQs — the single most-tested topic in the chapter. The marks come from (1) river origins and which system a river belongs to, (2) tributary matching, (3) east- vs west-flowing rivers, and (4) named lakes and their states. The HARD items are the 'how many statements are correct' river questions. Build the river family trees and the lake list cold.",
+    "27 PYQs — by far the most-tested topic in the chapter. The marks come from (1) river origins and which system a river belongs to, (2) tributary matching, (3) east- vs west-flowing rivers, (4) named lakes and their states, and (5) river-feature recall — alternative names, confluences, dams and river islands. The HARD items are the 'how many statements are correct' river questions. Build the river family trees and the feature tables cold.",
   concepts: [
     // 1. Himalayan vs Peninsular rivers + origins (formula)
     {
@@ -263,6 +263,67 @@ export const RIVERS_LAKES_WATER_BODIES_NOTE: SubtopicNote = {
         { prompt: "Jog Falls is created by which river?", answer: "Sharavati" },
       ],
       pyqExampleId: "ad8db601-9256-4000-8f8e-3439834911df", // northernmost Deccan basin = Narmada
+    },
+
+    // 7. river names, confluences, dams and islands (reference)
+    {
+      kind: "reference" as const,
+      slug: "river-names-features",
+      name: "Alternative names, confluences, dams and river islands",
+      intuition:
+        "A cluster of single-fact river recall. Several Himalayan rivers carry a second, older name (the Sarda is the Kali before it reaches the plains); the holy 'prayag' towns mark confluences (Rudraprayag = Alaknanda + Mandakini); Majuli, the world's largest river island, sits on the Brahmaputra; the Krishna Raja Sagara dam is on the Kaveri; and the Garhwal-Himalaya towns each sit on a named river basin.",
+      definition:
+        "- **Alternative names** — the **Sarda (Sharda)** is known as the **Kali** before it enters the Uttar Pradesh plains.\n" +
+        "- **Confluences (Panch Prayag)** — **Rudraprayag** = Alaknanda + **Mandakini** (Devprayag = Alaknanda + Bhagirathi forms the Ganga).\n" +
+        "- **River island** — **Majuli**, the world's largest river island, lies on the **Brahmaputra**.\n" +
+        "- **Dam on river** — the **Krishna Raja Sagara (KRS)** dam/reservoir is on the **Kaveri**.\n" +
+        "- **Garhwal river-basin towns** — Bhagirathi to **Uttarkashi**; Alaknanda to **Pauri**; Nayar to **Lansdowne**; Ganga to **Narendra Nagar**.",
+      table: {
+        columns: ["Feature", "Answer"],
+        rows: [
+          {
+            cells: ["Sarda's name before the plains", "**Kali**"],
+            noteAmber: "NDA 2019 — the Sarda is the Kali in the hills.",
+            pyqExampleId: "9cdc1a4d-4fd4-4e51-889e-efb7ae733bae",
+          },
+          {
+            cells: ["Rudraprayag confluence", "Alaknanda + **Mandakini**"],
+            noteAmber: "NDA 2017 — Rudraprayag is where the Mandakini meets the Alaknanda.",
+            pyqExampleId: "2b109229-51e9-4793-b2e1-cef22b24f10f",
+          },
+          {
+            cells: ["River island Majuli", "On the **Brahmaputra**"],
+            noteAmber: "NDA 2018 — Majuli is on the Brahmaputra.",
+            pyqExampleId: "f9ebec88-02e5-4933-b930-54bdf48368ff",
+          },
+          {
+            cells: ["Krishna Raja Sagara dam", "On the **Kaveri**"],
+            noteAmber: "NDA 2020 — KRS is on the Kavery.",
+            pyqExampleId: "047cbf0f-53c6-47ca-b82d-d5c46c32d368",
+          },
+          {
+            cells: ["Garhwal basin towns", "Bhagirathi-Uttarkashi, Alaknanda-Pauri, Nayar-Lansdowne, Ganga-Narendra Nagar"],
+            noteAmber: "NDA 2018 — match the Garhwal town to its river basin.",
+            pyqExampleId: "7695c15c-ba6a-4dcc-91b4-b6856a7015e4",
+          },
+        ],
+      },
+      selfCheckExample: {
+        prompt:
+          "On which river is Majuli, the largest river island in the world, located?",
+        steps: [
+          "Majuli is a vast inhabited island in Assam.",
+          "It is built up by the braided channels of the Brahmaputra.",
+        ],
+        answer: "The Brahmaputra.",
+      },
+      practiceSet: [
+        { prompt: "The Sarda is known as which river in the hills?", answer: "Kali" },
+        { prompt: "Rudraprayag is the confluence of the Alaknanda and?", answer: "Mandakini" },
+        { prompt: "The Krishna Raja Sagara dam is on which river?", answer: "Kaveri" },
+        { prompt: "Majuli island sits on which river?", answer: "Brahmaputra" },
+      ],
+      pyqExampleId: "9cdc1a4d-4fd4-4e51-889e-efb7ae733bae", // Sarda = Kali
     },
   ],
 };

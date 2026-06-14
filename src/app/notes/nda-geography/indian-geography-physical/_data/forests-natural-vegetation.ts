@@ -2,11 +2,11 @@ import type { SubtopicNote } from "@/app/notes/_types";
 
 export const FORESTS_NATURAL_VEGETATION_NOTE: SubtopicNote = {
   subtopicName: "Forests and Natural Vegetation of India",
-  title: "Forests, Vegetation and Mixed Map-Facts of India",
+  title: "Forests and Natural Vegetation of India",
   oneLineDefinition:
-    "India's natural vegetation runs from tropical deciduous forests (the largest belt) to thorn, montane and evergreen types — and this is also where the bank files a band of mixed map-recall: forest-cover rankings, protected areas, river/dam facts, coastlines, borders and longitude.",
+    "India's natural vegetation runs from tropical deciduous forests (the largest belt) to thorn, montane, Shola and evergreen types, with forest-cover rankings and protected areas (tiger and biosphere reserves) layered on top.",
   whyItMatters:
-    "34 PYQs — the single largest pool in the chapter, because the bank uses this subtopic as a catch-all. It mixes (1) vegetation belts and tree species, (2) forest-cover and biosphere/tiger-reserve rankings, (3) a big batch of river, dam and tributary facts, and (4) longitude/sunrise, coastline and border items. Drill each table; the spread is wide but every item is flat recall.",
+    "14 PYQs of flat named-fact recall in three clusters: (1) vegetation belts and the trees that signal each region, (2) forest-cover rankings from the India State of Forest Report (watch 'by area' vs 'by percentage'), and (3) protected areas — tiger reserves and UNESCO biosphere reserves. Drill each table cold.",
   concepts: [
     // 1. natural vegetation belts (reference)
     {
@@ -210,154 +210,6 @@ export const FORESTS_NATURAL_VEGETATION_NOTE: SubtopicNote = {
         { prompt: "Name a biosphere reserve in UNESCO's World Network.", answer: "Gulf of Mannar / Nokrek / Panchmarhi / Simlipal / Nilgiri" },
       ],
       pyqExampleId: "898af4cf-8f5e-4fa3-a3c7-cde6ec3058e7", // largest tiger reserve
-    },
-
-    // 5. rivers, dams and confluences filed here (reference)
-    {
-      kind: "reference" as const,
-      slug: "rivers-dams-filed-here",
-      name: "Rivers, dams, tributaries and confluences",
-      intuition:
-        "The bank parks a large batch of river/dam recall in this subtopic. Lock the alternative river names (Jhelum = Vitasta, Sarda = Kali), the dam-on-river pairs (KRS dam → Kaveri; Bagalihar/Dulhasti/Salal → Chenab), the confluence towns (Rudraprayag = Alaknanda + Mandakini), the river island (Majuli on the Brahmaputra), and the NOT-a-tributary catches (Indus has no Tawi; Cauvery has no Indravati; Penganga is Godavari's not Ganga's).",
-      definition:
-        "- **Alternative names** — **Jhelum = Vitasta**; the **Sarda (Sharda)** is known as the **Kali** before entering the UP plains.\n" +
-        "- **Dams** — **Krishna Raja Sagara (KRS)** is on the **Kaveri**; **Bagalihar, Dulhasti and Salal** are on the **Chenab**.\n" +
-        "- **Confluences** — **Rudraprayag** = Alaknanda + **Mandakini**.\n" +
-        "- **River island** — **Majuli** lies on the **Brahmaputra**.\n" +
-        "- **NOT-a-tributary catches** — **Tawi** is NOT an Indus tributary; **Indravati** is NOT a Cauvery tributary (it is Godavari's); **Penganga** belongs to the **Godavari**, NOT the Ganga.\n" +
-        "- **West-flowing catch** — among Periyar, Bharatpuzha, Pamba, Tamraparni the **Tamraparni** flows EAST, not west.",
-      table: {
-        columns: ["Fact", "Answer"],
-        rows: [
-          {
-            cells: ["River island Majuli", "On the **Brahmaputra**"],
-            noteAmber: "NDA 2018 — Majuli is on the Brahmaputra.",
-            pyqExampleId: "f9ebec88-02e5-4933-b930-54bdf48368ff",
-          },
-          {
-            cells: ["KRS Dam / Reservoir", "On the **Kaveri**"],
-            noteAmber: "NDA 2020 — Krishna Raja Sagara is on the Kavery.",
-            pyqExampleId: "047cbf0f-53c6-47ca-b82d-d5c46c32d368",
-          },
-          {
-            cells: ["NOT a tributary of the Indus", "**Tawi**"],
-            noteAmber: "NDA 2018 — Tawi is the odd one out (Beas/Ravi/Chenab are tributaries).",
-            pyqExampleId: "8638de97-7b75-4e34-9931-af970a4c683e",
-          },
-          {
-            cells: ["Wrongly matched river:tributary", "**Ganga : Penganga** (Penganga is Godavari's)"],
-            noteAmber: "NDA 2017 — Ganga:Penganga is the incorrectly matched pair.",
-            pyqExampleId: "8ac45b8f-0e23-456d-8e0d-9e1e168604a0",
-          },
-        ],
-      },
-      selfCheckExample: {
-        prompt:
-          "Which pair of river and tributary is NOT correctly matched: Godavari:Indravati, Ganga:Penganga, Krishna:Bhima, Luni:Sukri?",
-        steps: [
-          "Indravati→Godavari, Bhima→Krishna and Sukri→Luni are all correct.",
-          "Penganga is a Godavari tributary, not the Ganga's — so Ganga:Penganga is wrong.",
-        ],
-        answer: "Ganga : Penganga.",
-      },
-      practiceSet: [
-        { prompt: "The Jhelum was earlier called?", answer: "Vitasta" },
-        { prompt: "The Sarda is known as which river before the UP plains?", answer: "Kali" },
-        { prompt: "Bagalihar, Dulhasti and Salal projects are on which river?", answer: "Chenab" },
-        { prompt: "Rudraprayag is the confluence of Alaknanda and?", answer: "Mandakini" },
-      ],
-      pyqExampleId: "8ac45b8f-0e23-456d-8e0d-9e1e168604a0", // Ganga:Penganga not matched
-      traps: [
-        {
-          title: "Penganga ≠ Ganga, Indravati ≠ Cauvery",
-          body:
-            "Two sound-alike traps: **Penganga** belongs to the **Godavari** (not the Ganga), and **Indravati** is a **Godavari** tributary (not the Cauvery's). Match by river family, not by the name's first syllable.",
-        },
-      ],
-    },
-
-    // 6. drainage definitions + Himalayan river basins (formula)
-    {
-      kind: "formula" as const,
-      slug: "drainage-and-basins",
-      name: "Antecedent drainage and Himalayan river-basin towns",
-      intuition:
-        "Two concept-style items. An **antecedent** river is one that EXISTED BEFORE the mountain rose and kept cutting its valley down as the land lifted — that is why the Brahmaputra and Indus cut clean through the Himalayas. And the Garhwal-Himalaya towns sit on named river basins (Uttarkashi on the Bhagirathi, Pauri on the Alaknanda, Lansdowne on the Nayar, Narendra Nagar on the Ganga).",
-      definition:
-        "- **Antecedent drainage** — a river that **existed before the Himalayan range came into existence** and maintained its course by down-cutting as the mountains rose (e.g. Indus, Brahmaputra). It does NOT merely 'follow the initial slope' or 'the dip/strike of rock beds'.\n" +
-        "- **Garhwal river-basin towns** — Bhagirathi → **Uttarkashi**; Alaknanda → **Pauri**; Nayar → **Lansdowne**; Ganga → **Narendra Nagar**.",
-      authoredExample: {
-        prompt:
-          "The Brahmaputra and Indus are antecedent rivers. What is the true definition of antecedent drainage?",
-        steps: [
-          "Antecedent means 'coming before' in time.",
-          "An antecedent river was already flowing before the mountains rose.",
-          "As the range was uplifted, it kept cutting downward and held its course.",
-        ],
-        answer: "A river that existed before the Himalayan range came into existence (and cut down as the range rose).",
-      },
-      selfCheckExample: {
-        prompt:
-          "Match the Garhwal river basin to its town: Bhagirathi, Alaknanda, Nayar, Ganga ↔ Uttarkashi, Pauri, Lansdowne, Narendra Nagar.",
-        steps: [
-          "Bhagirathi → Uttarkashi; Alaknanda → Pauri.",
-          "Nayar → Lansdowne; Ganga → Narendra Nagar.",
-        ],
-        answer: "Bhagirathi–Uttarkashi, Alaknanda–Pauri, Nayar–Lansdowne, Ganga–Narendra Nagar.",
-      },
-      practiceSet: [
-        { prompt: "Define an antecedent river in one line.", answer: "One that existed before the mountains rose and cut down as they lifted" },
-        { prompt: "Uttarkashi sits on which river basin?", answer: "Bhagirathi" },
-        { prompt: "Which Himalayan rivers cut antecedent gorges?", answer: "Indus, Brahmaputra (and Satluj)" },
-      ],
-      pyqExampleId: "1769f22b-a8a2-4583-b843-5b6fd46c48d8", // antecedent drainage definition
-    },
-
-    // 7. longitude, coastline, borders and climate facts (formula)
-    {
-      kind: "formula" as const,
-      slug: "longitude-coast-borders",
-      name: "Longitude/sunrise, coastline, borders and climate facts",
-      intuition:
-        "India is so wide east-to-west that the sun rises about **two hours earlier** in eastern Arunachal than in western Gujarat (roughly 30° of longitude ≈ 2 hours). So eastern places see sunrise first — order any sunrise/longitude list from east to west. A few coastline, border and climate facts also live here: **Tamil Nadu** has the longest coastline among the listed states; the bulk of India's rain is the **South-West Monsoon**; **western disturbances** bring Kashmir its extra winter rain.",
-      definition:
-        "- **Longitude & sunrise** — India spans ~30° of longitude ≈ **2 hours**: the sun rises in **eastern Arunachal about two hours before western Gujarat**. Eastern places (Itanagar, Aizawl) see sunrise before western ones (Imphal, Agartala order east→west).\n" +
-        "- **Coastline** — among Odisha, Tamil Nadu, Karnataka, West Bengal, **Tamil Nadu** has the longest coastline.\n" +
-        "- **Borders** — among Arunachal, Assam, Mizoram, Tripura, the one that does NOT share an international border with two or more countries is **Tripura** (it borders only Bangladesh).\n" +
-        "- **Climate facts filed here** — **most rainfall = South-West Monsoon**; **Kashmir's winter rain = western disturbances**; **monsoon duration ≈ 100–140 days**.",
-      authoredExample: {
-        prompt:
-          "About how many hours before western Gujarat does the sun rise in eastern Arunachal Pradesh?",
-        steps: [
-          "Arunachal (~97°E) and Gujarat (~68°E) are roughly 29–30° of longitude apart.",
-          "Each 15° of longitude is one hour of solar time.",
-          "30° ÷ 15° per hour ≈ 2 hours, with Arunachal ahead (sun rises in the east first).",
-        ],
-        answer: "About two hours.",
-      },
-      selfCheckExample: {
-        prompt:
-          "Which listed state has the longest coastline: Odisha, Tamil Nadu, Karnataka or West Bengal?",
-        steps: [
-          "Tamil Nadu has a long eastern (Bay of Bengal) coast.",
-          "Among the four, Tamil Nadu's coastline is the longest.",
-        ],
-        answer: "Tamil Nadu.",
-      },
-      practiceSet: [
-        { prompt: "Sunrise in eastern Arunachal is ~how many hours before western Gujarat?", answer: "About two hours" },
-        { prompt: "Which state does NOT border two+ countries: Arunachal, Assam, Mizoram, Tripura?", answer: "Tripura" },
-        { prompt: "Most of India's rainfall comes from which monsoon?", answer: "South-West Monsoon" },
-        { prompt: "Kashmir's extra winter rain comes from?", answer: "Western disturbances" },
-      ],
-      pyqExampleId: "f09eb31e-d9ab-4de4-82f9-ef19bb90ce9f", // Arunachal-Gujarat 2 hours
-      traps: [
-        {
-          title: "Order sunrise lists EAST to WEST",
-          body:
-            "The sun rises first in the east. So in any 'chronological order of sunrise' list, the EASTERNMOST place comes first. 15° of longitude = 1 hour, so India's ~30° spread = ~2 hours between its eastern and western edges.",
-        },
-      ],
     },
   ],
 };

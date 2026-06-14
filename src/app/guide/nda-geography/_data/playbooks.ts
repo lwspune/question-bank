@@ -79,13 +79,14 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "indian-geography-physical",
     name: "Indian Geography — Physical Features",
     summary:
-      "67 q · 15% HARD. Forests and Natural Vegetation of India (34 q · 12% HARD — chapter's giant subtopic, biodiversity hotspots, forest types), Indian Rivers, Lakes and Water Bodies (15 · 13% HARD — river↔state pairs, tributary identification), Mountains, Plateaus and Plains (7 · 43% HARD — densest HARD pool, Himalayan passes), Soils, States, Islands. Recall-heavy named-fact memorisation — drill /reference-tables → 'Indian Rivers' + 'Indian Mountain Peaks' clusters.",
+      "67 q · 15% HARD. Indian Rivers, Lakes and Water Bodies (27 q · 11% HARD — the chapter's biggest subtopic: river↔state pairs, tributaries, alternative names, dams and lakes), Forests and Natural Vegetation of India (14 · 29% HARD — vegetation belts, forest-cover rankings, protected areas), Indian Soils and Climate-Agriculture (10 · 10% HARD — soil↔crop pairs + the monsoon), Mountains, Plateaus and Plains (7 · 14% HARD — Himalayan ranges + passes), Location, Extent and Frontiers (5 · 20% HARD — the east-west sunrise gap, coastline, neighbours), Indian States and Islands (4 · 0% HARD). Recall-heavy named-fact memorisation — drill /reference-tables → 'Indian Rivers' + 'Indian Mountain Peaks' clusters.",
     chapter: "Indian Geography — Physical Features",
     subtopics: [
-      "Forests and Natural Vegetation of India",
+      "Location, Extent and Frontiers of India",
+      "Mountains, Plateaus and Plains of India",
       "Indian Rivers, Lakes and Water Bodies",
       "Indian Soils and Climate-Agriculture",
-      "Mountains, Plateaus and Plains of India",
+      "Forests and Natural Vegetation of India",
       "Indian States and Islands",
     ],
     qCount: 67,

@@ -157,7 +157,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 19.4,
     pctHard: 15,
     focus:
-      "Forests and Natural Vegetation of India (34 · 12% HARD — chapter's biggest subtopic, biodiversity hotspots, forest types), Indian Rivers, Lakes and Water Bodies (15 · 13% HARD — river-state pairs, tributary identification), Indian Soils and Climate-Agriculture (7 · 14% HARD), Mountains, Plateaus and Plains of India (7 · 43% HARD — densest HARD pool, passes-range pairs), Indian States and Islands (4 · 25% HARD).",
+      "Indian Rivers, Lakes and Water Bodies (27 · 11% HARD — the chapter's biggest subtopic: river-state pairs, tributaries, alternative names, dams, lakes), Forests and Natural Vegetation of India (14 · 29% HARD — vegetation belts, forest-cover rankings, protected areas), Indian Soils and Climate-Agriculture (10 · 10% HARD — soil-crop pairs + monsoon), Mountains, Plateaus and Plains of India (7 · 14% HARD — Himalayan ranges + passes), Location, Extent and Frontiers of India (5 · 20% HARD — east-west sunrise gap, coastline, neighbours), Indian States and Islands (4 · 0% HARD).",
   },
   {
     chapter: "Climatology, Atmosphere and Weather",
