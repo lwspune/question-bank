@@ -48,6 +48,26 @@ The 6-agent Geography build flagged a handful of option-bound or report-year-dep
 
 **How to apply:** the GAT PYQ PDFs are local at `C:\tmp\PYQPs\NDA\GAT_Edited\` — render the relevant page (PyMuPDF → Read, per [[gdrive-pdf-fetch]]) only if a specific flagged item is challenged. Not worth a batch pass.
 
+### ~~Browser smoke-test `/guide/nda-physics/ncert-map`~~ — **DONE 2026-06-14**
+
+The smoke test caught a **production 500** the green build had missed: a `<NcertChip>` prop named `ref` (React-reserved) crashed the RSC render. Root-caused via dev (full error), renamed `ref`→`item`, curl-verified HTTP 200 + content renders (chapter rows, watch/dormant chips, Drill links). Fix on `main` (`4018a5e`). Lesson banked in CLAUDE.md "Recurring pitfalls" (build-green ≠ runtime-ok for dynamic `ƒ` pages). **Still worth a human light/dark visual pass** for chip contrast — the curl check confirms render, not aesthetics.
+
+### Extend the NCERT↔NDA cross-walk + weak-signal detector to other NDA subjects
+
+`/guide/nda-physics/ncert-map` is the first source-syllabus cross-walk page ([[weak-signal-trend-detection]]). The same shape applies to NDA Chemistry, Biology, Maths → NCERT — each could surface a Class-12 watch-list of its own.
+
+**Why:** the detector's value compounds across subjects (Chemistry especially leans Class-11/12 physical chemistry); and it gives NCERT-oriented students a discovery path into each subject's bank. The pure `signalStatus()` helper + the test pattern are reusable as-is.
+
+**How to apply:** per subject, author a `_data/ncert-map.ts` (NDA-keyed → NCERT refs, class-tagged), run the per-topic recency probe to populate `signal` on the Class-12 watch-list topics, clone `ncert-map/page.tsx` + the test, add a `ROUTES` entry. Consider promoting the shared bits (`NcertRef`/`signalStatus`/the page shell) into a generic component once the 2nd subject lands (don't parameterise before the 2nd, per the project's "don't abstract until forced" norm). The richer Phase-2 (an NCERT-name → NDA-chapter alias feeding `/browse` search) is still deferred — the page covers discovery for now.
+
+### Refresh mechanism for the ncert-map `signal` recency numbers
+
+The Class-12 watch-list recency (`lastSeen` + `recentCount`) in `ncert-map.ts` is an **authored snapshot** (`SIGNAL_SNAPSHOT=2026-06-14`), so the live/watch/dormant flags drift as the bank grows — the exact staleness class in [[project-docs-staleness]].
+
+**Why:** the whole point of the detector is to flip a topic to `live` when it recurs; a stale hand-snapshot defeats that silently. Low urgency now (numbers are fresh), but it compounds.
+
+**How to apply:** either (a) a small probe script (`npm run` target) that re-emits the per-topic `{lastSeen, recentCount}` from the live bank for paste-in, or (b) derive recency live in the page from a keyword-tagged query (heavier — keeps the page a server component but adds a per-request scan; the authored snapshot is cheaper and a refresh script is probably the better ROI). Fold a refresh into the post-upload ritual when NDA Physics gets new PYQs.
+
 ---
 
 ## 2026-06-12
@@ -72,7 +92,9 @@ The 2026-06-10/11 Chemistry + Physics notes and this session's 8 new NDA Biology
 
 All 3 ingested practice topics flipped PUBLIC after preview review (Sequence & Series 84 + Logarithms 26 + Statistics 81 = 191 q). Live /browse smoke confirmed the PYQ/Practice/All toggle works on production (kind=practice → "84 questions match" for Sequence & Series).
 
-### Scale practice ingestion to more topics/subjects (carry-forward — partially done)
+### ~~Scale practice ingestion to more topics/subjects~~ — **DONE 2026-06-13**
+
+Completed in a later session (not /update-docs'd at the time): **ALL 5 source folders ingested → 3,040 practice q across 29 NDA Maths chapters**, all PUBLIC (only Mathematical Induction skipped — no NDA Maths home). See CLAUDE.md Decisions log 2026-06-13 + [[practice-ingestion]]. Original spec kept below.
 
 **Progress 2026-06-12:** ingested Logarithms (26 q) + Statistics (81 q) + Complex Numbers (82 q) + Quadratic Equations (62 q) on top of the Sequence & Series pilot — **5 NDA Maths topics now PUBLIC (335 q)**. STILL OPEN: Algebra's remaining sub-topics (Sets/Relations/Permutation/Combination/Binomial/Matrices/Determinants/Probability — each maps to an existing NDA Maths chapter; next contiguous in the book is Permutation & Combination at Q233+) + the Trig / 2D / 3D / Calculus folders (different source PDFs → new `TOPICS` entries). New per-topic finding banked this run: a 3rd-party book ships **genuinely-flawed MCQs** (correct answer not among the printed options) → **exclude them** (don't transcribe; they show as intentional coverage gaps), never ship a guessed key — see the override/stem-fix/EXCLUDE triage in [[practice-pdf-vision-ingestion]].
 
