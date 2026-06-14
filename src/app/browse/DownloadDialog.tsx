@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, FileText, Key } from "lucide-react";
+import { Download, FileText, Key, Table } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,7 +20,14 @@ import type { Filters } from "@/lib/questions/filters";
 import { useCart } from "@/lib/cart/CartProvider";
 
 type Mode = "filters" | "cart";
-type Kind = "paper" | "key";
+type Kind = "paper" | "key" | "tags";
+
+// Per-kind download metadata: filename prefix, extension, success-toast label.
+const KIND_META: Record<Kind, { prefix: string; ext: string; label: string }> = {
+  paper: { prefix: "QP", ext: "docx", label: "Question Paper" },
+  key: { prefix: "Answers", ext: "docx", label: "Answer Key" },
+  tags: { prefix: "Tags", ext: "xlsx", label: "Tagged sheet" },
+};
 
 export default function DownloadDialog({
   filters,
@@ -89,18 +96,15 @@ export default function DownloadDialog({
       }
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
+      const meta = KIND_META[kind];
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${kind === "paper" ? "QP" : "Answers"}_${sanitize(title)}.docx`;
+      a.download = `${meta.prefix}_${sanitize(title)}.${meta.ext}`;
       document.body.appendChild(a);
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-      toast.success(
-        kind === "paper"
-          ? "Question Paper downloaded"
-          : "Answer Key downloaded"
-      );
+      toast.success(`${meta.label} downloaded`);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Download failed";
       setError(msg);
@@ -137,8 +141,9 @@ export default function DownloadDialog({
             Download {activeCount} question{activeCount === 1 ? "" : "s"}
           </DialogTitle>
           <DialogDescription>
-            Two separate Word files — Question Paper and Answer Key. Tap each
-            to download. Both use 0.5″ margins, 2 columns, Cambria 10pt.
+            Word files — Question Paper and Answer Key (0.5″ margins, 2 columns,
+            Cambria 10pt) — plus a tagged sheet (.xlsx) for nda-tracker, numbered
+            to match the paper. Tap each to download.
           </DialogDescription>
         </DialogHeader>
 
@@ -220,6 +225,15 @@ export default function DownloadDialog({
             className="w-full sm:w-auto"
           >
             {busy ? "Working…" : "Done"}
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => onDownload("tags")}
+            disabled={busy || overCap || activeCount === 0}
+            className="w-full sm:w-auto"
+          >
+            <Table className="h-4 w-4" aria-hidden />
+            {busyKind === "tags" ? "Generating…" : "Tagged sheet"}
           </Button>
           <Button
             variant="outline"

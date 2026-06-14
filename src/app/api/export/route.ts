@@ -14,7 +14,9 @@ import {
   buildQuestionPaper,
   buildAnswerKey,
 } from "@/lib/export/docxBuilder";
+import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { downloadImage } from "@/lib/storage/images";
+import * as XLSX from "xlsx";
 
 export const maxDuration = 60;
 
@@ -27,8 +29,12 @@ const AUTHED_LIMIT = 200;
 
 const DOCX_CONTENT_TYPE =
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+const XLSX_CONTENT_TYPE =
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
-type ExportKind = "paper" | "key";
+// "tags" = the nda-tracker enrichment sheet (.xlsx) — same question set as the
+// paper, numbered identically, so it imports without any hand-typing.
+type ExportKind = "paper" | "key" | "tags";
 
 type ExportOptions = {
   title?: string;
@@ -89,9 +95,13 @@ export async function POST(request: NextRequest) {
     } catch {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
-    if (body.kind !== "paper" && body.kind !== "key") {
+    if (
+      body.kind !== "paper" &&
+      body.kind !== "key" &&
+      body.kind !== "tags"
+    ) {
       return NextResponse.json(
-        { error: "kind must be 'paper' or 'key'" },
+        { error: "kind must be 'paper', 'key' or 'tags'" },
         { status: 400 }
       );
     }
@@ -176,6 +186,27 @@ export async function POST(request: NextRequest) {
     const includeSolutions = !!options.includeSolutions;
     const groupBySubtopic = !!options.groupBySubtopic;
     const safeName = sanitizeFilename(title);
+
+    // Tagged sheet for nda-tracker: an .xlsx, not a .docx. No images to fetch —
+    // it's pure structured data. Q-numbers match the paper by construction
+    // (buildTagRows mirrors the docx groupBySet numbering).
+    if (kind === "tags") {
+      const aoa = tagRowsToAoa(buildTagRows(questions));
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aoa), "Tags");
+      const xlsxBuf = XLSX.write(wb, {
+        type: "buffer",
+        bookType: "xlsx",
+      }) as Buffer;
+      return new NextResponse(xlsxBuf as unknown as ArrayBuffer, {
+        status: 200,
+        headers: {
+          "Content-Type": XLSX_CONTENT_TYPE,
+          "Content-Disposition": `attachment; filename="Tags_${safeName}.xlsx"`,
+          "Content-Length": String(xlsxBuf.length),
+        },
+      });
+    }
 
     let docxBuf: Buffer;
     let filename: string;
