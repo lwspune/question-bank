@@ -13,7 +13,9 @@ import {
   createPaper,
   deletePaper,
   getPaperDetail,
+  listPapers,
   addQuestion,
+  addQuestionsToPaper,
   removeQuestion,
   moveQuestion,
   reorderQuestion,
@@ -56,6 +58,46 @@ export async function createPaperAction(title: string): Promise<Result<{ id: str
     });
     revalidatePaper(id);
     return { ok: true, id };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
+}
+
+/** Active (draft) papers in the caller's org — feeds the cart's "Add to paper" picker. */
+export async function listActivePapersAction(): Promise<
+  Result<{ papers: { id: string; title: string }[] }>
+> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+  try {
+    const client = createSupabaseServerClient();
+    const all = await listPapers(client);
+    const papers = all
+      .filter((p) => p.status === "draft")
+      .map((p) => ({ id: p.id, title: p.title }));
+    return { ok: true, papers };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
+}
+
+/** Commit a set of questions (the /browse cart) to a paper. Idempotent. */
+export async function addCartToPaperAction(
+  paperId: string,
+  questionIds: string[]
+): Promise<Result<{ added: number; alreadyIn: number }>> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+  try {
+    const client = createSupabaseServerClient();
+    const { added, alreadyIn } = await addQuestionsToPaper(
+      client,
+      paperId,
+      questionIds,
+      member.user.id
+    );
+    revalidatePaper(paperId);
+    return { ok: true, added, alreadyIn };
   } catch (e) {
     return { ok: false, error: msg(e) };
   }

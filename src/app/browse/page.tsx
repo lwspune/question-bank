@@ -14,8 +14,6 @@ import {
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
 import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
-import { getPaperDetail } from "@/lib/papers/admin";
-import { ActivePaperProvider, ActivePaperBanner, type ActivePaperInit } from "./ActivePaper";
 import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
 import QuestionList from "./QuestionList";
@@ -38,10 +36,6 @@ type PageProps = {
   searchParams: Record<string, string | string[] | undefined>;
 };
 
-// Defensive UUID shape for the ?paper= param before a DB lookup.
-const PAPER_ID_RE =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
 function paramsFromSearch(
   searchParams: Record<string, string | string[] | undefined>
 ): URLSearchParams {
@@ -59,26 +53,6 @@ export default async function BrowsePage({ searchParams }: PageProps) {
 
   const filters = parseFilters(paramsFromSearch(searchParams));
   const supabase = createSupabaseServerClient();
-
-  // Active-paper mode: /browse?paper=<id> lets an org member add questions to a
-  // collaborative paper they're building (see /dashboard/papers). Gated on a
-  // UUID-shaped param + membership; getPaperDetail is RLS-scoped to the member's
-  // own org, so a foreign/invalid id just leaves the page in normal mode.
-  const paperParam = paramsFromSearch(searchParams).get("paper");
-  let activePaper: ActivePaperInit | null = null;
-  let finalizedPaper: { id: string; title: string } | null = null;
-  if (member && paperParam && PAPER_ID_RE.test(paperParam)) {
-    const detail = await getPaperDetail(supabase, paperParam);
-    if (detail?.status === "draft") {
-      activePaper = {
-        paperId: detail.id,
-        title: detail.title,
-        initialIds: detail.membership.map((m) => m.questionId),
-      };
-    } else if (detail?.status === "finalized") {
-      finalizedPaper = { id: detail.id, title: detail.title };
-    }
-  }
 
   // Facet RPC args — context-aware: chapter facets reflect all OTHER active
   // filters (so the chapter list shrinks as the user narrows difficulty/year),
@@ -206,18 +180,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   return (
     <>
       <AppHeader />
-      <ActivePaperProvider paper={activePaper}>
       <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 sm:pb-32">
-        <ActivePaperBanner />
-        {finalizedPaper && (
-          <div className="-mx-4 mb-4 border-b border-amber-300 bg-amber-50 px-4 py-2 text-sm text-amber-800 sm:-mx-6 sm:px-6 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">
-            <span className="font-medium">{finalizedPaper.title}</span> is finalized.{" "}
-            <Link href={`/dashboard/papers/${finalizedPaper.id}`} className="underline">
-              Reopen it in the editor
-            </Link>{" "}
-            to add questions.
-          </div>
-        )}
         {!filtered && (
           <Hero totalPublicQuestions={questionsResult.totalCount} />
         )}
@@ -307,9 +270,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           </div>
         </div>
       </main>
-      </ActivePaperProvider>
       <BackToNotes />
-      <CartPill filters={filters} />
+      <CartPill filters={filters} isOrgMember={!!member} />
       <Footer />
     </>
   );
