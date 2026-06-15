@@ -59,7 +59,12 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 - **No official key** → every answer carries `[LLM-derived, confidence: …; verify before PUBLIC]`
   in `solution`. Spot-check all non-HIGH (and a HIGH sample) before flipping PUBLIC.
 - **Cross-year duplicates** are kept as a recurrence signal; `content_hash` drops only EXACT repeats
-  (commit reports `skipped`).
+  within the SAME exam (per-exam dedup, migration 0038) — CDS↔NDA shared UPSC questions land under both.
+- **`sentence-part-rearrangement` ("Ordering of Words") = a spatial P/Q/R/S grid spanning BOTH columns.**
+  Transcribe those pages from a **FULL-WIDTH hi-DPI render** (`fitz.Matrix(3.0+)`, whole page) — the default
+  2.2x and especially per-column crops SPLIT the grid at the gutter and drop/scramble fragment text (Q21-30
+  garbled on 2024-2; Q31-40 illegible-with-crops on 2022-2, recovered cleanly full-width). When the
+  section-map flags a `sentence-part-rearrangement` section, render its pages full-width and give it its own pass.
 
 ## Status
 
@@ -78,5 +83,10 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 - `2023-1` — committed PRIVATE (120). 13 sections; clean (part-rearrangement Q21–30 came back mostly HIGH, unlike 2024-2's grid). 37 MED.
 - `2023-2` — committed PRIVATE (120). Same 13-section template as 2023-1 (both 2023 sittings share layout). 36 MED.
 - `2022-1` — committed PRIVATE (120). 13 sections (opens spotting-errors, word-class last). 45 MED — Q31–40 grid part-rearrangement binding + a few rearrangements whose natural order wasn't an option; flagged for key cross-check.
-- Remaining 2017–2021 papers + 2022-2: render → section-map → transcribe → commit.
+- `2022-2` — committed PRIVATE (120). 14 sections (opens with 3 RC passages). Q31–40 part-rearrangement grid re-done from a full-width render (the per-column crops left fragments illegible). 48 MED.
+- `2021-1` — committed PRIVATE (120). 13 sections; Q31–40 grid done proactively from a full-width render (all HIGH). 38 MED.
+- `2021-2` — committed PRIVATE (120). 13 sections; Q31–40 grid full-width (all HIGH). 50 MED.
+- `2020-1` — committed PRIVATE (120). 12 sections; 3 new types `spelling-select` + `sentence-transformation` + `reported-speech` (Reported Speech → Direct/Indirect Speech). Q21–30 grid full-width. 40 MED.
+- `2020-2` — committed PRIVATE (120). 11 sections (20-blank cloze; spelling-select). `normalizeQuestions` now also maps a rearrangement-grid agent's ordering-string `answer` (e.g. "QSPR") back to its option label. 34 MED.
+- Remaining 2017–2019 papers: render → section-map → transcribe → commit.
 - `2024-1` was Elementary Mathematics; replaced with the correct English booklet 2026-06-15.

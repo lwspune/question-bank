@@ -56,7 +56,17 @@ export function normalizeQuestions(raw: unknown[]): TQ[] {
     }
     const d = String(q.difficulty ?? "").trim();
     const difficulty = ["EASY", "MODERATE", "HARD"].includes(d.toUpperCase()) ? d.toUpperCase() : (diffMap[d.toLowerCase()] ?? "MODERATE");
-    return { ...(q as object), options, difficulty } as TQ;
+    // A rearrangement-grid agent sometimes returns the ORDERING STRING (e.g. "QSPR") as
+    // `answer` instead of the option LABEL — map it back to the matching option's label.
+    let answer = String(q.answer ?? "").trim();
+    if (!["A", "B", "C", "D"].includes(answer.toUpperCase()) && Array.isArray(options)) {
+      const norm = (s: string) => s.replace(/\s+/g, "").toUpperCase();
+      const hit = (options as { label: string; text: string }[]).find((o) => norm(o.text ?? "") === norm(answer));
+      if (hit) answer = hit.label;
+    } else {
+      answer = answer.toUpperCase();
+    }
+    return { ...(q as object), options, difficulty, answer } as TQ;
   });
 }
 
