@@ -286,6 +286,16 @@ The paper cart is localStorage-only — per-browser, doesn't survive a phone-to-
 
 ## Cross-app integration
 
+### Phase B — direct API push of a built paper to nda-tracker (retire the tagged Excel)
+
+User-confirmed long-term direction (2026-06-14). Phase A shipped the auto-generated **tagged sheet (.xlsx)** download (see the 2026-06-14 Decisions-log entry) — it kills the hand-typed-file error class but keeps a lossy, schema-coupled Excel bridge. Phase B removes the Excel:
+
+- PYQ Vault pushes the built paper's tags (questions + options + answer + chapter/subtopic/difficulty/solution + **context + set grouping + images**) over the **existing cross-app Bearer-secret bridge** — same pattern as the Quiz Factory's `quiz-import` (`NDA_TRACKER_IMPORT_URL` + `QUIZ_IMPORT_SECRET`, deterministic id via `slugToUuid`).
+- nda-tracker stores it keyed to a stable **paper id**; the upload wizard gains a "pick a pre-loaded paper" dropdown, so the operator uploads **only the Evalbee Results** (the OMR output, which can never come from PYQ Vault).
+- Lossless: writes the same `exams.questions` **jsonb** the same way as the Tags path → **still no DB migration**. Re-push is idempotent (same paper id).
+- Reuses everything Phase A built on the kept side (the nda-tracker `context` field + passage rendering + the Maths chapter-name sync). The only things retired are the `.xlsx` generation + the `parseTagsFile` context column (~5 lines).
+- Effort is a two-app change (new nda-tracker endpoint + "imported papers" store + wizard dropdown branch) — same cross-app care as [[cross-app-feature-execution]]. Gate on actually wanting to drop the Tags upload; Phase A already removed the error class.
+
 ### MHT_CET_AI publisher button (explicitly deferred)
 
 `POST /api/sync/mock` is the receiver side, already live. The publisher button inside MHT_CET_AI is a separate cross-project change. User explicitly chose "complete this project, defer cross-integration."
@@ -305,6 +315,38 @@ Premature without an external uptime watch. Wire if and when an uptime monitor (
 ### About / FAQ pages
 
 Content rather than infrastructure. Could live under `/about` and `/faq`. Not load-bearing for the paper-builder use case.
+
+---
+
+## Education-data asset — verified reasoning corpus + eval benchmark (far-horizon strategic bet)
+
+Captured 2026-06-14 from a strategy brainstorm. This is **forward-looking, mostly un-built, and explicitly gated on a demand signal** — not near-term product work. Don't pour net-new hours into Phase 2 / workstream (a) until a buyer signal exists.
+
+**The thesis.** The durable, AI-proof asset under everything is the **verified, concept-tagged, solution-rich PYQ corpus** — because AI commoditizes *generating* plausible content but not *verifying* it, so verified ground truth is the scarce complement. Productize it three ways, in this order of monetization but reverse order of build-dependency:
+- **(a) Content + assessment API / white-label to other coaching institutes** — the near-term *cash* (warm distribution via LWS's network; institutes have students but not content rigor). **Deferred by user.** This is what funds the rest.
+- **(b) Reasoning-trace + rationale schema** — the *foundation*; turns every verified solution into structured fine-tune/eval data. Nearly free to start.
+- **(c) Eval benchmark** (held-out slice of (b) + a scoring rubric) — *credibility/inbound, not direct revenue*. Built on (b).
+- The existing apps (PYQ Vault, nda-tracker, English tutor, quizzes) are the **data flywheel** that fills the corpus.
+
+**Grounded baseline (measured 2026-06-14):** 13,304 PUBLIC q (10,264 PYQ + 3,040 practice); **13,303 have a solution (~99.99%)**; only **~150 (~1.1%) carry garbling signals** (104 stripped-backslash LaTeX, 34 hedge/defect markers, 17 trivially-short, 1 control-char) — **all probe-detectable**; 26% concept-tagged (the noted chapters); **~230 documented key-flips** (in the Decisions log, not a structured column) = ready-made ground truth for the key-audit task. The bank is essentially *built*, so the asset is locked in the existing corpus — which is why a **retrofit** is warranted, not just going-forward capture.
+
+### (b) The record schema + phasing
+
+One canonical structured record per question (`schema-version b-1.0`): identity/taxonomy + `concept_slugs` + `stem`/`context`/`options` (no `is_correct` in the payload) + `verified_answer` + `provenance` (ingested vs verified key, flip date, method) + `reasoning_trace` (ordered steps) + `distractor_rationales` (per wrong option: the misconception) + `source_hash` (staleness key) + `phase` tag. Each record projects into: an **SFT row** (messages format) and four **eval items** — **T1 answer-accuracy**, **T2 reasoning-faithfulness**, **T3 misconception-diagnosis**, **T4 key-audit**. T3 + T4 are the differentiated, moat-using tasks only this corpus can build (everyone solves the exam; almost nobody diagnoses or audits).
+
+**Storage (decided):** files, not tables, for the derivable part. Phase 0 records + eval/SFT sets = **JSONL exports** regenerated from a query (don't store what you can derive; `source_hash` flags staleness). The **only** new persistent object in Phase 0 is a small `key_flips` lookup (CSV or tiny table) holding the ~230 flips' `ingested_key`/`flipped_on`/`note`, since flip history isn't a column today. Generated content (traces, rationales) lands in **one new table `question_traces (question_id FK, reasoning_trace, distractor_rationales, statuses…)`** in Phase 1/2 — **never** new columns on `questions`/`options`, so the live app is untouched and the whole asset is `DROP`-reversible.
+
+- **Phase 0 — pure projection (free, near-zero risk).** Deterministic SQL → JSONL. Unlocks **T1**, **T4** (via the `key_flips` lookup = "0b"), and a **raw-prose SFT corpus**. No LLM, no authoring, no writes. **Status: Step 1 validated 2026-06-14 on the Gravitation chapter — 17/17 records emitted clean, exactly-one-correct gate green, session/hash/tags all populated, escape-speed flip (`95e70f86`, B→A) demonstrated the 0b path end-to-end.** Not yet generalized to 13,304.
+- **Phase 1 — structure the solutions (cheap, ~2–3 focused days).** An LLM pass structures the ~99%-clean `solution` prose into `reasoning_trace`; gates = **G1 trace-conclusion == verified_answer** (which doubles as a bank-wide stealth-wrong-key probe — likely catches a few more), **G2 LaTeX integrity** (auto-repair the 104 known), **G3 grounding/hallucination** (sampled), **G4 non-triviality**, **G5 no-leakage** (projection-time). Cost is sampling QA (~350 traces for an error bar) + the ~150-row long-tail, *not* per-row review. Unlocks **T2** + a clean SFT corpus. Bonus: doubles as a latent solution-quality audit of the live product.
+- **Phase 2 — distractor rationales (expensive, GATED on demand).** Author + human-verify the per-distractor misconception for the **high-value slice only** (HARD + the ~230 flips + benchmark items), NOT all 13k — LLM-drafted rationales risk poisoning the moat with plausible-but-wrong labels, so verification is the real cost. Unlocks **T3**.
+
+### (c) The benchmark (IVERA-STEM)
+
+A manifest (tasks T1–T4 + splits + contamination policy) + a held-out test split + a scoring rubric (T3 judged 1.0/0.5/0.0 on misconception specificity; T4 = wrong-key detection + a false-flag penalty). **Publish a small dev split** (gets cited, becomes a reference) + **hold a private test split** (the leverage; naturally refilled by each new exam year *before* public release → structurally uncontaminated, a thing scraped benchmarks can never have). Budget it as marketing/optionality, not income. The held-out split must be hand-verified (don't trust the Phase-1 auto-pass there).
+
+### Standing recommendation + the trap
+
+**Do Phases 0–1 as a self-funding asset+audit pass** (cheap, reversible, hardens the live bank via the G1 wrong-key gate) — justified even before a buyer. **Gate Phase 2 and workstream (a) on a real demand signal** (one conversation with one partner institute: "would you pay for verified, concept-tagged banks + auto-grading under your brand?"). The recurring trap across this whole thesis: the seductive framing (knowledge graph / "education OS" / your own fine-tuned model) is always one expensive abstraction layer *above* the real advantage (verified content + pedagogy). Keep (b)/(c) only as thick as a consumer needs — the schema is "done" the moment it emits a valid SFT row + an eval item, not when it's an elegant ontology. Do **not** build a benchmark *platform*, a knowledge-graph schema, or a from-scratch model. Ruled out explicitly: foundation-model training (unwinnable treadmill / capex), third-party developer platform (chicken-and-egg), speculative knowledge graph (build only when a feature pulls it).
 
 ---
 
