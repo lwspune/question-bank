@@ -5,6 +5,7 @@ import {
   BookOpen,
   ChevronRight,
   FileSpreadsheet,
+  FileText,
   Flag,
   Gem,
   ListChecks,
@@ -242,6 +243,12 @@ function QuickActions({
           description="View quizzes assembled from the /notes question pool and their status."
         />
       )}
+      <ActionCard
+        href="/dashboard/papers"
+        icon={<FileText className="h-5 w-5" aria-hidden />}
+        title="Papers"
+        description="Build an exam paper together — each teacher fills their subject's section."
+      />
     </div>
   );
 }
