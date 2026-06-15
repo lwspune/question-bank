@@ -16,6 +16,34 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-15
+
+### A school / Class-10 (non-NDA) chapter list for nda-tracker's tag validation
+
+> **Update 2026-06-15 — the BLOCKING is RESOLVED.** nda-tracker now treats chapter-name mismatches as a non-blocking amber **warning**, not a hard block (commit `597bf0b`; see nda-tracker DECISIONS.md/GUARDRAILS.md 2026-06-15). So school papers upload with `Subject=Maths` once deployed — no `Others` workaround needed. What remains below is now an **optional, low-priority nicety**: a *populated* Class-10 list so school chapters validate cleanly (amber-free) instead of merely warning.
+
+The user runs non-NDA **school Class-10 / SSC** Maths tests through nda-tracker for grading (e.g. the "APJ school" 50-q paper this session). nda-tracker's `validateTags` validates the "Maths" subject against the **NDA** chapter list (`NDA_FREQ_BY_SUBJECT.Maths`, synced to PYQ Vault's 31). A Class-10 paper tagged with Class-10 chapters (Polynomials, Arithmetic Progressions, Real Numbers, Pair of Linear Equations, Areas Related to Circles, …) **HARD-BLOCKS the upload** — confirmed 2026-06-15 ("33 chapter name issues — fix to continue"; `findClosest` returns null so there's "No suggestion found"). Not a soft warning — the wizard won't proceed. **Immediate workaround (no code):** set the tags-file `Subject` column to an empty-list subject (`Others`) → `validateTags` skips validation; grading unaffected.
+
+**Why:** it fully blocks a real, recurring workflow (the user runs school Class-10 tests through nda-tracker). Medium urgency — the `Others` workaround unblocks today, but a clean Class-10 path is worth having.
+
+**How to apply (nda-tracker, `src/lib/ndaFreq.js` + `validateTags.js`):** cleanest is a **subject whose chapter list is empty `[]`** — `validateTags` already *accepts any chapter when the list is empty* (that's how the GAT subjects work). So either (a) add a `"Maths (School)"` / `"SSC Maths"` subject key with `[]` and let the user pick it for school tests, or (b) add a populated Class-10 list (Real Numbers, Polynomials, Pair of Linear Equations, Quadratic Equations, Arithmetic Progressions, Triangles, Coordinate Geometry, Introduction to Trigonometry, Heights and Distances, Circles, Areas Related to Circles, Surface Areas & Volumes, Statistics, Probability) under that key so the freq chart still works. Option (a) is ~2 lines; option (b) gives real validation. Pure nda-tracker code, no DB migration (the freq is a JS constant + a persisted store seed).
+
+### Spot-check CDS English LLM-derived answers before flipping PUBLIC
+
+CDS English booklets carry **no official answer key**, so every answer in the bank is LLM-derived + confidence-flagged (HIGH/MED/LOW). 360 q committed PRIVATE so far (2026-I, 2025-I, 2025-II); per-paper review HTMLs at `scripts/cds/out/<id>.preview.html`. **Nothing should go PUBLIC until a human reviews at least the MED items** (they cluster in the genuinely-hard-keyless types: sentence-rearrangement, S1/S2 relationship, match-list code grids, word-usage). The 2025 match-list code grids were specifically flagged as possibly OCR-degraded (e.g. 2025-I Q71/72/75/77) — recheck those against the source crops.
+
+**Why:** a PYQ-first product showing wrong answers as authoritative erodes trust; the confidence flags exist precisely so this review is targeted, not exhaustive.
+
+**How to apply:** open each `out/<id>.preview.html`, focus the amber (non-HIGH) cards, confirm/correct against the rendered source pages, then flip PUBLIC per paper. A future helper could surface only the MED rows for review.
+
+### Finish CDS English ingestion (15 papers + 2024-1 RC) + push the branch
+
+3 of 19 CDS papers are in; **2024-1 is mid-flight** (16 sections; the RC section Q51-60 has two passages — Faulkner + educational-change — whose verbatim capture tripped a subagent content-filter, so the passages need manual/OCR capture, then split S7 into two passage-sets and commit). **15 papers remain** (2017–2024-II): add each to `PAPERS` in `scripts/cds/config.ts`, then run `render → section-map agent → transcribe-by-section agents → underline agent → commit`. The pipeline + nav commit (`feat/cds-english-ingestion` → `main`) is **local, not pushed** — push when ready (runs the full prepush gate ~3-4 min).
+
+**Why:** the corpus is only ~16% ingested; each paper is now a predictable loop, and the unpushed commit means CI hasn't validated it on a clean checkout.
+
+**How to apply:** see [[cds-english-ingestion]] for the resume point + per-paper list; `scripts/cds/README.md` for the runbook. Optional consistency cleanup: 2026-1 was committed via the trial `commit-trial.ts`+`final.json` rather than the standard `data/2026-1.*` format — regenerate it into the standard shape if you want all papers reproducible the same way.
+
 ## 2026-06-14
 
 ### ~~Refresh the nda-geography guide's per-subtopic %HARD numbers (Mountains, States are stale)~~ — **DONE 2026-06-14**
