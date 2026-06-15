@@ -5,6 +5,7 @@ import { describe, it, expect } from "vitest";
 import {
   positionBetween,
   positionForMove,
+  planBulkAdd,
   sectionProgress,
   buildSnapshot,
 } from "@/lib/papers/sections";
@@ -69,6 +70,55 @@ describe("positionForMove", () => {
   it("moving the first item down lands it between the next two", () => {
     // a down → between b(2) and c(3) → 2.5
     expect(positionForMove(rows, "a", "down")).toBe(2.5);
+  });
+});
+
+describe("planBulkAdd", () => {
+  const subjectOf = (id: string): string | null => {
+    if (id.startsWith("phy")) return "Physics";
+    if (id.startsWith("eng")) return "English";
+    if (id.startsWith("math")) return "Mathematics"; // no GAT section
+    return null;
+  };
+
+  it("files each id into the section matching its subject, appending in order", () => {
+    const plan = planBulkAdd(["phy1", "eng1", "phy2"], subjectOf, DEFAULT_GAT_TEMPLATE, []);
+    expect(plan.added).toBe(3);
+    expect(plan.alreadyIn).toBe(0);
+    const phys = plan.rows.filter((r) => r.sectionKey === "physics");
+    expect(phys.map((r) => r.questionId)).toEqual(["phy1", "phy2"]);
+    expect(phys[0].position).toBeLessThan(phys[1].position); // appended in order
+    expect(plan.rows.find((r) => r.questionId === "eng1")?.sectionKey).toBe("english");
+  });
+
+  it("files a subject with no matching section into 'unassigned'", () => {
+    const plan = planBulkAdd(["math1"], subjectOf, DEFAULT_GAT_TEMPLATE, []);
+    expect(plan.rows[0].sectionKey).toBe("unassigned");
+  });
+
+  it("appends after the section's existing max position", () => {
+    const existing = [{ questionId: "phy0", sectionKey: "physics", position: 5 }];
+    const plan = planBulkAdd(["phy1"], subjectOf, DEFAULT_GAT_TEMPLATE, existing);
+    expect(plan.rows[0].position).toBeGreaterThan(5);
+  });
+
+  it("skips ids already in the paper and counts them as alreadyIn", () => {
+    const existing = [{ questionId: "phy1", sectionKey: "physics", position: 1 }];
+    const plan = planBulkAdd(["phy1", "eng1"], subjectOf, DEFAULT_GAT_TEMPLATE, existing);
+    expect(plan.added).toBe(1);
+    expect(plan.alreadyIn).toBe(1);
+    expect(plan.rows.map((r) => r.questionId)).toEqual(["eng1"]);
+  });
+
+  it("dedups repeated input ids (counted once)", () => {
+    const plan = planBulkAdd(["phy1", "phy1"], subjectOf, DEFAULT_GAT_TEMPLATE, []);
+    expect(plan.added).toBe(1);
+    expect(plan.rows).toHaveLength(1);
+  });
+
+  it("handles an empty id list", () => {
+    const plan = planBulkAdd([], subjectOf, DEFAULT_GAT_TEMPLATE, []);
+    expect(plan).toEqual({ rows: [], added: 0, alreadyIn: 0 });
   });
 });
 

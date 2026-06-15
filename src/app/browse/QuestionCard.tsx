@@ -8,7 +8,6 @@ import {
   Check,
   ChevronDown,
   ImageIcon,
-  Loader2,
   NotebookPen,
   Pencil,
   Plus,
@@ -28,7 +27,6 @@ import {
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { useCart } from "@/lib/cart/CartProvider";
-import { useActivePaper } from "./ActivePaper";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
@@ -73,19 +71,6 @@ export default function QuestionCard({
   const cart = useCart();
   const inCart = cart.has(question.id);
 
-  // When building a paper from /browse (?paper=<id>), the Add button targets the
-  // active paper instead of the local cart. Null in normal/anon browsing — then
-  // the card behaves exactly as before.
-  const activePaper = useActivePaper();
-  const usingPaper = activePaper !== null;
-  const inSelection = activePaper ? activePaper.has(question.id) : inCart;
-  const selectionPending = activePaper ? activePaper.isPending(question.id) : false;
-
-  function onToggleSelection() {
-    if (activePaper) activePaper.toggle(question.id);
-    else onToggleCart();
-  }
-
   const breadcrumb = buildBreadcrumb(question, { includeExam });
 
   function toggleExpanded() {
@@ -117,7 +102,7 @@ export default function QuestionCard({
     <div
       className={cn(
         "overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md",
-        inSelection && "border-primary/60 ring-2 ring-primary/20"
+        inCart && "border-primary/60 ring-2 ring-primary/20"
       )}
     >
       {/* Two stacked rows: a compact META row (badge + breadcrumb + expand
@@ -168,10 +153,9 @@ export default function QuestionCard({
             />
           </button>
           <CartToggle
-            inCart={inSelection}
-            disabled={usingPaper ? selectionPending : cart.isFull && !inCart}
-            pending={selectionPending}
-            onClick={onToggleSelection}
+            inCart={inCart}
+            disabled={cart.isFull && !inCart}
+            onClick={onToggleCart}
           />
         </div>
 
@@ -371,12 +355,10 @@ export default function QuestionCard({
 function CartToggle({
   inCart,
   disabled,
-  pending = false,
   onClick,
 }: {
   inCart: boolean;
   disabled: boolean;
-  pending?: boolean;
   onClick: () => void;
 }) {
   const label = inCart ? "Remove from paper" : disabled ? "Paper is full" : "Add to paper";
@@ -399,9 +381,7 @@ function CartToggle({
           : "border-input bg-background text-foreground hover:bg-accent"
       )}
     >
-      {pending ? (
-        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-      ) : inCart ? (
+      {inCart ? (
         <>
           <Check className="h-4 w-4" aria-hidden />
           <span className="hidden sm:inline">Added</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Download, ShoppingCart, Trash2, X } from "lucide-react";
+import { Download, FilePlus2, ShoppingCart, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -22,6 +22,7 @@ import { useCart } from "@/lib/cart/CartProvider";
 import { safeSnippet } from "@/lib/text/safeSnippet";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import DownloadDialog from "./DownloadDialog";
+import AddToPaperDialog from "./AddToPaperDialog";
 import type { Filters } from "@/lib/questions/filters";
 
 type Preview = {
@@ -43,10 +44,18 @@ type SortMode = "insertion" | "by-chapter";
  * has at least one item; never appears server-rendered (avoids the SSR-vs-
  * localStorage hydration mismatch — render only after CartProvider hydrates).
  */
-export default function CartPill({ filters }: { filters: Filters }) {
+export default function CartPill({
+  filters,
+  isOrgMember = false,
+}: {
+  filters: Filters;
+  /** Signed-in org member (ADMIN/TEACHER) — unlocks "Add to paper". */
+  isOrgMember?: boolean;
+}) {
   const cart = useCart();
   const [open, setOpen] = useState(false);
   const [downloadOpen, setDownloadOpen] = useState(false);
+  const [addPaperOpen, setAddPaperOpen] = useState(false);
   const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
   const [previews, setPreviews] = useState<Preview[]>([]);
   const [sortMode, setSortMode] = useState<SortMode>("insertion");
@@ -212,6 +221,17 @@ export default function CartPill({ filters }: { filters: Filters }) {
           </div>
 
           <div className="flex gap-2 border-t bg-background p-4">
+            {isOrgMember && (
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => setAddPaperOpen(true)}
+                disabled={cart.count === 0}
+              >
+                <FilePlus2 className="h-4 w-4" aria-hidden />
+                Add to paper
+              </Button>
+            )}
             <Button
               className="flex-1"
               onClick={() => setDownloadOpen(true)}
@@ -223,6 +243,14 @@ export default function CartPill({ filters }: { filters: Filters }) {
           </div>
         </SheetContent>
       </Sheet>
+
+      {isOrgMember && (
+        <AddToPaperDialog
+          questionIds={cart.ids}
+          open={addPaperOpen}
+          onOpenChange={setAddPaperOpen}
+        />
+      )}
 
       <DownloadDialog
         filters={filters}

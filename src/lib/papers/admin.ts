@@ -13,7 +13,7 @@ import {
   subjectToSectionKey,
   UNASSIGNED_KEY,
 } from "./template";
-import { buildSnapshot } from "./sections";
+import { buildSnapshot, planBulkAdd } from "./sections";
 import type {
   SectionTemplate,
   MembershipRow,
@@ -208,6 +208,63 @@ export async function addQuestion(
 
   await touch(client, paperId);
   return { sectionKey };
+}
+
+/**
+ * Bulk-add questions to a paper (commits the /browse cart). Idempotent: ids
+ * already in the paper are skipped and reported as `alreadyIn`. Each new id is
+ * filed into the section matching its subject (else Unassigned) and appended.
+ */
+export async function addQuestionsToPaper(
+  client: SupabaseClient,
+  paperId: string,
+  questionIds: string[],
+  addedBy: string | null
+): Promise<{ added: number; alreadyIn: number }> {
+  const template = await assertDraft(client, paperId);
+
+  const { data: existingRows, error: exErr } = await client
+    .from("paper_questions")
+    .select("question_id, section_key, position")
+    .eq("paper_id", paperId);
+  if (exErr) throw new Error(`addQuestionsToPaper existing: ${exErr.message}`);
+  const existing = (existingRows ?? []).map((r) => ({
+    questionId: r.question_id as string,
+    sectionKey: r.section_key as string,
+    position: r.position as number,
+  }));
+
+  const ids = Array.from(new Set(questionIds.filter(Boolean)));
+  if (ids.length === 0) return { added: 0, alreadyIn: 0 };
+
+  const { data: qrows, error: qErr } = await client
+    .from("questions")
+    .select("id, subject:subjects!subject_id(name)")
+    .in("id", ids);
+  if (qErr) throw new Error(`addQuestionsToPaper subjects: ${qErr.message}`);
+  const subjectById = new Map<string, string | null>();
+  for (const q of (qrows ?? []) as { id: string; subject?: { name: string } | { name: string }[] }[]) {
+    const name = Array.isArray(q.subject) ? q.subject[0]?.name : q.subject?.name;
+    subjectById.set(q.id, name ?? null);
+  }
+
+  const plan = planBulkAdd(ids, (id) => subjectById.get(id) ?? null, template, existing);
+  if (plan.rows.length === 0) return { added: 0, alreadyIn: plan.alreadyIn };
+
+  const { error } = await client.from("paper_questions").upsert(
+    plan.rows.map((r) => ({
+      paper_id: paperId,
+      question_id: r.questionId,
+      section_key: r.sectionKey,
+      position: r.position,
+      added_by: addedBy,
+    })),
+    { onConflict: "paper_id,question_id", ignoreDuplicates: true }
+  );
+  if (error) throw new Error(`addQuestionsToPaper: ${error.message}`);
+
+  await touch(client, paperId);
+  return { added: plan.added, alreadyIn: plan.alreadyIn };
 }
 
 export async function removeQuestion(

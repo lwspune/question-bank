@@ -217,10 +217,10 @@ export default function PaperEditor({
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {!finalized && (
-            <Button variant="outline" asChild>
-              <Link href={`/browse?paper=${detail.id}`}>
+            <Button variant="outline" asChild title="Collect questions in the bank, then use 'Add to paper' in the cart">
+              <Link href="/browse">
                 <Search className="h-4 w-4" aria-hidden />
-                Add from Browse
+                Browse the bank
               </Link>
             </Button>
           )}

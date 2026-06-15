@@ -1,7 +1,7 @@
 /**
  * Pure ordering, progress, and snapshot helpers for the paper builder.
  */
-import { UNASSIGNED_KEY } from "./template";
+import { UNASSIGNED_KEY, subjectToSectionKey } from "./template";
 import type { SectionTemplate, MembershipRow, PaperSnapshot } from "./types";
 
 /**
@@ -41,6 +41,43 @@ export function positionForMove(
   if (i >= orderedRows.length - 1) return null;
   const after = orderedRows[i + 2]?.position ?? null;
   return positionBetween(orderedRows[i + 1].position, after);
+}
+
+/**
+ * Plan a bulk add of questions (e.g. committing the /browse cart to a paper).
+ * Dedups the input, skips ids already in the paper, files each new id into the
+ * section matching its subject (else UNASSIGNED), and appends after each
+ * section's current max position. Pure — the caller does the DB I/O.
+ */
+export function planBulkAdd(
+  ids: string[],
+  subjectNameOf: (id: string) => string | null,
+  template: SectionTemplate,
+  existing: { questionId: string; sectionKey: string; position: number }[]
+): {
+  rows: { questionId: string; sectionKey: string; position: number }[];
+  added: number;
+  alreadyIn: number;
+} {
+  const deduped = Array.from(new Set(ids.filter(Boolean)));
+  const existingIds = new Set(existing.map((e) => e.questionId));
+
+  const maxBySection = new Map<string, number>();
+  for (const e of existing) {
+    maxBySection.set(e.sectionKey, Math.max(maxBySection.get(e.sectionKey) ?? 0, e.position));
+  }
+
+  const rows: { questionId: string; sectionKey: string; position: number }[] = [];
+  for (const id of deduped) {
+    if (existingIds.has(id)) continue;
+    const name = subjectNameOf(id);
+    const sectionKey = (name && subjectToSectionKey(name, template)) || UNASSIGNED_KEY;
+    const position = (maxBySection.get(sectionKey) ?? 0) + 1;
+    maxBySection.set(sectionKey, position);
+    rows.push({ questionId: id, sectionKey, position });
+  }
+
+  return { rows, added: rows.length, alreadyIn: deduped.length - rows.length };
 }
 
 export type SectionProgress = {

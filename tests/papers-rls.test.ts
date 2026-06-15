@@ -18,6 +18,7 @@ import { randomUUID } from "node:crypto";
 import {
   createPaper,
   addQuestion,
+  addQuestionsToPaper,
   removeQuestion,
   getPaperDetail,
   listPapers,
@@ -193,6 +194,25 @@ describe.skipIf(!HAS_ENV)("papers RLS + data layer (migration 0039)", () => {
     await addQuestion(teacherA, paperId, q1, { addedBy: teacherAId });
     const detail = await getPaperDetail(teacherA, paperId);
     expect(detail?.membership.filter((m) => m.questionId === q1)).toHaveLength(1);
+  });
+
+  it("bulk addQuestionsToPaper (cart commit) files, dedups, and reports counts", async () => {
+    const bulkPaper = await createPaper(teacherA, {
+      orgId: orgAId,
+      createdBy: teacherAId,
+      title: `Bulk ${RUN_ID}`,
+      template: TEMPLATE,
+    });
+    // dup id in input → counted once
+    const r1 = await addQuestionsToPaper(teacherA, bulkPaper, [q1, q2, q1], teacherAId);
+    expect(r1).toEqual({ added: 2, alreadyIn: 0 });
+    const d1 = await getPaperDetail(teacherA, bulkPaper);
+    expect(d1?.membership).toHaveLength(2);
+    // re-commit the same → all already present, no new rows
+    const r2 = await addQuestionsToPaper(teacherA, bulkPaper, [q1, q2], teacherAId);
+    expect(r2).toEqual({ added: 0, alreadyIn: 2 });
+    const d2 = await getPaperDetail(teacherA, bulkPaper);
+    expect(d2?.membership).toHaveLength(2);
   });
 
   it("org B teacher CANNOT see org A's paper (read isolation)", async () => {
