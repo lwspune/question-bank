@@ -129,6 +129,7 @@ async function processOne(
     .from("questions")
     .select("id, attempt_stats")
     .eq("org_id", ctx.orgId)
+    .eq("exam_id", ctx.examId)
     .eq("content_hash", hash)
     .maybeSingle();
   if (lookupErr) throw new Error(lookupErr.message);
@@ -186,6 +187,7 @@ async function processOne(
         .from("questions")
         .select("id, attempt_stats")
         .eq("org_id", ctx.orgId)
+        .eq("exam_id", ctx.examId)
         .eq("content_hash", hash)
         .maybeSingle();
       if (race) {

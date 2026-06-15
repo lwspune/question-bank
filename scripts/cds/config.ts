@@ -81,6 +81,11 @@ export const SECTION_CATALOG: Record<string, SectionType> = {
   "word-class":               { chapter: "Grammar", subtopic: "Parts of Speech", underline: "single" },
   "fill-blank-grammar":       { chapter: "Grammar", subtopic: "Preposition Usage", perQuestionSubtopic: true },
   "sentence-completion":      { chapter: "Grammar", subtopic: "Sentence Completion" },
+  "voice-transformation":     { chapter: "Grammar", subtopic: "Active and Passive Voice" },
+  // a word + two numbered candidate meanings + a code (1 only / 2 only / Both / Neither)
+  "word-meaning-statements":  { chapter: "Vocabulary", subtopic: "Word Definition", inlineStimulus: true },
+  // two numbered sentences testing confusable-pair USAGE + a code (1 only / 2 only / Both / Neither)
+  "usage-statements":         { chapter: "Grammar", subtopic: "Correct Sentence Identification", inlineStimulus: true },
   "discourse-markers":        { chapter: "Grammar", subtopic: "Discourse Markers and Connectors" },
   "sentence-relationship":    { chapter: "Reading Comprehension", subtopic: "Inferential Comprehension", inlineStimulus: true },
   "spotting-errors":          { chapter: "Spotting Errors", subtopic: "Mixed Error Detection", perQuestionSubtopic: true, underline: "errorParts" },

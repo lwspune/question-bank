@@ -81,7 +81,7 @@ export async function applyEdit(
   if (taxonomyCheck) return taxonomyCheck;
 
   // UPDATE the question first — this is where unique-violation on
-  // (org_id, content_hash) surfaces.
+  // (org_id, exam_id, content_hash) surfaces.
   const isCorrect = (label: string) => label === payload.correct;
   const { error: qErr } = await client
     .from("questions")
