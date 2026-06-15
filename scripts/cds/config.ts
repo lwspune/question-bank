@@ -42,7 +42,11 @@ export const PAPERS: Record<string, Paper> = {
   "2023-2": { id: "2023-2", sourceFile: "Eng_CDS_2023_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2023_2.pdf"), pyqYear: 2023, pyqNote: "CDS (II) 2023 — English" },
   "2022-1": { id: "2022-1", sourceFile: "Eng_CDS_2022_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2022_1.pdf"), pyqYear: 2022, pyqNote: "CDS (I) 2022 — English" },
   "2022-2": { id: "2022-2", sourceFile: "Eng_CDS_2022_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2022_2.pdf"), pyqYear: 2022, pyqNote: "CDS (II) 2022 — English" },
-  // ...remaining 2017–2021 papers added as they are mapped.
+  "2021-1": { id: "2021-1", sourceFile: "Eng_CDS_2021_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2021_1.pdf"), pyqYear: 2021, pyqNote: "CDS (I) 2021 — English" },
+  "2021-2": { id: "2021-2", sourceFile: "Eng_CDS_2021_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2021_2.pdf"), pyqYear: 2021, pyqNote: "CDS (II) 2021 — English" },
+  "2020-1": { id: "2020-1", sourceFile: "Eng_CDS_2020_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2020_1.pdf"), pyqYear: 2020, pyqNote: "CDS (I) 2020 — English" },
+  "2020-2": { id: "2020-2", sourceFile: "Eng_CDS_2020_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2020_2.pdf"), pyqYear: 2020, pyqNote: "CDS (II) 2020 — English" },
+  // ...remaining 2017–2019 papers added as they are mapped.
 };
 
 export function requirePaper(id: string | undefined): Paper {
@@ -90,6 +94,12 @@ export const SECTION_CATALOG: Record<string, SectionType> = {
   "word-meaning-statements":  { chapter: "Vocabulary", subtopic: "Word Definition", inlineStimulus: true },
   // two numbered sentences testing confusable-pair USAGE + a code (1 only / 2 only / Both / Neither)
   "usage-statements":         { chapter: "Grammar", subtopic: "Correct Sentence Identification", inlineStimulus: true },
+  // "Spelling Mistakes" — pick the correctly-spelt word from 4 options (spelling-confusion)
+  "spelling-select":          { chapter: "Vocabulary", subtopic: "Confusable Word Pairs" },
+  // "Transformation of Sentences" — combine/rewrite two sentences into one; pick the correct version
+  "sentence-transformation":  { chapter: "Grammar", subtopic: "Correct Sentence Identification", inlineStimulus: true },
+  // "Reported Speech" — convert direct↔indirect speech
+  "reported-speech":          { chapter: "Grammar", subtopic: "Direct and Indirect Speech" },
   "discourse-markers":        { chapter: "Grammar", subtopic: "Discourse Markers and Connectors" },
   "sentence-relationship":    { chapter: "Reading Comprehension", subtopic: "Inferential Comprehension", inlineStimulus: true },
   "spotting-errors":          { chapter: "Spotting Errors", subtopic: "Mixed Error Detection", perQuestionSubtopic: true, underline: "errorParts" },

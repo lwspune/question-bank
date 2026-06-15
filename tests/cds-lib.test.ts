@@ -46,6 +46,11 @@ describe("normalizeQuestions", () => {
     expect(normalizeQuestions([{ number: 1, stem: "x", options: [], answer: "A", confidence: "HIGH", difficulty: "medium" }])[0].difficulty).toBe("MODERATE");
     expect(normalizeQuestions([{ number: 1, stem: "x", options: [], answer: "A", confidence: "HIGH", difficulty: "hard" }])[0].difficulty).toBe("HARD");
   });
+  it("maps a rearrangement ordering-string answer back to its option label", () => {
+    const [n] = normalizeQuestions([{ number: 21, stem: "x", answer: "QSPR", confidence: "HIGH", difficulty: "EASY",
+      options: [{ label: "A", text: "SPQR" }, { label: "B", text: "QSPR" }, { label: "C", text: "QPSR" }, { label: "D", text: "RQPS" }] }]);
+    expect(n.answer).toBe("B");
+  });
   it("leaves a well-formed array untouched", () => {
     const opts = [{ label: "A", text: "a" }, { label: "B", text: "b" }, { label: "C", text: "c" }, { label: "D", text: "d" }];
     expect(normalizeQuestions([{ number: 1, stem: "x", options: opts, answer: "A", confidence: "HIGH", difficulty: "HARD" }])[0].options).toEqual(opts);
