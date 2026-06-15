@@ -75,5 +75,8 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
   passage to derive, without echoing it). Directions are paraphrased (the verbatim/passage capture
   was filter-blocked), not verbatim like the other papers.
 - `2024-2` — committed PRIVATE (120). 16 sections; two new types `voice-transformation` + `word-meaning-statements` + `usage-statements`. Q44 is a cross-exam duplicate of an NDA English question — kept under both exams via the new **per-exam dedup** (migration 0038). **Caveat:** Q21–30 (sentence-part-rearrangement) are a spatial P/Q/R/S grid layout that OCR's poorly even at full-width hi-DPI — committed LOW-confidence, **verify against the source before PUBLIC**. Q31–40 (paragraph) re-done cleanly.
-- Remaining 2017–2023 papers: render → section-map → transcribe → commit.
+- `2023-1` — committed PRIVATE (120). 13 sections; clean (part-rearrangement Q21–30 came back mostly HIGH, unlike 2024-2's grid). 37 MED.
+- `2023-2` — committed PRIVATE (120). Same 13-section template as 2023-1 (both 2023 sittings share layout). 36 MED.
+- `2022-1` — committed PRIVATE (120). 13 sections (opens spotting-errors, word-class last). 45 MED — Q31–40 grid part-rearrangement binding + a few rearrangements whose natural order wasn't an option; flagged for key cross-check.
+- Remaining 2017–2021 papers + 2022-2: render → section-map → transcribe → commit.
 - `2024-1` was Elementary Mathematics; replaced with the correct English booklet 2026-06-15.
