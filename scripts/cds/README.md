@@ -69,5 +69,10 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 - `2025-2` — committed PRIVATE (120). 14 sections (no synonyms/antonyms/RC; opens with
   sentence-improvement; two match-lists + cloze). `commit`/`preview` now run `normalizeQuestions`
   to self-heal two recurring agent quirks (object-form `options`, difficulty synonyms/casing).
-- Remaining 2017–2024 papers: render → section-map → transcribe → commit, one at a time.
+- `2024-1` — committed PRIVATE (120). 16 sections; has a 2-passage RC section (Q51-60). The RC
+  passage prose was NOT stored (a subagent reproducing it tripped a content-filter) — `passage` is
+  a placeholder pointing to the source; the RC questions+answers are transcribed (the agent read the
+  passage to derive, without echoing it). Directions are paraphrased (the verbatim/passage capture
+  was filter-blocked), not verbatim like the other papers.
+- Remaining 2017–2024 papers (2024-II + 2017–2023): render → section-map → transcribe → commit.
 - `2024-1` was Elementary Mathematics; replaced with the correct English booklet 2026-06-15.

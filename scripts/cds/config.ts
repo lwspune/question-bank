@@ -36,8 +36,9 @@ export const PAPERS: Record<string, Paper> = {
   "2026-1": { id: "2026-1", sourceFile: "Eng_CDS_2026_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2026_1.pdf"), pyqYear: 2026, pyqNote: "CDS (I) 2026 — English" },
   "2025-1": { id: "2025-1", sourceFile: "Eng_CDS_2025_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2025_1.pdf"), pyqYear: 2025, pyqNote: "CDS (I) 2025 — English" },
   "2025-2": { id: "2025-2", sourceFile: "Eng_CDS_2025_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2025_2.pdf"), pyqYear: 2025, pyqNote: "CDS (II) 2025 — English" },
-  // ...remaining papers added as they are mapped. (2024_1 was Elementary Maths;
-  // the user replaced it with the correct English booklet on 2026-06-15.)
+  "2024-1": { id: "2024-1", sourceFile: "Eng_CDS_2024_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2024_1.pdf"), pyqYear: 2024, pyqNote: "CDS (I) 2024 — English" },
+  "2024-2": { id: "2024-2", sourceFile: "Eng_CDS_2024_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2024_2.pdf"), pyqYear: 2024, pyqNote: "CDS (II) 2024 — English" },
+  // ...remaining 2017–2023 papers added as they are mapped.
 };
 
 export function requirePaper(id: string | undefined): Paper {
