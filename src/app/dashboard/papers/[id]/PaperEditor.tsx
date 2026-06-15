@@ -1,12 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Check,
   Loader2,
   Lock,
   Pencil,
+  Search,
   Settings2,
   Trash2,
   Unlock,
@@ -202,6 +204,14 @@ export default function PaperEditor({
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          {!finalized && (
+            <Button variant="outline" asChild>
+              <Link href={`/browse?paper=${detail.id}`}>
+                <Search className="h-4 w-4" aria-hidden />
+                Add from Browse
+              </Link>
+            </Button>
+          )}
           {!finalized && (
             <Button variant="outline" onClick={() => setSectionsOpen(true)} disabled={busy}>
               <Settings2 className="h-4 w-4" aria-hidden />
