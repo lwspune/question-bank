@@ -11,7 +11,7 @@
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
 
-export type ExamSlug = "nda" | "mht-cet" | "jee-mains";
+export type ExamSlug = "nda" | "mht-cet" | "jee-mains" | "cds";
 
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
@@ -47,6 +47,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "JEE Mains", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/jee-mains", // exam hub: "coming soon" until JEE notes ship
+  },
+  {
+    slug: "cds",
+    displayName: "CDS",
+    examName: "CDS", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/cds", // exam hub: "coming soon" until CDS notes ship
   },
 ] as const;
 
