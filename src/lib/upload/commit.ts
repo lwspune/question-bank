@@ -39,7 +39,8 @@ export async function commitStaged(
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
 
-  // Dedup happens at the DB via the unique index on (org_id, content_hash)
+  // Dedup happens at the DB via the unique index on (org_id, exam_id, content_hash)
+  // (migration 0038 — per-exam, so CDS↔NDA UPSC overlap keeps both copies)
   // — see the .upsert call below. We used to pre-pull every hash for the
   // org into an in-memory Set, but PostgREST silently capped that read at
   // 1000 rows, breaking dedup once an org crossed that threshold.
@@ -185,13 +186,16 @@ export async function commitStaged(
 
   if (stagedInserts.length === 0) return result;
 
-  // ON CONFLICT DO NOTHING on the (org_id, content_hash) unique index:
-  // duplicates (within-batch or cross-batch) are skipped silently and
-  // the returned rows are exactly the ones that landed.
+  // ON CONFLICT DO NOTHING on the (org_id, exam_id, content_hash) unique index
+  // (migration 0038): dedup is PER-EXAM — duplicates within the same exam (within-
+  // batch or cross-batch) are skipped silently, but the same question may legitimately
+  // recur across exams (CDS ↔ NDA UPSC overlap). Returned rows are exactly the ones
+  // that landed. (idByHash is keyed on content_hash, which is still unique within a
+  // single commit — one call ingests one paper = one exam.)
   const { data: insertedQs, error: qErr } = await client
     .from("questions")
     .upsert(stagedInserts.map((s) => s.q), {
-      onConflict: "org_id,content_hash",
+      onConflict: "org_id,exam_id,content_hash",
       ignoreDuplicates: true,
     })
     .select("id, content_hash");
