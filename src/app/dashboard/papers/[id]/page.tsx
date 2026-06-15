@@ -3,6 +3,7 @@ import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { getPaperDetail } from "@/lib/papers/admin";
+import { listMembers } from "@/lib/members/admin";
 import { queryQuestionPreviewsByIds } from "@/lib/questions/query";
 import PaperEditor from "./PaperEditor";
 
@@ -27,6 +28,15 @@ export default async function PaperEditorPage({
 
   const { data: exams } = await client.from("exams").select("id, name").order("name");
 
+  // Org members (service-role, scoped to this org) — for the section-assignee
+  // picker + "added by" labels. org_members read RLS is admin-only, so the
+  // service-role helper is how a TEACHER also gets names.
+  const membersResult = await listMembers(member.orgId);
+  const orgMembers =
+    membersResult.kind === "ok"
+      ? membersResult.members.map((m) => ({ id: m.userId, label: m.name || m.email }))
+      : [];
+
   return (
     <>
       <AppHeader />
@@ -35,6 +45,7 @@ export default async function PaperEditorPage({
           detail={detail}
           previews={previews}
           exams={(exams ?? []) as { id: string; name: string }[]}
+          orgMembers={orgMembers}
         />
       </main>
     </>

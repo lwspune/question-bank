@@ -16,6 +16,7 @@ import {
   addQuestion,
   removeQuestion,
   moveQuestion,
+  reorderQuestion,
   updatePaperTitle,
   updateSectionTemplate,
   finalizePaper,
@@ -134,6 +135,23 @@ export async function moveQuestionAction(
   try {
     const client = createSupabaseServerClient();
     await moveQuestion(client, paperId, questionId, toSectionKey);
+    revalidatePaper(paperId);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
+}
+
+export async function reorderQuestionAction(
+  paperId: string,
+  questionId: string,
+  position: number
+): Promise<Result> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+  try {
+    const client = createSupabaseServerClient();
+    await reorderQuestion(client, paperId, questionId, position);
     revalidatePaper(paperId);
     return { ok: true };
   } catch (e) {
