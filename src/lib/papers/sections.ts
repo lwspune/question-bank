@@ -19,6 +19,30 @@ export function positionBetween(before: number | null, after: number | null): nu
   return (before + after) / 2;
 }
 
+/**
+ * New fractional position to move a question one step up/down within its
+ * section. `orderedRows` is the section's membership sorted by position asc.
+ * Returns null when the move isn't possible (item not found, or already at the
+ * top/bottom). Moving up places the item just before its previous neighbour;
+ * moving down places it just after its next neighbour.
+ */
+export function positionForMove(
+  orderedRows: { questionId: string; position: number }[],
+  questionId: string,
+  direction: "up" | "down"
+): number | null {
+  const i = orderedRows.findIndex((r) => r.questionId === questionId);
+  if (i === -1) return null;
+  if (direction === "up") {
+    if (i === 0) return null;
+    const before = orderedRows[i - 2]?.position ?? null;
+    return positionBetween(before, orderedRows[i - 1].position);
+  }
+  if (i >= orderedRows.length - 1) return null;
+  const after = orderedRows[i + 2]?.position ?? null;
+  return positionBetween(orderedRows[i + 1].position, after);
+}
+
 export type SectionProgress = {
   key: string;
   label: string;

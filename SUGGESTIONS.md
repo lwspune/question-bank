@@ -44,6 +44,42 @@ CDS English booklets carry **no official answer key**, so every answer in the ba
 
 **How to apply:** see [[cds-english-ingestion]] for the resume point + per-paper list; `scripts/cds/README.md` for the runbook. Optional consistency cleanup: 2026-1 was committed via the trial `commit-trial.ts`+`final.json` rather than the standard `data/2026-1.*` format — regenerate it into the standard shape if you want all papers reproducible the same way.
 
+### ~~Manual authed golden-path for the collaborative paper builder~~ — **DONE 2026-06-15** (user-verified in browser)
+
+The paper builder (migration 0039) shipped + pushed to `main` on a green gate, and the data layer is proven by 9 RLS/integration tests, but the **authed teacher render** of the editor (`/dashboard/papers/[id]` → `PaperEditor` + `AddQuestionsPanel`) was never exercised in a browser (needs a real signed-in session; can't be done headlessly). The `ƒ`-page pitfall (build-green ≠ runtime-ok) makes a manual pass worthwhile.
+
+**Why:** Definition-of-Done requires the golden path verified in the browser; an authed render-time bug (e.g. a serialization or client-island issue) would only show under a real session.
+
+**How to apply:** sign in as a TEACHER (org member), UserMenu → Papers → New paper; add questions via the editor's search panel AND via "Add from Browse" (`/browse?paper=<id>`); have a SECOND teacher add to the same paper (confirm both land, sections auto-file); edit the section template (add/rename/delete a section → its questions fall to "Unassigned"); Finalize → Download (Question Paper / Answer Key / Tagged sheet); Reopen. Watch light + dark.
+
+### ~~Drag-reorder questions within a paper section~~ — **DONE 2026-06-15** (up/down buttons)
+
+Shipped as **up/down move buttons** per question row (user chose this over drag — accessible, touch/tablet-safe, no new dependency). New pure `positionForMove(orderedRows, questionId, "up"|"down")` in `src/lib/papers/sections.ts` (7 TDD cases) computes the fractional target via `positionBetween`; `reorderQuestion`/`reorderQuestionAction` UPDATE `paper_questions.position`; buttons disabled at section edges. (Original spec kept below.)
+
+The editor's move control is a section `<select>` that **appends to the end** of the target section; there's no fine within-section ordering or drag-and-drop. The DB already supports it — `paper_questions.position` is a `double precision` and `positionBetween(before, after)` (pure, in `src/lib/papers/sections.ts`) returns a fractional midpoint for insert-between-neighbours without renumbering.
+
+**Why:** exam papers care about question order within a section; "append only" forces delete+re-add to reorder. The hard part (fractional positions) is already built and tested.
+
+**How to apply:** add a drag handle per question row in `PaperEditor` (a lib like `@dnd-kit` or native HTML5 DnD — prefer native to avoid a dep per the project's dependency rule), compute the new `position` via `positionBetween(prevRow.position, nextRow.position)`, and add a `reorderQuestionAction(paperId, questionId, position)` wrapping a `paper_questions` position UPDATE. Snapshot/export already read position order, so no other change.
+
+### ~~Section-assignee UI + "added by" attribution in the editor~~ — **DONE 2026-06-15**
+
+Shipped: the SectionManager dialog now has per-section assignee toggle chips (org members via the service-role `listMembers(orgId)`, since `org_members` read RLS is admin-only) wired to `setSectionAssignees` → `updateSectionTemplate`; assignees render as chips on each section progress bar; and each question row shows "· added by &lt;name&gt;" (resolves `paper_questions.added_by` via a uid→label map passed from the editor page). (Original spec kept below.)
+
+The schema carries two collaboration signals the UI doesn't surface yet: `section_template[].assignedTo` (the soft "who's working this section" hint — `setSectionAssignees` exists in `template.ts` but no UI sets it) and `paper_questions.added_by` (stored on every add, never displayed).
+
+**Why:** these are what make the "soft assignment" + multi-teacher model legible — a teacher should see which sections are claimed and who added each question, without it being a hard lock. Low effort, high coordination value.
+
+**How to apply:** in the SectionManager dialog, add an assignee multi-select per section (org members from a `listOrgMembersAction`) wired to `setSectionAssignees` → `updateSectionTemplate`; render assignee chips on each section header + the progress bar. In the question list, show a small "added by &lt;name&gt;" on each row (resolve `added_by` → member name; the editor page already has the membership, just needs a uid→name map). Pairs naturally with live presence below.
+
+### Live presence on the paper editor (Supabase Realtime)
+
+The explicitly-deferred Phase 2: show "Teacher B is editing the Physics section right now" via Supabase Realtime presence/broadcast, and live-update the section counts as collaborators add questions (today each client only sees its own adds until `router.refresh()`).
+
+**Why:** real-time awareness is the polish that makes simultaneous multi-teacher editing feel collaborative rather than blind; it also removes the "did my colleague already add this?" guesswork. Deferred from v1 as non-essential (the junction model + per-section progress already make concurrent editing correct, just not live).
+
+**How to apply:** subscribe the `[id]` editor to a Supabase Realtime channel keyed on the paper id; broadcast presence (user + active section) + INSERT/DELETE events on `paper_questions` for that paper; merge incoming changes into the editor's local state instead of (or alongside) `router.refresh()`. Gate it behind the same org-member check. Note Realtime needs the `paper_questions` table added to the realtime publication.
+
 ## 2026-06-14
 
 ### ~~Refresh the nda-geography guide's per-subtopic %HARD numbers (Mountains, States are stale)~~ — **DONE 2026-06-14**

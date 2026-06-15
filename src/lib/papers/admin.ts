@@ -250,6 +250,23 @@ export async function moveQuestion(
   await touch(client, paperId);
 }
 
+/** Set a question's absolute position within its section (fractional reorder). */
+export async function reorderQuestion(
+  client: SupabaseClient,
+  paperId: string,
+  questionId: string,
+  position: number
+): Promise<void> {
+  await assertDraft(client, paperId);
+  const { error } = await client
+    .from("paper_questions")
+    .update({ position })
+    .eq("paper_id", paperId)
+    .eq("question_id", questionId);
+  if (error) throw new Error(`reorderQuestion: ${error.message}`);
+  await touch(client, paperId);
+}
+
 export async function updatePaperTitle(
   client: SupabaseClient,
   paperId: string,

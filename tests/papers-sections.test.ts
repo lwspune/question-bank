@@ -4,6 +4,7 @@
 import { describe, it, expect } from "vitest";
 import {
   positionBetween,
+  positionForMove,
   sectionProgress,
   buildSnapshot,
 } from "@/lib/papers/sections";
@@ -25,6 +26,49 @@ describe("positionBetween", () => {
   it("splits the gap between two items (drag-reorder without renumber)", () => {
     expect(positionBetween(2, 4)).toBe(3);
     expect(positionBetween(2, 3)).toBe(2.5);
+  });
+});
+
+describe("positionForMove", () => {
+  // rows are the section's membership, already sorted by position ascending.
+  const rows = [
+    { questionId: "a", position: 1 },
+    { questionId: "b", position: 2 },
+    { questionId: "c", position: 3 },
+  ];
+
+  it("moves a middle item UP to just before its previous neighbour", () => {
+    // b up → swaps with a → lands before a: between null and a(1) → 0
+    expect(positionForMove(rows, "b", "up")).toBe(0);
+    // c up → between a(1) and b(2) → 1.5
+    expect(positionForMove(rows, "c", "up")).toBe(1.5);
+  });
+
+  it("moves a middle item DOWN to just after its next neighbour", () => {
+    // a down → between b(2) and c(3) → 2.5
+    expect(positionForMove(rows, "a", "down")).toBe(2.5);
+  });
+
+  it("returns null when moving the first item up (already at the top)", () => {
+    expect(positionForMove(rows, "a", "up")).toBeNull();
+  });
+
+  it("returns null when moving the last item down (already at the bottom)", () => {
+    expect(positionForMove(rows, "c", "down")).toBeNull();
+  });
+
+  it("returns null for an unknown question id", () => {
+    expect(positionForMove(rows, "zzz", "up")).toBeNull();
+  });
+
+  it("moving the last item up lands it between the two before it", () => {
+    // c up → between a(1) and b(2) → 1.5
+    expect(positionForMove(rows, "c", "up")).toBe(1.5);
+  });
+
+  it("moving the first item down lands it between the next two", () => {
+    // a down → between b(2) and c(3) → 2.5
+    expect(positionForMove(rows, "a", "down")).toBe(2.5);
   });
 });
 

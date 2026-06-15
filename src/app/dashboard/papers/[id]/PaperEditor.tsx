@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Check,
+  ChevronDown,
+  ChevronUp,
   Loader2,
   Lock,
   Pencil,
@@ -12,6 +14,7 @@ import {
   Settings2,
   Trash2,
   Unlock,
+  Users,
   X,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -28,12 +31,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { sectionProgress, buildSnapshot } from "@/lib/papers/sections";
+import { sectionProgress, buildSnapshot, positionForMove } from "@/lib/papers/sections";
 import {
   addSection,
   removeSection,
   renameSection,
   setSectionTarget,
+  setSectionAssignees,
   UNASSIGNED_KEY,
 } from "@/lib/papers/template";
 import type { PaperDetail } from "@/lib/papers/admin";
@@ -45,6 +49,7 @@ import {
   reopenAction,
   removeQuestionAction,
   moveQuestionAction,
+  reorderQuestionAction,
   updateTemplateAction,
 } from "../actions";
 import AddQuestionsPanel from "./AddQuestionsPanel";
@@ -57,14 +62,21 @@ export default function PaperEditor({
   detail,
   previews,
   exams,
+  orgMembers,
 }: {
   detail: PaperDetail;
   previews: QuestionPreview[];
   exams: { id: string; name: string }[];
+  orgMembers: { id: string; label: string }[];
 }) {
   const router = useRouter();
   const finalized = detail.status === "finalized";
   const template = detail.sectionTemplate;
+
+  const memberLabel = useMemo(() => {
+    const m = new Map(orgMembers.map((o) => [o.id, o.label] as const));
+    return (id: string | null | undefined) => (id ? m.get(id) ?? null : null);
+  }, [orgMembers]);
 
   const previewMap = useMemo(() => {
     const m = new Map<string, QuestionPreview>();
@@ -251,7 +263,15 @@ export default function PaperEditor({
       {/* Section progress bars */}
       <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {progress.sections.map((s) => (
-          <SectionBar key={s.key} label={s.label} count={s.count} target={s.target} />
+          <SectionBar
+            key={s.key}
+            label={s.label}
+            count={s.count}
+            target={s.target}
+            assignees={s.assignedTo
+              .map((id) => memberLabel(id))
+              .filter((x): x is string => !!x)}
+          />
         ))}
         {progress.unassigned > 0 && (
           <SectionBar label="Unassigned" count={progress.unassigned} target={0} muted />
@@ -289,14 +309,59 @@ export default function PaperEditor({
                             <p className="line-clamp-2 text-sm">
                               {p?.text ?? "(question unavailable)"}
                             </p>
-                            {p && (
+                            {(p || memberLabel(m.addedBy)) && (
                               <p className="mt-0.5 text-xs text-muted-foreground">
-                                {p.subject.name} · {p.chapter.name}
+                                {p && (
+                                  <>
+                                    {p.subject.name} · {p.chapter.name}
+                                  </>
+                                )}
+                                {memberLabel(m.addedBy) && (
+                                  <span className="text-muted-foreground/70">
+                                    {p ? " · " : ""}added by {memberLabel(m.addedBy)}
+                                  </span>
+                                )}
                               </p>
                             )}
                           </div>
                           {!finalized && (
                             <div className="flex shrink-0 items-center gap-1">
+                              <div className="flex flex-col">
+                                <button
+                                  type="button"
+                                  disabled={busy || i === 0}
+                                  onClick={() => {
+                                    const pos = positionForMove(
+                                      g.rows.map((r) => ({ questionId: r.questionId, position: r.position })),
+                                      m.questionId,
+                                      "up"
+                                    );
+                                    if (pos !== null)
+                                      run(() => reorderQuestionAction(detail.id, m.questionId, pos), "Reordered");
+                                  }}
+                                  aria-label="Move up"
+                                  className="text-muted-foreground hover:text-foreground disabled:opacity-30"
+                                >
+                                  <ChevronUp className="h-3.5 w-3.5" aria-hidden />
+                                </button>
+                                <button
+                                  type="button"
+                                  disabled={busy || i === g.rows.length - 1}
+                                  onClick={() => {
+                                    const pos = positionForMove(
+                                      g.rows.map((r) => ({ questionId: r.questionId, position: r.position })),
+                                      m.questionId,
+                                      "down"
+                                    );
+                                    if (pos !== null)
+                                      run(() => reorderQuestionAction(detail.id, m.questionId, pos), "Reordered");
+                                  }}
+                                  aria-label="Move down"
+                                  className="text-muted-foreground hover:text-foreground disabled:opacity-30"
+                                >
+                                  <ChevronDown className="h-3.5 w-3.5" aria-hidden />
+                                </button>
+                              </div>
                               <select
                                 value={g.key === UNASSIGNED_KEY ? "" : g.key}
                                 onChange={(e) =>
@@ -387,6 +452,7 @@ export default function PaperEditor({
         onOpenChange={setSectionsOpen}
         initial={template}
         counts={counts}
+        orgMembers={orgMembers}
         onSave={async (next) => {
           const ok = await run(
             () => updateTemplateAction(detail.id, next),
@@ -405,11 +471,13 @@ function SectionBar({
   count,
   target,
   muted,
+  assignees = [],
 }: {
   label: string;
   count: number;
   target: number;
   muted?: boolean;
+  assignees?: string[];
 }) {
   const pct = target > 0 ? Math.min(100, (count / target) * 100) : count > 0 ? 100 : 0;
   const done = target > 0 && count >= target;
@@ -433,6 +501,16 @@ function SectionBar({
           style={{ width: `${pct}%` }}
         />
       </div>
+      {assignees.length > 0 && (
+        <div className="mt-1.5 flex flex-wrap items-center gap-1 text-[10px] text-muted-foreground">
+          <Users className="h-3 w-3" aria-hidden />
+          {assignees.map((a) => (
+            <span key={a} className="rounded bg-muted px-1 py-0.5">
+              {a}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -442,6 +520,7 @@ function SectionManager({
   onOpenChange,
   initial,
   counts,
+  orgMembers,
   onSave,
   busy,
 }: {
@@ -449,6 +528,7 @@ function SectionManager({
   onOpenChange: (v: boolean) => void;
   initial: SectionTemplate;
   counts: Record<string, number>;
+  orgMembers: { id: string; label: string }[];
   onSave: (next: SectionTemplate) => void;
   busy: boolean;
 }) {
@@ -462,48 +542,84 @@ function SectionManager({
     onOpenChange(v);
   }
 
+  function toggleAssignee(sectionKey: string, current: string[], userId: string) {
+    const next = current.includes(userId)
+      ? current.filter((u) => u !== userId)
+      : [...current, userId];
+    setDraft((d) => setSectionAssignees(d, sectionKey, next));
+  }
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-h-[85dvh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Sections</DialogTitle>
           <DialogDescription>
-            Add, rename, retarget, or remove subjects. Removing a section keeps its
-            questions — they move to &quot;Unassigned&quot; until you re-file them.
+            Add, rename, retarget, remove, or assign subjects. Assigning is a soft
+            hint of who&apos;s working a section — anyone can still edit any section.
+            Removing a section keeps its questions — they move to
+            &quot;Unassigned&quot; until you re-file them.
           </DialogDescription>
         </DialogHeader>
 
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {draft.map((s) => {
             const n = counts[s.key] ?? 0;
+            const assigned = s.assignedTo ?? [];
             return (
-              <li key={s.key} className="flex items-center gap-2">
-                <Input
-                  value={s.label}
-                  onChange={(e) => setDraft((d) => renameSection(d, s.key, e.target.value))}
-                  className="flex-1"
-                  aria-label={`Rename ${s.label}`}
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  value={s.targetCount}
-                  onChange={(e) =>
-                    setDraft((d) => setSectionTarget(d, s.key, Math.max(0, Number(e.target.value) || 0)))
-                  }
-                  className="w-20"
-                  aria-label={`${s.label} target`}
-                />
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setDraft((d) => removeSection(d, s.key))}
-                  aria-label={`Remove ${s.label}`}
-                  title={n > 0 ? `${n} question(s) will move to Unassigned` : "Remove"}
-                  className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
-                >
-                  <Trash2 className="h-4 w-4" aria-hidden />
-                </Button>
+              <li key={s.key} className="space-y-1.5 border-b pb-3 last:border-b-0">
+                <div className="flex items-center gap-2">
+                  <Input
+                    value={s.label}
+                    onChange={(e) => setDraft((d) => renameSection(d, s.key, e.target.value))}
+                    className="flex-1"
+                    aria-label={`Rename ${s.label}`}
+                  />
+                  <Input
+                    type="number"
+                    min={0}
+                    value={s.targetCount}
+                    onChange={(e) =>
+                      setDraft((d) => setSectionTarget(d, s.key, Math.max(0, Number(e.target.value) || 0)))
+                    }
+                    className="w-20"
+                    aria-label={`${s.label} target`}
+                  />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setDraft((d) => removeSection(d, s.key))}
+                    aria-label={`Remove ${s.label}`}
+                    title={n > 0 ? `${n} question(s) will move to Unassigned` : "Remove"}
+                    className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
+                  >
+                    <Trash2 className="h-4 w-4" aria-hidden />
+                  </Button>
+                </div>
+                {orgMembers.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-1 pl-0.5">
+                    <Users className="h-3 w-3 text-muted-foreground" aria-hidden />
+                    {orgMembers.map((mem) => {
+                      const on = assigned.includes(mem.id);
+                      return (
+                        <button
+                          key={mem.id}
+                          type="button"
+                          onClick={() => toggleAssignee(s.key, assigned, mem.id)}
+                          aria-pressed={on}
+                          className={cn(
+                            "rounded-full border px-2 py-0.5 text-[11px] transition-colors",
+                            on
+                              ? "border-brand-accent/40 bg-brand-accent/10 text-brand-accent"
+                              : "border-input text-muted-foreground hover:bg-accent"
+                          )}
+                        >
+                          {mem.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </li>
             );
           })}
