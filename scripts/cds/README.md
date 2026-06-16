@@ -68,7 +68,7 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 
 ## Status
 
-- `2026-1` — committed PRIVATE (120). The trial that produced this pipeline.
+- `2026-1` — committed PRIVATE (120). The trial that produced this pipeline; **back-ported to the standard `data/2026-1.*` shape 2026-06-16** (re-`commit`s as a 0-insert no-op — `inserted=0 skipped=120`), so all 19 papers are now reproducible identically via `commit.ts`. The legacy `final.json` + `commit-trial.ts` were removed.
 - `2025-1` — committed PRIVATE (120). Validated the generalized pipeline (15 sections, 2 new
   section types `word-usage-count`/`word-usage-select`, cloze + dual match-lists; 0 collisions).
 - `2025-2` — committed PRIVATE (120). 14 sections (no synonyms/antonyms/RC; opens with

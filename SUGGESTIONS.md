@@ -30,19 +30,15 @@ The user runs non-NDA **school Class-10 / SSC** Maths tests through nda-tracker 
 
 ### Spot-check CDS English LLM-derived answers before flipping PUBLIC
 
-CDS English booklets carry **no official answer key**, so every answer in the bank is LLM-derived + confidence-flagged (HIGH/MED/LOW). 360 q committed PRIVATE so far (2026-I, 2025-I, 2025-II); per-paper review HTMLs at `scripts/cds/out/<id>.preview.html`. **Nothing should go PUBLIC until a human reviews at least the MED items** (they cluster in the genuinely-hard-keyless types: sentence-rearrangement, S1/S2 relationship, match-list code grids, word-usage). The 2025 match-list code grids were specifically flagged as possibly OCR-degraded (e.g. 2025-I Q71/72/75/77) — recheck those against the source crops.
+CDS English booklets carry **no official answer key**, so every answer in the bank is LLM-derived + confidence-flagged (HIGH/MED/LOW). **All 19 papers (2,280 q) now committed PRIVATE**; per-paper review HTMLs at `scripts/cds/out/<id>.preview.html`. **Nothing should go PUBLIC until a human reviews at least the MED items** (they cluster in the genuinely-hard-keyless types: sentence/part-rearrangement grids, S1/S2 relationship, match-list code grids, word-usage). Prioritise the **oldest dense scans (2017-1 worst, 60 MED)** + the P/Q/R/S part-rearrangement grids; the 2025 match-list code grids were flagged as possibly OCR-degraded (e.g. 2025-I Q71/72/75/77) — recheck those against the source crops.
 
 **Why:** a PYQ-first product showing wrong answers as authoritative erodes trust; the confidence flags exist precisely so this review is targeted, not exhaustive.
 
 **How to apply:** open each `out/<id>.preview.html`, focus the amber (non-HIGH) cards, confirm/correct against the rendered source pages, then flip PUBLIC per paper. A future helper could surface only the MED rows for review.
 
-### Finish CDS English ingestion (15 papers + 2024-1 RC) + push the branch
+### ~~Finish CDS English ingestion (15 papers + 2024-1 RC) + push the branch~~ — **DONE 2026-06-16**
 
-3 of 19 CDS papers are in; **2024-1 is mid-flight** (16 sections; the RC section Q51-60 has two passages — Faulkner + educational-change — whose verbatim capture tripped a subagent content-filter, so the passages need manual/OCR capture, then split S7 into two passage-sets and commit). **15 papers remain** (2017–2024-II): add each to `PAPERS` in `scripts/cds/config.ts`, then run `render → section-map agent → transcribe-by-section agents → underline agent → commit`. The pipeline + nav commit (`feat/cds-english-ingestion` → `main`) is **local, not pushed** — push when ready (runs the full prepush gate ~3-4 min).
-
-**Why:** the corpus is only ~16% ingested; each paper is now a predictable loop, and the unpushed commit means CI hasn't validated it on a clean checkout.
-
-**How to apply:** see [[cds-english-ingestion]] for the resume point + per-paper list; `scripts/cds/README.md` for the runbook. Optional consistency cleanup: 2026-1 was committed via the trial `commit-trial.ts`+`final.json` rather than the standard `data/2026-1.*` format — regenerate it into the standard shape if you want all papers reproducible the same way.
+All **19 CDS English papers (2017-I … 2026-I = 2,280 q)** committed PRIVATE on `main` + pushed; per-exam dedup migration 0038 shipped. Pipeline + per-paper detail in [[cds-english-ingestion]]. **Consistency cleanup — DONE 2026-06-16:** 2026-1 back-ported from the trial `commit-trial.ts`+`final.json` to the standard `data/2026-1.*` shape (verified the round-trip reproduces the committed rows exactly; standard `commit.ts 2026-1 --apply` → `inserted=0 skipped=120`); legacy `final.json` + `commit-trial.ts` removed. All 19 papers now reproducible identically via `commit.ts`.
 
 ### ~~Manual authed golden-path for the collaborative paper builder~~ — **DONE 2026-06-15** (user-verified in browser)
 
@@ -79,6 +75,14 @@ The explicitly-deferred Phase 2: show "Teacher B is editing the Physics section 
 **Why:** real-time awareness is the polish that makes simultaneous multi-teacher editing feel collaborative rather than blind; it also removes the "did my colleague already add this?" guesswork. Deferred from v1 as non-essential (the junction model + per-section progress already make concurrent editing correct, just not live).
 
 **How to apply:** subscribe the `[id]` editor to a Supabase Realtime channel keyed on the paper id; broadcast presence (user + active section) + INSERT/DELETE events on `paper_questions` for that paper; merge incoming changes into the editor's local state instead of (or alongside) `router.refresh()`. Gate it behind the same org-member check. Note Realtime needs the `paper_questions` table added to the realtime publication.
+
+### Browser-verify the NEW cart→paper "Add to paper" flow
+
+The earlier "Manual authed golden-path" (struck DONE above) verified the **old** per-card `/browse?paper=` mode, which was **removed 2026-06-15** and replaced by the cart→paper bridge (commit `c5c27d9`). The new path — cart panel → "Add to paper" → pick/create a draft paper → bulk-commit — passed the gate + integration tests but hasn't been eyeballed authed in a browser.
+
+**Why:** it's a new UI surface (`AddToPaperDialog` in `CartPill`) on the high-traffic `/browse`; the `ƒ`-page pitfall (build-green ≠ runtime-ok) plus the org-member gating make a quick authed pass worthwhile. Also confirms the "Download paper" vs "Add to paper" two-button footer reads cleanly on mobile.
+
+**How to apply:** sign in as a TEACHER, `/browse` → Add a few questions to the cart → open the cart pill → **Add to paper** → confirm the active-paper picker lists drafts (+ "New paper"), bulk-commit, and the toast reports `added`/`already there` + "View paper". Re-commit the same cart → expect "0 added · N already there". Check the cart is NOT cleared. Confirm anon users see only "Download paper" (no "Add to paper"). Watch light + dark + mobile.
 
 ## 2026-06-14
 
