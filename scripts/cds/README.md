@@ -88,5 +88,12 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 - `2021-2` — committed PRIVATE (120). 13 sections; Q31–40 grid full-width (all HIGH). 50 MED.
 - `2020-1` — committed PRIVATE (120). 12 sections; 3 new types `spelling-select` + `sentence-transformation` + `reported-speech` (Reported Speech → Direct/Indirect Speech). Q21–30 grid full-width. 40 MED.
 - `2020-2` — committed PRIVATE (120). 11 sections (20-blank cloze; spelling-select). `normalizeQuestions` now also maps a rearrangement-grid agent's ordering-string `answer` (e.g. "QSPR") back to its option label. 34 MED.
-- Remaining 2017–2019 papers: render → section-map → transcribe → commit.
+- `2019-1` — committed PRIVATE (120). 13 sections (4 RC passages 51–70, 20-q spotting-errors, grid full-width). 34 MED.
+- `2019-2` — committed PRIVATE (120). 13 sections, irregular boundaries (13-q grid, 15-q spotting-errors). Edge cases handled: 4 **five-option** spotting-errors (4 underlined parts + "No error") refit to 4 options (answer=No-error → 3 parts + No error; answer=a part → keep 4 parts, drop the unused No-error); RC (Q104–120) numbering had drifted + Q110 was off the 2.2x render — re-transcribed from full hi-DPI with verified number anchors. 33 MED.
+- `2018-1` — committed PRIVATE (120). 13 sections (4 RC passages, 20-q spotting-errors, grid full-width). 55 MED (Q41–50 rearrangements low-confidence on a dense scan).
+- `2018-2` — committed PRIVATE (120). 15 sections, irregular (20-q grid Q69–88, reported-speech + voice). Gotcha: a grid section's first item (Q69) sat at the bottom of the page BEFORE the rendered grid block — render one page earlier when the grid start is uncertain. 50 MED.
+- `2017-1` — committed PRIVATE (120). 11 sections, old dense format (20-q grid Q1–20, 26-q spotting-errors with 4-part Q21–27, 22-q sentence-improvement, 6 RC passages). **Lowest-confidence paper — 60 MED** (the packed grid + rearrangements with blank-S fragments); prioritise for source review before PUBLIC.
+- `2017-2` — committed PRIVATE (120). 12 sections (20-q paragraph-rearrange, 20-q part-rearrange grid, 5 RC passages, 25-q spotting-errors, Word-Substitution synonyms). 50 MED.
+
+**INGESTION COMPLETE (2026-06-16):** all **19 CDS English papers** (2017-I … 2026-I) committed PRIVATE — **2280 questions**, every one with Directions-in-context + 4 options + exactly 1 correct; 253 sets. **Before flipping PUBLIC:** human spot-check the LLM-derived answers (no official keys exist), prioritising MED-flagged items; the oldest dense scans (2017-1 especially, + the part-rearrangement grids) carry the most uncertainty.
 - `2024-1` was Elementary Mathematics; replaced with the correct English booklet 2026-06-15.

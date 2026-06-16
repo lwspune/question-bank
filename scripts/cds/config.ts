@@ -46,7 +46,12 @@ export const PAPERS: Record<string, Paper> = {
   "2021-2": { id: "2021-2", sourceFile: "Eng_CDS_2021_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2021_2.pdf"), pyqYear: 2021, pyqNote: "CDS (II) 2021 — English" },
   "2020-1": { id: "2020-1", sourceFile: "Eng_CDS_2020_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2020_1.pdf"), pyqYear: 2020, pyqNote: "CDS (I) 2020 — English" },
   "2020-2": { id: "2020-2", sourceFile: "Eng_CDS_2020_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2020_2.pdf"), pyqYear: 2020, pyqNote: "CDS (II) 2020 — English" },
-  // ...remaining 2017–2019 papers added as they are mapped.
+  "2019-1": { id: "2019-1", sourceFile: "Eng_CDS_2019_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2019_1.pdf"), pyqYear: 2019, pyqNote: "CDS (I) 2019 — English" },
+  "2019-2": { id: "2019-2", sourceFile: "Eng_CDS_2019_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2019_2.pdf"), pyqYear: 2019, pyqNote: "CDS (II) 2019 — English" },
+  "2018-1": { id: "2018-1", sourceFile: "Eng_CDS_2018_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2018_1.pdf"), pyqYear: 2018, pyqNote: "CDS (I) 2018 — English" },
+  "2018-2": { id: "2018-2", sourceFile: "Eng_CDS_2018_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2018_2.pdf"), pyqYear: 2018, pyqNote: "CDS (II) 2018 — English" },
+  "2017-1": { id: "2017-1", sourceFile: "Eng_CDS_2017_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2017_1.pdf"), pyqYear: 2017, pyqNote: "CDS (I) 2017 — English" },
+  "2017-2": { id: "2017-2", sourceFile: "Eng_CDS_2017_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2017_2.pdf"), pyqYear: 2017, pyqNote: "CDS (II) 2017 — English" },
 };
 
 export function requirePaper(id: string | undefined): Paper {
