@@ -59,6 +59,11 @@ import {
   INDEFINITE_INTEGRATION_SLUGS,
 } from "@/app/notes/mht-cet-maths/indefinite-integration/_data";
 import {
+  DIFFERENTIATION_CHAPTER as MHTCET_DIFFERENTIATION_CHAPTER,
+  DIFFERENTIATION_NOTES as MHTCET_DIFFERENTIATION_NOTES,
+  DIFFERENTIATION_SLUGS as MHTCET_DIFFERENTIATION_SLUGS,
+} from "@/app/notes/mht-cet-maths/differentiation/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -766,6 +771,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: INDEFINITE_INTEGRATION_CHAPTER,
     notes: INDEFINITE_INTEGRATION_NOTES,
     slugs: INDEFINITE_INTEGRATION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "differentiation",
+    chipLabel: "Differentiation notes",
+    chapter: MHTCET_DIFFERENTIATION_CHAPTER,
+    notes: MHTCET_DIFFERENTIATION_NOTES,
+    slugs: MHTCET_DIFFERENTIATION_SLUGS,
   },
   {
     examName: "NDA",
