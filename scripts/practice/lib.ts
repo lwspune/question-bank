@@ -25,6 +25,7 @@ export type BuildTopic = {
   qFrom: number;
   qTo: number;
   subtopics: string[];
+  subjectName?: string; // default "Mathematics" — set for non-Maths practice topics
 };
 
 /**
@@ -159,7 +160,7 @@ export function buildRecords(
     rows.push({
       sourceRow: q.number,
       questionNumber: String(q.number),
-      subjectName: "Mathematics",
+      subjectName: topic.subjectName ?? "Mathematics",
       chapterName: topic.chapterName,
       subtopicName: q.subtopic,
       text: q.stem,
