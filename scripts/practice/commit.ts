@@ -67,7 +67,11 @@ async function main() {
     }
   }
 
-  const answers = parseAnswerKey(answerKeyText(topic.answerKey.pdf), topic.qFrom, topic.qTo);
+  // A topic with no printed answer key (e.g. an LWS test PDF) supplies every
+  // answer via overrides.json; skip the PDF parse entirely.
+  const answers = topic.answerKey
+    ? parseAnswerKey(answerKeyText(topic.answerKey.pdf), topic.qFrom, topic.qTo)
+    : new Map<number, string[]>();
 
   const gaps = missingNumbers(questions, topic.qFrom, topic.qTo);
   if (gaps.length) console.log(`coverage gaps (not transcribed): ${gaps.join(", ")}`);
@@ -145,7 +149,7 @@ async function main() {
     rows,
     uploadJobId: jobId,
     pyqYear: null,
-    pyqNote: "NDA Maths practice — Algebra / Sequence & Series",
+    pyqNote: topic.note ?? "NDA Maths practice — Algebra / Sequence & Series",
   });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);

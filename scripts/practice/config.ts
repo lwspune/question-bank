@@ -32,9 +32,15 @@ export type Topic = {
   qFrom: number; // first practice question number (inclusive)
   qTo: number; // last (inclusive)
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
-  questionPages: PageRange; // pages holding the question stems+options
-  answerKey: { pdf: string }; // text-layer answer-letter list (whole-Algebra, parsed for [qFrom,qTo])
-  solutionPages: PageRange; // pages holding the worked solutions (same Q-numbering)
+  // The PDF-page fields below are only used by render.ts (vision pipeline) and
+  // commit.ts's answer-key parse. They are OPTIONAL: a born-digital test PDF with
+  // a clean text layer needs no render, and a paper with NO printed answer key
+  // supplies every answer via <topic>.overrides.json instead.
+  questionPages?: PageRange; // pages holding the question stems+options
+  answerKey?: { pdf: string }; // text-layer answer-letter list; omit → answers come entirely from overrides
+  solutionPages?: PageRange; // pages holding the worked solutions (same Q-numbering)
+  subjectName?: string; // DB subject (default "Mathematics"); set for non-Maths practice (e.g. "Geography")
+  note?: string; // optional questions.pyq_note text
   // Canonical DB subtopic names for this chapter — transcription must map each
   // question's `subtopic` to one of these (verified at commit).
   subtopics: string[];
@@ -42,6 +48,28 @@ export type Topic = {
 
 // Pilot: Algebra → Sequence & Series, Q406–489 (~84 q).
 export const TOPICS: Record<string, Topic> = {
+  // ─── NDA GEOGRAPHY practice (first non-Maths practice topic). Source: the
+  // LWS "NDA Atmosphere Test P1" PDF — born-digital, CLEAN text layer (no render
+  // needed) and NO printed answer key (all 50 answers derived → overrides.json,
+  // committed PRIVATE for spot-check). Questions numbered 1–50. ───
+  "atmosphere-p1": {
+    id: "atmosphere-p1",
+    chapterName: "Climatology, Atmosphere and Weather",
+    subjectName: "Geography",
+    qFrom: 1,
+    qTo: 50,
+    sourceFile: "NDA_Geography_Practice__Atmosphere_Test_P1.pdf",
+    note: "NDA Geography practice — Atmosphere Test P1 (LWS)",
+    // No questionPages/answerKey/solutionPages: clean-text transcription lives in
+    // data/atmosphere-p1.questions.json; answers in atmosphere-p1.overrides.json.
+    subtopics: [
+      "Atmospheric Layers, Composition and Aurora",
+      "Insolation, Temperature and Solar Geometry",
+      "Atmospheric Pressure and Winds",
+      "Humidity, Condensation, Clouds and Precipitation",
+    ],
+  },
+
   "sequence-series": {
     id: "sequence-series",
     chapterName: "Sequence & Series",

@@ -17,13 +17,20 @@ import { OUT, requireTopic } from "./config";
 
 function render(topicId: string) {
   const topic = requireTopic(topicId);
+  // render.ts is the vision pipeline; a clean-text topic (no questionPages/
+  // solutionPages) is transcribed directly and never rendered.
+  if (!topic.questionPages || !topic.solutionPages) {
+    throw new Error(`topic "${topicId}" has no questionPages/solutionPages — it is a clean-text topic (transcribe directly into data/, no render step).`);
+  }
+  const questionPages = topic.questionPages;
+  const solutionPages = topic.solutionPages;
   const dir = join(OUT, topicId);
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
 
   const jobs = [
-    ...topic.questionPages.pages.map((p) => ({ pdf: topic.questionPages.pdf, page: p, prefix: "q" })),
-    ...topic.solutionPages.pages.map((p) => ({ pdf: topic.solutionPages.pdf, page: p, prefix: "s" })),
+    ...questionPages.pages.map((p) => ({ pdf: questionPages.pdf, page: p, prefix: "q" })),
+    ...solutionPages.pages.map((p) => ({ pdf: solutionPages.pdf, page: p, prefix: "s" })),
   ];
 
   // The book is two-column. We render each column separately at high DPI so the
@@ -60,8 +67,8 @@ print("rendered", n, "column images")
   }
   console.log(res.stdout.trim());
   console.log(`PNGs in ${dir}`);
-  console.log(`Questions: q-*.png (pages ${topic.questionPages.pages.join(",")}) — transcribe Q${topic.qFrom}-${topic.qTo}`);
-  console.log(`Solutions: s-*.png (pages ${topic.solutionPages.pages.join(",")})`);
+  console.log(`Questions: q-*.png (pages ${questionPages.pages.join(",")}) — transcribe Q${topic.qFrom}-${topic.qTo}`);
+  console.log(`Solutions: s-*.png (pages ${solutionPages.pages.join(",")})`);
 }
 
 render(process.argv[2]);
