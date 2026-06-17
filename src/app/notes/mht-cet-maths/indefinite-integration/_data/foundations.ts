@@ -298,5 +298,71 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
         },
       ],
     },
+
+    // Trig simplification toolkit (foundation — used across the whole chapter; no single PYQ)
+    {
+      kind: "formula" as const,
+      slug: "cetii-trig-simplification-toolkit",
+      name: "Trigonometric Simplification Toolkit",
+      intuition:
+        "Across calculus a 'hard' integral is often just an unsimplified trig expression. Before reaching for a method, scan for these standard forms and collapse them first — a root disappears, a quotient becomes a single tangent, a product becomes one angle.",
+      definition:
+        "Keep these collapses in reflex memory:\n" +
+        "- **Half-angle of \\(1\\pm\\cos x\\):** \\(1-\\cos x = 2\\sin^2\\tfrac{x}{2}\\), \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\); so \\(\\dfrac{1-\\cos x}{1+\\cos x}=\\tan^2\\tfrac{x}{2}\\), \\(\\dfrac{1}{1-\\cos x}=\\tfrac12\\csc^2\\tfrac{x}{2}\\), \\(\\dfrac{1}{1+\\cos x}=\\tfrac12\\sec^2\\tfrac{x}{2}\\).\n" +
+        "- **Power-reduction (double angle):** \\(1-\\cos 2x = 2\\sin^2 x\\), \\(1+\\cos 2x = 2\\cos^2 x\\), \\(\\sin 2x = 2\\sin x\\cos x\\).\n" +
+        "- **Perfect square under a root:** \\(1\\pm\\sin 2x=(\\sin x\\pm\\cos x)^2\\) and \\(1\\pm\\sin\\theta=\\left(\\cos\\tfrac\\theta2\\pm\\sin\\tfrac\\theta2\\right)^2\\), so \\(\\sqrt{1\\pm\\sin 2x}=|\\sin x\\pm\\cos x|\\) — **keep the modulus; its sign depends on the interval.**\n" +
+        "- **\\(\\sec\\pm\\tan\\):** \\(\\sec x+\\tan x=\\dfrac{1+\\sin x}{\\cos x}=\\tan\\!\\left(\\tfrac\\pi4+\\tfrac x2\\right)\\), \\(\\sec x-\\tan x=\\tan\\!\\left(\\tfrac\\pi4-\\tfrac x2\\right)\\).\n" +
+        "- **Harmonic form:** \\(a\\sin x+b\\cos x=\\sqrt{a^2+b^2}\\,\\sin(x+\\alpha)\\), so its extreme values are \\(\\pm\\sqrt{a^2+b^2}\\).\n" +
+        "- **Weierstrass \\(t=\\tan\\tfrac{x}{2}\\):** \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\), \\(dx=\\dfrac{2\\,dt}{1+t^2}\\) — turns any rational function of \\(\\sin x,\\cos x\\) into a rational function of \\(t\\).",
+      formula: {
+        label: "The collapses you reach for most",
+        latex:
+          "1+\\cos x = 2\\cos^2\\tfrac{x}{2},\\quad 1-\\cos x = 2\\sin^2\\tfrac{x}{2},\\quad \\sqrt{1\\pm\\sin 2x}=|\\sin x\\pm\\cos x|",
+        symbols: [
+          { symbol: "\\tfrac{x}{2}", meaning: "half-angle — appears whenever you collapse \\(1\\pm\\cos x\\)" },
+          { symbol: "|\\cdots|", meaning: "the root of a perfect square is a MODULUS; fix the sign on the given interval" },
+        ],
+      },
+      authoredExample: {
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{1+\\cos x}\\).",
+        steps: [
+          "Collapse the denominator with the half-angle form: \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\).",
+          "So \\(\\dfrac{1}{1+\\cos x} = \\tfrac12\\sec^2\\tfrac{x}{2}\\), and \\(\\int \\tfrac12\\sec^2\\tfrac{x}{2}\\,dx = \\tfrac12\\cdot\\dfrac{\\tan\\tfrac{x}{2}}{1/2}\\).",
+          "The \\(\\tfrac12\\) cancels the \\(\\tfrac12\\) from differentiating \\(\\tfrac{x}{2}\\).",
+        ],
+        answer: "\\(\\tan\\tfrac{x}{2} + C\\)",
+      },
+      selfCheckExample: {
+        prompt: "Simplify \\(\\dfrac{1-\\cos x}{1+\\cos x}\\), then evaluate \\(\\displaystyle\\int \\dfrac{1-\\cos x}{1+\\cos x}\\,dx\\).",
+        steps: [
+          "The quotient is \\(\\tan^2\\tfrac{x}{2} = \\sec^2\\tfrac{x}{2} - 1\\).",
+          "Integrate: \\(\\int\\!\\left(\\sec^2\\tfrac{x}{2}-1\\right)dx = 2\\tan\\tfrac{x}{2} - x + C\\).",
+        ],
+        answer: "\\(2\\tan\\tfrac{x}{2} - x + C\\)",
+      },
+      practiceSet: [
+        { prompt: "Write \\(1-\\cos 6x\\) without the leading \\(1\\).", answer: "\\(2\\sin^2 3x\\)", method: "power-reduction \\(1-\\cos 2\\theta=2\\sin^2\\theta\\) with \\(\\theta=3x\\)" },
+        { prompt: "Simplify \\(\\sqrt{1+\\sin 2x}\\) for \\(0<x<\\tfrac{\\pi}{4}\\).", answer: "\\(\\sin x+\\cos x\\)", method: "\\((\\sin x+\\cos x)^2\\); positive on this interval" },
+        { prompt: "Write \\(\\sec x-\\tan x\\) as one tangent.", answer: "\\(\\tan\\!\\left(\\tfrac\\pi4-\\tfrac x2\\right)\\)" },
+        { prompt: "Maximum value of \\(5\\sin x+12\\cos x\\).", answer: "\\(13\\)", method: "\\(\\sqrt{5^2+12^2}\\)" },
+      ],
+      traps: [
+        {
+          title: "\\(1\\pm\\cos x\\) (half-angle) vs \\(1\\pm\\cos 2x\\) (power-reduction)",
+          body:
+            "Different collapses: \\(1-\\cos x = 2\\sin^2\\tfrac{x}{2}\\) but \\(1-\\cos 2x = 2\\sin^2 x\\). Read the angle inside the cosine before choosing the factor — the wrong one halves or doubles the argument.",
+        },
+        {
+          title: "The root of a perfect square is a MODULUS",
+          body:
+            "\\(\\sqrt{(\\sin x-\\cos x)^2} = |\\sin x-\\cos x|\\), not \\(\\sin x-\\cos x\\). Resolve the sign on the given interval: on \\((\\tfrac\\pi4,\\tfrac\\pi2)\\) it is \\(+(\\sin x-\\cos x)\\); on \\((0,\\tfrac\\pi4)\\) it is \\(-(\\sin x-\\cos x)\\). Dropping the modulus is the most common error on \\(\\sqrt{1\\pm\\sin 2x}\\) problems.",
+        },
+        {
+          title: "\\(\\sec\\pm\\tan\\) — mind which way the half-angle shifts",
+          body:
+            "\\(\\sec x+\\tan x=\\tan\\!\\left(\\tfrac\\pi4+\\tfrac x2\\right)\\) but \\(\\sec x-\\tan x=\\tan\\!\\left(\\tfrac\\pi4-\\tfrac x2\\right)\\). Useful check: \\((\\sec x+\\tan x)(\\sec x-\\tan x)=\\sec^2x-\\tan^2x=1\\).",
+        },
+      ],
+    },
   ],
 };
