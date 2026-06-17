@@ -16,6 +16,28 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-17
+
+### Continue the MHT-CET Maths /notes campaign (25 chapters un-noted; workflow now captured)
+
+Only 2 of 27 MHT-CET-Maths chapters are noted (Indefinite Integration + Differentiation, shipped 2026-06-16). The CET-Maths chapter playbook is now codified in CLAUDE.md "Notes editorial workflow → step 0 → MHT-CET Maths defaults" + the [[notes-structure-pedagogy-first]] reconfirm, so the next chapter is turn-key.
+
+**Why:** CET Maths is a large, high-traffic exam for the product; the per-chapter cost is now low (clone `differentiation/_data/`, expect a Phase-D reshape, build via a 6-agent batch). Highest-yield next picks by bank size: **Vectors (173 q, 58% HARD)**, **Applications of Derivative (137 q, 26% HARD — gentler)**, Line and Plane (137), Differential Equations (94), Probability Distribution (86). Below the bank-coverage gate (reuse NDA siblings, don't build): Conic Sections (5 q), Sequences & Series (4 q — see [[mhtcet-sequences-notes-deferred]]), Quadratic Equations (3 q).
+
+**How to apply:** pick a chapter → run step-0 analysis (read HARD+MODERATE solutions) → reshape the catch-all bank subtopics → 6-agent parallel batch off a fixed concept skeleton → tag 100% → Step-4 gate chain → smoke-test routes → commit. Default to Vectors or Applications of Derivative.
+
+### Spot-check the MHT-CET Differentiation `a18fbd89` disputed answer key (/solution-cleanup)
+
+During the Differentiation notes build, PYQ `a18fbd89` (`y = sin⁻¹x² + cos⁻¹x²`, asks `(1−x²)y₂ − xy₁`) surfaced an answer-key dispute: the identity gives `sin⁻¹x²+cos⁻¹x² = π/2` (constant) ⇒ `y₁=y₂=0` ⇒ the expression is `0`, but the bank's stored answer key is `−4`. It was taught-but-not-featured in the notes (the identity is correct); the key needs a source verdict.
+
+**Why:** it's a known wrong-key candidate flagged but not resolved; leaving it lets a wrong key sit in a HARD inverse-trig question. Bank-wide content audit is otherwise closed.
+
+**How to apply:** run `/solution-cleanup` (or a targeted re-derivation) on `a18fbd89` — re-read the stem (the `−4` answer likely implies a different intended stem, e.g. `sin⁻¹x + cos⁻¹x` of a non-constant argument, or `(sin⁻¹x)²+(cos⁻¹x)²`); fix the key or the stem per the source. CET source papers are local at `C:\tmp\PYQPs\MHT-CET` ([[mhtcet-source-docx-render]]).
+
+### Harvest the 2 MHT-CET Maths notes chapters for daily quizzes (carry-forward)
+
+Both CET-Maths notes chapters (Indefinite Integration + Differentiation) were authored quiz-ready per Step 1b (Differentiation: `quiz:coverage` 0 formula gaps, 75 traps) but are **unharvested** — the daily-quiz campaign is NDA-only so far. Carry-forward of the broader quiz frontier (see the 2026-06-09 "Wave 3+" entry) extended to MHT-CET; lower priority than clearing the NDA Chemistry/Physics/Biology frontier first.
+
 ## 2026-06-15
 
 ### A school / Class-10 (non-NDA) chapter list for nda-tracker's tag validation
