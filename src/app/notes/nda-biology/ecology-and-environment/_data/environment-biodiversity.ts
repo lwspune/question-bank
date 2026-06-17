@@ -10,7 +10,9 @@ export const ENVIRONMENT_BIODIVERSITY_NOTE: SubtopicNote = {
     "The bank reliably tests: which gas is NOT a greenhouse gas (oxygen), what biogas is mostly made of (methane), which activity does NOT reduce biodiversity (sacred groves help it), and which is NOT a cause of groundwater depletion (afforestation helps recharge). " +
     "Learn the short fact lists and the recall is automatic.",
   concepts: [
-    // greenhouse gases (REFERENCE) — covers 7d5915b6
+    // greenhouse gases (REFERENCE) — taught from the table; its former featured
+    // PYQ (oxygen-not-a-GHG, 7d5915b6) was re-filed to NDA Geography Atmosphere
+    // (2026-06-16), so no pyqExampleId here.
     {
       kind: "reference" as const,
       slug: "eco-greenhouse-pollution",
@@ -56,7 +58,6 @@ export const ENVIRONMENT_BIODIVERSITY_NOTE: SubtopicNote = {
         { prompt: "Which greenhouse gas is the most abundant?", answer: "Water vapour" },
         { prompt: "Which greenhouse gas is the main man-made driver of warming?", answer: "Carbon dioxide (CO₂)" },
       ],
-      pyqExampleId: "7d5915b6-2459-4187-a421-fceb59e76b71", // oxygen NOT a greenhouse gas
       traps: [
         {
           title: "Oxygen and nitrogen are NOT greenhouse gases",
