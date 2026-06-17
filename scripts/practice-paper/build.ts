@@ -16,7 +16,9 @@
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
+import * as XLSX from "xlsx";
 import { buildQuestionPaper, buildAnswerKey } from "@/lib/export/docxBuilder";
+import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import type { QuestionRow, OptionRow } from "@/lib/questions/query";
 import type { Spec } from "./types";
 import { VECTORS } from "./data/vectors";
@@ -130,14 +132,28 @@ async function main() {
   const paper = await buildQuestionPaper({ title: TITLE, questions: rows });
   const key = await buildAnswerKey({ title: TITLE, questions: rows, includeSolutions: true });
 
+  // nda-tracker enrichment "tagged sheet" — SAME helper + Q-numbering the UI
+  // uses (kind:"tags" in /api/export), so Q-numbers match the printed paper.
+  const aoa = tagRowsToAoa(buildTagRows(rows));
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aoa), "Tags");
+  const tagsBuf = XLSX.write(wb, { type: "buffer", bookType: "xlsx" }) as Buffer;
+
   const qpPath = join(outDir, "QP_NDA_Vectors_Probability_Binomial.docx");
   const akPath = join(outDir, "Answers_NDA_Vectors_Probability_Binomial.docx");
+  const tagsPath = join(outDir, "Tags_NDA_Vectors_Probability_Binomial.xlsx");
   writeFileSync(qpPath, paper);
   writeFileSync(akPath, key);
+  writeFileSync(tagsPath, tagsBuf);
+
+  // Report the nda-tracker subject keys the tags map to (sanity for the upload).
+  const subjects = [...new Set(buildTagRows(rows).map((r) => r.subject))];
+  console.log("Tagged-sheet subject keys:", subjects.join(", "));
 
   console.log("\nWrote:");
   console.log("  " + qpPath);
   console.log("  " + akPath);
+  console.log("  " + tagsPath);
 }
 
 main().catch((err) => {
