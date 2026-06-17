@@ -38,6 +38,40 @@ During the Differentiation notes build, PYQ `a18fbd89` (`y = sin⁻¹x² + cos�
 
 Both CET-Maths notes chapters (Indefinite Integration + Differentiation) were authored quiz-ready per Step 1b (Differentiation: `quiz:coverage` 0 formula gaps, 75 traps) but are **unharvested** — the daily-quiz campaign is NDA-only so far. Carry-forward of the broader quiz frontier (see the 2026-06-09 "Wave 3+" entry) extended to MHT-CET; lower priority than clearing the NDA Chemistry/Physics/Biology frontier first.
 
+### Add an error-type signal to wrong-answer remediation (slip vs concept-gap)
+
+The exam/quiz remediation links (2026-06-17) show on EVERY wrong/skipped question. But not every miss signals a knowledge gap — a careless slip on a topic the student otherwise aces doesn't need drilling, and pushing remediation there reads as punitive. A cheap proxy exists: if the student got the OTHER questions in the same subtopic right, the miss is likely a slip.
+
+**Why:** the whole design thesis (2026-06-17 Decisions log) is "remediate the concept gap, not the slip." Without this signal the feature over-triggers; with it, remediation concentrates where it changes outcomes. It's also the higher-leverage axis than concept-precision (which conceptSlug already gives).
+
+**How to apply:** nda-tracker already has per-student per-subtopic stats (`computeStudentChapterStats`). In `QuestionCard`/`FocusedExamResult`, soften or suppress the buttons when the student's same-subtopic accuracy (this exam, or recency-weighted) is high. Keep it a gentle de-emphasis, not a hard hide — a student may still want to revise.
+
+### Teacher per-student exam/quiz drill-in (StudentQuizHistory → QuizReview with buttons)
+
+The teacher's per-student view (`StudentView` → `StudentQuizHistory`) lists quiz attempts as summary rows (title · X/total · score) but can't expand into the per-question review, so the remediation buttons (and the misses themselves) aren't reachable teacher-side. The data is all present (`quiz_attempts.answers` per student + the quiz's questions/key); same gap on the exam side could surface a per-student review.
+
+**Why:** in a coaching setting the teacher often drives remediation ("go drill this"). Surfacing the same Learn/Practice links in the teacher's per-student view is arguably more useful than the student-only version, and it's a small, self-contained add that reuses `QuizReview`.
+
+**How to apply:** make `StudentQuizHistory` rows expandable → render `QuizReview` (read-only) for the clicked attempt, passing `subject` so the buttons resolve. Verify `getQuizAttemptsForStudent` returns `answers` (add to the select if not). Decide scope with the user first (it's a deliberate teacher-side feature, not silent scope creep).
+
+### Persistent "mistake notebook" + fixed-tracking (Phase 2 of remediation)
+
+Today remediation is per-review-screen only. The intuitive next step (the digital error-notebook reframe from the 2026-06-17 analysis) is a running per-student "Mistakes" list that the student clears by re-practising, with visible "6 mistakes → 1 left" progress for the parent. Gate building it on the one metric: do students actually click the Phase-1 links.
+
+**Why:** the notebook is the culturally-resonant version (every Indian topper keeps an error log) and gives the parent-visible before/after. But it's real new state + UI; building it before Phase-1 engagement is proven would be over-engineering. Deliberately deferred.
+
+**How to apply:** measure Phase-1 link clicks first. If real, promote per-screen remediation into a `mistakes`-style rollup (derive "fixed" implicitly = a later correct answer on the same concept/subtopic, so no manual marking). Spacing (resurface at 1/3/7 days) is a further increment, not v1.
+
+### ~~Trim MEMORY.md back under its size budget~~ — **DONE 2026-06-17**
+
+Trimmed the 13 longest index one-liners (notes-self-sufficient-template, cross-app, practice/JEE/CDS ingestion, content-audit, daily-quiz, quiz-coverage, paper-builder, public-quiz, test-data-leak, mhtcet-docx, notes-structure, etc.) — moved detail into the topic files, kept the hooks. MEMORY.md now **24,549 bytes ≈ 23.97 KiB**, under the 24.4 KiB limit with headroom; all pointers verified resolving.
+
+The memory index is ~25.4 KB against a ~24.4 KB limit (the loader warned it's truncating). New memories can't be added cleanly until it's trimmed.
+
+**Why:** an over-budget index gets partially loaded, so the tail entries silently stop surfacing in recall — the index's whole job. Several entries are long enough to shorten without losing the hook.
+
+**How to apply:** tighten the longest one-liners (the notes-self-sufficient-template, content-audit-progress, practice-ingestion, JEE entries each run 200–400 chars) — move detail into the topic file, leave a ≤150-char hook. Or merge a couple of near-adjacent reference entries. Target ~22 KB to leave headroom.
+
 ## 2026-06-15
 
 ### A school / Class-10 (non-NDA) chapter list for nda-tracker's tag validation
