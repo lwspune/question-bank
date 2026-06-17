@@ -1,5 +1,6 @@
 import type { QuestionRow } from "@/lib/questions/query";
 import type { Difficulty } from "@/lib/questions/filters";
+import type { ConceptTagRef } from "@/lib/links/getResourceTagsForQuestions";
 import { groupBySet } from "./groupBySet";
 
 /**
@@ -40,6 +41,11 @@ export type TagRow = {
   difficulty: string;
   /** Passage / shared context, "" when absent. A distinct column — NEVER inlined into `question`. */
   context: string;
+  /** Notes subtopic slug (from question_concept_tags), "" when the question is
+   *  untagged. Lets nda-tracker build slug-precise /go remediation links. */
+  subtopicSlug: string;
+  /** Notes concept slug (the question's primary concept tag), "" when untagged. */
+  conceptSlug: string;
 };
 
 /**
@@ -61,6 +67,8 @@ export const TAG_COLUMNS = [
   "Solution",
   "Difficulty",
   "Context",
+  "SubtopicSlug",
+  "ConceptSlug",
 ] as const;
 
 /**
@@ -89,7 +97,12 @@ function optionText(q: QuestionRow, label: "A" | "B" | "C" | "D"): string {
   return q.options.find((o) => o.label === label)?.text ?? "";
 }
 
-function toTagRow(q: QuestionRow, position: number, context: string): TagRow {
+function toTagRow(
+  q: QuestionRow,
+  position: number,
+  context: string,
+  tag: ConceptTagRef | undefined
+): TagRow {
   return {
     q: position,
     subject: mapSubjectToTracker(q.subject.name),
@@ -104,21 +117,34 @@ function toTagRow(q: QuestionRow, position: number, context: string): TagRow {
     solution: q.solution ?? "",
     difficulty: DIFFICULTY_LABEL[q.difficulty],
     context,
+    subtopicSlug: tag?.subtopicSlug ?? "",
+    conceptSlug: tag?.conceptSlug ?? "",
   };
 }
 
-export function buildTagRows(questions: QuestionRow[]): TagRow[] {
+/**
+ * `conceptTags` maps questionId → the question's primary concept tag. Optional:
+ * untagged questions (English, GK, practice) just get empty slug columns, and
+ * remediation falls back to name-based resolution. The map is built by the
+ * export route from `getResourceTagsForQuestions` (first concept tag per q).
+ */
+export function buildTagRows(
+  questions: QuestionRow[],
+  conceptTags?: Map<string, ConceptTagRef>
+): TagRow[] {
+  const tagFor = (id: string) => conceptTags?.get(id);
   const rows: TagRow[] = [];
   let position = 1;
   for (const group of groupBySet(questions)) {
     if (group.kind === "single") {
-      rows.push(toTagRow(group.question, position, group.question.context ?? ""));
+      const q = group.question;
+      rows.push(toTagRow(q, position, q.context ?? "", tagFor(q.id)));
       position += 1;
     } else {
       // Every sibling carries the group's lead passage — robust even if a later
       // sibling's own context is null (mirrors the docx passage banner).
       for (const q of group.questions) {
-        rows.push(toTagRow(q, position, group.passage));
+        rows.push(toTagRow(q, position, group.passage, tagFor(q.id)));
         position += 1;
       }
     }
@@ -143,6 +169,8 @@ export function tagRowsToAoa(rows: TagRow[]): (string | number)[][] {
     r.solution,
     r.difficulty,
     r.context,
+    r.subtopicSlug,
+    r.conceptSlug,
   ]);
   return [header, ...body];
 }

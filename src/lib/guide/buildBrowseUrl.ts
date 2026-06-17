@@ -3,6 +3,7 @@ import {
   EMPTY_FILTERS,
   type Difficulty,
   type Filters,
+  type QuestionKind,
 } from "@/lib/questions/filters";
 
 export type BrowseFilters = {
@@ -21,6 +22,10 @@ export type BrowseFilters = {
    *  this principle in `question_principle_tags`. Mutually exclusive in
    *  practice with subtopicIds + extraIds (set one OR the other). */
   principleSlug?: string | null;
+  /** Which corpus to browse — 'pyq' (default), 'practice', or 'all'. Used by
+   *  the cross-app /go/practice remediation redirect to land on the practice
+   *  bank; omitted from the URL when 'pyq' so existing CTAs are byte-identical. */
+  kind?: QuestionKind;
   q?: string;
   /** Internal return path (a /notes or /guide URL, optionally with a #anchor)
    *  for the "← Back to notes" pill on /browse. Captured into sessionStorage
@@ -50,6 +55,7 @@ export function buildBrowseUrl(partial: BrowseFilters): string {
     pyqYears: partial.pyqYears ?? [],
     extraIds: partial.extraIds ?? [],
     principleSlug: partial.principleSlug ?? null,
+    kind: partial.kind ?? "pyq",
     q: partial.q ?? "",
     page: 1,
   };
