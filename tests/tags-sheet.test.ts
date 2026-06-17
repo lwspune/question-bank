@@ -241,6 +241,43 @@ describe("tagRowsToAoa — sheet shape", () => {
       "because",
       "Moderate",
       "data set",
+      "", // SubtopicSlug — empty when untagged
+      "", // ConceptSlug
     ]);
+  });
+});
+
+describe("buildTagRows — concept tags", () => {
+  it("emits the question's primary concept tag when supplied", () => {
+    const tags = new Map([
+      ["a", { subtopicSlug: "vectors-dot-product", conceptSlug: "dot-product" }],
+    ]);
+    const rows = buildTagRows([q({ id: "a" }), q({ id: "b" })], tags);
+    expect(rows[0].subtopicSlug).toBe("vectors-dot-product");
+    expect(rows[0].conceptSlug).toBe("dot-product");
+    // Untagged question → empty slug cells (falls back to name resolution).
+    expect(rows[1].subtopicSlug).toBe("");
+    expect(rows[1].conceptSlug).toBe("");
+  });
+
+  it("defaults to empty slug columns when no map is given", () => {
+    const rows = buildTagRows([q({ id: "a" })]);
+    expect(rows[0].subtopicSlug).toBe("");
+    expect(rows[0].conceptSlug).toBe("");
+  });
+
+  it("carries the tag onto every sibling row by its own id", () => {
+    const tags = new Map([
+      ["b", { subtopicSlug: "st-x", conceptSlug: "c-x" }],
+    ]);
+    const rows = buildTagRows(
+      [
+        q({ id: "a", setId: "S1", context: "P" }),
+        q({ id: "b", setId: "S1" }),
+      ],
+      tags
+    );
+    expect(rows[0].conceptSlug).toBe(""); // a untagged
+    expect(rows[1].conceptSlug).toBe("c-x"); // b tagged
   });
 });

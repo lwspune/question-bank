@@ -15,6 +15,7 @@ import {
   buildAnswerKey,
 } from "@/lib/export/docxBuilder";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
+import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
 import * as XLSX from "xlsx";
 
@@ -191,7 +192,19 @@ export async function POST(request: NextRequest) {
     // it's pure structured data. Q-numbers match the paper by construction
     // (buildTagRows mirrors the docx groupBySet numbering).
     if (kind === "tags") {
-      const aoa = tagRowsToAoa(buildTagRows(questions));
+      // Attach each question's primary concept tag (first one) so the sheet
+      // carries notes slugs → nda-tracker builds slug-precise remediation links.
+      // Untagged questions (English, GK, practice) simply get empty slug cells.
+      const tagMap = await getResourceTagsForQuestions(
+        supabase,
+        questions.map((q) => q.id)
+      );
+      const conceptTags = new Map(
+        Array.from(tagMap.entries())
+          .filter(([, t]) => t.conceptTags.length > 0)
+          .map(([id, t]) => [id, t.conceptTags[0]] as const)
+      );
+      const aoa = tagRowsToAoa(buildTagRows(questions, conceptTags));
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aoa), "Tags");
       const xlsxBuf = XLSX.write(wb, {
