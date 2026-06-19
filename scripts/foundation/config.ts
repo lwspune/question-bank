@@ -55,6 +55,52 @@ export const WORKSHEETS: Record<string, Worksheet> = {
       "Corrosion, Alloys and Uses",
     ],
   },
+
+  // ── Batch 2 — text-transcribable WS1 PDFs (figure-dependent Qs excluded for
+  // the later figure pass, like Metals' Q41). ──
+  "matter-1": {
+    id: "matter-1",
+    chapterName: "Matter in Our Surroundings",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Matter_in_Our_Surroundings_WS1.pdf",
+    pdf: chem("01. Matter in our surrounding/Matter in Our Surrounding WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Matter in Our Surroundings WS 1 (LWS)",
+    subtopics: [
+      "States of Matter and Their Properties",
+      "Interconversion of States — Melting, Boiling, Sublimation",
+      "Effect of Temperature and Pressure",
+      "Evaporation, Diffusion and Kinetic Theory",
+      "Physical and Chemical Changes",
+    ],
+  },
+  "chemical-reactions-1": {
+    id: "chemical-reactions-1",
+    chapterName: "Chemical Reactions and Equations",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Chemical_Reactions_and_Equations_WS1.pdf",
+    pdf: chem("05. Chemical Reactions and Equations/Chemical Reactions and Equations WS 1.pdf"),
+    note: "NDA Foundation (Class 10) — Chemical Reactions and Equations WS 1 (LWS)",
+    subtopics: [
+      "Writing and Balancing Chemical Equations",
+      "Types of Reactions — Combination, Decomposition, Displacement",
+      "Oxidation, Reduction and Redox",
+      "Corrosion and Rancidity",
+    ],
+  },
+  "acids-bases-salts-1": {
+    id: "acids-bases-salts-1",
+    chapterName: "Acids, Bases and Salts",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Acids_Bases_and_Salts_WS1.pdf",
+    pdf: chem("06. Acids, Bases and Salts/Acids Bases and Salts WS 1.pdf"),
+    note: "NDA Foundation (Class 10) — Acids, Bases and Salts WS 1 (LWS)",
+    subtopics: [
+      "Acids, Bases and Their Properties",
+      "Indicators and the pH Scale",
+      "Neutralization and Reactions of Acids and Bases",
+      "Salts — Preparation, Properties and Uses",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
