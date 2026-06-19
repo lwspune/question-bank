@@ -1,0 +1,21 @@
+[
+  { "id": "35d1002a-e3f5-49f8-a971-fc7879f8ae9c", "new_label": "C",
+    "solution": "On \\(y=me^{mx}\\), \\(P=(0,m)\\) and the slope is \\(\\tfrac{dy}{dx}=m^2e^{mx}\\big|_{x=0}=m^2\\). The tangent makes angle \\(\\tan^{-1}m^2\\) with the x-axis, so with the y-axis it makes the complement \\(\\tan^{-1}\\tfrac{1}{m^2}=\\sin^{-1}\\tfrac{1}{\\sqrt{1+m^4}}\\). Matches option C." },
+  { "id": "36b0d3d9-1d87-47ec-8c99-32d0030d3945", "new_label": "C",
+    "solution": "Collinearity of \\((-5,0),(5p^2,10p),(5q^2,10q)\\): the determinant expands to \\(50(p-q)(pq-1)=0\\). Since \\(p\\neq q\\), \\(pq=1\\). Matches option C." },
+  { "id": "348b9519-6217-4468-8fb9-05730f2d74a5", "new_label": "D",
+    "solution": "The equation rearranges to \\(a(b-c)x^2+b(c-a)x+c(a-b)=0\\), for which \\(x=1\\) is always a root (the coefficients sum to 0). Equal roots force both roots to be 1, so the product \\(\\tfrac{c(a-b)}{a(b-c)}=1\\Rightarrow 2ac=b(a+c)\\Rightarrow \\tfrac1a+\\tfrac1c=\\tfrac2b\\). Matches option D." },
+  { "id": "05c32038-2f77-417d-8486-63ae75565501", "new_label": "B",
+    "context": "Let \\(f(x)=[x^2]\\), where \\([\\cdot]\\) is the greatest integer function.",
+    "options": [
+      {"label": "A", "text": "\\(\\sqrt{3}-\\sqrt{2}\\)"},
+      {"label": "B", "text": "\\(2(\\sqrt{3}-\\sqrt{2})\\)"},
+      {"label": "C", "text": "\\(3-\\sqrt{2}\\)"},
+      {"label": "D", "text": "\\(1\\)"}
+    ],
+    "solution": "On \\([\\sqrt2,\\sqrt3]\\), \\(x^2\\in[2,3)\\) so \\([x^2]=2\\). \\(\\int_{\\sqrt2}^{\\sqrt3}2\\,dx=2(\\sqrt3-\\sqrt2)\\). Matches option B." },
+  { "id": "d80c28cc-0531-49fe-942d-34a1afe00fec", "new_label": "A",
+    "context": "Let \\(f(x)=[x^2]\\), where \\([\\cdot]\\) is the greatest integer function.",
+    "text": "What is \\(\\int_{\\sqrt{2}}^{2} f(x)\\,dx\\) equal to?",
+    "solution": "On \\([\\sqrt2,2]\\), \\(x^2\\in[2,4)\\): \\([x^2]=2\\) on \\([\\sqrt2,\\sqrt3)\\) and \\(3\\) on \\([\\sqrt3,2)\\). \\(\\int=2(\\sqrt3-\\sqrt2)+3(2-\\sqrt3)=6-\\sqrt3-2\\sqrt2\\). Matches option A." }
+]
