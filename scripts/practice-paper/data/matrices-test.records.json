@@ -1,0 +1,285 @@
+[
+  {
+    "n": 1, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "MODERATE", "status": "new",
+    "stem": "One root of the equation \\(\\begin{vmatrix} 3x-8 & 3 & 3 \\\\ 3 & 3x-8 & 3 \\\\ 3 & 3 & 3x-8 \\end{vmatrix} = 0\\) is",
+    "optA": "\\(\\dfrac{8}{3}\\)", "optB": "\\(\\dfrac{2}{3}\\)", "optC": "\\(\\dfrac{1}{3}\\)", "optD": "\\(\\dfrac{16}{3}\\)",
+    "answer": "B",
+    "solution": "For a \\(3\\times 3\\) determinant with diagonal entries \\(d=3x-8\\) and every off-diagonal entry \\(e=3\\), the value is \\((d-e)^2(d+2e)=(3x-11)^2(3x-2)\\). Setting it to \\(0\\) gives \\(x=\\dfrac{11}{3}\\) or \\(x=\\dfrac{2}{3}\\). Among the options, \\(\\dfrac{2}{3}\\) is a root. Matches option B."
+  },
+  {
+    "n": 2, "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space", "difficulty": "MODERATE", "status": "new",
+    "stem": "The equations \\(x+2y+3z=1\\), \\(x-y+4z=0\\), \\(2x+y+7z=1\\) have",
+    "optA": "Only one solution", "optB": "Two solutions", "optC": "No solution", "optD": "Infinitely many solutions",
+    "answer": "D",
+    "solution": "The coefficient determinant is \\(0\\) because the third row equals the sum of the first two rows. The same combination holds for the constants (\\(1+0=1\\), the RHS of the third equation), so the third equation is dependent and the system is consistent with infinitely many solutions. Matches option D."
+  },
+  {
+    "n": 3, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(x,y,z\\) are different and \\(\\begin{vmatrix} x & x^2 & 1+x^3 \\\\ y & y^2 & 1+y^3 \\\\ z & z^2 & 1+z^3 \\end{vmatrix}=0\\), then \\(xyz=\\)",
+    "optA": "\\(-3\\)", "optB": "\\(-2\\)", "optC": "\\(-1\\)", "optD": "None",
+    "answer": "C",
+    "solution": "Split column 3 into \\(1\\) and \\(x^3\\): the determinant becomes \\(V+xyz\\,V=V(1+xyz)\\), where \\(V=\\begin{vmatrix}1&x&x^2\\\\1&y&y^2\\\\1&z&z^2\\end{vmatrix}\\) is the Vandermonde determinant. Since \\(x,y,z\\) are distinct, \\(V\\neq 0\\), so \\(1+xyz=0\\), giving \\(xyz=-1\\). Matches option C."
+  },
+  {
+    "n": 4, "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(a_i^2+b_i^2+c_i^2=1\\) for \\(i=1,2,3\\) and \\(a_ia_j+b_ib_j+c_ic_j=0\\) for \\(i\\neq j\\), then the value of \\(\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix}^2\\) is",
+    "optA": "\\(0\\)", "optB": "\\(\\dfrac{1}{2}\\)", "optC": "\\(1\\)", "optD": "\\(2\\)",
+    "answer": "C",
+    "solution": "The conditions say the columns of the matrix are orthonormal, so the matrix is orthogonal and its determinant is \\(\\pm 1\\). Hence the square of the determinant is \\(1\\). Matches option C."
+  },
+  {
+    "n": 5, "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space", "difficulty": "MODERATE", "status": "dup",
+    "stem": "If the system of linear equations \\(x+2ay+az=0\\), \\(x+3by+bz=0\\), \\(x+4cy+cz=0\\) has a non-zero solution, then \\(a,b,c\\) are in",
+    "optA": "A.P.", "optB": "G.P.", "optC": "H.P.", "optD": "Satisfy \\(a+2b+3c=0\\)",
+    "answer": "C",
+    "solution": "A non-zero (non-trivial) solution needs the coefficient determinant to vanish. Expanding gives \\(ab+bc-2ac=0\\); dividing by \\(abc\\) yields \\(\\dfrac1a+\\dfrac1c=\\dfrac2b\\), so \\(a,b,c\\) are in H.P. Matches option C."
+  },
+  {
+    "n": 6, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "HARD", "status": "dup",
+    "stem": "If \\(m\\) is a positive integer and \\(\\Delta_r=\\begin{vmatrix} 2r-1 & {}^{m}C_r & 1 \\\\ m^2-1 & 2^m & m+1 \\\\ \\sin^2(m^2) & \\sin^2(m) & \\sin^2(m+1) \\end{vmatrix}\\), then the value of \\(\\displaystyle\\sum_{r=0}^{m}\\Delta_r\\) is",
+    "optA": "0", "optB": "1", "optC": "2", "optD": "3",
+    "answer": "A",
+    "solution": "Only the first row depends on \\(r\\). Summing it: \\(\\sum_{r=0}^{m}(2r-1)=m^2-1\\), \\(\\sum_{r=0}^{m}{}^{m}C_r=2^m\\), \\(\\sum_{r=0}^{m}1=m+1\\). This makes the first row identical to the second row, so the determinant is \\(0\\). Matches option A."
+  },
+  {
+    "n": 7, "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space", "difficulty": "MODERATE", "status": "new",
+    "stem": "The system of equations \\(x+2y+3z=4\\), \\(2x+3y+4z=5\\), \\(3x+4y+5z=6\\) has",
+    "optA": "Infinitely many solutions", "optB": "No solution", "optC": "Unique solution", "optD": "None of these",
+    "answer": "A",
+    "solution": "The coefficient determinant is \\(0\\) (the rows are in A.P., so row 1 + row 3 = 2(row 2)). The constants satisfy the same relation (\\(4+6=2\\cdot 5\\)), so the system is consistent and dependent, giving infinitely many solutions. Matches option A."
+  },
+  {
+    "n": 8, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(A,B,C\\) are the angles of a non-right-angled triangle \\(ABC\\), then \\(\\begin{vmatrix} \\tan A & 1 & 1 \\\\ 1 & \\tan B & 1 \\\\ 1 & 1 & \\tan C \\end{vmatrix}\\) is equal to",
+    "optA": "1", "optB": "2", "optC": "\\(-2\\)", "optD": "\\(-1\\)",
+    "answer": "B",
+    "solution": "Expanding gives \\(\\tan A\\tan B\\tan C-(\\tan A+\\tan B+\\tan C)+2\\). In a triangle \\(\\tan A+\\tan B+\\tan C=\\tan A\\tan B\\tan C\\), so the expression equals \\(2\\). Matches option B."
+  },
+  {
+    "n": 9, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "MODERATE", "status": "flawed",
+    "stem": "Let \\(A=\\begin{vmatrix} 1 & \\sin\\theta & 1 \\\\ -\\sin\\theta & 1 & \\sin\\theta \\\\ -1 & -\\sin\\theta & 1 \\end{vmatrix}\\), where \\(0\\le\\theta\\le 2\\pi\\). Then the range of \\(|A|\\) is",
+    "optA": "\\([2,4]\\)", "optB": "\\((2,4)\\)", "optC": "\\([2,4)\\)", "optD": "All of these",
+    "answer": "D",
+    "solution": "Expanding gives \\(|A|=2+2\\sin^2\\theta\\). Since \\(\\sin^2\\theta\\in[0,1]\\), the range is the closed interval \\([2,4]\\). NOTE: the printed options (a), (b), (c) are all identical \\((2,4)\\) in the source paper, so the question is defective; the correct range is \\([2,4]\\) and option D is keyed by default.",
+    "reviewNote": "FLAWED in source: options a/b/c are printed identically as (2,4). True range is the closed interval [2,4]. Excluded from the practice bank; key D is a best-guess for OMR parity — verify against the LWS key."
+  },
+  {
+    "n": 10, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(a,b,c\\) are unequal, the condition that the value of the determinant \\(\\Delta=\\begin{vmatrix} a & a^2 & a^3+1 \\\\ b & b^2 & b^3+1 \\\\ c & c^2 & c^3+1 \\end{vmatrix}=0\\) is",
+    "optA": "\\((a-b)(b-c)(c-a)=0\\)", "optB": "\\(a+b+c+1=0\\)", "optC": "\\(abc=-1\\)", "optD": "None of these",
+    "answer": "C",
+    "solution": "Splitting column 3 gives \\(\\Delta=V+abc\\,V=V(1+abc)\\), where \\(V\\) is the Vandermonde determinant. Since \\(a,b,c\\) are unequal, \\(V\\neq 0\\), so \\(1+abc=0\\), i.e. \\(abc=-1\\). Matches option C."
+  },
+  {
+    "n": 11, "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the system \\(2x+5y+8z=0\\), \\(x+4y+7z=0\\), \\(6x+4y-\\lambda z=0\\) has a non-trivial solution, then \\(\\lambda\\) is equal to",
+    "optA": "12", "optB": "\\(-2\\)", "optC": "0", "optD": "5",
+    "answer": "B",
+    "solution": "A non-trivial solution needs the coefficient determinant to be \\(0\\): \\(\\begin{vmatrix}2&5&8\\\\1&4&7\\\\6&4&-\\lambda\\end{vmatrix}=-3\\lambda-6=0\\), so \\(\\lambda=-2\\). Matches option B."
+  },
+  {
+    "n": 12, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "MODERATE", "status": "dup",
+    "stem": "The value of a third-order determinant is 11. Then the value of the square of the determinant formed by its cofactors is",
+    "optA": "11", "optB": "121", "optC": "1331", "optD": "14641",
+    "answer": "D",
+    "solution": "For an \\(n\\)-th order determinant, the determinant of the cofactor matrix is \\((\\det A)^{n-1}\\). For \\(n=3\\) this is \\(11^2=121\\). Its square is \\(121^2=14641\\). Matches option D."
+  },
+  {
+    "n": 13, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "HARD", "status": "new",
+    "stem": "If \\(A=\\begin{pmatrix} 1 & 2 & -1 \\\\ -1 & 1 & 2 \\\\ 2 & -1 & 1 \\end{pmatrix}\\), then \\(\\det(\\operatorname{adj}(\\operatorname{adj}A))\\) is",
+    "optA": "\\((14)^4\\)", "optB": "\\((14)^3\\)", "optC": "\\((14)^2\\)", "optD": "\\((14)^1\\)",
+    "answer": "A",
+    "solution": "For an \\(n\\times n\\) matrix, \\(\\det(\\operatorname{adj}(\\operatorname{adj}A))=|A|^{(n-1)^2}\\). Here \\(|A|=14\\) and \\(n=3\\), so the value is \\(14^{4}\\). Matches option A."
+  },
+  {
+    "n": 14, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "EASY", "status": "dup",
+    "stem": "If \\(A\\) is a non-singular matrix, then \\(\\det(A^{-1})=\\)",
+    "optA": "\\(\\det\\!\\left(\\dfrac{1}{A^2}\\right)\\)", "optB": "\\(\\dfrac{1}{\\det(A^2)}\\)", "optC": "\\(\\det\\!\\left(\\dfrac{1}{A}\\right)\\)", "optD": "\\(\\dfrac{1}{\\det(A)}\\)",
+    "answer": "D",
+    "solution": "\\(\\det(A^{-1})=\\dfrac{1}{\\det(A)}\\). Matches option D."
+  },
+  {
+    "n": 15, "subtopic": "Matrix Operations, Polynomials, and Equations", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(A^2+A-I=0\\), then \\(A^{-1}=\\)",
+    "optA": "\\(A-I\\)", "optB": "\\(I-A\\)", "optC": "\\(I+A\\)", "optD": "None of these",
+    "answer": "C",
+    "solution": "From \\(A^2+A-I=0\\) we get \\(A(A+I)=I\\), so \\(A^{-1}=A+I=I+A\\). Matches option C."
+  },
+  {
+    "n": 16, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "EASY", "status": "dup",
+    "stem": "If \\(A\\) is a \\(3\\times 3\\) matrix and \\(\\det(3A)=k\\,\\det(A)\\), then \\(k=\\)",
+    "optA": "9", "optB": "6", "optC": "1", "optD": "27",
+    "answer": "D",
+    "solution": "\\(\\det(3A)=3^3\\det(A)=27\\det(A)\\), so \\(k=27\\). Matches option D."
+  },
+  {
+    "n": 17, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "HARD", "status": "dup",
+    "stem": "If \\(\\alpha,\\beta\\) are non-real numbers satisfying \\(x^3-1=0\\), then the value of \\(\\begin{vmatrix} \\lambda+1 & \\alpha & \\beta \\\\ \\alpha & \\lambda+\\beta & 1 \\\\ \\beta & 1 & \\lambda+\\alpha \\end{vmatrix}\\) is equal to",
+    "optA": "0", "optB": "\\(\\lambda^3\\)", "optC": "\\(\\lambda^3+1\\)", "optD": "\\(\\lambda^3-1\\)",
+    "answer": "B",
+    "solution": "\\(\\alpha,\\beta\\) are the non-real cube roots of unity, so \\(\\alpha+\\beta=-1\\), \\(\\alpha\\beta=1\\), \\(\\alpha^3=\\beta^3=1\\), and \\(\\alpha^2+\\beta^2=-1\\). Expanding the determinant and simplifying with these relations gives \\(\\lambda^3\\). Matches option B."
+  },
+  {
+    "n": 18, "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial", "difficulty": "MODERATE", "status": "dup",
+    "stem": "\\(\\begin{vmatrix} x+1 & x+2 & x+\\lambda \\\\ x+2 & x+3 & x+\\mu \\\\ x+3 & x+4 & x+\\nu \\end{vmatrix}=0\\), where \\(\\lambda,\\mu,\\nu\\) are in A.P., is",
+    "optA": "An equation whose all roots are real", "optB": "An identity in \\(x\\)", "optC": "An equation with only one real root", "optD": "None of these",
+    "answer": "B",
+    "solution": "Since \\(\\lambda,\\mu,\\nu\\) are in A.P., \\(\\lambda-2\\mu+\\nu=0\\). The row operations \\(R_1-R_2\\) and \\(R_2-R_3\\) produce two identical rows, so the determinant is \\(0\\) for every \\(x\\) — an identity in \\(x\\). Matches option B."
+  },
+  {
+    "n": 19, "subtopic": "Matrix Operations, Polynomials, and Equations", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the trace of the matrix \\(A=\\begin{pmatrix} x-1 & 0 & 2 & 5 \\\\ 3 & x^2-2 & 4 & 1 \\\\ -1 & -2 & x-3 & 1 \\\\ 2 & 0 & 4 & x^2-6 \\end{pmatrix}\\) is \\(0\\), then \\(x\\) is equal to",
+    "optA": "\\(-2,\\,3\\)", "optB": "\\(2,\\,-3\\)", "optC": "\\(-3,\\,2\\)", "optD": "\\(3,\\,-2\\)",
+    "answer": "C",
+    "solution": "Trace \\(=(x-1)+(x^2-2)+(x-3)+(x^2-6)=2x^2+2x-12=0\\), i.e. \\(x^2+x-6=0\\), so \\(x=-3\\) or \\(x=2\\). Matches option C."
+  },
+  {
+    "n": 20, "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation", "difficulty": "MODERATE", "status": "new",
+    "stem": "Let \\(A=\\begin{pmatrix} 0 & 2y & z \\\\ x & y & -z \\\\ x & -y & z \\end{pmatrix}\\) and \\(A'A=I\\). Then the value of \\(x^2+y^2+z^2\\) is",
+    "optA": "1", "optB": "2", "optC": "\\(\\dfrac{1}{2}\\)", "optD": "None of these",
+    "answer": "A",
+    "solution": "\\(A'A=I\\) makes the columns orthonormal: \\(2x^2=1\\), \\(6y^2=1\\), \\(3z^2=1\\). So \\(x^2+y^2+z^2=\\dfrac12+\\dfrac16+\\dfrac13=1\\). Matches option A."
+  },
+  {
+    "n": 21, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "MODERATE", "status": "new",
+    "stem": "The value of \\(x\\) for which the matrix \\(A=\\begin{pmatrix} 2 & 0 & 7 \\\\ 0 & 1 & 0 \\\\ 1 & -2 & 1 \\end{pmatrix}\\) is the inverse of \\(B=\\begin{pmatrix} -x & 14x & 7x \\\\ 0 & 1 & 0 \\\\ x & -4x & -2x \\end{pmatrix}\\) is",
+    "optA": "\\(\\dfrac{1}{2}\\)", "optB": "\\(\\dfrac{1}{3}\\)", "optC": "\\(\\dfrac{1}{4}\\)", "optD": "\\(\\dfrac{1}{5}\\)",
+    "answer": "D",
+    "solution": "\\(AB=I\\) requires \\((AB)_{11}=2(-x)+7x=5x=1\\), so \\(x=\\dfrac15\\). The remaining entries are consistent with this. Matches option D."
+  },
+  {
+    "n": 22, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "EASY", "status": "dup",
+    "stem": "If \\(A_r=\\begin{pmatrix} r & r-1 \\\\ r-1 & r \\end{pmatrix}\\), \\(r\\in N\\), then \\(|A_1|+|A_2|+|A_3|+\\cdots+|A_{2006}|\\) is",
+    "optA": "2006", "optB": "\\((2006)^2\\)", "optC": "\\((2006)^3\\)", "optD": "2007",
+    "answer": "B",
+    "solution": "\\(|A_r|=r^2-(r-1)^2=2r-1\\). The sum of the first \\(2006\\) odd numbers is \\(2006^2\\). Matches option B."
+  },
+  {
+    "n": 23, "subtopic": "Matrix Operations, Polynomials, and Equations", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(A=[a_{ij}]_{3\\times 3}\\), \\(B=[b_{ij}]_{2\\times 2}\\), \\(C=[c_{ij}]_{3\\times 3}\\) are three matrices with \\(|A|=3\\), \\(|B|=-2\\), \\(|C|=4\\), then \\(|ABC|\\) is",
+    "optA": "24", "optB": "\\(-24\\)", "optC": "0", "optD": "Not defined",
+    "answer": "D",
+    "solution": "The product \\(ABC\\) requires \\(A_{3\\times 3}B_{2\\times 2}\\), but a \\(3\\times 3\\) matrix cannot be multiplied by a \\(2\\times 2\\) matrix (the inner dimensions \\(3\\) and \\(2\\) differ). So \\(ABC\\) is not defined. Matches option D."
+  },
+  {
+    "n": 24, "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(A\\) and \\(B\\) are two skew-symmetric matrices of order \\(n\\), then",
+    "optA": "\\(AB\\) is a skew-symmetric matrix", "optB": "\\(AB\\) is a symmetric matrix", "optC": "\\(AB\\) is a symmetric matrix if \\(A\\) and \\(B\\) commute", "optD": "None of these",
+    "answer": "C",
+    "solution": "\\((AB)^T=B^TA^T=(-B)(-A)=BA\\). So \\(AB\\) is symmetric iff \\(AB=BA\\), i.e. iff \\(A\\) and \\(B\\) commute. Matches option C."
+  },
+  {
+    "n": 25, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "HARD", "status": "flawed",
+    "stem": "If the product of the matrix \\(B=\\begin{pmatrix} 2 & 6 & 4 \\\\ 1 & 0 & 1 \\\\ -1 & 1 & -1 \\end{pmatrix}\\) with a matrix \\(A\\) has inverse \\(C=\\begin{pmatrix} -1 & 0 & 1 \\\\ 1 & 1 & 3 \\\\ 2 & 0 & 2 \\end{pmatrix}\\), then \\(A^{-1}\\) equals",
+    "optA": "\\(\\begin{pmatrix} -3 & -5 & 5 \\\\ 0 & 9 & 14 \\\\ 2 & 2 & 6 \\end{pmatrix}\\)", "optB": "\\(\\begin{pmatrix} -3 & 5 & 5 \\\\ 0 & 0 & 9 \\\\ 2 & 14 & 16 \\end{pmatrix}\\)", "optC": "\\(\\begin{pmatrix} -3 & -5 & -5 \\\\ 0 & 0 & 2 \\\\ 2 & 14 & 6 \\end{pmatrix}\\)", "optD": "\\(\\begin{pmatrix} -3 & -3 & -5 \\\\ 0 & 9 & 2 \\\\ 2 & 14 & 6 \\end{pmatrix}\\)",
+    "answer": "D",
+    "solution": "From \\((BA)^{-1}=C\\) we get \\(A^{-1}B^{-1}=C\\), so \\(A^{-1}=CB=\\begin{pmatrix} -3 & -5 & -5 \\\\ 0 & 9 & 2 \\\\ 2 & 14 & 6 \\end{pmatrix}\\). NOTE: this true value matches NO option exactly — option (d) agrees in rows 2 and 3 but prints \\(-3\\) instead of \\(-5\\) at position (1,2); option (c) has the correct first row but a wrong (2,2) entry. The printed options carry an error; option D is the closest (two of three rows correct).",
+    "reviewNote": "FLAWED in source: true A^{-1}=CB=[-3,-5,-5; 0,9,2; 2,14,6] matches no option exactly (c and d each have one wrong entry). Excluded from the practice bank; key D is a best-guess for OMR parity — verify against the LWS key."
+  },
+  {
+    "n": 26, "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation", "difficulty": "EASY", "status": "new",
+    "stem": "The matrix \\(\\begin{pmatrix} 1 & \\omega & \\omega^2 \\\\ \\omega & \\omega^2 & 1 \\\\ \\omega^2 & 1 & \\omega \\end{pmatrix}\\), where \\(\\omega\\) is a cube root of unity, is a",
+    "optA": "Skew symmetric matrix", "optB": "Symmetric matrix", "optC": "Null matrix", "optD": "None of these",
+    "answer": "B",
+    "solution": "The matrix equals its own transpose (entry \\((i,j)\\) equals entry \\((j,i)\\) for every pair), so it is a symmetric matrix. Matches option B."
+  },
+  {
+    "n": 27, "subtopic": "Matrix Operations, Polynomials, and Equations", "difficulty": "MODERATE", "status": "new",
+    "stem": "Let \\(A=\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\\) and \\(B=\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\) be two matrices such that \\(AB=BA\\) and \\(c\\neq 0\\). Then the value of \\(\\dfrac{a-d}{3b-c}\\) is",
+    "optA": "0", "optB": "2", "optC": "\\(-2\\)", "optD": "\\(-1\\)",
+    "answer": "D",
+    "solution": "\\(AB=BA\\) gives \\(3b=2c\\) and \\(c=d-a\\). Then \\(3b-c=2c-c=c\\) and \\(a-d=-c\\), so \\(\\dfrac{a-d}{3b-c}=\\dfrac{-c}{c}=-1\\). Matches option D."
+  },
+  {
+    "n": 28, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "HARD", "status": "new",
+    "stem": "Consider matrices \\(A,B,C,D\\) of orders \\(2\\times 3,\\ 3\\times 4,\\ 4\\times 4,\\ 4\\times 2\\) respectively. Let \\(x=(\\alpha\\,A\\,B\\,\\gamma\\,C^2 D)^3\\), where \\(\\alpha,\\gamma\\) are scalars. If \\(|x|=k\\,|ABC^2D|^3\\), then \\(k\\) is",
+    "optA": "\\(\\alpha\\gamma\\)", "optB": "\\(\\alpha^2\\gamma^2\\)", "optC": "\\(\\alpha^4\\gamma^4\\)", "optD": "\\(\\alpha^6\\gamma^6\\)",
+    "answer": "D",
+    "solution": "\\(ABC^2D\\) is a \\(2\\times 2\\) matrix and \\(x=(\\alpha\\gamma)^3(ABC^2D)^3\\). For a \\(2\\times 2\\) matrix, \\(|sM|=s^2|M|\\), so \\(|x|=((\\alpha\\gamma)^3)^2|ABC^2D|^3=\\alpha^6\\gamma^6\\,|ABC^2D|^3\\). Hence \\(k=\\alpha^6\\gamma^6\\). Matches option D."
+  },
+  {
+    "n": 29, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "HARD", "status": "new",
+    "stem": "If \\(A=\\begin{pmatrix} -1 & -2 & -2 \\\\ 2 & 1 & -2 \\\\ 2 & -2 & 1 \\end{pmatrix}\\), then \\(\\operatorname{adj}A=\\)",
+    "optA": "\\(A\\)", "optB": "\\(A^T\\)", "optC": "\\(3A\\)", "optD": "\\(3A^T\\)",
+    "answer": "D",
+    "solution": "Here \\(AA^T=9I\\), so \\(A^{-1}=\\dfrac{A^T}{9}\\), and \\(|A|=27\\). Then \\(\\operatorname{adj}A=|A|A^{-1}=27\\cdot\\dfrac{A^T}{9}=3A^T\\). Matches option D."
+  },
+  {
+    "n": 30, "subtopic": "Matrix Operations, Polynomials, and Equations", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(A\\) satisfies the equation \\(x^3-5x^2+4x+k=0\\), then \\(A^{-1}\\) exists if",
+    "optA": "\\(k\\neq 1\\)", "optB": "\\(k\\neq 3\\)", "optC": "\\(k\\neq -1\\)", "optD": "None",
+    "answer": "D",
+    "solution": "From \\(A^3-5A^2+4A+kI=0\\) we get \\(A(A^2-5A+4I)=-kI\\); \\(A^{-1}\\) exists iff \\(k\\neq 0\\). Since none of the listed conditions is \\(k\\neq 0\\), the answer is 'None'. Matches option D."
+  },
+  {
+    "n": 31, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "EASY", "status": "dup",
+    "stem": "If \\(B\\) is a non-singular matrix and \\(A\\) is a square matrix of the same size, then \\(\\det(B^{-1}AB)=\\)",
+    "optA": "\\(|A^{-1}|\\)", "optB": "\\(|B^{-1}|\\)", "optC": "\\(|B|\\)", "optD": "\\(|A|\\)",
+    "answer": "D",
+    "solution": "\\(\\det(B^{-1}AB)=\\det(B^{-1})\\det(A)\\det(B)=\\det(A)=|A|\\). Matches option D."
+  },
+  {
+    "n": 32, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "MODERATE", "status": "new",
+    "stem": "Let \\(A=\\begin{pmatrix} x & 3 & 2 \\\\ 1 & y & 4 \\\\ 2 & 2 & z \\end{pmatrix}\\). If \\(xyz=60\\) and \\(8x+4y+3z=20\\), then \\(A(\\operatorname{adj}A)\\) is equal to",
+    "optA": "\\(\\begin{pmatrix} 64 & 0 & 0 \\\\ 0 & 64 & 0 \\\\ 0 & 0 & 64 \\end{pmatrix}\\)", "optB": "\\(\\begin{pmatrix} 88 & 0 & 0 \\\\ 0 & 88 & 0 \\\\ 0 & 0 & 88 \\end{pmatrix}\\)", "optC": "\\(\\begin{pmatrix} 68 & 0 & 0 \\\\ 0 & 68 & 0 \\\\ 0 & 0 & 68 \\end{pmatrix}\\)", "optD": "\\(\\begin{pmatrix} 34 & 0 & 0 \\\\ 0 & 34 & 0 \\\\ 0 & 0 & 34 \\end{pmatrix}\\)",
+    "answer": "C",
+    "solution": "\\(A(\\operatorname{adj}A)=|A|I\\). Expanding, \\(|A|=xyz-8x-4y-3z+28=60-(8x+4y+3z)+28=60-20+28=68\\). So \\(A(\\operatorname{adj}A)=68I\\). Matches option C."
+  },
+  {
+    "n": 33, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "EASY", "status": "dup",
+    "stem": "If \\(A\\) is a non-singular matrix of order \\(3\\times 3\\), then \\(\\operatorname{adj}(\\operatorname{adj}A)\\) is equal to",
+    "optA": "\\(|A|\\,A\\)", "optB": "\\(|A|^2 A\\)", "optC": "\\(|A|^{-1}A\\)", "optD": "None of these",
+    "answer": "A",
+    "solution": "For order \\(n\\), \\(\\operatorname{adj}(\\operatorname{adj}A)=|A|^{n-2}A\\). For \\(n=3\\) this is \\(|A|A\\). Matches option A."
+  },
+  {
+    "n": 34, "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(\\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \\\\ 2 & 3 & 1 \\end{pmatrix}\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}=\\begin{pmatrix} 4 & -2 \\\\ 0 & -6 \\\\ -1 & 2 \\end{pmatrix}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}\\), then \\((x,y,z)\\) is equal to",
+    "optA": "\\((-4,2,2)\\)", "optB": "\\((4,2,2)\\)", "optC": "\\((-4,-2,-2)\\)", "optD": "\\((4,-2,-2)\\)",
+    "answer": "A",
+    "solution": "The right side evaluates to \\((6,-6,0)^T\\). Solving \\(x+2y+3z=6\\), \\(3x+y+2z=-6\\), \\(2x+3y+z=0\\) gives \\(x=-4,\\ y=2,\\ z=2\\). Matches option A."
+  },
+  {
+    "n": 35, "subtopic": "Determinant Properties, Operations, and Sums", "difficulty": "EASY", "status": "dup",
+    "stem": "Matrix \\(M_r\\) is defined as \\(M_r=\\begin{pmatrix} r & r-1 \\\\ r-1 & r \\end{pmatrix}\\), \\(r\\in N\\). Then \\(\\det(M_1)+\\det(M_2)+\\cdots+\\det(M_{2009})=\\)",
+    "optA": "2009", "optB": "\\((2009)^2\\)", "optC": "\\((2009)^3\\)", "optD": "None of these",
+    "answer": "B",
+    "solution": "\\(\\det(M_r)=r^2-(r-1)^2=2r-1\\). The sum of the first \\(2009\\) odd numbers is \\(2009^2\\). Matches option B."
+  },
+  {
+    "n": 36, "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation", "difficulty": "EASY", "status": "new",
+    "stem": "If \\(A=\\begin{pmatrix} 0 & -1 & 2 \\\\ 1 & 0 & 3 \\\\ -2 & -3 & 0 \\end{pmatrix}\\), then \\(A+2A^T\\) equals",
+    "optA": "\\(A^T\\)", "optB": "\\(2A\\)", "optC": "\\(A\\)", "optD": "\\(-A^T\\)",
+    "answer": "A",
+    "solution": "\\(A\\) is skew-symmetric, so \\(A^T=-A\\). Then \\(A+2A^T=A-2A=-A=A^T\\). Matches option A.",
+    "reviewNote": "Option (b) is printed as a garbled '2^2' in the source; reconstructed as 2A. The key (A) is unaffected. Verify option (b) text against the LWS paper."
+  },
+  {
+    "n": 37, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "HARD", "status": "new",
+    "stem": "The inverse of the matrix \\(\\begin{pmatrix} 3 & -2 & -1 \\\\ -4 & 1 & -1 \\\\ 2 & 0 & 1 \\end{pmatrix}\\) is",
+    "optA": "\\(\\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 3 & 7 \\\\ -2 & -4 & -5 \\end{pmatrix}\\)", "optB": "\\(\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 5 & 7 \\\\ -2 & -4 & -5 \\end{pmatrix}\\)", "optC": "\\(\\begin{pmatrix} 1 & -3 & 5 \\\\ 7 & 4 & 6 \\\\ 4 & 2 & 7 \\end{pmatrix}\\)", "optD": "\\(\\begin{pmatrix} 1 & 2 & -4 \\\\ 8 & -4 & -5 \\\\ 3 & 5 & 2 \\end{pmatrix}\\)",
+    "answer": "B",
+    "solution": "\\(|A|=1\\). The adjoint (transpose of the cofactor matrix) is \\(\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 5 & 7 \\\\ -2 & -4 & -5 \\end{pmatrix}\\), which is the inverse since \\(|A|=1\\). Matches option B."
+  },
+  {
+    "n": 38, "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space", "difficulty": "HARD", "status": "new",
+    "stem": "If \\(t\\) is a real number and \\(k=\\dfrac{t^2-t+1}{t^2+t+1}\\), then the system \\(3x-y+4z=3\\), \\(x+2y-3z=-2\\), \\(6x+5y+kz=-3\\), for any allowable value of \\(k\\), has",
+    "optA": "A unique solution", "optB": "Infinite solutions", "optC": "No solution", "optD": "Two solutions",
+    "answer": "A",
+    "solution": "For real \\(t\\), \\(k\\) lies in \\(\\left[\\dfrac13,3\\right]\\). The coefficient determinant equals \\(7(k+5)\\), which is non-zero for every \\(k\\) in this range, so the system has a unique solution. Matches option A."
+  },
+  {
+    "n": 39, "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation", "difficulty": "HARD", "status": "new",
+    "stem": "If \\(A=\\begin{pmatrix} a & b & c \\\\ b & c & a \\\\ c & a & b \\end{pmatrix}\\), \\(abc=1\\) and \\(A^TA=I\\), then the value of \\(a^3+b^3+c^3\\) (where \\(a,b,c>0\\)) is",
+    "optA": "2", "optB": "0", "optC": "1", "optD": "4",
+    "answer": "D",
+    "solution": "\\(A^TA=I\\) gives \\(a^2+b^2+c^2=1\\) and \\(ab+bc+ca=0\\), so \\((a+b+c)^2=1\\) and \\(a+b+c=1\\). Using \\(a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=1\\), we get \\(a^3+b^3+c^3=1+3abc=1+3=4\\). Matches option D."
+  },
+  {
+    "n": 40, "subtopic": "Cofactors, Adjoint, and Inverse", "difficulty": "HARD", "status": "dup",
+    "stem": "If \\(A\\) and \\(B\\) are non-singular square matrices of the same order \\(3\\times 3\\), then which one of the following is correct?",
+    "optA": "\\(|\\operatorname{adj}(AB)|=|A||B|\\)", "optB": "\\(|(\\operatorname{adj}AB)^{-1}|=|\\operatorname{adj}(AB)|\\)", "optC": "\\(|\\operatorname{adj}((AB)^{-1})|=|(\\operatorname{adj}(AB))^{-1}|\\)", "optD": "\\(|\\operatorname{adj}(AB)^T|=|AB|^{-2}\\)",
+    "answer": "C",
+    "solution": "For \\(3\\times 3\\), \\(|\\operatorname{adj}M|=|M|^2\\). With \\(m=|AB|\\): \\(|\\operatorname{adj}((AB)^{-1})|=|(AB)^{-1}|^2=m^{-2}\\) and \\(|(\\operatorname{adj}(AB))^{-1}|=|\\operatorname{adj}(AB)|^{-1}=m^{-2}\\). These are equal, so option C is correct."
+  }
+]
