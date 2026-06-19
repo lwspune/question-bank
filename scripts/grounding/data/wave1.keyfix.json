@@ -1,0 +1,22 @@
+[
+  {
+    "id": "041f166d-bf0b-4070-87e8-40d5a59d5e83",
+    "new_label": "C",
+    "solution": "Rewrite using \\(1-\\log_{10}5=\\log_{10}2\\): the equation becomes \\(\\log_{10}\\big(2^x(1+2^x)/6\\big)=0\\), so \\(2^x(1+2^x)=6\\). Let \\(y=2^x\\): \\(y^2+y-6=0\\Rightarrow(y-2)(y+3)=0\\Rightarrow y=2\\) (rejecting \\(y=-3\\)). Then \\(2^x=2\\Rightarrow x=1\\). Matches option C: 1. Note that \\(y=2\\) is the value of \\(2^x\\), not of \\(x\\)."
+  },
+  {
+    "id": "05630201-75ea-494a-8f24-f693334484f5",
+    "new_label": "C",
+    "solution": "Expanding both determinants gives \\(\\Delta_1=\\Delta_2=-(p^2+q^2+r^2-pq-qr-rp)=-\\tfrac12\\big[(p-q)^2+(q-r)^2+(r-p)^2\\big]\\). Hence \\(\\Delta_1+\\Delta_2=2\\Delta_1=-\\big[(p-q)^2+(q-r)^2+(r-p)^2\\big]\\), which is negative for distinct \\(p,q,r\\). Matches option C: always negative."
+  },
+  {
+    "id": "079f5a5a-de5c-46fd-b2c5-7dfbba0a007d",
+    "new_label": "C",
+    "solution": "AP gives \\(2b=a+c\\); GP gives \\(c^2=bd\\); HP gives \\(\\tfrac{2}{d}=\\tfrac1c+\\tfrac1e\\). Eliminating \\(b\\) and \\(d\\) yields \\(c^2=ae\\), so \\(a,c,e\\) are in GP, hence (A) holds. The reciprocals of any GP form a GP, so \\(\\tfrac1a,\\tfrac1c,\\tfrac1e\\) are in GP; equivalently \\((1/c)^2=1/(ae)=1/c^2\\). Thus (B) holds as well. Matches option C: Both A and B."
+  },
+  {
+    "id": "0d4c17cd-33cb-49cb-9e8e-16136cd169e4",
+    "new_label": "A",
+    "solution": "Statement 1: \\((A\\cap B)\\cup(A\\cap\\bar B)\\cup(\\bar A\\cap B)=A\\cup(\\bar A\\cap B)=A\\cup B\\), which is true. Statement 2: \\(A\\cup(\\bar A\\cap\\bar B)=(A\\cup\\bar A)\\cap(A\\cup\\bar B)=A\\cup\\bar B\\), which is not equal to \\(A\\cup B\\) in general, so it is false. Only statement 1 is correct. Matches option A: 1 only."
+  }
+]
