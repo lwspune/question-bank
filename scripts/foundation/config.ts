@@ -101,6 +101,52 @@ export const WORKSHEETS: Record<string, Worksheet> = {
       "Salts — Preparation, Properties and Uses",
     ],
   },
+
+  // ── Batch 3 — remaining WS1 PDFs (figure-heavy; figure-attach pipeline handles them). ──
+  "is-matter-pure-1": {
+    id: "is-matter-pure-1",
+    chapterName: "Is Matter Around Us Pure",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Is_Matter_Around_Us_Pure_WS1.pdf",
+    pdf: chem("02. Is Matter around us Pure/Is Matter around Us Pure WS.pdf"),
+    note: "NDA Foundation (Class 9) — Is Matter Around Us Pure WS (LWS)",
+    subtopics: [
+      "Mixtures, Solutions and Concentration",
+      "Suspensions and Colloids",
+      "Separation Techniques",
+      "Elements, Compounds and Mixtures",
+      "Physical and Chemical Changes",
+    ],
+  },
+  "atoms-molecules-1": {
+    id: "atoms-molecules-1",
+    chapterName: "Atoms and Molecules",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Atoms_and_Molecules_WS1.pdf",
+    pdf: chem("03. Atoms and Molecules/Atoms and Molecules WS.pdf"),
+    note: "NDA Foundation (Class 9) — Atoms and Molecules WS (LWS)",
+    subtopics: [
+      "Laws of Chemical Combination",
+      "Atoms, Molecules and Ions",
+      "Chemical Formulae and Valency",
+      "Mole Concept and Molar Mass",
+    ],
+  },
+  "structure-atom-1": {
+    id: "structure-atom-1",
+    chapterName: "Structure of the Atom",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Structure_of_the_Atom_WS1.pdf",
+    pdf: chem("04. Strucuture of Atom/Structure of the Atoms WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Structure of the Atom WS 1 (LWS)",
+    subtopics: [
+      "Subatomic Particles — Electron, Proton, Neutron",
+      "Atomic Models — Thomson, Rutherford, Bohr",
+      "Atomic Number, Mass Number and Electronic Configuration",
+      "Isotopes, Isobars and Isotones",
+      "Valency",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
