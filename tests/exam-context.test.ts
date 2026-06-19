@@ -3,12 +3,26 @@ import {
   EXAM_REGISTRY,
   getExamBySlug,
   isExamSlug,
+  isPracticeOnlyExam,
   resolveBankHref,
   resolveGuidesHref,
   resolveNotesHref,
   getActiveTab,
   DEFAULT_EXAM_SLUG,
 } from "@/lib/exam/examContext";
+
+describe("isPracticeOnlyExam", () => {
+  it("is true for the Foundation Course (worksheet-only corpus)", () => {
+    expect(isPracticeOnlyExam("Foundation Course")).toBe(true);
+  });
+  it("is false for PYQ exams and unknown/empty names", () => {
+    expect(isPracticeOnlyExam("NDA")).toBe(false);
+    expect(isPracticeOnlyExam("MHT-CET")).toBe(false);
+    expect(isPracticeOnlyExam("Nonexistent")).toBe(false);
+    expect(isPracticeOnlyExam(null)).toBe(false);
+    expect(isPracticeOnlyExam(undefined)).toBe(false);
+  });
+});
 
 describe("EXAM_REGISTRY", () => {
   it("includes NDA, MHT-CET and JEE Mains as known exams", () => {

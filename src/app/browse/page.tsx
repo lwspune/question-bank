@@ -3,6 +3,7 @@ import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { isPracticeOnlyExam } from "@/lib/exam/examContext";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -51,8 +52,21 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // Public page: anon users are welcome. RLS scopes the question list.
   const member = await getSessionMember();
 
-  const filters = parseFilters(paramsFromSearch(searchParams));
+  const rawParams = paramsFromSearch(searchParams);
+  let filters = parseFilters(rawParams);
   const supabase = createSupabaseServerClient();
+
+  // Practice-only exams (e.g. Foundation Course — no PYQ corpus) default the
+  // kind filter to "practice" so the default view isn't an empty PYQ list.
+  // Only when the user hasn't explicitly chosen a kind in the URL.
+  if (filters.examId && !rawParams.has("kind")) {
+    const { data: ex } = await supabase
+      .from("exams")
+      .select("name")
+      .eq("id", filters.examId)
+      .maybeSingle();
+    if (isPracticeOnlyExam(ex?.name)) filters = { ...filters, kind: "practice" };
+  }
 
   // Facet RPC args — context-aware: chapter facets reflect all OTHER active
   // filters (so the chapter list shrinks as the user narrows difficulty/year),
