@@ -16,6 +16,32 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-19
+
+### Complete the NDA Maths grounding + blind-rederivation key-audit (365/2,160 done)
+
+The RAG grounding pipeline ([[rag-grounding-layer]], `scripts/grounding/`) is built and running. 365 of 2,160 NDA Maths PYQs are grounded; the blind re-derivation is doubling as a ~90%-precise wrong-key audit (18 of 21 disputes were real bank errors; 17 fixed). The remaining ~1,800 rows are pending.
+
+**Why:** the audit is the high-value part — it's finding an ~8% real error rate in "audit-closed" NDA Maths that the prior probe-based sweeps missed. Every wrong key left in the bank is a question the tutor (and students) get wrong. Cost: ~13M agent tokens + per-wave source verification.
+
+**How to apply:** run the deliberate batched loop per `scripts/grounding/README.md` — export 4×25 → 4 blind agents → `commit` (agreeing auto, disputes hold) → pull held rows' `pyq_year/month/question_number`, group by paper, source-verify with render+rederive agents over `C:\tmp\PYQPs\NDA\NDA_Maths_PYQPs\` → `apply-fix` the confirmed → repeat. Next up: source-verify wave 4's 5 disputes (`12d160c4`, `254cf562`, `278343c8`, `28fb8efa`, `2dfbd7ce`), then waves 5+.
+
+### Build the RETRIEVAL half (embeddings) + the cross-app grounding API
+
+The augmentation half (solution_json) is in progress; the retrieval half is untouched. Needs: (a) full `plain_text` backfill over all 12,603 pyq (deterministic, `backfill-plain-text.ts --apply`); (b) an embedding model decision — Supabase `gte-small` edge fn vs local `bge-small` (both 384-dim; Voyage a later eval-gated upgrade) + a `generate-embeddings.ts`; (c) the Bearer-secret grounding/retrieval API on PYQ Vault (mirror `src/app/api/sync/mock/route.ts`) that nda-tracker calls. `match_chunks` is already built for whichever model.
+
+**Why:** retrieval unlocks free-form "explain any concept" tutoring (vs v1's "explain THIS in-bank PYQ", which needs only grounding). It's also reusable infra for every future AI product.
+
+**How to apply:** decide the keyless model first (gte-small edge fn is zero-local-setup), backfill plain_text, generate embeddings in idempotent batches of 100, then build the API endpoint. Defer until the NDA Maths grounding/audit is far enough along to be worth serving.
+
+### Resolve the `05c32038` / Q100 doubly-corrupt set (2025 NDA1 Q99+Q100)
+
+Deferred during the wave-1 source pass. The set shares an `f(x)=[√x]` context that the source shows is actually `[x²]`, AND Q100's stem `∫√2 to √2` (zero-width) is also mis-extracted. Both questions + the shared context need a single focused source read of `Maths_2025_NDA1.pdf`.
+
+**Why:** it's a known-corrupt set left ungrounded; both questions are currently unusable.
+
+**How to apply:** render the relevant page, read the real shared context + both stems + both option sets, then `apply-fix` both (context + stems + options + keys). Q99's answer with `[x²]` is `2(√3−√2)` (option B); Q100 needs its real bounds first.
+
 ## 2026-06-17
 
 ### Continue the MHT-CET Maths /notes campaign (25 chapters un-noted; workflow now captured)
