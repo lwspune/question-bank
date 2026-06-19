@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1ccbbbe7-1e09-4cf7-a8e4-50d125aa7885",
+    "number": 38,
+    "printed_matches_bank": true,
+    "stem_fix": null,
+    "options_fix": null,
+    "correct_label": "C",
+    "verdict": "flip_key",
+    "reason": "sqrt(1+sinA) = |sin(A/2)+cos(A/2)|; the equation holds exactly when sin(A/2)+cos(A/2) <= 0, i.e., sqrt(2)*sin(A/2+pi/4) <= 0, which gives A in [3pi/2, 7pi/2]. Bank key A (3pi/2 < A < 5pi/2) is a strict subset; A=3pi satisfies the equation but lies outside option A, confirming option C (3pi/2 < A < 7pi/2) is the full correct range."
+  },
+  {
+    "id": "18f89674-848b-4bae-903d-a5a7a870544f",
+    "number": 19,
+    "printed_matches_bank": true,
+    "stem_fix": null,
+    "options_fix": null,
+    "correct_label": "B",
+    "verdict": "flip_key",
+    "reason": "When a+b+c=0, the eigenvalues of the matrix M (with x=0 factored out) satisfy cos^2(theta)=1+cos(alpha) pattern; numerically for a=1,b=-1,c=0 the non-zero eigenvalues are +/-sqrt(3) = +/-sqrt(3*(a^2+b^2+c^2)/2), matching option B. Option C gives sqrt(2*2/3)=sqrt(4/3)~1.155 which does not match the eigenvalues; the bank key C is wrong."
+  },
+  {
+    "id": "182fcd34-ca1d-4fd3-b355-3bbab16f7bc8",
+    "number": 37,
+    "printed_matches_bank": true,
+    "stem_fix": null,
+    "options_fix": null,
+    "correct_label": "A",
+    "verdict": "flip_key",
+    "reason": "AP condition 2*sec(theta) = sec(theta-alpha)+sec(theta+alpha) simplifies (using sum-to-product) to cos^2(theta)*(1-cos(alpha)) = (1-cos(alpha))*(1+cos(alpha)); dividing by (1-cos(alpha)) [valid since cos(alpha)!=1] gives cos^2(theta) = 1+cos(alpha), so sin^2(theta) = -cos(alpha), hence sin^2(theta)+cos(alpha) = 0. Bank key B (value 1) is wrong; correct answer is A (value 0)."
+  }
+]

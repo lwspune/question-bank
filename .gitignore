@@ -25,3 +25,9 @@ prisma/*.db-journal
 
 # Word/Excel temp lock files
 ~$*
+
+# Grounding pipeline: regenerable batch I/O + runtime held-dispute log
+# (the audit records — *.fixes.json, *.keyfix.json, verify*.json — ARE tracked)
+scripts/grounding/data/*.input.json
+scripts/grounding/data/*.solution.json
+scripts/logs/

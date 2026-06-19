@@ -1,0 +1,22 @@
+[
+  { "id": "254cf562-a34d-4ded-b57d-234a100afbc7", "new_label": "B",
+    "solution": "TIGER has vowels I, E and consonants T, G, R. The even positions are 2 and 4; requiring the vowels to avoid them puts both vowels in the odd positions \\(\\{1,3,5\\}\\): \\({}^3P_2=6\\) ways. The 3 consonants fill the remaining 3 positions: \\(3!=6\\). Total \\(=6\\times6=36\\). Matches option B." },
+  { "id": "12d160c4-21c1-4b90-a2c7-f4a2c3f8a1bb", "new_label": "D",
+    "solution": "X is \\(3\\times3\\), Y is \\(2\\times3\\), Z is \\(3\\times2\\). I: \\(ZY\\) is \\(3\\times3\\), so \\((ZY)X\\) is \\(3\\times3\\) — defined, order 3 (true). II: \\(XZ\\) is \\(3\\times2\\), so \\(Y(XZ)\\) is \\(2\\times2\\) — defined, order 2 (true). III: \\(YZ\\) is \\(2\\times2\\), so \\(X(YZ)\\) needs X's 3 columns to equal YZ's 2 rows — undefined (true). All three statements hold. Matches option D." },
+  { "id": "278343c8-3bcb-49cf-833f-2e94ab729cd0", "new_label": "B",
+    "solution": "The circle \\(x^2+y^2+gx+fy+\\tfrac{c}{4}=0\\) has centre \\((-\\tfrac{g}{2},-\\tfrac{f}{2})\\); touching the y-axis means it meets \\(x=0\\) at \\((0,-\\tfrac{f}{2})\\). The normal at that point is the diameter through the centre, meeting the circle again at the antipodal point \\(2\\cdot(-\\tfrac{g}{2},-\\tfrac{f}{2})-(0,-\\tfrac{f}{2})=(-g,-\\tfrac{f}{2})\\). Matches option B." },
+  { "id": "28fb8efa-d6ca-47c0-bfde-420eae17fba0", "new_label": "D",
+    "solution": "Statement 1: for \\(x\\cos\\theta+y\\sin\\theta=p\\) the distance from \\((\\alpha,\\beta)\\) is \\(|\\alpha\\cos\\theta+\\beta\\sin\\theta-p|\\) (with \\(-p\\)); the printed \\(+p\\) is wrong, so statement 1 is false. Statement 2: the line \\(\\tfrac{x}{a}+\\tfrac{y}{b}=1\\) is \\(bx+ay-ab=0\\), whose distance is \\(\\left|\\tfrac{b\\alpha+a\\beta-ab}{\\sqrt{a^2+b^2}}\\right|\\); the printed \\(a\\alpha+b\\beta\\) has the coefficients swapped, so statement 2 is false. Neither statement is correct. Matches option D." },
+  { "id": "b5b66d6e-7e16-4b50-bfa7-04f1ce0770ba", "new_label": "B",
+    "context": "Let \\(f(x)=\\dfrac{a^{x-1}+b^{x-1}}{2}\\) and \\(g(x)=x-1\\).",
+    "solution": "With \\(t=x-1\\to0\\), \\(f(x)-1=\\dfrac{a^t+b^t-2}{2}\\approx\\dfrac{t\\ln(ab)}{2}\\). So \\(\\lim_{x\\to1}\\dfrac{f(x)-1}{g(x)}=\\dfrac{\\ln(ab)}{2}\\). Matches option B." },
+  { "id": "2dfbd7ce-ce98-403a-b988-561443643e1a", "new_label": "A",
+    "context": "Let \\(f(x)=\\dfrac{a^{x-1}+b^{x-1}}{2}\\) and \\(g(x)=x-1\\).",
+    "options": [
+      {"label": "A", "text": "\\(\\sqrt{ab}\\)"},
+      {"label": "B", "text": "\\(ab\\)"},
+      {"label": "C", "text": "\\(2ab\\)"},
+      {"label": "D", "text": "\\(\\dfrac{\\sqrt{ab}}{2}\\)"}
+    ],
+    "solution": "With \\(t=x-1\\to0\\), \\(f(x)\\to1\\) (a \\(1^\\infty\\) form). \\(\\ln L=\\lim\\dfrac{\\ln f(x)}{g(x)}=\\lim\\dfrac{(a^t+b^t-2)/2}{t}=\\dfrac{\\ln(ab)}{2}\\), so \\(L=e^{\\ln(ab)/2}=\\sqrt{ab}\\). Matches option A." }
+]
