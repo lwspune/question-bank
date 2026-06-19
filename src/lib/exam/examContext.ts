@@ -24,6 +24,12 @@ export type ExamEntry = {
   guidesPath: string | null;
   /** Per-exam notes hub `/notes/<slug>`; null falls back to the `/notes` index. */
   notesPath: string | null;
+  /**
+   * Exam has NO past-year corpus — its bank is entirely `question_kind='practice'`
+   * (e.g. the Foundation Course worksheets). `/browse` defaults the kind filter to
+   * "practice" for it, so the default view isn't an empty PYQ list.
+   */
+  practiceOnly?: boolean;
 };
 
 export const EXAM_REGISTRY: readonly ExamEntry[] = [
@@ -61,6 +67,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "Foundation Course", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/foundation-course", // exam hub: "coming soon" until notes ship
+    practiceOnly: true, // worksheet-only corpus → /browse defaults to the Practice view
   },
 ] as const;
 
@@ -75,6 +82,13 @@ export function isExamSlug(value: unknown): value is ExamSlug {
 export function getExamBySlug(slug: string | null | undefined): ExamEntry | null {
   if (!slug) return null;
   return EXAM_REGISTRY.find((e) => e.slug === slug) ?? null;
+}
+
+/** True when an exam (by its DB name) has a practice-only corpus and should
+ *  default the `/browse` kind filter to "practice" rather than "pyq". */
+export function isPracticeOnlyExam(examName: string | null | undefined): boolean {
+  if (!examName) return false;
+  return EXAM_REGISTRY.some((e) => e.examName === examName && e.practiceOnly === true);
 }
 
 /**
