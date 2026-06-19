@@ -102,7 +102,7 @@ export const PAPERS: Record<string, PaperSpec> = {
     pyqNote: "NDA Maths practice — LWS Vector Test (B 13-6-26)",
     examName: "NDA",
     section: { key: "vectors", label: "Vectors" },
-    bankAdd: false,
+    bankAdd: true,
   },
 };
 
