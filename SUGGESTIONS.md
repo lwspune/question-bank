@@ -47,7 +47,7 @@ All **71** flagged answers (the real count, > the ~50 estimate) re-verified via 
 
 All Foundation Chemistry answers were DERIVED (no source keys) and ~50 are `REVIEW:`-flagged in their `overrides.json` (genuinely-flawed source options, ambiguous wording, or low-confidence). They're already PUBLIC (user flipped all). **How to apply:** `grep -l REVIEW scripts/foundation/data/*.overrides.json`, spot-check each flagged item against the source, edit `overrides.json` → delete the changed rows → re-commit.
 
-Carry-forward — the 2026-06-19 "Document `scripts/practice-paper/` in ARCHITECTURE.md" item now also applies to **`scripts/foundation/`** (the new exam pipeline): add both to ARCHITECTURE.md's `scripts/` map in one pass.
+~~Carry-forward — Document `scripts/practice-paper/` + `scripts/foundation/` in ARCHITECTURE.md~~ — **DONE 2026-06-20**: added a `foundation/` entry + updated the stale `practice-paper/` entry (was "paper BUILDER"; now the `/lws-test-ingest` pipeline) in ARCHITECTURE.md's `scripts/` tree. (The notes `_data` one-liner backfill for Sets & Relations · Definite Integration · Differential Equations is a *separate* still-open carry-forward — see the notes-batch entry below.)
 
 ## 2026-06-19
 
