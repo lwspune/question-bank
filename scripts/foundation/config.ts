@@ -169,6 +169,65 @@ export const WORKSHEETS: Record<string, Worksheet> = {
       "Chemical Properties, Ethanol, Ethanoic Acid and Soaps",
     ],
   },
+
+  // ── Batch 5 — WS2/WS3 supplementary worksheets (all docx → converted to PDF
+  // via docx-to-pdf.ts). Same chapters/subtopics as their WS1; more practice. ──
+  "metals-2": {
+    id: "metals-2", chapterName: "Metals and Non-metals", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Metals_and_Non_metals_WS2.pdf",
+    docxSource: chem("07. Metals and Non-metals/Metals and Non-metals WS 2.docx"), pdf: converted("metals-2.pdf"),
+    note: "NDA Foundation (Class 10) — Metals and Non-metals WS 2 (LWS)",
+    subtopics: ["Physical Properties of Metals and Non-metals","Chemical Properties and Reactivity Series","Extraction, Metallurgy and Occurrence","Ionic and Covalent Bonding","Corrosion, Alloys and Uses"],
+  },
+  "matter-2": {
+    id: "matter-2", chapterName: "Matter in Our Surroundings", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Matter_in_Our_Surroundings_WS2.pdf",
+    docxSource: chem("01. Matter in our surrounding/Matter in Our Surrounding WS 2.docx"), pdf: converted("matter-2.pdf"),
+    note: "NDA Foundation (Class 9) — Matter in Our Surroundings WS 2 (LWS)",
+    subtopics: ["States of Matter and Their Properties","Interconversion of States — Melting, Boiling, Sublimation","Effect of Temperature and Pressure","Evaporation, Diffusion and Kinetic Theory","Physical and Chemical Changes"],
+  },
+  "structure-atom-2": {
+    id: "structure-atom-2", chapterName: "Structure of the Atom", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Structure_of_the_Atom_WS2.pdf",
+    docxSource: chem("04. Strucuture of Atom/Structure of the Atoms WS 2.docx"), pdf: converted("structure-atom-2.pdf"),
+    note: "NDA Foundation (Class 9) — Structure of the Atom WS 2 (LWS)",
+    subtopics: ["Subatomic Particles — Electron, Proton, Neutron","Atomic Models — Thomson, Rutherford, Bohr","Atomic Number, Mass Number and Electronic Configuration","Isotopes, Isobars and Isotones","Valency"],
+  },
+  "carbon-2": {
+    id: "carbon-2", chapterName: "Carbon and Its Compounds", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Carbon_and_Its_Compounds_WS2.pdf",
+    docxSource: chem("08. Carbon and Its Compounds/Carbon and its Compounds WS 2.docx"), pdf: converted("carbon-2.pdf"),
+    note: "NDA Foundation (Class 10) — Carbon and Its Compounds WS 2 (LWS)",
+    subtopics: ["Covalent Bonding and Allotropes of Carbon","Hydrocarbons — Saturated, Unsaturated and Isomers","Functional Groups and Homologous Series","Nomenclature of Carbon Compounds","Chemical Properties, Ethanol, Ethanoic Acid and Soaps"],
+  },
+  "chemical-reactions-2": {
+    id: "chemical-reactions-2", chapterName: "Chemical Reactions and Equations", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Chemical_Reactions_and_Equations_WS2.pdf",
+    docxSource: chem("05. Chemical Reactions and Equations/Chemical Reactions and Equations WS 2.docx"), pdf: converted("chemical-reactions-2.pdf"),
+    note: "NDA Foundation (Class 10) — Chemical Reactions and Equations WS 2 (LWS)",
+    subtopics: ["Writing and Balancing Chemical Equations","Types of Reactions — Combination, Decomposition, Displacement","Oxidation, Reduction and Redox","Corrosion and Rancidity"],
+  },
+  "chemical-reactions-3": {
+    id: "chemical-reactions-3", chapterName: "Chemical Reactions and Equations", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Chemical_Reactions_and_Equations_WS3.pdf",
+    docxSource: chem("05. Chemical Reactions and Equations/Chemical Reactions and Equations WS 3.docx"), pdf: converted("chemical-reactions-3.pdf"),
+    note: "NDA Foundation (Class 10) — Chemical Reactions and Equations WS 3 (LWS)",
+    subtopics: ["Writing and Balancing Chemical Equations","Types of Reactions — Combination, Decomposition, Displacement","Oxidation, Reduction and Redox","Corrosion and Rancidity"],
+  },
+  "acids-bases-salts-2": {
+    id: "acids-bases-salts-2", chapterName: "Acids, Bases and Salts", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Acids_Bases_and_Salts_WS2.pdf",
+    docxSource: chem("06. Acids, Bases and Salts/Acids Bases and Salts WS 2.docx"), pdf: converted("acids-bases-salts-2.pdf"),
+    note: "NDA Foundation (Class 10) — Acids, Bases and Salts WS 2 (LWS)",
+    subtopics: ["Acids, Bases and Their Properties","Indicators and the pH Scale","Neutralization and Reactions of Acids and Bases","Salts — Preparation, Properties and Uses"],
+  },
+  "acids-bases-salts-3": {
+    id: "acids-bases-salts-3", chapterName: "Acids, Bases and Salts", subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Acids_Bases_and_Salts_WS3.pdf",
+    docxSource: chem("06. Acids, Bases and Salts/Acids Bases and Salts WS 3.docx"), pdf: converted("acids-bases-salts-3.pdf"),
+    note: "NDA Foundation (Class 10) — Acids, Bases and Salts WS 3 (LWS)",
+    subtopics: ["Acids, Bases and Their Properties","Indicators and the pH Scale","Neutralization and Reactions of Acids and Bases","Salts — Preparation, Properties and Uses"],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
