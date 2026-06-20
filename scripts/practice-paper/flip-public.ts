@@ -11,7 +11,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAM_ID, requirePaper, loadRecords, statusOf } from "./config";
+import { requirePaper, loadRecords, statusOf, examIdOf } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -39,7 +39,7 @@ async function main() {
   const { error, count } = await client
     .from("questions")
     .update({ visibility: "PUBLIC" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
+    .eq("exam_id", examIdOf(spec))
     .eq("source_file", spec.sourceFile)
     .in("question_number", publicNums);
   if (error) throw new Error(`flip failed: ${error.message}`);

@@ -26,8 +26,8 @@ import { findLatexImbalance } from "../practice/lib";
 import { createPaper, addQuestion } from "../../src/lib/papers/admin";
 import type { SectionTemplate } from "../../src/lib/papers/types";
 import {
-  ORG_ID, EXAM_ID, CREATED_BY,
-  requirePaper, loadRecords, validateRecords, recToParsedRow, statusOf,
+  ORG_ID, CREATED_BY,
+  requirePaper, loadRecords, validateRecords, recToParsedRow, statusOf, examIdOf,
 } from "./config";
 
 function loadEnv() {
@@ -39,7 +39,7 @@ async function findOrCreatePaper(client: SupabaseClient, spec: ReturnType<typeof
     .from("papers").select("id").eq("org_id", ORG_ID).eq("title", spec.title).limit(1).maybeSingle();
   if (existing?.id) return existing.id as string;
   const template: SectionTemplate = [{ key: spec.section.key, label: spec.section.label, targetCount: qCount, assignedTo: [] }];
-  return createPaper(client, { orgId: ORG_ID, createdBy: CREATED_BY, title: spec.title, examId: EXAM_ID, template });
+  return createPaper(client, { orgId: ORG_ID, createdBy: CREATED_BY, title: spec.title, examId: examIdOf(spec), template });
 }
 
 async function main() {
@@ -50,6 +50,7 @@ async function main() {
   const recs = loadRecords(spec);
   validateRecords(spec, recs);
   const rows = recs.map((r) => recToParsedRow(spec, r));
+  const examId = examIdOf(spec);
 
   const byStatus = (s: string) => recs.filter((r) => statusOf(r) === s).map((r) => r.n);
   console.log(`Paper "${spec.title}" — ${recs.length} questions (${spec.chapterName}).`);
@@ -92,7 +93,7 @@ async function main() {
     jobId = job.id;
   }
   const result = await commitStaged(client, {
-    orgId: ORG_ID, examId: EXAM_ID, filename: spec.sourceFile, createdBy: CREATED_BY,
+    orgId: ORG_ID, examId, filename: spec.sourceFile, createdBy: CREATED_BY,
     rows, uploadJobId: jobId, pyqYear: null, pyqNote: spec.pyqNote,
   });
   console.log(`\ncommit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
@@ -101,7 +102,7 @@ async function main() {
   const { error: uErr, count } = await client
     .from("questions")
     .update({ visibility: "PRIVATE", question_kind: "practice" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID).eq("source_file", spec.sourceFile);
+    .eq("exam_id", examId).eq("source_file", spec.sourceFile);
   if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
 
@@ -109,7 +110,7 @@ async function main() {
 
   // 2. Map question_number -> id, then build the paper in printed Q-order.
   const { data: qrows, error: qErr } = await client
-    .from("questions").select("id, question_number").eq("exam_id", EXAM_ID).eq("source_file", spec.sourceFile);
+    .from("questions").select("id, question_number").eq("exam_id", examId).eq("source_file", spec.sourceFile);
   if (qErr) throw new Error(`fetch ids failed: ${qErr.message}`);
   const idByNum = new Map<string, string>();
   for (const q of (qrows ?? []) as { id: string; question_number: string | null }[]) {

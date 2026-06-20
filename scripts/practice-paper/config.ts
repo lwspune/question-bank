@@ -21,8 +21,10 @@ import { contentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel, Difficulty } from "../../src/lib/upload/validate";
 import type { QuestionRow, OptionRow } from "../../src/lib/questions/query";
 
-// LWS Pune org + admin (same identities as the practice pipeline) — NDA exam.
-export { ORG_ID, EXAM_ID, CREATED_BY } from "../practice/config";
+// LWS Pune org + admin (same identities as the practice pipeline) — default NDA exam.
+// Imported locally (so examIdOf can reference EXAM_ID) AND re-exported for the CLIs.
+import { ORG_ID, EXAM_ID, CREATED_BY } from "../practice/config";
+export { ORG_ID, EXAM_ID, CREATED_BY };
 
 export const DATA = join(__dirname, "data"); // committed transcriptions (source of truth)
 const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
@@ -54,6 +56,7 @@ export type PaperSpec = {
   subtopics: string[]; // valid DB subtopics for this chapter (records validated against this)
   pyqNote: string; // questions.pyq_note
   examName: string; // display name for the QuestionRow ("NDA")
+  examId?: string; // DB exam id; defaults to the NDA EXAM_ID. Set for a non-NDA exam (e.g. Foundation Course).
   section: { key: string; label: string }; // single section the paper files all questions under
   bankAdd: boolean; // commit-paper commits rows + creates the paper; if false it's Excel-only
 };
@@ -104,6 +107,51 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "vectors", label: "Vectors" },
     bankAdd: true,
   },
+
+  // LWS "Acids Bases and Salts Test" — 75-q Foundation Course (Class 9/10 NCERT)
+  // Chemistry test, no printed key (answers derived). Semantic dedup found ALL 75
+  // already PUBLIC in the Foundation "Acids, Bases and Salts" chapter, so this is
+  // Excel-only (bankAdd:false): emit the OMR tagged sheet, don't re-commit dups or
+  // create a paper. See the lws-test-ingest decision log (2026-06-20).
+  "foundation-abs-test": {
+    slug: "foundation-abs-test",
+    title: "Foundation Acids, Bases and Salts Test",
+    recordsFile: "foundation-abs-test.records.json",
+    outName: "Tags_Foundation_Acids_Bases_Salts",
+    sourceFile: "Foundation_Chemistry__Acids_Bases_and_Salts_Test.pdf",
+    subjectName: "Chemistry",
+    chapterName: "Acids, Bases and Salts",
+    examId: "22d88324-5624-486e-aaa1-52ccaf4e1281", // Foundation Course (not the default NDA EXAM_ID)
+    subtopics: [
+      "Indicators and the pH Scale",
+      "Acids, Bases and Their Properties",
+      "Salts — Preparation, Properties and Uses",
+      "Neutralization and Reactions of Acids and Bases",
+    ],
+    pyqNote: "Foundation Chemistry practice — LWS Acids, Bases and Salts Test",
+    examName: "Foundation Course",
+    section: { key: "acids-bases-salts", label: "Acids, Bases and Salts" },
+    bankAdd: false,
+  },
+
+  // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
+  // (answers derived from the underlined word in each sentence). Dedup found all
+  // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
+  // Excel). All map to the "Parts of Speech" subtopic.
+  "parts-of-speech-test": {
+    slug: "parts-of-speech-test",
+    title: "NDA Parts of Speech Test",
+    recordsFile: "parts-of-speech-test.records.json",
+    outName: "Tags_NDA_Parts_of_Speech_Test",
+    sourceFile: "NDA_English_Practice__Parts_of_Speech_Test.pdf",
+    subjectName: "English",
+    chapterName: "Grammar",
+    subtopics: ["Parts of Speech"],
+    pyqNote: "NDA English practice — LWS Parts of Speech Test",
+    examName: "NDA",
+    section: { key: "grammar", label: "Grammar" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
@@ -119,6 +167,9 @@ export function loadRecords(spec: PaperSpec): PaperRec[] {
 }
 
 export const statusOf = (r: PaperRec): "new" | "dup" | "flawed" => r.status ?? "new";
+
+/** The DB exam id for a paper — its own examId override, else the default NDA EXAM_ID. */
+export const examIdOf = (spec: PaperSpec): string => spec.examId ?? EXAM_ID;
 
 /** Hard-validate a record set; throws on the first problem (transcription bug). */
 export function validateRecords(spec: PaperSpec, recs: PaperRec[]): void {
