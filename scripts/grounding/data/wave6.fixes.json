@@ -1,0 +1,44 @@
+[
+  {
+    "id": "42f1bd5b-9990-4e90-aed8-84c92e8373c8",
+    "new_label": "B",
+    "solution": "Convert each binary number to decimal: \\((11011)_2 = 27\\), \\((10110110)_2 = 182\\) and \\((101101101)_2 = 365\\). Write \\((10011x0y)_2 = 128+16+8+4x+y = 152+4x+y\\). Then \\(27+182+(152+4x+y) = 365\\), so \\(4x+y = 4\\). With \\(x,y \\in \\{0,1\\}\\) the only solution is \\(x=1,\\ y=0\\). Hence option B."
+  },
+  {
+    "id": "4596b605-cdb6-4386-9f98-c56ff58b9be7",
+    "new_label": "D",
+    "solution": "Here \\(X=\\{1,2,3,4\\}\\). Reflexivity needs \\((i,i)\\in R\\) for every element, but \\((4,4)\\notin R\\), so R is not reflexive. R is symmetric: each off-diagonal pair appears with its reverse (\\((1,2),(2,1)\\) and \\((2,3),(3,2)\\)). R is not transitive: \\((1,2)\\in R\\) and \\((2,3)\\in R\\) but \\((1,3)\\notin R\\). Therefore R is symmetric but neither reflexive nor transitive. Hence option D."
+  },
+  {
+    "id": "40d61636-4a78-40b1-b6d4-eece65d716e5",
+    "new_label": "D",
+    "solution": "For the equilateral triangle with vertices \\((0,0),(p,1),(1,q)\\), equate the two sides from the origin: \\(p^2+1 = 1+q^2\\), giving \\(p=q\\). Equate a side to the remaining side: \\(2(1-p)^2 = p^2+1\\), i.e. \\(p^2-4p+1=0\\), so \\(p = 2-\\sqrt{3}\\) (the root in \\((0,1)\\)). Then \\(p+q = 2(2-\\sqrt{3}) = 4-2\\sqrt{3}\\). Hence option D. Option C, \\(2-\\sqrt{3}\\), is the value of \\(p\\) alone, not \\(p+q\\)."
+  },
+  {
+    "id": "3f6ecf1e-302f-4ffe-863b-6e662758779b",
+    "new_label": "D",
+    "solution": "With the right angle at B, \\(\\vec{BA}\\cdot\\vec{BC}=0\\). Here \\(\\vec{BA}=A-B=(k-2k,\\ 1-0,\\ -1-2)=(-k,1,-3)\\) and \\(\\vec{BC}=C-B=(2,\\ k,\\ -1)\\). Then \\(\\vec{BA}\\cdot\\vec{BC} = -2k+k+3 = -k+3 = 0\\), so \\(k=3\\). Hence option D."
+  },
+  {
+    "id": "2f577966-fbc9-4330-bcdd-8329ff2dcdf9",
+    "new_label": "D",
+    "solution": "The modal class is \\(164\\text{--}166\\) (highest frequency \\(24\\)). Using the mode formula with \\(L=164,\\ f_1=24,\\ f_0=15,\\ f_2=13,\\ h=2\\): \\(\\text{Mode} = L + \\dfrac{f_1-f_0}{2f_1-f_0-f_2}\\cdot h = 164 + \\dfrac{9}{20}\\cdot 2 = 164.9\\) cm. Hence option D."
+  },
+  {
+    "id": "3d52a915-5eaf-4a5f-97c5-c7ec4ea3392c",
+    "new_label": "C",
+    "solution": "Let \\(x=\\sin\\theta\\), so \\(\\sin^{-1}x=\\theta\\) and \\(\\sqrt{1-x^2}=\\cos\\theta\\). Then \\(y = \\dfrac{\\theta\\sin\\theta}{\\cos\\theta} + \\ln(\\cos\\theta) = \\theta\\tan\\theta + \\ln(\\cos\\theta)\\). Differentiating with respect to \\(\\theta\\): \\(\\dfrac{dy}{d\\theta} = \\tan\\theta + \\theta\\sec^2\\theta - \\tan\\theta = \\theta\\sec^2\\theta\\). Since \\(\\dfrac{dx}{d\\theta}=\\cos\\theta\\), \\(\\dfrac{dy}{dx} = \\dfrac{\\theta\\sec^2\\theta}{\\cos\\theta} = \\theta\\sec^3\\theta\\). Hence option C."
+  },
+  {
+    "id": "44c46d04-85cc-42b0-b973-a51501da7ca8",
+    "text": "What is \\(a+b+\\sqrt{2}\\,c\\) equal to?",
+    "new_label": "C",
+    "solution": "The angles are in the ratio \\(3:5:4\\); since \\(3+5+4=12\\) parts \\(=180^\\circ\\), \\(A=45^\\circ,\\ B=75^\\circ,\\ C=60^\\circ\\). By the law of sines \\(a=k\\sin A,\\ b=k\\sin B,\\ c=k\\sin C\\). Then \\(a+b+\\sqrt{2}\\,c = k\\big(\\sin 45^\\circ + \\sin 75^\\circ + \\sqrt{2}\\sin 60^\\circ\\big) = k\\Big(\\tfrac{\\sqrt{2}}{2} + \\tfrac{\\sqrt{6}+\\sqrt{2}}{4} + \\tfrac{\\sqrt{6}}{2}\\Big) = \\tfrac{3k(\\sqrt{2}+\\sqrt{6})}{4} = 3k\\sin 75^\\circ = 3b\\). Hence option C."
+  },
+  {
+    "id": "3d12f206-93fb-43bb-b499-ee7f92708a5c",
+    "context": "Let \\(f(x)=[x]^2-[x^2]\\), where \\([\\cdot]\\) denotes the greatest-integer function.",
+    "new_label": "B",
+    "solution": "\\(f(0.999) = [0.999]^2 - [0.999^2] = 0^2 - [0.998001] = 0 - 0 = 0\\). \\(f(1.001) = [1.001]^2 - [1.001^2] = 1^2 - [1.002001] = 1 - 1 = 0\\). Therefore \\(f(0.999)+f(1.001) = 0\\). Hence option B."
+  }
+]
