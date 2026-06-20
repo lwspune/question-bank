@@ -27,7 +27,11 @@ Foundation Course **Chemistry is complete** (8 chapters, ~995 q PUBLIC). The sou
 
 **How to apply:** seed each subject (`INSERT INTO subjects(exam_id, name)` under exam `22d88324-…`), then run the `scripts/foundation/` pipeline per chapter exactly as for Chemistry (config `WORKSHEETS` entries → docx-to-pdf if docx → render → parallel vision-transcribe → commit PRIVATE → figure pass → attach → flip PUBLIC). Physics has numeric/diagram-heavy worksheets (motion graphs, ray diagrams, circuits) so expect a larger figure share. See [[foundation-course]].
 
-### Recover the deferred Foundation Chemistry figures
+### ~~Recover the deferred Foundation Chemistry figures~~ — **DONE 2026-06-20**
+
+Shipped: **Acids-3's 25 figure questions** (transcribed + answered + all 25 figures attached; the "color/low-yield" worry was overstated — they crop cleanly; commit `179a783`) and the **4 split-across-pages figures** (Structure Q6/Q9 + Carbon Q58/Q62 — "~7" was 4; shipped as self-contained TEXT, no figure, since the stems describe each diagram; commit `337685b`). Still deferred (genuinely flawed, no valid answer → never committed): **Carbon Q53** (correct {B,C,D} not an option) + **Chem-3 Q30** (only 3 printed options). The old "Chem Q51" was a mislabel — Q51 was committed-then-flawed, now PRIVATE in the REVIEW cleanup below.
+
+<details><summary>original</summary>
 
 Left undone in the Chemistry pass: **Acids-3's 25 figure questions** (color/apparatus-heavy — pH strips, test-tube colours), **~7 split-across-pages figures** (Structure of the Atom Q6/Q9/Q60, Carbon Q58/Q62 — 4 option-diagrams span non-contiguous regions), **2 flawed-option figures** (Chem Q51, Carbon Q53), and **Chem-3 Q30** (lost to an agent page-split boundary).
 
@@ -35,13 +39,13 @@ Left undone in the Chemistry pass: **Acids-3's 25 figure questions** (color/appa
 
 **How to apply:** for split figures, build a Pillow composite step (crop each region → stitch into one labelled image → attach as one `image_url`) — the JEE multi-figure precedent. For Acids-3, decide first whether color-from-crop is reliable enough to be worth the 25-question effort. The flawed-option ones (Chem Q51, Carbon Q53) should be excluded, not force-keyed.
 
-### Cleanup pass for the ~50 REVIEW-flagged Foundation Chemistry answers
+### ~~Cleanup pass for the REVIEW-flagged Foundation Chemistry answers~~ — **DONE 2026-06-20**
 
-All Foundation Chemistry answers were DERIVED (no source keys) and ~50 are `REVIEW:`-flagged in their `overrides.json` (genuinely-flawed source options, ambiguous wording, or low-confidence). They're already PUBLIC (user flipped all).
+All **71** flagged answers (the real count, > the ~50 estimate) re-verified via 5 parallel sub-agents + human adjudication (commit on `main`, after `337685b`): **41 CONFIRM** (flag cleared), **10 FLIP** (answer corrected by direct DB `is_correct`+`content_hash` update — NOT re-commit, which would orphan figure `image_url`s), **11 FLAWED → set PRIVATE** with a flaw note (no correct option among the four), **9 kept REVIEW** (5 figure-dependent + 4 borderline-but-defensible). Chemistry 1,024 → 1,014 PUBLIC + 11 PRIVATE. Lessons → [[audit-probe-symmetry]] (adjudicate delegated-agent verdicts) + [[practice-pdf-vision-ingestion]] (image-budget delegation).
 
-**Why:** wrong derived keys are now student-facing. The flags pinpoint exactly which to check.
+<details><summary>original</summary>
 
-**How to apply:** `grep -l REVIEW scripts/foundation/data/*.overrides.json`, spot-check each flagged item against the source (render the page), `apply-fix`-style: edit `overrides.json` → delete the changed rows → re-commit (answer/option change → new `content_hash`). Carry-forward of the same discipline as the LWS-paper review pass.
+All Foundation Chemistry answers were DERIVED (no source keys) and ~50 are `REVIEW:`-flagged in their `overrides.json` (genuinely-flawed source options, ambiguous wording, or low-confidence). They're already PUBLIC (user flipped all). **How to apply:** `grep -l REVIEW scripts/foundation/data/*.overrides.json`, spot-check each flagged item against the source, edit `overrides.json` → delete the changed rows → re-commit.
 
 Carry-forward — the 2026-06-19 "Document `scripts/practice-paper/` in ARCHITECTURE.md" item now also applies to **`scripts/foundation/`** (the new exam pipeline): add both to ARCHITECTURE.md's `scripts/` map in one pass.
 
