@@ -13,8 +13,37 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 |---|---|---|
 | Theme-coverage gap — a chapter can ship "complete" while a theme (formula/trap) is missing from the notes source ([[quiz-formula-coverage-gap]]) | The ~23 un-quiz-built /notes chapters: (a) **correctness** — hand-authored practiceSet/selfCheck answers never independently re-derived (the Lines `(1,-2)` class of bug); (b) **completeness** — empty `formula.latex` / <12 `traps` (run `npm run quiz:coverage`) | **Analysed** (full audit done). User decision: NO blanket campaign — **fold correctness re-derivation + formula/trap enrichment into per-chapter quiz-building (Wave 2+)**. Targeted correctness pass available on request for any chapter that's a live LWS lesson plan. |
 | Matrices is formula- + property-rich; `quiz:coverage` flagged ~10 empty-`formula.latex` concepts | Matrices & Determinants /notes — property quiz + clean formula/property split | **Path A + B DONE 2026-06-10.** Path A: 25 rule-identities enriched from prose → property (2 quizzes, 0 churn). Path B: re-themed the 12 rule-formulas formula→property + re-assembled → clean split (formula=construction 1 quiz; property=ALL rules 3 quizzes); 0 integrity flags. **Only deferred:** the 6 `transpose-rules`/`symmetric-and-skew` *extra* properties reverted in Path A (single→bundle flip — re-author + re-assemble if ever wanted; low value). |
+| 2 likely wrong-keys in the EXISTING PUBLIC Foundation "Acids, Bases and Salts" bank, surfaced when an LWS test (already 100% in the bank) was re-derived during `/lws-test-ingest` (2026-06-20) | (1) *"Tooth decay begins at the pH of"* (opts 8.0/5.1/5.8/6.5) — bank keyed **C=5.8**; decay starts BELOW 5.5, so 5.8 shouldn't qualify, **5.1 (B)** is the only sub-5.5 option. (2) *"Bleaching powder is a"* — bank keyed **C=greyish white powder**; standard textbook description is **pale yellow powder (B)**. | **DONE 2026-06-20** (user-approved). Both keys flipped C→B (id `7c9581ef…` tooth decay, `1906ee88…` bleaching powder), `content_hash` recomputed via the real helper (no collisions), explanatory solutions added, exactly-one-correct verified. These were LLM-*derived* keys (Foundation has no printed keys), corrected to the textbook-standard answer. |
 
 ---
+
+## 2026-06-20
+
+### Ingest Foundation Course Physics + Biology subjects
+
+Foundation Course **Chemistry is complete** (8 chapters, ~995 q PUBLIC). The source has parallel `Physics` (9 chapters) and `Biology` (8 chapters) worksheet folders under `C:\tmp\Practice\Foundation\` — same shape (WS docx/pdf, no answer keys, figure-bearing).
+
+**Why:** the Foundation Course is only ⅓ done; Physics + Biology round out the subject offering for the same student cohort.
+
+**How to apply:** seed each subject (`INSERT INTO subjects(exam_id, name)` under exam `22d88324-…`), then run the `scripts/foundation/` pipeline per chapter exactly as for Chemistry (config `WORKSHEETS` entries → docx-to-pdf if docx → render → parallel vision-transcribe → commit PRIVATE → figure pass → attach → flip PUBLIC). Physics has numeric/diagram-heavy worksheets (motion graphs, ray diagrams, circuits) so expect a larger figure share. See [[foundation-course]].
+
+### Recover the deferred Foundation Chemistry figures
+
+Left undone in the Chemistry pass: **Acids-3's 25 figure questions** (color/apparatus-heavy — pH strips, test-tube colours), **~7 split-across-pages figures** (Structure of the Atom Q6/Q9/Q60, Carbon Q58/Q62 — 4 option-diagrams span non-contiguous regions), **2 flawed-option figures** (Chem Q51, Carbon Q53), and **Chem-3 Q30** (lost to an agent page-split boundary).
+
+**Why:** these questions exist in the worksheets but aren't in the bank; the split-figure ones especially are common in the figure-heavy chapters and will recur in Physics/Biology.
+
+**How to apply:** for split figures, build a Pillow composite step (crop each region → stitch into one labelled image → attach as one `image_url`) — the JEE multi-figure precedent. For Acids-3, decide first whether color-from-crop is reliable enough to be worth the 25-question effort. The flawed-option ones (Chem Q51, Carbon Q53) should be excluded, not force-keyed.
+
+### Cleanup pass for the ~50 REVIEW-flagged Foundation Chemistry answers
+
+All Foundation Chemistry answers were DERIVED (no source keys) and ~50 are `REVIEW:`-flagged in their `overrides.json` (genuinely-flawed source options, ambiguous wording, or low-confidence). They're already PUBLIC (user flipped all).
+
+**Why:** wrong derived keys are now student-facing. The flags pinpoint exactly which to check.
+
+**How to apply:** `grep -l REVIEW scripts/foundation/data/*.overrides.json`, spot-check each flagged item against the source (render the page), `apply-fix`-style: edit `overrides.json` → delete the changed rows → re-commit (answer/option change → new `content_hash`). Carry-forward of the same discipline as the LWS-paper review pass.
+
+Carry-forward — the 2026-06-19 "Document `scripts/practice-paper/` in ARCHITECTURE.md" item now also applies to **`scripts/foundation/`** (the new exam pipeline): add both to ARCHITECTURE.md's `scripts/` map in one pass.
 
 ## 2026-06-19
 
@@ -41,6 +70,22 @@ Deferred during the wave-1 source pass. The set shares an `f(x)=[√x]` context 
 **Why:** it's a known-corrupt set left ungrounded; both questions are currently unusable.
 
 **How to apply:** render the relevant page, read the real shared context + both stems + both option sets, then `apply-fix` both (context + stems + options + keys). Q99's answer with `[x²]` is `2(√3−√2)` (option B); Q100 needs its real bounds first.
+
+### Review derived answers, then flip the two LWS test papers PUBLIC
+
+The NDA Matrices test (40 q, paper `bed3cfbd-…`) and Vector test B (120 q, paper `dc55cf9e-…`) are ingested PRIVATE `question_kind='practice'`. Their `status:"new"` rows (26 matrices, 102 vectors) are PUBLIC-eligible but **not yet flipped** — the Matrices answers were DERIVED (no printed key) so they need a human spot-check before publishing; the Vector key is verified (lower risk). See [[lws-test-paper-ingest]].
+
+**Why:** until flipped, the 128 new practice questions aren't browsable. The Matrices flip especially should wait on a review — a wrong derived key becomes a wrong OMR grade + a wrong public question (prioritise the flawed Q9/Q25 + the 14 D-keyed answers).
+
+**How to apply:** spot-check the derived answers (the `solution` field ends "Matches option X"; flawed items carry a `reviewNote`), then `npx tsx scripts/practice-paper/flip-public.ts matrices-test --apply` and `… vectors-b --apply`. dup + flawed rows stay PRIVATE by design.
+
+### Document `scripts/practice-paper/` in ARCHITECTURE.md
+
+The generalized LWS test-paper pipeline (`config.ts` PAPERS registry + `build-tags.ts`/`commit-paper.ts`/`flip-public.ts`) isn't in the ARCHITECTURE.md file-layout `scripts/` map — only `scripts/practice/` (the practice-book pipeline) is.
+
+**Why:** CLAUDE.md says "append a new file/component/route to ARCHITECTURE.md, not [the header]"; the new scripts are otherwise only discoverable via the Decisions log + the (gitignored) skill.
+
+**How to apply:** add a one-line `scripts/practice-paper/` entry to ARCHITECTURE.md's scripts list, distinguishing it from `scripts/practice/` (teacher-authored printed test → Excel + paper + deduped practice, vs the practice-book ingestion).
 
 ## 2026-06-17
 
