@@ -29,6 +29,7 @@ export type Worksheet = {
   subjectName: string; // DB subject (must exist — "Chemistry")
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
   pdf: string; // absolute path to the worksheet PDF (render + page count)
+  docxSource?: string; // if the worksheet is docx-only: source .docx → converted to `pdf` by docx-to-pdf.ts (Word COM)
   pages?: number[]; // 0-based page indices to render; omit → all pages
   note: string; // questions.pyq_note
   // Canonical subtopics for this chapter — transcription maps each question to one.
@@ -36,6 +37,8 @@ export type Worksheet = {
 };
 
 const chem = (p: string) => join(SOURCE_ROOT, "Chemistry", p);
+// docx-only worksheets are converted to PDF here by docx-to-pdf.ts (Word COM).
+const converted = (name: string) => join(SOURCE_ROOT, "_converted", name);
 
 export const WORKSHEETS: Record<string, Worksheet> = {
   // ── Validation chapter — Metals and Non-metals WS 1 (5 pp, 2-column, ~2
@@ -145,6 +148,25 @@ export const WORKSHEETS: Record<string, Worksheet> = {
       "Atomic Number, Mass Number and Electronic Configuration",
       "Isotopes, Isobars and Isotones",
       "Valency",
+    ],
+  },
+
+  // ── Batch 4 — Carbon and Its Compounds (docx-only → converted to PDF via
+  // docx-to-pdf.ts before render). ──
+  "carbon-1": {
+    id: "carbon-1",
+    chapterName: "Carbon and Its Compounds",
+    subjectName: "Chemistry",
+    sourceFile: "Foundation_Chemistry__Carbon_and_Its_Compounds_WS1.pdf",
+    docxSource: chem("08. Carbon and Its Compounds/Carbon and its Compounds WS 1.docx"),
+    pdf: converted("carbon-1.pdf"),
+    note: "NDA Foundation (Class 10) — Carbon and Its Compounds WS 1 (LWS)",
+    subtopics: [
+      "Covalent Bonding and Allotropes of Carbon",
+      "Hydrocarbons — Saturated, Unsaturated and Isomers",
+      "Functional Groups and Homologous Series",
+      "Nomenclature of Carbon Compounds",
+      "Chemical Properties, Ethanol, Ethanoic Acid and Soaps",
     ],
   },
 };
