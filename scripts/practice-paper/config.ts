@@ -46,6 +46,15 @@ export type PaperRec = {
   /** Multi-chapter papers (a mock spanning chapters): the canonical DB chapter for
    *  THIS question. Single-chapter papers omit it (falls back to spec.chapterName). */
   chapter?: string;
+  /** Multi-subject papers (a GAT mock spanning subjects): the canonical DB subject for
+   *  THIS question. Single-subject papers omit it (falls back to spec.subjectName). */
+  subject?: string;
+  /** Shared passage / stimulus (comprehension). Stored on questions.context; NOT in
+   *  content_hash, so the stem must still be unique. Rendered once per set. */
+  context?: string;
+  /** Set grouping label (e.g. "RC1"). Questions sharing a setLabel form one passage
+   *  set (set_id), co-located in the paper + Excel. Scoped per upload_job. */
+  setLabel?: string;
 };
 
 export type PaperSpec = {
@@ -54,19 +63,23 @@ export type PaperSpec = {
   recordsFile: string; // data/<file> (defaults to <slug>.records.json)
   outName: string; // generated-papers/<outName>.xlsx
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
-  subjectName: string; // DB subject ("Mathematics", "Geography", ...)
-  // Single-chapter mode: set chapterName + subtopics (the common case). Multi-chapter
-  // mode (a mock spanning chapters): set `chapters` (chapter -> its valid subtopics)
-  // and put a `chapter` on each record. The paper still files everything under ONE
-  // `section`; only the BANK rows go to their per-record chapter.
+  subjectName?: string; // DB subject ("Mathematics", "Geography", ...). Omit in multi-subject mode.
+  // Three filing modes, in order of generality:
+  //   single-subject single-chapter: chapterName + subtopics (the common case)
+  //   single-subject multi-chapter:  chapters (chapter -> subtopics) + per-record `chapter`
+  //   multi-subject (a GAT mock):    subjects (subject -> chapter -> subtopics) + per-record `subject`+`chapter`
+  // The paper still files everything under ONE `section`; only the BANK rows go to
+  // their per-record subject/chapter.
   chapterName?: string; // canonical DB chapter (single-chapter mode; must already exist)
   subtopics?: string[]; // valid DB subtopics for that chapter
   chapters?: Record<string, string[]>; // multi-chapter mode: chapter -> valid subtopics
+  subjects?: Record<string, Record<string, string[]>>; // multi-subject mode: subject -> chapter -> subtopics
   pyqNote: string; // questions.pyq_note
   examName: string; // display name for the QuestionRow ("NDA")
   examId?: string; // DB exam id; defaults to the NDA EXAM_ID. Set for a non-NDA exam (e.g. Foundation Course).
   section: { key: string; label: string }; // single section the paper files all questions under
   bankAdd: boolean; // commit-paper commits rows + creates the paper; if false it's Excel-only
+  createPaper?: boolean; // default true; false => commit bank rows only, skip the /dashboard/papers paper
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
@@ -226,6 +239,66 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: true,
   },
 
+  // LWS "APJ GAT Mock 5" — 150-q NDA GAT (General Ability Test) MOCK spanning FIVE
+  // subjects: English (Q1–50 + the embedded grammar Qs 56, 62), Geography (Q51–100),
+  // Physics (Q101–120), Chemistry (Q121–142), Biology (Q143–150). No printed key
+  // (answers derived). First MULTI-SUBJECT paper (uses `subjects` + per-record
+  // `subject`+`chapter`). createPaper:false => Excel + bank ingest only, no paper.
+  // Semantic dedup: 85 new / 61 dup / 4 flawed. Physics + Biology sections are wholly
+  // reproduced from an existing bank mock (all dup). Comprehension Q31–35 share one
+  // passage (context + setLabel "RC1"). Only the 85 new flip PUBLIC.
+  "apj-gat-mock-5": {
+    slug: "apj-gat-mock-5",
+    title: "NDA GAT — APJ Mock 5",
+    recordsFile: "apj-gat-mock-5.records.json",
+    outName: "Tags_NDA_APJ_GAT_Mock_5",
+    sourceFile: "NDA_GAT_Practice__APJ_GAT_Mock_5.docx",
+    subjects: {
+      English: {
+        Grammar: ["Active and Passive Voice", "Correct Sentence Identification", "Direct and Indirect Speech"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+        "Spotting Errors": ["No Error (Correct Sentence)"],
+        Vocabulary: ["Antonyms", "Word Definition"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": ["Climate Classification and Zones", "Humidity, Condensation, Clouds and Precipitation"],
+        "Earth's Structure, Landforms and Geological Time": ["Earth's Interior, Crust and Plate Tectonics", "Landforms and Mass Movements", "Soils"],
+        "Indian Geography — Economy, Resources and Transport": ["Agriculture, Crops, Soils and Land Use"],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India", "Indian Rivers, Lakes and Water Bodies",
+          "Indian Soils and Climate-Agriculture", "Indian States and Islands",
+          "Location, Extent and Frontiers of India", "Mountains, Plateaus and Plains of India",
+        ],
+      },
+      Physics: {
+        "Electricity and Magnetism": [
+          "Cells, EMF and Kirchhoff's Laws", "Combination of Resistors", "Electrical Power, Energy and Heating",
+          "Electrostatics", "Magnetic Force and Fleming's Rules", "Magnetism and Magnetic Effects of Current",
+          "Resistance and Resistivity",
+        ],
+      },
+      Chemistry: {
+        "Carbon and Its Compounds": [
+          "Allotropes of Carbon", "Catenation, Tetra-valency and Isomerism",
+          "Functional Groups and Common Organic Compounds", "Hydrocarbons and Organic Classification",
+        ],
+      },
+      Biology: {
+        Reproduction: [
+          "Angiosperm Reproduction — Pollination and Fertilization", "Meiosis and DNA in Flowering Plants",
+          "Sexual Reproduction — Genetic Principles",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS APJ GAT Mock 5",
+    examName: "NDA",
+    section: { key: "apj-gat-mock-5", label: "APJ GAT Mock 5" },
+    bankAdd: true,
+    createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
+  },
+
   // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
   // (answers derived from the underlined word in each sentence). Dedup found all
   // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
@@ -263,6 +336,14 @@ export const statusOf = (r: PaperRec): "new" | "dup" | "flawed" => r.status ?? "
 /** The DB exam id for a paper — its own examId override, else the default NDA EXAM_ID. */
 export const examIdOf = (spec: PaperSpec): string => spec.examId ?? EXAM_ID;
 
+/** The canonical DB subject a record files under: its own `subject` (multi-subject
+ *  mode), else the paper's single `subjectName`. Throws if neither is set. */
+export function subjectOf(spec: PaperSpec, r: PaperRec): string {
+  const s = r.subject ?? spec.subjectName;
+  if (!s) throw new Error(`Q${r.n}: no subject (record has no \`subject\` and spec has no \`subjectName\`)`);
+  return s;
+}
+
 /** The canonical DB chapter a record files under: its own `chapter`, else the paper's
  *  single `chapterName`. Throws if neither is set (mis-configured record). */
 export function chapterOf(spec: PaperSpec, r: PaperRec): string {
@@ -279,9 +360,33 @@ export function subtopicsFor(spec: PaperSpec, chapter: string): string[] {
   return subs;
 }
 
-/** All chapters this paper touches (for logging) — `chapters` keys or the single chapter. */
+/** Valid DB subtopics for THIS record — multi-subject `subjects[subject][chapter]`,
+ *  else the chapter-keyed `subtopicsFor`. Throws if the subject/chapter isn't configured. */
+export function validSubtopicsFor(spec: PaperSpec, r: PaperRec): string[] {
+  if (spec.subjects) {
+    const subj = subjectOf(spec, r);
+    const chs = spec.subjects[subj];
+    if (!chs) throw new Error(`Q${r.n}: subject not in spec.subjects: "${subj}"`);
+    const subs = chs[chapterOf(spec, r)];
+    if (!subs) throw new Error(`Q${r.n}: chapter not in spec.subjects["${subj}"]: "${chapterOf(spec, r)}"`);
+    return subs;
+  }
+  return subtopicsFor(spec, chapterOf(spec, r));
+}
+
+/** All chapters this paper touches (for logging) — across subjects, or `chapters` keys, or the single chapter. */
 export const chaptersOf = (spec: PaperSpec): string[] =>
-  spec.chapters ? Object.keys(spec.chapters) : spec.chapterName ? [spec.chapterName] : [];
+  spec.subjects
+    ? [...new Set(Object.values(spec.subjects).flatMap((chs) => Object.keys(chs)))]
+    : spec.chapters
+      ? Object.keys(spec.chapters)
+      : spec.chapterName
+        ? [spec.chapterName]
+        : [];
+
+/** All subjects this paper touches (for logging). */
+export const subjectsOf = (spec: PaperSpec): string[] =>
+  spec.subjects ? Object.keys(spec.subjects) : spec.subjectName ? [spec.subjectName] : [];
 
 /** Hard-validate a record set; throws on the first problem (transcription bug). */
 export function validateRecords(spec: PaperSpec, recs: PaperRec[]): void {
@@ -291,10 +396,11 @@ export function validateRecords(spec: PaperSpec, recs: PaperRec[]): void {
     seen.add(r.n);
     if (!LABELS.includes(r.answer as OptionLabel)) throw new Error(`Q${r.n}: bad answer "${r.answer}"`);
     if (!DIFFICULTIES.has(r.difficulty)) throw new Error(`Q${r.n}: bad difficulty "${r.difficulty}"`);
+    subjectOf(spec, r); // throws on a record with no resolvable subject
     const ch = chapterOf(spec, r);
-    if (spec.chapters && !spec.chapters[ch]) throw new Error(`Q${r.n}: chapter not in spec.chapters: "${ch}"`);
-    const subs = new Set(subtopicsFor(spec, ch));
-    if (!subs.has(r.subtopic)) throw new Error(`Q${r.n}: subtopic not valid for chapter "${ch}": "${r.subtopic}"`);
+    if (spec.chapters && !spec.subjects && !spec.chapters[ch]) throw new Error(`Q${r.n}: chapter not in spec.chapters: "${ch}"`);
+    const subs = new Set(validSubtopicsFor(spec, r));
+    if (!subs.has(r.subtopic)) throw new Error(`Q${r.n}: subtopic not valid for "${subjectOf(spec, r)} › ${ch}": "${r.subtopic}"`);
     for (const [lab, val] of [["A", r.optA], ["B", r.optB], ["C", r.optC], ["D", r.optD]] as const) {
       if (!val || !val.trim()) throw new Error(`Q${r.n}: empty option ${lab}`);
     }
@@ -307,20 +413,21 @@ export function recToQuestionRow(spec: PaperSpec, r: PaperRec): QuestionRow {
   const options: OptionRow[] = LABELS.map((label) => ({
     label, text: texts[label], isCorrect: label === r.answer, imageUrl: null,
   }));
+  const subjectName = subjectOf(spec, r);
   return {
     id: `${spec.slug}-${r.n}`,
     text: r.stem,
-    context: null,
+    context: r.context ?? null,
     difficulty: r.difficulty,
     solution: r.solution,
     imageUrl: null,
-    setId: null,
+    setId: r.setLabel ? `${spec.slug}:${r.setLabel}` : null,
     questionNumber: String(r.n),
     pyqYear: null,
     pyqMonth: null,
     pyqNote: null,
     exam: { id: spec.examName.toLowerCase(), name: spec.examName },
-    subject: { id: spec.subjectName.toLowerCase(), name: spec.subjectName },
+    subject: { id: subjectName.toLowerCase(), name: subjectName },
     chapter: { id: chapterOf(spec, r).toLowerCase().replace(/[^a-z0-9]+/g, "-"), name: chapterOf(spec, r) },
     subtopic: { id: r.subtopic, name: r.subtopic },
     options,
@@ -334,9 +441,11 @@ export function recToParsedRow(spec: PaperSpec, r: PaperRec): ParsedRowPayload {
   return {
     sourceRow: r.n,
     questionNumber: String(r.n),
-    subjectName: spec.subjectName,
+    setLabel: r.setLabel,
+    subjectName: subjectOf(spec, r),
     chapterName: chapterOf(spec, r),
     subtopicName: r.subtopic,
+    context: r.context,
     text: r.stem,
     difficulty: r.difficulty,
     solution: r.solution,
