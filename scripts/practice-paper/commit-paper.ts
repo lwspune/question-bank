@@ -27,7 +27,7 @@ import { createPaper, addQuestion } from "../../src/lib/papers/admin";
 import type { SectionTemplate } from "../../src/lib/papers/types";
 import {
   ORG_ID, CREATED_BY,
-  requirePaper, loadRecords, validateRecords, recToParsedRow, statusOf, examIdOf,
+  requirePaper, loadRecords, validateRecords, recToParsedRow, statusOf, examIdOf, chaptersOf,
 } from "./config";
 
 function loadEnv() {
@@ -53,7 +53,7 @@ async function main() {
   const examId = examIdOf(spec);
 
   const byStatus = (s: string) => recs.filter((r) => statusOf(r) === s).map((r) => r.n);
-  console.log(`Paper "${spec.title}" — ${recs.length} questions (${spec.chapterName}).`);
+  console.log(`Paper "${spec.title}" — ${recs.length} questions (${chaptersOf(spec).join(", ")}).`);
   console.log(`  new   (-> PUBLIC-eligible): ${byStatus("new").length}  [${byStatus("new").join(", ")}]`);
   console.log(`  dup   (stay PRIVATE):       ${byStatus("dup").length}  [${byStatus("dup").join(", ")}]`);
   console.log(`  flawed(stay PRIVATE):       ${byStatus("flawed").length}  [${byStatus("flawed").join(", ")}]`);
@@ -116,6 +116,20 @@ async function main() {
   for (const q of (qrows ?? []) as { id: string; question_number: string | null }[]) {
     if (q.question_number) idByNum.set(q.question_number, q.id);
   }
+
+  // Fallback for byte-exact dups: commitStaged skips a row whose content_hash already
+  // exists (a verbatim duplicate of a bank question under a DIFFERENT source_file), so
+  // it isn't in the source_file-scoped map above. The printed test still needs it (OMR
+  // Q-number parity), so reference the EXISTING bank row by content_hash. (Its visibility
+  // is left untouched — flip-public only ever promotes status:"new" rows of THIS paper.)
+  const missingRecs = recs.filter((r) => !idByNum.has(String(r.n)));
+  for (const r of missingRecs) {
+    const hash = recToParsedRow(spec, r).contentHash;
+    const { data: dupRow } = await client
+      .from("questions").select("id").eq("exam_id", examId).eq("content_hash", hash).limit(1).maybeSingle();
+    if (dupRow?.id) idByNum.set(String(r.n), dupRow.id as string);
+  }
+  if (missingRecs.length) console.log(`resolved ${missingRecs.filter((r) => idByNum.has(String(r.n))).length}/${missingRecs.length} skipped exact-dup rows via content_hash.`);
 
   const paperId = await findOrCreatePaper(client, spec, recs.length);
   console.log(`\npaper: ${paperId} ("${spec.title}")`);
