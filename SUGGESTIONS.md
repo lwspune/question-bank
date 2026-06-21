@@ -19,13 +19,13 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-06-20
 
-### Ingest Foundation Course Physics + Biology subjects
+### Ingest Foundation Course Physics + Biology subjects — **PHYSICS TEXT-PHASE DONE 2026-06-21; figures+review+flip + Biology remain**
 
-Foundation Course **Chemistry is complete** (8 chapters, ~995 q PUBLIC). The source has parallel `Physics` (9 chapters) and `Biology` (8 chapters) worksheet folders under `C:\tmp\Practice\Foundation\` — same shape (WS docx/pdf, no answer keys, figure-bearing).
+Foundation Course **Chemistry is complete** (8 chapters, ~1,014 q PUBLIC). **Physics text-phase shipped 2026-06-21** (commit `5401e19`): subject seeded (`bf9528d4-…`), 16 worksheet entries across 9 chapters, **894 q committed PRIVATE + practice** via the existing pipeline (zero code change). `Biology` (parallel folder under `C:\tmp\Practice\Foundation\`) still untouched.
 
-**Why:** the Foundation Course is only ⅓ done; Physics + Biology round out the subject offering for the same student cohort.
+**Why:** the Foundation Course is now ~⅔ done; the Physics figure/review/flip finish + Biology round out the subject offering for the same student cohort.
 
-**How to apply:** seed each subject (`INSERT INTO subjects(exam_id, name)` under exam `22d88324-…`), then run the `scripts/foundation/` pipeline per chapter exactly as for Chemistry (config `WORKSHEETS` entries → docx-to-pdf if docx → render → parallel vision-transcribe → commit PRIVATE → figure pass → attach → flip PUBLIC). Physics has numeric/diagram-heavy worksheets (motion graphs, ray diagrams, circuits) so expect a larger figure share. See [[foundation-course]].
+**How to apply — Physics finish (next session):** (1) **figure-attach pass** for the ~134 excluded figure-dependent Qs (crop-manifest → figure-agent → `attach-images`; Light 40 + Magnetic 22 are heaviest); (2) **review pass** — ~87 REVIEW-flagged answers + 3 specific items (forces-1 Q23 *edited* option; human-eye Q44/Q62 *reconstructed* options → likely flaw/PRIVATE; work-energy-2 buoyancy/pressure Qs misfiled under "Work and Its Measurement" → reclassify to Gravitation or accept); (3) **flip PUBLIC**. **Biology:** seed the subject (`INSERT INTO subjects(exam_id, name)` under exam `22d88324-…`) + a config batch, then the same pipeline. Note the C: drive was at ~100% (3.3 GB free) — clear `scripts/foundation/out/*` + `.next` before the figure render. See [[foundation-course]].
 
 ### ~~Recover the deferred Foundation Chemistry figures~~ — **DONE 2026-06-20**
 
