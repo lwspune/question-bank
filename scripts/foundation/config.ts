@@ -37,6 +37,7 @@ export type Worksheet = {
 };
 
 const chem = (p: string) => join(SOURCE_ROOT, "Chemistry", p);
+const phys = (p: string) => join(SOURCE_ROOT, "Physics", p);
 // docx-only worksheets are converted to PDF here by docx-to-pdf.ts (Word COM).
 const converted = (name: string) => join(SOURCE_ROOT, "_converted", name);
 
@@ -227,6 +228,222 @@ export const WORKSHEETS: Record<string, Worksheet> = {
     docxSource: chem("06. Acids, Bases and Salts/Acids Bases and Salts WS 3.docx"), pdf: converted("acids-bases-salts-3.pdf"),
     note: "NDA Foundation (Class 10) — Acids, Bases and Salts WS 3 (LWS)",
     subtopics: ["Acids, Bases and Their Properties","Indicators and the pH Scale","Neutralization and Reactions of Acids and Bases","Salts — Preparation, Properties and Uses"],
+  },
+
+  // ══════════════════ PHYSICS (subject seeded 2026-06-21; id bf9528d4-…) ══════════════════
+  // Same pipeline as Chemistry: 2-column MCQ worksheets, NO printed key (answers
+  // DERIVED via overrides), figure-dependent Qs excluded from the text pass then
+  // figure-attached. Syllabus ch.10 "Sources of Energy" has no worksheet → not ingestible.
+
+  // ── Validation chapter — Motion WS1 (text-heavy kinematics, low figure load). ──
+  "motion-1": {
+    id: "motion-1", chapterName: "Motion", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Motion_WS1.pdf",
+    pdf: phys("01. Motion/Motion WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Motion WS 1 (LWS)",
+    subtopics: [
+      "Distance, Displacement, Speed and Velocity",
+      "Acceleration and Types of Motion",
+      "Equations of Motion",
+      "Graphical Representation of Motion",
+      "Uniform Circular Motion",
+    ],
+  },
+
+  // ── Force and Laws of Motion — WS1 (pdf) + WS2 (pdf). ──
+  "forces-1": {
+    id: "forces-1", chapterName: "Force and Laws of Motion", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Force_and_Laws_of_Motion_WS1.pdf",
+    pdf: phys("02. Force and Laws of Motion/Forces and Laws of Motion WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Force and Laws of Motion WS 1 (LWS)",
+    subtopics: [
+      "Force, Balanced and Unbalanced Forces",
+      "Inertia and Newton's First Law",
+      "Newton's Second Law and Momentum",
+      "Newton's Third Law and Conservation of Momentum",
+    ],
+  },
+  "forces-2": {
+    id: "forces-2", chapterName: "Force and Laws of Motion", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Force_and_Laws_of_Motion_WS2.pdf",
+    pdf: phys("02. Force and Laws of Motion/Forces and Laws of Motion WS 2.pdf"),
+    note: "NDA Foundation (Class 9) — Force and Laws of Motion WS 2 (LWS)",
+    subtopics: [
+      "Force, Balanced and Unbalanced Forces",
+      "Inertia and Newton's First Law",
+      "Newton's Second Law and Momentum",
+      "Newton's Third Law and Conservation of Momentum",
+    ],
+  },
+
+  // ── Gravitation — WS1 (pdf) + WS2 (pdf). ──
+  "gravitation-1": {
+    id: "gravitation-1", chapterName: "Gravitation", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Gravitation_WS1.pdf",
+    pdf: phys("03. Gravitation/Gravitation WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Gravitation WS 1 (LWS)",
+    subtopics: [
+      "Universal Law of Gravitation",
+      "Free Fall, Mass and Weight",
+      "Thrust and Pressure",
+      "Buoyancy, Archimedes' Principle and Relative Density",
+    ],
+  },
+  "gravitation-2": {
+    id: "gravitation-2", chapterName: "Gravitation", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Gravitation_WS2.pdf",
+    pdf: phys("03. Gravitation/Gravitation WS 2.pdf"),
+    note: "NDA Foundation (Class 9) — Gravitation WS 2 (LWS)",
+    subtopics: [
+      "Universal Law of Gravitation",
+      "Free Fall, Mass and Weight",
+      "Thrust and Pressure",
+      "Buoyancy, Archimedes' Principle and Relative Density",
+    ],
+  },
+
+  // ── Work and Energy — WS1 (pdf) + WS2 (pdf). ──
+  "work-energy-1": {
+    id: "work-energy-1", chapterName: "Work and Energy", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Work_and_Energy_WS1.pdf",
+    pdf: phys("04. Work and Energy/Work and Energy WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Work and Energy WS 1 (LWS)",
+    subtopics: [
+      "Work and Its Measurement",
+      "Kinetic and Potential Energy",
+      "Conservation of Energy",
+      "Power",
+    ],
+  },
+  "work-energy-2": {
+    id: "work-energy-2", chapterName: "Work and Energy", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Work_and_Energy_WS2.pdf",
+    pdf: phys("04. Work and Energy/Work and Energy WS 2.pdf"),
+    note: "NDA Foundation (Class 9) — Work and Energy WS 2 (LWS)",
+    subtopics: [
+      "Work and Its Measurement",
+      "Kinetic and Potential Energy",
+      "Conservation of Energy",
+      "Power",
+    ],
+  },
+
+  // ── Sound — WS1 (pdf) + WS2 (docx → converted). ──
+  "sound-1": {
+    id: "sound-1", chapterName: "Sound", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Sound_WS1.pdf",
+    pdf: phys("05. Sound/Sound WS 1.pdf"),
+    note: "NDA Foundation (Class 9) — Sound WS 1 (LWS)",
+    subtopics: [
+      "Production and Propagation of Sound",
+      "Characteristics of Sound Waves",
+      "Reflection of Sound — Echo, Reverberation and SONAR",
+      "Structure and Working of the Human Ear",
+    ],
+  },
+  "sound-2": {
+    id: "sound-2", chapterName: "Sound", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Sound_WS2.pdf",
+    docxSource: phys("05. Sound/Sound WS 2.docx"), pdf: converted("sound-2.pdf"),
+    note: "NDA Foundation (Class 9) — Sound WS 2 (LWS)",
+    subtopics: [
+      "Production and Propagation of Sound",
+      "Characteristics of Sound Waves",
+      "Reflection of Sound — Echo, Reverberation and SONAR",
+      "Structure and Working of the Human Ear",
+    ],
+  },
+
+  // ── Light - Reflection and Refraction — WS1 (pdf) + WS2/WS3 (docx → converted). ──
+  "light-1": {
+    id: "light-1", chapterName: "Light - Reflection and Refraction", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Light_Reflection_and_Refraction_WS1.pdf",
+    pdf: phys("06. Light/Light Reflection and Refraction WS 1.pdf"),
+    note: "NDA Foundation (Class 10) — Light - Reflection and Refraction WS 1 (LWS)",
+    subtopics: [
+      "Reflection and Spherical Mirrors",
+      "Mirror Formula and Magnification",
+      "Refraction and Refractive Index",
+      "Lenses, Lens Formula and Power",
+    ],
+  },
+  "light-2": {
+    id: "light-2", chapterName: "Light - Reflection and Refraction", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Light_Reflection_and_Refraction_WS2.pdf",
+    docxSource: phys("06. Light/Light Reflection and Refraction WS 2.docx"), pdf: converted("light-2.pdf"),
+    note: "NDA Foundation (Class 10) — Light - Reflection and Refraction WS 2 (LWS)",
+    subtopics: [
+      "Reflection and Spherical Mirrors",
+      "Mirror Formula and Magnification",
+      "Refraction and Refractive Index",
+      "Lenses, Lens Formula and Power",
+    ],
+  },
+  "light-3": {
+    id: "light-3", chapterName: "Light - Reflection and Refraction", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Light_Reflection_and_Refraction_WS3.pdf",
+    docxSource: phys("06. Light/Light Reflection and Refraction WS 3.docx"), pdf: converted("light-3.pdf"),
+    note: "NDA Foundation (Class 10) — Light - Reflection and Refraction WS 3 (LWS)",
+    subtopics: [
+      "Reflection and Spherical Mirrors",
+      "Mirror Formula and Magnification",
+      "Refraction and Refractive Index",
+      "Lenses, Lens Formula and Power",
+    ],
+  },
+
+  // ── The Human Eye and the Colourful World — single WS (pdf). ──
+  "human-eye-1": {
+    id: "human-eye-1", chapterName: "The Human Eye and the Colourful World", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__The_Human_Eye_and_the_Colourful_World_WS1.pdf",
+    pdf: phys("07. The_Human_Eye/Human Eye and Colourful World WS.pdf"),
+    note: "NDA Foundation (Class 10) — The Human Eye and the Colourful World WS (LWS)",
+    subtopics: [
+      "The Human Eye and Power of Accommodation",
+      "Defects of Vision and Their Correction",
+      "Refraction through a Prism and Dispersion",
+      "Atmospheric Refraction and Scattering of Light",
+    ],
+  },
+
+  // ── Electricity — WS1 (pdf). ──
+  "electricity-1": {
+    id: "electricity-1", chapterName: "Electricity", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Electricity_WS1.pdf",
+    pdf: phys("08. Electricity/Electricity WS 1.pdf"),
+    note: "NDA Foundation (Class 10) — Electricity WS 1 (LWS)",
+    subtopics: [
+      "Electric Charge, Current and Potential Difference",
+      "Ohm's Law and Resistance",
+      "Combination of Resistors",
+      "Electric Power and Heating Effect of Current",
+    ],
+  },
+
+  // ── Magnetic Effects of Electric Current — WS1 (pdf) + WS2 (docx → converted). ──
+  "magnetic-1": {
+    id: "magnetic-1", chapterName: "Magnetic Effects of Electric Current", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Magnetic_Effects_of_Electric_Current_WS1.pdf",
+    pdf: phys("09. Magnetic_Effects_of_Electric_Current/Magnetic Effects of Electric Current WS 1.pdf"),
+    note: "NDA Foundation (Class 10) — Magnetic Effects of Electric Current WS 1 (LWS)",
+    subtopics: [
+      "Magnets, Magnetic Field and Field Lines",
+      "Magnetic Effect of Current — Conductor, Loop and Solenoid",
+      "Force on a Current-Carrying Conductor and Electric Motor",
+      "Electromagnetic Induction and Generator",
+    ],
+  },
+  "magnetic-2": {
+    id: "magnetic-2", chapterName: "Magnetic Effects of Electric Current", subjectName: "Physics",
+    sourceFile: "Foundation_Physics__Magnetic_Effects_of_Electric_Current_WS2.pdf",
+    docxSource: phys("09. Magnetic_Effects_of_Electric_Current/Magnetic Effects of Electric Current WS 2.docx"), pdf: converted("magnetic-2.pdf"),
+    note: "NDA Foundation (Class 10) — Magnetic Effects of Electric Current WS 2 (LWS)",
+    subtopics: [
+      "Magnets, Magnetic Field and Field Lines",
+      "Magnetic Effect of Current — Conductor, Loop and Solenoid",
+      "Force on a Current-Carrying Conductor and Electric Motor",
+      "Electromagnetic Induction and Generator",
+    ],
   },
 };
 
