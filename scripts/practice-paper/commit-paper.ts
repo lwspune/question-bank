@@ -49,7 +49,11 @@ async function main() {
 
   const recs = loadRecords(spec);
   validateRecords(spec, recs);
-  const rows = recs.map((r) => recToParsedRow(spec, r));
+  // With no paper to back the test, dup/flawed rows have no consumer (the OMR Excel
+  // is built from the records file, not the bank) — so a no-paper ingest commits ONLY
+  // the genuinely-new practice questions. With a paper, ALL rows are committed (OMR parity).
+  const commitRecs = spec.createPaper === false ? recs.filter((r) => statusOf(r) === "new") : recs;
+  const rows = commitRecs.map((r) => recToParsedRow(spec, r));
   const examId = examIdOf(spec);
 
   const byStatus = (s: string) => recs.filter((r) => statusOf(r) === s).map((r) => r.n);
@@ -107,6 +111,15 @@ async function main() {
   console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
 
   await client.from("upload_jobs").update({ status: "COMPLETED", total_rows: count ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() }).eq("id", jobId);
+
+  // createPaper:false => bank-only ingest (e.g. "create only the Excel" + bank rows).
+  // The rows are committed PRIVATE practice; flip-public still promotes status:"new".
+  if (spec.createPaper === false) {
+    console.log(`\ncreatePaper:false — bank rows committed, no /dashboard/papers paper created.`);
+    console.log(`Review the rows, then flip the non-dup/non-flawed rows PUBLIC:`);
+    console.log(`  npx tsx scripts/practice-paper/flip-public.ts ${spec.slug} --apply`);
+    return;
+  }
 
   // 2. Map question_number -> id, then build the paper in printed Q-order.
   const { data: qrows, error: qErr } = await client
