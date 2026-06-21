@@ -43,6 +43,9 @@ export type PaperRec = {
    *  dup + flawed stay PRIVATE (paper-backing only). Missing => "new". */
   status?: "new" | "dup" | "flawed";
   reviewNote?: string; // surfaced in dry-runs; for low-confidence / flawed items
+  /** Multi-chapter papers (a mock spanning chapters): the canonical DB chapter for
+   *  THIS question. Single-chapter papers omit it (falls back to spec.chapterName). */
+  chapter?: string;
 };
 
 export type PaperSpec = {
@@ -52,8 +55,13 @@ export type PaperSpec = {
   outName: string; // generated-papers/<outName>.xlsx
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
   subjectName: string; // DB subject ("Mathematics", "Geography", ...)
-  chapterName: string; // canonical DB chapter (must already exist)
-  subtopics: string[]; // valid DB subtopics for this chapter (records validated against this)
+  // Single-chapter mode: set chapterName + subtopics (the common case). Multi-chapter
+  // mode (a mock spanning chapters): set `chapters` (chapter -> its valid subtopics)
+  // and put a `chapter` on each record. The paper still files everything under ONE
+  // `section`; only the BANK rows go to their per-record chapter.
+  chapterName?: string; // canonical DB chapter (single-chapter mode; must already exist)
+  subtopics?: string[]; // valid DB subtopics for that chapter
+  chapters?: Record<string, string[]>; // multi-chapter mode: chapter -> valid subtopics
   pyqNote: string; // questions.pyq_note
   examName: string; // display name for the QuestionRow ("NDA")
   examId?: string; // DB exam id; defaults to the NDA EXAM_ID. Set for a non-NDA exam (e.g. Foundation Course).
@@ -134,6 +142,90 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: false,
   },
 
+  // LWS "APJ Maths Mock 5" — 120-q NDA Maths MOCK spanning 11 chapters, no printed
+  // key (answers derived + verified). First MULTI-CHAPTER paper (uses `chapters` +
+  // per-record `chapter`). Semantic dedup vs the 5,200-q NDA Maths bank: 68 dup /
+  // 48 new / 4 flawed. The whole 120-q test is committed PRIVATE + filed in one
+  // "APJ Maths Mock 5" paper section (OMR Q-order); only the 48 new flip PUBLIC.
+  // Re-derivation surfaced 4 EXISTING bank wrong-keys (logged to SUGGESTIONS.md).
+  "apj-maths-mock-5": {
+    slug: "apj-maths-mock-5",
+    title: "NDA Maths — APJ Mock 5",
+    recordsFile: "apj-maths-mock-5.records.json",
+    outName: "Tags_NDA_APJ_Maths_Mock_5",
+    sourceFile: "NDA_Maths_Practice__APJ_Maths_Mock_5.pdf",
+    subjectName: "Mathematics",
+    chapters: {
+      "Limits & Continuity": [
+        "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+        "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+        "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+      ],
+      "Differentiation": [
+        "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+        "Parametric, Implicit, and Higher-Order Derivatives",
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      ],
+      "Application of Derivatives": [
+        "Tangents and Slopes",
+        "Monotonicity, Extrema, and Critical Points",
+        "Optimisation — Geometric, Trigonometric, AM-GM",
+      ],
+      "Trigonometric Identities": [
+        "Specific Values and Quadrants",
+        "Compound Angle Formulas",
+        "Multiple and Half-Angle Formulas",
+        "Product-to-Sum and Sum-to-Product Identities",
+        "Maximum and Minimum of Trigonometric Expressions",
+      ],
+      "Trigonometric Equations": [
+        "General Solutions and Counting Solutions of Trigonometric Equations",
+        "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+        "Simultaneous and Combined Trigonometric Systems",
+      ],
+      "Properties of Triangle": [
+        "Sine and Cosine Rules — Solving Triangles",
+        "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+        "In-circle and Regular Polygon Geometry",
+      ],
+      "Complex Numbers": [
+        "Modulus, Argument, and Conjugate",
+        "Powers and Roots",
+        "Cube Roots of Unity",
+      ],
+      "Lines": [
+        "Equation, Slope, and Family of Lines",
+        "Distance, Section, and Locus",
+        "Angle Between Lines, Parallelism, and Perpendicularity",
+        "Triangles, Quadrilaterals, and Polygons",
+      ],
+      "Circles": [
+        "Circle Equation — Centre, Radius, Diameter, and Properties",
+        "Circles Through Given Points and Concyclicity",
+        "Inscribed Geometry, Tangents, and Segments",
+      ],
+      "Matrices & Determinants": [
+        "Matrix Operations, Polynomials, and Equations",
+        "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+        "Determinant Properties, Operations, and Sums",
+        "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+        "Cofactors, Adjoint, and Inverse",
+        "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+      ],
+      "Sequence & Series": [
+        "Arithmetic Progressions",
+        "Geometric Progressions",
+        "Harmonic Progressions and the Three Means",
+        "Interrelating AP, GP and HP",
+        "Special Series and Special Sums",
+      ],
+    },
+    pyqNote: "NDA Maths practice — LWS APJ Maths Mock 5",
+    examName: "NDA",
+    section: { key: "apj-maths-mock-5", label: "APJ Maths Mock 5" },
+    bankAdd: true,
+  },
+
   // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
   // (answers derived from the underlined word in each sentence). Dedup found all
   // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
@@ -171,16 +263,38 @@ export const statusOf = (r: PaperRec): "new" | "dup" | "flawed" => r.status ?? "
 /** The DB exam id for a paper — its own examId override, else the default NDA EXAM_ID. */
 export const examIdOf = (spec: PaperSpec): string => spec.examId ?? EXAM_ID;
 
+/** The canonical DB chapter a record files under: its own `chapter`, else the paper's
+ *  single `chapterName`. Throws if neither is set (mis-configured record). */
+export function chapterOf(spec: PaperSpec, r: PaperRec): string {
+  const ch = r.chapter ?? spec.chapterName;
+  if (!ch) throw new Error(`Q${r.n}: no chapter (record has no \`chapter\` and spec has no \`chapterName\`)`);
+  return ch;
+}
+
+/** Valid DB subtopics for a chapter under this paper: the multi-chapter `chapters`
+ *  entry, else the single-chapter `subtopics`. Throws if neither is configured. */
+export function subtopicsFor(spec: PaperSpec, chapter: string): string[] {
+  const subs = spec.chapters?.[chapter] ?? spec.subtopics;
+  if (!subs) throw new Error(`no subtopics configured for chapter "${chapter}"`);
+  return subs;
+}
+
+/** All chapters this paper touches (for logging) — `chapters` keys or the single chapter. */
+export const chaptersOf = (spec: PaperSpec): string[] =>
+  spec.chapters ? Object.keys(spec.chapters) : spec.chapterName ? [spec.chapterName] : [];
+
 /** Hard-validate a record set; throws on the first problem (transcription bug). */
 export function validateRecords(spec: PaperSpec, recs: PaperRec[]): void {
-  const subs = new Set(spec.subtopics);
   const seen = new Set<number>();
   for (const r of recs) {
     if (seen.has(r.n)) throw new Error(`duplicate question number ${r.n}`);
     seen.add(r.n);
     if (!LABELS.includes(r.answer as OptionLabel)) throw new Error(`Q${r.n}: bad answer "${r.answer}"`);
     if (!DIFFICULTIES.has(r.difficulty)) throw new Error(`Q${r.n}: bad difficulty "${r.difficulty}"`);
-    if (!subs.has(r.subtopic)) throw new Error(`Q${r.n}: subtopic not in spec: "${r.subtopic}"`);
+    const ch = chapterOf(spec, r);
+    if (spec.chapters && !spec.chapters[ch]) throw new Error(`Q${r.n}: chapter not in spec.chapters: "${ch}"`);
+    const subs = new Set(subtopicsFor(spec, ch));
+    if (!subs.has(r.subtopic)) throw new Error(`Q${r.n}: subtopic not valid for chapter "${ch}": "${r.subtopic}"`);
     for (const [lab, val] of [["A", r.optA], ["B", r.optB], ["C", r.optC], ["D", r.optD]] as const) {
       if (!val || !val.trim()) throw new Error(`Q${r.n}: empty option ${lab}`);
     }
@@ -207,7 +321,7 @@ export function recToQuestionRow(spec: PaperSpec, r: PaperRec): QuestionRow {
     pyqNote: null,
     exam: { id: spec.examName.toLowerCase(), name: spec.examName },
     subject: { id: spec.subjectName.toLowerCase(), name: spec.subjectName },
-    chapter: { id: spec.section.key, name: spec.chapterName },
+    chapter: { id: chapterOf(spec, r).toLowerCase().replace(/[^a-z0-9]+/g, "-"), name: chapterOf(spec, r) },
     subtopic: { id: r.subtopic, name: r.subtopic },
     options,
   };
@@ -221,7 +335,7 @@ export function recToParsedRow(spec: PaperSpec, r: PaperRec): ParsedRowPayload {
     sourceRow: r.n,
     questionNumber: String(r.n),
     subjectName: spec.subjectName,
-    chapterName: spec.chapterName,
+    chapterName: chapterOf(spec, r),
     subtopicName: r.subtopic,
     text: r.stem,
     difficulty: r.difficulty,
