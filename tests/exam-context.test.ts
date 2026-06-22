@@ -158,8 +158,15 @@ describe("getActiveTab", () => {
     );
   });
 
+  it("returns 'papers' for /dashboard/papers and sub-routes", () => {
+    expect(getActiveTab("/dashboard/papers")).toBe("papers");
+    expect(getActiveTab("/dashboard/papers/")).toBe("papers");
+    expect(getActiveTab("/dashboard/papers/abc-123")).toBe("papers");
+  });
+
   it("returns null for routes not owned by a primary surface", () => {
     expect(getActiveTab("/")).toBeNull();
+    // bare /dashboard is admin tooling, not a primary tab
     expect(getActiveTab("/dashboard")).toBeNull();
     expect(getActiveTab("/upload")).toBeNull();
     expect(getActiveTab("/uploads")).toBeNull();
