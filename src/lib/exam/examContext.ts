@@ -114,19 +114,22 @@ export function resolveNotesHref(slug: string | null | undefined): string {
   return exam?.notesPath ?? "/notes";
 }
 
-export type ActiveTab = "bank" | "guides" | "notes";
+export type ActiveTab = "bank" | "guides" | "notes" | "papers";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
- * routes outside the three primary surfaces (dashboard, login, edit pages).
+ * routes outside the primary surfaces (bare dashboard, login, edit pages).
  *
  * Match is on path segments — `/browser-other` is not a `/browse` match.
+ * `/dashboard/papers` is the collaborative paper builder (the Papers tab,
+ * org-members only); bare `/dashboard` is admin tooling and owns no tab.
  */
 export function getActiveTab(pathname: string): ActiveTab | null {
   const path = pathname.split("?")[0].split("#")[0];
   if (matchesSegment(path, "/browse")) return "bank";
   if (matchesSegment(path, "/guide")) return "guides";
   if (matchesSegment(path, "/notes")) return "notes";
+  if (matchesSegment(path, "/dashboard/papers")) return "papers";
   return null;
 }
 

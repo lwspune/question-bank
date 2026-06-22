@@ -2,13 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, NotebookPen } from "lucide-react";
+import { BookOpen, Compass, FileText, NotebookPen } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 
 type Props = {
   bankHref: string;
   guidesHref: string;
   notesHref: string;
+  /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
+   *  /dashboard/papers redirects non-members to /login, so showing it to anon
+   *  or students would dead-end them. */
+  showPapers?: boolean;
 };
 
 type Tab = {
@@ -18,7 +22,12 @@ type Tab = {
   Icon: typeof BookOpen;
 };
 
-export default function PrimaryNav({ bankHref, guidesHref, notesHref }: Props) {
+export default function PrimaryNav({
+  bankHref,
+  guidesHref,
+  notesHref,
+  showPapers = false,
+}: Props) {
   const pathname = usePathname() ?? "/";
   const active = getActiveTab(pathname);
 
@@ -26,6 +35,16 @@ export default function PrimaryNav({ bankHref, guidesHref, notesHref }: Props) {
     { id: "bank", label: "Bank", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
+    ...(showPapers
+      ? [
+          {
+            id: "papers" as const,
+            label: "Papers",
+            href: "/dashboard/papers",
+            Icon: FileText,
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -42,8 +61,9 @@ export default function PrimaryNav({ bankHref, guidesHref, notesHref }: Props) {
             aria-current={isActive ? "page" : undefined}
             aria-label={label}
             className={
-              // Icon-only on phones (label hidden) so the 3 tabs + exam pill +
-              // account all fit at 360px; label returns from sm: up.
+              // Icon-only on phones (label hidden) so the tabs + exam pill +
+              // account fit at 360px; label returns from sm: up. (Papers only
+              // shows for org members, who skew desktop.)
               "group inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 sm:py-1.5 " +
               (isActive
                 ? "bg-brand-accent/10 text-brand-accent"

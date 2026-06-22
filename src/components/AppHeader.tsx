@@ -46,6 +46,7 @@ export default async function AppHeader() {
           bankHref={examContext.bankHref}
           guidesHref={examContext.guidesHref}
           notesHref={examContext.notesHref}
+          showPapers={!!member}
         />
 
         <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
