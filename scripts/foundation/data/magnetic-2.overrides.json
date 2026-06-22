@@ -1,59 +1,4 @@
 {
-  "_comment": "Magnetic Effects WS2 - no printed key; answers DERIVED.",
-  "_excluded_figures": [
-    {
-      "number": 3,
-      "desc": "Positron entering uniform field at right angles with field direction shown in figure"
-    },
-    {
-      "number": 16,
-      "desc": "Field pattern inside a current-carrying solenoid; options are figures"
-    },
-    {
-      "number": 19,
-      "desc": "Figure shows magnetic field lines between two faces A and B of two magnets"
-    },
-    {
-      "number": 20,
-      "desc": "Wire in a trough of mercury between magnet pole pieces N and S shown in diagram"
-    },
-    {
-      "number": 21,
-      "desc": "Concentric circles with arrows centred at wire AB shown in figure"
-    },
-    {
-      "number": 22,
-      "desc": "Correct pattern of field lines of a current-carrying circular loop; options are figures"
-    },
-    {
-      "number": 23,
-      "desc": "Electron entering magnetic field at right angles as shown in figure"
-    },
-    {
-      "number": 24,
-      "desc": "Alpha particle entering uniform field as shown in figure"
-    },
-    {
-      "number": 25,
-      "desc": "Electron and proton moving in uniform field as shown in figure"
-    },
-    {
-      "number": 26,
-      "desc": "Alpha particle entering uniform field with field direction shown in figure"
-    },
-    {
-      "number": 27,
-      "desc": "Key/variable-source circuit arrangement with field lines over plane ABCD shown in figure"
-    },
-    {
-      "number": 28,
-      "desc": "Circular current loop in a plane with key ON; A and B faces shown in figure"
-    },
-    {
-      "number": 30,
-      "desc": "Resultant field at point P midway between two parallel current-carrying wires shown in figure"
-    }
-  ],
   "1": {
     "answer": "B",
     "reason": "Field lines show both direction (tangent) and relative strength (line density)."
@@ -61,6 +6,10 @@
   "2": {
     "answer": "B",
     "reason": "Field at centre of a circular coil of N turns is B = mu0*N*I/(2r)."
+  },
+  "3": {
+    "answer": "B",
+    "reason": "Positron (charge +e) moves up (v = +y), uniform field points right (B = +x). F = qv x B = e(y x x) = e(-z) = into the page. So the force on the positron is into the page = option B."
   },
   "4": {
     "answer": "C",
@@ -96,7 +45,7 @@
   },
   "12": {
     "answer": "A",
-    "reason": "A 15 A circuit is for high-power appliances such as geysers/heaters."
+    "reason": "A 15 A wiring rating is used for the high-current, high-power appliances (geyser, heater, AC), not for low-power devices like fans/bulbs which use 5 A wiring. So the 15 A circuit is for higher power ratings such as a geyser = option A."
   },
   "13": {
     "answer": "B",
@@ -108,7 +57,11 @@
   },
   "15": {
     "answer": "B",
-    "reason": "Alnico is an alloy of Aluminium, Nickel and Cobalt (Al-Ni-Co)."
+    "reason": "Alnico is the alloy of Aluminium, Nickel and Cobalt (Al-Ni-Co), used to make strong permanent magnets = option B."
+  },
+  "16": {
+    "answer": "B",
+    "reason": "REVIEW: Inside a current-carrying solenoid the field is uniform - straight and parallel. The standard textbook diagram of the solenoid field (straight parallel lines inside, looping round at the ends, resembling a bar magnet) is option B. Option D (straight parallel lines with no return loops) is the partial 'inside-only' view, so the figure is mildly ambiguous; B is the canonical complete pattern."
   },
   "17": {
     "answer": "A",
@@ -118,9 +71,53 @@
     "answer": "C",
     "reason": "REVIEW: Permanent magnets are made of steel, alnico and nipermag; tungsten steel is also used. Printed sub-options map (a)A and B,(b)A B and D,(c)A B and C,(d)A and D. Best guess C (1,2 and 3)."
   },
+  "19": {
+    "answer": "A",
+    "reason": "REVIEW: The field lines run continuously from face A to face B in a single direction (arrows A->B), which would make A a North pole and B a South pole (attraction). The option that names the poles (C) says 'A south, B north' which is the REVERSE of the figure and therefore wrong; options B and D (same pole on both faces) are also wrong. The only correct statement left is (A): a field has one definite direction at any point in space, which the unidirectional lines in the figure illustrate. Answer A by elimination; flagged because the intended pole-naming option appears reversed."
+  },
+  "20": {
+    "answer": "D",
+    "reason": "Current flows downward in the wire (I L = -y); N pole left, S pole right means the field points left-to-right (B = +x). By Fleming's left-hand rule F = I L x B = (-y) x (+x) = +z = out of the page i.e. towards the observer = option D."
+  },
+  "21": {
+    "answer": "B",
+    "reason": "REVIEW: For the vertical wire AB (A top, B bottom) the concentric field circles are drawn anti-clockwise (arrows pointing up on the left side). By the right-hand grip rule an anti-clockwise field as viewed from the top corresponds to current flowing upward, i.e. from B to A = option B. Flagged because the circulation sense in the stylised 2-D drawing is somewhat hard to read."
+  },
+  "22": {
+    "answer": "B",
+    "reason": "REVIEW: The magnetic field of a current-carrying circular loop is a set of concentric circles around each segment of the wire which become straight and parallel through the centre, the whole pattern resembling a bar-magnet (dipole) with an N face and an S face. The symmetric figure with concentric circles at both the top and bottom of the wire merging into the dipole envelope (option B) is the correct standard pattern. Flagged because the four option figures differ only in fine detail."
+  },
+  "23": {
+    "answer": "A",
+    "reason": "Electron (charge -e) moves down (v = -y), field points right (B = +x). F = qv x B = (-e)((-y) x x) = (-e)(+z) = into the page = option A."
+  },
+  "24": {
+    "answer": "A",
+    "reason": "REVIEW: The stem asks for the 'direction of motion' but the figure already shows the alpha particle moving up, so it must intend the direction of FORCE. Alpha (+2e) moves up (v = +y), field points left (B = -x). F = q v x B = 2e(y x (-x)) = 2e(+z) = out of the page = option A. Flagged because the question wording ('motion') is inconsistent with what is asked."
+  },
+  "25": {
+    "answer": "B",
+    "reason": "Field points right (B = +x). Proton (+e) moves up (v = +y): F = e(y x x) = e(-z) = into the page. Electron (-e) moves down (v = -y): F = (-e)((-y) x x) = (-e)(+z) = into the page. Both opposite charges moving in opposite directions experience force INTO the page, so the answer is option B (forces both pointing into the plane of the paper)."
+  },
+  "26": {
+    "answer": "B",
+    "reason": "Alpha particle (+2e) moves down (v = -y), field points right (B = +x). F = q v x B = 2e((-y) x x) = 2e(+z) = out of the page = option B."
+  },
+  "27": {
+    "answer": "C",
+    "reason": "REVIEW: The magnetic field lines around a long straight current-carrying conductor are concentric circles in the plane perpendicular to it, so on plane ABCD they are concentric circles = option C. (The stem also says the circuit is open/key taken out, which would strictly mean no current and hence no field at all; no 'no field' option is offered, so the intended answer is the standard concentric-circle pattern C.) Flagged for the inconsistent 'circuit open' wording."
+  },
+  "28": {
+    "answer": "C",
+    "reason": "Clock rule: the face from which the current appears anti-clockwise is the North pole. The current seen from A is anti-clockwise, so face A is the North pole; from B it is clockwise, so B is the South pole. This does not depend on the current magnitude, so the N-pole is on the face close to A = option C."
+  },
   "29": {
     "answer": "A",
     "reason": "REVIEW: By right-hand rule for current east->west, the field points north-to-south at the point directly below the wire. Best guess A."
+  },
+  "30": {
+    "answer": "B",
+    "reason": "Both wires carry current to the right. At point P (midway) the upper wire (P below it) gives a field out of the page, while the lower wire (P above it) gives a field into the page; being equidistant the two are equal in magnitude and opposite in direction, so they cancel and the resultant field is zero = option B."
   },
   "31": {
     "answer": "A",
@@ -217,5 +214,60 @@
   "54": {
     "answer": "A",
     "reason": "REVIEW: Mean force per electron f = B e v_d with I = n e A v_d; the given data yield ~1.2e-24 N order. Closest option is 12e-25 = 1.2e-24 N -> option A. Best guess A."
-  }
+  },
+  "_comment": "Magnetic Effects WS2 - no printed key; answers DERIVED.",
+  "_excluded_figures": [
+    {
+      "number": 3,
+      "desc": "Positron entering uniform field at right angles with field direction shown in figure"
+    },
+    {
+      "number": 16,
+      "desc": "Field pattern inside a current-carrying solenoid; options are figures"
+    },
+    {
+      "number": 19,
+      "desc": "Figure shows magnetic field lines between two faces A and B of two magnets"
+    },
+    {
+      "number": 20,
+      "desc": "Wire in a trough of mercury between magnet pole pieces N and S shown in diagram"
+    },
+    {
+      "number": 21,
+      "desc": "Concentric circles with arrows centred at wire AB shown in figure"
+    },
+    {
+      "number": 22,
+      "desc": "Correct pattern of field lines of a current-carrying circular loop; options are figures"
+    },
+    {
+      "number": 23,
+      "desc": "Electron entering magnetic field at right angles as shown in figure"
+    },
+    {
+      "number": 24,
+      "desc": "Alpha particle entering uniform field as shown in figure"
+    },
+    {
+      "number": 25,
+      "desc": "Electron and proton moving in uniform field as shown in figure"
+    },
+    {
+      "number": 26,
+      "desc": "Alpha particle entering uniform field with field direction shown in figure"
+    },
+    {
+      "number": 27,
+      "desc": "Key/variable-source circuit arrangement with field lines over plane ABCD shown in figure"
+    },
+    {
+      "number": 28,
+      "desc": "Circular current loop in a plane with key ON; A and B faces shown in figure"
+    },
+    {
+      "number": 30,
+      "desc": "Resultant field at point P midway between two parallel current-carrying wires shown in figure"
+    }
+  ]
 }
