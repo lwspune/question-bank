@@ -1,0 +1,687 @@
+{
+  "_note": "Physics review-pass verdicts. flips: answer corrected (apply to DB is_correct + rehash). flawed: keep PRIVATE (no confident answer). confirmed: answer correct, flag cleared, eligible for PUBLIC.",
+  "flips": [
+    {
+      "id": "forces-1",
+      "q": 13,
+      "from": "B",
+      "to": "C",
+      "why": "coin falls behind => train accelerated, not uniform"
+    },
+    {
+      "id": "forces-2",
+      "q": 25,
+      "from": "A",
+      "to": "B",
+      "why": "rate-of-change-of-momentum=Force(iii); (a)unbalanced->change-in-state(ii); B all-correct"
+    },
+    {
+      "id": "forces-2",
+      "q": 26,
+      "from": "A",
+      "to": "B",
+      "why": "same as Q25 relabeled: 1-B,2-D,3-A,4-C = option B"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 8,
+      "from": "A",
+      "to": "B",
+      "why": "upthrust ∝ submerged volume = half the volume"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 25,
+      "from": "D",
+      "to": "B",
+      "why": "loss in weight MORE in denser sea water"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 41,
+      "from": "B",
+      "to": "A",
+      "why": "1% g drop via depth = 64 km below = A"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 60,
+      "from": "C",
+      "to": "B",
+      "why": "L=V/A=2000 m=2e5 cm=10^6/5=option B (agent mis-mapped)"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 58,
+      "from": "A",
+      "to": "C",
+      "why": "both statements false -> neither true = C"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 64,
+      "from": "D",
+      "to": "A",
+      "why": "free-fall incorrect statements 1,3,4 = A,C,D = option A"
+    },
+    {
+      "id": "light-2",
+      "q": 67,
+      "from": "A",
+      "to": "B",
+      "why": "driver moves WITH mirror toward stationary truck -> image approaches at 2 m/s, not 4"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 17,
+      "from": "A",
+      "to": "D",
+      "why": "DC motor=Fleming left hand=not right-hand rule (same as magnetic-1 Q16=D)"
+    }
+  ],
+  "flawed": [
+    {
+      "id": "motion-1",
+      "q": 60,
+      "why": "CD avg speed ~2.67, nearest option 2.75; figure-read + imperfect options"
+    },
+    {
+      "id": "motion-1",
+      "q": 61,
+      "why": "correct 13s not among options (18/16/4/22)"
+    },
+    {
+      "id": "forces-2",
+      "q": 27,
+      "why": "no fully-correct friction mapping offered (D best, 2/4)"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 1,
+      "why": "P=18500 Pa not among options (closest 1.6e4)"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 10,
+      "why": "garbled stem 'r earth radii'; r unspecified"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 23,
+      "why": "least apparent weight ambiguous (0 vs >0 vs depends)"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 46,
+      "why": "assertion-reason S2 true inside / false outside - ambiguous"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 49,
+      "why": "stem T/3 gives 8h/9 (not an option); options fit T/5"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 8,
+      "why": "figure spring-balance readings illegible"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 23,
+      "why": "correct match a-iv,b-i,c-ii,d-iii not offered"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 55,
+      "why": "two incorrect statements (1 mass-vector AND 4 g-upward); single-answer flawed"
+    },
+    {
+      "id": "work-energy-1",
+      "q": 1,
+      "why": "horizontal F=Mg tan45=Mg not among options (B=Mg√2 is the tension)"
+    },
+    {
+      "id": "work-energy-1",
+      "q": 53,
+      "why": "W=Fs cosθ depends on all 4 listed options; independent quantity not listed"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 32,
+      "why": "correct unit map 1-C,2-B,3-D,4-A not offered"
+    },
+    {
+      "id": "sound-1",
+      "q": 45,
+      "why": "no correct option (absorbents reduce reverberation; all options wrong/contradictory)"
+    },
+    {
+      "id": "sound-1",
+      "q": 54,
+      "why": "v_water>v_air not listed; A==C printed dup both 'v_a>v_w'"
+    },
+    {
+      "id": "light-1",
+      "q": 54,
+      "why": "convex mirror v=1.5m (R=4->f=2,u=-6) not an option; B=3m is sign-error answer"
+    },
+    {
+      "id": "light-1",
+      "q": 63,
+      "why": "garbled stem mixing lens/mirror; options inconsistent"
+    },
+    {
+      "id": "light-2",
+      "q": 39,
+      "why": "window is a near object; multiple distant sources (sun/tree) valid -> ambiguous"
+    },
+    {
+      "id": "light-2",
+      "q": 43,
+      "why": "convex mirror AND concave lens both give position-independent image -> 2 valid"
+    },
+    {
+      "id": "light-2",
+      "q": 68,
+      "why": "which two guidelines are wrong is uncertain (stmt1 '3 outlines' arguably fine)"
+    },
+    {
+      "id": "light-3",
+      "q": 15,
+      "why": "same as light-2 Q39: multiple distant sources valid -> ambiguous"
+    },
+    {
+      "id": "light-3",
+      "q": 22,
+      "why": "'opposite to window' and 'facing window' = same wall (duplicate options)"
+    },
+    {
+      "id": "light-3",
+      "q": 62,
+      "why": "'very close' (A) and 'very near' (C) duplicate the correct 'nearer' answer"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 13,
+      "why": "rainbow needs refraction+dispersion+TIR; options C and D identical"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 27,
+      "why": "S1 garbled ('25 m'); options A and B identical"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 57,
+      "why": "angle e also correctly marked but no option lists it with r,A,D"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 59,
+      "why": "correct (incidence p, emergence x, deviation z) not offered; A uses y not x"
+    },
+    {
+      "id": "magnetic-1",
+      "q": 17,
+      "why": "two valid perpendicular pairs: V&Y (A) and X&V (C)"
+    },
+    {
+      "id": "magnetic-1",
+      "q": 33,
+      "why": "B=4.22e-3 T; option B has right mantissa 422.4 but wrong exponent e-7 (=4.22e-5)"
+    },
+    {
+      "id": "magnetic-1",
+      "q": 41,
+      "why": "in-plane B + in-plane current => force out of/into page, not among in-plane options"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 8,
+      "why": "options A==B dup; correct live/neutral/earth color set absent"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 9,
+      "why": "torque ~6.9e-3 (cos) / 4e-3 (sin) Nm, neither an option"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 10,
+      "why": "compass deflection direction needs current direction (unspecified)"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 16,
+      "why": "'inside' solenoid field: B (full pattern) vs D (inside-only parallel) ambiguous"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 18,
+      "why": "steel/alnico/nipermag/tungsten all permanent-magnet materials; no complete option"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 38,
+      "why": "magnetic-geographic axis angle ~11deg not among 16/17/20/18; worksheet value unverifiable"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 44,
+      "why": "live-neutral contact = short circuit not overload; correct 'B and C' not an option"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 52,
+      "why": "true statements 1,2 = 'A and B' not offered"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 54,
+      "why": "garbled stem; B field value unclear/missing"
+    },
+    {
+      "id": "sound-2",
+      "q": 16,
+      "why": "two inclined-tube figures (A and C) ambiguous at low res"
+    },
+    {
+      "id": "sound-2",
+      "q": 32,
+      "why": "correct loudness/pitch/timbre/supersonic map not offered; supersonic has no good match"
+    },
+    {
+      "id": "sound-2",
+      "q": 39,
+      "why": "correct audible/infrasonic/ultrasonic/supersonic map (1-D,2-A,3-C,4-B) not offered"
+    }
+  ],
+  "confirmed": [
+    {
+      "id": "motion-1",
+      "q": 7,
+      "ans": "A",
+      "note": "A==B printed duplicate, A correct"
+    },
+    {
+      "id": "motion-1",
+      "q": 18,
+      "ans": "D"
+    },
+    {
+      "id": "motion-1",
+      "q": 34,
+      "ans": "D",
+      "note": "(i)=2000mm value is a paper typo; D intended"
+    },
+    {
+      "id": "forces-2",
+      "q": 22,
+      "ans": "C"
+    },
+    {
+      "id": "forces-2",
+      "q": 30,
+      "ans": "B"
+    },
+    {
+      "id": "electricity-1",
+      "q": 2,
+      "ans": "B"
+    },
+    {
+      "id": "electricity-1",
+      "q": 48,
+      "ans": "C"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 16,
+      "ans": "A"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 29,
+      "ans": "B"
+    },
+    {
+      "id": "gravitation-1",
+      "q": 37,
+      "ans": "A"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 1,
+      "ans": "C"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 9,
+      "ans": "B"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 13,
+      "ans": "B"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 16,
+      "ans": "A"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 42,
+      "ans": "A"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 50,
+      "ans": "D"
+    },
+    {
+      "id": "gravitation-2",
+      "q": 51,
+      "ans": "D"
+    },
+    {
+      "id": "work-energy-1",
+      "q": 48,
+      "ans": "A",
+      "note": "A==C printed dup"
+    },
+    {
+      "id": "work-energy-1",
+      "q": 57,
+      "ans": "D"
+    },
+    {
+      "id": "work-energy-1",
+      "q": 66,
+      "ans": "A"
+    },
+    {
+      "id": "work-energy-1",
+      "q": 74,
+      "ans": "B"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 3,
+      "ans": "A"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 18,
+      "ans": "D",
+      "note": "off-topic pressure; optional reclassify to Gravitation"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 19,
+      "ans": "A",
+      "note": "off-topic pressure; optional reclassify"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 25,
+      "ans": "B"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 36,
+      "ans": "C",
+      "note": "5 stems vs 4 responses; 1-4 map correct"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 41,
+      "ans": "D"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 49,
+      "ans": "B",
+      "note": "off-topic buoyancy; worksheet uses 11/12"
+    },
+    {
+      "id": "work-energy-2",
+      "q": 68,
+      "ans": "C"
+    },
+    {
+      "id": "sound-1",
+      "q": 7,
+      "ans": "B",
+      "note": "assumes Delhi hotter than Chennai in summer"
+    },
+    {
+      "id": "sound-1",
+      "q": 26,
+      "ans": "B"
+    },
+    {
+      "id": "sound-1",
+      "q": 28,
+      "ans": "D"
+    },
+    {
+      "id": "sound-1",
+      "q": 61,
+      "ans": "C"
+    },
+    {
+      "id": "sound-1",
+      "q": 62,
+      "ans": "B"
+    },
+    {
+      "id": "light-1",
+      "q": 1,
+      "ans": "B"
+    },
+    {
+      "id": "light-1",
+      "q": 24,
+      "ans": "B"
+    },
+    {
+      "id": "light-1",
+      "q": 49,
+      "ans": "A",
+      "note": "TIR threshold; D=1e9>c also invalid but A intended"
+    },
+    {
+      "id": "light-1",
+      "q": 50,
+      "ans": "C",
+      "note": "values in m, labels say cm"
+    },
+    {
+      "id": "light-2",
+      "q": 22,
+      "ans": "C"
+    },
+    {
+      "id": "light-2",
+      "q": 63,
+      "ans": "A",
+      "note": "largest pin separation=student4=D=option A"
+    },
+    {
+      "id": "light-2",
+      "q": 72,
+      "ans": "C"
+    },
+    {
+      "id": "light-3",
+      "q": 25,
+      "ans": "A"
+    },
+    {
+      "id": "light-3",
+      "q": 39,
+      "ans": "B",
+      "note": "figure scale read ~11cm"
+    },
+    {
+      "id": "light-3",
+      "q": 41,
+      "ans": "C",
+      "note": "through-C ray must retrace; low-res, spot-check"
+    },
+    {
+      "id": "light-3",
+      "q": 50,
+      "ans": "D"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 5,
+      "ans": "C",
+      "note": "inverted prism, violet at top, 3rd from top=blue"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 43,
+      "ans": "B"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 44,
+      "ans": "A"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 56,
+      "ans": "A"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 58,
+      "ans": "B"
+    },
+    {
+      "id": "human-eye-1",
+      "q": 62,
+      "ans": "A"
+    },
+    {
+      "id": "magnetic-1",
+      "q": 16,
+      "ans": "D",
+      "note": "DC motor=Fleming left hand, not right-hand rule"
+    },
+    {
+      "id": "magnetic-1",
+      "q": 18,
+      "ans": "B",
+      "note": "parallel(lower R)->more heat for fixed supply"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 19,
+      "ans": "A",
+      "note": "by elimination; pole option C is reversed"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 21,
+      "ans": "B"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 22,
+      "ans": "B"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 24,
+      "ans": "A",
+      "note": "F=qvxB out of page"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 27,
+      "ans": "C"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 29,
+      "ans": "A"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 40,
+      "ans": "C"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 43,
+      "ans": "A"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 46,
+      "ans": "D"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 47,
+      "ans": "A"
+    },
+    {
+      "id": "magnetic-2",
+      "q": 48,
+      "ans": "C"
+    },
+    {
+      "id": "sound-2",
+      "q": 14,
+      "ans": "D",
+      "note": "B==C dup; longitudinal pulse"
+    },
+    {
+      "id": "sound-2",
+      "q": 20,
+      "ans": "D"
+    },
+    {
+      "id": "sound-2",
+      "q": 22,
+      "ans": "C"
+    },
+    {
+      "id": "sound-2",
+      "q": 59,
+      "ans": "A",
+      "note": "A false(supersonic not ultrasonic), B true"
+    },
+    {
+      "id": "sound-2",
+      "q": 65,
+      "ans": "D"
+    },
+    {
+      "id": "sound-2",
+      "q": 66,
+      "ans": "A"
+    },
+    {
+      "id": "sound-2",
+      "q": 67,
+      "ans": "B"
+    },
+    {
+      "id": "sound-2",
+      "q": 68,
+      "ans": "A"
+    },
+    {
+      "id": "sound-2",
+      "q": 71,
+      "ans": "D",
+      "note": "48m/10s=4.8=student C=option D"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "1": {
     "answer": "A",
-    "reason": "REVIEW: Half(1m) water + half(1m) oil(rho=850): P=(1000*10*1)+(850*10*1)=18500 N/m^2; nearest printed option is 1.6e4 (A); value matches no option exactly."
+    "reason": "FLAWED (keep PRIVATE): P=18500 Pa not among options (closest 1.6e4)"
   },
   "2": {
     "answer": "C",
@@ -28,8 +28,8 @@
     "reason": "g is least at the equator (largest radius + rotation effect) and greatest at the poles."
   },
   "8": {
-    "answer": "A",
-    "reason": "REVIEW: Upthrust = (submerged volume)*(liquid density)*g; with half immersed it scales with half the volume times liquid density. Option A is the only one referencing the half-immersion/density factor; wording ambiguous."
+    "answer": "B",
+    "reason": "FIXED (was A): upthrust ∝ submerged volume = half the volume"
   },
   "9": {
     "answer": "A",
@@ -37,7 +37,7 @@
   },
   "10": {
     "answer": "D",
-    "reason": "REVIEW: g at r earth-radii = g/r^2. Read as the surface value (r=1) gives 9.8 m/s^2 (D); for r>1 it differs. Stem ambiguous."
+    "reason": "FLAWED (keep PRIVATE): garbled stem 'r earth radii'; r unspecified"
   },
   "11": {
     "answer": "D",
@@ -61,7 +61,7 @@
   },
   "16": {
     "answer": "A",
-    "reason": "REVIEW: All listed properties (b,c,d) are correct features of g for the stated conditions, so 'All of these' (A) is intended."
+    "reason": "CONFIRMED: All listed properties (b,c,d) are correct features of g for the stated conditions, so 'All of these' (A) is intended."
   },
   "17": {
     "answer": "D",
@@ -89,15 +89,15 @@
   },
   "23": {
     "answer": "D",
-    "reason": "REVIEW: A body in a fluid retains positive apparent weight unless it floats freely; the least apparent weight is just greater than 0, so >0 (D)."
+    "reason": "FLAWED (keep PRIVATE): least apparent weight ambiguous (0 vs >0 vs depends)"
   },
   "24": {
     "answer": "A",
     "reason": "Pressure = force/area; for a fixed force a larger cross-sectional area gives less pressure."
   },
   "25": {
-    "answer": "D",
-    "reason": "Loss in weight = weight of displaced liquid = volume*density*g; sea water is denser, so loss is less in tap water (less in sea water is false) - sea water gives MORE loss, hence loss is less in sea... re-derive: tap less dense so less loss in tap; among options 'Less in sea water' is FALSE. Correct factual statement: loss is more in sea water => option B. REVIEW: option D chosen earlier is wrong; selecting B."
+    "answer": "B",
+    "reason": "FIXED (was D): loss in weight MORE in denser sea water"
   },
   "26": {
     "answer": "D",
@@ -113,7 +113,7 @@
   },
   "29": {
     "answer": "B",
-    "reason": "REVIEW: g=GM/R^2 differs because the Moon has different mass AND radius, so 'All of these' (B) best covers both."
+    "reason": "CONFIRMED: g=GM/R^2 differs because the Moon has different mass AND radius, so 'All of these' (B) best covers both."
   },
   "30": {
     "answer": "A",
@@ -145,7 +145,7 @@
   },
   "37": {
     "answer": "A",
-    "reason": "REVIEW: Heat lost depends on surface area, surface temperature, and nature of the surface, so 'all of these' (A). Thermal-physics item loosely placed in the worksheet."
+    "reason": "CONFIRMED: Heat lost depends on surface area, surface temperature, and nature of the surface, so 'all of these' (A). Thermal-physics item loosely placed in the worksheet."
   },
   "38": {
     "answer": "B",
@@ -160,8 +160,8 @@
     "reason": "Weight at Earth = 60 x 10 = 600 N (start) and at Mars = 60 x 4 = 240 N (end at t0). During the constant-velocity trip the passenger always feels SOME net gravitational pull (Earth's pull falls, Mars's pull grows), so the net force decreases to a positive minimum near the neutral point and then rises to 240 N - it never reaches zero (rules out R) or goes negative (rules out unphysical S), and it does dip noticeably (rules out the barely-dipping P). The curve that dips to a positive minimum and returns to ~240 N is Q = option D."
   },
   "41": {
-    "answer": "B",
-    "reason": "REVIEW: Below surface g=g(1-d/R): 1% decrease => d=64 km below. Above surface g(1-2h/R): h=32 km above. Printed options pair '64 km below'(A) and '32 km below'(B). The depth answer is 64 km below (A); 32 km labelled 'below' is mislabelled (should be above). Best self-consistent printed choice for the 1% drop via depth is A; choosing A."
+    "answer": "A",
+    "reason": "FIXED (was B): 1% g drop via depth = 64 km below = A"
   },
   "42": {
     "answer": "D",
@@ -181,7 +181,7 @@
   },
   "46": {
     "answer": "D",
-    "reason": "REVIEW: Statement 1 (weight zero at centre) is true; statement 2 ('as distance from centre decreases g decreases') is the conventional pairing flagged false in worksheet keys, so option D (S1 true, S2 false). S2 is arguably true for inside-earth depth, so review."
+    "reason": "FLAWED (keep PRIVATE): assertion-reason S2 true inside / false outside - ambiguous"
   },
   "47": {
     "answer": "D",
@@ -193,7 +193,7 @@
   },
   "49": {
     "answer": "A",
-    "reason": "REVIEW: Distance fallen proportional to t^2. In T/3 fallen = h/9, remaining 8h/9 (not an option). The printed options (24h/25, h/25) fit t=T/5 (fallen 1/25, remaining 24/25). Stem fraction likely T/5; best printed match is 24h/25 (A)."
+    "reason": "FLAWED (keep PRIVATE): stem T/3 gives 8h/9 (not an option); options fit T/5"
   },
   "50": {
     "answer": "B",
@@ -236,8 +236,8 @@
     "reason": "v = sqrt(2 g H) = sqrt(2*9.8*100) = sqrt(1960) = 44.2 m/s."
   },
   "60": {
-    "answer": "C",
-    "reason": "REVIEW: Upthrust=75-65=10 N = rho_w*V*g => V=10/(1000*10)=1e-3 m^3. L=V/A=1e-3/(0.5e-6)=2000 m =2e5 cm = 10^2/0.0050 (option C)."
+    "answer": "B",
+    "reason": "FIXED (was C): L=V/A=2000 m=2e5 cm=10^6/5=option B (agent mis-mapped)"
   },
   "61": {
     "answer": "A",
