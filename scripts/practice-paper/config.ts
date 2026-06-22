@@ -299,6 +299,30 @@ export const PAPERS: Record<string, PaperSpec> = {
     createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
   },
 
+  // LWS "APJ 11th Chemistry Test" — 25-q MHT-CET Chemistry test on Periodic
+  // Classification (Class-11), born-digital .docx, no printed key (answers derived).
+  // First MHT-CET paper here (examId override). Semantic dedup vs the 16-q MHT-CET
+  // "Modern Periodic Table" bank: all 25 NEW (the bank had zero ionisation-energy /
+  // atomic-radius-ordering questions). 20 new / 5 flawed (multiple-correct or
+  // correct-answer-absent defects: Q13, 15, 16, 18, 25). createPaper:false => Excel
+  // + bank ingest only (no /dashboard/papers paper); only the 20 new flip PUBLIC.
+  "apj-11th-chem-test": {
+    slug: "apj-11th-chem-test",
+    title: "APJ 11th Chemistry Test (Periodic Classification)",
+    recordsFile: "apj-11th-chem-test.records.json",
+    outName: "Tags_MHTCET_APJ_11th_Chemistry",
+    sourceFile: "MHTCET_Chemistry_Practice__APJ_11th_Chemistry_Test.docx",
+    subjectName: "Chemistry",
+    chapterName: "Modern Periodic Table",
+    examId: "70e70f9d-c20c-45c6-a346-0c914d65035d", // MHT-CET (not the default NDA EXAM_ID)
+    subtopics: ["Periodic Trends", "Position in Periodic Table and Electronic Configuration"],
+    pyqNote: "MHT-CET Chemistry practice — LWS APJ 11th Chemistry Test",
+    examName: "MHT-CET",
+    section: { key: "modern-periodic-table", label: "Modern Periodic Table" },
+    bankAdd: true,
+    createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
+  },
+
   // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
   // (answers derived from the underlined word in each sentence). Dedup found all
   // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
