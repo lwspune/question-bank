@@ -38,6 +38,7 @@ export type Worksheet = {
 
 const chem = (p: string) => join(SOURCE_ROOT, "Chemistry", p);
 const phys = (p: string) => join(SOURCE_ROOT, "Physics", p);
+const bio = (p: string) => join(SOURCE_ROOT, "Biology", p);
 // docx-only worksheets are converted to PDF here by docx-to-pdf.ts (Word COM).
 const converted = (name: string) => join(SOURCE_ROOT, "_converted", name);
 
@@ -443,6 +444,198 @@ export const WORKSHEETS: Record<string, Worksheet> = {
       "Magnetic Effect of Current — Conductor, Loop and Solenoid",
       "Force on a Current-Carrying Conductor and Electric Motor",
       "Electromagnetic Induction and Generator",
+    ],
+  },
+
+  // ══════════════════ BIOLOGY (subject seeded 2026-06-22; id 7d34c419-…) ══════════════════
+  // All worksheets are docx-only → converted to PDF via docx-to-pdf.ts (Word COM).
+  // Same pipeline as Chemistry/Physics: 2-column MCQ, NO printed key (answers DERIVED),
+  // figure-dependent Qs excluded then figure-attached. Syllabus ch.3 "Diversity in Living
+  // Organisms" has NO worksheet folder → not ingestible (Periodic Classification / Sources of Energy situation).
+
+  // ── The Fundamental Unit of Life (Cell) — WS1 + WS2. ──
+  "cell-1": {
+    id: "cell-1", chapterName: "The Fundamental Unit of Life", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__The_Fundamental_Unit_of_Life_WS1.pdf",
+    docxSource: bio("01. The Fundamental Unit of Life/Cell - Basic Unit of life WS 1.docx"), pdf: converted("bio-cell-1.pdf"),
+    note: "NDA Foundation (Class 9) — The Fundamental Unit of Life WS 1 (LWS)",
+    subtopics: [
+      "The Cell — Discovery and Cell Theory",
+      "Prokaryotic and Eukaryotic Cells",
+      "Plasma Membrane, Cell Wall and Transport",
+      "Cytoplasm and Cell Organelles",
+      "Nucleus and Cell Division",
+    ],
+  },
+  "cell-2": {
+    id: "cell-2", chapterName: "The Fundamental Unit of Life", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__The_Fundamental_Unit_of_Life_WS2.pdf",
+    docxSource: bio("01. The Fundamental Unit of Life/Cell - Basic Unit of life WS 2.docx"), pdf: converted("bio-cell-2.pdf"),
+    note: "NDA Foundation (Class 9) — The Fundamental Unit of Life WS 2 (LWS)",
+    subtopics: [
+      "The Cell — Discovery and Cell Theory",
+      "Prokaryotic and Eukaryotic Cells",
+      "Plasma Membrane, Cell Wall and Transport",
+      "Cytoplasm and Cell Organelles",
+      "Nucleus and Cell Division",
+    ],
+  },
+
+  // ── Tissues — WS1 + WS2. ──
+  "tissues-1": {
+    id: "tissues-1", chapterName: "Tissues", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Tissues_WS1.pdf",
+    docxSource: bio("02. Tissues/Tissues WS 1.docx"), pdf: converted("bio-tissues-1.pdf"),
+    note: "NDA Foundation (Class 9) — Tissues WS 1 (LWS)",
+    subtopics: [
+      "Plant Tissues — Meristematic",
+      "Permanent Tissues — Simple and Complex",
+      "Animal Tissues — Epithelial and Connective",
+      "Muscular and Nervous Tissues",
+    ],
+  },
+  "tissues-2": {
+    id: "tissues-2", chapterName: "Tissues", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Tissues_WS2.pdf",
+    docxSource: bio("02. Tissues/Tissues WS 2.docx"), pdf: converted("bio-tissues-2.pdf"),
+    note: "NDA Foundation (Class 9) — Tissues WS 2 (LWS)",
+    subtopics: [
+      "Plant Tissues — Meristematic",
+      "Permanent Tissues — Simple and Complex",
+      "Animal Tissues — Epithelial and Connective",
+      "Muscular and Nervous Tissues",
+    ],
+  },
+
+  // ── Life Processes — WS1 + WS2 + WS3. ──
+  "life-processes-1": {
+    id: "life-processes-1", chapterName: "Life Processes", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Life_Processes_WS1.pdf",
+    docxSource: bio("04. Life Processes/Life Processes WS 1.docx"), pdf: converted("bio-life-processes-1.pdf"),
+    note: "NDA Foundation (Class 10) — Life Processes WS 1 (LWS)",
+    subtopics: [
+      "Nutrition — Autotrophic and Photosynthesis",
+      "Heterotrophic Nutrition and Human Digestion",
+      "Respiration",
+      "Transportation in Plants and Animals",
+      "Excretion in Plants and Animals",
+    ],
+  },
+  "life-processes-2": {
+    id: "life-processes-2", chapterName: "Life Processes", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Life_Processes_WS2.pdf",
+    docxSource: bio("04. Life Processes/Life Processes WS 2.docx"), pdf: converted("bio-life-processes-2.pdf"),
+    note: "NDA Foundation (Class 10) — Life Processes WS 2 (LWS)",
+    subtopics: [
+      "Nutrition — Autotrophic and Photosynthesis",
+      "Heterotrophic Nutrition and Human Digestion",
+      "Respiration",
+      "Transportation in Plants and Animals",
+      "Excretion in Plants and Animals",
+    ],
+  },
+  "life-processes-3": {
+    id: "life-processes-3", chapterName: "Life Processes", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Life_Processes_WS3.pdf",
+    docxSource: bio("04. Life Processes/Life Processes WS 3.docx"), pdf: converted("bio-life-processes-3.pdf"),
+    note: "NDA Foundation (Class 10) — Life Processes WS 3 (LWS)",
+    subtopics: [
+      "Nutrition — Autotrophic and Photosynthesis",
+      "Heterotrophic Nutrition and Human Digestion",
+      "Respiration",
+      "Transportation in Plants and Animals",
+      "Excretion in Plants and Animals",
+    ],
+  },
+
+  // ── Control and Coordination — WS1 + WS2. ──
+  "control-1": {
+    id: "control-1", chapterName: "Control and Coordination", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Control_and_Coordination_WS1.pdf",
+    docxSource: bio("05. Control and Coordination/Control and Coordination WS 1.docx"), pdf: converted("bio-control-1.pdf"),
+    note: "NDA Foundation (Class 10) — Control and Coordination WS 1 (LWS)",
+    subtopics: [
+      "Nervous System and Neurons",
+      "Reflex Action and the Human Brain",
+      "Coordination in Plants — Tropisms and Hormones",
+      "Hormones in Animals — Endocrine System",
+    ],
+  },
+  "control-2": {
+    id: "control-2", chapterName: "Control and Coordination", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Control_and_Coordination_WS2.pdf",
+    docxSource: bio("05. Control and Coordination/Control and Coordination WS 2.docx"), pdf: converted("bio-control-2.pdf"),
+    note: "NDA Foundation (Class 10) — Control and Coordination WS 2 (LWS)",
+    subtopics: [
+      "Nervous System and Neurons",
+      "Reflex Action and the Human Brain",
+      "Coordination in Plants — Tropisms and Hormones",
+      "Hormones in Animals — Endocrine System",
+    ],
+  },
+
+  // ── How Do Organisms Reproduce — WS1 + WS2. ──
+  "reproduce-1": {
+    id: "reproduce-1", chapterName: "How Do Organisms Reproduce", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__How_Do_Organisms_Reproduce_WS1.pdf",
+    docxSource: bio("06. How Do Organisms Reproduce/How do Organisms Reproduce WS 1.docx"), pdf: converted("bio-reproduce-1.pdf"),
+    note: "NDA Foundation (Class 10) — How Do Organisms Reproduce WS 1 (LWS)",
+    subtopics: [
+      "Asexual Reproduction",
+      "Sexual Reproduction in Flowering Plants",
+      "Human Reproductive System",
+      "Reproductive Health and Sex Determination",
+    ],
+  },
+  "reproduce-2": {
+    id: "reproduce-2", chapterName: "How Do Organisms Reproduce", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__How_Do_Organisms_Reproduce_WS2.pdf",
+    docxSource: bio("06. How Do Organisms Reproduce/How do Organisms Reproduce WS 2.docx"), pdf: converted("bio-reproduce-2.pdf"),
+    note: "NDA Foundation (Class 10) — How Do Organisms Reproduce WS 2 (LWS)",
+    subtopics: [
+      "Asexual Reproduction",
+      "Sexual Reproduction in Flowering Plants",
+      "Human Reproductive System",
+      "Reproductive Health and Sex Determination",
+    ],
+  },
+
+  // ── Heredity and Evolution — single WS. ──
+  "heredity-1": {
+    id: "heredity-1", chapterName: "Heredity and Evolution", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Heredity_and_Evolution_WS1.pdf",
+    docxSource: bio("07. Heredity and Evolution/Heredity and Evolution WS.docx"), pdf: converted("bio-heredity-1.pdf"),
+    note: "NDA Foundation (Class 10) — Heredity and Evolution WS (LWS)",
+    subtopics: [
+      "Heredity and Mendel's Laws",
+      "Sex Determination",
+      "Evolution and Natural Selection",
+    ],
+  },
+
+  // ── Our Environment — WS1 + WS2. ──
+  "environment-1": {
+    id: "environment-1", chapterName: "Our Environment", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Our_Environment_WS1.pdf",
+    docxSource: bio("08. Our Environment/Our Environment WS 1.docx"), pdf: converted("bio-environment-1.pdf"),
+    note: "NDA Foundation (Class 10) — Our Environment WS 1 (LWS)",
+    subtopics: [
+      "Ecosystem and Its Components",
+      "Food Chains, Food Webs and Energy Flow",
+      "Biodegradable and Non-biodegradable Waste",
+      "Ozone Layer and Waste Management",
+    ],
+  },
+  "environment-2": {
+    id: "environment-2", chapterName: "Our Environment", subjectName: "Biology",
+    sourceFile: "Foundation_Biology__Our_Environment_WS2.pdf",
+    docxSource: bio("08. Our Environment/Our Environment WS 2.docx"), pdf: converted("bio-environment-2.pdf"),
+    note: "NDA Foundation (Class 10) — Our Environment WS 2 (LWS)",
+    subtopics: [
+      "Ecosystem and Its Components",
+      "Food Chains, Food Webs and Energy Flow",
+      "Biodegradable and Non-biodegradable Waste",
+      "Ozone Layer and Waste Management",
     ],
   },
 };
