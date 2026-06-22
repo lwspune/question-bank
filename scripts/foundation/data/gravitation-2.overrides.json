@@ -1,43 +1,4 @@
 {
-  "_comment": "Gravitation WS2 - no printed key; answers DERIVED.",
-  "_excluded_figures": [
-    {
-      "number": 8,
-      "desc": "Archimedes verification: apparent loss in weight read from spring-balance + measuring-cylinder figure."
-    },
-    {
-      "number": 9,
-      "desc": "Four students' overflow-can shapes shown in figure; choose which gives correct result."
-    },
-    {
-      "number": 10,
-      "desc": "Three students' overflow-can volume-by-immersion arrangements in figure; which is wrong."
-    },
-    {
-      "number": 11,
-      "desc": "Density of solid from before/after water levels in measuring-cylinder figure."
-    },
-    {
-      "number": 12,
-      "desc": "Volume of solid from before/after water levels (2.4 and 4.2) in figure."
-    },
-    {
-      "number": 13,
-      "desc": "Least count of the spring balance read from the scale figure."
-    },
-    {
-      "number": 14,
-      "desc": "Loss in weight comparison across three differently-shaped containers in figure."
-    },
-    {
-      "number": 15,
-      "desc": "Volume of metal cube from initial/final water levels in measuring-cylinder figure."
-    },
-    {
-      "number": 16,
-      "desc": "Zero error read from the spring-balance scale figure."
-    }
-  ],
   "1": {
     "answer": "C",
     "reason": "REVIEW: By the shell theorem the field due to the shell itself is zero everywhere inside, always (the parenthetical 'due to the shell' fixes this); d is a tempting distractor."
@@ -65,6 +26,38 @@
   "7": {
     "answer": "A",
     "reason": "Salty water is denser, so it gives greater upthrust: U_w < U_s."
+  },
+  "8": {
+    "answer": "A",
+    "reason": "REVIEW: Apparent loss in weight = (weight read in air) - (weight read in water); the zero error of 4 g wt is constant so it cancels in this difference. The spring-balance pointer values in the scanned figure are not legible, so the exact air/water readings cannot be confirmed. For the standard version of this figure (air reading 50 g wt, water reading 12 g wt) the loss is 38 g wt = option A. Flagged because the figure values could not be read."
+  },
+  "9": {
+    "answer": "B",
+    "reason": "REVIEW: An overflow can gives correct results only when the water is filled exactly up to the level of the spout opening, so that any solid lowered in displaces water that flows straight out of the spout. Among the four cans, (D) is the cylindrical can filled exactly to the spout level, so it gives the correct result = option B (which maps to 'D'). Flagged because identifying the correct fill level depends on reading the small figure precisely."
+  },
+  "10": {
+    "answer": "D",
+    "reason": "For an overflow can to measure displaced volume correctly, the water must be filled right up to the spout so displaced water overflows into the collecting cylinder. In setups A and B the can is on a stand, water is at the spout, and a measuring cylinder sits under the spout (correct). In setup C the water level is well below the spout, so when the solid is immersed the water rises but never reaches the spout to overflow - no water is collected and the measured volume is wrong. So the result is wrong for Student C = option D."
+  },
+  "11": {
+    "answer": "A",
+    "reason": "Volume of solid = rise in water level = 7 ml - 5 ml = 2 ml = 2 cm³. Density = mass / volume = 8 g / 2 cm³ = 4 g/cm³ = option A."
+  },
+  "13": {
+    "answer": "B",
+    "reason": "REVIEW: Least count = (value between two main marks) / (number of small divisions between them). The main marks are 20 g apart and there appear to be 10 small divisions between them, giving 20/10 = 2 g = option B. Flagged because the exact number of fine ticks is hard to count on the scan; if there were 20 divisions the answer would be 1 g (option A)."
+  },
+  "14": {
+    "answer": "D",
+    "reason": "The loss in weight of a fully immersed solid equals the buoyant force, which by Archimedes' principle equals the weight of liquid displaced - this depends only on the volume of the solid and the density of the liquid, NOT on the shape of the container. So as long as the solid sphere is fully immersed, the loss in weight is the same in all three containers = option D."
+  },
+  "15": {
+    "answer": "C",
+    "reason": "Volume of the metal cube = final water volume - initial water volume = 60 mL - 40 mL = 20 mL = 20 cm³ = option C."
+  },
+  "16": {
+    "answer": "A",
+    "reason": "REVIEW: With no load on the pan an error-free balance should read 0, but the pointer rests just below the 0 mark, at about the +5 g wt position on the downward-increasing scale, so the balance reads 5 g wt too high when empty. The zero error is therefore +5 g wt = option A. Flagged because the exact pointer position relative to the 0 and 25 marks is hard to read; a reading interpreted as below zero would make it -5 g wt (option B)."
   },
   "17": {
     "answer": "D",
@@ -229,5 +222,44 @@
   "57": {
     "answer": "B",
     "reason": "By Newton's third law the action-reaction gravitational forces are equal: F1 = F2."
-  }
+  },
+  "_comment": "Gravitation WS2 - no printed key; answers DERIVED.",
+  "_excluded_figures": [
+    {
+      "number": 8,
+      "desc": "Archimedes verification: apparent loss in weight read from spring-balance + measuring-cylinder figure."
+    },
+    {
+      "number": 9,
+      "desc": "Four students' overflow-can shapes shown in figure; choose which gives correct result."
+    },
+    {
+      "number": 10,
+      "desc": "Three students' overflow-can volume-by-immersion arrangements in figure; which is wrong."
+    },
+    {
+      "number": 11,
+      "desc": "Density of solid from before/after water levels in measuring-cylinder figure."
+    },
+    {
+      "number": 12,
+      "desc": "Volume of solid from before/after water levels (2.4 and 4.2) in figure."
+    },
+    {
+      "number": 13,
+      "desc": "Least count of the spring balance read from the scale figure."
+    },
+    {
+      "number": 14,
+      "desc": "Loss in weight comparison across three differently-shaped containers in figure."
+    },
+    {
+      "number": 15,
+      "desc": "Volume of metal cube from initial/final water levels in measuring-cylinder figure."
+    },
+    {
+      "number": 16,
+      "desc": "Zero error read from the spring-balance scale figure."
+    }
+  ]
 }

@@ -1,19 +1,4 @@
 {
-  "_comment": "Force and Laws of Motion WS1 - no printed key; answers DERIVED.",
-  "_excluded_figures": [
-    {
-      "number": 24,
-      "desc": "Three identical bodies each of mass m pushed by force F on a frictionless table; net force on X/Y depends on the figure layout."
-    },
-    {
-      "number": 37,
-      "desc": "Two spring balances A and B hooked as shown in the figure; reading of B asked relative to A's 1.5 N."
-    },
-    {
-      "number": 44,
-      "desc": "Which of the velocity-time graphs (a-d) shows a moving particle on which net external force is zero."
-    }
-  ],
   "1": {
     "answer": "D",
     "reason": "Least inertia = least mass; a cup of tea is the smallest mass."
@@ -106,6 +91,10 @@
     "answer": "D",
     "reason": "Newton's first law treats rest (A) and uniform motion (B) alike. -> A, B."
   },
+  "24": {
+    "answer": "C",
+    "reason": "Total mass = 3m pushed by F, so common acceleration a = F/3m. (a) Net force on X = ma = F/3, NOT F -> wrong. (b) Net force on Y = ma = F/3, NOT zero -> wrong. (c) Net force on X = F/3; block Z (rightmost) needs ma = F/3 to accelerate, which Y supplies to Z, so force by Y on Z = F/3 = net force on X -> CORRECT. (d) Force by X on Y must accelerate Y+Z (2m): 2m*a = 2F/3, NOT F/3 -> wrong. Answer C."
+  },
   "25": {
     "answer": "B",
     "reason": "Impulse = force * time -> N*s (newton-second)."
@@ -154,6 +143,10 @@
     "answer": "D",
     "reason": "m1 = 5/10 = 0.5, m2 = 5/20 = 0.25; combined 0.75; a = 5/0.75 = 6.67 m/s^2."
   },
+  "37": {
+    "answer": "D",
+    "reason": "Two spring balances hooked in series and pulled by equal and opposite forces experience the SAME tension throughout the connected system (a spring balance reads the tension/force passing through it). Newton's third law / equilibrium of the connecting link makes both read the same value. So if A reads 1.5 N, B also reads 1.5 N. Answer D."
+  },
   "38": {
     "answer": "B",
     "reason": "Action and reaction act on different bodies, equal in magnitude and opposite in direction."
@@ -178,6 +171,10 @@
     "answer": "C",
     "reason": "Frictionless surface + constant velocity -> zero net force needed = 0 N."
   },
+  "44": {
+    "answer": "D",
+    "reason": "Net force zero => acceleration zero (Newton's second law, F = ma) => velocity is constant. On a velocity-time graph constant velocity is a horizontal straight line = option D. (B is uniform acceleration, C is uniform deceleration, A is an irregular spike — all imply non-zero net force.)"
+  },
   "45": {
     "answer": "C",
     "reason": "m1 = 5/8 = 0.625, m2 = 5/24 = 0.2083; combined 0.8333; a = 5/0.8333 = 6 m/s^2."
@@ -201,5 +198,20 @@
   "50": {
     "answer": "C",
     "reason": "Same force F; a2 = 10*a1; m = F/a -> m2/m1 = a1/a2 = 1/10 -> 1 : 10."
-  }
+  },
+  "_comment": "Force and Laws of Motion WS1 - no printed key; answers DERIVED.",
+  "_excluded_figures": [
+    {
+      "number": 24,
+      "desc": "Three identical bodies each of mass m pushed by force F on a frictionless table; net force on X/Y depends on the figure layout."
+    },
+    {
+      "number": 37,
+      "desc": "Two spring balances A and B hooked as shown in the figure; reading of B asked relative to A's 1.5 N."
+    },
+    {
+      "number": 44,
+      "desc": "Which of the velocity-time graphs (a-d) shows a moving particle on which net external force is zero."
+    }
+  ]
 }
