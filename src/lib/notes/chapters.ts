@@ -64,6 +64,11 @@ import {
   DIFFERENTIATION_SLUGS as MHTCET_DIFFERENTIATION_SLUGS,
 } from "@/app/notes/mht-cet-maths/differentiation/_data";
 import {
+  VECTORS_CHAPTER as MHTCET_VECTORS_CHAPTER,
+  VECTORS_NOTES as MHTCET_VECTORS_NOTES,
+  VECTORS_SLUGS as MHTCET_VECTORS_SLUGS,
+} from "@/app/notes/mht-cet-maths/vectors/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -782,6 +787,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_DIFFERENTIATION_CHAPTER,
     notes: MHTCET_DIFFERENTIATION_NOTES,
     slugs: MHTCET_DIFFERENTIATION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "vectors",
+    chipLabel: "Vectors notes",
+    chapter: MHTCET_VECTORS_CHAPTER,
+    notes: MHTCET_VECTORS_NOTES,
+    slugs: MHTCET_VECTORS_SLUGS,
   },
   {
     examName: "NDA",
