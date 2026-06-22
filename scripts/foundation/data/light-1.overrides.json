@@ -1,42 +1,19 @@
 {
-  "_comment": "Light WS1 - no printed key; answers DERIVED.",
-  "_excluded_figures": [
-    {
-      "number": 2,
-      "desc": "Man + plane mirror, figure shows position X, distance y and a 5 m segment; geometry figure-dependent"
-    },
-    {
-      "number": 3,
-      "desc": "Optics experiment: u-vs-v graph through origin at 45 deg, asks coordinates of point P on experimental curve"
-    },
-    {
-      "number": 4,
-      "desc": "Broken mirror split by 1 cm, figure showing two principal-axis halves; midway image positions figure-dependent"
-    },
-    {
-      "number": 9,
-      "desc": "Diagram: three rays of light passing through converging lens along vertical line; which statement is correct"
-    },
-    {
-      "number": 21,
-      "desc": "Convex lens, 'object needed to be placed (see figure)' with marked positions on principal axis"
-    },
-    {
-      "number": 28,
-      "desc": "All four options are ray-diagrams; asks which diagram is correct"
-    },
-    {
-      "number": 49,
-      "desc": "Glass sphere figure: rays X->Y reach Z inside sphere; asks speed of rays that glass cannot be"
-    },
-    {
-      "number": 58,
-      "desc": "All four options are ray-diagram pictures; asks which depicts correct image formation"
-    }
-  ],
   "1": {
     "answer": "B",
     "reason": "REVIEW: 'rate of change utmost' interpreted as largest difference in refractive index. Differences: P->Q=0.15, Q->R=0.99, R->S=0.82, S->P=0.02. Largest is Q->R, so B. Ambiguous wording."
+  },
+  "2": {
+    "answer": "A",
+    "reason": "Plane mirror: image is as far behind as the object is in front, so man-to-image distance = 2 x (object distance). Initially distance = y, separation = 2y. After moving 5 m further away, object distance = y + 5, so separation = 2(y + 5) = 20 -> y + 5 = 10 -> y = 5 m. Option A."
+  },
+  "3": {
+    "answer": "D",
+    "reason": "The 45-degree line through the origin is v = u (same scale on both axes). For a convex lens, v = u (image distance equals object distance, magnification = 1) only when the object is at 2f and the image at 2f. So P = (2f, 2f). Option D."
+  },
+  "4": {
+    "answer": "D",
+    "reason": "Concave mirror f = 10 cm, object at u = 15 cm. Mirror formula 1/v + 1/u = 1/f -> 1/v = 1/10 - 1/15 = 1/30 -> v = 30 cm. Magnification m = v/u = 30/15 = 2. The object lies midway between the two axes that are 1 cm apart, so it is 0.5 cm off each part's axis. Each image height = m x 0.5 = 2 x 0.5 = 1 cm. Both parts give the same height -> (1, 1). Option D."
   },
   "5": {
     "answer": "C",
@@ -53,6 +30,10 @@
   "8": {
     "answer": "A",
     "reason": "A lens must be transparent and refract light; clay is opaque so it cannot be used to make a lens."
+  },
+  "9": {
+    "answer": "B",
+    "reason": "A converging lens is made of glass (optically denser than air). When light enters the lens its speed decreases (slows in the denser medium) and on leaving back into air its speed returns to the original value. So the speed decreases when the rays enter the lens. Option B."
   },
   "10": {
     "answer": "C",
@@ -98,6 +79,10 @@
     "answer": "C",
     "reason": "Deviation by two mirrors = 360 - 2*theta = 200 => theta=80 deg. Number of images n = 360/theta - 1 = 4.5 - 1 = 3.5; take floor => 3 images."
   },
+  "21": {
+    "answer": "A",
+    "reason": "The figure shows the real, inverted image standing exactly at 2F on the far side of the lens. A convex lens forms a real inverted image of the same size at 2F only when the object is placed at 2F on the object side. On the left, 2F is at point X. So the object must be placed At X. Option A."
+  },
   "22": {
     "answer": "C",
     "reason": "Mirror formula: 1/v + 1/u = 1/f."
@@ -121,6 +106,10 @@
   "27": {
     "answer": "B",
     "reason": "An erect (virtual, magnified) image from a concave mirror needs object inside the focus, so object distance (100 mm) < f, hence f > 100 mm and R = 2f > 200 mm."
+  },
+  "28": {
+    "answer": "A",
+    "reason": "Rays parallel to the principal axis incident on a convex (converging) lens refract and converge to a single point at the focus F on the far side, with the central ray through the optical centre passing straight through undeviated. Only diagram A shows this correctly (all three parallel rays meet at F, central ray straight). Option A."
   },
   "29": {
     "answer": "B",
@@ -202,6 +191,10 @@
     "answer": "C",
     "reason": "Focal length of a lens depends on the colour (wavelength) of light, the material (refractive index) and the radii of the surfaces - all of these."
   },
+  "49": {
+    "answer": "A",
+    "reason": "REVIEW: OX (vertical) and OY (horizontal) are radii meeting at a right angle at O, so triangle OXY is isosceles-right and the ray XY strikes the surface at Y at 45 deg to the normal OY. For total internal reflection (ray stays inside and reaches Z), 45 deg must be >= critical angle, i.e. sin45 >= sin(theta_c) = 1/n = v/c. Thus v <= c x sin45 = 3e8 x 0.707 = 2.12e8 m/s. The speed therefore CANNOT exceed 2.12e8; option A (2.4e8) violates this. (Note: option D, 1.0e9, also 'cannot be' since it exceeds c; A is the intended TIR-threshold answer.)"
+  },
   "50": {
     "answer": "C",
     "reason": "REVIEW: Eyes-to-mirror = 2 m, chart 0.5 m behind head so 2.5 m from mirror; image 2.5 m behind mirror; eyes-to-image = 2 + 2.5 = 4.5 (m). Options labelled in cm; choosing 4.5 (option C)."
@@ -233,6 +226,10 @@
   "57": {
     "answer": "D",
     "reason": "Man 10 m from mirror, image 10 m behind => man-image distance 20 m. To be 5 m from image he must be 2.5 m from mirror, so walk 10 - 2.5 = 7.5 m."
+  },
+  "58": {
+    "answer": "A",
+    "reason": "Rays parallel to the principal axis incident on a concave mirror reflect and converge to a single point at the focus F (at the focal distance in front of the mirror). Only picture A shows the reflected rays meeting exactly at the marked focus F; the others converge short of or off the focus. Option A."
   },
   "59": {
     "answer": "C",
@@ -301,5 +298,40 @@
   "75": {
     "answer": "D",
     "reason": "n = c/v = 3e8 / 2.25e8 = 4/3."
-  }
+  },
+  "_comment": "Light WS1 - no printed key; answers DERIVED.",
+  "_excluded_figures": [
+    {
+      "number": 2,
+      "desc": "Man + plane mirror, figure shows position X, distance y and a 5 m segment; geometry figure-dependent"
+    },
+    {
+      "number": 3,
+      "desc": "Optics experiment: u-vs-v graph through origin at 45 deg, asks coordinates of point P on experimental curve"
+    },
+    {
+      "number": 4,
+      "desc": "Broken mirror split by 1 cm, figure showing two principal-axis halves; midway image positions figure-dependent"
+    },
+    {
+      "number": 9,
+      "desc": "Diagram: three rays of light passing through converging lens along vertical line; which statement is correct"
+    },
+    {
+      "number": 21,
+      "desc": "Convex lens, 'object needed to be placed (see figure)' with marked positions on principal axis"
+    },
+    {
+      "number": 28,
+      "desc": "All four options are ray-diagrams; asks which diagram is correct"
+    },
+    {
+      "number": 49,
+      "desc": "Glass sphere figure: rays X->Y reach Z inside sphere; asks speed of rays that glass cannot be"
+    },
+    {
+      "number": 58,
+      "desc": "All four options are ray-diagram pictures; asks which depicts correct image formation"
+    }
+  ]
 }

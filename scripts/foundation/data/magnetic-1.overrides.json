@@ -1,43 +1,4 @@
 {
-  "_comment": "Magnetic Effects WS1 (magnetic-1) - no printed key; answers DERIVED from physics.",
-  "_excluded_figures": [
-    {
-      "number": 3,
-      "desc": "Two parallel conductors I and II positioned on a printed cm scale/ruler; zero-field point depends on the figure positions and current values (1 A, 3 A)."
-    },
-    {
-      "number": 10,
-      "desc": "Graph options showing magnetic field strength B vs distance r from a current-carrying conductor; answer is one of four plotted graphs."
-    },
-    {
-      "number": 17,
-      "desc": "Diagram with axes U (vertical) and X-O-Y (horizontal) through point O with current out of the plane; asks which two points have mutually perpendicular magnetic field."
-    },
-    {
-      "number": 29,
-      "desc": "Rectangular loop ABCD carrying current I near a straight conductor XY (figure); asks how conductor XY moves."
-    },
-    {
-      "number": 39,
-      "desc": "Four diagram options showing the pattern of the magnetic field inside a current-carrying solenoid."
-    },
-    {
-      "number": 40,
-      "desc": "Straight wire with magnetic compasses placed at points X and Y as shown in the figure; needle deflection depends on figure positions."
-    },
-    {
-      "number": 41,
-      "desc": "Wire placed between magnetic poles as shown in the figure; direction of force depends on figure orientation."
-    },
-    {
-      "number": 42,
-      "desc": "Conducting wire between N and S poles (figure) with alternating current passing through; motion of wire depends on figure."
-    },
-    {
-      "number": 45,
-      "desc": "Uniform magnetic field in the plane of paper with an electron (e-) and a positron (p+) at marked positions in the diagram; asks the experienced force directions."
-    }
-  ],
   "1": {
     "answer": "C",
     "reason": "Magnetic field lines around a straight current-carrying wire are concentric circles."
@@ -45,6 +6,10 @@
   "2": {
     "answer": "A",
     "reason": "Force between parallel wires F proportional to I1*I2; doubling current in each gives 2*2 = 4F."
+  },
+  "3": {
+    "answer": "B",
+    "reason": "Two parallel wires carrying current in the SAME direction give a zero-field point BETWEEN them, where the two fields oppose. B is proportional to I/r, so set 1/d1 = 3/d2 with d1+d2 = 4 cm (separation between the 2 cm and 6 cm marks): d2 = 3*d1 -> 4*d1 = 4 -> d1 = 1 cm from wire I (at 2 cm), giving the zero-field point at 2+1 = 3 cm mark = option B."
   },
   "4": {
     "answer": "C",
@@ -70,6 +35,10 @@
     "answer": "C",
     "reason": "Field inside a long straight solenoid is uniform - same at all interior points."
   },
+  "10": {
+    "answer": "D",
+    "reason": "For a long straight current-carrying conductor B = (mu0*I)/(2*pi*r), i.e. B is inversely proportional to r. So B falls off as 1/r — a rectangular hyperbola, steep near the wire then levelling off. That is option D."
+  },
   "11": {
     "answer": "A",
     "reason": "Moving a magnet towards a coil changes flux, inducing a current (electromagnetic induction)."
@@ -93,6 +62,10 @@
   "16": {
     "answer": "D",
     "reason": "REVIEW: Solenoid and A.C. generator/Cartesian system relate to right-hand rules; a D.C. motor uses Fleming's LEFT hand rule, so it is not an example of the right-hand thumb rule. Ambiguous - A.C. generator also uses Fleming's right hand, not the thumb rule."
+  },
+  "17": {
+    "answer": "A",
+    "reason": "REVIEW: The wire carries current out of the plane, so the field circles around O and at each point is tangent to its circle (perpendicular to the radius). At U/V the field is horizontal; at X/Y the field is vertical. Fields are perpendicular to each other for any ADJACENT pair (e.g. V & Y) and parallel for an OPPOSITE pair (U-V, X-Y). So V & Y (option A) is perpendicular — but X & V (option C) is ALSO an adjacent pair and equally perpendicular. The question therefore has two valid keys (A and C); chose A as the first valid option, flagged for review."
   },
   "18": {
     "answer": "B",
@@ -138,6 +111,10 @@
     "answer": "B",
     "reason": "Field near a long straight wire forms concentric circles centred on the wire."
   },
+  "29": {
+    "answer": "A",
+    "reason": "The straight conductor XY and the nearest side AB of the loop carry current in the same direction; two parallel currents in the same direction ATTRACT. So the loop is pulled towards the conductor, i.e. it moves towards its side AB = option A."
+  },
   "30": {
     "answer": "B",
     "reason": "Fleming's right-hand rule gives the direction (not magnitude) of the induced current."
@@ -174,6 +151,22 @@
     "answer": "C",
     "reason": "Lighting/fan circuits (bulb, tube, fan) use a 5 A rating; 15 A is for high-power appliances."
   },
+  "39": {
+    "answer": "D",
+    "reason": "INSIDE a long current-carrying solenoid the magnetic field is uniform and the field lines are straight, parallel and equally spaced, all pointing the same way (the solenoid behaves like a region of uniform field). That is option D. (Option B shows the field of the whole solenoid including the looping lines OUTSIDE the ends, not the inside.)"
+  },
+  "40": {
+    "answer": "D",
+    "reason": "By the right-hand thumb rule, around a straight wire carrying current to the right the field is into the page ABOVE the wire (at X) and out of the page BELOW the wire (at Y). The two compass needles at X and Y therefore point in opposite directions, i.e. they deflect in opposite directions = option D."
+  },
+  "41": {
+    "answer": "A",
+    "reason": "REVIEW: Field B points horizontally from N (left) to S (right) and the current is vertically upward, both in the plane of the paper. Fleming's left-hand rule then gives a force perpendicular to BOTH — i.e. directed OUT OF / INTO the page — which is NOT among the printed options (all four options are in-plane: up/down, east/west). The question as printed is FLAWED: the figure's in-plane B and in-plane current cannot produce an in-plane force. No option is correct; chose A only as a placeholder pending the official key. Recommend keeping PRIVATE / flagging as flawed."
+  },
+  "42": {
+    "answer": "B",
+    "reason": "With B from N to S and current in the wire, the motor-effect force (Fleming's left-hand rule) is perpendicular to the page. When an ALTERNATING current passes, the current direction reverses each half-cycle, so the force reverses each half-cycle and the wire is pushed out of and then into the page repeatedly — it vibrates, i.e. moves out and into the page = option B."
+  },
   "43": {
     "answer": "A",
     "reason": "15 A wiring is provided for high-power appliances such as a geyser."
@@ -181,6 +174,10 @@
   "44": {
     "answer": "D",
     "reason": "Field strength at a point is measured by the number of field lines crossing a unit area (lines crossing a given point)."
+  },
+  "45": {
+    "answer": "D",
+    "reason": "From the figure the ELECTRON moves vertically DOWNWARD (its arrowhead is at the bottom) and the POSITRON moves vertically UPWARD (its arrowhead is at the top); B points to the right. Take right=+x, up=+y, out-of-page=+z. Electron (q=-e, v=-y): v x B = (-y)x(+x) = +z, so F = -e(+z) = into the page. Positron (q=+e, v=+y): v x B = (+y)x(+x) = -z, so F = +e(-z) = into the page. The velocities AND charges are both reversed, so the two forces are identical: BOTH point into the plane of the paper = option D."
   },
   "46": {
     "answer": "D",
@@ -201,5 +198,44 @@
   "50": {
     "answer": "A",
     "reason": "A fuse is the primary safety device protecting against short circuit and overload."
-  }
+  },
+  "_comment": "Magnetic Effects WS1 (magnetic-1) - no printed key; answers DERIVED from physics.",
+  "_excluded_figures": [
+    {
+      "number": 3,
+      "desc": "Two parallel conductors I and II positioned on a printed cm scale/ruler; zero-field point depends on the figure positions and current values (1 A, 3 A)."
+    },
+    {
+      "number": 10,
+      "desc": "Graph options showing magnetic field strength B vs distance r from a current-carrying conductor; answer is one of four plotted graphs."
+    },
+    {
+      "number": 17,
+      "desc": "Diagram with axes U (vertical) and X-O-Y (horizontal) through point O with current out of the plane; asks which two points have mutually perpendicular magnetic field."
+    },
+    {
+      "number": 29,
+      "desc": "Rectangular loop ABCD carrying current I near a straight conductor XY (figure); asks how conductor XY moves."
+    },
+    {
+      "number": 39,
+      "desc": "Four diagram options showing the pattern of the magnetic field inside a current-carrying solenoid."
+    },
+    {
+      "number": 40,
+      "desc": "Straight wire with magnetic compasses placed at points X and Y as shown in the figure; needle deflection depends on figure positions."
+    },
+    {
+      "number": 41,
+      "desc": "Wire placed between magnetic poles as shown in the figure; direction of force depends on figure orientation."
+    },
+    {
+      "number": 42,
+      "desc": "Conducting wire between N and S poles (figure) with alternating current passing through; motion of wire depends on figure."
+    },
+    {
+      "number": 45,
+      "desc": "Uniform magnetic field in the plane of paper with an electron (e-) and a positron (p+) at marked positions in the diagram; asks the experienced force directions."
+    }
+  ]
 }
