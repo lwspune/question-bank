@@ -323,6 +323,78 @@ export const PAPERS: Record<string, PaperSpec> = {
     createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
   },
 
+  // LWS "GAT FULL MOCK 3" — 150-q NDA GAT (General Ability Test) MOCK spanning FOUR
+  // subjects: English (Q1–50), Geography (Q51–101), Physics (Q102–134), Chemistry
+  // (Q135–150). Born-digital PDF, no printed key (answers derived). Multi-subject
+  // mode (`subjects` + per-record `subject`+`chapter`). createPaper:false => Excel +
+  // bank ingest only, no /dashboard/papers paper. Semantic dedup vs the NDA bank +
+  // heavy internal repeats (Ring of Fire / Oceanic trenches / Mariana Trench recur):
+  // 101 new / 48 dup / 1 flawed. RC Q11–15 share one Symbiosis passage (context +
+  // setLabel "RC1"). Only the 101 new flip PUBLIC.
+  "gat-mock-3": {
+    slug: "gat-mock-3",
+    title: "NDA GAT — LWS Full Mock 3",
+    recordsFile: "gat-mock-3.records.json",
+    outName: "Tags_NDA_LWS_GAT_Full_Mock_3",
+    sourceFile: "NDA_GAT_Practice__LWS_GAT_Full_Mock_3.pdf",
+    subjects: {
+      English: {
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        Grammar: ["Parts of Speech"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        Vocabulary: ["Antonyms", "Synonyms"],
+        "Spotting Errors": [
+          "Mixed Error Detection", "No Error (Correct Sentence)", "Subject-Verb Agreement",
+          "Tense and Verb Form", "Word Choice, Prepositions and Punctuation",
+        ],
+      },
+      Geography: {
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics", "Earthquakes and Seismic Waves",
+          "Landforms and Mass Movements", "Rocks, Minerals and Geological Time",
+          "Volcanoes and Igneous Activity",
+        ],
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora", "Atmospheric Pressure and Winds",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Indian Geography — Physical Features": [
+          "Indian Rivers, Lakes and Water Bodies", "Mountains, Plateaus and Plains of India",
+        ],
+        Oceanography: ["Ocean Waves and Sea-Floor Topography"],
+      },
+      Physics: {
+        "Light and Optics": [
+          "Human Eye and Optical Instruments", "Lenses and Lens Formula",
+          "Reflection and Mirrors", "Refraction, Speed of Light and TIR",
+        ],
+        "Electricity and Magnetism": [
+          "Combination of Resistors", "Electric Current and Ohm's Law", "Electrical Devices",
+          "Electrical Power, Energy and Heating", "Electrostatics",
+          "Magnetic Force and Fleming's Rules", "Magnetism and Magnetic Effects of Current",
+        ],
+      },
+      Chemistry: {
+        "Chemistry in Everyday Life": ["Medicines and Health Chemistry"],
+        "Acids, Bases and Salts": [
+          "Acid-Base Theory: Concepts, Oxides and Electrolytes", "Common Acids: Names, Formulas and Uses",
+          "Salts and Common Compounds", "pH Scale and Common Substances",
+        ],
+        "Atomic Structure and Periodic Classification": [
+          "Atomic Number, Mass Number and Subatomic Particles", "Periodic Trends, Valency and Atomicity",
+        ],
+        "Metals and Non-Metals": ["Reactivity Series and Reactions with Water"],
+        "Chemical Bonding": ["Bond Counting and Molecular Structure", "Ionic and Covalent Bonding"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Full Mock 3",
+    examName: "NDA",
+    section: { key: "gat-full-mock-3", label: "GAT Full Mock 3" },
+    bankAdd: true,
+    createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
+  },
+
   // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
   // (answers derived from the underlined word in each sentence). Dedup found all
   // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
