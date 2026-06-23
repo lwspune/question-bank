@@ -19,8 +19,16 @@ type ChapterNotesEntry = {
   chipLabel: string;
 };
 
+// Chapter NAMES legitimately repeat across exams — NDA Maths and MHT-CET Maths
+// both ship notes for "Vectors", "Differentiation" and "Indefinite Integration".
+// This name-only index returns the FIRST registration (NDA Maths, which precedes
+// MHT-CET in NOTES_CHAPTERS) — the canonical target for the nda-maths guide chips
+// and the NDA-Mathematics-scoped getQuestionResources notes backlink. Last-wins
+// would mis-route those NDA backlinks to the MHT-CET page; a subject-aware lookup
+// would only be needed if MHT-CET ever gets its own chapter-name cross-links.
 const BY_CHAPTER_NAME: Map<string, ChapterNotesEntry> = new Map();
 for (const c of NOTES_CHAPTERS) {
+  if (BY_CHAPTER_NAME.has(c.chapter.chapterName)) continue; // first (NDA) wins
   BY_CHAPTER_NAME.set(c.chapter.chapterName, {
     chapterSlug: c.chapterSlug,
     subjectRoute: c.subjectRoute,
