@@ -18,6 +18,32 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-23
+
+### Resolve the stray uncommitted `Tags_MHTCET_APJ_11th_Chemistry.xlsx`
+
+The APJ 11th Chemistry tagged Excel shows as modified in the working tree (Bin 38082 → 38075, 0 line changes) — it was regenerated when a later session applied the official LWS answer keys (commit `fc8781f`) but never re-committed. Left untouched by deliberate choice during the 2026-06-23 doc pass.
+
+**Why:** trivial, but a stray modified binary lingers in `git status` and is easy to lose track of. The regenerated sheet reflects the *corrected* keys, so it's the one that should be live if the OMR Excel is ever re-downloaded.
+
+**How to apply:** either `git add generated-papers/Tags_MHTCET_APJ_11th_Chemistry.xlsx && git commit` (one-line chore commit — keeps the official-key version) or `git checkout -- generated-papers/Tags_MHTCET_APJ_11th_Chemistry.xlsx` to discard if the committed version is already correct. Verify against `build-tags.ts apj-11th-chem-test` output if unsure which is current.
+
+### Fix Q4 & Q5 in the LWS GAT Full Mock 3 master answer key (teacher-side)
+
+During the GAT Mock 3 ingest, the official LWS key disagreed with the derived answers on 11 of 150 — and for **Q4 and Q5 (sentence rearrangement) the official key is the one that's wrong**: its option letters map to garbled, non-grammatical part-orders. Q4's coherent order is **ADBC (option B)**, not BDAC (A); Q5's is **BDAC (option C)**, not DCAB (D). Per the user's "use official key" instruction the committed bank rows + the OMR Excel were aligned to the official letters (A and D), so the public bank now matches the master key — but the master key itself should be corrected so students aren't graded against an incoherent sequence.
+
+**Why:** the OMR grades against this key; two items will mark the genuinely-correct answer wrong. Low count (2 q) but a clean, known fix.
+
+**How to apply:** correct Q4→B and Q5→C in the LWS master answer-key document (the teacher's source, not the repo). If you also want the bank/Excel to reflect the corrected answers, flip those two PUBLIC rows the proper way (option `is_correct` move + `content_hash` recompute via the real `contentHash` helper, collision-guarded) and rebuild `build-tags.ts gat-mock-3` — NOT a re-commit. The other 9 disagreements were correctly the official key's (7 my errors, 2 debatable recall items Q84/Q101).
+
+### Promote the dedup-gate bank dump to a reusable `scripts/practice-paper/dump-bank.ts`
+
+The dedup step needs the existing bank's stems/options/answers/solutions per subject (or chapter) dumped to files so a subagent can semantic-match without blowing the orchestrator's context. This is currently a hand-written throwaway tsx one-off each ingest (written + deleted again this session). Multi-subject GAT mocks are now recurring (Mock 5, Mock 3, more coming), so a small committed helper would remove the re-write.
+
+**Why:** minor, but every multi-subject ingest re-derives the same paging+dump logic (with the PostgREST 1000-row-cap gotcha each time); a parameterised helper makes the dedup gate one command.
+
+**How to apply:** add `scripts/practice-paper/dump-bank.ts <subject...|--chapter <id>>` that pages `questions` (PUBLIC+practice, both kinds) for the given subject/chapter into `C:/tmp/bank_<key>.json` with `{id, chapter, subtopic, stem, options, answer, solution}` (the shape the per-subject dedup agents already consume). Keep it out of the committed-artifact path — it's tooling for the manual dedup core, like `render.ts`/`preview.ts`.
+
 ## 2026-06-22
 
 ### ~~Finish Foundation Biology — figure-attach + review-pass + flip PUBLIC~~ — **DONE 2026-06-23**
@@ -120,13 +146,13 @@ The generalized LWS test-paper pipeline (`config.ts` PAPERS registry + `build-ta
 
 ## 2026-06-17
 
-### Continue the MHT-CET Maths /notes campaign (25 chapters un-noted; workflow now captured)
+### Continue the MHT-CET Maths /notes campaign (24 chapters un-noted; workflow now captured)
 
-Only 2 of 27 MHT-CET-Maths chapters are noted (Indefinite Integration + Differentiation, shipped 2026-06-16). The CET-Maths chapter playbook is now codified in CLAUDE.md "Notes editorial workflow → step 0 → MHT-CET Maths defaults" + the [[notes-structure-pedagogy-first]] reconfirm, so the next chapter is turn-key.
+**3 of 27** MHT-CET-Maths chapters are noted (Indefinite Integration + Differentiation 2026-06-16; **Vectors 2026-06-23** — 6 pages · 59 concepts · 173 q · Phase-D reshape of the "Magnitude, Components, Projection" catch-all, commit `fab7fe8`). The CET-Maths chapter playbook is codified in CLAUDE.md "Notes editorial workflow → step 0 → MHT-CET Maths defaults" + the [[notes-structure-pedagogy-first]] reconfirm, so the next chapter is turn-key.
 
-**Why:** CET Maths is a large, high-traffic exam for the product; the per-chapter cost is now low (clone `differentiation/_data/`, expect a Phase-D reshape, build via a 6-agent batch). Highest-yield next picks by bank size: **Vectors (173 q, 58% HARD)**, **Applications of Derivative (137 q, 26% HARD — gentler)**, Line and Plane (137), Differential Equations (94), Probability Distribution (86). Below the bank-coverage gate (reuse NDA siblings, don't build): Conic Sections (5 q), Sequences & Series (4 q — see [[mhtcet-sequences-notes-deferred]]), Quadratic Equations (3 q).
+**Why:** CET Maths is a large, high-traffic exam for the product; the per-chapter cost is now low (clone `vectors/_data/` or `differentiation/_data/`, expect a Phase-D reshape, build via a 6-agent batch). Highest-yield next picks by bank size: **Applications of Derivative (137 q, 26% HARD — gentler)**, **Line and Plane (137)**, Differential Equations (94), Probability Distribution (86). Below the bank-coverage gate (reuse NDA siblings, don't build): Conic Sections (5 q), Sequences & Series (4 q — see [[mhtcet-sequences-notes-deferred]]), Quadratic Equations (3 q).
 
-**How to apply:** pick a chapter → run step-0 analysis (read HARD+MODERATE solutions) → reshape the catch-all bank subtopics → 6-agent parallel batch off a fixed concept skeleton → tag 100% → Step-4 gate chain → smoke-test routes → commit. Default to Vectors or Applications of Derivative.
+**How to apply:** pick a chapter → run step-0 analysis (read HARD+MODERATE solutions) → reshape the catch-all bank subtopics → 6-agent parallel batch off a fixed concept skeleton → tag 100% → Step-4 gate chain → smoke-test routes → commit. Default to Applications of Derivative or Line and Plane.
 
 ### Spot-check the MHT-CET Differentiation `a18fbd89` disputed answer key (/solution-cleanup)
 
@@ -136,9 +162,9 @@ During the Differentiation notes build, PYQ `a18fbd89` (`y = sin⁻¹x² + cos�
 
 **How to apply:** run `/solution-cleanup` (or a targeted re-derivation) on `a18fbd89` — re-read the stem (the `−4` answer likely implies a different intended stem, e.g. `sin⁻¹x + cos⁻¹x` of a non-constant argument, or `(sin⁻¹x)²+(cos⁻¹x)²`); fix the key or the stem per the source. CET source papers are local at `C:\tmp\PYQPs\MHT-CET` ([[mhtcet-source-docx-render]]).
 
-### Harvest the 2 MHT-CET Maths notes chapters for daily quizzes (carry-forward)
+### Harvest the 3 MHT-CET Maths notes chapters for daily quizzes (carry-forward)
 
-Both CET-Maths notes chapters (Indefinite Integration + Differentiation) were authored quiz-ready per Step 1b (Differentiation: `quiz:coverage` 0 formula gaps, 75 traps) but are **unharvested** — the daily-quiz campaign is NDA-only so far. Carry-forward of the broader quiz frontier (see the 2026-06-09 "Wave 3+" entry) extended to MHT-CET; lower priority than clearing the NDA Chemistry/Physics/Biology frontier first.
+All 3 CET-Maths notes chapters (Indefinite Integration + Differentiation + **Vectors 2026-06-23**) were authored quiz-ready per Step 1b (Differentiation: `quiz:coverage` 0 formula gaps, 75 traps) but are **unharvested** — the daily-quiz campaign is NDA-only so far. Carry-forward of the broader quiz frontier (see the 2026-06-09 "Wave 3+" entry) extended to MHT-CET; lower priority than clearing the NDA Chemistry/Physics/Biology frontier first.
 
 ### Add an error-type signal to wrong-answer remediation (slip vs concept-gap)
 
