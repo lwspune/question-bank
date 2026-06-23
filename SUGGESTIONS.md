@@ -18,15 +18,41 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-22
+
+### ~~Finish Foundation Biology — figure-attach + review-pass + flip PUBLIC~~ — **DONE 2026-06-23**
+
+Shipped all three steps: figure-attach (+129 figure-Qs / 95 figures, commits `e59dcac`+`c448d3d`), review-pass (138 flagged → 10 flips / 88 confirmed / 40 flawed, commit `7d747ee`), then flipped **847 PUBLIC + 40 flawed PRIVATE**. **The Foundation Course is now COMPLETE — all 3 subjects PUBLIC** (Chemistry ~1,014 + Physics 991 + Biology 847). reproduce-2's match-lists were recovered as GFM pipe-tables. The 40 flawed (broken match-list/multi-statement option sets) stay PRIVATE pending a source/official key — a future optional salvage pass.
+
+<details><summary>original</summary>
+
+Biology text-phase is DONE (758 q PRIVATE across 7 chapters; subject `7d34c419-…`, 14 docx worksheets, all committed via the zero-code-change pipeline). The same finish arc Physics just completed remains: figures, review, flip.
+
+**Why:** Biology is the **last Foundation subject** — finishing it completes the whole Foundation Course offering. The questions are all safely committed PRIVATE, so this is a clean resumption point, but they stay invisible until reviewed + flipped.
+
+**How to apply (3 steps, mirrors Physics 2026-06-22):** (1) **figure-attach** — ~128 figure-dependent Qs were excluded from the text pass (heaviest: `life-processes-3` 28 — whole first half is diagram-based; `reproduce-2` 28 — figures + match-lists the agent left out of scope; `tissues-2` 17, `cell-2` 10, `environment-1` 8, `reproduce-1` 8). Per worksheet: figure-agent recovers excluded Qs + writes `<id>.figure-{questions,overrides,figures}.json` (the `figure-bbox.ts` resolver now handles glued markers + docx-converted PDFs) → `merge-figures.ts` → `commit.ts` → `attach-images.ts`. (2) **review-pass** — re-derive the many REVIEW-flagged answers (match-the-following + assertion-reason items dominate, several with duplicate/garbled options); sequential re-derivation like Physics, and **read each agent's reason against its answer field — a mismatch is a free flip** ([[practice-pdf-vision-ingestion]]). Log verdicts in `data/_review.json` + `apply-review.ts`. (3) **flip PUBLIC** (single guarded UPDATE: all Biology PUBLIC `WHERE NOT EXISTS` in the flawed set). NOTE: `reproduce-2`'s match-list tables (Q38-41) were excluded as "out of scope" but ARE transcribable as GFM pipe-tables — recover them in the figure/cleanup pass. See [[foundation-course]].
+
+</details>
+
+## 2026-06-21
+
+### Confirm APJ GAT Mock 5 Q45's key against the official LWS key
+
+Q45 ("It is your duty to make tea…" transformation) is now PUBLIC keyed **C** ("You are supposed to"), but it's a genuine transformation-ambiguity — **B** ("You are required to") and **D** (the passive "Tea is to be made by you") are also defensible. The other 6 low-confidence flags from the GAT mock were re-derived and stand, and **Q46 was corrected A→B** this session (PSRQ→QPSR). The 4 flawed (Geo Q79, Chem Q132/137/138) stay PRIVATE.
+
+**Why:** a wrong derived key on a PUBLIC practice question = a wrong public answer + wrong OMR grade. Low stakes (1 q, all three readings defensible), but the official LWS key resolves it definitively.
+
+**How to apply:** if the LWS key surfaces and Q45 differs from C, fix the live row the proper way — flip the option `is_correct` + recompute `content_hash` via the real `contentHash` helper (collision-guarded), keep visibility, then rebuild the Excel (`build-tags.ts apj-gat-mock-5`). NOT a re-commit (orphans the row). Same path used for the Q46 fix.
+
+### ~~MEMORY.md is back at the ~24.4 KiB budget edge~~ — **DONE 2026-06-22**
+
+Trimmed to **23.87 KiB** this run (from 24.37): shortened the Foundation pointer (Physics+Biology status) + the JEE/Practice/notes-self-sufficient/gdrive/cross-app/mobile/Template-D/concept-content one-liners, moving detail into the topic files. 84 pointers, all verified resolving. Headroom restored (~0.5 KiB under the limit). Recurring creep — re-trim when the next memory lands.
+
 ## 2026-06-20
 
-### Ingest Foundation Course Physics + Biology subjects — **PHYSICS TEXT-PHASE DONE 2026-06-21; figures+review+flip + Biology remain**
+### ~~Ingest Foundation Course Physics + Biology subjects~~ — **PHYSICS COMPLETE & PUBLIC 2026-06-22; BIOLOGY text-phase DONE 2026-06-22 (figures+review+flip remain → 2026-06-22 entry)**
 
-Foundation Course **Chemistry is complete** (8 chapters, ~1,014 q PUBLIC). **Physics text-phase shipped 2026-06-21** (commit `5401e19`): subject seeded (`bf9528d4-…`), 16 worksheet entries across 9 chapters, **894 q committed PRIVATE + practice** via the existing pipeline (zero code change). `Biology` (parallel folder under `C:\tmp\Practice\Foundation\`) still untouched.
-
-**Why:** the Foundation Course is now ~⅔ done; the Physics figure/review/flip finish + Biology round out the subject offering for the same student cohort.
-
-**How to apply — Physics finish (next session):** (1) **figure-attach pass** for the ~134 excluded figure-dependent Qs (crop-manifest → figure-agent → `attach-images`; Light 40 + Magnetic 22 are heaviest); (2) **review pass** — ~87 REVIEW-flagged answers + 3 specific items (forces-1 Q23 *edited* option; human-eye Q44/Q62 *reconstructed* options → likely flaw/PRIVATE; work-energy-2 buoyancy/pressure Qs misfiled under "Work and Its Measurement" → reclassify to Gravitation or accept); (3) **flip PUBLIC**. **Biology:** seed the subject (`INSERT INTO subjects(exam_id, name)` under exam `22d88324-…`) + a config batch, then the same pipeline. Note the C: drive was at ~100% (3.3 GB free) — clear `scripts/foundation/out/*` + `.next` before the figure render. See [[foundation-course]].
+**Physics — DONE & PUBLIC:** text-phase 2026-06-21 (894 q) → figure-attach 2026-06-22 (+140 figure-Qs / 103 figures; added `figure-bbox.ts` marker-resolver + `merge-figures.ts`) → review-pass 2026-06-22 (all 127 REVIEW-flagged re-derived sequentially → 11 key-flips, 43 flawed kept PRIVATE) → flipped PUBLIC = **991 q PUBLIC + 43 flawed PRIVATE**. The 3 flagged specifics resolved (forces-1 Q23 confirmed; human-eye/magnetic flawed kept PRIVATE; work-energy-2 buoyancy answer-confirmed, off-topic reclassify left optional). **Biology — text-phase DONE:** subject seeded (`7d34c419-…`), 14 docx worksheets → 758 q PRIVATE / 7 chapters. Remaining Biology work → the 2026-06-22 entry below.
 
 ### ~~Recover the deferred Foundation Chemistry figures~~ — **DONE 2026-06-20**
 
