@@ -26,8 +26,10 @@ type Verdict = { id: string; q: number; why?: string; ans?: string; note?: strin
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  const fileArg = process.argv.find((a) => a.startsWith("--file="));
+  const reviewFile = fileArg ? fileArg.slice("--file=".length) : "_review.json";
   loadEnv();
-  const review = JSON.parse(readFileSync(join(DATA, "_review.json"), "utf8")) as {
+  const review = JSON.parse(readFileSync(join(DATA, reviewFile), "utf8")) as {
     flips: Flip[];
     flawed: Verdict[];
     confirmed: Verdict[];
