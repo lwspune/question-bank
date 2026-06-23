@@ -36,13 +36,19 @@ During the GAT Mock 3 ingest, the official LWS key disagreed with the derived an
 
 **How to apply:** correct Q4→B and Q5→C in the LWS master answer-key document (the teacher's source, not the repo). If you also want the bank/Excel to reflect the corrected answers, flip those two PUBLIC rows the proper way (option `is_correct` move + `content_hash` recompute via the real `contentHash` helper, collision-guarded) and rebuild `build-tags.ts gat-mock-3` — NOT a re-commit. The other 9 disagreements were correctly the official key's (7 my errors, 2 debatable recall items Q84/Q101).
 
-### Promote the dedup-gate bank dump to a reusable `scripts/practice-paper/dump-bank.ts`
+### ~~Promote the dedup-gate bank dump to a reusable `scripts/practice-paper/dump-bank.ts`~~ — **DONE 2026-06-23**
+
+Shipped `scripts/practice-paper/dump-bank.ts` — `--subject <name...> [--exam <name>]` (default NDA) writes one `C:/tmp/bank_<exam>_<subject>.json` per subject; `--chapter <id...>` writes one `C:/tmp/bank_chapter_<name>.json` per chapter. Pulls both `question_kind`s, pages past the 1000-row PostgREST cap, emits `{id, chapter, subtopic, stem, options, answer, solution}`. Verified both modes (NDA Chemistry 294, MHT-CET Chemistry 1548 = paging works, Light & Optics chapter 104). The `/lws-test-ingest` skill's dedup step now points at it. Commit on this date.
+
+<details><summary>original</summary>
 
 The dedup step needs the existing bank's stems/options/answers/solutions per subject (or chapter) dumped to files so a subagent can semantic-match without blowing the orchestrator's context. This is currently a hand-written throwaway tsx one-off each ingest (written + deleted again this session). Multi-subject GAT mocks are now recurring (Mock 5, Mock 3, more coming), so a small committed helper would remove the re-write.
 
 **Why:** minor, but every multi-subject ingest re-derives the same paging+dump logic (with the PostgREST 1000-row-cap gotcha each time); a parameterised helper makes the dedup gate one command.
 
 **How to apply:** add `scripts/practice-paper/dump-bank.ts <subject...|--chapter <id>>` that pages `questions` (PUBLIC+practice, both kinds) for the given subject/chapter into `C:/tmp/bank_<key>.json` with `{id, chapter, subtopic, stem, options, answer, solution}` (the shape the per-subject dedup agents already consume). Keep it out of the committed-artifact path — it's tooling for the manual dedup core, like `render.ts`/`preview.ts`.
+
+</details>
 
 ## 2026-06-22
 
