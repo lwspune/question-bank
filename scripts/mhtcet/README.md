@@ -53,6 +53,11 @@ npx tsx scripts/mhtcet/validate-db.ts <shiftId>
 npx tsx scripts/mhtcet/flip-public.ts <shiftId> --apply
 ```
 
+## Figure-as-option questions ("which structure/graph is X")
+
+- **Default to ATTACH, not describe.** Set `optionFigures: true` to attach the option figures (5 imageRefs → stem + A-D; 4 → A-D). Only use `optionImages: true` (describe each option in text) when the description is **faithful AND does not name the answer** — for "identify the structure of [named compound]" the text route names the answer (a giveaway: e.g. option A = "…— phloroglucinol"), so attach instead. Verify the image→option order before flipping PUBLIC (the answer's option must map to the right figure).
+- **`commit.ts` hardens the content_hash for `optionFigures` rows** — it hashes on each option image's content (sha256 of the bytes), not the neutral `(A)(B)(C)(D)` labels, so two image-option questions sharing a stem + answer can't collide and silently drop. (Text-option rows hash on option text as before.) Because of this, editing/adding an `optionFigures` row changes its hash → delete-then-recommit it (the whole shift is re-set PRIVATE by commit, then flip-public restores it).
+
 ## Gotchas (banked from the 2025 April ingest)
 
 - **Verify EVERY classification against `out/taxonomy.json` before commit** — a
