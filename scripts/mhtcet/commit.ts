@@ -11,8 +11,9 @@
  * separate pass (attach-images.ts). Everything lands PRIVATE; flip-public.ts
  * promotes the verified, non-flawed rows.
  */
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
+import { basename, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash } from "../../src/lib/upload/hash";
@@ -20,14 +21,32 @@ import { normalizeMathFunctions } from "../jee/lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import { cleanupArtifacts } from "./lib";
-import { ORG_ID, EXAM_ID, CREATED_BY, loadShift, recordsPath, requireShiftId, type ShiftData } from "./config";
+import { ORG_ID, EXAM_ID, CREATED_BY, loadShift, recordsPath, mediaDir, requireShiftId, type ShiftData } from "./config";
 
 type Rec = {
   questionNumber: number;
   subject: string;
   stem: string;
   options: { label: "A" | "B" | "C" | "D"; text: string }[] | null;
+  imageRefs: string[];
 };
+
+/**
+ * Hash tokens for an option-figure question. The displayed option text is just a
+ * neutral label ("(A)".."(D)"), so a text-based content_hash would be the SAME for
+ * any two image-option questions sharing a stem + answer → dedup would silently
+ * drop one. Folding each option image's content-hash makes the row distinct by what
+ * the student actually sees. 5 refs = [stem, A, B, C, D]; 4 refs = [A, B, C, D].
+ */
+function optionImageHashTokens(imageRefs: string[], shiftId: string): string[] {
+  const optRefs = (imageRefs.length === 5 ? imageRefs.slice(1) : imageRefs).slice(0, 4);
+  const fallbackDir = join(mediaDir(shiftId), "media");
+  return optRefs.map((ref) => {
+    const file = existsSync(ref) ? ref : join(fallbackDir, basename(ref));
+    if (!existsSync(file)) throw new Error(`option image not found for hash: ${ref}`);
+    return "img:" + createHash("sha256").update(readFileSync(file)).digest("hex").slice(0, 16);
+  });
+}
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -64,6 +83,10 @@ function buildRows(shiftId: string, shift: ShiftData): ParsedRowPayload[] {
     if (options.some((o) => !o.text.trim())) throw new Error(`Q${num}: an option is empty — add optionOverrides (describe the figure) `);
     if (!options.some((o) => o.isCorrect)) throw new Error(`Q${num}: answer ${q.answer} matches no option`);
 
+    // optionFigures rows hash on the option IMAGE content (the labels are non-distinguishing);
+    // all others hash on the option text as usual.
+    const hashOptions = q.optionFigures ? optionImageHashTokens(rec.imageRefs, shiftId) : options.map((o) => o.text);
+
     return {
       sourceRow: num,
       questionNumber: key,
@@ -74,7 +97,7 @@ function buildRows(shiftId: string, shift: ShiftData): ParsedRowPayload[] {
       difficulty: q.difficulty,
       solution: q.solution ? norm(q.solution) : undefined,
       options,
-      contentHash: contentHash(text, options.map((o) => o.text), q.answer),
+      contentHash: contentHash(text, hashOptions, q.answer),
     };
   });
 }
