@@ -1,0 +1,463 @@
+{
+  "101": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "A plane parallel to the XY-plane has the form \\(z = k\\) (its normal is along the Z-axis). Since it passes through \\(A(7,8,6)\\), we get \\(z = 6\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Selection and Arrangement with Constraints",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Seat the 6 boys around the round table first: \\((6-1)! = 5! = 120\\) ways. This creates 6 gaps between consecutive boys. Place the 5 girls in these 6 gaps so that no two girls are together: \\(^{6}P_{5} = 720\\) ways. Total \\(= 120 \\times 720 = 86400\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Treat each bracket as a scalar triple product, linear in each slot. The left side \\([2\\bar p - 3\\bar r,\\ \\bar q,\\ \\bar s] + [3\\bar p + 2\\bar q,\\ \\bar r,\\ \\bar s]\\) expands. The first term \\(= 2[\\bar p,\\bar q,\\bar s] - 3[\\bar r,\\bar q,\\bar s]\\). The second \\(= 3[\\bar p,\\bar r,\\bar s] + 2[\\bar q,\\bar r,\\bar s]\\). Using \\([\\bar r,\\bar q,\\bar s] = -[\\bar q,\\bar r,\\bar s]\\), the \\(-3[\\bar r,\\bar q,\\bar s]\\) becomes \\(+3[\\bar q,\\bar r,\\bar s]\\). Collecting: \\(3[\\bar p,\\bar r,\\bar s] + 5[\\bar q,\\bar r,\\bar s] + 2[\\bar p,\\bar q,\\bar s]\\). Comparing with \\(m[\\bar p,\\bar r,\\bar s] + n[\\bar q,\\bar r,\\bar s] + t[\\bar p,\\bar q,\\bar s]\\) gives \\(m=3,\\ n=5,\\ t=2\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "note": "Stem prints '2p-3r' for the first matrix; akSolution treats first entry as 2p (text shows p-3r, likely OCR). The comparison m,n,t = 3,5,2 matches option D regardless."
+  },
+  "104": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distance, Foot of Perpendicular, Projection, and Mirror Image",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Line: \\((4,6,-2) + \\lambda(-1,2,3)\\), so \\(Q = (4-\\lambda,\\ 6+2\\lambda,\\ -2+3\\lambda)\\). With \\(P(-3,2,3)\\), \\(\\overline{PQ}\\) has d.r.s \\((7-\\lambda,\\ 4+2\\lambda,\\ -5+3\\lambda)\\). Foot: \\(\\overline{PQ}\\perp\\) line, so \\(-1(7-\\lambda)+2(4+2\\lambda)+3(-5+3\\lambda)=0 \\Rightarrow -7+\\lambda+8+4\\lambda-15+9\\lambda=0 \\Rightarrow 14\\lambda=14 \\Rightarrow \\lambda=1\\). Then \\(Q=(3,8,1)\\) and \\(PQ=\\sqrt{6^2+6^2+(-2)^2}=\\sqrt{76}=2\\sqrt{19}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Required plane normal \\((a,b,c)\\) is perpendicular to the normals of both given planes, so it is along \\((2,-2,1)\\times(1,-1,2)\\). Compute: \\(\\hat i(-2\\cdot2-1\\cdot(-1)) - \\hat j(2\\cdot2-1\\cdot1) + \\hat k(2\\cdot(-1)-(-2)\\cdot1) = \\hat i(-3) - \\hat j(3) + \\hat k(0) = (-3,-3,0)\\), i.e. direction \\((1,1,0)\\). Plane through \\((1,-2,1)\\): \\(1(x-1)+1(y+2)=0 \\Rightarrow x+y+1=0\\). Distance of \\((1,2,2)\\): \\(\\left|\\dfrac{1+2+1}{\\sqrt{2}}\\right| = \\dfrac{4}{\\sqrt2} = 2\\sqrt2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "The rectangle has vertices at the intersections of \\(x=8,x=10\\) with \\(y=11,y=12\\): \\((8,11),(10,11),(10,12),(8,12)\\). The diagonals intersect at the centre, which is the average of opposite corners: \\(\\left(\\dfrac{8+10}{2},\\dfrac{11+12}{2}\\right) = \\left(9,\\dfrac{23}{2}\\right)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Odd tickets: 5 (1,3,5,7,9); even: 4 (2,4,6,8). Drawn one at a time without replacement. \\(P(\\text{O,E,O}) = \\dfrac{5}{9}\\cdot\\dfrac{4}{8}\\cdot\\dfrac{4}{7} = \\dfrac{80}{504}\\). \\(P(\\text{E,O,E}) = \\dfrac{4}{9}\\cdot\\dfrac{5}{8}\\cdot\\dfrac{3}{7} = \\dfrac{60}{504}\\). Sum \\(= \\dfrac{140}{504} = \\dfrac{5}{18}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let \\(g(x)=(84-x)^{1/4}\\), with \\(g(3)=81^{1/4}=3\\). The limit is the derivative form: \\(\\lim_{x\\to3}\\dfrac{g(x)-g(3)}{x-3} = g'(3)\\). \\(g'(x) = \\dfrac{1}{4}(84-x)^{-3/4}\\cdot(-1)\\), so \\(g'(3) = -\\dfrac{1}{4}\\cdot 81^{-3/4} = -\\dfrac{1}{4}\\cdot\\dfrac{1}{27} = -\\dfrac{1}{108}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\([(p\\to q)\\wedge \\sim q]\\) is true only when \\(p\\to q\\) is true and \\(q\\) is false, which forces \\(p\\) false (and \\(q\\) false). For the conditional \\([(p\\to q)\\wedge \\sim q]\\to r\\) to be a tautology, \\(r\\) must be true whenever the antecedent is true, i.e. whenever \\(q\\) is false. So \\(r\\) must be true exactly when \\(\\sim q\\) is true; \\(r\\equiv \\sim q\\) guarantees this.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Let \\(\\theta=\\dfrac{\\alpha+\\beta}{2},\\ \\phi=\\dfrac{\\alpha-\\beta}{2}\\), so \\(\\alpha=\\theta+\\phi,\\ \\beta=\\theta-\\phi\\). Then \\(3\\sin\\alpha=5\\sin\\beta\\) gives \\(3\\sin(\\theta+\\phi)=5\\sin(\\theta-\\phi)\\). Expanding: \\(3(\\sin\\theta\\cos\\phi+\\cos\\theta\\sin\\phi)=5(\\sin\\theta\\cos\\phi-\\cos\\theta\\sin\\phi)\\). So \\(8\\cos\\theta\\sin\\phi=2\\sin\\theta\\cos\\phi \\Rightarrow \\dfrac{\\tan\\theta}{\\tan\\phi}=4\\). Hence \\(\\dfrac{\\tan\\frac{\\alpha+\\beta}{2}}{\\tan\\frac{\\alpha-\\beta}{2}}=4\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "note": "Stem prints a '+' between the two tan terms but the worked relation (and options) require the RATIO = 4; this is a known OCR sign issue. Answer 4 matches D either way.",
+    "stemOverride": "If \\(3\\sin\\alpha = 5\\sin\\beta\\), then \\(\\dfrac{\\tan\\left( \\frac{\\alpha+\\beta}{2} \\right)}{\\tan\\left( \\frac{\\alpha-\\beta}{2} \\right)}=\\)"
+  },
+  "111": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Let \\(t=e^x\\), \\(dt=e^x\\,dx=t\\,dx\\). Then \\(I=\\int\\dfrac{dt}{t(2t^2+3t+1)}=\\int\\dfrac{dt}{t(2t+1)(t+1)}\\). Partial fractions: \\(\\dfrac{1}{t(2t+1)(t+1)}=\\dfrac{1}{t}-\\dfrac{4}{2t+1}+\\dfrac{1}{t+1}\\). Integrating: \\(\\ln t - 2\\ln|2t+1| + \\ln|t+1| = x + \\ln(e^x+1) - 2\\ln(2e^x+1) + c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Foundations and Standard Formulae",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Since \\(e^{k\\log x}=x^{k}\\), the integrand is \\(\\dfrac{x^{2030}-x^{2029}}{x^{2028}-x^{2027}}=\\dfrac{x^{2029}(x-1)}{x^{2027}(x-1)}=x^{2}\\). Therefore \\(\\int x^2\\,dx = \\dfrac{x^3}{3}+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Definite Integration",
+    "subtopic": "Substitution and Standard Form",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Split by the greatest-integer value: \\([x]=1\\) on \\((1,2)\\), \\(=2\\) on \\((2,3)\\), \\(=3\\) on \\((3,4)\\). So \\(\\int_1^4 \\log[x]\\,dx = \\int_1^2 \\log1\\,dx + \\int_2^3 \\log2\\,dx + \\int_3^4 \\log3\\,dx = 0 + \\log2 + \\log3 = \\log6\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Tangent to \\(x^2=4y\\) (here \\(4a=4\\), so \\(a=1\\)) in slope form: \\(x=my+\\dfrac{1}{m}\\), i.e. \\(mx=m^2y+1\\). Replace \\(m=\\dfrac{dy}{dx}\\): \\(x\\dfrac{dy}{dx}=\\left(\\dfrac{dy}{dx}\\right)^2 y + 1\\). This is order 1, degree 2.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Probabilities are \\(2k,k,2k,4k,k\\) for \\(X=0,1,2,3,4\\). Sum \\(=10k=1\\Rightarrow k=\\dfrac{1}{10}\\). \\(a=P(X<3)=2k+k+2k=5k=\\dfrac{1}{2}\\). \\(b=P(2\\le X<4)=P(2)+P(3)=2k+4k=6k=\\dfrac{6}{10}=\\dfrac{3}{5}\\). Since \\(\\dfrac{1}{2}<\\dfrac{3}{5}\\), we have \\(a<b\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Find \\(k\\) from \\(\\int_0^\\infty \\dfrac{k}{x^2+1}\\,dx=1 \\Rightarrow k[\\tan^{-1}x]_0^\\infty = k\\cdot\\dfrac{\\pi}{2}=1 \\Rightarrow k=\\dfrac{2}{\\pi}\\). The c.d.f. is \\(F(x)=\\int_0^x \\dfrac{2/\\pi}{t^2+1}\\,dt = \\dfrac{2}{\\pi}\\tan^{-1}x\\) for \\(x>0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Separate: \\(\\dfrac{dy}{1+y} = \\dfrac{-\\cos x}{2+\\sin x}\\,dx\\). Integrate: \\(\\ln(1+y) = -\\ln(2+\\sin x) + \\ln c\\), so \\((1+y)(2+\\sin x)=c\\). With \\(y(0)=2\\): \\((3)(2)=c=6\\). Then \\(y\\left(\\dfrac{\\pi}{2}\\right)+1 = \\dfrac{6}{2+1}=2 \\Rightarrow y=1\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\dfrac{dP}{dt}=\\dfrac{x}{100}P \\Rightarrow \\ln P = \\dfrac{x}{100}t + c\\). The amount doubles in 10 years: \\(\\ln\\dfrac{200}{100}=\\dfrac{x}{100}\\cdot10\\), so \\(\\dfrac{x}{10}=\\ln2=0.6931 \\Rightarrow x=6.931\\approx 6.93\\%\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Distribution — Mean, Variance, and Parameter Estimation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(B(33,p)\\): \\(3P(X=0)=P(X=1)\\) gives \\(3q^{33}=33pq^{32}\\Rightarrow 3q=33p\\Rightarrow q=11p\\). With \\(p+q=1\\): \\(12p=1\\Rightarrow p=\\dfrac{1}{12},\\ q=\\dfrac{11}{12}\\). Variance \\(=npq=33\\cdot\\dfrac{1}{12}\\cdot\\dfrac{11}{12}=\\dfrac{363}{144}=\\dfrac{121}{48}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Circle",
+    "subtopic": "Two Circles — Tangency, Common Tangents, and Relative Position",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Circle 1: \\(x^2+y^2-6x=0\\), centre \\(C_1(3,0)\\), \\(r_1=3\\). Circle 2: \\(x^2+y^2+6x+2y+1=0\\), centre \\(C_2(-3,-1)\\), \\(r_2=\\sqrt{9+1-1}=3\\). \\(C_1C_2=\\sqrt{36+1}=\\sqrt{37}\\approx6.08\\). Since \\(C_1C_2 > r_1+r_2=6\\), the circles are external (no overlap), so 4 common tangents exist.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "The general term \\(\\tan^{-1}\\dfrac{2^{n-1}}{1+2^{2n-1}} = \\tan^{-1}\\dfrac{2^n-2^{n-1}}{1+2^n\\cdot2^{n-1}} = \\tan^{-1}2^n - \\tan^{-1}2^{n-1}\\). This telescopes: partial sum \\(= \\tan^{-1}2^n - \\tan^{-1}1\\). As \\(n\\to\\infty\\): \\(\\tan^{-1}(\\infty) - \\dfrac{\\pi}{4} = \\dfrac{\\pi}{2} - \\dfrac{\\pi}{4} = \\dfrac{\\pi}{4}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Properties of Triangle",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Sides \\(5x,12x,13x\\) form a right triangle (since \\(5^2+12^2=13^2\\)), right-angled at the vertex opposite \\(13x\\). Area \\(=\\dfrac{1}{2}(5x)(12x)=30x^2=270 \\Rightarrow x^2=9 \\Rightarrow x=3\\). Sides: \\(15,36,39\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Using \\(\\sin^{-1}x+\\cos^{-1}x=\\dfrac{\\pi}{2}\\): \\(4\\sin^{-1}x+\\cos^{-1}x = 3\\sin^{-1}x + (\\sin^{-1}x+\\cos^{-1}x) = 3\\sin^{-1}x + \\dfrac{\\pi}{2} = \\pi\\). So \\(\\sin^{-1}x=\\dfrac{\\pi}{6}\\Rightarrow x=\\dfrac{1}{2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Definite Integration",
+    "subtopic": "Substitution and Standard Form",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Rewrite: \\(\\int_1^e e^x\\left(\\dfrac{1}{x}+\\log x\\right)dx\\). This is of the form \\(\\int e^x[f(x)+f'(x)]dx\\) with \\(f(x)=\\log x,\\ f'(x)=\\dfrac{1}{x}\\), giving \\([e^x\\log x]_1^e = e^e\\cdot1 - e^1\\cdot0 = e^e\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(A_1=\\int_0^{\\pi/3}\\cos x\\,dx = [\\sin x]_0^{\\pi/3} = \\dfrac{\\sqrt3}{2}\\). \\(A_2=\\int_0^{\\pi/3}\\cos2x\\,dx = \\left[\\dfrac{\\sin2x}{2}\\right]_0^{\\pi/3} = \\dfrac{1}{2}\\sin\\dfrac{2\\pi}{3} = \\dfrac{1}{2}\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{\\sqrt3}{4}\\). Ratio \\(A_1:A_2 = 2:1\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\dfrac{d^2y}{dx^2}=\\dfrac{1}{x}\\). Integrate: \\(\\dfrac{dy}{dx}=\\log x + c\\). With \\(\\dfrac{dy}{dx}=0\\) at \\(x=1\\): \\(c=0\\). Integrate again: \\(y=\\int\\log x\\,dx = x\\log x - x + k\\). With \\(x=y=1\\): \\(1=0-1+k\\Rightarrow k=2\\). So \\(y=x\\log x - x + 2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Volume of tetrahedron \\(=\\dfrac{1}{6}|[\\bar a,\\bar b,\\bar c]| = 12\\), so \\([\\bar a,\\bar b,\\bar c]=\\bar a\\cdot(\\bar b\\times\\bar c)=72\\). Scalar projection of \\(\\bar a\\) on \\(\\bar b\\times\\bar c\\) is \\(\\dfrac{\\bar a\\cdot(\\bar b\\times\\bar c)}{|\\bar b\\times\\bar c|}=4\\). Thus \\(|\\bar b\\times\\bar c|=\\dfrac{72}{4}=18\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distance, Foot of Perpendicular, Projection, and Mirror Image",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Squared distances from the axes: from X-axis \\(=y^2+z^2\\), from Y-axis \\(=x^2+z^2\\), from Z-axis \\(=x^2+y^2\\). Their sum \\(=2(x^2+y^2+z^2)=242\\), so \\(x^2+y^2+z^2=121\\). Distance from origin \\(=\\sqrt{121}=11\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "With \\(A(2-x,2,2),B(2,2-y,2),C(2,2,2-z),D(1,1,1)\\): \\(\\overline{AB}=(x,-y,0)\\), \\(\\overline{AC}=(x,0,-z)\\), \\(\\overline{AD}=(x-1,-1,-1)\\). Coplanar \\(\\Rightarrow \\begin{vmatrix} x&-y&0\\\\ x&0&-z\\\\ x-1&-1&-1\\end{vmatrix}=0\\). Expanding: \\(x(0\\cdot(-1)-(-z)(-1)) - (-y)(x(-1)-(-z)(x-1)) + 0 = x(-z) + y(-x + z(x-1)) = -xz - xy + xyz - yz = 0\\). Dividing by \\(xyz\\): \\(\\dfrac{1}{y}+\\dfrac{1}{z}+\\dfrac{1}{x}-1=0\\), i.e. \\(\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Line 1 \\(\\dfrac{3-x}{2}=\\dfrac{5y-2}{3\\lambda+1}=5-z\\): rewrite as \\(\\dfrac{x-3}{-2}=\\dfrac{y-2/5}{(3\\lambda+1)/5}=\\dfrac{z-5}{-1}\\), d.r.s \\(\\left(-2,\\dfrac{3\\lambda+1}{5},-1\\right)\\). Line 2 \\(\\dfrac{x+2}{-1}=\\dfrac{1-3y}{7}=\\dfrac{4-z}{2\\mu}\\): \\(\\dfrac{x+2}{-1}=\\dfrac{y-1/3}{-7/3}=\\dfrac{z-4}{-2\\mu}\\), d.r.s \\(\\left(-1,-\\dfrac{7}{3},-2\\mu\\right)\\). Perpendicular: \\((-2)(-1)+\\dfrac{3\\lambda+1}{5}\\cdot\\left(-\\dfrac{7}{3}\\right)+(-1)(-2\\mu)=0\\). So \\(2 - \\dfrac{7(3\\lambda+1)}{15} + 2\\mu = 0\\). Multiply by 15: \\(30 - 21\\lambda - 7 + 30\\mu = 0 \\Rightarrow 21\\lambda - 30\\mu = 23 \\Rightarrow 7\\lambda - 10\\mu = \\dfrac{23}{3}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": false,
+    "note": "Flawed: my derivation and the AK's own worked solution both give 7*lambda - 10*mu = 23/3, which is NOT among the printed options (143, 143/3, 137, 137/5). Keyed D contradicts the AK algebra. Likely an options/key transcription error in the LWS reproduction. Kept PRIVATE.",
+    "flawed": true
+  },
+  "131": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Line d.r.s \\((1,2,2)\\); plane normal \\((2,-1,\\sqrt\\lambda)\\). \\(\\sin\\theta = \\dfrac{|1\\cdot2+2\\cdot(-1)+2\\sqrt\\lambda|}{\\sqrt{1+4+4}\\,\\sqrt{4+1+\\lambda}} = \\dfrac{2\\sqrt\\lambda}{3\\sqrt{5+\\lambda}} = \\dfrac{1}{3}\\). So \\(2\\sqrt\\lambda=\\sqrt{5+\\lambda}\\Rightarrow 4\\lambda=5+\\lambda\\Rightarrow \\lambda=\\dfrac{5}{3}\\). Then \\(\\lambda+1=\\dfrac{8}{3}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Linear Programming",
+    "subtopic": "Feasible Region — Identification, Constraints, Classification",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The feasible region must satisfy: \\(2x+3y\\ge12\\) (non-origin side of that line), \\(-x+y\\le3\\) (origin side), \\(x\\le4\\) (left of \\(x=4\\)), and \\(y\\ge3\\) (above \\(y=3\\)). Testing \\((3,4)\\): \\(2(3)+3(4)=18\\ge12\\) ✓, \\(-3+4=1\\le3\\) ✓, \\(3\\le4\\) ✓, \\(4\\ge3\\) ✓. From the figure this point lies in region \\(S_1\\) (just above \\(y=3\\), right of the \\(2x+3y=12\\) line, left of \\(x=4\\), below \\(-x+y=3\\)). Hence the region is \\(S_1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Figure read: S1 is the small region above y=3 bounded by 2x+3y=12 (left), x=4 (right), -x+y=3 (top). Matches all constraints."
+  },
+  "133": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(y=ax^{n+1}+bx^{-n}\\). \\(y'=a(n+1)x^n - bnx^{-n-1}\\). \\(y''=a(n+1)nx^{n-1}+bn(n+1)x^{-n-2} = n(n+1)\\left[ax^{n-1}+bx^{-n-2}\\right] = \\dfrac{n(n+1)}{x^2}\\left[ax^{n+1}+bx^{-n}\\right] = \\dfrac{n(n+1)}{x^2}y\\). Thus \\(x^2 y'' = n(n+1)y\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Each factor \\(\\cos(2k-1)x+i\\sin(2k-1)x = e^{i(2k-1)x}\\). The product over \\(k=1\\) to \\(n\\) gives \\(e^{i(1+3+\\cdots+(2n-1))x} = e^{i n^2 x}\\) (sum of first \\(n\\) odd numbers \\(=n^2\\)). So \\(f(x)=e^{in^2x}\\), \\(f'(x)=in^2 e^{in^2x}\\), \\(f''(x)=(in^2)^2 e^{in^2x} = -n^4 e^{in^2x} = -n^4 f(x)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(p(t)=1000+\\dfrac{1000t}{100+t^2}\\). \\(p'(t)=\\dfrac{1000(100+t^2)-1000t(2t)}{(100+t^2)^2}=\\dfrac{1000(100-t^2)}{(100+t^2)^2}\\). Setting \\(=0\\): \\(t=10\\) (taking \\(t>0\\)), which is a maximum. \\(p(10)=1000+\\dfrac{10000}{200}=1000+50=1050\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "B is an end of the minor axis \\((0,b)\\); foci \\(S(ae,0),S'(-ae,0)\\). \\(\\angle SBS'=90^\\circ\\) means \\(\\overline{BS}\\perp\\overline{BS'}\\). By symmetry, each of \\(\\angle SBO\\) is \\(45^\\circ\\), so \\(b=ae\\) (the legs OB and OS are equal). Then \\(b^2=a^2e^2\\) and \\(b^2=a^2(1-e^2)\\) give \\(a^2e^2=a^2(1-e^2)\\Rightarrow 2e^2=1\\Rightarrow e=\\dfrac{1}{\\sqrt2}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Line and Plane",
+    "subtopic": "Line — Equation, Direction Cosines, and Vector Form",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "\\(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1\\): \\(\\cos^245^\\circ+\\cos^260^\\circ+\\cos^2\\gamma=1\\Rightarrow \\dfrac{1}{2}+\\dfrac{1}{4}+\\cos^2\\gamma=1\\Rightarrow\\cos^2\\gamma=\\dfrac{1}{4}\\Rightarrow\\cos\\gamma=\\pm\\dfrac{1}{2}\\). The obtuse angle is \\(\\gamma=120^\\circ\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Let \\(y=\\tan^{-1}\\left(\\sqrt{1+x^2}-1\\right)\\). \\(\\dfrac{dy}{dx}=\\dfrac{1}{1+(\\sqrt{1+x^2}-1)^2}\\cdot\\dfrac{d}{dx}(\\sqrt{1+x^2}-1)\\). Denominator: \\(1+(1+x^2)-2\\sqrt{1+x^2}+1 = x^2+3-2\\sqrt{1+x^2}\\). And \\(\\dfrac{d}{dx}\\sqrt{1+x^2}=\\dfrac{x}{\\sqrt{1+x^2}}\\). So \\(\\dfrac{dy}{dx}=\\dfrac{x}{\\sqrt{1+x^2}\\left(x^2-2\\sqrt{1+x^2}+3\\right)}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\dfrac{dr}{dt}=2.1\\) cm/sec, \\(A=\\pi r^2\\), \\(\\dfrac{dA}{dt}=2\\pi r\\dfrac{dr}{dt}=2\\cdot\\dfrac{22}{7}\\cdot10\\cdot2.1 = 2\\cdot\\dfrac{22}{7}\\cdot21 = 2\\cdot66 = 132\\) cm\\(^2\\)/sec.",
+    "akAnswer": "C",
+    "agreesWithAk": true,
+    "note": "Stem prints '.1 cm/sec' but akSolution uses dr/dt = 2.1 cm/sec; only 2.1 yields option C=132. Treating rate as 2.1 cm/sec.",
+    "stemOverride": "By dropping a stone in a quiet lake, a wave in the form of circle is generated. The radius of the circular wave increases at the rate of \\(2.1\\text{ }cm/sec\\). Then the rate of increase of the enclosed circular region, when the radius of the circular wave is 10 cm , is (Given \\(\\pi=\\frac{22}{7}\\) )\\"
+  },
+  "140": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Intersection of \\(xy=6\\) and \\(x^2y=12\\): dividing, \\(x=2\\), then \\(y=3\\). For \\(xy=6\\): \\(y=6/x\\), \\(y'=-6/x^2\\), \\(m_1=-6/4=-3/2\\). For \\(x^2y=12\\): \\(y=12/x^2\\), \\(y'=-24/x^3\\), \\(m_2=-24/8=-3\\). \\(\\tan\\theta=\\left|\\dfrac{m_1-m_2}{1+m_1m_2}\\right|=\\left|\\dfrac{-3/2+3}{1+9/2}\\right|=\\left|\\dfrac{3/2}{11/2}\\right|=\\dfrac{3}{11}\\). So \\(\\theta=\\tan^{-1}\\dfrac{3}{11}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rolle's Theorem and Mean Value Theorem",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(f(x)=x(x-1)(x-2)=x^3-3x^2+2x\\), \\(f'(x)=3x^2-6x+2\\). On \\([0,1/2]\\): \\(f(1/2)=\\dfrac12\\cdot(-\\dfrac12)\\cdot(-\\dfrac32)=\\dfrac{3}{8}\\), \\(f(0)=0\\). MVT: \\(f'(c)=\\dfrac{3/8-0}{1/2}=\\dfrac{3}{4}\\). So \\(3c^2-6c+2=\\dfrac34\\Rightarrow 3c^2-6c+\\dfrac54=0\\Rightarrow 12c^2-24c+5=0\\Rightarrow c=\\dfrac{24\\pm\\sqrt{576-240}}{24}=\\dfrac{24\\pm\\sqrt{336}}{24}=1\\pm\\dfrac{\\sqrt{21}}{6}\\). Since \\(c\\in(0,1/2)\\), take \\(c=1-\\dfrac{\\sqrt{21}}{6}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(I=\\int\\dfrac{\\sin2x}{(a+b\\cos x)^2}dx=\\int\\dfrac{2\\sin x\\cos x}{(a+b\\cos x)^2}dx\\). Let \\(t=a+b\\cos x\\), \\(\\cos x=\\dfrac{t-a}{b}\\), \\(dt=-b\\sin x\\,dx\\), so \\(\\sin x\\,dx=-\\dfrac{dt}{b}\\). Then \\(I=\\int\\dfrac{2\\cdot\\frac{t-a}{b}}{t^2}\\cdot\\left(-\\dfrac{dt}{b}\\right)=-\\dfrac{2}{b^2}\\int\\dfrac{t-a}{t^2}dt = -\\dfrac{2}{b^2}\\left[\\ln|t|+\\dfrac{a}{t}\\right]+c = -\\dfrac{2}{b^2}\\left[\\log(a+b\\cos x)+\\dfrac{a}{a+b\\cos x}\\right]+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "For \\(ax^2+2hxy+by^2=0\\): \\(m_1+m_2=-\\dfrac{2h}{b},\\ m_1m_2=\\dfrac{a}{b}\\). Then \\(\\dfrac{(m_1+m_2)^2}{m_1m_2}=\\dfrac{4h^2/b^2}{a/b}=\\dfrac{4h^2}{ab}\\). Given \\(6h^2=25ab\\Rightarrow \\dfrac{h^2}{ab}=\\dfrac{25}{6}\\), so \\(\\dfrac{(m_1+m_2)^2}{m_1m_2}=\\dfrac{4\\cdot25}{6}=\\dfrac{50}{3}\\). Let \\(m_1=km_2\\): \\(\\dfrac{(k+1)^2}{k}=\\dfrac{50}{3}\\Rightarrow 3k^2+6k+3=50k\\Rightarrow 3k^2-44k+3=0\\). Hmm, this gives non-integer ratios; with the AK reading \\(16h^2=25ab\\) the ratio is \\(\\dfrac{4\\cdot25/16}{1}=\\dfrac{(k+1)^2}{k}\\Rightarrow\\dfrac{25}{4}=\\dfrac{(k+1)^2}{k}\\Rightarrow 4k^2-17k+4=0\\Rightarrow k=4\\) or \\(1/4\\). So \\(m_1=4m_2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "note": "Stem prints 6h^2=25ab but akSolution uses 16h^2=25ab; only 16h^2=25ab yields the clean ratio m1=4m2 (option B). Likely OCR (6 for 16). Answer B matches under the intended condition.",
+    "stemOverride": "If \\(m_{1}\\) and \\(m_{2}\\) are the slopes of the lines represented by \\(ax^{2}+ 2hxy+by^{2}= 0\\) satisfying the condition \\(16{\\text{ }h}^{2}= 25ab\\), then \\....\\"
+  },
+  "144": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Polar Form",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Conjugate of \\(-7+24i\\) is \\(-7-24i\\), with modulus \\(\\sqrt{49+576}=\\sqrt{625}=25\\). The modulus of a square root is \\(\\sqrt{|z|}=\\sqrt{25}=5\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Sequences and Series",
+    "subtopic": "Sequences and Series — AP, HP, Logarithmic and Power Sums",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(x+\\log_{15}(5+3^x)=x\\log_{15}5+\\log_{15}24\\). Write \\(x=\\log_{15}15^x\\) and \\(x\\log_{15}5=\\log_{15}5^x\\): \\(\\log_{15}\\left[15^x(5+3^x)\\right]=\\log_{15}(24\\cdot5^x)\\). So \\(15^x(5+3^x)=24\\cdot5^x\\). Since \\(15^x=3^x5^x\\), divide by \\(5^x\\): \\(3^x(5+3^x)=24\\). Let \\(u=3^x\\): \\(u^2+5u-24=0\\Rightarrow(u+8)(u-3)=0\\Rightarrow u=3\\) (reject \\(-8\\)). So \\(3^x=3\\Rightarrow x=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Logarithm/exponential equation; closest existing taxonomy home is Sequences and Series (Logarithmic). Classification approximate — no dedicated logarithm chapter in MHT-CET Maths taxonomy."
+  },
+  "146": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Continuity at 0 requires both one-sided limits equal \\(f(0)=\\dfrac{2}{\\log2}\\). Left: \\(\\lim_{x\\to0^-}\\dfrac{3\\sin x+5\\tan x}{a^x-1}=\\dfrac{3+5}{\\log a}=\\dfrac{8}{\\log a}\\). Setting \\(\\dfrac{8}{\\log a}=\\dfrac{2}{\\log2}\\Rightarrow\\log a=4\\log2\\Rightarrow a=16\\). Right: \\(\\lim_{x\\to0^+}\\dfrac{8x+2x\\cos x}{b^x-1}=\\dfrac{8+2}{\\log b}=\\dfrac{10}{\\log b}=\\dfrac{2}{\\log2}\\Rightarrow\\log b=5\\log2\\Rightarrow b=32\\). So \\(a=16,b=32\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Properties of Triangle",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Smallest angle is opposite the smallest side. Sides: \\(a=6+\\sqrt{12}=6+2\\sqrt3,\\ b=\\sqrt{48}=4\\sqrt3,\\ c=\\sqrt{24}=2\\sqrt6\\). Smallest side is \\(c=2\\sqrt6\\approx4.9\\). \\(\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}\\). \\(a^2=48+24\\sqrt3,\\ b^2=48,\\ c^2=24\\). Numerator \\(=48+24\\sqrt3+48-24=72+24\\sqrt3=24(3+\\sqrt3)\\). Denominator \\(=2(6+2\\sqrt3)(4\\sqrt3)=8\\sqrt3(6+2\\sqrt3)=16\\sqrt3(3+\\sqrt3)\\). So \\(\\cos C=\\dfrac{24(3+\\sqrt3)}{16\\sqrt3(3+\\sqrt3)}=\\dfrac{24}{16\\sqrt3}=\\dfrac{3}{2\\sqrt3}=\\dfrac{\\sqrt3}{2}\\). Hence \\(C=\\dfrac{\\pi}{6}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(p\\): \\(10n-3\\) prime when \\(n\\) not divisible by 3 — fails (e.g. \\(n=8\\): \\(77=7\\times11\\)), so \\(p\\) is False. \\(q\\): \\(\\left(\\frac{2}{\\sqrt3}\\right)^2+\\left(\\frac{-2}{\\sqrt3}\\right)^2+\\left(\\frac{-1}{\\sqrt3}\\right)^2=\\frac{4+4+1}{3}=3\\neq1\\), so these are NOT direction cosines; \\(q\\) is False. \\(r\\): \\(\\sin x\\) increasing on \\([-\\pi/2,\\pi/2]\\) since \\(\\cos x\\ge0\\) there; \\(r\\) is True. Now \\((\\sim p\\vee q)\\wedge r=(T\\vee F)\\wedge T=T\\). Option C is true.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Adjoint, Determinant, and A·adj(A) Identity",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The sum \\(a_{21}A_{21}+a_{22}A_{22}+a_{23}A_{23}\\) is the cofactor expansion of \\(\\det(A)\\) along row 2, which equals \\(\\det(A)\\). For \\(A=\\begin{bmatrix}\\cos\\theta&\\sin\\theta&0\\\\-\\sin\\theta&\\cos\\theta&0\\\\0&0&1\\end{bmatrix}\\), \\(\\det A=1\\cdot(\\cos^2\\theta+\\sin^2\\theta)=1\\). So the value is 1.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Properties of Triangle",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Let \\(\\dfrac{b+c}{11}=\\dfrac{c+a}{12}=\\dfrac{a+b}{13}=k\\). Adding: \\(2(a+b+c)=36k\\Rightarrow a+b+c=18k\\). Then \\(a=18k-11k=7k,\\ b=18k-12k=6k,\\ c=18k-13k=5k\\). Using the cosine rule: \\(\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}=\\dfrac{36+25-49}{60}=\\dfrac{12}{60}=\\dfrac15\\); \\(\\cos B=\\dfrac{49+25-36}{70}=\\dfrac{38}{70}=\\dfrac{19}{35}\\); \\(\\cos C=\\dfrac{49+36-25}{84}=\\dfrac{60}{84}=\\dfrac57\\). Ratio \\(\\dfrac15:\\dfrac{19}{35}:\\dfrac57\\); multiply by 35: \\(7:19:25\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  }
+}

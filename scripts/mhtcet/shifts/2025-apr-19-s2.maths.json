@@ -1,0 +1,466 @@
+{
+  "101": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Build the truth table for \\(\\lbrack p \\rightarrow (q \\land \\sim p)\\rbrack \\vee \\lbrack (p \\vee \\sim q) \\land p\\rbrack\\).\\n\\nFor rows \\((p,q)\\):\\n- \\((T,T)\\): \\(q \\land \\sim p = T \\land F = F\\); \\(p \\rightarrow F = F\\). \\((p \\vee \\sim q) \\land p = (T \\vee F) \\land T = T\\). Disjunction \\(= F \\vee T = T\\).\\n- \\((T,F)\\): \\(q \\land \\sim p = F\\); \\(p \\rightarrow F = F\\). \\((p \\vee \\sim q) \\land p = (T \\vee T) \\land T = T\\). \\(F \\vee T = T\\).\\n- \\((F,T)\\): \\(q \\land \\sim p = T \\land T = T\\); \\(p \\rightarrow T = T\\). \\((p \\vee \\sim q) \\land p = (F \\vee F) \\land F = F\\). \\(T \\vee F = T\\).\\n- \\((F,F)\\): \\(q \\land \\sim p = F\\); \\(p \\rightarrow F = T\\) (since \\(p\\) is false). \\((p \\vee \\sim q) \\land p = (\\ldots) \\land F = F\\). \\(T \\vee F = T\\).\\n\\nThe last column is \\(T\\,T\\,T\\,T\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The two given lines are \\(l_1: 4x + 3y = 10\\) and \\(l_2: 8x + 6y + 5 = 0\\), i.e. \\(4x + 3y = -\\tfrac{5}{2}\\). Both have slope \\(-\\tfrac{4}{3}\\), so they are parallel; a line through \\(O\\) crosses them at \\(A\\) and \\(B\\), and \\(O\\) divides \\(AB\\) in the ratio of the perpendicular distances from \\(O\\) to each line.\\n\\nDistance from \\(O\\) to \\(l_1\\): \\(d_1 = \\dfrac{|{-10}|}{\\sqrt{4^2+3^2}} = \\dfrac{10}{5} = 2\\).\\n\\nDistance from \\(O\\) to \\(l_2\\) (\\(8x+6y+5=0\\)): \\(d_2 = \\dfrac{|5|}{\\sqrt{8^2+6^2}} = \\dfrac{5}{10} = \\dfrac{1}{2}\\).\\n\\nHence \\(AO:OB = d_1:d_2 = 2:\\tfrac{1}{2} = 4:1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "The position is \\(x = a + bt - ct^2,\\; y = at + bt^2\\). The acceleration components are the second derivatives.\\n\\n\\(\\dfrac{dx}{dt} = b - 2ct \\Rightarrow \\dfrac{d^2x}{dt^2} = -2c\\).\\n\\n\\(\\dfrac{dy}{dt} = a + 2bt \\Rightarrow \\dfrac{d^2y}{dt^2} = 2b\\).\\n\\nResultant acceleration \\(= \\sqrt{(-2c)^2 + (2b)^2} = \\sqrt{4c^2 + 4b^2} = 2\\sqrt{b^2 + c^2}\\) unit/second\\(^2\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Vectors",
+    "subtopic": "Vector Geometry — Section Formula, Triangle, and Parallelogram",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "The internal bisector of \\(\\angle AOB\\) lies along the sum of the unit vectors of \\(\\overline{a}\\) and \\(\\overline{b}\\):\\n\\[\\overline{v} = \\frac{\\overline{a}}{|\\overline{a}|} + \\frac{\\overline{b}}{|\\overline{b}|}.\\]\\nComparing with the given form \\(\\overline{v} = x\\,\\dfrac{\\overline{a}}{|\\overline{a}|} + y\\,\\dfrac{\\overline{b}}{|\\overline{b}|}\\) gives \\(x = 1\\) and \\(y = 1\\), so \\(x - y = 0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Vectors",
+    "subtopic": "Vector Geometry — Section Formula, Triangle, and Parallelogram",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Place \\(A = (0,0),\\; B = (1,0),\\; C = (0,1)\\).\\n\\n\\(P\\) divides \\(BC\\) in \\(3:4\\): \\(P = \\left(\\dfrac{3\\cdot 0 + 4\\cdot 1}{7}, \\dfrac{3\\cdot 1 + 4\\cdot 0}{7}\\right) = \\left(\\dfrac{4}{7}, \\dfrac{3}{7}\\right)\\).\\n\\n\\(Q\\) divides \\(CA\\) in \\(5:3\\): \\(Q = \\left(\\dfrac{5\\cdot 0 + 3\\cdot 0}{8}, \\dfrac{5\\cdot 0 + 3\\cdot 1}{8}\\right) = \\left(0, \\dfrac{3}{8}\\right)\\).\\n\\nPoint on \\(AP\\): \\((x,y) = t\\left(\\tfrac{4}{7}, \\tfrac{3}{7}\\right)\\). Point on \\(BQ\\): \\((1-s, \\tfrac{3s}{8})\\). Equating: \\(\\tfrac{4t}{7} = 1 - s\\) and \\(\\tfrac{3t}{7} = \\tfrac{3s}{8}\\Rightarrow s = \\tfrac{8t}{7}\\). Substituting, \\(\\tfrac{4t}{7} = 1 - \\tfrac{8t}{7}\\Rightarrow \\tfrac{12t}{7} = 1 \\Rightarrow t = \\tfrac{7}{12}\\).\\n\\nThus \\(AG:GP = t : (1-t) = \\tfrac{7}{12} : \\tfrac{5}{12} = 7:5\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Differentiation",
+    "subtopic": "Foundations, Chain Rule & Differentiability",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Write \\(y = (1-x)\\,g(x)\\) where \\(g(x) = (2-x)(3-x)\\cdots(n-x)\\).\\n\\nThen \\(y' = (1-x)g'(x) + g(x)\\cdot(-1)\\).\\n\\nAt \\(x = 1\\), \\((1-x) = 0\\), so the first term vanishes, and \\(g(1) = (2-1)(3-1)\\cdots(n-1) = (n-1)!\\).\\n\\nHence \\(y'(1) = -g(1) = -(n-1)!\\), i.e. \\((-1)(n-1)!\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Probability Calculation",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "For \\(X \\sim B(n,p)\\), \\(P(X=k) = \\binom{n}{k} p^k q^{n-k}\\).\\n\\[\\frac{P(X=k)}{P(X=k-1)} = \\frac{\\binom{n}{k} p^k q^{n-k}}{\\binom{n}{k-1} p^{k-1} q^{n-k+1}} = \\frac{\\binom{n}{k}}{\\binom{n}{k-1}}\\cdot \\frac{p}{q}.\\]\\nSince \\(\\dfrac{\\binom{n}{k}}{\\binom{n}{k-1}} = \\dfrac{n-k+1}{k}\\), the ratio is \\(\\dfrac{n-k+1}{k}\\cdot \\dfrac{p}{q}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "The family of lines through \\((1,-1)\\) is \\(y + 1 = m(x-1)\\), with one arbitrary constant \\(m\\). Differentiating: \\(\\dfrac{dy}{dx} = m\\). Substituting back, \\(y + 1 = \\dfrac{dy}{dx}(x-1)\\), i.e. \\(y = (x-1)\\dfrac{dy}{dx} - 1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Let \\(y = \\cos^{-1}\\!\\left(\\sin\\sqrt{\\tfrac{1+x}{2}}\\right) + x^x\\) and \\(u = \\sqrt{\\tfrac{1+x}{2}}\\).\\n\\nFor the first part, \\(\\dfrac{d}{dx}\\cos^{-1}(\\sin u) = \\dfrac{-1}{\\sqrt{1-\\sin^2 u}}\\cdot \\cos u\\cdot u'\\). With \\(u = \\sqrt{\\tfrac{1+x}{2}}\\), \\(u' = \\dfrac{1}{2\\sqrt{\\tfrac{1+x}{2}}}\\cdot \\dfrac{1}{2} = \\dfrac{1}{4}\\cdot \\dfrac{1}{u}\\). At \\(x=1\\), \\(u = 1\\), \\(\\sqrt{1-\\sin^2 1} = \\cos 1\\) and \\(\\cos u = \\cos 1\\), so that factor contributes \\(\\dfrac{-1}{\\cos 1}\\cdot \\cos 1\\cdot \\dfrac{1}{4} = -\\dfrac{1}{4}\\).\\n\\nFor the second part, \\(\\dfrac{d}{dx}x^x = x^x(1+\\ln x)\\); at \\(x=1\\) this is \\(1\\cdot(1+0) = 1\\).\\n\\nHence \\(y'(1) = -\\dfrac{1}{4} + 1 = \\dfrac{3}{4}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Equal projections of \\(\\overline{v}\\) and \\(\\overline{w}\\) along \\(\\overline{u}\\) give \\(\\dfrac{\\overline{v}\\cdot\\overline{u}}{|\\overline{u}|} = \\dfrac{\\overline{w}\\cdot\\overline{u}}{|\\overline{u}|}\\), so \\(\\overline{u}\\cdot\\overline{v} = \\overline{u}\\cdot\\overline{w}\\). Also \\(\\overline{v}\\perp\\overline{w}\\Rightarrow \\overline{v}\\cdot\\overline{w} = 0\\).\\n\\[|\\overline{u}-\\overline{v}+\\overline{w}|^2 = |\\overline{u}|^2 + |\\overline{v}|^2 + |\\overline{w}|^2 - 2\\,\\overline{u}\\cdot\\overline{v} + 2\\,\\overline{u}\\cdot\\overline{w} - 2\\,\\overline{v}\\cdot\\overline{w}.\\]\\nThe last three dot-product terms cancel/vanish, leaving \\(1 + 4 + 9 = 14\\). Hence the magnitude is \\(\\sqrt{14}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The parabola \\(y^2 = 4x\\) and \\(y = |x|\\) meet for \\(x\\ge 0\\) where \\(y = x\\): \\(x^2 = 4x \\Rightarrow x = 0\\) or \\(x = 4\\). On \\([0,4]\\) the parabola \\(y = 2\\sqrt{x}\\) lies above \\(y = x\\).\\n\\[\\text{Area} = \\int_0^4 \\left(2\\sqrt{x} - x\\right)dx = \\left[\\frac{4}{3}x^{3/2} - \\frac{x^2}{2}\\right]_0^4 = \\frac{4}{3}\\cdot 8 - 8 = \\frac{32}{3} - 8 = \\frac{8}{3}\\text{ sq. units}.\\]\\nBy symmetry the region for \\(x\\ge0\\) (with \\(y=|x|=x\\)) gives this; the answer is \\(\\dfrac{8}{3}\\) sq. units.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Trigonometric Identities and Compound/Half-Angle Formulas",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "With \\(\\tan A = \\dfrac{1}{\\sqrt{x(x^2+x+1)}}\\) and \\(\\tan B = \\dfrac{\\sqrt{x}}{\\sqrt{x^2+x+1}}\\),\\n\\[\\tan(A+B) = \\frac{\\tan A + \\tan B}{1 - \\tan A\\tan B}.\\]\\nComputing the numerator and denominator and simplifying gives \\(\\tan(A+B) = \\dfrac{\\sqrt{x^2+x+1}}{x\\sqrt{x}}\\).\\n\\nAlso \\(\\tan C = \\sqrt{x^{-1}+x^{-2}+x^{-3}} = \\sqrt{\\dfrac{x^2+x+1}{x^3}} = \\dfrac{\\sqrt{x^2+x+1}}{x\\sqrt{x}}\\).\\n\\nSince \\(\\tan(A+B) = \\tan C\\), we get \\(A + B = C\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Total probability: \\(\\tfrac{1}{5} + A + B = 1 \\Rightarrow A + B = \\tfrac{4}{5}\\).\\n\\n\\(E(X) = 30\\cdot\\tfrac{1}{5} + 10A + (-10)B = 4 \\Rightarrow 6 + 10(A-B) = 4 \\Rightarrow A - B = -\\tfrac{1}{5}\\).\\n\\nSolving: \\(A = \\tfrac{3}{10},\\; B = \\tfrac{1}{2}\\). Hence \\(AB = \\tfrac{3}{10}\\cdot\\tfrac{1}{2} = \\tfrac{3}{20}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distance, Foot of Perpendicular, Projection, and Mirror Image",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\overrightarrow{AB} = (-1,0,2) - (2,1,-3) = (-3,-1,5)\\). Projection onto the direction \\((3,2,6)\\):\\n\\[\\frac{\\overrightarrow{AB}\\cdot(3,2,6)}{|(3,2,6)|} = \\frac{(-3)(3) + (-1)(2) + (5)(6)}{\\sqrt{9+4+36}} = \\frac{-9-2+30}{7} = \\frac{19}{7}\\text{ units}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Differentiation",
+    "subtopic": "Implicit Differentiation & Special Forms",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Differentiate \\(x^{2/5} + y^{2/5} = a^{2/5}\\) implicitly:\\n\\[\\frac{2}{5}x^{-3/5} + \\frac{2}{5}y^{-3/5}\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x^{-3/5}}{y^{-3/5}} = -\\frac{y^{3/5}}{x^{3/5}} = -\\sqrt[5]{\\left(\\frac{y}{x}\\right)^3}.\\]\\nThe magnitude matches \\(\\sqrt[5]{(y/x)^3}\\). Option D is the intended (printed without the sign) answer.",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "note": "Strictly the derivative is negative, \\(-\\sqrt[5]{(y/x)^3}\\); the printed options A and D both show \\(\\sqrt[5]{(y/x)^3}\\) (option D with a trailing dot). Keyed D as the intended answer per the official key — a printed-paper defect (sign dropped from the option)."
+  },
+  "116": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Angle, Distance, and Geometry of Pair",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Factor: \\((x-2y+1)^2 + k(x-2y+1) = (x-2y+1)(x-2y+1+k) = 0\\), giving the parallel lines \\(x-2y+1 = 0\\) and \\(x-2y+(1+k) = 0\\).\\n\\nPerpendicular distance \\(= \\dfrac{|1 - (1+k)|}{\\sqrt{1^2+(-2)^2}} = \\dfrac{|k|}{\\sqrt{5}}\\). Setting \\(\\dfrac{|k|}{\\sqrt{5}} = \\sqrt{5}\\) gives \\(|k| = 5\\), so \\(k = 5\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\sin^{-1}\\!\\left(-\\tfrac{1}{\\sqrt2}\\right) = -\\tfrac{\\pi}{4}\\).\\n\\(\\cos^{-1}\\!\\left(-\\tfrac{1}{2}\\right) = \\pi - \\tfrac{\\pi}{3} = \\tfrac{2\\pi}{3}\\).\\n\\(\\cot^{-1}\\!\\left(-\\tfrac{1}{\\sqrt3}\\right) = \\pi - \\cot^{-1}\\!\\left(\\tfrac{1}{\\sqrt3}\\right) = \\pi - \\tfrac{\\pi}{3} = \\tfrac{2\\pi}{3}\\).\\n\\(\\tan^{-1}(-\\sqrt3) = -\\tfrac{\\pi}{3}\\).\\n\\nSum \\(= -\\tfrac{\\pi}{4} + \\tfrac{2\\pi}{3} - \\tfrac{2\\pi}{3} - \\tfrac{\\pi}{3} = -\\tfrac{\\pi}{4} - \\tfrac{\\pi}{3} = -\\tfrac{3\\pi + 4\\pi}{12} = -\\tfrac{7\\pi}{12}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Since \\(\\angle A = 90^\\circ\\), \\(B + C = 90^\\circ\\), so \\(\\tfrac{B}{2} + \\tfrac{C}{2} = 45^\\circ\\).\\n\\nRoots: \\(\\tan\\tfrac{B}{2} + \\tan\\tfrac{C}{2} = -\\tfrac{b}{a}\\), \\(\\tan\\tfrac{B}{2}\\tan\\tfrac{C}{2} = \\tfrac{c}{a}\\).\\n\\n\\(\\tan\\!\\left(\\tfrac{B}{2}+\\tfrac{C}{2}\\right) = \\tan 45^\\circ = 1 = \\dfrac{-b/a}{1 - c/a} = \\dfrac{-b}{a-c}\\). Thus \\(a - c = -b\\), i.e. \\(a + b = c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Take the symmetric case \\(a = b = c = 1\\): then \\(r^2 = 3\\), \\(r = \\sqrt3\\), and each argument equals \\(\\dfrac{1}{\\sqrt3}\\), so each term is \\(\\tan^{-1}\\dfrac{1}{\\sqrt3} = \\dfrac{\\pi}{6}\\).\\n\\nSum \\(= 3\\cdot\\dfrac{\\pi}{6} = \\dfrac{\\pi}{2}\\) (the identity holds in general).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Definite Integration",
+    "subtopic": "Substitution and Standard Form",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "\\(I = \\displaystyle\\int_{1/3}^{1} \\frac{(x - x^3)^{1/3}}{x^4}\\,dx = \\int_{1/3}^{1} \\frac{x^{1/3}(1 - x^2)^{1/3}}{x^4}\\,dx = \\int_{1/3}^{1} \\frac{\\left(\\tfrac{1}{x^2} - 1\\right)^{1/3}}{x^3}\\,dx\\).\\n\\nPut \\(t = \\dfrac{1}{x^2} - 1\\Rightarrow dt = -\\dfrac{2}{x^3}\\,dx\\). Limits: \\(x = \\tfrac13\\Rightarrow t = 8\\); \\(x = 1\\Rightarrow t = 0\\).\\n\\[I = -\\frac{1}{2}\\int_{8}^{0} t^{1/3}\\,dt = \\frac{1}{2}\\int_0^8 t^{1/3}\\,dt = \\frac{1}{2}\\left[\\frac{3}{4}t^{4/3}\\right]_0^8 = \\frac{3}{8}\\cdot 8^{4/3} = \\frac{3}{8}\\cdot 16 = 6.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Linear Programming",
+    "subtopic": "Feasible Region — Identification, Constraints, Classification",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "The constraints are \\(x - 2 \\le y\\) (i.e. \\(y \\ge x-2\\)), \\(x \\ge y - 1\\) (i.e. \\(y \\le x+1\\)), \\(x \\ge 2\\), \\(y \\le 4\\), \\(x,y \\ge 0\\).\\n\\nThe region lies to the right of \\(x = 2\\), between the parallel lines \\(y = x-2\\) (above it) and \\(y = x+1\\) (below it), and below \\(y = 4\\), in the first quadrant. Corner points: \\((2,0)\\), \\((2,3)\\), \\((3,4)\\), \\((6,4)\\). This bounded strip to the right of \\(x = 2\\) is the shaded region in option (B).",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "optionOverrides": {
+      "A": "Shaded triangle bounded by the Y-axis (x=0), the line y=4, and the line y=x+1 — vertices about (0,0), (0,4), (3,4) (lies to the LEFT of x=2).",
+      "B": "Shaded quadrilateral to the right of x=2, between the lines y=x-2 and y=x+1, below y=4 — vertices about (2,0), (2,3), (3,4), (6,4).",
+      "C": "Shaded triangle near the origin bounded by x=2, the X-axis and y=x+1 — vertices about (0,0), (2,0), (2,3).",
+      "D": "Shaded diagonal band between y=x+1 and y=x-2 extending from near O to the right, below y=4 (includes the region with x<2)."
+    },
+    "optionImages": true
+  },
+  "122": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "The plane contains \\(A(2,1,2)\\) and \\(B(1,2,1)\\), so \\(\\overrightarrow{AB} = (-1,1,-1)\\). It is parallel to the line \\(2x = 3y,\\; z = 1\\), i.e. \\(\\tfrac{x}{3} = \\tfrac{y}{2},\\; z = 1\\), direction \\(\\overrightarrow{d} = (3,2,0)\\).\\n\\nNormal \\(\\overrightarrow{n} = \\overrightarrow{AB}\\times\\overrightarrow{d} = (1\\cdot0 - (-1)\\cdot2,\\; (-1)\\cdot3 - (-1)\\cdot0,\\; (-1)\\cdot2 - 1\\cdot3) = (2, -3, -5)\\).\\n\\nPlane: \\(2(x-2) - 3(y-1) - 5(z-2) = 0\\Rightarrow 2x - 3y - 5z + 9 = 0\\).\\n\\nTesting \\((-2,0,1)\\): \\(2(-2) - 0 - 5(1) + 9 = -4 - 5 + 9 = 0\\). It lies on the plane.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Tossing 3 coins, \\(P(\\text{all heads or all tails}) = \\tfrac{2}{8} = \\tfrac14\\) (win ₹150) and \\(P(\\text{one or two heads}) = \\tfrac{6}{8} = \\tfrac34\\) (lose ₹50).\\n\\n\\(E = \\tfrac14(150) + \\tfrac34(-50) = 37.5 - 37.5 = 0\\). He neither wins nor loses on average.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(\\sin\\theta = 1\\Rightarrow \\theta = \\tfrac{\\pi}{2}\\), so \\(\\sin^{-1}\\tfrac15 + \\cos^{-1}x = \\tfrac{\\pi}{2}\\). Using \\(\\cos^{-1}x = \\tfrac{\\pi}{2} - \\sin^{-1}x\\), we get \\(\\sin^{-1}\\tfrac15 = \\sin^{-1}x\\), so \\(x = \\tfrac15\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "By the cosine rule with \\(a = \\sqrt3 - 2,\\; b = \\sqrt3 + 2,\\; C = 60^\\circ\\):\\n\\[c^2 = a^2 + b^2 - 2ab\\cos 60^\\circ.\\]\\n\\(a^2 = 7 - 4\\sqrt3,\\; b^2 = 7 + 4\\sqrt3\\Rightarrow a^2 + b^2 = 14\\). \\(ab = (\\sqrt3)^2 - 2^2 = -1\\), so \\(-2ab\\cos60^\\circ = -2(-1)(\\tfrac12) = 1\\).\\n\\nThus \\(c^2 = 14 + 1 = 15\\), \\(c = \\sqrt{15}\\) units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Continuous growth: \\(A = P e^{rt}\\) with \\(P = 2000,\\; r = 0.10,\\; t = 5\\).\\n\\[A = 2000\\,e^{0.5} = 2000\\times 1.648 = 3296.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(|A| = \\begin{vmatrix} 1 & 2 \\\\ -1 & 4 \\end{vmatrix} = 4 + 2 = 6\\), so \\(A^{-1} = \\tfrac16\\begin{bmatrix} 4 & -2 \\\\ 1 & 1 \\end{bmatrix}\\).\\n\\nWith \\(A^{-1} = \\alpha I + \\beta A\\), comparing the \\((1,1)\\) entry: \\(\\alpha + \\beta = \\tfrac{4}{6} = \\tfrac{2}{3}\\) (the \\((2,2)\\) entry gives \\(\\alpha + 4\\beta = \\tfrac16\\), consistent). Hence \\(4(\\alpha + \\beta) = 4\\cdot\\tfrac23 = \\tfrac83\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Reading the circuits: (A) two parallel branches \\(S_1\\)-\\(S_2\\) (series) and \\(S_1\\)-\\(S_3\\) (series) gives \\((p\\land q)\\lor(p\\land r)\\). (B) \\(S_1\\) in parallel with the series \\(S_2\\)-\\(S_3\\) gives \\(p\\lor(q\\land r)\\). (C) \\(S_1\\) in series with parallel \\(S_2\\),\\(S_3\\) gives \\(p\\land(q\\lor r)\\). (D) \\(S_1\\),\\(S_2\\),\\(S_3\\) all in series gives \\(p\\land q\\land r\\). (E) series \\(S_1\\)-\\(S_2\\) in parallel with \\(S_3\\) gives \\((p\\land q)\\lor r\\).\\n\\nBy the distributive law, \\((p\\land q)\\lor(p\\land r) = p\\land(q\\lor r)\\), so circuits (A) and (C) are equivalent.",
+    "akAnswer": "D",
+    "agreesWithAk": false,
+    "note": "AK answer is D = '(C) and (E)', but C = p∧(q∨r) and E = (p∧q)∨r are NOT equivalent (e.g. p=F,q=F,r=T: C=F, E=T). The equivalent pair is (A) and (C): (p∧q)∨(p∧r) = p∧(q∨r) by distributivity — which is also what the AK's OWN solution concludes ('(A) and (C) are equivalent'). The correct option is the one reading '(A) and (C)'; option B's extracted text is the garbled '(A) and (C)'. Keyed B and fixed its option text via optionOverrides.",
+    "optionOverrides": {
+      "B": "(A) and (C)"
+    },
+    "stemOverride": "Which of the following are pairs of equivalent switching circuits? (A) \\((p \\wedge q) \\vee (p \\wedge r)\\) (B) \\(p \\vee (q \\wedge r)\\) (C) \\(p \\wedge (q \\vee r)\\) (D) \\(p \\wedge q \\wedge r\\) (E) \\((p \\wedge q) \\vee r\\)",
+    "figureRefIndex": -1
+  },
+  "129": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Put \\(v = x + y\\), so \\(\\dfrac{dv}{dx} = 1 + \\dfrac{dy}{dx}\\), i.e. \\(\\dfrac{dy}{dx} = \\dfrac{dv}{dx} - 1\\). The equation \\(\\dfrac{dy}{dx} = (x+y)^2\\) becomes \\(\\dfrac{dv}{dx} - 1 = v^2\\Rightarrow \\dfrac{dv}{v^2+1} = dx\\).\\n\\nIntegrating: \\(\\tan^{-1}v = x + c\\), i.e. \\(\\tan^{-1}(x+y) = x + c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The plane through the intersection line is \\((x+y+z-1) + \\lambda(3x+4y+5z-2) = 0\\), i.e. \\((1+3\\lambda)x + (1+4\\lambda)y + (1+5\\lambda)z - (1+2\\lambda) = 0\\).\\n\\nPerpendicular to the XY-plane \\(\\Rightarrow\\) coefficient of \\(z\\) is \\(0\\): \\(1 + 5\\lambda = 0\\Rightarrow \\lambda = -\\tfrac15\\).\\n\\nSubstituting: \\(\\tfrac25 x + \\tfrac15 y - \\tfrac35 = 0\\Rightarrow 2x + y - 3 = 0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "The normal at \\(P(x,y)\\) has slope \\(-\\tfrac{1}{y'}\\) and meets the X-axis at \\(Q = \\left(x + y\\,\\tfrac{dy}{dx},\\,0\\right)\\). Then\\n\\[l(PQ)^2 = \\left(y\\frac{dy}{dx}\\right)^2 + y^2 = k^2 \\Rightarrow y\\frac{dy}{dx} = \\pm\\sqrt{k^2 - y^2}.\\]\\nSeparating, \\(\\dfrac{y\\,dy}{\\sqrt{k^2-y^2}} = \\pm dx\\), integrating: \\(-\\sqrt{k^2-y^2} = \\pm x + c\\). Through \\((0,k)\\), \\(c = 0\\), so \\(k^2 - y^2 = x^2\\), i.e. \\(x^2 + y^2 = k^2\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "For continuity, \\(f(0) = \\displaystyle\\lim_{x\\to0}\\frac{(27-2x)^{1/3} - 3}{9 - 3(243+5x)^{1/5}}\\) (a \\(\\tfrac00\\) form).\\n\\nBy L'Hopital's rule:\\n\\[f(0) = \\lim_{x\\to0}\\frac{\\tfrac13(27-2x)^{-2/3}(-2)}{-\\tfrac35(243+5x)^{-4/5}(5)}.\\]\\nAt \\(x=0\\): numerator \\(= \\tfrac13\\cdot 9^{-1}\\cdot(-2) = -\\tfrac{2}{27}\\); denominator \\(= -3\\cdot 3^{-4} = -\\tfrac{3}{81} = -\\tfrac{1}{27}\\). Ratio \\(= \\dfrac{-2/27}{-1/27} = 2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For \\(x < 0\\): \\(\\dfrac{|x|}{|x|+x^2} = \\dfrac{-x}{-x+x^2} = \\dfrac{-1}{-1+x}\\to 1\\) as \\(x\\to0^-\\).\\n\\nFor \\(x > 0\\): \\(\\dfrac{x}{x+x^2} = \\dfrac{1}{1+x}\\to 1\\) as \\(x\\to0^+\\).\\n\\nBoth one-sided limits equal \\(1\\), so the limit is \\(1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(f(x) = \\sin^7 x\\cos^{16}x\\). Then \\(f(-x) = (-\\sin x)^7(\\cos x)^{16} = -\\sin^7 x\\cos^{16}x = -f(x)\\), an odd function. The integral of an odd function over the symmetric interval \\([-3,3]\\) is \\(0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distance, Foot of Perpendicular, Projection, and Mirror Image",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "The foot \\(Q\\) lies on the line through \\(P(-1,1,2)\\) along the plane's normal \\((2,-3,1)\\): \\(x = -1+2t,\\; y = 1-3t,\\; z = 2+t\\).\\n\\nSubstitute into \\(2x - 3y + z - 11 = 0\\): \\(2(-1+2t) - 3(1-3t) + (2+t) - 11 = 0\\Rightarrow 14t - 14 = 0\\Rightarrow t = 1\\).\\n\\nSo \\(Q = (1, -2, 3)\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Selection and Arrangement with Constraints",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For \\(^{7-x}P_{x-1}\\) to be defined: the lower index \\(r = x-1\\) must be a whole number \\(\\ge 0\\Rightarrow x \\ge 1\\); the upper index \\(n = 7-x\\) must be a natural number; and \\(r \\le n\\): \\(x-1 \\le 7-x\\Rightarrow 2x \\le 8\\Rightarrow x \\le 4\\).\\n\\nWith \\(x\\) a positive integer, \\(x \\in \\{1,2,3,4\\}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Rational and Substitution Forms",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\displaystyle\\int\\frac{x+\\sin x}{1+\\cos x}\\,dx = \\int\\frac{x}{2\\cos^2(x/2)}\\,dx + \\int\\frac{2\\sin(x/2)\\cos(x/2)}{2\\cos^2(x/2)}\\,dx = \\frac12\\int x\\sec^2\\tfrac{x}{2}\\,dx + \\int\\tan\\tfrac{x}{2}\\,dx\\).\\n\\nIntegrating the first by parts: \\(\\tfrac12\\left[x\\cdot 2\\tan\\tfrac{x}{2} - \\int 2\\tan\\tfrac{x}{2}\\,dx\\right] = x\\tan\\tfrac{x}{2} - \\int\\tan\\tfrac{x}{2}\\,dx\\). This cancels the remaining \\(\\int\\tan\\tfrac{x}{2}\\,dx\\), leaving \\(x\\tan\\tfrac{x}{2} + c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(|\\overline{a}-\\overline{b}|^2 + |\\overline{b}-\\overline{c}|^2 + |\\overline{c}-\\overline{a}|^2 = 2(|\\overline{a}|^2+|\\overline{b}|^2+|\\overline{c}|^2) - 2(\\overline{a}\\cdot\\overline{b}+\\overline{b}\\cdot\\overline{c}+\\overline{c}\\cdot\\overline{a})\\).\\n\\nWith \\(|\\overline{a}|^2+|\\overline{b}|^2+|\\overline{c}|^2 = 9+25+49 = 83\\), this is \\(166 - 2S\\) where \\(S = \\overline{a}\\cdot\\overline{b}+\\overline{b}\\cdot\\overline{c}+\\overline{c}\\cdot\\overline{a}\\).\\n\\nSince \\(|\\overline{a}+\\overline{b}+\\overline{c}|^2 \\ge 0\\Rightarrow 83 + 2S \\ge 0\\Rightarrow -2S \\le 83\\). Hence the expression \\(\\le 166 + 83 = 249\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Counting and Geometric Applications",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(\\gcd(n,36) = 2\\) means \\(n\\) is divisible by \\(2\\) but not by \\(4\\) and not by \\(3\\) (since \\(36 = 2^2\\cdot3^2\\)).\\n\\nThree-digit multiples of \\(2\\): \\(\\dfrac{998-100}{2}+1 = 450\\).\\nMinus those divisible by \\(3\\) too, i.e. by \\(6\\): \\(\\dfrac{996-102}{6}+1 = 150\\).\\nMinus those divisible by \\(4\\): \\(\\dfrac{996-100}{4}+1 = 225\\).\\nAdd back those divisible by \\(12\\) (counted twice): \\(\\dfrac{996-108}{12}+1 = 75\\).\\n\\nBy inclusion-exclusion: \\(450 - (150 + 225 - 75) = 450 - 300 = 150\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Let \\(z = x+iy\\). For \\(\\dfrac{z-1}{2z+1}\\) to be purely imaginary, its real part is \\(0\\). Rationalising, the real part numerator is \\((x-1)(2x+1) + 2y^2 = 2x^2 + 2y^2 - x - 1\\).\\n\\nSetting it to \\(0\\): \\(2x^2 + 2y^2 - x - 1 = 0\\Rightarrow x^2 + y^2 - \\tfrac{x}{2} = \\tfrac12\\Rightarrow \\left(x-\\tfrac14\\right)^2 + y^2 = \\tfrac{9}{16}\\).\\n\\nRadius \\(= \\sqrt{\\tfrac{9}{16}} = \\tfrac34\\) units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Powers and Identities",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\int\\tan^4 x\\,dx = \\int(\\sec^2 x - 1)^2\\,dx = \\int(\\sec^4 x - 2\\sec^2 x + 1)\\,dx\\).\\n\\n\\(\\int\\sec^4 x\\,dx = \\int(1+\\tan^2 x)\\sec^2 x\\,dx = \\tan x + \\tfrac{\\tan^3 x}{3}\\). So\\n\\[\\int\\tan^4 x\\,dx = \\tan x + \\tfrac{\\tan^3 x}{3} - 2\\tan x + x = \\tfrac13\\tan^3 x - \\tan x + x + k.\\]\\nThus \\(a = \\tfrac13,\\; b = -1,\\; c = 1\\), and \\(a - b + c = \\tfrac13 + 1 + 1 = \\tfrac73\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "For coplanarity of the two lines, \\(\\begin{vmatrix} x_2-x_1 & y_2-y_1 & z_2-z_1 \\\\ a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\end{vmatrix} = 0\\) with \\((x_2-x_1,\\ldots) = (1,1,-2)\\), \\((a_1,b_1,c_1) = (1,1,-k)\\), \\((a_2,b_2,c_2) = (k,1,2)\\).\\n\\[\\begin{vmatrix} 1 & 1 & -2 \\\\ 1 & 1 & -k \\\\ k & 1 & 2 \\end{vmatrix} = 1(2+k) - 1(2+k^2) - 2(1-k) = 0.\\]\\nThis gives \\(k^2 - 3k + 2 = 0\\Rightarrow (k-1)(k-2) = 0\\Rightarrow k = 1\\) or \\(2\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Partial fractions: \\(\\dfrac{x}{(x-1)(x-2)} = \\dfrac{-1}{x-1} + \\dfrac{2}{x-2}\\) (since at \\(x=1\\) residue \\(=\\tfrac{1}{-1}=-1\\), at \\(x=2\\) residue \\(=\\tfrac{2}{1}=2\\)).\\n\\[\\int = -\\ln|x-1| + 2\\ln|x-2| + c = \\ln\\left|\\frac{(x-2)^2}{x-1}\\right| + c.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "With \\(A,B\\) independent: \\(P(A\\cup B) = P(A) + P(B) - P(A)P(B)\\). So \\(\\tfrac{11}{20} = P(A) + \\tfrac25 - \\tfrac25 P(A)\\Rightarrow \\tfrac{3}{20} = \\tfrac35 P(A)\\Rightarrow P(A) = \\tfrac14\\), hence \\(P(A') = \\tfrac34\\).\\n\\nSince \\(A'\\) and \\(B\\) are independent, \\(P(A'\\mid B) = P(A') = \\tfrac34\\). Now \\(x = \\tfrac34\\) is a root of \\(4x^2 - 7x + 3 = 0\\) (which factors as \\((4x-3)(x-1) = 0\\)).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Differentiate \\(y = \\cos(x+y)\\): \\(y' = -\\sin(x+y)(1+y')\\Rightarrow y'(1+\\sin(x+y)) = -\\sin(x+y)\\Rightarrow y' = \\dfrac{-\\sin(x+y)}{1+\\sin(x+y)}\\).\\n\\nParallel to \\(x+2y=0\\) (slope \\(-\\tfrac12\\)): \\(\\dfrac{-\\sin(x+y)}{1+\\sin(x+y)} = -\\tfrac12\\Rightarrow 1+\\sin(x+y) = 2\\sin(x+y)\\Rightarrow \\sin(x+y) = 1\\Rightarrow x+y = \\tfrac{\\pi}{2}\\).\\n\\nThen \\(y = \\cos(x+y) = \\cos\\tfrac{\\pi}{2} = 0\\), so the point is \\(\\left(\\tfrac{\\pi}{2},0\\right)\\). Tangent: \\(y - 0 = -\\tfrac12\\left(x - \\tfrac{\\pi}{2}\\right)\\Rightarrow 2x + 4y - \\pi = 0\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(9x^2 + 5y^2 - 30y = 0\\Rightarrow 9x^2 + 5(y-3)^2 = 45\\Rightarrow \\dfrac{x^2}{5} + \\dfrac{(y-3)^2}{9} = 1\\).\\n\\nHere the major axis is along \\(y\\) with \\(b^2 = 9 > a^2 = 5\\). Eccentricity \\(e = \\sqrt{1 - \\dfrac{a^2}{b^2}} = \\sqrt{1 - \\tfrac59} = \\sqrt{\\tfrac49} = \\tfrac23\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Circle",
+    "subtopic": "Tangent, Locus, and Equation Construction",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Curve \\(x^2 = y - 6\\): \\(\\dfrac{dy}{dx} = 2x\\), at \\((1,7)\\) slope \\(= 2\\). Tangent: \\(y - 7 = 2(x-1)\\Rightarrow 2x - y + 5 = 0\\).\\n\\nCircle \\(x^2+y^2+16x+12y+C=0\\) has centre \\((-8,-6)\\), radius \\(\\sqrt{64+36-C} = \\sqrt{100-C}\\). Tangency: distance from centre to line equals radius:\\n\\[\\left|\\frac{2(-8) - (-6) + 5}{\\sqrt{4+1}}\\right| = \\sqrt{100-C}\\Rightarrow \\left|\\frac{-5}{\\sqrt5}\\right| = \\sqrt5 = \\sqrt{100-C}\\Rightarrow 5 = 100 - C\\Rightarrow C = 95.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Quadratic Equations",
+    "subtopic": "Roots — Nature, Vieta's Relations, and Conditions",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For \\(x^2 - (a-2)x - a + 1 = 0\\): \\(\\alpha + \\beta = a - 2\\), \\(\\alpha\\beta = 1 - a\\).\\n\\n\\(\\alpha^2 + \\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = (a-2)^2 - 2(1-a) = a^2 - 2a + 2\\).\\n\\nThis quadratic in \\(a\\) is minimum at \\(a = -\\dfrac{-2}{2(1)} = 1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(\\overline{a_1} = (\\alpha,2,2),\\; \\overline{a_2} = (-4,0,-1)\\); \\(\\overline{b_1} = (1,-2,2),\\; \\overline{b_2} = (3,-2,-2)\\).\\n\\n\\(\\overline{b_1}\\times\\overline{b_2} = (8,8,4)\\), with magnitude \\(\\sqrt{64+64+16} = 12\\). \\(\\overline{a_2}-\\overline{a_1} = (-4-\\alpha,-2,-3)\\).\\n\\nShortest distance \\(= \\left|\\dfrac{(-4-\\alpha)(8) + (-2)(8) + (-3)(4)}{12}\\right| = \\dfrac{|-60-8\\alpha|}{12} = 9\\Rightarrow |-60-8\\alpha| = 108\\).\\n\\nSince \\(\\alpha > 0\\): \\(-60 - 8\\alpha = -108\\Rightarrow 8\\alpha = 48\\Rightarrow \\alpha = 6\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "For \\(x^2 - 4y^2 = 2\\): \\(2x - 8y y' = 0\\Rightarrow m_1 = \\dfrac{x}{4y}\\). For \\(8x^2 = 40 - my^2\\): \\(16x = -2my y'\\Rightarrow m_2 = \\dfrac{-8x}{my}\\).\\n\\nOrthogonality \\(m_1 m_2 = -1\\): \\(\\dfrac{x}{4y}\\cdot\\dfrac{-8x}{my} = -1\\Rightarrow \\dfrac{2x^2}{my^2} = 1\\Rightarrow x^2 = \\dfrac{my^2}{2}\\).\\n\\nSubstituting into the first curve: \\(\\dfrac{my^2}{2} - 4y^2 = 2\\Rightarrow y^2 = \\dfrac{4}{m-8}\\). Into the second: \\(8\\cdot\\dfrac{my^2}{2} = 40 - my^2\\Rightarrow y^2 = \\dfrac{8}{m}\\). Equating: \\(\\dfrac{4}{m-8} = \\dfrac{8}{m}\\Rightarrow 4m = 8m - 64\\Rightarrow m = 16\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  }
+}

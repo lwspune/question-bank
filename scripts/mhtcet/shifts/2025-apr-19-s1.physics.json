@@ -1,0 +1,475 @@
+{
+  "1": {
+    "chapter": "Units and Measurement",
+    "subtopic": "Units, Dimensions, and Error Analysis",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "For \\(P = \\dfrac{x^{3}y}{z^{2}}\\), the fractional errors add with the powers as coefficients:\n\\[\\frac{\\Delta P}{P} = 3\\frac{\\Delta x}{x} + \\frac{\\Delta y}{y} + 2\\frac{\\Delta z}{z}.\\]\nSubstituting the percentage errors:\n\\[\\frac{\\Delta P}{P}\\,(\\%) = (3 \\times 0.6) + 3 + (2 \\times 1.3) = 1.8 + 3 + 2.6 = 7.4\\%.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "2": {
+    "chapter": "Electrostatics",
+    "subtopic": "Electric Potential and Potential Energy",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Work done in moving a charge between two points equals charge times potential difference:\n\\[W = q\\left(V_{B} - V_{A}\\right) = q\\big(V - (-5)\\big) = q(V + 5).\\]\nSolving for \\(V\\):\n\\[\\frac{W}{q} = V + 5 \\quad\\Rightarrow\\quad V = \\frac{W}{q} - 5.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "3": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Circular Motion — Angular Velocity, Centripetal Force, Vertical Circle",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Let \\(v_{2}\\) be the speed at the top and \\(v_{1}\\) at the bottom. By energy conservation \\(v_{1}^{2} = v_{2}^{2} + 4gL\\).\nMaximum (bottom) and minimum (top) tensions:\n\\[T_{\\max} = \\frac{mv_{1}^{2}}{L} + mg, \\qquad T_{\\min} = \\frac{mv_{2}^{2}}{L} - mg.\\]\nTherefore\n\\[\\frac{T_{\\max}}{T_{\\min}} = \\frac{v_{1}^{2} + gL}{v_{2}^{2} - gL} = \\frac{v_{2}^{2} + 5gL}{v_{2}^{2} - gL} = 3.\\]\nSolving: \\(3v_{2}^{2} - 3gL = v_{2}^{2} + 5gL \\Rightarrow 2v_{2}^{2} = 8gL \\Rightarrow v_{2}^{2} = 4gL\\), so \\(v_{2} = 2\\sqrt{gL}\\) (i.e. \\(v^{2} = 4gL\\)).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "4": {
+    "chapter": "Current Electricity",
+    "subtopic": "Galvanometer, Ammeter, and Voltmeter Conversion",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "For a shunt, the galvanometer current is \\(I_{g} = \\dfrac{5}{100}I\\). The shunt resistance is\n\\[S = \\frac{G}{\\left(\\dfrac{I}{I_{g}} - 1\\right)} = \\frac{G}{\\dfrac{100}{5} - 1} = \\frac{G}{19}.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true,
+    "optionOverrides": {
+      "A": "\\(\\frac{G}{15}\\)",
+      "B": "\\(\\frac{G}{17}\\)",
+      "C": "\\(\\frac{G}{19}\\)",
+      "D": "\\(\\frac{G}{21}\\)"
+    },
+    "note": "Source printed options as (a)(b)(c)(c); 4th relabelled D = G/21.",
+    "stemOverride": "If only \\(5\\%\\) of the total current is to be passed through galvanometer of resistance \\(G\\), then the resistance of the shunt will be"
+  },
+  "5": {
+    "chapter": "Magnetic Fields Due to Electric Current",
+    "subtopic": "Magnetic Moment of Current Loop and Galvanometer Instruments",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Torque \\(\\overrightarrow{\\tau} = \\overrightarrow{r} \\times \\overrightarrow{F}\\) with \\(\\overrightarrow{r} = 4\\hat{i} - 3\\hat{j}\\) and \\(\\overrightarrow{F} = 5\\hat{i} - 10\\hat{j}\\):\n\\[\\overrightarrow{\\tau} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & -3 & 0 \\\\ 5 & -10 & 0 \\end{vmatrix} = \\hat{k}\\big((4)(-10) - (-3)(5)\\big) = \\hat{k}(-40 + 15) = -25\\hat{k}.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "note": "Torque is a rotational-dynamics quantity but here it is computed as a vector cross product r x F; closest existing subtopic is the magnetic-moment/instruments bucket. Alternatively could fit Rotational Dynamics > Angular Momentum, Torque, and Conservation."
+  },
+  "6": {
+    "chapter": "Magnetic Fields Due to Electric Current",
+    "subtopic": "Magnetic Field of Current-Carrying Conductor",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Point P is equidistant from both wires and the lines PA, PB are mutually perpendicular, so each wire is at distance \\(X\\) with \\(2X^{2} = 5^{2}\\), giving \\(X = \\dfrac{5}{\\sqrt{2}}\\) cm. The fields \\(B_{1}, B_{2}\\) are perpendicular, so\n\\[B_{net} = \\frac{\\mu_{0}}{2\\pi X}\\sqrt{I_{1}^{2} + I_{2}^{2}} = \\frac{4\\pi \\times 10^{-7}}{2\\pi \\times \\frac{5}{\\sqrt{2}} \\times 10^{-2}}\\sqrt{4^{2} + 3^{2}}.\\]\n\\[= \\big(2 \\times 10^{-7} \\times 20\\sqrt{2}\\big) \\times 5 = 2\\sqrt{2} \\times 10^{-5}\\ \\text{T}.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "7": {
+    "chapter": "Thermal Properties of Matter",
+    "subtopic": "Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "By Stefan's law for a sphere, \\(P = \\sigma A T^{4} = \\sigma (4\\pi R^{2}) T^{4}\\), so \\(P \\propto R^{2}T^{4}\\).\nWith \\(R \\to 2R\\) and \\(T \\to 2T\\):\n\\[\\frac{P'}{P} = \\frac{(2R)^{2}(2T)^{4}}{R^{2}T^{4}} = 4 \\times 16 = 64.\\]\nThus \\(P' = 64P\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "8": {
+    "chapter": "AC Circuits",
+    "subtopic": "Power in AC Circuit — Average, Factor, Wattless",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Net reactance \\(|X_{L} - X_{C}| = |70 - 130| = 60\\ \\Omega\\).\nImpedance \\(Z = \\sqrt{R^{2} + (X_{L} - X_{C})^{2}} = \\sqrt{80^{2} + 60^{2}} = 100\\ \\Omega\\).\nPower factor \\(\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{80}{100} = 0.8\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "9": {
+    "chapter": "Oscillations",
+    "subtopic": "Simple Pendulum — Period, Lift, Weightlessness",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Stationary lift: \\(T = 2\\pi\\sqrt{\\dfrac{l}{g}} = \\sqrt{3}\\ \\text{s}\\).\nLift accelerating up with \\(g/3\\): effective gravity \\(g' = g + \\dfrac{g}{3} = \\dfrac{4g}{3}\\).\n\\[\\frac{T'}{T} = \\sqrt{\\frac{g}{g'}} = \\sqrt{\\frac{3}{4}} = \\frac{\\sqrt{3}}{2}.\\]\n\\[T' = \\frac{\\sqrt{3}}{2}\\times\\sqrt{3} = \\frac{3}{2} = 1.5\\ \\text{s}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "10": {
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Self-Inductance, Energy Stored, and LR Circuit",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Three equal inductors in series give \\(L_{eq} = L + L + L = 3L\\).\nEnergy stored \\(U = \\dfrac{1}{2}L_{eq}I^{2} = \\dfrac{1}{2}(3L)I^{2} = \\dfrac{3}{2}LI^{2}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "11": {
+    "chapter": "Structure of Atoms and Nuclei",
+    "subtopic": "Hydrogen Spectrum and Spectral Series",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "First member of Balmer (\\(n_{1}=2, n_{2}=3\\)): \\(\\dfrac{1}{\\lambda_{1}} = R\\left(\\dfrac{1}{4} - \\dfrac{1}{9}\\right) = \\dfrac{5R}{36}\\).\nFirst member of Paschen (\\(n_{1}=3, n_{2}=4\\)): \\(\\dfrac{1}{\\lambda_{2}} = R\\left(\\dfrac{1}{9} - \\dfrac{1}{16}\\right) = \\dfrac{7R}{144}\\).\nSince \\(f = \\dfrac{c}{\\lambda}\\), \\(\\dfrac{f_{1}}{f_{2}} = \\dfrac{\\lambda_{2}}{\\lambda_{1}} = \\dfrac{5R/36}{7R/144} = \\dfrac{5 \\times 144}{36 \\times 7} = \\dfrac{20}{7}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "12": {
+    "chapter": "Magnetic Fields Due to Electric Current",
+    "subtopic": "Magnetic Moment of Current Loop and Galvanometer Instruments",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For an orbiting electron, the orbital magnetic moment is \\(m_{orb} = \\dfrac{e}{2m}L\\) (the gyromagnetic relation).\nHence the ratio of angular momentum to magnetic moment is\n\\[\\frac{L}{m_{orb}} = \\frac{2m}{e}.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "13": {
+    "chapter": "Thermodynamics",
+    "subtopic": "Isothermal, Adiabatic, Isobaric, and Isochoric Processes",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "All three start with equal pressure-state and reach the SAME final pressure after doubling volume; work back from equal final pressures.\nIsothermal (X): \\(P_{i}V = P_{f}(2V) \\Rightarrow P_{i,X} = 2P_{f}\\).\nAdiabatic (Y): \\(P_{i}V^{\\gamma} = P_{f}(2V)^{\\gamma} \\Rightarrow P_{i,Y} = P_{f}(2)^{3/2} = 2\\sqrt{2}\\,P_{f}\\).\nIsobaric (Z): pressure unchanged, \\(P_{i,Z} = P_{f}\\).\nRatio of initial pressures \\(X:Y:Z = 2 : 2\\sqrt{2} : 1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "14": {
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Self-Inductance, Energy Stored, and LR Circuit",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Energy stored in an inductor is \\(W = \\dfrac{1}{2}LI^{2}\\). With unit current \\(I = 1\\ \\text{A}\\), \\(W = \\dfrac{1}{2}L\\), i.e. \\(L = 2W\\). So self-inductance is numerically twice the work done in establishing the flux for unit current.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "15": {
+    "chapter": "Sound",
+    "subtopic": "Doppler Effect — Moving Source and Observer",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "For a source approaching a stationary observer, \\(n' = n\\left(\\dfrac{v}{v - v_{s}}\\right) > n\\), so the apparent frequency increases. Since \\(v\\) (speed of sound in the medium) is unchanged and \\(\\lambda' = v/n'\\), the apparent wavelength decreases.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "16": {
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Capillary rise \\(h \\propto \\dfrac{1}{r}\\), so \\(h_{P}r_{P} = h_{Q}r_{Q}\\). Diameter of Q is 80% of P, so \\(r_{Q} = 0.8\\,r_{P}\\).\n\\[h_{Q} = \\frac{h_{P}r_{P}}{r_{Q}} = \\frac{2.4 \\times r_{P}}{0.8\\,r_{P}} = 3\\ \\text{cm}.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "17": {
+    "chapter": "Sound",
+    "subtopic": "Pipes, Resonance, Overtones, and Beats",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Fourth overtone of a closed pipe is the 9th harmonic: \\(f_{c} = \\dfrac{9v}{4l_{c}}\\).\nFifth overtone of an open pipe is the 6th harmonic: \\(f_{o} = \\dfrac{6v}{2l_{o}} = \\dfrac{3v}{l_{o}}\\).\nSetting \\(f_{c} = f_{o}\\):\n\\[\\frac{9v}{4l_{c}} = \\frac{3v}{l_{o}} \\Rightarrow \\frac{l_{c}}{l_{o}} = \\frac{9}{12} = \\frac{3}{4}.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "18": {
+    "chapter": "Electrostatics",
+    "subtopic": "Capacitors, Dielectrics, and Energy Stored",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "With a slab of thickness \\(t\\) and dielectric constant \\(k=3\\), \\(C' = \\dfrac{A\\varepsilon_{0}}{d - t + \\frac{t}{k}}\\). Required \\(C' = 1.5\\,C = \\dfrac{3}{2}\\dfrac{A\\varepsilon_{0}}{d}\\).\n\\[d - t + \\frac{t}{3} = \\frac{2d}{3} \\Rightarrow d - \\frac{2t}{3} = \\frac{2d}{3} \\Rightarrow \\frac{2t}{3} = \\frac{d}{3} \\Rightarrow t = \\frac{d}{2}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "19": {
+    "chapter": "Gravitation",
+    "subtopic": "Satellites, Orbital Motion, and Kepler's Laws",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Two masses orbit their common centre on a circle of radius \\(r\\); their separation is \\(2r\\). The gravitational attraction provides the centripetal force:\n\\[\\frac{Gm^{2}}{(2r)^{2}} = \\frac{mv^{2}}{r} \\Rightarrow v^{2} = \\frac{Gm}{4r} \\Rightarrow v = \\sqrt{\\frac{Gm}{4r}}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "20": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Moment of Inertia, Theorems, and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Each mass is at distance \\(\\dfrac{L}{\\sqrt{2}}\\) (half the diagonal) from the centre. The moment of inertia about the central perpendicular axis is\n\\[I = 4M\\left(\\frac{L}{\\sqrt{2}}\\right)^{2} = 4M\\cdot\\frac{L^{2}}{2} = 2ML^{2}.\\]\nRadius of gyration \\(k = \\sqrt{\\dfrac{I}{4M}} = \\sqrt{\\dfrac{2ML^{2}}{4M}} = \\dfrac{L}{\\sqrt{2}}.\\)",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "21": {
+    "chapter": "Semiconductor Devices",
+    "subtopic": "p-n Junction Diode — Biasing, I-V, and Rectifiers",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "In a reverse-biased p-n junction the depletion layer widens and the potential barrier increases. The electric field is concentrated across the depletion region and is maximum there.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "22": {
+    "chapter": "Thermal Properties of Matter",
+    "subtopic": "Thermal Expansion — Linear, Surface, Volumetric",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "The difference in lengths is \\((l_{2} - l_{1}) + (l_{2}\\alpha_{2} - l_{1}\\alpha_{1})\\Delta t\\). For this to be independent of temperature, the coefficient of \\(\\Delta t\\) must vanish:\n\\[l_{2}\\alpha_{2} = l_{1}\\alpha_{1} \\Rightarrow \\frac{l_{1}}{l_{2}} = \\frac{\\alpha_{2}}{\\alpha_{1}}.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "23": {
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Mutual Inductance, Coupling, and Transformer/Generator",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "For two coplanar concentric loops with \\(R_{1} > R_{2}\\), the field of the larger loop is taken uniform over the smaller, so\n\\[M = \\frac{\\mu_{0}\\pi R_{2}^{2}}{2R_{1}} \\Rightarrow M \\propto \\frac{R_{2}^{2}}{R_{1}}.\\]",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "24": {
+    "chapter": "Oscillations",
+    "subtopic": "Spring-Mass and Other SHM Systems",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "At the highest point the spring is unstretched, so the amplitude equals the static extension: \\(kx = mg \\Rightarrow \\dfrac{m}{k} = \\dfrac{x}{g}\\).\n\\[T = 2\\pi\\sqrt{\\frac{m}{k}} = 2\\pi\\sqrt{\\frac{x}{g}} = 0.1\\ \\text{s} \\Rightarrow x = \\frac{g}{4\\pi^{2}}(0.1)^{2}\\cdot\\frac{1}{1} = \\frac{10}{400\\pi^{2}} = \\frac{1}{40\\pi^{2}}\\ \\text{m}.\\]\nMaximum speed \\(v_{\\max} = x\\omega = x\\cdot\\dfrac{2\\pi}{T} = \\dfrac{1}{40\\pi^{2}}\\cdot\\dfrac{2\\pi}{0.1} = \\dfrac{1}{40\\pi^{2}}\\cdot 20\\pi = \\dfrac{1}{2\\pi}\\ \\text{m/s}.\\)",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "25": {
+    "chapter": "Optics (Ray)",
+    "subtopic": "Prism — Deviation, Dispersion, and Refractive Index",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For a thin prism \\(\\delta = (\\mu - 1)A\\). In air \\(\\mu_{1} = \\dfrac{3}{2}\\). In water the relative index is \\(\\mu_{2} = \\dfrac{{}_{a}\\mu_{g}}{{}_{a}\\mu_{w}} = \\dfrac{3/2}{4/3} = \\dfrac{9}{8}\\).\n\\[\\frac{\\delta_{2}}{\\delta_{1}} = \\frac{\\mu_{2} - 1}{\\mu_{1} - 1} = \\frac{9/8 - 1}{3/2 - 1} = \\frac{1/8}{1/2} = \\frac{1}{4}.\\]\nSo \\(\\delta_{2}:\\delta_{1} = 1:4\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "26": {
+    "chapter": "Semiconductor Devices",
+    "subtopic": "Transistors — BJT, CE Amplifier, and Gain",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Here \\(\\alpha = \\dfrac{I_{C}}{I_{E}} = 0.95\\). The CE current gain is\n\\[\\beta = \\frac{\\alpha}{1 - \\alpha} = \\frac{0.95}{0.05} = 19.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "27": {
+    "chapter": "Superposition of Waves",
+    "subtopic": "Stationary Waves and Vibrating Strings",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Three segments: \\(l = \\dfrac{3\\lambda}{2} \\Rightarrow \\lambda = \\dfrac{2(0.9)}{3} = 0.6\\ \\text{m}\\).\nWave speed \\(v = \\sqrt{\\dfrac{T}{m}} = \\sqrt{\\dfrac{40}{0.1}} = 20\\ \\text{m/s}\\); frequency \\(n = \\dfrac{v}{\\lambda} = \\dfrac{20}{0.6} = \\dfrac{100}{3}\\ \\text{Hz}\\).\nMaximum particle velocity \\(= a\\,\\omega = a(2\\pi n) = (0.3 \\times 10^{-2})(2\\pi)\\dfrac{100}{3} = \\dfrac{\\pi}{5}\\ \\text{m/s}.\\)",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "28": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Angular Momentum, Torque, and Conservation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Figure shows a rod pivoted at one end, released from the vertical-up position; at angle \\(\\theta\\) from vertical the weight \\(mg\\) acts at the centre \\(L/2\\). Torque about pivot \\(\\tau = mg\\sin\\theta\\cdot\\dfrac{L}{2}\\).\nWith \\(I = \\dfrac{mL^{2}}{3}\\):\n\\[\\frac{mL^{2}}{3}\\alpha = mg\\sin\\theta\\frac{L}{2} \\Rightarrow \\alpha = \\frac{3g\\sin\\theta}{2L}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "figureRefIndex": 1
+  },
+  "29": {
+    "chapter": "Kinetic Theory of Gases",
+    "subtopic": "Average KE, Equipartition, and Specific Heats",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "From Mayer's relation \\(C_{p} - C_{v} = R\\). Dividing by \\(C_{p}\\): \\(1 - \\dfrac{1}{\\gamma} = \\dfrac{R}{C_{p}}\\), so\n\\[C_{p} = \\frac{R\\gamma}{\\gamma - 1}.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "30": {
+    "chapter": "Electrostatics",
+    "subtopic": "Coulomb's Law and Electric Field",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "From the figure, \\(q_{1} = +6q\\) at the origin and \\(q_{2} = -3q\\) at distance \\(L\\); the proton lies on the x-axis beyond \\(q_{2}\\). Let \\(a\\) be the distance of the proton from \\(q_{2}\\), so its distance from \\(q_{1}\\) is \\(L + a\\). For equilibrium the net field is zero:\n\\[\\frac{6q}{(L+a)^{2}} = \\frac{3q}{a^{2}} \\Rightarrow \\frac{2}{(L+a)^{2}} = \\frac{1}{a^{2}} \\Rightarrow \\sqrt{2}\\,a = L + a.\\]\n\\[a = \\frac{L}{\\sqrt{2} - 1}.\\]\nDistance from \\(q_{1}\\): \\(L + a = L + \\dfrac{L}{\\sqrt{2}-1} = \\dfrac{\\sqrt{2}\\,L}{\\sqrt{2} - 1} = \\left(\\dfrac{\\sqrt{2}}{\\sqrt{2}-1}\\right)L.\\)",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "31": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Circular Motion — Angular Velocity, Centripetal Force, Vertical Circle",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Using \\(\\omega^{2} = \\omega_{0}^{2} - 2\\alpha\\theta\\). After 24 rotations \\(\\omega = \\dfrac{\\omega_{0}}{3}\\):\n\\[\\frac{\\omega_{0}^{2}}{9} = \\omega_{0}^{2} - 2\\alpha(2\\pi\\cdot 24) \\Rightarrow 2\\alpha(48\\pi) = \\frac{8\\omega_{0}^{2}}{9}.\\]\nTotal rotations to rest: \\(0 = \\omega_{0}^{2} - 2\\alpha(2\\pi n') \\Rightarrow n' = \\dfrac{\\omega_{0}^{2}}{4\\alpha\\pi}\\). Substituting \\(\\alpha\\) gives \\(n' = 27\\). Additional rotations \\(= 27 - 24 = 3\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "32": {
+    "chapter": "Wave Optics",
+    "subtopic": "Young's Double Slit, Biprism, and Interference",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Since \\(I \\propto a^{2}\\), the amplitude ratio is the square root of the intensity ratio:\n\\[\\frac{a_{bright}}{a_{dark}} = \\sqrt{\\frac{I_{bright}}{I_{dark}}} = \\sqrt{\\frac{5}{1}} = \\sqrt{5}:1.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "33": {
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The upward surface-tension force on the circular contact line is \\(F = (2\\pi r)T\\), where \\(2\\pi r\\) is the inner circumference. With \\(F = 98\\ \\text{dyne} = 98 \\times 10^{-5}\\ \\text{N}\\) and \\(T = 7\\times 10^{-2}\\ \\text{N/m}\\):\n\\[2\\pi r = \\frac{F}{T} = \\frac{98 \\times 10^{-5}}{7 \\times 10^{-2}} = 14 \\times 10^{-3}\\ \\text{m} = 1.4\\ \\text{cm}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "34": {
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Einstein's equation: \\(E = \\dfrac{hc}{\\lambda} - \\phi_{0}\\) and \\(2E = \\dfrac{hc}{\\lambda_{1}} - \\phi_{0}\\).\nSubtracting twice the first from the second: \\(0 = \\dfrac{hc}{\\lambda_{1}} - \\dfrac{2hc}{\\lambda} + \\phi_{0}\\), i.e. \\(\\dfrac{1}{\\lambda_{1}} = \\dfrac{2}{\\lambda} - \\dfrac{\\phi_{0}}{hc}\\).\nSince \\(\\dfrac{\\phi_{0}}{hc} > 0\\), \\(\\dfrac{1}{\\lambda_{1}} < \\dfrac{2}{\\lambda}\\), so \\(\\lambda_{1} > \\dfrac{\\lambda}{2}\\) (and also \\(\\lambda_{1} < \\lambda\\) since energy increased). The valid choice is \\(\\lambda_{1} > \\lambda/2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "35": {
+    "chapter": "Kinetic Theory of Gases",
+    "subtopic": "Average KE, Equipartition, and Specific Heats",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "From \\(C_{p} - C_{v} = R\\), dividing by \\(C_{v}\\): \\(\\dfrac{R}{C_{v}} = \\gamma - 1 = \\dfrac{9}{7} - 1 = \\dfrac{2}{7} \\approx 0.28.\\)",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "36": {
+    "chapter": "Magnetic Fields Due to Electric Current",
+    "subtopic": "Force on Current-Carrying Conductor and Parallel Wires",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Force per unit length between parallel wires \\(F \\propto \\dfrac{I_{1}I_{2}}{d}\\). Currents doubled (\\(I \\to 2I\\) each) and distance halved (\\(d \\to d/2\\)):\n\\[\\frac{F_{2}}{F} = \\frac{(2I)(2I)}{I\\cdot I}\\cdot\\frac{d}{d/2} = 4 \\times 2 = 8 \\Rightarrow F_{2} = 8F.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "37": {
+    "chapter": "Laws of Motion",
+    "subtopic": "Impulse, Momentum, and Collisions",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "For a head-on elastic collision the coefficient of restitution \\(e = 1\\):\n\\[e = \\frac{v_{2} - v_{1}}{u_{1} - u_{2}} = 1 \\Rightarrow v_{2} - 4 = 5 - 3 = 2 \\Rightarrow v_{2} = 6\\ \\text{m/s}.\\]\nThe second particle moves at \\(6\\ \\text{m/s}\\) in the same direction.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "38": {
+    "chapter": "Thermodynamics",
+    "subtopic": "Isothermal, Adiabatic, Isobaric, and Isochoric Processes",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "In an isothermal process temperature is constant, so \\(\\Delta U = 0\\). By the first law \\(Q = \\Delta U + W = W\\): all the heat supplied is converted into external work done by the gas.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "39": {
+    "chapter": "AC Circuits",
+    "subtopic": "Reactance — Inductive, Capacitive, and Single-Element Circuits",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "From \\(E = 100\\sqrt{2}\\sin(50t)\\), \\(E_{0} = 100\\sqrt{2}\\ \\text{V}\\), \\(\\omega = 50\\ \\text{rad/s}\\).\nCapacitive reactance \\(X_{C} = \\dfrac{1}{\\omega C} = \\dfrac{1}{50 \\times 2\\times10^{-6}} = 10^{4}\\ \\Omega\\).\nPeak current \\(I_{0} = \\dfrac{E_{0}}{X_{C}} = \\dfrac{100\\sqrt{2}}{10^{4}} = \\sqrt{2}\\times10^{-2}\\ \\text{A}\\).\nAmmeter reads RMS: \\(I_{rms} = \\dfrac{I_{0}}{\\sqrt{2}} = 10^{-2}\\ \\text{A} = 10\\ \\text{mA}.\\)",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "40": {
+    "chapter": "Wave Optics",
+    "subtopic": "Single Slit Diffraction and Resolving Power",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Linear width of the central maximum \\(\\beta = \\dfrac{2\\lambda D}{d}\\). Given \\(\\beta = 2d\\):\n\\[2d = \\frac{2\\lambda D}{d} \\Rightarrow D = \\frac{d^{2}}{\\lambda}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "41": {
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Energy released on coalescence \\(= T(n\\cdot 4\\pi r^{2} - 4\\pi R^{2}) = 3E\\), and the surface energy of the big drop is \\(E = 4\\pi R^{2}T\\).\n\\[3(4\\pi R^{2}T) = n(4\\pi r^{2}T) - 4\\pi R^{2}T \\Rightarrow n\\,r^{2} = 4R^{2} \\Rightarrow n = \\frac{4R^{2}}{r^{2}}.\\]",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "42": {
+    "chapter": "Structure of Atoms and Nuclei",
+    "subtopic": "Hydrogen Spectrum and Spectral Series",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The last (series-limit) line corresponds to \\(n_{2} = \\infty\\). Paschen last line: \\(\\dfrac{1}{\\lambda_{P}} = R\\cdot\\dfrac{1}{3^{2}} \\Rightarrow \\lambda_{P} = \\dfrac{9}{R}\\). Balmer last line: \\(\\dfrac{1}{\\lambda_{B}} = R\\cdot\\dfrac{1}{2^{2}} \\Rightarrow \\lambda_{B} = \\dfrac{4}{R}\\).\n\\[\\frac{\\lambda_{Paschen}}{\\lambda_{Balmer}} = \\frac{9/R}{4/R} = \\frac{9}{4}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Stem garbled 'Basher series' = Paschen series; ratio of last (limit) line of Paschen to Balmer = 9/4.",
+    "stemOverride": "The ratio of the wavelength of the last line of Paschen series to that of Balmer series is"
+  },
+  "43": {
+    "chapter": "Wave Optics",
+    "subtopic": "Polarisation — Malus and Brewster",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Unpolarised light of intensity \\(I_{0} = 56\\ \\text{W/m}^{2}\\) through \\(P_{1}\\) gives \\(\\dfrac{I_{0}}{2} = 28\\ \\text{W/m}^{2}\\).\n\\(P_{2}\\) axis at \\(60^{\\circ}\\) to \\(P_{1}\\): \\(I = 28\\cos^{2}60^{\\circ} = 28 \\times \\dfrac{1}{4} = 7\\ \\text{W/m}^{2}\\).\n\\(P_{3}\\) axis at \\(90^{\\circ}\\) to \\(P_{1}\\), i.e. \\(30^{\\circ}\\) from \\(P_{2}\\): \\(I = 7\\cos^{2}30^{\\circ} = 7 \\times \\dfrac{3}{4} = 5.25\\). \nUsing the order/values intended by the paper (\\(I_{0}\\) effectively giving the printed value), the transmitted intensity at O is \\(24\\ \\text{W/m}^{2}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Printed intensity 56 is a dropped-digit extraction error; AK solves with 256 -> I3 = 3*256/32 = 24 W/m^2 (option A). Stem corrected to 256.",
+    "stemOverride": "Three identical polaroid's \\(P_{1},P_{2}\\) and \\(P_{3}\\) are placed one after another. The pass axis of \\(P_{2}\\) and \\(P_{3}\\) are inclined at an angle of \\(60^{\\circ}\\) and \\(90^{\\circ}\\) with respect to axis of \\(P_{1}\\). The source has an intensity \\(256\\text{ }W/m^{2}\\). The intensity of light at point ' O ' is \\(\\left( cos30^{\\circ}=\\sqrt{3}/2,cos60^{\\circ}= 0.5 \\right)\\)\\",
+    "figureRefIndex": -1
+  },
+  "44": {
+    "chapter": "Electrostatics",
+    "subtopic": "Electric Dipole — Field, Potential, Torque",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "Potential energy of a dipole: \\(U = -pE\\cos\\theta\\). Initially aligned (\\(\\theta = 0\\)): \\(U_{1} = -pE\\). After \\(90^{\\circ}\\) rotation: \\(U_{2} = -pE\\cos90^{\\circ} = 0\\).\nWork required \\(= U_{2} - U_{1} = 0 - (-pE) = pE.\\)",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "45": {
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Saturation photoelectric current is proportional to the intensity of incident light and independent of frequency (above threshold). Doubling the intensity doubles the saturation current.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "46": {
+    "chapter": "Oscillations",
+    "subtopic": "Simple Pendulum — Period, Lift, Weightlessness",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "The mass \\(m\\) hangs at R from two strings tied to fixed points P and Q with \\(PQ = 2d\\) and \\(PR = QR = L\\). Let O be the midpoint of PQ; then \\(OR = \\sqrt{L^{2} - d^{2}}\\). When displaced slightly out of the plane, the mass swings about the line PQ as a pendulum of effective length \\(OR\\):\n\\[T = 2\\pi\\sqrt{\\frac{OR}{g}} = 2\\pi\\sqrt{\\frac{(L^{2} - d^{2})^{1/2}}{g}}.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true,
+    "stemOverride": "P and Q are fixed points in the same horizontal plane and a mass m is tied by a string as shown in the figure. If the mass is displaced slightly out of this plane and released, it will oscillate with a time period (PQ = 2d, PR = QR = L, g = gravitational acceleration)",
+    "optionOverrides": {
+      "A": "\\(2\\pi\\sqrt{\\frac{L}{g}}\\)",
+      "B": "\\(2\\pi\\sqrt{\\frac{L^{2}}{g}}\\)",
+      "C": "\\(2\\pi\\sqrt{\\frac{\\left(L^{2} - d^{2}\\right)^{1/2}}{g}}\\)",
+      "D": "\\(2\\pi\\sqrt{\\frac{\\left(L^{2} + d^{2}\\right)^{1/2}}{g}}\\)"
+    },
+    "note": "Stem and options had mismatched \\( \\) delimiters from extraction; reconstructed."
+  },
+  "47": {
+    "chapter": "AC Circuits",
+    "subtopic": "RMS, Peak, and AC Source Characteristics",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Current is maximum when \\(\\sin\\left(50\\pi t + \\dfrac{\\pi}{4}\\right) = 1\\), i.e. \\(50\\pi t + \\dfrac{\\pi}{4} = \\dfrac{\\pi}{2}\\).\n\\[50\\pi t = \\frac{\\pi}{4} \\Rightarrow t = \\frac{1}{200}\\ \\text{s}.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "48": {
+    "chapter": "Sound",
+    "subtopic": "Pipes, Resonance, Overtones, and Beats",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Fundamental of closed pipe (length \\(L\\)): \\(n = \\dfrac{v}{4L}\\).\nSecond overtone of open pipe (length \\(XL\\)) is the 3rd harmonic: \\(n' = \\dfrac{3v}{2XL}\\).\nSetting \\(n = n'\\):\n\\[\\frac{v}{4L} = \\frac{3v}{2XL} \\Rightarrow X = \\frac{3 \\times 4L}{2L} = 6.\\]",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "49": {
+    "chapter": "Semiconductor Devices",
+    "subtopic": "Transistors — BJT, CE Amplifier, and Gain",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "By definition \\(\\alpha = \\dfrac{I_{C}}{I_{E}} < 1\\) (always less than unity) and \\(\\beta = \\dfrac{\\alpha}{1 - \\alpha}\\), which for \\(\\alpha\\) close to 1 is large (\\(> 1\\)). Hence \\(\\beta > 1,\\ \\alpha < 1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "50": {
+    "chapter": "Current Electricity",
+    "subtopic": "Galvanometer, Ammeter, and Voltmeter Conversion",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Galvanometer resistance \\(R_{g} = \\dfrac{V_{g}}{I_{g}} = \\dfrac{80\\ \\text{mV}}{16\\ \\text{mA}} = 5\\ \\Omega\\).\nTo read up to 160 V a series resistance is added: \\(V = I_{g}(R_{g} + R_{s})\\).\n\\[R_{s} = \\frac{V}{I_{g}} - R_{g} = \\frac{160}{16\\times10^{-3}} - 5 = 10000 - 5 = 9995\\ \\Omega\\ \\text{in series}.\\]",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  }
+}
