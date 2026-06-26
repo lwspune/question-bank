@@ -1,0 +1,459 @@
+{
+  "101": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Given \\(3\\sin 2\\theta = 2\\sin 3\\theta\\) with \\(0 < \\theta < \\pi\\).\\n\\n\\(3(2\\sin\\theta\\cos\\theta) = 2(3\\sin\\theta - 4\\sin^{3}\\theta)\\)\\n\\n\\(6\\sin\\theta\\cos\\theta = 6\\sin\\theta - 8\\sin^{3}\\theta\\)\\n\\nDividing by \\(\\sin\\theta\\) (nonzero on the interval):\\n\\n\\(6\\cos\\theta = 6 - 8\\sin^{2}\\theta = 6 - 8(1-\\cos^{2}\\theta)\\)\\n\\n\\(8\\cos^{2}\\theta - 6\\cos\\theta - 2 = 0 \\Rightarrow 4\\cos^{2}\\theta - 3\\cos\\theta - 1 = 0\\)\\n\\n\\((\\cos\\theta - 1)(4\\cos\\theta + 1) = 0\\). Since \\(0 < \\theta < \\pi\\), \\(\\cos\\theta \\neq 1\\), so \\(\\cos\\theta = -\\tfrac{1}{4}\\).\\n\\n\\(\\sin^{2}\\theta = 1 - \\tfrac{1}{16} = \\tfrac{15}{16} \\Rightarrow \\sin\\theta = \\dfrac{\\sqrt{15}}{4}\\) (positive since \\(\\theta \\in (0,\\pi)\\)).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Circle",
+    "subtopic": "Equation of Circle from Diameter, Centre, and Concentric Conditions",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "For \\(x^{2}+y^{2}+kx+(1-k)y+5=0\\): \\(g=\\tfrac{k}{2},\\ f=\\tfrac{1-k}{2},\\ c=5\\).\\n\\nRadius \\(\\le 5 \\Rightarrow g^{2}+f^{2}-c \\le 25\\):\\n\\n\\(\\tfrac{k^{2}}{4}+\\tfrac{(1-k)^{2}}{4}-5 \\le 25 \\Rightarrow 2k^{2}-2k-119 \\le 0\\).\\n\\nRoots: \\(k = \\dfrac{1 \\pm \\sqrt{239}}{2} \\approx -7.23,\\ 8.23\\), so \\(-7.23 \\le k \\le 8.23\\).\\n\\nIntegral values \\(-7,-6,\\ldots,8\\) give \\(16\\) values.",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Standard MHT-CET reading: 'radius cannot exceed 5' taken as radius \\(\\le 5\\). A strict 'represents a real circle' requirement (radius\\(^2>0\\), i.e. \\(2k^2-2k-19>0\\)) would exclude k=-2..3 and give 10, which is NOT among the options; the intended answer is 16."
+  },
+  "103": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "With \\(a=BC=8,\\ b=CA=7,\\ c=AB=10\\), cosine rule gives\\n\\n\\(\\cos A = \\dfrac{b^{2}+c^{2}-a^{2}}{2bc} = \\dfrac{49+100-64}{140} = \\dfrac{85}{140}=\\dfrac{17}{28}\\).\\n\\n\\(\\overline{AB}\\cdot\\overline{AC} = |\\overline{AB}||\\overline{AC}|\\cos A = 10\\cdot 7\\cdot\\tfrac{17}{28} = \\tfrac{85}{2}\\).\\n\\nProjection of \\(\\overline{AB}\\) on \\(\\overline{AC} = \\dfrac{\\overline{AB}\\cdot\\overline{AC}}{|\\overline{AC}|} = \\dfrac{85/2}{7} = \\dfrac{85}{14}\\) units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Let \\(\\overline{r}=x\\widehat{i}+y\\widehat{j}+z\\widehat{k}\\), \\(\\overline{a}=\\widehat{i}+\\widehat{j}\\), \\(\\overline{b}=2\\widehat{i}-\\widehat{k}\\).\\n\\nFrom \\(\\overline{r}\\times\\overline{a}=\\overline{b}\\times\\overline{a}\\): \\((\\overline{r}-\\overline{b})\\times\\overline{a}=0\\), so \\(\\overline{r}-\\overline{b}\\parallel\\overline{a}\\). Expanding the determinant gives \\(z=-1\\) and \\(x-y=2\\).\\n\\nFrom \\(\\overline{r}\\times\\overline{b}=\\overline{a}\\times\\overline{b}\\): \\((\\overline{r}-\\overline{a})\\times\\overline{b}=0\\). Expanding gives \\(y=1\\) and \\(x+2z=1\\).\\n\\nSolving: \\(z=-1,\\ y=1,\\ x=3\\). Point of intersection \\((3,1,-1)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Linear Programming",
+    "subtopic": "Objective Function — Maximisation and Minimisation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "From the graph the feasible region is the quadrilateral ABCD bounded by \\(x=5,\\ y=4,\\ x+y=10,\\ x+y=15\\). Corner points: \\(A(5,5),\\ B(5,10),\\ C(11,4),\\ D(6,4)\\).\\n\\nEvaluate \\(z=550x+300y\\):\\n\\n\\(A(5,5): 550(5)+300(5)=4250\\)\\n\\n\\(B(5,10): 550(5)+300(10)=5750\\)\\n\\n\\(C(11,4): 550(11)+300(4)=7250\\)\\n\\n\\(D(6,4): 550(6)+300(4)=4500\\)\\n\\nMaximum \\(z=7250\\) at \\(C(11,4)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Q105 figure (image21.png) read: feasible quadrilateral ABCD bounded by x=5, y=4, x+y=10, x+y=15 with shaded region; single stem diagram (not option figures). Corners A(5,5), B(5,10), C(11,4), D(6,4)."
+  },
+  "106": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(I = \\int \\log(2+x)^{2+x}\\,dx\\). Put \\(t=2+x,\\ dt=dx\\):\\n\\n\\(I = \\int \\log t^{t}\\,dt = \\int t\\log t\\,dt\\).\\n\\nBy parts (\\(\\log t\\) as first): \\(= \\log t\\cdot\\tfrac{t^{2}}{2} - \\int \\tfrac{1}{t}\\cdot\\tfrac{t^{2}}{2}\\,dt = \\tfrac{t^{2}}{2}\\log t - \\tfrac{t^{2}}{4}+c\\).\\n\\n\\(= \\tfrac{t^{2}}{2}\\left(\\log t - \\tfrac{1}{2}\\right)+c = \\tfrac{t^{2}}{2}\\log\\dfrac{t}{\\sqrt{e}}+c = \\dfrac{(2+x)^{2}}{2}\\log\\left(\\dfrac{2+x}{\\sqrt{e}}\\right)+c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Projection of \\(\\overline{a}\\) on \\(\\overline{b}+\\overline{c}\\) is \\(\\dfrac{\\overline{a}\\cdot(\\overline{b}+\\overline{c})}{|\\overline{b}+\\overline{c}|}\\); projection of \\(\\overline{b}+\\overline{c}\\) on \\(\\overline{a}\\) is \\(\\dfrac{(\\overline{b}+\\overline{c})\\cdot\\overline{a}}{|\\overline{a}|}\\).\\n\\nGiven the first is twice the second: \\(\\dfrac{1}{|\\overline{b}+\\overline{c}|} = \\dfrac{2}{|\\overline{a}|} \\Rightarrow |\\overline{a}| = 2|\\overline{b}+\\overline{c}|\\).\\n\\n\\(|\\overline{b}+\\overline{c}| = \\sqrt{8+16+2\\cdot 2\\sqrt{2}\\cdot 4\\cdot\\cos\\tfrac{\\pi}{4}} = \\sqrt{24+16} = \\sqrt{40}=2\\sqrt{10}\\).\\n\\n\\(|\\overline{a}| = 2(2\\sqrt{10}) = 4\\sqrt{10}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Family of planes: \\((2x-y+z-3)+\\lambda(4x-3y+5z+9)=0\\), with normal \\((2+4\\lambda,\\,-1-3\\lambda,\\,1+5\\lambda)\\).\\n\\nParallel to the line with direction \\((2,4,5)\\) means normal \\(\\perp (2,4,5)\\):\\n\\n\\(2(2+4\\lambda)+4(-1-3\\lambda)+5(1+5\\lambda)=0 \\Rightarrow 5+21\\lambda=0 \\Rightarrow \\lambda=-\\tfrac{5}{21}\\).\\n\\nSubstituting and clearing denominators: \\(11x-3y-2z-54=0\\).\\n\\nSo \\(\\alpha=11,\\beta=-3,\\gamma=-2,d=-54\\) and \\(\\alpha+\\beta+\\gamma+d=-48\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\overline{AB}=\\widehat{i}+(p-2)\\widehat{k}\\), \\(\\overline{AC}=-\\widehat{j}+\\widehat{k}\\), \\(\\overline{AD}=\\widehat{i}+\\widehat{j}-2\\widehat{k}\\).\\n\\nCoplanar \\(\\Rightarrow [\\overline{AB}\\ \\overline{AC}\\ \\overline{AD}]=0\\):\\n\\n\\(\\left|\\begin{matrix}1 & 0 & p-2 \\\\ 0 & -1 & 1 \\\\ 1 & 1 & -2\\end{matrix}\\right| = 1(2-1) - 0 + (p-2)(0+1) = 1+(p-2)=0\\).\\n\\n\\(\\Rightarrow p=1\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(I = \\int \\dfrac{e^{\\tan^{-1}2x}}{1+4x^{2}}\\,dx\\). Put \\(t=\\tan^{-1}2x \\Rightarrow dt=\\dfrac{2}{1+4x^{2}}\\,dx\\).\\n\\n\\(I = \\tfrac{1}{2}\\int e^{t}\\,dt = \\tfrac{1}{2}e^{t}+c = \\dfrac{e^{\\tan^{-1}2x}}{2}+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Midpoint of \\(BC\\): \\(M=\\left(\\tfrac{2-4}{2},\\tfrac{1+5}{2}\\right)=(-1,3)\\).\\n\\nThe median \\(x+4y=p\\) passes through \\(M\\): \\(-1+12=p \\Rightarrow p=11\\).\\n\\nIt also passes through \\(A(3,k)\\): \\(3+4k=11 \\Rightarrow k=2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, and Unit Vectors",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "For unit vectors with angle \\(\\theta\\):\\n\\n\\(|\\overline{a}+\\overline{b}| = \\sqrt{2(1+\\cos\\theta)} = 2\\cos\\tfrac{\\theta}{2}\\), \\(|\\overline{a}-\\overline{b}| = \\sqrt{2(1-\\cos\\theta)} = 2\\sin\\tfrac{\\theta}{2}\\).\\n\\n\\(\\dfrac{|\\overline{a}-\\overline{b}|}{|\\overline{a}+\\overline{b}|} = \\dfrac{2\\sin(\\theta/2)}{2\\cos(\\theta/2)} = \\tan\\dfrac{\\theta}{2}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Selling price of \\(x\\) items \\(=(600-8x)x\\); cost \\(=x^{2}+78x+2500\\).\\n\\nProfit \\(P(x)=(600-8x)x-(x^{2}+78x+2500)=-9x^{2}+522x-2500\\).\\n\\n\\(P'(x)=-18x+522=0 \\Rightarrow x=29\\); \\(P''(x)=-18<0\\) (maximum).\\n\\n\\(P(29)=-9(841)+522(29)-2500 = -7569+15138-2500 = 5069\\).\\n\\nMaximum profit \\(=\\) Rs 5069.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Comparing \\(kxy+10x+8y+16=0\\) with \\(ax^{2}+2hxy+by^{2}+2gx+2fy+c=0\\): \\(a=0,\\ h=\\tfrac{k}{2},\\ b=0,\\ g=5,\\ f=4,\\ c=16\\).\\n\\nCondition \\(abc+2fgh-af^{2}-bg^{2}-ch^{2}=0\\):\\n\\n\\(0+2(4)(5)\\tfrac{k}{2}-0-0-16\\tfrac{k^{2}}{4}=0 \\Rightarrow 20k-4k^{2}=0 \\Rightarrow k(20-4k)=0\\).\\n\\n\\(k=0\\) or \\(k=5\\). If \\(k=0\\) the equation is linear (\\(10x+8y+16=0\\)), not a pair. Hence \\(k=5\\) only.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\dfrac{dy}{dx}+\\dfrac{x}{y}=\\dfrac{a}{y} \\Rightarrow y\\,dy=(a-x)\\,dx\\).\\n\\nIntegrating: \\(\\tfrac{y^{2}}{2}=ax-\\tfrac{x^{2}}{2}+c \\Rightarrow x^{2}+y^{2}-2ax-2c=0\\).\\n\\nThis is a circle with centre \\((a,0)\\) and radius \\(r=\\sqrt{a^{2}+2c}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "From \\(2f(x)+3f(1/x)=x^{2}+1\\) and (replacing \\(x\\to 1/x\\)) \\(2f(1/x)+3f(x)=\\tfrac{1}{x^{2}}+1\\). Eliminating \\(f(1/x)\\):\\n\\n\\(5f(x)=\\tfrac{3}{x^{2}}+3-2x^{2}-2 \\Rightarrow f(x)=\\tfrac{1}{5}\\left(-2x^{2}+\\tfrac{3}{x^{2}}+1\\right)\\).\\n\\n\\(y=5x^{2}f(x)=-2x^{4}+x^{2}+3 \\Rightarrow \\dfrac{dy}{dx}=-8x^{3}+2x=2x(1-4x^{2})\\).\\n\\nStrictly increasing where \\(2x(1-4x^{2})>0\\): \\(x\\in(-\\infty,-\\tfrac{1}{2})\\cup(0,\\tfrac{1}{2})\\). Among the options, \\(\\left(0,\\tfrac{1}{2}\\right)\\) is a valid interval.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "\\(\\sin\\theta+\\sin 7\\theta+\\sin 4\\theta=0\\). Combine \\(\\sin 7\\theta+\\sin\\theta=2\\sin 4\\theta\\cos 3\\theta\\):\\n\\n\\(\\sin 4\\theta(2\\cos 3\\theta+1)=0\\).\\n\\n\\(\\sin 4\\theta=0 \\Rightarrow \\theta=\\tfrac{n\\pi}{4}\\): in \\((0,\\pi)\\) gives \\(\\tfrac{\\pi}{4},\\tfrac{\\pi}{2},\\tfrac{3\\pi}{4}\\).\\n\\n\\(\\cos 3\\theta=-\\tfrac12 \\Rightarrow 3\\theta=2n\\pi\\pm\\tfrac{2\\pi}{3}\\): in \\((0,\\pi)\\) gives \\(\\tfrac{2\\pi}{9},\\tfrac{4\\pi}{9},\\tfrac{8\\pi}{9}\\).\\n\\nFull set: \\(\\tfrac{2\\pi}{9},\\tfrac{\\pi}{4},\\tfrac{4\\pi}{9},\\tfrac{\\pi}{2},\\tfrac{3\\pi}{4},\\tfrac{8\\pi}{9}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Total ellipse area \\(=\\pi ab=\\pi(5)(3)=15\\pi\\); one quadrant \\(=\\tfrac{15\\pi}{4}\\).\\n\\nArea of \\(\\triangle AOB=\\tfrac12\\cdot OA\\cdot OB=\\tfrac12\\cdot 5\\cdot 3=\\tfrac{15}{2}\\).\\n\\nArea between arc \\(AB\\) and chord \\(AB\\) \\(=\\tfrac{15\\pi}{4}-\\tfrac{15}{2}=\\tfrac{15}{4}(\\pi-2)\\) sq. units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Roots of \\(x^{3}-11x^{2}+38x-40=0\\) are \\(2,4,5\\); so \\(a=4,b=5,c=2\\) (any assignment).\\n\\nUsing the cosine rule, \\(\\dfrac{\\cos A}{a}+\\dfrac{\\cos B}{b}+\\dfrac{\\cos C}{c}=\\dfrac{a^{2}+b^{2}+c^{2}}{2abc}\\).\\n\\n\\(=\\dfrac{16+25+4}{2\\cdot 4\\cdot 5\\cdot 2}=\\dfrac{45}{80}=\\dfrac{9}{16}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(s=\\tfrac{13+14+15}{2}=21\\). Area \\(\\Delta=\\sqrt{21\\cdot 8\\cdot 7\\cdot 6}=\\sqrt{7056}=84\\).\\n\\n\\(\\sin A=\\dfrac{2\\Delta}{bc}=\\dfrac{2\\cdot 84}{14\\cdot 15}=\\dfrac{168}{210}=\\dfrac{4}{5}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Definite Integration",
+    "subtopic": "Substitution and Standard Form",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(I=\\int_{0}^{3}\\dfrac{dx}{(x+2)\\sqrt{x+1}}\\). Put \\(x+1=t^{2},\\ dx=2t\\,dt\\); limits \\(t:1\\to2\\).\\n\\n\\(I=\\int_{1}^{2}\\dfrac{2t\\,dt}{(t^{2}+1)t}=2\\int_{1}^{2}\\dfrac{dt}{t^{2}+1}=2[\\tan^{-1}t]_{1}^{2}=2(\\tan^{-1}2-\\tan^{-1}1)\\).\\n\\n\\(=2\\tan^{-1}\\dfrac{2-1}{1+2}=2\\tan^{-1}\\dfrac{1}{3}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(2\\tan^{-1}(\\cos x)=\\tan^{-1}\\left(\\dfrac{2\\cos x}{1-\\cos^{2}x}\\right)=\\tan^{-1}(2\\csc x)\\).\\n\\n\\(\\dfrac{2\\cos x}{\\sin^{2}x}=\\dfrac{2}{\\sin x} \\Rightarrow \\dfrac{\\cos x}{\\sin x}=1 \\Rightarrow \\tan x=1 \\Rightarrow x=\\dfrac{\\pi}{4}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(\\cos\\left(\\dfrac{dy}{dx}\\right)=7 \\Rightarrow \\dfrac{dy}{dx}=\\cos^{-1}7\\) (a constant). Integrating: \\(y=(\\cos^{-1}7)x+c\\), i.e. \\(\\dfrac{y-c}{x}=\\cos^{-1}7 \\Rightarrow \\cos\\left(\\dfrac{y-c}{x}\\right)=7\\).\\n\\nUsing \\(y=1\\) at \\(x=0\\) gives \\(c=1\\), so the particular solution is \\(\\cos\\left(\\dfrac{y-1}{x}\\right)=7\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "By half-angle formulae, \\(\\cot\\tfrac{A}{2}\\cot\\tfrac{C}{2}=\\sqrt{\\dfrac{s(s-a)}{(s-b)(s-c)}\\cdot\\dfrac{s(s-c)}{(s-a)(s-b)}}=\\dfrac{s}{s-b}\\).\\n\\nGiven \\(3b=a+c\\): \\(2s=a+b+c=3b+b=4b \\Rightarrow s=2b\\).\\n\\n\\(\\cot\\tfrac{A}{2}\\cot\\tfrac{C}{2}=\\dfrac{2b}{2b-b}=2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Let \\(I=\\int_{0}^{\\pi/2}\\dfrac{dx}{1+(\\cot x)^{101}}\\). By King's property (\\(x\\to\\tfrac{\\pi}{2}-x\\)), \\(\\cot x\\to\\tan x\\):\\n\\n\\(I=\\int_{0}^{\\pi/2}\\dfrac{dx}{1+(\\tan x)^{101}}\\). Adding, \\(2I=\\int_{0}^{\\pi/2}dx=\\tfrac{\\pi}{2}\\), so \\(I=\\dfrac{\\pi}{4}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\((1+y^{2})+(x-e^{\\tan^{-1}y})\\dfrac{dy}{dx}=0 \\Rightarrow \\dfrac{dx}{dy}+\\dfrac{x}{1+y^{2}}=\\dfrac{e^{\\tan^{-1}y}}{1+y^{2}}\\).\\n\\nI.F. \\(=e^{\\int\\frac{dy}{1+y^{2}}}=e^{\\tan^{-1}y}\\). Solution:\\n\\n\\(x\\,e^{\\tan^{-1}y}=\\int\\dfrac{e^{\\tan^{-1}y}}{1+y^{2}}\\,e^{\\tan^{-1}y}\\,dy+k\\). Put \\(t=e^{\\tan^{-1}y}\\): \\(=\\int t\\,dt+k=\\tfrac{t^{2}}{2}+k\\).\\n\\n\\(\\Rightarrow x\\,e^{\\tan^{-1}y}=\\tfrac{e^{2\\tan^{-1}y}}{2}+k \\Rightarrow 2x\\,e^{\\tan^{-1}y}=e^{2\\tan^{-1}y}+k\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "System of Linear Equations and Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "The system is \\(x+3y+3z=12,\\ x+4y+4z=15,\\ x+3y+4z=13\\).\\n\\nSubtracting: \\((R_2-R_1)\\) gives \\(y+z=3\\); \\((R_3-R_1)\\) gives \\(z=1\\). So \\(y=2\\), and \\(x+6+3=12 \\Rightarrow x=3\\).\\n\\n\\(x^{2}+y^{2}+z^{2}=9+4+1=14\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\dfrac{dx}{dt}=-k\\sqrt{x} \\Rightarrow \\dfrac{dx}{\\sqrt{x}}=-k\\,dt \\Rightarrow 2\\sqrt{x}=-kt+c\\).\\n\\nAt \\(t=0,\\ x=25\\): \\(c=10\\). At \\(t=2,\\ x=6.25\\): \\(2(2.5)=-2k+10 \\Rightarrow k=\\tfrac{5}{2}\\).\\n\\nBankrupt when \\(x=0\\): \\(0=-\\tfrac{5}{2}T+10 \\Rightarrow T=4\\) years.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Line 1: \\((3t-6,\\,2t,\\,t-1)\\); Line 2: \\((4s+7,\\,3s+9,\\,2s+4)\\).\\n\\nEquating: \\(3t-4s=13\\), \\(2t-3s=9\\), \\(t-2s=5\\). Solving gives \\(t=3,\\ s=-1\\), point \\((3,6,2)\\).\\n\\nDistance from \\((2,4,0)\\): \\(\\sqrt{1^{2}+2^{2}+2^{2}}=\\sqrt{9}=3\\) units.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let \\(f(x)=\\cos x\\), \\(f'(x)=-\\sin x\\). Take \\(a=60^{\\circ}\\), \\(h=-\\tfrac{1}{2}^{\\circ}=-0.00875\\) rad.\\n\\n\\(f(a)=\\cos 60^{\\circ}=0.5\\), \\(f'(a)=-\\sin 60^{\\circ}=-0.8660\\).\\n\\n\\(\\cos(59^{\\circ}30')\\approx 0.5+(-0.00875)(-0.8660)\\approx 0.5+0.0076=0.5076\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Line through \\((2,-3,1)\\) and \\((3,-4,-5)\\): \\(\\dfrac{x-2}{1}=\\dfrac{y+3}{-1}=\\dfrac{z-1}{-6}=t\\), so \\((t+2,\\,-t-3,\\,-6t+1)\\).\\n\\nSubstituting into \\(2x+y+z=7\\): \\(2(t+2)+(-t-3)+(-6t+1)=7 \\Rightarrow 2-5t=7 \\Rightarrow t=-1\\).\\n\\nPoint: \\((1,-2,7)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(I=\\int e^{x}\\dfrac{x-1}{(x+1)^{3}}\\,dx=\\int e^{x}\\dfrac{(x+1)-2}{(x+1)^{3}}\\,dx=\\int e^{x}\\left(\\dfrac{1}{(x+1)^{2}}-\\dfrac{2}{(x+1)^{3}}\\right)dx\\).\\n\\nWith \\(f(x)=\\dfrac{1}{(x+1)^{2}}\\), \\(f'(x)=-\\dfrac{2}{(x+1)^{3}}\\), so by \\(\\int e^{x}[f+f']\\,dx=e^{x}f+c\\):\\n\\n\\(I=\\dfrac{e^{x}}{(x+1)^{2}}+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "\\(y=ax^{2}-6x+b \\Rightarrow \\dfrac{dy}{dx}=2ax-6\\).\\n\\nTangent parallel to X-axis at \\(x=\\tfrac{3}{2}\\): \\(2a\\cdot\\tfrac{3}{2}-6=0 \\Rightarrow 3a=6 \\Rightarrow a=2\\).\\n\\nPasses through \\((0,4)\\): \\(b=4\\). Hence \\(a=2,\\ b=4\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\sim[(p\\wedge\\sim q)\\to(p\\vee\\sim q)] \\equiv (p\\wedge\\sim q)\\wedge\\sim(p\\vee\\sim q) \\equiv (p\\wedge\\sim q)\\wedge(\\sim p\\wedge q)\\).\\n\\nRearranging: \\((p\\wedge\\sim p)\\wedge(q\\wedge\\sim q)\\equiv F\\wedge F\\equiv F\\).\\n\\nThe negation is always false, i.e. a contradiction.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Differentiation",
+    "subtopic": "Implicit Differentiation & Special Forms",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "From \\(a(4+x^{2})=x\\): \\(a=\\dfrac{x}{4+x^{2}}\\), so \\(\\dfrac{da}{dx}=\\dfrac{4-x^{2}}{(4+x^{2})^{2}}\\). At \\(x=1\\): \\(a=\\tfrac{1}{5}\\), \\(\\dfrac{da}{dx}=\\tfrac{3}{25}\\).\\n\\nDifferentiating \\(y-x^{3}=a^{2}\\): \\(\\dfrac{dy}{dx}-3x^{2}=2a\\dfrac{da}{dx}\\).\\n\\nAt \\(x=1\\): \\(\\dfrac{dy}{dx}=3+2\\cdot\\tfrac{1}{5}\\cdot\\tfrac{3}{25}=3+\\tfrac{6}{125}=\\dfrac{381}{125}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Converse, Inverse, and Contrapositive",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Let \\(p\\): three vertices are cube roots of unity; \\(q\\): triangle is equilateral. The statement is \\(p\\to q\\). Its logical equivalent (contrapositive) is \\(\\sim q\\to\\sim p\\): 'If a triangle is not an equilateral triangle then the three vertices cannot be represented by cube roots of unity.'",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "For \\(x\\neq 3\\), \\(f(x)=[x^{2}]-[-x^{2}]\\). As \\(x\\to 3^{+}\\), \\(x^{2}\\to 9^{+}\\): \\([x^{2}]=9\\), \\([-x^{2}]=-10\\), so \\(f\\to 19\\). As \\(x\\to 3^{-}\\), \\(x^{2}\\to 9^{-}\\): \\([x^{2}]=8\\), \\([-x^{2}]=-9\\), so \\(f\\to 17\\). Taking the intended (right-hand) value, the value forced for continuity is \\(k=19\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Strictly the two one-sided limits (17 and 19) differ, so the limit does not exist and the function cannot be made continuous; the printed/intended answer is k=19 (right-hand value). Kept as per the keyed option since 19 is the intended value and no 'no value/DNE' option is offered."
+  },
+  "138": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Using standard limits as \\(x\\to 0\\): \\((7^{x}-1)^{4}\\sim x^{4}(\\log 7)^{4}\\), \\(\\tan(x/k)\\sim x/k\\), \\(\\log(1+x^{2}/3)\\sim x^{2}/3\\), \\(\\sin 4x\\sim 4x\\).\\n\\nLimit \\(=\\dfrac{x^{4}(\\log 7)^{4}}{(x/k)(x^{2}/3)(4x)}=\\dfrac{(\\log 7)^{4}}{4/(3k)}=\\dfrac{3k(\\log 7)^{4}}{4}\\).\\n\\nSetting \\(=3(\\log 7)^{3}\\): \\(k=\\dfrac{4}{\\log 7}=4(\\log 7)^{-1}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Differentiation",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(x^{y}+y^{x}=a^{b}\\). With \\(u=x^{y}\\): \\(\\dfrac{du}{dx}=x^{y}\\left(\\dfrac{y}{x}+\\log x\\dfrac{dy}{dx}\\right)\\). With \\(v=y^{x}\\): \\(\\dfrac{dv}{dx}=y^{x}\\left(\\dfrac{x}{y}\\dfrac{dy}{dx}+\\log y\\right)\\).\\n\\nSince \\(u+v=\\) const, \\(\\dfrac{du}{dx}+\\dfrac{dv}{dx}=0\\). At \\((1,2)\\): \\(x^{y}=1,\\ y^{x}=2\\):\\n\\n\\(1\\left(2+0\\right)+2\\left(\\tfrac{1}{2}\\dfrac{dy}{dx}+\\log 2\\right)=0 \\Rightarrow 2+\\dfrac{dy}{dx}+2\\log 2=0\\).\\n\\n\\(\\Rightarrow \\dfrac{dy}{dx}=-2(1+\\log 2)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Polar Form",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "\\(\\sin\\theta+i\\cos\\theta=i(\\cos\\theta-i\\sin\\theta)=i\\,e^{-i\\theta}\\), so \\((\\sin\\theta+i\\cos\\theta)^{5}=i^{5}e^{-5i\\theta}=i\\,e^{-5i\\theta}\\).\\n\\nNumerator \\((\\cos\\theta+i\\sin\\theta)^{4}=e^{4i\\theta}\\).\\n\\nRatio \\(=\\dfrac{e^{4i\\theta}}{i\\,e^{-5i\\theta}}=\\dfrac{e^{9i\\theta}}{i}=-i\\,e^{9i\\theta}=-i(\\cos 9\\theta+i\\sin 9\\theta)=\\sin 9\\theta-i\\cos 9\\theta\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Quadratic Equations",
+    "subtopic": "Roots — Nature, Vieta's Relations, and Conditions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(f(x)=2x^{3}+mx^{2}-13x+n\\) with roots \\(2,3\\): \\(f(2)=0\\) and \\(f(3)=0\\).\\n\\n\\(f(2)=16+4m-26+n=0 \\Rightarrow 4m+n=10\\).\\n\\n\\(f(3)=54+9m-39+n=0 \\Rightarrow 9m+n=-15\\).\\n\\nSubtracting: \\(5m=-25 \\Rightarrow m=-5\\), then \\(n=30\\).\\n\\n\\(4m+5n=-20+150=130\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Selection and Arrangement with Constraints",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(^{n}C_{4}+{}^{n}C_{5}={}^{n+1}C_{5}\\) (Pascal's rule). The condition \\({}^{n}C_{4}+{}^{n}C_{5}>{}^{n+1}C_{4}\\) becomes \\({}^{n+1}C_{5}>{}^{n+1}C_{4}\\).\\n\\n\\(\\dfrac{{}^{n+1}C_{5}}{{}^{n+1}C_{4}}=\\dfrac{n+1-4}{5}=\\dfrac{n-3}{5}>1 \\Rightarrow n-3>5 \\Rightarrow n>8\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(X\\) = larger of two numbers drawn from \\(\\{1,\\ldots,6\\}\\); total ways \\(={}^{6}C_{2}=15\\). \\(P(X=k)=\\dfrac{k-1}{15}\\) for \\(k=2,\\ldots,6\\).\\n\\n\\(E(X)=\\sum k\\,P(X=k)=\\dfrac{2(1)+3(2)+4(3)+5(4)+6(5)}{15}=\\dfrac{2+6+12+20+30}{15}=\\dfrac{70}{15}=\\dfrac{14}{3}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Box \\(B_k\\) has \\(k\\) red, \\(k+1\\) white. \\(P(R\\mid B_1)=\\tfrac{1}{3},\\ P(R\\mid B_2)=\\tfrac{2}{5},\\ P(R\\mid B_3)=\\tfrac{3}{7}\\).\\n\\nBy Bayes' theorem:\\n\\n\\(P(B_2\\mid R)=\\dfrac{\\tfrac{1}{3}\\cdot\\tfrac{2}{5}}{\\tfrac{1}{2}\\cdot\\tfrac{1}{3}+\\tfrac{1}{3}\\cdot\\tfrac{2}{5}+\\tfrac{1}{6}\\cdot\\tfrac{3}{7}}=\\dfrac{2/15}{78/210}=\\dfrac{420}{1170}=\\dfrac{14}{39}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\sum_{x=0}^{\\infty}k(x+1)\\left(\\tfrac{1}{5}\\right)^{x}=1\\). Using \\(\\sum_{x\\ge0}(x+1)r^{x}=\\dfrac{1}{(1-r)^{2}}\\) with \\(r=\\tfrac{1}{5}\\):\\n\\n\\(k\\cdot\\dfrac{1}{(4/5)^{2}}=k\\cdot\\dfrac{25}{16}=1 \\Rightarrow k=\\dfrac{16}{25}\\).\\n\\n\\(P(X=0)=k(0+1)(1)=\\dfrac{16}{25}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Differentiation",
+    "subtopic": "Derivative of One Function with Respect to Another",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Let \\(f(x)=\\tan^{-1}x\\), \\(f'(x)=\\dfrac{1}{1+x^{2}}\\). Then \\(u=\\dfrac{f}{f+1}\\), \\(v=\\tan^{-1}f\\).\\n\\n\\(\\dfrac{du}{dx}=\\dfrac{f'}{(f+1)^{2}}\\), \\(\\dfrac{dv}{dx}=\\dfrac{f'}{1+f^{2}}\\).\\n\\n\\(\\dfrac{du}{dv}=\\dfrac{du/dx}{dv/dx}=\\dfrac{1+f^{2}}{(f+1)^{2}}=\\dfrac{1+(\\tan^{-1}x)^{2}}{(1+\\tan^{-1}x)^{2}}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(\\overline{a}\\cdot\\overline{b}=\\tfrac{1}{\\sqrt{10}\\cdot 7}(6+0-6)=0\\) and \\(|\\overline{a}|=|\\overline{b}|=1\\), so \\(\\overline{a},\\overline{b}\\) are perpendicular unit vectors.\\n\\n\\((2\\overline{a}-\\overline{b})\\cdot[(\\overline{a}\\times\\overline{b})\\times(\\overline{a}+2\\overline{b})]=[\\,2\\overline{a}-\\overline{b},\\ \\overline{a}\\times\\overline{b},\\ \\overline{a}+2\\overline{b}\\,]\\).\\n\\nThis equals \\(-(\\overline{a}\\times\\overline{b})\\cdot[(2\\overline{a}-\\overline{b})\\times(\\overline{a}+2\\overline{b})]\\). Now \\((2\\overline{a}-\\overline{b})\\times(\\overline{a}+2\\overline{b})=4(\\overline{a}\\times\\overline{b})-(\\overline{b}\\times\\overline{a})=5(\\overline{a}\\times\\overline{b})\\).\\n\\nSo the value \\(=-5|\\overline{a}\\times\\overline{b}|^{2}=-5|\\overline{a}|^{2}|\\overline{b}|^{2}=-5\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Plane \\(2x+py+7z-41=0\\) is perpendicular to \\(x+4y-2z+13=0\\): \\(2(1)+p(4)+7(-2)=0 \\Rightarrow 4p=12 \\Rightarrow p=3\\).\\n\\nThe line lies in the plane, so its point \\((-1,k,4)\\) satisfies it: \\(2(-1)+3k+7(4)-41=0 \\Rightarrow 3k+(-2+28-41)=0 \\Rightarrow 3k-15=0\\)... this gives \\(k=5\\). However, the keyed option corresponds to using the full lie-in-plane conditions; recomputing: \\(-2+3k+28-41=3k-15\\) gives \\(k=5\\), not \\(-\\tfrac{26}{3}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": false,
+    "note": "My derivation: perpendicularity gives p=3; the point (-1,k,4) on the plane gives 2(-1)+3k+28-41=0 => 3k-15=0 => k=5, which is NOT among the options (16/3, -16/3, 26/3, -26/3). The AK keys D=-26/3 but its own working concludes k=5. The question/options appear flawed (k=5 not offered). Flagging; if forced to a keyed option, no option is correct.",
+    "flawed": true
+  },
+  "149": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "First ellipse \\(\\tfrac{x^{2}}{4}+\\tfrac{y^{2}}{2}=1\\): \\(e_{1}=\\sqrt{1-\\tfrac{2}{4}}=\\tfrac{1}{\\sqrt{2}}\\).\\n\\nGiven \\(e_{1}e_{2}=\\tfrac{\\sqrt{2}}{3}\\): \\(e_{2}=\\tfrac{\\sqrt{2}}{3}\\cdot\\sqrt{2}=\\tfrac{2}{3}\\). For \\(\\tfrac{x^{2}}{36}+\\tfrac{y^{2}}{b^{2}}=1\\): \\(\\tfrac{4}{9}=1-\\tfrac{b^{2}}{36} \\Rightarrow b^{2}=20\\).\\n\\nMajor axis \\(=2\\cdot 6=12\\), minor axis \\(=2\\sqrt{20}=4\\sqrt{5}\\). Their product \\(=12\\cdot 4\\sqrt{5}=48\\sqrt{5}\\), which is not among the offered options.",
+    "akAnswer": "D",
+    "agreesWithAk": false,
+    "flawed": true,
+    "note": "Correct product = 48*sqrt(5) (~107.3). Options are 12*sqrt(5), 720, 6*sqrt(20)=12*sqrt(5), 5. The AK keys D=5 but its own working derives 48*sqrt(5); none of the options equals the correct value. FLAWED: correct answer not among options."
+  },
+  "150": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Distribution — Mean, Variance, and Parameter Estimation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(X\\sim B(99,\\tfrac{1}{2})\\), so \\(P(X=r)={}^{99}C_{r}\\left(\\tfrac{1}{2}\\right)^{99}\\), maximised where \\({}^{99}C_{r}\\) is largest.\\n\\nFor odd \\(n=99\\), \\({}^{n}C_{r}\\) is maximum at \\(r=\\tfrac{n-1}{2}=49\\) and \\(r=\\tfrac{n+1}{2}=50\\). Among the options, \\(r=49\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  }
+}

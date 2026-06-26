@@ -1,0 +1,480 @@
+{
+  "1": {
+    "chapter": "Structure of Atoms and Nuclei",
+    "subtopic": "Hydrogen Spectrum and Spectral Series",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "The wavenumber of a hydrogen spectral line is \\(\\frac{1}{\\lambda} = R\\left(\\frac{1}{n^2} - \\frac{1}{m^2}\\right)\\). The \"last line\" (series limit) of a series corresponds to \\(m \\to \\infty\\). For the Lyman series \\(n = 1\\), so \\(\\frac{1}{\\lambda_L} = R\\left(\\frac{1}{1} - 0\\right) = R\\). For the Balmer series \\(n = 2\\), so \\(\\frac{1}{\\lambda_B} = R\\left(\\frac{1}{4} - 0\\right) = \\frac{R}{4}\\). Therefore \\(\\frac{\\lambda_L}{\\lambda_B} = \\frac{R/4}{R} = \\frac{1}{4} = 0.25\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "2": {
+    "chapter": "Thermal Properties of Matter",
+    "subtopic": "Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "A perfectly black body absorbs all the radiation incident on it and is also the best possible emitter. By definition, its coefficient of emission (emissivity) is the maximum possible value, namely unity \\((e = 1)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "3": {
+    "chapter": "Current Electricity",
+    "subtopic": "Kirchhoff's Laws and Circuit Analysis",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Travel from A to B through the series elements. A current \\(I = 2\\,\\text{A}\\) flows from A. Applying Kirchhoff's voltage law and accounting for the drop across each element and the cell: \\(V_A - I(2\\,\\Omega) - 3\\,\\text{V} - I(1\\,\\Omega) = V_B\\). Here the potential falls by \\(IR\\) across each resistor in the direction of current and falls by 3 V across the cell (entering at + and leaving at -). Thus \\(V_A - (2)(2) - 3 - (2)(1) = V_B\\), giving \\(V_A - V_B = 4 + 3 + 2 = 9\\,\\text{V}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "4": {
+    "chapter": "Laws of Motion",
+    "subtopic": "Newton's Laws — Force, Tension, Lift, and Connected Blocks",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "An inertial frame of reference is one that moves with constant velocity (zero acceleration). A train slowing down, a child on a merry-go-round (circular motion), and an aeroplane taking off are all accelerating, hence non-inertial. Only the driver of a bus moving with constant velocity is in an inertial frame.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "5": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Moment of Inertia, Theorems, and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For a disc, \\(I = \\frac{1}{2}MR^2\\) and \\(M = \\rho(\\pi R^2 t)\\) for same material (density \\(\\rho\\)) and thickness \\(t\\). Hence \\(I = \\frac{1}{2}\\rho \\pi t R^4\\), so \\(I \\propto R^4\\). Therefore \\(\\frac{I_A}{I_B} = \\frac{R^4}{(3R)^4} = \\frac{1}{81}\\), i.e. \\(1:81\\). The AK incorrectly used \\(I \\propto R^2\\) (valid only for equal masses); here the masses differ because both discs are of the same material and thickness, so mass scales with \\(R^2\\) as well, giving the extra factor.",
+    "akAnswer": "B",
+    "agreesWithAk": false,
+    "note": "AK says B (1:9) using I ∝ R² for equal-mass discs. But the discs have the SAME material and thickness, so mass M = ρπR²t differs and I = ½MR² ∝ R⁴. Ratio = R⁴/(3R)⁴ = 1/81 = option C."
+  },
+  "6": {
+    "chapter": "Sound",
+    "subtopic": "Doppler Effect — Moving Source and Observer",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For a stationary source and a moving observer, the apparent frequency is \\(F' = \\left(\\frac{v \\pm V_1}{v}\\right)F\\), with + when approaching and - when receding. So \\(F_1 = \\frac{v + V_1}{v}F\\) and \\(F_2 = \\frac{v - V_1}{v}F\\). Then \\(\\frac{F_1}{F_2} = \\frac{v + V_1}{v - V_1} = 2\\), giving \\(v + V_1 = 2v - 2V_1\\), so \\(v = 3V_1\\) and \\(\\frac{v}{V_1} = 3\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "7": {
+    "chapter": "Structure of Atoms and Nuclei",
+    "subtopic": "Radioactive Decay and Half-Life",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "The reaction \\(_{6}\\text{C}^{11} \\to {}_{5}\\text{B}^{11} + \\beta^{+} + X\\) is a beta-plus (positron) decay: a proton converts to a neutron, emitting a positron \\(\\beta^{+}\\). To conserve lepton number and energy-momentum, a neutrino \\((\\nu)\\) is emitted along with the positron. (Beta-minus decay emits an antineutrino; beta-plus decay emits a neutrino.) Hence \\(X\\) is a neutrino.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "8": {
+    "chapter": "Sound",
+    "subtopic": "Pipes, Resonance, Overtones, and Beats",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "In the fundamental mode of a pipe closed at one end, the air column length equals \\(\\frac{\\lambda}{4}\\). The time \\(t\\) given is for the wave to traverse this length \\(\\frac{\\lambda}{4}\\). The period of the wave (time to traverse one full wavelength \\(\\lambda\\)) is therefore \\(T = 4t\\). The frequency is \\(f = \\frac{1}{T} = \\frac{1}{4t} = (4t)^{-1}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "9": {
+    "chapter": "Magnetic Fields Due to Electric Current",
+    "subtopic": "Magnetic Field of Current-Carrying Conductor",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The wire has three sections. Sections (i) and (iii) are straight wires whose lines pass through (or are directed at) the centre O — a straight conductor produces zero magnetic field at points lying along its own line, so these contribute nothing at O. Section (ii) is a semicircle of radius R carrying current I. The field at the centre of a full circular loop is \\(\\frac{\\mu_0 I}{2R}\\); for a semicircle it is half of this: \\(B = \\frac{\\mu_0 I}{4R}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "10": {
+    "chapter": "Units and Measurement",
+    "subtopic": "Units, Dimensions, and Error Analysis",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Mean time \\(\\bar{t} = \\frac{30 + 32 + 35 + 35}{4} = \\frac{132}{4} = 33\\,\\text{s}\\). The absolute deviations are \\(|30-33| = 3\\), \\(|32-33| = 1\\), \\(|35-33| = 2\\), \\(|35-33| = 2\\). Mean absolute error \\(\\Delta t = \\frac{3 + 1 + 2 + 2}{4} = \\frac{8}{4} = 2\\,\\text{s}\\). Hence the correct mean time is \\((33 \\pm 2)\\,\\text{s}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "11": {
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Photoelectric emission occurs only when the photon energy is at least the work function: \\(\\frac{hc}{\\lambda} \\geq \\frac{hc}{\\lambda_0}\\). This requires \\(\\frac{1}{\\lambda} \\geq \\frac{1}{\\lambda_0}\\), i.e. \\(\\lambda \\leq \\lambda_0\\). The incident wavelength must not exceed the threshold wavelength.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "12": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Circular Motion — Angular Velocity, Centripetal Force, Vertical Circle",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "In uniform circular motion (constant angular speed) the velocity is tangential, the centripetal acceleration points toward the centre, and velocity and acceleration are mutually perpendicular. Hence statements A, C and D are true. The false statement is that the acceleration vector is tangent to the circle — it is in fact directed toward the centre, not tangential.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "13": {
+    "chapter": "Wave Optics",
+    "subtopic": "Young's Double Slit, Biprism, and Interference",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Introducing a thin glass plate of thickness \\(t\\) and refractive index \\(\\mu\\) over one slit shifts the fringe pattern by \\(\\Delta y = \\frac{(\\mu - 1)tD}{d}\\), where \\(D\\) is the screen distance and \\(d\\) the slit separation. Substituting \\(t = 0.04\\,\\text{mm} = 0.04 \\times 10^{-3}\\,\\text{m}\\), \\(\\mu = 1.5\\), \\(D = 1\\,\\text{m}\\), \\(d = 2\\,\\text{mm} = 2 \\times 10^{-3}\\,\\text{m}\\): \\(\\Delta y = \\frac{(0.5)(0.04 \\times 10^{-3})(1)}{2 \\times 10^{-3}} = 0.01\\,\\text{m} = 1\\,\\text{cm}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "note": "Stem calls d=2mm the 'slit width' but it is the slit separation (distance between slits), consistent with the AK calculation."
+  },
+  "14": {
+    "chapter": "Semiconductor Devices",
+    "subtopic": "p-n Junction Diode — Biasing, I-V, and Rectifiers",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "An ideal diode behaves as a perfect conductor when forward biased (zero resistance) and as a perfect insulator when reverse biased (infinite resistance). Hence the resistances are zero (forward) and infinite (reverse).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "15": {
+    "chapter": "Wave Optics",
+    "subtopic": "Young's Double Slit, Biprism, and Interference",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "The number of fringes covering a fixed region of the screen is inversely proportional to wavelength, since fringe width \\(\\beta = \\frac{\\lambda D}{d}\\). For a fixed width \\(W\\), \\(n = \\frac{W}{\\beta} \\propto \\frac{1}{\\lambda}\\), so \\(n_1 \\lambda_1 = n_2 \\lambda_2\\). Thus \\(18 \\times 600 = n_2 \\times 400\\), giving \\(n_2 = \\frac{10800}{400} = 27\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "16": {
+    "chapter": "Motion in a Plane",
+    "subtopic": "Vector Operations and Components",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "First \\(\\vec{P} = \\vec{A} + \\vec{B} + \\vec{C} = (\\hat{i}+\\hat{j}+3\\hat{k}) + (-\\hat{i}+\\hat{j}+4\\hat{k}) + (2\\hat{i}-2\\hat{j}-8\\hat{k}) = 2\\hat{i} - \\hat{k}\\). Next \\(\\vec{Q} = \\vec{A} \\times \\vec{B} = \\hat{i}(1\\cdot4 - 3\\cdot1) - \\hat{j}(1\\cdot4 - 3\\cdot(-1)) + \\hat{k}(1\\cdot1 - 1\\cdot(-1)) = \\hat{i} - 7\\hat{j} + 2\\hat{k}\\). The dot product \\(\\vec{P}\\cdot\\vec{Q} = (2)(1) + (0)(-7) + (-1)(2) = 2 - 2 = 0\\). Since \\(\\vec{P}\\cdot\\vec{Q} = 0\\), the angle between them is \\(90^\\circ\\). (Indeed \\(\\vec{A}\\times\\vec{B}\\) is perpendicular to \\(\\vec{A}\\) and \\(\\vec{B}\\); here \\(\\vec{P}\\) happens to lie in their plane.)",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "17": {
+    "chapter": "AC Circuits",
+    "subtopic": "Reactance — Inductive, Capacitive, and Single-Element Circuits",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The bulb's brightness depends on the current, which is reduced when the circuit impedance rises. Inserting an iron rod into the coil increases its inductance \\(L\\), hence increases the inductive reactance \\(X_L = 2\\pi f L\\) and the impedance, reducing the current and dimming the bulb. Reducing frequency or turns, or adding capacitance to reduce net reactance, would each increase current (brighten the bulb). Hence the brightness decreases when an iron rod is inserted.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "18": {
+    "chapter": "Oscillations",
+    "subtopic": "SHM Kinematics — Displacement, Velocity, Phase, and Damping",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Phase is \\(\\phi = \\omega t = \\frac{2\\pi}{T}t\\). With \\(T = 16\\,\\text{s}\\): at \\(t = 2\\,\\text{s}\\), \\(\\phi_1 = \\frac{2\\pi}{16}(2) = \\frac{\\pi}{4}\\); at \\(t = 4\\,\\text{s}\\), \\(\\phi_2 = \\frac{2\\pi}{16}(4) = \\frac{\\pi}{2}\\). The phase difference is \\(\\Delta\\phi = \\phi_2 - \\phi_1 = \\frac{\\pi}{2} - \\frac{\\pi}{4} = \\frac{\\pi}{4}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "19": {
+    "chapter": "Thermal Properties of Matter",
+    "subtopic": "Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "By Newton's law of cooling, \\(\\frac{\\theta_1 - \\theta_2}{t} = K\\left(\\frac{\\theta_1 + \\theta_2}{2} - \\theta_0\\right)\\). First interval: \\(\\frac{60 - 40}{6} = K\\left(\\frac{60+40}{2} - 10\\right) = K(40)\\), so \\(K = \\frac{20}{6 \\times 40} = \\frac{1}{12}\\). Second interval (final temperature \\(x\\)): \\(\\frac{40 - x}{6} = \\frac{1}{12}\\left(\\frac{40 + x}{2} - 10\\right)\\). Multiplying out: \\(40 - x = \\frac{1}{2}\\left(\\frac{40+x}{2} - 10\\right)\\) \\(\\Rightarrow 4(40 - x) = (40 + x) - 20 \\Rightarrow 160 - 4x = 20 + x \\Rightarrow 5x = 140 \\Rightarrow x = 28^\\circ\\text{C}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "20": {
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Radiation pressure: an absorbed beam of power \\(P_a\\) exerts force \\(\\frac{P_a}{c}\\); a reflected beam of power \\(P_r\\) exerts force \\(\\frac{2P_r}{c}\\). Here total \\(P = 90\\,\\text{W}\\), with 50% absorbed \\((P_a = 45\\,\\text{W})\\) and 50% reflected \\((P_r = 45\\,\\text{W})\\). Total force \\(F = \\frac{P_a}{c} + \\frac{2P_r}{c} = \\frac{45 + 90}{3 \\times 10^8} = \\frac{135}{3 \\times 10^8} = 4.5 \\times 10^{-7}\\,\\text{N}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "21": {
+    "chapter": "Kinetic Theory of Gases",
+    "subtopic": "Gas Laws and Ideal Gas Equation",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "At constant volume, Gay-Lussac's law gives \\(\\frac{P_1}{T_1} = \\frac{P_2}{T_2}\\). With \\(P_1 = 270\\,\\text{kPa}\\), \\(T_1 = 27 + 273 = 300\\,\\text{K}\\), \\(T_2 = 37 + 273 = 310\\,\\text{K}\\): \\(P_2 = P_1\\frac{T_2}{T_1} = 270 \\times \\frac{310}{300} = 279\\,\\text{kPa}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "22": {
+    "chapter": "AC Circuits",
+    "subtopic": "Series LCR — Impedance, Phase, and Resonance",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "The resonant frequency of a series LCR circuit is \\(f_r = \\frac{1}{2\\pi\\sqrt{LC}}\\), which depends only on \\(L\\) and \\(C\\) and is independent of the resistance \\(R\\). Changing \\(R\\) to one-third its value does not alter \\(f_r\\), so the resonant frequency remains unchanged.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "23": {
+    "chapter": "Oscillations",
+    "subtopic": "Spring-Mass and Other SHM Systems",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "For a spring-mass system \\(T = 2\\pi\\sqrt{\\frac{m}{k}}\\), so \\(T \\propto \\sqrt{m}\\). Hence \\(\\frac{T_2}{T_1} = \\sqrt{\\frac{4m}{m}} = 2\\), giving \\(T_2 = 2 \\times 2 = 4\\,\\text{s}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "24": {
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Self-Inductance, Energy Stored, and LR Circuit",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "The induced e.m.f. in an inductor is \\(e = -L\\frac{dI}{dt}\\). Since \\(L\\) is constant, \\(e\\) is directly proportional to \\(\\frac{dI}{dt}\\) — i.e. the graph of \\(e\\) versus \\(\\frac{dI}{dt}\\) is a straight line passing through the origin (with negative slope, the magnitude of \\(e\\) increasing linearly with \\(\\frac{dI}{dt}\\)). The correct option is the figure showing this straight-line variation through the origin.",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "optionFigures": true,
+    "note": "The four images are the answer-option figures (graphs labelled A/B/C/D in the stem; parsed option letters remap to those figure labels). Correct physics: e ∝ dI/dt, a straight line through origin. Kept AK answer B; figures attached as images."
+  },
+  "25": {
+    "chapter": "Electrostatics",
+    "subtopic": "Electric Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "The total electrostatic potential energy of three charges \\(+Q\\), \\(+2Q\\) and \\(q\\) at the vertices of an equilateral triangle of side \\(r\\) is \\(U = \\frac{k}{r}\\big[(Q)(2Q) + (Q)(q) + (2Q)(q)\\big]\\). Setting \\(U = 0\\): \\(2Q^2 + Qq + 2Qq = 0\\), i.e. \\(2Q^2 + 3Qq = 0\\). Dividing by \\(Q\\): \\(2Q + 3q = 0\\), so \\(q = -\\frac{2}{3}Q\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "26": {
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Conserving volume, a big drop of radius \\(R\\) splitting into \\(n\\) droplets of radius \\(r\\) gives \\(R^3 = n r^3\\), so \\(r = R n^{-1/3}\\). With \\(n = 1000\\), \\(r = \\frac{R}{10}\\). Surface energy = surface tension \\(\\times\\) area. Original: \\(V = T(4\\pi R^2)\\). Total of droplets: \\(V' = n \\cdot T(4\\pi r^2) = 1000 \\cdot T \\cdot 4\\pi \\frac{R^2}{100} = 10 \\cdot T(4\\pi R^2) = 10V\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "27": {
+    "chapter": "Semiconductor Devices",
+    "subtopic": "Transistors — BJT, CE Amplifier, and Gain",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "In a common-emitter amplifier, the base-emitter junction is forward biased and the collector-base junction is reverse biased; the input impedance is low and output impedance high; and the input and output voltages are out of phase by \\(180^\\circ\\). The correct statement is that the input signal is applied between base and emitter and the output is taken between collector and emitter.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "28": {
+    "chapter": "Kinetic Theory of Gases",
+    "subtopic": "Kinetic Theory — Pressure, RMS Speed, and Temperature",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The average force on the walls relates to pressure by \\(F = PA\\), so \\(F \\propto P\\) for a fixed wall area. For an ideal gas at constant volume, \\(P = \\frac{nRT}{V} \\propto T\\). Hence \\(F \\propto T\\), i.e. \\(F \\propto T^x\\) with \\(x = 1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "29": {
+    "chapter": "Electrostatics",
+    "subtopic": "Gauss's Law and Electric Flux",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "By Gauss's law, the total flux through the closed cylinder is \\(\\phi_A + \\phi_B + \\phi_C = \\frac{q}{\\varepsilon_0}\\), where A and C are the two plane (flat) end surfaces and B is the curved surface with flux \\(\\phi\\). By symmetry the two flat ends carry equal flux, \\(\\phi_A = \\phi_C\\). Thus \\(2\\phi_A + \\phi = \\frac{q}{\\varepsilon_0}\\), giving \\(\\phi_A = \\frac{1}{2}\\left(\\frac{q}{\\varepsilon_0} - \\phi\\right)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "30": {
+    "chapter": "Thermodynamics",
+    "subtopic": "Isothermal, Adiabatic, Isobaric, and Isochoric Processes",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For an adiabatic process, \\(TV^{\\gamma - 1} = \\text{constant}\\). Hence \\(T_i V_0^{\\gamma-1} = T_f \\left(\\frac{V_0}{32}\\right)^{\\gamma-1}\\), giving \\(\\frac{T_f}{T_i} = 32^{\\gamma - 1} = 32^{7/5 - 1} = 32^{2/5}\\). Since \\(32 = 2^5\\), \\(32^{2/5} = 2^2 = 4\\). With \\(T_f = xT_i\\), \\(x = 4\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "31": {
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Mutual Inductance, Coupling, and Transformer/Generator",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "The e.m.f. induced in the secondary is \\(e_s = M\\frac{dI_p}{dt}\\). Solving for time: \\(dt = \\frac{M \\, dI_p}{e_s} = \\frac{(2)(6 - 3)}{2 \\times 10^3} = \\frac{6}{2000} = 3 \\times 10^{-3}\\,\\text{s}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "32": {
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Conserving volume, \\(R^3 = n r^3\\) with \\(n = 729\\), so \\(r = \\frac{R}{9}\\) (since \\(729 = 9^3\\)). Surface energy scales with surface area: original \\(E = T(4\\pi R^2)\\); total of droplets \\(E' = n \\cdot T(4\\pi r^2) = 729 \\cdot T \\cdot 4\\pi \\frac{R^2}{81} = 9 \\cdot T(4\\pi R^2) = 9E\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "33": {
+    "chapter": "Gravitation",
+    "subtopic": "Gravitational PE, Escape Velocity, and Energy",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For a body projected upward with speed \\(v\\), energy conservation gives the maximum height \\(h = \\frac{R}{(v_e/v)^2 - 1}\\), where \\(v_e\\) is escape velocity. With \\(v = \\frac{v_e}{3}\\), \\(\\frac{v_e}{v} = 3\\), so \\(h = \\frac{R}{9 - 1} = \\frac{R}{8}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "34": {
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Mutual Inductance, Coupling, and Transformer/Generator",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "The current \\(I\\) flows in the larger ring of radius \\(r_1\\), producing at the common centre a nearly uniform field \\(B = \\frac{\\mu_0 I}{2 r_1}\\) over the small inner ring of radius \\(r_2\\). The flux linked with the small ring is \\(\\phi = B \\cdot \\pi r_2^2 = \\frac{\\mu_0 \\pi r_2^2}{2 r_1} I\\). The mutual inductance is \\(M = \\frac{\\phi}{I} = \\frac{\\mu_0 \\pi r_2^2}{2 r_1}\\). Among the given options, the correct form is \\(\\frac{\\mu_0 \\pi r^2}{2 r_1}\\) where the numerator radius is the smaller ring; option B reads \\(\\frac{\\mu_0 \\pi r_1^2}{2 r_1}\\) but is the intended correct choice (the inner radius in the numerator should be \\(r_2\\); the printed option has a typo).",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "note": "Correct M = μ₀πr₂²/(2r₁). Printed option B reads μ₀πr₁²/(2r₁) — a printed typo (should be r₂² in numerator). It is still the intended/closest correct option; AK answer B kept. Option A (μ₀πr₁²/2r₂) is structurally wrong (large radius in numerator, small in denominator)."
+  },
+  "35": {
+    "chapter": "Thermodynamics",
+    "subtopic": "First Law, Internal Energy, and Work-Heat Relations",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "The work done in a cyclic process equals the area enclosed by the loop on the P-V diagram, with sign set by the sense of traversal. The cycle is the triangle ABC with the horizontal base \\(AB\\) of length \\((3V - V) = 2V\\) and height \\((4P - P) = 3P\\). Area \\(= \\frac{1}{2}(2V)(3P) = 3PV\\). The cycle is traversed anticlockwise (A to B to C and back), so the net work done by the gas is negative: \\(W = -3PV\\). The intended correct option is \\(-3PV\\) (printed as \"-3 v\").",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "note": "Option D is printed as '-3 v', a truncation of '-3 PV'. The intended answer is -3PV; AK answer D kept."
+  },
+  "36": {
+    "chapter": "Electrostatics",
+    "subtopic": "Electric Potential and Potential Energy",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "Inside a charged conducting sphere the electric field is zero everywhere (the charge resides on the surface). The potential inside a conductor is constant and equals the surface potential, \\(V = \\frac{Q}{4\\pi\\varepsilon_0 R}\\). Hence at the centre the field is zero and the potential is \\(\\frac{Q}{4\\pi\\varepsilon_0 R}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "37": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Rotational Kinetic Energy and Rolling Motion",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For a body rolling down an incline without slipping, \\(a = \\frac{g\\sin\\theta}{1 + \\frac{K^2}{R^2}}\\). For a solid sphere \\(\\frac{K^2}{R^2} = \\frac{2}{5}\\), so \\(a = \\frac{g\\sin\\theta}{1 + \\frac{2}{5}} = \\frac{5g\\sin\\theta}{7}\\). With \\(\\theta = 30^\\circ\\), \\(\\sin\\theta = 0.5\\): \\(a = \\frac{5g}{7}(0.5) = \\frac{5g}{14}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "38": {
+    "chapter": "Sound",
+    "subtopic": "Pipes, Resonance, Overtones, and Beats",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For an open pipe the fundamental frequency is \\(f = \\frac{v}{2L}\\), so \\(L = \\frac{v}{2f}\\). For the two pipes, \\(L_1 = \\frac{v}{2f_1}\\) and \\(L_2 = \\frac{v}{2f_2}\\). Joined in series the effective open pipe has length \\(L = L_1 + L_2\\), with fundamental \\(f = \\frac{v}{2L}\\). Hence \\(\\frac{1}{f} = \\frac{1}{f_1} + \\frac{1}{f_2}\\), giving \\(f = \\frac{f_1 f_2}{f_1 + f_2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "39": {
+    "chapter": "Magnetic Fields Due to Electric Current",
+    "subtopic": "Magnetic Field of Current-Carrying Conductor",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "A wire of fixed total length \\(\\ell\\) bent into one turn of radius \\(r\\) gives \\(\\ell = 2\\pi r\\) and field \\(B = \\frac{\\mu_0 I}{2r}\\). When bent into \\(n\\) turns, each turn has radius \\(r' = \\frac{r}{n}\\) (same total length). The field at the centre is \\(B_n = \\frac{\\mu_0 n I}{2r'} = \\frac{\\mu_0 n I}{2(r/n)} = n^2 \\cdot \\frac{\\mu_0 I}{2r} = n^2 B\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "40": {
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Moment of Inertia, Theorems, and Radius of Gyration",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "The axis passes through the centre of sphere 1, perpendicular to the rod. Sphere 1 rotates about its own diameter: \\(I_1 = \\frac{2}{5}MR^2\\). Sphere 2's centre is at distance equal to its own radius + rod length + radius of sphere 1... here the centres are separated by the rod length \\(4R\\) (the rod connects the two sphere surfaces? Using the figure, centre-to-centre distance is \\(4R\\)). By the parallel-axis theorem, \\(I_2 = \\frac{2}{5}MR^2 + M(4R)^2 = \\frac{2}{5}MR^2 + 16MR^2\\). The rod is massless. Total: \\(I = I_1 + I_2 = \\frac{2}{5}MR^2 + \\frac{2}{5}MR^2 + 16MR^2 = \\frac{4}{5}MR^2 + \\frac{80}{5}MR^2 = \\frac{84}{5}MR^2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "41": {
+    "chapter": "Wave Optics",
+    "subtopic": "Young's Double Slit, Biprism, and Interference",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Destructive interference (a dark fringe) requires the path difference to be an odd multiple of half a wavelength, i.e. a phase difference that is an odd multiple of \\(\\pi\\). For the \\(n\\)th dark fringe \\((n = 1,2,3,\\ldots)\\) the phase difference is \\(\\Delta\\phi = (2n - 1)\\pi\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "42": {
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "The volume of water is \\(V = 0.01\\,\\text{cm}^3\\) and it spreads over area \\(A = 10\\,\\text{cm}^2\\) (the stem prints '0 cm^2' — a dropped digit; the AK uses 10 cm^2). The film thickness is \\(d = \\frac{V}{A}\\). The normal force to separate the plates is \\(F = \\frac{2TA}{d} = \\frac{2TA^2}{V}\\). Substituting \\(T = 70\\,\\text{dyne/cm}\\), \\(A = 10\\,\\text{cm}^2\\), \\(V = 0.01\\,\\text{cm}^3\\): \\(F = \\frac{2(70)(10)^2}{0.01} = \\frac{14000}{0.01} = 1.4 \\times 10^6\\,\\text{dyne} = 14\\,\\text{N}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "stemOverride": "A water drop of \\(0.01\\,\\text{cm}^3\\) is squeezed between two glass plates and spreads into an area of \\(10\\,\\text{cm}^2\\). If surface tension of water is 70 dyne/cm, then the normal force required to separate the glass plates from each other will be",
+    "note": "Stem printed area as '0 cm²' (dropped digit). AK solution uses A=10 cm² to get 14 N (option B). Corrected stem to 10 cm² via stemOverride."
+  },
+  "43": {
+    "chapter": "Current Electricity",
+    "subtopic": "Potentiometer",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "The internal resistance via the potentiometer shunt method is \\(r = R\\left(\\frac{l_1}{l_2} - 1\\right)\\), where \\(l_1\\) is the balancing length with the cell open (unshunted) and \\(l_2\\) with shunt \\(R\\). With \\(R = 5\\,\\Omega\\), \\(l_2 = 200\\,\\text{cm}\\): \\(r = 5\\left(\\frac{l_1}{200} - 1\\right)\\). With \\(R = 15\\,\\Omega\\), \\(l_2 = 300\\,\\text{cm}\\): \\(r = 15\\left(\\frac{l_1}{300} - 1\\right)\\). Equating: \\(5\\left(\\frac{l_1}{200} - 1\\right) = 15\\left(\\frac{l_1}{300} - 1\\right) \\Rightarrow \\frac{l_1}{40} - 5 = \\frac{l_1}{20} - 15 \\Rightarrow 10 = \\frac{l_1}{20} - \\frac{l_1}{40} = \\frac{l_1}{40} \\Rightarrow l_1 = 400\\,\\text{cm}\\). Then \\(r = 5\\left(\\frac{400}{200} - 1\\right) = 5(1) = 5\\,\\Omega\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "44": {
+    "chapter": "AC Circuits",
+    "subtopic": "Series LCR — Impedance, Phase, and Resonance",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Inductive reactance \\(X_L = 2\\pi f L = 2\\pi (100)\\left(\\frac{1}{2\\pi}\\right) = 100\\,\\Omega\\). The phase angle between voltage and current in a series RL circuit is \\(\\tan\\phi = \\frac{X_L}{R} = \\frac{100}{200} = 0.5\\). Hence \\(\\phi = \\tan^{-1}(0.5)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "45": {
+    "chapter": "Superposition of Waves",
+    "subtopic": "Stationary Waves and Vibrating Strings",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "The fundamental frequency of a wire is \\(n = \\frac{1}{2L}\\sqrt{\\frac{T}{m'}}\\), where linear mass density \\(m' = \\rho \\cdot \\frac{\\pi d^2}{4} \\propto \\rho d^2\\). Thus \\(n = \\frac{1}{2L}\\sqrt{\\frac{T}{\\rho \\cdot \\frac{\\pi d^2}{4}}} = \\frac{1}{L d}\\sqrt{\\frac{T}{\\pi\\rho}}\\). So \\(n \\propto \\frac{1}{L d}\\sqrt{\\frac{T}{\\rho}}\\). Taking the ratio with \\(L_B = 2L\\), \\(T_B = 2T\\), \\(\\rho_B = 2\\rho\\), \\(d_B = 3d\\): \\(\\frac{n_B}{n_A} = \\frac{L_A d_A}{L_B d_B}\\sqrt{\\frac{T_B \\rho_A}{T_A \\rho_B}} = \\frac{L \\cdot d}{2L \\cdot 3d}\\sqrt{\\frac{2T \\cdot \\rho}{T \\cdot 2\\rho}} = \\frac{1}{6}\\sqrt{1} = \\frac{1}{6}\\). Hence \\(n_B : n_A = 1 : 6\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "46": {
+    "chapter": "Electrostatics",
+    "subtopic": "Electric Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Potential of a charged sphere is \\(V = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{r}\\). When \\(n\\) small drops, each of charge \\(q\\) and radius \\(r\\), coalesce into a big drop: charge \\(q' = nq\\) and (by volume conservation) radius \\(r' = n^{1/3} r\\). The new potential is \\(V' = \\frac{1}{4\\pi\\varepsilon_0}\\frac{nq}{n^{1/3} r} = n^{2/3}\\left(\\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{r}\\right) = n^{2/3} V\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "stemOverride": "' \\(n\\) ' small spherical drops of same size which are charged to ' \\(V\\) ' volt each coalesce to form a single big drop. The potential of the big drop is",
+    "optionOverrides": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{V}{n}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(n \\cdot V\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n^{1/3} \\cdot V\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(n^{2/3} \\cdot V\\)"
+      }
+    ],
+    "note": "Stem and options had garbled LaTeX delimiters ('$\\(' etc.). Cleaned the stem (variable n) and options via overrides. Physics and AK answer D unaffected."
+  },
+  "47": {
+    "chapter": "Semiconductor Devices",
+    "subtopic": "Transistors — BJT, CE Amplifier, and Gain",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "In a transistor, power gain = voltage gain \\(\\times\\) current gain. Therefore \\(\\frac{\\text{power gain}}{\\text{voltage gain}} = \\text{current gain}\\). In the common-emitter configuration the current gain is \\(\\beta\\). Hence the ratio equals \\(\\beta\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "48": {
+    "chapter": "Oscillations",
+    "subtopic": "SHM Kinematics — Displacement, Velocity, Phase, and Damping",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Starting from the mean position, \\(x = A\\sin\\omega t\\) with \\(\\omega = \\frac{2\\pi}{T} = \\frac{2\\pi}{8} = \\frac{\\pi}{4}\\,\\text{rad/s}\\). Position at \\(t = 1\\,\\text{s}\\): \\(x_1 = A\\sin\\frac{\\pi}{4} = \\frac{A}{\\sqrt{2}}\\). Position at \\(t = 2\\,\\text{s}\\): \\(x_2 = A\\sin\\frac{\\pi}{2} = A\\). Distance in the 1st second \\(= x_1 = \\frac{A}{\\sqrt{2}}\\). Distance in the 2nd second \\(= x_2 - x_1 = A - \\frac{A}{\\sqrt{2}} = A\\frac{\\sqrt{2} - 1}{\\sqrt{2}}\\). The ratio is \\(\\frac{x_1}{x_2 - x_1} = \\frac{A/\\sqrt{2}}{A(\\sqrt{2}-1)/\\sqrt{2}} = \\frac{1}{\\sqrt{2} - 1}\\), i.e. \\(1 : (\\sqrt{2} - 1)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "49": {
+    "chapter": "Optics (Ray)",
+    "subtopic": "Optical Instruments — Microscope and Telescope",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "For a compound microscope at relaxed-eye (normal) adjustment, the tube length \\(L = v_0 + f_e\\), where \\(v_0\\) is the objective image distance and \\(f_e\\) the eyepiece focal length. So \\(15 = v_0 + 6 \\Rightarrow v_0 = 9\\,\\text{cm}\\). The magnifying power for relaxed eye is \\(m = \\frac{v_0}{u_0}\\cdot\\frac{D}{f_e}\\) with \\(D = 25\\,\\text{cm}\\). Thus \\(25 = \\frac{9}{u_0}\\cdot\\frac{25}{6}\\), giving \\(u_0 = \\frac{9 \\times 25}{25 \\times 6} = \\frac{9}{6} = 1.5\\,\\text{cm}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "50": {
+    "chapter": "Magnetic Materials",
+    "subtopic": "Magnetisation, Susceptibility, Permeability, and B-H-M Relations",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "The relative permeability is related to the magnetic susceptibility by \\(\\mu_r = 1 + \\chi\\). With \\(\\chi = 5499\\): \\(\\mu_r = 1 + 5499 = 5500\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  }
+}

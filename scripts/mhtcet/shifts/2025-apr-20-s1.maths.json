@@ -1,0 +1,453 @@
+{
+  "101": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Rewrite as a linear ODE: \\(x(x-1)\\frac{dy}{dx}-(x-2)y=x^{3}(2x-1)\\), i.e. \\(\\frac{dy}{dx}-\\frac{x-2}{x(x-1)}y=\\frac{x^{2}(2x-1)}{x-1}\\). With partial fractions \\(\\frac{2-x}{x(x-1)}=\\frac{-2}{x}+\\frac{1}{x-1}\\), the integrating factor is \\(\\text{I.F.}=e^{\\int(-\\frac{2}{x}+\\frac{1}{x-1})dx}=e^{-2\\log x+\\log(x-1)}=\\frac{x-1}{x^{2}}\\). Then \\(y\\cdot\\frac{x-1}{x^{2}}=\\int\\frac{x-1}{x^{2}}\\cdot\\frac{x^{2}(2x-1)}{x-1}\\,dx=\\int(2x-1)\\,dx=x^{2}-x+c\\). Multiplying through by \\(\\frac{x^{2}}{x-1}\\): \\(y(x-1)=x^{2}(x^{2}-x)+cx^{2}=x^{3}(x-1)+cx^{2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Line and Plane",
+    "subtopic": "Line — Equation, Direction Cosines, and Vector Form",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The line of intersection of two planes is along \\(\\bar{n}_{1}\\times\\bar{n}_{2}\\), where \\(\\bar{n}_{1}=\\hat{i}-\\hat{j}+2\\hat{k}\\) and \\(\\bar{n}_{2}=3\\hat{i}+\\hat{j}+\\hat{k}\\). The cross product is \\(\\bar{n}_{1}\\times\\bar{n}_{2}=(-1-2)\\hat{i}-(1-6)\\hat{j}+(1+3)\\hat{k}=-3\\hat{i}+5\\hat{j}+4\\hat{k}\\). Its magnitude is \\(\\sqrt{9+25+16}=\\sqrt{50}=5\\sqrt{2}\\). Hence the direction cosines are \\(\\frac{-3}{5\\sqrt{2}},\\frac{5}{5\\sqrt{2}},\\frac{4}{5\\sqrt{2}}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Let the parts be \\(x\\) and \\(20-x\\), and maximise \\(z=x^{3}(20-x)^{2}\\). Then \\(\\frac{dz}{dx}=3x^{2}(20-x)^{2}+x^{3}\\cdot 2(20-x)(-1)=x^{2}(20-x)[3(20-x)-2x]=x^{2}(20-x)(60-5x)\\). Setting \\(\\frac{dz}{dx}=0\\) gives \\(x=12\\) (rejecting \\(x=0,20\\)). The second-derivative test confirms a maximum at \\(x=12\\), so the parts are \\(12\\) and \\(8\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Straight Line",
+    "subtopic": "Equation of Line — Rotation, Angle, and Bisector",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Diagonal \\(AC\\) joins \\(A(2,-1)\\) and \\(C(2,3)\\): it is vertical (slope \\(=\\infty\\)). Diagonal \\(BD\\) joins \\(B(0,2)\\) and \\(D(4,0)\\): slope \\(m=\\frac{0-2}{4-0}=-\\frac{1}{2}\\). The acute angle a vertical line makes with a line of slope \\(m\\) is \\(\\theta\\) with \\(\\tan\\theta=\\left|\\frac{1}{m}\\right|=2\\). Hence \\(\\theta=\\tan^{-1}2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The shortest distance from the curve \\(x=y^{2}\\) to the line \\(x-y+1=0\\) (slope \\(1\\)) occurs where the tangent to the curve is parallel to the line. Differentiating \\(x=y^{2}\\): \\(\\frac{dx}{dy}=2y\\), so \\(\\frac{dy}{dx}=\\frac{1}{2y}=1\\Rightarrow y=\\frac{1}{2}\\), \\(x=\\frac{1}{4}\\). The point is \\(\\left(\\frac{1}{4},\\frac{1}{2}\\right)\\). Distance \\(=\\frac{\\left|\\frac{1}{4}-\\frac{1}{2}+1\\right|}{\\sqrt{1^{2}+(-1)^{2}}}=\\frac{3/4}{\\sqrt{2}}=\\frac{3\\sqrt{2}}{8}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Circle",
+    "subtopic": "Equation of Circle from Diameter, Centre, and Concentric Conditions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Factor the pair of lines: \\(x^{2}-y^{2}-2x+4y-3=(x-1)^{2}-(y-2)^{2}=(x+y-3)(x-y+1)=0\\). The two diameters are \\(x+y=3\\) and \\(x-y=-1\\); their intersection (the centre) is \\((1,2)\\). Since the circle passes through \\((1,1)\\), the radius is \\(\\sqrt{(1-1)^{2}+(2-1)^{2}}=1\\). Equation: \\((x-1)^{2}+(y-2)^{2}=1\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Powers and Identities",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\int\\sin^{5}x\\,dx=\\int(1-\\cos^{2}x)^{2}\\sin x\\,dx\\). Put \\(\\cos x=t\\), \\(-\\sin x\\,dx=dt\\): \\(=-\\int(1-t^{2})^{2}dt=-\\int(1-2t^{2}+t^{4})dt=-\\left(t-\\frac{2t^{3}}{3}+\\frac{t^{5}}{5}\\right)+c=-\\left(\\cos x-\\frac{2\\cos^{3}x}{3}+\\frac{\\cos^{5}x}{5}\\right)+c\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Normals are \\((1,-2,3)\\) and \\((1,\\alpha,2)\\). With \\(\\cos\\theta=\\frac{1}{14}\\): \\(\\frac{1-2\\alpha+6}{\\sqrt{14}\\sqrt{5+\\alpha^{2}}}=\\frac{1}{14}\\), so \\(14(7-2\\alpha)=\\sqrt{14}\\sqrt{5+\\alpha^{2}}\\). Squaring: \\(14(7-2\\alpha)^{2}=5+\\alpha^{2}\\Rightarrow 55\\alpha^{2}-392\\alpha+681=0\\). The difference between the two roots is \\(\\frac{\\sqrt{b^{2}-4ac}}{|a|}=\\frac{\\sqrt{392^{2}-4(55)(681)}}{55}=\\frac{\\sqrt{3844}}{55}=\\frac{62}{55}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distance, Foot of Perpendicular, Projection, and Mirror Image",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Both lines have direction \\(\\bar{b}=(2,3,4)\\), \\(|\\bar{b}|=\\sqrt{29}\\). With points \\(\\bar{a}_{1}=(k,4,3)\\), \\(\\bar{a}_{2}=(2,4,7)\\), \\(\\bar{a}_{2}-\\bar{a}_{1}=(2-k,0,4)\\). The shortest distance for parallel lines is \\(\\frac{|\\bar{b}\\times(\\bar{a}_{2}-\\bar{a}_{1})|}{|\\bar{b}|}\\). Compute \\(\\bar{b}\\times(\\bar{a}_{2}-\\bar{a}_{1})=(12,\\,-4k,\\,3k-6)\\), so \\(\\frac{\\sqrt{144+16k^{2}+(3k-6)^{2}}}{\\sqrt{29}}=\\frac{13}{\\sqrt{29}}\\). Thus \\(144+16k^{2}+(3k-6)^{2}=169\\Rightarrow 25k^{2}-36k+11=0\\Rightarrow k=1\\) (or \\(11/25\\), and \\(k=1\\) is the listed value).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The direction ratios are \\((2,-4,1)\\) and \\((-1,2,3)\\). \\(\\cos\\theta=\\left|\\frac{(2)(-1)+(-4)(2)+(1)(3)}{\\sqrt{4+16+1}\\,\\sqrt{1+4+9}}\\right|=\\left|\\frac{-7}{\\sqrt{21}\\sqrt{14}}\\right|=\\frac{7}{7\\sqrt{6}}=\\frac{1}{\\sqrt{6}}\\). Hence \\(\\theta=\\cos^{-1}\\left(\\frac{1}{\\sqrt{6}}\\right)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "For \\(y^{2}=6x\\): \\(\\frac{dy}{dx}=\\frac{3}{y}\\). For \\(9x^{2}+by^{2}=16\\): \\(18x+2by\\frac{dy}{dx}=0\\Rightarrow\\frac{dy}{dx}=-\\frac{9x}{by}\\). Orthogonality requires the product of slopes \\(=-1\\): \\(\\frac{3}{y}\\cdot\\left(-\\frac{9x}{by}\\right)=-1\\Rightarrow\\frac{27x}{by^{2}}=1\\). Using \\(y^{2}=6x\\): \\(\\frac{27x}{b(6x)}=1\\Rightarrow\\frac{27}{6b}=1\\Rightarrow b=\\frac{9}{2}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\sqrt{3}\\cot20^{\\circ}-4\\cos20^{\\circ}=\\frac{\\sqrt{3}\\cos20^{\\circ}-4\\sin20^{\\circ}\\cos20^{\\circ}}{\\sin20^{\\circ}}=\\frac{\\sqrt{3}\\cos20^{\\circ}-2\\sin40^{\\circ}}{\\sin20^{\\circ}}\\). Writing \\(\\sqrt{3}\\cos20^{\\circ}=2\\sin60^{\\circ}\\cos20^{\\circ}=\\sin80^{\\circ}+\\sin40^{\\circ}\\), the numerator becomes \\(\\sin80^{\\circ}-\\sin40^{\\circ}=2\\cos60^{\\circ}\\sin20^{\\circ}=\\sin20^{\\circ}\\). Hence the value is \\(\\frac{\\sin20^{\\circ}}{\\sin20^{\\circ}}=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "With \\(|\\bar a|=1,|\\bar b|=4,\\bar a\\cdot\\bar b=2\\): \\(|\\bar a\\times\\bar b|^{2}=|\\bar a|^{2}|\\bar b|^{2}-(\\bar a\\cdot\\bar b)^{2}=16-4=12\\). For \\(\\bar c=2(\\bar a\\times\\bar b)-3\\bar b\\), since \\(\\bar b\\cdot(\\bar a\\times\\bar b)=0\\), \\(|\\bar c|^{2}=4(12)+9(16)=192\\). Also \\(\\bar b\\cdot\\bar c=2\\bar b\\cdot(\\bar a\\times\\bar b)-3|\\bar b|^{2}=-48\\). Then \\(\\cos\\theta=\\frac{\\bar b\\cdot\\bar c}{|\\bar b||\\bar c|}=\\frac{-48}{4\\cdot 8\\sqrt{3}}=\\frac{-\\sqrt{3}}{2}\\), giving \\(\\theta=\\frac{5\\pi}{6}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\([\\bar a\\bar b\\bar d]\\bar c-[\\bar a\\bar b\\bar c]\\bar d=((\\bar a\\times\\bar b)\\cdot\\bar d)\\bar c-((\\bar a\\times\\bar b)\\cdot\\bar c)\\bar d=(\\bar a\\times\\bar b)\\times(\\bar c\\times\\bar d)\\). Its magnitude is \\(|\\bar a\\times\\bar b|\\,|\\bar c\\times\\bar d|\\sin\\frac{\\pi}{6}\\). With \\(\\bar a\\cdot\\bar b=\\frac{1}{2}\\Rightarrow\\sin\\theta=\\frac{\\sqrt3}{2}\\) so \\(|\\bar a\\times\\bar b|=\\frac{\\sqrt3}{2}\\); likewise \\(|\\bar c\\times\\bar d|=\\frac{\\sqrt3}{2}\\). Hence value \\(=\\frac{\\sqrt3}{2}\\cdot\\frac{\\sqrt3}{2}\\cdot\\frac{1}{2}=\\frac{3}{8}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Here \\(\\bar a\\cdot\\bar b=(4)(1)+(3)(-2)+(1)(2)=0\\), so \\(\\bar a\\perp\\bar b\\). Using \\(\\bar a\\times(\\bar a\\times\\bar b)=(\\bar a\\cdot\\bar b)\\bar a-|\\bar a|^{2}\\bar b=-|\\bar a|^{2}\\bar b\\). Applying \\(\\bar a\\times(\\bar a\\times\\cdot)\\) twice multiplies by \\(|\\bar a|^{2}\\) each pair: \\(\\bar a\\times(\\bar a\\times(\\bar a\\times(\\bar a\\times\\bar b)))=|\\bar a|^{4}\\bar b\\). With \\(|\\bar a|^{2}=16+9+1=26\\), \\(|\\bar a|^{4}=676\\), so the result is \\(676\\,\\bar b\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Distribution — Mean, Variance, and Parameter Estimation",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Here \\(n=4\\). \\(P(X=3)=3P(X=4)\\Rightarrow \\binom{4}{3}p^{3}q=3\\binom{4}{4}p^{4}\\Rightarrow 4p^{3}q=3p^{4}\\Rightarrow 4q=3p\\). With \\(q=1-p\\): \\(4(1-p)=3p\\Rightarrow 4=7p\\Rightarrow p=\\frac{4}{7}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Given \\(q\\) is F, so \\(p\\wedge q\\) is F. Since \\((p\\wedge q)\\leftrightarrow r\\) is T and \\(p\\wedge q\\) is F, \\(r\\) must be F. Then \\(p\\wedge r\\) is F (since \\(r=\\)F), so a conditional with a false antecedent, \\((p\\wedge r)\\rightarrow(p\\vee r)\\), is always T. (\\(p\\wedge q\\), \\(p\\vee r\\), \\(p\\wedge r\\) are not guaranteed true.)",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\((\\sim p\\wedge q)\\vee(\\sim p\\wedge\\sim q)\\vee(p\\wedge\\sim q)\\equiv\\sim p\\wedge(q\\vee\\sim q)\\vee(p\\wedge\\sim q)\\equiv\\sim p\\vee(p\\wedge\\sim q)\\equiv(\\sim p\\vee p)\\wedge(\\sim p\\vee\\sim q)\\equiv\\sim p\\vee\\sim q\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Drawing two cards, \\(X=\\) number of queens. \\(P(X=0)=\\frac{\\binom{48}{2}}{\\binom{52}{2}}=\\frac{188}{221}\\), \\(P(X=1)=\\frac{\\binom{4}{1}\\binom{48}{1}}{\\binom{52}{2}}=\\frac{32}{221}\\), \\(P(X=2)=\\frac{\\binom{4}{2}}{\\binom{52}{2}}=\\frac{1}{221}\\). So \\(E(X)=\\frac{0+32+2}{221}=\\frac{34}{221}\\) and \\(E(X^{2})=\\frac{0+32+4}{221}=\\frac{36}{221}\\). Then \\(2E(X)+3E(X^{2})=\\frac{68+108}{221}=\\frac{176}{221}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(P(1\\le X<4\\mid X\\le 2)=\\frac{P(1\\le X\\le 2)}{P(X\\le 2)}=\\frac{P(X=1)+P(X=2)}{P(X=0)+P(X=1)+P(X=2)}=\\frac{2k+4k}{k+2k+4k}=\\frac{6k}{7k}=\\frac{6}{7}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "In the first quadrant the ellipse \\(\\frac{x^{2}}{9}+\\frac{y^{2}}{4}=1\\) gives \\(y=\\frac{2}{3}\\sqrt{9-x^{2}}\\). Quarter-ellipse area \\(=\\int_{0}^{3}\\frac{2}{3}\\sqrt{9-x^{2}}\\,dx=\\frac{2}{3}\\cdot\\frac{9}{2}\\cdot\\frac{\\pi}{2}=\\frac{3\\pi}{2}\\). The line \\(\\frac{x}{3}+\\frac{y}{2}=1\\) and the axes form a triangle of area \\(\\frac{1}{2}(3)(2)=3\\). Required area between ellipse arc and line \\(=\\frac{3\\pi}{2}-3=\\frac{3}{2}(\\pi-2)\\) sq. units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Continuity at \\(x=\\frac{\\pi}{2}\\) requires the left and right limits to be equal: \\(m\\cdot\\frac{\\pi}{2}+1=\\sin\\frac{\\pi}{2}+n=1+n\\). Hence \\(\\frac{m\\pi}{2}=n\\), i.e. \\(n=\\frac{m\\pi}{2}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(x^{2}-x-2=(x-2)(x+1)\\) is negative on \\((-1,2)\\) and positive on \\([-2,-1]\\). So \\(\\int_{-2}^{2}|x^{2}-x-2|dx=\\int_{-2}^{-1}(x^{2}-x-2)dx+\\int_{-1}^{2}-(x^{2}-x-2)dx\\). Evaluating, the first integral \\(=\\frac{11}{6}\\) and the second \\(=\\frac{27}{6}\\)... computing precisely gives a total of \\(\\frac{19}{3}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\lim_{x\\to 0}\\frac{e^{\\tan x}-e^{x}}{\\tan x-x}=\\lim_{x\\to 0}\\frac{e^{x}(e^{\\tan x-x}-1)}{\\tan x-x}\\). As \\(x\\to 0\\), \\(\\tan x-x\\to 0\\) and \\(\\frac{e^{u}-1}{u}\\to 1\\) with \\(u=\\tan x-x\\), while \\(e^{x}\\to 1\\). Hence the limit is \\(1\\cdot 1=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "For \\(x^{2}=20y\\), \\(4a=20\\Rightarrow a=5\\); vertex \\((0,0)\\), focus \\((0,5)\\). The latus rectum has length \\(4a=20\\) with endpoints \\((-10,5)\\) and \\((10,5)\\). The triangle formed with the vertex has base \\(20\\) and height \\(5\\): area \\(=\\frac{1}{2}\\times 20\\times 5=50\\) sq. units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Let \\(f(x)=\\sqrt{1+x+x^{2}}-\\sqrt{1-x+x^{2}}\\). Then \\(f(-x)=\\sqrt{1-x+x^{2}}-\\sqrt{1+x+x^{2}}=-f(x)\\), so \\(f\\) is odd. The integral of an odd function over the symmetric interval \\([-1,1]\\) is \\(0\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "From \\(\\{1,2,3,4\\}\\) with replacement, total outcomes \\(=16\\). Count pairs with \\(p^{2}\\ge 4q\\): for \\(p=2\\) (\\(p^{2}=4\\)): \\(q=1\\) (1 case); \\(p=3\\) (\\(9\\ge 4q\\Rightarrow q\\le 2.25\\)): \\(q=1,2\\) (2 cases); \\(p=4\\) (\\(16\\ge 4q\\Rightarrow q\\le 4\\)): \\(q=1,2,3,4\\) (4 cases); \\(p=1\\): none. Total favourable \\(=7\\). Probability \\(=\\frac{7}{16}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Sets, Relations and Functions",
+    "subtopic": "Domain and Range of Functions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For \\(f(x)=\\frac{2x+3}{3x+4}\\): assuming \\(f(x_{1})=f(x_{2})\\) leads to \\((2x_{1}+3)(3x_{2}+4)=(2x_{2}+3)(3x_{1}+4)\\Rightarrow x_{1}=x_{2}\\), so \\(f\\) is one-one. Solving \\(y=\\frac{2x+3}{3x+4}\\) for \\(x\\) gives \\(x=\\frac{3-4y}{3y-2}\\), valid for all \\(y\\) except \\(y=\\frac{2}{3}\\). Hence \\(f\\) is one-one and onto for \\(y\\neq\\frac{2}{3}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let \\(z=x+iy\\). \\(|z+1-i|=|z-1+i|\\) gives \\((x+1)^{2}+(y-1)^{2}=(x-1)^{2}+(y+1)^{2}\\). Expanding: \\(4x-4y=0\\Rightarrow x=y\\), a straight line through the origin with slope \\(1\\), lying in the first and third quadrants.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Partial fractions: \\(\\frac{2x+3}{(x-1)(x^{2}+1)}=\\frac{A}{x-1}+\\frac{Bx+C}{x^{2}+1}\\) gives \\(A=\\frac{5}{2},B=-\\frac{5}{2},C=-\\frac{1}{2}\\). Integrating: \\(\\frac{5}{2}\\log(x-1)-\\frac{5}{4}\\log(x^{2}+1)-\\frac{1}{2}\\tan^{-1}x+A=\\log\\{(x-1)^{5/2}(x^{2}+1)^{-5/4}\\}-\\frac{1}{2}\\tan^{-1}x+A\\). Comparing the exponent of \\((x^{2}+1)\\) gives \\(a=-\\frac{5}{4}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Continuous compounding (or the equivalent ratio model): \\(400\\) doubles to \\(800\\) in \\(6\\) years, so the growth factor per year is \\(2^{1/6}\\). After \\(33\\) years, amount \\(=400\\cdot 2^{33/6}=400\\cdot 2^{5.5}=400\\cdot 32\\cdot\\sqrt{2}=400\\cdot 32\\cdot 1.4142=18101.76\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "If \\(\\bar a,\\bar b\\) are unit vectors and \\(|\\bar a+\\bar b|=1\\): \\(|\\bar a+\\bar b|^{2}=1+1+2\\bar a\\cdot\\bar b=1\\Rightarrow\\bar a\\cdot\\bar b=-\\frac{1}{2}\\). Thus \\(\\cos\\theta=-\\frac{1}{2}\\Rightarrow\\theta=\\frac{2\\pi}{3}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Counting and Geometric Applications",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Total triangles from \\(20\\) vertices \\(=\\binom{20}{3}=1140\\). Triangles using exactly two sides of the polygon (three consecutive vertices) \\(=20\\). Triangles using exactly one side \\(=20\\times 16=320\\) (each side with a third vertex not adjacent). Triangles with no side \\(=1140-20-320=800\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Rational and Substitution Forms",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Put \\(\\tan\\frac{x}{2}=t\\), \\(dx=\\frac{2}{1+t^{2}}dt\\), \\(\\cos x=\\frac{1-t^{2}}{1+t^{2}}\\). Then \\(\\int\\frac{dx}{2+\\cos x}=\\int\\frac{2}{3+t^{2}}dt=\\frac{2}{\\sqrt{3}}\\tan^{-1}\\frac{t}{\\sqrt{3}}+c=\\frac{2}{\\sqrt{3}}\\tan^{-1}\\left(\\frac{1}{\\sqrt{3}}\\tan\\frac{x}{2}\\right)+c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "With \\(A+B=\\frac{\\pi}{2}\\), \\(\\cos B=\\sin A\\), so \\(\\cos A\\cos B=\\cos A\\sin A=\\frac{1}{2}\\sin 2A\\). The maximum of \\(\\sin 2A\\) is \\(1\\), so the maximum value is \\(\\frac{1}{2}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "A vector orthogonal to \\(\\bar a=\\hat i+\\hat j+\\hat k\\) and coplanar with \\(\\bar b=\\hat i+\\hat j+2\\hat k\\), \\(\\bar c=\\hat i+2\\hat j+\\hat k\\) is \\(\\bar a\\times(\\bar b\\times\\bar c)=(\\bar a\\cdot\\bar c)\\bar b-(\\bar a\\cdot\\bar b)\\bar c\\). Here \\(\\bar a\\cdot\\bar c=4\\), \\(\\bar a\\cdot\\bar b=4\\), so \\(=4\\bar b-4\\bar c=4(-\\hat j+\\hat k)\\). Magnitude \\(=4\\sqrt{2}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Angle, Distance, and Geometry of Pair",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(4x^{2}+4xy+y^{2}-6x-3y-4=(2x+y)^{2}-3(2x+y)-4=(2x+y-4)(2x+y+1)=0\\). The parallel lines are \\(2x+y-4=0\\) and \\(2x+y+1=0\\). Distance \\(=\\frac{|-4-1|}{\\sqrt{2^{2}+1^{2}}}=\\frac{5}{\\sqrt{5}}=\\sqrt{5}\\) units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Differentiation",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "For \\(y_{1}=x^{x}\\): \\(\\log y_{1}=x\\log x\\Rightarrow y_{1}'=x^{x}(1+\\log x)\\). For \\(y_{2}=x^{1/x}\\): \\(\\log y_{2}=\\frac{\\log x}{x}\\Rightarrow y_{2}'=x^{1/x}\\cdot\\frac{1}{x^{2}}(1-\\log x)\\). Hence \\(\\frac{dy}{dx}=x^{x}(1+\\log x)+x^{1/x}\\frac{1}{x^{2}}(1-\\log x)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "The intercepts are \\(a=3,b=2,c=-4\\), so \\(A(3,0,0),B(0,2,0),C(0,0,-4)\\). Area \\(=\\frac{1}{2}\\sqrt{a^{2}b^{2}+b^{2}c^{2}+a^{2}c^{2}}=\\frac{1}{2}\\sqrt{36+64+144}=\\frac{1}{2}\\sqrt{244}=\\frac{1}{2}\\cdot 2\\sqrt{61}=\\sqrt{61}\\) sq. units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Let \\(a=\\frac{x}{2},b=\\frac{y}{2},c=\\frac{z}{2}\\). When \\(\\tan^{-1}a+\\tan^{-1}b+\\tan^{-1}c=\\frac{\\pi}{2}\\), the standard result gives \\(ab+bc+ca=1\\). Hence \\(\\frac{xy}{4}+\\frac{yz}{4}+\\frac{zx}{4}=1\\Rightarrow xy+yz+zx=4\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Using the cosine rule \\(\\cos A=\\frac{b^{2}+c^{2}-a^{2}}{2bc}\\) etc., the given relation \\(\\frac{2\\cos A}{a}+\\frac{\\cos B}{b}+\\frac{2\\cos C}{c}=\\frac{a}{bc}+\\frac{b}{ca}\\) simplifies (multiplying through by \\(2abc\\)) to \\(2(b^{2}+c^{2}-a^{2})+(a^{2}+c^{2}-b^{2})+2(a^{2}+b^{2}-c^{2})=2a^{2}+2b^{2}\\), which reduces to \\(a^{2}=b^{2}+c^{2}\\). Thus the triangle is right-angled at \\(A\\): \\(\\angle A=\\frac{\\pi}{2}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Differentiation",
+    "subtopic": "Foundations, Chain Rule & Differentiability",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Let \\(y=f(f(f(x)))+(f(x))^{2}\\). Then \\(\\frac{dy}{dx}=f'(f(f(x)))f'(f(x))f'(x)+2f(x)f'(x)\\). At \\(x=1\\), with \\(f(1)=1,f'(1)=3\\): \\(=f'(1)f'(1)f'(1)+2f(1)f'(1)=3\\cdot 3\\cdot 3+2\\cdot 1\\cdot 3=27+6=33\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(y=\\log x^{3}+3\\sin^{-1}x+kx^{2}=3\\log x+3\\sin^{-1}x+kx^{2}\\). So \\(y'=\\frac{3}{x}+\\frac{3}{\\sqrt{1-x^{2}}}+2kx\\). At \\(x=\\frac{1}{2}\\): \\(y'=6+\\frac{3}{\\sqrt{3}/2}+k=6+2\\sqrt{3}+k\\). Setting this equal to \\(2\\sqrt{3}\\): \\(6+2\\sqrt{3}+k=2\\sqrt{3}\\Rightarrow k=-6\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "If \\(a,b,c\\) are in A.P., \\(a+c=2b\\), so \\(s=\\frac{a+b+c}{2}=\\frac{3b}{2}\\). Using half-angle formulae, \\(\\tan\\frac{A}{2}\\tan\\frac{C}{2}=\\frac{s-b}{s}=\\frac{\\frac{3b}{2}-b}{\\frac{3b}{2}}=\\frac{b/2}{3b/2}=\\frac{1}{3}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\tan 3\\theta=\\cot\\theta=\\tan\\left(\\frac{\\pi}{2}-\\theta\\right)\\Rightarrow 3\\theta=n\\pi+\\frac{\\pi}{2}-\\theta\\Rightarrow 4\\theta=n\\pi+\\frac{\\pi}{2}\\Rightarrow\\theta=\\frac{(2n+1)\\pi}{8},\\,n\\in\\mathbb{Z}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Linear Programming",
+    "subtopic": "Feasible Region — Identification, Constraints, Classification",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The shaded region lies to the right, bounded above by the line \\(x-y=0\\) and below by the line \\(x+y=0\\). A test point inside the region, e.g. \\((2,0)\\), gives \\(x-y=2\\ge 0\\) and \\(x+y=2\\ge 0\\). Hence the solution set is \\(x-y\\ge 0,\\;x+y\\ge 0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Read stem figure (image16.png): shaded wedge to the right between x-y=0 (upper boundary) and x+y=0 (lower boundary). Test point (2,0) satisfies both inequalities of option A."
+  },
+  "147": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Expand: \\(a\\cos(B-\\theta)+b\\cos(A+\\theta)=\\cos\\theta(a\\cos B+b\\cos A)+\\sin\\theta(a\\sin B-b\\sin A)\\). By the projection rule \\(a\\cos B+b\\cos A=c\\), and by the sine rule \\(a\\sin B-b\\sin A=0\\). Hence the expression equals \\(c\\cos\\theta\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(A=\\begin{bmatrix}1&\\tan x\\\\-\\tan x&1\\end{bmatrix}\\), \\(|A|=1+\\tan^{2}x=\\sec^{2}x\\), \\(A^{-1}=\\frac{1}{\\sec^{2}x}\\begin{bmatrix}1&-\\tan x\\\\\\tan x&1\\end{bmatrix}\\), \\(A^{T}=\\begin{bmatrix}1&-\\tan x\\\\\\tan x&1\\end{bmatrix}\\). Then \\(A^{T}A^{-1}=\\frac{1}{1+\\tan^{2}x}\\begin{bmatrix}1-\\tan^{2}x&-2\\tan x\\\\2\\tan x&1-\\tan^{2}x\\end{bmatrix}=\\begin{bmatrix}\\cos 2x&-\\sin 2x\\\\\\sin 2x&\\cos 2x\\end{bmatrix}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Given \\(\\sqrt{\\frac{d^{2}y}{dx^{2}}}=\\sqrt[5]{\\frac{dy}{dx}-5}\\). Raising both sides to the 10th power: \\(\\left(\\frac{d^{2}y}{dx^{2}}\\right)^{5}=\\left(\\frac{dy}{dx}-5\\right)^{2}\\). Order \\(=2\\) (highest derivative) and degree \\(=5\\) (its power). Order + degree \\(=2+5=7\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Differentiate \\(x^{2}y=4e^{x}+c\\) w.r.t. \\(x\\): \\(2xy+x^{2}\\frac{dy}{dx}=4e^{x}\\). Since \\(4e^{x}=x^{2}y-c\\) is not eliminated directly, write the relation as \\(x^{2}\\frac{dy}{dx}+2xy-4e^{x}=0\\), the differential equation of the family.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  }
+}
