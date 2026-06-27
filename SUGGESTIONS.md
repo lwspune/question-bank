@@ -19,6 +19,30 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-27
+
+### ~~`/solution-cleanup` the 2 flagged Line-and-Plane rows~~ — **DONE 2026-06-27**
+
+Both turned out to be **wrong keys**, not the milder issues first assumed. `92012430` (parallel-line distance): re-derivation gave `(1,2,3)×(2,−2,1)=(8,5,−6)`, `|·|=5√5` → `5√5/3` = option C; flipped A→C + clean solution. `42c20362`: source-verified against `14 May 2024 S1 Q110` — the printed stem `2l²+m²−n²=0` faithfully matches the source (≈40.9°, no option), but the **official AK is (b) 180°** via a different equation `2l²+2m²−n²=0` (the source's own solution; `(l−m)²=0` → coincident lines `(1,1,−2)` → 180°); aligned to the official key — stem→`2l²+2m²−n²=0`, flipped A→B, honest solution noting the coincident-line degeneracy. Both `content_hash`-recomputed, hashes verified. DB-live; not yet committed to a code change (DB-only).
+
+<details><summary>original</summary>
+
+The MHT-CET Maths "Line and Plane" notes build + cleanup left two PUBLIC rows flagged but un-fixed (both surfaced during authoring, neither blocks the notes): **`42c20362`** (Angles — "l+m+n=0, 2l²+m²−n²=0 → angle between the lines") — the bank's OWN printed arithmetic is internally inconsistent (the stated directions give cosθ=2/√7≈40.9°, but it's keyed 60°); needs a source check to decide whether the stem constants or the key is wrong. **`92012430`** (Distances — distance between two parallel lines) — the key is correct but the stored solution text trails off mid-arithmetic ("…resulting in 2√5/3"); a solution-rewrite only, no key change.
+
+**Why:** `42c20362` is a possible wrong-key/flawed-stem on a question the new notes now drill (tagged `cetlp-direction-angle-systems`); `92012430` is a quality-only fix. Both are cheap and were explicitly deferred out of the notes-ship scope.
+
+**How to apply:** `/solution-cleanup` on chapter `f70e1d80-3c76-403a-a7f9-2e7f09d01a81` targeting just these two; for `42c20362` source-verify against the on-disk MHT-CET DOCX (pandoc-extract + prose-anchor grep per [[mhtcet-source-docx-render]]) before any key flip — it may be a flawed printed question to preserve-with-note rather than flip.
+
+</details>
+
+### Consider a broader source-verified key audit of the rest of MHT-CET Maths
+
+The Line-and-Plane cleanup found **8 wrong-keys + ~11 option-extraction errors in ONE chapter** of "non-audited" MHT-CET Maths — and the standard `/solution-cleanup` probe was nearly blind to them (imaged-math MHT-CET solutions lack the NDA-style `matches option`/`REVIEW:` tells), so they only surfaced via full re-derivation. The other ~26 MHT-CET Maths chapters have never had this pass. The new pandoc→LaTeX + prose-anchor-grep source-verification ([[mhtcet-source-docx-render]]) makes it far cheaper than before.
+
+**Why:** if Line and Plane's ~8%-of-questions error rate is representative, the MHT-CET Maths PUBLIC bank carries a meaningful tail of wrong keys that no probe will catch — directly hurting the paper-builder + any future quiz/notes built on it.
+
+**How to apply:** opportunistic, not a blanket campaign — fold a Step-0-style full re-derivation (parallel solution-reader agents per subtopic) into each chapter's notes build (as done here), and run a standalone source-verified pass only on the highest-traffic un-noted chapters (Applications of Derivative 150 q is next in the notes queue anyway). Adversarially re-derive, then pandoc-grep the source to split bank-extraction-error vs printed-paper-defect.
+
 ## 2026-06-26
 
 ### ~~Make the ingestion figure-OPTION policy "attach, don't describe" + harden the image-option content_hash~~ — **DONE 2026-06-26**
