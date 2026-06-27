@@ -27,6 +27,7 @@ import {
 import { queryQuestions } from "@/lib/questions/query";
 import { EMPTY_FILTERS, type Difficulty } from "@/lib/questions/filters";
 import type { SectionTemplate } from "@/lib/papers/types";
+import { getQuestionUsage, type UsageRef } from "@/lib/papers/usage";
 
 type Ok<T = unknown> = { ok: true } & T;
 type Err = { ok: false; error: string };
@@ -249,7 +250,26 @@ export type SearchRow = {
   subject: string;
   chapter: string;
   difficulty: Difficulty;
+  /** Other papers in the org that already use this question (soft-warn). */
+  usedIn: UsageRef[];
 };
+
+/** Cross-paper usage for a set of questions, excluding the current paper.
+ *  Feeds the cart "Add to paper" dialog's soft-warn summary. */
+export async function questionUsageAction(
+  questionIds: string[],
+  excludePaperId?: string
+): Promise<Result<{ usage: Record<string, UsageRef[]> }>> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+  try {
+    const client = createSupabaseServerClient();
+    const map = await getQuestionUsage(client, questionIds, excludePaperId);
+    return { ok: true, usage: Object.fromEntries(map) };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
+}
 
 /** Subjects for an exam — feeds the add panel's subject dropdown. */
 export async function listSubjectsAction(
@@ -278,6 +298,8 @@ export async function searchQuestionsAction(input: {
   difficulty?: Difficulty | null;
   kind?: "pyq" | "practice" | "all";
   page?: number;
+  /** The paper being edited — excluded from the usage soft-warn. */
+  paperId?: string;
 }): Promise<Result<{ rows: SearchRow[]; totalCount: number; pageSize: number }>> {
   const member = await requireMember();
   if (!member) return { ok: false, error: "Not authorized." };
@@ -298,12 +320,19 @@ export async function searchQuestionsAction(input: {
       },
       pageSize
     );
+    // Cross-paper soft-warn: which of these are already used elsewhere in the org.
+    const usage = await getQuestionUsage(
+      client,
+      result.rows.map((r) => r.id),
+      input.paperId
+    );
     const rows: SearchRow[] = result.rows.map((r) => ({
       id: r.id,
       text: r.text,
       subject: r.subject.name,
       chapter: r.chapter.name,
       difficulty: r.difficulty,
+      usedIn: usage.get(r.id) ?? [],
     }));
     return { ok: true, rows, totalCount: result.totalCount, pageSize };
   } catch (e) {

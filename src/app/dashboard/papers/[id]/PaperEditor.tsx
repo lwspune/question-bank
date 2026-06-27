@@ -7,6 +7,7 @@ import {
   Check,
   ChevronDown,
   ChevronUp,
+  History,
   Loader2,
   Lock,
   Pencil,
@@ -41,6 +42,7 @@ import {
   UNASSIGNED_KEY,
 } from "@/lib/papers/template";
 import type { PaperDetail } from "@/lib/papers/admin";
+import { formatUsageLabel, type UsageRef } from "@/lib/papers/usage";
 import type { SectionTemplate } from "@/lib/papers/types";
 import type { QuestionPreview } from "@/lib/questions/query";
 import {
@@ -61,11 +63,14 @@ const SELECT_CLASS =
 export default function PaperEditor({
   detail,
   previews,
+  usage,
   exams,
   orgMembers,
 }: {
   detail: PaperDetail;
   previews: QuestionPreview[];
+  /** question_id → other papers using it (this paper excluded). Soft-warn. */
+  usage: Record<string, UsageRef[]>;
   exams: { id: string; name: string }[];
   orgMembers: { id: string; label: string }[];
 }) {
@@ -321,6 +326,15 @@ export default function PaperEditor({
                                     {p ? " · " : ""}added by {memberLabel(m.addedBy)}
                                   </span>
                                 )}
+                              </p>
+                            )}
+                            {(usage[m.questionId]?.length ?? 0) > 0 && (
+                              <p
+                                className="mt-1 inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
+                                title={usage[m.questionId].map((u) => u.title).join(", ")}
+                              >
+                                <History className="h-3 w-3" aria-hidden />
+                                {formatUsageLabel(usage[m.questionId])}
                               </p>
                             )}
                           </div>
