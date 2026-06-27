@@ -21,6 +21,22 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-06-27
 
+### Apply the auth-middleware scoping fix to the sibling nda-tracker app
+
+This session scoped PYQ Vault's middleware matcher to the four authenticated prefixes after finding that the broad catch-all matcher ran `supabase.auth.getUser()` (a Supabase Auth network round-trip, billed as Vercel Active CPU) on every anon public request — ~40% of Active CPU, the whole Edge runtime line (commit `1d58461`). **nda-tracker is also a Next + Supabase app** and almost certainly carries the same broad-matcher pattern, so it likely has the same wasted Edge CPU on its public traffic.
+
+**Why:** same quota/cost leak, different app + different Vercel project. nda-tracker has a large public student surface (quizzes, exam results) hit by anon traffic; if its middleware validates auth on every one, it's paying the same per-request round-trip. Cheap, self-contained fix with the diagnostic + pattern already proven here.
+
+**How to apply:** in nda-tracker, open its `middleware` config + the Supabase-SSR `updateSession` equivalent. Check Vercel's Active-CPU widget (Type tab: middleware share; Runtime tab: edge ≈ middleware?). If the matcher is a broad catch-all and `getUser()` runs on public routes, scope the matcher to only the routes that need auth (list both `"/prefix"` and `"/prefix/:path*"`), confirm each protected page self-guards at the page level first, and lock it with a matcher-scope test. See [[middleware-auth-scope]].
+
+### Confirm the Active-CPU drop after the middleware deploy lands
+
+The matcher fix is on `main` (merge `2f123d3`) and Vercel auto-deploys, but the Active-CPU graph is a rolling history — the projected 4h 2m → ~2h 30m won't be visible until a day or two of post-deploy traffic. Worth a glance to confirm the Edge/middleware slice actually collapsed (and that no *other* Edge function is contributing).
+
+**Why:** closes the loop on the quota emergency; if the Edge slice is still meaningful after the deploy, it means a second Edge consumer exists and needs investigation.
+
+**How to apply:** in ~2 days, open the Vercel Fluid Active CPU widget → Type tab. Expect `middleware` to be near-zero. If it isn't, find what else runs on Edge (the Runtime tab + per-function logs).
+
 ### ~~`/solution-cleanup` the 2 flagged Line-and-Plane rows~~ — **DONE 2026-06-27**
 
 Both turned out to be **wrong keys**, not the milder issues first assumed. `92012430` (parallel-line distance): re-derivation gave `(1,2,3)×(2,−2,1)=(8,5,−6)`, `|·|=5√5` → `5√5/3` = option C; flipped A→C + clean solution. `42c20362`: source-verified against `14 May 2024 S1 Q110` — the printed stem `2l²+m²−n²=0` faithfully matches the source (≈40.9°, no option), but the **official AK is (b) 180°** via a different equation `2l²+2m²−n²=0` (the source's own solution; `(l−m)²=0` → coincident lines `(1,1,−2)` → 180°); aligned to the official key — stem→`2l²+2m²−n²=0`, flipped A→B, honest solution noting the coincident-line degeneracy. Both `content_hash`-recomputed, hashes verified. DB-live; not yet committed to a code change (DB-only).
