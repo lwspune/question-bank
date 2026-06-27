@@ -15,7 +15,7 @@ import {
   POST_PLAN_NOTE,
 } from "./_data/nda-economics";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Economics — Strategy Guide",

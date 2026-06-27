@@ -6,7 +6,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const PAGE_TITLE = "Teaching Notes";
 const PAGE_INTRO =

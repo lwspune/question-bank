@@ -6,7 +6,7 @@ import NotesSubtopicPage, {
 
 const CHAPTER = getNotesChapterBySlug("nda-physics", "laws-of-motion")!;
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Params = { subtopicSlug: string };
 

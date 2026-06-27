@@ -5,7 +5,7 @@ import NotesChapterLanding, {
 
 const CHAPTER = getNotesChapterBySlug("nda-biology", "genetics-and-evolution")!;
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata = buildChapterMetadata(CHAPTER);
 

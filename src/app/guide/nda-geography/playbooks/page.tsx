@@ -10,7 +10,7 @@ import { ROUTES } from "../_data/nda-geography";
 import { PLAYBOOKS, PLAYBOOKS_BY_BUCKET } from "../_data/playbooks";
 import { PLAYBOOK_DETAIL_SLUGS } from "../_data/playbook-details";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Geography Playbooks — 7 chapters, drilled",

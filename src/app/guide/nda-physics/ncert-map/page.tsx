@@ -18,7 +18,7 @@ import {
   type SignalStatus,
 } from "../_data/ncert-map";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NCERT → NDA Physics chapter map — which NCERT chapter is which",

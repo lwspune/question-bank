@@ -25,7 +25,7 @@ import {
   type StrandChapter,
 } from "../_data/strategy";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Physics Strategy — Recall, Apply, Reason",

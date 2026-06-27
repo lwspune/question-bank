@@ -28,7 +28,7 @@ import {
   type OccasionalTheme,
 } from "./_data/nda-current-affairs";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Current Affairs — Strategy Guide",
