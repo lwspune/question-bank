@@ -69,6 +69,11 @@ import {
   VECTORS_SLUGS as MHTCET_VECTORS_SLUGS,
 } from "@/app/notes/mht-cet-maths/vectors/_data";
 import {
+  LINE_AND_PLANE_CHAPTER,
+  LINE_AND_PLANE_NOTES,
+  LINE_AND_PLANE_SLUGS,
+} from "@/app/notes/mht-cet-maths/line-and-plane/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -798,6 +803,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_VECTORS_CHAPTER,
     notes: MHTCET_VECTORS_NOTES,
     slugs: MHTCET_VECTORS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "line-and-plane",
+    chipLabel: "Line and Plane notes",
+    chapter: LINE_AND_PLANE_CHAPTER,
+    notes: LINE_AND_PLANE_NOTES,
+    slugs: LINE_AND_PLANE_SLUGS,
   },
   {
     examName: "NDA",
