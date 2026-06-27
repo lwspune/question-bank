@@ -3,6 +3,7 @@ import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { getPaperDetail } from "@/lib/papers/admin";
+import { getQuestionUsage } from "@/lib/papers/usage";
 import { listMembers } from "@/lib/members/admin";
 import { queryQuestionPreviewsByIds } from "@/lib/questions/query";
 import PaperEditor from "./PaperEditor";
@@ -21,9 +22,13 @@ export default async function PaperEditorPage({
   const detail = await getPaperDetail(client, params.id);
   if (!detail) notFound();
 
-  const previews = await queryQuestionPreviewsByIds(
-    client,
-    detail.membership.map((m) => m.questionId)
+  const membershipIds = detail.membership.map((m) => m.questionId);
+  const previews = await queryQuestionPreviewsByIds(client, membershipIds);
+
+  // Cross-paper soft-warn: which of this paper's questions also live in OTHER
+  // papers in the org (this paper excluded). Informational chips in the editor.
+  const usage = Object.fromEntries(
+    await getQuestionUsage(client, membershipIds, detail.id)
   );
 
   const { data: exams } = await client.from("exams").select("id, name").order("name");
@@ -44,6 +49,7 @@ export default async function PaperEditorPage({
         <PaperEditor
           detail={detail}
           previews={previews}
+          usage={usage}
           exams={(exams ?? []) as { id: string; name: string }[]}
           orgMembers={orgMembers}
         />

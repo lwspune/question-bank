@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FilePlus2, Loader2 } from "lucide-react";
+import { FilePlus2, History, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,7 +19,9 @@ import {
   listActivePapersAction,
   addCartToPaperAction,
   createPaperAction,
+  questionUsageAction,
 } from "@/app/dashboard/papers/actions";
+import { filterUnused, type UsageRef } from "@/lib/papers/usage";
 
 /**
  * Commit the /browse cart into a collaborative paper. Org-member only (the cart
@@ -43,7 +45,9 @@ export default function AddToPaperDialog({
   const [busy, setBusy] = useState(false);
   const [creating, setCreating] = useState(false);
   const [newTitle, setNewTitle] = useState("");
+  const [usage, setUsage] = useState<Record<string, UsageRef[]>>({});
   const count = questionIds.length;
+  const idsKey = questionIds.join(",");
 
   useEffect(() => {
     if (!open) return;
@@ -65,6 +69,38 @@ export default function AddToPaperDialog({
     };
   }, [open]);
 
+  // Cross-paper soft-warn: which cart questions already live in OTHER papers
+  // (excluding the selected target — "already in this one" is the add's own
+  // alreadyIn count, a separate message).
+  useEffect(() => {
+    if (!open) {
+      setUsage({});
+      return;
+    }
+    let cancelled = false;
+    const exclude = creating ? undefined : selectedId || undefined;
+    questionUsageAction(questionIds, exclude).then((res) => {
+      if (cancelled) return;
+      if (res.ok) setUsage(res.usage);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [open, selectedId, creating, idsKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const { usedCount, usedPaperTitles } = useMemo(() => {
+    const titles = new Set<string>();
+    let n = 0;
+    for (const id of questionIds) {
+      const refs = usage[id];
+      if (refs && refs.length > 0) {
+        n += 1;
+        for (const r of refs) titles.add(r.title);
+      }
+    }
+    return { usedCount: n, usedPaperTitles: Array.from(titles) };
+  }, [usage, idsKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
   function reportAndClose(paperId: string, added: number, alreadyIn: number) {
     const parts = [`Added ${added}`];
     if (alreadyIn > 0) parts.push(`${alreadyIn} already there`);
@@ -74,30 +110,35 @@ export default function AddToPaperDialog({
     onOpenChange(false);
   }
 
-  async function onAddExisting() {
+  // Add the given ids to the target (existing or freshly created) paper.
+  async function doAdd(ids: string[]) {
+    if (ids.length === 0) {
+      toast.message("Nothing to add — all selected questions are used elsewhere.");
+      return;
+    }
+    if (creating) {
+      if (!newTitle.trim()) {
+        toast.error("Give the paper a title.");
+        return;
+      }
+      setBusy(true);
+      const created = await createPaperAction(newTitle);
+      if (!created.ok) {
+        setBusy(false);
+        toast.error(created.error);
+        return;
+      }
+      const res = await addCartToPaperAction(created.id, ids);
+      setBusy(false);
+      if (res.ok) reportAndClose(created.id, res.added, res.alreadyIn);
+      else toast.error(res.error);
+      return;
+    }
     if (!selectedId) return;
     setBusy(true);
-    const res = await addCartToPaperAction(selectedId, questionIds);
+    const res = await addCartToPaperAction(selectedId, ids);
     setBusy(false);
     if (res.ok) reportAndClose(selectedId, res.added, res.alreadyIn);
-    else toast.error(res.error);
-  }
-
-  async function onCreateAndAdd() {
-    if (!newTitle.trim()) {
-      toast.error("Give the paper a title.");
-      return;
-    }
-    setBusy(true);
-    const created = await createPaperAction(newTitle);
-    if (!created.ok) {
-      setBusy(false);
-      toast.error(created.error);
-      return;
-    }
-    const res = await addCartToPaperAction(created.id, questionIds);
-    setBusy(false);
-    if (res.ok) reportAndClose(created.id, res.added, res.alreadyIn);
     else toast.error(res.error);
   }
 
@@ -161,17 +202,43 @@ export default function AddToPaperDialog({
           </div>
         )}
 
-        <DialogFooter>
+        {usedCount > 0 && (
+          <div className="flex items-start gap-2 rounded-md border bg-muted/50 p-3 text-xs text-muted-foreground">
+            <History className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
+            <p>
+              <span className="font-medium text-foreground">
+                {usedCount} of {count}
+              </span>{" "}
+              {usedCount === 1 ? "is" : "are"} already used in other papers
+              {usedPaperTitles.length > 0 && (
+                <> ({usedPaperTitles.slice(0, 3).join(", ")}
+                  {usedPaperTitles.length > 3 ? "…" : ""})</>
+              )}
+              . You can add them anyway or skip them.
+            </p>
+          </div>
+        )}
+
+        <DialogFooter className="gap-2">
           <Button variant="ghost" onClick={() => onOpenChange(false)} disabled={busy}>
             Cancel
           </Button>
+          {usedCount > 0 && (
+            <Button
+              variant="outline"
+              onClick={() => doAdd(filterUnused(questionIds, new Map(Object.entries(usage))))}
+              disabled={busy || loading || (!creating && !selectedId)}
+            >
+              Skip {usedCount} used
+            </Button>
+          )}
           <Button
             variant="brand"
-            onClick={creating ? onCreateAndAdd : onAddExisting}
+            onClick={() => doAdd(questionIds)}
             disabled={busy || loading || count === 0 || (!creating && !selectedId)}
           >
             {busy && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-            {creating ? "Create & add" : "Add to paper"}
+            {creating ? "Create & add all" : usedCount > 0 ? "Add all anyway" : "Add to paper"}
           </Button>
         </DialogFooter>
       </DialogContent>

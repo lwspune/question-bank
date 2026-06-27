@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, Loader2, Plus, Search } from "lucide-react";
+import { Check, History, Loader2, Plus, Search } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ import {
   addQuestionAction,
   type SearchRow,
 } from "../actions";
+import { formatUsageLabel } from "@/lib/papers/usage";
 import type { PaperSection } from "@/lib/papers/types";
 
 const SELECT_CLASS =
@@ -75,6 +76,7 @@ export default function AddQuestionsPanel({
       difficulty: (difficulty || null) as SearchRow["difficulty"] | null,
       kind: "all",
       page: toPage,
+      paperId,
     });
     setLoading(false);
     if (res.ok) {
@@ -212,6 +214,15 @@ export default function AddQuestionsPanel({
                       {r.subject} · {r.chapter} ·{" "}
                       <span className="capitalize">{r.difficulty.toLowerCase()}</span>
                     </p>
+                    {r.usedIn.length > 0 && (
+                      <p
+                        className="mt-1 inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
+                        title={r.usedIn.map((u) => u.title).join(", ")}
+                      >
+                        <History className="h-3 w-3" aria-hidden />
+                        {formatUsageLabel(r.usedIn)}
+                      </p>
+                    )}
                   </div>
                   <Button
                     variant={inPaper ? "ghost" : "outline"}
