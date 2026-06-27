@@ -9,7 +9,7 @@ import ReferenceTables from "@/app/guide/_components/ReferenceTables";
 import { ROUTES } from "../_data/nda-biology";
 import { REFERENCE_STATS, REFERENCE_CLUSTERS } from "../_data/reference-tables";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title:

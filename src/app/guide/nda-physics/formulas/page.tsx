@@ -9,7 +9,7 @@ import FormulaSheet from "@/app/guide/_components/FormulaSheet";
 import { ROUTES } from "../_data/nda-physics";
 import { FORMULA_STATS } from "../_data/formulas";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Physics Formulas — Single-page revision compendium",

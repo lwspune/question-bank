@@ -12,7 +12,7 @@ import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-physics";
 import { DRIFT_CALLOUTS, DRIFT_ROWS, HARD_BY_YEAR, YEARS } from "../_data/trends";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Physics Trends — How the paper shifted (2017–2026)",

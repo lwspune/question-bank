@@ -17,7 +17,7 @@ import {
 } from "../_data/traps";
 import { PLAYBOOKS } from "../_data/playbooks";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Polity Traps — Distractor patterns NDA reuses",

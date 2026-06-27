@@ -10,7 +10,7 @@ import { ROUTES } from "../_data/nda-english";
 import { PLAYBOOKS_BY_BUCKET, PLAYBOOKS } from "../_data/playbooks";
 import { PLAYBOOK_DETAIL_SLUGS } from "../_data/playbook-details";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA English Playbooks — 16 question types, drilled",

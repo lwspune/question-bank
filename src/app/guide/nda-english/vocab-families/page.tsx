@@ -13,7 +13,7 @@ import {
   VOCAB_FAMILY_STATS,
 } from "../_data/vocab-families";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA English Vocab Families — 13 themes, 270 PYQ-tested words",

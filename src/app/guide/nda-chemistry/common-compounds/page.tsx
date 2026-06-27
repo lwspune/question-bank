@@ -9,7 +9,7 @@ import CommonCompoundsTable from "@/app/guide/_components/CommonCompoundsTable";
 import { ROUTES } from "../_data/nda-chemistry";
 import { COMPOUND_STATS } from "../_data/common-compounds";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA Chemistry Common Compounds — Name ↔ Formula ↔ Use reference",

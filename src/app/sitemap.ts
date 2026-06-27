@@ -243,10 +243,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
+      // /browse is uncached (searchParams force it dynamic) and the heaviest
+      // query, so we don't invite a daily recrawl. weekly + 0.8 keeps it
+      // indexed without driving Supabase egress on every Googlebot pass.
       url: `${SITE_URL}/browse`,
       lastModified: now,
-      changeFrequency: "daily",
-      priority: 1.0,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     ...examHomeEntries,
     ...guideEntries,

@@ -23,7 +23,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 import { resolveBankHref } from "@/lib/exam/examContext";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const PAGE_TITLE = "NDA Preparation — Past Papers, Strategy Guides, Teaching Notes";
 const PAGE_DESCRIPTION =

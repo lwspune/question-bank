@@ -5,7 +5,7 @@ import NotesChapterLanding, {
 
 const CHAPTER = getNotesChapterBySlug("nda-maths", "3d-geometry")!;
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata = buildChapterMetadata(CHAPTER);
 

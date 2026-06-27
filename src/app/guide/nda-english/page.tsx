@@ -11,7 +11,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { CHAPTER_TABLE, OVERVIEW, ROUTES } from "./_data/nda-english";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "NDA English (GAT) — Strategy Guide",

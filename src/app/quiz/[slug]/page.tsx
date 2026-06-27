@@ -8,7 +8,7 @@ import QuizTaker from "./QuizTaker";
 // ISR: the public payload is anon + stable, so cache it. A newly-published quiz
 // renders on first hit (dynamicParams default). The admin client reads
 // server-side and the answer key is stripped before any HTML is produced.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Params = { slug: string };
 

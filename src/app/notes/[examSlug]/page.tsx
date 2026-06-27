@@ -11,7 +11,7 @@ import {
   notesExamSlugs,
 } from "@/lib/notes/notesNav";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Params = { examSlug: string };
 

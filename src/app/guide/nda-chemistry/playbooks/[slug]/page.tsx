@@ -16,7 +16,7 @@ import { ROUTES } from "../../_data/nda-chemistry";
 import { PLAYBOOKS } from "../../_data/playbooks";
 import { PLAYBOOK_DETAILS } from "../../_data/playbook-details";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Params = { slug: string };
 
