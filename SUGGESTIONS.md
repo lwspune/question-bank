@@ -59,6 +59,22 @@ The Line-and-Plane cleanup found **8 wrong-keys + ~11 option-extraction errors i
 
 **How to apply:** opportunistic, not a blanket campaign — fold a Step-0-style full re-derivation (parallel solution-reader agents per subtopic) into each chapter's notes build (as done here), and run a standalone source-verified pass only on the highest-traffic un-noted chapters (Applications of Derivative 150 q is next in the notes queue anyway). Adversarially re-derive, then pandoc-grep the source to split bank-extraction-error vs printed-paper-defect.
 
+### Browser-verify the cross-paper reuse soft-warn (authed golden path)
+
+The soft-warn feature (2026-06-27, commit `65b2c93` — "Used in X" chips on the editor search rows + the paper's own question list, and the `/browse` cart `AddToPaperDialog` "N of M already used" + "Skip N used") shipped on a green gate with 13 unit + 5 integration tests, but every surface is **org-member-gated**, so the actual chip/dialog rendering was never eyeballed in a browser. Carries the same `ƒ`-page risk as the still-open "Browser-verify the NEW cart→paper flow" item (2026-06-15) — same dialog, now with the warn.
+
+**Why:** Definition-of-Done wants the golden path verified in-browser; a render-time/serialization bug on these authed surfaces wouldn't show in the build or the headless tests.
+
+**How to apply:** sign in as a TEACHER, create two papers, add a question to paper A; in paper B's editor search panel + the `/browse` cart "Add to paper" dialog, confirm the "Used in 'A'" chip + the "N of M already used / Skip N used" summary appear and that **Add still works** (soft, never blocks). Roll it into the 2026-06-15 cart→paper verify pass.
+
+### Confirm the Supabase egress drop after the ISR deploy; deferred egress levers if not enough
+
+The egress fix (2026-06-27, commit `7a7c47c` — `revalidate` 1h→24h on 208 /notes+/guide+/nda+/quiz pages + a calmer /browse sitemap) is deployed, but the Supabase Egress meter is a rolling history — watch the *slope* over a day or two (it refreshes ~hourly; % resets on the billing cycle). Separate meter from the middleware/Active-CPU fix above.
+
+**Why:** egress was at 120% of the 5 GB free cap (throttling risk). If the ISR fix doesn't bring it under, the remaining egress is `/browse` dynamic or Storage images, and the next levers apply.
+
+**How to apply:** in ~2 days, check Supabase → Usage → Egress. If still high: (1) trim `solution` (the biggest column) out of the `/browse` *list* query in `src/lib/questions/query.ts`, fetch on card-expand; (2) front question images through `next/image`/a CDN (today `publicImageUrl` re-downloads from Supabase Storage per view); (3) Supabase Pro ($25/mo → 250 GB) — already flagged as needed before Razorpay go-live. Full playbook in [[supabase-egress-levers]].
+
 ## 2026-06-26
 
 ### ~~Make the ingestion figure-OPTION policy "attach, don't describe" + harden the image-option content_hash~~ — **DONE 2026-06-26**
