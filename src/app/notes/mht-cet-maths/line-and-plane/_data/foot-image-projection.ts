@@ -47,14 +47,14 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the foot of the perpendicular from \\((1,2,3)\\) to the line \\(\\vec{r} = (6\\hat{i} + 7\\hat{j} + 7\\hat{k}) + \\lambda(3\\hat{i} + 2\\hat{j} - 2\\hat{k})\\).",
+          "Find the foot of the perpendicular from \\(P(4,4,1)\\) to the line \\(\\vec{r} = (\\hat{i} + \\hat{j} + \\hat{k}) + \\lambda(2\\hat{i} + \\hat{j} + 2\\hat{k})\\).",
         steps: [
-          "General point: \\(F = (6+3\\lambda,\\; 7+2\\lambda,\\; 7-2\\lambda)\\).",
-          "\\(\\overrightarrow{PF} = (5+3\\lambda,\\; 5+2\\lambda,\\; 4-2\\lambda)\\).",
-          "\\(\\overrightarrow{PF}\\cdot(3,2,-2) = 0\\): \\(3(5+3\\lambda) + 2(5+2\\lambda) - 2(4-2\\lambda) = 17 + 17\\lambda = 0\\Rightarrow \\lambda = -1\\).",
-          "Substitute: \\(F = (6-3,\\; 7-2,\\; 7+2) = (3,5,9)\\).",
+          "General point: \\(F = (1+2\\lambda,\\; 1+\\lambda,\\; 1+2\\lambda)\\).",
+          "\\(\\overrightarrow{PF} = F - P = (2\\lambda-3,\\; \\lambda-3,\\; 2\\lambda)\\).",
+          "\\(\\overrightarrow{PF}\\cdot(2,1,2) = 0\\): \\(2(2\\lambda-3) + (\\lambda-3) + 2(2\\lambda) = 9\\lambda - 9 = 0\\Rightarrow \\lambda = 1\\).",
+          "Substitute: \\(F = (1+2,\\; 1+1,\\; 1+2) = (3,2,3)\\).",
         ],
-        answer: "\\((3,5,9)\\)",
+        answer: "\\((3,2,3)\\)",
       },
       practiceSet: [
         { prompt: "How many unknowns and conditions does foot-on-a-line have?", answer: "one unknown \\(\\lambda\\), one condition \\(\\overrightarrow{PF}\\cdot\\vec{d}=0\\)" },
@@ -108,14 +108,14 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the foot of the perpendicular from \\(P(-1,1,2)\\) to the plane \\(2x - 3y + z - 11 = 0\\).",
+          "Find the foot of the perpendicular from \\(P(-1,1,-1)\\) to the plane \\(2x + y + 2z - 6 = 0\\).",
         steps: [
-          "Normal \\(\\vec{n} = (2,-3,1)\\). Line from \\(P\\): \\((x,y,z) = (-1+2t,\\; 1-3t,\\; 2+t)\\).",
-          "Substitute into the plane: \\(2(-1+2t) - 3(1-3t) + (2+t) - 11 = 0\\).",
-          "Simplify: \\(-2+4t - 3+9t + 2+t - 11 = 14t - 14 = 0\\Rightarrow t = 1\\).",
-          "Foot: \\((-1+2,\\; 1-3,\\; 2+1) = (1,-2,3)\\).",
+          "Normal \\(\\vec{n} = (2,1,2)\\). Line from \\(P\\): \\((x,y,z) = (-1+2t,\\; 1+t,\\; -1+2t)\\).",
+          "Substitute into the plane: \\(2(-1+2t) + (1+t) + 2(-1+2t) - 6 = 0\\).",
+          "Simplify: \\(-2+4t + 1+t - 2+4t - 6 = 9t - 9 = 0\\Rightarrow t = 1\\).",
+          "Foot: \\((-1+2,\\; 1+1,\\; -1+2) = (1,2,1)\\).",
         ],
-        answer: "\\(F = (1,-2,3)\\)",
+        answer: "\\(F = (1,2,1)\\)",
       },
       selfCheckExample: {
         prompt:
@@ -173,14 +173,14 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the mirror image of \\(P(2,4,-1)\\) in the plane \\(x - y + 2z - 2 = 0\\), and hence \\(a+b+c\\) where the image is \\((a,b,c)\\).",
+          "Find the mirror image of \\(P(0,3,0)\\) in the plane \\(2x - 2y + z - 3 = 0\\), and hence \\(a+b+c\\) where the image is \\((a,b,c)\\).",
         steps: [
-          "Normal \\(\\vec{n} = (1,-1,2)\\), \\(|\\vec{n}|^2 = 6\\). Line: \\((2+t,\\; 4-t,\\; -1+2t)\\).",
-          "Substitute into the plane: \\((2+t) - (4-t) + 2(-1+2t) - 2 = 6t - 6 = 0\\Rightarrow t = 1\\).",
-          "Foot \\(F = (3,3,1)\\).",
-          "Image \\(P' = 2F - P = (6-2,\\; 6-4,\\; 2-(-1)) = (4,2,3)\\). So \\(a+b+c = 9\\).",
+          "Normal \\(\\vec{n} = (2,-2,1)\\), \\(|\\vec{n}|^2 = 9\\). Line: \\((2t,\\; 3-2t,\\; t)\\).",
+          "Substitute into the plane: \\(2(2t) - 2(3-2t) + t - 3 = 9t - 9 = 0\\Rightarrow t = 1\\).",
+          "Foot \\(F = (2,1,1)\\).",
+          "Image \\(P' = 2F - P = (4-0,\\; 2-3,\\; 2-0) = (4,-1,2)\\). So \\(a+b+c = 5\\).",
         ],
-        answer: "Image \\((4,2,3)\\), \\(a+b+c = 9\\)",
+        answer: "Image \\((4,-1,2)\\), \\(a+b+c = 5\\)",
       },
       selfCheckExample: {
         prompt:
@@ -249,14 +249,13 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "If the mirror image of \\(P(a,6,9)\\) in the line \\(\\frac{x-3}{7} = \\frac{y-2}{5} = \\frac{z-1}{-9}\\) is \\((20,b,-a-9)\\), find \\(|a+b|\\).",
+          "Find the mirror image of \\(P(3,1,2)\\) in the line \\(\\vec{r} = \\lambda(2\\hat{i} - \\hat{j} + 2\\hat{k})\\).",
         steps: [
-          "The midpoint \\(M = \\left(\\tfrac{a+20}{2},\\; \\tfrac{6+b}{2},\\; \\tfrac{9 + (-a-9)}{2}\\right) = \\left(\\tfrac{a+20}{2},\\; \\tfrac{6+b}{2},\\; -\\tfrac{a}{2}\\right)\\) lies on the line.",
-          "Also \\(\\overrightarrow{PP'} = (20 - a,\\; b - 6,\\; -a - 18)\\) is perpendicular to \\((7,5,-9)\\): \\(7(20-a) + 5(b-6) - 9(-a-18) = 0\\).",
-          "Imposing the midpoint-on-line equations together with the perpendicularity gives the linear system whose solution is \\(a = -56,\\; b = -32\\).",
-          "\\(|a+b| = |-56 - 32| = 88\\).",
+          "Foot: \\(F = (2\\lambda,\\; -\\lambda,\\; 2\\lambda)\\), \\(\\overrightarrow{PF} = (2\\lambda-3,\\; -\\lambda-1,\\; 2\\lambda-2)\\).",
+          "\\(\\overrightarrow{PF}\\cdot(2,-1,2) = 0\\): \\(2(2\\lambda-3) - (-\\lambda-1) + 2(2\\lambda-2) = 9\\lambda - 9 = 0\\Rightarrow \\lambda = 1\\); foot \\(F = (2,-1,2)\\).",
+          "Image \\(P' = 2F - P = (4-3,\\; -2-1,\\; 4-2) = (1,-3,2)\\).",
         ],
-        answer: "\\(|a+b| = 88\\)",
+        answer: "\\(P' = (1,-3,2)\\)",
       },
       practiceSet: [
         { prompt: "Image of \\(P\\) in a line, given foot \\(F\\)?", answer: "\\(2F - P\\)" },
@@ -304,14 +303,14 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the image of the line \\(\\frac{x-1}{3} = \\frac{y-3}{1} = \\frac{z-4}{-5}\\) in the plane \\(2x - y + z + 3 = 0\\).",
+          "Find the image of the line \\(\\frac{x-2}{1} = \\frac{y-1}{2} = \\frac{z+1}{2}\\) in the plane \\(2x + y - 2z + 2 = 0\\).",
         steps: [
-          "Check direction vs normal: \\(\\vec{d} = (3,1,-5)\\), \\(\\vec{n} = (2,-1,1)\\); \\(\\vec{d}\\cdot\\vec{n} = 6 - 1 - 5 = 0\\). Line is parallel to the plane → direction preserved.",
-          "Reflect the point \\(P(1,3,4)\\): \\(t = -\\dfrac{2(1) - 3 + 4 + 3}{2^2 + (-1)^2 + 1^2} = -\\dfrac{6}{6} = -1\\). Foot \\(F = (1,3,4) + (-1)(2,-1,1) = (-1,4,3)\\).",
-          "Image point \\(P' = 2F - P = (-2-1,\\; 8-3,\\; 6-4) = (-3,5,2)\\).",
-          "Reassemble with the same direction \\((3,1,-5)\\): image line \\(\\dfrac{x+3}{3} = \\dfrac{y-5}{1} = \\dfrac{z-2}{-5}\\).",
+          "Check direction vs normal: \\(\\vec{d} = (1,2,2)\\), \\(\\vec{n} = (2,1,-2)\\); \\(\\vec{d}\\cdot\\vec{n} = 2 + 2 - 4 = 0\\). Line is parallel to the plane → direction preserved.",
+          "Reflect the point \\(P(2,1,-1)\\): \\(t = -\\dfrac{2(2) + 1 - 2(-1) + 2}{2^2 + 1^2 + (-2)^2} = -\\dfrac{9}{9} = -1\\). Foot \\(F = (2,1,-1) + (-1)(2,1,-2) = (0,0,1)\\).",
+          "Image point \\(P' = 2F - P = (0-2,\\; 0-1,\\; 2-(-1)) = (-2,-1,3)\\).",
+          "Reassemble with the same direction \\((1,2,2)\\): image line \\(\\dfrac{x+2}{1} = \\dfrac{y+1}{2} = \\dfrac{z-3}{2}\\).",
         ],
-        answer: "\\(\\dfrac{x+3}{3} = \\dfrac{y-5}{1} = \\dfrac{z-2}{-5}\\)",
+        answer: "\\(\\dfrac{x+2}{1} = \\dfrac{y+1}{2} = \\dfrac{z-3}{2}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -379,14 +378,14 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the projection of the segment joining \\((2,1,-3)\\) and \\((-1,0,2)\\) on the line with direction ratios \\((3,2,6)\\).",
+          "Find the projection of the segment joining \\((1,1,1)\\) and \\((3,2,5)\\) on the line with direction ratios \\((2,2,1)\\).",
         steps: [
-          "\\(\\overrightarrow{AB} = (-1-2,\\; 0-1,\\; 2-(-3)) = (-3,-1,5)\\).",
-          "Dot with \\((3,2,6)\\): \\((-3)(3) + (-1)(2) + (5)(6) = -9 - 2 + 30 = 19\\).",
-          "\\(|\\vec{d}| = \\sqrt{9+4+36} = 7\\).",
-          "Projection \\(= \\dfrac{|19|}{7} = \\dfrac{19}{7}\\).",
+          "\\(\\overrightarrow{AB} = (3-1,\\; 2-1,\\; 5-1) = (2,1,4)\\).",
+          "Dot with \\((2,2,1)\\): \\((2)(2) + (1)(2) + (4)(1) = 4 + 2 + 4 = 10\\).",
+          "\\(|\\vec{d}| = \\sqrt{4+4+1} = 3\\).",
+          "Projection \\(= \\dfrac{|10|}{3} = \\dfrac{10}{3}\\).",
         ],
-        answer: "\\(\\dfrac{19}{7}\\) units",
+        answer: "\\(\\dfrac{10}{3}\\) units",
       },
       practiceSet: [
         { prompt: "Projection of \\(\\overrightarrow{AB}\\) on direction \\(\\vec{d}\\)?", answer: "\\(\\dfrac{|\\overrightarrow{AB}\\cdot\\vec{d}|}{|\\vec{d}|}\\)" },
@@ -435,13 +434,13 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the length of the projection of the segment joining \\((5,-1,4)\\) and \\((4,-1,3)\\) on the plane \\(x + y + z = 7\\).",
+          "Find the length of the projection of the segment joining \\((1,1,1)\\) and \\((2,3,3)\\) on the plane \\(z = 0\\).",
         steps: [
-          "\\(\\overrightarrow{AB} = (4-5,\\; -1+1,\\; 3-4) = (-1,0,-1)\\), so \\(|\\overrightarrow{AB}|^2 = 1 + 0 + 1 = 2\\).",
-          "Normal \\(\\vec{n} = (1,1,1)\\), \\(|\\vec{n}| = \\sqrt{3}\\). Along-normal component: \\(\\dfrac{\\overrightarrow{AB}\\cdot\\vec{n}}{|\\vec{n}|} = \\dfrac{-1+0-1}{\\sqrt{3}} = \\dfrac{-2}{\\sqrt{3}}\\), squared \\(= \\dfrac{4}{3}\\).",
-          "Projection \\(= \\sqrt{2 - \\dfrac{4}{3}} = \\sqrt{\\dfrac{2}{3}}\\).",
+          "\\(\\overrightarrow{AB} = (2-1,\\; 3-1,\\; 3-1) = (1,2,2)\\), so \\(|\\overrightarrow{AB}|^2 = 1 + 4 + 4 = 9\\).",
+          "Normal of \\(z = 0\\) is \\(\\vec{n} = (0,0,1)\\), \\(|\\vec{n}| = 1\\). Along-normal component: \\(\\dfrac{\\overrightarrow{AB}\\cdot\\vec{n}}{|\\vec{n}|} = \\dfrac{2}{1} = 2\\), squared \\(= 4\\).",
+          "Projection \\(= \\sqrt{9 - 4} = \\sqrt{5}\\).",
         ],
-        answer: "\\(\\sqrt{\\dfrac{2}{3}}\\) units",
+        answer: "\\(\\sqrt{5}\\) units",
       },
       selfCheckExample: {
         prompt:

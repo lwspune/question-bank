@@ -166,13 +166,13 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "If the points \\((1, -1, \\lambda)\\) and \\((-3, 0, 1)\\) are equidistant from the plane \\(3x - 4y - 12z + 13 = 0\\), find the sum of all possible values of \\(\\lambda\\).",
+          "If the points \\((2, \\lambda, 1)\\) and \\((1, 2, -1)\\) are equidistant from the plane \\(2x + y + 2z - 3 = 0\\), find the sum of all possible values of \\(\\lambda\\).",
         steps: [
-          "Plug in each (the \\(\\sqrt{9+16+144}=13\\) denominators are equal, so compare numerators): \\(|3 + 4 - 12\\lambda + 13| = |-9 - 0 - 12 + 13|\\), i.e. \\(|20 - 12\\lambda| = 8\\).",
-          "Two cases: \\(20 - 12\\lambda = 8 \\Rightarrow \\lambda = 1\\); and \\(20 - 12\\lambda = -8 \\Rightarrow \\lambda = \\tfrac{7}{3}\\).",
-          "Sum \\(= 1 + \\tfrac{7}{3} = \\tfrac{10}{3}\\).",
+          "Same plane, so equal denominators \\(\\sqrt{4+1+4}=3\\); compare numerators. First point: \\(2(2) + \\lambda + 2(1) - 3 = \\lambda + 3\\). Second point: \\(2(1) + 2 + 2(-1) - 3 = -1\\).",
+          "Equidistant: \\(|\\lambda + 3| = |-1| = 1\\). Two cases: \\(\\lambda + 3 = 1 \\Rightarrow \\lambda = -2\\); and \\(\\lambda + 3 = -1 \\Rightarrow \\lambda = -4\\).",
+          "Sum \\(= -2 + (-4) = -6\\).",
         ],
-        answer: "\\(\\dfrac{10}{3}\\)",
+        answer: "\\(-6\\)",
       },
       practiceSet: [
         { prompt: "Distance between \\(x + 2y + 2z = 3\\) and \\(x + 2y + 2z = 9\\)?", answer: "\\(2\\)", method: "\\(|3-9|/3\\)" },
@@ -291,13 +291,13 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the distance between the parallel lines \\(\\frac{x}{3} = \\frac{y-1}{-2} = \\frac{z}{1}\\) and \\(\\frac{x+4}{3} = \\frac{y-3}{-2} = \\frac{z+2}{1}\\).",
+          "Find the distance between the parallel lines \\(\\frac{x-1}{2} = \\frac{y}{2} = \\frac{z-1}{1}\\) and \\(\\frac{x-2}{2} = \\frac{y+2}{2} = \\frac{z-3}{1}\\).",
         steps: [
-          "Shared direction \\(\\vec{b} = (3, -2, 1)\\), \\(|\\vec{b}| = \\sqrt{14}\\). Base points \\(A_1 = (0,1,0)\\), \\(A_2 = (-4,3,-2)\\), so \\(\\vec{a}_2 - \\vec{a}_1 = (-4, 2, -2)\\).",
-          "Cross product \\((-4,2,-2)\\times(3,-2,1) = (-2, -2, 2)\\); magnitude \\(= \\sqrt{4+4+4} = 2\\sqrt{3}\\).",
-          "\\(d = \\dfrac{2\\sqrt{3}}{\\sqrt{14}} = \\sqrt{\\dfrac{12}{14}} = \\sqrt{\\dfrac{6}{7}}\\) (≈ \\(\\sqrt{6}\\)-family answer; verify against options).",
+          "Shared direction \\(\\vec{b} = (2, 2, 1)\\), \\(|\\vec{b}| = \\sqrt{4+4+1} = 3\\). Base points \\(A_1 = (1,0,1)\\), \\(A_2 = (2,-2,3)\\), so \\(\\vec{a}_2 - \\vec{a}_1 = (1, -2, 2)\\).",
+          "Cross product \\((1,-2,2)\\times(2,2,1) = (-6, 3, 6)\\); magnitude \\(= \\sqrt{36 + 9 + 36} = \\sqrt{81} = 9\\).",
+          "\\(d = \\dfrac{9}{3} = 3\\).",
         ],
-        answer: "\\(\\sqrt{\\dfrac{6}{7}}\\) units",
+        answer: "\\(3\\) units",
       },
       practiceSet: [
         { prompt: "Distance-between-parallel-lines formula?", answer: "\\(\\dfrac{|(\\vec{a}_2-\\vec{a}_1)\\times\\vec{b}|}{|\\vec{b}|}\\)" },
@@ -355,13 +355,13 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "If the shortest distance between \\(\\vec{r}_1 = \\alpha\\hat{i} + 2\\hat{j} + 2\\hat{k} + \\lambda(\\hat{i} - 2\\hat{j} + 2\\hat{k})\\) and \\(\\vec{r}_2 = -4\\hat{i} - \\hat{k} + \\mu(3\\hat{i} - 2\\hat{j} - 2\\hat{k})\\) is 9 (with \\(\\alpha > 0\\)), find \\(\\alpha\\).",
+          "If the shortest distance between \\(\\vec{r}_1 = (\\hat{i} + 2\\hat{j} + \\beta\\hat{k}) + \\lambda(2\\hat{i} + 3\\hat{j} + 4\\hat{k})\\) and \\(\\vec{r}_2 = (2\\hat{i} + 4\\hat{j} + 5\\hat{k}) + \\mu(3\\hat{i} + 4\\hat{j} + 5\\hat{k})\\) is \\(\\sqrt{6}\\) (with \\(\\beta > 0\\)), find \\(\\beta\\).",
         steps: [
-          "\\(\\vec{b}_1 \\times \\vec{b}_2 = (1,-2,2)\\times(3,-2,-2) = (8, 8, 4)\\); magnitude \\(= \\sqrt{64+64+16} = 12\\).",
-          "\\(\\vec{a}_2 - \\vec{a}_1 = (-4-\\alpha, -2, -3)\\); triple product \\(= 8(-4-\\alpha) + 8(-2) + 4(-3) = -60 - 8\\alpha\\).",
-          "Set \\(\\dfrac{|-60 - 8\\alpha|}{12} = 9 \\Rightarrow |60 + 8\\alpha| = 108\\). With \\(\\alpha > 0\\): \\(60 + 8\\alpha = 108 \\Rightarrow \\alpha = 6\\).",
+          "\\(\\vec{b}_1 \\times \\vec{b}_2 = (2,3,4)\\times(3,4,5) = (-1, 2, -1)\\); magnitude \\(= \\sqrt{1+4+1} = \\sqrt{6}\\).",
+          "\\(\\vec{a}_2 - \\vec{a}_1 = (1, 2, 5-\\beta)\\); triple product \\(= (1)(-1) + (2)(2) + (5-\\beta)(-1) = -1 + 4 - 5 + \\beta = \\beta - 2\\).",
+          "Set \\(\\dfrac{|\\beta - 2|}{\\sqrt{6}} = \\sqrt{6} \\Rightarrow |\\beta - 2| = 6\\). With \\(\\beta > 0\\): \\(\\beta - 2 = 6 \\Rightarrow \\beta = 8\\).",
         ],
-        answer: "\\(\\alpha = 6\\)",
+        answer: "\\(\\beta = 8\\)",
       },
       practiceSet: [
         { prompt: "Shortest-distance-between-skew-lines formula?", answer: "\\(\\dfrac{|(\\vec{a}_2-\\vec{a}_1)\\cdot(\\vec{b}_1\\times\\vec{b}_2)|}{|\\vec{b}_1\\times\\vec{b}_2|}\\)" },
@@ -420,13 +420,13 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the distance of \\((1, 3, -7)\\) from the plane through \\((1, -1, -1)\\) whose normal is perpendicular to both lines \\(\\frac{x-1}{1} = \\frac{y+2}{-2} = \\frac{z-4}{3}\\) and \\(\\frac{x-2}{2} = \\frac{y+1}{-1} = \\frac{z+7}{-1}\\).",
+          "A plane perpendicular to the two planes \\(x + y + z = 1\\) and \\(2x + y - z = 3\\) passes through \\((1, 1, 1)\\). Find its distance from \\((2, 3, 4)\\).",
         steps: [
-          "Normal \\(\\vec{n} = (1,-2,3)\\times(2,-1,-1) = (5, 7, 3)\\).",
-          "Plane through \\((1,-1,-1)\\): \\(5(x-1) + 7(y+1) + 3(z+1) = 0 \\Rightarrow 5x + 7y + 3z + 5 = 0\\).",
-          "Distance from \\((1,3,-7)\\): \\(\\dfrac{|5 + 21 - 21 + 5|}{\\sqrt{25+49+9}} = \\dfrac{10}{\\sqrt{83}}\\).",
+          "Normal \\(\\vec{n} = (1,1,1)\\times(2,1,-1) = (-2, 3, -1)\\).",
+          "Plane through \\((1,1,1)\\): \\(-2(x-1) + 3(y-1) - 1(z-1) = 0 \\Rightarrow -2x + 3y - z = 0\\) (the constants cancel: \\(2 - 3 + 1 = 0\\)).",
+          "Distance from \\((2,3,4)\\): \\(\\dfrac{|-2(2) + 3(3) - 4|}{\\sqrt{4+9+1}} = \\dfrac{|-4 + 9 - 4|}{\\sqrt{14}} = \\dfrac{1}{\\sqrt{14}}\\).",
         ],
-        answer: "\\(\\dfrac{10}{\\sqrt{83}}\\) units",
+        answer: "\\(\\dfrac{1}{\\sqrt{14}}\\) units",
       },
       practiceSet: [
         { prompt: "Normal of a plane ⊥ to two planes with normals \\(\\vec{n}_1, \\vec{n}_2\\)?", answer: "\\(\\vec{n}_1 \\times \\vec{n}_2\\)" },
@@ -485,13 +485,13 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the distance of \\((1, -5, 9)\\) from the plane \\(x - y + z = 5\\) measured along the line \\(x = y = z\\).",
+          "Find the distance of \\((1, 2, 3)\\) from the plane \\(x + y + z = 12\\) measured along the line \\(x = y = z\\).",
         steps: [
-          "Line through \\((1, -5, 9)\\) along \\(x = y = z\\): \\((\\lambda + 1,\\ \\lambda - 5,\\ \\lambda + 9)\\).",
-          "Substitute in the plane: \\((\\lambda+1) - (\\lambda-5) + (\\lambda+9) = 5 \\Rightarrow \\lambda + 15 = 5 \\Rightarrow \\lambda = -10\\). Point on plane \\((-9, -15, -1)\\).",
-          "Distance \\(= \\sqrt{(-10)^2 + (-10)^2 + (-10)^2} = \\sqrt{300} = 10\\sqrt{3}\\) (the segment ALONG the line, not the perpendicular).",
+          "Line through \\((1, 2, 3)\\) along \\(x = y = z\\): \\((\\lambda + 1,\\ \\lambda + 2,\\ \\lambda + 3)\\).",
+          "Substitute in the plane: \\((\\lambda+1) + (\\lambda+2) + (\\lambda+3) = 12 \\Rightarrow 3\\lambda + 6 = 12 \\Rightarrow \\lambda = 2\\). Point on plane \\((3, 4, 5)\\).",
+          "Distance \\(= \\sqrt{(3-1)^2 + (4-2)^2 + (5-3)^2} = \\sqrt{4 + 4 + 4} = 2\\sqrt{3}\\) (the segment ALONG the line, not the perpendicular).",
         ],
-        answer: "\\(10\\sqrt{3}\\) units",
+        answer: "\\(2\\sqrt{3}\\) units",
       },
       practiceSet: [
         { prompt: "Direction of a line making equal angles with all three axes?", answer: "\\((1, 1, 1)\\)" },

@@ -154,12 +154,12 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
       },
       pyqExampleId: "a0805763-6307-445d-8513-afc228065204",
       selfCheckExample: {
-        prompt: "Cartesian equation of the plane through \\(A(7,8,6)\\) parallel to the XY-plane.",
+        prompt: "Cartesian equation of the plane through \\(B(4,-3,5)\\) parallel to the YZ-plane.",
         steps: [
-          "Parallel to the XY-plane means the form \\(z = k\\) (normal along Z).",
-          "It passes through \\(A\\), whose Z-coordinate is \\(6\\), so \\(z = 6\\).",
+          "Parallel to the YZ-plane means the form \\(x = k\\) (normal along X).",
+          "It passes through \\(B\\), whose X-coordinate is \\(4\\), so \\(x = 4\\).",
         ],
-        answer: "\\(z = 6\\)",
+        answer: "\\(x = 4\\)",
       },
       practiceSet: [
         { prompt: "Plane through \\((3,-1,5)\\) parallel to the YZ-plane?", answer: "\\(x = 3\\)" },
@@ -325,13 +325,13 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the plane through \\((1,-1,2)\\) perpendicular to the planes \\(x + 2y - 2z = 4\\) and \\(3x + 2y + z = 6\\).",
+          "Find the plane through \\((2,0,-1)\\) perpendicular to the planes \\(x + y + z = 3\\) and \\(2x - y + 3z = 1\\).",
         steps: [
-          "Normals \\(\\vec{n_1} = (1,2,-2)\\), \\(\\vec{n_2} = (3,2,1)\\).",
-          "Cross product: \\(\\vec{n} = (1,2,-2)\\times(3,2,1) = (2\\cdot1 - (-2)\\cdot2,\\; (-2)\\cdot3 - 1\\cdot1,\\; 1\\cdot2 - 2\\cdot3) = (6,-7,-4)\\).",
-          "Plane through \\((1,-1,2)\\): \\(6(x-1) - 7(y+1) - 4(z-2) = 0 \\Rightarrow 6x - 7y - 4z - 5 = 0\\).",
+          "Normals \\(\\vec{n_1} = (1,1,1)\\), \\(\\vec{n_2} = (2,-1,3)\\).",
+          "Cross product: \\(\\vec{n} = (1,1,1)\\times(2,-1,3) = (1\\cdot3 - 1\\cdot(-1),\\; 1\\cdot2 - 1\\cdot3,\\; 1\\cdot(-1) - 1\\cdot2) = (4,-1,-3)\\).",
+          "Plane through \\((2,0,-1)\\): \\(4(x-2) - (y-0) - 3(z+1) = 0 \\Rightarrow 4x - y - 3z - 11 = 0\\).",
         ],
-        answer: "\\(6x - 7y - 4z - 5 = 0\\)",
+        answer: "\\(4x - y - 3z - 11 = 0\\)",
       },
       pyqExampleId: "dab43a11-3fe6-45b7-96ec-5f44ed91ad79",
       selfCheckExample: {
@@ -386,13 +386,13 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the plane through \\((2,-1,-3)\\) parallel to the lines \\(\\frac{x-1}{3} = \\frac{y+2}{2} = \\frac{z}{-4}\\) and \\(\\frac{x}{2} = \\frac{y-1}{-3} = \\frac{z-2}{2}\\).",
+          "Find the plane through \\((1,0,2)\\) parallel to the lines \\(\\frac{x-2}{1} = \\frac{y+1}{2} = \\frac{z-3}{3}\\) and \\(\\frac{x+1}{2} = \\frac{y}{1} = \\frac{z-4}{-1}\\).",
         steps: [
-          "Directions \\(\\vec{d_1} = (3,2,-4)\\), \\(\\vec{d_2} = (2,-3,2)\\).",
-          "\\(\\vec{n} = \\vec{d_1}\\times\\vec{d_2} = (2\\cdot2 - (-4)(-3),\\; (-4)(2) - 3\\cdot2,\\; 3(-3) - 2\\cdot2) = (-8, -14, -13)\\); use \\((8,14,13)\\).",
-          "Plane through \\((2,-1,-3)\\): \\(8(x-2) + 14(y+1) + 13(z+3) = 0 \\Rightarrow 8x + 14y + 13z + 37 = 0\\).",
+          "Directions \\(\\vec{d_1} = (1,2,3)\\), \\(\\vec{d_2} = (2,1,-1)\\).",
+          "\\(\\vec{n} = \\vec{d_1}\\times\\vec{d_2} = (2(-1) - 3\\cdot1,\\; 3\\cdot2 - 1(-1),\\; 1\\cdot1 - 2\\cdot2) = (-5, 7, -3)\\); use \\((5,-7,3)\\).",
+          "Plane through \\((1,0,2)\\): \\(5(x-1) - 7(y-0) + 3(z-2) = 0 \\Rightarrow 5x - 7y + 3z - 11 = 0\\).",
         ],
-        answer: "\\(8x + 14y + 13z + 37 = 0\\)",
+        answer: "\\(5x - 7y + 3z - 11 = 0\\)",
       },
       pyqExampleId: "37da8102-d7d3-4917-9843-b86d60b60307",
       selfCheckExample: {
@@ -448,13 +448,13 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the Cartesian equation of the plane through \\((3,1,1)\\), \\((1,2,3)\\) and \\((-1,4,2)\\).",
+          "Find the Cartesian equation of the plane through \\((1,1,2)\\), \\((2,3,1)\\) and \\((0,1,4)\\).",
         steps: [
-          "Anchor \\(A(3,1,1)\\): \\(\\overrightarrow{AB} = (-2,1,2)\\), \\(\\overrightarrow{AC} = (-4,3,1)\\).",
-          "\\(\\vec{n} = \\overrightarrow{AB}\\times\\overrightarrow{AC} = (1\\cdot1 - 2\\cdot3,\\; 2\\cdot(-4) - (-2)\\cdot1,\\; (-2)\\cdot3 - 1\\cdot(-4)) = (-5, -6, -2)\\); use \\((5,6,2)\\).",
-          "Plane through \\(A\\): \\(5(x-3) + 6(y-1) + 2(z-1) = 0 \\Rightarrow 5x + 6y + 2z - 23 = 0\\).",
+          "Anchor \\(A(1,1,2)\\): \\(\\overrightarrow{AB} = (1,2,-1)\\), \\(\\overrightarrow{AC} = (-1,0,2)\\).",
+          "\\(\\vec{n} = \\overrightarrow{AB}\\times\\overrightarrow{AC} = (2\\cdot2 - (-1)\\cdot0,\\; (-1)\\cdot(-1) - 1\\cdot2,\\; 1\\cdot0 - 2\\cdot(-1)) = (4, -1, 2)\\).",
+          "Plane through \\(A\\): \\(4(x-1) - (y-1) + 2(z-2) = 0 \\Rightarrow 4x - y + 2z - 7 = 0\\).",
         ],
-        answer: "\\(5x + 6y + 2z - 23 = 0\\)",
+        answer: "\\(4x - y + 2z - 7 = 0\\)",
       },
       pyqExampleId: "0ebce59e-1f9b-4a7d-8eeb-bda1d4804a13",
       selfCheckExample: {
@@ -509,13 +509,13 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the plane through the midpoint of \\(P(1,2,5)\\) and \\(Q(3,4,3)\\) and perpendicular to \\(PQ\\).",
+          "Find the plane through the midpoint of \\(P(2,-1,4)\\) and \\(Q(4,3,-2)\\) and perpendicular to \\(PQ\\).",
         steps: [
-          "Midpoint \\(M = (2,3,4)\\).",
-          "\\(\\overrightarrow{PQ} = (2,2,-2)\\); take normal \\((1,1,-1)\\).",
-          "Plane: \\((x-2) + (y-3) - (z-4) = 0 \\Rightarrow x + y - z - 1 = 0\\).",
+          "Midpoint \\(M = (3,1,1)\\).",
+          "\\(\\overrightarrow{PQ} = (2,4,-6)\\); take normal \\((1,2,-3)\\).",
+          "Plane: \\((x-3) + 2(y-1) - 3(z-1) = 0 \\Rightarrow x + 2y - 3z - 2 = 0\\).",
         ],
-        answer: "\\(x + y - z - 1 = 0\\)",
+        answer: "\\(x + 2y - 3z - 2 = 0\\)",
       },
       pyqExampleId: "1b50b18b-bae7-4293-ac75-e5d3b9658235",
       selfCheckExample: {
@@ -574,24 +574,24 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find the plane through the intersection of \\(x + y + z = 1\\) and \\(3x + 4y + 5z = 2\\) that is perpendicular to the XY-plane.",
+          "Find the plane through the intersection of \\(2x + y - z = 3\\) and \\(x - y + 2z = 1\\) that passes through the point \\((1,0,1)\\).",
         steps: [
-          "Family: \\((x+y+z-1) + \\lambda(3x+4y+5z-2) = 0\\), normal \\((1+3\\lambda,\\; 1+4\\lambda,\\; 1+5\\lambda)\\).",
-          "Perpendicular to XY-plane → \\(z\\)-coefficient \\(= 0\\): \\(1 + 5\\lambda = 0 \\Rightarrow \\lambda = -\\tfrac15\\).",
-          "Substitute: \\(\\tfrac{2}{5}x + \\tfrac{1}{5}y - \\tfrac{3}{5} = 0 \\Rightarrow 2x + y - 3 = 0\\).",
+          "Family: \\((2x+y-z-3) + \\lambda(x-y+2z-1) = 0\\).",
+          "Through \\((1,0,1)\\): \\((2+0-1-3) + \\lambda(1-0+2-1) = -2 + 2\\lambda = 0 \\Rightarrow \\lambda = 1\\).",
+          "Substitute: \\((2+1)x + (1-1)y + (-1+2)z - (3+1) = 0 \\Rightarrow 3x + z - 4 = 0\\).",
         ],
-        answer: "\\(2x + y - 3 = 0\\)",
+        answer: "\\(3x + z = 4\\)",
       },
       pyqExampleId: "8c9a7b7d-98f3-46e1-981e-e5b4bb34b809",
       selfCheckExample: {
         prompt:
-          "Find the plane through the intersection of \\(x + y + z = 1\\) and \\(2x + 3y + 4z = 5\\) that is perpendicular to the plane \\(x - y + z = 0\\).",
+          "Find the plane through the intersection of \\(x + 2y + 3z = 4\\) and \\(2x + y + z = 5\\) that is perpendicular to the YZ-plane.",
         steps: [
-          "Family: \\((1+2\\lambda)x + (1+3\\lambda)y + (1+4\\lambda)z = 1 + 5\\lambda\\).",
-          "Perpendicular to \\(x - y + z = 0\\) (normal \\((1,-1,1)\\)): \\((1+2\\lambda) - (1+3\\lambda) + (1+4\\lambda) = 0 \\Rightarrow 1 + 3\\lambda = 0 \\Rightarrow \\lambda = -\\tfrac13\\).",
-          "Substitute: \\(\\tfrac13 x - \\tfrac13 z + \\tfrac23 = 0 \\Rightarrow x - z + 2 = 0\\), i.e. \\(\\vec{r}\\cdot(\\hat{i} - \\hat{k}) + 2 = 0\\).",
+          "Family: \\((1+2\\lambda)x + (2+\\lambda)y + (3+\\lambda)z = 4 + 5\\lambda\\).",
+          "Perpendicular to YZ-plane → \\(x\\)-coefficient \\(= 0\\): \\(1 + 2\\lambda = 0 \\Rightarrow \\lambda = -\\tfrac12\\).",
+          "Substitute: \\(\\tfrac32 y + \\tfrac52 z = \\tfrac32 \\Rightarrow 3y + 5z = 3\\).",
         ],
-        answer: "\\(\\vec{r}\\cdot(\\hat{i} - \\hat{k}) + 2 = 0\\)",
+        answer: "\\(3y + 5z = 3\\)",
       },
       practiceSet: [
         { prompt: "Write the family through the intersection of \\(P_1 = 0\\) and \\(P_2 = 0\\).", answer: "\\(P_1 + \\lambda P_2 = 0\\)" },

@@ -108,13 +108,13 @@ export const LINE_EQUATION_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the vector equation of the line whose Cartesian form is \\(y = 2,\\ 4x - 3z + 5 = 0\\).",
+          "Find the vector equation of the line whose Cartesian form is \\(x = 3,\\ 2y - 5z = 4\\).",
         steps: [
-          "\\(y = 2\\) is constant; rewrite the other relation: \\(4x = 3z - 5 \\Rightarrow \\dfrac{x}{3} = \\dfrac{z - 5/3}{4}\\).",
-          "A point: \\(\\left(0, 2, \\tfrac{5}{3}\\right)\\); direction \\((3, 0, 4)\\) (the \\(y\\)-component is 0 since \\(y\\) is fixed).",
-          "Vector form: \\(\\vec{r} = 2\\hat{j} + \\tfrac{5}{3}\\hat{k} + \\lambda(3\\hat{i} + 4\\hat{k})\\).",
+          "\\(x = 3\\) is constant; rewrite the other relation: \\(2y = 5z + 4 \\Rightarrow \\dfrac{y - 2}{5} = \\dfrac{z}{2}\\).",
+          "A point: \\(\\left(3, 2, 0\\right)\\); direction \\((0, 5, 2)\\) (the \\(x\\)-component is 0 since \\(x\\) is fixed).",
+          "Vector form: \\(\\vec{r} = 3\\hat{i} + 2\\hat{j} + \\lambda(5\\hat{j} + 2\\hat{k})\\).",
         ],
-        answer: "\\(\\vec{r} = 2\\hat{j} + \\tfrac{5}{3}\\hat{k} + \\lambda(3\\hat{i} + 4\\hat{k})\\)",
+        answer: "\\(\\vec{r} = 3\\hat{i} + 2\\hat{j} + \\lambda(5\\hat{j} + 2\\hat{k})\\)",
       },
       practiceSet: [
         { prompt: "Direction of the line \\(\\dfrac{x-1}{4} = \\dfrac{y}{-2} = \\dfrac{z+3}{5}\\)?", answer: "\\((4, -2, 5)\\)" },
@@ -302,13 +302,13 @@ export const LINE_EQUATION_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the equation of the line through \\((1, 2, 3)\\) perpendicular to the lines \\(\\dfrac{x-2}{3} = \\dfrac{y-1}{2} = \\dfrac{z+1}{-2}\\) and \\(\\dfrac{x}{2} = \\dfrac{y}{-3} = \\dfrac{z}{1}\\).",
+          "Find the equation of the line through \\((2, -1, 3)\\) perpendicular to the lines \\(\\dfrac{x-1}{1} = \\dfrac{y}{2} = \\dfrac{z+4}{2}\\) and \\(\\dfrac{x}{2} = \\dfrac{y-3}{1} = \\dfrac{z}{-1}\\).",
         steps: [
-          "Directions: \\(\\vec{d}_1 = (3, 2, -2)\\), \\(\\vec{d}_2 = (2, -3, 1)\\).",
-          "\\(\\vec{d}_1 \\times \\vec{d}_2 = \\big((2)(1) - (-2)(-3),\\ -[(3)(1) - (-2)(2)],\\ (3)(-3) - (2)(2)\\big) = (2 - 6,\\ -(3 + 4),\\ -9 - 4) = (-4, -7, -13)\\).",
-          "Line: \\(\\vec{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(-4\\hat{i} - 7\\hat{j} - 13\\hat{k})\\).",
+          "Directions: \\(\\vec{d}_1 = (1, 2, 2)\\), \\(\\vec{d}_2 = (2, 1, -1)\\).",
+          "\\(\\vec{d}_1 \\times \\vec{d}_2 = \\big((2)(-1) - (2)(1),\\ -[(1)(-1) - (2)(2)],\\ (1)(1) - (2)(2)\\big) = (-2 - 2,\\ -(-1 - 4),\\ 1 - 4) = (-4, 5, -3)\\).",
+          "Line: \\(\\vec{r} = (2\\hat{i} - \\hat{j} + 3\\hat{k}) + \\lambda(-4\\hat{i} + 5\\hat{j} - 3\\hat{k})\\).",
         ],
-        answer: "\\(\\vec{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(-4\\hat{i} - 7\\hat{j} - 13\\hat{k})\\)",
+        answer: "\\(\\vec{r} = (2\\hat{i} - \\hat{j} + 3\\hat{k}) + \\lambda(-4\\hat{i} + 5\\hat{j} - 3\\hat{k})\\)",
       },
       practiceSet: [
         { prompt: "\\((1, 0, 0) \\times (0, 1, 0) = ?\\)", answer: "\\((0, 0, 1)\\)" },
@@ -421,13 +421,13 @@ export const LINE_EQUATION_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "The line of intersection of the planes \\(2x + 3y + z = 1\\) and \\(x + 3y + 2z = 2\\) makes an angle \\(\\alpha\\) with the positive X-axis. Find \\(\\cos\\alpha\\).",
+          "The line of intersection of the planes \\(x + y - z = 2\\) and \\(2x - y + z = 3\\) makes an acute angle \\(\\gamma\\) with the Z-axis. Find \\(\\cos\\gamma\\).",
         steps: [
-          "Direction \\(= \\vec{n}_1 \\times \\vec{n}_2 = (2,3,1) \\times (1,3,2) = \\big((3)(2)-(1)(3),\\ -[(2)(2)-(1)(1)],\\ (2)(3)-(3)(1)\\big) = (3, -3, 3)\\).",
-          "Magnitude: \\(|\\vec{d}| = \\sqrt{9 + 9 + 9} = 3\\sqrt{3}\\).",
-          "\\(\\cos\\alpha = \\dfrac{a}{|\\vec{d}|} = \\dfrac{3}{3\\sqrt 3} = \\dfrac{1}{\\sqrt 3}\\).",
+          "Direction \\(= \\vec{n}_1 \\times \\vec{n}_2 = (1,1,-1) \\times (2,-1,1) = \\big((1)(1)-(-1)(-1),\\ -[(1)(1)-(-1)(2)],\\ (1)(-1)-(1)(2)\\big) = (0, -3, -3)\\).",
+          "Magnitude: \\(|\\vec{d}| = \\sqrt{0 + 9 + 9} = 3\\sqrt{2}\\).",
+          "\\(\\cos\\gamma = \\dfrac{|c|}{|\\vec{d}|} = \\dfrac{3}{3\\sqrt 2} = \\dfrac{1}{\\sqrt 2}\\) for the acute angle.",
         ],
-        answer: "\\(\\cos\\alpha = \\dfrac{1}{\\sqrt 3}\\)",
+        answer: "\\(\\cos\\gamma = \\dfrac{1}{\\sqrt 2}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -496,13 +496,14 @@ export const LINE_EQUATION_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Direction cosines \\(l, m, n\\) satisfy \\(l = 5m - 3n\\) and \\(7l^2 + 5m^2 - 3n^2 = 0\\). Find \\(l + m + n\\) for the case \\(l : m : n = 1 : 2 : 3\\).",
+          "Direction cosines \\(l, m, n\\) satisfy \\(l + m + n = 0\\) and \\(l^2 + m^2 - n^2 = 0\\). Find the two ratios \\(l : m : n\\).",
         steps: [
-          "Check the ratio satisfies both: linear \\(1 = 5(2) - 3(3) = 10 - 9 = 1\\) \\(\\checkmark\\); quadratic \\(7(1) + 5(4) - 3(9) = 7 + 20 - 27 = 0\\) \\(\\checkmark\\).",
-          "Normalise: \\(|\\vec{d}| = \\sqrt{1 + 4 + 9} = \\sqrt{14}\\), so \\((l, m, n) = \\tfrac{1}{\\sqrt{14}}(1, 2, 3)\\).",
-          "\\(l + m + n = \\dfrac{1 + 2 + 3}{\\sqrt{14}} = \\dfrac{6}{\\sqrt{14}}\\).",
+          "From the linear relation: \\(l = -(m + n)\\).",
+          "Substitute: \\((m + n)^2 + m^2 - n^2 = 0 \\Rightarrow 2m^2 + 2mn = 0 \\Rightarrow 2m(m + n) = 0\\).",
+          "Case \\(m = 0\\): then \\(l = -n\\), so \\(l : m : n = 1 : 0 : -1\\).",
+          "Case \\(m = -n\\): then \\(l = 0\\), so \\(l : m : n = 0 : 1 : -1\\).",
         ],
-        answer: "\\(l + m + n = \\dfrac{6}{\\sqrt{14}}\\)",
+        answer: "\\(l : m : n = 1 : 0 : -1\\) or \\(0 : 1 : -1\\)",
       },
       practiceSet: [
         { prompt: "Normalise the ratio \\(1 : 2 : 3\\) to direction cosines.", answer: "\\(\\tfrac{1}{\\sqrt{14}}(1, 2, 3)\\)" },
