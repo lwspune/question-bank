@@ -395,6 +395,57 @@ export const PAPERS: Record<string, PaperSpec> = {
     createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
   },
 
+  // LWS "Maths Mock 3" — 120-q NDA Maths MOCK spanning four chapters: Vectors
+  // (Q1–20, 71–80), Differentiation (Q21–40, 81–90), Definite Integration
+  // (Q41–70), Indefinite Integration (Q91–120). Born-digital PDF, no printed key
+  // (answers DERIVED + independently verified). Multi-chapter mode (`chapters` +
+  // per-record `chapter`). Semantic dedup vs the NDA Maths bank found the WHOLE
+  // paper reassembled from the existing pool: 117 dup / 0 new / 3 flawed (Q2, Q11,
+  // Q20 — correct value not among the printed options / duplicate options). So this
+  // is Excel-only (bankAdd:false): emit the OMR tagged sheet, don't re-commit dups
+  // or create a paper. Re-derivation surfaced existing bank wrong-keys (Q14, Q18,
+  // Q71 → C; Q36 → B; Q86 → A) — the Excel uses the correct derived answers;
+  // backfill of the bank rows is logged for separate review.
+  "maths-mock-3": {
+    slug: "maths-mock-3",
+    title: "NDA Maths — LWS Mock 3",
+    recordsFile: "maths-mock-3.records.json",
+    outName: "Tags_NDA_LWS_Maths_Mock_3",
+    sourceFile: "NDA_Maths_Practice__LWS_Maths_Mock_3.pdf",
+    subjectName: "Mathematics",
+    chapters: {
+      Vectors: [
+        "Cross Product and Triple Product",
+        "Dot Product and Angle",
+        "Magnitude, Components, Projection, and Direction Cosines",
+        "Position Vectors and Section",
+        "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
+      ],
+      Differentiation: [
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+        "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+        "Parametric, Implicit, and Higher-Order Derivatives",
+      ],
+      "Definite Integration": [
+        "Area Under Curves",
+        "Definite Integrals in Function Conditions",
+        "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+        "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+        "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+      ],
+      "Indefinite Integration": [
+        "Integration by Partial Fractions",
+        "Integration by Parts",
+        "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+        "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+      ],
+    },
+    pyqNote: "NDA Maths practice — LWS Maths Mock 3",
+    examName: "NDA",
+    section: { key: "maths-mock-3", label: "Maths Mock 3" },
+    bankAdd: false, // Excel-only: the whole paper is duplicate of the existing bank
+  },
+
   // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
   // (answers derived from the underlined word in each sentence). Dedup found all
   // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
