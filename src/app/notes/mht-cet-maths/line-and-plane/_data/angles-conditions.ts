@@ -154,14 +154,14 @@ export const ANGLES_CONDITIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "The angle between the planes \\(x - 2y + 3z - 5 = 0\\) and \\(x + \\alpha y + 2z + 7 = 0\\) is \\(\\cos^{-1}\\left(\\frac{1}{14}\\right)\\). Find the difference between the two values of \\(\\alpha\\).",
+          "The angle between the planes \\(x + y + z = 2\\) and \\(2x - y + \\beta z = 5\\) is \\(\\cos^{-1}\\left(\\frac{1}{\\sqrt{6}}\\right)\\). Find the difference between the two values of \\(\\beta\\).",
         steps: [
-          "Normals: \\((1, -2, 3)\\) and \\((1, \\alpha, 2)\\). Dot \\(= 1 - 2\\alpha + 6 = 7 - 2\\alpha\\).",
-          "Set up: \\(\\dfrac{|7 - 2\\alpha|}{\\sqrt{14}\\,\\sqrt{5 + \\alpha^2}} = \\dfrac{1}{14}\\), so \\(14(7 - 2\\alpha) = \\sqrt{14}\\,\\sqrt{5 + \\alpha^2}\\).",
-          "Square: \\(14(7 - 2\\alpha)^2 = 5 + \\alpha^2 \\Rightarrow 55\\alpha^2 - 392\\alpha + 681 = 0\\).",
-          "Difference of roots: \\(\\dfrac{\\sqrt{392^2 - 4(55)(681)}}{55} = \\dfrac{\\sqrt{3844}}{55} = \\dfrac{62}{55}\\).",
+          "Normals: \\((1, 1, 1)\\) and \\((2, -1, \\beta)\\). Dot \\(= 2 - 1 + \\beta = 1 + \\beta\\); magnitudes \\(\\sqrt{3}\\) and \\(\\sqrt{5 + \\beta^2}\\).",
+          "Set up: \\(\\dfrac{|1 + \\beta|}{\\sqrt{3}\\,\\sqrt{5 + \\beta^2}} = \\dfrac{1}{\\sqrt{6}}\\).",
+          "Square: \\(\\dfrac{(1 + \\beta)^2}{3(5 + \\beta^2)} = \\dfrac{1}{6} \\Rightarrow 2(1 + \\beta)^2 = 5 + \\beta^2 \\Rightarrow \\beta^2 + 4\\beta - 3 = 0\\).",
+          "Difference of roots: \\(\\dfrac{\\sqrt{4^2 - 4(1)(-3)}}{1} = \\sqrt{28} = 2\\sqrt{7}\\).",
         ],
-        answer: "\\(|\\alpha_1 - \\alpha_2| = \\dfrac{62}{55}\\)",
+        answer: "\\(|\\beta_1 - \\beta_2| = 2\\sqrt{7}\\)",
       },
       selfCheckExample: {
         prompt:
@@ -220,14 +220,14 @@ export const ANGLES_CONDITIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "The angle \\(\\theta\\) between the line \\(\\dfrac{x+1}{1} = \\dfrac{y-1}{2} = \\dfrac{z-2}{2}\\) and the plane \\(2x - y + \\sqrt{\\lambda}\\,z + 4 = 0\\) satisfies \\(\\sin\\theta = \\frac{1}{3}\\). Find \\(\\lambda + 1\\).",
+          "The angle \\(\\theta\\) between the line \\(\\dfrac{x-3}{2} = \\dfrac{y}{-1} = \\dfrac{z+5}{2}\\) and the plane \\(x + 2y + \\sqrt{\\lambda}\\,z = 9\\) satisfies \\(\\sin\\theta = \\dfrac{\\sqrt{2}}{3}\\). Find \\(\\lambda\\).",
         steps: [
-          "Line direction \\(\\vec{d} = (1, 2, 2)\\), \\(|\\vec{d}| = 3\\); plane normal \\(\\vec{n} = (2, -1, \\sqrt{\\lambda})\\), \\(|\\vec{n}| = \\sqrt{5 + \\lambda}\\).",
-          "Dot: \\((1)(2) + (2)(-1) + (2)\\sqrt{\\lambda} = 2\\sqrt{\\lambda}\\).",
-          "\\(\\sin\\theta = \\dfrac{2\\sqrt{\\lambda}}{3\\sqrt{5 + \\lambda}} = \\dfrac{1}{3} \\Rightarrow 2\\sqrt{\\lambda} = \\sqrt{5 + \\lambda}\\).",
-          "Square: \\(4\\lambda = 5 + \\lambda \\Rightarrow \\lambda = \\dfrac{5}{3}\\), so \\(\\lambda + 1 = \\dfrac{8}{3}\\).",
+          "Line direction \\(\\vec{d} = (2, -1, 2)\\), \\(|\\vec{d}| = 3\\); plane normal \\(\\vec{n} = (1, 2, \\sqrt{\\lambda})\\), \\(|\\vec{n}| = \\sqrt{5 + \\lambda}\\).",
+          "Dot: \\((2)(1) + (-1)(2) + (2)\\sqrt{\\lambda} = 2\\sqrt{\\lambda}\\).",
+          "\\(\\sin\\theta = \\dfrac{2\\sqrt{\\lambda}}{3\\sqrt{5 + \\lambda}} = \\dfrac{\\sqrt{2}}{3}\\); square: \\(\\dfrac{4\\lambda}{9(5 + \\lambda)} = \\dfrac{2}{9}\\).",
+          "\\(4\\lambda = 2(5 + \\lambda) \\Rightarrow 2\\lambda = 10 \\Rightarrow \\lambda = 5\\).",
         ],
-        answer: "\\(\\lambda + 1 = \\dfrac{8}{3}\\)",
+        answer: "\\(\\lambda = 5\\)",
       },
       selfCheckExample: {
         prompt:
@@ -349,14 +349,14 @@ export const ANGLES_CONDITIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "If the line \\(\\dfrac{x-3}{2} = \\dfrac{y+2}{1} = \\dfrac{z+4}{3}\\) lies in the plane \\(lx + my - z = 9\\), find \\(l^2 + m^2\\).",
+          "If the line \\(\\dfrac{x-1}{3} = \\dfrac{y-2}{2} = \\dfrac{z+1}{1}\\) lies in the plane \\(lx + my - z = 4\\), find \\(l^2 + m^2\\).",
         steps: [
-          "Direction \\((2, 1, 3)\\) perpendicular to normal \\((l, m, -1)\\): \\(2l + m - 3 = 0\\).",
-          "Point \\((3, -2, -4)\\) on plane: \\(3l - 2m + 4 = 9 \\Rightarrow 3l - 2m = 5\\).",
-          "Solve the system: from the first, \\(m = 3 - 2l\\); substitute: \\(3l - 2(3 - 2l) = 5 \\Rightarrow 7l = 11 \\Rightarrow l = \\tfrac{11}{7}\\), \\(m = -\\tfrac{1}{7}\\).",
-          "\\(l^2 + m^2 = \\dfrac{121 + 1}{49} = \\dfrac{122}{49}\\).",
+          "Direction \\((3, 2, 1)\\) perpendicular to normal \\((l, m, -1)\\): \\(3l + 2m - 1 = 0\\).",
+          "Point \\((1, 2, -1)\\) on plane: \\(l + 2m - (-1) = 4 \\Rightarrow l + 2m = 3\\).",
+          "Subtract the second from the first: \\((3l + 2m) - (l + 2m) = 1 - 3 \\Rightarrow 2l = -2 \\Rightarrow l = -1\\); then \\(m = \\tfrac{3 - l}{2} = 2\\).",
+          "\\(l^2 + m^2 = (-1)^2 + 2^2 = 5\\).",
         ],
-        answer: "\\(l^2 + m^2 = \\dfrac{122}{49}\\)",
+        answer: "\\(l^2 + m^2 = 5\\)",
       },
       selfCheckExample: {
         prompt:
@@ -475,25 +475,24 @@ export const ANGLES_CONDITIONS_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Line \\(L\\) is the intersection of \\(2x + 3y + z = 1\\) and \\(x + 3y + 2z = 2\\). If \\(L\\) makes angle \\(\\alpha\\) with the positive \\(x\\)-axis, find \\(\\sec\\alpha\\).",
+          "Line \\(L\\) is the intersection of \\(x + y - z = 3\\) and \\(2x - y + z = 1\\). If \\(L\\) makes angle \\(\\alpha\\) with the positive \\(y\\)-axis, find \\(\\cos\\alpha\\).",
         steps: [
-          "Direction \\(\\vec{d} = (2,3,1)\\times(1,3,2)\\).",
-          "Cross product: \\((3\\cdot 2 - 1\\cdot 3,\\ 1\\cdot 1 - 2\\cdot 2,\\ 2\\cdot 3 - 3\\cdot 1) = (3, -3, 3) \\parallel (1, -1, 1)\\).",
-          "Angle with \\(x\\)-axis: \\(\\cos\\alpha = \\dfrac{|1|}{\\sqrt{1+1+1}} = \\dfrac{1}{\\sqrt{3}}\\).",
-          "\\(\\sec\\alpha = \\sqrt{3}\\).",
+          "Direction \\(\\vec{d} = (1, 1, -1)\\times(2, -1, 1)\\).",
+          "Cross product: \\(\\big((1)(1) - (-1)(-1),\\ (-1)(2) - (1)(1),\\ (1)(-1) - (1)(2)\\big) = (0, -3, -3) \\parallel (0, 1, 1)\\).",
+          "Angle with the \\(y\\)-axis uses the second component: \\(\\cos\\alpha = \\dfrac{|1|}{\\sqrt{0 + 1 + 1}} = \\dfrac{1}{\\sqrt{2}}\\).",
+          "So \\(\\alpha = 45^\\circ\\).",
         ],
-        answer: "\\(\\sec\\alpha = \\sqrt{3}\\)",
+        answer: "\\(\\cos\\alpha = \\dfrac{1}{\\sqrt{2}}\\)",
       },
       selfCheckExample: {
         prompt:
-          "A plane \\(P_1\\) is parallel to \\(2\\hat{j} + 3\\hat{k}\\) and \\(4\\hat{j} - 3\\hat{k}\\); a plane \\(P_2\\) is parallel to \\(\\hat{j} - \\hat{k}\\) and \\(3\\hat{i} + 3\\hat{j}\\). Find the angle between their line of intersection \\(\\vec{A}\\) and \\(2\\hat{i} + \\hat{j} - 2\\hat{k}\\).",
+          "Line \\(L\\) is the intersection of the planes \\(x + 2y + z = 4\\) and \\(2x + y - z = 2\\). If \\(L\\) makes angle \\(\\gamma\\) with the positive \\(z\\)-axis, find \\(\\cos\\gamma\\).",
         steps: [
-          "Normal of \\(P_1 = (2\\hat{j}+3\\hat{k})\\times(4\\hat{j}-3\\hat{k}) = -18\\hat{i}\\). Normal of \\(P_2 = (\\hat{j}-\\hat{k})\\times(3\\hat{i}+3\\hat{j}) = 3\\hat{i} - 3\\hat{j} - 3\\hat{k}\\).",
-          "\\(\\vec{A} \\propto (-18\\hat{i})\\times(3\\hat{i} - 3\\hat{j} - 3\\hat{k}) = 54(-\\hat{j} + \\hat{k})\\), i.e. \\((0, -1, 1)\\).",
-          "Angle with \\((2, 1, -2)\\): \\(\\cos\\theta = \\dfrac{|0 - 1 - 2|}{\\sqrt{2}\\cdot 3} = \\dfrac{3}{3\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}\\).",
-          "Taking the obtuse value (sign), \\(\\theta = \\dfrac{3\\pi}{4}\\).",
+          "Direction \\(\\vec{d} = (1, 2, 1)\\times(2, 1, -1)\\).",
+          "Cross product: \\(\\big((2)(-1) - (1)(1),\\ (1)(2) - (1)(-1),\\ (1)(1) - (2)(2)\\big) = (-3, 3, -3) \\parallel (1, -1, 1)\\).",
+          "Angle with the \\(z\\)-axis uses the third component: \\(\\cos\\gamma = \\dfrac{|1|}{\\sqrt{1 + 1 + 1}} = \\dfrac{1}{\\sqrt{3}}\\).",
         ],
-        answer: "\\(\\theta = \\dfrac{3\\pi}{4}\\)",
+        answer: "\\(\\cos\\gamma = \\dfrac{1}{\\sqrt{3}}\\)",
       },
       practiceSet: [
         { prompt: "Direction of the line where planes with normals \\(\\vec{n_1}, \\vec{n_2}\\) meet?", answer: "\\(\\vec{n_1}\\times\\vec{n_2}\\)" },

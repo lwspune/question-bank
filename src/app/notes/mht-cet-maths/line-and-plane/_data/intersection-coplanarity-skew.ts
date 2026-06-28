@@ -285,23 +285,26 @@ export const INTERSECTION_COPLANARITY_SKEW_NOTE: SubtopicNote = {
       },
       authoredExample: {
         prompt:
-          "Find \\(\\lambda\\) so that the points \\(A(1,0,1),\\,B(2,1,3),\\,C(0,2,1),\\,D(\\lambda,1,2)\\) are coplanar.",
+          "Find \\(p\\) so that the points \\(A(2,1,3),\\,B(3,2,5),\\,C(1,0,2),\\,D(4,p,1)\\) are coplanar.",
         steps: [
-          "\\(\\vec{AB} = (1,1,2)\\), \\(\\vec{AC} = (-1,2,0)\\), \\(\\vec{AD} = (\\lambda-1,1,1)\\).",
-          "Set \\([\\vec{AB},\\vec{AC},\\vec{AD}] = \\begin{vmatrix} 1 & 1 & 2 \\\\ -1 & 2 & 0 \\\\ \\lambda-1 & 1 & 1 \\end{vmatrix} = 0\\).",
-          "Expand along row 1: \\(1(2-0) - 1(-1-0) + 2(-1-2(\\lambda-1)) = 2 + 1 + 2(1-2\\lambda)\\).",
-          "\\(= 3 + 2 - 4\\lambda = 5 - 4\\lambda = 0 \\Rightarrow \\lambda = \\tfrac{5}{4}\\).",
+          "\\(\\vec{AB} = (1,1,2)\\), \\(\\vec{AC} = (-1,-1,-1)\\), \\(\\vec{AD} = (2,\\,p-1,\\,-2)\\).",
+          "Set \\([\\vec{AB},\\vec{AC},\\vec{AD}] = \\begin{vmatrix} 1 & 1 & 2 \\\\ -1 & -1 & -1 \\\\ 2 & p-1 & -2 \\end{vmatrix} = 0\\).",
+          "Expand along row 1: \\(1\\big[(-1)(-2)-(-1)(p-1)\\big] - 1\\big[(-1)(-2)-(-1)(2)\\big] + 2\\big[(-1)(p-1)-(-1)(2)\\big]\\).",
+          "\\(= 1(2+p-1) - 1(2+2) + 2(-(p-1)+2) = (p+1) - 4 + 2(3-p)\\).",
+          "\\(= p + 1 - 4 + 6 - 2p = -p + 3 = 0 \\Rightarrow p = 3\\).",
         ],
-        answer: "\\(\\lambda = \\dfrac{5}{4}\\)",
+        answer: "\\(p = 3\\)",
       },
       selfCheckExample: {
         prompt:
-          "Are the points \\(A(0,0,0),\\,B(1,2,3),\\,C(2,4,6),\\,D(1,1,1)\\) coplanar?",
+          "Show that the points \\(A(2,1,4),\\,B(5,3,6),\\,C(4,7,8),\\,D(7,9,10)\\) are coplanar.",
         steps: [
-          "\\(\\vec{AB}=(1,2,3)\\), \\(\\vec{AC}=(2,4,6)\\), \\(\\vec{AD}=(1,1,1)\\).",
-          "Note \\(\\vec{AC}=2\\vec{AB}\\): two rows are proportional, so the determinant is 0.",
+          "\\(\\vec{AB}=(3,2,2)\\), \\(\\vec{AC}=(2,6,4)\\), \\(\\vec{AD}=(5,8,6)\\).",
+          "\\([\\vec{AB},\\vec{AC},\\vec{AD}] = \\begin{vmatrix} 3 & 2 & 2 \\\\ 2 & 6 & 4 \\\\ 5 & 8 & 6 \\end{vmatrix}\\).",
+          "Expand along row 1: \\(3\\big[(6)(6)-(4)(8)\\big] - 2\\big[(2)(6)-(4)(5)\\big] + 2\\big[(2)(8)-(6)(5)\\big]\\).",
+          "\\(= 3(36-32) - 2(12-20) + 2(16-30) = 3(4) - 2(-8) + 2(-14) = 12 + 16 - 28 = 0\\).",
         ],
-        answer: "Yes — coplanar (in fact A, B, C are collinear)",
+        answer: "Coplanar — the scalar triple product is \\(0\\), so all four points lie in one plane",
       },
       practiceSet: [
         { prompt: "Condition for 4 points to be coplanar?", answer: "\\([\\vec{AB},\\vec{AC},\\vec{AD}]=0\\)" },

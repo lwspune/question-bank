@@ -19,6 +19,28 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-06-28
+
+### ~~Review the 35 notes-lint warnings in mht-cet-maths/line-and-plane (worked-example == featured-PYQ reuse)~~ — **DONE 2026-06-28**
+
+Re-authored all **31** flagged worked-examples/self-checks across the 6 `line-and-plane` `_data` files (line-equation, plane-equation, angles-conditions, distances-3d, foot-image-projection, intersection-coplanarity-skew) as genuinely different problems — same technique, fresh points/vectors/coefficients, fully worked + arithmetic-verified — leaving each featured PYQ untouched. Done via 6 parallel agents (one per file) + a manual fix on the coplanarity self-check (its small-integer coordinates re-tripped the ≥80%-number-overlap heuristic → swapped to distinctive coordinates). `notes:lint` line-and-plane warnings 31 → 0; typecheck + notes:latex clean. The 5 remaining repo-wide warnings are unrelated pre-existing untagged-concept soft-warns in nda-biology/chemistry/physics.
+
+<details><summary>original</summary>
+
+The pre-push gate run during the 2025-April-batch-2 ingest surfaced **35 `notes:lint` warnings**, all in `mht-cet-maths/line-and-plane` — worked examples / self-checks that "re-use the featured PYQ's numbers" (the teaching example is the same problem as the featured PYQ rather than a distinct one). Quality debt on a shipped notes chapter; per [[notes-concept-content-alignment]].
+
+</details>
+
+### Push timing: run `npm run prepush` via bash, then `git push --no-verify`, for large data commits
+
+This session's `git push` hit the 7-min tool timeout while the pre-push hook's `prepush` (typecheck → lint → notes:lint → notes:latex → **test → build**) was still running — the full gate exceeds the default Bash timeout on this repo (~7-8 min). The push process was killed mid-gate, leaving `main` ahead of `origin/main`.
+
+**Why:** avoids a half-killed push and a confusing "did it land?" state; the gate and the network push are better decoupled.
+
+**How to apply:** for a push expected to trigger a long gate, run `npm run prepush` (via the Bash tool, which has `sh`) in the background first, confirm exit 0, then `git push --no-verify` (justified — the identical gate already passed). `npm run gate` from PowerShell fails (`sh` not on PATH) — use bash. See [[gate-exit-code-masked-by-tail]] + [[git-merge-to-main-flow]].
+
+---
+
 ## 2026-06-27
 
 ### Apply the auth-middleware scoping fix to the sibling nda-tracker app
