@@ -1,0 +1,463 @@
+{
+ "1": {
+  "chapter": "Units and Measurement",
+  "subtopic": "Units, Dimensions, and Error Analysis",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "Volume \\(V = \\frac{4}{3}\\pi r^{3}\\), so the fractional error multiplies by the power 3:\n\\[\\frac{\\Delta V}{V}\\times 100 = 3\\left(\\frac{\\Delta r}{r}\\times 100\\right) = 3\\times 2\\% = 6\\%.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "2": {
+  "chapter": "Current Electricity",
+  "subtopic": "Wheatstone Bridge and Meter Bridge",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "From the figure the galvanometer with resistor R is in the branch A–D and resistor R also feeds D. The reading staying the same whether switch S is open or closed means no current passes through S, so points B and D are equipotential. The galvanometer carries the same current as R because they are in series in that branch:\n\\[I_{R} = I_{G}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "3": {
+  "chapter": "Motion in a Plane",
+  "subtopic": "Vector Operations and Components",
+  "difficulty": "EASY",
+  "answer": "D",
+  "solution": "Resultant \\(\\overrightarrow{R} = \\overrightarrow{A}+\\overrightarrow{B} = (-2+1)\\widehat{i}+(3+2)\\widehat{j}+(1-4)\\widehat{k} = -\\widehat{i}+5\\widehat{j}-3\\widehat{k}\\).\n\\[|\\overrightarrow{R}| = \\sqrt{1+25+9} = \\sqrt{35}.\\]\nThe unit vector is \\(\\frac{-\\widehat{i}+5\\widehat{j}-3\\widehat{k}}{\\sqrt{35}}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": false,
+  "note": "Resultant A+B = (-2+1)i+(3+2)j+(1-4)k = -i+5j-3k, |.|=sqrt(35); unit vector = (-i+5j-3k)/sqrt(35) = option D. AK keyed A reads (-3i+j+5k)/sqrt(35), not the resultant. Correct D."
+ },
+ "4": {
+  "chapter": "Rotational Dynamics",
+  "subtopic": "Angular Momentum, Torque, and Conservation",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Angular momentum is conserved when the second ring is placed (perfectly inelastic rotational \"collision\"):\n\\[I\\omega = (I+I)\\omega' \\Rightarrow \\omega' = \\frac{\\omega}{2}.\\]\nInitial KE \\(= \\frac{1}{2}I\\omega^{2}\\); final KE \\(= \\frac{1}{2}(2I)\\left(\\frac{\\omega}{2}\\right)^{2} = \\frac{1}{4}I\\omega^{2}\\).\n\\[\\Delta KE = \\frac{1}{2}I\\omega^{2} - \\frac{1}{4}I\\omega^{2} = \\frac{I\\omega^{2}}{4}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": false,
+  "note": "AK key B (\\(I\\omega^{2}/8\\)), but its own working derives \\(\\Delta KE = I\\omega^{2}/4\\) (it states K.E.1 - K.E.2 = I\\omega^2/4). Conservation of angular momentum I\\omega = 2I\\omega' gives \\omega'=\\omega/2; loss = 1/2 I\\omega^2 - 1/2(2I)(\\omega/2)^2 = 1/4 I\\omega^2. Re-derived thrice: answer is C."
+ },
+ "5": {
+  "chapter": "Wave Optics",
+  "subtopic": "Young's Double Slit, Biprism, and Interference",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "With intensity ratio \\(\\frac{I_{1}}{I_{2}} = b\\), take \\(I_{2}=I\\), \\(I_{1}=bI\\):\n\\[I_{\\max} = (\\sqrt{b}+1)^{2}I, \\quad I_{\\min} = (\\sqrt{b}-1)^{2}I.\\]\n\\[\\frac{I_{\\max}+I_{\\min}}{I_{\\max}-I_{\\min}} = \\frac{2(b+1)}{4\\sqrt{b}} = \\frac{1+b}{2\\sqrt{b}}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "6": {
+  "chapter": "Gravitation",
+  "subtopic": "Satellites, Orbital Motion, and Kepler's Laws",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "Orbital speed \\(v = \\sqrt{\\frac{GM}{r}} \\propto \\frac{1}{\\sqrt{r}}\\):\n\\[\\frac{v_{A}}{v_{B}} = \\sqrt{\\frac{r_{B}}{r_{A}}} = \\sqrt{\\frac{R}{4R}} = \\frac{1}{2}.\\]\n\\[v_{A} = \\frac{1}{2}(6V) = 3V.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "7": {
+  "chapter": "Magnetic Materials",
+  "subtopic": "Magnetisation, Susceptibility, Permeability, and B-H-M Relations",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Inside the filled core \\(B' = \\mu_{r}B = (1+\\chi)B\\). The increase is\n\\[\\frac{B'-B}{B}\\times 100 = \\chi\\times 100.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "8": {
+  "chapter": "Structure of Atoms and Nuclei",
+  "subtopic": "Bohr Model and Atomic Properties",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Bohr quantization: \\(L = \\frac{nh}{2\\pi}\\). For \\(n=3\\), \\(L = \\frac{3h}{2\\pi}\\). Rotational KE\n\\[= \\frac{L^{2}}{2I} = \\frac{1}{2I}\\cdot\\frac{9h^{2}}{4\\pi^{2}} = \\frac{9h^{2}}{8\\pi^{2}I}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "9": {
+  "chapter": "Rotational Dynamics",
+  "subtopic": "Angular Momentum, Torque, and Conservation",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "Rotational KE \\(x = \\frac{1}{2}I\\omega^{2}\\) and angular momentum \\(y = I\\omega\\). Then \\(y^{2} = I^{2}\\omega^{2} = 2I\\left(\\frac{1}{2}I\\omega^{2}\\right) = 2Ix\\), so\n\\[I = \\frac{y^{2}}{2x}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "10": {
+  "chapter": "Optics (Ray)",
+  "subtopic": "Refraction, Apparent Depth, and Total Internal Reflection",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Speed reduced by 20% gives \\(c_{g} = 0.8c_{a}\\), so \\(n = \\frac{c_{a}}{c_{g}} = \\frac{1}{0.8}\\). For small angles \\(\\frac{i}{r} = \\frac{1}{0.8} \\Rightarrow r = 0.8i\\). Deviation\n\\[\\delta = i - r = i - 0.8i = 0.2i = \\frac{i}{5}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "11": {
+  "chapter": "Motion in a Plane",
+  "subtopic": "Kinematics — Equations of Motion, Free Fall, and Graphs",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "From rest, total distance in \\(n\\) s: \\(S = \\frac{1}{2}an^{2}\\). Distance in the \\(n^{\\text{th}}\\) second: \\(S_{n} = \\frac{a}{2}(2n-1)\\). Ratio:\n\\[\\frac{S_{n}}{S} = \\frac{\\frac{a}{2}(2n-1)}{\\frac{1}{2}an^{2}} = \\frac{2n-1}{n^{2}} = \\frac{2}{n} - \\frac{1}{n^{2}}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "12": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Self-Inductance, Energy Stored, and LR Circuit",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Self-inductance \\(L = \\mu_{0}n^{2}lA\\), with \\(n\\) (turns per unit length) constant. Linear dimensions \\(\\times 3\\): length \\(l \\to 3l\\), area \\(A \\to 9A\\):\n\\[L \\to \\mu_{0}n^{2}(3l)(9A) = 27\\,L.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "13": {
+  "chapter": "Mechanical Properties of Fluids",
+  "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Volume conserved: \\(\\frac{4}{3}\\pi R^{3} = 64\\cdot\\frac{4}{3}\\pi r^{3} \\Rightarrow r = \\frac{R}{4}\\). The mechanical (excess) pressure of a bubble is \\(P = \\frac{4T}{\\text{radius}}\\):\n\\[\\frac{P_{B}}{P_{S}} = \\frac{4T/R}{4T/r} = \\frac{r}{R} = \\frac{1}{4}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "14": {
+  "chapter": "Dual Nature of Radiation and Matter",
+  "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "\\(KE_{\\max} = h\\nu - \\phi_{0}\\). For \\(E_{1}=2\\phi_{0}\\): \\(KE_{1}=\\phi_{0}\\); for \\(E_{2}=3\\phi_{0}\\): \\(KE_{2}=2\\phi_{0}\\). Since \\(KE = \\frac{1}{2}mV^{2}\\),\n\\[\\frac{V_{1}}{V_{2}} = \\sqrt{\\frac{KE_{1}}{KE_{2}}} = \\sqrt{\\frac{1}{2}} = \\frac{1}{\\sqrt{2}}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "15": {
+  "chapter": "Wave Optics",
+  "subtopic": "Wavefronts, Huygens, and Coherence",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "Huygens's wave theory attributes different colours to different wavelengths, not to different sizes of corpuscles — corpuscles belong to Newton's discredited corpuscular theory. Thus the statement \"different colours are due to different sizes of the corpuscles\" is NOT correct under Huygens's theory.",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "16": {
+  "chapter": "Laws of Motion",
+  "subtopic": "Impulse, Momentum, and Collisions",
+  "difficulty": "EASY",
+  "answer": "D",
+  "solution": "Sand lands at rate \\(\\frac{dm}{dt}=M\\) and must be accelerated to belt speed \\(V\\). Force \\(F = \\frac{d}{dt}(mV) = V\\frac{dm}{dt} = MV\\) N.",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "17": {
+  "chapter": "Magnetic Fields Due to Electric Current",
+  "subtopic": "Magnetic Field of Current-Carrying Conductor",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Total wire length \\(L = 2\\pi R N\\) is constant, so \\(R \\propto \\frac{1}{N}\\). Field at centre \\(B = \\frac{\\mu_{0}NI}{2R} \\propto \\frac{N}{R} \\propto N^{2}\\):\n\\[\\frac{B_{2}}{B_{1}} = \\left(\\frac{N_{2}}{N_{1}}\\right)^{2} = \\left(\\frac{3}{9}\\right)^{2} = \\frac{1}{9} \\Rightarrow B_{2} = \\frac{B_{1}}{9}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "18": {
+  "chapter": "Mechanical Properties of Fluids",
+  "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Capillary rise \\(h = \\frac{2T\\cos\\theta}{r\\rho g}\\), so for equal \\(r,\\theta,g\\): \\(h \\propto \\frac{T}{\\rho}\\).\n\\[\\frac{h_{1}}{h_{2}} = \\frac{T_{1}}{T_{2}}\\cdot\\frac{\\rho_{2}}{\\rho_{1}} = \\frac{6}{5}\\cdot\\frac{3}{4} = \\frac{18}{20} = \\frac{9}{10}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "19": {
+  "chapter": "AC Circuits",
+  "subtopic": "Series LCR — Impedance, Phase, and Resonance",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "\\(X_{L} = 2\\pi f L = \\frac{1}{\\pi}\\times 2\\pi\\times 200 = 400\\,\\Omega\\). Phase angle\n\\[\\tan\\phi = \\frac{X_{L}}{R} = \\frac{400}{300} = \\frac{4}{3} \\Rightarrow \\phi = \\tan^{-1}\\left(\\frac{4}{3}\\right).\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "20": {
+  "chapter": "Thermal Properties of Matter",
+  "subtopic": "Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Newton's law of cooling: \\(\\frac{\\theta_{1}-\\theta_{2}}{t} = K\\left(\\frac{\\theta_{1}+\\theta_{2}}{2}-\\theta_{0}\\right)\\).\nCase I: \\(\\frac{80-60}{60} = K(70-30) = 40K \\Rightarrow \\frac{1}{3} = 40K\\).\nCase II: \\(\\frac{60-50}{t} = K(55-30) = 25K\\).\nDividing: \\(\\frac{10/t}{1/3} = \\frac{25K}{40K} \\Rightarrow \\frac{30}{t} = \\frac{25}{40} \\Rightarrow t = 48\\,\\text{s}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "21": {
+  "chapter": "Thermodynamics",
+  "subtopic": "Carnot Engine, Efficiency, and Refrigerator",
+  "difficulty": "HARD",
+  "answer": "C",
+  "solution": "\\(\\eta_{1} = 1-\\frac{T_{2}}{T_{1}} = \\frac{1}{6} \\Rightarrow T_{2} = \\frac{5}{6}T_{1}\\).\nAfter lowering sink by 57 K: \\(\\eta_{2} = 1-\\frac{T_{2}-57}{T_{1}} = \\frac{1}{3}\\), so \\(\\frac{T_{2}-57}{T_{1}} = \\frac{2}{3}\\).\nSubstituting \\(T_{2}=\\frac{5}{6}T_{1}\\): \\(\\frac{5}{6}T_{1}-57 = \\frac{2}{3}T_{1} \\Rightarrow \\frac{1}{6}T_{1} = 57 \\Rightarrow T_{1} = 342\\,\\text{K}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "22": {
+  "chapter": "AC Circuits",
+  "subtopic": "Series LCR — Impedance, Phase, and Resonance",
+  "difficulty": "HARD",
+  "answer": "C",
+  "solution": "With \\(|X_{L}-X_{C}|=R\\), \\(Z = \\sqrt{R^{2}+R^{2}} = \\sqrt{2}R\\). RMS source \\(V_{rms} = \\frac{V_{0}}{\\sqrt{2}}\\), so\n\\[I_{rms} = \\frac{V_{rms}}{Z} = \\frac{V_{0}/\\sqrt{2}}{\\sqrt{2}R} = \\frac{V_{0}}{2R}.\\]\nVoltage across the capacitor: \\(V_{C} = I_{rms}X_{C} = \\frac{V_{0}}{2R}\\cdot\\frac{1}{\\omega C} = \\frac{V_{0}}{2R\\omega C}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "23": {
+  "chapter": "Oscillations",
+  "subtopic": "Simple Pendulum — Period, Lift, Weightlessness",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "At the lowest point \\(T_{\\max} = mg + \\frac{mv^{2}}{l}\\); at amplitude \\(T_{\\min} = mg\\cos\\theta\\). Energy: \\(\\frac{mv^{2}}{l} = 2mg(1-\\cos\\theta)\\). With \\(T_{\\max} = 4T_{\\min}\\):\n\\[mg + 2mg(1-\\cos\\theta) = 4mg\\cos\\theta \\Rightarrow 3 = 6\\cos\\theta \\Rightarrow \\cos\\theta = \\frac{1}{2}.\\]\nThus \\(\\theta = \\cos^{-1}(0.5)\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "24": {
+  "chapter": "Structure of Atoms and Nuclei",
+  "subtopic": "Bohr Model and Atomic Properties",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Field at centre due to orbiting electron \\(B = \\frac{\\mu_{0}I}{2r} = \\frac{\\mu_{0}ev}{4\\pi r^{2}} \\propto \\frac{v}{r^{2}}\\). With \\(v \\propto \\frac{1}{n}\\) and \\(r \\propto n^{2}\\):\n\\[B \\propto \\frac{1/n}{n^{4}} = n^{-5}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true,
+  "note": "AK solution mis-states \\(v_n \\propto 1/n^3\\) but reaches the right answer; correct dependences \\(v\\propto 1/n\\), \\(r\\propto n^2\\) give B \\propto v/r^2 \\propto n^{-5}. Answer D unchanged."
+ },
+ "25": {
+  "chapter": "Kinetic Theory of Gases",
+  "subtopic": "Kinetic Theory — Pressure, RMS Speed, and Temperature",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "RMS speed \\(v_{rms} = \\sqrt{\\frac{3k_{B}T}{m}} \\propto \\sqrt{T}\\). From 200 K to 800 K, \\(T\\) increases 4 times so \\(v_{rms}\\) increases by \\(\\sqrt{4}=2\\). Hence twice the value at 200 K.",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "26": {
+  "chapter": "Electrostatics",
+  "subtopic": "Capacitors, Dielectrics, and Energy Stored",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Energy \\(U = \\frac{q^{2}}{2C}\\), so \\(U \\propto q^{2}\\). Increasing charge by 3 raises energy by 21%:\n\\[\\left(\\frac{q+3}{q}\\right)^{2} = 1.21 \\Rightarrow \\frac{q+3}{q} = 1.1 \\Rightarrow 3 = 0.1q \\Rightarrow q = 30\\,\\text{C}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "AK working uses the small-change approximation dU/U = 2dq/q giving q ≈ 28.57; the exact treatment (1.21 = (1+3/q)^2) gives q = 30 C exactly, matching option C. Answer C unchanged."
+ },
+ "27": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Faraday's and Lenz's Laws — Induced EMF, Current, and Charge",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "The straight wire carries current to the right; above the wire (where the ring is) its field points out of the page. As the ring falls toward the wire, the out-of-page flux through it increases. By Lenz's law the induced current opposes this increase, producing a flux into the page inside the ring, i.e. a clockwise induced current.",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "28": {
+  "chapter": "Semiconductor Devices",
+  "subtopic": "Logic Gates and Boolean Algebra",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "From the circuit: top path is A AND B followed by a NOT, giving \\(\\overline{A\\cdot B}\\). Bottom path is (NOT of one input) AND the other; with the drawn wiring its NAND-equivalent output also reduces to \\(\\overline{A\\cdot B}\\). The two are combined by the OR gate:\n\\[Y = (\\overline{A\\cdot B}) + (\\overline{A\\cdot B}) = \\overline{A\\cdot B}.\\]\nThis matches option C.",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "29": {
+  "chapter": "Thermal Properties of Matter",
+  "subtopic": "Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body",
+  "difficulty": "HARD",
+  "answer": "C",
+  "solution": "Rate of cooling \\(\\propto T^{4}-T_{0}^{4}\\) with \\(T_{0}=300\\) K.\n\\[\\frac{R}{R_{0}} = \\frac{900^{4}-300^{4}}{400^{4}-300^{4}}.\\]\nUsing \\(300^{4}=81\\), \\(400^{4}=256\\), \\(900^{4}=6561\\) (in units of \\(100^{4}\\)): \\(\\frac{6561-81}{256-81} = \\frac{6480}{175} \\approx 37 \\approx 36\\). So \\(R \\approx 36R_{0}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "30": {
+  "chapter": "Electrostatics",
+  "subtopic": "Gauss's Law and Electric Flux",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "By Gauss's law on the surface of a uniformly charged solid sphere (volume charge density \\(\\sigma\\)):\n\\[E(4\\pi r^{2}) = \\frac{\\sigma\\cdot\\frac{4}{3}\\pi r^{3}}{\\varepsilon_{0}} \\Rightarrow E = \\frac{\\sigma r}{3\\varepsilon_{0}}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "31": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Beats and Sonometer",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Beat frequency with X (300 Hz) is 6 Hz, so \\(n_Y = 306\\) or \\(294\\) Hz. Increasing the tension of Y raises \\(n_Y\\) (\\(n\\propto\\sqrt{T}\\)); the beat then falls from 6 Hz to 4 Hz. For the beat to decrease as \\(n_Y\\) rises, \\(n_Y\\) must approach 300 from below, so originally \\(n_Y = 294\\) Hz = option B.",
+  "akAnswer": "A",
+  "agreesWithAk": false,
+  "note": "X=300 Hz, beat 6 Hz => Y=294 or 306. Increasing Y's tension raises n_Y; the beat falling 6->4 means n_Y moves toward 300, so Y started below 300 = 294 Hz = option B. AK keyed A (296) gives a 4 Hz beat, not 6. Correct B."
+ },
+ "32": {
+  "chapter": "Semiconductor Devices",
+  "subtopic": "Transistors — BJT, CE Amplifier, and Gain",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Power gain \\(= (\\text{current gain})^{2}\\times\\frac{R_{L}}{R_{in}} = 8^{2}\\times\\frac{75}{25} = 64\\times 3 = 192.\\)",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "33": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Stationary Waves and Vibrating Strings",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Comparing \\(y = 0.06\\sin\\left(\\frac{2\\pi}{3}x\\right)\\cos(120\\pi t)\\) with \\(y = A\\sin(kx)\\cos(\\omega t)\\): \\(k=\\frac{2\\pi}{3}\\), \\(\\omega=120\\pi\\). Wave speed\n\\[v = \\frac{\\omega}{k} = \\frac{120\\pi}{2\\pi/3} = 180\\,\\text{m/s}.\\]\nTension \\(T = v^{2}m = 180^{2}\\times 4\\times 10^{-2} = 1296\\,\\text{N}.\\)",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "34": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Progressive Wave, Wave Equation, and Velocity",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "From \\(Y = 3\\sin\\left[\\pi\\left(\\frac{t}{3}-\\frac{x}{5}\\right)+\\frac{\\pi}{4}\\right]\\): \\(\\omega = \\frac{\\pi}{3}\\), \\(k = \\frac{\\pi}{5}\\), \\(A=3\\) m.\n\\[\\lambda = \\frac{2\\pi}{k} = \\frac{2\\pi}{\\pi/5} = 10\\,\\text{m}.\\]\nVelocity \\(v=\\omega/k = 5/3 \\approx 1.67\\) m/s, frequency \\(=\\frac{1}{6}\\) Hz, amplitude 3 m — so only \"Wavelength = 10 m\" is correct.",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "35": {
+  "chapter": "Semiconductor Devices",
+  "subtopic": "p-n Junction Diode — Biasing, I-V, and Rectifiers",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "With the battery's + terminal feeding the left node (via 20 \\(\\Omega\\)) and − the right node, diode \\(D_{1}\\) (anode left) is forward biased and conducts, while \\(D_{2}\\) (cathode left) is reverse biased, so no current flows in the top 30 \\(\\Omega\\) branch. The active path is the 20 \\(\\Omega\\) in series with the 30 \\(\\Omega\\) of the \\(D_{1}\\) branch:\n\\[I = \\frac{5}{20+30} = 0.10\\,\\text{A}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "36": {
+  "chapter": "Mechanical Properties of Fluids",
+  "subtopic": "Bernoulli, Continuity, Streamline, and Torricelli",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "Continuity: \\(Q = \\pi r^{2}v\\). With flow rate \\(\\pi\\times 10^{-1}\\,\\text{m}^{3}/\\text{s}\\) and \\(r = 0.1\\) m:\n\\[v = \\frac{Q}{\\pi r^{2}} = \\frac{\\pi\\times 10^{-1}}{\\pi(0.1)^{2}} = \\frac{10^{-1}}{10^{-2}} = 10\\,\\text{m/s}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "stemOverride": "Water flows through a horizontal pipe of varying cross-section at the rate of \\(\\pi\\times10^{-1}\\text{ }m^{3}/s\\). The velocity of water at a point where the radius of the pipe is 10 cm is ( \\(\\pi= 3.14\\) )",
+  "note": "Stem lost the leading \\pi and the m^3/s units in extraction; restored so the cancellation Q/(\\pi r^2) gives 10 m/s = option C, consistent with AK."
+ },
+ "37": {
+  "chapter": "AC Circuits",
+  "subtopic": "Power in AC Circuit — Average, Factor, Wattless",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Removing L leaves R-C with \\(\\tan\\frac{\\pi}{3} = \\frac{X_{C}}{R}\\), so \\(X_{C} = R\\sqrt{3}\\). Removing C leaves R-L with \\(\\frac{X_{L}}{R} = \\tan\\frac{\\pi}{3}\\), so \\(X_{L} = R\\sqrt{3}\\). Hence \\(X_{L} = X_{C}\\) (resonance), \\(Z = R\\), and power factor \\(\\cos\\phi = \\frac{R}{Z} = 1\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "38": {
+  "chapter": "Electrostatics",
+  "subtopic": "Capacitors, Dielectrics, and Energy Stored",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Battery disconnected \\(\\Rightarrow\\) charge \\(q\\) constant; energy \\(U = \\frac{q^{2}}{2C}\\), \\(C = \\frac{\\varepsilon_{0}A}{d}\\). Initially \\(C_{i}=\\frac{\\varepsilon_{0}A}{d}\\), \\(U_{i}=\\frac{1}{2}C_{i}V^{2}\\). Pulling to \\(4d\\): \\(C_{f}=\\frac{C_{i}}{4}\\), and since \\(q\\) fixed \\(U_{f} = \\frac{q^{2}}{2C_{f}} = 4U_{i}\\). Work\n\\[W = U_{f}-U_{i} = 3U_{i} = \\frac{3}{2}C_{i}V^{2} = \\frac{3\\varepsilon_{0}AV^{2}}{2d}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "39": {
+  "chapter": "Oscillations",
+  "subtopic": "Simple Pendulum — Period, Lift, Weightlessness",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "\\(T = 2\\pi\\sqrt{\\frac{l}{g}} \\propto \\sqrt{l}\\). Length \\(\\to 3l\\):\n\\[T' = \\sqrt{3}\\,T.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "40": {
+  "chapter": "Optics (Ray)",
+  "subtopic": "Lenses — Lens Formula, Power, and Lensmaker",
+  "difficulty": "HARD",
+  "answer": "D",
+  "solution": "Plano-convex (\\(n_{1}\\)): \\(\\frac{1}{f_{1}} = (n_{1}-1)\\left(\\frac{1}{\\infty}-\\frac{1}{-R}\\right) = \\frac{n_{1}-1}{R}\\). Plano-concave (\\(n_{2}\\)) fitting on it: \\(\\frac{1}{f_{2}} = (n_{2}-1)\\left(\\frac{1}{-R}-\\frac{1}{\\infty}\\right) = -\\frac{n_{2}-1}{R}\\).\n\\[\\frac{1}{f} = \\frac{n_{1}-1}{R} - \\frac{n_{2}-1}{R} = \\frac{n_{1}-n_{2}}{R} \\Rightarrow f = \\frac{R}{n_{1}-n_{2}}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "41": {
+  "chapter": "Rotational Dynamics",
+  "subtopic": "Moment of Inertia, Theorems, and Radius of Gyration",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "Rod about perpendicular axis through centre: \\(I = \\frac{ML^{2}}{12}\\). Bent into a ring of radius \\(R\\) with \\(L = 2\\pi R \\Rightarrow R = \\frac{L}{2\\pi}\\). Ring about a diameter: \\(I_{1} = \\frac{MR^{2}}{2} = \\frac{M}{2}\\cdot\\frac{L^{2}}{4\\pi^{2}} = \\frac{ML^{2}}{8\\pi^{2}}\\).\n\\[x = \\frac{I_{1}}{I} = \\frac{ML^{2}/8\\pi^{2}}{ML^{2}/12} = \\frac{12}{8\\pi^{2}} = \\frac{3}{2\\pi^{2}}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "42": {
+  "chapter": "Current Electricity",
+  "subtopic": "Galvanometer, Ammeter, and Voltmeter Conversion",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "An ammeter measures large current and must have low resistance; a galvanometer is converted into an ammeter by connecting a low resistance (shunt) in parallel with it.",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "43": {
+  "chapter": "Kinetic Theory of Gases",
+  "subtopic": "Kinetic Theory — Pressure, RMS Speed, and Temperature",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "RMS velocity \\(v \\propto \\sqrt{T}\\). From 100 K to 400 K, \\(T\\) increases 4 times so \\(v\\) increases by \\(\\sqrt{4}=2\\):\n\\[v = 2x.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "44": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Mutual Inductance, Coupling, and Transformer/Generator",
+  "difficulty": "EASY",
+  "answer": "D",
+  "solution": "Flux \\(\\phi = \\phi_{0}\\cos\\omega t\\); induced emf \\(\\varepsilon = -\\frac{d\\phi}{dt} = \\omega\\phi_{0}\\sin\\omega t\\). The cosine and sine differ in phase by \\(\\frac{\\pi}{2}\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "45": {
+  "chapter": "Oscillations",
+  "subtopic": "Simple Pendulum — Period, Lift, Weightlessness",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Energy conservation from lowest point to the position at \\(60^{\\circ}\\): \\(\\frac{v^{2}}{2} = \\frac{v'^{2}}{2} + gl(1-\\cos 60^{\\circ})\\).\n\\[\\frac{16}{2} = \\frac{v'^{2}}{2} + 10(1)(1-0.5) \\Rightarrow 8 = \\frac{v'^{2}}{2} + 5 \\Rightarrow v'^{2} = 6 \\Rightarrow v' = \\sqrt{6}\\,\\text{m/s}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "46": {
+  "chapter": "Sound",
+  "subtopic": "Doppler Effect — Moving Source and Observer",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "The observer (driver) moves away from the stationary siren: \\(f = f_{0}\\frac{v-v_{0}}{v}\\). Given \\(f/f_{0}=0.94\\):\n\\[v_{0} = v(1-0.94) = 330\\times 0.06 = 19.8\\,\\text{m/s}.\\]\nWith \\(u=0\\), \\(a=2\\,\\text{m/s}^{2}\\): \\(s = \\frac{v_{0}^{2}}{2a} = \\frac{19.8^{2}}{4} \\approx 98\\,\\text{m}.\\)",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "stemOverride": "A vehicle starts from rest and accelerates along straight path at \\(2\\text{ }m/s^{2}\\). At the starting point of the vehicle, there is a stationary electric siren. How far has the vehicle nearly gone when the driver hears the siren at \\(94\\%\\) of its value when the vehicle was at rest? (speed of sound \\(= 330\\text{ }m/s\\) )",
+  "note": "Stem dropped the acceleration value (2 m/s^2) and printed speed of sound as 220; AK solution uses a=2 m/s^2 and v=330 m/s, giving v0=19.8 m/s and s=98 m = option A. Restored both values to match the AK working and the answer."
+ },
+ "47": {
+  "chapter": "Dual Nature of Radiation and Matter",
+  "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+  "difficulty": "HARD",
+  "answer": "D",
+  "solution": "Einstein's equation: \\(\\frac{hc}{\\lambda} = \\phi_{0} + \\frac{1}{2}mV^{2}\\). For \\(\\lambda' = \\frac{2\\lambda}{3}\\): \\(\\frac{hc}{\\lambda'} = \\frac{3}{2}\\frac{hc}{\\lambda} = \\phi_{0} + \\frac{1}{2}mV'^{2}\\). Without \\(\\phi_0\\) given numerically, the standard intended (\\(\\phi_0\\) negligible) result is \\(\\frac{V'^{2}}{V^{2}} = \\frac{3}{2}\\), so\n\\[V' = \\sqrt{\\frac{3}{2}}\\,V.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "48": {
+  "chapter": "Electrostatics",
+  "subtopic": "Capacitors, Dielectrics, and Energy Stored",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "The dielectric slab (\\(t=1\\) mm, \\(k=4\\)) and the air gap (\\(d-t=2\\) mm) act as two capacitors in series with \\(A=50\\times 10^{-4}\\,\\text{m}^{2}\\).\n\\[\\frac{1}{C} = \\frac{t}{A\\varepsilon_{0}k} + \\frac{d-t}{A\\varepsilon_{0}} = \\frac{10^{-3}}{50\\times10^{-4}\\cdot 4\\varepsilon_{0}} + \\frac{2\\times10^{-3}}{50\\times10^{-4}\\varepsilon_{0}} = \\frac{1}{20\\varepsilon_{0}} + \\frac{2}{5\\varepsilon_{0}} = \\frac{9}{20\\varepsilon_{0}}.\\]\n\\[C = \\frac{20\\varepsilon_{0}}{9}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "49": {
+  "chapter": "Thermodynamics",
+  "subtopic": "First Law, Internal Energy, and Work-Heat Relations",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "In an isothermal process the temperature is constant, so for an ideal gas the internal energy does not change \\((\\Delta U = 0)\\). The correct statement is (C): internal energy of the gas will not change — which is option B.",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "50": {
+  "chapter": "Magnetic Fields Due to Electric Current",
+  "subtopic": "Force on Current-Carrying Conductor and Parallel Wires",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "At the midpoint, same-direction currents give opposing fields: \\(\\frac{\\mu_{0}}{2\\pi r}(I_{1}-I_{2}) = 6\\times10^{-6}\\). With \\(I_{2}\\) reversed the fields add: \\(\\frac{\\mu_{0}}{2\\pi r}(I_{1}+I_{2}) = 3\\times10^{-5}\\). Dividing:\n\\[\\frac{I_{1}-I_{2}}{I_{1}+I_{2}} = \\frac{6\\times10^{-6}}{3\\times10^{-5}} = 0.2 \\Rightarrow 0.8I_{1} = 1.2I_{2} \\Rightarrow \\frac{I_{1}}{I_{2}} = \\frac{3}{2}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "stemOverride": "Two long parallel wires carry currents \\(I_{1}\\) and \\(I_{2}\\left( I_{1}>I_{2} \\right)\\). When currents are flowing in the same direction, the magnetic field at a point midway between the wires is \\(6\\times10^{- 6}\\text{ }T\\). If the direction of \\(I_{2}\\) is reversed the field at midpoint becomes \\(3\\times10^{- 5}\\text{ }T\\). The ratio \\(I_{1}:I_{2}\\) is",
+  "note": "Stem lost the numeric coefficients of the two fields (6 and 3); AK solution uses 6e-6 T (same direction) and 3e-5 T (reversed), giving ratio 3:2 = option A. Restored the values."
+ }
+}

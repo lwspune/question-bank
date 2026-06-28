@@ -1,0 +1,480 @@
+{
+ "1": {
+  "chapter": "Oscillations",
+  "subtopic": "SHM Kinematics — Displacement, Velocity, Phase, and Damping",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "Maximum acceleration in SHM is \\(a_{\\max} = \\omega^{2}A\\). With equal amplitude, \\(a_{\\max} \\propto \\omega^{2}\\):\n\\[\\frac{(a_{\\max})_{1}}{(a_{\\max})_{2}} = \\left(\\frac{\\omega_{1}}{\\omega_{2}}\\right)^{2} = \\left(\\frac{300}{3000}\\right)^{2} = \\left(\\frac{1}{10}\\right)^{2} = \\frac{1}{10^{2}}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "2": {
+  "chapter": "Magnetic Fields Due to Electric Current",
+  "subtopic": "Magnetic Field of Current-Carrying Conductor",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "From the figure, point P lies on the line of the wires, at distance \\(r\\) from the nearer wire and \\(r + 2r = 3r\\) from the farther wire; both currents are in the same direction so at P the two fields add:\n\\[B_{net} = \\frac{\\mu_{0}I}{2\\pi r} + \\frac{\\mu_{0}I}{2\\pi(3r)} = \\frac{\\mu_{0}I}{2\\pi}\\left(\\frac{1}{r} + \\frac{1}{3r}\\right) = \\frac{\\mu_{0}I}{2\\pi}\\cdot\\frac{4}{3r} = \\frac{2}{3}\\frac{\\mu_{0}I}{\\pi r}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "note": "Stem prints the current as 'T'; it is the current I (the options use I). Figure needed to fix P at distances r and 3r."
+ },
+ "3": {
+  "chapter": "Thermal Properties of Matter",
+  "subtopic": "Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "By Stefan's law \\(E = \\sigma A T^{4}\\), so \\(E \\propto A T^{4}\\). Length and breadth halved \\(\\Rightarrow A \\to A/4\\); temperature \\(27^\\circ\\text{C}=300\\) K to \\(327^\\circ\\text{C}=600\\) K, ratio 2.\n\\[\\frac{E_{2}}{E_{1}} = \\frac{1}{4}\\times(2)^{4} = \\frac{16}{4} = 4 \\Rightarrow E_{2} = 4E.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "4": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Pipes, Resonance Tube, and Doppler Effect",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Dipping one end in water makes a closed pipe. Second overtone of a closed pipe is the 5th harmonic: \\(f = \\dfrac{5v}{4L'}\\), where \\(L'=1.5-x\\) is the air-column length.\n\\[330 = \\frac{5\\times330}{4(1.5-x)} \\Rightarrow 1.5-x = \\frac{5}{4} = 1.25 \\Rightarrow x = 0.25\\ \\text{m}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "5": {
+  "chapter": "Units and Measurement",
+  "subtopic": "Units, Dimensions, and Error Analysis",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "For \\(A = \\dfrac{B^{\\alpha}C^{\\beta}}{D^{\\gamma}E^{\\delta}}\\), the maximum fractional errors add with the powers as coefficients (all positive):\n\\[\\frac{\\Delta A}{A} = \\alpha\\frac{\\Delta B}{B} + \\beta\\frac{\\Delta C}{C} + \\gamma\\frac{\\Delta D}{D} + \\delta\\frac{\\Delta E}{E},\\]\nso the maximum percentage error is \\((\\alpha b + \\beta c + \\gamma d + \\delta e)\\%\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "6": {
+  "chapter": "AC Circuits",
+  "subtopic": "Series LCR — Impedance, Phase, and Resonance",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "At resonance \\(I = \\dfrac{V_{R}}{R} = \\dfrac{200}{800} = 0.25\\) A and \\(X_{L} = X_{C} = \\dfrac{1}{\\omega C}\\).\n\\[X_{C} = \\frac{1}{250\\times2\\times10^{-6}} = 2000\\ \\Omega.\\]\nVoltage across inductance:\n\\[V_{L} = IX_{L} = 0.25\\times2000 = 500\\ \\text{V}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "7": {
+  "chapter": "Thermodynamics",
+  "subtopic": "Isothermal, Adiabatic, Isobaric, and Isochoric Processes",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "For an adiabatic process \\(P^{1-\\gamma}T^{\\gamma} = \\text{const}\\), i.e. \\(P \\propto T^{\\gamma/(\\gamma-1)}\\). For a rigid diatomic gas \\(\\gamma = \\dfrac{7}{5}\\):\n\\[c = \\frac{\\gamma}{\\gamma-1} = \\frac{7/5}{2/5} = \\frac{7}{2} = 3.5.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true,
+  "note": "Stem 'P \\proptoT^{c}' is a glued extraction of P \\propto T^{c}.",
+  "stemOverride": "When a diatomic gas (rigid) undergoes adiabatic change, its pressure \\(P\\) and temperature \\(T\\) are related as \\(P \\propto T^{c}\\). The value of c is"
+ },
+ "8": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Mutual Inductance, Coupling, and Transformer/Generator",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "EMF in P from changing current in Q gives the mutual inductance: \\(|e_{P}| = M\\dfrac{dI_{Q}}{dt}\\), so \\(M = \\dfrac{15\\times10^{-3}}{10} = 1.5\\times10^{-3}\\) H.\nFlux in Q when P carries \\(I_{P} = 1.8\\) A:\n\\[\\phi_{Q} = M I_{P} = 1.5\\times10^{-3}\\times1.8 = 2.7\\times10^{-3}\\ \\text{Wb} = 2.7\\ \\text{mWb}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true,
+  "note": "Stem prints the rate as '0 A/s'; from the AK solution it is 10 A/s (the stem dropped the leading digit). M = 15 mV / 10 = 1.5 mH gives 2.7 mWb.",
+  "stemOverride": "Two coils P and Q are kept near each other. When no current flows through coil P and current increases in coil Q at the rate of \\(10\\text{ }A/s\\), the e.m.f. in coil \\(P\\) is \\(15mV\\). When coil \\(Q\\) carries no current and current of 1.8 A flows through coil P, the magnetic flux linked with coil Q is"
+ },
+ "9": {
+  "chapter": "Oscillations",
+  "subtopic": "Spring-Mass and Other SHM Systems",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "For a spring-mass system \\(T \\propto \\sqrt{m}\\). With \\(\\dfrac{T'}{T} = \\dfrac{5}{4}\\):\n\\[\\frac{m+m_{0}}{m} = \\left(\\frac{5}{4}\\right)^{2} = \\frac{25}{16} \\Rightarrow \\frac{m_{0}}{m} = \\frac{25}{16}-1 = \\frac{9}{16}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "10": {
+  "chapter": "Motion in a Plane",
+  "subtopic": "Vector Operations and Components",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Three vectors form a (closed) triangle only if one is the sum of the other two, which requires them to be coplanar (scalar triple product zero).\n\\[\\overrightarrow{A}\\cdot(\\overrightarrow{B}\\times\\overrightarrow{C}) = \\begin{vmatrix} 3 & -2 & 1 \\\\ 1 & -3 & 5 \\\\ 2 & -1 & 4 \\end{vmatrix} = 3(-12+5)+2(4-10)+1(-1+6) = -21-12+5 = -28 \\neq 0.\\]\nSince the triple product is non-zero the vectors are not coplanar, so they form no triangle.",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "11": {
+  "chapter": "Magnetic Fields Due to Electric Current",
+  "subtopic": "Magnetic Field of Current-Carrying Conductor",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "At the midpoint each wire is at the same distance. Same direction: fields subtract, \\(B_{1}-B_{2} = 8\\times10^{-6}\\). Opposite direction: fields add, \\(B_{1}+B_{2} = 3.2\\times10^{-5}\\). Dividing,\n\\[\\frac{I_{1}-I_{2}}{I_{1}+I_{2}} = \\frac{8\\times10^{-6}}{3.2\\times10^{-5}} = 0.25 \\Rightarrow 0.75I_{1} = 1.25I_{2} \\Rightarrow \\frac{I_{2}}{I_{1}} = \\frac{0.75}{1.25} = \\frac{3}{5}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "Field values dropped leading digits in extraction; from the AK solution they are 8 x 10^-6 T (same direction) and 3.2 x 10^-5 T (reversed).",
+  "stemOverride": "Two identical long parallel wires carry currents ' \\(I_{1}\\) ' and ' \\(I_{2}\\) ' such that \\(I_{1}>I_{2}\\). When the currents are in the same direction, the magnetic field at a point midway between the wires is \\(8\\times10^{-6}\\text{ }T\\). If the direction of \\(I_{2}\\) is reversed, the field becomes \\(3.2\\times10^{-5}\\text{ }T\\). The ratio of \\(I_{2}\\) to \\(I_{1}\\) is"
+ },
+ "12": {
+  "chapter": "Rotational Dynamics",
+  "subtopic": "Angular Momentum, Torque, and Conservation",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Initial angular speed \\(\\omega_{0} = 2\\pi f = 2\\pi\\cdot\\dfrac{240}{60} = 8\\pi\\ \\text{rad/s}\\). Brought to rest in 20 s: \\(\\alpha = \\dfrac{8\\pi}{20} = \\dfrac{2\\pi}{5}\\ \\text{rad/s}^{2}\\). Moment of inertia of disc \\(I = \\dfrac{1}{2}MR^{2} = \\dfrac{1}{2}(25)(0.2)^{2} = 0.5\\ \\text{kg}\\,\\text{m}^{2}\\). Torque \\(\\tau = I\\alpha = 0.5\\times\\dfrac{2\\pi}{5} = 0.2\\pi\\ \\text{N}\\,\\text{m}\\), and \\(F = \\dfrac{\\tau}{R} = \\dfrac{0.2\\pi}{0.2} = \\pi\\ \\text{N}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "13": {
+  "chapter": "Wave Optics",
+  "subtopic": "Young's Double Slit, Biprism, and Interference",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Resultant intensity \\(I_{R} = I_{1}+I_{2}+2\\sqrt{I_{1}I_{2}}\\cos\\phi\\), with \\(I_{1}=I,\\ I_{2}=9I\\).\nAt P (\\(\\phi=\\pi/2\\)): \\(I_{P} = I+9I+0 = 10I\\).\nAt Q (\\(\\phi=\\pi\\)): \\(I_{Q} = 10I - 2\\sqrt{9I^{2}} = 10I-6I = 4I\\).\nDifference \\(= 10I-4I = 6I\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "14": {
+  "chapter": "Semiconductor Devices",
+  "subtopic": "Logic Gates and Boolean Algebra",
+  "difficulty": "EASY",
+  "answer": "D",
+  "solution": "NAND (and NOR) gates are universal gates: any logic function can be built using only NAND gates. Among the options, NAND is the universal gate.",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "15": {
+  "chapter": "Kinetic Theory of Gases",
+  "subtopic": "Gas Laws and Ideal Gas Equation",
+  "difficulty": "EASY",
+  "answer": "D",
+  "solution": "For an ideal gas \\(PV=nRT\\) with \\(n = \\dfrac{m}{M}\\) gives \\(\\rho = \\dfrac{PM}{RT}\\), so \\(\\rho \\propto \\dfrac{P}{T}\\).\n\\[\\rho' = \\rho_{0}\\cdot\\frac{P'}{P_{0}}\\cdot\\frac{T_{0}}{T'} = \\rho_{0}\\cdot\\frac{3P_{0}}{P_{0}}\\cdot\\frac{T_{0}}{2T_{0}} = \\frac{3}{2}\\rho_{0}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "16": {
+  "chapter": "Semiconductor Devices",
+  "subtopic": "Band Theory, Doping, and Semiconductor Types",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "For a semiconductor the resistivity DECREASES with rising temperature (more carriers thermally excited). The graph that shows \\(\\rho\\) falling steeply then levelling with \\(T\\) is graph (C) in the figure set, which corresponds to option A = '(C)'.",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "note": "Four candidate graphs are figures; the question asks which one is correct. The decreasing graph (labelled C in the stem) is the answer, matching option A's text '(C)'."
+ },
+ "17": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Stationary Waves and Vibrating Strings",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "Fundamental \\(n = \\dfrac{1}{2l r}\\sqrt{\\dfrac{T}{\\pi\\rho}}\\) (since linear mass density \\(m = \\pi r^{2}\\rho\\)).\n1st overtone of wire 1 (2nd harmonic): \\(n_{1} = \\dfrac{2}{2l_{1}r_{1}}\\sqrt{\\dfrac{T}{\\pi\\rho}} = \\dfrac{1}{l_{1}r_{1}}\\sqrt{\\dfrac{T}{\\pi\\rho}}\\).\n2nd overtone of wire 2 (3rd harmonic): \\(n_{2} = \\dfrac{3}{2l_{2}r_{2}}\\sqrt{\\dfrac{T}{\\pi\\rho}}\\).\nSetting \\(n_{1}=n_{2}\\): \\(\\dfrac{1}{l_{1}r_{1}} = \\dfrac{3}{2l_{2}r_{2}}\\Rightarrow 2l_{2}r_{2} = 3l_{1}r_{1}\\). With \\(r_{1}=2r_{2}\\):\n\\[\\frac{l_{1}}{l_{2}} = \\frac{2r_{2}}{3r_{1}} = \\frac{2r_{2}}{6r_{2}} = \\frac{1}{3}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "18": {
+  "chapter": "Magnetic Materials",
+  "subtopic": "Classification, Curie's Law, Hysteresis, and Shielding",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "For a diamagnetic substance the susceptibility \\(\\chi\\) is small, negative and essentially independent of temperature — a horizontal line slightly below the axis. That is graph (A) in the figure set, which corresponds to option C = '(A)'.",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "Four candidate graphs are figures; the temperature-independent (flat, negative) line is the diamagnetic one, matching option C's text '(A)'."
+ },
+ "19": {
+  "chapter": "Mechanical Properties of Fluids",
+  "subtopic": "Surface Tension, Surface Energy, and Capillary Rise",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "For a thin liquid film of thickness \\(t\\) between the plates, the adhesive (separating) force is \\(F = \\dfrac{2TA}{t}\\). With \\(t = \\dfrac{V}{A}\\):\n\\[F = \\frac{2TA}{V/A} = \\frac{2TA^{2}}{V} \\Rightarrow T = \\frac{FV}{2A^{2}}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "20": {
+  "chapter": "AC Circuits",
+  "subtopic": "LC Oscillations, Transformer, and AC Generator",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "From the figure, \\(L = 16\\) mH and \\(C = 10\\ \\mu\\text{F}\\). Charge oscillates as \\(q = q_{0}\\cos\\omega_{0}t\\) (max energy at \\(t=0\\)); current \\(i = i_{0}\\sin\\omega_{0}t\\) is first maximum when \\(\\omega_{0}t = \\dfrac{\\pi}{2}\\), i.e. \\(t = \\dfrac{\\pi}{2\\omega_{0}}\\).\n\\[\\omega_{0} = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{16\\times10^{-3}\\times10\\times10^{-6}}} = \\frac{1}{\\sqrt{16\\times10^{-8}}} = 2500\\ \\text{rad/s}.\\]\n\\[t = \\frac{\\pi}{2\\times2500} = \\frac{\\pi}{5000} = 2\\pi\\times10^{-4}\\ \\text{s}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": false,
+  "note": "Independently derived t = pi/(2*omega_0) with omega_0 = 1/sqrt(LC) = 1/sqrt(16e-3*10e-6) = 2500 rad/s, giving t = pi/5000 = 2*pi x 10^-4 s = option C. AK keyed B (2*pi x 10^-3 s) is wrong by a factor of 10 and contradicts the AK's own working (which computes 2*pi x 10^-4). Correct option C exists, so not flawed."
+ },
+ "21": {
+  "chapter": "Motion in a Plane",
+  "subtopic": "Kinematics — Equations of Motion, Free Fall, and Graphs",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Reading the v-t graph (areas of the rectangular segments, signs by side of the time axis):\nDisplacement = \\((3\\times2) - (2\\times2) + (2\\times2) - (2\\times2) + (2\\times2)\\)... using the segment areas \\(6,-2,4,-2,4\\): displacement \\(= 6-2+4-2+4 = 10\\).\nDistance = \\(6+2+4+2+4 = 18\\).\n\\[\\frac{\\text{displacement}}{\\text{distance}} = \\frac{10}{18} = \\frac{5}{9}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "Graph read: +3 for 2 s, -2 for 1 s (areas tally to displacement 10, distance 18 per the AK segment values). Ratio 5:9."
+ },
+ "22": {
+  "chapter": "Current Electricity",
+  "subtopic": "Potentiometer",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "The balancing length is proportional to the total wire length (same cell, same driving current). Original total length \\(L\\) gives balance \\(\\dfrac{L}{5}\\). New total length \\(L + \\dfrac{L}{2} = \\dfrac{3L}{2}\\), so the balance length scales by \\(\\dfrac{3}{2}\\):\n\\[x = \\frac{L}{5}\\times\\frac{3}{2} = \\frac{3L}{10}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "23": {
+  "chapter": "AC Circuits",
+  "subtopic": "Power in AC Circuit — Average, Factor, Wattless",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "RMS current \\(I = \\dfrac{V}{Z} = \\dfrac{220}{33} = \\dfrac{20}{3}\\) A. True power dissipated in R:\n\\[P = I^{2}R = \\left(\\frac{20}{3}\\right)^{2}\\times18 = \\frac{400}{9}\\times18 = 800\\ \\text{W}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "24": {
+  "chapter": "Laws of Motion",
+  "subtopic": "Newton's Laws — Force, Tension, Lift, and Connected Blocks",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "Going down with \\(a = g/3\\): apparent weight \\(W_{1} = m(g-a) = m\\cdot\\dfrac{2g}{3} = 20\\) N.\nGoing up with \\(a = g/3\\): \\(W_{2} = m(g+a) = m\\cdot\\dfrac{4g}{3} = 2W_{1} = 40\\) N.",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "25": {
+  "chapter": "Electrostatics",
+  "subtopic": "Capacitors, Dielectrics, and Energy Stored",
+  "difficulty": "HARD",
+  "answer": "C",
+  "solution": "From the figure: left half (area \\(A/2\\), full gap \\(d\\), \\(K_{1}=4\\)) is \\(C_{1}\\); right half is split top/bottom (each area \\(A/2\\), gap \\(d/2\\), \\(K_{2}=3\\) and \\(K_{3}=6\\)) in series. Let \\(C = \\dfrac{A\\varepsilon_{0}}{d}\\).\n\\[C_{1} = \\frac{4(A/2)\\varepsilon_{0}}{d} = 2C,\\quad C_{2} = \\frac{3(A/2)\\varepsilon_{0}}{d/2} = 3C,\\quad C_{3} = \\frac{6(A/2)\\varepsilon_{0}}{d/2} = 6C.\\]\n\\(C_{2},C_{3}\\) in series: \\(C_{s} = \\dfrac{3C\\cdot6C}{9C} = 2C\\). Then \\(C_{eq} = C_{1} + C_{s} = 2C + 2C = 4C = \\dfrac{4A\\varepsilon_{0}}{d}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "26": {
+  "chapter": "Structure of Atoms and Nuclei",
+  "subtopic": "Bohr Model and Atomic Properties",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Emission requires a higher-to-lower transition; \\(n=1\\to3\\) and \\(n=2\\to4\\) are absorptions. For emissions, \\(\\nu \\propto \\left|\\dfrac{1}{n_{f}^{2}}-\\dfrac{1}{n_{i}^{2}}\\right|\\).\n\\(5\\to3\\): \\(\\nu \\propto \\dfrac{1}{9}-\\dfrac{1}{25} = \\dfrac{16}{225} \\approx 0.071\\).\n\\(2\\to1\\): \\(\\nu \\propto \\dfrac{1}{1}-\\dfrac{1}{4} = \\dfrac{3}{4} = 0.75\\).\nThe largest frequency is the \\(2\\to1\\) transition.",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "27": {
+  "chapter": "Gravitation",
+  "subtopic": "Variation of g with Depth, Altitude, Density, and Latitude",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Capillary rise \\(h = \\dfrac{2T\\cos\\theta}{r\\rho g} \\propto \\dfrac{1}{g}\\). At depth \\(d\\), \\(g_{d} = g\\left(1-\\dfrac{d}{R}\\right)\\).\n\\[\\frac{Y}{x} = \\frac{g}{g_{d}} = \\frac{1}{1-\\frac{d}{R}} = \\frac{R}{R-d} \\Rightarrow Y:x = R:(R-d).\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "28": {
+  "chapter": "Wave Optics",
+  "subtopic": "Young's Double Slit, Biprism, and Interference",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "A minimum exactly in front of one slit means the path difference there equals an odd multiple of \\(\\lambda/2\\); equivalently \\(d = (2m-1)W\\) where \\(W = \\dfrac{\\lambda D}{d}\\) is the fringe width, for \\(m=1,2,3,\\dots\\)\nThus \\(d = (2m-1)\\dfrac{\\lambda D}{d}\\Rightarrow \\lambda = \\dfrac{d^{2}}{(2m-1)D}\\), giving \\(\\lambda = \\dfrac{d^{2}}{D},\\dfrac{d^{2}}{3D},\\dfrac{d^{2}}{5D},\\dots\\), i.e. \\(\\lambda \\propto \\dfrac{1}{D},\\dfrac{1}{3D},\\dfrac{1}{5D},\\dots\\)",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "29": {
+  "chapter": "Gravitation",
+  "subtopic": "Satellites, Orbital Motion, and Kepler's Laws",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "For a circular orbit \\(KE = \\dfrac{GMm}{2r}\\), \\(PE = -\\dfrac{GMm}{r}\\), total \\(E = -\\dfrac{GMm}{2r}\\). Hence \\(E = \\dfrac{1}{2}PE\\) (half the potential energy).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "30": {
+  "chapter": "Dual Nature of Radiation and Matter",
+  "subtopic": "de Broglie Wavelength and Matter Waves",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "de Broglie wavelength \\(\\lambda = \\dfrac{h}{p}\\). Impulse equals change in momentum, so \\(\\lambda \\propto \\dfrac{1}{p}\\) — inversely proportional to (the) momentum/impulse.",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "31": {
+  "chapter": "Mechanical Properties of Fluids",
+  "subtopic": "Bernoulli, Continuity, Streamline, and Torricelli",
+  "difficulty": "EASY",
+  "answer": "D",
+  "solution": "By continuity \\(A_{A}v_{A} = A_{B}v_{B}\\), with \\(A \\propto R^{2}\\):\n\\[\\pi R^{2}V = \\pi\\left(\\frac{R}{3}\\right)^{2}v_{B} \\Rightarrow v_{B} = \\frac{R^{2}}{R^{2}/9}V = 9V.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "32": {
+  "chapter": "Structure of Atoms and Nuclei",
+  "subtopic": "Radioactive Decay and Half-Life",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Equal initial nuclei \\(N_{0}\\). \\(N_{A} = N_{0}e^{-7\\lambda t}\\), \\(N_{B} = N_{0}e^{-\\lambda t}\\). Require \\(\\dfrac{N_{B}}{N_{A}} = e\\):\n\\[\\frac{e^{-\\lambda t}}{e^{-7\\lambda t}} = e^{6\\lambda t} = e^{1} \\Rightarrow 6\\lambda t = 1 \\Rightarrow t = \\frac{1}{6\\lambda}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "33": {
+  "chapter": "Thermal Properties of Matter",
+  "subtopic": "Thermal Expansion — Linear, Surface, Volumetric",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "\\(C = \\dfrac{5}{9}(F-32) = \\dfrac{5}{9}(140-32) = \\dfrac{5}{9}\\times108 = 60^\\circ\\text{C}.\\)",
+  "akAnswer": "B",
+  "agreesWithAk": true,
+  "note": "Filed under Thermal Properties; the question is a temperature-scale conversion (no expansion subtopic exists, so the closest thermal-scale subtopic is used)."
+ },
+ "34": {
+  "chapter": "Dual Nature of Radiation and Matter",
+  "subtopic": "Photoelectric Effect — Stopping Potential, Threshold, and Work Function",
+  "difficulty": "HARD",
+  "answer": "D",
+  "solution": "Einstein: \\(KE_{1} = h\\nu_{1}-h\\nu_{0}\\), \\(KE_{2} = h\\nu_{2}-h\\nu_{0}\\), with \\(\\dfrac{KE_{1}}{KE_{2}} = \\dfrac{1}{k}\\), i.e. \\(KE_{2} = k\\,KE_{1}\\):\n\\[\\nu_{2}-\\nu_{0} = k(\\nu_{1}-\\nu_{0}) \\Rightarrow \\nu_{2}-\\nu_{0} = k\\nu_{1}-k\\nu_{0} \\Rightarrow \\nu_{0}(k-1) = k\\nu_{1}-\\nu_{2}.\\]\n\\[\\nu_{0} = \\frac{k\\nu_{1}-\\nu_{2}}{k-1}.\\]",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "35": {
+  "chapter": "Electrostatics",
+  "subtopic": "Electric Potential and Potential Energy",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "From the figure A is the midpoint of the left side, between the two \\(+2q\\) charges; distances: \\(AB = AE = L\\) (the two near \\(+2q\\)), and to the far \\(-2q\\) charges \\(AC = AD = \\sqrt{(2L)^{2}+L^{2}} = \\sqrt{5}L\\).\n\\[V = \\frac{1}{4\\pi\\varepsilon_{0}}\\left(\\frac{2q}{L}+\\frac{2q}{L}-\\frac{2q}{\\sqrt{5}L}-\\frac{2q}{\\sqrt{5}L}\\right) = \\frac{1}{4\\pi\\varepsilon_{0}}\\cdot\\frac{4q}{L}\\left(1-\\frac{1}{\\sqrt{5}}\\right) = \\frac{q}{\\pi\\varepsilon_{0}L}\\left(1-\\frac{1}{\\sqrt{5}}\\right).\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "36": {
+  "chapter": "Rotational Dynamics",
+  "subtopic": "Moment of Inertia, Theorems, and Radius of Gyration",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Same wire \\(\\Rightarrow\\) constant linear density \\(\\lambda\\); mass \\(M = \\lambda(2\\pi R)\\). MI of a ring about its axis \\(I = MR^{2}\\):\n\\[I_{P} = (2\\pi r\\lambda)r^{2} = 2\\pi\\lambda r^{3},\\quad I_{Q} = (2\\pi nr\\lambda)(nr)^{2} = 2\\pi\\lambda n^{3}r^{3}.\\]\n\\[I_{Q} = 4I_{P} \\Rightarrow n^{3} = 4 \\Rightarrow n = 4^{1/3} = 2^{2/3}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "37": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Progressive Wave, Wave Equation, and Velocity",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "Frequency \\(n = \\dfrac{45}{60} = 0.75\\) Hz. Velocity \\(v = n\\lambda = 0.75\\times7 = 5.25\\ \\text{m/s}.\\)",
+  "akAnswer": "C",
+  "agreesWithAk": false,
+  "note": "v = n*lambda = (45/60)*7 = 5.25 m/s = option B. AK keyed C (7.5 m/s) contradicts the AK's own arithmetic (5.25). Correct answer B."
+ },
+ "38": {
+  "chapter": "Oscillations",
+  "subtopic": "Simple Pendulum — Period, Lift, Weightlessness",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Support moves as \\(y = kt^{2}\\) with \\(k = 1\\ \\text{m/s}^{2}\\) so acceleration \\(a = \\ddot{y} = 2k = 2\\ \\text{m/s}^{2}\\) upward. Effective gravity \\(g' = g+a = 12\\ \\text{m/s}^{2}\\).\n\\[\\frac{T_{1}^{2}}{T_{2}^{2}} = \\frac{l/g}{l/g'} = \\frac{g'}{g} = \\frac{12}{10} = \\frac{6}{5}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "Stem garbled: 'where = 1 m/s^2' means k = 1 m/s^2 (so a = 2k = 2 m/s^2)."
+ },
+ "39": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Self-Inductance, Energy Stored, and LR Circuit",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "Solenoid: \\(L = \\dfrac{\\mu_{0}N^{2}A}{l} = \\dfrac{\\mu_{0}N^{2}\\pi r^{2}}{l}\\Rightarrow N^{2}r^{2} = \\dfrac{Ll}{\\mu_{0}\\pi}\\Rightarrow Nr = \\sqrt{\\dfrac{Ll}{\\mu_{0}\\pi}}\\).\nWire length \\(l_{0} = 2\\pi Nr = 2\\pi\\sqrt{\\dfrac{Ll}{\\mu_{0}\\pi}}\\), so\n\\[l_{0}^{2} = 4\\pi^{2}\\cdot\\frac{Ll}{\\mu_{0}\\pi} = \\frac{4\\pi Ll}{\\mu_{0}} \\Rightarrow l_{0} = \\left[\\frac{4\\pi lL}{\\mu_{0}}\\right]^{1/2}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": false,
+  "note": "Wire length l0 = 2*pi*N*r = [4*pi*l*L/mu_0]^(1/2), which is option A. The AK's own derivation yields the same expression; option C as printed is garbled ([4*pi*mu_0/(LL)]^(1/2)). Correct answer A."
+ },
+ "40": {
+  "chapter": "Thermodynamics",
+  "subtopic": "Carnot Engine, Efficiency, and Refrigerator",
+  "difficulty": "HARD",
+  "answer": "D",
+  "solution": "\\(\\eta_{1} = 1-\\dfrac{T_{2}}{T_{1}} = \\dfrac{1}{5} \\Rightarrow \\dfrac{T_{2}}{T_{1}} = \\dfrac{4}{5}\\Rightarrow T_{2} = \\dfrac{4}{5}T_{1}\\).\n\\(\\eta_{2} = 1-\\dfrac{T_{2}-45}{T_{1}} = \\dfrac{1}{2}\\Rightarrow \\dfrac{T_{2}-45}{T_{1}} = \\dfrac{1}{2}\\).\nSubstituting: \\(\\dfrac{4}{5}T_{1}-45 = \\dfrac{1}{2}T_{1}\\Rightarrow \\dfrac{3}{10}T_{1} = 45\\Rightarrow T_{1} = 150\\) K, \\(T_{2} = 120\\) K.",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "41": {
+  "chapter": "Semiconductor Devices",
+  "subtopic": "Transistors — BJT, CE Amplifier, and Gain",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "80% of emitter electrons reach the collector, so \\(\\alpha = \\dfrac{I_{C}}{I_{E}} = 0.8\\). The CE current gain:\n\\[\\beta = \\frac{\\alpha}{1-\\alpha} = \\frac{0.8}{0.2} = 4.0.\\]\nHence \\(\\alpha = 0.8,\\ \\beta = 4.0\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "Option text for C and D had stray $ delimiters from extraction; patched.",
+  "optionOverrides": {
+   "C": "\\(\\alpha = 0.8,\\ \\beta = 4.0\\)",
+   "D": "\\(\\alpha = 4.0,\\ \\beta = 0.8\\)"
+  },
+  "stemOverride": "In an n-p-n transistor amplifier, the collector current is 8 mA. If \\(80\\%\\) of the electrons from the emitter reach the collector, then (\\(\\alpha\\) and \\(\\beta\\) are current ratios)"
+ },
+ "42": {
+  "chapter": "Electrostatics",
+  "subtopic": "Electric Dipole — Field, Potential, Torque",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Maximum torque \\(\\tau_{\\max} = pE = (qL)E\\). With \\(q = 2\\ \\mu\\text{C}\\), \\(E = 8\\times10^{4}\\ \\text{N/C}\\), \\(\\tau_{\\max} = 4\\times10^{-3}\\ \\text{N}\\,\\text{m}\\):\n\\[L = \\frac{\\tau_{\\max}}{qE} = \\frac{4\\times10^{-3}}{2\\times10^{-6}\\times8\\times10^{4}} = 25\\times10^{-3}\\ \\text{m} = 25\\ \\text{mm}.\\]",
+  "akAnswer": "B",
+  "agreesWithAk": true,
+  "note": "Field value dropped its leading digit in extraction; from the AK solution E = 8 x 10^4 N/C.",
+  "stemOverride": "An electric dipole having each charge of magnitude \\(2\\mu C\\) is placed in an electric field of intensity \\(8\\times10^{4}\\text{ }N/C\\). If the maximum torque acting on the dipole is \\(4 \\times10^{- 3}\\text{ }N - m\\), the length of the dipole is"
+ },
+ "43": {
+  "chapter": "Superposition of Waves",
+  "subtopic": "Beats and Sonometer",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "\\(y_{1}=4\\sin710\\pi t\\Rightarrow f_{1}=355\\) Hz, \\(A_{1}=4\\); \\(y_{2}=3\\sin702\\pi t\\Rightarrow f_{2}=351\\) Hz, \\(A_{2}=3\\).\nBeats per second \\(= f_{1}-f_{2} = 4\\).\nIntensity ratio (waxing/waning) \\(= \\dfrac{(A_{1}+A_{2})^{2}}{(A_{1}-A_{2})^{2}} = \\dfrac{7^{2}}{1^{2}} = \\dfrac{49}{1}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "44": {
+  "chapter": "Rotational Dynamics",
+  "subtopic": "Moment of Inertia, Theorems, and Radius of Gyration",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "From the figure, axis YY' passes through the diameter of the top sphere and is tangent to the two lower spheres.\nTop sphere (axis through diameter): \\(I = \\dfrac{2}{5}mr^{2}\\).\nEach lower sphere (axis tangent, parallel-axis at distance r): \\(I = \\dfrac{2}{5}mr^{2}+mr^{2} = \\dfrac{7}{5}mr^{2}\\).\n\\[I_{total} = \\frac{2}{5}mr^{2} + 2\\times\\frac{7}{5}mr^{2} = \\frac{2}{5}mr^{2}+\\frac{14}{5}mr^{2} = \\frac{16}{5}mr^{2}.\\]",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "45": {
+  "chapter": "Current Electricity",
+  "subtopic": "Kirchhoff's Laws and Circuit Analysis",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Applying Kirchhoff's current law around the network (20 A in at the top-left, 15 A leaving down the left, 3 A in at top-right, 5 A in at bottom-left): tracing the branch currents gives the bottom-right outflow \\(I = 18\\) A.",
+  "akAnswer": "C",
+  "agreesWithAk": true,
+  "note": "Junction analysis from the figure (incoming 20 A and 3 A, branch currents 15 A and 5 A) yields the outgoing current I = 18 A, matching the AK."
+ },
+ "46": {
+  "chapter": "Wave Optics",
+  "subtopic": "Polarisation — Malus and Brewster",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Unpolarised light through sheet 1: \\(I_{1} = \\dfrac{I_{0}}{2}\\).\nSheet 2 axis at \\(30^\\circ\\) to sheet 1: \\(I_{2} = \\dfrac{I_{0}}{2}\\cos^{2}30^\\circ = \\dfrac{I_{0}}{2}\\cdot\\dfrac{3}{4} = \\dfrac{3I_{0}}{8}\\).\nSheet 3 axis at \\(90^\\circ\\) to sheet 1, i.e. \\(60^\\circ\\) from sheet 2: \\(I_{3} = \\dfrac{3I_{0}}{8}\\cos^{2}60^\\circ = \\dfrac{3I_{0}}{8}\\cdot\\dfrac{1}{4} = \\dfrac{3I_{0}}{32}\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true,
+  "note": "Sheet-2 angle is 30 deg from sheet 1 (figure), sheet-3 is 90 deg from sheet 1 (60 deg from sheet 2). Either grouping of the cos^2(30) and cos^2(60) factors gives I_3 = 3 I_0 / 32, option B."
+ },
+ "47": {
+  "chapter": "Kinetic Theory of Gases",
+  "subtopic": "Average KE, Equipartition, and Specific Heats",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Cylinder A: constant pressure (\\(Q = nC_{p}\\Delta T_{A}\\)); cylinder B: constant volume (\\(Q = nC_{v}\\Delta T_{B}\\)). Equal heat:\n\\[nC_{p}\\Delta T_{A} = nC_{v}\\Delta T_{B} \\Rightarrow \\Delta T_{B} = \\gamma\\,\\Delta T_{A}.\\]\nFor rigid diatomic gas \\(\\gamma = \\dfrac{7}{5}\\): \\(49 = \\dfrac{7}{5}\\Delta T_{A}\\Rightarrow \\Delta T_{A} = 35\\) K.",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "48": {
+  "chapter": "Optics (Ray)",
+  "subtopic": "Refraction, Apparent Depth, and Total Internal Reflection",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "Mirage, brilliance of diamond, and optical fibres all rely on total internal reflection. The apparent-vs-real depth of a pond is due to ordinary refraction (not TIR), so that is the phenomenon NOT due to TIR.",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "49": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Motional EMF and Rotating Conductors",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Motional EMF \\(e = B l v\\), where \\(l\\) is the length of the side perpendicular to the velocity (the side that cuts field lines). Initially the vertical side (length = coil length) is the cutting edge. After rotating the coil \\(90^\\circ\\) in its plane, the longer side (the breadth that was horizontal) becomes vertical and now cuts the field, giving a larger \\(l\\) and hence a larger EMF.",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "note": "Coil is rectangular (length != breadth). Rotating 90 deg swaps which side is the cutting edge; the induced EMF e = Blv changes because l changes. The intended answer is that it is greater than the initial EMF."
+ },
+ "50": {
+  "chapter": "Electromagnetic Induction",
+  "subtopic": "Mutual Inductance, Coupling, and Transformer/Generator",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "Displacement current \\(i_{d} = \\dfrac{dQ}{dt} = C\\dfrac{dV}{dt}\\). With \\(C = 1\\ \\mu\\text{F}\\) and \\(\\dfrac{dV}{dt} = 4\\ \\text{V/s}\\):\n\\[i_{d} = 1\\times10^{-6}\\times4 = 4\\ \\mu\\text{A}.\\]",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "note": "Stem dropped the rate value; from the AK solution dV/dt = 4 V/s, giving 4 microamp.",
+  "stemOverride": "The voltage between the plates of a parallel plate capacitor of capacity \\(1\\mu\\text{ }F\\) is changing at the rate of \\(4\\text{ }V/s\\). The displacement current in the capacitor is"
+ }
+}
