@@ -1,0 +1,452 @@
+{
+  "101": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Separating, \\(\\dfrac{1}{y+1}\\,dy=\\dfrac{-\\cos x}{2+\\sin x}\\,dx\\). Integrating: \\(\\log(y+1)=-\\log(2+\\sin x)+c\\). At \\(x=0,\\ y=1\\): \\(\\log 2=-\\log 2+c\\Rightarrow c=\\log 4\\). So \\(y+1=\\dfrac{4}{2+\\sin x}\\). At \\(x=\\dfrac{\\pi}{2}\\): \\(y=\\dfrac{4}{3}-1=\\dfrac13\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(|A|=1+\\cot^2\\dfrac\\theta2=\\operatorname{cosec}^2\\dfrac\\theta2\\). \\(\\operatorname{adj}A=\\begin{bmatrix}1&-\\cot\\frac\\theta2\\\\\\cot\\frac\\theta2&1\\end{bmatrix}=A^{T}\\). Hence \\(A^{-1}=\\dfrac{A^{T}}{\\operatorname{cosec}^2\\frac\\theta2}=\\sin^2\\dfrac\\theta2\\,A^{T}=\\left(\\dfrac{1-\\cos\\theta}{2}\\right)A^{T}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "From \\(|\\bar a+\\bar b|^2+|\\bar a+\\bar c|^2=8\\): \\(4+2(\\bar a\\cdot\\bar b+\\bar a\\cdot\\bar c)=8\\Rightarrow \\bar a\\cdot\\bar b+\\bar a\\cdot\\bar c=2\\). Then \\(|\\bar a+3\\bar b|^2+|\\bar a+3\\bar c|^2=20+6(\\bar a\\cdot\\bar b+\\bar a\\cdot\\bar c)=20+12=32\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Probability Calculation",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(X\\sim B(4,\\tfrac23)\\). \\(P(X\\le2)=\\binom40 q^4+\\binom41 pq^3+\\binom42 p^2q^2=\\dfrac1{81}+\\dfrac8{81}+\\dfrac{24}{81}=\\dfrac{33}{81}=\\dfrac{33}{3^4}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Distance of \\(ax+by+c=0\\) from origin \\(=\\dfrac{|c|}{\\sqrt{a^2+b^2}}\\). (A) \\(\\dfrac4{5}=0.8\\); (B) \\(\\dfrac5{\\sqrt{13}}\\approx1.39\\); (C) \\(\\dfrac{12}{5}=2.4\\); (D) \\(\\dfrac3{\\sqrt{29}}\\approx0.557\\). The least is option (D).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\([p\\wedge\\sim r]\\to(\\sim r\\wedge q)\\equiv F\\Rightarrow p\\wedge\\sim r\\equiv T\\) and \\(\\sim r\\wedge q\\equiv F\\). So \\(p\\equiv T,\\ r\\equiv F\\); with \\(\\sim r\\equiv T\\), \\(q\\equiv F\\). Check (D): \\(\\sim(r\\vee q)\\to\\sim p=\\sim(F\\vee F)\\to\\sim T=T\\to F\\equiv F\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Let \\(\\bar d=p\\hat i+q\\hat j+r\\hat k\\). Coplanarity \\([\\bar b\\ \\bar c\\ \\bar d]=0\\) gives \\(p+q+r=0\\); \\(\\bar a\\cdot\\bar d=0\\) gives \\(p-q=0\\Rightarrow p=q\\). Option (D) \\(\\dfrac{\\hat i+\\hat j-2\\hat k}{\\sqrt6}\\) satisfies both (\\(1+1-2=0\\), \\(p=q=1\\)) and is a unit vector.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Cosine rule: \\(a^2+b^2-c^2=2ab\\cos C\\); squaring and using \\(a^4+b^4+c^4=2a^2c^2+2b^2c^2\\) gives \\(2a^2b^2=4a^2b^2\\cos^2 C\\Rightarrow\\cos^2 C=\\dfrac12\\Rightarrow\\cos C=\\pm\\dfrac1{\\sqrt2}\\). The only matching option is \\(C=135^\\circ\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Parallel planes: \\(\\dfrac24=\\dfrac{-\\lambda}{-1}=\\dfrac1\\mu\\Rightarrow\\lambda=\\dfrac12,\\ \\mu=2\\). Hence \\(\\lambda+\\mu=\\dfrac12+2=\\dfrac52\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(y=\\dfrac{x^2-x+1}{x^2+x+1}\\Rightarrow y'=\\dfrac{2(x^2-1)}{(x^2+x+1)^2}=0\\) at \\(x=\\pm1\\). Maximum \\(f(-1)=3\\), minimum \\(f(1)=\\dfrac13\\). Difference \\(=3-\\dfrac13=\\dfrac83\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distances in 3-D",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Both lines have direction \\((2,3,4)\\), so they are parallel; the square's side equals the distance between them. \\((\\bar r_2-\\bar r_1)=(-1,3,-4)\\); \\((\\bar r_2-\\bar r_1)\\times\\bar d=(24,-4,-9)\\), magnitude \\(\\sqrt{673}\\); \\(|\\bar d|=\\sqrt{29}\\). Side \\(=\\dfrac{\\sqrt{673}}{\\sqrt{29}}\\), so perimeter \\(=\\dfrac{4\\sqrt{673}}{\\sqrt{29}}\\) units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "By Napier's analogy, \\(\\tan\\left(\\dfrac{B-C}2\\right)=\\dfrac{b-c}{b+c}\\cot\\dfrac A2\\). Comparing with \\(x\\cot\\dfrac A2\\) gives \\(x=\\dfrac{b-c}{b+c}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(P(X=1)=P(H)=\\dfrac12\\); \\(P(X=2)=\\dfrac14\\); \\(P(X=3)=\\dfrac18\\); \\(P(X=4)=P(\\text{TTTH})+P(\\text{TTTT})=\\dfrac1{16}+\\dfrac1{16}=\\dfrac18\\). The distribution \\(\\tfrac12,\\tfrac14,\\tfrac18,\\tfrac18\\) is option (D).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "The equation contains \\(\\log\\left(\\dfrac{d^2y}{dx^2}\\right)\\), so it cannot be written as a polynomial in the derivatives. Hence the degree is not defined.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distances in 3-D",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Sum of squares of distances from the three axes \\(=(y^2+z^2)+(x^2+z^2)+(x^2+y^2)=2(x^2+y^2+z^2)=324\\Rightarrow x^2+y^2+z^2=162\\). Distance from origin \\(=\\sqrt{162}=9\\sqrt2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "For \\(i=0,1,\\dots,49\\): \\(\\dfrac12\\le\\dfrac12+\\dfrac i{100}<1\\Rightarrow\\) floor \\(=0\\). For \\(i=50,\\dots,99\\): \\(1\\le\\dfrac12+\\dfrac i{100}<2\\Rightarrow\\) floor \\(=1\\), giving 50 terms. Total \\(=50\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(3x=2y=-z\\Rightarrow\\dfrac x2=\\dfrac y3=\\dfrac z{-6}\\); \\(-x=6y=-4z\\Rightarrow\\dfrac x{-12}=\\dfrac y2=\\dfrac z{-3}\\). \\(a_1a_2+b_1b_2+c_1c_2=2(-12)+3(2)+(-6)(-3)=-24+6+18=0\\). Lines are perpendicular, so the angle is \\(\\dfrac\\pi2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(y+\\dfrac{d}{dx}(xy)=x(\\sin x+\\log x)\\Rightarrow x\\dfrac{dy}{dx}+2y=x(\\sin x+\\log x)\\Rightarrow\\dfrac{dy}{dx}+\\dfrac2x y=\\sin x+\\log x\\). I.F. \\(=x^2\\). Then \\(yx^2=\\int(x^2\\sin x+x^2\\log x)\\,dx=-x^2\\cos x+2x\\sin x+2\\cos x+\\dfrac{x^3}3\\log x-\\dfrac{x^3}9+c\\). Dividing by \\(x^2\\): \\(y=-\\cos x+\\dfrac2x\\sin x+\\dfrac2{x^2}\\cos x+\\dfrac x3\\log x-\\dfrac x9+\\dfrac c{x^2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(xy-x+y-1=(x+1)(y-1)=0\\), so the lines meet at \\((-1,1)\\). For concurrency, \\(x+ky-3=0\\) passes through it: \\(-1+k-3=0\\Rightarrow k=4\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Continuity at \\(x=\\dfrac\\pi4\\): \\(\\dfrac\\pi4+a\\sqrt2\\cdot\\dfrac1{\\sqrt2}=2\\cdot\\dfrac\\pi4\\cdot1+b\\Rightarrow\\dfrac\\pi4+a=\\dfrac\\pi2+b\\Rightarrow a-b=\\dfrac\\pi4\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "(A) sum of cube roots of unity is \\(0\\neq1\\), so the conjunction is F. (B) \\(11>10\\) (T) iff \\(10<10\\) (F): \\(T\\leftrightarrow F\\equiv F\\). (C) \\(x^2-3x+2=0\\) has \\(x=1,2\\in\\mathbb N\\) and an odd \\(n\\) exists: \\(T\\wedge T\\equiv T\\). (D) \\(3+i\\) is complex (T) or \\(\\sqrt2+\\sqrt3=\\sqrt5\\) (F): \\(T\\vee F\\equiv T\\). True statements are (C) and (D).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(P(|X|<2)=\\int_{-2}^{2}\\dfrac{x^2}{18}\\,dx=\\dfrac1{18}\\left[\\dfrac{x^3}3\\right]_{-2}^{2}=\\dfrac1{18}\\cdot\\dfrac{16}3=\\dfrac{16}{54}=\\dfrac{8}{27}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\dfrac{dP}{dt}=kP\\Rightarrow\\log\\left(\\dfrac{P}{40000}\\right)=kt\\). From \\(t=20,\\ P=80000\\): \\(20k=\\log2\\). The further 40 years means \\(t=60\\): \\(\\log\\left(\\dfrac{P}{40000}\\right)=3\\log2\\Rightarrow P=40000\\cdot8=320000\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Coplanarity \\(\\Rightarrow\\begin{vmatrix}m&m&n\\\\1&0&1\\\\n&n&p\\end{vmatrix}=0\\Rightarrow -mn-mp+mn+n^2=0\\Rightarrow n^2=mp\\). Hence \\(m,n,p\\) are in G.P.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Terms run \\(\\sin^2 5^\\circ,\\dots,\\sin^2 90^\\circ\\) (step \\(5^\\circ\\), 18 terms). Pairing \\(\\sin^2\\theta+\\sin^2(90^\\circ-\\theta)=1\\) gives 8 pairs \\((5,85),\\dots,(40,50)=8\\); the middle term \\(\\sin^2 45^\\circ=\\dfrac12\\) and \\(\\sin^2 90^\\circ=1\\). Total \\(=8+\\dfrac12+1=\\dfrac{19}2\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(x=0\\Rightarrow y^2+y-2=0\\Rightarrow y=-2,1\\). Area \\(=\\int_{-2}^{1}(2-y-y^2)\\,dy=\\left[2y-\\dfrac{y^2}2-\\dfrac{y^3}3\\right]_{-2}^{1}=\\dfrac76-\\left(-\\dfrac{20}6\\right)=\\dfrac{27}6=\\dfrac92\\) sq. units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Put \\(x=\\tan\\theta\\): \\(y=\\sin^{-1}(\\sin2\\theta)+\\sec^{-1}(\\sec2\\theta)=4\\theta=4\\tan^{-1}x\\). So \\(\\dfrac{dy}{dx}=\\dfrac4{1+x^2}\\); at \\(x=\\sqrt3\\), \\(=\\dfrac4{1+3}=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "By \\(x\\to\\pi-x\\), \\(2I=\\pi\\int_{\\pi/3}^{2\\pi/3}\\dfrac{dx}{1+\\sin x}=\\pi\\int_{\\pi/3}^{2\\pi/3}(\\sec^2 x-\\sec x\\tan x)\\,dx=\\pi[\\tan x-\\sec x]_{\\pi/3}^{2\\pi/3}=\\pi[(-\\sqrt3+2)-(\\sqrt3-2)]=2\\pi(2-\\sqrt3)\\). Hence \\(I=\\pi(2-\\sqrt3)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Definite Integration",
+    "subtopic": "Substitution and Standard Form",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(I=\\int_0^2\\dfrac{3x}{x^2+4}\\,dx+\\int_0^2\\dfrac{1}{x^2+4}\\,dx\\). First \\(=\\dfrac32[\\log t]_4^8=\\dfrac32\\log2=\\log(2\\sqrt2)\\). Second \\(=\\dfrac12[\\tan^{-1}\\tfrac x2]_0^2=\\dfrac12\\cdot\\dfrac\\pi4=\\dfrac\\pi8\\). So \\(I=\\log(2\\sqrt2)+\\dfrac\\pi8\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Rational and Substitution Forms",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Put \\(t=\\cos^2 2x\\Rightarrow dt=-4\\cos2x\\sin2x\\,dx\\), so \\(\\sin2x\\cos2x\\,dx=-\\dfrac{dt}4\\). Then \\(I=-\\dfrac14\\int\\dfrac{dt}{\\sqrt{9-t^2}}=-\\dfrac14\\sin^{-1}\\dfrac t3+c=-\\dfrac14\\sin^{-1}\\left(\\dfrac{\\cos^2 2x}3\\right)+c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Powers and Identities",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\cos2x-\\cos2\\alpha=2(\\cos^2 x-\\cos^2\\alpha)=2(\\cos x-\\cos\\alpha)(\\cos x+\\cos\\alpha)\\). So \\(\\int\\dfrac{\\cos2x-\\cos2\\alpha}{\\cos x-\\cos\\alpha}\\,dx=2\\int(\\cos x+\\cos\\alpha)\\,dx=2\\sin x+2x\\cos\\alpha+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Selection and Arrangement with Constraints",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Choose 12 of 21 for the first table and arrange round both tables: \\(\\binom{21}{12}\\times11!\\times8!=\\dfrac{21!}{12!\\,9!}\\times11!\\times8!=\\dfrac{21!}{12\\cdot9}=\\dfrac{35}{9}\\times19!\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Area \\(=\\dfrac12|\\bar d_1\\times\\bar d_2|\\) where \\(\\bar d_1=2\\bar a-\\bar b,\\ \\bar d_2=4\\bar a-5\\bar b\\). \\(\\bar d_1\\times\\bar d_2=-6(\\bar a\\times\\bar b)\\), and \\(|\\bar a\\times\\bar b|=\\sin45^\\circ=\\dfrac1{\\sqrt2}\\). Area \\(=\\dfrac12\\cdot\\dfrac6{\\sqrt2}=\\dfrac3{\\sqrt2}\\) sq. units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\left(\\dfrac{x+8}{x+1}\\right)^{x+5}=\\dfrac{(1+8/x)^{x+5}}{(1+1/x)^{x+5}}\\to\\dfrac{e^8}{e^1}=e^7\\) as \\(x\\to\\infty\\) (the \\((\\cdot)^5\\) factors tend to 1).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(\\operatorname{cosec}^{-1}\\sqrt2=\\dfrac\\pi4\\), so \\(2\\cos\\left(2\\cdot\\dfrac\\pi4\\right)=2\\cos\\dfrac\\pi2=0\\). Then \\(\\cot^{-1}(0)=\\dfrac\\pi2\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\left|\\dfrac{z+i}{z-i}\\right|=\\sqrt3\\Rightarrow x^2+(y+1)^2=3[x^2+(y-1)^2]\\Rightarrow x^2+(y-2)^2=3\\). This is a circle with centre \\((0,2)\\) and radius \\(\\sqrt3\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Writing \\(\\dfrac{2x^2+3}{(x^2-1)(x^2-4)}=\\dfrac{11/3}{x^2-4}-\\dfrac{5/3}{x^2-1}\\) and integrating gives \\(\\dfrac{11}{12}\\log\\left|\\dfrac{x-2}{x+2}\\right|+\\dfrac56\\log\\left|\\dfrac{x+1}{x-1}\\right|+c\\). So \\(a=\\dfrac{11}{12},\\ b=\\dfrac56\\) and \\(a+b=\\dfrac{11}{12}+\\dfrac{10}{12}=\\dfrac{21}{12}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\dfrac{d}{dx}\\log x=\\dfrac1x\\), \\(\\dfrac{d^2}{dx^2}=-\\dfrac1{x^2}\\), and in general \\(\\dfrac{d^n}{dx^n}(\\log x)=(-1)^{n-1}\\dfrac{(n-1)!}{x^n}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(E=\\{4,5\\}\\Rightarrow P(E)=\\dfrac26=\\dfrac13,\\ P(E')=\\dfrac23\\). Odds against \\(E=P(E'):P(E)=\\dfrac23:\\dfrac13=2:1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(f'(x)=e^{x(1-x)}(1+x-2x^2)\\ge0\\Leftrightarrow 2x^2-x-1\\le0\\Leftrightarrow(2x+1)(x-1)\\le0\\Leftrightarrow x\\in\\left[-\\dfrac12,1\\right]\\). So \\(f\\) is increasing on \\(\\left(-\\dfrac12,1\\right)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(f(x)=x^{1/3},\\ f'(x)=\\dfrac1{3x^{2/3}}\\). With \\(a=64,\\ h=0.04\\): \\(f(a+h)\\approx4+0.04\\cdot\\dfrac1{48}=4+0.000833\\approx4.00083\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Tangent slope \\(m=-\\dfrac1{-4/3}=\\dfrac34\\). For \\(\\dfrac{x^2}{20}-\\dfrac{y^2}5=1\\): \\(y=mx\\pm\\sqrt{a^2m^2-b^2}=\\dfrac34x\\pm\\sqrt{20\\cdot\\tfrac9{16}-5}=\\dfrac34x\\pm\\dfrac52\\). For one tangent, x-intercept \\(=\\dfrac{10}3\\) (\\(y=0\\)) and y-intercept \\(=-\\dfrac52\\) (\\(x=0\\)). This matches option (B).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Coplanarity determinant gives \\(-2(k^2-4)=0\\Rightarrow k=\\pm2\\). For \\(k=2\\) the containing plane is \\(y-z+1=0\\); for \\(k=-2\\) it is \\(y+z+1=0\\). Hence \\(y\\pm z+1=0\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "For \\(y=mx+c\\) tangent to \\(y^2=4ax\\) (here \\(a=1\\)), \\(c=\\dfrac am\\). With \\(c=3\\): \\(3=\\dfrac1m\\Rightarrow m=\\dfrac13\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Circle",
+    "subtopic": "Tangent, Locus, and Equation Construction",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "At \\((\\sqrt3,1)\\) on \\(x^2+y^2=4\\): tangent slope \\(=-\\sqrt3\\), so tangent \\(\\sqrt3x+y=4\\) meets the X-axis at \\(\\left(\\dfrac4{\\sqrt3},0\\right)\\); the normal passes through the origin \\((0,0)\\). Triangle area \\(=\\dfrac12\\cdot\\dfrac4{\\sqrt3}\\cdot1=\\dfrac2{\\sqrt3}\\) sq. units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Put \\(x=\\tan\\theta\\): \\(3\\sin^{-1}(\\sin2\\theta)-4\\cos^{-1}(\\cos2\\theta)+2\\tan^{-1}(\\tan2\\theta)=6\\theta-8\\theta+4\\theta=2\\theta=\\dfrac\\pi3\\Rightarrow\\theta=\\dfrac\\pi6\\Rightarrow x=\\tan\\dfrac\\pi6=\\dfrac1{\\sqrt3}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\dfrac{dx}{d\\theta}=-3a\\cos^2\\theta\\sin\\theta,\\ \\dfrac{dy}{d\\theta}=3a\\sin^2\\theta\\cos\\theta\\), so \\(\\dfrac{dy}{dx}=-\\tan\\theta\\). Then \\(\\sqrt{1+\\left(\\dfrac{dy}{dx}\\right)^2}=\\sqrt{1+\\tan^2\\theta}=\\sec\\theta\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Linear Programming",
+    "subtopic": "Objective Function — Maximisation and Minimisation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Corners of the feasible region (\\(x+y\\le20,\\ y\\ge5,\\ x,y\\ge0\\)) are \\(A(0,20),B(0,5),C(15,5)\\). \\(z=7x-8y\\): \\(z_A=-160,\\ z_B=-40,\\ z_C=65\\). Max \\(-\\) min \\(=65-(-160)=225=5k+200\\Rightarrow k=5\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let \\(y=16^{\\sin^2 x}\\); then \\(16^{\\cos^2 x}=\\dfrac{16}y\\) and \\(y+\\dfrac{16}y=10\\Rightarrow y^2-10y+16=0\\Rightarrow y=8\\) or \\(2\\). So \\(2^{4\\sin^2 x}=2^3\\) or \\(2^1\\Rightarrow\\sin^2 x=\\dfrac34\\) or \\(\\dfrac14\\Rightarrow\\sin x=\\pm\\dfrac{\\sqrt3}2,\\ \\pm\\dfrac12\\). In \\([0,2\\pi]\\) this gives \\(x=\\dfrac\\pi3,\\dfrac{2\\pi}3,\\dfrac{4\\pi}3,\\dfrac{5\\pi}3,\\dfrac\\pi6,\\dfrac{5\\pi}6,\\dfrac{7\\pi}6,\\dfrac{11\\pi}6\\) — 8 solutions.",
+    "agreesWithAk": true,
+    "note": "Source had status no_answer_key (akAnswer null). Independently derived: 8 solutions = option A."
+  },
+  "150": {
+    "chapter": "Line and Plane",
+    "subtopic": "Line — Equation, Direction Cosines, and Vector Form",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Point \\((2,1,-2)\\) lies in \\(x+3y-\\alpha z+\\beta=0\\): \\(2+3+2\\alpha+\\beta=0\\Rightarrow2\\alpha+\\beta=-5\\). Direction \\((3,-5,2)\\perp\\) normal \\((1,3,-\\alpha)\\): \\(3-15-2\\alpha=0\\Rightarrow\\alpha=-6\\), so \\(\\beta=7\\). Hence \\(\\beta-\\alpha=7-(-6)=13\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  }
+}

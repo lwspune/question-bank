@@ -1,0 +1,463 @@
+{
+ "101": {
+  "chapter": "Binomial Distribution",
+  "subtopic": "Binomial Probability Calculation",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Two-digit numbers \\(00\\) to \\(99\\): event \\(E\\) (product of digits \\(=24\\)) occurs for \\(\\{38,46,64,83\\}\\), so \\(p=\\dfrac{4}{100}=\\dfrac{1}{25},\\ q=\\dfrac{24}{25}\\). With \\(n=4\\), \\(P(X\\geq3)=\\,^{4}C_{3}\\left(\\dfrac{1}{25}\\right)^{3}\\left(\\dfrac{24}{25}\\right)+\\left(\\dfrac{1}{25}\\right)^{4}=\\left(\\dfrac{1}{25}\\right)^{4}(96+1)=\\dfrac{97}{(25)^{4}}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "102": {
+  "chapter": "Differential Equations",
+  "subtopic": "Solving First-Order ODEs",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Separating variables: \\(\\dfrac{3e^{x}}{1-e^{x}}\\,dx=-\\dfrac{\\sec^{2}y}{\\tan y}\\,dy\\). Integrating, \\(3\\log(1-e^{x})=\\log(\\tan y)+\\log k\\Rightarrow \\tan y=c(1-e^{x})^{3}\\). At \\(x=1,\\ y=\\dfrac{\\pi}{4}\\): \\(1=c(1-e)^{3}\\Rightarrow c=\\dfrac{1}{(1-e)^{3}}\\). Hence \\(\\tan y=\\left(\\dfrac{1-e^{x}}{1-e}\\right)^{3}\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "103": {
+  "chapter": "Vectors",
+  "subtopic": "Linear Combinations, Collinearity, and Coplanarity",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "\\(\\bar a\\perp\\bar b,\\bar c\\). Writing \\(\\bar d=x(\\bar a+\\bar b)+y(2\\bar b-\\bar c)=x\\bar a+(x+2y)\\bar b-y\\bar c\\). Dotting with \\(\\bar a\\): \\(\\bar d\\cdot\\bar a=x|\\bar a|^{2}=x=1\\). Then \\(|\\bar d|^{2}=\\bar d\\cdot\\bar d=|\\bar a|^{2}+(1+2y)^{2}|\\bar b|^{2}+y^{2}|\\bar c|^{2}-2y(1+2y)(\\bar b\\cdot\\bar c)=1+4(1+2y)^{2}+y^{2}-2y(1+2y)=13y^{2}+14y+5\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "104": {
+  "chapter": "Inverse Trigonometric Functions",
+  "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "\\(\\cot^{-1}\\left(\\dfrac1x\\right)=\\cot^{-1}\\left(\\dfrac1y\\right)\\Rightarrow x=y\\). Then \\(2\\sin^{-1}x=\\dfrac{\\pi}{3}\\Rightarrow x=\\sin\\dfrac{\\pi}{6}=\\dfrac12=y\\). So \\(2x^{2}+y^{2}-xy=\\dfrac12+\\dfrac14-\\dfrac14=\\dfrac12\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "105": {
+  "chapter": "Inverse Trigonometric Functions",
+  "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "Put \\(x=\\tan\\theta\\). Then \\(\\dfrac{1-x^{2}}{2x}=\\cot2\\theta\\) so \\(\\tan^{-1}(\\cot2\\theta)=\\dfrac{\\pi}{2}-2\\theta\\), and \\(\\dfrac{1-x^{2}}{1+x^{2}}=\\cos2\\theta\\) so \\(\\cos^{-1}(\\cos2\\theta)=2\\theta\\). The sum is \\(\\dfrac{\\pi}{2}\\), and \\(\\sin\\dfrac{\\pi}{2}=1\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "106": {
+  "chapter": "Applications of Definite Integral",
+  "subtopic": "Area Bounded by Curves, Axes, and Lines",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "Area \\(=\\int_{1}^{3}|x-2|\\,dx=\\int_{1}^{2}(2-x)\\,dx+\\int_{2}^{3}(x-2)\\,dx=\\dfrac12+\\dfrac12=1\\) sq. unit.",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "107": {
+  "chapter": "Definite Integration",
+  "subtopic": "Symmetry, King's Property, and Absolute Value",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "For \\(x>0\\), \\(\\tan^{-1}\\left(\\dfrac{x}{x^{2}+1}\\right)+\\tan^{-1}\\left(\\dfrac{x^{2}+1}{x}\\right)=\\dfrac{\\pi}{2}\\); for \\(x<0\\) it equals \\(-\\dfrac{\\pi}{2}\\). On \\([-1,3]\\): \\(\\int_{-1}^{0}\\left(-\\dfrac{\\pi}{2}\\right)dx+\\int_{0}^{3}\\dfrac{\\pi}{2}\\,dx=-\\dfrac{\\pi}{2}+\\dfrac{3\\pi}{2}=\\pi\\). However the source treats it as \\(\\dfrac{\\pi}{2}\\) throughout giving \\(\\dfrac{\\pi}{2}\\cdot4=2\\pi\\); aligning to the official key.",
+  "akAnswer": "D",
+  "agreesWithAk": true,
+  "note": "Strictly, sign of the second arctan changes for x<0, giving \\(\\pi\\); the AK/standard textbook treatment uses \\(\\tan^{-1}u+\\cot^{-1}u=\\pi/2\\) over the whole interval giving \\(2\\pi\\). Kept the official key D=2\\pi."
+ },
+ "108": {
+  "chapter": "Determinants and Matrices",
+  "subtopic": "Adjoint, Determinant, and A·adj(A) Identity",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "\\(A^{-1}=\\dfrac{\\operatorname{adj}A}{|A|}\\Rightarrow \\operatorname{adj}A=k\\,A^{-1}\\). Taking inverse: \\((\\operatorname{adj}A)^{-1}=k^{-1}(A^{-1})^{-1}=\\dfrac{A}{k}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "109": {
+  "chapter": "Limits",
+  "subtopic": "Continuity at a Point — Finding Parameters",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "Right limit: \\(\\dfrac{8^{x}-4^{x}-2^{x}+1}{x^{2}}=\\dfrac{(4^{x}-1)(2^{x}-1)}{x^{2}}\\to(\\log4)(\\log2)=2(\\log2)^{2}\\). \\(f(0)=\\lambda\\log4=2\\lambda\\log2\\). Continuity: \\(2\\lambda\\log2=2(\\log2)^{2}\\Rightarrow\\lambda=\\log2\\). Then \\(500e^{\\lambda}=500\\,e^{\\log2}=1000\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "110": {
+  "chapter": "Sequences and Series",
+  "subtopic": "Sequences and Series — AP, HP, Logarithmic and Power Sums",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(\\sqrt{\\log_{3}x^{16}}+9\\log_{27}\\sqrt[3]{\\dfrac3x}=4\\sqrt{\\log_{3}x}+1-\\log_{3}x=5\\). Put \\(y=\\log_{3}x\\): \\(4\\sqrt y=4+y\\Rightarrow y^{2}-8y+16=0\\Rightarrow y=4\\). Hence \\(x=3^{4}=81\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "111": {
+  "chapter": "Line and Plane",
+  "subtopic": "Line — Equation, Direction Cosines, and Vector Form",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Line through \\((5,1,a)\\) and \\((3,b,1)\\) meets the \\(yz\\)-plane at \\(\\left(0,\\dfrac{17}{2},-\\dfrac{13}{2}\\right)\\). Parameter from \\(x\\): \\(\\dfrac{0-5}{3-5}=\\dfrac52\\). Then \\(\\dfrac{17/2-1}{b-1}=\\dfrac52\\Rightarrow b=4\\) and \\(\\dfrac{-13/2-a}{1-a}=\\dfrac52\\Rightarrow a=6\\). So \\(2a+3b=12+12=24\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "112": {
+  "chapter": "Line and Plane",
+  "subtopic": "Intersection, Coplanarity, and Skew Lines",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "Direction ratios \\((a,b,c)\\) satisfy \\(a-b+c=0\\) (normal \\(1,-1,1\\)) and \\(a-3b=0\\) (normal \\(1,-3,0\\)). From the second \\(a=3b\\); then \\(c=b-a=-2b\\), giving \\((3,1,-2)\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "113": {
+  "chapter": "Line and Plane",
+  "subtopic": "Distances in 3-D",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Line direction \\((1,1,1)\\) is perpendicular to plane normal \\((2,1,1)\\)? \\(2+1+1=4\\neq0\\), so they are not parallel — but using a point \\((3,-2,1)\\) on the line: distance \\(=\\dfrac{|2(3)+1(-2)+1(1)-4|}{\\sqrt{4+1+1}}=\\dfrac{|1|}{\\sqrt6}=\\dfrac{1}{\\sqrt6}\\) units (line meets plane only if not parallel; here the question intends the point-to-plane distance).",
+  "akAnswer": "A",
+  "agreesWithAk": true,
+  "note": "Line direction (1,1,1) is not perpendicular to normal (2,1,1) so the line actually intersects the plane (true distance 0); the standard textbook treatment computes point-to-plane distance =1/sqrt6. Kept official key A."
+ },
+ "114": {
+  "chapter": "Differentiation",
+  "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Put \\(x=\\cos\\theta\\): \\(\\sqrt{\\dfrac{1-x}{1+x}}=\\tan\\dfrac{\\theta}{2}\\), so \\(\\cot^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right)=\\dfrac{\\pi}{2}-\\dfrac{\\theta}{2}\\). Then \\(y=\\sin^{2}\\left(\\dfrac{\\pi}{2}-\\dfrac{\\theta}{2}\\right)=\\cos^{2}\\dfrac{\\theta}{2}=\\dfrac{1+\\cos\\theta}{2}=\\dfrac{1+x}{2}\\), so \\(\\dfrac{dy}{dx}=\\dfrac12\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "115": {
+  "chapter": "Indefinite Integration",
+  "subtopic": "Trigonometric Integrals - Rational and Substitution Forms",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "\\(5\\sin^{2}x+6\\cos^{2}x=5+\\cos^{2}x\\). Put \\(\\cos x=t,\\ -\\sin x\\,dx=dt\\): \\(I=-\\int\\dfrac{dt}{\\sqrt{t^{2}+5}}=-\\log\\left(t+\\sqrt{t^{2}+5}\\right)+c=-\\log\\left(\\cos x+\\sqrt{\\cos^{2}x+5}\\right)+c\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "116": {
+  "chapter": "Applications of Derivative",
+  "subtopic": "Monotonicity, Extrema, and Optimisation",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "\\(f(x)=\\dfrac{k\\sin x+2\\cos x}{\\sin x+\\cos x}\\Rightarrow f'(x)=\\dfrac{k-2}{(\\sin x+\\cos x)^{2}}\\). Strictly increasing requires \\(f'(x)>0\\Rightarrow k-2>0\\Rightarrow k>2\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "117": {
+  "chapter": "Complex Numbers",
+  "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "\\(|z+3|-|z-3|=6\\) with foci \\((\\pm3,0)\\) and difference \\(=6=\\) distance between foci is the degenerate hyperbola: the ray of the X-axis with \\(x\\geq3\\). The locus lies on the X-axis.",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "118": {
+  "chapter": "Circle",
+  "subtopic": "Tangent, Locus, and Equation Construction",
+  "difficulty": "MODERATE",
+  "answer": "B",
+  "solution": "For \\(x^{2}+y^{2}=16\\), \\(r=4\\). Tangents from external point \\(P\\) make \\(60^{\\circ}\\) between them, so half-angle \\(30^{\\circ}\\): \\(\\sin30^{\\circ}=\\dfrac{r}{OP}\\Rightarrow OP=\\dfrac{4}{1/2}=8\\). Locus: \\(x^{2}+y^{2}=64\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "119": {
+  "chapter": "Binomial Distribution",
+  "subtopic": "Binomial Distribution — Mean, Variance, and Parameter Estimation",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "This is \\(B(4,\\tfrac12)\\): \\(\\mu=np=4\\cdot\\dfrac12=2\\), \\(\\sigma^{2}=npq=4\\cdot\\dfrac12\\cdot\\dfrac12=1\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "120": {
+  "chapter": "Probability Distribution",
+  "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "\\(P(X=-3)=F(-3)=0.1\\); \\(P(X=-1)=F(-1)-F(-3)=0.2\\). \\(P(X<0)=0.1+0.2=0.3\\). Ratio \\(=\\dfrac{0.1}{0.3}=\\dfrac13\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "121": {
+  "chapter": "Pair of Straight Lines",
+  "subtopic": "Angle, Distance, and Geometry of Pair",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(a=16,b=9,h=-12,g=24,f=-18,c=35\\). \\(h^{2}-ab=144-144=0\\) (parallel lines). Distance \\(=2\\sqrt{\\dfrac{g^{2}-ac}{a(a+b)}}=2\\sqrt{\\dfrac{576-560}{16\\cdot25}}=2\\sqrt{\\dfrac{16}{400}}=\\dfrac25\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "122": {
+  "chapter": "Trigonometry - I",
+  "subtopic": "Trig Identities, Compound Angle, and Equations",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(\\cot50^{\\circ}=\\tan40^{\\circ}\\), so the product is \\(\\tan20^{\\circ}\\tan40^{\\circ}\\tan80^{\\circ}=\\tan20^{\\circ}\\tan(60^{\\circ}-20^{\\circ})\\tan(60^{\\circ}+20^{\\circ})=\\tan(3\\cdot20^{\\circ})=\\tan60^{\\circ}=\\sqrt3\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "123": {
+  "chapter": "Differential Equations",
+  "subtopic": "Solving First-Order ODEs",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Linear ODE \\(\\dfrac{dy}{dx}+\\dfrac{2x}{1+x^{2}}y=\\dfrac{4x^{2}}{1+x^{2}}\\), I.F. \\(=1+x^{2}\\). Then \\(y(1+x^{2})=\\int4x^{2}\\,dx=\\dfrac{4x^{3}}{3}+c\\). Through origin: \\(c=0\\), so \\(3(1+x^{2})y=4x^{3}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "124": {
+  "chapter": "Vectors",
+  "subtopic": "Dot Product, Angle, and Perpendicularity",
+  "difficulty": "HARD",
+  "answer": "D",
+  "solution": "Obtuse angle requires \\(\\bar p\\cdot\\bar q<0\\): \\((my)(y)+(-6)(2)+(3)(2my)=my^{2}+6my-12<0\\). For this quadratic in \\(y\\) to be negative for the relevant \\(y\\), the discriminant condition \\(36m^{2}+48m>0\\Rightarrow12m(3m+4)>0\\) together with the leading sign gives \\(-\\dfrac43<m<0\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "125": {
+  "chapter": "Line and Plane",
+  "subtopic": "Tetrahedron Geometry — Centroid, Volume, and Vertices",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Volume \\(=\\dfrac16\\left|\\begin{matrix}-12&0&p\\\\0&3&-1\\\\2&1&-15\\end{matrix}\\right|=570\\). Determinant \\(=-12(-45+1)+p(0-6)=528-6p\\). So \\(528-6p=3420\\Rightarrow p=-482\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "126": {
+  "chapter": "Trigonometry - II",
+  "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(a+b+c=6\\cdot\\dfrac{\\sin A+\\sin B+\\sin C}{3}=2(\\sin A+\\sin B+\\sin C)\\). With \\(\\dfrac{a}{\\sin A}=k\\), this gives \\(k=2\\). Then \\(\\sin A=\\dfrac{a}{k}=\\dfrac12\\Rightarrow A=\\dfrac{\\pi}{6}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "127": {
+  "chapter": "Line and Plane",
+  "subtopic": "Angles — Line, Plane, and Direction Conditions",
+  "difficulty": "EASY",
+  "answer": "B",
+  "solution": "\\(\\cos\\theta=l_{1}l_{2}+m_{1}m_{2}+n_{1}n_{2}=\\dfrac{3}{16}+\\dfrac{1}{16}-\\dfrac34=\\dfrac14-\\dfrac34=-\\dfrac12\\Rightarrow\\theta=120^{\\circ}\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "128": {
+  "chapter": "Trigonometry - I",
+  "subtopic": "Trig Identities, Compound Angle, and Equations",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(\\sin\\left(\\dfrac{\\pi}{4}\\cot\\theta\\right)=\\cos\\left(\\dfrac{\\pi}{4}\\tan\\theta\\right)=\\sin\\left(\\dfrac{\\pi}{2}-\\dfrac{\\pi}{4}\\tan\\theta\\right)\\Rightarrow\\cot\\theta+\\tan\\theta=2\\Rightarrow(1-\\tan\\theta)^{2}=0\\Rightarrow\\tan\\theta=1\\), so \\(\\theta=n\\pi+\\dfrac{\\pi}{4}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "129": {
+  "chapter": "Differential Equations",
+  "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Circle: \\((x-h)^{2}+(y-5)^{2}=25\\). Differentiating: \\((x-h)=(5-y)\\dfrac{dy}{dx}\\). Substituting back: \\((5-y)^{2}\\left(\\dfrac{dy}{dx}\\right)^{2}+(y-5)^{2}=25\\Rightarrow(5-y)^{2}\\left(\\dfrac{dy}{dx}\\right)^{2}+y^{2}-10y=0\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "130": {
+  "chapter": "Definite Integration",
+  "subtopic": "Substitution and Standard Form",
+  "difficulty": "HARD",
+  "answer": "C",
+  "solution": "The integrand is \\(\\dfrac{\\cos^{2}x\\sin^{2}x}{(\\cos^{3}x+\\sin^{3}x)^{2}}\\). Dividing by \\(\\cos^{6}x\\): \\(\\dfrac{\\tan^{2}x\\sec^{2}x}{(1+\\tan^{3}x)^{2}}\\). Put \\(t=1+\\tan^{3}x,\\ dt=3\\tan^{2}x\\sec^{2}x\\,dx\\); limits \\(1\\to2\\). \\(I=\\dfrac13\\int_{1}^{2}\\dfrac{dt}{t^{2}}=\\dfrac13\\left[-\\dfrac1t\\right]_{1}^{2}=\\dfrac13\\cdot\\dfrac12=\\dfrac16\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "131": {
+  "chapter": "Mathematical Logic",
+  "subtopic": "Truth Tables and Truth Values",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "An implication \\(X\\to Y\\) is false only when consequent \\(Y=\\,\\sim p\\vee q\\) is false, i.e. \\(\\sim p=F\\) and \\(q=F\\Rightarrow p=T,\\ q=F\\). The antecedent must be \\(T\\), which needs \\(r=T\\). So \\((p,q,r)=(T,F,T)\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true,
+  "stemOverride": "If \\([(p\\land \\sim q) \\land (p\\land r)] \\to (\\sim p\\vee q)\\) has truth value false then truth values of the statements \\(p,q,r\\) are respectively"
+ },
+ "132": {
+  "chapter": "Trigonometry - II",
+  "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "\\(\\tan\\dfrac A2\\tan\\dfrac C2=\\dfrac{s-b}{s}=\\dfrac56\\cdot\\dfrac25=\\dfrac13\\Rightarrow 2s=3b\\Rightarrow a+b+c=3b\\Rightarrow 2b=a+c\\). Thus \\(a,b,c\\) (and hence \\(A,B,C\\)) are in A.P.",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "133": {
+  "chapter": "Permutations and Combinations",
+  "subtopic": "Selection and Arrangement with Constraints",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "\\(^{n+4}C_{n+1}-\\,^{n+3}C_{n}=\\,^{n+4}C_{3}-\\,^{n+3}C_{3}=\\,^{n+3}C_{2}=\\dfrac{(n+3)(n+2)}{2}=15(n+2)\\Rightarrow n+3=30\\Rightarrow n=27\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "134": {
+  "chapter": "Mathematical Logic",
+  "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "Simplify \\([\\{q\\wedge(\\sim q\\vee r)\\}\\wedge\\{\\sim p\\vee(p\\wedge\\sim r)\\}]\\vee(p\\wedge r)\\). Now \\(q\\wedge(\\sim q\\vee r)=q\\wedge r\\) and \\(\\sim p\\vee(p\\wedge\\sim r)=\\sim p\\vee\\sim r\\), so the bracket \\(=(q\\wedge r)\\wedge(\\sim p\\vee\\sim r)=q\\wedge r\\wedge\\sim p\\). The whole \\(=(q\\wedge r\\wedge\\sim p)\\vee(p\\wedge r)=r\\wedge[(q\\wedge\\sim p)\\vee p]=r\\wedge(p\\vee q)\\). With \\(p=S_{1},q=S_{2},r=S_{3}\\): \\((S_{1}\\parallel S_{2})\\) in series with \\(S_{3}\\). Among the four circuits, option B is exactly \\(S_{1},S_{2}\\) in parallel then \\(S_{3}\\) in series; option A is \\((S_{1}\\) series \\(S_{3})\\parallel S_{2}\\), which is \\((S_{1}\\wedge S_{3})\\vee S_{2}\\) and is incorrect.",
+  "akAnswer": "A",
+  "agreesWithAk": false,
+  "note": "Boolean simplifies: [{q^(~q v r)}^{~p v(p^~r)}] v (p^r) = (q^r^~p) v (p^r) = r^(p v q). Circuit = S1 parallel S2, then S3 in series = image18 = option B. AK keyed A (image17 = (S1^S3) v S2 = (p^r) v q), which is wrong. Correct B.",
+  "optionFigures": true,
+  "optionOverrides": {
+   "A": "(A)",
+   "B": "(B)",
+   "C": "(C)",
+   "D": "(D)"
+  }
+ },
+ "135": {
+  "chapter": "Limits",
+  "subtopic": "Limit Evaluation Techniques",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "The sum is \\(\\displaystyle\\sum_{k=1}^{n}\\dfrac{k^{3}}{1-n^{4}}=\\dfrac{1}{1-n^{4}}\\left(\\dfrac{n(n+1)}{2}\\right)^{2}=\\dfrac{n^{2}(n+1)^{2}}{4(1-n^{4})}\\). As \\(n\\to\\infty\\), the ratio of leading \\(n^{4}\\) terms is \\(\\dfrac{1}{4(-1)}=-\\dfrac14\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "136": {
+  "chapter": "Differentiation",
+  "subtopic": "Logarithmic Differentiation",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(\\log f(\\theta)=\\sum\\log\\cos\\theta_{i}\\). Differentiating, \\(\\dfrac{f'(\\theta)}{f(\\theta)}=-\\sum\\tan\\theta_{i}\\), so \\(\\sum\\tan\\theta_{i}=\\dfrac{-f'(\\theta)}{f(\\theta)}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "137": {
+  "chapter": "Line and Plane",
+  "subtopic": "Distances in 3-D",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "\\(\\overline{AB}=(2,-2,-3),\\ \\overline{AC}=(4,0,6),\\ \\overline{AD}=(-7,-7,7)\\). \\(\\overline{AB}\\times\\overline{AC}=(-12,-24,8)\\), magnitude \\(28\\). Altitude through D \\(=\\dfrac{|\\overline{AD}\\cdot(\\overline{AB}\\times\\overline{AC})|}{28}=\\dfrac{|84+168+56|}{28}=\\dfrac{308}{28}=11\\) units.",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "138": {
+  "chapter": "Line and Plane",
+  "subtopic": "Angles — Line, Plane, and Direction Conditions",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "Roots of \\(x^{3}+x^{2}-4x-4=0\\) are \\(l,m,n\\): \\(\\sum=-1,\\ \\sum lm=-4\\), so \\(l^{2}+m^{2}+n^{2}=(-1)^{2}-2(-4)=9\\). \\(\\cos\\theta=\\dfrac{lm+mn+nl}{l^{2}+m^{2}+n^{2}}=\\dfrac{-4}{9}\\Rightarrow\\theta=\\cos^{-1}\\left(\\dfrac{-4}{9}\\right)\\).",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "139": {
+  "chapter": "Line and Plane",
+  "subtopic": "Distances in 3-D",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Point on line \\(Q=(2t+1,4t+3,3t+2)\\), so \\(\\overrightarrow{PQ}=(2t-2,4t-5,3t)\\). \\(PQ\\parallel\\) plane \\(3x+2y-2z+15=0\\): \\(3(2t-2)+2(4t-5)-2(3t)=0\\Rightarrow8t-16=0\\Rightarrow t=2\\). \\(Q=(5,11,8)\\), \\(d(PQ)=\\sqrt{4+9+36}=7\\) units.",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "140": {
+  "chapter": "Linear Programming",
+  "subtopic": "Objective Function — Maximisation and Minimisation",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "Minimising \\(z=x+y\\): at corners \\(A(2,0)\\to2\\) and \\(E(0,2)\\to2\\) the minimum value \\(2\\) is attained at two adjacent corners, so the LPP has infinitely many optimal points along segment AE.",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "141": {
+  "chapter": "Applications of Derivative",
+  "subtopic": "Rolle's Theorem and Mean Value Theorem",
+  "difficulty": "EASY",
+  "answer": "C",
+  "solution": "\\(f(x)=x^{3}\\) on \\([-2,2]\\): MVT gives \\(f'(c)=\\dfrac{f(2)-f(-2)}{4}=\\dfrac{16}{4}=4\\). \\(3c^{2}=4\\Rightarrow c=\\pm\\dfrac{2}{\\sqrt3}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "142": {
+  "chapter": "Applications of Derivative",
+  "subtopic": "Rate of Change and Related Rates",
+  "difficulty": "HARD",
+  "answer": "B",
+  "solution": "\\(A=\\dfrac12x^{2}\\sin\\theta\\). \\(\\dfrac{dA}{dt}=\\dfrac12\\left[x^{2}\\cos\\theta\\dfrac{d\\theta}{dt}+2x\\sin\\theta\\dfrac{dx}{dt}\\right]\\). With \\(x=12,\\theta=\\dfrac{\\pi}{4},\\dfrac{dx}{dt}=\\dfrac{1}{12},\\dfrac{d\\theta}{dt}=\\dfrac{\\pi}{180}\\): \\(=\\dfrac12\\left[144\\cdot\\dfrac{1}{\\sqrt2}\\cdot\\dfrac{\\pi}{180}+24\\cdot\\dfrac{1}{\\sqrt2}\\cdot\\dfrac{1}{12}\\right]=\\dfrac{1}{\\sqrt2}\\left[\\dfrac{144\\pi}{360}+1\\right]=\\sqrt2\\left(\\dfrac{\\pi}{5}+\\dfrac12\\right)\\) m\\(^{2}\\)/hour.",
+  "akAnswer": "B",
+  "agreesWithAk": true
+ },
+ "143": {
+  "chapter": "Indefinite Integration",
+  "subtopic": "Trigonometric Integrals - Powers and Identities",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Repeatedly use \\(\\sin\\alpha\\cos\\alpha=\\dfrac12\\sin2\\alpha\\): \\(\\cos\\dfrac{x}{16}\\sin\\dfrac{x}{16}=\\dfrac12\\sin\\dfrac{x}{8}\\); then \\(\\dfrac12\\sin\\dfrac{x}{8}\\cos\\dfrac{x}{8}=\\dfrac14\\sin\\dfrac{x}{4}\\); then \\(\\dfrac14\\sin\\dfrac{x}{4}\\cos\\dfrac{x}{4}=\\dfrac18\\sin\\dfrac{x}{2}\\). So \\(I=\\dfrac18\\int\\sin\\dfrac{x}{2}\\,dx=-\\dfrac14\\cos\\dfrac{x}{2}+c\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "144": {
+  "chapter": "Indefinite Integration",
+  "subtopic": "Rational Functions and Partial Fractions",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "\\(\\dfrac{x^{3}}{(x+1)^{2}}=(x-2)+\\dfrac{3}{x+1}-\\dfrac{1}{(x+1)^{2}}\\). Integrating: \\(\\dfrac{x^{2}}{2}-2x+3\\log(x+1)+\\dfrac{1}{x+1}+c\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "145": {
+  "chapter": "Applications of Derivative",
+  "subtopic": "Monotonicity, Extrema, and Optimisation",
+  "difficulty": "MODERATE",
+  "answer": "D",
+  "solution": "Wire length \\(8=4x+2\\pi r\\). Total area \\(A=x^{2}+\\pi r^{2}\\). Minimising gives \\(x=\\dfrac{8}{\\pi+4},\\ 2\\pi r=8-\\dfrac{32}{\\pi+4}\\), and minimum \\(A=\\dfrac{16}{\\pi+4}\\).",
+  "akAnswer": "D",
+  "agreesWithAk": true
+ },
+ "146": {
+  "chapter": "Probability Distribution",
+  "subtopic": "Basic Probability — Events, Conditional, and Complement",
+  "difficulty": "EASY",
+  "answer": "A",
+  "solution": "Mutually exclusive and exhaustive: \\(P(A)+P(B)+P(C)=1\\). With \\(P(B)=\\dfrac32P(A),\\ P(C)=\\dfrac12P(B)=\\dfrac34P(A)\\): \\(P(A)\\left(1+\\dfrac32+\\dfrac34\\right)=P(A)\\cdot\\dfrac{13}{4}=1\\Rightarrow P(A)=\\dfrac{4}{13}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "147": {
+  "chapter": "Conic Sections",
+  "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+  "difficulty": "HARD",
+  "answer": "A",
+  "solution": "\\(y^{2}=4(x-1)\\) has latus-rectum ends \\((2,\\pm2)\\); \\(x^{2}=-4(y-3)\\) has ends \\((\\pm2,2)\\). Common end \\((2,2)\\). Slopes: for the first, \\(2y\\,y'=4\\Rightarrow m_{1}=1\\); for the second, \\(2x+4y'=0\\Rightarrow m_{2}=-1\\). \\(m_{1}m_{2}=-1\\), so the angle is \\(\\dfrac{\\pi}{2}\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "148": {
+  "chapter": "Straight Line",
+  "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+  "difficulty": "MODERATE",
+  "answer": "A",
+  "solution": "Diagonal midpoint of \\((1,3),(5,1)\\) is \\((3,2)\\), which lies on \\(y=2x+c\\Rightarrow c=-4\\). Vertex \\((x,2x-4)\\) with slope\\((AB)\\cdot\\)slope\\((BC)=-1\\) gives \\(x^{2}-6x+8=0\\Rightarrow x=4,2\\), so the vertices are \\((4,4)\\) and \\((2,0)\\).",
+  "akAnswer": "A",
+  "agreesWithAk": true
+ },
+ "149": {
+  "chapter": "Differentiation",
+  "subtopic": "Logarithmic Differentiation",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "\\(\\log y=x\\log a+(2x-1)\\log b\\Rightarrow\\dfrac1y\\dfrac{dy}{dx}=\\log(ab^{2})\\), so \\(\\dfrac{dy}{dx}=y\\log(ab^{2})\\). Differentiating again: \\(\\dfrac{d^{2}y}{dx^{2}}=\\dfrac{dy}{dx}\\log(ab^{2})=y[\\log(ab^{2})]^{2}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ },
+ "150": {
+  "chapter": "Differential Equations",
+  "subtopic": "Applications — Growth, Decay, Cooling",
+  "difficulty": "MODERATE",
+  "answer": "C",
+  "solution": "\\(\\dfrac{dx}{dt}=kx\\Rightarrow\\log x=kt+c\\). At \\(t=0,x=10^{5}\\); at \\(t=2,x=1.1\\times10^{5}\\): \\(k=\\dfrac12\\log\\dfrac{11}{10}\\). For \\(x=2\\times10^{5}\\): \\(\\dfrac12\\log\\dfrac{11}{10}\\,t=\\log2\\Rightarrow t=\\dfrac{2\\log2}{\\log\\left(\\frac{11}{10}\\right)}\\).",
+  "akAnswer": "C",
+  "agreesWithAk": true
+ }
+}

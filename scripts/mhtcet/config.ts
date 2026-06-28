@@ -65,6 +65,22 @@ export const SHIFTS: Record<string, { sourceFile: string; pyqYear: number; pyqMo
     sourceFile: "MHT_CET_2025_Apr_20_S2.docx", pyqYear: 2025, pyqMonth: "April", pyqNote: "20 April Shift II",
     qp: "C:/tmp/PYQPs/MHT-CET/2025/20th april shift II.docx", ak: "C:/tmp/PYQPs/MHT-CET/2025/20th april shift II_AK.docx",
   },
+  "2025-apr-21-s1": {
+    sourceFile: "MHT_CET_2025_Apr_21_S1.docx", pyqYear: 2025, pyqMonth: "April", pyqNote: "21 April Shift I",
+    qp: "C:/tmp/PYQPs/MHT-CET/2025/21st April Shift I.docx", ak: "C:/tmp/PYQPs/MHT-CET/2025/21st April Shift I_AK.docx",
+  },
+  "2025-apr-21-s2": {
+    sourceFile: "MHT_CET_2025_Apr_21_S2.docx", pyqYear: 2025, pyqMonth: "April", pyqNote: "21 April Shift II",
+    qp: "C:/tmp/PYQPs/MHT-CET/2025/21st april shift II.docx", ak: "C:/tmp/PYQPs/MHT-CET/2025/21st april shift II_AK.docx",
+  },
+  "2025-apr-22-s1": {
+    sourceFile: "MHT_CET_2025_Apr_22_S1.docx", pyqYear: 2025, pyqMonth: "April", pyqNote: "22 April Shift I",
+    qp: "C:/tmp/PYQPs/MHT-CET/2025/22nd april Shift I.docx", ak: "C:/tmp/PYQPs/MHT-CET/2025/22nd april shift I_AK.docx",
+  },
+  "2025-apr-22-s2": {
+    sourceFile: "MHT_CET_2025_Apr_22_S2.docx", pyqYear: 2025, pyqMonth: "April", pyqNote: "22 April Shift II",
+    qp: "C:/tmp/PYQPs/MHT-CET/2025/22nd april shift II.docx", ak: "C:/tmp/PYQPs/MHT-CET/2025/22nd april shift II_AK.docx",
+  },
 };
 
 const OUT = join(__dirname, "out");

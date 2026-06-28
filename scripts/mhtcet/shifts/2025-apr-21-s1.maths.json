@@ -1,0 +1,452 @@
+{
+  "101": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Probability Calculation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For \\(B(10,p)\\), \\(5P(X=0)=P(X=1)\\) gives \\(5q^{10}=10pq^{9}\\Rightarrow q=2p\\). With \\(p+q=1\\): \\(3p=1\\Rightarrow p=\\dfrac13,\\ q=\\dfrac23\\). Then \\(\\dfrac{P(X=5)}{P(X=6)}=\\dfrac{^{10}C_5 p^5q^5}{^{10}C_6 p^6q^4}=\\dfrac{^{10}C_5}{^{10}C_6}\\cdot\\dfrac{q}{p}=\\dfrac{6}{5}\\cdot2=\\dfrac{12}{5}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Put \\(u=x+9y\\Rightarrow \\dfrac{du}{dx}=1+9u^2\\), so \\(\\dfrac{du}{1+9u^2}=dx\\). Integrating: \\(\\dfrac13\\tan^{-1}(3u)=x+c\\Rightarrow \\tan^{-1}(3x+27y)=3x+3c\\). At \\(x=0,\\ y=\\dfrac1{27}\\): \\(\\tan^{-1}(1)=3c\\Rightarrow 3c=\\dfrac{\\pi}{4}\\). Hence \\(3x+27y=\\tan\\!\\left(3x+\\dfrac{\\pi}{4}\\right)=\\tan\\!\\left[3\\left(x+\\dfrac{\\pi}{12}\\right)\\right]\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "As \\(x\\to\\infty\\), \\(e^{x^4}\\to\\infty\\). Divide numerator and denominator by \\(e^{x^4}\\): \\(\\dfrac{1-e^{-x^4}}{1+e^{-x^4}}\\to\\dfrac{1-0}{1+0}=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distances in 3-D",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\bar b_1\\times\\bar b_2=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\1&2&-3\\\\2&4&-5\\end{vmatrix}=(2,-1,0)\\), magnitude \\(\\sqrt5\\). \\(\\bar a_2-\\bar a_1=(\\hat i-\\hat j+2\\hat k)-(4\\hat i-\\hat j)=(-3,0,2)\\). Shortest distance \\(=\\left|\\dfrac{(-3,0,2)\\cdot(2,-1,0)}{\\sqrt5}\\right|=\\left|\\dfrac{-6}{\\sqrt5}\\right|=\\dfrac{6}{\\sqrt5}\\) units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Trigonometric Identities and Compound/Half-Angle Formulas",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "With \\(f(x)=\\cos(\\log x)\\), let \\(A=\\log x^2,\\ B=\\log y^2\\). Then \\(f(x^2)f(y^2)=\\cos A\\cos B\\). Also \\(f\\!\\left(\\dfrac{x^2}{y^2}\\right)=\\cos(A-B)\\) and \\(f(x^2y^2)=\\cos(A+B)\\). The expression is \\(\\cos A\\cos B-\\dfrac12[\\cos(A-B)+\\cos(A+B)]=\\cos A\\cos B-\\dfrac12(2\\cos A\\cos B)=0\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Separate: \\(\\dfrac{dy}{y}=2x e^{x^2}dx\\). Put \\(u=x^2\\): \\(\\log y=\\int e^u\\,du=e^{x^2}+\\log c\\Rightarrow \\log\\dfrac{y}{c}=e^{x^2}\\Rightarrow y=c\\,e^{e^{x^2}}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "A function \\(f(x,y)\\) is homogeneous of degree \\(n\\) if \\(f(\\lambda x,\\lambda y)=\\lambda^n f(x,y)\\). \\(y^2+2xy\\) (degree 2), \\(2x-3y\\) (degree 1), and \\(\\sin(y/x)\\) (degree 0) all satisfy this. But \\(\\cos x+\\sin y\\) does not, so it is not homogeneous.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Volume \\(=\\begin{vmatrix}1&x&1\\\\0&1&x\\\\x&0&1\\end{vmatrix}=1(1)-x(0-x^2)+1(0-x)=1+x^3-x\\). Let \\(f(x)=1+x^3-x\\); \\(f'(x)=3x^2-1=0\\Rightarrow x=\\pm\\dfrac1{\\sqrt3}\\). \\(f''(x)=6x\\): max at \\(x=-\\dfrac1{\\sqrt3}\\), min at \\(x=\\dfrac1{\\sqrt3}\\). Max \\(=1+\\dfrac{2}{3\\sqrt3}\\), min \\(=1-\\dfrac{2}{3\\sqrt3}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Non-negativity of all probabilities gives \\(0\\le p\\le1\\), so minimum \\(p=0\\). \\(E(X)=0\\cdot\\dfrac{1+p}5+1\\cdot\\dfrac{2-2p}5+2\\cdot\\dfrac{2-p}5+3\\cdot\\dfrac{2p}5=\\dfrac{6+2p}5\\). Hence \\(5E(X)=6+2p\\); at \\(p=0\\), \\(5E(X)=6\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Expand \\(\\bar a\\times(\\bar b\\times\\bar c)=(\\bar a\\cdot\\bar c)\\bar b-(\\bar a\\cdot\\bar b)\\bar c\\). Dotting with \\(\\bar a\\times\\bar c\\): the \\(\\bar c\\) term vanishes (\\(\\bar c\\cdot(\\bar a\\times\\bar c)=0\\)), giving \\((\\bar a\\cdot\\bar c)\\,[\\bar b\\;\\bar a\\;\\bar c]=5\\). Since \\(\\bar a\\cdot\\bar c=\\cos\\dfrac{\\pi}{3}=\\dfrac12\\), \\([\\bar b\\;\\bar a\\;\\bar c]=10\\). Thus \\([\\bar a\\;\\bar b\\;\\bar c]=-[\\bar b\\;\\bar a\\;\\bar c]=-10\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\sum_{x=0}^\\infty k(x+1)\\left(\\tfrac12\\right)^x=1\\). Using \\(\\sum_{x\\ge0}(x+1)r^x=\\dfrac1{(1-r)^2}\\) with \\(r=\\tfrac12\\): \\(k\\cdot\\dfrac1{(1/2)^2}=4k=1\\Rightarrow k=\\dfrac14\\). Then \\(P(X=1)=k\\cdot2\\cdot\\tfrac12=k=\\dfrac14\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Area \\(=2\\int_a^{4a}\\sqrt{4ax}\\,dx=4\\sqrt a\\cdot\\dfrac23\\left[x^{3/2}\\right]_a^{4a}=\\dfrac8{3}\\sqrt a\\left[(4a)^{3/2}-a^{3/2}\\right]=\\dfrac8{3}\\sqrt a\\,(8a\\sqrt a-a\\sqrt a)=\\dfrac8{3}\\sqrt a\\cdot7a\\sqrt a=\\dfrac{56}{3}a^2\\) sq. units.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let \\(I=\\int_2^4\\dfrac{\\log x^2}{\\log x^2+\\log(6-x)^2}\\,dx\\) (since \\(36-12x+x^2=(6-x)^2\\)). By King's property \\(x\\to6-x\\): \\(I=\\int_2^4\\dfrac{\\log(6-x)^2}{\\log(6-x)^2+\\log x^2}\\,dx\\). Adding, \\(2I=\\int_2^4 1\\,dx=2\\Rightarrow I=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Since \\(\\bar a\\cdot\\bar b=\\bar a\\cdot\\bar c=0\\), \\(\\bar a\\) is perpendicular to both \\(\\bar b\\) and \\(\\bar c\\), so \\(\\bar a=\\pm\\dfrac{\\bar b\\times\\bar c}{|\\bar b\\times\\bar c|}\\). Here \\(|\\bar b\\times\\bar c|=\\sin\\dfrac{\\pi}{6}=\\dfrac12\\), giving \\(\\bar a=\\pm2(\\bar b\\times\\bar c)\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "\\(|\\bar a+\\bar b|^2=1+1+2\\bar a\\cdot\\bar b=3\\Rightarrow \\bar a\\cdot\\bar b=\\dfrac12\\). Since \\(\\bar a\\cdot\\bar b=\\cos\\theta=\\dfrac12\\), \\(\\theta=\\dfrac{\\pi}{3}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Split where \\([x^2]\\) changes: \\([x^2]=0\\) on \\((0,1)\\), \\(1\\) on \\((1,\\sqrt2)\\), \\(2\\) on \\((\\sqrt2,\\sqrt3)\\), \\(3\\) on \\((\\sqrt3,2)\\). So \\(\\int_0^2[x^2]\\,dx=1(\\sqrt2-1)+2(\\sqrt3-\\sqrt2)+3(2-\\sqrt3)=\\sqrt2-1+2\\sqrt3-2\\sqrt2+6-3\\sqrt3=5-\\sqrt2-\\sqrt3\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Rational and Substitution Forms",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Put \\(u=4\\sin x+7\\Rightarrow \\sin x=\\dfrac{u-7}4,\\ \\cos x\\,dx=\\dfrac{du}4\\). Then \\(I=\\dfrac3{16}\\int\\dfrac{u-7}{u}\\,du=\\dfrac3{16}(u-7\\log u)=\\dfrac3{16}(4\\sin x+7)-\\dfrac{21}{16}\\log(4\\sin x+7)=\\dfrac34\\sin x-\\dfrac{21}{16}\\log(4\\sin x+7)+c\\). So \\(A=\\dfrac34,\\ B=\\dfrac{21}{16}\\), and \\(A+B=\\dfrac{33}{16}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Volume \\(=\\begin{vmatrix}1&0&-1\\\\\\lambda&1&1-\\lambda\\\\\\mu&\\lambda&1+\\lambda-\\mu\\end{vmatrix}\\). Applying \\(C_3\\to C_3+C_1\\): \\(\\begin{vmatrix}1&0&0\\\\\\lambda&1&1\\\\\\mu&\\lambda&1+\\lambda\\end{vmatrix}=1\\cdot(1+\\lambda-\\lambda)=1\\), which is independent of both \\(\\lambda\\) and \\(\\mu\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Partial fractions: \\(\\dfrac1{x(x^2+1)}=\\dfrac1x-\\dfrac{x}{x^2+1}\\). Integrating: \\(\\int\\dfrac1x\\,dx-\\dfrac12\\int\\dfrac{2x}{x^2+1}\\,dx=\\log x-\\dfrac12\\log(x^2+1)+c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "The lines \\(x=5\\) (vertical) and \\(y=3\\) (horizontal) meet at \\((5,3)\\); their angle bisectors pass through \\((5,3)\\) with slopes \\(\\pm1\\): \\(y-3=\\pm(x-5)\\), i.e. \\(x-y-2=0\\) and \\(x+y-8=0\\). Joint equation: \\((x-y-2)(x+y-8)=x^2-y^2-10x+6y+16=0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Let \\(\\sin\\alpha=\\dfrac13,\\ \\sin\\beta=\\dfrac35\\), so \\(\\cos\\alpha=\\dfrac{2\\sqrt2}{3},\\ \\cos\\beta=\\dfrac45\\). Then \\(\\sin^{-1}x=\\dfrac{\\pi}{2}-(\\alpha+\\beta)\\Rightarrow x=\\cos(\\alpha+\\beta)=\\cos\\alpha\\cos\\beta-\\sin\\alpha\\sin\\beta=\\dfrac{2\\sqrt2}{3}\\cdot\\dfrac45-\\dfrac13\\cdot\\dfrac35=\\dfrac{8\\sqrt2-3}{15}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Foundations and Standard Formulae",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Complete the square: \\(x^2-6x-16=(x-3)^2-25\\). Using \\(\\int\\sqrt{t^2-a^2}\\,dt=\\dfrac t2\\sqrt{t^2-a^2}-\\dfrac{a^2}2\\log\\left|t+\\sqrt{t^2-a^2}\\right|\\) with \\(t=x-3,\\ a^2=25\\): \\(I=\\dfrac{x-3}2\\sqrt{x^2-6x-16}-\\dfrac{25}2\\log\\left(x-3+\\sqrt{x^2-6x-16}\\right)+c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(2\\tan^{-1}\\dfrac12=\\tan^{-1}\\dfrac{2\\cdot\\frac12}{1-\\frac14}=\\tan^{-1}\\dfrac43\\). Then \\(\\tan^{-1}\\dfrac43+\\tan^{-1}\\dfrac38=\\tan^{-1}\\dfrac{\\frac43+\\frac38}{1-\\frac43\\cdot\\frac38}=\\tan^{-1}\\dfrac{41/24}{1/2}=\\tan^{-1}\\dfrac{41}{12}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\left(1+\\dfrac ac+\\dfrac bc\\right)\\left(1+\\dfrac cb-\\dfrac ab\\right)=\\dfrac{(a+b+c)(b+c-a)}{bc}=\\dfrac{(b+c)^2-a^2}{bc}=\\dfrac{b^2+c^2-a^2}{bc}+2=2\\cos A+2=2\\cos30^\\circ+2=\\sqrt3+2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Counting and Geometric Applications",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Line–line intersections: \\(^8C_2=28\\). Circle–circle: each pair meets in at most 2 points, \\(2\\cdot{}^4C_2=12\\). Line–circle: each of \\(8\\times4=32\\) pairs meets in at most 2 points, \\(64\\). Total \\(=28+12+64=104\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(a\\cos B=b\\cos A\\) with the cosine rule gives \\(a^2+c^2-b^2=b^2+c^2-a^2\\Rightarrow a=b\\). Area \\(=\\dfrac12 a^2\\sin C\\). From \\(c^2=2a^2(1-\\cos C)\\), \\(\\cos C=\\dfrac{2a^2-c^2}{2a^2}\\), so \\(\\sin C=\\dfrac{c\\sqrt{4a^2-c^2}}{2a^2}\\). Hence Area \\(=\\dfrac12 a^2\\cdot\\dfrac{c\\sqrt{4a^2-c^2}}{2a^2}=\\dfrac c4\\sqrt{4a^2-c^2}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Lateral surface area \\(A=\\pi r\\sqrt{r^2+h^2}\\). \\(\\dfrac{dA}{dt}=\\pi\\left[\\dfrac{r(r\\,r'+h\\,h')}{\\sqrt{r^2+h^2}}+\\sqrt{r^2+h^2}\\,r'\\right]\\). With \\(r=7,h=24,\\ \\sqrt{r^2+h^2}=25,\\ r'=3,h'=-4\\): \\(\\dfrac{dA}{dt}=\\pi\\left[\\dfrac{7(21-96)}{25}+25\\cdot3\\right]=\\pi[-21+75]=54\\pi\\) cm\\(^2\\)/min.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(c^2=a^2+b^2-2ab\\cos C=16+64-64\\cdot\\dfrac12=48\\Rightarrow c=4\\sqrt3\\). \\(\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}=\\dfrac{16+48-64}{32\\sqrt3}=0\\Rightarrow B=\\dfrac{\\pi}{2}\\). \\(\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}=\\dfrac{96}{64\\sqrt3}=\\dfrac{\\sqrt3}{2}\\), \\(\\cos C=\\dfrac12\\), so \\(\\cos A:\\cos C=\\sqrt3:1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Adjoint, Determinant, and A·adj(A) Identity",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "With \\(a_{ij}=2i+j\\): \\(A=\\begin{bmatrix}3&4&5\\\\5&6&7\\\\7&8&9\\end{bmatrix}\\). The third element in the second row of \\(\\operatorname{adj}A\\) is \\((\\operatorname{adj}A)_{23}=C_{32}=(-1)^{3+2}\\begin{vmatrix}3&5\\\\5&7\\end{vmatrix}=-(21-25)=4\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(f'(x)=5x^4-20x^3+15x^2=5x^2(x-1)(x-3)\\), so critical points \\(x=0,1,3\\). \\(f''(x)=20x^3-60x^2+30x\\); \\(f''(1)=-10<0\\), giving a maximum at \\(x=1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(f(x)=(x+2)e^{-x}\\Rightarrow f'(x)=-e^{-x}(x+1)\\). \\(f'(x)>0\\) when \\(x+1<0\\), i.e. increasing on \\((-\\infty,-1)\\); decreasing on \\((-1,\\infty)\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rolle's Theorem and Mean Value Theorem",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(f(x)=x(x+3)e^{-x/2}\\Rightarrow f'(x)=-\\dfrac12 e^{-x/2}(x^2-x-6)\\). \\(f'(c)=0\\Rightarrow c^2-c-6=0\\Rightarrow c=3\\) or \\(-2\\). Only \\(c=-2\\in(-3,0)\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Differentiation",
+    "subtopic": "Implicit Differentiation & Special Forms",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "From \\((a+bx)e^{y/x}=x\\), \\(\\dfrac yx=\\log x-\\log(a+bx)\\). Differentiating: \\(x\\dfrac{dy}{dx}-y=\\dfrac{ax}{a+bx}\\). Differentiating again gives \\(x\\dfrac{d^2y}{dx^2}=\\dfrac{a^2}{(a+bx)^2}\\), so \\(x^3\\dfrac{d^2y}{dx^2}=\\left(\\dfrac{ax}{a+bx}\\right)^2=\\left(x\\dfrac{dy}{dx}-y\\right)^2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(x=\\log t\\Rightarrow t=e^x\\), so \\(y=\\dfrac1t=e^{-x}\\). Then \\(\\dfrac{dy}{dx}=-e^{-x}\\) and \\(\\dfrac{d^2y}{dx^2}=e^{-x}=y\\). (Equivalently \\(=-\\dfrac{dy}{dx}\\).)",
+    "agreesWithAk": true,
+    "note": "No answer key in source (status no_answer_key). Independently derived: d2y/dx2 = e^{-x} = y, which is option C; note option B (-dy/dx) is also algebraically equal to e^{-x}, so two options are mathematically valid. Stored C as the most direct match."
+  },
+  "135": {
+    "chapter": "Differentiation",
+    "subtopic": "Foundations, Chain Rule & Differentiability",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "With \\(t=K^{\\cos^{-1}x}\\), \\(y=\\dfrac{t}{1+t}\\). Then \\(\\dfrac{dy}{dt}=\\dfrac{(1+t)-t}{(1+t)^2}=\\dfrac1{(1+t)^2}=\\dfrac1{\\left(1+K^{\\cos^{-1}x}\\right)^2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "For \\(z_1=\\sin x+i\\cos2x\\) and \\(z_2=\\cos x-i\\sin2x\\) to be conjugates, \\(z_1=\\overline{z_2}=\\cos x+i\\sin2x\\). Equating parts: \\(\\sin x=\\cos x\\) and \\(\\cos2x=\\sin2x\\), i.e. \\(\\tan x=1\\) and \\(\\tan2x=1\\). These give \\(x=\\dfrac{\\pi}{4}+n\\pi\\) and \\(x=\\dfrac{\\pi}{8}+\\dfrac{n\\pi}{2}\\), which share no real solution. Hence for no value of \\(x\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "UNIVERSITY has 10 letters with I repeated twice. Total arrangements \\(=\\dfrac{10!}{2!}\\). Arrangements with both I's together \\(=9!\\). So \\(P(\\text{I's not together})=1-\\dfrac{9!}{10!/2!}=1-\\dfrac{2!\\cdot9!}{10!}=1-\\dfrac{2}{10}=\\dfrac45\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\([\\sim(\\sim p\\vee q)\\vee(p\\wedge r)]\\wedge(\\sim q\\wedge r)\\). By De Morgan, \\(\\sim(\\sim p\\vee q)=p\\wedge\\sim q\\), so the bracket is \\((p\\wedge\\sim q)\\vee(p\\wedge r)=p\\wedge(\\sim q\\vee r)\\). Then \\(p\\wedge(\\sim q\\vee r)\\wedge(\\sim q\\wedge r)\\); since \\(\\sim q\\wedge r\\) implies \\(\\sim q\\vee r\\), this reduces to \\(p\\wedge\\sim q\\wedge r=(p\\wedge r)\\wedge\\sim q\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Linear Programming",
+    "subtopic": "Objective Function — Maximisation and Minimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "The feasible corner values of \\(z=30x+20y\\) are: \\(F(0,3)\\to60\\) and \\(G(1,\\tfrac32)\\to60\\) (the two minima), \\(C(4,0)\\to120\\), \\(A(8,0)\\to240\\), \\(B(0,8)\\to160\\). The minimum value 60 occurs at two adjacent corners, so the LPP has infinitely many optimal solutions along segment FG.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Line and Plane",
+    "subtopic": "Foot of Perpendicular, Image, and Projection",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Distance: \\(\\dfrac{|1-4-2-\\alpha|}{3}=5\\Rightarrow|\\alpha+5|=15\\Rightarrow\\alpha=10\\) (since \\(\\alpha>0\\)). Foot \\(M=(1+\\lambda,-2+2\\lambda,1-2\\lambda)\\) on \\(x+2y-2z=10\\): \\((1+\\lambda)+2(-2+2\\lambda)-2(1-2\\lambda)=10\\Rightarrow9\\lambda=15\\Rightarrow\\lambda=\\dfrac53\\). So \\(M=\\left(\\dfrac83,\\dfrac43,-\\dfrac73\\right)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Plane through \\((0,5,0)\\) with normal \\((a,b,c)\\) containing the line (point \\((2,-1,4)\\), direction \\((3,2,-2)\\)): \\(a-3b+2c=0\\) (from passing through the point) and \\(3a+2b-2c=0\\) (perpendicular to direction). Solving: \\((a,b,c)=(2,8,11)\\). Plane: \\(2x+8(y-5)+11z=0\\Rightarrow2x+8y+11z-40=0\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "\\((p\\wedge q)\\to(r\\vee\\sim s)\\) is false only when \\(p\\wedge q=T\\) and \\(r\\vee\\sim s=F\\). Thus \\(p=T,\\ q=T,\\ r=F,\\ \\sim s=F\\Rightarrow s=T\\). So \\((T,T,F,T)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Right limit: \\(\\dfrac{8^x-4^x-2^x+1}{x^2}=\\dfrac{(4^x-1)(2^x-1)}{x^2}\\to(\\log4)(\\log2)\\). \\(f(0)=\\lambda\\log4\\). Continuity gives \\(\\lambda\\log4=(\\log4)(\\log2)\\Rightarrow\\lambda=\\log2\\). Then \\(1000e^{\\lambda}=1000\\,e^{\\log2}=1000\\cdot2=2000\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "The line of intersection is parallel to \\(\\bar n_1\\times\\bar n_2=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\3&-1&1\\\\1&4&-2\\end{vmatrix}=\\hat i(2-4)-\\hat j(-6-1)+\\hat k(12+1)=-2\\hat i+7\\hat j+13\\hat k\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "For \\(y^2=32x\\) (\\(a=8\\)) and \\(x^2=108y\\) (\\(b=27\\)), the common tangent is \\(a^{1/3}x+b^{1/3}y+(ab)^{2/3}=0\\Rightarrow2x+3y+36=0\\). Writing \\(y=mx+c\\) gives \\(c=-12\\), so the Y-intercept is \\(-12\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Point dividing \\((1,1),(2,4)\\) internally in \\(3:2\\): \\(P=\\left(\\dfrac{3\\cdot2+2\\cdot1}5,\\dfrac{3\\cdot4+2\\cdot1}5\\right)=\\left(\\dfrac85,\\dfrac{14}5\\right)\\). On \\(2x+y=k\\): \\(\\dfrac{16}5+\\dfrac{14}5=6=k\\). So \\((k+1):(k-1)=7:5\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Circle",
+    "subtopic": "Tangent, Locus, and Equation Construction",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Circle: centre \\((7,5)\\), radius \\(r=\\sqrt{49+25+151}=15\\). Distance from \\(P(2,-7)\\) to centre \\(=\\sqrt{25+144}=13\\). Minimum distance \\(=|r-d|=2\\), maximum \\(=r+d=28\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "The lines intersect iff \\(\\bar a-\\bar c,\\ \\bar b\\times\\bar c,\\ \\bar a\\times\\bar b\\) are coplanar: \\((\\bar a-\\bar c)\\cdot[(\\bar b\\times\\bar c)\\times(\\bar a\\times\\bar b)]=0\\). Expanding \\((\\bar b\\times\\bar c)\\times(\\bar a\\times\\bar b)=-[\\bar b\\,\\bar c\\,\\bar a]\\bar b\\), this reduces to \\([\\bar b\\,\\bar c\\,\\bar a]\\,(\\bar a-\\bar c)\\cdot\\bar b=0\\Rightarrow(\\bar a-\\bar c)\\cdot\\bar b=0\\Rightarrow\\bar a\\cdot\\bar b=\\bar b\\cdot\\bar c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Using \\(\\tan3\\theta=\\dfrac{3\\tan\\theta-\\tan^3\\theta}{1-3\\tan^2\\theta}\\) at \\(\\theta=10^\\circ\\), \\(\\tan30^\\circ=\\dfrac1{\\sqrt3}\\). So \\(\\dfrac1{\\sqrt3}(1-3\\tan^2\\theta)=3\\tan\\theta-\\tan^3\\theta\\). Squaring and simplifying yields \\(3\\tan^6 10^\\circ-27\\tan^4 10^\\circ+33\\tan^2 10^\\circ=1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\dfrac{dx}{dt}=-k\\sqrt x\\Rightarrow2\\sqrt x=-kt+c\\). At \\(t=0,\\ x=10{,}00{,}000\\): \\(c=2000\\). At \\(t=3,\\ x=10{,}000\\): \\(200=-3k+2000\\Rightarrow k=600\\). Bankrupt when \\(x=0\\): \\(0=-600T+2000\\Rightarrow T=\\dfrac{10}{3}\\) years.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  }
+}
