@@ -395,6 +395,49 @@ export const PAPERS: Record<string, PaperSpec> = {
     createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
   },
 
+  // LWS "APJ Full Mock 6" — 100-q NDA GAT MOCK spanning three subjects: English
+  // (Q1–50), Physics (Q51–75, Electricity & Magnetism), Chemistry (Q76–100, Carbon
+  // + Acids). Born-digital PDF, no printed key (answers DERIVED). Multi-subject mode
+  // (`subjects` + per-record `subject`+`chapter`). Semantic dedup vs the NDA bank:
+  // English 50 new (genuinely new sentences/idioms/antonyms), Physics 25 dup +
+  // Chemistry 25 dup (all classic recurring NDA GK already in the corpus, derived
+  // answers confirmed against the bank). Comprehension Q31–35 share one passage
+  // (context + setLabel "RC1"). Excel-only (bankAdd:false): emit the OMR tagged sheet.
+  "apj-gat6": {
+    slug: "apj-gat6",
+    title: "NDA GAT — APJ Full Mock 6",
+    recordsFile: "apj-gat6.records.json",
+    outName: "Tags_NDA_APJ_GAT_Full_Mock_6",
+    sourceFile: "NDA_GAT_Practice__APJ_Full_Mock_6.pdf",
+    subjects: {
+      English: {
+        Grammar: ["Active and Passive Voice", "Direct and Indirect Speech"],
+        Vocabulary: ["Antonyms", "Word Definition"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+      },
+      Physics: {
+        "Electricity and Magnetism": [
+          "Cells, EMF and Kirchhoff's Laws", "Combination of Resistors",
+          "Electrical Power, Energy and Heating", "Electrostatics",
+          "Magnetic Force and Fleming's Rules", "Magnetism and Magnetic Effects of Current",
+        ],
+      },
+      Chemistry: {
+        "Carbon and Its Compounds": [
+          "Allotropes of Carbon", "Catenation, Tetra-valency and Isomerism",
+          "Functional Groups and Common Organic Compounds", "Hydrocarbons and Organic Classification",
+        ],
+        "Acids, Bases and Salts": ["Water of Crystallization", "pH Scale and Common Substances"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS APJ Full Mock 6",
+    examName: "NDA",
+    section: { key: "apj-gat-full-mock-6", label: "APJ GAT Full Mock 6" },
+    bankAdd: false, // Excel-only for now: emit the OMR tagged sheet
+  },
+
   // LWS "Maths Mock 3" — 120-q NDA Maths MOCK spanning four chapters: Vectors
   // (Q1–20, 71–80), Differentiation (Q21–40, 81–90), Definite Integration
   // (Q41–70), Indefinite Integration (Q91–120). Born-digital PDF, no printed key
