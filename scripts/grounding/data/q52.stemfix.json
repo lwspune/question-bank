@@ -1,0 +1,15 @@
+[
+ {
+  "id": "86a6d216-b70a-430b-a479-71511fecc700",
+  "text": "Let \\(f(x) = \\cos 2x + x\\) on \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). What is the least value of \\(f(x)\\)?",
+  "options": {
+   "A": "\\(-\\left(1 + \\frac{\\pi}{2}\\right)\\)",
+   "B": "\\(-\\left(\\frac{1}{2} + \\frac{\\pi}{2}\\right)\\)",
+   "C": "\\(-\\left(1 + \\frac{\\pi}{4}\\right)\\)",
+   "D": "\\(-2\\left(\\frac{1}{2} - \\frac{\\pi}{4}\\right)\\)"
+  },
+  "correct": "A",
+  "solution": "Given \\(f(x) = \\cos 2x + x\\) on \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). Differentiate: \\(f'(x) = -2\\sin 2x + 1\\). Set \\(f'(x) = 0\\), so \\(\\sin 2x = \\frac{1}{2}\\). On the interval, \\(2x \\in [-\\pi, \\pi]\\), giving \\(2x = \\frac{\\pi}{6}\\) and \\(2x = \\frac{5\\pi}{6}\\), i.e. critical points \\(x = \\frac{\\pi}{12}\\) and \\(x = \\frac{5\\pi}{12}\\). Evaluate \\(f\\) at the critical points and the endpoints. At \\(x = -\\frac{\\pi}{2}\\): \\(f = \\cos(-\\pi) - \\frac{\\pi}{2} = -1 - \\frac{\\pi}{2} = -\\left(1 + \\frac{\\pi}{2}\\right)\\). At \\(x = \\frac{\\pi}{2}\\): \\(f = \\cos\\pi + \\frac{\\pi}{2} = -1 + \\frac{\\pi}{2}\\). At \\(x = \\frac{\\pi}{12}\\): \\(f = \\cos\\frac{\\pi}{6} + \\frac{\\pi}{12} = \\frac{\\sqrt{3}}{2} + \\frac{\\pi}{12}\\) (about \\(1.13\\), the greatest). At \\(x = \\frac{5\\pi}{12}\\): \\(f = \\cos\\frac{5\\pi}{6} + \\frac{5\\pi}{12} = -\\frac{\\sqrt{3}}{2} + \\frac{5\\pi}{12}\\) (about \\(0.44\\)). The smallest of these is \\(-\\left(1 + \\frac{\\pi}{2}\\right)\\) at \\(x = -\\frac{\\pi}{2}\\). Hence the least value is \\(-\\left(1 + \\frac{\\pi}{2}\\right)\\), option A. Sibling Q85 (greatest value) is \\(\\frac{\\sqrt{3}}{2} + \\frac{\\pi}{12}\\), confirming the Direction is read correctly.",
+  "_n": 52
+ }
+]
