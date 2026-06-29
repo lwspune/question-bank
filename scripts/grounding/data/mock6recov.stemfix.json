@@ -1,0 +1,80 @@
+[
+ {
+  "id": "b4d28c47-c1e4-44f5-9596-e1b90b104faa",
+  "text": "Let $A$ and $B$ be matrices of order $3\\times 3$. If $|A| = \\dfrac{1}{2\\sqrt{2}}$ and $|B| = \\dfrac{1}{729}$, then what is the value of $\\left|2B\\,(\\mathrm{adj}(3A))\\right|$?",
+  "options": {
+   "A": "27",
+   "B": "\\(\\dfrac{27}{2\\sqrt{2}}\\)",
+   "C": "\\(\\dfrac{27}{2}\\)",
+   "D": "1"
+  },
+  "correct": "D",
+  "solution": "$|2B\\cdot\\mathrm{adj}(3A)| = |2B|\\cdot|\\mathrm{adj}(3A)|$. For a $3\\times3$ matrix, $|kM| = k^{3}|M|$ and $|\\mathrm{adj}(M)| = |M|^{2}$. So $|2B| = 2^{3}|B| = 8\\cdot\\frac{1}{729}$, and $|\\mathrm{adj}(3A)| = |3A|^{2} = (3^{3}|A|)^{2} = 729^{2}|A|^{2} \\cdot \\frac{1}{729}\\,$... combining: $8\\cdot\\frac{1}{729}\\cdot 729\\,|A|^{2} = 8|A|^{2}$. With $|A| = \\frac{1}{2\\sqrt{2}}$, $|A|^{2} = \\frac{1}{8}$, giving $8\\cdot\\frac{1}{8} = 1$.",
+  "_n": 12
+ },
+ {
+  "id": "7a57cd27-7c01-4559-859d-9702a2cc32ba",
+  "text": "If \\(A = \\begin{bmatrix} 2 & -1 \\\\ -1 & 3 \\end{bmatrix}\\), then the inverse of \\(\\left(2A^2 + 5A\\right)\\) is",
+  "options": {
+   "A": "\\(\\dfrac{1}{95}\\begin{bmatrix} 7 & 3 \\\\ 3 & 4 \\end{bmatrix}\\)",
+   "B": "\\(\\dfrac{1}{95}\\begin{bmatrix} -7 & 3 \\\\ 3 & -4 \\end{bmatrix}\\)",
+   "C": "\\(\\dfrac{1}{95}\\begin{bmatrix} -7 & -3 \\\\ 3 & 4 \\end{bmatrix}\\)",
+   "D": "\\(\\dfrac{1}{95}\\begin{bmatrix} 4 & 3 \\\\ 3 & 7 \\end{bmatrix}\\)"
+  },
+  "correct": "A",
+  "solution": "\\(A^2 = \\begin{bmatrix} 5 & -5 \\\\ -5 & 10 \\end{bmatrix}\\). So \\(2A^2 + 5A = \\begin{bmatrix} 10 & -10 \\\\ -10 & 20 \\end{bmatrix} + \\begin{bmatrix} 10 & -5 \\\\ -5 & 15 \\end{bmatrix} = \\begin{bmatrix} 20 & -15 \\\\ -15 & 35 \\end{bmatrix}\\). Its determinant is \\(20\\cdot 35 - (-15)(-15) = 700 - 225 = 475\\). Hence \\((2A^2+5A)^{-1} = \\dfrac{1}{475}\\begin{bmatrix} 35 & 15 \\\\ 15 & 20 \\end{bmatrix} = \\dfrac{1}{95}\\begin{bmatrix} 7 & 3 \\\\ 3 & 4 \\end{bmatrix}\\), which is option A.",
+  "_n": 100
+ },
+ {
+  "id": "2600e0f2-b730-43fc-8598-1ad29977e679",
+  "text": "Let \\(A=\\begin{bmatrix}1&1&1\\\\0&1&3\\\\1&-2&1\\end{bmatrix},\\ B=\\begin{bmatrix}6\\\\11\\\\0\\end{bmatrix}\\) and \\(X=\\begin{bmatrix}a\\\\b\\\\c\\end{bmatrix}\\), if \\(AX=B\\), then the value of \\(2a+b+2c\\) is",
+  "options": {
+   "A": "10",
+   "B": "8",
+   "C": "6",
+   "D": "12"
+  },
+  "correct": "A",
+  "solution": "\\(AX=B\\) gives the system \\(a+b+c=6\\) ...(i), \\(b+3c=11\\) ...(ii), \\(a-2b+c=0\\) ...(iii). From (iii), \\(a+c=2b\\); substituting into (i): \\(2b+b=6\\Rightarrow b=2\\). From (ii): \\(c=3\\). From (i): \\(a=1\\). Hence \\(2a+b+2c=2(1)+2+2(3)=10\\).",
+  "_n": 101
+ },
+ {
+  "id": "85bcfcc1-3ef4-4131-bec3-94a9e3a149fd",
+  "text": "If \\(A = \\begin{bmatrix} 1 & 2 & 1 \\\\ 3 & 1 & 3 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\\\ 1 & 2 \\end{bmatrix}\\), then \\((AB)^{-1} =\\)",
+  "options": {
+   "A": "\\(\\begin{bmatrix} \\frac{17}{5} & \\frac{9}{5} \\\\ 2 & 1 \\end{bmatrix}\\)",
+   "B": "\\(\\begin{bmatrix} \\frac{-17}{5} & \\frac{9}{5} \\\\ 2 & -1 \\end{bmatrix}\\)",
+   "C": "\\(\\begin{bmatrix} \\frac{17}{5} & 2 \\\\ \\frac{9}{5} & 1 \\end{bmatrix}\\)",
+   "D": "\\(\\begin{bmatrix} \\frac{-17}{5} & 2 \\\\ \\frac{-9}{5} & -1 \\end{bmatrix}\\)"
+  },
+  "correct": "B",
+  "solution": "\\(AB = \\begin{bmatrix} 1 & 2 & 1 \\\\ 3 & 1 & 3 \\end{bmatrix}\\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 5 & 9 \\\\ 10 & 17 \\end{bmatrix}\\). \\(\\det(AB) = (5)(17)-(9)(10) = 85-90 = -5\\). \\((AB)^{-1} = \\frac{1}{-5}\\begin{bmatrix} 17 & -9 \\\\ -10 & 5 \\end{bmatrix} = \\begin{bmatrix} \\frac{-17}{5} & \\frac{9}{5} \\\\ 2 & -1 \\end{bmatrix}\\), which is option (b).",
+  "_n": 102
+ },
+ {
+  "id": "84fc1af9-90a7-48e3-b475-0cde784bdaec",
+  "text": "Evaluate \\(\\lim_{x \\to \\sqrt{2}} \\dfrac{x^{4} - 4}{x^{2} + 3\\sqrt{2}\\,x - 8}\\).",
+  "options": {
+   "A": "\\(\\dfrac{8}{5}\\)",
+   "B": "\\(\\dfrac{8}{3}\\)",
+   "C": "\\(\\dfrac{5}{8}\\)",
+   "D": "\\(\\dfrac{3}{8}\\)"
+  },
+  "correct": "A",
+  "solution": "At \\(x = \\sqrt{2}\\) both numerator and denominator vanish (a \\(0/0\\) form). Factor: \\(x^{4} - 4 = (x^{2} - 2)(x^{2} + 2) = (x - \\sqrt{2})(x + \\sqrt{2})(x^{2} + 2)\\) and \\(x^{2} + 3\\sqrt{2}\\,x - 8 = (x - \\sqrt{2})(x + 4\\sqrt{2})\\). Cancel \\((x - \\sqrt{2})\\): \\(\\lim_{x \\to \\sqrt{2}} \\dfrac{(x + \\sqrt{2})(x^{2} + 2)}{x + 4\\sqrt{2}} = \\dfrac{(2\\sqrt{2})(4)}{5\\sqrt{2}} = \\dfrac{8\\sqrt{2}}{5\\sqrt{2}} = \\dfrac{8}{5}\\).",
+  "_n": 109
+ },
+ {
+  "id": "c409a4ee-8e5e-4e7d-8cd8-3249fb967605",
+  "text": "If \\(f(x) = \\begin{cases} \\dfrac{\\sin^{3}(\\sqrt{x}) \\cdot \\log(1 + 3x)}{\\left(\\tan^{-1}\\sqrt{x}\\right)^{2}\\left(e^{5\\sqrt{x}} - 1\\right)x} & x \\neq 0 \\\\ a & x = 0 \\end{cases}\\) is continuous in \\([0,1]\\), then \\(a\\) equals",
+  "options": {
+   "A": "0",
+   "B": "\\(\\dfrac{3}{5}\\)",
+   "C": "2",
+   "D": "\\(\\dfrac{5}{3}\\)"
+  },
+  "correct": "B",
+  "solution": "Continuity at \\(0\\) requires \\(a = \\lim_{x \\to 0} f(x)\\). Use the standard limits as \\(x \\to 0\\): \\(\\sin^{3}\\sqrt{x} \\sim (\\sqrt{x})^{3} = x^{3/2}\\), \\(\\left(\\tan^{-1}\\sqrt{x}\\right)^{2} \\sim x\\), \\(\\log(1 + 3x) \\sim 3x\\), \\(e^{5\\sqrt{x}} - 1 \\sim 5\\sqrt{x}\\). Then \\(a = \\lim_{x \\to 0} \\dfrac{x^{3/2} \\cdot 3x}{x \\cdot x \\cdot 5\\sqrt{x}} = \\lim_{x \\to 0} \\dfrac{3x^{5/2}}{5x^{5/2}} = \\dfrac{3}{5}\\).",
+  "_n": 111
+ }
+]

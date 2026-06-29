@@ -1,0 +1,121 @@
+[
+ {
+  "id": "3b9c02e1-10d7-4bf7-a844-f460f8bb6ccc",
+  "new_label": "D",
+  "solution": "By Vieta on \\(x^2+\\alpha x-\\beta=0\\): sum of roots \\(\\alpha+\\beta=-\\alpha\\) and product \\(\\alpha\\beta=-\\beta\\). From \\(\\alpha\\beta=-\\beta\\): \\(\\beta(\\alpha+1)=0\\), and since \\(\\beta\\neq0\\) we get \\(\\alpha=-1\\). Then \\(\\alpha+\\beta=-\\alpha\\Rightarrow\\beta=-2\\alpha=2\\). So \\(\\alpha=-1,\\ \\beta=2\\). The expression becomes \\(-x^2+\\alpha x+\\beta=-x^2-x+2\\), a downward parabola with greatest value at \\(x=-\\tfrac{1}{2}\\): \\(-\\tfrac14+\\tfrac12+2=\\tfrac94\\). Hence greatest value \\(\\tfrac94\\) — option D.",
+  "_n": 9,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "04009a70-b539-4eb2-900e-7d8107d943b1",
+  "new_label": "D",
+  "solution": "Let \\(s=\\alpha+\\beta,\\ p=\\alpha\\beta\\). From \\(\\alpha\\beta=\\alpha^2\\beta^2\\): \\(p=p^2\\Rightarrow p=0\\) or \\(p=1\\). From \\(\\alpha+\\beta=\\alpha^2+\\beta^2=s^2-2p\\): \\(s=s^2-2p\\). For \\(p=0\\): \\(s^2-s=0\\Rightarrow s=0,1\\); for \\(p=1\\): \\(s^2-s-2=0\\Rightarrow s=2,-1\\). This gives four valid \\((s,p)\\) pairs \\((0,0),(1,0),(2,1),(-1,1)\\), each a distinct quadratic \\(x^2-sx+p=0\\), and every one satisfies both relations (no distinct-root condition is imposed by the problem). Hence 4 equations — option D. [The old key B=2 wrongly discarded the two repeated-root cases.]",
+  "_n": 10,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "67952243-2288-42c2-a454-f559527b7468",
+  "new_label": "A",
+  "solution": "Expand along column 1: \\(\\det = x\\,(1\\cdot(-i)-i\\cdot2i) + y\\,\\bigl(-(-3i\\cdot(-i)-1\\cdot2i)\\bigr) = x(2-i)+y(3+2i)=(2x+3y)+i(-x+2y)\\). Equate to \\(6+11i\\): \\(2x+3y=6\\) and \\(-x+2y=11\\). Solving, \\(y=4,\\ x=-3\\). Hence \\((x,y)=(-3,4)\\) — option A. [Old key B was an arithmetic slip in solving the same correct system.]",
+  "_n": 16,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "7fbd6238-f30f-4eef-9704-192290046493",
+  "new_label": "C",
+  "solution": "Use \\(\\sin^{-1}x+\\cos^{-1}x=\\tfrac{\\pi}{2}\\). Subtract this from the given \\(4\\sin^{-1}x+\\cos^{-1}x=\\pi\\): \\(3\\sin^{-1}x=\\tfrac{\\pi}{2}\\Rightarrow\\sin^{-1}x=\\tfrac{\\pi}{6}\\), so \\(\\cos^{-1}x=\\tfrac{\\pi}{3}\\). Then \\(\\sin^{-1}x+4\\cos^{-1}x=\\tfrac{\\pi}{6}+\\tfrac{4\\pi}{3}=\\tfrac{\\pi}{6}+\\tfrac{8\\pi}{6}=\\tfrac{9\\pi}{6}=\\tfrac{3\\pi}{2}\\) — option C. [Old solution had \\(\\sin^{-1}x\\) and \\(\\cos^{-1}x\\) swapped.]",
+  "_n": 28,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "4fcc809d-bd05-4956-98b6-71fedbfa3a4a",
+  "new_label": "B",
+  "solution": "Points on \\(y^2=8x\\): \\((2t^2,4t)\\). Distance-squared to \\((4,2)\\): \\(D^2=(2t^2-4)^2+(4t-2)^2\\). Then \\(\\dfrac{d(D^2)}{dt}=2(2t^2-4)(4t)+2(4t-2)(4)=16t^3-16=0\\Rightarrow t^3=1\\Rightarrow t=1\\). Foot: \\((2,4)\\); minimum distance \\(=\\sqrt{(4-2)^2+(2-4)^2}=\\sqrt{8}=2\\sqrt2\\) — option B. [Old solution's derivative \\(4t^3-6t-2=0\\) was wrong.]",
+  "_n": 49,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "aaa8b1f1-85b3-437f-afe4-772120b86ae3",
+  "new_label": "C",
+  "solution": "For the trapezium with three equal sides of length 6 and base angle \\(\\alpha\\), area \\(A=36\\sin\\alpha(1+\\cos\\alpha)=36\\bigl(\\sin\\alpha+\\tfrac12\\sin2\\alpha\\bigr)\\). Then \\(\\dfrac{dA}{d\\alpha}=36(\\cos\\alpha+\\cos2\\alpha)=0\\Rightarrow 2\\cos^2\\alpha+\\cos\\alpha-1=0\\Rightarrow(2\\cos\\alpha-1)(\\cos\\alpha+1)=0\\Rightarrow\\cos\\alpha=\\tfrac12\\Rightarrow\\alpha=\\tfrac{\\pi}{3}\\) — option C. [Old solution dropped the \\(\\tfrac12\\) on \\(\\sin2\\alpha\\).]",
+  "_n": 51,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "75219f11-c48a-4fdb-bf09-3905b32f1895",
+  "new_label": "D",
+  "solution": "Let \\(\\theta\\) be the angle with the floor. Top height \\(h=5\\sin\\theta\\) with \\(\\dfrac{dh}{dt}=-0.1\\) m/s (sliding down). Differentiate: \\(\\dfrac{dh}{dt}=5\\cos\\theta\\,\\dfrac{d\\theta}{dt}\\). When the foot is \\(4\\) m away, \\(\\cos\\theta=\\tfrac45\\), so \\(-0.1=5\\cdot\\tfrac45\\cdot\\dfrac{d\\theta}{dt}=4\\dfrac{d\\theta}{dt}\\Rightarrow\\dfrac{d\\theta}{dt}=-0.025\\) rad/s. The angle decreases at \\(0.025\\) rad/s — option D. [Old solution's equation was garbled.]",
+  "_n": 63,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "2770af65-2847-4b7b-a44a-1517dc9a8b86",
+  "new_label": "A",
+  "solution": "Line A: \\(3y=10-4x\\Rightarrow 4x+3y=10\\). Line B: \\(8x+6y+5=0\\Rightarrow 4x+3y=-\\tfrac52\\). The two lines are parallel. Along a ray from O in direction \\((\\cos\\phi,\\sin\\phi)\\), with \\(k=4\\cos\\phi+3\\sin\\phi\\): \\(OA=\\tfrac{10}{k}\\) and \\(OB=\\tfrac{-5/2}{k}\\) (opposite signs, so O lies between A and B). Hence \\(OA:OB=10:\\tfrac52=4:1\\) — option A. [Old key D=1:3 was wrong.]",
+  "_n": 65,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "187ecd74-3014-4313-8e49-3a696d24acf6",
+  "new_label": "D",
+  "solution": "Tangent-length-squared from \\((x,y)\\): to \\(x^2+y^2+4x+3=0\\) it is \\(S_1=x^2+y^2+4x+3\\); to \\(x^2+y^2-6x+5=0\\) it is \\(S_2=x^2+y^2-6x+5\\). Ratio \\(2:3\\Rightarrow\\dfrac{S_1}{S_2}=\\dfrac49\\Rightarrow 9S_1=4S_2\\): \\(9(x^2+y^2+4x+3)=4(x^2+y^2-6x+5)\\Rightarrow 5x^2+5y^2+60x+7=0\\) — option D. [Old key A had \\(-60x\\); the sign is \\(+60x\\).]",
+  "_n": 74,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "c1fec5ef-1c19-46bb-93f9-0ba946c479dc",
+  "new_label": "A",
+  "solution": "Let \\(x=\\tfrac{ab}{cr},\\ y=\\tfrac{bc}{ar},\\ z=\\tfrac{ca}{br}\\). Then \\(xy=\\tfrac{b^2}{r^2},\\ yz=\\tfrac{c^2}{r^2},\\ zx=\\tfrac{a^2}{r^2}\\), so \\(xy+yz+zx=\\dfrac{a^2+b^2+c^2}{r^2}=1\\). For positive \\(x,y,z\\) with \\(xy+yz+zx=1\\), \\(\\tan^{-1}x+\\tan^{-1}y+\\tan^{-1}z=\\tfrac{\\pi}{2}\\) (the tangent of the sum has denominator \\(1-(xy+yz+zx)=0\\)). Hence the value is \\(\\tfrac{\\pi}{2}\\) — option A. [Old solution wrongly used \\(x+y+z=xyz\\).]",
+  "_n": 79,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "3d3f9020-90dc-4437-a0c7-1490b8188166",
+  "new_label": "A",
+  "solution": "Put \\(x^2=\\cos2\\theta\\) (\\(\\theta\\in(0,\\tfrac{\\pi}{4})\\)). Then \\(\\sqrt{1+x^2}=\\sqrt2\\cos\\theta\\), \\(\\sqrt{1-x^2}=\\sqrt2\\sin\\theta\\), so the argument is \\(\\dfrac{\\cos\\theta+\\sin\\theta}{\\cos\\theta-\\sin\\theta}=\\dfrac{1+\\tan\\theta}{1-\\tan\\theta}=\\tan\\!\\bigl(\\tfrac{\\pi}{4}+\\theta\\bigr)\\). Therefore the expression \\(=\\tfrac{\\pi}{4}+\\theta=\\tfrac{\\pi}{4}+\\tfrac12\\cos^{-1}x^2\\) — option A. [Old solution skipped the key step.]",
+  "_n": 82,
+  "_type": "BAD_SOLUTION"
+ },
+ {
+  "id": "b6023546-677a-425a-9990-129681a55c0d",
+  "new_label": "B",
+  "solution": "\\(\\tan^{-1}x+\\tan^{-1}6x=\\tfrac{\\pi}{4}\\Rightarrow\\dfrac{7x}{1-6x^2}=1\\Rightarrow 6x^2+7x-1=0\\Rightarrow x=\\dfrac{-7\\pm\\sqrt{73}}{12}\\). Since \\(\\sqrt{73}\\approx8.54\\), the roots are \\(\\approx0.129\\) and \\(\\approx-1.30\\). Only the positive root satisfies \\(x\\ge0\\) (and there \\(1-6x^2>0\\), so the sum is genuinely \\(\\tfrac{\\pi}{4}\\)). Thus A is a singleton set — option B. [Old key D claimed two elements; the negative root is excluded by \\(x\\ge0\\).]",
+  "_n": 83,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "f52f4bfc-5fbe-4d9c-a2c6-f744db886c1c",
+  "new_label": "C",
+  "solution": "Over \\([-1,1]\\) the odd terms \\(\\dfrac{17x^5},\\dfrac{29x^3},\\dfrac{-31x}{}\\) (odd numerator \\(\\div\\) even denominator) integrate to 0. The even part is \\(\\dfrac{1-x^4}{x^2+1}=1-x^2\\). So \\(\\displaystyle\\int_{-1}^{1}(1-x^2)\\,dx=\\Bigl[x-\\tfrac{x^3}{3}\\Bigr]_{-1}^{1}=\\tfrac23-\\left(-\\tfrac23\\right)=\\tfrac43\\) — option C. [Old solution slipped \\(2\\cdot\\tfrac23=\\tfrac45\\); it equals \\(\\tfrac43\\).]",
+  "_n": 95,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "c6da23a6-7b2e-4bc7-85b4-5b507d2112f0",
+  "new_label": "D",
+  "solution": "\\(A(\\operatorname{adj}A)=(\\det A)I\\). Expanding, \\(\\det A=x(yz-8)-3(z-8)+2(2-2y)=xyz-8x-4y-3z+28\\). Substitute \\(xyz=60\\) and \\(8x+4y+3z=20\\): \\(\\det A=60-20+28=68\\). Hence \\(A(\\operatorname{adj}A)=68I\\) — option D. [Old key C=20I used only \\(8x+4y+3z\\) and dropped the \\(xyz\\) and \\(+28\\) terms.]",
+  "_n": 99,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "0b57cdeb-1473-4495-bab7-12f94bc5d6aa",
+  "new_label": "B",
+  "solution": "\\(x\\to0^+\\): \\(\\dfrac{x}{x+x^2}=\\dfrac{1}{1+x}\\to1\\). \\(x\\to0^-\\): \\(\\dfrac{-x}{-x+x^2}=\\dfrac{1}{1-x}\\to1\\). Both one-sided limits equal 1, so the limit is \\(1\\) — option B. [The stored solution itself derived 1; only the key letter was wrong.]",
+  "_n": 104,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "f2f9431b-c402-492c-9407-85ac47b0be45",
+  "new_label": "C",
+  "solution": "\\(0/0\\) at \\(x=0\\); apply L'Hopital. Numerator derivative: \\(\\tfrac13(27-2x)^{-2/3}(-2)\\to\\tfrac13\\cdot\\tfrac19\\cdot(-2)=-\\tfrac{2}{27}\\). Denominator derivative: \\(-3\\cdot\\tfrac15(243+5x)^{-4/5}\\cdot5=-3(243+5x)^{-4/5}\\to-3\\cdot\\tfrac{1}{81}=-\\tfrac{1}{27}\\) (since \\(243^{4/5}=3^4=81\\)). Limit \\(=\\dfrac{-2/27}{-1/27}=2\\) — option C. [Old key A=\\tfrac23 was an arithmetic slip; the steps give 2.]",
+  "_n": 105,
+  "_type": "WRONG_KEY"
+ },
+ {
+  "id": "08a03a4c-07dc-4e28-ba25-7ea443b62d68",
+  "new_label": "C",
+  "solution": "The quadratic \\(ax^2+bx+1\\) applies where \\(|2x-3|\\ge2\\) (i.e. \\(x\\le\\tfrac12\\) or \\(x\\ge\\tfrac52\\)); the line \\(3x+2\\) on \\((\\tfrac12,\\tfrac52)\\). Continuity at \\(x=\\tfrac12\\): \\(\\tfrac{a}{4}+\\tfrac{b}{2}+1=\\tfrac72\\Rightarrow a+2b=10\\). At \\(x=\\tfrac52\\): \\(\\tfrac{25a}{4}+\\tfrac{5b}{2}+1=\\tfrac{19}{2}\\Rightarrow 25a+10b=34\\). Solving: \\(5a+10b=50\\) so \\(20a=-16\\Rightarrow a=-\\tfrac45\\), \\(b=\\tfrac{27}{5}\\). Then \\(a+b=-\\tfrac45+\\tfrac{27}{5}=\\tfrac{23}{5}\\) — option C. [Old key A=\\tfrac{13}{5} applied continuity at only one point.]",
+  "_n": 108,
+  "_type": "WRONG_KEY"
+ }
+]
