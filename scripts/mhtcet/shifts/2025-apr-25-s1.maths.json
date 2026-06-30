@@ -1,0 +1,457 @@
+{
+  "101": {
+    "chapter": "Sets, Relations and Functions",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\((fog)(x)=f\\!\\left(\\frac{3x+x^{3}}{1+3x^{2}}\\right)=\\log\\frac{1+3x^{2}+3x+x^{3}}{1+3x^{2}-3x-x^{3}}\\).\nThe numerator is \\((1+x)^{3}\\) and the denominator is \\((1-x)^{3}\\).\n\\(=\\log\\left(\\frac{1+x}{1-x}\\right)^{3}=3\\log\\frac{1+x}{1-x}=3f(x)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Trigonometric Identities and Compound/Half-Angle Formulas",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "From \\(\\sec x+\\tan x=2\\) and \\(\\sec x-\\tan x=\\tfrac12\\): \\(\\sec x=\\tfrac54,\\ \\cos x=\\tfrac45\\).\n\\(\\sin\\frac{x}{2}=\\sqrt{\\frac{1-\\cos x}{2}}=\\frac{1}{\\sqrt{10}}\\Rightarrow \\cos\\frac{x}{2}=\\frac{3}{\\sqrt{10}}\\).\n\\(\\sin\\frac{x}{4}=\\sqrt{\\frac{1-\\cos\\frac{x}{2}}{2}}=\\sqrt{\\frac{10-3\\sqrt{10}}{20}}=\\frac{1}{\\sqrt{2(10+3\\sqrt{10})}}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\frac{x^{2}}{9}=1+\\sin 2t,\\ \\frac{y^{2}}{16}=1-\\sin 2t\\Rightarrow \\frac{x^{2}}{18}+\\frac{y^{2}}{32}=1\\) (ellipse).\nHere \\(a^{2}=18,\\ b^{2}=32\\) (major axis along \\(y\\)).\n\\(e=\\sqrt{1-\\frac{18}{32}}=\\sqrt{\\frac{14}{32}}=\\sqrt{\\frac{7}{16}}=\\frac{\\sqrt{7}}{4}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\frac{dP}{dt}=kP\\Rightarrow \\log\\frac{P}{4}=kt\\) (lakhs). At \\(t=20\\), \\(P=6\\Rightarrow 20k=\\log\\frac{3}{2}\\).\nAt \\(t=40\\): \\(\\log\\frac{P}{4}=2\\log\\frac{3}{2}=\\log\\frac{9}{4}\\Rightarrow P=4\\times\\frac{9}{4}=9\\) lakhs.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Let \\(\\overline c=p\\hat i+q\\hat j+r\\hat k\\). \\(\\overline a\\times\\overline c=(r-q)\\hat i-(r-p)\\hat j+(q-p)\\hat k=\\hat j-\\hat k\\)\ngives \\(r=q,\\ p-r=1,\\ q-p=-1\\). With \\(\\overline a\\cdot\\overline c=p+q+r=3\\): \\(p=\\tfrac53,q=r=\\tfrac23\\).\n\\(\\overline c=\\frac53\\hat i+\\frac23\\hat j+\\frac23\\hat k\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Linear Programming",
+    "subtopic": "Feasible Region — Identification, Constraints, Classification",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "\\(|x-y|\\le 1\\) is the strip between \\(x-y=1\\) and \\(x-y=-1\\); with \\(x,y\\ge 0\\) the common region is the unbounded strip in the first quadrant.\nHence the solution set is an unbounded set.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Coplanarity gives \\(\\lambda=3\\); the plane through both lines is \\(3x-3y+z+9=0\\).\nChecking: \\(A(1,6,4):-2\\), \\(B(2,8,7):-2\\), \\(C(1,2,3):9\\), \\(D(4,10,9):0\\) — so only \\(D\\) lies ON the plane while \\(A,B,C\\) do NOT.\nThe stem asks which does NOT lie, yet three options satisfy that; only \\(D\\) is the distinguished point — question is internally inconsistent.",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "flawed": true,
+    "note": "Plane is 3x-3y+z+9=0. Three points (A,B,C) do NOT lie on it; only D lies ON it. The 'does not lie' wording therefore has three valid answers — the question is flawed. AK keyed D (the only point that DOES lie), the odd-one-out; kept as best-guess."
+  },
+  "108": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(16x^{2}-8x^{3}+x^{4}=x^{2}(4-x)^{2}\\), so the integrand simplifies to \\(\\frac{\\log x}{\\log x+\\log(4-x)}\\) on \\([1,3]\\).\nWith \\(a+b=4\\), King's property \\(\\int_a^b\\frac{f(x)}{f(x)+f(a+b-x)}dx=\\frac12(b-a)\\) gives \\(\\frac12(3-1)=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Differentiation",
+    "subtopic": "Implicit Differentiation & Special Forms",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Differentiating \\(b^{2}x^{2}+a^{2}y^{2}=a^{2}b^{2}\\): \\(\\frac{dy}{dx}=-\\frac{b^{2}x}{a^{2}y}\\).\n\\(\\frac{d^{2}y}{dx^{2}}=-\\frac{b^{2}}{a^{2}}\\cdot\\frac{y-x\\,y'}{y^{2}}=-\\frac{b^{2}}{a^{2}y^{2}}\\cdot\\frac{a^{2}y^{2}+b^{2}x^{2}}{a^{2}y}=-\\frac{b^{4}}{a^{2}y^{3}}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rolle's Theorem and Mean Value Theorem",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(f(1)=f(2)\\Rightarrow 3a+b=-7\\). \\(f'(x)=3x^{2}+2ax+b\\), \\(f'(\\tfrac43)=0\\Rightarrow 8a+3b=-16\\).\nSolving: \\(a=-5,\\ b=8\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Foundations and Standard Formulae",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "\\(\\int\\frac{1}{e^{x}+1}dx=\\int\\left(1-\\frac{e^{x}}{e^{x}+1}\\right)dx=x-\\log\\left(e^{x}+1\\right)+c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\tan^{-1}\\frac{4x}{1+5x^{2}}=\\tan^{-1}(5x)-\\tan^{-1}x\\); \\(\\cot^{-1}\\frac{3-2x}{2+3x}=\\tan^{-1}\\frac{2+3x}{3-2x}=\\tan^{-1}\\tfrac23+\\tan^{-1}x\\).\nSum \\(=\\tan^{-1}(5x)+\\tan^{-1}\\tfrac23\\Rightarrow \\frac{dy}{dx}=\\frac{5}{1+25x^{2}}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "\\(x\\frac{dy}{dx}=2y\\Rightarrow \\frac{dy}{y}=2\\frac{dx}{x}\\Rightarrow \\log y=\\log cx^{2}\\Rightarrow y=cx^{2}\\).\nThis is a family of parabolas with vertex at the origin and axis along the Y-axis.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\frac{x+5}{(x+6)^{2}}=\\frac{1}{x+6}-\\frac{1}{(x+6)^{2}}\\), of the form \\(f(x)+f'(x)\\) with \\(f=\\frac{1}{x+6}\\).\n\\(\\int e^{x}[f+f']dx=e^{x}f=\\frac{e^{x}}{x+6}+c\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(5+3\\sin\\theta=0\\Rightarrow \\sin\\theta=-\\tfrac53\\) impossible. So \\(2\\cos\\theta+1=0\\Rightarrow \\cos\\theta=-\\tfrac12\\).\nPrincipal solutions in \\([0,2\\pi)\\): \\(\\theta=\\frac{2\\pi}{3},\\frac{4\\pi}{3}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Values: \\(P(0)=0.1,\\ P(1)=k,\\ P(2)=2k,\\ P(3)=2k,\\ P(4)=k\\). Sum \\(=0.1+6k=1\\Rightarrow k=0.15\\).\n\\(P(X\\ge 2)=1-P(0)-P(1)=1-(0.1+0.15)=0.75\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(\\frac{1}{\\sqrt2}\\cos\\frac{9\\pi}{10}-\\frac{1}{\\sqrt2}\\sin\\frac{9\\pi}{10}=\\cos\\!\\left(\\frac{9\\pi}{10}+\\frac{\\pi}{4}\\right)=\\cos\\frac{23\\pi}{20}\\).\n\\(\\cos^{-1}\\!\\left(\\cos\\frac{23\\pi}{20}\\right)=\\cos^{-1}\\!\\left(\\cos\\frac{17\\pi}{20}\\right)=\\frac{17\\pi}{20}\\) (principal range \\([0,\\pi]\\)).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distances in 3-D",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Perpendicular distance \\(=\\left|\\frac{2(1)-2(\\frac32)+4(2)+17}{\\sqrt{4+4+16}}\\right|=\\frac{|2-3+8+17|}{\\sqrt{24}}=\\frac{24}{\\sqrt{24}}=\\sqrt{24}=2\\sqrt6\\) units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Line and Plane",
+    "subtopic": "Tetrahedron Geometry — Centroid, Volume, and Vertices",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Normal to OAB: \\(\\overline{OA}\\times\\overline{OB}=5\\hat i-\\hat j-3\\hat k\\). Normal to ABC: \\(\\overline{AB}\\times\\overline{AC}=\\hat i-5\\hat j-3\\hat k\\).\n\\(\\cos\\theta=\\frac{5+5+9}{\\sqrt{35}\\sqrt{35}}=\\frac{19}{35}\\Rightarrow \\theta=\\cos^{-1}\\frac{19}{35}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(|A|=1\\), and computing \\(A^{-1}=\\begin{bmatrix}1&-1&0\\\\-2&3&-4\\\\-2&3&-3\\end{bmatrix}\\).\nComputing \\(A^{3}=A^{2}\\cdot A\\) yields exactly the same matrix, so \\(A^{-1}=A^{3}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "For a horizontal strip, \\(x=4\\sqrt y\\) (from \\(y=x^{2}/16\\)) and \\(x=\\sqrt y/3\\) (from \\(y=9x^{2}\\)).\nArea \\(=2\\int_0^1\\left(4\\sqrt y-\\frac{\\sqrt y}{3}\\right)dy=2\\cdot\\frac{11}{3}\\cdot\\frac{2}{3}=\\frac{44}{9}\\) sq. units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Rational and Substitution Forms",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Put \\(\\tan x=t\\), \\(\\cos 2x=\\frac{1-t^{2}}{1+t^{2}}\\), \\(dx=\\frac{dt}{1+t^{2}}\\).\n\\(\\int\\frac{dt}{3(1-t^{2})+5(1+t^{2})}=\\int\\frac{dt}{8+2t^{2}}=\\frac12\\cdot\\frac12\\tan^{-1}\\frac{t}{2}=\\frac14\\tan^{-1}\\!\\left(\\frac{\\tan x}{2}\\right)+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Bernoulli in \\(y\\): putting \\(v=y^{-3}\\) gives \\(\\frac{dv}{dx}+\\frac{3v}{x}=\\frac{3\\cos x}{x^{3}}\\), I.F. \\(=x^{3}\\).\n\\(v\\cdot x^{3}=\\frac{x^{3}}{y^{3}}=3\\sin x+c\\); \\(y(0)=1\\Rightarrow c=0\\), so \\(x^{3}=3y^{3}\\sin x\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\([\\sim q\\land(p\\vee\\sim q)\\land\\sim r]\\vee p\\) with \\(p=T,q=F,r=T\\): \\([T\\land T\\land F]\\vee T=T\\).\nDual \\([\\sim q\\vee(p\\land\\sim q)\\vee\\sim r]\\land p=[T\\vee T\\vee F]\\land T=T\\). So \\((T,T)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Direction ratios: line1 \\((-2,\\frac{2\\lambda}{7},1)\\), line2 \\((-\\frac{3\\lambda}{7},7,-5)\\).\nPerpendicular: \\((-2)(-\\frac{3\\lambda}{7})+\\frac{2\\lambda}{7}(7)+1(-5)=0\\Rightarrow \\frac{6\\lambda}{7}+2\\lambda=5\\Rightarrow \\frac{20\\lambda}{7}=5\\Rightarrow \\lambda=\\frac74\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Symbolic form: \\((p\\vee q)\\land\\sim q\\land r\\). Negation \\(=\\sim(p\\vee q)\\vee q\\vee\\sim r\\).\nUsing conditional law this is \\((p\\vee q)\\rightarrow(q\\vee\\sim r)\\): 'If equilateral or isosceles, then isosceles or not right angled.'",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(f'(x)=\\frac12-\\frac{2}{x^{2}}<0\\Rightarrow x^{2}<4\\Rightarrow x\\in(-2,0)\\cup(0,2)\\).\nAmong the options only \\((1,2)\\) is a subset of this decreasing set.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(f(0)=\\lim_{x\\to0}\\frac{\\sin(\\pi\\cos^{2}x)}{3x^{2}}=\\lim\\frac{\\sin(\\pi\\sin^{2}x)}{3x^{2}}\\).\n\\(=\\frac13\\cdot 1\\cdot\\lim\\frac{\\pi\\sin^{2}x}{x^{2}}=\\frac{\\pi}{3}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Let \\(z=x+10i\\). \\((2x-n)+20i=(2i-1)(2x+n+20i)\\). Equating real/imaginary parts:\n\\(2x-n=-2x-n-40\\Rightarrow x=-10\\); \\(20=4x+2n-20\\Rightarrow n=40\\). So \\(n=40,\\ \\mathrm{Re}(z)=-10\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(V=\\frac43\\pi r^{3},\\ A=4\\pi r^{2}\\). \\(\\frac{dV}{dA}=\\frac{dV/dr}{dA/dr}=\\frac{4\\pi r^{2}}{8\\pi r}=\\frac{r}{2}\\).\nAt \\(r=5\\): \\(\\frac{dV}{dA}=\\frac52\\) m.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(a\\sin x+b\\cos x=\\sqrt{a^{2}+b^{2}}\\sin(x+\\theta)\\), whose range is \\([-\\sqrt{a^{2}+b^{2}},\\sqrt{a^{2}+b^{2}}]\\).\nMaximum value \\(=\\sqrt{a^{2}+b^{2}}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\((\\sin x+3)(2\\sin x-1)=0\\Rightarrow \\sin x=\\tfrac12\\) (the other root impossible).\nIn \\([0,3\\pi]\\): \\(x=\\frac{\\pi}{6},\\frac{5\\pi}{6},\\frac{13\\pi}{6},\\frac{17\\pi}{6}\\) — 4 values.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(2-2\\cos\\phi=4\\sin^{2}\\frac{\\phi}{2}\\), with \\(\\phi=x^{2}-12x+35=(x-5)(x-7)\\).\n\\(\\lim_{x\\to5}\\frac{2\\sin\\frac{(x-5)(x-7)}{2}}{x-5}=\\lim(x-7)=5-7=-2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Sequences and Series",
+    "subtopic": "Sequences and Series — AP, HP, Logarithmic and Power Sums",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(\\sum_{r=0}^{n}\\frac{1}{r+1}\\binom{n}{r}=\\frac{1}{n+1}\\sum_{r=0}^{n}\\binom{n+1}{r+1}=\\frac{2^{n+1}-1}{n+1}\\).\n\\(\\frac{2^{n+1}-1}{n+1}=\\frac{1023}{10}\\Rightarrow n+1=10,\\ 2^{10}-1=1023\\Rightarrow n=9\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Probability Calculation",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(p=\\frac{6}{36}=\\frac16,\\ q=\\frac56,\\ n=4\\).\n\\(P(X=2)=\\binom{4}{2}\\left(\\frac16\\right)^{2}\\left(\\frac56\\right)^{2}=6\\cdot\\frac{25}{1296}=\\frac{25}{216}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "With A as origin: \\(\\overline{AB}=-\\hat j+2\\hat k,\\ \\overline{AC}=\\hat i+\\hat j+3\\hat k\\).\n\\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\0&-1&2\\\\1&1&3\\end{vmatrix}=-5\\hat i+2\\hat j+\\hat k\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Area \\(=\\frac12|\\overline{d_1}\\times\\overline{d_2}|\\). \\(\\overline{d_1}\\times\\overline{d_2}=(3\\lambda+4)\\hat i-7\\hat j-(6+\\lambda)\\hat k\\).\n\\(117=10\\lambda^{2}+36\\lambda+101\\Rightarrow 5\\lambda^{2}+18\\lambda-8=0\\Rightarrow \\lambda=-4\\) or \\(\\tfrac25\\). Only \\(-4\\) is listed.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For \\(y=e^{x}(A\\cos x+B\\sin x)\\): \\(y'=y+e^{x}(B\\cos x-A\\sin x)\\) and \\(y''=y'+(y'-y)-y\\).\nHence \\(y''-2y'+2y=0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(P(\\text{at least one girl})=\\frac78\\); \\(P(\\text{all girls}\\cap\\text{at least one girl})=P(GGG)=\\frac18\\).\n\\(P=\\frac{1/8}{7/8}=\\frac17\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Using the cosine rule, \\(\\frac{2\\cos A}{a}+\\frac{\\cos B}{b}+\\frac{2\\cos C}{c}=\\frac{3b^{2}+c^{2}+a^{2}}{2abc}\\).\nSetting this \\(=\\frac{a^{2}+b^{2}}{abc}\\) gives \\(a^{2}=b^{2}+c^{2}\\Rightarrow \\angle A=\\frac{\\pi}{2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true,
+    "stemOverride": "In a triangle ABC, with usual notations, \\(\\frac{2\\cos A}{a}+\\frac{\\cos B}{b}+\\frac{2\\cos C}{c}=\\frac{a}{bc}+\\frac{b}{ca}\\). Then \\(\\angle A=\\)",
+    "note": "Stem garble fixed: '2coA' -> '2 cos A' (dropped letters)."
+  },
+  "141": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(A=(x,0),\\ B=(0,y)\\), \\(P\\) divides \\(AB\\) as \\(1:2\\): \\((-4,1)=\\left(\\frac{2x}{3},\\frac{y}{3}\\right)\\Rightarrow x=-6,y=3\\).\nLine through \\((-6,0),(0,3)\\): slope \\(\\tfrac12\\), equation \\(x-2y+6=0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(x^{2}-8x+12=0\\Rightarrow (x-6)(x-2)=0\\Rightarrow x=6\\) or \\(x=2\\).\nIn 3-D these are two planes parallel to the YZ-plane.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Circle",
+    "subtopic": "Tangent, Locus, and Equation Construction",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Circle: centre \\((-3,2)\\), radius \\(5\\). Tangent length from \\(P(-4,-5)\\) \\(=\\sqrt{16+25-24+20-12}=5\\), so \\(PA\\perp CA\\) with \\(PA=CA=5\\) gives quadrilateral area \\(=25\\) and sector angle \\(\\frac{\\pi}{2}\\).\nRequired area \\(=25-\\frac{25\\pi}{4}=25\\left(\\frac{4-\\pi}{4}\\right)\\) sq. units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "\\(\\overline a\\times(\\overline b\\times\\overline c)=(\\overline a\\cdot\\overline c)\\overline b-(\\overline a\\cdot\\overline b)\\overline c=\\frac{\\overline b+\\overline c}{\\sqrt2}\\).\nSince non-coplanar, \\(\\overline a\\cdot\\overline b=-\\frac{1}{\\sqrt2}\\Rightarrow \\cos\\theta=-\\frac{1}{\\sqrt2}\\Rightarrow \\theta=\\frac{3\\pi}{4}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Angle, Distance, and Geometry of Pair",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Bisectors: \\(\\frac{x^{2}-y^{2}}{a-b}=\\frac{xy}{h}\\) with \\(a=2,b=3,h=\\tfrac{11}{2}\\).\n\\(\\frac{x^{2}-y^{2}}{-1}=\\frac{2xy}{11}\\Rightarrow 11x^{2}+2xy-11y^{2}=0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\sum P=10k^{2}+9k-1=0\\Rightarrow (k+1)(10k-1)=0\\Rightarrow k=\\frac{1}{10}\\).\n\\(P(X\\ge6)=2k^{2}+(7k^{2}+k)=9k^{2}+k=\\frac{9}{100}+\\frac{1}{10}=\\frac{19}{100}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Definite Integration",
+    "subtopic": "Substitution and Standard Form",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Put \\(t=2+\\sqrt x,\\ dx=2(t-2)dt\\): \\(I=2\\int_2^3\\left(1-\\frac{2}{t}\\right)dt=2[t-2\\log t]_2^3\\).\n\\(=2[1-2\\log\\tfrac32]=2-4\\log\\tfrac32=2\\log\\!\\left(\\frac{4e}{9}\\right)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Line and Plane",
+    "subtopic": "Foot of Perpendicular, Image, and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Foot on line1 \\((x=y=\\lambda,z=1)\\): \\(M=(a,a,1)\\). Foot on line2 \\((x=-y=\\mu,z=-1)\\): \\(\\mu=0\\Rightarrow N=(0,0,-1)\\).\n\\(\\overline{PM}=(0,0,1-a),\\ \\overline{PN}=(-a,-a,-1-a)\\). \\(\\angle MPN=90^{\\circ}\\Rightarrow \\overline{PM}\\cdot\\overline{PN}=(1-a)(-1-a)=-(1-a^{2})=0\\Rightarrow a^{2}=1\\).",
+    "akAnswer": "D",
+    "agreesWithAk": false,
+    "note": "AK keyed D (a^2=9) but the AK's OWN worked solution derives a^2=1 (= option A). PM=(0,0,1-a), PN=(-a,-a,-1-a); PM.PN=(1-a)(-1-a)=-(1-a^2)=0 => a^2=1. Correct answer is A; the keyed letter D contradicts its solution."
+  },
+  "149": {
+    "chapter": "Differentiation",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(y=\\frac{\\log(\\log x)-\\log(\\log 3)}{\\log 3}\\Rightarrow \\frac{dy}{dx}=\\frac{1}{(x\\log x)\\log 3}\\).\nAt \\(x=3\\): \\(\\frac{dy}{dx}=\\frac{1}{3(\\log 3)^{2}}=\\frac13(\\log 3)^{-2}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Using half-angle formulae in \\(\\sin\\frac{A}{2}\\sin\\frac{C}{2}=\\sin\\frac{B}{2}\\) and simplifying gives \\(\\frac{(s-b)^{2}}{b^{2}}=1\\).\nSo \\(s-b=b\\Rightarrow s=2b\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  }
+}
