@@ -1,0 +1,461 @@
+{
+  "101": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Probability Calculation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "For \\(n=100\\) tosses, \\(P(\\text{even number of heads}) = \\sum_{k \\text{ even}} \\binom{100}{k}\\left(\\frac{1}{2}\\right)^{100}\\).\\nUsing \\((1+1)^{100} + (1-1)^{100} = 2\\sum_{k\\text{ even}}\\binom{100}{k}\\), the sum of even-index binomial coefficients \\(= \\frac{2^{100}+0}{2} = 2^{99}\\).\\n\\(\\therefore P = \\frac{2^{99}}{2^{100}} = \\frac{1}{2}\\).",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Using the identity \\((\\overline{a}\\times\\overline{b})\\cdot(\\overline{c}\\times\\overline{d}) = (\\overline{a}\\cdot\\overline{c})(\\overline{b}\\cdot\\overline{d}) - (\\overline{a}\\cdot\\overline{d})(\\overline{b}\\cdot\\overline{c})\\), the given determinant equals \\((\\overline{a}\\times\\overline{b})\\cdot(\\overline{c}\\times\\overline{d}) = 0\\).\\n\\(\\therefore (2\\widehat{i}+3\\widehat{j}-\\widehat{k})\\cdot(3\\widehat{i}+2\\widehat{j}+\\lambda\\widehat{k}) = 0\\)\\n\\(\\Rightarrow 6+6-\\lambda = 0 \\Rightarrow \\lambda = 12\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Using the half-angle formula \\(\\cos\\frac{B}{2} = \\sqrt{\\frac{s(s-b)}{ca}}\\) and equating to \\(\\sqrt{\\frac{c+a}{2a}}\\):\\n\\(\\frac{c+a}{2a} = \\frac{s(s-b)}{ca} = \\frac{(a+c)^2 - b^2}{4ac}\\).\\nCross-multiplying: \\(2c(c+a) = a^2 + 2ac + c^2 - b^2\\), giving \\(a^2 = b^2 + c^2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Bisectors of the coordinate axes have slopes \\(1\\) and \\(-1\\).\\nLine through \\((-2,3)\\) with slope \\(1\\): \\(x-y+5=0\\).\\nLine through \\((-2,3)\\) with slope \\(-1\\): \\(x+y-1=0\\).\\nJoint equation: \\((x-y+5)(x+y-1) = x^2 - y^2 + 4x + 6y - 5 = 0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Circle",
+    "subtopic": "Equation of Circle from Diameter, Centre, and Concentric Conditions",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Radius \\(= OA = \\sqrt{2^2+4^2} = 2\\sqrt{5}\\), the circumradius of the equilateral triangle.\\nFor an equilateral triangle the median = altitude, and circumradius \\(R = \\frac{2}{3}\\) of the median.\\n\\(\\therefore\\) median \\(= \\frac{3}{2}R = \\frac{3}{2}(2\\sqrt{5}) = 3\\sqrt{5}\\) units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "From \\(\\overline{a}\\times\\overline{b} = \\overline{c}\\): \\((\\overline{a}\\times\\overline{b})\\cdot\\overline{c} = \\overline{c}\\cdot\\overline{c} = |\\widehat{j}-\\widehat{k}|^2 = 2\\), so \\([\\overline{a}\\ \\overline{b}\\ \\overline{c}] = 2\\), giving \\(\\overline{b}\\cdot(\\overline{a}\\times\\overline{c}) = -2\\).\\n\\(\\overline{a}\\times\\overline{c} = -2\\widehat{i}+\\widehat{j}+\\widehat{k}\\), \\(|\\overline{a}\\times\\overline{c}| = \\sqrt{6}\\).\\nProjection length \\(l = \\frac{|\\overline{b}\\cdot(\\overline{a}\\times\\overline{c})|}{|\\overline{a}\\times\\overline{c}|} = \\frac{2}{\\sqrt{6}}\\), so \\(3l^2 = 3\\cdot\\frac{4}{6} = 2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Line through \\((1,2)\\) parallel to \\(3x-y=2\\) is \\(3x-y-1=0\\).\\nIts intersection with \\(x+y=0\\) is \\(\\left(\\frac{1}{4},-\\frac{1}{4}\\right)\\).\\nDistance \\(= \\sqrt{\\left(1-\\frac{1}{4}\\right)^2 + \\left(2+\\frac{1}{4}\\right)^2} = \\sqrt{\\frac{9}{16}+\\frac{81}{16}} = \\frac{3\\sqrt{10}}{4}\\) units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "At \\(x=2\\): \\(2+12+40+112 = 166\\), so the numerator vanishes (\\(0/0\\)) — factor out \\((x-2)\\).\\nBy L'Hopital, limit \\(= \\left[1 + 6x + 15x^2 + 28x^3\\right]_{x=2} = 1+12+60+224 = 297\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Factor numerator: \\(10^x+7^x-14^x-5^x = (2^x-1)(5^x-7^x)\\).\\n\\(f(0) = \\lim_{x\\to 0}\\frac{(2^x-1)(5^x-7^x)}{1-\\cos x} = \\frac{\\left(\\frac{2^x-1}{x}\\right)\\left(\\frac{5^x-1}{x}-\\frac{7^x-1}{x}\\right)}{\\frac{1-\\cos x}{x^2}}\\).\\n\\(= \\frac{(\\log 2)(\\log 5 - \\log 7)}{1/2} = 2\\log 2\\,\\log\\frac{5}{7} = \\log 4\\left[\\log\\frac{5}{7}\\right]\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\((AB)^{-1} = B^{-1}A^{-1}\\), so \\(B^{-1} = (AB)^{-1}A\\).\\nFrom \\(A^{-1} = \\frac{1}{3}\\begin{bmatrix}4&3\\\\-1&0\\end{bmatrix}\\), \\(\\det(A^{-1}) = \\frac{1}{9}(3) = \\frac{1}{3}\\), so \\(A = \\frac{1}{ \\frac13}\\,\\text{adj}(A^{-1})\\cdot\\frac19 = \\begin{bmatrix}0&-1\\\\1&\\tfrac{4}{3}\\end{bmatrix}\\).\\nThen \\(B^{-1} = (AB)^{-1}A = \\frac{1}{6}\\begin{bmatrix}-7&-3\\\\2&3\\end{bmatrix}\\begin{bmatrix}0&-1\\\\1&\\tfrac43\\end{bmatrix} = \\frac{1}{2}\\begin{bmatrix}-1&3\\\\1&2\\end{bmatrix}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\frac{\\sin A+\\sin B}{\\cos A+\\cos B} = \\tan\\frac{A+B}{2} = \\frac{x}{y}\\).\\n\\(\\sin(A+B) = \\frac{2\\tan\\frac{A+B}{2}}{1+\\tan^2\\frac{A+B}{2}} = \\frac{2(x/y)}{1+(x/y)^2} = \\frac{2xy}{x^2+y^2}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Sum of probabilities: \\(\\frac14+K+\\frac14+\\frac13 = 1 \\Rightarrow K=\\frac16\\).\\n\\(\\mu = -3(\\tfrac14)+0+1(\\tfrac14)+\\alpha(\\tfrac13) = \\frac{\\alpha}{3}-\\frac12\\).\\nUsing \\(\\sigma-\\mu=2\\) and \\(\\sigma^2 = E(X^2)-\\mu^2\\), solving gives \\(\\alpha=6\\), \\(\\mu=\\frac32\\), so \\(\\sigma = 2+\\mu = \\frac72\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(P(\\text{win}) = \\frac13\\), \\(P(\\text{lose}) = \\frac23\\). Net gains: \\(+40\\) on win, \\(-20\\) per losing throw.\\n\\(E = 40(\\tfrac13) + 20(\\tfrac23)(\\tfrac13) + 0(\\tfrac23)^2(\\tfrac13)\\cdots\\), computing the four cases (win 1st: +40; lose-win: +20; lose-lose-win: 0; lose all 3: \\(-60\\)):\\n\\(E = 40(\\tfrac13)+20(\\tfrac29)+0(\\tfrac{4}{27})+(-60)(\\tfrac{8}{27}) = \\frac{360+120-480}{27} = 0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Newton's law: \\(\\log(T-290) = -kt + c\\). At \\(t=0\\), \\(T=370\\Rightarrow c=\\log 80\\).\\nAt \\(t=10\\), \\(T=330\\Rightarrow \\log 40 = -10k+\\log 80\\Rightarrow k = \\frac{1}{10}\\log 2\\).\\nAt \\(T=295\\): \\(\\log 5 = -\\frac{t}{10}\\log 2 + \\log 80 \\Rightarrow \\frac{t}{10}\\log 2 = \\log 16\\Rightarrow t = 40\\) min.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Equation is homogeneous: \\(\\frac{dy}{dx} = \\frac{y}{x}\\left[\\log\\frac{y}{x}+1\\right]\\).\\nPut \\(v=\\frac{y}{x}\\): \\(v+x\\frac{dv}{dx} = v(\\log v+1)\\Rightarrow x\\frac{dv}{dx}=v\\log v\\Rightarrow \\frac{dv}{v\\log v} = \\frac{dx}{x}\\).\\nIntegrating: \\(\\log(\\log v) = \\log x + \\log c \\Rightarrow \\log v = cx\\Rightarrow \\log\\frac{y}{x} = cx\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(\\sqrt{\\frac{dy}{dx}} = 4\\frac{dy}{dx}+7x\\). Squaring removes the radical, giving \\(\\frac{dy}{dx} = 16\\left(\\frac{dy}{dx}\\right)^2 + 56x\\frac{dy}{dx}+49x^2\\).\\nHighest derivative is the first order, raised to power \\(2\\): order \\(=1\\), degree \\(=2\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Circle touching Y-axis at origin with centre \\((h,0)\\): \\(x^2+y^2 = 2hx\\), i.e. \\(x^2-2hx+y^2=0\\).\\nDifferentiating: \\(2x-2h+2y\\frac{dy}{dx}=0\\Rightarrow h = x+y\\frac{dy}{dx}\\).\\nSubstituting back: \\(x^2 - 2x\\left(x+y\\frac{dy}{dx}\\right)+y^2 = 0 \\Rightarrow x^2 - y^2 + 2xy\\frac{dy}{dx} = 0\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Intersection of \\(x^2=8y\\) and \\(x-8y+2=0\\): points \\(\\left(-1,\\frac18\\right)\\) and \\(\\left(2,\\frac12\\right)\\).\\nArea \\(= \\int_{-1}^{2}\\left(\\frac{2+x}{8} - \\frac{x^2}{8}\\right)dx = \\frac{1}{8}\\left[2x+\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_{-1}^{2} = \\frac{9}{16}\\) sq. units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Using \\(\\tan\\frac{A}{2} = \\frac{\\Delta}{s(s-a)}\\), we get \\(\\cot\\frac{A}{2} = \\frac{s(s-a)}{\\Delta}\\), similarly for B, C.\\n\\(\\sum\\cot\\frac{A}{2} = \\frac{s}{\\Delta}[3s-(a+b+c)] = \\frac{s}{\\Delta}(3s-2s) = \\frac{s^2}{\\Delta}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Vectors",
+    "subtopic": "Vector Geometry — Section Formula, Triangle, and Parallelogram",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "\\(\\overline{PQ} = (\\widehat{i}+\\widehat{j}+\\widehat{k})-(-\\widehat{i}+\\widehat{j}+\\widehat{k}) = 2\\widehat{i}\\), \\(|\\overline{PQ}|=2\\).\\n\\(\\overline{QR} = (\\widehat{i}-\\widehat{j}+\\widehat{k})-(\\widehat{i}+\\widehat{j}+\\widehat{k}) = -2\\widehat{j}\\), \\(|\\overline{QR}|=2\\).\\nArea of rectangle \\(= 2\\times 2 = 4\\) sq. units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Using \\(\\tan^{-1}\\theta = \\frac{\\pi}{2}-\\cot^{-1}\\theta\\) and \\(\\cot^{-1}(1-x+x^2)=\\tan^{-1}x+\\tan^{-1}(1-x)\\):\\n\\(I = \\int_0^1\\left[\\frac{\\pi}{2}-\\tan^{-1}x-\\tan^{-1}(1-x)\\right]dx = \\frac{\\pi}{2}-2\\int_0^1\\tan^{-1}x\\,dx\\) (King's property).\\n\\(\\int_0^1\\tan^{-1}x\\,dx = \\frac{\\pi}{4}-\\frac12\\log 2\\), so \\(I = \\frac{\\pi}{2}-2\\left(\\frac{\\pi}{4}-\\frac12\\log2\\right) = \\log 2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Using \\(\\int_a^b\\frac{f(x)}{f(x)+f(a+b-x)}dx = \\frac{b-a}{2}\\) with \\(a+b=8\\):\\n\\(\\int_3^5\\frac{\\sqrt{x}}{\\sqrt{8-x}+\\sqrt{x}}dx = \\frac{5-3}{2} = 1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\int\\frac{dx}{\\sqrt{x}+x} = \\int\\frac{dx}{\\sqrt{x}(1+\\sqrt{x})}\\).\\nPut \\(1+\\sqrt{x}=t\\Rightarrow \\frac{1}{2\\sqrt{x}}dx = dt\\): integral \\(= 2\\int\\frac{dt}{t} = 2\\log|1+\\sqrt{x}|+c\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "A,B,C in A.P. \\(\\Rightarrow B=60^\\circ\\). With \\(a=10\\), \\(b=9\\):\\n\\(\\cos 60^\\circ = \\frac{c^2+100-81}{20c} \\Rightarrow \\frac12 = \\frac{c^2+19}{20c} \\Rightarrow c^2-10c+19=0\\).\\n\\(c = 5\\pm\\sqrt6\\). Perimeter \\(= 10+9+(5+\\sqrt6) = 24+\\sqrt6\\) cm.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\int\\frac{dx}{e^x-1}\\). Put \\(e^x-1=t\\Rightarrow dx = \\frac{dt}{t+1}\\): \\(\\int\\frac{dt}{t(t+1)} = \\int\\left(\\frac1t-\\frac{1}{t+1}\\right)dt\\).\\n\\(= \\log|e^x-1| - \\log|e^x| + c = \\log(e^x-1) - x + c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(y = x^{2/3}+(x-2)^{2/3}\\), \\(\\frac{dy}{dx} = \\frac23\\left(x^{-1/3}+(x-2)^{-1/3}\\right) = 0\\) gives \\(x=1\\).\\n\\(\\frac{d^2y}{dx^2}<0\\) at \\(x=1\\), so maximum value \\(= 1^{2/3}+(-1)^{2/3} = 1+1 = 2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(\\left(\\frac{x-3}{x^2+9}\\right)^2 = \\frac{x^2-6x+9}{(x^2+9)^2} = \\frac{1}{x^2+9} - \\frac{6x}{(x^2+9)^2}\\).\\n\\(\\int\\frac{dx}{x^2+9} = \\frac13\\tan^{-1}\\frac{x}{3}\\); \\(-3\\int\\frac{2x\\,dx}{(x^2+9)^2} = \\frac{3}{x^2+9}\\).\\n\\(\\therefore I = \\frac13\\tan^{-1}\\frac{x}{3} + \\frac{3}{x^2+9} + c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(4y^2-4y+2x-1=0\\). Tangent parallel to Y-axis \\(\\Rightarrow \\frac{dx}{dy}=0\\).\\nDifferentiating w.r.t. \\(y\\): \\(8y-4+2\\frac{dx}{dy}=0\\Rightarrow \\frac{dx}{dy}=2-4y=0\\Rightarrow y=\\frac12\\).\\nSubstituting: \\(1-2+2x-1=0\\Rightarrow x=1\\). Point \\(\\left(1,\\frac12\\right)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "Let \\(\\sec^{-1}4=\\alpha\\Rightarrow \\tan^2\\alpha = \\sec^2\\alpha-1 = 15\\).\\nLet \\(\\csc^{-1}3=\\beta\\Rightarrow \\cot^2\\beta = \\csc^2\\beta-1 = 8\\).\\nSum \\(= 15+8 = 23\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\tan\\frac{A-B}{2} = \\frac{a-b}{a+b}\\cot\\frac{C}{2}\\). With \\(a=5,b=4\\): \\(\\frac{a-b}{a+b}=\\frac19\\).\\n\\(\\cos(A-B)=\\frac{31}{32}\\Rightarrow \\tan\\frac{A-B}{2} = \\frac{1}{\\sqrt{63}}\\), so \\(\\frac19\\cot\\frac{C}{2} = \\frac{1}{\\sqrt{63}}\\Rightarrow \\tan\\frac{C}{2}=\\frac{\\sqrt7}{3}\\).\\n\\(\\cos C = \\frac{1-7/9}{1+7/9} = \\frac18\\). By cosine rule \\(c^2 = 25+16-40(\\tfrac18) = 36\\Rightarrow c=6\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Statement: \\(\\forall M>0,\\ \\exists x\\in S\\) such that \\(x\\ge M\\).\\nNegation flips quantifiers and the inequality: \\(\\exists M>0\\) such that \\(\\forall x\\in S,\\ x<M\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true,
+    "note": "stem garbled: '\\geq slant' is a pandoc artifact for \\geqslant (i.e. \\ge); meaning preserved."
+  },
+  "132": {
+    "chapter": "Line and Plane",
+    "subtopic": "Line — Equation, Direction Cosines, and Vector Form",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Point of intersection of the two lines: solving \\(x=2\\lambda+1,y=3\\lambda+2,z=4\\lambda+3\\) with \\(x=5\\mu+4,y=2\\mu+1,z=\\mu\\) gives \\((-1,-1,-1)\\).\\nLine through \\((-1,-1,-1)\\) and \\((2,1,-2)\\): direction \\((3,2,-1)\\), giving \\(\\frac{x+1}{3}=\\frac{y+1}{2}=\\frac{z+1}{-1}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\frac{dy}{dt} = 18\\frac{dx}{dt}\\) and \\(\\frac{dy}{dt} = 2x^2\\frac{dx}{dt}\\Rightarrow x^2=9\\Rightarrow x=\\pm3\\).\\nAt \\(x=3\\): \\(y=\\frac{2(27)-1}{3}=\\frac{53}{3}\\); at \\(x=-3\\): \\(y=\\frac{2(-27)-1}{3}=-\\frac{55}{3}\\).\\nPoints: \\(\\left(-3,-\\frac{55}{3}\\right),\\left(3,\\frac{53}{3}\\right)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(s=at^2+bt+c\\). At \\(t=1\\): \\(a+b+c=20\\). Velocity \\(v=2at+b\\); at \\(t=2\\): \\(4a+b=30\\). Acceleration \\(2a=10\\Rightarrow a=5\\).\\nThen \\(b=10\\), \\(c=5\\), so \\(a+c = 10 = b\\), i.e. \\(a+c=b\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(y = \\tan^{-1}\\frac{4\\sin 2x}{\\cos 2x - 6\\sin^2 x} = \\tan^{-1}\\frac{8\\tan x}{1-7\\tan^2 x} = \\tan^{-1}(7\\tan x) + \\tan^{-1}(\\tan x)\\).\\nSo \\(y = \\tan^{-1}(7\\tan x) + x\\); \\(\\frac{dy}{dx} = \\frac{7\\sec^2 x}{1+49\\tan^2 x} + 1\\).\\nAt \\(x=0\\): \\(\\frac{7}{1}+1 = 8\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\frac{dx}{dt} = 2a\\cos 2t + 2a\\cos 4t = 4a\\cos 3t\\cos t\\).\\n\\(\\frac{dy}{dt} = 2b(\\sin 4t - \\sin 2t) = 4b\\cos 3t\\sin t\\).\\n\\(\\frac{dy}{dx} = \\frac{4b\\cos 3t\\sin t}{4a\\cos 3t\\cos t} = \\frac{b}{a}\\tan t\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Converse, Inverse, and Contrapositive",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(\\sim p\\vee(q\\wedge\\sim r) \\equiv p\\rightarrow(q\\wedge\\sim r)\\).\\nContrapositive: \\(\\sim(q\\wedge\\sim r)\\rightarrow\\sim p \\equiv (\\sim q\\vee r)\\rightarrow\\sim p \\equiv (r\\vee\\sim q)\\rightarrow\\sim p\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "note": "stem garbled: '\\simp' and '\\land \\simr' are pandoc artifacts for \\sim p and \\wedge \\sim r."
+  },
+  "138": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Lines intersect \\(\\Rightarrow\\) coplanar: \\(\\begin{vmatrix}2&k+1&-1\\\\2&3&4\\\\1&2&1\\end{vmatrix}=0\\).\\nExpanding: \\(2(3-8)-(k+1)(2-4)+(-1)(4-3) = -10+2(k+1)-1 = 2k-9 = 0\\Rightarrow k=\\frac92\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Differentiation",
+    "subtopic": "Implicit Differentiation & Special Forms",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(y = \\sqrt{x+\\sqrt{y+y}}\\) (the nested expression equals \\(y\\) inside), so \\(y^2 = x+\\sqrt{2y}\\Rightarrow (y^2-x)^2 = 2y\\).\\nDifferentiating: \\(2(y^2-x)(2y\\,y'-1) = 2y'\\), giving \\(y' = \\frac{y^2-x}{2y^3-2xy-1}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Linear Programming",
+    "subtopic": "Feasible Region — Identification, Constraints, Classification",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Constraints: \\(2x+y\\le 10\\), \\(y\\le x\\), \\(y\\le 2\\), \\(x,y\\ge 0\\).\\nLine \\(2x+y=10\\) meets \\(y=2\\) at \\((4,2)\\); \\(y=x\\) meets \\(y=2\\) at \\((2,2)\\).\\nFeasible region is the bounded region near the X-axis with vertices \\((0,0)\\), \\((5,0)\\), \\((4,2)\\), \\((2,2)\\) — the shaded region in graph A.",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "optionFigures": true,
+    "optionOverrides": {
+      "A": "(A)",
+      "B": "(B)",
+      "C": "(C)",
+      "D": "(D)"
+    }
+  },
+  "141": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distances in 3-D",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Line QR: \\(\\frac{x-3}{-1}=\\frac{y+4}{1}=\\frac{z+5}{6}=\\lambda\\), point \\((3-\\lambda,\\lambda-4,6\\lambda-5)\\).\\nOn plane \\(2x+y+z=7\\): \\(2(3-\\lambda)+\\lambda-4+6\\lambda-5=7\\Rightarrow 5\\lambda=10\\Rightarrow\\lambda=2\\), point \\(M(1,-2,7)\\).\\n\\(PM = \\sqrt{(1-3)^2+(-2-4)^2+(7-4)^2} = \\sqrt{4+36+9} = 7\\) units.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Sets, Relations and Functions",
+    "subtopic": "Inverse, Composite, and Special Function Equations",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\((f\\circ g)(x) = 3(x^2-1)+10 = 3x^2+7\\).\\nLet \\(y=3x^2+7\\Rightarrow x = \\left(\\frac{y-7}{3}\\right)^{1/2}\\).\\n\\(\\therefore (f\\circ g)^{-1}(x) = \\left(\\frac{x-7}{3}\\right)^{1/2}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Selection and Arrangement with Constraints",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Treat mother+father as one block (both adults of opposite gender, fitting the alternating M/F pattern). Around a round table with the alternating constraint, the seating frame is fixed once the block's position and the alternation are set.\\nThe 4 girls fill girl-seats in \\(4!\\) ways and 4 boys fill boy-seats in \\(4!\\) ways: total \\(= 4!\\times 4! = 576\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(2(\\overline{a}\\times\\overline{b}) = 3(\\overline{c}\\times\\overline{a})\\Rightarrow \\overline{a}\\times(2\\overline{b}+3\\overline{c})=0\\Rightarrow \\overline{a}=\\lambda(2\\overline{b}+3\\overline{c})\\).\\nWith \\(|\\overline{b}|=\\tfrac12,|\\overline{c}|=2\\), \\(\\overline{b}\\cdot\\overline{c}=\\tfrac12\\cdot2\\cdot\\cos\\tfrac{2\\pi}{3}=-\\tfrac12\\): \\(|2\\overline{b}+3\\overline{c}|^2 = 4(\\tfrac14)+9(4)+12(-\\tfrac12)=31\\), so \\(\\lambda^2=1\\).\\nThen \\(\\left|\\frac{\\overline{a}\\times\\overline{c}}{\\overline{a}\\cdot\\overline{b}}\\right|^2\\): with \\(\\overline{a}=2\\overline{b}+3\\overline{c}\\), \\(\\overline{a}\\times\\overline{c}=2(\\overline{b}\\times\\overline{c})\\) and \\(\\overline{a}\\cdot\\overline{b}=2|\\overline{b}|^2+3\\overline{b}\\cdot\\overline{c}=\\tfrac12-\\tfrac32=-1\\); \\(|\\overline{b}\\times\\overline{c}|=\\tfrac12\\cdot2\\cdot\\sin\\tfrac{2\\pi}{3}=\\tfrac{\\sqrt3}{2}\\), so \\(|\\overline{a}\\times\\overline{c}|=\\sqrt3\\). Ratio squared \\(= \\frac{3}{1}=3\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Let \\(\\overline{c}=x\\widehat{i}+y\\widehat{j}+z\\widehat{k}\\). Coplanarity \\([\\overline{a}\\ \\overline{b}\\ \\overline{c}]=0\\) gives \\(x-y-z=0\\).\\nPerpendicular to \\(\\overline{a}\\): \\(2x+y+z=0\\).\\nSolving: \\(x=0,y=-1,z=1\\) (up to scale), so \\(\\overline{c}=-\\widehat{j}+\\widehat{k}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Algebraic Equations, Locus, and Cube Roots",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(x=-2+\\sqrt{-3}\\Rightarrow x+2=\\sqrt3 i\\Rightarrow x^2+4x+7=0\\).\\nDivide: \\(2x^4+5x^3+7x^2-x+38 = (x^2+4x+7)(2x^2-3x+5)+3\\).\\n\\(= 0+3 = 3\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(P(B_1)=P(B_2)=\\tfrac12\\), \\(P(G/B_1)=\\tfrac25\\), \\(P(G/B_2)=\\tfrac38\\).\\n\\(P(G)=\\tfrac25\\cdot\\tfrac12+\\tfrac38\\cdot\\tfrac12=\\tfrac{31}{80}\\).\\nBy Bayes: \\(P(B_1/G)=\\frac{(2/5)(1/2)}{31/80}=\\frac{16}{31}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Tangent at \\((2\\sec\\theta,3\\tan\\theta)\\): \\(\\frac{x\\sec\\theta}{2}-\\frac{y\\tan\\theta}{3}=1\\), slope \\(=\\frac{3\\sec\\theta}{2\\tan\\theta}=\\frac{3}{2\\sin\\theta}\\).\\nParallel to \\(3x-y+4=0\\) (slope 3): \\(\\frac{3}{2\\sin\\theta}=3\\Rightarrow\\sin\\theta=\\tfrac12\\Rightarrow\\theta=30^\\circ\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Plane through the two lines \\(\\frac{x}{2}=\\frac{y}{3}=\\frac{z}{1}\\) and \\(\\frac{x}{3}=\\frac{y}{2}=\\frac{z}{1}\\): \\(\\begin{vmatrix}x&y&z\\\\2&3&1\\\\3&2&1\\end{vmatrix}=0\\Rightarrow x+y-5z=0\\), normal \\((1,1,-5)\\).\\nRequired plane contains \\((1,2,3)\\) and is perpendicular to \\((1,1,-5)\\). Testing \\(13x-8y+z=0\\): contains the line (\\(13-16+3=0\\)) and \\(13(1)-8(1)+1(-5)=0\\) (perpendicular). So \\(13x-8y+z=0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Plane contains the line through \\((-1,-2,2)\\) with direction \\((2,1,3)\\), and the point \\((1,-1,3)\\).\\nNormal \\(\\overline{n} = (2,1,3)\\times[(1,-1,3)-(-1,-2,2)] = (2,1,3)\\times(2,1,1) = (-2,4,0)\\), i.e. \\((1,-2,0)\\).\\nPlane through \\((1,-1,3)\\): \\(1(x-1)-2(y+1)=0\\Rightarrow x-2y-3=0\\). Check: contains \\((-1,-2,2)\\): \\(-1+4-3=0\\) ✓.",
+    "akAnswer": "C",
+    "agreesWithAk": false,
+    "note": "AK keys C (3x-2z+3=0) but that plane does NOT contain the line's point (-1,-2,2): -3-4+3=-4≠0. The AK's OWN worked solution derives x-2y-3=0, which is option A. Option A contains the point (1,-1,3): 1+2-3=0, the line point (-1,-2,2): -1+4-3=0, and is perpendicular to direction (2,1,3): (1,-2,0)·(2,1,3)=0. Correct answer is A."
+  }
+}

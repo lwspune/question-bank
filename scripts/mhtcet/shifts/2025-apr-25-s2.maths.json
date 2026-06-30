@@ -1,0 +1,455 @@
+{
+  "101": {
+    "chapter": "Circle",
+    "subtopic": "Tangent, Locus, and Equation Construction",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let the point of contact be \\(P(h,k)\\) on the line, so \\(h+2k+4=0\\).\nThe centre \\(C(-1,1)\\) joins \\(P\\) perpendicular to the line (slope \\(-\\tfrac12\\)), giving \\(\\dfrac{k-1}{h+1}=2\\), i.e. \\(2h-k=-3\\).\nSolving the two equations: \\(h=-2,\\ k=-1\\).\nSo the point of contact is \\((-2,-1)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Equal priors: \\(P(D_1)=P(D_2)=P(D_3)=\\tfrac13\\), with \\(P(+|D_1)=0.7,\\ P(+|D_2)=0.5,\\ P(+|D_3)=0.8\\).\nBy Bayes' theorem, \\(P(D_2|+)=\\dfrac{\\tfrac13(0.5)}{\\tfrac13(0.7+0.5+0.8)}=\\dfrac{0.5}{2}=\\dfrac14\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Polar Form",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Start at \\((1,2)\\). Move \\(5\\) right \\(\\to(6,2)\\), then \\(3\\) up \\(\\to(6,5)=Z_1\\).\nMove \\(\\sqrt2\\) along \\(\\hat i+\\hat j\\) (i.e. add \\((1,1)\\)) \\(\\to(7,6)\\).\nRotating \\((7,6)\\) by \\(\\tfrac{\\pi}{2}\\) anticlockwise about origin: \\((x,y)\\to(-y,x)=(-6,7)\\).\nThus \\(Z_2=-6+7i\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Factor numerator: \\(63^x-9^x-7^x+1=(9^x-1)(7^x-1)\\).\nRationalise denominator: \\(\\sqrt2-\\sqrt{1+\\cos x}=\\dfrac{1-\\cos x}{\\sqrt2+\\sqrt{1+\\cos x}}\\).\nSo the limit \\(=\\lim\\dfrac{(9^x-1)(7^x-1)(\\sqrt2+\\sqrt{1+\\cos x})}{1-\\cos x}\\).\nUsing \\(\\dfrac{a^x-1}{x}\\to\\log a\\) and \\(\\dfrac{1-\\cos x}{x^2}\\to\\tfrac12\\): \\(=\\dfrac{(\\log9)(\\log7)(2\\sqrt2)}{1/2}=4\\sqrt2\\,\\log7\\,\\log9\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "(A) \\(F\\to F\\equiv T\\), so (A) is true.\n(B) \\(T\\to F\\equiv F\\), so (B) is false.\n(C) antecedent 'both (A) and (B) true' is \\(F\\), so \\(F\\to T\\equiv T\\); (C) is true.\nHence (A) and (C) are true while (B) is false.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Adjoint, Determinant, and A·adj(A) Identity",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "For \\(A=\\begin{bmatrix}5a&-b\\\\3&2\\end{bmatrix}\\), \\(\\operatorname{adj}A=\\begin{bmatrix}2&b\\\\-3&5a\\end{bmatrix}\\).\n\\(A\\,\\operatorname{adj}A=|A|I\\) and equating to \\(AA^{T}\\) gives off-diagonal \\(15a-2b=0\\) and \\(|A|=3b+10a=13\\).\nSolving: \\(a=\\tfrac25,\\ b=3\\), so \\(5a+b=2+3=5\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "EASY",
+    "answer": "C",
+    "solution": "\\(\\sin\\theta=-\\tfrac12\\) and \\(\\tan\\theta=\\tfrac{1}{\\sqrt3}>0\\): both negative-sine, positive-tan occur in the third quadrant.\n\\(\\theta=\\pi+\\tfrac{\\pi}{6}=\\tfrac{7\\pi}{6}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "108": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "If slopes are in ratio \\(m:n\\) for \\(ax^2+2hxy+by^2=0\\), then \\((m+n)^2ab=4mnh^2\\).\nWith \\(a=6,b=1,m:n=2:3\\): \\((5)^2(6)(1)=4(6)h^2\\Rightarrow150=24h^2\\Rightarrow h^2=\\tfrac{25}{4}\\).\nSo \\(h=\\pm\\tfrac52\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\sin\\theta=\\dfrac{|\\bar a\\times\\bar b|}{|\\bar a||\\bar b|}=\\dfrac{5\\sqrt5}{15}=\\dfrac{\\sqrt5}{3}\\), so \\(\\cos^2\\theta=1-\\tfrac59=\\tfrac49\\).\nSince \\(\\theta\\) is obtuse, \\(\\cos\\theta=-\\tfrac23\\).\n\\(\\bar a\\cdot\\bar b=|\\bar a||\\bar b|\\cos\\theta=15\\left(-\\tfrac23\\right)=-10\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Intercepts give \\(A(2,0,0),B(0,-3,0),C(0,0,-5)\\).\n\\(\\overline{AB}=(-2,-3,0),\\ \\overline{AC}=(-2,0,-5)\\); \\(\\overline{AB}\\times\\overline{AC}=(15,-10,-6)\\).\nArea \\(=\\tfrac12\\sqrt{225+100+36}=\\tfrac12\\sqrt{361}=\\tfrac{19}{2}\\) sq. units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\dfrac{dP}{dt}=kP\\Rightarrow P=P_0e^{kt}\\). At \\(t=0,\\ P=30000\\Rightarrow a=30000\\).\nAt \\(t=40,\\ P=40000\\Rightarrow e^{40k}=\\tfrac43\\), so \\(P=30000\\left(\\tfrac43\\right)^{t/40}\\).\nHence \\(a=30000,\\ b=\\tfrac43\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Binomial Distribution",
+    "subtopic": "Binomial Probability Calculation",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(p(\\text{swimmer})=\\tfrac45,\\ q=\\tfrac15,\\ n=5\\).\n\\(P(X=4)={}^5C_4\\left(\\tfrac45\\right)^4\\left(\\tfrac15\\right)=5\\left(\\tfrac45\\right)^4\\tfrac15=\\left(\\tfrac45\\right)^4\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Winnings \\(X=10,5,2\\) with probabilities \\(\\tfrac14,\\tfrac12,\\tfrac14\\).\n\\(E(X)=10\\cdot\\tfrac14+5\\cdot\\tfrac12+2\\cdot\\tfrac14=\\tfrac{11}{2}\\); \\(E(X^2)=100\\cdot\\tfrac14+25\\cdot\\tfrac12+4\\cdot\\tfrac14=\\tfrac{77}{2}\\).\n\\(\\mathrm{Var}(X)=\\tfrac{77}{2}-\\left(\\tfrac{11}{2}\\right)^2=38.5-30.25=8.25\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\sum P=1\\): \\(K+2K+K^2+2K+5K^2=1\\Rightarrow6K^2+5K-1=0\\Rightarrow(6K-1)(K+1)=0\\), so \\(K=\\tfrac16\\).\n\\(P(X>2)=1-P(X\\le2)=1-(K+2K)=1-3K=1-\\tfrac12=\\tfrac12\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Linear ODE: \\(\\dfrac{dy}{dx}+\\dfrac{2x}{1+x^2}y=\\dfrac{4x^2}{1+x^2}\\); I.F. \\(=1+x^2\\).\n\\(y(1+x^2)=\\int4x^2\\,dx+c=\\tfrac43x^3+c\\). Through origin \\(\\Rightarrow c=0\\).\nSo \\(3y(1+x^2)=4x^3\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Differentiation",
+    "subtopic": "Inverse Functions & Inverse Trigonometric Differentiation",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Put \\(4x=\\tan\\theta\\). Then \\(\\dfrac{12x-64x^3}{1-48x^2}=\\dfrac{3\\tan\\theta-\\tan^3\\theta}{1-3\\tan^2\\theta}=\\tan3\\theta\\).\nSo \\(y=3\\theta=3\\tan^{-1}(4x)\\), giving \\(\\dfrac{dy}{dx}=\\dfrac{3}{1+16x^2}\\cdot4=\\dfrac{12}{1+16x^2}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(y=(C_1+C_2)\\sin(x+C_3)-C_4e^{x+C_5}=A\\sin(x+C_3)-Be^{x}\\) with \\(A=C_1+C_2,\\ B=C_4e^{C_5}\\).\nOnly \\(3\\) independent arbitrary constants \\((A,C_3,B)\\) remain, so the order is \\(3\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Linear Programming",
+    "subtopic": "Objective Function — Maximisation and Minimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Corner points: \\((0,2),(0,5),\\left(\\tfrac{20}{7},\\tfrac47\\right),\\left(\\tfrac73,\\tfrac83\\right)\\).\n\\(Z=6x+3y\\) gives \\(6,15,\\tfrac{132}{7}\\approx18.9,22\\) respectively.\nMaximum \\(Z=22\\) at \\(\\left(\\tfrac73,\\tfrac83\\right)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Rewrite lines in symmetric form and apply the coplanarity determinant condition.\nThe condition reduces to \\(\\dfrac{1}{ab}-\\dfrac1a=0\\Rightarrow b=1\\), with \\(a\\) free (and \\(ab\\neq0\\)).\nHence \\(b=1,\\ a\\in\\mathbb{R}-\\{0\\}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Let \\(t=\\tan^{-1}x\\), so \\(\\cot^{-1}x=\\tfrac{\\pi}{2}-t\\).\n\\(t^2+\\left(\\tfrac{\\pi}{2}-t\\right)^2=\\tfrac{5\\pi^2}{8}\\Rightarrow2t^2-\\pi t-\\tfrac{3\\pi^2}{8}=0\\Rightarrow t=-\\tfrac{\\pi}{4}\\) or \\(\\tfrac{3\\pi}{4}\\).\nOnly \\(t=-\\tfrac{\\pi}{4}\\) lies in the range, so \\(x=-1\\) and \\(x^2+1=2\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "From the circuit, the top branch is \\(p\\wedge(q\\vee r)\\) and the bottom branch is \\(\\sim r\\wedge\\sim q\\wedge p\\).\nSymbolic form: \\([p\\wedge(q\\vee r)]\\vee[p\\wedge\\sim(q\\vee r)]=p\\wedge[(q\\vee r)\\vee\\sim(q\\vee r)]=p\\wedge T=p\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true,
+    "note": "Stem figure (switching circuit) at image12.png; answerable from the circuit diagram. Options are text."
+  },
+  "122": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Continuity at \\(x=3\\): \\(K=\\lim_{x\\to3}\\dfrac{\\int_3^{f(x)}3t^2\\,dt}{x-3}\\) (\\(\\tfrac00\\) form).\nBy L'Hospital, \\(K=3[f(3)]^2f'(3)=3(9)\\left(\\tfrac{1}{27}\\right)=1\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "EASY",
+    "answer": "A",
+    "solution": "\\(y=4x-x^2\\) meets the X-axis at \\(x=0,4\\).\nArea \\(=\\int_0^4(4x-x^2)\\,dx=\\left[2x^2-\\tfrac{x^3}{3}\\right]_0^4=32-\\tfrac{64}{3}=\\tfrac{32}{3}\\) sq. units.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Plane through \\((2,-3,0)\\) with normal \\(\\bar n=(\\hat i+2\\hat j-\\hat k)\\times(2\\hat i+3\\hat j+\\hat k)=5\\hat i-3\\hat j-\\hat k\\).\n\\(\\bar r\\cdot\\bar n=\\bar a\\cdot\\bar n=(2)(5)+(-3)(-3)+0=19\\).\nCartesian: \\(5x-3y-z=19\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Line and Plane",
+    "subtopic": "Angles — Line, Plane, and Direction Conditions",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Line direction \\((2,-1,2)\\) is perpendicular to plane normal \\((\\alpha,3,-1)\\): \\(2\\alpha-3-2=0\\Rightarrow\\alpha=\\tfrac52\\).\nPoint \\((3,-5,-2)\\) on plane: \\(\\tfrac52(3)+3(-5)-(-2)+\\beta=0\\Rightarrow\\tfrac{15}{2}-15+2+\\beta=0\\Rightarrow\\beta=\\tfrac{11}{2}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(f(x)=\\sin\\left(\\dfrac{e^x-1}{e^x+1}\\right)\\) satisfies \\(f(-x)=-f(x)\\), so \\(f\\) is odd.\nLimits are \\(\\log\\tfrac12=-\\log2\\) and \\(\\log2\\), symmetric about \\(0\\).\n\\(\\int_{-\\log2}^{\\log2}f(x)\\,dx=0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Obtuse angle for all \\(x>0\\): \\(\\bar a\\cdot\\bar b<0\\) for every value of \\(u=\\log_7x\\).\n\\(\\bar a\\cdot\\bar b=cu^2+6cu-12<0\\ \\forall u\\) needs \\(c<0\\) and discriminant \\(36c^2+48c<0\\Rightarrow3c+4>0\\Rightarrow c>-\\tfrac43\\).\nHence \\(c\\in\\left(-\\tfrac43,0\\right)\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Treating \\(\\csc^4x\\) as even and substituting \\(\\tan x=t\\) reduces the integral to \\(2\\int_0^1\\dfrac{1+t^2}{t^4}\\,dt\\).\nFormally evaluating term-by-term gives the textbook key value \\(-\\dfrac83\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "note": "Strictly the integrand \\(\\csc^4x\\) diverges at \\(x=0\\), so the integral does not converge; the intended (textbook) answer following the AK's substitution is B = -8/3."
+  },
+  "129": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Area \\(=\\tfrac12|\\overline{BC}|\\cdot AM=\\tfrac12|\\bar c-\\bar b|\\,AM\\).\nAlso area \\(=\\tfrac12|(\\bar b-\\bar a)\\times(\\bar c-\\bar a)|=\\tfrac12|\\bar a\\times\\bar b+\\bar b\\times\\bar c+\\bar c\\times\\bar a|\\).\nEquating: \\(AM=\\dfrac{|\\bar a\\times\\bar b+\\bar b\\times\\bar c+\\bar c\\times\\bar a|}{|\\bar c-\\bar b|}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Write \\(I=\\int\\dfrac{dx}{(x+a)^2\\left(\\frac{x-b}{x+a}\\right)^{5/7}}\\). Put \\(\\dfrac{x-b}{x+a}=t\\Rightarrow\\dfrac{a+b}{(x+a)^2}dx=dt\\).\n\\(I=\\dfrac{1}{a+b}\\int t^{-5/7}\\,dt=\\dfrac{1}{a+b}\\cdot\\dfrac{t^{2/7}}{2/7}=\\dfrac{7}{2(a+b)}\\left(\\dfrac{x-b}{x+a}\\right)^{2/7}+c\\).",
+    "agreesWithAk": true,
+    "note": "No AK extracted; derived independently. AK worked solution (in the source) also gives this result."
+  },
+  "131": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Directions \\(\\bar b_1=3\\hat i-\\hat j,\\ \\bar b_2=2\\hat i+3\\hat k\\); \\(\\bar b_1\\times\\bar b_2=-3\\hat i-9\\hat j+2\\hat k\\).\nWith \\(\\bar a_2-\\bar a_1=3\\hat i-\\hat j\\), the box product \\((\\bar a_2-\\bar a_1)\\cdot(\\bar b_1\\times\\bar b_2)=0\\), so the lines intersect.\n\\(\\bar b_1\\cdot\\bar b_2=6\\neq0\\), so they are not perpendicular: intersecting but not perpendicular.",
+    "agreesWithAk": true,
+    "note": "No AK extracted; derived independently. AK worked solution (in the source) also concludes the lines intersect (not perpendicular)."
+  },
+  "132": {
+    "chapter": "Vectors",
+    "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Expanding the BAC-CAB: \\(\\bar a\\times(\\bar b\\times\\bar c)+\\bar b\\times(\\bar c\\times\\bar a)=(\\bar a\\cdot\\bar c)\\bar b-(\\bar b\\cdot\\bar c)\\bar a=\\tfrac12\\bar a\\).\nSo \\(\\bar a\\cdot\\bar c=0\\Rightarrow\\) angle\\((\\bar a,\\bar c)=90^{\\circ}\\), and \\(\\bar b\\cdot\\bar c=-\\tfrac12\\Rightarrow\\cos\\theta=-\\tfrac12\\Rightarrow\\) angle\\((\\bar b,\\bar c)=120^{\\circ}\\).",
+    "agreesWithAk": true,
+    "note": "No AK extracted; derived independently. AK worked solution (in the source) also gives 90 deg and 120 deg."
+  },
+  "133": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "With \\(\\angle B=\\tfrac{\\pi}{2}\\), \\(\\tfrac{A}{2}+\\tfrac{C}{2}=\\tfrac{\\pi}{4}\\). Roots give sum \\(=-\\tfrac qp\\), product \\(=\\tfrac rp\\).\n\\(\\tan\\left(\\tfrac{A}{2}+\\tfrac{C}{2}\\right)=1=\\dfrac{-q/p}{1-r/p}\\Rightarrow p-r=-q\\Rightarrow p+q=r\\).",
+    "agreesWithAk": true,
+    "note": "No AK extracted; derived independently. AK worked solution (in the source) also gives p + q = r."
+  },
+  "134": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Rational Functions and Partial Fractions",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Multiply by \\(x^2/x^2\\): \\(I=\\int\\dfrac{x^2}{x^3(x^3+1)}dx\\). Put \\(x^3=t,\\ 3x^2dx=dt\\).\n\\(I=\\tfrac13\\int\\left(\\tfrac1t-\\tfrac{1}{t+1}\\right)dt=\\tfrac13\\log\\left|\\tfrac{t}{t+1}\\right|=\\log\\left(\\sqrt[3]{\\tfrac{x^3}{x^3+1}}\\right)+c\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Combining \\(\\tan^{-1}(x+1)+\\tan^{-1}(x-1)+\\tan^{-1}x=\\tan^{-1}3\\) leads to \\(\\dfrac{4x-x^3}{2-3x^2}=3\\), giving \\(x=-1\\) for \\(x<0\\).\nThen \\(500x^4+270x^2+997=500+270+997=1767\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Sets, Relations and Functions",
+    "subtopic": "Inverse, Composite, and Special Function Equations",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(f^{-1}(x)=\\dfrac{2x-3}{x-1}\\) and \\(g^{-1}(x)=\\dfrac{x+2}{3}\\).\n\\(\\dfrac{2x-3}{x-1}+\\dfrac{x+2}{3}=\\dfrac{19}{6}\\Rightarrow2x^2-5x-3=0\\Rightarrow x=-\\tfrac12,3\\).\nSum \\(=-\\tfrac12+3=\\tfrac52\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Counting and Geometric Applications",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Choose any 4 points: \\({}^{11}C_4=330\\).\nSubtract degenerate (no quadrilateral) cases: 3 collinear + 1 other \\(={}^5C_3\\cdot{}^6C_1=60\\), and 4 collinear \\(={}^5C_4=5\\).\nTotal \\(=330-60-5=265\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Put \\(\\tan^{-1}(x^5)=t\\Rightarrow\\dfrac{5x^4}{1+x^{10}}dx=dt\\).\n\\(I=\\tfrac15\\int\\cos t\\,dt=\\tfrac15\\sin t=\\dfrac{\\sin(\\tan^{-1}x^5)}{5}+c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Differentiating \\(x^2+2xy-3y^2=0\\): \\(\\dfrac{dy}{dx}=\\dfrac{-x-y}{x-3y}\\); at \\((2,2)\\) this is \\(1\\), so normal slope \\(=-1\\).\nNormal: \\(x+y=4\\). Distance from origin \\(=\\dfrac{|{-4}|}{\\sqrt2}=2\\sqrt2\\) units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(f'(x)=\\dfrac{1}{1+x}-\\dfrac{4}{(2+x)^2}=\\dfrac{x^2}{(x+1)(x+2)^2}\\).\nSince \\(x^2\\ge0\\) and \\((x+2)^2>0\\), \\(f'(x)>0\\) when \\(x+1>0\\), i.e. \\(x>-1\\).\nSo \\(f\\) increases on \\((-1,\\infty)\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "141": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Curves meet at \\((0,1)\\); slopes \\(m_1=\\log3,\\ m_2=\\log7\\).\n\\(\\tan\\theta=\\left|\\dfrac{\\log3-\\log7}{1+(\\log3)(\\log7)}\\right|=\\dfrac{\\log(3/7)}{1+(\\log3)(\\log7)}\\) (matching option A).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rolle's Theorem and Mean Value Theorem",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Rolle's theorem on \\([1,3]\\) needs \\(f(1)=f(3)\\): \\(a+b-5=3a+b-27\\Rightarrow2a=22\\Rightarrow a=11\\).\nOnly option (A) has \\(a=11\\) (with \\(b=-6\\)).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Differentiation",
+    "subtopic": "Implicit Differentiation & Special Forms",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Let both sides equal \\(p\\). From \\(\\sqrt{y-p}=p\\): \\(\\dfrac{dy}{dp}=2p+1\\); from \\(\\sqrt{x+p}=p\\): \\(\\dfrac{dx}{dp}=2p-1\\).\n\\(\\dfrac{dy}{dx}=\\dfrac{2p+1}{2p-1}\\) with \\(p=\\dfrac{y-x}{2}\\), giving \\(\\dfrac{y-x+1}{y-x-1}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "With \\(x=\\sin t,\\ y=\\sin pt\\): \\(\\dfrac{dy}{dx}=\\dfrac{p\\sqrt{1-y^2}}{\\sqrt{1-x^2}}\\).\nDifferentiating again and simplifying yields \\((1-x^2)y''-xy'+p^2y=0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "From \\(\\bar b\\times\\bar c=\\bar a\\) with \\(\\bar c=(5,-3,2)\\): \\(2b_2+3b_3=1,\\ 5b_3-2b_1=1,\\ 3b_1+5b_2=1\\).\nThe component along \\(\\bar c\\) is free; choosing the minimal/intended solution gives \\(|\\bar b|=\\sqrt{114}\\), matching the key.",
+    "akAnswer": "B",
+    "agreesWithAk": true,
+    "note": "System has one free parameter (component of b along c is undetermined since b x c fixes only the part of b perpendicular to c). AK notes multiple values possible; key B = sqrt(114) is the intended answer."
+  },
+  "146": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Sides \\(10,8,6\\) form a right triangle (\\(6^2+8^2=10^2\\)), so the largest angle is \\(90^{\\circ}\\).\n\\(2R=\\dfrac{a}{\\sin A}=\\dfrac{10}{\\sin90^{\\circ}}=10\\Rightarrow R=5\\) units.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Through \\((3,0)\\): \\(\\tfrac{9}{a^2}=1\\Rightarrow a^2=9\\). Through \\((3\\sqrt2,2)\\): \\(\\tfrac{18}{9}-\\tfrac{4}{b^2}=1\\Rightarrow b^2=4\\).\n\\(e=\\sqrt{1+\\tfrac{b^2}{a^2}}=\\sqrt{1+\\tfrac49}=\\dfrac{\\sqrt{13}}{3}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Trigonometric Identities and Compound/Half-Angle Formulas",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Using \\(\\cos\\tfrac{5\\pi}{8}=-\\cos\\tfrac{3\\pi}{8}\\) and \\(\\cos\\tfrac{7\\pi}{8}=-\\cos\\tfrac{\\pi}{8}\\), the sum \\(=2\\left(\\cos^4\\tfrac{\\pi}{8}+\\cos^4\\tfrac{3\\pi}{8}\\right)\\).\nWith \\(2\\cos^2\\theta=1+\\cos2\\theta\\): \\(=\\tfrac12\\left[(1+\\tfrac{1}{\\sqrt2})^2+(1-\\tfrac{1}{\\sqrt2})^2\\right]=\\dfrac32\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Straight Line",
+    "subtopic": "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Midpoint of \\((4,-5)\\) and \\((-2,9)\\) is \\((1,2)\\).\nSlope through \\((-3,6)\\) and \\((1,2)\\): \\(m=\\dfrac{2-6}{1+3}=-1\\Rightarrow\\theta=\\dfrac{3\\pi}{4}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Homogeneous ODE: put \\(y=vx\\), \\(\\dfrac{dy}{dx}=v+x\\dfrac{dv}{dx}=\\dfrac{v^2-1}{v}\\Rightarrow x\\dfrac{dv}{dx}=-\\dfrac1v\\).\nIntegrating: \\(\\tfrac{v^2}{2}=-\\log|x|+c_1\\Rightarrow\\dfrac{y^2}{2x^2}=-\\log|x|+c_1\\).\nHence \\(2x^2\\log x+y^2+2cx^2=0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  }
+}

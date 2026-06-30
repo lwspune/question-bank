@@ -1,0 +1,455 @@
+{
+  "101": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "difficulty": "EASY",
+    "answer": "D",
+    "solution": "Since \\(p \\vee \\sim p \\equiv T\\), option D gives \\((\\sim q \\land p) \\vee (p \\vee \\sim p) \\equiv (\\sim q \\land p) \\vee T \\equiv T\\).\nHence it is a tautology.",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "102": {
+    "chapter": "Limits",
+    "subtopic": "Continuity at a Point — Finding Parameters",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(f(x) = \\frac{(x-1)(x+1)(x-2)(x+2)}{|x-1||x-2|}\\) for \\(x \\neq 1,2\\).\nSince \\(\\lim_{x\\to 1}\\frac{x-1}{|x-1|}\\) and \\(\\lim_{x\\to 2}\\frac{x-2}{|x-2|}\\) do not exist, \\(f\\) is discontinuous at \\(x=1,2\\).\nElsewhere it is a ratio of polynomials, hence continuous on \\(\\mathbb{R} - \\{1,2\\}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "103": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Rate of Change and Related Rates",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Areas: \\(A_1 = x^2,\\ A_2 = y^2\\).\n\\(\\frac{dA_2}{dA_1} = \\frac{2y\\,dy/dt}{2x\\,dx/dt} = \\frac{y}{x}\\cdot\\frac{dy}{dx}\\).\nWith \\(y = x - x^2,\\ \\frac{dy}{dx} = 1-2x\\), so \\(\\frac{dA_2}{dA_1} = (1-x)(1-2x) = 2x^2 - 3x + 1\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "104": {
+    "chapter": "Straight Line",
+    "subtopic": "Equation of Line — Rotation, Angle, and Bisector",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Line with equal intercepts \\(x+y=a\\) has slope \\(m_1 = -1\\); the line \\(4x-2y+13=0\\) has slope \\(m_2 = 2\\).\n\\(\\tan\\theta = \\left|\\frac{-1-2}{1+(-1)(2)}\\right| = 3\\), so \\(\\theta = \\tan^{-1}(3)\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "105": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Split at \\(x=\\tfrac12\\): \\(\\int_0^1 x\\left|x-\\tfrac12\\right|dx = \\int_0^{1/2}\\left(\\tfrac12 x - x^2\\right)dx + \\int_{1/2}^1\\left(x^2 - \\tfrac12 x\\right)dx\\).\nEvaluating gives \\(\\frac{1}{8}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "106": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "\\(f(x) = x^2(x-2)^2,\\ f'(x) = 4x(x-1)(x-2)\\).\n\\(f'(x) > 0 \\Rightarrow x(x-1)(x-2) > 0 \\Rightarrow x \\in (0,1) \\cup (2,\\infty)\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "107": {
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables and Truth Values",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "Truth values: \\(p:F\\) (since \\(AB \\neq BA\\)), \\(q:T\\), \\(r:F\\) (the sum \\(=2^8-1=255 \\neq 256\\)), \\(s:T\\) (max \\({}^8C_r = {}^8C_4 = 70\\)).\nOption D: \\((s \\vee \\sim p) \\leftrightarrow (\\sim p \\land \\sim r) \\equiv (T \\vee T) \\leftrightarrow (T \\land T) \\equiv T \\leftrightarrow T \\equiv T\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true,
+    "stemOverride": "If \\(p, q, r, s\\) are statements where \\(p: A^{2}-B^{2}=(A-B)(A+B)\\) for matrices \\(A, B\\) with \\(AB \\neq BA\\); \\(q: 5 \\leq 5\\); \\(r: {}^{8}C_{1}+{}^{8}C_{2}+{}^{8}C_{3}+\\cdots+{}^{8}C_{8}=256\\); \\(s:\\) the maximum value of \\({}^{8}C_{r}\\) is 70, then the statement from the following having truth value true is",
+    "note": " [reconcile: raw stem had malformed \\(...\\[\\)...\\] delimiters that broke math-masking (leaked NUL placeholders, blocking insert); replaced with clean balanced stemOverride. p=F (AB!=BA so identity fails), q=T, r=F (sum=255), s=T; only D=(s v ~p)<->(~p ^ ~r)=T.]"
+  },
+  "108": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Monotonicity, Extrema, and Optimisation",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Let \\(p = ax + \\frac{bc^2}{x}\\) using \\(xy=c^2\\).\n\\(\\frac{dp}{dx} = a - \\frac{bc^2}{x^2} = 0 \\Rightarrow x = c\\sqrt{\\frac{b}{a}}\\) (minimum).\nMinimum value \\(= c\\sqrt{ab} + c\\sqrt{ab} = 2c\\sqrt{ab}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "109": {
+    "chapter": "Limits",
+    "subtopic": "Limit Evaluation Techniques",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Write as \\(\\frac{\\frac{e^{x^2}-1}{x^2} + \\frac{1-\\cos 3x}{x^2}}{\\frac{\\sin x}{x}\\cdot\\frac{\\log(1+2x)}{2x}\\cdot 2}\\).\nUsing \\(\\frac{e^{x^2}-1}{x^2}\\to 1,\\ \\frac{1-\\cos 3x}{x^2}\\to\\frac{9}{2}\\), the limit \\(= \\frac{1 + 9/2}{1\\cdot 1\\cdot 2} = \\frac{11}{4}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "110": {
+    "chapter": "Definite Integration",
+    "subtopic": "Symmetry, King's Property, and Absolute Value",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Using \\(\\int_0^{\\pi/2}\\frac{a\\sin x + b\\cos x}{\\sin x + \\cos x}dx = \\frac{\\pi}{4}(a+b)\\):\n\\(\\int_0^{\\pi/2}\\frac{300\\sin x + 100\\cos x}{\\sin x + \\cos x}dx = \\frac{\\pi}{4}(300+100) = 100\\pi\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "111": {
+    "chapter": "Determinants and Matrices",
+    "subtopic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "From \\(A^2 - 4A + 3I = 0\\), write \\((A+3I)(A-7I) = -24I\\).\nThus \\((A+3I)\\left(\\frac{7I}{24} - \\frac{A}{24}\\right) = I\\), so \\((A+3I)^{-1} = \\frac{7I}{24} - \\frac{1}{24}A\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "112": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\left(\\frac{a+b+c}{c}\\right)\\left(\\frac{b+c-a}{b}\\right) = \\frac{(b+c)^2 - a^2}{bc} = \\frac{b^2+c^2-a^2}{bc} + 2 = 2\\cos A + 2\\).\nWith \\(A=30^{\\circ}\\): \\(2\\cdot\\frac{\\sqrt3}{2} + 2 = \\sqrt3 + 2\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "113": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\frac{P}{2} + \\frac{Q}{2} = \\frac{\\pi}{4}\\). With roots \\(\\tan\\frac{P}{2},\\tan\\frac{Q}{2}\\): sum \\(=-b/a\\), product \\(=c/a\\).\n\\(\\tan\\frac{\\pi}{4} = \\frac{-b/a}{1 - c/a} = 1 \\Rightarrow a - c = -b \\Rightarrow a + b = c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "114": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "\\(\\cot^{-1}(\\sqrt{\\cos\\alpha}) - \\tan^{-1}(\\sqrt{\\cos\\alpha}) = x\\) gives \\(\\tan x = \\frac{1-\\cos\\alpha}{2\\sqrt{\\cos\\alpha}}\\).\nThen \\(\\sin x = \\frac{1-\\cos\\alpha}{1+\\cos\\alpha} = \\frac{2\\sin^2(\\alpha/2)}{2\\cos^2(\\alpha/2)} = \\tan^2\\frac{\\alpha}{2}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "115": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "\\(\\sin^{-1}\\frac35 = \\tan^{-1}\\frac34\\) and \\(2\\cos^{-1}\\frac{2}{\\sqrt5} = 2\\tan^{-1}\\frac12 = \\tan^{-1}\\frac43\\).\n\\(\\tan\\left(\\tan^{-1}\\frac34 - \\tan^{-1}\\frac43\\right) = \\frac{3/4 - 4/3}{1 + 1} = -\\frac{7}{24}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "116": {
+    "chapter": "Applications of Definite Integral",
+    "subtopic": "Area Bounded by Curves, Axes, and Lines",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "Equal areas: \\(\\int_0^{\\alpha}\\frac{x^2}{4}dx = \\int_{\\alpha}^4\\frac{x^2}{4}dx\\).\n\\(\\alpha^3 = 64 - \\alpha^3 \\Rightarrow 2\\alpha^3 = 64 \\Rightarrow \\alpha^3 = 32 \\Rightarrow \\alpha = (32)^{1/3}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "117": {
+    "chapter": "Sequences and Series",
+    "subtopic": "Sequences and Series — AP, HP, Logarithmic and Power Sums",
+    "difficulty": "MODERATE",
+    "answer": "D",
+    "solution": "From \\(p^3 = q^4 = r^6 = t^7 = s^2\\): \\(p=t^{7/3},q=t^{7/4},r=t^{7/6},s=t^{7/2}\\).\n\\(pqrs = t^{7/3+7/4+7/6+7/2} = t^{35/4}\\), so \\(\\log_t(pqrs) = \\frac{35}{4}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "118": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Condition: \\(\\frac{dy}{dx} + 5 = x + y \\Rightarrow \\frac{dy}{dx} - y = x - 5\\). I.F. \\(= e^{-x}\\).\nSolution \\(y = -x + 4 + ce^x\\); through \\((0,2)\\Rightarrow c=-2\\), so \\(y = 4 - x - 2e^x\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "119": {
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Polar Form",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Let \\(z = x + iy\\). \\(|z| + z = 3 + i \\Rightarrow y = 1\\) and \\(|z| + x = 3\\).\nWith \\(|z| = \\sqrt{x^2+1}\\): \\((3-x)^2 = x^2 + 1 \\Rightarrow x = \\frac43\\), so \\(|z| = 3 - \\frac43 = \\frac53\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "120": {
+    "chapter": "Differential Equations",
+    "subtopic": "Solving First-Order ODEs",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\frac{dy}{dx} - \\frac{x}{1+x}y = \\frac{1-x}{1+x}\\). I.F. \\(= e^{-x}(1+x)\\).\nSolution: \\(y(1+x)e^{-x} = xe^{-x} + c \\Rightarrow y(1+x) = x + ce^x\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "121": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Trigonometric Integrals - Powers and Identities",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(\\frac{1}{\\sin^2 x\\cos^2 x} = \\frac{\\sin^2 x + \\cos^2 x}{\\sin^2 x\\cos^2 x} = \\sec^2 x + \\csc^2 x\\).\n\\(\\int(\\sec^2 x + \\csc^2 x)dx = \\tan x - \\cot x + c\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "122": {
+    "chapter": "Trigonometry - II",
+    "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\frac{a}{b}\\sin 2B + \\frac{b}{a}\\sin 2A = \\frac{a}{b}(2bk\\cos B) + \\frac{b}{a}(2ak\\cos A) = 2k(a\\cos B + b\\cos A) = 2kc = 2\\sin C\\) (projection rule).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "123": {
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation and Condition for Pair of Lines",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(6x^2 - xy - 5y^2 = 0\\) gives lines \\(x=y\\) or \\(x = -\\frac56 y\\).\nFor a common line with \\(3x^2 - 5xy + py^2 = 0\\): \\(x=y \\Rightarrow p=2\\); \\(x=-\\frac56 y \\Rightarrow p = -\\frac{25}{4}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "124": {
+    "chapter": "Permutations and Combinations",
+    "subtopic": "Selection and Arrangement with Constraints",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Total around a round table: \\(9! = 362880\\).\nTreat the 2 special boys + 1 special girl as one unit: \\(7! \\times 3! = 5040 \\times 6 = 30240\\) arrangements with them together.\nRequired \\(= 362880 - 30240 = 332640\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "125": {
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, Formation of ODE, and Verification of Solutions",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Family: \\(x^2 = 4ay\\). Differentiating: \\(2x = 4a\\frac{dy}{dx}\\Rightarrow a = \\frac{x}{2}\\cdot\\frac{dx}{dy}\\).\nSubstituting back: \\(x\\frac{dy}{dx} - 2y = 0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "126": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Put \\(x^{1/6} = t,\\ dx = 6t^5 dt\\): \\(I = 6\\int\\frac{t^3}{t+1}dt = 6\\int\\left(t^2 - t + 1 - \\frac{1}{t+1}\\right)dt\\).\n\\(= 2\\sqrt{x} - 3\\sqrt[3]{x} + 6\\sqrt[6]{x} - 6\\log(\\sqrt[6]{x}+1) + k\\), so \\(A=2,B=-3,C=6,D=-6\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "127": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Basic Probability — Events, Conditional, and Complement",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Non-leap year: \\(P(53\\text{ Sundays}) = \\frac17,\\ P(52\\text{ Saturdays}) = \\frac67,\\ P(\\text{both}) = \\frac17\\).\n\\(P = \\frac67 + \\frac17 - \\frac17 = \\frac67\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "128": {
+    "chapter": "Differential Equations",
+    "subtopic": "Applications — Growth, Decay, Cooling",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Exponential growth: \\(P = P_0 e^{kt}\\). For A: \\(\\frac{P_A}{20000} = \\left(\\frac54\\right)^2 = \\frac{25}{16}\\Rightarrow P_A = 31250\\).\nFor B: \\(\\frac{P_B}{20000} = \\left(\\frac75\\right)^2 = \\frac{49}{25}\\Rightarrow P_B = 39200\\).\nDifference \\(= 39200 - 31250 = 7950\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "129": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Equal projections on \\(\\bar a\\) give \\((\\bar b - \\bar c)\\cdot\\bar a = 0\\).\n\\(|\\bar a + \\bar b - \\bar c|^2 = |\\bar a|^2 + |\\bar b|^2 + |\\bar c|^2 - 2(\\bar b\\cdot\\bar c) = 4 + 16 + 16 - 0 = 36\\), so the value is \\(6\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "130": {
+    "chapter": "Circle",
+    "subtopic": "Tangent, Locus, and Equation Construction",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Circle \\(x^2+y^2=4,\\ r=2\\), \\(P(-4,0)\\). Tangent length \\(PA = \\sqrt{16-4} = 2\\sqrt3\\).\nArea of kite PAOB \\(= 2\\times\\frac12\\times OA\\times PA = 2\\times\\frac12\\times 2\\times 2\\sqrt3 = 4\\sqrt3\\) sq. units.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "131": {
+    "chapter": "Line and Plane",
+    "subtopic": "Intersection, Coplanarity, and Skew Lines",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Lines reduce to \\(\\frac{x-1}{3}=\\frac{y+1}{3}=\\frac{z-1}{5}\\) and \\(\\frac{x+2}{4}=\\frac{y-1}{3}=\\frac{z+1}{2}\\).\nThe determinant \\(\\begin{vmatrix} -3 & 2 & -2 \\\\ 3 & 3 & 5 \\\\ 4 & 3 & 2 \\end{vmatrix} = 61 \\neq 0\\), so the lines do not intersect.",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "132": {
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "\\(\\int x^2\\cos x\\,dx = x^2\\sin x - \\int 2x\\sin x\\,dx = x^2\\sin x - 2(-x\\cos x + \\sin x) + c\\).\n\\(= x^2\\sin x + 2x\\cos x - 2\\sin x + c\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "133": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "EASY",
+    "answer": "B",
+    "solution": "Mean \\(= 1(0.1)+2(0.2)+3(0.3)+4(0.4) = 3\\).\n\\(E(X^2) = 0.1+0.8+2.7+6.4 = 10\\), so \\(\\text{Var} = 10 - 9 = 1\\) and S.D. \\(= 1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "134": {
+    "chapter": "Vectors",
+    "subtopic": "Dot Product, Angle, and Perpendicularity",
+    "difficulty": "MODERATE",
+    "answer": "A",
+    "solution": "Obtuse angle \\(\\Rightarrow \\bar a\\cdot\\bar b < 0\\): \\(14x^2 - 8x + x < 0 \\Rightarrow 14x^2 - 7x < 0 \\Rightarrow 7x(2x-1) < 0\\).\nHence \\(0 < x < \\frac12\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "135": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "\\(\\bar b\\cdot\\bar c = 8 \\Rightarrow (2)|\\bar c|\\frac{1}{\\sqrt2} = 8 \\Rightarrow |\\bar c| = 4\\sqrt2\\).\nCoplanar \\(\\Rightarrow \\bar a \\perp (\\bar b\\times\\bar c)\\): \\(|\\bar a\\times(\\bar b\\times\\bar c)| = |\\bar a||\\bar b\\times\\bar c| = 1\\cdot|\\bar b||\\bar c|\\sin 45^{\\circ} = 2(4\\sqrt2)\\frac{1}{\\sqrt2} = 8\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "136": {
+    "chapter": "Differentiation",
+    "subtopic": "Derivative of One Function with Respect to Another",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "\\(u = \\log(\\sqrt{x-1}-\\sqrt{x+1}) \\Rightarrow \\frac{du}{dx} = \\frac{-1}{2\\sqrt{x^2-1}}\\).\n\\(v = \\sqrt{x+1}+\\sqrt{x-1} \\Rightarrow \\frac{dv}{dx} = \\frac{\\sqrt{x-1}+\\sqrt{x+1}}{2\\sqrt{x^2-1}}\\).\n\\(\\frac{du}{dv} = \\frac{-1}{\\sqrt{x-1}+\\sqrt{x+1}} = \\frac{-1}{v}\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "137": {
+    "chapter": "Line and Plane",
+    "subtopic": "Line — Equation, Direction Cosines, and Vector Form",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "On XY plane (\\(z=0\\)): \\(A \\equiv (1,-2,0)\\); on YZ plane (\\(x=0\\)): \\(B \\equiv (0,-\\tfrac32,-\\tfrac12)\\).\nDirection \\(\\bar b - \\bar a = -\\hat i + \\tfrac12\\hat j - \\tfrac12\\hat k\\); line: \\([\\bar r - (\\hat i - 2\\hat j)]\\times(-\\hat i + \\tfrac12\\hat j - \\tfrac12\\hat k) = \\bar 0\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "138": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Probability Distribution — Constants, Expectation, and Variance",
+    "difficulty": "HARD",
+    "answer": "D",
+    "solution": "X = tosses until a number \\(< n\\) appears, a geometric distribution with success probability \\(\\frac{n-1}{n}\\).\nMean \\(= \\frac{n}{n-1}\\). Given mean \\(= \\frac{n}{9}\\): \\(\\frac{n}{9} = \\frac{n}{n-1} \\Rightarrow n - 1 = 9 \\Rightarrow n = 10\\).",
+    "akAnswer": "D",
+    "agreesWithAk": true
+  },
+  "139": {
+    "chapter": "Probability Distribution",
+    "subtopic": "Binomial Distribution",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "\\(P(5\\text{ tails}) = P(7\\text{ tails}) \\Rightarrow {}^nC_5 = {}^nC_7 \\Rightarrow n = 12\\).\n\\(P(3\\text{ tails}) = {}^{12}C_3\\left(\\tfrac12\\right)^{12} = \\frac{220}{2^{12}} = \\frac{55}{2^{10}}\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "140": {
+    "chapter": "Vectors",
+    "subtopic": "Vector Geometry — Section Formula, Triangle, and Parallelogram",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Using position vectors with \\(\\bar p = \\frac{3\\bar c + 4\\bar a}{7}\\), \\(\\bar q = \\frac{4\\bar c + 3\\bar b}{7}\\), and M lying on both AQ (ratio \\(k:1\\)) and BP, equating coefficients gives \\(k = \\frac{21}{16}\\).\nHence M divides AQ in the ratio \\(21:16\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true,
+    "figureRefIndex": -1
+  },
+  "141": {
+    "chapter": "Conic Sections",
+    "subtopic": "Conic Properties — Eccentricity, Orthogonality, and Intersection",
+    "difficulty": "HARD",
+    "answer": "B",
+    "solution": "Ellipse \\(\\frac{x^2}{32}+\\frac{y^2}{18}=1\\). Tangent with equal intercepts has \\(m=-1\\): \\(x + y = \\pm 5\\sqrt2\\).\nIntercepts \\(OA = OB = 5\\sqrt2\\), so area \\(= \\frac12(5\\sqrt2)(5\\sqrt2) = 25\\) sq. units.",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "142": {
+    "chapter": "Line and Plane",
+    "subtopic": "Distances in 3-D",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Line through \\(A(3,-4,5)\\) parallel to \\(\\frac{x}{2}=\\frac{y}{1}=\\frac{z}{-2}\\): \\(P(2\\lambda+3,\\lambda-4,-2\\lambda+5)\\).\nOn the plane: \\(21\\lambda = 60 \\Rightarrow \\lambda = \\frac{20}{7}\\); \\(AP = \\sqrt{\\frac{3600}{49}} = \\frac{60}{7}\\) units.",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "143": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Plane through the three points: \\(-4x - 9y + 2z + 28 = 0\\), normal \\((-4,-9,2)\\).\nDirection cosines: \\(\\frac{-4}{\\sqrt{101}},\\frac{-9}{\\sqrt{101}},\\frac{2}{\\sqrt{101}}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "144": {
+    "chapter": "Vectors",
+    "subtopic": "Cross Product, Angle, and Area",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "\\(\\overline{AB} = \\hat i + \\hat j - 3\\hat k,\\ \\overline{AC} = -\\hat i + 3\\hat j - \\hat k\\).\n\\(\\overline{AB}\\times\\overline{AC} = 8\\hat i + 4\\hat j + 4\\hat k,\\ |\\cdot| = 4\\sqrt6\\).\nUnit vectors \\(= \\pm\\frac{2\\hat i + \\hat j + \\hat k}{\\sqrt6}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "145": {
+    "chapter": "Line and Plane",
+    "subtopic": "Plane — Equation, Normal, and Construction",
+    "difficulty": "MODERATE",
+    "answer": "C",
+    "solution": "Family: \\((x+2y-z+1) + \\lambda(3x-y-4z+3) = 0\\). Through \\((1,1,1)\\): \\(3 + \\lambda(1) = 0 \\Rightarrow \\lambda = -3\\).\nResult: \\(8x - 5y - 11z + 8 = 0\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "146": {
+    "chapter": "Linear Programming",
+    "subtopic": "Objective Function — Maximisation and Minimisation",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Machine I: \\(640\\) min \\(\\Rightarrow 20x + 15y \\leq 640\\). Machine II: \\(500\\) min \\(\\Rightarrow 5x + 8y \\leq 500\\).\nMaximize \\(z = 25x + 18y\\) subject to these and \\(x,y \\geq 0\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  },
+  "147": {
+    "chapter": "Inverse Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "Telescoping: \\(y = \\tan^{-1}(x+3) - \\tan^{-1}x\\).\n\\(y' = \\frac{1}{1+(x+3)^2} - \\frac{1}{1+x^2}\\), so \\(y'(0) = \\frac{1}{10} - 1 = -\\frac{9}{10}\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "148": {
+    "chapter": "Trigonometry - I",
+    "subtopic": "Trig Identities, Compound Angle, and Equations",
+    "difficulty": "HARD",
+    "answer": "A",
+    "solution": "Let \\(y = 81^{\\sin^2 x}\\). Then \\(y + \\frac{81}{y} = 30 \\Rightarrow y^2 - 30y + 81 = 0 \\Rightarrow y = 27\\) or \\(3\\).\n\\(4\\sin^2 x = 3\\) or \\(1 \\Rightarrow \\sin x = \\frac{\\sqrt3}{2}\\) or \\(\\frac12\\). In \\([0,\\pi]\\), the listed values include \\(\\frac{\\pi}{6},\\frac{\\pi}{3}\\).",
+    "akAnswer": "A",
+    "agreesWithAk": true
+  },
+  "149": {
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Higher-Order Derivatives & Relations",
+    "difficulty": "HARD",
+    "answer": "C",
+    "solution": "\\(f(x) = 3x^2 + 2xf'(1) + f''(2)\\). \\(f'(x) = 6x + 2f'(1) \\Rightarrow f'(1) = 6 + 2f'(1) \\Rightarrow f'(1) = -6\\); \\(f''(2) = 6\\).\nThus \\(f(x) = 3x^2 - 12x + 6\\).",
+    "akAnswer": "C",
+    "agreesWithAk": true
+  },
+  "150": {
+    "chapter": "Applications of Derivative",
+    "subtopic": "Tangent, Normal, Approximation, and Curve from Geometric Condition",
+    "difficulty": "MODERATE",
+    "answer": "B",
+    "solution": "Curve crosses Y-axis at \\((0,b)\\); \\(\\frac{dy}{dx} = -\\frac{b}{a}e^{-x/a}\\), slope at \\((0,b)\\) is \\(-\\frac{b}{a}\\).\nTangent: \\(y - b = -\\frac{b}{a}x \\Rightarrow \\frac{x}{a} + \\frac{y}{b} = 1\\).",
+    "akAnswer": "B",
+    "agreesWithAk": true
+  }
+}

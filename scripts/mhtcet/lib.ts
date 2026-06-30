@@ -42,6 +42,9 @@ export function cleanupArtifacts(s: string): string {
     .replace(/\\in(?=[A-Z])/g, "\\in ")
     // `\int` glued to its integrand (`\inte^{x}` -> `\int e^{x}`); guard \intercal
     .replace(/\\int(?!ercal)(?=[A-Za-z])/g, "\\int ")
+    // trig macros pandoc fused to their argument (`\sinx`->`\sin x`, `\cos3x`->`\cos 3x`);
+    // longest-first so `\sinh`/`\cosh`/`\tanh` aren't split; log/ln excluded (\lnot etc.)
+    .replace(/\\(sinh|cosh|tanh|sin|cos|tan|cot|sec|csc)(?=[A-Za-z0-9])/g, "\\$1 ")
     // `\leqslant`/`\geqslant` split by the deglue into `\leq slant` (LP constraints) -> rejoin
     .replace(/\\(leq|geq)\s+slant\s*/g, "\\$1slant ")
     // stray `\` + whitespace immediately before a math close (`(2-x)\ \)` -> `(2-x) \)`)
