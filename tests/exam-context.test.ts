@@ -25,11 +25,12 @@ describe("isPracticeOnlyExam", () => {
 });
 
 describe("EXAM_REGISTRY", () => {
-  it("includes NDA, MHT-CET and JEE Mains as known exams", () => {
+  it("includes NDA, MHT-CET, JEE Mains and NEET as known exams", () => {
     const slugs = EXAM_REGISTRY.map((e) => e.slug);
     expect(slugs).toContain("nda");
     expect(slugs).toContain("mht-cet");
     expect(slugs).toContain("jee-mains");
+    expect(slugs).toContain("neet");
   });
 
   it("each exam has a non-empty display name and exam name", () => {
@@ -51,10 +52,11 @@ describe("isExamSlug", () => {
     expect(isExamSlug("nda")).toBe(true);
     expect(isExamSlug("mht-cet")).toBe(true);
     expect(isExamSlug("jee-mains")).toBe(true);
+    expect(isExamSlug("neet")).toBe(true);
   });
 
   it("rejects unknown values", () => {
-    expect(isExamSlug("neet")).toBe(false);
+    expect(isExamSlug("ipmat")).toBe(false); // still on the roadmap, not yet registered
     expect(isExamSlug("")).toBe(false);
     expect(isExamSlug(null)).toBe(false);
     expect(isExamSlug(undefined)).toBe(false);
@@ -73,8 +75,14 @@ describe("getExamBySlug", () => {
     expect(exam?.displayName).toBe("NDA");
   });
 
+  it("returns the registry entry for the neet slug", () => {
+    const exam = getExamBySlug("neet");
+    expect(exam?.slug).toBe("neet");
+    expect(exam?.examName).toBe("NEET");
+  });
+
   it("returns null for an unknown slug", () => {
-    expect(getExamBySlug("neet")).toBeNull();
+    expect(getExamBySlug("ipmat")).toBeNull();
     expect(getExamBySlug("")).toBeNull();
     expect(getExamBySlug(null)).toBeNull();
   });
@@ -108,8 +116,12 @@ describe("resolveGuidesHref", () => {
     expect(resolveGuidesHref(null)).toBe("/guide");
   });
 
-  it("returns /guide for unknown slug", () => {
+  it("returns /guide for neet (no guide subtree yet — falls back to index)", () => {
     expect(resolveGuidesHref("neet")).toBe("/guide");
+  });
+
+  it("returns /guide for unknown slug", () => {
+    expect(resolveGuidesHref("ipmat")).toBe("/guide");
   });
 });
 
@@ -130,8 +142,12 @@ describe("resolveNotesHref", () => {
     expect(resolveNotesHref(null)).toBe("/notes");
   });
 
+  it("returns the /notes/neet hub for neet (shows coming-soon until notes ship)", () => {
+    expect(resolveNotesHref("neet")).toBe("/notes/neet");
+  });
+
   it("returns /notes for unknown slug", () => {
-    expect(resolveNotesHref("ipmat")).toBe("/notes");
+    expect(resolveNotesHref("cuet")).toBe("/notes");
   });
 });
 
