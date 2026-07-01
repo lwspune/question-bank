@@ -74,6 +74,11 @@ import {
   LINE_AND_PLANE_SLUGS,
 } from "@/app/notes/mht-cet-maths/line-and-plane/_data";
 import {
+  APPLICATIONS_OF_DERIVATIVE_CHAPTER,
+  APPLICATIONS_OF_DERIVATIVE_NOTES,
+  APPLICATIONS_OF_DERIVATIVE_SLUGS,
+} from "@/app/notes/mht-cet-maths/applications-of-derivative/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -814,6 +819,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: LINE_AND_PLANE_CHAPTER,
     notes: LINE_AND_PLANE_NOTES,
     slugs: LINE_AND_PLANE_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "applications-of-derivative",
+    chipLabel: "Applications of Derivative notes",
+    chapter: APPLICATIONS_OF_DERIVATIVE_CHAPTER,
+    notes: APPLICATIONS_OF_DERIVATIVE_NOTES,
+    slugs: APPLICATIONS_OF_DERIVATIVE_SLUGS,
   },
   {
     examName: "NDA",
