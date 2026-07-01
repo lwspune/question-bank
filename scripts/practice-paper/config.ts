@@ -489,6 +489,27 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: false, // Excel-only: the whole paper is duplicate of the existing bank
   },
 
+  // LWS "Weekly Test — Physics (Calculus Foundation)" — 25-q foundation calculus
+  // test (derivatives Q1–13, integrals Q14–25), born-digital .docx, no printed key
+  // (answers DERIVED). Excel-ONLY at the user's request (bankAdd:false): emit the
+  // OMR tagged sheet, do NOT commit to the bank or create a paper. Subject column =
+  // "Physics" (per the paper title / user); content is pure differentiation +
+  // integration, filed under a "Calculus Foundation" chapter with two subtopics.
+  "lws-weekly-calculus": {
+    slug: "lws-weekly-calculus",
+    title: "LWS Weekly Test — Physics (Calculus Foundation)",
+    recordsFile: "lws-weekly-calculus.records.json",
+    outName: "Tags_LWS_Weekly_Calculus_Foundation",
+    sourceFile: "LWS_Weekly_Test__Physics_Calculus_Foundation.docx",
+    subjectName: "Physics",
+    chapterName: "Calculus Foundation",
+    subtopics: ["Differentiation", "Integration"],
+    pyqNote: "LWS Weekly Test — Physics (Calculus Foundation)",
+    examName: "NDA",
+    section: { key: "calculus-foundation", label: "Calculus Foundation" },
+    bankAdd: false, // Excel-only: emit the OMR tagged sheet, no bank commit / no paper
+  },
+
   // LWS "Part Of Speech Test" — 80-q NDA English grammar test, no printed key
   // (answers derived from the underlined word in each sentence). Dedup found all
   // 80 NEW vs the 108-q NDA Grammar bank, so it's a full ingest (paper + bank +
