@@ -79,6 +79,11 @@ import {
   APPLICATIONS_OF_DERIVATIVE_SLUGS,
 } from "@/app/notes/mht-cet-maths/applications-of-derivative/_data";
 import {
+  DIFFERENTIAL_EQUATIONS_CHAPTER as MHTCET_DIFFERENTIAL_EQUATIONS_CHAPTER,
+  DIFFERENTIAL_EQUATIONS_NOTES as MHTCET_DIFFERENTIAL_EQUATIONS_NOTES,
+  DIFFERENTIAL_EQUATIONS_SLUGS as MHTCET_DIFFERENTIAL_EQUATIONS_SLUGS,
+} from "@/app/notes/mht-cet-maths/differential-equations/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -830,6 +835,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: APPLICATIONS_OF_DERIVATIVE_CHAPTER,
     notes: APPLICATIONS_OF_DERIVATIVE_NOTES,
     slugs: APPLICATIONS_OF_DERIVATIVE_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "differential-equations",
+    chipLabel: "Differential Equations notes",
+    chapter: MHTCET_DIFFERENTIAL_EQUATIONS_CHAPTER,
+    notes: MHTCET_DIFFERENTIAL_EQUATIONS_NOTES,
+    slugs: MHTCET_DIFFERENTIAL_EQUATIONS_SLUGS,
   },
   {
     examName: "NDA",
