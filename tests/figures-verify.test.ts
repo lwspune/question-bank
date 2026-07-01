@@ -8,7 +8,7 @@ import {
   mergeVerify,
   type FigureEntry,
   type VerifyRecord,
-} from "../scripts/neet/figures";
+} from "../scripts/lib/figures/verify";
 
 describe("bboxHeight", () => {
   it("returns the vertical span in page fractions", () => {

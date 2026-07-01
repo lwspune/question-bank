@@ -18,7 +18,7 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_ID, OUT, DATA, requirePaper } from "./config";
-import { figureFlags, bboxHeight, mergeVerify, blockedFigureQuestions, type FigureEntry, type VerifyRecord, type VerifyStatus } from "./figures";
+import { figureFlags, bboxHeight, mergeVerify, blockedFigureQuestions, type FigureEntry, type VerifyRecord, type VerifyStatus } from "../lib/figures/verify";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });

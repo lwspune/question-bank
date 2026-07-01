@@ -17,7 +17,7 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { DATA, requirePaper } from "./config";
-import { validateAnchors, type Anchors, type FigureEntry } from "./figures";
+import { validateAnchors, type Anchors, type FigureEntry } from "../lib/figures/verify";
 
 function opt(name: string): string | undefined {
   const p = process.argv.find((a) => a.startsWith(`--${name}=`));
@@ -50,7 +50,7 @@ function main() {
 
   const res = spawnSync(
     "python",
-    [join(__dirname, "snapcrop.py"), paper.pdf, String(page), String(col[0]), String(col[1]), String(anchors.top), String(anchors.bottom), String(anchors.answerY)],
+    [join(__dirname, "..", "lib", "figures", "snapcrop.py"), paper.pdf, String(page), String(col[0]), String(col[1]), String(anchors.top), String(anchors.bottom), String(anchors.answerY)],
     { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
   );
   if (res.status !== 0) throw new Error(`snapcrop.py failed: ${res.stderr}`);

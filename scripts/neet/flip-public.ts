@@ -12,7 +12,7 @@ import { join } from "node:path";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_ID, DATA, requirePaper } from "./config";
-import { blockedFigureQuestions, type VerifyRecord } from "./figures";
+import { blockedFigureQuestions, type VerifyRecord } from "../lib/figures/verify";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
