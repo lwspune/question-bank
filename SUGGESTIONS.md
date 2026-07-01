@@ -21,6 +21,26 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-01
+
+### ~~Archive the oldest inline Decisions-log month — CLAUDE.md over the 200KB re-archive trigger~~ — **DONE 2026-07-02**
+
+Moved the 2026-06-12 → 06-16 block (16 entries) from CLAUDE.md's Decisions log into `DECISIONS_HISTORY.md` as **batch 6** (newest-first, above batch 5); updated both boundary pointers + the history preamble. CLAUDE.md **224KB → 165KB**; oldest inline entry is now 2026-06-17. Done via a guarded Python cut (boundary asserts, zero-duplication verified).
+
+### Fold the `verify-figures` gate into the other figure pipelines (foundation / mhtcet / jee / cds) — *enabling extraction DONE 2026-07-02; per-pipeline wiring still deferred*
+
+The reusable core was **promoted to a shared `scripts/lib/figures/`** (2026-07-02) — `snapcrop.py` (pipeline-agnostic) + `verify.ts` (pure helpers) + a README port-recipe; `scripts/neet/` now imports from there, 13 tests green. So a future pipeline **imports** it instead of copy-pasting.
+
+**Still deferred (the actual wiring):** foundation/mhtcet/jee/cds each still lack a `verify-figures` step + a `flip-public` figure gate, so their PUBLIC figures carry the same latent leak risk (Foundation's `figure-bbox.ts` render-crop especially).
+
+**Why:** the NEET audit found a **90% defect rate** + 10 answer-leaks shipped PUBLIC because the manual montage-verify was skippable — latent in the other exams too.
+
+**How to apply (per pipeline, at its next figure-heavy ingest — not speculatively):** import `scripts/lib/figures/verify` (`validateAnchors`/`figureFlags`/`blockedFigureQuestions`/`mergeVerify`) + spawn `scripts/lib/figures/snapcrop.py`; add a paper-scoped `figure-verify.json` verdict, a `verify-figures` contact-sheet/montage step, and a `flip-public` guard blocking PUBLIC until every figure is `ok`. Recipe in `scripts/lib/figures/README.md`.
+
+### ~~Sweep orphaned `question-images` storage objects (no `image_url` referrer)~~ — **DONE 2026-07-02 (org-folder); 865 historical objects deferred**
+
+Built the durable `scripts/sweep-orphan-images.ts` (dry-run + `--apply`; referenced set = `questions.image_url` ∪ `options.image_url`; refuses to run if the referenced set looks broken). Removed **123 org-folder orphans** (superseded re-crop uploads across all figure ingests — not just this session's ~7). **Carry-forward:** the sweep also found **865 objects in *other* top-level UUID folders** (a historical pre-org-folder upload scheme) that no image_url references — provably unreferenced (only 2 image columns exist, both org-folder-scoped) but left for a deliberate `--purge-all` after the user confirms the origin. Also banked the "capture old `image_url` BEFORE nulling" discipline (a `RETURNING` after the null returns the post-update NULL).
+
 ## 2026-06-28
 
 ### ~~Review the 35 notes-lint warnings in mht-cet-maths/line-and-plane (worked-example == featured-PYQ reuse)~~ — **DONE 2026-06-28**
