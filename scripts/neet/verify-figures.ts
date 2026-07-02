@@ -18,7 +18,7 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_ID, OUT, DATA, requirePaper } from "./config";
-import { figureFlags, bboxHeight, mergeVerify, blockedFigureQuestions, type FigureEntry, type VerifyRecord, type VerifyStatus } from "../lib/figures/verify";
+import { figureFlags, bboxHeight, mergeVerify, blockedFigureQuestions, extractStemLabels, type FigureEntry, type VerifyRecord, type VerifyStatus } from "../lib/figures/verify";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -140,10 +140,15 @@ async function main() {
     const v = verdict[q];
     const flagHtml = v.flags.length ? `<div class="flags">⚠ ${v.flags.map(esc).join("<br>⚠ ")}</div>` : "";
     const badge = v.status === "ok" ? "🟢 ok" : v.status === "blocked" ? "🔴 blocked" : "🟡 needs-review";
+    const labels = extractStemLabels(m?.stem ?? "");
+    const labelHtml = labels.length
+      ? `<div class="labels">✓ confirm present in crop: ${labels.map((l) => `<code>${esc(l)}</code>`).join(" ")}</div>`
+      : "";
     return `<div class="card ${v.status}">
       <div class="hd">Q${q} · ${badge} · h=${v.bboxHeight} · ans <b>${esc(m?.answer ?? "?")}</b> · ${esc(m?.subtopic ?? "")}</div>
       <img src="data:image/png;base64,${crops[q] ?? ""}"/>
       ${flagHtml}
+      ${labelHtml}
       <div class="stem">${esc((m?.stem ?? "").slice(0, 240))}</div>
     </div>`;
   }).join("\n");
@@ -154,6 +159,8 @@ async function main() {
 .card.needs-review{border-left:4px solid #f5a623}.card.blocked{border-left:4px solid #e0322f}.card.ok{border-left:4px solid #2ca24a}
 .hd{font-weight:600;margin-bottom:6px}.stem{color:#555;margin-top:6px;font-family:Georgia,serif}
 .flags{color:#b45309;background:#fffbeb;padding:4px 6px;border-radius:4px;margin-top:4px}
+.labels{color:#3730a3;background:#eef2ff;padding:4px 6px;border-radius:4px;margin-top:4px;font-size:12px}
+.labels code{background:#e0e7ff;padding:1px 4px;border-radius:3px;font-weight:600}
 img{max-width:100%;border:1px solid #eee;background:#fff}</style>
 <h2>NEET ${paper.id} — ${nums.length} figures — review each, then: verify-figures.ts ${paper.id} --ok=all (and --block=&lt;q&gt; for any bad ones)</h2>
 <div class="grid">${cards}</div>`;

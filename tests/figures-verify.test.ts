@@ -6,6 +6,7 @@ import {
   validateAnchors,
   blockedFigureQuestions,
   mergeVerify,
+  extractStemLabels,
   type FigureEntry,
   type VerifyRecord,
 } from "../scripts/lib/figures/verify";
@@ -86,5 +87,38 @@ describe("mergeVerify", () => {
   });
   it("defaults a new/unseen figure to needs-review (can't ride the gate silently)", () => {
     expect(mergeVerify(computed)["39"].status).toBe("needs-review");
+  });
+});
+
+describe("extractStemLabels (stem-vs-image checklist)", () => {
+  it("catches a prose point label", () => {
+    expect(extractStemLabels("The potential at point P is zero.")).toContain("P");
+  });
+  it("splits a geometry letter-run into its vertices", () => {
+    const l = extractStemLabels("A square loop ABCD carries a current.");
+    expect(l).toEqual(expect.arrayContaining(["A", "B", "C", "D"]));
+  });
+  it("catches subscripted component labels (require the underscore)", () => {
+    const l = extractStemLabels("Two diodes \\(D_1\\) and \\(D_2\\) with input \\(V_{in}\\).");
+    expect(l).toEqual(expect.arrayContaining(["D1", "D2"]));
+  });
+  it("catches labels from a comma-list in a 'labels:' context", () => {
+    const l = extractStemLabels("The figure labels: B, C, A pointing to the top and D at the bottom.");
+    expect(l).toEqual(expect.arrayContaining(["A", "B", "C", "D"]));
+  });
+  it("catches Match-List column names", () => {
+    const l = extractStemLabels("Match List I with List II and select the correct option.");
+    expect(l).toEqual(expect.arrayContaining(["List I", "List II"]));
+  });
+  it("flags a 4-option-graph reminder", () => {
+    expect(extractStemLabels("Which of the four graphs best represents the motion?")).toContain("four graphs");
+  });
+  it("does not treat common words / abbreviations as labels", () => {
+    const l = extractStemLabels("The DNA molecule and the AC source.");
+    expect(l).not.toContain("DNA");
+    expect(l).not.toContain("THE");
+  });
+  it("does not crash and stays quiet on a label-free chemistry stem", () => {
+    expect(extractStemLabels("Identify the product of the reaction of ethanol with acetic acid.")).toEqual([]);
   });
 });

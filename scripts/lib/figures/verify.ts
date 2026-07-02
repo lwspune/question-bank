@@ -63,6 +63,45 @@ export function blockedFigureQuestions(verify: Record<string, VerifyRecord>): st
 }
 
 /**
+ * Extract the figure LABELS a question stem names — the checklist a reviewer (or a
+ * vision cross-check) must confirm is present in the crop. Catches the clipped-label
+ * class (a stem naming "points A and B" whose crop shows only B). Deterministic, but a
+ * REVIEW AID not a gate: it over-includes on chemistry formulae (harmless — those
+ * figures are structures) and can't itself confirm presence (that needs OCR/vision).
+ *
+ * Signals: geometry letter-runs (loop `ABCD` → A,B,C,D; `PQR`), subscripted labels
+ * (`L_1`,`D_2`,`C_5`,`T_1`,`V_A`,`U_P`), prose "point(s)/at/between/centre/axis X [and Y]",
+ * `List I/II`, and an option-count reminder ("four plots"). Strips LaTeX delimiters first.
+ */
+const LABEL_STOPWORDS = new Set(["THE", "IF", "AND", "DNA", "DNP", "NEET", "UG", "OR", "AC", "DC", "II", "III", "IV"]);
+export function extractStemLabels(stem: string): string[] {
+  const labels = new Set<string>();
+  const s = stem.replace(/\\[()[\]]/g, " ").replace(/[{}]/g, ""); // drop \( \) \[ \] and braces
+  // 1. subscripted point/component labels — REQUIRE the underscore (LaTeX subscript) so
+  //    "CD"/"BC"/"QR" (adjacent caps = geometry runs, handled below) and chem "CH_3"→"CH"
+  //    don't masquerade as labels: L_1, D_2, C_5, T_1, V_A, U_P, W_3, R_0, I_A.
+  for (const m of s.matchAll(/\b([A-Z])_([0-9A-Za-z]{1,3})\b/g)) {
+    labels.add(`${m[1]}${m[2]}`);
+  }
+  // 2. geometry letter-runs (2-4 caps): ABCD, ABC, ADC, PQR, QR, BC → split to letters
+  for (const m of s.matchAll(/\b[A-Z]{2,4}\b/g)) {
+    if (LABEL_STOPWORDS.has(m[0]) || /[0-9]/.test(m[0])) continue;
+    if (m[0].length <= 4) for (const ch of m[0]) labels.add(ch);
+  }
+  // 3. prose single-letter points in labelling contexts (incl. comma-lists like "labels: B, C, A ... D")
+  const ctx = /\b(?:points?|between|centre|center|junction|axis|charge|source|cell|loop|node|label(?:s|led|ling)?|marked|at)[\s:]+([A-Za-z,'\s:.]{0,40})/gi;
+  for (const m of s.matchAll(ctx)) {
+    for (const t of m[1].matchAll(/\b([A-Z])\b/g)) if (!LABEL_STOPWORDS.has(t[1])) labels.add(t[1]);
+  }
+  // 4. Match-List columns
+  for (const m of s.matchAll(/\bList\s+(I{1,3}|IV|V)\b/g)) labels.add(`List ${m[1]}`);
+  // 5. option-count reminder
+  const cnt = s.match(/\b(?:four|five|4|5|three)\s+(?:plots|diagrams|graphs|structures|options|figures|curves)\b/i);
+  if (cnt) labels.add(cnt[0].toLowerCase());
+  return [...labels].sort();
+}
+
+/**
  * Merge a freshly-computed verify pass over an existing verdict file: keep a human's
  * prior "ok"/"blocked" decision, refresh flags + height, and default new/never-seen
  * figures to "needs-review" so they can't silently ride through the gate.
