@@ -1,0 +1,2693 @@
+{
+  "grade": 12,
+  "subject": "Mathematics",
+  "purpose": "Deep-dive (mapping layer) for Std XII: per-unit subtopics -> concepts -> 4-source mapping. Keyed by unit_no back to maths-xii-spiral-plan.json (unit metadata is joined from there, not duplicated).",
+  "sources": {
+    "state_board": "Balbharati Std XII Part I & II, chapterwise PDFs (C:/tmp/PYQPs/MHT-CET/State_Board/12th)",
+    "cet": "MHT-CET Mathematics - past-year-question (PYQ) frequency + official syllabus",
+    "ncert": "NCERT Class 12 Mathematics, rationalised edition (C:/Vilas/LWS_Pune/.../NCERT/Books/12th/Maths)",
+    "nda": "UPSC NDA Mathematics - past-year-question (PYQ) frequency + official syllabus"
+  },
+  "legend": {
+    "relevance": "Editorial exam-emphasis of THIS concept (low | med | med-high | high | none).",
+    "pyq_count": "Number of past-year questions on the TOPIC CLUSTER this concept belongs to (frequency from official past papers). Clusters span several rows, so a count can repeat across rows and must NOT be summed.",
+    "flags": "ncert_gap = not in the rationalised NCERT-12 (often removed in the 2020 rationalisation) | ncert_aligned = clean 1:1 | cet_anchor / nda_anchor = primary exam focus for this concept | cet_only = CET-tested but NOT in NDA (droppable for an NDA student) | cet_leaning = both test it, CET more heavily"
+  },
+  "units": [
+    {
+      "unit_no": "1",
+      "rows": [
+        {
+          "id": "1.1",
+          "subtopic": "Basic Concepts & Principal Values",
+          "concepts": [
+            "inverse trig definitions; restricted domains",
+            "principal value branch"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.3 Inverse Trigonometric Function",
+            "exercise": "Ex 3.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 73,
+            "topic": "Inverse Trigonometric Functions - Identities, Equations, Principal Values",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.2 §2.2 Basic Concepts",
+            "exercise": "Ex 2.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 17,
+            "topic": "Identities, Properties, and Sum-Difference Formulas",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "1.2",
+          "subtopic": "Properties of Inverse Trig",
+          "concepts": [
+            "sin^-1(-x)=-sin^-1 x; sin^-1 x + cos^-1 x = pi/2",
+            "tan^-1 x + tan^-1 y formula"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.3",
+            "exercise": "Ex 3.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 73,
+            "topic": "Inverse Trigonometric Functions cluster",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.2 §2.3 Properties of Inverse Trigonometric Functions",
+            "exercise": "Ex 2.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 17,
+            "topic": "Identities, Properties, and Sum-Difference Formulas",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "1.3",
+          "subtopic": "Composite Expressions & Equations",
+          "concepts": [
+            "sin^-1(sin x) != x; simplification",
+            "solving inverse-trig equations"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.3",
+            "exercise": "Ex 3.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 21,
+            "topic": "Inverse Trigonometry - Identities, Equations (Trig-II)",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.2 Miscellaneous Exercise on Chapter 2",
+            "exercise": null,
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 11,
+            "topic": "Evaluation of Composite Inverse Trig (+ Solving 6)",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "2",
+      "rows": [
+        {
+          "id": "2.1",
+          "subtopic": "Chain Rule & Composite Functions",
+          "concepts": [
+            "derivative of composite functions",
+            "chain rule d/dx f(g(x))"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.1 (composite/chain)",
+            "exercise": "Ex 1.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 21,
+            "topic": "Foundations, Chain Rule & Differentiability",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.3.1 Derivatives of composite functions",
+            "exercise": "Ex 5.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 49,
+            "topic": "Differentiation Techniques - Chain, Log, Composite",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "2.2",
+          "subtopic": "Derivatives of Inverse Functions & Inverse Trig",
+          "concepts": [
+            "derivative of inverse functions",
+            "d/dx of sin^-1 x, tan^-1 x, etc."
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.2.2 Derivatives of Inverse Functions",
+            "exercise": "Ex 1.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 39,
+            "topic": "Inverse Functions & Inverse Trigonometric Differentiation",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.3 (inverse trig derivatives)",
+            "exercise": "Ex 5.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 49,
+            "topic": "Differentiation Techniques - Chain, Log, Composite",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "2.3",
+          "subtopic": "Geometrical Meaning of Derivative",
+          "concepts": [
+            "f'(x) as slope of tangent",
+            "derivative as instantaneous rate"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.2.1 Geometrical meaning of Derivative",
+            "exercise": "Ex 1.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 35,
+            "topic": "Tangents/Normals (Applications of Derivative)",
+            "relevance": "low-med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.3 Differentiability",
+            "exercise": null,
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 5,
+            "topic": "Tangents and Slopes",
+            "relevance": "low",
+            "note": null
+          },
+          "flags": []
+        }
+      ]
+    },
+    {
+      "unit_no": "3",
+      "rows": [
+        {
+          "id": "3.1",
+          "subtopic": "Types & Algebra of Matrices (recap)",
+          "concepts": [
+            "types; equality",
+            "addition, scalar multiplication, multiplication",
+            "transpose; symmetric & skew-symmetric"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.1 (recap of XI matrices)",
+            "exercise": null,
+            "note": null
+          },
+          "cet": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "low",
+            "note": "Recap; core matrix algebra is XI (Determinants & Matrices)."
+          },
+          "ncert": {
+            "section": "Ch.3 §3.2-3.6 Matrices (operations, transpose, symmetric)",
+            "exercise": "Ex 3.1-3.3",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 33,
+            "topic": "Matrix Operations, Polynomials, and Equations",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "3.2",
+          "subtopic": "Inverse by Elementary Transformation",
+          "concepts": [
+            "elementary row/column operations",
+            "reducing [A|I] -> [I|A^-1]",
+            "invertibility"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.2.1 Elementary transformation method",
+            "exercise": "Ex 2.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 27,
+            "topic": "Inverse, Cayley-Hamilton, and Matrix Polynomial",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.3 §3.7 Invertible Matrices",
+            "exercise": "Ex 3.4",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 28,
+            "topic": "Cofactors, Adjoint, and Inverse",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "3.3",
+          "subtopic": "Inverse by Adjoint Method",
+          "concepts": [
+            "cofactor matrix; adjoint",
+            "A^-1 = adj(A)/|A|",
+            "verification"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.2.2 Adjoint method",
+            "exercise": "Ex 2.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 14,
+            "topic": "Adjoint, Determinant, and A.adj(A) Identity",
+            "relevance": "med-high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.4 §4.5 Adjoint and Inverse of a Matrix",
+            "exercise": "Ex 4.4",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 28,
+            "topic": "Cofactors, Adjoint, and Inverse",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "3.4",
+          "subtopic": "Solving Linear Equations (Inversion & Reduction)",
+          "concepts": [
+            "matrix form AX=B",
+            "method of inversion (X=A^-1 B)",
+            "method of reduction; consistency"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.3 Application of matrices",
+            "exercise": "Ex 2.2-2.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 9,
+            "topic": "System of Linear Equations and Symmetric Matrices",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.4 §4.6 Applications of Determinants and Matrices",
+            "exercise": "Ex 4.5",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 8,
+            "topic": "Linear Systems - Consistency, Cramer's Rule",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "4",
+      "rows": [
+        {
+          "id": "4.1",
+          "subtopic": "Logarithmic Differentiation",
+          "concepts": [
+            "log both sides; x^x, (sin x)^tan x",
+            "products/quotients of many terms"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.3.1 Logarithmic Differentiation",
+            "exercise": "Ex 1.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 25,
+            "topic": "Logarithmic Differentiation",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.5 Logarithmic Differentiation",
+            "exercise": "Ex 5.5",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 49,
+            "topic": "Differentiation Techniques - Chain, Log, Composite",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "4.2",
+          "subtopic": "Implicit Functions",
+          "concepts": [
+            "dy/dx when equation not solved for y",
+            "implicit differentiation"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.3.2-1.3.3 Implicit Functions",
+            "exercise": "Ex 1.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 31,
+            "topic": "Implicit Differentiation & Special Forms",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.3.2 Derivatives of implicit functions",
+            "exercise": "Ex 5.3",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Parametric, Implicit, and Higher-Order Derivatives",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "4.3",
+          "subtopic": "Parametric Functions",
+          "concepts": [
+            "x=f(t), y=g(t) -> dy/dx = (dy/dt)/(dx/dt)"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.4.1 Derivatives of Parametric Functions",
+            "exercise": "Ex 1.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 18,
+            "topic": "Parametric, Higher-Order Derivatives & Relations",
+            "relevance": "med-high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.6 Derivatives of Functions in Parametric Forms",
+            "exercise": "Ex 5.6",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Parametric, Implicit, and Higher-Order Derivatives",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "4.4",
+          "subtopic": "Derivative of One Function wrt Another",
+          "concepts": [
+            "d(f)/d(g) = f'/g'"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.4 (function wrt another)",
+            "exercise": "Ex 1.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 7,
+            "topic": "Derivative of One Function with Respect to Another",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.6 (via parametric method)",
+            "exercise": null,
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Parametric, Implicit, and Higher-Order Derivatives",
+            "relevance": "low",
+            "note": null
+          },
+          "flags": []
+        }
+      ]
+    },
+    {
+      "unit_no": "5",
+      "rows": [
+        {
+          "id": "5.1",
+          "subtopic": "Higher-Order Derivatives",
+          "concepts": [
+            "second and third derivatives",
+            "Leibniz notation; d^2y/dx^2"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.5.1 Higher order derivatives",
+            "exercise": "Ex 1.5",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 18,
+            "topic": "Parametric, Higher-Order Derivatives & Relations",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.7 Second Order Derivative",
+            "exercise": "Ex 5.7",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Parametric, Implicit, and Higher-Order Derivatives",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "5.2",
+          "subtopic": "Higher-Order for Implicit/Parametric",
+          "concepts": [
+            "d^2y/dx^2 for implicit & parametric forms"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.5 (implicit/parametric second derivatives)",
+            "exercise": "Ex 1.5",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 18,
+            "topic": "Parametric, Higher-Order Derivatives & Relations",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.5 §5.7 Second Order Derivative",
+            "exercise": "Ex 5.7",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Parametric, Implicit, and Higher-Order Derivatives",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "6",
+      "rows": [
+        {
+          "id": "6.1",
+          "subtopic": "Vectors, Types & Components",
+          "concepts": [
+            "magnitude; types of vectors",
+            "2-D/3-D components; unit vectors"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.1 Representation of Vector",
+            "exercise": "Ex 5.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 10,
+            "topic": "Magnitude, Components, and Unit Vectors",
+            "relevance": "low-med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.10 §10.2-10.5 Basic concepts, types, components",
+            "exercise": "Ex 10.1-10.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 11,
+            "topic": "Magnitude, Components, Projection, Direction Cosines",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "6.2",
+          "subtopic": "Section Formula & Vector Geometry",
+          "concepts": [
+            "section formula (vector form)",
+            "triangle/parallelogram/collinearity"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.2.1 Section Formula",
+            "exercise": "Ex 5.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 16,
+            "topic": "Vector Geometry - Section Formula, Triangle, Parallelogram",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.10 §10.5.3 Section formula",
+            "exercise": "Ex 10.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 11,
+            "topic": "Vector Geometry - Triangles, Parallelograms (+ Position 6)",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "6.3",
+          "subtopic": "Dot Product & Projections",
+          "concepts": [
+            "scalar product; angle between vectors",
+            "projection; direction cosines"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.3 Scalar product",
+            "exercise": "Ex 5.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 50,
+            "topic": "Dot Product, Angle, and Perpendicularity",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.10 §10.6.1 Scalar product + §10.6.2 Projection",
+            "exercise": "Ex 10.3",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 32,
+            "topic": "Dot Product and Angle",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "6.4",
+          "subtopic": "Cross Product",
+          "concepts": [
+            "vector product; area of triangle/parallelogram",
+            "angle via cross product"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.4 Vector Product",
+            "exercise": "Ex 5.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 66,
+            "topic": "Cross Product, Angle, and Area",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.10 §10.6.3 Vector (cross) product",
+            "exercise": "Ex 10.4",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 37,
+            "topic": "Cross Product and Triple Product",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "6.5",
+          "subtopic": "Scalar & Vector Triple Product",
+          "concepts": [
+            "scalar triple product; coplanarity; volume",
+            "vector triple product"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.5 Scalar & Vector Triple Product",
+            "exercise": "Ex 5.5",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 71,
+            "topic": "Scalar Triple Product, Coplanarity, and Volume",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - triple product is NOT in the rationalised NCERT-12 Vectors chapter (Ch10 stops at cross product)."
+          },
+          "nda": {
+            "pyq_count": 37,
+            "topic": "Cross Product and Triple Product",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "6.6",
+          "subtopic": "Linear Combinations & Coplanarity",
+          "concepts": [
+            "linear combination of vectors",
+            "collinearity & coplanarity conditions"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.1.6 Coplanar Vectors",
+            "exercise": "Ex 5.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 15,
+            "topic": "Linear Combinations, Collinearity, and Coplanarity",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.10 §10.5 (basic)",
+            "exercise": null,
+            "note": "NCERT-12 covers linear combinations but not the coplanarity-via-triple-product test."
+          },
+          "nda": {
+            "pyq_count": 37,
+            "topic": "Cross Product and Triple Product (coplanarity)",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": []
+        }
+      ]
+    },
+    {
+      "unit_no": "7",
+      "rows": [
+        {
+          "id": "7.1",
+          "subtopic": "Rate of Change; Velocity & Acceleration",
+          "concepts": [
+            "derivative as rate measure",
+            "velocity, acceleration, jerk; related rates"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.1.3-2.1.4 Rate measure; velocity/acceleration",
+            "exercise": "Ex 2.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 40,
+            "topic": "Rate of Change and Related Rates",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.6 §6.2 Rate of Change of Quantities",
+            "exercise": "Ex 6.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 38,
+            "topic": "Monotonicity, Extrema, and Critical Points (related)",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "7.2",
+          "subtopic": "Tangents & Normals",
+          "concepts": [
+            "equation of tangent and normal",
+            "slope conditions"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.1.2 Application in Geometry",
+            "exercise": "Ex 2.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 35,
+            "topic": "Tangents, Normals, and the Slope of a Curve",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - Tangents & Normals were REMOVED from the rationalised NCERT-12 Applications of Derivatives (Ch6)."
+          },
+          "nda": {
+            "pyq_count": 5,
+            "topic": "Tangents and Slopes",
+            "relevance": "low-med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "7.3",
+          "subtopic": "Increasing & Decreasing Functions",
+          "concepts": [
+            "sign of f'(x); monotonic intervals"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.4.1 Increasing and decreasing functions",
+            "exercise": "Ex 2.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 29,
+            "topic": "Increasing and Decreasing Functions",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.6 §6.3 Increasing and Decreasing Functions",
+            "exercise": "Ex 6.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 38,
+            "topic": "Monotonicity, Extrema, and Critical Points",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "7.4",
+          "subtopic": "Maxima & Minima",
+          "concepts": [
+            "critical points; first & second derivative tests",
+            "optimisation problems"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.4.2-2.4.4 Maxima and Minima",
+            "exercise": "Ex 2.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 42,
+            "topic": "Maxima, Minima, and Optimisation",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.6 §6.4 Maxima and Minima",
+            "exercise": "Ex 6.3",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 30,
+            "topic": "Optimisation - Geometric, Trigonometric, AM-GM (+ Extrema 38)",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "8",
+      "rows": [
+        {
+          "id": "8.1",
+          "subtopic": "Standard Formulae & Basics",
+          "concepts": [
+            "indefinite integral as antiderivative",
+            "standard integration formulae"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.1 Elementary Integration Formulae",
+            "exercise": "Ex 3.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 8,
+            "topic": "Foundations and Standard Formulae",
+            "relevance": "low-med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.1-7.2 Introduction & properties",
+            "exercise": "Ex 7.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 13,
+            "topic": "Standard Forms - Exponential, Log, Paired Trig",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "8.2",
+          "subtopic": "Integration by Substitution",
+          "concepts": [
+            "u-substitution; algebraic & trig substitutions"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.1 Integration by substitution",
+            "exercise": "Ex 3.2(A)",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 51,
+            "topic": "Integration by Substitution",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.3.1 Integration by substitution",
+            "exercise": "Ex 7.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 17,
+            "topic": "Integration by Substitution - Algebraic, Trig, Composite",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "8.3",
+          "subtopic": "Integrals of Trigonometric Functions",
+          "concepts": [
+            "trig identities in integration",
+            "powers & products of trig functions"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.2 Integrals of trigonometric functions",
+            "exercise": "Ex 3.2(A)",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 35,
+            "topic": "Trigonometric Integrals - Rational and Substitution Forms",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.3.2 Integration using trigonometric identities",
+            "exercise": "Ex 7.3",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 13,
+            "topic": "Standard Forms - Paired Trigonometric Integrals",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "8.4",
+          "subtopic": "Special/Standard-Form Integrals",
+          "concepts": [
+            "1/(x^2+a^2), 1/sqrt(a^2-x^2) type",
+            "completing the square"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.3-3.2.6 Some Special Integrals",
+            "exercise": "Ex 3.2(B)-(C)",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 51,
+            "topic": "Integration by Substitution (standard forms)",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.4 Integrals of Some Particular Functions",
+            "exercise": "Ex 7.4",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 13,
+            "topic": "Standard Forms",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "8.5",
+          "subtopic": "Integration by Parts",
+          "concepts": [
+            "ILATE rule",
+            "integral of e^x[f+f'] type"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.3 Integration by parts",
+            "exercise": "Ex 3.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 27,
+            "topic": "Integration by Parts",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.6 Integration by Parts",
+            "exercise": "Ex 7.6",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 3,
+            "topic": "Integration by Parts",
+            "relevance": "low-med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "8.6",
+          "subtopic": "Partial Fractions",
+          "concepts": [
+            "proper/improper rational functions",
+            "decomposition into partial fractions"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.4 Integration by partial fraction",
+            "exercise": "Ex 3.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 27,
+            "topic": "Rational Functions and Partial Fractions",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.5 Integration by Partial Fractions",
+            "exercise": "Ex 7.5",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 7,
+            "topic": "Integration by Partial Fractions",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "9",
+      "rows": [
+        {
+          "id": "9.1",
+          "subtopic": "Equation of a Line in Space",
+          "concepts": [
+            "vector & Cartesian equations of a line",
+            "line through two points; direction ratios"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.1 Vector and Cartesian equations of a line",
+            "exercise": "Ex 6.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 29,
+            "topic": "Line - Equation, Direction Cosines, and Vector Form",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.11 §11.3 Equation of a Line in Space",
+            "exercise": "Ex 11.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 11,
+            "topic": "The Straight Line in 3D (+ Direction Cosines 24)",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "9.2",
+          "subtopic": "Distance & Skew Lines",
+          "concepts": [
+            "distance of a point from a line",
+            "skew lines; shortest distance; parallel-line distance"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.2 Distance of a point from a line + §6.3 Skew lines",
+            "exercise": "Ex 6.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 33,
+            "topic": "Distances in 3-D",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.11 §11.5 Shortest Distance between Two Lines",
+            "exercise": "Ex 11.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Distance, Section, and Collinearity in 3D",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "9.3",
+          "subtopic": "Angle Between Lines",
+          "concepts": [
+            "angle between two lines (direction ratios)",
+            "parallel/perpendicular conditions"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.5.1 (angle)",
+            "exercise": "Ex 6.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 29,
+            "topic": "Angles - Line, Plane, and Direction Conditions",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.11 §11.4 Angle between Two Lines",
+            "exercise": "Ex 11.2",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 24,
+            "topic": "Direction Cosines and Ratios",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "9.4",
+          "subtopic": "Equations of a Plane",
+          "concepts": [
+            "vector/Cartesian/normal/intercept forms",
+            "plane through three points"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.4 Equations of Plane",
+            "exercise": "Ex 6.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 47,
+            "topic": "Plane - Equation, Normal, and Construction",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - PLANES were removed from the rationalised NCERT-12 3-D chapter (Ch11 covers lines only)."
+          },
+          "nda": {
+            "pyq_count": 14,
+            "topic": "The Plane",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "9.5",
+          "subtopic": "Angle: Planes & Line-Plane",
+          "concepts": [
+            "angle between two planes",
+            "angle between a line and a plane"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.5 Angle between planes",
+            "exercise": "Ex 6.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 29,
+            "topic": "Angles - Line, Plane, and Direction Conditions",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - planes removed from rationalised NCERT-12."
+          },
+          "nda": {
+            "pyq_count": 14,
+            "topic": "The Plane",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        },
+        {
+          "id": "9.6",
+          "subtopic": "Coplanarity & Distance from a Plane",
+          "concepts": [
+            "coplanarity of two lines",
+            "distance of a point from a plane"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.6 Coplanarity + §6.7 Distance of a point from a plane",
+            "exercise": "Ex 6.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 37,
+            "topic": "Intersection, Coplanarity, and Skew Lines",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - planes removed from rationalised NCERT-12."
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Distance, Section, and Collinearity in 3D",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "9.7",
+          "subtopic": "Tetrahedron Geometry (CET-only)",
+          "concepts": [
+            "centroid & volume of a tetrahedron",
+            "vertices/edges in 3-D"
+          ],
+          "state_board": {
+            "section": null,
+            "exercise": null,
+            "note": "Minor board topic (via vectors)."
+          },
+          "cet": {
+            "pyq_count": 11,
+            "topic": "Tetrahedron Geometry - Centroid, Volume, Vertices",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "Not in NCERT."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "cet_only"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "10",
+      "rows": [
+        {
+          "id": "10.1",
+          "subtopic": "Equation of a Sphere",
+          "concepts": [
+            "centre-radius form (x-a)^2+(y-b)^2+(z-c)^2 = r^2",
+            "general equation; extracting centre & radius"
+          ],
+          "state_board": {
+            "section": null,
+            "exercise": null,
+            "note": "Not in the Maharashtra board (Line & Planes has no sphere)."
+          },
+          "cet": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the MHT-CET syllabus."
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "Not in NCERT-12 (3-D covers lines only)."
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Sphere",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "10.2",
+          "subtopic": "Sphere through Points, Plane Section & Tangent Plane",
+          "concepts": [
+            "sphere through given points",
+            "plane section / great circle",
+            "tangent plane to a sphere"
+          ],
+          "state_board": {
+            "section": null,
+            "exercise": null,
+            "note": "Not in the Maharashtra board."
+          },
+          "cet": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the MHT-CET syllabus."
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "Not in NCERT."
+          },
+          "nda": {
+            "pyq_count": 20,
+            "topic": "Sphere",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "nda_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "11",
+      "rows": [
+        {
+          "id": "11.1",
+          "subtopic": "Definite Integral & FTC",
+          "concepts": [
+            "definite integral as limit of a sum",
+            "Fundamental Theorem of Calculus"
+          ],
+          "state_board": {
+            "section": "Ch.4 §4.2 Fundamental theorem of integral calculus",
+            "exercise": "Ex 4.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 31,
+            "topic": "Substitution and Standard Form",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.7-7.8 Definite Integral & FTC",
+            "exercise": "Ex 7.8-7.9",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 11,
+            "topic": "Fundamental Theorem, Periodic Integrals, Leibniz",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "11.2",
+          "subtopic": "Properties of Definite Integrals",
+          "concepts": [
+            "symmetry; King's property",
+            "odd/even functions over symmetric limits"
+          ],
+          "state_board": {
+            "section": "Ch.4 §4.2 (properties)",
+            "exercise": "Ex 4.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 42,
+            "topic": "Symmetry, King's Property, and Absolute Value",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.10 Some Properties of Definite Integrals",
+            "exercise": "Ex 7.10",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 32,
+            "topic": "Properties of Definite Integrals - Symmetry, King's, Odd/Even",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "11.3",
+          "subtopic": "Absolute Value / Piecewise Integrals",
+          "concepts": [
+            "integrating |f(x)|, greatest integer, piecewise"
+          ],
+          "state_board": {
+            "section": "Ch.4 §4.2 (via properties)",
+            "exercise": "Ex 4.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 42,
+            "topic": "Symmetry, King's Property, and Absolute Value",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.7 §7.10 (properties)",
+            "exercise": "Ex 7.10",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 17,
+            "topic": "Integration of Absolute Value, Piecewise, GIF",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "nda_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "12",
+      "rows": [
+        {
+          "id": "12.1",
+          "subtopic": "Bernoulli Trials & Binomial Distribution",
+          "concepts": [
+            "Bernoulli trial; B(n,p)",
+            "binomial p.m.f. nCx p^x q^(n-x)",
+            "computing binomial probabilities"
+          ],
+          "state_board": {
+            "section": "Ch.8 §8.1-8.2 Bernoulli Trial & Binomial distribution",
+            "exercise": "Ex 8.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 20,
+            "topic": "Computing Binomial Probabilities",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - Bernoulli trials & Binomial distribution were REMOVED from the rationalised NCERT-12 Probability chapter."
+          },
+          "nda": {
+            "pyq_count": 15,
+            "topic": "Computing Binomial Probabilities - Exact, At-Least, Complementary",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "12.2",
+          "subtopic": "Mean & Variance of B(n,p)",
+          "concepts": [
+            "mean = np; variance = npq",
+            "parameter estimation"
+          ],
+          "state_board": {
+            "section": "Ch.8 §8.2 Binomial distribution",
+            "exercise": "Ex 8.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 15,
+            "topic": "Mean, Variance and Standard Deviation of a Binomial Variable",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - removed from rationalised NCERT-12."
+          },
+          "nda": {
+            "pyq_count": 15,
+            "topic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "nda_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "13",
+      "rows": [
+        {
+          "id": "13.1",
+          "subtopic": "Area under a Curve",
+          "concepts": [
+            "area bounded by a curve, axis, ordinates",
+            "definite integral as area"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.1.1 Area under a curve",
+            "exercise": "Ex 5.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 43,
+            "topic": "Area Bounded by Curves, Axes, and Lines",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.8 §8.2 Area under Simple Curves",
+            "exercise": "Ex 8.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 16,
+            "topic": "Area Bounded by a Curve, Lines, and Axes",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "13.2",
+          "subtopic": "Area between Two Curves",
+          "concepts": [
+            "area enclosed between two curves",
+            "points of intersection"
+          ],
+          "state_board": {
+            "section": "Ch.5 §5.1.2 Area between two curves",
+            "exercise": "Ex 5.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 43,
+            "topic": "Area Bounded by Curves, Axes, and Lines",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "Partial GAP - area between two curves is trimmed in the rationalised NCERT-12 (Ch8 emphasises area under simple curves)."
+          },
+          "nda": {
+            "pyq_count": 9,
+            "topic": "Area Between Two Curves and Intersection Points",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "14",
+      "rows": [
+        {
+          "id": "14.1",
+          "subtopic": "Sine Rule",
+          "concepts": [
+            "a/sinA = b/sinB = c/sinC = 2R",
+            "solving triangles (SSA, AAS)"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.4 The Sine Rule",
+            "exercise": "Ex 3.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 52,
+            "topic": "Properties of Triangles - Sine/Cosine Rules and Projection",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - solution of triangles / sine rule is not a standalone NCERT chapter."
+          },
+          "nda": {
+            "pyq_count": 29,
+            "topic": "Sine and Cosine Rules - Solving Triangles",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "14.2",
+          "subtopic": "Cosine Rule",
+          "concepts": [
+            "c^2 = a^2+b^2-2ab cosC",
+            "solving triangles (SAS, SSS)"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.5 The Cosine Rule",
+            "exercise": "Ex 3.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 52,
+            "topic": "Properties of Triangles - Sine/Cosine Rules and Projection",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": 29,
+            "topic": "Sine and Cosine Rules - Solving Triangles",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        },
+        {
+          "id": "14.3",
+          "subtopic": "Projection Rule",
+          "concepts": [
+            "a = b cosC + c cosB (and cyclic)",
+            "triangle identities"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.6 The Projection Rule",
+            "exercise": "Ex 3.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 52,
+            "topic": "Properties of Triangles cluster",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": 14,
+            "topic": "Triangle Identities - A+B+C=pi, Half/Double-Angle",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        },
+        {
+          "id": "14.4",
+          "subtopic": "Polar Coordinates & Solving Triangles",
+          "concepts": [
+            "polar coordinates",
+            "area, in-circle, circum-radius"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.2.1 Polar coordinates + §3.2.3 Solving a Triangle",
+            "exercise": "Ex 3.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 52,
+            "topic": "Properties of Triangles cluster",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": 6,
+            "topic": "In-circle and Regular Polygon Geometry",
+            "relevance": "low",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "15",
+      "rows": [
+        {
+          "id": "15.1",
+          "subtopic": "Order, Degree & Formation",
+          "concepts": [
+            "order & degree of an ODE",
+            "formation of an ODE from a family of curves"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.1-6.3 Order/Degree/Formation",
+            "exercise": "Ex 6.1-6.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 33,
+            "topic": "Order, Degree, Formation of ODE, and Verification",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.9 §9.2 Basic Concepts (order & degree)",
+            "exercise": "Ex 9.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 22,
+            "topic": "Order, Degree, and Solutions of ODE (+ Formation 12)",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "15.2",
+          "subtopic": "Variable-Separable Equations",
+          "concepts": [
+            "separating variables; integrating both sides",
+            "initial-value problems"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.4 Solution of differential equation",
+            "exercise": "Ex 6.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 33,
+            "topic": "Variable-Separable Equations",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.9 §9.4 (variable separable)",
+            "exercise": "Ex 9.3",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 29,
+            "topic": "Solving and Verifying ODEs - Separable, IVP, Applications",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "15.3",
+          "subtopic": "Homogeneous Equations",
+          "concepts": [
+            "substitution y=vx",
+            "reducible-to-homogeneous forms"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.4.1 Homogeneous differential equation",
+            "exercise": "Ex 6.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 16,
+            "topic": "Homogeneous and Reducible Equations",
+            "relevance": "med-high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.9 §9.4.2 Homogeneous differential equations",
+            "exercise": "Ex 9.4",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 29,
+            "topic": "Solving and Verifying ODEs",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned"
+          ]
+        },
+        {
+          "id": "15.4",
+          "subtopic": "Linear Differential Equations",
+          "concepts": [
+            "integrating factor e^(integral P dx)",
+            "linear form dy/dx + Py = Q"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.4.2 Linear Differential Equation",
+            "exercise": "Ex 6.5",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 24,
+            "topic": "Linear Differential Equations (Integrating Factor)",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.9 §9.4.3 Linear differential equations",
+            "exercise": "Ex 9.5",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 29,
+            "topic": "Solving and Verifying ODEs",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "15.5",
+          "subtopic": "Applications (growth/decay/cooling)",
+          "concepts": [
+            "population growth; radioactive decay",
+            "Newton's law of cooling; surface area"
+          ],
+          "state_board": {
+            "section": "Ch.6 §6.5 Application of differential Equations",
+            "exercise": "Ex 6.6",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 33,
+            "topic": "Growth, Decay, and Continuous Models (+ Cooling 5)",
+            "relevance": "high",
+            "note": " CET-heavier: NDA tests the solving methods more than growth/decay/cooling applications."
+          },
+          "ncert": {
+            "section": "Ch.9 Miscellaneous (applications)",
+            "exercise": null,
+            "note": null
+          },
+          "nda": {
+            "pyq_count": 29,
+            "topic": "Solving and Verifying ODEs - Applications",
+            "relevance": "med-high",
+            "note": null
+          },
+          "flags": [
+            "cet_anchor",
+            "cet_leaning"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "16",
+      "rows": [
+        {
+          "id": "16.1",
+          "subtopic": "General Solutions",
+          "concepts": [
+            "sin=k, cos=k, tan=k general solutions",
+            "principal vs general solution"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.1 Trigonometric Equations",
+            "exercise": "Ex 3.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 77,
+            "topic": "Trig Identities, Compound Angle & Equations (equations slice)",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - general-solution trig equations are not in rationalised NCERT (removed from Class 11; not in Class 12)."
+          },
+          "nda": {
+            "pyq_count": 13,
+            "topic": "General Solutions and Counting Solutions",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "16.2",
+          "subtopic": "Solving Trig Equations",
+          "concepts": [
+            "reducible to single ratio",
+            "multiple angles; factoring"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.1",
+            "exercise": "Ex 3.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 77,
+            "topic": "Trig Identities, Compound Angle & Equations",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": 13,
+            "topic": "Solving Specific Forms - Double-Angle, Product, Vieta",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        },
+        {
+          "id": "16.3",
+          "subtopic": "Trig Equations as Quadratics",
+          "concepts": [
+            "substitution t=sin x / cos x",
+            "quadratic in t; reject extraneous"
+          ],
+          "state_board": {
+            "section": "Ch.3 §3.1",
+            "exercise": "Ex 3.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 77,
+            "topic": "Trig Identities, Compound Angle & Equations",
+            "relevance": "med-high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": 7,
+            "topic": "Simultaneous and Combined Trigonometric Systems",
+            "relevance": "med-high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "17",
+      "rows": [
+        {
+          "id": "17.1",
+          "subtopic": "Angles of Elevation & Depression",
+          "concepts": [
+            "angle of elevation/depression",
+            "single & two-observer problems"
+          ],
+          "state_board": {
+            "section": null,
+            "exercise": null,
+            "note": "Maharashtra covers Height & Distance in Class 10 (SSC), not XI/XII."
+          },
+          "cet": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the MHT-CET syllabus."
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "NCERT Class 10 (Applications of Trigonometry); not a +2 chapter."
+          },
+          "nda": {
+            "pyq_count": 16,
+            "topic": "Heights and Distances from Angles of Elevation",
+            "relevance": "high",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "nda_anchor"
+          ]
+        },
+        {
+          "id": "17.2",
+          "subtopic": "Shadows, Leaning Structures & Special Geometry",
+          "concepts": [
+            "shadow-length problems",
+            "leaning poles/towers; special configurations"
+          ],
+          "state_board": {
+            "section": null,
+            "exercise": null,
+            "note": "Class 10 (SSC)."
+          },
+          "cet": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the MHT-CET syllabus."
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "NCERT Class 10."
+          },
+          "nda": {
+            "pyq_count": 8,
+            "topic": "Shadows, Leaning Structures, and Special Geometry",
+            "relevance": "med",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "18",
+      "rows": [
+        {
+          "id": "18.1",
+          "subtopic": "Approximations",
+          "concepts": [
+            "linear approximation using differentials",
+            "error estimation"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.2.1 Approximations",
+            "exercise": "Ex 2.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 11,
+            "topic": "Approximations using Differentials",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - Approximations were removed from rationalised NCERT-12 Ch6."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "low",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_only"
+          ]
+        },
+        {
+          "id": "18.2",
+          "subtopic": "Rolle's & Mean Value Theorems",
+          "concepts": [
+            "Rolle's theorem",
+            "Lagrange's Mean Value Theorem"
+          ],
+          "state_board": {
+            "section": "Ch.2 §2.3 Rolle's & LMVT",
+            "exercise": "Ex 2.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 18,
+            "topic": "Rolle's Theorem and Mean Value Theorem",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - Rolle's/MVT were removed from rationalised NCERT-12 Ch6."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "low",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_only"
+          ]
+        },
+        {
+          "id": "18.3",
+          "subtopic": "Angle Between Curves & Orthogonality",
+          "concepts": [
+            "angle of intersection of two curves",
+            "orthogonality condition"
+          ],
+          "state_board": {
+            "section": "Part II, Ch. 2 (application in geometry)",
+            "exercise": null,
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 8,
+            "topic": "Angle Between Curves and Orthogonality",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "Not in NCERT-12 (removed)."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_only"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "19",
+      "rows": [
+        {
+          "id": "19.1",
+          "subtopic": "Random Variables (discrete & continuous)",
+          "concepts": [
+            "random variable as a function on sample space",
+            "discrete vs continuous"
+          ],
+          "state_board": {
+            "section": "Ch.7 §7.1-7.2 Random variables & types",
+            "exercise": "Ex 7.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 31,
+            "topic": "Discrete Random Variables, PMF and CDF",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - the 'Random Variables & Probability Distributions' section was removed in the 2020 rationalisation (NCERT-12 Ch13 = conditional/Bayes only). Only a passing definition of the term 'random variable' survives in a miscellaneous example; PMF/expectation/variance/PDF are not taught."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "low",
+            "note": "Folded into NDA Probability; no dedicated distributions chapter."
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "19.2",
+          "subtopic": "PMF & Expectation",
+          "concepts": [
+            "probability mass function",
+            "expectation E(X), variance Var(X)"
+          ],
+          "state_board": {
+            "section": "Ch.7 §7.3.1 Probability Mass Function",
+            "exercise": "Ex 7.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 37,
+            "topic": "Expectation, Variance and Standard Deviation",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - removed from rationalised NCERT-12."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "low",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "19.3",
+          "subtopic": "Probability Density Function",
+          "concepts": [
+            "p.d.f. for continuous variables",
+            "cumulative distribution function"
+          ],
+          "state_board": {
+            "section": "Ch.7 §7.4.1 Probability Density Function",
+            "exercise": "Ex 7.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 31,
+            "topic": "Discrete Random Variables, PMF and CDF",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - removed from rationalised NCERT-12."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "low",
+            "note": null
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "20",
+      "rows": [
+        {
+          "id": "20.1",
+          "subtopic": "Statements & Logical Connectives",
+          "concepts": [
+            "statement; truth value",
+            "AND, OR, NOT, implication, biconditional"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.1 Statement & truth value + §1.2.1 Statement Pattern",
+            "exercise": "Ex 1.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 27,
+            "topic": "Truth Tables and Truth Values",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - Mathematical Logic is not an NCERT chapter."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        },
+        {
+          "id": "20.2",
+          "subtopic": "Truth Tables, Tautology & Equivalence",
+          "concepts": [
+            "constructing truth tables",
+            "tautology, contradiction, logical equivalence"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.2.2 Logical Equivalence + §1.2.3 Tautology, Contradiction, Contingency",
+            "exercise": "Ex 1.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 47,
+            "topic": "Negation, Equivalence, Tautology, and Switch Circuits",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "20.3",
+          "subtopic": "Converse, Inverse & Contrapositive",
+          "concepts": [
+            "converse, inverse, contrapositive",
+            "negation of compound statements; quantifiers"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.3.1 Quantifiers + §1.3.3 Negations + §1.3.4 Converse, Inverse, Contrapositive",
+            "exercise": "Ex 1.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 14,
+            "topic": "Converse, Inverse, and Contrapositive",
+            "relevance": "med",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        },
+        {
+          "id": "20.4",
+          "subtopic": "Switching Circuits",
+          "concepts": [
+            "logic gates / switching circuits",
+            "simplifying circuits via logic"
+          ],
+          "state_board": {
+            "section": "Ch.1 §1.5 Switching circuits (§1.5.1 series, §1.5.2 parallel)",
+            "exercise": "Ex 1.5",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 47,
+            "topic": "Negation, Equivalence, Tautology, and Switch Circuits",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "21",
+      "rows": [
+        {
+          "id": "21.1",
+          "subtopic": "Combined Equation of a Pair of Lines",
+          "concepts": [
+            "homogeneous 2nd-degree equation",
+            "pair of lines through origin; separate equations"
+          ],
+          "state_board": {
+            "section": "Ch.4 §4.2 Homogeneous equation (pair of lines through the origin)",
+            "exercise": "Ex 4.1",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 28,
+            "topic": "Combined Equation and Condition for Pair of Lines",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - Pair of Straight Lines is not an NCERT chapter."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "21.2",
+          "subtopic": "Angle, Distance & Geometry of a Pair",
+          "concepts": [
+            "angle between the pair",
+            "distance/geometry; general 2nd-degree pair"
+          ],
+          "state_board": {
+            "section": "Ch.4 §4.3 Angle between the pair + §4.4 General Second Degree Equation in x and y",
+            "exercise": "Ex 4.2-4.3",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 17,
+            "topic": "Angle, Distance, and Geometry of Pair",
+            "relevance": "med-high",
+            "note": null
+          },
+          "ncert": {
+            "section": null,
+            "exercise": null,
+            "note": "GAP - not in NCERT."
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_gap"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_no": "22",
+      "rows": [
+        {
+          "id": "22.1",
+          "subtopic": "Formulation & Feasible Region",
+          "concepts": [
+            "LPP formulation; constraints",
+            "feasible region; corner points"
+          ],
+          "state_board": {
+            "section": "Ch.7 §7.1 Convex sets & graphical solution of inequations + §7.2.2 Formulation of L.P.P.",
+            "exercise": "Ex 7.1-7.2",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 23,
+            "topic": "Feasible Region - Identification, Constraints, Classification",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.12 §12.2 Mathematical formulation of the problem",
+            "exercise": "Ex 12.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "ncert_aligned",
+            "cet_anchor"
+          ]
+        },
+        {
+          "id": "22.2",
+          "subtopic": "Objective Function - Max/Min",
+          "concepts": [
+            "objective function",
+            "maximisation/minimisation at corner points"
+          ],
+          "state_board": {
+            "section": "Ch.7 §7.2.3 Solution of L.P.P. by graphical methods",
+            "exercise": "Ex 7.3-7.4",
+            "note": null
+          },
+          "cet": {
+            "pyq_count": 23,
+            "topic": "Objective Function - Maximisation and Minimisation",
+            "relevance": "high",
+            "note": null
+          },
+          "ncert": {
+            "section": "Ch.12 Linear Programming",
+            "exercise": "Ex 12.1",
+            "note": null
+          },
+          "nda": {
+            "pyq_count": null,
+            "topic": null,
+            "relevance": "none",
+            "note": "Not in the NDA syllabus."
+          },
+          "flags": [
+            "cet_anchor"
+          ]
+        }
+      ]
+    }
+  ]
+}

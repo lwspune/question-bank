@@ -1,0 +1,261 @@
+{
+  "grade": 12,
+  "subject": "Mathematics",
+  "board": "Maharashtra State Board",
+  "textbook": "Balbharati Mathematics & Statistics Part I and Part II (Arts & Science)",
+  "plan_title": "Teaching Plan (NDA-prioritized, spaced & interleaved)",
+  "version": "v1",
+  "purpose": "Spiral chapter plan (spine) for Std XII. Approach: option (b) light refactor - board chapters preserved, only fused chapters split; then reordered so NDA-tested chapters lead (the NDA-first priority) and the three non-NDA (CET-only) chapters drop to a droppable tail. Deep-dive subtopic/concept/source mappings live in maths-xii-deep-dive.json, keyed by unit_no.",
+  "session_model": "Session estimates TBD (no refactored source doc for XII yet).",
+  "total_teaching_sessions": null,
+  "notes": [
+    "Why NDA-prioritized: LWS is an NDA-first institute; NDA-tested chapters lead and the three non-NDA (CET-only) chapters - Mathematical Logic, Pair of Straight Lines, Linear Programming - sit in a droppable tail (Units 18-20).",
+    "Order is deliberately SPACED & INTERLEAVED for retention (distributed-practice / desirable-difficulties evidence): the three Differentiation stages are split across the plan (Units 2, 5, 6) and probability/trig units are interspersed rather than blocked. Board chapter numbers are preserved in board_source for cross-reference.",
+    "Binomial Distributions (Unit 12) precedes Probability Distributions (Unit 19): weakly dependent for a formula-driven exam: teach E(X)/Var(X) briefly in the Binomial unit (or state mean=np, variance=npq), then close the loop when Probability Distributions is later taught.",
+    "Two fused board chapters are split: Trigonometric Functions -> Trig Equations + Solution of Triangles + Inverse Trig; Differentiation (64pp) -> 3 stages. Height & Distance is an NDA-supplementary unit (board covers it in Class 10).",
+    "Subtopic-level NDA split: Application of Derivatives is split into an NDA core (Unit 7) and a deferred CET-Extension (Unit 18: Rolle/MVT, approximations, angle-between-curves). Probability Distributions (Unit 19) is entirely CET (NDA has no distributions chapter) and joins the deferred block. Tetrahedron (in Line & Planes) and DE growth/decay applications are tagged CET-only/CET-leaning in place. Sphere (Unit 10) is added as an NDA-supplementary topic after Line & Planes.",
+    "Deferred CET block = Units 18-22 (AoD CET-Extension, Probability Distributions, Mathematical Logic, Pair of Straight Lines, Linear Programming); a pure-NDA student can stop after Unit 17."
+  ],
+  "guiding_principles": [
+    {
+      "principle": "NDA-first ordering",
+      "meaning": "Units are sequenced so NDA-tested content comes first; everything NDA does not test - the AoD CET-Extension, Probability Distributions, Mathematical Logic, Pair of Straight Lines and Linear Programming - is placed in a deferred CET block (Units 18-22) a pure-NDA student can drop."
+    },
+    {
+      "principle": "Spaced & interleaved sequence",
+      "meaning": "The XII board order is already dependency-sound, so units are resequenced for variety/retention (spacing + interleaving) rather than to fix dependencies; every hard prerequisite is still respected."
+    },
+    {
+      "principle": "Split fused chapters",
+      "meaning": "Trigonometric Functions (board Ch3) fuses trig equations + solution of triangles + inverse trig -> 3 units. Differentiation (board P2-Ch1, 64pp) is split into rules/chain, log/implicit/parametric, and higher-order -> 3 units."
+    },
+    {
+      "principle": "Supplementary NDA topics tracked separately",
+      "meaning": "Topics NDA tests but the board omits (Binary Numbers, Height & Distance, Sphere) or only embeds/assumes (Logarithms, Quadratic Equations, Linear Inequalities, Regression) have been FITTED into the plans - 5 in XI, plus Height & Distance and Sphere in XII; see the Supplementary NDA Topics record."
+    }
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "name": "NDA Core (priority)",
+      "blurb": "The 17 NDA-core units (including Sphere), resequenced for spacing & interleaving (not board order). High-yield for NDA and MHT-CET both; taught first. A pure-NDA student can stop after Unit 17."
+    },
+    {
+      "phase": 2,
+      "name": "CET-Only Tail (droppable for NDA)",
+      "blurb": "The 5 deferred units NDA does not test: Application of Derivatives - CET Extension, Probability Distributions, Mathematical Logic, Pair of Straight Lines, Linear Programming. Required for MHT-CET; droppable for a pure-NDA student."
+    }
+  ],
+  "units": [
+    {
+      "unit_no": "1",
+      "title": "Inverse Trigonometric Functions",
+      "board_source": "Part I, Ch. 3 §3.3 (split)",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Principal values, properties, inverse-trig identities; prerequisite for inverse-function differentiation (Unit 2, Differentiation). Maps to NDA Inverse Trigonometry. Split out of board Ch3."
+    },
+    {
+      "unit_no": "2",
+      "title": "Differentiation - Rules, Chain & Inverse-Function Derivatives",
+      "board_source": "Part II, Ch. 1 (split)",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Chain rule, composite and inverse-function derivatives; needs Inverse Trig (Unit 1, Inverse Trig). First stage of the split mega-chapter. Maps to NDA Differentiation."
+    },
+    {
+      "unit_no": "3",
+      "title": "Matrices",
+      "board_source": "Part I, Ch. 2",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Matrix inverse (elementary transformation + adjoint) and solving linear systems (inversion/reduction); maps to NDA Matrices & Determinants, one of NDA's heaviest chapters."
+    },
+    {
+      "unit_no": "4",
+      "title": "Differentiation - Logarithmic, Implicit & Parametric",
+      "board_source": "Part II, Ch. 1 (split)",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Logarithmic, implicit and parametric differentiation; second stage of the split."
+    },
+    {
+      "unit_no": "5",
+      "title": "Differentiation - Higher-Order Derivatives",
+      "board_source": "Part II, Ch. 1 (split)",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Second and higher-order derivatives; third stage of the split."
+    },
+    {
+      "unit_no": "6",
+      "title": "Vectors",
+      "board_source": "Part I, Ch. 5",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Dot/cross/triple products, vector geometry; a top-weighted chapter for both NDA (Vectors) and MHT-CET. Precedes Line & Planes."
+    },
+    {
+      "unit_no": "7",
+      "title": "Application of Derivatives",
+      "board_source": "Part II, Ch. 2",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "The NDA-core applications - rate of change, tangents/normals, increasing-decreasing, maxima-minima. (Rolle/MVT, approximations and angle-between-curves are split into the CET-Extension unit for NDA students to skip.)"
+    },
+    {
+      "unit_no": "8",
+      "title": "Indefinite Integration",
+      "board_source": "Part II, Ch. 3",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Integration methods (substitution, parts, partial fractions); maps to NDA Indefinite Integration."
+    },
+    {
+      "unit_no": "9",
+      "title": "Line & Planes",
+      "board_source": "Part I, Ch. 6",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "3-D lines and planes; needs Vectors. Maps to NDA 3-D Geometry."
+    },
+    {
+      "title": "Sphere",
+      "board_source": "NDA-supplementary - not in Maharashtra board (3-D)",
+      "sessions": null,
+      "phase": 1,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] NDA 3-D Geometry weights the sphere (20 PYQs); the board's Line & Planes chapter has no sphere. Placed directly after Line & Planes.",
+      "unit_no": "10"
+    },
+    {
+      "unit_no": "11",
+      "title": "Definite Integration",
+      "board_source": "Part II, Ch. 4",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Definite integrals + properties; needs Indefinite Integration. Maps to NDA Definite Integration."
+    },
+    {
+      "unit_no": "12",
+      "title": "Binomial Distributions",
+      "board_source": "Part II, Ch. 8",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Bernoulli trials, B(n,p), mean/variance; maps to NDA Binomial Distribution. Closes the NDA core. NOTE: taught before Probability Distributions (Unit 19) - the only prerequisite (E(X)/Var(X) of a random variable) is bootstrapped locally here or stated as np/npq, then back-linked when Probability Distributions is taught."
+    },
+    {
+      "unit_no": "13",
+      "title": "Application of Definite Integration",
+      "board_source": "Part II, Ch. 5",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Area under/between curves; needs Definite Integration. Maps to NDA Applications of Integration."
+    },
+    {
+      "unit_no": "14",
+      "title": "Solution of Triangles",
+      "board_source": "Part I, Ch. 3 §3.2 (split)",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Sine / cosine / projection rules; maps to NDA Properties of Triangle. Split out of board Ch3."
+    },
+    {
+      "unit_no": "15",
+      "title": "Differential Equations",
+      "board_source": "Part II, Ch. 6",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "Order/degree, formation, variable-separable, linear, applications; needs Integration. Heavy for both exams."
+    },
+    {
+      "unit_no": "16",
+      "title": "Trigonometric Equations",
+      "board_source": "Part I, Ch. 3 §3.1 (split)",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "General solutions of trig equations; maps to NDA Trigonometric Equations. Split out of the fused board Ch3."
+    },
+    {
+      "unit_no": "17",
+      "title": "Height & Distance",
+      "board_source": "NDA-supplementary - board covers in Class 10 SSC",
+      "sessions": null,
+      "phase": 1,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] Application of trigonometry (angles of elevation/depression; 24 PYQs); Maharashtra teaches it in Class 10, so it needs a +2 revision unit for NDA. Placed after Solution of Triangles (uses sine/cosine rules)."
+    },
+    {
+      "title": "Application of Derivatives - CET Extension",
+      "board_source": "Part II, Ch. 2 §2.2 Approximations + §2.3 Rolle/LMVT (CET-only subtopics)",
+      "sessions": null,
+      "phase": 2,
+      "why_here": "[CET-only] Rolle's & MVT, approximations, and angle between curves - CET-tested (~37 PYQs) but not in NDA. Split out of Application of Derivatives (Unit 7) and deferred so NDA students can skip.",
+      "unit_no": "18"
+    },
+    {
+      "unit_no": "19",
+      "title": "Probability Distributions",
+      "board_source": "Part II, Ch. 7",
+      "sessions": null,
+      "phase": 2,
+      "why_here": "[CET-only] Random variables, PMF, expectation, PDF - CET-tested (~68 PYQs); NDA has no random-variable/distribution chapter (its probability is counting/conditional/Bayes at XI). Binomial (Unit 12) is the NDA-tested distribution; deferred here for CET."
+    },
+    {
+      "unit_no": "20",
+      "title": "Mathematical Logic",
+      "board_source": "Part I, Ch. 1",
+      "sessions": null,
+      "phase": 2,
+      "why_here": "CET-only: statements, truth tables, logical equivalence, switching circuits (~88 MHT-CET PYQs). Not tested by NDA and not in NCERT. Self-contained -> deferrable/droppable for a pure-NDA student."
+    },
+    {
+      "unit_no": "21",
+      "title": "Pair of Straight Lines",
+      "board_source": "Part I, Ch. 4",
+      "sessions": null,
+      "phase": 2,
+      "why_here": "CET-only: combined equation, angle, distance of a pair of lines (~45 MHT-CET PYQs). Not tested by NDA (which does single lines) and not in NCERT. Extends XI Straight Line."
+    },
+    {
+      "unit_no": "22",
+      "title": "Linear Programming",
+      "board_source": "Part I, Ch. 7",
+      "sessions": null,
+      "phase": 2,
+      "why_here": "CET-only for exams: feasible region, objective function optimisation (~46 MHT-CET PYQs). In NCERT-12 but not tested by NDA. Dependency-independent -> flexible/relief placement."
+    }
+  ],
+  "supplementary_nda_topics": [
+    {
+      "topic": "Height & Distance",
+      "status": "FITTED as XII unit 17 (Height & Distance)",
+      "note": "Application of trigonometry; board covers it in Class 10 SSC."
+    },
+    {
+      "topic": "Binary Numbers",
+      "status": "FITTED in the XI plan (unit 2, Phase 1)",
+      "note": "NDA-only; no board chapter."
+    },
+    {
+      "topic": "Quadratic Equations",
+      "status": "FITTED in the XI plan (unit 3, Phase 1)",
+      "note": "Class-10/SSC; NDA tests as a distinct chapter."
+    },
+    {
+      "topic": "Linear Inequalities",
+      "status": "FITTED in the XI plan (unit 5, Phase 1)",
+      "note": "NCERT-11 Ch5; board folds into XII LP."
+    },
+    {
+      "topic": "Logarithms",
+      "status": "FITTED in the XI plan (unit 7, Phase 1)",
+      "note": "Board embeds in XI Functions; NDA has a standalone chapter."
+    },
+    {
+      "topic": "Regression & Correlation",
+      "status": "FITTED in the XI plan (unit 26, Phase 6)",
+      "note": "NDA Statistics subtopic; absent from Maharashtra XI/XII."
+    }
+  ]
+}

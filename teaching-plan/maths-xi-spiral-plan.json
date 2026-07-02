@@ -1,0 +1,301 @@
+{
+  "grade": 11,
+  "subject": "Mathematics",
+  "board": "Maharashtra State Board",
+  "textbook": "Balbharati Mathematics & Statistics Part I and Part II (Arts & Science)",
+  "source_doc": "LWS Maths XI Refactored Syllabus v4.docx",
+  "version": "v4",
+  "purpose": "Spiral chapter plan (spine): the cognitively-sequenced teaching order. Deep-dive subtopic/concept/source mappings live in maths-xi-deep-dive.json, keyed by unit_no.",
+  "session_model": "Based on 50-minute periods with ~30% time for in-class problem solving.",
+  "total_teaching_sessions": 145,
+  "academic_year_sessions": 180,
+  "buffer_sessions": 35,
+  "notes": [
+    "Units are numbered 1-27 in teaching order; each unit's board chapter (or 'NDA-supplementary'/'SSC') is shown in the Board Source column.",
+    "18 board chapters + 6 numerical / NDA-supplementary units (Binary Numbers, Quadratic Equations, Linear Inequalities, Logarithms, Statistics I, Regression & Correlation) = 27 units.",
+    "Numerical foundation is front-loaded in Phase 1 (Binary Numbers, Quadratic Equations, Logarithms, Statistics I) - real numerical content, not a decontextualized primer; pair with a standing daily calculation drill.",
+    "Statistics is a spiral: Statistics I (central tendency) in Phase 1 -> Measures of Dispersion (Statistics II) in Phase 6 -> Regression & Correlation in Phase 6.",
+    "Phase 6 'flexible' applies to Measures of Dispersion; Probability has a hard floor after Phase 3 (needs P&C + Sets)."
+  ],
+  "guiding_principles": [
+    {
+      "principle": "Spiral curriculum",
+      "meaning": "Trig split into 3 parts (Phase 2, Phase 4 calculus bridge, Phase 5). Complex Numbers split into 2 parts (Phase 3 algebra, Phase 5 geometry). Students return to each concept at greater depth."
+    },
+    {
+      "principle": "Language first",
+      "meaning": "Sets, Relations, Functions moved to Phase 1. The board places them at Chapter 5-6 of Part II, taught after half the syllabus without formally defining a function."
+    },
+    {
+      "principle": "Conics split by type",
+      "meaning": "Board places all three conics in one chapter. Parabola and Ellipse/Hyperbola taught separately; each is its own vocabulary, standard-form family, and problem universe."
+    },
+    {
+      "principle": "Calculus scaffolded",
+      "meaning": "Limits and Continuity kept as separate units despite being one board chapter. Trig Part C placed before Limits because inverse-trig domain-restriction thinking primes limit intuition."
+    },
+    {
+      "principle": "Statistics as a spiral",
+      "meaning": "Central tendency (Statistics I) is front-loaded to Phase 1 - it is pure calculation (numerical foundation) and the prerequisite for every dispersion measure. Measures of Dispersion (Statistics II), Regression & Correlation, and Probability sit in Phase 6 as flexible / computation-based blocks."
+    },
+    {
+      "principle": "Session estimates",
+      "meaning": "50-minute periods, ~30% in-class problem solving. The ~145 sessions cover the original board chapters; the 6 numerical / NDA-supplementary units added (Binary Numbers, Quadratic Equations, Linear Inequalities, Logarithms, Statistics I, Regression) have sessions TBD."
+    }
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Mathematical Language & Foundation",
+      "blurb": "Build the vocabulary. Every chapter here is a tool that every later chapter will depend on."
+    },
+    {
+      "phase": 2,
+      "name": "Trigonometry (Three-Part Spiral)",
+      "blurb": "The largest conceptual arc. Basics now, identities after algebra, equations last."
+    },
+    {
+      "phase": 3,
+      "name": "Core Algebra",
+      "blurb": "The algebra engine, built on Phase 1 language and Phase 2 trig fluency."
+    },
+    {
+      "phase": 4,
+      "name": "Geometry",
+      "blurb": "Two-dimensional geometry built on the algebraic tools now available."
+    },
+    {
+      "phase": 5,
+      "name": "Calculus Foundation",
+      "blurb": "A complete mindset shift: thinking about 'approach' and 'behaviour' rather than exact values."
+    },
+    {
+      "phase": 6,
+      "name": "Statistics and Probability",
+      "blurb": "Computation-based relief chapters. Flexible placement within the year."
+    }
+  ],
+  "units": [
+    {
+      "unit_no": "1",
+      "title": "Sets and Relations",
+      "board_source": "Part II, Ch. 5",
+      "sessions": 6,
+      "phase": 1,
+      "why_here": "Defines the language of all mathematics (function, domain, membership); teaching it first makes everything downstream cleaner and faster."
+    },
+    {
+      "unit_no": "2",
+      "title": "Binary Numbers",
+      "board_source": "NDA-supplementary - not in Maharashtra board",
+      "sessions": null,
+      "phase": 1,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] Number-system topic NDA tests (binary arithmetic, conversion; 13 PYQs) with no board chapter; self-contained, placed early in the foundation phase."
+    },
+    {
+      "unit_no": "3",
+      "title": "Quadratic Equations",
+      "board_source": "SSC (Class 10) revision + NDA depth",
+      "sessions": null,
+      "phase": 1,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] Quadratics are Class-10/SSC content NDA tests as a distinct chapter (Vieta's, nature of roots; 63 PYQs); revised early and feeds Complex Numbers A."
+    },
+    {
+      "unit_no": "4",
+      "title": "Functions — Concept and Algebra",
+      "board_source": "Part II, Ch. 6 (first portion)",
+      "sessions": 5,
+      "phase": 1,
+      "why_here": "The single most important concept in school maths; placed right after Sets so every later chapter uses the language properly."
+    },
+    {
+      "unit_no": "5",
+      "title": "Linear Inequalities",
+      "board_source": "NDA-supplementary - NCERT-11 Ch5; board folds into XII LP",
+      "sessions": null,
+      "phase": 1,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] Solving/graphing linear inequalities; part of the Functions block (domain determination). NCERT-11 has it (Ch5); the Maharashtra board folds it into XII Linear Programming."
+    },
+    {
+      "unit_no": "6",
+      "title": "Functions — Exponential and Logarithmic",
+      "board_source": "Part II, Ch. 6 (logarithm sub-topic)",
+      "sessions": 4,
+      "phase": 1,
+      "why_here": "Log is best understood as a function; log laws are prerequisites for log-function domains and reappear in Differentiation and Limits."
+    },
+    {
+      "unit_no": "7",
+      "title": "Logarithms",
+      "board_source": "NDA depth - board embeds in XI Functions §6.1.5",
+      "sessions": null,
+      "phase": 1,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] NDA has a standalone Logarithms chapter (identities, change of base, log equations; 27 PYQs); the board embeds log in Functions (U2B). Placed right after 2B to deepen to NDA level."
+    },
+    {
+      "unit_no": "8",
+      "title": "Measures of Central Tendency (Statistics I)",
+      "board_source": "SSC (Class 10) central tendency; board embeds combined mean in Measures of Dispersion",
+      "sessions": null,
+      "phase": 1,
+      "why_here": "[Numerical foundation] Mean, median, mode + frequency distributions - pure calculation, SSC-rooted, and the prerequisite for every dispersion measure (variance/SD/CV need the mean). Front-loaded to build numerical fluency early and to precede Measures of Dispersion (Statistics II) in Phase 6. NDA's #2 subtopic (75 PYQ)."
+    },
+    {
+      "unit_no": "9",
+      "title": "Trigonometry Part A — Angle Measurement & Ratios",
+      "board_source": "Part I, Ch. 1 + Ch. 2 (first portion)",
+      "sessions": 9,
+      "phase": 2,
+      "why_here": "Rebuilds the SSC right-triangle view into a radian/unit-circle/all-six-ratios foundation; identities and equations cannot start until this is solid."
+    },
+    {
+      "unit_no": "10",
+      "title": "Trigonometry Part B — Identities",
+      "board_source": "Part I, Ch. 2 (second portion) + Ch. 3",
+      "sessions": 9,
+      "phase": 2,
+      "why_here": "Placed after algebraic fluency; the deliberate gap since Part A makes identities feel like new tools rather than the same overwhelming chapter."
+    },
+    {
+      "unit_no": "11",
+      "title": "Complex Numbers Part A — Algebra",
+      "board_source": "Part II, Ch. 1 (first half)",
+      "sessions": 5,
+      "phase": 3,
+      "why_here": "Purely algebraic (define i, a+bi arithmetic, modulus, conjugate); the geometric interpretation is held for Phase 5 after trig fluency."
+    },
+    {
+      "unit_no": "12",
+      "title": "Sequences and Series",
+      "board_source": "Part II, Ch. 2",
+      "sessions": 8,
+      "phase": 3,
+      "why_here": "Natural progression from algebraic comfort; internal order matters AP -> GP -> HP -> Special Series."
+    },
+    {
+      "unit_no": "13",
+      "title": "Permutations and Combinations",
+      "board_source": "Part II, Ch. 3",
+      "sessions": 8,
+      "phase": 3,
+      "why_here": "Counting follows from set theory; strict internal chain counting-principle -> factorial -> permutation -> combination."
+    },
+    {
+      "unit_no": "14",
+      "title": "Methods of Induction and Binomial Theorem",
+      "board_source": "Part II, Ch. 4",
+      "sessions": 7,
+      "phase": 3,
+      "why_here": "Induction is the proof tool and binomial its prime application; binomial coefficients are nCr, so it follows P&C."
+    },
+    {
+      "unit_no": "15",
+      "title": "Determinants and Matrices",
+      "board_source": "Part I, Ch. 4",
+      "sessions": 10,
+      "phase": 3,
+      "why_here": "Determinants and matrix inverse are interdependent; order matrix arithmetic -> determinants -> inverse/systems; placed after strong algebra."
+    },
+    {
+      "unit_no": "16",
+      "title": "Straight Line",
+      "board_source": "Part I, Ch. 5",
+      "sessions": 8,
+      "phase": 4,
+      "why_here": "Students now have systems of equations (Matrices) to handle angle bisectors, concurrency, and family of lines properly rather than mechanically."
+    },
+    {
+      "unit_no": "17",
+      "title": "Circle",
+      "board_source": "Part I, Ch. 6",
+      "sessions": 7,
+      "phase": 4,
+      "why_here": "Follows straight lines (tangents need perpendicularity; 3-point circle needs simultaneous equations); conceptual bridge to conics."
+    },
+    {
+      "unit_no": "18",
+      "title": "Conic Sections Part A — Parabola",
+      "board_source": "Part I, Ch. 7 (parabola portion)",
+      "sessions": 5,
+      "phase": 4,
+      "why_here": "Conics split by type; parabola first as the simplest (one axis of symmetry, one focus)."
+    },
+    {
+      "unit_no": "19",
+      "title": "Conic Sections Part B — Ellipse and Hyperbola",
+      "board_source": "Part I, Ch. 7 (ellipse and hyperbola portions)",
+      "sessions": 7,
+      "phase": 4,
+      "why_here": "Taught together as structural mirrors (only the sign differs); kept after parabola so the eccentricity framework (e<1 vs e>1) makes sense."
+    },
+    {
+      "unit_no": "20",
+      "title": "Trigonometry Part C — Equations and Inverse Functions",
+      "board_source": "Part I, Ch. 2 + Ch. 3 (equation and inverse portions)",
+      "sessions": 6,
+      "phase": 5,
+      "why_here": "Inverse-trig domain-restriction primes limit thinking; needs identity fluency (Part B) and periodicity (Part A); eases into the calculus section."
+    },
+    {
+      "unit_no": "21",
+      "title": "Complex Numbers Part B — Geometry and Applications",
+      "board_source": "Part II, Ch. 1 (second half)",
+      "sessions": 5,
+      "phase": 5,
+      "why_here": "Argand plane / polar form / De Moivre need full trig fluency (Parts A, B, C done); students now genuinely understand r(cos t + i sin t)."
+    },
+    {
+      "unit_no": "22",
+      "title": "Limits",
+      "board_source": "Part II, Ch. 7",
+      "sessions": 7,
+      "phase": 5,
+      "why_here": "The biggest conceptual jump ('approaching' vs 'equalling'); separated from Continuity, which the board combines."
+    },
+    {
+      "unit_no": "23",
+      "title": "Continuity",
+      "board_source": "Part II, Ch. 8",
+      "sessions": 5,
+      "phase": 5,
+      "why_here": "Deliberately separate from Limits; a standalone chapter forces students to articulate limit-exists vs value-equals."
+    },
+    {
+      "unit_no": "24",
+      "title": "Differentiation",
+      "board_source": "Part II, Ch. 9",
+      "sessions": 12,
+      "phase": 5,
+      "why_here": "Most content-heavy chapter; four sequential stages, first principles not skipped; geometric interpretation links back to Straight Lines."
+    },
+    {
+      "unit_no": "25",
+      "title": "Measures of Dispersion (Statistics II)",
+      "board_source": "Part I, Ch. 8",
+      "sessions": 5,
+      "phase": 6,
+      "why_here": "Measuring spread: range, quartile & mean deviation, variance, standard deviation, coefficient of variation. Builds on the mean from Statistics I; the second stage of the statistics spiral. Flexible/computation-based placement."
+    },
+    {
+      "unit_no": "26",
+      "title": "Regression & Correlation",
+      "board_source": "NDA-supplementary - not in Maharashtra XI/XII",
+      "sessions": null,
+      "phase": 6,
+      "nda_supplementary": true,
+      "why_here": "[NDA-supplementary] NDA Statistics includes regression & correlation (27 PYQs); absent from Maharashtra Measures of Dispersion. Placed after Dispersion (needs mean/SD)."
+    },
+    {
+      "unit_no": "27",
+      "title": "Probability",
+      "board_source": "Part I, Ch. 9",
+      "sessions": 7,
+      "phase": 6,
+      "why_here": "Placed last because good problems need P&C fluency (Phase 3) and set-theory language (Phase 1)."
+    }
+  ]
+}
