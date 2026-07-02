@@ -89,6 +89,11 @@ import {
   PROBABILITY_DISTRIBUTION_SLUGS,
 } from "@/app/notes/mht-cet-maths/probability-distribution/_data";
 import {
+  BINOMIAL_DISTRIBUTION_CHAPTER as MHTCET_BINOMIAL_DISTRIBUTION_CHAPTER,
+  BINOMIAL_DISTRIBUTION_NOTES as MHTCET_BINOMIAL_DISTRIBUTION_NOTES,
+  BINOMIAL_DISTRIBUTION_SLUGS as MHTCET_BINOMIAL_DISTRIBUTION_SLUGS,
+} from "@/app/notes/mht-cet-maths/binomial-distribution/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -862,6 +867,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: PROBABILITY_DISTRIBUTION_CHAPTER,
     notes: PROBABILITY_DISTRIBUTION_NOTES,
     slugs: PROBABILITY_DISTRIBUTION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "binomial-distribution",
+    chipLabel: "Binomial Distribution notes",
+    chapter: MHTCET_BINOMIAL_DISTRIBUTION_CHAPTER,
+    notes: MHTCET_BINOMIAL_DISTRIBUTION_NOTES,
+    slugs: MHTCET_BINOMIAL_DISTRIBUTION_SLUGS,
   },
   {
     examName: "NDA",
