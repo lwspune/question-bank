@@ -84,6 +84,11 @@ import {
   DIFFERENTIAL_EQUATIONS_SLUGS as MHTCET_DIFFERENTIAL_EQUATIONS_SLUGS,
 } from "@/app/notes/mht-cet-maths/differential-equations/_data";
 import {
+  PROBABILITY_DISTRIBUTION_CHAPTER,
+  PROBABILITY_DISTRIBUTION_NOTES,
+  PROBABILITY_DISTRIBUTION_SLUGS,
+} from "@/app/notes/mht-cet-maths/probability-distribution/_data";
+import {
   HUMAN_PHYSIOLOGY_CHAPTER,
   HUMAN_PHYSIOLOGY_NOTES,
   HUMAN_PHYSIOLOGY_SLUGS,
@@ -846,6 +851,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_DIFFERENTIAL_EQUATIONS_CHAPTER,
     notes: MHTCET_DIFFERENTIAL_EQUATIONS_NOTES,
     slugs: MHTCET_DIFFERENTIAL_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "probability-distribution",
+    chipLabel: "Probability Distribution notes",
+    chapter: PROBABILITY_DISTRIBUTION_CHAPTER,
+    notes: PROBABILITY_DISTRIBUTION_NOTES,
+    slugs: PROBABILITY_DISTRIBUTION_SLUGS,
   },
   {
     examName: "NDA",
