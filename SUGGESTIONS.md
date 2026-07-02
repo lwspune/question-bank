@@ -28,6 +28,30 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 Added `extractStemLabels(stem)` to `scripts/lib/figures/verify.ts` (pure, deterministic — subscripts `L_1/D_2/V_A`, geometry letter-runs `ABCD`→A,B,C,D, prose "point(s)/at/between/labels: X, Y", `List I/II`, option-count reminders; LaTeX-stripped; stopword-filtered), with **8 TDD cases** in `tests/figures-verify.test.ts` (21 total green). Wired into `verify-figures.ts` so each contact-sheet card now prints a **"✓ confirm present in crop: `P` `Q` …"** checklist per figure — turning the ~9%-blind-spot eyeball pass into a directed textual check. Validated over all 68 NEET stems (q7:[P], q40:[D1,D2,Vin], q36/q126:[A,B,C,D], re-q10:[P,Q]). It's a **review aid, not a gate** (over-includes on chemistry prose; presence-confirmation still needs vision/OCR — none installed). Method + evidence: [[figure-snapcrop-verify]] lesson 6.
 
+### Commit the `teaching-plan/` subsystem to git (currently untracked)
+
+The whole teaching-plan tool — 6 subject-grade plans (maths/physics/chemistry × XI/XII), the shared `build-docx.py` generator, `README.md`, and the 12 JSON source files — is **untracked** in the Question_Bank working tree (`git status` shows `?? teaching-plan/`). It's a substantial, finished deliverable (built + reordered + NCERT-corrected + cross-board-tagged this session) living only on local disk. See [[teaching-plan-generator]].
+
+**Why:** it's real work with no version history or backup; an accidental `git clean` or disk loss wipes it. It's also invisible to any future session that greps the repo.
+
+**How to apply:** decide first whether it belongs in *this* repo (the PYQ Vault web-app repo) or its own — it's a separate concern (LWS teacher lesson-planning, Python, not the Next.js app). If keeping it here: add `teaching-plan/*.docx` to `.gitignore` (regenerable build artifacts, per the project's no-commit-generated-artifacts convention), then commit the JSON sources + `build-docx.py` + `README.md` in one `feat(teaching-plan):` commit. If it becomes a committed part of the repo, give it a short pointer in CLAUDE.md or its own doc.
+
+### Reflect the entrance-test findings in the chemistry plans (re-tag Nuclear + per-exam tags)
+
+The bank-grounded analysis (2026-07-02) found that of all 32 board chem chapters, **Nuclear Chemistry & Radioactivity is tested by none of CET/NDA/JEE**, while **Chemical Equilibrium** (Kc/Kp/Le Chatelier) is **JEE-only** and **Chemistry in Everyday Life** is **NDA-only**. These weren't reflected in the plan flags (the user was shown the analysis but didn't confirm edits). Nuclear currently carries `⚠ CBSE gap`, which over-signals it (it implies "cover for CBSE" when it's the one chapter safe to skip for entrance prep). See [[teaching-plan-generator]].
+
+**Why:** the flags now say "CBSE students need this" for a chapter no entrance exam tests — misleading for prioritisation in a mixed cohort.
+
+**How to apply:** in `chemistry-xi-deep-dive.json`, re-tag Nuclear Chemistry (U13) rows from `cbse_gap` → a new `board_only_no_entrance` flag (add a `FLAG_LABEL`), and add per-exam tags to Chemical Equilibrium (U12, `jee_only`) and Chemistry in Everyday Life (U16, `nda_only`); add matching `FLAG_LABEL` entries + a spine note. Regenerate the docx.
+
+### Extend the cross-board CBSE/State cohort treatment to the Physics + Maths plans
+
+Only the Chemistry plans got the `cbse_gap`/`cbse_xi` cohort flags + notes this session; Physics got only the Work-Energy-Power split (no cohort flags), and Maths got none — yet the same mixed-cohort XI/XII boundary gap exists for all three (Physics is a clean mirror-swap; Maths has the Linear-Inequalities/3-D boundary shifts surfaced earlier). The offered **merged "cross-board XI teaching plan"** (one sequence with each unit tagged `[Both]` / `[CBSE-XI]` / `[State-XI]`) was never built.
+
+**Why:** a teacher of a mixed CBSE/State batch needs the same at-a-glance "who's seen this / when to teach together vs split" signal in Physics and Maths that Chemistry now has; leaving it Chemistry-only is inconsistent.
+
+**How to apply:** for `physics-xi`/`physics-xii`, tag the mirror-swap blocks (`cbse_xi` on the physics-xii units NCERT teaches in XI; `cbse_gap`/board-timing notes on physics-xi's NCERT-Class-12 chapters) reusing the existing flag labels. For Maths, tag the two NCERT-XI-not-in-board-XI items. Optionally build the merged cross-board XI plan as a new slug reusing `build-docx.py`.
+
 ## 2026-07-01
 
 ### ~~Archive the oldest inline Decisions-log month — CLAUDE.md over the 200KB re-archive trigger~~ — **DONE 2026-07-02**
