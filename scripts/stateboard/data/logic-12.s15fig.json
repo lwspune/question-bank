@@ -1,0 +1,326 @@
+[
+  {
+    "ref": "1.5 Solved Ex.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. (Solved) Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-solved-ex1",
+    "stem": "Circuit (i)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(L\\) : The lamp \\(L\\).\n\nHere \\(\\wedge\\) = switches in series, \\(\\vee\\) = branches in parallel. The upper block has \\(S_1\\) parallel to \\(S_2\\), and this whole block is parallel to the lower branch \\(S_1'\\)–\\(S_2'\\) (in series).\n\nThe circuit is expressed as \\((p \\vee q) \\vee (\\sim p \\wedge \\sim q)\\).",
+    "page": 22,
+    "bbox": [
+      0.27,
+      0.41,
+      0.63,
+      0.61
+    ]
+  },
+  {
+    "ref": "1.5 Solved Ex.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. (Solved) Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-solved-ex1",
+    "stem": "Circuit (ii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\) is closed, \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\), \\(L\\) : The lamp \\(L\\).\n\nA parallel block of two branches — \\(S_1\\)–\\(S_2\\) (series) parallel to \\(S_1'\\)–\\(S_2'\\) (series) — is joined in series with \\(S_3\\).\n\nThe symbolic form is \\([(p \\wedge q) \\vee (\\sim p \\wedge \\sim q)] \\wedge r\\).",
+    "page": 22,
+    "bbox": [
+      0.07,
+      0.62,
+      0.43,
+      0.84
+    ]
+  },
+  {
+    "ref": "1.5 Solved Ex.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. (Solved) Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-solved-ex1",
+    "stem": "Circuit (iii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\), \\(L\\) : The lamp \\(L\\).\n\nThe first block is \\(S_1\\) parallel to \\(S_2\\), then \\(S_2\\) in series, then a block of \\(S_3\\) parallel to \\(S_1'\\).\n\nThe symbolic form of the given circuit is \\((p \\vee q) \\wedge q \\wedge (r \\vee \\sim p)\\).",
+    "page": 22,
+    "bbox": [
+      0.47,
+      0.63,
+      0.92,
+      0.85
+    ]
+  },
+  {
+    "ref": "1.5 Solved Ex.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Ex.3. Give an alternative arrangement for the following circuit, so that the new circuit has minimum switches.",
+    "setLabel": "1.5fig-solved-ex3",
+    "stem": "Circuit (Fig. 1.11)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThe symbolic form is \\((p \\wedge \\sim q) \\vee (\\sim p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\).\n\nConsider \\((p \\wedge \\sim q) \\vee (\\sim p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)\n\\(\\equiv (p \\wedge \\sim q) \\vee [\\sim p \\wedge (q \\vee \\sim q)]\\) [Distributive Law]\n\\(\\equiv (p \\wedge \\sim q) \\vee [\\sim p \\wedge t]\\) [Complement Law]\n\\(\\equiv (p \\wedge \\sim q) \\vee \\sim p\\) [Identity Law]\n\\(\\equiv \\sim p \\vee (p \\wedge \\sim q)\\) [Commutative Law]\n\\(\\equiv (\\sim p \\vee p) \\wedge (\\sim p \\vee \\sim q)\\) [Distributive Law]\n\\(\\equiv t \\wedge (\\sim p \\vee \\sim q)\\) [Law of Complement]\n\\(\\equiv \\sim p \\vee \\sim q\\) [Identity Law]\n\nThe alternative arrangement is \\(S_1'\\) parallel to \\(S_2'\\) (see Fig. 1.12).",
+    "page": 25,
+    "bbox": [
+      0.31,
+      0.12,
+      0.63,
+      0.31
+    ]
+  },
+  {
+    "ref": "1.5 Solved Ex.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Ex.4. Express the following switching circuit in the symbolic form of Logic. Construct the switching table and interpret it.",
+    "setLabel": "1.5fig-solved-ex4",
+    "stem": "Circuit (Fig. 1.13)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(L\\) : The lamp \\(L\\).\n\nThe block of \\(S_1\\) parallel to \\(S_2\\) is in series with \\(S_1'\\) and \\(S_2'\\).\n\nThe symbolic form of the given switching circuit is \\((p \\vee q) \\wedge (\\sim p) \\wedge (\\sim q)\\).\n\nIn the switching table the last column contains all 0, so the lamp will not glow irrespective of the status of the switches.",
+    "page": 25,
+    "bbox": [
+      0.27,
+      0.71,
+      0.67,
+      0.93
+    ]
+  },
+  {
+    "ref": "1.5 Solved Ex.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Ex.5. Simplify the given circuit by writing its logical expression. Also, write your conclusion.",
+    "setLabel": "1.5fig-solved-ex5",
+    "stem": "Circuit (Fig. 1.14)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThe logical expression for the given circuit is \\(p \\wedge (\\sim p \\vee \\sim q) \\wedge q\\).\n\nConsider \\(p \\wedge (\\sim p \\vee \\sim q) \\wedge q\\)\n\\(\\equiv [p \\wedge (\\sim p \\vee \\sim q)] \\wedge q\\) [Associative Law]\n\\(\\equiv [(p \\wedge \\sim p) \\vee (p \\wedge \\sim q)] \\wedge q\\) [Distributive Law]\n\\(\\equiv [c \\vee (p \\wedge \\sim q)] \\wedge q\\) [Complement Law]\n\\(\\equiv (p \\wedge \\sim q) \\wedge q\\) [Identity Law]\n\\(\\equiv p \\wedge (\\sim q \\wedge q)\\) [Associative Law]\n\\(\\equiv p \\wedge c\\) [Complement Law]\n\\(\\equiv c\\) [Identity Law]\n\nConclusion: The lamp will not glow irrespective of the status of the switches.",
+    "page": 26,
+    "bbox": [
+      0.25,
+      0.47,
+      0.71,
+      0.63
+    ]
+  },
+  {
+    "ref": "1.5 Solved Ex.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Ex.6. In the following switching circuit, (i) write symbolic form, (ii) construct switching table, (iii) simplify the circuit.",
+    "setLabel": "1.5fig-solved-ex6",
+    "stem": "Circuit (Fig. 1.15)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\n(i) The symbolic form of the given circuit is \\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (r \\wedge \\sim q)\\).\n\n(iii) Consider \\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (r \\wedge \\sim q)\\)\n\\(\\equiv [(p \\vee \\sim p) \\wedge q] \\vee (r \\wedge \\sim q)\\) [Distributive Law]\n\\(\\equiv (t \\wedge q) \\vee (r \\wedge \\sim q)\\) [Complement Law]\n\\(\\equiv q \\vee (r \\wedge \\sim q)\\) [Identity Law]\n\\(\\equiv (q \\vee r) \\wedge (q \\vee \\sim q)\\) [Distributive Law]\n\\(\\equiv (q \\vee r) \\wedge t\\) [Complement Law]\n\\(\\equiv (q \\vee r)\\) [Identity Law]\n\nThe simplified circuit is \\(S_2\\) parallel to \\(S_3\\) (see Fig. 1.16).",
+    "page": 27,
+    "bbox": [
+      0.31,
+      0.14,
+      0.61,
+      0.33
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-ex-q1",
+    "stem": "Circuit (i)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nHere \\(\\wedge\\) = series, \\(\\vee\\) = parallel. The upper branch is \\(S_1\\); the lower branch is \\(S_2\\)–\\(S_3\\) in series; the two branches are in parallel.\n\nThe symbolic form is \\(p \\vee (q \\wedge r)\\).",
+    "page": 28,
+    "bbox": [
+      0.09,
+      0.18,
+      0.46,
+      0.37
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-ex-q1",
+    "stem": "Circuit (ii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nThe upper branch is \\(S_1'\\)–\\(S_2\\) in series; the lower branch is \\(S_1\\)–\\(S_2'\\) in series; the two branches are in parallel.\n\nThe symbolic form is \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim q)\\).",
+    "page": 28,
+    "bbox": [
+      0.52,
+      0.18,
+      0.86,
+      0.37
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-ex-q1",
+    "stem": "Circuit (iii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nUpper branch: \\(S_1\\) in series with a block of \\(S_2'\\) parallel to \\(S_3\\). Lower branch: \\(S_2'\\)–\\(S_3'\\) in series. The two branches are in parallel.\n\nThe symbolic form is \\([S_1 \\wedge (\\sim q \\vee r)] \\vee (\\sim q \\wedge \\sim r)\\), i.e. \\([p \\wedge (\\sim q \\vee r)] \\vee (\\sim q \\wedge \\sim r)\\).",
+    "page": 28,
+    "bbox": [
+      0.07,
+      0.41,
+      0.49,
+      0.62
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.1 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-ex-q1",
+    "stem": "Circuit (iv)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nFirst block: \\(S_1\\) parallel to \\(S_2\\), in series with \\(S_2\\). Second block: \\(S_3\\) parallel to \\(S_1'\\). The two blocks are in series.\n\nThe symbolic form is \\([(p \\vee q) \\wedge q] \\wedge (r \\vee \\sim p)\\).",
+    "page": 28,
+    "bbox": [
+      0.49,
+      0.43,
+      0.91,
+      0.62
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.1 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-ex-q1",
+    "stem": "Circuit (v)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThe top branch is \\(S_1\\); below it a branch \\(S_1'\\)–\\(S_2'\\) in series; the lowest branch \\(S_1\\)–\\(S_2\\) in series. All three branches are in parallel.\n\nThe symbolic form is \\(p \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge q)\\).",
+    "page": 28,
+    "bbox": [
+      0.07,
+      0.67,
+      0.46,
+      0.88
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.1 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.1. Express the following circuits in the symbolic form of logic and write the input-output table.",
+    "setLabel": "1.5fig-ex-q1",
+    "stem": "Circuit (vi)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nThree parallel blocks in series: block 1 is \\(S_1\\) parallel to \\(S_2\\); block 2 is \\(S_2\\) parallel to \\(S_3\\); block 3 is \\(S_3\\) parallel to \\(S_1\\).\n\nThe symbolic form is \\((p \\vee q) \\wedge (q \\vee r) \\wedge (r \\vee p)\\).",
+    "page": 28,
+    "bbox": [
+      0.49,
+      0.68,
+      0.91,
+      0.86
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Q.3. Give an alternative equivalent simple circuits for the following circuits.",
+    "setLabel": "1.5fig-ex-q3",
+    "stem": "Circuit (i)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\n\\(S_1\\) is in series with a block of \\(S_1'\\) parallel to \\(S_2\\). The symbolic form is \\(p \\wedge (\\sim p \\vee q)\\).\n\nSimplify: \\(p \\wedge (\\sim p \\vee q) \\equiv (p \\wedge \\sim p) \\vee (p \\wedge q)\\) [Distributive Law] \\(\\equiv c \\vee (p \\wedge q)\\) [Complement Law] \\(\\equiv p \\wedge q\\) [Identity Law].\n\nThe equivalent simple circuit is \\(S_1\\) in series with \\(S_2\\).",
+    "page": 29,
+    "bbox": [
+      0.08,
+      0.21,
+      0.45,
+      0.37
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Q.3. Give an alternative equivalent simple circuits for the following circuits.",
+    "setLabel": "1.5fig-ex-q3",
+    "stem": "Circuit (ii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nUpper branch: \\(S_1\\) in series with a block of \\(S_2\\) parallel to \\(S_3\\). Lower branch: \\(S_3'\\)–\\(S_2'\\)–\\(S_1\\) in series. The two branches are in parallel.\n\nThe symbolic form is \\([p \\wedge (q \\vee r)] \\vee (\\sim r \\wedge \\sim q \\wedge p)\\).\n\nSimplify: \\([p \\wedge (q \\vee r)] \\vee [p \\wedge (\\sim q \\wedge \\sim r)] \\equiv p \\wedge [(q \\vee r) \\vee (\\sim q \\wedge \\sim r)] \\equiv p \\wedge [(q \\vee r) \\vee \\sim(q \\vee r)] \\equiv p \\wedge t \\equiv p\\).\n\nThe equivalent simple circuit is the single switch \\(S_1\\).",
+    "page": 29,
+    "bbox": [
+      0.47,
+      0.185,
+      0.89,
+      0.35
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "context": "Q.4. Write the symbolic form of the following switching circuits, construct its switching table and interpret it.",
+    "setLabel": "1.5fig-ex-q4",
+    "stem": "Circuit (i)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nUpper branch: \\(S_1\\)–\\(S_2\\) in series. Lower branch: \\(S_1'\\)–\\(S_2\\) in series (\\(S_2'\\) leads into the second series switch \\(S_2\\)). The two branches are in parallel.\n\nThe symbolic form is \\((p \\wedge q) \\vee (\\sim p \\wedge q)\\), which simplifies to \\(q\\) (i.e. the lamp glows exactly when \\(S_2\\) is closed).",
+    "page": 29,
+    "bbox": [
+      0.07,
+      0.45,
+      0.47,
+      0.6
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Q.4. Write the symbolic form of the following switching circuits, construct its switching table and interpret it.",
+    "setLabel": "1.5fig-ex-q4",
+    "stem": "Circuit (ii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\).\n\nThree parallel branches: \\(S_1\\) (top); \\(S_1'\\)–\\(S_2'\\) in series (middle); \\(S_1\\)–\\(S_2\\) in series (bottom).\n\nThe symbolic form is \\(p \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge q)\\).",
+    "page": 29,
+    "bbox": [
+      0.46,
+      0.43,
+      0.9,
+      0.6
+    ]
+  },
+  {
+    "ref": "1.5 Ex 1.5 Q.4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "HARD",
+    "context": "Q.4. Write the symbolic form of the following switching circuits, construct its switching table and interpret it.",
+    "setLabel": "1.5fig-ex-q4",
+    "stem": "Circuit (iii)",
+    "solution": "Let \\(p\\) : The switch \\(S_1\\), \\(q\\) : The switch \\(S_2\\), \\(r\\) : The switch \\(S_3\\).\n\nFirst block: three parallel branches \\(S_1\\), \\(S_2'\\), \\(S_3'\\). Second block: \\(S_1\\) parallel to the series branch \\(S_2\\)–\\(S_3\\). The two blocks are in series.\n\nThe symbolic form is \\((p \\vee \\sim q \\vee \\sim r) \\wedge [p \\vee (q \\wedge r)]\\).",
+    "page": 29,
+    "bbox": [
+      0.21,
+      0.625,
+      0.73,
+      0.77
+    ]
+  }
+]

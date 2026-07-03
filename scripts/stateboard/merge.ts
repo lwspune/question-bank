@@ -25,7 +25,13 @@ function main() {
     files = explicit.map((s) => `${id}.${s}.json`);
   } else {
     files = readdirSync(DATA)
-      .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== outName)
+      .filter(
+        (f) =>
+          f.startsWith(`${id}.`) &&
+          f.endsWith(".json") &&
+          f !== outName &&
+          !f.endsWith(".solutions.json") // solution files are {id,ref,solution}, applied by apply-solutions.ts — not question fragments
+      )
       .sort();
   }
 
