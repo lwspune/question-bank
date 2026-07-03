@@ -1,0 +1,52 @@
+[
+  {
+    "id": "7d8dabb2-8ecb-44e3-936c-d8a898fdfd37",
+    "ref": "1.5 Ex 1.5 Q.2 (i)",
+    "solution": "Recall \\(\\wedge\\) = switches in series, \\(\\vee\\) = branches in parallel.\n\nThe expression is \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim r)\\), a parallel combination of two branches.\n\nBranch 1 \\((\\sim p \\wedge q)\\): switch \\(S_1'\\) (closed when \\(p\\)'s switch is open) in series with switch \\(S_2\\) (for \\(q\\)).\n\nBranch 2 \\((p \\wedge \\sim r)\\): switch \\(S_1\\) (for \\(p\\)) in series with switch \\(S_3'\\) (closed when \\(r\\)'s switch is open).\n\nThe two branches are connected in parallel between the terminals of the lamp."
+  },
+  {
+    "id": "dacdbb43-08c3-4bd6-9eb6-80cbd2d98c78",
+    "ref": "1.5 Ex 1.5 Q.2 (ii)",
+    "solution": "Here \\(\\wedge\\) = series and \\(\\vee\\) = parallel.\n\nThe expression \\((p \\wedge q) \\vee [\\sim p \\wedge (\\sim q \\vee p \\vee r)]\\) is a parallel combination of two branches.\n\nBranch 1 \\((p \\wedge q)\\): switch \\(S_1\\) (for \\(p\\)) in series with switch \\(S_2\\) (for \\(q\\)).\n\nBranch 2 \\(\\sim p \\wedge (\\sim q \\vee p \\vee r)\\): switch \\(S_1'\\) (closed when \\(p\\) is open) in series with a parallel sub-network of three switches \\(S_2'\\) (for \\(\\sim q\\)), \\(S_1\\) (for \\(p\\)) and \\(S_3\\) (for \\(r\\)).\n\nThe two branches are joined in parallel across the supply."
+  },
+  {
+    "id": "1c1d141d-4d4c-4849-bba1-bc32655466cc",
+    "ref": "1.5 Ex 1.5 Q.2 (iii)",
+    "solution": "Here \\(\\wedge\\) = series and \\(\\vee\\) = parallel.\n\nThe expression \\([(p \\wedge r) \\vee (\\sim q \\wedge \\sim r)] \\wedge (\\sim p \\wedge \\sim r)\\) is a series combination of two blocks.\n\nBlock 1 \\((p \\wedge r) \\vee (\\sim q \\wedge \\sim r)\\): two parallel branches — one branch is \\(S_1\\) (for \\(p\\)) in series with \\(S_3\\) (for \\(r\\)); the other branch is \\(S_2'\\) (for \\(\\sim q\\)) in series with \\(S_3'\\) (for \\(\\sim r\\)).\n\nBlock 2 \\((\\sim p \\wedge \\sim r)\\): switch \\(S_1'\\) (for \\(\\sim p\\)) in series with switch \\(S_3'\\) (for \\(\\sim r\\)).\n\nBlock 1 and Block 2 are then connected in series with each other."
+  },
+  {
+    "id": "865e9232-49da-4f36-8135-167a79509ec1",
+    "ref": "1.5 Ex 1.5 Q.2 (iv)",
+    "solution": "Here \\(\\wedge\\) = series and \\(\\vee\\) = parallel.\n\nThe expression \\((p \\wedge \\sim q \\wedge r) \\vee [p \\wedge (\\sim q \\vee \\sim r)]\\) is a parallel combination of two branches.\n\nBranch 1 \\((p \\wedge \\sim q \\wedge r)\\): three switches in series — \\(S_1\\) (for \\(p\\)), \\(S_2'\\) (for \\(\\sim q\\)) and \\(S_3\\) (for \\(r\\)).\n\nBranch 2 \\(p \\wedge (\\sim q \\vee \\sim r)\\): switch \\(S_1\\) (for \\(p\\)) in series with a parallel sub-network of \\(S_2'\\) (for \\(\\sim q\\)) and \\(S_3'\\) (for \\(\\sim r\\)).\n\nThe two branches are connected in parallel across the supply."
+  },
+  {
+    "id": "b65c47d0-7772-4c3c-afcf-31f5269ceafe",
+    "ref": "1.5 Ex 1.5 Q.2 (v)",
+    "solution": "Here \\(\\wedge\\) = series and \\(\\vee\\) = parallel.\n\nThe expression \\(p \\vee (\\sim p) \\vee (\\sim q) \\vee (p \\wedge q)\\) is a parallel combination of four branches.\n\nBranch 1: switch \\(S_1\\) (for \\(p\\)).\n\nBranch 2: switch \\(S_1'\\) (for \\(\\sim p\\)).\n\nBranch 3: switch \\(S_2'\\) (for \\(\\sim q\\)).\n\nBranch 4 \\((p \\wedge q)\\): switch \\(S_1\\) (for \\(p\\)) in series with switch \\(S_2\\) (for \\(q\\)).\n\nAll four branches are connected in parallel across the supply.\n\n(Note: since a branch containing \\(p\\) and a branch containing \\(\\sim p\\) are already in parallel, this circuit is always closed.)"
+  },
+  {
+    "id": "5c7c067f-bb39-4c67-9fb3-c948cdecb8d7",
+    "ref": "1.5 Ex 1.5 Q.2 (vi)",
+    "solution": "Here \\(\\wedge\\) = series and \\(\\vee\\) = parallel.\n\nThe expression \\((p \\wedge q) \\vee (\\sim p) \\vee (p \\wedge \\sim q)\\) is a parallel combination of three branches.\n\nBranch 1 \\((p \\wedge q)\\): switch \\(S_1\\) (for \\(p\\)) in series with switch \\(S_2\\) (for \\(q\\)).\n\nBranch 2: switch \\(S_1'\\) (for \\(\\sim p\\)).\n\nBranch 3 \\((p \\wedge \\sim q)\\): switch \\(S_1\\) (for \\(p\\)) in series with switch \\(S_2'\\) (for \\(\\sim q\\)).\n\nThe three branches are connected in parallel across the supply."
+  },
+  {
+    "id": "2e389caa-6125-4d12-96f2-c7aab0d90fd9",
+    "ref": "1.5 Ex 1.5 Q.5 (i)",
+    "solution": "Simplify \\(p \\vee (q \\wedge \\sim q)\\).\n\nBy the complement law, \\(q \\wedge \\sim q \\equiv F\\).\n\nHence \\(p \\vee (q \\wedge \\sim q) \\equiv p \\vee F \\equiv p\\) (identity law).\n\nSimplified expression: \\(p\\).\n\nSwitching circuit: a single switch \\(S_1\\) (for \\(p\\)) connected in series with the lamp across the supply."
+  },
+  {
+    "id": "edc7a886-3f8c-4da0-9a55-a4d6e5e7f181",
+    "ref": "1.5 Ex 1.5 Q.5 (ii)",
+    "solution": "Simplify \\((\\sim p \\wedge q) \\vee (\\sim p \\wedge \\sim q) \\vee (p \\wedge \\sim q)\\).\n\nTake \\(\\sim p\\) common from the first two terms:\n\\((\\sim p \\wedge q) \\vee (\\sim p \\wedge \\sim q) \\equiv \\sim p \\wedge (q \\vee \\sim q) \\equiv \\sim p \\wedge T \\equiv \\sim p\\).\n\nSo the expression \\(\\equiv \\sim p \\vee (p \\wedge \\sim q)\\).\n\nBy the distributive law, \\(\\sim p \\vee (p \\wedge \\sim q) \\equiv (\\sim p \\vee p) \\wedge (\\sim p \\vee \\sim q) \\equiv T \\wedge (\\sim p \\vee \\sim q) \\equiv \\sim p \\vee \\sim q\\).\n\nSimplified expression: \\(\\sim p \\vee \\sim q\\).\n\nSwitching circuit: two switches \\(S_1'\\) (for \\(\\sim p\\)) and \\(S_2'\\) (for \\(\\sim q\\)) connected in parallel across the supply."
+  },
+  {
+    "id": "df9e92dc-d952-41c3-a1c9-fac02b8e8f83",
+    "ref": "1.5 Ex 1.5 Q.5 (iii)",
+    "solution": "Simplify \\([p \\vee (\\sim q) \\vee \\sim r] \\wedge [p \\vee (q \\wedge r)]\\).\n\nWrite it as \\((p \\vee X) \\wedge (p \\vee Y)\\) with \\(X = \\sim q \\vee \\sim r\\) and \\(Y = q \\wedge r\\). By the distributive law,\n\\((p \\vee X) \\wedge (p \\vee Y) \\equiv p \\vee (X \\wedge Y)\\).\n\nNow by De Morgan's law \\(\\sim q \\vee \\sim r \\equiv \\sim(q \\wedge r)\\), so\n\\(X \\wedge Y \\equiv \\sim(q \\wedge r) \\wedge (q \\wedge r) \\equiv F\\) (complement law).\n\nHence the expression \\(\\equiv p \\vee F \\equiv p\\).\n\nSimplified expression: \\(p\\).\n\nSwitching circuit: a single switch \\(S_1\\) (for \\(p\\)) connected in series with the lamp across the supply."
+  },
+  {
+    "id": "f39bc2b4-aadd-4f32-a27f-1526d52d515c",
+    "ref": "1.5 Ex 1.5 Q.5 (iv)",
+    "solution": "Simplify \\((p \\wedge q \\wedge \\sim p) \\vee (\\sim p \\wedge q \\wedge r) \\vee (p \\wedge \\sim q \\wedge r) \\vee (p \\wedge q \\wedge r)\\).\n\nFirst term: \\(p \\wedge \\sim p \\equiv F\\), so \\(p \\wedge q \\wedge \\sim p \\equiv F\\) and it is dropped.\n\nCombine the 1st and 3rd remaining terms (which share \\(q \\wedge r\\)):\n\\((\\sim p \\wedge q \\wedge r) \\vee (p \\wedge q \\wedge r) \\equiv (q \\wedge r) \\wedge (\\sim p \\vee p) \\equiv q \\wedge r\\).\n\nSo the expression \\(\\equiv (q \\wedge r) \\vee (p \\wedge \\sim q \\wedge r)\\). Take \\(r\\) common:\n\\(\\equiv r \\wedge [q \\vee (p \\wedge \\sim q)]\\).\n\nNow \\(q \\vee (p \\wedge \\sim q) \\equiv (q \\vee p) \\wedge (q \\vee \\sim q) \\equiv (p \\vee q) \\wedge T \\equiv p \\vee q\\).\n\nHence the expression \\(\\equiv (p \\vee q) \\wedge r\\).\n\nSimplified expression: \\((p \\vee q) \\wedge r\\).\n\nSwitching circuit: switches \\(S_1\\) (for \\(p\\)) and \\(S_2\\) (for \\(q\\)) in parallel, and this parallel combination is connected in series with switch \\(S_3\\) (for \\(r\\))."
+  }
+]
