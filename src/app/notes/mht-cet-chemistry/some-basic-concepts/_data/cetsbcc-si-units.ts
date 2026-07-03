@@ -10,6 +10,51 @@ export const SI_UNITS_NOTE: SubtopicNote = {
     "They cluster three ways: name-the-unit (SI unit of viscosity, of rate of diffusion; the quantity measured in candela), classify-the-property (which pair is intensive), and one abundance calculation (find isotopic percentages from the average atomic mass of chlorine). " +
     "So the work is mostly memorising two short reference tables plus one mixing formula — the kind of subtopic where a student should never drop a mark.",
   concepts: [
+    // FOUNDATION — classification of matter (State Board 1.2)
+    {
+      kind: "reference" as const,
+      slug: "cetsbcc-si-matter-classification",
+      name: "Classification of matter",
+      intuition:
+        "Before any calculation, chemistry sorts matter by composition: pure substances (fixed composition) versus mixtures (variable), and within pure substances, elements versus compounds. Learn the tree and the metal / non-metal / metalloid split — the paper tests these as one-line recall.",
+      definition:
+        "Matter is classified by its chemical composition:\n" +
+        "- **Pure substances** have a fixed composition — either **elements** (cannot be broken into simpler substances by a chemical change) or **compounds** (two or more elements in a fixed mass ratio).\n" +
+        "- **Mixtures** have a variable composition — **homogeneous** (uniform throughout, a solution) or **heterogeneous** (non-uniform).\n" +
+        "- Elements are further grouped as **metals**, **non-metals** and **metalloids** (intermediate properties).",
+      table: {
+        columns: ["Category", "Definition", "Example"],
+        rows: [
+          { cells: ["Element", "A pure substance that cannot be broken into simpler substances by a chemical change.", "Gold, oxygen, iron"] },
+          { cells: ["Compound", "A pure substance of two or more elements combined in a fixed proportion by mass.", "Water, table salt, mercuric oxide"] },
+          { cells: ["Homogeneous mixture", "A mixture with uniform composition throughout (a solution).", "Salt water, air"] },
+          { cells: ["Heterogeneous mixture", "A mixture whose composition is not uniform throughout.", "Sand in water, oil and water"] },
+          {
+            cells: ["Metal", "Lustrous, malleable and ductile; a good conductor of heat and electricity.", "Copper, silver, iron"],
+          },
+          {
+            cells: ["Non-metal", "Dull and brittle; a poor conductor of heat and electricity.", "Nitrogen, iodine, carbon"],
+            noteAmber: "Exceptions the paper likes: graphite (a non-metal) conducts electricity; diamond and iodine have lustre.",
+          },
+          { cells: ["Metalloid", "An element with properties intermediate between metals and non-metals.", "Silicon, germanium, arsenic"] },
+        ],
+        caption: "Sort by composition first (pure vs mixture), then refine (element/compound, metal/non-metal/metalloid).",
+      },
+      practiceSet: [
+        { prompt: "Is a compound a pure substance or a mixture?", answer: "A pure substance — it has a fixed composition." },
+        { prompt: "What is a homogeneous mixture with uniform composition called?", answer: "A solution." },
+        { prompt: "Silicon and germanium belong to which class of element?", answer: "Metalloids." },
+        { prompt: "Name a non-metal that is a good conductor of electricity.", answer: "Graphite (a form of carbon)." },
+      ],
+      traps: [
+        {
+          title: "A compound is a pure substance, not a mixture",
+          body:
+            "A compound has a FIXED composition (water is always \\(\\text{H}_2\\text{O}\\)), so it is a **pure substance** — unlike a mixture, whose proportions vary. Distilled water is a pure substance; salt water is a mixture.",
+        },
+      ],
+    },
+
     // SI base units — reference table (tests the candela question)
     {
       kind: "reference" as const,

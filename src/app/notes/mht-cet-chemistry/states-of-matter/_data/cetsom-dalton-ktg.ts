@@ -13,7 +13,7 @@ export const DALTON_KTG_NOTE: SubtopicNote = {
     // Dalton's law of partial pressures — the workhorse
     {
       kind: "formula" as const,
-      slug: "cetsbcc-dalton-partial-pressure",
+      slug: "cetsom-dalton-partial-pressure",
       name: "Dalton's law of partial pressures",
       intuition:
         "In a mixture, each gas ignores the others and pushes on the walls as if it were alone; the total pressure is just the sum of those individual pushes. " +
@@ -90,7 +90,7 @@ export const DALTON_KTG_NOTE: SubtopicNote = {
     // Root-mean-square velocity
     {
       kind: "formula" as const,
-      slug: "cetsbcc-dalton-rms-velocity",
+      slug: "cetsom-dalton-rms-velocity",
       name: "Root-mean-square velocity",
       intuition:
         "The molecules of a gas move at a spread of speeds; the root-mean-square velocity is the effective average speed that carries the kinetic energy. " +
@@ -165,7 +165,7 @@ export const DALTON_KTG_NOTE: SubtopicNote = {
     // Kinetic theory of gases — postulates (reference table)
     {
       kind: "reference" as const,
-      slug: "cetsbcc-dalton-ktg-postulates",
+      slug: "cetsom-dalton-ktg-postulates",
       name: "Postulates of the kinetic theory of gases",
       intuition:
         "The kinetic theory pictures a gas as a huge number of tiny, fast, independent particles bouncing around in empty space. " +
@@ -264,7 +264,7 @@ export const DALTON_KTG_NOTE: SubtopicNote = {
     // Real gases and compressibility factor
     {
       kind: "formula" as const,
-      slug: "cetsbcc-dalton-real-gas-deviation",
+      slug: "cetsom-dalton-real-gas-deviation",
       name: "Real gases and the compressibility factor",
       intuition:
         "A real gas obeys \\(PV = nRT\\) only approximately, because its molecules do take up space and do attract one another. " +
