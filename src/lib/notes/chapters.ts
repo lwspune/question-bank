@@ -408,6 +408,11 @@ import {
   STRUCTURE_OF_ATOM_NOTES,
   STRUCTURE_OF_ATOM_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/structure-of-atom/_data";
+import {
+  CHEMICAL_BONDING_CHAPTER as MHTCET_CHEMICAL_BONDING_CHAPTER,
+  CHEMICAL_BONDING_NOTES as MHTCET_CHEMICAL_BONDING_NOTES,
+  CHEMICAL_BONDING_SLUGS as MHTCET_CHEMICAL_BONDING_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/chemical-bonding/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -910,6 +915,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: STRUCTURE_OF_ATOM_CHAPTER,
     notes: STRUCTURE_OF_ATOM_NOTES,
     slugs: STRUCTURE_OF_ATOM_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    chapter: MHTCET_CHEMICAL_BONDING_CHAPTER,
+    notes: MHTCET_CHEMICAL_BONDING_NOTES,
+    slugs: MHTCET_CHEMICAL_BONDING_SLUGS,
   },
   {
     examName: "NDA",
