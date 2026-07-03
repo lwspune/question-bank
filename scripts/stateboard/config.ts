@@ -80,6 +80,24 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Solution of Linear Equations using Matrices",
     ],
   },
+
+  // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
+  //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
+  //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).
+  "pair-lines-12": {
+    id: "pair-lines-12",
+    chapterName: "Pair of Straight Lines",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Pair_of_Straight_Lines.pdf",
+    pdf: cls12("Part 01/Ch_04_Pair_of_Straight_Lines.pdf"),
+    note: "Maharashtra State Board (Class 12) — Pair of Straight Lines (Balbharati textbook)",
+    subtopics: [
+      "Combined Equation of a Pair of Lines",
+      "Angle between a Pair of Lines",
+      "Angle Bisectors of a Pair of Lines",
+      "General Second Degree Equation of Two Lines",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

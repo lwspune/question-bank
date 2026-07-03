@@ -1,0 +1,172 @@
+[
+  {
+    "ref": "4.3 Ex.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Show that equation \\(x^2 - 6xy + 5y^2 + 10x - 14y + 9 = 0\\) represents a pair of lines. Find the acute angle between them. Also find the point of their intersection.",
+    "solution": "We have \\(x^2 - 6xy + 5y^2 = (x - 5y)(x - y)\\).\nSuppose \\(x^2 - 6xy + 5y^2 + 10x - 14y + 9 = (x - 5y + c)(x - y + k)\\).\n\\(\\therefore x^2 - 6xy + 5y^2 + 10x - 14y + 9 = x^2 - 6xy + 5y^2 + (c + k)x - (c + 5k)y + ck\\).\n\\(\\therefore c + k = 10\\), \\(c + 5k = 14\\) and \\(ck = 9\\).\nWe observe that \\(c = 9\\) and \\(k = 1\\) satisfy all three equations.\n\\(\\therefore\\) Given general equation can be factorized as \\((x - 5y + 9)(x - y + 1) = 0\\).\n\\(\\therefore\\) Given equation represents a pair of intersecting lines.\nThe acute angle between them is given by\n\\(\\tan\\theta = \\left|\\dfrac{2\\sqrt{h^2 - ab}}{a + b}\\right| = \\left|\\dfrac{2\\sqrt{(-3)^2 - (1)(5)}}{1 + 5}\\right| = \\dfrac{2}{3}\\).\n\\(\\therefore \\theta = \\tan^{-1}\\left(\\dfrac{2}{3}\\right)\\).\nTheir point of intersection is given by\n\\(\\left(\\dfrac{hf - bg}{ab - h^2}, \\dfrac{gh - af}{ab - h^2}\\right) = \\left(\\dfrac{21 - 25}{5 - 9}, \\dfrac{-15 + 7}{5 - 9}\\right) = (1, 2)\\)."
+  },
+  {
+    "ref": "4.3 Ex.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(k\\) if the equation \\(2x^2 + 4xy - 2y^2 + 4x + 8y + k = 0\\) represents a pair of lines.",
+    "solution": "Comparing given equation with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\) we get\n\\(a = 2\\), \\(b = -2\\), \\(c = k\\), \\(f = 4\\), \\(g = 2\\), \\(h = 2\\).\nAs given equation represents a pair of lines, it must satisfy the necessary condition.\n\\(\\therefore abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\)\n\\(\\therefore (2)(-2)(k) + 2(4)(2)(2) - 2(4)^2 - (-2)(2)^2 - (k)(2)^2 = 0\\)\n\\(\\therefore -4k + 32 - 32 + 8 - 4k = 0\\)\n\\(\\therefore 8k = 8\\)\n\\(\\therefore k = 1\\)."
+  },
+  {
+    "ref": "4.3 Ex.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "Find \\(p\\) and \\(q\\) if the equation \\(2x^2 + 4xy - py^2 + 4x + qy + 1 = 0\\) represents a pair of perpendicular lines.",
+    "solution": "Comparing given equation with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\) we get\n\\(a = 2\\), \\(b = -p\\), \\(c = 1\\), \\(f = \\dfrac{q}{2}\\), \\(g = 2\\), \\(h = 2\\).\nAs lines are perpendicular to each other, \\(a + b = 0\\)\n\\(\\therefore 2 + (-p) = 0\\)\n\\(\\therefore p = 2\\).\nAs given equation represents a pair of lines, it must satisfy the necessary condition.\n\\(\\therefore abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\)\n\\(\\therefore (2)(-p)(1) + 2\\left(\\dfrac{q}{2}\\right)(2)(2) - 2\\left(\\dfrac{q}{2}\\right)^2 - (-p)(2)^2 - 1(2)^2 = 0\\)\n\\(\\therefore -2p + 4q - \\dfrac{q^2}{2} + 4p - 4 = 0\\)\n\\(\\therefore 2p + 4q - \\dfrac{q^2}{2} - 4 = 0\\) ...(1)\nSubstituting \\(p = 2\\) in (1), we get\n\\(\\therefore 2(2) + 4q - \\dfrac{q^2}{2} - 4 = 0\\)\n\\(\\therefore 4q - \\dfrac{q^2}{2} = 0\\) \\(\\therefore 8q - q^2 = 0\\)\n\\(\\therefore q(8 - q) = 0\\)\n\\(\\therefore q = 0\\) or \\(q = 8\\)."
+  },
+  {
+    "ref": "4.3 Ex.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "\\(\\triangle OAB\\) is formed by lines \\(x^2 - 4xy + y^2 = 0\\) and the line \\(x + y - 2 = 0\\). Find the equation of the median of the triangle drawn from O.",
+    "solution": "Let the co-ordinates of A and B be \\((x_1, y_1)\\) and \\((x_2, y_2)\\) respectively.\nThe midpoint of segment AB is \\(P\\left(\\dfrac{x_1 + x_2}{2}, \\dfrac{y_1 + y_2}{2}\\right)\\).\nThe co-ordinates of A and B can be obtained by solving equations \\(x + y - 2 = 0\\) and \\(x^2 - 4xy + y^2 = 0\\) simultaneously.\nPut \\(y = 2 - x\\) in \\(x^2 - 4xy + y^2 = 0\\).\n\\(x^2 - 4x(2 - x) + (2 - x)^2 = 0\\)\n\\(\\therefore 6x^2 - 12x + 4 = 0\\)\n\\(\\therefore 3x^2 - 6x + 2 = 0\\)\n\\(x_1\\) and \\(x_2\\) are roots of this equation.\n\\(x_1 + x_2 = -\\dfrac{-6}{3} = 2\\)\n\\(\\therefore \\dfrac{x_1 + x_2}{2} = 1\\)\nThe x co-ordinate of P is 1.\nAs P lies on the line \\(x + y - 2 = 0\\)\n\\(\\therefore 1 + y - 2 = 0\\) \\(\\therefore y = 1\\)\n\\(\\therefore\\) Co-ordinates of P are \\((1, 1)\\).\nThe equation of the median OP is \\(\\dfrac{y - 0}{1 - 0} = \\dfrac{x - 0}{1 - 0}\\)\n\\(\\therefore y = x\\) \\(\\therefore x - y = 0\\)."
+  },
+  {
+    "ref": "4.3 Q1 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the joint equation of the pair of lines:",
+    "setLabel": "Q1",
+    "stem": "Through the point \\((2, -1)\\) and parallel to lines represented by \\(2x^2 + 3xy - 9y^2 = 0\\)."
+  },
+  {
+    "ref": "4.3 Q1 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the joint equation of the pair of lines:",
+    "setLabel": "Q1",
+    "stem": "Through the point \\((2, -3)\\) and parallel to lines represented by \\(x^2 + xy - y^2 = 0\\)."
+  },
+  {
+    "ref": "4.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Show that equation \\(x^2 + 2xy + 2y^2 + 2x + 2y + 1 = 0\\) does not represent a pair of lines."
+  },
+  {
+    "ref": "4.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Show that equation \\(2x^2 - xy - 3y^2 - 6x + 19y - 20 = 0\\) represents a pair of lines."
+  },
+  {
+    "ref": "4.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "Show the equation \\(2x^2 + xy - y^2 + x + 4y - 3 = 0\\) represents a pair of lines. Also find the acute angle between them."
+  },
+  {
+    "ref": "4.3 Q5 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the separate equation of the lines represented by the following equations:",
+    "setLabel": "Q5",
+    "stem": "\\((x - 2)^2 - 3(x - 2)(y + 1) + 2(y + 1)^2 = 0\\)"
+  },
+  {
+    "ref": "4.3 Q5 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the separate equation of the lines represented by the following equations:",
+    "setLabel": "Q5",
+    "stem": "\\(10(x + 1)^2 + (x + 1)(y - 2) - 3(y - 2)^2 = 0\\)"
+  },
+  {
+    "ref": "4.3 Q6 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(k\\) if the following equations represent a pair of lines:",
+    "setLabel": "Q6",
+    "stem": "\\(3x^2 + 10xy + 3y^2 + 16y + k = 0\\)"
+  },
+  {
+    "ref": "4.3 Q6 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(k\\) if the following equations represent a pair of lines:",
+    "setLabel": "Q6",
+    "stem": "\\(kxy + 10x + 6y + 4 = 0\\)"
+  },
+  {
+    "ref": "4.3 Q6 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(k\\) if the following equations represent a pair of lines:",
+    "setLabel": "Q6",
+    "stem": "\\(x^2 + 3xy + 2y^2 + x - y + k = 0\\)"
+  },
+  {
+    "ref": "4.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "Find \\(p\\) and \\(q\\) if the equation \\(px^2 - 8xy + 3y^2 + 14x + 2y + q = 0\\) represents a pair of perpendicular lines."
+  },
+  {
+    "ref": "4.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "Find \\(p\\) and \\(q\\) if the equation \\(2x^2 + 8xy + py^2 + qx + 2y - 15 = 0\\) represents a pair of parallel lines."
+  },
+  {
+    "ref": "4.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "Equations of pairs of opposite sides of a parallelogram are \\(x^2 - 7x + 6 = 0\\) and \\(y^2 - 14y + 40 = 0\\). Find the joint equation of its diagonals."
+  },
+  {
+    "ref": "4.3 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "HARD",
+    "stem": "\\(\\triangle OAB\\) is formed by lines \\(x^2 - 4xy + y^2 = 0\\) and the line \\(2x + 3y - 1 = 0\\). Find the equation of the median of the triangle drawn from O."
+  },
+  {
+    "ref": "4.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Second Degree Equation of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Find the co-ordinates of the points of intersection of the lines represented by \\(x^2 - y^2 - 2x + 1 = 0\\)."
+  }
+]
