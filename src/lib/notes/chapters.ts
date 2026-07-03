@@ -398,6 +398,11 @@ import {
   OCEANOGRAPHY_NOTES,
   OCEANOGRAPHY_SLUGS,
 } from "@/app/notes/nda-geography/oceanography/_data";
+import {
+  SOME_BASIC_CONCEPTS_CHAPTER,
+  SOME_BASIC_CONCEPTS_NOTES,
+  SOME_BASIC_CONCEPTS_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/some-basic-concepts/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -878,6 +883,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_BINOMIAL_DISTRIBUTION_CHAPTER,
     notes: MHTCET_BINOMIAL_DISTRIBUTION_NOTES,
     slugs: MHTCET_BINOMIAL_DISTRIBUTION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "some-basic-concepts",
+    chipLabel: "Some Basic Concepts notes",
+    chapter: SOME_BASIC_CONCEPTS_CHAPTER,
+    notes: SOME_BASIC_CONCEPTS_NOTES,
+    slugs: SOME_BASIC_CONCEPTS_SLUGS,
   },
   {
     examName: "NDA",
