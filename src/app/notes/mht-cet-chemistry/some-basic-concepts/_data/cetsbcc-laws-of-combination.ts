@@ -102,6 +102,69 @@ export const LAWS_COMBINATION_NOTE: SubtopicNote = {
       ],
     },
 
+    // Dalton's atomic theory — the postulates that explain the laws
+    {
+      kind: "reference" as const,
+      slug: "cetsbcc-laws-dalton-atomic-theory",
+      name: "Dalton's atomic theory",
+      intuition:
+        "John Dalton (1808) explained WHY the laws of chemical combination hold: matter is built from atoms that keep their identity through a reaction. Learn the postulates and which law each accounts for — the paper tests them as straight recall and as 'which postulate is no longer valid'.",
+      definition:
+        "Dalton's atomic theory rests on a few postulates:\n" +
+        "- **Matter is made of atoms** — tiny, indivisible particles.\n" +
+        "- **Atoms of one element are identical** in mass and properties; atoms of different elements differ.\n" +
+        "- **Atoms combine in small whole-number ratios** to form compounds.\n" +
+        "- **Atoms are neither created nor destroyed** in a chemical reaction — they only rearrange.\n" +
+        "Together these explain the laws of conservation of mass, definite proportions and multiple proportions.",
+      table: {
+        columns: ["Postulate", "What it states", "Explains / modern status"],
+        rows: [
+          {
+            cells: [
+              "Atoms exist",
+              "Matter is made of extremely small, indivisible particles called atoms.",
+              "Modern caveat: the atom IS divisible into protons, neutrons and electrons.",
+            ],
+          },
+          {
+            cells: [
+              "Atoms of an element are identical",
+              "All atoms of a given element have the same mass and chemical properties.",
+              "Modern caveat: isotopes are atoms of one element with different masses.",
+            ],
+          },
+          {
+            cells: [
+              "Small whole-number combining ratio",
+              "Atoms of different elements combine in simple whole-number ratios to form compounds.",
+              "Explains the laws of definite and multiple proportions.",
+            ],
+          },
+          {
+            cells: [
+              "Atoms are conserved",
+              "Atoms are neither created nor destroyed in a chemical reaction; they are only rearranged.",
+              "Explains the law of conservation of mass.",
+            ],
+          },
+        ],
+        caption: "The postulates that underlie the laws of chemical combination; two are now known to have exceptions.",
+      },
+      practiceSet: [
+        { prompt: "According to Dalton, are atoms created or destroyed in a chemical reaction?", answer: "No — they are only rearranged (this explains the law of conservation of mass)." },
+        { prompt: "Which modern discovery contradicts Dalton's postulate that all atoms of an element are identical in mass?", answer: "Isotopes (same element, different mass)." },
+        { prompt: "Which modern discovery contradicts Dalton's postulate that the atom is indivisible?", answer: "Sub-atomic particles — the electron, proton and neutron." },
+        { prompt: "Which law does Dalton's whole-number combining-ratio postulate explain?", answer: "The laws of definite and multiple proportions." },
+      ],
+      traps: [
+        {
+          title: "Two postulates have modern exceptions",
+          body:
+            "Dalton claimed atoms are **indivisible** and that all atoms of an element are **identical in mass** — both are now known to be wrong (atoms split into sub-atomic particles; isotopes differ in mass). The postulates about small whole-number combining ratios and conservation of atoms in a reaction still hold.",
+        },
+      ],
+    },
+
     // percentage composition by mass
     {
       kind: "formula" as const,
