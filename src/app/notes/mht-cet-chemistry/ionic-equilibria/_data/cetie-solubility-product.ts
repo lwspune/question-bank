@@ -350,6 +350,65 @@ export const KSP_NOTE: SubtopicNote = {
         },
       ],
     },
+
+    // Common ion effect (State Board 3.10) — suppression of solubility / ionization by a shared ion
+    {
+      kind: "formula" as const,
+      slug: "cetie-ksp-common-ion-effect",
+      name: "Common ion effect on solubility",
+      intuition:
+        "Adding an ion that is already part of a sparingly soluble salt pushes its dissolution equilibrium backward (Le Chatelier), so the salt becomes LESS soluble. The same suppression of ionization by a common ion is what makes a buffer work. Quantitatively, the common ion fixes one ion's concentration, so the solubility drops to Ksp divided by that concentration.",
+      definition:
+        "The **common ion effect** is the suppression of the dissociation (or dissolution) of a sparingly soluble salt or weak electrolyte on adding a strong electrolyte that shares a common ion:\n" +
+        "- For a salt \\(\\text{AB} \\rightleftharpoons \\text{A}^+ + \\text{B}^-\\), adding extra \\(\\text{B}^-\\) shifts the equilibrium to the left, lowering the solubility of AB.\n" +
+        "- If the common ion \\(\\text{B}^-\\) is present at concentration \\(C\\) (from a strong electrolyte), then \\([\\text{A}^+] = S\\) and \\([\\text{B}^-] \\approx C\\), so \\(K_{sp} = S \\times C\\) and the new solubility is \\(S = K_{sp}/C\\).\n" +
+        "- The same effect suppresses the ionization of a weak acid by its salt — the basis of an acidic buffer.",
+      formula: {
+        label: "Solubility in presence of a common ion",
+        latex: "S = \\dfrac{K_{sp}}{C}",
+        symbols: [
+          { symbol: "S", meaning: "molar solubility of the salt in the common-ion solution" },
+          { symbol: "K_{sp}", meaning: "solubility product of the salt" },
+          { symbol: "C", meaning: "concentration of the common ion (from the added strong electrolyte)" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "The solubility product of AgCl is \\(1.8 \\times 10^{-10}\\). Find its solubility in 0.1 M NaCl solution.",
+        steps: [
+          "NaCl supplies the common ion \\(\\text{Cl}^-\\) at \\(C = 0.1\\ \\text{M}\\), far more than AgCl alone would give.",
+          "\\([\\text{Ag}^+] = S\\) and \\([\\text{Cl}^-] \\approx 0.1\\), so \\(K_{sp} = S \\times 0.1\\).",
+          "\\(S = K_{sp}/0.1 = (1.8 \\times 10^{-10})/0.1 = 1.8 \\times 10^{-9}\\ \\text{M}\\).",
+        ],
+        answer: "\\(S = 1.8 \\times 10^{-9}\\ \\text{M}\\) — far less than in pure water (\\(\\sqrt{K_{sp}} = 1.34 \\times 10^{-5}\\ \\text{M}\\)).",
+      },
+      selfCheckExample: {
+        prompt:
+          "The solubility product of AgBr is \\(5 \\times 10^{-13}\\). Find its solubility in 0.05 M KBr solution.",
+        steps: [
+          "KBr supplies the common ion \\(\\text{Br}^-\\) at \\(C = 0.05\\ \\text{M}\\).",
+          "\\(S = K_{sp}/C = (5 \\times 10^{-13})/(0.05)\\).",
+        ],
+        answer: "\\(S = 1 \\times 10^{-11}\\ \\text{M}\\).",
+      },
+      practiceSet: [
+        { prompt: "Does adding NaCl increase or decrease the solubility of AgCl?", answer: "Decrease — the common \\(\\text{Cl}^-\\) ion shifts the equilibrium back." },
+        { prompt: "Solubility of a 1:1 salt (\\(K_{sp} = 10^{-12}\\)) in a 0.01 M common-ion solution?", answer: "\\(1 \\times 10^{-10}\\ \\text{M}\\)", method: "\\(S = K_{sp}/C\\)" },
+        { prompt: "What does sodium acetate do to the ionization of acetic acid?", answer: "Suppresses it (common ion effect) — the basis of an acidic buffer." },
+      ],
+      traps: [
+        {
+          title: "A common ion LOWERS solubility",
+          body:
+            "The common ion effect always DECREASES the solubility of a sparingly soluble salt (and suppresses a weak acid's ionization). Expecting more dissolving is the classic error — Le Chatelier pushes the equilibrium the other way.",
+        },
+        {
+          title: "Use the common-ion concentration, not the square root",
+          body:
+            "In pure water \\(S = \\sqrt{K_{sp}}\\) for a 1:1 salt, but with a common ion at concentration \\(C\\) you use \\(S = K_{sp}/C\\). The two answers differ by orders of magnitude — check whether a common ion is present before choosing the formula.",
+        },
+      ],
+    },
   ],
   related: [
     {
