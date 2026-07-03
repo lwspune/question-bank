@@ -24,7 +24,11 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-07-03
 
-### Push the `state-board-ingestion` branch (gate green after the main merge; blocked only by disk)
+### ~~Push the `state-board-ingestion` branch~~ — **DONE 2026-07-03**
+
+Merged `state-board-ingestion` → `main` (`--no-ff` `76de455`, docs `460f85c`, build-verified) and pushed; Vercel deployed. The now-merged branch was deleted (remote copy lingered on a network-timeout, harmless).
+
+<details><summary>original</summary>
 
 The State Board work (schema `question_format` migration 0041 + subjective support + `scripts/stateboard/` + Ch.1 Mathematical Logic ingest) is committed on `state-board-ingestion` (`bec801c`, `27d4fbc`) with `main` merged in (`1a5705b`). The full gate is green (notes-lint 0 errors after the merge; the one test failure was a confirmed `browse-query` shared-DB flake — passes isolated). It is **not pushed**.
 
@@ -32,9 +36,17 @@ The State Board work (schema `question_format` migration 0041 + subjective suppo
 
 **How to apply:** free space on **C: (chronically 100% full — `next build` ENOSPC'd this session; the build only passed after deleting `.next` + rendered PNGs)**, then run `npm run prepush` via bash to confirm green, then `git push -u origin state-board-ingestion` (or merge to `main` per [[git-merge-to-main-flow]]). The `scripts/stateboard/out/` PNGs are gitignored and regenerable via `render.ts`.
 
-### Finish State Board Ch.1 — figures, MCQ review, subjective model answers
+</details>
+
+### ~~Finish State Board Ch.1 — figures, MCQ review, subjective model answers~~ — **DONE 2026-07-03**
+
+All three shipped. MCQ: 7 keys re-verified (all correct) + solutions added. Subjective: 169 model solutions authored (6-agent fan-out) + applied via `apply-solutions.ts` → all 230 subjective PUBLIC. Figures: 29 switching circuits attached, then **re-cropped via snapCrop** (`scripts/stateboard/snap-crop.ts`) after 7 broken-image reports — the eyeballed bboxes clipped circuits + leaked an answer; snapCrop ink-bounding + a central montage/full-res verify fixed all + caught 3 more the reports missed; 7 reports resolved, orphans swept. **Ch.1 = 266 questions PUBLIC, all answered, figures clean.** See [[state-board-ingestion]] + [[figure-snapcrop-verify]].
+
+<details><summary>original</summary>
 
 Ch.1 Mathematical Logic shipped **61 solved examples PUBLIC**; the rest is staged PRIVATE. Three follow-ons remain before the chapter is complete: (1) **figure-attach** the ~35 switching-circuit figure-only questions deferred from §1.5 + Miscellaneous Q.12–17 (agents transcribed the symbolic ones, skipped pure-diagram ones); (2) **review the 7 derived-answer MCQs** then `flip-public.ts logic-12 --with-mcq --apply`; (3) **author/source model answers** for the 169 subjective exercises, then flip PUBLIC. See [[state-board-ingestion]] + [[textbook-chapter-ingestion]].
+
+</details>
 
 **Why:** the PUBLIC solved examples are the ship-ready subset, but a browsing student sees only ~26% of the chapter's questions until the exercises get answers. The MCQ answers are already derived (cheap review); the subjective answers are the real long pole.
 
