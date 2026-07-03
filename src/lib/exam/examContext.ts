@@ -11,7 +11,14 @@
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
 
-export type ExamSlug = "nda" | "mht-cet" | "jee-mains" | "cds" | "foundation-course" | "neet";
+export type ExamSlug =
+  | "nda"
+  | "mht-cet"
+  | "jee-mains"
+  | "cds"
+  | "foundation-course"
+  | "neet"
+  | "mh-hsc-12";
 
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
@@ -75,6 +82,14 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "NEET", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
+  },
+  {
+    slug: "mh-hsc-12",
+    displayName: "MH HSC 12",
+    examName: "Maharashtra HSC Class 12", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
+    practiceOnly: true, // textbook exercises/solved-examples corpus (board PYQs come later) → /browse defaults to Practice
   },
 ] as const;
 

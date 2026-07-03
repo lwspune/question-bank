@@ -178,6 +178,59 @@ describe("buildAnswerKey", () => {
   });
 });
 
+const SUBJ: QuestionRow = {
+  id: "sq1",
+  text: "Write the negation of \\(p \\wedge q\\).",
+  context: null,
+  difficulty: "MODERATE",
+  solution: "The negation is \\(\\sim p \\vee \\sim q\\).",
+  imageUrl: null,
+  setId: null,
+  questionFormat: "subjective",
+  exam: { id: "e", name: "Maharashtra HSC Class 12" },
+  subject: { id: "s", name: "Mathematics" },
+  chapter: { id: "c", name: "Mathematical Logic" },
+  subtopic: null,
+  questionNumber: null,
+  pyqYear: null,
+  pyqMonth: null,
+  pyqNote: null,
+  options: [],
+};
+
+describe("subjective questions (question_format = 'subjective')", () => {
+  it("paper: renders the stem with no option labels", async () => {
+    const buf = await buildQuestionPaper({ title: "T", questions: [SUBJ] });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("m:oMath"); // stem math rendered
+    for (const label of ["(a)", "(b)", "(c)", "(d)"]) {
+      expect(xml).not.toContain(label);
+    }
+  });
+
+  it("answer key: prints the model answer, never a '(?)' letter", async () => {
+    const buf = await buildAnswerKey({
+      title: "T",
+      questions: [SUBJ],
+      includeSolutions: false,
+    });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("Model answer:");
+    expect(xml).not.toContain("(?)");
+  });
+
+  it("answer key: shows a pending note when the model answer is absent", async () => {
+    const buf = await buildAnswerKey({
+      title: "T",
+      questions: [{ ...SUBJ, solution: null }],
+      includeSolutions: false,
+    });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("model answer pending");
+    expect(xml).not.toContain("(?)");
+  });
+});
+
 describe("groupBySubtopic — section headings", () => {
   const withSub = (
     id: string,
