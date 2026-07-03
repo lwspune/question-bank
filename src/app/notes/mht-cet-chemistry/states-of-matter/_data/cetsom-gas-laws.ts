@@ -12,7 +12,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
     // Boyle's law — P1V1 = P2V2
     {
       kind: "formula" as const,
-      slug: "cetsbcc-gas-boyle",
+      slug: "cetsom-gas-boyle",
       name: "Boyle's law — pressure and volume",
       intuition:
         "Squeeze a gas into half the space and it pushes back with twice the pressure. At constant temperature, pressure and volume trade off inversely — one goes up exactly as much as the other goes down. " +
@@ -73,7 +73,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
     // Charles' law — V/T
     {
       kind: "formula" as const,
-      slug: "cetsbcc-gas-charles",
+      slug: "cetsom-gas-charles",
       name: "Charles' law — volume and temperature",
       intuition:
         "Heat a gas at constant pressure and it expands; cool it and it shrinks. Volume rises in lock-step with the ABSOLUTE (kelvin) temperature — double the kelvin temperature and you double the volume. " +
@@ -134,7 +134,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
     // Gay-Lussac's / pressure law
     {
       kind: "formula" as const,
-      slug: "cetsbcc-gas-gay-lussac",
+      slug: "cetsom-gas-gay-lussac",
       name: "Gay-Lussac's law — pressure and temperature",
       intuition:
         "Seal a gas in a rigid container (fixed volume) and heat it: the molecules hit the walls harder and more often, so the pressure climbs. At constant volume, pressure rises directly with the absolute temperature. " +
@@ -194,7 +194,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
     // Combined gas law
     {
       kind: "formula" as const,
-      slug: "cetsbcc-gas-combined",
+      slug: "cetsom-gas-combined",
       name: "Combined gas law",
       intuition:
         "When pressure, volume AND temperature all change at once, no single simple law works. Merge Boyle and Charles into one relation: the quantity PV/T stays constant for a fixed mass of gas. " +
@@ -248,7 +248,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
     // Ideal gas equation PV = nRT
     {
       kind: "formula" as const,
-      slug: "cetsbcc-gas-ideal-equation",
+      slug: "cetsom-gas-ideal-equation",
       name: "Ideal gas equation, PV = nRT",
       intuition:
         "The ideal gas equation is the master formula: it bundles all the simple laws and adds the amount of gas (moles) explicitly. Given any three of P, V, n, T you can find the fourth — as long as R's units match the pressure's units. " +
@@ -315,7 +315,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
     // Same mass -> P proportional to 1/M
     {
       kind: "formula" as const,
-      slug: "cetsbcc-gas-pressure-molar-mass",
+      slug: "cetsom-gas-pressure-molar-mass",
       name: "Equal masses in equal volumes — lightest gas, highest pressure",
       intuition:
         "Take the same mass of several gases in identical containers at the same temperature. The lighter the gas, the more molecules that mass contains, so more molecules hammer the walls — higher pressure. " +

@@ -403,6 +403,26 @@ import {
   SOME_BASIC_CONCEPTS_NOTES,
   SOME_BASIC_CONCEPTS_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/some-basic-concepts/_data";
+import {
+  STRUCTURE_OF_ATOM_CHAPTER,
+  STRUCTURE_OF_ATOM_NOTES,
+  STRUCTURE_OF_ATOM_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/structure-of-atom/_data";
+import {
+  CHEMICAL_BONDING_CHAPTER as MHTCET_CHEMICAL_BONDING_CHAPTER,
+  CHEMICAL_BONDING_NOTES as MHTCET_CHEMICAL_BONDING_NOTES,
+  CHEMICAL_BONDING_SLUGS as MHTCET_CHEMICAL_BONDING_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/chemical-bonding/_data";
+import {
+  IONIC_EQUILIBRIA_CHAPTER,
+  IONIC_EQUILIBRIA_NOTES,
+  IONIC_EQUILIBRIA_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/ionic-equilibria/_data";
+import {
+  STATES_OF_MATTER_CHAPTER,
+  STATES_OF_MATTER_NOTES,
+  STATES_OF_MATTER_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/states-of-matter/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -894,6 +914,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SOME_BASIC_CONCEPTS_CHAPTER,
     notes: SOME_BASIC_CONCEPTS_NOTES,
     slugs: SOME_BASIC_CONCEPTS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "states-of-matter",
+    chipLabel: "States of Matter notes",
+    chapter: STATES_OF_MATTER_CHAPTER,
+    notes: STATES_OF_MATTER_NOTES,
+    slugs: STATES_OF_MATTER_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "structure-of-atom",
+    chipLabel: "Structure of Atom notes",
+    chapter: STRUCTURE_OF_ATOM_CHAPTER,
+    notes: STRUCTURE_OF_ATOM_NOTES,
+    slugs: STRUCTURE_OF_ATOM_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    chapter: MHTCET_CHEMICAL_BONDING_CHAPTER,
+    notes: MHTCET_CHEMICAL_BONDING_NOTES,
+    slugs: MHTCET_CHEMICAL_BONDING_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "ionic-equilibria",
+    chipLabel: "Ionic Equilibria notes",
+    chapter: IONIC_EQUILIBRIA_CHAPTER,
+    notes: IONIC_EQUILIBRIA_NOTES,
+    slugs: IONIC_EQUILIBRIA_SLUGS,
   },
   {
     examName: "NDA",
