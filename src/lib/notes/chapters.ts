@@ -413,6 +413,11 @@ import {
   CHEMICAL_BONDING_NOTES as MHTCET_CHEMICAL_BONDING_NOTES,
   CHEMICAL_BONDING_SLUGS as MHTCET_CHEMICAL_BONDING_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/chemical-bonding/_data";
+import {
+  IONIC_EQUILIBRIA_CHAPTER,
+  IONIC_EQUILIBRIA_NOTES,
+  IONIC_EQUILIBRIA_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/ionic-equilibria/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -926,6 +931,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_CHEMICAL_BONDING_CHAPTER,
     notes: MHTCET_CHEMICAL_BONDING_NOTES,
     slugs: MHTCET_CHEMICAL_BONDING_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "ionic-equilibria",
+    chipLabel: "Ionic Equilibria notes",
+    chapter: IONIC_EQUILIBRIA_CHAPTER,
+    notes: IONIC_EQUILIBRIA_NOTES,
+    slugs: IONIC_EQUILIBRIA_SLUGS,
   },
   {
     examName: "NDA",
