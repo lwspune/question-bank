@@ -1,0 +1,319 @@
+[
+  {
+    "ref": "1.2 Solved Ex.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "MODERATE",
+    "stem": "Construct the truth table for each of the following statement patterns.\ni) \\(p \\to (q \\to p)\\)\nii) \\((\\sim p \\vee q) \\leftrightarrow \\sim (p \\wedge q)\\)\niii) \\(\\sim (\\sim p \\wedge \\sim q) \\vee q\\)\niv) \\([(p \\wedge q) \\vee r] \\wedge [\\sim r \\vee (p \\wedge q)]\\)\nv) \\([(\\sim p \\vee q) \\wedge (q \\to r)] \\to (p \\to r)\\)",
+    "solution": "i) \\(p \\to (q \\to p)\\)\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(p \\to (q \\to p)\\) |\n|---|---|---|---|\n| T | T | T | T |\n| T | F | T | T |\n| F | T | F | T |\n| F | F | T | T |\n\nii) \\((\\sim p \\vee q) \\leftrightarrow \\sim (p \\wedge q)\\)\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim p \\vee q\\) | \\(p \\wedge q\\) | \\(\\sim (p \\wedge q)\\) | \\((\\sim p \\vee q) \\leftrightarrow \\sim (p \\wedge q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | T | T | F | F |\n| T | F | F | F | F | T | F |\n| F | T | T | T | F | T | T |\n| F | F | T | T | F | T | T |\n\niii) \\(\\sim (\\sim p \\wedge \\sim q) \\vee q\\)\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\wedge \\sim q\\) | \\(\\sim (\\sim p \\wedge \\sim q)\\) | \\(\\sim (\\sim p \\wedge \\sim q) \\vee q\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | T |\n| T | F | F | T | F | T | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | F | F |\n\niv) \\([(p \\wedge q) \\vee r] \\wedge [\\sim r \\vee (p \\wedge q)]\\)\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim r\\) | \\(p \\wedge q\\) | \\((p \\wedge q) \\vee r\\) | \\(\\sim r \\vee (p \\wedge q)\\) | \\([(p \\wedge q) \\vee r] \\wedge [\\sim r \\vee (p \\wedge q)]\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | F | T | T | T | T |\n| T | T | F | T | T | T | T | T |\n| T | F | T | F | F | T | F | F |\n| T | F | F | T | F | F | T | F |\n| F | T | T | F | F | T | F | F |\n| F | T | F | T | F | F | T | F |\n| F | F | T | F | F | T | F | F |\n| F | F | F | T | F | F | T | F |\n\nv) \\([(\\sim p \\vee q) \\wedge (q \\to r)] \\to (p \\to r)\\)\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim p\\) | \\(\\sim p \\vee q\\) | \\(q \\to r\\) | \\(p \\to r\\) | \\((\\sim p \\vee q) \\wedge (q \\to r)\\) | \\([(\\sim p \\vee q) \\wedge (q \\to r)] \\to (p \\to r)\\) |\n|---|---|---|---|---|---|---|---|---|\n| T | T | T | F | T | T | T | T | T |\n| T | T | F | F | T | F | F | F | T |\n| T | F | T | F | F | T | T | F | T |\n| T | F | F | F | F | T | F | F | T |\n| F | T | T | T | T | T | T | T | T |\n| F | T | F | T | T | F | T | F | T |\n| F | F | T | T | T | T | T | T | T |\n| F | F | F | T | T | T | T | T | T |"
+  },
+  {
+    "ref": "1.2 Solved Ex.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "stem": "Using truth tables, prove the following logical equivalences.\ni) \\((p \\wedge q) \\equiv \\sim (p \\to \\sim q)\\)\nii) \\((p \\leftrightarrow q) \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)\niii) \\((p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\)\niv) \\(p \\to (q \\vee r) \\equiv (p \\to q) \\vee (p \\to r)\\)",
+    "solution": "i) \\((p \\wedge q) \\equiv \\sim (p \\to \\sim q)\\)\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\wedge q\\) | \\(p \\to \\sim q\\) | \\(\\sim (p \\to \\sim q)\\) |\n|---|---|---|---|---|---|\n| T | T | F | T | F | T |\n| T | F | T | F | T | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n\nColumns (IV) and (VI) are identical \\(\\therefore (p \\wedge q) \\equiv \\sim (p \\to \\sim q)\\)\n\nii) \\((p \\leftrightarrow q) \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\leftrightarrow q\\) | \\(p \\wedge q\\) | \\(\\sim p \\wedge \\sim q\\) | \\((p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F | T |\n| T | F | F | T | F | F | F | F |\n| F | T | T | F | F | F | F | F |\n| F | F | T | T | T | F | T | T |\n\nColumns V and VIII are identical \\(\\therefore (p \\leftrightarrow q) \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)\n\niii) \\((p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\)\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\((p \\wedge q) \\to r\\) | \\(q \\to r\\) | \\(p \\to (q \\to r)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F |\n| T | F | T | F | T | T | T |\n| T | F | F | F | T | T | T |\n| F | T | T | F | T | T | T |\n| F | T | F | F | T | F | T |\n| F | F | T | F | T | T | T |\n| F | F | F | F | T | T | T |\n\nColumn (V) and (VII) are identical \\(\\therefore (p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\)\n\niv) \\(p \\to (q \\vee r) \\equiv (p \\to q) \\vee (p \\to r)\\)\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\vee r\\) | \\(p \\to (q \\vee r)\\) | \\(p \\to q\\) | \\(p \\to r\\) | \\((p \\to q) \\vee (p \\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | T | T | T | T |\n| F | F | T | T | T | T | T | T |\n| F | F | F | F | T | T | T | T |\n\nColumns V and VIII are identical \\(\\therefore p \\to (q \\vee r) \\equiv (p \\to q) \\vee (p \\to r)\\)"
+  },
+  {
+    "ref": "1.2 Solved Ex.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "MODERATE",
+    "stem": "Using truth tables, examine whether each of the following statement pattern is a tautology or a contradiction or contingency.\ni) \\((p \\wedge q) \\wedge (\\sim p \\vee \\sim q)\\)\nii) \\([p \\wedge (p \\to \\sim q)] \\to q\\)\niii) \\((p \\to q) \\wedge [(q \\to r) \\to (p \\to r)]\\)\niv) \\([(p \\vee q) \\vee r] \\leftrightarrow [p \\vee (q \\vee r)]\\)",
+    "solution": "i) \\((p \\wedge q) \\wedge (\\sim p \\vee \\sim q)\\)\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\wedge q\\) | \\(\\sim p \\vee \\sim q\\) | \\((p \\wedge q) \\wedge (\\sim p \\vee \\sim q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | T | F | F |\n| T | F | F | T | F | T | F |\n| F | T | T | F | F | T | F |\n| F | F | T | T | F | T | F |\n\nAll the truth values in the last column are F. Hence it is contradiction.\n\nii) \\([p \\wedge (p \\to \\sim q)] \\to q\\)\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\to \\sim q\\) | \\(p \\wedge (p \\to \\sim q)\\) | \\(p \\wedge (p \\to \\sim q) \\to q\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | F | T |\n| T | F | T | T | T | F |\n| F | T | F | T | F | T |\n| F | F | T | T | F | T |\n\nTruth values in the last column are not identical. Hence it is contingency.\n\niii) \\((p \\to q) \\wedge [(q \\to r) \\to (p \\to r)]\\)\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\to q\\) | \\(q \\to r\\) | \\(p \\to r\\) | \\((q \\to r) \\to (p \\to r)\\) | \\((p \\to q) \\wedge (q \\to r) \\to (p \\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | F | F | T | T |\n| T | F | T | F | T | T | T | F |\n| T | F | F | F | T | F | F | F |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | T | T | T |\n| F | F | T | T | T | T | T | T |\n| F | F | F | T | T | T | T | T |\n\nTruth values in the last column are not same, hence it is contingency.\n\niv) \\([(p \\vee q) \\vee r] \\leftrightarrow [p \\vee (q \\vee r)]\\)\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\vee q\\) | \\((p \\vee q) \\vee r\\) | \\(q \\vee r\\) | \\(p \\vee (q \\vee r)\\) | \\([(p \\vee q) \\vee r] \\leftrightarrow [p \\vee (q \\vee r)]\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | T | T |\n| T | F | T | T | T | T | T | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | T | T | T | T |\n| F | F | T | F | T | T | T | T |\n| F | F | F | F | F | F | F | T |\n\nAll the truth values in the last column are T, hence it is tautology."
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\([(p \\to q) \\wedge q] \\to p\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\((p \\wedge q) \\leftrightarrow (q \\vee r)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\(p \\to [\\sim (q \\wedge r)]\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\(\\sim p \\wedge [(p \\vee \\sim q) \\wedge q]\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\((\\sim p \\to \\sim q) \\wedge (\\sim q \\to \\sim p)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\((q \\to p) \\vee (\\sim p \\leftrightarrow q)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "MODERATE",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\(p \\to [\\sim (q \\wedge r)]\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.1 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "context": "Construct the truth table for each of the following statement patterns.",
+    "setLabel": "1.2-ex-q1",
+    "stem": "\\((p \\vee \\sim q) \\to (r \\wedge p)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "EASY",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(p \\leftrightarrow q \\equiv \\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(p \\to (q \\to p) \\equiv \\sim p \\to (p \\to q)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\((p \\vee q) \\to r \\equiv (p \\to r) \\wedge (q \\to r)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(p \\to (q \\wedge r) \\equiv (p \\to q) \\wedge (p \\to r)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r \\equiv r\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.2 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "difficulty": "MODERATE",
+    "context": "Using truth tables prove the following logical equivalences.",
+    "setLabel": "1.2-ex-q2",
+    "stem": "\\(\\sim (p \\leftrightarrow q) \\equiv (p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\((p \\wedge q) \\to (q \\vee p)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\((p \\to q) \\leftrightarrow (\\sim p \\vee q)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\([\\sim (\\sim p \\wedge \\sim q)] \\vee q\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\([(p \\to q) \\wedge q] \\to p\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\((p \\leftrightarrow q) \\wedge (p \\to \\sim q)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\(\\sim (\\sim q \\wedge p) \\wedge q\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\((\\sim p \\to q) \\wedge (p \\wedge r)\\)"
+  },
+  {
+    "ref": "1.2 Ex 1.2 Q.3 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "MODERATE",
+    "context": "Examine whether each of the following statement patterns is a tautology or a contradiction or a contingency.",
+    "setLabel": "1.2-ex-q3",
+    "stem": "\\([p \\to (\\sim q \\vee r)] \\leftrightarrow \\sim [p \\to (q \\to r)]\\)"
+  }
+]
