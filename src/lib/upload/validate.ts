@@ -32,6 +32,9 @@ export type ParsedRowPayload = {
   text: string;
   difficulty: Difficulty;
   solution?: string;
+  /** 'mcq' (default) has the 4 options below; 'subjective' has an empty options
+   *  array and its model answer in `solution`. Migration 0041. */
+  questionFormat?: "mcq" | "subjective";
   options: { label: OptionLabel; text: string; isCorrect: boolean }[];
   contentHash: string;
 };

@@ -15,6 +15,9 @@ describe("isPracticeOnlyExam", () => {
   it("is true for the Foundation Course (worksheet-only corpus)", () => {
     expect(isPracticeOnlyExam("Foundation Course")).toBe(true);
   });
+  it("is true for Maharashtra HSC Class 12 (textbook/practice-first corpus)", () => {
+    expect(isPracticeOnlyExam("Maharashtra HSC Class 12")).toBe(true);
+  });
   it("is false for PYQ exams and unknown/empty names", () => {
     expect(isPracticeOnlyExam("NDA")).toBe(false);
     expect(isPracticeOnlyExam("MHT-CET")).toBe(false);
@@ -31,6 +34,7 @@ describe("EXAM_REGISTRY", () => {
     expect(slugs).toContain("mht-cet");
     expect(slugs).toContain("jee-mains");
     expect(slugs).toContain("neet");
+    expect(slugs).toContain("mh-hsc-12");
   });
 
   it("each exam has a non-empty display name and exam name", () => {
@@ -144,6 +148,10 @@ describe("resolveNotesHref", () => {
 
   it("returns the /notes/neet hub for neet (shows coming-soon until notes ship)", () => {
     expect(resolveNotesHref("neet")).toBe("/notes/neet");
+  });
+
+  it("returns the /notes/mh-hsc-12 hub for mh-hsc-12 (coming-soon until notes ship)", () => {
+    expect(resolveNotesHref("mh-hsc-12")).toBe("/notes/mh-hsc-12");
   });
 
   it("returns /notes for unknown slug", () => {

@@ -231,6 +231,31 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
     if (input.groupBySubtopic && keyHeadings[i]) {
       children.push(subtopicHeading(keyHeadings[i]!));
     }
+    if (q.questionFormat === "subjective") {
+      // Subjective questions have no A/B/C/D letter — the "answer" is the model
+      // answer itself. Print it inline (or a pending note); never `(?)`.
+      children.push(
+        new Paragraph({
+          numbering: { reference: NUM_REF, level: 0 },
+          children: q.solution
+            ? [
+                new TextRun({ text: "Model answer: ", italics: true, bold: true }),
+                ...mathRuns(q.solution, builder),
+              ]
+            : [
+                new TextRun({
+                  text: "(subjective — model answer pending)",
+                  italics: true,
+                }),
+              ],
+        })
+      );
+      if (input.includeSolutions) {
+        children.push(blank());
+      }
+      continue;
+    }
+
     const correct = q.options.find((o) => o.isCorrect);
     children.push(
       new Paragraph({

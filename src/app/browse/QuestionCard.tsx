@@ -68,6 +68,9 @@ export default function QuestionCard({
   // unlock the answer. Admins audit content via the Edit page.
   const [picked, setPicked] = useState<OptionLabel | null>(null);
   const revealed = picked !== null;
+  // Subjective (free-response) questions have no options — the answer is the
+  // model answer in `solution`, shown via the reveal button below.
+  const isSubjective = question.questionFormat === "subjective";
   const cart = useCart();
   const inCart = cart.has(question.id);
 
@@ -229,6 +232,7 @@ export default function QuestionCard({
               </div>
             )}
 
+            {!isSubjective && (
             <ol className="space-y-2 pt-2">
               {question.options.map((opt) => {
                 const isPickedByUser = picked === opt.label;
@@ -291,9 +295,16 @@ export default function QuestionCard({
                 );
               })}
             </ol>
-            {!revealed && (
+            )}
+            {!isSubjective && !revealed && (
               <p className="pt-1 text-center text-xs text-muted-foreground">
                 Tap an option to check your answer.
+              </p>
+            )}
+
+            {isSubjective && !question.solution && (
+              <p className="pt-2 text-xs italic text-muted-foreground">
+                Model answer coming soon.
               </p>
             )}
 
@@ -304,7 +315,13 @@ export default function QuestionCard({
                   onClick={() => setShowSolution((v) => !v)}
                   className="font-sans text-xs font-medium text-primary hover:underline"
                 >
-                  {showSolution ? "Hide solution" : "Show solution"}
+                  {isSubjective
+                    ? showSolution
+                      ? "Hide model answer"
+                      : "Show model answer"
+                    : showSolution
+                    ? "Hide solution"
+                    : "Show solution"}
                 </button>
                 {showSolution && (
                   <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">

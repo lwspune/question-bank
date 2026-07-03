@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Filters, Difficulty } from "./filters";
+import type { Filters, Difficulty, QuestionFormat } from "./filters";
 
 export type OptionRow = {
   label: "A" | "B" | "C" | "D";
@@ -16,6 +16,9 @@ export type QuestionRow = {
   solution: string | null;
   imageUrl: string | null;
   setId: string | null;
+  /** MCQ (4 options, one correct) or subjective (no options, model answer in `solution`). Migration 0041.
+   *  Optional on the view-model — absent means MCQ (real DB rows always carry it; hand-built fixtures default to MCQ). */
+  questionFormat?: QuestionFormat;
   /** Original Q-number from the source PYQ paper's Excel "Q" column (nullable for the 150 pre-migration MHT-CET seed rows). */
   questionNumber: string | null;
   /** PYQ metadata — surfaced as the `[Q# · disambiguator · year]` provenance chip on the question card. */
@@ -85,7 +88,7 @@ export async function queryQuestions(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, set_id,
+      id, text, context, difficulty, solution, image_url, set_id, question_format,
       question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -180,6 +183,7 @@ export async function queryQuestions(
     solution: string | null;
     image_url: string | null;
     set_id: string | null;
+    question_format: QuestionFormat;
     question_number: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -202,6 +206,7 @@ export async function queryQuestions(
     solution: r.solution,
     imageUrl: r.image_url,
     setId: r.set_id,
+    questionFormat: r.question_format,
     questionNumber: r.question_number,
     pyqYear: r.pyq_year,
     pyqMonth: r.pyq_month,
@@ -241,7 +246,7 @@ export async function queryQuestionsByIds(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, set_id,
+      id, text, context, difficulty, solution, image_url, set_id, question_format,
       question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -269,6 +274,7 @@ export async function queryQuestionsByIds(
     solution: string | null;
     image_url: string | null;
     set_id: string | null;
+    question_format: QuestionFormat;
     question_number: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -293,6 +299,7 @@ export async function queryQuestionsByIds(
       solution: r.solution,
       imageUrl: r.image_url,
       setId: r.set_id,
+      questionFormat: r.question_format,
       questionNumber: r.question_number,
       pyqYear: r.pyq_year,
       pyqMonth: r.pyq_month,

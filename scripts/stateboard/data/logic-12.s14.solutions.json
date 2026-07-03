@@ -1,0 +1,77 @@
+[
+  {
+    "id": "f0c5281a-712b-42c0-a52d-5a3914e0c432",
+    "ref": "1.4 Ex 1.4 Q.1 (i)",
+    "solution": "The given statement is of the form \\(a \\to b\\) with \\(a \\equiv \\sim q\\) and \\(b \\equiv p\\).\\nThe negation of \\(a \\to b\\) is \\(a \\wedge \\sim b\\) (since \\(a \\to b \\equiv \\sim a \\vee b\\), so \\(\\sim(a \\to b) \\equiv a \\wedge \\sim b\\)).\\nTherefore\\n\\(\\sim(\\sim q \\to p) \\equiv \\sim q \\wedge \\sim p\\).\\nFinal answer: \\(\\sim q \\wedge \\sim p\\)."
+  },
+  {
+    "id": "7d07fcdc-c20b-4678-9473-27b244e1cfe3",
+    "ref": "1.4 Ex 1.4 Q.1 (ii)",
+    "solution": "By De Morgan's law, \\(\\sim(a \\wedge b) \\equiv \\sim a \\vee \\sim b\\).\\nHere \\(a \\equiv p,\\ b \\equiv \\sim q\\), so\\n\\(\\sim(p \\wedge \\sim q) \\equiv \\sim p \\vee \\sim(\\sim q) \\equiv \\sim p \\vee q\\) (using the law of double negation \\(\\sim(\\sim q) \\equiv q\\)).\\nFinal answer: \\(\\sim p \\vee q\\)."
+  },
+  {
+    "id": "4a7d2cbe-0f04-430a-9002-977cbb4aaac3",
+    "ref": "1.4 Ex 1.4 Q.1 (iii)",
+    "solution": "By De Morgan's law, \\(\\sim(a \\vee b) \\equiv \\sim a \\wedge \\sim b\\).\\nHere \\(a \\equiv p,\\ b \\equiv \\sim q\\), so\\n\\(\\sim(p \\vee \\sim q) \\equiv \\sim p \\wedge \\sim(\\sim q) \\equiv \\sim p \\wedge q\\) (by double negation).\\nFinal answer: \\(\\sim p \\wedge q\\)."
+  },
+  {
+    "id": "015e3706-5113-4e59-85c2-b1930681a784",
+    "ref": "1.4 Ex 1.4 Q.1 (iv)",
+    "solution": "By De Morgan's law, \\(\\sim(a \\wedge b) \\equiv \\sim a \\vee \\sim b\\).\\nWith \\(a \\equiv p \\vee \\sim q\\) and \\(b \\equiv r\\):\\n\\(\\sim[(p \\vee \\sim q) \\wedge r] \\equiv \\sim(p \\vee \\sim q) \\vee \\sim r\\).\\nApplying De Morgan and double negation to \\(\\sim(p \\vee \\sim q) \\equiv \\sim p \\wedge q\\):\\n\\(\\equiv (\\sim p \\wedge q) \\vee \\sim r\\).\\nFinal answer: \\((\\sim p \\wedge q) \\vee \\sim r\\)."
+  },
+  {
+    "id": "f8657499-e388-47cc-9b31-bce631b72aa8",
+    "ref": "1.4 Ex 1.4 Q.1 (v)",
+    "solution": "The statement has the form \\(a \\to b\\) with \\(a \\equiv p\\) and \\(b \\equiv p \\vee \\sim q\\).\\nNegation of \\(a \\to b\\) is \\(a \\wedge \\sim b\\):\\n\\(\\sim[p \\to (p \\vee \\sim q)] \\equiv p \\wedge \\sim(p \\vee \\sim q)\\).\\nBy De Morgan and double negation, \\(\\sim(p \\vee \\sim q) \\equiv \\sim p \\wedge q\\), so\\n\\(\\equiv p \\wedge (\\sim p \\wedge q)\\).\\nFinal answer: \\(p \\wedge (\\sim p \\wedge q)\\) (which is a contradiction, since \\(p \\wedge \\sim p \\equiv F\\), consistent with the original being a tautology)."
+  },
+  {
+    "id": "3bd9c242-4ca3-4e0b-baae-c8f73512810c",
+    "ref": "1.4 Ex 1.4 Q.1 (vi)",
+    "solution": "The statement is \\(a \\vee b\\) with \\(a \\equiv \\sim(p \\wedge q)\\) and \\(b \\equiv p \\vee \\sim q\\).\\nBy De Morgan, \\(\\sim(a \\vee b) \\equiv \\sim a \\wedge \\sim b\\):\\n\\(\\sim[\\sim(p \\wedge q) \\vee (p \\vee \\sim q)] \\equiv \\sim(\\sim(p \\wedge q)) \\wedge \\sim(p \\vee \\sim q)\\).\\nUsing double negation \\(\\sim(\\sim(p \\wedge q)) \\equiv p \\wedge q\\), and \\(\\sim(p \\vee \\sim q) \\equiv \\sim p \\wedge q\\) (De Morgan + double negation):\\n\\(\\equiv (p \\wedge q) \\wedge (\\sim p \\wedge q)\\).\\nFinal answer: \\((p \\wedge q) \\wedge (\\sim p \\wedge q)\\) (a contradiction, since it contains \\(p \\wedge \\sim p\\))."
+  },
+  {
+    "id": "a52b02da-e2f9-45eb-b38a-2b79ce869040",
+    "ref": "1.4 Ex 1.4 Q.1 (vii)",
+    "solution": "The statement has the form \\(a \\to b\\) with \\(a \\equiv p \\vee \\sim q\\) and \\(b \\equiv p \\wedge \\sim q\\).\\nNegation of \\(a \\to b\\) is \\(a \\wedge \\sim b\\):\\n\\(\\sim[(p \\vee \\sim q) \\to (p \\wedge \\sim q)] \\equiv (p \\vee \\sim q) \\wedge \\sim(p \\wedge \\sim q)\\).\\nBy De Morgan and double negation, \\(\\sim(p \\wedge \\sim q) \\equiv \\sim p \\vee q\\), so\\n\\(\\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).\\nFinal answer: \\((p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\)."
+  },
+  {
+    "id": "b05dbd02-df2e-4da3-95c4-270bcf72a343",
+    "ref": "1.4 Ex 1.4 Q.1 (viii)",
+    "solution": "The statement is \\(a \\vee b\\) with \\(a \\equiv \\sim p \\vee \\sim q\\) and \\(b \\equiv p \\wedge \\sim q\\).\\nBy De Morgan, \\(\\sim(a \\vee b) \\equiv \\sim a \\wedge \\sim b\\):\\n\\(\\sim[(\\sim p \\vee \\sim q) \\vee (p \\wedge \\sim q)] \\equiv \\sim(\\sim p \\vee \\sim q) \\wedge \\sim(p \\wedge \\sim q)\\).\\nNow \\(\\sim(\\sim p \\vee \\sim q) \\equiv p \\wedge q\\) and \\(\\sim(p \\wedge \\sim q) \\equiv \\sim p \\vee q\\) (De Morgan + double negation):\\n\\(\\equiv (p \\wedge q) \\wedge (\\sim p \\vee q)\\).\\nFinal answer: \\((p \\wedge q) \\wedge (\\sim p \\vee q)\\)."
+  },
+  {
+    "id": "5c239d6e-4d8f-47ca-af85-b0fc57d24aee",
+    "ref": "1.4 Ex 1.4 Q.2 (i)",
+    "solution": "Let \\(p\\): a man is a judge, \\(q\\): he is honest. The statement is \\(p \\to q\\).\\nUsing \\(p \\to q \\equiv \\sim p \\vee q\\), we rewrite it without if...then:\\n\\\"A man is not a judge or he is honest.\\\"\\nFinal answer: A man is not a judge or he is honest."
+  },
+  {
+    "id": "b74ea5e6-46d3-41ec-a2d3-8d0dc362cf83",
+    "ref": "1.4 Ex 1.4 Q.2 (ii)",
+    "solution": "Let \\(p\\): 2 is a rational number, \\(q\\): \\(\\sqrt{2}\\) is an irrational number. The statement is \\(p \\to q\\).\\nUsing \\(p \\to q \\equiv \\sim p \\vee q\\):\\n\\\"2 is not a rational number or \\(\\sqrt{2}\\) is an irrational number.\\\"\\nFinal answer: 2 is not a rational number or \\(\\sqrt{2}\\) is an irrational number."
+  },
+  {
+    "id": "7b4b36f6-b062-4020-a347-0fe592728b17",
+    "ref": "1.4 Ex 1.4 Q.2 (iii)",
+    "solution": "Let \\(p\\): \\(f(2) = 0\\), \\(q\\): \\(f(x)\\) is divisible by \\((x - 2)\\). The statement is \\(p \\to q\\).\\nUsing \\(p \\to q \\equiv \\sim p \\vee q\\):\\n\\\"\\(f(2) \\neq 0\\) or \\(f(x)\\) is divisible by \\((x - 2)\\).\\\"\\nFinal answer: \\(f(2) \\neq 0\\) or \\(f(x)\\) is divisible by \\((x - 2)\\)."
+  },
+  {
+    "id": "bb272377-9eee-460e-b24d-f664420dc69c",
+    "ref": "1.4 Ex 1.4 Q.3 (i)",
+    "solution": "To prove: \\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\).\\nStart from \\(p \\leftrightarrow q \\equiv (p \\to q) \\wedge (q \\to p)\\).\\nUsing \\(a \\to b \\equiv \\sim a \\vee b\\):\\n\\(\\equiv (\\sim p \\vee q) \\wedge (\\sim q \\vee p)\\).\\nExpand by the distributive law:\\n\\(\\equiv [(\\sim p \\vee q) \\wedge \\sim q] \\vee [(\\sim p \\vee q) \\wedge p]\\)\\n\\(\\equiv [(\\sim p \\wedge \\sim q) \\vee (q \\wedge \\sim q)] \\vee [(\\sim p \\wedge p) \\vee (q \\wedge p)]\\).\\nSince \\(q \\wedge \\sim q \\equiv F\\) and \\(\\sim p \\wedge p \\equiv F\\), and \\(a \\vee F \\equiv a\\):\\n\\(\\equiv (\\sim p \\wedge \\sim q) \\vee (q \\wedge p)\\)\\n\\(\\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\) (commutativity).\\nHence proved: \\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)."
+  },
+  {
+    "id": "a4599082-24ee-4e0b-9d1f-f47378c030c7",
+    "ref": "1.4 Ex 1.4 Q.3 (ii)",
+    "solution": "To prove: \\((p \\vee q) \\wedge (p \\vee \\sim q) \\equiv p\\).\\nBy the distributive law \\(a \\vee (b \\wedge c) \\equiv (a \\vee b) \\wedge (a \\vee c)\\), taken in reverse:\\n\\((p \\vee q) \\wedge (p \\vee \\sim q) \\equiv p \\vee (q \\wedge \\sim q)\\).\\nSince \\(q \\wedge \\sim q \\equiv F\\) (complement law):\\n\\(\\equiv p \\vee F\\).\\nBy the identity law \\(p \\vee F \\equiv p\\):\\n\\(\\equiv p\\).\\nHence proved: \\((p \\vee q) \\wedge (p \\vee \\sim q) \\equiv p\\)."
+  },
+  {
+    "id": "5faec6d8-b8ee-4660-b8b8-9493245a63d3",
+    "ref": "1.4 Ex 1.4 Q.3 (iii)",
+    "solution": "To prove: \\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (p \\wedge \\sim q) \\equiv p \\vee q\\).\\nGroup the first two terms and apply the distributive law:\\n\\((p \\wedge q) \\vee (\\sim p \\wedge q) \\equiv (p \\vee \\sim p) \\wedge q \\equiv T \\wedge q \\equiv q\\) (complement law \\(p \\vee \\sim p \\equiv T\\) and identity law).\\nSo the expression becomes \\(q \\vee (p \\wedge \\sim q)\\).\\nBy the distributive law \\(a \\vee (b \\wedge c) \\equiv (a \\vee b) \\wedge (a \\vee c)\\):\\n\\(q \\vee (p \\wedge \\sim q) \\equiv (q \\vee p) \\wedge (q \\vee \\sim q) \\equiv (q \\vee p) \\wedge T \\equiv q \\vee p\\).\\nHence \\(\\equiv p \\vee q\\) (commutativity).\\nHence proved: \\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (p \\wedge \\sim q) \\equiv p \\vee q\\)."
+  },
+  {
+    "id": "156c1244-27dc-4842-b073-66eb470b47c2",
+    "ref": "1.4 Ex 1.4 Q.3 (iv)",
+    "solution": "To prove: \\(\\sim[(p \\vee \\sim q) \\to (p \\wedge \\sim q)] \\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).\\nThe left side is the negation of \\(a \\to b\\) with \\(a \\equiv p \\vee \\sim q,\\ b \\equiv p \\wedge \\sim q\\).\\nNegation of \\(a \\to b\\) is \\(a \\wedge \\sim b\\):\\n\\(\\sim[(p \\vee \\sim q) \\to (p \\wedge \\sim q)] \\equiv (p \\vee \\sim q) \\wedge \\sim(p \\wedge \\sim q)\\).\\nBy De Morgan's law and double negation, \\(\\sim(p \\wedge \\sim q) \\equiv \\sim p \\vee q\\).\\nTherefore\\n\\(\\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).\\nHence proved: \\(\\sim[(p \\vee \\sim q) \\to (p \\wedge \\sim q)] \\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\)."
+  }
+]
