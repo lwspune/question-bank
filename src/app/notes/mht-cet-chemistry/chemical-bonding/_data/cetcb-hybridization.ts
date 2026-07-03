@@ -10,6 +10,49 @@ export const HYBRIDIZATION_NOTE: SubtopicNote = {
     "They come in three shapes: name-the-hybridization-and-geometry (CH4 -> sp3, tetrahedral; SF4 -> sp3d, see-saw), pick-the-odd-one-out (which molecule is NOT sp3), and match hybridization to shape (sp2 -> trigonal planar). " +
     "Every one of them is settled by counting the steric number = bond pairs + lone pairs on the central atom, so master that one count and you never drop a mark here.",
   concepts: [
+    // FOUNDATION — valence bond theory + sigma/pi bonds (State Board 5.4) — the basis for hybridization
+    {
+      kind: "reference" as const,
+      slug: "cetcb-hyb-valence-bond-sigma-pi",
+      name: "Valence bond theory: sigma and pi bonds",
+      intuition:
+        "Valence bond theory pictures a covalent bond as the overlap of two half-filled atomic orbitals. Head-on (axial) overlap gives a strong sigma bond; sideways overlap of parallel p-orbitals gives a weaker pi bond. Count them by bond multiplicity: single = one sigma, double = one sigma + one pi, triple = one sigma + two pi.",
+      definition:
+        "Valence bond theory (Heitler-London, Pauling):\n" +
+        "- A **covalent bond forms when two half-filled atomic orbitals overlap** and pair their electrons; the greater the overlap, the stronger the bond.\n" +
+        "- **Sigma \\(\\sigma\\) bond** — end-on (axial) overlap along the internuclear axis (s-s, s-p or p-p axial). Strong; allows free rotation.\n" +
+        "- **Pi \\(\\pi\\) bond** — sideways (lateral) overlap of two parallel p-orbitals, above and below the axis. Weaker than sigma; no free rotation.\n" +
+        "- **Bond multiplicity**: single \\(= 1\\sigma\\); double \\(= 1\\sigma + 1\\pi\\); triple \\(= 1\\sigma + 2\\pi\\). The first bond between two atoms is always a sigma bond.",
+      table: {
+        columns: ["Bond", "Sigma and pi", "Example"],
+        rows: [
+          { cells: ["Single bond", "\\(1\\sigma\\)", "\\(\\text{H}-\\text{H}\\); C-C in ethane"] },
+          { cells: ["Double bond", "\\(1\\sigma + 1\\pi\\)", "\\(\\text{C}=\\text{C}\\) in ethene; \\(\\text{O}=\\text{O}\\)"] },
+          { cells: ["Triple bond", "\\(1\\sigma + 2\\pi\\)", "\\(\\text{C}\\equiv\\text{C}\\) in ethyne; \\(\\text{N}\\equiv\\text{N}\\)"] },
+        ],
+        caption: "The first bond between two atoms is always a sigma bond; any extra bonds are pi.",
+      },
+      practiceSet: [
+        { prompt: "How is a sigma bond formed?", answer: "By end-on (axial) overlap of orbitals along the internuclear axis." },
+        { prompt: "How is a pi bond formed?", answer: "By sideways (lateral) overlap of two parallel p-orbitals." },
+        { prompt: "How many sigma and pi bonds are in a triple bond such as \\(\\text{N}\\equiv\\text{N}\\)?", answer: "One sigma and two pi." },
+        { prompt: "Which is stronger, a sigma or a pi bond?", answer: "Sigma — its axial overlap is more effective." },
+        { prompt: "How many pi bonds are in a carbon-carbon double bond?", answer: "One." },
+      ],
+      traps: [
+        {
+          title: "The first bond is always sigma",
+          body:
+            "In any single, double or triple bond the FIRST bond is a **sigma** bond; only the additional bonds are pi. So a double bond is \\(1\\sigma + 1\\pi\\) (not \\(2\\pi\\)), and a triple bond is \\(1\\sigma + 2\\pi\\).",
+        },
+        {
+          title: "Sigma is stronger than pi; pi locks rotation",
+          body:
+            "Axial overlap in a sigma bond is more effective than the sideways overlap of a pi bond, so a **sigma bond is stronger**. A pi bond also fixes the geometry — there is no free rotation about a double or triple bond.",
+        },
+      ],
+    },
+
     // What hybridization is (formula variant, no formula box) — tests CH4 hybridization+geometry
     {
       kind: "formula" as const,
