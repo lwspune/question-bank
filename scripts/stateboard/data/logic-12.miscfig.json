@@ -10,7 +10,12 @@
     "stem": "Circuit (i) (Fig. 1.30)",
     "solution": "Three branches in parallel. Top branch: \\(S_1\\) in series with \\(S_2\\), i.e. \\(S_1 \\wedge S_2\\). Middle branch: \\(S_1'\\). Bottom branch: \\(S_1\\) in series with \\(S_2'\\), i.e. \\(S_1 \\wedge S_2'\\). Symbolic form: \\((S_1 \\wedge S_2) \\vee S_1' \\vee (S_1 \\wedge S_2')\\).",
     "page": 33,
-    "bbox": [0.145, 0.446, 0.424, 0.612]
+    "bbox": [
+      0.143,
+      0.439,
+      0.42,
+      0.612
+    ]
   },
   {
     "ref": "Misc Q.12 (ii)",
@@ -23,7 +28,12 @@
     "stem": "Circuit (ii) (Fig. 1.31)",
     "solution": "Two blocks in series. First block: \\(S_1\\) in parallel with \\(S_2\\), i.e. \\(S_1 \\vee S_2\\). Second block: \\(S_1\\) in parallel with \\(S_3\\), i.e. \\(S_1 \\vee S_3\\). Symbolic form: \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3)\\).",
     "page": 33,
-    "bbox": [0.470, 0.472, 0.862, 0.610]
+    "bbox": [
+      0.465,
+      0.472,
+      0.857,
+      0.603
+    ]
   },
   {
     "ref": "Misc Q.13 (i)",
@@ -36,7 +46,12 @@
     "stem": "Circuit (i) (Fig. 1.32)",
     "solution": "Three branches in parallel. Top: \\(S_1 \\wedge S_2'\\); middle: \\(S_1' \\wedge S_2\\); bottom: \\(S_1' \\wedge S_2'\\). Symbolic form: \\((S_1 \\wedge S_2') \\vee (S_1' \\wedge S_2) \\vee (S_1' \\wedge S_2')\\). Simplify: \\((S_1 \\wedge S_2') \\vee [S_1' \\wedge (S_2 \\vee S_2')] = (S_1 \\wedge S_2') \\vee S_1'\\). Since \\(S_1 \\vee S_1' \\equiv\\) all values, \\((S_1 \\wedge S_2') \\vee S_1' \\equiv S_1' \\vee S_2'\\). Simplified circuit: \\(S_1'\\) in parallel with \\(S_2'\\) (2 switches).",
     "page": 33,
-    "bbox": [0.138, 0.692, 0.442, 0.862]
+    "bbox": [
+      0.135,
+      0.693,
+      0.425,
+      0.868
+    ]
   },
   {
     "ref": "Misc Q.13 (ii)",
@@ -49,7 +64,12 @@
     "stem": "Circuit (ii) (Fig. 1.33)",
     "solution": "Two blocks in series. First block (parallel): \\((S_1 \\wedge S_2) \\vee S_3' \\vee S_4' \\vee S_5'\\). Second block (parallel): \\((S_1 \\wedge S_2) \\vee (S_3 \\wedge S_4 \\wedge S_5)\\). Symbolic form: \\([(S_1 \\wedge S_2) \\vee S_3' \\vee S_4' \\vee S_5'] \\wedge [(S_1 \\wedge S_2) \\vee (S_3 \\wedge S_4 \\wedge S_5)]\\). Let \\(a = S_1 \\wedge S_2\\), \\(b = S_3 \\wedge S_4 \\wedge S_5\\). First block \\(= a \\vee \\sim b\\) (since \\(S_3' \\vee S_4' \\vee S_5' \\equiv \\sim(S_3 \\wedge S_4 \\wedge S_5) = \\sim b\\)). Expression \\(= (a \\vee \\sim b) \\wedge (a \\vee b) = a \\vee (\\sim b \\wedge b) = a \\vee F = a = S_1 \\wedge S_2\\). Simplified circuit: \\(S_1\\) in series with \\(S_2\\) (2 switches).",
     "page": 33,
-    "bbox": [0.495, 0.695, 0.862, 0.848]
+    "bbox": [
+      0.501,
+      0.697,
+      0.87,
+      0.837
+    ]
   },
   {
     "ref": "Misc Q.14 (A) circuit 1",
@@ -62,7 +82,12 @@
     "stem": "(A) circuit i (Fig. 1.34)",
     "solution": "Two blocks in series. First block: single switch \\(S_1\\). Second block: \\(S_2\\) in parallel with \\(S_3\\). Symbolic form: \\(S_1 \\wedge (S_2 \\vee S_3)\\).",
     "page": 34,
-    "bbox": [0.220, 0.112, 0.565, 0.200]
+    "bbox": [
+      0.22,
+      0.116,
+      0.575,
+      0.227
+    ]
   },
   {
     "ref": "Misc Q.14 (A) circuit 2",
@@ -75,7 +100,12 @@
     "stem": "(A) circuit ii (Fig. 1.35)",
     "solution": "Two branches in parallel. Top branch: \\(S_1\\) in series with \\(S_2\\), i.e. \\(S_1 \\wedge S_2\\). Bottom branch: \\(S_1\\) in series with \\(S_3\\), i.e. \\(S_1 \\wedge S_3\\). Symbolic form: \\((S_1 \\wedge S_2) \\vee (S_1 \\wedge S_3)\\). By distributive law \\(= S_1 \\wedge (S_2 \\vee S_3)\\), which equals circuit i. Hence the two circuits in (A) are logically equivalent.",
     "page": 34,
-    "bbox": [0.605, 0.112, 0.878, 0.205]
+    "bbox": [
+      0.615,
+      0.115,
+      0.866,
+      0.228
+    ]
   },
   {
     "ref": "Misc Q.14 (B) circuit 1",
@@ -88,7 +118,12 @@
     "stem": "(B) circuit i (Fig. 1.36)",
     "solution": "Two blocks in series. First block: \\(S_1\\) in parallel with \\(S_2\\), i.e. \\(S_1 \\vee S_2\\). Second block: \\(S_1\\) in parallel with \\(S_3\\), i.e. \\(S_1 \\vee S_3\\). Symbolic form: \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3)\\).",
     "page": 34,
-    "bbox": [0.220, 0.238, 0.532, 0.332]
+    "bbox": [
+      0.22,
+      0.239,
+      0.552,
+      0.351
+    ]
   },
   {
     "ref": "Misc Q.14 (B) circuit 2",
@@ -101,7 +136,12 @@
     "stem": "(B) circuit ii (Fig. 1.37)",
     "solution": "Two branches in parallel. Top branch: single switch \\(S_1\\). Bottom branch: \\(S_2\\) in series with \\(S_3\\), i.e. \\(S_2 \\wedge S_3\\). Symbolic form: \\(S_1 \\vee (S_2 \\wedge S_3)\\). By distributive law \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3) = S_1 \\vee (S_2 \\wedge S_3)\\), which equals circuit i. Hence the two circuits in (B) are logically equivalent.",
     "page": 34,
-    "bbox": [0.605, 0.238, 0.878, 0.334]
+    "bbox": [
+      0.616,
+      0.242,
+      0.866,
+      0.352
+    ]
   },
   {
     "ref": "Misc Q.15",
@@ -114,7 +154,12 @@
     "stem": "Circuit (Fig. 1.38)",
     "solution": "Four branches in parallel, each a series of three switches. Row 1: \\(S_1 \\wedge S_2 \\wedge S_1'\\); Row 2: \\(S_1' \\wedge S_2 \\wedge S_3\\); Row 3: \\(S_1 \\wedge S_2 \\wedge S_3\\); Row 4: \\(S_1 \\wedge S_2' \\wedge S_3\\). Symbolic form: \\((S_1 \\wedge S_2 \\wedge S_1') \\vee (S_1' \\wedge S_2 \\wedge S_3) \\vee (S_1 \\wedge S_2 \\wedge S_3) \\vee (S_1 \\wedge S_2' \\wedge S_3)\\). Row 1 has \\(S_1 \\wedge S_1' \\equiv F\\), so it drops. Remaining: \\((S_1' \\wedge S_2 \\wedge S_3) \\vee (S_1 \\wedge S_2 \\wedge S_3) \\vee (S_1 \\wedge S_2' \\wedge S_3)\\). Take \\(S_3\\) common: \\(S_3 \\wedge [(S_1' \\wedge S_2) \\vee (S_1 \\wedge S_2) \\vee (S_1 \\wedge S_2')]\\). First two give \\(S_2 \\wedge (S_1' \\vee S_1) \\equiv S_2\\); so bracket \\(= S_2 \\vee (S_1 \\wedge S_2') = S_2 \\vee S_1\\). Simplified: \\(S_3 \\wedge (S_1 \\vee S_2)\\) — \\(S_3\\) in series with (\\(S_1\\) parallel \\(S_2\\)), 3 switches.",
     "page": 34,
-    "bbox": [0.120, 0.412, 0.500, 0.628]
+    "bbox": [
+      0.14,
+      0.421,
+      0.49,
+      0.657
+    ]
   },
   {
     "ref": "Misc Q.16",
@@ -127,7 +172,12 @@
     "stem": "Circuit (Fig. 1.39)",
     "solution": "Three branches in parallel, each a series of two switches. Branch 1: \\(S_1' \\wedge S_2\\); Branch 2: \\(S_1 \\wedge S_2'\\); Branch 3: \\(S_1 \\wedge S_2\\). Symbolic form: \\((S_1' \\wedge S_2) \\vee (S_1 \\wedge S_2') \\vee (S_1 \\wedge S_2)\\). Group last two: \\(S_1 \\wedge (S_2' \\vee S_2) \\equiv S_1\\). So expression \\(= (S_1' \\wedge S_2) \\vee S_1 = S_1 \\vee S_2\\) (by \\((S_1' \\wedge S_2) \\vee S_1 \\equiv S_1 \\vee S_2\\)). Simplified circuit: \\(S_1\\) in parallel with \\(S_2\\) (2 switches).",
     "page": 34,
-    "bbox": [0.533, 0.404, 0.915, 0.680]
+    "bbox": [
+      0.537,
+      0.397,
+      0.891,
+      0.687
+    ]
   },
   {
     "ref": "Misc Q.17",
@@ -140,6 +190,11 @@
     "stem": "Circuit (Fig. 1.40)",
     "solution": "Two blocks in series. First block: three switches in parallel \\(S_1\\), \\(S_2'\\), \\(S_3'\\), i.e. \\(S_1 \\vee S_2' \\vee S_3'\\). Second block: \\(S_1\\) in parallel with (\\(S_2\\) in series with \\(S_3\\)), i.e. \\(S_1 \\vee (S_2 \\wedge S_3)\\). Symbolic form: \\((S_1 \\vee S_2' \\vee S_3') \\wedge [S_1 \\vee (S_2 \\wedge S_3)]\\). Conclusion from the switching table: the lamp glows for the combinations where this expression is true.",
     "page": 34,
-    "bbox": [0.198, 0.741, 0.610, 0.886]
+    "bbox": [
+      0.213,
+      0.743,
+      0.59,
+      0.879
+    ]
   }
 ]

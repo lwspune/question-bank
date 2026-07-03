@@ -68,6 +68,7 @@ print(json.dumps(out))
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
+  const force = process.argv.includes("--force"); // re-upload even if image_url already set (leaves the old object orphaned — sweep later)
   const ch = requireChapter(id);
   loadEnv();
 
@@ -99,7 +100,7 @@ async function main() {
       .maybeSingle();
     if (error) throw new Error(`"${ref}" lookup: ${error.message}`);
     if (!q) { console.log(`  "${ref}": NO committed row — commit the question first; skipping`); missing++; continue; }
-    if (q.image_url) { console.log(`  "${ref}": image_url already set — skipping`); continue; }
+    if (q.image_url && !force) { console.log(`  "${ref}": image_url already set — skipping (use --force to overwrite)`); continue; }
     const path = await uploadImage(client, ORG_ID, readFileSync(pngPath), "image/png");
     const { error: uErr } = await client.from("questions").update({ image_url: path }).eq("id", q.id);
     if (uErr) throw new Error(`"${ref}" set image_url: ${uErr.message}`);
