@@ -24,13 +24,19 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-07-03
 
-### Add a `solution_image` capability (product decision — has data now)
+### ~~Add a `solution_image` capability (product decision — has data now)~~ — **DONE 2026-07-03**
+
+Shipped: migration 0042 `questions.solution_image_url` (nullable) + wired through `QuestionRow`/both `/browse` selects + rendered in the "Show model answer" reveal (`QuestionCard`) + the docx answer-key SOLUTION block (never the question paper — no leak; TDD in `tests/docx-image.test.ts`) + `fetchImageBytes`. Attach via `scripts/stateboard/attach-solution-image.ts` (PNG manifest). **Phase 2 done too:** all 20 flagged Pair-of-Straight-Lines diagrams authored deterministically via `scripts/stateboard/render_solution_diagrams.py` (Pillow, no new dep) — verified correct + legible, attached. Reusable for future geometry chapters: flag `diagramWouldHelp` during solution authoring → author specs → render → montage-verify → attach.
+
+<details><summary>original</summary>
 
 State Board Ch.4 Pair of Straight Lines carried a `diagramWouldHelp` flag on every authored subjective solution: **20 of 102 (~20%) flagged**, in 4 archetypes — equilateral-triangle constructions (origin-pair + base line), angle-bisector pairs, lines-at-a-stated-angle, intersecting pairs (exactly the shapes `/notes` already renders as static SVGs). So a per-question solution diagram has a real, measured addressable surface on geometry-subjective content.
 
 **Why:** State Board is textbook content taught by LWS teachers; a worked answer for a locus/triangle/angle question reads far better with the sketch. ~20% of one chapter is enough signal that this isn't a one-off. The count will keep growing as figure-heavy chapters (Vectors, Trig, Line & Planes, LP) come in — decide before ingesting those so their solutions can carry the image from the start rather than a backfill.
 
 **How to apply (NOT a heavy build — reuses the figure path):** add a nullable `questions.solution_image_url` (append-only migration); render it in `QuestionCard`'s "model answer" reveal + the docx answer-key (above/below the model-answer text), reusing the existing `uploadImage`/storage/`image_url` render path that figures already use. Author images the same way `/notes` viz SVGs are authored (or crop from the book where the book prints one). The `diagramWouldHelp`/`diagramNote` fields already sitting in `scripts/stateboard/data/pair-lines-12.*.solutions.json` are the ready-made worklist for the first batch.
+
+</details>
 
 ### ~~Push the `state-board-ingestion` branch~~ — **DONE 2026-07-03**
 

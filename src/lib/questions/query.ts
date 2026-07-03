@@ -15,6 +15,9 @@ export type QuestionRow = {
   difficulty: Difficulty;
   solution: string | null;
   imageUrl: string | null;
+  /** Optional per-question SOLUTION diagram (migration 0042). Shown in the "model answer" reveal
+   *  on /browse + the answer-key solution block only — never the question paper (would leak the answer). */
+  solutionImageUrl?: string | null;
   setId: string | null;
   /** MCQ (4 options, one correct) or subjective (no options, model answer in `solution`). Migration 0041.
    *  Optional on the view-model — absent means MCQ (real DB rows always carry it; hand-built fixtures default to MCQ). */
@@ -88,7 +91,7 @@ export async function queryQuestions(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, set_id, question_format,
+      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format,
       question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -182,6 +185,7 @@ export async function queryQuestions(
     difficulty: Difficulty;
     solution: string | null;
     image_url: string | null;
+    solution_image_url: string | null;
     set_id: string | null;
     question_format: QuestionFormat;
     question_number: string | null;
@@ -205,6 +209,7 @@ export async function queryQuestions(
     difficulty: r.difficulty,
     solution: r.solution,
     imageUrl: r.image_url,
+    solutionImageUrl: r.solution_image_url,
     setId: r.set_id,
     questionFormat: r.question_format,
     questionNumber: r.question_number,
@@ -246,7 +251,7 @@ export async function queryQuestionsByIds(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, set_id, question_format,
+      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format,
       question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -273,6 +278,7 @@ export async function queryQuestionsByIds(
     difficulty: Difficulty;
     solution: string | null;
     image_url: string | null;
+    solution_image_url: string | null;
     set_id: string | null;
     question_format: QuestionFormat;
     question_number: string | null;
@@ -298,6 +304,7 @@ export async function queryQuestionsByIds(
       difficulty: r.difficulty,
       solution: r.solution,
       imageUrl: r.image_url,
+      solutionImageUrl: r.solution_image_url,
       setId: r.set_id,
       questionFormat: r.question_format,
       questionNumber: r.question_number,

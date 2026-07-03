@@ -251,6 +251,8 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
         })
       );
       if (input.includeSolutions) {
+        const solImg = solutionImagePara(q, input.imageBytes);
+        if (solImg) children.push(solImg);
         children.push(blank());
       }
       continue;
@@ -278,6 +280,10 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
           ],
         })
       );
+    }
+    if (input.includeSolutions) {
+      const solImg = solutionImagePara(q, input.imageBytes);
+      if (solImg) children.push(solImg);
     }
     // Plain answer key stays tight (one paragraph per question, easy to
     // skim). Solution mode adds a blank between blocks so each solution
@@ -461,6 +467,24 @@ function pickDims(
   const natural = readImageDimensions(data);
   if (!natural) return fallback;
   return fitWithinBox(natural, maxW, maxH);
+}
+
+// A per-question SOLUTION diagram (migration 0042), rendered under the answer
+// in the WITH-solutions answer key only. Returns null when there's no diagram
+// or its bytes weren't fetched (graceful fallback, same as stem images).
+function solutionImagePara(
+  q: QuestionRow,
+  imageBytes: Map<string, Buffer> | undefined
+): Paragraph | null {
+  if (!q.solutionImageUrl || !imageBytes?.has(q.solutionImageUrl)) return null;
+  const data = imageBytes.get(q.solutionImageUrl)!;
+  const dims = pickDims(
+    data,
+    QUESTION_IMAGE_MAX_WIDTH,
+    QUESTION_IMAGE_MAX_HEIGHT,
+    FALLBACK_QUESTION_DIMS
+  );
+  return imageParagraph(data, dims.width, dims.height, 720);
 }
 
 function imageParagraph(

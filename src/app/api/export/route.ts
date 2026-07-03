@@ -280,6 +280,7 @@ async function fetchImageBytes(
   const paths = new Set<string>();
   for (const q of questions) {
     if (q.imageUrl) paths.add(q.imageUrl);
+    if (q.solutionImageUrl) paths.add(q.solutionImageUrl);
     for (const opt of q.options) {
       if (opt.imageUrl) paths.add(opt.imageUrl);
     }

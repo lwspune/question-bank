@@ -326,6 +326,15 @@ export default function QuestionCard({
                 {showSolution && (
                   <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
                     <KatexRenderer text={question.solution} />
+                    {question.solutionImageUrl && (
+                      <div className="pt-3">
+                        <ZoomableImage
+                          src={publicImageUrl(supabaseUrl, question.solutionImageUrl)}
+                          alt="Solution diagram"
+                          className="max-h-64 w-auto rounded border"
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
