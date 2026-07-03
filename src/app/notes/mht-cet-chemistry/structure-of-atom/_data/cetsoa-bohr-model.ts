@@ -9,6 +9,67 @@ export const BOHR_MODEL_NOTE: SubtopicNote = {
     "This is the biggest, most computation-heavy subtopic in MHT-CET Structure of Atom — 18 PYQs, mostly one-step plug-ins into three formulas (radius, energy, angular momentum) plus a couple of pure-recall model questions. The recurring pattern is a hydrogen-like ion (He+, Li2+, Be3+, B4+) where you must scale by Z, and the recurring trap is treating a two-electron species like Li+ as hydrogen-like. " +
     "Memorise the four numbers 0.529 Angstrom, 13.6 eV, 2.18e-18 J and 2.18e6 m/s together with their n^2 / Z^2 / 1/n scalings and every question here becomes a gift.",
   concepts: [
+    // 0 — Rutherford's nuclear model and its drawbacks (motivates Bohr) — State Board 4.4
+    {
+      kind: "reference" as const,
+      slug: "cetsoa-bohr-rutherford-model",
+      name: "Rutherford's nuclear model and its drawbacks",
+      intuition:
+        "Rutherford's alpha-particle scattering experiment gave the nuclear atom — a tiny dense positive nucleus with electrons revolving around it in mostly empty space. But the model had two fatal flaws that Bohr's postulates were invented to fix, so the paper tests it as a 'which statement is NOT true about Rutherford's model' recall.",
+      definition:
+        "From the scattering of alpha-particles by a thin gold foil, Rutherford concluded:\n" +
+        "- The atom has a very small, dense, **positively charged nucleus** at its centre that holds almost all the mass.\n" +
+        "- **Electrons revolve** around the nucleus; most of the atom is **empty space**.\n" +
+        "It failed on two counts, both of which Bohr later resolved:\n" +
+        "- **Stability** — a revolving electron is accelerating, so by classical electromagnetism it must continuously radiate energy, spiral inward and collapse into the nucleus. Atoms are in fact stable.\n" +
+        "- **Line spectrum** — a spiralling electron would emit a continuous spectrum, but hydrogen gives a discrete **line** spectrum.",
+      table: {
+        columns: ["Aspect", "Rutherford's model", "The problem"],
+        rows: [
+          {
+            cells: [
+              "Structure",
+              "Tiny dense positive nucleus; electrons revolve around it; atom is mostly empty space.",
+              "This part is correct — established by alpha-particle scattering.",
+            ],
+          },
+          {
+            cells: [
+              "Stability of the atom",
+              "Electrons move in circular paths around the nucleus.",
+              "A revolving (accelerating) electron must radiate energy continuously and spiral into the nucleus, so the atom should collapse.",
+            ],
+          },
+          {
+            cells: [
+              "Atomic spectrum",
+              "Does not restrict the electron's energy.",
+              "Predicts a continuous spectrum, but hydrogen actually shows a discrete line spectrum.",
+            ],
+          },
+        ],
+        caption: "Rutherford got the nucleus right but could not explain atomic stability or the line spectrum — Bohr's quantized orbits fixed both.",
+      },
+      pyqExampleId: "bb6dc789-2692-492d-9ba6-52267e630d5d", // which statement is NOT true about Rutherford's model
+      practiceSet: [
+        { prompt: "What did Rutherford's alpha-scattering experiment establish about the atom?", answer: "A tiny, dense, positively charged nucleus with electrons revolving around it in mostly empty space." },
+        { prompt: "Why could Rutherford's model not explain the stability of the atom?", answer: "A revolving electron continuously radiates energy and would spiral into the nucleus." },
+        { prompt: "Which type of spectrum could Rutherford's model not explain?", answer: "The discrete line (emission) spectrum of hydrogen." },
+      ],
+      traps: [
+        {
+          title: "Rutherford placed the electrons OUTSIDE the nucleus",
+          body:
+            "The nucleus holds the protons (and neutrons) and nearly all the mass; the electrons revolve **around** it. A statement putting electrons inside the nucleus, or giving the nucleus a negative charge, is the false one in a 'NOT true about Rutherford's model' question.",
+        },
+        {
+          title: "The stability failure is a CLASSICAL-physics problem",
+          body:
+            "The collapse prediction comes from classical electromagnetism (an accelerating charge radiates). Bohr did not change the nuclear picture — he **quantized** the orbits (fixed energy levels, no radiation while in an orbit) to rescue stability and explain the line spectrum.",
+        },
+      ],
+    },
+
     // 1 — postulates + angular momentum quantization
     {
       kind: "formula" as const,
