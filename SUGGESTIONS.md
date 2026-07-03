@@ -22,6 +22,32 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-03
+
+### Push the `state-board-ingestion` branch (gate green after the main merge; blocked only by disk)
+
+The State Board work (schema `question_format` migration 0041 + subjective support + `scripts/stateboard/` + Ch.1 Mathematical Logic ingest) is committed on `state-board-ingestion` (`bec801c`, `27d4fbc`) with `main` merged in (`1a5705b`). The full gate is green (notes-lint 0 errors after the merge; the one test failure was a confirmed `browse-query` shared-DB flake — passes isolated). It is **not pushed**.
+
+**Why:** the branch is local-only; the work (a new live exam + 61 PUBLIC questions already in the DB) has no remote backup or CI run until pushed. Merging `main` already resolved the notes-lint drift, so the branch is pushable.
+
+**How to apply:** free space on **C: (chronically 100% full — `next build` ENOSPC'd this session; the build only passed after deleting `.next` + rendered PNGs)**, then run `npm run prepush` via bash to confirm green, then `git push -u origin state-board-ingestion` (or merge to `main` per [[git-merge-to-main-flow]]). The `scripts/stateboard/out/` PNGs are gitignored and regenerable via `render.ts`.
+
+### Finish State Board Ch.1 — figures, MCQ review, subjective model answers
+
+Ch.1 Mathematical Logic shipped **61 solved examples PUBLIC**; the rest is staged PRIVATE. Three follow-ons remain before the chapter is complete: (1) **figure-attach** the ~35 switching-circuit figure-only questions deferred from §1.5 + Miscellaneous Q.12–17 (agents transcribed the symbolic ones, skipped pure-diagram ones); (2) **review the 7 derived-answer MCQs** then `flip-public.ts logic-12 --with-mcq --apply`; (3) **author/source model answers** for the 169 subjective exercises, then flip PUBLIC. See [[state-board-ingestion]] + [[textbook-chapter-ingestion]].
+
+**Why:** the PUBLIC solved examples are the ship-ready subset, but a browsing student sees only ~26% of the chapter's questions until the exercises get answers. The MCQ answers are already derived (cheap review); the subjective answers are the real long pole.
+
+**How to apply:** figures — render the §1.5/Misc pages, crop the circuit diagrams, attach via an `attach-images.ts` step (mirror `scripts/foundation/attach-images.ts`). MCQ — spot-check the 7 derived keys (one has a source typo: Misc I(vi) options A≡C, answer D unaffected), then `--with-mcq`. Subjective — LWS-author or source from a solutions/digest book, backfill `solution` by script (NOT the edit UI — it's MCQ-only), then flip.
+
+### Scale State Board to the remaining chapters (14 more 12th Maths + 11th; CBSE later)
+
+Only Ch.1 (the hardest — truth-table + figure heavy) is ingested. The pipeline is proven; each remaining chapter is render → 6 parallel vision agents (one per section) → `merge.ts` → `commit.ts` → `flip-public.ts`. Source: `C:\tmp\PYQPs\MHT-CET\State_Board\12th\` (+ `11th\`).
+
+**Why:** one course with one chapter is thin; the audience (Maharashtra HSC = MHT-CET aspirants) wants the whole book. Per-chapter cost is now low (clone `config.ts`'s `logic-12` entry, define the canonical subtopics, fan out).
+
+**How to apply:** add a `CHAPTERS` entry per chapter (chapterName + subtopics + pdf path), `render.ts <id>`, dispatch section agents with the [[textbook-chapter-ingestion]] spec, merge/commit/flip. Table-light chapters (Vectors, Line & Plane) are faster than Ch.1. Board PYQs (the `Question_Paper/` DOCX compilation) are a **separate later phase** under the same exam, ingested as `question_kind='pyq'`.
+
 ## 2026-07-02
 
 ### `/solution-cleanup` a self-contradicting MHT-CET Chemistry solution (flagged during the SBCC notes build)
