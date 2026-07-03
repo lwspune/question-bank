@@ -1,0 +1,47 @@
+[
+  {
+    "id": "5ec95c87-fec2-4d60-8c75-9b1c4e542fde",
+    "ref": "2.1 Ex 2.1 Q.1",
+    "solution": "Apply \\(R_1 \\leftrightarrow R_2\\), i.e. interchange the two rows of \\(A\\).\n\n\\(A = \\begin{bmatrix} 1 & 0 \\\\ -1 & 3 \\end{bmatrix} \\sim \\begin{bmatrix} -1 & 3 \\\\ 1 & 0 \\end{bmatrix}\\).\n\nHence the required matrix is \\(\\begin{bmatrix} -1 & 3 \\\\ 1 & 0 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "24f44f94-7992-408a-88e5-08fe4337f7b1",
+    "ref": "2.1 Ex 2.1 Q.2",
+    "solution": "Apply \\(R_1 \\to R_1 - R_2\\). The new first row is\n\n\\((1-2,\\ -1-5,\\ 3-4) = (-1,\\ -6,\\ -1)\\), while \\(R_2\\) is unchanged.\n\n\\(B = \\begin{bmatrix} 1 & -1 & 3 \\\\ 2 & 5 & 4 \\end{bmatrix} \\sim \\begin{bmatrix} -1 & -6 & -1 \\\\ 2 & 5 & 4 \\end{bmatrix}\\).\n\nHence the required matrix is \\(\\begin{bmatrix} -1 & -6 & -1 \\\\ 2 & 5 & 4 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "ff3d2aa6-45fc-452b-9ba6-e2850e971fd4",
+    "ref": "2.1 Ex 2.1 Q.3",
+    "solution": "For \\(A\\), apply \\(C_1 \\leftrightarrow C_2\\) (interchange the columns):\n\n\\(A = \\begin{bmatrix} 5 & 4 \\\\ 1 & 3 \\end{bmatrix} \\sim \\begin{bmatrix} 4 & 5 \\\\ 3 & 1 \\end{bmatrix}\\).\n\nFor \\(B\\), apply \\(R_1 \\leftrightarrow R_2\\) (interchange the rows):\n\n\\(B = \\begin{bmatrix} 3 & 1 \\\\ 4 & 5 \\end{bmatrix} \\sim \\begin{bmatrix} 4 & 5 \\\\ 3 & 1 \\end{bmatrix}\\).\n\nObservation: both transformed matrices are equal, \\(\\begin{bmatrix} 4 & 5 \\\\ 3 & 1 \\end{bmatrix}\\). The two given matrices differ only by an interchange, so a column interchange on the first produces the same result as a row interchange on the second."
+  },
+  {
+    "id": "ba4e184b-2adf-4f11-a3cf-5632653e9013",
+    "ref": "2.1 Ex 2.1 Q.4",
+    "solution": "For \\(A\\), apply \\(2C_2\\) (multiply column 2 by 2): \\((2\\cdot 2,\\ 2\\cdot 1) = (4,\\ 2)\\).\n\n\\(A = \\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 1 & 3 \\end{bmatrix} \\sim \\begin{bmatrix} 1 & 4 & -1 \\\\ 0 & 2 & 3 \\end{bmatrix}\\).\n\nFor \\(B\\), apply \\(-3R_1\\) (multiply row 1 by \\(-3\\)): \\((-3\\cdot 1,\\ -3\\cdot 0,\\ -3\\cdot 2) = (-3,\\ 0,\\ -6)\\).\n\n\\(B = \\begin{bmatrix} 1 & 0 & 2 \\\\ 2 & 4 & 5 \\end{bmatrix} \\sim \\begin{bmatrix} -3 & 0 & -6 \\\\ 2 & 4 & 5 \\end{bmatrix}\\).\n\nAdding the two new matrices:\n\n\\(\\begin{bmatrix} 1 & 4 & -1 \\\\ 0 & 2 & 3 \\end{bmatrix} + \\begin{bmatrix} -3 & 0 & -6 \\\\ 2 & 4 & 5 \\end{bmatrix} = \\begin{bmatrix} -2 & 4 & -7 \\\\ 2 & 6 & 8 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "5db1eb0d-be11-4f2d-99b7-7632412f2062",
+    "ref": "2.1 Ex 2.1 Q.5",
+    "solution": "Start with \\(A = \\begin{bmatrix} 1 & -1 & 3 \\\\ 2 & 1 & 0 \\\\ 3 & 3 & 1 \\end{bmatrix}\\).\n\nApply \\(3R_3\\) (multiply row 3 by 3): \\((3\\cdot 3,\\ 3\\cdot 3,\\ 3\\cdot 1) = (9,\\ 9,\\ 3)\\).\n\n\\(A \\sim \\begin{bmatrix} 1 & -1 & 3 \\\\ 2 & 1 & 0 \\\\ 9 & 9 & 3 \\end{bmatrix}\\).\n\nNow apply \\(C_3 \\to C_3 + 2C_2\\): new column 3 is\n\n\\((3 + 2(-1),\\ 0 + 2(1),\\ 3 + 2(9)) = (1,\\ 2,\\ 21)\\).\n\n\\(\\sim \\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & 2 \\\\ 9 & 9 & 21 \\end{bmatrix}\\).\n\nHence the required matrix is \\(\\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & 2 \\\\ 9 & 9 & 21 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "11a26c5f-cb90-4bfd-aa4e-edb7f4e1ffe8",
+    "ref": "2.1 Ex 2.1 Q.6",
+    "solution": "Start with \\(A = \\begin{bmatrix} 1 & -1 & 3 \\\\ 2 & 1 & 0 \\\\ 3 & 3 & 1 \\end{bmatrix}\\).\n\nApply \\(C_3 \\to C_3 + 2C_2\\) first: new column 3 is\n\n\\((3 + 2(-1),\\ 0 + 2(1),\\ 1 + 2(3)) = (1,\\ 2,\\ 7)\\).\n\n\\(A \\sim \\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & 2 \\\\ 3 & 3 & 7 \\end{bmatrix}\\).\n\nNow apply \\(3R_3\\) (multiply row 3 by 3): \\((3\\cdot 3,\\ 3\\cdot 3,\\ 3\\cdot 7) = (9,\\ 9,\\ 21)\\).\n\n\\(\\sim \\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & 2 \\\\ 9 & 9 & 21 \\end{bmatrix}\\).\n\nConclusion: the final matrix is the same as in Ex. 5, \\(\\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & 2 \\\\ 9 & 9 & 21 \\end{bmatrix}\\). Thus a row transformation and a column transformation can be applied in either order — they are independent, and the result does not depend on the order in which they are performed."
+  },
+  {
+    "id": "0c532329-31ff-4477-be22-06ea84d1d3fa",
+    "ref": "2.1 Ex 2.1 Q.7",
+    "solution": "An upper triangular matrix must have zero below the leading diagonal. Here we clear the \\((2,1)\\) entry.\n\nApply \\(R_2 \\to R_2 - 3R_1\\): new row 2 is \\((3 - 3\\cdot 1,\\ 4 - 3\\cdot 2) = (0,\\ -2)\\).\n\n\\(\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\sim \\begin{bmatrix} 1 & 2 \\\\ 0 & -2 \\end{bmatrix}\\).\n\nThe matrix \\(\\begin{bmatrix} 1 & 2 \\\\ 0 & -2 \\end{bmatrix}\\) is upper triangular."
+  },
+  {
+    "id": "b426c2a5-1fb8-4a93-9e58-47eef7bc582d",
+    "ref": "2.1 Ex 2.1 Q.8",
+    "solution": "We reduce \\(\\begin{bmatrix} 1 & -1 \\\\ 2 & 3 \\end{bmatrix}\\) to the identity by row transformations.\n\nApply \\(R_2 \\to R_2 - 2R_1\\): row 2 becomes \\((2 - 2,\\ 3 - 2(-1)) = (0,\\ 5)\\).\n\n\\(\\sim \\begin{bmatrix} 1 & -1 \\\\ 0 & 5 \\end{bmatrix}\\).\n\nApply \\(R_2 \\to \\tfrac{1}{5}R_2\\): row 2 becomes \\((0,\\ 1)\\).\n\n\\(\\sim \\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}\\).\n\nApply \\(R_1 \\to R_1 + R_2\\): row 1 becomes \\((1,\\ -1+1) = (1,\\ 0)\\).\n\n\\(\\sim \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\).\n\nHence the matrix is reduced to the identity matrix \\(I\\)."
+  },
+  {
+    "id": "d8cc3458-40c2-4fda-9926-58e803fe39b9",
+    "ref": "2.1 Ex 2.1 Q.9",
+    "solution": "We must make the entries below the diagonal — positions \\((2,1),(3,1),(3,2)\\) — zero using only column transformations. Start with\n\n\\(\\begin{bmatrix} 1 & -1 & 2 \\\\ 2 & 1 & 3 \\\\ 3 & 2 & 4 \\end{bmatrix}\\).\n\nFirst clear row 3 using \\(C_3\\) (whose diagonal entry is \\(4\\)).\n\nApply \\(C_1 \\to 4C_1 - 3C_3\\): \\((4\\cdot1-3\\cdot2,\\ 4\\cdot2-3\\cdot3,\\ 4\\cdot3-3\\cdot4) = (-2,\\ -1,\\ 0)\\).\n\nApply \\(C_2 \\to 4C_2 - 2C_3\\): \\((4(-1)-2\\cdot2,\\ 4\\cdot1-2\\cdot3,\\ 4\\cdot2-2\\cdot4) = (-8,\\ -2,\\ 0)\\).\n\n\\(\\sim \\begin{bmatrix} -2 & -8 & 2 \\\\ -1 & -2 & 3 \\\\ 0 & 0 & 4 \\end{bmatrix}\\).\n\nNow clear the \\((2,1)\\) entry using \\(C_2\\) (diagonal entry \\(-2\\)).\n\nApply \\(C_1 \\to 2C_1 - C_2\\): \\((2(-2)-(-8),\\ 2(-1)-(-2),\\ 0-0) = (4,\\ 0,\\ 0)\\).\n\n\\(\\sim \\begin{bmatrix} 4 & -8 & 2 \\\\ 0 & -2 & 3 \\\\ 0 & 0 & 4 \\end{bmatrix}\\).\n\nAll entries below the leading diagonal are zero, so this is an upper triangular matrix obtained by column transformations."
+  }
+]

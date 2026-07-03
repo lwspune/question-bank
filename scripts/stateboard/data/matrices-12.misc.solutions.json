@@ -1,0 +1,87 @@
+[
+  {
+    "id": "4259f978-5356-4780-a554-a82b5678c2cc",
+    "ref": "Misc II Q.1 (i)",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & -1 \\\\ 1 & 5 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -2 \\\\ 5 \\end{bmatrix}\\).\n\\(|A| = (2)(5) - (-1)(1) = 11 \\neq 0\\), so \\(A^{-1}\\) exists.\n\\(\\text{adj}(A) = \\begin{bmatrix} 5 & 1 \\\\ -1 & 2 \\end{bmatrix}\\), hence \\(A^{-1} = \\dfrac{1}{11}\\begin{bmatrix} 5 & 1 \\\\ -1 & 2 \\end{bmatrix}\\).\n\\(X = A^{-1}B = \\dfrac{1}{11}\\begin{bmatrix} 5 & 1 \\\\ -1 & 2 \\end{bmatrix}\\begin{bmatrix} -2 \\\\ 5 \\end{bmatrix} = \\dfrac{1}{11}\\begin{bmatrix} -5 \\\\ 12 \\end{bmatrix}\\).\nTherefore \\(x = -\\dfrac{5}{11},\\ y = \\dfrac{12}{11}\\)."
+  },
+  {
+    "id": "eb7df150-18e7-48e5-8c8b-9789e09b8560",
+    "ref": "Misc II Q.1 (ii)",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ a & a & 2a \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 \\\\ 2 \\\\ 4 \\end{bmatrix}\\).\nHere \\(|A| = a \\neq 0\\) (take \\(a \\neq 0\\)).\nFrom \\(R_2 - 2R_1:\\ (2x+3y+2z) - 2(x+y+z) = 2 - 2\\) gives \\(y = 0\\).\nThe third equation \\(ax + ay + 2az = 4\\) gives \\(x + y + 2z = \\dfrac{4}{a}\\), i.e. \\(x + 2z = \\dfrac{4}{a}\\).\nFrom the first equation with \\(y=0:\\ x + z = 1\\). Subtracting, \\(z = \\dfrac{4}{a} - 1 = \\dfrac{4-a}{a}\\), and \\(x = 1 - z = \\dfrac{2a-4}{a}\\).\nTherefore \\(x = \\dfrac{2a-4}{a},\\ y = 0,\\ z = \\dfrac{4-a}{a}\\)."
+  },
+  {
+    "id": "35457637-3a91-4193-8ff2-226f89fe26ac",
+    "ref": "Misc II Q.1 (iii)",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 5 & -1 & 4 \\\\ 2 & 3 & 5 \\\\ 5 & -2 & 6 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 5 \\\\ 2 \\\\ -1 \\end{bmatrix}\\).\nEliminate: \\((\\text{eq}3 - \\text{eq}1):\\ -y + 2z = -6 \\Rightarrow y = 2z + 6\\).\nSubstitute in eq1: \\(5x - (2z+6) + 4z = 5 \\Rightarrow 5x + 2z = 11\\).\nSubstitute in eq2: \\(2x + 3(2z+6) + 5z = 2 \\Rightarrow 2x + 11z = -16\\).\nSolving \\(5x + 2z = 11\\) and \\(2x + 11z = -16\\): \\(51z = -102 \\Rightarrow z = -2\\), then \\(x = 3\\) and \\(y = 2(-2)+6 = 2\\).\nTherefore \\(x = 3,\\ y = 2,\\ z = -2\\)."
+  },
+  {
+    "id": "fe4e0fa6-54ab-4a8e-95e6-567b577362d0",
+    "ref": "Misc II Q.1 (iv)",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & 3 \\\\ 3 & 1 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -5 \\\\ 3 \\end{bmatrix}\\).\n\\(|A| = (2)(1) - (3)(3) = -7 \\neq 0\\).\n\\(\\text{adj}(A) = \\begin{bmatrix} 1 & -3 \\\\ -3 & 2 \\end{bmatrix}\\), so \\(A^{-1} = -\\dfrac{1}{7}\\begin{bmatrix} 1 & -3 \\\\ -3 & 2 \\end{bmatrix}\\).\n\\(X = A^{-1}B = -\\dfrac{1}{7}\\begin{bmatrix} 1 & -3 \\\\ -3 & 2 \\end{bmatrix}\\begin{bmatrix} -5 \\\\ 3 \\end{bmatrix} = -\\dfrac{1}{7}\\begin{bmatrix} -14 \\\\ 21 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -3 \\end{bmatrix}\\).\nTherefore \\(x = 2,\\ y = -3\\)."
+  },
+  {
+    "id": "7345ae4b-964c-4fed-a07b-a5d6ae819fc8",
+    "ref": "Misc II Q.1 (v)",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & -1 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\) (equations: \\(x+y+z=-1,\\ y+z=2,\\ x+y-z=3\\)).\nFrom eq1 \\(-\\) eq2: \\(x = -1 - 2 = -3\\).\nFrom eq1 \\(-\\) eq3: \\((x+y+z) - (x+y-z) = -1 - 3 \\Rightarrow 2z = -4 \\Rightarrow z = -2\\).\nThen eq2: \\(y + (-2) = 2 \\Rightarrow y = 4\\).\nTherefore \\(x = -3,\\ y = 4,\\ z = -2\\)."
+  },
+  {
+    "id": "bdf44013-7cd1-4b9e-80df-ffe30cb23ddb",
+    "ref": "Misc II Q.2 (i)",
+    "solution": "Matrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & -1 & 0 \\\\ 3 & 3 & -4 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 2 \\end{bmatrix}\\).\nApply \\(R_2 \\to R_2 - 2R_1\\) and \\(R_3 \\to R_3 - 3R_1\\):\n\\(\\begin{bmatrix} 1 & -1 & 1 \\\\ 0 & 1 & -2 \\\\ 0 & 6 & -7 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ -1 \\\\ -1 \\end{bmatrix}\\).\nApply \\(R_3 \\to R_3 - 6R_2:\\ 5z = 5 \\Rightarrow z = 1\\).\nThen \\(y - 2z = -1 \\Rightarrow y = 1\\), and \\(x - y + z = 1 \\Rightarrow x = 1\\).\nTherefore \\(x = 1,\\ y = 1,\\ z = 1\\)."
+  },
+  {
+    "id": "6a68fb43-7b2d-48b9-8324-79349101586b",
+    "ref": "Misc II Q.2 (ii)",
+    "solution": "Matrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ \\tfrac{5}{3} \\\\ \\tfrac{4}{3} \\end{bmatrix}\\) (equations: \\(x+y=1,\\ y+z=\\tfrac{5}{3},\\ z+x=\\tfrac{4}{3}\\)).\nAdding all three equations: \\(2(x+y+z) = 1 + \\dfrac{5}{3} + \\dfrac{4}{3} = 4\\), so \\(x + y + z = 2\\).\nThen \\(z = 2 - (x+y) = 2 - 1 = 1\\), \\(x = 2 - (y+z) = 2 - \\dfrac{5}{3} = \\dfrac{1}{3}\\), \\(y = 2 - (z+x) = 2 - \\dfrac{4}{3} = \\dfrac{2}{3}\\).\nTherefore \\(x = \\dfrac{1}{3},\\ y = \\dfrac{2}{3},\\ z = 1\\)."
+  },
+  {
+    "id": "60e1844c-e24f-48ae-b23e-cef644db9113",
+    "ref": "Misc II Q.2 (iii)",
+    "solution": "Matrix form \\(AX = B\\): \\(\\begin{bmatrix} 2 & -1 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 1 & -4 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 8 \\\\ 1 \\end{bmatrix}\\).\nEliminate \\(y\\): \\((\\text{eq}1 + \\text{eq}3):\\ 5x - 3z = 2\\); \\((\\text{eq}2 + 2\\,\\text{eq}1):\\ 5x + 5z = 10 \\Rightarrow x + z = 2\\).\nFrom \\(x = 2 - z\\) in \\(5x - 3z = 2:\\ 5(2-z) - 3z = 2 \\Rightarrow 8z = 8 \\Rightarrow z = 1\\), so \\(x = 1\\).\nThen eq1: \\(2(1) - y + 1 = 1 \\Rightarrow y = 2\\).\nTherefore \\(x = 1,\\ y = 2,\\ z = 1\\)."
+  },
+  {
+    "id": "4fdd812e-6e4f-4feb-b4e7-7d704c39a0fa",
+    "ref": "Misc II Q.2 (iv)",
+    "solution": "Matrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 3 & -1 & 3 \\\\ 5 & 5 & -4 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 10 \\\\ 3 \\end{bmatrix}\\).\nApply \\(R_2 \\to R_2 - 3R_1:\\ -4y = -8 \\Rightarrow y = 2\\).\nApply \\(R_3 \\to R_3 - 5R_1:\\ -9z = -27 \\Rightarrow z = 3\\).\nThen eq1: \\(x + 2 + 3 = 6 \\Rightarrow x = 1\\).\nTherefore \\(x = 1,\\ y = 2,\\ z = 3\\)."
+  },
+  {
+    "id": "b66a602d-c69d-4a84-a08c-ecae2101a52a",
+    "ref": "Misc II Q.2 (v)",
+    "solution": "Matrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 3 & -1 \\\\ 3 & -1 & -2 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 1 \\\\ 5 \\end{bmatrix}\\).\nApply \\(R_2 \\to R_2 - 2R_1:\\ -y - 3z = -15 \\Rightarrow y + 3z = 15\\).\nApply \\(R_3 \\to R_3 - 3R_1:\\ -7y - 5z = -19 \\Rightarrow 7y + 5z = 19\\).\nFrom \\(y = 15 - 3z\\) in \\(7y + 5z = 19:\\ 7(15 - 3z) + 5z = 19 \\Rightarrow -16z = -86 \\Rightarrow z = \\dfrac{43}{8}\\).\nThen \\(y = 15 - 3\\cdot\\dfrac{43}{8} = -\\dfrac{9}{8}\\), and \\(x = 8 - 2y - z = 8 + \\dfrac{18}{8} - \\dfrac{43}{8} = \\dfrac{39}{8}\\).\nTherefore \\(x = \\dfrac{39}{8},\\ y = -\\dfrac{9}{8},\\ z = \\dfrac{43}{8}\\)."
+  },
+  {
+    "id": "30f90821-f7c3-49c2-8b89-fcae03b6a342",
+    "ref": "Misc II Q.2 (vi)",
+    "solution": "Matrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 3 & 2 \\\\ 3 & -2 & 5 \\\\ 2 & -3 & 6 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 5 \\\\ 7 \\end{bmatrix}\\).\nApply \\(R_2 \\to R_2 - 3R_1:\\ -11y - z = -13 \\Rightarrow 11y + z = 13\\).\nApply \\(R_3 \\to R_3 - 2R_1:\\ -9y + 2z = -5 \\Rightarrow 9y - 2z = 5\\).\nFrom \\(z = 13 - 11y\\) in \\(9y - 2z = 5:\\ 9y - 2(13 - 11y) = 5 \\Rightarrow 31y = 31 \\Rightarrow y = 1\\), so \\(z = 2\\).\nThen eq1: \\(x + 3 + 4 = 6 \\Rightarrow x = -1\\).\nTherefore \\(x = -1,\\ y = 1,\\ z = 2\\)."
+  },
+  {
+    "id": "173440c3-edd6-47a2-baeb-ffc50dd90ed3",
+    "ref": "Misc II Q.3",
+    "solution": "Let the three numbers be \\(x, y, z\\). The conditions give: \\(x + y + z = 6\\); adding \\(3z\\) to \\(y\\) gives \\(y + 3z = 11\\); and first \\(+\\) third \\(=\\) twice second gives \\(x + z = 2y\\), i.e. \\(x - 2y + z = 0\\).\nMatrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 3 \\\\ 1 & -2 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 11 \\\\ 0 \\end{bmatrix}\\).\n\\((\\text{eq}1 - \\text{eq}3):\\ 3y = 6 \\Rightarrow y = 2\\). Then \\(y + 3z = 11 \\Rightarrow z = 3\\), and \\(x + 2 + 3 = 6 \\Rightarrow x = 1\\).\nTherefore the numbers are \\(1,\\ 2,\\ 3\\)."
+  },
+  {
+    "id": "75c7e931-01dd-45e2-9a89-2ac19afa4d80",
+    "ref": "Misc II Q.4",
+    "solution": "Let the cost of a pencil, a pen and a book be \\(x, y, z\\) rupees. The data give:\n\\(4x + 3y + 2z = 150,\\quad x + 2y + 3z = 125,\\quad 6x + 2y + 3z = 175\\).\nMatrix form \\(AX = B\\): \\(\\begin{bmatrix} 4 & 3 & 2 \\\\ 1 & 2 & 3 \\\\ 6 & 2 & 3 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 150 \\\\ 125 \\\\ 175 \\end{bmatrix}\\).\n\\((\\text{eq}3 - \\text{eq}2):\\ 5x = 50 \\Rightarrow x = 10\\).\nThen \\(3y + 2z = 110\\) (eq1) and \\(2y + 3z = 115\\) (eq2). Solving: \\(5y = 100 \\Rightarrow y = 20\\), and \\(z = 25\\).\nTherefore a pencil costs Rs.10, a pen Rs.20 and a book Rs.25."
+  },
+  {
+    "id": "d374b37b-01be-4d2b-96b0-1c5261b228d5",
+    "ref": "Misc II Q.5",
+    "solution": "Let the three numbers be \\(x, y, z\\). The conditions give: \\(x + y + z = 6\\); thrice the third added to the first is \\(x + 3z = 7\\); three times the first added to the sum of second and third is \\(3x + y + z = 12\\).\nMatrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 3 \\\\ 3 & 1 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 7 \\\\ 12 \\end{bmatrix}\\).\n\\((\\text{eq}3 - \\text{eq}1):\\ 2x = 6 \\Rightarrow x = 3\\). Then \\(x + 3z = 7 \\Rightarrow z = \\dfrac{4}{3}\\), and \\(x + y + z = 6 \\Rightarrow y = 6 - 3 - \\dfrac{4}{3} = \\dfrac{5}{3}\\).\nTherefore the numbers are \\(x = 3,\\ y = \\dfrac{5}{3},\\ z = \\dfrac{4}{3}\\)."
+  },
+  {
+    "id": "bcd3a214-eae0-4c42-83cf-68a8f3ee18b1",
+    "ref": "Misc II Q.6",
+    "solution": "Let the three numbers be \\(x, y, z\\). The conditions give: \\(x + y + z = 2\\); twice the second added to first \\(+\\) third is \\(x + 2y + z = 1\\); five times the first added to second \\(+\\) third is \\(5x + y + z = 6\\).\nMatrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 5 & 1 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 1 \\\\ 6 \\end{bmatrix}\\).\n\\((\\text{eq}1 - \\text{eq}2):\\ -y = 1 \\Rightarrow y = -1\\). \\((\\text{eq}3 - \\text{eq}1):\\ 4x = 4 \\Rightarrow x = 1\\). Then \\(z = 2 - x - y = 2 - 1 + 1 = 2\\).\nTherefore the numbers are \\(x = 1,\\ y = -1,\\ z = 2\\)."
+  },
+  {
+    "id": "5a238241-17ba-4e22-967e-e0ade94e1aa1",
+    "ref": "Misc II Q.7",
+    "solution": "Let the amounts invested at 6%, 7% and 8% be \\(x, y, z\\) rupees. The data give:\n\\(x + y + z = 5000\\); total income \\(0.06x + 0.07y + 0.08z = 350\\), i.e. \\(6x + 7y + 8z = 35000\\); and income of first two exceeds the third by 70: \\(0.06x + 0.07y - 0.08z = 70\\), i.e. \\(6x + 7y - 8z = 7000\\).\nAdding the two income equations: \\(12x + 14y = 42000 \\Rightarrow 6x + 7y = 21000\\); subtracting them: \\(16z = 28000 \\Rightarrow z = 1750\\).\nFrom \\(x + y = 5000 - z = 3250\\) and \\(6x + 7y = 21000\\): \\(6(3250 - y) + 7y = 21000 \\Rightarrow y = 1500\\), so \\(x = 1750\\).\nTherefore Rs.1750 at 6%, Rs.1500 at 7% and Rs.1750 at 8%."
+  },
+  {
+    "id": "6c0c4a40-4849-45ff-837b-5609b6905ace",
+    "ref": "Misc II Q.8",
+    "solution": "Let the costs of a Mathematics, Physics and Chemistry book be \\(x, y, z\\) rupees. The data give:\n\\(x + y + z = 210,\\quad x + 2y + z = 240,\\quad x + 3y + 2z = 300\\).\nMatrix form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 3 & 2 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 210 \\\\ 240 \\\\ 300 \\end{bmatrix}\\).\n\\((\\text{eq}2 - \\text{eq}1):\\ y = 30\\). \\((\\text{eq}3 - \\text{eq}2):\\ y + z = 60 \\Rightarrow z = 30\\). Then \\(x + 30 + 30 = 210 \\Rightarrow x = 150\\).\nTherefore the Mathematics book costs Rs.150, the Physics book Rs.30 and the Chemistry book Rs.30."
+  }
+]

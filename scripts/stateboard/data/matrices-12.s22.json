@@ -1,0 +1,240 @@
+[
+  {
+    "ref": "2.2 Solved Ex.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "EASY",
+    "stem": "Find which of the following matrices are invertible: (i) \\(A = \\begin{bmatrix} 2 & 1 \\\\ 4 & 2 \\end{bmatrix}\\)  (ii) \\(B = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\)  (iii) \\(C = \\begin{bmatrix} 1 & 3 & 2 \\\\ 3 & 1 & 2 \\\\ 1 & 2 & 3 \\end{bmatrix}\\)",
+    "solution": "(i) As \\(|A| = \\begin{vmatrix} 2 & 1 \\\\ 4 & 2 \\end{vmatrix} = 0\\), \\(A\\) is singular and hence \\(A\\) is not invertible.\n(ii) As \\(|B| = \\begin{vmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{vmatrix} = \\cos^2\\theta + \\sin^2\\theta = 1 \\neq 0\\), \\(B\\) is nonsingular, \\(B\\) is invertible.\n(iii) \\(|C| = \\begin{vmatrix} 1 & 3 & 2 \\\\ 3 & 1 & 2 \\\\ 1 & 2 & 3 \\end{vmatrix} = -12 \\neq 0\\), \\(C\\) is nonsingular and hence \\(C\\) is invertible."
+  },
+  {
+    "ref": "2.2 Solved Ex.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "MODERATE",
+    "stem": "Find the inverse of \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\).",
+    "solution": "As \\(|A| = \\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix} = -2\\), \\(|A| \\neq 0\\) so \\(A^{-1}\\) exists.\nLet \\(AA^{-1} = I\\) (Here we can use only row transformation).\nUsing \\(R_2 \\to R_2 - 3R_1\\), \\(\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) becomes \\(\\begin{bmatrix} 1 & 2 \\\\ 0 & -2 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 1 & 0 \\\\ -3 & 1 \\end{bmatrix}\\).\nUsing \\(-\\tfrac{1}{2}R_2\\) we get \\(\\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 1 & 0 \\\\ \\tfrac{3}{2} & -\\tfrac{1}{2} \\end{bmatrix}\\).\nUsing \\(R_1 \\to R_1 - 2R_2\\), we get \\(\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} A^{-1} = \\begin{bmatrix} -2 & 1 \\\\ \\tfrac{3}{2} & -\\tfrac{1}{2} \\end{bmatrix}\\).\n\\(\\therefore A^{-1} = \\begin{bmatrix} -2 & 1 \\\\ \\tfrac{3}{2} & -\\tfrac{1}{2} \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Solved Ex.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "HARD",
+    "stem": "Find the inverse of \\(A = \\begin{bmatrix} 3 & 2 & 6 \\\\ 1 & 1 & 2 \\\\ 2 & 2 & 5 \\end{bmatrix}\\) by using elementary row transformations.",
+    "solution": "Consider \\(|A| = 1 \\neq 0\\) so \\(A^{-1}\\) exists.\nConsider \\(AA^{-1} = I\\), i.e. \\(\\begin{bmatrix} 3 & 2 & 6 \\\\ 1 & 1 & 2 \\\\ 2 & 2 & 5 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\nUse \\(R_1 \\leftrightarrow R_2\\): \\(\\begin{bmatrix} 1 & 1 & 2 \\\\ 3 & 2 & 6 \\\\ 2 & 2 & 5 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\nUse \\(R_2 \\to R_2 - 3R_1\\) and \\(R_3 \\to R_3 - 2R_1\\): \\(\\begin{bmatrix} 1 & 1 & 2 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & -3 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}\\).\nUse \\(R_2 \\to -R_2\\): \\(\\begin{bmatrix} 1 & 1 & 2 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 0 & 1 & 0 \\\\ -1 & 3 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}\\).\nUse \\(R_1 \\to R_1 - R_2\\): \\(\\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 1 & -2 & 0 \\\\ -1 & 3 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}\\).\nUse \\(R_1 \\to R_1 - 2R_3\\): \\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} A^{-1} = \\begin{bmatrix} 1 & 2 & -2 \\\\ -1 & 3 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}\\).\n\\(\\therefore A^{-1} = \\begin{bmatrix} 1 & 2 & -2 \\\\ -1 & 3 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Solved Ex.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "HARD",
+    "stem": "Find the inverse of \\(A = \\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & 4 & 3 \\\\ 1 & 3 & 4 \\end{bmatrix}\\) by elementary column transformation.",
+    "solution": "As \\(A^{-1}\\) is required by column transformations we consider \\(A^{-1}A = I\\), i.e. \\(A^{-1} \\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & 4 & 3 \\\\ 1 & 3 & 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\nUsing \\(C_2 \\to C_2 - 3C_1\\) and \\(C_3 \\to C_3 - 3C_1\\): \\(A^{-1} \\begin{bmatrix} 1 & 0 & 0 \\\\ 1 & 1 & 0 \\\\ 1 & 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 1 & -3 & -3 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\nUse \\(C_1 \\to C_1 - C_2\\): \\(A^{-1} \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 4 & -3 & -3 \\\\ -1 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\nUse \\(C_1 \\to C_1 - C_3\\): \\(A^{-1} \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 7 & -3 & -3 \\\\ -1 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\).\n\\(\\therefore A^{-1} = \\begin{bmatrix} 7 & -3 & -3 \\\\ -1 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Solved Ex.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "EASY",
+    "stem": "Find the co-factors of the elements of \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\).",
+    "solution": "Here \\(a_{11} = 1\\), \\(M_{11} = 4\\) and \\(A_{11} = (-1)^{1+1}(4) = 4\\).\n\\(a_{12} = 2\\), \\(M_{12} = 3\\) and \\(A_{12} = (-1)^{1+2}(3) = -3\\).\n\\(a_{21} = 3\\), \\(M_{21} = 2\\) and \\(A_{21} = (-1)^{2+1}(2) = -2\\).\n\\(a_{22} = 4\\), \\(M_{22} = 1\\) and \\(A_{22} = (-1)^{2+2}(1) = 1\\).\n\\(\\therefore\\) the required co-factors are \\(4, -3, -2, 1\\)."
+  },
+  {
+    "ref": "2.2 Solved Ex.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "MODERATE",
+    "stem": "Find the adjoint of matrix \\(A = \\begin{bmatrix} 2 & -3 \\\\ 4 & 1 \\end{bmatrix}\\).",
+    "solution": "Here \\(a_{11} = 2\\), \\(M_{11} = 1\\), \\(A_{11} = (-1)^{1+1}(1) = 1\\).\n\\(a_{12} = -3\\), \\(M_{12} = 4\\), \\(A_{12} = (-1)^{1+2}(4) = -4\\).\n\\(a_{21} = 4\\), \\(M_{21} = -3\\), \\(A_{21} = (-1)^{2+1}(-3) = 3\\).\n\\(a_{22} = 1\\), \\(M_{22} = 2\\), \\(A_{22} = (-1)^{2+2}(2) = 2\\).\n\\(\\therefore\\) the matrix \\([A_{ij}]_{2\\times 2} = \\begin{bmatrix} 1 & -4 \\\\ 3 & 2 \\end{bmatrix}\\).\n\\(\\therefore [A_{ij}]^{T}_{2\\times 2} = \\begin{bmatrix} 1 & 3 \\\\ -4 & 2 \\end{bmatrix}\\).\n\\(\\therefore \\text{adj}(A) = \\begin{bmatrix} 1 & 3 \\\\ -4 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Solved Ex.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "HARD",
+    "stem": "Find the adjoint of matrix \\(A = \\begin{bmatrix} 2 & 0 & -1 \\\\ 3 & 1 & 2 \\\\ -1 & 1 & 2 \\end{bmatrix}\\).",
+    "solution": "Computing minors and co-factors:\n\\(a_{11} = 2\\), \\(M_{11} = 0\\), \\(A_{11} = (-1)^{1+1}M_{11} = 0\\).\n\\(a_{12} = 0\\), \\(M_{12} = 8\\), \\(A_{12} = (-1)^{1+2}M_{12} = -8\\).\n\\(a_{13} = -1\\), \\(M_{13} = 4\\), \\(A_{13} = (-1)^{1+3}M_{13} = 4\\).\n\\(a_{21} = 3\\), \\(M_{21} = 1\\), \\(A_{21} = (-1)^{2+1}M_{21} = -1\\).\n\\(a_{22} = 1\\), \\(M_{22} = 3\\), \\(A_{22} = (-1)^{2+2}M_{22} = 3\\).\n\\(a_{23} = 2\\), \\(M_{23} = 2\\), \\(A_{23} = (-1)^{2+3}M_{23} = -2\\).\n\\(a_{31} = -1\\), \\(M_{31} = 1\\), \\(A_{31} = (-1)^{3+1}M_{31} = 1\\).\n\\(a_{32} = 1\\), \\(M_{32} = 7\\), \\(A_{32} = (-1)^{3+2}M_{32} = -7\\).\n\\(a_{33} = 2\\), \\(M_{33} = 2\\), \\(A_{33} = (-1)^{3+3}M_{33} = 2\\).\n\\(\\therefore\\) the matrix of co-factors is \\(\\begin{bmatrix} A_{11} & A_{12} & A_{13} \\\\ A_{21} & A_{22} & A_{23} \\\\ A_{31} & A_{32} & A_{33} \\end{bmatrix} = \\begin{bmatrix} 0 & -8 & 4 \\\\ -1 & 3 & -2 \\\\ 1 & -7 & 2 \\end{bmatrix}\\).\n\\(\\therefore \\text{adj}(A) = [A_{ij}]^{T}_{3\\times 3} = \\begin{bmatrix} 0 & -1 & 1 \\\\ -8 & 3 & -7 \\\\ 4 & -2 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Solved Ex.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -2 \\\\ 4 & 3 \\end{bmatrix}\\), then find \\(A^{-1}\\) by the adjoint method.",
+    "solution": "For given matrix \\(A\\), we get:\n\\(M_{11} = 3\\), \\(A_{11} = (-1)^{1+1}(3) = 3\\).\n\\(M_{12} = 4\\), \\(A_{12} = (-1)^{1+2}(4) = -4\\).\n\\(M_{21} = -2\\), \\(A_{21} = (-1)^{2+1}(-2) = 2\\).\n\\(M_{22} = 2\\), \\(A_{22} = (-1)^{2+2}(2) = 2\\).\n\\(\\therefore \\text{adj}(A) = \\begin{bmatrix} 3 & 2 \\\\ -4 & 2 \\end{bmatrix}\\).\nAnd \\(|A| = \\begin{vmatrix} 2 & -2 \\\\ 4 & 3 \\end{vmatrix} = 6 + 8 = 14 \\neq 0\\).\n\\(\\therefore\\) using \\(A^{-1} = \\dfrac{1}{|A|}(\\text{adj}\\,A)\\), \\(A^{-1} = \\dfrac{1}{14}\\begin{bmatrix} 3 & 2 \\\\ -4 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "2.2 Solved Ex.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{bmatrix}\\), find \\(A^{-1}\\) by the adjoint method.",
+    "solution": "For the given matrix \\(A\\):\n\\(A_{11} = (-1)^{1+1}\\begin{vmatrix} 2 & -1 \\\\ -1 & 2 \\end{vmatrix} = 3\\), \\(A_{12} = (-1)^{1+2}\\begin{vmatrix} -1 & -1 \\\\ 1 & 2 \\end{vmatrix} = 1\\), \\(A_{13} = (-1)^{1+3}\\begin{vmatrix} -1 & 2 \\\\ 1 & -1 \\end{vmatrix} = -1\\).\n\\(A_{21} = (-1)^{2+1}\\begin{vmatrix} -1 & 1 \\\\ -1 & 2 \\end{vmatrix} = 1\\), \\(A_{22} = (-1)^{2+2}\\begin{vmatrix} 2 & 1 \\\\ 1 & 2 \\end{vmatrix} = 3\\), \\(A_{23} = (-1)^{2+3}\\begin{vmatrix} 2 & -1 \\\\ 1 & -1 \\end{vmatrix} = 1\\).\n\\(A_{31} = (-1)^{3+1}\\begin{vmatrix} -1 & 1 \\\\ 2 & -1 \\end{vmatrix} = -1\\), \\(A_{32} = (-1)^{3+2}\\begin{vmatrix} 2 & 1 \\\\ -1 & -1 \\end{vmatrix} = 1\\), \\(A_{33} = (-1)^{3+3}\\begin{vmatrix} 2 & -1 \\\\ -1 & 2 \\end{vmatrix} = 3\\).\n\\(\\therefore \\text{adj}(A) = \\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\).\nNow \\(|A| = \\begin{vmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{vmatrix} = 2(4-1) + 1(-2+1) + 1(1-2) = 6 - 1 - 1 = 4\\).\nTherefore by using \\(A^{-1} = \\dfrac{1}{|A|}(\\text{adj}\\,A)\\), \\(A^{-1} = \\dfrac{1}{4}\\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "2.2 Solved Ex.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\), verify that \\(A(\\text{adj}\\,A) = (\\text{adj}\\,A)A = |A|\\,I\\).",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\):\n\\(A_{11} = (-1)^{1+1}(4) = 4\\), \\(A_{12} = (-1)^{1+2}(3) = -3\\), \\(A_{21} = (-1)^{2+1}(2) = -2\\), \\(A_{22} = (-1)^{2+2}(1) = 1\\).\n\\(\\text{adj}\\,A = \\begin{bmatrix} A_{11} & A_{21} \\\\ A_{12} & A_{22} \\end{bmatrix} = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\).\n\\(\\therefore A(\\text{adj}\\,A) = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -2 \\end{bmatrix}\\)  ...(i)\n\\((\\text{adj}\\,A)A = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -2 \\end{bmatrix}\\)  ...(ii)\nAnd \\(|A|\\,I = \\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = (-2)\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -2 \\end{bmatrix}\\)  ...(iii)\nFrom (i), (ii) and (iii) we get, \\(A(\\text{adj}\\,A) = (\\text{adj}\\,A)A = |A|\\,I\\)."
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "EASY",
+    "context": "Find the co-factors of the elements of the following matrices.",
+    "setLabel": "2.2-ex-q1",
+    "stem": "\\(\\begin{bmatrix} -1 & 2 \\\\ -3 & 4 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "MODERATE",
+    "context": "Find the co-factors of the elements of the following matrices.",
+    "setLabel": "2.2-ex-q1",
+    "stem": "\\(\\begin{bmatrix} 1 & -1 & 2 \\\\ -2 & 3 & 5 \\\\ -2 & 0 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "EASY",
+    "context": "Find the matrix of co-factors for the following matrices.",
+    "setLabel": "2.2-ex-q2",
+    "stem": "\\(\\begin{bmatrix} 1 & 3 \\\\ 4 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "MODERATE",
+    "context": "Find the matrix of co-factors for the following matrices.",
+    "setLabel": "2.2-ex-q2",
+    "stem": "\\(\\begin{bmatrix} 1 & 0 & 2 \\\\ -2 & 1 & 3 \\\\ 0 & 3 & -5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "EASY",
+    "context": "Find the adjoint of the following matrices.",
+    "setLabel": "2.2-ex-q3",
+    "stem": "\\(\\begin{bmatrix} 2 & -3 \\\\ 3 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "MODERATE",
+    "context": "Find the adjoint of the following matrices.",
+    "setLabel": "2.2-ex-q3",
+    "stem": "\\(\\begin{bmatrix} 1 & -1 & 2 \\\\ -2 & 3 & 5 \\\\ -2 & 0 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & -1 & 2 \\\\ 3 & 0 & -2 \\\\ 1 & 0 & 3 \\end{bmatrix}\\), verify that \\(A(\\text{adj}\\,A) = (\\text{adj}\\,A)A = |A|\\,I\\)."
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.5 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "MODERATE",
+    "context": "Find the inverse of the following matrices by the adjoint method.",
+    "setLabel": "2.2-ex-q5",
+    "stem": "\\(\\begin{bmatrix} -1 & 5 \\\\ -3 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.5 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "MODERATE",
+    "context": "Find the inverse of the following matrices by the adjoint method.",
+    "setLabel": "2.2-ex-q5",
+    "stem": "\\(\\begin{bmatrix} 2 & -2 \\\\ 4 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.5 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "HARD",
+    "context": "Find the inverse of the following matrices by the adjoint method.",
+    "setLabel": "2.2-ex-q5",
+    "stem": "\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 3 & 3 & 0 \\\\ 5 & 2 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.5 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "HARD",
+    "context": "Find the inverse of the following matrices by the adjoint method.",
+    "setLabel": "2.2-ex-q5",
+    "stem": "\\(\\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 2 & 4 \\\\ 0 & 0 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.6 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "MODERATE",
+    "context": "Find the inverse of the following matrices.",
+    "setLabel": "2.2-ex-q6",
+    "stem": "\\(\\begin{bmatrix} 1 & 2 \\\\ 2 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.6 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "MODERATE",
+    "context": "Find the inverse of the following matrices.",
+    "setLabel": "2.2-ex-q6",
+    "stem": "\\(\\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.6 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "HARD",
+    "context": "Find the inverse of the following matrices.",
+    "setLabel": "2.2-ex-q6",
+    "stem": "\\(\\begin{bmatrix} 0 & 1 & 2 \\\\ 1 & 2 & 3 \\\\ 3 & 1 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "2.2 Ex 2.2 Q.6 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "HARD",
+    "context": "Find the inverse of the following matrices.",
+    "setLabel": "2.2-ex-q6",
+    "stem": "\\(\\begin{bmatrix} 2 & 0 & -1 \\\\ 5 & 1 & 0 \\\\ 0 & 1 & 3 \\end{bmatrix}\\)"
+  }
+]

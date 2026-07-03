@@ -61,6 +61,25 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Application of Logic to Switching Circuits",
     ],
   },
+
+  // ── Ch.2 Matrices (12th, Part 1). Computational, ≈figure-free (only determinant
+  //    bars). Covers inverse of a matrix + solving linear equations (11th taught
+  //    basic operations). Matrices transcribed as LaTeX \begin{bmatrix}…\end{bmatrix}.
+  "matrices-12": {
+    id: "matrices-12",
+    chapterName: "Matrices",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Matrices.pdf",
+    pdf: cls12("Part 01/Ch_02_Matrices.pdf"),
+    note: "Maharashtra State Board (Class 12) — Matrices (Balbharati textbook)",
+    subtopics: [
+      "Elementary Transformations of a Matrix",
+      "Inverse by Elementary Transformation Method",
+      "Minors, Cofactors and Adjoint",
+      "Inverse by Adjoint Method",
+      "Solution of Linear Equations using Matrices",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

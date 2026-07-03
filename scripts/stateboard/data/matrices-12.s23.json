@@ -1,0 +1,150 @@
+[
+  {
+    "ref": "2.3 Solved Ex.1 (inversion)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "stem": "Solve the equations \\(2x + 5y = 1\\) and \\(3x + 2y = 7\\) by the method of inversion.",
+    "solution": "Using the given equations we get the corresponding matrix equation \\(\\begin{bmatrix} 2 & 5 \\\\ 3 & 2 \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 7 \\end{bmatrix}\\), i.e. \\(AX = B\\), where \\(A = \\begin{bmatrix} 2 & 5 \\\\ 3 & 2 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 1 \\\\ 7 \\end{bmatrix}\\). Premultiplying by \\(A^{-1}\\): \\((A^{-1}A)X = A^{-1}B\\), i.e. \\(X = A^{-1}B\\). Now \\(|A| = -11\\) and \\(\\text{adj } A = \\begin{bmatrix} 2 & -5 \\\\ -3 & 2 \\end{bmatrix}\\), so \\(A^{-1} = \\dfrac{1}{|A|}(\\text{adj } A) = \\dfrac{1}{-11}\\begin{bmatrix} 2 & -5 \\\\ -3 & 2 \\end{bmatrix}\\). Hence \\(X = \\dfrac{1}{-11}\\begin{bmatrix} 2 & -5 \\\\ -3 & 2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 7 \\end{bmatrix} = \\dfrac{1}{11}\\begin{bmatrix} -2 & 5 \\\\ 3 & -2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 7 \\end{bmatrix}\\), i.e. \\(\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\dfrac{1}{11}\\begin{bmatrix} 33 \\\\ -11 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ -1 \\end{bmatrix}\\). Hence by equality of matrices \\(x = 3\\) and \\(y = -1\\)."
+  },
+  {
+    "ref": "2.3 Solved Ex.2 (inversion)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following equations by the method of inversion: \\(x - y + z = 4,\\ 2x + y - 3z = 0,\\ x + y + z = 2\\).",
+    "solution": "The required matrix equation is \\(\\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & -3 \\\\ 1 & 1 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 4 \\\\ 0 \\\\ 2 \\end{bmatrix}\\), i.e. \\(AX = B\\). Premultiplying by \\(A^{-1}\\) gives \\(X = A^{-1}B\\). Now \\(A = \\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & -3 \\\\ 1 & 1 & 1 \\end{bmatrix}\\), and by definition \\(\\text{adj } A = \\begin{bmatrix} 4 & 2 & 2 \\\\ -5 & 0 & 5 \\\\ 1 & -2 & 3 \\end{bmatrix}\\) and \\(|A| = 10\\). So \\(A^{-1} = \\dfrac{1}{|A|}(\\text{adj } A) = \\dfrac{1}{10}\\begin{bmatrix} 4 & 2 & 2 \\\\ -5 & 0 & 5 \\\\ 1 & -2 & 3 \\end{bmatrix}\\). Hence \\(X = \\dfrac{1}{10}\\begin{bmatrix} 4 & 2 & 2 \\\\ -5 & 0 & 5 \\\\ 1 & -2 & 3 \\end{bmatrix}\\begin{bmatrix} 4 \\\\ 0 \\\\ 2 \\end{bmatrix} = \\dfrac{1}{10}\\begin{bmatrix} 20 \\\\ -10 \\\\ 10 \\end{bmatrix}\\), so \\(\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -1 \\\\ 1 \\end{bmatrix}\\). Hence by equality of matrices \\(x = 2,\\ y = -1\\) and \\(z = 1\\)."
+  },
+  {
+    "ref": "2.3 Solved Ex.1 (reduction)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "stem": "Solve the equations \\(2x + 3y = 9\\) and \\(y - x = -2\\) using the method of reduction.",
+    "solution": "The given equations can be written as \\(2x + 3y = 9\\) and \\(-x + y = -2\\). Hence the matrix equation is \\(\\begin{bmatrix} 2 & 3 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 5 \\end{bmatrix}\\) (i.e. \\(AX = B\\)). Now use \\(R_2 \\to 2R_2 + R_1\\); we get \\(\\begin{bmatrix} 2 & 3 \\\\ 0 & 5 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 5 \\end{bmatrix}\\). We rewrite the equations as \\(2x + 3y = 9\\) ... (i) and \\(5y = 5\\) ... (ii). From (ii) \\(y = 1\\) and using (i) we get \\(x = 3\\). Hence \\(x = 3,\\ y = 1\\) is the required solution."
+  },
+  {
+    "ref": "2.3 Solved Ex.2 (reduction)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following equations by the method of reduction: \\(x + 3y + 3z = 12,\\ x + 4y + 4z = 15\\) and \\(x + 3y + 4z = 13\\).",
+    "solution": "The equations can be written in the form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & 4 & 4 \\\\ 1 & 3 & 4 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 12 \\\\ 15 \\\\ 13 \\end{bmatrix}\\). Using \\(R_2 \\to R_2 - R_1\\) and \\(R_3 \\to R_3 - R_1\\) we get \\(\\begin{bmatrix} 1 & 3 & 3 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 12 \\\\ 3 \\\\ 1 \\end{bmatrix}\\). Again using \\(R_1 \\to R_1 - 3R_2\\) and \\(R_2 \\to R_2 - R_3\\) we get \\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ 2 \\\\ 1 \\end{bmatrix}\\). Hence the required solution is \\(x = 3,\\ y = 2,\\ z = 1\\)."
+  },
+  {
+    "ref": "2.3 Solved Ex.3 (reduction)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "HARD",
+    "stem": "Solve the following equations by the method of reduction: \\(x + y + z = 1,\\ 2x + 3y + 2z = 2\\) and \\(x + y + 2z = 4\\).",
+    "solution": "The equations can be written in the form \\(AX = B\\): \\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ 1 & 1 & 2 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 4 \\end{bmatrix}\\). Using \\(R_2 \\to R_2 - R_3\\) and \\(R_1 \\to R_1 - \\dfrac{1}{2}R_3\\) we get \\(\\begin{bmatrix} \\tfrac{1}{2} & \\tfrac{1}{2} & 0 \\\\ 1 & 2 & 0 \\\\ 1 & 1 & 2 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} -1 \\\\ -2 \\\\ 4 \\end{bmatrix}\\). Now using \\(R_1 \\to R_1 - \\dfrac{1}{4}R_2\\) we get \\(\\begin{bmatrix} \\tfrac{1}{4} & 0 & 0 \\\\ 1 & 2 & 0 \\\\ 1 & 1 & 2 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} -\\tfrac{1}{2} \\\\ -2 \\\\ 4 \\end{bmatrix}\\). Here A is reduced to a lower triangular matrix. Rewriting the equations: \\(\\dfrac{x}{4} = -\\dfrac{1}{2}\\) ... (i), i.e. \\(x = -2\\); \\(x + 2y = -2\\) ... (ii), so \\(2y = -2 + 2 = 0\\), \\(y = 0\\); and \\(x + y + 2z = 4\\), so \\(2z = 4 + 2 + 0 = 6\\), \\(z = 3\\). Hence \\(x = -2,\\ y = 0,\\ z = 3\\) is the required solution."
+  },
+  {
+    "ref": "2.3 Solved Ex.4 (reduction)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "MODERATE",
+    "stem": "The cost of 2 books and 6 note books is Rs. 34 and the cost of 3 books and 4 notebooks is Rs. 31. Using matrices, find the cost of one book and one note-book.",
+    "solution": "Let Rs. \\(x\\) and Rs. \\(y\\) be the costs of one book and one notebook respectively. Then \\(2x + 6y = 34\\) and \\(3x + 4y = 31\\). These can be expressed as \\(\\begin{bmatrix} 2 & 6 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 34 \\\\ 31 \\end{bmatrix}\\) (i.e. \\(AX = B\\)). Using \\(R_2 \\to R_2 - \\dfrac{3}{2}R_1\\) we get \\(\\begin{bmatrix} 2 & 6 \\\\ 0 & -5 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 34 \\\\ -20 \\end{bmatrix}\\). As A is reduced to an upper triangular matrix, the equations are \\(2x + 6y = 34\\) and \\(-5y = -20\\), so \\(y = 4\\); and \\(2x = 34 - 6y = 34 - 24 = 10\\), so \\(x = 5\\). Hence the cost of a book is Rs. 5 and that of a note book is Rs. 4."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by inversion method.",
+    "setLabel": "2.3-ex-q1",
+    "stem": "Solve by inversion method: \\(x + 2y = 2,\\ 2x + 3y = 3\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by inversion method.",
+    "setLabel": "2.3-ex-q1",
+    "stem": "Solve by inversion method: \\(x + y = 4,\\ 2x - y = 5\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by inversion method.",
+    "setLabel": "2.3-ex-q1",
+    "stem": "Solve by inversion method: \\(2x + 6y = 8,\\ x + 3y = 5\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by reduction method.",
+    "setLabel": "2.3-ex-q2",
+    "stem": "Solve by reduction method: \\(2x + y = 5,\\ 3x + 5y = -3\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by reduction method.",
+    "setLabel": "2.3-ex-q2",
+    "stem": "Solve by reduction method: \\(x + 3y = 2,\\ 3x + 5y = 4\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by reduction method.",
+    "setLabel": "2.3-ex-q2",
+    "stem": "Solve by reduction method: \\(3x - y = 1,\\ 4x + y = 6\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "EASY",
+    "context": "Solve the following equations by reduction method.",
+    "setLabel": "2.3-ex-q2",
+    "stem": "Solve by reduction method: \\(5x + 2y = 4,\\ 7x + 3y = 5\\)."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "MODERATE",
+    "stem": "The cost of 4 pencils, 3 pens and 2 erasers is Rs. 60. The cost of 2 pencils, 4 pens and 6 erasers is Rs. 90, whereas the cost of 6 pencils, 2 pens and 3 erasers is Rs. 70. Find the cost of each item by using matrices."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If three numbers are added, their sum is 2. If 2 times the second number is subtracted from the sum of first and third number we get 8, and if three times the first number is added to the sum of second and third number we get 4. Find the numbers using matrices."
+  },
+  {
+    "ref": "2.3 Ex 2.3 Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "HARD",
+    "stem": "The total cost of 3 T.V. sets and 2 V.C.R.s is Rs. 35000. The shop-keeper wants profit of Rs. 1000 per television and Rs. 500 per V.C.R. He can sell 2 T.V. sets and 1 V.C.R. and get the total revenue as Rs. 21,500. Find the cost price and the selling price of a T.V. set and a V.C.R."
+  }
+]

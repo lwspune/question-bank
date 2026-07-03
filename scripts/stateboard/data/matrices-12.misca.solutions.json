@@ -1,0 +1,192 @@
+[
+  {
+    "id": "00b1e188-ccd4-43ae-816d-9ec3a88de46e",
+    "ref": "Misc 2A Q.1",
+    "solution": "We reduce \\(A = \\begin{bmatrix} 1 & 0 & 0 \\\\ 2 & 1 & 0 \\\\ 3 & 3 & 1 \\end{bmatrix}\\) to \\(I_3\\) using column transformations.\n\nApply \\(C_1 \\to C_1 - 2C_2\\):\n\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -3 & 3 & 1 \\end{bmatrix}\\)\n\nApply \\(C_1 \\to C_1 + 3C_3\\):\n\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 3 & 1 \\end{bmatrix}\\)\n\nApply \\(C_2 \\to C_2 - 3C_3\\):\n\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = I_3\\).\n\nHence \\(A\\) is reduced to \\(I_3\\) by column transformations."
+  },
+  {
+    "id": "6203eab7-7ceb-4cfb-85e0-6caa859518fa",
+    "ref": "Misc 2A Q.2",
+    "solution": "We reduce \\(A = \\begin{bmatrix} 2 & 1 & 3 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 1 \\end{bmatrix}\\) to \\(I_3\\) using row transformations.\n\n\\(R_1 \\leftrightarrow R_2\\):\n\\(\\begin{bmatrix} 1 & 0 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & 1 & 1 \\end{bmatrix}\\)\n\n\\(R_2 \\to R_2 - 2R_1,\\ R_3 \\to R_3 - R_1\\):\n\\(\\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 0 & 1 & 0 \\end{bmatrix}\\)\n\n\\(R_3 \\to R_3 - R_2\\):\n\\(\\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & -1 \\end{bmatrix}\\)\n\n\\(R_3 \\to -R_3\\), then \\(R_1 \\to R_1 - R_3,\\ R_2 \\to R_2 - R_3\\):\n\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = I_3\\).\n\nHence \\(A\\) is reduced to \\(I_3\\) by row transformations."
+  },
+  {
+    "id": "20f74e84-9e0c-41e2-a5cf-524276764da9",
+    "ref": "Misc 2A Q.3 i)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\), \\(|A| = (1)(1) - (0)(0) = 1 \\neq 0\\).\n\nSince \\(|A| \\neq 0\\), the matrix is nonsingular, hence invertible."
+  },
+  {
+    "id": "50b1bf94-5d98-44b3-94f9-da43943154bf",
+    "ref": "Misc 2A Q.3 ii)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}\\), \\(|A| = (1)(1) - (1)(1) = 0\\).\n\nSince \\(|A| = 0\\), the matrix is singular, hence NOT invertible."
+  },
+  {
+    "id": "656802d1-f3ee-4406-873c-098950dec49f",
+    "ref": "Misc 2A Q.3 iii)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 3 \\end{bmatrix}\\), \\(|A| = (1)(3) - (2)(3) = 3 - 6 = -3 \\neq 0\\).\n\nSince \\(|A| \\neq 0\\), the matrix is nonsingular, hence invertible."
+  },
+  {
+    "id": "010942cd-dcc5-4256-9d38-29f9bdcfcb2f",
+    "ref": "Misc 2A Q.3 iv)",
+    "solution": "For \\(A = \\begin{bmatrix} 2 & 3 \\\\ 10 & 15 \\end{bmatrix}\\), \\(|A| = (2)(15) - (3)(10) = 30 - 30 = 0\\).\n\nSince \\(|A| = 0\\), the matrix is singular, hence NOT invertible."
+  },
+  {
+    "id": "782b38f7-f886-489e-b0c3-6b604d9391cd",
+    "ref": "Misc 2A Q.3 v)",
+    "solution": "For \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\),\n\\(|A| = \\cos\\theta\\cdot\\cos\\theta - \\sin\\theta\\cdot(-\\sin\\theta) = \\cos^2\\theta + \\sin^2\\theta = 1 \\neq 0\\).\n\nSince \\(|A| = 1 \\neq 0\\), the matrix is nonsingular, hence invertible."
+  },
+  {
+    "id": "57e283b6-dea7-4f12-94d0-0acc0bad4456",
+    "ref": "Misc 2A Q.3 vi)",
+    "solution": "For \\(A = \\begin{bmatrix} \\sec\\theta & \\tan\\theta \\\\ \\tan\\theta & \\sec\\theta \\end{bmatrix}\\),\n\\(|A| = \\sec^2\\theta - \\tan^2\\theta = 1 \\neq 0\\).\n\nSince \\(|A| = 1 \\neq 0\\), the matrix is nonsingular, hence invertible."
+  },
+  {
+    "id": "31485b03-f1e6-4870-81b9-223e8071522f",
+    "ref": "Misc 2A Q.3 vii)",
+    "solution": "For \\(A = \\begin{bmatrix} 3 & 4 & 3 \\\\ 1 & 1 & 0 \\\\ 1 & 4 & 5 \\end{bmatrix}\\), expand along \\(R_1\\):\n\\(|A| = 3(1\\cdot5 - 0\\cdot4) - 4(1\\cdot5 - 0\\cdot1) + 3(1\\cdot4 - 1\\cdot1)\\)\n\\(= 3(5) - 4(5) + 3(3) = 15 - 20 + 9 = 4 \\neq 0\\).\n\nSince \\(|A| \\neq 0\\), the matrix is nonsingular, hence invertible."
+  },
+  {
+    "id": "457aadba-2909-451f-8f99-d5f6c35bf23e",
+    "ref": "Misc 2A Q.3 viii)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & -1 & 3 \\\\ 1 & 2 & 3 \\end{bmatrix}\\), rows \\(R_1\\) and \\(R_3\\) are identical.\n\nA determinant with two identical rows equals \\(0\\), so \\(|A| = 0\\).\n\nSince \\(|A| = 0\\), the matrix is singular, hence NOT invertible."
+  },
+  {
+    "id": "b52cba8b-5102-4f77-883c-615a82bc8da3",
+    "ref": "Misc 2A Q.3 ix)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & 4 & 5 \\\\ 4 & 6 & 8 \\end{bmatrix}\\), note \\(R_3 = R_1 + R_2\\), so the rows are dependent.\n\nExpanding: \\(|A| = 1(32-30) - 2(24-20) + 3(18-16) = 2 - 8 + 6 = 0\\).\n\nSince \\(|A| = 0\\), the matrix is singular, hence NOT invertible."
+  },
+  {
+    "id": "0472eb91-8111-40bc-abe4-ea96046a918b",
+    "ref": "Misc 2A Q.4",
+    "solution": "\\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 1 & -2 & -3 \\end{bmatrix}\\ (2\\times3)\\), \\(B = \\begin{bmatrix} 1 & -1 \\\\ 1 & 2 \\\\ 1 & -2 \\end{bmatrix}\\ (3\\times2)\\).\n\n\\(AB = \\begin{bmatrix} 1+2+3 & -1+4-6 \\\\ 1-2-3 & -1-4+6 \\end{bmatrix} = \\begin{bmatrix} 6 & -3 \\\\ -4 & 1 \\end{bmatrix}\\).\n\n\\(|AB| = (6)(1) - (-3)(-4) = 6 - 12 = -6 \\neq 0\\).\n\nSince \\(|AB| \\neq 0\\), \\(AB\\) is nonsingular, hence \\(AB\\) has an inverse."
+  },
+  {
+    "id": "1e5eae40-6859-4d50-915b-f9407e48f721",
+    "ref": "Misc 2A Q.5",
+    "solution": "Let \\(A = \\begin{bmatrix} x & 0 & 0 \\\\ 0 & y & 0 \\\\ 0 & 0 & z \\end{bmatrix}\\) with \\(x,y,z \\neq 0\\) (nonsingular).\n\nWrite \\(A = IA\\) and apply \\(R_1 \\to \\tfrac{1}{x}R_1,\\ R_2 \\to \\tfrac{1}{y}R_2,\\ R_3 \\to \\tfrac{1}{z}R_3\\):\n\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = \\begin{bmatrix} \\tfrac{1}{x} & 0 & 0 \\\\ 0 & \\tfrac{1}{y} & 0 \\\\ 0 & 0 & \\tfrac{1}{z} \\end{bmatrix} A\\).\n\nHence \\(A^{-1} = \\begin{bmatrix} \\tfrac{1}{x} & 0 & 0 \\\\ 0 & \\tfrac{1}{y} & 0 \\\\ 0 & 0 & \\tfrac{1}{z} \\end{bmatrix}\\).\n\nFor \\(\\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}\\) take \\(x=2,\\ y=1,\\ z=-1\\):\n\\(A^{-1} = \\begin{bmatrix} \\tfrac{1}{2} & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "305e6d68-3ba8-414a-9bf7-ceca47e9d9fa",
+    "ref": "Misc 2A Q.6",
+    "solution": "\\(AX = I\\) means \\(X = A^{-1}\\) for \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\).\n\n\\(|A| = (1)(4) - (2)(3) = 4 - 6 = -2 \\neq 0\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\).\n\n\\(X = A^{-1} = \\frac{1}{|A|}\\,\\text{adj}(A) = -\\frac{1}{2}\\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 1 \\\\ \\tfrac{3}{2} & -\\tfrac{1}{2} \\end{bmatrix}\\)."
+  },
+  {
+    "id": "459f7dbc-0898-401b-ada6-63cc69398db2",
+    "ref": "Misc 2A Q.7 i)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & -1 \\\\ 2 & 3 \\end{bmatrix}\\), \\(|A| = (1)(3) - (-1)(2) = 3 + 2 = 5 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 3 & 1 \\\\ -2 & 1 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\frac{1}{5}\\begin{bmatrix} 3 & 1 \\\\ -2 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "0198c8c8-18cd-4828-ba63-3d8664b3d8ac",
+    "ref": "Misc 2A Q.7 ii)",
+    "solution": "For \\(A = \\begin{bmatrix} 2 & 1 \\\\ 1 & -1 \\end{bmatrix}\\), \\(|A| = (2)(-1) - (1)(1) = -2 - 1 = -3 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n\\(\\text{adj}(A) = \\begin{bmatrix} -1 & -1 \\\\ -1 & 2 \\end{bmatrix}\\).\n\n\\(A^{-1} = -\\frac{1}{3}\\begin{bmatrix} -1 & -1 \\\\ -1 & 2 \\end{bmatrix} = \\frac{1}{3}\\begin{bmatrix} 1 & 1 \\\\ 1 & -2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "22caed6f-73d8-41ac-92be-02abf93bef70",
+    "ref": "Misc 2A Q.7 iii)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 3 \\\\ 2 & 7 \\end{bmatrix}\\), \\(|A| = (1)(7) - (3)(2) = 7 - 6 = 1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 7 & -3 \\\\ -2 & 1 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\begin{bmatrix} 7 & -3 \\\\ -2 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "c5ce2b89-e3fa-483a-8a17-e739955a7407",
+    "ref": "Misc 2A Q.7 iv)",
+    "solution": "For \\(A = \\begin{bmatrix} 2 & -3 \\\\ 5 & 7 \\end{bmatrix}\\), \\(|A| = (2)(7) - (-3)(5) = 14 + 15 = 29 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 7 & 3 \\\\ -5 & 2 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\frac{1}{29}\\begin{bmatrix} 7 & 3 \\\\ -5 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "543de72b-4349-4a85-8cd7-739b4dea46cc",
+    "ref": "Misc 2A Q.7 v)",
+    "solution": "For \\(A = \\begin{bmatrix} 2 & 1 \\\\ 7 & 4 \\end{bmatrix}\\), \\(|A| = (2)(4) - (1)(7) = 8 - 7 = 1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 4 & -1 \\\\ -7 & 2 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\begin{bmatrix} 4 & -1 \\\\ -7 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "d3e93e2c-64ea-44f3-8f68-4a982d70a2c3",
+    "ref": "Misc 2A Q.7 vi)",
+    "solution": "For \\(A = \\begin{bmatrix} 3 & -10 \\\\ 2 & -7 \\end{bmatrix}\\), \\(|A| = (3)(-7) - (-10)(2) = -21 + 20 = -1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n\\(\\text{adj}(A) = \\begin{bmatrix} -7 & 10 \\\\ -2 & 3 \\end{bmatrix}\\).\n\n\\(A^{-1} = -\\begin{bmatrix} -7 & 10 \\\\ -2 & 3 \\end{bmatrix} = \\begin{bmatrix} 7 & -10 \\\\ 2 & -3 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "d784be1e-29ed-41ac-84c3-db6aa61eb8d2",
+    "ref": "Misc 2A Q.7 vii)",
+    "solution": "For \\(A = \\begin{bmatrix} 2 & -3 & 3 \\\\ 2 & 2 & 3 \\\\ 3 & -2 & 2 \\end{bmatrix}\\), expand along \\(R_1\\):\n\\(|A| = 2(4+6) + 3(4-9) + 3(-4-6) = 20 - 15 - 30 = -25 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nCofactors: \\(A_{11}=10,\\ A_{12}=5,\\ A_{13}=-10\\); \\(A_{21}=0,\\ A_{22}=-5,\\ A_{23}=-5\\); \\(A_{31}=-15,\\ A_{32}=0,\\ A_{33}=10\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 10 & 0 & -15 \\\\ 5 & -5 & 0 \\\\ -10 & -5 & 10 \\end{bmatrix}\\).\n\n\\(A^{-1} = -\\frac{1}{25}\\begin{bmatrix} 10 & 0 & -15 \\\\ 5 & -5 & 0 \\\\ -10 & -5 & 10 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "d7b3aaa5-c4b3-40a9-a719-5ac08d904a14",
+    "ref": "Misc 2A Q.7 viii)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 3 & -2 \\\\ -3 & 0 & -5 \\\\ 2 & 5 & 0 \\end{bmatrix}\\), expand along \\(R_1\\):\n\\(|A| = 1(0+25) - 3(0+10) + (-2)(-15-0) = 25 - 30 + 30 = 25 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nCofactors: \\(A_{11}=25,\\ A_{12}=-10,\\ A_{13}=-15\\); \\(A_{21}=-10,\\ A_{22}=4,\\ A_{23}=1\\); \\(A_{31}=-15,\\ A_{32}=11,\\ A_{33}=9\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 25 & -10 & -15 \\\\ -10 & 4 & 11 \\\\ -15 & 1 & 9 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\frac{1}{25}\\begin{bmatrix} 25 & -10 & -15 \\\\ -10 & 4 & 11 \\\\ -15 & 1 & 9 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "7eefd362-6122-4ab7-9a5a-6e94c1492029",
+    "ref": "Misc 2A Q.7 ix)",
+    "solution": "For \\(A = \\begin{bmatrix} 2 & 0 & -1 \\\\ 5 & 1 & 0 \\\\ 0 & 1 & 3 \\end{bmatrix}\\), expand along \\(R_1\\):\n\\(|A| = 2(3-0) - 0 + (-1)(5-0) = 6 - 5 = 1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nCofactors: \\(A_{11}=3,\\ A_{12}=-15,\\ A_{13}=5\\); \\(A_{21}=-1,\\ A_{22}=6,\\ A_{23}=-2\\); \\(A_{31}=1,\\ A_{32}=-5,\\ A_{33}=2\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} 3 & -1 & 1 \\\\ -15 & 6 & -5 \\\\ 5 & -2 & 2 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\frac{1}{1}\\,\\text{adj}(A) = \\begin{bmatrix} 3 & -1 & 1 \\\\ -15 & 6 & -5 \\\\ 5 & -2 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "964f6e48-bb3a-4438-b3e5-306f65f06642",
+    "ref": "Misc 2A Q.7 x)",
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 2 & -2 \\\\ 0 & -2 & 1 \\\\ -1 & 3 & 0 \\end{bmatrix}\\), expand along \\(R_1\\):\n\\(|A| = 1(0-3) - 2(0+1) + (-2)(0-2) = -3 - 2 + 4 = -1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nCofactors: \\(A_{11}=-3,\\ A_{12}=-1,\\ A_{13}=-2\\); \\(A_{21}=-6,\\ A_{22}=-2,\\ A_{23}=-5\\); \\(A_{31}=-2,\\ A_{32}=-1,\\ A_{33}=-2\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} -3 & -6 & -2 \\\\ -1 & -2 & -1 \\\\ -2 & -5 & -2 \\end{bmatrix}\\).\n\n\\(A^{-1} = -\\begin{bmatrix} -3 & -6 & -2 \\\\ -1 & -2 & -1 \\\\ -2 & -5 & -2 \\end{bmatrix} = \\begin{bmatrix} 3 & 6 & 2 \\\\ 1 & 2 & 1 \\\\ 2 & 5 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "5cdf48f8-11a8-46b1-a39b-91eb30e4fefc",
+    "ref": "Misc 2A Q.8",
+    "solution": "Let \\(A = \\begin{bmatrix} \\cos\\theta & -\\sin\\theta & 0 \\\\ \\sin\\theta & \\cos\\theta & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\). Here \\(|A| = \\cos^2\\theta + \\sin^2\\theta = 1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n(i) Row transformations: write \\(A = IA\\). Apply \\(R_1 \\to \\cos\\theta\\,R_1 + \\sin\\theta\\,R_2\\) and \\(R_2 \\to -\\sin\\theta\\,R_1 + \\cos\\theta\\,R_2\\) (using \\(\\cos^2\\theta+\\sin^2\\theta=1\\)); the left side becomes \\(I\\) and the right side becomes \\(A^{-1}\\).\n\n(ii) Column transformations: write \\(A = AI\\) and apply the corresponding column operations \\(C_1 \\to \\cos\\theta\\,C_1 + \\sin\\theta\\,C_2\\), \\(C_2 \\to -\\sin\\theta\\,C_1 + \\cos\\theta\\,C_2\\).\n\nBoth methods give\n\\(A^{-1} = \\begin{bmatrix} \\cos\\theta & \\sin\\theta & 0 \\\\ -\\sin\\theta & \\cos\\theta & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\).\n(This is just \\(A^{T}\\), as expected since \\(A\\) is orthogonal.)"
+  },
+  {
+    "id": "45957eeb-ed56-414a-be09-5184e6212c78",
+    "ref": "Misc 2A Q.9",
+    "solution": "\\(A = \\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}\\).\n\n\\(AB = \\begin{bmatrix} 2+9 & 0+3 \\\\ 1+6 & 0+2 \\end{bmatrix} = \\begin{bmatrix} 11 & 3 \\\\ 7 & 2 \\end{bmatrix}\\), with \\(|AB| = 22 - 21 = 1\\).\n\n\\((AB)^{-1} = \\frac{1}{1}\\begin{bmatrix} 2 & -3 \\\\ -7 & 11 \\end{bmatrix} = \\begin{bmatrix} 2 & -3 \\\\ -7 & 11 \\end{bmatrix}\\).\n\nVerification: \\(A^{-1} = \\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix}\\) (since \\(|A|=1\\)), \\(B^{-1} = \\begin{bmatrix} 1 & 0 \\\\ -3 & 1 \\end{bmatrix}\\) (since \\(|B|=1\\)).\n\n\\(B^{-1}A^{-1} = \\begin{bmatrix} 1 & 0 \\\\ -3 & 1 \\end{bmatrix}\\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 2 & -3 \\\\ -7 & 11 \\end{bmatrix} = (AB)^{-1}\\).\n\nHence \\((AB)^{-1} = B^{-1}A^{-1}\\) is verified."
+  },
+  {
+    "id": "d098735c-8d02-4d90-bbee-b5854dc565ae",
+    "ref": "Misc 2A Q.10",
+    "solution": "\\(A = \\begin{bmatrix} 4 & 5 \\\\ 2 & 1 \\end{bmatrix}\\), \\(|A| = (4)(1) - (5)(2) = 4 - 10 = -6 \\neq 0\\).\n\n\\(A^{-1} = \\frac{1}{-6}\\begin{bmatrix} 1 & -5 \\\\ -2 & 4 \\end{bmatrix} = \\frac{1}{6}\\begin{bmatrix} -1 & 5 \\\\ 2 & -4 \\end{bmatrix}\\).\n\nNow \\(A - 5I = \\begin{bmatrix} 4 & 5 \\\\ 2 & 1 \\end{bmatrix} - \\begin{bmatrix} 5 & 0 \\\\ 0 & 5 \\end{bmatrix} = \\begin{bmatrix} -1 & 5 \\\\ 2 & -4 \\end{bmatrix}\\).\n\nSo \\(\\frac{1}{6}(A - 5I) = \\frac{1}{6}\\begin{bmatrix} -1 & 5 \\\\ 2 & -4 \\end{bmatrix} = A^{-1}\\).\n\nHence \\(A^{-1} = \\frac{1}{6}(A - 5I)\\) is shown."
+  },
+  {
+    "id": "367d1cdf-5dca-4688-ae54-e0f27b1546a3",
+    "ref": "Misc 2A Q.11",
+    "solution": "\\(AX = B \\Rightarrow X = A^{-1}B\\), where \\(A = \\begin{bmatrix} 1 & 2 \\\\ -1 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 0 & 1 \\\\ 2 & 4 \\end{bmatrix}\\).\n\n\\(|A| = (1)(3) - (2)(-1) = 3 + 2 = 5\\), \\(A^{-1} = \\frac{1}{5}\\begin{bmatrix} 3 & -2 \\\\ 1 & 1 \\end{bmatrix}\\).\n\n\\(X = \\frac{1}{5}\\begin{bmatrix} 3 & -2 \\\\ 1 & 1 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ 2 & 4 \\end{bmatrix} = \\frac{1}{5}\\begin{bmatrix} -4 & -5 \\\\ 2 & 5 \\end{bmatrix} = \\begin{bmatrix} -\\tfrac{4}{5} & -1 \\\\ \\tfrac{2}{5} & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "99132614-ccfe-4ece-bb92-082aeed0896c",
+    "ref": "Misc 2A Q.12",
+    "solution": "\\(AX = B \\Rightarrow X = A^{-1}B\\), where \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ -1 & 1 & 2 \\\\ 1 & 2 & 4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\).\n\n\\(|A| = 1(4-4) - 2(-4-2) + 3(-2-1) = 0 + 12 - 9 = 3 \\neq 0\\).\n\nCofactors give \\(\\text{adj}(A) = \\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{1}{3}\\,\\text{adj}(A)\\).\n\n\\(X = \\frac{1}{3}\\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix} = \\frac{1}{3}\\begin{bmatrix} -1 \\\\ -1 \\\\ 0 \\end{bmatrix} = \\begin{bmatrix} -\\tfrac{1}{3} \\\\ -\\tfrac{1}{3} \\\\ 0 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "9abf62cb-28d9-4d52-a2c3-851cc19f3231",
+    "ref": "Misc 2A Q.13",
+    "solution": "\\(AXB = C \\Rightarrow X = A^{-1}CB^{-1}\\), where \\(A = \\begin{bmatrix} 1 & 1 \\\\ 1 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 4 & 1 \\\\ 3 & 1 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} 24 & 7 \\\\ 31 & 9 \\end{bmatrix}\\).\n\n\\(|A|=1\\Rightarrow A^{-1} = \\begin{bmatrix} 2 & -1 \\\\ -1 & 1 \\end{bmatrix}\\); \\(|B|=1\\Rightarrow B^{-1} = \\begin{bmatrix} 1 & -1 \\\\ -3 & 4 \\end{bmatrix}\\).\n\n\\(A^{-1}C = \\begin{bmatrix} 2 & -1 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 24 & 7 \\\\ 31 & 9 \\end{bmatrix} = \\begin{bmatrix} 17 & 5 \\\\ 7 & 2 \\end{bmatrix}\\).\n\n\\(X = \\begin{bmatrix} 17 & 5 \\\\ 7 & 2 \\end{bmatrix}\\begin{bmatrix} 1 & -1 \\\\ -3 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 3 \\\\ 1 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "ba318ebd-1701-4a3c-9a47-fb854d00c530",
+    "ref": "Misc 2A Q.14",
+    "solution": "Let \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 5 \\\\ 2 & 4 & 7 \\end{bmatrix}\\). Expand along \\(R_1\\):\n\\(|A| = 1(7-20) - 2(7-10) + 3(4-2) = -13 + 6 + 6 = -1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nCofactors: \\(A_{11}=-13,\\ A_{12}=3,\\ A_{13}=2\\); \\(A_{21}=-2,\\ A_{22}=1,\\ A_{23}=0\\); \\(A_{31}=7,\\ A_{32}=-2,\\ A_{33}=-1\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} -13 & -2 & 7 \\\\ 3 & 1 & -2 \\\\ 2 & 0 & -1 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\frac{1}{-1}\\,\\text{adj}(A) = \\begin{bmatrix} 13 & 2 & -7 \\\\ -3 & -1 & 2 \\\\ -2 & 0 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "b40bb1b1-9d57-4f20-ac24-6f8752400f67",
+    "ref": "Misc 2A Q.15",
+    "solution": "Let \\(A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 2 & 3 \\\\ 1 & 2 & 1 \\end{bmatrix}\\). Expand along \\(R_1\\):\n\\(|A| = 1(2-6) - 0 + 1(0-2) = -4 - 2 = -6 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nCofactors: \\(A_{11}=-4,\\ A_{12}=3,\\ A_{13}=-2\\); \\(A_{21}=2,\\ A_{22}=0,\\ A_{23}=-2\\); \\(A_{31}=-2,\\ A_{32}=-3,\\ A_{33}=2\\).\n\n\\(\\text{adj}(A) = \\begin{bmatrix} -4 & 2 & -2 \\\\ 3 & 0 & -3 \\\\ -2 & -2 & 2 \\end{bmatrix}\\).\n\n\\(A^{-1} = \\frac{1}{-6}\\begin{bmatrix} -4 & 2 & -2 \\\\ 3 & 0 & -3 \\\\ -2 & -2 & 2 \\end{bmatrix} = \\frac{1}{6}\\begin{bmatrix} 4 & -2 & 2 \\\\ -3 & 0 & 3 \\\\ 2 & 2 & -2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "94dbf880-1f58-49c6-b307-6052e4021e8b",
+    "ref": "Misc 2A Q.16",
+    "solution": "Let \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ -1 & 1 & 2 \\\\ 1 & 2 & 4 \\end{bmatrix}\\), \\(|A| = 1(4-4) - 2(-4-2) + 3(-2-1) = 12 - 9 = 3 \\neq 0\\).\n\nAdjoint method — cofactors give\n\\(\\text{adj}(A) = \\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{1}{3}\\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}\\).\n\nElementary transformations — writing \\(A = IA\\) and row-reducing \\(A\\) to \\(I\\) (using \\(R_2 \\to R_2 + R_1,\\ R_3 \\to R_3 - R_1\\), then clearing) yields the identical result\n\\(A^{-1} = \\frac{1}{3}\\begin{bmatrix} 0 & -2 & 1 \\\\ 6 & 1 & -5 \\\\ -3 & 0 & 3 \\end{bmatrix}\\).\n\nBoth methods agree."
+  },
+  {
+    "id": "36d5109d-20ee-46ba-83aa-3b0f88cb3d36",
+    "ref": "Misc 2A Q.17",
+    "solution": "Let \\(A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 2 & 3 \\\\ 1 & 2 & 1 \\end{bmatrix}\\), \\(|A| = 1(2-6) + 1(0-2) = -6 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nWrite \\(A = AI\\) and reduce \\(A\\) (on the left) to \\(I\\) using column transformations; the same operations applied to \\(I\\) (on the right) build \\(A^{-1}\\). Carrying this out gives\n\\(A^{-1} = \\frac{1}{6}\\begin{bmatrix} 4 & -2 & 2 \\\\ -3 & 0 & 3 \\\\ 2 & 2 & -2 \\end{bmatrix}\\)\n(matching the adjoint result for the same matrix)."
+  },
+  {
+    "id": "43326ced-f22e-4a68-819e-19a93a41cbaa",
+    "ref": "Misc 2A Q.18",
+    "solution": "Let \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 5 \\\\ 2 & 4 & 7 \\end{bmatrix}\\), \\(|A| = -1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nWrite \\(A = IA\\) and reduce \\(A\\) to \\(I\\) by row transformations (\\(R_2 \\to R_2 - R_1,\\ R_3 \\to R_3 - 2R_1\\), then clear the remaining entries); the matrix that accumulates on the right of \\(I\\) is \\(A^{-1}\\):\n\\(A^{-1} = \\begin{bmatrix} 13 & 2 & -7 \\\\ -3 & -1 & 2 \\\\ -2 & 0 & 1 \\end{bmatrix}\\)\n(matching the adjoint result of Q.14 for the same matrix)."
+  },
+  {
+    "id": "95569106-af91-43aa-86a6-d321c4a213f9",
+    "ref": "Misc 2A Q.19 i)",
+    "solution": "Let \\(A = [a_{ij}]_{3\\times3}\\) with cofactors \\(A_{ij}\\). The expression\n\\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23}\\)\nmultiplies the entries of row 1 by the cofactors of row 2.\n\nBy the property of \\(\"alien cofactors\\)\": the sum of products of the elements of one row with the cofactors of a DIFFERENT row is \\(0\\). Equivalently, this sum equals the determinant of the matrix obtained by replacing row 2 of \\(A\\) with a copy of row 1 — that matrix has two identical rows, so its determinant is \\(0\\).\n\nHence \\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23} = 0\\)."
+  },
+  {
+    "id": "6446a6f9-6c2f-4c85-8b29-c757aac3ed81",
+    "ref": "Misc 2A Q.19 ii)",
+    "solution": "Let \\(A = [a_{ij}]_{3\\times3}\\) with cofactors \\(A_{ij}\\). The expression\n\\(a_{11}A_{11} + a_{12}A_{12} + a_{13}A_{13}\\)\nmultiplies the entries of row 1 by the cofactors of the SAME row 1.\n\nThis is precisely the expansion of the determinant of \\(A\\) along row 1.\n\nHence \\(a_{11}A_{11} + a_{12}A_{12} + a_{13}A_{13} = |A|\\)."
+  },
+  {
+    "id": "4927c57b-225c-4dfd-9597-9efcbc2e59d4",
+    "ref": "Misc 2A Q.20",
+    "solution": "\\(XA = B \\Rightarrow X = BA^{-1}\\), where \\(A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 2 & 3 \\\\ 1 & 2 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 5 \\\\ 2 & 4 & 7 \\end{bmatrix}\\).\n\nFrom Q.15, \\(|A| = -6\\) and \\(A^{-1} = \\frac{1}{6}\\begin{bmatrix} 4 & -2 & 2 \\\\ -3 & 0 & 3 \\\\ 2 & 2 & -2 \\end{bmatrix}\\).\n\n\\(X = B A^{-1} = \\frac{1}{6}\\begin{bmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 5 \\\\ 2 & 4 & 7 \\end{bmatrix}\\begin{bmatrix} 4 & -2 & 2 \\\\ -3 & 0 & 3 \\\\ 2 & 2 & -2 \\end{bmatrix} = \\frac{1}{6}\\begin{bmatrix} 4 & 4 & 2 \\\\ 11 & 8 & -5 \\\\ 10 & 10 & 2 \\end{bmatrix}\\)."
+  }
+]

@@ -86,7 +86,32 @@ async function main() {
     if (count === 1) updated++;
     else console.log(`  WARN ${r.ref} (${r.id}): matched ${count} rows (not this exam's subjective?)`);
   }
-  console.log(`\nupdated solution on ${updated} / ${rows.length} rows.`);
+  console.log(`\nupdated solution on ${updated} / ${rows.length} subjective rows.`);
+
+  // MCQ verify files (data/<id>.*.mcq-verify.json = [{id, ref, derived_answer,
+  // matches_current, solution}]) — apply the brief solution to the mcq rows.
+  // A mismatch (matches_current=false) is NOT auto-re-keyed (that needs an
+  // is_correct move + content_hash recompute) — it's flagged LOUD for a manual fix.
+  const mcqFiles = readdirSync(DATA).filter((f) => f.startsWith(`${id}.`) && f.endsWith(".mcq-verify.json"));
+  let mcqUpdated = 0;
+  const mismatches: string[] = [];
+  for (const f of mcqFiles) {
+    const frag = JSON.parse(readFileSync(join(DATA, f), "utf8")) as Array<{
+      id: string; ref: string; derived_answer?: string; matches_current?: boolean; solution?: string;
+    }>;
+    for (const m of frag) {
+      if (m.matches_current === false) mismatches.push(`${m.ref}: verifier says ${m.derived_answer}, differs from current key — RE-KEY MANUALLY`);
+      if (!m.solution) continue;
+      const { error, count } = await client
+        .from("questions")
+        .update({ solution: normalizeNewlines(m.solution) }, { count: "exact" })
+        .eq("id", m.id).eq("exam_id", EXAM_ID).eq("question_format", "mcq");
+      if (error) throw new Error(`mcq update ${m.ref}: ${error.message}`);
+      if (count === 1) mcqUpdated++;
+    }
+  }
+  if (mcqFiles.length) console.log(`updated solution on ${mcqUpdated} mcq row(s).`);
+  if (mismatches.length) console.log(`\n!! MCQ KEY MISMATCHES (${mismatches.length}) — re-key before flipping:\n  ${mismatches.join("\n  ")}`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

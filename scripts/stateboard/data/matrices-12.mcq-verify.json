@@ -1,0 +1,86 @@
+[
+  {
+    "id": "33eb6017-e5ed-45ec-a8c6-1f78aa406c14",
+    "ref": "Misc I (1)",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "For \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\), \\(\\text{adj}(A)\\) swaps the diagonal entries and negates the off-diagonal ones, giving \\(\\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\). Matching \\(\\begin{bmatrix} 4 & a \\\\ -3 & b \\end{bmatrix}\\) gives \\(a = -2,\\ b = 1\\) — option A."
+  },
+  {
+    "id": "274ca62d-8261-4b47-9894-4711669c2c38",
+    "ref": "Misc I (2)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "For \\(\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\), \\(|A| = -1\\) and \\(\\text{adj}(A) = \\begin{bmatrix} 0 & -1 \\\\ -1 & 0 \\end{bmatrix}\\), so \\(A^{-1} = \\dfrac{1}{-1}\\,\\text{adj}(A) = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\), the matrix itself — option B."
+  },
+  {
+    "id": "3def8024-a681-4ec7-9661-4a7af8167083",
+    "ref": "Misc I (3)",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "Since \\(A(\\text{adj}\\,A) = |A|\\,I = kI\\), we have \\(k = |A|\\). For \\(A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}\\), \\(|A| = 1 - 4 = -3\\) — option D."
+  },
+  {
+    "id": "76057aea-b983-40ac-9813-f436e8efb3e8",
+    "ref": "Misc I (4)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "For \\(A = \\begin{bmatrix} 2 & -4 \\\\ 3 & 1 \\end{bmatrix}\\), \\(\\text{adj}(A)\\) swaps the diagonal and negates the off-diagonal entries: \\(\\begin{bmatrix} 1 & 4 \\\\ -3 & 2 \\end{bmatrix}\\) — option B."
+  },
+  {
+    "id": "f63ea4ab-65f7-4ef0-b9cf-01c16e163046",
+    "ref": "Misc I (5)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "Since \\(A(\\text{adj}\\,A) = |A|\\,I = kI\\), \\(k = |A|\\). For \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\), \\(|A| = 4 - 6 = -2\\) — option B."
+  },
+  {
+    "id": "841e10bb-3ceb-4e76-8491-a2e73db8a720",
+    "ref": "Misc I (6)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "\\(A^{-1}\\) fails to exist when \\(|A| = 0\\). For \\(A = \\begin{bmatrix} \\lambda & 1 \\\\ -1 & -\\lambda \\end{bmatrix}\\), \\(|A| = -\\lambda^2 + 1 = 0 \\Rightarrow \\lambda = \\pm 1\\) — option B."
+  },
+  {
+    "id": "8aecb317-e977-4a49-a745-e2f4a85c07db",
+    "ref": "Misc I (7)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "This is a rotation matrix (orthogonal, \\(|A| = 1\\)), so \\(A^{-1} = A^{T} = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\) — option B."
+  },
+  {
+    "id": "b6aed125-650e-41fb-b448-027276213eea",
+    "ref": "Misc I (8)",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "\\(F(\\alpha)\\) is a rotation about the z-axis, so its inverse is the rotation by \\(-\\alpha\\): \\([F(\\alpha)]^{-1} = F(-\\alpha)\\) — option A."
+  },
+  {
+    "id": "d3fe2b20-1060-4d5e-90e0-3c32688e7d41",
+    "ref": "Misc I (9)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "\\(A = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\) swaps rows 1 and 2, and applying it twice restores the identity, so \\(A^2 = I\\) and \\(A^{-1} = A\\) — option B."
+  },
+  {
+    "id": "c95e663e-92e8-4d93-b4f5-2038615c38b9",
+    "ref": "Misc I (10)",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "If \\(A\\) is symmetric then \\((A^{-1})^{T} = (A^{T})^{-1} = A^{-1}\\), so \\(A^{-1}\\) is also symmetric — option A."
+  },
+  {
+    "id": "b7de3180-a9e5-44fc-b6eb-65cc5ea714ed",
+    "ref": "Misc I (11)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "Since \\(A(\\text{adj}\\,A) = |A|\\,I\\), and here it equals \\(\\begin{bmatrix} 10 & 0 \\\\ 0 & 10 \\end{bmatrix} = 10\\,I\\), we get \\(|A| = 10\\) — option B."
+  },
+  {
+    "id": "26fa6314-6c3a-431c-8a5a-47de4b32cf82",
+    "ref": "Misc I (12)",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "\\(A^{-1} = -\\dfrac{1}{2}\\begin{bmatrix} 1 & -4 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} -1/2 & 2 \\\\ 1/2 & -1 \\end{bmatrix}\\), with \\(|A^{-1}| = -1/2\\). Then \\(A = (A^{-1})^{-1} = \\dfrac{1}{-1/2}\\begin{bmatrix} -1 & -2 \\\\ -1/2 & -1/2 \\end{bmatrix} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 1 \\end{bmatrix}\\) — option D."
+  }
+]
