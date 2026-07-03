@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2c6229fa-368f-4565-93c4-da3e597e4872",
+    "options": [
+      { "label": "A", "text": "\\(-\\dfrac{80}{\\sqrt{41}}\\)" },
+      { "label": "B", "text": "\\(\\dfrac{80}{\\sqrt{41}}\\)" }
+    ],
+    "solution": "Let \\(u=\\sqrt{x^2+16}\\) and \\(v=\\dfrac{x}{x-1}\\). Then \\(\\dfrac{du}{dx}=\\dfrac{x}{\\sqrt{x^2+16}}\\) and \\(\\dfrac{dv}{dx}=\\dfrac{-1}{(x-1)^2}\\), so \\(\\dfrac{du}{dv}=\\dfrac{x}{\\sqrt{x^2+16}}\\cdot\\big(-(x-1)^2\\big)\\). At \\(x=5\\): \\(=\\dfrac{5}{\\sqrt{41}}\\cdot(-16)=-\\dfrac{80}{\\sqrt{41}}\\). Matches option A."
+  },
+  {
+    "id": "6cdfd2e8-0035-4961-8e70-76131eef6935",
+    "text": "The derivative of \\(f(\\sec x)\\) with respect to \\(g(\\tan x)\\) at \\(x=\\frac{\\pi}{4}\\), where \\(f'(\\sqrt{2})=4\\) and \\(g'(1)=2\\), is",
+    "options": [
+      { "label": "B", "text": "\\(\\dfrac{1}{\\sqrt{2}}\\)" }
+    ],
+    "solution": "\\(\\dfrac{d[f(\\sec x)]}{d[g(\\tan x)]}=\\dfrac{f'(\\sec x)\\,\\sec x\\tan x}{g'(\\tan x)\\,\\sec^2 x}=\\dfrac{f'(\\sec x)\\tan x}{g'(\\tan x)\\sec x}\\). At \\(x=\\frac{\\pi}{4}\\), \\(\\sec x=\\sqrt{2}\\) and \\(\\tan x=1\\): \\(=\\dfrac{f'(\\sqrt{2})}{g'(1)\\cdot\\sqrt{2}}=\\dfrac{4}{2\\sqrt{2}}=\\sqrt{2}\\). Matches option C."
+  },
+  {
+    "id": "7e1fbec1-9b00-4094-9a9b-ca4e98dde3eb",
+    "text": "The derivative of \\(f(\\tan x)\\) w.r.t. \\(g(\\sec x)\\) at \\(x=\\frac{\\pi}{4}\\), where \\(f'(1)=2\\) and \\(g'(\\sqrt{2})=4\\), is",
+    "options": [
+      { "label": "A", "text": "\\(\\dfrac{1}{\\sqrt{2}}\\)" },
+      { "label": "B", "text": "\\(\\sqrt{2}\\)" }
+    ],
+    "solution": "\\(\\dfrac{d[f(\\tan x)]}{d[g(\\sec x)]}=\\dfrac{f'(\\tan x)\\,\\sec^2 x}{g'(\\sec x)\\,\\sec x\\tan x}\\). At \\(x=\\frac{\\pi}{4}\\): numerator \\(=f'(1)\\cdot 2=4\\); denominator \\(=g'(\\sqrt{2})\\cdot\\sqrt{2}=4\\sqrt{2}\\). So \\(=\\dfrac{4}{4\\sqrt{2}}=\\dfrac{1}{\\sqrt{2}}\\). Matches option A."
+  },
+  {
+    "id": "98dc8a3f-c755-4a67-97ec-94badf8d9901",
+    "text": "\\(\\displaystyle\\int \\frac{e^{\\tan^{-1}x}}{1+x^2}\\left[\\left(\\sec^{-1}\\sqrt{1+x^2}\\right)^2 + \\cos^{-1}\\frac{1-x^2}{1+x^2}\\right]dx,\\; x>0 =\\)",
+    "options": [
+      { "label": "A", "text": "\\(\\left(\\tan^{-1}x\\right)^2 e^{\\tan^{-1}x}+c\\)" },
+      { "label": "B", "text": "\\(\\left(\\tan^{-1}x\\right) e^{\\tan^{-1}x}+c\\)" },
+      { "label": "C", "text": "\\(\\left(\\tan^{-1}x\\right)^2 e^{2\\tan^{-1}x}+c\\)" },
+      { "label": "D", "text": "\\(\\left(\\tan^{-1}x\\right)^2 e^{2\\tan^{-1}x}+c\\)" }
+    ],
+    "answer_label": "A",
+    "visibility": "PRIVATE",
+    "solution": "Substitute \\(t=\\tan^{-1}x\\), so \\(dt=\\dfrac{dx}{1+x^2}\\). For \\(x>0\\), \\(\\sec^{-1}\\sqrt{1+x^2}=t\\) and \\(\\cos^{-1}\\dfrac{1-x^2}{1+x^2}=2t\\), so the bracket \\(=t^2+2t\\). Then \\(\\int e^t(t^2+2t)\\,dt=\\int e^t\\big(f+f'\\big)\\,dt\\) with \\(f=t^2\\), giving \\(e^t t^2+c=\\left(\\tan^{-1}x\\right)^2 e^{\\tan^{-1}x}+c\\). Matches option A. (The source 2024 paper prints options (c) and (d) identically — a printed-paper defect; both are non-answers. This item duplicates the cleanly-optioned 2023 copy already public in the bank, so it is kept PRIVATE.)"
+  }
+]
