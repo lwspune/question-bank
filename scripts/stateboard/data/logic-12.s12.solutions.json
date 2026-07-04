@@ -1,142 +1,142 @@
 [
-  {
-    "id": "381e57a7-907e-4415-b2c3-4c77a6491352",
-    "ref": "1.2 Ex 1.2 Q.1 (i)",
-    "solution": "Construct the truth table for \\([(p \\to q) \\wedge q] \\to p\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\((p \\to q) \\wedge q\\) | \\([(p \\to q) \\wedge q] \\to p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe last column contains both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "9f2cef9f-ab15-488a-b351-966c60c993e9",
-    "ref": "1.2 Ex 1.2 Q.1 (ii)",
-    "solution": "Construct the truth table for \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\wedge \\sim q\\) | \\(p \\to q\\) | \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | T | T | F | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
-  },
-  {
-    "id": "62804e48-604f-45e1-9701-fdf4d0643362",
-    "ref": "1.2 Ex 1.2 Q.1 (iii)",
-    "solution": "Construct the truth table for \\((p \\wedge q) \\leftrightarrow (q \\vee r)\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\(q \\vee r\\) | \\((p \\wedge q) \\leftrightarrow (q \\vee r)\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | T | T |\n| T | T | F | T | T | T |\n| T | F | T | F | T | F |\n| T | F | F | F | F | T |\n| F | T | T | F | T | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n| F | F | F | F | F | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "2e4bc7ef-0de8-4979-968a-287902b69a2a",
-    "ref": "1.2 Ex 1.2 Q.1 (iv)",
-    "solution": "Construct the truth table for \\(p \\to [\\sim (q \\wedge r)]\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\wedge r\\) | \\(\\sim (q \\wedge r)\\) | \\(p \\to [\\sim (q \\wedge r)]\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | F | F |\n| T | T | F | F | T | T |\n| T | F | T | F | T | T |\n| T | F | F | F | T | T |\n| F | T | T | T | F | T |\n| F | T | F | F | T | T |\n| F | F | T | F | T | T |\n| F | F | F | F | T | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "1fe3a98c-959b-4287-83e2-d14dcb3bda9b",
-    "ref": "1.2 Ex 1.2 Q.1 (v)",
-    "solution": "Construct the truth table for \\(\\sim p \\wedge [(p \\vee \\sim q) \\wedge q]\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee \\sim q\\) | \\((p \\vee \\sim q) \\wedge q\\) | \\(\\sim p \\wedge [(p \\vee \\sim q) \\wedge q]\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F |\n| T | F | F | T | T | F | F |\n| F | T | T | F | F | F | F |\n| F | F | T | T | T | F | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
-  },
-  {
-    "id": "a1ddf440-f727-4343-ac6d-ad23d6e06d89",
-    "ref": "1.2 Ex 1.2 Q.1 (vi)",
-    "solution": "Construct the truth table for \\((\\sim p \\to \\sim q) \\wedge (\\sim q \\to \\sim p)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\to \\sim q\\) | \\(\\sim q \\to \\sim p\\) | \\((\\sim p \\to \\sim q) \\wedge (\\sim q \\to \\sim p)\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | T |\n| T | F | F | T | T | F | F |\n| F | T | T | F | F | T | F |\n| F | F | T | T | T | T | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "ef72bc9e-b170-4285-8d6d-469d6ecc6cde",
-    "ref": "1.2 Ex 1.2 Q.1 (vii)",
-    "solution": "Construct the truth table for \\((q \\to p) \\vee (\\sim p \\leftrightarrow q)\\).\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(\\sim p\\) | \\(\\sim p \\leftrightarrow q\\) | \\((q \\to p) \\vee (\\sim p \\leftrightarrow q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | F | F | T |\n| T | F | T | F | T | T |\n| F | T | F | T | T | T |\n| F | F | T | T | F | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
-  },
-  {
-    "id": "42e9a725-a42c-4d06-a7ef-5b7975f7edd8",
-    "ref": "1.2 Ex 1.2 Q.1 (viii)",
-    "solution": "Construct the truth table for \\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\to r\\) | \\(p \\to (q \\to r)\\) | \\(p \\wedge q\\) | \\((p \\wedge q) \\to r\\) | \\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | F | F | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | T | T | F | T | T |\n| F | T | F | F | T | F | T | T |\n| F | F | T | T | T | F | T | T |\n| F | F | F | T | T | F | T | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
-  },
-  {
-    "id": "2d1e9b98-6776-4cf5-bed2-277bb6650ff7",
-    "ref": "1.2 Ex 1.2 Q.1 (x)",
-    "solution": "Construct the truth table for \\((p \\vee \\sim q) \\to (r \\wedge p)\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim q\\) | \\(p \\vee \\sim q\\) | \\(r \\wedge p\\) | \\((p \\vee \\sim q) \\to (r \\wedge p)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | T | T | T |\n| T | T | F | F | T | F | F |\n| T | F | T | T | T | T | T |\n| T | F | F | T | T | F | F |\n| F | T | T | F | F | F | T |\n| F | T | F | F | F | F | T |\n| F | F | T | T | T | F | F |\n| F | F | F | T | T | F | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "3d1225d3-18a1-4b67-b37a-e194fb1a7cd0",
-    "ref": "1.2 Ex 1.2 Q.2 (i)",
-    "solution": "Prove \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim p \\wedge q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\wedge \\sim p\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | F | F | T | F |\n| F | T | T | T | T | T |\n| F | F | T | F | F | F |\n\nThe columns for \\(\\sim p \\wedge q\\) and \\((p \\vee q) \\wedge \\sim p\\) are identical, so \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\)."
-  },
-  {
-    "id": "ab83ecf2-e7ce-4cc8-9bf0-a41d51f26d57",
-    "ref": "1.2 Ex 1.2 Q.2 (ii)",
-    "solution": "Prove \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(p \\vee q\\) | \\(\\sim (p \\vee q)\\) | \\(\\sim p\\) | \\(\\sim p \\wedge q\\) | \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | T | F | F | F | F |\n| F | T | T | F | T | T | T |\n| F | F | F | T | T | F | T |\n\nThe column for \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q)\\) is identical to the column for \\(\\sim p\\), so \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\)."
-  },
-  {
-    "id": "4e9b8394-8c24-4e18-8ff6-8661714741c8",
-    "ref": "1.2 Ex 1.2 Q.2 (iii)",
-    "solution": "Prove \\(p \\leftrightarrow q \\equiv \\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(p \\vee q\\) | \\(p \\wedge q\\) | \\(\\sim (p \\wedge q)\\) | \\((p \\vee q) \\wedge \\sim (p \\wedge q)\\) | \\(\\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | F | F | T |\n| T | F | F | T | F | T | T | F |\n| F | T | F | T | F | T | T | F |\n| F | F | T | F | F | T | F | T |\n\nThe columns for \\(p \\leftrightarrow q\\) and \\(\\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\) are identical, so \\(p \\leftrightarrow q \\equiv \\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\)."
-  },
-  {
-    "id": "dc65bdfd-0e69-4046-9983-2b16d7844686",
-    "ref": "1.2 Ex 1.2 Q.2 (iv)",
-    "solution": "Prove \\(p \\to (q \\to p) \\equiv \\sim p \\to (p \\to q)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(p \\to (q \\to p)\\) | \\(\\sim p\\) | \\(p \\to q\\) | \\(\\sim p \\to (p \\to q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | F | T | T | F | F | T |\n| F | T | F | T | T | T | T |\n| F | F | T | T | T | T | T |\n\nThe columns for \\(p \\to (q \\to p)\\) and \\(\\sim p \\to (p \\to q)\\) are identical (both all T), so \\(p \\to (q \\to p) \\equiv \\sim p \\to (p \\to q)\\)."
-  },
-  {
-    "id": "0d1cf29e-e33e-4000-91e2-d8a537cdda03",
-    "ref": "1.2 Ex 1.2 Q.2 (iv)",
-    "solution": "Both sides are tautologies (all-T final columns), so they are equivalent.\n\n| (p) | (q) | (q \to p) | (p \to (q \to p)) | (sim p) | (p \to q) | (sim p \to (p \to q)) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | F | T | T | F | F | T |\n| F | T | F | T | T | T | T |\n| F | F | T | T | T | T | T |\n\nColumns 4 and 7 are identical (both all T), hence (p \to (q \to p) equiv sim p \to (p \to q))."
-  },
-  {
-    "id": "098445d0-4e2a-426e-be4f-90dd9ca7a1cc",
-    "ref": "1.2 Ex 1.2 Q.2 (v)",
-    "solution": "Prove \\((p \\vee q) \\to r \\equiv (p \\to r) \\wedge (q \\to r)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\vee q\\) | \\((p \\vee q) \\to r\\) | \\(p \\to r\\) | \\(q \\to r\\) | \\((p \\to r) \\wedge (q \\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F | F |\n| T | F | T | T | T | T | T | T |\n| T | F | F | T | F | F | T | F |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | T | F | F |\n| F | F | T | F | T | T | T | T |\n| F | F | F | F | T | T | T | T |\n\nThe columns for \\((p \\vee q) \\to r\\) and \\((p \\to r) \\wedge (q \\to r)\\) are identical, so \\((p \\vee q) \\to r \\equiv (p \\to r) \\wedge (q \\to r)\\)."
-  },
-  {
-    "id": "018bccfa-680b-49f6-98e7-12a45fbb3f45",
-    "ref": "1.2 Ex 1.2 Q.2 (vi)",
-    "solution": "Prove \\(p \\to (q \\wedge r) \\equiv (p \\to q) \\wedge (p \\to r)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\wedge r\\) | \\(p \\to (q \\wedge r)\\) | \\(p \\to q\\) | \\(p \\to r\\) | \\((p \\to q) \\wedge (p \\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | F | F | T | F | F |\n| T | F | T | F | F | F | T | F |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | T | T | T | T |\n| F | T | F | F | T | T | T | T |\n| F | F | T | F | T | T | T | T |\n| F | F | F | F | T | T | T | T |\n\nThe columns for \\(p \\to (q \\wedge r)\\) and \\((p \\to q) \\wedge (p \\to r)\\) are identical, so \\(p \\to (q \\wedge r) \\equiv (p \\to q) \\wedge (p \\to r)\\)."
-  },
-  {
-    "id": "a3bfd8c2-1c2d-4ea8-ab87-a8c9772b7f5a",
-    "ref": "1.2 Ex 1.2 Q.2 (vii)",
-    "solution": "Prove \\(p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\vee r\\) | \\(p \\wedge (q \\vee r)\\) | \\(p \\wedge q\\) | \\(p \\wedge r\\) | \\((p \\wedge q) \\vee (p \\wedge r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | F | F | F | F |\n| F | T | F | T | F | F | F | F |\n| F | F | T | T | F | F | F | F |\n| F | F | F | F | F | F | F | F |\n\nThe columns for \\(p \\wedge (q \\vee r)\\) and \\((p \\wedge q) \\vee (p \\wedge r)\\) are identical, so \\(p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)\\)."
-  },
-  {
-    "id": "d05a566d-b1ec-4185-aee0-135244c4b1e3",
-    "ref": "1.2 Ex 1.2 Q.2 (viii)",
-    "solution": "Prove \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r \\equiv r\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\vee q\\) | \\(\\sim (p \\vee q)\\) | \\(\\sim (p \\vee q) \\vee (p \\vee q)\\) | \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | T | F | T | F | T | F |\n| T | F | T | T | F | T | T |\n| T | F | F | T | F | T | F |\n| F | T | T | T | F | T | T |\n| F | T | F | T | F | T | F |\n| F | F | T | F | T | T | T |\n| F | F | F | F | T | T | F |\n\nThe column for \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r\\) is identical to the column for \\(r\\), so \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r \\equiv r\\)."
-  },
-  {
-    "id": "55fb7ed9-857c-43da-90ab-2dab5d9536a2",
-    "ref": "1.2 Ex 1.2 Q.3 (i)",
-    "solution": "Examine \\((p \\wedge q) \\to (q \\vee p)\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\wedge q\\) | \\(q \\vee p\\) | \\((p \\wedge q) \\to (q \\vee p)\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | T | T |\n| F | T | F | T | T |\n| F | F | F | F | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
-  },
-  {
-    "id": "d74ec8b9-0495-48b2-9a37-62abc02aa862",
-    "ref": "1.2 Ex 1.2 Q.3 (ii)",
-    "solution": "Examine \\((p \\to q) \\leftrightarrow (\\sim p \\vee q)\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim p\\) | \\(\\sim p \\vee q\\) | \\((p \\to q) \\leftrightarrow (\\sim p \\vee q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | F | T | T |\n| T | F | F | F | F | T |\n| F | T | T | T | T | T |\n| F | F | T | T | T | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
-  },
-  {
-    "id": "46ea0f3d-4329-4565-a27a-5683298b8f3f",
-    "ref": "1.2 Ex 1.2 Q.3 (iii)",
-    "solution": "Examine \\([\\sim (\\sim p \\wedge \\sim q)] \\vee q\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\wedge \\sim q\\) | \\(\\sim (\\sim p \\wedge \\sim q)\\) | \\([\\sim (\\sim p \\wedge \\sim q)] \\vee q\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | T |\n| T | F | F | T | F | T | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | F | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "3ef53f68-210e-4be2-b844-0e74e0dd3b8c",
-    "ref": "1.2 Ex 1.2 Q.3 (iv)",
-    "solution": "Examine \\([(p \\to q) \\wedge q] \\to p\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\((p \\to q) \\wedge q\\) | \\([(p \\to q) \\wedge q] \\to p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "b89c4633-5a49-4ced-9ee5-a5c8fd7a21fb",
-    "ref": "1.2 Ex 1.2 Q.3 (ix)",
-    "solution": "Examine \\((\\sim p \\to q) \\wedge (p \\wedge r)\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim p\\) | \\(\\sim p \\to q\\) | \\(p \\wedge r\\) | \\((\\sim p \\to q) \\wedge (p \\wedge r)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | T | T | T |\n| T | T | F | F | T | F | F |\n| T | F | T | F | T | T | T |\n| T | F | F | F | T | F | F |\n| F | T | T | T | T | F | F |\n| F | T | F | T | T | F | F |\n| F | F | T | T | F | F | F |\n| F | F | F | T | F | F | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "b703c6f1-0ae9-491a-887e-a81af8b57ff2",
-    "ref": "1.2 Ex 1.2 Q.3 (v)",
-    "solution": "Examine \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\((p \\to q) \\wedge \\sim q\\) | \\(\\sim p\\) | \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | T |\n| T | F | F | T | F | F | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | T | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
-  },
-  {
-    "id": "f8982e9d-3af4-4097-b032-2bc4742154b6",
-    "ref": "1.2 Ex 1.2 Q.3 (vi)",
-    "solution": "Examine \\((p \\leftrightarrow q) \\wedge (p \\to \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(\\sim q\\) | \\(p \\to \\sim q\\) | \\((p \\leftrightarrow q) \\wedge (p \\to \\sim q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | F | F | F |\n| T | F | F | T | T | F |\n| F | T | F | F | T | F |\n| F | F | T | T | T | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "619311be-03d9-4dbc-9778-a42acaec834a",
-    "ref": "1.2 Ex 1.2 Q.3 (vii)",
-    "solution": "Examine \\(\\sim (\\sim q \\wedge p) \\wedge q\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(\\sim q \\wedge p\\) | \\(\\sim (\\sim q \\wedge p)\\) | \\(\\sim (\\sim q \\wedge p) \\wedge q\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | T |\n| T | F | T | T | F | F |\n| F | T | F | F | T | T |\n| F | F | T | F | T | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
-  },
-  {
-    "id": "f15a7e68-d6c3-4a77-9ba9-d40826a0f282",
-    "ref": "1.2 Ex 1.2 Q.3 (viii)",
-    "solution": "Examine \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\wedge \\sim q\\) | \\(p \\to q\\) | \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | T | T | F | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
-  },
-  {
-    "id": "94f9e1a9-ca97-477b-8f2e-4905e519a211",
-    "ref": "1.2 Ex 1.2 Q.3 (x)",
-    "solution": "Examine \\([p \\to (\\sim q \\vee r)] \\leftrightarrow \\sim [p \\to (q \\to r)]\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim q \\vee r\\) | \\(p \\to (\\sim q \\vee r)\\) | \\(q \\to r\\) | \\(p \\to (q \\to r)\\) | \\(\\sim [p \\to (q \\to r)]\\) | \\([p \\to (\\sim q \\vee r)] \\leftrightarrow \\sim [p \\to (q \\to r)]\\) |\n|---|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | F | F |\n| T | T | F | F | F | F | F | T | F |\n| T | F | T | T | T | T | T | F | F |\n| T | F | F | T | T | T | T | F | F |\n| F | T | T | T | T | T | T | F | F |\n| F | T | F | F | T | F | T | F | F |\n| F | F | T | T | T | T | T | F | F |\n| F | F | F | T | T | T | T | F | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
-  }
+ {
+  "id": "381e57a7-907e-4415-b2c3-4c77a6491352",
+  "ref": "1.2 Ex 1.2 Q.1 (i)",
+  "solution": "Construct the truth table for \\([(p \\to q) \\wedge q] \\to p\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\((p \\to q) \\wedge q\\) | \\([(p \\to q) \\wedge q] \\to p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe last column contains both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "9f2cef9f-ab15-488a-b351-966c60c993e9",
+  "ref": "1.2 Ex 1.2 Q.1 (ii)",
+  "solution": "Construct the truth table for \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\wedge \\sim q\\) | \\(p \\to q\\) | \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | T | T | F | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
+ },
+ {
+  "id": "62804e48-604f-45e1-9701-fdf4d0643362",
+  "ref": "1.2 Ex 1.2 Q.1 (iii)",
+  "solution": "Construct the truth table for \\((p \\wedge q) \\leftrightarrow (q \\vee r)\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\(q \\vee r\\) | \\((p \\wedge q) \\leftrightarrow (q \\vee r)\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | T | T |\n| T | T | F | T | T | T |\n| T | F | T | F | T | F |\n| T | F | F | F | F | T |\n| F | T | T | F | T | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n| F | F | F | F | F | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "2e4bc7ef-0de8-4979-968a-287902b69a2a",
+  "ref": "1.2 Ex 1.2 Q.1 (iv)",
+  "solution": "Construct the truth table for \\(p \\to [\\sim (q \\wedge r)]\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\wedge r\\) | \\(\\sim (q \\wedge r)\\) | \\(p \\to [\\sim (q \\wedge r)]\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | F | F |\n| T | T | F | F | T | T |\n| T | F | T | F | T | T |\n| T | F | F | F | T | T |\n| F | T | T | T | F | T |\n| F | T | F | F | T | T |\n| F | F | T | F | T | T |\n| F | F | F | F | T | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "1fe3a98c-959b-4287-83e2-d14dcb3bda9b",
+  "ref": "1.2 Ex 1.2 Q.1 (v)",
+  "solution": "Construct the truth table for \\(\\sim p \\wedge [(p \\vee \\sim q) \\wedge q]\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee \\sim q\\) | \\((p \\vee \\sim q) \\wedge q\\) | \\(\\sim p \\wedge [(p \\vee \\sim q) \\wedge q]\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F |\n| T | F | F | T | T | F | F |\n| F | T | T | F | F | F | F |\n| F | F | T | T | T | F | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
+ },
+ {
+  "id": "a1ddf440-f727-4343-ac6d-ad23d6e06d89",
+  "ref": "1.2 Ex 1.2 Q.1 (vi)",
+  "solution": "Construct the truth table for \\((\\sim p \\to \\sim q) \\wedge (\\sim q \\to \\sim p)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\to \\sim q\\) | \\(\\sim q \\to \\sim p\\) | \\((\\sim p \\to \\sim q) \\wedge (\\sim q \\to \\sim p)\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | T |\n| T | F | F | T | T | F | F |\n| F | T | T | F | F | T | F |\n| F | F | T | T | T | T | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "ef72bc9e-b170-4285-8d6d-469d6ecc6cde",
+  "ref": "1.2 Ex 1.2 Q.1 (vii)",
+  "solution": "Construct the truth table for \\((q \\to p) \\vee (\\sim p \\leftrightarrow q)\\).\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(\\sim p\\) | \\(\\sim p \\leftrightarrow q\\) | \\((q \\to p) \\vee (\\sim p \\leftrightarrow q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | F | F | T |\n| T | F | T | F | T | T |\n| F | T | F | T | T | T |\n| F | F | T | T | F | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
+ },
+ {
+  "id": "42e9a725-a42c-4d06-a7ef-5b7975f7edd8",
+  "ref": "1.2 Ex 1.2 Q.1 (viii)",
+  "solution": "Construct the truth table for \\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\to r\\) | \\(p \\to (q \\to r)\\) | \\(p \\wedge q\\) | \\((p \\wedge q) \\to r\\) | \\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | F | F | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | T | T | F | T | T |\n| F | T | F | F | T | F | T | T |\n| F | F | T | T | T | F | T | T |\n| F | F | F | T | T | F | T | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
+ },
+ {
+  "id": "2d1e9b98-6776-4cf5-bed2-277bb6650ff7",
+  "ref": "1.2 Ex 1.2 Q.1 (x)",
+  "solution": "Construct the truth table for \\((p \\vee \\sim q) \\to (r \\wedge p)\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim q\\) | \\(p \\vee \\sim q\\) | \\(r \\wedge p\\) | \\((p \\vee \\sim q) \\to (r \\wedge p)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | T | T | T |\n| T | T | F | F | T | F | F |\n| T | F | T | T | T | T | T |\n| T | F | F | T | T | F | F |\n| F | T | T | F | F | F | T |\n| F | T | F | F | F | F | T |\n| F | F | T | T | T | F | F |\n| F | F | F | T | T | F | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "3d1225d3-18a1-4b67-b37a-e194fb1a7cd0",
+  "ref": "1.2 Ex 1.2 Q.2 (i)",
+  "solution": "Prove \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim p \\wedge q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\wedge \\sim p\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | F | F | T | F |\n| F | T | T | T | T | T |\n| F | F | T | F | F | F |\n\nThe columns for \\(\\sim p \\wedge q\\) and \\((p \\vee q) \\wedge \\sim p\\) are identical, so \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\)."
+ },
+ {
+  "id": "ab83ecf2-e7ce-4cc8-9bf0-a41d51f26d57",
+  "ref": "1.2 Ex 1.2 Q.2 (ii)",
+  "solution": "Prove \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(p \\vee q\\) | \\(\\sim (p \\vee q)\\) | \\(\\sim p\\) | \\(\\sim p \\wedge q\\) | \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | T | F | F | F | F |\n| F | T | T | F | T | T | T |\n| F | F | F | T | T | F | T |\n\nThe column for \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q)\\) is identical to the column for \\(\\sim p\\), so \\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\)."
+ },
+ {
+  "id": "4e9b8394-8c24-4e18-8ff6-8661714741c8",
+  "ref": "1.2 Ex 1.2 Q.2 (iii)",
+  "solution": "Prove \\(p \\leftrightarrow q \\equiv \\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(p \\vee q\\) | \\(p \\wedge q\\) | \\(\\sim (p \\wedge q)\\) | \\((p \\vee q) \\wedge \\sim (p \\wedge q)\\) | \\(\\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | F | F | T |\n| T | F | F | T | F | T | T | F |\n| F | T | F | T | F | T | T | F |\n| F | F | T | F | F | T | F | T |\n\nThe columns for \\(p \\leftrightarrow q\\) and \\(\\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\) are identical, so \\(p \\leftrightarrow q \\equiv \\sim [(p \\vee q) \\wedge \\sim (p \\wedge q)]\\)."
+ },
+ {
+  "id": "dc65bdfd-0e69-4046-9983-2b16d7844686",
+  "ref": "1.2 Ex 1.2 Q.2 (iv)",
+  "solution": "Prove \\(\\sim(p \\leftrightarrow q) \\equiv (p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(\\sim(p \\leftrightarrow q)\\) | \\(p \\wedge \\sim q\\) | \\(q \\wedge \\sim p\\) | \\((p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | F | T | T | F | T |\n| F | T | F | T | F | T | T |\n| F | F | T | F | F | F | F |\n\nThe columns for \\(\\sim(p \\leftrightarrow q)\\) and \\((p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\) are identical (F, T, T, F), so \\(\\sim(p \\leftrightarrow q) \\equiv (p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\)."
+ },
+ {
+  "id": "0d1cf29e-e33e-4000-91e2-d8a537cdda03",
+  "ref": "1.2 Ex 1.2 Q.2 (iv)",
+  "solution": "Both sides are tautologies (all-T final columns), so they are equivalent.\n\n| (p) | (q) | (q \to p) | (p \to (q \to p)) | (sim p) | (p \to q) | (sim p \to (p \to q)) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | F | T | T | F | F | T |\n| F | T | F | T | T | T | T |\n| F | F | T | T | T | T | T |\n\nColumns 4 and 7 are identical (both all T), hence (p \to (q \to p) equiv sim p \to (p \to q))."
+ },
+ {
+  "id": "098445d0-4e2a-426e-be4f-90dd9ca7a1cc",
+  "ref": "1.2 Ex 1.2 Q.2 (v)",
+  "solution": "Prove \\((p \\vee q) \\to r \\equiv (p \\to r) \\wedge (q \\to r)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\vee q\\) | \\((p \\vee q) \\to r\\) | \\(p \\to r\\) | \\(q \\to r\\) | \\((p \\to r) \\wedge (q \\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F | F |\n| T | F | T | T | T | T | T | T |\n| T | F | F | T | F | F | T | F |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | T | F | F |\n| F | F | T | F | T | T | T | T |\n| F | F | F | F | T | T | T | T |\n\nThe columns for \\((p \\vee q) \\to r\\) and \\((p \\to r) \\wedge (q \\to r)\\) are identical, so \\((p \\vee q) \\to r \\equiv (p \\to r) \\wedge (q \\to r)\\)."
+ },
+ {
+  "id": "018bccfa-680b-49f6-98e7-12a45fbb3f45",
+  "ref": "1.2 Ex 1.2 Q.2 (vi)",
+  "solution": "Prove \\(p \\to (q \\wedge r) \\equiv (p \\to q) \\wedge (p \\to r)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\wedge r\\) | \\(p \\to (q \\wedge r)\\) | \\(p \\to q\\) | \\(p \\to r\\) | \\((p \\to q) \\wedge (p \\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | F | F | T | F | F |\n| T | F | T | F | F | F | T | F |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | T | T | T | T |\n| F | T | F | F | T | T | T | T |\n| F | F | T | F | T | T | T | T |\n| F | F | F | F | T | T | T | T |\n\nThe columns for \\(p \\to (q \\wedge r)\\) and \\((p \\to q) \\wedge (p \\to r)\\) are identical, so \\(p \\to (q \\wedge r) \\equiv (p \\to q) \\wedge (p \\to r)\\)."
+ },
+ {
+  "id": "a3bfd8c2-1c2d-4ea8-ab87-a8c9772b7f5a",
+  "ref": "1.2 Ex 1.2 Q.2 (vii)",
+  "solution": "Prove \\(p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\vee r\\) | \\(p \\wedge (q \\vee r)\\) | \\(p \\wedge q\\) | \\(p \\wedge r\\) | \\((p \\wedge q) \\vee (p \\wedge r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | F | F | F | F |\n| F | T | F | T | F | F | F | F |\n| F | F | T | T | F | F | F | F |\n| F | F | F | F | F | F | F | F |\n\nThe columns for \\(p \\wedge (q \\vee r)\\) and \\((p \\wedge q) \\vee (p \\wedge r)\\) are identical, so \\(p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)\\)."
+ },
+ {
+  "id": "d05a566d-b1ec-4185-aee0-135244c4b1e3",
+  "ref": "1.2 Ex 1.2 Q.2 (viii)",
+  "solution": "Prove \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r \\equiv r\\) using a truth table.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\vee q\\) | \\(\\sim (p \\vee q)\\) | \\(\\sim (p \\vee q) \\vee (p \\vee q)\\) | \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | T | F | T | F | T | F |\n| T | F | T | T | F | T | T |\n| T | F | F | T | F | T | F |\n| F | T | T | T | F | T | T |\n| F | T | F | T | F | T | F |\n| F | F | T | F | T | T | T |\n| F | F | F | F | T | T | F |\n\nThe column for \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r\\) is identical to the column for \\(r\\), so \\([\\sim (p \\vee q) \\vee (p \\vee q)] \\wedge r \\equiv r\\)."
+ },
+ {
+  "id": "55fb7ed9-857c-43da-90ab-2dab5d9536a2",
+  "ref": "1.2 Ex 1.2 Q.3 (i)",
+  "solution": "Examine \\((p \\wedge q) \\to (q \\vee p)\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\wedge q\\) | \\(q \\vee p\\) | \\((p \\wedge q) \\to (q \\vee p)\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | T | T |\n| F | T | F | T | T |\n| F | F | F | F | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
+ },
+ {
+  "id": "d74ec8b9-0495-48b2-9a37-62abc02aa862",
+  "ref": "1.2 Ex 1.2 Q.3 (ii)",
+  "solution": "Examine \\((p \\to q) \\leftrightarrow (\\sim p \\vee q)\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim p\\) | \\(\\sim p \\vee q\\) | \\((p \\to q) \\leftrightarrow (\\sim p \\vee q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | F | T | T |\n| T | F | F | F | F | T |\n| F | T | T | T | T | T |\n| F | F | T | T | T | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
+ },
+ {
+  "id": "46ea0f3d-4329-4565-a27a-5683298b8f3f",
+  "ref": "1.2 Ex 1.2 Q.3 (iii)",
+  "solution": "Examine \\([\\sim (\\sim p \\wedge \\sim q)] \\vee q\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\wedge \\sim q\\) | \\(\\sim (\\sim p \\wedge \\sim q)\\) | \\([\\sim (\\sim p \\wedge \\sim q)] \\vee q\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | T |\n| T | F | F | T | F | T | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | F | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "3ef53f68-210e-4be2-b844-0e74e0dd3b8c",
+  "ref": "1.2 Ex 1.2 Q.3 (iv)",
+  "solution": "Examine \\([(p \\to q) \\wedge q] \\to p\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\((p \\to q) \\wedge q\\) | \\([(p \\to q) \\wedge q] \\to p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "b89c4633-5a49-4ced-9ee5-a5c8fd7a21fb",
+  "ref": "1.2 Ex 1.2 Q.3 (ix)",
+  "solution": "Examine \\((\\sim p \\to q) \\wedge (p \\wedge r)\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim p\\) | \\(\\sim p \\to q\\) | \\(p \\wedge r\\) | \\((\\sim p \\to q) \\wedge (p \\wedge r)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | T | T | T |\n| T | T | F | F | T | F | F |\n| T | F | T | F | T | T | T |\n| T | F | F | F | T | F | F |\n| F | T | T | T | T | F | F |\n| F | T | F | T | T | F | F |\n| F | F | T | T | F | F | F |\n| F | F | F | T | F | F | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "b703c6f1-0ae9-491a-887e-a81af8b57ff2",
+  "ref": "1.2 Ex 1.2 Q.3 (v)",
+  "solution": "Examine \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\((p \\to q) \\wedge \\sim q\\) | \\(\\sim p\\) | \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | T |\n| T | F | F | T | F | F | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | T | T |\n\nEvery entry in the last column is T, so the statement pattern is a tautology."
+ },
+ {
+  "id": "f8982e9d-3af4-4097-b032-2bc4742154b6",
+  "ref": "1.2 Ex 1.2 Q.3 (vi)",
+  "solution": "Examine \\((p \\leftrightarrow q) \\wedge (p \\to \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(\\sim q\\) | \\(p \\to \\sim q\\) | \\((p \\leftrightarrow q) \\wedge (p \\to \\sim q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | F | F | F |\n| T | F | F | T | T | F |\n| F | T | F | F | T | F |\n| F | F | T | T | T | T |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "619311be-03d9-4dbc-9778-a42acaec834a",
+  "ref": "1.2 Ex 1.2 Q.3 (vii)",
+  "solution": "Examine \\(\\sim (\\sim q \\wedge p) \\wedge q\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(\\sim q \\wedge p\\) | \\(\\sim (\\sim q \\wedge p)\\) | \\(\\sim (\\sim q \\wedge p) \\wedge q\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | T |\n| T | F | T | T | F | F |\n| F | T | F | F | T | T |\n| F | F | T | F | T | F |\n\nThe last column has both T and F, so the statement pattern is a contingency."
+ },
+ {
+  "id": "f15a7e68-d6c3-4a77-9ba9-d40826a0f282",
+  "ref": "1.2 Ex 1.2 Q.3 (viii)",
+  "solution": "[Textbook answer-key error: the printed answer key classifies this as a contingency; the final truth-column is F, F, F, F, so it is a contradiction (our answer).]\n\nExamine \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\wedge \\sim q\\) | \\(p \\to q\\) | \\((p \\wedge \\sim q) \\leftrightarrow (p \\to q)\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | T | T | F | F |\n| F | T | F | F | T | F |\n| F | F | T | F | T | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
+ },
+ {
+  "id": "94f9e1a9-ca97-477b-8f2e-4905e519a211",
+  "ref": "1.2 Ex 1.2 Q.3 (x)",
+  "solution": "Examine \\([p \\to (\\sim q \\vee r)] \\leftrightarrow \\sim [p \\to (q \\to r)]\\).\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim q \\vee r\\) | \\(p \\to (\\sim q \\vee r)\\) | \\(q \\to r\\) | \\(p \\to (q \\to r)\\) | \\(\\sim [p \\to (q \\to r)]\\) | \\([p \\to (\\sim q \\vee r)] \\leftrightarrow \\sim [p \\to (q \\to r)]\\) |\n|---|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | F | F |\n| T | T | F | F | F | F | F | T | F |\n| T | F | T | T | T | T | T | F | F |\n| T | F | F | T | T | T | T | F | F |\n| F | T | T | T | T | T | T | F | F |\n| F | T | F | F | T | F | T | F | F |\n| F | F | T | T | T | T | T | F | F |\n| F | F | F | T | T | T | T | F | F |\n\nEvery entry in the last column is F, so the statement pattern is a contradiction."
+ }
 ]

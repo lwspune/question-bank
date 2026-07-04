@@ -1,232 +1,232 @@
 [
-  {
-    "id": "0df4b8da-ccb3-41fc-9288-f991253a6aba",
-    "ref": "Misc Q.2 (i)",
-    "solution": "It is a **statement** in logic, because it is a declarative sentence that is definitely either true or false.\n\nSince \\(4! = 4 \\times 3 \\times 2 \\times 1 = 24\\), the sentence is correct.\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "f269c753-680c-4545-8ee7-9eda1bd75d6b",
-    "ref": "Misc Q.2 (ii)",
-    "solution": "It is a **statement** in logic, because it is a declarative sentence whose truth can be definitely decided.\n\n\\(\\pi\\) is indeed an irrational number.\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "284f2af3-9ab5-4ef4-951b-1a6a8aa35640",
-    "ref": "Misc Q.2 (iii)",
-    "solution": "It is a **statement** in logic (a compound statement joined by 'and').\n\nLet \\(p:\\) India is a country (T) and \\(q:\\) Himalayas is a river (F). The Himalayas is a mountain range, not a river, so \\(q\\) is F.\n\nThe conjunction \\(p \\wedge q\\) is \\(T \\wedge F = F\\).\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "7635992b-8db6-42de-a9f5-aaf2bb7aa5d1",
-    "ref": "Misc Q.2 (iv)",
-    "solution": "It is **not a statement** in logic.\n\nJustification: it is a request (imperative sentence). It is neither true nor false, so it cannot be assigned a truth value.\n\n**No truth value.**"
-  },
-  {
-    "id": "c67dedaf-cce5-4f57-8962-ebab5f2dbc46",
-    "ref": "Misc Q.2 (v)",
-    "solution": "It is a **statement** in logic, because it is a declarative sentence with a definite truth value.\n\nThe identity \\(\\cos^2\\theta - \\sin^2\\theta = \\cos 2\\theta\\) holds for all \\(\\theta \\in R\\).\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "4a2fb231-3480-4f86-92ba-c44a7cd1ed4e",
-    "ref": "Misc Q.2 (vi)",
-    "solution": "It is a **statement** in logic (an open conditional that is decidable over whole numbers).\n\nFor \\(x\\) a whole number, \\(x + 6 = 0\\) would give \\(x = -6\\), which is not a whole number. So no whole number satisfies \\(x + 6 = 0\\); the implication 'if \\(x\\) is a whole number then \\(x + 6 = 0\\)' is false (take \\(x = 0\\): antecedent T, consequent F).\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "b38dcbeb-0764-444a-8725-44dcbd7dc862",
-    "ref": "Misc Q.3 (i)",
-    "solution": "Let \\(p:\\) \\(\\sqrt{5}\\) is irrational, and \\(q:\\) \\(3\\sqrt{5}\\) is a complex number. The statement is \\(p \\wedge q\\).\n\n\\(\\sqrt{5}\\) is irrational, so \\(p\\) is T. But \\(3\\sqrt{5}\\) is a real (irrational) number, not a (non-real) complex number as intended, so \\(q\\) is F.\n\nHence \\(p \\wedge q \\equiv T \\wedge F = F\\).\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "a34c8660-c02a-478c-9171-789fef21880b",
-    "ref": "Misc Q.3 (ii)",
-    "solution": "The statement is \\(\\forall n \\in N\\), (\\(n^2 + n\\) is even) \\(\\wedge\\) (\\(n^2 - n\\) is odd).\n\nNow \\(n^2 + n = n(n+1)\\) is a product of two consecutive integers, hence always even (T). But \\(n^2 - n = n(n-1)\\) is also a product of two consecutive integers, hence always **even**, not odd. So the second part is F.\n\nA conjunction with a false part is false.\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "baa532d8-8380-4ad8-8479-c33d961bf2df",
-    "ref": "Misc Q.3 (iii)",
-    "solution": "The statement is \\(\\exists n \\in N\\) such that \\(n + 5 > 10\\), i.e. \\(n > 5\\).\n\nFor example \\(n = 6 \\in N\\) gives \\(6 + 5 = 11 > 10\\). Such an \\(n\\) exists.\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "6c12e0b3-12e1-4665-964f-91fccb4c95d3",
-    "ref": "Misc Q.3 (iv)",
-    "solution": "Let \\(p:\\) the square of any even number is odd, and \\(q:\\) the cube of any odd number is odd. The statement is \\(p \\vee q\\).\n\nThe square of an even number is even, so \\(p\\) is F. The cube of an odd number is odd (e.g. \\(3^3 = 27\\)); in general odd \\(\\times\\) odd \\(\\times\\) odd is odd, so \\(q\\) is T.\n\nHence \\(p \\vee q \\equiv F \\vee T = T\\).\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "8941f4e2-4936-4158-a2f3-f045cf3009ae",
-    "ref": "Misc Q.3 (v)",
-    "solution": "The statement is a conditional: in \\(\\triangle ABC\\), if all sides are equal then all angles are equal.\n\nAn equilateral triangle (all sides equal) is equiangular (each angle \\(60^\\circ\\)), so the implication holds.\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "1d3b5f8e-b10f-4625-a479-c42da8bbd26b",
-    "ref": "Misc Q.3 (vi)",
-    "solution": "The statement is \\(\\forall n \\in N\\), \\(n + 6 > 8\\), i.e. \\(n > 2\\) for every natural number.\n\nThis fails for \\(n = 1\\): \\(1 + 6 = 7 \\not> 8\\) (also fails for \\(n = 2\\)). So it is not true for all \\(n\\).\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "556b3588-fada-4678-bb3e-82ee2323a630",
-    "ref": "Misc Q.4 (i)",
-    "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\exists x \\in A\\) such that \\(x + 8 = 15\\), i.e. \\(x = 7\\).\n\nSince \\(7 \\in A\\) and \\(7 + 8 = 15\\), such an \\(x\\) exists.\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "dc5a7dd9-0fe2-493e-a633-acc7fcd91b88",
-    "ref": "Misc Q.4 (ii)",
-    "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\forall x \\in A\\), \\(x + 5 < 12\\), i.e. \\(x < 7\\) for every \\(x \\in A\\).\n\nThis fails for \\(x = 7\\): \\(7 + 5 = 12 \\not< 12\\) (also fails for \\(x = 8, 9\\)). So it does not hold for all \\(x\\).\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "aa22765d-72c4-41d0-8830-d010ef57921b",
-    "ref": "Misc Q.4 (iii)",
-    "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\exists x \\in A\\) such that \\(x + 7 \\geq 11\\), i.e. \\(x \\geq 4\\).\n\nFor example \\(x = 4 \\in A\\) gives \\(4 + 7 = 11 \\geq 11\\). Such an \\(x\\) exists.\n\n**Truth value: T (True).**"
-  },
-  {
-    "id": "fccb0f3e-2805-4e9f-b592-88dbf6eea0ea",
-    "ref": "Misc Q.4 (iv)",
-    "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\forall x \\in A\\), \\(3x \\leq 25\\).\n\nThe largest value is at \\(x = 9\\): \\(3 \\times 9 = 27 \\not\\leq 25\\). So it fails for \\(x = 9\\) (and \\(x = 8: 24 \\leq 25\\) holds, but one failure is enough).\n\n**Truth value: F (False).**"
-  },
-  {
-    "id": "7515ff9b-3289-4e00-8d28-205480f30d78",
-    "ref": "Misc Q.5 (i)",
-    "solution": "The given statement is \\(\\forall n \\in A\\), \\(n + 7 > 6\\).\n\nUsing \\(\\sim(\\forall x, P(x)) \\equiv \\exists x, \\sim P(x)\\), the negation is:\n\n\\(\\exists n \\in A\\) such that \\(n + 7 \\leq 6\\).\n\n**In words:** There exists \\(n \\in A\\) such that \\(n + 7\\) is not greater than \\(6\\)."
-  },
-  {
-    "id": "935653d6-c675-4ecb-bee9-c82674ee373c",
-    "ref": "Misc Q.5 (ii)",
-    "solution": "The given statement is \\(\\exists x \\in A\\) such that \\(x + 9 \\leq 15\\).\n\nUsing \\(\\sim(\\exists x, P(x)) \\equiv \\forall x, \\sim P(x)\\), the negation is:\n\n\\(\\forall x \\in A\\), \\(x + 9 > 15\\).\n\n**In words:** For every \\(x \\in A\\), \\(x + 9\\) is greater than \\(15\\)."
-  },
-  {
-    "id": "53378bfe-0b18-427f-b3b6-e9dc6bd409a0",
-    "ref": "Misc Q.5 (iii)",
-    "solution": "The statement 'Some triangles are equilateral triangle' is an existential statement (\\(\\exists\\)).\n\nUsing \\(\\sim(\\exists x, P(x)) \\equiv \\forall x, \\sim P(x)\\), its negation is:\n\n**No triangle is an equilateral triangle.**\n\n(Equivalently: All triangles are non-equilateral triangles.)"
-  },
-  {
-    "id": "0223f005-d8cc-415a-80f6-f49237de7bf6",
-    "ref": "Misc Q.6 (i)",
-    "solution": "Truth table for \\(p \\to (q \\to p)\\):\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(p \\to (q \\to p)\\) |\n|---|---|---|---|\n| T | T | T | T |\n| T | F | T | T |\n| F | T | F | T |\n| F | F | T | T |\n\nThe last column is T in every row, so \\(p \\to (q \\to p)\\) is a **tautology**."
-  },
-  {
-    "id": "10305c31-c69a-452b-afd5-0321277fae44",
-    "ref": "Misc Q.6 (ii)",
-    "solution": "Truth table for \\((\\sim p \\vee \\sim q) \\leftrightarrow [\\sim(p \\wedge q)]\\):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\vee \\sim q\\) | \\(p \\wedge q\\) | \\(\\sim(p \\wedge q)\\) | \\((\\sim p \\vee \\sim q) \\leftrightarrow \\sim(p \\wedge q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | F | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | F | T | F | T | T |\n| F | F | T | T | T | F | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is one of De Morgan's laws)."
-  },
-  {
-    "id": "b48b95b5-04df-4004-b607-1b1afb38f18b",
-    "ref": "Misc Q.6 (iii)",
-    "solution": "Truth table for \\(\\sim(\\sim p \\wedge \\sim q) \\vee q\\):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\wedge \\sim q\\) | \\(\\sim(\\sim p \\wedge \\sim q)\\) | \\(\\sim(\\sim p \\wedge \\sim q) \\vee q\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | T |\n| T | F | F | T | F | T | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | F | F |\n\nThe final column is \\(T, T, T, F\\), so the pattern is a **contingency** (note \\(\\sim(\\sim p \\wedge \\sim q) \\equiv p \\vee q\\), and \\((p \\vee q) \\vee q \\equiv p \\vee q\\))."
-  },
-  {
-    "id": "af4eea29-92b0-43dd-98a2-d2bd86867ab3",
-    "ref": "Misc Q.6 (iv)",
-    "solution": "Let \\(t \\equiv p \\wedge q\\). Truth table for \\([(p \\wedge q) \\vee r] \\wedge [\\sim r \\vee (p \\wedge q)]\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\((p\\wedge q)\\vee r\\) | \\(\\sim r\\) | \\(\\sim r \\vee (p\\wedge q)\\) | Result |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | F | T | T |\n| T | T | F | T | T | T | T | T |\n| T | F | T | F | T | F | F | F |\n| T | F | F | F | F | T | T | F |\n| F | T | T | F | T | F | F | F |\n| F | T | F | F | F | T | T | F |\n| F | F | T | F | T | F | F | F |\n| F | F | F | F | F | T | T | F |\n\nThe final column contains both T and F, so the pattern is a **contingency**. (It is in fact equivalent to \\(p \\wedge q\\).)"
-  },
-  {
-    "id": "cf1e0ccf-657a-4435-8209-ee911e0592ed",
-    "ref": "Misc Q.6 (v)",
-    "solution": "Truth table for \\([(\\sim p \\vee q) \\wedge (q \\to r)] \\to (p \\to r)\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim p \\vee q\\) | \\(q \\to r\\) | \\(A=(\\sim p\\vee q)\\wedge(q\\to r)\\) | \\(p \\to r\\) | \\(A \\to (p\\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F | T |\n| T | F | T | F | T | F | T | T |\n| T | F | F | F | T | F | F | T |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | F | T | T |\n| F | F | T | T | T | T | T | T |\n| F | F | F | T | T | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
-  },
-  {
-    "id": "0aa9a3c9-f8eb-4f14-8920-ed13d9196b29",
-    "ref": "Misc Q.7 (i)",
-    "solution": "Truth table for \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\((p\\to q)\\wedge \\sim q\\) | \\(\\sim p\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | T |\n| T | F | F | T | F | F | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is the valid form modus tollens)."
-  },
-  {
-    "id": "ad8e7b8a-d76f-4496-80e4-49efae6f278c",
-    "ref": "Misc Q.7 (ii)",
-    "solution": "Truth table for \\([(p \\vee q) \\wedge \\sim p] \\wedge \\sim q\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\vee q\\) | \\(\\sim p\\) | \\((p\\vee q)\\wedge \\sim p\\) | \\(\\sim q\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | T | F | F | T | F |\n| F | T | T | T | T | F | F |\n| F | F | F | T | F | T | F |\n\nThe last column is F in every row, so the pattern is a **contradiction**."
-  },
-  {
-    "id": "3df36ceb-baf3-4061-849b-6b9e084e8cb7",
-    "ref": "Misc Q.7 (iii)",
-    "solution": "Truth table for \\((p \\to q) \\wedge (p \\wedge \\sim q)\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\(p \\wedge \\sim q\\) | Result |\n|---|---|---|---|---|---|\n| T | T | T | F | F | F |\n| T | F | F | T | T | F |\n| F | T | T | F | F | F |\n| F | F | T | T | F | F |\n\nThe last column is F in every row, so the pattern is a **contradiction**."
-  },
-  {
-    "id": "e7b5e43c-95af-49d4-97df-992f0160f844",
-    "ref": "Misc Q.7 (iv)",
-    "solution": "Truth table for \\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\to r\\) | \\(p \\to (q\\to r)\\) | \\(p \\wedge q\\) | \\((p\\wedge q)\\to r\\) | \\(\\leftrightarrow\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | F | F | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | T | T | F | T | T |\n| F | T | F | F | T | F | T | T |\n| F | F | T | T | T | F | T | T |\n| F | F | F | T | T | F | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
-  },
-  {
-    "id": "11e90e2e-49ec-40fa-8ff6-a80b51e87219",
-    "ref": "Misc Q.7 (v)",
-    "solution": "Truth table for \\([p \\wedge (p \\to q)] \\to q\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(p \\wedge (p\\to q)\\) | Result |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | F | T |\n| F | F | T | F | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is the valid form modus ponens)."
-  },
-  {
-    "id": "bc90afc2-e5f8-4e9b-a028-4d865b4585b6",
-    "ref": "Misc Q.7 (vi)",
-    "solution": "Truth table for \\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (p \\vee \\sim q) \\vee (\\sim p \\wedge \\sim q)\\):\n\n| \\(p\\) | \\(q\\) | \\(p\\wedge q\\) | \\(\\sim p\\wedge q\\) | \\(p\\vee\\sim q\\) | \\(\\sim p\\wedge\\sim q\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | T | F | T |\n| T | F | F | F | T | F | T |\n| F | T | F | T | F | F | T |\n| F | F | F | F | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
-  },
-  {
-    "id": "463a0133-2e6d-47ff-a48e-eb5ca7266486",
-    "ref": "Misc Q.7 (vii)",
-    "solution": "Truth table for \\([(p \\vee \\sim q) \\vee (\\sim p \\wedge q)] \\wedge r\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p\\vee\\sim q\\) | \\(\\sim p\\wedge q\\) | \\(B=(p\\vee\\sim q)\\vee(\\sim p\\wedge q)\\) | \\(B \\wedge r\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | T | F | T | F | T | F |\n| T | F | T | T | F | T | T |\n| T | F | F | T | F | T | F |\n| F | T | T | F | T | T | T |\n| F | T | F | F | T | T | F |\n| F | F | T | T | F | T | T |\n| F | F | F | T | F | T | F |\n\nThe bracket \\(B\\) is always T, so the result equals \\(r\\); the last column contains both T and F. Hence the pattern is a **contingency**."
-  },
-  {
-    "id": "10a219b3-d66e-4c64-8c13-c2e8514627f8",
-    "ref": "Misc Q.7 (viii)",
-    "solution": "Truth table for \\((p \\to q) \\vee (q \\to p)\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(q \\to p\\) | Result |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | T | T |\n| F | T | T | F | T |\n| F | F | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
-  },
-  {
-    "id": "2d7ef428-17ff-4bfc-a9f7-5757867f0ffd",
-    "ref": "Misc Q.8 (i)",
-    "solution": "Given \\((p \\vee q)\\) is T and \\((p \\wedge q)\\) is T.\n\n\\(p \\wedge q\\) is T only when **both** \\(p\\) and \\(q\\) are T. With \\(p = T, q = T\\), we also get \\(p \\vee q = T\\), which is consistent.\n\n**Answer: \\(p = T\\) and \\(q = T\\).**"
-  },
-  {
-    "id": "45c11302-1fdc-48c6-be9a-9d22d913476b",
-    "ref": "Misc Q.8 (ii)",
-    "solution": "Given \\((p \\vee q)\\) is T and \\((p \\vee q) \\to q\\) is F.\n\nAn implication \\(X \\to q\\) is F only when \\(X\\) is T and \\(q\\) is F. Here \\(X = p \\vee q\\) is T (given) and \\(q\\) is F.\n\nSince \\(p \\vee q = T\\) with \\(q = F\\), we must have \\(p = T\\).\n\n**Answer: \\(p = T\\) and \\(q = F\\).**"
-  },
-  {
-    "id": "05a7858b-5e31-494d-ade5-dbdbc3acd487",
-    "ref": "Misc Q.8 (iii)",
-    "solution": "Given \\((p \\wedge q)\\) is F and \\((p \\wedge q) \\to q\\) is T.\n\nHere \\(p \\wedge q\\) is F, so the antecedent of the implication is F; then \\((p \\wedge q) \\to q\\) is automatically T for any truth value of \\(q\\). Thus the second condition gives no extra restriction.\n\nThe only condition is \\(p \\wedge q = F\\), which holds whenever at least one of \\(p, q\\) is F.\n\n**Answer:** \\(p\\) and \\(q\\) cannot both be determined uniquely. Any of \\((p,q) = (T,F), (F,T), (F,F)\\) satisfies the conditions; i.e. **at least one of \\(p, q\\) is F.**"
-  },
-  {
-    "id": "b64e3cb2-d67a-47a1-bbe0-13ade0b87cb3",
-    "ref": "Misc Q.9 (i)",
-    "solution": "Prove \\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\) by truth table:\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(p \\wedge q\\) | \\(\\sim p \\wedge \\sim q\\) | \\((p\\wedge q)\\vee(\\sim p\\wedge\\sim q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | F | T |\n| T | F | F | F | F | F |\n| F | T | F | F | F | F |\n| F | F | T | F | T | T |\n\nColumns 3 and 6 are identical in every row, hence \\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\). **Proved.**"
-  },
-  {
-    "id": "f683470f-2b68-4871-b0eb-737d7d9d84db",
-    "ref": "Misc Q.9 (ii)",
-    "solution": "Prove \\((p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\) by truth table:\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\((p\\wedge q)\\to r\\) | \\(q \\to r\\) | \\(p \\to (q\\to r)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F |\n| T | F | T | F | T | T | T |\n| T | F | F | F | T | T | T |\n| F | T | T | F | T | T | T |\n| F | T | F | F | T | F | T |\n| F | F | T | F | T | T | T |\n| F | F | F | F | T | T | T |\n\nColumns 5 and 7 are identical in every row, hence \\((p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\). **Proved.**"
-  },
-  {
-    "id": "f5c5d90b-d234-46c1-8d6a-51719926fca3",
-    "ref": "Misc Q.10 (i)",
-    "solution": "Prove \\(p \\leftrightarrow q \\equiv \\sim(p \\wedge \\sim q) \\wedge \\sim(q \\wedge \\sim p)\\) using rules of logic.\n\nStart from the right-hand side and apply De Morgan's law and conditional laws:\n\n\\(\\sim(p \\wedge \\sim q) \\equiv \\sim p \\vee q \\equiv p \\to q\\).\n\n\\(\\sim(q \\wedge \\sim p) \\equiv \\sim q \\vee p \\equiv q \\to p\\).\n\nTherefore\n\n\\(\\sim(p \\wedge \\sim q) \\wedge \\sim(q \\wedge \\sim p) \\equiv (p \\to q) \\wedge (q \\to p)\\).\n\nBy the definition of the biconditional, \\((p \\to q) \\wedge (q \\to p) \\equiv p \\leftrightarrow q\\).\n\nHence \\(p \\leftrightarrow q \\equiv \\sim(p \\wedge \\sim q) \\wedge \\sim(q \\wedge \\sim p)\\). **Proved.**"
-  },
-  {
-    "id": "41517307-56cd-4460-9e7e-6a201dd284c4",
-    "ref": "Misc Q.10 (ii)",
-    "solution": "Prove \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\) using rules of logic.\n\nStart from the right-hand side and apply the distributive law:\n\n\\((p \\vee q) \\wedge \\sim p \\equiv (p \\wedge \\sim p) \\vee (q \\wedge \\sim p)\\).\n\nSince \\(p \\wedge \\sim p \\equiv F\\) (complement law):\n\n\\(\\equiv F \\vee (q \\wedge \\sim p) \\equiv q \\wedge \\sim p\\) (identity law).\n\nBy commutativity, \\(q \\wedge \\sim p \\equiv \\sim p \\wedge q\\).\n\nHence \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\). **Proved.**"
-  },
-  {
-    "id": "226e7352-eace-4280-8a33-3e0017a5249b",
-    "ref": "Misc Q.10 (iii)",
-    "solution": "Prove \\(\\sim(p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\) using rules of logic.\n\nBy De Morgan's law, \\(\\sim(p \\vee q) \\equiv \\sim p \\wedge \\sim q\\). So the left-hand side becomes\n\n\\((\\sim p \\wedge \\sim q) \\vee (\\sim p \\wedge q)\\).\n\nApply the distributive law (take \\(\\sim p\\) common):\n\n\\(\\equiv \\sim p \\wedge (\\sim q \\vee q)\\).\n\nSince \\(\\sim q \\vee q \\equiv T\\) (complement law):\n\n\\(\\equiv \\sim p \\wedge T \\equiv \\sim p\\) (identity law).\n\nHence \\(\\sim(p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\). **Proved.**"
-  },
-  {
-    "id": "c2675a91-afe9-4dd3-b4b3-b38b25a2f49c",
-    "ref": "Misc Q.11 (i)",
-    "solution": "Negate \\((p \\vee q) \\wedge (q \\vee \\sim r)\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[(p \\vee q) \\wedge (q \\vee \\sim r)] \\equiv \\sim(p \\vee q) \\vee \\sim(q \\vee \\sim r)\\).\n\nApply De Morgan's law to each bracket (and \\(\\sim(\\sim r) \\equiv r\\)):\n\n\\(\\equiv (\\sim p \\wedge \\sim q) \\vee (\\sim q \\wedge r)\\).\n\n**Negation: \\((\\sim p \\wedge \\sim q) \\vee (\\sim q \\wedge r)\\).**"
-  },
-  {
-    "id": "0c381274-2605-4c86-b7d7-ac8921a7fa41",
-    "ref": "Misc Q.11 (ii)",
-    "solution": "Negate \\(p \\wedge (q \\vee r)\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[p \\wedge (q \\vee r)] \\equiv \\sim p \\vee \\sim(q \\vee r)\\).\n\nApply De Morgan's law to \\(\\sim(q \\vee r) \\equiv \\sim q \\wedge \\sim r\\):\n\n\\(\\equiv \\sim p \\vee (\\sim q \\wedge \\sim r)\\).\n\n**Negation: \\(\\sim p \\vee (\\sim q \\wedge \\sim r)\\).**"
-  },
-  {
-    "id": "58a116bb-91d0-4a1c-83da-eb7566d16fe9",
-    "ref": "Misc Q.11 (iii)",
-    "solution": "Negate \\((p \\to q) \\wedge r\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[(p \\to q) \\wedge r] \\equiv \\sim(p \\to q) \\vee \\sim r\\).\n\nUsing the negation-of-implication rule \\(\\sim(p \\to q) \\equiv p \\wedge \\sim q\\):\n\n\\(\\equiv (p \\wedge \\sim q) \\vee \\sim r\\).\n\n**Negation: \\((p \\wedge \\sim q) \\vee \\sim r\\).**"
-  },
-  {
-    "id": "0a7d2051-dd65-4f2a-bf7a-1997b99fd619",
-    "ref": "Misc Q.11 (iv)",
-    "solution": "Negate \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim q)\\).\n\nUsing De Morgan's law \\(\\sim(A \\vee B) \\equiv \\sim A \\wedge \\sim B\\):\n\n\\(\\sim[(\\sim p \\wedge q) \\vee (p \\wedge \\sim q)] \\equiv \\sim(\\sim p \\wedge q) \\wedge \\sim(p \\wedge \\sim q)\\).\n\nApply De Morgan's law to each bracket (and \\(\\sim(\\sim p) \\equiv p\\), \\(\\sim(\\sim q) \\equiv q\\)):\n\n\\(\\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).\n\n**Negation: \\((p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).**"
-  },
-  {
-    "id": "46bfce76-1215-48a3-bb36-997090775fa0",
-    "ref": "Misc Q.14 (A) i)",
-    "solution": "Circuit (i) is \\(S_1 \\wedge (S_2 \\vee S_3)\\) and Circuit (ii) is \\((S_1 \\wedge S_2) \\vee (S_1 \\wedge S_3)\\). Compare by truth table (T = switch closed / current flows):\n\n| \\(S_1\\) | \\(S_2\\) | \\(S_3\\) | \\(S_2 \\vee S_3\\) | \\(S_1 \\wedge (S_2\\vee S_3)\\) | \\(S_1\\wedge S_2\\) | \\(S_1\\wedge S_3\\) | \\((S_1\\wedge S_2)\\vee(S_1\\wedge S_3)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | F | F | F | F |\n| F | T | F | T | F | F | F | F |\n| F | F | T | T | F | F | F | F |\n| F | F | F | F | F | F | F | F |\n\nThe two circuit columns (5th and 8th) are identical in every row, so \\(S_1 \\wedge (S_2 \\vee S_3) \\equiv (S_1 \\wedge S_2) \\vee (S_1 \\wedge S_3)\\).\n\n**Conclusion: the two circuits are logically equivalent** (by the distributive law)."
-  },
-  {
-    "id": "ac0266ce-b1e2-46d8-a69e-de424656e867",
-    "ref": "Misc Q.14 (B) i)",
-    "solution": "Circuit (i) is \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3)\\) and Circuit (ii) is \\(S_1 \\vee (S_2 \\wedge S_3)\\). Compare by truth table (T = switch closed / current flows):\n\n| \\(S_1\\) | \\(S_2\\) | \\(S_3\\) | \\(S_1\\vee S_2\\) | \\(S_1\\vee S_3\\) | \\((S_1\\vee S_2)\\wedge(S_1\\vee S_3)\\) | \\(S_2\\wedge S_3\\) | \\(S_1\\vee(S_2\\wedge S_3)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | T | F | T |\n| T | F | F | T | T | T | F | T |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | F | F | F |\n| F | F | T | F | T | F | F | F |\n| F | F | F | F | F | F | F | F |\n\nThe two circuit columns (6th and 8th) are identical in every row, so \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3) \\equiv S_1 \\vee (S_2 \\wedge S_3)\\).\n\n**Conclusion: the two circuits are logically equivalent** (by the distributive law)."
-  }
+ {
+  "id": "0df4b8da-ccb3-41fc-9288-f991253a6aba",
+  "ref": "Misc Q.2 (i)",
+  "solution": "It is a **statement** in logic, because it is a declarative sentence that is definitely either true or false.\n\nSince \\(4! = 4 \\times 3 \\times 2 \\times 1 = 24\\), the sentence is correct.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "f269c753-680c-4545-8ee7-9eda1bd75d6b",
+  "ref": "Misc Q.2 (ii)",
+  "solution": "It is a **statement** in logic, because it is a declarative sentence whose truth can be definitely decided.\n\n\\(\\pi\\) is indeed an irrational number.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "284f2af3-9ab5-4ef4-951b-1a6a8aa35640",
+  "ref": "Misc Q.2 (iii)",
+  "solution": "It is a **statement** in logic (a compound statement joined by 'and').\n\nLet \\(p:\\) India is a country (T) and \\(q:\\) Himalayas is a river (F). The Himalayas is a mountain range, not a river, so \\(q\\) is F.\n\nThe conjunction \\(p \\wedge q\\) is \\(T \\wedge F = F\\).\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "7635992b-8db6-42de-a9f5-aaf2bb7aa5d1",
+  "ref": "Misc Q.2 (iv)",
+  "solution": "It is **not a statement** in logic.\n\nJustification: it is a request (imperative sentence). It is neither true nor false, so it cannot be assigned a truth value.\n\n**No truth value.**"
+ },
+ {
+  "id": "c67dedaf-cce5-4f57-8962-ebab5f2dbc46",
+  "ref": "Misc Q.2 (v)",
+  "solution": "It is a **statement** in logic, because it is a declarative sentence with a definite truth value.\n\nThe identity \\(\\cos^2\\theta - \\sin^2\\theta = \\cos 2\\theta\\) holds for all \\(\\theta \\in R\\).\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "4a2fb231-3480-4f86-92ba-c44a7cd1ed4e",
+  "ref": "Misc Q.2 (vi)",
+  "solution": "It is a **statement** in logic (an open conditional that is decidable over whole numbers).\n\nFor \\(x\\) a whole number, \\(x + 6 = 0\\) would give \\(x = -6\\), which is not a whole number. So no whole number satisfies \\(x + 6 = 0\\); the implication 'if \\(x\\) is a whole number then \\(x + 6 = 0\\)' is false (take \\(x = 0\\): antecedent T, consequent F).\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "b38dcbeb-0764-444a-8725-44dcbd7dc862",
+  "ref": "Misc Q.3 (i)",
+  "solution": "Let \\(p:\\) \\(\\sqrt{5}\\) is irrational, and \\(q:\\) \\(3\\sqrt{5}\\) is a complex number. The statement is \\(p \\wedge q\\).\n\n\\(\\sqrt{5}\\) is irrational, so \\(p\\) is T. Every real number is a complex number (with zero imaginary part), and \\(3\\sqrt{5}\\) is real, so \\(q\\) is T.\n\nHence \\(p \\wedge q \\equiv T \\wedge T = T\\).\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "a34c8660-c02a-478c-9171-789fef21880b",
+  "ref": "Misc Q.3 (ii)",
+  "solution": "The statement is \\(\\forall n \\in N\\), (\\(n^2 + n\\) is even) \\(\\wedge\\) (\\(n^2 - n\\) is odd).\n\nNow \\(n^2 + n = n(n+1)\\) is a product of two consecutive integers, hence always even (T). But \\(n^2 - n = n(n-1)\\) is also a product of two consecutive integers, hence always **even**, not odd. So the second part is F.\n\nA conjunction with a false part is false.\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "baa532d8-8380-4ad8-8479-c33d961bf2df",
+  "ref": "Misc Q.3 (iii)",
+  "solution": "The statement is \\(\\exists n \\in N\\) such that \\(n + 5 > 10\\), i.e. \\(n > 5\\).\n\nFor example \\(n = 6 \\in N\\) gives \\(6 + 5 = 11 > 10\\). Such an \\(n\\) exists.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "6c12e0b3-12e1-4665-964f-91fccb4c95d3",
+  "ref": "Misc Q.3 (iv)",
+  "solution": "Let \\(p:\\) the square of any even number is odd, and \\(q:\\) the cube of any odd number is odd. The statement is \\(p \\vee q\\).\n\nThe square of an even number is even, so \\(p\\) is F. The cube of an odd number is odd (e.g. \\(3^3 = 27\\)); in general odd \\(\\times\\) odd \\(\\times\\) odd is odd, so \\(q\\) is T.\n\nHence \\(p \\vee q \\equiv F \\vee T = T\\).\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "8941f4e2-4936-4158-a2f3-f045cf3009ae",
+  "ref": "Misc Q.3 (v)",
+  "solution": "The statement is a conditional: in \\(\\triangle ABC\\), if all sides are equal then all angles are equal.\n\nAn equilateral triangle (all sides equal) is equiangular (each angle \\(60^\\circ\\)), so the implication holds.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "1d3b5f8e-b10f-4625-a479-c42da8bbd26b",
+  "ref": "Misc Q.3 (vi)",
+  "solution": "The statement is \\(\\forall n \\in N\\), \\(n + 6 > 8\\), i.e. \\(n > 2\\) for every natural number.\n\nThis fails for \\(n = 1\\): \\(1 + 6 = 7 \\not> 8\\) (also fails for \\(n = 2\\)). So it is not true for all \\(n\\).\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "556b3588-fada-4678-bb3e-82ee2323a630",
+  "ref": "Misc Q.4 (i)",
+  "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\exists x \\in A\\) such that \\(x + 8 = 15\\), i.e. \\(x = 7\\).\n\nSince \\(7 \\in A\\) and \\(7 + 8 = 15\\), such an \\(x\\) exists.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "dc5a7dd9-0fe2-493e-a633-acc7fcd91b88",
+  "ref": "Misc Q.4 (ii)",
+  "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\forall x \\in A\\), \\(x + 5 < 12\\), i.e. \\(x < 7\\) for every \\(x \\in A\\).\n\nThis fails for \\(x = 7\\): \\(7 + 5 = 12 \\not< 12\\) (also fails for \\(x = 8, 9\\)). So it does not hold for all \\(x\\).\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "aa22765d-72c4-41d0-8830-d010ef57921b",
+  "ref": "Misc Q.4 (iii)",
+  "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\exists x \\in A\\) such that \\(x + 7 \\geq 11\\), i.e. \\(x \\geq 4\\).\n\nFor example \\(x = 4 \\in A\\) gives \\(4 + 7 = 11 \\geq 11\\). Such an \\(x\\) exists.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "fccb0f3e-2805-4e9f-b592-88dbf6eea0ea",
+  "ref": "Misc Q.4 (iv)",
+  "solution": "\\(A = \\{1,2,3,4,5,6,7,8,9\\}\\). Statement: \\(\\forall x \\in A\\), \\(3x \\leq 25\\).\n\nThe largest value is at \\(x = 9\\): \\(3 \\times 9 = 27 \\not\\leq 25\\). So it fails for \\(x = 9\\) (and \\(x = 8: 24 \\leq 25\\) holds, but one failure is enough).\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "7515ff9b-3289-4e00-8d28-205480f30d78",
+  "ref": "Misc Q.5 (i)",
+  "solution": "The given statement is \\(\\forall n \\in A\\), \\(n + 7 > 6\\).\n\nUsing \\(\\sim(\\forall x, P(x)) \\equiv \\exists x, \\sim P(x)\\), the negation is:\n\n\\(\\exists n \\in A\\) such that \\(n + 7 \\leq 6\\).\n\n**In words:** There exists \\(n \\in A\\) such that \\(n + 7\\) is not greater than \\(6\\)."
+ },
+ {
+  "id": "935653d6-c675-4ecb-bee9-c82674ee373c",
+  "ref": "Misc Q.5 (ii)",
+  "solution": "The given statement is \\(\\exists x \\in A\\) such that \\(x + 9 \\leq 15\\).\n\nUsing \\(\\sim(\\exists x, P(x)) \\equiv \\forall x, \\sim P(x)\\), the negation is:\n\n\\(\\forall x \\in A\\), \\(x + 9 > 15\\).\n\n**In words:** For every \\(x \\in A\\), \\(x + 9\\) is greater than \\(15\\)."
+ },
+ {
+  "id": "53378bfe-0b18-427f-b3b6-e9dc6bd409a0",
+  "ref": "Misc Q.5 (iii)",
+  "solution": "The statement 'Some triangles are equilateral triangle' is an existential statement (\\(\\exists\\)).\n\nUsing \\(\\sim(\\exists x, P(x)) \\equiv \\forall x, \\sim P(x)\\), its negation is:\n\n**No triangle is an equilateral triangle.**\n\n(Equivalently: All triangles are non-equilateral triangles.)"
+ },
+ {
+  "id": "0223f005-d8cc-415a-80f6-f49237de7bf6",
+  "ref": "Misc Q.6 (i)",
+  "solution": "Truth table for \\(p \\to (q \\to p)\\):\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(p \\to (q \\to p)\\) |\n|---|---|---|---|\n| T | T | T | T |\n| T | F | T | T |\n| F | T | F | T |\n| F | F | T | T |\n\nThe last column is T in every row, so \\(p \\to (q \\to p)\\) is a **tautology**."
+ },
+ {
+  "id": "10305c31-c69a-452b-afd5-0321277fae44",
+  "ref": "Misc Q.6 (ii)",
+  "solution": "Truth table for \\((\\sim p \\vee \\sim q) \\leftrightarrow [\\sim(p \\wedge q)]\\):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\vee \\sim q\\) | \\(p \\wedge q\\) | \\(\\sim(p \\wedge q)\\) | \\((\\sim p \\vee \\sim q) \\leftrightarrow \\sim(p \\wedge q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | F | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | F | T | F | T | T |\n| F | F | T | T | T | F | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is one of De Morgan's laws)."
+ },
+ {
+  "id": "b48b95b5-04df-4004-b607-1b1afb38f18b",
+  "ref": "Misc Q.6 (iii)",
+  "solution": "Truth table for \\(\\sim(\\sim p \\wedge \\sim q) \\vee q\\):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\wedge \\sim q\\) | \\(\\sim(\\sim p \\wedge \\sim q)\\) | \\(\\sim(\\sim p \\wedge \\sim q) \\vee q\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | F | T | T |\n| T | F | F | T | F | T | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | F | F |\n\nThe final column is \\(T, T, T, F\\), so the pattern is a **contingency** (note \\(\\sim(\\sim p \\wedge \\sim q) \\equiv p \\vee q\\), and \\((p \\vee q) \\vee q \\equiv p \\vee q\\))."
+ },
+ {
+  "id": "af4eea29-92b0-43dd-98a2-d2bd86867ab3",
+  "ref": "Misc Q.6 (iv)",
+  "solution": "Let \\(t \\equiv p \\wedge q\\). Truth table for \\([(p \\wedge q) \\vee r] \\wedge [\\sim r \\vee (p \\wedge q)]\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\((p\\wedge q)\\vee r\\) | \\(\\sim r\\) | \\(\\sim r \\vee (p\\wedge q)\\) | Result |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | F | T | T |\n| T | T | F | T | T | T | T | T |\n| T | F | T | F | T | F | F | F |\n| T | F | F | F | F | T | T | F |\n| F | T | T | F | T | F | F | F |\n| F | T | F | F | F | T | T | F |\n| F | F | T | F | T | F | F | F |\n| F | F | F | F | F | T | T | F |\n\nThe final column contains both T and F, so the pattern is a **contingency**. (It is in fact equivalent to \\(p \\wedge q\\).)"
+ },
+ {
+  "id": "cf1e0ccf-657a-4435-8209-ee911e0592ed",
+  "ref": "Misc Q.6 (v)",
+  "solution": "Truth table for \\([(\\sim p \\vee q) \\wedge (q \\to r)] \\to (p \\to r)\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(\\sim p \\vee q\\) | \\(q \\to r\\) | \\(A=(\\sim p\\vee q)\\wedge(q\\to r)\\) | \\(p \\to r\\) | \\(A \\to (p\\to r)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F | T |\n| T | F | T | F | T | F | T | T |\n| T | F | F | F | T | F | F | T |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | F | T | T |\n| F | F | T | T | T | T | T | T |\n| F | F | F | T | T | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
+ },
+ {
+  "id": "0aa9a3c9-f8eb-4f14-8920-ed13d9196b29",
+  "ref": "Misc Q.7 (i)",
+  "solution": "Truth table for \\([(p \\to q) \\wedge \\sim q] \\to \\sim p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\((p\\to q)\\wedge \\sim q\\) | \\(\\sim p\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | T |\n| T | F | F | T | F | F | T |\n| F | T | T | F | F | T | T |\n| F | F | T | T | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is the valid form modus tollens)."
+ },
+ {
+  "id": "ad8e7b8a-d76f-4496-80e4-49efae6f278c",
+  "ref": "Misc Q.7 (ii)",
+  "solution": "Truth table for \\([(p \\vee q) \\wedge \\sim p] \\wedge \\sim q\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\vee q\\) | \\(\\sim p\\) | \\((p\\vee q)\\wedge \\sim p\\) | \\(\\sim q\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | T | F | F | T | F |\n| F | T | T | T | T | F | F |\n| F | F | F | T | F | T | F |\n\nThe last column is F in every row, so the pattern is a **contradiction**."
+ },
+ {
+  "id": "3df36ceb-baf3-4061-849b-6b9e084e8cb7",
+  "ref": "Misc Q.7 (iii)",
+  "solution": "Truth table for \\((p \\to q) \\wedge (p \\wedge \\sim q)\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(\\sim q\\) | \\(p \\wedge \\sim q\\) | Result |\n|---|---|---|---|---|---|\n| T | T | T | F | F | F |\n| T | F | F | T | T | F |\n| F | T | T | F | F | F |\n| F | F | T | T | F | F |\n\nThe last column is F in every row, so the pattern is a **contradiction**."
+ },
+ {
+  "id": "e7b5e43c-95af-49d4-97df-992f0160f844",
+  "ref": "Misc Q.7 (iv)",
+  "solution": "Truth table for \\([p \\to (q \\to r)] \\leftrightarrow [(p \\wedge q) \\to r]\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(q \\to r\\) | \\(p \\to (q\\to r)\\) | \\(p \\wedge q\\) | \\((p\\wedge q)\\to r\\) | \\(\\leftrightarrow\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | F | F | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | T | T | F | T | T |\n| F | T | T | T | T | F | T | T |\n| F | T | F | F | T | F | T | T |\n| F | F | T | T | T | F | T | T |\n| F | F | F | T | T | F | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
+ },
+ {
+  "id": "11e90e2e-49ec-40fa-8ff6-a80b51e87219",
+  "ref": "Misc Q.7 (v)",
+  "solution": "Truth table for \\([p \\wedge (p \\to q)] \\to q\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(p \\wedge (p\\to q)\\) | Result |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | F | T |\n| F | F | T | F | T |\n\nThe last column is T in every row, so the pattern is a **tautology** (this is the valid form modus ponens)."
+ },
+ {
+  "id": "bc90afc2-e5f8-4e9b-a028-4d865b4585b6",
+  "ref": "Misc Q.7 (vi)",
+  "solution": "Truth table for \\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (p \\vee \\sim q) \\vee (\\sim p \\wedge \\sim q)\\):\n\n| \\(p\\) | \\(q\\) | \\(p\\wedge q\\) | \\(\\sim p\\wedge q\\) | \\(p\\vee\\sim q\\) | \\(\\sim p\\wedge\\sim q\\) | Result |\n|---|---|---|---|---|---|---|\n| T | T | T | F | T | F | T |\n| T | F | F | F | T | F | T |\n| F | T | F | T | F | F | T |\n| F | F | F | F | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
+ },
+ {
+  "id": "463a0133-2e6d-47ff-a48e-eb5ca7266486",
+  "ref": "Misc Q.7 (vii)",
+  "solution": "Truth table for \\([(p \\vee \\sim q) \\vee (\\sim p \\wedge q)] \\wedge r\\):\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p\\vee\\sim q\\) | \\(\\sim p\\wedge q\\) | \\(B=(p\\vee\\sim q)\\vee(\\sim p\\wedge q)\\) | \\(B \\wedge r\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | T | F | T | F | T | F |\n| T | F | T | T | F | T | T |\n| T | F | F | T | F | T | F |\n| F | T | T | F | T | T | T |\n| F | T | F | F | T | T | F |\n| F | F | T | T | F | T | T |\n| F | F | F | T | F | T | F |\n\nThe bracket \\(B\\) is always T, so the result equals \\(r\\); the last column contains both T and F. Hence the pattern is a **contingency**."
+ },
+ {
+  "id": "10a219b3-d66e-4c64-8c13-c2e8514627f8",
+  "ref": "Misc Q.7 (viii)",
+  "solution": "Truth table for \\((p \\to q) \\vee (q \\to p)\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\to q\\) | \\(q \\to p\\) | Result |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | T | T |\n| F | T | T | F | T |\n| F | F | T | T | T |\n\nThe last column is T in every row, so the pattern is a **tautology**."
+ },
+ {
+  "id": "2d7ef428-17ff-4bfc-a9f7-5757867f0ffd",
+  "ref": "Misc Q.8 (i)",
+  "solution": "Given \\((p \\vee q)\\) is T and \\((p \\wedge q)\\) is T.\n\n\\(p \\wedge q\\) is T only when **both** \\(p\\) and \\(q\\) are T. With \\(p = T, q = T\\), we also get \\(p \\vee q = T\\), which is consistent.\n\n**Answer: \\(p = T\\) and \\(q = T\\).**"
+ },
+ {
+  "id": "45c11302-1fdc-48c6-be9a-9d22d913476b",
+  "ref": "Misc Q.8 (ii)",
+  "solution": "Given \\((p \\vee q)\\) is T and \\((p \\vee q) \\to q\\) is F.\n\nAn implication \\(X \\to q\\) is F only when \\(X\\) is T and \\(q\\) is F. Here \\(X = p \\vee q\\) is T (given) and \\(q\\) is F.\n\nSince \\(p \\vee q = T\\) with \\(q = F\\), we must have \\(p = T\\).\n\n**Answer: \\(p = T\\) and \\(q = F\\).**"
+ },
+ {
+  "id": "05a7858b-5e31-494d-ade5-dbdbc3acd487",
+  "ref": "Misc Q.8 (iii)",
+  "solution": "Given \\((p \\wedge q)\\) is F and \\((p \\wedge q) \\to q\\) is T.\n\nHere \\(p \\wedge q\\) is F, so the antecedent of the implication is F; then \\((p \\wedge q) \\to q\\) is automatically T for any truth value of \\(q\\). Thus the second condition gives no extra restriction.\n\nThe only condition is \\(p \\wedge q = F\\), which holds whenever at least one of \\(p, q\\) is F.\n\n**Answer:** \\(p\\) and \\(q\\) cannot both be determined uniquely. Any of \\((p,q) = (T,F), (F,T), (F,F)\\) satisfies the conditions; i.e. **at least one of \\(p, q\\) is F.**"
+ },
+ {
+  "id": "b64e3cb2-d67a-47a1-bbe0-13ade0b87cb3",
+  "ref": "Misc Q.9 (i)",
+  "solution": "Prove \\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\) by truth table:\n\n| \\(p\\) | \\(q\\) | \\(p \\leftrightarrow q\\) | \\(p \\wedge q\\) | \\(\\sim p \\wedge \\sim q\\) | \\((p\\wedge q)\\vee(\\sim p\\wedge\\sim q)\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | F | T |\n| T | F | F | F | F | F |\n| F | T | F | F | F | F |\n| F | F | T | F | T | T |\n\nColumns 3 and 6 are identical in every row, hence \\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\). **Proved.**"
+ },
+ {
+  "id": "f683470f-2b68-4871-b0eb-737d7d9d84db",
+  "ref": "Misc Q.9 (ii)",
+  "solution": "Prove \\((p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\) by truth table:\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\wedge q\\) | \\((p\\wedge q)\\to r\\) | \\(q \\to r\\) | \\(p \\to (q\\to r)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T |\n| T | T | F | T | F | F | F |\n| T | F | T | F | T | T | T |\n| T | F | F | F | T | T | T |\n| F | T | T | F | T | T | T |\n| F | T | F | F | T | F | T |\n| F | F | T | F | T | T | T |\n| F | F | F | F | T | T | T |\n\nColumns 5 and 7 are identical in every row, hence \\((p \\wedge q) \\to r \\equiv p \\to (q \\to r)\\). **Proved.**"
+ },
+ {
+  "id": "f5c5d90b-d234-46c1-8d6a-51719926fca3",
+  "ref": "Misc Q.10 (i)",
+  "solution": "Prove \\(p \\leftrightarrow q \\equiv \\sim(p \\wedge \\sim q) \\wedge \\sim(q \\wedge \\sim p)\\) using rules of logic.\n\nStart from the right-hand side and apply De Morgan's law and conditional laws:\n\n\\(\\sim(p \\wedge \\sim q) \\equiv \\sim p \\vee q \\equiv p \\to q\\).\n\n\\(\\sim(q \\wedge \\sim p) \\equiv \\sim q \\vee p \\equiv q \\to p\\).\n\nTherefore\n\n\\(\\sim(p \\wedge \\sim q) \\wedge \\sim(q \\wedge \\sim p) \\equiv (p \\to q) \\wedge (q \\to p)\\).\n\nBy the definition of the biconditional, \\((p \\to q) \\wedge (q \\to p) \\equiv p \\leftrightarrow q\\).\n\nHence \\(p \\leftrightarrow q \\equiv \\sim(p \\wedge \\sim q) \\wedge \\sim(q \\wedge \\sim p)\\). **Proved.**"
+ },
+ {
+  "id": "41517307-56cd-4460-9e7e-6a201dd284c4",
+  "ref": "Misc Q.10 (ii)",
+  "solution": "Prove \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\) using rules of logic.\n\nStart from the right-hand side and apply the distributive law:\n\n\\((p \\vee q) \\wedge \\sim p \\equiv (p \\wedge \\sim p) \\vee (q \\wedge \\sim p)\\).\n\nSince \\(p \\wedge \\sim p \\equiv F\\) (complement law):\n\n\\(\\equiv F \\vee (q \\wedge \\sim p) \\equiv q \\wedge \\sim p\\) (identity law).\n\nBy commutativity, \\(q \\wedge \\sim p \\equiv \\sim p \\wedge q\\).\n\nHence \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\). **Proved.**"
+ },
+ {
+  "id": "226e7352-eace-4280-8a33-3e0017a5249b",
+  "ref": "Misc Q.10 (iii)",
+  "solution": "Prove \\(\\sim(p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\) using rules of logic.\n\nBy De Morgan's law, \\(\\sim(p \\vee q) \\equiv \\sim p \\wedge \\sim q\\). So the left-hand side becomes\n\n\\((\\sim p \\wedge \\sim q) \\vee (\\sim p \\wedge q)\\).\n\nApply the distributive law (take \\(\\sim p\\) common):\n\n\\(\\equiv \\sim p \\wedge (\\sim q \\vee q)\\).\n\nSince \\(\\sim q \\vee q \\equiv T\\) (complement law):\n\n\\(\\equiv \\sim p \\wedge T \\equiv \\sim p\\) (identity law).\n\nHence \\(\\sim(p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\). **Proved.**"
+ },
+ {
+  "id": "c2675a91-afe9-4dd3-b4b3-b38b25a2f49c",
+  "ref": "Misc Q.11 (i)",
+  "solution": "Negate \\((p \\vee q) \\wedge (q \\vee \\sim r)\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[(p \\vee q) \\wedge (q \\vee \\sim r)] \\equiv \\sim(p \\vee q) \\vee \\sim(q \\vee \\sim r)\\).\n\nApply De Morgan's law to each bracket (and \\(\\sim(\\sim r) \\equiv r\\)):\n\n\\(\\equiv (\\sim p \\wedge \\sim q) \\vee (\\sim q \\wedge r)\\).\n\n**Negation: \\((\\sim p \\wedge \\sim q) \\vee (\\sim q \\wedge r)\\).**"
+ },
+ {
+  "id": "0c381274-2605-4c86-b7d7-ac8921a7fa41",
+  "ref": "Misc Q.11 (ii)",
+  "solution": "Negate \\(p \\wedge (q \\vee r)\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[p \\wedge (q \\vee r)] \\equiv \\sim p \\vee \\sim(q \\vee r)\\).\n\nApply De Morgan's law to \\(\\sim(q \\vee r) \\equiv \\sim q \\wedge \\sim r\\):\n\n\\(\\equiv \\sim p \\vee (\\sim q \\wedge \\sim r)\\).\n\n**Negation: \\(\\sim p \\vee (\\sim q \\wedge \\sim r)\\).**"
+ },
+ {
+  "id": "58a116bb-91d0-4a1c-83da-eb7566d16fe9",
+  "ref": "Misc Q.11 (iii)",
+  "solution": "[Textbook answer-key error: the printed answer key gives \\((p \\wedge \\sim q) \\vee r\\); the correct negation is \\((p \\wedge \\sim q) \\vee \\sim r\\) (our answer).]\n\nNegate \\((p \\to q) \\wedge r\\).\n\nUsing De Morgan's law \\(\\sim(A \\wedge B) \\equiv \\sim A \\vee \\sim B\\):\n\n\\(\\sim[(p \\to q) \\wedge r] \\equiv \\sim(p \\to q) \\vee \\sim r\\).\n\nUsing the negation-of-implication rule \\(\\sim(p \\to q) \\equiv p \\wedge \\sim q\\):\n\n\\(\\equiv (p \\wedge \\sim q) \\vee \\sim r\\).\n\n**Negation: \\((p \\wedge \\sim q) \\vee \\sim r\\).**"
+ },
+ {
+  "id": "0a7d2051-dd65-4f2a-bf7a-1997b99fd619",
+  "ref": "Misc Q.11 (iv)",
+  "solution": "Negate \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim q)\\).\n\nUsing De Morgan's law \\(\\sim(A \\vee B) \\equiv \\sim A \\wedge \\sim B\\):\n\n\\(\\sim[(\\sim p \\wedge q) \\vee (p \\wedge \\sim q)] \\equiv \\sim(\\sim p \\wedge q) \\wedge \\sim(p \\wedge \\sim q)\\).\n\nApply De Morgan's law to each bracket (and \\(\\sim(\\sim p) \\equiv p\\), \\(\\sim(\\sim q) \\equiv q\\)):\n\n\\(\\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).\n\n**Negation: \\((p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\).**"
+ },
+ {
+  "id": "46bfce76-1215-48a3-bb36-997090775fa0",
+  "ref": "Misc Q.14 (A) i)",
+  "solution": "Circuit (i) is \\(S_1 \\wedge (S_2 \\vee S_3)\\) and Circuit (ii) is \\((S_1 \\wedge S_2) \\vee (S_1 \\wedge S_3)\\). Compare by truth table (T = switch closed / current flows):\n\n| \\(S_1\\) | \\(S_2\\) | \\(S_3\\) | \\(S_2 \\vee S_3\\) | \\(S_1 \\wedge (S_2\\vee S_3)\\) | \\(S_1\\wedge S_2\\) | \\(S_1\\wedge S_3\\) | \\((S_1\\wedge S_2)\\vee(S_1\\wedge S_3)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | F | T | T |\n| T | F | F | F | F | F | F | F |\n| F | T | T | T | F | F | F | F |\n| F | T | F | T | F | F | F | F |\n| F | F | T | T | F | F | F | F |\n| F | F | F | F | F | F | F | F |\n\nThe two circuit columns (5th and 8th) are identical in every row, so \\(S_1 \\wedge (S_2 \\vee S_3) \\equiv (S_1 \\wedge S_2) \\vee (S_1 \\wedge S_3)\\).\n\n**Conclusion: the two circuits are logically equivalent** (by the distributive law)."
+ },
+ {
+  "id": "ac0266ce-b1e2-46d8-a69e-de424656e867",
+  "ref": "Misc Q.14 (B) i)",
+  "solution": "Circuit (i) is \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3)\\) and Circuit (ii) is \\(S_1 \\vee (S_2 \\wedge S_3)\\). Compare by truth table (T = switch closed / current flows):\n\n| \\(S_1\\) | \\(S_2\\) | \\(S_3\\) | \\(S_1\\vee S_2\\) | \\(S_1\\vee S_3\\) | \\((S_1\\vee S_2)\\wedge(S_1\\vee S_3)\\) | \\(S_2\\wedge S_3\\) | \\(S_1\\vee(S_2\\wedge S_3)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | T | T | T | T | T | T |\n| T | T | F | T | T | T | F | T |\n| T | F | T | T | T | T | F | T |\n| T | F | F | T | T | T | F | T |\n| F | T | T | T | T | T | T | T |\n| F | T | F | T | F | F | F | F |\n| F | F | T | F | T | F | F | F |\n| F | F | F | F | F | F | F | F |\n\nThe two circuit columns (6th and 8th) are identical in every row, so \\((S_1 \\vee S_2) \\wedge (S_1 \\vee S_3) \\equiv S_1 \\vee (S_2 \\wedge S_3)\\).\n\n**Conclusion: the two circuits are logically equivalent** (by the distributive law)."
+ }
 ]

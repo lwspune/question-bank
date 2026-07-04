@@ -1,30 +1,142 @@
 [
-{"id":"870e7944-b431-4492-b3d2-7605e0a1f32d","ref":"1.3 Ex 1.3 Q.1 (i)","solution":"We need some \\(x \\in A = \\{3, 5, 7, 9, 11, 12\\}\\) with \\(x - 8 = 1\\), i.e. \\(x = 9\\).\n\nSince \\(9 \\in A\\), such an \\(x\\) exists.\n\n**Truth value: T (True).**"},
-{"id":"fffc18c3-2aea-4ebb-a0ac-6e7763ceedb9","ref":"1.3 Ex 1.3 Q.1 (ii)","solution":"For every \\(x\\), \\(x^2 + x = x(x + 1)\\) is a product of two consecutive integers, hence always even. Checking each \\(x \\in A = \\{3, 5, 7, 9, 11, 12\\}\\) confirms \\(x^2 + x\\) is even in every case.\n\nSince the statement holds for all \\(x \\in A\\):\n\n**Truth value: T (True).**"},
-{"id":"f9cd6ec1-4a48-4452-afd7-cb43d4695c60","ref":"1.3 Ex 1.3 Q.1 (iii)","solution":"For every real \\(x\\), \\(x^2 \\geq 0\\), so no \\(x \\in A\\) satisfies \\(x^2 < 0\\). Hence no such \\(x\\) exists.\n\n**Truth value: F (False).**"},
-{"id":"7ed0744b-ce2d-46eb-a6ac-6b0528ce27c8","ref":"1.3 Ex 1.3 Q.1 (iv)","solution":"The claim is that every \\(x \\in A = \\{3, 5, 7, 9, 11, 12\\}\\) is even. But \\(3 \\in A\\) is odd (a counterexample).\n\nSince it fails for at least one element:\n\n**Truth value: F (False).**"},
-{"id":"71ddfc91-0d52-4d01-b9a6-8e98edd0fc6c","ref":"1.3 Ex 1.3 Q.1 (v)","solution":"We need some \\(x \\in A\\) with \\(3x + 8 > 40\\), i.e. \\(3x > 32\\), i.e. \\(x > \\dfrac{32}{3} \\approx 10.67\\).\n\nElements \\(x = 11\\) and \\(x = 12\\) in \\(A\\) satisfy this (e.g. \\(3(11) + 8 = 41 > 40\\)).\n\nSince such an \\(x\\) exists:\n\n**Truth value: T (True).**"},
-{"id":"1739f6f9-59c7-491d-bc90-2bc92232c9b0","ref":"1.3 Ex 1.3 Q.1 (vi)","solution":"The claim is that \\(2x + 9 > 14\\) for every \\(x \\in A\\), i.e. \\(2x > 5\\), i.e. \\(x > 2.5\\).\n\nThe smallest element of \\(A\\) is \\(3\\), and \\(3 > 2.5\\), so every \\(x \\in A\\) satisfies the inequality (e.g. \\(2(3) + 9 = 15 > 14\\)).\n\nSince it holds for all \\(x \\in A\\):\n\n**Truth value: T (True).**"},
-{"id":"99689905-fe95-42dc-b9f1-c4e69cd61ba3","ref":"1.3 Ex 1.3 Q.2 (i)","solution":"The dual is formed by interchanging \\(\\wedge\\) with \\(\\vee\\) (and any \\(t\\) with \\(c\\)); \\(\\sim\\) is unchanged.\n\nGiven: \\(p \\vee (q \\wedge r)\\).\n\n**Dual: \\(p \\wedge (q \\vee r)\\).**"},
-{"id":"724035f3-70cf-4526-a16a-f486559986cd","ref":"1.3 Ex 1.3 Q.2 (ii)","solution":"The dual is formed by interchanging \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is unchanged.\n\nGiven: \\(p \\wedge (q \\wedge r)\\).\n\n**Dual: \\(p \\vee (q \\vee r)\\).**"},
-{"id":"7bae474a-3a7e-481b-aa8d-52ac828f58c0","ref":"1.3 Ex 1.3 Q.2 (iii)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\).\n\nGiven: \\((p \\vee q) \\wedge (r \\vee s)\\).\n\n**Dual: \\((p \\wedge q) \\vee (r \\wedge s)\\).**"},
-{"id":"f6935bf1-acc4-4b41-9c89-626c248871b9","ref":"1.3 Ex 1.3 Q.2 (iv)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is left unchanged.\n\nGiven: \\(p \\wedge \\sim q\\).\n\n**Dual: \\(p \\vee \\sim q\\).**"},
-{"id":"a5890686-a97e-43d1-ad23-5f2da9a44667","ref":"1.3 Ex 1.3 Q.2 (v)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is unchanged.\n\nGiven: \\((\\sim p \\vee q) \\wedge (\\sim r \\wedge s)\\).\n\n**Dual: \\((\\sim p \\wedge q) \\vee (\\sim r \\vee s)\\).**"},
-{"id":"c1b9addb-33e5-4acb-9403-9dbb46be53fe","ref":"1.3 Ex 1.3 Q.2 (vi)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\) throughout; \\(\\sim\\) is unchanged.\n\nGiven: \\(\\sim p \\wedge (\\sim q \\wedge (p \\vee q) \\wedge \\sim r)\\).\n\n**Dual: \\(\\sim p \\vee (\\sim q \\vee (p \\wedge q) \\vee \\sim r)\\).**"},
-{"id":"2b2c06d8-4525-48cc-9dfe-d9b81eb844a8","ref":"1.3 Ex 1.3 Q.2 (vii)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\) throughout; \\(\\sim\\) is unchanged.\n\nGiven: \\([\\sim (p \\vee q)] \\wedge [p \\vee \\sim (q \\wedge \\sim s)]\\).\n\n**Dual: \\([\\sim (p \\wedge q)] \\vee [p \\wedge \\sim (q \\vee \\sim s)]\\).**"},
-{"id":"6ddbac04-0dd5-486a-a35e-22c5fc1527a2","ref":"1.3 Ex 1.3 Q.2 (viii)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\), and the contradiction \\(c\\) with the tautology \\(t\\).\n\nGiven: \\(c \\vee \\{p \\wedge (q \\vee r)\\}\\).\n\n**Dual: \\(t \\wedge \\{p \\vee (q \\wedge r)\\}\\).**"},
-{"id":"81f4ef02-1b0d-4a29-87fe-782b3b88595e","ref":"1.3 Ex 1.3 Q.2 (ix)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is unchanged.\n\nGiven: \\(\\sim p \\vee (q \\wedge r) \\wedge t\\).\n\n**Dual: \\(\\sim p \\wedge (q \\vee r) \\vee t\\).**"},
-{"id":"d9647d3e-ff18-46f1-a42f-1e202518e7c4","ref":"1.3 Ex 1.3 Q.2 (x)","solution":"Interchange \\(\\wedge\\) with \\(\\vee\\), and the contradiction \\(c\\) with the tautology \\(t\\).\n\nGiven: \\((p \\vee q) \\vee c\\).\n\n**Dual: \\((p \\wedge q) \\wedge t\\).**"},
-{"id":"b18abdb0-cf0d-4512-903c-84a997b23024","ref":"1.3 Ex 1.3 Q.3 (i)","solution":"Let \\(p: x + 8 > 11\\) and \\(q: y - 3 = 6\\). The statement is \\(p \\vee q\\).\n\nBy De Morgan's law, \\(\\sim(p \\vee q) \\equiv \\sim p \\wedge \\sim q\\).\n\n**Negation: \\(x + 8 \\leq 11\\) and \\(y - 3 \\neq 6\\).**"},
-{"id":"f804bd77-d4bf-48a9-b15a-2c4262a5fc5a","ref":"1.3 Ex 1.3 Q.3 (ii)","solution":"Let \\(p: 11 < 15\\) and \\(q: 25 > 20\\). The statement is \\(p \\wedge q\\).\n\nBy De Morgan's law, \\(\\sim(p \\wedge q) \\equiv \\sim p \\vee \\sim q\\).\n\n**Negation: \\(11 \\geq 15\\) or \\(25 \\leq 20\\).**"},
-{"id":"81b078a6-03bb-4e46-8111-5a61bebc0c10","ref":"1.3 Ex 1.3 Q.3 (iii)","solution":"Let \\(p:\\) quadrilateral is a square, \\(q:\\) it is a rhombus. The statement is the biconditional \\(p \\leftrightarrow q\\).\n\nThe negation of a biconditional is \\(\\sim(p \\leftrightarrow q) \\equiv (p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\), i.e. exactly one of the two holds.\n\n**Negation: Quadrilateral is a square but it is not a rhombus, or a quadrilateral is a rhombus but it is not a square.**"},
-{"id":"54d9e48a-6087-4a1a-a69b-3e019555bafd","ref":"1.3 Ex 1.3 Q.3 (iv)","solution":"Let \\(p:\\) it is cold, \\(q:\\) it is raining. The statement is \\(p \\wedge q\\).\n\nBy De Morgan's law, \\(\\sim(p \\wedge q) \\equiv \\sim p \\vee \\sim q\\).\n\n**Negation: It is not cold or it is not raining.**"},
-{"id":"ebc36cd2-d40b-4407-8178-1ded2462869c","ref":"1.3 Ex 1.3 Q.3 (v)","solution":"Let \\(p:\\) it is raining, \\(q:\\) we will go and play football. The statement is the conditional \\(p \\to q\\).\n\nThe negation of a conditional is \\(\\sim(p \\to q) \\equiv p \\wedge \\sim q\\).\n\n**Negation: It is raining and we will not go and play football.**"},
-{"id":"ad71bbdf-9916-4acb-a8bb-b750c44593a6","ref":"1.3 Ex 1.3 Q.3 (vii)","solution":"The statement is \\(\\forall x, (x \\text{ is a natural number} \\to x \\text{ is a whole number})\\), i.e. \"All natural numbers are whole numbers.\"\n\nUsing \\(\\sim(\\forall x, P(x)) \\equiv \\exists x, \\sim P(x)\\):\n\n**Negation: Some natural numbers are not whole numbers.** (Equivalently: there exists a natural number that is not a whole number.)"},
-{"id":"7aa91288-12dd-4646-bf79-ae1c79514976","ref":"1.3 Ex 1.3 Q.3 (viii)","solution":"The statement is \\(\\forall n \\in N,\\ n^2 + n + 2 \\text{ is divisible by } 4\\).\n\nUsing \\(\\sim(\\forall n, P(n)) \\equiv \\exists n, \\sim P(n)\\):\n\n**Negation: \\(\\exists n \\in N\\) such that \\(n^2 + n + 2\\) is not divisible by 4.**"},
-{"id":"57d89889-dd04-4f1a-9d92-f8475a35470c","ref":"1.3 Ex 1.3 Q.3 (ix)","solution":"The statement is \\(\\exists x \\in N\\) such that \\(x - 17 < 20\\).\n\nUsing \\(\\sim(\\exists x, P(x)) \\equiv \\forall x, \\sim P(x)\\):\n\n**Negation: \\(\\forall x \\in N,\\ x - 17 \\geq 20\\).**"},
-{"id":"7b5d3cb3-6ac8-4d64-9ca5-fc3c6e1eddec","ref":"1.3 Ex 1.3 Q.4 (i)","solution":"The statement is \\(p \\to q\\) where \\(p: x < y\\) and \\(q: x^2 < y^2\\) (with \\(x, y \\in R\\)).\n\n**Converse \\((q \\to p)\\):** If \\(x^2 < y^2\\) then \\(x < y\\)  \\((x, y \\in R)\\).\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If \\(x \\geq y\\) then \\(x^2 \\geq y^2\\)  \\((x, y \\in R)\\).\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If \\(x^2 \\geq y^2\\) then \\(x \\geq y\\)  \\((x, y \\in R)\\)."},
-{"id":"e179eef8-52fa-4c1e-9285-615f89ad1d41","ref":"1.3 Ex 1.3 Q.4 (ii)","solution":"Rewrite as a conditional: \"If the woman in a family is literate, then the family becomes literate.\" Here \\(p:\\) the woman in the family is literate, \\(q:\\) the family becomes literate.\n\n**Converse \\((q \\to p)\\):** If a family becomes literate, then the woman in it is literate.\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If the woman in a family is not literate, then the family does not become literate.\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If a family does not become literate, then the woman in it is not literate."},
-{"id":"da8c1ae4-8c54-4e18-b6ef-dbc43118958c","ref":"1.3 Ex 1.3 Q.4 (iii)","solution":"The statement is \\(p \\to q\\) where \\(p:\\) surface area decreases, \\(q:\\) pressure increases.\n\n**Converse \\((q \\to p)\\):** If pressure increases then surface area decreases.\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If surface area does not decrease then pressure does not increase.\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If pressure does not increase then surface area does not decrease."},
-{"id":"34e94013-0115-49a1-b2fe-9247b64561e5","ref":"1.3 Ex 1.3 Q.4 (iv)","solution":"The statement is \\(p \\to q\\) where \\(p:\\) voltage increases, \\(q:\\) current decreases.\n\n**Converse \\((q \\to p)\\):** If current decreases then voltage increases.\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If voltage does not increase then current does not decrease.\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If current does not decrease then voltage does not increase."}
+ {
+  "id": "870e7944-b431-4492-b3d2-7605e0a1f32d",
+  "ref": "1.3 Ex 1.3 Q.1 (i)",
+  "solution": "We need some \\(x \\in A = \\{3, 5, 7, 9, 11, 12\\}\\) with \\(x - 8 = 1\\), i.e. \\(x = 9\\).\n\nSince \\(9 \\in A\\), such an \\(x\\) exists.\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "fffc18c3-2aea-4ebb-a0ac-6e7763ceedb9",
+  "ref": "1.3 Ex 1.3 Q.1 (ii)",
+  "solution": "For every \\(x\\), \\(x^2 + x = x(x + 1)\\) is a product of two consecutive integers, hence always even. Checking each \\(x \\in A = \\{3, 5, 7, 9, 11, 12\\}\\) confirms \\(x^2 + x\\) is even in every case.\n\nSince the statement holds for all \\(x \\in A\\):\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "f9cd6ec1-4a48-4452-afd7-cb43d4695c60",
+  "ref": "1.3 Ex 1.3 Q.1 (iii)",
+  "solution": "For every real \\(x\\), \\(x^2 \\geq 0\\), so no \\(x \\in A\\) satisfies \\(x^2 < 0\\). Hence no such \\(x\\) exists.\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "7ed0744b-ce2d-46eb-a6ac-6b0528ce27c8",
+  "ref": "1.3 Ex 1.3 Q.1 (iv)",
+  "solution": "The claim is that every \\(x \\in A = \\{3, 5, 7, 9, 11, 12\\}\\) is even. But \\(3 \\in A\\) is odd (a counterexample).\n\nSince it fails for at least one element:\n\n**Truth value: F (False).**"
+ },
+ {
+  "id": "71ddfc91-0d52-4d01-b9a6-8e98edd0fc6c",
+  "ref": "1.3 Ex 1.3 Q.1 (v)",
+  "solution": "We need some \\(x \\in A\\) with \\(3x + 8 > 40\\), i.e. \\(3x > 32\\), i.e. \\(x > \\dfrac{32}{3} \\approx 10.67\\).\n\nElements \\(x = 11\\) and \\(x = 12\\) in \\(A\\) satisfy this (e.g. \\(3(11) + 8 = 41 > 40\\)).\n\nSince such an \\(x\\) exists:\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "1739f6f9-59c7-491d-bc90-2bc92232c9b0",
+  "ref": "1.3 Ex 1.3 Q.1 (vi)",
+  "solution": "The claim is that \\(2x + 9 > 14\\) for every \\(x \\in A\\), i.e. \\(2x > 5\\), i.e. \\(x > 2.5\\).\n\nThe smallest element of \\(A\\) is \\(3\\), and \\(3 > 2.5\\), so every \\(x \\in A\\) satisfies the inequality (e.g. \\(2(3) + 9 = 15 > 14\\)).\n\nSince it holds for all \\(x \\in A\\):\n\n**Truth value: T (True).**"
+ },
+ {
+  "id": "99689905-fe95-42dc-b9f1-c4e69cd61ba3",
+  "ref": "1.3 Ex 1.3 Q.2 (i)",
+  "solution": "The dual is formed by interchanging \\(\\wedge\\) with \\(\\vee\\) (and any \\(t\\) with \\(c\\)); \\(\\sim\\) is unchanged.\n\nGiven: \\(p \\vee (q \\wedge r)\\).\n\n**Dual: \\(p \\wedge (q \\vee r)\\).**"
+ },
+ {
+  "id": "724035f3-70cf-4526-a16a-f486559986cd",
+  "ref": "1.3 Ex 1.3 Q.2 (ii)",
+  "solution": "The dual is formed by interchanging \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is unchanged.\n\nGiven: \\(p \\wedge (q \\wedge r)\\).\n\n**Dual: \\(p \\vee (q \\vee r)\\).**"
+ },
+ {
+  "id": "7bae474a-3a7e-481b-aa8d-52ac828f58c0",
+  "ref": "1.3 Ex 1.3 Q.2 (iii)",
+  "solution": "Interchange \\(\\wedge\\) with \\(\\vee\\).\n\nGiven: \\((p \\vee q) \\wedge (r \\vee s)\\).\n\n**Dual: \\((p \\wedge q) \\vee (r \\wedge s)\\).**"
+ },
+ {
+  "id": "f6935bf1-acc4-4b41-9c89-626c248871b9",
+  "ref": "1.3 Ex 1.3 Q.2 (iv)",
+  "solution": "Interchange \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is left unchanged.\n\nGiven: \\(p \\wedge \\sim q\\).\n\n**Dual: \\(p \\vee \\sim q\\).**"
+ },
+ {
+  "id": "a5890686-a97e-43d1-ad23-5f2da9a44667",
+  "ref": "1.3 Ex 1.3 Q.2 (v)",
+  "solution": "Interchange \\(\\wedge\\) with \\(\\vee\\); \\(\\sim\\) is unchanged.\n\nGiven: \\((\\sim p \\vee q) \\wedge (\\sim r \\wedge s)\\).\n\n**Dual: \\((\\sim p \\wedge q) \\vee (\\sim r \\vee s)\\).**"
+ },
+ {
+  "id": "c1b9addb-33e5-4acb-9403-9dbb46be53fe",
+  "ref": "1.3 Ex 1.3 Q.2 (vi)",
+  "solution": "Interchange \\(\\wedge\\) with \\(\\vee\\) throughout; \\(\\sim\\) is unchanged.\n\nGiven: \\(\\sim p \\wedge (\\sim q \\wedge (p \\vee q) \\wedge \\sim r)\\).\n\n**Dual: \\(\\sim p \\vee (\\sim q \\vee (p \\wedge q) \\vee \\sim r)\\).**"
+ },
+ {
+  "id": "2b2c06d8-4525-48cc-9dfe-d9b81eb844a8",
+  "ref": "1.3 Ex 1.3 Q.2 (vii)",
+  "solution": "Interchange \\(\\wedge\\) with \\(\\vee\\) throughout; \\(\\sim\\) is unchanged.\n\nGiven: \\([\\sim (p \\vee q)] \\wedge [p \\vee \\sim (q \\wedge \\sim s)]\\).\n\n**Dual: \\([\\sim (p \\wedge q)] \\vee [p \\wedge \\sim (q \\vee \\sim s)]\\).**"
+ },
+ {
+  "id": "6ddbac04-0dd5-486a-a35e-22c5fc1527a2",
+  "ref": "1.3 Ex 1.3 Q.2 (viii)",
+  "solution": "[Textbook answer-key error: the printed answer key gives \\(t \\vee \\{p \\vee (q \\wedge r)\\}\\); the dual must also interchange the outer connective, giving \\(t \\wedge \\{p \\vee (q \\wedge r)\\}\\) (our answer).]\n\nInterchange \\(\\wedge\\) with \\(\\vee\\), and the contradiction \\(c\\) with the tautology \\(t\\).\n\nGiven: \\(c \\vee \\{p \\wedge (q \\vee r)\\}\\).\n\n**Dual: \\(t \\wedge \\{p \\vee (q \\wedge r)\\}\\).**"
+ },
+ {
+  "id": "81f4ef02-1b0d-4a29-87fe-782b3b88595e",
+  "ref": "1.3 Ex 1.3 Q.2 (ix)",
+  "solution": "The dual interchanges \\(\\wedge\\) with \\(\\vee\\) and the constant \\(t\\) (tautology) with \\(c\\) (contradiction); \\(\\sim\\) is unchanged.\n\nGiven: \\(\\sim p \\vee (q \\wedge r) \\wedge t\\).\n\n**Dual: \\(\\sim p \\wedge (q \\vee r) \\vee c\\).**"
+ },
+ {
+  "id": "d9647d3e-ff18-46f1-a42f-1e202518e7c4",
+  "ref": "1.3 Ex 1.3 Q.2 (x)",
+  "solution": "Interchange \\(\\wedge\\) with \\(\\vee\\), and the contradiction \\(c\\) with the tautology \\(t\\).\n\nGiven: \\((p \\vee q) \\vee c\\).\n\n**Dual: \\((p \\wedge q) \\wedge t\\).**"
+ },
+ {
+  "id": "b18abdb0-cf0d-4512-903c-84a997b23024",
+  "ref": "1.3 Ex 1.3 Q.3 (i)",
+  "solution": "Let \\(p: x + 8 > 11\\) and \\(q: y - 3 = 6\\). The statement is \\(p \\vee q\\).\n\nBy De Morgan's law, \\(\\sim(p \\vee q) \\equiv \\sim p \\wedge \\sim q\\).\n\n**Negation: \\(x + 8 \\leq 11\\) and \\(y - 3 \\neq 6\\).**"
+ },
+ {
+  "id": "f804bd77-d4bf-48a9-b15a-2c4262a5fc5a",
+  "ref": "1.3 Ex 1.3 Q.3 (ii)",
+  "solution": "[Textbook answer-key error: the printed answer key uses \"and\"; negating a conjunction gives a disjunction (De Morgan), so the correct negation uses \"or\" (our answer).]\n\nLet \\(p: 11 < 15\\) and \\(q: 25 > 20\\). The statement is \\(p \\wedge q\\).\n\nBy De Morgan's law, \\(\\sim(p \\wedge q) \\equiv \\sim p \\vee \\sim q\\).\n\n**Negation: \\(11 \\geq 15\\) or \\(25 \\leq 20\\).**"
+ },
+ {
+  "id": "81b078a6-03bb-4e46-8111-5a61bebc0c10",
+  "ref": "1.3 Ex 1.3 Q.3 (iii)",
+  "solution": "Let \\(p:\\) quadrilateral is a square, \\(q:\\) it is a rhombus. The statement is the biconditional \\(p \\leftrightarrow q\\).\n\nThe negation of a biconditional is \\(\\sim(p \\leftrightarrow q) \\equiv (p \\wedge \\sim q) \\vee (q \\wedge \\sim p)\\), i.e. exactly one of the two holds.\n\n**Negation: Quadrilateral is a square but it is not a rhombus, or a quadrilateral is a rhombus but it is not a square.**"
+ },
+ {
+  "id": "54d9e48a-6087-4a1a-a69b-3e019555bafd",
+  "ref": "1.3 Ex 1.3 Q.3 (iv)",
+  "solution": "Let \\(p:\\) it is cold, \\(q:\\) it is raining. The statement is \\(p \\wedge q\\).\n\nBy De Morgan's law, \\(\\sim(p \\wedge q) \\equiv \\sim p \\vee \\sim q\\).\n\n**Negation: It is not cold or it is not raining.**"
+ },
+ {
+  "id": "ebc36cd2-d40b-4407-8178-1ded2462869c",
+  "ref": "1.3 Ex 1.3 Q.3 (v)",
+  "solution": "Let \\(p:\\) it is raining, \\(q:\\) we will go and play football. The statement is the conditional \\(p \\to q\\).\n\nThe negation of a conditional is \\(\\sim(p \\to q) \\equiv p \\wedge \\sim q\\). Here \\(q\\) is itself a conjunction (\"go **and** play football\"), so by De Morgan \\(\\sim q\\) is \"will not go **or** will not play football\".\n\n**Negation: It is raining and we will not go or will not play football.**"
+ },
+ {
+  "id": "ad71bbdf-9916-4acb-a8bb-b750c44593a6",
+  "ref": "1.3 Ex 1.3 Q.3 (vii)",
+  "solution": "The statement is \\(\\forall x, (x \\text{ is a natural number} \\to x \\text{ is a whole number})\\), i.e. \"All natural numbers are whole numbers.\"\n\nUsing \\(\\sim(\\forall x, P(x)) \\equiv \\exists x, \\sim P(x)\\):\n\n**Negation: Some natural numbers are not whole numbers.** (Equivalently: there exists a natural number that is not a whole number.)"
+ },
+ {
+  "id": "7aa91288-12dd-4646-bf79-ae1c79514976",
+  "ref": "1.3 Ex 1.3 Q.3 (viii)",
+  "solution": "The statement is \\(\\forall n \\in N,\\ n^2 + n + 2 \\text{ is divisible by } 4\\).\n\nUsing \\(\\sim(\\forall n, P(n)) \\equiv \\exists n, \\sim P(n)\\):\n\n**Negation: \\(\\exists n \\in N\\) such that \\(n^2 + n + 2\\) is not divisible by 4.**"
+ },
+ {
+  "id": "57d89889-dd04-4f1a-9d92-f8475a35470c",
+  "ref": "1.3 Ex 1.3 Q.3 (ix)",
+  "solution": "The statement is \\(\\exists x \\in N\\) such that \\(x - 17 < 20\\).\n\nUsing \\(\\sim(\\exists x, P(x)) \\equiv \\forall x, \\sim P(x)\\):\n\n**Negation: \\(\\forall x \\in N,\\ x - 17 \\geq 20\\).**"
+ },
+ {
+  "id": "7b5d3cb3-6ac8-4d64-9ca5-fc3c6e1eddec",
+  "ref": "1.3 Ex 1.3 Q.4 (i)",
+  "solution": "The statement is \\(p \\to q\\) where \\(p: x < y\\) and \\(q: x^2 < y^2\\) (with \\(x, y \\in R\\)).\n\n**Converse \\((q \\to p)\\):** If \\(x^2 < y^2\\) then \\(x < y\\)  \\((x, y \\in R)\\).\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If \\(x \\geq y\\) then \\(x^2 \\geq y^2\\)  \\((x, y \\in R)\\).\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If \\(x^2 \\geq y^2\\) then \\(x \\geq y\\)  \\((x, y \\in R)\\)."
+ },
+ {
+  "id": "e179eef8-52fa-4c1e-9285-615f89ad1d41",
+  "ref": "1.3 Ex 1.3 Q.4 (ii)",
+  "solution": "Rewrite as a conditional: \"If the woman in a family is literate, then the family becomes literate.\" Here \\(p:\\) the woman in the family is literate, \\(q:\\) the family becomes literate.\n\n**Converse \\((q \\to p)\\):** If a family becomes literate, then the woman in it is literate.\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If the woman in a family is not literate, then the family does not become literate.\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If a family does not become literate, then the woman in it is not literate."
+ },
+ {
+  "id": "da8c1ae4-8c54-4e18-b6ef-dbc43118958c",
+  "ref": "1.3 Ex 1.3 Q.4 (iii)",
+  "solution": "The statement is \\(p \\to q\\) where \\(p:\\) surface area decreases, \\(q:\\) pressure increases.\n\n**Converse \\((q \\to p)\\):** If pressure increases then surface area decreases.\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If surface area does not decrease then pressure does not increase.\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If pressure does not increase then surface area does not decrease."
+ },
+ {
+  "id": "34e94013-0115-49a1-b2fe-9247b64561e5",
+  "ref": "1.3 Ex 1.3 Q.4 (iv)",
+  "solution": "The statement is \\(p \\to q\\) where \\(p:\\) voltage increases, \\(q:\\) current decreases.\n\n**Converse \\((q \\to p)\\):** If current decreases then voltage increases.\n\n**Inverse \\((\\sim p \\to \\sim q)\\):** If voltage does not increase then current does not decrease.\n\n**Contrapositive \\((\\sim q \\to \\sim p)\\):** If current does not decrease then voltage does not increase."
+ }
 ]
