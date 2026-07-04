@@ -22,7 +22,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
-## 2026-07-03
+## 2026-07-04
+
+### Answer-key cross-check the Part-01 State Board chapters (complete the Balbharati errata)
+
+The DE (Part-02) chapter was cross-checked against the book's official ANSWERS section and every defect flagged with the `[Textbook …]` bracket convention, feeding `scripts/stateboard/errata.ts`. The three **Part-01** chapters — **Mathematical Logic, Matrices, Pair of Straight Lines** — were ingested BEFORE this became routine, so their errata is incomplete: their MCQ keys + authored exercise answers have not been diffed against the book's official Part-01 answer key.
+
+**Why:** the errata report to Balbharati should cover ALL shipped chapters, not just DE. A book's answer key carries real errors (~6 found in DE alone), and our authored answers may also have slips (2 found in DE) — both surface only under the cross-check.
+
+**How to apply:** obtain the Part-01 answers PDF (analogous to `State_Board_Maths_12th_Part_2.pdf`), render each chapter's answer pages, fan out vision agents by exercise block to diff each committed answer, independently re-derive (sympy) every disagreement, then flag defects at the top of the solution with `[Textbook misprint: …]` / `[Textbook answer-key error: …]` and re-run `apply-solutions.ts --apply`. `errata.ts` picks them up automatically. This is a permission-gated backfill of shipped work (per the learning-propagation protocol) — confirm before editing the Part-01 solutions.
 
 ### ~~Add a `solution_image` capability (product decision — has data now)~~ — **DONE 2026-07-03**
 
