@@ -1,9 +1,15 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { isPracticeOnlyExam } from "@/lib/exam/examContext";
+import {
+  isPracticeOnlyExam,
+  getExamBySlug,
+  isExamSlug,
+} from "@/lib/exam/examContext";
+import { shouldScopeToPracticeOnlyCookieExam } from "@/lib/questions/browseDefaults";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -66,6 +72,31 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       .eq("id", filters.examId)
       .maybeSingle();
     if (isPracticeOnlyExam(ex?.name)) filters = { ...filters, kind: "practice" };
+  }
+
+  // Entry-path gap: a typed/bookmarked bare `/browse` (no examId) carries no
+  // exam, so the practice-only default above can't fire even when the user's
+  // active-exam cookie is a practice-only exam. Consult the cookie and, ONLY for
+  // a practice-only exam, scope to it + default to Practice — mirroring what the
+  // header "Bank" tab does. A PYQ-first cookie leaves bare /browse untouched.
+  else if (!filters.examId && !rawParams.has("kind")) {
+    const raw = cookies().get("qb_exam")?.value;
+    const entry = isExamSlug(raw) ? getExamBySlug(raw) : null;
+    if (
+      shouldScopeToPracticeOnlyCookieExam({
+        urlHasExamId: false,
+        urlHasKind: false,
+        cookieExamIsPracticeOnly: entry?.practiceOnly === true,
+      }) &&
+      entry
+    ) {
+      const { data: ex } = await supabase
+        .from("exams")
+        .select("id")
+        .eq("name", entry.examName)
+        .maybeSingle();
+      if (ex?.id) filters = { ...filters, examId: ex.id, kind: "practice" };
+    }
   }
 
   // Facet RPC args — context-aware: chapter facets reflect all OTHER active
