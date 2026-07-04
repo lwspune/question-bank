@@ -1,0 +1,172 @@
+[
+ {
+  "id": "9eca3b25-72ed-45e6-964b-8c342d717f29",
+  "ref": "6.4 Exercise 6.3 Q.1 (i)",
+  "solution": "Given \\(xy = \\log y + c\\).\n\nDifferentiate both sides with respect to \\(x\\):\n\n\\(\\dfrac{d}{dx}(xy) = \\dfrac{d}{dx}(\\log y + c)\\)\n\n\\(x \\dfrac{dy}{dx} + y = \\dfrac{1}{y}\\dfrac{dy}{dx}\\)\n\nMultiply throughout and collect the \\(\\dfrac{dy}{dx}\\) terms:\n\n\\(x \\dfrac{dy}{dx} - \\dfrac{1}{y}\\dfrac{dy}{dx} = -y\\)\n\n\\(\\dfrac{dy}{dx}\\left(x - \\dfrac{1}{y}\\right) = -y\\)\n\n\\(\\dfrac{dy}{dx}\\left(\\dfrac{xy - 1}{y}\\right) = -y\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{-y \\cdot y}{xy - 1} = \\dfrac{-y^2}{xy - 1} = \\dfrac{y^2}{1 - xy}\\)\n\nThis is exactly the given differential equation, so \\(xy = \\log y + c\\) is a solution."
+ },
+ {
+  "id": "24441819-2c8c-4a4d-b30f-8a3624e31435",
+  "ref": "6.4 Exercise 6.3 Q.1 (ii)",
+  "solution": "Given \\(y = (\\sin^{-1} x)^2 + c\\).\n\nDifferentiate with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = 2 \\sin^{-1} x \\cdot \\dfrac{1}{\\sqrt{1 - x^2}}\\)\n\nSo \\(\\sqrt{1 - x^2}\\,\\dfrac{dy}{dx} = 2 \\sin^{-1} x\\).\n\nDifferentiate again with respect to \\(x\\):\n\n\\(\\sqrt{1 - x^2}\\,\\dfrac{d^2 y}{dx^2} + \\dfrac{dy}{dx} \\cdot \\dfrac{-x}{\\sqrt{1 - x^2}} = \\dfrac{2}{\\sqrt{1 - x^2}}\\)\n\nMultiply throughout by \\(\\sqrt{1 - x^2}\\):\n\n\\((1 - x^2)\\dfrac{d^2 y}{dx^2} - x \\dfrac{dy}{dx} = 2\\)\n\nThis is the given differential equation, so \\(y = (\\sin^{-1} x)^2 + c\\) is a solution."
+ },
+ {
+  "id": "4e886546-9d98-44cd-a720-4c5b96b4bbbc",
+  "ref": "6.4 Exercise 6.3 Q.1 (iii)",
+  "solution": "Given \\(y = e^{-x} + Ax + B\\).\n\nDifferentiate with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = -e^{-x} + A\\)\n\nDifferentiate again:\n\n\\(\\dfrac{d^2 y}{dx^2} = e^{-x}\\)\n\nMultiply both sides by \\(e^x\\):\n\n\\(e^x \\dfrac{d^2 y}{dx^2} = e^x \\cdot e^{-x} = 1\\)\n\nThis is the given differential equation, so \\(y = e^{-x} + Ax + B\\) is a solution."
+ },
+ {
+  "id": "09b03a01-bfce-4702-8186-1b185b974e96",
+  "ref": "6.4 Exercise 6.3 Q.1 (iv)",
+  "solution": "Given \\(y = x^m\\).\n\nDifferentiate with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = m x^{m-1}\\)\n\nDifferentiate again:\n\n\\(\\dfrac{d^2 y}{dx^2} = m(m-1) x^{m-2}\\)\n\nSubstitute into the left side of the given equation:\n\n\\(x^2 \\dfrac{d^2 y}{dx^2} - mx \\dfrac{dy}{dx} + my\\)\n\n\\(= x^2 \\cdot m(m-1)x^{m-2} - mx \\cdot m x^{m-1} + m x^m\\)\n\n\\(= m(m-1)x^m - m^2 x^m + m x^m\\)\n\n\\(= x^m\\left[m^2 - m - m^2 + m\\right] = x^m \\cdot 0 = 0\\)\n\nThis satisfies the given differential equation, so \\(y = x^m\\) is a solution."
+ },
+ {
+  "id": "9679cdc3-6875-42aa-9d97-4863a09da3a6",
+  "ref": "6.4 Exercise 6.3 Q.1 (v)",
+  "solution": "Given \\(y = a + \\dfrac{b}{x} = a + b x^{-1}\\).\n\nDifferentiate with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = -b x^{-2} = \\dfrac{-b}{x^2}\\)\n\nDifferentiate again:\n\n\\(\\dfrac{d^2 y}{dx^2} = 2b x^{-3} = \\dfrac{2b}{x^3}\\)\n\nSubstitute into the left side of the given equation:\n\n\\(x \\dfrac{d^2 y}{dx^2} + 2 \\dfrac{dy}{dx} = x \\cdot \\dfrac{2b}{x^3} + 2 \\cdot \\dfrac{-b}{x^2}\\)\n\n\\(= \\dfrac{2b}{x^2} - \\dfrac{2b}{x^2} = 0\\)\n\nThis satisfies the given differential equation, so \\(y = a + \\dfrac{b}{x}\\) is a solution."
+ },
+ {
+  "id": "916644b9-be57-4643-be64-0a7fcaa36f00",
+  "ref": "6.4 Exercise 6.3 Q.1 (vi)",
+  "solution": "Given \\(y = e^{ax}\\).\n\nTake logarithm of both sides:\n\n\\(\\log y = ax\\)\n\nDifferentiate \\(y = e^{ax}\\) with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = a e^{ax} = a y\\)\n\nSo \\(x \\dfrac{dy}{dx} = x \\cdot a y = (ax) y\\).\n\nBut \\(ax = \\log y\\), hence:\n\n\\(x \\dfrac{dy}{dx} = y \\log y\\)\n\nThis is the given differential equation, so \\(y = e^{ax}\\) is a solution."
+ },
+ {
+  "id": "1c703859-ce6d-4cf6-b5c8-4e13eda9c77a",
+  "ref": "6.4 Exercise 6.3 Q.2 (i)",
+  "solution": "\\(\\dfrac{dy}{dx} = \\dfrac{1 + y^2}{1 + x^2}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dy}{1 + y^2} = \\dfrac{dx}{1 + x^2}\\)\n\nIntegrate both sides:\n\n\\(\\int \\dfrac{dy}{1 + y^2} = \\int \\dfrac{dx}{1 + x^2}\\)\n\n\\(\\tan^{-1} y = \\tan^{-1} x + c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "42e89340-3308-433e-9062-a0a683656c6b",
+  "ref": "6.4 Exercise 6.3 Q.2 (ii)",
+  "solution": "\\(\\log\\left(\\dfrac{dy}{dx}\\right) = 2x + 3y\\)\n\nRemove the logarithm:\n\n\\(\\dfrac{dy}{dx} = e^{2x + 3y} = e^{2x} \\cdot e^{3y}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dy}{e^{3y}} = e^{2x}\\,dx\\)\n\n\\(e^{-3y}\\,dy = e^{2x}\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\int e^{-3y}\\,dy = \\int e^{2x}\\,dx\\)\n\n\\(\\dfrac{e^{-3y}}{-3} = \\dfrac{e^{2x}}{2} + c_1\\)\n\nMultiply throughout by \\(6\\) and rearrange:\n\n\\(-2 e^{-3y} = 3 e^{2x} + c\\)\n\ni.e. \\(3 e^{2x} + 2 e^{-3y} = c\\), where \\(c\\) is an arbitrary constant. This is the general solution."
+ },
+ {
+  "id": "8f31132d-90aa-4707-813e-3d035cceafed",
+  "ref": "6.4 Exercise 6.3 Q.2 (iii)",
+  "solution": "\\(y - x \\dfrac{dy}{dx} = 0\\)\n\nSo \\(x \\dfrac{dy}{dx} = y\\).\n\nSeparate the variables:\n\n\\(\\dfrac{dy}{y} = \\dfrac{dx}{x}\\)\n\nIntegrate both sides:\n\n\\(\\int \\dfrac{dy}{y} = \\int \\dfrac{dx}{x}\\)\n\n\\(\\log y = \\log x + \\log c\\)\n\n\\(\\log y = \\log(cx)\\)\n\nTherefore \\(y = cx\\). This is the general solution."
+ },
+ {
+  "id": "280094b2-c0cf-4948-bb71-f7c0d8785cc3",
+  "ref": "6.4 Exercise 6.3 Q.2 (iv)",
+  "solution": "\\(\\sec^2 x \\cdot \\tan y \\cdot dx + \\sec^2 y \\cdot \\tan x \\cdot dy = 0\\)\n\nDivide throughout by \\(\\tan x \\cdot \\tan y\\) to separate the variables:\n\n\\(\\dfrac{\\sec^2 x}{\\tan x}\\,dx + \\dfrac{\\sec^2 y}{\\tan y}\\,dy = 0\\)\n\nIntegrate both sides. Using \\(\\int \\dfrac{\\sec^2 t}{\\tan t}\\,dt = \\log|\\tan t|\\) (since the numerator is the derivative of the denominator):\n\n\\(\\log|\\tan x| + \\log|\\tan y| = \\log c\\)\n\n\\(\\log|\\tan x \\cdot \\tan y| = \\log c\\)\n\nTherefore \\(\\tan x \\cdot \\tan y = c\\). This is the general solution."
+ },
+ {
+  "id": "b20c5a69-1d8c-472d-a034-781a3a22cda3",
+  "ref": "6.4 Exercise 6.3 Q.2 (ix)",
+  "solution": "\\(2 e^{x + 2y}\\,dx - 3\\,dy = 0\\)\n\nWrite \\(e^{x + 2y} = e^x \\cdot e^{2y}\\):\n\n\\(2 e^x \\cdot e^{2y}\\,dx = 3\\,dy\\)\n\nSeparate the variables:\n\n\\(2 e^x\\,dx = \\dfrac{3\\,dy}{e^{2y}} = 3 e^{-2y}\\,dy\\)\n\nIntegrate both sides:\n\n\\(\\int 2 e^x\\,dx = \\int 3 e^{-2y}\\,dy\\)\n\n\\(2 e^x = 3 \\cdot \\dfrac{e^{-2y}}{-2} + c_1\\)\n\n\\(2 e^x = -\\dfrac{3}{2} e^{-2y} + c_1\\)\n\nMultiply throughout by \\(2\\) and rearrange:\n\n\\(4 e^x + 3 e^{-2y} = c\\), where \\(c\\) is an arbitrary constant. This is the general solution."
+ },
+ {
+  "id": "de81a8e5-6825-4239-b21e-d0c9650298dc",
+  "ref": "6.4 Exercise 6.3 Q.2 (v)",
+  "solution": "\\(\\cos x \\cdot \\cos y \\cdot dy - \\sin x \\cdot \\sin y \\cdot dx = 0\\)\n\nDivide throughout by \\(\\cos y \\cdot \\cos x\\) to separate the variables:\n\n\\(\\dfrac{\\cos y}{\\sin y}\\,dy = \\dfrac{\\sin x}{\\cos x}\\,dx\\)\n\ni.e. \\(\\cot y\\,dy = \\tan x\\,dx\\).\n\nIntegrate both sides:\n\n\\(\\int \\cot y\\,dy = \\int \\tan x\\,dx\\)\n\n\\(\\log|\\sin y| = -\\log|\\cos x| + \\log c\\)\n\n\\(\\log|\\sin y| + \\log|\\cos x| = \\log c\\)\n\n\\(\\log|\\sin y \\cdot \\cos x| = \\log c\\)\n\nTherefore \\(\\sin y \\cdot \\cos x = c\\). This is the general solution."
+ },
+ {
+  "id": "9af96255-8d52-431a-8bc7-69a6de186832",
+  "ref": "6.4 Exercise 6.3 Q.2 (vi)",
+  "solution": "\\(\\dfrac{dy}{dx} = -k\\), where \\(k\\) is a constant.\n\nSeparate the variables:\n\n\\(dy = -k\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\int dy = -k \\int dx\\)\n\n\\(y = -kx + c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "f93aad79-7ff5-4ac1-a1ea-7fc885b60fb5",
+  "ref": "6.4 Exercise 6.3 Q.2 (vii)",
+  "solution": "\\(\\dfrac{\\cos^2 y\\,dy}{x} + \\dfrac{\\cos^2 x\\,dx}{y} = 0\\)\n\nMultiply throughout by \\(xy\\) to separate the variables:\n\n\\(y \\cos^2 y\\,dy + x \\cos^2 x\\,dx = 0\\)\n\nUse \\(\\cos^2 \\theta = \\dfrac{1 + \\cos 2\\theta}{2}\\):\n\n\\(y \\cdot \\dfrac{1 + \\cos 2y}{2}\\,dy + x \\cdot \\dfrac{1 + \\cos 2x}{2}\\,dx = 0\\)\n\nMultiply by \\(2\\) and integrate both sides:\n\n\\(\\int y(1 + \\cos 2y)\\,dy + \\int x(1 + \\cos 2x)\\,dx = c_1\\)\n\nCompute \\(\\int x(1 + \\cos 2x)\\,dx = \\int x\\,dx + \\int x \\cos 2x\\,dx\\).\n\nBy integration by parts, \\(\\int x \\cos 2x\\,dx = \\dfrac{x \\sin 2x}{2} + \\dfrac{\\cos 2x}{4}\\).\n\nSo \\(\\int x(1 + \\cos 2x)\\,dx = \\dfrac{x^2}{2} + \\dfrac{x \\sin 2x}{2} + \\dfrac{\\cos 2x}{4}\\).\n\nSimilarly \\(\\int y(1 + \\cos 2y)\\,dy = \\dfrac{y^2}{2} + \\dfrac{y \\sin 2y}{2} + \\dfrac{\\cos 2y}{4}\\).\n\nAdding:\n\n\\(\\dfrac{x^2}{2} + \\dfrac{y^2}{2} + \\dfrac{x \\sin 2x}{2} + \\dfrac{y \\sin 2y}{2} + \\dfrac{\\cos 2x}{4} + \\dfrac{\\cos 2y}{4} = c_1\\)\n\nMultiply throughout by \\(4\\):\n\n\\(2(x^2 + y^2) + 2(x \\sin 2x + y \\sin 2y) + \\cos 2x + \\cos 2y = c\\), where \\(c\\) is an arbitrary constant. This is the general solution."
+ },
+ {
+  "id": "e658b2e4-7314-406c-a565-1848adacb775",
+  "ref": "6.4 Exercise 6.3 Q.2 (viii)",
+  "solution": "\\(y^3 - \\dfrac{dy}{dx} = x^2 \\dfrac{dy}{dx}\\)\n\nCollect the \\(\\dfrac{dy}{dx}\\) terms:\n\n\\(y^3 = x^2 \\dfrac{dy}{dx} + \\dfrac{dy}{dx} = (x^2 + 1)\\dfrac{dy}{dx}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dy}{y^3} = \\dfrac{dx}{x^2 + 1}\\)\n\nIntegrate both sides:\n\n\\(\\int y^{-3}\\,dy = \\int \\dfrac{dx}{x^2 + 1}\\)\n\n\\(\\dfrac{y^{-2}}{-2} = \\tan^{-1} x + c_1\\)\n\n\\(-\\dfrac{1}{2y^2} = \\tan^{-1} x + c_1\\)\n\nMultiply throughout by \\(-2\\):\n\n\\(\\dfrac{1}{y^2} = -2 \\tan^{-1} x + c\\), where \\(c\\) is an arbitrary constant. This is the general solution."
+ },
+ {
+  "id": "8886ba5a-83e3-43e9-ba92-15672fc94f4e",
+  "ref": "6.4 Exercise 6.3 Q.2 (x)",
+  "solution": "\\(\\dfrac{dy}{dx} = e^{x + y} + x^2 e^y\\)\n\nWrite \\(e^{x+y} = e^x \\cdot e^y\\) and take \\(e^y\\) common on the right:\n\n\\(\\dfrac{dy}{dx} = e^y(e^x + x^2)\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dy}{e^y} = (e^x + x^2)\\,dx\\)\n\n\\(e^{-y}\\,dy = (e^x + x^2)\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\int e^{-y}\\,dy = \\int (e^x + x^2)\\,dx\\)\n\n\\(-e^{-y} = e^x + \\dfrac{x^3}{3} + c_1\\)\n\nMultiply throughout by \\(-1\\):\n\n\\(e^{-y} = -e^x - \\dfrac{x^3}{3} + c\\)\n\nEquivalently, \\(e^x + e^{-y} + \\dfrac{x^3}{3} = c\\), where \\(c\\) is an arbitrary constant. This is the general solution."
+ },
+ {
+  "id": "751ab1e1-562c-4f32-9d69-57de157a3f49",
+  "ref": "6.4 Exercise 6.3 Q.3 (i)",
+  "solution": "\\(3 e^x \\tan y\\,dx + (1 + e^x)\\sec^2 y\\,dy = 0\\)\n\nDivide throughout by \\(\\tan y \\,(1 + e^x)\\) to separate the variables:\n\n\\(\\dfrac{3 e^x}{1 + e^x}\\,dx + \\dfrac{\\sec^2 y}{\\tan y}\\,dy = 0\\)\n\nIntegrate both sides. In each term the numerator is the derivative of the denominator:\n\n\\(3 \\log|1 + e^x| + \\log|\\tan y| = \\log c\\)\n\n\\(\\log(1 + e^x)^3 + \\log|\\tan y| = \\log c\\)\n\n\\((1 + e^x)^3 \\tan y = c\\)  ... (general solution)\n\nApply the condition \\(x = 0\\), \\(y = \\pi\\). Then \\(\\tan \\pi = 0\\), so:\n\n\\((1 + e^0)^3 \\cdot 0 = c\\ \\Rightarrow\\ c = 0\\)\n\nTherefore the particular solution is:\n\n\\((1 + e^x)^3 \\tan y = 0\\)\n\nSince \\((1 + e^x)^3 \\neq 0\\), this gives \\(\\tan y = 0\\)."
+ },
+ {
+  "id": "41590f5c-21d9-4688-acce-37039fe08f82",
+  "ref": "6.4 Exercise 6.3 Q.3 (ii)",
+  "solution": "\\((x - y^2 x)\\,dx - (y + x^2 y)\\,dy = 0\\)\n\nFactorise each bracket:\n\n\\(x(1 - y^2)\\,dx - y(1 + x^2)\\,dy = 0\\)\n\nDivide throughout by \\((1 + x^2)(1 - y^2)\\) to separate the variables:\n\n\\(\\dfrac{x}{1 + x^2}\\,dx - \\dfrac{y}{1 - y^2}\\,dy = 0\\)\n\nIntegrate both sides. Using \\(\\int \\dfrac{x}{1 + x^2}\\,dx = \\dfrac{1}{2}\\log(1 + x^2)\\) and \\(\\int \\dfrac{y}{1 - y^2}\\,dy = -\\dfrac{1}{2}\\log|1 - y^2|\\):\n\n\\(\\dfrac{1}{2}\\log(1 + x^2) - \\left(-\\dfrac{1}{2}\\log|1 - y^2|\\right) = c_1\\)\n\n\\(\\dfrac{1}{2}\\log(1 + x^2) + \\dfrac{1}{2}\\log|1 - y^2| = c_1\\)\n\nMultiply by \\(2\\):\n\n\\(\\log\\left[(1 + x^2)(1 - y^2)\\right] = c\\)  ... (general solution)\n\nApply the condition \\(x = 2\\), \\(y = 0\\):\n\n\\(\\log\\left[(1 + 4)(1 - 0)\\right] = c\\ \\Rightarrow\\ c = \\log 5\\)\n\nTherefore the particular solution is:\n\n\\(\\log\\left[(1 + x^2)(1 - y^2)\\right] = \\log 5\\)\n\ni.e. \\((1 + x^2)(1 - y^2) = 5\\)."
+ },
+ {
+  "id": "22e9fa16-36a7-494c-bb56-affff99fda95",
+  "ref": "6.4 Exercise 6.3 Q.3 (iii)",
+  "solution": "\\(y(1 + \\log x)\\dfrac{dx}{dy} - x \\log x = 0\\)\n\nRearrange:\n\n\\(y(1 + \\log x)\\dfrac{dx}{dy} = x \\log x\\)\n\nSeparate the variables (take \\(x\\)-terms on one side, \\(y\\)-terms on the other):\n\n\\(\\dfrac{1 + \\log x}{x \\log x}\\,dx = \\dfrac{dy}{y}\\)\n\nIntegrate both sides.\n\nFor the left side put \\(t = \\log x\\), so \\(dt = \\dfrac{1}{x}\\,dx\\):\n\n\\(\\int \\dfrac{1 + \\log x}{x \\log x}\\,dx = \\int \\dfrac{1 + t}{t}\\,dt = \\int\\left(\\dfrac{1}{t} + 1\\right)dt = \\log|t| + t = \\log|\\log x| + \\log x\\)\n\nFor the right side, \\(\\int \\dfrac{dy}{y} = \\log|y|\\).\n\nHence:\n\n\\(\\log|\\log x| + \\log x = \\log y + c_1\\)\n\nApply the condition \\(x = e\\), \\(y = e^2\\). Then \\(\\log x = \\log e = 1\\) and \\(\\log|\\log x| = \\log 1 = 0\\), \\(\\log y = \\log e^2 = 2\\):\n\n\\(0 + 1 = 2 + c_1\\ \\Rightarrow\\ c_1 = -1\\)\n\nTherefore the particular solution is:\n\n\\(\\log|\\log x| + \\log x = \\log y - 1\\)"
+ },
+ {
+  "id": "a30a4987-f4e9-407d-996b-4d4ab429f97f",
+  "ref": "6.4 Exercise 6.3 Q.3 (iv)",
+  "solution": "\\((e^y + 1)\\cos x + e^y \\sin x \\dfrac{dy}{dx} = 0\\)\n\nRearrange:\n\n\\(e^y \\sin x \\dfrac{dy}{dx} = -(e^y + 1)\\cos x\\)\n\nSeparate the variables:\n\n\\(\\dfrac{e^y}{e^y + 1}\\,dy = -\\dfrac{\\cos x}{\\sin x}\\,dx = -\\cot x\\,dx\\)\n\nIntegrate both sides. On the left the numerator is the derivative of the denominator:\n\n\\(\\log(e^y + 1) = -\\log|\\sin x| + \\log c\\)\n\n\\(\\log(e^y + 1) + \\log|\\sin x| = \\log c\\)\n\n\\((e^y + 1)\\sin x = c\\)  ... (general solution)\n\nApply the condition \\(x = \\dfrac{\\pi}{6}\\), \\(y = 0\\). Then \\(\\sin\\dfrac{\\pi}{6} = \\dfrac{1}{2}\\) and \\(e^0 + 1 = 2\\):\n\n\\(2 \\cdot \\dfrac{1}{2} = c\\ \\Rightarrow\\ c = 1\\)\n\nTherefore the particular solution is:\n\n\\((e^y + 1)\\sin x = 1\\)"
+ },
+ {
+  "id": "50d7ad02-c563-4ff7-81df-6d753b506d0c",
+  "ref": "6.4 Exercise 6.3 Q.3 (v)",
+  "solution": "\\((x + 1)\\dfrac{dy}{dx} - 1 = 2 e^{-y}\\)\n\nRearrange:\n\n\\((x + 1)\\dfrac{dy}{dx} = 1 + 2 e^{-y} = \\dfrac{e^y + 2}{e^y}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{e^y}{e^y + 2}\\,dy = \\dfrac{dx}{x + 1}\\)\n\nIntegrate both sides. On the left the numerator is the derivative of the denominator:\n\n\\(\\log(e^y + 2) = \\log|x + 1| + \\log c\\)\n\n\\(\\log(e^y + 2) = \\log\\big[c(x + 1)\\big]\\)\n\n\\(e^y + 2 = c(x + 1)\\)  ... (general solution)\n\nApply the condition \\(x = 1\\), \\(y = 0\\). Then \\(e^0 + 2 = 3\\) and \\(x + 1 = 2\\):\n\n\\(3 = c \\cdot 2\\ \\Rightarrow\\ c = \\dfrac{3}{2}\\)\n\nTherefore the particular solution is:\n\n\\(e^y + 2 = \\dfrac{3}{2}(x + 1)\\)\n\ni.e. \\(2(e^y + 2) = 3(x + 1)\\)."
+ },
+ {
+  "id": "c577c439-3256-476a-87ea-0cd6cb916d2e",
+  "ref": "6.4 Exercise 6.3 Q.3 (vi)",
+  "solution": "\\(\\cos\\left(\\dfrac{dy}{dx}\\right) = a\\), where \\(a \\in \\mathbb{R}\\).\n\nTake cosine inverse of both sides:\n\n\\(\\dfrac{dy}{dx} = \\cos^{-1} a\\)\n\nSince \\(a\\) is a constant, \\(\\cos^{-1} a\\) is also a constant. Separate the variables:\n\n\\(dy = (\\cos^{-1} a)\\,dx\\)\n\nIntegrate both sides:\n\n\\(y = (\\cos^{-1} a)\\,x + c\\)  ... (general solution)\n\nApply the condition \\(y(0) = 2\\), i.e. \\(y = 2\\) when \\(x = 0\\):\n\n\\(2 = (\\cos^{-1} a)(0) + c\\ \\Rightarrow\\ c = 2\\)\n\nTherefore the particular solution is:\n\n\\(y = x \\cos^{-1} a + 2\\)\n\nEquivalently, \\(\\dfrac{y - 2}{x} = \\cos^{-1} a\\), i.e. \\(\\cos\\left(\\dfrac{y - 2}{x}\\right) = a\\)."
+ },
+ {
+  "id": "7b97918c-770c-45f3-b3e5-b9ede5604475",
+  "ref": "6.4 Exercise 6.3 Q.4 (i)",
+  "solution": "\\(\\dfrac{dy}{dx} = \\cos(x + y)\\)\n\nPut \\(x + y = u\\). Then differentiating, \\(1 + \\dfrac{dy}{dx} = \\dfrac{du}{dx}\\), so \\(\\dfrac{dy}{dx} = \\dfrac{du}{dx} - 1\\).\n\nSubstitute:\n\n\\(\\dfrac{du}{dx} - 1 = \\cos u\\)\n\n\\(\\dfrac{du}{dx} = 1 + \\cos u\\)\n\nSeparate the variables:\n\n\\(\\dfrac{du}{1 + \\cos u} = dx\\)\n\nUse \\(1 + \\cos u = 2\\cos^2\\dfrac{u}{2}\\):\n\n\\(\\dfrac{du}{2\\cos^2\\frac{u}{2}} = dx\\)\n\n\\(\\dfrac{1}{2}\\sec^2\\dfrac{u}{2}\\,du = dx\\)\n\nIntegrate both sides:\n\n\\(\\dfrac{1}{2} \\cdot \\dfrac{\\tan\\frac{u}{2}}{\\frac{1}{2}} = x + c\\)\n\n\\(\\tan\\dfrac{u}{2} = x + c\\)\n\nReplace \\(u = x + y\\):\n\n\\(\\tan\\left(\\dfrac{x + y}{2}\\right) = x + c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "a30d1633-1ac3-417a-8aab-c9b020859fb6",
+  "ref": "6.4 Exercise 6.3 Q.4 (ii)",
+  "solution": "\\((x - y)^2 \\dfrac{dy}{dx} = a^2\\)\n\nPut \\(x - y = u\\). Then \\(1 - \\dfrac{dy}{dx} = \\dfrac{du}{dx}\\), so \\(\\dfrac{dy}{dx} = 1 - \\dfrac{du}{dx}\\).\n\nSubstitute:\n\n\\(u^2\\left(1 - \\dfrac{du}{dx}\\right) = a^2\\)\n\n\\(u^2 - u^2 \\dfrac{du}{dx} = a^2\\)\n\n\\(u^2 \\dfrac{du}{dx} = u^2 - a^2\\)\n\nSeparate the variables:\n\n\\(\\dfrac{u^2}{u^2 - a^2}\\,du = dx\\)\n\nWrite \\(\\dfrac{u^2}{u^2 - a^2} = 1 + \\dfrac{a^2}{u^2 - a^2}\\):\n\n\\(\\left(1 + \\dfrac{a^2}{u^2 - a^2}\\right)du = dx\\)\n\nIntegrate both sides. Using \\(\\int \\dfrac{du}{u^2 - a^2} = \\dfrac{1}{2a}\\log\\left|\\dfrac{u - a}{u + a}\\right|\\):\n\n\\(u + a^2 \\cdot \\dfrac{1}{2a}\\log\\left|\\dfrac{u - a}{u + a}\\right| = x + c\\)\n\n\\(u + \\dfrac{a}{2}\\log\\left|\\dfrac{u - a}{u + a}\\right| = x + c\\)\n\nReplace \\(u = x - y\\):\n\n\\((x - y) + \\dfrac{a}{2}\\log\\left|\\dfrac{x - y - a}{x - y + a}\\right| = x + c\\)\n\nSimplify by cancelling \\(x\\):\n\n\\(-y + \\dfrac{a}{2}\\log\\left|\\dfrac{x - y - a}{x - y + a}\\right| = c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "263ba5cf-aba3-43cf-aa9c-eb1280b90864",
+  "ref": "6.4 Exercise 6.3 Q.4 (iii)",
+  "solution": "\\(x + y \\dfrac{dy}{dx} = \\sec(x^2 + y^2)\\)\n\nPut \\(x^2 + y^2 = u\\). Then differentiating with respect to \\(x\\):\n\n\\(2x + 2y \\dfrac{dy}{dx} = \\dfrac{du}{dx}\\)\n\nso \\(x + y \\dfrac{dy}{dx} = \\dfrac{1}{2}\\dfrac{du}{dx}\\).\n\nSubstitute into the given equation:\n\n\\(\\dfrac{1}{2}\\dfrac{du}{dx} = \\sec u\\)\n\n\\(\\dfrac{du}{dx} = 2 \\sec u\\)\n\nSeparate the variables:\n\n\\(\\dfrac{du}{\\sec u} = 2\\,dx\\)\n\n\\(\\cos u\\,du = 2\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\sin u = 2x + c\\)\n\nReplace \\(u = x^2 + y^2\\):\n\n\\(\\sin(x^2 + y^2) = 2x + c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "cff8aac8-64e0-4767-a241-6a07bff06dab",
+  "ref": "6.4 Exercise 6.3 Q.4 (iv)",
+  "solution": "\\(\\cos^2(x - 2y) = 1 - 2\\dfrac{dy}{dx}\\)\n\nPut \\(x - 2y = u\\). Then \\(1 - 2\\dfrac{dy}{dx} = \\dfrac{du}{dx}\\).\n\nSo the given equation becomes:\n\n\\(\\cos^2 u = \\dfrac{du}{dx}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{du}{\\cos^2 u} = dx\\)\n\n\\(\\sec^2 u\\,du = dx\\)\n\nIntegrate both sides:\n\n\\(\\tan u = x + c\\)\n\nReplace \\(u = x - 2y\\):\n\n\\(\\tan(x - 2y) = x + c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "117a7904-5f22-4b75-9de6-2955e5fdfb64",
+  "ref": "6.4 Exercise 6.3 Q.4 (v)",
+  "solution": "\\((2x - 2y + 3)\\,dx - (x - y + 1)\\,dy = 0\\)\n\nRewrite as:\n\n\\(\\dfrac{dy}{dx} = \\dfrac{2x - 2y + 3}{x - y + 1} = \\dfrac{2(x - y) + 3}{(x - y) + 1}\\)\n\nPut \\(x - y = u\\). Then \\(1 - \\dfrac{dy}{dx} = \\dfrac{du}{dx}\\), so \\(\\dfrac{dy}{dx} = 1 - \\dfrac{du}{dx}\\).\n\nSubstitute:\n\n\\(1 - \\dfrac{du}{dx} = \\dfrac{2u + 3}{u + 1}\\)\n\n\\(\\dfrac{du}{dx} = 1 - \\dfrac{2u + 3}{u + 1} = \\dfrac{(u + 1) - (2u + 3)}{u + 1} = \\dfrac{-u - 2}{u + 1}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{u + 1}{-(u + 2)}\\,du = dx\\)\n\n\\(\\dfrac{u + 1}{u + 2}\\,du = -dx\\)\n\nWrite \\(\\dfrac{u + 1}{u + 2} = 1 - \\dfrac{1}{u + 2}\\):\n\n\\(\\left(1 - \\dfrac{1}{u + 2}\\right)du = -dx\\)\n\nIntegrate both sides:\n\n\\(u - \\log|u + 2| = -x + c_1\\)\n\nReplace \\(u = x - y\\):\n\n\\((x - y) - \\log|x - y + 2| = -x + c_1\\)\n\n\\(2x - y - \\log|x - y + 2| = c_1\\)  ... (general solution)\n\nApply the condition \\(x = 0\\), \\(y = 1\\):\n\n\\(2(0) - 1 - \\log|0 - 1 + 2| = c_1\\)\n\n\\(-1 - \\log 1 = c_1\\ \\Rightarrow\\ c_1 = -1\\)\n\nTherefore the particular solution is:\n\n\\(2x - y - \\log|x - y + 2| = -1\\)"
+ },
+ {
+  "id": "562a2a58-2709-40ef-8273-4e3e02bbaa05",
+  "ref": "6.4 Exercise 6.4 Q.1",
+  "solution": "\\(x \\sin\\left(\\dfrac{y}{x}\\right) dy = \\left[y \\sin\\left(\\dfrac{y}{x}\\right) - x\\right] dx\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{y \\sin\\left(\\frac{y}{x}\\right) - x}{x \\sin\\left(\\frac{y}{x}\\right)}\\)\n\nThis is homogeneous. Put \\(y = vx\\), so \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\) and \\(\\dfrac{y}{x} = v\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{vx \\sin v - x}{x \\sin v} = \\dfrac{v \\sin v - 1}{\\sin v}\\)\n\n\\(v + x\\dfrac{dv}{dx} = v - \\dfrac{1}{\\sin v}\\)\n\n\\(x\\dfrac{dv}{dx} = -\\dfrac{1}{\\sin v}\\)\n\nSeparate the variables:\n\n\\(\\sin v\\,dv = -\\dfrac{dx}{x}\\)\n\nIntegrate both sides:\n\n\\(-\\cos v = -\\log|x| + c_1\\)\n\n\\(\\cos v = \\log|x| - c_1\\)\n\nReplace \\(v = \\dfrac{y}{x}\\) and write \\(-c_1 = \\log c\\):\n\n\\(\\cos\\left(\\dfrac{y}{x}\\right) = \\log|x| + \\log c = \\log|cx|\\)\n\nTherefore \\(\\cos\\left(\\dfrac{y}{x}\\right) = \\log|cx|\\). This is the general solution."
+ },
+ {
+  "id": "54b53e2f-26ec-41aa-b2a2-4a40a3f160bf",
+  "ref": "6.4 Exercise 6.4 Q.10",
+  "solution": "\\(xy \\dfrac{dy}{dx} = x^2 + 2y^2\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{x^2 + 2y^2}{xy}\\)\n\nThis is homogeneous. Put \\(y = vx\\), so \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{x^2 + 2v^2 x^2}{x \\cdot vx} = \\dfrac{1 + 2v^2}{v}\\)\n\n\\(x\\dfrac{dv}{dx} = \\dfrac{1 + 2v^2}{v} - v = \\dfrac{1 + 2v^2 - v^2}{v} = \\dfrac{1 + v^2}{v}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{v}{1 + v^2}\\,dv = \\dfrac{dx}{x}\\)\n\nIntegrate both sides. On the left the numerator is half the derivative of the denominator:\n\n\\(\\dfrac{1}{2}\\log(1 + v^2) = \\log|x| + c_1\\)\n\nReplace \\(v = \\dfrac{y}{x}\\), so \\(1 + v^2 = \\dfrac{x^2 + y^2}{x^2}\\):\n\n\\(\\dfrac{1}{2}\\log\\left(\\dfrac{x^2 + y^2}{x^2}\\right) = \\log|x| + c_1\\)\n\n\\(\\log\\left(\\dfrac{x^2 + y^2}{x^2}\\right) = 2\\log|x| + 2c_1 = \\log x^2 + c\\)  (with \\(c = 2c_1\\))\n\n\\(\\log(x^2 + y^2) - \\log x^2 = \\log x^2 + c\\)\n\n\\(\\log(x^2 + y^2) = 2\\log x^2 + c\\)... rewriting neatly, from \\(\\dfrac{1}{2}\\log\\left(\\dfrac{x^2+y^2}{x^2}\\right)=\\log|x|+c_1\\) we get \\(\\log\\left(\\dfrac{x^2+y^2}{x^2}\\right)=\\log x^4 + c\\), i.e.\n\n\\(\\dfrac{x^2 + y^2}{x^2} = k\\,x^4\\)  ... (general solution, \\(k\\) arbitrary)\n\nApply the condition \\(y(1) = 0\\), i.e. \\(y = 0\\) when \\(x = 1\\):\n\n\\(\\dfrac{1 + 0}{1} = k \\cdot 1\\ \\Rightarrow\\ k = 1\\)\n\nTherefore the particular solution is:\n\n\\(\\dfrac{x^2 + y^2}{x^2} = x^4\\), i.e. \\(x^2 + y^2 = x^6\\)."
+ },
+ {
+  "id": "1d6fadf3-30d2-4ed2-a049-4535b5c154ea",
+  "ref": "6.4 Exercise 6.4 Q.11",
+  "solution": "\\(x\\,dy + 2y\\,dx = 0\\)\n\nSeparate the variables. Divide by \\(xy\\):\n\n\\(\\dfrac{dy}{y} + 2\\dfrac{dx}{x} = 0\\)\n\nIntegrate both sides:\n\n\\(\\log|y| + 2\\log|x| = \\log c\\)\n\n\\(\\log|y| + \\log x^2 = \\log c\\)\n\n\\(\\log(x^2 y) = \\log c\\)\n\n\\(x^2 y = c\\)  ... (general solution)\n\nApply the condition \\(x = 2\\), \\(y = 1\\):\n\n\\(2^2 \\cdot 1 = c\\ \\Rightarrow\\ c = 4\\)\n\nTherefore the particular solution is:\n\n\\(x^2 y = 4\\)"
+ },
+ {
+  "id": "4bfa0889-32b3-4db9-8cb4-edf574d0c85b",
+  "ref": "6.4 Exercise 6.4 Q.12",
+  "solution": "\\(x^2 \\dfrac{dy}{dx} = x^2 + xy + y^2\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{x^2 + xy + y^2}{x^2}\\)\n\nThis is homogeneous. Put \\(y = vx\\), so \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{x^2 + x \\cdot vx + v^2 x^2}{x^2} = 1 + v + v^2\\)\n\n\\(x\\dfrac{dv}{dx} = 1 + v + v^2 - v = 1 + v^2\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dv}{1 + v^2} = \\dfrac{dx}{x}\\)\n\nIntegrate both sides:\n\n\\(\\tan^{-1} v = \\log|x| + c\\)\n\nReplace \\(v = \\dfrac{y}{x}\\):\n\n\\(\\tan^{-1}\\left(\\dfrac{y}{x}\\right) = \\log|x| + c\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "4e0e00e1-d505-4dbb-b968-23b4c05938ff",
+  "ref": "6.4 Exercise 6.4 Q.13",
+  "solution": "\\((9x + 5y)\\,dy + (15x + 11y)\\,dx = 0\\)\n\n\\(\\dfrac{dy}{dx} = -\\dfrac{15x + 11y}{9x + 5y}\\)\n\nThis is homogeneous. Put \\(y = vx\\), so \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = -\\dfrac{15x + 11vx}{9x + 5vx} = -\\dfrac{15 + 11v}{9 + 5v}\\)\n\n\\(x\\dfrac{dv}{dx} = -\\dfrac{15 + 11v}{9 + 5v} - v = \\dfrac{-(15 + 11v) - v(9 + 5v)}{9 + 5v}\\)\n\n\\(= \\dfrac{-15 - 11v - 9v - 5v^2}{9 + 5v} = \\dfrac{-5v^2 - 20v - 15}{9 + 5v} = \\dfrac{-5(v^2 + 4v + 3)}{9 + 5v}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{9 + 5v}{v^2 + 4v + 3}\\,dv = -5\\dfrac{dx}{x}\\)\n\nFactorise \\(v^2 + 4v + 3 = (v + 1)(v + 3)\\) and use partial fractions:\n\n\\(\\dfrac{9 + 5v}{(v + 1)(v + 3)} = \\dfrac{A}{v + 1} + \\dfrac{B}{v + 3}\\)\n\nThen \\(9 + 5v = A(v + 3) + B(v + 1)\\).\nPut \\(v = -1\\): \\(4 = 2A \\Rightarrow A = 2\\).\nPut \\(v = -3\\): \\(-6 = -2B \\Rightarrow B = 3\\).\n\nSo:\n\n\\(\\int\\left(\\dfrac{2}{v + 1} + \\dfrac{3}{v + 3}\\right)dv = -5\\int\\dfrac{dx}{x}\\)\n\n\\(2\\log|v + 1| + 3\\log|v + 3| = -5\\log|x| + \\log c\\)\n\n\\(\\log\\big[(v + 1)^2 (v + 3)^3\\big] = \\log\\dfrac{c}{x^5}\\)\n\n\\((v + 1)^2 (v + 3)^3 = \\dfrac{c}{x^5}\\)\n\nReplace \\(v = \\dfrac{y}{x}\\): \\(v + 1 = \\dfrac{x + y}{x}\\), \\(v + 3 = \\dfrac{3x + y}{x}\\):\n\n\\(\\left(\\dfrac{x + y}{x}\\right)^2 \\left(\\dfrac{3x + y}{x}\\right)^3 = \\dfrac{c}{x^5}\\)\n\n\\(\\dfrac{(x + y)^2 (3x + y)^3}{x^5} = \\dfrac{c}{x^5}\\)\n\nTherefore \\((x + y)^2 (3x + y)^3 = c\\). This is the general solution."
+ },
+ {
+  "id": "d96c3fc9-ff48-44d8-8988-cc77222dd0f9",
+  "ref": "6.4 Exercise 6.4 Q.14",
+  "solution": "\\((x^2 + 3xy + y^2)\\,dx - x^2\\,dy = 0\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{x^2 + 3xy + y^2}{x^2}\\)\n\nThis is homogeneous. Put \\(y = vx\\), so \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{x^2 + 3x \\cdot vx + v^2 x^2}{x^2} = 1 + 3v + v^2\\)\n\n\\(x\\dfrac{dv}{dx} = 1 + 3v + v^2 - v = 1 + 2v + v^2 = (1 + v)^2\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dv}{(1 + v)^2} = \\dfrac{dx}{x}\\)\n\nIntegrate both sides:\n\n\\(\\int (1 + v)^{-2}\\,dv = \\int \\dfrac{dx}{x}\\)\n\n\\(\\dfrac{(1 + v)^{-1}}{-1} = \\log|x| + c_1\\)\n\n\\(-\\dfrac{1}{1 + v} = \\log|x| + c_1\\)\n\nReplace \\(v = \\dfrac{y}{x}\\), so \\(1 + v = \\dfrac{x + y}{x}\\) and \\(\\dfrac{1}{1 + v} = \\dfrac{x}{x + y}\\):\n\n\\(-\\dfrac{x}{x + y} = \\log|x| + c_1\\)\n\nWriting \\(c = -c_1\\):\n\n\\(\\dfrac{x}{x + y} = c - \\log|x|\\)\n\nThis is the general solution."
+ },
+ {
+  "id": "73c2bbd6-9133-4296-a5e1-b36969cb0acd",
+  "ref": "6.4 Exercise 6.4 Q.15",
+  "solution": "\\((x^2 + y^2)\\,dx - 2xy\\,dy = 0\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{x^2 + y^2}{2xy}\\)\n\nThis is homogeneous. Put \\(y = vx\\), so \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{x^2 + v^2 x^2}{2x \\cdot vx} = \\dfrac{1 + v^2}{2v}\\)\n\n\\(x\\dfrac{dv}{dx} = \\dfrac{1 + v^2}{2v} - v = \\dfrac{1 + v^2 - 2v^2}{2v} = \\dfrac{1 - v^2}{2v}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{2v}{1 - v^2}\\,dv = \\dfrac{dx}{x}\\)\n\nIntegrate both sides. On the left, the numerator is the negative of the derivative of the denominator, so \\(\\int \\dfrac{2v}{1 - v^2}\\,dv = -\\log|1 - v^2|\\):\n\n\\(-\\log|1 - v^2| = \\log|x| + \\log c_1\\)\n\n\\(\\log|1 - v^2| = -\\log|x| - \\log c_1 = \\log\\dfrac{1}{c_1 x}\\)\n\n\\(1 - v^2 = \\dfrac{c}{x}\\)  (writing \\(c = \\tfrac{1}{c_1}\\))\n\nReplace \\(v = \\dfrac{y}{x}\\), so \\(1 - v^2 = \\dfrac{x^2 - y^2}{x^2}\\):\n\n\\(\\dfrac{x^2 - y^2}{x^2} = \\dfrac{c}{x}\\)\n\nMultiply throughout by \\(x^2\\):\n\n\\(x^2 - y^2 = cx\\)\n\nThis is the general solution."
+ }
+]

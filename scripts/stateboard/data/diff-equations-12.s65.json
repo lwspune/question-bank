@@ -1,0 +1,143 @@
+[
+  {
+    "ref": "6.5 Ex.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The population of a town increasing at a rate proportional to the population at that time. If the population increases from 40 thousands to 60 thousands in 40 years, what will be the population in another 20 years. \\(\\left(\\text{Given } \\sqrt{\\dfrac{3}{2}} = 1.2247\\right)\\).",
+    "solution": "Let \\(P\\) be the population at time \\(t\\). Since rate of increase of \\(P\\) is proportional to \\(P\\) itself, we have,\n\\(\\dfrac{dP}{dt} = k \\cdot P\\)  ... (1)\nwhere \\(k\\) is constant of proportionality.\nSolving this differential equation, we get\n\\(P = a \\cdot e^{kt}\\), where \\(a = e^{c}\\)  ... (2)\nInitially \\(P = 40{,}000\\) when \\(t = 0\\)\nFrom equation (2), we have\n\\(40{,}000 = a \\cdot 1\\)  \\(\\therefore a = 40{,}000\\)\neq. (2) becomes\n\\(P = 40{,}000 \\cdot e^{kt}\\)  ... (3)\nAgain given that \\(P = 60{,}000\\) when \\(t = 40\\)\nFrom equation (3),\n\\(60{,}000 = 40{,}000 \\cdot e^{40k}\\)\n\\(e^{40k} = \\dfrac{3}{2}\\)  ... (4)\nNow we have to find \\(P\\) when \\(t = 40 + 20 = 60\\) years\nFrom equation (3), we have\n\\(P = 40{,}000 \\cdot e^{60k} = 40{,}000 \\left(e^{40k}\\right)^{\\frac{3}{2}} = 40{,}000 \\left(\\dfrac{3}{2}\\right)^{\\frac{3}{2}} = 73482\\)\nRequired population will be \\(73482\\)."
+  },
+  {
+    "ref": "6.5 Ex.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Bacteria increase at the rate proportional to the number of bacteria present. If the original number \\(N\\) doubles in 3 hours, find in how many hours the number of bacteria will be \\(4N\\)?",
+    "solution": "Let \\(x\\) be the number of bacteria at time \\(t\\). Since the rate of increase of \\(x\\) is proportional to \\(x\\), the differential equation can be written as:\n\\(\\dfrac{dx}{dt} = kx\\)\nwhere \\(k\\) is constant of proportionality.\nSolving this differential equation we have\n\\(x = c_1 \\cdot e^{kt}\\), where \\(c_1 = e^{c}\\)  ... (1)\nGiven that \\(x = N\\) when \\(t = 0\\)\nFrom equation (1) we get\n\\(N = c_1 \\cdot 1\\)\n\\(c_1 = N\\)\n\\(x = N \\cdot e^{kt}\\)  ... (2)\nAgain given that \\(x = 2N\\) when \\(t = 3\\)\nFrom equation (2), we have\n\\(2N = N \\cdot e^{3k}\\)  ... (3)\n\\(e^{3k} = 2\\)\nNow we have to find \\(t\\), when \\(x = 4N\\)\nFrom equation (2), we have\n\\(4N = N \\cdot e^{kt}\\)\ni.e. \\(4 = e^{kt} = \\left(e^{3k}\\right)^{\\frac{t}{3}}\\)\n\\(2^{2} = 2^{\\frac{t}{3}}\\)  ... by eq. (3)\n\\(\\dfrac{t}{3} = 2\\)\n\\(t = 6\\)\nTherefore, the number of bacteria will be \\(4N\\) in 6 hours."
+  },
+  {
+    "ref": "6.5 Ex.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Bismath has half life of 5 days. A sample originally has a mass of 800 mg. Find the mass remaining after 30 days.",
+    "solution": "Let \\(x\\) be the mass of the Bismath present at time \\(t\\).\nThen \\(\\dfrac{dx}{dt} = -k \\cdot x\\) where \\(k > 0\\)\nSolving the differential equation, we get\n\\(x = c \\cdot e^{-kt}\\)  ... (1)\nwhere \\(c\\) is constant of proportionality.\nGiven that \\(x = 800\\), when \\(t = 0\\)\nusing these values in equation (1), we get\n\\(800 = c \\cdot 1 = c\\)\n\\(x = 800\\, e^{-kt}\\)  ... (2)\nSince half life is 5 days, we have \\(x = 400\\) when \\(t = 5\\),\nFrom equation (2), we have\n\\(400 = 800\\, e^{-5k}\\)\n\\(e^{-5k} = \\dfrac{400}{800} = \\dfrac{1}{2}\\)  ... (3)\nNow we have determine \\(x\\), when \\(t = 30\\),\nFrom equation (2), we have\n\\(x = 800\\, e^{-30k} = 12.5\\) (verify!)\nThe mass after 30 days will be \\(12.5\\) mg."
+  },
+  {
+    "ref": "6.5 Ex.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Water at \\(100^{\\circ}\\)c cools in 10 minutes to \\(88^{\\circ}\\)c in a room temperature of \\(25^{\\circ}\\)c. Find the temperature of water after 20 minutes.",
+    "solution": "Let \\(\\theta\\) be the temperature of water at time \\(t\\). Room temperature is given to be \\(25^{\\circ}\\)c. Then according to Newton's law of cooling, we have\n\\(\\dfrac{d\\theta}{dt} \\propto (\\theta - 25)\\)\n\\(\\dfrac{d\\theta}{dt} = -k(\\theta - 25)\\), where \\(k > 0\\)\nAfter integrating and using initial condition. We get \\(\\theta = 25 + 75 \\cdot e^{-kt}\\)  ... (1)\nBut given that \\(\\theta = 88^{\\circ}\\)c when \\(t = 10\\)\nFrom equation (1) we get\n\\(88 = 25 + 75 \\cdot e^{-10k}\\)\n\\(63 = 75 \\cdot e^{-10k}\\)  \\(\\therefore e^{-10k} = \\dfrac{63}{75} = \\dfrac{21}{25}\\)  ... (2)\nNow we have to find \\(\\theta\\), when \\(t = 20\\),\nFrom equation (1) we have\n\\(\\theta = 25 + 75 \\cdot e^{-20k} = 25 + 75\\left(e^{-10k}\\right)^{2} = 25 + 75\\left(\\dfrac{21}{25}\\right)^{2} = 25 + \\dfrac{75 \\times 21 \\times 21}{25 \\times 25} = 25 + \\dfrac{1323}{25} = 77.92\\)\nTherefore temperature of water after 20 minutes will be \\(77.92^{\\circ}\\)c."
+  },
+  {
+    "ref": "6.5 Ex.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Water is being poured into a vessel in the form of an inverted right circular cone of semi vertical angle \\(45^{\\circ}\\)c in such a way that the rate of change of volume at any moment is proportional to the area of the curved surfaces which is wet at that moment. Initially, the vessel is full to a height of 2 cms. And after 2 seconds the height becomes 10 cm. Show that after 3.5 seconds from that start, the height of water will be 16 cms.",
+    "solution": "Let the height of water at time \\(t\\) seconds be \\(h\\) cms.\nWe are given that initial height is 2 cms. and after 2 seconds, the height is 10 cms.\n\\(h = 2\\) when \\(t = 0\\)  ... (1)\nand \\(h = 10\\) when \\(t = 2\\)  ... (2)\nLet \\(v\\) be the volume, \\(r\\) be the radius of the water surface and \\(l\\) be that slant height at time \\(t\\) seconds.\nArea of the curved surface at this moment is \\(\\pi r l\\).\nBut the semi vertical angle is \\(45^{\\circ}\\).\n\\(\\tan 45^{\\circ} = \\dfrac{r}{h} = 1\\)\n\\(r = h\\)\nand \\(l^{2} = r^{2} + h^{2} = 2h^{2}\\)\n\\(l = \\sqrt{2}\\, h\\)\nArea of the curved surface \\(= \\pi r l = \\pi \\cdot h \\cdot \\sqrt{2}\\, h = \\sqrt{2}\\, \\pi h^{2}\\)\nSince rate of change of volume is proportional to this area, we get\n\\(\\dfrac{dv}{dt} \\propto \\sqrt{2}\\, \\pi h^{2}\\)\n\\(\\dfrac{dv}{dt} = c \\cdot \\sqrt{2}\\, \\pi h^{2}\\)\nwhere \\(c\\) is constant of proportionality.\nLet \\(c\\sqrt{2}\\, \\pi = k\\)\n\\(\\dfrac{dv}{dt} = kh^{2}\\)  ... (3)  where \\(k\\) is constant\nNow \\(v = \\dfrac{1}{3} \\pi r^{2} h = \\dfrac{1}{3} \\pi r^{2} \\cdot h = \\dfrac{1}{3} \\pi h^{3}\\), (since \\(r = h\\))\nDifferentiating with respect to \\(t\\), we get\n\\(\\dfrac{dv}{dt} = \\pi h^{2} \\dfrac{dh}{dt}\\)  ... (4)\nEquating \\(\\dfrac{dv}{dt}\\) from (3) and (4) we get\n\\(\\pi h^{2} \\dfrac{dh}{dt} = kh^{2}\\)\n\\(\\dfrac{dh}{dt} = \\dfrac{k}{\\pi} = a\\) (say)\nwhere \\(a\\) is constant.\nintegrating we get\n\\(h = at + b\\)  ... (5)\nusing (1) we have \\(2 = a \\cdot 0 + b\\)  \\(\\therefore b = 2\\)\nEquation (5) becomes\n\\(h = at + 2\\)\nNow using (2) we get\n\\(10 = 2a + 2\\)  \\(\\therefore a = 4\\)\nusing the values of \\(a\\) and \\(b\\) in equation (5), we have\n\\(h = 4t + 2\\)\nNow put \\(t = 3.5\\)\n\\(h = 4 \\times 3.5 + 2 = 14 + 2 = 16\\) cm\nTherefore, height of water after 3.5 seconds will be 16 cms."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "In a certain culture of bacteria the rate of increase is proportional to the number present. If it is found that the number doubles in 4 hours, find the number of times the bacteria are increased in 12 hours."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "If the population of a country doubles in 60 years, in how many years will it be triple (treble) under the assumption that the rate of increase is proportional to the number of inhabitants? [Given \\(\\log 2 = 0.6912\\), \\(\\log 3 = 1.0986\\)]"
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "If a body cools from \\(80^{\\circ}\\)c to \\(50^{\\circ}\\)c at room temperature of \\(25^{\\circ}\\)c in 30 minutes, find the temperature of the body after 1 hour."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The rate of growth of bacteria is proportional to the number present. If initially, there were 1000 bacteria and the number double in 1 hour, find the number of bacteria after \\(2\\dfrac{1}{2}\\) hours. [Take \\(\\sqrt{2} = 1.414\\)]"
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The rate of disintegration of a radio active element at any time \\(t\\) is proportional to its mass at that time. Find the time during which the original mass of \\(1.5\\) gm. will disintegrate into its mass of \\(0.5\\) gm."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The rate of decay of certain substance is directly proportional to the amount present at that instant. Initially, there are 25 gms of certain substance and two hours later it is found that 9 gms are left. Find the amount left after one more hour."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the population of a city at any time \\(t\\), given that the rate of increase of population is proportional to the population at the instant and that in a period of 40 years the population increased from 30,000 to 40,000."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "A body cools according to Newton's law from \\(100^{\\circ}\\)c to \\(60^{\\circ}\\)c in 20 minutes. The temperature of the surrounding being \\(20^{\\circ}\\)c how long will it take to cool down to \\(30^{\\circ}\\)c?"
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "HARD",
+    "stem": "A right circular cone has height 9 cms and radius of the base 5 cms. It is inverted and water is poured into it. If at any instant the water level rises at the rate of \\(\\dfrac{\\pi}{A}\\) cms/sec. where \\(A\\) is the area of water surface at that instant, show that the vessel will the full in 75 seconds."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Assume that a spherical raindrop evaporates at a rate proportional to its surface area. If its radius originally is 3mm and 1 hour later has been reduced to 2mm, find an expression for the radius of the raindrop at any time \\(t\\)."
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The rate of growth of the population of a city at any time \\(t\\) is proportional to the size of the population. For a certain city it is found that the constant of proportionality is 0.04. Find the population of the city after 25 years if the initial population is 10,000. [Take \\(e = 2.7182\\)]"
+  },
+  {
+    "ref": "6.5 Exercise 6.6 Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Radium decomposes at the rate proportional to the amount present at any time. If \\(p\\) percent of amount disappears in one year, what percent of amount of radium will be left after 2 years?"
+  }
+]

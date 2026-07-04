@@ -81,6 +81,25 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.6 Differential Equations (12th, Part 2). Algebraic, essentially
+  //    figure-free (1 raster page). Sections 6.1–6.5 + a Miscellaneous exercise
+  //    (I: MCQ "Choose the correct option", II: subjective). Solved examples
+  //    carry the book's solution → ship PUBLIC. Math as LaTeX (dy/dx, integrals).
+  "diff-equations-12": {
+    id: "diff-equations-12",
+    chapterName: "Differential Equations",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Differential_Equations.pdf",
+    pdf: join(SOURCE_ROOT, "12th", "Part 02", "Ch_06_Diffrential_Equations.pdf"),
+    note: "Maharashtra State Board (Class 12) — Differential Equations (Balbharati textbook)",
+    subtopics: [
+      "Order and Degree of a Differential Equation",
+      "Formation of a Differential Equation",
+      "Solution of a Differential Equation",
+      "Applications of Differential Equations",
+    ],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).

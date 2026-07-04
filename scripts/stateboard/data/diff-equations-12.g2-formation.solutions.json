@@ -1,0 +1,132 @@
+[
+ {
+  "id": "5d210a3a-8146-4490-80e0-64e28cb16702",
+  "ref": "6.3 Exercise Q.1 i)",
+  "solution": "The relation \\(x^3 + y^3 = 4ax\\) has one arbitrary constant \\(a\\), so differentiate once and eliminate \\(a\\).\n\nFrom the given equation, \\(4a = \\dfrac{x^3 + y^3}{x}\\).\n\nDifferentiate \\(x^3 + y^3 = 4ax\\) with respect to \\(x\\):\n\\(3x^2 + 3y^2\\dfrac{dy}{dx} = 4a\\).\n\nSubstitute \\(4a = \\dfrac{x^3 + y^3}{x}\\):\n\\(3x^2 + 3y^2\\dfrac{dy}{dx} = \\dfrac{x^3 + y^3}{x}\\).\n\nMultiply both sides by \\(x\\):\n\\(3x^3 + 3xy^2\\dfrac{dy}{dx} = x^3 + y^3\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(3xy^2\\dfrac{dy}{dx} = y^3 - 2x^3\\), i.e. \\(3xy^2\\dfrac{dy}{dx} + 2x^3 - y^3 = 0\\)."
+ },
+ {
+  "id": "312cbd84-3c46-4b85-8fff-92f5cdd46f1d",
+  "ref": "6.3 Exercise Q.1 ii)",
+  "solution": "The relation \\(Ax^2 + By^2 = 1\\) has two arbitrary constants \\(A\\) and \\(B\\), so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(2Ax + 2By\\dfrac{dy}{dx} = 0\\), i.e. \\(Ax + By\\dfrac{dy}{dx} = 0\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(A + B\\left(\\dfrac{dy}{dx}\\right)^2 + By\\dfrac{d^2y}{dx^2} = 0\\). \\(\\quad(2)\\)\n\nFrom \\((1)\\): \\(A = -\\dfrac{By}{x}\\dfrac{dy}{dx}\\). Substitute in \\((2)\\):\n\\(-\\dfrac{By}{x}\\dfrac{dy}{dx} + B\\left(\\dfrac{dy}{dx}\\right)^2 + By\\dfrac{d^2y}{dx^2} = 0\\).\n\nDivide by \\(B\\) and multiply by \\(x\\):\n\\(-y\\dfrac{dy}{dx} + x\\left(\\dfrac{dy}{dx}\\right)^2 + xy\\dfrac{d^2y}{dx^2} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(xy\\dfrac{d^2y}{dx^2} + x\\left(\\dfrac{dy}{dx}\\right)^2 - y\\dfrac{dy}{dx} = 0\\)."
+ },
+ {
+  "id": "504c4b8d-5255-4d9e-95c8-842a34809edc",
+  "ref": "6.3 Exercise Q.1 iii)",
+  "solution": "The relation \\(y = A\\cos(\\log x) + B\\sin(\\log x)\\) has two arbitrary constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = -A\\sin(\\log x)\\cdot\\dfrac{1}{x} + B\\cos(\\log x)\\cdot\\dfrac{1}{x}\\).\n\n\\(\\therefore x\\dfrac{dy}{dx} = -A\\sin(\\log x) + B\\cos(\\log x)\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(x\\dfrac{d^2y}{dx^2} + \\dfrac{dy}{dx} = -A\\cos(\\log x)\\cdot\\dfrac{1}{x} - B\\sin(\\log x)\\cdot\\dfrac{1}{x}\\).\n\nThe right side is \\(-\\dfrac{1}{x}\\big(A\\cos(\\log x) + B\\sin(\\log x)\\big) = -\\dfrac{y}{x}\\).\n\n\\(\\therefore x\\dfrac{d^2y}{dx^2} + \\dfrac{dy}{dx} = -\\dfrac{y}{x}\\).\n\nMultiply by \\(x\\):\n\\(x^2\\dfrac{d^2y}{dx^2} + x\\dfrac{dy}{dx} + y = 0\\).\n\n\\(\\therefore\\) the required differential equation is \\(x^2\\dfrac{d^2y}{dx^2} + x\\dfrac{dy}{dx} + y = 0\\)."
+ },
+ {
+  "id": "600e72b5-a21a-4170-a085-f9995d06c6ac",
+  "ref": "6.3 Exercise Q.1 iv)",
+  "solution": "The relation \\(y^2 = (x + c)^3\\) has one arbitrary constant \\(c\\), so differentiate once and eliminate \\(c\\).\n\nDifferentiate with respect to \\(x\\):\n\\(2y\\dfrac{dy}{dx} = 3(x + c)^2\\). \\(\\quad(1)\\)\n\nFrom the given equation, \\((x + c)^3 = y^2\\), so \\((x + c) = y^{2/3}\\) and \\((x + c)^2 = y^{4/3}\\).\n\nA cleaner elimination: from \\((1)\\), \\((x + c)^2 = \\dfrac{2y}{3}\\dfrac{dy}{dx}\\), so \\((x + c)^3 = (x+c)\\cdot\\dfrac{2y}{3}\\dfrac{dy}{dx}\\). Instead cube \\((1)\\) and square the original to eliminate \\((x+c)\\):\n\nCube \\((1)\\): \\(\\left(2y\\dfrac{dy}{dx}\\right)^3 = 27(x + c)^6 = 27\\big[(x + c)^3\\big]^2 = 27(y^2)^2 = 27y^4\\).\n\n\\(\\therefore 8y^3\\left(\\dfrac{dy}{dx}\\right)^3 = 27y^4\\).\n\nDivide by \\(y^3\\):\n\\(8\\left(\\dfrac{dy}{dx}\\right)^3 = 27y\\).\n\n\\(\\therefore\\) the required differential equation is \\(8\\left(\\dfrac{dy}{dx}\\right)^3 = 27y\\)."
+ },
+ {
+  "id": "1944b5c1-a6d8-4857-98cc-69ccde17fa5a",
+  "ref": "6.3 Exercise Q.1 ix)",
+  "solution": "The relation \\(c_1 x^3 + c_2 y^2 = 5\\) has two arbitrary constants \\(c_1\\) and \\(c_2\\), so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(3c_1 x^2 + 2c_2 y\\dfrac{dy}{dx} = 0\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(6c_1 x + 2c_2\\left[\\left(\\dfrac{dy}{dx}\\right)^2 + y\\dfrac{d^2y}{dx^2}\\right] = 0\\). \\(\\quad(2)\\)\n\nFrom \\((1)\\): \\(c_1 x^2 = -\\dfrac{2c_2 y}{3}\\dfrac{dy}{dx}\\), so \\(c_1 x = -\\dfrac{2c_2 y}{3x}\\dfrac{dy}{dx}\\). Substitute in \\((2)\\):\n\\(6\\left(-\\dfrac{2c_2 y}{3x}\\dfrac{dy}{dx}\\right) + 2c_2\\left[\\left(\\dfrac{dy}{dx}\\right)^2 + y\\dfrac{d^2y}{dx^2}\\right] = 0\\).\n\n\\(-\\dfrac{4c_2 y}{x}\\dfrac{dy}{dx} + 2c_2\\left(\\dfrac{dy}{dx}\\right)^2 + 2c_2 y\\dfrac{d^2y}{dx^2} = 0\\).\n\nDivide by \\(2c_2\\) and multiply by \\(x\\):\n\\(-2y\\dfrac{dy}{dx} + x\\left(\\dfrac{dy}{dx}\\right)^2 + xy\\dfrac{d^2y}{dx^2} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(xy\\dfrac{d^2y}{dx^2} + x\\left(\\dfrac{dy}{dx}\\right)^2 - 2y\\dfrac{dy}{dx} = 0\\)."
+ },
+ {
+  "id": "f52e0518-3bbe-424e-89c4-acc79bf626df",
+  "ref": "6.3 Exercise Q.1 v)",
+  "solution": "The relation \\(y = Ae^{5x} + Be^{-5x}\\) has two arbitrary constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = 5Ae^{5x} - 5Be^{-5x}\\).\n\nDifferentiate again:\n\\(\\dfrac{d^2y}{dx^2} = 25Ae^{5x} + 25Be^{-5x} = 25\\big(Ae^{5x} + Be^{-5x}\\big) = 25y\\).\n\n\\(\\therefore\\) the required differential equation is \\(\\dfrac{d^2y}{dx^2} - 25y = 0\\)."
+ },
+ {
+  "id": "76a16b5f-6f1c-4e35-ace6-8c080d9a2ff7",
+  "ref": "6.3 Exercise Q.1 vi)",
+  "solution": "The relation \\((y - a)^2 = 4(x - b)\\) has two arbitrary constants \\(a\\) and \\(b\\), so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(2(y - a)\\dfrac{dy}{dx} = 4\\), i.e. \\((y - a)\\dfrac{dy}{dx} = 2\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\((y - a)\\dfrac{d^2y}{dx^2} + \\dfrac{dy}{dx}\\cdot\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore (y - a)\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = 0\\). \\(\\quad(2)\\)\n\nFrom \\((1)\\), \\((y - a) = \\dfrac{2}{\\,dy/dx\\,}\\). Substitute in \\((2)\\):\n\\(\\dfrac{2}{\\,dy/dx\\,}\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = 0\\).\n\nMultiply by \\(\\dfrac{dy}{dx}\\):\n\\(2\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^3 = 0\\).\n\n\\(\\therefore\\) the required differential equation is \\(2\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^3 = 0\\)."
+ },
+ {
+  "id": "2b1c7c06-2c33-4694-a4da-6da70c4bf3c3",
+  "ref": "6.3 Exercise Q.1 vii)",
+  "solution": "The relation \\(y = a + \\dfrac{a}{x}\\) has one arbitrary constant \\(a\\), so differentiate once and eliminate \\(a\\).\n\nWrite \\(y = a\\left(1 + \\dfrac{1}{x}\\right) = a\\cdot\\dfrac{x + 1}{x}\\).\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = a\\left(-\\dfrac{1}{x^2}\\right) = -\\dfrac{a}{x^2}\\).\n\nSo \\(a = -x^2\\dfrac{dy}{dx}\\).\n\nSubstitute in \\(y = a\\cdot\\dfrac{x + 1}{x}\\):\n\\(y = -x^2\\dfrac{dy}{dx}\\cdot\\dfrac{x + 1}{x} = -x(x + 1)\\dfrac{dy}{dx}\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(x(x + 1)\\dfrac{dy}{dx} + y = 0\\)."
+ },
+ {
+  "id": "122330b0-cdab-4cd7-b23e-f1ad5279d2f1",
+  "ref": "6.3 Exercise Q.1 viii)",
+  "solution": "The relation \\(y = c_1 e^{2x} + c_2 e^{5x}\\) has two arbitrary constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = 2c_1 e^{2x} + 5c_2 e^{5x}\\). \\(\\quad(1)\\)\n\nDifferentiate again:\n\\(\\dfrac{d^2y}{dx^2} = 4c_1 e^{2x} + 25c_2 e^{5x}\\). \\(\\quad(2)\\)\n\nEliminate \\(c_1 e^{2x}\\) and \\(c_2 e^{5x}\\). The roots \\(2\\) and \\(5\\) satisfy \\(m^2 - 7m + 10 = 0\\), so the operator gives:\n\\(\\dfrac{d^2y}{dx^2} - 7\\dfrac{dy}{dx} + 10y\\)\n\\(= \\big(4c_1 e^{2x} + 25c_2 e^{5x}\\big) - 7\\big(2c_1 e^{2x} + 5c_2 e^{5x}\\big) + 10\\big(c_1 e^{2x} + c_2 e^{5x}\\big)\\)\n\\(= c_1 e^{2x}(4 - 14 + 10) + c_2 e^{5x}(25 - 35 + 10) = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(\\dfrac{d^2y}{dx^2} - 7\\dfrac{dy}{dx} + 10y = 0\\)."
+ },
+ {
+  "id": "dbd3a70f-3d3f-4104-a1fa-c2da134d03a6",
+  "ref": "6.3 Exercise Q.1 x)",
+  "solution": "The relation \\(y = e^{-2x}(A\\cos x + B\\sin x)\\) has two arbitrary constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = -2e^{-2x}(A\\cos x + B\\sin x) + e^{-2x}(-A\\sin x + B\\cos x)\\).\n\nThe first term is \\(-2y\\), so\n\\(\\dfrac{dy}{dx} = -2y + e^{-2x}(-A\\sin x + B\\cos x)\\).\n\n\\(\\therefore e^{-2x}(-A\\sin x + B\\cos x) = \\dfrac{dy}{dx} + 2y\\). \\(\\quad(1)\\)\n\nDifferentiate again:\n\\(\\dfrac{d^2y}{dx^2} = -2\\dfrac{dy}{dx} + \\dfrac{d}{dx}\\Big[e^{-2x}(-A\\sin x + B\\cos x)\\Big]\\).\n\nNow \\(\\dfrac{d}{dx}\\Big[e^{-2x}(-A\\sin x + B\\cos x)\\Big] = -2e^{-2x}(-A\\sin x + B\\cos x) + e^{-2x}(-A\\cos x - B\\sin x)\\).\n\nUsing \\((1)\\) for the first part and \\(e^{-2x}(A\\cos x + B\\sin x) = y\\) for the second:\n\\(= -2\\left(\\dfrac{dy}{dx} + 2y\\right) - y\\).\n\nHence\n\\(\\dfrac{d^2y}{dx^2} = -2\\dfrac{dy}{dx} - 2\\left(\\dfrac{dy}{dx} + 2y\\right) - y = -4\\dfrac{dy}{dx} - 5y\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(\\dfrac{d^2y}{dx^2} + 4\\dfrac{dy}{dx} + 5y = 0\\)."
+ },
+ {
+  "id": "9daf104a-5da8-4736-98d4-b814fb15a831",
+  "ref": "6.3 Exercise Q.2",
+  "solution": "A line making an intercept \\(a\\) on the X-axis passes through \\((a, 0)\\). Its equation, with slope as a parameter, can be written using the X-intercept form. Taking the family in intercept form on the X-axis:\n\\(\\dfrac{x}{a} + \\dfrac{y}{b} = 1\\) with fixed \\(a\\) and variable \\(b\\), i.e. \\(bx + ay = ab\\) with \\(a\\) constant.\n\nWrite the line as \\(y = m(x - a)\\), where \\(m\\) is the arbitrary constant (the family passes through the fixed point \\((a, 0)\\)).\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = m\\).\n\nSubstitute \\(m = \\dfrac{dy}{dx}\\) into \\(y = m(x - a)\\):\n\\(y = (x - a)\\dfrac{dy}{dx}\\).\n\n\\(\\therefore\\) the required differential equation is\n\\((x - a)\\dfrac{dy}{dx} = y\\)."
+ },
+ {
+  "id": "5382ff3e-4cbb-4446-845b-c01138896103",
+  "ref": "6.3 Exercise Q.3",
+  "solution": "A parabola with axis parallel to the X-axis and latus rectum \\(4a\\) has the form\n\\((y - k)^2 = 4a(x - h)\\),\nwhere \\(h\\) and \\(k\\) are arbitrary constants (\\(a\\) is fixed). Two constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(2(y - k)\\dfrac{dy}{dx} = 4a\\), i.e. \\((y - k)\\dfrac{dy}{dx} = 2a\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\((y - k)\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = 0\\). \\(\\quad(2)\\)\n\nFrom \\((1)\\), \\((y - k) = \\dfrac{2a}{\\,dy/dx\\,}\\). Substitute in \\((2)\\):\n\\(\\dfrac{2a}{\\,dy/dx\\,}\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = 0\\).\n\nMultiply by \\(\\dfrac{dy}{dx}\\):\n\\(2a\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^3 = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(2a\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^3 = 0\\)."
+ },
+ {
+  "id": "290f911a-fbbd-4c9e-88af-ae28eedc749c",
+  "ref": "6.3 Exercise Q.4",
+  "solution": "For the ellipse, the major axis is twice the minor axis, so the semi-major axis \\(= 2\\times\\) semi-minor axis. Take the ellipse centred at the origin with axes along the coordinate axes:\n\\(\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1\\), with \\(a = 2b\\) (major along X-axis).\n\nThen \\(\\dfrac{x^2}{4b^2} + \\dfrac{y^2}{b^2} = 1\\), i.e. \\(x^2 + 4y^2 = 4b^2\\). One arbitrary constant \\(b\\), so differentiate once.\n\nDifferentiate \\(x^2 + 4y^2 = 4b^2\\) with respect to \\(x\\):\n\\(2x + 8y\\dfrac{dy}{dx} = 0\\).\n\nDivide by \\(2\\):\n\\(x + 4y\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(x + 4y\\dfrac{dy}{dx} = 0\\)."
+ },
+ {
+  "id": "79ef5ed2-f5ba-47fb-9a13-825c1f530dba",
+  "ref": "6.3 Exercise Q.5",
+  "solution": "All lines parallel to \\(2x + 3y + 4 = 0\\) have the same slope. The slope of the given line is \\(-\\dfrac{2}{3}\\).\n\nThe family is \\(2x + 3y + c = 0\\), where \\(c\\) is the arbitrary constant.\n\nDifferentiate with respect to \\(x\\):\n\\(2 + 3\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(3\\dfrac{dy}{dx} + 2 = 0\\), i.e. \\(\\dfrac{dy}{dx} = -\\dfrac{2}{3}\\)."
+ },
+ {
+  "id": "34a2e323-354d-4f84-bd1a-aff755f72e04",
+  "ref": "6.3 Exercise Q.6",
+  "solution": "A circle of radius \\(9\\) with centre \\(A(h, k)\\) has equation\n\\((x - h)^2 + (y - k)^2 = 81\\),\nwhere \\(h\\) and \\(k\\) are arbitrary constants. Two constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(2(x - h) + 2(y - k)\\dfrac{dy}{dx} = 0\\), i.e. \\((x - h) + (y - k)\\dfrac{dy}{dx} = 0\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(1 + \\left(\\dfrac{dy}{dx}\\right)^2 + (y - k)\\dfrac{d^2y}{dx^2} = 0\\).\n\n\\(\\therefore (y - k) = -\\dfrac{1 + \\left(\\dfrac{dy}{dx}\\right)^2}{\\dfrac{d^2y}{dx^2}}\\). \\(\\quad(2)\\)\n\nFrom \\((1)\\), \\((x - h) = -(y - k)\\dfrac{dy}{dx} = \\dfrac{\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]\\dfrac{dy}{dx}}{\\dfrac{d^2y}{dx^2}}\\). \\(\\quad(3)\\)\n\nSubstitute \\((2)\\) and \\((3)\\) into \\((x - h)^2 + (y - k)^2 = 81\\):\n\\(\\dfrac{\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]^2\\left(\\dfrac{dy}{dx}\\right)^2}{\\left(\\dfrac{d^2y}{dx^2}\\right)^2} + \\dfrac{\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]^2}{\\left(\\dfrac{d^2y}{dx^2}\\right)^2} = 81\\).\n\nThe left side factors as \\(\\dfrac{\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]^2\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]}{\\left(\\dfrac{d^2y}{dx^2}\\right)^2} = \\dfrac{\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]^3}{\\left(\\dfrac{d^2y}{dx^2}\\right)^2}\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]^3 = 81\\left(\\dfrac{d^2y}{dx^2}\\right)^2\\)."
+ },
+ {
+  "id": "87f39239-f135-4236-8d5b-a5399267eeb1",
+  "ref": "6.3 Exercise Q.7",
+  "solution": "A parabola whose axis is the X-axis has vertex on the X-axis and opens along it. The general such family is\n\\(y^2 = 4a(x - h)\\),\nbut all parabolas with axis the X-axis (vertex at origin allowed to shift) are covered by \\(y^2 = 4ax\\) shifted; taking the standard form with vertex at the origin and axis the X-axis, \\(y^2 = 4ax\\), \\(a\\) arbitrary.\n\nHere there is one arbitrary constant \\(a\\), so differentiate once.\n\nFrom \\(y^2 = 4ax\\), \\(4a = \\dfrac{y^2}{x}\\).\n\nDifferentiate \\(y^2 = 4ax\\) with respect to \\(x\\):\n\\(2y\\dfrac{dy}{dx} = 4a = \\dfrac{y^2}{x}\\).\n\nMultiply by \\(x\\):\n\\(2xy\\dfrac{dy}{dx} = y^2\\).\n\nDivide by \\(y\\):\n\\(2x\\dfrac{dy}{dx} = y\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(2x\\dfrac{dy}{dx} - y = 0\\)."
+ },
+ {
+  "id": "4dd6f765-9e3b-4c3c-9375-2d127c090be5",
+  "ref": "Misc II Q.3 i)",
+  "solution": "The relation \\(y^2 = a(b - x)(b + x) = a(b^2 - x^2)\\) has two arbitrary constants (\\(a\\) and the product \\(ab^2\\)), so differentiate twice.\n\nWrite \\(y^2 = ab^2 - ax^2\\).\n\nDifferentiate with respect to \\(x\\):\n\\(2y\\dfrac{dy}{dx} = -2ax\\), i.e. \\(y\\dfrac{dy}{dx} = -ax\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(y\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = -a\\). \\(\\quad(2)\\)\n\nFrom \\((1)\\), \\(a = -\\dfrac{y}{x}\\dfrac{dy}{dx}\\). Substitute in \\((2)\\):\n\\(y\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = \\dfrac{y}{x}\\dfrac{dy}{dx}\\).\n\nMultiply by \\(x\\):\n\\(xy\\dfrac{d^2y}{dx^2} + x\\left(\\dfrac{dy}{dx}\\right)^2 - y\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(xy\\dfrac{d^2y}{dx^2} + x\\left(\\dfrac{dy}{dx}\\right)^2 - y\\dfrac{dy}{dx} = 0\\)."
+ },
+ {
+  "id": "4a286746-7db1-4970-9767-c1a6233aa676",
+  "ref": "Misc II Q.3 ii)",
+  "solution": "The relation \\(y = a\\sin(x + b)\\) has two arbitrary constants \\(a\\) and \\(b\\), so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = a\\cos(x + b)\\).\n\nDifferentiate again:\n\\(\\dfrac{d^2y}{dx^2} = -a\\sin(x + b) = -y\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(\\dfrac{d^2y}{dx^2} + y = 0\\)."
+ },
+ {
+  "id": "9841d0f7-678f-431a-94b7-1fc4f234b858",
+  "ref": "Misc II Q.3 iii)",
+  "solution": "The relation \\((y - a)^2 = b(x + 4)\\) has two arbitrary constants \\(a\\) and \\(b\\), so differentiate twice and eliminate both.\n\nDifferentiate with respect to \\(x\\):\n\\(2(y - a)\\dfrac{dy}{dx} = b\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\) (\\(b\\) is constant):\n\\((y - a)\\dfrac{d^2y}{dx^2} + \\left(\\dfrac{dy}{dx}\\right)^2 = 0\\). \\(\\quad(2)\\)\n\nFrom \\((2)\\): \\((y - a) = -\\dfrac{\\left(\\dfrac{dy}{dx}\\right)^2}{\\dfrac{d^2y}{dx^2}}\\).\n\nFrom \\((1)\\): \\(b = 2(y - a)\\dfrac{dy}{dx} = -\\dfrac{2\\left(\\dfrac{dy}{dx}\\right)^3}{\\dfrac{d^2y}{dx^2}}\\).\n\nSubstitute \\((y - a)^2 = \\dfrac{\\left(\\dfrac{dy}{dx}\\right)^4}{\\left(\\dfrac{d^2y}{dx^2}\\right)^2}\\) and the value of \\(b\\) into the original equation \\((y - a)^2 = b(x + 4)\\):\n\\(\\dfrac{\\left(\\dfrac{dy}{dx}\\right)^4}{\\left(\\dfrac{d^2y}{dx^2}\\right)^2} = -\\dfrac{2\\left(\\dfrac{dy}{dx}\\right)^3}{\\dfrac{d^2y}{dx^2}}(x + 4)\\).\n\nDivide both sides by \\(\\dfrac{\\left(\\dfrac{dy}{dx}\\right)^3}{\\dfrac{d^2y}{dx^2}}\\):\n\\(\\dfrac{\\dfrac{dy}{dx}}{\\dfrac{d^2y}{dx^2}} = -2(x + 4)\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(\\dfrac{dy}{dx} = -2(x + 4)\\dfrac{d^2y}{dx^2}\\), i.e. \\(2(x + 4)\\dfrac{d^2y}{dx^2} + \\dfrac{dy}{dx} = 0\\)."
+ },
+ {
+  "id": "ac02df4f-ea13-461d-8c2d-3a502debf7e9",
+  "ref": "Misc II Q.3 iv)",
+  "solution": "The relation \\(y = \\sqrt{a}\\cos(\\log x) + b\\sin(\\log x)\\) has two arbitrary constants (\\(\\sqrt{a}\\) and \\(b\\)), so differentiate twice. Let \\(A = \\sqrt{a}\\) and \\(B = b\\), so \\(y = A\\cos(\\log x) + B\\sin(\\log x)\\).\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = -A\\sin(\\log x)\\cdot\\dfrac{1}{x} + B\\cos(\\log x)\\cdot\\dfrac{1}{x}\\).\n\n\\(\\therefore x\\dfrac{dy}{dx} = -A\\sin(\\log x) + B\\cos(\\log x)\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(x\\dfrac{d^2y}{dx^2} + \\dfrac{dy}{dx} = -\\dfrac{1}{x}\\big(A\\cos(\\log x) + B\\sin(\\log x)\\big) = -\\dfrac{y}{x}\\).\n\nMultiply by \\(x\\):\n\\(x^2\\dfrac{d^2y}{dx^2} + x\\dfrac{dy}{dx} + y = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(x^2\\dfrac{d^2y}{dx^2} + x\\dfrac{dy}{dx} + y = 0\\)."
+ },
+ {
+  "id": "0f1d4e75-a80a-463c-8dcb-5d2ef24db083",
+  "ref": "Misc II Q.3 v)",
+  "solution": "The relation \\(y = Ae^{3x + 1} + Be^{-3x + 1}\\) has two arbitrary constants. Write \\(y = e\\big(Ae^{3x} + Be^{-3x}\\big)\\); absorbing \\(e\\) into constants, \\(y = A_1 e^{3x} + B_1 e^{-3x}\\), so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = 3Ae^{3x + 1} - 3Be^{-3x + 1}\\).\n\nDifferentiate again:\n\\(\\dfrac{d^2y}{dx^2} = 9Ae^{3x + 1} + 9Be^{-3x + 1} = 9\\big(Ae^{3x + 1} + Be^{-3x + 1}\\big) = 9y\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(\\dfrac{d^2y}{dx^2} - 9y = 0\\)."
+ },
+ {
+  "id": "e3691965-e73a-4cdd-9252-0f7a0fa48603",
+  "ref": "Misc II Q.4 i)",
+  "solution": "A circle passing through the origin with centre on the X-axis has centre \\((a, 0)\\) and radius \\(a\\) (so that it passes through the origin). Its equation is\n\\((x - a)^2 + y^2 = a^2\\), i.e. \\(x^2 - 2ax + y^2 = 0\\), i.e. \\(x^2 + y^2 = 2ax\\).\n\nOne arbitrary constant \\(a\\), so differentiate once. From the equation, \\(2a = \\dfrac{x^2 + y^2}{x}\\).\n\nDifferentiate \\(x^2 + y^2 = 2ax\\) with respect to \\(x\\):\n\\(2x + 2y\\dfrac{dy}{dx} = 2a = \\dfrac{x^2 + y^2}{x}\\).\n\nMultiply by \\(x\\):\n\\(2x^2 + 2xy\\dfrac{dy}{dx} = x^2 + y^2\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(x^2 + 2xy\\dfrac{dy}{dx} = y^2\\), i.e. \\(2xy\\dfrac{dy}{dx} + x^2 - y^2 = 0\\)."
+ },
+ {
+  "id": "7cbce7cf-0f01-4fec-8c76-2bb302816bd2",
+  "ref": "Misc II Q.4 ii)",
+  "solution": "A parabola with latus rectum \\(4b\\) and axis parallel to the Y-axis has the form\n\\((x - h)^2 = 4b(y - k)\\),\nwhere \\(h\\) and \\(k\\) are arbitrary constants (\\(b\\) is fixed). Two constants, so differentiate twice.\n\nDifferentiate with respect to \\(x\\):\n\\(2(x - h) = 4b\\dfrac{dy}{dx}\\), i.e. \\((x - h) = 2b\\dfrac{dy}{dx}\\). \\(\\quad(1)\\)\n\nDifferentiate \\((1)\\) with respect to \\(x\\):\n\\(1 = 2b\\dfrac{d^2y}{dx^2}\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(2b\\dfrac{d^2y}{dx^2} = 1\\)."
+ },
+ {
+  "id": "a79fc915-7add-4855-9de2-bd15da256474",
+  "ref": "Misc II Q.4 iii)",
+  "solution": "For the ellipse, the major axis is twice the minor axis, so the semi-major axis \\(= 2\\times\\) semi-minor axis. Take the ellipse centred at the origin with axes along the coordinate axes:\n\\(\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1\\) with \\(a = 2b\\) (major along X-axis).\n\nThen \\(\\dfrac{x^2}{4b^2} + \\dfrac{y^2}{b^2} = 1\\), i.e. \\(x^2 + 4y^2 = 4b^2\\). One arbitrary constant \\(b\\), so differentiate once.\n\nDifferentiate \\(x^2 + 4y^2 = 4b^2\\) with respect to \\(x\\):\n\\(2x + 8y\\dfrac{dy}{dx} = 0\\).\n\nDivide by \\(2\\):\n\\(x + 4y\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(x + 4y\\dfrac{dy}{dx} = 0\\)."
+ },
+ {
+  "id": "26fb4789-6547-46dc-86d7-2e00e0c23877",
+  "ref": "Misc II Q.4 iv)",
+  "solution": "All lines parallel to \\(3x - 2y + 7 = 0\\) have the same slope. The slope of the given line is \\(\\dfrac{3}{2}\\).\n\nThe family is \\(3x - 2y + c = 0\\), where \\(c\\) is the arbitrary constant.\n\nDifferentiate with respect to \\(x\\):\n\\(3 - 2\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(2\\dfrac{dy}{dx} - 3 = 0\\), i.e. \\(\\dfrac{dy}{dx} = \\dfrac{3}{2}\\)."
+ },
+ {
+  "id": "a1b6bcaf-7df0-4e53-bf22-17667c38d3f9",
+  "ref": "Misc II Q.4 v)",
+  "solution": "The given hyperbola is \\(\\dfrac{x^2}{16} - \\dfrac{y^2}{36} = k\\), i.e. \\(\\dfrac{x^2}{16k} - \\dfrac{y^2}{36k} = 1\\). Its transverse axis length is \\(2\\sqrt{16k} = 8\\sqrt{k}\\) and conjugate axis length is \\(2\\sqrt{36k} = 12\\sqrt{k}\\).\n\nThe required hyperbola has transverse and conjugate axes half of these, so its \\(a^2\\) and \\(b^2\\) become one-quarter of the originals: \\(a^2 = \\dfrac{16k}{4} = 4k\\) and \\(b^2 = \\dfrac{36k}{4} = 9k\\). Thus the family is\n\\(\\dfrac{x^2}{4k} - \\dfrac{y^2}{9k} = 1\\), i.e. \\(9x^2 - 4y^2 = 36k\\), with \\(k\\) arbitrary.\n\nOne arbitrary constant \\(k\\), so differentiate once.\n\nDifferentiate \\(9x^2 - 4y^2 = 36k\\) with respect to \\(x\\):\n\\(18x - 8y\\dfrac{dy}{dx} = 0\\).\n\nDivide by \\(2\\):\n\\(9x - 4y\\dfrac{dy}{dx} = 0\\).\n\n\\(\\therefore\\) the required differential equation is\n\\(9x - 4y\\dfrac{dy}{dx} = 0\\), i.e. \\(4y\\dfrac{dy}{dx} = 9x\\)."
+ }
+]

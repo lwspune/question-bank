@@ -1,0 +1,232 @@
+[
+  {
+    "ref": "6.3 Ex.1 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "EASY",
+    "context": "Obtain the differential equation by eliminating the arbitrary constants from the following :",
+    "setLabel": "Ex.1",
+    "stem": "\\(y = 4ax\\)",
+    "solution": "\\(y = 4ax\\) ... (1)\n\nHere \\(a\\) is the arbitrary constant, we differentiate w. r. t. x,\n\n\\(\\therefore \\dfrac{dy}{dx} = 4a\\)\n\nthen eq. (1) gives\n\n\\(y = \\left(\\dfrac{dy}{dx}\\right) x\\) is required differential equation."
+  },
+  {
+    "ref": "6.3 Ex.1 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equation by eliminating the arbitrary constants from the following :",
+    "setLabel": "Ex.1",
+    "stem": "\\(y = Ae^{3x} + Be^{-3x}\\)",
+    "solution": "\\(y = Ae^{3x} + Be^{-3x}\\) ... (1)\n\nHere \\(A\\) and \\(B\\) are arbitrary constants.\n\nDifferentiate w. r. t. x, we get\n\n\\(\\therefore \\dfrac{dy}{dx} = 3Ae^{3x} - 3Be^{-3x}\\)\n\nagain Differentiate w. r. t. x, we get\n\n\\(\\dfrac{d^2y}{dx^2} = 3 \\times 3Ae^{3x} - 3 \\times 3Be^{-3x}\\)\n\n\\(= 9\\left(Ae^{3x} + Be^{-3x}\\right) = 9y\\) ... from eq.(1)\n\n\\(\\therefore \\dfrac{d^2y}{dx^2} = 9y\\)"
+  },
+  {
+    "ref": "6.3 Ex.1 iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equation by eliminating the arbitrary constants from the following :",
+    "setLabel": "Ex.1",
+    "stem": "\\(y = (c_1 + c_2 x) e^{x}\\)",
+    "solution": "\\(y = (c_1 + c_2 x) e^{x}\\) ... (1)\n\nHere \\(c_1\\) and \\(c_2\\) are arbitrary constants.\n\nDifferentiate w. r. t. x, we get\n\n\\(\\therefore \\dfrac{dy}{dx} = (c_1 + c_2 x) e^{x} + c_2 e^{x}\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = y + c_2 e^{x}\\) ... (2) ... from eq.(1)\n\nAgain differentiate w. r. t. x, we get\n\n\\(\\dfrac{d^2y}{dx^2} = \\dfrac{dy}{dx} + c_2 e^{x}\\)\n\n\\(\\therefore c_2 e^{x} = \\dfrac{d^2y}{dx^2} - \\dfrac{dy}{dx}\\)\n\nput in eq.(2)\n\n\\(\\dfrac{dy}{dx} = y + \\dfrac{d^2y}{dx^2} - \\dfrac{dy}{dx}\\)\n\n\\(\\therefore \\dfrac{d^2y}{dx^2} - 2\\dfrac{dy}{dx} + y = 0\\)"
+  },
+  {
+    "ref": "6.3 Ex.1 iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "context": "Obtain the differential equation by eliminating the arbitrary constants from the following :",
+    "setLabel": "Ex.1",
+    "stem": "\\(y = c^2 + \\dfrac{c}{x}\\)",
+    "solution": "\\(y = c^2 + \\dfrac{c}{x}\\) ... (1)\n\nDifferentiate w. r. t. x, we get\n\n\\(\\therefore \\dfrac{dy}{dx} = -\\dfrac{c}{x^2}\\)\n\n\\(\\therefore c = -x^2 \\dfrac{dy}{dx}\\)\n\nthen eq.(1) gives\n\n\\(y = \\left[-x^2 \\left(\\dfrac{dy}{dx}\\right)\\right]^2 - x^2 \\dfrac{dy}{dx} \\times \\dfrac{1}{x}\\)\n\n\\(\\therefore y = x^4 \\left(\\dfrac{dy}{dx}\\right)^2 - x \\dfrac{dy}{dx}\\)\n\n\\(\\therefore x^4 \\left(\\dfrac{dy}{dx}\\right)^2 - x \\dfrac{dy}{dx} - y = 0\\)"
+  },
+  {
+    "ref": "6.3 Ex.1 v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "context": "Obtain the differential equation by eliminating the arbitrary constants from the following :",
+    "setLabel": "Ex.1",
+    "stem": "\\(y = c_1 e^{3x} + c_2 e^{2x}\\)",
+    "solution": "\\(y = c_1 e^{3x} + c_2 e^{2x}\\) ... (I)\n\nDifferentiate w. r. t. x, we get\n\n\\(\\therefore \\dfrac{dy}{dx} = 3c_1 e^{3x} + 2c_2 e^{2x}\\) ... (II)\n\nAgain differentiate w. r. t. x, we get\n\n\\(\\dfrac{d^2y}{dx^2} = 9c_1 e^{3x} + 4c_2 e^{2x}\\) ... (III)\n\nAs equations (I), (II) and (III) in \\(c_1 e^{3x}\\) and \\(c_2 e^{2x}\\) are consistent\n\n\\(\\therefore \\begin{vmatrix} y & 1 & 1 \\\\ \\dfrac{dy}{dx} & 3 & 2 \\\\ \\dfrac{d^2y}{dx^2} & 9 & 4 \\end{vmatrix} = 0\\)\n\n\\(\\therefore y(12 - 18) - 1\\left(4\\dfrac{dy}{dx} - 2\\dfrac{d^2y}{dx^2}\\right) + 1\\left(9\\dfrac{dy}{dx} - 3\\dfrac{d^2y}{dx^2}\\right) = 0\\)\n\n\\(\\therefore -6y - 4\\dfrac{dy}{dx} + 2\\dfrac{d^2y}{dx^2} + 9\\dfrac{dy}{dx} - 3\\dfrac{d^2y}{dx^2} = 0\\)\n\n\\(\\therefore -\\dfrac{d^2y}{dx^2} + 5\\dfrac{dy}{dx} - 6y = 0\\)\n\n\\(\\therefore \\dfrac{d^2y}{dx^2} - 5\\dfrac{dy}{dx} + 6y = 0\\)"
+  },
+  {
+    "ref": "6.3 Ex.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "The rate of decay of the mass of a radioactive substance any time is \\(k\\) times its mass at that time, form the differential equation satisfied by the mass of the substance.",
+    "solution": "Let \\(m\\) be the mass of a radioactive substance at time \\('t'\\).\n\n\\(\\therefore\\) The rate of decay of mass is \\(\\dfrac{dm}{dt}\\)\n\nHere \\(\\dfrac{dm}{dt} \\propto m\\)\n\n\\(\\therefore \\dfrac{dm}{dt} = mk\\), where \\(k < 0\\)\n\nis the required differential equation."
+  },
+  {
+    "ref": "6.3 Ex.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "stem": "Form the differential equation of family of circles above the X-axis and touching the X-axis at the origin.",
+    "solution": "Let \\(c(a, b)\\) be the centre of the circle touching X-axis at the origin \\((b < 0)\\).\n\nThe radius of the circle is \\(b\\).\n\nThe equation of the circle is\n\n\\((x - 0)^2 + (y - b)^2 = b^2\\)\n\n\\(\\therefore x^2 + y^2 - 2by + b^2 = b^2\\)\n\n\\(\\therefore x^2 + y^2 - 2by = 0\\) ... (I)\n\nDifferentiate w. r. t. x, we get\n\n\\(2x + 2y\\left(\\dfrac{dy}{dx}\\right) - 2b\\left(\\dfrac{dy}{dx}\\right) = 0\\)\n\n\\(\\therefore x + (y - b)\\dfrac{dy}{dx} = 0\\)\n\n\\(\\therefore \\dfrac{x}{\\left(\\dfrac{dy}{dx}\\right)} + (y - b) = 0\\)\n\n\\(\\therefore b = y + \\dfrac{x}{\\left(\\dfrac{dy}{dx}\\right)}\\) ... (II)\n\nFrom eq. (I) and eq. (II)\n\n\\(\\therefore x^2 + y^2 - 2\\left[y + \\dfrac{x}{\\left(\\dfrac{dy}{dx}\\right)}\\right]y = 0\\)\n\n\\(\\therefore x^2 + y^2 - 2y^2 - \\dfrac{2xy}{\\left(\\dfrac{dy}{dx}\\right)} = 0\\)\n\n\\(\\therefore x^2 - y^2 = \\dfrac{2xy}{\\left(\\dfrac{dy}{dx}\\right)}\\)\n\n\\(\\therefore (x^2 - y^2)\\dfrac{dy}{dx} = 2xy\\)\n\nis the required differential equation."
+  },
+  {
+    "ref": "6.3 Ex.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "A particle is moving along the X-axis. Its acceleration at time t is proportional to its velocity at that time. Find the differential equation of the motion of the particle.",
+    "solution": "Let \\(s\\) be the displacement of the particle at time \\('t'\\).\n\nIts velocity and acceleration are \\(\\dfrac{ds}{dt}\\) and \\(\\dfrac{d^2s}{dt^2}\\) respectively.\n\nHere \\(\\dfrac{d^2s}{dt^2} \\propto \\dfrac{ds}{dt}\\)\n\n\\(\\therefore \\dfrac{d^2s}{dt^2} = k\\dfrac{ds}{dt}\\), (where \\(k\\) is constant \\(\\neq 0\\))\n\nis the required differential equation."
+  },
+  {
+    "ref": "6.3 Exercise Q.1 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(x^3 + y^3 = 4ax\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(Ax^2 + By^2 = 1\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(y = A \\cos(\\log x) + B \\sin(\\log x)\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(y^2 = (x + c)^3\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(y = Ae^{5x} + Be^{-5x}\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\((y - a)^2 = 4(x - b)\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(y = a + \\dfrac{a}{x}\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(y = c_1 e^{2x} + c_2 e^{5x}\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(c_1 x^3 + c_2 y^2 = 5\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.1 x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "context": "Obtain the differential equations by eliminating arbitrary constants",
+    "setLabel": "Exercise Q.1",
+    "stem": "\\(y = e^{-2x}(A \\cos x + B \\sin x)\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Form the differential equation of family of lines making intercept a on the X-axis."
+  },
+  {
+    "ref": "6.3 Exercise Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "stem": "Find the differential equation of all parabolas having length of latus rectum \\(4a\\) and axis is parallel to the X-axis."
+  },
+  {
+    "ref": "6.3 Exercise Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "stem": "Find the differential equation of all ellipse whose major axis is twise its minor axis."
+  },
+  {
+    "ref": "6.3 Exercise Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Form the differential equation of family of lines parallel to the line \\(2x + 3y + 4 = 0\\)"
+  },
+  {
+    "ref": "6.3 Exercise Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Find the differential equations of all circles having radius 9 and centre at point \\(A(h, k)\\)."
+  },
+  {
+    "ref": "6.3 Exercise Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Form the differential equation of all parabolas whose axis is the X-axis."
+  }
+]

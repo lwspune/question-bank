@@ -1,0 +1,77 @@
+[
+ {
+  "id": "92491011-3279-4c97-b4b3-5cf2be3cea7b",
+  "ref": "6.5 Exercise 6.6 Q.1",
+  "solution": "Let \\(x\\) be the number of bacteria present at time \\(t\\) (hours).\n\nThe rate of increase is proportional to the number present:\n\\(\\dfrac{dx}{dt} = kx\\), where \\(k > 0\\) is the constant of proportionality.\n\nSeparating variables and integrating:\n\\(\\dfrac{dx}{x} = k\\,dt \\implies \\log x = kt + c\\).\n\nLet the initial number be \\(x_0\\) (at \\(t = 0\\)), so \\(c = \\log x_0\\) and\n\\(\\log\\left(\\dfrac{x}{x_0}\\right) = kt\\), i.e. \\(x = x_0\\, e^{kt}\\).\n\nGiven: the number doubles in 4 hours, so at \\(t = 4\\), \\(x = 2x_0\\):\n\\(2x_0 = x_0\\, e^{4k} \\implies e^{4k} = 2\\).\n\nNumber after 12 hours:\n\\(x = x_0\\, e^{12k} = x_0\\left(e^{4k}\\right)^{3} = x_0\\,(2)^{3} = 8x_0\\).\n\nHence the bacteria increase to 8 times the original number in 12 hours."
+ },
+ {
+  "id": "c2a4892e-ec19-496d-86fa-1813d7afe763",
+  "ref": "6.5 Exercise 6.6 Q.10",
+  "solution": "Let \\(r\\) be the radius of the spherical raindrop at time \\(t\\) (hours).\n\nVolume \\(V = \\dfrac{4}{3}\\pi r^{3}\\) and surface area \\(S = 4\\pi r^{2}\\).\n\nThe drop evaporates at a rate proportional to its surface area:\n\\(\\dfrac{dV}{dt} = -k\\,S\\), where \\(k > 0\\) (mass decreasing).\n\nNow \\(\\dfrac{dV}{dt} = \\dfrac{d}{dt}\\left(\\dfrac{4}{3}\\pi r^{3}\\right) = 4\\pi r^{2}\\,\\dfrac{dr}{dt}\\).\n\nTherefore \\(4\\pi r^{2}\\,\\dfrac{dr}{dt} = -k\\,(4\\pi r^{2})\\), which gives\n\\(\\dfrac{dr}{dt} = -k\\).\n\nIntegrating: \\(r = -kt + c\\).\n\nAt \\(t = 0\\), \\(r = 3\\) mm, so \\(c = 3\\), giving \\(r = 3 - kt\\).\n\nAt \\(t = 1\\), \\(r = 2\\) mm: \\(2 = 3 - k \\implies k = 1\\).\n\nHence the radius at any time \\(t\\) is\n\\(r = 3 - t\\) (mm), valid for \\(0 \\le t \\le 3\\)."
+ },
+ {
+  "id": "4738d8f8-5573-4054-af83-17e67e977db0",
+  "ref": "6.5 Exercise 6.6 Q.11",
+  "solution": "Let \\(P\\) be the population of the city at time \\(t\\) (years).\n\nThe rate of growth is proportional to the population:\n\\(\\dfrac{dP}{dt} = kP\\), with constant of proportionality \\(k = 0.04\\).\n\nSeparating variables and integrating:\n\\(\\dfrac{dP}{P} = k\\,dt \\implies \\log P = kt + c\\).\n\nWith initial population \\(P_0\\) at \\(t = 0\\), \\(c = \\log P_0\\), so\n\\(P = P_0\\, e^{kt}\\).\n\nHere \\(P_0 = 10{,}000\\) and \\(k = 0.04\\), so after \\(t = 25\\) years:\n\\(P = 10{,}000\\, e^{0.04 \\times 25} = 10{,}000\\, e^{1}\\).\n\nTaking \\(e = 2.7182\\):\n\\(P = 10{,}000 \\times 2.7182 = 27{,}182\\).\n\nHence the population of the city after 25 years is 27,182."
+ },
+ {
+  "id": "ce14b6ee-39c2-4eae-9b6e-2acee2a40d1e",
+  "ref": "6.5 Exercise 6.6 Q.12",
+  "solution": "Let \\(m\\) be the amount of radium present at time \\(t\\) (years).\n\nRadium decomposes at a rate proportional to the amount present:\n\\(\\dfrac{dm}{dt} = -k\\,m\\), where \\(k > 0\\).\n\nSeparating variables and integrating:\n\\(\\dfrac{dm}{m} = -k\\,dt \\implies \\log m = -kt + c\\).\n\nLet the initial amount be \\(m_0\\) at \\(t = 0\\); then \\(c = \\log m_0\\) and\n\\(m = m_0\\, e^{-kt}\\).\n\nGiven: \\(p\\) percent disappears in one year, so at \\(t = 1\\), the amount left is\n\\(m_0\\left(1 - \\dfrac{p}{100}\\right)\\):\n\\(m_0\\, e^{-k} = m_0\\left(1 - \\dfrac{p}{100}\\right) \\implies e^{-k} = 1 - \\dfrac{p}{100}\\).\n\nAmount left after 2 years:\n\\(m = m_0\\, e^{-2k} = m_0\\left(e^{-k}\\right)^{2} = m_0\\left(1 - \\dfrac{p}{100}\\right)^{2}\\).\n\nAs a percentage of the original amount, the radium left after 2 years is\n\\(\\left(1 - \\dfrac{p}{100}\\right)^{2} \\times 100 = \\dfrac{(100 - p)^{2}}{100}\\) percent."
+ },
+ {
+  "id": "5b42b172-1e3b-4a43-b163-3d7582aa4b97",
+  "ref": "6.5 Exercise 6.6 Q.2",
+  "solution": "Let \\(P\\) be the number of inhabitants at time \\(t\\) (years).\n\nThe rate of increase is proportional to the number of inhabitants:\n\\(\\dfrac{dP}{dt} = kP\\), where \\(k > 0\\).\n\nIntegrating: \\(\\log P = kt + c\\). With initial population \\(P_0\\) at \\(t = 0\\),\n\\(P = P_0\\, e^{kt}\\).\n\nThe population doubles in 60 years, so at \\(t = 60\\), \\(P = 2P_0\\):\n\\(2P_0 = P_0\\, e^{60k} \\implies e^{60k} = 2 \\implies 60k = \\log 2 \\implies k = \\dfrac{\\log 2}{60}\\).\n\nLet the population treble (become \\(3P_0\\)) after \\(t\\) years:\n\\(3P_0 = P_0\\, e^{kt} \\implies e^{kt} = 3 \\implies kt = \\log 3\\).\n\nTherefore\n\\(t = \\dfrac{\\log 3}{k} = \\dfrac{\\log 3}{\\log 2 / 60} = 60 \\times \\dfrac{\\log 3}{\\log 2}\\).\n\nUsing \\(\\log 2 = 0.6912\\) and \\(\\log 3 = 1.0986\\):\n\\(t = 60 \\times \\dfrac{1.0986}{0.6912} = 60 \\times 1.5894 = 95.36\\) years (approximately).\n\nHence the population will treble in about 95.36 years."
+ },
+ {
+  "id": "bd414ebc-1672-42af-857d-ce24cb264279",
+  "ref": "6.5 Exercise 6.6 Q.3",
+  "solution": "Let \\(\\theta\\) be the temperature of the body (in degrees Celsius) at time \\(t\\) (minutes). Room (surrounding) temperature \\(\\theta_0 = 25^\\circ\\).\n\nBy Newton's law of cooling:\n\\(\\dfrac{d\\theta}{dt} = -k(\\theta - \\theta_0) = -k(\\theta - 25)\\), where \\(k > 0\\).\n\nSeparating variables and integrating:\n\\(\\dfrac{d\\theta}{\\theta - 25} = -k\\,dt \\implies \\log(\\theta - 25) = -kt + c\\),\ngiving \\(\\theta - 25 = C\\, e^{-kt}\\).\n\nAt \\(t = 0\\), \\(\\theta = 80^\\circ\\): \\(80 - 25 = C \\implies C = 55\\).\nSo \\(\\theta - 25 = 55\\, e^{-kt}\\).\n\nAt \\(t = 30\\) minutes, \\(\\theta = 50^\\circ\\):\n\\(50 - 25 = 55\\, e^{-30k} \\implies 25 = 55\\, e^{-30k} \\implies e^{-30k} = \\dfrac{25}{55} = \\dfrac{5}{11}\\).\n\nAfter 1 hour, i.e. \\(t = 60\\) minutes:\n\\(\\theta - 25 = 55\\, e^{-60k} = 55\\left(e^{-30k}\\right)^{2} = 55\\left(\\dfrac{5}{11}\\right)^{2} = 55 \\times \\dfrac{25}{121} = \\dfrac{125}{11}\\).\n\nThus \\(\\theta = 25 + \\dfrac{125}{11} = 25 + 11.36 = 36.36^\\circ\\) C (approximately).\n\nHence the temperature of the body after 1 hour is about \\(36.36^\\circ\\) C."
+ },
+ {
+  "id": "35f7e0ae-52aa-4e94-9214-00f23df389de",
+  "ref": "6.5 Exercise 6.6 Q.4",
+  "solution": "Let \\(N\\) be the number of bacteria present at time \\(t\\) (hours).\n\nThe rate of growth is proportional to the number present:\n\\(\\dfrac{dN}{dt} = kN\\), where \\(k > 0\\).\n\nIntegrating: \\(\\log N = kt + c\\), so \\(N = N_0\\, e^{kt}\\), where \\(N_0\\) is the initial number.\n\nHere \\(N_0 = 1000\\). The number doubles in 1 hour, so at \\(t = 1\\), \\(N = 2000\\):\n\\(2000 = 1000\\, e^{k} \\implies e^{k} = 2\\).\n\nThus \\(N = 1000\\,(e^{k})^{t} = 1000\\,(2)^{t}\\).\n\nAfter \\(t = 2\\dfrac{1}{2} = \\dfrac{5}{2}\\) hours:\n\\(N = 1000 \\times 2^{5/2} = 1000 \\times 2^{2} \\times 2^{1/2} = 1000 \\times 4 \\times \\sqrt{2}\\).\n\nTaking \\(\\sqrt{2} = 1.414\\):\n\\(N = 1000 \\times 4 \\times 1.414 = 5656\\).\n\nHence the number of bacteria after \\(2\\dfrac{1}{2}\\) hours is 5656."
+ },
+ {
+  "id": "5da32a95-10c3-46e4-b155-606dee67500a",
+  "ref": "6.5 Exercise 6.6 Q.5",
+  "solution": "Let \\(m\\) be the mass (in gm) of the radioactive element at time \\(t\\).\n\nThe rate of disintegration is proportional to the mass present:\n\\(\\dfrac{dm}{dt} = -k\\,m\\), where \\(k > 0\\) is the decay constant.\n\nSeparating variables and integrating:\n\\(\\dfrac{dm}{m} = -k\\,dt \\implies \\log m = -kt + c\\).\n\nAt \\(t = 0\\), the original mass \\(m = 1.5\\) gm, so \\(c = \\log 1.5\\) and\n\\(\\log m - \\log 1.5 = -kt\\), i.e. \\(\\log\\left(\\dfrac{m}{1.5}\\right) = -kt\\).\n\nLet \\(t\\) be the time at which the mass reduces to \\(0.5\\) gm:\n\\(\\log\\left(\\dfrac{0.5}{1.5}\\right) = -kt \\implies \\log\\left(\\dfrac{1}{3}\\right) = -kt \\implies -\\log 3 = -kt\\).\n\nTherefore\n\\(t = \\dfrac{\\log 3}{k}\\).\n\nHence the required time during which the mass disintegrates from \\(1.5\\) gm to \\(0.5\\) gm is \\(\\dfrac{1}{k}\\log 3\\) (in the units of \\(t\\)), where \\(k\\) is the decay constant of the element."
+ },
+ {
+  "id": "44fe18d1-8e7c-445a-a4cf-6bc9f75e1ec1",
+  "ref": "6.5 Exercise 6.6 Q.6",
+  "solution": "Let \\(m\\) be the amount (in gm) of the substance present at time \\(t\\) (hours).\n\nThe rate of decay is directly proportional to the amount present:\n\\(\\dfrac{dm}{dt} = -k\\,m\\), where \\(k > 0\\).\n\nIntegrating: \\(\\log m = -kt + c\\), so \\(m = m_0\\, e^{-kt}\\), where \\(m_0\\) is the initial amount.\n\nHere \\(m_0 = 25\\) gm, so \\(m = 25\\, e^{-kt}\\).\n\nTwo hours later, \\(m = 9\\) gm (at \\(t = 2\\)):\n\\(9 = 25\\, e^{-2k} \\implies e^{-2k} = \\dfrac{9}{25} \\implies e^{-k} = \\dfrac{3}{5}\\).\n\nAfter one more hour, i.e. at \\(t = 3\\):\n\\(m = 25\\, e^{-3k} = 25\\left(e^{-k}\\right)^{3} = 25\\left(\\dfrac{3}{5}\\right)^{3} = 25 \\times \\dfrac{27}{125} = \\dfrac{27}{5} = 5.4\\).\n\nHence the amount left after one more hour (3 hours in all) is \\(5.4\\) gm."
+ },
+ {
+  "id": "834fd3c5-381f-4352-ad8d-b0d659197fc2",
+  "ref": "6.5 Exercise 6.6 Q.7",
+  "solution": "Let \\(P\\) be the population of the city at time \\(t\\) (years).\n\nThe rate of increase is proportional to the population:\n\\(\\dfrac{dP}{dt} = kP\\), where \\(k > 0\\).\n\nIntegrating: \\(\\log P = kt + c\\), so \\(P = P_0\\, e^{kt}\\), where \\(P_0\\) is the initial population.\n\nTake \\(t = 0\\) at the initial instant, so \\(P_0 = 30{,}000\\) and\n\\(P = 30{,}000\\, e^{kt}\\).\n\nIn 40 years the population becomes \\(40{,}000\\) (at \\(t = 40\\)):\n\\(40{,}000 = 30{,}000\\, e^{40k} \\implies e^{40k} = \\dfrac{4}{3} \\implies e^{k} = \\left(\\dfrac{4}{3}\\right)^{1/40}\\).\n\nHence the population at any time \\(t\\) is\n\\(P = 30{,}000\\left(\\dfrac{4}{3}\\right)^{t/40}\\).\n\nEquivalently, with \\(k = \\dfrac{1}{40}\\log\\left(\\dfrac{4}{3}\\right)\\), the population is \\(P = 30{,}000\\, e^{kt}\\)."
+ },
+ {
+  "id": "354232a0-2407-4ff9-8d33-9f063cba1f01",
+  "ref": "6.5 Exercise 6.6 Q.8",
+  "solution": "Let \\(\\theta\\) be the temperature of the body (in degrees Celsius) at time \\(t\\) (minutes). Surrounding temperature \\(\\theta_0 = 20^\\circ\\).\n\nBy Newton's law of cooling:\n\\(\\dfrac{d\\theta}{dt} = -k(\\theta - 20)\\), where \\(k > 0\\).\n\nIntegrating: \\(\\log(\\theta - 20) = -kt + c\\), so \\(\\theta - 20 = C\\, e^{-kt}\\).\n\nAt \\(t = 0\\), \\(\\theta = 100^\\circ\\): \\(100 - 20 = C \\implies C = 80\\).\nSo \\(\\theta - 20 = 80\\, e^{-kt}\\).\n\nAt \\(t = 20\\) minutes, \\(\\theta = 60^\\circ\\):\n\\(60 - 20 = 80\\, e^{-20k} \\implies 40 = 80\\, e^{-20k} \\implies e^{-20k} = \\dfrac{1}{2}\\).\n\nLet the body cool to \\(30^\\circ\\) after \\(t\\) minutes:\n\\(30 - 20 = 80\\, e^{-kt} \\implies 10 = 80\\, e^{-kt} \\implies e^{-kt} = \\dfrac{1}{8} = \\left(\\dfrac{1}{2}\\right)^{3}\\).\n\nSince \\(e^{-20k} = \\dfrac{1}{2}\\), we have \\(e^{-kt} = \\left(e^{-20k}\\right)^{3} = e^{-60k}\\), so\n\\(t = 60\\) minutes.\n\nHence the body takes 60 minutes (1 hour) to cool down to \\(30^\\circ\\) C."
+ },
+ {
+  "id": "bd0eb278-c92f-4931-a15a-bcb2cabba4e3",
+  "ref": "6.5 Exercise 6.6 Q.9",
+  "solution": "The cone is inverted (apex down) with height 9 cm and base radius 5 cm. Let \\(h\\) be the depth of water at time \\(t\\) (seconds) and \\(\\rho\\) the radius of the water surface.\n\nBy similar triangles, \\(\\dfrac{\\rho}{h} = \\dfrac{5}{9}\\), so \\(\\rho = \\dfrac{5h}{9}\\).\n\nArea of the water surface:\n\\(A = \\pi \\rho^{2} = \\pi\\left(\\dfrac{5h}{9}\\right)^{2} = \\dfrac{25\\pi h^{2}}{81}\\).\n\nGiven the water level rises at the rate \\(\\dfrac{dh}{dt} = \\dfrac{\\pi}{A}\\):\n\\(\\dfrac{dh}{dt} = \\dfrac{\\pi}{\\dfrac{25\\pi h^{2}}{81}} = \\dfrac{81}{25 h^{2}}\\).\n\nSeparating variables:\n\\(25 h^{2}\\, dh = 81\\, dt\\).\n\nIntegrating from \\(h = 0\\) to \\(h = 9\\) (empty to full), and \\(t = 0\\) to \\(t = T\\):\n\\(25 \\int_{0}^{9} h^{2}\\, dh = 81 \\int_{0}^{T} dt\\).\n\n\\(25 \\left[\\dfrac{h^{3}}{3}\\right]_{0}^{9} = 81\\,T\\).\n\n\\(25 \\times \\dfrac{9^{3}}{3} = 81\\,T \\implies 25 \\times \\dfrac{729}{3} = 81\\,T \\implies 25 \\times 243 = 81\\,T\\).\n\n\\(6075 = 81\\,T \\implies T = \\dfrac{6075}{81} = 75\\).\n\nHence the vessel will be full in 75 seconds."
+ },
+ {
+  "id": "b4814f12-d789-4c7f-991e-5db354dd4899",
+  "ref": "Misc II Q.10",
+  "solution": "Let \\(A\\) be the amount of assets (in rupees) at time \\(t\\) (years).\n\nThe rate of reduction is proportional to the square root of the assets:\n\\(\\dfrac{dA}{dt} = -k\\sqrt{A}\\), where \\(k > 0\\) (assets decreasing).\n\nSeparating variables:\n\\(\\dfrac{dA}{\\sqrt{A}} = -k\\,dt \\implies A^{-1/2}\\,dA = -k\\,dt\\).\n\nIntegrating: \\(2\\sqrt{A} = -kt + c\\), i.e. \\(\\sqrt{A} = c_1 - \\dfrac{k}{2}\\,t\\).\n\nInitial assets: Rs. 10 lakhs \\(= 10{,}00{,}000\\), so at \\(t = 0\\):\n\\(\\sqrt{10{,}00{,}000} = 1000 = c_1\\).\nThus \\(\\sqrt{A} = 1000 - \\dfrac{k}{2}\\,t\\).\n\nAfter 2 years, assets \\(= \\) Rs. 10,000, so at \\(t = 2\\), \\(\\sqrt{A} = \\sqrt{10{,}000} = 100\\):\n\\(100 = 1000 - \\dfrac{k}{2}(2) = 1000 - k \\implies k = 900\\).\n\nSo \\(\\dfrac{k}{2} = 450\\) and \\(\\sqrt{A} = 1000 - 450\\,t\\).\n\nThe person is bankrupt when \\(A = 0\\), i.e. \\(\\sqrt{A} = 0\\):\n\\(1000 - 450\\,t = 0 \\implies t = \\dfrac{1000}{450} = \\dfrac{20}{9} = 2\\dfrac{2}{9}\\).\n\nHence the person will be bankrupt in \\(2\\dfrac{2}{9}\\) years from the start."
+ },
+ {
+  "id": "c8bfc759-410d-43ab-911a-7008c78db59e",
+  "ref": "Misc II Q.8",
+  "solution": "Let \\((x, y)\\) be any point on the curve, and let \\(\\dfrac{dy}{dx}\\) be the slope of the tangent there.\n\nThe slope of the normal at \\((x, y)\\) is \\(-\\dfrac{1}{\\,dy/dx\\,} = -\\dfrac{dx}{dy}\\).\n\nThe normal passes through the point \\((2, 0)\\), so its slope also equals\n\\(\\dfrac{y - 0}{x - 2} = \\dfrac{y}{x - 2}\\).\n\nEquating the two expressions for the slope of the normal:\n\\(-\\dfrac{dx}{dy} = \\dfrac{y}{x - 2}\\),\n\nwhich rearranges to\n\\(\\dfrac{dy}{dx} = -\\dfrac{x - 2}{y}\\).\n\nSeparating variables:\n\\(y\\,dy = -(x - 2)\\,dx\\).\n\nIntegrating:\n\\(\\dfrac{y^{2}}{2} = -\\dfrac{(x - 2)^{2}}{2} + c_1\\),\n\nso \\((x - 2)^{2} + y^{2} = C\\), where \\(C = 2c_1\\).\n\nThe curve passes through \\((2, 3)\\):\n\\((2 - 2)^{2} + 3^{2} = C \\implies C = 9\\).\n\nHence the equation of the curve is\n\\((x - 2)^{2} + y^{2} = 9\\),\n\na circle of radius 3 centred at \\((2, 0)\\)."
+ },
+ {
+  "id": "38282b26-b111-4740-8ddc-d969c080e3e8",
+  "ref": "Misc II Q.9",
+  "solution": "Let \\(r\\) be the radius of the balloon at time \\(t\\) (seconds), so its volume is\n\\(V = \\dfrac{4}{3}\\pi r^{3}\\).\n\nThe volume changes at a constant rate:\n\\(\\dfrac{dV}{dt} = c\\) (constant).\n\nIntegrating: \\(V = ct + c_1\\), i.e.\n\\(\\dfrac{4}{3}\\pi r^{3} = ct + c_1\\).\n\nAt \\(t = 0\\), \\(r = 3\\):\n\\(\\dfrac{4}{3}\\pi (3)^{3} = c_1 \\implies c_1 = \\dfrac{4}{3}\\pi (27) = 36\\pi\\).\n\nAt \\(t = 3\\), \\(r = 6\\):\n\\(\\dfrac{4}{3}\\pi (6)^{3} = c(3) + 36\\pi \\implies \\dfrac{4}{3}\\pi (216) = 3c + 36\\pi \\implies 288\\pi = 3c + 36\\pi\\).\n\nSo \\(3c = 252\\pi \\implies c = 84\\pi\\).\n\nTherefore \\(\\dfrac{4}{3}\\pi r^{3} = 84\\pi\\, t + 36\\pi\\).\n\nDividing throughout by \\(\\dfrac{4}{3}\\pi\\):\n\\(r^{3} = \\dfrac{84\\pi\\, t + 36\\pi}{\\tfrac{4}{3}\\pi} = 63t + 27\\).\n\nHence the radius after \\(t\\) seconds is\n\\(r = (63t + 27)^{1/3}\\), equivalently \\(r = \\sqrt[3]{63t + 27}\\)."
+ }
+]
