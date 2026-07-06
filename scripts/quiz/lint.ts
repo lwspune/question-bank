@@ -13,7 +13,7 @@ import "dotenv/config";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { flagStem } from "../../src/lib/quiz/stemLint";
+import { flagStem, flagOptionTell } from "../../src/lib/quiz/stemLint";
 import { isBundleFormula } from "../../src/lib/quiz/atoms";
 
 function loadEnvLocal() {
@@ -36,13 +36,13 @@ async function main() {
   // Paginate — PostgREST caps a single response at 1000 rows even with an
   // explicit .limit(), so a bare select silently misses atoms past 1000 (the
   // ready pool is ~1800). Page through in 1000-row windows.
-  type AtomRow = { atom_key: string; subject_route: string; chapter_slug: string; source_kind: string; stem: string; correct: string | null };
+  type AtomRow = { atom_key: string; subject_route: string; chapter_slug: string; source_kind: string; stem: string; correct: string | null; options: Record<string, string> | null; answer: string | null };
   const rows: AtomRow[] = [];
   const PAGE = 1000;
   for (let from = 0; ; from += PAGE) {
     let query = db
       .from("quiz_atoms")
-      .select("atom_key, subject_route, chapter_slug, source_kind, stem, correct")
+      .select("atom_key, subject_route, chapter_slug, source_kind, stem, correct, options, answer")
       .in("status", ["auto", "verified"]);
     if (route) query = query.eq("subject_route", route);
     if (chapter) query = query.eq("chapter_slug", chapter);
@@ -55,6 +55,8 @@ async function main() {
   const flagged = rows
     .map((r) => {
       const reasons = flagStem(r.stem as string);
+      // Defect B — the correct option carries a guessable editorial tell.
+      reasons.push(...flagOptionTell(r.options, r.answer));
       // A formula atom whose CORRECT answer is a multi-formula bundle is a
       // lopsided/ill-posed recall MCQ (long correct option vs single distractors).
       if (r.source_kind === "formula" && isBundleFormula(String(r.correct ?? ""))) {
