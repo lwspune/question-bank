@@ -47,7 +47,6 @@ export default async function AppHeader() {
           guidesHref={examContext.guidesHref}
           notesHref={examContext.notesHref}
           boardHref={examContext.boardHref}
-          showBoard={examContext.showBoard}
           showPapers={!!member}
         />
 

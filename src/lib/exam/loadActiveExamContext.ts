@@ -9,7 +9,6 @@ import {
   resolveGuidesHref,
   resolveNotesHref,
   resolveBoardHref,
-  isBoardExam,
   type ExamSlug,
 } from "./examContext";
 
@@ -25,8 +24,6 @@ export type ActiveExamContext = {
   guidesHref: string;
   notesHref: string;
   boardHref: string;
-  /** True when the active exam is a school board — surfaces the "Board" tab. */
-  showBoard: boolean;
 };
 
 /**
@@ -68,7 +65,6 @@ export async function loadActiveExamContext(): Promise<ActiveExamContext> {
     guidesHref: resolveGuidesHref(slug),
     notesHref: resolveNotesHref(slug),
     boardHref: resolveBoardHref(slug),
-    showBoard: isBoardExam(slug),
   };
 }
 

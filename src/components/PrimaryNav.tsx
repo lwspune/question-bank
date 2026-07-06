@@ -10,8 +10,6 @@ type Props = {
   guidesHref: string;
   notesHref: string;
   boardHref: string;
-  /** The active exam is a school board — surfaces the "Board" reader tab. */
-  showBoard?: boolean;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
    *  or students would dead-end them. */
@@ -30,7 +28,6 @@ export default function PrimaryNav({
   guidesHref,
   notesHref,
   boardHref,
-  showBoard = false,
   showPapers = false,
 }: Props) {
   const pathname = usePathname() ?? "/";
@@ -40,10 +37,9 @@ export default function PrimaryNav({
     { id: "bank", label: "Bank", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
-    // Board reader — only for school-board exams (textbook, book-faithful view).
-    ...(showBoard
-      ? [{ id: "board" as const, label: "Board", href: boardHref, Icon: Library }]
-      : []),
+    // Board reader — always visible (like Notes); boardHref resolves per-exam:
+    // /board (index) normally, /board/<slug> when a board exam is active.
+    { id: "board", label: "Board", href: boardHref, Icon: Library },
     ...(showPapers
       ? [
           {
