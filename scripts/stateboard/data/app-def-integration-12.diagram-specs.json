@@ -1,74 +1,2056 @@
 [
   {
     "ref": "5.1 Exercise 5.1 Q.1 (i)",
-    "xr": [-1, 6], "yr": [-1, 11],
+    "xr": [
+      -1,
+      6
+    ],
+    "yr": [
+      -1,
+      11
+    ],
     "caption": "Area under y = 2x from x = 0 to x = 5",
-    "shade": [{"dom": [0, 5], "hi": "2*x", "lo": "0"}],
-    "curves": [{"expr": "2*x", "dom": [0, 5], "label": "y = 2x", "color": "blue"}],
-    "lines": [{"A": 1, "B": 0, "C": -5, "label": "x = 5", "color": "green", "dashed": true}],
-    "points": [{"x": 5, "y": 10, "label": "(5, 10)", "dx": 6, "dy": -20}]
+    "shade": [
+      {
+        "dom": [
+          0,
+          5
+        ],
+        "hi": "2*x",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "2*x",
+        "dom": [
+          0,
+          5
+        ],
+        "label": "y = 2x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -5,
+        "label": "x = 5",
+        "color": "green",
+        "dashed": true
+      }
+    ],
+    "points": [
+      {
+        "x": 5,
+        "y": 10,
+        "label": "(5, 10)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
   },
   {
     "ref": "5.1 Exercise 5.1 Q.2 (ii)",
-    "xr": [-3, 3], "yr": [-1, 5],
+    "xr": [
+      -3,
+      3
+    ],
+    "yr": [
+      -1,
+      5
+    ],
     "caption": "Area between y = 4 - x^2 and the X-axis",
-    "shade": [{"dom": [-2, 2], "hi": "4 - x**2", "lo": "0"}],
-    "curves": [{"expr": "4 - x**2", "dom": [-2.6, 2.6], "label": "y = 4 - x^2", "color": "blue"}],
-    "points": [{"x": -2, "y": 0, "label": "(-2, 0)", "dx": -30, "dy": 4}, {"x": 2, "y": 0, "label": "(2, 0)", "dx": 6, "dy": 4}]
+    "shade": [
+      {
+        "dom": [
+          -2,
+          2
+        ],
+        "hi": "4 - x**2",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "4 - x**2",
+        "dom": [
+          -2.6,
+          2.6
+        ],
+        "label": "y = 4 - x^2",
+        "color": "blue"
+      }
+    ],
+    "points": [
+      {
+        "x": -2,
+        "y": 0,
+        "label": "(-2, 0)",
+        "dx": -30,
+        "dy": 4
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "label": "(2, 0)",
+        "dx": 6,
+        "dy": 4
+      }
+    ]
   },
   {
     "ref": "5.1 Exercise 5.1 Q.3 (ii)",
-    "xr": [-1, 6], "yr": [-3, 6],
-    "caption": "Region between y^2 = 4x and the line y = x",
-    "shade": [{"dom": [0, 4], "hi": "2*np.sqrt(x)", "lo": "x"}],
-    "curves": [
-      {"expr": "2*np.sqrt(x)", "dom": [0, 5.5], "label": "y^2 = 4x", "color": "blue"},
-      {"expr": "-2*np.sqrt(x)", "dom": [0, 5.5], "label": "", "color": "blue"}
+    "xr": [
+      -1,
+      6
     ],
-    "lines": [{"A": 1, "B": -1, "C": 0, "label": "y = x", "color": "red"}],
-    "points": [{"x": 4, "y": 4, "label": "(4, 4)", "dx": 6, "dy": -20}]
+    "yr": [
+      -3,
+      6
+    ],
+    "caption": "Region between y^2 = 4x and the line y = x",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "2*np.sqrt(x)",
+        "lo": "x"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "2*np.sqrt(x)",
+        "dom": [
+          0,
+          5.5
+        ],
+        "label": "y^2 = 4x",
+        "color": "blue"
+      },
+      {
+        "expr": "-2*np.sqrt(x)",
+        "dom": [
+          0,
+          5.5
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": -1,
+        "C": 0,
+        "label": "y = x",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 4,
+        "y": 4,
+        "label": "(4, 4)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
   },
   {
     "ref": "Misc II Q.2",
-    "xr": [-4, 4], "yr": [-4, 4],
+    "xr": [
+      -4,
+      4
+    ],
+    "yr": [
+      -4,
+      4
+    ],
     "caption": "Circle x^2 + y^2 = 9, area = 9π",
-    "shade": [{"dom": [-3, 3], "hi": "np.sqrt(9 - x**2)", "lo": "-np.sqrt(9 - x**2)"}],
-    "conics": [{"cx": 0, "cy": 0, "r": 3, "label": "x^2+y^2=9", "color": "blue"}]
+    "shade": [
+      {
+        "dom": [
+          -3,
+          3
+        ],
+        "hi": "np.sqrt(9 - x**2)",
+        "lo": "-np.sqrt(9 - x**2)"
+      }
+    ],
+    "conics": [
+      {
+        "cx": 0,
+        "cy": 0,
+        "r": 3,
+        "label": "x^2+y^2=9",
+        "color": "blue"
+      }
+    ]
   },
   {
     "ref": "Misc II Q.3",
-    "xr": [-6, 6], "yr": [-5, 5],
+    "xr": [
+      -6,
+      6
+    ],
+    "yr": [
+      -5,
+      5
+    ],
     "caption": "Ellipse x^2/25 + y^2/16 = 1, area = 20π",
-    "shade": [{"dom": [-5, 5], "hi": "4*np.sqrt(1 - x**2/25)", "lo": "-4*np.sqrt(1 - x**2/25)"}],
-    "conics": [{"cx": 0, "cy": 0, "a": 5, "b": 4, "label": "", "color": "blue"}]
+    "shade": [
+      {
+        "dom": [
+          -5,
+          5
+        ],
+        "hi": "4*np.sqrt(1 - x**2/25)",
+        "lo": "-4*np.sqrt(1 - x**2/25)"
+      }
+    ],
+    "conics": [
+      {
+        "cx": 0,
+        "cy": 0,
+        "a": 5,
+        "b": 4,
+        "label": "",
+        "color": "blue"
+      }
+    ]
   },
   {
     "ref": "5.1 Exercise 5.1 Q.1 (iv)",
-    "xr": [-0.3, 1.9], "yr": [-0.3, 1.3],
+    "xr": [
+      -0.3,
+      1.9
+    ],
+    "yr": [
+      -0.3,
+      1.3
+    ],
     "caption": "Area under y = sin x from x = 0 to x = π/2",
-    "shade": [{"dom": [0, 1.5708], "hi": "np.sin(x)", "lo": "0"}],
-    "curves": [{"expr": "np.sin(x)", "dom": [0, 1.5708], "label": "y = sin x", "color": "blue"}],
-    "lines": [{"A": 1, "B": 0, "C": -1.5708, "label": "x = π/2", "color": "green", "dashed": true}]
+    "shade": [
+      {
+        "dom": [
+          0,
+          1.5708
+        ],
+        "hi": "np.sin(x)",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sin(x)",
+        "dom": [
+          0,
+          1.5708
+        ],
+        "label": "y = sin x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -1.5708,
+        "label": "x = π/2",
+        "color": "green",
+        "dashed": true
+      }
+    ]
   },
   {
     "ref": "Misc II Q.4 (i)",
-    "xr": [-1, 6], "yr": [-1, 6],
-    "caption": "Region between the parabolas y^2 = 4x and x^2 = 4y",
-    "shade": [{"dom": [0, 4], "hi": "2*np.sqrt(x)", "lo": "x**2/4"}],
-    "curves": [
-      {"expr": "2*np.sqrt(x)", "dom": [0, 5], "label": "y^2 = 4x", "color": "blue"},
-      {"expr": "x**2/4", "dom": [0, 4.7], "label": "x^2 = 4y", "color": "red"}
+    "xr": [
+      -1,
+      6
     ],
-    "points": [{"x": 4, "y": 4, "label": "(4, 4)", "dx": 6, "dy": -20}]
+    "yr": [
+      -1,
+      6
+    ],
+    "caption": "Region between the parabolas y^2 = 4x and x^2 = 4y",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "2*np.sqrt(x)",
+        "lo": "x**2/4"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "2*np.sqrt(x)",
+        "dom": [
+          0,
+          5
+        ],
+        "label": "y^2 = 4x",
+        "color": "blue"
+      },
+      {
+        "expr": "x**2/4",
+        "dom": [
+          0,
+          4.7
+        ],
+        "label": "x^2 = 4y",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 4,
+        "y": 4,
+        "label": "(4, 4)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
   },
   {
     "ref": "Misc II Q.1 (i)",
-    "xr": [-1, 6], "yr": [-1, 3],
+    "xr": [
+      -1,
+      6
+    ],
+    "yr": [
+      -1,
+      3
+    ],
     "caption": "Region 0 ≤ x ≤ 5, 0 ≤ y ≤ 2",
-    "shade": [{"dom": [0, 5], "hi": "2", "lo": "0"}],
+    "shade": [
+      {
+        "dom": [
+          0,
+          5
+        ],
+        "hi": "2",
+        "lo": "0"
+      }
+    ],
     "lines": [
-      {"A": 1, "B": 0, "C": -5, "label": "x = 5", "color": "green", "dashed": true},
-      {"A": 0, "B": 1, "C": -2, "label": "y = 2", "color": "red", "dashed": true}
+      {
+        "A": 1,
+        "B": 0,
+        "C": -5,
+        "label": "x = 5",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": -2,
+        "label": "y = 2",
+        "color": "red",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.1",
+    "xr": [
+      -0.5,
+      3.5
+    ],
+    "yr": [
+      -1.5,
+      10.5
+    ],
+    "caption": "Area under y=x^2, x=0 to 3",
+    "shade": [
+      {
+        "dom": [
+          0,
+          3
+        ],
+        "hi": "x**2",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x**2",
+        "dom": [
+          0,
+          3
+        ],
+        "label": "y = x^2",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -3,
+        "label": "x = 3",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.2",
+    "xr": [
+      -1.5,
+      10.5
+    ],
+    "yr": [
+      -1.5,
+      10.5
+    ],
+    "caption": "Between y^2=9x and x^2=9y",
+    "shade": [
+      {
+        "dom": [
+          0,
+          9
+        ],
+        "hi": "3*np.sqrt(x)",
+        "lo": "x**2/9"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "3*np.sqrt(x)",
+        "dom": [
+          0,
+          9
+        ],
+        "label": "y^2 = 9x",
+        "color": "blue"
+      },
+      {
+        "expr": "x**2/9",
+        "dom": [
+          0,
+          9
+        ],
+        "label": "x^2 = 9y",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 0,
+        "y": 0,
+        "label": "(0, 0)",
+        "dx": -28,
+        "dy": 6
+      },
+      {
+        "x": 9,
+        "y": 9,
+        "label": "(9, 9)",
+        "dx": 6,
+        "dy": -6
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.3",
+    "xr": [
+      -0.5,
+      4.5
+    ],
+    "yr": [
+      -18,
+      2.4
+    ],
+    "caption": "y=-x^2, X-axis, x=1 to 4",
+    "shade": [
+      {
+        "dom": [
+          1,
+          4
+        ],
+        "hi": "0",
+        "lo": "-x**2"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "-x**2",
+        "dom": [
+          1,
+          4
+        ],
+        "label": "y = -x^2",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -1,
+        "label": "x = 1",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.4",
+    "xr": [
+      -1.75,
+      4.75
+    ],
+    "yr": [
+      -1.75,
+      4.75
+    ],
+    "caption": "y=x, X-axis, x=-1 to 4",
+    "shade": [
+      {
+        "dom": [
+          -1,
+          0
+        ],
+        "hi": "0",
+        "lo": "x"
+      },
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "x",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x",
+        "dom": [
+          -1,
+          4
+        ],
+        "label": "y = x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "label": "x = -1",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.5",
+    "xr": [
+      -0.5,
+      6.8
+    ],
+    "yr": [
+      -1.5,
+      1.5
+    ],
+    "caption": "y=sin x, X-axis, x=0 to 2pi",
+    "shade": [
+      {
+        "dom": [
+          0,
+          3.1416
+        ],
+        "hi": "np.sin(x)",
+        "lo": "0"
+      },
+      {
+        "dom": [
+          3.1416,
+          6.2832
+        ],
+        "hi": "0",
+        "lo": "np.sin(x)"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sin(x)",
+        "dom": [
+          0,
+          6.2832
+        ],
+        "label": "y = sin x",
+        "color": "blue"
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.6",
+    "xr": [
+      1,
+      5
+    ],
+    "yr": [
+      -1,
+      4
+    ],
+    "caption": "Line 2y+x=8, X-axis, x=2 to 4",
+    "shade": [
+      {
+        "dom": [
+          2,
+          4
+        ],
+        "hi": "(8 - x)/2",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "(8 - x)/2",
+        "dom": [
+          2,
+          4
+        ],
+        "label": "2y + x = 8",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -2,
+        "label": "x = 2",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.8",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -10,
+      10
+    ],
+    "caption": "y^2=16x and latus rectum x=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "4*np.sqrt(x)",
+        "lo": "-4*np.sqrt(x)"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "4*np.sqrt(x)",
+        "dom": [
+          0,
+          4
+        ],
+        "label": "y^2 = 16x",
+        "color": "blue"
+      },
+      {
+        "expr": "-4*np.sqrt(x)",
+        "dom": [
+          0,
+          4
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.9",
+    "xr": [
+      -1,
+      9
+    ],
+    "yr": [
+      -0.5,
+      5
+    ],
+    "caption": "x^2=16y, y=1, y=4, Y-axis",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "4",
+        "lo": "1"
+      },
+      {
+        "dom": [
+          4,
+          8
+        ],
+        "hi": "4",
+        "lo": "x**2/16"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x**2/16",
+        "dom": [
+          0,
+          8
+        ],
+        "label": "x^2 = 16y",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 0,
+        "B": 1,
+        "C": -1,
+        "label": "y = 1",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": -4,
+        "label": "y = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.10",
+    "xr": [
+      -6,
+      6
+    ],
+    "yr": [
+      -4,
+      4
+    ],
+    "caption": "Area of ellipse x^2/25 + y^2/9 = 1",
+    "shade": [
+      {
+        "dom": [
+          -5,
+          5
+        ],
+        "hi": "3*np.sqrt(1 - x**2/25)",
+        "lo": "-3*np.sqrt(1 - x**2/25)"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "3*np.sqrt(1 - x**2/25)",
+        "dom": [
+          -5,
+          5
+        ],
+        "label": "x^2/25 + y^2/9 = 1",
+        "color": "blue"
+      },
+      {
+        "expr": "-3*np.sqrt(1 - x**2/25)",
+        "dom": [
+          -5,
+          5
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.11",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -1,
+      5
+    ],
+    "caption": "Between y^2=4ax and x^2=4ay (a=1)",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "2*np.sqrt(x)",
+        "lo": "x**2/4"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "2*np.sqrt(x)",
+        "dom": [
+          0,
+          4
+        ],
+        "label": "y^2 = 4x",
+        "color": "blue"
+      },
+      {
+        "expr": "x**2/4",
+        "dom": [
+          0,
+          4
+        ],
+        "label": "x^2 = 4y",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 0,
+        "y": 0,
+        "label": "(0, 0)",
+        "dx": -28,
+        "dy": 6
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "label": "(4, 4)",
+        "dx": 6,
+        "dy": -6
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.12",
+    "xr": [
+      -2.5,
+      2.5
+    ],
+    "yr": [
+      -1,
+      5
+    ],
+    "caption": "Between y=x^2 and y=4",
+    "shade": [
+      {
+        "dom": [
+          -2,
+          2
+        ],
+        "hi": "4",
+        "lo": "x**2"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x**2",
+        "dom": [
+          -2.2,
+          2.2
+        ],
+        "label": "y = x^2",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 0,
+        "B": 1,
+        "C": -4,
+        "label": "y = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ],
+    "points": [
+      {
+        "x": -2,
+        "y": 4,
+        "label": "(-2, 4)",
+        "dx": -46,
+        "dy": -6
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "label": "(2, 4)",
+        "dx": 6,
+        "dy": -6
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Solved Ex.13",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -1,
+      5
+    ],
+    "caption": "Sector of x^2+y^2=16 with y=x, Q1",
+    "shade": [
+      {
+        "dom": [
+          0,
+          2.8284
+        ],
+        "hi": "x",
+        "lo": "0"
+      },
+      {
+        "dom": [
+          2.8284,
+          4
+        ],
+        "hi": "np.sqrt(16 - x**2)",
+        "lo": "0"
+      }
+    ],
+    "curves": [],
+    "conics": [
+      {
+        "cx": 0,
+        "cy": 0,
+        "r": 4,
+        "label": "x^2+y^2=16",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": -1,
+        "C": 0,
+        "label": "y = x",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 2.8284,
+        "y": 2.8284,
+        "label": "(2√2, 2√2)",
+        "dx": 6,
+        "dy": -6
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (ii)",
+    "xr": [
+      -1,
+      9
+    ],
+    "yr": [
+      -1,
+      5
+    ],
+    "caption": "x=2y, Y-axis, y=0 to y=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          8
+        ],
+        "hi": "4",
+        "lo": "x/2"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x/2",
+        "dom": [
+          0,
+          8
+        ],
+        "label": "x = 2y",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 0,
+        "B": 1,
+        "C": -4,
+        "label": "y = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ],
+    "points": [
+      {
+        "x": 8,
+        "y": 4,
+        "label": "(8, 4)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (iii)",
+    "xr": [
+      -1,
+      6
+    ],
+    "yr": [
+      -1,
+      5
+    ],
+    "caption": "Rectangle x=0,x=5,y=0,y=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          5
+        ],
+        "hi": "4",
+        "lo": "0"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -5,
+        "label": "x = 5",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": -4,
+        "label": "y = 4",
+        "color": "blue",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (v)",
+    "xr": [
+      -0.5,
+      5
+    ],
+    "yr": [
+      -0.5,
+      3
+    ],
+    "caption": "xy=2, X-axis, x=1 to x=4",
+    "shade": [
+      {
+        "dom": [
+          1,
+          4
+        ],
+        "hi": "2/x",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "2/x",
+        "dom": [
+          0.7,
+          4.5
+        ],
+        "label": "y = 2/x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -1,
+        "label": "x = 1",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (vi)",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -3,
+      3
+    ],
+    "caption": "y^2=x, x=0 to x=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "np.sqrt(x)",
+        "lo": "-np.sqrt(x)"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "y^2 = x",
+        "color": "blue"
+      },
+      {
+        "expr": "-np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (vii)",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -9,
+      9
+    ],
+    "caption": "y^2=16x, x=0 to x=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "4*np.sqrt(x)",
+        "lo": "-4*np.sqrt(x)"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "4*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "y^2 = 16x",
+        "color": "blue"
+      },
+      {
+        "expr": "-4*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.2 (i)",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -9,
+      9
+    ],
+    "caption": "y^2=16x and latus rectum x=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "4*np.sqrt(x)",
+        "lo": "-4*np.sqrt(x)"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "4*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "y^2 = 16x",
+        "color": "blue"
+      },
+      {
+        "expr": "-4*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -4,
+        "label": "x = 4",
+        "color": "green",
+        "dashed": true
+      }
+    ],
+    "points": [
+      {
+        "x": 4,
+        "y": 8,
+        "label": "(4, 8)",
+        "dx": 6,
+        "dy": -20
+      },
+      {
+        "x": 4,
+        "y": -8,
+        "label": "(4, -8)",
+        "dx": 6,
+        "dy": 14
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.3 (i)",
+    "xr": [
+      -0.3,
+      1.2
+    ],
+    "yr": [
+      -0.5,
+      1.5
+    ],
+    "caption": "Between y^2=2x and y=2x",
+    "shade": [
+      {
+        "dom": [
+          0,
+          0.5
+        ],
+        "hi": "np.sqrt(2*x)",
+        "lo": "2*x"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sqrt(2*x)",
+        "dom": [
+          0,
+          1.1
+        ],
+        "label": "y^2 = 2x",
+        "color": "blue"
+      },
+      {
+        "expr": "-np.sqrt(2*x)",
+        "dom": [
+          0,
+          1.1
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 2,
+        "B": -1,
+        "C": 0,
+        "label": "y = 2x",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 0.5,
+        "y": 1,
+        "label": "(1/2, 1)",
+        "dx": 6,
+        "dy": -18
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.3 (iii)",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -2,
+      18
+    ],
+    "caption": "Between y=x^2 and y=4x",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "4*x",
+        "lo": "x**2"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x**2",
+        "dom": [
+          -0.5,
+          4.5
+        ],
+        "label": "y = x^2",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 4,
+        "B": -1,
+        "C": 0,
+        "label": "y = 4x",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 4,
+        "y": 16,
+        "label": "(4, 16)",
+        "dx": 6,
+        "dy": -18
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.3 (iv)",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -3,
+      5
+    ],
+    "caption": "Between y^2=4x and y=x (a=1)",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "2*np.sqrt(x)",
+        "lo": "x"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "2*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "y^2 = 4x",
+        "color": "blue"
+      },
+      {
+        "expr": "-2*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": -1,
+        "C": 0,
+        "label": "y = x",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 4,
+        "y": 4,
+        "label": "(4, 4)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.3 (v)",
+    "xr": [
+      -1,
+      2
+    ],
+    "yr": [
+      -0.5,
+      6
+    ],
+    "caption": "Between y=x^2+3 and y=x+3",
+    "shade": [
+      {
+        "dom": [
+          0,
+          1
+        ],
+        "hi": "x + 3",
+        "lo": "x**2 + 3"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "x**2 + 3",
+        "dom": [
+          -1,
+          1.6
+        ],
+        "label": "y = x^2+3",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": -1,
+        "C": 3,
+        "label": "y = x+3",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 0,
+        "y": 3,
+        "label": "(0, 3)",
+        "dx": -38,
+        "dy": -4
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "label": "(1, 4)",
+        "dx": 6,
+        "dy": -18
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.1 (ii)",
+    "xr": [
+      -0.5,
+      3.7
+    ],
+    "yr": [
+      -0.3,
+      1.3
+    ],
+    "caption": "y = sin x, X-axis, x=0 to x=pi",
+    "shade": [
+      {
+        "dom": [
+          0,
+          3.1416
+        ],
+        "hi": "np.sin(x)",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sin(x)",
+        "dom": [
+          0,
+          3.5
+        ],
+        "label": "y = sin x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -3.1416,
+        "label": "x = pi",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.1 (iii)",
+    "xr": [
+      -0.3,
+      1.4
+    ],
+    "yr": [
+      -0.2,
+      1.1
+    ],
+    "caption": "y = sin x, X-axis, x=0 to x=pi/3",
+    "shade": [
+      {
+        "dom": [
+          0,
+          1.0472
+        ],
+        "hi": "np.sin(x)",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sin(x)",
+        "dom": [
+          0,
+          1.3
+        ],
+        "label": "y = sin x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -1.0472,
+        "label": "x = pi/3",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.4 (ii)",
+    "xr": [
+      -1,
+      5
+    ],
+    "yr": [
+      -1,
+      4
+    ],
+    "caption": "Between 4y^2=9x and 3x^2=16y",
+    "shade": [
+      {
+        "dom": [
+          0,
+          4
+        ],
+        "hi": "1.5*np.sqrt(x)",
+        "lo": "3*x**2/16"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "1.5*np.sqrt(x)",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "4y^2=9x",
+        "color": "blue"
+      },
+      {
+        "expr": "3*x**2/16",
+        "dom": [
+          0,
+          4.5
+        ],
+        "label": "3x^2=16y",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 4,
+        "y": 3,
+        "label": "(4, 3)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.4 (iii)",
+    "xr": [
+      -0.3,
+      1.4
+    ],
+    "yr": [
+      -0.3,
+      1.4
+    ],
+    "caption": "Between y^2=x and x^2=y",
+    "shade": [
+      {
+        "dom": [
+          0,
+          1
+        ],
+        "hi": "np.sqrt(x)",
+        "lo": "x**2"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sqrt(x)",
+        "dom": [
+          0,
+          1.3
+        ],
+        "label": "y^2=x",
+        "color": "blue"
+      },
+      {
+        "expr": "x**2",
+        "dom": [
+          0,
+          1.2
+        ],
+        "label": "x^2=y",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 1,
+        "y": 1,
+        "label": "(1, 1)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.5",
+    "xr": [
+      -2.5,
+      2.5
+    ],
+    "yr": [
+      -0.5,
+      2.5
+    ],
+    "caption": "Sector: x^2+y^2=4, X-axis, y=x/sqrt3",
+    "shade": [
+      {
+        "dom": [
+          0,
+          1.7320508
+        ],
+        "hi": "x/1.7320508",
+        "lo": "0"
+      },
+      {
+        "dom": [
+          1.7320508,
+          2
+        ],
+        "hi": "np.sqrt(4 - x**2)",
+        "lo": "0"
+      }
+    ],
+    "conics": [
+      {
+        "cx": 0,
+        "cy": 0,
+        "r": 2,
+        "label": "x^2+y^2=4",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 0.57735027,
+        "B": -1,
+        "C": 0,
+        "label": "y = x/sqrt3",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 1.7320508,
+        "y": 1,
+        "label": "(sqrt3, 1)",
+        "dx": 6,
+        "dy": -18
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.6",
+    "xr": [
+      -0.3,
+      1.4
+    ],
+    "yr": [
+      -0.3,
+      1.4
+    ],
+    "caption": "Between y^2=x and y=x, Q1",
+    "shade": [
+      {
+        "dom": [
+          0,
+          1
+        ],
+        "hi": "np.sqrt(x)",
+        "lo": "x"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "np.sqrt(x)",
+        "dom": [
+          0,
+          1.3
+        ],
+        "label": "y^2=x",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": -1,
+        "C": 0,
+        "label": "y = x",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 1,
+        "y": 1,
+        "label": "(1, 1)",
+        "dx": 6,
+        "dy": -20
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.7",
+    "xr": [
+      -0.3,
+      1.4
+    ],
+    "yr": [
+      -0.3,
+      1.4
+    ],
+    "caption": "Between x^2+y^2=1 and x+y=1, Q1",
+    "shade": [
+      {
+        "dom": [
+          0,
+          1
+        ],
+        "hi": "np.sqrt(1 - x**2)",
+        "lo": "1 - x"
+      }
+    ],
+    "conics": [
+      {
+        "cx": 0,
+        "cy": 0,
+        "r": 1,
+        "label": "x^2+y^2=1",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 1,
+        "C": -1,
+        "label": "x + y = 1",
+        "color": "red"
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.8",
+    "xr": [
+      -2,
+      9
+    ],
+    "yr": [
+      -2,
+      8
+    ],
+    "caption": "Between (y-1)^2=4(x+1) and y=x-1",
+    "shade": [
+      {
+        "dom": [
+          -1,
+          0
+        ],
+        "hi": "1 + 2*np.sqrt(x+1)",
+        "lo": "1 - 2*np.sqrt(x+1)"
+      },
+      {
+        "dom": [
+          0,
+          8
+        ],
+        "hi": "1 + 2*np.sqrt(x+1)",
+        "lo": "x - 1"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "1 + 2*np.sqrt(x+1)",
+        "dom": [
+          -1,
+          8
+        ],
+        "label": "(y-1)^2=4(x+1)",
+        "color": "blue"
+      },
+      {
+        "expr": "1 - 2*np.sqrt(x+1)",
+        "dom": [
+          -1,
+          8
+        ],
+        "label": "",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": -1,
+        "C": -1,
+        "label": "y = x - 1",
+        "color": "red"
+      }
+    ],
+    "points": [
+      {
+        "x": 0,
+        "y": -1,
+        "label": "(0, -1)",
+        "dx": 6,
+        "dy": 12
+      },
+      {
+        "x": 8,
+        "y": 7,
+        "label": "(8, 7)",
+        "dx": 6,
+        "dy": -18
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.9",
+    "xr": [
+      0,
+      6
+    ],
+    "yr": [
+      -1,
+      18
+    ],
+    "caption": "2y=5x+7, X-axis, x=2, x=5",
+    "shade": [
+      {
+        "dom": [
+          2,
+          5
+        ],
+        "hi": "(5*x + 7)/2",
+        "lo": "0"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "(5*x + 7)/2",
+        "dom": [
+          0,
+          5.5
+        ],
+        "label": "2y=5x+7",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 1,
+        "B": 0,
+        "C": -2,
+        "label": "x = 2",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": -5,
+        "label": "x = 5",
+        "color": "green",
+        "dashed": true
+      }
+    ]
+  },
+  {
+    "ref": "Misc II Q.10",
+    "xr": [
+      -0.3,
+      1.3
+    ],
+    "yr": [
+      -0.5,
+      4.7
+    ],
+    "caption": "y=4x^2, Y-axis, y=1, y=4",
+    "shade": [
+      {
+        "dom": [
+          0,
+          0.5
+        ],
+        "hi": "4",
+        "lo": "1"
+      },
+      {
+        "dom": [
+          0.5,
+          1
+        ],
+        "hi": "4",
+        "lo": "4*x**2"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "4*x**2",
+        "dom": [
+          0,
+          1.05
+        ],
+        "label": "y = 4x^2",
+        "color": "blue"
+      }
+    ],
+    "lines": [
+      {
+        "A": 0,
+        "B": 1,
+        "C": -1,
+        "label": "y = 1",
+        "color": "green",
+        "dashed": true
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": -4,
+        "label": "y = 4",
+        "color": "green",
+        "dashed": true
+      }
     ]
   }
 ]
