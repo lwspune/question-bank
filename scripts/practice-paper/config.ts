@@ -528,6 +528,88 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "grammar", label: "Grammar" },
     bankAdd: true,
   },
+
+  // LWS "APJ GAT Mock 7" — 150-q NDA GAT (General Ability Test) MOCK spanning SEVEN
+  // subjects: English (Q1–50), Geography/geomorphology (Q51–75), Current Affairs
+  // (Q76–80), History/Vedic Civilisation (Q81–100), Physics/Light & Optics
+  // (Q101–123), Chemistry (Q124–146: mole concept + organic/IUPAC + fullerenes),
+  // Biology (Q147–150: genetics/DNA/evolution). Born-digital .docx, NO printed key
+  // (all 150 answers DERIVED). Multi-subject mode (`subjects` + per-record
+  // `subject`+`chapter`). Excel-ONLY (bankAdd:false) at the user's request: emit the
+  // OMR tagged sheet only — no bank commit, no /dashboard/papers paper. RC Q41–45
+  // share one passage (context + setLabel "RC1").
+  "gat-mock-7": {
+    slug: "gat-mock-7",
+    title: "NDA GAT — APJ Mock 7",
+    recordsFile: "gat-mock-7.records.json",
+    outName: "Tags_NDA_APJ_GAT_Mock_7",
+    sourceFile: "NDA_GAT_Practice__APJ_GAT_Mock_7.docx",
+    // Chapters/subtopics are CANONICAL DB names for the NEW (committed) rows; the
+    // dup-only ad-hoc names are kept alongside so validateRecords passes for the
+    // 77 dup rows (which are never committed — createPaper:false commits new only).
+    subjects: {
+      English: {
+        Vocabulary: ["Antonyms", "Synonyms", "Homonyms", "Word Definition", "Confusable Word Pairs"],
+        Grammar: [
+          "Prepositions", "Discourse Markers", "Preposition Usage",
+          "Articles, Determiners and Quantifiers", "Discourse Markers and Connectors",
+        ],
+        "Spotting Errors": [
+          "Error Detection", "No Error (Correct Sentence)", "Mixed Error Detection",
+          "Tense and Verb Form", "Subject-Verb Agreement", "Word Choice, Prepositions and Punctuation",
+        ],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+      },
+      Geography: {
+        "Earth's Structure, Landforms and Geological Time": [
+          "Fluvial Landforms and River Erosion", "Glacial Landforms",
+          "Arid and Desert Landforms", "Coastal Landforms", "Karst and Cave Landforms",
+          "Structural Landforms — Folds and Faults", "Igneous Intrusions and Weathering",
+          "Geomorphic Agents and Landform Matching", "Landforms and Mass Movements",
+        ],
+        "Indian Geography — Physical Features": ["Indian Rivers, Lakes and Water Bodies"],
+        "World & Human Geography": ["World Rivers and Regions"],
+      },
+      "Current Affairs": {
+        "Defence and Military Exercises": [
+          "Defence Awards, Books and Institutions", "Military Exercises — Bilateral and Multilateral",
+        ],
+        "Science and Technology": ["Space Technology and Astronomy"],
+        "International Affairs and Relations": ["International Organizations and Multilateral Bodies"],
+        "Awards, Honours, Books and Culture": ["Civilian Awards, Honours and Educational Institutions"],
+      },
+      History: {
+        "Ancient India": ["Vedic Age, Society and Literature"],
+      },
+      Physics: {
+        "Light and Optics": [
+          "Reflection and Mirrors", "Refraction, Speed of Light and TIR",
+          "Lenses and Lens Formula",
+        ],
+      },
+      Chemistry: {
+        "Mole Concept and Stoichiometry": [
+          "Avogadro's Law and the Mole", "Mole–Mass–Volume Calculations",
+        ],
+        "Carbon and Its Compounds": [
+          "IUPAC Nomenclature", "Isomerism", "Allotropes of Carbon and Fullerenes",
+        ],
+      },
+      Biology: {
+        "Genetics and Evolution": [
+          "Molecular Basis of Inheritance (DNA)", "Genes and Alleles",
+          "Evolution and Naturalists",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS APJ GAT Mock 7",
+    examName: "NDA",
+    section: { key: "apj-gat-mock-7", label: "APJ GAT Mock 7" },
+    bankAdd: true,
+    createPaper: false, // bank-only ingest of the 73 status:"new" rows; no /dashboard/papers paper
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
