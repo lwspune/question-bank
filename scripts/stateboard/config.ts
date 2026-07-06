@@ -81,6 +81,25 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.7 Linear Programming (12th, Part 1). Heavily GRAPHICAL — nearly every
+  //    solution is a feasible-region diagram (constraint lines + shaded region +
+  //    corner points), so `diagramWouldHelp`/solution_image density is the highest
+  //    of any chapter. 7.1 Linear Inequations + 7.2 LPP + Miscellaneous (I MCQ / II
+  //    subjective). Vector-drawn figures (1 raster page).
+  "linear-prog-12": {
+    id: "linear-prog-12",
+    chapterName: "Linear Programming",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Linear_Programming.pdf",
+    pdf: join(SOURCE_ROOT, "12th", "Part 01", "Ch_07_Linear_Programming.pdf"),
+    note: "Maharashtra State Board (Class 12) — Linear Programming (Balbharati textbook)",
+    subtopics: [
+      "Linear Inequations in Two Variables",
+      "Formulation of a Linear Programming Problem",
+      "Graphical Solution of a Linear Programming Problem",
+    ],
+  },
+
   // ── Ch.6 Differential Equations (12th, Part 2). Algebraic, essentially
   //    figure-free (1 raster page). Sections 6.1–6.5 + a Miscellaneous exercise
   //    (I: MCQ "Choose the correct option", II: subjective). Solved examples

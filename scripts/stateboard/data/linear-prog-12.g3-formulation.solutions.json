@@ -1,0 +1,644 @@
+[
+ {
+  "id": "26b95687-d505-4312-910e-c0aad5f53dae",
+  "ref": "7.2 Exercise 7.3 Q.1",
+  "solution": "Let x = number of units of gadget A produced and y = number of units of gadget B produced.\n\nObjective (maximize profit):\n\\(Z = 30x + 20y\\)\n\nConstraints:\nFoundry time (available 60 hr): \\(10x + 6y \\le 60\\)\nMachine-shop time (available 35 hr): \\(5x + 4y \\le 35\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 30x + 20y\\)\nsubject to\n\\(10x + 6y \\le 60\\)\n\\(5x + 4y \\le 35\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "9888e3cc-4c83-4d57-b217-dc11429d5ad8",
+  "ref": "7.2 Exercise 7.3 Q.2",
+  "solution": "[Textbook answer-key error: the printed answer key says \"maximize \\(z = 3x + 2y\\)\"; with all-\\(\\ge\\) nutrient constraints the fodder cost must be MINIMIZED (our answer) — \"maximize\" would be unbounded.]\n\nLet x = number of units of fodder 1 and y = number of units of fodder 2 in the ration.\n\nObjective (minimize cost):\n\\(Z = 3x + 2y\\)\n\nConstraints (each animal's ration must meet the minimum nutrient requirement):\nNutrient A (need 14): \\(2x + y \\ge 14\\)\nNutrient B (need 22): \\(2x + 3y \\ge 22\\)\nNutrient C (need 1): \\(x + y \\ge 1\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMinimize \\(Z = 3x + 2y\\)\nsubject to\n\\(2x + y \\ge 14\\)\n\\(2x + 3y \\ge 22\\)\n\\(x + y \\ge 1\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "54ad60e1-f6fc-4878-a732-df033a7744c5",
+  "ref": "7.2 Exercise 7.3 Q.3",
+  "solution": "Let x = number of units of chemical A and y = number of units of chemical B manufactured.\n\nObjective (maximize profit):\n\\(Z = 350x + 400y\\)\n\nConstraints:\nRaw material P (available 120): \\(3x + 2y \\le 120\\)\nRaw material Q (available 160): \\(2x + 5y \\le 160\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 350x + 400y\\)\nsubject to\n\\(3x + 2y \\le 120\\)\n\\(2x + 5y \\le 160\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "c1a6bd09-b6d5-4043-91db-a403940ae518",
+  "ref": "7.2 Exercise 7.3 Q.4",
+  "solution": "Let x = number of copies of magazine A and y = number of copies of magazine B printed per week.\n\nObjective (maximize profit):\n\\(Z = 10x + 15y\\)\n\nConstraints (weekly machine hours):\nMachine I (available 36 hr): \\(2x + 3y \\le 36\\)\nMachine II (available 50 hr): \\(5x + 2y \\le 50\\)\nMachine III (available 60 hr): \\(2x + 6y \\le 60\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 10x + 15y\\)\nsubject to\n\\(2x + 3y \\le 36\\)\n\\(5x + 2y \\le 50\\)\n\\(2x + 6y \\le 60\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "65e54b60-9dbe-4191-8663-4f6398805e7c",
+  "ref": "7.2 Exercise 7.3 Q.5",
+  "solution": "Let x = number of packages of bulbs and y = number of packages of tubes produced per day.\n\nObjective (maximize profit):\n\\(Z = 13.5x + 55y\\)\n\nConstraints (daily machine hours):\nMachine \\(M_1\\) (at most 10 hr): \\(x + 2y \\le 10\\)\nMachine \\(M_2\\) (at most 12 hr): \\(3x + 4y \\le 12\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 13.5x + 55y\\)\nsubject to\n\\(x + 2y \\le 10\\)\n\\(3x + 4y \\le 12\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "fd34567f-98b7-443b-9d2c-b4eeeab8870e",
+  "ref": "7.2 Exercise 7.3 Q.6",
+  "solution": "Let x = number of units of fertilizer \\(F_1\\) and y = number of units of fertilizer \\(F_2\\) manufactured per day.\n\nObjective (maximize profit):\n\\(Z = 500x + 750y\\)\n\nConstraints (raw material available per day):\nRaw material A (available 40): \\(2x + 3y \\le 40\\)\nRaw material B (available 70): \\(x + 4y \\le 70\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 500x + 750y\\)\nsubject to\n\\(2x + 3y \\le 40\\)\n\\(x + 4y \\le 70\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "fa07d334-4e64-44be-b2ac-dc4adb263c36",
+  "ref": "7.2 Exercise 7.3 Q.7",
+  "solution": "Let x = number of units of food A and y = number of units of food B in the weekly diet.\n\nObjective (minimize cost):\n\\(Z = 4.5x + 3.5y\\)\n\nConstraints (diet must meet the minimum requirements):\nFats (need 18): \\(4x + 6y \\ge 18\\)\nCarbohydrates (need 28): \\(14x + 12y \\ge 28\\)\nProteins (need 14): \\(8x + 8y \\ge 14\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMinimize \\(Z = 4.5x + 3.5y\\)\nsubject to\n\\(4x + 6y \\ge 18\\)\n\\(14x + 12y \\ge 28\\)\n\\(8x + 8y \\ge 14\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "6e257228-a877-4028-b633-cc04ec4f5ebc",
+  "ref": "7.2 Exercise 7.3 Q.8",
+  "solution": "Let x = distance (in km) travelled at the speed of 60 km/hr and y = distance (in km) travelled at the speed of 90 km/hr.\n\nObjective (maximize the distance travelled):\n\\(Z = x + y\\)\n\nConstraints:\nPetrol budget (Rs. 5 per km at 60 km/hr, Rs. 8 per km at 90 km/hr, at most Rs. 600): \\(5x + 8y \\le 600\\)\nTime available (time = distance / speed, at most 1 hour): \\(\\dfrac{x}{60} + \\dfrac{y}{90} \\le 1\\), i.e. \\(3x + 2y \\le 180\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = x + y\\)\nsubject to\n\\(5x + 8y \\le 600\\)\n\\(3x + 2y \\le 180\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "729eaaff-7e57-4c04-85a0-71cb06c87077",
+  "ref": "7.2 Exercise 7.3 Q.9",
+  "solution": "Let x = weight (in kg) of cement and y = weight (in kg) of sand used in one concrete brick.\n\nObjective (minimize cost):\n\\(Z = 20x + 6y\\)\n\nConstraints:\nBrick weight at least 5 kg: \\(x + y \\ge 5\\)\nCement at least 4 kg: \\(x \\ge 4\\)\nSand not more than 2 kg: \\(y \\le 2\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMinimize \\(Z = 20x + 6y\\)\nsubject to\n\\(x + y \\ge 5\\)\n\\(x \\ge 4\\)\n\\(y \\le 2\\)\n\\(x \\ge 0,\\ y \\ge 0\\)"
+ },
+ {
+  "id": "0ee723f1-a242-4de0-b92f-d1089338aa78",
+  "ref": "Misc II Q.10",
+  "solution": "Let x = number of mixers and y = number of food processors produced per week.\n\nObjective (maximize profit):\n\\(Z = 2000x + 3000y\\)\n\nConstraints (weekly machine hours):\nMachine A (available 36 hr): \\(3x + 3y \\le 36\\)\nMachine B (available 50 hr): \\(5x + 2y \\le 50\\)\nMachine C (available 60 hr): \\(2x + 6y \\le 60\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 2000x + 3000y\\)\nsubject to\n\\(3x + 3y \\le 36\\)\n\\(5x + 2y \\le 50\\)\n\\(2x + 6y \\le 60\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(3x + 3y = 36\\) (i.e. \\(x + y = 12\\)), \\(5x + 2y = 50\\) and \\(2x + 6y = 60\\) (i.e. \\(x + 3y = 30\\)).\n\nCorner points of the feasible region:\n\\((0,0)\\)\n\\((10,0)\\), the x-intercept of \\(5x + 2y = 50\\)\n\\(\\left(\\dfrac{26}{3}, \\dfrac{10}{3}\\right)\\), the intersection of \\(5x + 2y = 50\\) and \\(x + y = 12\\): from \\(y = 12 - x\\), \\(5x + 2(12 - x) = 50\\) gives \\(3x = 26\\)\n\\((3,9)\\), the intersection of \\(x + y = 12\\) and \\(x + 3y = 30\\): subtracting gives \\(2y = 18\\), \\(y = 9\\), \\(x = 3\\)\n\\((0,10)\\), the y-intercept of \\(x + 3y = 30\\)\n\n| Corner point | \\(Z = 2000x + 3000y\\) |\n|---|---|\n| \\((0,0)\\) | \\(0\\) |\n| \\((10,0)\\) | \\(20000\\) |\n| \\(\\left(\\dfrac{26}{3}, \\dfrac{10}{3}\\right)\\) | \\(\\dfrac{82000}{3} \\approx 27333.33\\) |\n| \\((3,9)\\) | \\(33000\\) |\n| \\((0,10)\\) | \\(30000\\) |\n\nThe maximum value is \\(Z = 33000\\) at \\((x, y) = (3, 9)\\).\n\nHence produce 3 mixers and 9 food processors for a maximum profit of Rs. 33000.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    13
+   ],
+   "yr": [
+    0,
+    13
+   ],
+   "caption": "max z = 33000 at (3, 9)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 3,
+     "op": "<=",
+     "C": 36,
+     "label": "3x + 3y = 36 (Machine A)",
+     "color": "blue"
+    },
+    {
+     "A": 5,
+     "B": 2,
+     "op": "<=",
+     "C": 50,
+     "label": "5x + 2y = 50 (Machine B)",
+     "color": "green"
+    },
+    {
+     "A": 2,
+     "B": 6,
+     "op": "<=",
+     "C": 60,
+     "label": "2x + 6y = 60 (Machine C)",
+     "color": "purple"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "(0, 0)"
+    },
+    {
+     "x": 10,
+     "y": 0,
+     "label": "(10, 0)"
+    },
+    {
+     "x": 8.6667,
+     "y": 3.3333,
+     "label": "(26/3, 10/3)"
+    },
+    {
+     "x": 3,
+     "y": 9,
+     "label": "(3, 9) max"
+    },
+    {
+     "x": 0,
+     "y": 10,
+     "label": "(0, 10)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "2d13efdc-2afc-4539-9ccd-9e1d0460d2cc",
+  "ref": "Misc II Q.11",
+  "solution": "Let x = number of units of compound I and y = number of units of compound II mixed.\n\nObjective (minimize cost):\n\\(Z = 800x + 640y\\)\n\nConstraints (chemical must contain at least the stated amount of each element):\nElement A (at least 16 litres): \\(4x + 2y \\ge 16\\), i.e. \\(2x + y \\ge 8\\)\nElement B (at least 24 litres): \\(12x + 2y \\ge 24\\), i.e. \\(6x + y \\ge 12\\)\nElement C (at least 18 litres): \\(2x + 6y \\ge 18\\), i.e. \\(x + 3y \\ge 9\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMinimize \\(Z = 800x + 640y\\)\nsubject to\n\\(4x + 2y \\ge 16\\)\n\\(12x + 2y \\ge 24\\)\n\\(2x + 6y \\ge 18\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(4x + 2y = 16\\) (i.e. \\(2x + y = 8\\)), \\(12x + 2y = 24\\) (i.e. \\(6x + y = 12\\)) and \\(2x + 6y = 18\\) (i.e. \\(x + 3y = 9\\)). The feasible region is unbounded.\n\nCorner points of the feasible region:\n\\((9,0)\\), the x-intercept of \\(x + 3y = 9\\) (satisfies \\(2x + y = 18 \\ge 8\\) and \\(6x + y = 54 \\ge 12\\))\n\\((3,2)\\), the intersection of \\(x + 3y = 9\\) and \\(2x + y = 8\\): from \\(x = 9 - 3y\\), \\(2(9 - 3y) + y = 8\\) gives \\(-5y = -10\\), \\(y = 2\\), \\(x = 3\\)\n\\((1,6)\\), the intersection of \\(2x + y = 8\\) and \\(6x + y = 12\\): subtracting gives \\(4x = 4\\), \\(x = 1\\), \\(y = 6\\)\n\\((0,12)\\), the y-intercept of \\(6x + y = 12\\)\n\n| Corner point | \\(Z = 800x + 640y\\) |\n|---|---|\n| \\((9,0)\\) | \\(7200\\) |\n| \\((3,2)\\) | \\(3680\\) |\n| \\((1,6)\\) | \\(4640\\) |\n| \\((0,12)\\) | \\(7680\\) |\n\nThe minimum value is \\(Z = 3680\\) at \\((x, y) = (3, 2)\\).\n\nHence mix 3 units of compound I and 2 units of compound II for a minimum cost of Rs. 3680.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    11
+   ],
+   "yr": [
+    0,
+    13
+   ],
+   "caption": "min z = 3680 at (3, 2)",
+   "constraints": [
+    {
+     "A": 4,
+     "B": 2,
+     "op": ">=",
+     "C": 16,
+     "label": "4x + 2y = 16 (Element A)",
+     "color": "blue"
+    },
+    {
+     "A": 12,
+     "B": 2,
+     "op": ">=",
+     "C": 24,
+     "label": "12x + 2y = 24 (Element B)",
+     "color": "green"
+    },
+    {
+     "A": 2,
+     "B": 6,
+     "op": ">=",
+     "C": 18,
+     "label": "2x + 6y = 18 (Element C)",
+     "color": "purple"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 9,
+     "y": 0,
+     "label": "(9, 0)"
+    },
+    {
+     "x": 3,
+     "y": 2,
+     "label": "(3, 2) min"
+    },
+    {
+     "x": 1,
+     "y": 6,
+     "label": "(1, 6)"
+    },
+    {
+     "x": 0,
+     "y": 12,
+     "label": "(0, 12)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "2df0df5a-8a1b-4cc3-a953-4f2017ff0b22",
+  "ref": "Misc II Q.12",
+  "solution": "Let x = number of gift items of type A and y = number of gift items of type B made each month.\n\nObjective (maximize profit):\n\\(Z = 75x + 125y\\)\n\nConstraints (monthly available hours):\nCutter's time (available 208 hr): \\(4x + 2y \\le 208\\)\nFinisher's time (available 152 hr): \\(2x + 4y \\le 152\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 75x + 125y\\)\nsubject to\n\\(4x + 2y \\le 208\\)\n\\(2x + 4y \\le 152\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(4x + 2y = 208\\) (i.e. \\(2x + y = 104\\)) and \\(2x + 4y = 152\\) (i.e. \\(x + 2y = 76\\)).\n\nCorner points of the feasible region:\n\\((0,0)\\)\n\\((52,0)\\), the x-intercept of \\(2x + y = 104\\)\n\\((44,16)\\), the intersection of \\(2x + y = 104\\) and \\(x + 2y = 76\\): from \\(y = 104 - 2x\\), \\(x + 2(104 - 2x) = 76\\) gives \\(-3x = -132\\), \\(x = 44\\), \\(y = 16\\)\n\\((0,38)\\), the y-intercept of \\(x + 2y = 76\\)\n\n| Corner point | \\(Z = 75x + 125y\\) |\n|---|---|\n| \\((0,0)\\) | \\(0\\) |\n| \\((52,0)\\) | \\(3900\\) |\n| \\((44,16)\\) | \\(5300\\) |\n| \\((0,38)\\) | \\(4750\\) |\n\nThe maximum value is \\(Z = 5300\\) at \\((x, y) = (44, 16)\\).\n\nHence make 44 gift items of type A and 16 of type B for a maximum profit of Rs. 5300.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    80
+   ],
+   "yr": [
+    0,
+    110
+   ],
+   "caption": "max z = 5300 at (44, 16)",
+   "constraints": [
+    {
+     "A": 4,
+     "B": 2,
+     "op": "<=",
+     "C": 208,
+     "label": "4x + 2y = 208 (Cutter)",
+     "color": "blue"
+    },
+    {
+     "A": 2,
+     "B": 4,
+     "op": "<=",
+     "C": 152,
+     "label": "2x + 4y = 152 (Finisher)",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "(0, 0)"
+    },
+    {
+     "x": 52,
+     "y": 0,
+     "label": "(52, 0)"
+    },
+    {
+     "x": 44,
+     "y": 16,
+     "label": "(44, 16) max"
+    },
+    {
+     "x": 0,
+     "y": 38,
+     "label": "(0, 38)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "2c89d10b-ece0-46be-96af-16a779a99d4a",
+  "ref": "Misc II Q.13",
+  "solution": "[Textbook answer-key error: the printed key's objective \"\\(-3x + 4y\\)\" has a sign error; the profit objective is \\(3x + 4y\\) (our answer). The key's own optimum Rs.1800 at \\((0, 450)\\) is consistent with \\(3x + 4y\\).]\n\nLet x = number of units of product A and y = number of units of product B manufactured per working day.\n\nObjective (maximize profit):\n\\(Z = 3x + 4y\\)\n\nConstraints (daily processing minutes):\nMachine \\(M_1\\) (available 450 min): \\(x + y \\le 450\\)\nMachine \\(M_2\\) (available 600 min): \\(2x + y \\le 600\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 3x + 4y\\)\nsubject to\n\\(x + y \\le 450\\)\n\\(2x + y \\le 600\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(x + y = 450\\) and \\(2x + y = 600\\).\n\nCorner points of the feasible region:\n\\((0,0)\\)\n\\((300,0)\\), the x-intercept of \\(2x + y = 600\\)\n\\((150,300)\\), the intersection of \\(x + y = 450\\) and \\(2x + y = 600\\): subtracting gives \\(x = 150\\), \\(y = 300\\)\n\\((0,450)\\), the y-intercept of \\(x + y = 450\\)\n\n| Corner point | \\(Z = 3x + 4y\\) |\n|---|---|\n| \\((0,0)\\) | \\(0\\) |\n| \\((300,0)\\) | \\(900\\) |\n| \\((150,300)\\) | \\(1650\\) |\n| \\((0,450)\\) | \\(1800\\) |\n\nThe maximum value is \\(Z = 1800\\) at \\((x, y) = (0, 450)\\).\n\nHence manufacture 0 units of product A and 450 units of product B for a maximum profit of Rs. 1800.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    460
+   ],
+   "yr": [
+    0,
+    620
+   ],
+   "caption": "max z = 1800 at (0, 450)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 1,
+     "op": "<=",
+     "C": 450,
+     "label": "x + y = 450 (Machine M1)",
+     "color": "blue"
+    },
+    {
+     "A": 2,
+     "B": 1,
+     "op": "<=",
+     "C": 600,
+     "label": "2x + y = 600 (Machine M2)",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "(0, 0)"
+    },
+    {
+     "x": 300,
+     "y": 0,
+     "label": "(300, 0)"
+    },
+    {
+     "x": 150,
+     "y": 300,
+     "label": "(150, 300)"
+    },
+    {
+     "x": 0,
+     "y": 450,
+     "label": "(0, 450) max"
+    }
+   ]
+  }
+ },
+ {
+  "id": "07199648-707f-4993-bb0c-b4ff5e4ac4ab",
+  "ref": "Misc II Q.14",
+  "solution": "[Textbook answer-key error: the printed key's constraints \"\\(2x + 2y \\le 210,\\ 3x + 4y \\le 300\\)\" are wrong; the correct constraints are \\(3x + 2y \\le 210,\\ 2x + 4y \\le 300\\) (our answer). The key's own optimum \\((30, 60)\\) is infeasible under its printed constraints but exact under the correct ones.]\n\nLet x = number of units of item A and y = number of units of item B manufactured per month.\n\nObjective (maximize profit):\n\\(Z = 20x + 30y\\)\n\nConstraints (monthly supply of components):\nMotors (available 210): \\(3x + 2y \\le 210\\)\nTransformers (available 300): \\(2x + 4y \\le 300\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 20x + 30y\\)\nsubject to\n\\(3x + 2y \\le 210\\)\n\\(2x + 4y \\le 300\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(3x + 2y = 210\\) and \\(2x + 4y = 300\\) (i.e. \\(x + 2y = 150\\)).\n\nCorner points of the feasible region:\n\\((0,0)\\)\n\\((70,0)\\), the x-intercept of \\(3x + 2y = 210\\)\n\\((30,60)\\), the intersection of \\(3x + 2y = 210\\) and \\(x + 2y = 150\\): subtracting gives \\(2x = 60\\), \\(x = 30\\), then \\(30 + 2y = 150\\) gives \\(y = 60\\)\n\\((0,75)\\), the y-intercept of \\(x + 2y = 150\\)\n\n| Corner point | \\(Z = 20x + 30y\\) |\n|---|---|\n| \\((0,0)\\) | \\(0\\) |\n| \\((70,0)\\) | \\(1400\\) |\n| \\((30,60)\\) | \\(2400\\) |\n| \\((0,75)\\) | \\(2250\\) |\n\nThe maximum value is \\(Z = 2400\\) at \\((x, y) = (30, 60)\\).\n\nHence manufacture 30 units of item A and 60 units of item B for a maximum profit of Rs. 2400.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    160
+   ],
+   "yr": [
+    0,
+    110
+   ],
+   "caption": "max z = 2400 at (30, 60)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 2,
+     "op": "<=",
+     "C": 210,
+     "label": "3x + 2y = 210 (Motors)",
+     "color": "blue"
+    },
+    {
+     "A": 2,
+     "B": 4,
+     "op": "<=",
+     "C": 300,
+     "label": "2x + 4y = 300 (Transformers)",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "(0, 0)"
+    },
+    {
+     "x": 70,
+     "y": 0,
+     "label": "(70, 0)"
+    },
+    {
+     "x": 30,
+     "y": 60,
+     "label": "(30, 60) max"
+    },
+    {
+     "x": 0,
+     "y": 75,
+     "label": "(0, 75)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "fd90331e-a48e-42eb-af1f-7a2d3cbe2100",
+  "ref": "Misc II Q.7",
+  "solution": "Let x = number of chairs and y = number of tables made.\n\nObjective (maximize profit):\n\\(Z = 140x + 210y\\)\n\nConstraints (available machine hours):\nAssembling (available 36 hr): \\(3x + 3y \\le 36\\), i.e. \\(x + y \\le 12\\)\nFinishing (available 50 hr): \\(5x + 2y \\le 50\\)\nPolishing (available 60 hr): \\(2x + 6y \\le 60\\), i.e. \\(x + 3y \\le 30\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 140x + 210y\\)\nsubject to\n\\(x + y \\le 12\\)\n\\(5x + 2y \\le 50\\)\n\\(x + 3y \\le 30\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe corner points of the feasible region are \\((0,0)\\), \\((10,0)\\), \\(\\left(\\dfrac{26}{3},\\ \\dfrac{10}{3}\\right)\\), \\((3,9)\\) and \\((0,10)\\).\n\nEvaluating \\(Z = 140x + 210y\\) at each:\n\\((0,0):\\ Z = 0\\)\n\\((10,0):\\ Z = 1400\\)\n\\(\\left(\\dfrac{26}{3},\\dfrac{10}{3}\\right):\\ Z = \\dfrac{5740}{3} \\approx 1913.33\\)\n\\((3,9):\\ Z = 420 + 1890 = 2310\\)\n\\((0,10):\\ Z = 2100\\)\n\nThe maximum value is \\(Z = 2310\\) at \\((x, y) = (3, 9)\\).\n\nHence the carpenter should make 3 chairs and 9 tables for a maximum profit of Rs. 2310.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    13
+   ],
+   "yr": [
+    0,
+    13
+   ],
+   "caption": "Feasible region for x + y <= 12, 5x + 2y <= 50, x + 3y <= 30, x, y >= 0; maximum profit Z = 2310 at (3, 9).",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 1,
+     "op": "<=",
+     "C": 12,
+     "label": "x + y = 12 (Assembling)",
+     "color": "#2563eb"
+    },
+    {
+     "A": 5,
+     "B": 2,
+     "op": "<=",
+     "C": 50,
+     "label": "5x + 2y = 50 (Finishing)",
+     "color": "#16a34a"
+    },
+    {
+     "A": 1,
+     "B": 3,
+     "op": "<=",
+     "C": 30,
+     "label": "x + 3y = 30 (Polishing)",
+     "color": "#db2777"
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O(0, 0)"
+    },
+    {
+     "x": 10,
+     "y": 0,
+     "label": "(10, 0)"
+    },
+    {
+     "x": 8.6667,
+     "y": 3.3333,
+     "label": "(26/3, 10/3)"
+    },
+    {
+     "x": 3,
+     "y": 9,
+     "label": "(3, 9) max"
+    },
+    {
+     "x": 0,
+     "y": 10,
+     "label": "(0, 10)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "bb8f75f4-a670-49a8-aa1a-96c7d0944ed5",
+  "ref": "Misc II Q.8",
+  "solution": "Let x = number of bicycles and y = number of tricycles manufactured.\n\nObjective (maximize profit):\n\\(Z = 180x + 220y\\)\n\nConstraints (available machine hours):\nMachine A (available 120 hr): \\(6x + 4y \\le 120\\), i.e. \\(3x + 2y \\le 60\\)\nMachine B (available 180 hr): \\(3x + 10y \\le 180\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMaximize \\(Z = 180x + 220y\\)\nsubject to\n\\(6x + 4y \\le 120\\)\n\\(3x + 10y \\le 180\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(3x + 2y = 60\\) and \\(3x + 10y = 180\\).\n\nCorner points of the feasible region:\n\\((0,0)\\)\n\\((20,0)\\), the x-intercept of \\(3x + 2y = 60\\) (feasible, since \\(3(20) + 10(0) = 60 \\le 180\\))\n\\((10,15)\\), the intersection of \\(3x + 2y = 60\\) and \\(3x + 10y = 180\\): subtracting gives \\(8y = 120\\), so \\(y = 15\\), then \\(3x + 30 = 60\\) gives \\(x = 10\\)\n\\((0,18)\\), the y-intercept of \\(3x + 10y = 180\\) (feasible, since \\(3(0) + 2(18) = 36 \\le 60\\))\n\n| Corner point | \\(Z = 180x + 220y\\) |\n|---|---|\n| \\((0,0)\\) | \\(0\\) |\n| \\((20,0)\\) | \\(3600\\) |\n| \\((10,15)\\) | \\(5100\\) |\n| \\((0,18)\\) | \\(3960\\) |\n\nThe maximum value is \\(Z = 5100\\) at \\((x, y) = (10, 15)\\).\n\nHence the firm should manufacture 10 bicycles and 15 tricycles for a maximum profit of Rs. 5100.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    22
+   ],
+   "yr": [
+    0,
+    20
+   ],
+   "caption": "max z = 5100 at (10, 15)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 2,
+     "op": "<=",
+     "C": 60,
+     "label": "3x + 2y = 60 (Machine A)",
+     "color": "blue"
+    },
+    {
+     "A": 3,
+     "B": 10,
+     "op": "<=",
+     "C": 180,
+     "label": "3x + 10y = 180 (Machine B)",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "(0, 0)"
+    },
+    {
+     "x": 20,
+     "y": 0,
+     "label": "(20, 0)"
+    },
+    {
+     "x": 10,
+     "y": 15,
+     "label": "(10, 15) max"
+    },
+    {
+     "x": 0,
+     "y": 18,
+     "label": "(0, 18)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "1fb1bfe3-b69c-4deb-aed1-df7863700585",
+  "ref": "Misc II Q.9",
+  "solution": "Let x = number of units of chemical A and y = number of units of chemical B produced (in kg).\n\nObjective (minimize cost):\n\\(Z = 4x + 6y\\)\n\nConstraints (minimum requirements of the ingredients):\nIngredient P (at least 80 units): \\(x + 2y \\ge 80\\)\nIngredient Q (at least 75 units): \\(3x + y \\ge 75\\)\nNon-negativity: \\(x \\ge 0,\\ y \\ge 0\\)\n\nThe complete L.P.P. is:\nMinimize \\(Z = 4x + 6y\\)\nsubject to\n\\(x + 2y \\ge 80\\)\n\\(3x + y \\ge 75\\)\n\\(x \\ge 0,\\ y \\ge 0\\)\n\nGraphical solution:\nThe boundary lines are \\(x + 2y = 80\\) and \\(3x + y = 75\\). Since the constraints are \\(\\ge\\) type, the feasible region is unbounded (above the lines).\n\nCorner points of the feasible region:\n\\((80,0)\\), the x-intercept of \\(x + 2y = 80\\) (feasible, since \\(3(80) + 0 = 240 \\ge 75\\))\n\\((14,33)\\), the intersection of \\(x + 2y = 80\\) and \\(3x + y = 75\\): from the second line \\(y = 75 - 3x\\), so \\(x + 2(75 - 3x) = 80\\) gives \\(-5x = -70\\), \\(x = 14\\), \\(y = 33\\)\n\\((0,75)\\), the y-intercept of \\(3x + y = 75\\) (feasible, since \\(0 + 2(75) = 150 \\ge 80\\))\n\n| Corner point | \\(Z = 4x + 6y\\) |\n|---|---|\n| \\((80,0)\\) | \\(320\\) |\n| \\((14,33)\\) | \\(254\\) |\n| \\((0,75)\\) | \\(450\\) |\n\nAlthough the region is unbounded, drawing \\(4x + 6y = 254\\) shows no feasible point gives a smaller value, so the minimum value is \\(Z = 254\\) at \\((x, y) = (14, 33)\\).\n\nHence produce 14 units of chemical A and 33 units of chemical B for a minimum cost of Rs. 254.",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    0,
+    85
+   ],
+   "yr": [
+    0,
+    80
+   ],
+   "caption": "min z = 254 at (14, 33)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 2,
+     "op": ">=",
+     "C": 80,
+     "label": "x + 2y = 80 (Ingredient P)",
+     "color": "blue"
+    },
+    {
+     "A": 3,
+     "B": 1,
+     "op": ">=",
+     "C": 75,
+     "label": "3x + y = 75 (Ingredient Q)",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0,
+     "label": "x = 0",
+     "color": "gray"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0,
+     "label": "y = 0",
+     "color": "gray"
+    }
+   ],
+   "points": [
+    {
+     "x": 80,
+     "y": 0,
+     "label": "(80, 0)"
+    },
+    {
+     "x": 14,
+     "y": 33,
+     "label": "(14, 33) min"
+    },
+    {
+     "x": 0,
+     "y": 75,
+     "label": "(0, 75)"
+    }
+   ]
+  }
+ }
+]

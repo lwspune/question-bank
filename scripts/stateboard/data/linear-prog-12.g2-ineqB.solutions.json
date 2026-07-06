@@ -1,0 +1,434 @@
+[
+ {
+  "id": "5898f4af-38c7-4474-a417-b4a6a2bbd8d1",
+  "ref": "7.1 Exercise 7.2 Q.1",
+  "solution": "The region is restricted to the first quadrant since \\(x \\ge 0\\) and \\(y \\ge 0\\).\n\nLine \\(3x + 2y = 18\\): x-intercept \\((6, 0)\\), y-intercept \\((0, 9)\\). At \\((0,0)\\): \\(0 \\le 18\\), true, so the region for \\(3x + 2y \\le 18\\) is the side of the line containing the origin (boundary included).\n\nLine \\(2x + y = 10\\): x-intercept \\((5, 0)\\), y-intercept \\((0, 10)\\). At \\((0,0)\\): \\(0 \\le 10\\), true, so the region for \\(2x + y \\le 10\\) is the origin side (boundary included).\n\nThe boundary lines \\(3x + 2y = 18\\) and \\(2x + y = 10\\) meet where \\(x = 2\\), \\(y = 6\\), i.e. \\((2, 6)\\).\n\nThe feasible region is the intersection of all four half-planes: a bounded quadrilateral with vertices \\((0, 0)\\), \\((5, 0)\\), \\((2, 6)\\) and \\((0, 9)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 8],
+   "yr": [-1, 11],
+   "caption": "Feasible region of 3x+2y≤18, 2x+y≤10 in the first quadrant",
+   "constraints": [
+    {"A": 3, "B": 2, "op": "<=", "C": 18, "label": "3x+2y=18", "color": "blue"},
+    {"A": 2, "B": 1, "op": "<=", "C": 10, "label": "2x+y=10", "color": "red"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "green"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 5, "y": 0, "label": "(5,0)"},
+    {"x": 2, "y": 6, "label": "(2,6)"},
+    {"x": 0, "y": 9, "label": "(0,9)"}
+   ]
+  }
+ },
+ {
+  "id": "6fc51258-d3bd-4937-85c0-cf1d1b30ff12",
+  "ref": "7.1 Exercise 7.2 Q.2",
+  "solution": "First quadrant only (\\(x \\ge 0\\), \\(y \\ge 0\\)).\n\nLine \\(2x + 3y = 6\\): intercepts \\((3, 0)\\) and \\((0, 2)\\). At \\((0,0)\\): \\(0 \\le 6\\), true — the region for \\(2x + 3y \\le 6\\) is the origin side (boundary included).\n\nLine \\(x + y = 2\\): intercepts \\((2, 0)\\) and \\((0, 2)\\). At \\((0,0)\\): \\(0 \\ge 2\\), false — the region for \\(x + y \\ge 2\\) is the side away from the origin (boundary included).\n\nThe lines \\(2x + 3y = 6\\) and \\(x + y = 2\\) meet at \\((0, 2)\\).\n\nThe feasible region is a bounded triangle with vertices \\((2, 0)\\), \\((3, 0)\\) and \\((0, 2)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 5],
+   "yr": [-1, 4],
+   "caption": "Feasible region of 2x+3y≤6, x+y≥2 in the first quadrant",
+   "constraints": [
+    {"A": 2, "B": 3, "op": "<=", "C": 6, "label": "2x+3y=6", "color": "blue"},
+    {"A": 1, "B": 1, "op": ">=", "C": 2, "label": "x+y=2", "color": "red"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "green"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 2, "y": 0, "label": "(2,0)"},
+    {"x": 3, "y": 0, "label": "(3,0)"},
+    {"x": 0, "y": 2, "label": "(0,2)"}
+   ]
+  }
+ },
+ {
+  "id": "4a7d6846-9860-480e-a351-71a8d8554e06",
+  "ref": "7.1 Exercise 7.2 Q.3",
+  "solution": "Line \\(3x + 4y = 12\\): intercepts \\((4, 0)\\) and \\((0, 3)\\). At \\((0,0)\\): \\(0 \\ge 12\\), false — the region for \\(3x + 4y \\ge 12\\) is the side away from the origin (boundary included).\n\nLine \\(4x + 7y = 28\\): intercepts \\((7, 0)\\) and \\((0, 4)\\). At \\((0,0)\\): \\(0 \\le 28\\), true — the region for \\(4x + 7y \\le 28\\) is the origin side (boundary included).\n\n\\(y \\ge 1\\): region on and above the horizontal line \\(y = 1\\). \\(x \\ge 0\\): region on and to the right of the Y-axis.\n\nCorner points: \\(3x + 4y = 12\\) meets \\(y = 1\\) at \\((8/3, 1)\\); \\(4x + 7y = 28\\) meets \\(y = 1\\) at \\((21/4, 1)\\); the Y-axis meets \\(3x + 4y = 12\\) at \\((0, 3)\\) and \\(4x + 7y = 28\\) at \\((0, 4)\\).\n\nThe feasible region is a bounded quadrilateral with vertices \\((0, 3)\\), \\((0, 4)\\), \\((21/4, 1)\\) and \\((8/3, 1)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 8],
+   "yr": [-1, 5],
+   "caption": "Feasible region of 3x+4y≥12, 4x+7y≤28, y≥1, x≥0",
+   "constraints": [
+    {"A": 3, "B": 4, "op": ">=", "C": 12, "label": "3x+4y=12", "color": "blue"},
+    {"A": 4, "B": 7, "op": "<=", "C": 28, "label": "4x+7y=28", "color": "red"},
+    {"A": 0, "B": 1, "op": ">=", "C": 1, "label": "y=1", "color": "green"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 0, "y": 3, "label": "(0,3)"},
+    {"x": 0, "y": 4, "label": "(0,4)"},
+    {"x": 5.25, "y": 1, "label": "(21/4,1)"},
+    {"x": 2.667, "y": 1, "label": "(8/3,1)"}
+   ]
+  }
+ },
+ {
+  "id": "b74597eb-8daf-49fe-8d03-e4e9e9384695",
+  "ref": "7.1 Exercise 7.2 Q.4",
+  "solution": "First quadrant only (\\(x \\ge 0\\), \\(y \\ge 0\\)).\n\nLine \\(x + 4y = 24\\): intercepts \\((24, 0)\\) and \\((0, 6)\\). At \\((0,0)\\): \\(0 \\le 24\\), true — origin side (boundary included).\n\nLine \\(3x + y = 21\\): intercepts \\((7, 0)\\) and \\((0, 21)\\). At \\((0,0)\\): \\(0 \\le 21\\), true — origin side (boundary included).\n\nLine \\(x + y = 9\\): intercepts \\((9, 0)\\) and \\((0, 9)\\). At \\((0,0)\\): \\(0 \\le 9\\), true — origin side (boundary included).\n\nCorner points: \\(x + y = 9\\) meets \\(x + 4y = 24\\) at \\((4, 5)\\); \\(x + y = 9\\) meets \\(3x + y = 21\\) at \\((6, 3)\\); \\(3x + y = 21\\) meets the X-axis at \\((7, 0)\\); \\(x + 4y = 24\\) meets the Y-axis at \\((0, 6)\\).\n\nThe feasible region is a bounded pentagon with vertices \\((0, 0)\\), \\((7, 0)\\), \\((6, 3)\\), \\((4, 5)\\) and \\((0, 6)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 10],
+   "yr": [-1, 10],
+   "caption": "Feasible region of x+4y≤24, 3x+y≤21, x+y≤9 in the first quadrant",
+   "constraints": [
+    {"A": 1, "B": 4, "op": "<=", "C": 24, "label": "x+4y=24", "color": "blue"},
+    {"A": 3, "B": 1, "op": "<=", "C": 21, "label": "3x+y=21", "color": "red"},
+    {"A": 1, "B": 1, "op": "<=", "C": 9, "label": "x+y=9", "color": "green"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "purple"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 7, "y": 0, "label": "(7,0)"},
+    {"x": 6, "y": 3, "label": "(6,3)"},
+    {"x": 4, "y": 5, "label": "(4,5)"},
+    {"x": 0, "y": 6, "label": "(0,6)"}
+   ]
+  }
+ },
+ {
+  "id": "8dde8b5e-683d-4432-9af8-19ac0a417003",
+  "ref": "7.1 Exercise 7.2 Q.5",
+  "solution": "\\(0 \\le x \\le 3\\) gives the vertical strip between \\(x = 0\\) and \\(x = 3\\); \\(0 \\le y \\le 3\\) gives the horizontal strip between \\(y = 0\\) and \\(y = 3\\); together they bound the square \\([0,3] \\times [0,3]\\).\n\nLine \\(x + y = 5\\): intercepts \\((5, 0)\\) and \\((0, 5)\\). At \\((0,0)\\): \\(0 \\le 5\\), true — the region for \\(x + y \\le 5\\) is the origin side (boundary included). It cuts the square at \\((3, 2)\\) and \\((2, 3)\\).\n\nLine \\(2x + y = 4\\): intercepts \\((2, 0)\\) and \\((0, 4)\\). At \\((0,0)\\): \\(0 \\ge 4\\), false — the region for \\(2x + y \\ge 4\\) is the side away from the origin (boundary included). It cuts the square at \\((2, 0)\\) and \\((0.5, 3)\\).\n\nThe feasible region is a bounded pentagon with vertices \\((2, 0)\\), \\((3, 0)\\), \\((3, 2)\\), \\((2, 3)\\) and \\((0.5, 3)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 6],
+   "yr": [-1, 6],
+   "caption": "Feasible region of 0≤x≤3, 0≤y≤3, x+y≤5, 2x+y≥4",
+   "constraints": [
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "blue"},
+    {"A": 1, "B": 0, "op": "<=", "C": 3, "label": "x=3", "color": "red"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "green"},
+    {"A": 0, "B": 1, "op": "<=", "C": 3, "label": "y=3", "color": "purple"},
+    {"A": 1, "B": 1, "op": "<=", "C": 5, "label": "x+y=5", "color": "blue"},
+    {"A": 2, "B": 1, "op": ">=", "C": 4, "label": "2x+y=4", "color": "red"}
+   ],
+   "points": [
+    {"x": 2, "y": 0, "label": "(2,0)"},
+    {"x": 3, "y": 0, "label": "(3,0)"},
+    {"x": 3, "y": 2, "label": "(3,2)"},
+    {"x": 2, "y": 3, "label": "(2,3)"},
+    {"x": 0.5, "y": 3, "label": "(0.5,3)"}
+   ]
+  }
+ },
+ {
+  "id": "ab4a399e-8074-4761-aad6-c9e8f8ef7521",
+  "ref": "7.1 Exercise 7.2 Q.6",
+  "solution": "First quadrant only (\\(x \\ge 0\\), \\(y \\ge 0\\)).\n\nLine \\(x - 2y = 2\\): intercepts \\((2, 0)\\) and \\((0, -1)\\). At \\((0,0)\\): \\(0 \\le 2\\), true — the region for \\(x - 2y \\le 2\\) is the origin side (boundary included).\n\nLine \\(x + y = 3\\): intercepts \\((3, 0)\\) and \\((0, 3)\\). At \\((0,0)\\): \\(0 \\ge 3\\), false — the region for \\(x + y \\ge 3\\) is the side away from the origin (boundary included).\n\nLine \\(-2x + y = 4\\): intercepts \\((-2, 0)\\) and \\((0, 4)\\). At \\((0,0)\\): \\(0 \\le 4\\), true — the region for \\(-2x + y \\le 4\\) is the origin side (boundary included).\n\nCorner points: \\(x + y = 3\\) meets the Y-axis at \\((0, 3)\\); \\(-2x + y = 4\\) meets the Y-axis at \\((0, 4)\\); \\(x + y = 3\\) meets \\(x - 2y = 2\\) at \\((8/3, 1/3)\\).\n\nThe feasible region is unbounded, lying above \\(x + y = 3\\), on the origin side of both \\(x - 2y = 2\\) and \\(-2x + y = 4\\), within the first quadrant; its corner points are \\((0, 3)\\), \\((0, 4)\\) and \\((8/3, 1/3)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 7],
+   "yr": [-1, 8],
+   "caption": "Feasible region (unbounded) of x−2y≤2, x+y≥3, −2x+y≤4 in the first quadrant",
+   "constraints": [
+    {"A": 1, "B": -2, "op": "<=", "C": 2, "label": "x-2y=2", "color": "blue"},
+    {"A": 1, "B": 1, "op": ">=", "C": 3, "label": "x+y=3", "color": "red"},
+    {"A": -2, "B": 1, "op": "<=", "C": 4, "label": "-2x+y=4", "color": "green"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "purple"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 3, "label": "(0,3)"},
+    {"x": 0, "y": 4, "label": "(0,4)"},
+    {"x": 2.667, "y": 0.333, "label": "(8/3,1/3)"}
+   ]
+  }
+ },
+ {
+  "id": "c0dfcfc9-aa32-4f5e-bf19-174199352d5f",
+  "ref": "7.1 Exercise 7.2 Q.7",
+  "solution": "Let the company make \\(x\\) units of A and \\(y\\) units of B, with \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nSilver: each A needs 3 gm and each B needs 2 gm, with at most 6 gm available: \\(3x + 2y \\le 6\\).\nGold: each A needs 1 gm and each B needs 2 gm, with at most 4 gm available: \\(x + 2y \\le 4\\).\n\nLine \\(3x + 2y = 6\\): intercepts \\((2, 0)\\) and \\((0, 3)\\). At \\((0,0)\\): \\(0 \\le 6\\), true — origin side (boundary included).\n\nLine \\(x + 2y = 4\\): intercepts \\((4, 0)\\) and \\((0, 2)\\). At \\((0,0)\\): \\(0 \\le 4\\), true — origin side (boundary included).\n\nThe two lines meet at \\((1, 3/2)\\).\n\nThe feasible region is a bounded quadrilateral with vertices \\((0, 0)\\), \\((2, 0)\\), \\((1, 3/2)\\) and \\((0, 2)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 5],
+   "yr": [-1, 4],
+   "caption": "Feasible region of 3x+2y≤6, x+2y≤4 in the first quadrant",
+   "constraints": [
+    {"A": 3, "B": 2, "op": "<=", "C": 6, "label": "3x+2y=6", "color": "blue"},
+    {"A": 1, "B": 2, "op": "<=", "C": 4, "label": "x+2y=4", "color": "red"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "green"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 2, "y": 0, "label": "(2,0)"},
+    {"x": 1, "y": 1.5, "label": "(1,3/2)"},
+    {"x": 0, "y": 2, "label": "(0,2)"}
+   ]
+  }
+ },
+ {
+  "id": "59b30651-7728-4bab-8199-b53e7ac5f49c",
+  "ref": "7.1 Exercise 7.2 Q.8",
+  "solution": "Let the dealer buy \\(x\\) tables and \\(y\\) chairs, with \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nInvestment: \\(1500x + 750y \\le 150000\\), which simplifies to \\(2x + y \\le 200\\).\nStorage: \\(x + y \\le 60\\).\n\nLine \\(2x + y = 200\\): intercepts \\((100, 0)\\) and \\((0, 200)\\). At \\((0,0)\\): \\(0 \\le 200\\), true — origin side (boundary included).\n\nLine \\(x + y = 60\\): intercepts \\((60, 0)\\) and \\((0, 60)\\). At \\((0,0)\\): \\(0 \\le 60\\), true — origin side (boundary included).\n\nWithin the first quadrant the storage line \\(x + y = 60\\) lies entirely inside \\(2x + y \\le 200\\), so that constraint is non-binding here.\n\nThe feasible region is a bounded triangle with vertices \\((0, 0)\\), \\((60, 0)\\) and \\((0, 60)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-10, 110],
+   "yr": [-10, 210],
+   "caption": "Feasible region of 2x+y≤200, x+y≤60 in the first quadrant",
+   "constraints": [
+    {"A": 2, "B": 1, "op": "<=", "C": 200, "label": "2x+y=200", "color": "blue"},
+    {"A": 1, "B": 1, "op": "<=", "C": 60, "label": "x+y=60", "color": "red"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "green"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 60, "y": 0, "label": "(60,0)"},
+    {"x": 0, "y": 60, "label": "(0,60)"}
+   ]
+  }
+ },
+ {
+  "id": "4a3f3420-97ca-43ab-9eac-89b1afb9e462",
+  "ref": "Misc II Q.1 i)",
+  "solution": "\\(4x - 18 \\ge 0 \\Rightarrow x \\ge \\dfrac{18}{4} = 4.5\\).\n\nIn the XY-plane the boundary is the vertical line \\(x = 4.5\\). Test \\((5, 0)\\): \\(4(5) - 18 = 2 \\ge 0\\), true, so the required region is the half-plane on and to the right of the line \\(x = 4.5\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 8],
+   "yr": [-5, 5],
+   "caption": "Half-plane x ≥ 4.5",
+   "constraints": [
+    {"A": 1, "B": 0, "op": ">=", "C": 4.5, "label": "x=4.5", "color": "blue"}
+   ],
+   "points": [
+    {"x": 4.5, "y": 0, "label": "(4.5,0)"}
+   ]
+  }
+ },
+ {
+  "id": "0b81e1bf-9b93-45da-ae63-cd924498b6c9",
+  "ref": "Misc II Q.1 ii)",
+  "solution": "\\(-11x - 55 \\le 0 \\Rightarrow -11x \\le 55 \\Rightarrow x \\ge -5\\) (dividing by \\(-11\\) reverses the inequality).\n\nThe boundary is the vertical line \\(x = -5\\). Test \\((0, 0)\\): \\(-11(0) - 55 = -55 \\le 0\\), true, so the required region is the half-plane on and to the right of the line \\(x = -5\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-8, 4],
+   "yr": [-5, 5],
+   "caption": "Half-plane x ≥ −5",
+   "constraints": [
+    {"A": 1, "B": 0, "op": ">=", "C": -5, "label": "x=-5", "color": "blue"}
+   ],
+   "points": [
+    {"x": -5, "y": 0, "label": "(-5,0)"}
+   ]
+  }
+ },
+ {
+  "id": "d48e8afd-73b8-469a-892e-b6443a045b88",
+  "ref": "Misc II Q.1 iii)",
+  "solution": "\\(5y - 12 \\ge 0 \\Rightarrow y \\ge \\dfrac{12}{5} = 2.4\\).\n\nThe boundary is the horizontal line \\(y = 2.4\\). Test \\((0, 3)\\): \\(5(3) - 12 = 3 \\ge 0\\), true, so the required region is the half-plane on and above the line \\(y = 2.4\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-5, 5],
+   "yr": [-1, 6],
+   "caption": "Half-plane y ≥ 2.4",
+   "constraints": [
+    {"A": 0, "B": 1, "op": ">=", "C": 2.4, "label": "y=2.4", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 2.4, "label": "(0,2.4)"}
+   ]
+  }
+ },
+ {
+  "id": "df3a640b-0b5b-4511-9768-acf11579aa5c",
+  "ref": "Misc II Q.1 iv)",
+  "solution": "\\(y \\le -3.5\\).\n\nThe boundary is the horizontal line \\(y = -3.5\\). Test \\((0, 0)\\): \\(0 \\le -3.5\\), false, so the origin is not in the region. The required region is the half-plane on and below the line \\(y = -3.5\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-5, 5],
+   "yr": [-6, 2],
+   "caption": "Half-plane y ≤ −3.5",
+   "constraints": [
+    {"A": 0, "B": 1, "op": "<=", "C": -3.5, "label": "y=-3.5", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": -3.5, "label": "(0,-3.5)"}
+   ]
+  }
+ },
+ {
+  "id": "96f76df1-309a-44ba-b89e-cf10221a5091",
+  "ref": "Misc II Q.2 i)",
+  "solution": "\\(x \\ge 5y\\), i.e. \\(x - 5y \\ge 0\\). The boundary \\(x = 5y\\) (i.e. \\(x - 5y = 0\\)) passes through the origin with slope \\(1/5\\); it contains \\((0, 0)\\) and \\((5, 1)\\).\n\nSince the line passes through the origin, test another point, say \\((1, 0)\\): \\(1 - 5(0) = 1 \\ge 0\\), true. So the required region is the side of the line containing \\((1, 0)\\) — the half-plane below the line \\(x = 5y\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-6, 6],
+   "yr": [-3, 3],
+   "caption": "Half-plane x ≥ 5y",
+   "constraints": [
+    {"A": 1, "B": -5, "op": ">=", "C": 0, "label": "x=5y", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 5, "y": 1, "label": "(5,1)"}
+   ]
+  }
+ },
+ {
+  "id": "a78a068f-d38a-4410-8fde-886efd618d79",
+  "ref": "Misc II Q.2 ii)",
+  "solution": "\\(x + y \\le 0\\). The boundary \\(x + y = 0\\) passes through the origin with slope \\(-1\\); it contains \\((0, 0)\\) and \\((1, -1)\\).\n\nSince the line passes through the origin, test another point: \\((1, 1)\\) gives \\(2 \\le 0\\), false; \\((-1, -1)\\) gives \\(-2 \\le 0\\), true. So the required region is the side containing \\((-1, -1)\\) — the half-plane below-left of the line \\(x + y = 0\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-5, 5],
+   "yr": [-5, 5],
+   "caption": "Half-plane x + y ≤ 0",
+   "constraints": [
+    {"A": 1, "B": 1, "op": "<=", "C": 0, "label": "x+y=0", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 1, "y": -1, "label": "(1,-1)"}
+   ]
+  }
+ },
+ {
+  "id": "b7f01b6b-1c0f-4f88-abe5-3cf9aedb36fb",
+  "ref": "Misc II Q.2 iii)",
+  "solution": "\\(2y - 5x \\ge 0\\), i.e. \\(y \\ge \\dfrac{5}{2}x\\). The boundary \\(2y - 5x = 0\\) passes through the origin with slope \\(5/2\\); it contains \\((0, 0)\\) and \\((2, 5)\\).\n\nSince the line passes through the origin, test another point, say \\((0, 1)\\): \\(2(1) - 5(0) = 2 \\ge 0\\), true. So the required region is the side containing \\((0, 1)\\) — the half-plane above-left of the line \\(2y = 5x\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-4, 4],
+   "yr": [-5, 6],
+   "caption": "Half-plane 2y ≥ 5x",
+   "constraints": [
+    {"A": -5, "B": 2, "op": ">=", "C": 0, "label": "2y=5x", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 2, "y": 5, "label": "(2,5)"}
+   ]
+  }
+ },
+ {
+  "id": "d41a75f1-6c91-467c-8e11-2c4cc05b890d",
+  "ref": "Misc II Q.2 iv)",
+  "solution": "\\(1x + 51 \\le y\\), i.e. \\(y \\ge x + 51\\). The boundary \\(y = x + 51\\) has intercepts \\((0, 51)\\) and \\((-51, 0)\\).\n\nTest \\((0, 0)\\): \\(0 + 51 \\le 0\\), i.e. \\(51 \\le 0\\), false, so the origin is not in the region. The required region is the half-plane on and above the line \\(y = x + 51\\) (boundary included).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-60, 10],
+   "yr": [-5, 60],
+   "caption": "Half-plane y ≥ x + 51",
+   "constraints": [
+    {"A": 1, "B": -1, "op": "<=", "C": -51, "label": "y=x+51", "color": "blue"}
+   ],
+   "points": [
+    {"x": 0, "y": 51, "label": "(0,51)"},
+    {"x": -51, "y": 0, "label": "(-51,0)"}
+   ]
+  }
+ },
+ {
+  "id": "3017e7a0-719d-4379-b3fd-08da805eb0f1",
+  "ref": "Misc II Q.3 i)",
+  "solution": "Line \\(2x + y = 2\\): intercepts \\((1, 0)\\) and \\((0, 2)\\). At \\((0,0)\\): \\(0 \\ge 2\\), false — the region for \\(2x + y \\ge 2\\) is the side away from the origin (boundary included).\n\nLine \\(x - y = 1\\): intercepts \\((1, 0)\\) and \\((0, -1)\\). At \\((0,0)\\): \\(0 \\le 1\\), true — the region for \\(x - y \\le 1\\) is the origin side (boundary included).\n\nBoth lines pass through \\((1, 0)\\).\n\nThe solution is the unbounded region common to the two half-planes, with corner point \\((1, 0)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-2, 4],
+   "yr": [-3, 4],
+   "caption": "Solution region of 2x+y≥2, x−y≤1",
+   "constraints": [
+    {"A": 2, "B": 1, "op": ">=", "C": 2, "label": "2x+y=2", "color": "blue"},
+    {"A": 1, "B": -1, "op": "<=", "C": 1, "label": "x-y=1", "color": "red"}
+   ],
+   "points": [
+    {"x": 1, "y": 0, "label": "(1,0)"}
+   ]
+  }
+ },
+ {
+  "id": "098880b7-426f-4382-b4e9-fc003bc83783",
+  "ref": "Misc II Q.3 ii)",
+  "solution": "Line \\(x + 2y = 4\\): intercepts \\((4, 0)\\) and \\((0, 2)\\). At \\((0,0)\\): \\(0 \\ge 4\\), false — the region for \\(x + 2y \\ge 4\\) is the side away from the origin (boundary included).\n\nLine \\(2x - y = 6\\): intercepts \\((3, 0)\\) and \\((0, -6)\\). At \\((0,0)\\): \\(0 \\le 6\\), true — the region for \\(2x - y \\le 6\\) is the origin side (boundary included).\n\nThe two lines meet at \\((16/5, 2/5)\\), i.e. \\((3.2, 0.4)\\).\n\nThe solution is the unbounded region common to both half-planes, with corner point \\((3.2, 0.4)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-2, 6],
+   "yr": [-7, 4],
+   "caption": "Solution region of x+2y≥4, 2x−y≤6",
+   "constraints": [
+    {"A": 1, "B": 2, "op": ">=", "C": 4, "label": "x+2y=4", "color": "blue"},
+    {"A": 2, "B": -1, "op": "<=", "C": 6, "label": "2x-y=6", "color": "red"}
+   ],
+   "points": [
+    {"x": 3.2, "y": 0.4, "label": "(3.2,0.4)"},
+    {"x": 4, "y": 0, "label": "(4,0)"},
+    {"x": 0, "y": 2, "label": "(0,2)"}
+   ]
+  }
+ },
+ {
+  "id": "f0ce29bc-aea9-43cc-9825-3643903a0417",
+  "ref": "Misc II Q.3 iii)",
+  "solution": "Line \\(3x + 4y = 12\\): intercepts \\((4, 0)\\) and \\((0, 3)\\). At \\((0,0)\\): \\(0 \\le 12\\), true — the region for \\(3x + 4y \\le 12\\) is the origin side (boundary included).\n\nLine \\(x - 2y = 2\\): intercepts \\((2, 0)\\) and \\((0, -1)\\). At \\((0,0)\\): \\(0 \\ge 2\\), false — the region for \\(x - 2y \\ge 2\\) is the side away from the origin (boundary included).\n\n\\(y \\ge -1\\): region on and above the horizontal line \\(y = -1\\).\n\nCorner points: \\(3x + 4y = 12\\) meets \\(x - 2y = 2\\) at \\((3.2, 0.6)\\); \\(x - 2y = 2\\) meets \\(y = -1\\) at \\((0, -1)\\); \\(3x + 4y = 12\\) meets \\(y = -1\\) at \\((16/3, -1)\\).\n\nThe feasible region is a bounded triangle with vertices \\((3.2, 0.6)\\), \\((0, -1)\\) and \\((16/3, -1)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 6],
+   "yr": [-3, 4],
+   "caption": "Solution region of 3x+4y≤12, x−2y≥2, y≥−1",
+   "constraints": [
+    {"A": 3, "B": 4, "op": "<=", "C": 12, "label": "3x+4y=12", "color": "blue"},
+    {"A": 1, "B": -2, "op": ">=", "C": 2, "label": "x-2y=2", "color": "red"},
+    {"A": 0, "B": 1, "op": ">=", "C": -1, "label": "y=-1", "color": "green"}
+   ],
+   "points": [
+    {"x": 3.2, "y": 0.6, "label": "(3.2,0.6)"},
+    {"x": 0, "y": -1, "label": "(0,-1)"},
+    {"x": 5.333, "y": -1, "label": "(16/3,-1)"}
+   ]
+  }
+ },
+ {
+  "id": "9427a446-1c57-448a-85ec-c3be068fce03",
+  "ref": "Misc II Q.4 i)",
+  "solution": "First quadrant only (\\(x \\ge 0\\), \\(y \\ge 0\\)).\n\nLine \\(2x + 3y = 12\\): intercepts \\((6, 0)\\) and \\((0, 4)\\). At \\((0,0)\\): \\(0 \\le 12\\), true — origin side (boundary included).\n\nLine \\(2x + y = 8\\): intercepts \\((4, 0)\\) and \\((0, 8)\\). At \\((0,0)\\): \\(0 \\le 8\\), true — origin side (boundary included).\n\nThe two lines meet at \\((3, 2)\\).\n\nThe feasible region is a bounded quadrilateral with vertices \\((0, 0)\\), \\((4, 0)\\), \\((3, 2)\\) and \\((0, 4)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 7],
+   "yr": [-1, 9],
+   "caption": "Feasible region of 2x+3y≤12, 2x+y≤8 in the first quadrant",
+   "constraints": [
+    {"A": 2, "B": 3, "op": "<=", "C": 12, "label": "2x+3y=12", "color": "blue"},
+    {"A": 2, "B": 1, "op": "<=", "C": 8, "label": "2x+y=8", "color": "red"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "green"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 0, "y": 0, "label": "(0,0)"},
+    {"x": 4, "y": 0, "label": "(4,0)"},
+    {"x": 3, "y": 2, "label": "(3,2)"},
+    {"x": 0, "y": 4, "label": "(0,4)"}
+   ]
+  }
+ },
+ {
+  "id": "b00f8dca-2b74-4417-97b6-c3091235770b",
+  "ref": "Misc II Q.4 ii)",
+  "solution": "First quadrant only (\\(x \\ge 0\\), \\(y \\ge 0\\)).\n\nLine \\(3x + 4y = 12\\): intercepts \\((4, 0)\\) and \\((0, 3)\\). At \\((0,0)\\): \\(0 \\ge 12\\), false — the region for \\(3x + 4y \\ge 12\\) is the side away from the origin (boundary included).\n\nLine \\(4x + 7y = 28\\): intercepts \\((7, 0)\\) and \\((0, 4)\\). At \\((0,0)\\): \\(0 \\le 28\\), true — origin side (boundary included).\n\nThe two boundary lines meet at a point with negative \\(x\\), which lies outside the first quadrant.\n\nThe feasible region is a bounded quadrilateral with vertices \\((4, 0)\\), \\((7, 0)\\), \\((0, 4)\\) and \\((0, 3)\\) — the strip in the first quadrant lying above \\(3x + 4y = 12\\) and below \\(4x + 7y = 28\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [-1, 8],
+   "yr": [-1, 5],
+   "caption": "Feasible region of 3x+4y≥12, 4x+7y≤28 in the first quadrant",
+   "constraints": [
+    {"A": 3, "B": 4, "op": ">=", "C": 12, "label": "3x+4y=12", "color": "blue"},
+    {"A": 4, "B": 7, "op": "<=", "C": 28, "label": "4x+7y=28", "color": "red"},
+    {"A": 1, "B": 0, "op": ">=", "C": 0, "label": "x=0", "color": "green"},
+    {"A": 0, "B": 1, "op": ">=", "C": 0, "label": "y=0", "color": "purple"}
+   ],
+   "points": [
+    {"x": 4, "y": 0, "label": "(4,0)"},
+    {"x": 7, "y": 0, "label": "(7,0)"},
+    {"x": 0, "y": 4, "label": "(0,4)"},
+    {"x": 0, "y": 3, "label": "(0,3)"}
+   ]
+  }
+ }
+]

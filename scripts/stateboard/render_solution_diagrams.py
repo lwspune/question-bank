@@ -19,8 +19,8 @@ import os, json, math, re, sys
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUTDIR = os.path.join(HERE, "out", "solution-diagrams")
-MANIFEST = os.path.join(HERE, "data", "pair-lines-12.solution-images.json")
+# Per-chapter output; select with `python render_solution_diagrams.py <chapterId>`.
+# SPEC_BUILDERS is populated at the bottom (after the build_* functions are defined).
 
 SS = 2                      # supersample factor
 W, H = 520, 460            # final px
@@ -58,6 +58,10 @@ def hline(k, label="", color=BLUE, dashed=False):
 def yint_line(m, b, label="", color=BLUE, dashed=False):
     # y = m x + b -> m x - y + b = 0
     return ln(m, -1.0, b, label, color, dashed)
+
+def constraint(A, B, op, C, label="", color=BLUE, dashed=False):
+    # A linear-programming constraint  A x + B y {op} C  (op is "<=" or ">=").
+    return {"A": float(A), "B": float(B), "op": op, "C": float(C), "label": label, "color": color, "dashed": dashed}
 
 
 class Canvas:
@@ -153,6 +157,46 @@ class Canvas:
         pts = [self.px(x, y) for x, y in poly]
         self.d.polygon(pts, fill=SHADE)
 
+    # ── Feasible-region shading (Linear Programming): intersect half-planes.
+    @staticmethod
+    def _inside(x, y, A, B, op, C):
+        v = A * x + B * y
+        return v <= C + 1e-9 if op == "<=" else v >= C - 1e-9
+
+    def _clip(self, poly, A, B, op, C):
+        # Sutherland-Hodgman: clip polygon by the half-plane {A x + B y op C}.
+        out = []
+        n = len(poly)
+        for i in range(n):
+            cur = poly[i]; nxt = poly[(i + 1) % n]
+            ci = self._inside(cur[0], cur[1], A, B, op, C)
+            ni = self._inside(nxt[0], nxt[1], A, B, op, C)
+            if ci:
+                out.append(cur)
+            if ci != ni:
+                x1, y1 = cur; x2, y2 = nxt
+                d1 = A * x1 + B * y1 - C; d2 = A * x2 + B * y2 - C
+                t = d1 / (d1 - d2)
+                out.append((x1 + t * (x2 - x1), y1 + t * (y2 - y1)))
+        return out
+
+    def feasible(self, constraints):
+        # Start from the viewport rectangle, clip by each constraint -> feasible polygon
+        # (bounded or clipped-unbounded), shade it, then draw each boundary line.
+        x0, x1 = self.xr; y0, y1 = self.yr
+        poly = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+        for c in constraints:
+            poly = self._clip(poly, c["A"], c["B"], c["op"], c["C"])
+            if not poly:
+                break
+        if poly:
+            self.polygon(poly)
+        for c in constraints:
+            # skip the non-negativity constraints (x>=0 / y>=0) — they coincide with the axes
+            if (c["A"], c["B"], c["C"]) in ((1.0, 0.0, 0.0), (0.0, 1.0, 0.0)):
+                continue
+            self.line(ln(c["A"], c["B"], -c["C"], c.get("label", ""), c.get("color", BLUE), c.get("dashed", False)))
+
     def point(self, p):
         x, y = self.px(p["x"], p["y"])
         r = 4 * SS
@@ -174,6 +218,8 @@ class Canvas:
     def render(self):
         if self.spec.get("polygon"):
             self.polygon(self.spec["polygon"])
+        if self.spec.get("feasible"):
+            self.feasible(self.spec["feasible"])
         self.axes()
         for L in self.spec.get("lines", []):
             self.line(L)
@@ -187,7 +233,7 @@ def slug(ref):
     return re.sub(r"[^A-Za-z0-9]+", "_", ref).strip("_")
 
 
-def build_specs():
+def build_pair_lines_specs():
     r3 = math.sqrt(3)
     S = []
     # 1. 4.1 Q7 — origin pair y=±√3 x + base y=3, equilateral triangle
@@ -313,6 +359,39 @@ def build_specs():
     return S
 
 
+_COLORS = {"blue": BLUE, "red": RED, "green": GREEN, "purple": PURPLE, "gray": GRAY}
+
+def build_linear_prog_specs():
+    # Ch.7 Linear Programming diagrams are DATA-DRIVEN: the solving agents emit a
+    # per-question JSON spec (they know each problem's exact constraints + corners)
+    # to data/linear-prog-12.diagram-specs.json. Each entry:
+    #   {ref, xr:[..], yr:[..], caption, constraints:[{A,B,op,C,label,color}],
+    #    lines:[{A,B,C,label,color,dashed}], points:[{x,y,label,dx,dy}]}
+    p = os.path.join(HERE, "data", "linear-prog-12.diagram-specs.json")
+    if not os.path.exists(p):
+        return []
+    raw = json.load(open(p, encoding="utf-8"))
+    specs = []
+    for r in raw:
+        spec = {"ref": r["ref"], "xr": tuple(r["xr"]), "yr": tuple(r["yr"]), "caption": r.get("caption", "")}
+        col = lambda name: _COLORS.get(name, BLUE)
+        if r.get("constraints"):
+            spec["feasible"] = [constraint(c["A"], c["B"], c["op"], c["C"], c.get("label", ""), col(c.get("color", "blue")), c.get("dashed", False)) for c in r["constraints"]]
+        if r.get("lines"):
+            spec["lines"] = [ln(l["A"], l["B"], l["C"], l.get("label", ""), col(l.get("color", "blue")), l.get("dashed", False)) for l in r["lines"]]
+        if r.get("points"):
+            spec["points"] = [dict(x=pt["x"], y=pt["y"], label=pt.get("label", ""), dx=pt.get("dx", 8), dy=pt.get("dy", -18)) for pt in r["points"]]
+        specs.append(spec)
+    return specs
+
+
+# chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
+SPEC_BUILDERS = {
+    "pair-lines-12": build_pair_lines_specs,
+    "linear-prog-12": build_linear_prog_specs,
+}
+
+
 def montage(paths):
     imgs = [Image.open(p) for p in paths]
     cols = 4
@@ -325,24 +404,29 @@ def montage(paths):
     return sheet
 
 
-def main():
-    os.makedirs(OUTDIR, exist_ok=True)
-    specs = build_specs()
+def main(chapter):
+    if chapter not in SPEC_BUILDERS:
+        raise SystemExit(f"unknown chapter '{chapter}'. Known: {', '.join(SPEC_BUILDERS)}")
+    outdir = os.path.join(HERE, "out", f"{chapter}-diagrams")
+    manifest_path = os.path.join(HERE, "data", f"{chapter}.solution-images.json")
+    os.makedirs(outdir, exist_ok=True)
+    specs = SPEC_BUILDERS[chapter]()
     manifest = []
     paths = []
     for spec in specs:
         img = Canvas(spec).render()
-        p = os.path.join(OUTDIR, slug(spec["ref"]) + ".png")
+        p = os.path.join(outdir, slug(spec["ref"]) + ".png")
         img.save(p)
         paths.append(p)
         manifest.append({"ref": spec["ref"], "png": os.path.relpath(p, os.getcwd()).replace("\\", "/")})
-    montage(paths).save(os.path.join(OUTDIR, "_montage.png"))
-    with open(MANIFEST, "w", encoding="utf-8") as f:
+    if paths:
+        montage(paths).save(os.path.join(outdir, "_montage.png"))
+    with open(manifest_path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
-    print(f"rendered {len(specs)} diagrams -> {OUTDIR}")
-    print(f"montage -> {os.path.join(OUTDIR, '_montage.png')}")
-    print(f"manifest -> {MANIFEST}")
+    print(f"rendered {len(specs)} diagrams -> {outdir}")
+    print(f"montage -> {os.path.join(outdir, '_montage.png')}")
+    print(f"manifest -> {manifest_path}")
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1] if len(sys.argv) > 1 else "pair-lines-12")

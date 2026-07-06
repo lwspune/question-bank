@@ -1,0 +1,1052 @@
+[
+ {
+  "id": "3bb46fd3-3995-4c32-b717-50b1fd706921",
+  "ref": "7.2 Exercise 7.4 Q.1",
+  "solution": "The constraints are \\(x \\le 4\\), \\(y \\le 6\\), \\(x + y \\le 6\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nThe boundary lines are \\(x = 4\\), \\(y = 6\\) and \\(x + y = 6\\). The relevant corner points of the feasible region are:\n\n\\(x = 4\\) meets \\(x + y = 6\\): put \\(x = 4\\) in \\(x + y = 6\\) to get \\(y = 2\\), giving \\((4, 2)\\).\n\\(x + y = 6\\) meets \\(x = 0\\) at \\((0, 6)\\) (which also lies on \\(y = 6\\)).\n\nSo the corner points are \\(O(0,0)\\), \\((4,0)\\), \\((4,2)\\) and \\((0,6)\\).\n\n| Corner point | \\(z = 11x + 8y\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((4,0)\\) | \\(44\\) |\n| \\((4,2)\\) | \\(60\\) |\n| \\((0,6)\\) | \\(48\\) |\n\nThe maximum value of \\(z\\) is \\(60\\), attained at \\((x, y) = (4, 2)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    8
+   ],
+   "yr": [
+    -1,
+    8
+   ],
+   "caption": "Feasible region; max z = 60 at (4, 2)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 0,
+     "op": "<=",
+     "C": 4,
+     "label": "x=4",
+     "color": "blue"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": "<=",
+     "C": 6,
+     "label": "y=6",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": "<=",
+     "C": 6,
+     "label": "x+y=6",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 4,
+     "y": 0,
+     "label": "(4,0)"
+    },
+    {
+     "x": 4,
+     "y": 2,
+     "label": "(4,2)"
+    },
+    {
+     "x": 0,
+     "y": 6,
+     "label": "(0,6)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "b23cf7e4-3d86-4bc5-8570-d5a4724d3133",
+  "ref": "7.2 Exercise 7.4 Q.2",
+  "solution": "The constraints are \\(3x + 2y \\le 12\\), \\(x + y \\ge 4\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(3x + 2y = 12\\) meets the axes at \\((4,0)\\) and \\((0,6)\\); \\(x + y = 4\\) meets the axes at \\((4,0)\\) and \\((0,4)\\).\n\nIntersection of the two lines: from \\(x + y = 4\\), \\(x = 4 - y\\). Substitute in \\(3x + 2y = 12\\): \\(3(4 - y) + 2y = 12 \\Rightarrow 12 - y = 12 \\Rightarrow y = 0,\\ x = 4\\). They meet at \\((4, 0)\\).\n\nThe feasible region (above \\(x + y = 4\\), below \\(3x + 2y = 12\\)) is the triangle with corner points \\((4,0)\\), \\((0,4)\\) and \\((0,6)\\).\n\n| Corner point | \\(z = 4x + 6y\\) |\n|---|---|\n| \\((4,0)\\) | \\(16\\) |\n| \\((0,4)\\) | \\(24\\) |\n| \\((0,6)\\) | \\(36\\) |\n\nThe maximum value of \\(z\\) is \\(36\\), attained at \\((x, y) = (0, 6)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    8
+   ],
+   "yr": [
+    -1,
+    8
+   ],
+   "caption": "Feasible region; max z = 36 at (0, 6)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 2,
+     "op": "<=",
+     "C": 12,
+     "label": "3x+2y=12",
+     "color": "blue"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": ">=",
+     "C": 4,
+     "label": "x+y=4",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 4,
+     "y": 0,
+     "label": "(4,0)"
+    },
+    {
+     "x": 0,
+     "y": 4,
+     "label": "(0,4)"
+    },
+    {
+     "x": 0,
+     "y": 6,
+     "label": "(0,6)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "70a18383-4a21-41a7-a01f-b0c0ee2091a9",
+  "ref": "7.2 Exercise 7.4 Q.3",
+  "solution": "The constraints are \\(3x + 5y \\le 26\\), \\(5x + 3y \\le 30\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(3x + 5y = 26\\) meets the axes at \\((\\tfrac{26}{3}, 0)\\) and \\((0, 5.2)\\); \\(5x + 3y = 30\\) meets the axes at \\((6, 0)\\) and \\((0, 10)\\).\n\nOn the \\(x\\)-axis the binding point is \\((6, 0)\\) (from \\(5x + 3y = 30\\); it satisfies \\(3x + 5y = 18 \\le 26\\)). On the \\(y\\)-axis the binding point is \\((0, 5.2)\\) (from \\(3x + 5y = 26\\); it satisfies \\(5x + 3y = 15.6 \\le 30\\)).\n\nIntersection of the two lines:\n\\(3x + 5y = 26\\) ... (i), \\(5x + 3y = 30\\) ... (ii).\n\\((i)\\times 3:\\ 9x + 15y = 78\\); \\((ii)\\times 5:\\ 25x + 15y = 150\\). Subtracting, \\(16x = 72 \\Rightarrow x = 4.5\\). Then \\(3(4.5) + 5y = 26 \\Rightarrow 5y = 12.5 \\Rightarrow y = 2.5\\). So they meet at \\((4.5, 2.5)\\).\n\nCorner points: \\(O(0,0)\\), \\((6,0)\\), \\((4.5, 2.5)\\), \\((0, 5.2)\\).\n\n| Corner point | \\(z = 7x + 11y\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((6,0)\\) | \\(42\\) |\n| \\((4.5, 2.5)\\) | \\(59\\) |\n| \\((0, 5.2)\\) | \\(57.2\\) |\n\nThe maximum value of \\(z\\) is \\(59\\), attained at \\((x, y) = (4.5, 2.5)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    10
+   ],
+   "yr": [
+    -1,
+    8
+   ],
+   "caption": "Feasible region; max z = 59 at (4.5, 2.5)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 5,
+     "op": "<=",
+     "C": 26,
+     "label": "3x+5y=26",
+     "color": "blue"
+    },
+    {
+     "A": 5,
+     "B": 3,
+     "op": "<=",
+     "C": 30,
+     "label": "5x+3y=30",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "label": "(6,0)"
+    },
+    {
+     "x": 4.5,
+     "y": 2.5,
+     "label": "(4.5,2.5)"
+    },
+    {
+     "x": 0,
+     "y": 5.2,
+     "label": "(0,5.2)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "09da58b0-02e3-4718-bdea-402f9433424b",
+  "ref": "7.2 Exercise 7.4 Q.4",
+  "solution": "The constraints are \\(0 \\le x \\le 3\\), \\(0 \\le y \\le 3\\), \\(x + y \\le 5\\), i.e. \\(x \\le 3\\), \\(y \\le 3\\), \\(x + y \\le 5\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines \\(x = 3\\), \\(y = 3\\) and \\(x + y = 5\\). Corner points:\n\n\\(x = 3\\) meets \\(x + y = 5\\) at \\(y = 2\\), giving \\((3, 2)\\).\n\\(y = 3\\) meets \\(x + y = 5\\) at \\(x = 2\\), giving \\((2, 3)\\).\n\nSo the corner points are \\(O(0,0)\\), \\((3,0)\\), \\((3,2)\\), \\((2,3)\\) and \\((0,3)\\).\n\n| Corner point | \\(z = 10x + 25y\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((3,0)\\) | \\(30\\) |\n| \\((3,2)\\) | \\(80\\) |\n| \\((2,3)\\) | \\(95\\) |\n| \\((0,3)\\) | \\(75\\) |\n\nThe maximum value of \\(z\\) is \\(95\\), attained at \\((x, y) = (2, 3)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    7
+   ],
+   "yr": [
+    -1,
+    7
+   ],
+   "caption": "Feasible region; max z = 95 at (2, 3)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 0,
+     "op": "<=",
+     "C": 3,
+     "label": "x=3",
+     "color": "blue"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": "<=",
+     "C": 3,
+     "label": "y=3",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": "<=",
+     "C": 5,
+     "label": "x+y=5",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 3,
+     "y": 0,
+     "label": "(3,0)"
+    },
+    {
+     "x": 3,
+     "y": 2,
+     "label": "(3,2)"
+    },
+    {
+     "x": 2,
+     "y": 3,
+     "label": "(2,3)"
+    },
+    {
+     "x": 0,
+     "y": 3,
+     "label": "(0,3)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "989bbc33-0014-416e-a2e1-f9e8484f8db8",
+  "ref": "7.2 Exercise 7.4 Q.5",
+  "solution": "The constraints are \\(x + 4y \\le 24\\), \\(3x + y \\le 21\\), \\(x + y \\le 9\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(x + 4y = 24\\) meets axes at \\((24,0)\\), \\((0,6)\\); \\(3x + y = 21\\) at \\((7,0)\\), \\((0,21)\\); \\(x + y = 9\\) at \\((9,0)\\), \\((0,9)\\).\n\nOn the \\(x\\)-axis the binding point is \\((7, 0)\\) (from \\(3x + y = 21\\)). On the \\(y\\)-axis the binding point is \\((0, 6)\\) (from \\(x + 4y = 24\\)).\n\nIntersection of \\(3x + y = 21\\) and \\(x + y = 9\\): subtracting, \\(2x = 12 \\Rightarrow x = 6,\\ y = 3\\), giving \\((6, 3)\\) (it satisfies \\(x + 4y = 18 \\le 24\\)).\nIntersection of \\(x + y = 9\\) and \\(x + 4y = 24\\): subtracting, \\(3y = 15 \\Rightarrow y = 5,\\ x = 4\\), giving \\((4, 5)\\) (it satisfies \\(3x + y = 17 \\le 21\\)).\n\nCorner points: \\(O(0,0)\\), \\((7,0)\\), \\((6,3)\\), \\((4,5)\\), \\((0,6)\\).\n\n| Corner point | \\(z = 3x + 5y\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((7,0)\\) | \\(21\\) |\n| \\((6,3)\\) | \\(33\\) |\n| \\((4,5)\\) | \\(37\\) |\n| \\((0,6)\\) | \\(30\\) |\n\nThe maximum value of \\(z\\) is \\(37\\), attained at \\((x, y) = (4, 5)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    12
+   ],
+   "yr": [
+    -1,
+    10
+   ],
+   "caption": "Feasible region; max z = 37 at (4, 5)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 4,
+     "op": "<=",
+     "C": 24,
+     "label": "x+4y=24",
+     "color": "blue"
+    },
+    {
+     "A": 3,
+     "B": 1,
+     "op": "<=",
+     "C": 21,
+     "label": "3x+y=21",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": "<=",
+     "C": 9,
+     "label": "x+y=9",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 7,
+     "y": 0,
+     "label": "(7,0)"
+    },
+    {
+     "x": 6,
+     "y": 3,
+     "label": "(6,3)"
+    },
+    {
+     "x": 4,
+     "y": 5,
+     "label": "(4,5)"
+    },
+    {
+     "x": 0,
+     "y": 6,
+     "label": "(0,6)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "541f754b-1690-4072-8ea1-94c7703f44a8",
+  "ref": "7.2 Exercise 7.4 Q.6",
+  "solution": "The constraints are \\(5x + y \\ge 5\\), \\(x + y \\ge 3\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(5x + y = 5\\) meets axes at \\((1,0)\\), \\((0,5)\\); \\(x + y = 3\\) meets axes at \\((3,0)\\), \\((0,3)\\).\n\nThe feasible region lies above both lines (unbounded above). Its corner points:\n\nOn the \\(y\\)-axis the binding point is \\((0, 5)\\) (from \\(5x + y = 5\\); it satisfies \\(x + y = 5 \\ge 3\\)).\nOn the \\(x\\)-axis the binding point is \\((3, 0)\\) (from \\(x + y = 3\\); it satisfies \\(5x + y = 15 \\ge 5\\)).\nIntersection of \\(5x + y = 5\\) and \\(x + y = 3\\): subtracting, \\(4x = 2 \\Rightarrow x = 0.5,\\ y = 2.5\\), giving \\((0.5, 2.5)\\).\n\nCorner points: \\((0,5)\\), \\((0.5, 2.5)\\), \\((3,0)\\).\n\n| Corner point | \\(z = 7x + y\\) |\n|---|---|\n| \\((0,5)\\) | \\(5\\) |\n| \\((0.5, 2.5)\\) | \\(6\\) |\n| \\((3,0)\\) | \\(21\\) |\n\nThe region is unbounded, but since we minimize, the minimum exists. The minimum value of \\(z\\) is \\(5\\), attained at \\((x, y) = (0, 5)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    6
+   ],
+   "yr": [
+    -1,
+    6
+   ],
+   "caption": "Unbounded feasible region; min z = 5 at (0, 5)",
+   "constraints": [
+    {
+     "A": 5,
+     "B": 1,
+     "op": ">=",
+     "C": 5,
+     "label": "5x+y=5",
+     "color": "blue"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": ">=",
+     "C": 3,
+     "label": "x+y=3",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 5,
+     "label": "(0,5)"
+    },
+    {
+     "x": 0.5,
+     "y": 2.5,
+     "label": "(0.5,2.5)"
+    },
+    {
+     "x": 3,
+     "y": 0,
+     "label": "(3,0)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "d99179e1-d0d1-4b6a-ba21-35648211c4f9",
+  "ref": "7.2 Exercise 7.4 Q.7",
+  "solution": "The constraints are \\(2x + y \\ge 7\\), \\(2x + 3y \\ge 15\\), \\(y \\ge 2\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(2x + y = 7\\) meets axes at \\((3.5,0)\\), \\((0,7)\\); \\(2x + 3y = 15\\) at \\((7.5,0)\\), \\((0,5)\\); and \\(y = 2\\).\n\nThe feasible region lies above all three lines (unbounded above). Its corner points:\n\nOn the \\(y\\)-axis: \\(2x + y \\ge 7\\) needs \\(y \\ge 7\\) at \\(x = 0\\), giving \\((0, 7)\\) (it satisfies \\(2x + 3y = 21 \\ge 15\\)).\nIntersection of \\(2x + y = 7\\) and \\(2x + 3y = 15\\): subtracting, \\(2y = 8 \\Rightarrow y = 4\\), then \\(2x = 7 - 4 = 3 \\Rightarrow x = 1.5\\), giving \\((1.5, 4)\\) (\\(y = 4 \\ge 2\\)).\nIntersection of \\(2x + 3y = 15\\) and \\(y = 2\\): \\(2x + 6 = 15 \\Rightarrow x = 4.5\\), giving \\((4.5, 2)\\) (it satisfies \\(2x + y = 11 \\ge 7\\)).\n\nCorner points: \\((0,7)\\), \\((1.5, 4)\\), \\((4.5, 2)\\).\n\n| Corner point | \\(z = 8x + 10y\\) |\n|---|---|\n| \\((0,7)\\) | \\(70\\) |\n| \\((1.5, 4)\\) | \\(52\\) |\n| \\((4.5, 2)\\) | \\(56\\) |\n\nThe region is unbounded, but since we minimize, the minimum exists. The minimum value of \\(z\\) is \\(52\\), attained at \\((x, y) = (1.5, 4)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    9
+   ],
+   "yr": [
+    -1,
+    9
+   ],
+   "caption": "Unbounded feasible region; min z = 52 at (1.5, 4)",
+   "constraints": [
+    {
+     "A": 2,
+     "B": 1,
+     "op": ">=",
+     "C": 7,
+     "label": "2x+y=7",
+     "color": "blue"
+    },
+    {
+     "A": 2,
+     "B": 3,
+     "op": ">=",
+     "C": 15,
+     "label": "2x+3y=15",
+     "color": "red"
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 2,
+     "label": "y=2",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 7,
+     "label": "(0,7)"
+    },
+    {
+     "x": 1.5,
+     "y": 4,
+     "label": "(1.5,4)"
+    },
+    {
+     "x": 4.5,
+     "y": 2,
+     "label": "(4.5,2)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "efce4647-73fa-4a22-aee0-23354fd4652d",
+  "ref": "7.2 Exercise 7.4 Q.8",
+  "solution": "[Textbook answer-key error: the printed key gives \"minimum 22.5 at \\((2, 0.5)\\)\" — that is the minimum of \\(z = 6x + 21y\\); for the printed objective \\(z = 6x + 2y\\) the minimum is \\(6\\), attained along the segment \\((0, 3)\\)–\\((0.6, 1.2)\\) (our answer).]\n\nThe constraints are \\(x + 2y \\ge 3\\), \\(x + 4y \\ge 4\\), \\(3x + y \\ge 3\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(x + 2y = 3\\) meets axes at \\((3,0)\\), \\((0,1.5)\\); \\(x + 4y = 4\\) at \\((4,0)\\), \\((0,1)\\); \\(3x + y = 3\\) at \\((1,0)\\), \\((0,3)\\).\n\nThe feasible region lies above all three lines (unbounded above). Its corner points:\n\nOn the \\(y\\)-axis: \\(3x + y \\ge 3\\) needs \\(y \\ge 3\\) at \\(x = 0\\), giving \\((0, 3)\\) (satisfies the other two).\nIntersection of \\(3x + y = 3\\) and \\(x + 2y = 3\\): from \\(y = 3 - 3x\\), \\(x + 2(3 - 3x) = 3 \\Rightarrow -5x = -3 \\Rightarrow x = 0.6,\\ y = 1.2\\), giving \\((0.6, 1.2)\\) (satisfies \\(x + 4y = 5.4 \\ge 4\\)).\nIntersection of \\(x + 2y = 3\\) and \\(x + 4y = 4\\): subtracting, \\(2y = 1 \\Rightarrow y = 0.5,\\ x = 2\\), giving \\((2, 0.5)\\) (satisfies \\(3x + y = 6.5 \\ge 3\\)).\nOn the \\(x\\)-axis: \\(x + 4y \\ge 4\\) needs \\(x \\ge 4\\), giving \\((4, 0)\\).\n\nCorner points: \\((0,3)\\), \\((0.6, 1.2)\\), \\((2, 0.5)\\), \\((4, 0)\\).\n\n| Corner point | \\(z = 6x + 2y\\) |\n|---|---|\n| \\((0,3)\\) | \\(6\\) |\n| \\((0.6, 1.2)\\) | \\(6\\) |\n| \\((2, 0.5)\\) | \\(13\\) |\n| \\((4, 0)\\) | \\(24\\) |\n\nThe minimum value of \\(z\\) is \\(6\\). It occurs at two corner points \\((0, 3)\\) and \\((0.6, 1.2)\\), hence at every point on the segment joining them (multiple optimal solutions). The minimum value of \\(z\\) is \\(6\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    6
+   ],
+   "yr": [
+    -1,
+    5
+   ],
+   "caption": "Unbounded region; min z = 6 along edge (0,3)-(0.6,1.2)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 2,
+     "op": ">=",
+     "C": 3,
+     "label": "x+2y=3",
+     "color": "blue"
+    },
+    {
+     "A": 1,
+     "B": 4,
+     "op": ">=",
+     "C": 4,
+     "label": "x+4y=4",
+     "color": "red"
+    },
+    {
+     "A": 3,
+     "B": 1,
+     "op": ">=",
+     "C": 3,
+     "label": "3x+y=3",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 3,
+     "label": "(0,3)"
+    },
+    {
+     "x": 0.6,
+     "y": 1.2,
+     "label": "(0.6,1.2)"
+    },
+    {
+     "x": 2,
+     "y": 0.5,
+     "label": "(2,0.5)"
+    },
+    {
+     "x": 4,
+     "y": 0,
+     "label": "(4,0)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "9088e9fc-f19c-4852-a751-79053aa20919",
+  "ref": "Misc II Q.5 i)",
+  "solution": "Let the variables be \\(x_1, x_2\\) (plotted as \\(x, y\\)). The constraints are \\(2x_1 + 3x_2 \\le 18\\), \\(2x_1 + x_2 \\le 12\\), \\(x_1 \\ge 0\\), \\(x_2 \\ge 0\\).\n\nBoundary lines: \\(2x_1 + 3x_2 = 18\\) meets axes at \\((9,0)\\), \\((0,6)\\); \\(2x_1 + x_2 = 12\\) at \\((6,0)\\), \\((0,12)\\).\n\nOn the \\(x_1\\)-axis the binding point is \\((6, 0)\\) (from \\(2x_1 + x_2 = 12\\); satisfies \\(2x_1 + 3x_2 = 12 \\le 18\\)). On the \\(x_2\\)-axis the binding point is \\((0, 6)\\) (from \\(2x_1 + 3x_2 = 18\\); satisfies \\(2x_1 + x_2 = 6 \\le 12\\)).\n\nIntersection of the two lines: subtract \\((2x_1 + x_2 = 12)\\) from \\((2x_1 + 3x_2 = 18)\\) to get \\(2x_2 = 6 \\Rightarrow x_2 = 3\\), then \\(2x_1 = 12 - 3 = 9 \\Rightarrow x_1 = 4.5\\), giving \\((4.5, 3)\\).\n\nCorner points: \\(O(0,0)\\), \\((6,0)\\), \\((4.5, 3)\\), \\((0,6)\\).\n\n| Corner point | \\(z = 5x_1 + 6x_2\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((6,0)\\) | \\(30\\) |\n| \\((4.5, 3)\\) | \\(40.5\\) |\n| \\((0,6)\\) | \\(36\\) |\n\nThe maximum value of \\(z\\) is \\(40.5\\), attained at \\((x_1, x_2) = (4.5, 3)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    8
+   ],
+   "yr": [
+    -1,
+    8
+   ],
+   "caption": "Feasible region; max z = 40.5 at (4.5, 3)",
+   "constraints": [
+    {
+     "A": 2,
+     "B": 3,
+     "op": "<=",
+     "C": 18,
+     "label": "2x1+3x2=18",
+     "color": "blue"
+    },
+    {
+     "A": 2,
+     "B": 1,
+     "op": "<=",
+     "C": 12,
+     "label": "2x1+x2=12",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "label": "(6,0)"
+    },
+    {
+     "x": 4.5,
+     "y": 3,
+     "label": "(4.5,3)"
+    },
+    {
+     "x": 0,
+     "y": 6,
+     "label": "(0,6)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "66580e09-d350-4c1e-865b-ac3f7c880dab",
+  "ref": "Misc II Q.5 ii)",
+  "solution": "[Textbook note: the question says \"Maximize \\(z = 4x + 2y\\)\", but over this all-\\(\\ge\\) region \\(z\\) is unbounded (no maximum); the answer key's \"\\(\\min z = 48\\) at \\((3, 18)\\)\" answers the Minimize version.]\n\nThe constraints are \\(3x + y \\ge 27\\), \\(x + y \\ge 21\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(3x + y = 27\\) meets axes at \\((9,0)\\), \\((0,27)\\); \\(x + y = 21\\) at \\((21,0)\\), \\((0,21)\\).\n\nThe feasible region lies above both lines and is UNBOUNDED (it extends without limit towards larger \\(x\\) and \\(y\\)). Its corner points are:\n\nOn the \\(y\\)-axis: \\(3x + y \\ge 27\\) needs \\(y \\ge 27\\), giving \\((0, 27)\\) (satisfies \\(x + y = 27 \\ge 21\\)).\nIntersection of \\(3x + y = 27\\) and \\(x + y = 21\\): subtracting, \\(2x = 6 \\Rightarrow x = 3,\\ y = 18\\), giving \\((3, 18)\\).\nOn the \\(x\\)-axis: \\(x + y \\ge 21\\) needs \\(x \\ge 21\\), giving \\((21, 0)\\) (satisfies \\(3x + y = 63 \\ge 27\\)).\n\n| Corner point | \\(z = 4x + 2y\\) |\n|---|---|\n| \\((0, 27)\\) | \\(54\\) |\n| \\((3, 18)\\) | \\(48\\) |\n| \\((21, 0)\\) | \\(84\\) |\n\nBecause the region is unbounded and \\(z = 4x + 2y\\) increases without limit as \\(x, y\\) grow (e.g. move along \\(x + y = 21\\) beyond \\((21,0)\\) or take large \\(x, y\\) satisfying both constraints), \\(z\\) has NO maximum value. Hence this L.P.P. has an **unbounded solution** (no finite maximum).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -2,
+    24
+   ],
+   "yr": [
+    -2,
+    30
+   ],
+   "caption": "Unbounded region; z = 4x+2y has NO maximum",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 1,
+     "op": ">=",
+     "C": 27,
+     "label": "3x+y=27",
+     "color": "blue"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": ">=",
+     "C": 21,
+     "label": "x+y=21",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 27,
+     "label": "(0,27)"
+    },
+    {
+     "x": 3,
+     "y": 18,
+     "label": "(3,18)"
+    },
+    {
+     "x": 21,
+     "y": 0,
+     "label": "(21,0)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "ba69cdb5-3624-4ae6-82c3-7ddb5d26712d",
+  "ref": "Misc II Q.5 iii)",
+  "solution": "The constraints are \\(3x + 5y \\le 10\\), \\(5x + 3y \\le 15\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(3x + 5y = 10\\) meets axes at \\((\\tfrac{10}{3}, 0)\\), \\((0, 2)\\); \\(5x + 3y = 15\\) at \\((3, 0)\\), \\((0, 5)\\).\n\nOn the \\(x\\)-axis the binding point is \\((3, 0)\\) (from \\(5x + 3y = 15\\); satisfies \\(3x + 5y = 9 \\le 10\\)). On the \\(y\\)-axis the binding point is \\((0, 2)\\) (from \\(3x + 5y = 10\\); satisfies \\(5x + 3y = 6 \\le 15\\)).\n\nIntersection of the two lines:\n\\(3x + 5y = 10\\) ... (i), \\(5x + 3y = 15\\) ... (ii).\n\\((i)\\times 3:\\ 9x + 15y = 30\\); \\((ii)\\times 5:\\ 25x + 15y = 75\\). Subtracting, \\(16x = 45 \\Rightarrow x = \\tfrac{45}{16} = 2.8125\\). Then \\(y = \\dfrac{10 - 3x}{5} = \\dfrac{10 - 8.4375}{5} = \\tfrac{5}{16} = 0.3125\\). So they meet at \\(\\left(\\tfrac{45}{16}, \\tfrac{5}{16}\\right)\\).\n\nCorner points: \\(O(0,0)\\), \\((3,0)\\), \\(\\left(\\tfrac{45}{16}, \\tfrac{5}{16}\\right)\\), \\((0,2)\\).\n\n| Corner point | \\(z = 6x + 10y\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((3,0)\\) | \\(18\\) |\n| \\(\\left(\\tfrac{45}{16}, \\tfrac{5}{16}\\right)\\) | \\(20\\) |\n| \\((0,2)\\) | \\(20\\) |\n\nThe maximum value of \\(z\\) is \\(20\\). It occurs at two corner points \\((0, 2)\\) and \\(\\left(\\tfrac{45}{16}, \\tfrac{5}{16}\\right)\\), hence at every point on the segment joining them (multiple optimal solutions). The maximum value of \\(z\\) is \\(20\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    5
+   ],
+   "yr": [
+    -1,
+    6
+   ],
+   "caption": "Feasible region; max z = 20 along edge (0,2)-(45/16,5/16)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 5,
+     "op": "<=",
+     "C": 10,
+     "label": "3x+5y=10",
+     "color": "blue"
+    },
+    {
+     "A": 5,
+     "B": 3,
+     "op": "<=",
+     "C": 15,
+     "label": "5x+3y=15",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 3,
+     "y": 0,
+     "label": "(3,0)"
+    },
+    {
+     "x": 2.8125,
+     "y": 0.3125,
+     "label": "(45/16,5/16)"
+    },
+    {
+     "x": 0,
+     "y": 2,
+     "label": "(0,2)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "74de1fa6-c524-4567-895b-bc96ddc4644c",
+  "ref": "Misc II Q.5 iv)",
+  "solution": "The constraints are \\(x - y \\ge 3\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary line: \\(x - y = 3\\) meets the axes at \\((3, 0)\\) and \\((0, -3)\\); only the part in the first quadrant is relevant.\n\nThe feasible region is \\(\\{(x, y) : x \\ge y + 3,\\ x \\ge 0,\\ y \\ge 0\\}\\). This region is UNBOUNDED — for any \\(y \\ge 0\\) we may take \\(x\\) as large as we like (with \\(x \\ge y + 3\\)). The only corner point is \\((3, 0)\\) (where \\(x - y = 3\\) meets \\(y = 0\\)).\n\n| Corner point | \\(z = 2x + 3y\\) |\n|---|---|\n| \\((3, 0)\\) | \\(6\\) |\n\nSince the region is unbounded and \\(z = 2x + 3y\\) increases without limit as \\(x\\) (and \\(y\\)) grow within the region, \\(z\\) has NO maximum value. Hence this L.P.P. has an **unbounded solution** (no finite maximum).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    12
+   ],
+   "yr": [
+    -1,
+    10
+   ],
+   "caption": "Unbounded region; z = 2x+3y has NO maximum",
+   "constraints": [
+    {
+     "A": 1,
+     "B": -1,
+     "op": ">=",
+     "C": 3,
+     "label": "x-y=3",
+     "color": "blue"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 3,
+     "y": 0,
+     "label": "(3,0)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "8d9fec80-9977-4678-9a51-7b202c3b6a68",
+  "ref": "Misc II Q.6 i)",
+  "solution": "Let the variables be \\(x_1, x_2\\) (plotted as \\(x, y\\)). The constraints are \\(3x_1 + x_2 \\le 15\\), \\(3x_1 + 4x_2 \\le 24\\), \\(x_1 \\ge 0\\), \\(x_2 \\ge 0\\).\n\nBoundary lines: \\(3x_1 + x_2 = 15\\) meets axes at \\((5,0)\\), \\((0,15)\\); \\(3x_1 + 4x_2 = 24\\) at \\((8,0)\\), \\((0,6)\\).\n\nOn the \\(x_1\\)-axis the binding point is \\((5, 0)\\) (from \\(3x_1 + x_2 = 15\\); satisfies \\(3x_1 + 4x_2 = 15 \\le 24\\)). On the \\(x_2\\)-axis the binding point is \\((0, 6)\\) (from \\(3x_1 + 4x_2 = 24\\); satisfies \\(3x_1 + x_2 = 6 \\le 15\\)).\n\nIntersection of the two lines: subtract \\((3x_1 + x_2 = 15)\\) from \\((3x_1 + 4x_2 = 24)\\) to get \\(3x_2 = 9 \\Rightarrow x_2 = 3\\), then \\(3x_1 = 15 - 3 = 12 \\Rightarrow x_1 = 4\\), giving \\((4, 3)\\).\n\nCorner points: \\(O(0,0)\\), \\((5,0)\\), \\((4, 3)\\), \\((0,6)\\).\n\n| Corner point | \\(z = 4x_1 + 3x_2\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((5,0)\\) | \\(20\\) |\n| \\((4, 3)\\) | \\(25\\) |\n| \\((0,6)\\) | \\(18\\) |\n\nThe maximum value of \\(z\\) is \\(25\\), attained at \\((x_1, x_2) = (4, 3)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -1,
+    9
+   ],
+   "yr": [
+    -1,
+    8
+   ],
+   "caption": "Feasible region; max z = 25 at (4, 3)",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 1,
+     "op": "<=",
+     "C": 15,
+     "label": "3x1+x2=15",
+     "color": "blue"
+    },
+    {
+     "A": 3,
+     "B": 4,
+     "op": "<=",
+     "C": 24,
+     "label": "3x1+4x2=24",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "label": "(5,0)"
+    },
+    {
+     "x": 4,
+     "y": 3,
+     "label": "(4,3)"
+    },
+    {
+     "x": 0,
+     "y": 6,
+     "label": "(0,6)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "db4ae57b-aef7-442f-93bb-7ef613bf8a8d",
+  "ref": "Misc II Q.6 ii)",
+  "solution": "The constraints are \\(x + 2y \\le 40\\), \\(3x + 2y \\le 60\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(x + 2y = 40\\) meets axes at \\((40,0)\\), \\((0,20)\\); \\(3x + 2y = 60\\) at \\((20,0)\\), \\((0,30)\\).\n\nOn the \\(x\\)-axis the binding point is \\((20, 0)\\) (from \\(3x + 2y = 60\\); satisfies \\(x + 2y = 20 \\le 40\\)). On the \\(y\\)-axis the binding point is \\((0, 20)\\) (from \\(x + 2y = 40\\); satisfies \\(3x + 2y = 40 \\le 60\\)).\n\nIntersection of the two lines: subtract \\((x + 2y = 40)\\) from \\((3x + 2y = 60)\\) to get \\(2x = 20 \\Rightarrow x = 10\\), then \\(2y = 40 - 10 = 30 \\Rightarrow y = 15\\), giving \\((10, 15)\\).\n\nCorner points: \\(O(0,0)\\), \\((20,0)\\), \\((10, 15)\\), \\((0,20)\\).\n\n| Corner point | \\(z = 60x + 50y\\) |\n|---|---|\n| \\(O(0,0)\\) | \\(0\\) |\n| \\((20,0)\\) | \\(1200\\) |\n| \\((10, 15)\\) | \\(1350\\) |\n| \\((0,20)\\) | \\(1000\\) |\n\nThe maximum value of \\(z\\) is \\(1350\\), attained at \\((x, y) = (10, 15)\\).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -2,
+    25
+   ],
+   "yr": [
+    -2,
+    32
+   ],
+   "caption": "Feasible region; max z = 1350 at (10, 15)",
+   "constraints": [
+    {
+     "A": 1,
+     "B": 2,
+     "op": "<=",
+     "C": 40,
+     "label": "x+2y=40",
+     "color": "blue"
+    },
+    {
+     "A": 3,
+     "B": 2,
+     "op": "<=",
+     "C": 60,
+     "label": "3x+2y=60",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 0,
+     "label": "O"
+    },
+    {
+     "x": 20,
+     "y": 0,
+     "label": "(20,0)"
+    },
+    {
+     "x": 10,
+     "y": 15,
+     "label": "(10,15)"
+    },
+    {
+     "x": 0,
+     "y": 20,
+     "label": "(0,20)"
+    }
+   ]
+  }
+ },
+ {
+  "id": "f6abe14c-77e0-47dc-8c19-e88eb5e16396",
+  "ref": "Misc II Q.6 iii)",
+  "solution": "[Textbook note: the question says \"Maximize \\(z = 4x + 2y\\)\", but over this all-\\(\\ge\\) region \\(z\\) is unbounded (no maximum); the answer key's \"\\(z = 48\\) at \\((3, 18)\\)\" is the minimum, not a maximum.]\n\nThe constraints are \\(3x + y \\ge 27\\), \\(x + y \\ge 21\\), \\(x + 2y \\ge 30\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\n\nBoundary lines: \\(3x + y = 27\\) meets axes at \\((9,0)\\), \\((0,27)\\); \\(x + y = 21\\) at \\((21,0)\\), \\((0,21)\\); \\(x + 2y = 30\\) at \\((30,0)\\), \\((0,15)\\).\n\nThe feasible region lies above all three lines and is UNBOUNDED. Its corner points:\n\nOn the \\(y\\)-axis: \\(3x + y \\ge 27\\) needs \\(y \\ge 27\\), giving \\((0, 27)\\) (satisfies the other two).\nIntersection of \\(3x + y = 27\\) and \\(x + y = 21\\): subtracting, \\(2x = 6 \\Rightarrow x = 3,\\ y = 18\\), giving \\((3, 18)\\) (satisfies \\(x + 2y = 39 \\ge 30\\)).\nIntersection of \\(x + y = 21\\) and \\(x + 2y = 30\\): subtracting, \\(y = 9,\\ x = 12\\), giving \\((12, 9)\\) (satisfies \\(3x + y = 45 \\ge 27\\)).\nOn the \\(x\\)-axis: \\(x + 2y \\ge 30\\) needs \\(x \\ge 30\\), giving \\((30, 0)\\).\n\n| Corner point | \\(z = 4x + 2y\\) |\n|---|---|\n| \\((0, 27)\\) | \\(54\\) |\n| \\((3, 18)\\) | \\(48\\) |\n| \\((12, 9)\\) | \\(66\\) |\n| \\((30, 0)\\) | \\(120\\) |\n\nBecause the region is unbounded and \\(z = 4x + 2y\\) increases without limit as \\(x, y\\) grow within the region, \\(z\\) has NO maximum value. Hence this L.P.P. has an **unbounded solution** (no finite maximum).",
+  "diagramWouldHelp": true,
+  "diagramSpec": {
+   "xr": [
+    -2,
+    32
+   ],
+   "yr": [
+    -2,
+    30
+   ],
+   "caption": "Unbounded region; z = 4x+2y has NO maximum",
+   "constraints": [
+    {
+     "A": 3,
+     "B": 1,
+     "op": ">=",
+     "C": 27,
+     "label": "3x+y=27",
+     "color": "blue"
+    },
+    {
+     "A": 1,
+     "B": 1,
+     "op": ">=",
+     "C": 21,
+     "label": "x+y=21",
+     "color": "red"
+    },
+    {
+     "A": 1,
+     "B": 2,
+     "op": ">=",
+     "C": 30,
+     "label": "x+2y=30",
+     "color": "green"
+    },
+    {
+     "A": 1,
+     "B": 0,
+     "op": ">=",
+     "C": 0
+    },
+    {
+     "A": 0,
+     "B": 1,
+     "op": ">=",
+     "C": 0
+    }
+   ],
+   "points": [
+    {
+     "x": 0,
+     "y": 27,
+     "label": "(0,27)"
+    },
+    {
+     "x": 3,
+     "y": 18,
+     "label": "(3,18)"
+    },
+    {
+     "x": 12,
+     "y": 9,
+     "label": "(12,9)"
+    },
+    {
+     "x": 30,
+     "y": 0,
+     "label": "(30,0)"
+    }
+   ]
+  }
+ }
+]
