@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (i)",
+    "xr": [-1, 6], "yr": [-1, 11],
+    "caption": "Area under y = 2x from x = 0 to x = 5",
+    "shade": [{"dom": [0, 5], "hi": "2*x", "lo": "0"}],
+    "curves": [{"expr": "2*x", "dom": [0, 5], "label": "y = 2x", "color": "blue"}],
+    "lines": [{"A": 1, "B": 0, "C": -5, "label": "x = 5", "color": "green", "dashed": true}],
+    "points": [{"x": 5, "y": 10, "label": "(5, 10)", "dx": 6, "dy": -20}]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.2 (ii)",
+    "xr": [-3, 3], "yr": [-1, 5],
+    "caption": "Area between y = 4 - x^2 and the X-axis",
+    "shade": [{"dom": [-2, 2], "hi": "4 - x**2", "lo": "0"}],
+    "curves": [{"expr": "4 - x**2", "dom": [-2.6, 2.6], "label": "y = 4 - x^2", "color": "blue"}],
+    "points": [{"x": -2, "y": 0, "label": "(-2, 0)", "dx": -30, "dy": 4}, {"x": 2, "y": 0, "label": "(2, 0)", "dx": 6, "dy": 4}]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.3 (ii)",
+    "xr": [-1, 6], "yr": [-3, 6],
+    "caption": "Region between y^2 = 4x and the line y = x",
+    "shade": [{"dom": [0, 4], "hi": "2*np.sqrt(x)", "lo": "x"}],
+    "curves": [
+      {"expr": "2*np.sqrt(x)", "dom": [0, 5.5], "label": "y^2 = 4x", "color": "blue"},
+      {"expr": "-2*np.sqrt(x)", "dom": [0, 5.5], "label": "", "color": "blue"}
+    ],
+    "lines": [{"A": 1, "B": -1, "C": 0, "label": "y = x", "color": "red"}],
+    "points": [{"x": 4, "y": 4, "label": "(4, 4)", "dx": 6, "dy": -20}]
+  },
+  {
+    "ref": "Misc II Q.2",
+    "xr": [-4, 4], "yr": [-4, 4],
+    "caption": "Circle x^2 + y^2 = 9, area = 9π",
+    "shade": [{"dom": [-3, 3], "hi": "np.sqrt(9 - x**2)", "lo": "-np.sqrt(9 - x**2)"}],
+    "conics": [{"cx": 0, "cy": 0, "r": 3, "label": "x^2+y^2=9", "color": "blue"}]
+  },
+  {
+    "ref": "Misc II Q.3",
+    "xr": [-6, 6], "yr": [-5, 5],
+    "caption": "Ellipse x^2/25 + y^2/16 = 1, area = 20π",
+    "shade": [{"dom": [-5, 5], "hi": "4*np.sqrt(1 - x**2/25)", "lo": "-4*np.sqrt(1 - x**2/25)"}],
+    "conics": [{"cx": 0, "cy": 0, "a": 5, "b": 4, "label": "", "color": "blue"}]
+  },
+  {
+    "ref": "5.1 Exercise 5.1 Q.1 (iv)",
+    "xr": [-0.3, 1.9], "yr": [-0.3, 1.3],
+    "caption": "Area under y = sin x from x = 0 to x = π/2",
+    "shade": [{"dom": [0, 1.5708], "hi": "np.sin(x)", "lo": "0"}],
+    "curves": [{"expr": "np.sin(x)", "dom": [0, 1.5708], "label": "y = sin x", "color": "blue"}],
+    "lines": [{"A": 1, "B": 0, "C": -1.5708, "label": "x = π/2", "color": "green", "dashed": true}]
+  },
+  {
+    "ref": "Misc II Q.4 (i)",
+    "xr": [-1, 6], "yr": [-1, 6],
+    "caption": "Region between the parabolas y^2 = 4x and x^2 = 4y",
+    "shade": [{"dom": [0, 4], "hi": "2*np.sqrt(x)", "lo": "x**2/4"}],
+    "curves": [
+      {"expr": "2*np.sqrt(x)", "dom": [0, 5], "label": "y^2 = 4x", "color": "blue"},
+      {"expr": "x**2/4", "dom": [0, 4.7], "label": "x^2 = 4y", "color": "red"}
+    ],
+    "points": [{"x": 4, "y": 4, "label": "(4, 4)", "dx": 6, "dy": -20}]
+  },
+  {
+    "ref": "Misc II Q.1 (i)",
+    "xr": [-1, 6], "yr": [-1, 3],
+    "caption": "Region 0 ≤ x ≤ 5, 0 ≤ y ≤ 2",
+    "shade": [{"dom": [0, 5], "hi": "2", "lo": "0"}],
+    "lines": [
+      {"A": 1, "B": 0, "C": -5, "label": "x = 5", "color": "green", "dashed": true},
+      {"A": 0, "B": 1, "C": -2, "label": "y = 2", "color": "red", "dashed": true}
+    ]
+  }
+]

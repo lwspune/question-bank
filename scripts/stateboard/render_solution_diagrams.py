@@ -16,6 +16,7 @@ Outputs:
   scripts/stateboard/data/pair-lines-12.solution-images.json  (ref -> png manifest)
 """
 import os, json, math, re, sys
+import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -197,6 +198,57 @@ class Canvas:
                 continue
             self.line(ln(c["A"], c["B"], -c["C"], c.get("label", ""), c.get("color", BLUE), c.get("dashed", False)))
 
+    # ── Curve support (Application of Definite Integration: area under / between
+    #    curves). Expressions are Python in `x`, evaluated with numpy in scope.
+    _SAFE = {"np": np, "sqrt": np.sqrt, "sin": np.sin, "cos": np.cos, "tan": np.tan,
+             "log": np.log, "abs": np.abs, "pi": np.pi, "e": np.e}
+
+    def _evalv(self, expr, xs):
+        v = eval(expr, {"__builtins__": {}}, {**self._SAFE, "x": xs})
+        return np.broadcast_to(np.asarray(v, dtype=float), np.shape(xs)).astype(float)
+
+    def _polyline(self, pts, color, width):
+        for i in range(len(pts) - 1):
+            self.d.line([pts[i], pts[i + 1]], fill=color, width=width)
+
+    def curve(self, cv):
+        dom = cv["dom"]
+        xs = np.linspace(dom[0], dom[1], 240)
+        try:
+            ys = self._evalv(cv["expr"], xs)
+        except Exception as ex:
+            print(f"  !! curve eval failed ({cv.get('expr')}): {ex}")
+            return
+        pts = [self.px(float(x), float(y)) for x, y in zip(xs, ys)]
+        self._polyline(pts, cv.get("color", BLUE), 3 * SS)
+        if cv.get("label"):
+            tx, ty = pts[len(pts) * 3 // 4]
+            self.d.text((tx + 4 * SS, ty + 2 * SS), cv["label"], font=self.fs, fill=cv.get("color", BLUE))
+
+    def conic(self, c):
+        # circle (a=b=r) or ellipse, drawn parametrically so the px transform's
+        # unequal x/y scaling is respected (d.ellipse would distort it).
+        th = np.linspace(0, 2 * np.pi, 360)
+        a = c.get("r", c.get("a")); b = c.get("r", c.get("b"))
+        xs = c["cx"] + a * np.cos(th); ys = c["cy"] + b * np.sin(th)
+        pts = [self.px(float(x), float(y)) for x, y in zip(xs, ys)]
+        self._polyline(pts + [pts[0]], c.get("color", BLUE), 3 * SS)
+        if c.get("label"):
+            tx, ty = self.px(c["cx"], c["cy"] + b)
+            self.d.text((tx + 4 * SS, ty - 16 * SS), c["label"], font=self.fs, fill=c.get("color", BLUE))
+
+    def shade_region(self, s):
+        dom = s["dom"]
+        xs = np.linspace(dom[0], dom[1], 240)
+        try:
+            his = self._evalv(s["hi"], xs); los = self._evalv(s["lo"], xs)
+        except Exception as ex:
+            print(f"  !! shade eval failed: {ex}")
+            return
+        top = [self.px(float(x), float(y)) for x, y in zip(xs, his)]
+        bot = [self.px(float(x), float(y)) for x, y in zip(xs, los)]
+        self.d.polygon(top + bot[::-1], fill=SHADE)
+
     def point(self, p):
         x, y = self.px(p["x"], p["y"])
         r = 4 * SS
@@ -216,6 +268,8 @@ class Canvas:
             self.d.text((x, y), cap, font=self.fs, fill=(60, 60, 60))
 
     def render(self):
+        for s in self.spec.get("shade", []):   # shaded region under/between curves (drawn first)
+            self.shade_region(s)
         if self.spec.get("polygon"):
             self.polygon(self.spec["polygon"])
         if self.spec.get("feasible"):
@@ -223,6 +277,10 @@ class Canvas:
         self.axes()
         for L in self.spec.get("lines", []):
             self.line(L)
+        for cv in self.spec.get("curves", []):
+            self.curve(cv)
+        for c in self.spec.get("conics", []):
+            self.conic(c)
         for p in self.spec.get("points", []):
             self.point(p)
         self.caption()
@@ -385,10 +443,40 @@ def build_linear_prog_specs():
     return specs
 
 
+def build_app_integration_specs():
+    # Ch.5 Application of Definite Integration diagrams are DATA-DRIVEN: the
+    # solving agents emit a per-question spec (curves as y=f(x), circles/ellipses,
+    # and the shaded area region) to data/app-def-integration-12.diagram-specs.json.
+    # Each entry: {ref, xr, yr, caption, curves:[{expr,dom,label,color}],
+    #   conics:[{cx,cy,r|a,b,label,color}], lines:[{A,B,C,...}],
+    #   shade:[{dom:[a,b], hi:"<expr>", lo:"<expr>"}], points:[{x,y,label}]}.
+    p = os.path.join(HERE, "data", "app-def-integration-12.diagram-specs.json")
+    if not os.path.exists(p):
+        return []
+    raw = json.load(open(p, encoding="utf-8"))
+    col = lambda name: _COLORS.get(name, BLUE)
+    specs = []
+    for r in raw:
+        spec = {"ref": r["ref"], "xr": tuple(r["xr"]), "yr": tuple(r["yr"]), "caption": r.get("caption", "")}
+        if r.get("shade"):
+            spec["shade"] = r["shade"]
+        if r.get("curves"):
+            spec["curves"] = [dict(expr=c["expr"], dom=c["dom"], label=c.get("label", ""), color=col(c.get("color", "blue"))) for c in r["curves"]]
+        if r.get("conics"):
+            spec["conics"] = [{**c, "color": col(c.get("color", "blue"))} for c in r["conics"]]
+        if r.get("lines"):
+            spec["lines"] = [ln(l["A"], l["B"], l["C"], l.get("label", ""), col(l.get("color", "blue")), l.get("dashed", False)) for l in r["lines"]]
+        if r.get("points"):
+            spec["points"] = [dict(x=pt["x"], y=pt["y"], label=pt.get("label", ""), dx=pt.get("dx", 8), dy=pt.get("dy", -18)) for pt in r["points"]]
+        specs.append(spec)
+    return specs
+
+
 # chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
 SPEC_BUILDERS = {
     "pair-lines-12": build_pair_lines_specs,
     "linear-prog-12": build_linear_prog_specs,
+    "app-def-integration-12": build_app_integration_specs,
 }
 
 
