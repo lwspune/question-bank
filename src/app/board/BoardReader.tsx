@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Check, ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
@@ -27,18 +27,9 @@ export default function BoardReader({
   supabaseUrl: string;
 }) {
   // Reveal state lives HERE (single source of truth) so per-question toggles
-  // stay consistent as sections collapse/expand. Worked examples start revealed
-  // — the point is to read the method; exercises/misc start hidden (attempt-first).
-  const solvedIds = useMemo(() => {
-    const solved: string[] = [];
-    for (const g of groups)
-      for (const b of g.blocks)
-        if (b.kind === "solved_example")
-          for (const q of b.questions) if (questionHasAnswer(q)) solved.push(q.id);
-    return solved;
-  }, [groups]);
-
-  const [revealed, setRevealed] = useState<Set<string>>(() => new Set(solvedIds));
+  // stay consistent as sections collapse/expand. Everything starts hidden —
+  // including worked examples; tap "Show answer" to reveal (attempt-first).
+  const [revealed, setRevealed] = useState<Set<string>>(new Set());
 
   const toggleOne = (id: string) =>
     setRevealed((prev) => {
@@ -241,7 +232,7 @@ function BoardQuestionItem({
             {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
           </button>
           {revealed && q.solution && (
-            <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-sm [&_.katex]:max-w-full">
+            <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-loose [&_.katex]:max-w-full">
               <KatexRenderer text={q.solution} />
               {q.solutionImageUrl && (
                 <div className="pt-3">
