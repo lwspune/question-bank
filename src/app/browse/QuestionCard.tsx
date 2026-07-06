@@ -325,7 +325,10 @@ export default function QuestionCard({
                 </button>
                 {showSolution && (
                   <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
-                    <KatexRenderer text={question.solution} />
+                    {/* BlockText (not KatexRenderer) so a GFM pipe-table in a
+                        solution — e.g. a truth table — renders as a real <table>.
+                        Fast-paths to KatexRenderer when there's no table. */}
+                    <BlockText text={question.solution} />
                     {question.solutionImageUrl && (
                       <div className="pt-3">
                         <ZoomableImage
