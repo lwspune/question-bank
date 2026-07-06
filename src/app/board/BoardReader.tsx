@@ -5,6 +5,7 @@ import { Check, ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
+import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import type { BoardBlock, BoardQuestion, BoardSectionGroup, SectionKind } from "@/lib/board/query";
@@ -232,8 +233,8 @@ function BoardQuestionItem({
             {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
           </button>
           {revealed && q.solution && (
-            <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-loose [&_.katex]:max-w-full">
-              <KatexRenderer text={q.solution} />
+            <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
+              <KatexRenderer text={breakSentences(q.solution)} />
               {q.solutionImageUrl && (
                 <div className="pt-3">
                   <ZoomableImage src={publicImageUrl(supabaseUrl, q.solutionImageUrl)} alt="Solution figure" />
