@@ -90,6 +90,33 @@ Flips `question_format='subjective' AND solution IS NOT NULL` (+ MCQs with a cor
 Then set `subtopics.order_index` 1..N to the teaching sequence (orders the `/browse` filter list
 + the question sort). Spot-check on `/browse` (practice-only exam → Practice view by default).
 
+### 8b. ✅ GATE — Book-faithful section structure (the `/board` reader)
+The `/board` reader renders the chapter the way the BOOK is laid out (each numbered section →
+Solved Examples → Exercise → …, then Miscellaneous). That structural axis is ORTHOGONAL to the
+conceptual `subtopic` (a single Exercise is split across subtopics), and can't be parsed reliably
+from the messy `question_number` strings — so each chapter carries an authored, **PDF-verified**
+section outline. migration 0043 = the `section_kind`/`section_group`/`section_label`/`section_seq`
+columns; pure matcher `assignSections` (lib.ts, TDD).
+
+1. **Author the outline** in `sections.ts` (`SECTIONS[<id>]`): an ordered `SectionSpec[]` = the book's
+   table of contents in **physical reading order**. Scan the chapter PDF for the block-header
+   sequence (PyMuPDF), get section titles from the p0 "Let's Study" TOC. Be faithful to the book:
+   a Miscellaneous part can sit MID-chapter (e.g. Matrices 2(A)); a ref's leading "N.M" prefix can
+   be OFFSET from the book's real exercise number (Diff-Eq "6.4 Exercise 6.3" = book Ex 6.3) — trust
+   the PDF. `kind` follows the transcription `bucket` (solved⟺solved_example); refs route by
+   longest-matching `refPrefixes`.
+2. **Backfill** — `backfill-sections.ts <id>` (dry-run prints the reconstructed outline + flags any
+   ref that matches NO block or contradicts its bucket) → `--apply` (writes the columns, matching live
+   rows by `question_number`). **Eyeball the reconstructed outline against the book before applying.**
+3. **Gate** — `npm run board:lint` fails if any PUBLIC board row is missing section fields or a
+   chapter's `section_seq` isn't contiguous 1..N. Run it before considering the chapter done.
+4. **Smoke-test** the reader: `/board/<examSlug>/<subjectRoute>/<chapterSlug>`.
+
+**Going forward (native capture):** the transcription agents already READ these headings — when
+ingesting a NEW chapter, have them emit `section_kind` + verbatim `section_label` + a section ordinal
+per question so the outline is captured at ingest instead of reconstructed. The backfill path above is
+for the chapters ingested before 0043.
+
 ### 9. Errata + commit — `errata.ts [--write]`
 `errata.ts` scans ALL chapters for solutions beginning `[Textbook …]` and emits the grouped
 markdown **errata report for the publisher (Balbharati)** — `--write` →
@@ -100,7 +127,8 @@ through step 6 feeds it automatically. Commit the config + `data/*.json` (transc
 ---
 
 ## Scripts
-`config.ts` · `lib.ts` (pure record core, TDD) · `render.ts` · `merge.ts` · `commit.ts` ·
-`apply-solutions.ts` · `flip-public.ts` · `snap-crop.ts` + `attach-images.ts` (figures) ·
-`render_solution_diagrams.py` + `attach-solution-image.ts` (solution diagrams) · `errata.ts`.
+`config.ts` · `lib.ts` (pure record core incl. `assignSections`, TDD) · `render.ts` · `merge.ts` ·
+`commit.ts` · `apply-solutions.ts` · `flip-public.ts` · `snap-crop.ts` + `attach-images.ts` (figures) ·
+`render_solution_diagrams.py` + `attach-solution-image.ts` (solution diagrams) · `errata.ts` ·
+`sections.ts` + `backfill-sections.ts` + `lint-sections.ts` (`/board` book-section structure — see step 8b).
 `out/` PNGs gitignored; `data/<id>.*.json` = committed transcription + solutions (source of truth).

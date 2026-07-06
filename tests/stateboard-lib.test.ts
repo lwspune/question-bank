@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { buildRecords, latexImbalances, type SBQuestion, type BuildChapter } from "../scripts/stateboard/lib";
+import {
+  buildRecords,
+  latexImbalances,
+  assignSections,
+  type SBQuestion,
+  type BuildChapter,
+  type SectionSpec,
+} from "../scripts/stateboard/lib";
 
 const CH: BuildChapter = {
   chapterName: "Mathematical Logic",
@@ -124,6 +131,82 @@ describe("buildRecords — set grouping + validation", () => {
 
   it("throws on a duplicate ref", () => {
     expect(() => buildRecords(CH, [mcq(), mcq()])).toThrow(/duplicate ref/);
+  });
+});
+
+describe("assignSections", () => {
+  // A trimmed Matrices-shaped outline: two book sections (each Solved + Exercise)
+  // then a two-part Miscellaneous Exercise, in book reading order.
+  const SPECS: SectionSpec[] = [
+    { group: "2.1 Elementary Transformations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1 Solved"] },
+    { group: "2.1 Elementary Transformations", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["2.1 Ex 2.1"] },
+    { group: "2.2 Inverse of a Matrix", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 Solved"] },
+    { group: "2.2 Inverse of a Matrix", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["2.2 Ex 2.2"] },
+    { group: "Miscellaneous Exercise 2", label: "Multiple Choice Questions", kind: "miscellaneous", refPrefixes: ["Misc I"] },
+    { group: "Miscellaneous Exercise 2", label: "Miscellaneous Exercise 2 (A)", kind: "miscellaneous", refPrefixes: ["Misc 2A"] },
+  ];
+
+  const items = [
+    { ref: "2.1 Solved Ex.1", bucket: "solved" as const },
+    { ref: "2.1 Ex 2.1 Q.3", bucket: "exercise-subjective" as const },
+    { ref: "2.2 Solved Ex.10", bucket: "solved" as const },
+    { ref: "2.2 Ex 2.2 Q.6 (i)", bucket: "exercise-subjective" as const },
+    { ref: "Misc I (11)", bucket: "exercise-mcq" as const },
+    { ref: "Misc 2A Q.7 x)", bucket: "exercise-subjective" as const },
+  ];
+
+  it("maps each ref to its block with book-order seq (1-based index in the outline)", () => {
+    const { assignments, unmatched, mismatches } = assignSections(items, SPECS);
+    expect(unmatched).toEqual([]);
+    expect(mismatches).toEqual([]);
+    expect(assignments.map((a) => [a.ref, a.sectionSeq, a.sectionKind, a.sectionLabel])).toEqual([
+      ["2.1 Solved Ex.1", 1, "solved_example", "Solved Examples"],
+      ["2.1 Ex 2.1 Q.3", 2, "exercise", "Exercise 2.1"],
+      ["2.2 Solved Ex.10", 3, "solved_example", "Solved Examples"],
+      ["2.2 Ex 2.2 Q.6 (i)", 4, "exercise", "Exercise 2.2"],
+      ["Misc I (11)", 5, "miscellaneous", "Multiple Choice Questions"],
+      ["Misc 2A Q.7 x)", 6, "miscellaneous", "Miscellaneous Exercise 2 (A)"],
+    ]);
+    // section_group carries the big header for the reader.
+    expect(assignments[3].sectionGroup).toBe("2.2 Inverse of a Matrix");
+  });
+
+  it("prefers the LONGEST matching prefix when prefixes overlap", () => {
+    const overlap: SectionSpec[] = [
+      { group: "2.2", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 Solved"] },
+      { group: "2.2", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["2.2 "] },
+    ];
+    const { assignments } = assignSections(
+      [{ ref: "2.2 Solved Ex.1", bucket: "solved" }, { ref: "2.2 Ex 2.2 Q.1", bucket: "exercise-subjective" }],
+      overlap
+    );
+    expect(assignments[0].sectionLabel).toBe("Solved Examples"); // "2.2 Solved" beats "2.2 "
+    expect(assignments[1].sectionLabel).toBe("Exercise 2.2");
+  });
+
+  it("collects refs that match no block instead of silently bucketing them", () => {
+    const { unmatched, assignments } = assignSections(
+      [{ ref: "2.3 Ex 2.3 Q.1", bucket: "exercise-subjective" }, ...items.slice(0, 1)],
+      SPECS
+    );
+    expect(unmatched).toEqual(["2.3 Ex 2.3 Q.1"]);
+    expect(assignments).toHaveLength(1);
+  });
+
+  it("flags a bucket/kind mismatch (solved_example block ⟺ bucket 'solved')", () => {
+    const { mismatches } = assignSections(
+      [{ ref: "2.1 Solved Ex.1", bucket: "exercise-subjective" }], // solved block, wrong bucket
+      SPECS
+    );
+    expect(mismatches).toHaveLength(1);
+    expect(mismatches[0].ref).toBe("2.1 Solved Ex.1");
+    expect(mismatches[0].reason).toMatch(/does not match block kind 'solved_example'/);
+  });
+
+  it("reports outline blocks that matched nothing (stale/typo'd entry)", () => {
+    const { emptySpecs } = assignSections(items.slice(0, 2), SPECS);
+    expect(emptySpecs).toContain("2.2 Inverse of a Matrix — Solved Examples");
+    expect(emptySpecs).toContain("Miscellaneous Exercise 2 — Multiple Choice Questions");
   });
 });
 

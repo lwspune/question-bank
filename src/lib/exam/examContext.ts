@@ -37,6 +37,13 @@ export type ExamEntry = {
    * "practice" for it, so the default view isn't an empty PYQ list.
    */
   practiceOnly?: boolean;
+  /**
+   * A school-board exam (Maharashtra State Board, later CBSE, …) whose corpus is
+   * a textbook laid out in book sections (Solved Examples → Exercise → …). These
+   * get the `/board` reader — a book-faithful, exercise-by-exercise view keyed on
+   * the section_* columns (migration 0043) — and the "Board" nav tab.
+   */
+  boardExam?: boolean;
 };
 
 export const EXAM_REGISTRY: readonly ExamEntry[] = [
@@ -90,6 +97,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // textbook exercises/solved-examples corpus (board PYQs come later) → /browse defaults to Practice
+    boardExam: true, // gets the /board reader + the "Board" nav tab
   },
 ] as const;
 
@@ -136,7 +144,23 @@ export function resolveNotesHref(slug: string | null | undefined): string {
   return exam?.notesPath ?? "/notes";
 }
 
-export type ActiveTab = "bank" | "guides" | "notes" | "papers";
+/** True when the active exam is a school board (gets the `/board` reader + tab). */
+export function isBoardExam(slug: string | null | undefined): boolean {
+  return getExamBySlug(slug ?? null)?.boardExam === true;
+}
+
+/** The board exams, in registry order (drives the `/board` index). */
+export const BOARD_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(
+  (e) => e.boardExam === true
+);
+
+/** Board tab href — the exam's board hub when it's a board exam, else the index. */
+export function resolveBoardHref(slug: string | null | undefined): string {
+  const exam = getExamBySlug(slug ?? null);
+  return exam?.boardExam ? `/board/${exam.slug}` : "/board";
+}
+
+export type ActiveTab = "bank" | "guides" | "notes" | "board" | "papers";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -151,6 +175,7 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   if (matchesSegment(path, "/browse")) return "bank";
   if (matchesSegment(path, "/guide")) return "guides";
   if (matchesSegment(path, "/notes")) return "notes";
+  if (matchesSegment(path, "/board")) return "board";
   if (matchesSegment(path, "/dashboard/papers")) return "papers";
   return null;
 }
