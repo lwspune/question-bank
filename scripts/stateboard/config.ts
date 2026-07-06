@@ -62,6 +62,30 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.3 Trigonometric Functions (12th, Part 1). 47pp, THREE distinct topics
+  //    fused: 3.1 Trigonometric Equations & general solutions, 3.2 Solution of
+  //    Triangle (polar coords + sine/cosine/projection rules + applications —
+  //    height/area problems get `solution_image`), 3.3 Inverse Trig Functions
+  //    (principal values + properties). Text layer flattens 2-D math → VISION.
+  //    Section→page map: 3.1 p0-10 (Ex 3.1 @p10) · 3.2 p11-23 (Ex 3.2 @p23) ·
+  //    3.3 p23-40 (Ex 3.3 @p37) · Miscellaneous Exercise 3 p41-46.
+  "trig-functions-12": {
+    id: "trig-functions-12",
+    chapterName: "Trigonometric Functions",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Trigonometric_Functions.pdf",
+    pdf: cls12("Part 01/Ch_03_Trigonometric_Functions.pdf"),
+    note: "Maharashtra State Board (Class 12) — Trigonometric Functions (Balbharati textbook)",
+    subtopics: [
+      "Trigonometric Equations and General Solutions",
+      "Polar Coordinates",
+      "Solution of Triangle — Sine, Cosine and Projection Rules",
+      "Applications of Sine, Cosine and Projection Rules",
+      "Inverse Trigonometric Functions and Principal Values",
+      "Properties of Inverse Trigonometric Functions",
+    ],
+  },
+
   // ── Ch.2 Matrices (12th, Part 1). Computational, ≈figure-free (only determinant
   //    bars). Covers inverse of a matrix + solving linear equations (11th taught
   //    basic operations). Matrices transcribed as LaTeX \begin{bmatrix}…\end{bmatrix}.

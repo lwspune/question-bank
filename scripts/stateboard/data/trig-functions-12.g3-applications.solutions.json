@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cf6c6e6a-ba9d-4910-a04d-4abaa97f2ecb",
+    "ref": "3.2 Q10",
+    "solution": "Here \\(s=\\dfrac{a+b+c}{2}=\\dfrac{18+24+30}{2}=36\\). Note \\(18^2+24^2=324+576=900=30^2\\), so the triangle is right angled at \\(C\\).\n\n(i) By the cosine rule, \\(\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}=\\dfrac{576+900-324}{2(24)(30)}=\\dfrac{1152}{1440}=\\dfrac{4}{5}\\).\n\n(ii) \\(\\sin\\dfrac{A}{2}=\\sqrt{\\dfrac{(s-b)(s-c)}{bc}}=\\sqrt{\\dfrac{(12)(6)}{(24)(30)}}=\\sqrt{\\dfrac{72}{720}}=\\dfrac{1}{\\sqrt{10}}\\).\n\n(iii) \\(\\cos\\dfrac{A}{2}=\\sqrt{\\dfrac{s(s-a)}{bc}}=\\sqrt{\\dfrac{(36)(18)}{720}}=\\sqrt{\\dfrac{648}{720}}=\\dfrac{3}{\\sqrt{10}}\\).\n\n(iv) \\(\\tan\\dfrac{A}{2}=\\dfrac{\\sin(A/2)}{\\cos(A/2)}=\\dfrac{1/\\sqrt{10}}{3/\\sqrt{10}}=\\dfrac{1}{3}\\).\n\n(v) \\(A(\\triangle ABC)=\\sqrt{s(s-a)(s-b)(s-c)}=\\sqrt{(36)(18)(12)(6)}=\\sqrt{46656}=216\\) sq. units.\n\n(vi) \\(\\sin A=2\\sin\\dfrac{A}{2}\\cos\\dfrac{A}{2}=2\\cdot\\dfrac{1}{\\sqrt{10}}\\cdot\\dfrac{3}{\\sqrt{10}}=\\dfrac{6}{10}=\\dfrac{3}{5}\\)."
+  },
+  {
+    "id": "b05a7068-771d-4066-94ea-5c12f34c0260",
+    "ref": "3.2 Q11",
+    "solution": "Let \\(r\\) be the inradius and \\(s=\\dfrac{a+b+c}{2}\\) the semi-perimeter. Using the standard result \\(\\tan\\dfrac{A}{2}=\\dfrac{r}{s-a}\\), and noting \\(b+c-a=(a+b+c)-2a=2(s-a)\\), we get\n\\((b+c-a)\\tan\\dfrac{A}{2}=2(s-a)\\cdot\\dfrac{r}{s-a}=2r\\).\nSimilarly, \\(c+a-b=2(s-b)\\) gives \\((c+a-b)\\tan\\dfrac{B}{2}=2(s-b)\\cdot\\dfrac{r}{s-b}=2r\\), and \\(a+b-c=2(s-c)\\) gives \\((a+b-c)\\tan\\dfrac{C}{2}=2(s-c)\\cdot\\dfrac{r}{s-c}=2r\\).\n\\(\\therefore (b+c-a)\\tan\\dfrac{A}{2}=(c+a-b)\\tan\\dfrac{B}{2}=(a+b-c)\\tan\\dfrac{C}{2}=2r\\). Hence proved."
+  },
+  {
+    "id": "c98dfab6-b25d-4e61-9f41-b272e49398f2",
+    "ref": "3.2 Q12",
+    "solution": "Using the half-angle formulas \\(\\sin\\dfrac{A}{2}=\\sqrt{\\dfrac{(s-b)(s-c)}{bc}}\\), \\(\\sin\\dfrac{B}{2}=\\sqrt{\\dfrac{(s-c)(s-a)}{ca}}\\) and \\(\\sin\\dfrac{C}{2}=\\sqrt{\\dfrac{(s-a)(s-b)}{ab}}\\),\n\\(\\sin\\dfrac{A}{2}\\sin\\dfrac{B}{2}\\sin\\dfrac{C}{2}=\\sqrt{\\dfrac{(s-a)^2(s-b)^2(s-c)^2}{a^2b^2c^2}}=\\dfrac{(s-a)(s-b)(s-c)}{abc}\\).\nBy Heron's formula \\([A(\\triangle ABC)]^2=s(s-a)(s-b)(s-c)\\), so \\((s-a)(s-b)(s-c)=\\dfrac{[A(\\triangle ABC)]^2}{s}\\).\n\\(\\therefore \\sin\\dfrac{A}{2}\\sin\\dfrac{B}{2}\\sin\\dfrac{C}{2}=\\dfrac{[A(\\triangle ABC)]^2}{abc\\,s}=\\dfrac{[A(\\triangle ABC)]^2}{abcs}\\). Hence proved."
+  },
+  {
+    "id": "c04f6a2a-3d79-451e-857f-fe301ab2462f",
+    "ref": "3.2 Q4",
+    "solution": "By the sine rule \\(a=2R\\sin A,\\ b=2R\\sin B,\\ c=2R\\sin C\\), so\n\\(\\dfrac{b-c}{a}=\\dfrac{\\sin B-\\sin C}{\\sin A}=\\dfrac{2\\cos\\frac{B+C}{2}\\sin\\frac{B-C}{2}}{2\\sin\\frac{B+C}{2}\\cos\\frac{B+C}{2}}=\\dfrac{\\sin\\frac{B-C}{2}}{\\sin\\frac{B+C}{2}}\\),\nusing \\(\\sin A=\\sin(B+C)=2\\sin\\frac{B+C}{2}\\cos\\frac{B+C}{2}\\).\nSince \\(\\dfrac{B+C}{2}=\\dfrac{\\pi-A}{2}=\\dfrac{\\pi}{2}-\\dfrac{A}{2}\\), we have \\(\\sin\\dfrac{B+C}{2}=\\cos\\dfrac{A}{2}\\).\n\\(\\therefore \\dfrac{b-c}{a}=\\dfrac{\\sin\\frac{B-C}{2}}{\\cos\\frac{A}{2}}\\ \\Rightarrow\\ \\sin\\left(\\dfrac{B-C}{2}\\right)=\\left(\\dfrac{b-c}{a}\\right)\\cos\\dfrac{A}{2}\\). Hence proved."
+  },
+  {
+    "id": "825cb3e1-e05c-4df1-9b2a-5d8ab347d73e",
+    "ref": "3.2 Q5",
+    "solution": "Using \\(\\sin^2\\dfrac{C}{2}=\\dfrac{1-\\cos C}{2}\\) and \\(\\sin^2\\dfrac{A}{2}=\\dfrac{1-\\cos A}{2}\\),\n\\(2\\left\\{a\\sin^2\\dfrac{C}{2}+c\\sin^2\\dfrac{A}{2}\\right\\}=a(1-\\cos C)+c(1-\\cos A)=(a+c)-(a\\cos C+c\\cos A)\\).\nBy the projection rule, \\(b=a\\cos C+c\\cos A\\).\n\\(\\therefore 2\\left\\{a\\sin^2\\dfrac{C}{2}+c\\sin^2\\dfrac{A}{2}\\right\\}=a+c-b=a-b+c\\). Hence proved."
+  },
+  {
+    "id": "80034f35-9de8-4a18-a5c7-7f915bd1634d",
+    "ref": "Misc II Q.11 (i)",
+    "solution": "By the sine rule \\(a=2R\\sin A,\\ b=2R\\sin B,\\ c=2R\\sin C\\). Then\n\\(a\\sin A-b\\sin B=2R(\\sin^2 A-\\sin^2 B)=2R\\,\\sin(A+B)\\sin(A-B)\\),\nusing \\(\\sin^2 A-\\sin^2 B=\\sin(A+B)\\sin(A-B)\\).\nSince \\(A+B=\\pi-C\\), \\(\\sin(A+B)=\\sin C\\), so\n\\(a\\sin A-b\\sin B=2R\\sin C\\,\\sin(A-B)=c\\sin(A-B)\\). Hence proved."
+  },
+  {
+    "id": "a9cbfe51-a28a-4128-82a6-4c99002bbc62",
+    "ref": "Misc II Q.11 (ii)",
+    "solution": "By the projection rule, \\(c=a\\cos B+b\\cos A\\ \\Rightarrow\\ c-b\\cos A=a\\cos B\\), and \\(b=a\\cos C+c\\cos A\\ \\Rightarrow\\ b-c\\cos A=a\\cos C\\).\n\\(\\therefore \\dfrac{c-b\\cos A}{b-c\\cos A}=\\dfrac{a\\cos B}{a\\cos C}=\\dfrac{\\cos B}{\\cos C}\\). Hence proved."
+  },
+  {
+    "id": "8f46aa5a-6fea-46dd-ab2c-cab1b3ed4cf4",
+    "ref": "Misc II Q.11 (iii)",
+    "solution": "By the sine rule \\(a=2R\\sin A,\\ b=2R\\sin B,\\ c=2R\\sin C\\). Then\n\\((b^2-c^2)\\sin A=4R^2(\\sin^2 B-\\sin^2 C)\\sin A=4R^2\\,\\sin(B+C)\\sin(B-C)\\,\\sin A\\),\nusing \\(\\sin^2 B-\\sin^2 C=\\sin(B+C)\\sin(B-C)\\).\nSince \\(B+C=\\pi-A\\), \\(\\sin(B+C)=\\sin A\\), so\n\\((b^2-c^2)\\sin A=4R^2\\sin^2 A\\,\\sin(B-C)=a^2\\sin(B-C)\\).\n\\(\\therefore a^2\\sin(B-C)=(b^2-c^2)\\sin A\\). Hence proved."
+  },
+  {
+    "id": "408a43ce-f04e-4746-b5cb-f614dea23f27",
+    "ref": "Misc II Q.11 (iv)",
+    "solution": "By the cosine rule \\(\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}\\) and \\(\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}\\). Then\n\\(ac\\cos B=\\dfrac{a^2+c^2-b^2}{2}\\) and \\(bc\\cos A=\\dfrac{b^2+c^2-a^2}{2}\\).\n\\(\\therefore ac\\cos B-bc\\cos A=\\dfrac{(a^2+c^2-b^2)-(b^2+c^2-a^2)}{2}=\\dfrac{2a^2-2b^2}{2}=a^2-b^2\\). Hence proved."
+  },
+  {
+    "id": "67c03c82-5a29-4653-b7a9-c7d264ee498f",
+    "ref": "Misc II Q.11 (v)",
+    "solution": "By the cosine rule,\n\\(\\dfrac{\\cos A}{a}=\\dfrac{b^2+c^2-a^2}{2abc},\\quad \\dfrac{\\cos B}{b}=\\dfrac{a^2+c^2-b^2}{2abc},\\quad \\dfrac{\\cos C}{c}=\\dfrac{a^2+b^2-c^2}{2abc}\\).\nAdding these,\n\\(\\dfrac{\\cos A}{a}+\\dfrac{\\cos B}{b}+\\dfrac{\\cos C}{c}=\\dfrac{(b^2+c^2-a^2)+(a^2+c^2-b^2)+(a^2+b^2-c^2)}{2abc}=\\dfrac{a^2+b^2+c^2}{2abc}\\). Hence proved."
+  },
+  {
+    "id": "c956f853-691d-41b8-8423-d7b8e6bf44b0",
+    "ref": "Misc II Q.11 (vi)",
+    "solution": "Using \\(\\cos 2A=1-2\\sin^2 A\\) and the sine rule \\(\\dfrac{\\sin A}{a}=\\dfrac{1}{2R}\\) (so \\(\\dfrac{\\sin^2 A}{a^2}=\\dfrac{1}{4R^2}\\)),\n\\(\\dfrac{\\cos 2A}{a^2}=\\dfrac{1-2\\sin^2 A}{a^2}=\\dfrac{1}{a^2}-\\dfrac{2\\sin^2 A}{a^2}=\\dfrac{1}{a^2}-\\dfrac{1}{2R^2}\\).\nSimilarly, \\(\\dfrac{\\cos 2B}{b^2}=\\dfrac{1}{b^2}-\\dfrac{1}{2R^2}\\). Subtracting,\n\\(\\dfrac{\\cos 2A}{a^2}-\\dfrac{\\cos 2B}{b^2}=\\left(\\dfrac{1}{a^2}-\\dfrac{1}{2R^2}\\right)-\\left(\\dfrac{1}{b^2}-\\dfrac{1}{2R^2}\\right)=\\dfrac{1}{a^2}-\\dfrac{1}{b^2}\\). Hence proved."
+  },
+  {
+    "id": "dc3b4ea0-8143-4a23-9be0-eb5379a3b937",
+    "ref": "Misc II Q.11 (vii)",
+    "solution": "\\(\\tan\\dfrac{B}{2}-\\tan\\dfrac{C}{2}=\\dfrac{\\sin\\frac{B}{2}\\cos\\frac{C}{2}-\\cos\\frac{B}{2}\\sin\\frac{C}{2}}{\\cos\\frac{B}{2}\\cos\\frac{C}{2}}=\\dfrac{\\sin\\frac{B-C}{2}}{\\cos\\frac{B}{2}\\cos\\frac{C}{2}}\\), and similarly \\(\\tan\\dfrac{B}{2}+\\tan\\dfrac{C}{2}=\\dfrac{\\sin\\frac{B+C}{2}}{\\cos\\frac{B}{2}\\cos\\frac{C}{2}}\\).\n\\(\\therefore \\dfrac{\\tan\\frac{B}{2}-\\tan\\frac{C}{2}}{\\tan\\frac{B}{2}+\\tan\\frac{C}{2}}=\\dfrac{\\sin\\frac{B-C}{2}}{\\sin\\frac{B+C}{2}}=\\dfrac{\\sin\\frac{B-C}{2}}{\\cos\\frac{A}{2}}\\), since \\(\\sin\\dfrac{B+C}{2}=\\cos\\dfrac{A}{2}\\).\nBy the sine rule, \\(\\dfrac{b-c}{a}=\\dfrac{\\sin B-\\sin C}{\\sin A}=\\dfrac{2\\cos\\frac{B+C}{2}\\sin\\frac{B-C}{2}}{2\\sin\\frac{B+C}{2}\\cos\\frac{B+C}{2}}=\\dfrac{\\sin\\frac{B-C}{2}}{\\sin\\frac{B+C}{2}}=\\dfrac{\\sin\\frac{B-C}{2}}{\\cos\\frac{A}{2}}\\).\n\\(\\therefore \\dfrac{b-c}{a}=\\dfrac{\\tan\\frac{B}{2}-\\tan\\frac{C}{2}}{\\tan\\frac{B}{2}+\\tan\\frac{C}{2}}\\). Hence proved."
+  },
+  {
+    "id": "3e6d15c1-c5cf-401c-98c8-f5c98743e71a",
+    "ref": "Misc II Q.12",
+    "solution": "[Textbook note: As printed, with the HALF-angle cotangents \\(\\cot\\frac{A}{2},\\cot\\frac{B}{2},\\cot\\frac{C}{2}\\), the result does not hold when \\(a^2,b^2,c^2\\) are in A.P. (those half-angle cotangents are in A.P. precisely when \\(a,b,c\\) are in A.P.). The standard, correct result for the hypothesis \\(a^2,b^2,c^2\\) in A.P. is that \\(\\cot A,\\cot B,\\cot C\\) are in A.P., proved below.]\n\nBy the cosine and sine rules,\n\\(\\cot A=\\dfrac{\\cos A}{\\sin A}=\\dfrac{b^2+c^2-a^2}{2bc}\\cdot\\dfrac{2R}{a}=\\dfrac{R(b^2+c^2-a^2)}{abc}\\).\nSimilarly \\(\\cot B=\\dfrac{R(a^2+c^2-b^2)}{abc}\\) and \\(\\cot C=\\dfrac{R(a^2+b^2-c^2)}{abc}\\).\nGiven \\(a^2,b^2,c^2\\) in A.P., we have \\(a^2+c^2=2b^2\\).\nNow \\(\\cot A+\\cot C=\\dfrac{R}{abc}\\big[(b^2+c^2-a^2)+(a^2+b^2-c^2)\\big]=\\dfrac{R}{abc}(2b^2)\\).\nAlso \\(2\\cot B=\\dfrac{2R}{abc}(a^2+c^2-b^2)=\\dfrac{2R}{abc}(2b^2-b^2)=\\dfrac{R}{abc}(2b^2)\\).\n\\(\\therefore \\cot A+\\cot C=2\\cot B\\), i.e. \\(\\cot A,\\cot B,\\cot C\\) are in A.P. Hence proved."
+  },
+  {
+    "id": "9efdb8c5-9a4b-443c-8886-6367a6ab0cc3",
+    "ref": "Misc II Q.13",
+    "solution": "Since \\(C=90^\\circ\\), \\(A+B=90^\\circ\\), so \\(\\cos B=\\sin A\\) and \\(\\sin B=\\cos A\\). Then\n\\(\\sin(A-B)=\\sin A\\cos B-\\cos A\\sin B=\\sin^2 A-\\cos^2 A\\).\nIn the right triangle (right angle at \\(C\\)), \\(c\\) is the hypotenuse, so \\(\\sin A=\\dfrac{a}{c},\\ \\cos A=\\dfrac{b}{c}\\), with \\(c^2=a^2+b^2\\). Hence\n\\(\\sin(A-B)=\\dfrac{a^2}{c^2}-\\dfrac{b^2}{c^2}=\\dfrac{a^2-b^2}{a^2+b^2}\\). Hence proved."
+  },
+  {
+    "id": "d457c99b-0fba-473a-bc9c-6613c95d3d14",
+    "ref": "Misc II Q.14",
+    "solution": "By the cosine rule \\(\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}\\) and \\(\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}\\). Then\n\\(\\dfrac{\\cos A}{a}=\\dfrac{b^2+c^2-a^2}{2abc}\\) and \\(\\dfrac{\\cos B}{b}=\\dfrac{a^2+c^2-b^2}{2abc}\\).\nGiven \\(\\dfrac{\\cos A}{a}=\\dfrac{\\cos B}{b}\\), so \\(b^2+c^2-a^2=a^2+c^2-b^2\\ \\Rightarrow\\ 2b^2=2a^2\\ \\Rightarrow\\ a=b\\).\n\\(\\therefore\\) the triangle is isosceles. Hence proved."
+  },
+  {
+    "id": "459de251-d55e-43d1-96ea-730d19469eba",
+    "ref": "Misc II Q.15",
+    "solution": "By the sine rule \\(\\sin A=\\dfrac{a}{2R},\\ \\sin B=\\dfrac{b}{2R},\\ \\sin C=\\dfrac{c}{2R}\\). The given condition \\(\\sin^2 A+\\sin^2 B=\\sin^2 C\\) becomes\n\\(\\dfrac{a^2}{4R^2}+\\dfrac{b^2}{4R^2}=\\dfrac{c^2}{4R^2}\\ \\Rightarrow\\ a^2+b^2=c^2\\).\nThen \\(\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}=0\\), so \\(C=90^\\circ\\).\n\\(\\therefore\\) the triangle is right angled. Hence proved."
+  },
+  {
+    "id": "bb258ab6-6bbf-4b00-a130-e44c7dc06061",
+    "ref": "Misc II Q.16",
+    "solution": "Since \\(\\cos^2\\theta=1-\\sin^2\\theta\\), each factor \\(\\cos^2 B-\\cos^2 C=\\sin^2 C-\\sin^2 B\\), and similarly for the others. So the expression becomes\n\\(a^2(\\sin^2 C-\\sin^2 B)+b^2(\\sin^2 A-\\sin^2 C)+c^2(\\sin^2 B-\\sin^2 A)\\).\nBy the sine rule \\(\\sin^2 X=\\dfrac{x^2}{4R^2}\\), so this equals\n\\(\\dfrac{1}{4R^2}\\left[a^2(c^2-b^2)+b^2(a^2-c^2)+c^2(b^2-a^2)\\right]=\\dfrac{1}{4R^2}\\big[a^2c^2-a^2b^2+a^2b^2-b^2c^2+b^2c^2-a^2c^2\\big]=\\dfrac{1}{4R^2}\\cdot 0=0\\).\nHence proved."
+  },
+  {
+    "id": "0f1c113b-24e1-4c06-9dc8-55d6e3e6a363",
+    "ref": "Misc II Q.17",
+    "solution": "Note that \\(c^2-a^2+b^2=b^2+c^2-a^2=2bc\\cos A\\) (cosine rule). Hence, using the sine rule \\(\\sin A=\\dfrac{a}{2R}\\),\n\\((c^2-a^2+b^2)\\tan A=2bc\\cos A\\tan A=2bc\\sin A=2bc\\cdot\\dfrac{a}{2R}=\\dfrac{abc}{R}\\).\nSimilarly \\((a^2-b^2+c^2)\\tan B=2ac\\cos B\\tan B=2ac\\sin B=\\dfrac{abc}{R}\\), and \\((b^2-c^2+a^2)\\tan C=2ab\\cos C\\tan C=2ab\\sin C=\\dfrac{abc}{R}\\).\n\\(\\therefore (c^2-a^2+b^2)\\tan A=(a^2-b^2+c^2)\\tan B=(b^2-c^2+a^2)\\tan C=\\dfrac{abc}{R}\\). Hence proved."
+  },
+  {
+    "id": "a0202967-f2e1-4de9-b8d2-12a3eafa6954",
+    "ref": "Misc II Q.18",
+    "solution": "Using \\(\\cos^2\\dfrac{C}{2}=\\dfrac{1+\\cos C}{2}\\) and \\(\\cos^2\\dfrac{A}{2}=\\dfrac{1+\\cos A}{2}\\),\n\\(a\\cos^2\\dfrac{C}{2}+c\\cos^2\\dfrac{A}{2}=\\dfrac{a(1+\\cos C)+c(1+\\cos A)}{2}=\\dfrac{(a+c)+(a\\cos C+c\\cos A)}{2}\\).\nBy the projection rule \\(b=a\\cos C+c\\cos A\\), so this equals \\(\\dfrac{a+c+b}{2}\\).\nGiven it equals \\(\\dfrac{3b}{2}\\):\n\\(\\dfrac{a+b+c}{2}=\\dfrac{3b}{2}\\ \\Rightarrow\\ a+b+c=3b\\ \\Rightarrow\\ a+c=2b\\).\n\\(\\therefore a,b,c\\) are in A.P. Hence proved."
+  },
+  {
+    "id": "6f035e14-266a-4cad-aeb4-8b58e342d331",
+    "ref": "Misc II Q.5",
+    "solution": "By the sine rule,\n\\(\\dfrac{a+b}{c}=\\dfrac{\\sin A+\\sin B}{\\sin C}=\\dfrac{2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}}{2\\sin\\frac{C}{2}\\cos\\frac{C}{2}}\\).\nSince \\(\\dfrac{A+B}{2}=\\dfrac{\\pi}{2}-\\dfrac{C}{2}\\), \\(\\sin\\dfrac{A+B}{2}=\\cos\\dfrac{C}{2}\\), so\n\\(\\dfrac{a+b}{c}=\\dfrac{2\\cos\\frac{C}{2}\\cos\\frac{A-B}{2}}{2\\sin\\frac{C}{2}\\cos\\frac{C}{2}}=\\dfrac{\\cos\\frac{A-B}{2}}{\\sin\\frac{C}{2}}\\).\n\\(\\therefore \\cos\\left(\\dfrac{A-B}{2}\\right)=\\left(\\dfrac{a+b}{c}\\right)\\sin\\dfrac{C}{2}\\). Hence proved."
+  },
+  {
+    "id": "d5bcd055-1b18-4817-b60d-7a22d1f6ca44",
+    "ref": "Misc II Q.6",
+    "solution": "By the sine rule \\(a=2R\\sin A,\\ b=2R\\sin B,\\ c=2R\\sin C\\), so\n\\(\\dfrac{a^2-b^2}{c^2}=\\dfrac{\\sin^2 A-\\sin^2 B}{\\sin^2 C}=\\dfrac{\\sin(A+B)\\sin(A-B)}{\\sin^2 C}\\),\nusing \\(\\sin^2 A-\\sin^2 B=\\sin(A+B)\\sin(A-B)\\).\nSince \\(A+B=\\pi-C\\), \\(\\sin(A+B)=\\sin C\\), hence\n\\(\\dfrac{a^2-b^2}{c^2}=\\dfrac{\\sin C\\,\\sin(A-B)}{\\sin^2 C}=\\dfrac{\\sin(A-B)}{\\sin C}=\\dfrac{\\sin(A-B)}{\\sin(A+B)}\\). Hence proved."
+  },
+  {
+    "id": "f9161aec-2851-41c2-af26-e43bb9e5f2e2",
+    "ref": "Misc II Q.7",
+    "solution": "Expanding and grouping,\n\\((a-b)^2\\cos^2\\dfrac{C}{2}+(a+b)^2\\sin^2\\dfrac{C}{2}=(a^2+b^2)\\left(\\cos^2\\dfrac{C}{2}+\\sin^2\\dfrac{C}{2}\\right)-2ab\\left(\\cos^2\\dfrac{C}{2}-\\sin^2\\dfrac{C}{2}\\right)\\).\nUsing \\(\\cos^2\\dfrac{C}{2}+\\sin^2\\dfrac{C}{2}=1\\) and \\(\\cos^2\\dfrac{C}{2}-\\sin^2\\dfrac{C}{2}=\\cos C\\),\n\\(=a^2+b^2-2ab\\cos C=c^2\\) (by the cosine rule). Hence proved."
+  },
+  {
+    "id": "5fe7c8bc-d9d7-43ef-9a5d-08333a29b39d",
+    "ref": "Misc II Q.8",
+    "solution": "The given condition \\(\\cos A=\\sin B-\\cos C\\) can be written \\(\\cos A+\\cos C=\\sin B\\).\nNow \\(\\cos A+\\cos C=2\\cos\\dfrac{A+C}{2}\\cos\\dfrac{A-C}{2}\\). Since \\(\\dfrac{A+C}{2}=\\dfrac{\\pi}{2}-\\dfrac{B}{2}\\), \\(\\cos\\dfrac{A+C}{2}=\\sin\\dfrac{B}{2}\\), so \\(\\cos A+\\cos C=2\\sin\\dfrac{B}{2}\\cos\\dfrac{A-C}{2}\\).\nAlso \\(\\sin B=2\\sin\\dfrac{B}{2}\\cos\\dfrac{B}{2}\\). Equating,\n\\(2\\sin\\dfrac{B}{2}\\cos\\dfrac{A-C}{2}=2\\sin\\dfrac{B}{2}\\cos\\dfrac{B}{2}\\ \\Rightarrow\\ \\cos\\dfrac{A-C}{2}=\\cos\\dfrac{B}{2}\\).\n\\(\\Rightarrow \\dfrac{A-C}{2}=\\pm\\dfrac{B}{2}\\ \\Rightarrow\\ A-C=\\pm B\\).\nIf \\(A-C=B\\), then \\(A=B+C\\); with \\(A+B+C=\\pi\\) this gives \\(2A=\\pi\\), so \\(A=90^\\circ\\). If \\(A-C=-B\\), then \\(C=A+B\\), giving \\(C=90^\\circ\\).\nIn either case the triangle is right angled. Hence proved."
+  },
+  {
+    "id": "8fd38e15-f44d-4ac1-a457-1cf587418f05",
+    "ref": "Misc II Q.9",
+    "solution": "Given \\(\\dfrac{\\sin A}{\\sin C}=\\dfrac{\\sin(A-B)}{\\sin(B-C)}\\), cross-multiplying gives\n\\(\\sin A\\,\\sin(B-C)=\\sin C\\,\\sin(A-B)\\).\nSince \\(A=\\pi-(B+C)\\) and \\(C=\\pi-(A+B)\\), we have \\(\\sin A=\\sin(B+C)\\) and \\(\\sin C=\\sin(A+B)\\). So\n\\(\\sin(B+C)\\sin(B-C)=\\sin(A+B)\\sin(A-B)\\)\n\\(\\Rightarrow \\sin^2 B-\\sin^2 C=\\sin^2 A-\\sin^2 B\\ \\Rightarrow\\ 2\\sin^2 B=\\sin^2 A+\\sin^2 C\\).\nMultiplying by \\(4R^2\\) (sine rule \\(x=2R\\sin X\\)) gives \\(2b^2=a^2+c^2\\).\n\\(\\therefore a^2,b^2,c^2\\) are in A.P. Hence proved."
+  }
+]

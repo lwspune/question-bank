@@ -14,6 +14,23 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.3 Trigonometric Functions — verified against Ch_03_Trigonometric_Functions.pdf.
+  //    3 numbered sections, each Solved Examples → Exercise: 3.1 Trigonometric
+  //    Equations (its solved run = the Principal-solutions "P*" block + the
+  //    General-solutions "G*" block), 3.2 Solution of Triangle (polar / sine /
+  //    cosine / projection / applications solved runs), 3.3 Inverse Trig Functions.
+  //    Terminal Miscellaneous Exercise 3 (I = MCQ, II = subjective).
+  "trig-functions-12": [
+    { group: "3.1 Trigonometric Equations and their Solutions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 SolvedEx"] },
+    { group: "3.1 Trigonometric Equations and their Solutions", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["3.1 Ex.Q"] },
+    { group: "3.2 Solution of Triangle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2 SolvedEx"] },
+    { group: "3.2 Solution of Triangle", label: "Exercise 3.2", kind: "exercise", refPrefixes: ["3.2 Q"] },
+    { group: "3.3 Inverse Trigonometric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 SolvedEx"] },
+    { group: "3.3 Inverse Trigonometric Functions", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["3.3 Ex3.3"] },
+    { group: "Miscellaneous Exercise 3", label: "Select the correct option", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 3", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II"] },
+  ],
+
   // ── Ch.2 Matrices — verified against Ch_02_Matrices.pdf (2026-07-06). Section
   //    titles from the p0 "Let's Study" TOC. NOTE the book layout: there are TWO
   //    miscellaneous exercises — 2(A) sits MID-chapter (after Exercise 2.2,
