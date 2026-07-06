@@ -234,7 +234,11 @@ function BoardQuestionItem({
           </button>
           {revealed && q.solution && (
             <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
-              <KatexRenderer text={breakSentences(q.solution)} />
+              {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —
+                  e.g. Mathematical Logic truth tables — render as real <table>s,
+                  not raw `| p | q |` text. Fast-paths to KatexRenderer when there's
+                  no table. breakSentences leaves tables untouched. */}
+              <BlockText text={breakSentences(q.solution)} />
               {q.solutionImageUrl && (
                 <div className="pt-3">
                   <ZoomableImage src={publicImageUrl(supabaseUrl, q.solutionImageUrl)} alt="Solution figure" />
