@@ -159,6 +159,29 @@ export const CHAPTERS: Record<string, Chapter> = {
     subtopics: ["Area Under a Curve", "Area Between Two Curves"],
   },
 
+  // ── Ch.5 Vectors (12th, Part 1). 61pp — the largest State Board chapter yet.
+  //    6 teaching sections: 5.1 Vectors and their types (representation, magnitude,
+  //    addition/subtraction, components, position vectors) p0-18 (Ex 5.1 @p18) ·
+  //    5.2 Section Formula p19-27 (Ex 5.2 @p27) · 5.3 Dot Product (angle, projections,
+  //    direction cosines) p28-36 (Ex 5.3 @p36) · 5.4 Cross Product p37-45 (Ex 5.4 @p45) ·
+  //    5.5 Scalar & Vector Triple Product p46-53 (Ex 5.5 @p49) · Miscellaneous Exercise 5
+  //    p54-60 (20 MCQ + 20 subjective). Feeds Ch.6 Line & Planes conceptually.
+  "vectors-12": {
+    id: "vectors-12",
+    chapterName: "Vectors",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Vectors.pdf",
+    pdf: cls12("Part 01/Ch_05_Vectors.pdf"),
+    note: "Maharashtra State Board (Class 12) — Vectors (Balbharati textbook)",
+    subtopics: [
+      "Vectors and Their Types",
+      "Section Formula",
+      "Dot Product of Vectors",
+      "Cross Product of Vectors",
+      "Scalar and Vector Triple Product",
+    ],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).

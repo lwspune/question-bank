@@ -134,6 +134,23 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 6", label: "Choose the correct alternative", kind: "miscellaneous", refPrefixes: ["Misc I ("] },
     { group: "Miscellaneous Exercise 6", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II"] },
   ],
+  // ── Ch.5 Vectors — verified against Ch_05_Vectors.pdf (2026-07-06). 5 numbered
+  //    sections matching the p0 "Let's Study" TOC, each Solved Examples → its own
+  //    Exercise (5.1–5.5). Terminal Miscellaneous Exercise 5 (I = MCQ, II = subjective).
+  "vectors-12": [
+    { group: "5.1 Vectors and their Types", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 SolvedEx"] },
+    { group: "5.1 Vectors and their Types", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["5.1 Ex.Q"] },
+    { group: "5.2 Section Formula", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2 SolvedEx"] },
+    { group: "5.2 Section Formula", label: "Exercise 5.2", kind: "exercise", refPrefixes: ["5.2 Ex.Q"] },
+    { group: "5.3 Dot Product of Vectors", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.3 SolvedEx"] },
+    { group: "5.3 Dot Product of Vectors", label: "Exercise 5.3", kind: "exercise", refPrefixes: ["5.3 Ex.Q"] },
+    { group: "5.4 Vector Product of Vectors", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.4 SolvedEx"] },
+    { group: "5.4 Vector Product of Vectors", label: "Exercise 5.4", kind: "exercise", refPrefixes: ["5.4 Ex.Q"] },
+    { group: "5.5 Scalar and Vector Triple Product", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.5 SolvedEx"] },
+    { group: "5.5 Scalar and Vector Triple Product", label: "Exercise 5.5", kind: "exercise", refPrefixes: ["5.5 Ex.Q"] },
+    { group: "Miscellaneous Exercise 5", label: "Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 5", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

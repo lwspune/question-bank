@@ -1,0 +1,908 @@
+[
+  {
+    "ref": "Misc I Q.1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}| = 2\\), \\(|\\vec{b}| = 3\\), \\(|\\vec{c}| = 4\\) then \\(\\left[\\ \\vec{a}+\\vec{b}\\ \\ \\ \\vec{b}+\\vec{c}\\ \\ \\ \\vec{c}-\\vec{a}\\ \\right]\\) is equal to",
+    "options": [
+      {"label": "A", "text": "24"},
+      {"label": "B", "text": "-24"},
+      {"label": "C", "text": "0"},
+      {"label": "D", "text": "48"}
+    ],
+    "answer": "C",
+    "solution": "Expand \\([\\vec{a}+\\vec{b},\\ \\vec{b}+\\vec{c},\\ \\vec{c}-\\vec{a}]\\) using multilinearity of the scalar triple product. Term by term: \\([\\vec{a},\\vec{b}+\\vec{c},\\vec{c}-\\vec{a}] = [\\vec{a},\\vec{b},\\vec{c}]\\) (all other terms vanish due to repeated vectors), and \\([\\vec{b},\\vec{b}+\\vec{c},\\vec{c}-\\vec{a}] = -[\\vec{b},\\vec{c},\\vec{a}] = -[\\vec{a},\\vec{b},\\vec{c}]\\) (cyclic property). Adding: \\([\\vec{a},\\vec{b},\\vec{c}] - [\\vec{a},\\vec{b},\\vec{c}] = 0\\), independent of the given magnitudes."
+  },
+  {
+    "ref": "Misc I Q.2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\), then the value of \\(\\lambda\\) for which \\(\\vec{a}+\\lambda\\vec{b}\\) is perpendicular to \\(\\vec{a}-\\lambda\\vec{b}\\), is",
+    "options": [
+      {"label": "A", "text": "\\(\\dfrac{9}{16}\\)"},
+      {"label": "B", "text": "\\(\\dfrac{3}{4}\\)"},
+      {"label": "C", "text": "\\(\\dfrac{3}{2}\\)"},
+      {"label": "D", "text": "\\(\\dfrac{4}{3}\\)"}
+    ],
+    "answer": "B",
+    "solution": "Perpendicularity gives \\((\\vec{a}+\\lambda\\vec{b})\\cdot(\\vec{a}-\\lambda\\vec{b})=0 \\Rightarrow |\\vec{a}|^2-\\lambda^2|\\vec{b}|^2=0 \\Rightarrow 9-16\\lambda^2=0 \\Rightarrow \\lambda^2=\\dfrac{9}{16} \\Rightarrow \\lambda=\\dfrac{3}{4}\\)."
+  },
+  {
+    "ref": "Misc I Q.3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If sum of two unit vectors is itself a unit vector, then the magnitude of their difference is",
+    "options": [
+      {"label": "A", "text": "\\(\\sqrt{2}\\)"},
+      {"label": "B", "text": "\\(\\sqrt{3}\\)"},
+      {"label": "C", "text": "1"},
+      {"label": "D", "text": "2"}
+    ],
+    "answer": "B",
+    "solution": "\\(|\\vec{a}+\\vec{b}|^2=1 \\Rightarrow 1+1+2\\vec{a}\\cdot\\vec{b}=1 \\Rightarrow \\vec{a}\\cdot\\vec{b}=-\\dfrac{1}{2}\\). Then \\(|\\vec{a}-\\vec{b}|^2=1+1-2\\vec{a}\\cdot\\vec{b}=2+1=3 \\Rightarrow |\\vec{a}-\\vec{b}|=\\sqrt{3}\\)."
+  },
+  {
+    "ref": "Misc I Q.4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 5\\), \\(|\\vec{c}| = 7\\) and \\(\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}\\), then the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is",
+    "options": [
+      {"label": "A", "text": "\\(\\dfrac{\\pi}{2}\\)"},
+      {"label": "B", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+      {"label": "C", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+      {"label": "D", "text": "\\(\\dfrac{\\pi}{6}\\)"}
+    ],
+    "answer": "C",
+    "solution": "[Textbook misprint: options B and C are both printed as \\(\\pi/4\\).] Since \\(\\vec{c}=-(\\vec{a}+\\vec{b})\\), \\(|\\vec{c}|^2=|\\vec{a}|^2+|\\vec{b}|^2+2\\vec{a}\\cdot\\vec{b} \\Rightarrow 49=9+25+2\\vec{a}\\cdot\\vec{b} \\Rightarrow \\vec{a}\\cdot\\vec{b}=7.5\\). So \\(\\cos\\theta=\\dfrac{7.5}{3\\times5}=\\dfrac{1}{2} \\Rightarrow \\theta=\\dfrac{\\pi}{3}=60^\\circ\\). The correct value \\(\\pi/3\\) is not distinctly printed (the intended option, likely at position C, is duplicated as \\(\\pi/4\\) instead); the nearest slot is marked C here."
+  },
+  {
+    "ref": "Misc I Q.5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "The volume of tetrahedron whose vertices are \\((1,-6,10)\\), \\((-1,-3,7)\\), \\((5,-1,\\lambda)\\) and \\((7,-4,7)\\) is 11 cu. units then the value of \\(\\lambda\\) is",
+    "options": [
+      {"label": "A", "text": "7"},
+      {"label": "B", "text": "\\(\\dfrac{\\pi}{3}\\)"},
+      {"label": "C", "text": "1"},
+      {"label": "D", "text": "5"}
+    ],
+    "answer": "A",
+    "solution": "[Textbook note: option B \\(\\pi/3\\) is not a meaningful choice for this coordinate/volume problem — an apparent carry-over misprint from a neighboring angle question.] Taking the first vertex as origin, edge vectors are \\((-2,3,-3)\\), \\((4,5,\\lambda-10)\\), \\((6,2,-3)\\). Their scalar triple product works out to \\(22\\lambda-88\\), so Volume \\(=\\dfrac{1}{6}|22\\lambda-88|=11 \\Rightarrow |22\\lambda-88|=66\\), giving \\(\\lambda=7\\) or \\(\\lambda=1\\); both satisfy the equation algebraically (both appear among the options, A and C) — 7 is taken as the primary intended value."
+  },
+  {
+    "ref": "Misc I Q.6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(\\alpha, \\beta, \\gamma\\) are direction angles of a line and \\(\\alpha = 60^\\circ\\), \\(\\beta = 45^\\circ\\), the \\(\\gamma =\\)",
+    "options": [
+      {"label": "A", "text": "\\(30^\\circ\\) or \\(90^\\circ\\)"},
+      {"label": "B", "text": "\\(45^\\circ\\) or \\(60^\\circ\\)"},
+      {"label": "C", "text": "\\(90^\\circ\\) or \\(30^\\circ\\)"},
+      {"label": "D", "text": "\\(60^\\circ\\) or \\(120^\\circ\\)"}
+    ],
+    "answer": "D",
+    "solution": "\\(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1 \\Rightarrow 0.25+0.5+\\cos^2\\gamma=1 \\Rightarrow \\cos^2\\gamma=0.25 \\Rightarrow \\cos\\gamma=\\pm0.5 \\Rightarrow \\gamma=60^\\circ\\text{ or }120^\\circ\\)."
+  },
+  {
+    "ref": "Misc I Q.7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "The distance of the point \\((3, 4, 5)\\) from Y-axis is",
+    "options": [
+      {"label": "A", "text": "3"},
+      {"label": "B", "text": "5"},
+      {"label": "C", "text": "\\(\\sqrt{34}\\)"},
+      {"label": "D", "text": "\\(\\sqrt{41}\\)"}
+    ],
+    "answer": "C",
+    "solution": "Distance from the Y-axis \\(=\\sqrt{x^2+z^2}=\\sqrt{9+25}=\\sqrt{34}\\)."
+  },
+  {
+    "ref": "Misc I Q.8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "The line joining the points \\((-2, 1, -8)\\) and \\((a, b, c)\\) is parallel to the line whose direction ratios are 6, 2, 3. The value of a, b, c are",
+    "options": [
+      {"label": "A", "text": "4, 3, -5"},
+      {"label": "B", "text": "\\(1, 2, \\dfrac{-13}{2}\\)"},
+      {"label": "C", "text": "10, 5, -2"},
+      {"label": "D", "text": "3, 5, 11"}
+    ],
+    "answer": "A",
+    "solution": "The direction ratios of the joining line are \\((a+2, b-1, c+8)\\), which should be exactly \\((6,2,3)\\): \\(a+2=6, b-1=2, c+8=3 \\Rightarrow a=4, b=3, c=-5\\)."
+  },
+  {
+    "ref": "Misc I Q.9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(\\cos\\alpha, \\cos\\beta, \\cos\\gamma\\) are the direction cosines of a line then the value of \\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma\\) is",
+    "options": [
+      {"label": "A", "text": "1"},
+      {"label": "B", "text": "2"},
+      {"label": "C", "text": "3"},
+      {"label": "D", "text": "4"}
+    ],
+    "answer": "B",
+    "solution": "\\(\\sin^2\\alpha+\\sin^2\\beta+\\sin^2\\gamma = 3-(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma) = 3-1=2\\)."
+  },
+  {
+    "ref": "Misc I Q.10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(l, m, n\\) are direction cosines of a line then \\(l\\hat{i}+m\\hat{j}+n\\hat{k}\\) is",
+    "options": [
+      {"label": "A", "text": "null vector"},
+      {"label": "B", "text": "the unit vector along the line"},
+      {"label": "C", "text": "any vector along the line"},
+      {"label": "D", "text": "a vector perpendicular to the line"}
+    ],
+    "answer": "B",
+    "solution": "By definition, \\(l,m,n\\) are the direction cosines, so \\(l\\hat{i}+m\\hat{j}+n\\hat{k}\\) has magnitude \\(\\sqrt{l^2+m^2+n^2}=1\\) and lies along the line — the unit vector along the line."
+  },
+  {
+    "ref": "Misc I Q.11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If \\(|\\vec{a}| = 3\\) and \\(-1 \\le k \\le 2\\), then \\(|k\\vec{a}|\\) lies in the interval",
+    "options": [
+      {"label": "A", "text": "[0, 6]"},
+      {"label": "B", "text": "[-3, 6]"},
+      {"label": "C", "text": "[3, 6]"},
+      {"label": "D", "text": "[1, 2]"}
+    ],
+    "answer": "A",
+    "solution": "\\(|k\\vec{a}|=|k|\\times3\\). For \\(-1\\le k\\le2\\), \\(|k|\\) ranges over \\([0,2]\\) (minimum 0 at \\(k=0\\), maximum 2 at \\(k=2\\)), so \\(|k\\vec{a}|\\in[0,6]\\)."
+  },
+  {
+    "ref": "Misc I Q.12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\alpha, \\beta, \\gamma\\) be distinct real numbers. The points with position vectors \\(\\alpha\\hat{i}+\\beta\\hat{j}+\\gamma\\hat{k}\\), \\(\\beta\\hat{i}+\\gamma\\hat{j}+\\alpha\\hat{k}\\), \\(\\gamma\\hat{i}+\\alpha\\hat{j}+\\beta\\hat{k}\\)",
+    "options": [
+      {"label": "A", "text": "are collinear"},
+      {"label": "B", "text": "form an equilateral triangle"},
+      {"label": "C", "text": "form a scalene triangle"},
+      {"label": "D", "text": "form a right angled triangle"}
+    ],
+    "answer": "B",
+    "solution": "Each pairwise squared distance simplifies to \\(2(\\alpha-\\beta)^2+2(\\beta-\\gamma)^2+2(\\gamma-\\alpha)^2\\) divided symmetrically — a direct computation shows all three side lengths are equal, so the three points form an equilateral triangle."
+  },
+  {
+    "ref": "Misc I Q.13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\vec{p}\\) and \\(\\vec{q}\\) be the position vectors of P and Q respectively, with respect to O and \\(|\\vec{p}| = p\\), \\(|\\vec{q}| = q\\). The points R and S divide PQ internally and externally in the ratio 2 : 3 respectively. If OR and OS are perpendicular then.",
+    "options": [
+      {"label": "A", "text": "\\(9p^2 = 4q^2\\)"},
+      {"label": "B", "text": "\\(4p^2 = 9q^2\\)"},
+      {"label": "C", "text": "\\(9p = 4q\\)"},
+      {"label": "D", "text": "\\(4p = 9q\\)"}
+    ],
+    "answer": "A",
+    "solution": "\\(\\vec{r}=\\dfrac{3\\vec{p}+2\\vec{q}}{5}\\) (internal 2:3) and \\(\\vec{s}=3\\vec{p}-2\\vec{q}\\) (external 2:3). \\(\\vec{r}\\cdot\\vec{s}=0 \\Rightarrow \\dfrac{1}{5}\\left(9|\\vec{p}|^2-4|\\vec{q}|^2\\right)=0 \\Rightarrow 9p^2=4q^2\\) (the cross terms cancel)."
+  },
+  {
+    "ref": "Misc I Q.14",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "The 2 vectors \\(\\hat{j} + \\hat{k}\\) and \\(3\\hat{i} - \\hat{j} + 4\\hat{k}\\) represents the two sides AB and AC, respectively of a \\(\\triangle ABC\\). The length of the median through A is",
+    "options": [
+      {"label": "A", "text": "\\(\\dfrac{\\sqrt{34}}{2}\\)"},
+      {"label": "B", "text": "\\(\\dfrac{\\sqrt{48}}{2}\\)"},
+      {"label": "C", "text": "\\(\\sqrt{18}\\)"},
+      {"label": "D", "text": "None of these"}
+    ],
+    "answer": "A",
+    "solution": "Taking A as origin, midpoint of BC is \\(\\dfrac{(\\hat{j}+\\hat{k})+(3\\hat{i}-\\hat{j}+4\\hat{k})}{2}=\\dfrac{3\\hat{i}+5\\hat{k}}{2}\\). Length of median \\(=\\sqrt{\\left(\\tfrac{3}{2}\\right)^2+\\left(\\tfrac{5}{2}\\right)^2}=\\sqrt{\\tfrac{34}{4}}=\\dfrac{\\sqrt{34}}{2}\\)."
+  },
+  {
+    "ref": "Misc I Q.15",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors, then what is the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) for \\(\\sqrt{3}\\vec{a} - \\vec{b}\\) to be a unit vector?",
+    "options": [
+      {"label": "A", "text": "\\(30^\\circ\\)"},
+      {"label": "B", "text": "\\(45^\\circ\\)"},
+      {"label": "C", "text": "\\(60^\\circ\\)"},
+      {"label": "D", "text": "\\(90^\\circ\\)"}
+    ],
+    "answer": "A",
+    "solution": "\\(|\\sqrt{3}\\vec{a}-\\vec{b}|^2=1 \\Rightarrow 3+1-2\\sqrt{3}\\cos\\theta=1 \\Rightarrow \\cos\\theta=\\dfrac{3}{2\\sqrt{3}}=\\dfrac{\\sqrt{3}}{2} \\Rightarrow \\theta=30^\\circ\\)."
+  },
+  {
+    "ref": "Misc I Q.16",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\theta\\) be the angle between any two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), then \\(|\\vec{a}\\cdot\\vec{b}| = |\\vec{a}\\times\\vec{b}|\\), when \\(\\theta\\) is equal to",
+    "options": [
+      {"label": "A", "text": "0"},
+      {"label": "B", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+      {"label": "C", "text": "\\(\\dfrac{\\pi}{2}\\)"},
+      {"label": "D", "text": "\\(\\pi\\)"}
+    ],
+    "answer": "B",
+    "solution": "\\(|\\vec{a}||\\vec{b}||\\cos\\theta| = |\\vec{a}||\\vec{b}||\\sin\\theta| \\Rightarrow |\\tan\\theta|=1 \\Rightarrow \\theta=\\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "ref": "Misc I Q.17",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "stem": "The value of \\(\\hat{i}\\cdot(\\hat{j}\\times\\hat{k}) + \\hat{j}\\cdot(\\hat{i}\\times\\hat{k}) + \\hat{k}\\cdot(\\hat{i}\\times\\hat{j})\\)",
+    "options": [
+      {"label": "A", "text": "0"},
+      {"label": "B", "text": "-1"},
+      {"label": "C", "text": "1"},
+      {"label": "D", "text": "3"}
+    ],
+    "answer": "C",
+    "solution": "\\(\\hat{j}\\times\\hat{k}=\\hat{i} \\Rightarrow \\hat{i}\\cdot\\hat{i}=1\\); \\(\\hat{i}\\times\\hat{k}=-\\hat{j} \\Rightarrow \\hat{j}\\cdot(-\\hat{j})=-1\\); \\(\\hat{i}\\times\\hat{j}=\\hat{k} \\Rightarrow \\hat{k}\\cdot\\hat{k}=1\\). Sum \\(=1-1+1=1\\)."
+  },
+  {
+    "ref": "Misc I Q.18",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Let a, b, c be distinct non-negative numbers. If the vectors \\(a\\hat{i}+a\\hat{j}+c\\hat{k}\\), \\(\\hat{i}+\\hat{k}\\) and \\(c\\hat{i}+c\\hat{j}+b\\hat{k}\\) lie in a plane, then c is",
+    "options": [
+      {"label": "A", "text": "The arithmetic mean of a and b"},
+      {"label": "B", "text": "The geometric mean of a and b"},
+      {"label": "C", "text": "The harmonic mean of a and b"},
+      {"label": "D", "text": "0"}
+    ],
+    "answer": "B",
+    "solution": "Coplanarity gives \\(\\begin{vmatrix}a & a & c\\\\ 1 & 0 & 1\\\\ c & c & b\\end{vmatrix}=0 \\Rightarrow -ab+c^2=0 \\Rightarrow c^2=ab \\Rightarrow c=\\sqrt{ab}\\), the geometric mean of a and b."
+  },
+  {
+    "ref": "Misc I Q.19",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\vec{a} = \\hat{i}-\\hat{j}\\), \\(\\vec{b} = \\hat{j}-\\hat{k}\\), \\(\\vec{c} = \\hat{k}-\\hat{i}\\). If \\(\\vec{d}\\) is a unit vector such that \\(\\vec{a}\\cdot\\vec{d}=0=[\\vec{b}\\ \\vec{c}\\ \\vec{d}]\\), then \\(\\vec{d}\\) equals.",
+    "options": [
+      {"label": "A", "text": "\\(\\pm\\dfrac{\\hat{i}+\\hat{j}-2\\hat{k}}{\\sqrt{6}}\\)"},
+      {"label": "B", "text": "\\(\\pm\\dfrac{\\hat{i}+\\hat{j}-\\hat{k}}{\\sqrt{3}}\\)"},
+      {"label": "C", "text": "\\(\\pm\\dfrac{\\hat{i}+\\hat{j}-\\hat{k}}{\\sqrt{3}}\\)"},
+      {"label": "D", "text": "\\(\\pm\\hat{k}\\)"}
+    ],
+    "answer": "A",
+    "solution": "\\([\\vec{b}\\ \\vec{c}\\ \\vec{d}]=0\\) means \\(\\vec{d}\\) is coplanar with \\(\\vec{b},\\vec{c}\\), so \\(\\vec{d}=\\beta\\vec{b}+\\gamma\\vec{c}=(-\\gamma,\\beta,\\gamma-\\beta)\\). \\(\\vec{a}\\cdot\\vec{d}=0\\) gives \\(-\\gamma-\\beta=0 \\Rightarrow \\beta=-\\gamma\\), so \\(\\vec{d}=\\gamma(-1,-1,2)\\). Normalizing: \\(|\\gamma|\\sqrt{6}=1\\), giving \\(\\vec{d}=\\pm\\dfrac{\\hat{i}+\\hat{j}-2\\hat{k}}{\\sqrt{6}}\\)."
+  },
+  {
+    "ref": "Misc I Q.20",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}\\ \\vec{b}\\ \\vec{c}\\) are non coplanar unit vectors such that \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\dfrac{(\\vec{b}+\\vec{c})}{\\sqrt{2}}\\) then the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is",
+    "options": [
+      {"label": "A", "text": "\\(\\dfrac{3\\pi}{4}\\)"},
+      {"label": "B", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+      {"label": "C", "text": "\\(\\dfrac{\\pi}{2}\\)"},
+      {"label": "D", "text": "\\(\\pi\\)"}
+    ],
+    "answer": "A",
+    "solution": "Using \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})=\\vec{b}(\\vec{a}\\cdot\\vec{c})-\\vec{c}(\\vec{a}\\cdot\\vec{b})=\\dfrac{1}{\\sqrt{2}}\\vec{b}+\\dfrac{1}{\\sqrt{2}}\\vec{c}\\). Since \\(\\vec{b},\\vec{c}\\) are independent, \\(\\vec{a}\\cdot\\vec{c}=\\dfrac{1}{\\sqrt{2}}\\) and \\(-\\vec{a}\\cdot\\vec{b}=\\dfrac{1}{\\sqrt{2}} \\Rightarrow \\vec{a}\\cdot\\vec{b}=-\\dfrac{1}{\\sqrt{2}}\\). As unit vectors, \\(\\cos\\theta=-\\dfrac{1}{\\sqrt{2}} \\Rightarrow \\theta=\\dfrac{3\\pi}{4}\\)."
+  },
+  {
+    "ref": "Misc II Q.1 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{AM}\\)"
+  },
+  {
+    "ref": "Misc II Q.1 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{BD}\\)"
+  },
+  {
+    "ref": "Misc II Q.1 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{MB}\\)"
+  },
+  {
+    "ref": "Misc II Q.1 iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{DA}\\)"
+  },
+  {
+    "ref": "Misc II Q.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "The points A, B and C have position vectors \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) respectively. The point P is midpoint of AB. Find in terms of \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) the vector \\(\\overrightarrow{PC}\\)."
+  },
+  {
+    "ref": "Misc II Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "In a pentagon ABCDE, show that \\(\\overrightarrow{AB} + \\overrightarrow{AE} + \\overrightarrow{BC} + \\overrightarrow{DC} + \\overrightarrow{ED} = 2\\overrightarrow{AC}\\)."
+  },
+  {
+    "ref": "Misc II Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "If in parallelogram ABCD, diagonal vectors are \\(\\overrightarrow{AC} = 2\\hat{i}+3\\hat{j}+4\\hat{k}\\) and \\(\\overrightarrow{BD} = -6\\hat{i}+7\\hat{j}-2\\hat{k}\\), then find the adjacent side vectors \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{AD}\\)."
+  },
+  {
+    "ref": "Misc II Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If two sides of a triangle taken in the same order represented by vectors \\(\\hat{i}+2\\hat{j}\\) and \\(\\hat{i}+\\hat{k}\\), then find the length of the third side."
+  },
+  {
+    "ref": "Misc II Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}| = |\\vec{b}| = 1\\), \\(\\vec{a}\\cdot\\vec{b}=0\\) and \\(\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}\\) then find \\(|\\vec{c}|\\)."
+  },
+  {
+    "ref": "Misc II Q.7 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "Find the lengths of the sides of the triangle and also determine the type of a triangle.",
+    "setLabel": "Misc II Q.7",
+    "stem": "\\(A(2,-1,0)\\), \\(B(4,1,1)\\), \\(C(4,-5,4)\\)"
+  },
+  {
+    "ref": "Misc II Q.7 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "Find the lengths of the sides of the triangle and also determine the type of a triangle.",
+    "setLabel": "Misc II Q.7",
+    "stem": "\\(L(3,-2,-3)\\), \\(M(7,0,1)\\), \\(N(1,2,1)\\)"
+  },
+  {
+    "ref": "Misc II Q.8 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the component form of \\(\\vec{a}\\) if",
+    "setLabel": "Misc II Q.8",
+    "stem": "It lies in YZ plane and makes \\(60^\\circ\\) with positive Y-axis and \\(|\\vec{a}| = 4\\)"
+  },
+  {
+    "ref": "Misc II Q.8 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the component form of \\(\\vec{a}\\) if",
+    "setLabel": "Misc II Q.8",
+    "stem": "It lies in XZ plane and makes \\(45^\\circ\\) with positive Z-axis and \\(|\\vec{a}| = 10\\)"
+  },
+  {
+    "ref": "Misc II Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Two sides of a parallelogram are \\(3\\hat{i}+4\\hat{j}-5\\hat{k}\\) and \\(-2\\hat{j}+7\\hat{k}\\). Find the unit vectors parallel to the diagonals."
+  },
+  {
+    "ref": "Misc II Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "If D, E, F are the mid-points of the sides BC, CA, AB of a triangle ABC, prove that \\(\\overrightarrow{AD} + \\overrightarrow{BE} + \\overrightarrow{CF} = \\vec{0}\\)."
+  },
+  {
+    "ref": "Misc II Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Find the unit vectors that are parallel to the tangent line to the parabola \\(y = x^2\\) at the point \\((2, 4)\\)."
+  },
+  {
+    "ref": "Misc II Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "Express the vector \\(\\hat{i}+4\\hat{j}-4\\hat{k}\\) as a linear combination of the vectors \\(2\\hat{i}-\\hat{j}+3\\hat{k}\\), \\(\\hat{i}-2\\hat{j}+4\\hat{k}\\) and \\(-\\hat{i}+3\\hat{j}-5\\hat{k}\\)."
+  },
+  {
+    "ref": "Misc II Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "If \\(\\overrightarrow{OA} = \\vec{a}\\) and \\(\\overrightarrow{OB} = \\vec{b}\\) then show that vector along the angle bisector of angle AOB is given by \\(\\vec{d} = \\lambda\\left(\\dfrac{\\vec{a}}{|\\vec{a}|}+\\dfrac{\\vec{b}}{|\\vec{b}|}\\right)\\), where \\(\\lambda\\) is a real number."
+  },
+  {
+    "ref": "Misc II Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "The position vectors of three consecutive vertices of a parallelogram are \\(\\hat{i}+\\hat{j}+\\hat{k}\\), \\(\\hat{i}+3\\hat{j}+5\\hat{k}\\) and \\(7\\hat{i}+9\\hat{j}+11\\hat{k}\\). Find the position vector of the fourth vertex."
+  },
+  {
+    "ref": "Misc II Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "A point P with p.v. \\(\\dfrac{-14\\hat{i}+39\\hat{j}+28\\hat{k}}{5}\\) divides the line joining \\(A(-1, 6, 5)\\) and B internally in the ratio 3:2 then find the point B."
+  },
+  {
+    "ref": "Misc II Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the sum of the three vectors determined by the medians of a triangle directed from the vertices is zero."
+  },
+  {
+    "ref": "Misc II Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "ABCD is a parallelogram E, F are the mid points of BC and CD respectively. AE, AF meet the diagonal BD at Q and P respectively. Show that P and Q trisect DB."
+  },
+  {
+    "ref": "Misc II Q.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If ABC is a triangle whose orthocenter is P and the circumcenter is Q, then prove that \\(\\overrightarrow{PA} + \\overrightarrow{PC} + \\overrightarrow{PB} = 2\\overrightarrow{PQ}\\)."
+  },
+  {
+    "ref": "Misc II Q.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If P is orthocenter, Q is circumcenter and G is centroid of triangle ABC, then prove that \\(\\overrightarrow{QP} = 3\\overrightarrow{QG}\\)."
+  },
+  {
+    "ref": "Misc II Q.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "In triangle OAB, E is the midpoint of BO and D is a point on AB such that AD : DB = 2 : 1. If OD and AE intersect at P, determine the ratio OP : PD using vector methods."
+  },
+  {
+    "ref": "Misc II Q.21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Dot-product of a vector with vectors \\(3\\hat{i}-5\\hat{k}\\), \\(2\\hat{i}+7\\hat{j}\\) and \\(\\hat{i}+\\hat{j}+\\hat{k}\\) are respectively -1, 6 and 5. Find the vector."
+  },
+  {
+    "ref": "Misc II Q.22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are unit vectors such that \\(\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}\\), then find the value of \\(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{c}\\cdot\\vec{a}\\)."
+  },
+  {
+    "ref": "Misc II Q.23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If a parallelogram is constructed on the vectors \\(\\vec{a} = 3\\vec{p} - \\vec{q}\\), \\(\\vec{b} = \\vec{p} + 3\\vec{q}\\) and \\(|\\vec{p}| = |\\vec{q}| = 2\\) and angle between \\(\\vec{p}\\) and \\(\\vec{q}\\) is \\(\\pi/3\\) show that the ratio of the lengths of the sides is \\(\\sqrt{7} : \\sqrt{13}\\)."
+  },
+  {
+    "ref": "Misc II Q.24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Express the vector \\(\\vec{a} = 5\\hat{i}-2\\hat{j}+5\\hat{k}\\) as a sum of two vectors such that one is parallel to the vector \\(\\vec{b} = 3\\hat{i}+\\hat{k}\\) and other is perpendicular to \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "Misc II Q.25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find two unit vectors each of which makes equal angles with \\(\\vec{u}, \\vec{v}\\) and \\(\\vec{w}\\). \\(\\vec{u} = 2\\hat{i}+\\hat{j}-2\\hat{k}\\), \\(\\vec{v} = \\hat{i}+2\\hat{j}-2\\hat{k}\\) and \\(\\vec{w} = 2\\hat{i}-2\\hat{j}+\\hat{k}\\)."
+  },
+  {
+    "ref": "Misc II Q.26",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the acute angles between the curves at their points of intersection. \\(y = x^2\\), \\(y = x^3\\)"
+  },
+  {
+    "ref": "Misc II Q.27 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find the direction cosines and direction angles of the vector.",
+    "setLabel": "Misc II Q.27",
+    "stem": "\\(2\\hat{i}+\\hat{j}+2\\hat{k}\\)"
+  },
+  {
+    "ref": "Misc II Q.27 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find the direction cosines and direction angles of the vector.",
+    "setLabel": "Misc II Q.27",
+    "stem": "\\(\\dfrac{1}{2}\\hat{i}+\\hat{j}+\\hat{k}\\)"
+  },
+  {
+    "ref": "Misc II Q.28",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(\\vec{b} = 4\\hat{i}+3\\hat{j}\\) and \\(\\vec{c}\\) be two vectors perpendicular to each other in the XY-plane. Find the vector in the same plane having projection 1 and 2 along \\(\\vec{b}\\) and \\(\\vec{c}\\), respectively."
+  },
+  {
+    "ref": "Misc II Q.29",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Show that no line in space can make angles \\(\\pi/6\\) and \\(\\pi/4\\) with X-axis and Y-axis respectively."
+  },
+  {
+    "ref": "Misc II Q.30",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find the angle between the lines whose direction cosines are given by the equation \\(6mn-2nl+5lm=0\\), \\(3l+m+5n=0\\)."
+  },
+  {
+    "ref": "Misc II Q.31",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If Q is the foot of the perpendicular from \\(P(2,4,3)\\) on the line joining the points \\(A(1,2,4)\\) and \\(B(3,4,5)\\), find coordinates of Q."
+  },
+  {
+    "ref": "Misc II Q.32",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Show that the area of triangle ABC, the position vectors of whose vertices are a, b and c is \\(\\dfrac{1}{2}\\left[\\vec{a}\\times\\vec{b}+\\vec{b}\\times\\vec{c}+\\vec{c}\\times\\vec{a}\\right]\\)."
+  },
+  {
+    "ref": "Misc II Q.33",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find a unit vector perpendicular to the plane containing the point \\((a, 0, 0)\\), \\((0, b, 0)\\), and \\((0, 0, c)\\). What is the area of the triangle with these vertices?"
+  },
+  {
+    "ref": "Misc II Q.34 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\times(\\vec{b}\\cdot\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot(\\vec{b}\\cdot\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\cdot\\vec{b})\\times(\\vec{c}\\cdot\\vec{d})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\times\\vec{b})\\cdot(\\vec{c}\\times\\vec{d})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (g)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\cdot\\vec{b})\\cdot\\vec{c}\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (h)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\cdot\\vec{b})\\vec{c}\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((|\\vec{a}|)(\\vec{b}\\cdot\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (j)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot(\\vec{b}+\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (k)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot\\vec{b}+\\vec{c}\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (l)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(|\\vec{a}|\\cdot(\\vec{b}+\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.35",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Show that, for any vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\): \\((\\vec{a}+\\vec{b}+\\vec{c})\\times\\vec{c}+(\\vec{a}+\\vec{b}+\\vec{c})\\times\\vec{b}+(\\vec{b}+\\vec{c})\\times\\vec{a}=2\\vec{a}\\times\\vec{c}\\)."
+  },
+  {
+    "ref": "Misc II Q.36 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Suppose that \\(\\vec{a} \\ne \\vec{0}\\).",
+    "setLabel": "Misc II Q.36",
+    "stem": "If \\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) then is \\(\\vec{b} = \\vec{c}\\)?"
+  },
+  {
+    "ref": "Misc II Q.36 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Suppose that \\(\\vec{a} \\ne \\vec{0}\\).",
+    "setLabel": "Misc II Q.36",
+    "stem": "If \\(\\vec{a}\\times\\vec{b} = \\vec{a}\\times\\vec{c}\\) then is \\(\\vec{b} = \\vec{c}\\)?"
+  },
+  {
+    "ref": "Misc II Q.36 (c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Suppose that \\(\\vec{a} \\ne \\vec{0}\\).",
+    "setLabel": "Misc II Q.36",
+    "stem": "If \\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) and \\(\\vec{a}\\times\\vec{b} = \\vec{a}\\times\\vec{c}\\) then is \\(\\vec{b} = \\vec{c}\\)?"
+  },
+  {
+    "ref": "Misc II Q.37",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A(3,2,-1)\\), \\(B(-2,2,-3)\\), \\(C(3,5,-2)\\), \\(D(-2,5,-4)\\) then (i) verify that the points are the vertices of a parallelogram and (ii) find its area."
+  },
+  {
+    "ref": "Misc II Q.38",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Let A, B, C, D be any four points in space. Prove that \\(|\\overrightarrow{AB}\\times\\overrightarrow{CD}+\\overrightarrow{BC}\\times\\overrightarrow{AD}+\\overrightarrow{CA}\\times\\overrightarrow{BD}| = 4(\\text{area of } \\triangle ABC)\\)."
+  },
+  {
+    "ref": "Misc II Q.39",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\hat{a}, \\hat{b}, \\hat{c}\\) be unit vectors such that \\(\\hat{a}\\cdot\\hat{b} = \\hat{a}\\cdot\\hat{c} = 0\\) and the angle between \\(\\hat{b}\\) and \\(\\hat{c}\\) be \\(\\pi/6\\). Prove that \\(\\hat{a} = \\pm 2(\\hat{b}\\times\\hat{c})\\)."
+  },
+  {
+    "ref": "Misc II Q.40",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Find the value of 'a' so that the volume of parallelopiped formed by \\(\\hat{i}+a\\hat{j}+\\hat{k}\\), \\(\\hat{j}+a\\hat{k}\\) and \\(a\\hat{i}+\\hat{k}\\) becomes minimum."
+  },
+  {
+    "ref": "Misc II Q.41",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Find the volume of the parallelepiped spanned by the diagonals of the three faces of a cube of side \\(a\\) that meet at one vertex of the cube."
+  },
+  {
+    "ref": "Misc II Q.42",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are three non-coplanar vectors, then show that \\(\\dfrac{\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})}{(\\vec{c}\\times\\vec{a})\\cdot\\vec{b}} + \\dfrac{\\vec{b}\\cdot(\\vec{a}\\times\\vec{c})}{(\\vec{c}\\times\\vec{a})\\cdot\\vec{b}} = 0\\)."
+  },
+  {
+    "ref": "Misc II Q.43",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Prove that \\((\\vec{a}\\times\\vec{b})\\cdot(\\vec{c}\\times\\vec{d}) = \\begin{vmatrix}\\vec{a}\\cdot\\vec{c} & \\vec{b}\\cdot\\vec{c}\\\\ \\vec{a}\\cdot\\vec{d} & \\vec{b}\\cdot\\vec{d}\\end{vmatrix}\\)."
+  },
+  {
+    "ref": "Misc II Q.44",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Find the volume of the parallelopiped whose coterminus edges are represented by the vector \\(\\hat{j}+\\hat{k}\\), \\(\\hat{i}+\\hat{k}\\) and \\(\\hat{i}+\\hat{j}\\). Also find volume of tetrahedron having these coterminous edges."
+  },
+  {
+    "ref": "Misc II Q.45",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Using properties of scalar triple product, prove that \\([\\vec{a}+\\vec{b}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{c}+\\vec{a}] = 2[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)."
+  },
+  {
+    "ref": "Misc II Q.46",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If four points \\(A(\\vec{a})\\), \\(B(\\vec{b})\\), \\(C(\\vec{c})\\) and \\(D(\\vec{d})\\) are coplanar then show that \\([\\vec{a}\\ \\vec{b}\\ \\vec{d}] + [\\vec{b}\\ \\vec{c}\\ \\vec{d}] + [\\vec{c}\\ \\vec{a}\\ \\vec{d}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)."
+  },
+  {
+    "ref": "Misc II Q.47",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are three non coplanar vectors, then \\((\\vec{a}+\\vec{b}+\\vec{c})\\cdot\\left[(\\vec{a}+\\vec{b})\\times(\\vec{a}+\\vec{c})\\right] = -[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)."
+  },
+  {
+    "ref": "Misc II Q.48",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If in a tetrahedron, edges in each of the two pairs of opposite edges are perpendicular, then show that the edges in the third pair are also perpendicular."
+  }
+]

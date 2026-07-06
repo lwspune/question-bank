@@ -1,0 +1,42 @@
+[
+  {
+    "id": "8cd4eb03-9f1a-4800-912d-eeaad60caddb",
+    "ref": "5.1 Ex.Q2 i)",
+    "solution": "By the triangle (chain) law,\n\\(\\vec{PR} = \\vec{PQ}+\\vec{QR} = 2\\vec a+2\\vec b\\). [Textbook answer-key error: the book prints \\(2\\vec a-2\\vec b\\), which contradicts its own printed answers for (ii) \\(\\vec{PM}=\\vec a+\\vec b\\) and (iii) \\(\\vec{QM}=\\vec b-\\vec a\\) — those are only consistent with \\(\\vec{PR}=2\\vec a+2\\vec b\\).]"
+  },
+  {
+    "id": "ef89cbf0-7b31-48b2-b69c-69934c3e0e4f",
+    "ref": "5.1 Ex.Q3",
+    "solution": "Take O as the origin, so the position vectors of A and B are \\(\\vec a\\) and \\(\\vec b\\).\nA regular hexagon OABCDE is centrally symmetric about its centre, so opposite sides are equal in length, parallel, and oppositely directed:\n\\(\\vec{CD}=-\\vec{OA}, \\quad \\vec{DE}=-\\vec{AB}, \\quad \\vec{EO}=-\\vec{BC}\\)\nUsing this property together with \\(\\vec{AB}=\\vec b-\\vec a\\), the position vectors of the remaining vertices (relative to O) work out to:\n\\(\\vec{OC} = 2\\vec b-2\\vec a\\)\n\\(\\vec{OD} = 2\\vec b-3\\vec a\\)\n\\(\\vec{OE} = \\vec b-2\\vec a\\)\n(Check: \\(\\vec{CD}=\\vec{OD}-\\vec{OC}=-\\vec a=-\\vec{OA}\\), confirming the opposite-side property.) [Textbook answer-key error: the book prints \\(\\vec{OC}=2\\vec a+2\\vec b\\) (a sign typo) while its own \\(\\vec{OD}\\) and \\(\\vec{OE}\\) answers match ours exactly.]"
+  },
+  {
+    "id": "a81de7ce-22e9-4409-93f0-4b2a1bbe88dd",
+    "ref": "5.3 Ex.Q10",
+    "solution": "Direction cosines satisfy \\(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1\\).\nWith \\(\\alpha=45^\\circ,\\ \\beta=60^\\circ\\):\n\\(\\cos^2 45^\\circ+\\cos^2 60^\\circ+\\cos^2\\gamma=1\\)\n\\(\\dfrac12+\\dfrac14+\\cos^2\\gamma=1\\ \\Rightarrow\\ \\cos^2\\gamma=\\dfrac14\\ \\Rightarrow\\ \\cos\\gamma=\\pm\\dfrac12\\)\nSo the third direction angle is \\(\\gamma=60^\\circ\\) or \\(\\gamma=120^\\circ\\). [Textbook answer-key error: the book prints only \\(\\pi/3\\ (60^\\circ)\\), omitting the equally valid \\(120^\\circ\\) branch from \\(\\cos\\gamma=-\\tfrac12\\).]"
+  },
+  {
+    "id": "1f34e0e8-cc43-46f0-96b0-a1f528674901",
+    "ref": "5.3 Ex.Q14",
+    "solution": "From \\(5l+m+3n=0\\), \\(m=-5l-3n\\).\nSubstitute in \\(5mn-2nl+6lm=0\\):\n\\(5(-5l-3n)n-2nl+6l(-5l-3n)=0\\)\n\\(-25ln-15n^2-2nl-30l^2-18ln=0\\)\n\\(-30l^2-45ln-15n^2=0\\ \\Rightarrow\\ 2l^2+3ln+n^2=0\\ \\Rightarrow\\ (2l+n)(l+n)=0\\)\nCase 1: \\(n=-2l\\Rightarrow m=-5l-3(-2l)=l\\), direction ratios \\((1,1,-2)\\).\nCase 2: \\(n=-l\\Rightarrow m=-5l-3(-l)=-2l\\), direction ratios \\((1,-2,-1)\\).\n\\(\\cos\\theta=\\dfrac{(1)(1)+(1)(-2)+(-2)(-1)}{\\sqrt{1+1+4}\\,\\sqrt{1+4+1}}=\\dfrac{1}{6}\\)\nAngle \\(\\theta=\\cos^{-1}\\!\\left(\\dfrac16\\right)\\). [Textbook answer-key error: the book's first triple \\(-1,1,2\\) matches our \\((1,-2,-1)\\) (same ratios, opposite overall sign), but its second triple \\(1,2,3\\) does not satisfy either given equation at all (substituting gives 16≠0) — a genuine book-key typo, not matching either of the two valid solution branches.]"
+  },
+  {
+    "id": "9e7fd971-8527-4152-8ba4-cdf43aee7896",
+    "ref": "5.4 Ex.Q4",
+    "solution": "A vector perpendicular to both \\(\\vec a\\) and \\(\\vec b\\) is along \\(\\vec a\\times\\vec b\\).\n\\(\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\2&1&-3\\\\1&-2&1\\end{vmatrix}=\\hat i(1-6)-\\hat j(2+3)+\\hat k(-4-1)=-5\\hat i-5\\hat j-5\\hat k=-5(\\hat i+\\hat j+\\hat k)\\).\n\\(|\\vec a\\times\\vec b|=5\\sqrt3\\), so a unit vector along it is \\(\\pm\\dfrac{1}{\\sqrt3}(\\hat i+\\hat j+\\hat k)\\).\nRequired vectors of magnitude 5 \\(=\\pm\\dfrac{5}{\\sqrt3}(\\hat i+\\hat j+\\hat k)\\). [Textbook answer-key error: the book prints only the unit vector \\(\\pm(\\hat i+\\hat j+\\hat k)/\\sqrt3\\) (magnitude 1), dropping the required scale to magnitude 5 asked for in the question.]"
+  },
+  {
+    "id": "7f8138d0-a31b-45dd-a368-09e878e14268",
+    "ref": "5.4 Ex.Q5 ii)",
+    "solution": "\\(\\vec u\\cdot\\vec v=|\\vec u||\\vec v|\\cos\\theta\\Rightarrow 12=10\\cdot2\\cdot\\cos\\theta\\Rightarrow\\cos\\theta=\\dfrac{3}{5}\\), so \\(\\sin\\theta=\\dfrac45\\) (taking \\(\\theta\\) acute since \\(\\cos\\theta>0\\)).\n\\(|\\vec u\\times\\vec v|=|\\vec u||\\vec v|\\sin\\theta=20\\left(\\dfrac45\\right)=\\mathbf{16}\\). [Textbook answer-key error: the book prints \"1.6\", a decimal-point typo for 16.]"
+  },
+  {
+    "id": "dce3804a-db88-4f20-8672-047e3d33496c",
+    "ref": "5.5 Ex.Q9 ii)",
+    "solution": "\\(\\vec{a}\\times\\vec{b} = \\hat{i}((-2)(0)-0(2)) - \\hat{j}((1)(0)-0(1)) + \\hat{k}((1)(2)-(-2)(1)) = 4\\hat{k}\\)\n\\((\\vec{a}\\times\\vec{b})\\times\\vec{c} = 4\\hat{k}\\times(2\\hat{i}+\\hat{j}-2\\hat{k}) = 8(\\hat{k}\\times\\hat{i}) + 4(\\hat{k}\\times\\hat{j}) - 8(\\hat{k}\\times\\hat{k})\\)\n\\(= 8\\hat{j} - 4\\hat{i} - 0 = \\mathbf{-4\\hat{i}+8\\hat{j}}\\)\nComparing with part (i): \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = 6\\hat{i}+3\\hat{j}-6\\hat{k}\\) but \\((\\vec{a}\\times\\vec{b})\\times\\vec{c} = -4\\hat{i}+8\\hat{j}\\) — the results are **not** the same.\nJustification: cross product is not associative in general. Using \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})=(\\vec{a}\\cdot\\vec{c})\\vec{b}-(\\vec{a}\\cdot\\vec{b})\\vec{c}\\) and \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}=(\\vec{a}\\cdot\\vec{c})\\vec{b}-(\\vec{b}\\cdot\\vec{c})\\vec{a}\\), here \\(\\vec{a}\\cdot\\vec{c}=0,\\ \\vec{a}\\cdot\\vec{b}=-3,\\ \\vec{b}\\cdot\\vec{c}=4\\), so the two expressions reduce to \\(3\\vec{c}\\) and \\(-4\\vec{a}\\) respectively — unequal since \\(3\\vec{c}\\) is not a scalar multiple of \\(\\vec a\\) here. Equality would require \\((\\vec{a}\\cdot\\vec{b})\\vec{c}=(\\vec{b}\\cdot\\vec{c})\\vec{a}\\), which does not hold for these vectors. [Textbook answer-key error: the book prints \\(-2\\hat i+4\\hat j\\), exactly half our value; independently re-derived two ways (direct cross product and the BAC-CAB identity), both confirming \\(-4\\hat i+8\\hat j\\).]"
+  },
+  {
+    "id": "7dfcd915-b4ef-40ef-bbff-bbfec52a6064",
+    "ref": "Misc II Q.4",
+    "solution": "Take A as the origin, so the position vectors of B, C, D are \\(\\vec{AB}\\), \\(\\vec{AC}=2\\hat i+3\\hat j+4\\hat k\\), \\(\\vec{AD}\\).\nSince ABCD is a parallelogram, \\(\\vec{AB}=\\vec{DC}=\\vec{AC}-\\vec{AD}\\), so \\(\\vec{AD}=\\vec{AC}-\\vec{AB}\\).\nAlso \\(\\vec{BD}=\\vec{AD}-\\vec{AB}=(\\vec{AC}-\\vec{AB})-\\vec{AB}=\\vec{AC}-2\\vec{AB}\\)\n\\(\\Rightarrow 2\\vec{AB}=\\vec{AC}-\\vec{BD}=(2\\hat i+3\\hat j+4\\hat k)-(-6\\hat i+7\\hat j-2\\hat k)=8\\hat i-4\\hat j+6\\hat k\\)\n\\(\\Rightarrow \\vec{AB}=4\\hat i-2\\hat j+3\\hat k\\)\nThen \\(\\vec{AD}=\\vec{AC}-\\vec{AB}=(2\\hat i+3\\hat j+4\\hat k)-(4\\hat i-2\\hat j+3\\hat k)=-2\\hat i+5\\hat j+\\hat k\\)\n\\(\\therefore \\vec{AB}=4\\hat i-2\\hat j+3\\hat k,\\quad \\vec{AD}=-2\\hat i+5\\hat j+\\hat k\\). [Textbook answer-key error: the book's printed AB/AD values reproduce the given AC correctly but yield BD as the negative of the given BD — internally inconsistent with its own data; our values satisfy both diagonals exactly.]"
+  }
+]

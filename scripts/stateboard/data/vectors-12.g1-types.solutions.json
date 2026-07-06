@@ -1,0 +1,192 @@
+[
+  {
+    "id": "70a3d28e-cc46-42ab-9955-d743e4bcbbcf",
+    "ref": "5.1 Ex.Q1",
+    "solution": "Since \\(\\vec{a}\\) is directed due north and \\(\\vec{b}\\) is directed due west, the two vectors are perpendicular to each other.\nBy the Pythagoras theorem,\n\\(|\\vec{a}+\\vec{b}| = \\sqrt{|\\vec{a}|^2+|\\vec{b}|^2} = \\sqrt{24^2+7^2} = \\sqrt{576+49}=\\sqrt{625}\\)\n\\(\\therefore |\\vec{a}+\\vec{b}| = 25\\) units."
+  },
+  {
+    "id": "a1d2dd52-d9fb-40f3-a674-81f8b42501d4",
+    "ref": "5.1 Ex.Q10",
+    "solution": "Let A(1, 1, 0), B(1, 0, 1), C(0, 1, 1).\n\\(\\vec{AB} = (1-1)\\hat i+(0-1)\\hat j+(1-0)\\hat k = -\\hat j+\\hat k\\)\n\\(\\vec{AC} = (0-1)\\hat i+(1-1)\\hat j+(1-0)\\hat k = -\\hat i+\\hat k\\)\n\\(\\vec{AB}\\times\\vec{AC} = \\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\0&-1&1\\\\-1&0&1\\end{vmatrix} = \\hat i(-1-0)-\\hat j(0+1)+\\hat k(0-1) = -\\hat i-\\hat j-\\hat k\\)\n\\(|\\vec{AB}\\times\\vec{AC}| = \\sqrt{1+1+1}=\\sqrt3\\)\nArea of triangle \\(=\\dfrac12|\\vec{AB}\\times\\vec{AC}| = \\dfrac{\\sqrt3}{2}\\) sq units."
+  },
+  {
+    "id": "f66cc143-0543-45b0-9a3e-f52cc82d1fbd",
+    "ref": "5.1 Ex.Q11",
+    "solution": "Let \\(B \\equiv (x, y, z)\\). Then \\(\\vec{AB} = (x-1)\\hat i+(y-5)\\hat j+z\\hat k\\).\nGiven \\(\\vec{AB}=2\\hat i-4\\hat j+7\\hat k\\), comparing components:\n\\(x-1=2 \\Rightarrow x=3\\)\n\\(y-5=-4 \\Rightarrow y=1\\)\n\\(z=7\\)\n\\(\\therefore\\) the terminal point is \\(B \\equiv (3, 1, 7)\\)."
+  },
+  {
+    "id": "50a805ed-8549-45a0-95f5-1d09522aafcb",
+    "ref": "5.1 Ex.Q12 i)",
+    "solution": "A(3, 2, -4), B(9, 8, -10), C(-2, -3, 1)\n\\(\\vec{AB} = (9-3)\\hat i+(8-2)\\hat j+(-10+4)\\hat k = 6\\hat i+6\\hat j-6\\hat k\\)\n\\(\\vec{AC} = (-2-3)\\hat i+(-3-2)\\hat j+(1+4)\\hat k = -5\\hat i-5\\hat j+5\\hat k\\)\nHere \\(\\vec{AC} = -\\dfrac{5}{6}\\vec{AB}\\), so \\(\\vec{AB}\\) and \\(\\vec{AC}\\) are parallel vectors having the point A in common.\n\\(\\therefore\\) A, B, C are collinear."
+  },
+  {
+    "id": "b0515322-9647-42e0-97e9-a8adc6e9dec1",
+    "ref": "5.1 Ex.Q12 ii)",
+    "solution": "P(4, 5, 2), Q(3, 2, 4), R(5, 8, 0)\n\\(\\vec{PQ} = (3-4)\\hat i+(2-5)\\hat j+(4-2)\\hat k = -\\hat i-3\\hat j+2\\hat k\\)\n\\(\\vec{PR} = (5-4)\\hat i+(8-5)\\hat j+(0-2)\\hat k = \\hat i+3\\hat j-2\\hat k\\)\nHere \\(\\vec{PR} = -\\vec{PQ}\\), so \\(\\vec{PQ}\\) and \\(\\vec{PR}\\) are parallel vectors having the point P in common.\n\\(\\therefore\\) P, Q, R are collinear."
+  },
+  {
+    "id": "a5769afb-4b0d-4c9c-b1ed-cae5e4b52d50",
+    "ref": "5.1 Ex.Q13",
+    "solution": "The vectors \\(2\\hat i-q\\hat j+3\\hat k\\) and \\(4\\hat i-5\\hat j+6\\hat k\\) are collinear, so their corresponding components are proportional:\n\\(\\dfrac{2}{4}=\\dfrac{-q}{-5}=\\dfrac{3}{6}\\)\nFrom the first and third ratios, \\(\\dfrac24=\\dfrac12\\), so\n\\(\\dfrac{-q}{-5}=\\dfrac12 \\Rightarrow \\dfrac{q}{5}=\\dfrac12 \\Rightarrow q=\\dfrac52\\)."
+  },
+  {
+    "id": "a2d7801a-5692-491e-b71d-876149cefa50",
+    "ref": "5.1 Ex.Q14",
+    "solution": "A(1, -1, 1), B(-1, 1, 1), C(1, 1, 1), D(2, -3, 4)\n\\(\\vec{AB} = -2\\hat i+2\\hat j\\), \\(\\vec{AC} = 2\\hat j\\), \\(\\vec{AD} = \\hat i-2\\hat j+3\\hat k\\)\nFour points are coplanar iff the scalar triple product \\([\\vec{AB}\\ \\vec{AC}\\ \\vec{AD}]=0\\).\n\\(\\vec{AC}\\times\\vec{AD}=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\0&2&0\\\\1&-2&3\\end{vmatrix}=\\hat i(6-0)-\\hat j(0-0)+\\hat k(0-2)=6\\hat i-2\\hat k\\)\n\\(\\vec{AB}\\cdot(\\vec{AC}\\times\\vec{AD}) = (-2)(6)+(2)(0)+(0)(-2) = -12 \\neq 0\\)\nSince the scalar triple product is not zero, the four points A, B, C, D are **not coplanar**."
+  },
+  {
+    "id": "66fc7838-c36c-4373-93dc-89464035d085",
+    "ref": "5.1 Ex.Q15",
+    "solution": "Let \\(-\\hat i-3\\hat j+4\\hat k = x(2\\hat i+\\hat j-4\\hat k)+y(2\\hat i-\\hat j+3\\hat k)+z(3\\hat i+\\hat j-2\\hat k)\\).\nComparing coefficients of \\(\\hat i, \\hat j, \\hat k\\):\n\\(2x+2y+3z=-1\\) ... (i)\n\\(x-y+z=-3\\) ... (ii)\n\\(-4x+3y-2z=4\\) ... (iii)\nSolving (i), (ii) and (iii) simultaneously gives \\(x=2,\\ y=2,\\ z=-3\\)\n(Check: \\(2(2)+2(2)+3(-3)=-1\\); \\(2-2+(-3)=-3\\); \\(-4(2)+3(2)-2(-3)=4\\) -- all satisfied.)\n\\(\\therefore -\\hat i-3\\hat j+4\\hat k = 2(2\\hat i+\\hat j-4\\hat k)+2(2\\hat i-\\hat j+3\\hat k)-3(3\\hat i+\\hat j-2\\hat k)\\)."
+  },
+  {
+    "id": "8cd4eb03-9f1a-4800-912d-eeaad60caddb",
+    "ref": "5.1 Ex.Q2 i)",
+    "solution": "By the triangle (chain) law,\n\\(\\vec{PR} = \\vec{PQ}+\\vec{QR} = 2\\vec a+2\\vec b\\)."
+  },
+  {
+    "id": "88fb1956-2f8c-4f9e-9313-f013decf98d7",
+    "ref": "5.1 Ex.Q2 ii)",
+    "solution": "M is the midpoint of PR, so\n\\(\\vec{PM} = \\dfrac12\\vec{PR} = \\dfrac12(2\\vec a+2\\vec b) = \\vec a+\\vec b\\)."
+  },
+  {
+    "id": "b50f48d9-e0d4-4ddf-bb69-a1b83aa49879",
+    "ref": "5.1 Ex.Q2 iii)",
+    "solution": "\\(\\vec{QM} = \\vec{QP}+\\vec{PM} = -2\\vec a+(\\vec a+\\vec b) = \\vec b-\\vec a\\)."
+  },
+  {
+    "id": "ef89cbf0-7b31-48b2-b69c-69934c3e0e4f",
+    "ref": "5.1 Ex.Q3",
+    "solution": "Take O as the origin, so the position vectors of A and B are \\(\\vec a\\) and \\(\\vec b\\).\nA regular hexagon OABCDE is centrally symmetric about its centre, so opposite sides are equal in length, parallel, and oppositely directed:\n\\(\\vec{CD}=-\\vec{OA}, \\quad \\vec{DE}=-\\vec{AB}, \\quad \\vec{EO}=-\\vec{BC}\\)\nUsing this property together with \\(\\vec{AB}=\\vec b-\\vec a\\), the position vectors of the remaining vertices (relative to O) work out to:\n\\(\\vec{OC} = 2\\vec b-2\\vec a\\)\n\\(\\vec{OD} = 2\\vec b-3\\vec a\\)\n\\(\\vec{OE} = \\vec b-2\\vec a\\)\n(Check: \\(\\vec{CD}=\\vec{OD}-\\vec{OC}=-\\vec a=-\\vec{OA}\\), confirming the opposite-side property.)"
+  },
+  {
+    "id": "5a6d6f8f-f9c4-44be-8717-c805c517b1a3",
+    "ref": "5.1 Ex.Q4",
+    "solution": "Take O (the centre of the hexagon) as the origin. In a regular hexagon ABCDEF, D is diametrically opposite A through the centre O, so O is the midpoint of AD; similarly O is the midpoint of BE and of CF.\nHence, with position vectors taken relative to O: \\(\\vec D=-\\vec A,\\ \\vec E=-\\vec B,\\ \\vec F=-\\vec C\\).\nNow,\n\\(\\vec{AB}+\\vec{AC}+\\vec{AD}+\\vec{AE}+\\vec{AF}\\)\n\\(=(\\vec B-\\vec A)+(\\vec C-\\vec A)+(\\vec D-\\vec A)+(\\vec E-\\vec A)+(\\vec F-\\vec A)\\)\n\\(=(\\vec B-\\vec A)+(\\vec C-\\vec A)+(-\\vec A-\\vec A)+(-\\vec B-\\vec A)+(-\\vec C-\\vec A)\\)\n\\(=-6\\vec A\\)\nAlso \\(\\vec{AO}=\\vec O-\\vec A=-\\vec A\\) (O is the origin), so \\(-6\\vec A = 6\\vec{AO}\\).\n\\(\\therefore \\vec{AB}+\\vec{AC}+\\vec{AD}+\\vec{AE}+\\vec{AF}=6\\vec{AO}\\), as required."
+  },
+  {
+    "id": "b3b02ca8-34a3-49b2-ba02-504b904dcb6c",
+    "ref": "5.1 Ex.Q5",
+    "solution": "Let \\(\\vec p=2\\hat i+2\\hat j+3\\hat k,\\ \\vec q=-3\\hat i+3\\hat j+2\\hat k,\\ \\vec r=3\\hat i+4\\hat k\\).\nThree vectors, taken in order and placed head to tail, form a triangle if and only if their sum is the zero vector.\n\\(\\vec p+\\vec q+\\vec r = (2-3+3)\\hat i+(2+3+0)\\hat j+(3+2+4)\\hat k = 2\\hat i+5\\hat j+9\\hat k \\neq \\vec 0\\)\nSince the sum is not the zero vector, the given vectors **do not form a triangle**."
+  },
+  {
+    "id": "5170e67d-1c7d-43ef-8848-3386309ebf8e",
+    "ref": "5.1 Ex.Q6",
+    "solution": "Since S is the midpoint of QR, by the triangle law of addition\n\\(\\vec{QR}=\\vec{QP}+\\vec{PR}=\\vec a+\\vec b\\)\nAs S is the midpoint of QR,\n\\(\\vec{QS}=\\vec{SR}=\\dfrac12\\vec{QR}=\\dfrac12(\\vec a+\\vec b)\\)\n\\(\\therefore \\vec d = \\vec{SR} = \\dfrac12(\\vec a+\\vec b)\\)\nAlso, using the triangle law in \\(\\Delta PQS\\),\n\\(\\vec{PS}=\\vec{PQ}+\\vec{QS}=-\\vec a+\\dfrac12(\\vec a+\\vec b)=\\dfrac12(\\vec b-\\vec a)\\)\n\\(\\therefore \\vec c = \\dfrac12(\\vec b-\\vec a)\\)."
+  },
+  {
+    "id": "e6d8ae11-855a-4f2b-aa12-0be371366559",
+    "ref": "5.1 Ex.Q7",
+    "solution": "\\(|\\vec a| = \\sqrt{1^2+(-2)^2}=\\sqrt5\\)\nUnit vector along \\(\\vec a\\): \\(\\hat a=\\dfrac{\\hat i-2\\hat j}{\\sqrt5}\\)\nRequired vector \\(=7\\hat a = \\dfrac{7}{\\sqrt5}(\\hat i-2\\hat j) = \\dfrac{7\\sqrt5}{5}\\hat i-\\dfrac{14\\sqrt5}{5}\\hat j\\)."
+  },
+  {
+    "id": "a0879274-e678-4a62-9a66-01391a0475d5",
+    "ref": "5.1 Ex.Q8 a)",
+    "solution": "Distance of the point (4, -2, 6) from the XY-plane \\(=|z|=6\\) units."
+  },
+  {
+    "id": "b178197d-2f9a-42a2-9abd-8dea44157afd",
+    "ref": "5.1 Ex.Q8 b)",
+    "solution": "Distance of the point (4, -2, 6) from the YZ-plane \\(=|x|=4\\) units."
+  },
+  {
+    "id": "fdabced2-9458-40d8-aed5-fb1f9934821f",
+    "ref": "5.1 Ex.Q8 c)",
+    "solution": "Distance of the point (4, -2, 6) from the XZ-plane \\(=|y|=2\\) units."
+  },
+  {
+    "id": "7e417769-aeac-4b59-b780-86ab32d2d43a",
+    "ref": "5.1 Ex.Q8 d)",
+    "solution": "Distance of the point (4, -2, 6) from the X-axis \\(=\\sqrt{y^2+z^2}=\\sqrt{(-2)^2+6^2}=\\sqrt{4+36}=\\sqrt{40}=2\\sqrt{10}\\) units."
+  },
+  {
+    "id": "6382f9ed-2448-4c5b-9865-242d590cb236",
+    "ref": "5.1 Ex.Q8 e)",
+    "solution": "Distance of the point (4, -2, 6) from the Y-axis \\(=\\sqrt{x^2+z^2}=\\sqrt{16+36}=\\sqrt{52}=2\\sqrt{13}\\) units."
+  },
+  {
+    "id": "1a998594-4952-4a08-9060-1c25b75ac39d",
+    "ref": "5.1 Ex.Q8 f)",
+    "solution": "Distance of the point (4, -2, 6) from the Z-axis \\(=\\sqrt{x^2+y^2}=\\sqrt{16+4}=\\sqrt{20}=2\\sqrt5\\) units."
+  },
+  {
+    "id": "6f4faf92-213f-4132-b4fb-f031e5388f50",
+    "ref": "5.1 Ex.Q9 a)",
+    "solution": "Three units behind the YZ-plane \\(\\Rightarrow x=-3\\)\nFour units to the right of the XZ-plane \\(\\Rightarrow y=4\\)\nFive units above the XY-plane \\(\\Rightarrow z=5\\)\n\\(\\therefore\\) the point is \\((-3, 4, 5)\\)."
+  },
+  {
+    "id": "4e68f252-c7e4-4a62-a831-bfbe1ab75a04",
+    "ref": "5.1 Ex.Q9 b)",
+    "solution": "In the YZ-plane \\(\\Rightarrow x=0\\)\nOne unit to the right of the XZ-plane \\(\\Rightarrow y=1\\)\nSix units above the XY-plane \\(\\Rightarrow z=6\\)\n\\(\\therefore\\) the point is \\((0, 1, 6)\\)."
+  },
+  {
+    "id": "d10e279f-ceab-438e-95ab-cfb9e20188bd",
+    "ref": "Misc II Q.1 i)",
+    "solution": "Take A as the origin, so \\(\\vec{AB}=\\vec p\\).\nSince \\(\\vec{BC}=\\vec q\\), \\(\\vec{AC}=\\vec{AB}+\\vec{BC}=\\vec p+\\vec q\\).\nSince DC is parallel to AB in the same sense, with \\(DC=3AB\\), \\(\\vec{DC}=3\\vec p\\), so \\(\\vec{CD}=-3\\vec p\\).\n\\(\\vec{AD}=\\vec{AC}+\\vec{CD}=(\\vec p+\\vec q)-3\\vec p=\\vec q-2\\vec p\\)\nM is the midpoint of DC, so\n\\(\\vec{AM}=\\dfrac{\\vec{AD}+\\vec{AC}}{2}=\\dfrac{(\\vec q-2\\vec p)+(\\vec p+\\vec q)}{2}=\\dfrac{2\\vec q-\\vec p}{2}=\\vec q-\\dfrac12\\vec p\\)."
+  },
+  {
+    "id": "03436cb0-d249-45ff-860e-761c7f6d4b7c",
+    "ref": "Misc II Q.1 ii)",
+    "solution": "From part (i), \\(\\vec{AD}=\\vec q-2\\vec p\\) and \\(\\vec{AB}=\\vec p\\).\n\\(\\vec{BD}=\\vec{AD}-\\vec{AB}=(\\vec q-2\\vec p)-\\vec p=\\vec q-3\\vec p\\)."
+  },
+  {
+    "id": "201ac093-1c49-4968-88f9-26cff1e71452",
+    "ref": "Misc II Q.1 iii)",
+    "solution": "From part (i), \\(\\vec{AM}=\\vec q-\\dfrac12\\vec p\\) and \\(\\vec{AB}=\\vec p\\).\n\\(\\vec{MB}=\\vec{AB}-\\vec{AM}=\\vec p-\\left(\\vec q-\\dfrac12\\vec p\\right)=\\dfrac32\\vec p-\\vec q\\)."
+  },
+  {
+    "id": "a1e0da7b-e7d2-45d8-8477-1870773b23a4",
+    "ref": "Misc II Q.1 iv)",
+    "solution": "From part (i), \\(\\vec{AD}=\\vec q-2\\vec p\\).\n\\(\\vec{DA}=-\\vec{AD}=-(\\vec q-2\\vec p)=2\\vec p-\\vec q\\)."
+  },
+  {
+    "id": "6cc8b915-81a2-45d7-8f1e-0a06066b5adc",
+    "ref": "Misc II Q.11",
+    "solution": "For \\(y=x^2\\), \\(\\dfrac{dy}{dx}=2x\\). At the point (2, 4), the slope of the tangent \\(=2(2)=4\\).\nA direction vector along the tangent (run 1, rise 4) is \\(\\hat i+4\\hat j\\).\n\\(|\\hat i+4\\hat j|=\\sqrt{1+16}=\\sqrt{17}\\)\n\\(\\therefore\\) the required unit vectors are \\(\\pm\\dfrac{\\hat i+4\\hat j}{\\sqrt{17}}\\)."
+  },
+  {
+    "id": "92dd1534-ce56-458a-a695-10cd5f5e49da",
+    "ref": "Misc II Q.12",
+    "solution": "Let \\(\\hat i+4\\hat j-4\\hat k=x(2\\hat i-\\hat j+3\\hat k)+y(\\hat i-2\\hat j+4\\hat k)+z(-\\hat i+3\\hat j-5\\hat k)\\).\nComparing coefficients:\n\\(2x+y-z=1\\) ... (i)\n\\(-x-2y+3z=4\\) ... (ii)\n\\(3x+4y-5z=-4\\) ... (iii)\nSolving (i), (ii) and (iii) simultaneously gives \\(x=1,\\ y=2,\\ z=3\\)\n(Check: \\(2(1)+2-3=1\\); \\(-1-2(2)+3(3)=4\\); \\(3(1)+4(2)-5(3)=-4\\) -- all satisfied.)\n\\(\\therefore \\hat i+4\\hat j-4\\hat k=(2\\hat i-\\hat j+3\\hat k)+2(\\hat i-2\\hat j+4\\hat k)+3(-\\hat i+3\\hat j-5\\hat k)\\)."
+  },
+  {
+    "id": "37b0bfe3-d927-4670-951a-3f43e263c425",
+    "ref": "Misc II Q.13",
+    "solution": "Let \\(\\hat a=\\dfrac{\\vec a}{|\\vec a|}\\) and \\(\\hat b=\\dfrac{\\vec b}{|\\vec b|}\\) be the unit vectors along \\(\\overrightarrow{OA}\\) and \\(\\overrightarrow{OB}\\) respectively.\nConsider the parallelogram formed by \\(\\hat a\\) and \\(\\hat b\\) as adjacent sides. Since \\(|\\hat a|=|\\hat b|=1\\), this parallelogram is a rhombus.\nThe diagonal of a rhombus bisects the angle between its sides, so the vector \\(\\hat a+\\hat b\\) lies along the bisector of \\(\\angle AOB\\).\nAny vector along this bisector direction is a scalar multiple of \\(\\hat a+\\hat b\\):\n\\(\\vec d=\\lambda(\\hat a+\\hat b)=\\lambda\\left(\\dfrac{\\vec a}{|\\vec a|}+\\dfrac{\\vec b}{|\\vec b|}\\right)\\), where \\(\\lambda \\in \\mathbb R\\), as required."
+  },
+  {
+    "id": "20e47ab8-9736-4783-9200-25ea849a68bc",
+    "ref": "Misc II Q.14",
+    "solution": "Let A, B, C be three consecutive vertices of parallelogram ABCD with position vectors \\(\\vec a=\\hat i+\\hat j+\\hat k\\), \\(\\vec b=\\hat i+3\\hat j+5\\hat k\\), \\(\\vec c=7\\hat i+9\\hat j+11\\hat k\\); let D have position vector \\(\\vec d\\).\nIn a parallelogram, the diagonals bisect each other, so the midpoint of AC equals the midpoint of BD:\n\\(\\dfrac{\\vec a+\\vec c}{2}=\\dfrac{\\vec b+\\vec d}{2}\\)\n\\(\\Rightarrow \\vec d=\\vec a+\\vec c-\\vec b=(\\hat i+\\hat j+\\hat k)+(7\\hat i+9\\hat j+11\\hat k)-(\\hat i+3\\hat j+5\\hat k)\\)\n\\(=7\\hat i+7\\hat j+7\\hat k\\)\n\\(\\therefore\\) the position vector of the fourth vertex D is \\(7\\hat i+7\\hat j+7\\hat k\\)."
+  },
+  {
+    "id": "3da320b6-55f0-4319-b4ad-96c3a028af88",
+    "ref": "Misc II Q.3",
+    "solution": "Take A as the origin; let B, C, D, E have position vectors \\(\\vec b,\\vec c,\\vec d,\\vec e\\).\n\\(\\vec{AB}=\\vec b,\\ \\vec{AE}=\\vec e,\\ \\vec{BC}=\\vec c-\\vec b,\\ \\vec{DC}=\\vec c-\\vec d,\\ \\vec{ED}=\\vec d-\\vec e\\)\nAdding all five vectors:\n\\(\\vec{AB}+\\vec{AE}+\\vec{BC}+\\vec{DC}+\\vec{ED}\\)\n\\(=\\vec b+\\vec e+(\\vec c-\\vec b)+(\\vec c-\\vec d)+(\\vec d-\\vec e)\\)\n\\(=2\\vec c\\)\nSince \\(\\vec{AC}=\\vec c\\) (A is the origin), \\(2\\vec c=2\\vec{AC}\\).\n\\(\\therefore \\vec{AB}+\\vec{AE}+\\vec{BC}+\\vec{DC}+\\vec{ED}=2\\vec{AC}\\), as required."
+  },
+  {
+    "id": "7dfcd915-b4ef-40ef-bbff-bbfec52a6064",
+    "ref": "Misc II Q.4",
+    "solution": "Take A as the origin, so the position vectors of B, C, D are \\(\\vec{AB}\\), \\(\\vec{AC}=2\\hat i+3\\hat j+4\\hat k\\), \\(\\vec{AD}\\).\nSince ABCD is a parallelogram, \\(\\vec{AB}=\\vec{DC}=\\vec{AC}-\\vec{AD}\\), so \\(\\vec{AD}=\\vec{AC}-\\vec{AB}\\).\nAlso \\(\\vec{BD}=\\vec{AD}-\\vec{AB}=(\\vec{AC}-\\vec{AB})-\\vec{AB}=\\vec{AC}-2\\vec{AB}\\)\n\\(\\Rightarrow 2\\vec{AB}=\\vec{AC}-\\vec{BD}=(2\\hat i+3\\hat j+4\\hat k)-(-6\\hat i+7\\hat j-2\\hat k)=8\\hat i-4\\hat j+6\\hat k\\)\n\\(\\Rightarrow \\vec{AB}=4\\hat i-2\\hat j+3\\hat k\\)\nThen \\(\\vec{AD}=\\vec{AC}-\\vec{AB}=(2\\hat i+3\\hat j+4\\hat k)-(4\\hat i-2\\hat j+3\\hat k)=-2\\hat i+5\\hat j+\\hat k\\)\n\\(\\therefore \\vec{AB}=4\\hat i-2\\hat j+3\\hat k,\\quad \\vec{AD}=-2\\hat i+5\\hat j+\\hat k\\)."
+  },
+  {
+    "id": "560666f8-4d92-4067-9654-82135863cca4",
+    "ref": "Misc II Q.5",
+    "solution": "Let the two sides, taken in the same order, be \\(\\vec{AB}=\\hat i+2\\hat j\\) and \\(\\vec{BC}=\\hat i+\\hat k\\).\nSince the three sides of a triangle taken in order sum to the zero vector, \\(\\vec{AB}+\\vec{BC}+\\vec{CA}=\\vec 0\\).\n\\(\\vec{CA}=-(\\vec{AB}+\\vec{BC})=-\\big[(\\hat i+2\\hat j)+(\\hat i+\\hat k)\\big]=-(2\\hat i+2\\hat j+\\hat k)\\)\n\\(|\\vec{CA}|=\\sqrt{(-2)^2+(-2)^2+(-1)^2}=\\sqrt{4+4+1}=\\sqrt9=3\\)\n\\(\\therefore\\) the length of the third side is 3 units."
+  },
+  {
+    "id": "e427d5e3-103d-436b-8e06-c08e0b116a70",
+    "ref": "Misc II Q.7 i)",
+    "solution": "A(2, -1, 0), B(4, 1, 1), C(4, -5, 4)\n\\(AB=\\sqrt{(4-2)^2+(1+1)^2+(1-0)^2}=\\sqrt{4+4+1}=\\sqrt9=3\\)\n\\(BC=\\sqrt{(4-4)^2+(-5-1)^2+(4-1)^2}=\\sqrt{0+36+9}=\\sqrt{45}=3\\sqrt5\\)\n\\(CA=\\sqrt{(2-4)^2+(-1+5)^2+(0-4)^2}=\\sqrt{4+16+16}=\\sqrt{36}=6\\)\nCheck: \\(AB^2+CA^2=9+36=45=BC^2\\)\nSince \\(AB^2+CA^2=BC^2\\), the triangle is **right-angled at A**; since the sides \\(3,\\ 3\\sqrt5,\\ 6\\) are all different, it is also **scalene**."
+  },
+  {
+    "id": "da90e9d2-fcc4-4c5f-a91d-f9a3b06aba40",
+    "ref": "Misc II Q.7 ii)",
+    "solution": "L(3, -2, -3), M(7, 0, 1), N(1, 2, 1)\n\\(LM=\\sqrt{(7-3)^2+(0+2)^2+(1+3)^2}=\\sqrt{16+4+16}=\\sqrt{36}=6\\)\n\\(MN=\\sqrt{(1-7)^2+(2-0)^2+(1-1)^2}=\\sqrt{36+4+0}=\\sqrt{40}=2\\sqrt{10}\\)\n\\(NL=\\sqrt{(3-1)^2+(-2-2)^2+(-3-1)^2}=\\sqrt{4+16+16}=\\sqrt{36}=6\\)\nSince \\(LM=NL=6\\neq MN\\), two sides are equal, so the triangle is **isosceles**.\n(Checking \\(LM^2+NL^2=72\\neq MN^2=40\\), so it is not right-angled.)"
+  },
+  {
+    "id": "af0d8e42-afc7-4c34-9db9-4ea588bed201",
+    "ref": "Misc II Q.9",
+    "solution": "Let the adjacent sides of the parallelogram be \\(\\vec p=3\\hat i+4\\hat j-5\\hat k\\) and \\(\\vec q=-2\\hat j+7\\hat k\\).\nThe diagonals of the parallelogram are \\(\\vec p+\\vec q\\) and \\(\\vec p-\\vec q\\):\n\\(\\vec p+\\vec q=3\\hat i+2\\hat j+2\\hat k, \\quad |\\vec p+\\vec q|=\\sqrt{9+4+4}=\\sqrt{17}\\)\n\\(\\vec p-\\vec q=3\\hat i+6\\hat j-12\\hat k, \\quad |\\vec p-\\vec q|=\\sqrt{9+36+144}=\\sqrt{189}=3\\sqrt{21}\\)\nUnit vectors along the diagonals:\n\\(\\dfrac{3\\hat i+2\\hat j+2\\hat k}{\\sqrt{17}}\\) and \\(\\dfrac{3\\hat i+6\\hat j-12\\hat k}{3\\sqrt{21}}=\\dfrac{\\hat i+2\\hat j-4\\hat k}{\\sqrt{21}}\\)."
+  }
+]

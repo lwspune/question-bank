@@ -1,0 +1,92 @@
+[
+  {
+    "id": "990f9bde-2dd4-4638-a004-87f2df584ed8",
+    "ref": "5.4 Ex.Q1",
+    "solution": "\\((\\vec a+\\vec b)\\times(\\vec a-\\vec b)=\\vec a\\times\\vec a-\\vec a\\times\\vec b+\\vec b\\times\\vec a-\\vec b\\times\\vec b=-2(\\vec a\\times\\vec b)\\), since \\(\\vec a\\times\\vec a=\\vec b\\times\\vec b=\\vec 0\\) and \\(\\vec b\\times\\vec a=-\\vec a\\times\\vec b\\).\nCompute \\(\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\2&3&-1\\\\1&-4&2\\end{vmatrix}=\\hat i(6-4)-\\hat j(4+1)+\\hat k(-8-3)=2\\hat i-5\\hat j-11\\hat k\\).\nSo \\((\\vec a+\\vec b)\\times(\\vec a-\\vec b)=-2(2\\hat i-5\\hat j-11\\hat k)=\\mathbf{-4\\hat i+10\\hat j+22\\hat k}\\)."
+  },
+  {
+    "id": "0bd13869-afe9-4b0e-98bd-d7d1931a938b",
+    "ref": "5.4 Ex.Q2",
+    "solution": "Let \\(\\vec a=\\hat j+2\\hat k\\) and \\(\\vec b=\\hat i+\\hat j\\). A vector perpendicular to both is \\(\\vec a\\times\\vec b\\).\n\\(\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\0&1&2\\\\1&1&0\\end{vmatrix}=\\hat i(0-2)-\\hat j(0-2)+\\hat k(0-1)=-2\\hat i+2\\hat j-\\hat k\\).\n\\(|\\vec a\\times\\vec b|=\\sqrt{4+4+1}=3\\).\nRequired unit vectors \\(=\\pm\\dfrac{1}{3}(-2\\hat i+2\\hat j-\\hat k)\\)."
+  },
+  {
+    "id": "994debcf-a358-4a0f-b347-65024c14b0b7",
+    "ref": "5.4 Ex.Q3",
+    "solution": "We know \\(\\vec a\\cdot\\vec b=|\\vec a||\\vec b|\\cos\\theta\\) and \\(|\\vec a\\times\\vec b|=|\\vec a||\\vec b|\\sin\\theta\\), so \\(\\tan\\theta=\\dfrac{|\\vec a\\times\\vec b|}{\\vec a\\cdot\\vec b}\\).\n\\(|\\vec a\\times\\vec b|=|2\\hat i+\\hat j+2\\hat k|=\\sqrt{4+1+4}=3\\).\n\\(\\tan\\theta=\\dfrac{3}{\\sqrt3}=\\sqrt3\\Rightarrow\\theta=\\dfrac{\\pi}{3}=60^\\circ\\)."
+  },
+  {
+    "id": "9e7fd971-8527-4152-8ba4-cdf43aee7896",
+    "ref": "5.4 Ex.Q4",
+    "solution": "A vector perpendicular to both \\(\\vec a\\) and \\(\\vec b\\) is along \\(\\vec a\\times\\vec b\\).\n\\(\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\2&1&-3\\\\1&-2&1\\end{vmatrix}=\\hat i(1-6)-\\hat j(2+3)+\\hat k(-4-1)=-5\\hat i-5\\hat j-5\\hat k=-5(\\hat i+\\hat j+\\hat k)\\).\n\\(|\\vec a\\times\\vec b|=5\\sqrt3\\), so a unit vector along it is \\(\\pm\\dfrac{1}{\\sqrt3}(\\hat i+\\hat j+\\hat k)\\).\nRequired vectors of magnitude 5 \\(=\\pm\\dfrac{5}{\\sqrt3}(\\hat i+\\hat j+\\hat k)\\)."
+  },
+  {
+    "id": "a93a04ff-eb31-4328-b1fc-f6f27c157077",
+    "ref": "5.4 Ex.Q5 i)",
+    "solution": "\\(|\\vec u\\times\\vec v|=|\\vec u||\\vec v|\\sin\\theta\\Rightarrow 8=2\\cdot5\\cdot\\sin\\theta\\Rightarrow\\sin\\theta=\\dfrac{4}{5}\\), so \\(\\cos\\theta=\\pm\\dfrac{3}{5}\\).\n\\(\\vec u\\cdot\\vec v=|\\vec u||\\vec v|\\cos\\theta=10\\left(\\pm\\dfrac35\\right)=\\mathbf{\\pm 6}\\)."
+  },
+  {
+    "id": "7f8138d0-a31b-45dd-a368-09e878e14268",
+    "ref": "5.4 Ex.Q5 ii)",
+    "solution": "\\(\\vec u\\cdot\\vec v=|\\vec u||\\vec v|\\cos\\theta\\Rightarrow 12=10\\cdot2\\cdot\\cos\\theta\\Rightarrow\\cos\\theta=\\dfrac{3}{5}\\), so \\(\\sin\\theta=\\dfrac45\\) (taking \\(\\theta\\) acute since \\(\\cos\\theta>0\\)).\n\\(|\\vec u\\times\\vec v|=|\\vec u||\\vec v|\\sin\\theta=20\\left(\\dfrac45\\right)=\\mathbf{16}\\)."
+  },
+  {
+    "id": "5a2e956c-9f53-4225-8758-56ed9a9541ed",
+    "ref": "5.4 Ex.Q6",
+    "solution": "\\(2(\\vec a-\\vec b)\\times2(\\vec a+\\vec b)=4\\big[(\\vec a-\\vec b)\\times(\\vec a+\\vec b)\\big]\\)\n\\(=4\\big[\\vec a\\times\\vec a+\\vec a\\times\\vec b-\\vec b\\times\\vec a-\\vec b\\times\\vec b\\big]=4\\big[\\vec 0+\\vec a\\times\\vec b+\\vec a\\times\\vec b-\\vec 0\\big]\\) (since \\(\\vec b\\times\\vec a=-\\vec a\\times\\vec b\\))\n\\(=4\\cdot2(\\vec a\\times\\vec b)=\\mathbf{8(\\vec a\\times\\vec b)}\\). Hence proved."
+  },
+  {
+    "id": "90b3efa9-d8ba-4010-8e4f-be4bfbba7d8d",
+    "ref": "5.4 Ex.Q7",
+    "solution": "\\(\\vec b+\\vec c=5\\hat i-4\\hat j+3\\hat k\\).\n\\(\\vec a\\times(\\vec b+\\vec c)=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\1&-2&3\\\\5&-4&3\\end{vmatrix}=\\hat i(-6+12)-\\hat j(3-15)+\\hat k(-4+10)=6\\hat i+12\\hat j+6\\hat k\\).\n\\(\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\1&-2&3\\\\4&-3&1\\end{vmatrix}=\\hat i(-2+9)-\\hat j(1-12)+\\hat k(-3+8)=7\\hat i+11\\hat j+5\\hat k\\).\n\\(\\vec a\\times\\vec c=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\1&-2&3\\\\1&-1&2\\end{vmatrix}=\\hat i(-4+3)-\\hat j(2-3)+\\hat k(-1+2)=-\\hat i+\\hat j+\\hat k\\).\n\\(\\vec a\\times\\vec b+\\vec a\\times\\vec c=(7-1)\\hat i+(11+1)\\hat j+(5+1)\\hat k=6\\hat i+12\\hat j+6\\hat k\\).\nBoth sides equal \\(6\\hat i+12\\hat j+6\\hat k\\), so \\(\\vec a\\times(\\vec b+\\vec c)=\\vec a\\times\\vec b+\\vec a\\times\\vec c\\) is verified."
+  },
+  {
+    "id": "ed98e835-d729-496d-907e-5063136af16b",
+    "ref": "5.4 Ex.Q8",
+    "solution": "\\(\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\2&-2&1\\\\1&-3&-3\\end{vmatrix}=\\hat i(6+3)-\\hat j(-6-1)+\\hat k(-6+2)=9\\hat i+7\\hat j-4\\hat k\\).\nArea \\(=|\\vec a\\times\\vec b|=\\sqrt{81+49+16}=\\mathbf{\\sqrt{146}}\\) sq. units."
+  },
+  {
+    "id": "45fa0734-555b-41c0-9461-5144840d9e27",
+    "ref": "5.4 Ex.Q9",
+    "solution": "Let \\(\\vec a,\\vec b,\\vec c,\\vec d\\) be the position vectors of A, B, C, D. Diagonal AC splits quadrilateral ABCD into \\(\\triangle ABC\\) and \\(\\triangle ACD\\).\nUsing the vector-area-of-a-triangle result, Area\\((\\triangle ABC)=\\dfrac12(\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec a)\\) and Area\\((\\triangle ACD)=\\dfrac12(\\vec a\\times\\vec c+\\vec c\\times\\vec d+\\vec d\\times\\vec a)\\).\nAdding, \\(\\vec c\\times\\vec a\\) and \\(\\vec a\\times\\vec c\\) cancel (they are negatives of each other), giving\nVector area of ABCD \\(=\\dfrac12(\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec d+\\vec d\\times\\vec a)\\).\nNow \\(\\overline{AC}\\times\\overline{BD}=(\\vec c-\\vec a)\\times(\\vec d-\\vec b)=\\vec c\\times\\vec d-\\vec c\\times\\vec b-\\vec a\\times\\vec d+\\vec a\\times\\vec b=\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec d+\\vec d\\times\\vec a\\) (using \\(-\\vec c\\times\\vec b=\\vec b\\times\\vec c\\), \\(-\\vec a\\times\\vec d=\\vec d\\times\\vec a\\)).\nHence vector area of ABCD \\(=\\dfrac12(\\overline{AC}\\times\\overline{BD})\\). Hence proved."
+  },
+  {
+    "id": "288357da-f14a-4596-af9d-e3d2b4dcb50a",
+    "ref": "Misc II Q.32",
+    "solution": "Let \\(\\vec a,\\vec b,\\vec c\\) be the position vectors of A, B, C, so \\(\\overline{AB}=\\vec b-\\vec a\\), \\(\\overline{AC}=\\vec c-\\vec a\\).\n\\(\\overline{AB}\\times\\overline{AC}=(\\vec b-\\vec a)\\times(\\vec c-\\vec a)=\\vec b\\times\\vec c-\\vec b\\times\\vec a-\\vec a\\times\\vec c+\\vec a\\times\\vec a\\).\nSince \\(\\vec a\\times\\vec a=\\vec 0\\), \\(-\\vec b\\times\\vec a=\\vec a\\times\\vec b\\), and \\(-\\vec a\\times\\vec c=\\vec c\\times\\vec a\\):\n\\(\\overline{AB}\\times\\overline{AC}=\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec a\\).\nHence Area\\((\\triangle ABC)=\\dfrac12|\\overline{AB}\\times\\overline{AC}|=\\mathbf{\\dfrac12\\big[\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec a\\big]}\\). Hence proved."
+  },
+  {
+    "id": "74ca9441-7a22-4174-95ba-52671156e51d",
+    "ref": "Misc II Q.33",
+    "solution": "Let \\(A(a,0,0)\\), \\(B(0,b,0)\\), \\(C(0,0,c)\\).\n\\(\\overline{AB}=-a\\hat i+b\\hat j\\), \\(\\overline{AC}=-a\\hat i+c\\hat k\\).\n\\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\-a&b&0\\\\-a&0&c\\end{vmatrix}=\\hat i(bc-0)-\\hat j(-ac-0)+\\hat k(0+ab)=bc\\,\\hat i+ac\\,\\hat j+ab\\,\\hat k\\).\n\\(|\\overline{AB}\\times\\overline{AC}|=\\sqrt{b^2c^2+a^2c^2+a^2b^2}\\).\nUnit vector perpendicular to the plane \\(=\\mathbf{\\dfrac{bc\\,\\hat i+ac\\,\\hat j+ab\\,\\hat k}{\\sqrt{a^2b^2+b^2c^2+c^2a^2}}}\\).\nArea of triangle \\(=\\dfrac12|\\overline{AB}\\times\\overline{AC}|=\\mathbf{\\dfrac12\\sqrt{a^2b^2+b^2c^2+c^2a^2}}\\)."
+  },
+  {
+    "id": "3bd18910-0a01-4262-ac65-57a255d4b940",
+    "ref": "Misc II Q.35",
+    "solution": "Expand each term using the distributive law of the cross product:\n\\((\\vec a+\\vec b+\\vec c)\\times\\vec c=\\vec a\\times\\vec c+\\vec b\\times\\vec c\\) (since \\(\\vec c\\times\\vec c=\\vec 0\\)).\n\\((\\vec a+\\vec b+\\vec c)\\times\\vec b=\\vec a\\times\\vec b+\\vec c\\times\\vec b=\\vec a\\times\\vec b-\\vec b\\times\\vec c\\) (since \\(\\vec b\\times\\vec b=\\vec 0\\), \\(\\vec c\\times\\vec b=-\\vec b\\times\\vec c\\)).\n\\((\\vec b+\\vec c)\\times\\vec a=\\vec b\\times\\vec a+\\vec c\\times\\vec a=-\\vec a\\times\\vec b-\\vec a\\times\\vec c\\).\nAdding all three terms:\n\\((\\vec a\\times\\vec c+\\vec b\\times\\vec c)+(\\vec a\\times\\vec b-\\vec b\\times\\vec c)+(-\\vec a\\times\\vec b-\\vec a\\times\\vec c)=\\vec 0\\)\nsince \\(\\vec a\\times\\vec c\\) cancels with \\(-\\vec a\\times\\vec c\\), \\(\\vec b\\times\\vec c\\) cancels with \\(-\\vec b\\times\\vec c\\), and \\(\\vec a\\times\\vec b\\) cancels with \\(-\\vec a\\times\\vec b\\).\nSo the given left-hand side reduces identically to \\(\\vec 0\\) for every choice of \\(\\vec a,\\vec b,\\vec c\\). [Textbook misprint: the printed right-hand side \\(2\\vec a\\times\\vec c\\) is incorrect — verified against the source page image, the transcription is faithful, but the claimed identity does not hold for any vectors (it always simplifies to \\(\\vec 0\\)); the true identity is \\((\\vec a+\\vec b+\\vec c)\\times\\vec c+(\\vec a+\\vec b+\\vec c)\\times\\vec b+(\\vec b+\\vec c)\\times\\vec a=\\vec 0\\).]"
+  },
+  {
+    "id": "c7a3f501-f507-4ffa-92e2-13941c8761a0",
+    "ref": "Misc II Q.36 (b)",
+    "solution": "No, not necessarily. \\(\\vec a\\times\\vec b=\\vec a\\times\\vec c\\Rightarrow\\vec a\\times(\\vec b-\\vec c)=\\vec 0\\). Since \\(\\vec a\\ne\\vec 0\\), this only forces \\(\\vec b-\\vec c\\) to be parallel to \\(\\vec a\\) (i.e. \\(\\vec b-\\vec c=\\lambda\\vec a\\) for some scalar \\(\\lambda\\)); it does not force \\(\\vec b-\\vec c=\\vec 0\\).\nCounter-example: let \\(\\vec a=\\hat i\\), \\(\\vec b=\\hat j\\), \\(\\vec c=\\hat i+\\hat j\\). Then \\(\\vec a\\times\\vec b=\\hat i\\times\\hat j=\\hat k\\) and \\(\\vec a\\times\\vec c=\\hat i\\times(\\hat i+\\hat j)=\\hat i\\times\\hat i+\\hat i\\times\\hat j=\\hat k\\). So \\(\\vec a\\times\\vec b=\\vec a\\times\\vec c\\) although \\(\\vec b\\ne\\vec c\\). \\(\\mathbf{Answer: No}\\)."
+  },
+  {
+    "id": "a3c35d07-22a6-4721-ab19-4e355b5af91e",
+    "ref": "Misc II Q.36 (c)",
+    "solution": "From \\(\\vec a\\times\\vec b=\\vec a\\times\\vec c\\): \\(\\vec a\\times(\\vec b-\\vec c)=\\vec 0\\Rightarrow\\vec b-\\vec c=\\lambda\\vec a\\) for some scalar \\(\\lambda\\) (as in part (b), since \\(\\vec a\\ne\\vec 0\\)).\nFrom \\(\\vec a\\cdot\\vec b=\\vec a\\cdot\\vec c\\): \\(\\vec a\\cdot(\\vec b-\\vec c)=0\\). Substituting \\(\\vec b-\\vec c=\\lambda\\vec a\\):\n\\(\\vec a\\cdot(\\lambda\\vec a)=\\lambda|\\vec a|^2=0\\).\nSince \\(\\vec a\\ne\\vec 0\\), \\(|\\vec a|^2\\ne0\\), so \\(\\lambda=0\\), giving \\(\\vec b-\\vec c=\\vec 0\\), i.e. \\(\\mathbf{\\vec b=\\vec c}\\). \\(\\mathbf{Answer: Yes}\\)."
+  },
+  {
+    "id": "c41dff29-6f32-4c9d-a5b0-ba87991cba2f",
+    "ref": "Misc II Q.37",
+    "solution": "Let \\(\\vec a=3\\hat i+2\\hat j-\\hat k\\), \\(\\vec b=-2\\hat i+2\\hat j-3\\hat k\\), \\(\\vec c=3\\hat i+5\\hat j-2\\hat k\\), \\(\\vec d=-2\\hat i+5\\hat j-4\\hat k\\) be the position vectors of A, B, C, D.\n(i) \\(\\overline{AB}=\\vec b-\\vec a=-5\\hat i-2\\hat k\\) and \\(\\overline{CD}=\\vec d-\\vec c=-5\\hat i-2\\hat k\\), so \\(\\overline{AB}=\\overline{CD}\\) — AB is parallel and equal in length to CD.\nAlso \\(\\overline{AC}=\\vec c-\\vec a=3\\hat j-\\hat k\\) and \\(\\overline{BD}=\\vec d-\\vec b=3\\hat j-\\hat k\\), so \\(\\overline{AC}=\\overline{BD}\\) as well.\nBoth pairs of opposite sides being equal and parallel confirms that A, B, D, C (taken in this cyclic order) form a parallelogram; equivalently, its diagonals AD and BC bisect each other at \\(\\left(\\dfrac12,\\dfrac72,-\\dfrac52\\right)\\), the common midpoint of AD and BC. Hence verified.\n(ii) Area \\(=|\\overline{AB}\\times\\overline{AC}|\\) (using the two sides meeting at A):\n\\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\-5&0&-2\\\\0&3&-1\\end{vmatrix}=\\hat i(0+6)-\\hat j(5-0)+\\hat k(-15-0)=6\\hat i-5\\hat j-15\\hat k\\).\nArea \\(=\\sqrt{36+25+225}=\\mathbf{\\sqrt{286}}\\) sq. units."
+  },
+  {
+    "id": "31ed50ee-3b08-4bf6-866d-ab652cb117d1",
+    "ref": "Misc II Q.38",
+    "solution": "Let \\(\\vec a,\\vec b,\\vec c,\\vec d\\) be position vectors of A, B, C, D.\n\\(\\overline{AB}\\times\\overline{CD}=(\\vec b-\\vec a)\\times(\\vec d-\\vec c)=\\vec b\\times\\vec d-\\vec b\\times\\vec c-\\vec a\\times\\vec d+\\vec a\\times\\vec c\\)\n\\(\\overline{BC}\\times\\overline{AD}=(\\vec c-\\vec b)\\times(\\vec d-\\vec a)=\\vec c\\times\\vec d-\\vec c\\times\\vec a-\\vec b\\times\\vec d+\\vec b\\times\\vec a\\)\n\\(\\overline{CA}\\times\\overline{BD}=(\\vec a-\\vec c)\\times(\\vec d-\\vec b)=\\vec a\\times\\vec d-\\vec a\\times\\vec b-\\vec c\\times\\vec d+\\vec c\\times\\vec b\\)\nAdding all three, the \\(\\vec b\\times\\vec d\\), \\(\\vec c\\times\\vec d\\), and \\(\\vec a\\times\\vec d\\) terms cancel in pairs, leaving\nSum \\(=-2(\\vec b\\times\\vec c)+2(\\vec a\\times\\vec c)-2(\\vec a\\times\\vec b)=-2(\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec a)\\).\nBy Q.32, Area\\((\\triangle ABC)=\\dfrac12|\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec a|\\), i.e. \\(|\\vec a\\times\\vec b+\\vec b\\times\\vec c+\\vec c\\times\\vec a|=2\\,\\text{area}(\\triangle ABC)\\).\nHence \\(|\\overline{AB}\\times\\overline{CD}+\\overline{BC}\\times\\overline{AD}+\\overline{CA}\\times\\overline{BD}|=2\\times2\\,\\text{area}(\\triangle ABC)=\\mathbf{4\\,\\text{area}(\\triangle ABC)}\\). Hence proved."
+  },
+  {
+    "id": "a4e40aff-473c-478f-930f-6a52e72321b9",
+    "ref": "Misc II Q.39",
+    "solution": "Since \\(\\hat a\\cdot\\hat b=0\\) and \\(\\hat a\\cdot\\hat c=0\\), \\(\\hat a\\) is perpendicular to both \\(\\hat b\\) and \\(\\hat c\\); hence \\(\\hat a\\) is parallel to \\(\\hat b\\times\\hat c\\) (as \\(\\hat b\\) and \\(\\hat c\\) are non-parallel, their angle being \\(\\pi/6\\)). So \\(\\hat a=\\lambda(\\hat b\\times\\hat c)\\) for some scalar \\(\\lambda\\).\n\\(|\\hat b\\times\\hat c|=|\\hat b||\\hat c|\\sin\\dfrac{\\pi}{6}=1\\cdot1\\cdot\\dfrac12=\\dfrac12\\).\nSince \\(\\hat a\\) is a unit vector, \\(|\\hat a|=|\\lambda|\\cdot|\\hat b\\times\\hat c|=|\\lambda|\\cdot\\dfrac12=1\\Rightarrow|\\lambda|=2\\Rightarrow\\lambda=\\pm2\\).\nHence \\(\\mathbf{\\hat a=\\pm2(\\hat b\\times\\hat c)}\\). Hence proved."
+  }
+]

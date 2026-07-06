@@ -1,0 +1,2491 @@
+[
+  {
+    "ref": "Misc I Q.1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}| = 2\\), \\(|\\vec{b}| = 3\\), \\(|\\vec{c}| = 4\\) then \\(\\left[\\ \\vec{a}+\\vec{b}\\ \\ \\ \\vec{b}+\\vec{c}\\ \\ \\ \\vec{c}-\\vec{a}\\ \\right]\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "24"
+      },
+      {
+        "label": "B",
+        "text": "-24"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "48"
+      }
+    ],
+    "answer": "C",
+    "solution": "Expand \\([\\vec{a}+\\vec{b},\\ \\vec{b}+\\vec{c},\\ \\vec{c}-\\vec{a}]\\) using multilinearity of the scalar triple product. Term by term: \\([\\vec{a},\\vec{b}+\\vec{c},\\vec{c}-\\vec{a}] = [\\vec{a},\\vec{b},\\vec{c}]\\) (all other terms vanish due to repeated vectors), and \\([\\vec{b},\\vec{b}+\\vec{c},\\vec{c}-\\vec{a}] = -[\\vec{b},\\vec{c},\\vec{a}] = -[\\vec{a},\\vec{b},\\vec{c}]\\) (cyclic property). Adding: \\([\\vec{a},\\vec{b},\\vec{c}] - [\\vec{a},\\vec{b},\\vec{c}] = 0\\), independent of the given magnitudes."
+  },
+  {
+    "ref": "Misc I Q.2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\), then the value of \\(\\lambda\\) for which \\(\\vec{a}+\\lambda\\vec{b}\\) is perpendicular to \\(\\vec{a}-\\lambda\\vec{b}\\), is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{9}{16}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{3}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{3}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{4}{3}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "Perpendicularity gives \\((\\vec{a}+\\lambda\\vec{b})\\cdot(\\vec{a}-\\lambda\\vec{b})=0 \\Rightarrow |\\vec{a}|^2-\\lambda^2|\\vec{b}|^2=0 \\Rightarrow 9-16\\lambda^2=0 \\Rightarrow \\lambda^2=\\dfrac{9}{16} \\Rightarrow \\lambda=\\dfrac{3}{4}\\)."
+  },
+  {
+    "ref": "Misc I Q.3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If sum of two unit vectors is itself a unit vector, then the magnitude of their difference is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sqrt{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "B",
+    "solution": "\\(|\\vec{a}+\\vec{b}|^2=1 \\Rightarrow 1+1+2\\vec{a}\\cdot\\vec{b}=1 \\Rightarrow \\vec{a}\\cdot\\vec{b}=-\\dfrac{1}{2}\\). Then \\(|\\vec{a}-\\vec{b}|^2=1+1-2\\vec{a}\\cdot\\vec{b}=2+1=3 \\Rightarrow |\\vec{a}-\\vec{b}|=\\sqrt{3}\\)."
+  },
+  {
+    "ref": "Misc I Q.4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 5\\), \\(|\\vec{c}| = 7\\) and \\(\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}\\), then the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{\\pi}{6}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "[Textbook misprint: options B and C are both printed as \\(\\pi/4\\).] Since \\(\\vec{c}=-(\\vec{a}+\\vec{b})\\), \\(|\\vec{c}|^2=|\\vec{a}|^2+|\\vec{b}|^2+2\\vec{a}\\cdot\\vec{b} \\Rightarrow 49=9+25+2\\vec{a}\\cdot\\vec{b} \\Rightarrow \\vec{a}\\cdot\\vec{b}=7.5\\). So \\(\\cos\\theta=\\dfrac{7.5}{3\\times5}=\\dfrac{1}{2} \\Rightarrow \\theta=\\dfrac{\\pi}{3}=60^\\circ\\). The correct value \\(\\pi/3\\) is not distinctly printed (the intended option, likely at position C, is duplicated as \\(\\pi/4\\) instead); the nearest slot is marked C here."
+  },
+  {
+    "ref": "Misc I Q.5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "The volume of tetrahedron whose vertices are \\((1,-6,10)\\), \\((-1,-3,7)\\), \\((5,-1,\\lambda)\\) and \\((7,-4,7)\\) is 11 cu. units then the value of \\(\\lambda\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "7"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "A",
+    "solution": "[Textbook note: option B \\(\\pi/3\\) is not a meaningful choice for this coordinate/volume problem — an apparent carry-over misprint from a neighboring angle question.] Taking the first vertex as origin, edge vectors are \\((-2,3,-3)\\), \\((4,5,\\lambda-10)\\), \\((6,2,-3)\\). Their scalar triple product works out to \\(22\\lambda-88\\), so Volume \\(=\\dfrac{1}{6}|22\\lambda-88|=11 \\Rightarrow |22\\lambda-88|=66\\), giving \\(\\lambda=7\\) or \\(\\lambda=1\\); both satisfy the equation algebraically (both appear among the options, A and C) — 7 is taken as the primary intended value."
+  },
+  {
+    "ref": "Misc I Q.6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(\\alpha, \\beta, \\gamma\\) are direction angles of a line and \\(\\alpha = 60^\\circ\\), \\(\\beta = 45^\\circ\\), the \\(\\gamma =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(30^\\circ\\) or \\(90^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(45^\\circ\\) or \\(60^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(90^\\circ\\) or \\(30^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(60^\\circ\\) or \\(120^\\circ\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "\\(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1 \\Rightarrow 0.25+0.5+\\cos^2\\gamma=1 \\Rightarrow \\cos^2\\gamma=0.25 \\Rightarrow \\cos\\gamma=\\pm0.5 \\Rightarrow \\gamma=60^\\circ\\text{ or }120^\\circ\\)."
+  },
+  {
+    "ref": "Misc I Q.7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "The distance of the point \\((3, 4, 5)\\) from Y-axis is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{34}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sqrt{41}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "Distance from the Y-axis \\(=\\sqrt{x^2+z^2}=\\sqrt{9+25}=\\sqrt{34}\\)."
+  },
+  {
+    "ref": "Misc I Q.8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "The line joining the points \\((-2, 1, -8)\\) and \\((a, b, c)\\) is parallel to the line whose direction ratios are 6, 2, 3. The value of a, b, c are",
+    "options": [
+      {
+        "label": "A",
+        "text": "4, 3, -5"
+      },
+      {
+        "label": "B",
+        "text": "\\(1, 2, \\dfrac{-13}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "10, 5, -2"
+      },
+      {
+        "label": "D",
+        "text": "3, 5, 11"
+      }
+    ],
+    "answer": "A",
+    "solution": "The direction ratios of the joining line are \\((a+2, b-1, c+8)\\), which should be exactly \\((6,2,3)\\): \\(a+2=6, b-1=2, c+8=3 \\Rightarrow a=4, b=3, c=-5\\)."
+  },
+  {
+    "ref": "Misc I Q.9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(\\cos\\alpha, \\cos\\beta, \\cos\\gamma\\) are the direction cosines of a line then the value of \\(\\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "B",
+    "solution": "\\(\\sin^2\\alpha+\\sin^2\\beta+\\sin^2\\gamma = 3-(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma) = 3-1=2\\)."
+  },
+  {
+    "ref": "Misc I Q.10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(l, m, n\\) are direction cosines of a line then \\(l\\hat{i}+m\\hat{j}+n\\hat{k}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "null vector"
+      },
+      {
+        "label": "B",
+        "text": "the unit vector along the line"
+      },
+      {
+        "label": "C",
+        "text": "any vector along the line"
+      },
+      {
+        "label": "D",
+        "text": "a vector perpendicular to the line"
+      }
+    ],
+    "answer": "B",
+    "solution": "By definition, \\(l,m,n\\) are the direction cosines, so \\(l\\hat{i}+m\\hat{j}+n\\hat{k}\\) has magnitude \\(\\sqrt{l^2+m^2+n^2}=1\\) and lies along the line — the unit vector along the line."
+  },
+  {
+    "ref": "Misc I Q.11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If \\(|\\vec{a}| = 3\\) and \\(-1 \\le k \\le 2\\), then \\(|k\\vec{a}|\\) lies in the interval",
+    "options": [
+      {
+        "label": "A",
+        "text": "[0, 6]"
+      },
+      {
+        "label": "B",
+        "text": "[-3, 6]"
+      },
+      {
+        "label": "C",
+        "text": "[3, 6]"
+      },
+      {
+        "label": "D",
+        "text": "[1, 2]"
+      }
+    ],
+    "answer": "A",
+    "solution": "\\(|k\\vec{a}|=|k|\\times3\\). For \\(-1\\le k\\le2\\), \\(|k|\\) ranges over \\([0,2]\\) (minimum 0 at \\(k=0\\), maximum 2 at \\(k=2\\)), so \\(|k\\vec{a}|\\in[0,6]\\)."
+  },
+  {
+    "ref": "Misc I Q.12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\alpha, \\beta, \\gamma\\) be distinct real numbers. The points with position vectors \\(\\alpha\\hat{i}+\\beta\\hat{j}+\\gamma\\hat{k}\\), \\(\\beta\\hat{i}+\\gamma\\hat{j}+\\alpha\\hat{k}\\), \\(\\gamma\\hat{i}+\\alpha\\hat{j}+\\beta\\hat{k}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "are collinear"
+      },
+      {
+        "label": "B",
+        "text": "form an equilateral triangle"
+      },
+      {
+        "label": "C",
+        "text": "form a scalene triangle"
+      },
+      {
+        "label": "D",
+        "text": "form a right angled triangle"
+      }
+    ],
+    "answer": "B",
+    "solution": "Each pairwise squared distance simplifies to \\(2(\\alpha-\\beta)^2+2(\\beta-\\gamma)^2+2(\\gamma-\\alpha)^2\\) divided symmetrically — a direct computation shows all three side lengths are equal, so the three points form an equilateral triangle."
+  },
+  {
+    "ref": "Misc I Q.13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\vec{p}\\) and \\(\\vec{q}\\) be the position vectors of P and Q respectively, with respect to O and \\(|\\vec{p}| = p\\), \\(|\\vec{q}| = q\\). The points R and S divide PQ internally and externally in the ratio 2 : 3 respectively. If OR and OS are perpendicular then.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(9p^2 = 4q^2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(4p^2 = 9q^2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(9p = 4q\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4p = 9q\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "\\(\\vec{r}=\\dfrac{3\\vec{p}+2\\vec{q}}{5}\\) (internal 2:3) and \\(\\vec{s}=3\\vec{p}-2\\vec{q}\\) (external 2:3). \\(\\vec{r}\\cdot\\vec{s}=0 \\Rightarrow \\dfrac{1}{5}\\left(9|\\vec{p}|^2-4|\\vec{q}|^2\\right)=0 \\Rightarrow 9p^2=4q^2\\) (the cross terms cancel)."
+  },
+  {
+    "ref": "Misc I Q.14",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "The 2 vectors \\(\\hat{j} + \\hat{k}\\) and \\(3\\hat{i} - \\hat{j} + 4\\hat{k}\\) represents the two sides AB and AC, respectively of a \\(\\triangle ABC\\). The length of the median through A is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\sqrt{34}}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\sqrt{48}}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{18}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "A",
+    "solution": "Taking A as origin, midpoint of BC is \\(\\dfrac{(\\hat{j}+\\hat{k})+(3\\hat{i}-\\hat{j}+4\\hat{k})}{2}=\\dfrac{3\\hat{i}+5\\hat{k}}{2}\\). Length of median \\(=\\sqrt{\\left(\\tfrac{3}{2}\\right)^2+\\left(\\tfrac{5}{2}\\right)^2}=\\sqrt{\\tfrac{34}{4}}=\\dfrac{\\sqrt{34}}{2}\\)."
+  },
+  {
+    "ref": "Misc I Q.15",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors, then what is the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) for \\(\\sqrt{3}\\vec{a} - \\vec{b}\\) to be a unit vector?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(30^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(45^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(60^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(90^\\circ\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "\\(|\\sqrt{3}\\vec{a}-\\vec{b}|^2=1 \\Rightarrow 3+1-2\\sqrt{3}\\cos\\theta=1 \\Rightarrow \\cos\\theta=\\dfrac{3}{2\\sqrt{3}}=\\dfrac{\\sqrt{3}}{2} \\Rightarrow \\theta=30^\\circ\\)."
+  },
+  {
+    "ref": "Misc I Q.16",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\theta\\) be the angle between any two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), then \\(|\\vec{a}\\cdot\\vec{b}| = |\\vec{a}\\times\\vec{b}|\\), when \\(\\theta\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "\\(|\\vec{a}||\\vec{b}||\\cos\\theta| = |\\vec{a}||\\vec{b}||\\sin\\theta| \\Rightarrow |\\tan\\theta|=1 \\Rightarrow \\theta=\\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "ref": "Misc I Q.17",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "stem": "The value of \\(\\hat{i}\\cdot(\\hat{j}\\times\\hat{k}) + \\hat{j}\\cdot(\\hat{i}\\times\\hat{k}) + \\hat{k}\\cdot(\\hat{i}\\times\\hat{j})\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "-1"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "C",
+    "solution": "\\(\\hat{j}\\times\\hat{k}=\\hat{i} \\Rightarrow \\hat{i}\\cdot\\hat{i}=1\\); \\(\\hat{i}\\times\\hat{k}=-\\hat{j} \\Rightarrow \\hat{j}\\cdot(-\\hat{j})=-1\\); \\(\\hat{i}\\times\\hat{j}=\\hat{k} \\Rightarrow \\hat{k}\\cdot\\hat{k}=1\\). Sum \\(=1-1+1=1\\)."
+  },
+  {
+    "ref": "Misc I Q.18",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Let a, b, c be distinct non-negative numbers. If the vectors \\(a\\hat{i}+a\\hat{j}+c\\hat{k}\\), \\(\\hat{i}+\\hat{k}\\) and \\(c\\hat{i}+c\\hat{j}+b\\hat{k}\\) lie in a plane, then c is",
+    "options": [
+      {
+        "label": "A",
+        "text": "The arithmetic mean of a and b"
+      },
+      {
+        "label": "B",
+        "text": "The geometric mean of a and b"
+      },
+      {
+        "label": "C",
+        "text": "The harmonic mean of a and b"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "solution": "Coplanarity gives \\(\\begin{vmatrix}a & a & c\\\\ 1 & 0 & 1\\\\ c & c & b\\end{vmatrix}=0 \\Rightarrow -ab+c^2=0 \\Rightarrow c^2=ab \\Rightarrow c=\\sqrt{ab}\\), the geometric mean of a and b."
+  },
+  {
+    "ref": "Misc I Q.19",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\vec{a} = \\hat{i}-\\hat{j}\\), \\(\\vec{b} = \\hat{j}-\\hat{k}\\), \\(\\vec{c} = \\hat{k}-\\hat{i}\\). If \\(\\vec{d}\\) is a unit vector such that \\(\\vec{a}\\cdot\\vec{d}=0=[\\vec{b}\\ \\vec{c}\\ \\vec{d}]\\), then \\(\\vec{d}\\) equals.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pm\\dfrac{\\hat{i}+\\hat{j}-2\\hat{k}}{\\sqrt{6}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pm\\dfrac{\\hat{i}+\\hat{j}-\\hat{k}}{\\sqrt{3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pm\\dfrac{\\hat{i}+\\hat{j}-\\hat{k}}{\\sqrt{3}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pm\\hat{k}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "\\([\\vec{b}\\ \\vec{c}\\ \\vec{d}]=0\\) means \\(\\vec{d}\\) is coplanar with \\(\\vec{b},\\vec{c}\\), so \\(\\vec{d}=\\beta\\vec{b}+\\gamma\\vec{c}=(-\\gamma,\\beta,\\gamma-\\beta)\\). \\(\\vec{a}\\cdot\\vec{d}=0\\) gives \\(-\\gamma-\\beta=0 \\Rightarrow \\beta=-\\gamma\\), so \\(\\vec{d}=\\gamma(-1,-1,2)\\). Normalizing: \\(|\\gamma|\\sqrt{6}=1\\), giving \\(\\vec{d}=\\pm\\dfrac{\\hat{i}+\\hat{j}-2\\hat{k}}{\\sqrt{6}}\\)."
+  },
+  {
+    "ref": "Misc I Q.20",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}\\ \\vec{b}\\ \\vec{c}\\) are non coplanar unit vectors such that \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\dfrac{(\\vec{b}+\\vec{c})}{\\sqrt{2}}\\) then the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{3\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "Using \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})=\\vec{b}(\\vec{a}\\cdot\\vec{c})-\\vec{c}(\\vec{a}\\cdot\\vec{b})=\\dfrac{1}{\\sqrt{2}}\\vec{b}+\\dfrac{1}{\\sqrt{2}}\\vec{c}\\). Since \\(\\vec{b},\\vec{c}\\) are independent, \\(\\vec{a}\\cdot\\vec{c}=\\dfrac{1}{\\sqrt{2}}\\) and \\(-\\vec{a}\\cdot\\vec{b}=\\dfrac{1}{\\sqrt{2}} \\Rightarrow \\vec{a}\\cdot\\vec{b}=-\\dfrac{1}{\\sqrt{2}}\\). As unit vectors, \\(\\cos\\theta=-\\dfrac{1}{\\sqrt{2}} \\Rightarrow \\theta=\\dfrac{3\\pi}{4}\\)."
+  },
+  {
+    "ref": "Misc II Q.1 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{AM}\\)"
+  },
+  {
+    "ref": "Misc II Q.1 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{BD}\\)"
+  },
+  {
+    "ref": "Misc II Q.1 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{MB}\\)"
+  },
+  {
+    "ref": "Misc II Q.1 iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "ABCD is a trapezium with AB parallel to DC and DC = 3AB. M is the mid-point of DC, \\(\\overrightarrow{AB} = \\vec{p}\\) and \\(\\overrightarrow{BC} = \\vec{q}\\). Find in terms of \\(\\vec{p}\\) and \\(\\vec{q}\\).",
+    "setLabel": "Misc II Q.1",
+    "stem": "\\(\\overrightarrow{DA}\\)"
+  },
+  {
+    "ref": "Misc II Q.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "The points A, B and C have position vectors \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) respectively. The point P is midpoint of AB. Find in terms of \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) the vector \\(\\overrightarrow{PC}\\)."
+  },
+  {
+    "ref": "Misc II Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "In a pentagon ABCDE, show that \\(\\overrightarrow{AB} + \\overrightarrow{AE} + \\overrightarrow{BC} + \\overrightarrow{DC} + \\overrightarrow{ED} = 2\\overrightarrow{AC}\\)."
+  },
+  {
+    "ref": "Misc II Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "If in parallelogram ABCD, diagonal vectors are \\(\\overrightarrow{AC} = 2\\hat{i}+3\\hat{j}+4\\hat{k}\\) and \\(\\overrightarrow{BD} = -6\\hat{i}+7\\hat{j}-2\\hat{k}\\), then find the adjacent side vectors \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{AD}\\)."
+  },
+  {
+    "ref": "Misc II Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If two sides of a triangle taken in the same order represented by vectors \\(\\hat{i}+2\\hat{j}\\) and \\(\\hat{i}+\\hat{k}\\), then find the length of the third side."
+  },
+  {
+    "ref": "Misc II Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}| = |\\vec{b}| = 1\\), \\(\\vec{a}\\cdot\\vec{b}=0\\) and \\(\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}\\) then find \\(|\\vec{c}|\\)."
+  },
+  {
+    "ref": "Misc II Q.7 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "Find the lengths of the sides of the triangle and also determine the type of a triangle.",
+    "setLabel": "Misc II Q.7",
+    "stem": "\\(A(2,-1,0)\\), \\(B(4,1,1)\\), \\(C(4,-5,4)\\)"
+  },
+  {
+    "ref": "Misc II Q.7 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "Find the lengths of the sides of the triangle and also determine the type of a triangle.",
+    "setLabel": "Misc II Q.7",
+    "stem": "\\(L(3,-2,-3)\\), \\(M(7,0,1)\\), \\(N(1,2,1)\\)"
+  },
+  {
+    "ref": "Misc II Q.8 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the component form of \\(\\vec{a}\\) if",
+    "setLabel": "Misc II Q.8",
+    "stem": "It lies in YZ plane and makes \\(60^\\circ\\) with positive Y-axis and \\(|\\vec{a}| = 4\\)"
+  },
+  {
+    "ref": "Misc II Q.8 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the component form of \\(\\vec{a}\\) if",
+    "setLabel": "Misc II Q.8",
+    "stem": "It lies in XZ plane and makes \\(45^\\circ\\) with positive Z-axis and \\(|\\vec{a}| = 10\\)"
+  },
+  {
+    "ref": "Misc II Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Two sides of a parallelogram are \\(3\\hat{i}+4\\hat{j}-5\\hat{k}\\) and \\(-2\\hat{j}+7\\hat{k}\\). Find the unit vectors parallel to the diagonals."
+  },
+  {
+    "ref": "Misc II Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "If D, E, F are the mid-points of the sides BC, CA, AB of a triangle ABC, prove that \\(\\overrightarrow{AD} + \\overrightarrow{BE} + \\overrightarrow{CF} = \\vec{0}\\)."
+  },
+  {
+    "ref": "Misc II Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Find the unit vectors that are parallel to the tangent line to the parabola \\(y = x^2\\) at the point \\((2, 4)\\)."
+  },
+  {
+    "ref": "Misc II Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "Express the vector \\(\\hat{i}+4\\hat{j}-4\\hat{k}\\) as a linear combination of the vectors \\(2\\hat{i}-\\hat{j}+3\\hat{k}\\), \\(\\hat{i}-2\\hat{j}+4\\hat{k}\\) and \\(-\\hat{i}+3\\hat{j}-5\\hat{k}\\)."
+  },
+  {
+    "ref": "Misc II Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "If \\(\\overrightarrow{OA} = \\vec{a}\\) and \\(\\overrightarrow{OB} = \\vec{b}\\) then show that vector along the angle bisector of angle AOB is given by \\(\\vec{d} = \\lambda\\left(\\dfrac{\\vec{a}}{|\\vec{a}|}+\\dfrac{\\vec{b}}{|\\vec{b}|}\\right)\\), where \\(\\lambda\\) is a real number."
+  },
+  {
+    "ref": "Misc II Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "The position vectors of three consecutive vertices of a parallelogram are \\(\\hat{i}+\\hat{j}+\\hat{k}\\), \\(\\hat{i}+3\\hat{j}+5\\hat{k}\\) and \\(7\\hat{i}+9\\hat{j}+11\\hat{k}\\). Find the position vector of the fourth vertex."
+  },
+  {
+    "ref": "Misc II Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "A point P with p.v. \\(\\dfrac{-14\\hat{i}+39\\hat{j}+28\\hat{k}}{5}\\) divides the line joining \\(A(-1, 6, 5)\\) and B internally in the ratio 3:2 then find the point B."
+  },
+  {
+    "ref": "Misc II Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the sum of the three vectors determined by the medians of a triangle directed from the vertices is zero."
+  },
+  {
+    "ref": "Misc II Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "ABCD is a parallelogram E, F are the mid points of BC and CD respectively. AE, AF meet the diagonal BD at Q and P respectively. Show that P and Q trisect DB."
+  },
+  {
+    "ref": "Misc II Q.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If ABC is a triangle whose orthocenter is P and the circumcenter is Q, then prove that \\(\\overrightarrow{PA} + \\overrightarrow{PC} + \\overrightarrow{PB} = 2\\overrightarrow{PQ}\\)."
+  },
+  {
+    "ref": "Misc II Q.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If P is orthocenter, Q is circumcenter and G is centroid of triangle ABC, then prove that \\(\\overrightarrow{QP} = 3\\overrightarrow{QG}\\)."
+  },
+  {
+    "ref": "Misc II Q.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "In triangle OAB, E is the midpoint of BO and D is a point on AB such that AD : DB = 2 : 1. If OD and AE intersect at P, determine the ratio OP : PD using vector methods."
+  },
+  {
+    "ref": "Misc II Q.21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Dot-product of a vector with vectors \\(3\\hat{i}-5\\hat{k}\\), \\(2\\hat{i}+7\\hat{j}\\) and \\(\\hat{i}+\\hat{j}+\\hat{k}\\) are respectively -1, 6 and 5. Find the vector."
+  },
+  {
+    "ref": "Misc II Q.22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are unit vectors such that \\(\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0}\\), then find the value of \\(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{c}\\cdot\\vec{a}\\)."
+  },
+  {
+    "ref": "Misc II Q.23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If a parallelogram is constructed on the vectors \\(\\vec{a} = 3\\vec{p} - \\vec{q}\\), \\(\\vec{b} = \\vec{p} + 3\\vec{q}\\) and \\(|\\vec{p}| = |\\vec{q}| = 2\\) and angle between \\(\\vec{p}\\) and \\(\\vec{q}\\) is \\(\\pi/3\\) show that the ratio of the lengths of the sides is \\(\\sqrt{7} : \\sqrt{13}\\)."
+  },
+  {
+    "ref": "Misc II Q.24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Express the vector \\(\\vec{a} = 5\\hat{i}-2\\hat{j}+5\\hat{k}\\) as a sum of two vectors such that one is parallel to the vector \\(\\vec{b} = 3\\hat{i}+\\hat{k}\\) and other is perpendicular to \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "Misc II Q.25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find two unit vectors each of which makes equal angles with \\(\\vec{u}, \\vec{v}\\) and \\(\\vec{w}\\). \\(\\vec{u} = 2\\hat{i}+\\hat{j}-2\\hat{k}\\), \\(\\vec{v} = \\hat{i}+2\\hat{j}-2\\hat{k}\\) and \\(\\vec{w} = 2\\hat{i}-2\\hat{j}+\\hat{k}\\)."
+  },
+  {
+    "ref": "Misc II Q.26",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the acute angles between the curves at their points of intersection. \\(y = x^2\\), \\(y = x^3\\)"
+  },
+  {
+    "ref": "Misc II Q.27 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find the direction cosines and direction angles of the vector.",
+    "setLabel": "Misc II Q.27",
+    "stem": "\\(2\\hat{i}+\\hat{j}+2\\hat{k}\\)"
+  },
+  {
+    "ref": "Misc II Q.27 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find the direction cosines and direction angles of the vector.",
+    "setLabel": "Misc II Q.27",
+    "stem": "\\(\\dfrac{1}{2}\\hat{i}+\\hat{j}+\\hat{k}\\)"
+  },
+  {
+    "ref": "Misc II Q.28",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(\\vec{b} = 4\\hat{i}+3\\hat{j}\\) and \\(\\vec{c}\\) be two vectors perpendicular to each other in the XY-plane. Find the vector in the same plane having projection 1 and 2 along \\(\\vec{b}\\) and \\(\\vec{c}\\), respectively."
+  },
+  {
+    "ref": "Misc II Q.29",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Show that no line in space can make angles \\(\\pi/6\\) and \\(\\pi/4\\) with X-axis and Y-axis respectively."
+  },
+  {
+    "ref": "Misc II Q.30",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find the angle between the lines whose direction cosines are given by the equation \\(6mn-2nl+5lm=0\\), \\(3l+m+5n=0\\)."
+  },
+  {
+    "ref": "Misc II Q.31",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If Q is the foot of the perpendicular from \\(P(2,4,3)\\) on the line joining the points \\(A(1,2,4)\\) and \\(B(3,4,5)\\), find coordinates of Q."
+  },
+  {
+    "ref": "Misc II Q.32",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Show that the area of triangle ABC, the position vectors of whose vertices are a, b and c is \\(\\dfrac{1}{2}\\left[\\vec{a}\\times\\vec{b}+\\vec{b}\\times\\vec{c}+\\vec{c}\\times\\vec{a}\\right]\\)."
+  },
+  {
+    "ref": "Misc II Q.33",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find a unit vector perpendicular to the plane containing the point \\((a, 0, 0)\\), \\((0, b, 0)\\), and \\((0, 0, c)\\). What is the area of the triangle with these vertices?"
+  },
+  {
+    "ref": "Misc II Q.34 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\times(\\vec{b}\\cdot\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot(\\vec{b}\\cdot\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\cdot\\vec{b})\\times(\\vec{c}\\cdot\\vec{d})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\times\\vec{b})\\cdot(\\vec{c}\\times\\vec{d})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (g)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\cdot\\vec{b})\\cdot\\vec{c}\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (h)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((\\vec{a}\\cdot\\vec{b})\\vec{c}\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\((|\\vec{a}|)(\\vec{b}\\cdot\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (j)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot(\\vec{b}+\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (k)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(\\vec{a}\\cdot\\vec{b}+\\vec{c}\\)"
+  },
+  {
+    "ref": "Misc II Q.34 (l)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "State whether each expression is meaningful. If not, explain why? If so, state whether it is a vector or a scalar.",
+    "setLabel": "Misc II Q.34",
+    "stem": "\\(|\\vec{a}|\\cdot(\\vec{b}+\\vec{c})\\)"
+  },
+  {
+    "ref": "Misc II Q.35",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Show that, for any vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\): \\((\\vec{a}+\\vec{b}+\\vec{c})\\times\\vec{c}+(\\vec{a}+\\vec{b}+\\vec{c})\\times\\vec{b}+(\\vec{b}+\\vec{c})\\times\\vec{a}=2\\vec{a}\\times\\vec{c}\\)."
+  },
+  {
+    "ref": "Misc II Q.36 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Suppose that \\(\\vec{a} \\ne \\vec{0}\\).",
+    "setLabel": "Misc II Q.36",
+    "stem": "If \\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) then is \\(\\vec{b} = \\vec{c}\\)?"
+  },
+  {
+    "ref": "Misc II Q.36 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Suppose that \\(\\vec{a} \\ne \\vec{0}\\).",
+    "setLabel": "Misc II Q.36",
+    "stem": "If \\(\\vec{a}\\times\\vec{b} = \\vec{a}\\times\\vec{c}\\) then is \\(\\vec{b} = \\vec{c}\\)?"
+  },
+  {
+    "ref": "Misc II Q.36 (c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Suppose that \\(\\vec{a} \\ne \\vec{0}\\).",
+    "setLabel": "Misc II Q.36",
+    "stem": "If \\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) and \\(\\vec{a}\\times\\vec{b} = \\vec{a}\\times\\vec{c}\\) then is \\(\\vec{b} = \\vec{c}\\)?"
+  },
+  {
+    "ref": "Misc II Q.37",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A(3,2,-1)\\), \\(B(-2,2,-3)\\), \\(C(3,5,-2)\\), \\(D(-2,5,-4)\\) then (i) verify that the points are the vertices of a parallelogram and (ii) find its area."
+  },
+  {
+    "ref": "Misc II Q.38",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Let A, B, C, D be any four points in space. Prove that \\(|\\overrightarrow{AB}\\times\\overrightarrow{CD}+\\overrightarrow{BC}\\times\\overrightarrow{AD}+\\overrightarrow{CA}\\times\\overrightarrow{BD}| = 4(\\text{area of } \\triangle ABC)\\)."
+  },
+  {
+    "ref": "Misc II Q.39",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\hat{a}, \\hat{b}, \\hat{c}\\) be unit vectors such that \\(\\hat{a}\\cdot\\hat{b} = \\hat{a}\\cdot\\hat{c} = 0\\) and the angle between \\(\\hat{b}\\) and \\(\\hat{c}\\) be \\(\\pi/6\\). Prove that \\(\\hat{a} = \\pm 2(\\hat{b}\\times\\hat{c})\\)."
+  },
+  {
+    "ref": "Misc II Q.40",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Find the value of 'a' so that the volume of parallelopiped formed by \\(\\hat{i}+a\\hat{j}+\\hat{k}\\), \\(\\hat{j}+a\\hat{k}\\) and \\(a\\hat{i}+\\hat{k}\\) becomes minimum."
+  },
+  {
+    "ref": "Misc II Q.41",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Find the volume of the parallelepiped spanned by the diagonals of the three faces of a cube of side \\(a\\) that meet at one vertex of the cube."
+  },
+  {
+    "ref": "Misc II Q.42",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are three non-coplanar vectors, then show that \\(\\dfrac{\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})}{(\\vec{c}\\times\\vec{a})\\cdot\\vec{b}} + \\dfrac{\\vec{b}\\cdot(\\vec{a}\\times\\vec{c})}{(\\vec{c}\\times\\vec{a})\\cdot\\vec{b}} = 0\\)."
+  },
+  {
+    "ref": "Misc II Q.43",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Prove that \\((\\vec{a}\\times\\vec{b})\\cdot(\\vec{c}\\times\\vec{d}) = \\begin{vmatrix}\\vec{a}\\cdot\\vec{c} & \\vec{b}\\cdot\\vec{c}\\\\ \\vec{a}\\cdot\\vec{d} & \\vec{b}\\cdot\\vec{d}\\end{vmatrix}\\)."
+  },
+  {
+    "ref": "Misc II Q.44",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Find the volume of the parallelopiped whose coterminus edges are represented by the vector \\(\\hat{j}+\\hat{k}\\), \\(\\hat{i}+\\hat{k}\\) and \\(\\hat{i}+\\hat{j}\\). Also find volume of tetrahedron having these coterminous edges."
+  },
+  {
+    "ref": "Misc II Q.45",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Using properties of scalar triple product, prove that \\([\\vec{a}+\\vec{b}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{c}+\\vec{a}] = 2[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)."
+  },
+  {
+    "ref": "Misc II Q.46",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If four points \\(A(\\vec{a})\\), \\(B(\\vec{b})\\), \\(C(\\vec{c})\\) and \\(D(\\vec{d})\\) are coplanar then show that \\([\\vec{a}\\ \\vec{b}\\ \\vec{d}] + [\\vec{b}\\ \\vec{c}\\ \\vec{d}] + [\\vec{c}\\ \\vec{a}\\ \\vec{d}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)."
+  },
+  {
+    "ref": "Misc II Q.47",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are three non coplanar vectors, then \\((\\vec{a}+\\vec{b}+\\vec{c})\\cdot\\left[(\\vec{a}+\\vec{b})\\times(\\vec{a}+\\vec{c})\\right] = -[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)."
+  },
+  {
+    "ref": "Misc II Q.48",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If in a tetrahedron, edges in each of the two pairs of opposite edges are perpendicular, then show that the edges in the third pair are also perpendicular."
+  },
+  {
+    "ref": "5.1 Ex.Q9 a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the coordinates of the point which is located :",
+    "setLabel": "Ex.Q9",
+    "stem": "Three units behind the YZ-plane, four units to the right of the XZ-plane and five units above the XY-plane."
+  },
+  {
+    "ref": "5.1 Ex.Q9 b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the coordinates of the point which is located :",
+    "setLabel": "Ex.Q9",
+    "stem": "In the YZ-plane, one unit to the right of the XZ-plane and six units above the XY-plane."
+  },
+  {
+    "ref": "5.1 Ex.Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of the triangle with vertices \\((1, 1, 0)\\), \\((1, 0, 1)\\) and \\((0, 1, 1)\\)."
+  },
+  {
+    "ref": "5.1 Ex.Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If \\(\\vec{AB} = 2\\hat{i} - 4\\hat{j} + 7\\hat{k}\\) and initial point \\(A \\equiv (1, 5, 0)\\). Find the terminal point B."
+  },
+  {
+    "ref": "5.1 Ex.Q12 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "Show that the following points are collinear :",
+    "setLabel": "Ex.Q12",
+    "stem": "A (3, 2, -4), B (9, 8, -10), C (-2, -3, 1)."
+  },
+  {
+    "ref": "5.1 Ex.Q12 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "Show that the following points are collinear :",
+    "setLabel": "Ex.Q12",
+    "stem": "P (4, 5, 2), Q (3, 2, 4), R (5, 8, 0)."
+  },
+  {
+    "ref": "5.1 Ex.Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "If the vectors \\(2\\hat{i} - q\\hat{j} + 3\\hat{k}\\) and \\(4\\hat{i} - 5\\hat{j} + 6\\hat{k}\\) are collinear, then find the value of \\(q\\)."
+  },
+  {
+    "ref": "5.1 Ex.Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Are the four points A(1, -1, 1), B(-1, 1, 1), C(1, 1, 1) and D(2, -3, 4) coplanar? Justify your answer."
+  },
+  {
+    "ref": "5.1 Ex.Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "Express \\(-\\hat{i} - 3\\hat{j} + 4\\hat{k}\\) as linear combination of the vectors \\(2\\hat{i} + \\hat{j} - 4\\hat{k}\\), \\(2\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(3\\hat{i} + \\hat{j} - 2\\hat{k}\\)."
+  },
+  {
+    "ref": "5.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "In Fig. 5.30, five vectors \\(\\vec{a}, \\vec{b}, \\vec{c}, \\vec{d}, \\vec{e}\\) are shown as directed line segments: \\(\\vec{a}\\) and \\(\\vec{b}\\) point to the right and are parallel to each other with \\(\\vec{b}\\) drawn below \\(\\vec{a}\\); \\(\\vec{c}\\) and \\(\\vec{d}\\) point to the left and are parallel to each other with \\(\\vec{d}\\) drawn below \\(\\vec{c}\\); \\(\\vec{e}\\) is a short vector at the bottom pointing to the right, parallel to \\(\\vec{a}\\) and \\(\\vec{b}\\). State the vectors which are: (i) equal in magnitude (ii) parallel (iii) in the same direction (iv) equal (v) negatives of one another.",
+    "solution": "(i) \\(\\vec{a}, \\vec{c}\\) and \\(\\vec{e}\\); \\(\\vec{b}\\) and \\(\\vec{d}\\) are equal in magnitude.\n(ii) \\(\\vec{a}, \\vec{b}, \\vec{c}\\) and \\(\\vec{d}\\) are parallel.\n(iii) \\(\\vec{a}\\) and \\(\\vec{b}\\); \\(\\vec{c}\\) and \\(\\vec{d}\\) are in the same direction.\n(iv) None are equal.\n(v) \\(\\vec{a}\\) and \\(\\vec{c}\\); \\(\\vec{b}\\) and \\(\\vec{d}\\) are negatives of one another."
+  },
+  {
+    "ref": "5.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "In the diagram (Fig. 5.31, quadrilateral KLNM with diagonals KN and LM intersecting at T) \\(\\vec{KL}=\\vec{a}\\), \\(\\vec{LN}=\\vec{b}\\), \\(\\vec{NM}=\\vec{c}\\) and \\(\\vec{KT}=\\vec{d}\\). Find in terms of \\(\\vec{a}, \\vec{b}, \\vec{c}\\) and \\(\\vec{d}\\): (i) \\(\\vec{LT}\\) (ii) \\(\\vec{KM}\\) (iii) \\(\\vec{TN}\\) (iv) \\(\\vec{MT}\\)",
+    "solution": "(i) In \\(\\Delta KLT\\), using triangle law\n\\(\\vec{KL}+\\vec{LT}=\\vec{KT}\\) i.e. \\(\\vec{a}+\\vec{LT}=\\vec{d}\\)\n\\(\\vec{LT}=\\vec{d}-\\vec{a}\\)\n(ii) Using polygonal law of addition of vectors for polygon KLNM\n\\(\\vec{KM}=\\vec{KL}+\\vec{LN}+\\vec{NM}=\\vec{a}+\\vec{b}+\\vec{c}\\)\n(iii) Using polygonal law of addition of vectors for polygon TKLN\n\\(\\vec{TN}=\\vec{TK}+\\vec{KL}+\\vec{LN}=-\\vec{d}+\\vec{a}+\\vec{b}=\\vec{a}+\\vec{b}-\\vec{d}\\)\n(iv) Using polygonal law of addition of vectors for polygon TKLNM\n\\(\\vec{MT}=\\vec{MN}+\\vec{NL}+\\vec{LK}+\\vec{KT}=-\\vec{c}-\\vec{b}-\\vec{a}+\\vec{d}=\\vec{d}-\\vec{a}-\\vec{b}-\\vec{c}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "Find the magnitude of the following vectors: (i) \\(\\vec{a}=\\hat{i}-2\\hat{j}+4\\hat{k}\\) (ii) \\(\\vec{b}=4\\hat{i}-3\\hat{j}-7\\hat{k}\\) (iii) a vector with initial point \\((1,-3,4)\\); terminal point \\((1,0,-1)\\).",
+    "solution": "(i) \\(|\\vec{a}|=\\sqrt{1^2+(-2)^2+4^2}=\\sqrt{21}\\)\n(ii) \\(|\\vec{b}|=\\sqrt{4^2+(-3)^2+(-7)^2}=\\sqrt{16+9+49}=\\sqrt{74}\\)\n(iii) \\(\\vec{c}=(\\hat{i}-\\hat{k})-(\\hat{i}-3\\hat{j}+4\\hat{k})=3\\hat{j}-5\\hat{k}\\)\n\\(|\\vec{c}|=\\sqrt{0+3^2+(-5)^2}=\\sqrt{34}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "A(2, 3), B(-1, 5), C(-1, 1) and D(-7, 5) are four points in the Cartesian plane. (i) Find \\(\\vec{AB}\\) and \\(\\vec{CD}\\). (ii) Check if \\(\\vec{CD}\\) is parallel to \\(\\vec{AB}\\). (iii) E is the point \\((k, 1)\\) and \\(\\vec{AC}\\) is parallel to \\(\\vec{BE}\\). Find \\(k\\).",
+    "solution": "(i) \\(\\vec{a}=2\\hat{i}+3\\hat{j}, \\vec{b}=-\\hat{i}+5\\hat{j}, \\vec{c}=-\\hat{i}+\\hat{j}, \\vec{d}=-7\\hat{i}+5\\hat{j}\\)\n\\(\\vec{AB}=\\vec{b}-\\vec{a}=(-\\hat{i}+5\\hat{j})-(2\\hat{i}+3\\hat{j})=-3\\hat{i}+2\\hat{j}\\)\n\\(\\vec{CD}=\\vec{d}-\\vec{c}=(-7\\hat{i}+5\\hat{j})-(-\\hat{i}+\\hat{j})=-6\\hat{i}+4\\hat{j}\\)\n(ii) \\(\\vec{CD}=-6\\hat{i}+4\\hat{j}=2(-3\\hat{i}+2\\hat{j})=2\\vec{AB}\\), therefore \\(\\vec{CD}\\) and \\(\\vec{AB}\\) are parallel.\n(iii) \\(\\vec{BE}=(k\\hat{i}+\\hat{j})-(-\\hat{i}+5\\hat{j})=(k+1)\\hat{i}-4\\hat{j}\\)\n\\(\\vec{AC}=(-\\hat{i}+\\hat{j})-(2\\hat{i}+3\\hat{j})=-3\\hat{i}-2\\hat{j}\\)\n\\(\\vec{BE}=m\\vec{AC}\\)\n\\((k+1)\\hat{i}-4\\hat{j}=m(-3\\hat{i}-2\\hat{j})\\)\nSo \\(-4=-2m\\), \\(m=2\\)\nand \\(k+1=-3m\\)\n\\(k+1=-3(2)\\)\n\\(k=-6-1\\)\n\\(k=-7\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "Determine the values of \\(c\\) that satisfy \\(|c\\vec{u}|=3\\), \\(\\vec{u}=\\hat{i}+2\\hat{j}+3\\hat{k}\\)",
+    "solution": "\\(|c\\vec{u}|=\\sqrt{c^2+4c^2+9c^2}=|c|\\sqrt{14}=3\\)\n\\(\\therefore c=\\pm\\dfrac{3}{\\sqrt{14}}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "Find a unit vector (i) in the direction of \\(\\vec{u}\\) and (ii) in the direction opposite of \\(\\vec{u}\\), where \\(\\vec{u}=8\\hat{i}+3\\hat{j}-\\hat{k}\\).",
+    "solution": "(i) \\(\\hat{u}=\\dfrac{\\vec{u}}{|\\vec{u}|}=\\dfrac{8\\hat{i}+3\\hat{j}-\\hat{k}}{\\sqrt{74}}=\\dfrac{1}{\\sqrt{74}}(8\\hat{i}+3\\hat{j}-\\hat{k})\\) is the unit vector in the direction of \\(\\vec{u}\\).\n(ii) \\(-\\hat{u}=-\\dfrac{1}{\\sqrt{74}}(8\\hat{i}+3\\hat{j}-\\hat{k})\\) is the unit vector in the opposite direction of \\(\\vec{u}\\)."
+  },
+  {
+    "ref": "5.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "Show that the vectors \\(2\\hat{i}-3\\hat{j}+4\\hat{k}\\) and \\(-4\\hat{i}+6\\hat{j}-8\\hat{k}\\) are parallel.",
+    "solution": "\\(\\vec{a}=2\\hat{i}-3\\hat{j}+4\\hat{k}\\)\n\\(\\vec{b}=-4\\hat{i}+6\\hat{j}-8\\hat{k}=-2(2\\hat{i}-3\\hat{j}+4\\hat{k})=-2\\vec{a}\\)\nAs \\(\\vec{b}\\) is a scalar multiple of \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{a}\\) are parallel."
+  },
+  {
+    "ref": "5.1 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "The non-zero vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) are not collinear. Find the value of \\(\\lambda\\) and \\(\\mu\\): (i) \\(\\vec{a}+3\\vec{b}=2\\lambda\\vec{a}-\\mu\\vec{b}\\) (ii) \\((1+\\lambda)\\vec{a}+2\\lambda\\vec{b}=\\mu\\vec{a}+4\\mu\\vec{b}\\) (iii) \\((3\\lambda+5)\\vec{a}+\\vec{b}=2\\mu\\vec{a}+(\\lambda-3)\\vec{b}\\)",
+    "solution": "(i) \\(2\\lambda=1\\), \\(3=-\\mu\\) \\(\\therefore \\lambda=\\dfrac{1}{2}, \\mu=-3\\)\n(ii) \\(1+\\lambda=\\mu\\), \\(2\\lambda=4\\mu\\), so \\(\\lambda=2\\mu\\)\n\\(1+2\\mu=\\mu\\), \\(1=-\\mu\\)\n\\(\\therefore \\mu=-1, \\lambda=-2\\)\n(iii) \\(3\\lambda+5=2\\mu\\), \\(1=\\lambda-3\\), \\(\\therefore \\lambda=1+3=4\\)\nand \\(3(4)+5=2\\mu\\)\n\\(\\therefore 2\\mu=17\\). So \\(\\mu=\\dfrac{17}{2}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Are the following sets of vectors linearly independent? (i) \\(\\vec{a}=\\hat{i}-2\\hat{j}+3\\hat{k}\\), \\(\\vec{b}=3\\hat{i}-6\\hat{j}+9\\hat{k}\\) (ii) \\(\\vec{a}=-2\\hat{i}-4\\hat{k}\\), \\(\\vec{b}=\\hat{i}-2\\hat{j}-\\hat{k}\\), \\(\\vec{c}=\\hat{i}-4\\hat{j}+3\\hat{k}\\). Interpret the results.",
+    "solution": "(i) \\(\\vec{a}=\\hat{i}-2\\hat{j}+3\\hat{k}, \\vec{b}=3\\hat{i}-6\\hat{j}+9\\hat{k}\\)\n\\(\\vec{b}=3(\\hat{i}-2\\hat{j}+3\\hat{k})\\)\n\\(\\vec{b}=3\\vec{a}\\). Here \\(\\vec{a}\\) and \\(\\vec{b}\\) are linearly dependent vectors. Hence \\(\\vec{a}\\) and \\(\\vec{b}\\) are collinear.\n(ii) \\(\\vec{a}=-2\\hat{i}-4\\hat{k}\\), \\(\\vec{b}=\\hat{i}-2\\hat{j}-\\hat{k}\\), \\(\\vec{c}=\\hat{i}-4\\hat{j}+3\\hat{k}\\)\nLet \\(x\\vec{a}+y\\vec{b}+z\\vec{c}=\\vec{0}\\)\n\\(\\therefore x(-2\\hat{i}-4\\hat{k})+y(\\hat{i}-2\\hat{j}-\\hat{k})+z(\\hat{i}-4\\hat{j}+3\\hat{k})=\\vec{0}\\)\n\\(-2x+y+z=0\\)\n\\(-2y-4z=0\\)\n\\(-4x-y+3z=0\\)\n\\(\\therefore x=0, y=0, z=0\\). Here \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are linearly independent vectors.\nHence \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are non-coplanar."
+  },
+  {
+    "ref": "5.1 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If \\(\\vec{a}=4\\hat{i}+3\\hat{k}\\) and \\(\\vec{b}=-2\\hat{i}+\\hat{j}+5\\hat{k}\\), find (i) \\(|\\vec{a}|\\), (ii) \\(\\vec{a}+\\vec{b}\\), (iii) \\(\\vec{a}-\\vec{b}\\), (iv) \\(3\\vec{b}\\), (v) \\(2\\vec{a}+5\\vec{b}\\)",
+    "solution": "(i) \\(|\\vec{a}|=\\sqrt{4^2+0^2+3^2}=\\sqrt{25}=5\\)\n(ii) \\(\\vec{a}+\\vec{b}=(4\\hat{i}+3\\hat{k})+(-2\\hat{i}+\\hat{j}+5\\hat{k})=2\\hat{i}+\\hat{j}+8\\hat{k}\\)\n(iii) \\(\\vec{a}-\\vec{b}=(4\\hat{i}+3\\hat{k})-(-2\\hat{i}+\\hat{j}+5\\hat{k})=6\\hat{i}-\\hat{j}-2\\hat{k}\\)\n(iv) \\(3\\vec{b}=3(-2\\hat{i}+\\hat{j}+5\\hat{k})=-6\\hat{i}+3\\hat{j}+15\\hat{k}\\)\n(v) \\(2\\vec{a}+5\\vec{b}=2(4\\hat{i}+3\\hat{k})+5(-2\\hat{i}+\\hat{j}+5\\hat{k})=(8\\hat{i}+6\\hat{k})+(-10\\hat{i}+5\\hat{j}+25\\hat{k})=-2\\hat{i}+5\\hat{j}+31\\hat{k}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "What is the distance from the point (2, 3, 4) to (i) the XY plane? (ii) the X-axis? (iii) origin (iv) point (-2, 7, 3).",
+    "solution": "(a) The distance from (2, 3, 4) to the XY plane is \\(|z|=4\\) units.\n(b) The distance from (2, 3, 4) to the X-axis is \\(\\sqrt{y^2+z^2}=\\sqrt{3^2+4^2}=\\sqrt{25}=5\\) units.\n(c) The distance from \\((x,y,z)\\equiv(2,3,4)\\) to origin (0, 0, 0) is \\(\\sqrt{x^2+y^2+z^2}=\\sqrt{2^2+3^2+4^2}=\\sqrt{4+9+16}=\\sqrt{29}\\) units.\n(d) The distance from (2, 3, 4) to (-2, 7, 3) is \\(\\sqrt{(2+2)^2+(3-7)^2+(4-3)^2}=\\sqrt{16+16+1}=\\sqrt{33}\\) units."
+  },
+  {
+    "ref": "5.1 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the line segment joining the midpoints of two sides of a triangle is parallel to and half of the third side.",
+    "solution": "Let the triangle be ABC. If M and N are the midpoints of AB and AC respectively, then\n\\(\\vec{AM}=\\dfrac{1}{2}\\vec{AB}\\) and \\(\\vec{AN}=\\dfrac{1}{2}\\vec{AC}\\). Thus by triangle law\n\\(\\vec{AN}=\\vec{AM}+\\vec{MN}\\)\n\\(\\therefore \\vec{MN}=\\vec{AN}-\\vec{AM}=\\dfrac{\\vec{AC}-\\vec{AB}}{2}=\\dfrac{\\vec{BC}}{2}\\)\nThus, \\(\\vec{MN}\\) is parallel to and half as long as \\(\\vec{BC}\\)."
+  },
+  {
+    "ref": "5.1 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "In quadrilateral ABCD, M and N are the mid-points of the diagonals AC and BD respectively. Prove that \\(\\vec{AB}+\\vec{AD}+\\vec{CB}+\\vec{CD}=4\\vec{MN}\\)",
+    "solution": "\\(\\vec{AB}=\\vec{AM}+\\vec{MN}+\\vec{NB}\\) ...(1)\n\\(\\vec{AD}=\\vec{AM}+\\vec{MN}+\\vec{ND}\\) ...(2)\n\\(\\vec{CB}=\\vec{CM}+\\vec{MN}+\\vec{NB}\\) ...(3)\n\\(\\vec{CD}=\\vec{CM}+\\vec{MN}+\\vec{ND}\\) ...(4)\nAdd (1), (2), (3), (4) to get\n\\(\\vec{AB}+\\vec{AD}+\\vec{CB}+\\vec{CD}=2\\vec{AM}+2\\vec{CM}+4\\vec{MN}+2\\vec{NB}+2\\vec{ND}\\)\n\\(=2(\\vec{AM}+\\vec{CM})+4\\vec{MN}+2(\\vec{NB}+\\vec{ND})\\)\n\\(=2(\\vec{AM}-\\vec{AM})+4\\vec{MN}+2(\\vec{NB}-\\vec{NB})\\) (since M, N are midpoints, \\(\\vec{MC}=\\vec{AM}\\) and \\(\\vec{DN}=\\vec{NB}\\))\n\\(=2(\\vec{0})+4\\vec{MN}+2(\\vec{0})\\)\n\\(=4\\vec{MN}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "Express \\(-\\hat{i}-3\\hat{j}+4\\hat{k}\\) as the linear combination of the vectors \\(2\\hat{i}+\\hat{j}-4\\hat{k}\\), \\(2\\hat{i}-\\hat{j}+3\\hat{k}\\) and \\(3\\hat{i}+\\hat{j}-2\\hat{k}\\).",
+    "solution": "Let \\(\\vec{r}=-\\hat{i}-3\\hat{j}+4\\hat{k}\\), \\(\\vec{a}=2\\hat{i}+\\hat{j}-4\\hat{k}\\), \\(\\vec{b}=2\\hat{i}-\\hat{j}+3\\hat{k}\\), \\(\\vec{c}=3\\hat{i}+\\hat{j}-2\\hat{k}\\)\nConsider \\(\\vec{r}=x\\vec{a}+y\\vec{b}+z\\vec{c}\\)\n\\(-\\hat{i}-3\\hat{j}+4\\hat{k}=x(2\\hat{i}+\\hat{j}-4\\hat{k})+y(2\\hat{i}-\\hat{j}+3\\hat{k})+z(3\\hat{i}+\\hat{j}-2\\hat{k})\\)\n\\(-\\hat{i}-3\\hat{j}+4\\hat{k}=(2x+2y+3z)\\hat{i}+(x-y+z)\\hat{j}+(-4x+3y-2z)\\hat{k}\\)\nBy equality of vectors, we get \\(-1=2x+2y+3z\\), \\(-3=x-y+z\\), \\(4=-4x+3y-2z\\),\nUsing Cramer's rule we get, \\(x=2, y=2, z=3\\). Therefore \\(\\vec{r}=2\\vec{a}+2\\vec{b}-3\\vec{c}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Show that the three points A(1, -2, 3), B(2, 3, -4) and C(0, -7, 10) are collinear.",
+    "solution": "If \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are the position vectors of the points A, B and C respectively, then\n\\(\\vec{a}=\\hat{i}-2\\hat{j}+3\\hat{k}\\)\n\\(\\vec{b}=2\\hat{i}+3\\hat{j}-4\\hat{k}\\)\n\\(\\vec{c}=0\\hat{i}-7\\hat{j}+10\\hat{k}\\)\n\\(\\vec{AB}=\\vec{b}-\\vec{a}=\\hat{i}+5\\hat{j}-7\\hat{k}\\) ...(1) and\n\\(\\vec{AC}=\\vec{c}-\\vec{a}=-\\hat{i}-5\\hat{j}+7\\hat{k}=(-1)[\\hat{i}+5\\hat{j}-7\\hat{k}]\\)\n\\(\\vec{AC}=(-1)\\vec{AB}\\) ...from (1)\nThat is, \\(\\vec{AC}\\) is a scalar multiple of \\(\\vec{AB}\\). Therefore, they are parallel. But point A is in common. Hence, the points A, B and C are collinear."
+  },
+  {
+    "ref": "5.1 SolvedEx.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Show that the vectors \\(4\\hat{i}+13\\hat{j}-18\\hat{k}\\), \\(\\hat{i}-2\\hat{j}+3\\hat{k}\\) and \\(2\\hat{i}+3\\hat{j}-4\\hat{k}\\) are coplanar.",
+    "solution": "Let \\(\\vec{a}=4\\hat{i}+13\\hat{j}-18\\hat{k}\\), \\(\\vec{b}=\\hat{i}-2\\hat{j}+3\\hat{k}\\), \\(\\vec{c}=2\\hat{i}+3\\hat{j}-4\\hat{k}\\)\nConsider \\(\\vec{a}=m\\vec{b}+n\\vec{c}\\)\n\\(\\therefore 4\\hat{i}+13\\hat{j}-18\\hat{k}=m(\\hat{i}-2\\hat{j}+3\\hat{k})+n(2\\hat{i}+3\\hat{j}-4\\hat{k})\\)\n\\(\\therefore 4\\hat{i}+13\\hat{j}-18\\hat{k}=(m+2n)\\hat{i}+(-2m+3n)\\hat{j}+(3m-4n)\\hat{k}\\)\nBy equality of two vectors, we have\n\\(m+2n=4\\) ...(1)\n\\(-2m+3n=13\\) ...(2)\n\\(3m-4n=-18\\) ...(3)\nSolving (1) and (2) we get, \\(\\therefore m=-2, n=3\\)\nThese values of m and n satisfy equation (3) also.\n\\(\\therefore \\vec{a}=-2\\vec{b}+3\\vec{c}\\)\nTherefore, \\(\\vec{a}\\) is a linear combination of \\(\\vec{b}\\) and \\(\\vec{c}\\). Hence, \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are coplanar."
+  },
+  {
+    "ref": "5.1 Ex.Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "The vector \\(\\vec{a}\\) is directed due north and \\(|\\vec{a}|=24\\). The vector \\(\\vec{b}\\) is directed due west and \\(|\\vec{b}|=7\\). Find \\(|\\vec{a}+\\vec{b}|\\)."
+  },
+  {
+    "ref": "5.1 Ex.Q2 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "In the triangle PQR, \\(\\vec{PQ}=2\\vec{a}\\) and \\(\\vec{QR}=2\\vec{b}\\). The mid-point of PR is M. Find the following vectors in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "Ex.Q2",
+    "stem": "\\(\\vec{PR}\\)"
+  },
+  {
+    "ref": "5.1 Ex.Q2 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "In the triangle PQR, \\(\\vec{PQ}=2\\vec{a}\\) and \\(\\vec{QR}=2\\vec{b}\\). The mid-point of PR is M. Find the following vectors in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "Ex.Q2",
+    "stem": "\\(\\vec{PM}\\)"
+  },
+  {
+    "ref": "5.1 Ex.Q2 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "context": "In the triangle PQR, \\(\\vec{PQ}=2\\vec{a}\\) and \\(\\vec{QR}=2\\vec{b}\\). The mid-point of PR is M. Find the following vectors in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "Ex.Q2",
+    "stem": "\\(\\vec{QM}\\)"
+  },
+  {
+    "ref": "5.1 Ex.Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "OABCDE is a regular hexagon. The points A and B have position vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) respectively, referred to the origin O. Find, in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\), the position vectors of C, D and E."
+  },
+  {
+    "ref": "5.1 Ex.Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "HARD",
+    "stem": "If ABCDEF is a regular hexagon, show that \\(\\vec{AB}+\\vec{AC}+\\vec{AD}+\\vec{AE}+\\vec{AF}=6\\vec{AO}\\), where O is the centre of the hexagon."
+  },
+  {
+    "ref": "5.1 Ex.Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Check whether the vectors \\(2\\hat{i}+2\\hat{j}+3\\hat{k}\\), \\(-3\\hat{i}+3\\hat{j}+2\\hat{k}\\) and \\(3\\hat{i}+4\\hat{k}\\) form a triangle or not."
+  },
+  {
+    "ref": "5.1 Ex.Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "In Fig. 5.34, \\(\\Delta PQR\\) is shown with S a point on side QR. \\(\\vec{QP}=\\vec{a}\\), \\(\\vec{PR}=\\vec{b}\\), \\(\\vec{PS}=\\vec{c}\\), \\(\\vec{QS}=-\\vec{d}\\) and \\(\\vec{SR}=\\vec{d}\\) (so S is the midpoint of QR). Express \\(\\vec{c}\\) and \\(\\vec{d}\\) in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.1 Ex.Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "Find a vector in the direction of \\(\\vec{a}=\\hat{i}-2\\hat{j}\\) that has magnitude 7 units."
+  },
+  {
+    "ref": "5.1 Ex.Q8 a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the distance from (4, -2, 6) to each of the following:",
+    "setLabel": "Ex.Q8",
+    "stem": "The XY-plane"
+  },
+  {
+    "ref": "5.1 Ex.Q8 b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the distance from (4, -2, 6) to each of the following:",
+    "setLabel": "Ex.Q8",
+    "stem": "The YZ-plane"
+  },
+  {
+    "ref": "5.1 Ex.Q8 c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the distance from (4, -2, 6) to each of the following:",
+    "setLabel": "Ex.Q8",
+    "stem": "The XZ-plane"
+  },
+  {
+    "ref": "5.1 Ex.Q8 d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the distance from (4, -2, 6) to each of the following:",
+    "setLabel": "Ex.Q8",
+    "stem": "The X-axis"
+  },
+  {
+    "ref": "5.1 Ex.Q8 e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the distance from (4, -2, 6) to each of the following:",
+    "setLabel": "Ex.Q8",
+    "stem": "The Y-axis"
+  },
+  {
+    "ref": "5.1 Ex.Q8 f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "context": "Find the distance from (4, -2, 6) to each of the following:",
+    "setLabel": "Ex.Q8",
+    "stem": "The Z-axis"
+  },
+  {
+    "ref": "5.2 SolvedEx.1 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "context": "Find the co-ordinates of the point which divides the line segment joining the points A(2, –6, 8) and B(–1, 3, –4).",
+    "setLabel": "SolvedEx.1",
+    "stem": "(i) Internally in the ratio 1 : 3.",
+    "solution": "Let \\(\\vec{a}\\) and \\(\\vec{b}\\) be position vectors of the points A and B respectively.\n\\(\\vec{a} = 2\\hat{i} - 6\\hat{j} + 8\\hat{k}\\) and \\(\\vec{b} = -\\hat{i} + 3\\hat{j} - 4\\hat{k}\\).\nSuppose R(\\(\\vec{r}\\)) is the point which divides the line segment joining A(\\(\\vec{a}\\)) and B(\\(\\vec{b}\\)) internally in the ratio 1 : 3, then\n\\(\\vec{r} = \\dfrac{1(\\vec{b}) + 3(\\vec{a})}{1+3} = \\dfrac{-1(\\hat{i}+3\\hat{j}-4\\hat{k}) + 3(2\\hat{i}-6\\hat{j}+8\\hat{k})}{4}\\)\n\\(\\therefore \\vec{r} = \\dfrac{5\\hat{i} - 15\\hat{j} + 20\\hat{k}}{4}\\)\nTherefore, the coordinates of the point R are \\(\\left(\\dfrac{5}{4}, \\dfrac{-15}{4}, 5\\right)\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.1 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "context": "Find the co-ordinates of the point which divides the line segment joining the points A(2, –6, 8) and B(–1, 3, –4).",
+    "setLabel": "SolvedEx.1",
+    "stem": "(ii) Externally in the ratio 1 : 3.",
+    "solution": "Suppose S(\\(\\vec{s}\\)) is the point which divides the line joining A(\\(\\vec{a}\\)) and B(\\(\\vec{b}\\)) externally in the ratio 1 : 3, then\n\\(\\vec{s} = \\dfrac{1\\vec{b} - 3\\vec{a}}{1-3} = \\dfrac{(-\\hat{i}+3\\hat{j}-4\\hat{k}) - 3(2\\hat{i}-6\\hat{j}+8\\hat{k})}{-2}\\)\n\\(\\therefore \\vec{s} = \\dfrac{-7\\hat{i}+21\\hat{j}-28\\hat{k}}{-2}\\)\nTherefore, the coordinates of the point S are \\(\\left(\\dfrac{7}{2}, \\dfrac{-21}{2}, 14\\right)\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If the three points A(3, 2, p), B(q, 8, –10), C(–2, –3, 1) are collinear then find (i) the ratio in which the point C divides the line segment AB, (ii) the values of p and q.",
+    "solution": "Let \\(\\vec{a} = 3\\hat{i}+2\\hat{j}+p\\hat{k}\\), \\(\\vec{b} = q\\hat{i}+8\\hat{j}-10\\hat{k}\\) and \\(\\vec{c} = -2\\hat{i}-3\\hat{j}+\\hat{k}\\).\nSuppose the point C divides the line segment AB in the ratio t : 1, then by section formula, \\(\\vec{c} = \\dfrac{t\\vec{b} + 1\\vec{a}}{t+1}\\).\n\\(\\therefore -2\\hat{i}-3\\hat{j}+\\hat{k} = \\dfrac{t(q\\hat{i}+8\\hat{j}-10\\hat{k}) + 1(3\\hat{i}+2\\hat{j}+p\\hat{k})}{t+1}\\)\n\\(\\therefore (-2\\hat{i}-3\\hat{j}+\\hat{k})(t+1) = (tq+3)\\hat{i}+(8t+2)\\hat{j}+(-10t+p)\\hat{k}\\)\n\\(\\therefore -2(t+1)\\hat{i} - 3(t+1)\\hat{j} + (t+1)\\hat{k} = (tq+3)\\hat{i}+(8t+2)\\hat{j}+(-10t+p)\\hat{k}\\)\nUsing equality of two vectors:\n\\(-2(t+1) = tq+3\\) ... (1)\n\\(-3(t+1) = 8t+2\\) ... (2)\n\\(t+1 = -10t+p\\) ... (3)\nNow equation (2) gives \\(t = -\\dfrac{5}{11}\\).\nPut \\(t = -\\dfrac{5}{11}\\) in equations (1) and (3), we get \\(q = 9\\) and \\(p = -4\\).\nThe negative sign of t suggests that the point C divides the line segment AB externally in the ratio 5 : 11."
+  },
+  {
+    "ref": "5.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "If A(5, 1, p), B(1, q, p) and C(1, –2, 3) are vertices of a triangle and \\(G\\left(r, -\\dfrac{4}{3}, \\dfrac{1}{3}\\right)\\) is its centroid, then find the values of p, q and r.",
+    "solution": "Let \\(\\vec{a} = 5\\hat{i}+\\hat{j}+p\\hat{k}\\), \\(\\vec{b} = \\hat{i}+q\\hat{j}+p\\hat{k}\\), \\(\\vec{c} = \\hat{i}-2\\hat{j}+3\\hat{k}\\) and \\(\\vec{g} = r\\hat{i}-\\dfrac{4}{3}\\hat{j}+\\dfrac{1}{3}\\hat{k}\\).\nBy the centroid formula, \\(\\vec{g} = \\dfrac{\\vec{a}+\\vec{b}+\\vec{c}}{3}\\).\n\\(\\therefore 3\\vec{g} = \\vec{a}+\\vec{b}+\\vec{c}\\)\n\\(\\therefore 3\\left(r\\hat{i}-\\dfrac{4}{3}\\hat{j}+\\dfrac{1}{3}\\hat{k}\\right) = (5\\hat{i}+\\hat{j}+p\\hat{k})+(\\hat{i}+q\\hat{j}+p\\hat{k})+(\\hat{i}-2\\hat{j}+3\\hat{k})\\)\n\\(\\therefore (3r)\\hat{i} - 4\\hat{j} + \\hat{k} = 7\\hat{i}+(q-1)\\hat{j}+(2p+3)\\hat{k}\\)\n\\(\\therefore 3r = 7,\\ -4 = q-1,\\ 1 = 2p+3\\)\n\\(\\therefore r = \\dfrac{7}{3},\\ q = -3,\\ p = -1\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) are the position vectors of the points A, B, C respectively and \\(5\\vec{a} - 3\\vec{b} - 2\\vec{c} = \\vec{0}\\), then find the ratio in which the point C divides the line segment BA.",
+    "solution": "As \\(5\\vec{a} - 3\\vec{b} - 2\\vec{c} = \\vec{0}\\)\n\\(\\therefore 2\\vec{c} = 5\\vec{a} - 3\\vec{b}\\)\n\\(\\therefore \\vec{c} = \\dfrac{5\\vec{a}-3\\vec{b}}{2}\\)\n\\(\\therefore \\vec{c} = \\dfrac{5\\vec{a}-3\\vec{b}}{5-3}\\)\nThis shows that the point C divides BA externally in the ratio 5 : 3."
+  },
+  {
+    "ref": "5.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Prove that the medians of a triangle are concurrent.",
+    "solution": "Let A, B and C be vertices of a triangle. Let D, E and F be the mid-points of the sides BC, AC and AB respectively. Let \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\), \\(\\vec{d}\\), \\(\\vec{e}\\) and \\(\\vec{f}\\) be position vectors of points A, B, C, D, E and F respectively.\nTherefore, by mid-point formula,\n\\(\\vec{d} = \\dfrac{\\vec{b}+\\vec{c}}{2}\\), \\(\\vec{e} = \\dfrac{\\vec{a}+\\vec{c}}{2}\\) and \\(\\vec{f} = \\dfrac{\\vec{a}+\\vec{b}}{2}\\)\n\\(\\therefore 2\\vec{d} = \\vec{b}+\\vec{c}\\), \\(2\\vec{e} = \\vec{a}+\\vec{c}\\) and \\(2\\vec{f} = \\vec{a}+\\vec{b}\\)\n\\(\\therefore 2\\vec{d}+\\vec{a} = \\vec{a}+\\vec{b}+\\vec{c}\\), similarly \\(2\\vec{e}+\\vec{b} = 2\\vec{f}+\\vec{c} = \\vec{a}+\\vec{b}+\\vec{c}\\)\n\\(\\therefore \\dfrac{2\\vec{d}+\\vec{a}}{3} = \\dfrac{2\\vec{e}+\\vec{b}}{3} = \\dfrac{2\\vec{f}+\\vec{c}}{3} = \\dfrac{\\vec{a}+\\vec{b}+\\vec{c}}{3} = \\vec{g}\\) (say)\nThen we have \\(\\vec{g} = \\dfrac{\\vec{a}+\\vec{b}+\\vec{c}}{3} = \\dfrac{(2)\\vec{d}+(1)\\vec{a}}{2+1} = \\dfrac{(2)\\vec{e}+(1)\\vec{b}}{2+1} = \\dfrac{(2)\\vec{f}+(1)\\vec{c}}{2+1}\\)\nIf G is the point whose position vector is \\(\\vec{g}\\), then from the above equation it is clear that the point G lies on the medians AD, BE, CF and it divides each of the medians AD, BE, CF internally in the ratio 2 : 1.\nTherefore, three medians are concurrent."
+  },
+  {
+    "ref": "5.2 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Prove that the angle bisectors of a triangle are concurrent.",
+    "solution": "Let A, B and C be vertices of a triangle. Let AD, BE and CF be the angle bisectors of the triangle ABC. Let \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\), \\(\\vec{d}\\), \\(\\vec{e}\\) and \\(\\vec{f}\\) be the position vectors of the points A, B, C, D, E and F respectively. Also AB = z, BC = x, AC = y. Now, the angle bisector AD meets the side BC at the point D. Therefore, the point D divides the line segment BC internally in the ratio AB : AC, that is z : y.\nHence, by section formula for internal division, we have \\(\\vec{d} = \\dfrac{z\\vec{c}+y\\vec{b}}{z+y}\\)\nSimilarly, we get \\(\\vec{e} = \\dfrac{x\\vec{a}+z\\vec{c}}{x+z}\\) and \\(\\vec{f} = \\dfrac{y\\vec{b}+x\\vec{a}}{y+x}\\)\nAs \\(\\vec{d} = \\dfrac{z\\vec{c}+y\\vec{b}}{z+y}\\)\n\\(\\therefore (z+y)\\vec{d} = z\\vec{c}+y\\vec{b}\\)\ni.e. \\((z+y)\\vec{d} + x\\vec{a} = x\\vec{a}+y\\vec{b}+z\\vec{c}\\)\nsimilarly \\((x+z)\\vec{e} + y\\vec{b} = x\\vec{a}+y\\vec{b}+z\\vec{c}\\)\nand \\((x+y)\\vec{f} + z\\vec{c} = x\\vec{a}+y\\vec{b}+z\\vec{c}\\)\n\\(\\therefore \\dfrac{(z+y)\\vec{d}+x\\vec{a}}{x+y+z} = \\dfrac{(x+z)\\vec{e}+y\\vec{b}}{x+y+z} = \\dfrac{(x+y)\\vec{f}+z\\vec{c}}{x+y+z} = \\dfrac{x\\vec{a}+y\\vec{b}+z\\vec{c}}{x+y+z} = \\vec{h}\\) (say)\nThen we have \\(\\vec{h} = \\dfrac{(y+z)\\vec{d}+x\\vec{a}}{(y+z)+x} = \\dfrac{(x+z)\\vec{e}+y\\vec{b}}{(x+z)+y} = \\dfrac{(x+y)\\vec{f}+z\\vec{c}}{(x+y)+z}\\)\nThat is, point H(\\(\\vec{h}\\)) divides AD in the ratio (y+z) : x, BE in the ratio (x+z) : y and CF in the ratio (x+y) : z.\nThis shows that the point H is the point of concurrence of the angle bisectors AD, BE and CF of the triangle ABC. Thus, the angle bisectors of a triangle are concurrent and H is called the incentre of the triangle ABC."
+  },
+  {
+    "ref": "5.2 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "Using vector method, find the incenter of the triangle whose vertices are A(0, 3, 0), B(0, 0, 4) and C(0, 3, 4).",
+    "solution": "Let \\(\\vec{a} = 3\\hat{j}\\), \\(\\vec{b} = 4\\hat{k}\\) and \\(\\vec{c} = 3\\hat{j}+4\\hat{k}\\)\n\\(\\therefore \\vec{AB} = \\vec{b}-\\vec{a} = -3\\hat{j}+4\\hat{k}\\), \\(\\vec{AC} = \\vec{c}-\\vec{a} = 4\\hat{k}\\), \\(\\vec{BC} = \\vec{c}-\\vec{b} = 3\\hat{j}\\)\n\\(\\therefore |\\vec{AB}| = 5, |\\vec{AC}| = 4, |\\vec{BC}| = 3\\)\nIf H(\\(\\vec{h}\\)) is the incenter of triangle ABC then,\n\\(\\vec{h} = \\dfrac{|\\vec{BC}|\\vec{a}+|\\vec{AC}|\\vec{b}+|\\vec{AB}|\\vec{c}}{|\\vec{BC}|+|\\vec{AC}|+|\\vec{AB}|}\\)\n\\(\\therefore \\vec{h} = \\dfrac{3(3\\hat{j})+4(4\\hat{k})+5(3\\hat{j}+4\\hat{k})}{3+4+5}\\)\n\\(= \\dfrac{9\\hat{j}+16\\hat{k}+15\\hat{j}+20\\hat{k}}{12}\\)\n\\(\\therefore \\vec{h} = \\dfrac{24\\hat{j}+36\\hat{k}}{12}\\)\n\\(\\therefore \\vec{h} = 2\\hat{j}+3\\hat{k}\\)\nAnd H \\(\\equiv (0, 2, 3)\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If \\(4\\hat{i}+7\\hat{j}+8\\hat{k}\\), \\(2\\hat{i}+3\\hat{j}+4\\hat{k}\\) and \\(2\\hat{i}+5\\hat{j}+7\\hat{k}\\) are the position vectors of the vertices A, B and C respectively of triangle ABC, find the position vector of the point in which the bisector of \\(\\angle A\\) meets BC.",
+    "solution": "\\(\\vec{a} = 4\\hat{i}+7\\hat{j}+8\\hat{k}\\), \\(\\vec{b} = 2\\hat{i}+3\\hat{j}+4\\hat{k}\\), \\(\\vec{c} = 2\\hat{i}+5\\hat{j}+7\\hat{k}\\)\n\\(\\vec{AC} = \\vec{c}-\\vec{a} = -2\\hat{i}-2\\hat{j}-\\hat{k}\\)\n\\(\\vec{AB} = \\vec{b}-\\vec{a} = -2\\hat{i}-4\\hat{j}-4\\hat{k}\\)\n\\(\\therefore |\\vec{AB}| = \\sqrt{4+16+16} = 6\\) units\n\\(\\therefore |\\vec{AC}| = \\sqrt{4+4+1} = 3\\) units\nLet D be the point where the angle bisector of \\(\\angle A\\) meets BC.\nD divides BC in the ratio AB : AC\ni.e. \\(\\vec{d} = \\dfrac{|\\vec{AB}|\\vec{c}+|\\vec{AC}|\\vec{b}}{|\\vec{AB}|+|\\vec{AC}|}\\)\n\\(= \\dfrac{6(2\\hat{i}+5\\hat{j}+7\\hat{k})+3(2\\hat{i}+3\\hat{j}+4\\hat{k})}{6+3}\\)\n\\(= \\dfrac{(12\\hat{i}+30\\hat{j}+42\\hat{k})+(6\\hat{i}+9\\hat{j}+12\\hat{k})}{9}\\)\n\\(= \\dfrac{18\\hat{i}+39\\hat{j}+54\\hat{k}}{9}\\)\n\\(\\therefore \\vec{d} = 2\\hat{i}+\\dfrac{13}{3}\\hat{j}+6\\hat{k}\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "If G(a, 2, –1) is the centroid of the triangle with vertices P(1, 3, 2), Q(3, b, –4) and R(5, 1, c), then find the values of a, b and c.",
+    "solution": "As G(\\(\\vec{g}\\)) is the centroid of \\(\\triangle PQR\\), \\(\\vec{g} = \\dfrac{\\vec{p}+\\vec{q}+\\vec{r}}{3}\\)\n\\(a\\hat{i}+2\\hat{j}-\\hat{k} = \\dfrac{(\\hat{i}+3\\hat{j}+2\\hat{k})+(3\\hat{i}+b\\hat{j}-4\\hat{k})+(5\\hat{i}+\\hat{j}+c\\hat{k})}{3} = \\dfrac{(1+3+5)\\hat{i}+(3+b+1)\\hat{j}+(2-4+c)\\hat{k}}{3}\\)\nBy equality of vectors,\n\\(a = \\dfrac{1+3+5}{3} = \\dfrac{9}{3} = 3 \\therefore a = 3\\)\n\\(2 = \\dfrac{3+b+1}{3} \\therefore 6 = 4+b \\therefore b = 2\\)\n\\(-1 = \\dfrac{2-4+c}{3} \\therefore -3 = -2+c \\therefore c = -1\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "Find the centroid of the tetrahedron with vertices A(3, –5, 7), B(5, 4, 2), C(7, –7, –3), D(1, 0, 2).",
+    "solution": "Let \\(\\vec{a} = 3\\hat{i}-5\\hat{j}+7\\hat{k}\\), \\(\\vec{b} = 5\\hat{i}+4\\hat{j}+2\\hat{k}\\), \\(\\vec{c} = 7\\hat{i}-7\\hat{j}-3\\hat{k}\\), \\(\\vec{d} = \\hat{i}+2\\hat{k}\\) be position vectors of vertices A, B, C and D.\nBy the centroid formula, centroid G(\\(\\vec{g}\\)) is given by\n\\(\\vec{g} = \\dfrac{\\vec{a}+\\vec{b}+\\vec{c}+\\vec{d}}{4}\\)\n\\(= \\dfrac{(3\\hat{i}-5\\hat{j}+7\\hat{k})+(5\\hat{i}+4\\hat{j}+2\\hat{k})+(7\\hat{i}-7\\hat{j}-3\\hat{k})+(\\hat{i}+2\\hat{k})}{4}\\)\n\\(= \\dfrac{(3+5+7+1)\\hat{i}+(-5+4-7+0)\\hat{j}+(7+2-3+2)\\hat{k}}{4} = \\dfrac{16\\hat{i}-8\\hat{j}+8\\hat{k}}{4}\\)\n\\(= 4\\hat{i}-2\\hat{j}+2\\hat{k}\\)\nTherefore, the centroid of the tetrahedron is G \\(\\equiv (4, -2, 2)\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Find the ratio in which point P divides AB and CD where A(2, –3, 4), B(0, 5, 2), C(–1, 5, 3) and D(2, –1, 3). Also, find its coordinates.",
+    "solution": "Let point P divide AB in ratio m : 1 and CD in ratio n : 1.\nBy section formula,\n\\(P \\equiv \\left(\\dfrac{2}{m+1}, \\dfrac{5m-3}{m+1}, \\dfrac{2m+4}{m+1}\\right) \\equiv \\left(\\dfrac{2n-1}{n+1}, \\dfrac{n+5}{n+1}, \\dfrac{3n+3}{n+1}\\right)\\)\nEquating z-coordinates,\n\\(\\dfrac{2m+4}{m+1} = \\dfrac{3n+3}{n+1}\\)\n\\(\\therefore \\dfrac{2m+4}{m+1} = \\dfrac{3(n+1)}{(n+1)}\\)\n\\(\\therefore 2m+4 = 3(m+1)\\)\n\\(\\therefore 2m+4 = 3m+3\\)\n\\(\\therefore 1 = m\\)\nAlso, by equating x-coordinates,\n\\(\\dfrac{2}{m+1} = \\dfrac{2n-1}{n+1}\\)\n\\(\\dfrac{2}{1+1} = \\dfrac{2n-1}{n+1}\\quad (m=1)\\)\n\\(\\therefore n+1 = 2n-1\\)\n\\(\\therefore 2 = n\\)\nP divides AB in ratio m : 1 i.e. 1 : 1 and CD in the ratio n : 1 i.e. 2 : 1.\n\\(P \\equiv \\left(\\dfrac{2}{1+1}, \\dfrac{5-3}{1+1}, \\dfrac{2+4}{1+1}\\right) \\equiv (1, 1, 3)\\)."
+  },
+  {
+    "ref": "5.2 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "In a triangle ABC, D and E are points on BC and AC respectively, such that BD = 2DC and AE = 3EC. Let P be the point of intersection of AD and BE. Find BP/PF using vector methods.",
+    "solution": "Let \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) be the position vectors of A, B and C respectively with respect to some origin.\nD divides BC in the ratio 2 : 1 and E divides AC in the ratio 3 : 1.\n\\(\\therefore \\vec{d} = \\dfrac{\\vec{b}+2\\vec{c}}{3}\\), \\(\\vec{e} = \\dfrac{\\vec{a}+3\\vec{c}}{4}\\)\nLet the point of intersection P of AD and BE divide BE in the ratio k : 1 and AD in the ratio m : 1, then the position vectors of P in these two cases are \\(\\dfrac{\\vec{b}+k\\left(\\dfrac{\\vec{a}+3\\vec{c}}{4}\\right)}{k+1}\\) and \\(\\dfrac{\\vec{a}+m\\left(\\dfrac{\\vec{b}+2\\vec{c}}{3}\\right)}{m+1}\\) respectively.\nEquating the position vectors of P we get,\n\\(\\dfrac{k}{4(k+1)}\\vec{a} + \\dfrac{1}{k+1}\\vec{b} + \\dfrac{3k}{4(k+1)}\\vec{c} = \\dfrac{1}{m+1}\\vec{a} + \\dfrac{m}{3(m+1)}\\vec{b} + \\dfrac{2m}{3(m+1)}\\vec{c}\\)\n\\(\\therefore \\dfrac{k}{4(k+1)} = \\dfrac{1}{m+1}\\) ... (1)\n\\(\\dfrac{1}{k+1} = \\dfrac{m}{3(m+1)}\\) ... (2)\n\\(\\dfrac{3k}{4(k+1)} = \\dfrac{2m}{3(m+1)}\\) ... (3)\nDividing (3) by (2) we get,\n\\(\\dfrac{3k}{4} = 2\\) i.e. \\(k = \\dfrac{8}{3}\\)\ntherefore \\(\\dfrac{BP}{PF} = k:1 = 8:3\\)."
+  },
+  {
+    "ref": "5.2 Ex.Q1 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "context": "Find the position vector of point R which divides the line joining the points P and Q whose position vectors are \\(2\\hat{i}-\\hat{j}+3\\hat{k}\\) and \\(-5\\hat{i}+2\\hat{j}-5\\hat{k}\\) in the ratio 3 : 2.",
+    "setLabel": "Ex.Q1",
+    "stem": "(i) Internally."
+  },
+  {
+    "ref": "5.2 Ex.Q1 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "context": "Find the position vector of point R which divides the line joining the points P and Q whose position vectors are \\(2\\hat{i}-\\hat{j}+3\\hat{k}\\) and \\(-5\\hat{i}+2\\hat{j}-5\\hat{k}\\) in the ratio 3 : 2.",
+    "setLabel": "Ex.Q1",
+    "stem": "(ii) Externally."
+  },
+  {
+    "ref": "5.2 Ex.Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "Find the position vector of mid-point M joining the points L(7, –6, 12) and N(5, 4, –2)."
+  },
+  {
+    "ref": "5.2 Ex.Q3 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "context": "If the points A(3, 0, p), B(–1, q, 3) and C(–3, 3, 0) are collinear, then find",
+    "setLabel": "Ex.Q3",
+    "stem": "(i) The ratio in which the point C divides the line segment AB."
+  },
+  {
+    "ref": "5.2 Ex.Q3 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "context": "If the points A(3, 0, p), B(–1, q, 3) and C(–3, 3, 0) are collinear, then find",
+    "setLabel": "Ex.Q3",
+    "stem": "(ii) The values of p and q."
+  },
+  {
+    "ref": "5.2 Ex.Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "The position vectors of points A and B are \\(6\\vec{a}+2\\vec{b}\\) and \\(\\vec{a}-3\\vec{b}\\). If the point C divides AB in the ratio 3 : 2 then show that the position vector of C is \\(3\\vec{a}-\\vec{b}\\)."
+  },
+  {
+    "ref": "5.2 Ex.Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Prove that the line segments joining mid-points of adjacent sides of a quadrilateral form a parallelogram."
+  },
+  {
+    "ref": "5.2 Ex.Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "D and E divide sides BC and CA of a triangle ABC in the ratio 2 : 3 respectively. Find the position vector of the point of intersection of AD and BE and the ratio in which this point divides AD and BE."
+  },
+  {
+    "ref": "5.2 Ex.Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Prove that a quadrilateral is a parallelogram if and only if its diagonals bisect each other."
+  },
+  {
+    "ref": "5.2 Ex.Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "Prove that the median of a trapezium is parallel to the parallel sides of the trapezium and its length is half the sum of the parallel sides."
+  },
+  {
+    "ref": "5.2 Ex.Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "If two of the vertices of the triangle are A(3, 1, 4) and B(–4, 5, –3) and the centroid of the triangle is G(–1, 2, 1), then find the coordinates of the third vertex C of the triangle."
+  },
+  {
+    "ref": "5.2 Ex.Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle OAB\\), E is the mid-point of OB and D is the point on AB such that AD : DB = 2 : 1. If OD and AE intersect at P, then determine the ratio OP : PD using vector methods."
+  },
+  {
+    "ref": "5.2 Ex.Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "If the centroid of a tetrahedron OABC is (1, 2, –1) where A = (a, 2, 3), B = (1, b, 2), C = (2, 1, c) respectively, find the distance of P(a, b, c) from the origin."
+  },
+  {
+    "ref": "5.2 Ex.Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "Find the centroid of tetrahedron with vertices K(5, –7, 0), L(1, 5, 3), M(4, –6, 3), N(6, –4, 2)?"
+  },
+  {
+    "ref": "5.3 Ex.Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If a line has the direction ratios, 4, -12, 18 then find its direction cosines."
+  },
+  {
+    "ref": "5.3 Ex.Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "The direction ratios of \\(\\vec{AB}\\) are -2, 2, 1. If A = (4, 1, 5) and \\(l(AB) = 6\\) units, find B."
+  },
+  {
+    "ref": "5.3 Ex.Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find the angle between the lines whose direction cosines \\(l, m, n\\) satisfy the equations \\(5l + m + 3n = 0\\) and \\(5mn - 2nl + 6lm = 0\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\vec{a} \\cdot \\vec{b}\\) if \\(|\\vec{a}| = 3, |\\vec{b}| = \\sqrt{6}\\), the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(45^\\circ\\).",
+    "solution": "\\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta = (3)(\\sqrt{6})\\cos 45^\\circ = 3\\sqrt{6}\\left(\\frac{\\sqrt{2}}{2}\\right) = \\frac{3}{2}\\cdot 2\\sqrt{3} = 3\\sqrt{3}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.2 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "If \\(\\vec{a} = 3\\hat{i} + 4\\hat{j} - 5\\hat{k}\\) and \\(\\vec{b} = 3\\hat{i} - 4\\hat{j} - 5\\hat{k}\\)",
+    "setLabel": "SolvedEx.2",
+    "stem": "Find \\(\\vec{a} \\cdot \\vec{b}\\).",
+    "solution": "\\(\\vec{a} \\cdot \\vec{b} = (3)(3)+(4)(-4)+(-5)(-5) = 9 - 16 + 25 = 18\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.2 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "If \\(\\vec{a} = 3\\hat{i} + 4\\hat{j} - 5\\hat{k}\\) and \\(\\vec{b} = 3\\hat{i} - 4\\hat{j} - 5\\hat{k}\\)",
+    "setLabel": "SolvedEx.2",
+    "stem": "Find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "solution": "\\(|\\vec{a}| = \\sqrt{9+16+25} = \\sqrt{50}\\), \\(|\\vec{b}| = \\sqrt{9+16+25} = \\sqrt{50}\\). The angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(\\cos\\theta = \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|} = \\frac{18}{50}\\). \\(\\therefore \\theta = \\cos^{-1}\\left(\\frac{18}{50}\\right)\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.2 iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\vec{a} = 3\\hat{i} + 4\\hat{j} - 5\\hat{k}\\) and \\(\\vec{b} = 3\\hat{i} - 4\\hat{j} - 5\\hat{k}\\)",
+    "setLabel": "SolvedEx.2",
+    "stem": "Find the scalar projection of \\(\\vec{a}\\) in the direction of \\(\\vec{b}\\).",
+    "solution": "The scalar projection of \\(\\vec{a}\\) in the direction of \\(\\vec{b}\\) is \\(\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} = \\frac{18}{\\sqrt{50}} = \\frac{18}{5\\sqrt{2}}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.2 iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\vec{a} = 3\\hat{i} + 4\\hat{j} - 5\\hat{k}\\) and \\(\\vec{b} = 3\\hat{i} - 4\\hat{j} - 5\\hat{k}\\)",
+    "setLabel": "SolvedEx.2",
+    "stem": "Find the vector projection of \\(\\vec{b}\\) along \\(\\vec{a}\\).",
+    "solution": "The vector projection of \\(\\vec{b}\\) along \\(\\vec{a}\\) is \\((\\vec{a}\\cdot\\vec{b})\\frac{\\vec{a}}{|\\vec{a}|^2} = \\frac{18}{50}\\left(3\\hat{i}+4\\hat{j}-5\\hat{k}\\right) = \\frac{9}{25}\\left(3\\hat{i}+4\\hat{j}-5\\hat{k}\\right)\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.3 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find the value of \\(a\\) for which the vectors \\(3\\hat{i} + 2\\hat{j} + 9\\hat{k}\\) and \\(\\hat{i} + a\\hat{j} + 3\\hat{k}\\) are",
+    "setLabel": "SolvedEx.3",
+    "stem": "perpendicular.",
+    "solution": "Let \\(\\vec{p} = 3\\hat{i} + 2\\hat{j} + 9\\hat{k}\\) and \\(\\vec{q} = \\hat{i} + a\\hat{j} + 3\\hat{k}\\). The two vectors are perpendicular if \\(\\vec{p}\\cdot\\vec{q}=0\\) i.e. \\(\\left(3\\hat{i}+2\\hat{j}+9\\hat{k}\\right)\\cdot\\left(\\hat{i}+a\\hat{j}+3\\hat{k}\\right) = 0\\) i.e. \\(3(1)+2(a)+9(3) = 0\\) i.e. \\(2a+30 = 0\\) or \\(a = -15\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.3 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find the value of \\(a\\) for which the vectors \\(3\\hat{i} + 2\\hat{j} + 9\\hat{k}\\) and \\(\\hat{i} + a\\hat{j} + 3\\hat{k}\\) are",
+    "setLabel": "SolvedEx.3",
+    "stem": "parallel.",
+    "solution": "The two vectors are parallel if \\(\\frac{3}{1} = \\frac{2}{a} = \\frac{9}{3}\\) i.e. \\(3a = 2\\) i.e. \\(a = \\frac{2}{3}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a} = \\hat{i}+2\\hat{j}-3\\hat{k}\\) and \\(\\vec{b} = 3\\hat{i}-\\hat{j}+2\\hat{k}\\) find the angle between the vectors \\(2\\vec{a}+\\vec{b}\\) and \\(\\vec{a}+2\\vec{b}\\).",
+    "solution": "\\(2\\vec{a}+\\vec{b} = 2\\left(\\hat{i}+2\\hat{j}-3\\hat{k}\\right)+\\left(3\\hat{i}-\\hat{j}+2\\hat{k}\\right) = 5\\hat{i}+3\\hat{j}-4\\hat{k} = \\vec{m}\\) (say). \\(\\vec{a}+2\\vec{b} = \\left(\\hat{i}+2\\hat{j}-3\\hat{k}\\right)+2\\left(3\\hat{i}-\\hat{j}+2\\hat{k}\\right) = 7\\hat{i}+\\hat{k} = \\vec{n}\\) (say). \\(\\therefore \\vec{m}\\cdot\\vec{n} = (2\\vec{a}+\\vec{b})\\cdot(\\vec{a}+2\\vec{b}) = \\left(5\\hat{i}+3\\hat{j}-4\\hat{k}\\right)\\cdot\\left(7\\hat{i}+\\hat{k}\\right) = (5)(7)+(3)(0)+(-4)(1) = 31\\). \\(|\\vec{m}| = \\sqrt{(5)^2+(3)^2+(-4)^2} = \\sqrt{50}\\). \\(|\\vec{n}| = \\sqrt{(7)^2+(0)^2+(1)^2} = \\sqrt{50}\\). If \\(\\theta\\) is the angle between \\(\\vec{m}\\) and \\(\\vec{n}\\) then \\(\\cos\\theta = \\frac{\\vec{m}\\cdot\\vec{n}}{|\\vec{m}||\\vec{n}|} = \\frac{31}{\\sqrt{50}\\times\\sqrt{50}} = \\frac{31}{50}\\). \\(\\therefore \\theta = \\cos^{-1}\\left(\\frac{31}{50}\\right)\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If a line makes angle \\(90^\\circ, 60^\\circ\\) and \\(30^\\circ\\) with the positive direction of X, Y and Z axes respectively, find its direction cosines.",
+    "solution": "Let the d.c.s. of the line be \\(l, m, n\\) then \\(l = \\cos 90^\\circ = 0\\), \\(m = \\cos 60^\\circ = \\frac{1}{2}\\), \\(n = \\cos 30^\\circ = \\frac{\\sqrt{3}}{2}\\). Therefore, \\(l, m, n\\) are \\(0, \\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the vector projection of \\(\\vec{PQ}\\) on \\(\\vec{AB}\\) where P, Q, A, B are the points \\((-2, 1, 3)\\), \\((3, 2, 5)\\), \\((4, -3, 5)\\) and \\((7, -5, -1)\\) respectively.",
+    "solution": "Let the position vectors of P, Q, A, B be \\(\\vec{p}, \\vec{q}, \\vec{a}, \\vec{b}\\) respectively. \\(\\vec{p} = -2\\hat{i}+\\hat{j}+3\\hat{k}\\), \\(\\vec{q} = 3\\hat{i}+2\\hat{j}+5\\hat{k}\\), \\(\\vec{a} = 4\\hat{i}-3\\hat{j}+5\\hat{k}\\), \\(\\vec{b} = 7\\hat{i}-5\\hat{j}-\\hat{k}\\). \\(\\therefore \\vec{PQ} = \\vec{q}-\\vec{p} = \\left(3\\hat{i}+2\\hat{j}+5\\hat{k}\\right)-\\left(-2\\hat{i}+\\hat{j}+3\\hat{k}\\right) = 5\\hat{i}+\\hat{j}+2\\hat{k}\\). And \\(\\vec{AB} = \\vec{b}-\\vec{a} = \\left(7\\hat{i}-5\\hat{j}-\\hat{k}\\right)-\\left(4\\hat{i}-3\\hat{j}+5\\hat{k}\\right) = 3\\hat{i}-2\\hat{j}-6\\hat{k}\\). \\(\\therefore\\) Vector projection of \\(\\vec{PQ}\\) on \\(\\vec{AB}\\) \\(= \\frac{\\vec{PQ}\\cdot\\vec{AB}}{|\\vec{AB}|^2}\\vec{AB} = \\frac{(5)(3)+(1)(-2)+(2)(-6)}{(3)^2+(-2)^2+(-6)^2}\\vec{AB} = \\frac{1}{49}\\left(3\\hat{i}-2\\hat{j}-6\\hat{k}\\right) = \\frac{3}{49}\\hat{i}-\\frac{2}{49}\\hat{j}-\\frac{6}{49}\\hat{k}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find the values of \\(\\lambda\\) for which the angle between the vectors \\(\\vec{a} = 2\\lambda^2\\hat{i}+4\\lambda\\hat{j}+\\hat{k}\\) and \\(\\vec{b} = 7\\hat{i}-2\\hat{j}+\\lambda\\hat{k}\\) is obtuse.",
+    "solution": "If \\(\\theta\\) is the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\), then \\(\\cos\\theta = \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|}\\). If \\(\\theta\\) is obtuse then \\(\\cos\\theta < 0\\). \\(\\therefore \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|} < 0\\) i.e. \\(\\vec{a}\\cdot\\vec{b} < 0\\) \\(\\left[\\because |\\vec{a}||\\vec{b}| > 0\\right]\\). \\(\\therefore \\left(2\\lambda^2\\hat{i}+4\\lambda\\hat{j}+\\hat{k}\\right)\\cdot\\left(7\\hat{i}-2\\hat{j}+\\lambda\\hat{k}\\right) < 0\\). \\(\\therefore 14\\lambda^2-8\\lambda+\\lambda < 0\\) i.e. \\(14\\lambda^2-7\\lambda < 0\\). \\(\\therefore 7\\lambda(2\\lambda-1) < 0\\) i.e. \\(\\lambda\\left(\\lambda-\\frac{1}{2}\\right) < 0\\) i.e. \\(0 < \\lambda < \\frac{1}{2}\\). Thus the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is obtuse if \\(0 < \\lambda < \\frac{1}{2}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the direction cosines of the vector \\(2\\hat{i}+2\\hat{j}-\\hat{k}\\).",
+    "solution": "Let \\(\\vec{a} = 2\\hat{i}+2\\hat{j}-\\hat{k}\\). \\(\\therefore |\\vec{a}| = \\sqrt{(2)^2+(2)^2+(-1)^2} = \\sqrt{9} = 3\\). \\(\\therefore \\hat{a} = \\frac{\\vec{a}}{|\\vec{a}|} = \\frac{2\\hat{i}+2\\hat{j}-\\hat{k}}{3} = \\frac{2}{3}\\hat{i}+\\frac{2}{3}\\hat{j}-\\frac{1}{3}\\hat{k}\\). \\(\\therefore\\) The direction cosines of \\(\\vec{a}\\) are \\(\\frac{2}{3}, \\frac{2}{3}, -\\frac{1}{3}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the position vector of a point P such that \\(\\vec{AB}\\) is inclined to the X axis at \\(45^\\circ\\) and to the Y axis at \\(60^\\circ\\), and \\(OP = 12\\) units.",
+    "solution": "We have \\(l = \\cos 45^\\circ = \\frac{1}{\\sqrt{2}}\\), \\(m = \\cos 60^\\circ = \\frac{1}{2}\\), \\(n = \\cos\\gamma\\). Now \\(l^2+m^2+n^2 = 1\\). \\(\\therefore \\frac{1}{2}+\\frac{1}{4}+\\cos^2\\gamma = 1\\), i.e. \\(\\cos^2\\gamma = \\frac{1}{4}\\), i.e. \\(n = \\cos\\gamma = \\pm\\frac{1}{2}\\). Now \\(\\vec{r} = |\\vec{r}|\\hat{r} = |\\vec{r}|\\left(l\\hat{i}+m\\hat{j}+n\\hat{k}\\right) = 12\\left(\\frac{1}{\\sqrt{2}}\\hat{i}+\\frac{1}{2}\\hat{j}\\pm\\frac{1}{2}\\hat{k}\\right)\\). Hence \\(\\vec{r} = 6\\sqrt{2}\\hat{i}+6\\hat{j}\\pm6\\hat{k}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "A line makes angles of measure \\(45^\\circ\\) and \\(60^\\circ\\) with the positive direction of the Y and Z axes respectively. Find the angle made by the line with the positive direction of the X-axis.",
+    "solution": "Let \\(\\alpha, \\beta, \\gamma\\) be the angles made by the line with the positive direction of X, Y and Z axes respectively. Given \\(\\beta = 45^\\circ\\) and \\(\\gamma = 60^\\circ\\). Now \\(\\cos\\beta = \\cos 45^\\circ\\) and \\(\\cos\\gamma = \\cos 60^\\circ = \\frac{1}{2}\\). \\(\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma = 1\\). \\(\\therefore \\cos^2\\alpha+\\frac{1}{2}+\\frac{1}{4} = 1\\). \\(\\therefore \\cos^2\\alpha = \\frac{1}{4}\\). \\(\\therefore \\cos\\alpha = \\pm\\frac{1}{2}\\). \\(\\therefore \\alpha = 60^\\circ\\) or \\(120^\\circ\\). There are two lines satisfying the given conditions. Their direction angles are \\(45^\\circ, 60^\\circ, 60^\\circ\\) and \\(45^\\circ, 60^\\circ, 120^\\circ\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "A line passes through the points \\((6, -7, -1)\\) and \\((2, -3, 1)\\). Find the direction ratios and the direction cosines of the line so that the angle \\(\\alpha\\) is acute.",
+    "solution": "Let A\\((6, -7, -1)\\) and B\\((2, -3, 1)\\) be the given points. So \\(\\vec{a} = 6\\hat{i}-7\\hat{j}-\\hat{k}, \\vec{b} = 2\\hat{i}-3\\hat{j}+\\hat{k}\\). \\(\\vec{AB} = \\vec{b}-\\vec{a} = (2-6)\\hat{i}+(-3+7)\\hat{j}+(1+1)\\hat{k} = -4\\hat{i}+4\\hat{j}+2\\hat{k}\\). The direction ratios of \\(\\vec{AB}\\) are \\(-4, 4, 2\\). Let the direction cosines of \\(\\vec{AB}\\) be \\(-4k, 4k, 2k\\). Then \\((-4k)^2+(4k)^2+(2k)^2 = 1\\) i.e. \\(16k^2+16k^2+4k^2 = 1\\) i.e. \\(36k^2 = 1\\) i.e. \\(k = \\pm\\frac{1}{6}\\). Since the line AB is so directed that the angle \\(\\alpha\\) which it makes with the X-axis is acute, \\(\\therefore \\cos\\alpha = -4k > 0\\). \\(\\therefore\\) As \\(k < 0\\), \\(\\therefore k = -\\frac{1}{6}\\). \\(\\therefore\\) The direction cosines of \\(\\vec{AB}\\) are \\(-4\\left(-\\frac{1}{6}\\right), 4\\left(-\\frac{1}{6}\\right), 2\\left(-\\frac{1}{6}\\right)\\) i.e. \\(\\frac{2}{3}, \\frac{-2}{3}, \\frac{-1}{3}\\)."
+  },
+  {
+    "ref": "5.3 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Prove that the altitudes of a triangle are concurrent.",
+    "solution": "Let A, B and C be the vertices of a triangle. Let AD, BE and CF be the altitudes of the triangle ABC, therefore \\(AD \\perp BC\\), \\(BE \\perp AC\\), \\(CF \\perp AB\\). Let \\(\\vec{a}, \\vec{b}, \\vec{c}, \\vec{d}, \\vec{e}, \\vec{f}\\) be the position vectors of A, B, C, D, E, F respectively. Let P be the point of intersection of the altitudes AD and BE with \\(\\vec{p}\\) as the position vector. Therefore, \\(\\vec{AP}\\perp\\vec{BC}, \\vec{BP}\\perp\\vec{AC}\\) .......(1). To show that the altitudes AD, BE and CF are concurrent, it is sufficient to show that the altitude CF passes through the point P. We will have to prove that \\(\\vec{CF}\\) and \\(\\vec{CP}\\) are collinear vectors. This can be achieved by showing \\(\\vec{CP}\\perp\\vec{AB}\\). Now from (1) we have \\(\\vec{AP}\\perp\\vec{BC}\\) and \\(\\vec{BP}\\perp\\vec{AC}\\). \\(\\therefore \\vec{AP}\\cdot\\vec{BC} = 0\\) and \\(\\vec{BP}\\cdot\\vec{AC} = 0\\). \\(\\therefore (\\vec{p}-\\vec{a})\\cdot(\\vec{c}-\\vec{b}) = 0\\) and \\((\\vec{p}-\\vec{b})\\cdot(\\vec{c}-\\vec{a}) = 0\\). \\(\\therefore \\vec{p}\\cdot\\vec{c}-\\vec{p}\\cdot\\vec{b}-\\vec{a}\\cdot\\vec{c}+\\vec{a}\\cdot\\vec{b} = 0\\) .....(2). \\(\\vec{p}\\cdot\\vec{c}-\\vec{p}\\cdot\\vec{a}-\\vec{b}\\cdot\\vec{c}+\\vec{b}\\cdot\\vec{a} = 0\\) ......(3). Therefore, subtracting equation (2) from equation (3), we get \\(-\\vec{p}\\cdot\\vec{a}+\\vec{p}\\cdot\\vec{b}-\\vec{b}\\cdot\\vec{c}+\\vec{a}\\cdot\\vec{c} = 0\\) (Since \\(\\vec{a}\\cdot\\vec{b}=\\vec{b}\\cdot\\vec{a}\\)). \\(\\therefore \\vec{p}(\\vec{b}-\\vec{a})-\\vec{c}(\\vec{b}-\\vec{a}) = 0\\). \\(\\therefore (\\vec{p}-\\vec{c})\\cdot(\\vec{b}-\\vec{a}) = 0\\). \\(\\therefore \\vec{CP}\\cdot\\vec{AB} = 0\\). \\(\\therefore \\vec{CP}\\perp\\vec{AB}\\). Hence the proof."
+  },
+  {
+    "ref": "5.3 Ex.Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find two unit vectors each of which is perpendicular to both \\(\\vec{u}\\) and \\(\\vec{v}\\), where \\(\\vec{u} = 2\\hat{i}+\\hat{j}-2\\hat{k}, \\vec{v} = \\hat{i}+2\\hat{j}-2\\hat{k}\\)."
+  },
+  {
+    "ref": "5.3 Ex.Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are two vectors perpendicular to each other, prove that \\((\\vec{a}+\\vec{b})^2 = (\\vec{a}-\\vec{b})^2\\)."
+  },
+  {
+    "ref": "5.3 Ex.Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(c\\) so that for all real \\(x\\) the vectors \\(xc\\hat{i}-6\\hat{j}+3\\hat{k}\\) and \\(x\\hat{i}+2\\hat{j}+2cx\\hat{k}\\) make an obtuse angle."
+  },
+  {
+    "ref": "5.3 Ex.Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Show that the sum of the length of projections of \\(p\\hat{i}+q\\hat{j}+r\\hat{k}\\) on the coordinate axes, where \\(p=2, q=3\\) and \\(r=4\\), is 9."
+  },
+  {
+    "ref": "5.3 Ex.Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that all sides of a quadrilateral are equal in length and opposite sides are parallel. Use vector methods to show that the diagonals are perpendicular."
+  },
+  {
+    "ref": "5.3 Ex.Q6 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Determine whether \\(\\vec{a}\\) and \\(\\vec{b}\\) are orthogonal, parallel or neither.",
+    "setLabel": "Ex.Q6",
+    "stem": "\\(\\vec{a} = -9\\hat{i}+6\\hat{j}+15\\hat{k}, \\vec{b} = 6\\hat{i}-4\\hat{j}-10\\hat{k}\\)"
+  },
+  {
+    "ref": "5.3 Ex.Q6 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Determine whether \\(\\vec{a}\\) and \\(\\vec{b}\\) are orthogonal, parallel or neither.",
+    "setLabel": "Ex.Q6",
+    "stem": "\\(\\vec{a} = 2\\hat{i}+3\\hat{j}-\\hat{k}, \\vec{b} = 5\\hat{i}-2\\hat{j}+4\\hat{k}\\)"
+  },
+  {
+    "ref": "5.3 Ex.Q6 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Determine whether \\(\\vec{a}\\) and \\(\\vec{b}\\) are orthogonal, parallel or neither.",
+    "setLabel": "Ex.Q6",
+    "stem": "\\(\\vec{a} = -\\frac{3}{5}\\hat{i}+\\frac{1}{2}\\hat{j}+\\frac{1}{3}\\hat{k}, \\vec{b} = 5\\hat{i}+4\\hat{j}+3\\hat{k}\\)"
+  },
+  {
+    "ref": "5.3 Ex.Q6 iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Determine whether \\(\\vec{a}\\) and \\(\\vec{b}\\) are orthogonal, parallel or neither.",
+    "setLabel": "Ex.Q6",
+    "stem": "\\(\\vec{a} = 4\\hat{i}-\\hat{j}+6\\hat{k}, \\vec{b} = 5\\hat{i}-2\\hat{j}+4\\hat{k}\\)"
+  },
+  {
+    "ref": "5.3 Ex.Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the angle P of the triangle whose vertices are P\\((0, -1, -2)\\), Q\\((3, 1, 4)\\) and R\\((5, 7, 1)\\)."
+  },
+  {
+    "ref": "5.3 Ex.Q8 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\hat{p}, \\hat{q}\\) and \\(\\hat{r}\\) are unit vectors such that \\(\\hat{p}+\\hat{r}=\\hat{q}\\), find (see fig. 5.50).",
+    "setLabel": "Ex.Q8",
+    "stem": "\\(\\hat{p}\\cdot\\hat{q}\\)"
+  },
+  {
+    "ref": "5.3 Ex.Q8 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\hat{p}, \\hat{q}\\) and \\(\\hat{r}\\) are unit vectors such that \\(\\hat{p}+\\hat{r}=\\hat{q}\\), find (see fig. 5.50).",
+    "setLabel": "Ex.Q8",
+    "stem": "\\(\\hat{p}\\cdot\\hat{r}\\)"
+  },
+  {
+    "ref": "5.3 Ex.Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Prove by vector method that the angle subtended on a semicircle is a right angle."
+  },
+  {
+    "ref": "5.3 Ex.Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If a vector has direction angles \\(45^\\circ\\) and \\(60^\\circ\\), find the third direction angle."
+  },
+  {
+    "ref": "5.3 Ex.Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If a line makes angles \\(90^\\circ, 135^\\circ, 45^\\circ\\) with the X, Y and Z axes respectively, then find its direction cosines."
+  },
+  {
+    "ref": "5.4 SolvedEx.1 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the cross product \\(\\vec{a} \\times \\vec{b}\\) and verify that it is orthogonal (perpendicular) to both \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "SolvedEx.1",
+    "stem": "\\(\\vec{a} = \\hat{i} + \\hat{j} - \\hat{k}\\), \\(\\vec{b} = 2\\hat{i} + 4\\hat{j} + 6\\hat{k}\\)",
+    "solution": "\\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&1&-1\\\\2&4&6\\end{vmatrix} = \\begin{vmatrix}1&-1\\\\4&6\\end{vmatrix}\\hat{i} - \\begin{vmatrix}1&-1\\\\2&6\\end{vmatrix}\\hat{j} + \\begin{vmatrix}1&1\\\\2&4\\end{vmatrix}\\hat{k}\\) \\(= [6-(-4)]\\hat{i} - [6-(-2)]\\hat{j} + (4-2)\\hat{k} = 10\\hat{i} - 8\\hat{j} + 2\\hat{k}\\). Now \\(\\vec{a}\\times\\vec{b}\\cdot\\vec{a} = (10\\hat{i}-8\\hat{j}+2\\hat{k})\\cdot(\\hat{i}+\\hat{j}-\\hat{k}) = 10-8-2=0\\) and \\(\\vec{a}\\times\\vec{b}\\cdot\\vec{b} = (10\\hat{i}-8\\hat{j}+2\\hat{k})\\cdot(2\\hat{i}+4\\hat{j}+6\\hat{k}) = 20-32+12=0\\). So \\(\\vec{a}\\times\\vec{b}\\) is orthogonal to both \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.1 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the cross product \\(\\vec{a} \\times \\vec{b}\\) and verify that it is orthogonal (perpendicular) to both \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "SolvedEx.1",
+    "stem": "\\(\\vec{a} = \\hat{i} + 3\\hat{j} - 2\\hat{k}\\), \\(\\vec{b} = -\\hat{i} + 5\\hat{k}\\)",
+    "solution": "\\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&3&-2\\\\-1&0&5\\end{vmatrix} = \\begin{vmatrix}3&-2\\\\0&5\\end{vmatrix}\\hat{i} - \\begin{vmatrix}1&-2\\\\-1&5\\end{vmatrix}\\hat{j} + \\begin{vmatrix}1&3\\\\-1&0\\end{vmatrix}\\hat{k} = (15-0)\\hat{i} - (5-2)\\hat{j} + [0-(-3)]\\hat{k} = 15\\hat{i}-3\\hat{j}+3\\hat{k}\\). Now \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=(15\\hat{i}-3\\hat{j}+3\\hat{k})\\cdot(\\hat{i}+3\\hat{j}-2\\hat{k})=15-9-6=0\\), and \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=(15\\hat{i}-3\\hat{j}+3\\hat{k})\\cdot(-\\hat{i}+5\\hat{k})=-15+0+15=0\\), so \\(\\vec{a}\\times\\vec{b}\\) is orthogonal to both \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find all vectors of magnitude \\(10\\sqrt{3}\\) that are perpendicular to the plane of \\(\\hat{i}+2\\hat{j}+\\hat{k}\\) and \\(-\\hat{i}+3\\hat{j}+4\\hat{k}\\).",
+    "solution": "Let \\(\\vec{a}=\\hat{i}+2\\hat{j}+\\hat{k}\\) and \\(\\vec{b}=-\\hat{i}+3\\hat{j}+4\\hat{k}\\). Then \\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&1\\\\-1&3&4\\end{vmatrix} = \\hat{i}(8-3)-\\hat{j}(4+1)+\\hat{k}(3+2)=5\\hat{i}-5\\hat{j}+5\\hat{k}=\\vec{m}\\) (say). \\(\\therefore |\\vec{a}\\times\\vec{b}|=\\sqrt{(5)^2+(-5)^2+(5)^2}=\\sqrt{3(5)^2}=5\\sqrt{3}=|\\vec{m}|\\). Therefore, the unit vector perpendicular to the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) is given by \\(\\hat{m}=\\dfrac{\\vec{m}}{|\\vec{m}|}=\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}=\\dfrac{5\\hat{i}-5\\hat{j}+5\\hat{k}}{5\\sqrt{3}}=\\dfrac{\\hat{i}-\\hat{j}+\\hat{k}}{\\sqrt{3}}\\). Hence, the vectors of magnitude \\(10\\sqrt{3}\\) that are perpendicular to the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) are \\(\\pm 10\\sqrt{3}\\,\\hat{m}=\\pm 10\\sqrt{3}\\left(\\dfrac{\\hat{i}-\\hat{j}+\\hat{k}}{\\sqrt{3}}\\right)\\), i.e. \\(\\pm 10(\\hat{i}-\\hat{j}+\\hat{k})\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{u}+\\vec{v}+\\vec{w}=\\vec{0}\\), show that \\(\\vec{u}\\times\\vec{v}=\\vec{v}\\times\\vec{w}=\\vec{w}\\times\\vec{u}\\).",
+    "solution": "Suppose that \\(\\vec{u}+\\vec{v}+\\vec{w}=\\vec{0}\\). Then \\((\\vec{u}+\\vec{v}+\\vec{w})\\times\\vec{v}=\\vec{0}\\times\\vec{v}\\) i.e. \\(\\vec{u}\\times\\vec{v}+\\vec{v}\\times\\vec{v}+\\vec{w}\\times\\vec{v}=\\vec{0}\\). But \\(\\vec{v}\\times\\vec{v}=\\vec{0}\\). Thus \\(\\vec{u}\\times\\vec{v}+\\vec{w}\\times\\vec{v}=\\vec{0}\\). Thus \\(\\vec{u}\\times\\vec{v}=-\\vec{w}\\times\\vec{v}=\\vec{v}\\times\\vec{w}\\). Similarly, we have \\(\\vec{v}\\times\\vec{w}=\\vec{w}\\times\\vec{u}\\). Hence \\(\\vec{u}\\times\\vec{v}=\\vec{v}\\times\\vec{w}=\\vec{w}\\times\\vec{u}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}=3\\hat{i}-\\hat{j}+2\\hat{k}\\), \\(\\vec{b}=2\\hat{i}+\\hat{j}-\\hat{k}\\) and \\(\\vec{c}=\\hat{i}-2\\hat{j}+2\\hat{k}\\), find \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\) and \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) and hence show that \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\neq\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\).",
+    "solution": "\\(\\vec{a}\\times\\vec{b}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\3&-1&2\\\\2&1&-1\\end{vmatrix}=-\\hat{i}+7\\hat{j}+5\\hat{k}\\). \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}=(-\\hat{i}+7\\hat{j}+5\\hat{k})\\times(\\hat{i}-2\\hat{j}+2\\hat{k})=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-1&7&5\\\\1&-2&2\\end{vmatrix}=24\\hat{i}+7\\hat{j}-5\\hat{k}\\) ....(1). Now, \\(\\vec{b}\\times\\vec{c}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&1&-1\\\\1&-2&2\\end{vmatrix}=-5\\hat{j}-5\\hat{k}\\). \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})=(3\\hat{i}-\\hat{j}+2\\hat{k})\\times(-5\\hat{j}-5\\hat{k})=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\3&-1&2\\\\0&-5&-5\\end{vmatrix}=15(\\hat{i}+\\hat{j}-\\hat{k})\\) ....(2). From (1) and (2), we conclude that \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\neq\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the area of the triangle with vertices (1,2,0), (1,0,2), and (0,3,1).",
+    "solution": "If \\(A=(1,2,0)\\), \\(B=(1,0,2)\\) and \\(C=(0,3,1)\\), then \\(\\overline{AB}=-2\\hat{j}+2\\hat{k}\\), \\(\\overline{AC}=-\\hat{i}+\\hat{j}+\\hat{k}\\) and the area of triangle ABC is \\(\\dfrac{1}{2}|\\overline{AB}\\times\\overline{AC}|\\). \\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\0&-2&2\\\\-1&1&1\\end{vmatrix}=-4\\hat{i}-2\\hat{j}-2\\hat{k}\\). \\(\\dfrac{|\\overline{AB}\\times\\overline{AC}|}{2}=\\dfrac{|-4\\hat{i}-2\\hat{j}-2\\hat{k}|}{2}=\\dfrac{\\sqrt{16+4+4}}{2}=\\dfrac{\\sqrt{24}}{2}=\\dfrac{2\\sqrt{6}}{2}=\\sqrt{6}\\) sq. units."
+  },
+  {
+    "ref": "5.4 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the area of the parallelogram with vertices K(1, 2, 3), L(1, 3, 6), M(3, 8, 6) and N(3, 7, 3).",
+    "solution": "The parallelogram is determined by the vectors \\(\\overline{KL}=\\hat{j}+3\\hat{k}\\) and \\(\\overline{KN}=2\\hat{i}+5\\hat{j}\\), so the area of parallelogram KLMN is \\(|\\overline{KL}\\times\\overline{KN}|=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\0&1&3\\\\2&5&0\\end{vmatrix}=|(-15)\\hat{i}-(-6)\\hat{j}+(-2)\\hat{k}|=|-15\\hat{i}+6\\hat{j}-2\\hat{k}|=\\sqrt{265}\\) square units."
+  },
+  {
+    "ref": "5.4 SolvedEx.7 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find \\(|\\vec{u}\\times\\vec{v}|\\) if",
+    "setLabel": "SolvedEx.7",
+    "stem": "\\(|\\vec{u}|=4\\), \\(|\\vec{v}|=5\\), with the angle between \\(\\vec{u}\\) and \\(\\vec{v}\\) equal to \\(45°\\) (as shown in Fig 5.54(i)).",
+    "solution": "We have \\(|\\vec{u}\\times\\vec{v}|=|\\vec{u}||\\vec{v}|\\sin\\theta=(4)(5)\\sin 45° = 20\\cdot\\dfrac{1}{\\sqrt{2}}=10\\sqrt{2}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.7 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find \\(|\\vec{u}\\times\\vec{v}|\\) if",
+    "setLabel": "SolvedEx.7",
+    "stem": "\\(|\\vec{u}|=12\\), \\(|\\vec{v}|=16\\), with \\(\\vec{u}\\) and \\(\\vec{v}\\) drawn as in Fig 5.54(ii), where the marked angle between the two directed segments is \\(120°\\).",
+    "solution": "If we sketch \\(\\vec{u}\\) and \\(\\vec{v}\\) starting from the same initial point, we see that the angle between them is \\(60°\\). We have \\(|\\vec{u}\\times\\vec{v}|=|\\vec{u}||\\vec{v}|\\sin\\theta=(12)(16)\\sin 60°=192\\cdot\\dfrac{\\sqrt{3}}{2}=96\\sqrt{3}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\((\\vec{a}-\\vec{b})\\times(\\vec{a}+\\vec{b}) = 2(\\vec{a}\\times\\vec{b})\\).",
+    "solution": "Using distributive property, \\((\\vec{a}-\\vec{b})\\times(\\vec{a}+\\vec{b})=\\vec{a}\\times\\vec{a}+\\vec{a}\\times\\vec{b}-\\vec{b}\\times\\vec{a}-\\vec{b}\\times\\vec{b}\\) (\\(\\because \\vec{a}\\times\\vec{b}=-\\vec{b}\\times\\vec{a}\\)) \\(=\\vec{0}+\\vec{a}\\times\\vec{b}+\\vec{a}\\times\\vec{b}-\\vec{0}\\) (\\(\\because \\vec{a}\\times\\vec{a}=\\vec{0}\\)) \\(=2(\\vec{a}\\times\\vec{b})\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Show that the three points with position vectors \\(3\\hat{i}-2\\hat{j}+4\\hat{k}\\), \\(\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(-\\hat{i}+4\\hat{j}-2\\hat{k}\\) respectively are collinear.",
+    "solution": "Let A, B, C be the given three points. \\(\\vec{a}=3\\hat{i}-2\\hat{j}+4\\hat{k}\\), \\(\\vec{b}=\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(\\vec{c}=-\\hat{i}+4\\hat{j}-2\\hat{k}\\). To show that points A, B, C are collinear. Now \\(\\overline{AB}=\\vec{b}-\\vec{a}=-2\\hat{i}+3\\hat{j}-3\\hat{k}\\), \\(\\overline{AC}=\\vec{c}-\\vec{a}=-4\\hat{i}+6\\hat{j}-6\\hat{k}\\). \\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-2&3&-3\\\\-4&6&-6\\end{vmatrix}=(-18+18)\\hat{i}-(12-12)\\hat{j}+(-12+12)\\hat{k}=0\\hat{i}-0\\hat{j}+0\\hat{k}=\\vec{0}\\). Vectors \\(\\overline{AB}\\) and \\(\\overline{AC}\\) are collinear, but the point A is common, therefore points A, B, C are collinear."
+  },
+  {
+    "ref": "5.4 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find a unit vector perpendicular to \\(\\overline{PQ}\\) and \\(\\overline{PR}\\) where \\(P\\equiv(2,2,0)\\), \\(Q\\equiv(0,3,5)\\) and \\(R\\equiv(5,0,3)\\). Also find the sine of angle between \\(\\overline{PQ}\\) and \\(\\overline{PR}\\).",
+    "solution": "\\(\\overline{PQ}=\\vec{q}-\\vec{p}=-2\\hat{i}+\\hat{j}+5\\hat{k}\\) and \\(\\overline{PR}=\\vec{r}-\\vec{p}=3\\hat{i}-2\\hat{j}+3\\hat{k}\\). Now \\(|\\overline{PQ}|=\\sqrt{4+1+25}=\\sqrt{30}\\) and \\(|\\overline{PR}|=\\sqrt{9+4+9}=\\sqrt{22}\\). \\(\\therefore \\overline{PQ}\\times\\overline{PR}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-2&1&5\\\\3&-2&3\\end{vmatrix}=(3+10)\\hat{i}-(-6-15)\\hat{j}+(4-3)\\hat{k}=13\\hat{i}+21\\hat{j}+\\hat{k}\\). \\(\\therefore |\\overline{PQ}\\times\\overline{PR}|=\\sqrt{169+441+1}=\\sqrt{611}\\). If \\(\\hat{n}\\) is a unit vector perpendicular to \\(\\overline{PQ}\\) and \\(\\overline{PR}\\), then \\(\\hat{n}=\\dfrac{\\overline{PQ}\\times\\overline{PR}}{|\\overline{PQ}\\times\\overline{PR}|}=\\dfrac{13\\hat{i}+21\\hat{j}+\\hat{k}}{\\sqrt{611}}\\). If \\(\\theta\\) is the angle between \\(\\overline{PQ}\\) and \\(\\overline{PR}\\) then \\(\\sin\\theta=\\dfrac{|\\overline{PQ}\\times\\overline{PR}|}{|\\overline{PQ}||\\overline{PR}|}=\\dfrac{\\sqrt{611}}{\\sqrt{30}\\sqrt{22}}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}|=5\\), \\(|\\vec{b}|=13\\) and \\(|\\vec{a}\\times\\vec{b}|=25\\), find \\(\\vec{a}\\cdot\\vec{b}\\).",
+    "solution": "Given \\(|\\vec{a}\\times\\vec{b}|=25\\). \\(\\therefore |\\vec{a}|\\cdot|\\vec{b}|\\sin\\theta=25\\) (\\(\\theta\\) is the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\)). \\(5\\times 13\\sin\\theta=25\\) \\(\\therefore \\sin\\theta=\\dfrac{25}{5\\times13}=\\dfrac{5}{13}\\). \\(\\therefore \\cos\\theta=\\sqrt{1-\\sin^2\\theta}=\\sqrt{1-\\dfrac{25}{169}}=\\pm\\dfrac{12}{13}\\). \\(\\therefore \\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|\\cos\\theta=5\\times13\\times\\left(\\pm\\dfrac{12}{13}\\right)=\\pm 60\\). Thus \\(\\vec{a}\\cdot\\vec{b}=60\\) if \\(0<\\theta<\\pi/2\\) and \\(\\vec{a}\\cdot\\vec{b}=-60\\) if \\(\\pi/2<\\theta<\\pi\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Direction ratios of two lines satisfy the relation \\(2a-b+2c=0\\) and \\(ab+bc+ca=0\\). Show that the lines are perpendicular.",
+    "solution": "Given equations are \\(2a-b+2c=0\\) i.e. \\(b=2a+2c\\) ....(I) and \\(ab+bc+ca=0\\) ....(II). Put \\(b=2a+2c\\) in equation (II), we get \\(a(2a+2c)+(2a+2c)c+ca=0\\) i.e. \\(2a^2+2ac+2ac+2c^2+ac=0\\) i.e. \\(2a^2+5ac+2c^2=0\\) \\(\\therefore (2a+c)(a+2c)=0\\). Case I: \\(2a+c=0 \\therefore 2a=-c\\) ...(III). Using this, equation (I) becomes \\(b=-c+2c=c\\) i.e. \\(b=c\\) ...(IV). From (III) and (IV) we get \\(\\dfrac{a}{-1/2}=\\dfrac{b}{1}=\\dfrac{c}{1}\\). Direction ratios of the 1st line are \\(-\\dfrac{1}{2},1,1\\) i.e. \\(-1,2,2=\\vec{p}\\) (say). Case II: \\(a+2c=0 \\therefore a=-2c\\) ...(V). Using this, equation (I) becomes \\(b=2(-2c)+2c=-2c\\) i.e. \\(b=-2c\\) ...(VI). From (V) and (VI) we get \\(\\dfrac{a}{-2}=\\dfrac{b}{-2}=\\dfrac{c}{1}\\). \\(\\therefore\\) Direction ratios of the second line are \\(-2,-2,1\\) i.e. \\(2,2,-1=\\vec{q}\\) (say). Now \\(\\vec{p}\\cdot\\vec{q}=(-1\\hat{i}+2\\hat{j}+2\\hat{k})\\cdot(2\\hat{i}+2\\hat{j}-\\hat{k})=-2+4-2=0\\). \\(\\therefore\\) The lines are perpendicular."
+  },
+  {
+    "ref": "5.4 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the direction cosines of the line which is perpendicular to the lines with direction ratios \\(-1, 2, 2\\) and \\(0, 2, 1\\).",
+    "solution": "Given \\(-1,2,2\\) and \\(0,2,1\\) be direction ratios of lines \\(L_1\\) and \\(L_2\\). Let \\(l,m,n\\) be direction cosines of line \\(L\\). As line \\(L\\) is perpendicular to lines \\(L_1\\) and \\(L_2\\), then \\(-l+2m+2n=0\\) and \\(2m+n=0\\). From \\(2m+n=0\\), \\(2m=-n\\), \\(\\therefore \\dfrac{m}{-1}=\\dfrac{n}{2}\\) ....(I). And \\(-l+2m+2n=0\\) becomes \\(-l-n+2n=0\\) i.e. \\(-l+n=0\\) i.e. \\(l=n\\), so \\(\\dfrac{l}{2}=\\dfrac{n}{2}\\) ....(II). From (I) and (II), \\(\\dfrac{l}{2}=\\dfrac{m}{-1}=\\dfrac{n}{2}\\). The direction ratios of line L are \\(2,-1,2\\) and the direction cosines of line L are \\(\\dfrac{2}{3},\\dfrac{-1}{3},\\dfrac{2}{3}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If M is the foot of the perpendicular drawn from A(4, 3, 2) on the line joining the points B(2, 4, 1) and C (4, 5, 3), find the coordinates of M.",
+    "solution": "Let the point M divide BC internally in the ratio \\(k:1\\). \\(\\therefore M\\equiv\\left(\\dfrac{4k+2}{k+1},\\dfrac{5k+4}{k+1},\\dfrac{3k+1}{k+1}\\right)\\) ....(I). \\(\\therefore\\) Direction ratios of AM are \\(\\dfrac{4k+2}{k+1}-4,\\dfrac{5k+4}{k+1}-3,\\dfrac{3k+1}{k+1}-2=\\vec{p}\\) (say), i.e. \\(\\dfrac{-2}{k+1},\\dfrac{2k+1}{k+1},\\dfrac{k-1}{k+1}\\), and direction ratios of BC are \\(4-2,5-4,3-1\\) i.e. \\(2,1,2=\\vec{q}\\) (say). Since AM is perpendicular to BC, \\(\\vec{p}\\cdot\\vec{q}=0\\) i.e. \\(2\\cdot\\dfrac{(-2)}{k+1}+1\\cdot\\dfrac{(2k+1)}{k+1}+2\\cdot\\dfrac{(k-1)}{k+1}=0\\) i.e. \\(-4+2k+1+2k-2=0\\) \\(\\therefore 4k-5=0\\) \\(\\therefore k=\\dfrac{5}{4}\\). From (I), \\(M\\equiv\\left(\\dfrac{28}{9},\\dfrac{41}{9},\\dfrac{19}{9}\\right)\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=2\\hat{i}+3\\hat{j}-\\hat{k}\\), \\(\\vec{b}=\\hat{i}-4\\hat{j}+2\\hat{k}\\) find \\((\\vec{a}+\\vec{b})\\times(\\vec{a}-\\vec{b})\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find unit vectors perpendicular to the vectors \\(\\hat{j}+2\\hat{k}\\) and \\(\\hat{i}+\\hat{j}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}\\cdot\\vec{b} = \\sqrt{3}\\) and \\(\\vec{a}\\times\\vec{b} = 2\\hat{i}+\\hat{j}+2\\hat{k}\\), find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=2\\hat{i}+\\hat{j}-3\\hat{k}\\) and \\(\\vec{b}=\\hat{i}-2\\hat{j}+\\hat{k}\\), find vectors of magnitude 5 perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q5 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find",
+    "setLabel": "Ex.Q5",
+    "stem": "\\(\\vec{u}\\cdot\\vec{v}\\) if \\(|\\vec{u}|=2\\), \\(|\\vec{v}|=5\\), \\(|\\vec{u}\\times\\vec{v}|=8\\)"
+  },
+  {
+    "ref": "5.4 Ex.Q5 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find",
+    "setLabel": "Ex.Q5",
+    "stem": "\\(|\\vec{u}\\times\\vec{v}|\\) if \\(|\\vec{u}|=10\\), \\(|\\vec{v}|=2\\), \\(\\vec{u}\\cdot\\vec{v}=12\\)"
+  },
+  {
+    "ref": "5.4 Ex.Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(2(\\vec{a}-\\vec{b})\\times 2(\\vec{a}+\\vec{b}) = 8(\\vec{a}\\times\\vec{b})\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=\\hat{i}-2\\hat{j}+3\\hat{k}\\), \\(\\vec{b}=4\\hat{i}-3\\hat{j}+\\hat{k}\\) and \\(\\vec{c}=\\hat{i}-\\hat{j}+2\\hat{k}\\) verify that \\(\\vec{a}\\times(\\vec{b}+\\vec{c}) = \\vec{a}\\times\\vec{b}+\\vec{a}\\times\\vec{c}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the area of the parallelogram whose adjacent sides are the vectors \\(\\vec{a}=2\\hat{i}-2\\hat{j}+\\hat{k}\\) and \\(\\vec{b}=\\hat{i}-3\\hat{j}-3\\hat{k}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Show that vector area of a quadrilateral \\(ABCD\\) is \\(\\dfrac{1}{2}(\\overline{AC}\\times\\overline{BD})\\), where AC and BD are its diagonals."
+  },
+  {
+    "ref": "5.5 SolvedEx.1 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "context": "Find the volume of the parallelepiped determined by the vectors \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\).",
+    "setLabel": "SolvedEx.1",
+    "stem": "\\(\\vec{a}=\\hat{i}+2\\hat{j}+3\\hat{k}, \\vec{b}=-\\hat{i}+\\hat{j}+2\\hat{k}, \\vec{c}=2\\hat{i}+\\hat{j}+4\\hat{k}\\)",
+    "solution": "The volume of the parallelepiped determined by \\(\\vec{a}, \\vec{b}, \\vec{c}\\) is the magnitude of their scalar triple product \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\).\n\n\\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = \\begin{vmatrix} 1 & 2 & 3 \\\\ -1 & 1 & 2 \\\\ 2 & 1 & 4 \\end{vmatrix} = 1\\begin{vmatrix}1&2\\\\1&4\\end{vmatrix} - 2\\begin{vmatrix}-1&2\\\\2&4\\end{vmatrix} + 3\\begin{vmatrix}-1&1\\\\2&1\\end{vmatrix} = 1(4-2) - 2(-4-4) + 3(-1-2) = 9\\)\n\nThus the volume of the parallelepiped is 9 cubic units."
+  },
+  {
+    "ref": "5.5 SolvedEx.1 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "context": "Find the volume of the parallelepiped determined by the vectors \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\).",
+    "setLabel": "SolvedEx.1",
+    "stem": "\\(\\vec{a}=\\hat{i}+\\hat{j}, \\vec{b}=\\hat{j}+\\hat{k}, \\vec{c}=\\hat{i}+\\hat{j}+\\hat{k}\\)",
+    "solution": "\\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = \\begin{vmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} = 1\\begin{vmatrix}1&1\\\\1&1\\end{vmatrix} - 1\\begin{vmatrix}0&1\\\\1&1\\end{vmatrix} + 0\\begin{vmatrix}0&1\\\\1&1\\end{vmatrix} = 0+1+0 = 1\\)\n\nSo the volume of the parallelepiped is 1 cubic unit."
+  },
+  {
+    "ref": "5.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Find the scalar triple product \\([\\vec{u}\\ \\vec{v}\\ \\vec{w}]\\) and verify that the vectors \\(\\vec{u}=\\hat{i}+5\\hat{j}-2\\hat{k}, \\vec{v}=3\\hat{i}-\\hat{j}\\) and \\(\\vec{w}=5\\hat{i}+9\\hat{j}-4\\hat{k}\\) are coplanar.",
+    "solution": "\\(\\vec{u}\\cdot(\\vec{v}\\times\\vec{w}) = \\begin{vmatrix} 1 & 5 & -2 \\\\ 3 & -1 & 0 \\\\ 5 & 9 & -4 \\end{vmatrix} = 1\\begin{vmatrix}-1&0\\\\9&-4\\end{vmatrix} - 5\\begin{vmatrix}3&0\\\\5&-4\\end{vmatrix} + (-2)\\begin{vmatrix}3&-1\\\\5&9\\end{vmatrix} = 4+60-64 = 0\\)\n\ni.e. the volume of the parallelepiped is 0, and thus these three vectors are coplanar."
+  },
+  {
+    "ref": "5.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Find the vector which is orthogonal to the vector \\(3\\hat{i}+2\\hat{j}+6\\hat{k}\\) and is coplanar with the vectors \\(2\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(\\hat{i}-\\hat{j}+\\hat{k}\\).",
+    "solution": "Let \\(\\vec{a}=3\\hat{i}+2\\hat{j}+6\\hat{k}, \\vec{b}=2\\hat{i}+\\hat{j}+\\hat{k}, \\vec{c}=\\hat{i}-\\hat{j}+\\hat{k}\\).\n\nThen by definition, a vector orthogonal to \\(\\vec{a}\\) and coplanar to \\(\\vec{b}\\) and \\(\\vec{c}\\) is given by \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c}\\)\n\n\\(\\vec{a}\\cdot\\vec{c} = 3(1)+2(-1)+6(1) = 7\\), \\(\\vec{a}\\cdot\\vec{b} = 3(2)+2(1)+6(1) = 14\\)\n\n\\(= 7(2\\hat{i}+\\hat{j}+\\hat{k}) - 14(\\hat{i}-\\hat{j}+\\hat{k}) = 21\\hat{j} - 7\\hat{k}\\)"
+  },
+  {
+    "ref": "5.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}=\\hat{i}+\\hat{j}+\\hat{k}, \\vec{a}\\cdot\\vec{b}=1\\) and \\(\\vec{a}\\times\\vec{b}=\\hat{j}-\\hat{k}\\) then prove that \\(\\vec{b}=\\hat{i}\\).",
+    "solution": "\\((\\vec{a}\\times\\vec{b})\\times\\vec{a} = (\\vec{a}\\cdot\\vec{a})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{a}\\)\n\n\\(\\vec{a}\\cdot\\vec{a} = |\\vec{a}|^2 = 1+1+1 = 3\\) and \\(\\vec{a}\\cdot\\vec{b} = 1\\)\n\n\\(\\therefore (\\hat{j}-\\hat{k})\\times(\\hat{i}+\\hat{j}+\\hat{k}) = 3(\\vec{b}) - (\\hat{i}+\\hat{j}+\\hat{k})\\)\n\n\\(i.e. \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 0 & 1 & -1 \\\\ 1 & 1 & 1 \\end{vmatrix} = 3(\\vec{b}) - (\\hat{i}+\\hat{j}+\\hat{k})\\)\n\n\\((2\\hat{i}-\\hat{j}-\\hat{k}) + (\\hat{i}+\\hat{j}+\\hat{k}) = 3\\vec{b}\\)\n\n\\(i.e.\\ \\hat{i} = \\vec{b}\\)"
+  },
+  {
+    "ref": "5.5 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Prove that: \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) + \\vec{b}\\times(\\vec{c}\\times\\vec{a}) + \\vec{c}\\times(\\vec{a}\\times\\vec{b}) = \\vec{0}\\)",
+    "solution": "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) + \\vec{b}\\times(\\vec{c}\\times\\vec{a}) + \\vec{c}\\times(\\vec{a}\\times\\vec{b})\\)\n\n\\(= \\left[(\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c}\\right] + \\left[(\\vec{b}\\cdot\\vec{a})\\vec{c} - (\\vec{b}\\cdot\\vec{c})\\vec{a}\\right] + \\left[(\\vec{c}\\cdot\\vec{b})\\vec{a} - (\\vec{c}\\cdot\\vec{a})\\vec{b}\\right]\\)\n\n\\((\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c} + (\\vec{a}\\cdot\\vec{b})\\vec{c} - (\\vec{b}\\cdot\\vec{c})\\vec{a} + (\\vec{b}\\cdot\\vec{c})\\vec{a} - (\\vec{a}\\cdot\\vec{c})\\vec{b} = \\vec{0}\\)"
+  },
+  {
+    "ref": "5.5 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Show that the points \\(A(2,-1,0), B(-3,0,4), C(-1,-1,4)\\) and \\(D(0,-5,2)\\) are non coplanar.",
+    "solution": "Let \\(\\vec{a}=2\\hat{i}-\\hat{j}, \\vec{b}=-3\\hat{i}+4\\hat{k}, \\vec{c}=-\\hat{i}-\\hat{j}+4\\hat{k}, \\vec{d}=-5\\hat{j}+2\\hat{k}\\) be the position vectors of A, B, C, D respectively.\n\n\\(\\overline{AB} = \\vec{b}-\\vec{a} = -5\\hat{i}+\\hat{j}+4\\hat{k}\\)\n\n\\(\\overline{AC} = \\vec{c}-\\vec{a} = -3\\hat{i}+4\\hat{k}\\)\n\n\\(\\overline{AD} = \\vec{d}-\\vec{a} = -2\\hat{i}-4\\hat{j}+2\\hat{k}\\)\n\nConsider: \\(\\overline{AB}\\cdot(\\overline{AC}\\times\\overline{AD}) = \\begin{vmatrix} -5 & 1 & 4 \\\\ -3 & 0 & 4 \\\\ -2 & -4 & 2 \\end{vmatrix}\\)\n\n\\(= -5(0+16) - 1(-6+8) + 4(12)\\)\n\n\\(= -80 - 2 + 48 = 34 \\neq 0\\)\n\nTherefore, the points A, B, C, D are non-coplanar."
+  },
+  {
+    "ref": "5.5 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are non coplanar vectors, then show that the four points \\(2\\vec{a}+\\vec{b}, \\vec{a}+2\\vec{b}+\\vec{c}, 4\\vec{a}-2\\vec{b}-\\vec{c}\\) and \\(3\\vec{a}+4\\vec{b}-5\\vec{c}\\) are coplanar.",
+    "solution": "Let the 4 points be \\(P(\\vec{p}), Q(\\vec{q}), R(\\vec{r})\\) and \\(S(\\vec{s})\\) where\n\n\\(\\vec{p} = 2\\vec{a}+\\vec{b}, \\vec{q} = \\vec{a}+2\\vec{b}+\\vec{c}, \\vec{r} = 4\\vec{a}-2\\vec{b}-\\vec{c}, \\vec{s} = 3\\vec{a}+4\\vec{b}-5\\vec{c}\\)\n\nLet us form 3 coinitial vectors:\n\n\\(\\overline{PQ} = \\vec{q}-\\vec{p} = (\\vec{a}+2\\vec{b}+\\vec{c}) - (2\\vec{a}+\\vec{b}) = -\\vec{a}+\\vec{b}+\\vec{c}\\)\n\n\\(\\overline{PR} = \\vec{r}-\\vec{p} = (4\\vec{a}-2\\vec{b}-\\vec{c}) - (2\\vec{a}+\\vec{b}) = 2\\vec{a}-3\\vec{b}-\\vec{c}\\)\n\n\\(\\overline{PS} = \\vec{s}-\\vec{p} = (3\\vec{a}+4\\vec{b}-5\\vec{c}) - (2\\vec{a}+\\vec{b}) = \\vec{a}+3\\vec{b}-5\\vec{c}\\)\n\nP, Q, R, S are coplanar if and only if these three vectors \\(\\overline{PQ}, \\overline{PR}\\) and \\(\\overline{PS}\\) are also coplanar; this is possible only if \\(\\overline{PQ}\\cdot(\\overline{PR}\\times\\overline{PS}) = 0\\)\n\n\\(\\overline{PQ}\\cdot(\\overline{PR}\\times\\overline{PS}) = \\begin{vmatrix} -1 & 1 & 1 \\\\ 2 & -3 & -1 \\\\ 1 & 3 & -5 \\end{vmatrix} = -1(15+3) - 1(-10+1) + 1(6+3) = -18+9+9 = 0\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\), if \\(\\vec{a}=3\\hat{i}-\\hat{j}+4\\hat{k}, \\vec{b}=2\\hat{i}+3\\hat{j}-\\hat{k}\\) and \\(\\vec{c}=-5\\hat{i}+2\\hat{j}+3\\hat{k}\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "If the vectors \\(3\\hat{i}+5\\hat{k}, 4\\hat{i}+2\\hat{j}-3\\hat{k}\\) and \\(3\\hat{i}+\\hat{j}+4\\hat{k}\\) are co-terminus edges of the parallelepiped, then find the volume of the parallelepiped."
+  },
+  {
+    "ref": "5.5 Ex.Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "If the vectors \\(-3\\hat{i}+4\\hat{j}-2\\hat{k}, \\hat{i}+2\\hat{k}\\) and \\(\\hat{i}-p\\hat{j}\\) are coplanar, then find the value of \\(p\\)."
+  },
+  {
+    "ref": "5.5 Ex.Q4 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "context": "Prove that:",
+    "setLabel": "Ex.Q4",
+    "stem": "\\([\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{a}+\\vec{b}+\\vec{c}] = 0\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q4 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "context": "Prove that:",
+    "setLabel": "Ex.Q4",
+    "stem": "\\([\\vec{a}+2\\vec{b}-\\vec{c}\\ \\ \\vec{a}-\\vec{b}\\ \\ \\vec{a}-\\vec{b}-\\vec{c}] = 3[\\vec{a}\\ \\ \\vec{b}\\ \\ \\vec{c}]\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{c}=3\\vec{a}-2\\vec{b}\\) and \\([\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{a}+\\vec{b}+\\vec{c}] = 0\\) then prove that \\([\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 0\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q6 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\vec{u}=\\hat{i}-2\\hat{j}+\\hat{k}, \\vec{v}=3\\hat{i}+\\hat{k}\\) and \\(\\vec{w}=\\hat{j}-\\hat{k}\\) are given vectors, then find:",
+    "setLabel": "Ex.Q6",
+    "stem": "\\([\\vec{u}+\\vec{w}]\\cdot[(\\vec{u}\\times\\vec{v})\\times(\\vec{v}\\times\\vec{w})]\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q6 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\vec{u}=\\hat{i}-2\\hat{j}+\\hat{k}, \\vec{v}=3\\hat{i}+\\hat{k}\\) and \\(\\vec{w}=\\hat{j}-\\hat{k}\\) are given vectors, then find:",
+    "setLabel": "Ex.Q6",
+    "stem": "\\([\\vec{u}\\times\\vec{v}\\ \\ \\vec{u}\\times\\vec{w}\\ \\ \\vec{v}\\times\\vec{w}]\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Find the volume of a tetrahedron whose vertices are \\(A(-1,2,3), B(3,-2,1), C(2,1,3)\\) and \\(D(-1,-2,4)\\)."
+  },
+  {
+    "ref": "5.5 Ex.Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=\\hat{i}+2\\hat{j}+3\\hat{k}, \\vec{b}=3\\hat{i}+2\\hat{j}+\\hat{k}\\) and \\(\\vec{c}=2\\hat{i}+\\hat{j}+3\\hat{k}\\) then verify that \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c}\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q9 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\vec{a}=\\hat{i}-2\\hat{j}, \\vec{b}=\\hat{i}+2\\hat{j}\\) and \\(\\vec{c}=2\\hat{i}+\\hat{j}-2\\hat{k}\\) then find the following. Are the results the same? Justify.",
+    "setLabel": "Ex.Q9",
+    "stem": "\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q9 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\vec{a}=\\hat{i}-2\\hat{j}, \\vec{b}=\\hat{i}+2\\hat{j}\\) and \\(\\vec{c}=2\\hat{i}+\\hat{j}-2\\hat{k}\\) then find the following. Are the results the same? Justify.",
+    "setLabel": "Ex.Q9",
+    "stem": "\\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\)"
+  },
+  {
+    "ref": "5.5 Ex.Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) + \\vec{b}\\times(\\vec{c}\\times\\vec{a}) + \\vec{c}\\times(\\vec{a}\\times\\vec{b}) = \\vec{0}\\)"
+  }
+]

@@ -1,0 +1,238 @@
+[
+  {
+    "ref": "5.4 SolvedEx.1 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the cross product \\(\\vec{a} \\times \\vec{b}\\) and verify that it is orthogonal (perpendicular) to both \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "SolvedEx.1",
+    "stem": "\\(\\vec{a} = \\hat{i} + \\hat{j} - \\hat{k}\\), \\(\\vec{b} = 2\\hat{i} + 4\\hat{j} + 6\\hat{k}\\)",
+    "solution": "\\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&1&-1\\\\2&4&6\\end{vmatrix} = \\begin{vmatrix}1&-1\\\\4&6\\end{vmatrix}\\hat{i} - \\begin{vmatrix}1&-1\\\\2&6\\end{vmatrix}\\hat{j} + \\begin{vmatrix}1&1\\\\2&4\\end{vmatrix}\\hat{k}\\) \\(= [6-(-4)]\\hat{i} - [6-(-2)]\\hat{j} + (4-2)\\hat{k} = 10\\hat{i} - 8\\hat{j} + 2\\hat{k}\\). Now \\(\\vec{a}\\times\\vec{b}\\cdot\\vec{a} = (10\\hat{i}-8\\hat{j}+2\\hat{k})\\cdot(\\hat{i}+\\hat{j}-\\hat{k}) = 10-8-2=0\\) and \\(\\vec{a}\\times\\vec{b}\\cdot\\vec{b} = (10\\hat{i}-8\\hat{j}+2\\hat{k})\\cdot(2\\hat{i}+4\\hat{j}+6\\hat{k}) = 20-32+12=0\\). So \\(\\vec{a}\\times\\vec{b}\\) is orthogonal to both \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.1 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find the cross product \\(\\vec{a} \\times \\vec{b}\\) and verify that it is orthogonal (perpendicular) to both \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+    "setLabel": "SolvedEx.1",
+    "stem": "\\(\\vec{a} = \\hat{i} + 3\\hat{j} - 2\\hat{k}\\), \\(\\vec{b} = -\\hat{i} + 5\\hat{k}\\)",
+    "solution": "\\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&3&-2\\\\-1&0&5\\end{vmatrix} = \\begin{vmatrix}3&-2\\\\0&5\\end{vmatrix}\\hat{i} - \\begin{vmatrix}1&-2\\\\-1&5\\end{vmatrix}\\hat{j} + \\begin{vmatrix}1&3\\\\-1&0\\end{vmatrix}\\hat{k} = (15-0)\\hat{i} - (5-2)\\hat{j} + [0-(-3)]\\hat{k} = 15\\hat{i}-3\\hat{j}+3\\hat{k}\\). Now \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{a}=(15\\hat{i}-3\\hat{j}+3\\hat{k})\\cdot(\\hat{i}+3\\hat{j}-2\\hat{k})=15-9-6=0\\), and \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{b}=(15\\hat{i}-3\\hat{j}+3\\hat{k})\\cdot(-\\hat{i}+5\\hat{k})=-15+0+15=0\\), so \\(\\vec{a}\\times\\vec{b}\\) is orthogonal to both \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find all vectors of magnitude \\(10\\sqrt{3}\\) that are perpendicular to the plane of \\(\\hat{i}+2\\hat{j}+\\hat{k}\\) and \\(-\\hat{i}+3\\hat{j}+4\\hat{k}\\).",
+    "solution": "Let \\(\\vec{a}=\\hat{i}+2\\hat{j}+\\hat{k}\\) and \\(\\vec{b}=-\\hat{i}+3\\hat{j}+4\\hat{k}\\). Then \\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&1\\\\-1&3&4\\end{vmatrix} = \\hat{i}(8-3)-\\hat{j}(4+1)+\\hat{k}(3+2)=5\\hat{i}-5\\hat{j}+5\\hat{k}=\\vec{m}\\) (say). \\(\\therefore |\\vec{a}\\times\\vec{b}|=\\sqrt{(5)^2+(-5)^2+(5)^2}=\\sqrt{3(5)^2}=5\\sqrt{3}=|\\vec{m}|\\). Therefore, the unit vector perpendicular to the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) is given by \\(\\hat{m}=\\dfrac{\\vec{m}}{|\\vec{m}|}=\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|}=\\dfrac{5\\hat{i}-5\\hat{j}+5\\hat{k}}{5\\sqrt{3}}=\\dfrac{\\hat{i}-\\hat{j}+\\hat{k}}{\\sqrt{3}}\\). Hence, the vectors of magnitude \\(10\\sqrt{3}\\) that are perpendicular to the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) are \\(\\pm 10\\sqrt{3}\\,\\hat{m}=\\pm 10\\sqrt{3}\\left(\\dfrac{\\hat{i}-\\hat{j}+\\hat{k}}{\\sqrt{3}}\\right)\\), i.e. \\(\\pm 10(\\hat{i}-\\hat{j}+\\hat{k})\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{u}+\\vec{v}+\\vec{w}=\\vec{0}\\), show that \\(\\vec{u}\\times\\vec{v}=\\vec{v}\\times\\vec{w}=\\vec{w}\\times\\vec{u}\\).",
+    "solution": "Suppose that \\(\\vec{u}+\\vec{v}+\\vec{w}=\\vec{0}\\). Then \\((\\vec{u}+\\vec{v}+\\vec{w})\\times\\vec{v}=\\vec{0}\\times\\vec{v}\\) i.e. \\(\\vec{u}\\times\\vec{v}+\\vec{v}\\times\\vec{v}+\\vec{w}\\times\\vec{v}=\\vec{0}\\). But \\(\\vec{v}\\times\\vec{v}=\\vec{0}\\). Thus \\(\\vec{u}\\times\\vec{v}+\\vec{w}\\times\\vec{v}=\\vec{0}\\). Thus \\(\\vec{u}\\times\\vec{v}=-\\vec{w}\\times\\vec{v}=\\vec{v}\\times\\vec{w}\\). Similarly, we have \\(\\vec{v}\\times\\vec{w}=\\vec{w}\\times\\vec{u}\\). Hence \\(\\vec{u}\\times\\vec{v}=\\vec{v}\\times\\vec{w}=\\vec{w}\\times\\vec{u}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If \\(\\vec{a}=3\\hat{i}-\\hat{j}+2\\hat{k}\\), \\(\\vec{b}=2\\hat{i}+\\hat{j}-\\hat{k}\\) and \\(\\vec{c}=\\hat{i}-2\\hat{j}+2\\hat{k}\\), find \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\) and \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) and hence show that \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\neq\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\).",
+    "solution": "\\(\\vec{a}\\times\\vec{b}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\3&-1&2\\\\2&1&-1\\end{vmatrix}=-\\hat{i}+7\\hat{j}+5\\hat{k}\\). \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}=(-\\hat{i}+7\\hat{j}+5\\hat{k})\\times(\\hat{i}-2\\hat{j}+2\\hat{k})=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-1&7&5\\\\1&-2&2\\end{vmatrix}=24\\hat{i}+7\\hat{j}-5\\hat{k}\\) ....(1). Now, \\(\\vec{b}\\times\\vec{c}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&1&-1\\\\1&-2&2\\end{vmatrix}=-5\\hat{j}-5\\hat{k}\\). \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})=(3\\hat{i}-\\hat{j}+2\\hat{k})\\times(-5\\hat{j}-5\\hat{k})=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\3&-1&2\\\\0&-5&-5\\end{vmatrix}=15(\\hat{i}+\\hat{j}-\\hat{k})\\) ....(2). From (1) and (2), we conclude that \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\neq\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the area of the triangle with vertices (1,2,0), (1,0,2), and (0,3,1).",
+    "solution": "If \\(A=(1,2,0)\\), \\(B=(1,0,2)\\) and \\(C=(0,3,1)\\), then \\(\\overline{AB}=-2\\hat{j}+2\\hat{k}\\), \\(\\overline{AC}=-\\hat{i}+\\hat{j}+\\hat{k}\\) and the area of triangle ABC is \\(\\dfrac{1}{2}|\\overline{AB}\\times\\overline{AC}|\\). \\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\0&-2&2\\\\-1&1&1\\end{vmatrix}=-4\\hat{i}-2\\hat{j}-2\\hat{k}\\). \\(\\dfrac{|\\overline{AB}\\times\\overline{AC}|}{2}=\\dfrac{|-4\\hat{i}-2\\hat{j}-2\\hat{k}|}{2}=\\dfrac{\\sqrt{16+4+4}}{2}=\\dfrac{\\sqrt{24}}{2}=\\dfrac{2\\sqrt{6}}{2}=\\sqrt{6}\\) sq. units."
+  },
+  {
+    "ref": "5.4 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the area of the parallelogram with vertices K(1, 2, 3), L(1, 3, 6), M(3, 8, 6) and N(3, 7, 3).",
+    "solution": "The parallelogram is determined by the vectors \\(\\overline{KL}=\\hat{j}+3\\hat{k}\\) and \\(\\overline{KN}=2\\hat{i}+5\\hat{j}\\), so the area of parallelogram KLMN is \\(|\\overline{KL}\\times\\overline{KN}|=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\0&1&3\\\\2&5&0\\end{vmatrix}=|(-15)\\hat{i}-(-6)\\hat{j}+(-2)\\hat{k}|=|-15\\hat{i}+6\\hat{j}-2\\hat{k}|=\\sqrt{265}\\) square units."
+  },
+  {
+    "ref": "5.4 SolvedEx.7 i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find \\(|\\vec{u}\\times\\vec{v}|\\) if",
+    "setLabel": "SolvedEx.7",
+    "stem": "\\(|\\vec{u}|=4\\), \\(|\\vec{v}|=5\\), with the angle between \\(\\vec{u}\\) and \\(\\vec{v}\\) equal to \\(45°\\) (as shown in Fig 5.54(i)).",
+    "solution": "We have \\(|\\vec{u}\\times\\vec{v}|=|\\vec{u}||\\vec{v}|\\sin\\theta=(4)(5)\\sin 45° = 20\\cdot\\dfrac{1}{\\sqrt{2}}=10\\sqrt{2}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.7 ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "context": "Find \\(|\\vec{u}\\times\\vec{v}|\\) if",
+    "setLabel": "SolvedEx.7",
+    "stem": "\\(|\\vec{u}|=12\\), \\(|\\vec{v}|=16\\), with \\(\\vec{u}\\) and \\(\\vec{v}\\) drawn as in Fig 5.54(ii), where the marked angle between the two directed segments is \\(120°\\).",
+    "solution": "If we sketch \\(\\vec{u}\\) and \\(\\vec{v}\\) starting from the same initial point, we see that the angle between them is \\(60°\\). We have \\(|\\vec{u}\\times\\vec{v}|=|\\vec{u}||\\vec{v}|\\sin\\theta=(12)(16)\\sin 60°=192\\cdot\\dfrac{\\sqrt{3}}{2}=96\\sqrt{3}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\((\\vec{a}-\\vec{b})\\times(\\vec{a}+\\vec{b}) = 2(\\vec{a}\\times\\vec{b})\\).",
+    "solution": "Using distributive property, \\((\\vec{a}-\\vec{b})\\times(\\vec{a}+\\vec{b})=\\vec{a}\\times\\vec{a}+\\vec{a}\\times\\vec{b}-\\vec{b}\\times\\vec{a}-\\vec{b}\\times\\vec{b}\\) (\\(\\because \\vec{a}\\times\\vec{b}=-\\vec{b}\\times\\vec{a}\\)) \\(=\\vec{0}+\\vec{a}\\times\\vec{b}+\\vec{a}\\times\\vec{b}-\\vec{0}\\) (\\(\\because \\vec{a}\\times\\vec{a}=\\vec{0}\\)) \\(=2(\\vec{a}\\times\\vec{b})\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Show that the three points with position vectors \\(3\\hat{i}-2\\hat{j}+4\\hat{k}\\), \\(\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(-\\hat{i}+4\\hat{j}-2\\hat{k}\\) respectively are collinear.",
+    "solution": "Let A, B, C be the given three points. \\(\\vec{a}=3\\hat{i}-2\\hat{j}+4\\hat{k}\\), \\(\\vec{b}=\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(\\vec{c}=-\\hat{i}+4\\hat{j}-2\\hat{k}\\). To show that points A, B, C are collinear. Now \\(\\overline{AB}=\\vec{b}-\\vec{a}=-2\\hat{i}+3\\hat{j}-3\\hat{k}\\), \\(\\overline{AC}=\\vec{c}-\\vec{a}=-4\\hat{i}+6\\hat{j}-6\\hat{k}\\). \\(\\overline{AB}\\times\\overline{AC}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-2&3&-3\\\\-4&6&-6\\end{vmatrix}=(-18+18)\\hat{i}-(12-12)\\hat{j}+(-12+12)\\hat{k}=0\\hat{i}-0\\hat{j}+0\\hat{k}=\\vec{0}\\). Vectors \\(\\overline{AB}\\) and \\(\\overline{AC}\\) are collinear, but the point A is common, therefore points A, B, C are collinear."
+  },
+  {
+    "ref": "5.4 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find a unit vector perpendicular to \\(\\overline{PQ}\\) and \\(\\overline{PR}\\) where \\(P\\equiv(2,2,0)\\), \\(Q\\equiv(0,3,5)\\) and \\(R\\equiv(5,0,3)\\). Also find the sine of angle between \\(\\overline{PQ}\\) and \\(\\overline{PR}\\).",
+    "solution": "\\(\\overline{PQ}=\\vec{q}-\\vec{p}=-2\\hat{i}+\\hat{j}+5\\hat{k}\\) and \\(\\overline{PR}=\\vec{r}-\\vec{p}=3\\hat{i}-2\\hat{j}+3\\hat{k}\\). Now \\(|\\overline{PQ}|=\\sqrt{4+1+25}=\\sqrt{30}\\) and \\(|\\overline{PR}|=\\sqrt{9+4+9}=\\sqrt{22}\\). \\(\\therefore \\overline{PQ}\\times\\overline{PR}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-2&1&5\\\\3&-2&3\\end{vmatrix}=(3+10)\\hat{i}-(-6-15)\\hat{j}+(4-3)\\hat{k}=13\\hat{i}+21\\hat{j}+\\hat{k}\\). \\(\\therefore |\\overline{PQ}\\times\\overline{PR}|=\\sqrt{169+441+1}=\\sqrt{611}\\). If \\(\\hat{n}\\) is a unit vector perpendicular to \\(\\overline{PQ}\\) and \\(\\overline{PR}\\), then \\(\\hat{n}=\\dfrac{\\overline{PQ}\\times\\overline{PR}}{|\\overline{PQ}\\times\\overline{PR}|}=\\dfrac{13\\hat{i}+21\\hat{j}+\\hat{k}}{\\sqrt{611}}\\). If \\(\\theta\\) is the angle between \\(\\overline{PQ}\\) and \\(\\overline{PR}\\) then \\(\\sin\\theta=\\dfrac{|\\overline{PQ}\\times\\overline{PR}|}{|\\overline{PQ}||\\overline{PR}|}=\\dfrac{\\sqrt{611}}{\\sqrt{30}\\sqrt{22}}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(|\\vec{a}|=5\\), \\(|\\vec{b}|=13\\) and \\(|\\vec{a}\\times\\vec{b}|=25\\), find \\(\\vec{a}\\cdot\\vec{b}\\).",
+    "solution": "Given \\(|\\vec{a}\\times\\vec{b}|=25\\). \\(\\therefore |\\vec{a}|\\cdot|\\vec{b}|\\sin\\theta=25\\) (\\(\\theta\\) is the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\)). \\(5\\times 13\\sin\\theta=25\\) \\(\\therefore \\sin\\theta=\\dfrac{25}{5\\times13}=\\dfrac{5}{13}\\). \\(\\therefore \\cos\\theta=\\sqrt{1-\\sin^2\\theta}=\\sqrt{1-\\dfrac{25}{169}}=\\pm\\dfrac{12}{13}\\). \\(\\therefore \\vec{a}\\cdot\\vec{b}=|\\vec{a}|\\cdot|\\vec{b}|\\cos\\theta=5\\times13\\times\\left(\\pm\\dfrac{12}{13}\\right)=\\pm 60\\). Thus \\(\\vec{a}\\cdot\\vec{b}=60\\) if \\(0<\\theta<\\pi/2\\) and \\(\\vec{a}\\cdot\\vec{b}=-60\\) if \\(\\pi/2<\\theta<\\pi\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Direction ratios of two lines satisfy the relation \\(2a-b+2c=0\\) and \\(ab+bc+ca=0\\). Show that the lines are perpendicular.",
+    "solution": "Given equations are \\(2a-b+2c=0\\) i.e. \\(b=2a+2c\\) ....(I) and \\(ab+bc+ca=0\\) ....(II). Put \\(b=2a+2c\\) in equation (II), we get \\(a(2a+2c)+(2a+2c)c+ca=0\\) i.e. \\(2a^2+2ac+2ac+2c^2+ac=0\\) i.e. \\(2a^2+5ac+2c^2=0\\) \\(\\therefore (2a+c)(a+2c)=0\\). Case I: \\(2a+c=0 \\therefore 2a=-c\\) ...(III). Using this, equation (I) becomes \\(b=-c+2c=c\\) i.e. \\(b=c\\) ...(IV). From (III) and (IV) we get \\(\\dfrac{a}{-1/2}=\\dfrac{b}{1}=\\dfrac{c}{1}\\). Direction ratios of the 1st line are \\(-\\dfrac{1}{2},1,1\\) i.e. \\(-1,2,2=\\vec{p}\\) (say). Case II: \\(a+2c=0 \\therefore a=-2c\\) ...(V). Using this, equation (I) becomes \\(b=2(-2c)+2c=-2c\\) i.e. \\(b=-2c\\) ...(VI). From (V) and (VI) we get \\(\\dfrac{a}{-2}=\\dfrac{b}{-2}=\\dfrac{c}{1}\\). \\(\\therefore\\) Direction ratios of the second line are \\(-2,-2,1\\) i.e. \\(2,2,-1=\\vec{q}\\) (say). Now \\(\\vec{p}\\cdot\\vec{q}=(-1\\hat{i}+2\\hat{j}+2\\hat{k})\\cdot(2\\hat{i}+2\\hat{j}-\\hat{k})=-2+4-2=0\\). \\(\\therefore\\) The lines are perpendicular."
+  },
+  {
+    "ref": "5.4 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find the direction cosines of the line which is perpendicular to the lines with direction ratios \\(-1, 2, 2\\) and \\(0, 2, 1\\).",
+    "solution": "Given \\(-1,2,2\\) and \\(0,2,1\\) be direction ratios of lines \\(L_1\\) and \\(L_2\\). Let \\(l,m,n\\) be direction cosines of line \\(L\\). As line \\(L\\) is perpendicular to lines \\(L_1\\) and \\(L_2\\), then \\(-l+2m+2n=0\\) and \\(2m+n=0\\). From \\(2m+n=0\\), \\(2m=-n\\), \\(\\therefore \\dfrac{m}{-1}=\\dfrac{n}{2}\\) ....(I). And \\(-l+2m+2n=0\\) becomes \\(-l-n+2n=0\\) i.e. \\(-l+n=0\\) i.e. \\(l=n\\), so \\(\\dfrac{l}{2}=\\dfrac{n}{2}\\) ....(II). From (I) and (II), \\(\\dfrac{l}{2}=\\dfrac{m}{-1}=\\dfrac{n}{2}\\). The direction ratios of line L are \\(2,-1,2\\) and the direction cosines of line L are \\(\\dfrac{2}{3},\\dfrac{-1}{3},\\dfrac{2}{3}\\)."
+  },
+  {
+    "ref": "5.4 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "If M is the foot of the perpendicular drawn from A(4, 3, 2) on the line joining the points B(2, 4, 1) and C (4, 5, 3), find the coordinates of M.",
+    "solution": "Let the point M divide BC internally in the ratio \\(k:1\\). \\(\\therefore M\\equiv\\left(\\dfrac{4k+2}{k+1},\\dfrac{5k+4}{k+1},\\dfrac{3k+1}{k+1}\\right)\\) ....(I). \\(\\therefore\\) Direction ratios of AM are \\(\\dfrac{4k+2}{k+1}-4,\\dfrac{5k+4}{k+1}-3,\\dfrac{3k+1}{k+1}-2=\\vec{p}\\) (say), i.e. \\(\\dfrac{-2}{k+1},\\dfrac{2k+1}{k+1},\\dfrac{k-1}{k+1}\\), and direction ratios of BC are \\(4-2,5-4,3-1\\) i.e. \\(2,1,2=\\vec{q}\\) (say). Since AM is perpendicular to BC, \\(\\vec{p}\\cdot\\vec{q}=0\\) i.e. \\(2\\cdot\\dfrac{(-2)}{k+1}+1\\cdot\\dfrac{(2k+1)}{k+1}+2\\cdot\\dfrac{(k-1)}{k+1}=0\\) i.e. \\(-4+2k+1+2k-2=0\\) \\(\\therefore 4k-5=0\\) \\(\\therefore k=\\dfrac{5}{4}\\). From (I), \\(M\\equiv\\left(\\dfrac{28}{9},\\dfrac{41}{9},\\dfrac{19}{9}\\right)\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=2\\hat{i}+3\\hat{j}-\\hat{k}\\), \\(\\vec{b}=\\hat{i}-4\\hat{j}+2\\hat{k}\\) find \\((\\vec{a}+\\vec{b})\\times(\\vec{a}-\\vec{b})\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find unit vectors perpendicular to the vectors \\(\\hat{j}+2\\hat{k}\\) and \\(\\hat{i}+\\hat{j}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}\\cdot\\vec{b} = \\sqrt{3}\\) and \\(\\vec{a}\\times\\vec{b} = 2\\hat{i}+\\hat{j}+2\\hat{k}\\), find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=2\\hat{i}+\\hat{j}-3\\hat{k}\\) and \\(\\vec{b}=\\hat{i}-2\\hat{j}+\\hat{k}\\), find vectors of magnitude 5 perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q5 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find",
+    "setLabel": "Ex.Q5",
+    "stem": "\\(\\vec{u}\\cdot\\vec{v}\\) if \\(|\\vec{u}|=2\\), \\(|\\vec{v}|=5\\), \\(|\\vec{u}\\times\\vec{v}|=8\\)"
+  },
+  {
+    "ref": "5.4 Ex.Q5 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "context": "Find",
+    "setLabel": "Ex.Q5",
+    "stem": "\\(|\\vec{u}\\times\\vec{v}|\\) if \\(|\\vec{u}|=10\\), \\(|\\vec{v}|=2\\), \\(\\vec{u}\\cdot\\vec{v}=12\\)"
+  },
+  {
+    "ref": "5.4 Ex.Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(2(\\vec{a}-\\vec{b})\\times 2(\\vec{a}+\\vec{b}) = 8(\\vec{a}\\times\\vec{b})\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}=\\hat{i}-2\\hat{j}+3\\hat{k}\\), \\(\\vec{b}=4\\hat{i}-3\\hat{j}+\\hat{k}\\) and \\(\\vec{c}=\\hat{i}-\\hat{j}+2\\hat{k}\\) verify that \\(\\vec{a}\\times(\\vec{b}+\\vec{c}) = \\vec{a}\\times\\vec{b}+\\vec{a}\\times\\vec{c}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the area of the parallelogram whose adjacent sides are the vectors \\(\\vec{a}=2\\hat{i}-2\\hat{j}+\\hat{k}\\) and \\(\\vec{b}=\\hat{i}-3\\hat{j}-3\\hat{k}\\)."
+  },
+  {
+    "ref": "5.4 Ex.Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "HARD",
+    "stem": "Show that vector area of a quadrilateral \\(ABCD\\) is \\(\\dfrac{1}{2}(\\overline{AC}\\times\\overline{BD})\\), where AC and BD are its diagonals."
+  }
+]

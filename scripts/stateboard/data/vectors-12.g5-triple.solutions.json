@@ -1,0 +1,167 @@
+[
+  {
+    "id": "237fb494-ff88-4e60-a88b-bf2954ce0338",
+    "ref": "5.5 Ex.Q1",
+    "solution": "Here \\(\\vec{a}=(3,-1,4),\\ \\vec{b}=(2,3,-1),\\ \\vec{c}=(-5,2,3)\\).\nUsing \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = a_1(b_2c_3-b_3c_2) - a_2(b_1c_3-b_3c_1) + a_3(b_1c_2-b_2c_1)\\):\n\\(= 3\\big(3\\times3-(-1)\\times2\\big) - (-1)\\big(2\\times3-(-1)\\times(-5)\\big) + 4\\big(2\\times2-3\\times(-5)\\big)\\)\n\\(= 3(11) + 1(1) + 4(19) = 33+1+76\\)\n\\(\\therefore \\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = \\mathbf{110}\\)"
+  },
+  {
+    "id": "fbc3b24b-747e-4d0a-8063-f52c63bcd140",
+    "ref": "5.5 Ex.Q10",
+    "solution": "Using the vector triple product identity \\(\\vec{x}\\times(\\vec{y}\\times\\vec{z}) = (\\vec{x}\\cdot\\vec{z})\\vec{y} - (\\vec{x}\\cdot\\vec{y})\\vec{z}\\):\n\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c}\\)\n\\(\\vec{b}\\times(\\vec{c}\\times\\vec{a}) = (\\vec{b}\\cdot\\vec{a})\\vec{c} - (\\vec{b}\\cdot\\vec{c})\\vec{a}\\)\n\\(\\vec{c}\\times(\\vec{a}\\times\\vec{b}) = (\\vec{c}\\cdot\\vec{b})\\vec{a} - (\\vec{c}\\cdot\\vec{a})\\vec{b}\\)\nAdding all three and grouping by \\(\\vec{a}, \\vec{b}, \\vec{c}\\):\n\\(\\big[(\\vec{a}\\cdot\\vec{c})-(\\vec{c}\\cdot\\vec{a})\\big]\\vec{b} + \\big[(\\vec{c}\\cdot\\vec{b})-(\\vec{b}\\cdot\\vec{c})\\big]\\vec{a} + \\big[(\\vec{b}\\cdot\\vec{a})-(\\vec{a}\\cdot\\vec{b})\\big]\\vec{c}\\)\nSince the dot product is commutative (\\(\\vec{a}\\cdot\\vec{c}=\\vec{c}\\cdot\\vec{a}\\), etc.), each bracket is \\(0\\).\n\\(\\therefore \\vec{a}\\times(\\vec{b}\\times\\vec{c}) + \\vec{b}\\times(\\vec{c}\\times\\vec{a}) + \\vec{c}\\times(\\vec{a}\\times\\vec{b}) = \\vec{0}\\) — Hence proved."
+  },
+  {
+    "id": "32faf1ff-458f-47c9-ad0d-881e7eadd454",
+    "ref": "5.5 Ex.Q2",
+    "solution": "Let \\(\\vec{a}=3\\hat{i}+0\\hat{j}+5\\hat{k},\\ \\vec{b}=4\\hat{i}+2\\hat{j}-3\\hat{k},\\ \\vec{c}=3\\hat{i}+\\hat{j}+4\\hat{k}\\) be the co-terminus edges.\nVolume of parallelepiped \\(= |[\\vec{a}\\ \\vec{b}\\ \\vec{c}]|\\)\n\\([\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 3\\big(2\\times4-(-3)\\times1\\big) - 0\\big(4\\times4-(-3)\\times3\\big) + 5\\big(4\\times1-2\\times3\\big)\\)\n\\(= 3(11) - 0 + 5(-2) = 33-10 = 23\\)\n\\(\\therefore\\) Volume \\(= |23| = \\mathbf{23}\\) cubic units."
+  },
+  {
+    "id": "63db67e4-c5c4-4008-8c59-f005f8357776",
+    "ref": "5.5 Ex.Q3",
+    "solution": "Vectors \\(-3\\hat{i}+4\\hat{j}-2\\hat{k},\\ \\hat{i}+2\\hat{k},\\ \\hat{i}-p\\hat{j}\\) are coplanar \\(\\Rightarrow\\) their scalar triple product is \\(0\\).\n\\(-3\\big(0\\times0-2\\times(-p)\\big) - 4\\big(1\\times0-2\\times1\\big) + (-2)\\big(1\\times(-p)-0\\times1\\big) = 0\\)\n\\(-3(2p) - 4(-2) - 2(-p) = 0\\)\n\\(-6p + 8 + 2p = 0\\)\n\\(-4p = -8\\)\n\\(\\therefore p = \\mathbf{2}\\)"
+  },
+  {
+    "id": "d3645f74-722d-4efd-8d2f-17e148991d4d",
+    "ref": "5.5 Ex.Q4 i)",
+    "solution": "Write \\(\\vec{a}+\\vec{b}+\\vec{c} = \\vec{a}+(\\vec{b}+\\vec{c})\\), so by linearity of the scalar triple product in the third slot:\n\\([\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{a}+\\vec{b}+\\vec{c}] = [\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{a}] + [\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{b}+\\vec{c}]\\)\nIn the first term the 1st and 3rd vectors are both \\(\\vec{a}\\); in the second term the 2nd and 3rd vectors are both \\(\\vec{b}+\\vec{c}\\). A scalar triple product with two equal vectors is always \\(0\\).\n\\(\\therefore [\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{a}+\\vec{b}+\\vec{c}] = 0+0 = \\mathbf{0}\\) — Hence proved."
+  },
+  {
+    "id": "249ae5d7-cadd-4fd2-84d0-ee6bbffdd433",
+    "ref": "5.5 Ex.Q4 ii)",
+    "solution": "Write \\(\\vec{a}+2\\vec{b}-\\vec{c},\\ \\vec{a}-\\vec{b},\\ \\vec{a}-\\vec{b}-\\vec{c}\\) as linear combinations of \\(\\vec{a},\\vec{b},\\vec{c}\\); their coefficients form the matrix (rows = the three vectors, columns = coefficients of \\(\\vec a,\\vec b,\\vec c\\)):\n\\(M=\\begin{pmatrix}1 & 2 & -1\\\\ 1 & -1 & 0\\\\ 1 & -1 & -1\\end{pmatrix}\\)\nBy multilinearity of the scalar triple product, \\([\\vec{a}+2\\vec{b}-\\vec{c}\\ \\ \\vec{a}-\\vec{b}\\ \\ \\vec{a}-\\vec{b}-\\vec{c}] = \\det(M)\\,[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)\n\\(\\det(M) = 1\\big((-1)(-1)-0(-1)\\big) - 2\\big(1(-1)-0(1)\\big) + (-1)\\big(1(-1)-(-1)(1)\\big)\\)\n\\(= 1(1) - 2(-1) - 1(0) = 1+2-0 = 3\\)\n\\(\\therefore [\\vec{a}+2\\vec{b}-\\vec{c}\\ \\ \\vec{a}-\\vec{b}\\ \\ \\vec{a}-\\vec{b}-\\vec{c}] = 3[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\) — Hence proved."
+  },
+  {
+    "id": "d9c0034b-7d30-4258-ba58-927ec16f3946",
+    "ref": "5.5 Ex.Q5",
+    "solution": "Given \\(\\vec{c}=3\\vec{a}-2\\vec{b}\\).\nBy linearity of the scalar triple product in the third slot:\n\\([\\vec{a}\\ \\vec{b}\\ \\vec{c}] = [\\vec{a}\\ \\ \\vec{b}\\ \\ 3\\vec{a}-2\\vec{b}] = 3[\\vec{a}\\ \\vec{b}\\ \\vec{a}] - 2[\\vec{a}\\ \\vec{b}\\ \\vec{b}]\\)\nBoth \\([\\vec{a}\\ \\vec{b}\\ \\vec{a}]\\) and \\([\\vec{a}\\ \\vec{b}\\ \\vec{b}]\\) are \\(0\\), since each has a repeated vector.\n\\(\\therefore [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 3(0) - 2(0) = \\mathbf{0}\\) — Hence proved.\n(This is consistent with the given condition \\([\\vec{a}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{a}+\\vec{b}+\\vec{c}]=0\\), which in fact holds identically for any \\(\\vec{a},\\vec{b},\\vec{c}\\) — see Q.4(i).)"
+  },
+  {
+    "id": "ee54ada6-7bb5-4cf5-91ec-0226cb99299d",
+    "ref": "5.5 Ex.Q6 i)",
+    "solution": "Here \\(\\vec{u}=\\hat{i}-2\\hat{j}+\\hat{k},\\ \\vec{v}=3\\hat{i}+\\hat{k},\\ \\vec{w}=\\hat{j}-\\hat{k}\\).\nUsing the identity \\((\\vec{p}\\times\\vec{q})\\times(\\vec{q}\\times\\vec{r}) = [\\vec{p}\\ \\vec{q}\\ \\vec{r}]\\,\\vec{q} - [\\vec{q}\\ \\vec{q}\\ \\vec{r}]\\,\\vec{p} = [\\vec{p}\\ \\vec{q}\\ \\vec{r}]\\,\\vec{q}\\) (since \\([\\vec{q}\\ \\vec{q}\\ \\vec{r}]=0\\)), with \\(\\vec p=\\vec u,\\vec q=\\vec v,\\vec r=\\vec w\\):\n\\((\\vec{u}\\times\\vec{v})\\times(\\vec{v}\\times\\vec{w}) = [\\vec{u}\\ \\vec{v}\\ \\vec{w}]\\,\\vec{v}\\)\n\\([\\vec{u}\\ \\vec{v}\\ \\vec{w}] = 1(0\\times(-1)-1\\times1) - (-2)(3\\times(-1)-1\\times0) + 1(3\\times1-0\\times0) = -1-6+3 = -4\\)\nSo \\((\\vec{u}\\times\\vec{v})\\times(\\vec{v}\\times\\vec{w}) = -4\\vec{v} = -12\\hat{i}-4\\hat{k}\\)\nAlso \\(\\vec{u}+\\vec{w} = \\hat{i}-\\hat{j}+0\\hat{k}\\)\n\\((\\vec{u}+\\vec{w})\\cdot\\big[(\\vec{u}\\times\\vec{v})\\times(\\vec{v}\\times\\vec{w})\\big] = (\\hat{i}-\\hat{j})\\cdot(-12\\hat{i}-4\\hat{k}) = -12+0+0 = \\mathbf{-12}\\)"
+  },
+  {
+    "id": "985dba2a-edb5-4fa9-931a-f5f2d20cf4a6",
+    "ref": "5.5 Ex.Q6 ii)",
+    "solution": "Using the identity \\([\\vec{u}\\times\\vec{v}\\ \\ \\vec{u}\\times\\vec{w}\\ \\ \\vec{v}\\times\\vec{w}] = [\\vec{u}\\ \\vec{v}\\ \\vec{w}]^2\\):\nFrom part (i), \\([\\vec{u}\\ \\vec{v}\\ \\vec{w}] = -4\\)\n\\(\\therefore [\\vec{u}\\times\\vec{v}\\ \\ \\vec{u}\\times\\vec{w}\\ \\ \\vec{v}\\times\\vec{w}] = (-4)^2 = \\mathbf{16}\\)"
+  },
+  {
+    "id": "c540e6d2-98f3-4be9-9661-8f92b41b9682",
+    "ref": "5.5 Ex.Q7",
+    "solution": "Volume of tetrahedron \\(= \\dfrac{1}{6}\\big|[\\vec{AB}\\ \\vec{AC}\\ \\vec{AD}]\\big|\\)\n\\(\\vec{AB}=B-A=4\\hat{i}-4\\hat{j}-2\\hat{k},\\ \\ \\vec{AC}=C-A=3\\hat{i}-\\hat{j}+0\\hat{k},\\ \\ \\vec{AD}=D-A=0\\hat{i}-4\\hat{j}+\\hat{k}\\)\n\\([\\vec{AB}\\ \\vec{AC}\\ \\vec{AD}] = 4\\big((-1)(1)-(0)(-4)\\big) - (-4)\\big((3)(1)-(0)(0)\\big) + (-2)\\big((3)(-4)-(-1)(0)\\big)\\)\n\\(= 4(-1) + 4(3) - 2(-12) = -4+12+24 = 32\\)\n\\(\\therefore\\) Volume \\(= \\dfrac{1}{6}|32| = \\mathbf{\\dfrac{16}{3}}\\) cubic units."
+  },
+  {
+    "id": "39fa9147-32fa-45ee-a41c-539088d6151c",
+    "ref": "5.5 Ex.Q8",
+    "solution": "Here \\(\\vec{a}=\\hat{i}+2\\hat{j}+3\\hat{k},\\ \\vec{b}=3\\hat{i}+2\\hat{j}+\\hat{k},\\ \\vec{c}=2\\hat{i}+\\hat{j}+3\\hat{k}\\).\n\\(\\vec{b}\\times\\vec{c} = \\hat{i}(2\\times3-1\\times1) - \\hat{j}(3\\times3-1\\times2) + \\hat{k}(3\\times1-2\\times2) = 5\\hat{i}-7\\hat{j}-\\hat{k}\\)\n\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\hat{i}(2\\times(-1)-3\\times(-7)) - \\hat{j}(1\\times(-1)-3\\times5) + \\hat{k}(1\\times(-7)-2\\times5) = 19\\hat{i}+16\\hat{j}-17\\hat{k}\\)\nNow \\(\\vec{a}\\cdot\\vec{c} = 2+2+9=13\\) and \\(\\vec{a}\\cdot\\vec{b}=3+4+3=10\\)\n\\((\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{a}\\cdot\\vec{b})\\vec{c} = 13(3\\hat{i}+2\\hat{j}+\\hat{k}) - 10(2\\hat{i}+\\hat{j}+3\\hat{k}) = 19\\hat{i}+16\\hat{j}-17\\hat{k}\\)\nBoth sides equal \\(19\\hat{i}+16\\hat{j}-17\\hat{k}\\) — Hence \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = (\\vec{a}\\cdot\\vec{c})\\vec{b}-(\\vec{a}\\cdot\\vec{b})\\vec{c}\\) is verified."
+  },
+  {
+    "id": "44d75e15-cdc4-4613-83ed-dcd41b7451c8",
+    "ref": "5.5 Ex.Q9 i)",
+    "solution": "Here \\(\\vec{a}=\\hat{i}-2\\hat{j},\\ \\vec{b}=\\hat{i}+2\\hat{j},\\ \\vec{c}=2\\hat{i}+\\hat{j}-2\\hat{k}\\).\n\\(\\vec{b}\\times\\vec{c} = \\hat{i}(2\\times(-2)-0\\times1) - \\hat{j}(1\\times(-2)-0\\times2) + \\hat{k}(1\\times1-2\\times2) = -4\\hat{i}+2\\hat{j}-3\\hat{k}\\)\n\\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = \\hat{i}((-2)(-3)-0(2)) - \\hat{j}((1)(-3)-0(-4)) + \\hat{k}((1)(2)-(-2)(-4))\\)\n\\(= \\mathbf{6\\hat{i}+3\\hat{j}-6\\hat{k}}\\)"
+  },
+  {
+    "id": "dce3804a-db88-4f20-8672-047e3d33496c",
+    "ref": "5.5 Ex.Q9 ii)",
+    "solution": "\\(\\vec{a}\\times\\vec{b} = \\hat{i}((-2)(0)-0(2)) - \\hat{j}((1)(0)-0(1)) + \\hat{k}((1)(2)-(-2)(1)) = 4\\hat{k}\\)\n\\((\\vec{a}\\times\\vec{b})\\times\\vec{c} = 4\\hat{k}\\times(2\\hat{i}+\\hat{j}-2\\hat{k}) = 8(\\hat{k}\\times\\hat{i}) + 4(\\hat{k}\\times\\hat{j}) - 8(\\hat{k}\\times\\hat{k})\\)\n\\(= 8\\hat{j} - 4\\hat{i} - 0 = \\mathbf{-4\\hat{i}+8\\hat{j}}\\)\nComparing with part (i): \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c}) = 6\\hat{i}+3\\hat{j}-6\\hat{k}\\) but \\((\\vec{a}\\times\\vec{b})\\times\\vec{c} = -4\\hat{i}+8\\hat{j}\\) — the results are **not** the same.\nJustification: cross product is not associative in general. Using \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})=(\\vec{a}\\cdot\\vec{c})\\vec{b}-(\\vec{a}\\cdot\\vec{b})\\vec{c}\\) and \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}=(\\vec{a}\\cdot\\vec{c})\\vec{b}-(\\vec{b}\\cdot\\vec{c})\\vec{a}\\), here \\(\\vec{a}\\cdot\\vec{c}=0,\\ \\vec{a}\\cdot\\vec{b}=-3,\\ \\vec{b}\\cdot\\vec{c}=4\\), so the two expressions reduce to \\(3\\vec{c}\\) and \\(-4\\vec{a}\\) respectively — unequal since \\(3\\vec{c}\\) is not a scalar multiple of \\(\\vec a\\) here. Equality would require \\((\\vec{a}\\cdot\\vec{b})\\vec{c}=(\\vec{b}\\cdot\\vec{c})\\vec{a}\\), which does not hold for these vectors."
+  },
+  {
+    "id": "09a33019-f85a-4e4f-b34c-2a366e340515",
+    "ref": "Misc II Q.34 (a)",
+    "solution": "\\(\\vec{b}\\times\\vec{c}\\) is a vector, so the dot product \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\) is defined.\n**Meaningful — it is a scalar** (this is the scalar triple product \\([\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\))."
+  },
+  {
+    "id": "3487ae51-f341-4234-a1c9-4786adfc2f19",
+    "ref": "Misc II Q.34 (b)",
+    "solution": "\\(\\vec{b}\\cdot\\vec{c}\\) is a scalar. The cross product \\(\\vec{a}\\times(\\text{scalar})\\) is **not defined**, since the cross product is defined only between two vectors.\n**Not meaningful.**"
+  },
+  {
+    "id": "4a733ba5-2202-45a6-91c6-9fd3f0646fa2",
+    "ref": "Misc II Q.34 (c)",
+    "solution": "\\(\\vec{b}\\times\\vec{c}\\) is a vector, so \\(\\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) (a vector triple product) is defined.\n**Meaningful — it is a vector.**"
+  },
+  {
+    "id": "78b42fb8-0692-415c-8997-00eb85b3bc53",
+    "ref": "Misc II Q.34 (d)",
+    "solution": "\\(\\vec{b}\\cdot\\vec{c}\\) is a scalar. The dot product \\(\\vec{a}\\cdot(\\text{scalar})\\) is **not defined**, since the dot product requires two vectors.\n**Not meaningful.**"
+  },
+  {
+    "id": "3ad71cc6-dcb5-44d9-a1cf-9486e656a190",
+    "ref": "Misc II Q.34 (e)",
+    "solution": "\\(\\vec{a}\\cdot\\vec{b}\\) and \\(\\vec{c}\\cdot\\vec{d}\\) are both scalars. The cross product between two scalars is **not defined**.\n**Not meaningful.**"
+  },
+  {
+    "id": "86bb6f8c-952a-4053-82de-c977a11fe134",
+    "ref": "Misc II Q.34 (f)",
+    "solution": "\\(\\vec{a}\\times\\vec{b}\\) and \\(\\vec{c}\\times\\vec{d}\\) are both vectors, so their dot product is defined.\n**Meaningful — it is a scalar.**"
+  },
+  {
+    "id": "7a63674a-3f2a-41a0-8bd6-a76cc1acd23d",
+    "ref": "Misc II Q.34 (g)",
+    "solution": "\\(\\vec{a}\\cdot\\vec{b}\\) is a scalar. \\((\\text{scalar})\\cdot\\vec{c}\\) is **not defined**, since the dot product needs two vectors.\n**Not meaningful.**"
+  },
+  {
+    "id": "7572bcc0-3512-47df-b57f-4f719e8846ee",
+    "ref": "Misc II Q.34 (h)",
+    "solution": "\\(\\vec{a}\\cdot\\vec{b}\\) is a scalar, and multiplying a scalar with the vector \\(\\vec{c}\\) is ordinary scalar multiplication, which is defined.\n**Meaningful — it is a vector.**"
+  },
+  {
+    "id": "94f91e6c-1af7-43ba-b90c-b98266478191",
+    "ref": "Misc II Q.34 (i)",
+    "solution": "\\(|\\vec{a}|\\) and \\(\\vec{b}\\cdot\\vec{c}\\) are both scalars, and the product of two scalars is defined.\n**Meaningful — it is a scalar.**"
+  },
+  {
+    "id": "b5ecf1f1-0c14-423a-9103-a3b3f019219b",
+    "ref": "Misc II Q.34 (j)",
+    "solution": "\\(\\vec{b}+\\vec{c}\\) is a vector, so \\(\\vec{a}\\cdot(\\vec{b}+\\vec{c})\\) is defined.\n**Meaningful — it is a scalar.**"
+  },
+  {
+    "id": "d3f21e8d-efc6-404c-b022-6bea17dd25d5",
+    "ref": "Misc II Q.34 (k)",
+    "solution": "\\(\\vec{a}\\cdot\\vec{b}\\) is a scalar and \\(\\vec{c}\\) is a vector. Adding a scalar and a vector is **not defined**.\n**Not meaningful.**"
+  },
+  {
+    "id": "67cbd3de-7d93-4a49-932d-4d487282bd6d",
+    "ref": "Misc II Q.34 (l)",
+    "solution": "\\(|\\vec{a}|\\) is a scalar and \\(\\vec{b}+\\vec{c}\\) is a vector; multiplying a scalar with a vector is ordinary scalar multiplication, which is defined.\n**Meaningful — it is a vector.**"
+  },
+  {
+    "id": "77ca73bc-e392-45e9-924f-fee1d29776ad",
+    "ref": "Misc II Q.40",
+    "solution": "Volume \\(V(a) = 1\\big(1\\times1-a\\times0\\big) - a\\big(0\\times1-a\\times a\\big) + 1\\big(0\\times0-1\\times a\\big) = 1 + a^3 - a\\)\nDifferentiating: \\(\\dfrac{dV}{da} = 3a^2-1\\)\nFor extremum: \\(3a^2-1=0 \\Rightarrow a^2=\\dfrac13 \\Rightarrow a=\\pm\\dfrac{1}{\\sqrt3}\\)\n\\(\\dfrac{d^2V}{da^2} = 6a\\)\nAt \\(a=\\dfrac{1}{\\sqrt3}\\): \\(\\dfrac{d^2V}{da^2}>0 \\Rightarrow\\) minimum. At \\(a=-\\dfrac{1}{\\sqrt3}\\): \\(\\dfrac{d^2V}{da^2}<0 \\Rightarrow\\) maximum.\n\\(\\therefore\\) Volume is minimum at \\(\\mathbf{a=\\dfrac{1}{\\sqrt3}}\\), the minimum value being \\(1-\\dfrac{2}{3\\sqrt3} = 1-\\dfrac{2\\sqrt3}{9}\\)."
+  },
+  {
+    "id": "779bb1e4-9e4d-4028-a122-628bc1a521ab",
+    "ref": "Misc II Q.41",
+    "solution": "Place the cube with one vertex at the origin \\(O\\), edges of length \\(a\\) along the axes, so the adjacent vertices are \\(P(a,0,0), Q(0,a,0), R(0,0,a)\\).\nThe three face diagonals meeting at \\(O\\) are:\n\\(\\vec{d_1} = \\vec{OP}+\\vec{OQ} = a\\hat{i}+a\\hat{j}\\) (diagonal of the face \\(z=0\\))\n\\(\\vec{d_2} = \\vec{OQ}+\\vec{OR} = a\\hat{j}+a\\hat{k}\\) (diagonal of the face \\(x=0\\))\n\\(\\vec{d_3} = \\vec{OR}+\\vec{OP} = a\\hat{i}+a\\hat{k}\\) (diagonal of the face \\(y=0\\))\nVolume \\(= |[\\vec{d_1}\\ \\vec{d_2}\\ \\vec{d_3}]| = \\big|a(a\\times a-a\\times0) - a(0\\times a-a\\times a) + 0\\big| = |a^3+a^3|\\)\n\\(\\therefore\\) Volume of the parallelepiped \\(= \\mathbf{2a^3}\\) cubic units."
+  },
+  {
+    "id": "4f869c98-a746-46f8-8667-871820bf7e5e",
+    "ref": "Misc II Q.42",
+    "solution": "Since \\((\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = [\\vec{c}\\ \\vec{a}\\ \\vec{b}]\\), and the scalar triple product is unchanged under a cyclic permutation of its vectors, \\([\\vec{c}\\ \\vec{a}\\ \\vec{b}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\).\nAlso \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\), and \\(\\vec{b}\\cdot(\\vec{a}\\times\\vec{c}) = [\\vec{b}\\ \\vec{a}\\ \\vec{c}] = -[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\) (swapping the first two vectors of a scalar triple product reverses its sign).\nSo the given expression becomes:\n\\(\\dfrac{[\\vec{a}\\ \\vec{b}\\ \\vec{c}]}{[\\vec{a}\\ \\vec{b}\\ \\vec{c}]} + \\dfrac{-[\\vec{a}\\ \\vec{b}\\ \\vec{c}]}{[\\vec{a}\\ \\vec{b}\\ \\vec{c}]} = 1 + (-1) = 0\\)\n(Since \\(\\vec{a},\\vec{b},\\vec{c}\\) are non-coplanar, \\([\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\neq0\\), so the division is valid.) — Hence proved."
+  },
+  {
+    "id": "6a4bbbf9-5bdb-4e74-a911-ce493cee95bf",
+    "ref": "Misc II Q.43",
+    "solution": "By the vector triple product identity, \\(\\vec{b}\\times(\\vec{c}\\times\\vec{d}) = (\\vec{b}\\cdot\\vec{d})\\vec{c} - (\\vec{b}\\cdot\\vec{c})\\vec{d}\\)\nSo \\((\\vec{a}\\times\\vec{b})\\cdot(\\vec{c}\\times\\vec{d}) = \\vec{a}\\cdot\\big[\\vec{b}\\times(\\vec{c}\\times\\vec{d})\\big] = \\vec{a}\\cdot\\big[(\\vec{b}\\cdot\\vec{d})\\vec{c}-(\\vec{b}\\cdot\\vec{c})\\vec{d}\\big]\\)\n\\(= (\\vec{b}\\cdot\\vec{d})(\\vec{a}\\cdot\\vec{c}) - (\\vec{b}\\cdot\\vec{c})(\\vec{a}\\cdot\\vec{d}) = (\\vec{a}\\cdot\\vec{c})(\\vec{b}\\cdot\\vec{d}) - (\\vec{a}\\cdot\\vec{d})(\\vec{b}\\cdot\\vec{c})\\)\nThis is exactly the expansion of the \\(2\\times2\\) determinant:\n\\((\\vec{a}\\times\\vec{b})\\cdot(\\vec{c}\\times\\vec{d}) = \\begin{vmatrix}\\vec{a}\\cdot\\vec{c} & \\vec{b}\\cdot\\vec{c}\\\\ \\vec{a}\\cdot\\vec{d} & \\vec{b}\\cdot\\vec{d}\\end{vmatrix}\\) — Hence proved."
+  },
+  {
+    "id": "b874b7cf-0260-4f9d-ab7f-84d8ae83b771",
+    "ref": "Misc II Q.44",
+    "solution": "Coterminus edges: \\(\\vec{a}=\\hat{j}+\\hat{k},\\ \\vec{b}=\\hat{i}+\\hat{k},\\ \\vec{c}=\\hat{i}+\\hat{j}\\), i.e. \\(\\vec{a}=(0,1,1),\\vec{b}=(1,0,1),\\vec{c}=(1,1,0)\\).\n\\([\\vec{a}\\ \\vec{b}\\ \\vec{c}] = 0(0\\times0-1\\times1) - 1(1\\times0-1\\times1) + 1(1\\times1-0\\times1) = 0+1+1 = 2\\)\nVolume of parallelepiped \\(= |2| = \\mathbf{2}\\) cubic units.\nVolume of tetrahedron \\(= \\dfrac{1}{6}|[\\vec{a}\\ \\vec{b}\\ \\vec{c}]| = \\dfrac{1}{6}(2) = \\mathbf{\\dfrac13}\\) cubic units."
+  },
+  {
+    "id": "d23f8d41-af02-46e2-9956-358734b2808e",
+    "ref": "Misc II Q.45",
+    "solution": "Write \\(\\vec{a}+\\vec{b},\\ \\vec{b}+\\vec{c},\\ \\vec{c}+\\vec{a}\\) as linear combinations of \\(\\vec{a},\\vec{b},\\vec{c}\\); the coefficient matrix is\n\\(M=\\begin{pmatrix}1&1&0\\\\ 0&1&1\\\\ 1&0&1\\end{pmatrix}\\)\nBy multilinearity of the scalar triple product, \\([\\vec{a}+\\vec{b}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{c}+\\vec{a}] = \\det(M)\\,[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)\n\\(\\det(M) = 1(1\\times1-1\\times0) - 1(0\\times1-1\\times1) + 0(0\\times0-1\\times1) = 1+1+0 = 2\\)\n\\(\\therefore [\\vec{a}+\\vec{b}\\ \\ \\vec{b}+\\vec{c}\\ \\ \\vec{c}+\\vec{a}] = 2[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\) — Hence proved."
+  },
+  {
+    "id": "6a70af62-bc40-4c0d-af6a-a11950030be6",
+    "ref": "Misc II Q.46",
+    "solution": "Since \\(A,B,C,D\\) are coplanar, the vectors \\(\\vec{AB}=\\vec{b}-\\vec{a},\\ \\vec{AC}=\\vec{c}-\\vec{a},\\ \\vec{AD}=\\vec{d}-\\vec{a}\\) (measured from \\(A\\)) are coplanar, so their scalar triple product is zero:\n\\([\\vec{b}-\\vec{a}\\ \\ \\vec{c}-\\vec{a}\\ \\ \\vec{d}-\\vec{a}] = 0\\)\nExpanding by multilinearity and dropping every term with a repeated \\(\\vec{a}\\) (which vanishes):\n\\([\\vec{b}\\ \\vec{c}\\ \\vec{d}] - [\\vec{b}\\ \\vec{c}\\ \\vec{a}] - [\\vec{b}\\ \\vec{a}\\ \\vec{d}] - [\\vec{a}\\ \\vec{c}\\ \\vec{d}] = 0\\)\nUsing cyclic invariance \\([\\vec{b}\\ \\vec{c}\\ \\vec{a}]=[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\) and antisymmetry \\([\\vec{b}\\ \\vec{a}\\ \\vec{d}]=-[\\vec{a}\\ \\vec{b}\\ \\vec{d}]\\), \\([\\vec{a}\\ \\vec{c}\\ \\vec{d}]=-[\\vec{c}\\ \\vec{a}\\ \\vec{d}]\\):\n\\([\\vec{b}\\ \\vec{c}\\ \\vec{d}] - [\\vec{a}\\ \\vec{b}\\ \\vec{c}] + [\\vec{a}\\ \\vec{b}\\ \\vec{d}] + [\\vec{c}\\ \\vec{a}\\ \\vec{d}] = 0\\)\nRearranging:\n\\([\\vec{a}\\ \\vec{b}\\ \\vec{d}] + [\\vec{b}\\ \\vec{c}\\ \\vec{d}] + [\\vec{c}\\ \\vec{a}\\ \\vec{d}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\) — Hence proved."
+  },
+  {
+    "id": "db580488-287c-4704-bae9-98ed118a177d",
+    "ref": "Misc II Q.47",
+    "solution": "\\((\\vec{a}+\\vec{b})\\times(\\vec{a}+\\vec{c}) = \\vec{a}\\times\\vec{a}+\\vec{a}\\times\\vec{c}+\\vec{b}\\times\\vec{a}+\\vec{b}\\times\\vec{c} = \\vec{a}\\times\\vec{c}-\\vec{a}\\times\\vec{b}+\\vec{b}\\times\\vec{c}\\)\n(since \\(\\vec{a}\\times\\vec{a}=\\vec{0}\\) and \\(\\vec{b}\\times\\vec{a}=-\\vec{a}\\times\\vec{b}\\))\nDot with \\((\\vec{a}+\\vec{b}+\\vec{c})\\), using \\([\\vec{x}\\ \\vec{x}\\ \\vec{y}]=0\\) to drop repeated-vector terms:\n\\((\\vec{a}+\\vec{b}+\\vec{c})\\cdot(\\vec{a}\\times\\vec{c}) = [\\vec{b}\\ \\vec{a}\\ \\vec{c}] = -[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)\n\\((\\vec{a}+\\vec{b}+\\vec{c})\\cdot(\\vec{a}\\times\\vec{b}) = [\\vec{c}\\ \\vec{a}\\ \\vec{b}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)\n\\((\\vec{a}+\\vec{b}+\\vec{c})\\cdot(\\vec{b}\\times\\vec{c}) = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\)\nSo:\n\\((\\vec{a}+\\vec{b}+\\vec{c})\\cdot\\big[(\\vec{a}+\\vec{b})\\times(\\vec{a}+\\vec{c})\\big] = -[\\vec{a}\\ \\vec{b}\\ \\vec{c}] - [\\vec{a}\\ \\vec{b}\\ \\vec{c}] + [\\vec{a}\\ \\vec{b}\\ \\vec{c}] = -[\\vec{a}\\ \\vec{b}\\ \\vec{c}]\\) — Hence proved."
+  }
+]
