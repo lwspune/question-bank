@@ -25,6 +25,14 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-07-06
 
+### Build the `/board` "PYQs by year" section into the reader
+
+The `/board` textbook-solutions reader ([[board-reader]]) renders only textbook `section_*` rows (`question_kind='practice'`). When board previous-year papers are ingested (the `Question_Paper/` DOCX compilation, as `question_kind='pyq'` with `pyq_year`), they will NOT auto-appear — `getBoardChapter` filters on `section_seq IS NOT NULL`, which PYQs won't carry. The reader design always intended a terminal "PYQs" section grouped by year, but it's unbuilt.
+
+**Why:** board PYQs are the natural next State Board phase and a big draw (Maharashtra HSC aspirants want the actual board papers, not just the textbook). Without the reader addition they'd be browsable only via `/browse`, defeating the book-faithful reading experience.
+
+**How to apply:** in `src/lib/board/query.ts`, extend `getBoardChapter` to also fetch the chapter's `question_kind='pyq'` rows and return them as a trailing group keyed by `pyq_year` (desc); render that group in `BoardReader.tsx` below the textbook sections (reuse the block/reveal components). No schema change — `pyq_year` already exists. Keep `board:lint` `practice`-scoped (PYQs legitimately have no `section_*`). Small, self-contained; do it when the first board PYQ batch lands.
+
 ### ~~Extend `quiz:lint` / `stemLint` to catch non-standalone stems + correct-option tells~~ — **DONE 2026-07-06**
 
 Shipped: `flagStem` extended with Defect-A checks (orphan opener, dangling "inside it", references-an-object-not-shown-inline gated on no `\begin{…}`) + new pure `flagOptionTell(options, answer)` for Defect B (parenthetical/dash/arrow aside only the correct option carries; semicolon tried + dropped as a FP source); wired both into `quiz:lint` (added `options`+`answer` to its select); 12 new TDD cases (26 total green), lint+typecheck clean. `src/lib/quiz/stemLint.ts` + `scripts/quiz/lint.ts` + `tests/quiz-stem-lint.test.ts`.
