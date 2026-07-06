@@ -31,6 +31,16 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 2 (B)", label: "Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II"] },
   ],
 
+  // ── Ch.5 Application of Definite Integration — one section (5.1) with Solved
+  //    Examples → Exercise 5.1, then a terminal Miscellaneous Exercise 5
+  //    (I MCQ / II subjective). Verified against Ch_05_Application_of_Definite_Integration.pdf.
+  "app-def-integration-12": [
+    { group: "5.1 Area under the Curve", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 Solved"] },
+    { group: "5.1 Area under the Curve", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["5.1 Exercise 5.1"] },
+    { group: "Miscellaneous Exercise 5", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc I ("] },
+    { group: "Miscellaneous Exercise 5", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II"] },
+  ],
+
   // ── Ch.1 Mathematical Logic — verified against Ch_01_Mathematical_Logic.pdf.
   //    5 numbered sections (each Solved Examples → Exercise); terminal
   //    Miscellaneous Exercise 1 (I = MCQ, II = subjective Q.2–Q.17). The 1.3/1.4

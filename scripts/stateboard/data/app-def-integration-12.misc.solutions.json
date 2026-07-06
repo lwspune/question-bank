@@ -1,0 +1,72 @@
+[
+  {
+    "id": "986548fe-7e11-4a55-917c-399c0e73ae0a",
+    "ref": "Misc II Q.1 (i)",
+    "solution": "The region is the rectangle \\(0 \\le x \\le 5,\\ 0 \\le y \\le 2\\).\nTaking the area under \\(y=2\\) from \\(x=0\\) to \\(x=5\\):\n\\(A = \\int_0^5 y\\,dx = \\int_0^5 2\\,dx = [\\,2x\\,]_0^5 = 10 - 0 = 10\\).\n\\(A = 10\\) sq. units."
+  },
+  {
+    "id": "3f077262-eb15-463a-a644-541bc3463b57",
+    "ref": "Misc II Q.1 (ii)",
+    "solution": "Region under \\(y=\\sin x\\), the X-axis, from \\(x=0\\) to \\(x=\\pi\\).\n\\(A = \\int_0^{\\pi} y\\,dx = \\int_0^{\\pi} \\sin x\\,dx = [\\,-\\cos x\\,]_0^{\\pi} = -\\cos\\pi + \\cos 0 = -(-1) + 1 = 2\\).\n\\(A = 2\\) sq. units."
+  },
+  {
+    "id": "24989673-0055-4cc0-865d-a8443005eb75",
+    "ref": "Misc II Q.1 (iii)",
+    "solution": "Region under \\(y=\\sin x\\), the X-axis, from \\(x=0\\) to \\(x=\\dfrac{\\pi}{3}\\).\n\\(A = \\int_0^{\\pi/3} \\sin x\\,dx = [\\,-\\cos x\\,]_0^{\\pi/3} = -\\cos\\dfrac{\\pi}{3} + \\cos 0 = -\\dfrac{1}{2} + 1 = \\dfrac{1}{2}\\).\n\\(A = \\dfrac{1}{2}\\) sq. units."
+  },
+  {
+    "id": "9b1185ff-fd28-424b-8f03-eeac88cfd32e",
+    "ref": "Misc II Q.2",
+    "solution": "The circle \\(x^2+y^2=9\\) has radius \\(3\\) and is symmetric about both axes, so its area is \\(4\\) times the first-quadrant area where \\(y=\\sqrt{9-x^2}\\).\n\\(A = 4\\int_0^3 y\\,dx = 4\\int_0^3 \\sqrt{9-x^2}\\,dx\\).\nUsing \\(\\int \\sqrt{a^2-x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2-x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a=3\\):\n\\(A = 4\\left[\\dfrac{x}{2}\\sqrt{9-x^2} + \\dfrac{9}{2}\\sin^{-1}\\dfrac{x}{3}\\right]_0^3 = 4\\left[\\,0 + \\dfrac{9}{2}\\sin^{-1}(1)\\,\\right] = 4\\cdot\\dfrac{9}{2}\\cdot\\dfrac{\\pi}{2} = 9\\pi\\).\n\\(A = 9\\pi\\) sq. units."
+  },
+  {
+    "id": "c8918a05-649c-4eb1-af29-c0fc4f307630",
+    "ref": "Misc II Q.3",
+    "solution": "For the ellipse \\(\\dfrac{x^2}{25}+\\dfrac{y^2}{16}=1\\), \\(a=5,\\ b=4\\). In the first quadrant \\(y = \\dfrac{4}{5}\\sqrt{25-x^2}\\). By symmetry about both axes the area is \\(4\\) times the first-quadrant area.\n\\(A = 4\\int_0^5 \\dfrac{4}{5}\\sqrt{25-x^2}\\,dx = \\dfrac{16}{5}\\left[\\dfrac{x}{2}\\sqrt{25-x^2} + \\dfrac{25}{2}\\sin^{-1}\\dfrac{x}{5}\\right]_0^5\\).\n\\(= \\dfrac{16}{5}\\left[\\,0 + \\dfrac{25}{2}\\cdot\\dfrac{\\pi}{2}\\,\\right] = \\dfrac{16}{5}\\cdot\\dfrac{25\\pi}{4} = 20\\pi\\).\n\\(A = 20\\pi\\) sq. units."
+  },
+  {
+    "id": "242d2338-c440-4720-a32a-b3204f80433f",
+    "ref": "Misc II Q.4 (i)",
+    "solution": "Curves: \\(y^2=4x\\) and \\(x^2=4y\\). For intersection put \\(y=\\dfrac{x^2}{4}\\) in \\(y^2=4x\\): \\(\\dfrac{x^4}{16}=4x \\Rightarrow x^4=64x \\Rightarrow x(x^3-64)=0 \\Rightarrow x=0,\\ 4\\). Points \\((0,0)\\) and \\((4,4)\\).\nBetween them the upper curve is \\(y=2\\sqrt{x}\\) (from \\(y^2=4x\\)) and the lower is \\(y=\\dfrac{x^2}{4}\\).\n\\(A = \\int_0^4\\left(2\\sqrt{x}-\\dfrac{x^2}{4}\\right)dx = \\left[\\dfrac{4}{3}x^{3/2} - \\dfrac{x^3}{12}\\right]_0^4 = \\dfrac{4}{3}(8) - \\dfrac{64}{12} = \\dfrac{32}{3} - \\dfrac{16}{3} = \\dfrac{16}{3}\\).\n\\(A = \\dfrac{16}{3}\\) sq. units."
+  },
+  {
+    "id": "04cdfd12-c120-46d9-b950-228594f8fbc4",
+    "ref": "Misc II Q.4 (ii)",
+    "solution": "Curves: \\(4y^2=9x\\) and \\(3x^2=16y\\). From the first \\(x=\\dfrac{4y^2}{9}\\); put in the second: \\(3\\left(\\dfrac{4y^2}{9}\\right)^2=16y \\Rightarrow \\dfrac{48y^4}{81}=16y \\Rightarrow y^4=27y \\Rightarrow y(y^3-27)=0 \\Rightarrow y=0,\\ 3\\). Then \\(x=0,\\ 4\\); points \\((0,0)\\) and \\((4,3)\\).\nBetween them the upper curve is \\(y=\\dfrac{3}{2}\\sqrt{x}\\) (from \\(4y^2=9x\\)) and the lower is \\(y=\\dfrac{3x^2}{16}\\) (from \\(3x^2=16y\\)).\n\\(A = \\int_0^4\\left(\\dfrac{3}{2}\\sqrt{x}-\\dfrac{3x^2}{16}\\right)dx = \\left[x^{3/2} - \\dfrac{x^3}{16}\\right]_0^4 = 8 - \\dfrac{64}{16} = 8 - 4 = 4\\).\n\\(A = 4\\) sq. units."
+  },
+  {
+    "id": "7a362922-8839-406c-9d2e-95c502b813b1",
+    "ref": "Misc II Q.4 (iii)",
+    "solution": "Curves: \\(y^2=x\\) and \\(x^2=y\\). For intersection put \\(y=x^2\\) in \\(y^2=x\\): \\(x^4=x \\Rightarrow x(x^3-1)=0 \\Rightarrow x=0,\\ 1\\). Points \\((0,0)\\) and \\((1,1)\\).\nBetween them the upper curve is \\(y=\\sqrt{x}\\) (from \\(y^2=x\\)) and the lower is \\(y=x^2\\).\n\\(A = \\int_0^1(\\sqrt{x}-x^2)\\,dx = \\left[\\dfrac{2}{3}x^{3/2}-\\dfrac{x^3}{3}\\right]_0^1 = \\dfrac{2}{3}-\\dfrac{1}{3} = \\dfrac{1}{3}\\).\n\\(A = \\dfrac{1}{3}\\) sq. units."
+  },
+  {
+    "id": "10aab068-f996-4655-8371-9a13abc56882",
+    "ref": "Misc II Q.5",
+    "solution": "Region in the first quadrant bounded by the circle \\(x^2+y^2=4\\) (radius \\(2\\)), the X-axis and the line \\(x=\\sqrt{3}\\,y\\).\nThe line meets the circle where \\(3y^2+y^2=4 \\Rightarrow y=1,\\ x=\\sqrt{3}\\), i.e. at \\((\\sqrt{3},1)\\); the line makes \\(30^\\circ\\) with the X-axis.\nSplit the region at \\(x=\\sqrt{3}\\): under the line \\(y=\\dfrac{x}{\\sqrt{3}}\\) for \\(0\\le x\\le\\sqrt{3}\\), and under the circle \\(y=\\sqrt{4-x^2}\\) for \\(\\sqrt{3}\\le x\\le 2\\).\n\\(A = \\int_0^{\\sqrt{3}}\\dfrac{x}{\\sqrt{3}}\\,dx + \\int_{\\sqrt{3}}^{2}\\sqrt{4-x^2}\\,dx\\).\n\\(\\int_0^{\\sqrt{3}}\\dfrac{x}{\\sqrt{3}}\\,dx = \\dfrac{1}{\\sqrt{3}}\\left[\\dfrac{x^2}{2}\\right]_0^{\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}\\cdot\\dfrac{3}{2} = \\dfrac{\\sqrt{3}}{2}\\).\n\\(\\int_{\\sqrt{3}}^{2}\\sqrt{4-x^2}\\,dx = \\left[\\dfrac{x}{2}\\sqrt{4-x^2} + 2\\sin^{-1}\\dfrac{x}{2}\\right]_{\\sqrt{3}}^{2} = \\left(0+2\\cdot\\dfrac{\\pi}{2}\\right) - \\left(\\dfrac{\\sqrt{3}}{2}+2\\cdot\\dfrac{\\pi}{3}\\right) = \\pi - \\dfrac{\\sqrt{3}}{2} - \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{3} - \\dfrac{\\sqrt{3}}{2}\\).\n\\(A = \\dfrac{\\sqrt{3}}{2} + \\left(\\dfrac{\\pi}{3} - \\dfrac{\\sqrt{3}}{2}\\right) = \\dfrac{\\pi}{3}\\).\n\\(A = \\dfrac{\\pi}{3}\\) sq. units."
+  },
+  {
+    "id": "6c6b30b1-4e51-44a7-8c00-404579c66287",
+    "ref": "Misc II Q.6",
+    "solution": "Parabola \\(y^2=x\\) and line \\(y=x\\) meet where \\(y^2=y \\Rightarrow y=0,\\ 1\\); points \\((0,0)\\) and \\((1,1)\\). In the first quadrant the parabola \\(y=\\sqrt{x}\\) lies above the line \\(y=x\\).\n\\(A = \\int_0^1(\\sqrt{x}-x)\\,dx = \\left[\\dfrac{2}{3}x^{3/2}-\\dfrac{x^2}{2}\\right]_0^1 = \\dfrac{2}{3}-\\dfrac{1}{2} = \\dfrac{1}{6}\\).\n\\(A = \\dfrac{1}{6}\\) sq. units."
+  },
+  {
+    "id": "99624c22-c8d5-4128-b85d-a7cbd767bde4",
+    "ref": "Misc II Q.7",
+    "solution": "Circle \\(x^2+y^2=1\\) and line \\(x+y=1\\) meet in the first quadrant at \\((1,0)\\) and \\((0,1)\\). Between them the circle \\(y=\\sqrt{1-x^2}\\) is above the line \\(y=1-x\\).\n\\(A = \\int_0^1\\left[\\sqrt{1-x^2}-(1-x)\\right]dx\\).\n\\(\\int_0^1\\sqrt{1-x^2}\\,dx = \\left[\\dfrac{x}{2}\\sqrt{1-x^2}+\\dfrac{1}{2}\\sin^{-1}x\\right]_0^1 = 0 + \\dfrac{1}{2}\\cdot\\dfrac{\\pi}{2} = \\dfrac{\\pi}{4}\\).\n\\(\\int_0^1(1-x)\\,dx = \\left[x-\\dfrac{x^2}{2}\\right]_0^1 = 1-\\dfrac{1}{2} = \\dfrac{1}{2}\\).\n\\(A = \\dfrac{\\pi}{4} - \\dfrac{1}{2}\\).\n\\(A = \\dfrac{\\pi}{4} - \\dfrac{1}{2}\\) sq. units."
+  },
+  {
+    "id": "abb9e97a-6af2-43ac-97ab-f2909cc199dd",
+    "ref": "Misc II Q.8",
+    "solution": "Parabola \\((y-1)^2=4(x+1)\\) (vertex \\((-1,1)\\), opening to the right) and line \\(y=x-1\\), i.e. \\(x=y+1\\).\nIntersections: \\((y-1)^2=4(y+1+1)=4y+8 \\Rightarrow y^2-2y+1=4y+8 \\Rightarrow y^2-6y-7=0 \\Rightarrow (y-7)(y+1)=0 \\Rightarrow y=-1,\\ 7\\), giving points \\((0,-1)\\) and \\((8,7)\\).\nIntegrate with respect to \\(y\\); the line \\(x=y+1\\) lies to the right of the parabola \\(x=\\dfrac{(y-1)^2}{4}-1\\).\n\\(A = \\int_{-1}^{7}\\left[(y+1)-\\left(\\dfrac{(y-1)^2}{4}-1\\right)\\right]dy = \\int_{-1}^{7}\\left[y+2-\\dfrac{(y-1)^2}{4}\\right]dy = \\dfrac{1}{4}\\int_{-1}^{7}(-y^2+6y+7)\\,dy\\).\n\\(= \\dfrac{1}{4}\\left[-\\dfrac{y^3}{3}+3y^2+7y\\right]_{-1}^{7} = \\dfrac{1}{4}\\left[\\dfrac{245}{3}-\\left(-\\dfrac{11}{3}\\right)\\right] = \\dfrac{1}{4}\\cdot\\dfrac{256}{3} = \\dfrac{64}{3}\\).\n\\(A = \\dfrac{64}{3}\\) sq. units."
+  },
+  {
+    "id": "9b90ca81-05f5-4613-b7c5-85ddab408d6d",
+    "ref": "Misc II Q.9",
+    "solution": "Line \\(2y=5x+7 \\Rightarrow y=\\dfrac{5x+7}{2}\\), bounded by the X-axis and the lines \\(x=2,\\ x=5\\).\n\\(A = \\int_2^5 y\\,dx = \\int_2^5 \\dfrac{5x+7}{2}\\,dx = \\dfrac{1}{2}\\left[\\dfrac{5x^2}{2}+7x\\right]_2^5\\).\n\\(= \\dfrac{1}{2}\\left[\\left(\\dfrac{125}{2}+35\\right)-\\left(10+14\\right)\\right] = \\dfrac{1}{2}\\left[\\dfrac{195}{2}-24\\right] = \\dfrac{1}{2}\\cdot\\dfrac{147}{2} = \\dfrac{147}{4}\\).\n\\(A = \\dfrac{147}{4}\\) sq. units."
+  },
+  {
+    "id": "fde904fa-6285-4a40-b448-32b82c9ac6c2",
+    "ref": "Misc II Q.10",
+    "solution": "Curve \\(y=4x^2 \\Rightarrow x^2=\\dfrac{y}{4} \\Rightarrow x=\\dfrac{\\sqrt{y}}{2}\\) (first quadrant), bounded by the Y-axis and the lines \\(y=1,\\ y=4\\). Integrate with respect to \\(y\\):\n\\(A = \\int_1^4 x\\,dy = \\int_1^4 \\dfrac{\\sqrt{y}}{2}\\,dy = \\dfrac{1}{2}\\left[\\dfrac{2}{3}y^{3/2}\\right]_1^4 = \\dfrac{1}{3}\\left[y^{3/2}\\right]_1^4 = \\dfrac{1}{3}(8-1) = \\dfrac{7}{3}\\).\n\\(A = \\dfrac{7}{3}\\) sq. units."
+  }
+]

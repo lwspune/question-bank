@@ -119,6 +119,22 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.5 Application of Definite Integration (12th, Part 2). HEAVILY GRAPHICAL
+  //    — nearly every problem is an area/shaded-region diagram (area under a curve
+  //    + area between curves). One teaching section (5.1) + Exercise 5.1 + a
+  //    Miscellaneous exercise (I MCQ / II subjective). Authored solution-region
+  //    diagrams (like Linear Programming's feasible regions) via a matplotlib area
+  //    renderer → solution_image_url. Math as LaTeX (integrals, √, area formulas).
+  "app-def-integration-12": {
+    id: "app-def-integration-12",
+    chapterName: "Application of Definite Integration",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Application_of_Definite_Integration.pdf",
+    pdf: cls12("Part 02/Ch_05_Application_of_Definite_Integration.pdf"),
+    note: "Maharashtra State Board (Class 12) — Application of Definite Integration (Balbharati textbook)",
+    subtopics: ["Area Under a Curve", "Area Between Two Curves"],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).
