@@ -46,6 +46,8 @@ export default async function AppHeader() {
           bankHref={examContext.bankHref}
           guidesHref={examContext.guidesHref}
           notesHref={examContext.notesHref}
+          boardHref={examContext.boardHref}
+          showBoard={examContext.showBoard}
           showPapers={!!member}
         />
 

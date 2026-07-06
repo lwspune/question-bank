@@ -141,6 +141,115 @@ export function buildRecords(chapter: BuildChapter, questions: SBQuestion[]): Bu
   return { rows, flags };
 }
 
+// ── Book-faithful section structure (the /board reader) ──────────────────────
+//
+// /board renders a chapter the way the book is laid out: each numbered section
+// (2.1, 2.2, …) shows its Solved Examples then its Exercise, and the chapter
+// ends with the Miscellaneous Exercise. That axis is ORTHOGONAL to the
+// conceptual `subtopic` (a single book Exercise is split across subtopics), so
+// it can't be derived from subtopic — and the `question_number`/`ref` strings
+// are too inconsistent across chapters to parse reliably (`2.1 Ex 2.1 Q.1` vs
+// `6.4 Exercise 6.3` vs `7.1 Feasible Ex.1`). So each chapter carries an authored,
+// PDF-verified `sections[]` outline (the book's table of contents, in reading
+// order); `assignSections` maps every question's ref into a block. Going forward
+// the transcription agents emit this outline natively — same shape, captured at
+// ingest. migration 0043 = the section_kind/group/label/seq columns.
+
+export type SectionKind = "solved_example" | "exercise" | "miscellaneous";
+
+/** One book block (a section's Solved Examples, an Exercise, or a Miscellaneous
+ *  sub-block), listed in book reading order. A question belongs to this block
+ *  when its `ref` starts with any string in `refPrefixes`. */
+export type SectionSpec = {
+  /** Book-section header that owns the /board group, e.g. "2.1 Elementary
+   *  Transformations of a Matrix" or "Miscellaneous Exercise 2". */
+  group: string;
+  /** Sub-block heading, e.g. "Exercise 2.1", "Solved Examples", "Multiple
+   *  Choice Questions". */
+  label: string;
+  kind: SectionKind;
+  /** Ref prefixes routed to this block. Longest matching prefix wins, so a
+   *  broader block ("2.2 ") and a narrower one can coexist. */
+  refPrefixes: string[];
+};
+
+export type SectionAssignment = {
+  ref: string;
+  sectionKind: SectionKind;
+  sectionGroup: string;
+  sectionLabel: string;
+  sectionSeq: number; // 1-based block position in book order (= index in specs)
+};
+
+export type AssignSectionsResult = {
+  assignments: SectionAssignment[];
+  /** Refs that matched no spec — must be resolved (never silently bucketed). */
+  unmatched: string[];
+  /** Refs whose matched block kind contradicts the transcription bucket
+   *  (solved_example ⟺ bucket 'solved'); a manifest-vs-transcription mismatch. */
+  mismatches: { ref: string; reason: string }[];
+  /** Specs that matched zero questions — a stale/typo'd outline entry. */
+  emptySpecs: string[];
+};
+
+function bucketMatchesKind(bucket: Bucket, kind: SectionKind): boolean {
+  return kind === "solved_example" ? bucket === "solved" : bucket !== "solved";
+}
+
+/**
+ * Map each transcribed question onto its book block via the chapter's authored
+ * `sections[]` outline. Pure. `sectionSeq` is the block's 1-based position in
+ * the outline (= book reading order); question order WITHIN a block stays
+ * source_row. Longest-matching-prefix wins so overlapping prefixes are safe.
+ */
+export function assignSections(
+  items: { ref: string; bucket: Bucket }[],
+  specs: SectionSpec[]
+): AssignSectionsResult {
+  const assignments: SectionAssignment[] = [];
+  const unmatched: string[] = [];
+  const mismatches: { ref: string; reason: string }[] = [];
+  const usedSpec = new Set<number>();
+
+  for (const { ref, bucket } of items) {
+    let best = -1;
+    let bestLen = -1;
+    specs.forEach((spec, i) => {
+      for (const prefix of spec.refPrefixes) {
+        if (ref.startsWith(prefix) && prefix.length > bestLen) {
+          best = i;
+          bestLen = prefix.length;
+        }
+      }
+    });
+    if (best < 0) {
+      unmatched.push(ref);
+      continue;
+    }
+    usedSpec.add(best);
+    const spec = specs[best];
+    if (!bucketMatchesKind(bucket, spec.kind)) {
+      mismatches.push({
+        ref,
+        reason: `bucket '${bucket}' does not match block kind '${spec.kind}' ("${spec.label}")`,
+      });
+    }
+    assignments.push({
+      ref,
+      sectionKind: spec.kind,
+      sectionGroup: spec.group,
+      sectionLabel: spec.label,
+      sectionSeq: best + 1,
+    });
+  }
+
+  const emptySpecs = specs
+    .map((s, i) => (usedSpec.has(i) ? null : `${s.group} — ${s.label}`))
+    .filter((s): s is string => s !== null);
+
+  return { assignments, unmatched, mismatches, emptySpecs };
+}
+
 /** Collect LaTeX-delimiter imbalances across every text field of every row —
  *  a pre-commit guard against transcription typos before they hit the renderer. */
 export function latexImbalances(rows: ParsedRowPayload[]): string[] {

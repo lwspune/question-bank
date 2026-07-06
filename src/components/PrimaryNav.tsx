@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, FileText, NotebookPen } from "lucide-react";
+import { BookOpen, Compass, FileText, Library, NotebookPen } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 
 type Props = {
   bankHref: string;
   guidesHref: string;
   notesHref: string;
+  boardHref: string;
+  /** The active exam is a school board — surfaces the "Board" reader tab. */
+  showBoard?: boolean;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
    *  or students would dead-end them. */
@@ -26,6 +29,8 @@ export default function PrimaryNav({
   bankHref,
   guidesHref,
   notesHref,
+  boardHref,
+  showBoard = false,
   showPapers = false,
 }: Props) {
   const pathname = usePathname() ?? "/";
@@ -35,6 +40,10 @@ export default function PrimaryNav({
     { id: "bank", label: "Bank", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
+    // Board reader — only for school-board exams (textbook, book-faithful view).
+    ...(showBoard
+      ? [{ id: "board" as const, label: "Board", href: boardHref, Icon: Library }]
+      : []),
     ...(showPapers
       ? [
           {
