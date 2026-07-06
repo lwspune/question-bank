@@ -1,0 +1,288 @@
+[
+  {
+    "ref": "3.2 SolvedEx.Polar.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "EASY",
+    "stem": "Find the Cartesian co-ordinates of the point whose polar co-ordinates are \\(\\left(2, \\dfrac{\\pi}{4}\\right)\\).",
+    "solution": "Given \\(r = 2\\) and \\(\\theta = \\dfrac{\\pi}{4}\\).\nUsing \\(x = r\\cos\\theta\\) and \\(y = r\\sin\\theta\\), we get\n\\(x = 2\\cos\\dfrac{\\pi}{4} = 2 \\times \\dfrac{1}{\\sqrt{2}} = \\sqrt{2}\\) and \\(y = 2\\sin\\dfrac{\\pi}{4} = 2 \\times \\dfrac{1}{\\sqrt{2}} = \\sqrt{2}\\).\nThe required Cartesian co-ordinates are \\(\\left(\\sqrt{2}, \\sqrt{2}\\right)\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Polar.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "MODERATE",
+    "stem": "Find the polar co-ordinates of the point whose Cartesian co-ordinates are \\(\\left(\\dfrac{1}{\\sqrt{2}}, \\dfrac{-1}{\\sqrt{2}}\\right)\\).",
+    "solution": "From the co-ordinates of the given point we observe that the point lies in the fourth quadrant.\n\\(r^2 = x^2 + y^2 = \\left(\\dfrac{1}{\\sqrt{2}}\\right)^2 + \\left(-\\dfrac{1}{\\sqrt{2}}\\right)^2 = \\dfrac{1}{2} + \\dfrac{1}{2} = 1\\), so \\(r = 1\\).\nSince \\(x = r\\cos\\theta\\) and \\(y = r\\sin\\theta\\), \\(\\dfrac{1}{\\sqrt{2}} = 1 \\times \\cos\\theta\\) and \\(-\\dfrac{1}{\\sqrt{2}} = 1 \\times \\sin\\theta\\).\nHence \\(\\cos\\theta = \\dfrac{1}{\\sqrt{2}}\\) and \\(\\sin\\theta = -\\dfrac{1}{\\sqrt{2}}\\), so \\(\\theta = \\dfrac{7\\pi}{4}\\).\nThe required polar co-ordinates are \\(\\left(1, \\dfrac{7\\pi}{4}\\right)\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Sine.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "EASY",
+    "stem": "In \\(\\triangle ABC\\), if \\(A = 30^\\circ\\), \\(B = 60^\\circ\\) then find the ratio of sides.",
+    "solution": "To find \\(a : b : c\\). Given \\(A = 30^\\circ\\), \\(B = 60^\\circ\\).\nAs \\(A, B, C\\) are angles of the triangle, \\(A + B + C = 180^\\circ\\), so \\(C = 90^\\circ\\).\nBy Sine rule, \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}\\).\n\\(\\therefore \\dfrac{a}{\\sin 30^\\circ} = \\dfrac{b}{\\sin 60^\\circ} = \\dfrac{c}{\\sin 90^\\circ}\\), i.e. \\(\\dfrac{a}{\\tfrac{1}{2}} = \\dfrac{b}{\\tfrac{\\sqrt{3}}{2}} = \\dfrac{c}{1}\\).\n\\(\\therefore a : b : c = \\dfrac{1}{2} : \\dfrac{\\sqrt{3}}{2} : 1 = 1 : \\sqrt{3} : 2\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Sine.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "EASY",
+    "stem": "In \\(\\triangle ABC\\), if \\(a = 2\\), \\(b = 3\\) and \\(\\sin A = \\dfrac{2}{3}\\) then find \\(B\\).",
+    "solution": "By sine rule, \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B}\\).\n\\(\\therefore \\dfrac{2}{\\tfrac{2}{3}} = \\dfrac{3}{\\sin B}\\), which gives \\(\\sin B = 1\\).\n\\(\\therefore B = 90^\\circ = \\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Sine.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(a(\\sin B - \\sin C) + b(\\sin C - \\sin A) + c(\\sin A - \\sin B) = 0\\).",
+    "solution": "L.H.S. \\(= a(\\sin B - \\sin C) + b(\\sin C - \\sin A) + c(\\sin A - \\sin B)\\)\n\\(= a\\sin B - a\\sin C + b\\sin C - b\\sin A + c\\sin A - c\\sin B\\)\n\\(= (a\\sin B - b\\sin A) + (b\\sin C - c\\sin B) + (c\\sin A - a\\sin C)\\).\nBy the sine rule each bracket is zero (\\(a\\sin B = b\\sin A\\), \\(b\\sin C = c\\sin B\\), \\(c\\sin A = a\\sin C\\)).\n\\(= 0 + 0 + 0 = 0 = \\) R.H.S."
+  },
+  {
+    "ref": "3.2 SolvedEx.Sine.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), prove that \\((a - b)\\sin C + (b - c)\\sin A + (c - a)\\sin B = 0\\).",
+    "solution": "L.H.S. \\(= (a - b)\\sin C + (b - c)\\sin A + (c - a)\\sin B\\)\n\\(= (a\\sin C - b\\sin C) + (b\\sin A - c\\sin A) + (c\\sin B - a\\sin B)\\)\n\\(= (a\\sin C - c\\sin A) + (b\\sin A - a\\sin B) + (c\\sin B - b\\sin C)\\).\nBy the sine rule each bracket is zero.\n\\(= 0 + 0 + 0 = 0 = \\) R.H.S."
+  },
+  {
+    "ref": "3.2 SolvedEx.Cosine.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), if \\(a = 2\\), \\(b = 3\\), \\(c = 4\\) then prove that the triangle is obtuse angled.",
+    "solution": "We know that the angle opposite to the largest side of a triangle is the largest angle of the triangle.\nHere side \\(AB\\) (\\(= c\\)) is the largest side, so \\(C\\) is the largest angle. We show \\(C\\) is obtuse.\n\\(\\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab} = \\dfrac{2^2 + 3^2 - 4^2}{2(3)(4)} = \\dfrac{-3}{24} = -\\dfrac{1}{8}\\).\nAs \\(\\cos C\\) is negative, \\(C\\) is an obtuse angle.\n\\(\\therefore \\triangle ABC\\) is an obtuse angled triangle."
+  },
+  {
+    "ref": "3.2 SolvedEx.Cosine.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), if \\(A = 60^\\circ\\), \\(b = 3\\) and \\(c = 8\\) then find \\(a\\). Also find the circumradius of the triangle.",
+    "solution": "By Cosine rule, \\(a^2 = b^2 + c^2 - 2bc\\cos A\\).\n\\(a^2 = 3^2 + 8^2 - 2(3)(8)\\cos 60^\\circ = 9 + 64 - 48 \\times \\dfrac{1}{2} = 73 - 24 = 49\\).\n\\(\\therefore a = 7\\).\nNow by sine rule \\(\\dfrac{a}{\\sin A} = 2R\\), so \\(\\dfrac{7}{\\sin 60^\\circ} = 2R\\), i.e. \\(\\dfrac{7}{\\tfrac{\\sqrt{3}}{2}} = 2R\\).\n\\(\\therefore R = \\dfrac{7}{\\sqrt{3}} = \\dfrac{7\\sqrt{3}}{3}\\).\nThe circumradius of \\(\\triangle ABC\\) is \\(\\dfrac{7\\sqrt{3}}{3}\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Cosine.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(a(b\\cos C - c\\cos B) = b^2 - c^2\\).",
+    "solution": "L.H.S. \\(= a(b\\cos C - c\\cos B) = ab\\cos C - ac\\cos B\\)\n\\(= \\dfrac{1}{2}(2ab\\cos C - 2ac\\cos B)\\)\n\\(= \\dfrac{1}{2}\\{(a^2 + b^2 - c^2) - (c^2 + a^2 - b^2)\\}\\)\n\\(= \\dfrac{1}{2}\\{a^2 + b^2 - c^2 - c^2 - a^2 + b^2\\}\\)\n\\(= \\dfrac{1}{2}\\{2b^2 - 2c^2\\} = b^2 - c^2 = \\) R.H.S."
+  },
+  {
+    "ref": "3.2 SolvedEx.Projection.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), prove that \\((a + b)\\cos C + (b + c)\\cos A + (c + a)\\cos B = a + b + c\\).",
+    "solution": "L.H.S. \\(= (a + b)\\cos C + (b + c)\\cos A + (c + a)\\cos B\\)\n\\(= (a\\cos C + b\\cos C) + (b\\cos A + c\\cos A) + (c\\cos B + a\\cos B)\\)\n\\(= (a\\cos C + c\\cos A) + (b\\cos A + a\\cos B) + (c\\cos B + b\\cos C)\\).\nBy the projection rule, \\(a\\cos C + c\\cos A = b\\), \\(b\\cos A + a\\cos B = c\\), \\(c\\cos B + b\\cos C = a\\).\n\\(= a + b + c = \\) R.H.S."
+  },
+  {
+    "ref": "3.2 SolvedEx.Projection.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(a(\\cos C - \\cos B) = 2(b - c)\\cos^2\\left(\\dfrac{A}{2}\\right)\\).",
+    "solution": "By Projection rule, \\(a\\cos C + c\\cos A = b\\) and \\(a\\cos B + b\\cos A = c\\).\n\\(\\therefore a\\cos C = b - c\\cos A\\) and \\(a\\cos B = c - b\\cos A\\).\nL.H.S. \\(= a(\\cos C - \\cos B) = a\\cos C - a\\cos B\\)\n\\(= (b - c\\cos A) - (c - b\\cos A)\\)\n\\(= b - c\\cos A - c + b\\cos A\\)\n\\(= (b - c) + (b - c)\\cos A\\)\n\\(= (b - c)(1 + \\cos A)\\)\n\\(= (b - c) \\times 2\\cos^2\\dfrac{A}{2}\\)\n\\(= 2(b - c)\\cos^2\\dfrac{A}{2} = \\) R.H.S."
+  },
+  {
+    "ref": "3.2 SolvedEx.Projection.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "Prove the Cosine rule using the Projection rule.",
+    "solution": "Given: In \\(\\triangle ABC\\), \\(a = b\\cos C + c\\cos B\\), \\(b = c\\cos A + a\\cos C\\), \\(c = a\\cos B + b\\cos A\\).\nMultiply these equations by \\(a, b, c\\) respectively:\n\\(a^2 = ab\\cos C + ac\\cos B\\)\n\\(b^2 = bc\\cos A + ab\\cos C\\)\n\\(c^2 = ac\\cos B + bc\\cos A\\).\n\\(a^2 + b^2 - c^2 = (ab\\cos C + ac\\cos B) + (bc\\cos A + ab\\cos C) - (ac\\cos B + bc\\cos A)\\)\n\\(= ab\\cos C + ac\\cos B + bc\\cos A + ab\\cos C - ac\\cos B - bc\\cos A\\)\n\\(= 2ab\\cos C\\).\n\\(\\therefore a^2 + b^2 - c^2 = 2ab\\cos C\\), i.e. \\(c^2 = a^2 + b^2 - 2ab\\cos C\\).\nSimilarly we can prove that \\(a^2 = b^2 + c^2 - 2bc\\cos A\\) and \\(b^2 = c^2 + a^2 - 2ca\\cos B\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Applications.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), if \\(a = 13\\), \\(b = 14\\), \\(c = 15\\) then find the values of (i) \\(\\cos A\\) (ii) \\(\\sin\\dfrac{A}{2}\\) (iii) \\(\\cos\\dfrac{A}{2}\\) (iv) \\(\\tan\\dfrac{A}{2}\\) (v) \\(A(\\triangle ABC)\\) (vi) \\(\\sin A\\).",
+    "solution": "\\(s = \\dfrac{a + b + c}{2} = \\dfrac{13 + 14 + 15}{2} = 21\\).\n\\((s - a) = 21 - 13 = 8\\), \\((s - b) = 21 - 14 = 7\\), \\((s - c) = 21 - 15 = 6\\).\n(i) \\(\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{13^2 + 15^2 - 14^2}{2(13)(15)} = \\dfrac{198}{390} = \\dfrac{33}{65}\\).\n(ii) \\(\\sin\\dfrac{A}{2} = \\sqrt{\\dfrac{(s-b)(s-c)}{bc}} = \\sqrt{\\dfrac{7 \\times 6}{14 \\times 15}} = \\dfrac{1}{\\sqrt{5}}\\).\n(iii) \\(\\cos\\dfrac{A}{2} = \\sqrt{\\dfrac{s(s-a)}{bc}} = \\sqrt{\\dfrac{21 \\times 8}{14 \\times 15}} = \\dfrac{2}{\\sqrt{5}}\\).\n(iv) \\(\\tan\\dfrac{A}{2} = \\dfrac{\\sin\\tfrac{A}{2}}{\\cos\\tfrac{A}{2}} = \\dfrac{1/\\sqrt{5}}{2/\\sqrt{5}} = \\dfrac{1}{2}\\).\n(v) \\(A(\\triangle ABC) = \\sqrt{s(s-a)(s-b)(s-c)} = \\sqrt{21 \\times 8 \\times 7 \\times 6} = 84\\) sq. unit.\n(vi) \\(\\sin A = 2\\sin\\dfrac{A}{2}\\cos\\dfrac{A}{2} = 2 \\times \\dfrac{1}{\\sqrt{5}} \\times \\dfrac{2}{\\sqrt{5}} = \\dfrac{4}{5}\\)."
+  },
+  {
+    "ref": "3.2 SolvedEx.Applications.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(\\cot\\dfrac{A}{2} + \\cot\\dfrac{B}{2} + \\cot\\dfrac{C}{2} = \\dfrac{a + b + c}{b + c - a}\\cot\\dfrac{A}{2}\\).",
+    "solution": "L.H.S. \\(= \\cot\\dfrac{A}{2} + \\cot\\dfrac{B}{2} + \\cot\\dfrac{C}{2} = \\dfrac{1}{\\tan\\tfrac{A}{2}} + \\dfrac{1}{\\tan\\tfrac{B}{2}} + \\dfrac{1}{\\tan\\tfrac{C}{2}}\\).\nUsing \\(\\tan\\dfrac{A}{2} = \\sqrt{\\dfrac{(s-b)(s-c)}{s(s-a)}}\\) and similarly for \\(B, C\\),\n\\(= \\sqrt{\\dfrac{s(s-a)}{(s-b)(s-c)}} + \\sqrt{\\dfrac{s(s-b)}{(s-a)(s-c)}} + \\sqrt{\\dfrac{s(s-c)}{(s-a)(s-b)}}\\)\n\\(= \\sqrt{\\dfrac{s(s-a)^2}{(s-b)(s-c)(s-a)}} + \\sqrt{\\dfrac{s(s-b)^2}{(s-a)(s-c)(s-b)}} + \\sqrt{\\dfrac{s(s-c)^2}{(s-b)(s-a)(s-c)}}\\)\n\\(= \\sqrt{\\dfrac{s}{(s-b)(s-a)(s-c)}}\\,\\{(s-a) + (s-b) + (s-c)\\}\\)\n\\(= \\sqrt{\\dfrac{s}{(s-b)(s-a)(s-c)}}\\,\\{3s - (a + b + c)\\}\\)\n\\(= \\sqrt{\\dfrac{s}{(s-b)(s-a)(s-c)}}\\,\\{3s - 2s\\}\\)\n\\(= \\sqrt{\\dfrac{s}{(s-b)(s-a)(s-c)}} \\times s\\)\n\\(= \\dfrac{2s}{2s - 2a}\\sqrt{\\dfrac{s(s-a)}{(s-b)(s-c)}}\\)\n\\(= \\dfrac{a + b + c}{a + b + c - 2a}\\sqrt{\\dfrac{s(s-a)}{(s-b)(s-c)}}\\)\n\\(= \\dfrac{a + b + c}{b + c - a}\\cot\\dfrac{A}{2} = \\) R.H.S."
+  },
+  {
+    "ref": "3.2 Q1 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "EASY",
+    "context": "Find the Cartesian co-ordinates of the point whose polar co-ordinates are :",
+    "setLabel": "3.2 Q1",
+    "stem": "\\(\\left(\\sqrt{2}, \\dfrac{\\pi}{4}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q1 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "EASY",
+    "context": "Find the Cartesian co-ordinates of the point whose polar co-ordinates are :",
+    "setLabel": "3.2 Q1",
+    "stem": "\\(\\left(4, \\dfrac{\\pi}{2}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q1 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "EASY",
+    "context": "Find the Cartesian co-ordinates of the point whose polar co-ordinates are :",
+    "setLabel": "3.2 Q1",
+    "stem": "\\(\\left(\\dfrac{3}{4}, \\dfrac{3\\pi}{4}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q1 iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "MODERATE",
+    "context": "Find the Cartesian co-ordinates of the point whose polar co-ordinates are :",
+    "setLabel": "3.2 Q1",
+    "stem": "\\(\\left(\\dfrac{1}{2}, \\dfrac{7\\pi}{3}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q2 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "EASY",
+    "context": "Find the polar co-ordinates of the point whose Cartesian co-ordinates are :",
+    "setLabel": "3.2 Q2",
+    "stem": "\\(\\left(\\sqrt{2}, \\sqrt{2}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q2 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "MODERATE",
+    "context": "Find the polar co-ordinates of the point whose Cartesian co-ordinates are :",
+    "setLabel": "3.2 Q2",
+    "stem": "\\(\\left(0, \\dfrac{1}{2}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q2 iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "MODERATE",
+    "context": "Find the polar co-ordinates of the point whose Cartesian co-ordinates are :",
+    "setLabel": "3.2 Q2",
+    "stem": "\\(\\left(1, -\\sqrt{3}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q2 iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "MODERATE",
+    "context": "Find the polar co-ordinates of the point whose Cartesian co-ordinates are :",
+    "setLabel": "3.2 Q2",
+    "stem": "\\(\\left(\\dfrac{3}{2}, \\dfrac{3\\sqrt{3}}{2}\\right)\\)"
+  },
+  {
+    "ref": "3.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "EASY",
+    "stem": "In \\(\\triangle ABC\\), if \\(A = 45^\\circ\\), \\(B = 60^\\circ\\) then find the ratio of its sides."
+  },
+  {
+    "ref": "3.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(\\sin\\left(\\dfrac{B - C}{2}\\right) = \\left(\\dfrac{b - c}{a}\\right)\\cos\\dfrac{A}{2}\\)."
+  },
+  {
+    "ref": "3.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "HARD",
+    "stem": "With usual notations prove that \\(2\\left\\{a\\sin^2\\dfrac{C}{2} + c\\sin^2\\dfrac{A}{2}\\right\\} = a - b + c\\)."
+  },
+  {
+    "ref": "3.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(a^3\\sin(B - C) + b^3\\sin(C - A) + c^3\\sin(A - B) = 0\\)."
+  },
+  {
+    "ref": "3.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), if \\(\\cot A\\), \\(\\cot B\\), \\(\\cot C\\) are in A.P. then show that \\(a^2\\), \\(b^2\\), \\(c^2\\) are also in A.P."
+  },
+  {
+    "ref": "3.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), if \\(a\\cos A = b\\cos B\\) then prove that the triangle is right angled or an isosceles triangle."
+  },
+  {
+    "ref": "3.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "With usual notations prove that \\(2(bc\\cos A + ac\\cos B + ab\\cos C) = a^2 + b^2 + c^2\\)."
+  },
+  {
+    "ref": "3.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), if \\(a = 18\\), \\(b = 24\\), \\(c = 30\\) then find the values of (i) \\(\\cos A\\) (ii) \\(\\sin\\dfrac{A}{2}\\) (iii) \\(\\cos\\dfrac{A}{2}\\) (iv) \\(\\tan\\dfrac{A}{2}\\) (v) \\(A(\\triangle ABC)\\) (vi) \\(\\sin A\\)."
+  },
+  {
+    "ref": "3.2 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), prove that \\((b + c - a)\\tan\\dfrac{A}{2} = (c + a - b)\\tan\\dfrac{B}{2} = (a + b - c)\\tan\\dfrac{C}{2}\\)."
+  },
+  {
+    "ref": "3.2 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), prove that \\(\\sin\\dfrac{A}{2}\\sin\\dfrac{B}{2}\\sin\\dfrac{C}{2} = \\dfrac{[A(\\triangle ABC)]^2}{abcs}\\)."
+  }
+]
