@@ -26,21 +26,11 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-07-07
 
-### Ingest NEET 2024 + Re-NEET 2024 (both 200 q) — the two remaining papers from the source drop
+### ~~Ingest NEET 2024 + Re-NEET 2024 (both 200 q) + commit the whole 200-q batch~~ — **DONE 2026-07-07**
 
-The 2026-07-07 source drop under `C:\tmp\PYQPs\NEET\` brought three new papers; **NEET 2023 (code E3) is DONE + PUBLIC**, leaving **NEET 2024 (code Q1, 80pp)** and **Re-NEET 2024 (code C1, 87pp)** — both **200-question** (Section A+B) papers, both single-column with worked solutions, both already added to `scripts/neet/config.ts` with `questionCount: 200`. Together they'd take NEET 739 → ~1,140.
+All three pre-2025 200-q papers (2023 + 2024 + Re-NEET 2024) ingested → NEET 539 → **1,139 q PUBLIC**. 2024/Re-NEET-2024 pagination was clean (all HIGH-confidence, no page-break-inferred answers — unlike 2023). 53 figures across the two through the verify-gate (montage-reviewed every crop; caught a **mis-paged Q98 anchor** on p43-vs-p44 + several leaks/bleeds). Committed the whole batch (2023+2024+Re-NEET-2024 + the pipeline parameterization) on branch `neet-2024-ingestion` → gate PASS → merged `--no-ff` to main (`d609201`) + pushed. See the 2026-07-07 Decisions entries + [[neet-ingestion]].
 
-**Why:** the pipeline is now 200-format-aware, the codes are chosen, and the config entries exist — so each is a straight render → 4 parallel vision agents (Phy 1–50 · Chem 51–100 · Bio 101–150 · Bio 151–200) → commit PRIVATE → verify risky answers → figures through the verify-gate → flip PUBLIC. Deferred only because the user wanted one paper at a time with a review between each.
-
-**How to apply:** `npx tsx scripts/neet/render.ts 2024` (then `reneet-2024`), dispatch the 4 shard agents per the [[neet-ingestion]] 200-format ranges, then `commit.ts <id> --apply` → spot-check the page-break-inferred answers (the 2023 quirk: continuous-flow PDFs bisect lines + some questions lack an explicit `Answer` line → recover from the worked solution) → figure anchors → `attach-images --apply` → montage-verify EVERY crop yourself (2023 had 5 leaks/clips the agents' self-verify missed) → `verify-figures --ok=all` → `flip-public --apply`. Watch for defective/dual-key questions to hold via `--except` or note-and-flip per the edge-case rules.
-
-### Commit the NEET 2023 batch (pipeline parameterization + data + figure manifests)
-
-The NEET 2023 work — the durable `scripts/neet/` 200-format parameterization (`config.ts` `questionCount`, `allowedSubjectsForNumber`, `commit.ts`, `lib.ts`, +3 tests, README) plus `scripts/neet/data/2023.*.json` (transcription + figure manifests) — is staged in the working tree but **not committed** (held for the user's review-each-paper cadence). 200 rows are already live PUBLIC in the DB.
-
-**Why:** the code + audit-trail JSONs have no git history until committed; a `git clean` or disk loss wipes them. The pipeline change also benefits 2024/Re-NEET-2024, so it shouldn't linger uncommitted.
-
-**How to apply:** either commit NEET 2023 on its own (`feat(neet): ingest 2023 (200 q) + parameterize pipeline for 200-q format`) or bundle all three 200-q papers into one commit once 2024 + Re-NEET 2024 land. Stage the `scripts/neet/` code + `data/*.json` (audit trail); `out/` is gitignored. Run `npm run prepush` via bash first (the full gate ~3–4 min), then push.
+**Follow-on (only if more NEET source appears):** the NEET Botany/Zoology **catalog has no "Biomolecules" chapter** — enzyme/protein-structure/biomolecule questions get mapped to the nearest fit (`Cell: The Unit of Life` etc.) and flagged MED at commit. If a future NEET ingest has many such, consider seeding a Biomolecules chapter under Botany in `NEET_CHAPTERS` (config.ts) so they file correctly. Low priority — a handful per paper, transcription is reliable, only the chapter label is approximate.
 
 ## 2026-07-06
 
