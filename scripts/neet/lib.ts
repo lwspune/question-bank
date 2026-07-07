@@ -88,13 +88,13 @@ export function normalizeQuestions(raw: unknown[]): NQ[] {
   });
 }
 
-export function buildRecords(questions: NQ[]): BuildResult {
+export function buildRecords(questions: NQ[], questionCount = 180): BuildResult {
   const rows: RawRow[] = [];
   const flags: Flag[] = [];
 
   for (const q of questions) {
-    // subject-block cross-check (catches a mis-tagged subject; Biology 91-180 allows either)
-    const allowed = allowedSubjectsForNumber(q.number);
+    // subject-block cross-check (catches a mis-tagged subject; the Biology block allows either)
+    const allowed = allowedSubjectsForNumber(q.number, questionCount);
     if (allowed.length && q.subject && !allowed.includes(q.subject)) {
       flags.push({ number: q.number, reason: `subject "${q.subject}" not allowed for the Q${q.number} block (${allowed.join(" or ")})` });
     }

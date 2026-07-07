@@ -8,6 +8,7 @@ import {
   findLatexImbalance,
   type NQ,
 } from "../scripts/neet/lib";
+import { allowedSubjectsForNumber } from "../scripts/neet/config";
 
 describe("optionLetter", () => {
   it("maps printed option numbers 1-4 to A-D", () => {
@@ -86,6 +87,26 @@ describe("normalizeQuestions", () => {
   });
 });
 
+describe("allowedSubjectsForNumber", () => {
+  it("uses the 45-per-subject blocks for the 180-question format (default)", () => {
+    expect(allowedSubjectsForNumber(45)).toEqual(["Physics"]);
+    expect(allowedSubjectsForNumber(46)).toEqual(["Chemistry"]);
+    expect(allowedSubjectsForNumber(90)).toEqual(["Chemistry"]);
+    expect(allowedSubjectsForNumber(91)).toEqual(["Botany", "Zoology"]);
+    expect(allowedSubjectsForNumber(180)).toEqual(["Botany", "Zoology"]);
+    expect(allowedSubjectsForNumber(181)).toEqual([]);
+  });
+  it("uses the 50-per-subject blocks for the 200-question format (pre-2025 NEET)", () => {
+    expect(allowedSubjectsForNumber(50, 200)).toEqual(["Physics"]);
+    expect(allowedSubjectsForNumber(46, 200)).toEqual(["Physics"]); // 46 is Physics in 200-format
+    expect(allowedSubjectsForNumber(51, 200)).toEqual(["Chemistry"]);
+    expect(allowedSubjectsForNumber(100, 200)).toEqual(["Chemistry"]);
+    expect(allowedSubjectsForNumber(101, 200)).toEqual(["Botany", "Zoology"]);
+    expect(allowedSubjectsForNumber(200, 200)).toEqual(["Botany", "Zoology"]);
+    expect(allowedSubjectsForNumber(201, 200)).toEqual([]);
+  });
+});
+
 describe("buildRecords", () => {
   it("maps a transcribed question onto a RawRow (options positional → A-D)", () => {
     const { rows, flags } = buildRecords(normalizeQuestions([baseQ()]));
@@ -120,6 +141,21 @@ describe("buildRecords", () => {
     const bo = buildRecords(normalizeQuestions([baseQ({ number: 91, subject: "Botany", chapter: "Respiration in Plants" })]));
     expect(zo.flags).toHaveLength(0);
     expect(bo.flags).toHaveLength(0);
+  });
+
+  it("honors the 200-question block boundaries when questionCount=200", () => {
+    // Q51 is Chemistry in the 200-format (would be Botany/Zoology-adjacent under 180)
+    const chem = buildRecords(
+      normalizeQuestions([baseQ({ number: 51, subject: "Chemistry", chapter: "Structure of Atom" })]),
+      200
+    );
+    expect(chem.flags).toHaveLength(0);
+    // Q50 is Physics in 200-format; tagging it Chemistry should flag
+    const bad = buildRecords(
+      normalizeQuestions([baseQ({ number: 50, subject: "Chemistry", chapter: "Structure of Atom" })]),
+      200
+    );
+    expect(bad.flags.some((f) => /subject "Chemistry" not allowed/i.test(f.reason))).toBe(true);
   });
 });
 

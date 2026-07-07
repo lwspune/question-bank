@@ -9,8 +9,12 @@ option-order slip, so everything commits **PRIVATE** for a human spot-check befo
 
 ## Facts
 
-- A NEET paper = **180 MCQs**, +4/−1, four subject blocks in booklet order:
-  **Physics 1–45 · Chemistry 46–90 · Botany 91–135 · Zoology 136–180**.
+- A NEET paper = four subject blocks in booklet order (**Physics · Chemistry · Botany ·
+  Zoology**), +4/−1. TWO layouts, set per-paper by `questionCount` in `config.ts`:
+  - **2025 onward — 180 MCQs**, 45/subject: **Physics 1–45 · Chem 46–90 · Bio 91–180**.
+  - **pre-2025 (…2023, 2024, Re-NEET 2024) — 200 MCQs** (Section A 35 + Section B 15 per
+    subject), 50/subject: **Physics 1–50 · Chem 51–100 · Bio 101–200**. We ingest ALL
+    printed questions (Section B's "attempt any 10" is an exam-time instruction only).
 - The booklet prints options as **(1)(2)(3)(4)**; the bank stores **A/B/C/D**. We map
   **positionally**: printed option 1 → A … 4 → D, and `Answer (N)` → that letter.
 - Multiple booklet **codes** per exam are the SAME question set reshuffled (seat
@@ -20,7 +24,7 @@ option-order slip, so everything commits **PRIVATE** for a human spot-check befo
 
 ## Pipeline
 
-Per paper (`<paperId>` ∈ `2025`, `2026`, `reneet-2026`):
+Per paper (`<paperId>` ∈ `2023`, `2024`, `reneet-2024` [200 q] · `2025`, `2026`, `reneet-2026` [180 q]):
 
 1. **Render** — `npx tsx scripts/neet/render.ts <paperId> [first] [last]`
    → `out/<paperId>/pNNN.png` (single-column) or `pNNN_L/_R.png` (two-column Re-NEET).
