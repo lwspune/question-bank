@@ -243,6 +243,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
+      // The homepage — highest-authority URL, now a real landing page (was a
+      // bare redirect to /browse until 2026-07-07).
+      url: SITE_URL,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1.0,
+    },
+    {
       // /browse is uncached (searchParams force it dynamic) and the heaviest
       // query, so we don't invite a daily recrawl. weekly + 0.8 keeps it
       // indexed without driving Supabase egress on every Googlebot pass.
