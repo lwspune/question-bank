@@ -1,0 +1,141 @@
+[
+  {
+    "ref": "6.2 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the length of the perpendicular drawn from the point \\(P(3,2,1)\\) to the line \\(\\bar{r}=\\left(7\\hat{i}+7\\hat{j}+6\\hat{k}\\right)+\\lambda\\left(-2\\hat{i}+2\\hat{j}+3\\hat{k}\\right)\\).",
+    "solution": "The length of the perpendicular is same as the distance of \\(P\\) from the given line. The distance of point \\(P(\\bar{\\alpha})\\) from the line \\(\\bar{r}=\\bar{a}+\\lambda\\bar{b}\\) is \\(\\sqrt{|\\bar{\\alpha}-\\bar{a}|^2-\\left[\\dfrac{(\\bar{\\alpha}-\\bar{a})\\cdot\\bar{b}}{|\\bar{b}|}\\right]^2}\\).\n\nHere \\(\\bar{\\alpha}=3\\hat{i}+2\\hat{j}+\\hat{k}\\), \\(\\bar{a}=7\\hat{i}+7\\hat{j}+6\\hat{k}\\), \\(\\bar{b}=-2\\hat{i}+2\\hat{j}+3\\hat{k}\\).\n\n\\(\\therefore \\bar{\\alpha}-\\bar{a}=(3\\hat{i}+2\\hat{j}+\\hat{k})-(7\\hat{i}+7\\hat{j}+6\\hat{k})=-4\\hat{i}-5\\hat{j}-5\\hat{k}\\)\n\n\\(|\\bar{\\alpha}-\\bar{a}|=\\sqrt{(-4)^2+(-5)^2+(-5)^2}=\\sqrt{16+25+25}=\\sqrt{66}\\)\n\n\\((\\bar{\\alpha}-\\bar{a})\\cdot\\bar{b}=(-4\\hat{i}-5\\hat{j}-5\\hat{k})\\cdot(-2\\hat{i}+2\\hat{j}+3\\hat{k})=8-10-15=-17\\)\n\n\\(|\\bar{b}|=\\sqrt{(-2)^2+(2)^2+(3)^2}=\\sqrt{17}\\)\n\nThe required length \\(=\\sqrt{|\\bar{\\alpha}-\\bar{a}|^2-\\left[\\dfrac{(\\bar{\\alpha}-\\bar{a})\\cdot\\bar{b}}{|\\bar{b}|}\\right]^2}=\\sqrt{66-\\left|\\dfrac{-17}{\\sqrt{17}}\\right|^2}=\\sqrt{66-17}=\\sqrt{49}=7\\) unit."
+  },
+  {
+    "ref": "6.2 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the distance of the point \\(P(0,2,3)\\) from the line \\(\\dfrac{x+3}{5}=\\dfrac{y-1}{2}=\\dfrac{z+4}{3}\\).",
+    "solution": "Let \\(M\\) be the foot of the perpendicular drawn from the point \\(P(0,2,3)\\) to the given line. \\(M\\) lies on the line. Let co-ordinates of \\(M\\) be \\((5\\lambda-3,\\,2\\lambda+1,\\,3\\lambda-4)\\).\n\nThe direction ratios of \\(PM\\) are \\((5\\lambda-3)-0,\\,(2\\lambda+1)-2,\\,(3\\lambda-4)-3\\) i.e. \\(5\\lambda-3,\\,2\\lambda-1,\\,3\\lambda-7\\).\n\nThe direction ratios of the given line are \\(5,2,3\\) and \\(PM\\) is perpendicular to the given line.\n\n\\(\\therefore 5(5\\lambda-3)+2(2\\lambda-1)+3(3\\lambda-7)=0\\)\n\n\\(\\therefore \\lambda=1\\)\n\n\\(\\therefore\\) The co-ordinates of \\(M\\) are \\((2,3,-1)\\).\n\nThe distance of \\(P\\) from the line is \\(PM=\\sqrt{(2-0)^2+(3-2)^2+(-1-3)^2}=\\sqrt{21}\\) unit."
+  },
+  {
+    "ref": "6.3 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the shortest distance between lines \\(\\bar{r}=(2\\hat{i}-\\hat{j})+\\lambda(2\\hat{i}+\\hat{j}-3\\hat{k})\\) and \\(\\bar{r}=(\\hat{i}-\\hat{j}+2\\hat{k})+\\mu(2\\hat{i}+\\hat{j}-5\\hat{k})\\).",
+    "solution": "The shortest distance between lines \\(\\bar{r}=\\bar{a_1}+\\lambda_1\\bar{b_1}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda_2\\bar{b_2}\\) is \\(\\left|\\dfrac{(\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})}{|\\bar{b_1}\\times\\bar{b_2}|}\\right|\\).\n\nHere \\(\\bar{a_1}=2\\hat{i}-\\hat{j}\\), \\(\\bar{a_2}=\\hat{i}-\\hat{j}+2\\hat{k}\\), \\(\\bar{b_1}=2\\hat{i}+\\hat{j}-3\\hat{k}\\), \\(\\bar{b_2}=2\\hat{i}+\\hat{j}-5\\hat{k}\\).\n\n\\(\\bar{a_2}-\\bar{a_1}=(\\hat{i}-\\hat{j}+2\\hat{k})-(2\\hat{i}-\\hat{j})=-\\hat{i}+2\\hat{k}\\)\n\nAnd \\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&1&-3\\\\2&1&-5\\end{vmatrix}=-2\\hat{i}+4\\hat{j}\\)\n\n\\(\\therefore |\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{4+16}=\\sqrt{20}=2\\sqrt{5}\\)\n\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(-\\hat{i}+2\\hat{k})\\cdot(-2\\hat{i}+4\\hat{j})=2\\)\n\nThe required shortest distance \\(=\\left|\\dfrac{(\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})}{|\\bar{b_1}\\times\\bar{b_2}|}\\right|=\\left|\\dfrac{2}{2\\sqrt{5}}\\right|=\\dfrac{1}{\\sqrt{5}}\\) unit."
+  },
+  {
+    "ref": "6.3 SolvedEx.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the shortest distance between lines \\(\\dfrac{x-1}{2}=\\dfrac{y-2}{3}=\\dfrac{z-3}{4}\\) and \\(\\dfrac{x-2}{3}=\\dfrac{y-4}{4}=\\dfrac{z-5}{5}\\).",
+    "solution": "The vector equations of given lines are \\(\\bar{r}=(\\hat{i}+2\\hat{j}+3\\hat{k})+\\lambda(2\\hat{i}+3\\hat{j}+4\\hat{k})\\) and \\(\\bar{r}=(2\\hat{i}+4\\hat{j}+5\\hat{k})+\\mu(3\\hat{i}+4\\hat{j}+5\\hat{k})\\).\n\nThe shortest distance between lines \\(\\bar{r}=\\bar{a_1}+\\lambda\\bar{b_1}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda\\bar{b_2}\\) is \\(\\left|\\dfrac{(\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})}{|\\bar{b_1}\\times\\bar{b_2}|}\\right|\\).\n\nHere \\(\\bar{a_1}=\\hat{i}+2\\hat{j}+3\\hat{k}\\), \\(\\bar{a_2}=2\\hat{i}+4\\hat{j}+5\\hat{k}\\), \\(\\bar{b_1}=2\\hat{i}+3\\hat{j}+4\\hat{k}\\), \\(\\bar{b_2}=3\\hat{i}+4\\hat{j}+5\\hat{k}\\).\n\n\\(\\therefore \\bar{a_2}-\\bar{a_1}=(2\\hat{i}+4\\hat{j}+5\\hat{k})-(\\hat{i}+2\\hat{j}+3\\hat{k})=\\hat{i}+2\\hat{j}+2\\hat{k}\\)\n\nAnd \\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&3&4\\\\3&4&5\\end{vmatrix}=-\\hat{i}+2\\hat{j}-\\hat{k}\\)\n\n\\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{1+4+1}=\\sqrt{6}\\)\n\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(\\hat{i}+2\\hat{j}+2\\hat{k})\\cdot(-\\hat{i}+2\\hat{j}-\\hat{k})=1\\)\n\n\\(\\therefore\\) The required shortest distance \\(=\\left|\\dfrac{(\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})}{|\\bar{b_1}\\times\\bar{b_2}|}\\right|=\\dfrac{1}{\\sqrt{6}}\\) unit."
+  },
+  {
+    "ref": "6.3 SolvedEx.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Show that lines \\(\\bar{r}=(\\hat{i}+\\hat{j}-\\hat{k})+\\lambda(2\\hat{i}-2\\hat{j}+\\hat{k})\\) and \\(\\bar{r}=(4\\hat{i}-3\\hat{j}+2\\hat{k})+\\mu(\\hat{i}-2\\hat{j}+2\\hat{k})\\) intersect each other.",
+    "solution": "Lines \\(\\bar{r}=\\bar{a_1}+\\lambda_1\\bar{b_1}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda_2\\bar{b_2}\\) intersect each other if and only if \\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0\\).\n\nHere \\(\\bar{a_1}=\\hat{i}+\\hat{j}-\\hat{k}\\), \\(\\bar{a_2}=4\\hat{i}-3\\hat{j}+2\\hat{k}\\), \\(\\bar{b_1}=2\\hat{i}-2\\hat{j}+\\hat{k}\\), \\(\\bar{b_2}=\\hat{i}-2\\hat{j}+2\\hat{k}\\).\n\n\\(\\bar{a_2}-\\bar{a_1}=3\\hat{i}-4\\hat{j}+3\\hat{k}\\)\n\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=\\begin{vmatrix}3&-4&3\\\\2&-2&1\\\\1&-2&2\\end{vmatrix}=3(-2)+4(3)+3(-2)=-6+12-6=0\\)\n\nGiven lines intersect each other."
+  },
+  {
+    "ref": "6.3 SolvedEx.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the distance between parallel lines \\(\\bar{r}=(2\\hat{i}-\\hat{j}+\\hat{k})+\\lambda(2\\hat{i}+\\hat{j}-2\\hat{k})\\) and \\(\\bar{r}=(\\hat{i}-\\hat{j}+2\\hat{k})+\\mu(2\\hat{i}+\\hat{j}-2\\hat{k})\\).",
+    "solution": "The distance between parallel lines \\(\\bar{r}=\\bar{a_1}+\\lambda\\bar{b}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda\\bar{b}\\) is given by \\(d=\\left|(\\bar{a_2}-\\bar{a_1})\\times\\hat{b}\\right|\\).\n\nHere \\(\\bar{a_1}=2\\hat{i}-\\hat{j}+\\hat{k}\\), \\(\\bar{a_2}=\\hat{i}-\\hat{j}+2\\hat{k}\\), \\(\\bar{b}=2\\hat{i}+\\hat{j}-2\\hat{k}\\).\n\n\\(\\therefore \\bar{a_2}-\\bar{a_1}=(\\hat{i}-\\hat{j}+2\\hat{k})-(2\\hat{i}-\\hat{j}+\\hat{k})=-\\hat{i}+\\hat{k}\\) and \\(\\hat{b}=\\dfrac{2\\hat{i}+\\hat{j}-2\\hat{k}}{3}\\)\n\n\\(\\therefore (\\bar{a_2}-\\bar{a_1})\\times\\hat{b}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-1&0&1\\\\\\frac{2}{3}&\\frac{1}{3}&-\\frac{2}{3}\\end{vmatrix}=\\dfrac{1}{3}\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-1&0&1\\\\2&1&-2\\end{vmatrix}=\\dfrac{1}{3}\\{-\\hat{i}-\\hat{k}\\}\\)\n\n\\(d=\\left|(\\bar{a_2}-\\bar{a_1})\\times\\hat{b}\\right|=\\dfrac{\\sqrt{2}}{3}\\) unit.\n\nAlternative Method: The distance between parallel lines \\(\\bar{r}=\\bar{a_1}+\\lambda\\bar{b}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda\\bar{b}\\) is same as the distance of point \\(A(\\bar{a_1})\\) from the line \\(\\bar{r}=\\bar{a_2}+\\lambda\\bar{b}\\), given by \\(d=\\sqrt{|\\bar{a_2}-\\bar{a_1}|^2-\\left[\\dfrac{(\\bar{a_2}-\\bar{a_1})\\cdot\\bar{b}}{|\\bar{b}|}\\right]^2}\\). Now \\(\\bar{a_2}-\\bar{a_1}=-\\hat{i}+\\hat{k}\\), \\(|\\bar{a_2}-\\bar{a_1}|=\\sqrt{2}\\); \\((\\bar{a_2}-\\bar{a_1})\\cdot\\bar{b}=(-\\hat{i}+\\hat{k})\\cdot(2\\hat{i}+\\hat{j}-2\\hat{k})=-2+0-2=-4\\), \\(|\\bar{b}|=3\\). \\(d=\\sqrt{2-\\left(-\\frac{4}{3}\\right)^2}=\\sqrt{2-\\frac{16}{9}}=\\dfrac{\\sqrt{2}}{3}\\) unit."
+  },
+  {
+    "ref": "6.3 SolvedEx.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the distance between parallel lines \\(\\dfrac{x}{2}=\\dfrac{y}{-1}=\\dfrac{z}{2}\\) and \\(\\dfrac{x-1}{2}=\\dfrac{y-1}{-1}=\\dfrac{z-1}{2}\\).",
+    "solution": "The vector equations of given lines are \\(\\bar{r}=\\lambda(2\\hat{i}-\\hat{j}+2\\hat{k})\\) and \\(\\bar{r}=(\\hat{i}+\\hat{j}+\\hat{k})+\\mu(2\\hat{i}-\\hat{j}+2\\hat{k})\\).\n\nThe distance between parallel lines \\(\\bar{r}=\\bar{a_1}+\\lambda\\bar{b}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda\\bar{b}\\) is given by \\(d=\\left|(\\bar{a_2}-\\bar{a_1})\\times\\hat{b}\\right|\\).\n\nHere \\(\\bar{a_1}=\\bar{0}\\), \\(\\bar{a_2}=\\hat{i}+\\hat{j}+\\hat{k}\\), \\(\\bar{b}=2\\hat{i}-\\hat{j}+2\\hat{k}\\).\n\n\\(\\therefore \\bar{a_2}-\\bar{a_1}=\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(\\hat{b}=\\dfrac{2\\hat{i}-\\hat{j}+2\\hat{k}}{3}\\)\n\n\\(\\therefore (\\bar{a_2}-\\bar{a_1})\\times\\hat{b}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&1&1\\\\\\frac{2}{3}&\\frac{-1}{3}&\\frac{2}{3}\\end{vmatrix}=\\dfrac{1}{3}\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&1&1\\\\2&-1&2\\end{vmatrix}=\\dfrac{1}{3}\\{3\\hat{i}-3\\hat{k}\\}=\\hat{i}-\\hat{k}\\)\n\n\\(d=\\left|(\\bar{a_2}-\\bar{a_1})\\times\\hat{b}\\right|=\\sqrt{2}\\) unit."
+  },
+  {
+    "ref": "Ex 6.2 Q.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the length of the perpendicular from \\((2,-3,1)\\) to the line \\(\\dfrac{x+1}{2}=\\dfrac{y-3}{3}=\\dfrac{z+1}{-1}\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the co-ordinates of the foot of the perpendicular drawn from the point \\(2\\hat{i}-\\hat{j}+5\\hat{k}\\) to the line \\(\\bar{r}=\\left(11\\hat{i}-2\\hat{j}-8\\hat{k}\\right)+\\lambda\\left(10\\hat{i}-4\\hat{j}-11\\hat{k}\\right)\\). Also find the length of the perpendicular."
+  },
+  {
+    "ref": "Ex 6.2 Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the shortest distance between the lines \\(\\bar{r}=\\left(4\\hat{i}-\\hat{j}\\right)+\\lambda\\left(\\hat{i}+2\\hat{j}-3\\hat{k}\\right)\\) and \\(\\bar{r}=\\left(\\hat{i}-\\hat{j}+2\\hat{k}\\right)+\\mu\\left(\\hat{i}+4\\hat{j}-5\\hat{k}\\right)\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the shortest distance between the lines \\(\\dfrac{x+1}{7}=\\dfrac{y+1}{-6}=\\dfrac{z+1}{1}\\) and \\(\\dfrac{x-3}{1}=\\dfrac{y-5}{-2}=\\dfrac{z-7}{1}\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the perpendicular distance of the point \\((1,0,0)\\) from the line \\(\\dfrac{x-1}{2}=\\dfrac{y+1}{-3}=\\dfrac{z+10}{8}\\). Also find the co-ordinates of the foot of the perpendicular."
+  },
+  {
+    "ref": "Ex 6.2 Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "difficulty": "MODERATE",
+    "stem": "\\(A(1,0,4)\\), \\(B(0,-11,13)\\), \\(C(2,-3,1)\\) are three points and \\(D\\) is the foot of the perpendicular from \\(A\\) to \\(BC\\). Find the co-ordinates of \\(D\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q.7 i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "context": "By computing the shortest distance, determine whether following lines intersect each other.",
+    "setLabel": "Ex 6.2 Q.7",
+    "stem": "\\(\\bar{r}=\\left(\\hat{i}-\\hat{j}\\right)+\\lambda\\left(2\\hat{i}+\\hat{k}\\right)\\) and \\(\\bar{r}=\\left(2\\hat{i}-\\hat{j}\\right)+\\mu\\left(\\hat{i}+\\hat{j}-\\hat{k}\\right)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q.7 ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "context": "By computing the shortest distance, determine whether following lines intersect each other.",
+    "setLabel": "Ex 6.2 Q.7",
+    "stem": "\\(\\dfrac{x-5}{4}=\\dfrac{y-7}{-5}=\\dfrac{z+3}{-5}\\) and \\(\\dfrac{x-8}{7}=\\dfrac{y-7}{1}=\\dfrac{z-5}{3}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "HARD",
+    "stem": "If lines \\(\\dfrac{x-1}{2}=\\dfrac{y+1}{3}=\\dfrac{z-1}{4}\\) and \\(\\dfrac{x-3}{1}=\\dfrac{y-k}{2}=\\dfrac{z}{1}\\) intersect each other then find \\(k\\)."
+  }
+]

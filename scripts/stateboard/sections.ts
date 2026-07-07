@@ -14,6 +14,32 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.6 Line and Planes — verified against Ch_06_Line_&_Planes.pdf + the
+  //    Part-1 ANSWERS section (2026-07-07). 7 numbered sections, but only 4
+  //    numbered exercises + 2 Miscellaneous blocks: Exercise 6.1 (§6.1),
+  //    Exercise 6.2 (covers §6.2+§6.3, physically after §6.3), Miscellaneous 6(A)
+  //    MID-chapter (after Ex 6.2), Exercise 6.3 (§6.4), Exercise 6.4 (covers
+  //    §6.5-§6.7, after §6.7), then terminal Miscellaneous 6(B) [I = MCQ, II =
+  //    subjective]. Solved-example numbering runs continuously per half (§6.1-6.3
+  //    = Ex.1-18, §6.4-6.7 restarts Ex.1-15); refs are section-prefixed so
+  //    longest-prefix routing is unambiguous.
+  "line-planes-12": [
+    { group: "6.1 Vector and Cartesian Equations of a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.1 SolvedEx"] },
+    { group: "6.1 Vector and Cartesian Equations of a Line", label: "Exercise 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 Q"] },
+    { group: "6.2 Distance of a Point from a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.2 SolvedEx"] },
+    { group: "6.3 Skew Lines and Distance Between Them", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 SolvedEx"] },
+    { group: "6.3 Skew Lines and Distance Between Them", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 Q"] },
+    { group: "Miscellaneous Exercise 6 (A)", label: "Miscellaneous Exercise 6 (A)", kind: "miscellaneous", refPrefixes: ["Misc A Q"] },
+    { group: "6.4 Equations of Plane", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.4 SolvedEx"] },
+    { group: "6.4 Equations of Plane", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
+    { group: "6.5 Angle Between Planes", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.5 SolvedEx"] },
+    { group: "6.6 Coplanarity of Two Lines", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.6 SolvedEx"] },
+    { group: "6.7 Distance of a Point from a Plane", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.7 SolvedEx"] },
+    { group: "6.7 Distance of a Point from a Plane", label: "Exercise 6.4", kind: "exercise", refPrefixes: ["Ex 6.4 Q"] },
+    { group: "Miscellaneous Exercise 6 (B)", label: "Choose correct alternatives", kind: "miscellaneous", refPrefixes: ["Misc I Q"] },
+    { group: "Miscellaneous Exercise 6 (B)", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II Q"] },
+  ],
+
   // ── Ch.3 Trigonometric Functions — verified against Ch_03_Trigonometric_Functions.pdf.
   //    3 numbered sections, each Solved Examples → Exercise: 3.1 Trigonometric
   //    Equations (its solved run = the Principal-solutions "P*" block + the

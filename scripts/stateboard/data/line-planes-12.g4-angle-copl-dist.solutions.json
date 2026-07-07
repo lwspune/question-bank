@@ -1,0 +1,67 @@
+[
+ {
+  "id": "08033f82-afe4-42a1-8e59-9af33258a4d1",
+  "ref": "Misc II Q.2",
+  "solution": "The perpendicular distance of a point \\((x_1,y_1,z_1)\\) from the plane \\(ax+by+cz+k=0\\) is\n\\(\\dfrac{|ax_1+by_1+cz_1+k|}{\\sqrt{a^2+b^2+c^2}}\\).\n\nHere the point is the origin \\((0,0,0)\\) and the plane is \\(6x+2y+3z-7=0\\), so \\(a=6,\\ b=2,\\ c=3,\\ k=-7\\).\n\n\\(\\text{Distance}=\\dfrac{|6(0)+2(0)+3(0)-7|}{\\sqrt{6^2+2^2+3^2}}=\\dfrac{|-7|}{\\sqrt{36+4+9}}=\\dfrac{7}{\\sqrt{49}}=\\dfrac{7}{7}=1.\\)\n\n\\(\\therefore\\) The perpendicular distance of the origin from the plane is \\(1\\) unit."
+ },
+ {
+  "id": "848286fd-905d-4b22-9c94-6fd56959d454",
+  "ref": "Misc II Q.3",
+  "solution": "The plane is \\(2x+3y+6z=49\\), so its normal direction is \\(\\bar{n}=2\\hat{i}+3\\hat{j}+6\\hat{k}\\), with \\(|\\bar{n}|=\\sqrt{2^2+3^2+6^2}=\\sqrt{49}=7\\).\n\nThe foot of the perpendicular from the origin lies along the normal through the origin, so its position vector is \\(t\\,\\bar{n}=(2t,\\ 3t,\\ 6t)\\) for some scalar \\(t\\).\n\nSince this point lies on the plane, substitute into \\(2x+3y+6z=49\\):\n\\(2(2t)+3(3t)+6(6t)=49\\)\n\\(4t+9t+36t=49\\)\n\\(49t=49\\ \\Rightarrow\\ t=1.\\)\n\nHence the foot of the perpendicular is \\((2(1),\\ 3(1),\\ 6(1))=(2,\\ 3,\\ 6)\\).\n\n\\(\\therefore\\) The coordinates of the foot of the perpendicular are \\((2,\\ 3,\\ 6)\\)."
+ },
+ {
+  "id": "7d5634a7-70dc-475a-9998-08af9eeecc31",
+  "ref": "Misc II Q.14",
+  "solution": "The angle \\(\\theta\\) between two planes equals the angle between their normal vectors.\n\nFor \\(\\bar{r}\\cdot(-2\\hat{i}+\\hat{j}+2\\hat{k})=17\\), the normal is \\(\\bar{n_1}=-2\\hat{i}+\\hat{j}+2\\hat{k}\\).\nFor \\(\\bar{r}\\cdot(2\\hat{i}+2\\hat{j}+\\hat{k})=71\\), the normal is \\(\\bar{n_2}=2\\hat{i}+2\\hat{j}+\\hat{k}\\).\n\n\\(\\bar{n_1}\\cdot\\bar{n_2}=(-2)(2)+(1)(2)+(2)(1)=-4+2+2=0.\\)\n\nSince \\(\\bar{n_1}\\cdot\\bar{n_2}=0\\), the normals are perpendicular, so\n\\(\\cos\\theta=\\dfrac{|\\bar{n_1}\\cdot\\bar{n_2}|}{|\\bar{n_1}||\\bar{n_2}|}=0\\ \\Rightarrow\\ \\theta=90^{\\circ}.\\)\n\n\\(\\therefore\\) The angle between the two planes is \\(90^{\\circ}\\) (the planes are perpendicular)."
+ },
+ {
+  "id": "c7f5bf46-59ee-46d3-a4f0-3c3374fc182e",
+  "ref": "Misc II Q.15",
+  "solution": "The angle \\(\\theta\\) between a line with direction \\(\\bar{b}\\) and a plane with normal \\(\\bar{n}\\) is given by\n\\(\\sin\\theta=\\dfrac{|\\bar{b}\\cdot\\bar{n}|}{|\\bar{b}||\\bar{n}|}.\\)\n\nHere the line \\(\\bar{r}=\\lambda(\\hat{i}-\\hat{j}+\\hat{k})\\) has direction \\(\\bar{b}=\\hat{i}-\\hat{j}+\\hat{k}\\), and the plane \\(\\bar{r}\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=23\\) has normal \\(\\bar{n}=2\\hat{i}-\\hat{j}+\\hat{k}\\).\n\n\\(\\bar{b}\\cdot\\bar{n}=(1)(2)+(-1)(-1)+(1)(1)=2+1+1=4.\\)\n\\(|\\bar{b}|=\\sqrt{1^2+(-1)^2+1^2}=\\sqrt{3},\\quad |\\bar{n}|=\\sqrt{2^2+(-1)^2+1^2}=\\sqrt{6}.\\)\n\n\\(\\sin\\theta=\\dfrac{|4|}{\\sqrt{3}\\cdot\\sqrt{6}}=\\dfrac{4}{\\sqrt{18}}=\\dfrac{4}{3\\sqrt{2}}=\\dfrac{2\\sqrt{2}}{3}.\\)\n\n\\(\\therefore\\ \\theta=\\sin^{-1}\\!\\left(\\dfrac{2\\sqrt{2}}{3}\\right)\\) is the required acute angle."
+ },
+ {
+  "id": "84c84d04-c650-4564-86f4-840f91a2b6dc",
+  "ref": "Misc II Q.16",
+  "solution": "Comparing with \\(\\bar{r}=\\bar{a_1}+\\lambda\\bar{b_1}\\) and \\(\\bar{r}=\\bar{a_2}+\\mu\\bar{b_2}\\):\n\\(\\bar{a_1}=\\hat{i}+4\\hat{j}=(1,4,0),\\quad \\bar{b_1}=\\hat{i}+2\\hat{j}+3\\hat{k}=(1,2,3),\\)\n\\(\\bar{a_2}=3\\hat{j}-\\hat{k}=(0,3,-1),\\quad \\bar{b_2}=2\\hat{i}+3\\hat{j}+4\\hat{k}=(2,3,4).\\)\n\nThe two lines are coplanar iff \\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0.\\)\n\n\\(\\bar{a_2}-\\bar{a_1}=(0-1,\\ 3-4,\\ -1-0)=(-1,-1,-1).\\)\n\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&3\\\\2&3&4\\end{vmatrix}=\\hat{i}(2\\cdot4-3\\cdot3)-\\hat{j}(1\\cdot4-3\\cdot2)+\\hat{k}(1\\cdot3-2\\cdot2)\\)\n\\(=\\hat{i}(8-9)-\\hat{j}(4-6)+\\hat{k}(3-4)=-\\hat{i}+2\\hat{j}-\\hat{k}=(-1,2,-1).\\)\n\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(-1)(-1)+(-1)(2)+(-1)(-1)=1-2+1=0.\\)\n\nSince the scalar triple product is \\(0\\), the lines are coplanar.\n\nThe plane containing them has normal \\(\\bar{n}=\\bar{b_1}\\times\\bar{b_2}=-\\hat{i}+2\\hat{j}-\\hat{k}\\) and passes through \\(\\bar{a_1}=(1,4,0)\\).\nUsing \\(\\bar{r}\\cdot\\bar{n}=\\bar{a_1}\\cdot\\bar{n}\\):\n\\(\\bar{a_1}\\cdot\\bar{n}=(1)(-1)+(4)(2)+(0)(-1)=-1+8+0=7.\\)\n\n\\(\\therefore\\) Vector equation of the plane: \\(\\bar{r}\\cdot(-\\hat{i}+2\\hat{j}-\\hat{k})=7\\), i.e. \\(\\bar{r}\\cdot(\\hat{i}-2\\hat{j}+\\hat{k})=-7\\).\nCartesian form: \\(x-2y+z+7=0\\)."
+ },
+ {
+  "id": "bd25ecf8-6466-46f0-88f9-73b60e446433",
+  "ref": "Misc II Q.17",
+  "solution": "The distance of a point with position vector \\(\\bar{a}\\) from the plane \\(\\bar{r}\\cdot\\bar{n}=d\\) is\n\\(\\dfrac{|\\bar{a}\\cdot\\bar{n}-d|}{|\\bar{n}|}.\\)\n\nHere \\(\\bar{a}=3\\hat{i}+3\\hat{j}+\\hat{k}=(3,3,1)\\), \\(\\bar{n}=2\\hat{i}+3\\hat{j}+6\\hat{k}=(2,3,6)\\), and \\(d=21\\).\n\n\\(\\bar{a}\\cdot\\bar{n}=(3)(2)+(3)(3)+(1)(6)=6+9+6=21.\\)\n\\(|\\bar{n}|=\\sqrt{2^2+3^2+6^2}=\\sqrt{49}=7.\\)\n\n\\(\\text{Distance}=\\dfrac{|21-21|}{7}=\\dfrac{0}{7}=0.\\)\n\n\\(\\therefore\\) The distance is \\(0\\); the given point lies on the plane."
+ },
+ {
+  "id": "036d2cdc-e9e7-48b4-b8aa-609bbc5ed9b4",
+  "ref": "Misc II Q.18",
+  "solution": "The distance of a point \\((x_1,y_1,z_1)\\) from the plane \\(ax+by+cz-d=0\\) is\n\\(\\dfrac{|ax_1+by_1+cz_1-d|}{\\sqrt{a^2+b^2+c^2}}.\\)\n\nHere the point is \\((13,13,-13)\\) and the plane is \\(3x+4y-12z=0\\), so \\(a=3,\\ b=4,\\ c=-12,\\ d=0\\).\n\n\\(ax_1+by_1+cz_1=3(13)+4(13)-12(-13)=39+52+156=247.\\)\n\\(\\sqrt{a^2+b^2+c^2}=\\sqrt{3^2+4^2+(-12)^2}=\\sqrt{9+16+144}=\\sqrt{169}=13.\\)\n\n\\(\\text{Distance}=\\dfrac{|247|}{13}=\\dfrac{247}{13}=19.\\)\n\n\\(\\therefore\\) The distance of the point from the plane is \\(19\\) units."
+ },
+ {
+  "id": "946a20cb-7c6b-4290-b68a-35d445aec725",
+  "ref": "Misc II Q.21",
+  "solution": "Write each pair of equations as a line.\n\nLine 1: \\(x=y,\\ z=0\\). Points satisfy \\(x=y,\\ z=0\\); taking parameter \\(t\\), a point is \\((t,t,0)\\). It passes through the origin \\((0,0,0)\\) and has direction \\(\\bar{b_1}=\\hat{i}+\\hat{j}=(1,1,0)\\).\n\nLine 2: \\(x+y=0,\\ z=0\\), i.e. \\(x=-y,\\ z=0\\). A point is \\((s,-s,0)\\). It also passes through the origin \\((0,0,0)\\) and has direction \\(\\bar{b_2}=\\hat{i}-\\hat{j}=(1,-1,0)\\).\n\nBoth lines pass through the common point \\((0,0,0)\\), hence they intersect (at the origin).\n\nThe plane determined by them has normal\n\\(\\bar{n}=\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&1&0\\\\1&-1&0\\end{vmatrix}=\\hat{i}(1\\cdot0-0\\cdot(-1))-\\hat{j}(1\\cdot0-0\\cdot1)+\\hat{k}(1\\cdot(-1)-1\\cdot1)\\)\n\\(=\\hat{i}(0)-\\hat{j}(0)+\\hat{k}(-2)=-2\\hat{k}.\\)\n\nTaking the normal as \\(\\hat{k}\\), and since the plane passes through the origin, \\(\\bar{r}\\cdot\\bar{n}=\\bar{0}\\cdot\\hat{k}=0\\).\n\n\\(\\therefore\\) Vector equation of the plane: \\(\\bar{r}\\cdot\\hat{k}=0\\) (i.e. the plane \\(z=0\\))."
+ },
+ {
+  "id": "e2a40add-923d-453f-b801-7c8cf623755b",
+  "ref": "Ex 6.4 Q.1",
+  "solution": "The angle \\(\\theta\\) between two planes equals the angle between their normals, given by\n\\(\\cos\\theta=\\dfrac{|\\bar{n_1}\\cdot\\bar{n_2}|}{|\\bar{n_1}||\\bar{n_2}|}.\\)\n\nFor \\(\\bar{r}\\cdot(\\hat{i}+\\hat{j}+2\\hat{k})=13\\): \\(\\bar{n_1}=\\hat{i}+\\hat{j}+2\\hat{k}=(1,1,2).\\)\nFor \\(\\bar{r}\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=31\\): \\(\\bar{n_2}=2\\hat{i}-\\hat{j}+\\hat{k}=(2,-1,1).\\)\n\n\\(\\bar{n_1}\\cdot\\bar{n_2}=(1)(2)+(1)(-1)+(2)(1)=2-1+2=3.\\)\n\\(|\\bar{n_1}|=\\sqrt{1^2+1^2+2^2}=\\sqrt{6},\\quad |\\bar{n_2}|=\\sqrt{2^2+(-1)^2+1^2}=\\sqrt{6}.\\)\n\n\\(\\cos\\theta=\\dfrac{|3|}{\\sqrt{6}\\cdot\\sqrt{6}}=\\dfrac{3}{6}=\\dfrac{1}{2}.\\)\n\n\\(\\therefore\\ \\theta=\\cos^{-1}\\!\\left(\\dfrac{1}{2}\\right)=60^{\\circ}.\\)\n\nThe angle between the planes is \\(60^{\\circ}\\)."
+ },
+ {
+  "id": "a6e0b416-9cdf-435e-8d14-3c44fd23c057",
+  "ref": "Ex 6.4 Q.2",
+  "solution": "(Note: the line is taken as \\(\\bar{r}=(\\hat{i}+2\\hat{j}+2\\hat{k})+\\lambda(2\\hat{i}+3\\hat{j}-6\\hat{k})\\); the printed \\(\\cdot\\) between the two vectors is a misprint. Only the direction of the line matters for the angle.)\n\nThe angle \\(\\theta\\) between a line with direction \\(\\bar{b}\\) and a plane with normal \\(\\bar{n}\\) is\n\\(\\sin\\theta=\\dfrac{|\\bar{b}\\cdot\\bar{n}|}{|\\bar{b}||\\bar{n}|}.\\)\n\nHere \\(\\bar{b}=2\\hat{i}+3\\hat{j}-6\\hat{k}=(2,3,-6)\\) and the plane \\(\\bar{r}\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=0\\) has normal \\(\\bar{n}=2\\hat{i}-\\hat{j}+\\hat{k}=(2,-1,1).\\)\n\n\\(\\bar{b}\\cdot\\bar{n}=(2)(2)+(3)(-1)+(-6)(1)=4-3-6=-5.\\)\n\\(|\\bar{b}|=\\sqrt{2^2+3^2+(-6)^2}=\\sqrt{49}=7,\\quad |\\bar{n}|=\\sqrt{2^2+(-1)^2+1^2}=\\sqrt{6}.\\)\n\n\\(\\sin\\theta=\\dfrac{|-5|}{7\\cdot\\sqrt{6}}=\\dfrac{5}{7\\sqrt{6}}=\\dfrac{5\\sqrt{6}}{42}.\\)\n\n\\(\\therefore\\ \\theta=\\sin^{-1}\\!\\left(\\dfrac{5}{7\\sqrt{6}}\\right)=\\sin^{-1}\\!\\left(\\dfrac{5\\sqrt{6}}{42}\\right)\\) is the required acute angle."
+ },
+ {
+  "id": "73282058-bdd4-4f3e-9ee1-9bf506959a11",
+  "ref": "Ex 6.4 Q.3",
+  "solution": "Comparing with \\(\\bar{r}=\\bar{a_1}+\\lambda\\bar{b_1}\\) and \\(\\bar{r}=\\bar{a_2}+\\mu\\bar{b_2}\\):\n\\(\\bar{a_1}=2\\hat{j}-3\\hat{k}=(0,2,-3),\\quad \\bar{b_1}=\\hat{i}+2\\hat{j}+3\\hat{k}=(1,2,3),\\)\n\\(\\bar{a_2}=2\\hat{i}+6\\hat{j}+3\\hat{k}=(2,6,3),\\quad \\bar{b_2}=2\\hat{i}+3\\hat{j}+4\\hat{k}=(2,3,4).\\)\n\nThe lines are coplanar iff \\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0.\\)\n\n\\(\\bar{a_2}-\\bar{a_1}=(2-0,\\ 6-2,\\ 3-(-3))=(2,4,6).\\)\n\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&3\\\\2&3&4\\end{vmatrix}=\\hat{i}(2\\cdot4-3\\cdot3)-\\hat{j}(1\\cdot4-3\\cdot2)+\\hat{k}(1\\cdot3-2\\cdot2)\\)\n\\(=\\hat{i}(8-9)-\\hat{j}(4-6)+\\hat{k}(3-4)=-\\hat{i}+2\\hat{j}-\\hat{k}=(-1,2,-1).\\)\n\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(2)(-1)+(4)(2)+(6)(-1)=-2+8-6=0.\\)\n\nSince the scalar triple product is \\(0\\), the lines are coplanar.\n\nThe plane has normal \\(\\bar{n}=\\bar{b_1}\\times\\bar{b_2}=-\\hat{i}+2\\hat{j}-\\hat{k}\\) and passes through \\(\\bar{a_1}=(0,2,-3)\\).\n\\(\\bar{a_1}\\cdot\\bar{n}=(0)(-1)+(2)(2)+(-3)(-1)=0+4+3=7.\\)\n\n\\(\\therefore\\) Vector equation: \\(\\bar{r}\\cdot(-\\hat{i}+2\\hat{j}-\\hat{k})=7\\), i.e. \\(\\bar{r}\\cdot(\\hat{i}-2\\hat{j}+\\hat{k})=-7\\).\nCartesian form: \\(x-2y+z+7=0\\)."
+ },
+ {
+  "id": "f79da144-fd80-4e5f-9cb5-df5032db648b",
+  "ref": "Ex 6.4 Q.4",
+  "solution": "The distance of a point \\(\\bar{a}\\) from the plane \\(\\bar{r}\\cdot\\bar{n}=d\\) is \\(\\dfrac{|\\bar{a}\\cdot\\bar{n}-d|}{|\\bar{n}|}.\\)\n\nHere \\(\\bar{a}=4\\hat{i}-3\\hat{j}+\\hat{k}=(4,-3,1)\\), \\(\\bar{n}=2\\hat{i}+3\\hat{j}-6\\hat{k}=(2,3,-6)\\), and \\(d=21\\).\n\n\\(\\bar{a}\\cdot\\bar{n}=(4)(2)+(-3)(3)+(1)(-6)=8-9-6=-7.\\)\n\\(|\\bar{n}|=\\sqrt{2^2+3^2+(-6)^2}=\\sqrt{49}=7.\\)\n\n\\(\\text{Distance}=\\dfrac{|-7-21|}{7}=\\dfrac{|-28|}{7}=\\dfrac{28}{7}=4.\\)\n\n\\(\\therefore\\) The distance of the point from the plane is \\(4\\) units."
+ },
+ {
+  "id": "d05df28a-5276-476a-bedb-16a7723f7360",
+  "ref": "Ex 6.4 Q.5",
+  "solution": "The distance of a point \\((x_1,y_1,z_1)\\) from the plane \\(ax+by+cz+k=0\\) is\n\\(\\dfrac{|ax_1+by_1+cz_1+k|}{\\sqrt{a^2+b^2+c^2}}.\\)\n\nHere the point is \\((1,1,-1)\\) and the plane is \\(3x+4y-12z+20=0\\), so \\(a=3,\\ b=4,\\ c=-12,\\ k=20\\).\n\n\\(ax_1+by_1+cz_1+k=3(1)+4(1)-12(-1)+20=3+4+12+20=39.\\)\n\\(\\sqrt{a^2+b^2+c^2}=\\sqrt{3^2+4^2+(-12)^2}=\\sqrt{9+16+144}=\\sqrt{169}=13.\\)\n\n\\(\\text{Distance}=\\dfrac{|39|}{13}=\\dfrac{39}{13}=3.\\)\n\n\\(\\therefore\\) The distance of the point from the plane is \\(3\\) units."
+ }
+]

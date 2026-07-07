@@ -1,0 +1,78 @@
+[
+  {
+    "ref": "6.5 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "difficulty": "EASY",
+    "stem": "Find the angle between planes \\(\\bar{r}\\cdot(\\hat{i}+\\hat{j}-2\\hat{k})=8\\) and \\(\\bar{r}\\cdot(-2\\hat{i}+\\hat{j}+\\hat{k})=3\\).",
+    "solution": "Normal to the given planes are \\(\\bar{n_1}=\\hat{i}+\\hat{j}-2\\hat{k}\\) and \\(\\bar{n_2}=-2\\hat{i}+\\hat{j}+\\hat{k}\\).\nThe acute angle \\(\\theta\\) between normals is given by \\(\\cos\\theta=\\left|\\dfrac{\\bar{n_1}\\cdot\\bar{n_2}}{|\\bar{n_1}|\\cdot|\\bar{n_2}|}\\right|\\).\n\\(\\therefore\\cos\\theta=\\left|\\dfrac{(\\hat{i}+\\hat{j}-2\\hat{k})\\cdot(-2\\hat{i}+\\hat{j}+\\hat{k})}{\\sqrt{6}\\cdot\\sqrt{6}}\\right|=\\left|\\dfrac{-3}{6}\\right|=\\dfrac{1}{2}\\).\n\\(\\therefore\\cos\\theta=\\dfrac{1}{2}\\qquad\\therefore\\theta=60^\\circ=\\dfrac{\\pi}{3}\\).\nThe acute angle between normals \\(\\bar{n_1}\\) and \\(\\bar{n_2}\\) is \\(60^\\circ\\).\n\\(\\therefore\\) The angle between the given planes is \\(60^\\circ\\)."
+  },
+  {
+    "ref": "6.5 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "difficulty": "MODERATE",
+    "stem": "Find the angle between the line \\(\\bar{r}=(\\hat{i}+2\\hat{j}+\\hat{k})+\\lambda(\\hat{i}+\\hat{j}+\\hat{k})\\) and the plane \\(\\bar{r}\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=8\\).",
+    "solution": "The angle between the line \\(\\bar{r}=\\bar{a}+\\lambda\\bar{b}\\) and the plane \\(\\bar{r}\\cdot\\bar{n}=d\\) is given by \\(\\sin\\theta=\\left|\\dfrac{\\bar{b}\\cdot\\bar{n}}{|\\bar{b}|\\cdot|\\bar{n}|}\\right|\\).\nHere \\(\\bar{b}=\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(\\bar{n}=2\\hat{i}-\\hat{j}+\\hat{k}\\).\n\\(\\therefore\\bar{b}\\cdot\\bar{n}=(\\hat{i}+\\hat{j}+\\hat{k})\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=2-1+1=2\\).\n\\(|\\bar{b}|=\\sqrt{1+1+1}=\\sqrt{3}\\) and \\(|\\bar{n}|=\\sqrt{4+1+1}=\\sqrt{6}\\).\n\\(\\therefore\\sin\\theta=\\left|\\dfrac{\\bar{b}\\cdot\\bar{n}}{|\\bar{b}|\\cdot|\\bar{n}|}\\right|=\\dfrac{2}{\\sqrt{3}\\cdot\\sqrt{6}}=\\dfrac{\\sqrt{2}}{3}\\).\n\\(\\therefore\\theta=\\sin^{-1}\\left(\\dfrac{\\sqrt{2}}{3}\\right)\\)."
+  },
+  {
+    "ref": "6.6 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Coplanarity of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Show that lines \\(\\bar{r}=(\\hat{i}+\\hat{j}-\\hat{k})+\\lambda(2\\hat{i}-2\\hat{j}+\\hat{k})\\) and \\(\\bar{r}=(4\\hat{i}-3\\hat{j}+2\\hat{k})+\\mu(\\hat{i}-2\\hat{j}+2\\hat{k})\\) are coplanar. Find the equation of the plane determined by them.",
+    "solution": "Lines \\(\\bar{r}=\\bar{a_1}+\\lambda_1\\bar{b_1}\\) and \\(\\bar{r}=\\bar{a_2}+\\lambda_2\\bar{b_2}\\) are coplanar if and only if \\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0\\).\nHere \\(\\bar{a_1}=\\hat{i}+\\hat{j}-\\hat{k}\\), \\(\\bar{a_2}=4\\hat{i}-3\\hat{j}+2\\hat{k}\\), \\(\\bar{b_1}=2\\hat{i}-2\\hat{j}+\\hat{k}\\), \\(\\bar{b_2}=\\hat{i}-2\\hat{j}+2\\hat{k}\\).\n\\(\\therefore\\bar{a_2}-\\bar{a_1}=3\\hat{i}-4\\hat{j}+3\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=\\begin{vmatrix}3 & -4 & 3\\\\ 2 & -2 & 1\\\\ 1 & -2 & 2\\end{vmatrix}=3(-2)+4(3)+3(-2)=-6+12-6=0\\).\n\\(\\therefore\\) Given lines are coplanar.\nNow \\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i} & \\hat{j} & \\hat{k}\\\\ 2 & -2 & 1\\\\ 1 & -2 & 2\\end{vmatrix}=-2\\hat{i}-3\\hat{j}-2\\hat{k}\\).\nThe equation of the plane determined by them is \\((\\bar{r}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0\\).\n\\(\\therefore\\bar{r}\\cdot(\\bar{b_1}\\times\\bar{b_2})=\\bar{a_1}\\cdot(\\bar{b_1}\\times\\bar{b_2})\\).\n\\(\\therefore\\bar{r}\\cdot(-2\\hat{i}-3\\hat{j}-2\\hat{k})=(\\hat{i}+\\hat{j}-\\hat{k})\\cdot(-2\\hat{i}-3\\hat{j}-2\\hat{k})\\).\n\\(\\therefore\\bar{r}\\cdot(-2\\hat{i}-3\\hat{j}-2\\hat{k})=-3\\).\n\\(\\therefore\\bar{r}\\cdot(2\\hat{i}+3\\hat{j}+2\\hat{k})=3\\)."
+  },
+  {
+    "ref": "6.7 SolvedEx.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Plane",
+    "difficulty": "MODERATE",
+    "stem": "Find the distance of the point \\(4\\hat{i}-3\\hat{j}+2\\hat{k}\\) from the plane \\(\\bar{r}\\cdot(-2\\hat{i}+\\hat{j}-2\\hat{k})=6\\).",
+    "solution": "Here \\(\\bar{a}=4\\hat{i}-3\\hat{j}+2\\hat{k}\\), \\(\\bar{n}=-2\\hat{i}+\\hat{j}-2\\hat{k}\\).\n\\(\\therefore|\\bar{n}|=\\sqrt{(-2)^2+(1)^2+(-2)^2}=3\\).\n\\(\\therefore\\hat{n}=\\dfrac{-2\\hat{i}+\\hat{j}-2\\hat{k}}{3}\\).\nThe normal form of the equation of the given plane is \\(\\bar{r}\\cdot\\dfrac{-2\\hat{i}+\\hat{j}-2\\hat{k}}{3}=2\\), \\(\\therefore p=2\\).\nNow, \\(\\bar{a}\\cdot\\hat{n}=(4\\hat{i}-3\\hat{j}+2\\hat{k})\\cdot\\dfrac{-2\\hat{i}+\\hat{j}-2\\hat{k}}{3}=\\dfrac{(4\\hat{i}-3\\hat{j}+2\\hat{k})\\cdot(-2\\hat{i}+\\hat{j}-2\\hat{k})}{3}=\\dfrac{-15}{3}=-5\\).\n\\(\\therefore\\bar{a}\\cdot\\hat{n}=-5\\).\nThe required distance is given by \\(|p-\\bar{a}\\cdot\\hat{n}|=|2-(-5)|=|7|=7\\).\nTherefore the distance of the point \\(4\\hat{i}-3\\hat{j}+2\\hat{k}\\) from the plane \\((-2\\hat{i}+\\hat{j}-2\\hat{k})=6\\) is 7 unit."
+  },
+  {
+    "ref": "Ex 6.4 Q.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "difficulty": "EASY",
+    "stem": "Find the angle between planes \\(\\bar{r}\\cdot(\\hat{i}+\\hat{j}+2\\hat{k})=13\\) and \\(\\bar{r}\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=31\\)."
+  },
+  {
+    "ref": "Ex 6.4 Q.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "difficulty": "MODERATE",
+    "stem": "Find the acute angle between the line \\(\\bar{r}\\cdot(\\hat{i}+2\\hat{j}+2\\hat{k})+\\lambda(2\\hat{i}+3\\hat{j}-6\\hat{k})\\) and the plane \\(\\bar{r}\\cdot(2\\hat{i}-\\hat{j}+\\hat{k})=0\\)."
+  },
+  {
+    "ref": "Ex 6.4 Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Coplanarity of Two Lines",
+    "difficulty": "MODERATE",
+    "stem": "Show that lines \\(\\bar{r}=(2\\hat{j}-3\\hat{k})+\\lambda(\\hat{i}+2\\hat{j}+3\\hat{k})\\) and \\(\\bar{r}=(2\\hat{i}+6\\hat{j}+3\\hat{k})+\\mu(2\\hat{i}+3\\hat{j}+4\\hat{k})\\) are coplanar. Find the equation of the plane determined by them."
+  },
+  {
+    "ref": "Ex 6.4 Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Plane",
+    "difficulty": "MODERATE",
+    "stem": "Find the distance of the point \\(4\\hat{i}-3\\hat{j}+\\hat{k}\\) from the plane \\(\\bar{r}\\cdot(2\\hat{i}+3\\hat{j}-6\\hat{k})=21\\)."
+  },
+  {
+    "ref": "Ex 6.4 Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Plane",
+    "difficulty": "MODERATE",
+    "stem": "Find the distance of the point \\((1, 1, -1)\\) from the plane \\(3x+4y-12z+20=0\\)."
+  }
+]
