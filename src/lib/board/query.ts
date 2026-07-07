@@ -242,25 +242,35 @@ export async function listBoardChapters(
   const { data: exam } = await client.from("exams").select("id").eq("name", examName).maybeSingle();
   if (!exam) return [];
 
-  const { data, error } = await client
-    .from("questions")
-    .select(
-      `chapter:chapters!chapter_id(id, name, order_index),
-       subject:subjects!subject_id(id, name)`
-    )
-    .eq("exam_id", (exam as { id: string }).id)
-    .not("section_seq", "is", null);
-  if (error) throw new Error(`board chapter list: ${error.message}`);
+  // Page through in 1000-row windows and aggregate. PostgREST caps a raw select
+  // at 1000 rows, so a single unpaged select silently DROPS whole chapters once
+  // an exam's total backfilled rows exceed 1000 (MH-HSC-12 crossed 1000 in
+  // 2026-07 and lost 3 chapters from this index). We only need the DISTINCT set +
+  // per-chapter counts, so accumulate across pages until a short page.
+  const PAGE = 1000;
+  const data: { chapter: unknown; subject: unknown }[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data: page, error } = await client
+      .from("questions")
+      .select(
+        `chapter:chapters!chapter_id(id, name, order_index),
+         subject:subjects!subject_id(id, name)`
+      )
+      .eq("exam_id", (exam as { id: string }).id)
+      .not("section_seq", "is", null)
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`board chapter list: ${error.message}`);
+    const rows = (page ?? []) as { chapter: unknown; subject: unknown }[];
+    data.push(...rows);
+    if (rows.length < PAGE) break;
+  }
 
   const flat = (v: unknown): { id: string; name: string; order_index?: number | null } | null => {
     const x = Array.isArray(v) ? v[0] : v;
     return (x as { id: string; name: string }) ?? null;
   };
 
-  // Aggregate counts per (subject, chapter). PostgREST caps a raw select at 1000
-  // rows; a board chapter is ≤ a few hundred and we only need the DISTINCT set +
-  // counts, which stay correct as long as one chapter < 1000. Kept simple; if a
-  // single chapter ever exceeds 1000 rows, swap for a grouped RPC.
+  // Aggregate counts per (subject, chapter) from the fully-paged row set.
   const bySubject = new Map<
     string,
     { subjectName: string; subjectRoute: string; chapters: Map<string, BoardChapterLink & { order: number }> }

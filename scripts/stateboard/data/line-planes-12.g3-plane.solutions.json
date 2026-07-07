@@ -1,0 +1,127 @@
+[
+ {
+  "id": "1a0acabb-7544-494d-ab6a-54c9ad40b014",
+  "ref": "Misc II Q.1",
+  "solution": "The normal vector is \\(\\bar{n}=2\\hat{i}+\\hat{j}+2\\hat{k}\\).\n\\(|\\bar{n}|=\\sqrt{2^2+1^2+2^2}=\\sqrt{4+1+4}=\\sqrt{9}=3\\)\nUnit normal: \\(\\hat{n}=\\dfrac{\\bar{n}}{|\\bar{n}|}=\\dfrac{1}{3}\\left(2\\hat{i}+\\hat{j}+2\\hat{k}\\right)\\)\nThe distance of the plane from the origin is \\(p=5\\).\nThe normal form of the plane is \\(\\bar{r}\\cdot\\hat{n}=p\\):\n\\(\\bar{r}\\cdot\\dfrac{1}{3}\\left(2\\hat{i}+\\hat{j}+2\\hat{k}\\right)=5\\)\n\\(\\therefore \\bar{r}\\cdot\\left(2\\hat{i}+\\hat{j}+2\\hat{k}\\right)=15\\)\nThis is the required vector equation of the plane."
+ },
+ {
+  "id": "cefcec83-775e-4e30-be92-763e59c10f51",
+  "ref": "Misc II Q.4 i)",
+  "solution": "The given equation is \\(\\bar{r}\\cdot\\left(6\\hat{i}+8\\hat{j}+24\\hat{k}\\right)=13\\), so \\(\\bar{n}=6\\hat{i}+8\\hat{j}+24\\hat{k}\\).\n\\(|\\bar{n}|=\\sqrt{6^2+8^2+24^2}=\\sqrt{36+64+576}=\\sqrt{676}=26\\)\nDivide both sides by \\(|\\bar{n}|=26\\) to reduce to normal form \\(\\bar{r}\\cdot\\hat{n}=p\\):\n\\(\\bar{r}\\cdot\\dfrac{1}{26}\\left(6\\hat{i}+8\\hat{j}+24\\hat{k}\\right)=\\dfrac{13}{26}=\\dfrac{1}{2}\\)\nHence \\(p=\\dfrac{1}{2}\\).\n\\(\\therefore\\) the length of the perpendicular from the origin to the plane is \\(\\dfrac{1}{2}\\) unit."
+ },
+ {
+  "id": "c5b434d8-b5be-4894-87c1-d819a81be196",
+  "ref": "Misc II Q.4 ii)",
+  "solution": "For \\(\\bar{r}\\cdot\\left(6\\hat{i}+8\\hat{j}+24\\hat{k}\\right)=13\\), the normal is \\(\\bar{n}=6\\hat{i}+8\\hat{j}+24\\hat{k}\\).\n\\(|\\bar{n}|=\\sqrt{6^2+8^2+24^2}=\\sqrt{36+64+576}=\\sqrt{676}=26\\)\nThe unit normal is\n\\(\\hat{n}=\\dfrac{1}{26}\\left(6\\hat{i}+8\\hat{j}+24\\hat{k}\\right)=\\dfrac{3}{13}\\hat{i}+\\dfrac{4}{13}\\hat{j}+\\dfrac{12}{13}\\hat{k}\\)\nThe direction cosines of the normal are the components of \\(\\hat{n}\\):\n\\(l=\\dfrac{3}{13},\\ m=\\dfrac{4}{13},\\ n=\\dfrac{12}{13}\\)\ni.e. \\(\\left(\\dfrac{3}{13},\\ \\dfrac{4}{13},\\ \\dfrac{12}{13}\\right)\\)."
+ },
+ {
+  "id": "bc39674c-7274-4718-8e9b-f841a4b1f92c",
+  "ref": "Misc II Q.5",
+  "solution": "The plane passes through \\(A(1,-2,1)\\), \\(B(2,-1,-3)\\), \\(C(0,1,5)\\).\nTwo vectors in the plane:\n\\(\\overline{AB}=B-A=(2-1)\\hat{i}+(-1+2)\\hat{j}+(-3-1)\\hat{k}=\\hat{i}+\\hat{j}-4\\hat{k}\\)\n\\(\\overline{AC}=C-A=(0-1)\\hat{i}+(1+2)\\hat{j}+(5-1)\\hat{k}=-\\hat{i}+3\\hat{j}+4\\hat{k}\\)\nThe normal is \\(\\bar{n}=\\overline{AB}\\times\\overline{AC}\\):\n\\(\\bar{n}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 1&1&-4\\\\ -1&3&4\\end{vmatrix}\\)\n\\(=\\hat{i}\\big(1\\cdot4-(-4)\\cdot3\\big)-\\hat{j}\\big(1\\cdot4-(-4)\\cdot(-1)\\big)+\\hat{k}\\big(1\\cdot3-1\\cdot(-1)\\big)\\)\n\\(=\\hat{i}(4+12)-\\hat{j}(4-4)+\\hat{k}(3+1)=16\\hat{i}+0\\hat{j}+4\\hat{k}\\)\nUsing \\(A\\) as position vector \\(\\bar{a}=\\hat{i}-2\\hat{j}+\\hat{k}\\):\n\\(\\bar{a}\\cdot\\bar{n}=(1)(16)+(-2)(0)+(1)(4)=20\\)\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\) is\n\\(\\bar{r}\\cdot\\left(16\\hat{i}+4\\hat{k}\\right)=20\\), i.e. dividing by \\(4\\),\n\\(\\therefore \\bar{r}\\cdot\\left(4\\hat{i}+\\hat{k}\\right)=5\\)."
+ },
+ {
+  "id": "c1c9d44d-464c-4bb3-a6d3-d1138aaebcae",
+  "ref": "Misc II Q.6",
+  "solution": "The plane passes through \\(A(1,-2,3)\\) and its normal has direction ratios \\((0,2,0)\\).\nThe Cartesian equation of a plane through \\((x_1,y_1,z_1)\\) with normal \\((a,b,c)\\) is\n\\(a(x-x_1)+b(y-y_1)+c(z-z_1)=0\\)\n\\(0(x-1)+2(y+2)+0(z-3)=0\\)\n\\(2(y+2)=0\\)\n\\(\\therefore y+2=0,\\ \\text{i.e. } y=-2\\)\nThis is the required Cartesian equation of the plane."
+ },
+ {
+  "id": "e2abe3a7-cf58-40b5-b117-4040f5a23428",
+  "ref": "Misc II Q.7",
+  "solution": "The required plane is parallel to \\(\\bar{r}\\cdot\\left(6\\hat{i}+8\\hat{j}+7\\hat{k}\\right)=0\\), so it has the same normal direction \\((6,8,7)\\).\nIt passes through \\(A(7,8,6)\\). The Cartesian equation is\n\\(6(x-7)+8(y-8)+7(z-6)=0\\)\n\\(6x-42+8y-64+7z-42=0\\)\n\\(6x+8y+7z-148=0\\)\n\\(\\therefore 6x+8y+7z=148\\)\nThis is the required Cartesian equation of the plane."
+ },
+ {
+  "id": "945c4a4c-ecc3-466f-86cb-05d3664a91f0",
+  "ref": "Misc II Q.8",
+  "solution": "Let \\(O\\) be the origin and \\(M(1,2,0)\\) the foot of the perpendicular from \\(O\\) to the plane.\nThen \\(\\overline{OM}\\) is normal to the plane, so\n\\(\\bar{n}=\\overline{OM}=\\hat{i}+2\\hat{j}+0\\hat{k}\\)\nThe plane passes through \\(M\\) with position vector \\(\\bar{a}=\\hat{i}+2\\hat{j}\\).\n\\(\\bar{a}\\cdot\\bar{n}=(1)(1)+(2)(2)+(0)(0)=5\\)\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\) is\n\\(\\therefore \\bar{r}\\cdot\\left(\\hat{i}+2\\hat{j}\\right)=5\\)\nThis is the required vector equation of the plane."
+ },
+ {
+  "id": "9a464c73-75ac-4224-8510-05810cebde23",
+  "ref": "Misc II Q.9",
+  "solution": "The plane makes non-zero intercepts \\(a,b,c\\) on the coordinate axes, so its Cartesian (intercept) equation is\n\\(\\dfrac{x}{a}+\\dfrac{y}{b}+\\dfrac{z}{c}=1\\)\nMultiplying throughout by \\(abc\\):\n\\(bc\\,x+ca\\,y+ab\\,z=abc\\)\nNow let \\(\\bar{r}=x\\hat{i}+y\\hat{j}+z\\hat{k}\\). Then\n\\(bc\\,x+ca\\,y+ab\\,z=\\left(x\\hat{i}+y\\hat{j}+z\\hat{k}\\right)\\cdot\\left(bc\\hat{i}+ca\\hat{j}+ab\\hat{k}\\right)=\\bar{r}\\cdot\\left(bc\\hat{i}+ca\\hat{j}+ab\\hat{k}\\right)\\)\nHence\n\\(\\therefore \\bar{r}\\cdot\\left(bc\\hat{i}+ca\\hat{j}+ab\\hat{k}\\right)=abc\\)\nwhich is the required vector equation of the plane."
+ },
+ {
+  "id": "ed048262-3094-4414-be78-d4519def7b3d",
+  "ref": "Misc II Q.10",
+  "solution": "The plane is parallel to \\(\\bar{b}=4\\hat{i}+3\\hat{k}\\) and \\(\\bar{c}=\\hat{i}+\\hat{j}\\), so its normal is \\(\\bar{n}=\\bar{b}\\times\\bar{c}\\).\n\\(\\bar{n}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 4&0&3\\\\ 1&1&0\\end{vmatrix}\\)\n\\(=\\hat{i}(0\\cdot0-3\\cdot1)-\\hat{j}(4\\cdot0-3\\cdot1)+\\hat{k}(4\\cdot1-0\\cdot1)\\)\n\\(=-3\\hat{i}+3\\hat{j}+4\\hat{k}\\)\nThe plane passes through \\(A(-2,3,5)\\), so \\(\\bar{a}=-2\\hat{i}+3\\hat{j}+5\\hat{k}\\).\n\\(\\bar{a}\\cdot\\bar{n}=(-2)(-3)+(3)(3)+(5)(4)=6+9+20=35\\)\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\) is\n\\(\\therefore \\bar{r}\\cdot\\left(-3\\hat{i}+3\\hat{j}+4\\hat{k}\\right)=35\\)."
+ },
+ {
+  "id": "13ba3f3b-130c-433d-936a-019230360bae",
+  "ref": "Misc II Q.11",
+  "solution": "The plane is \\(\\bar{r}=\\lambda\\left(\\hat{i}+\\hat{j}-\\hat{k}\\right)+\\mu\\left(\\hat{i}+2\\hat{j}+3\\hat{k}\\right)\\).\nSince there is no constant position-vector term, the plane passes through the origin, and it is parallel to \\(\\bar{b}=\\hat{i}+\\hat{j}-\\hat{k}\\) and \\(\\bar{c}=\\hat{i}+2\\hat{j}+3\\hat{k}\\).\nNormal \\(\\bar{n}=\\bar{b}\\times\\bar{c}\\):\n\\(\\bar{n}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 1&1&-1\\\\ 1&2&3\\end{vmatrix}\\)\n\\(=\\hat{i}(1\\cdot3-(-1)\\cdot2)-\\hat{j}(1\\cdot3-(-1)\\cdot1)+\\hat{k}(1\\cdot2-1\\cdot1)\\)\n\\(=\\hat{i}(3+2)-\\hat{j}(3+1)+\\hat{k}(2-1)=5\\hat{i}-4\\hat{j}+\\hat{k}\\)\nThe plane passes through the origin \\((0,0,0)\\), so the constant is \\(0\\).\nCartesian equation \\(5x-4y+z=0\\):\n\\(\\therefore 5x-4y+z=0\\)."
+ },
+ {
+  "id": "307f1662-8135-4fb1-bb95-f269b914cfe2",
+  "ref": "Misc II Q.12",
+  "solution": "A plane making equal intercepts \\(a\\) on all three axes has intercept equation\n\\(\\dfrac{x}{a}+\\dfrac{y}{a}+\\dfrac{z}{a}=1\\ \\Rightarrow\\ x+y+z=a\\)\nIt passes through \\(A(1,2,3)\\): \\(1+2+3=a\\Rightarrow a=6\\).\nIt passes through \\(B(3,2,1)\\): \\(3+2+1=a\\Rightarrow a=6\\).\nBoth points give the same value \\(a=6\\), so the plane is\n\\(x+y+z=6\\)\nThe vector equation is\n\\(\\therefore \\bar{r}\\cdot\\left(\\hat{i}+\\hat{j}+\\hat{k}\\right)=6\\).\n(Note: with the equal-intercept condition \\(x+y+z=a\\), both given points force \\(a=6\\), so there is a unique such plane.)"
+ },
+ {
+  "id": "548cd760-734e-4a92-bd8a-a0b9d206f9e6",
+  "ref": "Misc II Q.13",
+  "solution": "A plane making equal non-zero intercepts \\(a\\) on the axes has\n\\(\\dfrac{x}{a}+\\dfrac{y}{a}+\\dfrac{z}{a}=1\\ \\Rightarrow\\ x+y+z=a\\)\nIt passes through \\((1,1,1)\\):\n\\(1+1+1=a\\Rightarrow a=3\\)\nHence the Cartesian equation is \\(x+y+z=3\\).\nThe vector equation is\n\\(\\therefore \\bar{r}\\cdot\\left(\\hat{i}+\\hat{j}+\\hat{k}\\right)=3\\)."
+ },
+ {
+  "id": "3b951ff9-6121-4d3f-b11b-ecc6496e38ca",
+  "ref": "Misc II Q.19",
+  "solution": "The line is \\(\\bar{r}=\\left(\\hat{i}+4\\hat{j}+\\hat{k}\\right)+\\lambda\\left(\\hat{i}+2\\hat{j}+\\hat{k}\\right)\\), which passes through \\(P(1,4,1)\\) with direction \\(\\bar{b}=\\hat{i}+2\\hat{j}+\\hat{k}\\).\nThe required plane passes through the origin \\(O\\) and contains this line, so it contains the vectors\n\\(\\overline{OP}=\\hat{i}+4\\hat{j}+\\hat{k}\\) and \\(\\bar{b}=\\hat{i}+2\\hat{j}+\\hat{k}\\).\nNormal \\(\\bar{n}=\\overline{OP}\\times\\bar{b}\\):\n\\(\\bar{n}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 1&4&1\\\\ 1&2&1\\end{vmatrix}\\)\n\\(=\\hat{i}(4\\cdot1-1\\cdot2)-\\hat{j}(1\\cdot1-1\\cdot1)+\\hat{k}(1\\cdot2-4\\cdot1)\\)\n\\(=\\hat{i}(4-2)-\\hat{j}(1-1)+\\hat{k}(2-4)=2\\hat{i}+0\\hat{j}-2\\hat{k}\\)\nThe plane passes through the origin, so its constant is \\(0\\).\n\\(\\bar{r}\\cdot\\left(2\\hat{i}-2\\hat{k}\\right)=0\\), i.e. dividing by \\(2\\),\n\\(\\therefore \\bar{r}\\cdot\\left(\\hat{i}-\\hat{k}\\right)=0\\)."
+ },
+ {
+  "id": "ec87e051-624d-41f2-9adb-de669a0d7ec0",
+  "ref": "Misc II Q.20",
+  "solution": "The required plane bisects the segment \\(AB\\) at right angles, where \\(A(2,3,6)\\) and \\(B(4,3,-2)\\). It is the perpendicular bisector plane of \\(AB\\).\nMidpoint \\(M=\\left(\\dfrac{2+4}{2},\\dfrac{3+3}{2},\\dfrac{6-2}{2}\\right)=(3,3,2)\\).\nNormal \\(\\bar{n}=\\overline{AB}=(4-2)\\hat{i}+(3-3)\\hat{j}+(-2-6)\\hat{k}=2\\hat{i}+0\\hat{j}-8\\hat{k}\\).\nThe plane passes through \\(M\\) with position vector \\(\\bar{a}=3\\hat{i}+3\\hat{j}+2\\hat{k}\\).\n\\(\\bar{a}\\cdot\\bar{n}=(3)(2)+(3)(0)+(2)(-8)=6+0-16=-10\\)\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\) is\n\\(\\bar{r}\\cdot\\left(2\\hat{i}-8\\hat{k}\\right)=-10\\), i.e. dividing by \\(2\\),\n\\(\\therefore \\bar{r}\\cdot\\left(\\hat{i}-4\\hat{k}\\right)=-5\\)."
+ },
+ {
+  "id": "1dcfcd18-a83d-4bc4-90a8-e7dc8902d142",
+  "ref": "Ex 6.3 Q.1",
+  "solution": "The normal vector is \\(\\bar{n}=2\\hat{i}+\\hat{j}-2\\hat{k}\\).\n\\(|\\bar{n}|=\\sqrt{2^2+1^2+(-2)^2}=\\sqrt{4+1+4}=\\sqrt{9}=3\\)\nUnit normal: \\(\\hat{n}=\\dfrac{1}{3}\\left(2\\hat{i}+\\hat{j}-2\\hat{k}\\right)\\).\nThe distance from the origin is \\(p=42\\).\nNormal form \\(\\bar{r}\\cdot\\hat{n}=p\\):\n\\(\\bar{r}\\cdot\\dfrac{1}{3}\\left(2\\hat{i}+\\hat{j}-2\\hat{k}\\right)=42\\)\n\\(\\therefore \\bar{r}\\cdot\\left(2\\hat{i}+\\hat{j}-2\\hat{k}\\right)=126\\)\nThis is the required vector equation of the plane."
+ },
+ {
+  "id": "0c2a94b9-218e-406c-88a6-bd3fe897a75f",
+  "ref": "Ex 6.3 Q.2",
+  "solution": "The plane is \\(6x-2y+3z-7=0\\), with normal \\((6,-2,3)\\).\nThe perpendicular distance of the origin \\((0,0,0)\\) from \\(ax+by+cz+d=0\\) is\n\\(\\dfrac{|a x_1+b y_1+c z_1+d|}{\\sqrt{a^2+b^2+c^2}}\\).\n\\(=\\dfrac{|6(0)-2(0)+3(0)-7|}{\\sqrt{6^2+(-2)^2+3^2}}=\\dfrac{|-7|}{\\sqrt{36+4+9}}=\\dfrac{7}{\\sqrt{49}}=\\dfrac{7}{7}=1\\)\n\\(\\therefore\\) the perpendicular distance of the origin from the plane is \\(1\\) unit."
+ },
+ {
+  "id": "a82a836c-0570-4f85-8a9f-66e75209d369",
+  "ref": "Ex 6.3 Q.3",
+  "solution": "The plane is \\(2x+6y-3z=63\\), with normal direction \\((2,6,-3)\\).\nThe foot of the perpendicular \\(M\\) from the origin lies along the normal, so\n\\(M=(2t,\\ 6t,\\ -3t)\\) for some scalar \\(t\\).\nSince \\(M\\) lies on the plane:\n\\(2(2t)+6(6t)-3(-3t)=63\\)\n\\(4t+36t+9t=63\\)\n\\(49t=63\\Rightarrow t=\\dfrac{63}{49}=\\dfrac{9}{7}\\)\nHence\n\\(M=\\left(2\\cdot\\dfrac{9}{7},\\ 6\\cdot\\dfrac{9}{7},\\ -3\\cdot\\dfrac{9}{7}\\right)=\\left(\\dfrac{18}{7},\\ \\dfrac{54}{7},\\ -\\dfrac{27}{7}\\right)\\)\n\\(\\therefore\\) the foot of the perpendicular is \\(\\left(\\dfrac{18}{7},\\ \\dfrac{54}{7},\\ -\\dfrac{27}{7}\\right)\\)."
+ },
+ {
+  "id": "e23c9da6-4b85-40ea-8771-b8321c163941",
+  "ref": "Ex 6.3 Q.4",
+  "solution": "The given plane is \\(\\bar{r}\\cdot\\left(3\\hat{i}+4\\hat{j}+12\\hat{k}\\right)=78\\), so \\(\\bar{n}=3\\hat{i}+4\\hat{j}+12\\hat{k}\\).\n\\(|\\bar{n}|=\\sqrt{3^2+4^2+12^2}=\\sqrt{9+16+144}=\\sqrt{169}=13\\)\nDivide both sides by \\(13\\) to obtain the normal form \\(\\bar{r}\\cdot\\hat{n}=p\\):\n\\(\\bar{r}\\cdot\\dfrac{1}{13}\\left(3\\hat{i}+4\\hat{j}+12\\hat{k}\\right)=\\dfrac{78}{13}=6\\)\n(i) The length of the perpendicular from the origin is \\(p=6\\) units.\n(ii) The unit normal is \\(\\hat{n}=\\dfrac{3}{13}\\hat{i}+\\dfrac{4}{13}\\hat{j}+\\dfrac{12}{13}\\hat{k}\\), so the direction cosines of the normal are\n\\(\\left(\\dfrac{3}{13},\\ \\dfrac{4}{13},\\ \\dfrac{12}{13}\\right)\\)."
+ },
+ {
+  "id": "23c4c9c4-6b2d-4f64-821c-5706a7ff9162",
+  "ref": "Ex 6.3 Q.5",
+  "solution": "The plane passes through the point with position vector \\(\\bar{a}=\\hat{i}+\\hat{j}+\\hat{k}\\) and is perpendicular to \\(\\bar{n}=4\\hat{i}+5\\hat{j}+6\\hat{k}\\), so \\(\\bar{n}\\) is the normal.\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\):\n\\(\\bar{a}\\cdot\\bar{n}=(1)(4)+(1)(5)+(1)(6)=15\\)\n\\(\\therefore \\bar{r}\\cdot\\left(4\\hat{i}+5\\hat{j}+6\\hat{k}\\right)=15\\)\nThis is the required vector equation of the plane."
+ },
+ {
+  "id": "235bd2b0-c6ff-4f1f-9c61-193e612d99e1",
+  "ref": "Ex 6.3 Q.6",
+  "solution": "The plane passes through \\(A(-1,2,3)\\) and its normal has direction ratios \\((0,2,5)\\).\nThe Cartesian equation of a plane through \\((x_1,y_1,z_1)\\) with normal \\((a,b,c)\\) is\n\\(a(x-x_1)+b(y-y_1)+c(z-z_1)=0\\)\n\\(0(x+1)+2(y-2)+5(z-3)=0\\)\n\\(2y-4+5z-15=0\\)\n\\(\\therefore 2y+5z=19\\)\nThis is the required Cartesian equation of the plane."
+ },
+ {
+  "id": "d8ae7650-a007-4744-9280-1a689fa5a8bd",
+  "ref": "Ex 6.3 Q.7",
+  "solution": "The required plane is parallel to the XY-plane, so its normal is along the Z-axis: \\(\\bar{n}=\\hat{k}\\), i.e. direction ratios \\((0,0,1)\\).\nIt passes through \\(A(7,8,6)\\). The Cartesian equation is\n\\(0(x-7)+0(y-8)+1(z-6)=0\\)\n\\(\\therefore z=6\\)\nThis is the required Cartesian equation of the plane (a plane parallel to the XY-plane at \\(z=6\\))."
+ },
+ {
+  "id": "0241f9fd-0a03-49cc-9212-d5a5f3af27e5",
+  "ref": "Ex 6.3 Q.8",
+  "solution": "Let \\(O\\) be the origin and \\(M(1,0,0)\\) the foot of the perpendicular from \\(O\\) to the plane.\nThen \\(\\overline{OM}\\) is normal to the plane:\n\\(\\bar{n}=\\overline{OM}=\\hat{i}+0\\hat{j}+0\\hat{k}=\\hat{i}\\)\nThe plane passes through \\(M\\) with position vector \\(\\bar{a}=\\hat{i}\\).\n\\(\\bar{a}\\cdot\\bar{n}=(1)(1)+(0)(0)+(0)(0)=1\\)\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\) is\n\\(\\therefore \\bar{r}\\cdot\\hat{i}=1\\)\nThis is the required vector equation of the plane."
+ },
+ {
+  "id": "e0594140-b4a1-4de8-9ad0-81a048d87a01",
+  "ref": "Ex 6.3 Q.9",
+  "solution": "The plane is parallel to \\(\\bar{b}=4\\hat{i}-\\hat{j}+3\\hat{k}\\) and \\(\\bar{c}=\\hat{i}+\\hat{j}+\\hat{k}\\), so the normal is \\(\\bar{n}=\\bar{b}\\times\\bar{c}\\).\n\\(\\bar{n}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 4&-1&3\\\\ 1&1&1\\end{vmatrix}\\)\n\\(=\\hat{i}((-1)(1)-(3)(1))-\\hat{j}((4)(1)-(3)(1))+\\hat{k}((4)(1)-(-1)(1))\\)\n\\(=\\hat{i}(-1-3)-\\hat{j}(4-3)+\\hat{k}(4+1)=-4\\hat{i}-\\hat{j}+5\\hat{k}\\)\nThe plane passes through \\(A(-2,7,5)\\), so \\(\\bar{a}=-2\\hat{i}+7\\hat{j}+5\\hat{k}\\).\n\\(\\bar{a}\\cdot\\bar{n}=(-2)(-4)+(7)(-1)+(5)(5)=8-7+25=26\\)\nThe vector equation \\(\\bar{r}\\cdot\\bar{n}=\\bar{a}\\cdot\\bar{n}\\) is\n\\(\\therefore \\bar{r}\\cdot\\left(-4\\hat{i}-\\hat{j}+5\\hat{k}\\right)=26\\)."
+ },
+ {
+  "id": "12bb318b-661e-4586-9a32-6179cfc65f99",
+  "ref": "Ex 6.3 Q.10",
+  "solution": "The plane is \\(\\bar{r}=(5\\hat{i}-2\\hat{j}-3\\hat{k})+\\lambda(\\hat{i}+\\hat{j}+\\hat{k})+\\mu(\\hat{i}-2\\hat{j}+3\\hat{k})\\).\nIt passes through \\(P(5,-2,-3)\\) and is parallel to \\(\\bar{b}=\\hat{i}+\\hat{j}+\\hat{k}\\) and \\(\\bar{c}=\\hat{i}-2\\hat{j}+3\\hat{k}\\).\nNormal \\(\\bar{n}=\\bar{b}\\times\\bar{c}\\):\n\\(\\bar{n}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\ 1&1&1\\\\ 1&-2&3\\end{vmatrix}\\)\n\\(=\\hat{i}(1\\cdot3-1\\cdot(-2))-\\hat{j}(1\\cdot3-1\\cdot1)+\\hat{k}(1\\cdot(-2)-1\\cdot1)\\)\n\\(=\\hat{i}(3+2)-\\hat{j}(3-1)+\\hat{k}(-2-1)=5\\hat{i}-2\\hat{j}-3\\hat{k}\\)\nUsing \\(P(5,-2,-3)\\), \\(d=\\bar{a}\\cdot\\bar{n}=(5)(5)+(-2)(-2)+(-3)(-3)=25+4+9=38\\).\nCartesian equation \\(5x-2y-3z=38\\):\n\\(\\therefore 5x-2y-3z=38\\)."
+ },
+ {
+  "id": "48b3d841-3976-416e-b510-a23e4b3786c6",
+  "ref": "Ex 6.3 Q.11",
+  "solution": "The plane makes intercepts \\(a=1,\\ b=1,\\ c=1\\) on the coordinate axes.\nThe intercept form is\n\\(\\dfrac{x}{a}+\\dfrac{y}{b}+\\dfrac{z}{c}=1\\)\n\\(\\dfrac{x}{1}+\\dfrac{y}{1}+\\dfrac{z}{1}=1\\Rightarrow x+y+z=1\\)\nWriting \\(\\bar{r}=x\\hat{i}+y\\hat{j}+z\\hat{k}\\), the vector equation is\n\\(\\therefore \\bar{r}\\cdot\\left(\\hat{i}+\\hat{j}+\\hat{k}\\right)=1\\)."
+ }
+]

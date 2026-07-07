@@ -182,6 +182,34 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.6 Line and Planes (12th, Part 1). 33pp — the LAST Part-01 chapter,
+  //    the direct application of Ch.5 Vectors (dot/cross products, direction
+  //    ratios, section formula) to 3-D lines + planes. Abstract 3-D coordinate
+  //    geometry → mostly optional diagrams (like Vectors). UNUSUAL layout: TWO
+  //    Miscellaneous blocks — "6 A" sits MID-chapter (p13-15, after Ex 6.2) and
+  //    "6 B" at the end (like Matrices' mid-chapter Misc 2(A)); sections.ts keeps
+  //    physical order. Exercises don't map 1:1 to sections: Ex 6.1 (lines) ·
+  //    Ex 6.2 (distance + skew, §6.2-6.3) · Ex 6.3 (planes, §6.4) · Ex 6.4
+  //    (angle/coplanarity/point-plane distance, §6.5-6.7). Misc 6 B I = 20 MCQ.
+  //    Text layer flattens 2-D/3-D math → VISION. Math as LaTeX (r = a + λb, etc.).
+  "line-planes-12": {
+    id: "line-planes-12",
+    chapterName: "Line and Planes",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Line_and_Planes.pdf",
+    pdf: cls12("Part 01/Ch_06_Line_&_Planes.pdf"),
+    note: "Maharashtra State Board (Class 12) — Line and Planes (Balbharati textbook)",
+    subtopics: [
+      "Vector and Cartesian Equations of a Line",
+      "Distance of a Point from a Line",
+      "Skew Lines and Shortest Distance",
+      "Equations of a Plane",
+      "Angle Between Planes and Line-Plane Angle",
+      "Coplanarity of Two Lines",
+      "Distance of a Point from a Plane",
+    ],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).

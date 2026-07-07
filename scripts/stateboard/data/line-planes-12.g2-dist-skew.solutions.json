@@ -1,0 +1,72 @@
+[
+ {
+  "id": "5b067d14-7628-41ed-a5f6-e90133d1d495",
+  "ref": "Misc A Q.22",
+  "solution": "Write \\(\\frac{x-1}{1}=\\frac{y-2}{-2}=\\frac{z-3}{2}=\\lambda\\). The direction vector is \\(\\bar{b}=\\hat{i}-2\\hat{j}+2\\hat{k}\\), so \\(|\\bar{b}|=\\sqrt{1+4+4}=3\\).\nAny point on the line is \\(P(1+\\lambda,\\ 2-2\\lambda,\\ 3+2\\lambda)\\).\nThe base point is \\(A(1,2,3)\\), so\n\\(\\overline{AP}=(\\lambda)\\hat{i}+(-2\\lambda)\\hat{j}+(2\\lambda)\\hat{k}\\).\n\\(|\\overline{AP}|=\\sqrt{\\lambda^2+4\\lambda^2+4\\lambda^2}=\\sqrt{9\\lambda^2}=3|\\lambda|\\).\nGiven that the distance is \\(3\\) units, \\(3|\\lambda|=3\\Rightarrow\\lambda=\\pm 1\\).\nFor \\(\\lambda=1:\\ P=(2,\\ 0,\\ 5)\\).\nFor \\(\\lambda=-1:\\ P=(0,\\ 4,\\ 1)\\).\n\\(\\therefore\\) the required points on the line are \\((2,0,5)\\) and \\((0,4,1)\\)."
+ },
+ {
+  "id": "44bd8c23-908b-4c3f-8e48-d738e8f16f2b",
+  "ref": "Misc A Q.15",
+  "solution": "Write \\(\\frac{x+3}{5}=\\frac{y-1}{2}=\\frac{z+4}{3}=\\lambda\\). Any point on the line is \\(M(-3+5\\lambda,\\ 1+2\\lambda,\\ -4+3\\lambda)\\) and the direction vector is \\(\\bar{b}=5\\hat{i}+2\\hat{j}+3\\hat{k}\\).\nLet \\(P(0,2,3)\\) be the given point. Then\n\\(\\overline{PM}=(5\\lambda-3)\\hat{i}+(2\\lambda-1)\\hat{j}+(3\\lambda-7)\\hat{k}\\).\nFor the foot of the perpendicular, \\(\\overline{PM}\\perp\\bar{b}\\), i.e. \\(\\overline{PM}\\cdot\\bar{b}=0\\):\n\\(5(5\\lambda-3)+2(2\\lambda-1)+3(3\\lambda-7)=0\\)\n\\(25\\lambda-15+4\\lambda-2+9\\lambda-21=0\\)\n\\(38\\lambda-38=0\\Rightarrow\\lambda=1\\).\n\\(\\therefore M=(-3+5,\\ 1+2,\\ -4+3)=(2,\\ 3,\\ -1)\\).\nThe co-ordinates of the foot of the perpendicular are \\((2,3,-1)\\)."
+ },
+ {
+  "id": "edb6c0a8-9b13-4365-ad4b-eb9a650847c0",
+  "ref": "Misc A Q.16 i)",
+  "solution": "Here \\(\\bar{a_1}=\\hat{i}+\\hat{j}-\\hat{k},\\ \\bar{b_1}=2\\hat{i}-\\hat{j}+\\hat{k}\\) and \\(\\bar{a_2}=2\\hat{i}+2\\hat{j}-3\\hat{k},\\ \\bar{b_2}=\\hat{i}+\\hat{j}-2\\hat{k}\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&-1&1\\\\1&1&-2\\end{vmatrix}=(2-1)\\hat{i}-(-4-1)\\hat{j}+(2+1)\\hat{k}=\\hat{i}+5\\hat{j}+3\\hat{k}\\).\n\\(\\bar{a_2}-\\bar{a_1}=\\hat{i}+\\hat{j}-2\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(1)(1)+(1)(5)+(-2)(3)=1+5-6=0\\).\nHence the shortest distance \\(d=\\dfrac{|0|}{|\\bar{b_1}\\times\\bar{b_2}|}=0\\). Since \\(\\bar{b_1}\\times\\bar{b_2}\\neq\\bar{0}\\), the lines are not parallel.\n\\(\\therefore\\) the lines intersect each other."
+ },
+ {
+  "id": "1e0f5208-f53e-4a85-a918-b73d3adbb4c6",
+  "ref": "Misc A Q.16 ii)",
+  "solution": "For \\(\\frac{x-5}{4}=\\frac{y-7}{5}=\\frac{z+3}{5}\\): \\(\\bar{a_1}=5\\hat{i}+7\\hat{j}-3\\hat{k},\\ \\bar{b_1}=4\\hat{i}+5\\hat{j}+5\\hat{k}\\).\nFor \\(x-6=y-8=z+2\\) (all denominators \\(1\\)): \\(\\bar{a_2}=6\\hat{i}+8\\hat{j}-2\\hat{k},\\ \\bar{b_2}=\\hat{i}+\\hat{j}+\\hat{k}\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\4&5&5\\\\1&1&1\\end{vmatrix}=(5-5)\\hat{i}-(4-5)\\hat{j}+(4-5)\\hat{k}=0\\hat{i}+\\hat{j}-\\hat{k}\\).\n\\(\\bar{a_2}-\\bar{a_1}=\\hat{i}+\\hat{j}+\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(1)(0)+(1)(1)+(1)(-1)=0\\).\nSo the shortest distance \\(d=0\\), and since \\(\\bar{b_1}\\times\\bar{b_2}\\neq\\bar{0}\\) the lines are not parallel.\n\\(\\therefore\\) the lines intersect each other."
+ },
+ {
+  "id": "609d2b94-32f1-43aa-82c6-b0c7291c310f",
+  "ref": "Misc A Q.17",
+  "solution": "Here \\(\\bar{a_1}=\\hat{i}-\\hat{j}+\\hat{k},\\ \\bar{b_1}=2\\hat{i}+3\\hat{j}+4\\hat{k}\\) and \\(\\bar{a_2}=2\\hat{i}-m\\hat{j}+2\\hat{k},\\ \\bar{b_2}=\\hat{i}+2\\hat{j}+\\hat{k}\\).\nThe lines intersect \\(\\Rightarrow (\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&3&4\\\\1&2&1\\end{vmatrix}=(3-8)\\hat{i}-(2-4)\\hat{j}+(4-3)\\hat{k}=-5\\hat{i}+2\\hat{j}+\\hat{k}\\).\n\\(\\bar{a_2}-\\bar{a_1}=\\hat{i}+(1-m)\\hat{j}+\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(1)(-5)+(1-m)(2)+(1)(1)=-5+2-2m+1=-2-2m\\).\nFor intersection: \\(-2-2m=0\\Rightarrow m=-1\\).\n\\(\\therefore m=-1\\)."
+ },
+ {
+  "id": "77782254-1f7b-49f0-849f-66e6636100be",
+  "ref": "Ex 6.2 Q.1",
+  "solution": "Write \\(\\frac{x+1}{2}=\\frac{y-3}{3}=\\frac{z+1}{-1}=\\lambda\\). A general point on the line is \\(M(-1+2\\lambda,\\ 3+3\\lambda,\\ -1-\\lambda)\\); direction \\(\\bar{b}=2\\hat{i}+3\\hat{j}-\\hat{k}\\).\nLet \\(P(2,-3,1)\\). Then\n\\(\\overline{PM}=(2\\lambda-3)\\hat{i}+(3\\lambda+6)\\hat{j}+(-\\lambda-2)\\hat{k}\\).\nFor the foot of the perpendicular, \\(\\overline{PM}\\cdot\\bar{b}=0\\):\n\\(2(2\\lambda-3)+3(3\\lambda+6)-1(-\\lambda-2)=0\\)\n\\(4\\lambda-6+9\\lambda+18+\\lambda+2=0\\)\n\\(14\\lambda+14=0\\Rightarrow\\lambda=-1\\).\nFoot \\(M=(-1-2,\\ 3-3,\\ -1+1)=(-3,\\ 0,\\ 0)\\).\n\\(\\overline{PM}=(-3-2)\\hat{i}+(0+3)\\hat{j}+(0-1)\\hat{k}=-5\\hat{i}+3\\hat{j}-\\hat{k}\\).\nLength of the perpendicular \\(=|\\overline{PM}|=\\sqrt{25+9+1}=\\sqrt{35}\\) units."
+ },
+ {
+  "id": "b079791b-1e0e-4357-b48a-4b18df4ce4df",
+  "ref": "Ex 6.2 Q.2",
+  "solution": "The line is \\(\\bar{r}=(11\\hat{i}-2\\hat{j}-8\\hat{k})+\\lambda(10\\hat{i}-4\\hat{j}-11\\hat{k})\\), so a general point is \\(M(11+10\\lambda,\\ -2-4\\lambda,\\ -8-11\\lambda)\\); direction \\(\\bar{b}=10\\hat{i}-4\\hat{j}-11\\hat{k}\\).\nLet \\(P(2,-1,5)\\) (i.e. \\(2\\hat{i}-\\hat{j}+5\\hat{k}\\)). Then\n\\(\\overline{PM}=(9+10\\lambda)\\hat{i}+(-1-4\\lambda)\\hat{j}+(-13-11\\lambda)\\hat{k}\\).\nFor the foot of the perpendicular, \\(\\overline{PM}\\cdot\\bar{b}=0\\):\n\\(10(9+10\\lambda)-4(-1-4\\lambda)-11(-13-11\\lambda)=0\\)\n\\(90+100\\lambda+4+16\\lambda+143+121\\lambda=0\\)\n\\(237\\lambda+237=0\\Rightarrow\\lambda=-1\\).\nFoot \\(M=(11-10,\\ -2+4,\\ -8+11)=(1,\\ 2,\\ 3)\\).\n\\(\\overline{PM}=(1-2)\\hat{i}+(2+1)\\hat{j}+(3-5)\\hat{k}=-\\hat{i}+3\\hat{j}-2\\hat{k}\\).\nLength of the perpendicular \\(=\\sqrt{1+9+4}=\\sqrt{14}\\) units.\n\\(\\therefore\\) foot of perpendicular \\(=(1,2,3)\\) and length \\(=\\sqrt{14}\\) units."
+ },
+ {
+  "id": "874d4d07-0efc-4822-9b82-b894903bb53a",
+  "ref": "Ex 6.2 Q.3",
+  "solution": "Here \\(\\bar{a_1}=4\\hat{i}-\\hat{j},\\ \\bar{b_1}=\\hat{i}+2\\hat{j}-3\\hat{k}\\) and \\(\\bar{a_2}=\\hat{i}-\\hat{j}+2\\hat{k},\\ \\bar{b_2}=\\hat{i}+4\\hat{j}-5\\hat{k}\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&-3\\\\1&4&-5\\end{vmatrix}=(-10+12)\\hat{i}-(-5+3)\\hat{j}+(4-2)\\hat{k}=2\\hat{i}+2\\hat{j}+2\\hat{k}\\).\n\\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{4+4+4}=2\\sqrt{3}\\).\n\\(\\bar{a_2}-\\bar{a_1}=-3\\hat{i}+0\\hat{j}+2\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(-3)(2)+(0)(2)+(2)(2)=-6+4=-2\\).\nShortest distance \\(d=\\dfrac{|-2|}{2\\sqrt{3}}=\\dfrac{2}{2\\sqrt{3}}=\\dfrac{1}{\\sqrt{3}}=\\dfrac{\\sqrt{3}}{3}\\) units."
+ },
+ {
+  "id": "2b308460-60ea-4b5e-8fef-411609717180",
+  "ref": "Ex 6.2 Q.4",
+  "solution": "For \\(\\frac{x+1}{7}=\\frac{y+1}{-6}=\\frac{z+1}{1}\\): \\(\\bar{a_1}=-\\hat{i}-\\hat{j}-\\hat{k},\\ \\bar{b_1}=7\\hat{i}-6\\hat{j}+\\hat{k}\\).\nFor \\(\\frac{x-3}{1}=\\frac{y-5}{-2}=\\frac{z-7}{1}\\): \\(\\bar{a_2}=3\\hat{i}+5\\hat{j}+7\\hat{k},\\ \\bar{b_2}=\\hat{i}-2\\hat{j}+\\hat{k}\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\7&-6&1\\\\1&-2&1\\end{vmatrix}=(-6+2)\\hat{i}-(7-1)\\hat{j}+(-14+6)\\hat{k}=-4\\hat{i}-6\\hat{j}-8\\hat{k}\\).\n\\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{16+36+64}=\\sqrt{116}=2\\sqrt{29}\\).\n\\(\\bar{a_2}-\\bar{a_1}=4\\hat{i}+6\\hat{j}+8\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(4)(-4)+(6)(-6)+(8)(-8)=-16-36-64=-116\\).\nShortest distance \\(d=\\dfrac{|-116|}{2\\sqrt{29}}=\\dfrac{116}{2\\sqrt{29}}=\\dfrac{58}{\\sqrt{29}}=2\\sqrt{29}\\) units."
+ },
+ {
+  "id": "32837633-10dc-4d3a-83e3-81895472959c",
+  "ref": "Ex 6.2 Q.5",
+  "solution": "Write \\(\\frac{x-1}{2}=\\frac{y+1}{-3}=\\frac{z+10}{8}=\\lambda\\). A general point on the line is \\(M(1+2\\lambda,\\ -1-3\\lambda,\\ -10+8\\lambda)\\); direction \\(\\bar{b}=2\\hat{i}-3\\hat{j}+8\\hat{k}\\).\nLet \\(P(1,0,0)\\). Then\n\\(\\overline{PM}=(2\\lambda)\\hat{i}+(-1-3\\lambda)\\hat{j}+(-10+8\\lambda)\\hat{k}\\).\nFor the foot of the perpendicular, \\(\\overline{PM}\\cdot\\bar{b}=0\\):\n\\(2(2\\lambda)-3(-1-3\\lambda)+8(-10+8\\lambda)=0\\)\n\\(4\\lambda+3+9\\lambda-80+64\\lambda=0\\)\n\\(77\\lambda-77=0\\Rightarrow\\lambda=1\\).\nFoot \\(M=(1+2,\\ -1-3,\\ -10+8)=(3,\\ -4,\\ -2)\\).\n\\(\\overline{PM}=2\\hat{i}-4\\hat{j}-2\\hat{k}\\), so the perpendicular distance \\(=\\sqrt{4+16+4}=\\sqrt{24}=2\\sqrt{6}\\) units.\n\\(\\therefore\\) perpendicular distance \\(=2\\sqrt{6}\\) units and foot of perpendicular \\(=(3,-4,-2)\\)."
+ },
+ {
+  "id": "60a4bdcd-4022-4874-9e2f-587b1ea2807e",
+  "ref": "Ex 6.2 Q.6",
+  "solution": "The foot \\(D\\) lies on line \\(BC\\). \\(\\overline{BC}=C-B=(2-0)\\hat{i}+(-3+11)\\hat{j}+(1-13)\\hat{k}=2\\hat{i}+8\\hat{j}-12\\hat{k}\\).\nLet \\(D=B+t\\,\\overline{BC}=(2t,\\ -11+8t,\\ 13-12t)\\).\n\\(\\overline{AD}=D-A=(2t-1)\\hat{i}+(8t-11)\\hat{j}+(9-12t)\\hat{k}\\).\nSince \\(AD\\perp BC\\), \\(\\overline{AD}\\cdot\\overline{BC}=0\\):\n\\(2(2t-1)+8(8t-11)-12(9-12t)=0\\)\n\\(4t-2+64t-88-108+144t=0\\)\n\\(212t-198=0\\Rightarrow t=\\dfrac{99}{106}\\).\nHence\n\\(x=2t=\\dfrac{99}{53},\\quad y=-11+8t=-\\dfrac{187}{53},\\quad z=13-12t=\\dfrac{95}{53}\\).\n\\(\\therefore D=\\left(\\dfrac{99}{53},\\ -\\dfrac{187}{53},\\ \\dfrac{95}{53}\\right)\\).\n(Note: with the printed data the foot comes out in fractions with denominator \\(53\\); if integer co-ordinates are expected, the given co-ordinates of \\(B\\) and \\(C\\) should be re-checked.)"
+ },
+ {
+  "id": "b7fe7c39-a1ac-40c0-adcb-d66cabd4ff7b",
+  "ref": "Ex 6.2 Q.7 i)",
+  "solution": "Here \\(\\bar{a_1}=\\hat{i}-\\hat{j},\\ \\bar{b_1}=2\\hat{i}+\\hat{k}\\) and \\(\\bar{a_2}=2\\hat{i}-\\hat{j},\\ \\bar{b_2}=\\hat{i}+\\hat{j}-\\hat{k}\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&0&1\\\\1&1&-1\\end{vmatrix}=(0-1)\\hat{i}-(-2-1)\\hat{j}+(2-0)\\hat{k}=-\\hat{i}+3\\hat{j}+2\\hat{k}\\).\n\\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{1+9+4}=\\sqrt{14}\\).\n\\(\\bar{a_2}-\\bar{a_1}=\\hat{i}+0\\hat{j}+0\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(1)(-1)+(0)(3)+(0)(2)=-1\\).\nShortest distance \\(d=\\dfrac{|-1|}{\\sqrt{14}}=\\dfrac{1}{\\sqrt{14}}=\\dfrac{\\sqrt{14}}{14}\\) units.\nSince \\(d\\neq 0\\), the lines do not intersect (they are skew)."
+ },
+ {
+  "id": "4223530f-d8e3-4cc2-b925-d39eb206858e",
+  "ref": "Ex 6.2 Q.7 ii)",
+  "solution": "For \\(\\frac{x-5}{4}=\\frac{y-7}{-5}=\\frac{z+3}{-5}\\): \\(\\bar{a_1}=5\\hat{i}+7\\hat{j}-3\\hat{k},\\ \\bar{b_1}=4\\hat{i}-5\\hat{j}-5\\hat{k}\\).\nFor \\(\\frac{x-8}{7}=\\frac{y-7}{1}=\\frac{z-5}{3}\\): \\(\\bar{a_2}=8\\hat{i}+7\\hat{j}+5\\hat{k},\\ \\bar{b_2}=7\\hat{i}+\\hat{j}+3\\hat{k}\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\4&-5&-5\\\\7&1&3\\end{vmatrix}=(-15+5)\\hat{i}-(12+35)\\hat{j}+(4+35)\\hat{k}=-10\\hat{i}-47\\hat{j}+39\\hat{k}\\).\n\\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{100+2209+1521}=\\sqrt{3830}\\).\n\\(\\bar{a_2}-\\bar{a_1}=3\\hat{i}+0\\hat{j}+8\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(3)(-10)+(0)(-47)+(8)(39)=-30+312=282\\).\nShortest distance \\(d=\\dfrac{|282|}{\\sqrt{3830}}=\\dfrac{282}{\\sqrt{3830}}\\approx 4.56\\) units.\nSince \\(d\\neq 0\\), the lines do not intersect (they are skew)."
+ },
+ {
+  "id": "301a776d-655c-4f4b-80fd-1f88d2f0e230",
+  "ref": "Ex 6.2 Q.8",
+  "solution": "Here \\(\\bar{a_1}=\\hat{i}-\\hat{j}+\\hat{k},\\ \\bar{b_1}=2\\hat{i}+3\\hat{j}+4\\hat{k}\\) and \\(\\bar{a_2}=3\\hat{i}+k\\hat{j}+0\\hat{k},\\ \\bar{b_2}=\\hat{i}+2\\hat{j}+\\hat{k}\\).\nThe lines intersect \\(\\Rightarrow (\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=0\\).\n\\(\\bar{b_1}\\times\\bar{b_2}=\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\2&3&4\\\\1&2&1\\end{vmatrix}=(3-8)\\hat{i}-(2-4)\\hat{j}+(4-3)\\hat{k}=-5\\hat{i}+2\\hat{j}+\\hat{k}\\).\n\\(\\bar{a_2}-\\bar{a_1}=2\\hat{i}+(k+1)\\hat{j}-\\hat{k}\\).\n\\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=(2)(-5)+(k+1)(2)+(-1)(1)=-10+2k+2-1=2k-9\\).\nFor intersection: \\(2k-9=0\\Rightarrow k=\\dfrac{9}{2}\\).\n\\(\\therefore k=\\dfrac{9}{2}\\)."
+ }
+]
