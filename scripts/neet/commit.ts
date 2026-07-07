@@ -45,17 +45,18 @@ async function main() {
   if (!raw.length) throw new Error(`no transcription files found for paper "${paper.id}" under scripts/neet/data/`);
 
   const questions = normalizeQuestions(raw).sort((a, b) => a.number - b.number);
-  const { rows: built, flags } = buildRecords(questions);
+  const { rows: built, flags } = buildRecords(questions, paper.questionCount);
   for (const r of built) {
     r.question = normalizeNewlines(r.question);
     if (r.context) r.context = normalizeNewlines(r.context);
     if (r.solution) r.solution = normalizeNewlines(r.solution);
   }
 
-  // structural validation. Only enforce full 1..180 coverage once every number is present.
+  // structural validation. Only enforce full 1..N coverage once every number is present
+  // (N = the paper's questionCount: 180 for 2025+, 200 for the pre-2025 Section-A+B papers).
   const nums = new Set(questions.map((q) => q.number));
-  const full = Array.from({ length: 180 }, (_, i) => i + 1).every((n) => nums.has(n));
-  const errs = validateRows(built, 1, full ? 180 : 0);
+  const full = Array.from({ length: paper.questionCount }, (_, i) => i + 1).every((n) => nums.has(n));
+  const errs = validateRows(built, 1, full ? paper.questionCount : 0);
   const parsed = [];
   for (const r of built) {
     const v = validateRow(r);

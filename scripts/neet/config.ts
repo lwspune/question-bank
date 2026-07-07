@@ -7,9 +7,12 @@
 // pending a human spot-check before flipping PUBLIC (main risk = transcription /
 // option-order error, not the keys themselves).
 //
-// A NEET paper is 180 MCQs / 720 marks / 3 hrs / +4,-1, laid out in four subject
-// BLOCKS in booklet order: Physics (1-45) · Chemistry (46-90) · Botany (91-135) ·
-// Zoology (136-180). Each question is independent (no shared passage/directions) —
+// A NEET paper is four equal subject BLOCKS in booklet order: Physics · Chemistry ·
+// Botany · Zoology. Layout depends on the year: 2025+ = 180 MCQs (45/subject: Physics
+// 1-45 · Chem 46-90 · Bio 91-180); pre-2025 (…2023, 2024, Re-NEET 2024) = 200 MCQs
+// with a Section A (35) + Section B (15) per subject (50/subject: Physics 1-50 · Chem
+// 51-100 · Bio 101-200). Per-paper `questionCount` drives the block boundaries + the
+// coverage check. Each question is independent (no shared passage/directions) —
 // so classification is PER-QUESTION into the canonical NCERT chapter list below,
 // with the subtopic auto-created. The multiple booklet CODES per exam are the SAME
 // question set reshuffled (seat randomization) → we ingest ONE clean single-column
@@ -28,16 +31,22 @@ export const DATA = join(__dirname, "data"); // committed: per-subject transcrip
 export type NeetSubject = "Physics" | "Chemistry" | "Botany" | "Zoology";
 export const SUBJECT_ORDER: NeetSubject[] = ["Physics", "Chemistry", "Botany", "Zoology"];
 
-// Allowed subjects by question number. Physics (1-45) and Chemistry (46-90) are clean
-// blocks. The booklet prints the whole Q91-180 range under a single "BIOLOGY" banner
-// with Botany and Zoology CONTENT-MIXED (not the official Botany-91-135 / Zoology-136-180
-// split), so within 91-180 EITHER Botany or Zoology is valid — the transcriber assigns
-// subject per-question by content (plant → Botany, animal/human → Zoology). Used only as
-// a soft cross-check to flag an obviously mis-tagged subject.
-export function allowedSubjectsForNumber(n: number): NeetSubject[] {
-  if (n >= 1 && n <= 45) return ["Physics"];
-  if (n >= 46 && n <= 90) return ["Chemistry"];
-  if (n >= 91 && n <= 180) return ["Botany", "Zoology"];
+// Allowed subjects by question number, derived from the paper's questionCount. The four
+// subject blocks are equal-sized (questionCount/4 each): Physics · Chemistry · then the
+// merged Biology range (Botany+Zoology). NEET has TWO layouts:
+//   • 2025 onward — 180 q, 45 per subject: Physics 1-45 · Chem 46-90 · Bio 91-180.
+//   • pre-2025 (…2023, 2024, Re-NEET 2024) — 200 q, 50 per subject (Section A 35 +
+//     Section B 15): Physics 1-50 · Chem 51-100 · Bio 101-200.
+// The booklet prints the whole Biology range under a single "BIOLOGY" banner with Botany
+// and Zoology CONTENT-MIXED (not the official half-and-half split), so within the Biology
+// block EITHER Botany or Zoology is valid — the transcriber assigns subject per-question
+// by content (plant → Botany, animal/human → Zoology). Used only as a soft cross-check to
+// flag an obviously mis-tagged subject.
+export function allowedSubjectsForNumber(n: number, questionCount = 180): NeetSubject[] {
+  const per = questionCount / 4; // 45 (180-format) or 50 (200-format)
+  if (n >= 1 && n <= per) return ["Physics"];
+  if (n > per && n <= 2 * per) return ["Chemistry"];
+  if (n > 2 * per && n <= 4 * per) return ["Botany", "Zoology"];
   return [];
 }
 
@@ -46,16 +55,45 @@ export type Paper = {
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
   pdf: string; // absolute path to the booklet PDF (the ONE code we ingest)
   layout: "single-column" | "two-column";
+  questionCount: number; // 180 (2025+) or 200 (pre-2025, Section A+B) — drives block boundaries + coverage check
   pyqYear: number;
   pyqNote: string; // e.g. "NEET (UG) 2025 — 04 May 2025 (Code 45)"
 };
 
 export const PAPERS: Record<string, Paper> = {
+  "2023": {
+    id: "2023",
+    sourceFile: "NEET_UG_2023.pdf",
+    pdf: join(SOURCE_ROOT, "neet 2023 qp code E3.pdf"),
+    layout: "single-column",
+    questionCount: 200,
+    pyqYear: 2023,
+    pyqNote: "NEET (UG) 2023 — 07 May 2023",
+  },
+  "2024": {
+    id: "2024",
+    sourceFile: "NEET_UG_2024.pdf",
+    pdf: join(SOURCE_ROOT, "neet 2024 qp Q1.pdf"),
+    layout: "single-column",
+    questionCount: 200,
+    pyqYear: 2024,
+    pyqNote: "NEET (UG) 2024 — 05 May 2024",
+  },
+  "reneet-2024": {
+    id: "reneet-2024",
+    sourceFile: "RE_NEET_UG_2024.pdf",
+    pdf: join(SOURCE_ROOT, "re-neet 2024 qp code C1.pdf"),
+    layout: "single-column",
+    questionCount: 200,
+    pyqYear: 2024,
+    pyqNote: "Re-NEET (UG) 2024 — 23 Jun 2024",
+  },
   "2025": {
     id: "2025",
     sourceFile: "NEET_UG_2025.pdf",
     pdf: join(SOURCE_ROOT, "neet 2025 qp code 45.pdf"),
     layout: "single-column",
+    questionCount: 180,
     pyqYear: 2025,
     pyqNote: "NEET (UG) 2025 — 04 May 2025",
   },
@@ -64,6 +102,7 @@ export const PAPERS: Record<string, Paper> = {
     sourceFile: "NEET_UG_2026.pdf",
     pdf: join(SOURCE_ROOT, "neet 2026 qp code 11.pdf"),
     layout: "single-column",
+    questionCount: 180,
     pyqYear: 2026,
     pyqNote: "NEET (UG) 2026 — 03 May 2026",
   },
@@ -72,6 +111,7 @@ export const PAPERS: Record<string, Paper> = {
     sourceFile: "RE_NEET_UG_2026.pdf",
     pdf: join(SOURCE_ROOT, "reneet 2026 qp code 50.pdf"),
     layout: "two-column",
+    questionCount: 180,
     pyqYear: 2026,
     pyqNote: "Re-NEET (UG) 2026 — 21 Jun 2026",
   },
