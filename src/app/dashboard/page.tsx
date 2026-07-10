@@ -10,6 +10,7 @@ import {
   Gem,
   ListChecks,
   Search,
+  Timer,
   Upload,
   Users,
 } from "lucide-react";
@@ -241,6 +242,14 @@ function QuickActions({
           icon={<ListChecks className="h-5 w-5" aria-hidden />}
           title="Daily Quizzes"
           description="View quizzes assembled from the /notes question pool and their status."
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/mocks"
+          icon={<Timer className="h-5 w-5" aria-hidden />}
+          title="Mock Performance"
+          description="See how students scored on each timed mock test, attempt by attempt."
         />
       )}
       <ActionCard
