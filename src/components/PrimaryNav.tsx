@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, FileText, Library, NotebookPen } from "lucide-react";
+import { BookOpen, Compass, FileText, Library, NotebookPen, Timer } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 
 type Props = {
@@ -10,6 +10,9 @@ type Props = {
   guidesHref: string;
   notesHref: string;
   boardHref: string;
+  /** Show the "Mocks" tab — only for exams that have published mock tests
+   *  (like Papers is member-gated), so other exams don't land on an empty list. */
+  showMocks?: boolean;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
    *  or students would dead-end them. */
@@ -28,6 +31,7 @@ export default function PrimaryNav({
   guidesHref,
   notesHref,
   boardHref,
+  showMocks = false,
   showPapers = false,
 }: Props) {
   const pathname = usePathname() ?? "/";
@@ -37,6 +41,10 @@ export default function PrimaryNav({
     { id: "bank", label: "Bank", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
+    // Mocks — timed PYQ mock tests; gated to exams that have published mocks.
+    ...(showMocks
+      ? [{ id: "mock" as const, label: "Mocks", href: "/mock", Icon: Timer }]
+      : []),
     // Board reader — always visible (like Notes); boardHref resolves per-exam:
     // /board (index) normally, /board/<slug> when a board exam is active.
     { id: "board", label: "Board", href: boardHref, Icon: Library },

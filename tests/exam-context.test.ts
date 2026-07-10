@@ -8,6 +8,7 @@ import {
   resolveGuidesHref,
   resolveNotesHref,
   getActiveTab,
+  examHasMocks,
   DEFAULT_EXAM_SLUG,
 } from "@/lib/exam/examContext";
 
@@ -180,6 +181,13 @@ describe("getActiveTab", () => {
     expect(getActiveTab("/notes/nda-maths/statistics/central-tendency")).toBe(
       "notes"
     );
+  });
+
+  it("returns 'mock' for /mock and sub-routes", () => {
+    expect(getActiveTab("/mock")).toBe("mock");
+    expect(getActiveTab("/mock/nda-2024-sep-maths")).toBe("mock");
+    expect(getActiveTab("/mock/nda-2024-sep-maths/attempt/abc-123")).toBe("mock");
+    expect(getActiveTab("/mock/attempt/abc-123/result")).toBe("mock");
   });
 
   it("returns 'papers' for /dashboard/papers and sub-routes", () => {
