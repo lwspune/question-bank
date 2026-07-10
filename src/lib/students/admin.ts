@@ -28,6 +28,7 @@ export async function listStudents(): Promise<StudentRow[]> {
         email: uu.email ?? null,
         created_at: uu.created_at,
         app_metadata: (uu.app_metadata as { provider?: string } | null) ?? null,
+        user_metadata: (uu.user_metadata as { full_name?: string; name?: string } | null) ?? null,
       });
     }
     if (batch.length < 1000) break;

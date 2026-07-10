@@ -83,8 +83,15 @@ export default async function MockAttemptsPage({ params }: { params: Params }) {
               </thead>
               <tbody className="divide-y">
                 {attempts.map((a) => (
-                  <tr key={a.attemptId} className="hover:bg-accent/40">
-                    <td className="max-w-[16rem] truncate px-3 py-2 font-medium" title={a.email}>{a.email}</td>
+                  <tr key={a.attemptId} className="group hover:bg-accent/40">
+                    <td className="max-w-[16rem] px-3 py-2">
+                      <Link href={`/dashboard/students/${a.userId}`} className="block min-w-0">
+                        <span className="block truncate font-medium group-hover:text-brand-accent" title={a.name}>{a.name}</span>
+                        {a.name !== a.email && (
+                          <span className="block truncate text-xs text-muted-foreground" title={a.email}>{a.email}</span>
+                        )}
+                      </Link>
+                    </td>
                     <td className="px-3 py-2 text-right tabular-nums">
                       {a.score != null ? `${a.score}/${a.maxScore ?? mock.totalMarks}` : "—"}
                     </td>
