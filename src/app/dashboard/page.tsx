@@ -8,6 +8,7 @@ import {
   FileText,
   Flag,
   Gem,
+  GraduationCap,
   ListChecks,
   Search,
   Timer,
@@ -226,6 +227,14 @@ function QuickActions({
           icon={<Users className="h-5 w-5" aria-hidden />}
           title="Members"
           description="Add admins and teachers, reset passwords, manage roles."
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/students"
+          icon={<GraduationCap className="h-5 w-5" aria-hidden />}
+          title="Registered Students"
+          description="See who has signed up — self-serve student accounts, when they joined."
         />
       )}
       {isAdmin && (
