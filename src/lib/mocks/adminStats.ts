@@ -11,6 +11,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { displayName } from "@/lib/students/derive";
 import { summarizeAttempts, type MockSummary } from "./perf";
 
 const PAGE = 1000;
@@ -32,13 +33,22 @@ async function readAllAttempts(
   return out;
 }
 
-/** Map user ids → email for a set of ids (single listUsers page, like members admin). */
-async function resolveEmails(db: SupabaseClient, ids: Set<string>): Promise<Map<string, string>> {
-  const map = new Map<string, string>();
+/** Map user ids → {name, email} for a set of ids (single listUsers page, like members admin). */
+async function resolveUsers(
+  db: SupabaseClient,
+  ids: Set<string>
+): Promise<Map<string, { name: string; email: string }>> {
+  const map = new Map<string, { name: string; email: string }>();
   if (ids.size === 0) return map;
   const { data } = await db.auth.admin.listUsers({ perPage: 1000 });
   for (const u of data?.users ?? []) {
-    if (u.id && ids.has(u.id)) map.set(u.id, u.email ?? "(no email)");
+    if (u.id && ids.has(u.id)) {
+      const email = u.email ?? "(no email)";
+      map.set(u.id, {
+        name: displayName((u.user_metadata as { full_name?: string; name?: string } | null) ?? null, u.email ?? null),
+        email,
+      });
+    }
   }
   return map;
 }
@@ -79,6 +89,8 @@ export async function getMockPerformance(): Promise<MockPerfRow[]> {
 
 export type MockAttemptDetail = {
   attemptId: string;
+  userId: string;
+  name: string;
   email: string;
   status: "in_progress" | "submitted" | "expired";
   score: number | null;
@@ -114,14 +126,17 @@ export async function getMockAttemptsDetail(slug: string): Promise<MockAttemptsD
   );
 
   const ids = new Set(rows.map((r) => r.user_id as string));
-  const emails = await resolveEmails(db, ids);
+  const users = await resolveUsers(db, ids);
 
   const attempts: MockAttemptDetail[] = rows.map((r) => {
     const score = r.score == null ? null : Number(r.score);
     const maxScore = r.max_score == null ? null : Number(r.max_score);
+    const user = users.get(r.user_id as string);
     return {
       attemptId: r.id as string,
-      email: emails.get(r.user_id as string) ?? "(unknown)",
+      userId: r.user_id as string,
+      name: user?.name ?? "(unknown)",
+      email: user?.email ?? "(unknown)",
       status: r.status as MockAttemptDetail["status"],
       score,
       maxScore,

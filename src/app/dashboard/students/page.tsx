@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ChevronRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { getSessionMember } from "@/lib/auth";
@@ -46,17 +48,30 @@ export default async function StudentsPage() {
             <table className="w-full min-w-[480px] text-sm">
               <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
-                  <th className="px-3 py-2 text-left font-medium">Email</th>
+                  <th className="px-3 py-2 text-left font-medium">Student</th>
                   <th className="px-3 py-2 text-left font-medium">Sign-in</th>
                   <th className="px-3 py-2 text-left font-medium">Registered</th>
+                  <th className="w-8" />
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {students.map((s) => (
-                  <tr key={s.id} className="hover:bg-accent/40">
-                    <td className="max-w-[18rem] truncate px-3 py-2 font-medium" title={s.email}>{s.email}</td>
+                  <tr key={s.id} className="group hover:bg-accent/40">
+                    <td className="max-w-[18rem] px-3 py-2">
+                      <Link href={`/dashboard/students/${s.id}`} className="block min-w-0">
+                        <span className="block truncate font-medium group-hover:text-brand-accent" title={s.name}>{s.name}</span>
+                        {s.name !== s.email && (
+                          <span className="block truncate text-xs text-muted-foreground" title={s.email}>{s.email}</span>
+                        )}
+                      </Link>
+                    </td>
                     <td className="px-3 py-2 text-muted-foreground">{s.provider}</td>
                     <td className="px-3 py-2 text-muted-foreground">{fmtDate(s.createdAt)}</td>
+                    <td className="px-2">
+                      <Link href={`/dashboard/students/${s.id}`} aria-label={`Open ${s.name}`}>
+                        <ChevronRight className="h-4 w-4 text-muted-foreground/60 group-hover:text-muted-foreground" aria-hidden />
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>
