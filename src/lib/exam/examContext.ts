@@ -44,6 +44,12 @@ export type ExamEntry = {
    * the section_* columns (migration 0043) — and the "Board" nav tab.
    */
   boardExam?: boolean;
+  /**
+   * Exam has published mock tests (real PYQ papers served as timed, auto-graded
+   * online tests at `/mock`). Drives the gated "Mocks" primary-nav tab — shown
+   * only when the active exam actually has mocks, like Papers is member-gated.
+   */
+  hasMocks?: boolean;
 };
 
 export const EXAM_REGISTRY: readonly ExamEntry[] = [
@@ -53,6 +59,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "NDA",
     guidesPath: "/guide/nda",
     notesPath: "/notes/nda", // exam hub: lists Maths + Physics + Biology notes
+    hasMocks: true, // 18 NDA Maths Paper I mocks published at /mock
   },
   {
     slug: "mht-cet",
@@ -149,6 +156,11 @@ export function isBoardExam(slug: string | null | undefined): boolean {
   return getExamBySlug(slug ?? null)?.boardExam === true;
 }
 
+/** True when the active exam has published mock tests (gates the "Mocks" tab). */
+export function examHasMocks(slug: string | null | undefined): boolean {
+  return getExamBySlug(slug ?? null)?.hasMocks === true;
+}
+
 /** The board exams, in registry order (drives the `/board` index). */
 export const BOARD_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(
   (e) => e.boardExam === true
@@ -160,7 +172,7 @@ export function resolveBoardHref(slug: string | null | undefined): string {
   return exam?.boardExam ? `/board/${exam.slug}` : "/board";
 }
 
-export type ActiveTab = "bank" | "guides" | "notes" | "board" | "papers";
+export type ActiveTab = "bank" | "guides" | "notes" | "board" | "papers" | "mock";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -176,6 +188,7 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   if (matchesSegment(path, "/guide")) return "guides";
   if (matchesSegment(path, "/notes")) return "notes";
   if (matchesSegment(path, "/board")) return "board";
+  if (matchesSegment(path, "/mock")) return "mock";
   if (matchesSegment(path, "/dashboard/papers")) return "papers";
   return null;
 }

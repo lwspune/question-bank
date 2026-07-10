@@ -9,6 +9,7 @@ import {
   resolveGuidesHref,
   resolveNotesHref,
   resolveBoardHref,
+  examHasMocks,
   type ExamSlug,
 } from "./examContext";
 
@@ -24,6 +25,8 @@ export type ActiveExamContext = {
   guidesHref: string;
   notesHref: string;
   boardHref: string;
+  /** Whether to show the gated "Mocks" tab (active exam has published mocks). */
+  showMocks: boolean;
 };
 
 /**
@@ -65,6 +68,7 @@ export async function loadActiveExamContext(): Promise<ActiveExamContext> {
     guidesHref: resolveGuidesHref(slug),
     notesHref: resolveNotesHref(slug),
     boardHref: resolveBoardHref(slug),
+    showMocks: examHasMocks(slug),
   };
 }
 
