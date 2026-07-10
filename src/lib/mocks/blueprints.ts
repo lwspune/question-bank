@@ -60,7 +60,45 @@ export const NDA_MATHS_PAPER: MockPaperBlueprint = {
   ],
 };
 
-export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [NDA_MATHS_PAPER];
+/**
+ * NDA Paper II — General Ability Test (GAT). 150 questions, 600 marks, 2.5 hours.
+ * Two sections: English (Part A, 50 q) + General Knowledge (Part B, 100 q across
+ * Physics/Chemistry/Biology/History/Geography/Polity/Economics/Current Affairs).
+ * Official marking: +4 correct, −1.33 (= 4/3) wrong. The bank stores GAT question
+ * order globally (question_number 1–150), so English precedes GK and the
+ * section-then-source_row reconstruction yields the true paper order.
+ */
+export const NDA_GAT_PAPER: MockPaperBlueprint = {
+  code: "gat",
+  examName: "NDA",
+  examSlug: "nda",
+  paperLabel: "Paper II — General Ability Test",
+  durationSecs: 150 * 60,
+  marking: { correct: 4, wrong: -1.33 },
+  sections: [
+    { key: "english", label: "English", subjects: ["English"], count: 50 },
+    {
+      key: "gk",
+      label: "General Knowledge",
+      subjects: [
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "History",
+        "Geography",
+        "Polity",
+        "Economics",
+        "Current Affairs",
+      ],
+      count: 100,
+    },
+  ],
+};
+
+export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
+  NDA_MATHS_PAPER,
+  NDA_GAT_PAPER,
+];
 
 /** Sum of the section counts — the paper's total question count. */
 export function totalQuestions(bp: MockPaperBlueprint): number {

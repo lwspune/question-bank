@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   MOCK_BLUEPRINTS,
   NDA_MATHS_PAPER,
+  NDA_GAT_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -28,12 +29,25 @@ describe("mock blueprints", () => {
     expect(NDA_MATHS_PAPER.durationSecs).toBe(150 * 60);
   });
 
+  it("NDA GAT is 150 questions across English (50) + General Knowledge (100)", () => {
+    expect(totalQuestions(NDA_GAT_PAPER)).toBe(150);
+    expect(NDA_GAT_PAPER.sections.map((s) => s.count)).toEqual([50, 100]);
+    expect(NDA_GAT_PAPER.sections[0].subjects).toEqual(["English"]);
+    expect(NDA_GAT_PAPER.sections[1].subjects).toContain("Physics");
+  });
+
+  it("NDA GAT totals 600 marks at +4 / -1.33", () => {
+    expect(NDA_GAT_PAPER.marking).toEqual({ correct: 4, wrong: -1.33 });
+    expect(totalMarks(NDA_GAT_PAPER)).toBe(600);
+  });
+
   it("looks up a blueprint by exam slug + paper code", () => {
     expect(getBlueprint("nda", "maths")).toBe(NDA_MATHS_PAPER);
+    expect(getBlueprint("nda", "gat")).toBe(NDA_GAT_PAPER);
   });
 
   it("returns null for an unknown exam/paper", () => {
-    expect(getBlueprint("nda", "gat")).toBeNull();
+    expect(getBlueprint("nda", "physics")).toBeNull();
     expect(getBlueprint("neet", "maths")).toBeNull();
   });
 });
