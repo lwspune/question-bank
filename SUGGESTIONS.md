@@ -24,6 +24,32 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-10
+
+### Admin publish/unpublish UI for mock tests (currently CLI-only)
+
+Mock tests ([[mock-tests]]) are created + published ONLY via `scripts/mocks/build.ts --apply --publish`. There is no dashboard control to unpublish a live mock, publish a staged draft, or archive one — an admin must run the tsx script. `/dashboard/mocks` is read-only (performance).
+
+**Why:** once mocks are a routine product, an admin will want to pull a bad mock or stage/release one without a developer running a script. Low urgency now (all 36 are published + verified), but the moment one needs pulling it's a script-only operation.
+
+**How to apply:** add a status toggle (draft ↔ published ↔ archived) to `/dashboard/mocks` — a server action that flips `mock_tests.status` via the service-role client (writes are service-role-only by RLS design). Mirror the `/dashboard/quizzes` "Publish to public" pattern. Keep the row's snapshot immutable — only `status` changes. Small; do it when the first mock needs pulling.
+
+### Extend `/dashboard/mocks` — CSV export + per-student view
+
+The per-mock performance page lists attempts (email · score · %). Two natural asks the user floated: (a) **CSV export** of a mock's attempts for offline analysis; (b) a **per-student view** — one aspirant's scores across ALL mocks over time (LWS tracks individual aspirants).
+
+**Why:** a coaching institute grades cohorts and tracks individuals; the current per-mock table is a good start but neither exportable nor pivoted by student.
+
+**How to apply:** (a) a "Download CSV" button → a route that streams `getMockAttemptsDetail(slug)` rows as CSV. (b) `/dashboard/students/[id]` (or a drill-down from `/dashboard/mocks`) → `getUserAttempts(adminDb, userId)` (already exists — call it with the service-role client for any student, not only the signed-in one) rendered as a per-student attempt list. Both reuse existing reads; no schema change.
+
+### Add mock-test activity signals to the Registered Students roster
+
+`/dashboard/students` is currently the bare roster (email · sign-in · date) per the user's scope choice. The deferred richer version adds per-student signals: **mocks-attempted count** and **premium status**.
+
+**Why:** the roster answers "who signed up" but not "who's actually engaged" — the more useful admin question. Explicitly scoped out this session (user chose "just the roster"), so this is a clean follow-up if they want it.
+
+**How to apply:** in `listStudents()`, after building the student set, one grouped `count` over `mock_attempts` by `user_id` (paged) + one `select` over active `entitlements` → join into the rows. Add two columns to the table. Keep it one extra query each (don't N+1). See [[mock-tests]].
+
 ## 2026-07-07
 
 ### ~~Ingest NEET 2024 + Re-NEET 2024 (both 200 q) + commit the whole 200-q batch~~ — **DONE 2026-07-07**
