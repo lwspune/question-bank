@@ -5,9 +5,10 @@ import { Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn } fr
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getSessionUser } from "@/lib/auth";
+import { getSessionUser, getSessionMember } from "@/lib/auth";
 import { getMockBySlug } from "@/lib/mocks/query";
 import StartMock from "./StartMock";
+import ShareMock from "./ShareMock";
 
 type Params = { slug: string };
 
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function MockInstructions({ params }: { params: Params }) {
   const mock = await getMockBySlug(createSupabaseAnonClient(), params.slug);
   if (!mock) notFound();
-  const user = await getSessionUser();
+  const [user, member] = await Promise.all([getSessionUser(), getSessionMember()]);
 
   const mins = Math.round(mock.durationSecs / 60);
   const { correct, wrong } = mock.marking;
@@ -38,6 +39,9 @@ export default async function MockInstructions({ params }: { params: Params }) {
         </Link>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight">{mock.title}</h1>
+
+        {/* Org staff (admins/teachers) get a copy-able share link for students. */}
+        {member && <ShareMock slug={mock.slug} />}
 
         <div className="mt-6 grid grid-cols-3 gap-3">
           <Stat icon={FileText} value={String(mock.totalQuestions)} label="questions" />
