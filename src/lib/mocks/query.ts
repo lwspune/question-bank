@@ -170,6 +170,60 @@ export async function loadMockQuestionViews(
     });
 }
 
+export type UserAttempt = {
+  attemptId: string;
+  mockSlug: string;
+  mockTitle: string;
+  pyqYear: number;
+  status: "in_progress" | "submitted" | "expired";
+  score: number | null;
+  maxScore: number | null;
+  correct: number | null;
+  wrong: number | null;
+  skipped: number | null;
+  startedAt: string;
+  submittedAt: string | null;
+};
+
+/** A signed-in student's own attempts (RLS own-row), newest first. Optionally
+ *  scoped to one mock (for the "Your attempts" section on a mock page). */
+export async function getUserAttempts(
+  db: SupabaseClient,
+  userId: string,
+  mockId?: string
+): Promise<UserAttempt[]> {
+  let q = db
+    .from("mock_attempts")
+    .select(
+      "id, mock_id, status, score, max_score, correct_count, wrong_count, skipped_count, started_at, submitted_at, mock:mock_tests(slug, title, pyq_year)"
+    )
+    .eq("user_id", userId)
+    .order("started_at", { ascending: false });
+  if (mockId) q = q.eq("mock_id", mockId);
+  const { data, error } = await q;
+  if (error) throw new Error(`getUserAttempts: ${error.message}`);
+  return (data ?? []).map((r) => {
+    const row = r as Record<string, unknown>;
+    const mock = (Array.isArray(row.mock) ? row.mock[0] : row.mock) as
+      | { slug: string; title: string; pyq_year: number }
+      | null;
+    return {
+      attemptId: row.id as string,
+      mockSlug: mock?.slug ?? "",
+      mockTitle: mock?.title ?? "",
+      pyqYear: mock?.pyq_year ?? 0,
+      status: row.status as UserAttempt["status"],
+      score: row.score == null ? null : Number(row.score),
+      maxScore: row.max_score == null ? null : Number(row.max_score),
+      correct: (row.correct_count as number | null) ?? null,
+      wrong: (row.wrong_count as number | null) ?? null,
+      skipped: (row.skipped_count as number | null) ?? null,
+      startedAt: row.started_at as string,
+      submittedAt: (row.submitted_at as string | null) ?? null,
+    };
+  });
+}
+
 export type ReviewOption = MockOptionView & { isCorrect: boolean };
 
 export type ReviewQuestionContent = {

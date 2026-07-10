@@ -4,11 +4,12 @@ import { notFound } from "next/navigation";
 import { Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { getSessionUser, getSessionMember } from "@/lib/auth";
-import { getMockBySlug } from "@/lib/mocks/query";
+import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
 import StartMock from "./StartMock";
 import ShareMock from "./ShareMock";
+import AttemptsList from "../_components/AttemptsList";
 
 type Params = { slug: string };
 
@@ -26,6 +27,9 @@ export default async function MockInstructions({ params }: { params: Params }) {
   const mock = await getMockBySlug(createSupabaseAnonClient(), params.slug);
   if (!mock) notFound();
   const [user, member] = await Promise.all([getSessionUser(), getSessionMember()]);
+  const myAttempts = user
+    ? await getUserAttempts(createSupabaseServerClient(), user.id, mock.id)
+    : [];
 
   const mins = Math.round(mock.durationSecs / 60);
   const { correct, wrong } = mock.marking;
@@ -86,6 +90,13 @@ export default async function MockInstructions({ params }: { params: Params }) {
             </div>
           )}
         </div>
+
+        {myAttempts.length > 0 && (
+          <section className="mt-8">
+            <h2 className="mb-3 text-sm font-semibold">Your attempts</h2>
+            <AttemptsList attempts={myAttempts} showMock={false} />
+          </section>
+        )}
       </main>
     </>
   );
