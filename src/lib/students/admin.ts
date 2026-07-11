@@ -16,6 +16,15 @@ export async function listStudents(): Promise<StudentRow[]> {
   if (mErr) throw new Error(`listStudents members: ${mErr.message}`);
   const staff = new Set((members ?? []).map((m) => m.user_id as string));
 
+  // Captured contact mobiles (service-role reads all student_profiles).
+  const { data: profiles, error: pErr } = await admin
+    .from("student_profiles")
+    .select("user_id, mobile");
+  if (pErr) throw new Error(`listStudents profiles: ${pErr.message}`);
+  const mobileById = new Map(
+    (profiles ?? []).map((p) => [p.user_id as string, p.mobile as string])
+  );
+
   // All auth users (paginate — the roster grows).
   const users: AuthUserLite[] = [];
   for (let page = 1; ; page++) {
@@ -34,5 +43,5 @@ export async function listStudents(): Promise<StudentRow[]> {
     if (batch.length < 1000) break;
   }
 
-  return deriveStudents(users, staff);
+  return deriveStudents(users, staff, mobileById);
 }

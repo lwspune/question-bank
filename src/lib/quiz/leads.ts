@@ -1,32 +1,17 @@
 /**
- * Pure helpers for the public-quiz LEAD funnel — mobile normalisation/validation
- * and the by-mobile rollup the /dashboard/leads view renders. No I/O; unit-tested
- * in tests/quiz-leads.test.ts.
+ * Pure helpers for the public-quiz LEAD funnel — the by-mobile rollup the
+ * /dashboard/leads view renders. No I/O; unit-tested in tests/quiz-leads.test.ts.
  *
- * Identity in this funnel is the MOBILE (PYQ Vault accounts are email-keyed and
- * store no phone — see [[org-scoping-global-content]]/the paywall axis), so the
- * sales dashboard groups by mobile to turn "same person took N quizzes" into a
- * single hot lead instead of N scattered rows.
+ * Identity in this funnel is the MOBILE, so the sales dashboard groups by mobile
+ * to turn "same person took N quizzes" into a single hot lead instead of N
+ * scattered rows.
+ *
+ * The mobile normaliser now lives in src/lib/profile/mobile.ts (the canonical
+ * home, shared with the signed-in account-mobile capture); re-exported here for
+ * back-compat so existing `@/lib/quiz/leads` imports keep working.
  */
 
-/**
- * Normalise an Indian mobile to canonical `91XXXXXXXXXX` (12 digits), or null if
- * it isn't a plausible Indian mobile. Accepts spaces/dashes, a `+91`/`91`/`0`
- * prefix, and requires the 10-digit subscriber number to start 6-9.
- */
-export function normalizeMobile(raw: string | null | undefined): string | null {
-  const digits = String(raw ?? "").replace(/\D/g, "");
-  let ten: string | null = null;
-  if (digits.length === 10) ten = digits;
-  else if (digits.length === 11 && digits.startsWith("0")) ten = digits.slice(1);
-  else if (digits.length === 12 && digits.startsWith("91")) ten = digits.slice(2);
-  if (!ten || !/^[6-9]\d{9}$/.test(ten)) return null;
-  return `91${ten}`;
-}
-
-export function isValidIndianMobile(raw: string | null | undefined): boolean {
-  return normalizeMobile(raw) !== null;
-}
+export { normalizeMobile, isValidIndianMobile } from "@/lib/profile/mobile";
 
 /** One lead row as stored (snake_case, straight from the DB query). */
 export type LeadRow = {
