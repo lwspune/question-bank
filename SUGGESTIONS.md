@@ -24,6 +24,26 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-11
+
+### DRY the two textbook pipelines (`scripts/stateboard/` + `scripts/ncert/`) once a 3rd textbook exam lands
+
+`scripts/ncert/` (NCERT/CBSE Class 12) was created by copying State Board's thin IO scripts verbatim (render / merge / commit / apply-solutions / flip-public / backfill-sections / errata) — only `config.ts` + `sections.ts` differ, and `lib.ts` already re-exports the pure core. So ~7 near-identical IO scripts are duplicated across the two dirs (each imports its own `./config` + `./lib`). This was the deliberate low-risk choice (don't rework shipped State Board code), and 2 pipelines is fine.
+
+**Why:** at a **3rd** textbook exam (e.g. CBSE Class 11, or an ICSE), the copy-paste tax compounds and a bug fixed in one dir silently rots in the others. Two is tolerable; three is the tipping point.
+
+**How to apply:** extract the IO scripts into a shared `scripts/textbook/` that takes the exam config as a parameter (each exam dir keeps only `config.ts` + `sections.ts` + a tiny entry that passes its config in). This is a rework of shipped State Board code → needs the 360 + explicit-permission gate per [[learning-propagation-protocol]]. Defer until the 3rd exam actually forces it — don't pre-abstract.
+
+### Ch.8 Applications of Integrals will exercise the figure/snapCrop path (natural next chapter)
+
+NCERT Ch.7 Integrals needed **zero** per-question figures (its diagrams are expository). **Ch.8 Applications of Integrals is figure-dense** (area-under-curve / area-between-curves sketches, many per-question), so it's the first NCERT chapter that will exercise `scripts/ncert/` figure attachment — either snapCrop of the book figures OR authored `solution_image` area diagrams (the `render_solution_diagrams.py` curve mode, reused from State Board's Application-of-Definite-Integration chapter).
+
+**Why:** it's the obvious continuation of the 12th-Maths ingest and de-risks the one pipeline path Integrals didn't touch.
+
+**How to apply:** add `app-integrals` to `scripts/ncert/config.ts`, follow the same runbook; for the figures, decide per-question snapCrop-book-figure vs authored-area-diagram (montage-verify every crop yourself per [[figure-snapcrop-verify]] — never trust an agent's self-verify).
+
+---
+
 ## 2026-07-10
 
 ### Admin publish/unpublish UI for mock tests (currently CLI-only)
