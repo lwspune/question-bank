@@ -1,0 +1,243 @@
+[
+  {
+    "ref": "7.4 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the following integrals: (i) \\(\\int \\frac{dx}{x^2-16}\\) (ii) \\(\\int \\frac{dx}{\\sqrt{2x-x^2}}\\)",
+    "solution": "(i) \\(\\int \\frac{dx}{x^2-16} = \\int \\frac{dx}{x^2-4^2} = \\frac{1}{8}\\log\\left|\\frac{x-4}{x+4}\\right| + C\\) [by 7.4(1)].\n(ii) \\(\\int \\frac{dx}{\\sqrt{2x-x^2}} = \\int \\frac{dx}{\\sqrt{1-(x-1)^2}}\\). Put \\(x-1=t\\), so \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{\\sqrt{2x-x^2}} = \\int \\frac{dt}{\\sqrt{1-t^2}} = \\sin^{-1}(t) + C\\) [by 7.4(5)] \\(= \\sin^{-1}(x-1) + C\\)."
+  },
+  {
+    "ref": "7.4 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Find the following integrals: (i) \\(\\int \\frac{dx}{x^2-6x+13}\\) (ii) \\(\\int \\frac{dx}{3x^2+13x-10}\\) (iii) \\(\\int \\frac{dx}{\\sqrt{5x^2-2x}}\\)",
+    "solution": "(i) We have \\(x^2-6x+13 = x^2-6x+3^2-3^2+13 = (x-3)^2+4\\). So \\(\\int \\frac{dx}{x^2-6x+13} = \\int \\frac{1}{(x-3)^2+2^2}\\,dx\\). Let \\(x-3=t\\), then \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{x^2-6x+13} = \\int \\frac{dt}{t^2+2^2} = \\frac{1}{2}\\tan^{-1}\\frac{t}{2} + C\\) [by 7.4(3)] \\(= \\frac{1}{2}\\tan^{-1}\\frac{x-3}{2} + C\\).\n(ii) The given integral is of the form 7.4(7). We write \\(3x^2+13x-10 = 3\\left(x^2+\\frac{13x}{3}-\\frac{10}{3}\\right) = 3\\left[\\left(x+\\frac{13}{6}\\right)^2-\\left(\\frac{17}{6}\\right)^2\\right]\\) (completing the square). Thus \\(\\int \\frac{dx}{3x^2+13x-10} = \\frac{1}{3}\\int \\frac{dx}{\\left(x+\\frac{13}{6}\\right)^2-\\left(\\frac{17}{6}\\right)^2}\\). Put \\(x+\\frac{13}{6}=t\\), then \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{3x^2+13x-10} = \\frac{1}{3}\\int \\frac{dt}{t^2-\\left(\\frac{17}{6}\\right)^2} = \\frac{1}{3\\times 2\\times \\frac{17}{6}}\\log\\left|\\frac{t-\\frac{17}{6}}{t+\\frac{17}{6}}\\right| + C_1\\) [by 7.4(1)] \\(= \\frac{1}{17}\\log\\left|\\frac{x+\\frac{13}{6}-\\frac{17}{6}}{x+\\frac{13}{6}+\\frac{17}{6}}\\right| + C_1 = \\frac{1}{17}\\log\\left|\\frac{6x-4}{6x+30}\\right| + C_1 = \\frac{1}{17}\\log\\left|\\frac{3x-2}{x+5}\\right| + C_1 + \\frac{1}{17}\\log\\frac{1}{3} = \\frac{1}{17}\\log\\left|\\frac{3x-2}{x+5}\\right| + C\\), where \\(C = C_1 + \\frac{1}{17}\\log\\frac{1}{3}\\).\n(iii) We have \\(\\int \\frac{dx}{\\sqrt{5x^2-2x}} = \\int \\frac{dx}{\\sqrt{5\\left(x^2-\\frac{2x}{5}\\right)}} = \\frac{1}{\\sqrt{5}}\\int \\frac{dx}{\\sqrt{\\left(x-\\frac{1}{5}\\right)^2-\\left(\\frac{1}{5}\\right)^2}}\\) (completing the square). Put \\(x-\\frac{1}{5}=t\\), then \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{\\sqrt{5x^2-2x}} = \\frac{1}{\\sqrt{5}}\\int \\frac{dt}{\\sqrt{t^2-\\left(\\frac{1}{5}\\right)^2}} = \\frac{1}{\\sqrt{5}}\\log\\left|t+\\sqrt{t^2-\\left(\\frac{1}{5}\\right)^2}\\right| + C\\) [by 7.4(4)] \\(= \\frac{1}{\\sqrt{5}}\\log\\left|x-\\frac{1}{5}+\\sqrt{x^2-\\frac{2x}{5}}\\right| + C\\)."
+  },
+  {
+    "ref": "7.4 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Find the following integrals: (i) \\(\\int \\frac{x+2}{2x^2+6x+5}\\,dx\\) (ii) \\(\\int \\frac{x+3}{\\sqrt{5-4x-x^2}}\\,dx\\)",
+    "solution": "(i) Using the formula 7.4(9), we express \\(x+2 = A\\frac{d}{dx}(2x^2+6x+5) + B = A(4x+6) + B\\). Equating the coefficients of \\(x\\) and the constant terms, \\(4A=1\\) and \\(6A+B=2\\), so \\(A=\\frac{1}{4}\\) and \\(B=\\frac{1}{2}\\). Therefore \\(\\int \\frac{x+2}{2x^2+6x+5}\\,dx = \\frac{1}{4}\\int \\frac{4x+6}{2x^2+6x+5}\\,dx + \\frac{1}{2}\\int \\frac{dx}{2x^2+6x+5} = \\frac{1}{4}I_1 + \\frac{1}{2}I_2\\) ...(1). In \\(I_1\\), put \\(2x^2+6x+5=t\\), so \\((4x+6)\\,dx=dt\\); thus \\(I_1 = \\int \\frac{dt}{t} = \\log|t| + C_1 = \\log|2x^2+6x+5| + C_1\\) ...(2). And \\(I_2 = \\int \\frac{dx}{2x^2+6x+5} = \\frac{1}{2}\\int \\frac{dx}{x^2+3x+\\frac{5}{2}} = \\frac{1}{2}\\int \\frac{dx}{\\left(x+\\frac{3}{2}\\right)^2+\\left(\\frac{1}{2}\\right)^2}\\). Put \\(x+\\frac{3}{2}=t\\), so \\(dx=dt\\): \\(I_2 = \\frac{1}{2}\\int \\frac{dt}{t^2+\\left(\\frac{1}{2}\\right)^2} = \\frac{1}{2\\times \\frac{1}{2}}\\tan^{-1}2t + C_2\\) [by 7.4(3)] \\(= \\tan^{-1}2\\left(x+\\frac{3}{2}\\right) + C_2 = \\tan^{-1}(2x+3) + C_2\\) ...(3). Using (2) and (3) in (1): \\(\\int \\frac{x+2}{2x^2+6x+5}\\,dx = \\frac{1}{4}\\log|2x^2+6x+5| + \\frac{1}{2}\\tan^{-1}(2x+3) + C\\), where \\(C = \\frac{C_1}{4} + \\frac{C_2}{2}\\).\n(ii) This integral is of the form given in 7.4(10). Express \\(x+3 = A\\frac{d}{dx}(5-4x-x^2) + B = A(-4-2x) + B\\). Equating coefficients: \\(-2A=1\\) and \\(-4A+B=3\\), i.e. \\(A=-\\frac{1}{2}\\) and \\(B=1\\). Therefore \\(\\int \\frac{x+3}{\\sqrt{5-4x-x^2}}\\,dx = -\\frac{1}{2}\\int \\frac{(-4-2x)\\,dx}{\\sqrt{5-4x-x^2}} + \\int \\frac{dx}{\\sqrt{5-4x-x^2}} = -\\frac{1}{2}I_1 + I_2\\) ...(1). In \\(I_1\\), put \\(5-4x-x^2=t\\), so \\((-4-2x)\\,dx=dt\\); thus \\(I_1 = \\int \\frac{dt}{\\sqrt{t}} = 2\\sqrt{t} + C_1 = 2\\sqrt{5-4x-x^2} + C_1\\) ...(2). Now \\(I_2 = \\int \\frac{dx}{\\sqrt{5-4x-x^2}} = \\int \\frac{dx}{\\sqrt{9-(x+2)^2}}\\). Put \\(x+2=t\\), so \\(dx=dt\\): \\(I_2 = \\int \\frac{dt}{\\sqrt{3^2-t^2}} = \\sin^{-1}\\frac{t}{3} + C_2\\) [by 7.4(5)] \\(= \\sin^{-1}\\frac{x+2}{3} + C_2\\) ...(3). Substituting (2) and (3) in (1): \\(\\int \\frac{x+3}{\\sqrt{5-4x-x^2}}\\,dx = -\\sqrt{5-4x-x^2} + \\sin^{-1}\\frac{x+2}{3} + C\\), where \\(C = C_2 - \\frac{C_1}{2}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "EASY",
+    "stem": "Integrate \\(\\frac{3x^2}{x^6+1}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "EASY",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{1+4x^2}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "EASY",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{(2-x)^2+1}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "EASY",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{9-25x^2}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{3x}{1+2x^4}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{x^2}{1-x^6}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{x-1}{\\sqrt{x^2-1}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{x^2}{\\sqrt{x^6+a^6}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{\\sec^2 x}{\\sqrt{\\tan^2 x+4}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{x^2+2x+2}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{1}{9x^2+6x+5}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{7-6x-x^2}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{(x-1)(x-2)}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{8+3x-x^2}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{(x-a)(x-b)}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{4x+1}{\\sqrt{2x^2+x-3}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{x+2}{\\sqrt{x^2-1}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{5x-2}{1+2x+3x^2}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{6x+7}{\\sqrt{(x-5)(x-4)}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{x+2}{\\sqrt{4x-x^2}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{x+2}{\\sqrt{x^2+2x+3}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{x+3}{x^2-2x-5}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Integrate \\(\\frac{5x+3}{\\sqrt{x^2+4x+10}}\\)."
+  },
+  {
+    "ref": "Ex 7.4 Q24",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{dx}{x^2+2x+2}\\) equals",
+    "options": [
+      {"label": "A", "text": "\\(x\\tan^{-1}(x+1) + C\\)"},
+      {"label": "B", "text": "\\(\\tan^{-1}(x+1) + C\\)"},
+      {"label": "C", "text": "\\((x+1)\\tan^{-1}x + C\\)"},
+      {"label": "D", "text": "\\(\\tan^{-1}x + C\\)"}
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex 7.4 Q25",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\frac{dx}{\\sqrt{9x-4x^2}}\\) equals",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{1}{9}\\sin^{-1}\\left(\\frac{9x-8}{8}\\right) + C\\)"},
+      {"label": "B", "text": "\\(\\frac{1}{2}\\sin^{-1}\\left(\\frac{8x-9}{9}\\right) + C\\)"},
+      {"label": "C", "text": "\\(\\frac{1}{3}\\sin^{-1}\\left(\\frac{9x-8}{8}\\right) + C\\)"},
+      {"label": "D", "text": "\\(\\frac{1}{2}\\sin^{-1}\\left(\\frac{9x-8}{9}\\right) + C\\)"}
+    ],
+    "answer": "B"
+  }
+]

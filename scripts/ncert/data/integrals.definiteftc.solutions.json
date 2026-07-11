@@ -1,0 +1,112 @@
+[
+  {
+    "id": "499e136d-8bde-4d6b-ad3a-8c346363bbb5",
+    "ref": "Ex 7.8 Q1",
+    "solution": "\\(\\int_{-1}^{1}(x+1)\\,dx = \\left[\\frac{x^2}{2}+x\\right]_{-1}^{1} = \\left(\\frac12+1\\right)-\\left(\\frac12-1\\right) = \\frac32-\\left(-\\frac12\\right) = 2.\\)"
+  },
+  {
+    "id": "aeb3c6cb-8e95-4e04-8b41-0284264ecfe8",
+    "ref": "Ex 7.8 Q2",
+    "solution": "\\(\\int_{2}^{3}\\frac{1}{x}\\,dx = \\left[\\log x\\right]_{2}^{3} = \\log 3-\\log 2 = \\log\\frac{3}{2}.\\)"
+  },
+  {
+    "id": "6019631d-1ad1-42d3-b7c5-6a46bdaac93b",
+    "ref": "Ex 7.8 Q3",
+    "solution": "\\(\\int_{1}^{2}(4x^3-5x^2+6x+9)\\,dx = \\left[x^4-\\frac{5x^3}{3}+3x^2+9x\\right]_{1}^{2}.\\) At \\(x=2\\): \\(16-\\frac{40}{3}+12+18 = \\frac{98}{3}\\); at \\(x=1\\): \\(1-\\frac{5}{3}+3+9 = \\frac{34}{3}\\). So the value is \\(\\frac{98}{3}-\\frac{34}{3} = \\frac{64}{3}.\\)"
+  },
+  {
+    "id": "420dfc98-08ec-4c9e-821b-49de5d677c14",
+    "ref": "Ex 7.8 Q4",
+    "solution": "\\(\\int_{0}^{\\pi/4}\\sin 2x\\,dx = \\left[-\\frac{\\cos 2x}{2}\\right]_{0}^{\\pi/4} = -\\frac{\\cos(\\pi/2)}{2}+\\frac{\\cos 0}{2} = 0+\\frac12 = \\frac12.\\)"
+  },
+  {
+    "id": "39fe5b34-3dd6-40a0-b695-e9121417387f",
+    "ref": "Ex 7.8 Q5",
+    "solution": "\\(\\int_{0}^{\\pi/2}\\cos 2x\\,dx = \\left[\\frac{\\sin 2x}{2}\\right]_{0}^{\\pi/2} = \\frac{\\sin\\pi}{2}-\\frac{\\sin 0}{2} = 0-0 = 0.\\)"
+  },
+  {
+    "id": "e4fa1268-371d-47a7-b3fb-3bc885fa8136",
+    "ref": "Ex 7.8 Q6",
+    "solution": "\\(\\int_{4}^{5}e^{x}\\,dx = \\left[e^{x}\\right]_{4}^{5} = e^{5}-e^{4}.\\)"
+  },
+  {
+    "id": "502d26d0-7418-4505-b6f2-98e92449d35d",
+    "ref": "Ex 7.8 Q7",
+    "solution": "\\(\\int_{0}^{\\pi/4}\\tan x\\,dx = \\left[\\log|\\sec x|\\right]_{0}^{\\pi/4} = \\log\\sec\\frac{\\pi}{4}-\\log\\sec 0 = \\log\\sqrt{2}-\\log 1 = \\frac12\\log 2.\\)"
+  },
+  {
+    "id": "4ea59306-ed35-4a6f-b700-edd007f62850",
+    "ref": "Ex 7.8 Q8",
+    "solution": "\\(\\int\\csc x\\,dx = \\log\\left|\\tan\\frac{x}{2}\\right|\\). So \\(\\int_{\\pi/6}^{\\pi/4}\\csc x\\,dx = \\left[\\log\\left|\\tan\\frac{x}{2}\\right|\\right]_{\\pi/6}^{\\pi/4} = \\log\\tan\\frac{\\pi}{8}-\\log\\tan\\frac{\\pi}{12}.\\) Since \\(\\tan\\frac{\\pi}{8}=\\sqrt{2}-1\\) and \\(\\tan\\frac{\\pi}{12}=2-\\sqrt{3}\\), the value is \\(\\log\\frac{\\sqrt{2}-1}{2-\\sqrt{3}}.\\)"
+  },
+  {
+    "id": "b062f54c-5c3f-4af3-9fd7-f158078aa6b5",
+    "ref": "Ex 7.8 Q9",
+    "solution": "\\(\\int_{0}^{1}\\frac{dx}{\\sqrt{1-x^2}} = \\left[\\sin^{-1}x\\right]_{0}^{1} = \\sin^{-1}1-\\sin^{-1}0 = \\frac{\\pi}{2}.\\)"
+  },
+  {
+    "id": "027235f3-50f7-49d5-826c-82be4b48e980",
+    "ref": "Ex 7.8 Q10",
+    "solution": "\\(\\int_{0}^{1}\\frac{dx}{1+x^2} = \\left[\\tan^{-1}x\\right]_{0}^{1} = \\tan^{-1}1-\\tan^{-1}0 = \\frac{\\pi}{4}.\\)"
+  },
+  {
+    "id": "cdc663fe-daf1-4291-91e2-a6e30e73c310",
+    "ref": "Ex 7.8 Q11",
+    "solution": "\\(\\int\\frac{dx}{x^2-1} = \\frac12\\log\\left|\\frac{x-1}{x+1}\\right|\\). So \\(\\int_{2}^{3}\\frac{dx}{x^2-1} = \\frac12\\left[\\log\\frac{x-1}{x+1}\\right]_{2}^{3} = \\frac12\\left(\\log\\frac{2}{4}-\\log\\frac{1}{3}\\right) = \\frac12\\log\\frac{3}{2}.\\)"
+  },
+  {
+    "id": "4401ee7e-2d5f-4421-9208-507b9ed35c3d",
+    "ref": "Ex 7.8 Q12",
+    "solution": "Using \\(\\cos^2 x=\\frac{1+\\cos 2x}{2}\\): \\(\\int_{0}^{\\pi/2}\\cos^2 x\\,dx = \\frac12\\int_{0}^{\\pi/2}(1+\\cos 2x)\\,dx = \\frac12\\left[x+\\frac{\\sin 2x}{2}\\right]_{0}^{\\pi/2} = \\frac12\\left(\\frac{\\pi}{2}+0\\right) = \\frac{\\pi}{4}.\\)"
+  },
+  {
+    "id": "8b92aec0-dea5-4ffc-8790-cf85787e4bd2",
+    "ref": "Ex 7.8 Q13",
+    "solution": "\\(\\int\\frac{x}{x^2+1}\\,dx = \\frac12\\log(x^2+1)\\). So \\(\\int_{2}^{3}\\frac{x\\,dx}{x^2+1} = \\frac12\\left[\\log(x^2+1)\\right]_{2}^{3} = \\frac12(\\log 10-\\log 5) = \\frac12\\log 2.\\)"
+  },
+  {
+    "id": "162ed77d-71be-42c8-b1fa-6bb8594316a6",
+    "ref": "Ex 7.8 Q14",
+    "solution": "Split: \\(\\int_{0}^{1}\\frac{2x+3}{5x^2+1}\\,dx = \\int_{0}^{1}\\frac{2x}{5x^2+1}\\,dx+3\\int_{0}^{1}\\frac{dx}{5x^2+1}.\\) For the first, \\(\\int\\frac{2x}{5x^2+1}\\,dx=\\frac15\\log(5x^2+1)\\), giving \\(\\frac15\\log 6\\). For the second, \\(3\\int\\frac{dx}{5x^2+1}=\\frac{3}{\\sqrt5}\\tan^{-1}(\\sqrt5\\,x)\\), giving \\(\\frac{3}{\\sqrt5}\\tan^{-1}\\sqrt5\\). Hence the value is \\(\\frac15\\log 6+\\frac{3}{\\sqrt5}\\tan^{-1}\\sqrt5.\\)"
+  },
+  {
+    "id": "99114e20-bd00-408b-aaaa-ee86870002b5",
+    "ref": "Ex 7.8 Q15",
+    "solution": "Put \\(t=x^2\\), so \\(dt=2x\\,dx\\); limits \\(x=0\\to t=0\\), \\(x=1\\to t=1\\). Then \\(\\int_{0}^{1}x\\,e^{x^2}\\,dx = \\frac12\\int_{0}^{1}e^{t}\\,dt = \\frac12\\left[e^{t}\\right]_{0}^{1} = \\frac12(e-1).\\)"
+  },
+  {
+    "id": "92f9169e-2d91-4d5b-babf-b4242d593756",
+    "ref": "Ex 7.8 Q16",
+    "solution": "Divide: \\(\\frac{5x^2}{x^2+4x+3}=5-\\frac{20x+15}{(x+1)(x+3)}\\). Partial fractions: \\(\\frac{20x+15}{(x+1)(x+3)}=-\\frac{5}{2(x+1)}+\\frac{45}{2(x+3)}\\). So an antiderivative is \\(5x+\\frac52\\log(x+1)-\\frac{45}{2}\\log(x+3)\\). Evaluating from \\(1\\) to \\(2\\): \\(\\left(10+\\frac52\\log 3-\\frac{45}{2}\\log 5\\right)-\\left(5+\\frac52\\log 2-\\frac{45}{2}\\log 4\\right) = 5+\\frac52\\log\\frac{3}{2}-\\frac{45}{2}\\log\\frac{5}{4}.\\)"
+  },
+  {
+    "id": "798fe886-1d83-492e-b907-629d85c6bdef",
+    "ref": "Ex 7.8 Q17",
+    "solution": "\\(\\int_{0}^{\\pi/4}(2\\sec^2 x+x^3+2)\\,dx = \\left[2\\tan x+\\frac{x^4}{4}+2x\\right]_{0}^{\\pi/4} = 2\\tan\\frac{\\pi}{4}+\\frac{(\\pi/4)^4}{4}+2\\cdot\\frac{\\pi}{4} = 2+\\frac{\\pi^4}{1024}+\\frac{\\pi}{2}.\\)"
+  },
+  {
+    "id": "412ebfa1-c89e-49a9-ba1f-e3f61ca628d0",
+    "ref": "Ex 7.8 Q18",
+    "solution": "Since \\(\\sin^2\\frac{x}{2}-\\cos^2\\frac{x}{2}=-\\cos x\\), \\(\\int_{0}^{\\pi}\\left(\\sin^2\\frac{x}{2}-\\cos^2\\frac{x}{2}\\right)dx = -\\int_{0}^{\\pi}\\cos x\\,dx = -\\left[\\sin x\\right]_{0}^{\\pi} = -(\\sin\\pi-\\sin 0) = 0.\\)"
+  },
+  {
+    "id": "6858386c-3861-4458-b304-8ffe44f0427e",
+    "ref": "Ex 7.8 Q19",
+    "solution": "Split: \\(\\int_{0}^{2}\\frac{6x+3}{x^2+4}\\,dx = \\int_{0}^{2}\\frac{6x}{x^2+4}\\,dx+\\int_{0}^{2}\\frac{3}{x^2+4}\\,dx = \\left[3\\log(x^2+4)+\\frac32\\tan^{-1}\\frac{x}{2}\\right]_{0}^{2}.\\) At \\(x=2\\): \\(3\\log 8+\\frac32\\cdot\\frac{\\pi}{4}\\); at \\(x=0\\): \\(3\\log 4\\). So the value is \\(3\\log 2+\\frac{3\\pi}{8}.\\)"
+  },
+  {
+    "id": "441cac44-2124-42d2-9772-8b1cd22d8496",
+    "ref": "Ex 7.8 Q20",
+    "solution": "\\(\\int_{0}^{1}x\\,e^{x}\\,dx = \\left[(x-1)e^{x}\\right]_{0}^{1} = 0-(-1) = 1\\) (by parts). Also \\(\\int_{0}^{1}\\sin\\frac{\\pi x}{4}\\,dx = \\left[-\\frac{4}{\\pi}\\cos\\frac{\\pi x}{4}\\right]_{0}^{1} = -\\frac{4}{\\pi}\\left(\\frac{1}{\\sqrt2}-1\\right) = \\frac{4-2\\sqrt2}{\\pi}\\). Hence the value is \\(1+\\frac{4-2\\sqrt2}{\\pi}.\\)"
+  },
+  {
+    "id": "84575b7a-9ccb-4cd4-a940-006ea89faedc",
+    "ref": "Misc Q28",
+    "solution": "Rationalise: \\(\\frac{1}{\\sqrt{1+x}-\\sqrt{x}}=\\frac{\\sqrt{1+x}+\\sqrt{x}}{(1+x)-x}=\\sqrt{1+x}+\\sqrt{x}\\). Then \\(\\int_{0}^{1}\\left(\\sqrt{1+x}+\\sqrt{x}\\right)dx = \\left[\\frac23(1+x)^{3/2}+\\frac23 x^{3/2}\\right]_{0}^{1} = \\left(\\frac23\\cdot 2\\sqrt2+\\frac23\\right)-\\frac23 = \\frac{4\\sqrt2}{3}.\\)"
+  },
+  {
+    "id": "19741708-c271-40be-b795-fb5b3d782a6c",
+    "ref": "Misc Q31",
+    "solution": "On \\([1,4]\\), \\(|x-1|=x-1\\) throughout, so \\(\\int_{1}^{4}|x-1|\\,dx=\\left[\\frac{(x-1)^2}{2}\\right]_{1}^{4}=\\frac92\\). For \\(|x-2|\\): \\(\\int_{1}^{2}(2-x)\\,dx+\\int_{2}^{4}(x-2)\\,dx=\\frac12+2=\\frac52\\). For \\(|x-3|\\): \\(\\int_{1}^{3}(3-x)\\,dx+\\int_{3}^{4}(x-3)\\,dx=2+\\frac12=\\frac52\\). Adding, \\(\\int_{1}^{4}\\big(|x-1|+|x-2|+|x-3|\\big)\\,dx = \\frac92+\\frac52+\\frac52 = \\frac{19}{2}.\\)"
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "c1045582-790a-49e7-92be-49bad1290428",
+    "ref": "Ex 7.3 Q1",
+    "solution": "Use the power-reduction identity \\(\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}\\) with \\(\\theta = 2x+5\\): \\(\\sin^2(2x+5) = \\frac{1 - \\cos(4x+10)}{2}\\). Then \\(\\int \\sin^2(2x+5)\\,dx = \\frac{1}{2}\\int \\left(1 - \\cos(4x+10)\\right)dx = \\frac{1}{2}\\left(x - \\frac{\\sin(4x+10)}{4}\\right) + C = \\frac{x}{2} - \\frac{\\sin(4x+10)}{8} + C\\)."
+  },
+  {
+    "id": "701adf26-c1f6-4a53-8aa3-2ab13b41fc45",
+    "ref": "Ex 7.3 Q2",
+    "solution": "Use the product-to-sum identity \\(\\sin A \\cos B = \\frac{1}{2}\\left[\\sin(A+B) + \\sin(A-B)\\right]\\): \\(\\sin 3x \\cos 4x = \\frac{1}{2}\\left[\\sin 7x + \\sin(-x)\\right] = \\frac{1}{2}\\left(\\sin 7x - \\sin x\\right)\\). Then \\(\\int \\sin 3x \\cos 4x\\,dx = \\frac{1}{2}\\left(-\\frac{\\cos 7x}{7} + \\cos x\\right) + C = -\\frac{\\cos 7x}{14} + \\frac{\\cos x}{2} + C\\)."
+  },
+  {
+    "id": "1ed5b63c-7d09-4fe8-8b5c-6836bc208f40",
+    "ref": "Ex 7.3 Q3",
+    "solution": "First \\(\\cos 2x \\cos 4x = \\frac{1}{2}(\\cos 6x + \\cos 2x)\\), so \\(\\cos 2x \\cos 4x \\cos 6x = \\frac{1}{2}\\cos 6x(\\cos 6x + \\cos 2x) = \\frac{1}{2}\\left(\\cos^2 6x + \\cos 2x \\cos 6x\\right)\\). Using \\(\\cos^2 6x = \\frac{1+\\cos 12x}{2}\\) and \\(\\cos 2x \\cos 6x = \\frac{1}{2}(\\cos 8x + \\cos 4x)\\), this becomes \\(\\frac{1}{4}\\left(1 + \\cos 4x + \\cos 8x + \\cos 12x\\right)\\). Then \\(\\int \\cos 2x \\cos 4x \\cos 6x\\,dx = \\frac{1}{4}\\left(x + \\frac{\\sin 4x}{4} + \\frac{\\sin 8x}{8} + \\frac{\\sin 12x}{12}\\right) + C\\)."
+  },
+  {
+    "id": "a466366d-d086-4a5e-bb08-1e093be432ab",
+    "ref": "Ex 7.3 Q4",
+    "solution": "Use \\(\\sin^3\\theta = \\frac{3\\sin\\theta - \\sin 3\\theta}{4}\\) with \\(\\theta = 2x+1\\): \\(\\sin^3(2x+1) = \\frac{1}{4}\\left[3\\sin(2x+1) - \\sin(6x+3)\\right]\\). Then \\(\\int \\sin^3(2x+1)\\,dx = \\frac{1}{4}\\left[-\\frac{3\\cos(2x+1)}{2} + \\frac{\\cos(6x+3)}{6}\\right] + C = -\\frac{3\\cos(2x+1)}{8} + \\frac{\\cos(6x+3)}{24} + C\\)."
+  },
+  {
+    "id": "70b149c9-5f53-4913-9037-db0e92aa17fe",
+    "ref": "Ex 7.3 Q5",
+    "solution": "Since \\(\\sin x \\cos x = \\frac{1}{2}\\sin 2x\\), \\(\\sin^3 x \\cos^3 x = (\\sin x \\cos x)^3 = \\frac{1}{8}\\sin^3 2x\\). Using \\(\\sin^3 2x = \\frac{3\\sin 2x - \\sin 6x}{4}\\), \\(\\int \\sin^3 x \\cos^3 x\\,dx = \\frac{1}{32}\\int(3\\sin 2x - \\sin 6x)\\,dx = \\frac{1}{32}\\left(-\\frac{3\\cos 2x}{2} + \\frac{\\cos 6x}{6}\\right) + C = -\\frac{3\\cos 2x}{64} + \\frac{\\cos 6x}{192} + C\\)."
+  },
+  {
+    "id": "d1dc011b-89c2-4a12-9697-b771c47c478b",
+    "ref": "Ex 7.3 Q6",
+    "solution": "Pair \\(\\sin x \\sin 3x = \\frac{1}{2}(\\cos 2x - \\cos 4x)\\), so \\(\\sin x \\sin 2x \\sin 3x = \\frac{1}{2}\\sin 2x(\\cos 2x - \\cos 4x) = \\frac{1}{2}\\left(\\sin 2x \\cos 2x - \\sin 2x \\cos 4x\\right)\\). With \\(\\sin 2x \\cos 2x = \\frac{1}{2}\\sin 4x\\) and \\(\\sin 2x \\cos 4x = \\frac{1}{2}(\\sin 6x - \\sin 2x)\\), this equals \\(\\frac{1}{4}(\\sin 4x - \\sin 6x + \\sin 2x)\\). Then \\(\\int \\sin x \\sin 2x \\sin 3x\\,dx = \\frac{1}{4}\\left(-\\frac{\\cos 4x}{4} + \\frac{\\cos 6x}{6} - \\frac{\\cos 2x}{2}\\right) + C = \\frac{\\cos 6x}{24} - \\frac{\\cos 4x}{16} - \\frac{\\cos 2x}{8} + C\\)."
+  },
+  {
+    "id": "7ba52007-c286-41b3-9d69-7e8f2590722a",
+    "ref": "Ex 7.3 Q7",
+    "solution": "Use \\(\\sin A \\sin B = \\frac{1}{2}\\left[\\cos(A-B) - \\cos(A+B)\\right]\\): \\(\\sin 4x \\sin 8x = \\frac{1}{2}(\\cos 4x - \\cos 12x)\\). Then \\(\\int \\sin 4x \\sin 8x\\,dx = \\frac{1}{2}\\left(\\frac{\\sin 4x}{4} - \\frac{\\sin 12x}{12}\\right) + C = \\frac{\\sin 4x}{8} - \\frac{\\sin 12x}{24} + C\\)."
+  },
+  {
+    "id": "b1c3d53d-0b4b-4a0c-8186-a12286263f82",
+    "ref": "Ex 7.3 Q8",
+    "solution": "Using \\(1 - \\cos x = 2\\sin^2\\frac{x}{2}\\) and \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\), \\(\\frac{1-\\cos x}{1+\\cos x} = \\tan^2\\frac{x}{2} = \\sec^2\\frac{x}{2} - 1\\). Then \\(\\int \\frac{1-\\cos x}{1+\\cos x}\\,dx = \\int\\left(\\sec^2\\frac{x}{2} - 1\\right)dx = 2\\tan\\frac{x}{2} - x + C\\)."
+  },
+  {
+    "id": "b7358b0d-8c6b-43b2-970a-e8ea3645b631",
+    "ref": "Ex 7.3 Q9",
+    "solution": "Write \\(\\frac{\\cos x}{1+\\cos x} = \\frac{(1+\\cos x) - 1}{1+\\cos x} = 1 - \\frac{1}{1+\\cos x}\\). Since \\(1+\\cos x = 2\\cos^2\\frac{x}{2}\\), \\(\\frac{1}{1+\\cos x} = \\frac{1}{2}\\sec^2\\frac{x}{2}\\). Then \\(\\int \\frac{\\cos x}{1+\\cos x}\\,dx = \\int\\left(1 - \\frac{1}{2}\\sec^2\\frac{x}{2}\\right)dx = x - \\tan\\frac{x}{2} + C\\)."
+  },
+  {
+    "id": "77aa20ea-297f-4130-a528-dbc9fc75e97c",
+    "ref": "Ex 7.3 Q10",
+    "solution": "\\(\\sin^4 x = \\left(\\frac{1-\\cos 2x}{2}\\right)^2 = \\frac{1}{4}\\left(1 - 2\\cos 2x + \\cos^2 2x\\right)\\). Replacing \\(\\cos^2 2x = \\frac{1+\\cos 4x}{2}\\) gives \\(\\sin^4 x = \\frac{3}{8} - \\frac{\\cos 2x}{2} + \\frac{\\cos 4x}{8}\\). Then \\(\\int \\sin^4 x\\,dx = \\frac{3x}{8} - \\frac{\\sin 2x}{4} + \\frac{\\sin 4x}{32} + C\\)."
+  },
+  {
+    "id": "aacf1b7b-e449-49c1-bea4-833abd015719",
+    "ref": "Ex 7.3 Q11",
+    "solution": "\\(\\cos^4 2x = \\left(\\frac{1+\\cos 4x}{2}\\right)^2 = \\frac{1}{4}\\left(1 + 2\\cos 4x + \\cos^2 4x\\right)\\). Using \\(\\cos^2 4x = \\frac{1+\\cos 8x}{2}\\) gives \\(\\cos^4 2x = \\frac{3}{8} + \\frac{\\cos 4x}{2} + \\frac{\\cos 8x}{8}\\). Then \\(\\int \\cos^4 2x\\,dx = \\frac{3x}{8} + \\frac{\\sin 4x}{8} + \\frac{\\sin 8x}{64} + C\\)."
+  },
+  {
+    "id": "07498592-d9bd-4691-82a1-118df2242e63",
+    "ref": "Ex 7.3 Q12",
+    "solution": "Since \\(\\sin^2 x = 1 - \\cos^2 x = (1-\\cos x)(1+\\cos x)\\), \\(\\frac{\\sin^2 x}{1+\\cos x} = 1 - \\cos x\\). Then \\(\\int \\frac{\\sin^2 x}{1+\\cos x}\\,dx = \\int(1 - \\cos x)\\,dx = x - \\sin x + C\\)."
+  },
+  {
+    "id": "43a71d91-8c61-40bc-ba78-bb10c3cedafe",
+    "ref": "Ex 7.3 Q13",
+    "solution": "Using \\(\\cos 2x = 2\\cos^2 x - 1\\) and \\(\\cos 2\\alpha = 2\\cos^2\\alpha - 1\\), the numerator \\(\\cos 2x - \\cos 2\\alpha = 2(\\cos^2 x - \\cos^2\\alpha) = 2(\\cos x - \\cos\\alpha)(\\cos x + \\cos\\alpha)\\). Hence \\(\\frac{\\cos 2x - \\cos 2\\alpha}{\\cos x - \\cos\\alpha} = 2(\\cos x + \\cos\\alpha)\\). Then \\(\\int 2(\\cos x + \\cos\\alpha)\\,dx = 2\\sin x + 2x\\cos\\alpha + C\\)."
+  },
+  {
+    "id": "9f2213d0-91d2-4f51-9868-316a444c8390",
+    "ref": "Ex 7.3 Q14",
+    "solution": "Note \\(1 + \\sin 2x = \\sin^2 x + \\cos^2 x + 2\\sin x \\cos x = (\\sin x + \\cos x)^2\\). Put \\(t = \\sin x + \\cos x\\), so \\(dt = (\\cos x - \\sin x)\\,dx\\). Then \\(\\int \\frac{\\cos x - \\sin x}{1+\\sin 2x}\\,dx = \\int \\frac{dt}{t^2} = -\\frac{1}{t} + C = -\\frac{1}{\\sin x + \\cos x} + C\\)."
+  },
+  {
+    "id": "9d52d965-cf1e-417d-acb3-bc1c72301b66",
+    "ref": "Ex 7.3 Q15",
+    "solution": "Write \\(\\tan^3 2x \\sec 2x = \\tan^2 2x(\\sec 2x \\tan 2x) = (\\sec^2 2x - 1)\\sec 2x \\tan 2x\\). Put \\(t = \\sec 2x\\), so \\(dt = 2\\sec 2x \\tan 2x\\,dx\\). Then \\(\\int (\\sec^2 2x - 1)\\sec 2x \\tan 2x\\,dx = \\frac{1}{2}\\int(t^2 - 1)\\,dt = \\frac{1}{2}\\left(\\frac{t^3}{3} - t\\right) + C = \\frac{\\sec^3 2x}{6} - \\frac{\\sec 2x}{2} + C\\)."
+  },
+  {
+    "id": "fc541290-eb33-4695-b6e7-5d2d2cbde2d6",
+    "ref": "Ex 7.3 Q16",
+    "solution": "\\(\\tan^4 x = \\tan^2 x(\\sec^2 x - 1) = \\tan^2 x \\sec^2 x - \\tan^2 x = \\tan^2 x \\sec^2 x - (\\sec^2 x - 1)\\). Since \\(\\int \\tan^2 x \\sec^2 x\\,dx = \\frac{\\tan^3 x}{3}\\), \\(\\int \\tan^4 x\\,dx = \\frac{\\tan^3 x}{3} - \\tan x + x + C\\)."
+  },
+  {
+    "id": "2dd9f0b6-63dd-46a3-bdfd-fdbbb6c0122b",
+    "ref": "Ex 7.3 Q17",
+    "solution": "Split the fraction: \\(\\frac{\\sin^3 x + \\cos^3 x}{\\sin^2 x \\cos^2 x} = \\frac{\\sin x}{\\cos^2 x} + \\frac{\\cos x}{\\sin^2 x} = \\sec x \\tan x + \\csc x \\cot x\\). Then \\(\\int(\\sec x \\tan x + \\csc x \\cot x)\\,dx = \\sec x - \\csc x + C\\)."
+  },
+  {
+    "id": "a1ad89bb-a0a0-49b4-95bc-1e24d99219fd",
+    "ref": "Ex 7.3 Q18",
+    "solution": "Since \\(\\cos 2x = 1 - 2\\sin^2 x\\), the numerator \\(\\cos 2x + 2\\sin^2 x = 1\\). Hence \\(\\frac{\\cos 2x + 2\\sin^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x} = \\sec^2 x\\). Then \\(\\int \\sec^2 x\\,dx = \\tan x + C\\)."
+  },
+  {
+    "id": "e7c11c6f-5a22-4528-92e9-9b99e31d098c",
+    "ref": "Ex 7.3 Q19",
+    "solution": "Since \\(\\sin x \\cos^3 x = \\tan x \\cos^4 x = \\frac{\\tan x}{\\sec^4 x}\\), we have \\(\\frac{1}{\\sin x \\cos^3 x} = \\frac{\\sec^4 x}{\\tan x} = \\frac{(1+\\tan^2 x)\\sec^2 x}{\\tan x}\\). Put \\(t = \\tan x\\), \\(dt = \\sec^2 x\\,dx\\): \\(\\int \\frac{1+t^2}{t}\\,dt = \\int\\left(\\frac{1}{t} + t\\right)dt = \\log|t| + \\frac{t^2}{2} + C = \\log|\\tan x| + \\frac{\\tan^2 x}{2} + C\\)."
+  },
+  {
+    "id": "762c1410-ab30-4c3c-b226-5f4ace41e6f7",
+    "ref": "Ex 7.3 Q20",
+    "solution": "Since \\(\\cos 2x = \\cos^2 x - \\sin^2 x = (\\cos x - \\sin x)(\\cos x + \\sin x)\\), \\(\\frac{\\cos 2x}{(\\cos x + \\sin x)^2} = \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\). Put \\(t = \\cos x + \\sin x\\), so \\(dt = (\\cos x - \\sin x)\\,dx\\). Then \\(\\int \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\,dx = \\int \\frac{dt}{t} = \\log|t| + C = \\log|\\cos x + \\sin x| + C\\)."
+  },
+  {
+    "id": "58ef5634-12d8-4eab-b9c5-d50ef88c0e1b",
+    "ref": "Ex 7.3 Q21",
+    "solution": "Write \\(\\cos x = \\sin\\left(\\frac{\\pi}{2} - x\\right)\\), so \\(\\sin^{-1}(\\cos x) = \\frac{\\pi}{2} - x\\) (taking the principal value, valid for \\(0 \\le x \\le \\pi\\)). Then \\(\\int \\sin^{-1}(\\cos x)\\,dx = \\int\\left(\\frac{\\pi}{2} - x\\right)dx = \\frac{\\pi x}{2} - \\frac{x^2}{2} + C\\).",
+    "_note": "Ex 7.3 Q21: sin^{-1}(cos x) reduces to the linear function pi/2 - x only on the principal-value interval 0<=x<=pi; answer given for that intended range (NCERT convention)."
+  },
+  {
+    "id": "6a375e49-51b4-4547-8429-7e703448a1ef",
+    "ref": "Ex 7.3 Q22",
+    "solution": "Multiply and divide by \\(\\sin(a-b)\\), and use \\(\\sin(a-b) = \\sin\\big[(x-b)-(x-a)\\big]\\). Since \\(\\frac{\\sin[(x-b)-(x-a)]}{\\cos(x-a)\\cos(x-b)} = \\tan(x-b) - \\tan(x-a)\\), we get \\(\\frac{1}{\\cos(x-a)\\cos(x-b)} = \\frac{1}{\\sin(a-b)}\\big[\\tan(x-b) - \\tan(x-a)\\big]\\). Then \\(\\int \\frac{dx}{\\cos(x-a)\\cos(x-b)} = \\frac{1}{\\sin(a-b)}\\big[-\\log|\\cos(x-b)| + \\log|\\cos(x-a)|\\big] + C = \\frac{1}{\\sin(a-b)}\\log\\left|\\frac{\\cos(x-a)}{\\cos(x-b)}\\right| + C\\)."
+  },
+  {
+    "id": "dfb7e066-7d45-40e2-8fe6-117e95b14d84",
+    "ref": "Misc Q7",
+    "solution": "Write the numerator as \\(\\sin x = \\sin\\big[(x-a)+a\\big] = \\sin(x-a)\\cos a + \\cos(x-a)\\sin a\\). Dividing by \\(\\sin(x-a)\\), \\(\\frac{\\sin x}{\\sin(x-a)} = \\cos a + \\sin a\\,\\frac{\\cos(x-a)}{\\sin(x-a)}\\). Then \\(\\int \\frac{\\sin x}{\\sin(x-a)}\\,dx = x\\cos a + \\sin a\\,\\log|\\sin(x-a)| + C\\)."
+  },
+  {
+    "id": "1fc7e44c-a290-4a9a-94b2-4465ea7d5112",
+    "ref": "Misc Q10",
+    "solution": "Factor the numerator: \\(\\sin^8 x - \\cos^8 x = (\\sin^4 x - \\cos^4 x)(\\sin^4 x + \\cos^4 x)\\). Now \\(\\sin^4 x - \\cos^4 x = (\\sin^2 x - \\cos^2 x)(\\sin^2 x + \\cos^2 x) = -\\cos 2x\\), and \\(\\sin^4 x + \\cos^4 x = 1 - 2\\sin^2 x \\cos^2 x\\), which is exactly the denominator. Hence the integrand \\(= -\\cos 2x\\), and \\(\\int -\\cos 2x\\,dx = -\\frac{\\sin 2x}{2} + C\\)."
+  },
+  {
+    "id": "e0d4188f-0349-4df6-af3c-769355ae4ed2",
+    "ref": "Misc Q11",
+    "solution": "Multiply and divide by \\(\\sin(a-b)\\), using \\(\\sin(a-b) = \\sin\\big[(x+a)-(x+b)\\big]\\). Since \\(\\frac{\\sin[(x+a)-(x+b)]}{\\cos(x+a)\\cos(x+b)} = \\tan(x+a) - \\tan(x+b)\\), we have \\(\\frac{1}{\\cos(x+a)\\cos(x+b)} = \\frac{1}{\\sin(a-b)}\\big[\\tan(x+a) - \\tan(x+b)\\big]\\). Then \\(\\int \\frac{dx}{\\cos(x+a)\\cos(x+b)} = \\frac{1}{\\sin(a-b)}\\big[-\\log|\\cos(x+a)| + \\log|\\cos(x+b)|\\big] + C = \\frac{1}{\\sin(a-b)}\\log\\left|\\frac{\\cos(x+b)}{\\cos(x+a)}\\right| + C\\)."
+  },
+  {
+    "id": "3722e1c1-1d90-42bd-9401-024bd14fad5f",
+    "ref": "Misc Q35",
+    "solution": "Use \\(\\sin^3 x = \\frac{3\\sin x - \\sin 3x}{4}\\). Then \\(\\int_{0}^{\\pi/2} \\sin^3 x\\,dx = \\frac{1}{4}\\left[-3\\cos x + \\frac{\\cos 3x}{3}\\right]_{0}^{\\pi/2}\\). At \\(x = \\frac{\\pi}{2}\\): \\(\\cos\\frac{\\pi}{2} = 0,\\ \\cos\\frac{3\\pi}{2} = 0\\), giving \\(0\\). At \\(x = 0\\): \\(\\frac{1}{4}\\left[-3 + \\frac{1}{3}\\right] = \\frac{1}{4}\\cdot\\left(-\\frac{8}{3}\\right) = -\\frac{2}{3}\\). Hence the value is \\(0 - \\left(-\\frac{2}{3}\\right) = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "459cfe24-3f23-4f2d-bb1b-090242995d80",
+    "ref": "Misc Q36",
+    "solution": "Write \\(\\tan^3 x = \\tan x(\\sec^2 x - 1) = \\tan x \\sec^2 x - \\tan x\\), so \\(\\int \\tan^3 x\\,dx = \\frac{\\tan^2 x}{2} - \\log|\\sec x|\\). Hence \\(\\int_{0}^{\\pi/4} 2\\tan^3 x\\,dx = \\left[\\tan^2 x - 2\\log|\\sec x|\\right]_{0}^{\\pi/4}\\). At \\(x = \\frac{\\pi}{4}\\): \\(\\tan\\frac{\\pi}{4} = 1,\\ \\sec\\frac{\\pi}{4} = \\sqrt{2}\\), giving \\(1 - 2\\log\\sqrt{2} = 1 - \\log 2\\). At \\(x = 0\\): \\(0 - 0 = 0\\). Therefore the value is \\(1 - \\log 2\\)."
+  }
+]

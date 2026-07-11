@@ -1,0 +1,137 @@
+[
+  {
+    "id": "3eec9a9d-60ab-4cdf-a999-890223a289f1",
+    "ref": "Ex 7.5 Q1",
+    "solution": "Write \\(\\frac{x}{(x+1)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x+2}\\), so \\(x = A(x+2) + B(x+1)\\). Put \\(x=-1\\): \\(A=-1\\); put \\(x=-2\\): \\(B=2\\). Then \\(\\int \\frac{x}{(x+1)(x+2)}\\,dx = -\\int \\frac{dx}{x+1} + 2\\int \\frac{dx}{x+2} = -\\log|x+1| + 2\\log|x+2| + C\\)."
+  },
+  {
+    "id": "2154c6fc-6d8d-4312-bca5-f2c69de04c4b",
+    "ref": "Ex 7.5 Q2",
+    "solution": "Here \\(\\frac{1}{x^2-9} = \\frac{1}{(x-3)(x+3)} = \\frac{1}{6}\\left(\\frac{1}{x-3} - \\frac{1}{x+3}\\right)\\). Hence \\(\\int \\frac{dx}{x^2-9} = \\frac{1}{6}\\big(\\log|x-3| - \\log|x+3|\\big) + C = \\frac{1}{6}\\log\\left|\\frac{x-3}{x+3}\\right| + C\\)."
+  },
+  {
+    "id": "9a4a367c-8314-43a5-89db-a0c30b7d2325",
+    "ref": "Ex 7.5 Q3",
+    "solution": "Let \\(\\frac{3x-1}{(x-1)(x-2)(x-3)} = \\frac{A}{x-1} + \\frac{B}{x-2} + \\frac{C}{x-3}\\), so \\(3x-1 = A(x-2)(x-3) + B(x-1)(x-3) + C(x-1)(x-2)\\). Put \\(x=1\\): \\(2=2A\\Rightarrow A=1\\); \\(x=2\\): \\(5=-B\\Rightarrow B=-5\\); \\(x=3\\): \\(8=2C\\Rightarrow C=4\\). Then \\(\\int \\frac{3x-1}{(x-1)(x-2)(x-3)}\\,dx = \\log|x-1| - 5\\log|x-2| + 4\\log|x-3| + C\\)."
+  },
+  {
+    "id": "fff0b9b9-f14f-4f34-93c9-252712b1088d",
+    "ref": "Ex 7.5 Q4",
+    "solution": "Let \\(\\frac{x}{(x-1)(x-2)(x-3)} = \\frac{A}{x-1} + \\frac{B}{x-2} + \\frac{C}{x-3}\\), so \\(x = A(x-2)(x-3) + B(x-1)(x-3) + C(x-1)(x-2)\\). Put \\(x=1\\): \\(1=2A\\Rightarrow A=\\tfrac{1}{2}\\); \\(x=2\\): \\(2=-B\\Rightarrow B=-2\\); \\(x=3\\): \\(3=2C\\Rightarrow C=\\tfrac{3}{2}\\). Then \\(\\int \\frac{x}{(x-1)(x-2)(x-3)}\\,dx = \\frac{1}{2}\\log|x-1| - 2\\log|x-2| + \\frac{3}{2}\\log|x-3| + C\\)."
+  },
+  {
+    "id": "a913443f-d93b-4820-aeea-541daa0d9741",
+    "ref": "Ex 7.5 Q5",
+    "solution": "Since \\(x^2+3x+2=(x+1)(x+2)\\), write \\(\\frac{2x}{(x+1)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x+2}\\), so \\(2x = A(x+2)+B(x+1)\\). Put \\(x=-1\\): \\(A=-2\\); \\(x=-2\\): \\(-4=-B\\Rightarrow B=4\\). Then \\(\\int \\frac{2x}{x^2+3x+2}\\,dx = -2\\log|x+1| + 4\\log|x+2| + C\\)."
+  },
+  {
+    "id": "fdd272fe-9e9c-46bd-a6e3-13df10540aef",
+    "ref": "Ex 7.5 Q6",
+    "solution": "The fraction is improper; dividing, \\(\\frac{1-x^2}{x(1-2x)} = \\frac{1}{2} + \\frac{1-\\frac{x}{2}}{x(1-2x)}\\). Write \\(\\frac{1-\\frac{x}{2}}{x(1-2x)} = \\frac{A}{x} + \\frac{B}{1-2x}\\), so \\(1-\\tfrac{x}{2} = A(1-2x)+Bx\\). Put \\(x=0\\): \\(A=1\\); \\(x=\\tfrac{1}{2}\\): \\(\\tfrac{3}{4}=\\tfrac{B}{2}\\Rightarrow B=\\tfrac{3}{2}\\). Hence \\(\\int \\frac{1-x^2}{x(1-2x)}\\,dx = \\int\\left(\\frac{1}{2} + \\frac{1}{x} + \\frac{3}{2(1-2x)}\\right)dx = \\frac{x}{2} + \\log|x| - \\frac{3}{4}\\log|1-2x| + C\\)."
+  },
+  {
+    "id": "90d77afc-3124-45c0-a1e9-1a44a3096375",
+    "ref": "Ex 7.5 Q7",
+    "solution": "Let \\(\\frac{x}{(x^2+1)(x-1)} = \\frac{Ax+B}{x^2+1} + \\frac{C}{x-1}\\), so \\(x = (Ax+B)(x-1) + C(x^2+1)\\). Put \\(x=1\\): \\(1=2C\\Rightarrow C=\\tfrac{1}{2}\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=-\\tfrac{1}{2}\\); comparing \\(x\\): \\(B-A=1\\Rightarrow B=\\tfrac{1}{2}\\). Then \\(\\int \\frac{x}{(x^2+1)(x-1)}\\,dx = \\int\\left(\\frac{-\\tfrac{1}{2}x+\\tfrac{1}{2}}{x^2+1} + \\frac{\\tfrac{1}{2}}{x-1}\\right)dx = -\\frac{1}{4}\\log(x^2+1) + \\frac{1}{2}\\tan^{-1}x + \\frac{1}{2}\\log|x-1| + C\\)."
+  },
+  {
+    "id": "a601924f-3dc9-495d-911a-92d25ff1d861",
+    "ref": "Ex 7.5 Q8",
+    "solution": "Let \\(\\frac{x}{(x-1)^2(x+2)} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+2}\\), so \\(x = A(x-1)(x+2) + B(x+2) + C(x-1)^2\\). Put \\(x=1\\): \\(1=3B\\Rightarrow B=\\tfrac{1}{3}\\); \\(x=-2\\): \\(-2=9C\\Rightarrow C=-\\tfrac{2}{9}\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=\\tfrac{2}{9}\\). Then \\(\\int \\frac{x}{(x-1)^2(x+2)}\\,dx = \\frac{2}{9}\\log|x-1| - \\frac{1}{3(x-1)} - \\frac{2}{9}\\log|x+2| + C\\)."
+  },
+  {
+    "id": "d0bed982-3f82-4b67-be32-5aae4db37677",
+    "ref": "Ex 7.5 Q9",
+    "solution": "Factor \\(x^3-x^2-x+1 = (x-1)^2(x+1)\\). Let \\(\\frac{3x+5}{(x-1)^2(x+1)} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+1}\\), so \\(3x+5 = A(x-1)(x+1) + B(x+1) + C(x-1)^2\\). Put \\(x=1\\): \\(8=2B\\Rightarrow B=4\\); \\(x=-1\\): \\(2=4C\\Rightarrow C=\\tfrac{1}{2}\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=-\\tfrac{1}{2}\\). Then \\(\\int \\frac{3x+5}{x^3-x^2-x+1}\\,dx = -\\frac{1}{2}\\log|x-1| - \\frac{4}{x-1} + \\frac{1}{2}\\log|x+1| + C\\)."
+  },
+  {
+    "id": "39e00a66-bb54-4d19-8aa2-ac038ec60996",
+    "ref": "Ex 7.5 Q10",
+    "solution": "Since \\(x^2-1=(x-1)(x+1)\\), let \\(\\frac{2x-3}{(x-1)(x+1)(2x+3)} = \\frac{A}{x-1} + \\frac{B}{x+1} + \\frac{C}{2x+3}\\), so \\(2x-3 = A(x+1)(2x+3) + B(x-1)(2x+3) + C(x-1)(x+1)\\). Put \\(x=1\\): \\(-1=10A\\Rightarrow A=-\\tfrac{1}{10}\\); \\(x=-1\\): \\(-5=-2B\\Rightarrow B=\\tfrac{5}{2}\\); \\(x=-\\tfrac{3}{2}\\): \\(-6=\\tfrac{5}{4}C\\Rightarrow C=-\\tfrac{24}{5}\\). Then \\(\\int \\frac{2x-3}{(x^2-1)(2x+3)}\\,dx = -\\frac{1}{10}\\log|x-1| + \\frac{5}{2}\\log|x+1| - \\frac{12}{5}\\log|2x+3| + C\\)."
+  },
+  {
+    "id": "010b44ec-17e3-4a6a-95f5-78b852c89e3b",
+    "ref": "Ex 7.5 Q11",
+    "solution": "Since \\(x^2-4=(x-2)(x+2)\\), let \\(\\frac{5x}{(x+1)(x-2)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x-2} + \\frac{C}{x+2}\\), so \\(5x = A(x-2)(x+2) + B(x+1)(x+2) + C(x+1)(x-2)\\). Put \\(x=-1\\): \\(-5=-3A\\Rightarrow A=\\tfrac{5}{3}\\); \\(x=2\\): \\(10=12B\\Rightarrow B=\\tfrac{5}{6}\\); \\(x=-2\\): \\(-10=4C\\Rightarrow C=-\\tfrac{5}{2}\\). Then \\(\\int \\frac{5x}{(x+1)(x^2-4)}\\,dx = \\frac{5}{3}\\log|x+1| + \\frac{5}{6}\\log|x-2| - \\frac{5}{2}\\log|x+2| + C\\)."
+  },
+  {
+    "id": "073f9e2c-3e12-4b6e-bc51-0a976095511f",
+    "ref": "Ex 7.5 Q12",
+    "solution": "The fraction is improper; dividing, \\(\\frac{x^3+x+1}{x^2-1} = x + \\frac{2x+1}{x^2-1}\\). Write \\(\\frac{2x+1}{(x-1)(x+1)} = \\frac{A}{x-1} + \\frac{B}{x+1}\\), so \\(2x+1 = A(x+1)+B(x-1)\\). Put \\(x=1\\): \\(3=2A\\Rightarrow A=\\tfrac{3}{2}\\); \\(x=-1\\): \\(-1=-2B\\Rightarrow B=\\tfrac{1}{2}\\). Then \\(\\int \\frac{x^3+x+1}{x^2-1}\\,dx = \\frac{x^2}{2} + \\frac{3}{2}\\log|x-1| + \\frac{1}{2}\\log|x+1| + C\\)."
+  },
+  {
+    "id": "c29fdcf6-7266-49bd-a7ab-addca9ca91a8",
+    "ref": "Ex 7.5 Q13",
+    "solution": "Let \\(\\frac{2}{(1-x)(1+x^2)} = \\frac{A}{1-x} + \\frac{Bx+C}{1+x^2}\\), so \\(2 = A(1+x^2) + (Bx+C)(1-x)\\). Put \\(x=1\\): \\(2=2A\\Rightarrow A=1\\); comparing \\(x^2\\): \\(A-B=0\\Rightarrow B=1\\); comparing \\(x\\): \\(B-C=0\\Rightarrow C=1\\). Then \\(\\int \\frac{2}{(1-x)(1+x^2)}\\,dx = \\int\\left(\\frac{1}{1-x} + \\frac{x+1}{1+x^2}\\right)dx = -\\log|1-x| + \\frac{1}{2}\\log(1+x^2) + \\tan^{-1}x + C\\)."
+  },
+  {
+    "id": "bc2dbf41-29f7-4a0a-b322-1176bc2c9038",
+    "ref": "Ex 7.5 Q14",
+    "solution": "Put \\(t = x+2\\), so \\(dt=dx\\) and \\(3x-1 = 3t-7\\). Then \\(\\int \\frac{3x-1}{(x+2)^2}\\,dx = \\int \\frac{3t-7}{t^2}\\,dt = \\int\\left(\\frac{3}{t} - \\frac{7}{t^2}\\right)dt = 3\\log|t| + \\frac{7}{t} + C = 3\\log|x+2| + \\frac{7}{x+2} + C\\)."
+  },
+  {
+    "id": "6d353d81-8141-4df7-ab63-dbd585b10f04",
+    "ref": "Ex 7.5 Q15",
+    "solution": "Factor \\(x^4-1=(x-1)(x+1)(x^2+1)\\). Let \\(\\frac{1}{x^4-1} = \\frac{A}{x-1} + \\frac{B}{x+1} + \\frac{Cx+D}{x^2+1}\\), so \\(1 = A(x+1)(x^2+1) + B(x-1)(x^2+1) + (Cx+D)(x^2-1)\\). Put \\(x=1\\): \\(A=\\tfrac{1}{4}\\); \\(x=-1\\): \\(B=-\\tfrac{1}{4}\\); comparing \\(x^3\\): \\(A+B+C=0\\Rightarrow C=0\\); constant: \\(A-B-D=1\\Rightarrow D=-\\tfrac{1}{2}\\). Then \\(\\int \\frac{dx}{x^4-1} = \\frac{1}{4}\\log|x-1| - \\frac{1}{4}\\log|x+1| - \\frac{1}{2}\\tan^{-1}x + C = \\frac{1}{4}\\log\\left|\\frac{x-1}{x+1}\\right| - \\frac{1}{2}\\tan^{-1}x + C\\)."
+  },
+  {
+    "id": "1ffc163b-d9dc-4756-bb13-462f02d0f4e9",
+    "ref": "Ex 7.5 Q16",
+    "solution": "Multiply numerator and denominator by \\(x^{n-1}\\): \\(\\frac{1}{x(x^n+1)} = \\frac{x^{n-1}}{x^n(x^n+1)}\\). Put \\(t = x^n\\), so \\(dt = n\\,x^{n-1}\\,dx\\). Then \\(\\int \\frac{dx}{x(x^n+1)} = \\frac{1}{n}\\int \\frac{dt}{t(t+1)} = \\frac{1}{n}\\int\\left(\\frac{1}{t} - \\frac{1}{t+1}\\right)dt = \\frac{1}{n}\\log\\left|\\frac{t}{t+1}\\right| + C = \\frac{1}{n}\\log\\left|\\frac{x^n}{x^n+1}\\right| + C\\)."
+  },
+  {
+    "id": "fa4c25f5-598f-459c-bca8-7ccf239677cb",
+    "ref": "Ex 7.5 Q17",
+    "solution": "Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\). Then \\(\\int \\frac{\\cos x}{(1-\\sin x)(2-\\sin x)}\\,dx = \\int \\frac{dt}{(1-t)(2-t)}\\). Since \\(\\frac{1}{(1-t)(2-t)} = \\frac{1}{1-t} - \\frac{1}{2-t}\\), this equals \\(-\\log|1-t| + \\log|2-t| + C = \\log\\left|\\frac{2-\\sin x}{1-\\sin x}\\right| + C\\)."
+  },
+  {
+    "id": "ac9cd388-0d8a-4a98-896d-f4d597bf0cb7",
+    "ref": "Ex 7.5 Q18",
+    "solution": "The fraction is improper; since \\((x^2+1)(x^2+2)=x^4+3x^2+2\\) and \\((x^2+3)(x^2+4)=x^4+7x^2+12\\), dividing gives \\(1 + \\frac{-4x^2-10}{(x^2+3)(x^2+4)}\\). Writing \\(\\frac{-4x^2-10}{(x^2+3)(x^2+4)} = \\frac{A}{x^2+3} + \\frac{B}{x^2+4}\\) with \\(-4x^2-10 = A(x^2+4)+B(x^2+3)\\), put \\(x^2=-3\\): \\(A=2\\); \\(x^2=-4\\): \\(B=-6\\). Then \\(\\int \\frac{(x^2+1)(x^2+2)}{(x^2+3)(x^2+4)}\\,dx = \\int\\left(1 + \\frac{2}{x^2+3} - \\frac{6}{x^2+4}\\right)dx = x + \\frac{2}{\\sqrt{3}}\\tan^{-1}\\frac{x}{\\sqrt{3}} - 3\\tan^{-1}\\frac{x}{2} + C\\)."
+  },
+  {
+    "id": "450dcd15-ab10-48c2-b41e-e4e48bf409bd",
+    "ref": "Ex 7.5 Q19",
+    "solution": "Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\). Then \\(\\int \\frac{2x}{(x^2+1)(x^2+3)}\\,dx = \\int \\frac{dt}{(t+1)(t+3)}\\). Since \\(\\frac{1}{(t+1)(t+3)} = \\frac{1}{2}\\left(\\frac{1}{t+1} - \\frac{1}{t+3}\\right)\\), this equals \\(\\frac{1}{2}\\log\\left|\\frac{t+1}{t+3}\\right| + C = \\frac{1}{2}\\log\\left(\\frac{x^2+1}{x^2+3}\\right) + C\\)."
+  },
+  {
+    "id": "30d8816c-8c5c-44b4-b77b-8602df8ab700",
+    "ref": "Ex 7.5 Q20",
+    "solution": "Multiply numerator and denominator by \\(x^3\\): \\(\\frac{1}{x(x^4-1)} = \\frac{x^3}{x^4(x^4-1)}\\). Put \\(t = x^4\\), so \\(dt = 4x^3\\,dx\\). Then \\(\\int \\frac{dx}{x(x^4-1)} = \\frac{1}{4}\\int \\frac{dt}{t(t-1)} = \\frac{1}{4}\\int\\left(\\frac{1}{t-1} - \\frac{1}{t}\\right)dt = \\frac{1}{4}\\log\\left|\\frac{t-1}{t}\\right| + C = \\frac{1}{4}\\log\\left|\\frac{x^4-1}{x^4}\\right| + C\\)."
+  },
+  {
+    "id": "2b7257e0-f165-4516-919b-a852326dd903",
+    "ref": "Ex 7.5 Q21",
+    "solution": "Put \\(t = e^x\\), so \\(dt = e^x\\,dx\\) and \\(dx = \\frac{dt}{t}\\). Then \\(\\int \\frac{dx}{e^x-1} = \\int \\frac{dt}{t(t-1)} = \\int\\left(\\frac{1}{t-1} - \\frac{1}{t}\\right)dt = \\log|t-1| - \\log|t| + C = \\log\\left|\\frac{e^x-1}{e^x}\\right| + C = \\log|e^x-1| - x + C\\)."
+  },
+  {
+    "id": "fdeea9bb-9f91-47c8-b247-5befccab5791",
+    "ref": "Misc Q1",
+    "solution": "Write \\(\\frac{1}{x-x^3} = \\frac{1}{x(1-x)(1+x)} = \\frac{A}{x} + \\frac{B}{1-x} + \\frac{C}{1+x}\\), so \\(1 = A(1-x)(1+x) + Bx(1+x) + Cx(1-x)\\). Put \\(x=0\\): \\(A=1\\); \\(x=1\\): \\(1=2B\\Rightarrow B=\\tfrac{1}{2}\\); \\(x=-1\\): \\(1=-2C\\Rightarrow C=-\\tfrac{1}{2}\\). Then \\(\\int \\frac{dx}{x-x^3} = \\log|x| - \\frac{1}{2}\\log|1-x| - \\frac{1}{2}\\log|1+x| + C = \\log|x| - \\frac{1}{2}\\log|1-x^2| + C\\)."
+  },
+  {
+    "id": "1f71052d-bbca-47dd-a311-6818bd8fddce",
+    "ref": "Misc Q6",
+    "solution": "Let \\(\\frac{5x}{(x+1)(x^2+9)} = \\frac{A}{x+1} + \\frac{Bx+C}{x^2+9}\\), so \\(5x = A(x^2+9) + (Bx+C)(x+1)\\). Put \\(x=-1\\): \\(-5=10A\\Rightarrow A=-\\tfrac{1}{2}\\); comparing \\(x^2\\): \\(A+B=0\\Rightarrow B=\\tfrac{1}{2}\\); constant: \\(9A+C=0\\Rightarrow C=\\tfrac{9}{2}\\). Then \\(\\int \\frac{5x}{(x+1)(x^2+9)}\\,dx = -\\frac{1}{2}\\log|x+1| + \\frac{1}{4}\\log(x^2+9) + \\frac{3}{2}\\tan^{-1}\\frac{x}{3} + C\\)."
+  },
+  {
+    "id": "ac92d61a-57cc-4956-852d-1b50a2699fa1",
+    "ref": "Misc Q13",
+    "solution": "Put \\(t = e^x\\), so \\(dt = e^x\\,dx\\). Then \\(\\int \\frac{e^x}{(1+e^x)(2+e^x)}\\,dx = \\int \\frac{dt}{(1+t)(2+t)}\\). Since \\(\\frac{1}{(1+t)(2+t)} = \\frac{1}{1+t} - \\frac{1}{2+t}\\), this equals \\(\\log|1+t| - \\log|2+t| + C = \\log\\left(\\frac{1+e^x}{2+e^x}\\right) + C\\)."
+  },
+  {
+    "id": "913074f4-9880-41ac-a815-0a3419e15cf5",
+    "ref": "Misc Q14",
+    "solution": "Write \\(\\frac{1}{(x^2+1)(x^2+4)} = \\frac{A}{x^2+1} + \\frac{B}{x^2+4}\\), so \\(1 = A(x^2+4)+B(x^2+1)\\). Put \\(x^2=-1\\): \\(A=\\tfrac{1}{3}\\); \\(x^2=-4\\): \\(B=-\\tfrac{1}{3}\\). Then \\(\\int \\frac{dx}{(x^2+1)(x^2+4)} = \\frac{1}{3}\\tan^{-1}x - \\frac{1}{3}\\cdot\\frac{1}{2}\\tan^{-1}\\frac{x}{2} + C = \\frac{1}{3}\\tan^{-1}x - \\frac{1}{6}\\tan^{-1}\\frac{x}{2} + C\\)."
+  },
+  {
+    "id": "0c0b70c1-795d-4ac4-8de5-c7c4aaa38461",
+    "ref": "Misc Q21",
+    "solution": "Let \\(\\frac{x^2+x+1}{(x+1)^2(x+2)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+2}\\), so \\(x^2+x+1 = A(x+1)(x+2) + B(x+2) + C(x+1)^2\\). Put \\(x=-1\\): \\(1=B\\); \\(x=-2\\): \\(3=C\\); comparing \\(x^2\\): \\(A+C=1\\Rightarrow A=-2\\). Then \\(\\int \\frac{x^2+x+1}{(x+1)^2(x+2)}\\,dx = -2\\log|x+1| - \\frac{1}{x+1} + 3\\log|x+2| + C\\)."
+  },
+  {
+    "id": "45a58083-2019-4f77-8538-fbab47ec7bc6",
+    "ref": "Misc Q32",
+    "solution": "Write \\(\\frac{1}{x^2(x+1)} = \\frac{A}{x} + \\frac{B}{x^2} + \\frac{C}{x+1}\\), so \\(1 = Ax(x+1) + B(x+1) + Cx^2\\). Put \\(x=0\\): \\(B=1\\); \\(x=-1\\): \\(C=1\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=-1\\). Hence an antiderivative is \\(\\int \\frac{dx}{x^2(x+1)} = -\\log|x| - \\frac{1}{x} + \\log|x+1| = \\log\\left|\\frac{x+1}{x}\\right| - \\frac{1}{x}\\). Evaluating from \\(1\\) to \\(3\\): \\(\\left(\\log\\frac{4}{3} - \\frac{1}{3}\\right) - \\left(\\log 2 - 1\\right) = \\log\\frac{4}{6} + \\frac{2}{3} = \\frac{2}{3} + \\log\\frac{2}{3}\\), as required."
+  }
+]

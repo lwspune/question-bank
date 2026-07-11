@@ -18,7 +18,8 @@ export type ExamSlug =
   | "cds"
   | "foundation-course"
   | "neet"
-  | "mh-hsc-12";
+  | "mh-hsc-12"
+  | "cbse-12";
 
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
@@ -105,6 +106,15 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // textbook exercises/solved-examples corpus (board PYQs come later) → /browse defaults to Practice
     boardExam: true, // gets the /board reader + the "Board" nav tab
+  },
+  {
+    slug: "cbse-12",
+    displayName: "CBSE Class 12",
+    examName: "CBSE Class 12", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/cbse-12", // exam hub: "coming soon" until notes ship
+    practiceOnly: true, // NCERT textbook exercises/solved-examples corpus (CBSE PYQs later) → /browse defaults to Practice
+    boardExam: true, // NCERT is textbook content → gets the /board reader + the "Board" nav tab
   },
 ] as const;
 

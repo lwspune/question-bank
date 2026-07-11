@@ -1,0 +1,137 @@
+[
+  {
+    "id": "bfd9952b-642e-4615-8ab0-484c9cf0ac7a",
+    "ref": "Ex 7.6 Q1",
+    "solution": "By parts with \\(u = x\\), \\(dv = \\sin x\\,dx\\), so \\(du = dx\\), \\(v = -\\cos x\\). Then \\(\\int x \\sin x\\,dx = -x\\cos x + \\int \\cos x\\,dx = -x\\cos x + \\sin x + C\\)."
+  },
+  {
+    "id": "0cec0900-07e7-40ec-a6f8-cdb64d3fda19",
+    "ref": "Ex 7.6 Q2",
+    "solution": "By parts with \\(u = x\\), \\(dv = \\sin 3x\\,dx\\), so \\(v = -\\tfrac{1}{3}\\cos 3x\\). Then \\(\\int x \\sin 3x\\,dx = -\\tfrac{x}{3}\\cos 3x + \\tfrac{1}{3}\\int \\cos 3x\\,dx = -\\tfrac{x}{3}\\cos 3x + \\tfrac{1}{9}\\sin 3x + C\\)."
+  },
+  {
+    "id": "822bbc92-8249-4382-a74a-a7bffa3796e8",
+    "ref": "Ex 7.6 Q3",
+    "solution": "By parts with \\(u = x^2\\), \\(dv = e^x\\,dx\\): \\(\\int x^2 e^x\\,dx = x^2 e^x - 2\\int x e^x\\,dx\\). Since \\(\\int x e^x\\,dx = x e^x - e^x\\), we get \\(\\int x^2 e^x\\,dx = x^2 e^x - 2(x e^x - e^x) = e^x(x^2 - 2x + 2) + C\\)."
+  },
+  {
+    "id": "3a26fc7c-5089-42df-b6f7-0ec6d7a876ee",
+    "ref": "Ex 7.6 Q4",
+    "solution": "Take \\(u = \\log x\\) (ILATE), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\log x\\,dx = \\tfrac{x^2}{2}\\log x - \\int \\tfrac{x^2}{2}\\cdot\\tfrac{1}{x}\\,dx = \\tfrac{x^2}{2}\\log x - \\tfrac{1}{2}\\int x\\,dx = \\tfrac{x^2}{2}\\log x - \\tfrac{x^2}{4} + C\\)."
+  },
+  {
+    "id": "b8cfb2de-8bfc-4b95-b517-2b774f871f7e",
+    "ref": "Ex 7.6 Q5",
+    "solution": "Take \\(u = \\log 2x\\), \\(dv = x\\,dx\\), so \\(du = \\tfrac{1}{x}\\,dx\\), \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\log 2x\\,dx = \\tfrac{x^2}{2}\\log 2x - \\int \\tfrac{x^2}{2}\\cdot\\tfrac{1}{x}\\,dx = \\tfrac{x^2}{2}\\log 2x - \\tfrac{x^2}{4} + C\\)."
+  },
+  {
+    "id": "ad718908-d43c-48e4-be99-c8eaa39b5a6d",
+    "ref": "Ex 7.6 Q6",
+    "solution": "Take \\(u = \\log x\\), \\(dv = x^2\\,dx\\), so \\(v = \\tfrac{x^3}{3}\\). Then \\(\\int x^2 \\log x\\,dx = \\tfrac{x^3}{3}\\log x - \\int \\tfrac{x^3}{3}\\cdot\\tfrac{1}{x}\\,dx = \\tfrac{x^3}{3}\\log x - \\tfrac{1}{3}\\int x^2\\,dx = \\tfrac{x^3}{3}\\log x - \\tfrac{x^3}{9} + C\\)."
+  },
+  {
+    "id": "0fdb864f-5f04-44d0-bf63-bc9565755b74",
+    "ref": "Ex 7.6 Q7",
+    "solution": "Take \\(u = \\sin^{-1} x\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\sin^{-1} x\\,dx = \\tfrac{x^2}{2}\\sin^{-1} x - \\tfrac{1}{2}\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx\\). Writing \\(x^2 = 1-(1-x^2)\\), \\(\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx = \\sin^{-1} x - \\int \\sqrt{1-x^2}\\,dx = \\sin^{-1} x - \\big(\\tfrac{x}{2}\\sqrt{1-x^2} + \\tfrac{1}{2}\\sin^{-1} x\\big)\\). Hence \\(\\int x \\sin^{-1} x\\,dx = \\tfrac{2x^2-1}{4}\\sin^{-1} x + \\tfrac{x}{4}\\sqrt{1-x^2} + C\\)."
+  },
+  {
+    "id": "bf148284-7c68-4c8d-b3a9-9a4ab0a01e0a",
+    "ref": "Ex 7.6 Q8",
+    "solution": "Take \\(u = \\tan^{-1} x\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\tan^{-1} x\\,dx = \\tfrac{x^2}{2}\\tan^{-1} x - \\tfrac{1}{2}\\int \\tfrac{x^2}{1+x^2}\\,dx\\). Since \\(\\int \\tfrac{x^2}{1+x^2}\\,dx = \\int\\big(1 - \\tfrac{1}{1+x^2}\\big)dx = x - \\tan^{-1} x\\), we get \\(\\int x \\tan^{-1} x\\,dx = \\tfrac{1}{2}(x^2+1)\\tan^{-1} x - \\tfrac{x}{2} + C\\)."
+  },
+  {
+    "id": "bc364bb8-f7c0-4937-bd98-51c5b96f880e",
+    "ref": "Ex 7.6 Q9",
+    "solution": "Take \\(u = \\cos^{-1} x\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\), \\(du = -\\tfrac{1}{\\sqrt{1-x^2}}\\,dx\\). Then \\(\\int x \\cos^{-1} x\\,dx = \\tfrac{x^2}{2}\\cos^{-1} x + \\tfrac{1}{2}\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx\\). Using \\(\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx = \\tfrac{1}{2}\\sin^{-1} x - \\tfrac{x}{2}\\sqrt{1-x^2}\\), we get \\(\\int x \\cos^{-1} x\\,dx = \\tfrac{x^2}{2}\\cos^{-1} x + \\tfrac{1}{4}\\sin^{-1} x - \\tfrac{x}{4}\\sqrt{1-x^2} + C\\)."
+  },
+  {
+    "id": "156aea41-2b4e-4ac3-8955-fac7c2d56bb7",
+    "ref": "Ex 7.6 Q10",
+    "solution": "Take \\(u = (\\sin^{-1} x)^2\\), \\(dv = dx\\), \\(v = x\\): \\(\\int (\\sin^{-1} x)^2\\,dx = x(\\sin^{-1} x)^2 - 2\\int \\tfrac{x\\sin^{-1} x}{\\sqrt{1-x^2}}\\,dx\\). For the remaining integral take \\(u = \\sin^{-1} x\\), \\(dv = \\tfrac{x}{\\sqrt{1-x^2}}\\,dx\\), \\(v = -\\sqrt{1-x^2}\\): \\(\\int \\tfrac{x\\sin^{-1} x}{\\sqrt{1-x^2}}\\,dx = -\\sqrt{1-x^2}\\,\\sin^{-1} x + \\int 1\\,dx = -\\sqrt{1-x^2}\\,\\sin^{-1} x + x\\). Therefore \\(\\int (\\sin^{-1} x)^2\\,dx = x(\\sin^{-1} x)^2 + 2\\sqrt{1-x^2}\\,\\sin^{-1} x - 2x + C\\)."
+  },
+  {
+    "id": "64c85d62-22be-454e-ac68-e3461f8e6f2e",
+    "ref": "Ex 7.6 Q11",
+    "solution": "[Textbook answer-key error: NCERT key prints the last term as (+x); the correct antiderivative is (-x), verified by differentiation of (-sqrt{1-x^2}cos^{-1}x-x).] Take \\(u = \\cos^{-1} x\\), \\(dv = \\tfrac{x}{\\sqrt{1-x^2}}\\,dx\\), so \\(v = -\\sqrt{1-x^2}\\) and \\(du = -\\tfrac{1}{\\sqrt{1-x^2}}\\,dx\\). Then \\(\\int \\tfrac{x\\cos^{-1} x}{\\sqrt{1-x^2}}\\,dx = -\\sqrt{1-x^2}\\,\\cos^{-1} x - \\int \\big(-\\sqrt{1-x^2}\\big)\\big(-\\tfrac{1}{\\sqrt{1-x^2}}\\big)dx = -\\sqrt{1-x^2}\\,\\cos^{-1} x - \\int 1\\,dx = -\\sqrt{1-x^2}\\,\\cos^{-1} x - x + C\\)."
+  },
+  {
+    "id": "297a9eed-b2d8-4b42-bd15-be46ce856ed8",
+    "ref": "Ex 7.6 Q12",
+    "solution": "Take \\(u = x\\), \\(dv = \\sec^2 x\\,dx\\), so \\(v = \\tan x\\). Then \\(\\int x \\sec^2 x\\,dx = x\\tan x - \\int \\tan x\\,dx = x\\tan x - (-\\log|\\cos x|) = x\\tan x + \\log|\\cos x| + C\\)."
+  },
+  {
+    "id": "e85e57cd-e436-4e4e-87db-d5c73926b01c",
+    "ref": "Ex 7.6 Q13",
+    "solution": "Write \\(\\tan^{-1} x = 1\\cdot\\tan^{-1} x\\) and take \\(u = \\tan^{-1} x\\), \\(dv = dx\\), \\(v = x\\). Then \\(\\int \\tan^{-1} x\\,dx = x\\tan^{-1} x - \\int \\tfrac{x}{1+x^2}\\,dx = x\\tan^{-1} x - \\tfrac{1}{2}\\log(1+x^2) + C\\)."
+  },
+  {
+    "id": "a65d8028-026b-41fc-bfd8-106aa9cdc2d5",
+    "ref": "Ex 7.6 Q14",
+    "solution": "Take \\(u = (\\log x)^2\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\), \\(du = \\tfrac{2\\log x}{x}\\,dx\\). Then \\(\\int x(\\log x)^2\\,dx = \\tfrac{x^2}{2}(\\log x)^2 - \\int x \\log x\\,dx\\). Using \\(\\int x \\log x\\,dx = \\tfrac{x^2}{2}\\log x - \\tfrac{x^2}{4}\\), we get \\(\\int x(\\log x)^2\\,dx = \\tfrac{x^2}{2}(\\log x)^2 - \\tfrac{x^2}{2}\\log x + \\tfrac{x^2}{4} + C\\)."
+  },
+  {
+    "id": "23ebc6c9-a107-4337-9811-33ef80535c0e",
+    "ref": "Ex 7.6 Q15",
+    "solution": "Take \\(u = \\log x\\), \\(dv = (x^2+1)\\,dx\\), so \\(v = \\tfrac{x^3}{3} + x\\). Then \\(\\int (x^2+1)\\log x\\,dx = \\big(\\tfrac{x^3}{3} + x\\big)\\log x - \\int \\big(\\tfrac{x^3}{3} + x\\big)\\tfrac{1}{x}\\,dx = \\big(\\tfrac{x^3}{3} + x\\big)\\log x - \\int \\big(\\tfrac{x^2}{3} + 1\\big)dx = \\big(\\tfrac{x^3}{3} + x\\big)\\log x - \\tfrac{x^3}{9} - x + C\\)."
+  },
+  {
+    "id": "a92a670b-b524-4b58-8d55-6d111ddae4b4",
+    "ref": "Ex 7.6 Q16",
+    "solution": "This has the form \\(\\int e^x\\big[f(x) + f'(x)\\big]dx = e^x f(x) + C\\) with \\(f(x) = \\sin x\\), \\(f'(x) = \\cos x\\). Hence \\(\\int e^x(\\sin x + \\cos x)\\,dx = e^x \\sin x + C\\)."
+  },
+  {
+    "id": "e5a53642-c787-44bd-9e62-a381a15608cd",
+    "ref": "Ex 7.6 Q17",
+    "solution": "Write \\(\\tfrac{x}{(1+x)^2} = \\tfrac{(1+x)-1}{(1+x)^2} = \\tfrac{1}{1+x} - \\tfrac{1}{(1+x)^2}\\), so the integrand is \\(e^x\\big[f(x)+f'(x)\\big]\\) with \\(f(x) = \\tfrac{1}{1+x}\\), \\(f'(x) = -\\tfrac{1}{(1+x)^2}\\). Hence \\(\\int \\tfrac{x e^x}{(1+x)^2}\\,dx = \\tfrac{e^x}{1+x} + C\\)."
+  },
+  {
+    "id": "517a4fa5-c2fe-4355-87e5-63c5849cab25",
+    "ref": "Ex 7.6 Q18",
+    "solution": "Using \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\) and \\(1+\\sin x = 1 + 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\), \\(\\tfrac{1+\\sin x}{1+\\cos x} = \\tfrac{1}{2}\\sec^2\\tfrac{x}{2} + \\tan\\tfrac{x}{2}\\). So the integrand is \\(e^x\\big[f(x)+f'(x)\\big]\\) with \\(f(x) = \\tan\\tfrac{x}{2}\\), \\(f'(x) = \\tfrac{1}{2}\\sec^2\\tfrac{x}{2}\\). Hence \\(\\int e^x\\Big(\\tfrac{1+\\sin x}{1+\\cos x}\\Big)dx = e^x \\tan\\tfrac{x}{2} + C\\)."
+  },
+  {
+    "id": "2466f0a6-6fcd-4abb-939a-f3ad817a8ea4",
+    "ref": "Ex 7.6 Q19",
+    "solution": "This is \\(\\int e^x\\big[f(x) + f'(x)\\big]dx\\) with \\(f(x) = \\tfrac{1}{x}\\), \\(f'(x) = -\\tfrac{1}{x^2}\\). Hence \\(\\int e^x\\big(\\tfrac{1}{x} - \\tfrac{1}{x^2}\\big)dx = \\tfrac{e^x}{x} + C\\)."
+  },
+  {
+    "id": "31014dee-bd8b-4c23-ba46-660777c5fca5",
+    "ref": "Ex 7.6 Q20",
+    "solution": "Write \\(\\tfrac{x-3}{(x-1)^3} = \\tfrac{(x-1)-2}{(x-1)^3} = \\tfrac{1}{(x-1)^2} - \\tfrac{2}{(x-1)^3}\\), which is \\(f(x)+f'(x)\\) with \\(f(x) = \\tfrac{1}{(x-1)^2}\\), \\(f'(x) = -\\tfrac{2}{(x-1)^3}\\). Hence \\(\\int \\tfrac{(x-3)e^x}{(x-1)^3}\\,dx = \\tfrac{e^x}{(x-1)^2} + C\\)."
+  },
+  {
+    "id": "b09c643c-5eef-49d9-9eaa-733dac0f655b",
+    "ref": "Ex 7.6 Q21",
+    "solution": "Using \\(\\int e^{ax}\\sin bx\\,dx = \\tfrac{e^{ax}}{a^2+b^2}(a\\sin bx - b\\cos bx) + C\\) with \\(a = 2\\), \\(b = 1\\): \\(\\int e^{2x}\\sin x\\,dx = \\tfrac{e^{2x}}{5}(2\\sin x - \\cos x) + C\\)."
+  },
+  {
+    "id": "8a464ca9-2da9-485a-b628-117845eb5b13",
+    "ref": "Ex 7.6 Q22",
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\tfrac{2x}{1+x^2} = \\sin 2\\theta\\) and \\(\\sin^{-1}\\big(\\tfrac{2x}{1+x^2}\\big) = 2\\theta = 2\\tan^{-1} x\\) (for \\(-1\\le x\\le 1\\)). Then \\(\\int \\sin^{-1}\\big(\\tfrac{2x}{1+x^2}\\big)dx = 2\\int \\tan^{-1} x\\,dx = 2\\big(x\\tan^{-1} x - \\tfrac{1}{2}\\log(1+x^2)\\big) = 2x\\tan^{-1} x - \\log(1+x^2) + C\\)."
+  },
+  {
+    "id": "4a4f3eb0-7397-44a3-b489-4ad1d37c4074",
+    "ref": "Misc Q20",
+    "solution": "Using \\(1+\\cos 2x = 2\\cos^2 x\\) and \\(\\sin 2x = 2\\sin x\\cos x\\), \\(\\tfrac{2+\\sin 2x}{1+\\cos 2x} = \\tfrac{2 + 2\\sin x\\cos x}{2\\cos^2 x} = \\sec^2 x + \\tan x\\). So the integrand is \\(e^x\\big[f(x)+f'(x)\\big]\\) with \\(f(x) = \\tan x\\), \\(f'(x) = \\sec^2 x\\). Hence \\(\\int \\tfrac{2+\\sin 2x}{1+\\cos 2x}e^x\\,dx = e^x \\tan x + C\\)."
+  },
+  {
+    "id": "b3c69e3d-bc35-4942-9fca-3af33660b368",
+    "ref": "Misc Q22",
+    "solution": "Put \\(x = \\cos 2\\theta\\); then \\(\\tfrac{1-x}{1+x} = \\tfrac{1-\\cos 2\\theta}{1+\\cos 2\\theta} = \\tan^2\\theta\\), so \\(\\tan^{-1}\\sqrt{\\tfrac{1-x}{1+x}} = \\theta = \\tfrac{1}{2}\\cos^{-1} x\\). Thus \\(\\int \\tan^{-1}\\sqrt{\\tfrac{1-x}{1+x}}\\,dx = \\tfrac{1}{2}\\int \\cos^{-1} x\\,dx\\). Since \\(\\int \\cos^{-1} x\\,dx = x\\cos^{-1} x - \\sqrt{1-x^2}\\), the answer is \\(\\tfrac{1}{2}\\big(x\\cos^{-1} x - \\sqrt{1-x^2}\\big) + C\\)."
+  },
+  {
+    "id": "27c8d164-bde0-4044-9305-718eac9b6c3c",
+    "ref": "Misc Q24",
+    "solution": "Using \\(1-\\cos x = 2\\sin^2\\tfrac{x}{2}\\) and \\(1-\\sin x = 1 - 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\), \\(\\tfrac{1-\\sin x}{1-\\cos x} = \\tfrac{1}{2}\\operatorname{cosec}^2\\tfrac{x}{2} - \\cot\\tfrac{x}{2}\\), which is \\(f(x)+f'(x)\\) with \\(f(x) = -\\cot\\tfrac{x}{2}\\), \\(f'(x) = \\tfrac{1}{2}\\operatorname{cosec}^2\\tfrac{x}{2}\\). So \\(\\int e^x\\big(\\tfrac{1-\\sin x}{1-\\cos x}\\big)dx = -e^x\\cot\\tfrac{x}{2}\\). Evaluating, \\(\\int_{\\pi/2}^{\\pi} e^x\\big(\\tfrac{1-\\sin x}{1-\\cos x}\\big)dx = \\big[-e^x\\cot\\tfrac{x}{2}\\big]_{\\pi/2}^{\\pi} = -e^{\\pi}\\cot\\tfrac{\\pi}{2} + e^{\\pi/2}\\cot\\tfrac{\\pi}{4} = 0 + e^{\\pi/2} = e^{\\pi/2}\\)."
+  },
+  {
+    "id": "24c2214c-4255-4cbf-a76b-ff6cb56b4986",
+    "ref": "Misc Q33",
+    "solution": "By parts with \\(u = x\\), \\(dv = e^x\\,dx\\): \\(\\int x e^x\\,dx = x e^x - \\int e^x\\,dx = e^x(x-1)\\). Hence \\(\\int_{0}^{1} x e^x\\,dx = \\big[e^x(x-1)\\big]_{0}^{1} = e^1(0) - e^0(-1) = 0 - (-1) = 1\\), as required."
+  },
+  {
+    "id": "a503bf45-4560-4a15-97fb-ebb36d86afce",
+    "ref": "Misc Q37",
+    "solution": "By parts with \\(u = \\sin^{-1} x\\), \\(dv = dx\\), \\(v = x\\): \\(\\int \\sin^{-1} x\\,dx = x\\sin^{-1} x - \\int \\tfrac{x}{\\sqrt{1-x^2}}\\,dx = x\\sin^{-1} x + \\sqrt{1-x^2}\\). Hence \\(\\int_{0}^{1} \\sin^{-1} x\\,dx = \\big[x\\sin^{-1} x + \\sqrt{1-x^2}\\big]_{0}^{1} = \\big(1\\cdot\\tfrac{\\pi}{2} + 0\\big) - \\big(0 + 1\\big) = \\tfrac{\\pi}{2} - 1\\), as required."
+  }
+]

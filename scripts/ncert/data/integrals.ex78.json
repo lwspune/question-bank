@@ -1,0 +1,236 @@
+[
+  {
+    "ref": "7.8 Eg.25(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "context": "Evaluate the following integrals:",
+    "setLabel": "7.8 Eg.25",
+    "stem": "Evaluate \\(\\int_{2}^{3} x^{2}\\,dx\\).",
+    "solution": "Let \\(I = \\int_{2}^{3} x^{2}\\,dx\\). Since \\(\\int x^{2}\\,dx = \\frac{x^{3}}{3} = F(x)\\), therefore, by the second fundamental theorem, we get \\(I = F(3) - F(2) = \\frac{27}{3} - \\frac{8}{3} = \\frac{19}{3}\\)."
+  },
+  {
+    "ref": "7.8 Eg.25(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "HARD",
+    "context": "Evaluate the following integrals:",
+    "setLabel": "7.8 Eg.25",
+    "stem": "Evaluate \\(\\int_{4}^{9} \\frac{\\sqrt{x}}{\\left(30 - x^{\\frac{3}{2}}\\right)^{2}}\\,dx\\).",
+    "solution": "Let \\(I = \\int_{4}^{9} \\frac{\\sqrt{x}}{\\left(30 - x^{\\frac{3}{2}}\\right)^{2}}\\,dx\\). We first find the anti derivative of the integrand. Put \\(30 - x^{\\frac{3}{2}} = t\\). Then \\(-\\frac{3}{2}\\sqrt{x}\\,dx = dt\\) or \\(\\sqrt{x}\\,dx = -\\frac{2}{3}\\,dt\\). Thus, \\(\\int \\frac{\\sqrt{x}}{\\left(30 - x^{\\frac{3}{2}}\\right)^{2}}\\,dx = -\\frac{2}{3}\\int \\frac{dt}{t^{2}} = \\frac{2}{3}\\left[\\frac{1}{t}\\right] = \\frac{2}{3}\\left[\\frac{1}{30 - x^{\\frac{3}{2}}}\\right] = F(x)\\). Therefore, by the second fundamental theorem of calculus, we have \\(I = F(9) - F(4) = \\frac{2}{3}\\left[\\frac{1}{30 - x^{\\frac{3}{2}}}\\right]_{4}^{9} = \\frac{2}{3}\\left[\\frac{1}{(30 - 27)} - \\frac{1}{30 - 8}\\right] = \\frac{2}{3}\\left[\\frac{1}{3} - \\frac{1}{22}\\right] = \\frac{19}{99}\\)."
+  },
+  {
+    "ref": "7.8 Eg.25(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following integrals:",
+    "setLabel": "7.8 Eg.25",
+    "stem": "Evaluate \\(\\int_{1}^{2} \\frac{x\\,dx}{(x+1)(x+2)}\\).",
+    "solution": "Let \\(I = \\int_{1}^{2} \\frac{x\\,dx}{(x+1)(x+2)}\\). Using partial fraction, we get \\(\\frac{x}{(x+1)(x+2)} = \\frac{-1}{x+1} + \\frac{2}{x+2}\\). So \\(\\int \\frac{x\\,dx}{(x+1)(x+2)} = -\\log|x+1| + 2\\log|x+2| = F(x)\\). Therefore, by the second fundamental theorem of calculus, we have \\(I = F(2) - F(1) = [-\\log 3 + 2\\log 4] - [-\\log 2 + 2\\log 3] = -3\\log 3 + \\log 2 + 2\\log 4 = \\log\\left(\\frac{32}{27}\\right)\\)."
+  },
+  {
+    "ref": "7.8 Eg.25(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following integrals:",
+    "setLabel": "7.8 Eg.25",
+    "stem": "Evaluate \\(\\int_{0}^{\\frac{\\pi}{4}} \\sin^{3} 2t \\cos 2t \\,dt\\).",
+    "solution": "Let \\(I = \\int_{0}^{\\frac{\\pi}{4}} \\sin^{3} 2t \\cos 2t \\,dt\\). Consider \\(\\int \\sin^{3} 2t \\cos 2t \\,dt\\). Put \\(\\sin 2t = u\\) so that \\(2\\cos 2t\\,dt = du\\) or \\(\\cos 2t\\,dt = \\frac{1}{2}\\,du\\). So \\(\\int \\sin^{3} 2t \\cos 2t \\,dt = \\frac{1}{2}\\int u^{3}\\,du = \\frac{1}{8}[u^{4}] = \\frac{1}{8}\\sin^{4} 2t = F(t)\\) say. Therefore, by the second fundamental theorem of integral calculus, \\(I = F\\left(\\frac{\\pi}{4}\\right) - F(0) = \\frac{1}{8}\\left[\\sin^{4}\\frac{\\pi}{2} - \\sin^{4} 0\\right] = \\frac{1}{8}\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{-1}^{1} (x+1)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{2}^{3} \\frac{1}{x}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{1}^{2} (4x^{3} - 5x^{2} + 6x + 9)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\sin 2x \\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\cos 2x \\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{4}^{5} e^{x}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\tan x \\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{4}} \\operatorname{cosec} x \\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{dx}{\\sqrt{1 - x^{2}}}\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "EASY",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{dx}{1 + x^{2}}\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{2}^{3} \\frac{dx}{x^{2} - 1}\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\cos^{2} x \\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{2}^{3} \\frac{x\\,dx}{x^{2} + 1}\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{2x + 3}{5x^{2} + 1}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} x\\, e^{x^{2}}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "HARD",
+    "stem": "Evaluate the definite integral \\(\\int_{1}^{2} \\frac{5x^{2}}{x^{2} + 4x + 3}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} (2\\sec^{2} x + x^{3} + 2)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\pi} \\left(\\sin^{2}\\frac{x}{2} - \\cos^{2}\\frac{x}{2}\\right)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{2} \\frac{6x + 3}{x^{2} + 4}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\left(x\\, e^{x} + \\sin\\frac{\\pi x}{4}\\right)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.8 Q21",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int_{1}^{\\sqrt{3}} \\frac{dx}{1 + x^{2}}\\) equals",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{\\pi}{3}\\)"},
+      {"label": "B", "text": "\\(\\frac{2\\pi}{3}\\)"},
+      {"label": "C", "text": "\\(\\frac{\\pi}{6}\\)"},
+      {"label": "D", "text": "\\(\\frac{\\pi}{12}\\)"}
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex 7.8 Q22",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int_{0}^{\\frac{2}{3}} \\frac{dx}{4 + 9x^{2}}\\) equals",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{\\pi}{6}\\)"},
+      {"label": "B", "text": "\\(\\frac{\\pi}{12}\\)"},
+      {"label": "C", "text": "\\(\\frac{\\pi}{24}\\)"},
+      {"label": "D", "text": "\\(\\frac{\\pi}{4}\\)"}
+    ],
+    "answer": "C"
+  }
+]

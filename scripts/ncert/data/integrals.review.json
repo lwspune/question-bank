@@ -1,0 +1,2828 @@
+[
+  {
+    "ref": "7.1 Eg.1",
+    "format": "subjective",
+    "stem": "Write an anti derivative for each of the following functions using the method of inspection: (i) \\(\\cos 2x\\)  (ii) \\(3x^2 + 4x^3\\)  (iii) \\(\\dfrac{1}{x}\\), \\(x \\neq 0\\).",
+    "context": null,
+    "solution": "(i) We look for a function whose derivative is \\(\\cos 2x\\). Since \\(\\dfrac{d}{dx}\\sin 2x = 2\\cos 2x\\), we have \\(\\cos 2x = \\dfrac{1}{2}\\dfrac{d}{dx}(\\sin 2x) = \\dfrac{d}{dx}\\left(\\dfrac{1}{2}\\sin 2x\\right)\\). Therefore an anti derivative of \\(\\cos 2x\\) is \\(\\dfrac{1}{2}\\sin 2x\\).\n(ii) Note that \\(\\dfrac{d}{dx}\\left(x^3 + x^4\\right) = 3x^2 + 4x^3\\). Therefore an anti derivative of \\(3x^2 + 4x^3\\) is \\(x^3 + x^4\\).\n(iii) We know that \\(\\dfrac{d}{dx}(\\log x) = \\dfrac{1}{x}\\), \\(x > 0\\) and \\(\\dfrac{d}{dx}[\\log(-x)] = \\dfrac{1}{-x}(-1) = \\dfrac{1}{x}\\), \\(x < 0\\). Combining these, \\(\\dfrac{d}{dx}\\left(\\log|x|\\right) = \\dfrac{1}{x}\\), \\(x \\neq 0\\). Therefore \\(\\int \\dfrac{1}{x}\\,dx = \\log|x|\\) is one of the anti derivatives of \\(\\dfrac{1}{x}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.1 Eg.2",
+    "format": "subjective",
+    "stem": "Find the following integrals: (i) \\(\\int \\dfrac{x^3 - 1}{x^2}\\,dx\\)  (ii) \\(\\int \\left(x^{2/3} + 1\\right) dx\\)  (iii) \\(\\int \\left(x^{3/2} + 2e^x - \\dfrac{1}{x}\\right) dx\\).",
+    "context": null,
+    "solution": "(i) \\(\\int \\dfrac{x^3 - 1}{x^2}\\,dx = \\int x\\,dx - \\int x^{-2}\\,dx\\) (by Property V) \\(= \\dfrac{x^2}{2} - \\dfrac{x^{-1}}{-1} + C = \\dfrac{x^2}{2} + \\dfrac{1}{x} + C\\), where \\(C\\) is a constant of integration.\n(ii) \\(\\int \\left(x^{2/3} + 1\\right) dx = \\int x^{2/3}\\,dx + \\int dx = \\dfrac{x^{2/3 + 1}}{\\tfrac{2}{3} + 1} + x + C = \\dfrac{3}{5}x^{5/3} + x + C\\).\n(iii) \\(\\int \\left(x^{3/2} + 2e^x - \\dfrac{1}{x}\\right) dx = \\int x^{3/2}\\,dx + \\int 2e^x\\,dx - \\int \\dfrac{1}{x}\\,dx = \\dfrac{x^{3/2 + 1}}{\\tfrac{3}{2} + 1} + 2e^x - \\log|x| + C = \\dfrac{2}{5}x^{5/2} + 2e^x - \\log|x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.1 Eg.3",
+    "format": "subjective",
+    "stem": "Find the following integrals: (i) \\(\\int (\\sin x + \\cos x)\\,dx\\)  (ii) \\(\\int \\csc x\\,(\\csc x + \\cot x)\\,dx\\)  (iii) \\(\\int \\dfrac{1 - \\sin x}{\\cos^2 x}\\,dx\\).",
+    "context": null,
+    "solution": "(i) \\(\\int (\\sin x + \\cos x)\\,dx = \\int \\sin x\\,dx + \\int \\cos x\\,dx = -\\cos x + \\sin x + C\\).\n(ii) \\(\\int \\csc x\\,(\\csc x + \\cot x)\\,dx = \\int \\csc^2 x\\,dx + \\int \\csc x \\cot x\\,dx = -\\cot x - \\csc x + C\\).\n(iii) \\(\\int \\dfrac{1 - \\sin x}{\\cos^2 x}\\,dx = \\int \\dfrac{1}{\\cos^2 x}\\,dx - \\int \\dfrac{\\sin x}{\\cos^2 x}\\,dx = \\int \\sec^2 x\\,dx - \\int \\tan x \\sec x\\,dx = \\tan x - \\sec x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.1 Eg.4",
+    "format": "subjective",
+    "stem": "Find the anti derivative \\(F\\) of \\(f\\) defined by \\(f(x) = 4x^3 - 6\\), where \\(F(0) = 3\\).",
+    "context": null,
+    "solution": "One anti derivative of \\(f(x)\\) is \\(x^4 - 6x\\), since \\(\\dfrac{d}{dx}\\left(x^4 - 6x\\right) = 4x^3 - 6\\). Therefore the anti derivative \\(F\\) is given by \\(F(x) = x^4 - 6x + C\\), where \\(C\\) is a constant. Given \\(F(0) = 3\\), which gives \\(3 = 0 - 6 \\times 0 + C\\), or \\(C = 3\\). Hence the required anti derivative is the unique function \\(F\\) defined by \\(F(x) = x^4 - 6x + 3\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q1",
+    "format": "subjective",
+    "stem": "Find an anti derivative (or integral) of the following function by the method of inspection: \\(\\sin 2x\\).",
+    "context": null,
+    "solution": "Since \\(\\frac{d}{dx}(\\cos 2x) = -2\\sin 2x\\), an antiderivative of \\(\\sin 2x\\) is \\(-\\tfrac{1}{2}\\cos 2x\\). Thus \\(\\int \\sin 2x\\,dx = -\\frac{1}{2}\\cos 2x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q2",
+    "format": "subjective",
+    "stem": "Find an anti derivative (or integral) of the following function by the method of inspection: \\(\\cos 3x\\).",
+    "context": null,
+    "solution": "Since \\(\\frac{d}{dx}(\\sin 3x) = 3\\cos 3x\\), an antiderivative of \\(\\cos 3x\\) is \\(\\tfrac{1}{3}\\sin 3x\\). Thus \\(\\int \\cos 3x\\,dx = \\frac{1}{3}\\sin 3x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q3",
+    "format": "subjective",
+    "stem": "Find an anti derivative (or integral) of the following function by the method of inspection: \\(e^{2x}\\).",
+    "context": null,
+    "solution": "Since \\(\\frac{d}{dx}(e^{2x}) = 2e^{2x}\\), an antiderivative of \\(e^{2x}\\) is \\(\\tfrac{1}{2}e^{2x}\\). Thus \\(\\int e^{2x}\\,dx = \\frac{1}{2}e^{2x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q4",
+    "format": "subjective",
+    "stem": "Find an anti derivative (or integral) of the following function by the method of inspection: \\((ax + b)^2\\).",
+    "context": null,
+    "solution": "Note \\(\\frac{d}{dx}\\!\\left[(ax+b)^3\\right] = 3a(ax+b)^2\\), so an antiderivative of \\((ax+b)^2\\) is \\(\\frac{(ax+b)^3}{3a}\\). Thus \\(\\int (ax+b)^2\\,dx = \\frac{(ax+b)^3}{3a} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q5",
+    "format": "subjective",
+    "stem": "Find an anti derivative (or integral) of the following function by the method of inspection: \\(\\sin 2x - 4e^{3x}\\).",
+    "context": null,
+    "solution": "Integrate term by term: \\(\\int \\sin 2x\\,dx = -\\tfrac{1}{2}\\cos 2x\\) and \\(\\int e^{3x}\\,dx = \\tfrac{1}{3}e^{3x}\\). Hence \\(\\int (\\sin 2x - 4e^{3x})\\,dx = -\\frac{1}{2}\\cos 2x - \\frac{4}{3}e^{3x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q6",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\left(4e^{3x} + 1\\right) dx\\).",
+    "context": null,
+    "solution": "Integrate term by term: \\(\\int (4e^{3x} + 1)\\,dx = 4\\cdot\\tfrac{1}{3}e^{3x} + x = \\frac{4}{3}e^{3x} + x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q7",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int x^2 \\left(1 - \\dfrac{1}{x^2}\\right) dx\\).",
+    "context": null,
+    "solution": "Expand first: \\(x^2\\left(1 - \\frac{1}{x^2}\\right) = x^2 - 1\\). Then \\(\\int (x^2 - 1)\\,dx = \\frac{x^3}{3} - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q8",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\left(ax^2 + bx + c\\right) dx\\).",
+    "context": null,
+    "solution": "Integrate term by term: \\(\\int (ax^2 + bx + c)\\,dx = \\frac{ax^3}{3} + \\frac{bx^2}{2} + cx + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q9",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\left(2x^2 + e^x\\right) dx\\).",
+    "context": null,
+    "solution": "Integrate term by term: \\(\\int (2x^2 + e^x)\\,dx = \\frac{2x^3}{3} + e^x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q10",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\left(\\sqrt{x} - \\dfrac{1}{\\sqrt{x}}\\right)^2 dx\\).",
+    "context": null,
+    "solution": "Expand: \\(\\left(\\sqrt{x} - \\frac{1}{\\sqrt{x}}\\right)^2 = x - 2 + \\frac{1}{x}\\). Then \\(\\int \\left(x - 2 + \\frac{1}{x}\\right) dx = \\frac{x^2}{2} - 2x + \\log|x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q11",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\dfrac{x^3 + 5x^2 - 4}{x^2}\\,dx\\).",
+    "context": null,
+    "solution": "Divide through by \\(x^2\\): \\(\\frac{x^3 + 5x^2 - 4}{x^2} = x + 5 - 4x^{-2}\\). Then \\(\\int \\left(x + 5 - 4x^{-2}\\right) dx = \\frac{x^2}{2} + 5x + \\frac{4}{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q12",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\dfrac{x^3 + 3x + 4}{\\sqrt{x}}\\,dx\\).",
+    "context": null,
+    "solution": "Split each term over \\(\\sqrt{x}\\): \\(\\frac{x^3 + 3x + 4}{\\sqrt{x}} = x^{5/2} + 3x^{1/2} + 4x^{-1/2}\\). Then \\(\\int \\left(x^{5/2} + 3x^{1/2} + 4x^{-1/2}\\right) dx = \\frac{2}{7}x^{7/2} + 2x^{3/2} + 8\\sqrt{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q13",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\dfrac{x^3 - x^2 + x - 1}{x - 1}\\,dx\\).",
+    "context": null,
+    "solution": "Factor the numerator: \\(x^3 - x^2 + x - 1 = x^2(x-1) + (x-1) = (x-1)(x^2+1)\\). So \\(\\frac{x^3 - x^2 + x - 1}{x - 1} = x^2 + 1\\), and \\(\\int (x^2 + 1)\\,dx = \\frac{x^3}{3} + x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q14",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int (1 - x)\\sqrt{x}\\,dx\\).",
+    "context": null,
+    "solution": "Expand: \\((1 - x)\\sqrt{x} = x^{1/2} - x^{3/2}\\). Then \\(\\int \\left(x^{1/2} - x^{3/2}\\right) dx = \\frac{2}{3}x^{3/2} - \\frac{2}{5}x^{5/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q15",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\sqrt{x}\\left(3x^2 + 2x + 3\\right) dx\\).",
+    "context": null,
+    "solution": "Expand: \\(\\sqrt{x}\\,(3x^2 + 2x + 3) = 3x^{5/2} + 2x^{3/2} + 3x^{1/2}\\). Then \\(\\int \\left(3x^{5/2} + 2x^{3/2} + 3x^{1/2}\\right) dx = \\frac{6}{7}x^{7/2} + \\frac{4}{5}x^{5/2} + 2x^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q16",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\left(2x - 3\\cos x + e^x\\right) dx\\).",
+    "context": null,
+    "solution": "Integrate term by term: \\(\\int (2x - 3\\cos x + e^x)\\,dx = x^2 - 3\\sin x + e^x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q17",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\left(2x^2 - 3\\sin x + 5\\sqrt{x}\\right) dx\\).",
+    "context": null,
+    "solution": "Integrate term by term, using \\(\\int \\sqrt{x}\\,dx = \\tfrac{2}{3}x^{3/2}\\): \\(\\int (2x^2 - 3\\sin x + 5\\sqrt{x})\\,dx = \\frac{2x^3}{3} + 3\\cos x + \\frac{10}{3}x^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q18",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\sec x\\,(\\sec x + \\tan x)\\,dx\\).",
+    "context": null,
+    "solution": "Expand: \\(\\sec x\\,(\\sec x + \\tan x) = \\sec^2 x + \\sec x \\tan x\\). Since \\(\\int \\sec^2 x\\,dx = \\tan x\\) and \\(\\int \\sec x \\tan x\\,dx = \\sec x\\), we get \\(\\int \\sec x\\,(\\sec x + \\tan x)\\,dx = \\tan x + \\sec x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q19",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\dfrac{\\sec^2 x}{\\csc^2 x}\\,dx\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{\\sec^2 x}{\\csc^2 x} = \\sec^2 x \\cdot \\sin^2 x = \\frac{\\sin^2 x}{\\cos^2 x} = \\tan^2 x = \\sec^2 x - 1\\). Then \\(\\int (\\sec^2 x - 1)\\,dx = \\tan x - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q20",
+    "format": "subjective",
+    "stem": "Find the integral \\(\\int \\dfrac{2 - 3\\sin x}{\\cos^2 x}\\,dx\\).",
+    "context": null,
+    "solution": "Split: \\(\\frac{2 - 3\\sin x}{\\cos^2 x} = 2\\sec^2 x - 3\\,\\frac{\\sin x}{\\cos^2 x} = 2\\sec^2 x - 3\\sec x \\tan x\\). Then \\(\\int (2\\sec^2 x - 3\\sec x \\tan x)\\,dx = 2\\tan x - 3\\sec x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q21",
+    "format": "mcq",
+    "stem": "The anti derivative of \\(\\left(\\sqrt{x} + \\dfrac{1}{\\sqrt{x}}\\right)\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "C",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.1 Q22",
+    "format": "mcq",
+    "stem": "If \\(\\dfrac{d}{dx}f(x) = 4x^3 - \\dfrac{3}{x^4}\\) such that \\(f(2) = 0\\). Then \\(f(x)\\) is",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.28",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{-1}^{2} |x^3 - x|\\,dx\\).",
+    "context": null,
+    "solution": "We note that \\(x^3 - x \\ge 0\\) on \\([-1, 0]\\) and \\(x^3 - x \\le 0\\) on \\([0, 1]\\) and that \\(x^3 - x \\ge 0\\) on \\([1, 2]\\). So by \\(P_2\\) we write \\(\\int_{-1}^{2} |x^3 - x|\\,dx = \\int_{-1}^{0}(x^3 - x)\\,dx + \\int_{0}^{1} -(x^3 - x)\\,dx + \\int_{1}^{2}(x^3 - x)\\,dx = \\int_{-1}^{0}(x^3 - x)\\,dx + \\int_{0}^{1}(x - x^3)\\,dx + \\int_{1}^{2}(x^3 - x)\\,dx = \\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{-1}^{0} + \\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_{0}^{1} + \\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{1}^{2} = -\\left(\\frac{1}{4} - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) + (4 - 2) - \\left(\\frac{1}{4} - \\frac{1}{2}\\right) = -\\frac{1}{4} + \\frac{1}{2} + \\frac{1}{2} - \\frac{1}{4} + 2 - \\frac{1}{4} + \\frac{1}{2} = \\frac{3}{2} - \\frac{3}{4} + 2 = \\frac{11}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.29",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{-\\pi/4}^{\\pi/4} \\sin^2 x\\,dx\\).",
+    "context": null,
+    "solution": "We observe that \\(\\sin^2 x\\) is an even function. Therefore, by \\(P_7\\)(i), we get \\(\\int_{-\\pi/4}^{\\pi/4} \\sin^2 x\\,dx = 2\\int_{0}^{\\pi/4} \\sin^2 x\\,dx = 2\\int_{0}^{\\pi/4} \\frac{1 - \\cos 2x}{2}\\,dx = \\int_{0}^{\\pi/4}(1 - \\cos 2x)\\,dx = \\left[x - \\frac{1}{2}\\sin 2x\\right]_{0}^{\\pi/4} = \\left(\\frac{\\pi}{4} - \\frac{1}{2}\\sin \\frac{\\pi}{2}\\right) - 0 = \\frac{\\pi}{4} - \\frac{1}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.30",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi} \\frac{x \\sin x}{1 + \\cos^2 x}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi} \\frac{x \\sin x}{1 + \\cos^2 x}\\,dx\\). Then, by \\(P_4\\), we have \\(I = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\sin(\\pi - x)}{1 + \\cos^2(\\pi - x)}\\,dx = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\sin x}{1 + \\cos^2 x}\\,dx = \\pi\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx - I\\). Or \\(2I = \\pi\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx\\), or \\(I = \\frac{\\pi}{2}\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx\\). Put \\(\\cos x = t\\) so that \\(-\\sin x\\,dx = dt\\). When \\(x = 0\\), \\(t = 1\\) and when \\(x = \\pi\\), \\(t = -1\\). Therefore, (by \\(P_1\\)) we get \\(I = \\frac{-\\pi}{2}\\int_{1}^{-1} \\frac{dt}{1 + t^2} = \\frac{\\pi}{2}\\int_{-1}^{1} \\frac{dt}{1 + t^2} = \\pi\\int_{0}^{1} \\frac{dt}{1 + t^2}\\) (by \\(P_7\\), since \\(\\frac{1}{1+t^2}\\) is even function) \\(= \\pi\\left[\\tan^{-1} t\\right]_{0}^{1} = \\pi\\left[\\tan^{-1} 1 - \\tan^{-1} 0\\right] = \\pi\\left[\\frac{\\pi}{4} - 0\\right] = \\frac{\\pi^2}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.31",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{-1}^{1} \\sin^5 x \\cos^4 x\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{-1}^{1} \\sin^5 x \\cos^4 x\\,dx\\). Let \\(f(x) = \\sin^5 x \\cos^4 x\\). Then \\(f(-x) = \\sin^5(-x)\\cos^4(-x) = -\\sin^5 x \\cos^4 x = -f(x)\\), i.e., \\(f\\) is an odd function. Therefore, by \\(P_7\\)(ii), \\(I = 0\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.32",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi/2} \\frac{\\sin^4 x}{\\sin^4 x + \\cos^4 x}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\frac{\\sin^4 x}{\\sin^4 x + \\cos^4 x}\\,dx\\) ... (1). Then, by \\(P_4\\), \\(I = \\int_{0}^{\\pi/2} \\frac{\\sin^4\\left(\\frac{\\pi}{2} - x\\right)}{\\sin^4\\left(\\frac{\\pi}{2} - x\\right) + \\cos^4\\left(\\frac{\\pi}{2} - x\\right)}\\,dx = \\int_{0}^{\\pi/2} \\frac{\\cos^4 x}{\\cos^4 x + \\sin^4 x}\\,dx\\) ... (2). Adding (1) and (2), we get \\(2I = \\int_{0}^{\\pi/2} \\frac{\\sin^4 x + \\cos^4 x}{\\sin^4 x + \\cos^4 x}\\,dx = \\int_{0}^{\\pi/2} dx = [x]_{0}^{\\pi/2} = \\frac{\\pi}{2}\\). Hence \\(I = \\frac{\\pi}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.33",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{\\pi/6}^{\\pi/3} \\frac{dx}{1 + \\sqrt{\\tan x}}\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{\\pi/6}^{\\pi/3} \\frac{dx}{1 + \\sqrt{\\tan x}} = \\int_{\\pi/6}^{\\pi/3} \\frac{\\sqrt{\\cos x}\\,dx}{\\sqrt{\\cos x} + \\sqrt{\\sin x}}\\) ... (1). Then, by \\(P_3\\) (with \\(a + b = \\frac{\\pi}{6} + \\frac{\\pi}{3} = \\frac{\\pi}{2}\\)), \\(I = \\int_{\\pi/6}^{\\pi/3} \\frac{\\sqrt{\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6} - x\\right)}}{\\sqrt{\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6} - x\\right)} + \\sqrt{\\sin\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6} - x\\right)}}\\,dx = \\int_{\\pi/6}^{\\pi/3} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\) ... (2). Adding (1) and (2), we get \\(2I = \\int_{\\pi/6}^{\\pi/3} dx = [x]_{\\pi/6}^{\\pi/3} = \\frac{\\pi}{3} - \\frac{\\pi}{6} = \\frac{\\pi}{6}\\). Hence \\(I = \\frac{\\pi}{12}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.10 Eg.34",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi/2} \\log \\sin x\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\log \\sin x\\,dx\\). Then, by \\(P_4\\), \\(I = \\int_{0}^{\\pi/2} \\log \\sin\\left(\\frac{\\pi}{2} - x\\right)\\,dx = \\int_{0}^{\\pi/2} \\log \\cos x\\,dx\\). Adding the two values of I, we get \\(2I = \\int_{0}^{\\pi/2}(\\log \\sin x + \\log \\cos x)\\,dx = \\int_{0}^{\\pi/2}(\\log \\sin x \\cos x + \\log 2 - \\log 2)\\,dx\\) (by adding and subtracting \\(\\log 2\\)) \\(= \\int_{0}^{\\pi/2} \\log \\sin 2x\\,dx - \\int_{0}^{\\pi/2} \\log 2\\,dx\\). Put \\(2x = t\\) in the first integral. Then \\(2\\,dx = dt\\), when \\(x = 0\\), \\(t = 0\\) and when \\(x = \\frac{\\pi}{2}\\), \\(t = \\pi\\). Therefore \\(2I = \\frac{1}{2}\\int_{0}^{\\pi} \\log \\sin t\\,dt - \\frac{\\pi}{2}\\log 2 = \\frac{2}{2}\\int_{0}^{\\pi/2} \\log \\sin t\\,dt - \\frac{\\pi}{2}\\log 2\\) (by \\(P_6\\) as \\(\\sin(\\pi - t) = \\sin t\\)) \\(= \\int_{0}^{\\pi/2} \\log \\sin x\\,dx - \\frac{\\pi}{2}\\log 2\\) (by changing variable \\(t\\) to \\(x\\)) \\(= I - \\frac{\\pi}{2}\\log 2\\). Hence \\(\\int_{0}^{\\pi/2} \\log \\sin x\\,dx = \\frac{-\\pi}{2}\\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q1",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\cos^2 x\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\cos^2 x\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\), \\(I = \\int_{0}^{\\pi/2} \\cos^2\\!\\left(\\tfrac{\\pi}{2}-x\\right)dx = \\int_{0}^{\\pi/2} \\sin^2 x\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2}(\\cos^2 x + \\sin^2 x)\\,dx = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q2",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\). Using \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a = \\tfrac{\\pi}{2}\\) (so \\(\\sin x \\leftrightarrow \\cos x\\)), \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}}\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q3",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\sin^{3/2} x}{\\sin^{3/2} x + \\cos^{3/2} x}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sin^{3/2} x}{\\sin^{3/2} x + \\cos^{3/2} x}\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{2}-x\\) swaps \\(\\sin x \\leftrightarrow \\cos x\\), giving \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\cos^{3/2} x}{\\cos^{3/2} x + \\sin^{3/2} x}\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q4",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\cos^5 x}{\\sin^5 x + \\cos^5 x}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\cos^5 x}{\\sin^5 x + \\cos^5 x}\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{2}-x\\) swaps \\(\\sin x \\leftrightarrow \\cos x\\), giving \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sin^5 x}{\\cos^5 x + \\sin^5 x}\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q5",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{-5}^{5} |x + 2|\\,dx\\).",
+    "context": null,
+    "solution": "Split at the point where \\(x+2 = 0\\), i.e. \\(x = -2\\): \\(|x+2| = -(x+2)\\) on \\([-5,-2]\\) and \\(x+2\\) on \\([-2,5]\\). Then \\(\\int_{-5}^{5}|x+2|\\,dx = \\int_{-5}^{-2} -(x+2)\\,dx + \\int_{-2}^{5}(x+2)\\,dx\\). First \\(= -\\left[\\tfrac{x^2}{2}+2x\\right]_{-5}^{-2} = -\\big((-2)-(2.5)\\big) = \\tfrac{9}{2}\\); second \\(= \\left[\\tfrac{x^2}{2}+2x\\right]_{-2}^{5} = (22.5)-(-2) = \\tfrac{49}{2}\\). Sum \\(= \\tfrac{9}{2}+\\tfrac{49}{2} = 29\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q6",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{2}^{8} |x - 5|\\,dx\\).",
+    "context": null,
+    "solution": "Split at \\(x = 5\\): \\(|x-5| = 5-x\\) on \\([2,5]\\) and \\(x-5\\) on \\([5,8]\\). Then \\(\\int_{2}^{8}|x-5|\\,dx = \\int_{2}^{5}(5-x)\\,dx + \\int_{5}^{8}(x-5)\\,dx\\). First \\(= \\left[5x-\\tfrac{x^2}{2}\\right]_{2}^{5} = 12.5 - 8 = \\tfrac{9}{2}\\); second \\(= \\left[\\tfrac{x^2}{2}-5x\\right]_{5}^{8} = (-8)-(-12.5) = \\tfrac{9}{2}\\). Sum \\(= \\tfrac{9}{2}+\\tfrac{9}{2} = 9\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q7",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{1} x(1 - x)^n\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{1} x(1-x)^n\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a=1\\), \\(I = \\int_{0}^{1}(1-x)\\big(1-(1-x)\\big)^n dx = \\int_{0}^{1}(1-x)x^n\\,dx = \\int_{0}^{1}(x^n - x^{n+1})\\,dx\\). This gives \\(\\dfrac{1}{n+1} - \\dfrac{1}{n+2} = \\dfrac{1}{(n+1)(n+2)}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q8",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/4} \\log(1+\\tan x)\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{4}-x\\) and using \\(\\tan\\!\\left(\\tfrac{\\pi}{4}-x\\right) = \\dfrac{1-\\tan x}{1+\\tan x}\\), \\(1+\\tan\\!\\left(\\tfrac{\\pi}{4}-x\\right) = \\dfrac{2}{1+\\tan x}\\), so \\(I = \\int_{0}^{\\pi/4}\\big(\\log 2 - \\log(1+\\tan x)\\big)dx = \\tfrac{\\pi}{4}\\log 2 - I\\). Hence \\(2I = \\tfrac{\\pi}{4}\\log 2\\), so \\(I = \\dfrac{\\pi}{8}\\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q9",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{2} x\\sqrt{2 - x}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{2} x\\sqrt{2-x}\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a=2\\), \\(I = \\int_{0}^{2}(2-x)\\sqrt{x}\\,dx = \\int_{0}^{2}\\big(2x^{1/2} - x^{3/2}\\big)dx = \\left[\\tfrac{4}{3}x^{3/2} - \\tfrac{2}{5}x^{5/2}\\right]_{0}^{2}\\). With \\(2^{3/2}=2\\sqrt2,\\ 2^{5/2}=4\\sqrt2\\): \\(I = \\tfrac{8\\sqrt2}{3} - \\tfrac{8\\sqrt2}{5} = \\dfrac{16\\sqrt2}{15}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q10",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2}(2\\log \\sin x - \\log \\sin 2x)\\,dx\\).",
+    "context": null,
+    "solution": "Since \\(\\sin 2x = 2\\sin x\\cos x\\), the integrand is \\(2\\log\\sin x - \\log(2\\sin x\\cos x) = \\log\\sin x - \\log\\cos x - \\log 2 = \\log\\tan x - \\log 2\\). Thus \\(I = \\int_{0}^{\\pi/2}\\log\\tan x\\,dx - \\tfrac{\\pi}{2}\\log 2\\). By \\(x \\to \\tfrac{\\pi}{2}-x\\), \\(\\int_{0}^{\\pi/2}\\log\\tan x\\,dx = \\int_{0}^{\\pi/2}\\log\\cot x\\,dx = -\\int_{0}^{\\pi/2}\\log\\tan x\\,dx\\), so it equals \\(0\\). Hence \\(I = -\\dfrac{\\pi}{2}\\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q11",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{-\\pi/2}^{\\pi/2} \\sin^2 x\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\sin^2 x\\) is even, so \\(\\int_{-\\pi/2}^{\\pi/2}\\sin^2 x\\,dx = 2\\int_{0}^{\\pi/2}\\sin^2 x\\,dx\\). By the pairing \\(x \\to \\tfrac{\\pi}{2}-x\\), \\(\\int_{0}^{\\pi/2}\\sin^2 x\\,dx = \\int_{0}^{\\pi/2}\\cos^2 x\\,dx\\), and their sum is \\(\\tfrac{\\pi}{2}\\), so each is \\(\\tfrac{\\pi}{4}\\). Therefore the value is \\(2\\cdot\\tfrac{\\pi}{4} = \\dfrac{\\pi}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q12",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi} \\frac{x\\,dx}{1 + \\sin x}\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi}\\dfrac{x\\,dx}{1+\\sin x}\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a=\\pi\\) (and \\(\\sin(\\pi-x)=\\sin x\\)), \\(I = \\int_{0}^{\\pi}\\dfrac{\\pi-x}{1+\\sin x}\\,dx\\). Adding, \\(2I = \\pi\\int_{0}^{\\pi}\\dfrac{dx}{1+\\sin x}\\). Now \\(\\dfrac{1}{1+\\sin x} = \\dfrac{1-\\sin x}{\\cos^2 x} = \\sec^2 x - \\sec x\\tan x\\), whose antiderivative \\(\\tan x - \\sec x = -\\dfrac{\\cos x}{1+\\sin x}\\) gives \\(\\int_{0}^{\\pi}\\dfrac{dx}{1+\\sin x} = 1-(-1) = 2\\). Hence \\(2I = 2\\pi\\), so \\(I = \\pi\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q13",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{-\\pi/2}^{\\pi/2} \\sin^7 x\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\sin^7 x\\) is an odd function, since \\(\\sin^7(-x) = -\\sin^7 x\\). By \\(\\int_{-a}^{a} f(x)\\,dx = 0\\) for odd \\(f\\), \\(\\int_{-\\pi/2}^{\\pi/2}\\sin^7 x\\,dx = 0\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q14",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{2\\pi} \\cos^5 x\\,dx\\).",
+    "context": null,
+    "solution": "Using \\(\\int_{0}^{2a} f(x)\\,dx = 2\\int_{0}^{a} f(x)\\,dx\\) when \\(f(2a-x)=f(x)\\): here \\(a=\\pi\\) and \\(\\cos^5(2\\pi-x)=\\cos^5 x\\), so \\(\\int_{0}^{2\\pi}\\cos^5 x\\,dx = 2\\int_{0}^{\\pi}\\cos^5 x\\,dx\\). But by \\(x \\to \\pi-x\\), \\(\\cos^5(\\pi-x) = -\\cos^5 x\\), giving \\(\\int_{0}^{\\pi}\\cos^5 x\\,dx = -\\int_{0}^{\\pi}\\cos^5 x\\,dx = 0\\). Therefore \\(\\int_{0}^{2\\pi}\\cos^5 x\\,dx = 0\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q15",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\sin x - \\cos x}{1 + \\sin x \\cos x}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2}\\dfrac{\\sin x - \\cos x}{1+\\sin x\\cos x}\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{2}-x\\) swaps \\(\\sin x \\leftrightarrow \\cos x\\): the numerator becomes \\(\\cos x - \\sin x = -(\\sin x - \\cos x)\\) while the denominator \\(1+\\sin x\\cos x\\) is unchanged, so \\(I = -I\\). Hence \\(I = 0\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q16",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi} \\log(1 + \\cos x)\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi}\\log(1+\\cos x)\\,dx\\). By \\(x \\to \\pi-x\\), \\(\\cos(\\pi-x)=-\\cos x\\), so \\(I = \\int_{0}^{\\pi}\\log(1-\\cos x)\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi}\\log(1-\\cos^2 x)\\,dx = \\int_{0}^{\\pi}\\log(\\sin^2 x)\\,dx = 2\\int_{0}^{\\pi}\\log\\sin x\\,dx\\). Using the standard result \\(\\int_{0}^{\\pi}\\log\\sin x\\,dx = 2\\int_{0}^{\\pi/2}\\log\\sin x\\,dx = -\\pi\\log 2\\), we get \\(2I = -2\\pi\\log 2\\), so \\(I = -\\pi\\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q17",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{a} \\frac{\\sqrt{x}}{\\sqrt{x} + \\sqrt{a - x}}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{a}\\dfrac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{a-x}}\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\), \\(I = \\int_{0}^{a}\\dfrac{\\sqrt{a-x}}{\\sqrt{a-x}+\\sqrt{x}}\\,dx\\). Adding, \\(2I = \\int_{0}^{a} 1\\,dx = a\\), so \\(I = \\dfrac{a}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q18",
+    "format": "subjective",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{4} |x - 1|\\,dx\\).",
+    "context": null,
+    "solution": "Split at \\(x=1\\): \\(|x-1| = 1-x\\) on \\([0,1]\\) and \\(x-1\\) on \\([1,4]\\). Then \\(\\int_{0}^{4}|x-1|\\,dx = \\int_{0}^{1}(1-x)\\,dx + \\int_{1}^{4}(x-1)\\,dx\\). First \\(= \\left[x-\\tfrac{x^2}{2}\\right]_{0}^{1} = \\tfrac{1}{2}\\); second \\(= \\left[\\tfrac{x^2}{2}-x\\right]_{1}^{4} = 4-(-\\tfrac{1}{2}) = \\tfrac{9}{2}\\). Sum \\(= \\tfrac{1}{2}+\\tfrac{9}{2} = 5\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q19",
+    "format": "subjective",
+    "stem": "Show that \\(\\int_{0}^{a} f(x)g(x)\\,dx = 2\\int_{0}^{a} f(x)\\,dx\\), if \\(f\\) and \\(g\\) are defined as \\(f(x) = f(a - x)\\) and \\(g(x) + g(a - x) = 4\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{a} f(x)g(x)\\,dx\\). By \\(\\int_{0}^{a} h(x)\\,dx = \\int_{0}^{a} h(a-x)\\,dx\\), \\(I = \\int_{0}^{a} f(a-x)g(a-x)\\,dx\\). Since \\(f(a-x)=f(x)\\), \\(I = \\int_{0}^{a} f(x)g(a-x)\\,dx\\). Adding the two expressions, \\(2I = \\int_{0}^{a} f(x)\\big[g(x)+g(a-x)\\big]dx = \\int_{0}^{a} f(x)\\cdot 4\\,dx = 4\\int_{0}^{a} f(x)\\,dx\\). Hence \\(I = 2\\int_{0}^{a} f(x)\\,dx\\), as required.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q20",
+    "format": "mcq",
+    "stem": "The value of \\(\\int_{-\\pi/2}^{\\pi/2}(x^3 + x \\cos x + \\tan^5 x + 1)\\,dx\\) is",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "C",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.10 Q21",
+    "format": "mcq",
+    "stem": "The value of \\(\\int_{0}^{\\pi/2} \\log\\left(\\frac{4 + 3\\sin x}{4 + 3\\cos x}\\right)\\,dx\\) is",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "C",
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.5(i)",
+    "format": "subjective",
+    "stem": "\\(\\sin mx\\)",
+    "context": "Integrate the following functions w.r.t. \\(x\\):",
+    "solution": "We know that derivative of \\(mx\\) is \\(m\\). Thus, we make the substitution \\(mx = t\\) so that \\(m\\,dx = dt\\). Therefore, \\(\\int \\sin mx\\,dx = \\frac{1}{m}\\int \\sin t\\,dt = -\\frac{1}{m}\\cos t + C = -\\frac{1}{m}\\cos mx + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.5(ii)",
+    "format": "subjective",
+    "stem": "\\(2x \\sin (x^2 + 1)\\)",
+    "context": "Integrate the following functions w.r.t. \\(x\\):",
+    "solution": "Derivative of \\(x^2 + 1\\) is \\(2x\\). Thus, we use the substitution \\(x^2 + 1 = t\\) so that \\(2x\\,dx = dt\\). Therefore, \\(\\int 2x \\sin (x^2 + 1)\\,dx = \\int \\sin t\\,dt = -\\cos t + C = -\\cos (x^2 + 1) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.5(iii)",
+    "format": "subjective",
+    "stem": "\\(\\dfrac{\\tan^4 \\sqrt{x}\\, \\sec^2 \\sqrt{x}}{\\sqrt{x}}\\)",
+    "context": "Integrate the following functions w.r.t. \\(x\\):",
+    "solution": "Derivative of \\(\\sqrt{x}\\) is \\(\\frac{1}{2}x^{-\\frac{1}{2}} = \\frac{1}{2\\sqrt{x}}\\). Thus, we use the substitution \\(\\sqrt{x} = t\\) so that \\(\\frac{1}{2\\sqrt{x}}\\,dx = dt\\) giving \\(dx = 2t\\,dt\\). Thus, \\(\\int \\frac{\\tan^4 \\sqrt{x}\\, \\sec^2 \\sqrt{x}}{\\sqrt{x}}\\,dx = \\int \\frac{2t \\tan^4 t\\, \\sec^2 t\\,dt}{t} = 2\\int \\tan^4 t\\, \\sec^2 t\\,dt\\). Again, we make another substitution \\(\\tan t = u\\) so that \\(\\sec^2 t\\,dt = du\\). Therefore, \\(2\\int \\tan^4 t\\, \\sec^2 t\\,dt = 2\\int u^4\\,du = 2\\frac{u^5}{5} + C = \\frac{2}{5}\\tan^5 t + C\\) (since \\(u = \\tan t\\)) \\(= \\frac{2}{5}\\tan^5 \\sqrt{x} + C\\) (since \\(t = \\sqrt{x}\\)). Hence, \\(\\int \\frac{\\tan^4 \\sqrt{x}\\, \\sec^2 \\sqrt{x}}{\\sqrt{x}}\\,dx = \\frac{2}{5}\\tan^5 \\sqrt{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.5(iv)",
+    "format": "subjective",
+    "stem": "\\(\\dfrac{\\sin (\\tan^{-1} x)}{1 + x^2}\\)",
+    "context": "Integrate the following functions w.r.t. \\(x\\):",
+    "solution": "Derivative of \\(\\tan^{-1} x\\) is \\(\\frac{1}{1 + x^2}\\). Thus, we use the substitution \\(\\tan^{-1} x = t\\) so that \\(\\frac{dx}{1 + x^2} = dt\\). Therefore, \\(\\int \\frac{\\sin (\\tan^{-1} x)}{1 + x^2}\\,dx = \\int \\sin t\\,dt = -\\cos t + C = -\\cos (\\tan^{-1} x) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.6(i)",
+    "format": "subjective",
+    "stem": "\\(\\int \\sin^3 x \\cos^2 x\\,dx\\)",
+    "context": "Find the following integrals:",
+    "solution": "We have \\(\\int \\sin^3 x \\cos^2 x\\,dx = \\int \\sin^2 x \\cos^2 x (\\sin x)\\,dx = \\int (1 - \\cos^2 x)\\cos^2 x (\\sin x)\\,dx\\). Put \\(t = \\cos x\\) so that \\(dt = -\\sin x\\,dx\\). Therefore, \\(\\int \\sin^2 x \\cos^2 x (\\sin x)\\,dx = -\\int (1 - t^2) t^2\\,dt = -\\int (t^2 - t^4)\\,dt = -\\left(\\frac{t^3}{3} - \\frac{t^5}{5}\\right) + C = -\\frac{1}{3}\\cos^3 x + \\frac{1}{5}\\cos^5 x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.6(ii)",
+    "format": "subjective",
+    "stem": "\\(\\int \\dfrac{\\sin x}{\\sin (x + a)}\\,dx\\)",
+    "context": "Find the following integrals:",
+    "solution": "Put \\(x + a = t\\). Then \\(dx = dt\\). Therefore, \\(\\int \\frac{\\sin x}{\\sin (x + a)}\\,dx = \\int \\frac{\\sin (t - a)}{\\sin t}\\,dt = \\int \\frac{\\sin t \\cos a - \\cos t \\sin a}{\\sin t}\\,dt = \\cos a \\int dt - \\sin a \\int \\cot t\\,dt = (\\cos a)\\,t - (\\sin a)\\left[\\log |\\sin t| + C_1\\right] = (\\cos a)(x + a) - (\\sin a)\\left[\\log |\\sin (x + a)| + C_1\\right] = x \\cos a + a \\cos a - (\\sin a)\\log |\\sin (x + a)| - C_1 \\sin a\\). Hence, \\(\\int \\frac{\\sin x}{\\sin (x + a)}\\,dx = x \\cos a - \\sin a \\log |\\sin (x + a)| + C\\), where \\(C = -C_1 \\sin a + a \\cos a\\), is another arbitrary constant.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.2 Eg.6(iii)",
+    "format": "subjective",
+    "stem": "\\(\\int \\dfrac{1}{1 + \\tan x}\\,dx\\)",
+    "context": "Find the following integrals:",
+    "solution": "\\(\\int \\frac{dx}{1 + \\tan x} = \\int \\frac{\\cos x\\,dx}{\\cos x + \\sin x} = \\frac{1}{2}\\int \\frac{(\\cos x + \\sin x + \\cos x - \\sin x)\\,dx}{\\cos x + \\sin x} = \\frac{1}{2}\\int dx + \\frac{1}{2}\\int \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\,dx = \\frac{x}{2} + \\frac{C_1}{2} + \\frac{1}{2}\\int \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\,dx\\) ...(1). Now, consider \\(I = \\int \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\,dx\\). Put \\(\\cos x + \\sin x = t\\) so that \\((\\cos x - \\sin x)\\,dx = dt\\). Therefore \\(I = \\int \\frac{dt}{t} = \\log |t| + C_2 = \\log |\\cos x + \\sin x| + C_2\\). Putting it in (1), we get \\(\\int \\frac{dx}{1 + \\tan x} = \\frac{x}{2} + \\frac{1}{2}\\log |\\cos x + \\sin x| + C\\), where \\(C = \\frac{C_1}{2} + \\frac{C_2}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q1",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{2x}{1 + x^2}\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + x^2\\), so \\(dt = 2x\\,dx\\). Then \\(\\int \\frac{2x}{1 + x^2}\\,dx = \\int \\frac{dt}{t} = \\log|t| + C = \\log(1 + x^2) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q2",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{(\\log x)^2}{x}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{(\\log x)^2}{x}\\,dx = \\int t^2\\,dt = \\frac{t^3}{3} + C = \\frac{(\\log x)^3}{3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q3",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{1}{x + x \\log x}\\).",
+    "context": null,
+    "solution": "Write \\(x + x\\log x = x(1 + \\log x)\\). Put \\(t = 1 + \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{1}{x(1 + \\log x)}\\,dx = \\int \\frac{dt}{t} = \\log|t| + C = \\log|1 + \\log x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q4",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sin x \\sin (\\cos x)\\).",
+    "context": null,
+    "solution": "Put \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\sin x\\,\\sin(\\cos x)\\,dx = -\\int \\sin t\\,dt = \\cos t + C = \\cos(\\cos x) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q5",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sin (ax + b) \\cos (ax + b)\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sin(ax + b)\\), so \\(dt = a\\cos(ax + b)\\,dx\\). Then \\(\\int \\sin(ax + b)\\cos(ax + b)\\,dx = \\frac{1}{a}\\int t\\,dt = \\frac{t^2}{2a} + C = \\frac{\\sin^2(ax + b)}{2a} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q6",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{ax + b}\\).",
+    "context": null,
+    "solution": "Put \\(t = ax + b\\), so \\(dt = a\\,dx\\). Then \\(\\int \\sqrt{ax + b}\\,dx = \\frac{1}{a}\\int t^{1/2}\\,dt = \\frac{1}{a}\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{2}{3a}(ax + b)^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q7",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\sqrt{x + 2}\\).",
+    "context": null,
+    "solution": "Put \\(t = x + 2\\), so \\(x = t - 2\\) and \\(dx = dt\\). Then \\(\\int x\\sqrt{x + 2}\\,dx = \\int (t - 2)t^{1/2}\\,dt = \\int (t^{3/2} - 2t^{1/2})\\,dt = \\frac{2}{5}t^{5/2} - \\frac{4}{3}t^{3/2} + C = \\frac{2}{5}(x + 2)^{5/2} - \\frac{4}{3}(x + 2)^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q8",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\sqrt{1 + 2x^2}\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + 2x^2\\), so \\(dt = 4x\\,dx\\). Then \\(\\int x\\sqrt{1 + 2x^2}\\,dx = \\frac{1}{4}\\int t^{1/2}\\,dt = \\frac{1}{4}\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{1}{6}(1 + 2x^2)^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q9",
+    "format": "subjective",
+    "stem": "Integrate the function \\((4x + 2) \\sqrt{x^2 + x + 1}\\).",
+    "context": null,
+    "solution": "Note \\(4x + 2 = 2(2x + 1)\\) and \\(\\frac{d}{dx}(x^2 + x + 1) = 2x + 1\\). Put \\(t = x^2 + x + 1\\), so \\(dt = (2x + 1)\\,dx\\). Then \\(\\int (4x + 2)\\sqrt{x^2 + x + 1}\\,dx = 2\\int \\sqrt{t}\\,dt = 2\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{4}{3}(x^2 + x + 1)^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q10",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{1}{x - \\sqrt{x}}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sqrt{x}\\), so \\(x = t^2\\) and \\(dx = 2t\\,dt\\). Then \\(\\int \\frac{dx}{x - \\sqrt{x}} = \\int \\frac{2t\\,dt}{t^2 - t} = \\int \\frac{2t\\,dt}{t(t - 1)} = \\int \\frac{2}{t - 1}\\,dt = 2\\log|t - 1| + C = 2\\log|\\sqrt{x} - 1| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q11",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x}{\\sqrt{x + 4}},\\ x > 0\\).",
+    "context": null,
+    "solution": "Put \\(t = x + 4\\), so \\(x = t - 4\\) and \\(dx = dt\\). Then \\(\\int \\frac{x}{\\sqrt{x + 4}}\\,dx = \\int \\frac{t - 4}{\\sqrt{t}}\\,dt = \\int (t^{1/2} - 4t^{-1/2})\\,dt = \\frac{2}{3}t^{3/2} - 8t^{1/2} + C = \\frac{2}{3}(x + 4)^{3/2} - 8\\sqrt{x + 4} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q12",
+    "format": "subjective",
+    "stem": "Integrate the function \\((x^3 - 1)^{\\frac{1}{3}} x^5\\).",
+    "context": null,
+    "solution": "Put \\(t = x^3 - 1\\), so \\(x^3 = t + 1\\) and \\(dt = 3x^2\\,dx\\). Write \\(x^5\\,dx = x^3\\cdot x^2\\,dx = (t + 1)\\cdot\\frac{dt}{3}\\). Then \\(\\int (x^3 - 1)^{1/3}x^5\\,dx = \\frac{1}{3}\\int t^{1/3}(t + 1)\\,dt = \\frac{1}{3}\\int (t^{4/3} + t^{1/3})\\,dt = \\frac{1}{3}\\left(\\frac{3}{7}t^{7/3} + \\frac{3}{4}t^{4/3}\\right) + C = \\frac{1}{7}(x^3 - 1)^{7/3} + \\frac{1}{4}(x^3 - 1)^{4/3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q13",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x^2}{(2 + 3x^3)^3}\\).",
+    "context": null,
+    "solution": "Put \\(t = 2 + 3x^3\\), so \\(dt = 9x^2\\,dx\\). Then \\(\\int \\frac{x^2}{(2 + 3x^3)^3}\\,dx = \\frac{1}{9}\\int t^{-3}\\,dt = \\frac{1}{9}\\cdot\\frac{t^{-2}}{-2} + C = -\\frac{1}{18(2 + 3x^3)^2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q14",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{1}{x (\\log x)^m},\\ x > 0,\\ m \\ne 1\\).",
+    "context": null,
+    "solution": "Put \\(t = \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{dx}{x(\\log x)^m} = \\int t^{-m}\\,dt = \\frac{t^{1 - m}}{1 - m} + C = \\frac{(\\log x)^{1 - m}}{1 - m} + C\\) (for \\(m \\ne 1\\)).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q15",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x}{9 - 4x^2}\\).",
+    "context": null,
+    "solution": "Put \\(t = 9 - 4x^2\\), so \\(dt = -8x\\,dx\\). Then \\(\\int \\frac{x}{9 - 4x^2}\\,dx = -\\frac{1}{8}\\int \\frac{dt}{t} = -\\frac{1}{8}\\log|t| + C = -\\frac{1}{8}\\log|9 - 4x^2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q16",
+    "format": "subjective",
+    "stem": "Integrate the function \\(e^{2x + 3}\\).",
+    "context": null,
+    "solution": "Put \\(t = 2x + 3\\), so \\(dt = 2\\,dx\\). Then \\(\\int e^{2x + 3}\\,dx = \\frac{1}{2}\\int e^t\\,dt = \\frac{1}{2}e^{2x + 3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q17",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x}{e^{x^2}}\\).",
+    "context": null,
+    "solution": "The integrand is \\(x e^{-x^2}\\). Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\). Then \\(\\int \\frac{x}{e^{x^2}}\\,dx = \\int x e^{-x^2}\\,dx = \\frac{1}{2}\\int e^{-t}\\,dt = -\\frac{1}{2}e^{-t} + C = -\\frac{1}{2}e^{-x^2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q18",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{e^{\\tan^{-1} x}}{1 + x^2}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\tan^{-1} x\\), so \\(dt = \\frac{dx}{1 + x^2}\\). Then \\(\\int \\frac{e^{\\tan^{-1} x}}{1 + x^2}\\,dx = \\int e^t\\,dt = e^t + C = e^{\\tan^{-1} x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q19",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{e^{2x} - 1}{e^{2x} + 1}\\).",
+    "context": null,
+    "solution": "Divide numerator and denominator by \\(e^x\\): \\(\\frac{e^{2x} - 1}{e^{2x} + 1} = \\frac{e^x - e^{-x}}{e^x + e^{-x}}\\). Put \\(t = e^x + e^{-x}\\), so \\(dt = (e^x - e^{-x})\\,dx\\). Then the integral \\(= \\int \\frac{dt}{t} = \\log|t| + C = \\log(e^x + e^{-x}) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q20",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{e^{2x} - e^{-2x}}{e^{2x} + e^{-2x}}\\).",
+    "context": null,
+    "solution": "Put \\(t = e^{2x} + e^{-2x}\\), so \\(dt = 2(e^{2x} - e^{-2x})\\,dx\\). Then \\(\\int \\frac{e^{2x} - e^{-2x}}{e^{2x} + e^{-2x}}\\,dx = \\frac{1}{2}\\int \\frac{dt}{t} = \\frac{1}{2}\\log|t| + C = \\frac{1}{2}\\log(e^{2x} + e^{-2x}) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q21",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\tan^2 (2x - 3)\\).",
+    "context": null,
+    "solution": "Use \\(\\tan^2\\theta = \\sec^2\\theta - 1\\): \\(\\int \\tan^2(2x - 3)\\,dx = \\int \\left(\\sec^2(2x - 3) - 1\\right)dx = \\frac{1}{2}\\tan(2x - 3) - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q22",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sec^2 (7 - 4x)\\).",
+    "context": null,
+    "solution": "Put \\(t = 7 - 4x\\), so \\(dt = -4\\,dx\\). Then \\(\\int \\sec^2(7 - 4x)\\,dx = -\\frac{1}{4}\\int \\sec^2 t\\,dt = -\\frac{1}{4}\\tan t + C = -\\frac{1}{4}\\tan(7 - 4x) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q23",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{\\sin^{-1} x}{\\sqrt{1 - x^2}}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sin^{-1} x\\), so \\(dt = \\frac{dx}{\\sqrt{1 - x^2}}\\). Then \\(\\int \\frac{\\sin^{-1} x}{\\sqrt{1 - x^2}}\\,dx = \\int t\\,dt = \\frac{t^2}{2} + C = \\frac{(\\sin^{-1} x)^2}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q24",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{2 \\cos x - 3 \\sin x}{6 \\cos x + 4 \\sin x}\\).",
+    "context": null,
+    "solution": "Observe \\(\\frac{d}{dx}(6\\cos x + 4\\sin x) = -6\\sin x + 4\\cos x = 2(2\\cos x - 3\\sin x)\\). Put \\(t = 6\\cos x + 4\\sin x\\), so \\(dt = 2(2\\cos x - 3\\sin x)\\,dx\\). Then \\(\\int \\frac{2\\cos x - 3\\sin x}{6\\cos x + 4\\sin x}\\,dx = \\frac{1}{2}\\int \\frac{dt}{t} = \\frac{1}{2}\\log|t| + C = \\frac{1}{2}\\log|6\\cos x + 4\\sin x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q25",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{1}{\\cos^2 x (1 - \\tan x)^2}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{1}{\\cos^2 x(1 - \\tan x)^2} = \\frac{\\sec^2 x}{(1 - \\tan x)^2}\\). Put \\(t = 1 - \\tan x\\), so \\(dt = -\\sec^2 x\\,dx\\). Then the integral \\(= -\\int \\frac{dt}{t^2} = \\frac{1}{t} + C = \\frac{1}{1 - \\tan x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q26",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{\\cos \\sqrt{x}}{\\sqrt{x}}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sqrt{x}\\), so \\(dt = \\frac{1}{2\\sqrt{x}}\\,dx\\), i.e. \\(\\frac{dx}{\\sqrt{x}} = 2\\,dt\\). Then \\(\\int \\frac{\\cos\\sqrt{x}}{\\sqrt{x}}\\,dx = 2\\int \\cos t\\,dt = 2\\sin t + C = 2\\sin\\sqrt{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q27",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{\\sin 2x}\\, \\cos 2x\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sin 2x\\), so \\(dt = 2\\cos 2x\\,dx\\). Then \\(\\int \\sqrt{\\sin 2x}\\,\\cos 2x\\,dx = \\frac{1}{2}\\int t^{1/2}\\,dt = \\frac{1}{2}\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{1}{3}(\\sin 2x)^{3/2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q28",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{\\cos x}{\\sqrt{1 + \\sin x}}\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + \\sin x\\), so \\(dt = \\cos x\\,dx\\). Then \\(\\int \\frac{\\cos x}{\\sqrt{1 + \\sin x}}\\,dx = \\int \\frac{dt}{\\sqrt{t}} = 2\\sqrt{t} + C = 2\\sqrt{1 + \\sin x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q29",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\cot x \\log \\sin x\\).",
+    "context": null,
+    "solution": "Put \\(t = \\log\\sin x\\), so \\(dt = \\frac{\\cos x}{\\sin x}\\,dx = \\cot x\\,dx\\). Then \\(\\int \\cot x\\,\\log\\sin x\\,dx = \\int t\\,dt = \\frac{t^2}{2} + C = \\frac{(\\log\\sin x)^2}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q30",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{\\sin x}{1 + \\cos x}\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\frac{\\sin x}{1 + \\cos x}\\,dx = -\\int \\frac{dt}{t} = -\\log|t| + C = -\\log|1 + \\cos x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q31",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{\\sin x}{(1 + \\cos x)^2}\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\frac{\\sin x}{(1 + \\cos x)^2}\\,dx = -\\int \\frac{dt}{t^2} = \\frac{1}{t} + C = \\frac{1}{1 + \\cos x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q32",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{1}{1 + \\cot x}\\).",
+    "context": null,
+    "solution": "\\(\\frac{1}{1 + \\cot x} = \\frac{\\sin x}{\\sin x + \\cos x}\\). Let \\(I = \\int \\frac{\\sin x}{\\sin x + \\cos x}\\,dx\\) and \\(J = \\int \\frac{\\cos x}{\\sin x + \\cos x}\\,dx\\). Then \\(I + J = \\int 1\\,dx = x\\) and \\(J - I = \\int \\frac{\\cos x - \\sin x}{\\sin x + \\cos x}\\,dx = \\log|\\sin x + \\cos x|\\). Subtracting, \\(2I = x - \\log|\\sin x + \\cos x|\\), so \\(I = \\frac{1}{2}\\left(x - \\log|\\sin x + \\cos x|\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q33",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{1}{1 - \\tan x}\\).",
+    "context": null,
+    "solution": "\\(\\frac{1}{1 - \\tan x} = \\frac{\\cos x}{\\cos x - \\sin x}\\). Let \\(I = \\int \\frac{\\cos x}{\\cos x - \\sin x}\\,dx\\) and \\(J = \\int \\frac{\\sin x}{\\cos x - \\sin x}\\,dx\\). Then \\(I - J = \\int 1\\,dx = x\\) and \\(I + J = \\int \\frac{\\cos x + \\sin x}{\\cos x - \\sin x}\\,dx = -\\log|\\cos x - \\sin x|\\) (since \\(\\frac{d}{dx}(\\cos x - \\sin x) = -(\\cos x + \\sin x)\\)). Adding, \\(2I = x - \\log|\\cos x - \\sin x|\\), so \\(I = \\frac{1}{2}\\left(x - \\log|\\cos x - \\sin x|\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q34",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{\\sqrt{\\tan x}}{\\sin x \\cos x}\\).",
+    "context": null,
+    "solution": "Write \\(\\sin x\\cos x = \\cos^2 x\\,\\tan x\\), so \\(\\frac{\\sqrt{\\tan x}}{\\sin x\\cos x} = \\frac{\\sqrt{\\tan x}}{\\cos^2 x\\,\\tan x} = \\frac{\\sec^2 x}{\\sqrt{\\tan x}}\\). Put \\(t = \\tan x\\), so \\(dt = \\sec^2 x\\,dx\\). Then the integral \\(= \\int \\frac{dt}{\\sqrt{t}} = 2\\sqrt{t} + C = 2\\sqrt{\\tan x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q35",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{(1 + \\log x)^2}{x}\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{(1 + \\log x)^2}{x}\\,dx = \\int t^2\\,dt = \\frac{t^3}{3} + C = \\frac{(1 + \\log x)^3}{3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q36",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{(x + 1)(x + \\log x)^2}{x}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{(x + 1)(x + \\log x)^2}{x} = (x + \\log x)^2\\left(1 + \\frac{1}{x}\\right)\\). Put \\(t = x + \\log x\\), so \\(dt = \\left(1 + \\frac{1}{x}\\right)dx\\). Then the integral \\(= \\int t^2\\,dt = \\frac{t^3}{3} + C = \\frac{(x + \\log x)^3}{3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q37",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x^3 \\sin (\\tan^{-1} x^4)}{1 + x^8}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\tan^{-1}(x^4)\\), so \\(dt = \\frac{4x^3}{1 + x^8}\\,dx\\), i.e. \\(\\frac{x^3}{1 + x^8}\\,dx = \\frac{dt}{4}\\). Then \\(\\int \\frac{x^3\\sin(\\tan^{-1} x^4)}{1 + x^8}\\,dx = \\frac{1}{4}\\int \\sin t\\,dt = -\\frac{1}{4}\\cos t + C = -\\frac{1}{4}\\cos(\\tan^{-1} x^4) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q38",
+    "format": "mcq",
+    "stem": "\\(\\displaystyle\\int \\dfrac{10x^9 + 10^x \\log_e 10}{x^{10} + 10^x}\\,dx\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "D",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.2 Q39",
+    "format": "mcq",
+    "stem": "\\(\\displaystyle\\int \\dfrac{dx}{\\sin^2 x \\cos^2 x}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "7.3 Eg.7(i)",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\cos^2 x\\,dx\\).",
+    "context": "Find the following integrals.",
+    "solution": "Recall the identity \\(\\cos 2x = 2\\cos^2 x - 1\\), which gives \\(\\cos^2 x = \\dfrac{1+\\cos 2x}{2}\\). Therefore \\(\\int \\cos^2 x\\,dx = \\dfrac{1}{2}\\int (1+\\cos 2x)\\,dx = \\dfrac{1}{2}\\int dx + \\dfrac{1}{2}\\int \\cos 2x\\,dx = \\dfrac{x}{2} + \\dfrac{1}{4}\\sin 2x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.3 Eg.7(ii)",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\sin 2x \\cos 3x\\,dx\\).",
+    "context": "Find the following integrals.",
+    "solution": "Recall the identity \\(\\sin x \\cos y = \\dfrac{1}{2}[\\sin (x+y) + \\sin (x-y)]\\). Then \\(\\int \\sin 2x \\cos 3x\\,dx = \\dfrac{1}{2}\\left[\\int \\sin 5x\\,dx - \\int \\sin x\\,dx\\right] = \\dfrac{1}{2}\\left[-\\dfrac{1}{5}\\cos 5x + \\cos x\\right] + C = -\\dfrac{1}{10}\\cos 5x + \\dfrac{1}{2}\\cos x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.3 Eg.7(iii)",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\sin^3 x\\,dx\\).",
+    "context": "Find the following integrals.",
+    "solution": "From the identity \\(\\sin 3x = 3\\sin x - 4\\sin^3 x\\), we find that \\(\\sin^3 x = \\dfrac{3\\sin x - \\sin 3x}{4}\\). Therefore \\(\\int \\sin^3 x\\,dx = \\dfrac{3}{4}\\int \\sin x\\,dx - \\dfrac{1}{4}\\int \\sin 3x\\,dx = -\\dfrac{3}{4}\\cos x + \\dfrac{1}{12}\\cos 3x + C\\). Alternatively, \\(\\int \\sin^3 x\\,dx = \\int (1-\\cos^2 x)\\sin x\\,dx\\); putting \\(\\cos x = t\\) so that \\(-\\sin x\\,dx = dt\\) gives \\(-\\int (1-t^2)\\,dt = -t + \\dfrac{t^3}{3} + C = -\\cos x + \\dfrac{1}{3}\\cos^3 x + C\\). Both answers are equivalent.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q1",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin^2 (2x + 5)\\).",
+    "context": null,
+    "solution": "Use the power-reduction identity \\(\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}\\) with \\(\\theta = 2x+5\\): \\(\\sin^2(2x+5) = \\frac{1 - \\cos(4x+10)}{2}\\). Then \\(\\int \\sin^2(2x+5)\\,dx = \\frac{1}{2}\\int \\left(1 - \\cos(4x+10)\\right)dx = \\frac{1}{2}\\left(x - \\frac{\\sin(4x+10)}{4}\\right) + C = \\frac{x}{2} - \\frac{\\sin(4x+10)}{8} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q2",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin 3x \\cos 4x\\).",
+    "context": null,
+    "solution": "Use the product-to-sum identity \\(\\sin A \\cos B = \\frac{1}{2}\\left[\\sin(A+B) + \\sin(A-B)\\right]\\): \\(\\sin 3x \\cos 4x = \\frac{1}{2}\\left[\\sin 7x + \\sin(-x)\\right] = \\frac{1}{2}\\left(\\sin 7x - \\sin x\\right)\\). Then \\(\\int \\sin 3x \\cos 4x\\,dx = \\frac{1}{2}\\left(-\\frac{\\cos 7x}{7} + \\cos x\\right) + C = -\\frac{\\cos 7x}{14} + \\frac{\\cos x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q3",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\cos 2x \\cos 4x \\cos 6x\\).",
+    "context": null,
+    "solution": "First \\(\\cos 2x \\cos 4x = \\frac{1}{2}(\\cos 6x + \\cos 2x)\\), so \\(\\cos 2x \\cos 4x \\cos 6x = \\frac{1}{2}\\cos 6x(\\cos 6x + \\cos 2x) = \\frac{1}{2}\\left(\\cos^2 6x + \\cos 2x \\cos 6x\\right)\\). Using \\(\\cos^2 6x = \\frac{1+\\cos 12x}{2}\\) and \\(\\cos 2x \\cos 6x = \\frac{1}{2}(\\cos 8x + \\cos 4x)\\), this becomes \\(\\frac{1}{4}\\left(1 + \\cos 4x + \\cos 8x + \\cos 12x\\right)\\). Then \\(\\int \\cos 2x \\cos 4x \\cos 6x\\,dx = \\frac{1}{4}\\left(x + \\frac{\\sin 4x}{4} + \\frac{\\sin 8x}{8} + \\frac{\\sin 12x}{12}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q4",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin^3 (2x + 1)\\).",
+    "context": null,
+    "solution": "Use \\(\\sin^3\\theta = \\frac{3\\sin\\theta - \\sin 3\\theta}{4}\\) with \\(\\theta = 2x+1\\): \\(\\sin^3(2x+1) = \\frac{1}{4}\\left[3\\sin(2x+1) - \\sin(6x+3)\\right]\\). Then \\(\\int \\sin^3(2x+1)\\,dx = \\frac{1}{4}\\left[-\\frac{3\\cos(2x+1)}{2} + \\frac{\\cos(6x+3)}{6}\\right] + C = -\\frac{3\\cos(2x+1)}{8} + \\frac{\\cos(6x+3)}{24} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q5",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin^3 x \\cos^3 x\\).",
+    "context": null,
+    "solution": "Since \\(\\sin x \\cos x = \\frac{1}{2}\\sin 2x\\), \\(\\sin^3 x \\cos^3 x = (\\sin x \\cos x)^3 = \\frac{1}{8}\\sin^3 2x\\). Using \\(\\sin^3 2x = \\frac{3\\sin 2x - \\sin 6x}{4}\\), \\(\\int \\sin^3 x \\cos^3 x\\,dx = \\frac{1}{32}\\int(3\\sin 2x - \\sin 6x)\\,dx = \\frac{1}{32}\\left(-\\frac{3\\cos 2x}{2} + \\frac{\\cos 6x}{6}\\right) + C = -\\frac{3\\cos 2x}{64} + \\frac{\\cos 6x}{192} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q6",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin x \\sin 2x \\sin 3x\\).",
+    "context": null,
+    "solution": "Pair \\(\\sin x \\sin 3x = \\frac{1}{2}(\\cos 2x - \\cos 4x)\\), so \\(\\sin x \\sin 2x \\sin 3x = \\frac{1}{2}\\sin 2x(\\cos 2x - \\cos 4x) = \\frac{1}{2}\\left(\\sin 2x \\cos 2x - \\sin 2x \\cos 4x\\right)\\). With \\(\\sin 2x \\cos 2x = \\frac{1}{2}\\sin 4x\\) and \\(\\sin 2x \\cos 4x = \\frac{1}{2}(\\sin 6x - \\sin 2x)\\), this equals \\(\\frac{1}{4}(\\sin 4x - \\sin 6x + \\sin 2x)\\). Then \\(\\int \\sin x \\sin 2x \\sin 3x\\,dx = \\frac{1}{4}\\left(-\\frac{\\cos 4x}{4} + \\frac{\\cos 6x}{6} - \\frac{\\cos 2x}{2}\\right) + C = \\frac{\\cos 6x}{24} - \\frac{\\cos 4x}{16} - \\frac{\\cos 2x}{8} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q7",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin 4x \\sin 8x\\).",
+    "context": null,
+    "solution": "Use \\(\\sin A \\sin B = \\frac{1}{2}\\left[\\cos(A-B) - \\cos(A+B)\\right]\\): \\(\\sin 4x \\sin 8x = \\frac{1}{2}(\\cos 4x - \\cos 12x)\\). Then \\(\\int \\sin 4x \\sin 8x\\,dx = \\frac{1}{2}\\left(\\frac{\\sin 4x}{4} - \\frac{\\sin 12x}{12}\\right) + C = \\frac{\\sin 4x}{8} - \\frac{\\sin 12x}{24} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q8",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{1 - \\cos x}{1 + \\cos x}\\).",
+    "context": null,
+    "solution": "Using \\(1 - \\cos x = 2\\sin^2\\frac{x}{2}\\) and \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\), \\(\\frac{1-\\cos x}{1+\\cos x} = \\tan^2\\frac{x}{2} = \\sec^2\\frac{x}{2} - 1\\). Then \\(\\int \\frac{1-\\cos x}{1+\\cos x}\\,dx = \\int\\left(\\sec^2\\frac{x}{2} - 1\\right)dx = 2\\tan\\frac{x}{2} - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q9",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\cos x}{1 + \\cos x}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{\\cos x}{1+\\cos x} = \\frac{(1+\\cos x) - 1}{1+\\cos x} = 1 - \\frac{1}{1+\\cos x}\\). Since \\(1+\\cos x = 2\\cos^2\\frac{x}{2}\\), \\(\\frac{1}{1+\\cos x} = \\frac{1}{2}\\sec^2\\frac{x}{2}\\). Then \\(\\int \\frac{\\cos x}{1+\\cos x}\\,dx = \\int\\left(1 - \\frac{1}{2}\\sec^2\\frac{x}{2}\\right)dx = x - \\tan\\frac{x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q10",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin^4 x\\).",
+    "context": null,
+    "solution": "\\(\\sin^4 x = \\left(\\frac{1-\\cos 2x}{2}\\right)^2 = \\frac{1}{4}\\left(1 - 2\\cos 2x + \\cos^2 2x\\right)\\). Replacing \\(\\cos^2 2x = \\frac{1+\\cos 4x}{2}\\) gives \\(\\sin^4 x = \\frac{3}{8} - \\frac{\\cos 2x}{2} + \\frac{\\cos 4x}{8}\\). Then \\(\\int \\sin^4 x\\,dx = \\frac{3x}{8} - \\frac{\\sin 2x}{4} + \\frac{\\sin 4x}{32} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q11",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\cos^4 2x\\).",
+    "context": null,
+    "solution": "\\(\\cos^4 2x = \\left(\\frac{1+\\cos 4x}{2}\\right)^2 = \\frac{1}{4}\\left(1 + 2\\cos 4x + \\cos^2 4x\\right)\\). Using \\(\\cos^2 4x = \\frac{1+\\cos 8x}{2}\\) gives \\(\\cos^4 2x = \\frac{3}{8} + \\frac{\\cos 4x}{2} + \\frac{\\cos 8x}{8}\\). Then \\(\\int \\cos^4 2x\\,dx = \\frac{3x}{8} + \\frac{\\sin 4x}{8} + \\frac{\\sin 8x}{64} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q12",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\sin^2 x}{1 + \\cos x}\\).",
+    "context": null,
+    "solution": "Since \\(\\sin^2 x = 1 - \\cos^2 x = (1-\\cos x)(1+\\cos x)\\), \\(\\frac{\\sin^2 x}{1+\\cos x} = 1 - \\cos x\\). Then \\(\\int \\frac{\\sin^2 x}{1+\\cos x}\\,dx = \\int(1 - \\cos x)\\,dx = x - \\sin x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q13",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\cos 2x - \\cos 2\\alpha}{\\cos x - \\cos \\alpha}\\).",
+    "context": null,
+    "solution": "Using \\(\\cos 2x = 2\\cos^2 x - 1\\) and \\(\\cos 2\\alpha = 2\\cos^2\\alpha - 1\\), the numerator \\(\\cos 2x - \\cos 2\\alpha = 2(\\cos^2 x - \\cos^2\\alpha) = 2(\\cos x - \\cos\\alpha)(\\cos x + \\cos\\alpha)\\). Hence \\(\\frac{\\cos 2x - \\cos 2\\alpha}{\\cos x - \\cos\\alpha} = 2(\\cos x + \\cos\\alpha)\\). Then \\(\\int 2(\\cos x + \\cos\\alpha)\\,dx = 2\\sin x + 2x\\cos\\alpha + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q14",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\cos x - \\sin x}{1 + \\sin 2x}\\).",
+    "context": null,
+    "solution": "Note \\(1 + \\sin 2x = \\sin^2 x + \\cos^2 x + 2\\sin x \\cos x = (\\sin x + \\cos x)^2\\). Put \\(t = \\sin x + \\cos x\\), so \\(dt = (\\cos x - \\sin x)\\,dx\\). Then \\(\\int \\frac{\\cos x - \\sin x}{1+\\sin 2x}\\,dx = \\int \\frac{dt}{t^2} = -\\frac{1}{t} + C = -\\frac{1}{\\sin x + \\cos x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q15",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\tan^3 2x \\sec 2x\\).",
+    "context": null,
+    "solution": "Write \\(\\tan^3 2x \\sec 2x = \\tan^2 2x(\\sec 2x \\tan 2x) = (\\sec^2 2x - 1)\\sec 2x \\tan 2x\\). Put \\(t = \\sec 2x\\), so \\(dt = 2\\sec 2x \\tan 2x\\,dx\\). Then \\(\\int (\\sec^2 2x - 1)\\sec 2x \\tan 2x\\,dx = \\frac{1}{2}\\int(t^2 - 1)\\,dt = \\frac{1}{2}\\left(\\frac{t^3}{3} - t\\right) + C = \\frac{\\sec^3 2x}{6} - \\frac{\\sec 2x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q16",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\tan^4 x\\).",
+    "context": null,
+    "solution": "\\(\\tan^4 x = \\tan^2 x(\\sec^2 x - 1) = \\tan^2 x \\sec^2 x - \\tan^2 x = \\tan^2 x \\sec^2 x - (\\sec^2 x - 1)\\). Since \\(\\int \\tan^2 x \\sec^2 x\\,dx = \\frac{\\tan^3 x}{3}\\), \\(\\int \\tan^4 x\\,dx = \\frac{\\tan^3 x}{3} - \\tan x + x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q17",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\sin^3 x + \\cos^3 x}{\\sin^2 x \\cos^2 x}\\).",
+    "context": null,
+    "solution": "Split the fraction: \\(\\frac{\\sin^3 x + \\cos^3 x}{\\sin^2 x \\cos^2 x} = \\frac{\\sin x}{\\cos^2 x} + \\frac{\\cos x}{\\sin^2 x} = \\sec x \\tan x + \\csc x \\cot x\\). Then \\(\\int(\\sec x \\tan x + \\csc x \\cot x)\\,dx = \\sec x - \\csc x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q18",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\cos 2x + 2\\sin^2 x}{\\cos^2 x}\\).",
+    "context": null,
+    "solution": "Since \\(\\cos 2x = 1 - 2\\sin^2 x\\), the numerator \\(\\cos 2x + 2\\sin^2 x = 1\\). Hence \\(\\frac{\\cos 2x + 2\\sin^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x} = \\sec^2 x\\). Then \\(\\int \\sec^2 x\\,dx = \\tan x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q19",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{1}{\\sin x \\cos^3 x}\\).",
+    "context": null,
+    "solution": "Since \\(\\sin x \\cos^3 x = \\tan x \\cos^4 x = \\frac{\\tan x}{\\sec^4 x}\\), we have \\(\\frac{1}{\\sin x \\cos^3 x} = \\frac{\\sec^4 x}{\\tan x} = \\frac{(1+\\tan^2 x)\\sec^2 x}{\\tan x}\\). Put \\(t = \\tan x\\), \\(dt = \\sec^2 x\\,dx\\): \\(\\int \\frac{1+t^2}{t}\\,dt = \\int\\left(\\frac{1}{t} + t\\right)dt = \\log|t| + \\frac{t^2}{2} + C = \\log|\\tan x| + \\frac{\\tan^2 x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q20",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{\\cos 2x}{(\\cos x + \\sin x)^2}\\).",
+    "context": null,
+    "solution": "Since \\(\\cos 2x = \\cos^2 x - \\sin^2 x = (\\cos x - \\sin x)(\\cos x + \\sin x)\\), \\(\\frac{\\cos 2x}{(\\cos x + \\sin x)^2} = \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\). Put \\(t = \\cos x + \\sin x\\), so \\(dt = (\\cos x - \\sin x)\\,dx\\). Then \\(\\int \\frac{\\cos x - \\sin x}{\\cos x + \\sin x}\\,dx = \\int \\frac{dt}{t} = \\log|t| + C = \\log|\\cos x + \\sin x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q21",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\sin^{-1} (\\cos x)\\).",
+    "context": null,
+    "solution": "Write \\(\\cos x = \\sin\\left(\\frac{\\pi}{2} - x\\right)\\), so \\(\\sin^{-1}(\\cos x) = \\frac{\\pi}{2} - x\\) (taking the principal value, valid for \\(0 \\le x \\le \\pi\\)). Then \\(\\int \\sin^{-1}(\\cos x)\\,dx = \\int\\left(\\frac{\\pi}{2} - x\\right)dx = \\frac{\\pi x}{2} - \\frac{x^2}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q22",
+    "format": "subjective",
+    "stem": "Find the integral of \\(\\dfrac{1}{\\cos (x - a) \\cos (x - b)}\\).",
+    "context": null,
+    "solution": "Multiply and divide by \\(\\sin(a-b)\\), and use \\(\\sin(a-b) = \\sin\\big[(x-b)-(x-a)\\big]\\). Since \\(\\frac{\\sin[(x-b)-(x-a)]}{\\cos(x-a)\\cos(x-b)} = \\tan(x-b) - \\tan(x-a)\\), we get \\(\\frac{1}{\\cos(x-a)\\cos(x-b)} = \\frac{1}{\\sin(a-b)}\\big[\\tan(x-b) - \\tan(x-a)\\big]\\). Then \\(\\int \\frac{dx}{\\cos(x-a)\\cos(x-b)} = \\frac{1}{\\sin(a-b)}\\big[-\\log|\\cos(x-b)| + \\log|\\cos(x-a)|\\big] + C = \\frac{1}{\\sin(a-b)}\\log\\left|\\frac{\\cos(x-a)}{\\cos(x-b)}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q23",
+    "format": "mcq",
+    "stem": "\\(\\displaystyle\\int \\dfrac{\\sin^2 x - \\cos^2 x}{\\sin^2 x \\cos^2 x}\\,dx\\) is equal to",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.3 Q24",
+    "format": "mcq",
+    "stem": "\\(\\displaystyle\\int \\dfrac{e^x (1 + x)}{\\cos^2 (e^x x)}\\,dx\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "7.4 Eg.8",
+    "format": "subjective",
+    "stem": "Find the following integrals: (i) \\(\\int \\frac{dx}{x^2-16}\\) (ii) \\(\\int \\frac{dx}{\\sqrt{2x-x^2}}\\)",
+    "context": null,
+    "solution": "(i) \\(\\int \\frac{dx}{x^2-16} = \\int \\frac{dx}{x^2-4^2} = \\frac{1}{8}\\log\\left|\\frac{x-4}{x+4}\\right| + C\\) [by 7.4(1)].\n(ii) \\(\\int \\frac{dx}{\\sqrt{2x-x^2}} = \\int \\frac{dx}{\\sqrt{1-(x-1)^2}}\\). Put \\(x-1=t\\), so \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{\\sqrt{2x-x^2}} = \\int \\frac{dt}{\\sqrt{1-t^2}} = \\sin^{-1}(t) + C\\) [by 7.4(5)] \\(= \\sin^{-1}(x-1) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.4 Eg.9",
+    "format": "subjective",
+    "stem": "Find the following integrals: (i) \\(\\int \\frac{dx}{x^2-6x+13}\\) (ii) \\(\\int \\frac{dx}{3x^2+13x-10}\\) (iii) \\(\\int \\frac{dx}{\\sqrt{5x^2-2x}}\\)",
+    "context": null,
+    "solution": "(i) We have \\(x^2-6x+13 = x^2-6x+3^2-3^2+13 = (x-3)^2+4\\). So \\(\\int \\frac{dx}{x^2-6x+13} = \\int \\frac{1}{(x-3)^2+2^2}\\,dx\\). Let \\(x-3=t\\), then \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{x^2-6x+13} = \\int \\frac{dt}{t^2+2^2} = \\frac{1}{2}\\tan^{-1}\\frac{t}{2} + C\\) [by 7.4(3)] \\(= \\frac{1}{2}\\tan^{-1}\\frac{x-3}{2} + C\\).\n(ii) The given integral is of the form 7.4(7). We write \\(3x^2+13x-10 = 3\\left(x^2+\\frac{13x}{3}-\\frac{10}{3}\\right) = 3\\left[\\left(x+\\frac{13}{6}\\right)^2-\\left(\\frac{17}{6}\\right)^2\\right]\\) (completing the square). Thus \\(\\int \\frac{dx}{3x^2+13x-10} = \\frac{1}{3}\\int \\frac{dx}{\\left(x+\\frac{13}{6}\\right)^2-\\left(\\frac{17}{6}\\right)^2}\\). Put \\(x+\\frac{13}{6}=t\\), then \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{3x^2+13x-10} = \\frac{1}{3}\\int \\frac{dt}{t^2-\\left(\\frac{17}{6}\\right)^2} = \\frac{1}{3\\times 2\\times \\frac{17}{6}}\\log\\left|\\frac{t-\\frac{17}{6}}{t+\\frac{17}{6}}\\right| + C_1\\) [by 7.4(1)] \\(= \\frac{1}{17}\\log\\left|\\frac{x+\\frac{13}{6}-\\frac{17}{6}}{x+\\frac{13}{6}+\\frac{17}{6}}\\right| + C_1 = \\frac{1}{17}\\log\\left|\\frac{6x-4}{6x+30}\\right| + C_1 = \\frac{1}{17}\\log\\left|\\frac{3x-2}{x+5}\\right| + C_1 + \\frac{1}{17}\\log\\frac{1}{3} = \\frac{1}{17}\\log\\left|\\frac{3x-2}{x+5}\\right| + C\\), where \\(C = C_1 + \\frac{1}{17}\\log\\frac{1}{3}\\).\n(iii) We have \\(\\int \\frac{dx}{\\sqrt{5x^2-2x}} = \\int \\frac{dx}{\\sqrt{5\\left(x^2-\\frac{2x}{5}\\right)}} = \\frac{1}{\\sqrt{5}}\\int \\frac{dx}{\\sqrt{\\left(x-\\frac{1}{5}\\right)^2-\\left(\\frac{1}{5}\\right)^2}}\\) (completing the square). Put \\(x-\\frac{1}{5}=t\\), then \\(dx=dt\\). Therefore \\(\\int \\frac{dx}{\\sqrt{5x^2-2x}} = \\frac{1}{\\sqrt{5}}\\int \\frac{dt}{\\sqrt{t^2-\\left(\\frac{1}{5}\\right)^2}} = \\frac{1}{\\sqrt{5}}\\log\\left|t+\\sqrt{t^2-\\left(\\frac{1}{5}\\right)^2}\\right| + C\\) [by 7.4(4)] \\(= \\frac{1}{\\sqrt{5}}\\log\\left|x-\\frac{1}{5}+\\sqrt{x^2-\\frac{2x}{5}}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.4 Eg.10",
+    "format": "subjective",
+    "stem": "Find the following integrals: (i) \\(\\int \\frac{x+2}{2x^2+6x+5}\\,dx\\) (ii) \\(\\int \\frac{x+3}{\\sqrt{5-4x-x^2}}\\,dx\\)",
+    "context": null,
+    "solution": "(i) Using the formula 7.4(9), we express \\(x+2 = A\\frac{d}{dx}(2x^2+6x+5) + B = A(4x+6) + B\\). Equating the coefficients of \\(x\\) and the constant terms, \\(4A=1\\) and \\(6A+B=2\\), so \\(A=\\frac{1}{4}\\) and \\(B=\\frac{1}{2}\\). Therefore \\(\\int \\frac{x+2}{2x^2+6x+5}\\,dx = \\frac{1}{4}\\int \\frac{4x+6}{2x^2+6x+5}\\,dx + \\frac{1}{2}\\int \\frac{dx}{2x^2+6x+5} = \\frac{1}{4}I_1 + \\frac{1}{2}I_2\\) ...(1). In \\(I_1\\), put \\(2x^2+6x+5=t\\), so \\((4x+6)\\,dx=dt\\); thus \\(I_1 = \\int \\frac{dt}{t} = \\log|t| + C_1 = \\log|2x^2+6x+5| + C_1\\) ...(2). And \\(I_2 = \\int \\frac{dx}{2x^2+6x+5} = \\frac{1}{2}\\int \\frac{dx}{x^2+3x+\\frac{5}{2}} = \\frac{1}{2}\\int \\frac{dx}{\\left(x+\\frac{3}{2}\\right)^2+\\left(\\frac{1}{2}\\right)^2}\\). Put \\(x+\\frac{3}{2}=t\\), so \\(dx=dt\\): \\(I_2 = \\frac{1}{2}\\int \\frac{dt}{t^2+\\left(\\frac{1}{2}\\right)^2} = \\frac{1}{2\\times \\frac{1}{2}}\\tan^{-1}2t + C_2\\) [by 7.4(3)] \\(= \\tan^{-1}2\\left(x+\\frac{3}{2}\\right) + C_2 = \\tan^{-1}(2x+3) + C_2\\) ...(3). Using (2) and (3) in (1): \\(\\int \\frac{x+2}{2x^2+6x+5}\\,dx = \\frac{1}{4}\\log|2x^2+6x+5| + \\frac{1}{2}\\tan^{-1}(2x+3) + C\\), where \\(C = \\frac{C_1}{4} + \\frac{C_2}{2}\\).\n(ii) This integral is of the form given in 7.4(10). Express \\(x+3 = A\\frac{d}{dx}(5-4x-x^2) + B = A(-4-2x) + B\\). Equating coefficients: \\(-2A=1\\) and \\(-4A+B=3\\), i.e. \\(A=-\\frac{1}{2}\\) and \\(B=1\\). Therefore \\(\\int \\frac{x+3}{\\sqrt{5-4x-x^2}}\\,dx = -\\frac{1}{2}\\int \\frac{(-4-2x)\\,dx}{\\sqrt{5-4x-x^2}} + \\int \\frac{dx}{\\sqrt{5-4x-x^2}} = -\\frac{1}{2}I_1 + I_2\\) ...(1). In \\(I_1\\), put \\(5-4x-x^2=t\\), so \\((-4-2x)\\,dx=dt\\); thus \\(I_1 = \\int \\frac{dt}{\\sqrt{t}} = 2\\sqrt{t} + C_1 = 2\\sqrt{5-4x-x^2} + C_1\\) ...(2). Now \\(I_2 = \\int \\frac{dx}{\\sqrt{5-4x-x^2}} = \\int \\frac{dx}{\\sqrt{9-(x+2)^2}}\\). Put \\(x+2=t\\), so \\(dx=dt\\): \\(I_2 = \\int \\frac{dt}{\\sqrt{3^2-t^2}} = \\sin^{-1}\\frac{t}{3} + C_2\\) [by 7.4(5)] \\(= \\sin^{-1}\\frac{x+2}{3} + C_2\\) ...(3). Substituting (2) and (3) in (1): \\(\\int \\frac{x+3}{\\sqrt{5-4x-x^2}}\\,dx = -\\sqrt{5-4x-x^2} + \\sin^{-1}\\frac{x+2}{3} + C\\), where \\(C = C_2 - \\frac{C_1}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q1",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{3x^2}{x^6+1}\\).",
+    "context": null,
+    "solution": "Put \\(t = x^3\\), so \\(dt = 3x^2\\,dx\\). Then \\(\\int \\frac{3x^2}{x^6+1}\\,dx = \\int \\frac{dt}{t^2+1} = \\tan^{-1} t + C = \\tan^{-1}(x^3) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q2",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{1+4x^2}}\\).",
+    "context": null,
+    "solution": "Write \\(\\int \\frac{dx}{\\sqrt{1+4x^2}} = \\frac{1}{2}\\int \\frac{d(2x)}{\\sqrt{1+(2x)^2}}\\). Using \\(\\int \\frac{dt}{\\sqrt{t^2+a^2}} = \\log\\left|t+\\sqrt{t^2+a^2}\\right|\\) with \\(a=1\\), this equals \\(\\frac{1}{2}\\log\\left|2x+\\sqrt{1+4x^2}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q3",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{(2-x)^2+1}}\\).",
+    "context": null,
+    "solution": "Put \\(t = 2-x\\), so \\(dt = -dx\\). Then \\(\\int \\frac{dx}{\\sqrt{(2-x)^2+1}} = -\\int \\frac{dt}{\\sqrt{t^2+1}} = -\\log\\left|t+\\sqrt{t^2+1}\\right| + C = -\\log\\left|(2-x)+\\sqrt{x^2-4x+5}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q4",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{9-25x^2}}\\).",
+    "context": null,
+    "solution": "Write \\(\\int \\frac{dx}{\\sqrt{9-25x^2}} = \\frac{1}{5}\\int \\frac{d(5x)}{\\sqrt{3^2-(5x)^2}}\\). Using \\(\\int \\frac{dt}{\\sqrt{a^2-t^2}} = \\sin^{-1}\\frac{t}{a}\\) with \\(a=3\\), this equals \\(\\frac{1}{5}\\sin^{-1}\\frac{5x}{3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q5",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{3x}{1+2x^4}\\).",
+    "context": null,
+    "solution": "Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\) and \\(x\\,dx = \\tfrac{1}{2}dt\\). Then \\(\\int \\frac{3x}{1+2x^4}\\,dx = \\frac{3}{2}\\int \\frac{dt}{1+2t^2} = \\frac{3}{4}\\int \\frac{dt}{\\tfrac{1}{2}+t^2} = \\frac{3}{4}\\cdot\\sqrt{2}\\,\\tan^{-1}(\\sqrt{2}\\,t) + C = \\frac{3}{2\\sqrt{2}}\\tan^{-1}(\\sqrt{2}\\,x^2) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q6",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x^2}{1-x^6}\\).",
+    "context": null,
+    "solution": "Put \\(t = x^3\\), so \\(dt = 3x^2\\,dx\\). Then \\(\\int \\frac{x^2}{1-x^6}\\,dx = \\frac{1}{3}\\int \\frac{dt}{1-t^2} = \\frac{1}{3}\\cdot\\frac{1}{2}\\log\\left|\\frac{1+t}{1-t}\\right| + C = \\frac{1}{6}\\log\\left|\\frac{1+x^3}{1-x^3}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q7",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x-1}{\\sqrt{x^2-1}}\\).",
+    "context": null,
+    "solution": "Split as \\(\\int \\frac{x-1}{\\sqrt{x^2-1}}\\,dx = \\int \\frac{x}{\\sqrt{x^2-1}}\\,dx - \\int \\frac{dx}{\\sqrt{x^2-1}}\\). For the first, put \\(u=x^2-1\\), giving \\(\\sqrt{x^2-1}\\); the second is \\(\\log\\left|x+\\sqrt{x^2-1}\\right|\\). Hence the integral \\(= \\sqrt{x^2-1} - \\log\\left|x+\\sqrt{x^2-1}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q8",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x^2}{\\sqrt{x^6+a^6}}\\).",
+    "context": null,
+    "solution": "Put \\(t = x^3\\), so \\(dt = 3x^2\\,dx\\). Then \\(\\int \\frac{x^2}{\\sqrt{x^6+a^6}}\\,dx = \\frac{1}{3}\\int \\frac{dt}{\\sqrt{t^2+(a^3)^2}} = \\frac{1}{3}\\log\\left|t+\\sqrt{t^2+a^6}\\right| + C = \\frac{1}{3}\\log\\left|x^3+\\sqrt{x^6+a^6}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q9",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{\\sec^2 x}{\\sqrt{\\tan^2 x+4}}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\tan x\\), so \\(dt = \\sec^2 x\\,dx\\). Then \\(\\int \\frac{\\sec^2 x}{\\sqrt{\\tan^2 x+4}}\\,dx = \\int \\frac{dt}{\\sqrt{t^2+2^2}} = \\log\\left|t+\\sqrt{t^2+4}\\right| + C = \\log\\left|\\tan x+\\sqrt{\\tan^2 x+4}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q10",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{x^2+2x+2}}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x^2+2x+2 = (x+1)^2+1\\). Put \\(t=x+1\\). Then \\(\\int \\frac{dx}{\\sqrt{x^2+2x+2}} = \\int \\frac{dt}{\\sqrt{t^2+1}} = \\log\\left|t+\\sqrt{t^2+1}\\right| + C = \\log\\left|(x+1)+\\sqrt{x^2+2x+2}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q11",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{9x^2+6x+5}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(9x^2+6x+5 = (3x+1)^2+4\\). Put \\(t=3x+1\\), \\(dt=3\\,dx\\). Then \\(\\int \\frac{dx}{9x^2+6x+5} = \\frac{1}{3}\\int \\frac{dt}{t^2+2^2} = \\frac{1}{3}\\cdot\\frac{1}{2}\\tan^{-1}\\frac{t}{2} + C = \\frac{1}{6}\\tan^{-1}\\left(\\frac{3x+1}{2}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q12",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{7-6x-x^2}}\\).",
+    "context": null,
+    "solution": "Rewrite \\(7-6x-x^2 = 16-(x+3)^2\\). Put \\(t=x+3\\). Then \\(\\int \\frac{dx}{\\sqrt{7-6x-x^2}} = \\int \\frac{dt}{\\sqrt{4^2-t^2}} = \\sin^{-1}\\frac{t}{4} + C = \\sin^{-1}\\left(\\frac{x+3}{4}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q13",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{(x-1)(x-2)}}\\).",
+    "context": null,
+    "solution": "Expand and complete the square: \\((x-1)(x-2) = x^2-3x+2 = \\left(x-\\tfrac{3}{2}\\right)^2-\\tfrac{1}{4}\\). Put \\(t=x-\\tfrac{3}{2}\\). Then \\(\\int \\frac{dx}{\\sqrt{(x-1)(x-2)}} = \\int \\frac{dt}{\\sqrt{t^2-(1/2)^2}} = \\log\\left|t+\\sqrt{t^2-\\tfrac{1}{4}}\\right| + C = \\log\\left|\\left(x-\\tfrac{3}{2}\\right)+\\sqrt{x^2-3x+2}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q14",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{8+3x-x^2}}\\).",
+    "context": null,
+    "solution": "Rewrite \\(8+3x-x^2 = \\tfrac{41}{4}-\\left(x-\\tfrac{3}{2}\\right)^2\\). Put \\(t=x-\\tfrac{3}{2}\\). Then \\(\\int \\frac{dx}{\\sqrt{8+3x-x^2}} = \\int \\frac{dt}{\\sqrt{\\left(\\tfrac{\\sqrt{41}}{2}\\right)^2-t^2}} = \\sin^{-1}\\frac{t}{\\sqrt{41}/2} + C = \\sin^{-1}\\left(\\frac{2x-3}{\\sqrt{41}}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q15",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{1}{\\sqrt{(x-a)(x-b)}}\\).",
+    "context": null,
+    "solution": "Expand and complete the square: \\((x-a)(x-b) = \\left(x-\\tfrac{a+b}{2}\\right)^2-\\left(\\tfrac{a-b}{2}\\right)^2\\). Put \\(t=x-\\tfrac{a+b}{2}\\). Then \\(\\int \\frac{dx}{\\sqrt{(x-a)(x-b)}} = \\int \\frac{dt}{\\sqrt{t^2-\\left(\\tfrac{a-b}{2}\\right)^2}} = \\log\\left|\\left(x-\\tfrac{a+b}{2}\\right)+\\sqrt{(x-a)(x-b)}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q16",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{4x+1}{\\sqrt{2x^2+x-3}}\\).",
+    "context": null,
+    "solution": "The numerator is exactly the derivative of the quantity under the root: \\(\\frac{d}{dx}(2x^2+x-3) = 4x+1\\). Put \\(u=2x^2+x-3\\), so \\(du=(4x+1)\\,dx\\). Then \\(\\int \\frac{4x+1}{\\sqrt{2x^2+x-3}}\\,dx = \\int \\frac{du}{\\sqrt{u}} = 2\\sqrt{u} + C = 2\\sqrt{2x^2+x-3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q17",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x+2}{\\sqrt{x^2-1}}\\).",
+    "context": null,
+    "solution": "Write \\(x+2 = \\tfrac{1}{2}(2x)+2\\), so \\(\\int \\frac{x+2}{\\sqrt{x^2-1}}\\,dx = \\frac{1}{2}\\int \\frac{2x}{\\sqrt{x^2-1}}\\,dx + 2\\int \\frac{dx}{\\sqrt{x^2-1}}\\). The first term gives \\(\\sqrt{x^2-1}\\) and the second \\(2\\log\\left|x+\\sqrt{x^2-1}\\right|\\). Hence the integral \\(= \\sqrt{x^2-1} + 2\\log\\left|x+\\sqrt{x^2-1}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q18",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{5x-2}{1+2x+3x^2}\\).",
+    "context": null,
+    "solution": "Denominator \\(3x^2+2x+1\\) has derivative \\(6x+2\\). Write \\(5x-2 = \\tfrac{5}{6}(6x+2)-\\tfrac{11}{3}\\). Then \\(\\int \\frac{5x-2}{3x^2+2x+1}\\,dx = \\frac{5}{6}\\log\\left|3x^2+2x+1\\right| - \\frac{11}{3}\\int \\frac{dx}{3x^2+2x+1}\\). Since \\(3x^2+2x+1 = 3\\left[\\left(x+\\tfrac{1}{3}\\right)^2+\\tfrac{2}{9}\\right]\\), \\(\\int \\frac{dx}{3x^2+2x+1} = \\frac{1}{\\sqrt{2}}\\tan^{-1}\\left(\\frac{3x+1}{\\sqrt{2}}\\right)\\). Hence the integral \\(= \\frac{5}{6}\\log\\left|3x^2+2x+1\\right| - \\frac{11}{3\\sqrt{2}}\\tan^{-1}\\left(\\frac{3x+1}{\\sqrt{2}}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q19",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{6x+7}{\\sqrt{(x-5)(x-4)}}\\).",
+    "context": null,
+    "solution": "Here \\((x-5)(x-4) = x^2-9x+20\\), whose derivative is \\(2x-9\\). Write \\(6x+7 = 3(2x-9)+34\\). Then \\(\\int \\frac{6x+7}{\\sqrt{x^2-9x+20}}\\,dx = 3\\int \\frac{2x-9}{\\sqrt{x^2-9x+20}}\\,dx + 34\\int \\frac{dx}{\\sqrt{x^2-9x+20}}\\). The first term is \\(6\\sqrt{x^2-9x+20}\\); since \\(x^2-9x+20 = \\left(x-\\tfrac{9}{2}\\right)^2-\\tfrac{1}{4}\\), the second is \\(34\\log\\left|\\left(x-\\tfrac{9}{2}\\right)+\\sqrt{x^2-9x+20}\\right|\\). Hence \\(= 6\\sqrt{x^2-9x+20} + 34\\log\\left|\\left(x-\\tfrac{9}{2}\\right)+\\sqrt{x^2-9x+20}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q20",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x+2}{\\sqrt{4x-x^2}}\\).",
+    "context": null,
+    "solution": "Note \\(\\frac{d}{dx}(4x-x^2) = 4-2x\\) and \\(4x-x^2 = 4-(x-2)^2\\). Write \\(x+2 = -\\tfrac{1}{2}(4-2x)+4\\). Then \\(\\int \\frac{x+2}{\\sqrt{4x-x^2}}\\,dx = -\\frac{1}{2}\\int \\frac{4-2x}{\\sqrt{4x-x^2}}\\,dx + 4\\int \\frac{dx}{\\sqrt{4-(x-2)^2}}\\). The first term is \\(-\\sqrt{4x-x^2}\\) and the second \\(4\\sin^{-1}\\frac{x-2}{2}\\). Hence the integral \\(= -\\sqrt{4x-x^2} + 4\\sin^{-1}\\left(\\frac{x-2}{2}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q21",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x+2}{\\sqrt{x^2+2x+3}}\\).",
+    "context": null,
+    "solution": "Since \\(\\frac{d}{dx}(x^2+2x+3) = 2x+2\\), write \\(x+2 = \\tfrac{1}{2}(2x+2)+1\\). Then \\(\\int \\frac{x+2}{\\sqrt{x^2+2x+3}}\\,dx = \\frac{1}{2}\\int \\frac{2x+2}{\\sqrt{x^2+2x+3}}\\,dx + \\int \\frac{dx}{\\sqrt{(x+1)^2+2}}\\). The first term is \\(\\sqrt{x^2+2x+3}\\) and the second \\(\\log\\left|(x+1)+\\sqrt{x^2+2x+3}\\right|\\). Hence \\(= \\sqrt{x^2+2x+3} + \\log\\left|(x+1)+\\sqrt{x^2+2x+3}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q22",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{x+3}{x^2-2x-5}\\).",
+    "context": null,
+    "solution": "Since \\(\\frac{d}{dx}(x^2-2x-5) = 2x-2\\), write \\(x+3 = \\tfrac{1}{2}(2x-2)+4\\). Then \\(\\int \\frac{x+3}{x^2-2x-5}\\,dx = \\frac{1}{2}\\log\\left|x^2-2x-5\\right| + 4\\int \\frac{dx}{(x-1)^2-6}\\). Using \\(\\int \\frac{dt}{t^2-a^2} = \\frac{1}{2a}\\log\\left|\\frac{t-a}{t+a}\\right|\\) with \\(t=x-1,\\ a=\\sqrt{6}\\), the second term is \\(\\frac{2}{\\sqrt{6}}\\log\\left|\\frac{x-1-\\sqrt{6}}{x-1+\\sqrt{6}}\\right|\\). Hence \\(= \\frac{1}{2}\\log\\left|x^2-2x-5\\right| + \\frac{2}{\\sqrt{6}}\\log\\left|\\frac{x-1-\\sqrt{6}}{x-1+\\sqrt{6}}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q23",
+    "format": "subjective",
+    "stem": "Integrate \\(\\frac{5x+3}{\\sqrt{x^2+4x+10}}\\).",
+    "context": null,
+    "solution": "Since \\(\\frac{d}{dx}(x^2+4x+10) = 2x+4\\), write \\(5x+3 = \\tfrac{5}{2}(2x+4)-7\\). Then \\(\\int \\frac{5x+3}{\\sqrt{x^2+4x+10}}\\,dx = \\frac{5}{2}\\int \\frac{2x+4}{\\sqrt{x^2+4x+10}}\\,dx - 7\\int \\frac{dx}{\\sqrt{(x+2)^2+6}}\\). The first term is \\(5\\sqrt{x^2+4x+10}\\) and the second \\(-7\\log\\left|(x+2)+\\sqrt{x^2+4x+10}\\right|\\). Hence \\(= 5\\sqrt{x^2+4x+10} - 7\\log\\left|(x+2)+\\sqrt{x^2+4x+10}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q24",
+    "format": "mcq",
+    "stem": "\\(\\int \\frac{dx}{x^2+2x+2}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.4 Q25",
+    "format": "mcq",
+    "stem": "\\(\\int \\frac{dx}{\\sqrt{9x-4x^2}}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "7.5 Eg.11",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{dx}{(x+1)(x+2)}\\).",
+    "context": null,
+    "solution": "The integrand is a proper rational function. By the form of partial fraction [Table 7.2 (i)], write \\(\\frac{1}{(x+1)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x+2}\\). This gives \\(1 = A(x+2) + B(x+1)\\). Equating the coefficients of \\(x\\) and the constant term, \\(A+B=0\\) and \\(2A+B=1\\), so \\(A=1\\) and \\(B=-1\\). Thus \\(\\frac{1}{(x+1)(x+2)} = \\frac{1}{x+1} - \\frac{1}{x+2}\\). Therefore \\(\\int \\frac{dx}{(x+1)(x+2)} = \\int \\frac{dx}{x+1} - \\int \\frac{dx}{x+2} = \\log|x+1| - \\log|x+2| + C = \\log\\left|\\frac{x+1}{x+2}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.5 Eg.12",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{x^2+1}{x^2-5x+6}\\,dx\\).",
+    "context": null,
+    "solution": "Here the integrand \\(\\frac{x^2+1}{x^2-5x+6}\\) is not a proper rational function, so we divide \\(x^2+1\\) by \\(x^2-5x+6\\) and find that \\(\\frac{x^2+1}{x^2-5x+6} = 1 + \\frac{5x-5}{x^2-5x+6} = 1 + \\frac{5x-5}{(x-2)(x-3)}\\). Let \\(\\frac{5x-5}{(x-2)(x-3)} = \\frac{A}{x-2} + \\frac{B}{x-3}\\), so that \\(5x-5 = A(x-3) + B(x-2)\\). Equating the coefficients of \\(x\\) and constant terms, \\(A+B=5\\) and \\(3A+2B=5\\), giving \\(A=-5\\) and \\(B=10\\). Thus \\(\\frac{x^2+1}{x^2-5x+6} = 1 - \\frac{5}{x-2} + \\frac{10}{x-3}\\). Therefore \\(\\int \\frac{x^2+1}{x^2-5x+6}\\,dx = \\int dx - 5\\int \\frac{1}{x-2}\\,dx + 10\\int \\frac{dx}{x-3} = x - 5\\log|x-2| + 10\\log|x-3| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.5 Eg.13",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{3x-2}{(x+1)^2(x+3)}\\,dx\\).",
+    "context": null,
+    "solution": "The integrand is of the type as given in Table 7.2 (4). Write \\(\\frac{3x-2}{(x+1)^2(x+3)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+3}\\), so that \\(3x-2 = A(x+1)(x+3) + B(x+3) + C(x+1)^2 = A(x^2+4x+3) + B(x+3) + C(x^2+2x+1)\\). Comparing the coefficient of \\(x^2\\), \\(x\\) and the constant term on both sides, \\(A+C=0\\), \\(4A+B+2C=3\\) and \\(3A+3B+C=-2\\). Solving these, \\(A=\\frac{11}{4}\\), \\(B=\\frac{-5}{2}\\) and \\(C=\\frac{-11}{4}\\). Thus the integrand is \\(\\frac{3x-2}{(x+1)^2(x+3)} = \\frac{11}{4(x+1)} - \\frac{5}{2(x+1)^2} - \\frac{11}{4(x+3)}\\). Therefore \\(\\int \\frac{3x-2}{(x+1)^2(x+3)}\\,dx = \\frac{11}{4}\\int \\frac{dx}{x+1} - \\frac{5}{2}\\int \\frac{dx}{(x+1)^2} - \\frac{11}{4}\\int \\frac{dx}{x+3} = \\frac{11}{4}\\log|x+1| + \\frac{5}{2(x+1)} - \\frac{11}{4}\\log|x+3| + C = \\frac{11}{4}\\log\\left|\\frac{x+1}{x+3}\\right| + \\frac{5}{2(x+1)} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.5 Eg.14",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{x^2}{(x^2+1)(x^2+4)}\\,dx\\).",
+    "context": null,
+    "solution": "Consider \\(\\frac{x^2}{(x^2+1)(x^2+4)}\\) and put \\(x^2=y\\). Then \\(\\frac{x^2}{(x^2+1)(x^2+4)} = \\frac{y}{(y+1)(y+4)}\\). Write \\(\\frac{y}{(y+1)(y+4)} = \\frac{A}{y+1} + \\frac{B}{y+4}\\), so that \\(y = A(y+4) + B(y+1)\\). Comparing coefficients of \\(y\\) and constant terms, \\(A+B=1\\) and \\(4A+B=0\\), which give \\(A=-\\frac{1}{3}\\) and \\(B=\\frac{4}{3}\\). Thus \\(\\frac{x^2}{(x^2+1)(x^2+4)} = -\\frac{1}{3(x^2+1)} + \\frac{4}{3(x^2+4)}\\). Therefore \\(\\int \\frac{x^2\\,dx}{(x^2+1)(x^2+4)} = -\\frac{1}{3}\\int \\frac{dx}{x^2+1} + \\frac{4}{3}\\int \\frac{dx}{x^2+4} = -\\frac{1}{3}\\tan^{-1}x + \\frac{4}{3}\\times\\frac{1}{2}\\tan^{-1}\\frac{x}{2} + C = -\\frac{1}{3}\\tan^{-1}x + \\frac{2}{3}\\tan^{-1}\\frac{x}{2} + C\\). Here the substitution was made only for the partial fraction part and not for the integration part.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.5 Eg.15",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{(3\\sin\\phi-2)\\cos\\phi}{5-\\cos^2\\phi-4\\sin\\phi}\\,d\\phi\\).",
+    "context": null,
+    "solution": "Let \\(y=\\sin\\phi\\). Then \\(dy=\\cos\\phi\\,d\\phi\\). Therefore \\(\\int \\frac{(3\\sin\\phi-2)\\cos\\phi}{5-\\cos^2\\phi-4\\sin\\phi}\\,d\\phi = \\int \\frac{(3y-2)\\,dy}{5-(1-y^2)-4y} = \\int \\frac{3y-2}{y^2-4y+4}\\,dy = \\int \\frac{3y-2}{(y-2)^2}\\,dy = I\\) (say). Now write \\(\\frac{3y-2}{(y-2)^2} = \\frac{A}{y-2} + \\frac{B}{(y-2)^2}\\) [by Table 7.2 (2)], so that \\(3y-2 = A(y-2) + B\\). Comparing the coefficients of \\(y\\) and constant term, \\(A=3\\) and \\(B-2A=-2\\), which give \\(A=3\\) and \\(B=4\\). Therefore \\(I = \\int \\left[\\frac{3}{y-2} + \\frac{4}{(y-2)^2}\\right]dy = 3\\int \\frac{dy}{y-2} + 4\\int \\frac{dy}{(y-2)^2} = 3\\log|y-2| + 4\\left(-\\frac{1}{y-2}\\right) + C = 3\\log|\\sin\\phi-2| + \\frac{4}{2-\\sin\\phi} + C = 3\\log(2-\\sin\\phi) + \\frac{4}{2-\\sin\\phi} + C\\) (since \\(2-\\sin\\phi\\) is always positive).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.5 Eg.16",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{x^2+x+1}{(x+2)(x^2+1)}\\,dx\\).",
+    "context": null,
+    "solution": "The integrand is a proper rational function. Decompose it into partial fractions [Table 7.2 (5)]. Write \\(\\frac{x^2+x+1}{(x^2+1)(x+2)} = \\frac{A}{x+2} + \\frac{Bx+C}{x^2+1}\\). Therefore \\(x^2+x+1 = A(x^2+1) + (Bx+C)(x+2)\\). Equating the coefficients of \\(x^2\\), \\(x\\) and the constant term of both sides, \\(A+B=1\\), \\(2B+C=1\\) and \\(A+2C=1\\). Solving these, \\(A=\\frac{3}{5}\\), \\(B=\\frac{2}{5}\\) and \\(C=\\frac{1}{5}\\). Thus the integrand is \\(\\frac{x^2+x+1}{(x^2+1)(x+2)} = \\frac{3}{5(x+2)} + \\frac{1}{5}\\left(\\frac{2x+1}{x^2+1}\\right)\\). Therefore \\(\\int \\frac{x^2+x+1}{(x^2+1)(x+2)}\\,dx = \\frac{3}{5}\\int \\frac{dx}{x+2} + \\frac{1}{5}\\int \\frac{2x}{x^2+1}\\,dx + \\frac{1}{5}\\int \\frac{1}{x^2+1}\\,dx = \\frac{3}{5}\\log|x+2| + \\frac{1}{5}\\log|x^2+1| + \\frac{1}{5}\\tan^{-1}x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q1",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{x}{(x+1)(x+2)}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{x}{(x+1)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x+2}\\), so \\(x = A(x+2) + B(x+1)\\). Put \\(x=-1\\): \\(A=-1\\); put \\(x=-2\\): \\(B=2\\). Then \\(\\int \\frac{x}{(x+1)(x+2)}\\,dx = -\\int \\frac{dx}{x+1} + 2\\int \\frac{dx}{x+2} = -\\log|x+1| + 2\\log|x+2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q2",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{1}{x^2-9}\\).",
+    "context": null,
+    "solution": "Here \\(\\frac{1}{x^2-9} = \\frac{1}{(x-3)(x+3)} = \\frac{1}{6}\\left(\\frac{1}{x-3} - \\frac{1}{x+3}\\right)\\). Hence \\(\\int \\frac{dx}{x^2-9} = \\frac{1}{6}\\big(\\log|x-3| - \\log|x+3|\\big) + C = \\frac{1}{6}\\log\\left|\\frac{x-3}{x+3}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q3",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{3x-1}{(x-1)(x-2)(x-3)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{3x-1}{(x-1)(x-2)(x-3)} = \\frac{A}{x-1} + \\frac{B}{x-2} + \\frac{C}{x-3}\\), so \\(3x-1 = A(x-2)(x-3) + B(x-1)(x-3) + C(x-1)(x-2)\\). Put \\(x=1\\): \\(2=2A\\Rightarrow A=1\\); \\(x=2\\): \\(5=-B\\Rightarrow B=-5\\); \\(x=3\\): \\(8=2C\\Rightarrow C=4\\). Then \\(\\int \\frac{3x-1}{(x-1)(x-2)(x-3)}\\,dx = \\log|x-1| - 5\\log|x-2| + 4\\log|x-3| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q4",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{x}{(x-1)(x-2)(x-3)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{x}{(x-1)(x-2)(x-3)} = \\frac{A}{x-1} + \\frac{B}{x-2} + \\frac{C}{x-3}\\), so \\(x = A(x-2)(x-3) + B(x-1)(x-3) + C(x-1)(x-2)\\). Put \\(x=1\\): \\(1=2A\\Rightarrow A=\\tfrac{1}{2}\\); \\(x=2\\): \\(2=-B\\Rightarrow B=-2\\); \\(x=3\\): \\(3=2C\\Rightarrow C=\\tfrac{3}{2}\\). Then \\(\\int \\frac{x}{(x-1)(x-2)(x-3)}\\,dx = \\frac{1}{2}\\log|x-1| - 2\\log|x-2| + \\frac{3}{2}\\log|x-3| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q5",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{2x}{x^2+3x+2}\\).",
+    "context": null,
+    "solution": "Since \\(x^2+3x+2=(x+1)(x+2)\\), write \\(\\frac{2x}{(x+1)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x+2}\\), so \\(2x = A(x+2)+B(x+1)\\). Put \\(x=-1\\): \\(A=-2\\); \\(x=-2\\): \\(-4=-B\\Rightarrow B=4\\). Then \\(\\int \\frac{2x}{x^2+3x+2}\\,dx = -2\\log|x+1| + 4\\log|x+2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q6",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{1-x^2}{x(1-2x)}\\).",
+    "context": null,
+    "solution": "The fraction is improper; dividing, \\(\\frac{1-x^2}{x(1-2x)} = \\frac{1}{2} + \\frac{1-\\frac{x}{2}}{x(1-2x)}\\). Write \\(\\frac{1-\\frac{x}{2}}{x(1-2x)} = \\frac{A}{x} + \\frac{B}{1-2x}\\), so \\(1-\\tfrac{x}{2} = A(1-2x)+Bx\\). Put \\(x=0\\): \\(A=1\\); \\(x=\\tfrac{1}{2}\\): \\(\\tfrac{3}{4}=\\tfrac{B}{2}\\Rightarrow B=\\tfrac{3}{2}\\). Hence \\(\\int \\frac{1-x^2}{x(1-2x)}\\,dx = \\int\\left(\\frac{1}{2} + \\frac{1}{x} + \\frac{3}{2(1-2x)}\\right)dx = \\frac{x}{2} + \\log|x| - \\frac{3}{4}\\log|1-2x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q7",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{x}{(x^2+1)(x-1)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{x}{(x^2+1)(x-1)} = \\frac{Ax+B}{x^2+1} + \\frac{C}{x-1}\\), so \\(x = (Ax+B)(x-1) + C(x^2+1)\\). Put \\(x=1\\): \\(1=2C\\Rightarrow C=\\tfrac{1}{2}\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=-\\tfrac{1}{2}\\); comparing \\(x\\): \\(B-A=1\\Rightarrow B=\\tfrac{1}{2}\\). Then \\(\\int \\frac{x}{(x^2+1)(x-1)}\\,dx = \\int\\left(\\frac{-\\tfrac{1}{2}x+\\tfrac{1}{2}}{x^2+1} + \\frac{\\tfrac{1}{2}}{x-1}\\right)dx = -\\frac{1}{4}\\log(x^2+1) + \\frac{1}{2}\\tan^{-1}x + \\frac{1}{2}\\log|x-1| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q8",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{x}{(x-1)^2(x+2)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{x}{(x-1)^2(x+2)} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+2}\\), so \\(x = A(x-1)(x+2) + B(x+2) + C(x-1)^2\\). Put \\(x=1\\): \\(1=3B\\Rightarrow B=\\tfrac{1}{3}\\); \\(x=-2\\): \\(-2=9C\\Rightarrow C=-\\tfrac{2}{9}\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=\\tfrac{2}{9}\\). Then \\(\\int \\frac{x}{(x-1)^2(x+2)}\\,dx = \\frac{2}{9}\\log|x-1| - \\frac{1}{3(x-1)} - \\frac{2}{9}\\log|x+2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q9",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{3x+5}{x^3-x^2-x+1}\\).",
+    "context": null,
+    "solution": "Factor \\(x^3-x^2-x+1 = (x-1)^2(x+1)\\). Let \\(\\frac{3x+5}{(x-1)^2(x+1)} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+1}\\), so \\(3x+5 = A(x-1)(x+1) + B(x+1) + C(x-1)^2\\). Put \\(x=1\\): \\(8=2B\\Rightarrow B=4\\); \\(x=-1\\): \\(2=4C\\Rightarrow C=\\tfrac{1}{2}\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=-\\tfrac{1}{2}\\). Then \\(\\int \\frac{3x+5}{x^3-x^2-x+1}\\,dx = -\\frac{1}{2}\\log|x-1| - \\frac{4}{x-1} + \\frac{1}{2}\\log|x+1| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q10",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{2x-3}{(x^2-1)(2x+3)}\\).",
+    "context": null,
+    "solution": "Since \\(x^2-1=(x-1)(x+1)\\), let \\(\\frac{2x-3}{(x-1)(x+1)(2x+3)} = \\frac{A}{x-1} + \\frac{B}{x+1} + \\frac{C}{2x+3}\\), so \\(2x-3 = A(x+1)(2x+3) + B(x-1)(2x+3) + C(x-1)(x+1)\\). Put \\(x=1\\): \\(-1=10A\\Rightarrow A=-\\tfrac{1}{10}\\); \\(x=-1\\): \\(-5=-2B\\Rightarrow B=\\tfrac{5}{2}\\); \\(x=-\\tfrac{3}{2}\\): \\(-6=\\tfrac{5}{4}C\\Rightarrow C=-\\tfrac{24}{5}\\). Then \\(\\int \\frac{2x-3}{(x^2-1)(2x+3)}\\,dx = -\\frac{1}{10}\\log|x-1| + \\frac{5}{2}\\log|x+1| - \\frac{12}{5}\\log|2x+3| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q11",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{5x}{(x+1)(x^2-4)}\\).",
+    "context": null,
+    "solution": "Since \\(x^2-4=(x-2)(x+2)\\), let \\(\\frac{5x}{(x+1)(x-2)(x+2)} = \\frac{A}{x+1} + \\frac{B}{x-2} + \\frac{C}{x+2}\\), so \\(5x = A(x-2)(x+2) + B(x+1)(x+2) + C(x+1)(x-2)\\). Put \\(x=-1\\): \\(-5=-3A\\Rightarrow A=\\tfrac{5}{3}\\); \\(x=2\\): \\(10=12B\\Rightarrow B=\\tfrac{5}{6}\\); \\(x=-2\\): \\(-10=4C\\Rightarrow C=-\\tfrac{5}{2}\\). Then \\(\\int \\frac{5x}{(x+1)(x^2-4)}\\,dx = \\frac{5}{3}\\log|x+1| + \\frac{5}{6}\\log|x-2| - \\frac{5}{2}\\log|x+2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q12",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{x^3+x+1}{x^2-1}\\).",
+    "context": null,
+    "solution": "The fraction is improper; dividing, \\(\\frac{x^3+x+1}{x^2-1} = x + \\frac{2x+1}{x^2-1}\\). Write \\(\\frac{2x+1}{(x-1)(x+1)} = \\frac{A}{x-1} + \\frac{B}{x+1}\\), so \\(2x+1 = A(x+1)+B(x-1)\\). Put \\(x=1\\): \\(3=2A\\Rightarrow A=\\tfrac{3}{2}\\); \\(x=-1\\): \\(-1=-2B\\Rightarrow B=\\tfrac{1}{2}\\). Then \\(\\int \\frac{x^3+x+1}{x^2-1}\\,dx = \\frac{x^2}{2} + \\frac{3}{2}\\log|x-1| + \\frac{1}{2}\\log|x+1| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q13",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{2}{(1-x)(1+x^2)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{2}{(1-x)(1+x^2)} = \\frac{A}{1-x} + \\frac{Bx+C}{1+x^2}\\), so \\(2 = A(1+x^2) + (Bx+C)(1-x)\\). Put \\(x=1\\): \\(2=2A\\Rightarrow A=1\\); comparing \\(x^2\\): \\(A-B=0\\Rightarrow B=1\\); comparing \\(x\\): \\(B-C=0\\Rightarrow C=1\\). Then \\(\\int \\frac{2}{(1-x)(1+x^2)}\\,dx = \\int\\left(\\frac{1}{1-x} + \\frac{x+1}{1+x^2}\\right)dx = -\\log|1-x| + \\frac{1}{2}\\log(1+x^2) + \\tan^{-1}x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q14",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{3x-1}{(x+2)^2}\\).",
+    "context": null,
+    "solution": "Put \\(t = x+2\\), so \\(dt=dx\\) and \\(3x-1 = 3t-7\\). Then \\(\\int \\frac{3x-1}{(x+2)^2}\\,dx = \\int \\frac{3t-7}{t^2}\\,dt = \\int\\left(\\frac{3}{t} - \\frac{7}{t^2}\\right)dt = 3\\log|t| + \\frac{7}{t} + C = 3\\log|x+2| + \\frac{7}{x+2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q15",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{1}{x^4-1}\\).",
+    "context": null,
+    "solution": "Factor \\(x^4-1=(x-1)(x+1)(x^2+1)\\). Let \\(\\frac{1}{x^4-1} = \\frac{A}{x-1} + \\frac{B}{x+1} + \\frac{Cx+D}{x^2+1}\\), so \\(1 = A(x+1)(x^2+1) + B(x-1)(x^2+1) + (Cx+D)(x^2-1)\\). Put \\(x=1\\): \\(A=\\tfrac{1}{4}\\); \\(x=-1\\): \\(B=-\\tfrac{1}{4}\\); comparing \\(x^3\\): \\(A+B+C=0\\Rightarrow C=0\\); constant: \\(A-B-D=1\\Rightarrow D=-\\tfrac{1}{2}\\). Then \\(\\int \\frac{dx}{x^4-1} = \\frac{1}{4}\\log|x-1| - \\frac{1}{4}\\log|x+1| - \\frac{1}{2}\\tan^{-1}x + C = \\frac{1}{4}\\log\\left|\\frac{x-1}{x+1}\\right| - \\frac{1}{2}\\tan^{-1}x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q16",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{1}{x(x^n+1)}\\). [Hint: multiply numerator and denominator by \\(x^{n-1}\\) and put \\(x^n=t\\)]",
+    "context": null,
+    "solution": "Multiply numerator and denominator by \\(x^{n-1}\\): \\(\\frac{1}{x(x^n+1)} = \\frac{x^{n-1}}{x^n(x^n+1)}\\). Put \\(t = x^n\\), so \\(dt = n\\,x^{n-1}\\,dx\\). Then \\(\\int \\frac{dx}{x(x^n+1)} = \\frac{1}{n}\\int \\frac{dt}{t(t+1)} = \\frac{1}{n}\\int\\left(\\frac{1}{t} - \\frac{1}{t+1}\\right)dt = \\frac{1}{n}\\log\\left|\\frac{t}{t+1}\\right| + C = \\frac{1}{n}\\log\\left|\\frac{x^n}{x^n+1}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q17",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{\\cos x}{(1-\\sin x)(2-\\sin x)}\\). [Hint: Put \\(\\sin x=t\\)]",
+    "context": null,
+    "solution": "Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\). Then \\(\\int \\frac{\\cos x}{(1-\\sin x)(2-\\sin x)}\\,dx = \\int \\frac{dt}{(1-t)(2-t)}\\). Since \\(\\frac{1}{(1-t)(2-t)} = \\frac{1}{1-t} - \\frac{1}{2-t}\\), this equals \\(-\\log|1-t| + \\log|2-t| + C = \\log\\left|\\frac{2-\\sin x}{1-\\sin x}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q18",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{(x^2+1)(x^2+2)}{(x^2+3)(x^2+4)}\\).",
+    "context": null,
+    "solution": "The fraction is improper; since \\((x^2+1)(x^2+2)=x^4+3x^2+2\\) and \\((x^2+3)(x^2+4)=x^4+7x^2+12\\), dividing gives \\(1 + \\frac{-4x^2-10}{(x^2+3)(x^2+4)}\\). Writing \\(\\frac{-4x^2-10}{(x^2+3)(x^2+4)} = \\frac{A}{x^2+3} + \\frac{B}{x^2+4}\\) with \\(-4x^2-10 = A(x^2+4)+B(x^2+3)\\), put \\(x^2=-3\\): \\(A=2\\); \\(x^2=-4\\): \\(B=-6\\). Then \\(\\int \\frac{(x^2+1)(x^2+2)}{(x^2+3)(x^2+4)}\\,dx = \\int\\left(1 + \\frac{2}{x^2+3} - \\frac{6}{x^2+4}\\right)dx = x + \\frac{2}{\\sqrt{3}}\\tan^{-1}\\frac{x}{\\sqrt{3}} - 3\\tan^{-1}\\frac{x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q19",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{2x}{(x^2+1)(x^2+3)}\\).",
+    "context": null,
+    "solution": "Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\). Then \\(\\int \\frac{2x}{(x^2+1)(x^2+3)}\\,dx = \\int \\frac{dt}{(t+1)(t+3)}\\). Since \\(\\frac{1}{(t+1)(t+3)} = \\frac{1}{2}\\left(\\frac{1}{t+1} - \\frac{1}{t+3}\\right)\\), this equals \\(\\frac{1}{2}\\log\\left|\\frac{t+1}{t+3}\\right| + C = \\frac{1}{2}\\log\\left(\\frac{x^2+1}{x^2+3}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q20",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{1}{x(x^4-1)}\\).",
+    "context": null,
+    "solution": "Multiply numerator and denominator by \\(x^3\\): \\(\\frac{1}{x(x^4-1)} = \\frac{x^3}{x^4(x^4-1)}\\). Put \\(t = x^4\\), so \\(dt = 4x^3\\,dx\\). Then \\(\\int \\frac{dx}{x(x^4-1)} = \\frac{1}{4}\\int \\frac{dt}{t(t-1)} = \\frac{1}{4}\\int\\left(\\frac{1}{t-1} - \\frac{1}{t}\\right)dt = \\frac{1}{4}\\log\\left|\\frac{t-1}{t}\\right| + C = \\frac{1}{4}\\log\\left|\\frac{x^4-1}{x^4}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q21",
+    "format": "subjective",
+    "stem": "Integrate the rational function \\(\\frac{1}{e^x-1}\\). [Hint: Put \\(e^x=t\\)]",
+    "context": null,
+    "solution": "Put \\(t = e^x\\), so \\(dt = e^x\\,dx\\) and \\(dx = \\frac{dt}{t}\\). Then \\(\\int \\frac{dx}{e^x-1} = \\int \\frac{dt}{t(t-1)} = \\int\\left(\\frac{1}{t-1} - \\frac{1}{t}\\right)dt = \\log|t-1| - \\log|t| + C = \\log\\left|\\frac{e^x-1}{e^x}\\right| + C = \\log|e^x-1| - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q22",
+    "format": "mcq",
+    "stem": "\\(\\int \\frac{x\\,dx}{(x-1)(x-2)}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.5 Q23",
+    "format": "mcq",
+    "stem": "\\(\\int \\frac{dx}{x(x^2+1)}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.17",
+    "format": "subjective",
+    "stem": "Find \\(\\int x \\cos x \\, dx\\).",
+    "context": null,
+    "solution": "Put \\(f(x) = x\\) (first function) and \\(g(x) = \\cos x\\) (second function). Then, integration by parts gives \\(\\int x \\cos x \\, dx = x \\int \\cos x \\, dx - \\int [\\frac{d}{dx}(x) \\int \\cos x \\, dx]\\, dx = x \\sin x - \\int \\sin x \\, dx = x \\sin x + \\cos x + C\\). Note the choice of first and second function matters: taking \\(f(x) = \\cos x\\) and \\(g(x) = x\\) instead reduces the integral to the more complicated \\(\\int \\sin x \\, \\frac{x^2}{2}\\, dx\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.18",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\log x \\, dx\\).",
+    "context": null,
+    "solution": "We cannot guess a function whose derivative is \\(\\log x\\). Take \\(\\log x\\) as the first function and the constant function \\(1\\) as the second function; the integral of the second function is \\(x\\). Hence \\(\\int (\\log x \\cdot 1)\\, dx = \\log x \\int 1\\, dx - \\int [\\frac{d}{dx}(\\log x) \\int 1\\, dx]\\, dx = (\\log x)\\cdot x - \\int \\frac{1}{x}\\, x \\, dx = x \\log x - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.19",
+    "format": "subjective",
+    "stem": "Find \\(\\int x\\, e^{x} \\, dx\\).",
+    "context": null,
+    "solution": "Take the first function as \\(x\\) and the second function as \\(e^{x}\\). The integral of the second function is \\(e^{x}\\). Therefore \\(\\int x\\, e^{x} \\, dx = x\\, e^{x} - \\int 1 \\cdot e^{x} \\, dx = x e^{x} - e^{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.20",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{x \\sin^{-1} x}{\\sqrt{1-x^{2}}} \\, dx\\).",
+    "context": null,
+    "solution": "Let the first function be \\(\\sin^{-1} x\\) and the second function be \\(\\frac{x}{\\sqrt{1-x^{2}}}\\). First find the integral of the second function \\(\\int \\frac{x\\, dx}{\\sqrt{1-x^{2}}}\\): put \\(t = 1 - x^{2}\\), then \\(dt = -2x\\, dx\\), so \\(\\int \\frac{x\\, dx}{\\sqrt{1-x^{2}}} = -\\frac{1}{2}\\int \\frac{dt}{\\sqrt{t}} = -\\sqrt{t} = -\\sqrt{1-x^{2}}\\). Hence \\(\\int \\frac{x \\sin^{-1} x}{\\sqrt{1-x^{2}}}\\, dx = (\\sin^{-1} x)(-\\sqrt{1-x^{2}}) - \\int \\frac{1}{\\sqrt{1-x^{2}}}(-\\sqrt{1-x^{2}})\\, dx = -\\sqrt{1-x^{2}}\\,\\sin^{-1} x + x + C = x - \\sqrt{1-x^{2}}\\,\\sin^{-1} x + C\\). (Alternatively, substitute \\(\\sin^{-1} x = \\theta\\) and then integrate by parts.)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.21",
+    "format": "subjective",
+    "stem": "Find \\(\\int e^{x} \\sin x \\, dx\\).",
+    "context": null,
+    "solution": "Take \\(e^{x}\\) as the first function and \\(\\sin x\\) as the second function. Integrating by parts, \\(I = \\int e^{x} \\sin x \\, dx = e^{x}(-\\cos x) + \\int e^{x} \\cos x \\, dx = -e^{x}\\cos x + I_1\\) (say) ...(1). Taking \\(e^{x}\\) and \\(\\cos x\\) as the first and second functions in \\(I_1\\), we get \\(I_1 = e^{x} \\sin x - \\int e^{x} \\sin x \\, dx\\). Substituting \\(I_1\\) in (1): \\(I = -e^{x}\\cos x + e^{x}\\sin x - I\\), or \\(2I = e^{x}(\\sin x - \\cos x)\\). Hence \\(I = \\int e^{x} \\sin x \\, dx = \\frac{e^{x}}{2}(\\sin x - \\cos x) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.22(i)",
+    "format": "subjective",
+    "stem": "Find \\(\\int e^{x}\\left(\\tan^{-1} x + \\frac{1}{1+x^{2}}\\right) dx\\).",
+    "context": "Find the following integrals.",
+    "solution": "We have \\(I = \\int e^{x}\\left(\\tan^{-1} x + \\frac{1}{1+x^{2}}\\right) dx\\). Consider \\(f(x) = \\tan^{-1} x\\), then \\(f'(x) = \\frac{1}{1+x^{2}}\\). Thus the integrand is of the form \\(e^{x}[f(x) + f'(x)]\\), and \\(\\int e^{x}[f(x)+f'(x)]\\, dx = e^{x} f(x) + C\\). Therefore \\(I = e^{x} \\tan^{-1} x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.6 Eg.22(ii)",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{(x^{2}+1)\\, e^{x}}{(x+1)^{2}} \\, dx\\).",
+    "context": "Find the following integrals.",
+    "solution": "We have \\(I = \\int \\frac{(x^{2}+1)\\, e^{x}}{(x+1)^{2}}\\, dx = \\int e^{x}\\left[\\frac{x^{2}-1+1+1}{(x+1)^{2}}\\right] dx = \\int e^{x}\\left[\\frac{x^{2}-1}{(x+1)^{2}} + \\frac{2}{(x+1)^{2}}\\right] dx = \\int e^{x}\\left[\\frac{x-1}{x+1} + \\frac{2}{(x+1)^{2}}\\right] dx\\). Consider \\(f(x) = \\frac{x-1}{x+1}\\), then \\(f'(x) = \\frac{2}{(x+1)^{2}}\\). Thus the integrand is of the form \\(e^{x}[f(x) + f'(x)]\\). Therefore \\(\\int \\frac{x^{2}+1}{(x+1)^{2}}\\, e^{x} \\, dx = \\frac{x-1}{x+1}\\, e^{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q1",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\sin x\\).",
+    "context": null,
+    "solution": "By parts with \\(u = x\\), \\(dv = \\sin x\\,dx\\), so \\(du = dx\\), \\(v = -\\cos x\\). Then \\(\\int x \\sin x\\,dx = -x\\cos x + \\int \\cos x\\,dx = -x\\cos x + \\sin x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q2",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\sin 3x\\).",
+    "context": null,
+    "solution": "By parts with \\(u = x\\), \\(dv = \\sin 3x\\,dx\\), so \\(v = -\\tfrac{1}{3}\\cos 3x\\). Then \\(\\int x \\sin 3x\\,dx = -\\tfrac{x}{3}\\cos 3x + \\tfrac{1}{3}\\int \\cos 3x\\,dx = -\\tfrac{x}{3}\\cos 3x + \\tfrac{1}{9}\\sin 3x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q3",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x^{2} e^{x}\\).",
+    "context": null,
+    "solution": "By parts with \\(u = x^2\\), \\(dv = e^x\\,dx\\): \\(\\int x^2 e^x\\,dx = x^2 e^x - 2\\int x e^x\\,dx\\). Since \\(\\int x e^x\\,dx = x e^x - e^x\\), we get \\(\\int x^2 e^x\\,dx = x^2 e^x - 2(x e^x - e^x) = e^x(x^2 - 2x + 2) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q4",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\log x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\log x\\) (ILATE), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\log x\\,dx = \\tfrac{x^2}{2}\\log x - \\int \\tfrac{x^2}{2}\\cdot\\tfrac{1}{x}\\,dx = \\tfrac{x^2}{2}\\log x - \\tfrac{1}{2}\\int x\\,dx = \\tfrac{x^2}{2}\\log x - \\tfrac{x^2}{4} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q5",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\log 2x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\log 2x\\), \\(dv = x\\,dx\\), so \\(du = \\tfrac{1}{x}\\,dx\\), \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\log 2x\\,dx = \\tfrac{x^2}{2}\\log 2x - \\int \\tfrac{x^2}{2}\\cdot\\tfrac{1}{x}\\,dx = \\tfrac{x^2}{2}\\log 2x - \\tfrac{x^2}{4} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q6",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x^{2} \\log x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\log x\\), \\(dv = x^2\\,dx\\), so \\(v = \\tfrac{x^3}{3}\\). Then \\(\\int x^2 \\log x\\,dx = \\tfrac{x^3}{3}\\log x - \\int \\tfrac{x^3}{3}\\cdot\\tfrac{1}{x}\\,dx = \\tfrac{x^3}{3}\\log x - \\tfrac{1}{3}\\int x^2\\,dx = \\tfrac{x^3}{3}\\log x - \\tfrac{x^3}{9} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q7",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\sin^{-1} x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\sin^{-1} x\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\sin^{-1} x\\,dx = \\tfrac{x^2}{2}\\sin^{-1} x - \\tfrac{1}{2}\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx\\). Writing \\(x^2 = 1-(1-x^2)\\), \\(\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx = \\sin^{-1} x - \\int \\sqrt{1-x^2}\\,dx = \\sin^{-1} x - \\big(\\tfrac{x}{2}\\sqrt{1-x^2} + \\tfrac{1}{2}\\sin^{-1} x\\big)\\). Hence \\(\\int x \\sin^{-1} x\\,dx = \\tfrac{2x^2-1}{4}\\sin^{-1} x + \\tfrac{x}{4}\\sqrt{1-x^2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q8",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\tan^{-1} x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\tan^{-1} x\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\). Then \\(\\int x \\tan^{-1} x\\,dx = \\tfrac{x^2}{2}\\tan^{-1} x - \\tfrac{1}{2}\\int \\tfrac{x^2}{1+x^2}\\,dx\\). Since \\(\\int \\tfrac{x^2}{1+x^2}\\,dx = \\int\\big(1 - \\tfrac{1}{1+x^2}\\big)dx = x - \\tan^{-1} x\\), we get \\(\\int x \\tan^{-1} x\\,dx = \\tfrac{1}{2}(x^2+1)\\tan^{-1} x - \\tfrac{x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q9",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\cos^{-1} x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\cos^{-1} x\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\), \\(du = -\\tfrac{1}{\\sqrt{1-x^2}}\\,dx\\). Then \\(\\int x \\cos^{-1} x\\,dx = \\tfrac{x^2}{2}\\cos^{-1} x + \\tfrac{1}{2}\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx\\). Using \\(\\int \\tfrac{x^2}{\\sqrt{1-x^2}}\\,dx = \\tfrac{1}{2}\\sin^{-1} x - \\tfrac{x}{2}\\sqrt{1-x^2}\\), we get \\(\\int x \\cos^{-1} x\\,dx = \\tfrac{x^2}{2}\\cos^{-1} x + \\tfrac{1}{4}\\sin^{-1} x - \\tfrac{x}{4}\\sqrt{1-x^2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q10",
+    "format": "subjective",
+    "stem": "Integrate the function \\((\\sin^{-1} x)^{2}\\).",
+    "context": null,
+    "solution": "Take \\(u = (\\sin^{-1} x)^2\\), \\(dv = dx\\), \\(v = x\\): \\(\\int (\\sin^{-1} x)^2\\,dx = x(\\sin^{-1} x)^2 - 2\\int \\tfrac{x\\sin^{-1} x}{\\sqrt{1-x^2}}\\,dx\\). For the remaining integral take \\(u = \\sin^{-1} x\\), \\(dv = \\tfrac{x}{\\sqrt{1-x^2}}\\,dx\\), \\(v = -\\sqrt{1-x^2}\\): \\(\\int \\tfrac{x\\sin^{-1} x}{\\sqrt{1-x^2}}\\,dx = -\\sqrt{1-x^2}\\,\\sin^{-1} x + \\int 1\\,dx = -\\sqrt{1-x^2}\\,\\sin^{-1} x + x\\). Therefore \\(\\int (\\sin^{-1} x)^2\\,dx = x(\\sin^{-1} x)^2 + 2\\sqrt{1-x^2}\\,\\sin^{-1} x - 2x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q11",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x \\cos^{-1} x}{\\sqrt{1-x^{2}}}\\).",
+    "context": null,
+    "solution": "Take \\(u = \\cos^{-1} x\\), \\(dv = \\tfrac{x}{\\sqrt{1-x^2}}\\,dx\\), so \\(v = -\\sqrt{1-x^2}\\) and \\(du = -\\tfrac{1}{\\sqrt{1-x^2}}\\,dx\\). Then \\(\\int \\tfrac{x\\cos^{-1} x}{\\sqrt{1-x^2}}\\,dx = -\\sqrt{1-x^2}\\,\\cos^{-1} x - \\int \\big(-\\sqrt{1-x^2}\\big)\\big(-\\tfrac{1}{\\sqrt{1-x^2}}\\big)dx = -\\sqrt{1-x^2}\\,\\cos^{-1} x - \\int 1\\,dx = -\\sqrt{1-x^2}\\,\\cos^{-1} x - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q12",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x \\sec^{2} x\\).",
+    "context": null,
+    "solution": "Take \\(u = x\\), \\(dv = \\sec^2 x\\,dx\\), so \\(v = \\tan x\\). Then \\(\\int x \\sec^2 x\\,dx = x\\tan x - \\int \\tan x\\,dx = x\\tan x - (-\\log|\\cos x|) = x\\tan x + \\log|\\cos x| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q13",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\tan^{-1} x\\).",
+    "context": null,
+    "solution": "Write \\(\\tan^{-1} x = 1\\cdot\\tan^{-1} x\\) and take \\(u = \\tan^{-1} x\\), \\(dv = dx\\), \\(v = x\\). Then \\(\\int \\tan^{-1} x\\,dx = x\\tan^{-1} x - \\int \\tfrac{x}{1+x^2}\\,dx = x\\tan^{-1} x - \\tfrac{1}{2}\\log(1+x^2) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q14",
+    "format": "subjective",
+    "stem": "Integrate the function \\(x (\\log x)^{2}\\).",
+    "context": null,
+    "solution": "Take \\(u = (\\log x)^2\\), \\(dv = x\\,dx\\), so \\(v = \\tfrac{x^2}{2}\\), \\(du = \\tfrac{2\\log x}{x}\\,dx\\). Then \\(\\int x(\\log x)^2\\,dx = \\tfrac{x^2}{2}(\\log x)^2 - \\int x \\log x\\,dx\\). Using \\(\\int x \\log x\\,dx = \\tfrac{x^2}{2}\\log x - \\tfrac{x^2}{4}\\), we get \\(\\int x(\\log x)^2\\,dx = \\tfrac{x^2}{2}(\\log x)^2 - \\tfrac{x^2}{2}\\log x + \\tfrac{x^2}{4} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q15",
+    "format": "subjective",
+    "stem": "Integrate the function \\((x^{2}+1) \\log x\\).",
+    "context": null,
+    "solution": "Take \\(u = \\log x\\), \\(dv = (x^2+1)\\,dx\\), so \\(v = \\tfrac{x^3}{3} + x\\). Then \\(\\int (x^2+1)\\log x\\,dx = \\big(\\tfrac{x^3}{3} + x\\big)\\log x - \\int \\big(\\tfrac{x^3}{3} + x\\big)\\tfrac{1}{x}\\,dx = \\big(\\tfrac{x^3}{3} + x\\big)\\log x - \\int \\big(\\tfrac{x^2}{3} + 1\\big)dx = \\big(\\tfrac{x^3}{3} + x\\big)\\log x - \\tfrac{x^3}{9} - x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q16",
+    "format": "subjective",
+    "stem": "Integrate the function \\(e^{x} (\\sin x + \\cos x)\\).",
+    "context": null,
+    "solution": "This has the form \\(\\int e^x\\big[f(x) + f'(x)\\big]dx = e^x f(x) + C\\) with \\(f(x) = \\sin x\\), \\(f'(x) = \\cos x\\). Hence \\(\\int e^x(\\sin x + \\cos x)\\,dx = e^x \\sin x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q17",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{x\\, e^{x}}{(1+x)^{2}}\\).",
+    "context": null,
+    "solution": "Write \\(\\tfrac{x}{(1+x)^2} = \\tfrac{(1+x)-1}{(1+x)^2} = \\tfrac{1}{1+x} - \\tfrac{1}{(1+x)^2}\\), so the integrand is \\(e^x\\big[f(x)+f'(x)\\big]\\) with \\(f(x) = \\tfrac{1}{1+x}\\), \\(f'(x) = -\\tfrac{1}{(1+x)^2}\\). Hence \\(\\int \\tfrac{x e^x}{(1+x)^2}\\,dx = \\tfrac{e^x}{1+x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q18",
+    "format": "subjective",
+    "stem": "Integrate the function \\(e^{x}\\left(\\dfrac{1+\\sin x}{1+\\cos x}\\right)\\).",
+    "context": null,
+    "solution": "Using \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\) and \\(1+\\sin x = 1 + 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\), \\(\\tfrac{1+\\sin x}{1+\\cos x} = \\tfrac{1}{2}\\sec^2\\tfrac{x}{2} + \\tan\\tfrac{x}{2}\\). So the integrand is \\(e^x\\big[f(x)+f'(x)\\big]\\) with \\(f(x) = \\tan\\tfrac{x}{2}\\), \\(f'(x) = \\tfrac{1}{2}\\sec^2\\tfrac{x}{2}\\). Hence \\(\\int e^x\\Big(\\tfrac{1+\\sin x}{1+\\cos x}\\Big)dx = e^x \\tan\\tfrac{x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q19",
+    "format": "subjective",
+    "stem": "Integrate the function \\(e^{x}\\left(\\dfrac{1}{x} - \\dfrac{1}{x^{2}}\\right)\\).",
+    "context": null,
+    "solution": "This is \\(\\int e^x\\big[f(x) + f'(x)\\big]dx\\) with \\(f(x) = \\tfrac{1}{x}\\), \\(f'(x) = -\\tfrac{1}{x^2}\\). Hence \\(\\int e^x\\big(\\tfrac{1}{x} - \\tfrac{1}{x^2}\\big)dx = \\tfrac{e^x}{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q20",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\dfrac{(x-3)\\, e^{x}}{(x-1)^{3}}\\).",
+    "context": null,
+    "solution": "Write \\(\\tfrac{x-3}{(x-1)^3} = \\tfrac{(x-1)-2}{(x-1)^3} = \\tfrac{1}{(x-1)^2} - \\tfrac{2}{(x-1)^3}\\), which is \\(f(x)+f'(x)\\) with \\(f(x) = \\tfrac{1}{(x-1)^2}\\), \\(f'(x) = -\\tfrac{2}{(x-1)^3}\\). Hence \\(\\int \\tfrac{(x-3)e^x}{(x-1)^3}\\,dx = \\tfrac{e^x}{(x-1)^2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q21",
+    "format": "subjective",
+    "stem": "Integrate the function \\(e^{2x} \\sin x\\).",
+    "context": null,
+    "solution": "Using \\(\\int e^{ax}\\sin bx\\,dx = \\tfrac{e^{ax}}{a^2+b^2}(a\\sin bx - b\\cos bx) + C\\) with \\(a = 2\\), \\(b = 1\\): \\(\\int e^{2x}\\sin x\\,dx = \\tfrac{e^{2x}}{5}(2\\sin x - \\cos x) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q22",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sin^{-1}\\left(\\dfrac{2x}{1+x^{2}}\\right)\\).",
+    "context": null,
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\tfrac{2x}{1+x^2} = \\sin 2\\theta\\) and \\(\\sin^{-1}\\big(\\tfrac{2x}{1+x^2}\\big) = 2\\theta = 2\\tan^{-1} x\\) (for \\(-1\\le x\\le 1\\)). Then \\(\\int \\sin^{-1}\\big(\\tfrac{2x}{1+x^2}\\big)dx = 2\\int \\tan^{-1} x\\,dx = 2\\big(x\\tan^{-1} x - \\tfrac{1}{2}\\log(1+x^2)\\big) = 2x\\tan^{-1} x - \\log(1+x^2) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q23",
+    "format": "mcq",
+    "stem": "\\(\\int x^{2} e^{x^{3}} \\, dx\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.6 Q24",
+    "format": "mcq",
+    "stem": "\\(\\int e^{x} \\sec x\\, (1 + \\tan x) \\, dx\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "7.7 Eg.23",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\sqrt{x^2 + 2x + 5}\\,dx\\).",
+    "context": null,
+    "solution": "Note that \\(\\int \\sqrt{x^2 + 2x + 5}\\,dx = \\int \\sqrt{(x+1)^2 + 4}\\,dx\\). Put \\(x + 1 = y\\), so that \\(dx = dy\\). Then \\(\\int \\sqrt{x^2 + 2x + 5}\\,dx = \\int \\sqrt{y^2 + 2^2}\\,dy = \\frac{1}{2}\\,y\\sqrt{y^2 + 4} + \\frac{4}{2}\\log\\left|\\,y + \\sqrt{y^2 + 4}\\,\\right| + C\\) [using 7.6.2 (ii)] \\(= \\frac{1}{2}(x+1)\\sqrt{x^2 + 2x + 5} + 2\\log\\left|\\,x + 1 + \\sqrt{x^2 + 2x + 5}\\,\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.7 Eg.24",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\sqrt{3 - 2x - x^2}\\,dx\\).",
+    "context": null,
+    "solution": "Note that \\(\\int \\sqrt{3 - 2x - x^2}\\,dx = \\int \\sqrt{4 - (x+1)^2}\\,dx\\). Put \\(x + 1 = y\\) so that \\(dx = dy\\). Thus \\(\\int \\sqrt{3 - 2x - x^2}\\,dx = \\int \\sqrt{4 - y^2}\\,dy = \\frac{1}{2}\\,y\\sqrt{4 - y^2} + \\frac{4}{2}\\sin^{-1}\\frac{y}{2} + C\\) [using 7.6.2 (iii)] \\(= \\frac{1}{2}(x+1)\\sqrt{3 - 2x - x^2} + 2\\sin^{-1}\\left(\\frac{x+1}{2}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q1",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{4 - x^2}\\).",
+    "context": null,
+    "solution": "Use \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a} + C\\) with \\(a = 2\\). So \\(\\int \\sqrt{4 - x^2}\\,dx = \\frac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\frac{x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q2",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{1 - 4x^2}\\).",
+    "context": null,
+    "solution": "Put \\(u = 2x\\), \\(du = 2\\,dx\\): \\(\\int \\sqrt{1 - 4x^2}\\,dx = \\frac{1}{2}\\int \\sqrt{1 - u^2}\\,du = \\frac{1}{2}\\left[\\frac{u}{2}\\sqrt{1 - u^2} + \\frac{1}{2}\\sin^{-1}u\\right] + C\\). Back-substituting \\(u = 2x\\): \\(= \\frac{x}{2}\\sqrt{1 - 4x^2} + \\frac{1}{4}\\sin^{-1}(2x) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q3",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 4x + 6}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x^2 + 4x + 6 = (x+2)^2 + 2\\). With \\(t = x+2\\) and \\(a^2 = 2\\), \\(\\int \\sqrt{t^2 + a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 + a^2} + \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 + a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 4x + 6}\\,dx = \\frac{x+2}{2}\\sqrt{x^2 + 4x + 6} + \\log\\left|x + 2 + \\sqrt{x^2 + 4x + 6}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q4",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 4x + 1}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x^2 + 4x + 1 = (x+2)^2 - 3\\). With \\(t = x+2\\), \\(a^2 = 3\\), use \\(\\int \\sqrt{t^2 - a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 - a^2} - \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 - a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 4x + 1}\\,dx = \\frac{x+2}{2}\\sqrt{x^2 + 4x + 1} - \\frac{3}{2}\\log\\left|x + 2 + \\sqrt{x^2 + 4x + 1}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q5",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{1 - 4x - x^2}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(1 - 4x - x^2 = 5 - (x+2)^2\\). With \\(t = x+2\\), \\(a^2 = 5\\), use \\(\\int \\sqrt{a^2 - t^2}\\,dt = \\frac{t}{2}\\sqrt{a^2 - t^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{t}{a} + C\\). So \\(\\int \\sqrt{1 - 4x - x^2}\\,dx = \\frac{x+2}{2}\\sqrt{1 - 4x - x^2} + \\frac{5}{2}\\sin^{-1}\\frac{x+2}{\\sqrt{5}} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q6",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 4x - 5}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x^2 + 4x - 5 = (x+2)^2 - 9\\). With \\(t = x+2\\), \\(a^2 = 9\\), use \\(\\int \\sqrt{t^2 - a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 - a^2} - \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 - a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 4x - 5}\\,dx = \\frac{x+2}{2}\\sqrt{x^2 + 4x - 5} - \\frac{9}{2}\\log\\left|x + 2 + \\sqrt{x^2 + 4x - 5}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q7",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{1 + 3x - x^2}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(1 + 3x - x^2 = \\frac{13}{4} - \\left(x - \\frac{3}{2}\\right)^2\\). With \\(t = x - \\frac{3}{2}\\), \\(a^2 = \\frac{13}{4}\\), use \\(\\int \\sqrt{a^2 - t^2}\\,dt = \\frac{t}{2}\\sqrt{a^2 - t^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{t}{a} + C\\). So \\(\\int \\sqrt{1 + 3x - x^2}\\,dx = \\frac{2x - 3}{4}\\sqrt{1 + 3x - x^2} + \\frac{13}{8}\\sin^{-1}\\frac{2x - 3}{\\sqrt{13}} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q8",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 3x}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x^2 + 3x = \\left(x + \\frac{3}{2}\\right)^2 - \\frac{9}{4}\\). With \\(t = x + \\frac{3}{2}\\), \\(a^2 = \\frac{9}{4}\\), use \\(\\int \\sqrt{t^2 - a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 - a^2} - \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 - a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 3x}\\,dx = \\frac{2x + 3}{4}\\sqrt{x^2 + 3x} - \\frac{9}{8}\\log\\left|x + \\frac{3}{2} + \\sqrt{x^2 + 3x}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q9",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{1 + \\dfrac{x^2}{9}}\\).",
+    "context": null,
+    "solution": "Write \\(\\sqrt{1 + \\frac{x^2}{9}} = \\frac{1}{3}\\sqrt{9 + x^2}\\). With \\(a = 3\\), use \\(\\int \\sqrt{x^2 + a^2}\\,dx = \\frac{x}{2}\\sqrt{x^2 + a^2} + \\frac{a^2}{2}\\log\\left|x + \\sqrt{x^2 + a^2}\\right| + C\\): \\(\\frac{1}{3}\\int \\sqrt{x^2 + 9}\\,dx = \\frac{1}{3}\\left[\\frac{x}{2}\\sqrt{x^2 + 9} + \\frac{9}{2}\\log\\left|x + \\sqrt{x^2 + 9}\\right|\\right] + C = \\frac{x}{6}\\sqrt{x^2 + 9} + \\frac{3}{2}\\log\\left|x + \\sqrt{x^2 + 9}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q10",
+    "format": "mcq",
+    "stem": "\\(\\int \\sqrt{1 + x^2}\\,dx\\) is equal to",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.7 Q11",
+    "format": "mcq",
+    "stem": "\\(\\int \\sqrt{x^2 - 8x + 7}\\,dx\\) is equal to",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "D",
+    "options": []
+  },
+  {
+    "ref": "7.8 Eg.25(i)",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{2}^{3} x^{2}\\,dx\\).",
+    "context": "Evaluate the following integrals:",
+    "solution": "Let \\(I = \\int_{2}^{3} x^{2}\\,dx\\). Since \\(\\int x^{2}\\,dx = \\frac{x^{3}}{3} = F(x)\\), therefore, by the second fundamental theorem, we get \\(I = F(3) - F(2) = \\frac{27}{3} - \\frac{8}{3} = \\frac{19}{3}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.8 Eg.25(ii)",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{4}^{9} \\frac{\\sqrt{x}}{\\left(30 - x^{\\frac{3}{2}}\\right)^{2}}\\,dx\\).",
+    "context": "Evaluate the following integrals:",
+    "solution": "Let \\(I = \\int_{4}^{9} \\frac{\\sqrt{x}}{\\left(30 - x^{\\frac{3}{2}}\\right)^{2}}\\,dx\\). We first find the anti derivative of the integrand. Put \\(30 - x^{\\frac{3}{2}} = t\\). Then \\(-\\frac{3}{2}\\sqrt{x}\\,dx = dt\\) or \\(\\sqrt{x}\\,dx = -\\frac{2}{3}\\,dt\\). Thus, \\(\\int \\frac{\\sqrt{x}}{\\left(30 - x^{\\frac{3}{2}}\\right)^{2}}\\,dx = -\\frac{2}{3}\\int \\frac{dt}{t^{2}} = \\frac{2}{3}\\left[\\frac{1}{t}\\right] = \\frac{2}{3}\\left[\\frac{1}{30 - x^{\\frac{3}{2}}}\\right] = F(x)\\). Therefore, by the second fundamental theorem of calculus, we have \\(I = F(9) - F(4) = \\frac{2}{3}\\left[\\frac{1}{30 - x^{\\frac{3}{2}}}\\right]_{4}^{9} = \\frac{2}{3}\\left[\\frac{1}{(30 - 27)} - \\frac{1}{30 - 8}\\right] = \\frac{2}{3}\\left[\\frac{1}{3} - \\frac{1}{22}\\right] = \\frac{19}{99}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.8 Eg.25(iii)",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{1}^{2} \\frac{x\\,dx}{(x+1)(x+2)}\\).",
+    "context": "Evaluate the following integrals:",
+    "solution": "Let \\(I = \\int_{1}^{2} \\frac{x\\,dx}{(x+1)(x+2)}\\). Using partial fraction, we get \\(\\frac{x}{(x+1)(x+2)} = \\frac{-1}{x+1} + \\frac{2}{x+2}\\). So \\(\\int \\frac{x\\,dx}{(x+1)(x+2)} = -\\log|x+1| + 2\\log|x+2| = F(x)\\). Therefore, by the second fundamental theorem of calculus, we have \\(I = F(2) - F(1) = [-\\log 3 + 2\\log 4] - [-\\log 2 + 2\\log 3] = -3\\log 3 + \\log 2 + 2\\log 4 = \\log\\left(\\frac{32}{27}\\right)\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.8 Eg.25(iv)",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{0}^{\\frac{\\pi}{4}} \\sin^{3} 2t \\cos 2t \\,dt\\).",
+    "context": "Evaluate the following integrals:",
+    "solution": "Let \\(I = \\int_{0}^{\\frac{\\pi}{4}} \\sin^{3} 2t \\cos 2t \\,dt\\). Consider \\(\\int \\sin^{3} 2t \\cos 2t \\,dt\\). Put \\(\\sin 2t = u\\) so that \\(2\\cos 2t\\,dt = du\\) or \\(\\cos 2t\\,dt = \\frac{1}{2}\\,du\\). So \\(\\int \\sin^{3} 2t \\cos 2t \\,dt = \\frac{1}{2}\\int u^{3}\\,du = \\frac{1}{8}[u^{4}] = \\frac{1}{8}\\sin^{4} 2t = F(t)\\) say. Therefore, by the second fundamental theorem of integral calculus, \\(I = F\\left(\\frac{\\pi}{4}\\right) - F(0) = \\frac{1}{8}\\left[\\sin^{4}\\frac{\\pi}{2} - \\sin^{4} 0\\right] = \\frac{1}{8}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q1",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{-1}^{1} (x+1)\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{-1}^{1}(x+1)\\,dx = \\left[\\frac{x^2}{2}+x\\right]_{-1}^{1} = \\left(\\frac12+1\\right)-\\left(\\frac12-1\\right) = \\frac32-\\left(-\\frac12\\right) = 2.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q2",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{2}^{3} \\frac{1}{x}\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{2}^{3}\\frac{1}{x}\\,dx = \\left[\\log x\\right]_{2}^{3} = \\log 3-\\log 2 = \\log\\frac{3}{2}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q3",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{1}^{2} (4x^{3} - 5x^{2} + 6x + 9)\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{1}^{2}(4x^3-5x^2+6x+9)\\,dx = \\left[x^4-\\frac{5x^3}{3}+3x^2+9x\\right]_{1}^{2}.\\) At \\(x=2\\): \\(16-\\frac{40}{3}+12+18 = \\frac{98}{3}\\); at \\(x=1\\): \\(1-\\frac{5}{3}+3+9 = \\frac{34}{3}\\). So the value is \\(\\frac{98}{3}-\\frac{34}{3} = \\frac{64}{3}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q4",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\sin 2x \\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{\\pi/4}\\sin 2x\\,dx = \\left[-\\frac{\\cos 2x}{2}\\right]_{0}^{\\pi/4} = -\\frac{\\cos(\\pi/2)}{2}+\\frac{\\cos 0}{2} = 0+\\frac12 = \\frac12.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q5",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\cos 2x \\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{\\pi/2}\\cos 2x\\,dx = \\left[\\frac{\\sin 2x}{2}\\right]_{0}^{\\pi/2} = \\frac{\\sin\\pi}{2}-\\frac{\\sin 0}{2} = 0-0 = 0.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q6",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{4}^{5} e^{x}\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{4}^{5}e^{x}\\,dx = \\left[e^{x}\\right]_{4}^{5} = e^{5}-e^{4}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q7",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\tan x \\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{\\pi/4}\\tan x\\,dx = \\left[\\log|\\sec x|\\right]_{0}^{\\pi/4} = \\log\\sec\\frac{\\pi}{4}-\\log\\sec 0 = \\log\\sqrt{2}-\\log 1 = \\frac12\\log 2.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q8",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{4}} \\operatorname{cosec} x \\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int\\csc x\\,dx = \\log\\left|\\tan\\frac{x}{2}\\right|\\). So \\(\\int_{\\pi/6}^{\\pi/4}\\csc x\\,dx = \\left[\\log\\left|\\tan\\frac{x}{2}\\right|\\right]_{\\pi/6}^{\\pi/4} = \\log\\tan\\frac{\\pi}{8}-\\log\\tan\\frac{\\pi}{12}.\\) Since \\(\\tan\\frac{\\pi}{8}=\\sqrt{2}-1\\) and \\(\\tan\\frac{\\pi}{12}=2-\\sqrt{3}\\), the value is \\(\\log\\frac{\\sqrt{2}-1}{2-\\sqrt{3}}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q9",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{dx}{\\sqrt{1 - x^{2}}}\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{1}\\frac{dx}{\\sqrt{1-x^2}} = \\left[\\sin^{-1}x\\right]_{0}^{1} = \\sin^{-1}1-\\sin^{-1}0 = \\frac{\\pi}{2}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q10",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{dx}{1 + x^{2}}\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{1}\\frac{dx}{1+x^2} = \\left[\\tan^{-1}x\\right]_{0}^{1} = \\tan^{-1}1-\\tan^{-1}0 = \\frac{\\pi}{4}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q11",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{2}^{3} \\frac{dx}{x^{2} - 1}\\).",
+    "context": null,
+    "solution": "\\(\\int\\frac{dx}{x^2-1} = \\frac12\\log\\left|\\frac{x-1}{x+1}\\right|\\). So \\(\\int_{2}^{3}\\frac{dx}{x^2-1} = \\frac12\\left[\\log\\frac{x-1}{x+1}\\right]_{2}^{3} = \\frac12\\left(\\log\\frac{2}{4}-\\log\\frac{1}{3}\\right) = \\frac12\\log\\frac{3}{2}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q12",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\cos^{2} x \\,dx\\).",
+    "context": null,
+    "solution": "Using \\(\\cos^2 x=\\frac{1+\\cos 2x}{2}\\): \\(\\int_{0}^{\\pi/2}\\cos^2 x\\,dx = \\frac12\\int_{0}^{\\pi/2}(1+\\cos 2x)\\,dx = \\frac12\\left[x+\\frac{\\sin 2x}{2}\\right]_{0}^{\\pi/2} = \\frac12\\left(\\frac{\\pi}{2}+0\\right) = \\frac{\\pi}{4}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q13",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{2}^{3} \\frac{x\\,dx}{x^{2} + 1}\\).",
+    "context": null,
+    "solution": "\\(\\int\\frac{x}{x^2+1}\\,dx = \\frac12\\log(x^2+1)\\). So \\(\\int_{2}^{3}\\frac{x\\,dx}{x^2+1} = \\frac12\\left[\\log(x^2+1)\\right]_{2}^{3} = \\frac12(\\log 10-\\log 5) = \\frac12\\log 2.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q14",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{2x + 3}{5x^{2} + 1}\\,dx\\).",
+    "context": null,
+    "solution": "Split: \\(\\int_{0}^{1}\\frac{2x+3}{5x^2+1}\\,dx = \\int_{0}^{1}\\frac{2x}{5x^2+1}\\,dx+3\\int_{0}^{1}\\frac{dx}{5x^2+1}.\\) For the first, \\(\\int\\frac{2x}{5x^2+1}\\,dx=\\frac15\\log(5x^2+1)\\), giving \\(\\frac15\\log 6\\). For the second, \\(3\\int\\frac{dx}{5x^2+1}=\\frac{3}{\\sqrt5}\\tan^{-1}(\\sqrt5\\,x)\\), giving \\(\\frac{3}{\\sqrt5}\\tan^{-1}\\sqrt5\\). Hence the value is \\(\\frac15\\log 6+\\frac{3}{\\sqrt5}\\tan^{-1}\\sqrt5.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q15",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} x\\, e^{x^{2}}\\,dx\\).",
+    "context": null,
+    "solution": "Put \\(t=x^2\\), so \\(dt=2x\\,dx\\); limits \\(x=0\\to t=0\\), \\(x=1\\to t=1\\). Then \\(\\int_{0}^{1}x\\,e^{x^2}\\,dx = \\frac12\\int_{0}^{1}e^{t}\\,dt = \\frac12\\left[e^{t}\\right]_{0}^{1} = \\frac12(e-1).\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q16",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{1}^{2} \\frac{5x^{2}}{x^{2} + 4x + 3}\\,dx\\).",
+    "context": null,
+    "solution": "Divide: \\(\\frac{5x^2}{x^2+4x+3}=5-\\frac{20x+15}{(x+1)(x+3)}\\). Partial fractions: \\(\\frac{20x+15}{(x+1)(x+3)}=-\\frac{5}{2(x+1)}+\\frac{45}{2(x+3)}\\). So an antiderivative is \\(5x+\\frac52\\log(x+1)-\\frac{45}{2}\\log(x+3)\\). Evaluating from \\(1\\) to \\(2\\): \\(\\left(10+\\frac52\\log 3-\\frac{45}{2}\\log 5\\right)-\\left(5+\\frac52\\log 2-\\frac{45}{2}\\log 4\\right) = 5+\\frac52\\log\\frac{3}{2}-\\frac{45}{2}\\log\\frac{5}{4}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q17",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} (2\\sec^{2} x + x^{3} + 2)\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{\\pi/4}(2\\sec^2 x+x^3+2)\\,dx = \\left[2\\tan x+\\frac{x^4}{4}+2x\\right]_{0}^{\\pi/4} = 2\\tan\\frac{\\pi}{4}+\\frac{(\\pi/4)^4}{4}+2\\cdot\\frac{\\pi}{4} = 2+\\frac{\\pi^4}{1024}+\\frac{\\pi}{2}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q18",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\pi} \\left(\\sin^{2}\\frac{x}{2} - \\cos^{2}\\frac{x}{2}\\right)\\,dx\\).",
+    "context": null,
+    "solution": "Since \\(\\sin^2\\frac{x}{2}-\\cos^2\\frac{x}{2}=-\\cos x\\), \\(\\int_{0}^{\\pi}\\left(\\sin^2\\frac{x}{2}-\\cos^2\\frac{x}{2}\\right)dx = -\\int_{0}^{\\pi}\\cos x\\,dx = -\\left[\\sin x\\right]_{0}^{\\pi} = -(\\sin\\pi-\\sin 0) = 0.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q19",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{2} \\frac{6x + 3}{x^{2} + 4}\\,dx\\).",
+    "context": null,
+    "solution": "Split: \\(\\int_{0}^{2}\\frac{6x+3}{x^2+4}\\,dx = \\int_{0}^{2}\\frac{6x}{x^2+4}\\,dx+\\int_{0}^{2}\\frac{3}{x^2+4}\\,dx = \\left[3\\log(x^2+4)+\\frac32\\tan^{-1}\\frac{x}{2}\\right]_{0}^{2}.\\) At \\(x=2\\): \\(3\\log 8+\\frac32\\cdot\\frac{\\pi}{4}\\); at \\(x=0\\): \\(3\\log 4\\). So the value is \\(3\\log 2+\\frac{3\\pi}{8}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q20",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\left(x\\, e^{x} + \\sin\\frac{\\pi x}{4}\\right)\\,dx\\).",
+    "context": null,
+    "solution": "\\(\\int_{0}^{1}x\\,e^{x}\\,dx = \\left[(x-1)e^{x}\\right]_{0}^{1} = 0-(-1) = 1\\) (by parts). Also \\(\\int_{0}^{1}\\sin\\frac{\\pi x}{4}\\,dx = \\left[-\\frac{4}{\\pi}\\cos\\frac{\\pi x}{4}\\right]_{0}^{1} = -\\frac{4}{\\pi}\\left(\\frac{1}{\\sqrt2}-1\\right) = \\frac{4-2\\sqrt2}{\\pi}\\). Hence the value is \\(1+\\frac{4-2\\sqrt2}{\\pi}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q21",
+    "format": "mcq",
+    "stem": "\\(\\int_{1}^{\\sqrt{3}} \\frac{dx}{1 + x^{2}}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "D",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.8 Q22",
+    "format": "mcq",
+    "stem": "\\(\\int_{0}^{\\frac{2}{3}} \\frac{dx}{4 + 9x^{2}}\\) equals",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "C",
+    "options": []
+  },
+  {
+    "ref": "7.9 Eg.26",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{-1}^{1} 5x^{4}\\sqrt{x^{5}+1}\\,dx\\).",
+    "context": null,
+    "solution": "Put \\(t = x^{5}+1\\), then \\(dt = 5x^{4}\\,dx\\). Therefore, \\(\\int 5x^{4}\\sqrt{x^{5}+1}\\,dx = \\int \\sqrt{t}\\,dt = \\frac{2}{3}t^{3/2} = \\frac{2}{3}(x^{5}+1)^{3/2}\\). Hence, \\(\\int_{-1}^{1} 5x^{4}\\sqrt{x^{5}+1}\\,dx = \\frac{2}{3}\\left[(x^{5}+1)^{3/2}\\right]_{-1}^{1} = \\frac{2}{3}\\left[(1^{5}+1)^{3/2} - ((-1)^{5}+1)^{3/2}\\right] = \\frac{2}{3}\\left[2^{3/2} - 0^{3/2}\\right] = \\frac{2}{3}(2\\sqrt{2}) = \\frac{4\\sqrt{2}}{3}\\). Alternatively, transform the limits: with \\(t = x^{5}+1\\), when \\(x=-1\\), \\(t=0\\) and when \\(x=1\\), \\(t=2\\). Thus \\(\\int_{-1}^{1} 5x^{4}\\sqrt{x^{5}+1}\\,dx = \\int_{0}^{2} \\sqrt{t}\\,dt = \\frac{2}{3}\\left[t^{3/2}\\right]_{0}^{2} = \\frac{2}{3}\\left[2^{3/2} - 0^{3/2}\\right] = \\frac{2}{3}(2\\sqrt{2}) = \\frac{4\\sqrt{2}}{3}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "7.9 Eg.27",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{0}^{1} \\frac{\\tan^{-1} x}{1+x^{2}}\\,dx\\).",
+    "context": null,
+    "solution": "Let \\(t = \\tan^{-1} x\\), then \\(dt = \\frac{1}{1+x^{2}}\\,dx\\). The new limits are, when \\(x=0\\), \\(t=0\\) and when \\(x=1\\), \\(t=\\frac{\\pi}{4}\\). Thus, as \\(x\\) varies from 0 to 1, \\(t\\) varies from 0 to \\(\\frac{\\pi}{4}\\). Therefore \\(\\int_{0}^{1} \\frac{\\tan^{-1} x}{1+x^{2}}\\,dx = \\int_{0}^{\\pi/4} t\\,dt = \\left[\\frac{t^{2}}{2}\\right]_{0}^{\\pi/4} = \\frac{1}{2}\\left[\\frac{\\pi^{2}}{16} - 0\\right] = \\frac{\\pi^{2}}{32}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q1",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{0}^{1} \\frac{x}{x^{2}+1}\\,dx\\).",
+    "context": null,
+    "solution": "Put \\(t = x^2 + 1\\), so \\(dt = 2x\\,dx\\). Limits: \\(x = 0 \\Rightarrow t = 1\\), \\(x = 1 \\Rightarrow t = 2\\). Then \\(\\int_{0}^{1} \\frac{x}{x^2 + 1}\\,dx = \\frac{1}{2}\\int_{1}^{2} \\frac{dt}{t} = \\frac{1}{2}\\left[\\log t\\right]_{1}^{2} = \\frac{1}{2}\\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q2",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{0}^{\\pi/2} \\sqrt{\\sin\\phi}\\,\\cos^{5}\\phi\\,d\\phi\\).",
+    "context": null,
+    "solution": "Write \\(\\cos^5\\phi = (1 - \\sin^2\\phi)^2 \\cos\\phi\\) and put \\(t = \\sin\\phi\\), \\(dt = \\cos\\phi\\,d\\phi\\). Limits: \\(\\phi = 0 \\Rightarrow t = 0\\), \\(\\phi = \\frac{\\pi}{2} \\Rightarrow t = 1\\). Then \\(\\int_{0}^{\\pi/2} \\sqrt{\\sin\\phi}\\,\\cos^5\\phi\\,d\\phi = \\int_{0}^{1} t^{1/2}(1 - t^2)^2\\,dt = \\int_{0}^{1}\\left(t^{1/2} - 2t^{5/2} + t^{9/2}\\right)dt = \\left[\\frac{2}{3}t^{3/2} - \\frac{4}{7}t^{7/2} + \\frac{2}{11}t^{11/2}\\right]_{0}^{1} = \\frac{2}{3} - \\frac{4}{7} + \\frac{2}{11} = \\frac{64}{231}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q3",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{0}^{1} \\sin^{-1}\\left(\\frac{2x}{1+x^{2}}\\right)dx\\).",
+    "context": null,
+    "solution": "Put \\(x = \\tan\\theta\\); for \\(x \\in [0, 1]\\), \\(\\theta \\in [0, \\frac{\\pi}{4}]\\), so \\(\\sin^{-1}\\!\\left(\\frac{2x}{1 + x^2}\\right) = \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\tan^{-1}x\\). Then \\(\\int_{0}^{1} \\sin^{-1}\\!\\left(\\frac{2x}{1 + x^2}\\right)dx = 2\\int_{0}^{1} \\tan^{-1}x\\,dx = 2\\left[x\\tan^{-1}x - \\frac{1}{2}\\log(1 + x^2)\\right]_{0}^{1} = 2\\left(\\frac{\\pi}{4} - \\frac{1}{2}\\log 2\\right) = \\frac{\\pi}{2} - \\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q4",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{0}^{2} x\\sqrt{x+2}\\,dx\\) (Put \\(x+2 = t^{2}\\)).",
+    "context": null,
+    "solution": "Put \\(x + 2 = t^2\\), so \\(x = t^2 - 2\\), \\(dx = 2t\\,dt\\). Limits: \\(x = 0 \\Rightarrow t = \\sqrt{2}\\), \\(x = 2 \\Rightarrow t = 2\\). Then \\(\\int_{0}^{2} x\\sqrt{x + 2}\\,dx = \\int_{\\sqrt{2}}^{2} (t^2 - 2)\\,t\\,(2t\\,dt) = \\int_{\\sqrt{2}}^{2}\\left(2t^4 - 4t^2\\right)dt = \\left[\\frac{2}{5}t^5 - \\frac{4}{3}t^3\\right]_{\\sqrt{2}}^{2} = \\frac{32}{15} - \\left(-\\frac{16\\sqrt{2}}{15}\\right) = \\frac{16(2 + \\sqrt{2})}{15}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q5",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{0}^{\\pi/2} \\frac{\\sin x}{1+\\cos^{2} x}\\,dx\\).",
+    "context": null,
+    "solution": "Put \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Limits: \\(x = 0 \\Rightarrow t = 1\\), \\(x = \\frac{\\pi}{2} \\Rightarrow t = 0\\). Then \\(\\int_{0}^{\\pi/2} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx = -\\int_{1}^{0} \\frac{dt}{1 + t^2} = \\int_{0}^{1} \\frac{dt}{1 + t^2} = \\left[\\tan^{-1}t\\right]_{0}^{1} = \\frac{\\pi}{4}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q6",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{0}^{2} \\frac{dx}{x+4-x^{2}}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x + 4 - x^2 = \\frac{17}{4} - \\left(x - \\frac{1}{2}\\right)^2\\). With \\(u = x - \\frac{1}{2}\\), \\(a = \\frac{\\sqrt{17}}{2}\\), use \\(\\int \\frac{du}{a^2 - u^2} = \\frac{1}{2a}\\log\\left|\\frac{a + u}{a - u}\\right|\\). Then \\(\\int_{0}^{2} \\frac{dx}{x + 4 - x^2} = \\frac{1}{\\sqrt{17}}\\left[\\log\\left|\\frac{\\frac{\\sqrt{17}}{2} + x - \\frac{1}{2}}{\\frac{\\sqrt{17}}{2} - x + \\frac{1}{2}}\\right|\\right]_{0}^{2} = \\frac{1}{\\sqrt{17}}\\left[\\log\\frac{\\sqrt{17} + 3}{\\sqrt{17} - 3} - \\log\\frac{\\sqrt{17} - 1}{\\sqrt{17} + 1}\\right] = \\frac{1}{\\sqrt{17}}\\log\\frac{5 + \\sqrt{17}}{5 - \\sqrt{17}}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q7",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{-1}^{1} \\frac{dx}{x^{2}+2x+5}\\).",
+    "context": null,
+    "solution": "Complete the square: \\(x^2 + 2x + 5 = (x + 1)^2 + 4\\). Then \\(\\int_{-1}^{1} \\frac{dx}{(x + 1)^2 + 2^2} = \\frac{1}{2}\\left[\\tan^{-1}\\frac{x + 1}{2}\\right]_{-1}^{1} = \\frac{1}{2}\\left(\\tan^{-1}1 - \\tan^{-1}0\\right) = \\frac{1}{2}\\cdot\\frac{\\pi}{4} = \\frac{\\pi}{8}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q8",
+    "format": "subjective",
+    "stem": "Evaluate the integral using substitution: \\(\\int_{1}^{2} \\left(\\frac{1}{x} - \\frac{1}{2x^{2}}\\right) e^{2x}\\,dx\\).",
+    "context": null,
+    "solution": "Notice \\(\\frac{d}{dx}\\!\\left(\\frac{e^{2x}}{2x}\\right) = \\frac{2e^{2x}\\cdot 2x - e^{2x}\\cdot 2}{4x^2} = e^{2x}\\left(\\frac{1}{x} - \\frac{1}{2x^2}\\right)\\), so the integrand is an exact derivative. Then \\(\\int_{1}^{2}\\left(\\frac{1}{x} - \\frac{1}{2x^2}\\right)e^{2x}\\,dx = \\left[\\frac{e^{2x}}{2x}\\right]_{1}^{2} = \\frac{e^4}{4} - \\frac{e^2}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q9",
+    "format": "mcq",
+    "stem": "The value of the integral \\(\\int_{1/3}^{1} \\frac{(x-x^{3})^{1/3}}{x^{4}}\\,dx\\) is",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "Ex 7.9 Q10",
+    "format": "mcq",
+    "stem": "If \\(f(x) = \\int_{0}^{x} t\\sin t\\,dt\\), then \\(f'(x)\\) is",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.35",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\cos 6x\\, \\sqrt{1+\\sin 6x}\\; dx\\).",
+    "context": null,
+    "solution": "Put \\(t = 1 + \\sin 6x\\), so that \\(dt = 6\\cos 6x\\, dx\\). Therefore \\(\\int \\cos 6x\\sqrt{1+\\sin 6x}\\, dx = \\frac{1}{6}\\int t^{\\frac{1}{2}}\\, dt = \\frac{1}{6}\\times\\frac{2}{3}(t)^{\\frac{3}{2}} + C = \\frac{1}{9}(1+\\sin 6x)^{\\frac{3}{2}} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.36",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{(x^4 - x)^{\\frac{1}{4}}}{x^5}\\, dx\\).",
+    "context": null,
+    "solution": "We have \\(\\int \\frac{(x^4 - x)^{\\frac{1}{4}}}{x^5}\\, dx = \\int \\frac{\\left(1 - \\frac{1}{x^3}\\right)^{\\frac{1}{4}}}{x^4}\\, dx\\). Put \\(1 - \\frac{1}{x^3} = 1 - x^{-3} = t\\), so that \\(\\frac{3}{x^4}\\, dx = dt\\). Therefore \\(\\int \\frac{(x^4 - x)^{\\frac{1}{4}}}{x^5}\\, dx = \\frac{1}{3}\\int t^{\\frac{1}{4}}\\, dt = \\frac{1}{3}\\times\\frac{4}{5} t^{\\frac{5}{4}} + C = \\frac{4}{15}\\left(1 - \\frac{1}{x^3}\\right)^{\\frac{5}{4}} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.37",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{x^4\\, dx}{(x-1)(x^2+1)}\\).",
+    "context": null,
+    "solution": "By division, \\(\\frac{x^4}{(x-1)(x^2+1)} = (x+1) + \\frac{1}{(x-1)(x^2+1)}\\). Now express \\(\\frac{1}{(x-1)(x^2+1)} = \\frac{A}{x-1} + \\frac{Bx+C}{x^2+1}\\). So \\(1 = A(x^2+1) + (Bx+C)(x-1)\\). Equating coefficients gives \\(A + B = 0,\\; C - B = 0,\\; A - C = 1\\), which give \\(A = \\frac{1}{2},\\; B = C = -\\frac{1}{2}\\). Hence \\(\\frac{1}{(x-1)(x^2+1)} = \\frac{1}{2(x-1)} - \\frac{1}{2}\\frac{x}{x^2+1} - \\frac{1}{2(x^2+1)}\\). Therefore \\(\\int \\frac{x^4}{(x-1)(x^2+1)}\\, dx = \\frac{x^2}{2} + x + \\frac{1}{2}\\log|x-1| - \\frac{1}{4}\\log(x^2+1) - \\frac{1}{2}\\tan^{-1}x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.38",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\left[\\log(\\log x) + \\frac{1}{(\\log x)^2}\\right] dx\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int \\left[\\log(\\log x) + \\frac{1}{(\\log x)^2}\\right] dx = \\int \\log(\\log x)\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\). In the first integral, take 1 as the second function and integrate by parts: \\(I = x\\log(\\log x) - \\int \\frac{1}{x\\log x} x\\, dx + \\int \\frac{dx}{(\\log x)^2} = x\\log(\\log x) - \\int \\frac{dx}{\\log x} + \\int \\frac{dx}{(\\log x)^2}\\) ... (1). Again, consider \\(\\int \\frac{dx}{\\log x}\\), take 1 as the second function and integrate by parts: \\(\\int \\frac{dx}{\\log x} = \\frac{x}{\\log x} - \\int x\\left\\{-\\frac{1}{(\\log x)^2}\\cdot\\frac{1}{x}\\right\\} dx = \\frac{x}{\\log x} + \\int \\frac{dx}{(\\log x)^2}\\) ... (2). Putting (2) in (1), \\(I = x\\log(\\log x) - \\frac{x}{\\log x} - \\int \\frac{dx}{(\\log x)^2} + \\int \\frac{dx}{(\\log x)^2} = x\\log(\\log x) - \\frac{x}{\\log x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.39",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\left[\\sqrt{\\cot x} + \\sqrt{\\tan x}\\right] dx\\).",
+    "context": null,
+    "solution": "We have \\(I = \\int \\left[\\sqrt{\\cot x} + \\sqrt{\\tan x}\\right] dx = \\int \\sqrt{\\tan x}\\,(1 + \\cot x)\\, dx\\). Put \\(\\tan x = t^2\\), so that \\(\\sec^2 x\\, dx = 2t\\, dt\\), or \\(dx = \\frac{2t\\, dt}{1+t^4}\\). Then \\(I = \\int t\\left(1 + \\frac{1}{t^2}\\right)\\frac{2t}{1+t^4}\\, dt = 2\\int \\frac{t^2+1}{t^4+1}\\, dt = 2\\int \\frac{\\left(1+\\frac{1}{t^2}\\right)dt}{\\left(t - \\frac{1}{t}\\right)^2 + 2}\\). Put \\(t - \\frac{1}{t} = y\\), so that \\(\\left(1 + \\frac{1}{t^2}\\right)dt = dy\\). Then \\(I = 2\\int \\frac{dy}{y^2 + (\\sqrt 2)^2} = \\sqrt 2\\,\\tan^{-1}\\frac{y}{\\sqrt 2} + C = \\sqrt 2\\,\\tan^{-1}\\left(\\frac{t^2-1}{\\sqrt 2\\, t}\\right) + C = \\sqrt 2\\,\\tan^{-1}\\left(\\frac{\\tan x - 1}{\\sqrt{2\\tan x}}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.40",
+    "format": "subjective",
+    "stem": "Find \\(\\int \\frac{\\sin 2x \\cos 2x\\, dx}{\\sqrt{9 - \\cos^4(2x)}}\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int \\frac{\\sin 2x \\cos 2x}{\\sqrt{9 - \\cos^4 2x}}\\, dx\\). Put \\(\\cos^2(2x) = t\\) so that \\(4\\sin 2x \\cos 2x\\, dx = -dt\\). Therefore \\(I = -\\frac{1}{4}\\int \\frac{dt}{\\sqrt{9 - t^2}} = -\\frac{1}{4}\\sin^{-1}\\left(\\frac{t}{3}\\right) + C = -\\frac{1}{4}\\sin^{-1}\\left[\\frac{1}{3}\\cos^2 2x\\right] + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.41",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{-1}^{\\frac{3}{2}} |x \\sin(\\pi x)|\\, dx\\).",
+    "context": null,
+    "solution": "Here \\(f(x) = |x\\sin\\pi x| = \\begin{cases} x\\sin\\pi x & \\text{for } -1 \\le x \\le 1 \\\\ -x\\sin\\pi x & \\text{for } 1 \\le x \\le \\frac{3}{2} \\end{cases}\\). Therefore \\(\\int_{-1}^{\\frac{3}{2}} |x\\sin\\pi x|\\, dx = \\int_{-1}^{1} x\\sin\\pi x\\, dx + \\int_{1}^{\\frac{3}{2}} -x\\sin\\pi x\\, dx = \\int_{-1}^{1} x\\sin\\pi x\\, dx - \\int_{1}^{\\frac{3}{2}} x\\sin\\pi x\\, dx\\). Integrating by parts, \\(\\int_{-1}^{\\frac{3}{2}} |x\\sin\\pi x|\\, dx = \\left[\\frac{-x\\cos\\pi x}{\\pi} + \\frac{\\sin\\pi x}{\\pi^2}\\right]_{-1}^{1} - \\left[\\frac{-x\\cos\\pi x}{\\pi} + \\frac{\\sin\\pi x}{\\pi^2}\\right]_{1}^{\\frac{3}{2}} = \\frac{2}{\\pi} - \\left[-\\frac{1}{\\pi^2} - \\frac{1}{\\pi}\\right] = \\frac{3}{\\pi} + \\frac{1}{\\pi^2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Eg.42",
+    "format": "subjective",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi} \\frac{x\\, dx}{a^2\\cos^2 x + b^2\\sin^2 x}\\).",
+    "context": null,
+    "solution": "Let \\(I = \\int_{0}^{\\pi} \\frac{x\\, dx}{a^2\\cos^2 x + b^2\\sin^2 x} = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\, dx}{a^2\\cos^2(\\pi-x) + b^2\\sin^2(\\pi-x)}\\) (using \\(P_4\\)) \\(= \\pi\\int_{0}^{\\pi}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x} - I\\). Thus \\(2I = \\pi\\int_{0}^{\\pi}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x}\\), or \\(I = \\frac{\\pi}{2}\\int_{0}^{\\pi}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x} = \\frac{\\pi}{2}\\cdot 2\\int_{0}^{\\frac{\\pi}{2}}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x}\\) (using \\(P_6\\)) \\(= \\pi\\left[\\int_{0}^{\\frac{\\pi}{4}}\\frac{\\sec^2 x\\, dx}{a^2 + b^2\\tan^2 x} + \\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\frac{\\csc^2 x\\, dx}{a^2\\cot^2 x + b^2}\\right]\\). Putting \\(\\tan x = t\\) and \\(\\cot x = u\\), \\(I = \\pi\\left[\\int_{0}^{1}\\frac{dt}{a^2 + b^2 t^2} - \\int_{1}^{0}\\frac{du}{a^2 u^2 + b^2}\\right] = \\frac{\\pi}{ab}\\left[\\tan^{-1}\\frac{bt}{a}\\right]_{0}^{1} - \\frac{\\pi}{ab}\\left[\\tan^{-1}\\frac{au}{b}\\right]_{1}^{0} = \\frac{\\pi}{ab}\\left[\\tan^{-1}\\frac{b}{a} + \\tan^{-1}\\frac{a}{b}\\right] = \\frac{\\pi^2}{2ab}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q1",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{x - x^3}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{1}{x-x^3} = \\frac{1}{x(1-x)(1+x)} = \\frac{A}{x} + \\frac{B}{1-x} + \\frac{C}{1+x}\\), so \\(1 = A(1-x)(1+x) + Bx(1+x) + Cx(1-x)\\). Put \\(x=0\\): \\(A=1\\); \\(x=1\\): \\(1=2B\\Rightarrow B=\\tfrac{1}{2}\\); \\(x=-1\\): \\(1=-2C\\Rightarrow C=-\\tfrac{1}{2}\\). Then \\(\\int \\frac{dx}{x-x^3} = \\log|x| - \\frac{1}{2}\\log|1-x| - \\frac{1}{2}\\log|1+x| + C = \\log|x| - \\frac{1}{2}\\log|1-x^2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q2",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{\\sqrt{x+a} + \\sqrt{x+b}}\\).",
+    "context": null,
+    "solution": "Rationalize by multiplying numerator and denominator by \\(\\sqrt{x + a} - \\sqrt{x + b}\\); the denominator becomes \\((x + a) - (x + b) = a - b\\). Then \\(\\int \\frac{dx}{\\sqrt{x + a} + \\sqrt{x + b}} = \\frac{1}{a - b}\\int \\left(\\sqrt{x + a} - \\sqrt{x + b}\\right)dx = \\frac{1}{a - b}\\left[\\frac{2}{3}(x + a)^{3/2} - \\frac{2}{3}(x + b)^{3/2}\\right] + C = \\frac{2}{3(a - b)}\\left[(x + a)^{3/2} - (x + b)^{3/2}\\right] + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q3",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{x\\sqrt{ax - x^2}}\\). [Hint: Put \\(x = \\frac{a}{t}\\)]",
+    "context": null,
+    "solution": "Put \\(x = \\frac{a}{t}\\), so \\(dx = -\\frac{a}{t^2}\\,dt\\). Then \\(ax - x^2 = \\frac{a^2}{t} - \\frac{a^2}{t^2} = \\frac{a^2}{t^2}(t - 1)\\), so \\(\\sqrt{ax - x^2} = \\frac{a}{t}\\sqrt{t - 1}\\) and \\(x\\sqrt{ax - x^2} = \\frac{a^2}{t^2}\\sqrt{t - 1}\\). Hence \\(\\int \\frac{dx}{x\\sqrt{ax - x^2}} = \\int \\frac{t^2}{a^2\\sqrt{t - 1}}\\left(-\\frac{a}{t^2}\\right)dt = -\\frac{1}{a}\\int \\frac{dt}{\\sqrt{t - 1}} = -\\frac{2}{a}\\sqrt{t - 1} + C\\). Since \\(t = \\frac{a}{x}\\), \\(t - 1 = \\frac{a - x}{x}\\), giving \\(-\\frac{2}{a}\\sqrt{\\frac{a - x}{x}} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q4",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{x^2 (x^4 + 1)^{\\frac{3}{4}}}\\).",
+    "context": null,
+    "solution": "Take \\(x^4\\) out of the bracket: \\((x^4 + 1)^{3/4} = x^3\\left(1 + x^{-4}\\right)^{3/4}\\), so the integrand is \\(x^{-5}\\left(1 + x^{-4}\\right)^{-3/4}\\). Put \\(t = 1 + x^{-4}\\), so \\(dt = -4x^{-5}\\,dx\\), i.e. \\(x^{-5}\\,dx = -\\frac{dt}{4}\\). Then \\(\\int \\frac{dx}{x^2(x^4 + 1)^{3/4}} = -\\frac{1}{4}\\int t^{-3/4}\\,dt = -\\frac{1}{4}\\cdot\\frac{t^{1/4}}{1/4} + C = -t^{1/4} + C = -\\left(1 + \\frac{1}{x^4}\\right)^{1/4} + C = -\\frac{(x^4 + 1)^{1/4}}{x} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q5",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{x^{\\frac{1}{2}} + x^{\\frac{1}{3}}}\\). [Hint: \\(\\frac{1}{x^{\\frac{1}{2}} + x^{\\frac{1}{3}}} = \\frac{1}{x^{\\frac{1}{3}}\\left(1 + x^{\\frac{1}{6}}\\right)}\\), put \\(x = t^6\\)]",
+    "context": null,
+    "solution": "Put \\(x = t^6\\), so \\(dx = 6t^5\\,dt\\), \\(x^{1/2} = t^3\\), \\(x^{1/3} = t^2\\), and the denominator is \\(t^3 + t^2 = t^2(t + 1)\\). Then \\(\\int \\frac{dx}{x^{1/2} + x^{1/3}} = \\int \\frac{6t^5}{t^2(t + 1)}\\,dt = 6\\int \\frac{t^3}{t + 1}\\,dt\\). Since \\(\\frac{t^3}{t + 1} = t^2 - t + 1 - \\frac{1}{t + 1}\\), this equals \\(6\\left[\\frac{t^3}{3} - \\frac{t^2}{2} + t - \\log|t + 1|\\right] + C = 2t^3 - 3t^2 + 6t - 6\\log|t + 1| + C = 2\\sqrt{x} - 3x^{1/3} + 6x^{1/6} - 6\\log\\left(x^{1/6} + 1\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q6",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{5x}{(x+1)(x^2+9)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{5x}{(x+1)(x^2+9)} = \\frac{A}{x+1} + \\frac{Bx+C}{x^2+9}\\), so \\(5x = A(x^2+9) + (Bx+C)(x+1)\\). Put \\(x=-1\\): \\(-5=10A\\Rightarrow A=-\\tfrac{1}{2}\\); comparing \\(x^2\\): \\(A+B=0\\Rightarrow B=\\tfrac{1}{2}\\); constant: \\(9A+C=0\\Rightarrow C=\\tfrac{9}{2}\\). Then \\(\\int \\frac{5x}{(x+1)(x^2+9)}\\,dx = -\\frac{1}{2}\\log|x+1| + \\frac{1}{4}\\log(x^2+9) + \\frac{3}{2}\\tan^{-1}\\frac{x}{3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q7",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{\\sin x}{\\sin(x - a)}\\).",
+    "context": null,
+    "solution": "Write the numerator as \\(\\sin x = \\sin\\big[(x-a)+a\\big] = \\sin(x-a)\\cos a + \\cos(x-a)\\sin a\\). Dividing by \\(\\sin(x-a)\\), \\(\\frac{\\sin x}{\\sin(x-a)} = \\cos a + \\sin a\\,\\frac{\\cos(x-a)}{\\sin(x-a)}\\). Then \\(\\int \\frac{\\sin x}{\\sin(x-a)}\\,dx = x\\cos a + \\sin a\\,\\log|\\sin(x-a)| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q8",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{e^{5\\log x} - e^{4\\log x}}{e^{3\\log x} - e^{2\\log x}}\\).",
+    "context": null,
+    "solution": "Use \\(e^{k\\log x} = x^{k}\\): the integrand becomes \\(\\frac{x^5 - x^4}{x^3 - x^2} = \\frac{x^4(x-1)}{x^2(x-1)} = x^2\\). Then \\(\\int x^2\\,dx = \\frac{x^3}{3} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q9",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{\\cos x}{\\sqrt{4 - \\sin^2 x}}\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\). Then \\(\\int \\frac{\\cos x}{\\sqrt{4-\\sin^2 x}}\\,dx = \\int \\frac{dt}{\\sqrt{2^2-t^2}} = \\sin^{-1}\\frac{t}{2} + C = \\sin^{-1}\\left(\\frac{\\sin x}{2}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q10",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{\\sin^8 x - \\cos^8 x}{1 - 2\\sin^2 x \\cos^2 x}\\).",
+    "context": null,
+    "solution": "Factor the numerator: \\(\\sin^8 x - \\cos^8 x = (\\sin^4 x - \\cos^4 x)(\\sin^4 x + \\cos^4 x)\\). Now \\(\\sin^4 x - \\cos^4 x = (\\sin^2 x - \\cos^2 x)(\\sin^2 x + \\cos^2 x) = -\\cos 2x\\), and \\(\\sin^4 x + \\cos^4 x = 1 - 2\\sin^2 x \\cos^2 x\\), which is exactly the denominator. Hence the integrand \\(= -\\cos 2x\\), and \\(\\int -\\cos 2x\\,dx = -\\frac{\\sin 2x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q11",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{\\cos(x + a)\\cos(x + b)}\\).",
+    "context": null,
+    "solution": "Multiply and divide by \\(\\sin(a-b)\\), using \\(\\sin(a-b) = \\sin\\big[(x+a)-(x+b)\\big]\\). Since \\(\\frac{\\sin[(x+a)-(x+b)]}{\\cos(x+a)\\cos(x+b)} = \\tan(x+a) - \\tan(x+b)\\), we have \\(\\frac{1}{\\cos(x+a)\\cos(x+b)} = \\frac{1}{\\sin(a-b)}\\big[\\tan(x+a) - \\tan(x+b)\\big]\\). Then \\(\\int \\frac{dx}{\\cos(x+a)\\cos(x+b)} = \\frac{1}{\\sin(a-b)}\\big[-\\log|\\cos(x+a)| + \\log|\\cos(x+b)|\\big] + C = \\frac{1}{\\sin(a-b)}\\log\\left|\\frac{\\cos(x+b)}{\\cos(x+a)}\\right| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q12",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{x^3}{\\sqrt{1 - x^8}}\\).",
+    "context": null,
+    "solution": "Put \\(t = x^4\\), so \\(dt = 4x^3\\,dx\\). Then \\(\\int \\frac{x^3}{\\sqrt{1-x^8}}\\,dx = \\frac{1}{4}\\int \\frac{dt}{\\sqrt{1-t^2}} = \\frac{1}{4}\\sin^{-1} t + C = \\frac{1}{4}\\sin^{-1}(x^4) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q13",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{e^x}{(1 + e^x)(2 + e^x)}\\).",
+    "context": null,
+    "solution": "Put \\(t = e^x\\), so \\(dt = e^x\\,dx\\). Then \\(\\int \\frac{e^x}{(1+e^x)(2+e^x)}\\,dx = \\int \\frac{dt}{(1+t)(2+t)}\\). Since \\(\\frac{1}{(1+t)(2+t)} = \\frac{1}{1+t} - \\frac{1}{2+t}\\), this equals \\(\\log|1+t| - \\log|2+t| + C = \\log\\left(\\frac{1+e^x}{2+e^x}\\right) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q14",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{(x^2 + 1)(x^2 + 4)}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{1}{(x^2+1)(x^2+4)} = \\frac{A}{x^2+1} + \\frac{B}{x^2+4}\\), so \\(1 = A(x^2+4)+B(x^2+1)\\). Put \\(x^2=-1\\): \\(A=\\tfrac{1}{3}\\); \\(x^2=-4\\): \\(B=-\\tfrac{1}{3}\\). Then \\(\\int \\frac{dx}{(x^2+1)(x^2+4)} = \\frac{1}{3}\\tan^{-1}x - \\frac{1}{3}\\cdot\\frac{1}{2}\\tan^{-1}\\frac{x}{2} + C = \\frac{1}{3}\\tan^{-1}x - \\frac{1}{6}\\tan^{-1}\\frac{x}{2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q15",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\cos^3 x\\; e^{\\log \\sin x}\\).",
+    "context": null,
+    "solution": "Since \\(e^{\\log\\sin x} = \\sin x\\), the integrand is \\(\\cos^3 x\\,\\sin x\\). Put \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\cos^3 x\\,e^{\\log\\sin x}\\,dx = \\int \\cos^3 x\\,\\sin x\\,dx = -\\int t^3\\,dt = -\\frac{t^4}{4} + C = -\\frac{\\cos^4 x}{4} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q16",
+    "format": "subjective",
+    "stem": "Integrate the function \\(e^{3\\log x}(x^4 + 1)^{-1}\\).",
+    "context": null,
+    "solution": "Since \\(e^{3\\log x} = x^3\\), the integrand is \\(\\frac{x^3}{x^4 + 1}\\). Put \\(t = x^4 + 1\\), so \\(dt = 4x^3\\,dx\\). Then \\(\\int \\frac{e^{3\\log x}}{x^4 + 1}\\,dx = \\int \\frac{x^3}{x^4 + 1}\\,dx = \\frac{1}{4}\\int \\frac{dt}{t} = \\frac{1}{4}\\log|t| + C = \\frac{1}{4}\\log(x^4 + 1) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q17",
+    "format": "subjective",
+    "stem": "Integrate the function \\(f'(ax + b)\\,[f(ax + b)]^n\\).",
+    "context": null,
+    "solution": "Put \\(t = f(ax + b)\\), so \\(dt = a\\,f'(ax + b)\\,dx\\), i.e. \\(f'(ax + b)\\,dx = \\frac{dt}{a}\\). Then \\(\\int f'(ax + b)\\,[f(ax + b)]^n\\,dx = \\frac{1}{a}\\int t^n\\,dt = \\frac{1}{a}\\cdot\\frac{t^{n+1}}{n + 1} + C = \\frac{[f(ax + b)]^{n+1}}{a(n + 1)} + C\\) (for \\(n \\ne -1\\)).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q18",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{1}{\\sqrt{\\sin^3 x \\, \\sin(x + \\alpha)}}\\).",
+    "context": null,
+    "solution": "Expand \\(\\sin(x + \\alpha) = \\sin x\\cos\\alpha + \\cos x\\sin\\alpha\\), so \\(\\sin^3 x\\,\\sin(x + \\alpha) = \\sin^4 x\\left(\\cos\\alpha + \\sin\\alpha\\cot x\\right)\\) and \\(\\sqrt{\\sin^3 x\\,\\sin(x + \\alpha)} = \\sin^2 x\\sqrt{\\cos\\alpha + \\sin\\alpha\\cot x}\\). Thus the integrand is \\(\\frac{\\operatorname{cosec}^2 x}{\\sqrt{\\cos\\alpha + \\sin\\alpha\\cot x}}\\). Put \\(t = \\cos\\alpha + \\sin\\alpha\\cot x\\), so \\(dt = -\\sin\\alpha\\,\\operatorname{cosec}^2 x\\,dx\\). Then the integral \\(= -\\frac{1}{\\sin\\alpha}\\int \\frac{dt}{\\sqrt{t}} = -\\frac{2}{\\sin\\alpha}\\sqrt{t} + C = -\\frac{2}{\\sin\\alpha}\\sqrt{\\cos\\alpha + \\sin\\alpha\\cot x} + C = -\\frac{2}{\\sin\\alpha}\\sqrt{\\frac{\\sin(x + \\alpha)}{\\sin x}} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q19",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\sqrt{\\frac{1 - \\sqrt{x}}{1 + \\sqrt{x}}}\\).",
+    "context": null,
+    "solution": "For \\(0 < x < 1\\), \\(\\sqrt{\\frac{1 - \\sqrt{x}}{1 + \\sqrt{x}}} = \\frac{1 - \\sqrt{x}}{\\sqrt{1 - x}}\\), so the integral splits as \\(\\int \\frac{dx}{\\sqrt{1 - x}} - \\int \\frac{\\sqrt{x}}{\\sqrt{1 - x}}\\,dx\\). The first is \\(-2\\sqrt{1 - x}\\). For the second, put \\(x = \\sin^2\\theta\\), \\(dx = 2\\sin\\theta\\cos\\theta\\,d\\theta\\), so \\(\\int \\frac{\\sqrt{x}}{\\sqrt{1 - x}}\\,dx = \\int 2\\sin^2\\theta\\,d\\theta = \\theta - \\sin\\theta\\cos\\theta = \\sin^{-1}\\sqrt{x} - \\sqrt{x - x^2}\\). Therefore the integral \\(= -2\\sqrt{1 - x} - \\sin^{-1}\\sqrt{x} + \\sqrt{x - x^2} + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q20",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{2 + \\sin 2x}{1 + \\cos 2x}\\, e^x\\).",
+    "context": null,
+    "solution": "Using \\(1+\\cos 2x = 2\\cos^2 x\\) and \\(\\sin 2x = 2\\sin x\\cos x\\), \\(\\tfrac{2+\\sin 2x}{1+\\cos 2x} = \\tfrac{2 + 2\\sin x\\cos x}{2\\cos^2 x} = \\sec^2 x + \\tan x\\). So the integrand is \\(e^x\\big[f(x)+f'(x)\\big]\\) with \\(f(x) = \\tan x\\), \\(f'(x) = \\sec^2 x\\). Hence \\(\\int \\tfrac{2+\\sin 2x}{1+\\cos 2x}e^x\\,dx = e^x \\tan x + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q21",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{x^2 + x + 1}{(x + 1)^2 (x + 2)}\\).",
+    "context": null,
+    "solution": "Let \\(\\frac{x^2+x+1}{(x+1)^2(x+2)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+2}\\), so \\(x^2+x+1 = A(x+1)(x+2) + B(x+2) + C(x+1)^2\\). Put \\(x=-1\\): \\(1=B\\); \\(x=-2\\): \\(3=C\\); comparing \\(x^2\\): \\(A+C=1\\Rightarrow A=-2\\). Then \\(\\int \\frac{x^2+x+1}{(x+1)^2(x+2)}\\,dx = -2\\log|x+1| - \\frac{1}{x+1} + 3\\log|x+2| + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q22",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\tan^{-1}\\sqrt{\\frac{1 - x}{1 + x}}\\).",
+    "context": null,
+    "solution": "Put \\(x = \\cos 2\\theta\\); then \\(\\tfrac{1-x}{1+x} = \\tfrac{1-\\cos 2\\theta}{1+\\cos 2\\theta} = \\tan^2\\theta\\), so \\(\\tan^{-1}\\sqrt{\\tfrac{1-x}{1+x}} = \\theta = \\tfrac{1}{2}\\cos^{-1} x\\). Thus \\(\\int \\tan^{-1}\\sqrt{\\tfrac{1-x}{1+x}}\\,dx = \\tfrac{1}{2}\\int \\cos^{-1} x\\,dx\\). Since \\(\\int \\cos^{-1} x\\,dx = x\\cos^{-1} x - \\sqrt{1-x^2}\\), the answer is \\(\\tfrac{1}{2}\\big(x\\cos^{-1} x - \\sqrt{1-x^2}\\big) + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q23",
+    "format": "subjective",
+    "stem": "Integrate the function \\(\\frac{\\sqrt{x^2 + 1}\\,\\left[\\log(x^2 + 1) - 2\\log x\\right]}{x^4}\\).",
+    "context": null,
+    "solution": "Note \\(\\log(x^2 + 1) - 2\\log x = \\log\\frac{x^2 + 1}{x^2} = \\log\\left(1 + \\frac{1}{x^2}\\right)\\), and \\(\\frac{\\sqrt{x^2 + 1}}{x^4} = \\frac{1}{x^3}\\left(1 + \\frac{1}{x^2}\\right)^{1/2}\\). Put \\(t = 1 + \\frac{1}{x^2}\\), so \\(dt = -\\frac{2}{x^3}\\,dx\\), i.e. \\(\\frac{dx}{x^3} = -\\frac{dt}{2}\\). The integral becomes \\(-\\frac{1}{2}\\int \\sqrt{t}\\,\\log t\\,dt\\). By parts, \\(\\int t^{1/2}\\log t\\,dt = \\frac{2}{3}t^{3/2}\\log t - \\frac{4}{9}t^{3/2}\\), so the integral \\(= -\\frac{1}{2}\\left(\\frac{2}{3}t^{3/2}\\log t - \\frac{4}{9}t^{3/2}\\right) + C = \\frac{1}{3}t^{3/2}\\left(\\frac{2}{3} - \\log t\\right) + C = \\frac{1}{3}\\left(1 + \\frac{1}{x^2}\\right)^{3/2}\\left[\\frac{2}{3} - \\log\\left(1 + \\frac{1}{x^2}\\right)\\right] + C\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q24",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{\\frac{\\pi}{2}}^{\\pi} e^x\\left(\\frac{1 - \\sin x}{1 - \\cos x}\\right) dx\\).",
+    "context": null,
+    "solution": "Using \\(1-\\cos x = 2\\sin^2\\tfrac{x}{2}\\) and \\(1-\\sin x = 1 - 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\), \\(\\tfrac{1-\\sin x}{1-\\cos x} = \\tfrac{1}{2}\\operatorname{cosec}^2\\tfrac{x}{2} - \\cot\\tfrac{x}{2}\\), which is \\(f(x)+f'(x)\\) with \\(f(x) = -\\cot\\tfrac{x}{2}\\), \\(f'(x) = \\tfrac{1}{2}\\operatorname{cosec}^2\\tfrac{x}{2}\\). So \\(\\int e^x\\big(\\tfrac{1-\\sin x}{1-\\cos x}\\big)dx = -e^x\\cot\\tfrac{x}{2}\\). Evaluating, \\(\\int_{\\pi/2}^{\\pi} e^x\\big(\\tfrac{1-\\sin x}{1-\\cos x}\\big)dx = \\big[-e^x\\cot\\tfrac{x}{2}\\big]_{\\pi/2}^{\\pi} = -e^{\\pi}\\cot\\tfrac{\\pi}{2} + e^{\\pi/2}\\cot\\tfrac{\\pi}{4} = 0 + e^{\\pi/2} = e^{\\pi/2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q25",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sin x \\cos x}{\\cos^4 x + \\sin^4 x}\\, dx\\).",
+    "context": null,
+    "solution": "Divide the numerator and put \\(u = \\sin^2 x\\), so \\(du = 2\\sin x\\cos x\\,dx\\) and \\(\\cos^4 x + \\sin^4 x = (1 - u)^2 + u^2 = 2u^2 - 2u + 1\\). Limits: \\(x = 0 \\Rightarrow u = 0\\), \\(x = \\frac{\\pi}{4} \\Rightarrow u = \\frac{1}{2}\\). Then \\(\\int_{0}^{\\pi/4} \\frac{\\sin x\\cos x}{\\cos^4 x + \\sin^4 x}\\,dx = \\frac{1}{2}\\int_{0}^{1/2} \\frac{du}{2u^2 - 2u + 1} = \\frac{1}{4}\\int_{0}^{1/2} \\frac{du}{\\left(u - \\frac{1}{2}\\right)^2 + \\frac{1}{4}} = \\frac{1}{2}\\left[\\tan^{-1}(2u - 1)\\right]_{0}^{1/2} = \\frac{1}{2}\\left(0 - \\left(-\\frac{\\pi}{4}\\right)\\right) = \\frac{\\pi}{8}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q26",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\frac{\\cos^2 x\\, dx}{\\cos^2 x + 4\\sin^2 x}\\).",
+    "context": null,
+    "solution": "Divide numerator and denominator by \\(\\cos^2 x\\): the integrand becomes \\(\\frac{1}{1 + 4\\tan^2 x}\\). Put \\(t = \\tan x\\), \\(dx = \\frac{dt}{1 + t^2}\\); limits \\(t: 0 \\to \\infty\\). Then \\(I = \\int_{0}^{\\infty} \\frac{dt}{(1 + 4t^2)(1 + t^2)}\\). By partial fractions \\(\\frac{1}{(1 + t^2)(1 + 4t^2)} = \\frac{-\\frac{1}{3}}{1 + t^2} + \\frac{\\frac{4}{3}}{1 + 4t^2}\\), so \\(I = -\\frac{1}{3}\\cdot\\frac{\\pi}{2} + \\frac{4}{3}\\cdot\\frac{1}{2}\\tan^{-1}(2t)\\Big|_{0}^{\\infty} = -\\frac{\\pi}{6} + \\frac{4}{3}\\cdot\\frac{\\pi}{4} = -\\frac{\\pi}{6} + \\frac{\\pi}{3} = \\frac{\\pi}{6}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q27",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}}\\, dx\\).",
+    "context": null,
+    "solution": "Since \\((\\sin x - \\cos x)^2 = 1 - \\sin 2x\\), put \\(t = \\sin x - \\cos x\\), so \\(dt = (\\cos x + \\sin x)\\,dx\\) and \\(\\sqrt{\\sin 2x} = \\sqrt{1 - t^2}\\). Limits: \\(x = \\frac{\\pi}{6} \\Rightarrow t = \\frac{1 - \\sqrt{3}}{2}\\), \\(x = \\frac{\\pi}{3} \\Rightarrow t = \\frac{\\sqrt{3} - 1}{2}\\). Then \\(\\int_{\\pi/6}^{\\pi/3} \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}}\\,dx = \\int_{(1-\\sqrt{3})/2}^{(\\sqrt{3}-1)/2} \\frac{dt}{\\sqrt{1 - t^2}} = \\left[\\sin^{-1}t\\right]_{(1-\\sqrt{3})/2}^{(\\sqrt{3}-1)/2} = 2\\sin^{-1}\\frac{\\sqrt{3} - 1}{2}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q28",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{dx}{\\sqrt{1 + x} - \\sqrt{x}}\\).",
+    "context": null,
+    "solution": "Rationalise: \\(\\frac{1}{\\sqrt{1+x}-\\sqrt{x}}=\\frac{\\sqrt{1+x}+\\sqrt{x}}{(1+x)-x}=\\sqrt{1+x}+\\sqrt{x}\\). Then \\(\\int_{0}^{1}\\left(\\sqrt{1+x}+\\sqrt{x}\\right)dx = \\left[\\frac23(1+x)^{3/2}+\\frac23 x^{3/2}\\right]_{0}^{1} = \\left(\\frac23\\cdot 2\\sqrt2+\\frac23\\right)-\\frac23 = \\frac{4\\sqrt2}{3}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q29",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sin x + \\cos x}{9 + 16\\sin 2x}\\, dx\\).",
+    "context": null,
+    "solution": "Since \\(\\sin 2x = 1 - (\\sin x - \\cos x)^2\\), put \\(t = \\sin x - \\cos x\\), \\(dt = (\\cos x + \\sin x)\\,dx\\), so \\(9 + 16\\sin 2x = 25 - 16t^2\\). Limits: \\(x = 0 \\Rightarrow t = -1\\), \\(x = \\frac{\\pi}{4} \\Rightarrow t = 0\\). Then \\(\\int_{0}^{\\pi/4} \\frac{\\sin x + \\cos x}{9 + 16\\sin 2x}\\,dx = \\int_{-1}^{0} \\frac{dt}{25 - 16t^2} = \\frac{1}{40}\\left[\\log\\left|\\frac{\\frac{5}{4} + t}{\\frac{5}{4} - t}\\right|\\right]_{-1}^{0} = \\frac{1}{40}\\left(0 - \\log\\frac{1}{9}\\right) = \\frac{1}{40}\\log 9 = \\frac{1}{20}\\log 3\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q30",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\sin 2x \\, \\tan^{-1}(\\sin x)\\, dx\\).",
+    "context": null,
+    "solution": "Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\) and \\(\\sin 2x\\,dx = 2\\sin x\\cos x\\,dx = 2t\\,dt\\). Limits: \\(x = 0 \\Rightarrow t = 0\\), \\(x = \\frac{\\pi}{2} \\Rightarrow t = 1\\). Then \\(\\int_{0}^{\\pi/2} \\sin 2x\\,\\tan^{-1}(\\sin x)\\,dx = 2\\int_{0}^{1} t\\tan^{-1}t\\,dt = 2\\left[\\frac{t^2}{2}\\tan^{-1}t - \\frac{1}{2}(t - \\tan^{-1}t)\\right]_{0}^{1} = 2\\left(\\frac{\\pi}{8} - \\frac{1}{2} + \\frac{\\pi}{8}\\right) = \\frac{\\pi}{2} - 1\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q31",
+    "format": "subjective",
+    "stem": "Evaluate the definite integral \\(\\int_{1}^{4} \\left[|x - 1| + |x - 2| + |x - 3|\\right] dx\\).",
+    "context": null,
+    "solution": "On \\([1,4]\\), \\(|x-1|=x-1\\) throughout, so \\(\\int_{1}^{4}|x-1|\\,dx=\\left[\\frac{(x-1)^2}{2}\\right]_{1}^{4}=\\frac92\\). For \\(|x-2|\\): \\(\\int_{1}^{2}(2-x)\\,dx+\\int_{2}^{4}(x-2)\\,dx=\\frac12+2=\\frac52\\). For \\(|x-3|\\): \\(\\int_{1}^{3}(3-x)\\,dx+\\int_{3}^{4}(x-3)\\,dx=2+\\frac12=\\frac52\\). Adding, \\(\\int_{1}^{4}\\big(|x-1|+|x-2|+|x-3|\\big)\\,dx = \\frac92+\\frac52+\\frac52 = \\frac{19}{2}.\\)",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q32",
+    "format": "subjective",
+    "stem": "Prove that \\(\\int_{1}^{3} \\frac{dx}{x^2 (x + 1)} = \\frac{2}{3} + \\log \\frac{2}{3}\\).",
+    "context": null,
+    "solution": "Write \\(\\frac{1}{x^2(x+1)} = \\frac{A}{x} + \\frac{B}{x^2} + \\frac{C}{x+1}\\), so \\(1 = Ax(x+1) + B(x+1) + Cx^2\\). Put \\(x=0\\): \\(B=1\\); \\(x=-1\\): \\(C=1\\); comparing \\(x^2\\): \\(A+C=0\\Rightarrow A=-1\\). Hence an antiderivative is \\(\\int \\frac{dx}{x^2(x+1)} = -\\log|x| - \\frac{1}{x} + \\log|x+1| = \\log\\left|\\frac{x+1}{x}\\right| - \\frac{1}{x}\\). Evaluating from \\(1\\) to \\(3\\): \\(\\left(\\log\\frac{4}{3} - \\frac{1}{3}\\right) - \\left(\\log 2 - 1\\right) = \\log\\frac{4}{6} + \\frac{2}{3} = \\frac{2}{3} + \\log\\frac{2}{3}\\), as required.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q33",
+    "format": "subjective",
+    "stem": "Prove that \\(\\int_{0}^{1} x\\, e^x\\, dx = 1\\).",
+    "context": null,
+    "solution": "By parts with \\(u = x\\), \\(dv = e^x\\,dx\\): \\(\\int x e^x\\,dx = x e^x - \\int e^x\\,dx = e^x(x-1)\\). Hence \\(\\int_{0}^{1} x e^x\\,dx = \\big[e^x(x-1)\\big]_{0}^{1} = e^1(0) - e^0(-1) = 0 - (-1) = 1\\), as required.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q34",
+    "format": "subjective",
+    "stem": "Prove that \\(\\int_{-1}^{1} x^{17} \\cos^4 x\\, dx = 0\\).",
+    "context": null,
+    "solution": "Let \\(f(x) = x^{17}\\cos^4 x\\). Since \\(x^{17}\\) is odd and \\(\\cos^4 x\\) is even, \\(f(-x) = (-x)^{17}\\cos^4(-x) = -x^{17}\\cos^4 x = -f(x)\\), so \\(f\\) is odd. By \\(\\int_{-a}^{a} f(x)\\,dx = 0\\) for an odd function, \\(\\int_{-1}^{1} x^{17}\\cos^4 x\\,dx = 0\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q35",
+    "format": "subjective",
+    "stem": "Prove that \\(\\int_{0}^{\\frac{\\pi}{2}} \\sin^3 x\\, dx = \\frac{2}{3}\\).",
+    "context": null,
+    "solution": "Use \\(\\sin^3 x = \\frac{3\\sin x - \\sin 3x}{4}\\). Then \\(\\int_{0}^{\\pi/2} \\sin^3 x\\,dx = \\frac{1}{4}\\left[-3\\cos x + \\frac{\\cos 3x}{3}\\right]_{0}^{\\pi/2}\\). At \\(x = \\frac{\\pi}{2}\\): \\(\\cos\\frac{\\pi}{2} = 0,\\ \\cos\\frac{3\\pi}{2} = 0\\), giving \\(0\\). At \\(x = 0\\): \\(\\frac{1}{4}\\left[-3 + \\frac{1}{3}\\right] = \\frac{1}{4}\\cdot\\left(-\\frac{8}{3}\\right) = -\\frac{2}{3}\\). Hence the value is \\(0 - \\left(-\\frac{2}{3}\\right) = \\frac{2}{3}\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q36",
+    "format": "subjective",
+    "stem": "Prove that \\(\\int_{0}^{\\frac{\\pi}{4}} 2\\tan^3 x\\, dx = 1 - \\log 2\\).",
+    "context": null,
+    "solution": "Write \\(\\tan^3 x = \\tan x(\\sec^2 x - 1) = \\tan x \\sec^2 x - \\tan x\\), so \\(\\int \\tan^3 x\\,dx = \\frac{\\tan^2 x}{2} - \\log|\\sec x|\\). Hence \\(\\int_{0}^{\\pi/4} 2\\tan^3 x\\,dx = \\left[\\tan^2 x - 2\\log|\\sec x|\\right]_{0}^{\\pi/4}\\). At \\(x = \\frac{\\pi}{4}\\): \\(\\tan\\frac{\\pi}{4} = 1,\\ \\sec\\frac{\\pi}{4} = \\sqrt{2}\\), giving \\(1 - 2\\log\\sqrt{2} = 1 - \\log 2\\). At \\(x = 0\\): \\(0 - 0 = 0\\). Therefore the value is \\(1 - \\log 2\\).",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q37",
+    "format": "subjective",
+    "stem": "Prove that \\(\\int_{0}^{1} \\sin^{-1} x\\, dx = \\frac{\\pi}{2} - 1\\).",
+    "context": null,
+    "solution": "By parts with \\(u = \\sin^{-1} x\\), \\(dv = dx\\), \\(v = x\\): \\(\\int \\sin^{-1} x\\,dx = x\\sin^{-1} x - \\int \\tfrac{x}{\\sqrt{1-x^2}}\\,dx = x\\sin^{-1} x + \\sqrt{1-x^2}\\). Hence \\(\\int_{0}^{1} \\sin^{-1} x\\,dx = \\big[x\\sin^{-1} x + \\sqrt{1-x^2}\\big]_{0}^{1} = \\big(1\\cdot\\tfrac{\\pi}{2} + 0\\big) - \\big(0 + 1\\big) = \\tfrac{\\pi}{2} - 1\\), as required.",
+    "mcq_answer": null,
+    "options": []
+  },
+  {
+    "ref": "Misc Q38",
+    "format": "mcq",
+    "stem": "\\(\\int \\frac{dx}{e^x + e^{-x}}\\) is equal to",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "A",
+    "options": []
+  },
+  {
+    "ref": "Misc Q39",
+    "format": "mcq",
+    "stem": "\\(\\int \\frac{\\cos 2x}{(\\sin x + \\cos x)^2}\\, dx\\) is equal to",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "B",
+    "options": []
+  },
+  {
+    "ref": "Misc Q40",
+    "format": "mcq",
+    "stem": "If \\(f(a + b - x) = f(x)\\), then \\(\\int_{a}^{b} x\\, f(x)\\, dx\\) is equal to",
+    "context": null,
+    "solution": null,
+    "mcq_answer": "D",
+    "options": []
+  }
+]

@@ -1,0 +1,237 @@
+[
+  {
+    "id": "592ffb8d-deb9-4c9d-9a03-a8cd8fe03f5d",
+    "ref": "Ex 7.2 Q1",
+    "solution": "Put \\(t = 1 + x^2\\), so \\(dt = 2x\\,dx\\). Then \\(\\int \\frac{2x}{1 + x^2}\\,dx = \\int \\frac{dt}{t} = \\log|t| + C = \\log(1 + x^2) + C\\)."
+  },
+  {
+    "id": "0dc7a406-6259-4c7e-a30a-5fb6d2d5c61a",
+    "ref": "Ex 7.2 Q2",
+    "solution": "Put \\(t = \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{(\\log x)^2}{x}\\,dx = \\int t^2\\,dt = \\frac{t^3}{3} + C = \\frac{(\\log x)^3}{3} + C\\)."
+  },
+  {
+    "id": "f4ac4f0c-a67a-4f56-8fb7-32c3904d3b33",
+    "ref": "Ex 7.2 Q3",
+    "solution": "Write \\(x + x\\log x = x(1 + \\log x)\\). Put \\(t = 1 + \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{1}{x(1 + \\log x)}\\,dx = \\int \\frac{dt}{t} = \\log|t| + C = \\log|1 + \\log x| + C\\)."
+  },
+  {
+    "id": "d05015e1-d922-4d1d-8a77-d2465ccfef5d",
+    "ref": "Ex 7.2 Q4",
+    "solution": "Put \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\sin x\\,\\sin(\\cos x)\\,dx = -\\int \\sin t\\,dt = \\cos t + C = \\cos(\\cos x) + C\\)."
+  },
+  {
+    "id": "5959f501-518d-4062-b35a-c6126d19de16",
+    "ref": "Ex 7.2 Q5",
+    "solution": "Put \\(t = \\sin(ax + b)\\), so \\(dt = a\\cos(ax + b)\\,dx\\). Then \\(\\int \\sin(ax + b)\\cos(ax + b)\\,dx = \\frac{1}{a}\\int t\\,dt = \\frac{t^2}{2a} + C = \\frac{\\sin^2(ax + b)}{2a} + C\\)."
+  },
+  {
+    "id": "3031533e-1c0e-4a4f-8cd4-c3a981641f76",
+    "ref": "Ex 7.2 Q6",
+    "solution": "Put \\(t = ax + b\\), so \\(dt = a\\,dx\\). Then \\(\\int \\sqrt{ax + b}\\,dx = \\frac{1}{a}\\int t^{1/2}\\,dt = \\frac{1}{a}\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{2}{3a}(ax + b)^{3/2} + C\\)."
+  },
+  {
+    "id": "fac7c786-ac94-4188-93b4-66c1b01b8d27",
+    "ref": "Ex 7.2 Q7",
+    "solution": "Put \\(t = x + 2\\), so \\(x = t - 2\\) and \\(dx = dt\\). Then \\(\\int x\\sqrt{x + 2}\\,dx = \\int (t - 2)t^{1/2}\\,dt = \\int (t^{3/2} - 2t^{1/2})\\,dt = \\frac{2}{5}t^{5/2} - \\frac{4}{3}t^{3/2} + C = \\frac{2}{5}(x + 2)^{5/2} - \\frac{4}{3}(x + 2)^{3/2} + C\\)."
+  },
+  {
+    "id": "601516a0-881e-48d7-865b-3d41ce73137d",
+    "ref": "Ex 7.2 Q8",
+    "solution": "Put \\(t = 1 + 2x^2\\), so \\(dt = 4x\\,dx\\). Then \\(\\int x\\sqrt{1 + 2x^2}\\,dx = \\frac{1}{4}\\int t^{1/2}\\,dt = \\frac{1}{4}\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{1}{6}(1 + 2x^2)^{3/2} + C\\)."
+  },
+  {
+    "id": "1bdffe99-9fd8-440c-9b0f-b86c66b2362d",
+    "ref": "Ex 7.2 Q9",
+    "solution": "Note \\(4x + 2 = 2(2x + 1)\\) and \\(\\frac{d}{dx}(x^2 + x + 1) = 2x + 1\\). Put \\(t = x^2 + x + 1\\), so \\(dt = (2x + 1)\\,dx\\). Then \\(\\int (4x + 2)\\sqrt{x^2 + x + 1}\\,dx = 2\\int \\sqrt{t}\\,dt = 2\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{4}{3}(x^2 + x + 1)^{3/2} + C\\)."
+  },
+  {
+    "id": "1fe9a6ec-759e-4d83-8a55-70ee31f527c3",
+    "ref": "Ex 7.2 Q10",
+    "solution": "Put \\(t = \\sqrt{x}\\), so \\(x = t^2\\) and \\(dx = 2t\\,dt\\). Then \\(\\int \\frac{dx}{x - \\sqrt{x}} = \\int \\frac{2t\\,dt}{t^2 - t} = \\int \\frac{2t\\,dt}{t(t - 1)} = \\int \\frac{2}{t - 1}\\,dt = 2\\log|t - 1| + C = 2\\log|\\sqrt{x} - 1| + C\\)."
+  },
+  {
+    "id": "a8b7ab73-72b0-4903-a5df-bcf05a411415",
+    "ref": "Ex 7.2 Q11",
+    "solution": "Put \\(t = x + 4\\), so \\(x = t - 4\\) and \\(dx = dt\\). Then \\(\\int \\frac{x}{\\sqrt{x + 4}}\\,dx = \\int \\frac{t - 4}{\\sqrt{t}}\\,dt = \\int (t^{1/2} - 4t^{-1/2})\\,dt = \\frac{2}{3}t^{3/2} - 8t^{1/2} + C = \\frac{2}{3}(x + 4)^{3/2} - 8\\sqrt{x + 4} + C\\)."
+  },
+  {
+    "id": "b1f9d763-90dc-4361-9722-8130b24d5cb7",
+    "ref": "Ex 7.2 Q12",
+    "solution": "Put \\(t = x^3 - 1\\), so \\(x^3 = t + 1\\) and \\(dt = 3x^2\\,dx\\). Write \\(x^5\\,dx = x^3\\cdot x^2\\,dx = (t + 1)\\cdot\\frac{dt}{3}\\). Then \\(\\int (x^3 - 1)^{1/3}x^5\\,dx = \\frac{1}{3}\\int t^{1/3}(t + 1)\\,dt = \\frac{1}{3}\\int (t^{4/3} + t^{1/3})\\,dt = \\frac{1}{3}\\left(\\frac{3}{7}t^{7/3} + \\frac{3}{4}t^{4/3}\\right) + C = \\frac{1}{7}(x^3 - 1)^{7/3} + \\frac{1}{4}(x^3 - 1)^{4/3} + C\\)."
+  },
+  {
+    "id": "042152bf-2df6-4b31-a715-55f8c1410e5d",
+    "ref": "Ex 7.2 Q13",
+    "solution": "Put \\(t = 2 + 3x^3\\), so \\(dt = 9x^2\\,dx\\). Then \\(\\int \\frac{x^2}{(2 + 3x^3)^3}\\,dx = \\frac{1}{9}\\int t^{-3}\\,dt = \\frac{1}{9}\\cdot\\frac{t^{-2}}{-2} + C = -\\frac{1}{18(2 + 3x^3)^2} + C\\)."
+  },
+  {
+    "id": "4a52ccc3-0895-43a0-933d-d2f4da55a9ac",
+    "ref": "Ex 7.2 Q14",
+    "solution": "Put \\(t = \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{dx}{x(\\log x)^m} = \\int t^{-m}\\,dt = \\frac{t^{1 - m}}{1 - m} + C = \\frac{(\\log x)^{1 - m}}{1 - m} + C\\) (for \\(m \\ne 1\\))."
+  },
+  {
+    "id": "2bd25b81-f735-4641-b55c-d7b0f9abf5ee",
+    "ref": "Ex 7.2 Q15",
+    "solution": "Put \\(t = 9 - 4x^2\\), so \\(dt = -8x\\,dx\\). Then \\(\\int \\frac{x}{9 - 4x^2}\\,dx = -\\frac{1}{8}\\int \\frac{dt}{t} = -\\frac{1}{8}\\log|t| + C = -\\frac{1}{8}\\log|9 - 4x^2| + C\\)."
+  },
+  {
+    "id": "22db5e6e-a5e3-4303-9b37-d76e4f39aa0e",
+    "ref": "Ex 7.2 Q16",
+    "solution": "Put \\(t = 2x + 3\\), so \\(dt = 2\\,dx\\). Then \\(\\int e^{2x + 3}\\,dx = \\frac{1}{2}\\int e^t\\,dt = \\frac{1}{2}e^{2x + 3} + C\\)."
+  },
+  {
+    "id": "9d0c5c68-62e4-4704-9623-c3c47e7647a4",
+    "ref": "Ex 7.2 Q17",
+    "solution": "The integrand is \\(x e^{-x^2}\\). Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\). Then \\(\\int \\frac{x}{e^{x^2}}\\,dx = \\int x e^{-x^2}\\,dx = \\frac{1}{2}\\int e^{-t}\\,dt = -\\frac{1}{2}e^{-t} + C = -\\frac{1}{2}e^{-x^2} + C\\)."
+  },
+  {
+    "id": "c856acd4-137c-4983-b200-66db96229ad7",
+    "ref": "Ex 7.2 Q18",
+    "solution": "Put \\(t = \\tan^{-1} x\\), so \\(dt = \\frac{dx}{1 + x^2}\\). Then \\(\\int \\frac{e^{\\tan^{-1} x}}{1 + x^2}\\,dx = \\int e^t\\,dt = e^t + C = e^{\\tan^{-1} x} + C\\)."
+  },
+  {
+    "id": "ffcb5197-b97f-4456-b503-e89c830d0a77",
+    "ref": "Ex 7.2 Q19",
+    "solution": "Divide numerator and denominator by \\(e^x\\): \\(\\frac{e^{2x} - 1}{e^{2x} + 1} = \\frac{e^x - e^{-x}}{e^x + e^{-x}}\\). Put \\(t = e^x + e^{-x}\\), so \\(dt = (e^x - e^{-x})\\,dx\\). Then the integral \\(= \\int \\frac{dt}{t} = \\log|t| + C = \\log(e^x + e^{-x}) + C\\)."
+  },
+  {
+    "id": "d09239e0-a54e-4c09-a7d4-45ad977aa7bc",
+    "ref": "Ex 7.2 Q20",
+    "solution": "Put \\(t = e^{2x} + e^{-2x}\\), so \\(dt = 2(e^{2x} - e^{-2x})\\,dx\\). Then \\(\\int \\frac{e^{2x} - e^{-2x}}{e^{2x} + e^{-2x}}\\,dx = \\frac{1}{2}\\int \\frac{dt}{t} = \\frac{1}{2}\\log|t| + C = \\frac{1}{2}\\log(e^{2x} + e^{-2x}) + C\\)."
+  },
+  {
+    "id": "0e013134-da43-4192-adbf-71eba8e25b12",
+    "ref": "Ex 7.2 Q21",
+    "solution": "Use \\(\\tan^2\\theta = \\sec^2\\theta - 1\\): \\(\\int \\tan^2(2x - 3)\\,dx = \\int \\left(\\sec^2(2x - 3) - 1\\right)dx = \\frac{1}{2}\\tan(2x - 3) - x + C\\)."
+  },
+  {
+    "id": "0dc2a4d2-340c-4852-a808-98f2b8a415ee",
+    "ref": "Ex 7.2 Q22",
+    "solution": "Put \\(t = 7 - 4x\\), so \\(dt = -4\\,dx\\). Then \\(\\int \\sec^2(7 - 4x)\\,dx = -\\frac{1}{4}\\int \\sec^2 t\\,dt = -\\frac{1}{4}\\tan t + C = -\\frac{1}{4}\\tan(7 - 4x) + C\\)."
+  },
+  {
+    "id": "70d4a2c0-1565-4326-aaf2-a0334aaa707e",
+    "ref": "Ex 7.2 Q23",
+    "solution": "Put \\(t = \\sin^{-1} x\\), so \\(dt = \\frac{dx}{\\sqrt{1 - x^2}}\\). Then \\(\\int \\frac{\\sin^{-1} x}{\\sqrt{1 - x^2}}\\,dx = \\int t\\,dt = \\frac{t^2}{2} + C = \\frac{(\\sin^{-1} x)^2}{2} + C\\)."
+  },
+  {
+    "id": "f31c1a66-595a-4af4-bcf0-b80cfd46c4c7",
+    "ref": "Ex 7.2 Q24",
+    "solution": "Observe \\(\\frac{d}{dx}(6\\cos x + 4\\sin x) = -6\\sin x + 4\\cos x = 2(2\\cos x - 3\\sin x)\\). Put \\(t = 6\\cos x + 4\\sin x\\), so \\(dt = 2(2\\cos x - 3\\sin x)\\,dx\\). Then \\(\\int \\frac{2\\cos x - 3\\sin x}{6\\cos x + 4\\sin x}\\,dx = \\frac{1}{2}\\int \\frac{dt}{t} = \\frac{1}{2}\\log|t| + C = \\frac{1}{2}\\log|6\\cos x + 4\\sin x| + C\\)."
+  },
+  {
+    "id": "0b4da770-18cf-48f4-addf-76192006db42",
+    "ref": "Ex 7.2 Q25",
+    "solution": "Write \\(\\frac{1}{\\cos^2 x(1 - \\tan x)^2} = \\frac{\\sec^2 x}{(1 - \\tan x)^2}\\). Put \\(t = 1 - \\tan x\\), so \\(dt = -\\sec^2 x\\,dx\\). Then the integral \\(= -\\int \\frac{dt}{t^2} = \\frac{1}{t} + C = \\frac{1}{1 - \\tan x} + C\\)."
+  },
+  {
+    "id": "b3558241-6ec4-437c-afaf-40cccd4e499b",
+    "ref": "Ex 7.2 Q26",
+    "solution": "Put \\(t = \\sqrt{x}\\), so \\(dt = \\frac{1}{2\\sqrt{x}}\\,dx\\), i.e. \\(\\frac{dx}{\\sqrt{x}} = 2\\,dt\\). Then \\(\\int \\frac{\\cos\\sqrt{x}}{\\sqrt{x}}\\,dx = 2\\int \\cos t\\,dt = 2\\sin t + C = 2\\sin\\sqrt{x} + C\\)."
+  },
+  {
+    "id": "2b1c3739-42dd-4a9e-8f1f-b3ebf93cc36e",
+    "ref": "Ex 7.2 Q27",
+    "solution": "Put \\(t = \\sin 2x\\), so \\(dt = 2\\cos 2x\\,dx\\). Then \\(\\int \\sqrt{\\sin 2x}\\,\\cos 2x\\,dx = \\frac{1}{2}\\int t^{1/2}\\,dt = \\frac{1}{2}\\cdot\\frac{2}{3}t^{3/2} + C = \\frac{1}{3}(\\sin 2x)^{3/2} + C\\)."
+  },
+  {
+    "id": "67df3edb-d8b4-4c8c-a34e-6e89b0f2c98e",
+    "ref": "Ex 7.2 Q28",
+    "solution": "Put \\(t = 1 + \\sin x\\), so \\(dt = \\cos x\\,dx\\). Then \\(\\int \\frac{\\cos x}{\\sqrt{1 + \\sin x}}\\,dx = \\int \\frac{dt}{\\sqrt{t}} = 2\\sqrt{t} + C = 2\\sqrt{1 + \\sin x} + C\\)."
+  },
+  {
+    "id": "44be59da-12cc-4cf2-bb3a-e7091333047c",
+    "ref": "Ex 7.2 Q29",
+    "solution": "Put \\(t = \\log\\sin x\\), so \\(dt = \\frac{\\cos x}{\\sin x}\\,dx = \\cot x\\,dx\\). Then \\(\\int \\cot x\\,\\log\\sin x\\,dx = \\int t\\,dt = \\frac{t^2}{2} + C = \\frac{(\\log\\sin x)^2}{2} + C\\)."
+  },
+  {
+    "id": "d43b026a-571b-44bf-81f3-aff52b67e721",
+    "ref": "Ex 7.2 Q30",
+    "solution": "Put \\(t = 1 + \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\frac{\\sin x}{1 + \\cos x}\\,dx = -\\int \\frac{dt}{t} = -\\log|t| + C = -\\log|1 + \\cos x| + C\\)."
+  },
+  {
+    "id": "2d486559-e472-4afc-b1cd-7f8c556805bd",
+    "ref": "Ex 7.2 Q31",
+    "solution": "Put \\(t = 1 + \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\frac{\\sin x}{(1 + \\cos x)^2}\\,dx = -\\int \\frac{dt}{t^2} = \\frac{1}{t} + C = \\frac{1}{1 + \\cos x} + C\\)."
+  },
+  {
+    "id": "b98288ce-c382-41cb-b504-026af86cf0cc",
+    "ref": "Ex 7.2 Q32",
+    "solution": "\\(\\frac{1}{1 + \\cot x} = \\frac{\\sin x}{\\sin x + \\cos x}\\). Let \\(I = \\int \\frac{\\sin x}{\\sin x + \\cos x}\\,dx\\) and \\(J = \\int \\frac{\\cos x}{\\sin x + \\cos x}\\,dx\\). Then \\(I + J = \\int 1\\,dx = x\\) and \\(J - I = \\int \\frac{\\cos x - \\sin x}{\\sin x + \\cos x}\\,dx = \\log|\\sin x + \\cos x|\\). Subtracting, \\(2I = x - \\log|\\sin x + \\cos x|\\), so \\(I = \\frac{1}{2}\\left(x - \\log|\\sin x + \\cos x|\\right) + C\\)."
+  },
+  {
+    "id": "7deab83f-fac3-497b-b128-c8dc37b12005",
+    "ref": "Ex 7.2 Q33",
+    "solution": "\\(\\frac{1}{1 - \\tan x} = \\frac{\\cos x}{\\cos x - \\sin x}\\). Let \\(I = \\int \\frac{\\cos x}{\\cos x - \\sin x}\\,dx\\) and \\(J = \\int \\frac{\\sin x}{\\cos x - \\sin x}\\,dx\\). Then \\(I - J = \\int 1\\,dx = x\\) and \\(I + J = \\int \\frac{\\cos x + \\sin x}{\\cos x - \\sin x}\\,dx = -\\log|\\cos x - \\sin x|\\) (since \\(\\frac{d}{dx}(\\cos x - \\sin x) = -(\\cos x + \\sin x)\\)). Adding, \\(2I = x - \\log|\\cos x - \\sin x|\\), so \\(I = \\frac{1}{2}\\left(x - \\log|\\cos x - \\sin x|\\right) + C\\)."
+  },
+  {
+    "id": "f815965b-2666-4fc8-baed-632f73760922",
+    "ref": "Ex 7.2 Q34",
+    "solution": "Write \\(\\sin x\\cos x = \\cos^2 x\\,\\tan x\\), so \\(\\frac{\\sqrt{\\tan x}}{\\sin x\\cos x} = \\frac{\\sqrt{\\tan x}}{\\cos^2 x\\,\\tan x} = \\frac{\\sec^2 x}{\\sqrt{\\tan x}}\\). Put \\(t = \\tan x\\), so \\(dt = \\sec^2 x\\,dx\\). Then the integral \\(= \\int \\frac{dt}{\\sqrt{t}} = 2\\sqrt{t} + C = 2\\sqrt{\\tan x} + C\\)."
+  },
+  {
+    "id": "41031cb4-1d53-44ac-8d6f-5ca8afb64354",
+    "ref": "Ex 7.2 Q35",
+    "solution": "Put \\(t = 1 + \\log x\\), so \\(dt = \\tfrac{1}{x}\\,dx\\). Then \\(\\int \\frac{(1 + \\log x)^2}{x}\\,dx = \\int t^2\\,dt = \\frac{t^3}{3} + C = \\frac{(1 + \\log x)^3}{3} + C\\)."
+  },
+  {
+    "id": "19d4d0e2-a92c-4908-8ca3-487e956ca3d3",
+    "ref": "Ex 7.2 Q36",
+    "solution": "Write \\(\\frac{(x + 1)(x + \\log x)^2}{x} = (x + \\log x)^2\\left(1 + \\frac{1}{x}\\right)\\). Put \\(t = x + \\log x\\), so \\(dt = \\left(1 + \\frac{1}{x}\\right)dx\\). Then the integral \\(= \\int t^2\\,dt = \\frac{t^3}{3} + C = \\frac{(x + \\log x)^3}{3} + C\\)."
+  },
+  {
+    "id": "27ce8ecc-f28e-4632-8728-54e5f103d5bb",
+    "ref": "Ex 7.2 Q37",
+    "solution": "Put \\(t = \\tan^{-1}(x^4)\\), so \\(dt = \\frac{4x^3}{1 + x^8}\\,dx\\), i.e. \\(\\frac{x^3}{1 + x^8}\\,dx = \\frac{dt}{4}\\). Then \\(\\int \\frac{x^3\\sin(\\tan^{-1} x^4)}{1 + x^8}\\,dx = \\frac{1}{4}\\int \\sin t\\,dt = -\\frac{1}{4}\\cos t + C = -\\frac{1}{4}\\cos(\\tan^{-1} x^4) + C\\)."
+  },
+  {
+    "id": "68901e9d-70af-4dbb-91aa-0a5ce38f5e42",
+    "ref": "Misc Q2",
+    "solution": "Rationalize by multiplying numerator and denominator by \\(\\sqrt{x + a} - \\sqrt{x + b}\\); the denominator becomes \\((x + a) - (x + b) = a - b\\). Then \\(\\int \\frac{dx}{\\sqrt{x + a} + \\sqrt{x + b}} = \\frac{1}{a - b}\\int \\left(\\sqrt{x + a} - \\sqrt{x + b}\\right)dx = \\frac{1}{a - b}\\left[\\frac{2}{3}(x + a)^{3/2} - \\frac{2}{3}(x + b)^{3/2}\\right] + C = \\frac{2}{3(a - b)}\\left[(x + a)^{3/2} - (x + b)^{3/2}\\right] + C\\)."
+  },
+  {
+    "id": "29e81408-f427-42b4-858b-db140ccf7d35",
+    "ref": "Misc Q3",
+    "solution": "Put \\(x = \\frac{a}{t}\\), so \\(dx = -\\frac{a}{t^2}\\,dt\\). Then \\(ax - x^2 = \\frac{a^2}{t} - \\frac{a^2}{t^2} = \\frac{a^2}{t^2}(t - 1)\\), so \\(\\sqrt{ax - x^2} = \\frac{a}{t}\\sqrt{t - 1}\\) and \\(x\\sqrt{ax - x^2} = \\frac{a^2}{t^2}\\sqrt{t - 1}\\). Hence \\(\\int \\frac{dx}{x\\sqrt{ax - x^2}} = \\int \\frac{t^2}{a^2\\sqrt{t - 1}}\\left(-\\frac{a}{t^2}\\right)dt = -\\frac{1}{a}\\int \\frac{dt}{\\sqrt{t - 1}} = -\\frac{2}{a}\\sqrt{t - 1} + C\\). Since \\(t = \\frac{a}{x}\\), \\(t - 1 = \\frac{a - x}{x}\\), giving \\(-\\frac{2}{a}\\sqrt{\\frac{a - x}{x}} + C\\)."
+  },
+  {
+    "id": "60b30ee5-9900-4bc0-9970-9fbd0449c9e9",
+    "ref": "Misc Q4",
+    "solution": "Take \\(x^4\\) out of the bracket: \\((x^4 + 1)^{3/4} = x^3\\left(1 + x^{-4}\\right)^{3/4}\\), so the integrand is \\(x^{-5}\\left(1 + x^{-4}\\right)^{-3/4}\\). Put \\(t = 1 + x^{-4}\\), so \\(dt = -4x^{-5}\\,dx\\), i.e. \\(x^{-5}\\,dx = -\\frac{dt}{4}\\). Then \\(\\int \\frac{dx}{x^2(x^4 + 1)^{3/4}} = -\\frac{1}{4}\\int t^{-3/4}\\,dt = -\\frac{1}{4}\\cdot\\frac{t^{1/4}}{1/4} + C = -t^{1/4} + C = -\\left(1 + \\frac{1}{x^4}\\right)^{1/4} + C = -\\frac{(x^4 + 1)^{1/4}}{x} + C\\)."
+  },
+  {
+    "id": "dff925b8-2b13-4087-b3e0-57aa1b3b6343",
+    "ref": "Misc Q5",
+    "solution": "Put \\(x = t^6\\), so \\(dx = 6t^5\\,dt\\), \\(x^{1/2} = t^3\\), \\(x^{1/3} = t^2\\), and the denominator is \\(t^3 + t^2 = t^2(t + 1)\\). Then \\(\\int \\frac{dx}{x^{1/2} + x^{1/3}} = \\int \\frac{6t^5}{t^2(t + 1)}\\,dt = 6\\int \\frac{t^3}{t + 1}\\,dt\\). Since \\(\\frac{t^3}{t + 1} = t^2 - t + 1 - \\frac{1}{t + 1}\\), this equals \\(6\\left[\\frac{t^3}{3} - \\frac{t^2}{2} + t - \\log|t + 1|\\right] + C = 2t^3 - 3t^2 + 6t - 6\\log|t + 1| + C = 2\\sqrt{x} - 3x^{1/3} + 6x^{1/6} - 6\\log\\left(x^{1/6} + 1\\right) + C\\)."
+  },
+  {
+    "id": "121f880a-d60e-4ebf-a6fe-725cb3437e9d",
+    "ref": "Misc Q15",
+    "solution": "Since \\(e^{\\log\\sin x} = \\sin x\\), the integrand is \\(\\cos^3 x\\,\\sin x\\). Put \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Then \\(\\int \\cos^3 x\\,e^{\\log\\sin x}\\,dx = \\int \\cos^3 x\\,\\sin x\\,dx = -\\int t^3\\,dt = -\\frac{t^4}{4} + C = -\\frac{\\cos^4 x}{4} + C\\)."
+  },
+  {
+    "id": "14bcb1f9-9ac2-4248-b23b-3f4eb6c4bba2",
+    "ref": "Misc Q16",
+    "solution": "Since \\(e^{3\\log x} = x^3\\), the integrand is \\(\\frac{x^3}{x^4 + 1}\\). Put \\(t = x^4 + 1\\), so \\(dt = 4x^3\\,dx\\). Then \\(\\int \\frac{e^{3\\log x}}{x^4 + 1}\\,dx = \\int \\frac{x^3}{x^4 + 1}\\,dx = \\frac{1}{4}\\int \\frac{dt}{t} = \\frac{1}{4}\\log|t| + C = \\frac{1}{4}\\log(x^4 + 1) + C\\)."
+  },
+  {
+    "id": "9332dc6c-02b1-4bbc-bd21-2e36ff4cdfb7",
+    "ref": "Misc Q17",
+    "solution": "Put \\(t = f(ax + b)\\), so \\(dt = a\\,f'(ax + b)\\,dx\\), i.e. \\(f'(ax + b)\\,dx = \\frac{dt}{a}\\). Then \\(\\int f'(ax + b)\\,[f(ax + b)]^n\\,dx = \\frac{1}{a}\\int t^n\\,dt = \\frac{1}{a}\\cdot\\frac{t^{n+1}}{n + 1} + C = \\frac{[f(ax + b)]^{n+1}}{a(n + 1)} + C\\) (for \\(n \\ne -1\\))."
+  },
+  {
+    "id": "6d154617-321f-4e9e-8ca2-6905f0246c72",
+    "ref": "Misc Q18",
+    "solution": "Expand \\(\\sin(x + \\alpha) = \\sin x\\cos\\alpha + \\cos x\\sin\\alpha\\), so \\(\\sin^3 x\\,\\sin(x + \\alpha) = \\sin^4 x\\left(\\cos\\alpha + \\sin\\alpha\\cot x\\right)\\) and \\(\\sqrt{\\sin^3 x\\,\\sin(x + \\alpha)} = \\sin^2 x\\sqrt{\\cos\\alpha + \\sin\\alpha\\cot x}\\). Thus the integrand is \\(\\frac{\\operatorname{cosec}^2 x}{\\sqrt{\\cos\\alpha + \\sin\\alpha\\cot x}}\\). Put \\(t = \\cos\\alpha + \\sin\\alpha\\cot x\\), so \\(dt = -\\sin\\alpha\\,\\operatorname{cosec}^2 x\\,dx\\). Then the integral \\(= -\\frac{1}{\\sin\\alpha}\\int \\frac{dt}{\\sqrt{t}} = -\\frac{2}{\\sin\\alpha}\\sqrt{t} + C = -\\frac{2}{\\sin\\alpha}\\sqrt{\\cos\\alpha + \\sin\\alpha\\cot x} + C = -\\frac{2}{\\sin\\alpha}\\sqrt{\\frac{\\sin(x + \\alpha)}{\\sin x}} + C\\)."
+  },
+  {
+    "id": "f9646bf3-1569-483f-a86f-16cc94dd2e99",
+    "ref": "Misc Q19",
+    "solution": "For \\(0 < x < 1\\), \\(\\sqrt{\\frac{1 - \\sqrt{x}}{1 + \\sqrt{x}}} = \\frac{1 - \\sqrt{x}}{\\sqrt{1 - x}}\\), so the integral splits as \\(\\int \\frac{dx}{\\sqrt{1 - x}} - \\int \\frac{\\sqrt{x}}{\\sqrt{1 - x}}\\,dx\\). The first is \\(-2\\sqrt{1 - x}\\). For the second, put \\(x = \\sin^2\\theta\\), \\(dx = 2\\sin\\theta\\cos\\theta\\,d\\theta\\), so \\(\\int \\frac{\\sqrt{x}}{\\sqrt{1 - x}}\\,dx = \\int 2\\sin^2\\theta\\,d\\theta = \\theta - \\sin\\theta\\cos\\theta = \\sin^{-1}\\sqrt{x} - \\sqrt{x - x^2}\\). Therefore the integral \\(= -2\\sqrt{1 - x} - \\sin^{-1}\\sqrt{x} + \\sqrt{x - x^2} + C\\)."
+  },
+  {
+    "id": "d0d3d66e-f398-4baa-bb72-fb1278fb0f87",
+    "ref": "Misc Q23",
+    "solution": "Note \\(\\log(x^2 + 1) - 2\\log x = \\log\\frac{x^2 + 1}{x^2} = \\log\\left(1 + \\frac{1}{x^2}\\right)\\), and \\(\\frac{\\sqrt{x^2 + 1}}{x^4} = \\frac{1}{x^3}\\left(1 + \\frac{1}{x^2}\\right)^{1/2}\\). Put \\(t = 1 + \\frac{1}{x^2}\\), so \\(dt = -\\frac{2}{x^3}\\,dx\\), i.e. \\(\\frac{dx}{x^3} = -\\frac{dt}{2}\\). The integral becomes \\(-\\frac{1}{2}\\int \\sqrt{t}\\,\\log t\\,dt\\). By parts, \\(\\int t^{1/2}\\log t\\,dt = \\frac{2}{3}t^{3/2}\\log t - \\frac{4}{9}t^{3/2}\\), so the integral \\(= -\\frac{1}{2}\\left(\\frac{2}{3}t^{3/2}\\log t - \\frac{4}{9}t^{3/2}\\right) + C = \\frac{1}{3}t^{3/2}\\left(\\frac{2}{3} - \\log t\\right) + C = \\frac{1}{3}\\left(1 + \\frac{1}{x^2}\\right)^{3/2}\\left[\\frac{2}{3} - \\log\\left(1 + \\frac{1}{x^2}\\right)\\right] + C\\)."
+  }
+]

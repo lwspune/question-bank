@@ -1,0 +1,107 @@
+[
+  {
+    "id": "14289a72-7b75-4bfc-8ec9-ed56be83b865",
+    "ref": "Ex 7.1 Q1",
+    "solution": "Since \\(\\frac{d}{dx}(\\cos 2x) = -2\\sin 2x\\), an antiderivative of \\(\\sin 2x\\) is \\(-\\tfrac{1}{2}\\cos 2x\\). Thus \\(\\int \\sin 2x\\,dx = -\\frac{1}{2}\\cos 2x + C\\)."
+  },
+  {
+    "id": "e694cd20-3b18-4fb9-9a3c-a2af2a3a2fce",
+    "ref": "Ex 7.1 Q2",
+    "solution": "Since \\(\\frac{d}{dx}(\\sin 3x) = 3\\cos 3x\\), an antiderivative of \\(\\cos 3x\\) is \\(\\tfrac{1}{3}\\sin 3x\\). Thus \\(\\int \\cos 3x\\,dx = \\frac{1}{3}\\sin 3x + C\\)."
+  },
+  {
+    "id": "6a11ff26-f3e6-4b4c-9379-b70fac8e45f5",
+    "ref": "Ex 7.1 Q3",
+    "solution": "Since \\(\\frac{d}{dx}(e^{2x}) = 2e^{2x}\\), an antiderivative of \\(e^{2x}\\) is \\(\\tfrac{1}{2}e^{2x}\\). Thus \\(\\int e^{2x}\\,dx = \\frac{1}{2}e^{2x} + C\\)."
+  },
+  {
+    "id": "5af52e3b-3cb5-4ba1-821f-3ca9ff186be5",
+    "ref": "Ex 7.1 Q4",
+    "solution": "Note \\(\\frac{d}{dx}\\!\\left[(ax+b)^3\\right] = 3a(ax+b)^2\\), so an antiderivative of \\((ax+b)^2\\) is \\(\\frac{(ax+b)^3}{3a}\\). Thus \\(\\int (ax+b)^2\\,dx = \\frac{(ax+b)^3}{3a} + C\\)."
+  },
+  {
+    "id": "f7940ce9-c3b7-4d35-8b84-1b305476e8c4",
+    "ref": "Ex 7.1 Q5",
+    "solution": "Integrate term by term: \\(\\int \\sin 2x\\,dx = -\\tfrac{1}{2}\\cos 2x\\) and \\(\\int e^{3x}\\,dx = \\tfrac{1}{3}e^{3x}\\). Hence \\(\\int (\\sin 2x - 4e^{3x})\\,dx = -\\frac{1}{2}\\cos 2x - \\frac{4}{3}e^{3x} + C\\)."
+  },
+  {
+    "id": "cac8ec4a-2b92-42ed-aaec-6808950080ba",
+    "ref": "Ex 7.1 Q6",
+    "solution": "Integrate term by term: \\(\\int (4e^{3x} + 1)\\,dx = 4\\cdot\\tfrac{1}{3}e^{3x} + x = \\frac{4}{3}e^{3x} + x + C\\)."
+  },
+  {
+    "id": "f7eb1a45-d034-4a31-b86a-ca8760ac0dd5",
+    "ref": "Ex 7.1 Q7",
+    "solution": "Expand first: \\(x^2\\left(1 - \\frac{1}{x^2}\\right) = x^2 - 1\\). Then \\(\\int (x^2 - 1)\\,dx = \\frac{x^3}{3} - x + C\\)."
+  },
+  {
+    "id": "c8129732-c47b-4eed-bbf2-680636a4eea8",
+    "ref": "Ex 7.1 Q8",
+    "solution": "Integrate term by term: \\(\\int (ax^2 + bx + c)\\,dx = \\frac{ax^3}{3} + \\frac{bx^2}{2} + cx + C\\)."
+  },
+  {
+    "id": "70e1a087-4de1-4021-a75d-6be960388db3",
+    "ref": "Ex 7.1 Q9",
+    "solution": "Integrate term by term: \\(\\int (2x^2 + e^x)\\,dx = \\frac{2x^3}{3} + e^x + C\\)."
+  },
+  {
+    "id": "7dc16cf5-4668-4a16-92ae-f7bc2ee25115",
+    "ref": "Ex 7.1 Q10",
+    "solution": "Expand: \\(\\left(\\sqrt{x} - \\frac{1}{\\sqrt{x}}\\right)^2 = x - 2 + \\frac{1}{x}\\). Then \\(\\int \\left(x - 2 + \\frac{1}{x}\\right) dx = \\frac{x^2}{2} - 2x + \\log|x| + C\\)."
+  },
+  {
+    "id": "46f2d449-f267-4ae3-bdc9-c605d37ceb5e",
+    "ref": "Ex 7.1 Q11",
+    "solution": "Divide through by \\(x^2\\): \\(\\frac{x^3 + 5x^2 - 4}{x^2} = x + 5 - 4x^{-2}\\). Then \\(\\int \\left(x + 5 - 4x^{-2}\\right) dx = \\frac{x^2}{2} + 5x + \\frac{4}{x} + C\\)."
+  },
+  {
+    "id": "cdc07b76-d04f-43c8-a157-6f2bec29287c",
+    "ref": "Ex 7.1 Q12",
+    "solution": "Split each term over \\(\\sqrt{x}\\): \\(\\frac{x^3 + 3x + 4}{\\sqrt{x}} = x^{5/2} + 3x^{1/2} + 4x^{-1/2}\\). Then \\(\\int \\left(x^{5/2} + 3x^{1/2} + 4x^{-1/2}\\right) dx = \\frac{2}{7}x^{7/2} + 2x^{3/2} + 8\\sqrt{x} + C\\)."
+  },
+  {
+    "id": "0bed3885-81c0-4e6e-973e-4d5fce7b3a2c",
+    "ref": "Ex 7.1 Q13",
+    "solution": "Factor the numerator: \\(x^3 - x^2 + x - 1 = x^2(x-1) + (x-1) = (x-1)(x^2+1)\\). So \\(\\frac{x^3 - x^2 + x - 1}{x - 1} = x^2 + 1\\), and \\(\\int (x^2 + 1)\\,dx = \\frac{x^3}{3} + x + C\\)."
+  },
+  {
+    "id": "6cdaf200-7176-456c-92ca-de5c48ce463a",
+    "ref": "Ex 7.1 Q14",
+    "solution": "Expand: \\((1 - x)\\sqrt{x} = x^{1/2} - x^{3/2}\\). Then \\(\\int \\left(x^{1/2} - x^{3/2}\\right) dx = \\frac{2}{3}x^{3/2} - \\frac{2}{5}x^{5/2} + C\\)."
+  },
+  {
+    "id": "48333004-a84b-480d-ab6f-b34ca4a2c3e7",
+    "ref": "Ex 7.1 Q15",
+    "solution": "Expand: \\(\\sqrt{x}\\,(3x^2 + 2x + 3) = 3x^{5/2} + 2x^{3/2} + 3x^{1/2}\\). Then \\(\\int \\left(3x^{5/2} + 2x^{3/2} + 3x^{1/2}\\right) dx = \\frac{6}{7}x^{7/2} + \\frac{4}{5}x^{5/2} + 2x^{3/2} + C\\)."
+  },
+  {
+    "id": "a8fa1f9d-47f5-4dec-9a80-4d3f0956c814",
+    "ref": "Ex 7.1 Q16",
+    "solution": "Integrate term by term: \\(\\int (2x - 3\\cos x + e^x)\\,dx = x^2 - 3\\sin x + e^x + C\\)."
+  },
+  {
+    "id": "d4626561-9e2e-4eb2-8be7-f75c96e694cd",
+    "ref": "Ex 7.1 Q17",
+    "solution": "Integrate term by term, using \\(\\int \\sqrt{x}\\,dx = \\tfrac{2}{3}x^{3/2}\\): \\(\\int (2x^2 - 3\\sin x + 5\\sqrt{x})\\,dx = \\frac{2x^3}{3} + 3\\cos x + \\frac{10}{3}x^{3/2} + C\\)."
+  },
+  {
+    "id": "905a699d-326e-40d5-bad0-94798b2ada2a",
+    "ref": "Ex 7.1 Q18",
+    "solution": "Expand: \\(\\sec x\\,(\\sec x + \\tan x) = \\sec^2 x + \\sec x \\tan x\\). Since \\(\\int \\sec^2 x\\,dx = \\tan x\\) and \\(\\int \\sec x \\tan x\\,dx = \\sec x\\), we get \\(\\int \\sec x\\,(\\sec x + \\tan x)\\,dx = \\tan x + \\sec x + C\\)."
+  },
+  {
+    "id": "61837fe3-ce08-4c56-89ad-5d2e9e00b070",
+    "ref": "Ex 7.1 Q19",
+    "solution": "Write \\(\\frac{\\sec^2 x}{\\csc^2 x} = \\sec^2 x \\cdot \\sin^2 x = \\frac{\\sin^2 x}{\\cos^2 x} = \\tan^2 x = \\sec^2 x - 1\\). Then \\(\\int (\\sec^2 x - 1)\\,dx = \\tan x - x + C\\)."
+  },
+  {
+    "id": "a9a11e25-3a39-4390-b125-8bebd58777cf",
+    "ref": "Ex 7.1 Q20",
+    "solution": "Split: \\(\\frac{2 - 3\\sin x}{\\cos^2 x} = 2\\sec^2 x - 3\\,\\frac{\\sin x}{\\cos^2 x} = 2\\sec^2 x - 3\\sec x \\tan x\\). Then \\(\\int (2\\sec^2 x - 3\\sec x \\tan x)\\,dx = 2\\tan x - 3\\sec x + C\\)."
+  },
+  {
+    "id": "cec11acb-9e21-4389-a4f7-cc81ebe839bb",
+    "ref": "Misc Q8",
+    "solution": "Use \\(e^{k\\log x} = x^{k}\\): the integrand becomes \\(\\frac{x^5 - x^4}{x^3 - x^2} = \\frac{x^4(x-1)}{x^2(x-1)} = x^2\\). Then \\(\\int x^2\\,dx = \\frac{x^3}{3} + C\\)."
+  }
+]
