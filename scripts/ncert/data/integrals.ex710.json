@@ -1,0 +1,247 @@
+[
+  {
+    "ref": "7.10 Eg.28",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\int_{-1}^{2} |x^3 - x|\\,dx\\).",
+    "solution": "We note that \\(x^3 - x \\ge 0\\) on \\([-1, 0]\\) and \\(x^3 - x \\le 0\\) on \\([0, 1]\\) and that \\(x^3 - x \\ge 0\\) on \\([1, 2]\\). So by \\(P_2\\) we write \\(\\int_{-1}^{2} |x^3 - x|\\,dx = \\int_{-1}^{0}(x^3 - x)\\,dx + \\int_{0}^{1} -(x^3 - x)\\,dx + \\int_{1}^{2}(x^3 - x)\\,dx = \\int_{-1}^{0}(x^3 - x)\\,dx + \\int_{0}^{1}(x - x^3)\\,dx + \\int_{1}^{2}(x^3 - x)\\,dx = \\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{-1}^{0} + \\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_{0}^{1} + \\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{1}^{2} = -\\left(\\frac{1}{4} - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) + (4 - 2) - \\left(\\frac{1}{4} - \\frac{1}{2}\\right) = -\\frac{1}{4} + \\frac{1}{2} + \\frac{1}{2} - \\frac{1}{4} + 2 - \\frac{1}{4} + \\frac{1}{2} = \\frac{3}{2} - \\frac{3}{4} + 2 = \\frac{11}{4}\\)."
+  },
+  {
+    "ref": "7.10 Eg.29",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\int_{-\\pi/4}^{\\pi/4} \\sin^2 x\\,dx\\).",
+    "solution": "We observe that \\(\\sin^2 x\\) is an even function. Therefore, by \\(P_7\\)(i), we get \\(\\int_{-\\pi/4}^{\\pi/4} \\sin^2 x\\,dx = 2\\int_{0}^{\\pi/4} \\sin^2 x\\,dx = 2\\int_{0}^{\\pi/4} \\frac{1 - \\cos 2x}{2}\\,dx = \\int_{0}^{\\pi/4}(1 - \\cos 2x)\\,dx = \\left[x - \\frac{1}{2}\\sin 2x\\right]_{0}^{\\pi/4} = \\left(\\frac{\\pi}{4} - \\frac{1}{2}\\sin \\frac{\\pi}{2}\\right) - 0 = \\frac{\\pi}{4} - \\frac{1}{2}\\)."
+  },
+  {
+    "ref": "7.10 Eg.30",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi} \\frac{x \\sin x}{1 + \\cos^2 x}\\,dx\\).",
+    "solution": "Let \\(I = \\int_{0}^{\\pi} \\frac{x \\sin x}{1 + \\cos^2 x}\\,dx\\). Then, by \\(P_4\\), we have \\(I = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\sin(\\pi - x)}{1 + \\cos^2(\\pi - x)}\\,dx = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\sin x}{1 + \\cos^2 x}\\,dx = \\pi\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx - I\\). Or \\(2I = \\pi\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx\\), or \\(I = \\frac{\\pi}{2}\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx\\). Put \\(\\cos x = t\\) so that \\(-\\sin x\\,dx = dt\\). When \\(x = 0\\), \\(t = 1\\) and when \\(x = \\pi\\), \\(t = -1\\). Therefore, (by \\(P_1\\)) we get \\(I = \\frac{-\\pi}{2}\\int_{1}^{-1} \\frac{dt}{1 + t^2} = \\frac{\\pi}{2}\\int_{-1}^{1} \\frac{dt}{1 + t^2} = \\pi\\int_{0}^{1} \\frac{dt}{1 + t^2}\\) (by \\(P_7\\), since \\(\\frac{1}{1+t^2}\\) is even function) \\(= \\pi\\left[\\tan^{-1} t\\right]_{0}^{1} = \\pi\\left[\\tan^{-1} 1 - \\tan^{-1} 0\\right] = \\pi\\left[\\frac{\\pi}{4} - 0\\right] = \\frac{\\pi^2}{4}\\)."
+  },
+  {
+    "ref": "7.10 Eg.31",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\int_{-1}^{1} \\sin^5 x \\cos^4 x\\,dx\\).",
+    "solution": "Let \\(I = \\int_{-1}^{1} \\sin^5 x \\cos^4 x\\,dx\\). Let \\(f(x) = \\sin^5 x \\cos^4 x\\). Then \\(f(-x) = \\sin^5(-x)\\cos^4(-x) = -\\sin^5 x \\cos^4 x = -f(x)\\), i.e., \\(f\\) is an odd function. Therefore, by \\(P_7\\)(ii), \\(I = 0\\)."
+  },
+  {
+    "ref": "7.10 Eg.32",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi/2} \\frac{\\sin^4 x}{\\sin^4 x + \\cos^4 x}\\,dx\\).",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\frac{\\sin^4 x}{\\sin^4 x + \\cos^4 x}\\,dx\\) ... (1). Then, by \\(P_4\\), \\(I = \\int_{0}^{\\pi/2} \\frac{\\sin^4\\left(\\frac{\\pi}{2} - x\\right)}{\\sin^4\\left(\\frac{\\pi}{2} - x\\right) + \\cos^4\\left(\\frac{\\pi}{2} - x\\right)}\\,dx = \\int_{0}^{\\pi/2} \\frac{\\cos^4 x}{\\cos^4 x + \\sin^4 x}\\,dx\\) ... (2). Adding (1) and (2), we get \\(2I = \\int_{0}^{\\pi/2} \\frac{\\sin^4 x + \\cos^4 x}{\\sin^4 x + \\cos^4 x}\\,dx = \\int_{0}^{\\pi/2} dx = [x]_{0}^{\\pi/2} = \\frac{\\pi}{2}\\). Hence \\(I = \\frac{\\pi}{4}\\)."
+  },
+  {
+    "ref": "7.10 Eg.33",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\int_{\\pi/6}^{\\pi/3} \\frac{dx}{1 + \\sqrt{\\tan x}}\\).",
+    "solution": "Let \\(I = \\int_{\\pi/6}^{\\pi/3} \\frac{dx}{1 + \\sqrt{\\tan x}} = \\int_{\\pi/6}^{\\pi/3} \\frac{\\sqrt{\\cos x}\\,dx}{\\sqrt{\\cos x} + \\sqrt{\\sin x}}\\) ... (1). Then, by \\(P_3\\) (with \\(a + b = \\frac{\\pi}{6} + \\frac{\\pi}{3} = \\frac{\\pi}{2}\\)), \\(I = \\int_{\\pi/6}^{\\pi/3} \\frac{\\sqrt{\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6} - x\\right)}}{\\sqrt{\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6} - x\\right)} + \\sqrt{\\sin\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6} - x\\right)}}\\,dx = \\int_{\\pi/6}^{\\pi/3} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\) ... (2). Adding (1) and (2), we get \\(2I = \\int_{\\pi/6}^{\\pi/3} dx = [x]_{\\pi/6}^{\\pi/3} = \\frac{\\pi}{3} - \\frac{\\pi}{6} = \\frac{\\pi}{6}\\). Hence \\(I = \\frac{\\pi}{12}\\)."
+  },
+  {
+    "ref": "7.10 Eg.34",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi/2} \\log \\sin x\\,dx\\).",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\log \\sin x\\,dx\\). Then, by \\(P_4\\), \\(I = \\int_{0}^{\\pi/2} \\log \\sin\\left(\\frac{\\pi}{2} - x\\right)\\,dx = \\int_{0}^{\\pi/2} \\log \\cos x\\,dx\\). Adding the two values of I, we get \\(2I = \\int_{0}^{\\pi/2}(\\log \\sin x + \\log \\cos x)\\,dx = \\int_{0}^{\\pi/2}(\\log \\sin x \\cos x + \\log 2 - \\log 2)\\,dx\\) (by adding and subtracting \\(\\log 2\\)) \\(= \\int_{0}^{\\pi/2} \\log \\sin 2x\\,dx - \\int_{0}^{\\pi/2} \\log 2\\,dx\\). Put \\(2x = t\\) in the first integral. Then \\(2\\,dx = dt\\), when \\(x = 0\\), \\(t = 0\\) and when \\(x = \\frac{\\pi}{2}\\), \\(t = \\pi\\). Therefore \\(2I = \\frac{1}{2}\\int_{0}^{\\pi} \\log \\sin t\\,dt - \\frac{\\pi}{2}\\log 2 = \\frac{2}{2}\\int_{0}^{\\pi/2} \\log \\sin t\\,dt - \\frac{\\pi}{2}\\log 2\\) (by \\(P_6\\) as \\(\\sin(\\pi - t) = \\sin t\\)) \\(= \\int_{0}^{\\pi/2} \\log \\sin x\\,dx - \\frac{\\pi}{2}\\log 2\\) (by changing variable \\(t\\) to \\(x\\)) \\(= I - \\frac{\\pi}{2}\\log 2\\). Hence \\(\\int_{0}^{\\pi/2} \\log \\sin x\\,dx = \\frac{-\\pi}{2}\\log 2\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\cos^2 x\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\sin^{3/2} x}{\\sin^{3/2} x + \\cos^{3/2} x}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\cos^5 x}{\\sin^5 x + \\cos^5 x}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{-5}^{5} |x + 2|\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{2}^{8} |x - 5|\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{1} x(1 - x)^n\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{2} x\\sqrt{2 - x}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2}(2\\log \\sin x - \\log \\sin 2x)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{-\\pi/2}^{\\pi/2} \\sin^2 x\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi} \\frac{x\\,dx}{1 + \\sin x}\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{-\\pi/2}^{\\pi/2} \\sin^7 x\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{2\\pi} \\cos^5 x\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi/2} \\frac{\\sin x - \\cos x}{1 + \\sin x \\cos x}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{\\pi} \\log(1 + \\cos x)\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{a} \\frac{\\sqrt{x}}{\\sqrt{x} + \\sqrt{a - x}}\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "EASY",
+    "stem": "By using the properties of definite integrals, evaluate the integral \\(\\int_{0}^{4} |x - 1|\\,dx\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\int_{0}^{a} f(x)g(x)\\,dx = 2\\int_{0}^{a} f(x)\\,dx\\), if \\(f\\) and \\(g\\) are defined as \\(f(x) = f(a - x)\\) and \\(g(x) + g(a - x) = 4\\)."
+  },
+  {
+    "ref": "Ex 7.10 Q20",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "The value of \\(\\int_{-\\pi/2}^{\\pi/2}(x^3 + x \\cos x + \\tan^5 x + 1)\\,dx\\) is",
+    "options": [
+      {"label": "A", "text": "\\(0\\)"},
+      {"label": "B", "text": "\\(2\\)"},
+      {"label": "C", "text": "\\(\\pi\\)"},
+      {"label": "D", "text": "\\(1\\)"}
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 7.10 Q21",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "The value of \\(\\int_{0}^{\\pi/2} \\log\\left(\\frac{4 + 3\\sin x}{4 + 3\\cos x}\\right)\\,dx\\) is",
+    "options": [
+      {"label": "A", "text": "\\(2\\)"},
+      {"label": "B", "text": "\\(\\frac{3}{4}\\)"},
+      {"label": "C", "text": "\\(0\\)"},
+      {"label": "D", "text": "\\(-2\\)"}
+    ],
+    "answer": "C"
+  }
+]

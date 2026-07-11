@@ -1,0 +1,122 @@
+[
+  {
+    "ref": "7.7 Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\int \\sqrt{x^2 + 2x + 5}\\,dx\\).",
+    "solution": "Note that \\(\\int \\sqrt{x^2 + 2x + 5}\\,dx = \\int \\sqrt{(x+1)^2 + 4}\\,dx\\). Put \\(x + 1 = y\\), so that \\(dx = dy\\). Then \\(\\int \\sqrt{x^2 + 2x + 5}\\,dx = \\int \\sqrt{y^2 + 2^2}\\,dy = \\frac{1}{2}\\,y\\sqrt{y^2 + 4} + \\frac{4}{2}\\log\\left|\\,y + \\sqrt{y^2 + 4}\\,\\right| + C\\) [using 7.6.2 (ii)] \\(= \\frac{1}{2}(x+1)\\sqrt{x^2 + 2x + 5} + 2\\log\\left|\\,x + 1 + \\sqrt{x^2 + 2x + 5}\\,\\right| + C\\)."
+  },
+  {
+    "ref": "7.7 Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\int \\sqrt{3 - 2x - x^2}\\,dx\\).",
+    "solution": "Note that \\(\\int \\sqrt{3 - 2x - x^2}\\,dx = \\int \\sqrt{4 - (x+1)^2}\\,dx\\). Put \\(x + 1 = y\\) so that \\(dx = dy\\). Thus \\(\\int \\sqrt{3 - 2x - x^2}\\,dx = \\int \\sqrt{4 - y^2}\\,dy = \\frac{1}{2}\\,y\\sqrt{4 - y^2} + \\frac{4}{2}\\sin^{-1}\\frac{y}{2} + C\\) [using 7.6.2 (iii)] \\(= \\frac{1}{2}(x+1)\\sqrt{3 - 2x - x^2} + 2\\sin^{-1}\\left(\\frac{x+1}{2}\\right) + C\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "EASY",
+    "stem": "Integrate the function \\(\\sqrt{4 - x^2}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "EASY",
+    "stem": "Integrate the function \\(\\sqrt{1 - 4x^2}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 4x + 6}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 4x + 1}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\sqrt{1 - 4x - x^2}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 4x - 5}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\sqrt{1 + 3x - x^2}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\sqrt{x^2 + 3x}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "EASY",
+    "stem": "Integrate the function \\(\\sqrt{1 + \\dfrac{x^2}{9}}\\)."
+  },
+  {
+    "ref": "Ex 7.7 Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "EASY",
+    "stem": "\\(\\int \\sqrt{1 + x^2}\\,dx\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(\\dfrac{x}{2}\\sqrt{1 + x^2} + \\dfrac{1}{2}\\log\\left|\\left(x + \\sqrt{1 + x^2}\\right)\\right| + C\\)"},
+      {"label": "B", "text": "\\(\\dfrac{2}{3}(1 + x^2)^{\\frac{3}{2}} + C\\)"},
+      {"label": "C", "text": "\\(\\dfrac{2}{3}x(1 + x^2)^{\\frac{3}{2}} + C\\)"},
+      {"label": "D", "text": "\\(\\dfrac{x^2}{2}\\sqrt{1 + x^2} + \\dfrac{1}{2}x^2\\log\\left|x + \\sqrt{1 + x^2}\\right| + C\\)"}
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex 7.7 Q11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrals of Special Forms",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\sqrt{x^2 - 8x + 7}\\,dx\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(\\dfrac{1}{2}(x - 4)\\sqrt{x^2 - 8x + 7} + 9\\log\\left|x - 4 + \\sqrt{x^2 - 8x + 7}\\right| + C\\)"},
+      {"label": "B", "text": "\\(\\dfrac{1}{2}(x + 4)\\sqrt{x^2 - 8x + 7} + 9\\log\\left|x + 4 + \\sqrt{x^2 - 8x + 7}\\right| + C\\)"},
+      {"label": "C", "text": "\\(\\dfrac{1}{2}(x - 4)\\sqrt{x^2 - 8x + 7} - 3\\sqrt{2}\\log\\left|x - 4 + \\sqrt{x^2 - 8x + 7}\\right| + C\\)"},
+      {"label": "D", "text": "\\(\\dfrac{1}{2}(x - 4)\\sqrt{x^2 - 8x + 7} - \\dfrac{9}{2}\\log\\left|x - 4 + \\sqrt{x^2 - 8x + 7}\\right| + C\\)"}
+    ],
+    "answer": "D"
+  }
+]

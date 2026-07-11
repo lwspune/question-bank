@@ -1,0 +1,416 @@
+[
+  {
+    "ref": "Misc Eg.35",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\int \\cos 6x\\, \\sqrt{1+\\sin 6x}\\; dx\\).",
+    "solution": "Put \\(t = 1 + \\sin 6x\\), so that \\(dt = 6\\cos 6x\\, dx\\). Therefore \\(\\int \\cos 6x\\sqrt{1+\\sin 6x}\\, dx = \\frac{1}{6}\\int t^{\\frac{1}{2}}\\, dt = \\frac{1}{6}\\times\\frac{2}{3}(t)^{\\frac{3}{2}} + C = \\frac{1}{9}(1+\\sin 6x)^{\\frac{3}{2}} + C\\)."
+  },
+  {
+    "ref": "Misc Eg.36",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\int \\frac{(x^4 - x)^{\\frac{1}{4}}}{x^5}\\, dx\\).",
+    "solution": "We have \\(\\int \\frac{(x^4 - x)^{\\frac{1}{4}}}{x^5}\\, dx = \\int \\frac{\\left(1 - \\frac{1}{x^3}\\right)^{\\frac{1}{4}}}{x^4}\\, dx\\). Put \\(1 - \\frac{1}{x^3} = 1 - x^{-3} = t\\), so that \\(\\frac{3}{x^4}\\, dx = dt\\). Therefore \\(\\int \\frac{(x^4 - x)^{\\frac{1}{4}}}{x^5}\\, dx = \\frac{1}{3}\\int t^{\\frac{1}{4}}\\, dt = \\frac{1}{3}\\times\\frac{4}{5} t^{\\frac{5}{4}} + C = \\frac{4}{15}\\left(1 - \\frac{1}{x^3}\\right)^{\\frac{5}{4}} + C\\)."
+  },
+  {
+    "ref": "Misc Eg.37",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\int \\frac{x^4\\, dx}{(x-1)(x^2+1)}\\).",
+    "solution": "By division, \\(\\frac{x^4}{(x-1)(x^2+1)} = (x+1) + \\frac{1}{(x-1)(x^2+1)}\\). Now express \\(\\frac{1}{(x-1)(x^2+1)} = \\frac{A}{x-1} + \\frac{Bx+C}{x^2+1}\\). So \\(1 = A(x^2+1) + (Bx+C)(x-1)\\). Equating coefficients gives \\(A + B = 0,\\; C - B = 0,\\; A - C = 1\\), which give \\(A = \\frac{1}{2},\\; B = C = -\\frac{1}{2}\\). Hence \\(\\frac{1}{(x-1)(x^2+1)} = \\frac{1}{2(x-1)} - \\frac{1}{2}\\frac{x}{x^2+1} - \\frac{1}{2(x^2+1)}\\). Therefore \\(\\int \\frac{x^4}{(x-1)(x^2+1)}\\, dx = \\frac{x^2}{2} + x + \\frac{1}{2}\\log|x-1| - \\frac{1}{4}\\log(x^2+1) - \\frac{1}{2}\\tan^{-1}x + C\\).",
+    "_note": "The book prints the denominator as (x-1)(x^2+x+1) in the intermediate 'substituting (3) in (1)' and 'Therefore' lines; the correct denominator per the example statement is (x-1)(x^2+1) — used here."
+  },
+  {
+    "ref": "Misc Eg.38",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\int \\left[\\log(\\log x) + \\frac{1}{(\\log x)^2}\\right] dx\\).",
+    "solution": "Let \\(I = \\int \\left[\\log(\\log x) + \\frac{1}{(\\log x)^2}\\right] dx = \\int \\log(\\log x)\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\). In the first integral, take 1 as the second function and integrate by parts: \\(I = x\\log(\\log x) - \\int \\frac{1}{x\\log x} x\\, dx + \\int \\frac{dx}{(\\log x)^2} = x\\log(\\log x) - \\int \\frac{dx}{\\log x} + \\int \\frac{dx}{(\\log x)^2}\\) ... (1). Again, consider \\(\\int \\frac{dx}{\\log x}\\), take 1 as the second function and integrate by parts: \\(\\int \\frac{dx}{\\log x} = \\frac{x}{\\log x} - \\int x\\left\\{-\\frac{1}{(\\log x)^2}\\cdot\\frac{1}{x}\\right\\} dx = \\frac{x}{\\log x} + \\int \\frac{dx}{(\\log x)^2}\\) ... (2). Putting (2) in (1), \\(I = x\\log(\\log x) - \\frac{x}{\\log x} - \\int \\frac{dx}{(\\log x)^2} + \\int \\frac{dx}{(\\log x)^2} = x\\log(\\log x) - \\frac{x}{\\log x} + C\\)."
+  },
+  {
+    "ref": "Misc Eg.39",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\int \\left[\\sqrt{\\cot x} + \\sqrt{\\tan x}\\right] dx\\).",
+    "solution": "We have \\(I = \\int \\left[\\sqrt{\\cot x} + \\sqrt{\\tan x}\\right] dx = \\int \\sqrt{\\tan x}\\,(1 + \\cot x)\\, dx\\). Put \\(\\tan x = t^2\\), so that \\(\\sec^2 x\\, dx = 2t\\, dt\\), or \\(dx = \\frac{2t\\, dt}{1+t^4}\\). Then \\(I = \\int t\\left(1 + \\frac{1}{t^2}\\right)\\frac{2t}{1+t^4}\\, dt = 2\\int \\frac{t^2+1}{t^4+1}\\, dt = 2\\int \\frac{\\left(1+\\frac{1}{t^2}\\right)dt}{\\left(t - \\frac{1}{t}\\right)^2 + 2}\\). Put \\(t - \\frac{1}{t} = y\\), so that \\(\\left(1 + \\frac{1}{t^2}\\right)dt = dy\\). Then \\(I = 2\\int \\frac{dy}{y^2 + (\\sqrt 2)^2} = \\sqrt 2\\,\\tan^{-1}\\frac{y}{\\sqrt 2} + C = \\sqrt 2\\,\\tan^{-1}\\left(\\frac{t^2-1}{\\sqrt 2\\, t}\\right) + C = \\sqrt 2\\,\\tan^{-1}\\left(\\frac{\\tan x - 1}{\\sqrt{2\\tan x}}\\right) + C\\)."
+  },
+  {
+    "ref": "Misc Eg.40",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\int \\frac{\\sin 2x \\cos 2x\\, dx}{\\sqrt{9 - \\cos^4(2x)}}\\).",
+    "solution": "Let \\(I = \\int \\frac{\\sin 2x \\cos 2x}{\\sqrt{9 - \\cos^4 2x}}\\, dx\\). Put \\(\\cos^2(2x) = t\\) so that \\(4\\sin 2x \\cos 2x\\, dx = -dt\\). Therefore \\(I = -\\frac{1}{4}\\int \\frac{dt}{\\sqrt{9 - t^2}} = -\\frac{1}{4}\\sin^{-1}\\left(\\frac{t}{3}\\right) + C = -\\frac{1}{4}\\sin^{-1}\\left[\\frac{1}{3}\\cos^2 2x\\right] + C\\)."
+  },
+  {
+    "ref": "Misc Eg.41",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\int_{-1}^{\\frac{3}{2}} |x \\sin(\\pi x)|\\, dx\\).",
+    "solution": "Here \\(f(x) = |x\\sin\\pi x| = \\begin{cases} x\\sin\\pi x & \\text{for } -1 \\le x \\le 1 \\\\ -x\\sin\\pi x & \\text{for } 1 \\le x \\le \\frac{3}{2} \\end{cases}\\). Therefore \\(\\int_{-1}^{\\frac{3}{2}} |x\\sin\\pi x|\\, dx = \\int_{-1}^{1} x\\sin\\pi x\\, dx + \\int_{1}^{\\frac{3}{2}} -x\\sin\\pi x\\, dx = \\int_{-1}^{1} x\\sin\\pi x\\, dx - \\int_{1}^{\\frac{3}{2}} x\\sin\\pi x\\, dx\\). Integrating by parts, \\(\\int_{-1}^{\\frac{3}{2}} |x\\sin\\pi x|\\, dx = \\left[\\frac{-x\\cos\\pi x}{\\pi} + \\frac{\\sin\\pi x}{\\pi^2}\\right]_{-1}^{1} - \\left[\\frac{-x\\cos\\pi x}{\\pi} + \\frac{\\sin\\pi x}{\\pi^2}\\right]_{1}^{\\frac{3}{2}} = \\frac{2}{\\pi} - \\left[-\\frac{1}{\\pi^2} - \\frac{1}{\\pi}\\right] = \\frac{3}{\\pi} + \\frac{1}{\\pi^2}\\)."
+  },
+  {
+    "ref": "Misc Eg.42",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\int_{0}^{\\pi} \\frac{x\\, dx}{a^2\\cos^2 x + b^2\\sin^2 x}\\).",
+    "solution": "Let \\(I = \\int_{0}^{\\pi} \\frac{x\\, dx}{a^2\\cos^2 x + b^2\\sin^2 x} = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\, dx}{a^2\\cos^2(\\pi-x) + b^2\\sin^2(\\pi-x)}\\) (using \\(P_4\\)) \\(= \\pi\\int_{0}^{\\pi}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x} - I\\). Thus \\(2I = \\pi\\int_{0}^{\\pi}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x}\\), or \\(I = \\frac{\\pi}{2}\\int_{0}^{\\pi}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x} = \\frac{\\pi}{2}\\cdot 2\\int_{0}^{\\frac{\\pi}{2}}\\frac{dx}{a^2\\cos^2 x + b^2\\sin^2 x}\\) (using \\(P_6\\)) \\(= \\pi\\left[\\int_{0}^{\\frac{\\pi}{4}}\\frac{\\sec^2 x\\, dx}{a^2 + b^2\\tan^2 x} + \\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\frac{\\csc^2 x\\, dx}{a^2\\cot^2 x + b^2}\\right]\\). Putting \\(\\tan x = t\\) and \\(\\cot x = u\\), \\(I = \\pi\\left[\\int_{0}^{1}\\frac{dt}{a^2 + b^2 t^2} - \\int_{1}^{0}\\frac{du}{a^2 u^2 + b^2}\\right] = \\frac{\\pi}{ab}\\left[\\tan^{-1}\\frac{bt}{a}\\right]_{0}^{1} - \\frac{\\pi}{ab}\\left[\\tan^{-1}\\frac{au}{b}\\right]_{1}^{0} = \\frac{\\pi}{ab}\\left[\\tan^{-1}\\frac{b}{a} + \\tan^{-1}\\frac{a}{b}\\right] = \\frac{\\pi^2}{2ab}\\)."
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{1}{x - x^3}\\)."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{1}{\\sqrt{x+a} + \\sqrt{x+b}}\\)."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\frac{1}{x\\sqrt{ax - x^2}}\\). [Hint: Put \\(x = \\frac{a}{t}\\)]"
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\frac{1}{x^2 (x^4 + 1)^{\\frac{3}{4}}}\\)."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\frac{1}{x^{\\frac{1}{2}} + x^{\\frac{1}{3}}}\\). [Hint: \\(\\frac{1}{x^{\\frac{1}{2}} + x^{\\frac{1}{3}}} = \\frac{1}{x^{\\frac{1}{3}}\\left(1 + x^{\\frac{1}{6}}\\right)}\\), put \\(x = t^6\\)]"
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{5x}{(x+1)(x^2+9)}\\)."
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration using Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{\\sin x}{\\sin(x - a)}\\)."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration as the Inverse of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{e^{5\\log x} - e^{4\\log x}}{e^{3\\log x} - e^{2\\log x}}\\)."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "EASY",
+    "stem": "Integrate the function \\(\\frac{\\cos x}{\\sqrt{4 - \\sin^2 x}}\\)."
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration using Trigonometric Identities",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\frac{\\sin^8 x - \\cos^8 x}{1 - 2\\sin^2 x \\cos^2 x}\\)."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration using Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{1}{\\cos(x + a)\\cos(x + b)}\\)."
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{x^3}{\\sqrt{1 - x^8}}\\)."
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{e^x}{(1 + e^x)(2 + e^x)}\\)."
+  },
+  {
+    "ref": "Misc Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{1}{(x^2 + 1)(x^2 + 4)}\\)."
+  },
+  {
+    "ref": "Misc Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\cos^3 x\\; e^{\\log \\sin x}\\)."
+  },
+  {
+    "ref": "Misc Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(e^{3\\log x}(x^4 + 1)^{-1}\\)."
+  },
+  {
+    "ref": "Misc Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(f'(ax + b)\\,[f(ax + b)]^n\\)."
+  },
+  {
+    "ref": "Misc Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\frac{1}{\\sqrt{\\sin^3 x \\, \\sin(x + \\alpha)}}\\)."
+  },
+  {
+    "ref": "Misc Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\sqrt{\\frac{1 - \\sqrt{x}}{1 + \\sqrt{x}}}\\)."
+  },
+  {
+    "ref": "Misc Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{2 + \\sin 2x}{1 + \\cos 2x}\\, e^x\\)."
+  },
+  {
+    "ref": "Misc Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "MODERATE",
+    "stem": "Integrate the function \\(\\frac{x^2 + x + 1}{(x + 1)^2 (x + 2)}\\)."
+  },
+  {
+    "ref": "Misc Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\tan^{-1}\\sqrt{\\frac{1 - x}{1 + x}}\\)."
+  },
+  {
+    "ref": "Misc Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "Integrate the function \\(\\frac{\\sqrt{x^2 + 1}\\,\\left[\\log(x^2 + 1) - 2\\log x\\right]}{x^4}\\)."
+  },
+  {
+    "ref": "Misc Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "Evaluate the definite integral \\(\\int_{\\frac{\\pi}{2}}^{\\pi} e^x\\left(\\frac{1 - \\sin x}{1 - \\cos x}\\right) dx\\)."
+  },
+  {
+    "ref": "Misc Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals by Substitution",
+    "difficulty": "HARD",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sin x \\cos x}{\\cos^4 x + \\sin^4 x}\\, dx\\)."
+  },
+  {
+    "ref": "Misc Q26",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\frac{\\cos^2 x\\, dx}{\\cos^2 x + 4\\sin^2 x}\\)."
+  },
+  {
+    "ref": "Misc Q27",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}}\\, dx\\)."
+  },
+  {
+    "ref": "Misc Q28",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{1} \\frac{dx}{\\sqrt{1 + x} - \\sqrt{x}}\\)."
+  },
+  {
+    "ref": "Misc Q29",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals by Substitution",
+    "difficulty": "HARD",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sin x + \\cos x}{9 + 16\\sin 2x}\\, dx\\)."
+  },
+  {
+    "ref": "Misc Q30",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals by Substitution",
+    "difficulty": "HARD",
+    "stem": "Evaluate the definite integral \\(\\int_{0}^{\\frac{\\pi}{2}} \\sin 2x \\, \\tan^{-1}(\\sin x)\\, dx\\)."
+  },
+  {
+    "ref": "Misc Q31",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definite Integrals and the Fundamental Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the definite integral \\(\\int_{1}^{4} \\left[|x - 1| + |x - 2| + |x - 3|\\right] dx\\)."
+  },
+  {
+    "ref": "Misc Q32",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\int_{1}^{3} \\frac{dx}{x^2 (x + 1)} = \\frac{2}{3} + \\log \\frac{2}{3}\\)."
+  },
+  {
+    "ref": "Misc Q33",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "EASY",
+    "stem": "Prove that \\(\\int_{0}^{1} x\\, e^x\\, dx = 1\\)."
+  },
+  {
+    "ref": "Misc Q34",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\int_{-1}^{1} x^{17} \\cos^4 x\\, dx = 0\\)."
+  },
+  {
+    "ref": "Misc Q35",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration using Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\int_{0}^{\\frac{\\pi}{2}} \\sin^3 x\\, dx = \\frac{2}{3}\\)."
+  },
+  {
+    "ref": "Misc Q36",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration using Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\int_{0}^{\\frac{\\pi}{4}} 2\\tan^3 x\\, dx = 1 - \\log 2\\)."
+  },
+  {
+    "ref": "Misc Q37",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\int_{0}^{1} \\sin^{-1} x\\, dx = \\frac{\\pi}{2} - 1\\)."
+  },
+  {
+    "ref": "Misc Q38",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrals of Some Particular Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{dx}{e^x + e^{-x}}\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(\\tan^{-1}(e^x) + C\\)"},
+      {"label": "B", "text": "\\(\\tan^{-1}(e^{-x}) + C\\)"},
+      {"label": "C", "text": "\\(\\log(e^x - e^{-x}) + C\\)"},
+      {"label": "D", "text": "\\(\\log(e^x + e^{-x}) + C\\)"}
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc Q39",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integration using Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{\\cos 2x}{(\\sin x + \\cos x)^2}\\, dx\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{-1}{\\sin x + \\cos x} + C\\)"},
+      {"label": "B", "text": "\\(\\log|\\sin x + \\cos x| + C\\)"},
+      {"label": "C", "text": "\\(\\log|\\sin x - \\cos x| + C\\)"},
+      {"label": "D", "text": "\\(\\frac{1}{(\\sin x + \\cos x)^2}\\)"}
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc Q40",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(a + b - x) = f(x)\\), then \\(\\int_{a}^{b} x\\, f(x)\\, dx\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{a + b}{2}\\int_{a}^{b} f(b - x)\\, dx\\)"},
+      {"label": "B", "text": "\\(\\frac{a + b}{2}\\int_{a}^{b} f(b + x)\\, dx\\)"},
+      {"label": "C", "text": "\\(\\frac{b - a}{2}\\int_{a}^{b} f(x)\\, dx\\)"},
+      {"label": "D", "text": "\\(\\frac{a + b}{2}\\int_{a}^{b} f(x)\\, dx\\)"}
+    ],
+    "answer": "D"
+  }
+]

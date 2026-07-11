@@ -1,0 +1,112 @@
+[
+  {
+    "id": "687c3a31-e1e6-4020-be57-74a3b1cb1882",
+    "ref": "Ex 7.7 Q1",
+    "solution": "Use \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a} + C\\) with \\(a = 2\\). So \\(\\int \\sqrt{4 - x^2}\\,dx = \\frac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\frac{x}{2} + C\\)."
+  },
+  {
+    "id": "456b5a10-8797-4647-b274-53b142a4dfbb",
+    "ref": "Ex 7.7 Q2",
+    "solution": "Put \\(u = 2x\\), \\(du = 2\\,dx\\): \\(\\int \\sqrt{1 - 4x^2}\\,dx = \\frac{1}{2}\\int \\sqrt{1 - u^2}\\,du = \\frac{1}{2}\\left[\\frac{u}{2}\\sqrt{1 - u^2} + \\frac{1}{2}\\sin^{-1}u\\right] + C\\). Back-substituting \\(u = 2x\\): \\(= \\frac{x}{2}\\sqrt{1 - 4x^2} + \\frac{1}{4}\\sin^{-1}(2x) + C\\)."
+  },
+  {
+    "id": "47de11ba-5795-4a00-8b1a-008c8086e07a",
+    "ref": "Ex 7.7 Q3",
+    "solution": "Complete the square: \\(x^2 + 4x + 6 = (x+2)^2 + 2\\). With \\(t = x+2\\) and \\(a^2 = 2\\), \\(\\int \\sqrt{t^2 + a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 + a^2} + \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 + a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 4x + 6}\\,dx = \\frac{x+2}{2}\\sqrt{x^2 + 4x + 6} + \\log\\left|x + 2 + \\sqrt{x^2 + 4x + 6}\\right| + C\\)."
+  },
+  {
+    "id": "b37493e6-3893-4c41-bb2f-077c53d50431",
+    "ref": "Ex 7.7 Q4",
+    "solution": "Complete the square: \\(x^2 + 4x + 1 = (x+2)^2 - 3\\). With \\(t = x+2\\), \\(a^2 = 3\\), use \\(\\int \\sqrt{t^2 - a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 - a^2} - \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 - a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 4x + 1}\\,dx = \\frac{x+2}{2}\\sqrt{x^2 + 4x + 1} - \\frac{3}{2}\\log\\left|x + 2 + \\sqrt{x^2 + 4x + 1}\\right| + C\\)."
+  },
+  {
+    "id": "2936c457-5be4-4099-b175-593a54d88788",
+    "ref": "Ex 7.7 Q5",
+    "solution": "Complete the square: \\(1 - 4x - x^2 = 5 - (x+2)^2\\). With \\(t = x+2\\), \\(a^2 = 5\\), use \\(\\int \\sqrt{a^2 - t^2}\\,dt = \\frac{t}{2}\\sqrt{a^2 - t^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{t}{a} + C\\). So \\(\\int \\sqrt{1 - 4x - x^2}\\,dx = \\frac{x+2}{2}\\sqrt{1 - 4x - x^2} + \\frac{5}{2}\\sin^{-1}\\frac{x+2}{\\sqrt{5}} + C\\)."
+  },
+  {
+    "id": "4c2a2514-4321-4e04-ac7c-7508201249db",
+    "ref": "Ex 7.7 Q6",
+    "solution": "Complete the square: \\(x^2 + 4x - 5 = (x+2)^2 - 9\\). With \\(t = x+2\\), \\(a^2 = 9\\), use \\(\\int \\sqrt{t^2 - a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 - a^2} - \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 - a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 4x - 5}\\,dx = \\frac{x+2}{2}\\sqrt{x^2 + 4x - 5} - \\frac{9}{2}\\log\\left|x + 2 + \\sqrt{x^2 + 4x - 5}\\right| + C\\)."
+  },
+  {
+    "id": "3dd30ae5-39d0-4106-ad93-0d0effc389b9",
+    "ref": "Ex 7.7 Q7",
+    "solution": "Complete the square: \\(1 + 3x - x^2 = \\frac{13}{4} - \\left(x - \\frac{3}{2}\\right)^2\\). With \\(t = x - \\frac{3}{2}\\), \\(a^2 = \\frac{13}{4}\\), use \\(\\int \\sqrt{a^2 - t^2}\\,dt = \\frac{t}{2}\\sqrt{a^2 - t^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{t}{a} + C\\). So \\(\\int \\sqrt{1 + 3x - x^2}\\,dx = \\frac{2x - 3}{4}\\sqrt{1 + 3x - x^2} + \\frac{13}{8}\\sin^{-1}\\frac{2x - 3}{\\sqrt{13}} + C\\)."
+  },
+  {
+    "id": "a4eb9eb0-d19d-45c4-868c-d38ed1b3bda7",
+    "ref": "Ex 7.7 Q8",
+    "solution": "Complete the square: \\(x^2 + 3x = \\left(x + \\frac{3}{2}\\right)^2 - \\frac{9}{4}\\). With \\(t = x + \\frac{3}{2}\\), \\(a^2 = \\frac{9}{4}\\), use \\(\\int \\sqrt{t^2 - a^2}\\,dt = \\frac{t}{2}\\sqrt{t^2 - a^2} - \\frac{a^2}{2}\\log\\left|t + \\sqrt{t^2 - a^2}\\right| + C\\). So \\(\\int \\sqrt{x^2 + 3x}\\,dx = \\frac{2x + 3}{4}\\sqrt{x^2 + 3x} - \\frac{9}{8}\\log\\left|x + \\frac{3}{2} + \\sqrt{x^2 + 3x}\\right| + C\\)."
+  },
+  {
+    "id": "be20cc7e-ef4a-4ab3-9299-f7524b0d693b",
+    "ref": "Ex 7.7 Q9",
+    "solution": "Write \\(\\sqrt{1 + \\frac{x^2}{9}} = \\frac{1}{3}\\sqrt{9 + x^2}\\). With \\(a = 3\\), use \\(\\int \\sqrt{x^2 + a^2}\\,dx = \\frac{x}{2}\\sqrt{x^2 + a^2} + \\frac{a^2}{2}\\log\\left|x + \\sqrt{x^2 + a^2}\\right| + C\\): \\(\\frac{1}{3}\\int \\sqrt{x^2 + 9}\\,dx = \\frac{1}{3}\\left[\\frac{x}{2}\\sqrt{x^2 + 9} + \\frac{9}{2}\\log\\left|x + \\sqrt{x^2 + 9}\\right|\\right] + C = \\frac{x}{6}\\sqrt{x^2 + 9} + \\frac{3}{2}\\log\\left|x + \\sqrt{x^2 + 9}\\right| + C\\)."
+  },
+  {
+    "id": "c07793f8-c4f7-4c44-a369-5dd27a860c9a",
+    "ref": "Ex 7.9 Q1",
+    "solution": "Put \\(t = x^2 + 1\\), so \\(dt = 2x\\,dx\\). Limits: \\(x = 0 \\Rightarrow t = 1\\), \\(x = 1 \\Rightarrow t = 2\\). Then \\(\\int_{0}^{1} \\frac{x}{x^2 + 1}\\,dx = \\frac{1}{2}\\int_{1}^{2} \\frac{dt}{t} = \\frac{1}{2}\\left[\\log t\\right]_{1}^{2} = \\frac{1}{2}\\log 2\\)."
+  },
+  {
+    "id": "ae8c5e94-0c7f-402a-ab16-8d84b6a48662",
+    "ref": "Ex 7.9 Q2",
+    "solution": "Write \\(\\cos^5\\phi = (1 - \\sin^2\\phi)^2 \\cos\\phi\\) and put \\(t = \\sin\\phi\\), \\(dt = \\cos\\phi\\,d\\phi\\). Limits: \\(\\phi = 0 \\Rightarrow t = 0\\), \\(\\phi = \\frac{\\pi}{2} \\Rightarrow t = 1\\). Then \\(\\int_{0}^{\\pi/2} \\sqrt{\\sin\\phi}\\,\\cos^5\\phi\\,d\\phi = \\int_{0}^{1} t^{1/2}(1 - t^2)^2\\,dt = \\int_{0}^{1}\\left(t^{1/2} - 2t^{5/2} + t^{9/2}\\right)dt = \\left[\\frac{2}{3}t^{3/2} - \\frac{4}{7}t^{7/2} + \\frac{2}{11}t^{11/2}\\right]_{0}^{1} = \\frac{2}{3} - \\frac{4}{7} + \\frac{2}{11} = \\frac{64}{231}\\)."
+  },
+  {
+    "id": "b57b4621-93b2-4989-8932-06323ff27b2b",
+    "ref": "Ex 7.9 Q3",
+    "solution": "Put \\(x = \\tan\\theta\\); for \\(x \\in [0, 1]\\), \\(\\theta \\in [0, \\frac{\\pi}{4}]\\), so \\(\\sin^{-1}\\!\\left(\\frac{2x}{1 + x^2}\\right) = \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\tan^{-1}x\\). Then \\(\\int_{0}^{1} \\sin^{-1}\\!\\left(\\frac{2x}{1 + x^2}\\right)dx = 2\\int_{0}^{1} \\tan^{-1}x\\,dx = 2\\left[x\\tan^{-1}x - \\frac{1}{2}\\log(1 + x^2)\\right]_{0}^{1} = 2\\left(\\frac{\\pi}{4} - \\frac{1}{2}\\log 2\\right) = \\frac{\\pi}{2} - \\log 2\\)."
+  },
+  {
+    "id": "041cf27c-7ed3-4d8c-9d34-71bb27a13d3a",
+    "ref": "Ex 7.9 Q4",
+    "solution": "Put \\(x + 2 = t^2\\), so \\(x = t^2 - 2\\), \\(dx = 2t\\,dt\\). Limits: \\(x = 0 \\Rightarrow t = \\sqrt{2}\\), \\(x = 2 \\Rightarrow t = 2\\). Then \\(\\int_{0}^{2} x\\sqrt{x + 2}\\,dx = \\int_{\\sqrt{2}}^{2} (t^2 - 2)\\,t\\,(2t\\,dt) = \\int_{\\sqrt{2}}^{2}\\left(2t^4 - 4t^2\\right)dt = \\left[\\frac{2}{5}t^5 - \\frac{4}{3}t^3\\right]_{\\sqrt{2}}^{2} = \\frac{32}{15} - \\left(-\\frac{16\\sqrt{2}}{15}\\right) = \\frac{16(2 + \\sqrt{2})}{15}\\)."
+  },
+  {
+    "id": "2fda1315-42f4-48e3-a08e-c8028f4cf5b5",
+    "ref": "Ex 7.9 Q5",
+    "solution": "Put \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\). Limits: \\(x = 0 \\Rightarrow t = 1\\), \\(x = \\frac{\\pi}{2} \\Rightarrow t = 0\\). Then \\(\\int_{0}^{\\pi/2} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx = -\\int_{1}^{0} \\frac{dt}{1 + t^2} = \\int_{0}^{1} \\frac{dt}{1 + t^2} = \\left[\\tan^{-1}t\\right]_{0}^{1} = \\frac{\\pi}{4}\\)."
+  },
+  {
+    "id": "62d7901d-4339-45ef-9d8c-97c476f5ef52",
+    "ref": "Ex 7.9 Q6",
+    "solution": "Complete the square: \\(x + 4 - x^2 = \\frac{17}{4} - \\left(x - \\frac{1}{2}\\right)^2\\). With \\(u = x - \\frac{1}{2}\\), \\(a = \\frac{\\sqrt{17}}{2}\\), use \\(\\int \\frac{du}{a^2 - u^2} = \\frac{1}{2a}\\log\\left|\\frac{a + u}{a - u}\\right|\\). Then \\(\\int_{0}^{2} \\frac{dx}{x + 4 - x^2} = \\frac{1}{\\sqrt{17}}\\left[\\log\\left|\\frac{\\frac{\\sqrt{17}}{2} + x - \\frac{1}{2}}{\\frac{\\sqrt{17}}{2} - x + \\frac{1}{2}}\\right|\\right]_{0}^{2} = \\frac{1}{\\sqrt{17}}\\left[\\log\\frac{\\sqrt{17} + 3}{\\sqrt{17} - 3} - \\log\\frac{\\sqrt{17} - 1}{\\sqrt{17} + 1}\\right] = \\frac{1}{\\sqrt{17}}\\log\\frac{5 + \\sqrt{17}}{5 - \\sqrt{17}}\\)."
+  },
+  {
+    "id": "792d3aac-e5c5-4cb1-9e5f-9dedf880b8b1",
+    "ref": "Ex 7.9 Q7",
+    "solution": "Complete the square: \\(x^2 + 2x + 5 = (x + 1)^2 + 4\\). Then \\(\\int_{-1}^{1} \\frac{dx}{(x + 1)^2 + 2^2} = \\frac{1}{2}\\left[\\tan^{-1}\\frac{x + 1}{2}\\right]_{-1}^{1} = \\frac{1}{2}\\left(\\tan^{-1}1 - \\tan^{-1}0\\right) = \\frac{1}{2}\\cdot\\frac{\\pi}{4} = \\frac{\\pi}{8}\\)."
+  },
+  {
+    "id": "d4538e5b-04b0-46a7-94af-d0e99568d216",
+    "ref": "Ex 7.9 Q8",
+    "solution": "Notice \\(\\frac{d}{dx}\\!\\left(\\frac{e^{2x}}{2x}\\right) = \\frac{2e^{2x}\\cdot 2x - e^{2x}\\cdot 2}{4x^2} = e^{2x}\\left(\\frac{1}{x} - \\frac{1}{2x^2}\\right)\\), so the integrand is an exact derivative. Then \\(\\int_{1}^{2}\\left(\\frac{1}{x} - \\frac{1}{2x^2}\\right)e^{2x}\\,dx = \\left[\\frac{e^{2x}}{2x}\\right]_{1}^{2} = \\frac{e^4}{4} - \\frac{e^2}{2}\\)."
+  },
+  {
+    "id": "90015aa4-8dd0-4ec5-bfa1-3b9e6049de43",
+    "ref": "Misc Q25",
+    "solution": "Divide the numerator and put \\(u = \\sin^2 x\\), so \\(du = 2\\sin x\\cos x\\,dx\\) and \\(\\cos^4 x + \\sin^4 x = (1 - u)^2 + u^2 = 2u^2 - 2u + 1\\). Limits: \\(x = 0 \\Rightarrow u = 0\\), \\(x = \\frac{\\pi}{4} \\Rightarrow u = \\frac{1}{2}\\). Then \\(\\int_{0}^{\\pi/4} \\frac{\\sin x\\cos x}{\\cos^4 x + \\sin^4 x}\\,dx = \\frac{1}{2}\\int_{0}^{1/2} \\frac{du}{2u^2 - 2u + 1} = \\frac{1}{4}\\int_{0}^{1/2} \\frac{du}{\\left(u - \\frac{1}{2}\\right)^2 + \\frac{1}{4}} = \\frac{1}{2}\\left[\\tan^{-1}(2u - 1)\\right]_{0}^{1/2} = \\frac{1}{2}\\left(0 - \\left(-\\frac{\\pi}{4}\\right)\\right) = \\frac{\\pi}{8}\\)."
+  },
+  {
+    "id": "4535bd18-9733-4c27-b298-0de3620da13b",
+    "ref": "Misc Q26",
+    "solution": "Divide numerator and denominator by \\(\\cos^2 x\\): the integrand becomes \\(\\frac{1}{1 + 4\\tan^2 x}\\). Put \\(t = \\tan x\\), \\(dx = \\frac{dt}{1 + t^2}\\); limits \\(t: 0 \\to \\infty\\). Then \\(I = \\int_{0}^{\\infty} \\frac{dt}{(1 + 4t^2)(1 + t^2)}\\). By partial fractions \\(\\frac{1}{(1 + t^2)(1 + 4t^2)} = \\frac{-\\frac{1}{3}}{1 + t^2} + \\frac{\\frac{4}{3}}{1 + 4t^2}\\), so \\(I = -\\frac{1}{3}\\cdot\\frac{\\pi}{2} + \\frac{4}{3}\\cdot\\frac{1}{2}\\tan^{-1}(2t)\\Big|_{0}^{\\infty} = -\\frac{\\pi}{6} + \\frac{4}{3}\\cdot\\frac{\\pi}{4} = -\\frac{\\pi}{6} + \\frac{\\pi}{3} = \\frac{\\pi}{6}\\)."
+  },
+  {
+    "id": "ba621ee6-43bf-4697-abec-86e2a0f59ecb",
+    "ref": "Misc Q27",
+    "solution": "Since \\((\\sin x - \\cos x)^2 = 1 - \\sin 2x\\), put \\(t = \\sin x - \\cos x\\), so \\(dt = (\\cos x + \\sin x)\\,dx\\) and \\(\\sqrt{\\sin 2x} = \\sqrt{1 - t^2}\\). Limits: \\(x = \\frac{\\pi}{6} \\Rightarrow t = \\frac{1 - \\sqrt{3}}{2}\\), \\(x = \\frac{\\pi}{3} \\Rightarrow t = \\frac{\\sqrt{3} - 1}{2}\\). Then \\(\\int_{\\pi/6}^{\\pi/3} \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}}\\,dx = \\int_{(1-\\sqrt{3})/2}^{(\\sqrt{3}-1)/2} \\frac{dt}{\\sqrt{1 - t^2}} = \\left[\\sin^{-1}t\\right]_{(1-\\sqrt{3})/2}^{(\\sqrt{3}-1)/2} = 2\\sin^{-1}\\frac{\\sqrt{3} - 1}{2}\\)."
+  },
+  {
+    "id": "cba64c7b-2be4-4984-acc6-e2288fd002b9",
+    "ref": "Misc Q29",
+    "solution": "Since \\(\\sin 2x = 1 - (\\sin x - \\cos x)^2\\), put \\(t = \\sin x - \\cos x\\), \\(dt = (\\cos x + \\sin x)\\,dx\\), so \\(9 + 16\\sin 2x = 25 - 16t^2\\). Limits: \\(x = 0 \\Rightarrow t = -1\\), \\(x = \\frac{\\pi}{4} \\Rightarrow t = 0\\). Then \\(\\int_{0}^{\\pi/4} \\frac{\\sin x + \\cos x}{9 + 16\\sin 2x}\\,dx = \\int_{-1}^{0} \\frac{dt}{25 - 16t^2} = \\frac{1}{40}\\left[\\log\\left|\\frac{\\frac{5}{4} + t}{\\frac{5}{4} - t}\\right|\\right]_{-1}^{0} = \\frac{1}{40}\\left(0 - \\log\\frac{1}{9}\\right) = \\frac{1}{40}\\log 9 = \\frac{1}{20}\\log 3\\)."
+  },
+  {
+    "id": "c4f5e1ee-479a-4c41-a747-88d5c952ae2b",
+    "ref": "Misc Q30",
+    "solution": "Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\) and \\(\\sin 2x\\,dx = 2\\sin x\\cos x\\,dx = 2t\\,dt\\). Limits: \\(x = 0 \\Rightarrow t = 0\\), \\(x = \\frac{\\pi}{2} \\Rightarrow t = 1\\). Then \\(\\int_{0}^{\\pi/2} \\sin 2x\\,\\tan^{-1}(\\sin x)\\,dx = 2\\int_{0}^{1} t\\tan^{-1}t\\,dt = 2\\left[\\frac{t^2}{2}\\tan^{-1}t - \\frac{1}{2}(t - \\tan^{-1}t)\\right]_{0}^{1} = 2\\left(\\frac{\\pi}{8} - \\frac{1}{2} + \\frac{\\pi}{8}\\right) = \\frac{\\pi}{2} - 1\\)."
+  }
+]

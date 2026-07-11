@@ -1,0 +1,102 @@
+[
+  {
+    "id": "68d502b7-ad5c-4f24-a416-d7647e30dce0",
+    "ref": "Ex 7.10 Q1",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\cos^2 x\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\), \\(I = \\int_{0}^{\\pi/2} \\cos^2\\!\\left(\\tfrac{\\pi}{2}-x\\right)dx = \\int_{0}^{\\pi/2} \\sin^2 x\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2}(\\cos^2 x + \\sin^2 x)\\,dx = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "id": "3b993259-02e3-4b13-9842-82c05f66804a",
+    "ref": "Ex 7.10 Q2",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\). Using \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a = \\tfrac{\\pi}{2}\\) (so \\(\\sin x \\leftrightarrow \\cos x\\)), \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}}\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "id": "86f1dc3b-4ae5-4ded-b339-83b0f8ccd45c",
+    "ref": "Ex 7.10 Q3",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sin^{3/2} x}{\\sin^{3/2} x + \\cos^{3/2} x}\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{2}-x\\) swaps \\(\\sin x \\leftrightarrow \\cos x\\), giving \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\cos^{3/2} x}{\\cos^{3/2} x + \\sin^{3/2} x}\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "id": "d5cf7c50-38ce-4096-9958-888f412d139a",
+    "ref": "Ex 7.10 Q4",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\cos^5 x}{\\sin^5 x + \\cos^5 x}\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{2}-x\\) swaps \\(\\sin x \\leftrightarrow \\cos x\\), giving \\(I = \\int_{0}^{\\pi/2} \\dfrac{\\sin^5 x}{\\cos^5 x + \\sin^5 x}\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi/2} 1\\,dx = \\tfrac{\\pi}{2}\\), so \\(I = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "id": "6474ac36-addf-45cb-a968-908361035945",
+    "ref": "Ex 7.10 Q5",
+    "solution": "Split at the point where \\(x+2 = 0\\), i.e. \\(x = -2\\): \\(|x+2| = -(x+2)\\) on \\([-5,-2]\\) and \\(x+2\\) on \\([-2,5]\\). Then \\(\\int_{-5}^{5}|x+2|\\,dx = \\int_{-5}^{-2} -(x+2)\\,dx + \\int_{-2}^{5}(x+2)\\,dx\\). First \\(= -\\left[\\tfrac{x^2}{2}+2x\\right]_{-5}^{-2} = -\\big((-2)-(2.5)\\big) = \\tfrac{9}{2}\\); second \\(= \\left[\\tfrac{x^2}{2}+2x\\right]_{-2}^{5} = (22.5)-(-2) = \\tfrac{49}{2}\\). Sum \\(= \\tfrac{9}{2}+\\tfrac{49}{2} = 29\\)."
+  },
+  {
+    "id": "2538518b-3a87-49bc-a7f5-ffcacad38bcf",
+    "ref": "Ex 7.10 Q6",
+    "solution": "Split at \\(x = 5\\): \\(|x-5| = 5-x\\) on \\([2,5]\\) and \\(x-5\\) on \\([5,8]\\). Then \\(\\int_{2}^{8}|x-5|\\,dx = \\int_{2}^{5}(5-x)\\,dx + \\int_{5}^{8}(x-5)\\,dx\\). First \\(= \\left[5x-\\tfrac{x^2}{2}\\right]_{2}^{5} = 12.5 - 8 = \\tfrac{9}{2}\\); second \\(= \\left[\\tfrac{x^2}{2}-5x\\right]_{5}^{8} = (-8)-(-12.5) = \\tfrac{9}{2}\\). Sum \\(= \\tfrac{9}{2}+\\tfrac{9}{2} = 9\\)."
+  },
+  {
+    "id": "d9fac873-d31b-4ea3-9699-9e21bc0273e2",
+    "ref": "Ex 7.10 Q7",
+    "solution": "Let \\(I = \\int_{0}^{1} x(1-x)^n\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a=1\\), \\(I = \\int_{0}^{1}(1-x)\\big(1-(1-x)\\big)^n dx = \\int_{0}^{1}(1-x)x^n\\,dx = \\int_{0}^{1}(x^n - x^{n+1})\\,dx\\). This gives \\(\\dfrac{1}{n+1} - \\dfrac{1}{n+2} = \\dfrac{1}{(n+1)(n+2)}\\)."
+  },
+  {
+    "id": "0664d741-acb1-4993-9323-c0a2f6215c72",
+    "ref": "Ex 7.10 Q8",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/4} \\log(1+\\tan x)\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{4}-x\\) and using \\(\\tan\\!\\left(\\tfrac{\\pi}{4}-x\\right) = \\dfrac{1-\\tan x}{1+\\tan x}\\), \\(1+\\tan\\!\\left(\\tfrac{\\pi}{4}-x\\right) = \\dfrac{2}{1+\\tan x}\\), so \\(I = \\int_{0}^{\\pi/4}\\big(\\log 2 - \\log(1+\\tan x)\\big)dx = \\tfrac{\\pi}{4}\\log 2 - I\\). Hence \\(2I = \\tfrac{\\pi}{4}\\log 2\\), so \\(I = \\dfrac{\\pi}{8}\\log 2\\)."
+  },
+  {
+    "id": "0d94ad76-b1a9-4736-ad4b-0746c4e8b11a",
+    "ref": "Ex 7.10 Q9",
+    "solution": "Let \\(I = \\int_{0}^{2} x\\sqrt{2-x}\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a=2\\), \\(I = \\int_{0}^{2}(2-x)\\sqrt{x}\\,dx = \\int_{0}^{2}\\big(2x^{1/2} - x^{3/2}\\big)dx = \\left[\\tfrac{4}{3}x^{3/2} - \\tfrac{2}{5}x^{5/2}\\right]_{0}^{2}\\). With \\(2^{3/2}=2\\sqrt2,\\ 2^{5/2}=4\\sqrt2\\): \\(I = \\tfrac{8\\sqrt2}{3} - \\tfrac{8\\sqrt2}{5} = \\dfrac{16\\sqrt2}{15}\\)."
+  },
+  {
+    "id": "46fcef54-fb4e-49f3-845e-38cf16297107",
+    "ref": "Ex 7.10 Q10",
+    "solution": "Since \\(\\sin 2x = 2\\sin x\\cos x\\), the integrand is \\(2\\log\\sin x - \\log(2\\sin x\\cos x) = \\log\\sin x - \\log\\cos x - \\log 2 = \\log\\tan x - \\log 2\\). Thus \\(I = \\int_{0}^{\\pi/2}\\log\\tan x\\,dx - \\tfrac{\\pi}{2}\\log 2\\). By \\(x \\to \\tfrac{\\pi}{2}-x\\), \\(\\int_{0}^{\\pi/2}\\log\\tan x\\,dx = \\int_{0}^{\\pi/2}\\log\\cot x\\,dx = -\\int_{0}^{\\pi/2}\\log\\tan x\\,dx\\), so it equals \\(0\\). Hence \\(I = -\\dfrac{\\pi}{2}\\log 2\\)."
+  },
+  {
+    "id": "e8e89cfb-7618-42e4-bf01-bc839d88e7bd",
+    "ref": "Ex 7.10 Q11",
+    "solution": "\\(\\sin^2 x\\) is even, so \\(\\int_{-\\pi/2}^{\\pi/2}\\sin^2 x\\,dx = 2\\int_{0}^{\\pi/2}\\sin^2 x\\,dx\\). By the pairing \\(x \\to \\tfrac{\\pi}{2}-x\\), \\(\\int_{0}^{\\pi/2}\\sin^2 x\\,dx = \\int_{0}^{\\pi/2}\\cos^2 x\\,dx\\), and their sum is \\(\\tfrac{\\pi}{2}\\), so each is \\(\\tfrac{\\pi}{4}\\). Therefore the value is \\(2\\cdot\\tfrac{\\pi}{4} = \\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "id": "54cde711-ed58-470e-9988-f81c6fbcfeeb",
+    "ref": "Ex 7.10 Q12",
+    "solution": "Let \\(I = \\int_{0}^{\\pi}\\dfrac{x\\,dx}{1+\\sin x}\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\) with \\(a=\\pi\\) (and \\(\\sin(\\pi-x)=\\sin x\\)), \\(I = \\int_{0}^{\\pi}\\dfrac{\\pi-x}{1+\\sin x}\\,dx\\). Adding, \\(2I = \\pi\\int_{0}^{\\pi}\\dfrac{dx}{1+\\sin x}\\). Now \\(\\dfrac{1}{1+\\sin x} = \\dfrac{1-\\sin x}{\\cos^2 x} = \\sec^2 x - \\sec x\\tan x\\), whose antiderivative \\(\\tan x - \\sec x = -\\dfrac{\\cos x}{1+\\sin x}\\) gives \\(\\int_{0}^{\\pi}\\dfrac{dx}{1+\\sin x} = 1-(-1) = 2\\). Hence \\(2I = 2\\pi\\), so \\(I = \\pi\\)."
+  },
+  {
+    "id": "147fe421-ffd3-46e5-b63e-222c5328b337",
+    "ref": "Ex 7.10 Q13",
+    "solution": "\\(\\sin^7 x\\) is an odd function, since \\(\\sin^7(-x) = -\\sin^7 x\\). By \\(\\int_{-a}^{a} f(x)\\,dx = 0\\) for odd \\(f\\), \\(\\int_{-\\pi/2}^{\\pi/2}\\sin^7 x\\,dx = 0\\)."
+  },
+  {
+    "id": "acd96dca-c18a-4d21-ba2e-3e224b57701e",
+    "ref": "Ex 7.10 Q14",
+    "solution": "Using \\(\\int_{0}^{2a} f(x)\\,dx = 2\\int_{0}^{a} f(x)\\,dx\\) when \\(f(2a-x)=f(x)\\): here \\(a=\\pi\\) and \\(\\cos^5(2\\pi-x)=\\cos^5 x\\), so \\(\\int_{0}^{2\\pi}\\cos^5 x\\,dx = 2\\int_{0}^{\\pi}\\cos^5 x\\,dx\\). But by \\(x \\to \\pi-x\\), \\(\\cos^5(\\pi-x) = -\\cos^5 x\\), giving \\(\\int_{0}^{\\pi}\\cos^5 x\\,dx = -\\int_{0}^{\\pi}\\cos^5 x\\,dx = 0\\). Therefore \\(\\int_{0}^{2\\pi}\\cos^5 x\\,dx = 0\\)."
+  },
+  {
+    "id": "b4af6ee6-846a-4701-afa2-43b231889c4a",
+    "ref": "Ex 7.10 Q15",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/2}\\dfrac{\\sin x - \\cos x}{1+\\sin x\\cos x}\\,dx\\). Replacing \\(x \\to \\tfrac{\\pi}{2}-x\\) swaps \\(\\sin x \\leftrightarrow \\cos x\\): the numerator becomes \\(\\cos x - \\sin x = -(\\sin x - \\cos x)\\) while the denominator \\(1+\\sin x\\cos x\\) is unchanged, so \\(I = -I\\). Hence \\(I = 0\\)."
+  },
+  {
+    "id": "e78923c0-0463-43a1-8240-4ce652ae222d",
+    "ref": "Ex 7.10 Q16",
+    "solution": "Let \\(I = \\int_{0}^{\\pi}\\log(1+\\cos x)\\,dx\\). By \\(x \\to \\pi-x\\), \\(\\cos(\\pi-x)=-\\cos x\\), so \\(I = \\int_{0}^{\\pi}\\log(1-\\cos x)\\,dx\\). Adding, \\(2I = \\int_{0}^{\\pi}\\log(1-\\cos^2 x)\\,dx = \\int_{0}^{\\pi}\\log(\\sin^2 x)\\,dx = 2\\int_{0}^{\\pi}\\log\\sin x\\,dx\\). Using the standard result \\(\\int_{0}^{\\pi}\\log\\sin x\\,dx = 2\\int_{0}^{\\pi/2}\\log\\sin x\\,dx = -\\pi\\log 2\\), we get \\(2I = -2\\pi\\log 2\\), so \\(I = -\\pi\\log 2\\)."
+  },
+  {
+    "id": "b8e8791d-b59a-4bd1-b520-0fc92780375a",
+    "ref": "Ex 7.10 Q17",
+    "solution": "Let \\(I = \\int_{0}^{a}\\dfrac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{a-x}}\\,dx\\). By \\(\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a-x)\\,dx\\), \\(I = \\int_{0}^{a}\\dfrac{\\sqrt{a-x}}{\\sqrt{a-x}+\\sqrt{x}}\\,dx\\). Adding, \\(2I = \\int_{0}^{a} 1\\,dx = a\\), so \\(I = \\dfrac{a}{2}\\)."
+  },
+  {
+    "id": "96822f3d-ed06-41c7-90e8-459eeb7b84fe",
+    "ref": "Ex 7.10 Q18",
+    "solution": "Split at \\(x=1\\): \\(|x-1| = 1-x\\) on \\([0,1]\\) and \\(x-1\\) on \\([1,4]\\). Then \\(\\int_{0}^{4}|x-1|\\,dx = \\int_{0}^{1}(1-x)\\,dx + \\int_{1}^{4}(x-1)\\,dx\\). First \\(= \\left[x-\\tfrac{x^2}{2}\\right]_{0}^{1} = \\tfrac{1}{2}\\); second \\(= \\left[\\tfrac{x^2}{2}-x\\right]_{1}^{4} = 4-(-\\tfrac{1}{2}) = \\tfrac{9}{2}\\). Sum \\(= \\tfrac{1}{2}+\\tfrac{9}{2} = 5\\)."
+  },
+  {
+    "id": "5e81df4a-a8f9-4cd9-a058-ced5abd590c4",
+    "ref": "Ex 7.10 Q19",
+    "solution": "Let \\(I = \\int_{0}^{a} f(x)g(x)\\,dx\\). By \\(\\int_{0}^{a} h(x)\\,dx = \\int_{0}^{a} h(a-x)\\,dx\\), \\(I = \\int_{0}^{a} f(a-x)g(a-x)\\,dx\\). Since \\(f(a-x)=f(x)\\), \\(I = \\int_{0}^{a} f(x)g(a-x)\\,dx\\). Adding the two expressions, \\(2I = \\int_{0}^{a} f(x)\\big[g(x)+g(a-x)\\big]dx = \\int_{0}^{a} f(x)\\cdot 4\\,dx = 4\\int_{0}^{a} f(x)\\,dx\\). Hence \\(I = 2\\int_{0}^{a} f(x)\\,dx\\), as required."
+  },
+  {
+    "id": "48992dba-1248-4232-bd54-33c231c503ba",
+    "ref": "Misc Q34",
+    "solution": "Let \\(f(x) = x^{17}\\cos^4 x\\). Since \\(x^{17}\\) is odd and \\(\\cos^4 x\\) is even, \\(f(-x) = (-x)^{17}\\cos^4(-x) = -x^{17}\\cos^4 x = -f(x)\\), so \\(f\\) is odd. By \\(\\int_{-a}^{a} f(x)\\,dx = 0\\) for an odd function, \\(\\int_{-1}^{1} x^{17}\\cos^4 x\\,dx = 0\\)."
+  }
+]

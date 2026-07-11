@@ -1,0 +1,127 @@
+[
+  {
+    "id": "14111848-c666-4563-8d60-a6e5f4c2fa1b",
+    "ref": "Ex 7.4 Q1",
+    "solution": "Put \\(t = x^3\\), so \\(dt = 3x^2\\,dx\\). Then \\(\\int \\frac{3x^2}{x^6+1}\\,dx = \\int \\frac{dt}{t^2+1} = \\tan^{-1} t + C = \\tan^{-1}(x^3) + C\\)."
+  },
+  {
+    "id": "eff1d6b1-4cfe-4509-9ed0-c5147c16316d",
+    "ref": "Ex 7.4 Q2",
+    "solution": "Write \\(\\int \\frac{dx}{\\sqrt{1+4x^2}} = \\frac{1}{2}\\int \\frac{d(2x)}{\\sqrt{1+(2x)^2}}\\). Using \\(\\int \\frac{dt}{\\sqrt{t^2+a^2}} = \\log\\left|t+\\sqrt{t^2+a^2}\\right|\\) with \\(a=1\\), this equals \\(\\frac{1}{2}\\log\\left|2x+\\sqrt{1+4x^2}\\right| + C\\)."
+  },
+  {
+    "id": "5f818ddf-73cd-43b7-b2af-69b04ae5f418",
+    "ref": "Ex 7.4 Q3",
+    "solution": "Put \\(t = 2-x\\), so \\(dt = -dx\\). Then \\(\\int \\frac{dx}{\\sqrt{(2-x)^2+1}} = -\\int \\frac{dt}{\\sqrt{t^2+1}} = -\\log\\left|t+\\sqrt{t^2+1}\\right| + C = -\\log\\left|(2-x)+\\sqrt{x^2-4x+5}\\right| + C\\)."
+  },
+  {
+    "id": "10292121-f8e2-44a0-9589-c4d04904a42a",
+    "ref": "Ex 7.4 Q4",
+    "solution": "Write \\(\\int \\frac{dx}{\\sqrt{9-25x^2}} = \\frac{1}{5}\\int \\frac{d(5x)}{\\sqrt{3^2-(5x)^2}}\\). Using \\(\\int \\frac{dt}{\\sqrt{a^2-t^2}} = \\sin^{-1}\\frac{t}{a}\\) with \\(a=3\\), this equals \\(\\frac{1}{5}\\sin^{-1}\\frac{5x}{3} + C\\)."
+  },
+  {
+    "id": "c9252484-0cda-4ce8-9e3f-86308412c77b",
+    "ref": "Ex 7.4 Q5",
+    "solution": "Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\) and \\(x\\,dx = \\tfrac{1}{2}dt\\). Then \\(\\int \\frac{3x}{1+2x^4}\\,dx = \\frac{3}{2}\\int \\frac{dt}{1+2t^2} = \\frac{3}{4}\\int \\frac{dt}{\\tfrac{1}{2}+t^2} = \\frac{3}{4}\\cdot\\sqrt{2}\\,\\tan^{-1}(\\sqrt{2}\\,t) + C = \\frac{3}{2\\sqrt{2}}\\tan^{-1}(\\sqrt{2}\\,x^2) + C\\)."
+  },
+  {
+    "id": "e35c6840-63ee-491c-b841-3b71a517be3a",
+    "ref": "Ex 7.4 Q6",
+    "solution": "Put \\(t = x^3\\), so \\(dt = 3x^2\\,dx\\). Then \\(\\int \\frac{x^2}{1-x^6}\\,dx = \\frac{1}{3}\\int \\frac{dt}{1-t^2} = \\frac{1}{3}\\cdot\\frac{1}{2}\\log\\left|\\frac{1+t}{1-t}\\right| + C = \\frac{1}{6}\\log\\left|\\frac{1+x^3}{1-x^3}\\right| + C\\)."
+  },
+  {
+    "id": "93e36662-d023-4882-a0e6-d0b448c06539",
+    "ref": "Ex 7.4 Q7",
+    "solution": "Split as \\(\\int \\frac{x-1}{\\sqrt{x^2-1}}\\,dx = \\int \\frac{x}{\\sqrt{x^2-1}}\\,dx - \\int \\frac{dx}{\\sqrt{x^2-1}}\\). For the first, put \\(u=x^2-1\\), giving \\(\\sqrt{x^2-1}\\); the second is \\(\\log\\left|x+\\sqrt{x^2-1}\\right|\\). Hence the integral \\(= \\sqrt{x^2-1} - \\log\\left|x+\\sqrt{x^2-1}\\right| + C\\)."
+  },
+  {
+    "id": "ea0c16b6-6ec6-4a24-96aa-1aa005af0bc7",
+    "ref": "Ex 7.4 Q8",
+    "solution": "Put \\(t = x^3\\), so \\(dt = 3x^2\\,dx\\). Then \\(\\int \\frac{x^2}{\\sqrt{x^6+a^6}}\\,dx = \\frac{1}{3}\\int \\frac{dt}{\\sqrt{t^2+(a^3)^2}} = \\frac{1}{3}\\log\\left|t+\\sqrt{t^2+a^6}\\right| + C = \\frac{1}{3}\\log\\left|x^3+\\sqrt{x^6+a^6}\\right| + C\\)."
+  },
+  {
+    "id": "36563e23-afdf-42eb-ba37-a9099fb3db54",
+    "ref": "Ex 7.4 Q9",
+    "solution": "Put \\(t = \\tan x\\), so \\(dt = \\sec^2 x\\,dx\\). Then \\(\\int \\frac{\\sec^2 x}{\\sqrt{\\tan^2 x+4}}\\,dx = \\int \\frac{dt}{\\sqrt{t^2+2^2}} = \\log\\left|t+\\sqrt{t^2+4}\\right| + C = \\log\\left|\\tan x+\\sqrt{\\tan^2 x+4}\\right| + C\\)."
+  },
+  {
+    "id": "8a186658-8586-44df-9e06-0c6b47a72a29",
+    "ref": "Ex 7.4 Q10",
+    "solution": "Complete the square: \\(x^2+2x+2 = (x+1)^2+1\\). Put \\(t=x+1\\). Then \\(\\int \\frac{dx}{\\sqrt{x^2+2x+2}} = \\int \\frac{dt}{\\sqrt{t^2+1}} = \\log\\left|t+\\sqrt{t^2+1}\\right| + C = \\log\\left|(x+1)+\\sqrt{x^2+2x+2}\\right| + C\\)."
+  },
+  {
+    "id": "495d94d5-da20-4e1e-bd76-c4cf12af8ca9",
+    "ref": "Ex 7.4 Q11",
+    "solution": "Complete the square: \\(9x^2+6x+5 = (3x+1)^2+4\\). Put \\(t=3x+1\\), \\(dt=3\\,dx\\). Then \\(\\int \\frac{dx}{9x^2+6x+5} = \\frac{1}{3}\\int \\frac{dt}{t^2+2^2} = \\frac{1}{3}\\cdot\\frac{1}{2}\\tan^{-1}\\frac{t}{2} + C = \\frac{1}{6}\\tan^{-1}\\left(\\frac{3x+1}{2}\\right) + C\\)."
+  },
+  {
+    "id": "0355fb79-b100-4d47-bdcf-8d9ff28cb848",
+    "ref": "Ex 7.4 Q12",
+    "solution": "Rewrite \\(7-6x-x^2 = 16-(x+3)^2\\). Put \\(t=x+3\\). Then \\(\\int \\frac{dx}{\\sqrt{7-6x-x^2}} = \\int \\frac{dt}{\\sqrt{4^2-t^2}} = \\sin^{-1}\\frac{t}{4} + C = \\sin^{-1}\\left(\\frac{x+3}{4}\\right) + C\\)."
+  },
+  {
+    "id": "dea2c658-359e-4c69-9531-e4da3e2536e1",
+    "ref": "Ex 7.4 Q13",
+    "solution": "Expand and complete the square: \\((x-1)(x-2) = x^2-3x+2 = \\left(x-\\tfrac{3}{2}\\right)^2-\\tfrac{1}{4}\\). Put \\(t=x-\\tfrac{3}{2}\\). Then \\(\\int \\frac{dx}{\\sqrt{(x-1)(x-2)}} = \\int \\frac{dt}{\\sqrt{t^2-(1/2)^2}} = \\log\\left|t+\\sqrt{t^2-\\tfrac{1}{4}}\\right| + C = \\log\\left|\\left(x-\\tfrac{3}{2}\\right)+\\sqrt{x^2-3x+2}\\right| + C\\)."
+  },
+  {
+    "id": "c3e009e2-c9f4-4c62-bdde-9308130c87c2",
+    "ref": "Ex 7.4 Q14",
+    "solution": "Rewrite \\(8+3x-x^2 = \\tfrac{41}{4}-\\left(x-\\tfrac{3}{2}\\right)^2\\). Put \\(t=x-\\tfrac{3}{2}\\). Then \\(\\int \\frac{dx}{\\sqrt{8+3x-x^2}} = \\int \\frac{dt}{\\sqrt{\\left(\\tfrac{\\sqrt{41}}{2}\\right)^2-t^2}} = \\sin^{-1}\\frac{t}{\\sqrt{41}/2} + C = \\sin^{-1}\\left(\\frac{2x-3}{\\sqrt{41}}\\right) + C\\)."
+  },
+  {
+    "id": "29b1e281-7d0b-459e-b12e-f81f29497f39",
+    "ref": "Ex 7.4 Q15",
+    "solution": "Expand and complete the square: \\((x-a)(x-b) = \\left(x-\\tfrac{a+b}{2}\\right)^2-\\left(\\tfrac{a-b}{2}\\right)^2\\). Put \\(t=x-\\tfrac{a+b}{2}\\). Then \\(\\int \\frac{dx}{\\sqrt{(x-a)(x-b)}} = \\int \\frac{dt}{\\sqrt{t^2-\\left(\\tfrac{a-b}{2}\\right)^2}} = \\log\\left|\\left(x-\\tfrac{a+b}{2}\\right)+\\sqrt{(x-a)(x-b)}\\right| + C\\)."
+  },
+  {
+    "id": "c3be354b-cae6-492e-b114-4aa0d2f1904b",
+    "ref": "Ex 7.4 Q16",
+    "solution": "The numerator is exactly the derivative of the quantity under the root: \\(\\frac{d}{dx}(2x^2+x-3) = 4x+1\\). Put \\(u=2x^2+x-3\\), so \\(du=(4x+1)\\,dx\\). Then \\(\\int \\frac{4x+1}{\\sqrt{2x^2+x-3}}\\,dx = \\int \\frac{du}{\\sqrt{u}} = 2\\sqrt{u} + C = 2\\sqrt{2x^2+x-3} + C\\)."
+  },
+  {
+    "id": "ea1264ff-01e0-4093-94a7-892bfb2d2099",
+    "ref": "Ex 7.4 Q17",
+    "solution": "Write \\(x+2 = \\tfrac{1}{2}(2x)+2\\), so \\(\\int \\frac{x+2}{\\sqrt{x^2-1}}\\,dx = \\frac{1}{2}\\int \\frac{2x}{\\sqrt{x^2-1}}\\,dx + 2\\int \\frac{dx}{\\sqrt{x^2-1}}\\). The first term gives \\(\\sqrt{x^2-1}\\) and the second \\(2\\log\\left|x+\\sqrt{x^2-1}\\right|\\). Hence the integral \\(= \\sqrt{x^2-1} + 2\\log\\left|x+\\sqrt{x^2-1}\\right| + C\\)."
+  },
+  {
+    "id": "54118ae0-1c8e-48bb-87ba-f8145461a364",
+    "ref": "Ex 7.4 Q18",
+    "solution": "Denominator \\(3x^2+2x+1\\) has derivative \\(6x+2\\). Write \\(5x-2 = \\tfrac{5}{6}(6x+2)-\\tfrac{11}{3}\\). Then \\(\\int \\frac{5x-2}{3x^2+2x+1}\\,dx = \\frac{5}{6}\\log\\left|3x^2+2x+1\\right| - \\frac{11}{3}\\int \\frac{dx}{3x^2+2x+1}\\). Since \\(3x^2+2x+1 = 3\\left[\\left(x+\\tfrac{1}{3}\\right)^2+\\tfrac{2}{9}\\right]\\), \\(\\int \\frac{dx}{3x^2+2x+1} = \\frac{1}{\\sqrt{2}}\\tan^{-1}\\left(\\frac{3x+1}{\\sqrt{2}}\\right)\\). Hence the integral \\(= \\frac{5}{6}\\log\\left|3x^2+2x+1\\right| - \\frac{11}{3\\sqrt{2}}\\tan^{-1}\\left(\\frac{3x+1}{\\sqrt{2}}\\right) + C\\)."
+  },
+  {
+    "id": "00f5f513-f72f-4df7-8427-7903b7868a9c",
+    "ref": "Ex 7.4 Q19",
+    "solution": "Here \\((x-5)(x-4) = x^2-9x+20\\), whose derivative is \\(2x-9\\). Write \\(6x+7 = 3(2x-9)+34\\). Then \\(\\int \\frac{6x+7}{\\sqrt{x^2-9x+20}}\\,dx = 3\\int \\frac{2x-9}{\\sqrt{x^2-9x+20}}\\,dx + 34\\int \\frac{dx}{\\sqrt{x^2-9x+20}}\\). The first term is \\(6\\sqrt{x^2-9x+20}\\); since \\(x^2-9x+20 = \\left(x-\\tfrac{9}{2}\\right)^2-\\tfrac{1}{4}\\), the second is \\(34\\log\\left|\\left(x-\\tfrac{9}{2}\\right)+\\sqrt{x^2-9x+20}\\right|\\). Hence \\(= 6\\sqrt{x^2-9x+20} + 34\\log\\left|\\left(x-\\tfrac{9}{2}\\right)+\\sqrt{x^2-9x+20}\\right| + C\\)."
+  },
+  {
+    "id": "2ea22c3e-761f-42f0-b3e9-23d46092c8ce",
+    "ref": "Ex 7.4 Q20",
+    "solution": "Note \\(\\frac{d}{dx}(4x-x^2) = 4-2x\\) and \\(4x-x^2 = 4-(x-2)^2\\). Write \\(x+2 = -\\tfrac{1}{2}(4-2x)+4\\). Then \\(\\int \\frac{x+2}{\\sqrt{4x-x^2}}\\,dx = -\\frac{1}{2}\\int \\frac{4-2x}{\\sqrt{4x-x^2}}\\,dx + 4\\int \\frac{dx}{\\sqrt{4-(x-2)^2}}\\). The first term is \\(-\\sqrt{4x-x^2}\\) and the second \\(4\\sin^{-1}\\frac{x-2}{2}\\). Hence the integral \\(= -\\sqrt{4x-x^2} + 4\\sin^{-1}\\left(\\frac{x-2}{2}\\right) + C\\)."
+  },
+  {
+    "id": "c8d41808-4414-49f5-9000-f187a4ad9baa",
+    "ref": "Ex 7.4 Q21",
+    "solution": "Since \\(\\frac{d}{dx}(x^2+2x+3) = 2x+2\\), write \\(x+2 = \\tfrac{1}{2}(2x+2)+1\\). Then \\(\\int \\frac{x+2}{\\sqrt{x^2+2x+3}}\\,dx = \\frac{1}{2}\\int \\frac{2x+2}{\\sqrt{x^2+2x+3}}\\,dx + \\int \\frac{dx}{\\sqrt{(x+1)^2+2}}\\). The first term is \\(\\sqrt{x^2+2x+3}\\) and the second \\(\\log\\left|(x+1)+\\sqrt{x^2+2x+3}\\right|\\). Hence \\(= \\sqrt{x^2+2x+3} + \\log\\left|(x+1)+\\sqrt{x^2+2x+3}\\right| + C\\)."
+  },
+  {
+    "id": "101a3181-7104-45b7-bc30-2e1bef33d5b5",
+    "ref": "Ex 7.4 Q22",
+    "solution": "Since \\(\\frac{d}{dx}(x^2-2x-5) = 2x-2\\), write \\(x+3 = \\tfrac{1}{2}(2x-2)+4\\). Then \\(\\int \\frac{x+3}{x^2-2x-5}\\,dx = \\frac{1}{2}\\log\\left|x^2-2x-5\\right| + 4\\int \\frac{dx}{(x-1)^2-6}\\). Using \\(\\int \\frac{dt}{t^2-a^2} = \\frac{1}{2a}\\log\\left|\\frac{t-a}{t+a}\\right|\\) with \\(t=x-1,\\ a=\\sqrt{6}\\), the second term is \\(\\frac{2}{\\sqrt{6}}\\log\\left|\\frac{x-1-\\sqrt{6}}{x-1+\\sqrt{6}}\\right|\\). Hence \\(= \\frac{1}{2}\\log\\left|x^2-2x-5\\right| + \\frac{2}{\\sqrt{6}}\\log\\left|\\frac{x-1-\\sqrt{6}}{x-1+\\sqrt{6}}\\right| + C\\)."
+  },
+  {
+    "id": "9f3102c0-1ec6-4370-92dc-1b0f37c33fe2",
+    "ref": "Ex 7.4 Q23",
+    "solution": "Since \\(\\frac{d}{dx}(x^2+4x+10) = 2x+4\\), write \\(5x+3 = \\tfrac{5}{2}(2x+4)-7\\). Then \\(\\int \\frac{5x+3}{\\sqrt{x^2+4x+10}}\\,dx = \\frac{5}{2}\\int \\frac{2x+4}{\\sqrt{x^2+4x+10}}\\,dx - 7\\int \\frac{dx}{\\sqrt{(x+2)^2+6}}\\). The first term is \\(5\\sqrt{x^2+4x+10}\\) and the second \\(-7\\log\\left|(x+2)+\\sqrt{x^2+4x+10}\\right|\\). Hence \\(= 5\\sqrt{x^2+4x+10} - 7\\log\\left|(x+2)+\\sqrt{x^2+4x+10}\\right| + C\\)."
+  },
+  {
+    "id": "cbe417cd-f6db-4ac0-8bb3-a93823c54685",
+    "ref": "Misc Q9",
+    "solution": "Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\). Then \\(\\int \\frac{\\cos x}{\\sqrt{4-\\sin^2 x}}\\,dx = \\int \\frac{dt}{\\sqrt{2^2-t^2}} = \\sin^{-1}\\frac{t}{2} + C = \\sin^{-1}\\left(\\frac{\\sin x}{2}\\right) + C\\)."
+  },
+  {
+    "id": "6db6b5b7-8970-42bf-b919-873031ff642b",
+    "ref": "Misc Q12",
+    "solution": "Put \\(t = x^4\\), so \\(dt = 4x^3\\,dx\\). Then \\(\\int \\frac{x^3}{\\sqrt{1-x^8}}\\,dx = \\frac{1}{4}\\int \\frac{dt}{\\sqrt{1-t^2}} = \\frac{1}{4}\\sin^{-1} t + C = \\frac{1}{4}\\sin^{-1}(x^4) + C\\)."
+  }
+]
