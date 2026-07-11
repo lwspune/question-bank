@@ -14,6 +14,13 @@ function fmtDate(iso: string): string {
   });
 }
 
+/** Canonical 91XXXXXXXXXX → "+91 XXXXXXXXXX" for display; leaves other shapes as-is. */
+function fmtMobile(mobile: string | null): string {
+  if (!mobile) return "—";
+  const m = /^91(\d{10})$/.exec(mobile);
+  return m ? `+91 ${m[1]}` : mobile;
+}
+
 export default async function StudentsPage() {
   const member = await getSessionMember();
   if (!member) redirect("/login");
@@ -21,6 +28,7 @@ export default async function StudentsPage() {
 
   const students = await listStudents();
   const googleCount = students.filter((s) => s.provider === "Google").length;
+  const withMobile = students.filter((s) => s.mobile).length;
 
   return (
     <>
@@ -33,10 +41,11 @@ export default async function StudentsPage() {
           </p>
         </header>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           <StatCard kind="numeric" value={students.length} label="Students" />
           <StatCard kind="numeric" value={googleCount} label="Google sign-in" />
           <StatCard kind="numeric" value={students.length - googleCount} label="Email sign-in" />
+          <StatCard kind="numeric" value={withMobile} label="Mobile captured" />
         </div>
 
         {students.length === 0 ? (
@@ -49,6 +58,7 @@ export default async function StudentsPage() {
               <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
                   <th className="px-3 py-2 text-left font-medium">Student</th>
+                  <th className="px-3 py-2 text-left font-medium">Mobile</th>
                   <th className="px-3 py-2 text-left font-medium">Sign-in</th>
                   <th className="px-3 py-2 text-left font-medium">Registered</th>
                   <th className="w-8" />
@@ -64,6 +74,9 @@ export default async function StudentsPage() {
                           <span className="block truncate text-xs text-muted-foreground" title={s.email}>{s.email}</span>
                         )}
                       </Link>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-xs tabular-nums text-muted-foreground">
+                      {fmtMobile(s.mobile)}
                     </td>
                     <td className="px-3 py-2 text-muted-foreground">{s.provider}</td>
                     <td className="px-3 py-2 text-muted-foreground">{fmtDate(s.createdAt)}</td>

@@ -21,6 +21,8 @@ export type StudentRow = {
   email: string;
   createdAt: string;
   provider: string;
+  /** Contact mobile captured post-signup (canonical 91XXXXXXXXXX), or null. */
+  mobile: string | null;
 };
 
 /** Friendly sign-in method. A password signup carries provider 'email' (or none). */
@@ -37,8 +39,14 @@ export function displayName(meta: UserMeta, email: string | null): string {
   return n || email || "(no name)";
 }
 
-/** Students = auth users NOT in the staff (org_members) set, newest signup first. */
-export function deriveStudents(users: AuthUserLite[], staffIds: Set<string>): StudentRow[] {
+/** Students = auth users NOT in the staff (org_members) set, newest signup first.
+ *  `mobileById` maps user id → captured contact mobile (from student_profiles);
+ *  absent ⇒ null (student hasn't given a number yet). */
+export function deriveStudents(
+  users: AuthUserLite[],
+  staffIds: Set<string>,
+  mobileById?: Map<string, string>
+): StudentRow[] {
   return users
     .filter((u) => !staffIds.has(u.id))
     .map((u) => ({
@@ -47,6 +55,7 @@ export function deriveStudents(users: AuthUserLite[], staffIds: Set<string>): St
       email: u.email ?? "(no email)",
       createdAt: u.created_at,
       provider: providerLabel(u.app_metadata?.provider),
+      mobile: mobileById?.get(u.id) ?? null,
     }))
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }

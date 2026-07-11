@@ -55,6 +55,18 @@ describe("deriveStudents", () => {
     expect(rows[0]).toMatchObject({ name: "Xavier Y", email: "x@y.com", provider: "Google" });
   });
 
+  it("attaches a captured mobile from the map, else null", () => {
+    const users = [u("s1", "2026-01-02T00:00:00Z"), u("s2", "2026-01-01T00:00:00Z")];
+    const rows = deriveStudents(users, new Set(), new Map([["s1", "919876543210"]]));
+    expect(rows.find((r) => r.id === "s1")!.mobile).toBe("919876543210");
+    expect(rows.find((r) => r.id === "s2")!.mobile).toBeNull();
+  });
+
+  it("mobile is null when no map is passed", () => {
+    const rows = deriveStudents([u("s1", "2026-01-01T00:00:00Z")], new Set());
+    expect(rows[0].mobile).toBeNull();
+  });
+
   it("uses email as the name when there is no metadata name (email signup)", () => {
     const rows = deriveStudents([u("s1", "2026-01-01T00:00:00Z", "email", "e@y.com")], new Set());
     expect(rows[0].name).toBe("e@y.com");
