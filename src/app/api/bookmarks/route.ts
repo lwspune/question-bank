@@ -7,6 +7,7 @@ import { z } from "zod";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { setBookmark } from "@/lib/bookmarks/service";
+import { logActivity } from "@/lib/activity/service";
 
 const BodySchema = z.object({
   questionId: z.string().uuid(),
@@ -31,6 +32,16 @@ export async function POST(request: NextRequest) {
   try {
     const db = createSupabaseServerClient();
     await setBookmark(db, user.id, parsed.data.questionId, parsed.data.bookmarked);
+
+    // Engagement spine (0052): a save is a signal; an un-save isn't. Best-effort.
+    if (parsed.data.bookmarked) {
+      await logActivity(db, user.id, {
+        kind: "question_bookmarked",
+        refId: parsed.data.questionId,
+        refKind: "question",
+      });
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("bookmark save error", err);
