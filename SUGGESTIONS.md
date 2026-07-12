@@ -24,6 +24,42 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-12
+
+### Drive the signed-in E2E flow for the four sign-up gates
+
+This session shipped four progressive sign-up gates (download, notes practice + track, metered answer-reveal, bookmarks) across migrations 0046–0047. Every **anon** path, API gate, and RLS round-trip was verified (curl + isolated RLS tests), and rendering was smoke-tested — but the **authed browser flow was never driven end-to-end**: bookmark toggle → `/saved`, the 4th anon reveal → wall then sign-in → unlimited, the notes bookmark/mark-mastered/checkpoint self-score → "Your notes" strip, and the download student-account path (paper/key succeed, tags 403). Same class as the still-open paper-editor authed-render item (2026-06-14) — a client-island or session bug only shows under a real login.
+
+**Why:** Definition-of-Done requires the golden path verified in the browser; the new surfaces are client islands reading the Supabase session, exactly where an SSR/hydration/session bug hides (the `ƒ`-page + client-island pitfall).
+
+**How to apply:** sign in as a self-serve student in a browser and walk each of the four flows once; confirm the "Your notes" strip + `/saved` populate, the reveal wall appears on the 4th distinct question and clears after sign-in, and a student gets 403 (not 500) on the tagged sheet.
+
+### Point the test suite at a dedicated staging Supabase (the durable flake fix)
+
+The 2026-07-12 fork-concurrency cap (`maxForks:2`) stopped the shared-DB contention flake that was blocking pushes, but it's a **mitigation, not elimination** — 71 of 176 test files still write to the ONE prod Supabase, and the cap trades speed (~92s vs ~34-58s) for stability. The real fix is isolating test writes from prod.
+
+**Why:** every future DB test adds load; the cap has headroom now but the class of flake (statement timeouts, fixture races, teardown sweeps racing prod reads) recurs structurally. A staging project also removes the global-teardown "sweep prod test rows" fragility entirely.
+
+**How to apply:** create a second Supabase project, apply all migrations, set the three CI/`.env.local` secrets to point at it for tests only; then `maxForks` can be raised back up (staging has no prod contention). The CI workflow header already anticipates this ("point the secrets at a staging project if write traffic gets noisy"). See [[shared-db-test-flake]].
+
+### A unified student dashboard (`/me`) — the per-user surfaces now exist to fill it
+
+Four per-user surfaces shipped or exist but are scattered: mock attempts (`mock_attempts`), notes progress (`notes_progress`, surfaced only as a strip on `/notes`), saved questions (`question_bookmarks` → `/saved`), and — parked — saved papers. A signed-in student has **no home** (`/dashboard` redirects them to `/browse`). A `/me` dashboard would unify continue-where-you-left-off, mock history, bookmarks, and notes progress into one retention surface.
+
+**Why:** it's the payoff that makes all the sign-up gates *worth it* for retention/personalization (the stated goals), and every data source already exists — it's assembly, not new plumbing. Also relates to the open per-student mock drill-down item (2026-07-10).
+
+**How to apply:** a `/me` (or student-facing `/dashboard`) server page that reads the signed-in user's `mock_attempts` (perf summary), `notes_progress` (`summarizeNotesProgress`), and `question_bookmarks` (`listBookmarkIds` → count), each already having a query helper; render as cards linking into `/mock`, `/notes`, `/saved`.
+
+### Watch Search Console after the notes practice gate; decide gate breadth from data
+
+The notes practice gate + reveal meter are client-side and keep teaching prose indexed, so SEO risk is low *by design* — but it's an untested bet on the live crawl. Nothing is currently measuring it.
+
+**Why:** the whole progressive-vs-aggressive gate strategy hinges on not eroding the SEO funnel; ~2 weeks of Search Console data (impressions/clicks on `/notes` + `/browse`) is the cheap validation before stacking more gates (the roadmap has quiz-results→account + more).
+
+**How to apply:** after ~2 weeks live, compare `/notes` + `/board` impressions/clicks vs the prior fortnight in Google Search Console. If flat/up, expand gates confidently; if down, dial back the reveal meter (raise the free limit) before touching the notes gate.
+
+---
+
 ## 2026-07-11
 
 ### DRY the two textbook pipelines (`scripts/stateboard/` + `scripts/ncert/`) once a 3rd textbook exam lands
