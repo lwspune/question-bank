@@ -19,6 +19,8 @@ import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
+import PracticeGate from "./PracticeGate";
+import NotesProgressControls from "./NotesProgressControls";
 import SubtopicMasteryCheckpoint from "./SubtopicMasteryCheckpoint";
 import SubtopicSummary from "./SubtopicSummary";
 
@@ -221,6 +223,14 @@ export default async function NotesSubtopicPage({
         </Link>
       </div>
 
+      {/* Track controls — signed-in only (renders null for anon, keeping the
+          page's anon HTML unchanged for SEO). */}
+      <NotesProgressControls
+        subtopicSlug={subtopicSlug}
+        chapterSlug={chapter.chapterSlug}
+        subjectRoute={chapter.subjectRoute}
+      />
+
       {note.whyItMatters && (
         <section className="mb-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-primary">
@@ -300,11 +310,20 @@ export default async function NotesSubtopicPage({
         />
       ) : (
         <>
-          {/* End-of-subtopic recap — auto-derived from concept.formula + concept.traps. */}
+          {/* End-of-subtopic recap — auto-derived from concept.formula + concept.traps.
+              Stays free (part of the readable teaching content). */}
           <SubtopicSummary note={note} />
 
-          {/* Mastery checkpoint — interleaved questions from the concept-tag pool. */}
-          <SubtopicMasteryCheckpoint questions={checkpointRows} />
+          {/* Mastery checkpoint — interleaved questions from the concept-tag pool.
+              Gated behind a free sign-in (client-side, so the page stays ISR). */}
+          <PracticeGate variant="full" label="take the mastery checkpoint">
+            <SubtopicMasteryCheckpoint
+              questions={checkpointRows}
+              subtopicSlug={subtopicSlug}
+              chapterSlug={chapter.chapterSlug}
+              subjectRoute={chapter.subjectRoute}
+            />
+          </PracticeGate>
         </>
       )}
 

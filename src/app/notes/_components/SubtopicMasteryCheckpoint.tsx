@@ -1,10 +1,15 @@
 import { Target } from "lucide-react";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
+import CheckpointSelfScore from "./CheckpointSelfScore";
 
 type Props = {
   /** Resolved bank rows for the 5 checkpoint ids, in interleaved order. */
   questions: WorkedExample[];
+  /** Notes slugs for the self-score save (this section is signed-in only). */
+  subtopicSlug: string;
+  chapterSlug: string;
+  subjectRoute: string;
 };
 
 /**
@@ -19,7 +24,12 @@ type Props = {
  * Returns null when no checkpoint rows are available so the page section
  * silently collapses for subtopics with zero concept-tagged drills.
  */
-export default function SubtopicMasteryCheckpoint({ questions }: Props) {
+export default function SubtopicMasteryCheckpoint({
+  questions,
+  subtopicSlug,
+  chapterSlug,
+  subjectRoute,
+}: Props) {
   if (questions.length === 0) return null;
 
   return (
@@ -45,6 +55,13 @@ export default function SubtopicMasteryCheckpoint({ questions }: Props) {
           <WorkedExampleCard key={q.id} rank={i + 1} example={q} />
         ))}
       </div>
+
+      <CheckpointSelfScore
+        total={questions.length}
+        subtopicSlug={subtopicSlug}
+        chapterSlug={chapterSlug}
+        subjectRoute={subjectRoute}
+      />
     </section>
   );
 }

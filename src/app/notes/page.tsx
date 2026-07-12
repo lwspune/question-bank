@@ -5,6 +5,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import YourNotesStrip from "./_components/YourNotesStrip";
 
 export const revalidate = 86400;
 
@@ -39,6 +40,9 @@ export default function NotesIndex() {
       />
 
       <GuideHero eyebrow="Teaching notes" title={PAGE_TITLE} subtitle={PAGE_INTRO} />
+
+      {/* Signed-in only (client island) — keeps this index page ISR-static. */}
+      <YourNotesStrip />
 
       <div className="mt-2 space-y-8 sm:mt-4">
         {groups.map((g) => (

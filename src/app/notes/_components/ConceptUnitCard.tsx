@@ -10,6 +10,7 @@ import FormulaBlock from "./FormulaBlock";
 import WorkedExampleAuthored from "./WorkedExampleAuthored";
 import SelfCheckCard from "./SelfCheckCard";
 import PracticeSet from "./PracticeSet";
+import PracticeGate from "./PracticeGate";
 import TrapCallout from "./TrapCallout";
 import ReferenceTableBlock from "./ReferenceTableBlock";
 import ReportConceptDialog from "./ReportConceptDialog";
@@ -778,7 +779,11 @@ export default function ConceptUnitCard({
               aria-hidden
             />
           </summary>
-          <div className="px-4 pb-4">{practiceBlocks}</div>
+          <div className="px-4 pb-4">
+            <PracticeGate variant="compact" label="try the self-check + reps">
+              {practiceBlocks}
+            </PracticeGate>
+          </div>
         </details>
       )}
 

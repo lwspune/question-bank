@@ -21,6 +21,23 @@ export function isNotesGated(input: NotesAccessInput): boolean {
 }
 
 /**
+ * State for the client-side practice gate (self-check / practice reps / mastery
+ * checkpoint). Unlike the paid preview-gate above, this is resolved in the
+ * browser (from the Supabase session) so notes pages stay ISR-static — it gates
+ * INTERACTION over public content, not the content itself. `loading` lets the
+ * gate render a skeleton until auth resolves, avoiding a flash of walled UI.
+ */
+export type PracticeGateState = "loading" | "locked" | "open";
+
+export function practiceGateState(input: {
+  signedIn: boolean;
+  loading: boolean;
+}): PracticeGateState {
+  if (input.loading) return "loading";
+  return input.signedIn ? "open" : "locked";
+}
+
+/**
  * Splits an ordered list into the first `previewCount` (free, shown publicly +
  * indexable) and the remainder (locked behind the paywall). A non-positive
  * count locks everything; a count past the end leaves nothing locked.
