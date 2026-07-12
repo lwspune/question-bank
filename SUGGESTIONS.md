@@ -52,6 +52,8 @@ Four per-user surfaces shipped or exist but are scattered: mock attempts (`mock_
 
 **How to apply:** a `/me` (or student-facing `/dashboard`) server page that reads the signed-in user's `mock_attempts` (perf summary), `notes_progress` (`summarizeNotesProgress`), and `question_bookmarks` (`listBookmarkIds` → count), each already having a query helper; render as cards linking into `/mock`, `/notes`, `/saved`.
 
+**Carry-forward (2026-07-12):** the engagement engine's activity spine (`user_activity`, migration 0052) shipped this session — the `/me` cockpit is now the recommended **first cadence-independent mechanic** for the engine (the `/dashboard/activity` verdict reads `insufficient` today, so build value surfaces that don't depend on visit cadence). A `/me` page can add a metacognition trajectory (mock score trend + days-to-exam) reading the spine, on top of the assembly above. See [[project-engagement-engine]].
+
 ### Watch Search Console after the notes practice gate; decide gate breadth from data
 
 The notes practice gate + reveal meter are client-side and keep teaching prose indexed, so SEO risk is low *by design* — but it's an untested bet on the live crawl. Nothing is currently measuring it.
@@ -67,6 +69,22 @@ The `MobilePromptProvider` shipped mobile-only, triggered on `/browse` (download
 **Why:** the current triggers miss the `/board`-only reader entirely, and mobile-alone is less useful for outreach than mobile+exam+city together (the original analysis's point). Both are cheap — the provider + sheet already exist; extension is one call site + a couple of fields.
 
 **How to apply:** (1) `import { useMobilePrompt }` in `BoardReader` and call `notifyReveal()` where it reveals an answer (parallel to `QuestionCard`). (2) For exam/city: add optional fields to the sheet + widen the `POST /api/profile/mobile` (or reuse `PATCH /api/profile`) — keep it one-ask, pre-fill exam from the `qb_exam` cookie (infer-then-confirm per [[signup-gate-placement]]). Keep it a nudge (never blocking) and preserve the ask-once cooldown.
+
+### Build the weak-area deliberate-practice drill off `answer_wrong` (the engagement differentiator)
+
+The activity spine (migration 0052) now logs one `answer_wrong` event per missed mock question (refId = questionId, metadata carries sectionKey + mockId). Nothing consumes it yet. The highest-value, least-gimmicky engagement mechanic is a **personalised drill assembled from the student's OWN wrong answers**, grouped by chapter — "you've missed 6 Vectors questions across 3 mocks; clear them" — with mastery at 80% (retire a question once re-answered correctly). This is retrieval practice + spaced repetition + deliberate practice + mastery-before-progression in one feature, and it reuses the existing bank + taxonomy + render path.
+
+**Why:** it's the differentiator that separates PYQ Vault from a generic quiz app, it's genuinely useful (not a dark pattern), and it's cadence-independent so it can ship NOW while `/dashboard/activity` still reads `insufficient` (unlike streaks, which wait on the verdict). Every input already exists.
+
+**How to apply:** a `drill_completed`-emitting flow: read the signed-in user's `answer_wrong` events (join `questions` for chapter/subject), dedup against questions later answered correctly (or re-derive from `attempt_answers`), assemble a per-chapter drill (reuse the `/mock` runner or a lighter reveal flow), grade, and log `drill_completed`. Gate "mastered" at 80%. Emit the retire signal via a new `answer_correct`-in-drill event (the kind already exists in `ACTIVITY_KINDS`). See the engagement gate in CLAUDE.md + [[project-engagement-engine]].
+
+### Complete activity-spine emitter coverage (`answer_revealed`, `quiz_taken`)
+
+The spine defines 8 learning-anchored kinds but only 5 are wired: `mock_submitted`, `answer_wrong`, `chapter_mastered`, `note_checkpoint`, `question_bookmarked`. Not yet emitted: **`quiz_taken`** (the public `/quiz/[slug]` + daily-quiz completion) and — a candidate not currently in the allowlist — **`answer_revealed`** (the metered `/browse` + `/board` reveal). `answer_correct` and `drill_completed` are reserved for the drill flow above.
+
+**Why:** the usage-shape readout + any future weekly-summary/cockpit are only as complete as the events feeding them; `quiz_taken` in particular is a real engagement signal today (the public funnel is live) that the spine is currently blind to. Cheap to add — one best-effort `logActivity` call per write path, the pattern is established.
+
+**How to apply:** add a `logActivity({kind:"quiz_taken", ...})` at the public-quiz grade + daily-quiz completion write paths (signed-in only — the public funnel captures anon leads by mobile, not accounts, so only wire the authed case). If reveal-tracking is wanted, add `answer_revealed` to `ACTIVITY_KINDS` + the DB CHECK (migration) first, then emit from the reveal endpoints — but note reveals are anon-heavy + client-metered today, so weigh the volume before wiring.
 
 ---
 
