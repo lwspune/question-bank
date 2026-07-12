@@ -14,15 +14,15 @@ export default function Hero({
         className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}
       >
-        Build a question paper in 60 seconds.
+        Practice every past-year question.
       </h1>
       <p
         className="mt-2 max-w-2xl animate-fade-in-up text-sm text-muted-foreground sm:mt-3 sm:text-base"
         style={{ animationDelay: "80ms" }}
       >
-        Filter past-year questions by exam, chapter, difficulty, and year.
-        Browse free — sign in to download the Question Paper + Answer Key as
-        Word files.
+        Filter thousands of real PYQs by exam, chapter, difficulty and year.
+        Preview free, reveal answers, save what matters — or download a full
+        paper + answer key.
       </p>
 
       {/* Stat band — gives the hero weight + the brand accent its first

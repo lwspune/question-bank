@@ -145,8 +145,8 @@ export default async function Home() {
 
         <GuideHero
           eyebrow="PYQ Vault"
-          title="Past-year question papers for Indian entrance & board exams"
-          subtitle="One home for the past-year question bank, strategy guides and concept notes — across seven exams. Free, no sign-up, anonymous-friendly."
+          title="Everything you need to crack the exam — on real past-year questions."
+          subtitle="Browse the past-year question bank, take timed mock tests, and learn every concept with strategy guides and notes — across NDA, JEE Mains, NEET, MHT-CET, CDS and Boards. Free to browse, no sign-up."
         />
 
         {/* Live total + primary CTA */}
@@ -157,7 +157,7 @@ export default async function Home() {
               {catalog.totalPublicQuestions.toLocaleString("en-IN")} questions
             </span>
             <span className="text-muted-foreground">
-              {catalog.exams.length} exams · free to browse & download
+              {catalog.exams.length} exams · free to browse, sign in to download
             </span>
           </div>
           <div className="mt-5 flex flex-wrap gap-3">
