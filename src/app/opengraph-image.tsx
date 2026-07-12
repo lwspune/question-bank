@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "PYQ Vault — Build a question paper in 60 seconds";
+export const alt =
+  "PYQ Vault — Past-year question banks, mock tests & concept notes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -62,9 +63,9 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.04em",
             }}
           >
-            Build a question paper
+            Everything you need
             <br />
-            in 60 seconds.
+            to crack the exam.
           </div>
           <div
             style={{
@@ -74,8 +75,8 @@ export default function OpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            Free past-year questions for MHT-CET, NDA and JEE Main.
-            IPMAT, CUET, NEET coming soon.
+            Past-year question banks, timed mock tests and concept notes —
+            NDA, JEE Mains, NEET, MHT-CET, CDS & Boards.
           </div>
         </div>
 

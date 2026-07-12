@@ -29,10 +29,10 @@ export const revalidate = 86400;
 const PAGE_TITLE =
   "PYQ Vault — Past-Year Question Papers for Indian Entrance & Board Exams";
 const PAGE_DESCRIPTION =
-  "Free past-year question banks for NDA, MHT-CET, JEE Mains, NEET, CDS and " +
-  "Maharashtra State Board. Filter by chapter, difficulty and year, then " +
-  "download a question paper + answer key — plus strategy guides and " +
-  "concept-by-concept teaching notes. Free, no sign-up.";
+  "Free past-year question banks for NDA, JEE Mains, NEET, MHT-CET, CDS and " +
+  "Maharashtra State Board. Filter PYQs by chapter, difficulty and year, take " +
+  "timed mock tests, download question papers with answer keys, and learn " +
+  "from strategy guides and concept-by-concept notes. Browse free, no sign-up.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

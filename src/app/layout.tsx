@@ -23,25 +23,27 @@ const sourceSerif = Source_Serif_4({
 const SITE_URL = "https://www.pyqvault.com";
 const SITE_NAME = "PYQ Vault";
 const SITE_DESCRIPTION =
-  "Build a question paper in 60 seconds. Free past-year questions for entrance exams — filter by exam, chapter, difficulty, and download Question Paper + Answer Key as Word. MHT-CET, NDA and JEE Main live; IPMAT, CUET, NEET coming soon.";
+  "Free past-year question banks for NDA, JEE Mains, NEET, MHT-CET, CDS and Maharashtra Board. Filter PYQs by chapter, difficulty and year, take timed mock tests, download question papers with answer keys, and learn from strategy guides and concept notes. Browse free, no sign-up.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Build a question paper in 60 seconds`,
+    default: `${SITE_NAME} — Past-year questions for Indian entrance & board exams`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "question paper builder",
+    "past-year questions",
+    "PYQ",
     "MHT-CET PYQ",
     "NDA",
-    "IPMAT",
-    "CUET",
     "NEET",
     "JEE Main",
+    "CDS",
+    "mock tests",
+    "concept notes",
     "previous year questions",
-    "free question paper",
+    "question paper builder",
     "MCQ bank",
   ],
   applicationName: SITE_NAME,
@@ -49,12 +51,12 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Build a question paper in 60 seconds`,
+    title: `${SITE_NAME} — Past-year questions for Indian entrance & board exams`,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Build a question paper in 60 seconds`,
+    title: `${SITE_NAME} — Past-year questions for Indian entrance & board exams`,
     description: SITE_DESCRIPTION,
   },
   robots: {
