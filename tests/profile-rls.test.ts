@@ -89,6 +89,81 @@ describe.skipIf(!HAS_ENV)("student_profiles RLS", () => {
     expect(data?.[0]?.mobile).toBe("919000000003");
   });
 
+  it("a student writes their OWN onboarding intent (target_exams + stage)", async () => {
+    // Upsert so this doesn't depend on whether the mobile tests ran first;
+    // proves the 0048 columns are covered by the same own-row policies (no
+    // mobile required — the column is nullable post-0048).
+    const { error } = await aliceClient.from("student_profiles").upsert(
+      {
+        user_id: aliceId,
+        target_exams: ["nda", "neet"],
+        stage: "class-12",
+        onboarded_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id" }
+    );
+    expect(error).toBeNull();
+
+    const { data } = await aliceClient
+      .from("student_profiles")
+      .select("target_exams, stage")
+      .eq("user_id", aliceId)
+      .maybeSingle();
+    expect(data?.target_exams).toEqual(["nda", "neet"]);
+    expect(data?.stage).toBe("class-12");
+  });
+
+  it("the stage CHECK rejects an unknown value", async () => {
+    const { error } = await aliceClient
+      .from("student_profiles")
+      .upsert({ user_id: aliceId, stage: "postgrad" }, { onConflict: "user_id" });
+    expect(error).not.toBeNull(); // student_profiles_stage_chk
+  });
+
+  it("a student writes their OWN /account detail fields (0049)", async () => {
+    const { error } = await aliceClient.from("student_profiles").upsert(
+      { user_id: aliceId, medium: "english", academic_stream: "pcm", city: "Pune", goal: "Clear NDA 2026" },
+      { onConflict: "user_id" }
+    );
+    expect(error).toBeNull();
+
+    const { data } = await aliceClient
+      .from("student_profiles")
+      .select("medium, academic_stream, city, goal")
+      .eq("user_id", aliceId)
+      .maybeSingle();
+    expect(data?.medium).toBe("english");
+    expect(data?.academic_stream).toBe("pcm");
+    expect(data?.city).toBe("Pune");
+  });
+
+  it("a student sets their OWN whatsapp opt-in (0050)", async () => {
+    const { error } = await aliceClient
+      .from("student_profiles")
+      .upsert(
+        { user_id: aliceId, whatsapp_opt_in: true, whatsapp_prompted_at: new Date().toISOString() },
+        { onConflict: "user_id" }
+      );
+    expect(error).toBeNull();
+    const { data } = await aliceClient
+      .from("student_profiles")
+      .select("whatsapp_opt_in")
+      .eq("user_id", aliceId)
+      .maybeSingle();
+    expect(data?.whatsapp_opt_in).toBe(true);
+  });
+
+  it("the medium + stream CHECKs reject unknown values", async () => {
+    const bad1 = await aliceClient
+      .from("student_profiles")
+      .upsert({ user_id: aliceId, medium: "marathi" }, { onConflict: "user_id" });
+    expect(bad1.error).not.toBeNull(); // student_profiles_medium_chk
+    const bad2 = await aliceClient
+      .from("student_profiles")
+      .upsert({ user_id: aliceId, academic_stream: "science" }, { onConflict: "user_id" });
+    expect(bad2.error).not.toBeNull(); // student_profiles_stream_chk
+  });
+
   it("anon cannot write a profile", async () => {
     const { error } = await anonClient
       .from("student_profiles")

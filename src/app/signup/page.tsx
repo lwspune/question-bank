@@ -59,10 +59,12 @@ export default function SignupPage() {
     }
 
     // With "Confirm email" OFF, signUp returns a live session → straight in.
+    // A brand-new account always hits the one-time intent capture first, then
+    // continues to `next` (/welcome self-guards for anyone already onboarded).
     // If a project leaves confirmation ON, there's no session; show the
     // check-your-email state instead of failing silently.
     if (data.session) {
-      router.replace(next);
+      router.replace(`/welcome?next=${encodeURIComponent(next)}`);
       router.refresh();
       return;
     }

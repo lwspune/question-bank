@@ -11,9 +11,13 @@ import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getAttemptReview, MockError, type ReviewItem } from "@/lib/mocks/service";
-import { getOwnMobile } from "@/lib/profile/service";
+import { getOwnProfile } from "@/lib/profile/service";
+import { getMockFeedback } from "@/lib/mocks/feedbackService";
 import { needsMobile } from "@/lib/profile/mobile";
+import { needsWhatsappPrompt } from "@/lib/profile/whatsapp";
 import MobileGate from "./MobileGate";
+import MockFeedback from "./MockFeedback";
+import WhatsappOptIn from "./WhatsappOptIn";
 
 export const metadata: Metadata = { robots: { index: false } };
 
@@ -39,7 +43,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // before the score + review are revealed. Attempt is already graded + stored —
   // this gates only the VIEW, and is server-checked every render so it can't be
   // bypassed by refresh / back / URL-sharing. Once a mobile is on file, skipped.
-  const profile = await getOwnMobile(db, user.id);
+  const profile = await getOwnProfile(db, user.id);
   if (needsMobile(profile)) {
     return (
       <>
@@ -55,6 +59,9 @@ export default async function MockResultPage({ params }: { params: Params }) {
       </>
     );
   }
+  // Past the gate → a mobile is on file. Load any existing feedback (to render
+  // the widget vs a filled state) and decide whether to offer the WhatsApp opt-in.
+  const feedback = await getMockFeedback(db, params.attemptId);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const pct = summary.maxScore > 0 ? Math.round((summary.score / summary.maxScore) * 100) : 0;
   const multiSection = mock.sections.length > 1;
@@ -111,6 +118,14 @@ export default async function MockResultPage({ params }: { params: Params }) {
             <Link href="/mock">All mock tests</Link>
           </Button>
         </div>
+
+        {/* Phase 3 — capture at the high-intent moment */}
+        <MockFeedback
+          attemptId={params.attemptId}
+          initialRating={feedback?.rating ?? null}
+          initialComment={feedback?.comment ?? null}
+        />
+        {needsWhatsappPrompt(profile) && <WhatsappOptIn />}
 
         {/* Review */}
         <h2 className="mt-8 text-lg font-semibold">Review — all {res.review!.items.length} questions</h2>

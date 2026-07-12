@@ -5,7 +5,7 @@ import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { cn } from "@/lib/utils";
 import { getSessionMember } from "@/lib/auth";
-import { getMockAttemptsDetail, type MockAttemptDetail } from "@/lib/mocks/adminStats";
+import { getMockAttemptsDetail, getMockFeedbackSummary, type MockAttemptDetail } from "@/lib/mocks/adminStats";
 
 export const dynamic = "force-dynamic";
 
@@ -34,9 +34,18 @@ export default async function MockAttemptsPage({ params }: { params: Params }) {
   if (!member) redirect("/login");
   if (member.role !== "ADMIN") redirect("/browse");
 
-  const detail = await getMockAttemptsDetail(params.slug);
+  const [detail, feedback] = await Promise.all([
+    getMockAttemptsDetail(params.slug),
+    getMockFeedbackSummary(params.slug),
+  ]);
   if (!detail) notFound();
   const { mock, attempts, summary } = detail;
+
+  const RATING_LABEL: Record<string, string> = {
+    too_easy: "Too easy",
+    just_right: "Just right",
+    too_hard: "Too hard",
+  };
 
   return (
     <>
@@ -63,6 +72,30 @@ export default async function MockAttemptsPage({ params }: { params: Params }) {
           <StatCard kind="text" value={summary.count ? `${summary.avgScore}/${mock.totalMarks}` : "—"} label="Average" />
           <StatCard kind="text" value={summary.count ? `${summary.topScore}` : "—"} label="Top score" />
         </div>
+
+        {feedback.count > 0 && (
+          <div className="rounded-lg border p-4">
+            <h2 className="text-sm font-semibold">Student feedback ({feedback.count})</h2>
+            <div className="mt-3 grid grid-cols-3 gap-3">
+              {(["too_easy", "just_right", "too_hard"] as const).map((r) => (
+                <div key={r} className="rounded-md border bg-card p-3 text-center">
+                  <div className="text-lg font-bold tabular-nums">{feedback.distribution[r]}</div>
+                  <div className="text-xs text-muted-foreground">{RATING_LABEL[r]}</div>
+                </div>
+              ))}
+            </div>
+            {feedback.comments.length > 0 && (
+              <ul className="mt-4 space-y-2">
+                {feedback.comments.map((c, i) => (
+                  <li key={i} className="rounded-md bg-muted/40 px-3 py-2 text-sm">
+                    <span className="mr-2 text-xs font-medium text-brand-accent">{RATING_LABEL[c.rating]}</span>
+                    <span className="text-foreground">{c.comment}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
 
         {attempts.length === 0 ? (
           <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">

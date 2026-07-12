@@ -7,6 +7,8 @@ import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { isEntitlementActive } from "@/lib/entitlements/access";
+import { getOwnProfile } from "@/lib/profile/service";
+import ProfileForm from "./ProfileForm";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +29,11 @@ export default async function AccountPage() {
   const [member, user] = await Promise.all([getSessionMember(), getSessionUser()]);
   if (!user) redirect("/login?next=/account");
 
-  const rows = await loadEntitlements(createSupabaseServerClient(), user.id);
+  const db = createSupabaseServerClient();
+  const [rows, profile] = await Promise.all([
+    loadEntitlements(db, user.id),
+    getOwnProfile(db, user.id),
+  ]);
   const now = Date.now();
   const active = rows
     .filter((r) => isEntitlementActive(r, now))
@@ -48,6 +54,10 @@ export default async function AccountPage() {
           <h1 className="text-2xl font-semibold tracking-tight">Your account</h1>
           <p className="mt-1 text-sm text-muted-foreground">{user.email}</p>
         </header>
+
+        <div className="mb-6">
+          <ProfileForm profile={profile} />
+        </div>
 
         <div className="rounded-xl border bg-card p-6">
           {hasAccess ? (
