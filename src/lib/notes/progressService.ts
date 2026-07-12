@@ -6,7 +6,37 @@
  */
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { mergeProgressPatch, type ProgressWrite } from "./progress";
+import { mergeProgressPatch, type NotesProgressRow, type ProgressWrite } from "./progress";
+
+/**
+ * Server-side read of a student's OWN notes_progress rows (RLS own-row via their
+ * JWT). Mirrors the client `fetchAllOwnProgress` select so a server-rendered
+ * surface (the /me dashboard) can feed `summarizeNotesProgress` without mounting
+ * the client island. The `.eq("user_id")` is belt-and-suspenders on top of RLS.
+ */
+export async function listOwnNotesProgress(
+  db: SupabaseClient,
+  userId: string
+): Promise<NotesProgressRow[]> {
+  const { data, error } = await db
+    .from("notes_progress")
+    .select(
+      "subtopic_slug, chapter_slug, subject_route, bookmarked, mastered_at, checkpoint_score, checkpoint_total, checkpoint_at, last_viewed_at"
+    )
+    .eq("user_id", userId);
+  if (error) throw new Error(`listOwnNotesProgress: ${error.message}`);
+  return ((data ?? []) as Record<string, unknown>[]).map((r) => ({
+    subtopicSlug: r.subtopic_slug as string,
+    chapterSlug: r.chapter_slug as string,
+    subjectRoute: r.subject_route as string,
+    bookmarked: Boolean(r.bookmarked),
+    masteredAt: (r.mastered_at as string | null) ?? null,
+    checkpointScore: (r.checkpoint_score as number | null) ?? null,
+    checkpointTotal: (r.checkpoint_total as number | null) ?? null,
+    checkpointAt: (r.checkpoint_at as string | null) ?? null,
+    lastViewedAt: (r.last_viewed_at as string) ?? "",
+  }));
+}
 
 export async function saveOwnProgress(
   db: SupabaseClient,

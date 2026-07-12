@@ -1,18 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BookOpen, Eye, EyeOff } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
+import { safeNextPath } from "@/lib/auth/redirect";
 import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
+  return (
+    <main className="grid min-h-screen md:grid-cols-2">
+      {/* useSearchParams (reading `?next=`) must sit inside Suspense. */}
+      <Suspense fallback={<section className="px-6 py-16" />}>
+        <LoginSection />
+      </Suspense>
+      <BrandPanel />
+    </main>
+  );
+}
+
+function LoginSection() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  // Where to land after login: a validated `?next=` (used by the sign-up gates
+  // to return the student to the page they came from), else the dashboard —
+  // which itself routes org staff to their console and students to /me.
+  const next = safeNextPath(searchParams.get("next"), "/dashboard");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -35,13 +53,12 @@ export default function LoginPage() {
       setSubmitting(false);
       return;
     }
-    router.replace("/dashboard");
+    router.replace(next);
     router.refresh();
   }
 
   return (
-    <main className="grid min-h-screen md:grid-cols-2">
-      <section className="flex items-center justify-center px-6 py-16">
+    <section className="flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-sm">
           <div className="mb-8 flex items-center gap-2 md:hidden">
             <BookOpen className="h-5 w-5 text-primary" aria-hidden />
@@ -57,7 +74,7 @@ export default function LoginPage() {
             </p>
           </header>
 
-          <GoogleSignInButton next="/browse" />
+          <GoogleSignInButton next={next} />
 
           <div className="my-5 flex items-center gap-3">
             <span className="h-px flex-1 bg-border" />
@@ -139,9 +156,6 @@ export default function LoginPage() {
           </p>
         </div>
       </section>
-
-      <BrandPanel />
-    </main>
   );
 }
 
