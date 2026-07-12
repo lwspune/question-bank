@@ -22,9 +22,15 @@ export default async function AppHeader() {
       ? { email: user.email, role: null }
       : null;
   // Brand link lands ADMINs on /dashboard (their home for upload/reports/
-  // members tooling); everyone else (TEACHER + anon) lands on /browse,
-  // which is the surface where editor + reader workflows actually live.
-  const homeHref = member?.role === "ADMIN" ? "/dashboard" : "/browse";
+  // members tooling), signed-in students on /me (their account home), and
+  // TEACHER + anon on /browse — the surface where editor + reader workflows
+  // actually live.
+  const homeHref =
+    member?.role === "ADMIN"
+      ? "/dashboard"
+      : !member && user
+        ? "/me"
+        : "/browse";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
