@@ -10,6 +10,7 @@ import {
   Gem,
   GraduationCap,
   ListChecks,
+  MessageSquareHeart,
   Search,
   Timer,
   Upload,
@@ -257,6 +258,14 @@ function QuickActions({
           icon={<Timer className="h-5 w-5" aria-hidden />}
           title="Mock Performance"
           description="See how students scored on each timed mock test, attempt by attempt."
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/feedback"
+          icon={<MessageSquareHeart className="h-5 w-5" aria-hidden />}
+          title="Feedback"
+          description="NPS score and student suggestions — what to build next."
         />
       )}
       <ActionCard

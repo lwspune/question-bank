@@ -20,7 +20,10 @@ import { summarizeUserMocks } from "@/lib/mocks/perf";
 import { listOwnNotesProgress } from "@/lib/notes/progressService";
 import { summarizeNotesProgress, prettifyNotesSlug } from "@/lib/notes/progress";
 import { listBookmarkIds } from "@/lib/bookmarks/service";
+import { getLastNpsAt } from "@/lib/feedback/service";
+import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
+import FeedbackCards from "./FeedbackCards";
 
 export const dynamic = "force-dynamic";
 
@@ -34,15 +37,17 @@ export default async function MePage() {
   if (!user) redirect("/login?next=/me");
 
   const db = createSupabaseServerClient();
-  const [attempts, notesRows, bookmarkIds] = await Promise.all([
+  const [attempts, notesRows, bookmarkIds, lastNpsAt] = await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     listBookmarkIds(db, user.id),
+    getLastNpsAt(db, user.id),
   ]);
 
   const mocks = summarizeUserMocks(attempts);
   const notes = summarizeNotesProgress(notesRows);
   const savedCount = bookmarkIds.length;
+  const showNps = needsNps({ completedMocks: mocks.completed, lastNpsAt, now: Date.now() });
 
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
   const resume = mocks.resumeAttempt;
@@ -96,6 +101,8 @@ export default async function MePage() {
             <SavedCard count={savedCount} />
           </div>
         </div>
+
+        <FeedbackCards showNps={showNps} />
       </main>
     </>
   );
