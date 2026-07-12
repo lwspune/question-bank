@@ -97,10 +97,24 @@ describe.skipIf(!HAS_ENV)("student_profiles RLS", () => {
   });
 
   it("service-role reads all profiles (admin roster path)", async () => {
+    // Ensure both rows exist independently of sibling-test ordering (idempotent
+    // service-role upsert — bypasses RLS by design). Avoids a shared-DB parallel
+    // flake where an exact count of 2 depended on earlier tests having committed.
+    await admin.from("student_profiles").upsert(
+      [
+        { user_id: aliceId, mobile: "919000000001", consent: true },
+        { user_id: bobId, mobile: "919000000003", consent: true },
+      ],
+      { onConflict: "user_id" }
+    );
     const { data } = await admin
       .from("student_profiles")
       .select("user_id, mobile")
       .in("user_id", [aliceId, bobId]);
-    expect((data ?? []).length).toBe(2);
+    // Containment, not exact count — proves service-role reads across users
+    // without being brittle to timing or stray rows.
+    expect(data?.map((r) => r.user_id)).toEqual(
+      expect.arrayContaining([aliceId, bobId])
+    );
   });
 });
