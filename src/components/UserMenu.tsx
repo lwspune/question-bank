@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { Bookmark, CreditCard, LogOut, User } from "lucide-react";
+import { Bookmark, CreditCard, LayoutDashboard, LogOut, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -63,6 +63,15 @@ export default function UserMenu({
           </div>
           {/* Papers (the collaborative builder) is reached from the primary
               nav tab now — org members get it there. */}
+          {role === null && (
+            <Link
+              href="/me"
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+            >
+              <LayoutDashboard className="h-4 w-4" aria-hidden />
+              Dashboard
+            </Link>
+          )}
           <Link
             href="/saved"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"

@@ -15,7 +15,7 @@ import {
   Upload,
   Users,
 } from "lucide-react";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { cn } from "@/lib/utils";
@@ -31,18 +31,16 @@ import {
 import StatCard from "./StatCard";
 
 export default async function DashboardPage() {
-  const member = await getSessionMember();
+  const [member, user] = await Promise.all([getSessionMember(), getSessionUser()]);
 
   // Teachers don't see the dashboard — they go straight to /browse where
   // the editor workflow lives (clicking through to /questions/[id]/edit).
   // Admin tooling on this page (upload, reports, members) is admin-only.
   if (member && member.role === "TEACHER") redirect("/browse");
 
-  // Anon AND self-serve students (signed in, no org_members row) both land on
-  // the public browse page — the dashboard is org-member territory only.
-  // Admins atomically get an org_members row at creation, so org-less reliably
-  // means "not staff".
-  if (!member) redirect("/browse");
+  // Org-less means "not staff" (admins atomically get an org_members row).
+  // A signed-in self-serve student gets their own home (/me); anon → /browse.
+  if (!member) redirect(user ? "/me" : "/browse");
 
   const supabase = createSupabaseServerClient();
   const [stats, recentUploads, openReportCount, openConceptReportCount] =
