@@ -9,6 +9,7 @@ import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
+import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import type { BoardBlock, BoardQuestion, BoardSectionGroup, SectionKind } from "@/lib/board/query";
 
@@ -35,6 +36,7 @@ export default function BoardReader({
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [blocked, setBlocked] = useState<Set<string>>(new Set());
   const meter = useRevealMeter();
+  const mobilePrompt = useMobilePrompt();
 
   const toggleOne = (id: string) => {
     // Hiding an already-revealed answer is always free.
@@ -51,6 +53,9 @@ export default function BoardReader({
       setBlocked((prev) => new Set(prev).add(id));
       return;
     }
+    // Engagement signal for the soft mobile prompt (no-op unless signed-in
+    // without a mobile; fires only once, at the reveal threshold).
+    mobilePrompt.notifyReveal();
     setRevealed((prev) => new Set(prev).add(id));
   };
 

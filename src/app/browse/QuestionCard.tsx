@@ -29,6 +29,7 @@ import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
+import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb } from "./breadcrumb";
@@ -80,10 +81,14 @@ export default function QuestionCard({
   // Metered answer reveal: anon viewers get a few free reveals, then a sign-in
   // nudge. A question already revealed is free to re-open (no double-charge).
   const meter = useRevealMeter();
+  const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
   function tryReveal(): boolean {
     if (meter.attemptReveal(question.id)) {
       setRevealBlocked(false);
+      // Engagement signal for the soft mobile prompt (no-op unless signed-in
+      // without a mobile; fires only once, at the reveal threshold).
+      mobilePrompt.notifyReveal();
       return true;
     }
     setRevealBlocked(true);
