@@ -34,6 +34,8 @@ This session shipped four progressive sign-up gates (download, notes practice + 
 
 **How to apply:** sign in as a self-serve student in a browser and walk each of the four flows once; confirm the "Your notes" strip + `/saved` populate, the reveal wall appears on the 4th distinct question and clears after sign-in, and a student gets 403 (not 500) on the tagged sheet.
 
+**Carry-forward (2026-07-12):** the soft **mobile-capture prompt** (`MobilePromptProvider`) shipped the same class of gap — its authed golden path (download → bottom-sheet → save → toast → doesn't reappear; 5 reveals → sheet; dismiss → gone for the 14-day cooldown) was **not driven E2E** either. Walk it in the same signed-in browser pass, as a student with NO mobile on file (a fresh account, or clear `student_profiles.mobile`).
+
 ### Point the test suite at a dedicated staging Supabase (the durable flake fix)
 
 The 2026-07-12 fork-concurrency cap (`maxForks:2`) stopped the shared-DB contention flake that was blocking pushes, but it's a **mitigation, not elimination** — 71 of 176 test files still write to the ONE prod Supabase, and the cap trades speed (~92s vs ~34-58s) for stability. The real fix is isolating test writes from prod.
@@ -57,6 +59,14 @@ The notes practice gate + reveal meter are client-side and keep teaching prose i
 **Why:** the whole progressive-vs-aggressive gate strategy hinges on not eroding the SEO funnel; ~2 weeks of Search Console data (impressions/clicks on `/notes` + `/browse`) is the cheap validation before stacking more gates (the roadmap has quiz-results→account + more).
 
 **How to apply:** after ~2 weeks live, compare `/notes` + `/board` impressions/clicks vs the prior fortnight in Google Search Console. If flat/up, expand gates confidently; if down, dial back the reveal meter (raise the free limit) before touching the notes gate.
+
+### Extend the soft mobile prompt — ~~`/board` reveal trigger~~ **(/board DONE 2026-07-12)** + fold in exam/city
+
+The `MobilePromptProvider` shipped mobile-only, triggered on `/browse` (download + 5 reveals). Two parked extensions: (1) ~~the same `notifyReveal()` call in `BoardReader`~~ **DONE 2026-07-12** — `BoardReader.tsx` now calls `mobilePrompt.notifyReveal()` on a successful answer reveal (shares the root provider's counter with `/browse`, so 5 reveals across both surfaces fire once); (2) a later "phase 2" that folds **exam + city** into the same bottom-sheet (the two other under-captured "communication" fields — city is ≈0% covered today, only asked on `/account`) — **still open**.
+
+**Why:** the current triggers miss the `/board`-only reader entirely, and mobile-alone is less useful for outreach than mobile+exam+city together (the original analysis's point). Both are cheap — the provider + sheet already exist; extension is one call site + a couple of fields.
+
+**How to apply:** (1) `import { useMobilePrompt }` in `BoardReader` and call `notifyReveal()` where it reveals an answer (parallel to `QuestionCard`). (2) For exam/city: add optional fields to the sheet + widen the `POST /api/profile/mobile` (or reuse `PATCH /api/profile`) — keep it one-ask, pre-fill exam from the `qb_exam` cookie (infer-then-confirm per [[signup-gate-placement]]). Keep it a nudge (never blocking) and preserve the ask-once cooldown.
 
 ---
 

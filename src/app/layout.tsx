@@ -5,6 +5,7 @@ import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
+import { MobilePromptProvider } from "@/lib/profile/MobilePromptProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <CartProvider>
           <BookmarksProvider>
+          <MobilePromptProvider>
           {children}
           <OfflineBanner />
           <Toaster
@@ -92,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             toastOptions={{ duration: 3500 }}
           />
           <Analytics />
+          </MobilePromptProvider>
           </BookmarksProvider>
         </CartProvider>
       </body>

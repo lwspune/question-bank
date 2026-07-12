@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import type { Filters } from "@/lib/questions/filters";
 import { useCart } from "@/lib/cart/CartProvider";
 import { resolveExportAccess } from "@/lib/export/access";
+import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags";
@@ -69,6 +70,7 @@ export default function DownloadDialog({
   };
 
   const cart = useCart();
+  const mobilePrompt = useMobilePrompt();
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
   const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
@@ -120,6 +122,8 @@ export default function DownloadDialog({
       a.remove();
       URL.revokeObjectURL(url);
       toast.success(`${meta.label} downloaded`);
+      // Value moment: nudge a signed-in student with no mobile on file to add it.
+      mobilePrompt.requestPrompt("download");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Download failed";
       setError(msg);
