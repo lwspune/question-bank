@@ -18,7 +18,7 @@ export default function PrivacyPage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Privacy Policy</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            PYQ Vault is run by LWS Pune. This policy explains what we collect and why.
+            PYQ Vault is run by our team. This policy explains what we collect and why.
           </p>
         </header>
 
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-medium">Why we collect it</h2>
           <p className="text-sm text-muted-foreground">
             We use your name and mobile number to share your result and to contact you about NDA exam
-            preparation, courses, and offers from LWS Pune. We rely on your <strong>consent</strong> —
+            preparation, courses, and offers from PYQ Vault. We rely on your <strong>consent</strong> —
             given by ticking the box at the quiz — as the basis for this contact. Your quiz answers and
             score help us improve our practice material.
           </p>
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
         <section className="space-y-2">
           <h2 className="text-lg font-medium">How it is stored and shared</h2>
           <p className="text-sm text-muted-foreground">
-            Your information is stored securely and is accessible only to authorised LWS Pune staff. We
+            Your information is stored securely and is accessible only to authorised PYQ Vault staff. We
             do <strong>not</strong> sell your data or share it with unrelated third parties. We retain it
             only as long as needed for the purposes above.
           </p>

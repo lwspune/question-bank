@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="mt-16 border-t bg-background">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <p>
-          From the team at <span className="font-medium">LWS Pune</span> — free
+          From the team at <span className="font-medium">PYQ Vault</span> — free
           for teachers.
         </p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">

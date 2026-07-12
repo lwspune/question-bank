@@ -44,7 +44,7 @@ export default function WhatsappOptIn() {
           <h2 className="text-sm font-semibold">Get your weekly weak-area report on WhatsApp</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             A short, weekly nudge on what to revise next — straight to your WhatsApp.
-            By opting in you agree to be contacted by LWS per our{" "}
+            By opting in you agree to be contacted by PYQ Vault per our{" "}
             <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground" target="_blank">
               privacy policy
             </Link>

@@ -100,7 +100,7 @@ export default function MobileGate({ mockTitle }: { mockTitle: string }) {
             aria-describedby="gate-consent-text"
           />
           <span id="gate-consent-text">
-            I agree to be contacted by LWS about my preparation and consent to the{" "}
+            I agree to be contacted by PYQ Vault about my preparation and consent to the{" "}
             <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground" target="_blank">
               privacy policy
             </Link>

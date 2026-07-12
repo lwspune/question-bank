@@ -32,7 +32,7 @@ export function resolveExportAccess(input: {
       return {
         allowed: false,
         status: 403,
-        message: "The tagged sheet is available to LWS staff accounts only.",
+        message: "The tagged sheet is available to PYQ Vault staff accounts only.",
       };
     }
     return { allowed: true };
