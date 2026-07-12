@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
+  Activity,
   ArrowRight,
   BookOpen,
   ChevronRight,
@@ -266,6 +267,14 @@ function QuickActions({
           icon={<MessageSquareHeart className="h-5 w-5" aria-hidden />}
           title="Feedback"
           description="NPS score and student suggestions — what to build next."
+        />
+      )}
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/activity"
+          icon={<Activity className="h-5 w-5" aria-hidden />}
+          title="Usage shape"
+          description="How students actually use the app — daily or in bursts — before we build engagement mechanics."
         />
       )}
       <ActionCard

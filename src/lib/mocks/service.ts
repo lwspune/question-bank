@@ -17,6 +17,8 @@ import {
   type ReviewOption,
 } from "./query";
 import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
+import { logActivityBatch } from "@/lib/activity/service";
+import type { ActivityEvent } from "@/lib/activity/events";
 
 export class MockError extends Error {
   constructor(public status: number, message: string) {
@@ -202,6 +204,37 @@ export async function submitAttempt(
     .eq("user_id", userId)
     .eq("status", "in_progress"); // guard: don't overwrite a concurrent submit
   if (error) throw new MockError(500, `submitAttempt: ${error.message}`);
+
+  // Engagement spine (0052): log the graded submit + each missed question as
+  // drill fuel. Reached ONLY on the first submit (the in_progress guard above),
+  // so it's once-per-attempt. Best-effort — never blocks the result.
+  const events: ActivityEvent[] = [
+    {
+      kind: "mock_submitted",
+      refId: attemptId,
+      refKind: "mock_attempt",
+      metadata: {
+        mockId: attempt.mock_id,
+        score: result.score,
+        maxScore: result.maxScore,
+        correct: result.correct,
+        wrong: result.wrong,
+        skipped: result.skipped,
+      },
+    },
+  ];
+  for (const gq of gradeQuestions) {
+    const selected = answerMap[gq.questionId];
+    if (selected && selected !== gq.answer) {
+      events.push({
+        kind: "answer_wrong",
+        refId: gq.questionId,
+        refKind: "question",
+        metadata: { mockId: attempt.mock_id, sectionKey: gq.sectionKey },
+      });
+    }
+  }
+  await logActivityBatch(db, userId, events);
 
   return {
     attemptId,

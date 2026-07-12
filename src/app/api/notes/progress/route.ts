@@ -11,6 +11,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { sanitizeProgressWrite } from "@/lib/notes/progress";
 import { saveOwnProgress } from "@/lib/notes/progressService";
+import { logActivityBatch } from "@/lib/activity/service";
+import type { ActivityEvent } from "@/lib/activity/events";
 
 export async function POST(request: NextRequest) {
   const user = await getSessionUser();
@@ -31,6 +33,35 @@ export async function POST(request: NextRequest) {
   try {
     const db = createSupabaseServerClient();
     await saveOwnProgress(db, user.id, parsed.value);
+
+    // Engagement spine (0052): only the meaningful learning events — a mastery
+    // toggle and a completed checkpoint. Bookmark / last-viewed touches are too
+    // noisy for the spine. Best-effort.
+    const w = parsed.value;
+    const events: ActivityEvent[] = [];
+    if (w.mastered === true) {
+      events.push({
+        kind: "chapter_mastered",
+        refId: w.subtopicSlug,
+        refKind: "notes_subtopic",
+        metadata: { chapterSlug: w.chapterSlug, subjectRoute: w.subjectRoute },
+      });
+    }
+    if (w.checkpoint) {
+      events.push({
+        kind: "note_checkpoint",
+        refId: w.subtopicSlug,
+        refKind: "notes_subtopic",
+        metadata: {
+          chapterSlug: w.chapterSlug,
+          subjectRoute: w.subjectRoute,
+          score: w.checkpoint.score,
+          total: w.checkpoint.total,
+        },
+      });
+    }
+    await logActivityBatch(db, user.id, events);
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("notes progress save error", err);
