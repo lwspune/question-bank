@@ -277,8 +277,7 @@ export default async function Home() {
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
             Filter the bank by exam, chapter, difficulty and PYQ year — then
-            download the Question Paper + Answer Key as Word files. No account
-            needed.
+            sign in to download the Question Paper + Answer Key as Word files.
           </p>
           <Link
             href="/browse"

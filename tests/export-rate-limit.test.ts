@@ -64,12 +64,11 @@ describe.skipIf(!HAS_ENV)("/api/export rate limit", () => {
 
     for (let i = 1; i <= 20; i++) {
       const res = await POST(makeReq(ip, BAD_FILTER_PAYLOAD));
-      // 200/400 in production. 500 is acceptable in tests only because
-      // createSupabaseServerClient() reads next/headers cookies(), which
-      // throws outside Next's request scope. The rate-limit check fires
-      // BEFORE that, so the bucket still increments — that's what we're
-      // verifying via the 21st call below.
-      expect([200, 400, 500]).toContain(res.status);
+      // In tests the request resolves as anon (cookies() throws), so a valid
+      // kind=paper hits the download gate → 401. The rate-limit check fires
+      // BEFORE the gate, so the bucket still increments — that's what the 21st
+      // call verifies. 200/400/500 stay acceptable across environments.
+      expect([200, 400, 401, 500]).toContain(res.status);
     }
 
     const blocked = await POST(makeReq(ip, BAD_FILTER_PAYLOAD));

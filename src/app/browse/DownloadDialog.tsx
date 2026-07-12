@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Download, FileText, Key, Table } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Download, FileText, Key, LogIn, Table } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +20,7 @@ import {
 import { cn } from "@/lib/utils";
 import type { Filters } from "@/lib/questions/filters";
 import { useCart } from "@/lib/cart/CartProvider";
+import { resolveExportAccess } from "@/lib/export/access";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags";
@@ -38,6 +41,10 @@ export default function DownloadDialog({
   externalOpen,
   onExternalOpenChange,
   hideTrigger,
+  /** Signed-in (any account) — unlocks the paper + key downloads. */
+  isSignedIn = false,
+  /** Org staff (ADMIN/TEACHER) — additionally unlocks the tagged sheet. */
+  isStaff = false,
 }: {
   filters: Filters;
   totalCount: number;
@@ -45,7 +52,15 @@ export default function DownloadDialog({
   externalOpen?: boolean;
   onExternalOpenChange?: (open: boolean) => void;
   hideTrigger?: boolean;
+  isSignedIn?: boolean;
+  isStaff?: boolean;
 }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const returnUrl = searchParams.toString()
+    ? `${pathname}?${searchParams.toString()}`
+    : pathname;
+  const canTags = resolveExportAccess({ kind: "tags", isSignedIn, isStaff }).allowed;
   const [internalOpen, setInternalOpen] = useState(false);
   const open = externalOpen ?? internalOpen;
   const setOpen = (v: boolean) => {
@@ -142,8 +157,10 @@ export default function DownloadDialog({
           </DialogTitle>
           <DialogDescription>
             Word files — Question Paper and Answer Key (0.5″ margins, 2 columns,
-            Cambria 10pt) — plus a tagged sheet (.xlsx) for nda-tracker, numbered
-            to match the paper. Tap each to download.
+            Cambria 10pt)
+            {canTags
+              ? " — plus a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
+              : "."}
           </DialogDescription>
         </DialogHeader>
 
@@ -215,6 +232,12 @@ export default function DownloadDialog({
               {error}
             </p>
           )}
+          {!isSignedIn && (
+            <p className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
+              Downloads are free with an account. Browsing and preview stay open —
+              sign in to get the Word files.
+            </p>
+          )}
         </div>
 
         <DialogFooter className="sticky bottom-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row">
@@ -224,35 +247,48 @@ export default function DownloadDialog({
             disabled={busy}
             className="w-full sm:w-auto"
           >
-            {busy ? "Working…" : "Done"}
+            {busy ? "Working…" : isSignedIn ? "Done" : "Cancel"}
           </Button>
-          <Button
-            variant="outline"
-            onClick={() => onDownload("tags")}
-            disabled={busy || overCap || activeCount === 0}
-            className="w-full sm:w-auto"
-          >
-            <Table className="h-4 w-4" aria-hidden />
-            {busyKind === "tags" ? "Generating…" : "Tagged sheet"}
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => onDownload("key")}
-            disabled={busy || overCap || activeCount === 0}
-            className="w-full sm:w-auto"
-          >
-            <Key className="h-4 w-4" aria-hidden />
-            {busyKind === "key" ? "Generating…" : "Answer Key"}
-          </Button>
-          <Button
-            variant="brand"
-            onClick={() => onDownload("paper")}
-            disabled={busy || overCap || activeCount === 0}
-            className="w-full sm:w-auto"
-          >
-            <FileText className="h-4 w-4" aria-hidden />
-            {busyKind === "paper" ? "Generating…" : "Question Paper"}
-          </Button>
+          {!isSignedIn ? (
+            <Button asChild variant="brand" className="w-full sm:w-auto">
+              <Link href={`/login?next=${encodeURIComponent(returnUrl)}`}>
+                <LogIn className="h-4 w-4" aria-hidden />
+                Sign in to download
+              </Link>
+            </Button>
+          ) : (
+            <>
+              {canTags && (
+                <Button
+                  variant="outline"
+                  onClick={() => onDownload("tags")}
+                  disabled={busy || overCap || activeCount === 0}
+                  className="w-full sm:w-auto"
+                >
+                  <Table className="h-4 w-4" aria-hidden />
+                  {busyKind === "tags" ? "Generating…" : "Tagged sheet"}
+                </Button>
+              )}
+              <Button
+                variant="outline"
+                onClick={() => onDownload("key")}
+                disabled={busy || overCap || activeCount === 0}
+                className="w-full sm:w-auto"
+              >
+                <Key className="h-4 w-4" aria-hidden />
+                {busyKind === "key" ? "Generating…" : "Answer Key"}
+              </Button>
+              <Button
+                variant="brand"
+                onClick={() => onDownload("paper")}
+                disabled={busy || overCap || activeCount === 0}
+                className="w-full sm:w-auto"
+              >
+                <FileText className="h-4 w-4" aria-hidden />
+                {busyKind === "paper" ? "Generating…" : "Question Paper"}
+              </Button>
+            </>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

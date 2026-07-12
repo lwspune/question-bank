@@ -1,7 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { resolveExportAccess, type ExportKind } from "@/lib/export/access";
 import {
   queryQuestions,
   queryQuestionsByIds,
@@ -26,6 +27,7 @@ const HOUR_MS = 60 * 60 * 1000;
 // A full export is now two requests (Paper + Key); limits doubled so the
 // user-perceived per-hour cap stays roughly what it was under the old ZIP shape.
 const ANON_LIMIT = 20;
+const STUDENT_LIMIT = 50;
 const AUTHED_LIMIT = 200;
 
 const DOCX_CONTENT_TYPE =
@@ -35,7 +37,7 @@ const XLSX_CONTENT_TYPE =
 
 // "tags" = the nda-tracker enrichment sheet (.xlsx) — same question set as the
 // paper, numbered identically, so it imports without any hand-typing.
-type ExportKind = "paper" | "key" | "tags";
+// ExportKind + the access gate live in @/lib/export/access (shared with the UI).
 
 type ExportOptions = {
   title?: string;
@@ -65,10 +67,22 @@ export async function POST(request: NextRequest) {
     } catch {
       member = null;
     }
-    const bucket = member
-      ? `export:user:${member.user.id}`
+    // A self-serve student has no org membership — resolve the user directly so
+    // paper/key downloads (any signed-in account) can be told apart from anon.
+    let user = member?.user ?? null;
+    if (!member) {
+      try {
+        user = await getSessionUser();
+      } catch {
+        user = null;
+      }
+    }
+    const isStaff = !!member;
+    const isSignedIn = !!user;
+    const bucket = user
+      ? `export:user:${user.id}`
       : `export:anon:${getClientIp(request)}`;
-    const limit = member ? AUTHED_LIMIT : ANON_LIMIT;
+    const limit = isStaff ? AUTHED_LIMIT : isSignedIn ? STUDENT_LIMIT : ANON_LIMIT;
 
     const admin = createSupabaseAdminClient();
     const rl = await checkAndIncrement(admin, bucket, {
@@ -125,8 +139,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Public endpoint — RLS scopes the query: anon sees only PUBLIC rows,
-    // authed org members see PUBLIC + their own org's PRIVATE.
+    // Download gate: paper/key need any signed-in account; the tagged sheet is
+    // staff-only. Enforced server-side (never trust the hidden UI buttons),
+    // after the cheap payload validation and before the expensive query.
+    const access = resolveExportAccess({ kind, isSignedIn, isStaff });
+    if (!access.allowed) {
+      return NextResponse.json({ error: access.message }, { status: access.status });
+    }
+
+    // RLS scopes the query: anon sees only PUBLIC rows, authed org members see
+    // PUBLIC + their own org's PRIVATE.
     const supabase = createSupabaseServerClient();
 
     let questions: QuestionRow[];

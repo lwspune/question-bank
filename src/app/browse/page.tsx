@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   isPracticeOnlyExam,
@@ -35,7 +35,7 @@ import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
 export const metadata: Metadata = {
   title: "Browse questions",
   description:
-    "Filter past-year questions by exam, chapter, difficulty, and year. Download Question Paper + Answer Key as Word. Free, no sign-up.",
+    "Filter past-year questions by exam, chapter, difficulty, and year. Browse free; a free account unlocks Word downloads of the Question Paper + Answer Key.",
   alternates: { canonical: "/browse" },
 };
 
@@ -56,7 +56,12 @@ function paramsFromSearch(
 
 export default async function BrowsePage({ searchParams }: PageProps) {
   // Public page: anon users are welcome. RLS scopes the question list.
+  // isStaff (org member) unlocks the tagged sheet + "Add to paper"; any signed-in
+  // account unlocks the paper/key downloads. Only resolve the user when not staff
+  // (a member already implies a signed-in user).
   const member = await getSessionMember();
+  const isStaff = !!member;
+  const isSignedIn = isStaff || !!(await getSessionUser());
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -256,6 +261,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             <DownloadDialog
               filters={filters}
               totalCount={questionsResult.totalCount}
+              isSignedIn={isSignedIn}
+              isStaff={isStaff}
             />
           </div>
         </header>
@@ -316,7 +323,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         </div>
       </main>
       <BackToNotes />
-      <CartPill filters={filters} isOrgMember={!!member} />
+      <CartPill
+        filters={filters}
+        isOrgMember={isStaff}
+        isSignedIn={isSignedIn}
+      />
       <Footer />
     </>
   );

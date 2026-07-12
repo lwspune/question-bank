@@ -47,10 +47,13 @@ type SortMode = "insertion" | "by-chapter";
 export default function CartPill({
   filters,
   isOrgMember = false,
+  isSignedIn = false,
 }: {
   filters: Filters;
-  /** Signed-in org member (ADMIN/TEACHER) — unlocks "Add to paper". */
+  /** Signed-in org member (ADMIN/TEACHER) — unlocks "Add to paper" + tagged sheet. */
   isOrgMember?: boolean;
+  /** Signed-in (any account) — unlocks the paper + key downloads. */
+  isSignedIn?: boolean;
 }) {
   const cart = useCart();
   const [open, setOpen] = useState(false);
@@ -259,6 +262,8 @@ export default function CartPill({
         externalOpen={downloadOpen}
         onExternalOpenChange={setDownloadOpen}
         hideTrigger
+        isSignedIn={isSignedIn}
+        isStaff={isOrgMember}
       />
 
       <Dialog open={clearConfirmOpen} onOpenChange={setClearConfirmOpen}>

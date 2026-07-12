@@ -5,7 +5,7 @@ export default function Hero({
 }) {
   const stats = [
     { value: totalPublicQuestions.toLocaleString("en-IN"), label: "public questions" },
-    { value: "Free", label: "forever, no sign-up" },
+    { value: "Free", label: "to browse, forever" },
   ];
 
   return (
@@ -21,8 +21,8 @@ export default function Hero({
         style={{ animationDelay: "80ms" }}
       >
         Filter past-year questions by exam, chapter, difficulty, and year.
-        Download the Question Paper + Answer Key as Word files. Free, no
-        sign-up.
+        Browse free — sign in to download the Question Paper + Answer Key as
+        Word files.
       </p>
 
       {/* Stat band — gives the hero weight + the brand accent its first

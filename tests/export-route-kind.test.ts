@@ -85,20 +85,42 @@ describe.skipIf(!HAS_ENV)("/api/export kind validation", () => {
     expect(body.error).toMatch(/not both|filters or questionIds/i);
   });
 
-  it("accepts kind=paper and proceeds past kind validation (reaches query/auth layer)", async () => {
+  it("accepts kind=paper and proceeds past kind validation (reaches auth gate)", async () => {
     const { POST } = await import("@/app/api/export/route");
-    // Bad examId → query yields 0 rows → 400 "No questions match these filters".
-    // If the route accepted kind, this is the next error we'll see.
-    // Outside Next request scope cookies() can throw → 500 is also acceptable;
-    // we just want to assert we passed kind validation (not the "kind"-themed 400).
+    // In tests cookies() throws → the request resolves as anon, so a valid
+    // kind=paper now hits the download gate and returns 401 ("sign in to
+    // download") BEFORE the query. 400/500 remain acceptable across
+    // environments; we just assert we passed kind validation (not a "kind" 400).
     const res = await POST(
       makeReq({ kind: "paper", filters: VALID_FILTERS, options: OPTIONS })
     );
-    expect([400, 500]).toContain(res.status);
+    expect([400, 401, 500]).toContain(res.status);
     if (res.status === 400) {
       const body = await res.json();
       // Whatever 400 we got, it must NOT be the "kind" 400
       expect(body.error).not.toMatch(/^kind/i);
     }
   });
+});
+
+/**
+ * The download gate on the anon path. In tests cookies() throws → the request
+ * resolves as anon, so every kind is denied with 401 ("sign in to download")
+ * before the query runs. Student→200 / student-tags→403 / staff→200 need a real
+ * cookie session and are covered by the pure resolveExportAccess spec
+ * (tests/export-access.test.ts). Each request uses a unique x-forwarded-for so
+ * the anon rate-limit bucket never interferes.
+ */
+describe.skipIf(!HAS_ENV)("/api/export download gate (anon)", () => {
+  for (const kind of ["paper", "key", "tags"] as const) {
+    it(`denies anon kind=${kind} with 401`, async () => {
+      const { POST } = await import("@/app/api/export/route");
+      const res = await POST(
+        makeReq({ kind, filters: VALID_FILTERS, options: OPTIONS })
+      );
+      expect(res.status).toBe(401);
+      const body = await res.json();
+      expect(body.error).toBeTruthy();
+    });
+  }
 });
