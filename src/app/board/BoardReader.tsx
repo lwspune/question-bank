@@ -8,6 +8,8 @@ import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { useRevealMeter } from "@/components/reveal/useRevealMeter";
+import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import type { BoardBlock, BoardQuestion, BoardSectionGroup, SectionKind } from "@/lib/board/query";
 
 const KIND_TAG: Record<SectionKind, string> = {
@@ -31,14 +33,26 @@ export default function BoardReader({
   // stay consistent as sections collapse/expand. Everything starts hidden —
   // including worked examples; tap "Show answer" to reveal (attempt-first).
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
+  const [blocked, setBlocked] = useState<Set<string>>(new Set());
+  const meter = useRevealMeter();
 
-  const toggleOne = (id: string) =>
-    setRevealed((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+  const toggleOne = (id: string) => {
+    // Hiding an already-revealed answer is always free.
+    if (revealed.has(id)) {
+      setRevealed((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+      return;
+    }
+    // Revealing a new answer: the meter gates anon after the free budget.
+    if (!meter.attemptReveal(id)) {
+      setBlocked((prev) => new Set(prev).add(id));
+      return;
+    }
+    setRevealed((prev) => new Set(prev).add(id));
+  };
 
   return (
     <div className="space-y-8">
@@ -48,6 +62,7 @@ export default function BoardReader({
           group={group}
           supabaseUrl={supabaseUrl}
           revealed={revealed}
+          blocked={blocked}
           onToggleReveal={toggleOne}
         />
       ))}
@@ -59,11 +74,13 @@ function GroupSection({
   group,
   supabaseUrl,
   revealed,
+  blocked,
   onToggleReveal,
 }: {
   group: BoardSectionGroup;
   supabaseUrl: string;
   revealed: Set<string>;
+  blocked: Set<string>;
   onToggleReveal: (id: string) => void;
 }) {
   const [open, setOpen] = useState(true);
@@ -93,6 +110,7 @@ function GroupSection({
             groupLabel={group.group}
             supabaseUrl={supabaseUrl}
             revealed={revealed}
+            blocked={blocked}
             onToggleReveal={onToggleReveal}
           />
         ))}
@@ -105,12 +123,14 @@ function BlockSection({
   groupLabel,
   supabaseUrl,
   revealed,
+  blocked,
   onToggleReveal,
 }: {
   block: BoardBlock;
   groupLabel: string;
   supabaseUrl: string;
   revealed: Set<string>;
+  blocked: Set<string>;
   onToggleReveal: (id: string) => void;
 }) {
   const [open, setOpen] = useState(true);
@@ -154,6 +174,7 @@ function BlockSection({
                   q={q}
                   supabaseUrl={supabaseUrl}
                   revealed={revealed.has(q.id)}
+                  blocked={blocked.has(q.id)}
                   onToggleReveal={() => onToggleReveal(q.id)}
                 />
               </li>
@@ -169,11 +190,13 @@ function BoardQuestionItem({
   q,
   supabaseUrl,
   revealed,
+  blocked,
   onToggleReveal,
 }: {
   q: BoardQuestion;
   supabaseUrl: string;
   revealed: boolean;
+  blocked: boolean;
   onToggleReveal: () => void;
 }) {
   const hasAnswer = questionHasAnswer(q);
@@ -232,6 +255,7 @@ function BoardQuestionItem({
           >
             {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
           </button>
+          {blocked && !revealed && <RevealSignInPrompt />}
           {revealed && q.solution && (
             <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
               {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —

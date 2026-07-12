@@ -28,6 +28,9 @@ import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
+import { useRevealMeter } from "@/components/reveal/useRevealMeter";
+import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
+import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
 
@@ -74,6 +77,29 @@ export default function QuestionCard({
   const cart = useCart();
   const inCart = cart.has(question.id);
 
+  // Metered answer reveal: anon viewers get a few free reveals, then a sign-in
+  // nudge. A question already revealed is free to re-open (no double-charge).
+  const meter = useRevealMeter();
+  const [revealBlocked, setRevealBlocked] = useState(false);
+  function tryReveal(): boolean {
+    if (meter.attemptReveal(question.id)) {
+      setRevealBlocked(false);
+      return true;
+    }
+    setRevealBlocked(true);
+    return false;
+  }
+  function pickOption(label: OptionLabel) {
+    if (tryReveal()) setPicked(label);
+  }
+  function toggleSolution() {
+    if (showSolution) {
+      setShowSolution(false);
+      return;
+    }
+    if (tryReveal()) setShowSolution(true);
+  }
+
   const breadcrumb = buildBreadcrumb(question, { includeExam });
 
   function toggleExpanded() {
@@ -83,6 +109,7 @@ export default function QuestionCard({
         // fresh attempt for self-testing.
         setPicked(null);
         setShowSolution(false);
+        setRevealBlocked(false);
       }
       return !v;
     });
@@ -155,6 +182,7 @@ export default function QuestionCard({
               aria-hidden
             />
           </button>
+          <BookmarkButton questionId={question.id} />
           <CartToggle
             inCart={inCart}
             disabled={cart.isFull && !inCart}
@@ -274,7 +302,7 @@ export default function QuestionCard({
                   >
                     <button
                       type="button"
-                      onClick={() => setPicked(opt.label)}
+                      onClick={() => pickOption(opt.label)}
                       aria-pressed={isPickedByUser}
                       className="flex w-full items-start gap-3 p-2.5 text-left text-sm transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                     >
@@ -302,6 +330,8 @@ export default function QuestionCard({
               </p>
             )}
 
+            {revealBlocked && !revealed && <RevealSignInPrompt />}
+
             {isSubjective && !question.solution && (
               <p className="pt-2 text-xs italic text-muted-foreground">
                 Model answer coming soon.
@@ -312,7 +342,7 @@ export default function QuestionCard({
               <div>
                 <button
                   type="button"
-                  onClick={() => setShowSolution((v) => !v)}
+                  onClick={toggleSolution}
                   className="font-sans text-xs font-medium text-primary hover:underline"
                 >
                   {isSubjective

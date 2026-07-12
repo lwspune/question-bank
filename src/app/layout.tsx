@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import { CartProvider } from "@/lib/cart/CartProvider";
+import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <CartProvider>
+          <BookmarksProvider>
           {children}
           <OfflineBanner />
           <Toaster
@@ -90,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             toastOptions={{ duration: 3500 }}
           />
           <Analytics />
+          </BookmarksProvider>
         </CartProvider>
       </body>
     </html>
