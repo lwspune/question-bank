@@ -155,3 +155,46 @@ export async function getMockAttemptsDetail(slug: string): Promise<MockAttemptsD
     summary: summarizeAttempts(rows.map((r) => ({ userId: r.user_id as string, score: r.score == null ? null : Number(r.score) }))),
   };
 }
+
+export type MockFeedbackSummary = {
+  count: number;
+  distribution: { too_easy: number; just_right: number; too_hard: number };
+  comments: { comment: string; rating: string; createdAt: string }[];
+};
+
+/**
+ * Post-mock feedback rollup for one mock (admin, service-role — mock_feedback is
+ * own-row RLS). Reads feedback via the attempt FK, filtered to this mock, paged
+ * for the 1000-row cap. Difficulty distribution + recent comments.
+ */
+export async function getMockFeedbackSummary(slug: string): Promise<MockFeedbackSummary> {
+  const empty: MockFeedbackSummary = {
+    count: 0,
+    distribution: { too_easy: 0, just_right: 0, too_hard: 0 },
+    comments: [],
+  };
+  const db = createSupabaseAdminClient();
+  const { data: mock } = await db.from("mock_tests").select("id").eq("slug", slug).maybeSingle();
+  if (!mock) return empty;
+
+  const rows: { rating: string; comment: string | null; created_at: string }[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("mock_feedback")
+      .select("rating, comment, created_at, mock_attempts!inner(mock_id)")
+      .eq("mock_attempts.mock_id", mock.id)
+      .order("created_at", { ascending: false })
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`getMockFeedbackSummary: ${error.message}`);
+    rows.push(...((data ?? []) as unknown as typeof rows));
+    if (!data || data.length < PAGE) break;
+  }
+
+  const distribution = { too_easy: 0, just_right: 0, too_hard: 0 };
+  const comments: MockFeedbackSummary["comments"] = [];
+  for (const r of rows) {
+    if (r.rating in distribution) distribution[r.rating as keyof typeof distribution] += 1;
+    if (r.comment) comments.push({ comment: r.comment, rating: r.rating, createdAt: r.created_at });
+  }
+  return { count: rows.length, distribution, comments: comments.slice(0, 20) };
+}

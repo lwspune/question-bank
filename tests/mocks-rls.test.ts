@@ -156,6 +156,51 @@ describe.skipIf(!HAS_ENV)("Mock attempt RLS", () => {
     expect(draft ?? []).toHaveLength(0);
   });
 
+  it("a student leaves + reads feedback on their OWN attempt", async () => {
+    const { error } = await aliceClient
+      .from("mock_feedback")
+      .insert({ attempt_id: aliceAttemptId, user_id: aliceId, rating: "just_right", comment: "solid" });
+    expect(error).toBeNull();
+    const { data } = await aliceClient
+      .from("mock_feedback")
+      .select("rating, comment")
+      .eq("attempt_id", aliceAttemptId)
+      .maybeSingle();
+    expect(data?.rating).toBe("just_right");
+  });
+
+  it("a student CANNOT leave feedback on another student's attempt", async () => {
+    const { error } = await bobClient
+      .from("mock_feedback")
+      .insert({ attempt_id: aliceAttemptId, user_id: bobId, rating: "too_hard" });
+    expect(error).not.toBeNull(); // WITH CHECK: attempt must belong to bob
+  });
+
+  it("a student CANNOT read another student's feedback", async () => {
+    const { data } = await bobClient
+      .from("mock_feedback")
+      .select("rating")
+      .eq("attempt_id", aliceAttemptId);
+    expect(data ?? []).toHaveLength(0);
+  });
+
+  it("the rating CHECK rejects an unknown value", async () => {
+    const { error } = await aliceClient
+      .from("mock_feedback")
+      .upsert(
+        { attempt_id: aliceAttemptId, user_id: aliceId, rating: "meh" },
+        { onConflict: "attempt_id" }
+      );
+    expect(error).not.toBeNull(); // mock_feedback rating CHECK
+  });
+
+  it("anon cannot leave feedback", async () => {
+    const { error } = await anonClient
+      .from("mock_feedback")
+      .insert({ attempt_id: aliceAttemptId, user_id: aliceId, rating: "too_easy" });
+    expect(error).not.toBeNull();
+  });
+
   it("a user JWT cannot publish a mock (writes are service-role only)", async () => {
     const { error } = await aliceClient.from("mock_tests").insert({
       id: randomUUID(),
