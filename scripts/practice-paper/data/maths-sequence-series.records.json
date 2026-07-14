@@ -1,0 +1,206 @@
+[
+  { "n": 1, "subtopic": "Arithmetic Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "If the 6th and 11th terms of an AP are 17 and 32, then its 20th term is",
+    "optA": "78", "optB": "79", "optC": "59", "optD": "60", "answer": "C",
+    "solution": "\\(a+5d=17\\) and \\(a+10d=32\\) give \\(5d=15\\), so \\(d=3\\) and \\(a=2\\). \\(T_{20}=a+19d=2+57=59\\). Matches option C." },
+
+  { "n": 2, "subtopic": "Arithmetic Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "The sum of the first and third term of an arithmetic progression is 12 and the product of the first and second term is 24, then the first term is",
+    "optA": "1", "optB": "8", "optC": "4", "optD": "6", "answer": "C",
+    "solution": "\\(a+(a+2d)=12\\Rightarrow a+d=6\\). Product \\(a(a+d)=24\\Rightarrow 6a=24\\Rightarrow a=4\\). Matches option C." },
+
+  { "n": 3, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the pth term of an AP is q and its qth term is p, then its \\((p+q)\\)th term is",
+    "optA": "\\(-p\\)", "optB": "\\(-q\\)", "optC": "\\(-(p+q)\\)", "optD": "0", "answer": "D",
+    "solution": "\\(a+(p-1)d=q\\) and \\(a+(q-1)d=p\\) give \\(d=-1\\) and \\(a=p+q-1\\). \\(T_{p+q}=a+(p+q-1)d=(p+q-1)-(p+q-1)=0\\). Matches option D." },
+
+  { "n": 4, "subtopic": "Arithmetic Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "The 15th term from the end in \\(4, 7, 10, 13, \\ldots, 154\\) is",
+    "optA": "46", "optB": "112", "optC": "321", "optD": "199", "answer": "B",
+    "solution": "With last term 154 and \\(d=3\\), the nth term from the end is \\(l-(n-1)d=154-14\\times 3=154-42=112\\). Matches option B." },
+
+  { "n": 5, "subtopic": "Arithmetic Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "In an A.P., the first term is 1, the last term is 11 and the sum of n terms is 36, then \\(n=\\)",
+    "optA": "5", "optB": "6", "optC": "7", "optD": "none", "answer": "B",
+    "solution": "\\(S=\\dfrac{n}{2}(a+l)=\\dfrac{n}{2}(1+11)=6n=36\\Rightarrow n=6\\). Matches option B." },
+
+  { "n": 6, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the sum of n terms of an A.P. is \\(3n^2+5n\\) and \\(T_m=164\\), then m equals",
+    "optA": "26", "optB": "27", "optC": "28", "optD": "24", "answer": "B",
+    "solution": "\\(T_n=S_n-S_{n-1}=(3n^2+5n)-\\left(3(n-1)^2+5(n-1)\\right)=6n+2\\). Setting \\(6m+2=164\\) gives \\(m=27\\). Matches option B." },
+
+  { "n": 7, "subtopic": "Arithmetic Progressions", "difficulty": "HARD", "status": "new",
+    "stem": "If the mth term of an A.P. is \\(\\dfrac{1}{n}\\) and the nth term is \\(\\dfrac{1}{m}\\), then find the sum of mn terms.",
+    "optA": "\\(\\dfrac{1}{2}(mn+1)\\)", "optB": "\\(\\dfrac{1}{2}(mn-1)\\)", "optC": "\\(\\dfrac{mn}{2}\\)", "optD": "\\(mn\\)", "answer": "A",
+    "solution": "From \\(a+(m-1)d=\\dfrac1n\\) and \\(a+(n-1)d=\\dfrac1m\\) we get \\(a=d=\\dfrac{1}{mn}\\). Then \\(S_{mn}=\\dfrac{mn}{2}\\left[2a+(mn-1)d\\right]=\\dfrac{mn}{2}\\cdot\\dfrac{mn+1}{mn}=\\dfrac{mn+1}{2}\\). Matches option A." },
+
+  { "n": 8, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the nth term of an AP is \\(\\dfrac{1}{3}(2n+1)\\), then the sum of its first 19 terms is",
+    "optA": "131", "optB": "132", "optC": "133", "optD": "134", "answer": "C",
+    "solution": "\\(T_1=1\\), \\(d=\\dfrac23\\). \\(S_{19}=\\dfrac{19}{2}\\left[2(1)+18\\cdot\\dfrac23\\right]=\\dfrac{19}{2}(14)=133\\). Matches option C." },
+
+  { "n": 9, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "The sum of all integers between 81 and 719 which are divisible by 5 is",
+    "optA": "51800", "optB": "50800", "optC": "52800", "optD": "None of these", "answer": "B",
+    "solution": "The multiples run \\(85, 90, \\ldots, 715\\); count \\(=\\dfrac{715-85}{5}+1=127\\). Sum \\(=\\dfrac{127}{2}(85+715)=127\\times 400=50800\\). Matches option B." },
+
+  { "n": 10, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "Three numbers are in A.P. whose sum is 33 and product is 792, then the smallest number from these numbers is",
+    "optA": "4", "optB": "8", "optC": "11", "optD": "14", "answer": "A",
+    "solution": "Take \\(a-d, a, a+d\\): sum \\(3a=33\\Rightarrow a=11\\). Product \\(11(121-d^2)=792\\Rightarrow d^2=49\\Rightarrow d=7\\). Numbers \\(4, 11, 18\\); smallest is 4. Matches option A." },
+
+  { "n": 11, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(a, b, c, d, e\\) are in A.P., then the value of \\(a-4b+6c-4d+e\\) is",
+    "optA": "1", "optB": "2", "optC": "0", "optD": "None of these", "answer": "C",
+    "solution": "With equal spacing the coefficients \\(1,-4,6,-4,1\\) sum to zero for both the constant and the common-difference parts, so \\(a-4b+6c-4d+e=0\\). Matches option C." },
+
+  { "n": 12, "subtopic": "Arithmetic Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(a, b, c\\) are in AP, then \\((a-c)^2\\) equals",
+    "optA": "\\(4(b^2-ac)\\)", "optB": "\\(4(b^2+ac)\\)", "optC": "\\(4b^2-ac\\)", "optD": "\\(b^2-4ac\\)", "answer": "A",
+    "solution": "In AP, \\(a+c=2b\\). \\((a-c)^2=(a+c)^2-4ac=(2b)^2-4ac=4(b^2-ac)\\). Matches option A." },
+
+  { "n": 13, "subtopic": "Arithmetic Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "If angles of a quadrilateral are in A.P. with common difference \\(10^\\circ\\), then the smallest angle is",
+    "optA": "\\(70^\\circ\\)", "optB": "\\(75^\\circ\\)", "optC": "\\(80^\\circ\\)", "optD": "\\(85^\\circ\\)", "answer": "B",
+    "solution": "The four angles \\(a, a+10, a+20, a+30\\) sum to \\(360^\\circ\\): \\(4a+60=360\\Rightarrow a=75^\\circ\\). Matches option B." },
+
+  { "n": 14, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the sum of the resulting series obtained by introducing n A.M.'s between 2 and 38 is 200, then n is equal to",
+    "optA": "10", "optB": "9", "optC": "8", "optD": "6", "answer": "C",
+    "solution": "The full series has \\(n+2\\) terms with sum \\(\\dfrac{n+2}{2}(2+38)=20(n+2)=200\\Rightarrow n+2=10\\Rightarrow n=8\\). Matches option C." },
+
+  { "n": 15, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "MODERATE", "status": "new",
+    "stem": "n AM's are inserted between 7 and 71. If the fifth AM is 27, then n is equal to",
+    "optA": "17", "optB": "16", "optC": "15", "optD": "14", "answer": "C",
+    "solution": "The AMs form an AP with common difference \\(d=\\dfrac{71-7}{n+1}\\). Fifth AM \\(=7+5d=27\\Rightarrow d=4\\), so \\(\\dfrac{64}{n+1}=4\\Rightarrow n=15\\). Matches option C." },
+
+  { "n": 16, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "EASY", "status": "new",
+    "stem": "If 8 arithmetic means are placed between 2 and 17, then the 5th arithmetic mean will be",
+    "optA": "\\(\\dfrac{61}{3}\\)", "optB": "\\(\\dfrac{76}{3}\\)", "optC": "\\(\\dfrac{31}{3}\\)", "optD": "\\(\\dfrac{106}{3}\\)", "answer": "C",
+    "solution": "\\(d=\\dfrac{17-2}{8+1}=\\dfrac{5}{3}\\). 5th AM \\(=2+5\\cdot\\dfrac{5}{3}=2+\\dfrac{25}{3}=\\dfrac{31}{3}\\). Matches option C." },
+
+  { "n": 17, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "EASY", "status": "new",
+    "stem": "Sum of 20 arithmetic means between 1 and 99 is",
+    "optA": "1500", "optB": "1000", "optC": "1150", "optD": "2100", "answer": "B",
+    "solution": "Sum of n AMs between a and b is \\(\\dfrac{n(a+b)}{2}=\\dfrac{20(1+99)}{2}=1000\\). Matches option B." },
+
+  { "n": 18, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(x\\), \\(2x+2\\) and \\(3x+3\\) are in GP, then its 4th term is",
+    "optA": "27", "optB": "13.5", "optC": "\\(-27\\)", "optD": "\\(-13.5\\)", "answer": "D",
+    "solution": "\\((2x+2)^2=x(3x+3)\\Rightarrow x^2+5x+4=0\\Rightarrow x=-1\\) or \\(x=-4\\). \\(x=-1\\) is degenerate; \\(x=-4\\) gives \\(-4, -6, -9\\) with \\(r=\\dfrac32\\), so the 4th term \\(=-9\\times\\dfrac32=-13.5\\). Matches option D." },
+
+  { "n": 19, "subtopic": "Geometric Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "The sixth term of a G.P. is 32 and its 8th term is 128, then its common ratio is",
+    "optA": "\\(-1\\)", "optB": "2", "optC": "4", "optD": "\\(-4\\)", "answer": "B",
+    "solution": "\\(\\dfrac{T_8}{T_6}=r^2=\\dfrac{128}{32}=4\\Rightarrow r=\\pm 2\\). Matches option B." },
+
+  { "n": 20, "subtopic": "Geometric Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "If \\(y=1+x+x^2+\\ldots\\) up to infinite terms, then x is equal to",
+    "optA": "\\(\\dfrac{y-1}{y}\\)", "optB": "\\(\\dfrac{1-y}{y}\\)", "optC": "\\(\\dfrac{y}{1-y}\\)", "optD": "None", "answer": "A",
+    "solution": "\\(y=\\dfrac{1}{1-x}\\) for \\(|x|<1\\), so \\(1-x=\\dfrac1y\\) and \\(x=\\dfrac{y-1}{y}\\). Matches option A." },
+
+  { "n": 21, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the nth term of \\(5, \\sqrt5, 1, \\ldots\\) is \\(\\dfrac{1}{625}\\), then the value of n is",
+    "optA": "7", "optB": "10", "optC": "11", "optD": "None of these", "answer": "C",
+    "solution": "First term \\(5\\), ratio \\(\\dfrac{1}{\\sqrt5}\\). \\(T_n=5\\cdot 5^{-(n-1)/2}=5^{1-(n-1)/2}=5^{-4}\\Rightarrow 1-\\dfrac{n-1}{2}=-4\\Rightarrow n=11\\). Matches option C." },
+
+  { "n": 22, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the first term of a G.P. is 1 and the sum of its 3rd and 5th term is 90, then the common ratio is",
+    "optA": "\\(\\pm 4\\)", "optB": "\\(\\pm 3\\)", "optC": "2", "optD": "\\(-2\\)", "answer": "B",
+    "solution": "\\(r^2+r^4=90\\). Let \\(u=r^2\\): \\(u^2+u-90=0\\Rightarrow u=9\\Rightarrow r=\\pm 3\\). Matches option B." },
+
+  { "n": 23, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "Sum of 9 terms of the G.P. \\(1-\\dfrac12+\\dfrac14-\\dfrac18+\\ldots\\) is",
+    "optA": "\\(\\dfrac{171}{256}\\)", "optB": "\\(\\dfrac{256}{171}\\)", "optC": "171", "optD": "256", "answer": "A",
+    "solution": "First term 1, ratio \\(-\\dfrac12\\). \\(S_9=\\dfrac{1-\\left(-\\tfrac12\\right)^9}{1+\\tfrac12}=\\dfrac{1+\\tfrac{1}{512}}{\\tfrac32}=\\dfrac{513/512}{3/2}=\\dfrac{171}{256}\\). Matches option A." },
+
+  { "n": 24, "subtopic": "Geometric Progressions", "difficulty": "EASY", "status": "new",
+    "stem": "The value of \\(5^{1/2}\\cdot 5^{1/4}\\cdot 5^{1/8}\\cdots\\infty\\) is",
+    "optA": "5", "optB": "25", "optC": "\\(\\dfrac15\\)", "optD": "\\(\\dfrac{1}{25}\\)", "answer": "A",
+    "solution": "The exponents form the infinite GP \\(\\dfrac12+\\dfrac14+\\dfrac18+\\ldots=1\\), so the product is \\(5^1=5\\). Matches option A." },
+
+  { "n": 25, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the second term of a G.P. is 2 and the sum of its infinite terms is 8, then its first term is",
+    "optA": "\\(\\dfrac14\\)", "optB": "\\(\\dfrac12\\)", "optC": "2", "optD": "4", "answer": "D",
+    "solution": "\\(ar=2\\) and \\(\\dfrac{a}{1-r}=8\\). Substituting \\(r=\\dfrac2a\\) gives \\(a^2-8a+16=0\\Rightarrow (a-4)^2=0\\Rightarrow a=4\\). Matches option D." },
+
+  { "n": 26, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "The first term of an infinite G.P. is 1 and every term is equal to the sum of the successive terms, then its fourth term will be",
+    "optA": "\\(\\dfrac12\\)", "optB": "\\(\\dfrac18\\)", "optC": "\\(\\dfrac14\\)", "optD": "\\(\\dfrac{1}{16}\\)", "answer": "B",
+    "solution": "The condition \\(ar^{n-1}=\\dfrac{ar^{n}}{1-r}\\) gives \\(1-r=r\\Rightarrow r=\\dfrac12\\). The fourth term is \\(\\left(\\dfrac12\\right)^3=\\dfrac18\\). Matches option B." },
+
+  { "n": 27, "subtopic": "Geometric Progressions", "difficulty": "MODERATE", "status": "new",
+    "stem": "If the \\((m+n)\\)th term of a G.P. is 9 and the \\((m-n)\\)th term is 4, then the mth term will be",
+    "optA": "6", "optB": "\\(\\dfrac16\\)", "optC": "6.5", "optD": "None", "answer": "A",
+    "solution": "\\(T_{m+n}\\cdot T_{m-n}=a^2 r^{2m-2}=(a r^{m-1})^2=(T_m)^2=9\\times 4=36\\), so \\(T_m=6\\). Matches option A." },
+
+  { "n": 28, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "MODERATE", "status": "new",
+    "stem": "If 5 GM's be introduced between 486 and \\(\\dfrac23\\), then the 4th GM is",
+    "optA": "6", "optB": "\\(-6\\)", "optC": "12", "optD": "\\(-12\\)", "answer": "A",
+    "solution": "With 7 terms, \\(r^6=\\dfrac{2/3}{486}=\\dfrac{1}{729}\\Rightarrow r=\\dfrac13\\). 4th GM \\(=486\\cdot\\left(\\dfrac13\\right)^4=\\dfrac{486}{81}=6\\). Matches option A." },
+
+  { "n": 29, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "EASY", "status": "new",
+    "stem": "Find the product of three GM's between 4 and \\(\\dfrac14\\).",
+    "optA": "1", "optB": "4", "optC": "\\(\\dfrac14\\)", "optD": "None of these", "answer": "A",
+    "solution": "Product of n GMs between a and b is \\((ab)^{n/2}=\\left(4\\cdot\\dfrac14\\right)^{3/2}=1^{3/2}=1\\). Matches option A." },
+
+  { "n": 30, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "MODERATE", "status": "new",
+    "stem": "If \\(a, b, c\\) are in HP, then \\(\\dfrac{a-b}{b-c}\\) is equal to",
+    "optA": "\\(\\dfrac{a}{b}\\)", "optB": "\\(\\dfrac{b}{a}\\)", "optC": "\\(\\dfrac{a}{c}\\)", "optD": "\\(\\dfrac{c}{b}\\)", "answer": "C",
+    "solution": "For a, b, c in HP the standard result is \\(\\dfrac{a-b}{b-c}=\\dfrac{a}{c}\\). Matches option C." },
+
+  { "n": 31, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "HARD", "status": "new",
+    "stem": "If the 10th term of an HP is 21 and the 21st term of the same HP is 10, then find the 210th term.",
+    "optA": "210", "optB": "\\(\\dfrac{1}{210}\\)", "optC": "1", "optD": "2", "answer": "C",
+    "solution": "The reciprocals are in AP with \\(\\dfrac{1}{T_{10}}=\\dfrac{1}{21}\\), \\(\\dfrac{1}{T_{21}}=\\dfrac{1}{10}\\), giving common difference \\(\\dfrac{1}{210}\\) and first reciprocal \\(\\dfrac{1}{210}\\). Then \\(\\dfrac{1}{T_{210}}=\\dfrac{1}{210}+209\\cdot\\dfrac{1}{210}=1\\), so \\(T_{210}=1\\). Matches option C." },
+
+  { "n": 32, "subtopic": "Harmonic Progressions and the Three Means", "difficulty": "HARD", "status": "new",
+    "stem": "The 6th term of the series \\(2, 1\\dfrac34, 1\\dfrac59, \\ldots\\) is",
+    "optA": "\\(\\dfrac76\\)", "optB": "\\(\\dfrac67\\)", "optC": "\\(\\dfrac{6}{19}\\)", "optD": "\\(\\dfrac37\\)", "answer": "A",
+    "solution": "The terms are \\(2, \\dfrac74, \\dfrac{14}{9}\\); their reciprocals \\(\\dfrac12, \\dfrac47, \\dfrac{9}{14}\\) are in AP with common difference \\(\\dfrac{1}{14}\\), so \\(\\dfrac{1}{T_n}=\\dfrac{n+6}{14}\\) and \\(T_n=\\dfrac{14}{n+6}\\). \\(T_6=\\dfrac{14}{12}=\\dfrac76\\). Matches option A." },
+
+  { "n": 33, "subtopic": "Interrelating AP, GP and HP", "difficulty": "EASY", "status": "new",
+    "stem": "For any numbers, if A.M. \\(=16\\) and H.M. \\(=\\dfrac{63}{4}\\), then G.M. will be",
+    "optA": "\\(6\\sqrt7\\)", "optB": "\\(\\sqrt7\\)", "optC": "\\(6\\sqrt3\\)", "optD": "None of these", "answer": "A",
+    "solution": "\\(\\text{GM}^2=\\text{AM}\\times\\text{HM}=16\\times\\dfrac{63}{4}=252\\), so \\(\\text{GM}=\\sqrt{252}=6\\sqrt7\\). Matches option A." },
+
+  { "n": 34, "subtopic": "Interrelating AP, GP and HP", "difficulty": "EASY", "status": "new",
+    "stem": "If \\(a, b\\) and \\(c\\) are positive real numbers, then \\(\\dfrac{a}{b}+\\dfrac{b}{c}+\\dfrac{c}{a}\\) is greater than or equal to",
+    "optA": "3", "optB": "6", "optC": "27", "optD": "5", "answer": "A",
+    "solution": "By AM-GM, \\(\\dfrac{a}{b}+\\dfrac{b}{c}+\\dfrac{c}{a}\\ge 3\\sqrt[3]{\\dfrac{a}{b}\\cdot\\dfrac{b}{c}\\cdot\\dfrac{c}{a}}=3\\). Matches option A." },
+
+  { "n": 35, "subtopic": "Interrelating AP, GP and HP", "difficulty": "HARD", "status": "new",
+    "stem": "If \\(A_1, A_2\\), \\(G_1, G_2\\) and \\(H_1, H_2\\) are two A.M's, G.M's and H.M's between two numbers, then \\(\\dfrac{A_1+A_2}{H_1+H_2}\\cdot\\dfrac{H_1 H_2}{G_1 G_2}\\) equals",
+    "optA": "0", "optB": "4", "optC": "1", "optD": "8", "answer": "C",
+    "solution": "Testing with the numbers 1 and 4: \\(A_1+A_2=5\\), \\(H_1+H_2=\\dfrac{10}{3}\\), \\(H_1 H_2=\\dfrac83\\), \\(G_1 G_2=4\\). Then \\(\\dfrac{5}{10/3}\\cdot\\dfrac{8/3}{4}=\\dfrac32\\cdot\\dfrac23=1\\). Matches option C." },
+
+  { "n": 36, "subtopic": "Interrelating AP, GP and HP", "difficulty": "HARD", "status": "new",
+    "stem": "If \\(a, b, c \\in R^+\\) and \\(a+b+c=5\\), then the maximum value of \\(ab^3 c\\) is equal to",
+    "optA": "3", "optB": "9", "optC": "27", "optD": "81", "answer": "C",
+    "solution": "Split \\(b\\) into three equal parts: \\(a+\\dfrac{b}{3}+\\dfrac{b}{3}+\\dfrac{b}{3}+c=5\\). By AM-GM, \\(a\\cdot\\left(\\dfrac{b}{3}\\right)^3\\cdot c\\le 1\\), so \\(ab^3 c\\le 27\\), attained at \\(a=c=1, b=3\\). Matches option C." },
+
+  { "n": 37, "subtopic": "Special Series and Special Sums", "difficulty": "MODERATE", "status": "new",
+    "stem": "The sum of the infinite terms of \\(1+\\dfrac45+\\dfrac{7}{5^2}+\\dfrac{10}{5^3}+\\ldots\\) will be",
+    "optA": "\\(\\dfrac{35}{16}\\)", "optB": "\\(\\dfrac{16}{35}\\)", "optC": "\\(\\dfrac{15}{16}\\)", "optD": "\\(\\dfrac74\\)", "answer": "A",
+    "solution": "This is an arithmetico-geometric series with \\(a=1, d=3, r=\\dfrac15\\). \\(S=\\dfrac{a}{1-r}+\\dfrac{dr}{(1-r)^2}=\\dfrac{1}{4/5}+\\dfrac{3/5}{(4/5)^2}=\\dfrac54+\\dfrac{15}{16}=\\dfrac{35}{16}\\). Matches option A." },
+
+  { "n": 38, "subtopic": "Special Series and Special Sums", "difficulty": "EASY", "status": "new",
+    "stem": "If \\(|x|<1\\), then the sum of the series \\(1+2x+3x^2+4x^3+\\ldots\\infty\\) will be",
+    "optA": "\\(\\dfrac{1}{1-x}\\)", "optB": "\\(\\dfrac{1}{1+x}\\)", "optC": "\\(\\dfrac{1}{(1+x)^2}\\)", "optD": "\\(\\dfrac{1}{(1-x)^2}\\)", "answer": "D",
+    "solution": "\\(1+2x+3x^2+\\ldots=\\dfrac{1}{(1-x)^2}\\) for \\(|x|<1\\). Matches option D." },
+
+  { "n": 39, "subtopic": "Special Series and Special Sums", "difficulty": "MODERATE", "status": "new",
+    "stem": "The sum of n terms of the series whose nth term is \\(n(n+1)\\) is equal to",
+    "optA": "\\(\\dfrac{n(n+1)(n+2)}{3}\\)", "optB": "\\(\\dfrac{(n+1)(n+2)(n+3)}{12}\\)", "optC": "\\(n^2(n+2)\\)", "optD": "\\(n(n+1)(n+2)\\)", "answer": "A",
+    "solution": "\\(\\sum n(n+1)=\\sum n^2+\\sum n=\\dfrac{n(n+1)(2n+1)}{6}+\\dfrac{n(n+1)}{2}=\\dfrac{n(n+1)(n+2)}{3}\\). Matches option A." },
+
+  { "n": 40, "subtopic": "Special Series and Special Sums", "difficulty": "MODERATE", "status": "new",
+    "stem": "\\(2+4+7+11+16+\\ldots\\) up to n terms is equal to",
+    "optA": "\\(\\dfrac16(n^2+3n+8)\\)", "optB": "\\(\\dfrac{n}{6}(n^2+3n+8)\\)", "optC": "\\(\\dfrac16(n^2-3n+8)\\)", "optD": "\\(\\dfrac{n}{6}(n^2-3n+8)\\)", "answer": "B",
+    "solution": "The differences \\(2,3,4,5,\\ldots\\) give \\(T_n=1+\\dfrac{n(n+1)}{2}\\). Summing, \\(S_n=n+\\dfrac{n(n+1)(n+2)}{6}=\\dfrac{n}{6}(n^2+3n+8)\\). Matches option B." },
+
+  { "n": 41, "subtopic": "Special Series and Special Sums", "difficulty": "MODERATE", "status": "new",
+    "stem": "\\(1+3+7+15+31+\\ldots\\) up to n terms is equal to",
+    "optA": "\\(2^{n+1}-n\\)", "optB": "\\(2^{n+1}-n-2\\)", "optC": "\\(2^n-n-2\\)", "optD": "none of these", "answer": "B",
+    "solution": "Here \\(T_n=2^n-1\\), so \\(S_n=\\sum(2^k-1)=(2^{n+1}-2)-n=2^{n+1}-n-2\\). Matches option B." }
+]
