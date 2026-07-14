@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireAdmin, HttpError } from "@/lib/auth";
+import { requireSuperadmin, getSessionMember, HttpError } from "@/lib/auth";
 import { parseXlsx } from "@/lib/upload/parser";
 import { validateRow } from "@/lib/upload/validate";
 import { detectCourse } from "@/lib/upload/detectCourse";
@@ -18,7 +18,14 @@ const MAX_NOTE_LEN = 200;
 
 export async function POST(request: NextRequest) {
   try {
-    const member = await requireAdmin();
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json(
+        { error: "Uploads for other orgs are handled via the superadmin console / scripts." },
+        { status: 400 }
+      );
+    }
     const formData = await request.formData();
     const file = formData.get("file");
     const examIdRaw = formData.get("examId");

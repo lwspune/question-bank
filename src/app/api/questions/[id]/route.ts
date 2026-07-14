@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireAdmin, requireEditor, HttpError } from "@/lib/auth";
+import { requireSuperadmin, getSessionMember, HttpError } from "@/lib/auth";
 import { validateEditPayload } from "@/lib/questions/edit";
 import { applyEdit } from "@/lib/questions/applyEdit";
 import { deleteQuestion } from "@/lib/questions/deleteQuestion";
@@ -12,7 +12,17 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireEditor();
+    // Content editing is superadmin-only (migration 0056). The superadmin uses
+    // their org membership for the org-scoped edit; cross-org edits go through
+    // the superadmin console.
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json(
+        { error: "Cross-org content editing is available in the superadmin console." },
+        { status: 400 }
+      );
+    }
     const body = await request.json().catch(() => null);
     if (!body) {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
@@ -92,7 +102,14 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireAdmin();
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json(
+        { error: "Cross-org deletion is available in the superadmin console." },
+        { status: 400 }
+      );
+    }
     const supabase = createSupabaseServerClient();
     const result = await deleteQuestion(supabase, params.id, member.orgId);
 

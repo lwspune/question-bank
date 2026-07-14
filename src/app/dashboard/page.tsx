@@ -18,7 +18,7 @@ import {
   Upload,
   Users,
 } from "lucide-react";
-import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,11 @@ import {
 import StatCard from "./StatCard";
 
 export default async function DashboardPage() {
-  const [member, user] = await Promise.all([getSessionMember(), getSessionUser()]);
+  const [member, user, superadmin] = await Promise.all([
+    getSessionMember(),
+    getSessionUser(),
+    getSessionSuperadmin(),
+  ]);
 
   // Teachers don't see the dashboard — they go straight to /browse where
   // the editor workflow lives (clicking through to /questions/[id]/edit).
@@ -88,6 +92,7 @@ export default async function DashboardPage() {
 
         <QuickActions
           isAdmin={isAdmin}
+          isSuperadmin={!!superadmin}
           isFresh={isFresh}
           openReportCount={openReportCount}
           openConceptReportCount={openConceptReportCount}
@@ -155,11 +160,13 @@ function Section({
 
 function QuickActions({
   isAdmin,
+  isSuperadmin,
   isFresh,
   openReportCount,
   openConceptReportCount,
 }: {
   isAdmin: boolean;
+  isSuperadmin: boolean;
   isFresh: boolean;
   openReportCount: number;
   openConceptReportCount: number;
@@ -182,7 +189,7 @@ function QuickActions({
         }
         primary
       />
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/upload"
           icon={<Upload className="h-5 w-5" aria-hidden />}

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import UploadForm from "./UploadForm";
@@ -7,7 +7,8 @@ import UploadForm from "./UploadForm";
 export default async function UploadPage() {
   const member = await getSessionMember();
   if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/dashboard");
+  // Adding content is superadmin-only (migration 0056).
+  if (!(await getSessionSuperadmin())) redirect("/dashboard");
 
   const supabase = createSupabaseServerClient();
   const { data: exams } = await supabase

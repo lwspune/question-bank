@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export class HttpError extends Error {
   constructor(public status: number, message: string) {
@@ -56,6 +57,40 @@ export async function requireAdmin(): Promise<SessionMember> {
   if (!member) throw new HttpError(401, "Not signed in");
   if (member.role !== "ADMIN") throw new HttpError(403, "Admin access required");
   return member;
+}
+
+/**
+ * Platform superadmin — the ONLY identity allowed to add or edit question
+ * CONTENT (questions/options/taxonomy/tags/uploads), across all orgs. Distinct
+ * from org membership (a superadmin need not be an org_members row). Identity
+ * lives in `platform_admins` (migration 0056), a locked table readable only via
+ * the service-role client here + the SECURITY DEFINER RLS helper.
+ */
+export async function isSuperadmin(userId: string): Promise<boolean> {
+  const admin = createSupabaseAdminClient();
+  const { data } = await admin
+    .from("platform_admins")
+    .select("user_id")
+    .eq("user_id", userId)
+    .maybeSingle();
+  return !!data;
+}
+
+/** The signed-in user IF they're a platform superadmin, else null. */
+export async function getSessionSuperadmin(): Promise<SessionUser | null> {
+  const user = await getSessionUser();
+  if (!user) return null;
+  return (await isSuperadmin(user.id)) ? user : null;
+}
+
+/** Guard for content add/edit routes — superadmin only. */
+export async function requireSuperadmin(): Promise<SessionUser> {
+  const user = await getSessionUser();
+  if (!user) throw new HttpError(401, "Not signed in");
+  if (!(await isSuperadmin(user.id))) {
+    throw new HttpError(403, "Only the platform admin can add or edit content.");
+  }
+  return user;
 }
 
 /**

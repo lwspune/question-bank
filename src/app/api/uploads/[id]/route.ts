@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireAdmin, HttpError } from "@/lib/auth";
+import { requireSuperadmin, getSessionMember, HttpError } from "@/lib/auth";
 import { deleteUploadJob } from "@/lib/upload/deleteUploadJob";
 import {
   setUploadPyqMetadata,
@@ -20,7 +20,11 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireAdmin();
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json({ error: "Handled via the superadmin console." }, { status: 400 });
+    }
     const supabase = createSupabaseServerClient();
     const result = await deleteUploadJob(supabase, params.id, member.orgId);
 
@@ -53,7 +57,11 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireAdmin();
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json({ error: "Handled via the superadmin console." }, { status: 400 });
+    }
     const body = (await request.json().catch(() => null)) as
       | (PyqMetadataPatch & Record<string, unknown>)
       | null;

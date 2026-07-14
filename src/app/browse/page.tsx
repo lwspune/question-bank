@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
-import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   isPracticeOnlyExam,
@@ -62,6 +62,9 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const member = await getSessionMember();
   const isStaff = !!member;
   const isSignedIn = isStaff || !!(await getSessionUser());
+  // Content editing is superadmin-only (migration 0056) — the per-question
+  // "Edit" affordance shows only for the platform admin.
+  const canEditContent = !!(await getSessionSuperadmin());
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -302,7 +305,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               <QuestionList
                 questions={questionsResult.rows}
                 pageOffset={(filters.page - 1) * DEFAULT_PAGE_SIZE}
-                canEdit={member?.role === "ADMIN" || member?.role === "TEACHER"}
+                canEdit={canEditContent}
                 isLoggedIn={!!member}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={!filters.examId}

@@ -126,7 +126,10 @@ describe.skipIf(!HAS_ENV)("RLS — only ADMIN can write", () => {
     expect(error).not.toBeNull();
   });
 
-  it("ADMIN CAN insert a question into their org", async () => {
+  // Content add/edit is superadmin-only (migration 0056): org ADMINs can no
+  // longer insert questions or auto-create taxonomy — that moved to the
+  // service-role ingestion / superadmin console.
+  it("ADMIN cannot insert a question (content is superadmin-only)", async () => {
     const { data, error } = await adminClient
       .from("questions")
       .insert({
@@ -140,11 +143,10 @@ describe.skipIf(!HAS_ENV)("RLS — only ADMIN can write", () => {
         created_by: adminUserId,
       })
       .select("id");
-    expect(error).toBeNull();
-    expect(data?.length).toBe(1);
+    expect(error !== null || (data?.length ?? 0) === 0).toBe(true);
   });
 
-  it("ADMIN CAN auto-create a chapter (needed by upload flow)", async () => {
+  it("ADMIN cannot auto-create a chapter (taxonomy is superadmin-only)", async () => {
     const { data, error } = await adminClient
       .from("chapters")
       .insert({
@@ -153,11 +155,7 @@ describe.skipIf(!HAS_ENV)("RLS — only ADMIN can write", () => {
         order_index: 999,
       })
       .select("id");
-    expect(error).toBeNull();
-    expect(data?.length).toBe(1);
-    if (data?.[0]?.id) {
-      await admin.from("chapters").delete().eq("id", data[0].id);
-    }
+    expect(error !== null || (data?.length ?? 0) === 0).toBe(true);
   });
 
   it("TEACHER cannot auto-create a chapter", async () => {
