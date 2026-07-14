@@ -88,12 +88,21 @@ export function summarizeUsage(rows: UsageQueryRow[]): Map<string, UsageRef[]> {
   return out;
 }
 
-/** A short chip label, e.g. `Used in "Maths Mock 3" (issued) +2`. "" when empty. */
-export function formatUsageLabel(refs: UsageRef[]): string {
+/**
+ * A short chip label. Org-wide: `Used in "Maths Mock 3" (issued) +2`.
+ * Batch-scoped (`opts.batchScoped`): `Repeated for this batch — "Maths Mock 3"
+ * (issued) +2` — the per-batch non-repetition warning. "" when empty.
+ */
+export function formatUsageLabel(
+  refs: UsageRef[],
+  opts: { batchScoped?: boolean } = {}
+): string {
   if (refs.length === 0) return "";
   const [first, ...rest] = refs;
   const state = first.status === "finalized" ? "issued" : "draft";
-  const base = `Used in "${first.title}" (${state})`;
+  const base = opts.batchScoped
+    ? `Repeated for this batch — "${first.title}" (${state})`
+    : `Used in "${first.title}" (${state})`;
   return rest.length > 0 ? `${base} +${rest.length}` : base;
 }
 
@@ -111,24 +120,32 @@ export function filterUnused(
  * paper currently being edited (so "already in THIS paper" isn't mislabeled as
  * cross-paper reuse — that's the separate within-paper dedup path).
  *
+ * Pass `batchId` to scope the warning to ONE batch (migration 0054): only papers
+ * whose `batch_id` matches count, via an `!inner` join filter — this is the
+ * per-batch non-repetition check ("used for THIS cohort"). Omit it for the
+ * org-wide behavior (a question may still legitimately recur across batches).
+ *
  * Keyed by the candidate id list (bounded by page/cart size), so it's immune to
  * the PostgREST 1000-row cap.
  */
 export async function getQuestionUsage(
   client: SupabaseClient,
   candidateIds: string[],
-  excludePaperId?: string
+  excludePaperId?: string,
+  batchId?: string | null
 ): Promise<Map<string, UsageRef[]>> {
   const ids = Array.from(new Set(candidateIds.filter(Boolean)));
   if (ids.length === 0) return new Map();
 
-  let query = client
-    .from("paper_questions")
-    .select(
-      "question_id, paper:papers!paper_id(id, title, status, finalized_at, updated_at)"
-    )
-    .in("question_id", ids);
+  // Batch-scoped needs an inner join so a non-matching batch drops the row;
+  // org-wide keeps the plain (left) embed. summarizeUsage skips null embeds.
+  const embed = batchId
+    ? "question_id, paper:papers!inner(id, title, status, finalized_at, updated_at)"
+    : "question_id, paper:papers!paper_id(id, title, status, finalized_at, updated_at)";
+
+  let query = client.from("paper_questions").select(embed).in("question_id", ids);
   if (excludePaperId) query = query.neq("paper_id", excludePaperId);
+  if (batchId) query = query.eq("paper.batch_id", batchId);
 
   const { data, error } = await query;
   if (error) throw new Error(`getQuestionUsage: ${error.message}`);

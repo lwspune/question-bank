@@ -131,6 +131,18 @@ describe("formatUsageLabel", () => {
   it("returns empty string for no refs", () => {
     expect(formatUsageLabel([])).toBe("");
   });
+
+  it("uses the batch-scoped phrasing when opts.batchScoped", () => {
+    expect(formatUsageLabel([ref({ status: "finalized" })], { batchScoped: true })).toBe(
+      'Repeated for this batch — "Maths Mock 3" (issued)'
+    );
+    expect(
+      formatUsageLabel(
+        [ref({ title: "Mock A", status: "draft" }), ref({ title: "Mock B" })],
+        { batchScoped: true }
+      )
+    ).toBe('Repeated for this batch — "Mock A" (draft) +1');
+  });
 });
 
 describe("filterUnused", () => {

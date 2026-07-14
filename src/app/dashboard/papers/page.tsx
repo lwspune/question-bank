@@ -3,6 +3,8 @@ import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { listPapers } from "@/lib/papers/admin";
+import { listBatches } from "@/lib/batches/admin";
+import { splitBatches, formatBatchLabel } from "@/lib/batches/validate";
 import PapersListClient from "./PapersListClient";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +16,7 @@ export default async function PapersPage() {
 
   const client = createSupabaseServerClient();
   const papers = await listPapers(client);
+  const { active: batches } = splitBatches(await listBatches(client));
 
   return (
     <>
@@ -28,7 +31,10 @@ export default async function PapersPage() {
           </p>
         </header>
 
-        <PapersListClient initialPapers={papers} />
+        <PapersListClient
+          initialPapers={papers}
+          batches={batches.map((b) => ({ id: b.id, label: formatBatchLabel(b) }))}
+        />
       </main>
     </>
   );

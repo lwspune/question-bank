@@ -4,6 +4,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { getPaperDetail } from "@/lib/papers/admin";
 import { getQuestionUsage } from "@/lib/papers/usage";
+import { listBatches } from "@/lib/batches/admin";
+import { splitBatches, formatBatchLabel } from "@/lib/batches/validate";
 import { listMembers } from "@/lib/members/admin";
 import { queryQuestionPreviewsByIds } from "@/lib/questions/query";
 import PaperEditor from "./PaperEditor";
@@ -25,11 +27,15 @@ export default async function PaperEditorPage({
   const membershipIds = detail.membership.map((m) => m.questionId);
   const previews = await queryQuestionPreviewsByIds(client, membershipIds);
 
-  // Cross-paper soft-warn: which of this paper's questions also live in OTHER
-  // papers in the org (this paper excluded). Informational chips in the editor.
+  // Soft-warn: which of this paper's questions also live in OTHER papers (this
+  // paper excluded). Batch-scoped when the paper targets a batch (repeat for the
+  // cohort), else org-wide. Informational chips in the editor.
   const usage = Object.fromEntries(
-    await getQuestionUsage(client, membershipIds, detail.id)
+    await getQuestionUsage(client, membershipIds, detail.id, detail.batchId)
   );
+
+  // Active batches feed the paper's batch selector (archived cohorts hidden).
+  const { active: batches } = splitBatches(await listBatches(client));
 
   const { data: exams } = await client.from("exams").select("id, name").order("name");
 
@@ -52,6 +58,7 @@ export default async function PaperEditorPage({
           usage={usage}
           exams={(exams ?? []) as { id: string; name: string }[]}
           orgMembers={orgMembers}
+          batches={batches.map((b) => ({ id: b.id, label: formatBatchLabel(b) }))}
         />
       </main>
     </>

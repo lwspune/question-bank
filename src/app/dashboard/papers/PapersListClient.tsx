@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { FilePlus2, FileText, Loader2, Lock, Trash2 } from "lucide-react";
+import { FilePlus2, FileText, Loader2, Lock, Trash2, Users } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,15 +20,21 @@ import { Badge } from "@/components/ui/badge";
 import { createPaperAction, deletePaperAction } from "./actions";
 import type { PaperListItem } from "@/lib/papers/admin";
 
+const SELECT_CLASS =
+  "h-9 w-full rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
 export default function PapersListClient({
   initialPapers,
+  batches,
 }: {
   initialPapers: PaperListItem[];
+  batches: { id: string; label: string }[];
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
   const [title, setTitle] = useState("");
+  const [batchId, setBatchId] = useState("");
   const [toDelete, setToDelete] = useState<PaperListItem | null>(null);
 
   async function onCreate(e: React.FormEvent) {
@@ -38,7 +44,7 @@ export default function PapersListClient({
       return;
     }
     setBusy(true);
-    const res = await createPaperAction(title);
+    const res = await createPaperAction(title, batchId || null);
     setBusy(false);
     if (res.ok) {
       toast.success("Paper created");
@@ -64,7 +70,13 @@ export default function PapersListClient({
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
+        <Button variant="outline" asChild>
+          <Link href="/dashboard/batches">
+            <Users className="h-4 w-4" aria-hidden />
+            Manage batches
+          </Link>
+        </Button>
         <Button variant="brand" onClick={() => setNewOpen(true)}>
           <FilePlus2 className="h-4 w-4" aria-hidden />
           New paper
@@ -99,6 +111,7 @@ export default function PapersListClient({
                   )}
                 </div>
                 <p className="mt-0.5 text-xs text-muted-foreground">
+                  {p.batchLabel ? `${p.batchLabel} · ` : ""}
                   {p.questionCount} question{p.questionCount === 1 ? "" : "s"} · updated{" "}
                   {formatDate(p.updatedAt)}
                 </p>
@@ -139,6 +152,27 @@ export default function PapersListClient({
                 disabled={busy}
                 autoFocus
               />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="paper-batch">Batch (optional)</Label>
+              <select
+                id="paper-batch"
+                value={batchId}
+                onChange={(e) => setBatchId(e.target.value)}
+                className={SELECT_CLASS}
+                disabled={busy}
+              >
+                <option value="">None (org-wide)</option>
+                {batches.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.label}
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-muted-foreground">
+                Linking a batch warns you if a question was already used for that
+                cohort. You can also set this later inside the paper.
+              </p>
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setNewOpen(false)} disabled={busy}>

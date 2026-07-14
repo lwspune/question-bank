@@ -283,6 +283,12 @@ function QuickActions({
         title="Papers"
         description="Build an exam paper together — each teacher fills their subject's section."
       />
+      <ActionCard
+        href="/dashboard/batches"
+        icon={<Users className="h-5 w-5" aria-hidden />}
+        title="Batches"
+        description="Manage student cohorts, then build papers that don't repeat questions for a batch."
+      />
     </div>
   );
 }
