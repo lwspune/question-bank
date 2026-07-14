@@ -83,6 +83,202 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "NDA ENG BB3" — 50-q NDA English test spanning SIX chapters: Spotting Errors
+  // (Q1–10), Sentence Improvement (Q11–15 → Spotting Errors › Sentence Improvement),
+  // Homonyms (Q16–20 → Vocabulary › Confusable Word Pairs), Question Tags (Q21–25 →
+  // Grammar › Sentence Completion), Idioms & Phrases (Q26–30), Sentence Rearrangement
+  // (Q31–35, S1–S6), Reading Comprehension (Q36–40, one shared passage → context +
+  // setLabel "RC1"), Synonyms (Q41–45) + Antonyms (Q46–50 → Vocabulary). Born-digital
+  // PDF, clean text layer, NO printed key (answers DERIVED). Single-subject
+  // multi-chapter mode (`chapters` + per-record `chapter`). Semantic dedup vs the
+  // 1,127-q NDA English bank: 48 new / 2 dup (Q17 Overview/Review, Q18 Broke/Brook —
+  // both in Vocabulary › Confusable Word Pairs). Full ingest (paper + bank + Excel);
+  // only the 48 new flip PUBLIC.
+  "nda-eng-bb3": {
+    slug: "nda-eng-bb3",
+    title: "NDA English — BB3",
+    recordsFile: "nda-eng-bb3.records.json",
+    outName: "Tags_NDA_English_BB3",
+    sourceFile: "NDA_English_Practice__BB3.pdf",
+    subjectName: "English",
+    chapters: {
+      "Spotting Errors": [
+        "Articles, Determiners and Pronouns",
+        "Word Choice, Prepositions and Punctuation",
+        "Tense and Verb Form",
+        "Subject-Verb Agreement",
+        "No Error (Correct Sentence)",
+        "Sentence Improvement",
+      ],
+      Grammar: ["Sentence Completion"],
+      "Idioms and Phrases": ["Idiom Meaning"],
+      "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+      "Reading Comprehension": [
+        "Inferential Comprehension",
+        "Literal Comprehension",
+        "Vocabulary in Context",
+      ],
+      Vocabulary: ["Confusable Word Pairs", "Synonyms", "Antonyms"],
+    },
+    pyqNote: "NDA English practice — LWS BB3",
+    examName: "NDA",
+    section: { key: "nda-eng-bb3", label: "NDA ENG BB3" },
+    bankAdd: true,
+  },
+  // LWS "GAT FULL MOCK 4" - 150-q NDA GAT (General Ability Test) MOCK spanning FIVE
+  // subjects: English (Q1-50), Geography/geomorphology (Q51-75), Current Affairs
+  // (Q76-80), History/Vedic Civilisation (Q81-100), Physics (Q101-150). Born-digital
+  // PDF, NO printed key (answers DERIVED). Multi-subject mode (subjects + per-record
+  // subject+chapter). Semantic dedup vs the NDA bank (English/Geography/CA/History
+  // sections are almost wholly reproduced from the existing pool; the CA+Vedic block
+  // Q76-100 matches APJ GAT Mock 7 verbatim): 104 dup / 43 new / 3 flawed. Physics is
+  // the bulk of the new material (36 new). Flawed = Q142/145/148 (figure-OPTION graph
+  // questions - options are plots, not text; best-guess key for OMR, kept PRIVATE). RC
+  // Q41-45 share one India-energy-security passage (context + setLabel "RC1").
+  // createPaper:false => Excel + bank ingest only (no /dashboard/papers paper). Only
+  // the 43 new flip PUBLIC.
+  "gat-mock-4": {
+    slug: "gat-mock-4",
+    title: "NDA GAT - LWS Full Mock 4",
+    recordsFile: "gat-mock-4.records.json",
+    outName: "Tags_NDA_LWS_GAT_Full_Mock_4",
+    sourceFile: "NDA_GAT_Practice__LWS_GAT_Full_Mock_4.pdf",
+    subjects: {
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Civilian Awards, Honours and Educational Institutions"],
+        "Defence and Military Exercises": ["Defence Awards, Books and Institutions", "Military Exercises — Bilateral and Multilateral"],
+        "International Affairs and Relations": ["International Organizations and Multilateral Bodies"],
+        "Science and Technology": ["Space Technology and Astronomy"],
+      },
+      "English": {
+        "Grammar": ["Articles, Determiners and Quantifiers", "Discourse Markers and Connectors", "Preposition Usage"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+        "Spotting Errors": ["Mixed Error Detection", "No Error (Correct Sentence)", "Subject-Verb Agreement", "Tense and Verb Form", "Word Choice, Prepositions and Punctuation"],
+        "Vocabulary": ["Antonyms", "Confusable Word Pairs", "Synonyms"],
+      },
+      "Geography": {
+        "Earth's Structure, Landforms and Geological Time": ["Earth's Interior, Crust and Plate Tectonics", "Landforms and Mass Movements", "Volcanoes and Igneous Activity", "Weathering and Denudation"],
+        "Indian Geography — Physical Features": ["Indian Rivers, Lakes and Water Bodies", "Mountains, Plateaus and Plains of India"],
+        "World and Human Geography": ["Human Geography — Megacities and Population", "World — Rivers, Canals and Water Bodies"],
+      },
+      "History": {
+        "Ancient India": ["Vedic Age, Society and Literature"],
+      },
+      "Physics": {
+        "Electricity and Magnetism": ["Combination of Resistors", "Electric Current and Ohm's Law", "Electrical Devices", "Electrical Power, Energy and Heating", "Electrostatics", "Magnetism and Magnetic Effects of Current"],
+        "Energy Sources": ["Energy Sources"],
+        "Fluid Mechanics and Properties of Matter": ["Pressure and Surface Tension"],
+        "Gravitation": ["Gravitational Field and Potential", "Newton's Law of Gravitation"],
+        "Heat and Thermodynamics": ["Temperature and Thermometry"],
+        "Kinematics and Motion": ["Circular Motion", "Equations of Motion and Graphs", "Projectile and Vertical Motion"],
+        "Laws of Motion and Forces": ["Conservation of Momentum and Collisions", "Impulse and Momentum", "Newton's Laws of Motion", "Types of Forces"],
+        "Light and Optics": ["Human Eye and Optical Instruments", "Lenses and Lens Formula", "Light Phenomena and Spectrum", "Prisms and Dispersion", "Reflection and Mirrors", "Refraction, Speed of Light and TIR"],
+        "Modern Physics": ["Nuclear Physics", "Quantum and Modern EM"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves"],
+        "Sound": ["Foundations — Sound, Perception, and the Ear", "Sound Behaviours — Reflection, Echo, Reverberation, Beats", "Wave Equation, Speed, and Frequency Bands"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": ["Energy and Conservation", "Work and Work Done"],
+      },
+    },
+    pyqNote: "NDA GAT practice - LWS GAT Full Mock 4",
+    examName: "NDA",
+    section: { key: "gat-full-mock-4", label: "GAT Full Mock 4" },
+    bankAdd: true,
+    createPaper: false, // Excel + bank ingest only (no /dashboard/papers paper)
+  },
+  // LWS "Chemistry — Mole Concept" — 30-q NDA Chemistry test, no printed key (answers
+  // DERIVED). Scanned PDF (empty text layer) → all vision-transcribed. NCERT "Some
+  // Basic Concepts of Chemistry" material, so MULTI-CHAPTER (uses `chapters` +
+  // per-record `chapter`): states-of-matter (Q1–2) → "Matter and Its States", Dalton
+  // postulates (Q7–8) → "Atomic Structure and Periodic Classification", everything else
+  // (measurement basics, laws of combination, empirical/molecular formula, %
+  // composition, stoichiometry, limiting reagent) → "Mole Concept and Stoichiometry".
+  // Semantic dedup vs the 294-q NDA Chemistry bank: 29 new / 1 dup (Q12 conservation-
+  // of-mass statement ≈ bank 2b99b67d) / 0 flawed. Excel-ONLY (bankAdd:false) at the
+  // user's request: emit the OMR tagged sheet only — no bank commit, no paper. Flip
+  // bankAdd:true to promote the 29 new questions into the bank later.
+  "chem-mole-concept": {
+    slug: "chem-mole-concept",
+    title: "NDA Chemistry — Mole Concept Test",
+    recordsFile: "chem-mole-concept.records.json",
+    outName: "Tags_NDA_Chemistry_Mole_Concept",
+    sourceFile: "NDA_Chemistry_Practice__Mole_Concept_Test.pdf",
+    subjectName: "Chemistry",
+    chapters: {
+      "Matter and Its States": ["States of Matter, Phase Changes and Diffusion"],
+      "Atomic Structure and Periodic Classification": ["Atomic Models: Dalton, Rutherford, Bohr"],
+      "Mole Concept and Stoichiometry": [
+        "Mole Concept, Avogadro's Law and Molar Calculations",
+        "Stoichiometry and Laws of Chemical Combination",
+      ],
+    },
+    pyqNote: "NDA Chemistry practice — LWS Mole Concept Test",
+    examName: "NDA",
+    section: { key: "mole-concept", label: "Mole Concept" },
+    bankAdd: false, // Excel-only: emit the OMR tagged sheet, no bank commit / no paper
+  },
+
+  // LWS "NDA Practice Test — Physics: Units and dimensions, Vectors" (27-6-26) — 50-q
+  // NDA Physics test, no printed key (answers DERIVED). Q1–25 Units & Dimensions,
+  // Q26–50 Vectors. Born-digital PDF; the vector half (Q26–50) came through the text
+  // layer cleanly, the dimensional-formula half (Q1–25) was vision-transcribed
+  // (scrambled superscripts). Excel-ONLY (bankAdd:false): emit the OMR tagged sheet
+  // only — NDA Physics has a "Units, Measurement and Dimensions" chapter but no
+  // "Vectors" chapter, so a bank/paper ingest would need a taxonomy decision first.
+  // Flagged: Q28 flawed (r×p gives 4i+8k; option B is 4i−8k, sign of k differs);
+  // Q32 ambiguous ("coming back of A" read as same-direction → 15 km/h vs 145 km/h).
+  "phys-units-vectors": {
+    slug: "phys-units-vectors",
+    title: "NDA Physics — Units, Dimensions and Vectors Test (27-6-26)",
+    recordsFile: "phys-units-vectors.records.json",
+    outName: "Tags_NDA_Physics_Units_and_Vectors",
+    sourceFile: "NDA_Physics_Practice__Units_Dimensions_Vectors_Test.pdf",
+    subjectName: "Physics",
+    chapters: {
+      "Units, Measurement and Dimensions": ["Units and Unit Conversion", "Dimensional Analysis"],
+      Vectors: [
+        "Vector Addition and Resultants",
+        "Dot Product, Cross Product and Angle",
+        "Vector Components and Geometry",
+        "Relative Velocity and Motion",
+      ],
+    },
+    pyqNote: "NDA Physics practice — LWS Units, Dimensions and Vectors Test (27-6-26)",
+    examName: "NDA",
+    section: { key: "units-dimensions-vectors", label: "Units, Dimensions and Vectors" },
+    bankAdd: false, // Excel-only: emit the OMR tagged sheet, no bank commit / no paper
+  },
+
+  // LWS "Maths — Sequence and Series" — 41-q NDA Maths test (single correct), no
+  // printed key (answers DERIVED). Scanned PDF (empty text layer) → all vision-
+  // transcribed. Organised by printed section headers (General Term of AP, Summation
+  // of AP, Properties of AP, Arithmetic Mean, GP, Summation of GP, Properties of GP,
+  // Geometric Mean, HP, AM-GM-HM, AGP, Special Sequence Types 1 & 2) → mapped to the
+  // 5 canonical "Sequence & Series" subtopics. Excel-ONLY (bankAdd:false): emit the
+  // OMR tagged sheet.
+  "maths-sequence-series": {
+    slug: "maths-sequence-series",
+    title: "NDA Maths — Sequence and Series Test",
+    recordsFile: "maths-sequence-series.records.json",
+    outName: "Tags_NDA_Maths_Sequence_and_Series",
+    sourceFile: "NDA_Maths_Practice__Sequence_and_Series_Test.pdf",
+    subjectName: "Mathematics",
+    chapterName: "Sequence & Series",
+    subtopics: [
+      "Arithmetic Progressions",
+      "Geometric Progressions",
+      "Harmonic Progressions and the Three Means",
+      "Interrelating AP, GP and HP",
+      "Special Series and Special Sums",
+    ],
+    pyqNote: "NDA Maths practice — LWS Sequence and Series Test",
+    examName: "NDA",
+    section: { key: "sequence-series", label: "Sequence & Series" },
+    bankAdd: false, // Excel-only: emit the OMR tagged sheet, no bank commit / no paper
+  },
+
   // LWS "Matrices 6M QP 13-6-26" — 40-q NDA Maths test, no printed key (answers derived).
   "matrices-test": {
     slug: "matrices-test",
@@ -526,6 +722,34 @@ export const PAPERS: Record<string, PaperSpec> = {
     pyqNote: "NDA English practice — LWS Parts of Speech Test",
     examName: "NDA",
     section: { key: "grammar", label: "Grammar" },
+    bankAdd: true,
+  },
+
+  // LWS "Maths — Complex Numbers" — 46-q NDA Maths test (single correct), no printed
+  // key (answers DERIVED). Scanned PDF (empty text layer) → all vision-transcribed.
+  // Organised by printed section headers (Intro / Algebra / Conjugate / Modulus /
+  // Argument / Amplitude / Representation / De-Moivre / Cube+nth Roots / Geometry /
+  // Locus / Triangular Inequality) → mapped to the 3 canonical "Complex Numbers"
+  // subtopics. Semantic dedup vs the 158-q NDA Complex Numbers bank: 38 new / 6 dup
+  // (Q16, Q17, Q18, Q29, Q41, Q46) / 2 flawed (Q7 options A=C identical; Q43
+  // multiple-correct A & C). Full ingest (paper + bank + Excel); only the 38 new flip
+  // PUBLIC.
+  "maths-complex-numbers": {
+    slug: "maths-complex-numbers",
+    title: "NDA Maths — Complex Numbers Test",
+    recordsFile: "maths-complex-numbers.records.json",
+    outName: "Tags_NDA_Maths_Complex_Numbers",
+    sourceFile: "NDA_Maths_Practice__Complex_Numbers_Test.pdf",
+    subjectName: "Mathematics",
+    chapterName: "Complex Numbers",
+    subtopics: [
+      "Modulus, Argument, and Conjugate",
+      "Powers and Roots",
+      "Cube Roots of Unity",
+    ],
+    pyqNote: "NDA Maths practice — LWS Complex Numbers Test",
+    examName: "NDA",
+    section: { key: "complex-numbers", label: "Complex Numbers" },
     bankAdd: true,
   },
 
