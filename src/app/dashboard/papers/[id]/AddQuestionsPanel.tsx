@@ -22,12 +22,15 @@ const AUTO = "__auto__";
 
 export default function AddQuestionsPanel({
   paperId,
+  batchId,
   exams,
   sections,
   existingIds,
   onChanged,
 }: {
   paperId: string;
+  /** The paper's batch — scopes the repeat warning to that cohort (0054). */
+  batchId: string | null;
   exams: { id: string; name: string }[];
   sections: PaperSection[];
   existingIds: Set<string>;
@@ -77,6 +80,7 @@ export default function AddQuestionsPanel({
       kind: "all",
       page: toPage,
       paperId,
+      batchId,
     });
     setLoading(false);
     if (res.ok) {
@@ -216,11 +220,18 @@ export default function AddQuestionsPanel({
                     </p>
                     {r.usedIn.length > 0 && (
                       <p
-                        className="mt-1 inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
+                        className={cn(
+                          "mt-1 inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium",
+                          // Batch-scoped = a real repeat for THIS cohort → amber warning.
+                          // Org-wide = informational → muted.
+                          batchId
+                            ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
+                            : "bg-muted text-muted-foreground"
+                        )}
                         title={r.usedIn.map((u) => u.title).join(", ")}
                       >
                         <History className="h-3 w-3" aria-hidden />
-                        {formatUsageLabel(r.usedIn)}
+                        {formatUsageLabel(r.usedIn, { batchScoped: !!batchId })}
                       </p>
                     )}
                   </div>

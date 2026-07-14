@@ -53,6 +53,7 @@ import {
   moveQuestionAction,
   reorderQuestionAction,
   updateTemplateAction,
+  setPaperBatchAction,
 } from "../actions";
 import AddQuestionsPanel from "./AddQuestionsPanel";
 import PaperDownload from "./PaperDownload";
@@ -66,6 +67,7 @@ export default function PaperEditor({
   usage,
   exams,
   orgMembers,
+  batches,
 }: {
   detail: PaperDetail;
   previews: QuestionPreview[];
@@ -73,6 +75,8 @@ export default function PaperEditor({
   usage: Record<string, UsageRef[]>;
   exams: { id: string; name: string }[];
   orgMembers: { id: string; label: string }[];
+  /** Active org batches for the paper's batch selector (0054). */
+  batches: { id: string; label: string }[];
 }) {
   const router = useRouter();
   const finalized = detail.status === "finalized";
@@ -218,6 +222,38 @@ export default function PaperEditor({
               {progress.total} question{progress.total === 1 ? "" : "s"} · target{" "}
               {progress.targetTotal}
             </span>
+          </div>
+          {/* Batch link — drives the per-batch repeat warning in the add panel. */}
+          <div className="mt-2 flex items-center gap-2 text-sm">
+            <Users className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+            <span className="text-muted-foreground">Batch:</span>
+            {finalized ? (
+              <span className="font-medium">{detail.batchLabel ?? "None"}</span>
+            ) : (
+              <select
+                value={detail.batchId ?? ""}
+                onChange={(e) =>
+                  run(
+                    () => setPaperBatchAction(detail.id, e.target.value || null),
+                    "Batch updated"
+                  )
+                }
+                disabled={busy}
+                className={SELECT_CLASS}
+                aria-label="Paper batch"
+              >
+                <option value="">None (org-wide)</option>
+                {batches.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.label}
+                  </option>
+                ))}
+                {/* Keep an archived/other batch selectable label if it's the current one. */}
+                {detail.batchId && !batches.some((b) => b.id === detail.batchId) && (
+                  <option value={detail.batchId}>{detail.batchLabel}</option>
+                )}
+              </select>
+            )}
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -422,6 +458,7 @@ export default function PaperEditor({
         {!finalized && (
           <AddQuestionsPanel
             paperId={detail.id}
+            batchId={detail.batchId}
             exams={exams}
             sections={template}
             existingIds={existingIds}

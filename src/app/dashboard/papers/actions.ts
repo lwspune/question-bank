@@ -28,6 +28,7 @@ import { queryQuestions } from "@/lib/questions/query";
 import { EMPTY_FILTERS, type Difficulty } from "@/lib/questions/filters";
 import type { SectionTemplate } from "@/lib/papers/types";
 import { getQuestionUsage, type UsageRef } from "@/lib/papers/usage";
+import { setPaperBatch } from "@/lib/batches/admin";
 
 type Ok<T = unknown> = { ok: true } & T;
 type Err = { ok: false; error: string };
@@ -45,7 +46,10 @@ function revalidatePaper(paperId?: string) {
   if (paperId) revalidatePath(`/dashboard/papers/${paperId}`);
 }
 
-export async function createPaperAction(title: string): Promise<Result<{ id: string }>> {
+export async function createPaperAction(
+  title: string,
+  batchId?: string | null
+): Promise<Result<{ id: string }>> {
   const member = await requireMember();
   if (!member) return { ok: false, error: "Not authorized." };
   const clean = title.trim();
@@ -56,9 +60,27 @@ export async function createPaperAction(title: string): Promise<Result<{ id: str
       orgId: member.orgId,
       createdBy: member.user.id,
       title: clean,
+      batchId: batchId || null,
     });
     revalidatePaper(id);
     return { ok: true, id };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
+}
+
+/** Point a paper at a batch (or clear it). Drives the per-batch repeat warning. */
+export async function setPaperBatchAction(
+  paperId: string,
+  batchId: string | null
+): Promise<Result> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+  try {
+    const client = createSupabaseServerClient();
+    await setPaperBatch(client, paperId, batchId || null);
+    revalidatePaper(paperId);
+    return { ok: true };
   } catch (e) {
     return { ok: false, error: msg(e) };
   }
@@ -300,6 +322,8 @@ export async function searchQuestionsAction(input: {
   page?: number;
   /** The paper being edited — excluded from the usage soft-warn. */
   paperId?: string;
+  /** The paper's batch — scopes the repeat warning to that cohort (0054). */
+  batchId?: string | null;
 }): Promise<Result<{ rows: SearchRow[]; totalCount: number; pageSize: number }>> {
   const member = await requireMember();
   if (!member) return { ok: false, error: "Not authorized." };
@@ -320,11 +344,13 @@ export async function searchQuestionsAction(input: {
       },
       pageSize
     );
-    // Cross-paper soft-warn: which of these are already used elsewhere in the org.
+    // Soft-warn: which of these are already used elsewhere. Batch-scoped when the
+    // paper targets a batch (repeat FOR THIS COHORT), else org-wide.
     const usage = await getQuestionUsage(
       client,
       result.rows.map((r) => r.id),
-      input.paperId
+      input.paperId,
+      input.batchId ?? null
     );
     const rows: SearchRow[] = result.rows.map((r) => ({
       id: r.id,

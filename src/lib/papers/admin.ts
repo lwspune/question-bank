@@ -14,12 +14,20 @@ import {
   UNASSIGNED_KEY,
 } from "./template";
 import { buildSnapshot, planBulkAdd } from "./sections";
+import { formatBatchLabel } from "@/lib/batches/validate";
 import type {
   SectionTemplate,
   MembershipRow,
   PaperStatus,
   PaperSnapshot,
 } from "./types";
+
+/** Flatten a PostgREST to-one embed that may arrive as an object or 1-array. */
+function flattenBatch(
+  b: { name: string; branch: string | null } | { name: string; branch: string | null }[] | null
+): { name: string; branch: string | null } | null {
+  return Array.isArray(b) ? b[0] ?? null : b;
+}
 
 export type PaperListItem = {
   id: string;
@@ -28,6 +36,9 @@ export type PaperListItem = {
   questionCount: number;
   updatedAt: string;
   createdBy: string | null;
+  batchId: string | null;
+  /** "FC Road · Morning" or the bare batch name; null when un-batched. */
+  batchLabel: string | null;
 };
 
 export type PaperMembership = MembershipRow & { addedBy: string | null };
@@ -42,6 +53,8 @@ export type PaperDetail = {
   snapshot: PaperSnapshot | null;
   createdBy: string | null;
   updatedAt: string;
+  batchId: string | null;
+  batchLabel: string | null;
 };
 
 // ── reads ─────────────────────────────────────────────────────────────────
@@ -50,7 +63,9 @@ export type PaperDetail = {
 export async function listPapers(client: SupabaseClient): Promise<PaperListItem[]> {
   const { data, error } = await client
     .from("papers")
-    .select("id, title, status, updated_at, created_by, paper_questions(count)")
+    .select(
+      "id, title, status, updated_at, created_by, batch_id, batch:batches!batch_id(name, branch), paper_questions(count)"
+    )
     .order("updated_at", { ascending: false });
   if (error) throw new Error(`listPapers: ${error.message}`);
 
@@ -60,16 +75,23 @@ export async function listPapers(client: SupabaseClient): Promise<PaperListItem[
     status: PaperStatus;
     updated_at: string;
     created_by: string | null;
+    batch_id: string | null;
+    batch: { name: string; branch: string | null } | { name: string; branch: string | null }[] | null;
     paper_questions: { count: number }[] | null;
   };
-  return ((data ?? []) as Raw[]).map((r) => ({
-    id: r.id,
-    title: r.title,
-    status: r.status,
-    updatedAt: r.updated_at,
-    createdBy: r.created_by,
-    questionCount: r.paper_questions?.[0]?.count ?? 0,
-  }));
+  return ((data ?? []) as Raw[]).map((r) => {
+    const batch = flattenBatch(r.batch);
+    return {
+      id: r.id,
+      title: r.title,
+      status: r.status,
+      updatedAt: r.updated_at,
+      createdBy: r.created_by,
+      questionCount: r.paper_questions?.[0]?.count ?? 0,
+      batchId: r.batch_id,
+      batchLabel: batch ? formatBatchLabel(batch) : null,
+    };
+  });
 }
 
 export async function getPaperDetail(
@@ -79,12 +101,16 @@ export async function getPaperDetail(
   const { data: paper, error } = await client
     .from("papers")
     .select(
-      "id, title, status, exam_id, section_template, finalized_snapshot, created_by, updated_at"
+      "id, title, status, exam_id, section_template, finalized_snapshot, created_by, updated_at, batch_id, batch:batches!batch_id(name, branch)"
     )
     .eq("id", paperId)
     .maybeSingle();
   if (error) throw new Error(`getPaperDetail: ${error.message}`);
   if (!paper) return null;
+
+  const batch = flattenBatch(
+    paper.batch as { name: string; branch: string | null } | { name: string; branch: string | null }[] | null
+  );
 
   const { data: rows, error: mErr } = await client
     .from("paper_questions")
@@ -103,6 +129,8 @@ export async function getPaperDetail(
     snapshot: (paper.finalized_snapshot ?? null) as PaperSnapshot | null,
     createdBy: paper.created_by,
     updatedAt: paper.updated_at,
+    batchId: paper.batch_id,
+    batchLabel: batch ? formatBatchLabel(batch) : null,
     membership: (rows ?? []).map((r) => ({
       questionId: r.question_id as string,
       sectionKey: r.section_key as string,
@@ -121,6 +149,7 @@ export async function createPaper(
     createdBy: string;
     title: string;
     examId?: string | null;
+    batchId?: string | null;
     template?: SectionTemplate;
   }
 ): Promise<string> {
@@ -131,6 +160,7 @@ export async function createPaper(
       created_by: input.createdBy,
       title: input.title,
       exam_id: input.examId ?? null,
+      batch_id: input.batchId ?? null,
       section_template: input.template ?? DEFAULT_GAT_TEMPLATE,
     })
     .select("id")
