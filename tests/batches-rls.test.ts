@@ -22,6 +22,7 @@ import {
   listBatches,
   setPaperBatch,
 } from "@/lib/batches/admin";
+import { createBranch } from "@/lib/branches/admin";
 import { createPaper, addQuestion, getPaperDetail } from "@/lib/papers/admin";
 import { getQuestionUsage } from "@/lib/papers/usage";
 
@@ -41,7 +42,7 @@ const ORG_B = `Batches RLS Org B ${RUN_ID}`;
 const SUBJECT_NAME = `BatchesRLSPhysics_${RUN_ID}`;
 const CHAPTER_NAME = `BatchesRLSChapter_${RUN_ID}`;
 
-const FIELDS = (name: string, branch: string | null = null) => ({ name, branch, examId: null });
+const FIELDS = (name: string, branchId: string | null = null) => ({ name, branchId, examId: null });
 
 describe.skipIf(!HAS_ENV)("batches RLS + per-batch usage (migration 0054)", () => {
   let admin: SupabaseClient;
@@ -140,23 +141,42 @@ describe.skipIf(!HAS_ENV)("batches RLS + per-batch usage (migration 0054)", () =
     }
   });
 
+  let branchFC: string;
   let batchX: string;
   let batchY: string;
 
-  it("an org TEACHER can create a batch and see it in own org", async () => {
+  it("an admin creates a branch; a teacher files batches under it", async () => {
+    // Branch creation is ADMIN-only (branches_insert_admin).
+    branchFC = await createBranch(adminA, {
+      orgId: orgAId,
+      createdBy: adminAId,
+      fields: { name: `FC Road ${RUN_ID}` },
+    });
     batchX = await createBatch(teacherA, {
       orgId: orgAId,
       createdBy: teacherAId,
-      fields: FIELDS("Morning", "FC Road"),
+      fields: FIELDS("Morning", branchFC),
     });
     batchY = await createBatch(teacherA, {
       orgId: orgAId,
       createdBy: teacherAId,
-      fields: FIELDS("Evening", "FC Road"),
+      fields: FIELDS("Evening", branchFC),
     });
     const list = await listBatches(teacherA);
     expect(list.map((b) => b.id).sort()).toEqual([batchX, batchY].sort());
-    expect(list.find((b) => b.id === batchX)?.branch).toBe("FC Road");
+    const bx = list.find((b) => b.id === batchX);
+    expect(bx?.branchId).toBe(branchFC);
+    expect(bx?.branchName).toBe(`FC Road ${RUN_ID}`); // resolved via the join
+  });
+
+  it("a TEACHER cannot create a branch (admin-only)", async () => {
+    await expect(
+      createBranch(teacherA, {
+        orgId: orgAId,
+        createdBy: teacherAId,
+        fields: { name: `Nope ${RUN_ID}` },
+      })
+    ).rejects.toThrow();
   });
 
   it("org B teacher CANNOT see org A's batches (read isolation)", async () => {
