@@ -228,34 +228,21 @@ describe.skipIf(!HAS_ENV)("question_concept_tags RLS", () => {
     expect(error !== null || check?.length === 0).toBe(true);
   });
 
-  it("same-org ADMIN CAN INSERT then DELETE a tag on own org's question", async () => {
+  // Content metadata (concept tags) is superadmin-only (migration 0056): org
+  // ADMINs can no longer write tags — tagging moved to the service-role scripts.
+  it("same-org ADMIN cannot INSERT a tag (tagging is superadmin-only)", async () => {
     const insertRes = await adminAClient.from("question_concept_tags").insert({
       question_id: publicQuestionId,
       subtopic_slug: `admin-write-${RUN_ID}`,
       concept_slug: "admin-wrote-this",
     });
-    expect(insertRes.error).toBeNull();
+    expect(insertRes.error).not.toBeNull();
 
     const { data: afterInsert } = await admin
       .from("question_concept_tags")
       .select("concept_slug")
       .eq("question_id", publicQuestionId)
       .eq("subtopic_slug", `admin-write-${RUN_ID}`);
-    expect(afterInsert?.length).toBe(1);
-
-    const deleteRes = await adminAClient
-      .from("question_concept_tags")
-      .delete()
-      .eq("question_id", publicQuestionId)
-      .eq("subtopic_slug", `admin-write-${RUN_ID}`)
-      .eq("concept_slug", "admin-wrote-this");
-    expect(deleteRes.error).toBeNull();
-
-    const { data: afterDelete } = await admin
-      .from("question_concept_tags")
-      .select("concept_slug")
-      .eq("question_id", publicQuestionId)
-      .eq("subtopic_slug", `admin-write-${RUN_ID}`);
-    expect(afterDelete?.length).toBe(0);
+    expect(afterInsert?.length ?? 0).toBe(0);
   });
 });

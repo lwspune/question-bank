@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireEditor, HttpError } from "@/lib/auth";
+import { requireSuperadmin, getSessionMember, HttpError } from "@/lib/auth";
 
 /**
  * Detach this question from its set: clears set_id on this row only,
@@ -15,7 +15,14 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
-    const member = await requireEditor();
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json(
+        { error: "Cross-org content editing is available in the superadmin console." },
+        { status: 400 }
+      );
+    }
     const supabase = createSupabaseServerClient();
 
     const { data: existing } = await supabase

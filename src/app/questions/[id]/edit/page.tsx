@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import AppHeader from "@/components/AppHeader";
@@ -52,11 +52,10 @@ type RawSubject = { id: string; name: string; chapters: RawChapter[] };
 export default async function EditQuestionPage({ params }: PageProps) {
   const member = await getSessionMember();
   if (!member) redirect("/login");
-  // Both ADMIN and TEACHER can reach the edit form. Admin-only chrome
-  // (Delete, Visibility toggle) is hidden client-side via `isAdmin`.
-  if (member.role !== "ADMIN" && member.role !== "TEACHER") {
-    redirect("/browse");
-  }
+  // Content editing is superadmin-only (migration 0056). The superadmin edits
+  // within their own org here; cross-org edits go through the superadmin console.
+  const superadmin = await getSessionSuperadmin();
+  if (!superadmin) redirect("/browse");
 
   const supabase = createSupabaseServerClient();
   const { data: question } = await supabase

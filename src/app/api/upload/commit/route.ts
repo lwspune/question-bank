@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { requireAdmin, HttpError } from "@/lib/auth";
+import { requireSuperadmin, getSessionMember, HttpError } from "@/lib/auth";
 import { commitStaged } from "@/lib/upload/commit";
 import type { ParsedRowPayload } from "@/lib/upload/validate";
 
@@ -8,7 +8,14 @@ export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
   try {
-    const member = await requireAdmin();
+    await requireSuperadmin();
+    const member = await getSessionMember();
+    if (!member) {
+      return NextResponse.json(
+        { error: "Uploads for other orgs are handled via the superadmin console / scripts." },
+        { status: 400 }
+      );
+    }
     const body = (await request.json()) as { jobId?: string };
     const { jobId } = body;
 
