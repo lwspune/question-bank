@@ -14,7 +14,6 @@ import {
   UNASSIGNED_KEY,
 } from "./template";
 import { buildSnapshot, planBulkAdd } from "./sections";
-import { formatBatchLabel } from "@/lib/batches/validate";
 import type {
   SectionTemplate,
   MembershipRow,
@@ -22,11 +21,19 @@ import type {
   PaperSnapshot,
 } from "./types";
 
-/** Flatten a PostgREST to-one embed that may arrive as an object or 1-array. */
-function flattenBatch(
-  b: { name: string; branch: string | null } | { name: string; branch: string | null }[] | null
-): { name: string; branch: string | null } | null {
-  return Array.isArray(b) ? b[0] ?? null : b;
+/** A PostgREST to-one embed that may arrive as an object or a 1-element array. */
+type BatchEmbedRow = {
+  name: string;
+  branch: { name: string } | { name: string }[] | null;
+};
+
+/** Build the "FC Road · Morning" label from the nested batch→branch embed. */
+function batchLabelFromEmbed(b: BatchEmbedRow | BatchEmbedRow[] | null): string | null {
+  const batch = Array.isArray(b) ? b[0] ?? null : b;
+  if (!batch) return null;
+  const br = Array.isArray(batch.branch) ? batch.branch[0] ?? null : batch.branch;
+  const branchName = br?.name ?? null;
+  return branchName ? `${branchName} · ${batch.name}` : batch.name;
 }
 
 export type PaperListItem = {
@@ -64,7 +71,7 @@ export async function listPapers(client: SupabaseClient): Promise<PaperListItem[
   const { data, error } = await client
     .from("papers")
     .select(
-      "id, title, status, updated_at, created_by, batch_id, batch:batches!batch_id(name, branch), paper_questions(count)"
+      "id, title, status, updated_at, created_by, batch_id, batch:batches!batch_id(name, branch:branches!branch_id(name)), paper_questions(count)"
     )
     .order("updated_at", { ascending: false });
   if (error) throw new Error(`listPapers: ${error.message}`);
@@ -76,22 +83,19 @@ export async function listPapers(client: SupabaseClient): Promise<PaperListItem[
     updated_at: string;
     created_by: string | null;
     batch_id: string | null;
-    batch: { name: string; branch: string | null } | { name: string; branch: string | null }[] | null;
+    batch: BatchEmbedRow | BatchEmbedRow[] | null;
     paper_questions: { count: number }[] | null;
   };
-  return ((data ?? []) as Raw[]).map((r) => {
-    const batch = flattenBatch(r.batch);
-    return {
-      id: r.id,
-      title: r.title,
-      status: r.status,
-      updatedAt: r.updated_at,
-      createdBy: r.created_by,
-      questionCount: r.paper_questions?.[0]?.count ?? 0,
-      batchId: r.batch_id,
-      batchLabel: batch ? formatBatchLabel(batch) : null,
-    };
-  });
+  return ((data ?? []) as Raw[]).map((r) => ({
+    id: r.id,
+    title: r.title,
+    status: r.status,
+    updatedAt: r.updated_at,
+    createdBy: r.created_by,
+    questionCount: r.paper_questions?.[0]?.count ?? 0,
+    batchId: r.batch_id,
+    batchLabel: batchLabelFromEmbed(r.batch),
+  }));
 }
 
 export async function getPaperDetail(
@@ -101,15 +105,15 @@ export async function getPaperDetail(
   const { data: paper, error } = await client
     .from("papers")
     .select(
-      "id, title, status, exam_id, section_template, finalized_snapshot, created_by, updated_at, batch_id, batch:batches!batch_id(name, branch)"
+      "id, title, status, exam_id, section_template, finalized_snapshot, created_by, updated_at, batch_id, batch:batches!batch_id(name, branch:branches!branch_id(name))"
     )
     .eq("id", paperId)
     .maybeSingle();
   if (error) throw new Error(`getPaperDetail: ${error.message}`);
   if (!paper) return null;
 
-  const batch = flattenBatch(
-    paper.batch as { name: string; branch: string | null } | { name: string; branch: string | null }[] | null
+  const batchLabel = batchLabelFromEmbed(
+    paper.batch as BatchEmbedRow | BatchEmbedRow[] | null
   );
 
   const { data: rows, error: mErr } = await client
@@ -130,7 +134,7 @@ export async function getPaperDetail(
     createdBy: paper.created_by,
     updatedAt: paper.updated_at,
     batchId: paper.batch_id,
-    batchLabel: batch ? formatBatchLabel(batch) : null,
+    batchLabel,
     membership: (rows ?? []).map((r) => ({
       questionId: r.question_id as string,
       sectionKey: r.section_key as string,

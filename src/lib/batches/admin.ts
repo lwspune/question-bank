@@ -1,43 +1,52 @@
 /**
- * Data-access layer for cohort batches (migration 0054). Like papers/admin.ts,
- * every function takes a SupabaseClient so callers control the auth context — the
- * dashboard actions pass the cookie-bound authed client (RLS is the boundary:
- * org-scoping + editor-only writes are enforced in Postgres, not here); the RLS
- * test passes per-user JWT clients to prove the walls hold. No service-role.
+ * Data-access layer for cohort batches (migration 0054; branch entity in 0055).
+ * Like papers/admin.ts, every function takes a SupabaseClient so callers control
+ * the auth context — the dashboard actions pass the cookie-bound authed client
+ * (RLS is the boundary: org-scoping + editor-only writes are enforced in
+ * Postgres), the RLS test passes per-user JWT clients. No service-role.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Batch, BatchFields } from "./types";
 
+type RawBranch = { name: string } | { name: string }[] | null;
+
 type Raw = {
   id: string;
   name: string;
-  branch: string | null;
+  branch_id: string | null;
+  branch: RawBranch;
   exam_id: string | null;
   archived: boolean;
   created_by: string | null;
   updated_at: string;
 };
 
+const flattenName = (b: RawBranch): string | null =>
+  (Array.isArray(b) ? b[0] ?? null : b)?.name ?? null;
+
 const toBatch = (r: Raw): Batch => ({
   id: r.id,
   name: r.name,
-  branch: r.branch,
+  branchId: r.branch_id,
+  branchName: flattenName(r.branch),
   examId: r.exam_id,
   archived: r.archived,
   createdBy: r.created_by,
   updatedAt: r.updated_at,
 });
 
+const SELECT =
+  "id, name, branch_id, branch:branches!branch_id(name), exam_id, archived, created_by, updated_at";
+
 /** All batches in the caller's org (active + archived). RLS scopes to own org. */
 export async function listBatches(client: SupabaseClient): Promise<Batch[]> {
   const { data, error } = await client
     .from("batches")
-    .select("id, name, branch, exam_id, archived, created_by, updated_at")
+    .select(SELECT)
     .order("archived", { ascending: true })
-    .order("branch", { ascending: true, nullsFirst: true })
     .order("name", { ascending: true });
   if (error) throw new Error(`listBatches: ${error.message}`);
-  return ((data ?? []) as Raw[]).map(toBatch);
+  return ((data ?? []) as unknown as Raw[]).map(toBatch);
 }
 
 export async function createBatch(
@@ -50,7 +59,7 @@ export async function createBatch(
       org_id: input.orgId,
       created_by: input.createdBy,
       name: input.fields.name,
-      branch: input.fields.branch,
+      branch_id: input.fields.branchId,
       exam_id: input.fields.examId,
     })
     .select("id")
@@ -68,7 +77,7 @@ export async function updateBatch(
     .from("batches")
     .update({
       name: fields.name,
-      branch: fields.branch,
+      branch_id: fields.branchId,
       exam_id: fields.examId,
       updated_at: new Date().toISOString(),
     })

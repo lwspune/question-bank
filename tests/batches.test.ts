@@ -1,6 +1,6 @@
 /**
- * Unit tests for the pure batch helpers (migration 0054). No env/DB dependency.
- * The RLS + data layer is covered by tests/batches-rls.test.ts.
+ * Unit tests for the pure batch helpers (migration 0054; branch entity 0055).
+ * No env/DB dependency. RLS + data layer is covered by tests/batches-rls.test.ts.
  */
 import { describe, it, expect } from "vitest";
 import {
@@ -8,36 +8,23 @@ import {
   splitBatches,
   formatBatchLabel,
   MAX_NAME,
-  MAX_BRANCH,
 } from "@/lib/batches/validate";
 import type { Batch } from "@/lib/batches/types";
 
 describe("validateBatchInput", () => {
   it("trims the name and returns normalized fields", () => {
     const r = validateBatchInput({ name: "  NDA Morning  " });
-    expect(r).toEqual({ ok: true, value: { name: "NDA Morning", branch: null, examId: null } });
+    expect(r).toEqual({ ok: true, value: { name: "NDA Morning", branchId: null, examId: null } });
   });
 
-  it("trims branch and keeps it", () => {
-    const r = validateBatchInput({ name: "Batch A", branch: "  FC Road " });
-    expect(r).toMatchObject({ ok: true, value: { branch: "FC Road" } });
-  });
-
-  it("coerces a blank branch to null", () => {
-    expect(validateBatchInput({ name: "B", branch: "   " })).toMatchObject({
+  it("keeps a provided branchId and examId, coercing blanks to null", () => {
+    expect(validateBatchInput({ name: "B", branchId: "br-1", examId: "ex-1" })).toMatchObject({
       ok: true,
-      value: { branch: null },
+      value: { branchId: "br-1", examId: "ex-1" },
     });
-  });
-
-  it("coerces a blank examId to null and passes a real one through", () => {
-    expect(validateBatchInput({ name: "B", examId: "" })).toMatchObject({
+    expect(validateBatchInput({ name: "B", branchId: "  ", examId: "" })).toMatchObject({
       ok: true,
-      value: { examId: null },
-    });
-    expect(validateBatchInput({ name: "B", examId: "abc" })).toMatchObject({
-      ok: true,
-      value: { examId: "abc" },
+      value: { branchId: null, examId: null },
     });
   });
 
@@ -46,11 +33,8 @@ describe("validateBatchInput", () => {
     expect(validateBatchInput({ name: "" })).toMatchObject({ ok: false });
   });
 
-  it("rejects an over-long name or branch", () => {
+  it("rejects an over-long name", () => {
     expect(validateBatchInput({ name: "x".repeat(MAX_NAME + 1) })).toMatchObject({ ok: false });
-    expect(
-      validateBatchInput({ name: "ok", branch: "y".repeat(MAX_BRANCH + 1) })
-    ).toMatchObject({ ok: false });
   });
 });
 
@@ -58,7 +42,8 @@ describe("splitBatches", () => {
   const b = (over: Partial<Batch>): Batch => ({
     id: over.id ?? "id",
     name: over.name ?? "n",
-    branch: over.branch ?? null,
+    branchId: over.branchId ?? null,
+    branchName: over.branchName ?? null,
     examId: over.examId ?? null,
     archived: over.archived ?? false,
     createdBy: null,
@@ -76,11 +61,11 @@ describe("splitBatches", () => {
     expect(archived.map((x) => x.id)).toEqual(["2"]);
   });
 
-  it("sorts each group by branch then name", () => {
+  it("sorts each group by branch name then batch name", () => {
     const { active } = splitBatches([
-      b({ id: "1", branch: "Kothrud", name: "Z" }),
-      b({ id: "2", branch: "FC Road", name: "M" }),
-      b({ id: "3", branch: null, name: "A" }),
+      b({ id: "1", branchName: "Kothrud", name: "Z" }),
+      b({ id: "2", branchName: "FC Road", name: "M" }),
+      b({ id: "3", branchName: null, name: "A" }),
     ]);
     // unbranched (null -> "") sorts first, then FC Road, then Kothrud
     expect(active.map((x) => x.id)).toEqual(["3", "2", "1"]);
@@ -88,10 +73,10 @@ describe("splitBatches", () => {
 });
 
 describe("formatBatchLabel", () => {
-  it("prefixes the branch when present", () => {
-    expect(formatBatchLabel({ name: "Morning", branch: "FC Road" })).toBe("FC Road · Morning");
+  it("prefixes the branch name when present", () => {
+    expect(formatBatchLabel({ name: "Morning", branchName: "FC Road" })).toBe("FC Road · Morning");
   });
   it("shows just the name when unbranched", () => {
-    expect(formatBatchLabel({ name: "Morning", branch: null })).toBe("Morning");
+    expect(formatBatchLabel({ name: "Morning", branchName: null })).toBe("Morning");
   });
 });

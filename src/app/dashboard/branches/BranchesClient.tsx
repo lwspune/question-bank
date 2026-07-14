@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Archive, ArchiveRestore, Loader2, Pencil, Plus, Trash2, Users } from "lucide-react";
+import { Archive, ArchiveRestore, Building2, Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,73 +17,52 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  createBatchAction,
-  updateBatchAction,
-  setBatchArchivedAction,
-  deleteBatchAction,
+  createBranchAction,
+  updateBranchAction,
+  setBranchArchivedAction,
+  deleteBranchAction,
 } from "./actions";
-import type { Batch } from "@/lib/batches/types";
+import type { Branch } from "@/lib/branches/types";
 
-const SELECT_CLASS =
-  "h-9 w-full rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
-
-type ExamOption = { id: string; name: string };
-type BranchOption = { id: string; name: string };
-
-export default function BatchesClient({
+export default function BranchesClient({
   active,
   archived,
-  branches,
-  exams,
 }: {
-  active: Batch[];
-  archived: Batch[];
-  branches: BranchOption[];
-  exams: ExamOption[];
+  active: Branch[];
+  archived: Branch[];
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
-  const [editing, setEditing] = useState<Batch | null>(null);
-  const [toDelete, setToDelete] = useState<Batch | null>(null);
-
-  // Form fields
+  const [editing, setEditing] = useState<Branch | null>(null);
+  const [toDelete, setToDelete] = useState<Branch | null>(null);
   const [name, setName] = useState("");
-  const [branchId, setBranchId] = useState("");
-  const [examId, setExamId] = useState("");
-
-  const examName = (id: string | null) => exams.find((e) => e.id === id)?.name ?? null;
 
   function openCreate() {
     setEditing(null);
     setName("");
-    setBranchId("");
-    setExamId("");
     setFormOpen(true);
   }
 
-  function openEdit(b: Batch) {
+  function openEdit(b: Branch) {
     setEditing(b);
     setName(b.name);
-    setBranchId(b.branchId ?? "");
-    setExamId(b.examId ?? "");
     setFormOpen(true);
   }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim()) {
-      toast.error("Give the batch a name.");
+      toast.error("Give the branch a name.");
       return;
     }
     setBusy(true);
-    const input = { name, branchId, examId };
     const res = editing
-      ? await updateBatchAction(editing.id, input)
-      : await createBatchAction(input);
+      ? await updateBranchAction(editing.id, { name })
+      : await createBranchAction({ name });
     setBusy(false);
     if (res.ok) {
-      toast.success(editing ? "Batch updated" : "Batch created");
+      toast.success(editing ? "Branch updated" : "Branch created");
       setFormOpen(false);
       router.refresh();
     } else {
@@ -91,12 +70,12 @@ export default function BatchesClient({
     }
   }
 
-  async function onArchive(b: Batch, archivedNext: boolean) {
+  async function onArchive(b: Branch, archivedNext: boolean) {
     setBusy(true);
-    const res = await setBatchArchivedAction(b.id, archivedNext);
+    const res = await setBranchArchivedAction(b.id, archivedNext);
     setBusy(false);
     if (res.ok) {
-      toast.success(archivedNext ? "Batch archived" : "Batch restored");
+      toast.success(archivedNext ? "Branch archived" : "Branch restored");
       router.refresh();
     } else {
       toast.error(res.error);
@@ -106,26 +85,21 @@ export default function BatchesClient({
   async function onDelete() {
     if (!toDelete) return;
     setBusy(true);
-    const res = await deleteBatchAction(toDelete.id);
+    const res = await deleteBranchAction(toDelete.id);
     setBusy(false);
     setToDelete(null);
     if (res.ok) {
-      toast.success("Batch deleted");
+      toast.success("Branch deleted");
       router.refresh();
     } else {
       toast.error(res.error);
     }
   }
 
-  const renderRow = (b: Batch) => (
+  const renderRow = (b: Branch) => (
     <li key={b.id} className="flex items-center gap-3 p-4">
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
-          {b.branchName && (
-            <Badge variant="secondary" className="text-[10px]">
-              {b.branchName}
-            </Badge>
-          )}
           <span className="truncate font-medium">{b.name}</span>
           {b.archived && (
             <Badge variant="outline" className="text-[10px]">
@@ -133,9 +107,6 @@ export default function BatchesClient({
             </Badge>
           )}
         </div>
-        {examName(b.examId) && (
-          <p className="mt-0.5 text-xs text-muted-foreground">{examName(b.examId)}</p>
-        )}
       </div>
       <Button
         variant="ghost"
@@ -179,17 +150,17 @@ export default function BatchesClient({
       <div className="flex justify-end">
         <Button variant="brand" onClick={openCreate}>
           <Plus className="h-4 w-4" aria-hidden />
-          New batch
+          New branch
         </Button>
       </div>
 
       {active.length === 0 && archived.length === 0 ? (
         <div className="rounded-lg border border-dashed bg-card p-10 text-center">
-          <Users className="mx-auto h-8 w-8 text-muted-foreground/50" aria-hidden />
-          <p className="mt-3 text-sm font-medium">No batches yet</p>
+          <Building2 className="mx-auto h-8 w-8 text-muted-foreground/50" aria-hidden />
+          <p className="mt-3 text-sm font-medium">No branches yet</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Create a cohort (e.g. &ldquo;NDA 2026 Morning&rdquo;) to start building
-            papers that don&apos;t repeat questions for it.
+            Add your campuses (e.g. &ldquo;FC Road&rdquo;) so you can assign teachers and
+            file batches under them.
           </p>
         </div>
       ) : (
@@ -212,57 +183,22 @@ export default function BatchesClient({
       <Dialog open={formOpen} onOpenChange={(v) => !busy && setFormOpen(v)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{editing ? "Edit batch" : "New batch"}</DialogTitle>
+            <DialogTitle>{editing ? "Edit branch" : "New branch"}</DialogTitle>
             <DialogDescription>
-              Name the cohort and, optionally, tag its branch. The same name can&apos;t
-              repeat within one branch.
+              Name the campus / location. It must be unique within your organization.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={onSubmit} className="space-y-3">
             <div className="space-y-1.5">
-              <Label htmlFor="batch-name">Name</Label>
+              <Label htmlFor="branch-name">Name</Label>
               <Input
-                id="batch-name"
+                id="branch-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. NDA 2026 Morning"
+                placeholder="e.g. FC Road"
                 disabled={busy}
                 autoFocus
               />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="batch-branch">Branch (optional)</Label>
-              <select
-                id="batch-branch"
-                value={branchId}
-                onChange={(e) => setBranchId(e.target.value)}
-                className={SELECT_CLASS}
-                disabled={busy}
-              >
-                <option value="">No branch (org-wide)</option>
-                {branches.map((br) => (
-                  <option key={br.id} value={br.id}>
-                    {br.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="batch-exam">Exam (optional)</Label>
-              <select
-                id="batch-exam"
-                value={examId}
-                onChange={(e) => setExamId(e.target.value)}
-                className={SELECT_CLASS}
-                disabled={busy}
-              >
-                <option value="">No specific exam</option>
-                {exams.map((ex) => (
-                  <option key={ex.id} value={ex.id}>
-                    {ex.name}
-                  </option>
-                ))}
-              </select>
             </div>
             <DialogFooter>
               <Button
@@ -286,14 +222,14 @@ export default function BatchesClient({
       <Dialog open={!!toDelete} onOpenChange={(v) => !v && setToDelete(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Delete this batch?</DialogTitle>
+            <DialogTitle>Delete this branch?</DialogTitle>
             <DialogDescription>
               {toDelete ? (
                 <>
                   <span className="font-medium text-foreground">{toDelete.name}</span> will
-                  be removed. Any papers linked to it stay, but become org-wide
-                  (un-batched). Prefer <span className="font-medium">Archive</span> to keep
-                  the link. Only the creator or an admin can delete a batch.
+                  be removed. Its batches become unbranched and any teacher assignments to
+                  it are cleared. Prefer <span className="font-medium">Archive</span> to keep
+                  the history.
                 </>
               ) : null}
             </DialogDescription>

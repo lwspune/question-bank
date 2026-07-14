@@ -4,6 +4,7 @@ import {
   Activity,
   ArrowRight,
   BookOpen,
+  Building2,
   ChevronRight,
   FileSpreadsheet,
   FileText,
@@ -289,6 +290,14 @@ function QuickActions({
         title="Batches"
         description="Manage student cohorts, then build papers that don't repeat questions for a batch."
       />
+      {isAdmin && (
+        <ActionCard
+          href="/dashboard/branches"
+          icon={<Building2 className="h-5 w-5" aria-hidden />}
+          title="Branches"
+          description="Manage your campuses. Batches file under a branch; teachers are assigned to branches."
+        />
+      )}
     </div>
   );
 }
