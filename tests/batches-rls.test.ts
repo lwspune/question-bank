@@ -23,6 +23,7 @@ import {
   setPaperBatch,
 } from "@/lib/batches/admin";
 import { createBranch } from "@/lib/branches/admin";
+import { setMemberBranches } from "@/lib/members/admin";
 import { createPaper, addQuestion, getPaperDetail } from "@/lib/papers/admin";
 import { getQuestionUsage } from "@/lib/papers/usage";
 
@@ -152,6 +153,9 @@ describe.skipIf(!HAS_ENV)("batches RLS + per-batch usage (migration 0054)", () =
       createdBy: adminAId,
       fields: { name: `FC Road ${RUN_ID}` },
     });
+    // Teachers are branch-scoped (0057): assign teacherA to FC Road so they can
+    // file + see batches under it.
+    await setMemberBranches(orgAId, teacherAId, [branchFC]);
     batchX = await createBatch(teacherA, {
       orgId: orgAId,
       createdBy: teacherAId,
