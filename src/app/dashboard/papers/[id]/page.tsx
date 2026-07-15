@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionMember, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { getPaperDetail } from "@/lib/papers/admin";
@@ -7,7 +7,8 @@ import { getQuestionUsage } from "@/lib/papers/usage";
 import { listBatches } from "@/lib/batches/admin";
 import { splitBatches } from "@/lib/batches/validate";
 import { listMembers } from "@/lib/members/admin";
-import { queryQuestionPreviewsByIds } from "@/lib/questions/query";
+import { queryQuestionsByIds } from "@/lib/questions/query";
+import { dominantExamId } from "@/lib/papers/exam";
 import PaperEditor from "./PaperEditor";
 
 export const dynamic = "force-dynamic";
@@ -25,7 +26,11 @@ export default async function PaperEditorPage({
   if (!detail) notFound();
 
   const membershipIds = detail.membership.map((m) => m.questionId);
-  const previews = await queryQuestionPreviewsByIds(client, membershipIds);
+  // Full rows (options + solution), not the slim preview shape: the editor now
+  // renders the same QuestionCard as /browse, so a teacher can actually read and
+  // verify a question before shipping the paper. Bounded by the 200/paper export
+  // cap, and this page is force-dynamic + admin-gated, so the payload is fine.
+  const questions = await queryQuestionsByIds(client, membershipIds);
 
   // Soft-warn: which of this paper's questions also live in OTHER papers (this
   // paper excluded). Batch-scoped when the paper targets a batch (repeat for the
@@ -48,15 +53,22 @@ export default async function PaperEditorPage({
       ? membersResult.members.map((m) => ({ id: m.userId, label: m.name || m.email }))
       : [];
 
+  // Content editing is superadmin-only (migration 0056) — mirrors /browse, which
+  // gates the per-question Edit affordance the same way.
+  const canEditContent = !!(await getSessionSuperadmin());
+
   return (
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-6 px-6 py-8">
         <PaperEditor
           detail={detail}
-          previews={previews}
+          questions={questions}
           usage={usage}
           exams={(exams ?? []) as { id: string; name: string }[]}
+          defaultExamId={dominantExamId(questions)}
+          canEditContent={canEditContent}
+          supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
           orgMembers={orgMembers}
           batches={batches.map((b) => ({
             id: b.id,

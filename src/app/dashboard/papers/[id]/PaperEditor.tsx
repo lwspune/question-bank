@@ -11,6 +11,7 @@ import {
   Loader2,
   Lock,
   Pencil,
+  Plus,
   Search,
   Settings2,
   Trash2,
@@ -50,7 +51,8 @@ import {
 } from "@/lib/batches/validate";
 import { formatUsageLabel, type UsageRef } from "@/lib/papers/usage";
 import type { SectionTemplate } from "@/lib/papers/types";
-import type { QuestionPreview } from "@/lib/questions/query";
+import type { QuestionRow } from "@/lib/questions/query";
+import QuestionCard from "@/app/browse/QuestionCard";
 import {
   updateTitleAction,
   finalizeAction,
@@ -72,17 +74,26 @@ const ORG_WIDE = "__orgwide__";
 
 export default function PaperEditor({
   detail,
-  previews,
+  questions,
   usage,
   exams,
+  defaultExamId,
+  canEditContent,
+  supabaseUrl,
   orgMembers,
   batches,
 }: {
   detail: PaperDetail;
-  previews: QuestionPreview[];
+  /** Full rows — rendered with the same QuestionCard as /browse. */
+  questions: QuestionRow[];
   /** question_id → other papers using it (this paper excluded). Soft-warn. */
   usage: Record<string, UsageRef[]>;
   exams: { id: string; name: string }[];
+  /** The exam this paper is mostly about — seeds the Add-questions filter. */
+  defaultExamId: string | null;
+  /** Superadmin — drives the per-question Edit affordance (migration 0056). */
+  canEditContent: boolean;
+  supabaseUrl: string;
   orgMembers: { id: string; label: string }[];
   /** Active org batches for the paper's batch selector (0054). */
   batches: BatchPick[];
@@ -96,11 +107,11 @@ export default function PaperEditor({
     return (id: string | null | undefined) => (id ? m.get(id) ?? null : null);
   }, [orgMembers]);
 
-  const previewMap = useMemo(() => {
-    const m = new Map<string, QuestionPreview>();
-    for (const p of previews) m.set(p.id, p);
+  const questionMap = useMemo(() => {
+    const m = new Map<string, QuestionRow>();
+    for (const q of questions) m.set(q.id, q);
     return m;
-  }, [previews]);
+  }, [questions]);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
@@ -149,6 +160,7 @@ export default function PaperEditor({
   const [editingTitle, setEditingTitle] = useState(false);
   const [titleDraft, setTitleDraft] = useState(detail.title);
   const [sectionsOpen, setSectionsOpen] = useState(false);
+  const [addOpen, setAddOpen] = useState(false);
   const [confirmFinalize, setConfirmFinalize] = useState(false);
 
   // Branch filter for the batch selector (Option A). Derived from the paper's
@@ -313,6 +325,12 @@ export default function PaperEditor({
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {!finalized && (
+            <Button variant="outline" onClick={() => setAddOpen(true)} disabled={busy}>
+              <Plus className="h-4 w-4" aria-hidden />
+              Add questions
+            </Button>
+          )}
+          {!finalized && (
             <Button variant="outline" asChild title="Collect questions in the bank, then use 'Add to paper' in the cart">
               <Link href="/browse">
                 <Search className="h-4 w-4" aria-hidden />
@@ -374,12 +392,15 @@ export default function PaperEditor({
         )}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        {/* The paper, grouped by section */}
+      {/* The paper, grouped by section — full width. The add panel used to sit in
+          a permanent second column, which is what squeezed the question text down
+          to a 2-line clamp; it's a sheet now. */}
+      <div>
         <div className="space-y-4">
           {grouped.every((g) => g.rows.length === 0) ? (
             <div className="rounded-lg border border-dashed bg-card p-8 text-center text-sm text-muted-foreground">
-              No questions yet. {finalized ? "Reopen to add some." : "Search and add from the panel."}
+              No questions yet.{" "}
+              {finalized ? "Reopen to add some." : "Use “Add questions” to search the bank."}
             </div>
           ) : (
             grouped
@@ -393,45 +414,48 @@ export default function PaperEditor({
                       {g.target > 0 ? ` / ${g.target}` : ""}
                     </span>
                   </div>
-                  <ul className="divide-y">
+                  <ul className="space-y-3 p-3">
                     {g.rows.map((m, i) => {
-                      const p = previewMap.get(m.questionId);
+                      const q = questionMap.get(m.questionId);
+                      const addedBy = memberLabel(m.addedBy);
+                      const usedIn = usage[m.questionId] ?? [];
                       return (
-                        <li key={m.questionId} className="flex items-start gap-2 p-3">
-                          <span className="mt-0.5 w-5 shrink-0 text-right font-mono text-xs text-muted-foreground">
-                            {i + 1}.
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <p className="line-clamp-2 text-sm">
-                              {p?.text ?? "(question unavailable)"}
-                            </p>
-                            {(p || memberLabel(m.addedBy)) && (
-                              <p className="mt-0.5 text-xs text-muted-foreground">
-                                {p && (
-                                  <>
-                                    {p.subject.name} · {p.chapter.name}
-                                  </>
-                                )}
-                                {memberLabel(m.addedBy) && (
-                                  <span className="text-muted-foreground/70">
-                                    {p ? " · " : ""}added by {memberLabel(m.addedBy)}
-                                  </span>
-                                )}
-                              </p>
-                            )}
-                            {(usage[m.questionId]?.length ?? 0) > 0 && (
-                              <p
-                                className="mt-1 inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
-                                title={usage[m.questionId].map((u) => u.title).join(", ")}
+                        <li key={m.questionId}>
+                          {q ? (
+                            /* Same card as /browse — KaTeX stem, options, answer
+                               reveal — so a teacher can verify a question here
+                               instead of round-tripping to the bank. The cart is
+                               hidden: this question is already in this paper. */
+                            <QuestionCard
+                              question={q}
+                              index={i + 1}
+                              canEdit={canEditContent}
+                              isLoggedIn
+                              includeExam
+                              hideCart
+                              supabaseUrl={supabaseUrl}
+                            />
+                          ) : (
+                            <div className="rounded-lg border border-dashed p-3 text-sm text-muted-foreground">
+                              {i + 1}. (question unavailable)
+                            </div>
+                          )}
+
+                          {/* Paper-level controls live OUTSIDE the card so the
+                              shared component stays untouched. */}
+                          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 pl-1 text-xs text-muted-foreground">
+                            {addedBy && <span>added by {addedBy}</span>}
+                            {usedIn.length > 0 && (
+                              <span
+                                className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 font-medium"
+                                title={usedIn.map((u) => u.title).join(", ")}
                               >
                                 <History className="h-3 w-3" aria-hidden />
-                                {formatUsageLabel(usage[m.questionId])}
-                              </p>
+                                {formatUsageLabel(usedIn)}
+                              </span>
                             )}
-                          </div>
-                          {!finalized && (
-                            <div className="flex shrink-0 items-center gap-1">
-                              <div className="flex flex-col">
+                            {!finalized && (
+                              <div className="ml-auto flex items-center gap-1">
                                 <button
                                   type="button"
                                   disabled={busy || i === 0}
@@ -445,7 +469,7 @@ export default function PaperEditor({
                                       run(() => reorderQuestionAction(detail.id, m.questionId, pos), "Reordered");
                                   }}
                                   aria-label="Move up"
-                                  className="text-muted-foreground hover:text-foreground disabled:opacity-30"
+                                  className="rounded p-1 hover:text-foreground disabled:opacity-30"
                                 >
                                   <ChevronUp className="h-3.5 w-3.5" aria-hidden />
                                 </button>
@@ -462,44 +486,43 @@ export default function PaperEditor({
                                       run(() => reorderQuestionAction(detail.id, m.questionId, pos), "Reordered");
                                   }}
                                   aria-label="Move down"
-                                  className="text-muted-foreground hover:text-foreground disabled:opacity-30"
+                                  className="rounded p-1 hover:text-foreground disabled:opacity-30"
                                 >
                                   <ChevronDown className="h-3.5 w-3.5" aria-hidden />
                                 </button>
+                                <select
+                                  value={g.key === UNASSIGNED_KEY ? "" : g.key}
+                                  onChange={(e) =>
+                                    run(
+                                      () => moveQuestionAction(detail.id, m.questionId, e.target.value),
+                                      "Moved"
+                                    )
+                                  }
+                                  disabled={busy}
+                                  className={SELECT_CLASS}
+                                  aria-label="Move to section"
+                                >
+                                  {g.key === UNASSIGNED_KEY && <option value="">Unassigned</option>}
+                                  {template.map((s) => (
+                                    <option key={s.key} value={s.key}>
+                                      {s.label}
+                                    </option>
+                                  ))}
+                                </select>
+                                <button
+                                  type="button"
+                                  disabled={busy}
+                                  onClick={() =>
+                                    run(() => removeQuestionAction(detail.id, m.questionId))
+                                  }
+                                  aria-label="Remove from paper"
+                                  className="rounded p-1 hover:bg-destructive/10 hover:text-destructive disabled:opacity-30"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" aria-hidden />
+                                </button>
                               </div>
-                              <select
-                                value={g.key === UNASSIGNED_KEY ? "" : g.key}
-                                onChange={(e) =>
-                                  run(
-                                    () => moveQuestionAction(detail.id, m.questionId, e.target.value),
-                                    "Moved"
-                                  )
-                                }
-                                disabled={busy}
-                                className={SELECT_CLASS}
-                                aria-label="Move to section"
-                              >
-                                {g.key === UNASSIGNED_KEY && <option value="">Unassigned</option>}
-                                {template.map((s) => (
-                                  <option key={s.key} value={s.key}>
-                                    {s.label}
-                                  </option>
-                                ))}
-                              </select>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                disabled={busy}
-                                onClick={() =>
-                                  run(() => removeQuestionAction(detail.id, m.questionId))
-                                }
-                                aria-label="Remove from paper"
-                                className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
-                              >
-                                <Trash2 className="h-3.5 w-3.5" aria-hidden />
-                              </Button>
-                            </div>
-                          )}
+                            )}
+                          </div>
                         </li>
                       );
                     })}
@@ -508,19 +531,22 @@ export default function PaperEditor({
               ))
           )}
         </div>
-
-        {/* Add panel (draft only) */}
-        {!finalized && (
-          <AddQuestionsPanel
-            paperId={detail.id}
-            batchId={detail.batchId}
-            exams={exams}
-            sections={template}
-            existingIds={existingIds}
-            onChanged={() => router.refresh()}
-          />
-        )}
       </div>
+
+      {/* Add panel (draft only) — in a sheet, mirroring the Sections dialog. */}
+      {!finalized && (
+        <AddQuestionsPanel
+          open={addOpen}
+          onOpenChange={setAddOpen}
+          paperId={detail.id}
+          batchId={detail.batchId}
+          exams={exams}
+          defaultExamId={defaultExamId}
+          sections={template}
+          existingIds={existingIds}
+          onChanged={() => router.refresh()}
+        />
+      )}
 
       {/* Finalize confirm */}
       <Dialog open={confirmFinalize} onOpenChange={(v) => !v && setConfirmFinalize(false)}>
