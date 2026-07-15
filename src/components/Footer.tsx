@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, Scale, TrendingUp } from "lucide-react";
+import { CONTACT_EMAIL } from "@/lib/brand";
 
-const REPORT_EMAIL = "connect.lwspune@gmail.com";
+const REPORT_EMAIL = CONTACT_EMAIL;
 
 export default function Footer() {
   return (

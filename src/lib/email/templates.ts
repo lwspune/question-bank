@@ -16,6 +16,7 @@
  * and is staff-surface only). Short, honest, specific. The ask names the real
  * time cost up front rather than hiding it.
  */
+import { CONTACT_EMAIL } from "@/lib/brand";
 import type { Recipient } from "./recommend";
 
 export const SITE_URL = "https://www.pyqvault.com";
@@ -26,10 +27,11 @@ export const SITE_URL = "https://www.pyqvault.com";
  *  this reason: a student who can't sign in has no other channel to reach you.
  *
  *  BRAND: this address is student-facing (it's what their mail client shows on
- *  Reply), so it must carry the PYQ Vault brand — NOT the `connect.lwspune@…`
- *  tenant-org address, which belongs to staff-gated surfaces only. Same rule as
- *  the hardcoded-`LWS`-in-copy branding bug in CLAUDE.md's multi-tenancy note. */
-export const REPLY_TO = "connect.pyqvault@gmail.com";
+ *  Reply), so it must carry the PYQ Vault brand — NOT the tenant-org address,
+ *  which belongs to staff-gated surfaces only. Shares the ONE public-contact
+ *  const with the Footer / /privacy / the report dialogs: four copy-pasted
+ *  literals are exactly how that address drifted off-brand in the first place. */
+export const REPLY_TO = CONTACT_EMAIL;
 
 const BRAND = "PYQ Vault";
 const ACCENT = "#4f46e5"; // indigo-600 — the brand fill (globals.css --brand)
