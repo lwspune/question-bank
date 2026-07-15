@@ -23,8 +23,13 @@ export const SITE_URL = "https://www.pyqvault.com";
 /** Replies go to a real, monitored mailbox. `EMAIL_FROM` is a send-only address
  *  on the verified domain and has no inbox — without this, a student hitting
  *  Reply just bounces. The sibling English AI Tutor invites replies for exactly
- *  this reason: a student who can't sign in has no other channel to reach you. */
-export const REPLY_TO = "connect.lwspune@gmail.com";
+ *  this reason: a student who can't sign in has no other channel to reach you.
+ *
+ *  BRAND: this address is student-facing (it's what their mail client shows on
+ *  Reply), so it must carry the PYQ Vault brand — NOT the `connect.lwspune@…`
+ *  tenant-org address, which belongs to staff-gated surfaces only. Same rule as
+ *  the hardcoded-`LWS`-in-copy branding bug in CLAUDE.md's multi-tenancy note. */
+export const REPLY_TO = "connect.pyqvault@gmail.com";
 
 const BRAND = "PYQ Vault";
 const ACCENT = "#4f46e5"; // indigo-600 — the brand fill (globals.css --brand)
