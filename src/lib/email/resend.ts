@@ -27,6 +27,8 @@ export type SendPayload = {
   subject: string;
   text: string;
   html: string;
+  /** Where a human reply lands — EMAIL_FROM is a send-only address with no inbox. */
+  replyTo?: string;
   headers?: Record<string, string>;
 };
 
@@ -63,6 +65,7 @@ export async function sendEmail(payload: SendPayload): Promise<SendResult> {
         subject: payload.subject,
         text: payload.text,
         html: payload.html,
+        ...(payload.replyTo ? { reply_to: payload.replyTo } : {}),
         ...(payload.headers ? { headers: payload.headers } : {}),
       }),
     });

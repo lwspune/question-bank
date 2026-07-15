@@ -20,6 +20,12 @@ import type { Recipient } from "./recommend";
 
 export const SITE_URL = "https://www.pyqvault.com";
 
+/** Replies go to a real, monitored mailbox. `EMAIL_FROM` is a send-only address
+ *  on the verified domain and has no inbox — without this, a student hitting
+ *  Reply just bounces. The sibling English AI Tutor invites replies for exactly
+ *  this reason: a student who can't sign in has no other channel to reach you. */
+export const REPLY_TO = "connect.lwspune@gmail.com";
+
 const BRAND = "PYQ Vault";
 const ACCENT = "#4f46e5"; // indigo-600 — the brand fill (globals.css --brand)
 const INK = "#334155";
@@ -29,6 +35,7 @@ export type BuiltEmail = {
   subject: string;
   text: string;
   html: string;
+  replyTo: string;
   headers: Record<string, string>;
 };
 
@@ -83,6 +90,8 @@ export function buildEmail(r: Recipient, unsubscribeToken: string): BuiltEmail {
     "",
     "It's a real past paper, served exactly as it was set. You get a score, a section split, and every question reviewable with the solution.",
     "",
+    "Stuck, or can't sign in? Just reply to this email — it reaches a person.",
+    "",
     `— ${BRAND}`,
     "",
     "---",
@@ -99,7 +108,8 @@ export function buildEmail(r: Recipient, unsubscribeToken: string): BuiltEmail {
   <p style="margin:0 0 24px">
     <a href="${mockUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">${cta}</a>
   </p>
-  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">It's a real past paper, served exactly as it was set. You get a score, a section split, and every question reviewable with the solution.</p>
+  <p style="margin:0 0 16px;color:${MUTED};font-size:14px">It's a real past paper, served exactly as it was set. You get a score, a section split, and every question reviewable with the solution.</p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Stuck, or can&#39;t sign in? Just reply to this email — it reaches a person.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
   <p style="margin:0;color:#94a3b8;font-size:12px">
@@ -111,6 +121,7 @@ export function buildEmail(r: Recipient, unsubscribeToken: string): BuiltEmail {
     subject,
     text,
     html,
+    replyTo: REPLY_TO,
     headers: {
       // RFC 8058 one-click. Gmail/Outlook render a native unsubscribe control
       // and reward it with better placement; it also gives people an exit that

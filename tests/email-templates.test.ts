@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildEmail, escapeHtml, formatDuration, SITE_URL } from "@/lib/email/templates";
+import { buildEmail, escapeHtml, formatDuration, SITE_URL, REPLY_TO } from "@/lib/email/templates";
 import type { Recipient } from "@/lib/email/recommend";
 
 const MOCK = {
@@ -74,6 +74,22 @@ describe("buildEmail — both templates", () => {
     const url = `${SITE_URL}/mock/nda-2025-sep-maths`;
     expect(e.html).toContain(url);
     expect(e.text).toContain(url);
+  });
+
+  it("routes replies to a monitored mailbox", () => {
+    // The From is a send-only address that doesn't exist, so without this a
+    // student hitting Reply just bounces.
+    const e = build();
+    expect(e.replyTo).toBe(REPLY_TO);
+    expect(REPLY_TO).toContain("@");
+  });
+
+  it("invites a reply in both bodies (a reply-to nobody knows about is useless)", () => {
+    for (const kind of ["next_mock", "first_mock"] as const) {
+      const e = build({ kind });
+      expect(e.text.toLowerCase()).toContain("reply");
+      expect(e.html.toLowerCase()).toContain("reply");
+    }
   });
 
   it("carries a working unsubscribe link in both bodies", () => {
