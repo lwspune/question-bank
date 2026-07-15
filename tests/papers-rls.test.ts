@@ -26,6 +26,9 @@ import {
   reopenPaper,
   deletePaper,
 } from "@/lib/papers/admin";
+import { createBranch } from "@/lib/branches/admin";
+import { createBatch } from "@/lib/batches/admin";
+import { setMemberBranches } from "@/lib/members/admin";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -61,6 +64,8 @@ describe.skipIf(!HAS_ENV)("papers RLS + data layer (migration 0039)", () => {
   let teacherBId: string;
   let q1: string;
   let q2: string;
+  let sharedBranch: string;
+  let sharedBatch: string;
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -150,6 +155,22 @@ describe.skipIf(!HAS_ENV)("papers RLS + data layer (migration 0039)", () => {
     teacherA = await signIn(TEACHER_A);
     teacherA2 = await signIn(TEACHER_A2);
     teacherB = await signIn(TEACHER_B);
+
+    // Teachers are branch-scoped (0057). Collaboration is branch-mediated: put
+    // both org-A teachers in one branch and file the shared paper's batch under
+    // it, so both can see + contribute to it.
+    sharedBranch = await createBranch(adminA, {
+      orgId: orgAId,
+      createdBy: adminAId,
+      fields: { name: `Shared ${RUN_ID}` },
+    });
+    await setMemberBranches(orgAId, teacherAId, [sharedBranch]);
+    await setMemberBranches(orgAId, teacherA2Id, [sharedBranch]);
+    sharedBatch = await createBatch(teacherA, {
+      orgId: orgAId,
+      createdBy: teacherAId,
+      fields: { name: `Shared Batch ${RUN_ID}`, branchId: sharedBranch, examId: null },
+    });
   });
 
   afterAll(async () => {
@@ -170,6 +191,7 @@ describe.skipIf(!HAS_ENV)("papers RLS + data layer (migration 0039)", () => {
       createdBy: teacherAId,
       title: `RLS Paper ${RUN_ID}`,
       template: TEMPLATE,
+      batchId: sharedBatch, // in the shared branch, so teacherA2 can collaborate
     });
     expect(paperId).toBeTruthy();
   });

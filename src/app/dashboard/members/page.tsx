@@ -1,7 +1,10 @@
 import { redirect } from "next/navigation";
 import { getSessionMember } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { listMembers } from "@/lib/members/admin";
+import { listBranches } from "@/lib/branches/admin";
+import { splitBranches } from "@/lib/branches/validate";
 import MembersClient from "./MembersClient";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +18,10 @@ export default async function MembersPage() {
   const members = result.kind === "ok" ? result.members : [];
   const loadError = result.kind === "error" ? result.message : null;
 
+  const { active: branches } = splitBranches(
+    await listBranches(createSupabaseServerClient())
+  );
+
   return (
     <>
       <AppHeader />
@@ -22,8 +29,8 @@ export default async function MembersPage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Members</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {member.orgName} · Manage admins and teachers who can edit
-            questions
+            {member.orgName} · Add admins and teachers, and assign teachers to the
+            branches they build papers for.
           </p>
         </header>
 
@@ -31,6 +38,7 @@ export default async function MembersPage() {
           orgName={member.orgName}
           callerUserId={member.user.id}
           initialMembers={members}
+          branches={branches.map((b) => ({ id: b.id, name: b.name }))}
           loadError={loadError}
         />
       </main>

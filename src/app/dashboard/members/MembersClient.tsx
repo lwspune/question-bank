@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import {
+  Building2,
   KeyRound,
   Loader2,
   ShieldCheck,
@@ -31,26 +32,32 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MIN_PASSWORD_LENGTH, type MemberRole, type MemberRow } from "@/lib/members/admin";
 
+type BranchOption = { id: string; name: string };
+
 type Props = {
   orgName: string;
   callerUserId: string;
   initialMembers: MemberRow[];
+  branches: BranchOption[];
   loadError: string | null;
 };
 
 type DialogState =
   | { kind: "none" }
   | { kind: "reset"; member: MemberRow; password: string }
-  | { kind: "remove"; member: MemberRow };
+  | { kind: "remove"; member: MemberRow }
+  | { kind: "branches"; member: MemberRow; selected: string[] };
 
 export default function MembersClient({
   orgName: _orgName,
   callerUserId,
   initialMembers,
+  branches,
   loadError,
 }: Props) {
   const [members, setMembers] = useState<MemberRow[]>(initialMembers);
   const [busy, setBusy] = useState(false);
+  const branchName = (id: string) => branches.find((b) => b.id === id)?.name ?? "—";
 
   // Add-member form
   const [name, setName] = useState("");
@@ -149,6 +156,24 @@ export default function MembersClient({
     }
   }
 
+  async function onSaveBranches() {
+    if (dialog.kind !== "branches") return;
+    setBusy(true);
+    const res = await callMembers({
+      action: "set_branches",
+      userId: dialog.member.userId,
+      branchIds: dialog.selected,
+    });
+    setBusy(false);
+    if (res.ok) {
+      toast.success(`Branches updated for ${dialog.member.name ?? dialog.member.email}`);
+      setDialog({ kind: "none" });
+      await refresh();
+    } else {
+      toast.error(res.error || "Couldn't update branches");
+    }
+  }
+
   return (
     <div className="space-y-6">
       {loadError && (
@@ -219,10 +244,10 @@ export default function MembersClient({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="TEACHER">
-                    Teacher — can edit questions
+                    Teacher — builds papers for assigned branches
                   </SelectItem>
                   <SelectItem value="ADMIN">
-                    Admin — full access (upload, delete, members)
+                    Admin — manages the org (branches, members, papers)
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -272,7 +297,37 @@ export default function MembersClient({
                       <div className="truncate text-xs text-muted-foreground">
                         {m.email}
                       </div>
+                      {m.role === "TEACHER" && (
+                        <div className="mt-1 flex flex-wrap items-center gap-1">
+                          {m.branchIds.length === 0 ? (
+                            <span className="text-xs italic text-muted-foreground">
+                              No branches assigned
+                            </span>
+                          ) : (
+                            m.branchIds.map((id) => (
+                              <Badge key={id} variant="secondary" className="text-[10px]">
+                                {branchName(id)}
+                              </Badge>
+                            ))
+                          )}
+                        </div>
+                      )}
                     </div>
+                    {m.role === "TEACHER" && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          setDialog({ kind: "branches", member: m, selected: [...m.branchIds] })
+                        }
+                        disabled={busy || branches.length === 0}
+                        title={branches.length === 0 ? "Create a branch first" : "Assign branches"}
+                      >
+                        <Building2 className="mr-1 h-3.5 w-3.5" aria-hidden />
+                        Branches
+                      </Button>
+                    )}
                     <Select
                       value={m.role}
                       onValueChange={(v) => onChangeRole(m, v as MemberRole)}
@@ -398,6 +453,58 @@ export default function MembersClient({
             >
               {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
               Remove
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={dialog.kind === "branches"}
+        onOpenChange={(v) => !v && setDialog({ kind: "none" })}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Assign branches</DialogTitle>
+            <DialogDescription>
+              {dialog.kind === "branches"
+                ? `${dialog.member.name ?? dialog.member.email} can build papers only for the branches you select.`
+                : null}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="max-h-72 space-y-1 overflow-y-auto">
+            {branches.map((b) => {
+              const checked = dialog.kind === "branches" && dialog.selected.includes(b.id);
+              return (
+                <label
+                  key={b.id}
+                  className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+                >
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    disabled={busy}
+                    onChange={(e) =>
+                      setDialog((prev) => {
+                        if (prev.kind !== "branches") return prev;
+                        const set = new Set(prev.selected);
+                        if (e.target.checked) set.add(b.id);
+                        else set.delete(b.id);
+                        return { ...prev, selected: Array.from(set) };
+                      })
+                    }
+                  />
+                  {b.name}
+                </label>
+              );
+            })}
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setDialog({ kind: "none" })} disabled={busy}>
+              Cancel
+            </Button>
+            <Button onClick={onSaveBranches} disabled={busy}>
+              {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
+              Save
             </Button>
           </DialogFooter>
         </DialogContent>

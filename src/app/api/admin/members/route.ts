@@ -6,6 +6,7 @@ import {
   removeMember,
   resetMemberPassword,
   updateMemberRole,
+  setMemberBranches,
   type MemberRole,
 } from "@/lib/members/admin";
 
@@ -16,7 +17,8 @@ type Body =
   | { action: "create"; email: string; password: string; name: string; role: MemberRole }
   | { action: "reset"; userId: string; newPassword: string }
   | { action: "remove"; userId: string }
-  | { action: "update_role"; userId: string; role: MemberRole };
+  | { action: "update_role"; userId: string; role: MemberRole }
+  | { action: "set_branches"; userId: string; branchIds: string[] };
 
 export async function POST(request: NextRequest) {
   try {
@@ -60,6 +62,18 @@ export async function POST(request: NextRequest) {
             return err500(result.message);
         }
         break;
+      }
+      case "set_branches": {
+        if (!body.userId || !Array.isArray(body.branchIds)) {
+          return bad("userId and branchIds are required");
+        }
+        const result = await setMemberBranches(
+          member.orgId,
+          body.userId,
+          body.branchIds.filter((x): x is string => typeof x === "string")
+        );
+        if (result.kind === "error") return err500(result.message);
+        return NextResponse.json({ ok: true });
       }
       case "reset": {
         const result = await resetMemberPassword(
