@@ -51,6 +51,7 @@ export default function QuestionCard({
   supabaseUrl,
   hideContext = false,
   includeExam = false,
+  hideCart = false,
   resources,
 }: {
   question: QuestionRow;
@@ -63,6 +64,13 @@ export default function QuestionCard({
   hideContext?: boolean;
   /** Surface the exam in the breadcrumb (used when no exam filter is active). */
   includeExam?: boolean;
+  /**
+   * Suppress the cart toggle + its in-cart ring. Set on surfaces where "Add to
+   * paper" is meaningless because the question is already committed to a paper
+   * (the paper editor) — the cart is a separate, global, localStorage selection
+   * for building a DIFFERENT paper, so offering it there misleads.
+   */
+  hideCart?: boolean;
   /** Optional links to strategy guide + concept notes that explain this question's lever. */
   resources?: QuestionResources;
 }) {
@@ -76,7 +84,7 @@ export default function QuestionCard({
   // model answer in `solution`, shown via the reveal button below.
   const isSubjective = question.questionFormat === "subjective";
   const cart = useCart();
-  const inCart = cart.has(question.id);
+  const inCart = !hideCart && cart.has(question.id);
 
   // Metered answer reveal: anon viewers get a few free reveals, then a sign-in
   // nudge. A question already revealed is free to re-open (no double-charge).
@@ -188,11 +196,13 @@ export default function QuestionCard({
             />
           </button>
           <BookmarkButton questionId={question.id} />
-          <CartToggle
-            inCart={inCart}
-            disabled={cart.isFull && !inCart}
-            onClick={onToggleCart}
-          />
+          {!hideCart && (
+            <CartToggle
+              inCart={inCart}
+              disabled={cart.isFull && !inCart}
+              onClick={onToggleCart}
+            />
+          )}
         </div>
 
         <button
