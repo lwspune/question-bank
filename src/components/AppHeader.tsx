@@ -21,10 +21,9 @@ export default async function AppHeader() {
     : user
       ? { email: user.email, role: null }
       : null;
-  // Brand link lands ADMINs on /dashboard (their home for upload/reports/
-  // members tooling), signed-in students on /me (their account home), and
-  // TEACHER + anon on /browse — the surface where editor + reader workflows
-  // actually live.
+  // Brand link lands ADMINs on /dashboard (their home for reports/members/
+  // branches tooling), signed-in students on /me (their account home), and
+  // TEACHER + anon on /browse — where teachers pick questions and build papers.
   const homeHref =
     member?.role === "ADMIN"
       ? "/dashboard"
