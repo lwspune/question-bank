@@ -32,7 +32,11 @@ export async function POST(_request: Request, { params }: { params: { token: str
     const db = createSupabaseAdminClient();
     const { data, error } = await db
       .from("student_profiles")
-      .update({ email_opt_out: true })
+      // updated_at is stamped EXPLICITLY: student_profiles has no updated_at
+      // trigger (the column's DEFAULT now() only fires on INSERT), so without
+      // this the row keeps its creation time and we lose the one fact consent
+      // withdrawal has to record — WHEN they opted out.
+      .update({ email_opt_out: true, updated_at: new Date().toISOString() })
       .eq("unsubscribe_token", token)
       .select("user_id");
     if (error) throw error;
