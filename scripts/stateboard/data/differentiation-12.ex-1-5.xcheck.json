@@ -1,0 +1,240 @@
+[
+  {
+    "ref": "Ex 1.5 Q.1 (i)",
+    "verdict": "AGREE",
+    "our_answer": "40x^3 - 24x - 12/x^4",
+    "book_answer": "40x^3 - 24x - 12/x^4",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.1 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "2e^{2x}(2 tan x + 2 sec^2 x + sec^2 x tan x)",
+    "book_answer": "2e^{2x}(1 + tan x)(2 + tan x + tan^2 x)",
+    "evidence": "Different surface form, same value. With t = tan x, sec^2 x = 1+t^2: ours = 2e^{2x}(t^3+2t^2+3t+2); book = 2e^{2x}(1+t)(2+t+t^2) = 2e^{2x}(t^3+2t^2+3t+2). Both match mpmath diff(e^{2x}tan x, x, 2) at dps=50 to |diff| < 1e-48 at x = 0.4 and 1.1."
+  },
+  {
+    "ref": "Ex 1.5 Q.1 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "-e^{4x}(9 cos 5x + 40 sin 5x)",
+    "book_answer": "-e^{4x}(9 cos 5x + 40 sin 5x)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.1 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "x(6 log x + 5)",
+    "book_answer": "x(5 + 6 log x)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.1 (v)",
+    "verdict": "AGREE",
+    "our_answer": "-(1 + log x)/(x^2 (log x)^2)",
+    "book_answer": "-(1 + log x)/(x log x)^2",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.1 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "x^x[(1 + log x)^2 + 1/x]",
+    "book_answer": "x^{x-1} + x^x (1 + log x)^2",
+    "evidence": "Same value, factored differently: x^x * (1/x) = x^{x-1}, so ours expands to exactly the book's form. Both match mpmath diff(x^x, x, 2) at dps=50 at x = 1.4 and 2.6. NOTE ON LABELLING: the book prints this key under a duplicate label '(iv)' (it lists (iv), (v), then (iv) again). Matched by content (x^x), per the known book labelling misprint; it is our (vi)."
+  },
+  {
+    "ref": "Ex 1.5 Q.2 (i)",
+    "verdict": "AGREE",
+    "our_answer": "-(1/(4a)) cosec^4(theta/2)",
+    "book_answer": "-(1/(4a)) cosec^4(theta/2)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.2 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "-1/(4at^3)",
+    "book_answer": "-1/(4at^3)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.2 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "6",
+    "book_answer": "6",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.2 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "-2*sqrt(2)*b/a^2",
+    "book_answer": "-2*sqrt(2)*b/a^2",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (i)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: xy*y'' + a = 0 -- verified",
+    "book_answer": null,
+    "evidence": "Q.3 is entirely show-that; the Ex 1.5 key block prints only (1), (2) and (4) -- there is no (3). Target verified independently: d2y/dx2 computed from the LOCAL INVERSE of x=at^2 (solve x(t)=X numerically, then y(t)), never the parametric chain rule used in our solution. Residual |xy*y''+a| < 1e-50 at t = 1.3 and 2.4 (a=1.7), dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (ii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: (1+x^2)y'' + (2x-m)y' = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by direct numeric differentiation of y = e^{m arctan x}: residual < 1e-50 at x = 0.7 and 2.1 (m=1.3), dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (iii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: (1-x^2)y'' - x*y' - m^2*y = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified via the local inverse of x=cos t (independent of the chain rule): residual < 1e-49 at t = 0.9 and 2.0 (m=1.3), dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (iv)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: cos^2 x * y'' - 2y + 2x = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by numeric differentiation of y = x + tan x: residual < 1e-49 at x = 0.5 and 1.2, dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (v)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: y2 - 2a*y1 + (a^2+b^2)y = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by numeric differentiation of y = e^{ax} sin bx: residual < 1e-49 at x = 0.4 and 1.6 (a=1.7, b=2.3), dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (vi)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: d2y/dx2 = 0 -- verified (the relation forces y = cx, a straight line)",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Verified the load-bearing step rather than assuming it: with k = sec m fixed and c = cbrt(7(1-k)/(5(1+k))), the ratio (7x^3 - 5y^3)/(7x^3 + 5y^3) evaluated on y = cx is CONSTANT in x (spread < 1e-50 across x = 1.1, 2.3, 3.7) and equals k. So the relation does define y = cx, which is linear, hence y'' = 0 identically."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (vii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: 4(x^2-1)y2 + 4x*y1 - y = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by numeric differentiation of 2y = sqrt(x+1)+sqrt(x-1): residual < 1e-50 at x = 1.6 and 3.3, dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (viii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: (x^2+a^2)y'' + x*y' = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by numeric differentiation of y = m log(x + sqrt(x^2+a^2)): residual < 1e-50 at x = 0.8 and 2.5 (a=1.7, m=1.3), dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (ix)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: (1-x^2)y'' - x*y' + m^2*y = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by numeric differentiation of y = sin(m arccos x): residual < 1e-50 at x = 0.3 and 0.75 (m=1.3), dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (x)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: x*y2 + y1(1 + x*y1) = 0 -- verified",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Target verified by numeric differentiation of y = log(log 2x): residual < 1e-50 at x = 1.4 and 3.1, dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (xi)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: d2y/dx2 = 80/(3x+y)^3 -- verified (holds ON the constraint curve)",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Verified ON the curve rather than by a raw simplify (a raw simplify leaves 8(x^2+6xy+y^2-10), which is zero only on the curve -- not an error). Solved x^2+6xy+y^2=10 for y at each x, defined y(x) implicitly by findroot, and numerically differentiated twice: y'' matched 80/(3x+y)^3 to residual < 1e-51 at (x,y) = (1.0, 1.24264), (0.5, 1.96410), (2.0, 0.48074). dps=50."
+  },
+  {
+    "ref": "Ex 1.5 Q.3 (xii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "show-that: d2y/dx2 = -(x^2+y^2)/y^3 -- verified, sign confirmed",
+    "book_answer": null,
+    "evidence": "No book key (show-that). Sign checked specifically, via the local inverse of x = a sin t - b cos t (independent of the chain rule): y'' matched -(x^2+y^2)/y^3 to residual < 1e-49 at t = 0.6, 1.9, 3.4 (a=1.7, b=2.3), while the opposite-sign variant +(x^2+y^2)/y^3 left residuals of 0.83, 3.80, 1.47. The printed minus sign is correct."
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (i)",
+    "verdict": "AGREE",
+    "our_answer": "m(m-1)...(m-n+1) a^n (ax+b)^{m-n}; = m!/(m-n)! a^n (ax+b)^{m-n} when m is a positive integer with m >= n",
+    "book_answer": "d^n y/dx^n = m! a^n (ax+b)^{m-n}/(m-n)! if m>0, m>n;  = 0 if m>0, m<n;  = n! a^n if m>0, m=n",
+    "evidence": "Same mathematics; ours states the single general falling-factorial form, the book splits it into three cases. Verified our form against sympy's actual k-th derivative for k=1..4 with symbolic m (exact match). The book's cases are then consequences of it: (a) m>n -- ff(m,n) - m!/(m-n)! simplifies to exactly 0; (b) m a positive integer < n -- sympy's k-th derivative is 0 and our falling factorial contains a zero factor, so both give 0 (checked m=3,4 for k=m+1..m+3); (c) m=n -- sympy's n-th derivative equals n! a^n equals our form (checked m=2,3,5). No disagreement."
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "(-1)^n n!/x^{n+1}",
+    "book_answer": "(-1)^n n!/x^{n+1}",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "a^n e^{ax+b}",
+    "book_answer": "a^n e^{ax+b}",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "p^n (log a)^n a^{px+q}",
+    "book_answer": "p^n a^{px+q} (log a)^n",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (v)",
+    "verdict": "AGREE",
+    "our_answer": "(-1)^{n-1}(n-1)! a^n/(ax+b)^n",
+    "book_answer": "(-1)^{n-1}(n-1)! a^n/(ax+b)^n",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "cos(x + n*pi/2)",
+    "book_answer": "cos(n*pi/2 + x)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (vii)",
+    "verdict": "AGREE",
+    "our_answer": "a^n sin(ax + b + n*pi/2)",
+    "book_answer": "a^n sin(n*pi/2 + ax + b)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (viii)",
+    "verdict": "AGREE",
+    "our_answer": "(-2)^n cos(3 - 2x + n*pi/2)",
+    "book_answer": "(-2)^n cos(n*pi/2 + 3 - 2x)",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (ix)",
+    "verdict": "AGREE",
+    "our_answer": "(-1)^{n-1}(n-1)! 2^n/(2x+3)^n",
+    "book_answer": "(-1)^{n-1}(n-1)! 2^n/(2x+3)^n",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (x)",
+    "verdict": "AGREE",
+    "our_answer": "(-1)^n n! 3^n/(3x-5)^{n+1}",
+    "book_answer": "(-1)^n n! 3^n/(3x-5)^{n+1}",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (xi)",
+    "verdict": "AGREE",
+    "our_answer": "(a^2+b^2)^{n/2} e^{ax} cos(bx + c + n*alpha), alpha = arctan(b/a)",
+    "book_answer": "e^{ax}(a^2+b^2)^{n/2} cos[bx + c + n arctan(b/a)]",
+    "evidence": null
+  },
+  {
+    "ref": "Ex 1.5 Q.4 (xii)",
+    "verdict": "AGREE",
+    "our_answer": "10^n e^{8x} cos(6x + 7 + n arctan(3/4))",
+    "book_answer": "e^{8x}(10)^n cos[6x + 7 + n arctan(3/4)]",
+    "evidence": null
+  }
+]

@@ -1,0 +1,266 @@
+[
+  {
+    "id": "89c4b23c-1cd7-40d0-9b84-5ed218346e82",
+    "ref": "Ex 1.3 Q.1 (i)",
+    "solution": "[Textbook answer-key error: the printed key reprints the function with the denominator \\((x+3)^3(x+3)^4\\); the question's first factor is \\((x+2)^3\\), as the key's own bracket term \\(-\\frac{3}{x+2}\\) confirms. The multiplier bracket is correct.]\n\nLet \\(y = \\frac{(x+1)^2}{(x+2)^3\\,(x+3)^4}\\).\nTaking \\(\\log\\) of both sides and using \\(\\log\\frac{a}{b} = \\log a - \\log b\\) and \\(\\log a^n = n\\log a\\),\n\\(\\log y = 2\\log(x+1) - 3\\log(x+2) - 4\\log(x+3)\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{2}{x+1} - \\frac{3}{x+2} - \\frac{4}{x+3}\\)\n\\(\\therefore \\frac{dy}{dx} = y\\left[\\frac{2}{x+1} - \\frac{3}{x+2} - \\frac{4}{x+3}\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{(x+1)^2}{(x+2)^3\\,(x+3)^4}\\left[\\frac{2}{x+1} - \\frac{3}{x+2} - \\frac{4}{x+3}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "be78e593-b910-4971-95bc-a7a67da1ca50",
+    "ref": "Ex 1.3 Q.1 (ii)",
+    "solution": "Let \\(y = \\sqrt[3]{\\frac{4x-1}{(2x+3)\\,(5-2x)^2}} = \\left[\\frac{4x-1}{(2x+3)\\,(5-2x)^2}\\right]^{\\frac{1}{3}}\\).\nTaking \\(\\log\\) of both sides,\n\\(\\log y = \\frac{1}{3}\\left[\\log(4x-1) - \\log(2x+3) - 2\\log(5-2x)\\right]\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{3}\\left[\\frac{4}{4x-1} - \\frac{2}{2x+3} - 2\\cdot\\frac{-2}{5-2x}\\right]\\)\n\\(\\therefore \\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{3}\\left[\\frac{4}{4x-1} - \\frac{2}{2x+3} + \\frac{4}{5-2x}\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{1}{3}\\sqrt[3]{\\frac{4x-1}{(2x+3)\\,(5-2x)^2}}\\left[\\frac{4}{4x-1} - \\frac{2}{2x+3} + \\frac{4}{5-2x}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "bbb45e1d-8953-4ddd-b9e4-38f222bd8f2f",
+    "ref": "Ex 1.3 Q.1 (iii)",
+    "solution": "Let \\(y = (x^2+3)^{\\frac{3}{2}}\\cdot\\sin^3 2x\\cdot 2^{x^2}\\).\nTaking \\(\\log\\) of both sides and using \\(\\log(abc) = \\log a + \\log b + \\log c\\),\n\\(\\log y = \\frac{3}{2}\\log(x^2+3) + 3\\log(\\sin 2x) + x^2\\log 2\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{3}{2}\\cdot\\frac{2x}{x^2+3} + 3\\cdot\\frac{2\\cos 2x}{\\sin 2x} + 2x\\log 2\\)\n\\(\\therefore \\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{3x}{x^2+3} + 6\\cot 2x + 2x\\log 2\\)\n\\(\\therefore \\frac{dy}{dx} = (x^2+3)^{\\frac{3}{2}}\\cdot\\sin^3 2x\\cdot 2^{x^2}\\left[\\frac{3x}{x^2+3} + 6\\cot 2x + 2x\\log 2\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "805c1e93-ab98-4310-bea4-4f64e522d3bf",
+    "ref": "Ex 1.3 Q.1 (iv)",
+    "solution": "Let \\(y = \\frac{(x^2+2x+2)^{\\frac{3}{2}}}{(\\sqrt{x}+3)^3\\,(\\cos x)^x}\\).\nTaking \\(\\log\\) of both sides,\n\\(\\log y = \\frac{3}{2}\\log(x^2+2x+2) - 3\\log(\\sqrt{x}+3) - x\\log(\\cos x)\\)\nDifferentiating both sides w.r.t. \\(x\\) (the last term needs the product rule),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{3}{2}\\cdot\\frac{2x+2}{x^2+2x+2} - 3\\cdot\\frac{\\frac{1}{2\\sqrt{x}}}{\\sqrt{x}+3} - \\left[1\\cdot\\log(\\cos x) + x\\cdot\\frac{-\\sin x}{\\cos x}\\right]\\)\n\\(\\therefore \\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{3(x+1)}{x^2+2x+2} - \\frac{3}{2\\sqrt{x}\\,(\\sqrt{x}+3)} - \\log(\\cos x) + x\\tan x\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{(x^2+2x+2)^{\\frac{3}{2}}}{(\\sqrt{x}+3)^3\\,(\\cos x)^x}\\left[\\frac{3(x+1)}{x^2+2x+2} - \\frac{3}{2\\sqrt{x}\\,(\\sqrt{x}+3)} - \\log(\\cos x) + x\\tan x\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6886ef83-ee83-4045-89c0-7c73edc3abec",
+    "ref": "Ex 1.3 Q.1 (v)",
+    "solution": "Let \\(y = \\frac{x^5\\cdot\\tan^3 4x}{\\sin^2 3x}\\).\nTaking \\(\\log\\) of both sides,\n\\(\\log y = 5\\log x + 3\\log(\\tan 4x) - 2\\log(\\sin 3x)\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{5}{x} + 3\\cdot\\frac{4\\sec^2 4x}{\\tan 4x} - 2\\cdot\\frac{3\\cos 3x}{\\sin 3x}\\)\n\\(\\therefore \\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{5}{x} + \\frac{12\\sec^2 4x}{\\tan 4x} - 6\\cot 3x\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^5\\cdot\\tan^3 4x}{\\sin^2 3x}\\left[\\frac{5}{x} + \\frac{12\\sec^2 4x}{\\tan 4x} - 6\\cot 3x\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "9ced4a50-7e51-4f14-b9e7-6da7bbea08c5",
+    "ref": "Ex 1.3 Q.1 (vi)",
+    "solution": "Let \\(y = x^{\\tan^{-1} x}\\). Since both the base and the index contain \\(x\\), take \\(\\log\\) of both sides:\n\\(\\log y = \\tan^{-1} x\\cdot\\log x\\)\nDifferentiating both sides w.r.t. \\(x\\) (product rule on the right),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{1+x^2}\\cdot\\log x + \\tan^{-1} x\\cdot\\frac{1}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = x^{\\tan^{-1} x}\\left[\\frac{\\log x}{1+x^2} + \\frac{\\tan^{-1} x}{x}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "b2599b0b-e5d3-4b22-8c6b-fb7ee42b77a7",
+    "ref": "Ex 1.3 Q.1 (vii)",
+    "solution": "Let \\(y = (\\sin x)^x\\). Taking \\(\\log\\) of both sides,\n\\(\\log y = x\\log(\\sin x)\\)\nDifferentiating both sides w.r.t. \\(x\\) (product rule on the right),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = 1\\cdot\\log(\\sin x) + x\\cdot\\frac{\\cos x}{\\sin x}\\)\n\\(\\therefore \\frac{1}{y}\\cdot\\frac{dy}{dx} = \\log(\\sin x) + x\\cot x\\)\n\\(\\therefore \\frac{dy}{dx} = (\\sin x)^x\\left[\\log(\\sin x) + x\\cot x\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "14b2dfcd-49d3-4eb1-8476-ffcdee362b32",
+    "ref": "Ex 1.3 Q.1 (viii)",
+    "solution": "Let \\(y = \\sin x^x\\), that is \\(y = \\sin(x^x)\\).\nFirst find the derivative of \\(u = x^x\\) by logarithmic differentiation.\nTaking \\(\\log\\) of both sides, \\(\\log u = x\\log x\\).\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = 1\\cdot\\log x + x\\cdot\\frac{1}{x} = \\log x + 1\\)\n\\(\\therefore \\frac{du}{dx} = x^x(1+\\log x)\\)\nNow \\(y = \\sin u\\), so by the chain rule,\n\\(\\frac{dy}{dx} = \\cos u\\cdot\\frac{du}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\cos(x^x)\\cdot x^x(1+\\log x)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "175b55c2-cc64-48c8-86a7-28c3affac3ff",
+    "ref": "Ex 1.3 Q.2 (i)",
+    "solution": "Let \\(y = x^e + x^x + e^x + e^e\\).\nNote the four terms are of four different types: \\(x^e\\) has a constant index (power rule), \\(x^x\\) has a variable base and variable index (logarithmic differentiation), \\(e^x\\) is a standard exponential, and \\(e^e\\) is a constant.\nFor \\(u = x^x\\): taking \\(\\log\\), \\(\\log u = x\\log x\\), so\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = \\log x + 1\\), giving \\(\\frac{du}{dx} = x^x(1+\\log x)\\).\nDifferentiating \\(y\\) term by term w.r.t. \\(x\\),\n\\(\\frac{dy}{dx} = e\\,x^{e-1} + x^x(1+\\log x) + e^x + 0\\)\n\\(\\therefore \\frac{dy}{dx} = e\\,x^{e-1} + x^x(1+\\log x) + e^x\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "3756093b-f995-4286-9f41-7ef2888af54f",
+    "ref": "Ex 1.3 Q.2 (ii)",
+    "solution": "Let \\(y = x^{x^x} + e^{x^x} = u + v\\), where \\(u = x^{x^x}\\) and \\(v = e^{x^x}\\).\nFirst, for \\(t = x^x\\): \\(\\log t = x\\log x\\), so \\(\\frac{1}{t}\\cdot\\frac{dt}{dx} = \\log x + 1\\), giving\n\\(\\frac{dt}{dx} = x^x(1+\\log x)\\).\nFor \\(u = x^{x^x}\\), taking \\(\\log\\) of both sides,\n\\(\\log u = x^x\\cdot\\log x\\)\nDifferentiating w.r.t. \\(x\\) (product rule),\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = x^x(1+\\log x)\\cdot\\log x + x^x\\cdot\\frac{1}{x}\\)\n\\(\\therefore \\frac{du}{dx} = x^{x^x}\\cdot x^x\\left[\\log x\\,(1+\\log x) + \\frac{1}{x}\\right]\\)\nFor \\(v = e^{x^x}\\), by the chain rule,\n\\(\\frac{dv}{dx} = e^{x^x}\\cdot\\frac{dt}{dx} = e^{x^x}\\cdot x^x(1+\\log x)\\)\n\\(\\therefore \\frac{dy}{dx} = x^{x^x}\\cdot x^x\\left[\\log x\\,(1+\\log x) + \\frac{1}{x}\\right] + e^{x^x}\\cdot x^x(1+\\log x)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "25bd3b9d-1966-4dcb-9b33-9628fbb13e37",
+    "ref": "Ex 1.3 Q.2 (iii)",
+    "solution": "Let \\(y = (\\log x)^x - (\\cos x)^{\\cot x} = u - v\\).\nFor \\(u = (\\log x)^x\\), taking \\(\\log\\) of both sides,\n\\(\\log u = x\\cdot\\log(\\log x)\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = 1\\cdot\\log(\\log x) + x\\cdot\\frac{1}{\\log x}\\cdot\\frac{1}{x} = \\log(\\log x) + \\frac{1}{\\log x}\\)\n\\(\\therefore \\frac{du}{dx} = (\\log x)^x\\left[\\log(\\log x) + \\frac{1}{\\log x}\\right]\\)\nFor \\(v = (\\cos x)^{\\cot x}\\), taking \\(\\log\\) of both sides,\n\\(\\log v = \\cot x\\cdot\\log(\\cos x)\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = -\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) + \\cot x\\cdot\\frac{-\\sin x}{\\cos x}\\)\n\\(\\therefore \\frac{1}{v}\\cdot\\frac{dv}{dx} = -\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) - 1\\)\n\\(\\therefore \\frac{dv}{dx} = -(\\cos x)^{\\cot x}\\left[\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) + 1\\right]\\)\nHence \\(\\frac{dy}{dx} = \\frac{du}{dx} - \\frac{dv}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = (\\log x)^x\\left[\\log(\\log x) + \\frac{1}{\\log x}\\right] + (\\cos x)^{\\cot x}\\left[\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) + 1\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "cb2c6245-4aa7-42f1-b2d3-a9411178930c",
+    "ref": "Ex 1.3 Q.2 (iv)",
+    "solution": "Let \\(y = x^{e^x} + (\\log x)^{\\sin x} = u + v\\).\nFor \\(u = x^{e^x}\\), taking \\(\\log\\) of both sides,\n\\(\\log u = e^x\\cdot\\log x\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = e^x\\cdot\\log x + e^x\\cdot\\frac{1}{x}\\)\n\\(\\therefore \\frac{du}{dx} = x^{e^x}\\cdot e^x\\left[\\log x + \\frac{1}{x}\\right]\\)\nFor \\(v = (\\log x)^{\\sin x}\\), taking \\(\\log\\) of both sides,\n\\(\\log v = \\sin x\\cdot\\log(\\log x)\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = \\cos x\\cdot\\log(\\log x) + \\sin x\\cdot\\frac{1}{\\log x}\\cdot\\frac{1}{x}\\)\n\\(\\therefore \\frac{dv}{dx} = (\\log x)^{\\sin x}\\left[\\cos x\\cdot\\log(\\log x) + \\frac{\\sin x}{x\\log x}\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = x^{e^x}\\cdot e^x\\left[\\log x + \\frac{1}{x}\\right] + (\\log x)^{\\sin x}\\left[\\cos x\\cdot\\log(\\log x) + \\frac{\\sin x}{x\\log x}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f2121683-9ab7-4440-8c5d-fdf098f62c90",
+    "ref": "Ex 1.3 Q.2 (v)",
+    "solution": "Let \\(y = e^{\\tan x} + (\\log x)^{\\tan x} = u + v\\).\nFor \\(u = e^{\\tan x}\\), by the chain rule,\n\\(\\frac{du}{dx} = e^{\\tan x}\\cdot\\sec^2 x\\)\nFor \\(v = (\\log x)^{\\tan x}\\), taking \\(\\log\\) of both sides,\n\\(\\log v = \\tan x\\cdot\\log(\\log x)\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = \\sec^2 x\\cdot\\log(\\log x) + \\tan x\\cdot\\frac{1}{\\log x}\\cdot\\frac{1}{x}\\)\n\\(\\therefore \\frac{dv}{dx} = (\\log x)^{\\tan x}\\left[\\sec^2 x\\cdot\\log(\\log x) + \\frac{\\tan x}{x\\log x}\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = e^{\\tan x}\\sec^2 x + (\\log x)^{\\tan x}\\left[\\sec^2 x\\cdot\\log(\\log x) + \\frac{\\tan x}{x\\log x}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "039da142-45b2-4ab7-9f6f-1ea2cc798899",
+    "ref": "Ex 1.3 Q.2 (vi)",
+    "solution": "[Textbook answer-key error: the printed key ADDS the second term. For \\(v=(\\cos x)^{\\cot x}\\), \\(\\frac{v'}{v}=-\\operatorname{cosec}^2x\\log(\\cos x)-1\\), so the bracket carries an intrinsic minus and the term must be SUBTRACTED. The same string is correct in Q.2 (iii), whose question subtracts the two functions.]\n\nLet \\(y = (\\sin x)^{\\tan x} + (\\cos x)^{\\cot x} = u + v\\).\nFor \\(u = (\\sin x)^{\\tan x}\\), taking \\(\\log\\) of both sides,\n\\(\\log u = \\tan x\\cdot\\log(\\sin x)\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = \\sec^2 x\\cdot\\log(\\sin x) + \\tan x\\cdot\\frac{\\cos x}{\\sin x} = \\sec^2 x\\cdot\\log(\\sin x) + \\tan x\\cdot\\cot x\\)\n\\(\\therefore \\frac{du}{dx} = (\\sin x)^{\\tan x}\\left[\\sec^2 x\\cdot\\log(\\sin x) + 1\\right]\\)\nFor \\(v = (\\cos x)^{\\cot x}\\), taking \\(\\log\\) of both sides,\n\\(\\log v = \\cot x\\cdot\\log(\\cos x)\\)\nDifferentiating w.r.t. \\(x\\),\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = -\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) + \\cot x\\cdot\\frac{-\\sin x}{\\cos x}\\)\n\\(\\therefore \\frac{dv}{dx} = (\\cos x)^{\\cot x}\\left[-\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) - 1\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = (\\sin x)^{\\tan x}\\left[\\sec^2 x\\cdot\\log(\\sin x) + 1\\right] - (\\cos x)^{\\cot x}\\left[\\operatorname{cosec}^2 x\\cdot\\log(\\cos x) + 1\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "cc6e776a-f5d5-4cd4-93c3-0018b95216d9",
+    "ref": "Ex 1.3 Q.2 (vii)",
+    "solution": "Let \\(y = 10^{x^x} + x^{x^{10}} + x^{10^x} = u + v + w\\).\nRecall for \\(t = x^x\\): \\(\\log t = x\\log x\\) gives \\(\\frac{dt}{dx} = x^x(1+\\log x)\\).\nFor \\(u = 10^{x^x}\\), taking \\(\\log\\) of both sides,\n\\(\\log u = x^x\\cdot\\log 10\\)\n\\(\\therefore \\frac{1}{u}\\cdot\\frac{du}{dx} = x^x(1+\\log x)\\log 10\\)\n\\(\\therefore \\frac{du}{dx} = 10^{x^x}\\cdot x^x(1+\\log x)\\log 10\\)\nFor \\(v = x^{x^{10}}\\), taking \\(\\log\\) of both sides,\n\\(\\log v = x^{10}\\cdot\\log x\\)\n\\(\\therefore \\frac{1}{v}\\cdot\\frac{dv}{dx} = 10x^9\\cdot\\log x + x^{10}\\cdot\\frac{1}{x} = x^9\\left(10\\log x + 1\\right)\\)\n\\(\\therefore \\frac{dv}{dx} = x^{x^{10}}\\cdot x^9\\left(10\\log x + 1\\right)\\)\nFor \\(w = x^{10^x}\\), taking \\(\\log\\) of both sides,\n\\(\\log w = 10^x\\cdot\\log x\\)\n\\(\\therefore \\frac{1}{w}\\cdot\\frac{dw}{dx} = 10^x\\log 10\\cdot\\log x + 10^x\\cdot\\frac{1}{x}\\)\n\\(\\therefore \\frac{dw}{dx} = x^{10^x}\\cdot 10^x\\left[\\log 10\\cdot\\log x + \\frac{1}{x}\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = 10^{x^x}\\cdot x^x(1+\\log x)\\log 10 + x^{x^{10}}\\cdot x^9\\left(10\\log x + 1\\right) + x^{10^x}\\cdot 10^x\\left[\\log 10\\cdot\\log x + \\frac{1}{x}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "9e375dff-0a90-4023-a429-23a603e68155",
+    "ref": "Ex 1.3 Q.2 (viii)",
+    "solution": "Let \\(y = \\left[(\\tan x)^{\\tan x}\\right]^{\\tan x}\\).\nUsing \\((a^m)^n = a^{mn}\\), \\(y = (\\tan x)^{\\tan^2 x}\\).\nTaking \\(\\log\\) of both sides,\n\\(\\log y = \\tan^2 x\\cdot\\log(\\tan x)\\)\nDifferentiating both sides w.r.t. \\(x\\) (product rule),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = 2\\tan x\\sec^2 x\\cdot\\log(\\tan x) + \\tan^2 x\\cdot\\frac{\\sec^2 x}{\\tan x}\\)\n\\(\\therefore \\frac{1}{y}\\cdot\\frac{dy}{dx} = \\tan x\\sec^2 x\\left[2\\log(\\tan x) + 1\\right]\\)\n\\(\\therefore \\frac{dy}{dx} = (\\tan x)^{\\tan^2 x}\\cdot\\tan x\\sec^2 x\\left[2\\log(\\tan x) + 1\\right]\\)\nNow put \\(x = \\frac{\\pi}{4}\\). Here \\(\\tan\\frac{\\pi}{4} = 1\\), \\(\\sec^2\\frac{\\pi}{4} = 2\\) and \\(\\log(\\tan\\frac{\\pi}{4}) = \\log 1 = 0\\), so \\(y = 1^1 = 1\\).\n\\(\\therefore \\left(\\frac{dy}{dx}\\right)_{x = \\frac{\\pi}{4}} = 1\\cdot 1\\cdot 2\\left[2(0) + 1\\right] = 2\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "bf8a35e7-538a-4728-bd56-3029c57d729e",
+    "ref": "Ex 1.3 Q.3 (i)",
+    "solution": "\\(\\sqrt{x} + \\sqrt{y} = \\sqrt{a}\\), where \\(a\\) is a constant.\nDifferentiating both sides w.r.t. \\(x\\), treating \\(y\\) as a function of \\(x\\),\n\\(\\frac{1}{2\\sqrt{x}} + \\frac{1}{2\\sqrt{y}}\\cdot\\frac{dy}{dx} = 0\\)\n\\(\\therefore \\frac{1}{2\\sqrt{y}}\\cdot\\frac{dy}{dx} = -\\frac{1}{2\\sqrt{x}}\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{\\sqrt{y}}{\\sqrt{x}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "9136b537-58c8-493c-b93c-53a68dbca541",
+    "ref": "Ex 1.3 Q.3 (ii)",
+    "solution": "\\(x\\sqrt{x} + y\\sqrt{y} = a\\sqrt{a}\\), i.e. \\(x^{\\frac{3}{2}} + y^{\\frac{3}{2}} = a^{\\frac{3}{2}}\\), where \\(a\\) is a constant.\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{3}{2}x^{\\frac{1}{2}} + \\frac{3}{2}y^{\\frac{1}{2}}\\cdot\\frac{dy}{dx} = 0\\)\n\\(\\therefore \\sqrt{y}\\cdot\\frac{dy}{dx} = -\\sqrt{x}\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{\\sqrt{x}}{\\sqrt{y}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a0717634-bc37-437b-aedf-a60a96dfad93",
+    "ref": "Ex 1.3 Q.3 (iii)",
+    "solution": "\\(x + \\sqrt{xy} + y = 1\\).\nDifferentiating both sides w.r.t. \\(x\\) (chain rule and product rule on \\(\\sqrt{xy}\\)),\n\\(1 + \\frac{1}{2\\sqrt{xy}}\\cdot\\left(y + x\\frac{dy}{dx}\\right) + \\frac{dy}{dx} = 0\\)\nMultiplying throughout by \\(2\\sqrt{xy}\\),\n\\(2\\sqrt{xy} + y + x\\frac{dy}{dx} + 2\\sqrt{xy}\\cdot\\frac{dy}{dx} = 0\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(x + 2\\sqrt{xy}\\right)\\frac{dy}{dx} = -\\left(y + 2\\sqrt{xy}\\right)\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{y + 2\\sqrt{xy}}{x + 2\\sqrt{xy}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "10e63e4d-1376-498d-9d15-ca77b2a4a290",
+    "ref": "Ex 1.3 Q.3 (iv)",
+    "solution": "\\(x^3 + x^2 y + xy^2 + y^3 = 81\\).\nDifferentiating both sides w.r.t. \\(x\\), using the product rule on \\(x^2y\\) and \\(xy^2\\),\n\\(3x^2 + \\left(2xy + x^2\\frac{dy}{dx}\\right) + \\left(y^2 + 2xy\\frac{dy}{dx}\\right) + 3y^2\\frac{dy}{dx} = 0\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(x^2 + 2xy + 3y^2\\right)\\frac{dy}{dx} = -\\left(3x^2 + 2xy + y^2\\right)\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{3x^2 + 2xy + y^2}{x^2 + 2xy + 3y^2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "58ed79e6-4272-4fbf-80a2-40476c47bb37",
+    "ref": "Ex 1.3 Q.3 (v)",
+    "solution": "\\(x^2 y^2 - \\tan^{-1}\\sqrt{x^2+y^2} = \\cot^{-1}\\sqrt{x^2+y^2}\\)\nShifting the inverse-trigonometric term to the right,\n\\(x^2 y^2 = \\tan^{-1}\\sqrt{x^2+y^2} + \\cot^{-1}\\sqrt{x^2+y^2}\\)\nNow use the identity \\(\\tan^{-1} u + \\cot^{-1} u = \\frac{\\pi}{2}\\), which holds here with \\(u = \\sqrt{x^2+y^2}\\).\n\\(\\therefore x^2 y^2 = \\frac{\\pi}{2}\\), a constant.\nDifferentiating both sides w.r.t. \\(x\\) (product rule),\n\\(2xy^2 + x^2\\cdot 2y\\cdot\\frac{dy}{dx} = 0\\)\n\\(\\therefore 2x^2 y\\cdot\\frac{dy}{dx} = -2xy^2\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{y}{x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ed0e5e93-ab54-4ae1-ba89-a89cddaf29ad",
+    "ref": "Ex 1.3 Q.3 (vi)",
+    "solution": "\\(xe^y + ye^x = 1\\).\nDifferentiating both sides w.r.t. \\(x\\), using the product rule on each term,\n\\(\\left(e^y + xe^y\\frac{dy}{dx}\\right) + \\left(e^x\\frac{dy}{dx} + ye^x\\right) = 0\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(xe^y + e^x\\right)\\frac{dy}{dx} = -\\left(e^y + ye^x\\right)\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{e^y + ye^x}{xe^y + e^x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e6f0f32c-269e-4440-8ee7-fe98e9f146b2",
+    "ref": "Ex 1.3 Q.3 (vii)",
+    "solution": "\\(e^{x+y} = \\cos(x-y)\\).\nDifferentiating both sides w.r.t. \\(x\\) by the chain rule,\n\\(e^{x+y}\\left(1 + \\frac{dy}{dx}\\right) = -\\sin(x-y)\\left(1 - \\frac{dy}{dx}\\right)\\)\n\\(\\therefore e^{x+y} + e^{x+y}\\frac{dy}{dx} = -\\sin(x-y) + \\sin(x-y)\\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left[e^{x+y} - \\sin(x-y)\\right]\\frac{dy}{dx} = -\\sin(x-y) - e^{x+y}\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{e^{x+y} + \\sin(x-y)}{e^{x+y} - \\sin(x-y)}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6c8aaee0-e9ea-48bc-a725-31a05ebc0bd2",
+    "ref": "Ex 1.3 Q.3 (viii)",
+    "solution": "\\(\\cos(xy) = x + y\\).\nDifferentiating both sides w.r.t. \\(x\\), using the chain rule and the product rule on \\(xy\\),\n\\(-\\sin(xy)\\left(y + x\\frac{dy}{dx}\\right) = 1 + \\frac{dy}{dx}\\)\n\\(\\therefore -y\\sin(xy) - x\\sin(xy)\\frac{dy}{dx} = 1 + \\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(-\\left[1 + x\\sin(xy)\\right]\\frac{dy}{dx} = 1 + y\\sin(xy)\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{1 + y\\sin(xy)}{1 + x\\sin(xy)}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "90383c40-f18d-4593-ac0f-ce49ac69d1c0",
+    "ref": "Ex 1.3 Q.3 (ix)",
+    "solution": "\\(e^{e^{x-y}} = \\frac{x}{y}\\).\nTaking \\(\\log\\) of both sides simplifies the double exponential:\n\\(e^{x-y} = \\log\\left(\\frac{x}{y}\\right) = \\log x - \\log y\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(e^{x-y}\\left(1 - \\frac{dy}{dx}\\right) = \\frac{1}{x} - \\frac{1}{y}\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore e^{x-y} - e^{x-y}\\frac{dy}{dx} = \\frac{1}{x} - \\frac{1}{y}\\cdot\\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left[\\frac{1}{y} - e^{x-y}\\right]\\frac{dy}{dx} = \\frac{1}{x} - e^{x-y}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\frac{1}{x} - e^{x-y}}{\\frac{1}{y} - e^{x-y}}\\)\nMultiplying the numerator and the denominator by \\(xy\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{y\\left(1 - x\\,e^{x-y}\\right)}{x\\left(1 - y\\,e^{x-y}\\right)}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "456382b1-cafe-40fe-abbd-de9f71edd727",
+    "ref": "Ex 1.3 Q.3 (x)",
+    "solution": "\\(x + \\sin(x+y) = y - \\cos(x-y)\\).\nDifferentiating both sides w.r.t. \\(x\\) by the chain rule,\n\\(1 + \\cos(x+y)\\left(1 + \\frac{dy}{dx}\\right) = \\frac{dy}{dx} + \\sin(x-y)\\left(1 - \\frac{dy}{dx}\\right)\\)\n\\(\\therefore 1 + \\cos(x+y) + \\cos(x+y)\\frac{dy}{dx} = \\frac{dy}{dx} + \\sin(x-y) - \\sin(x-y)\\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left[\\cos(x+y) - 1 + \\sin(x-y)\\right]\\frac{dy}{dx} = \\sin(x-y) - 1 - \\cos(x+y)\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{1 + \\cos(x+y) - \\sin(x-y)}{\\cos(x+y) + \\sin(x-y) - 1}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "d936ffe8-f09e-44f8-af34-ce93ff90ce65",
+    "ref": "Ex 1.3 Q.4 (i)",
+    "solution": "\\(x^7 y^5 = (x+y)^{12}\\).\nTaking \\(\\log\\) of both sides,\n\\(\\log\\left(x^7 y^5\\right) = \\log(x+y)^{12}\\)\n\\(\\therefore 7\\log x + 5\\log y = 12\\log(x+y)\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{7}{x} + \\frac{5}{y}\\cdot\\frac{dy}{dx} = \\frac{12}{x+y}\\left(1 + \\frac{dy}{dx}\\right)\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms on the left,\n\\(\\left[\\frac{5}{y} - \\frac{12}{x+y}\\right]\\frac{dy}{dx} = \\frac{12}{x+y} - \\frac{7}{x}\\)\nSimplifying each bracket over a common denominator,\n\\(\\frac{5(x+y) - 12y}{y(x+y)}\\cdot\\frac{dy}{dx} = \\frac{12x - 7(x+y)}{x(x+y)}\\)\n\\(\\therefore \\frac{5x - 7y}{y(x+y)}\\cdot\\frac{dy}{dx} = \\frac{5x - 7y}{x(x+y)}\\)\nCancelling the common factor \\(\\frac{5x-7y}{x+y}\\) (assuming \\(5x \\neq 7y\\)),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4425866f-8c07-46b6-9f65-28c9a32ae1a1",
+    "ref": "Ex 1.3 Q.4 (ii)",
+    "solution": "\\(x^p y^4 = (x+y)^{p+4}\\), where \\(p \\in N\\) is a constant.\nTaking \\(\\log\\) of both sides,\n\\(p\\log x + 4\\log y = (p+4)\\log(x+y)\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{p}{x} + \\frac{4}{y}\\cdot\\frac{dy}{dx} = \\frac{p+4}{x+y}\\left(1 + \\frac{dy}{dx}\\right)\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms on the left,\n\\(\\left[\\frac{4}{y} - \\frac{p+4}{x+y}\\right]\\frac{dy}{dx} = \\frac{p+4}{x+y} - \\frac{p}{x}\\)\nSimplifying each bracket over a common denominator,\n\\(\\frac{4(x+y) - (p+4)y}{y(x+y)}\\cdot\\frac{dy}{dx} = \\frac{(p+4)x - p(x+y)}{x(x+y)}\\)\n\\(\\therefore \\frac{4x - py}{y(x+y)}\\cdot\\frac{dy}{dx} = \\frac{4x - py}{x(x+y)}\\)\nCancelling the common factor \\(\\frac{4x-py}{x+y}\\) (assuming \\(4x \\neq py\\)),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "86ccddeb-8f96-4e87-a9ba-347f2c983db2",
+    "ref": "Ex 1.3 Q.4 (iii)",
+    "solution": "\\(\\sec\\left(\\frac{x^5+y^5}{x^5-y^5}\\right) = a^2\\), where \\(a\\) is a constant.\nSince \\(a\\) is a constant, \\(a^2\\) is a constant, and therefore\n\\(\\frac{x^5+y^5}{x^5-y^5} = \\sec^{-1}(a^2) = k\\), say, where \\(k\\) is a constant.\nApplying componendo and dividendo,\n\\(\\frac{(x^5+y^5) + (x^5-y^5)}{(x^5+y^5) - (x^5-y^5)} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{2x^5}{2y^5} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{x^5}{y^5} = \\frac{k+1}{k-1} = m\\), say, where \\(m\\) is a constant.\n\\(\\therefore x^5 = m\\,y^5\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(5x^4 = 5m\\,y^4\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^4}{m\\,y^4}\\)\nSubstituting back \\(m = \\frac{x^5}{y^5}\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^4\\,y^5}{x^5\\,y^4} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "14488435-c262-42b0-8db4-c55bd24a1ef2",
+    "ref": "Ex 1.3 Q.4 (iv)",
+    "solution": "\\(\\tan^{-1}\\left(\\frac{3x^2-4y^2}{3x^2+4y^2}\\right) = a^2\\), where \\(a\\) is a constant.\nSince \\(a^2\\) is a constant,\n\\(\\frac{3x^2-4y^2}{3x^2+4y^2} = \\tan(a^2) = k\\), say, where \\(k\\) is a constant.\nApplying componendo and dividendo,\n\\(\\frac{(3x^2-4y^2) + (3x^2+4y^2)}{(3x^2-4y^2) - (3x^2+4y^2)} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{6x^2}{-8y^2} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{x^2}{y^2} = -\\frac{8}{6}\\cdot\\frac{k+1}{k-1} = m\\), say, where \\(m\\) is a constant.\n\\(\\therefore x^2 = m\\,y^2\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(2x = 2m\\,y\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x}{m\\,y}\\)\nSubstituting back \\(m = \\frac{x^2}{y^2}\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{x\\,y^2}{x^2\\,y} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8aa50552-adad-4292-a85e-0a985699778e",
+    "ref": "Ex 1.3 Q.4 (v)",
+    "solution": "\\(\\cos^{-1}\\left(\\frac{7x^4+5y^4}{7x^4-5y^4}\\right) = \\tan^{-1} a\\), where \\(a\\) is a constant.\nSince \\(\\tan^{-1} a\\) is a constant,\n\\(\\frac{7x^4+5y^4}{7x^4-5y^4} = \\cos\\left(\\tan^{-1} a\\right) = k\\), say, where \\(k\\) is a constant.\nApplying componendo and dividendo,\n\\(\\frac{(7x^4+5y^4) + (7x^4-5y^4)}{(7x^4+5y^4) - (7x^4-5y^4)} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{14x^4}{10y^4} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{x^4}{y^4} = \\frac{10}{14}\\cdot\\frac{k+1}{k-1} = m\\), say, where \\(m\\) is a constant.\n\\(\\therefore x^4 = m\\,y^4\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(4x^3 = 4m\\,y^3\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^3}{m\\,y^3}\\)\nSubstituting back \\(m = \\frac{x^4}{y^4}\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^3\\,y^4}{x^4\\,y^3} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "519c9201-41e4-4e14-98f8-daf63d3a3f6b",
+    "ref": "Ex 1.3 Q.4 (vi)",
+    "solution": "\\(\\log\\left(\\frac{x^{20}-y^{20}}{x^{20}+y^{20}}\\right) = 20\\).\nSince the right-hand side is a constant,\n\\(\\frac{x^{20}-y^{20}}{x^{20}+y^{20}} = e^{20} = k\\), say, where \\(k\\) is a constant.\nApplying componendo and dividendo,\n\\(\\frac{(x^{20}-y^{20}) + (x^{20}+y^{20})}{(x^{20}-y^{20}) - (x^{20}+y^{20})} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{2x^{20}}{-2y^{20}} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{x^{20}}{y^{20}} = -\\frac{k+1}{k-1} = m\\), say, where \\(m\\) is a constant.\n\\(\\therefore x^{20} = m\\,y^{20}\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(20x^{19} = 20m\\,y^{19}\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^{19}}{m\\,y^{19}}\\)\nSubstituting back \\(m = \\frac{x^{20}}{y^{20}}\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^{19}\\,y^{20}}{x^{20}\\,y^{19}} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "bd39acb0-796f-486c-8ffc-3298fc6e5d8e",
+    "ref": "Ex 1.3 Q.4 (vii)",
+    "solution": "\\(e^{\\frac{x^7-y^7}{x^7+y^7}} = a\\), where \\(a\\) is a constant.\nTaking \\(\\log\\) of both sides,\n\\(\\frac{x^7-y^7}{x^7+y^7} = \\log a = k\\), say, where \\(k\\) is a constant.\nApplying componendo and dividendo,\n\\(\\frac{(x^7-y^7) + (x^7+y^7)}{(x^7-y^7) - (x^7+y^7)} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{2x^7}{-2y^7} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{x^7}{y^7} = -\\frac{k+1}{k-1} = m\\), say, where \\(m\\) is a constant.\n\\(\\therefore x^7 = m\\,y^7\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(7x^6 = 7m\\,y^6\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^6}{m\\,y^6}\\)\nSubstituting back \\(m = \\frac{x^7}{y^7}\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^6\\,y^7}{x^7\\,y^6} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6bc6e91e-050d-4d69-a05e-b5fa07d6b417",
+    "ref": "Ex 1.3 Q.4 (viii)",
+    "solution": "\\(\\sin\\left(\\frac{x^3-y^3}{x^3+y^3}\\right) = a^3\\), where \\(a\\) is a constant.\nSince \\(a^3\\) is a constant,\n\\(\\frac{x^3-y^3}{x^3+y^3} = \\sin^{-1}(a^3) = k\\), say, where \\(k\\) is a constant.\nApplying componendo and dividendo,\n\\(\\frac{(x^3-y^3) + (x^3+y^3)}{(x^3-y^3) - (x^3+y^3)} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{2x^3}{-2y^3} = \\frac{k+1}{k-1}\\)\n\\(\\therefore \\frac{x^3}{y^3} = -\\frac{k+1}{k-1} = m\\), say, where \\(m\\) is a constant.\n\\(\\therefore x^3 = m\\,y^3\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(3x^2 = 3m\\,y^2\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^2}{m\\,y^2}\\)\nSubstituting back \\(m = \\frac{x^3}{y^3}\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^2\\,y^3}{x^3\\,y^2} = \\frac{y}{x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "40cc770c-800c-4a0d-9303-3a0367ce7e1e",
+    "ref": "Ex 1.3 Q.5 (i)",
+    "solution": "\\(\\log(x+y) = \\log(xy) + p\\), where \\(p\\) is a constant.\nUsing \\(\\log(xy) = \\log x + \\log y\\),\n\\(\\log(x+y) = \\log x + \\log y + p\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{x+y}\\left(1 + \\frac{dy}{dx}\\right) = \\frac{1}{x} + \\frac{1}{y}\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{1 + \\frac{dy}{dx}}{x+y} = \\frac{y + x\\frac{dy}{dx}}{xy}\\)\nCross-multiplying,\n\\(xy\\left(1 + \\frac{dy}{dx}\\right) = (x+y)\\left(y + x\\frac{dy}{dx}\\right)\\)\n\\(\\therefore xy + xy\\frac{dy}{dx} = xy + x^2\\frac{dy}{dx} + y^2 + xy\\frac{dy}{dx}\\)\nCancelling \\(xy\\) and \\(xy\\frac{dy}{dx}\\) from both sides,\n\\(0 = x^2\\frac{dy}{dx} + y^2\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{y^2}{x^2}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "58b39867-3e9b-4e6a-a1a8-b18c8cc18900",
+    "ref": "Ex 1.3 Q.5 (ii)",
+    "solution": "\\(\\log_{10}\\left(\\frac{x^3-y^3}{x^3+y^3}\\right) = 2\\)\nWriting the logarithmic equation in exponential form,\n\\(\\frac{x^3-y^3}{x^3+y^3} = 10^2 = 100\\)\n\\(\\therefore x^3 - y^3 = 100x^3 + 100y^3\\)\n\\(\\therefore -99x^3 = 101y^3\\)\nThis is a relation free of logarithms; differentiating both sides w.r.t. \\(x\\),\n\\(-297x^2 = 303\\,y^2\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{297x^2}{303y^2}\\)\nDividing the numerator and the denominator by \\(3\\),\n\\(\\therefore \\frac{dy}{dx} = -\\frac{99x^2}{101y^2}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "3710c82f-656e-4723-8c24-88fdffc878f1",
+    "ref": "Ex 1.3 Q.5 (iii)",
+    "solution": "[Textbook misprint: the printed target \\(\\frac{dy}{dx} = -\\frac{12x^3}{13y^3}\\) carries a wrong negative sign. The given relation reduces to \\(13y^4 = 12x^4\\), a positive proportionality between \\(x^4\\) and \\(y^4\\), so the correct result is \\(\\frac{dy}{dx} = +\\frac{12x^3}{13y^3}\\). Check: the relation is the pair of straight lines \\(y = \\pm\\left(\\frac{12}{13}\\right)^{\\frac{1}{4}}x\\), whose slopes are \\(\\pm\\left(\\frac{12}{13}\\right)^{\\frac{1}{4}}\\), and \\(\\frac{12x^3}{13y^3}\\) evaluates to exactly that, while \\(-\\frac{12x^3}{13y^3}\\) gives the opposite sign. Contrast Q.5 (ii), where the relation gives \\(-99x^3 = 101y^3\\) and the negative sign is genuine.]\n\\(\\log_5\\left(\\frac{x^4+y^4}{x^4-y^4}\\right) = 2\\)\nWriting the logarithmic equation in exponential form,\n\\(\\frac{x^4+y^4}{x^4-y^4} = 5^2 = 25\\)\n\\(\\therefore x^4 + y^4 = 25x^4 - 25y^4\\)\n\\(\\therefore 26y^4 = 24x^4\\)\n\\(\\therefore 13y^4 = 12x^4\\)\nThis is a relation free of logarithms; differentiating both sides w.r.t. \\(x\\),\n\\(52y^3\\cdot\\frac{dy}{dx} = 48x^3\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{48x^3}{52y^3}\\)\nDividing the numerator and the denominator by \\(4\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{12x^3}{13y^3}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "dd445de6-92f3-4b26-bbc4-f13f3c128a2a",
+    "ref": "Ex 1.3 Q.5 (iv)",
+    "solution": "\\(e^x + e^y = e^{x+y}\\)   ...(1)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(e^x + e^y\\cdot\\frac{dy}{dx} = e^{x+y}\\left(1 + \\frac{dy}{dx}\\right)\\)\n\\(\\therefore e^x + e^y\\frac{dy}{dx} = e^{x+y} + e^{x+y}\\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(e^y - e^{x+y}\\right)\\frac{dy}{dx} = e^{x+y} - e^x\\)\nNow use the given relation (1), i.e. \\(e^{x+y} = e^x + e^y\\), on both sides:\nNumerator: \\(e^{x+y} - e^x = \\left(e^x + e^y\\right) - e^x = e^y\\)\nDenominator: \\(e^y - e^{x+y} = e^y - \\left(e^x + e^y\\right) = -e^x\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{e^y}{-e^x} = -\\frac{e^y}{e^x}\\)\n\\(\\therefore \\frac{dy}{dx} = -e^{y-x}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ba339247-15fe-4e16-8721-20b4fbd6281c",
+    "ref": "Ex 1.3 Q.5 (v)",
+    "solution": "\\(\\sin^{-1}\\left(\\frac{x^5-y^5}{x^5+y^5}\\right) = \\frac{\\pi}{6}\\)\nTaking \\(\\sin\\) of both sides,\n\\(\\frac{x^5-y^5}{x^5+y^5} = \\sin\\frac{\\pi}{6} = \\frac{1}{2}\\)\nCross-multiplying,\n\\(2\\left(x^5 - y^5\\right) = x^5 + y^5\\)\n\\(\\therefore 2x^5 - 2y^5 = x^5 + y^5\\)\n\\(\\therefore x^5 = 3y^5\\)\nThis is a relation free of inverse trigonometric functions; differentiating both sides w.r.t. \\(x\\),\n\\(5x^4 = 15y^4\\cdot\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{5x^4}{15y^4}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^4}{3y^4}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4d0663d1-1f2c-442b-9fde-2e13c2924ed4",
+    "ref": "Ex 1.3 Q.5 (vi)",
+    "solution": "\\(x^y = e^{x-y}\\)\nTaking \\(\\log\\) of both sides,\n\\(y\\log x = (x-y)\\log e = x - y\\)   ...(1)\nDifferentiating both sides of (1) w.r.t. \\(x\\) (product rule on the left),\n\\(\\frac{dy}{dx}\\cdot\\log x + y\\cdot\\frac{1}{x} = 1 - \\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(\\log x + 1\\right)\\frac{dy}{dx} = 1 - \\frac{y}{x} = \\frac{x-y}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x-y}{x\\left(1 + \\log x\\right)}\\)   ...(2)\nNow express \\(x - y\\) using (1). From \\(y\\log x = x - y\\),\n\\(y\\log x + y = x\\), i.e. \\(y\\left(1 + \\log x\\right) = x\\), so \\(y = \\frac{x}{1+\\log x}\\).\n\\(\\therefore x - y = x - \\frac{x}{1+\\log x} = \\frac{x\\left(1 + \\log x\\right) - x}{1+\\log x} = \\frac{x\\log x}{1+\\log x}\\)\nSubstituting this in (2),\n\\(\\frac{dy}{dx} = \\frac{1}{x\\left(1+\\log x\\right)}\\cdot\\frac{x\\log x}{1+\\log x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\log x}{\\left(1+\\log x\\right)^2}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "40663afa-1061-4dad-9ac9-cf218260920e",
+    "ref": "Ex 1.3 Q.5 (vii)",
+    "solution": "\\(y = \\sqrt{\\cos x + \\sqrt{\\cos x + \\sqrt{\\cos x + ...\\infty}}}\\)\nThe expression under the outermost square root is \\(\\cos x\\) plus the very same infinite expression, which is \\(y\\) itself. Hence the infinite radical self-substitutes:\n\\(y = \\sqrt{\\cos x + y}\\)\nSquaring both sides,\n\\(y^2 = \\cos x + y\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(2y\\cdot\\frac{dy}{dx} = -\\sin x + \\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(2y - 1\\right)\\frac{dy}{dx} = -\\sin x\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{-\\sin x}{2y-1}\\)\nMultiplying the numerator and the denominator by \\(-1\\),\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\sin x}{1-2y}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "145187ac-0a1a-4beb-810e-7a46d20584b3",
+    "ref": "Ex 1.3 Q.5 (viii)",
+    "solution": "\\(y = \\sqrt{\\log x + \\sqrt{\\log x + \\sqrt{\\log x + ...\\infty}}}\\)\nThe expression under the outermost square root is \\(\\log x\\) plus the very same infinite expression, which is \\(y\\) itself. Hence\n\\(y = \\sqrt{\\log x + y}\\)\nSquaring both sides,\n\\(y^2 = \\log x + y\\)\nDifferentiating both sides w.r.t. \\(x\\),\n\\(2y\\cdot\\frac{dy}{dx} = \\frac{1}{x} + \\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(2y - 1\\right)\\frac{dy}{dx} = \\frac{1}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{1}{x\\left(2y-1\\right)}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "15f52b61-75db-4f80-90e9-90ea9acfc7a6",
+    "ref": "Ex 1.3 Q.5 (ix)",
+    "solution": "\\(y = x^{x^{x^{\\cdot^{\\cdot^{\\cdot\\infty}}}}}\\)\nThe index of the outermost \\(x\\) is the very same infinite power tower, which is \\(y\\) itself. Hence the tower self-substitutes:\n\\(y = x^y\\)\nTaking \\(\\log\\) of both sides,\n\\(\\log y = y\\log x\\)   ...(1)\nDifferentiating both sides of (1) w.r.t. \\(x\\) (product rule on the right),\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{dy}{dx}\\cdot\\log x + y\\cdot\\frac{1}{x}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(\\frac{1}{y} - \\log x\\right)\\frac{dy}{dx} = \\frac{y}{x}\\)\n\\(\\therefore \\left(\\frac{1 - y\\log x}{y}\\right)\\frac{dy}{dx} = \\frac{y}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{y^2}{x\\left(1 - y\\log x\\right)}\\)\nFinally, from (1) we have \\(y\\log x = \\log y\\); substituting this in the denominator,\n\\(\\therefore \\frac{dy}{dx} = \\frac{y^2}{x\\left(1 - \\log y\\right)}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "17ff1ad6-2497-4732-a921-114bddb21d00",
+    "ref": "Ex 1.3 Q.5 (x)",
+    "solution": "\\(e^y = y^x\\)\nTaking \\(\\log\\) of both sides,\n\\(y\\log e = x\\log y\\), that is \\(y = x\\log y\\)   ...(1)\nDifferentiating both sides of (1) w.r.t. \\(x\\) (product rule on the right),\n\\(\\frac{dy}{dx} = 1\\cdot\\log y + x\\cdot\\frac{1}{y}\\cdot\\frac{dy}{dx}\\)\nCollecting the \\(\\frac{dy}{dx}\\) terms,\n\\(\\left(1 - \\frac{x}{y}\\right)\\frac{dy}{dx} = \\log y\\)\n\\(\\therefore \\left(\\frac{y-x}{y}\\right)\\frac{dy}{dx} = \\log y\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{y\\log y}{y-x}\\)   ...(2)\nNow express \\(y - x\\) using (1). From \\(y = x\\log y\\) we get \\(x = \\frac{y}{\\log y}\\).\n\\(\\therefore y - x = y - \\frac{y}{\\log y} = \\frac{y\\log y - y}{\\log y} = \\frac{y\\left(\\log y - 1\\right)}{\\log y}\\)\nSubstituting this in (2),\n\\(\\frac{dy}{dx} = y\\log y\\cdot\\frac{\\log y}{y\\left(\\log y - 1\\right)}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\left(\\log y\\right)^2}{\\log y - 1}\\), as required.",
+    "diagramWouldHelp": false
+  }
+]

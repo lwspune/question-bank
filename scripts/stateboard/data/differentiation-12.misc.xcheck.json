@@ -1,0 +1,268 @@
+[
+  {
+    "ref": "Misc I Q.1",
+    "verdict": "AGREE",
+    "our_answer": "D — \\(\\frac{29}{15}\\)",
+    "book_answer": "D",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.2",
+    "verdict": "AGREE",
+    "our_answer": "C — \\(\\frac{1}{\\sqrt{2}}\\)",
+    "book_answer": "C",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.3",
+    "verdict": "AGREE",
+    "our_answer": "C — \\(\\frac{4^{x+1}\\log 4}{1 + 4^{4x}}\\) (the odd one out; A, B, D are three spellings of the same expression)",
+    "book_answer": "C",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.4",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "C — \\(\\frac{y^2(1 - \\log x)}{x^2(1 - \\log y)}\\)",
+    "book_answer": "B — \\(\\frac{y(y \\log x - x)}{x(x \\log y - y)}\\)",
+    "evidence": "TRANSCRIPTION SOURCE-VERIFIED FIRST: rendered p-61.png (book page 62) and read the printed options for (4). They match our review file VERBATIM: (A) x(x log y - y)/(y(y log x - x)), (B) y(y log x - x)/(x(x log y - y)), (C) y^2(1 - log x)/(x^2(1 - log y)), (D) y(1 - log x)/(x(1 - log y)). So the disagreement is NOT a transcription artefact. || ALGEBRAIC RE-DERIVATION: implicit differentiation of y log x = x log y gives the familiar form dy/dx = y(x log y - y)/(x(y log x - x)), which matches NO printed option verbatim (A carries the prefactor x/y instead of y/x; B has the two brackets INTERCHANGED). Using the constraint log x/x = log y/y = k: x log y = y log x = kxy, hence x log y - y = y(log x - 1) and y log x - x = x(log y - 1). Substituting collapses the familiar form onto y^2(1 - log x)/(x^2(1 - log y)) = option C. Option B collapses to (log y - 1)/(log x - 1), which equals the true derivative only when x = y - excluded by the stem's non-trivial branch. || THIRD, INDEPENDENT NUMERIC GROUND TRUTH (mpmath, dps=50): parametrised the non-trivial branch as x=(1+1/t)^t, y=(1+1/t)^(t+1) (residual y*ln x - x*ln y verified = 0 to 50 dp, so the points genuinely lie on x^y=y^x), computed dy/dx = (dy/dt)/(dx/dt) by high-precision numerical differentiation, and evaluated all four PRINTED options at the same (x,y) for t in {0.5,1,2,3,4.7,9,20}. Option C matched the true derivative at 7/7 points to 25 significant digits; A, B and D matched at 0/7. Concretely at t=1 (x=2, y=4): true dy/dx = -3.177398899, C = -3.177398899, B = -1.258891353, A = -0.794349725, D = -1.588699450. B is not even close. || CONCLUSION: the book's key B contradicts its own printed options; C is the only correct alternative. LIKELY CAUSE: option B is exactly the familiar form y(x log y - y)/(x(y log x - x)) with its two brackets swapped between numerator and denominator - same y/x prefactors, same two bracket expressions. A key-setter pattern-matching on the 'y(...)/(x(...))' shape would pick B without noticing the swap; that is precisely the near-miss distractor the question designer built. CONFIDENCE: very high."
+  },
+  {
+    "ref": "Misc I Q.5",
+    "verdict": "AGREE",
+    "our_answer": "A — \\(\\frac{2 - 4x^2}{\\sqrt{1 - x^2}}\\)",
+    "book_answer": "A",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.6",
+    "verdict": "AGREE",
+    "our_answer": "C — \\(\\frac{1 - 2x}{2\\sqrt{1 - x^2}}\\)",
+    "book_answer": "C",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.7",
+    "verdict": "AGREE",
+    "our_answer": "D — \\(1\\)",
+    "book_answer": "D",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.8",
+    "verdict": "AGREE",
+    "our_answer": "C — \\(1 + [g(x)]^7\\)",
+    "book_answer": "C",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.9",
+    "verdict": "AGREE",
+    "our_answer": "B — \\(-\\frac{1}{(1 + x)^2}\\)",
+    "book_answer": "B",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.10",
+    "verdict": "AGREE",
+    "our_answer": "C — \\(-\\frac{1}{2\\sqrt{a^2 - x^2}}\\)",
+    "book_answer": "C",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.11",
+    "verdict": "AGREE",
+    "our_answer": "A — \\(\\frac{8\\sqrt{2}}{a\\pi}\\)",
+    "book_answer": "A",
+    "evidence": null
+  },
+  {
+    "ref": "Misc I Q.12",
+    "verdict": "AGREE",
+    "our_answer": "B — \\(x^2,\\ x,\\ y\\)",
+    "book_answer": "B",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.1",
+    "verdict": "AGREE",
+    "our_answer": "u'(1) = 3/4; v'(1) does not exist (left derivative -6, right derivative 4/3); w'(1) = -2",
+    "book_answer": "(i) 3/4  (ii) Does not exist  (iii) -2",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.2",
+    "verdict": "AGREE",
+    "our_answer": "(A)-3 i.e. -20, (B)-5 i.e. 12, (C)-4 i.e. 15, (D)-1 i.e. -16",
+    "book_answer": "(A) 3, (B) 5, (C) 4, (D) 1.",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.3 (i)",
+    "verdict": "AGREE",
+    "our_answer": "-1/9",
+    "book_answer": "-1/9",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.3 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "-40/3",
+    "book_answer": "-40/3",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.3 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "-29/96",
+    "book_answer": "-29/96",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.3 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "-4/9",
+    "book_answer": "-4/9",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.4 (i)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{-x}{\\sqrt{1 - x^2}}\\)",
+    "book_answer": "\\(-\\frac{x}{\\sqrt{1-x^2}}\\) [Hint : x = cos 2θ]",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.4 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "\\(-\\frac{1}{2}\\)",
+    "book_answer": "\\(-\\frac{1}{2}\\) [Hint : x = cos 2θ]",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.4 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{3}{2\\sqrt{x}\\,(1 + x)}\\)",
+    "book_answer": "\\(\\frac{3}{2\\sqrt{x}(1+x)}\\) [Hint : √x = tan θ]",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.4 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{-1}{2\\sqrt{1 - x^2}}\\)",
+    "book_answer": "\\(-\\frac{1}{2\\cdot\\sqrt{1-x^2}}\\) [Hint : x = cos 2θ]",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.4 (v)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{3}{1 + 9x^2} + \\frac{5}{1 + 25x^2}\\)",
+    "book_answer": "\\(\\frac{3}{1+9x^2} + \\frac{5}{1+25x^2}\\)",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.4 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{1}{2(1 + x^2)}\\)",
+    "book_answer": "\\(\\frac{1}{2(1+x^2)}\\) [Hint : x = tan θ]",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.5 (i)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows dy/dx = y/x - sqrt(y^2/x^2 - 1), as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (5). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.5 (ii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows dy/dx = -sqrt((1 - y^2)/(1 - x^2)), as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (5). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.5 (iii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows dy/dx = sin^2(a + y)/sin a, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (5). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.5 (iv)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows dy/dx = sin^2(a + y)/sin a, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (5). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.5 (v)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows dy/dx = (x - y)/(x log x), as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (5). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.5 (vi)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows d^2x/dy^2 = -(dy/dx)^{-3} * d^2y/dx^2, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (5). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.6 (i)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{\\sqrt{1 - x^2}}{4(1 + x^2)}\\)",
+    "book_answer": "\\(\\frac{\\sqrt{1-x^2}}{4(1+x^2)}\\)",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.6 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "\\(\\frac{-2x}{\\sqrt{1 + x^2}\\,\\sin(\\log x)}\\)",
+    "book_answer": "\\(-\\frac{2x}{\\sqrt{1+x^2}\\cdot\\sin(\\log x)}\\)",
+    "evidence": null
+  },
+  {
+    "ref": "Misc II Q.6 (iii)",
+    "verdict": "INTERPRETIVE",
+    "our_answer": "du/dv = 1 for x > 0, and du/dv = -1 for x < 0 (undefined at x = 0)",
+    "book_answer": "1",
+    "evidence": "The book prints the bare value 1; we print 1 for x>0 and -1 for x<0, so the two agree on x>0 and differ on x<0. || RE-DERIVED: put x = tan(theta), theta in (-pi/2, pi/2). Then u = atan((sec-1)/tan) = atan(tan(theta/2)) = theta/2 = (1/2)atan(x), so du/dx = 1/(2(1+x^2)) on the WHOLE domain (u is odd). For v: (1 + sqrt(1+x^2))/(2 sqrt(1+x^2)) = (1 + cos theta)/2 = cos^2(theta/2), so the outer square root is |cos(theta/2)| = cos(theta/2), giving v = acos(cos(theta/2)) = |theta/2| - because acos ranges in [0, pi], acos(cos t) = |t| for t in (-pi/2, pi/2). Hence v = (1/2)|atan(x)|, which is EVEN, with dv/dx = +1/(2(1+x^2)) for x>0 but -1/(2(1+x^2)) for x<0. Therefore du/dv = +1 for x>0 and -1 for x<0. The odd-u / even-v mismatch is the entire source of the sign flip, and v has a corner at x=0 so du/dv is undefined there. || CONFIRMED NUMERICALLY (mpmath, dps=50) by differentiating the ORIGINAL stem expressions, not our simplified forms: du/dv = -1.000000 at x = -3, -1, -0.7, -0.2 and +1.000000 at x = +0.2, +0.7, +1, +3; and v(-3) = v(+3) = +0.624522886 confirms v is even while u(-3) = -u(+3) confirms u is odd. || CLASSIFICATION: the stem places no restriction on x and both expressions are defined for all x != 0, so the book's '1' holds only on x>0. Taking the principal branch / assuming x>0 is the standard textbook convention for this classic item, so I record INTERPRETIVE rather than an outright key error: our answer is strictly more complete and does not contradict the book anywhere the book is defined. If the maintainer prefers the Ch.5-Vectors precedent (where an incomplete +/- branch answer was logged as a book-key error), this row can be reclassified BOOK-KEY-WRONG for incompleteness. Confidence in the mathematics: very high; the classification itself is a judgement call for the maintainer."
+  },
+  {
+    "ref": "Misc II Q.7 (i)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows y + d^2y/dx^2 = a^2 b^2 / y^3, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (7). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.7 (ii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows d^2y/dx^2 + 4x dy/dx + (4x^2 + 3)y = 0, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (7). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.7 (iii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows a^2[y d^2y/dx^2 + (dy/dx)^2] + b^2 = 0, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (7). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.7 (iv)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows x^2 y_2 + x y_1 + y = 0, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (7). Target verified to hold."
+  },
+  {
+    "ref": "Misc II Q.7 (v)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shows y_2 - (m + n)y_1 + (mn)y = 0, as required.",
+    "book_answer": null,
+    "evidence": "\"Show that\" item; the book prints no answer for Misc II (7). Target verified to hold."
+  }
+]

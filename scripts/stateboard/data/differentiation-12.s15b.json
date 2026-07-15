@@ -1,0 +1,68 @@
+[
+  {
+    "ref": "1.5.2 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "\\(x^m\\)",
+    "context": "Find the \\(n^{th}\\) derivative of the following :",
+    "setLabel": "1.5.2 SolvedEx.1",
+    "solution": "Let \\(y = x^m\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}(x^m) = m x^{m-1}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = m \\frac{d}{dx} x^{m-1}\\)\n\\(\\frac{d^2y}{dx^2} = m \\cdot (m-1) x^{m-2}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{d^2y}{dx^2}\\right) = m \\cdot (m-1) \\frac{d}{dx}(x^{m-2})\\)\n\\(\\frac{d^3y}{dx^3} = m \\cdot (m-1) \\cdot (m-2) x^{m-3}\\)\nIn general \\(n^{th}\\) order derivative will be\n\\(\\frac{d^ny}{dx^n} = m \\cdot (m-1) \\cdot (m-2) \\ldots [m-(n-1)] x^{m-n}\\)\n\\(\\frac{d^ny}{dx^n} = m \\cdot (m-1) \\cdot (m-2) \\ldots [m-n+1] x^{m-n}\\)\ncase (i) :- If \\(m > 0\\) and \\(m > n\\), then\n\\(\\frac{d^ny}{dx^n} = \\frac{m \\cdot (m-1) \\cdot (m-2) \\ldots [m-(n-1)] \\cdot (m-n) \\ldots 2 \\cdot 1}{(m-n) \\cdot [m-n-1] \\ldots 2 \\cdot 1} x^{m-n}\\)\n\\(\\frac{d^ny}{dx^n} = \\frac{m! \\cdot x^{m-n}}{(m-n)!}\\)\ncase (ii) :- If \\(m > 0\\) and \\(m = n\\), then\n\\(\\frac{d^ny}{dx^n} = \\frac{n! \\cdot x^{m-n}}{(n-n)!} = \\frac{n! \\cdot x^0}{0!} = n!\\)\ncase (iii) :- If \\(m > 0\\) and \\(m < n\\), then\n\\(\\frac{d^ny}{dx^n} = 0\\)"
+  },
+  {
+    "ref": "1.5.2 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\frac{1}{ax + b}\\)",
+    "context": "Find the \\(n^{th}\\) derivative of the following :",
+    "setLabel": "1.5.2 SolvedEx.1",
+    "solution": "Let \\(y = \\frac{1}{ax+b}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(\\frac{1}{ax+b}\\right) = \\frac{-1}{(ax+b)^2} \\cdot \\frac{d}{dx}(ax+b)\\)\n\\(\\frac{dy}{dx} = \\frac{(-1) \\cdot a}{(ax+b)^2}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = (-1)(a) \\frac{d}{dx}\\left(\\frac{1}{(ax+b)^2}\\right)\\)\n\\(\\frac{d^2y}{dx^2} = (-1)(a) \\frac{-2}{(ax+b)^3} \\cdot \\frac{d}{dx}(ax+b)\\)\n\\(\\frac{d^2y}{dx^2} = \\frac{(-1)^2 \\cdot 2 \\cdot 1 \\cdot a^2}{(ax+b)^3}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{d^2y}{dx^2}\\right) = (-1)^2 \\cdot 2 \\cdot 1 \\cdot a^2 \\cdot \\frac{d}{dx}\\left(\\frac{1}{(ax+b)^3}\\right)\\)\n\\(\\frac{d^3y}{dx^3} = (-1)^2 \\cdot 2 \\cdot 1 \\cdot a^2 \\cdot \\frac{-3}{(ax+b)^4} \\cdot \\frac{d}{dx}(ax+b)\\)\n\\(\\frac{d^3y}{dx^3} = \\frac{(-1)^3 \\cdot 3 \\cdot 2 \\cdot 1 \\cdot a^3}{(ax+b)^4}\\)\nIn general \\(n^{th}\\) order derivative will be\n\\(\\frac{d^ny}{dx^n} = \\frac{(-1)^n \\cdot n \\cdot (n-1) \\ldots 2 \\cdot 1 \\cdot a^n}{(ax+b)^{n+1}}\\)\n\\(\\frac{d^ny}{dx^n} = \\frac{(-1)^n \\cdot n! \\cdot a^n}{(ax+b)^{n+1}}\\)"
+  },
+  {
+    "ref": "1.5.2 SolvedEx.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\log x\\)",
+    "context": "Find the \\(n^{th}\\) derivative of the following :",
+    "setLabel": "1.5.2 SolvedEx.1",
+    "solution": "Let \\(y = \\log x\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}(\\log x) = \\frac{1}{x}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{d}{dx}\\left(\\frac{1}{x}\\right)\\)\n\\(\\frac{d^2y}{dx^2} = \\frac{-1}{x^2} = \\frac{(-1)^1}{x^2}\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{d^2y}{dx^2}\\right) = (-1)^1 \\frac{d}{dx}\\left(\\frac{1}{x^2}\\right)\\)\n\\(\\frac{d^3y}{dx^3} = (-1)^1 \\left(\\frac{-2}{x^3}\\right) = \\frac{(-1)^2 \\cdot 1 \\cdot 2}{x^3}\\)\nIn general \\(n^{th}\\) order derivative will be\n\\(\\frac{d^ny}{dx^n} = \\frac{(-1)^{n-1} \\cdot 1 \\cdot 2 \\cdot 3 \\ldots (n-1)}{x^n}\\)\n\\(\\frac{d^ny}{dx^n} = \\frac{(-1)^{n-1} \\cdot (n-1)!}{x^n}\\)"
+  },
+  {
+    "ref": "1.5.2 SolvedEx.1 (iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\sin x\\)",
+    "context": "Find the \\(n^{th}\\) derivative of the following :",
+    "setLabel": "1.5.2 SolvedEx.1",
+    "solution": "Let \\(y = \\sin x\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}(\\sin x) = \\cos x\\)\n\\(\\frac{dy}{dx} = \\sin\\left(\\frac{\\pi}{2} + x\\right)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{d}{dx}\\left[\\sin\\left(\\frac{\\pi}{2} + x\\right)\\right]\\)\n\\(\\frac{d^2y}{dx^2} = \\cos\\left(\\frac{\\pi}{2} + x\\right) \\frac{d}{dx}\\left(\\frac{\\pi}{2} + x\\right)\\)\n\\(\\frac{d^2y}{dx^2} = \\sin\\left(\\frac{\\pi}{2} + \\frac{\\pi}{2} + x\\right)(1)\\)\n\\(\\frac{d^2y}{dx^2} = \\sin\\left(\\frac{2\\pi}{2} + x\\right)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{d^2y}{dx^2}\\right) = \\frac{d}{dx}\\left[\\sin\\left(\\frac{2\\pi}{2} + x\\right)\\right]\\)\n\\(\\frac{d^3y}{dx^3} = \\cos\\left(\\frac{2\\pi}{2} + x\\right) \\frac{d}{dx}\\left(\\frac{2\\pi}{2} + x\\right)\\)\n\\(= \\sin\\left(\\frac{\\pi}{2} + \\frac{2\\pi}{2} + x\\right)(1)\\)\n\\(\\frac{d^3y}{dx^3} = \\sin\\left(\\frac{3\\pi}{2} + x\\right)\\)\nIn general \\(n^{th}\\) order derivative will be\n\\(\\frac{d^ny}{dx^n} = \\sin\\left(\\frac{n\\pi}{2} + x\\right)\\)"
+  },
+  {
+    "ref": "1.5.2 SolvedEx.1 (v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\cos(ax + b)\\)",
+    "context": "Find the \\(n^{th}\\) derivative of the following :",
+    "setLabel": "1.5.2 SolvedEx.1",
+    "solution": "Let \\(y = \\cos(ax+b)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}[\\cos(ax+b)]\\)\n\\(= -\\sin(ax+b) \\frac{d}{dx}(ax+b)\\)\n\\(= \\cos\\left(\\frac{\\pi}{2} + ax + b\\right)(a)\\)\n\\(\\frac{dy}{dx} = a \\cos\\left(\\frac{\\pi}{2} + ax + b\\right)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{d}{dx}\\left[a \\cos\\left(\\frac{\\pi}{2} + ax + b\\right)\\right]\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = a \\frac{d}{dx}\\left[\\cos\\left(\\frac{\\pi}{2} + ax + b\\right)\\right]\\)\n\\(\\frac{d^2y}{dx^2} = a\\left[-\\sin\\left(\\frac{\\pi}{2} + ax + b\\right)\\right]\\frac{d}{dx}\\left(\\frac{\\pi}{2} + ax + b\\right)\\)\n\\(= a \\cos\\left(\\frac{\\pi}{2} + \\frac{\\pi}{2} + ax + b\\right)(a)\\)\n\\(\\frac{d^2y}{dx^2} = a^2 \\cos\\left(\\frac{2\\pi}{2} + ax + b\\right)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{d^2y}{dx^2}\\right) = \\frac{d}{dx}\\left[a^2 \\cos\\left(\\frac{2\\pi}{2} + ax + b\\right)\\right]\\)\n\\(\\frac{d}{dx}\\left(\\frac{d^2y}{dx^2}\\right) = a^2 \\frac{d}{dx}\\left[\\cos\\left(\\frac{2\\pi}{2} + ax + b\\right)\\right]\\)\n\\(\\frac{d^3y}{dx^3} = a^2\\left[-\\sin\\left(\\frac{2\\pi}{2} + ax + b\\right)\\right]\\frac{d}{dx}\\left(\\frac{2\\pi}{2} + ax + b\\right)\\)\n\\(= a^2 \\cos\\left(\\frac{\\pi}{2} + \\frac{2\\pi}{2} + ax + b\\right)(a)\\)\n\\(\\frac{d^3y}{dx^3} = a^3 \\cos\\left(\\frac{3\\pi}{2} + ax + b\\right)\\)\nIn general \\(n^{th}\\) order derivative will be\n\\(\\frac{d^ny}{dx^n} = a^n \\cos\\left(\\frac{n\\pi}{2} + ax + b\\right)\\)"
+  },
+  {
+    "ref": "1.5.2 SolvedEx.1 (vi)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "\\(e^{ax}\\sin(bx + c)\\)",
+    "context": "Find the \\(n^{th}\\) derivative of the following :",
+    "setLabel": "1.5.2 SolvedEx.1",
+    "solution": "[Textbook misprint: the book's printed solution defines \\(\\frac{b}{\\sqrt{a^2+b^2}}=\\sin\\alpha\\) and \\(\\frac{b}{\\sqrt{a^2+b^2}}=\\cos\\alpha\\); the second numerator should be \\(a\\), as the book's own \\(\\alpha=\\tan^{-1}\\frac{b}{a}\\) on the same line requires. It does not cascade — the printed final answer is correct.]\n\nLet \\(y = e^{ax}\\sin(bx+c)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}[e^{ax}\\sin(bx+c)] = e^{ax}\\frac{d}{dx}[\\sin(bx+c)] + [\\sin(bx+c)]\\frac{d}{dx}\\left(e^{ax}\\right)\\)\n\\(= e^{ax}\\cos(bx+c)\\frac{d}{dx}(bx+c) + \\sin(bx+c) \\cdot e^{ax} \\cdot \\frac{d}{dx}(ax)\\)\n\\(= e^{ax}[b\\cos(bx+c) + a\\sin(bx+c)]\\)\n\\(= e^{ax}\\sqrt{a^2+b^2}\\left[\\frac{b}{\\sqrt{a^2+b^2}}\\cos(bx+c) + \\frac{a}{\\sqrt{a^2+b^2}}\\sin(bx+c)\\right]\\)\nLet \\(\\frac{b}{\\sqrt{a^2+b^2}} = \\sin\\alpha\\), \\(\\frac{b}{\\sqrt{a^2+b^2}} = \\cos\\alpha\\), \\(\\alpha = \\tan^{-1}\\left(\\frac{b}{a}\\right)\\) . . . (I)\n\\(\\frac{dy}{dx} = e^{ax}\\sqrt{a^2+b^2}\\left[\\sin\\alpha \\cdot \\cos(bx+c) + \\sin(bx+c) \\cdot \\cos\\alpha\\right]\\)\n\\(\\frac{dy}{dx} = e^{ax}(a^2+b^2)^{\\frac{1}{2}} \\cdot \\sin(bx+c+\\alpha)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{d}{dx}\\left[e^{ax}(a^2+b^2)^{\\frac{1}{2}} \\cdot \\sin(bx+c+\\alpha)\\right]\\)\n\\(= (a^2+b^2)^{\\frac{1}{2}} \\cdot \\frac{d}{dx}[e^{ax} \\cdot \\sin(bx+c+\\alpha)]\\)\n\\(= (a^2+b^2)^{\\frac{1}{2}}\\left[e^{ax}\\frac{d}{dx}[\\sin(bx+c+\\alpha)] + [\\sin(bx+c+\\alpha)]\\frac{d}{dx}[e^{ax}]\\right]\\)\n\\(= (a^2+b^2)^{\\frac{1}{2}}\\left[e^{ax}\\cos(bx+c+\\alpha)\\frac{d}{dx}(bx+c+\\alpha) + \\sin(bx+c+\\alpha) \\cdot e^{ax}\\frac{d}{dx}(ax)\\right]\\)\n\\(= e^{ax}(a^2+b^2)^{\\frac{1}{2}}[b\\cos(bx+c+\\alpha) + a\\sin(bx+c+\\alpha)]\\)\n\\(= e^{ax}(a^2+b^2)^{\\frac{1}{2}}\\sqrt{a^2+b^2}\\left[\\frac{b}{\\sqrt{a^2+b^2}}\\cos(bx+c+\\alpha) + \\frac{a}{\\sqrt{a^2+b^2}}\\sin(bx+c+\\alpha)\\right]\\)\n\\(\\frac{d^2y}{dx^2} = e^{ax}(a^2+b^2)^{\\frac{2}{2}}[\\sin\\alpha\\cos(bx+c+\\alpha) + \\sin(bx+c+\\alpha)\\cos\\alpha]\\) . . . [ from (I) ]\n\\(\\frac{d^2y}{dx^2} = e^{ax}(a^2+b^2)^{\\frac{2}{2}} \\cdot \\sin(bx+c+2\\alpha)\\)\nSimilarly,\n\\(\\frac{d^3y}{dx^3} = e^{ax}(a^2+b^2)^{\\frac{3}{2}} \\cdot \\sin(bx+c+3\\alpha)\\)\nIn general \\(n^{th}\\) order derivative will be\n\\(\\frac{d^ny}{dx^n} = e^{ax}(a^2+b^2)^{\\frac{n}{2}} \\cdot \\sin(bx+c+n\\alpha)\\) where \\(\\alpha = \\tan^{-1}\\left(\\frac{b}{a}\\right)\\)."
+  }
+]

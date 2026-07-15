@@ -1,0 +1,62 @@
+[
+  {
+    "ref": "1.2.3 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Inverse Functions",
+    "difficulty": "EASY",
+    "setLabel": "1.2.3 SolvedEx.1",
+    "context": "Find the derivative of the function \\(y = f(x)\\) using the derivative of the inverse function \\(x = f^{-1}(y)\\) in the following",
+    "stem": "\\(y = \\sqrt[3]{x + 4}\\)",
+    "solution": "We first find the inverse of the function \\(y = f(x)\\), i.e. \\(x\\) in term of \\(y\\).\n\\(y^3 = x + 4\\) \\(\\therefore\\) \\(x = y^3 - 4\\) \\(\\therefore\\) \\(x = f^{-1}(y) = y^3 - 4\\)\n\\(\\frac{dy}{dx} = \\frac{1}{\\frac{dx}{dy}} = \\frac{1}{\\frac{d}{dy}\\left(y^3 - 4\\right)} = \\frac{1}{3y^2}\\)\n\\(= \\frac{1}{3\\left(\\sqrt[3]{x + 4}\\right)^2} = \\frac{1}{3\\sqrt[3]{(x + 4)^2}}\\) for \\(x \\neq -4\\)"
+  },
+  {
+    "ref": "1.2.3 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Inverse Functions",
+    "difficulty": "MODERATE",
+    "setLabel": "1.2.3 SolvedEx.1",
+    "context": "Find the derivative of the function \\(y = f(x)\\) using the derivative of the inverse function \\(x = f^{-1}(y)\\) in the following",
+    "stem": "\\(y = \\sqrt{1 + \\sqrt{x}}\\)",
+    "solution": "We first find the inverse of the function \\(y = f(x)\\), i.e. \\(x\\) in term of \\(y\\).\n\\(y^2 = 1 + \\sqrt{x}\\) i.e. \\(\\sqrt{x} = y^2 - 1\\), \\(\\therefore\\) \\(x = f^{-1}(y) = \\left(y^2 - 1\\right)^2\\)\n\\(\\frac{dy}{dx} = \\frac{1}{\\frac{dx}{dy}} = \\frac{1}{\\frac{d}{dy}\\left[\\left(y^2 - 1\\right)^2\\right]} = \\frac{1}{2\\left(y^2 - 1\\right)\\frac{d}{dy}\\left(y^2 - 1\\right)}\\)\n\\(= \\frac{1}{2\\left(y^2 - 1\\right)(2y)} = \\frac{1}{4\\sqrt{1 + \\sqrt{x}}\\left[\\left(\\sqrt{1 + \\sqrt{x}}\\right)^2 - 1\\right]}\\)\n\\(= \\frac{1}{4\\sqrt{1 + \\sqrt{x}}\\left(1 + \\sqrt{x} - 1\\right)} = \\frac{1}{4\\sqrt{x}\\sqrt{1 + \\sqrt{x}}}\\)"
+  },
+  {
+    "ref": "1.2.3 SolvedEx.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Inverse Functions",
+    "difficulty": "EASY",
+    "setLabel": "1.2.3 SolvedEx.1",
+    "context": "Find the derivative of the function \\(y = f(x)\\) using the derivative of the inverse function \\(x = f^{-1}(y)\\) in the following",
+    "stem": "\\(y = \\log x\\)",
+    "solution": "We first find the inverse of the function \\(y = f(x)\\), i.e. \\(x\\) in term of \\(y\\).\n\\(y = \\log x\\) \\(\\therefore\\) \\(x = f^{-1}(y) = e^y\\)\n\\(\\frac{dy}{dx} = \\frac{1}{\\frac{dx}{dy}} = \\frac{1}{\\frac{d}{dy}\\left(e^y\\right)} = \\frac{1}{e^y} = \\frac{1}{e^{\\ln x}} = \\frac{1}{x}\\)"
+  },
+  {
+    "ref": "1.2.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Inverse Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of the inverse of function \\(y = 2x^3 - 6x\\) and calculate its value at \\(x = -2\\).",
+    "solution": "Given : \\(y = 2x^3 - 6x\\)\nDiff. w. r. t. \\(x\\) we get,\n\\(\\frac{dy}{dx} = 6x^2 - 6 = 6\\left(x^2 - 1\\right)\\)\nwe have, \\(\\frac{dx}{dy} = \\frac{1}{\\frac{dy}{dx}}\\)\n\\(\\therefore\\) \\(\\frac{dx}{dy} = \\frac{1}{6\\left(x^2 - 1\\right)}\\)\nat \\(x = -2\\),\nwe get, \\(y = 2(-2)^3 - 6(-2) = -16 + 12 = -4\\)\n\\(\\left[\\frac{dx}{dy}\\right]_{y = -4} = \\frac{1}{\\left[\\frac{dy}{dx}\\right]_{x = -2}} = \\frac{1}{6\\left((-2)^2 - 1\\right)} = \\frac{1}{18}\\)"
+  },
+  {
+    "ref": "1.2.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Inverse Functions",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(f\\) and \\(g\\) be the inverse functions of each other. The following table lists a few values of \\(f\\), \\(g\\) and \\(f'\\)\n\n| \\(x\\) | \\(f(x)\\) | \\(g(x)\\) | \\(f'(x)\\) |\n|---|---|---|---|\n| \\(-4\\) | \\(2\\) | \\(1\\) | \\(\\frac{1}{3}\\) |\n| \\(1\\) | \\(-4\\) | \\(-2\\) | \\(4\\) |\n\nfind \\(g'(-4)\\).",
+    "solution": "In order to find \\(g'(-4)\\), we should first find an expression for \\(g'(x)\\) for any input \\(x\\). Since \\(f\\) and \\(g\\) are inverses we can use the following identify which holds for any two diffetentiable inverse functions.\n\\(g'(x) = \\frac{1}{f'[g(x)]}\\) ... [check, how?]\n... \\(\\left[\\text{Hint} : f[g(x)] = x\\right]\\)\n\\(\\therefore\\) \\(g'(-4) = \\frac{1}{f'[g(-4)]} = \\frac{1}{f'(1)} = \\frac{1}{4}\\)"
+  },
+  {
+    "ref": "1.2.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Inverse Functions",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(f(x) = x^5 + 2x - 3\\). Find \\(\\left(f^{-1}\\right)'(-3)\\).",
+    "solution": "Given : \\(f(x) = x^5 + 2x - 3\\)\nDiff. w. r. t. \\(x\\) we get,\n\\(f'(x) = 5x^4 + 2\\)\nNote that \\(f(x) = -3\\) corresponds to \\(x = 0\\).\n\\(\\therefore\\) \\(\\left(f^{-1}\\right)'(-3) = \\frac{1}{f'(0)} = \\frac{1}{5(0) + 2} = \\frac{1}{2}\\)"
+  }
+]

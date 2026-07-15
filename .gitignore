@@ -32,6 +32,17 @@ scripts/grounding/data/*.input.json
 scripts/grounding/data/*.solution.json
 scripts/logs/
 
+# State Board / NCERT ingestion — DB dumps fed to agents, regenerable any time via
+# dump-subjective.ts / dump-review.ts / dump-mcq.ts. The transcription fragments,
+# *.solutions.json, *.mcq-verify.json, *.errata.json and the *.xcheck.json audit
+# records ARE tracked (source of truth + the answer-key-gate trail).
+scripts/stateboard/data/*.topaper.json
+scripts/stateboard/data/*.review.json
+scripts/stateboard/data/*.mcq-blind.json
+scripts/ncert/data/*.topaper.json
+scripts/ncert/data/*.review.json
+scripts/ncert/data/*.mcq-blind.json
+
 # Generated paper outputs — regenerable build artifacts, not tracked
 generated-papers/*.xlsx
 generated-papers/*.docx

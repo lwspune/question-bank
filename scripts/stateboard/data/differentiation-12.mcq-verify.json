@@ -1,0 +1,86 @@
+[
+  {
+    "id": "d1ac7aad-181c-4a80-a1d8-6c65630f9306",
+    "ref": "Misc I Q.1",
+    "derived_answer": "D",
+    "solution": "Let \\(h(x) = \\sqrt{[f(x)]^2 + [g(x)]^2}\\). By the chain rule,\n\\(h'(x) = \\dfrac{f(x)\\,f'(x) + g(x)\\,g'(x)}{\\sqrt{[f(x)]^2 + [g(x)]^2}}\\).\n\nAt \\(x = 1\\): \\(f(1) = 3,\\ f'(1) = -\\dfrac{1}{3},\\ g(1) = -4,\\ g'(1) = -\\dfrac{8}{3}\\).\n\nNumerator \\(= 3\\left(-\\dfrac{1}{3}\\right) + (-4)\\left(-\\dfrac{8}{3}\\right) = -1 + \\dfrac{32}{3} = \\dfrac{29}{3}\\).\n\nDenominator \\(= \\sqrt{3^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\).\n\n\\(\\therefore h'(1) = \\dfrac{29/3}{5} = \\dfrac{29}{15}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "d2584023-69cd-4fd4-a70a-ad6ed7e47673",
+    "ref": "Misc I Q.2",
+    "derived_answer": "C",
+    "solution": "Put \\(\\theta = \\tan^{-1} x\\), so \\(\\tan\\theta = x\\) with \\(\\theta \\in \\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)\\), where \\(\\sec\\theta > 0\\).\n\nThen \\(\\sec\\theta = \\sqrt{1 + \\tan^2\\theta} = \\sqrt{1 + x^2}\\), so \\(y = \\sqrt{1 + x^2}\\).\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2\\sqrt{1 + x^2}} \\cdot 2x = \\dfrac{x}{\\sqrt{1 + x^2}}\\).\n\nAt \\(x = 1\\): \\(\\dfrac{dy}{dx} = \\dfrac{1}{\\sqrt{2}}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "f02fc4a1-f885-4426-b566-81f1c37cd0e6",
+    "ref": "Misc I Q.3",
+    "derived_answer": "C",
+    "solution": "Simplify the argument. Since \\(4^{x + \\frac{1}{2}} = 4^x \\cdot 4^{\\frac{1}{2}} = 2 \\cdot 4^x\\) and \\(2^{4x} = \\left(2^{2x}\\right)^2 = (4^x)^2\\), putting \\(t = 4^x\\) gives\n\\(f(x) = \\sin^{-1}\\left(\\dfrac{2t}{1 + t^2}\\right) = 2\\tan^{-1} t = 2\\tan^{-1}(4^x)\\).\n\n\\(\\therefore f'(x) = \\dfrac{2}{1 + (4^x)^2} \\cdot 4^x \\log 4 = \\dfrac{2 \\cdot 4^x \\log 4}{1 + 4^{2x}}\\), which is option A.\n\nOptions B and D are the SAME expression rewritten:\n\nB: \\(\\dfrac{4^{x+1}\\log 2}{1 + 4^{2x}} = \\dfrac{4 \\cdot 4^x \\log 2}{1 + 4^{2x}} = \\dfrac{2 \\cdot 4^x (2\\log 2)}{1 + 4^{2x}} = \\dfrac{2 \\cdot 4^x \\log 4}{1 + 4^{2x}}\\).\n\nD: \\(\\dfrac{2^{2(x+1)}\\log 2}{1 + 2^{4x}} = \\dfrac{4 \\cdot 4^x \\log 2}{1 + 4^{2x}}\\), the same again.\n\nOption C is \\(\\dfrac{4^{x+1}\\log 4}{1 + 4^{4x}}\\); its denominator is \\(1 + 4^{4x}\\) and not \\(1 + 4^{2x}\\), so it does not equal \\(f'(x)\\).\n\n\\(\\therefore\\) C is NOT the derivative of \\(f(x)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "6a5e86ed-b12c-4f24-a32e-c137171ba7af",
+    "ref": "Misc I Q.4",
+    "derived_answer": "C",
+    "solution": "Taking logarithms of \\(x^y = y^x\\): \\(y\\log x = x\\log y\\).\n\nDifferentiate both sides w.r.t. \\(x\\):\n\\(y'\\log x + \\dfrac{y}{x} = \\log y + \\dfrac{x\\,y'}{y}\\)\n\n\\(\\Rightarrow y'\\left(\\log x - \\dfrac{x}{y}\\right) = \\log y - \\dfrac{y}{x}\\)\n\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{\\log y - \\dfrac{y}{x}}{\\log x - \\dfrac{x}{y}} = \\dfrac{y(x\\log y - y)}{x(y\\log x - x)}\\).\n\nNow use the given relation to put this in the required form. From \\(y\\log x = x\\log y\\) we get \\(\\dfrac{\\log x}{x} = \\dfrac{\\log y}{y} = k\\) (say), i.e. \\(\\log x = kx\\) and \\(\\log y = ky\\). Substituting,\n\n\\(\\dfrac{dy}{dx} = \\dfrac{y(x \\cdot ky - y)}{x(y \\cdot kx - x)} = \\dfrac{y \\cdot y(kx - 1)}{x \\cdot x(ky - 1)} = \\dfrac{y^2(kx - 1)}{x^2(ky - 1)}\\).\n\nSince \\(kx = \\log x\\) and \\(ky = \\log y\\),\n\n\\(\\dfrac{dy}{dx} = \\dfrac{y^2(\\log x - 1)}{x^2(\\log y - 1)} = \\dfrac{y^2(1 - \\log x)}{x^2(1 - \\log y)}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "3d1fad33-f330-4272-989f-322b58fd27bb",
+    "ref": "Misc I Q.5",
+    "derived_answer": "A",
+    "solution": "\\(y = \\sin(2\\sin^{-1} x)\\). By the chain rule,\n\n\\(\\dfrac{dy}{dx} = \\cos(2\\sin^{-1} x) \\cdot 2 \\cdot \\dfrac{1}{\\sqrt{1 - x^2}}\\).\n\nPut \\(\\theta = \\sin^{-1} x\\), so \\(\\sin\\theta = x\\) and\n\\(\\cos(2\\sin^{-1} x) = \\cos 2\\theta = 1 - 2\\sin^2\\theta = 1 - 2x^2\\).\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{2(1 - 2x^2)}{\\sqrt{1 - x^2}} = \\dfrac{2 - 4x^2}{\\sqrt{1 - x^2}}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "3272b419-a3be-4aa9-846b-6fd990434df2",
+    "ref": "Misc I Q.6",
+    "derived_answer": "C",
+    "solution": "Handle the two terms separately.\n\nFirst term: put \\(x = \\sin\\theta\\), so \\(\\theta = \\sin^{-1} x\\) and \\(\\sqrt{1 - x^2} = \\cos\\theta\\). Then\n\\(\\dfrac{x}{1 + \\sqrt{1 - x^2}} = \\dfrac{\\sin\\theta}{1 + \\cos\\theta} = \\tan\\dfrac{\\theta}{2}\\),\nso the first term is \\(\\tan^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right) = \\dfrac{\\theta}{2} = \\dfrac{1}{2}\\sin^{-1} x\\).\n\nIts derivative is \\(\\dfrac{1}{2\\sqrt{1 - x^2}}\\).\n\nSecond term: put \\(x = \\cos\\phi\\), so \\(\\phi = \\cos^{-1} x \\in (0, \\pi)\\). Then\n\\(\\sqrt{\\dfrac{1 - x}{1 + x}} = \\sqrt{\\dfrac{1 - \\cos\\phi}{1 + \\cos\\phi}} = \\tan\\dfrac{\\phi}{2}\\),\nso \\(2\\tan^{-1}\\left(\\tan\\dfrac{\\phi}{2}\\right) = \\phi\\) and the second term is \\(\\sin\\phi = \\sqrt{1 - x^2}\\).\n\nIts derivative is \\(\\dfrac{-x}{\\sqrt{1 - x^2}}\\).\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{1}{2\\sqrt{1 - x^2}} - \\dfrac{x}{\\sqrt{1 - x^2}} = \\dfrac{1 - 2x}{2\\sqrt{1 - x^2}}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "feafc895-2406-4da7-b20d-b07dc0ef9513",
+    "ref": "Misc I Q.7",
+    "derived_answer": "D",
+    "solution": "First find \\(y\\) when \\(x = 0\\). Putting \\(x = 0\\) in \\(\\log(x + y) = 2xy\\) gives \\(\\log y = 0\\), so \\(y = 1\\).\n\nDifferentiate \\(\\log(x + y) = 2xy\\) w.r.t. \\(x\\):\n\n\\(\\dfrac{1 + y'}{x + y} = 2y + 2x\\,y'\\).\n\nSubstitute \\(x = 0,\\ y = 1\\):\n\n\\(\\dfrac{1 + y'}{0 + 1} = 2(1) + 2(0)y' \\Rightarrow 1 + y' = 2\\).\n\n\\(\\therefore y'(0) = 1\\).",
+    "matches_current": true
+  },
+  {
+    "id": "96b9e361-7793-4e05-93ec-dd4086df4d48",
+    "ref": "Misc I Q.8",
+    "derived_answer": "C",
+    "solution": "Since \\(g\\) is the inverse of \\(f\\), we have \\(f(g(x)) = x\\).\n\nDifferentiating both sides w.r.t. \\(x\\):\n\n\\(f'(g(x)) \\cdot g'(x) = 1 \\Rightarrow g'(x) = \\dfrac{1}{f'(g(x))}\\).\n\nGiven \\(f'(x) = \\dfrac{1}{1 + x^7}\\), replacing \\(x\\) by \\(g(x)\\) gives \\(f'(g(x)) = \\dfrac{1}{1 + [g(x)]^7}\\).\n\n\\(\\therefore g'(x) = \\dfrac{1}{\\dfrac{1}{1 + [g(x)]^7}} = 1 + [g(x)]^7\\).",
+    "matches_current": true
+  },
+  {
+    "id": "c891ff33-0155-4aa6-9f9f-687531932f2c",
+    "ref": "Misc I Q.9",
+    "derived_answer": "B",
+    "solution": "From \\(x\\sqrt{y + 1} + y\\sqrt{x + 1} = 0\\) we get \\(x\\sqrt{y + 1} = -y\\sqrt{x + 1}\\).\n\nSquaring both sides:\n\n\\(x^2(y + 1) = y^2(x + 1)\\)\n\n\\(\\Rightarrow x^2 y + x^2 - x y^2 - y^2 = 0\\)\n\n\\(\\Rightarrow xy(x - y) + (x - y)(x + y) = 0\\)\n\n\\(\\Rightarrow (x - y)(xy + x + y) = 0\\).\n\nSince \\(x \\neq y\\), we have \\(xy + x + y = 0\\), i.e. \\(y(1 + x) = -x\\), so \\(y = \\dfrac{-x}{1 + x}\\).\n\nDifferentiating by the quotient rule:\n\n\\(\\dfrac{dy}{dx} = -\\dfrac{(1)(1 + x) - x(1)}{(1 + x)^2} = -\\dfrac{1}{(1 + x)^2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "e1971bd7-a9d9-4110-87b9-95da41ed9cd9",
+    "ref": "Misc I Q.10",
+    "derived_answer": "C",
+    "solution": "Put \\(x = a\\cos\\theta\\), so \\(\\theta = \\cos^{-1}\\left(\\dfrac{x}{a}\\right) \\in (0, \\pi)\\).\n\nThen \\(\\dfrac{a - x}{a + x} = \\dfrac{a(1 - \\cos\\theta)}{a(1 + \\cos\\theta)} = \\dfrac{2\\sin^2\\dfrac{\\theta}{2}}{2\\cos^2\\dfrac{\\theta}{2}} = \\tan^2\\dfrac{\\theta}{2}\\).\n\nSince \\(\\dfrac{\\theta}{2} \\in \\left(0, \\dfrac{\\pi}{2}\\right)\\), \\(\\tan\\dfrac{\\theta}{2} > 0\\), so \\(\\sqrt{\\dfrac{a - x}{a + x}} = \\tan\\dfrac{\\theta}{2}\\).\n\n\\(\\therefore y = \\tan^{-1}\\left(\\tan\\dfrac{\\theta}{2}\\right) = \\dfrac{\\theta}{2} = \\dfrac{1}{2}\\cos^{-1}\\left(\\dfrac{x}{a}\\right)\\).\n\nDifferentiating:\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2} \\cdot \\dfrac{-1}{\\sqrt{1 - \\dfrac{x^2}{a^2}}} \\cdot \\dfrac{1}{a} = \\dfrac{-1}{2a \\cdot \\dfrac{\\sqrt{a^2 - x^2}}{a}} = -\\dfrac{1}{2\\sqrt{a^2 - x^2}}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "14c296c7-e800-4b82-a0c8-9648745dea8a",
+    "ref": "Misc I Q.11",
+    "derived_answer": "A",
+    "solution": "Differentiate the parametric equations w.r.t. \\(\\theta\\):\n\n\\(\\dfrac{dx}{d\\theta} = a(-\\sin\\theta + \\sin\\theta + \\theta\\cos\\theta) = a\\theta\\cos\\theta\\)\n\n\\(\\dfrac{dy}{d\\theta} = a(\\cos\\theta - \\cos\\theta + \\theta\\sin\\theta) = a\\theta\\sin\\theta\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{a\\theta\\sin\\theta}{a\\theta\\cos\\theta} = \\tan\\theta\\).\n\nFor the second derivative,\n\n\\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{d\\theta}\\left(\\dfrac{dy}{dx}\\right) \\cdot \\dfrac{d\\theta}{dx} = \\sec^2\\theta \\cdot \\dfrac{1}{a\\theta\\cos\\theta} = \\dfrac{1}{a\\theta\\cos^3\\theta}\\).\n\nAt \\(\\theta = \\dfrac{\\pi}{4}\\): \\(\\cos\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\), so \\(\\cos^3\\dfrac{\\pi}{4} = \\dfrac{1}{2\\sqrt{2}}\\).\n\n\\(\\therefore \\left[\\dfrac{d^2y}{dx^2}\\right]_{\\theta = \\frac{\\pi}{4}} = \\dfrac{1}{a \\cdot \\dfrac{\\pi}{4} \\cdot \\dfrac{1}{2\\sqrt{2}}} = \\dfrac{8\\sqrt{2}}{a\\pi}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "73b4747a-a60e-4fe6-80be-1cf2ec089919",
+    "ref": "Misc I Q.12",
+    "derived_answer": "B",
+    "solution": "\\(y = a\\cos(\\log x)\\).\n\nDifferentiating: \\(\\dfrac{dy}{dx} = -a\\sin(\\log x) \\cdot \\dfrac{1}{x}\\), so \\(x\\dfrac{dy}{dx} = -a\\sin(\\log x)\\).\n\nDifferentiate this again w.r.t. \\(x\\):\n\n\\(\\dfrac{dy}{dx} + x\\dfrac{d^2y}{dx^2} = -a\\cos(\\log x) \\cdot \\dfrac{1}{x}\\).\n\nMultiplying throughout by \\(x\\):\n\n\\(x\\dfrac{dy}{dx} + x^2\\dfrac{d^2y}{dx^2} = -a\\cos(\\log x) = -y\\).\n\n\\(\\therefore x^2\\dfrac{d^2y}{dx^2} + x\\dfrac{dy}{dx} + y = 0\\).\n\nComparing with \\(A\\dfrac{d^2y}{dx^2} + B\\dfrac{dy}{dx} + C = 0\\), we get \\(A = x^2\\), \\(B = x\\), \\(C = y\\).",
+    "matches_current": true
+  }
+]

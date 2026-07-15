@@ -1,0 +1,176 @@
+[
+  {
+    "id": "aade811a-efd7-477d-b8b0-059e7e0c9feb",
+    "ref": "Ex 1.4 Q.1 (i)",
+    "solution": "Here the parameter is \\(t\\).\nDifferentiating \\(x = at^2\\) w.r.t. \\(t\\): \\(\\frac{dx}{dt} = 2at\\).\nDifferentiating \\(y = 2at\\) w.r.t. \\(t\\): \\(\\frac{dy}{dt} = 2a\\).\nHence, for \\(t \\neq 0\\),\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{2a}{2at} = \\frac{1}{t}\\).\n\\(\\therefore \\frac{dy}{dx} = \\frac{1}{t}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "68026860-996a-4e29-8bdc-31dfda3edb4c",
+    "ref": "Ex 1.4 Q.1 (ii)",
+    "solution": "Here the parameter is \\(\\theta\\).\nDifferentiating \\(x = a\\cot\\theta\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = -a\\operatorname{cosec}^2\\theta\\).\nDifferentiating \\(y = b\\operatorname{cosec}\\theta\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dy}{d\\theta} = -b\\operatorname{cosec}\\theta\\cot\\theta\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{-b\\operatorname{cosec}\\theta\\cot\\theta}{-a\\operatorname{cosec}^2\\theta} = \\frac{b}{a}\\cdot\\frac{\\cot\\theta}{\\operatorname{cosec}\\theta}\\).\nNow \\(\\frac{\\cot\\theta}{\\operatorname{cosec}\\theta} = \\dfrac{\\cos\\theta/\\sin\\theta}{1/\\sin\\theta} = \\cos\\theta\\).\n\\(\\therefore \\frac{dy}{dx} = \\frac{b}{a}\\cos\\theta\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6df6b513-c38b-46e0-9cd9-7cc957ded7dc",
+    "ref": "Ex 1.4 Q.1 (iii)",
+    "solution": "Here the parameter is \\(m\\) (not \\(t\\) or \\(\\theta\\)).\nFrom \\(x = \\sqrt{a^2+m^2}\\) we get \\(x^2 = a^2+m^2\\), so\n\\(y = \\log(a^2+m^2) = \\log(x^2) = 2\\log x\\),\nwhich already gives \\(\\frac{dy}{dx} = \\frac{2}{x}\\).\nWorking through the parameter confirms this. Differentiating w.r.t. \\(m\\):\n\\(\\frac{dx}{dm} = \\frac{1}{2\\sqrt{a^2+m^2}}\\cdot 2m = \\frac{m}{\\sqrt{a^2+m^2}}\\),\n\\(\\frac{dy}{dm} = \\frac{1}{a^2+m^2}\\cdot 2m = \\frac{2m}{a^2+m^2}\\).\nTherefore, for \\(m \\neq 0\\),\n\\(\\frac{dy}{dx} = \\dfrac{dy/dm}{dx/dm} = \\frac{2m}{a^2+m^2}\\cdot\\frac{\\sqrt{a^2+m^2}}{m} = \\frac{2}{\\sqrt{a^2+m^2}}\\).\n\\(\\therefore \\frac{dy}{dx} = \\frac{2}{\\sqrt{a^2+m^2}} = \\frac{2}{x}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5245f43f-7d75-475b-be42-559f514fc31f",
+    "ref": "Ex 1.4 Q.1 (iv)",
+    "solution": "Here the parameter is \\(\\theta\\).\nDifferentiating \\(x = \\sin\\theta\\) w.r.t. \\(\\theta\\): \\(\\frac{dx}{d\\theta} = \\cos\\theta\\).\nDifferentiating \\(y = \\tan\\theta\\) w.r.t. \\(\\theta\\): \\(\\frac{dy}{d\\theta} = \\sec^2\\theta\\).\nTherefore, for \\(\\cos\\theta \\neq 0\\),\n\\(\\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{\\sec^2\\theta}{\\cos\\theta} = \\sec^2\\theta\\cdot\\sec\\theta = \\sec^3\\theta\\).\n\\(\\therefore \\frac{dy}{dx} = \\sec^3\\theta = \\frac{1}{\\cos^3\\theta}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "cbb70da7-7352-455d-9353-6a7f8f9e3d46",
+    "ref": "Ex 1.4 Q.1 (v)",
+    "solution": "Here the parameter is \\(\\theta\\).\nDifferentiating \\(x = a(1-\\cos\\theta)\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = a\\sin\\theta\\).\nDifferentiating \\(y = b(\\theta-\\sin\\theta)\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dy}{d\\theta} = b(1-\\cos\\theta)\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{b(1-\\cos\\theta)}{a\\sin\\theta}\\).\nNow use the half-angle forms \\(1-\\cos\\theta = 2\\sin^2\\frac{\\theta}{2}\\) and \\(\\sin\\theta = 2\\sin\\frac{\\theta}{2}\\cos\\frac{\\theta}{2}\\):\n\\(\\frac{dy}{dx} = \\frac{b}{a}\\cdot\\frac{2\\sin^2\\frac{\\theta}{2}}{2\\sin\\frac{\\theta}{2}\\cos\\frac{\\theta}{2}} = \\frac{b}{a}\\cdot\\frac{\\sin\\frac{\\theta}{2}}{\\cos\\frac{\\theta}{2}}\\).\n\\(\\therefore \\frac{dy}{dx} = \\frac{b}{a}\\tan\\frac{\\theta}{2}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a60856d2-b362-4e85-9751-ab23a62f60a8",
+    "ref": "Ex 1.4 Q.1 (vi)",
+    "solution": "Here the parameter is \\(t\\). Both \\(x\\) and \\(y\\) are built on the same expression, so put\n\\(u = t + \\frac{1}{t}\\), giving \\(\\frac{du}{dt} = 1 - \\frac{1}{t^2}\\).\nThen \\(x = u^a\\) and \\(y = a^u\\).\nDifferentiating w.r.t. \\(t\\) by the chain rule:\n\\(\\frac{dx}{dt} = a\\,u^{a-1}\\cdot\\frac{du}{dt} = a\\left(t+\\frac{1}{t}\\right)^{a-1}\\left(1-\\frac{1}{t^2}\\right)\\),\n\\(\\frac{dy}{dt} = a^u\\log a\\cdot\\frac{du}{dt} = a^{t+\\frac{1}{t}}\\log a\\left(1-\\frac{1}{t^2}\\right)\\).\nDividing, the common factor \\(\\left(1-\\frac{1}{t^2}\\right)\\) cancels (so we need \\(t \\neq \\pm 1\\)):\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{a^{t+\\frac{1}{t}}\\log a}{a\\left(t+\\frac{1}{t}\\right)^{a-1}}\\).\n\\(\\therefore \\frac{dy}{dx} = \\frac{a^{t+\\frac{1}{t}}\\,\\log a}{a\\left(t+\\frac{1}{t}\\right)^{a-1}}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8e3a9064-fae7-4a43-8ba5-e23565652d75",
+    "ref": "Ex 1.4 Q.1 (vii)",
+    "solution": "Both expressions simplify if we substitute \\(t = \\tan\\theta\\), i.e. \\(\\theta = \\tan^{-1}t\\). Take \\(0 < t < 1\\), so that \\(0 < \\theta < \\frac{\\pi}{4}\\).\nFor \\(x\\): \\(\\frac{2t}{1+t^2} = \\frac{2\\tan\\theta}{1+\\tan^2\\theta} = \\sin 2\\theta = \\cos\\left(\\frac{\\pi}{2}-2\\theta\\right)\\).\nSince \\(0 < 2\\theta < \\frac{\\pi}{2}\\), the angle \\(\\frac{\\pi}{2}-2\\theta\\) lies in \\([0,\\pi]\\), so\n\\(x = \\cos^{-1}\\left(\\cos\\left(\\frac{\\pi}{2}-2\\theta\\right)\\right) = \\frac{\\pi}{2} - 2\\theta\\).\nFor \\(y\\): \\(\\sqrt{1+t^2} = \\sqrt{1+\\tan^2\\theta} = \\sec\\theta\\), and \\(\\theta\\) is in the principal range of \\(\\sec^{-1}\\), so\n\\(y = \\sec^{-1}(\\sec\\theta) = \\theta\\).\nNow differentiate both w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = -2\\), \\(\\frac{dy}{d\\theta} = 1\\).\n\\(\\therefore \\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{1}{-2} = -\\frac{1}{2}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f7099431-bd92-4774-a881-f236c0337285",
+    "ref": "Ex 1.4 Q.1 (viii)",
+    "solution": "Both expressions simplify if we substitute \\(t = \\cos\\theta\\), i.e. \\(\\theta = \\cos^{-1}t\\). Take \\(0 < \\theta < \\frac{\\pi}{3}\\) (so \\(\\frac{1}{2} < t < 1\\)).\nFor \\(x\\): using \\(\\cos 3\\theta = 4\\cos^3\\theta - 3\\cos\\theta\\),\n\\(4t^3 - 3t = 4\\cos^3\\theta - 3\\cos\\theta = \\cos 3\\theta\\).\nSince \\(0 < 3\\theta < \\pi\\), we get \\(x = \\cos^{-1}(\\cos 3\\theta) = 3\\theta\\).\nFor \\(y\\): \\(\\sqrt{1-t^2} = \\sqrt{1-\\cos^2\\theta} = \\sin\\theta\\) (positive here), so\n\\(\\frac{\\sqrt{1-t^2}}{t} = \\frac{\\sin\\theta}{\\cos\\theta} = \\tan\\theta\\), and \\(y = \\tan^{-1}(\\tan\\theta) = \\theta\\).\nNow differentiate both w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = 3\\), \\(\\frac{dy}{d\\theta} = 1\\).\n\\(\\therefore \\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{1}{3}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "0cd6c22b-b078-49c6-b87a-7e120c78ac8d",
+    "ref": "Ex 1.4 Q.2 (i)",
+    "solution": "Here the parameter is \\(\\theta\\).\nDifferentiating \\(x = \\operatorname{cosec}^2\\theta\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = 2\\operatorname{cosec}\\theta\\cdot(-\\operatorname{cosec}\\theta\\cot\\theta) = -2\\operatorname{cosec}^2\\theta\\cot\\theta\\).\nDifferentiating \\(y = \\cot^3\\theta\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dy}{d\\theta} = 3\\cot^2\\theta\\cdot(-\\operatorname{cosec}^2\\theta) = -3\\cot^2\\theta\\operatorname{cosec}^2\\theta\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{-3\\cot^2\\theta\\operatorname{cosec}^2\\theta}{-2\\operatorname{cosec}^2\\theta\\cot\\theta} = \\frac{3}{2}\\cot\\theta\\).\nAt \\(\\theta = \\frac{\\pi}{6}\\), \\(\\cot\\frac{\\pi}{6} = \\sqrt{3}\\), so\n\\(\\left(\\frac{dy}{dx}\\right)_{\\theta=\\pi/6} = \\frac{3}{2}\\sqrt{3} = \\frac{3\\sqrt{3}}{2}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5ec4ef00-57bc-4736-9e35-45c7db257e64",
+    "ref": "Ex 1.4 Q.2 (ii)",
+    "solution": "Here the parameter is \\(\\theta\\).\nDifferentiating \\(x = a\\cos^3\\theta\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = 3a\\cos^2\\theta\\cdot(-\\sin\\theta) = -3a\\cos^2\\theta\\sin\\theta\\).\nDifferentiating \\(y = a\\sin^3\\theta\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dy}{d\\theta} = 3a\\sin^2\\theta\\cos\\theta\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{3a\\sin^2\\theta\\cos\\theta}{-3a\\cos^2\\theta\\sin\\theta} = -\\frac{\\sin\\theta}{\\cos\\theta} = -\\tan\\theta\\).\nAt \\(\\theta = \\frac{\\pi}{3}\\), \\(\\tan\\frac{\\pi}{3} = \\sqrt{3}\\), so\n\\(\\left(\\frac{dy}{dx}\\right)_{\\theta=\\pi/3} = -\\sqrt{3}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "3879210a-182b-42e1-93ca-e6a8d9b670db",
+    "ref": "Ex 1.4 Q.2 (iii)",
+    "solution": "Here the parameter is \\(t\\).\nDifferentiating \\(x = t^2+t+1\\) w.r.t. \\(t\\): \\(\\frac{dx}{dt} = 2t+1\\).\nDifferentiating \\(y = \\sin\\left(\\frac{\\pi t}{2}\\right) + \\cos\\left(\\frac{\\pi t}{2}\\right)\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = \\frac{\\pi}{2}\\cos\\left(\\frac{\\pi t}{2}\\right) - \\frac{\\pi}{2}\\sin\\left(\\frac{\\pi t}{2}\\right)\\).\nAt \\(t = 1\\):\n\\(\\frac{dx}{dt} = 2(1)+1 = 3\\),\n\\(\\frac{dy}{dt} = \\frac{\\pi}{2}\\cos\\frac{\\pi}{2} - \\frac{\\pi}{2}\\sin\\frac{\\pi}{2} = \\frac{\\pi}{2}(0) - \\frac{\\pi}{2}(1) = -\\frac{\\pi}{2}\\).\nTherefore\n\\(\\left(\\frac{dy}{dx}\\right)_{t=1} = \\dfrac{-\\pi/2}{3} = -\\frac{\\pi}{6}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e692f302-a815-4f0c-a956-5ee589fb940d",
+    "ref": "Ex 1.4 Q.2 (iv)",
+    "solution": "Here the parameter is \\(t\\).\nDifferentiating \\(x = 2\\cos t + \\cos 2t\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = -2\\sin t - 2\\sin 2t\\).\nDifferentiating \\(y = 2\\sin t - \\sin 2t\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = 2\\cos t - 2\\cos 2t\\).\nAt \\(t = \\frac{\\pi}{4}\\), \\(\\sin\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\), \\(\\cos\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\), \\(\\sin\\frac{\\pi}{2} = 1\\), \\(\\cos\\frac{\\pi}{2} = 0\\):\n\\(\\frac{dx}{dt} = -2\\cdot\\frac{1}{\\sqrt{2}} - 2(1) = -\\sqrt{2} - 2\\),\n\\(\\frac{dy}{dt} = 2\\cdot\\frac{1}{\\sqrt{2}} - 2(0) = \\sqrt{2}\\).\nTherefore\n\\(\\left(\\frac{dy}{dx}\\right)_{t=\\pi/4} = \\frac{\\sqrt{2}}{-\\sqrt{2}-2} = -\\frac{\\sqrt{2}}{\\sqrt{2}+2}\\).\nRationalising by multiplying numerator and denominator by \\(\\sqrt{2}-2\\):\n\\(-\\frac{\\sqrt{2}(\\sqrt{2}-2)}{(\\sqrt{2}+2)(\\sqrt{2}-2)} = -\\frac{2-2\\sqrt{2}}{2-4} = -\\frac{2-2\\sqrt{2}}{-2} = -(\\sqrt{2}-1)\\).\n\\(\\therefore \\left(\\frac{dy}{dx}\\right)_{t=\\pi/4} = 1-\\sqrt{2}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e34e1b56-9133-4e0b-a6bc-4a1351bab894",
+    "ref": "Ex 1.4 Q.2 (v)",
+    "solution": "Here the parameter is \\(t\\).\nDifferentiating \\(x = t + 2\\sin(\\pi t)\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = 1 + 2\\pi\\cos(\\pi t)\\).\nDifferentiating \\(y = 3t - \\cos(\\pi t)\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = 3 + \\pi\\sin(\\pi t)\\).\nAt \\(t = \\frac{1}{2}\\), \\(\\cos\\frac{\\pi}{2} = 0\\) and \\(\\sin\\frac{\\pi}{2} = 1\\):\n\\(\\frac{dx}{dt} = 1 + 2\\pi(0) = 1\\),\n\\(\\frac{dy}{dt} = 3 + \\pi(1) = 3+\\pi\\).\nTherefore\n\\(\\left(\\frac{dy}{dx}\\right)_{t=1/2} = \\frac{3+\\pi}{1} = 3+\\pi\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "55855c6f-9788-4774-9064-41446f238f05",
+    "ref": "Ex 1.4 Q.3 (i)",
+    "solution": "Here the parameter is \\(\\theta\\), and we take \\(\\theta\\) such that \\(\\sec\\theta - \\tan\\theta > 0\\) and \\(\\sec\\theta + \\tan\\theta > 0\\).\nDifferentiating \\(x = a(\\sec\\theta-\\tan\\theta)^{1/2}\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = \\frac{a}{2}(\\sec\\theta-\\tan\\theta)^{-1/2}\\left(\\sec\\theta\\tan\\theta - \\sec^2\\theta\\right)\\)\n\\(= \\frac{a}{2}\\cdot\\frac{-\\sec\\theta(\\sec\\theta-\\tan\\theta)}{\\sqrt{\\sec\\theta-\\tan\\theta}} = -\\frac{a}{2}\\sec\\theta\\sqrt{\\sec\\theta-\\tan\\theta} = -\\frac{1}{2}\\sec\\theta\\cdot x\\).\nDifferentiating \\(y = a(\\sec\\theta+\\tan\\theta)^{1/2}\\) w.r.t. \\(\\theta\\):\n\\(\\frac{dy}{d\\theta} = \\frac{a}{2}(\\sec\\theta+\\tan\\theta)^{-1/2}\\left(\\sec\\theta\\tan\\theta + \\sec^2\\theta\\right)\\)\n\\(= \\frac{a}{2}\\cdot\\frac{\\sec\\theta(\\tan\\theta+\\sec\\theta)}{\\sqrt{\\sec\\theta+\\tan\\theta}} = \\frac{a}{2}\\sec\\theta\\sqrt{\\sec\\theta+\\tan\\theta} = \\frac{1}{2}\\sec\\theta\\cdot y\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\frac{\\frac{1}{2}\\sec\\theta\\cdot y}{-\\frac{1}{2}\\sec\\theta\\cdot x} = -\\frac{y}{x}\\).\nHence \\(\\frac{dy}{dx} = -\\frac{y}{x}\\), as required.\nRemark: the result is natural because \\(xy = a^2\\sqrt{(\\sec\\theta-\\tan\\theta)(\\sec\\theta+\\tan\\theta)} = a^2\\sqrt{\\sec^2\\theta-\\tan^2\\theta} = a^2\\), a constant, so the curve is the rectangular hyperbola \\(xy = a^2\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "20542ada-5304-44a1-89ee-1fc293312a42",
+    "ref": "Ex 1.4 Q.3 (ii)",
+    "solution": "Here the parameter is \\(t\\).\nTaking logarithms of the given equations,\n\\(\\log x = \\sin 3t\\) and \\(\\log y = \\cos 3t\\).\nDifferentiating \\(x = e^{\\sin 3t}\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = e^{\\sin 3t}\\cdot 3\\cos 3t = 3x\\cos 3t = 3x\\log y\\).\nDifferentiating \\(y = e^{\\cos 3t}\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = e^{\\cos 3t}\\cdot(-3\\sin 3t) = -3y\\sin 3t = -3y\\log x\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{-3y\\log x}{3x\\log y} = -\\frac{y\\log x}{x\\log y}\\).\nHence \\(\\frac{dy}{dx} = -\\frac{y\\log x}{x\\log y}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ffedd538-fa91-48e2-8b5d-4164e415f951",
+    "ref": "Ex 1.4 Q.3 (iii)",
+    "solution": "Here the parameter is \\(t\\), with \\(t \\neq \\pm 1\\).\nDifferentiating \\(x = \\frac{t+1}{t-1}\\) w.r.t. \\(t\\) by the quotient rule:\n\\(\\frac{dx}{dt} = \\frac{(t-1)(1) - (t+1)(1)}{(t-1)^2} = \\frac{-2}{(t-1)^2}\\).\nDifferentiating \\(y = \\frac{t-1}{t+1}\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = \\frac{(t+1)(1) - (t-1)(1)}{(t+1)^2} = \\frac{2}{(t+1)^2}\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{2}{(t+1)^2}\\cdot\\frac{(t-1)^2}{-2} = -\\frac{(t-1)^2}{(t+1)^2} = -\\left(\\frac{t-1}{t+1}\\right)^2 = -y^2\\).\nHence \\(y^2 + \\frac{dy}{dx} = y^2 - y^2 = 0\\), as required.\nRemark: here \\(y = \\frac{1}{x}\\), so the relation is just the derivative of \\(y = \\frac{1}{x}\\), namely \\(\\frac{dy}{dx} = -\\frac{1}{x^2} = -y^2\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e7c5b949-3b34-4336-bb1c-f26f587e831f",
+    "ref": "Ex 1.4 Q.3 (iv)",
+    "solution": "Here the parameter is \\(t\\).\nDifferentiating \\(x = a\\cos^3 t\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = 3a\\cos^2 t\\cdot(-\\sin t) = -3a\\cos^2 t\\sin t\\).\nDifferentiating \\(y = a\\sin^3 t\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = 3a\\sin^2 t\\cos t\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{3a\\sin^2 t\\cos t}{-3a\\cos^2 t\\sin t} = -\\frac{\\sin t}{\\cos t} = -\\tan t\\).\nNow express \\(\\tan t\\) through \\(x\\) and \\(y\\):\n\\(\\frac{y}{x} = \\frac{a\\sin^3 t}{a\\cos^3 t} = \\tan^3 t\\), so \\(\\left(\\frac{y}{x}\\right)^{\\frac{1}{3}} = \\tan t\\).\nHence \\(\\frac{dy}{dx} = -\\tan t = -\\left(\\frac{y}{x}\\right)^{\\frac{1}{3}}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "48064a3b-1188-49a6-8091-36813b8c9732",
+    "ref": "Ex 1.4 Q.3 (v)",
+    "solution": "Here the parameter is \\(t\\). Write \\(u = t+3\\), so \\(\\frac{du}{dt} = 1\\).\nDifferentiating \\(x = 2\\cos^4(t+3)\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = 2\\cdot 4\\cos^3 u\\cdot(-\\sin u) = -8\\cos^3 u\\sin u\\).\nDifferentiating \\(y = 3\\sin^4(t+3)\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = 3\\cdot 4\\sin^3 u\\cos u = 12\\sin^3 u\\cos u\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{12\\sin^3 u\\cos u}{-8\\cos^3 u\\sin u} = -\\frac{3}{2}\\cdot\\frac{\\sin^2 u}{\\cos^2 u} = -\\frac{3}{2}\\tan^2 u\\).\nNow express \\(\\tan^2 u\\) through \\(x\\) and \\(y\\):\n\\(\\frac{3y}{2x} = \\frac{3\\cdot 3\\sin^4 u}{2\\cdot 2\\cos^4 u} = \\frac{9}{4}\\tan^4 u\\),\nso \\(\\sqrt{\\frac{3y}{2x}} = \\frac{3}{2}\\tan^2 u\\) (the positive square root, since \\(\\tan^2 u \\geq 0\\)).\nHence \\(\\frac{dy}{dx} = -\\frac{3}{2}\\tan^2 u = -\\sqrt{\\frac{3y}{2x}}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "2fc4ad38-3eb9-460e-92b9-a780630da463",
+    "ref": "Ex 1.4 Q.3 (vi)",
+    "solution": "Here the parameter is \\(t\\); take \\(t > 0\\).\nDifferentiating \\(x = \\log(1+t^2)\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = \\frac{2t}{1+t^2}\\).\nDifferentiating \\(y = t - \\tan^{-1}t\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = 1 - \\frac{1}{1+t^2} = \\frac{(1+t^2)-1}{1+t^2} = \\frac{t^2}{1+t^2}\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{t^2}{1+t^2}\\cdot\\frac{1+t^2}{2t} = \\frac{t}{2}\\).\nNow express \\(t\\) through \\(x\\). From \\(x = \\log(1+t^2)\\) we get \\(e^x = 1+t^2\\), so \\(e^x - 1 = t^2\\) and\n\\(\\sqrt{e^x-1} = t\\) (since \\(t > 0\\)).\nHence \\(\\frac{dy}{dx} = \\frac{t}{2} = \\frac{\\sqrt{e^x-1}}{2}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "c2b6c1c8-b484-40ed-ae81-d6e9a082ef3b",
+    "ref": "Ex 1.4 Q.3 (vii)",
+    "solution": "Here the parameter is \\(t\\), with \\(e^{2t} < 1\\), i.e. \\(t < 0\\).\nFrom \\(x = \\sin^{-1}(e^t)\\) we get \\(\\sin x = e^t\\).\nDifferentiating \\(x = \\sin^{-1}(e^t)\\) w.r.t. \\(t\\):\n\\(\\frac{dx}{dt} = \\frac{1}{\\sqrt{1-\\left(e^t\\right)^2}}\\cdot e^t = \\frac{e^t}{\\sqrt{1-e^{2t}}}\\).\nDifferentiating \\(y = \\sqrt{1-e^{2t}}\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = \\frac{1}{2\\sqrt{1-e^{2t}}}\\cdot\\left(-2e^{2t}\\right) = \\frac{-e^{2t}}{\\sqrt{1-e^{2t}}}\\).\nTherefore\n\\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{-e^{2t}}{\\sqrt{1-e^{2t}}}\\cdot\\frac{\\sqrt{1-e^{2t}}}{e^t} = -e^t = -\\sin x\\).\nHence \\(\\sin x + \\frac{dy}{dx} = \\sin x - \\sin x = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e706df7e-33f6-4a2c-bb0e-1b15f88d896a",
+    "ref": "Ex 1.4 Q.3 (viii)",
+    "solution": "Note that the required quantity is \\(\\frac{dx}{dy}\\), not \\(\\frac{dy}{dx}\\), so here we divide \\(\\frac{dx}{dt}\\) by \\(\\frac{dy}{dt}\\).\nHere the parameter is \\(t\\).\nDifferentiating \\(x = \\frac{2bt}{1+t^2}\\) w.r.t. \\(t\\) by the quotient rule:\n\\(\\frac{dx}{dt} = 2b\\cdot\\frac{(1+t^2)(1) - t(2t)}{(1+t^2)^2} = \\frac{2b(1-t^2)}{(1+t^2)^2}\\).\nDifferentiating \\(y = a\\left(\\frac{1-t^2}{1+t^2}\\right)\\) w.r.t. \\(t\\):\n\\(\\frac{dy}{dt} = a\\cdot\\frac{(1+t^2)(-2t) - (1-t^2)(2t)}{(1+t^2)^2} = a\\cdot\\frac{-2t-2t^3-2t+2t^3}{(1+t^2)^2} = \\frac{-4at}{(1+t^2)^2}\\).\nTherefore\n\\(\\frac{dx}{dy} = \\dfrac{dx/dt}{dy/dt} = \\frac{2b(1-t^2)}{(1+t^2)^2}\\cdot\\frac{(1+t^2)^2}{-4at} = -\\frac{b(1-t^2)}{2at}\\).\nNow evaluate the required right-hand side using the given \\(x\\) and \\(y\\):\n\\(-\\frac{b^2y}{a^2x} = -\\frac{b^2\\cdot a\\left(\\frac{1-t^2}{1+t^2}\\right)}{a^2\\cdot\\frac{2bt}{1+t^2}} = -\\frac{ab^2(1-t^2)}{2a^2bt} = -\\frac{b(1-t^2)}{2at}\\).\nThe two expressions agree, hence \\(\\frac{dx}{dy} = -\\frac{b^2y}{a^2x}\\), as required.\nRemark: eliminating \\(t\\) gives \\(\\frac{x^2}{b^2}+\\frac{y^2}{a^2} = 1\\), and differentiating this ellipse implicitly gives the same relation.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "68a3d56e-846c-418a-9147-a57380f683d7",
+    "ref": "Ex 1.4 Q.4 (i)",
+    "solution": "Let \\(u = x\\sin x\\) and \\(v = \\tan x\\). We want \\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\).\nDifferentiating \\(u = x\\sin x\\) w.r.t. \\(x\\) by the product rule:\n\\(\\frac{du}{dx} = 1\\cdot\\sin x + x\\cos x = \\sin x + x\\cos x\\).\nDifferentiating \\(v = \\tan x\\) w.r.t. \\(x\\):\n\\(\\frac{dv}{dx} = \\sec^2 x\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\frac{\\sin x + x\\cos x}{\\sec^2 x} = (\\sin x + x\\cos x)\\cos^2 x\\).\n\\(\\therefore \\frac{du}{dv} = \\left(\\sin x + x\\cos x\\right)\\cos^2 x\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "1437d98b-e6c3-455a-a9c8-980c6cbb2d86",
+    "ref": "Ex 1.4 Q.4 (ii)",
+    "solution": "Let \\(u = \\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right)\\) and \\(v = \\cos^{-1}\\left(\\frac{1-x^2}{1+x^2}\\right)\\).\nBoth simplify under the substitution \\(x = \\tan\\theta\\), i.e. \\(\\theta = \\tan^{-1}x\\). Take \\(0 < x < 1\\), so \\(0 < \\theta < \\frac{\\pi}{4}\\).\nFor \\(u\\): \\(\\frac{2x}{1+x^2} = \\frac{2\\tan\\theta}{1+\\tan^2\\theta} = \\sin 2\\theta\\), and since \\(0 < 2\\theta < \\frac{\\pi}{2}\\) lies in the principal range of \\(\\sin^{-1}\\),\n\\(u = \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\tan^{-1}x\\).\nFor \\(v\\): \\(\\frac{1-x^2}{1+x^2} = \\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta} = \\cos 2\\theta\\), and since \\(0 < 2\\theta < \\frac{\\pi}{2}\\) lies in the principal range of \\(\\cos^{-1}\\),\n\\(v = \\cos^{-1}(\\cos 2\\theta) = 2\\theta = 2\\tan^{-1}x\\).\nSo \\(u = v\\), and differentiating each w.r.t. \\(x\\):\n\\(\\frac{du}{dx} = \\frac{2}{1+x^2}\\), \\(\\frac{dv}{dx} = \\frac{2}{1+x^2}\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\dfrac{\\frac{2}{1+x^2}}{\\frac{2}{1+x^2}} = 1\\).\n\\(\\therefore \\frac{du}{dv} = 1\\) for \\(|x| < 1\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6c463c2c-5a07-4235-8305-2d2d9833691e",
+    "ref": "Ex 1.4 Q.4 (iii)",
+    "solution": "Let \\(u = \\tan^{-1}\\left(\\frac{x}{\\sqrt{1-x^2}}\\right)\\) and \\(v = \\sec^{-1}\\left(\\frac{1}{2x^2-1}\\right)\\). Take \\(0 < x < 1\\).\nFor \\(u\\): put \\(x = \\sin\\theta\\) with \\(0 < \\theta < \\frac{\\pi}{2}\\). Then \\(\\sqrt{1-x^2} = \\cos\\theta\\), so\n\\(u = \\tan^{-1}\\left(\\frac{\\sin\\theta}{\\cos\\theta}\\right) = \\tan^{-1}(\\tan\\theta) = \\theta = \\sin^{-1}x\\),\nand hence \\(\\frac{du}{dx} = \\frac{1}{\\sqrt{1-x^2}}\\).\nFor \\(v\\): use \\(\\sec^{-1}z = \\cos^{-1}\\left(\\frac{1}{z}\\right)\\), which gives\n\\(v = \\sec^{-1}\\left(\\frac{1}{2x^2-1}\\right) = \\cos^{-1}\\left(2x^2-1\\right)\\).\nNow put \\(x = \\cos\\phi\\) with \\(0 < \\phi < \\frac{\\pi}{2}\\); then \\(2x^2-1 = 2\\cos^2\\phi - 1 = \\cos 2\\phi\\), and since \\(0 < 2\\phi < \\pi\\),\n\\(v = \\cos^{-1}(\\cos 2\\phi) = 2\\phi = 2\\cos^{-1}x\\),\nand hence \\(\\frac{dv}{dx} = -\\frac{2}{\\sqrt{1-x^2}}\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\dfrac{\\frac{1}{\\sqrt{1-x^2}}}{-\\frac{2}{\\sqrt{1-x^2}}} = -\\frac{1}{2}\\).\n\\(\\therefore \\frac{du}{dv} = -\\frac{1}{2}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a8aff41e-708f-4bc7-9f56-99e105335b1e",
+    "ref": "Ex 1.4 Q.4 (iv)",
+    "solution": "Let \\(u = \\cos^{-1}\\left(\\frac{1-x^2}{1+x^2}\\right)\\) and \\(v = \\tan^{-1}x\\).\nPut \\(x = \\tan\\theta\\), i.e. \\(\\theta = \\tan^{-1}x\\), and take \\(0 < x\\), so \\(0 < \\theta < \\frac{\\pi}{2}\\).\nThen \\(\\frac{1-x^2}{1+x^2} = \\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta} = \\cos 2\\theta\\), and since \\(0 < 2\\theta < \\pi\\) lies in the principal range of \\(\\cos^{-1}\\),\n\\(u = \\cos^{-1}(\\cos 2\\theta) = 2\\theta = 2\\tan^{-1}x\\).\nDifferentiating each w.r.t. \\(x\\):\n\\(\\frac{du}{dx} = \\frac{2}{1+x^2}\\), \\(\\frac{dv}{dx} = \\frac{1}{1+x^2}\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\dfrac{\\frac{2}{1+x^2}}{\\frac{1}{1+x^2}} = 2\\).\n\\(\\therefore \\frac{du}{dv} = 2\\).\n(Indeed \\(u = 2v\\) here, so the answer \\(2\\) is immediate.)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "db7ed98c-57da-4345-b233-3c8d579f6ae5",
+    "ref": "Ex 1.4 Q.4 (v)",
+    "solution": "Let \\(u = 3^x\\) and \\(v = \\log_x 3\\).\nFirst rewrite \\(v\\) in terms of natural logarithms by the change-of-base rule:\n\\(v = \\log_x 3 = \\frac{\\log 3}{\\log x}\\), where \\(x > 0\\), \\(x \\neq 1\\).\nDifferentiating \\(u = 3^x\\) w.r.t. \\(x\\):\n\\(\\frac{du}{dx} = 3^x\\log 3\\).\nDifferentiating \\(v = \\log 3\\cdot(\\log x)^{-1}\\) w.r.t. \\(x\\) by the chain rule:\n\\(\\frac{dv}{dx} = \\log 3\\cdot\\left(-1\\right)(\\log x)^{-2}\\cdot\\frac{1}{x} = -\\frac{\\log 3}{x(\\log x)^2}\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\frac{3^x\\log 3}{-\\dfrac{\\log 3}{x(\\log x)^2}} = 3^x\\log 3\\cdot\\left(-\\frac{x(\\log x)^2}{\\log 3}\\right)\\).\nThe factor \\(\\log 3\\) cancels, giving\n\\(\\therefore \\frac{du}{dv} = -x\\,3^x\\,(\\log x)^2\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a3e502a0-948c-42ca-ac66-19c6d8e71120",
+    "ref": "Ex 1.4 Q.4 (vi)",
+    "solution": "Let \\(u = \\tan^{-1}\\left(\\frac{\\cos x}{1+\\sin x}\\right)\\) and \\(v = \\sec^{-1}x\\). Take \\(x > 1\\) (needed for \\(\\sec^{-1}x\\)).\nFirst simplify \\(u\\) using half-angle forms:\n\\(\\cos x = \\cos^2\\frac{x}{2} - \\sin^2\\frac{x}{2} = \\left(\\cos\\frac{x}{2}-\\sin\\frac{x}{2}\\right)\\left(\\cos\\frac{x}{2}+\\sin\\frac{x}{2}\\right)\\),\n\\(1+\\sin x = \\cos^2\\frac{x}{2} + \\sin^2\\frac{x}{2} + 2\\sin\\frac{x}{2}\\cos\\frac{x}{2} = \\left(\\cos\\frac{x}{2}+\\sin\\frac{x}{2}\\right)^2\\).\nDividing, the common factor cancels:\n\\(\\frac{\\cos x}{1+\\sin x} = \\frac{\\cos\\frac{x}{2}-\\sin\\frac{x}{2}}{\\cos\\frac{x}{2}+\\sin\\frac{x}{2}} = \\frac{1-\\tan\\frac{x}{2}}{1+\\tan\\frac{x}{2}} = \\tan\\left(\\frac{\\pi}{4}-\\frac{x}{2}\\right)\\).\nHence \\(u = \\tan^{-1}\\left(\\tan\\left(\\frac{\\pi}{4}-\\frac{x}{2}\\right)\\right) = \\frac{\\pi}{4}-\\frac{x}{2}\\), valid while \\(\\frac{\\pi}{4}-\\frac{x}{2}\\) lies in \\(\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)\\), i.e. for \\(1 < x < \\frac{3\\pi}{2}\\).\nDifferentiating,\n\\(\\frac{du}{dx} = -\\frac{1}{2}\\).\nDifferentiating \\(v = \\sec^{-1}x\\) w.r.t. \\(x\\):\n\\(\\frac{dv}{dx} = \\frac{1}{x\\sqrt{x^2-1}}\\) (using \\(x > 1\\)).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = -\\frac{1}{2}\\cdot x\\sqrt{x^2-1}\\).\n\\(\\therefore \\frac{du}{dv} = -\\frac{x\\sqrt{x^2-1}}{2}\\).\nNote: in this question \\(x\\) plays the role of an angle inside \\(\\frac{\\cos x}{1+\\sin x}\\) and of a plain argument inside \\(\\sec^{-1}x\\); the question is solved exactly as printed.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6d35eec5-4ec6-4770-8354-444ca33597cc",
+    "ref": "Ex 1.4 Q.4 (vii)",
+    "solution": "Let \\(u = x^x\\) and \\(v = x^{\\sin x}\\), with \\(x > 0\\). Each is of the form (variable base)\\(^{\\text{variable index}}\\), so use logarithmic differentiation on each.\nFor \\(u\\): \\(\\log u = x\\log x\\). Differentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = 1\\cdot\\log x + x\\cdot\\frac{1}{x} = \\log x + 1\\),\nso \\(\\frac{du}{dx} = x^x\\left(1+\\log x\\right)\\).\nFor \\(v\\): \\(\\log v = \\sin x\\log x\\). Differentiating both sides w.r.t. \\(x\\),\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = \\cos x\\log x + \\sin x\\cdot\\frac{1}{x} = \\cos x\\log x + \\frac{\\sin x}{x}\\),\nso \\(\\frac{dv}{dx} = x^{\\sin x}\\left(\\cos x\\log x + \\frac{\\sin x}{x}\\right) = x^{\\sin x}\\cdot\\frac{x\\cos x\\log x + \\sin x}{x}\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\frac{x^x(1+\\log x)}{x^{\\sin x}\\cdot\\dfrac{x\\cos x\\log x + \\sin x}{x}}\\).\n\\(\\therefore \\frac{du}{dv} = \\frac{x^{\\,x-\\sin x+1}\\left(1+\\log x\\right)}{x\\cos x\\log x + \\sin x}\\).",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f0571f9e-36e5-4674-aa08-cd009870c344",
+    "ref": "Ex 1.4 Q.4 (viii)",
+    "solution": "Let \\(u = \\tan^{-1}\\left(\\frac{\\sqrt{1+x^2}-1}{x}\\right)\\) and \\(v = \\tan^{-1}\\left(\\frac{2x\\sqrt{1-x^2}}{1-2x^2}\\right)\\). Each needs its own substitution. Take \\(0 < x < \\frac{1}{\\sqrt{2}}\\).\nFor \\(u\\): put \\(x = \\tan\\theta\\), i.e. \\(\\theta = \\tan^{-1}x\\), with \\(0 < \\theta < \\frac{\\pi}{4}\\). Then \\(\\sqrt{1+x^2} = \\sec\\theta\\), so\n\\(\\frac{\\sqrt{1+x^2}-1}{x} = \\frac{\\sec\\theta-1}{\\tan\\theta} = \\frac{\\frac{1}{\\cos\\theta}-1}{\\frac{\\sin\\theta}{\\cos\\theta}} = \\frac{1-\\cos\\theta}{\\sin\\theta}\\).\nUsing \\(1-\\cos\\theta = 2\\sin^2\\frac{\\theta}{2}\\) and \\(\\sin\\theta = 2\\sin\\frac{\\theta}{2}\\cos\\frac{\\theta}{2}\\), this is \\(\\tan\\frac{\\theta}{2}\\).\nHence \\(u = \\tan^{-1}\\left(\\tan\\frac{\\theta}{2}\\right) = \\frac{\\theta}{2} = \\frac{1}{2}\\tan^{-1}x\\), and\n\\(\\frac{du}{dx} = \\frac{1}{2}\\cdot\\frac{1}{1+x^2} = \\frac{1}{2(1+x^2)}\\).\nFor \\(v\\): put \\(x = \\sin\\phi\\), i.e. \\(\\phi = \\sin^{-1}x\\), with \\(0 < \\phi < \\frac{\\pi}{4}\\). Then \\(\\sqrt{1-x^2} = \\cos\\phi\\), so\n\\(2x\\sqrt{1-x^2} = 2\\sin\\phi\\cos\\phi = \\sin 2\\phi\\) and \\(1-2x^2 = 1-2\\sin^2\\phi = \\cos 2\\phi\\),\ngiving \\(\\frac{2x\\sqrt{1-x^2}}{1-2x^2} = \\tan 2\\phi\\).\nSince \\(0 < 2\\phi < \\frac{\\pi}{2}\\), we get \\(v = \\tan^{-1}(\\tan 2\\phi) = 2\\phi = 2\\sin^{-1}x\\), and\n\\(\\frac{dv}{dx} = \\frac{2}{\\sqrt{1-x^2}}\\).\nTherefore\n\\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx} = \\frac{1}{2(1+x^2)}\\cdot\\frac{\\sqrt{1-x^2}}{2}\\).\n\\(\\therefore \\frac{du}{dv} = \\frac{\\sqrt{1-x^2}}{4(1+x^2)}\\).",
+    "diagramWouldHelp": false
+  }
+]

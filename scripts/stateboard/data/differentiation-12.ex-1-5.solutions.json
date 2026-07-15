@@ -1,0 +1,206 @@
+[
+  {
+    "id": "e4c76f17-ba1b-4d0b-836a-ae08d6158137",
+    "ref": "Ex 1.5 Q.1 (i)",
+    "solution": "Write the function with negative indices so the power rule applies throughout:\n\\(y = 2x^5 - 4x^3 - 2x^{-2} - 9\\)\nDifferentiating once,\n\\(\\frac{dy}{dx} = 10x^4 - 12x^2 + 4x^{-3}\\)\nDifferentiating again,\n\\(\\frac{d^2y}{dx^2} = 40x^3 - 24x - 12x^{-4}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = 40x^3 - 24x - \\frac{12}{x^4}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ae53c8d7-9592-4444-9371-5f9e46ccb21f",
+    "ref": "Ex 1.5 Q.1 (ii)",
+    "solution": "\\(y = e^{2x} \\cdot \\tan x\\). Use the product rule.\n\\(\\frac{dy}{dx} = 2e^{2x}\\tan x + e^{2x}\\sec^2 x = e^{2x}\\left(2\\tan x + \\sec^2 x\\right)\\)\nDifferentiate again, using the product rule once more and \\(\\frac{d}{dx}(\\sec^2 x) = 2\\sec^2 x \\tan x\\):\n\\(\\frac{d^2y}{dx^2} = 2e^{2x}\\left(2\\tan x + \\sec^2 x\\right) + e^{2x}\\left(2\\sec^2 x + 2\\sec^2 x \\tan x\\right)\\)\n\\(= e^{2x}\\left(4\\tan x + 2\\sec^2 x + 2\\sec^2 x + 2\\sec^2 x \\tan x\\right)\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = 2e^{2x}\\left(2\\tan x + 2\\sec^2 x + \\sec^2 x \\tan x\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "c281eaa3-fe84-4ed8-a033-7ca70adb0f3e",
+    "ref": "Ex 1.5 Q.1 (iii)",
+    "solution": "\\(y = e^{4x} \\cdot \\cos 5x\\). Use the product rule.\n\\(\\frac{dy}{dx} = 4e^{4x}\\cos 5x + e^{4x}(-5\\sin 5x) = e^{4x}\\left(4\\cos 5x - 5\\sin 5x\\right)\\)\nDifferentiate again:\n\\(\\frac{d^2y}{dx^2} = 4e^{4x}\\left(4\\cos 5x - 5\\sin 5x\\right) + e^{4x}\\left(-20\\sin 5x - 25\\cos 5x\\right)\\)\n\\(= e^{4x}\\left(16\\cos 5x - 20\\sin 5x - 20\\sin 5x - 25\\cos 5x\\right)\\)\n\\(= e^{4x}\\left(-9\\cos 5x - 40\\sin 5x\\right)\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = -e^{4x}\\left(9\\cos 5x + 40\\sin 5x\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "2f8d2b84-c846-45eb-956a-6909358e6fa5",
+    "ref": "Ex 1.5 Q.1 (iv)",
+    "solution": "\\(y = x^3 \\log x\\). Use the product rule.\n\\(\\frac{dy}{dx} = 3x^2 \\log x + x^3 \\cdot \\frac{1}{x} = 3x^2 \\log x + x^2\\)\nDifferentiate again:\n\\(\\frac{d^2y}{dx^2} = 6x \\log x + 3x^2 \\cdot \\frac{1}{x} + 2x = 6x \\log x + 3x + 2x\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = 6x \\log x + 5x = x\\left(6 \\log x + 5\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8af4d036-1048-47d0-942f-31adbf48888c",
+    "ref": "Ex 1.5 Q.1 (v)",
+    "solution": "\\(y = \\log (\\log x)\\). By the chain rule,\n\\(\\frac{dy}{dx} = \\frac{1}{\\log x} \\cdot \\frac{d}{dx}(\\log x) = \\frac{1}{x \\log x}\\)\nWrite \\(\\frac{dy}{dx} = \\left(x \\log x\\right)^{-1}\\) and differentiate again, noting \\(\\frac{d}{dx}\\left(x \\log x\\right) = \\log x + 1\\):\n\\(\\frac{d^2y}{dx^2} = -\\left(x \\log x\\right)^{-2} \\cdot \\left(\\log x + 1\\right)\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = -\\frac{1 + \\log x}{x^2 \\left(\\log x\\right)^2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "0c67a140-9540-410f-ac30-c875b07fa5cb",
+    "ref": "Ex 1.5 Q.1 (vi)",
+    "solution": "\\(y = x^x\\). The base and the index both vary, so use logarithmic differentiation.\nTaking logarithms, \\(\\log y = x \\log x\\).\nDifferentiate both sides with respect to \\(x\\):\n\\(\\frac{1}{y}\\frac{dy}{dx} = 1 \\cdot \\log x + x \\cdot \\frac{1}{x} = \\log x + 1\\)\n\\(\\therefore \\frac{dy}{dx} = y\\left(1 + \\log x\\right) = x^x \\left(1 + \\log x\\right)\\)\nNow differentiate once more, by the product rule:\n\\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(x^x\\right)\\left(1 + \\log x\\right) + x^x \\cdot \\frac{1}{x}\\)\n\\(= x^x\\left(1 + \\log x\\right)\\left(1 + \\log x\\right) + x^x \\cdot \\frac{1}{x}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = x^x\\left[\\left(1 + \\log x\\right)^2 + \\frac{1}{x}\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "0974ed5d-a948-44a5-a9bb-bafb942dadd7",
+    "ref": "Ex 1.5 Q.2 (i)",
+    "solution": "\\(x = a(\\theta - \\sin \\theta)\\), \\(y = a(1 - \\cos \\theta)\\).\nDifferentiate each with respect to \\(\\theta\\):\n\\(\\frac{dx}{d\\theta} = a(1 - \\cos \\theta)\\), \\(\\frac{dy}{d\\theta} = a \\sin \\theta\\)\n\\(\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{a \\sin \\theta}{a(1 - \\cos \\theta)} = \\frac{2 \\sin \\frac{\\theta}{2}\\cos \\frac{\\theta}{2}}{2 \\sin^2 \\frac{\\theta}{2}} = \\cot \\frac{\\theta}{2}\\)\nFor the second derivative do NOT divide \\(\\frac{d^2y}{d\\theta^2}\\) by \\(\\frac{d^2x}{d\\theta^2}\\). Since \\(\\frac{dy}{dx}\\) is a function of \\(\\theta\\), use\n\\(\\frac{d^2y}{dx^2} = \\frac{d}{d\\theta}\\left(\\frac{dy}{dx}\\right) \\cdot \\frac{d\\theta}{dx}\\)\n\\(\\frac{d}{d\\theta}\\left(\\cot \\frac{\\theta}{2}\\right) = -\\frac{1}{2}\\operatorname{cosec}^2 \\frac{\\theta}{2}\\) and \\(\\frac{d\\theta}{dx} = \\frac{1}{a(1 - \\cos \\theta)} = \\frac{1}{2a \\sin^2 \\frac{\\theta}{2}}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = -\\frac{1}{2}\\operatorname{cosec}^2 \\frac{\\theta}{2} \\cdot \\frac{1}{2a \\sin^2 \\frac{\\theta}{2}} = -\\frac{1}{4a \\sin^4 \\frac{\\theta}{2}}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = -\\frac{1}{4a}\\operatorname{cosec}^4 \\frac{\\theta}{2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "cfb3f097-2e95-431d-83cc-e799467a64a5",
+    "ref": "Ex 1.5 Q.2 (ii)",
+    "solution": "\\(x = 2at^2\\), \\(y = 4at\\).\n\\(\\frac{dx}{dt} = 4at\\), \\(\\frac{dy}{dt} = 4a\\)\n\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{4a}{4at} = \\frac{1}{t}\\)\nSince \\(\\frac{dy}{dx}\\) is a function of \\(t\\), differentiate it with respect to \\(t\\) and multiply by \\(\\frac{dt}{dx}\\):\n\\(\\frac{d^2y}{dx^2} = \\frac{d}{dt}\\left(\\frac{1}{t}\\right) \\cdot \\frac{dt}{dx} = \\left(-\\frac{1}{t^2}\\right) \\cdot \\frac{1}{4at}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = -\\frac{1}{4at^3}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4d5e0194-63c5-4e72-946f-371a4135bdc6",
+    "ref": "Ex 1.5 Q.2 (iii)",
+    "solution": "\\(x = \\sin \\theta\\), \\(y = \\sin^3 \\theta\\).\n\\(\\frac{dx}{d\\theta} = \\cos \\theta\\), \\(\\frac{dy}{d\\theta} = 3 \\sin^2 \\theta \\cos \\theta\\)\n\\(\\frac{dy}{dx} = \\frac{3 \\sin^2 \\theta \\cos \\theta}{\\cos \\theta} = 3 \\sin^2 \\theta\\)\nNow differentiate with respect to \\(\\theta\\) and multiply by \\(\\frac{d\\theta}{dx}\\):\n\\(\\frac{d^2y}{dx^2} = \\frac{d}{d\\theta}\\left(3 \\sin^2 \\theta\\right) \\cdot \\frac{d\\theta}{dx} = 6 \\sin \\theta \\cos \\theta \\cdot \\frac{1}{\\cos \\theta} = 6 \\sin \\theta\\)\nAt \\(\\theta = \\frac{\\pi}{2}\\), \\(\\sin \\theta = 1\\).\n\\(\\therefore \\left(\\frac{d^2y}{dx^2}\\right)_{\\theta = \\frac{\\pi}{2}} = 6\\)\nAs a check, \\(y = \\sin^3\\theta = x^3\\), so \\(\\frac{d^2y}{dx^2} = 6x = 6 \\sin \\theta\\), which agrees.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "d4dfea6e-36b6-4c49-b1de-045ba5861ded",
+    "ref": "Ex 1.5 Q.2 (iv)",
+    "solution": "\\(x = a \\cos \\theta\\), \\(y = b \\sin \\theta\\).\n\\(\\frac{dx}{d\\theta} = -a \\sin \\theta\\), \\(\\frac{dy}{d\\theta} = b \\cos \\theta\\)\n\\(\\frac{dy}{dx} = \\frac{b \\cos \\theta}{-a \\sin \\theta} = -\\frac{b}{a}\\cot \\theta\\)\nDifferentiate with respect to \\(\\theta\\) and multiply by \\(\\frac{d\\theta}{dx}\\):\n\\(\\frac{d}{d\\theta}\\left(-\\frac{b}{a}\\cot \\theta\\right) = \\frac{b}{a}\\operatorname{cosec}^2 \\theta\\) and \\(\\frac{d\\theta}{dx} = \\frac{1}{-a \\sin \\theta}\\)\n\\(\\frac{d^2y}{dx^2} = \\frac{b}{a}\\operatorname{cosec}^2 \\theta \\cdot \\left(-\\frac{1}{a \\sin \\theta}\\right) = -\\frac{b}{a^2}\\operatorname{cosec}^3 \\theta\\)\nAt \\(\\theta = \\frac{\\pi}{4}\\), \\(\\operatorname{cosec}\\frac{\\pi}{4} = \\sqrt{2}\\), so \\(\\operatorname{cosec}^3\\frac{\\pi}{4} = 2\\sqrt{2}\\).\n\\(\\therefore \\left(\\frac{d^2y}{dx^2}\\right)_{\\theta = \\frac{\\pi}{4}} = -\\frac{2\\sqrt{2}\\,b}{a^2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8e0e8623-6037-4c7d-b8c4-37d80d0d9758",
+    "ref": "Ex 1.5 Q.3 (i)",
+    "solution": "\\(x = at^2\\), \\(y = 2at\\).\n\\(\\frac{dx}{dt} = 2at\\), \\(\\frac{dy}{dt} = 2a\\)\n\\(\\frac{dy}{dx} = \\frac{2a}{2at} = \\frac{1}{t}\\)\n\\(\\frac{d^2y}{dx^2} = \\frac{d}{dt}\\left(\\frac{1}{t}\\right)\\cdot\\frac{dt}{dx} = \\left(-\\frac{1}{t^2}\\right)\\cdot\\frac{1}{2at} = -\\frac{1}{2at^3}\\)\nNow \\(xy = at^2 \\cdot 2at = 2a^2 t^3\\), so\n\\(xy\\,\\frac{d^2y}{dx^2} = 2a^2 t^3 \\cdot \\left(-\\frac{1}{2at^3}\\right) = -a\\)\n\\(\\therefore xy\\,\\frac{d^2y}{dx^2} + a = -a + a = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "c85ebff3-5ad8-468a-8afd-6bb30141bbb9",
+    "ref": "Ex 1.5 Q.3 (ii)",
+    "solution": "\\(y = e^{m \\tan^{-1} x}\\).\n\\(\\frac{dy}{dx} = e^{m \\tan^{-1} x} \\cdot \\frac{m}{1 + x^2} = \\frac{m\\,y}{1 + x^2}\\)\nClear the denominator so a second differentiation stays simple:\n\\(\\left(1 + x^2\\right)\\frac{dy}{dx} = m\\,y\\)\nDifferentiate both sides with respect to \\(x\\), using the product rule on the left:\n\\(2x\\,\\frac{dy}{dx} + \\left(1 + x^2\\right)\\frac{d^2y}{dx^2} = m\\,\\frac{dy}{dx}\\)\n\\(\\left(1 + x^2\\right)\\frac{d^2y}{dx^2} + 2x\\,\\frac{dy}{dx} - m\\,\\frac{dy}{dx} = 0\\)\n\\(\\therefore \\left(1 + x^2\\right)\\frac{d^2y}{dx^2} + (2x - m)\\frac{dy}{dx} = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "080bad26-e786-455c-bc82-ab7869fb18f5",
+    "ref": "Ex 1.5 Q.3 (iii)",
+    "solution": "\\(x = \\cos t\\), \\(y = e^{mt}\\).\n\\(\\frac{dx}{dt} = -\\sin t\\), \\(\\frac{dy}{dt} = m e^{mt}\\)\n\\(\\frac{dy}{dx} = \\frac{m e^{mt}}{-\\sin t} = -\\frac{m e^{mt}}{\\sin t}\\)\nFor the second derivative, differentiate with respect to \\(t\\) and multiply by \\(\\frac{dt}{dx} = -\\frac{1}{\\sin t}\\):\n\\(\\frac{d}{dt}\\left(-\\frac{m e^{mt}}{\\sin t}\\right) = -m \\cdot \\frac{m e^{mt}\\sin t - e^{mt}\\cos t}{\\sin^2 t} = -\\frac{m e^{mt}\\left(m \\sin t - \\cos t\\right)}{\\sin^2 t}\\)\n\\(\\frac{d^2y}{dx^2} = -\\frac{m e^{mt}\\left(m \\sin t - \\cos t\\right)}{\\sin^2 t}\\cdot\\left(-\\frac{1}{\\sin t}\\right) = \\frac{m e^{mt}\\left(m \\sin t - \\cos t\\right)}{\\sin^3 t}\\)\nNow substitute into the left side, using \\(x = \\cos t\\) so that \\(1 - x^2 = \\sin^2 t\\), and \\(y = e^{mt}\\):\n\\(\\left(1 - x^2\\right)\\frac{d^2y}{dx^2} - x\\,\\frac{dy}{dx} - m^2 y\\)\n\\(= \\sin^2 t \\cdot \\frac{m e^{mt}\\left(m \\sin t - \\cos t\\right)}{\\sin^3 t} - \\cos t \\cdot \\left(-\\frac{m e^{mt}}{\\sin t}\\right) - m^2 e^{mt}\\)\n\\(= \\frac{m e^{mt}\\left(m \\sin t - \\cos t\\right)}{\\sin t} + \\frac{m e^{mt}\\cos t}{\\sin t} - m^2 e^{mt}\\)\n\\(= \\frac{m^2 e^{mt}\\sin t - m e^{mt}\\cos t + m e^{mt}\\cos t}{\\sin t} - m^2 e^{mt}\\)\n\\(= m^2 e^{mt} - m^2 e^{mt} = 0\\)\n\\(\\therefore \\left(1 - x^2\\right)\\frac{d^2y}{dx^2} - x\\,\\frac{dy}{dx} - m^2 y = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "1b07c233-adfd-42ae-957d-fc39d06b9bd3",
+    "ref": "Ex 1.5 Q.3 (iv)",
+    "solution": "\\(y = x + \\tan x\\).\n\\(\\frac{dy}{dx} = 1 + \\sec^2 x\\)\n\\(\\frac{d^2y}{dx^2} = 2 \\sec x \\cdot \\sec x \\tan x = 2 \\sec^2 x \\tan x\\)\nMultiply by \\(\\cos^2 x\\), noting \\(\\sec^2 x \\cos^2 x = 1\\):\n\\(\\cos^2 x \\cdot \\frac{d^2y}{dx^2} = 2 \\cos^2 x \\sec^2 x \\tan x = 2 \\tan x\\)\nFrom the given relation, \\(\\tan x = y - x\\), so\n\\(\\cos^2 x \\cdot \\frac{d^2y}{dx^2} = 2(y - x) = 2y - 2x\\)\n\\(\\therefore \\cos^2 x \\cdot \\frac{d^2y}{dx^2} - 2y + 2x = 2y - 2x - 2y + 2x = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4c0eafac-4b1a-437b-956e-24bad5a33807",
+    "ref": "Ex 1.5 Q.3 (v)",
+    "solution": "\\(y = e^{ax}\\sin (bx)\\).\n\\(y_1 = a e^{ax}\\sin bx + b e^{ax}\\cos bx = a\\,y + b e^{ax}\\cos bx\\)\nHence \\(b e^{ax}\\cos bx = y_1 - a\\,y\\). Differentiate \\(y_1\\) once more:\n\\(y_2 = a\\,y_1 + b\\left(a e^{ax}\\cos bx - b e^{ax}\\sin bx\\right)\\)\n\\(= a\\,y_1 + a\\left(b e^{ax}\\cos bx\\right) - b^2 e^{ax}\\sin bx\\)\nSubstitute \\(b e^{ax}\\cos bx = y_1 - a\\,y\\) and \\(e^{ax}\\sin bx = y\\):\n\\(y_2 = a\\,y_1 + a\\left(y_1 - a\\,y\\right) - b^2 y = 2a\\,y_1 - a^2 y - b^2 y\\)\n\\(\\therefore y_2 - 2a\\,y_1 + \\left(a^2 + b^2\\right)y = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f1c532dd-5b5f-4843-b0c9-e56360f682a2",
+    "ref": "Ex 1.5 Q.3 (vi)",
+    "solution": "\\(\\sec^{-1}\\left(\\frac{7x^3 - 5y^3}{7x^3 + 5y^3}\\right) = m\\), where \\(m\\) is a constant.\nTaking secant of both sides,\n\\(\\frac{7x^3 - 5y^3}{7x^3 + 5y^3} = \\sec m\\)\nSince \\(m\\) is a constant, \\(\\sec m\\) is a constant; call it \\(k\\). Then\n\\(7x^3 - 5y^3 = k\\left(7x^3 + 5y^3\\right)\\)\n\\(7x^3(1 - k) = 5y^3(1 + k)\\)\n\\(y^3 = \\frac{7(1 - k)}{5(1 + k)}\\,x^3\\)\nThe coefficient on the right is a constant, so taking cube roots gives\n\\(y = c\\,x\\), where \\(c = \\left[\\frac{7(1 - k)}{5(1 + k)}\\right]^{1/3}\\) is a constant.\nThus \\(y\\) is a linear function of \\(x\\). Differentiating twice,\n\\(\\frac{dy}{dx} = c\\) and \\(\\frac{d^2y}{dx^2} = 0\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "56563fc4-0a99-4798-9060-e6da449fe4fb",
+    "ref": "Ex 1.5 Q.3 (vii)",
+    "solution": "\\(2y = \\sqrt{x + 1} + \\sqrt{x - 1}\\).\nDifferentiate with respect to \\(x\\):\n\\(2y_1 = \\frac{1}{2\\sqrt{x + 1}} + \\frac{1}{2\\sqrt{x - 1}} = \\frac{1}{2}\\cdot\\frac{\\sqrt{x - 1} + \\sqrt{x + 1}}{\\sqrt{x + 1}\\,\\sqrt{x - 1}}\\)\nThe numerator is exactly \\(2y\\), and \\(\\sqrt{x + 1}\\,\\sqrt{x - 1} = \\sqrt{x^2 - 1}\\), so\n\\(2y_1 = \\frac{1}{2}\\cdot\\frac{2y}{\\sqrt{x^2 - 1}}\\)\n\\(2y_1 \\sqrt{x^2 - 1} = y\\)\nSquare both sides to remove the radical:\n\\(4y_1^2\\left(x^2 - 1\\right) = y^2\\)\nDifferentiate both sides with respect to \\(x\\):\n\\(4\\left[2y_1 y_2\\left(x^2 - 1\\right) + y_1^2 \\cdot 2x\\right] = 2y\\,y_1\\)\n\\(8y_1 y_2\\left(x^2 - 1\\right) + 8x\\,y_1^2 = 2y\\,y_1\\)\nDivide throughout by \\(2y_1\\) (which is not identically zero):\n\\(4\\left(x^2 - 1\\right)y_2 + 4x\\,y_1 = y\\)\n\\(\\therefore 4\\left(x^2 - 1\\right)y_2 + 4x\\,y_1 - y = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a2888825-dd2e-472f-b914-c5b80430fd7e",
+    "ref": "Ex 1.5 Q.3 (viii)",
+    "solution": "\\(y = \\log \\left(x + \\sqrt{x^2 + a^2}\\right)^m\\). The argument of the logarithm is raised to \\(m\\), so\n\\(y = m \\log \\left(x + \\sqrt{x^2 + a^2}\\right)\\)\nDifferentiate with respect to \\(x\\):\n\\(\\frac{dy}{dx} = m \\cdot \\frac{1}{x + \\sqrt{x^2 + a^2}} \\cdot \\left(1 + \\frac{x}{\\sqrt{x^2 + a^2}}\\right)\\)\n\\(= m \\cdot \\frac{1}{x + \\sqrt{x^2 + a^2}} \\cdot \\frac{\\sqrt{x^2 + a^2} + x}{\\sqrt{x^2 + a^2}}\\)\nThe bracket \\(x + \\sqrt{x^2 + a^2}\\) cancels, leaving\n\\(\\frac{dy}{dx} = \\frac{m}{\\sqrt{x^2 + a^2}}\\)\nWrite this as \\(\\sqrt{x^2 + a^2}\\,\\frac{dy}{dx} = m\\) and differentiate again, using the product rule:\n\\(\\frac{x}{\\sqrt{x^2 + a^2}}\\cdot\\frac{dy}{dx} + \\sqrt{x^2 + a^2}\\,\\frac{d^2y}{dx^2} = 0\\)\nMultiply throughout by \\(\\sqrt{x^2 + a^2}\\):\n\\(x\\,\\frac{dy}{dx} + \\left(x^2 + a^2\\right)\\frac{d^2y}{dx^2} = 0\\)\n\\(\\therefore \\left(x^2 + a^2\\right)\\frac{d^2y}{dx^2} + x\\,\\frac{dy}{dx} = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4d9c4e7f-1e1e-4440-87f6-b4e4c69eca2c",
+    "ref": "Ex 1.5 Q.3 (ix)",
+    "solution": "\\(y = \\sin \\left(m \\cos^{-1} x\\right)\\).\n\\(\\frac{dy}{dx} = \\cos \\left(m \\cos^{-1} x\\right) \\cdot m \\cdot \\left(-\\frac{1}{\\sqrt{1 - x^2}}\\right) = \\frac{-m \\cos \\left(m \\cos^{-1} x\\right)}{\\sqrt{1 - x^2}}\\)\nHence \\(\\sqrt{1 - x^2}\\,\\frac{dy}{dx} = -m \\cos \\left(m \\cos^{-1} x\\right)\\).\nSquare both sides, and use \\(\\cos^2 \\left(m \\cos^{-1} x\\right) = 1 - \\sin^2 \\left(m \\cos^{-1} x\\right) = 1 - y^2\\):\n\\(\\left(1 - x^2\\right)\\left(\\frac{dy}{dx}\\right)^2 = m^2 \\left(1 - y^2\\right)\\)\nDifferentiate both sides with respect to \\(x\\):\n\\(-2x\\left(\\frac{dy}{dx}\\right)^2 + \\left(1 - x^2\\right)\\cdot 2\\,\\frac{dy}{dx}\\cdot\\frac{d^2y}{dx^2} = -2m^2 y\\,\\frac{dy}{dx}\\)\nDivide throughout by \\(2\\,\\frac{dy}{dx}\\) (which is not identically zero):\n\\(-x\\,\\frac{dy}{dx} + \\left(1 - x^2\\right)\\frac{d^2y}{dx^2} = -m^2 y\\)\n\\(\\therefore \\left(1 - x^2\\right)\\frac{d^2y}{dx^2} - x\\,\\frac{dy}{dx} + m^2 y = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f115e182-46b3-492a-9edd-ab2393fcf2ff",
+    "ref": "Ex 1.5 Q.3 (x)",
+    "solution": "\\(y = \\log (\\log 2x)\\).\n\\(y_1 = \\frac{1}{\\log 2x}\\cdot\\frac{d}{dx}\\left(\\log 2x\\right) = \\frac{1}{\\log 2x}\\cdot\\frac{1}{x} = \\frac{1}{x \\log 2x}\\)\nRearranging, \\(x\\,\\left(\\log 2x\\right) y_1 = 1\\). Differentiate both sides with respect to \\(x\\), using the product rule and \\(\\frac{d}{dx}\\left(x \\log 2x\\right) = \\log 2x + 1\\):\n\\(\\left(\\log 2x + 1\\right)y_1 + x\\left(\\log 2x\\right) y_2 = 0\\)\nFrom \\(y_1 = \\frac{1}{x \\log 2x}\\) we get \\(x \\log 2x = \\frac{1}{y_1}\\) and \\(\\log 2x = \\frac{1}{x\\,y_1}\\). Substituting both:\n\\(\\left(\\frac{1}{x\\,y_1} + 1\\right)y_1 + \\frac{1}{y_1}\\,y_2 = 0\\)\nMultiply throughout by \\(y_1\\):\n\\(\\left(\\frac{1}{x\\,y_1} + 1\\right)y_1^2 + y_2 = 0\\)\n\\(\\frac{y_1}{x} + y_1^2 + y_2 = 0\\)\nMultiply throughout by \\(x\\):\n\\(y_1 + x\\,y_1^2 + x\\,y_2 = 0\\)\n\\(\\therefore x\\,y_2 + y_1\\left(1 + x\\,y_1\\right) = 0\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "28f2068c-46f6-40a8-adc7-e9228c45b098",
+    "ref": "Ex 1.5 Q.3 (xi)",
+    "solution": "\\(x^2 + 6xy + y^2 = 10\\). Differentiate both sides with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\):\n\\(2x + 6y + 6x\\,\\frac{dy}{dx} + 2y\\,\\frac{dy}{dx} = 0\\)\nDivide by \\(2\\) and collect:\n\\(x + 3y + \\left(3x + y\\right)\\frac{dy}{dx} = 0\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{x + 3y}{3x + y}\\)\nDifferentiate \\(x + 3y + \\left(3x + y\\right)\\frac{dy}{dx} = 0\\) once more with respect to \\(x\\):\n\\(1 + 3\\,\\frac{dy}{dx} + \\left(3 + \\frac{dy}{dx}\\right)\\frac{dy}{dx} + \\left(3x + y\\right)\\frac{d^2y}{dx^2} = 0\\)\n\\(\\left(3x + y\\right)\\frac{d^2y}{dx^2} = -\\left[1 + 6\\,\\frac{dy}{dx} + \\left(\\frac{dy}{dx}\\right)^2\\right]\\)\nSubstitute \\(\\frac{dy}{dx} = -\\frac{x + 3y}{3x + y}\\) and take the common denominator \\(\\left(3x + y\\right)^2\\):\n\\(1 + 6\\,\\frac{dy}{dx} + \\left(\\frac{dy}{dx}\\right)^2 = \\frac{\\left(3x + y\\right)^2 - 6\\left(x + 3y\\right)\\left(3x + y\\right) + \\left(x + 3y\\right)^2}{\\left(3x + y\\right)^2}\\)\nExpanding the numerator:\n\\(\\left(9x^2 + 6xy + y^2\\right) - 6\\left(3x^2 + 10xy + 3y^2\\right) + \\left(x^2 + 6xy + 9y^2\\right) = -8x^2 - 48xy - 8y^2\\)\n\\(= -8\\left(x^2 + 6xy + y^2\\right) = -8(10) = -80\\), using the given equation.\nTherefore\n\\(\\left(3x + y\\right)\\frac{d^2y}{dx^2} = -\\left(\\frac{-80}{\\left(3x + y\\right)^2}\\right) = \\frac{80}{\\left(3x + y\\right)^2}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = \\frac{80}{\\left(3x + y\\right)^3}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a60059e1-7e64-4108-b72f-c4a1a5d93267",
+    "ref": "Ex 1.5 Q.3 (xii)",
+    "solution": "\\(x = a \\sin t - b \\cos t\\), \\(y = a \\cos t + b \\sin t\\).\nDifferentiate each with respect to \\(t\\):\n\\(\\frac{dx}{dt} = a \\cos t + b \\sin t = y\\)\n\\(\\frac{dy}{dt} = -a \\sin t + b \\cos t = -\\left(a \\sin t - b \\cos t\\right) = -x\\)\nSo the parametric derivatives are simply \\(y\\) and \\(-x\\), and\n\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = -\\frac{x}{y}\\)\nFor the second derivative, differentiate \\(\\frac{dy}{dx}\\) with respect to \\(t\\) and multiply by \\(\\frac{dt}{dx} = \\frac{1}{y}\\). By the quotient rule,\n\\(\\frac{d}{dt}\\left(-\\frac{x}{y}\\right) = -\\frac{\\frac{dx}{dt}\\cdot y - x \\cdot \\frac{dy}{dt}}{y^2} = -\\frac{y \\cdot y - x(-x)}{y^2} = -\\frac{x^2 + y^2}{y^2}\\)\nHence\n\\(\\frac{d^2y}{dx^2} = -\\frac{x^2 + y^2}{y^2}\\cdot\\frac{1}{y}\\)\n\\(\\therefore \\frac{d^2y}{dx^2} = -\\frac{x^2 + y^2}{y^3}\\), as required.",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ab6f4925-caa6-4694-8b7d-65f78f7a91d9",
+    "ref": "Ex 1.5 Q.4 (i)",
+    "solution": "\\(y = (ax + b)^m\\). Differentiate repeatedly, each time bringing down the current index and multiplying by \\(a\\) from the chain rule.\n\\(y_1 = m\\,a\\,(ax + b)^{m-1}\\)\n\\(y_2 = m(m - 1)\\,a^2\\,(ax + b)^{m-2}\\)\n\\(y_3 = m(m - 1)(m - 2)\\,a^3\\,(ax + b)^{m-3}\\)\nThe pattern is clear: after \\(n\\) differentiations there are \\(n\\) descending factors starting at \\(m\\), the last being \\(m - n + 1\\), and a factor \\(a^n\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = m(m - 1)(m - 2)\\cdots(m - n + 1)\\,a^n\\,(ax + b)^{m-n}\\)\nWhen \\(m\\) is a positive integer with \\(m \\geq n\\) this may be written as\n\\(\\frac{d^ny}{dx^n} = \\frac{m!}{(m - n)!}\\,a^n\\,(ax + b)^{m-n}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5b4182c3-09a0-40fc-a5c9-b79b6419c75a",
+    "ref": "Ex 1.5 Q.4 (ii)",
+    "solution": "\\(y = \\frac{1}{x} = x^{-1}\\).\n\\(y_1 = -x^{-2}\\)\n\\(y_2 = (-1)(-2)\\,x^{-3} = 2\\,x^{-3}\\)\n\\(y_3 = (-1)(-2)(-3)\\,x^{-4} = -6\\,x^{-4}\\)\nEach differentiation contributes one more negative factor, so the sign alternates as \\((-1)^n\\), and the magnitudes \\(1, 2, 6, 24, \\ldots\\) are \\(n!\\). The index of \\(x\\) after \\(n\\) steps is \\(-(n + 1)\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = \\frac{(-1)^n\\, n!}{x^{n+1}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "918f6ce6-95ba-4af6-9f00-2e9e061fa8c0",
+    "ref": "Ex 1.5 Q.4 (iii)",
+    "solution": "\\(y = e^{ax + b}\\). Each differentiation reproduces the function and brings out a factor \\(a\\) by the chain rule.\n\\(y_1 = a\\,e^{ax + b}\\)\n\\(y_2 = a^2\\,e^{ax + b}\\)\n\\(y_3 = a^3\\,e^{ax + b}\\)\n\\(\\therefore \\frac{d^ny}{dx^n} = a^n\\,e^{ax + b}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "c212c3a9-b45d-4b71-9d16-00e086ed3cb7",
+    "ref": "Ex 1.5 Q.4 (iv)",
+    "solution": "\\(y = a^{px + q}\\). Recall \\(\\frac{d}{dx}\\left(a^u\\right) = a^u \\log a \\cdot \\frac{du}{dx}\\). Here \\(u = px + q\\), so \\(\\frac{du}{dx} = p\\).\n\\(y_1 = a^{px + q}\\,\\log a \\cdot p = p\\,(\\log a)\\,a^{px + q}\\)\n\\(y_2 = p^2\\,(\\log a)^2\\,a^{px + q}\\)\n\\(y_3 = p^3\\,(\\log a)^3\\,a^{px + q}\\)\nEach differentiation contributes one further factor \\(p \\log a\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = p^n\\,(\\log a)^n\\,a^{px + q}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "77501bcf-dcd2-45fc-a559-eaa96a98f9a2",
+    "ref": "Ex 1.5 Q.4 (v)",
+    "solution": "\\(y = \\log (ax + b)\\). The first derivative removes the logarithm; after that it is a power of \\((ax + b)\\).\n\\(y_1 = \\frac{a}{ax + b} = a\\,(ax + b)^{-1}\\)\n\\(y_2 = a \\cdot (-1)(ax + b)^{-2}\\cdot a = -\\frac{a^2}{(ax + b)^2}\\)\n\\(y_3 = \\frac{2a^3}{(ax + b)^3}\\)\nSo from \\(y_1\\) onward the sign alternates, starting positive at \\(n = 1\\), which is \\((-1)^{n-1}\\); the numerical factor runs \\(1, 1, 2, 6, \\ldots = (n - 1)!\\); and each step contributes another \\(a\\), giving \\(a^n\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = \\frac{(-1)^{n-1}\\,(n - 1)!\\;a^n}{(ax + b)^n}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "d1a0ba7d-80be-4026-a2b9-b6d1e967ef77",
+    "ref": "Ex 1.5 Q.4 (vi)",
+    "solution": "\\(y = \\cos x\\). Use the fact that differentiating a cosine advances its angle by \\(\\frac{\\pi}{2}\\), since \\(-\\sin x = \\cos\\left(x + \\frac{\\pi}{2}\\right)\\).\n\\(y_1 = -\\sin x = \\cos\\left(x + \\frac{\\pi}{2}\\right)\\)\n\\(y_2 = \\cos\\left(x + \\frac{2\\pi}{2}\\right) = -\\cos x\\)\n\\(y_3 = \\cos\\left(x + \\frac{3\\pi}{2}\\right) = \\sin x\\)\n\\(y_4 = \\cos\\left(x + \\frac{4\\pi}{2}\\right) = \\cos x\\)\nEach differentiation adds \\(\\frac{\\pi}{2}\\) to the angle, and the values repeat with period \\(4\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = \\cos\\left(x + \\frac{n\\pi}{2}\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5253cd38-03c5-432c-a9c8-91ff26367912",
+    "ref": "Ex 1.5 Q.4 (vii)",
+    "solution": "\\(y = \\sin (ax + b)\\). Differentiating a sine advances its angle by \\(\\frac{\\pi}{2}\\), since \\(\\cos u = \\sin\\left(u + \\frac{\\pi}{2}\\right)\\); the chain rule contributes a factor \\(a\\) each time.\n\\(y_1 = a \\cos (ax + b) = a \\sin\\left(ax + b + \\frac{\\pi}{2}\\right)\\)\n\\(y_2 = a^2 \\sin\\left(ax + b + \\frac{2\\pi}{2}\\right)\\)\n\\(y_3 = a^3 \\sin\\left(ax + b + \\frac{3\\pi}{2}\\right)\\)\n\\(\\therefore \\frac{d^ny}{dx^n} = a^n \\sin\\left(ax + b + \\frac{n\\pi}{2}\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "fcd19195-669d-42df-a9f7-2db29525a9c8",
+    "ref": "Ex 1.5 Q.4 (viii)",
+    "solution": "\\(y = \\cos (3 - 2x)\\). This is \\(\\cos (ax + b)\\) with \\(a = -2\\) and \\(b = 3\\). Differentiating a cosine advances its angle by \\(\\frac{\\pi}{2}\\), and the chain rule contributes \\(a = -2\\) each time.\n\\(y_1 = -(-2)\\sin (3 - 2x) = 2 \\sin (3 - 2x)\\), and in the standard form \\(y_1 = (-2)\\cos\\left(3 - 2x + \\frac{\\pi}{2}\\right) = (-2)\\left(-\\sin (3 - 2x)\\right) = 2 \\sin (3 - 2x)\\), which agrees.\n\\(y_2 = (-2)^2 \\cos\\left(3 - 2x + \\frac{2\\pi}{2}\\right) = -4 \\cos (3 - 2x)\\)\n\\(y_3 = (-2)^3 \\cos\\left(3 - 2x + \\frac{3\\pi}{2}\\right)\\)\n\\(\\therefore \\frac{d^ny}{dx^n} = (-2)^n \\cos\\left(3 - 2x + \\frac{n\\pi}{2}\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "81e9c0a0-a892-4094-b4a0-693e7e5d8626",
+    "ref": "Ex 1.5 Q.4 (ix)",
+    "solution": "\\(y = \\log (2x + 3)\\). This is \\(\\log (ax + b)\\) with \\(a = 2\\), \\(b = 3\\).\n\\(y_1 = \\frac{2}{2x + 3} = 2\\,(2x + 3)^{-1}\\)\n\\(y_2 = 2 \\cdot (-1)(2x + 3)^{-2}\\cdot 2 = -\\frac{2^2}{(2x + 3)^2}\\)\n\\(y_3 = \\frac{2 \\cdot 2^3}{(2x + 3)^3} = \\frac{2!\\;2^3}{(2x + 3)^3}\\)\nThe sign alternates starting positive at \\(n = 1\\), giving \\((-1)^{n-1}\\); the numerical factor is \\((n - 1)!\\); and each differentiation contributes another \\(2\\), giving \\(2^n\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = \\frac{(-1)^{n-1}\\,(n - 1)!\\;2^n}{(2x + 3)^n}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a79c1e07-1460-4cff-a0f2-adea4d5ea78a",
+    "ref": "Ex 1.5 Q.4 (x)",
+    "solution": "\\(y = \\frac{1}{3x - 5} = (3x - 5)^{-1}\\). Each differentiation lowers the index by one and contributes a factor \\(3\\) from the chain rule.\n\\(y_1 = -1 \\cdot (3x - 5)^{-2}\\cdot 3 = -\\frac{3}{(3x - 5)^2}\\)\n\\(y_2 = (-1)(-2)\\,(3x - 5)^{-3}\\cdot 3^2 = \\frac{2!\\;3^2}{(3x - 5)^3}\\)\n\\(y_3 = (-1)(-2)(-3)\\,(3x - 5)^{-4}\\cdot 3^3 = -\\frac{3!\\;3^3}{(3x - 5)^4}\\)\nThe sign is \\((-1)^n\\), the numerical factor is \\(n!\\), the power of \\(3\\) is \\(3^n\\), and the index of \\((3x - 5)\\) is \\(-(n + 1)\\).\n\\(\\therefore \\frac{d^ny}{dx^n} = \\frac{(-1)^n\\, n!\\;3^n}{(3x - 5)^{n+1}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e5dea435-aeaf-4a4d-856f-7baace439248",
+    "ref": "Ex 1.5 Q.4 (xi)",
+    "solution": "\\(y = e^{ax}\\cos (bx + c)\\).\n\\(y_1 = a e^{ax}\\cos (bx + c) - b e^{ax}\\sin (bx + c) = e^{ax}\\left[a \\cos (bx + c) - b \\sin (bx + c)\\right]\\)\nThe bracket is a linear combination of a cosine and a sine of the same angle, so express it as a single cosine. Put\n\\(a = r \\cos \\alpha\\), \\(b = r \\sin \\alpha\\), so that \\(r = \\sqrt{a^2 + b^2}\\) and \\(\\alpha = \\tan^{-1}\\frac{b}{a}\\).\nThen\n\\(a \\cos (bx + c) - b \\sin (bx + c) = r\\left[\\cos \\alpha \\cos (bx + c) - \\sin \\alpha \\sin (bx + c)\\right] = r \\cos (bx + c + \\alpha)\\)\nHence\n\\(y_1 = \\sqrt{a^2 + b^2}\\;e^{ax}\\cos (bx + c + \\alpha)\\)\nThe effect of one differentiation is therefore to multiply by \\(\\sqrt{a^2 + b^2}\\) and to advance the angle by \\(\\alpha\\). The result has exactly the same form as \\(y\\), with \\(c\\) replaced by \\(c + \\alpha\\), so the same step applies again:\n\\(y_2 = \\left(\\sqrt{a^2 + b^2}\\right)^2 e^{ax}\\cos (bx + c + 2\\alpha) = \\left(a^2 + b^2\\right)e^{ax}\\cos (bx + c + 2\\alpha)\\)\n\\(y_3 = \\left(a^2 + b^2\\right)^{3/2} e^{ax}\\cos (bx + c + 3\\alpha)\\)\nRepeating \\(n\\) times:\n\\(\\therefore \\frac{d^ny}{dx^n} = \\left(a^2 + b^2\\right)^{n/2} e^{ax}\\cos \\left(bx + c + n\\alpha\\right)\\), where \\(\\alpha = \\tan^{-1}\\frac{b}{a}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "14e665b4-b63c-467b-bbe1-5564fa0c783e",
+    "ref": "Ex 1.5 Q.4 (xii)",
+    "solution": "\\(y = e^{8x}\\cos (6x + 7)\\). This is \\(e^{ax}\\cos (bx + c)\\) with \\(a = 8\\), \\(b = 6\\), \\(c = 7\\).\n\\(y_1 = 8 e^{8x}\\cos (6x + 7) - 6 e^{8x}\\sin (6x + 7) = e^{8x}\\left[8 \\cos (6x + 7) - 6 \\sin (6x + 7)\\right]\\)\nCombine the bracket into a single cosine by putting \\(8 = r \\cos \\alpha\\), \\(6 = r \\sin \\alpha\\). Then\n\\(r = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\) and \\(\\alpha = \\tan^{-1}\\frac{6}{8} = \\tan^{-1}\\frac{3}{4}\\)\nso that\n\\(8 \\cos (6x + 7) - 6 \\sin (6x + 7) = 10\\left[\\cos \\alpha \\cos (6x + 7) - \\sin \\alpha \\sin (6x + 7)\\right] = 10 \\cos (6x + 7 + \\alpha)\\)\nHence\n\\(y_1 = 10\\,e^{8x}\\cos (6x + 7 + \\alpha)\\)\nOne differentiation multiplies by \\(10\\) and advances the angle by \\(\\alpha\\), and the result has the same form as \\(y\\), so the step repeats:\n\\(y_2 = 10^2\\,e^{8x}\\cos (6x + 7 + 2\\alpha)\\)\n\\(y_3 = 10^3\\,e^{8x}\\cos (6x + 7 + 3\\alpha)\\)\n\\(\\therefore \\frac{d^ny}{dx^n} = 10^n\\,e^{8x}\\cos \\left(6x + 7 + n\\,\\tan^{-1}\\frac{3}{4}\\right)\\)",
+    "diagramWouldHelp": false
+  }
+]

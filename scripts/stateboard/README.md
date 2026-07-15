@@ -21,7 +21,23 @@ arc, not the book's raw section labels — split a section if it fuses distinct 
 
 ### 2. Render — `render.ts <id>`
 Full-page PNGs → `out/<id>/p-NN.png` (gitignored). The textbook is single-column.
-First map section → page ranges (PyMuPDF text scan) so the transcription agents get clean bands.
+
+**Map blocks by (page, y) — NOT by page.** Sections start MID-PAGE, so a plain header scan
+gives you a *page* list, not a *block* map, and any band you derive from it will silently drop
+questions. Use `page.get_text('blocks')` and record each header's **y**:
+
+```py
+for i, p in enumerate(doc):
+    for b in p.get_text('blocks'):
+        t = ' '.join(b[4].split())
+        if HEADER_RE.match(t): print(f'p{i:02d} y={b[1]:6.1f} | {t[:58]}')
+```
+
+Bit us on **Differentiation**: a header scan put "1.3.1" on p29, so Ex 1.2 was bounded at p28 —
+but 1.3.1 begins at **y≈531**, so the top of p29 was still Exercise 1.2. The gap-fill recovered
+**31 rows (~32% of that fragment)**, including a whole Q.10 (i)–(ix). Same class as the Vectors
+page-boundary gap. Give every agent an explicit `p<N> y≈<Y>` start AND stop, and tell it that a
+page boundary is not a block boundary — the agents then catch straddles you missed.
 
 ### 3. Transcribe → merge → commit PRIVATE
 - **One vision agent per teaching section** (+ one for the Miscellaneous MCQ+subjective block),
@@ -33,10 +49,14 @@ First map section → page ranges (PyMuPDF text scan) so the transcription agent
   (PRIVATE + practice). Validate the HARDEST section first (truth tables) before fanning out.
 
 ### 4. Verify MCQ keys — independent re-derivation
-Spawn an agent that re-solves every Miscellaneous MCQ from scratch (WITHOUT seeing
-`is_correct`) → `data/<id>.mcq-verify.json` (`{id, ref, derived_answer, matches_current, solution}`).
-`apply-solutions.ts` applies the brief solution and flags `matches_current=false` LOUD for a
-manual re-key. Do NOT trust the ingest key — re-derive.
+`dump-mcq.ts <id>` → `data/<id>.mcq-blind.json` (**omits `is_correct`** so the check is genuinely
+independent; it also **refuses to dump unless every MCQ carries 4 options** — the sibling NCERT
+pipeline shipped a dump with a wrong field name that silently emitted `options: []`, so its
+verifier "checked" keys it couldn't see). Spawn an agent that re-solves every MCQ from scratch
+against that file → `data/<id>.mcq-verify.json` (`{id, ref, derived_answer, solution}`).
+Then `mark-mcq-verify.ts <id> --write` stamps `matches_current` **here** (the verifier must not
+self-report agreement, or it stops being blind). `apply-solutions.ts` applies the brief solution
+and flags every `matches_current=false` LOUD for a manual re-key. Do NOT trust the ingest key.
 
 ### 5. Author subjective solutions — `apply-solutions.ts <id> --apply`
 Parallel authoring agents (partition by subtopic / exercise block) write
@@ -54,14 +74,30 @@ PDF only arrives later, run it as a post-flip pass (it's idempotent).
 1. **Locate the block.** Find the `ANSWERS` section (PyMuPDF scan near the end of the Part-1/2
    PDF), then the chapter's block (`N. CHAPTER TITLE` in ALL CAPS) → its page range.
 2. **Render** the answer pages (`fitz.Matrix(3.5,3.5)`) → a temp `out/` dir.
-3. **Fan out parallel vision agents by exercise block.** Each reads the answer images + queries
-   the committed rows (`source_file`, `question_format`, joined options) + diffs OUR final answer
-   (end of `solution`, or the marked option for MCQ) against the book key.
+3. **Fan out parallel vision agents by exercise block.** Feed each `dump-review.ts <id> "<refPrefix>"`
+   → `data/<id>.<block>.review.json` (`{ref, stem, our_solution, our_key, options}`). It **refuses to
+   dump unless every row carries real answer text** — the Line-and-Planes ingest shipped a dump
+   emitting only a `has_solution` BOOLEAN, so the agents compared our answers against nothing and
+   returned a meaningless all-AGREE. Verify the guard's char-count line before trusting a report.
 4. **Independently re-derive EVERY disagreement** (sympy for matrices/algebra, truth-tables for
    logic, boundary-checks for word problems). **The book key is a peer, not an oracle** — the
-   Balbharati keys are wrong ~4× as often as our authored answers (27 vs 6 across the first 4
-   chapters). Categorize each: `OUR-ANSWER-WRONG` / `BOOK-KEY-WRONG` / interpretive. See
-   [[audit-probe-symmetry]].
+   Balbharati keys are wrong ~4× as often as our authored answers (99 items across 10 chapters).
+   Categorize each: `OUR-ANSWER-WRONG` / `BOOK-KEY-WRONG` / interpretive. See [[audit-probe-symmetry]].
+   Three techniques that decide it (all earned on Differentiation, which finished 0-ours vs 9-book):
+   - **Establish a THIRD independent ground truth** — numerically differentiate the ACTUAL stem
+     (mpmath, 30–50 dps) and test **both** our answer and the book's against it. Comparing the two
+     to each other lets a shared error hide, and a script that tests only OUR answer proves nothing
+     about the book's.
+   - **`simplify()` returning non-zero is NOT evidence of inequality.** Constraint-curve identities
+     only collapse when reduced against the given relation / evaluated at points solved ONTO the
+     curve. This alone would have manufactured 3 false "our answer is wrong" findings on Ex 1.3.
+   - **Expect ~20 apparent disagreements per chapter to dissolve** on equivalence testing
+     (`2\cdot4^x\log4` ≡ `4^{x+1}\log2`), and treat a book answer that prints ONE principal branch
+     where ours documents ± as AGREE, not an error.
+   **Tell agents to REPORT, never fix** — you adjudicate against the source page. On Linear
+   Programming three agents told the maintainer to "fix" answers that source-verification proved
+   were already right. Make every agent test the rival hypothesis "OUR transcription is wrong" by
+   **rendering the source page and looking**.
 5. **Apply (two outcomes, both flagged at the TOP of the solution in a square bracket):**
    - **Our error** → fix the solution. If it's an **OCR mis-read of OUR transcription** (the book
      printed X, we transcribed Y — e.g. Pair-of-Lines `gy²` for the book's `9y²`), fix the stem

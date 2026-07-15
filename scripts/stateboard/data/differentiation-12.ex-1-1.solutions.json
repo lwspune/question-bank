@@ -1,0 +1,314 @@
+[
+  {
+    "id": "19566a7c-99ae-4b9d-8bee-5424baf74877",
+    "ref": "Ex 1.1 Q.1 (i)",
+    "solution": "Let \\(y = (x^3 - 2x - 1)^5\\). Put \\(u = x^3 - 2x - 1\\), so that \\(y = u^5\\).\n\nBy the chain rule, \\(\\frac{dy}{dx} = \\frac{dy}{du}\\cdot\\frac{du}{dx} = 5u^4\\cdot\\frac{du}{dx}\\).\n\nHere \\(\\frac{du}{dx} = 3x^2 - 2\\).\n\n\\(\\therefore \\frac{dy}{dx} = 5\\left(x^3 - 2x - 1\\right)^4\\left(3x^2 - 2\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5e4c6bfa-bfce-48ed-b17a-ed04905ec808",
+    "ref": "Ex 1.1 Q.1 (ii)",
+    "solution": "Let \\(y = \\left(2x^{\\frac{3}{2}} - 3x^{\\frac{4}{3}} - 5\\right)^{\\frac{5}{2}}\\). Put \\(u = 2x^{\\frac{3}{2}} - 3x^{\\frac{4}{3}} - 5\\), so that \\(y = u^{\\frac{5}{2}}\\).\n\n\\(\\frac{du}{dx} = 2\\cdot\\frac{3}{2}x^{\\frac{1}{2}} - 3\\cdot\\frac{4}{3}x^{\\frac{1}{3}} = 3x^{\\frac{1}{2}} - 4x^{\\frac{1}{3}}\\)\n\nBy the chain rule, \\(\\frac{dy}{dx} = \\frac{5}{2}u^{\\frac{3}{2}}\\cdot\\frac{du}{dx}\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{5}{2}\\left(2x^{\\frac{3}{2}} - 3x^{\\frac{4}{3}} - 5\\right)^{\\frac{3}{2}}\\left(3\\sqrt{x} - 4\\sqrt[3]{x}\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "de64d060-5b41-45f7-8ef0-32bb6a6648a9",
+    "ref": "Ex 1.1 Q.1 (iii)",
+    "solution": "Let \\(y = \\sqrt{x^2 + 4x - 7} = \\left(x^2 + 4x - 7\\right)^{\\frac{1}{2}}\\). Put \\(u = x^2 + 4x - 7\\), so \\(\\frac{du}{dx} = 2x + 4\\).\n\n\\(\\frac{dy}{dx} = \\frac{1}{2}u^{-\\frac{1}{2}}\\cdot\\frac{du}{dx} = \\frac{2x+4}{2\\sqrt{x^2+4x-7}}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{x+2}{\\sqrt{x^2+4x-7}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "09cd72a2-1d30-42fd-ba10-c1a789e4403a",
+    "ref": "Ex 1.1 Q.1 (iv)",
+    "solution": "Let \\(y = \\sqrt{x^2 + \\sqrt{x^2+1}}\\). This is a root inside a root, so differentiate the outer root first.\n\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{x^2+\\sqrt{x^2+1}}}\\cdot\\frac{d}{dx}\\left(x^2 + \\sqrt{x^2+1}\\right)\\)\n\nNow \\(\\frac{d}{dx}\\sqrt{x^2+1} = \\frac{2x}{2\\sqrt{x^2+1}} = \\frac{x}{\\sqrt{x^2+1}}\\), so \\(\\frac{d}{dx}\\left(x^2 + \\sqrt{x^2+1}\\right) = 2x + \\frac{x}{\\sqrt{x^2+1}}\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{2x + \\frac{x}{\\sqrt{x^2+1}}}{2\\sqrt{x^2+\\sqrt{x^2+1}}} = \\frac{x\\left(2\\sqrt{x^2+1}+1\\right)}{2\\sqrt{x^2+1}\\,\\sqrt{x^2+\\sqrt{x^2+1}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a3960e92-d367-46fb-8037-7c0d80ba4203",
+    "ref": "Ex 1.1 Q.1 (v)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(-\\frac{4x-7}{(2x^2-7x-5)^{8/3}}\\). Differentiating \\(y=\\frac{8}{3}(2x^2-7x-5)^{-11/3}\\) gives the exponent \\(-\\frac{14}{3}\\) and the coefficient \\(-\\frac{88}{9}\\): the key decremented the exponent's magnitude (\\(\\frac{11}{3}-1=\\frac{8}{3}\\)) instead of the exponent itself, and dropped the constant. The answer below is correct.]\n\nWrite the function with a fractional index first:\n\n\\(y = \\frac{8}{3\\sqrt[3]{\\left(2x^2-7x-5\\right)^{11}}} = \\frac{8}{3}\\left(2x^2-7x-5\\right)^{-\\frac{11}{3}}\\)\n\nPut \\(u = 2x^2 - 7x - 5\\), so \\(\\frac{du}{dx} = 4x - 7\\).\n\n\\(\\frac{dy}{dx} = \\frac{8}{3}\\cdot\\left(-\\frac{11}{3}\\right)u^{-\\frac{14}{3}}\\cdot\\frac{du}{dx} = -\\frac{88}{9}\\left(2x^2-7x-5\\right)^{-\\frac{14}{3}}(4x-7)\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{-88(4x-7)}{9\\left(2x^2-7x-5\\right)^{\\frac{14}{3}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "66ba2a31-e002-4659-bd4a-0463b3c443dd",
+    "ref": "Ex 1.1 Q.1 (vi)",
+    "solution": "Let \\(y = u^5\\), where \\(u = \\sqrt{3x-5} - \\frac{1}{\\sqrt{3x-5}} = (3x-5)^{\\frac{1}{2}} - (3x-5)^{-\\frac{1}{2}}\\).\n\n\\(\\frac{du}{dx} = \\frac{1}{2}(3x-5)^{-\\frac{1}{2}}(3) + \\frac{1}{2}(3x-5)^{-\\frac{3}{2}}(3) = \\frac{3}{2}\\left[\\frac{1}{\\sqrt{3x-5}} + \\frac{1}{(3x-5)^{\\frac{3}{2}}}\\right]\\)\n\nTaking \\((3x-5)^{\\frac{3}{2}}\\) as the common denominator, \\(\\frac{du}{dx} = \\frac{3}{2}\\cdot\\frac{(3x-5)+1}{(3x-5)^{\\frac{3}{2}}} = \\frac{3(3x-4)}{2(3x-5)^{\\frac{3}{2}}}\\).\n\nBy the chain rule, \\(\\frac{dy}{dx} = 5u^4\\cdot\\frac{du}{dx}\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{15(3x-4)}{2(3x-5)^{\\frac{3}{2}}}\\left(\\sqrt{3x-5} - \\frac{1}{\\sqrt{3x-5}}\\right)^4\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "6bb1614a-9ced-4005-815b-c75113d1095b",
+    "ref": "Ex 1.1 Q.2 (i)",
+    "solution": "Here \\(a\\) is a constant. Put \\(u = x^2 + a^2\\), so that \\(y = \\cos u\\) and \\(\\frac{du}{dx} = 2x\\).\n\nBy the chain rule, \\(\\frac{dy}{dx} = -\\sin u\\cdot\\frac{du}{dx}\\).\n\n\\(\\therefore \\frac{dy}{dx} = -2x\\sin\\left(x^2 + a^2\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ca438fab-9a16-4164-957f-d80d2f8bbd21",
+    "ref": "Ex 1.1 Q.2 (ii)",
+    "solution": "Let \\(y = \\sqrt{e^{(3x+2)} + 5}\\). Put \\(u = e^{(3x+2)} + 5\\).\n\n\\(\\frac{du}{dx} = e^{(3x+2)}\\cdot\\frac{d}{dx}(3x+2) = 3e^{(3x+2)}\\)\n\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{u}}\\cdot\\frac{du}{dx}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{3e^{(3x+2)}}{2\\sqrt{e^{(3x+2)}+5}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "eb88da5f-f1af-47df-b425-fe8243dc6926",
+    "ref": "Ex 1.1 Q.2 (iii)",
+    "solution": "Let \\(y = \\log\\left[\\tan\\left(\\frac{x}{2}\\right)\\right]\\).\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\tan\\left(\\frac{x}{2}\\right)}\\cdot\\sec^2\\left(\\frac{x}{2}\\right)\\cdot\\frac{1}{2} = \\frac{\\cos\\left(\\frac{x}{2}\\right)}{2\\sin\\left(\\frac{x}{2}\\right)\\cos^2\\left(\\frac{x}{2}\\right)} = \\frac{1}{2\\sin\\left(\\frac{x}{2}\\right)\\cos\\left(\\frac{x}{2}\\right)}\\)\n\nSince \\(2\\sin\\left(\\frac{x}{2}\\right)\\cos\\left(\\frac{x}{2}\\right) = \\sin x\\),\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{1}{\\sin x} = \\operatorname{cosec} x\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e1f98dc1-1c4b-4461-9db3-fedea46478c3",
+    "ref": "Ex 1.1 Q.2 (iv)",
+    "solution": "Let \\(y = \\sqrt{\\tan\\sqrt{x}}\\). Differentiate the outer root, then the tangent, then the inner root.\n\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{\\tan\\sqrt{x}}}\\cdot\\frac{d}{dx}\\left(\\tan\\sqrt{x}\\right) = \\frac{1}{2\\sqrt{\\tan\\sqrt{x}}}\\cdot\\sec^2\\sqrt{x}\\cdot\\frac{1}{2\\sqrt{x}}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\sec^2\\sqrt{x}}{4\\sqrt{x}\\,\\sqrt{\\tan\\sqrt{x}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "cdcdf359-98c1-4b7c-a58e-8cba7e7322bf",
+    "ref": "Ex 1.1 Q.2 (v)",
+    "solution": "Let \\(y = \\cot^3\\left[\\log\\left(x^3\\right)\\right]\\). Differentiate the cube first, then the cotangent, then the logarithm.\n\n\\(\\frac{dy}{dx} = 3\\cot^2\\left[\\log\\left(x^3\\right)\\right]\\cdot\\left(-\\operatorname{cosec}^2\\left[\\log\\left(x^3\\right)\\right]\\right)\\cdot\\frac{d}{dx}\\log\\left(x^3\\right)\\)\n\nHere \\(\\frac{d}{dx}\\log\\left(x^3\\right) = \\frac{3x^2}{x^3} = \\frac{3}{x}\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{-9\\cot^2\\left[\\log\\left(x^3\\right)\\right]\\operatorname{cosec}^2\\left[\\log\\left(x^3\\right)\\right]}{x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8da4f5e2-0be9-4811-9193-e2e9fbfee8df",
+    "ref": "Ex 1.1 Q.2 (vi)",
+    "solution": "Let \\(y = 5^{\\sin^3 x + 3}\\). Use \\(\\frac{d}{dx}a^u = a^u\\log a\\cdot\\frac{du}{dx}\\).\n\nHere \\(u = \\sin^3 x + 3\\), so \\(\\frac{du}{dx} = 3\\sin^2 x\\cos x\\).\n\n\\(\\therefore \\frac{dy}{dx} = 3\\sin^2 x\\cos x\\cdot 5^{\\sin^3 x + 3}\\log 5\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4597b3f2-c24c-4285-9796-55f26922ea5a",
+    "ref": "Ex 1.1 Q.2 (vii)",
+    "solution": "Let \\(y = \\operatorname{cosec}\\left(\\sqrt{\\cos x}\\right)\\). Put \\(u = \\sqrt{\\cos x}\\).\n\n\\(\\frac{du}{dx} = \\frac{1}{2\\sqrt{\\cos x}}\\cdot(-\\sin x) = \\frac{-\\sin x}{2\\sqrt{\\cos x}}\\)\n\n\\(\\frac{dy}{dx} = -\\operatorname{cosec} u\\cot u\\cdot\\frac{du}{dx}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\sin x\\,\\operatorname{cosec}\\left(\\sqrt{\\cos x}\\right)\\cot\\left(\\sqrt{\\cos x}\\right)}{2\\sqrt{\\cos x}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "0af6255a-7eab-4d64-9c17-6422285ee301",
+    "ref": "Ex 1.1 Q.2 (viii)",
+    "solution": "Let \\(y = \\log\\left[\\cos\\left(x^3-5\\right)\\right]\\).\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\cos\\left(x^3-5\\right)}\\cdot\\left(-\\sin\\left(x^3-5\\right)\\right)\\cdot 3x^2 = -3x^2\\cdot\\frac{\\sin\\left(x^3-5\\right)}{\\cos\\left(x^3-5\\right)}\\)\n\n\\(\\therefore \\frac{dy}{dx} = -3x^2\\tan\\left(x^3-5\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5294ed37-90dd-4406-b4fc-f6ea44e49c9b",
+    "ref": "Ex 1.1 Q.2 (ix)",
+    "solution": "Let \\(y = e^{3\\sin^2 x - 2\\cos^2 x}\\), so \\(\\frac{dy}{dx} = e^{3\\sin^2 x - 2\\cos^2 x}\\cdot\\frac{d}{dx}\\left(3\\sin^2 x - 2\\cos^2 x\\right)\\).\n\n\\(\\frac{d}{dx}\\left(3\\sin^2 x - 2\\cos^2 x\\right) = 3\\cdot 2\\sin x\\cos x - 2\\cdot 2\\cos x(-\\sin x) = 6\\sin x\\cos x + 4\\sin x\\cos x = 10\\sin x\\cos x\\)\n\nSince \\(2\\sin x\\cos x = \\sin 2x\\), this equals \\(5\\sin 2x\\).\n\n\\(\\therefore \\frac{dy}{dx} = 5\\sin 2x\\cdot e^{3\\sin^2 x - 2\\cos^2 x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "a1ce60fa-1fab-4000-b91e-968e85bd4b08",
+    "ref": "Ex 1.1 Q.2 (x)",
+    "solution": "Let \\(y = \\cos^2\\left[\\log\\left(x^2+7\\right)\\right]\\) and write \\(L = \\log\\left(x^2+7\\right)\\), so \\(\\frac{dL}{dx} = \\frac{2x}{x^2+7}\\).\n\n\\(\\frac{dy}{dx} = 2\\cos L\\cdot(-\\sin L)\\cdot\\frac{dL}{dx} = -\\sin(2L)\\cdot\\frac{2x}{x^2+7}\\)\n\nusing \\(2\\sin L\\cos L = \\sin 2L\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{-2x\\sin\\left[2\\log\\left(x^2+7\\right)\\right]}{x^2+7}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "41934066-dae8-4b84-bcc5-c87f331b5b78",
+    "ref": "Ex 1.1 Q.2 (xi)",
+    "solution": "Let \\(y = \\tan\\left[\\cos\\left(\\sin x\\right)\\right]\\). Peel one layer at a time.\n\n\\(\\frac{dy}{dx} = \\sec^2\\left[\\cos\\left(\\sin x\\right)\\right]\\cdot\\frac{d}{dx}\\cos\\left(\\sin x\\right) = \\sec^2\\left[\\cos\\left(\\sin x\\right)\\right]\\cdot\\left(-\\sin\\left(\\sin x\\right)\\right)\\cdot\\cos x\\)\n\n\\(\\therefore \\frac{dy}{dx} = -\\cos x\\,\\sin\\left(\\sin x\\right)\\,\\sec^2\\left[\\cos\\left(\\sin x\\right)\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e1c98cd1-b725-4469-8d8b-57a102eb3bd0",
+    "ref": "Ex 1.1 Q.2 (xii)",
+    "solution": "Let \\(y = \\sec\\left[\\tan\\left(x^4+4\\right)\\right]\\) and write \\(T = \\tan\\left(x^4+4\\right)\\).\n\n\\(\\frac{dy}{dx} = \\sec T\\tan T\\cdot\\frac{dT}{dx}\\), where \\(\\frac{dT}{dx} = \\sec^2\\left(x^4+4\\right)\\cdot 4x^3\\).\n\n\\(\\therefore \\frac{dy}{dx} = 4x^3\\sec^2\\left(x^4+4\\right)\\sec\\left[\\tan\\left(x^4+4\\right)\\right]\\tan\\left[\\tan\\left(x^4+4\\right)\\right]\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "d51c3801-cd9e-4374-a419-9202f71a152a",
+    "ref": "Ex 1.1 Q.2 (xiii)",
+    "solution": "Simplify before differentiating. Since \\(e^{\\log u} = u\\) (for \\(u > 0\\)),\n\n\\(y = e^{\\log\\left[(\\log x)^2 - \\log x^2\\right]} = (\\log x)^2 - \\log x^2 = (\\log x)^2 - 2\\log x\\)\n\nusing \\(\\log x^2 = 2\\log x\\). Now differentiate term by term:\n\n\\(\\frac{dy}{dx} = 2\\log x\\cdot\\frac{1}{x} - \\frac{2}{x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{2(\\log x - 1)}{x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "078b4132-0f14-415a-8381-f5c0526c11be",
+    "ref": "Ex 1.1 Q.2 (xiv)",
+    "solution": "Let \\(y = \\sin\\sqrt{\\sin\\sqrt{x}}\\). There are four layers; differentiate from the outside in.\n\n\\(\\frac{dy}{dx} = \\cos\\sqrt{\\sin\\sqrt{x}}\\cdot\\frac{1}{2\\sqrt{\\sin\\sqrt{x}}}\\cdot\\cos\\sqrt{x}\\cdot\\frac{1}{2\\sqrt{x}}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\cos\\sqrt{\\sin\\sqrt{x}}\\;\\cos\\sqrt{x}}{4\\sqrt{x}\\,\\sqrt{\\sin\\sqrt{x}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ad569bf0-dd9f-47c6-8daa-6f5c3ad8a6a7",
+    "ref": "Ex 1.1 Q.2 (xv)",
+    "solution": "Let \\(y = \\log\\left[\\sec\\left(e^{x^2}\\right)\\right]\\).\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\sec\\left(e^{x^2}\\right)}\\cdot\\sec\\left(e^{x^2}\\right)\\tan\\left(e^{x^2}\\right)\\cdot e^{x^2}\\cdot 2x\\)\n\nThe \\(\\sec\\left(e^{x^2}\\right)\\) cancels.\n\n\\(\\therefore \\frac{dy}{dx} = 2x\\,e^{x^2}\\tan\\left(e^{x^2}\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e61986f8-bf6e-47b2-ab3e-eccef855a5aa",
+    "ref": "Ex 1.1 Q.2 (xvi)",
+    "solution": "Change the base to \\(e\\) first. Since \\(\\log e^2 = 2\\),\n\n\\(y = \\log_{e^2}\\left(\\log x\\right) = \\frac{\\log\\left(\\log x\\right)}{\\log e^2} = \\frac{\\log\\left(\\log x\\right)}{2}\\)\n\n\\(\\frac{dy}{dx} = \\frac{1}{2}\\cdot\\frac{1}{\\log x}\\cdot\\frac{1}{x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{1}{2x\\log x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "33f4013c-c419-4bb4-a069-5bbc6651bc15",
+    "ref": "Ex 1.1 Q.2 (xvii)",
+    "solution": "Let \\(y = \\left[\\log\\left[\\log(\\log x)\\right]\\right]^2\\). Differentiate the square, then each logarithm in turn.\n\n\\(\\frac{dy}{dx} = 2\\log\\left[\\log(\\log x)\\right]\\cdot\\frac{1}{\\log(\\log x)}\\cdot\\frac{1}{\\log x}\\cdot\\frac{1}{x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{2\\log\\left[\\log(\\log x)\\right]}{x\\,\\log x\\,\\log(\\log x)}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5e0632cc-820e-4bb5-9879-b76a8953510f",
+    "ref": "Ex 1.1 Q.2 (xviii)",
+    "solution": "Simplify first. Since \\(\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta\\), with \\(\\theta = x^2\\),\n\n\\(y = \\sin^2 x^2 - \\cos^2 x^2 = -\\left(\\cos^2 x^2 - \\sin^2 x^2\\right) = -\\cos\\left(2x^2\\right)\\)\n\n\\(\\frac{dy}{dx} = -\\left(-\\sin\\left(2x^2\\right)\\right)\\cdot\\frac{d}{dx}\\left(2x^2\\right) = \\sin\\left(2x^2\\right)\\cdot 4x\\)\n\n\\(\\therefore \\frac{dy}{dx} = 4x\\sin\\left(2x^2\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "54052aae-99ab-4341-8b6c-a2400e9ce383",
+    "ref": "Ex 1.1 Q.3 (i)",
+    "solution": "Let \\(y = \\left(x^2+4x+1\\right)^3 + \\left(x^3-5x-2\\right)^4\\). Differentiate each term by the chain rule.\n\n\\(\\frac{dy}{dx} = 3\\left(x^2+4x+1\\right)^2(2x+4) + 4\\left(x^3-5x-2\\right)^3\\left(3x^2-5\\right)\\)\n\n\\(\\therefore \\frac{dy}{dx} = 6(x+2)\\left(x^2+4x+1\\right)^2 + 4\\left(3x^2-5\\right)\\left(x^3-5x-2\\right)^3\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "1604ca45-8bfd-4117-ae2a-b383f54963c5",
+    "ref": "Ex 1.1 Q.3 (ii)",
+    "solution": "Let \\(y = (1+4x)^5\\left(3+x-x^2\\right)^8\\). Use the product rule, with the chain rule on each factor.\n\n\\(\\frac{dy}{dx} = 5(1+4x)^4(4)\\left(3+x-x^2\\right)^8 + (1+4x)^5\\cdot 8\\left(3+x-x^2\\right)^7(1-2x)\\)\n\nTake out the common factor \\((1+4x)^4\\left(3+x-x^2\\right)^7\\):\n\n\\(\\frac{dy}{dx} = (1+4x)^4\\left(3+x-x^2\\right)^7\\left[20\\left(3+x-x^2\\right) + 8(1+4x)(1-2x)\\right]\\)\n\nNow \\(20\\left(3+x-x^2\\right) + 8(1+4x)(1-2x) = \\left(60+20x-20x^2\\right) + \\left(8+16x-64x^2\\right) = 68+36x-84x^2\\).\n\n\\(\\therefore \\frac{dy}{dx} = 4(1+4x)^4\\left(3+x-x^2\\right)^7\\left(17+9x-21x^2\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "fa99fb74-c165-48eb-98e2-b6a43d8acea2",
+    "ref": "Ex 1.1 Q.3 (iii)",
+    "solution": "Let \\(y = \\frac{x}{\\sqrt{7-3x}} = x(7-3x)^{-\\frac{1}{2}}\\). Use the product rule.\n\n\\(\\frac{dy}{dx} = (7-3x)^{-\\frac{1}{2}} + x\\cdot\\left(-\\frac{1}{2}\\right)(7-3x)^{-\\frac{3}{2}}(-3) = \\frac{1}{\\sqrt{7-3x}} + \\frac{3x}{2(7-3x)^{\\frac{3}{2}}}\\)\n\nTaking \\((7-3x)^{\\frac{3}{2}}\\) as the common denominator,\n\n\\(\\frac{dy}{dx} = \\frac{(7-3x) + \\frac{3x}{2}}{(7-3x)^{\\frac{3}{2}}} = \\frac{7 - \\frac{3x}{2}}{(7-3x)^{\\frac{3}{2}}}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{14-3x}{2(7-3x)^{\\frac{3}{2}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "1d8df6d4-e7db-41c9-a258-de168d53463b",
+    "ref": "Ex 1.1 Q.3 (iv)",
+    "solution": "[Textbook answer-key error: the printed key's denominator is \\((x^3+3)^6\\); the correct denominator is \\((x^3+3)^4\\). The key's numerator is the correct one — the factor \\((x^3+3)^2\\) taken out of the numerator was never cancelled from the denominator.]\n\nLet \\(y = \\frac{\\left(x^3-5\\right)^5}{\\left(x^3+3\\right)^3}\\). By the quotient rule,\n\n\\(\\frac{dy}{dx} = \\frac{5\\left(x^3-5\\right)^4\\left(3x^2\\right)\\left(x^3+3\\right)^3 - \\left(x^3-5\\right)^5\\cdot 3\\left(x^3+3\\right)^2\\left(3x^2\\right)}{\\left(x^3+3\\right)^6}\\)\n\nTake out \\(3x^2\\left(x^3-5\\right)^4\\left(x^3+3\\right)^2\\) from the numerator and cancel:\n\n\\(\\frac{dy}{dx} = \\frac{3x^2\\left(x^3-5\\right)^4\\left[5\\left(x^3+3\\right) - 3\\left(x^3-5\\right)\\right]}{\\left(x^3+3\\right)^4} = \\frac{3x^2\\left(x^3-5\\right)^4\\left(2x^3+30\\right)}{\\left(x^3+3\\right)^4}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{6x^2\\left(x^3-5\\right)^4\\left(x^3+15\\right)}{\\left(x^3+3\\right)^4}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "effed0c8-a66f-46ee-bb03-ab14ecba2ee9",
+    "ref": "Ex 1.1 Q.3 (v)",
+    "solution": "Let \\(y = \\left(1+\\sin^2 x\\right)^2\\left(1+\\cos^2 x\\right)^3\\). By the product rule,\n\n\\(\\frac{dy}{dx} = 2\\left(1+\\sin^2 x\\right)(2\\sin x\\cos x)\\left(1+\\cos^2 x\\right)^3 + \\left(1+\\sin^2 x\\right)^2\\cdot 3\\left(1+\\cos^2 x\\right)^2(-2\\cos x\\sin x)\\)\n\nUsing \\(2\\sin x\\cos x = \\sin 2x\\) and taking out \\(\\sin 2x\\left(1+\\sin^2 x\\right)\\left(1+\\cos^2 x\\right)^2\\):\n\n\\(\\frac{dy}{dx} = \\sin 2x\\left(1+\\sin^2 x\\right)\\left(1+\\cos^2 x\\right)^2\\left[2\\left(1+\\cos^2 x\\right) - 3\\left(1+\\sin^2 x\\right)\\right]\\)\n\nNow \\(2\\left(1+\\cos^2 x\\right) - 3\\left(1+\\sin^2 x\\right) = 2\\cos^2 x - 3\\sin^2 x - 1 = 2\\left(1-\\sin^2 x\\right) - 3\\sin^2 x - 1 = 1 - 5\\sin^2 x\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\sin 2x\\left(1+\\sin^2 x\\right)\\left(1+\\cos^2 x\\right)^2\\left(1-5\\sin^2 x\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8fe50c76-2f52-49ec-a9de-f0895aa9fc31",
+    "ref": "Ex 1.1 Q.3 (vi)",
+    "solution": "Let \\(y = \\sqrt{\\cos x} + \\sqrt{\\cos\\sqrt{x}}\\). Differentiate term by term.\n\n\\(\\frac{d}{dx}\\sqrt{\\cos x} = \\frac{1}{2\\sqrt{\\cos x}}\\cdot(-\\sin x) = \\frac{-\\sin x}{2\\sqrt{\\cos x}}\\)\n\n\\(\\frac{d}{dx}\\sqrt{\\cos\\sqrt{x}} = \\frac{1}{2\\sqrt{\\cos\\sqrt{x}}}\\cdot\\left(-\\sin\\sqrt{x}\\right)\\cdot\\frac{1}{2\\sqrt{x}} = \\frac{-\\sin\\sqrt{x}}{4\\sqrt{x}\\,\\sqrt{\\cos\\sqrt{x}}}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{-\\sin x}{2\\sqrt{\\cos x}} - \\frac{\\sin\\sqrt{x}}{4\\sqrt{x}\\,\\sqrt{\\cos\\sqrt{x}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "2b8ca6a8-ff04-40eb-8260-fcff65ca6b32",
+    "ref": "Ex 1.1 Q.3 (vii)",
+    "solution": "Let \\(y = \\log\\left(\\sec 3x + \\tan 3x\\right)\\).\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\sec 3x + \\tan 3x}\\cdot\\left(3\\sec 3x\\tan 3x + 3\\sec^2 3x\\right)\\)\n\nThe numerator factorises as \\(3\\sec 3x\\left(\\tan 3x + \\sec 3x\\right)\\), which cancels with the denominator.\n\n\\(\\therefore \\frac{dy}{dx} = 3\\sec 3x\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "4a753a96-8901-4bea-995c-4e31a8fe4eda",
+    "ref": "Ex 1.1 Q.3 (viii)",
+    "solution": "Note that \\(x^\\circ\\) means \\(x\\) degrees, i.e. \\(x^\\circ = \\frac{\\pi x}{180}\\) radians. Hence \\(\\frac{d}{dx}\\sin x^\\circ = \\frac{\\pi}{180}\\cos x^\\circ\\).\n\nLet \\(y = \\frac{1+\\sin x^\\circ}{1-\\sin x^\\circ}\\). By the quotient rule,\n\n\\(\\frac{dy}{dx} = \\frac{\\frac{\\pi}{180}\\cos x^\\circ\\left(1-\\sin x^\\circ\\right) - \\left(1+\\sin x^\\circ\\right)\\left(-\\frac{\\pi}{180}\\cos x^\\circ\\right)}{\\left(1-\\sin x^\\circ\\right)^2}\\)\n\n\\(= \\frac{\\frac{\\pi}{180}\\cos x^\\circ\\left[\\left(1-\\sin x^\\circ\\right) + \\left(1+\\sin x^\\circ\\right)\\right]}{\\left(1-\\sin x^\\circ\\right)^2} = \\frac{\\frac{\\pi}{180}\\cos x^\\circ\\cdot 2}{\\left(1-\\sin x^\\circ\\right)^2}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\pi\\cos x^\\circ}{90\\left(1-\\sin x^\\circ\\right)^2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "3bcff6e1-2320-4b7b-b590-d634caf97945",
+    "ref": "Ex 1.1 Q.3 (ix)",
+    "solution": "Let \\(y = \\cot\\left(\\frac{\\log x}{2}\\right) - \\log\\left(\\frac{\\cot x}{2}\\right)\\). Differentiate term by term.\n\nFirst term: \\(\\frac{d}{dx}\\cot\\left(\\frac{\\log x}{2}\\right) = -\\operatorname{cosec}^2\\left(\\frac{\\log x}{2}\\right)\\cdot\\frac{1}{2x}\\).\n\nSecond term: \\(\\frac{d}{dx}\\log\\left(\\frac{\\cot x}{2}\\right) = \\frac{2}{\\cot x}\\cdot\\left(\\frac{-\\operatorname{cosec}^2 x}{2}\\right) = \\frac{-\\operatorname{cosec}^2 x}{\\cot x} = \\frac{-1}{\\sin x\\cos x} = \\frac{-2}{\\sin 2x} = -2\\operatorname{cosec} 2x\\).\n\nSince the second term is subtracted, its contribution is \\(+2\\operatorname{cosec} 2x\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{-\\operatorname{cosec}^2\\left(\\frac{\\log x}{2}\\right)}{2x} + 2\\operatorname{cosec} 2x\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8f912649-8324-4f04-b693-d1732da559df",
+    "ref": "Ex 1.1 Q.3 (x)",
+    "solution": "Let \\(y = \\frac{e^{2x} - e^{-2x}}{e^{2x} + e^{-2x}}\\). Note \\(\\frac{d}{dx}e^{2x} = 2e^{2x}\\) and \\(\\frac{d}{dx}e^{-2x} = -2e^{-2x}\\). By the quotient rule,\n\n\\(\\frac{dy}{dx} = \\frac{\\left(2e^{2x}+2e^{-2x}\\right)\\left(e^{2x}+e^{-2x}\\right) - \\left(e^{2x}-e^{-2x}\\right)\\left(2e^{2x}-2e^{-2x}\\right)}{\\left(e^{2x}+e^{-2x}\\right)^2}\\)\n\n\\(= \\frac{2\\left(e^{2x}+e^{-2x}\\right)^2 - 2\\left(e^{2x}-e^{-2x}\\right)^2}{\\left(e^{2x}+e^{-2x}\\right)^2}\\)\n\nUsing \\((A+B)^2 - (A-B)^2 = 4AB\\) with \\(A = e^{2x}\\), \\(B = e^{-2x}\\), the numerator is \\(2\\cdot 4e^{2x}\\cdot e^{-2x} = 8\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{8}{\\left(e^{2x}+e^{-2x}\\right)^2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "e0f75426-f374-432c-ba70-738748018010",
+    "ref": "Ex 1.1 Q.3 (xi)",
+    "solution": "Let \\(y = \\frac{e^{\\sqrt{x}}+1}{e^{\\sqrt{x}}-1}\\). Put \\(u = e^{\\sqrt{x}}\\), so \\(\\frac{du}{dx} = e^{\\sqrt{x}}\\cdot\\frac{1}{2\\sqrt{x}} = \\frac{e^{\\sqrt{x}}}{2\\sqrt{x}}\\).\n\nThen \\(y = \\frac{u+1}{u-1}\\), and by the quotient rule\n\n\\(\\frac{dy}{du} = \\frac{(1)(u-1) - (u+1)(1)}{(u-1)^2} = \\frac{-2}{(u-1)^2}\\)\n\nBy the chain rule, \\(\\frac{dy}{dx} = \\frac{dy}{du}\\cdot\\frac{du}{dx} = \\frac{-2}{\\left(e^{\\sqrt{x}}-1\\right)^2}\\cdot\\frac{e^{\\sqrt{x}}}{2\\sqrt{x}}\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{-e^{\\sqrt{x}}}{\\sqrt{x}\\left(e^{\\sqrt{x}}-1\\right)^2}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f261bfdc-ed58-42d5-973f-9e706b70907a",
+    "ref": "Ex 1.1 Q.3 (xii)",
+    "solution": "Break the product up with the laws of logarithms before differentiating.\n\n\\(y = \\log\\left[\\tan^3 x\\cdot\\sin^4 x\\cdot\\left(x^2+7\\right)^7\\right] = 3\\log\\tan x + 4\\log\\sin x + 7\\log\\left(x^2+7\\right)\\)\n\n\\(\\frac{dy}{dx} = 3\\cdot\\frac{\\sec^2 x}{\\tan x} + 4\\cdot\\frac{\\cos x}{\\sin x} + 7\\cdot\\frac{2x}{x^2+7}\\)\n\nNow \\(\\frac{\\sec^2 x}{\\tan x} = \\frac{1}{\\cos^2 x}\\cdot\\frac{\\cos x}{\\sin x} = \\frac{1}{\\sin x\\cos x} = \\frac{2}{\\sin 2x} = 2\\operatorname{cosec} 2x\\).\n\n\\(\\therefore \\frac{dy}{dx} = 6\\operatorname{cosec} 2x + 4\\cot x + \\frac{14x}{x^2+7}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "c6dcd6f6-1c94-49be-b669-59a87d0e139e",
+    "ref": "Ex 1.1 Q.3 (xiii)",
+    "solution": "Simplify using the half-angle identities \\(1-\\cos 3x = 2\\sin^2\\left(\\frac{3x}{2}\\right)\\) and \\(1+\\cos 3x = 2\\cos^2\\left(\\frac{3x}{2}\\right)\\), so the ratio is \\(\\tan^2\\left(\\frac{3x}{2}\\right)\\).\n\n\\(y = \\log\\left(\\sqrt{\\tan^2\\left(\\frac{3x}{2}\\right)}\\right) = \\log\\left|\\tan\\left(\\frac{3x}{2}\\right)\\right|\\)\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\tan\\left(\\frac{3x}{2}\\right)}\\cdot\\sec^2\\left(\\frac{3x}{2}\\right)\\cdot\\frac{3}{2} = \\frac{3}{2\\sin\\left(\\frac{3x}{2}\\right)\\cos\\left(\\frac{3x}{2}\\right)} = \\frac{3}{\\sin 3x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = 3\\operatorname{cosec} 3x\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "36d86858-afca-4d2b-ad93-1dd37787e177",
+    "ref": "Ex 1.1 Q.3 (xiv)",
+    "solution": "Simplify using \\(1+\\cos\\theta = 2\\cos^2\\frac{\\theta}{2}\\) and \\(1-\\cos\\theta = 2\\sin^2\\frac{\\theta}{2}\\) with \\(\\theta = \\frac{5x}{2}\\), so the ratio is \\(\\cot^2\\left(\\frac{5x}{4}\\right)\\).\n\n\\(y = \\log\\left(\\sqrt{\\cot^2\\left(\\frac{5x}{4}\\right)}\\right) = \\log\\left|\\cot\\left(\\frac{5x}{4}\\right)\\right|\\)\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\cot\\left(\\frac{5x}{4}\\right)}\\cdot\\left(-\\operatorname{cosec}^2\\left(\\frac{5x}{4}\\right)\\right)\\cdot\\frac{5}{4} = \\frac{-5}{4\\sin\\left(\\frac{5x}{4}\\right)\\cos\\left(\\frac{5x}{4}\\right)} = \\frac{-5}{2\\sin\\left(\\frac{5x}{2}\\right)}\\)\n\n\\(\\therefore \\frac{dy}{dx} = -\\frac{5}{2}\\operatorname{cosec}\\left(\\frac{5x}{2}\\right)\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "8237ce65-1c1a-407c-bd90-7c96adeb7aa6",
+    "ref": "Ex 1.1 Q.3 (xv)",
+    "solution": "Split the logarithm of the root first:\n\n\\(y = \\log\\left(\\sqrt{\\frac{1-\\sin x}{1+\\sin x}}\\right) = \\frac{1}{2}\\left[\\log(1-\\sin x) - \\log(1+\\sin x)\\right]\\)\n\n\\(\\frac{dy}{dx} = \\frac{1}{2}\\left[\\frac{-\\cos x}{1-\\sin x} - \\frac{\\cos x}{1+\\sin x}\\right] = \\frac{-\\cos x}{2}\\left[\\frac{1}{1-\\sin x} + \\frac{1}{1+\\sin x}\\right]\\)\n\n\\(= \\frac{-\\cos x}{2}\\cdot\\frac{(1+\\sin x)+(1-\\sin x)}{1-\\sin^2 x} = \\frac{-\\cos x}{2}\\cdot\\frac{2}{\\cos^2 x} = \\frac{-\\cos x}{\\cos^2 x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = -\\sec x\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "cfe7f477-4b20-4349-966f-d6cde9d13f1d",
+    "ref": "Ex 1.1 Q.3 (xvi)",
+    "solution": "Expand with the laws of logarithms first.\n\n\\(y = \\log\\left[4^{2x}\\left(\\frac{x^2+5}{\\sqrt{2x^3-4}}\\right)^{\\frac{3}{2}}\\right] = 2x\\log 4 + \\frac{3}{2}\\log\\left(x^2+5\\right) - \\frac{3}{4}\\log\\left(2x^3-4\\right)\\)\n\n(the last term because \\(\\frac{3}{2}\\cdot\\log\\sqrt{2x^3-4} = \\frac{3}{2}\\cdot\\frac{1}{2}\\log\\left(2x^3-4\\right)\\)).\n\n\\(\\frac{dy}{dx} = 2\\log 4 + \\frac{3}{2}\\cdot\\frac{2x}{x^2+5} - \\frac{3}{4}\\cdot\\frac{6x^2}{2x^3-4}\\)\n\n\\(\\therefore \\frac{dy}{dx} = 2\\log 4 + \\frac{3x}{x^2+5} - \\frac{9x^2}{4x^3-8}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "5e6d8f36-6fdd-43c7-892f-7dfdfb35fd40",
+    "ref": "Ex 1.1 Q.3 (xvii)",
+    "solution": "Expand with the laws of logarithms first, using \\(\\log e^{x^2} = x^2\\).\n\n\\(y = \\log\\left[\\frac{e^{x^2}(5-4x)^{\\frac{3}{2}}}{\\sqrt[3]{7-6x}}\\right] = x^2 + \\frac{3}{2}\\log(5-4x) - \\frac{1}{3}\\log(7-6x)\\)\n\n\\(\\frac{dy}{dx} = 2x + \\frac{3}{2}\\cdot\\frac{-4}{5-4x} - \\frac{1}{3}\\cdot\\frac{-6}{7-6x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = 2x - \\frac{6}{5-4x} + \\frac{2}{7-6x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "0eb64df4-44c3-4ec7-bb3e-1c55279c222d",
+    "ref": "Ex 1.1 Q.3 (xviii)",
+    "solution": "Expand with the laws of logarithms first (\\(a\\) is a constant).\n\n\\(y = \\log\\left(\\frac{a^{\\cos x}}{\\left(x^2-3\\right)^3\\log x}\\right) = \\cos x\\log a - 3\\log\\left(x^2-3\\right) - \\log(\\log x)\\)\n\n\\(\\frac{dy}{dx} = -\\sin x\\log a - 3\\cdot\\frac{2x}{x^2-3} - \\frac{1}{\\log x}\\cdot\\frac{1}{x}\\)\n\n\\(\\therefore \\frac{dy}{dx} = -\\sin x\\log a - \\frac{6x}{x^2-3} - \\frac{1}{x\\log x}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f3786aa0-07ac-42d7-a013-43c8b73f5ff4",
+    "ref": "Ex 1.1 Q.3 (xix)",
+    "solution": "Simplify \\(y\\) before differentiating, using \\(a^{\\log_a m} = m\\).\n\n\\((25)^{\\log_5(\\sec x)} = \\left(5^2\\right)^{\\log_5(\\sec x)} = \\left(5^{\\log_5(\\sec x)}\\right)^2 = \\sec^2 x\\)\n\n\\((16)^{\\log_4(\\tan x)} = \\left(4^2\\right)^{\\log_4(\\tan x)} = \\left(4^{\\log_4(\\tan x)}\\right)^2 = \\tan^2 x\\)\n\n\\(\\therefore y = \\sec^2 x - \\tan^2 x = 1\\), by the identity \\(\\sec^2 x - \\tan^2 x = 1\\).\n\nSo \\(y\\) is a constant.\n\n\\(\\therefore \\frac{dy}{dx} = 0\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "eea4c01a-dd96-4e86-b845-046560e1c01b",
+    "ref": "Ex 1.1 Q.3 (xx)",
+    "solution": "Let \\(y = \\frac{\\left(x^2+2\\right)^4}{\\sqrt{x^2+5}} = \\left(x^2+2\\right)^4\\left(x^2+5\\right)^{-\\frac{1}{2}}\\). Use the product rule.\n\n\\(\\frac{dy}{dx} = 4\\left(x^2+2\\right)^3(2x)\\left(x^2+5\\right)^{-\\frac{1}{2}} + \\left(x^2+2\\right)^4\\left(-\\frac{1}{2}\\right)\\left(x^2+5\\right)^{-\\frac{3}{2}}(2x)\\)\n\n\\(= \\frac{8x\\left(x^2+2\\right)^3}{\\sqrt{x^2+5}} - \\frac{x\\left(x^2+2\\right)^4}{\\left(x^2+5\\right)^{\\frac{3}{2}}}\\)\n\nTake out \\(\\frac{x\\left(x^2+2\\right)^3}{\\left(x^2+5\\right)^{\\frac{3}{2}}}\\):\n\n\\(\\frac{dy}{dx} = \\frac{x\\left(x^2+2\\right)^3\\left[8\\left(x^2+5\\right) - \\left(x^2+2\\right)\\right]}{\\left(x^2+5\\right)^{\\frac{3}{2}}}\\)\n\nSince \\(8\\left(x^2+5\\right) - \\left(x^2+2\\right) = 8x^2+40-x^2-2 = 7x^2+38\\),\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{x\\left(x^2+2\\right)^3\\left(7x^2+38\\right)}{\\left(x^2+5\\right)^{\\frac{3}{2}}}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "1b289e64-ff46-4a00-b6b4-f0d962978856",
+    "ref": "Ex 1.1 Q.4 (i)",
+    "solution": "\\(r(x) = f[g(x)]\\), so by the chain rule \\(r'(x) = f'[g(x)]\\cdot g'(x)\\).\n\nPutting \\(x = 2\\): \\(r'(2) = f'[g(2)]\\cdot g'(2)\\).\n\nFrom the table, \\(g(2) = 6\\) and \\(g'(2) = 4\\). So \\(f'[g(2)] = f'(6) = -4\\).\n\n\\(\\therefore r'(2) = (-4)(4) = -16\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f975a471-8e70-42ec-86d0-dbf0843d20bd",
+    "ref": "Ex 1.1 Q.4 (ii)",
+    "solution": "\\(R(x) = g[3+f(x)]\\). Since \\(\\frac{d}{dx}\\left[3+f(x)\\right] = f'(x)\\), the chain rule gives \\(R'(x) = g'[3+f(x)]\\cdot f'(x)\\).\n\nPutting \\(x = 4\\): from the table \\(f(4) = 3\\), so \\(3+f(4) = 3+3 = 6\\), and \\(f'(4) = 5\\).\n\nFrom the table \\(g'(6) = 7\\).\n\n\\(\\therefore R'(4) = g'(6)\\cdot f'(4) = (7)(5) = 35\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "adc62831-ff38-4d22-a089-09824fe8ca45",
+    "ref": "Ex 1.1 Q.4 (iii)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(-20\\); the correct value is \\(20\\). The key dropped the inner minus sign from \\(\\frac{d}{dx}\\left(9-f(x)\\right)=-f'(x)\\).]\n\n\\(s(x) = f[9-f(x)]\\). Since \\(\\frac{d}{dx}\\left[9-f(x)\\right] = -f'(x)\\), the chain rule gives \\(s'(x) = f'[9-f(x)]\\cdot\\left(-f'(x)\\right)\\).\n\nPutting \\(x = 4\\): from the table \\(f(4) = 3\\), so \\(9-f(4) = 9-3 = 6\\), and \\(f'(4) = 5\\).\n\nFrom the table \\(f'(6) = -4\\).\n\n\\(\\therefore s'(4) = f'(6)\\cdot\\left(-f'(4)\\right) = (-4)(-5) = 20\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f5c47b56-e4d4-4d93-ac59-076efd105d3d",
+    "ref": "Ex 1.1 Q.4 (iv)",
+    "solution": "\\(S(x) = g[g(x)]\\), so by the chain rule \\(S'(x) = g'[g(x)]\\cdot g'(x)\\).\n\nPutting \\(x = 6\\): from the table \\(g(6) = 2\\) and \\(g'(6) = 7\\). So \\(g'[g(6)] = g'(2) = 4\\).\n\n\\(\\therefore S'(6) = (4)(7) = 28\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "f97d7747-eb4e-4fd0-8db8-58c6874c94f6",
+    "ref": "Ex 1.1 Q.5",
+    "solution": "\\(y = f[g(x)]\\), so by the chain rule \\(\\frac{dy}{dx} = f'[g(x)]\\cdot g'(x)\\).\n\nPutting \\(x = 2\\): \\(\\left[\\frac{dy}{dx}\\right]_{x=2} = f'[g(2)]\\cdot g'(2)\\).\n\nIt is given that \\(g(2) = 3\\), so \\(f'[g(2)] = f'(3) = -1\\); and \\(g'(2) = 5\\).\n\n\\(\\therefore \\left[\\frac{dy}{dx}\\right]_{x=2} = (-1)(5) = -5\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "fa970fb2-9811-4e1b-9b9b-e71cf15aa69e",
+    "ref": "Ex 1.1 Q.6",
+    "solution": "\\(h(x) = \\sqrt{4f(x) + 3g(x)}\\). By the chain rule,\n\n\\(h'(x) = \\frac{1}{2\\sqrt{4f(x)+3g(x)}}\\cdot\\frac{d}{dx}\\left[4f(x)+3g(x)\\right] = \\frac{4f'(x)+3g'(x)}{2\\sqrt{4f(x)+3g(x)}}\\)\n\nPutting \\(x = 1\\), with \\(f(1) = 4\\), \\(g(1) = 3\\), \\(f'(1) = 3\\), \\(g'(1) = 4\\):\n\n\\(4f(1)+3g(1) = 4(4)+3(3) = 16+9 = 25\\), so \\(\\sqrt{4f(1)+3g(1)} = 5\\).\n\n\\(4f'(1)+3g'(1) = 4(3)+3(4) = 12+12 = 24\\)\n\n\\(\\therefore h'(1) = \\frac{24}{2(5)} = \\frac{24}{10} = \\frac{12}{5} = 2.4\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "ee9649fa-9a94-42ab-9b6b-d338560574d4",
+    "ref": "Ex 1.1 Q.7",
+    "solution": "[Textbook answer-key error: the printed key omits \\(x=\\frac{4\\pi}{3}\\), which is a genuine zero, and lists \\(x=2\\pi\\), which the question's strict domain \\(0\\leq x<2\\pi\\) excludes. The complete answer is below.]\n\n\\(y = \\sin 2x - 2\\sin x\\)\n\n\\(\\frac{dy}{dx} = 2\\cos 2x - 2\\cos x\\)\n\nSet \\(\\frac{dy}{dx} = 0\\):\n\n\\(2\\cos 2x - 2\\cos x = 0 \\Rightarrow \\cos 2x = \\cos x\\)\n\nUsing \\(\\cos 2x = 2\\cos^2 x - 1\\):\n\n\\(2\\cos^2 x - 1 = \\cos x \\Rightarrow 2\\cos^2 x - \\cos x - 1 = 0\\)\n\nFactorising, \\((2\\cos x + 1)(\\cos x - 1) = 0\\), so \\(\\cos x = -\\frac{1}{2}\\) or \\(\\cos x = 1\\).\n\nFor \\(0 \\leq x < 2\\pi\\): \\(\\cos x = 1\\) gives \\(x = 0\\); \\(\\cos x = -\\frac{1}{2}\\) gives \\(x = \\frac{2\\pi}{3}\\) and \\(x = \\frac{4\\pi}{3}\\).\n\n\\(\\therefore x = 0,\\ \\frac{2\\pi}{3},\\ \\frac{4\\pi}{3}\\)",
+    "diagramWouldHelp": false
+  },
+  {
+    "id": "c2f4b39c-cf35-47c9-9ecf-44beaf217f0d",
+    "ref": "Ex 1.1 Q.8",
+    "solution": "[Textbook answer-key error: for \\(g[f(x)]\\) the printed key gives \\(e^{x^2+5}\\); the correct entry is \\(e^{x^2+5}+3\\), which is also the only matching item in the book's own hint basket.]\n\nHere \\(f(x) = x^2 + 5\\) and \\(g(x) = e^x + 3\\). Take the blanks in order and pick the matching hint from the basket.\n\nBlank 1 -- \\(f[g(x)]\\): replace \\(x\\) in \\(f\\) by \\(g(x)\\):\n\\(f[g(x)] = \\left(e^x+3\\right)^2 + 5 = e^{2x} + 6e^x + 9 + 5 = e^{2x} + 6e^x + 14\\)  (hint: \\(e^{2x} + 6e^x + 14\\))\n\nBlank 2 -- \\(g[f(x)]\\): replace \\(x\\) in \\(g\\) by \\(f(x)\\):\n\\(g[f(x)] = e^{x^2+5} + 3\\)  (hint: \\(e^{x^2+5} + 3\\))\n\nBlank 3 -- \\(f'(x) = 2x\\)  (hint: \\(2x\\))\n\nBlank 4 -- \\(g'(x) = e^x\\)  (hint: \\(e^x\\))\n\nBlank 5 -- the chain rule in terms of \\(f\\) and \\(g\\): \\(\\frac{d}{dx}f[g(x)] = f'[g(x)]\\cdot g'(x)\\)  (hint: \\(f'[g(x)]\\cdot g'(x)\\))\n\nBlank 6 -- evaluate it: \\(f'[g(x)]\\cdot g'(x) = 2\\left(e^x+3\\right)\\cdot e^x = 2e^{2x} + 6e^x\\)  (hint: \\(2e^{2x} + 6e^x\\))\n\nBlank 7 -- at \\(x = 0\\): \\(2e^{0} + 6e^{0} = 2+6 = 8\\)  (hint: \\(8\\))\n\nBlank 8 -- the chain rule the other way round: \\(\\frac{d}{dx}g[f(x)] = g'[f(x)]\\cdot f'(x)\\)  (hint: \\(g'[f(x)]\\cdot f'(x)\\))\n\nBlank 9 -- evaluate it: \\(g'[f(x)]\\cdot f'(x) = e^{x^2+5}\\cdot 2x = 2xe^{x^2+5}\\)  (hint: \\(2xe^{x^2+5}\\))\n\nBlank 10 -- at \\(x = -1\\): \\(2(-1)e^{(-1)^2+5} = -2e^{6}\\)  (hint: \\(-2e^{6}\\))\n\nThe completed paragraph reads:\n\n\\(f[g(x)] = e^{2x} + 6e^x + 14\\) and \\(g[f(x)] = e^{x^2+5} + 3\\).\n\nNow \\(f'(x) = 2x\\) and \\(g'(x) = e^x\\).\n\nThe derivative of \\(f[g(x)]\\) w. r. t. \\(x\\) in terms of \\(f\\) and \\(g\\) is \\(f'[g(x)]\\cdot g'(x)\\).\n\nTherefore \\(\\frac{d}{dx}\\left[f[g(x)]\\right] = 2e^{2x} + 6e^x\\) and \\(\\left[\\frac{d}{dx}\\left[f[g(x)]\\right]\\right]_{x=0} = 8\\).\n\nThe derivative of \\(g[f(x)]\\) w. r. t. \\(x\\) in terms of \\(f\\) and \\(g\\) is \\(g'[f(x)]\\cdot f'(x)\\).\n\nTherefore \\(\\frac{d}{dx}\\left[g[f(x)]\\right] = 2xe^{x^2+5}\\) and \\(\\left[\\frac{d}{dx}\\left[g[f(x)]\\right]\\right]_{x=-1} = -2e^{6}\\).\n\nEach of the ten hints in the basket is used exactly once.",
+    "diagramWouldHelp": false
+  }
+]

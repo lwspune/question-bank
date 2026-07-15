@@ -1,0 +1,185 @@
+[
+  {
+    "ref": "Ex 1.4 Q.1 (i)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = 1/t",
+    "book_answer": "1/t"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = (b/a) cos(theta)",
+    "book_answer": "(b/a) cos(theta)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = 2/sqrt(a^2+m^2) = 2/x",
+    "book_answer": "2/sqrt(a^2+m^2)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = sec^3(theta)",
+    "book_answer": "sec^3(theta)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (v)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = (b/a) tan(theta/2)",
+    "book_answer": "(b/a) tan(theta/2)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = a^{t+1/t} log a / (a (t+1/t)^{a-1})",
+    "book_answer": "y(t^2+1) log a / (a x t)",
+    "evidence": "Different-looking forms, same value. Substituting the given x=(t+1/t)^a and y=a^{t+1/t} into the book's form: (t+1/t)^{a-1} = x/(t+1/t) = x*t/(t^2+1), so our denominator a(t+1/t)^{a-1} = a*x*t/(t^2+1), making ours = y(t^2+1)log a/(a x t) -- the book's form exactly. Confirmed symbolically (sympy: ours - book simplifies to 0, and truth - ours = truth - book = 0) and numerically (mpmath dps=50, a=1.7, t=0.6 and t=2.4: both match (dy/dt)/(dx/dt) to <1e-25). The book merely re-expresses the answer through x and y instead of leaving it in the parameter. Not a disagreement."
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (vii)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = -1/2",
+    "book_answer": "-1/2"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (viii)",
+    "verdict": "AGREE",
+    "our_answer": "dy/dx = 1/3",
+    "book_answer": "1/3"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (i)",
+    "verdict": "AGREE",
+    "our_answer": "3*sqrt(3)/2",
+    "book_answer": "3*sqrt(3)/2"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "-sqrt(3)",
+    "book_answer": "-sqrt(3)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "-pi/6",
+    "book_answer": "-pi/6"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "1 - sqrt(2)",
+    "book_answer": "1 - sqrt(2)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (v)",
+    "verdict": "AGREE",
+    "our_answer": "3 + pi",
+    "book_answer": "3 + pi"
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (i)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = -y/x (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row: the target is stated in the question, so the book prints no key (the '(3)' block on p268 sits ABOVE the EXERCISE 1.4 header and belongs to Ex 1.3). Target verified independently anyway: mpmath numeric (dy/dtheta)/(dx/dtheta) at theta=0.4 and 0.9 (a=1.7) matches -y/x to <1e-25. Our derivation is also self-corroborating -- x*y = a^2*sqrt(sec^2-tan^2) = a^2 is constant, so the curve is the rectangular hyperbola xy=a^2, whose derivative is -y/x."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (ii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = -(y log x)/(x log y) (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. Target verified independently: mpmath numeric (dy/dt)/(dx/dt) at t=0.3 and 0.7 matches -(y log x)/(x log y) to <1e-25."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (iii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = -y^2, hence y^2 + dy/dx = 0 (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. Target verified independently: mpmath numeric (dy/dt)/(dx/dt) at t=2.3 and 4.1 matches -y^2 to <1e-25. Self-corroborating: y = 1/x here, so dy/dx = -1/x^2 = -y^2."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (iv)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = -(y/x)^{1/3} (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. Target verified independently: mpmath numeric (dy/dt)/(dx/dt) at t=0.5 and 1.0 (a=1.7) matches -(y/x)^{1/3} to <1e-25."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (v)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = -sqrt(3y/(2x)) (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. Target verified independently: mpmath numeric (dy/dt)/(dx/dt) at t=-2.6 and t=-2.1 (i.e. u=t+3 = 0.4 and 0.9, in the first quadrant so the positive square root is the right branch) matches -sqrt(3y/(2x)) to <1e-25."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (vi)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = sqrt(e^x - 1)/2 (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. Target verified independently: mpmath numeric (dy/dt)/(dx/dt) at t=0.7 and 1.8 matches sqrt(e^x-1)/2 (evaluated through x=log(1+t^2)) to <1e-25; numeric values 0.35 and 0.9 are exactly t/2, as our derivation predicts."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (vii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dy/dx = -sin x, hence sin x + dy/dx = 0 (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. Target verified independently: mpmath numeric (dy/dt)/(dx/dt) at t=-0.9 and -0.4 (t<0 as required for e^{2t}<1) matches -sin(x) to <1e-25."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (viii)",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "dx/dy = -(b^2 y)/(a^2 x) (shown)",
+    "book_answer": null,
+    "evidence": "Show-that row; no book key. NOTE this row asks for dx/dy, NOT dy/dx -- our solution correctly divides (dx/dt) by (dy/dt) and explicitly flags the reversal. Target verified independently against that orientation: mpmath numeric (dx/dt)/(dy/dt) at t=0.6 and 1.7 (a=1.7, b=2.3) matches -(b^2 y)/(a^2 x) to <1e-25."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (i)",
+    "verdict": "AGREE",
+    "our_answer": "(sin x + x cos x) cos^2 x",
+    "book_answer": "(x cos x + sin x)/sec^2 x"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "1 (stated for |x| < 1)",
+    "book_answer": "1"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "-1/2",
+    "book_answer": "-1/2"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "2",
+    "book_answer": "2"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (v)",
+    "verdict": "AGREE",
+    "our_answer": "-x * 3^x * (log x)^2",
+    "book_answer": "-x (log x)^2 * 3^x"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "-x*sqrt(x^2-1)/2 (stated for 1 < x < 3pi/2)",
+    "book_answer": "-x sqrt(x^2-1)/2"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (vii)",
+    "verdict": "AGREE",
+    "our_answer": "x^{x-sin x+1}(1+log x)/(x cos x log x + sin x)",
+    "book_answer": "(1+log x) x^{x+1-sin x}/(sin x + x cos x log x)"
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (viii)",
+    "verdict": "AGREE",
+    "our_answer": "sqrt(1-x^2)/(4(1+x^2))",
+    "book_answer": "sqrt(1-x^2)/(4(1+x^2))"
+  }
+]
