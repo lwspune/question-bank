@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { loadActiveExamContext } from "@/lib/exam/loadActiveExamContext";
 import UserMenu from "./UserMenu";
@@ -9,9 +9,10 @@ import PrimaryNav from "./PrimaryNav";
 import ExamPill from "./ExamPill";
 
 export default async function AppHeader() {
-  const [member, user, examContext] = await Promise.all([
+  const [member, user, superadmin, examContext] = await Promise.all([
     getSessionMember(),
     getSessionUser(),
+    getSessionSuperadmin(),
     loadActiveExamContext(),
   ]);
   // A signed-in user with no org_members row is a self-serve student — they
@@ -72,7 +73,11 @@ export default async function AppHeader() {
                   {member.orgName}
                 </span>
               )}
-              <UserMenu email={account.email} role={account.role} />
+              <UserMenu
+                email={account.email}
+                role={account.role}
+                isSuperadmin={!!superadmin}
+              />
             </>
           ) : (
             <Button asChild variant="outline" size="sm">
