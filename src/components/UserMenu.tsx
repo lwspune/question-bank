@@ -4,17 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { Bookmark, CreditCard, LayoutDashboard, LogOut, User } from "lucide-react";
+import { Bookmark, CreditCard, LayoutDashboard, LogOut, ShieldCheck, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export default function UserMenu({
   email,
   role,
+  isSuperadmin = false,
 }: {
   email: string;
   // null = signed-in student (no org membership).
   role: "ADMIN" | "TEACHER" | null;
+  isSuperadmin?: boolean;
 }) {
   const router = useRouter();
   const [signingOut, setSigningOut] = useState(false);
@@ -61,6 +63,15 @@ export default function UserMenu({
               {role ?? "Student"}
             </p>
           </div>
+          {isSuperadmin && (
+            <Link
+              href="/superadmin"
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+            >
+              <ShieldCheck className="h-4 w-4 text-brand-accent" aria-hidden />
+              Superadmin console
+            </Link>
+          )}
           {/* Papers (the collaborative builder) is reached from the primary
               nav tab now — org members get it there. */}
           {role === null && (
