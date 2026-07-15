@@ -1,0 +1,287 @@
+[
+  {
+    "ref": "1.4.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "EASY",
+    "stem": "Find the derivative of \\(7^x\\) w.r.t. \\(x^7\\).",
+    "solution": "Let \\(u = 7^x\\) and \\(v = x^7\\), then we have to find \\(\\frac{du}{dv}\\).\n\\(\\therefore \\frac{du}{dv} = \\frac{\\frac{du}{dx}}{\\frac{dv}{dx}}\\) ... (I)\nNow, \\(u = 7^x\\)\nDifferentiate w.r.t. \\(x\\)\n\\(\\frac{du}{dx} = \\frac{d}{dx}(7^x) = 7^x \\log 7\\) ... (II)\nAnd, \\(v = x^7\\)\nDifferentiate w.r.t. \\(x\\)\n\\(\\frac{dv}{dx} = \\frac{d}{dx}(x^7) = 7x^6\\) ... (III)\nSubstituting (II) and (III) in (I) we get,\n\\(\\therefore \\frac{du}{dv} = \\frac{7^x \\log 7}{7x^6}\\)"
+  },
+  {
+    "ref": "1.4.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(\\cos^{-1} x\\) w.r.t. \\(\\sqrt{1-x^2}\\).",
+    "solution": "Let \\(u = \\cos^{-1} x\\) and \\(v = \\sqrt{1-x^2}\\), then we have to find \\(\\frac{du}{dv}\\).\ni.e. \\(\\frac{du}{dv} = \\frac{\\frac{du}{dx}}{\\frac{dv}{dx}}\\) ... (I)\nNow, \\(u = \\cos^{-1} x\\)\nDifferentiate w.r.t. \\(x\\)\n\\(\\frac{du}{dx} = \\frac{d}{dx}(\\cos^{-1} x) = -\\frac{1}{\\sqrt{1-x^2}}\\) ... (II)\nAnd, \\(v = \\sqrt{1-x^2}\\)\nDifferentiate w.r.t. \\(x\\)\n\\(\\frac{dv}{dx} = \\frac{d}{dx}\\left(\\sqrt{1-x^2}\\right) = \\frac{1}{2\\sqrt{1-x^2}} \\cdot \\frac{d}{dx}(1-x^2) = \\frac{1}{2\\sqrt{1-x^2}} \\cdot (-2x)\\)\n\\(\\frac{dv}{dx} = -\\frac{x}{\\sqrt{1-x^2}}\\) ... (III)\nSubstituting (II) and (III) in (I) we get,\n\\(\\frac{du}{dv} = \\frac{-\\frac{1}{\\sqrt{1-x^2}}}{-\\frac{x}{\\sqrt{1-x^2}}}\\)\n\\(\\therefore \\frac{du}{dv} = \\frac{1}{x}\\)"
+  },
+  {
+    "ref": "1.4.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "HARD",
+    "stem": "Find the derivative of \\(\\tan^{-1}\\left(\\frac{\\sqrt{1+x^2}-1}{x}\\right)\\) w.r.t. \\(\\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right)\\).",
+    "solution": "[Textbook misprint: the book's printed solution drops the \\(\\tan^{-1}\\) operator from the middle expression of its simplification chain. The surrounding derivation and the printed final answer \\(\\frac{du}{dv}=\\frac{1}{4}\\) are correct.]\n\nLet \\(u = \\tan^{-1}\\left(\\frac{\\sqrt{1+x^2}-1}{x}\\right)\\) and \\(v = \\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right)\\), then we have to find \\(\\frac{du}{dv}\\).\ni.e. \\(\\frac{du}{dv} = \\frac{\\frac{du}{dx}}{\\frac{dv}{dx}}\\) ... (I)\nNow, \\(u = \\tan^{-1}\\left(\\frac{\\sqrt{1+x^2}-1}{x}\\right)\\)\nPut \\(x = \\tan \\theta\\) \\(\\therefore \\theta = \\tan^{-1} x\\)\n\\(u = \\tan^{-1}\\left(\\frac{\\sqrt{1+\\tan^2 \\theta}-1}{\\tan \\theta}\\right) = \\tan^{-1}\\left(\\frac{\\sec \\theta - 1}{\\tan \\theta}\\right) = \\left(\\frac{\\frac{1}{\\cos \\theta}-1}{\\frac{\\sin \\theta}{\\cos \\theta}}\\right) = \\tan^{-1}\\left(\\frac{1-\\cos \\theta}{\\sin \\theta}\\right)\\)\n\\(= \\tan^{-1}\\left[\\frac{2 \\sin^2\\left(\\frac{\\theta}{2}\\right)}{2 \\sin\\left(\\frac{\\theta}{2}\\right) \\cos\\left(\\frac{\\theta}{2}\\right)}\\right] = \\tan^{-1}\\left[\\tan\\left(\\frac{\\theta}{2}\\right)\\right]\\)\n\\(u = \\frac{\\theta}{2} = \\frac{1}{2} \\tan^{-1} x\\)\nDifferentiate w.r.t. \\(x\\)\n\\(\\frac{du}{dx} = \\frac{1}{2} \\frac{d}{dx}(\\tan^{-1} x) = \\frac{1}{2(1+x^2)}\\) ... (II)\nAnd, \\(v = \\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right) = \\sin^{-1}\\left(\\frac{2 \\tan \\theta}{1+\\tan^2 \\theta}\\right) = \\sin^{-1}(\\sin 2\\theta) = 2\\theta\\)\n\\(v = 2 \\tan^{-1} x\\)\nDifferentiate w.r.t. \\(x\\)\n\\(\\frac{dv}{dx} = 2 \\frac{d}{dx}(\\tan^{-1} x) = \\frac{2}{1+x^2}\\) ... (III)\nSubstituting (II) and (III) in (I) we get,\n\\(\\frac{du}{dv} = \\frac{\\frac{1}{2(1+x^2)}}{\\frac{2}{1+x^2}} = \\frac{1}{4}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = at^2\\), \\(y = 2at\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = a \\cot \\theta\\), \\(y = b \\operatorname{cosec} \\theta\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = \\sqrt{a^2 + m^2}\\), \\(y = \\log (a^2 + m^2)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = \\sin \\theta\\), \\(y = \\tan \\theta\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = a(1 - \\cos \\theta)\\), \\(y = b(\\theta - \\sin \\theta)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = \\left(t + \\frac{1}{t}\\right)^a\\), \\(y = a^{t + \\frac{1}{t}}\\), where \\(a > 0\\), \\(a \\neq 1\\) and \\(t \\neq 0\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = \\cos^{-1}\\left(\\frac{2t}{1+t^2}\\right)\\), \\(y = \\sec^{-1}\\left(\\sqrt{1+t^2}\\right)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.1 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "HARD",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.1",
+    "stem": "\\(x = \\cos^{-1}(4t^3 - 3t)\\), \\(y = \\tan^{-1}\\left(\\frac{\\sqrt{1-t^2}}{t}\\right)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.2",
+    "stem": "\\(x = \\operatorname{cosec}^2 \\theta\\), \\(y = \\cot^3 \\theta\\), at \\(\\theta = \\frac{\\pi}{6}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.2",
+    "stem": "\\(x = a \\cos^3 \\theta\\), \\(y = a \\sin^3 \\theta\\), at \\(\\theta = \\frac{\\pi}{3}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.2",
+    "stem": "\\(x = t^2 + t + 1\\), \\(y = \\sin\\left(\\frac{\\pi t}{2}\\right) + \\cos\\left(\\frac{\\pi t}{2}\\right)\\), at \\(t = 1\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.2",
+    "stem": "\\(x = 2 \\cos t + \\cos 2t\\), \\(y = 2 \\sin t - \\sin 2t\\), at \\(t = \\frac{\\pi}{4}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "Ex 1.4 Q.2",
+    "stem": "\\(x = t + 2 \\sin(\\pi t)\\), \\(y = 3t - \\cos(\\pi t)\\), at \\(t = \\frac{1}{2}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = a\\sqrt{\\sec \\theta - \\tan \\theta}\\), \\(y = a\\sqrt{\\sec \\theta + \\tan \\theta}\\), then show that \\(\\frac{dy}{dx} = -\\frac{y}{x}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = e^{\\sin 3t}\\), \\(y = e^{\\cos 3t}\\), then show that \\(\\frac{dy}{dx} = -\\frac{y \\log x}{x \\log y}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = \\frac{t+1}{t-1}\\), \\(y = \\frac{t-1}{t+1}\\), then show that \\(y^2 + \\frac{dy}{dx} = 0\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = a \\cos^3 t\\), \\(y = a \\sin^3 t\\), then show that \\(\\frac{dy}{dx} = -\\left(\\frac{y}{x}\\right)^{\\frac{1}{3}}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = 2 \\cos^4 (t+3)\\), \\(y = 3 \\sin^4 (t+3)\\), show that \\(\\frac{dy}{dx} = -\\sqrt{\\frac{3y}{2x}}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = \\log (1 + t^2)\\), \\(y = t - \\tan^{-1} t\\), show that \\(\\frac{dy}{dx} = \\frac{\\sqrt{e^x - 1}}{2}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = \\sin^{-1} (e^t)\\), \\(y = \\sqrt{1 - e^{2t}}\\), show that \\(\\sin x + \\frac{dy}{dx} = 0\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.3 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = \\frac{2bt}{1+t^2}\\), \\(y = a\\left(\\frac{1-t^2}{1+t^2}\\right)\\), show that \\(\\frac{dx}{dy} = -\\frac{b^2 y}{a^2 x}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(x \\sin x\\) w.r.t. \\(\\tan x\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right)\\) w.r.t. \\(\\cos^{-1}\\left(\\frac{1-x^2}{1+x^2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\tan^{-1}\\left(\\frac{x}{\\sqrt{1-x^2}}\\right)\\) w.r.t. \\(\\sec^{-1}\\left(\\frac{1}{2x^2-1}\\right)\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\cos^{-1}\\left(\\frac{1-x^2}{1+x^2}\\right)\\) w.r.t. \\(\\tan^{-1} x\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(3^x\\) w.r.t. \\(\\log_x 3\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\tan^{-1}\\left(\\frac{\\cos x}{1+\\sin x}\\right)\\) w.r.t. \\(\\sec^{-1} x\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(x^x\\) w.r.t. \\(x^{\\sin x}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q.4 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiation of One Function with respect to Another",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\tan^{-1}\\left(\\frac{\\sqrt{1+x^2}-1}{x}\\right)\\) w.r.t. \\(\\tan^{-1}\\left(\\frac{2x\\sqrt{1-x^2}}{1-2x^2}\\right)\\)."
+  }
+]

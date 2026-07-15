@@ -1,0 +1,57 @@
+[
+  {
+    "ref": "1.3.1 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w. r. t. x.",
+    "setLabel": "1.3.1 SolvedEx.1",
+    "stem": "\\(\\left(\\frac{(x^2+3)^2\\ \\sqrt[3]{(x^3+5)^2}}{\\sqrt{(2x^2+1)^3}}\\right)\\)",
+    "solution": "Let \\(y = \\left(\\frac{(x^2+3)^2\\ \\sqrt[3]{(x^3+5)^2}}{\\sqrt{(2x^2+1)^3}}\\right)\\)\nTaking log of both the sides we get,\n\\(\\log y = \\log\\left(\\frac{(x^2+3)^2\\ \\sqrt[3]{(x^3+5)^2}}{\\sqrt{(2x^2+1)^3}}\\right) = \\log\\left[\\frac{(x^2+3)^2\\ (x^3+5)^{\\frac{2}{3}}}{(2x^2+1)^{\\frac{3}{2}}}\\right]\\)\n\\(= \\log\\left[(x^2+3)^2\\ (x^3+5)^{\\frac{2}{3}}\\right] - \\log(2x^2+1)^{\\frac{3}{2}}\\)\n\\(= \\log(x^2+3)^2 + \\log(x^3+5)^{\\frac{2}{3}} - \\log(2x^2+1)^{\\frac{3}{2}}\\)\n\\(\\log y = 2\\log(x^2+3) + \\frac{2}{3}\\log(x^3+5) - \\frac{3}{2}\\log(2x^2+1)\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(\\log y) = \\frac{d}{dx}\\left[2\\log(x^2+3) + \\frac{2}{3}\\log(x^3+5) - \\frac{3}{2}\\log(2x^2+1)\\right]\\)\n\\(\\frac{1}{y}\\frac{dy}{dx} = 2\\cdot\\frac{d}{dx}\\left[\\log(x^2+3)\\right] + \\frac{2}{3}\\cdot\\frac{d}{dx}\\left[\\log(x^3+5)\\right] - \\frac{3}{2}\\cdot\\frac{d}{dx}\\left[\\log(2x^2+1)\\right]\\)\n\\(= \\frac{2}{x^2+3}\\cdot\\frac{d}{dx}(x^2+3) + \\frac{2}{3(x^3+5)}\\cdot\\frac{d}{dx}(x^3+5) - \\frac{3}{2(2x^2+1)}\\cdot\\frac{d}{dx}(2x^2+1)\\)\n\\(\\frac{dy}{dx} = y\\left[\\frac{2}{x^2+3}(2x) + \\frac{2}{3(x^3+5)}(3x^2) - \\frac{3}{2(2x^2+1)}(4x)\\right]\\)\n\\(\\therefore\\ \\frac{dy}{dx} = \\frac{(x^2+3)^2\\ \\sqrt[3]{(x^3+5)^2}}{\\sqrt{(2x^2+1)^3}}\\left[\\frac{4x}{x^2+3} + \\frac{2x^2}{(x^3+5)} - \\frac{6x}{2x^2+1}\\right]\\)"
+  },
+  {
+    "ref": "1.3.1 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "context": "Differentiate the following w. r. t. x.",
+    "setLabel": "1.3.1 SolvedEx.1",
+    "stem": "\\(\\frac{e^{x^2}\\ (\\tan x)^{\\frac{x}{2}}}{(1+x^2)^{\\frac{3}{2}}\\ \\cos^3 x}\\)",
+    "solution": "Let \\(y = \\frac{e^{x^2}\\ (\\tan x)^{\\frac{x}{2}}}{(1+x^2)^{\\frac{3}{2}}\\ \\cos^3 x}\\)\nTaking log of both the sides we get,\n\\(\\log y = \\log\\left(\\frac{e^{x^2}\\ (\\tan x)^{\\frac{x}{2}}}{(1+x^2)^{\\frac{3}{2}}\\ (\\cos x)^3}\\right) = \\log\\left[e^{x^2}(\\tan x)^{\\frac{x}{2}}\\right] - \\log\\left[(1+x^2)^{\\frac{3}{2}}(\\cos x)^3\\right]\\)\n\\(= \\log e^{x^2} + \\log(\\tan x)^{\\frac{x}{2}} - \\left[\\log(1+x^2)^{\\frac{3}{2}} + \\log(\\cos x)^3\\right]\\)\n\\(= x^2\\log e + \\frac{x}{2}\\log(\\tan x) - \\frac{3}{2}\\log(1+x^2) - 3\\log(\\cos x)\\)\n\\(\\therefore\\ \\log y = x^2 + \\frac{x}{2}\\log(\\tan x) - \\frac{3}{2}\\log(1+x^2) - 3\\log(\\cos x)\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(\\log y) = \\frac{d}{dx}\\left[x^2 + \\frac{x}{2}\\log(\\tan x) - \\frac{3}{2}\\log(1+x^2) - 3\\log(\\cos x)\\right]\\)\n\\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{d}{dx}(x^2) + \\frac{x}{2}\\cdot\\frac{d}{dx}\\left[\\log(\\tan x)\\right] + \\log(\\tan x)\\frac{d}{dx}\\left(\\frac{x}{2}\\right) - \\frac{3}{2}\\cdot\\frac{d}{dx}\\left[\\log(1+x^2)\\right] - 3\\frac{d}{dx}\\left[\\log(\\cos x)\\right]\\)\n\\(= 2x + \\frac{x}{2}\\cdot\\frac{1}{\\tan x}\\cdot\\frac{d}{dx}(\\tan x) + \\log(\\tan x)\\frac{1}{2} - \\frac{3}{2(1+x^2)}\\cdot\\frac{d}{dx}(1+x^2) - \\frac{3}{\\cos x}\\cdot\\frac{d}{dx}(\\cos x)\\)\n\\(= 2x + \\frac{x}{2}\\cdot(\\cot x)(\\sec^2 x) + \\frac{1}{2}\\log(\\tan x) - \\frac{3}{2(1+x^2)}\\cdot(2x) - \\frac{3}{\\cos x}(-\\sin x)\\)\n\\(= 2x + \\frac{x}{2}\\times\\frac{\\cos x}{\\sin x}\\times\\frac{1}{\\cos^2 x} + \\frac{1}{2}\\log(\\tan x) - \\frac{3x}{1+x^2} + 3\\tan x\\)\n\\(\\frac{dy}{dx} = y\\left[2x + \\frac{x}{2\\sin x\\cos x} + \\frac{1}{2}\\log(\\tan x) - \\frac{3x}{1+x^2} + 3\\tan x\\right]\\)\n\\(\\therefore\\ \\frac{dy}{dx} = \\frac{e^{x^2}\\ (\\tan x)^{\\frac{x}{2}}}{(1+x^2)^{\\frac{3}{2}}\\ \\cos^3 x}\\left[2x + x\\operatorname{cosec} 2x + \\frac{1}{2}\\log(\\tan x) - \\frac{3x}{1+x^2} + 3\\tan x\\right]\\)"
+  },
+  {
+    "ref": "1.3.1 SolvedEx.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w. r. t. x.",
+    "setLabel": "1.3.1 SolvedEx.1",
+    "stem": "\\((x+1)^{\\frac{3}{2}}\\ (2x+3)^{\\frac{5}{2}}\\ (3x+4)^{\\frac{2}{3}}\\)",
+    "solution": "[Textbook misprint: the book's printed solution corrupts the factor \\((2x+3)\\) into \\((3x+2)\\) and \\((3x+1)\\) from the differentiation step onward, and its printed final answer \\(\\frac{15}{2(3x+1)}\\) is therefore WRONG. The correct third term is \\(\\frac{5}{2x+3}\\), giving \\(\\frac{dy}{dx}=(x+1)^{3/2}(2x+3)^{5/2}(3x+4)^{2/3}\\left[\\frac{3}{2(x+1)}+\\frac{5}{2x+3}+\\frac{2}{3x+4}\\right]\\). The book's own \\(\\log\\) expansion, printed just above, is correct.]\n\nLet \\(y = (x+1)^{\\frac{3}{2}}\\ (2x+3)^{\\frac{5}{2}}\\ (3x+4)^{\\frac{2}{3}}\\)\nTaking log of both the sides we get,\n\\(\\log y = \\log\\left[(x+1)^{\\frac{3}{2}}\\ (2x+3)^{\\frac{5}{2}}\\ (3x+4)^{\\frac{2}{3}}\\right]\\)\n\\(= \\log(x+1)^{\\frac{3}{2}} + \\log(2x+3)^{\\frac{5}{2}} + \\log(3x+4)^{\\frac{2}{3}}\\)\n\\(\\log y = \\frac{3}{2}\\log(x+1) + \\frac{5}{2}\\log(2x+3) + \\frac{2}{3}\\log(3x+4)\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(\\log y) = \\frac{d}{dx}\\left[\\frac{3}{2}\\log(x+1) + \\frac{5}{2}\\log(2x+3) + \\frac{2}{3}\\log(3x+4)\\right]\\)\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{3}{2}\\cdot\\frac{d}{dx}\\left[\\log(x+1)\\right] + \\frac{5}{2}\\cdot\\frac{d}{dx}\\left[\\log(3x+2)\\right] + \\frac{2}{3}\\cdot\\frac{d}{dx}\\left[\\log(3x+4)\\right]\\)\n\\(= \\frac{3}{2(x+1)}\\cdot\\frac{d}{dx}(x+1) + \\frac{5}{2(3x+1)}\\cdot\\frac{d}{dx}(3x+2) + \\frac{2}{3(3x+4)}\\cdot\\frac{d}{dx}(3x+4)\\)\n\\(\\frac{dy}{dx} = y\\left[\\frac{3}{2(x+1)} + \\frac{5}{2(3x+1)}(3) + \\frac{2}{3(3x+4)}(3)\\right]\\)\n\\(\\therefore\\ \\frac{dy}{dx} = (x+1)^{\\frac{3}{2}}\\ (2x+3)^{\\frac{5}{2}}\\ (3x+4)^{\\frac{2}{3}}\\left[\\frac{3}{2(x+1)} + \\frac{15}{2(3x+1)} + \\frac{2}{3x+4}\\right]\\)"
+  },
+  {
+    "ref": "1.3.1 SolvedEx.1 (iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w. r. t. x.",
+    "setLabel": "1.3.1 SolvedEx.1",
+    "stem": "\\(x^a + x^x + a^x\\)",
+    "solution": "Let \\(y = x^a + x^x + a^x\\)\nHere the derivatives of \\(x^a\\) and \\(a^x\\) can be found directly but we can not find the derivative of \\(x^x\\) without the use of logarithm. So the given function is split in to two functions, find their derivatives and then add them.\nLet \\(u = x^a + a^x\\) and \\(v = x^x\\)\n\\(\\therefore\\ y = u + v\\), where \\(u\\) and \\(v\\) are differentiable functions of \\(x\\).\n\\(\\frac{dy}{dx} = \\frac{du}{dx} + \\frac{dv}{dx}\\) ..... (I)\nNow, \\(u = x^a + a^x\\)\nDifferentiate w. r. t. x.\n\\(\\frac{du}{dx} = \\frac{d}{dx}(x^a) + \\frac{d}{dx}(a^x)\\)\n\\(\\frac{du}{dx} = ax^{a-1} + a^x\\log a\\) ..... (II)\nAnd, \\(v = x^x\\)\nTaking log of both the sides we get,\n\\(\\log v = \\log x^x\\)\n\\(\\log v = x\\log x\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(\\log v) = \\frac{d}{dx}(x\\log x)\\)\n\\(\\frac{1}{v}\\frac{dv}{dx} = x\\frac{d}{dx}(\\log x) + \\log x\\frac{d}{dx}(x)\\)\n\\(\\frac{dv}{dx} = v\\left[x\\times\\frac{1}{x} + \\log x\\ (1)\\right]\\)\n\\(\\frac{dv}{dx} = x^x\\left[1 + \\log x\\right]\\) ..... (III)\nSubstituting (II) and (III) in (I) we get,\n\\(\\frac{dy}{dx} = ax^{a-1} + a^x\\log a + x^x\\left[1 + \\log x\\right]\\)"
+  },
+  {
+    "ref": "1.3.1 SolvedEx.1 (v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "context": "Differentiate the following w. r. t. x.",
+    "setLabel": "1.3.1 SolvedEx.1",
+    "stem": "\\((\\sin x)^{\\tan x} - x^{\\log x}\\)",
+    "solution": "[Textbook misprint: the book's printed solution writes \\(\\log(\\sin x)\\cdot(\\sec^2)\\), dropping the argument; it should be \\(\\sec^2x\\). It self-corrects on the following line and the printed final answer is right.]\n\nLet \\(y = (\\sin x)^{\\tan x} - x^{\\log x}\\)\nLet \\(u = (\\sin x)^{\\tan x}\\) and \\(v = x^{\\log x}\\)\n\\(\\therefore\\ y = u - v\\), where \\(u\\) and \\(v\\) are differentiable functions of \\(x\\).\n\\(\\frac{dy}{dx} = \\frac{du}{dx} - \\frac{dv}{dx}\\) ..... (I)\nNow, \\(u = (\\sin x)^{\\tan x}\\), taking log of both the sides we get,\n\\(\\log u = \\log(\\sin x)^{\\tan x}\\)\n\\(\\therefore\\ \\log u = \\tan x\\log(\\sin x)\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(\\log u) = \\frac{d}{dx}\\left[\\tan x\\log(\\sin x)\\right]\\)\n\\(\\frac{1}{u}\\frac{du}{dx} = \\tan x\\frac{d}{dx}\\left[\\log(\\sin x)\\right] + \\log(\\sin x)\\frac{d}{dx}(\\tan x)\\)\n\\(= \\tan x\\cdot\\frac{1}{\\sin x}\\cdot\\frac{d}{dx}(\\sin x) + \\log(\\sin x)\\cdot(\\sec^2)\\)\n\\(\\frac{du}{dx} = u\\left[\\tan x\\cdot\\frac{1}{\\sin x}\\cdot(\\cos x) + \\sec^2 x\\cdot\\log(\\sin x)\\right]\\)\n\\(\\frac{du}{dx} = (\\sin x)^{\\tan x}\\left[\\tan x\\cdot\\cot x + \\sec^2 x\\cdot\\log(\\sin x)\\right]\\)\n\\(\\frac{du}{dx} = (\\sin x)^{\\tan x}\\left[1 + \\sec^2 x\\cdot\\log(\\sin x)\\right]\\) ..... (II)\nAnd, \\(v = x^{\\log x}\\)\nTaking log on both the sides we get,\n\\(\\log v = \\log\\left(x^{\\log x}\\right)\\)\n\\(\\log v = \\log x\\log x = (\\log x)^2\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(\\log v) = \\frac{d}{dx}\\left[(\\log x)^2\\right]\\)\n\\(\\frac{1}{v}\\frac{dv}{dx} = 2\\log x\\frac{d}{dx}(\\log x)\\)\n\\(\\frac{dv}{dx} = u\\left[\\frac{2\\log x}{x}\\right] = \\frac{2x^{\\log x}\\log x}{x}\\) ..... (III)\nSubstituting (II) and (III) in (I) we get,\n\\(\\frac{dy}{dx} = (\\sin x)^{\\tan x}\\left[1 + \\sec^2 x\\cdot\\log(\\sin x)\\right] - \\frac{2x^{\\log x}\\log x}{x}\\)"
+  }
+]

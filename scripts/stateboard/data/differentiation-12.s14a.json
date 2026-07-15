@@ -1,0 +1,117 @@
+[
+  {
+    "ref": "1.4.2 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.1",
+    "stem": "\\(x = at^4\\), \\(y = 2at^2\\)",
+    "solution": "Given, \\(y = 2at^2\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = 2a\\frac{d}{dt}(t^2) = 2a(2t) = 4at\\) ..... (I)\nAnd, \\(x = at^4\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = a\\frac{d}{dt}(t^4) = a(4t^3) = 4at^3\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{4at}{4at^3}\\) ...[From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{1}{t^2}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.1",
+    "stem": "\\(x = t - \\sqrt{t}\\), \\(y = t + \\sqrt{t}\\)",
+    "solution": "Given, \\(y = t + \\sqrt{t}\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = \\frac{d}{dt}(t + \\sqrt{t}) = 1 + \\frac{1}{2\\sqrt{t}}\\)\n\\(\\frac{dy}{dt} = \\frac{2\\sqrt{t} + 1}{2\\sqrt{t}}\\) ..... (I)\nAnd, \\(x = t - \\sqrt{t}\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = \\frac{d}{dt}(t - \\sqrt{t}) = 1 - \\frac{1}{2\\sqrt{t}}\\)\n\\(\\frac{dx}{dt} = \\frac{2\\sqrt{t} - 1}{2\\sqrt{t}}\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{\\frac{2\\sqrt{t}+1}{2\\sqrt{t}}}{\\frac{2\\sqrt{t}-1}{2\\sqrt{t}}}\\) ...[From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{2\\sqrt{t} + 1}{2\\sqrt{t} - 1}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.1",
+    "stem": "\\(x = \\cos(\\log t)\\), \\(y = \\log(\\cos t)\\)",
+    "solution": "[Textbook misprint: the book's printed solution writes \\(\\frac{1}{\\cot t}\\cdot\\frac{d}{dt}(\\cos t)\\) twice, where it should be \\(\\frac{1}{\\cos t}\\); its own stated result \\(\\frac{dy}{dt}=-\\tan t\\) follows only from \\(\\frac{1}{\\cos t}\\). The printed final answer is correct.]\n\nGiven, \\(y = \\log(\\cos t)\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = \\frac{d}{dt}[\\log(\\cos t)] = \\frac{1}{\\cot t}\\cdot\\frac{d}{dt}(\\cos t) = \\frac{1}{\\cot t}(-\\sin t)\\)\n\\(\\therefore\\) \\(\\frac{dy}{dt} = -\\tan t\\) ..... (I)\nAnd, \\(x = \\cos(\\log t)\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = \\frac{d}{dt}[\\cos(\\log t)] = -\\sin(\\log t)\\cdot\\frac{d}{dt}(\\log t) = -\\frac{\\sin(\\log t)}{t}\\)\n\\(\\therefore\\) \\(\\frac{dx}{dt} = -\\frac{\\sin(\\log t)}{t}\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{-\\tan t}{-\\frac{\\sin(\\log t)}{t}}\\) ...[From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{t\\cdot\\tan t}{\\sin(\\log t)}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.1 (iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "HARD",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.1",
+    "stem": "\\(x = a(\\theta + \\sin\\theta)\\), \\(y = a(1 - \\cos\\theta)\\)",
+    "solution": "Given, \\(y = a(1 - \\cos\\theta)\\)\nDifferentiate w. r. t. \\(\\theta\\)\n\\(\\frac{dy}{d\\theta} = a\\frac{d}{d\\theta}[(1 - \\cos\\theta)] = a[0 - (-\\sin\\theta)]\\)\n\\(\\frac{dy}{dt} = a\\sin\\theta\\) ..... (I)\nAnd, \\(x = a(\\theta + \\sin\\theta)\\)\nDifferentiate w. r. t. \\(\\theta\\)\n\\(\\frac{dx}{dt} = a\\frac{d}{d\\theta}(\\theta + \\sin\\theta) = a(1 + \\cos\\theta)\\)\n\\(\\frac{dx}{dt} = a(1 + \\cos\\theta)\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{a\\sin\\theta}{a(1 + \\cos\\theta)}\\) ...[From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{2\\sin\\left(\\frac{\\theta}{2}\\right)\\cdot\\cos\\left(\\frac{\\theta}{2}\\right)}{2\\cos^2\\left(\\frac{\\theta}{2}\\right)} = \\tan\\left(\\frac{\\theta}{2}\\right)\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.1 (v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.1",
+    "stem": "\\(x = \\sqrt{1 - t^2}\\), \\(y = \\sin^{-1} t\\)",
+    "solution": "Given, \\(y = \\sin^{-1} t\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = \\frac{d}{dt}(\\sin^{-1} t) = \\frac{1}{\\sqrt{1 - t^2}}\\)\n\\(\\frac{dy}{dt} = \\frac{1}{\\sqrt{1 - t^2}}\\) ..... (I)\nAnd, \\(x = \\sqrt{1 - t^2}\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = \\frac{d}{dt}\\left(\\sqrt{1 - t^2}\\right) = \\frac{1}{2\\sqrt{1 - t^2}}\\cdot\\frac{d}{dt}(1 - t^2)\\)\n\\(\\frac{dx}{dt} = \\frac{1}{2\\sqrt{1 - t^2}}\\cdot(-2t) = -\\frac{t}{\\sqrt{1 - t^2}}\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{\\frac{1}{\\sqrt{1 - t^2}}}{-\\frac{t}{\\sqrt{1 - t^2}}}\\) ... [From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = -\\frac{1}{t}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.2 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.2",
+    "stem": "\\(x = \\sec^2\\theta\\), \\(y = \\tan^3\\theta\\), at \\(\\theta = \\frac{\\pi}{3}\\)",
+    "solution": "Given, \\(y = \\tan^3\\theta\\)\nDifferentiate w. r. t. \\(\\theta\\)\n\\(\\frac{dy}{d\\theta} = \\frac{d}{d\\theta}(\\tan\\theta)^3 = 3\\tan^2\\theta\\frac{d}{d\\theta}(\\tan\\theta)\\)\n\\(\\therefore\\) \\(\\frac{dy}{d\\theta} = 3\\tan^2\\theta\\cdot\\sec^2\\theta\\) ..... (I)\nAnd, \\(x = \\sec^2\\theta\\)\nDifferentiate w. r. t. \\(\\theta\\)\n\\(\\frac{dx}{d\\theta} = \\frac{d}{d\\theta}(\\sec^2\\theta) = 2\\sec\\theta\\cdot\\frac{d}{d\\theta}(\\sec\\theta)\\)\n\\(\\frac{dx}{d\\theta} = 2\\sec\\theta\\cdot\\sec\\theta\\tan\\theta = 2\\sec^2\\theta\\cdot\\tan\\theta\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{3\\tan^2\\theta\\cdot\\sec^2\\theta}{2\\sec^2\\theta\\cdot\\tan\\theta}\\) ... [From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{3}{2}\\tan\\theta\\)\nAt \\(\\theta = \\frac{\\pi}{3}\\), we get\n\\(\\left(\\frac{dy}{dx}\\right)_{\\theta = \\frac{\\pi}{3}} = \\frac{3}{2}\\tan\\left(\\frac{\\pi}{3}\\right) = \\frac{3\\sqrt{3}}{2}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.2 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.2",
+    "stem": "\\(x = t + \\frac{1}{t}\\), \\(y = \\frac{1}{t^2}\\), at \\(t = \\frac{1}{2}\\)",
+    "solution": "[Textbook misprint: the book's printed solution gives \\(\\frac{dx}{dt}=-\\frac{t^2-1}{t^2}\\); the correct value is \\(+\\frac{t^2-1}{t^2}\\), and the book's own next line silently uses the positive form. The printed final answer \\(\\frac{16}{3}\\) is correct.]\n\nGiven, \\(y = \\frac{1}{t^2}\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = \\frac{d}{dt}\\left(\\frac{1}{t^2}\\right)\\)\n\\(\\frac{dy}{dt} = -\\frac{2}{t^3}\\) ..... (I)\nAnd, \\(x = t + \\frac{1}{t}\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = \\frac{d}{dt}\\left(t + \\frac{1}{t}\\right) = 1 - \\frac{1}{t^2}\\)\n\\(\\frac{dx}{dt} = -\\frac{t^2 - 1}{t^2}\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{-\\frac{2}{t^3}}{\\frac{t^2 - 1}{t^2}}\\) ... [From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = -\\frac{2}{t(t^2 - 1)}\\)\nAt \\(t = \\frac{1}{2}\\), we get\n\\(\\left(\\frac{dy}{dx}\\right)_{t = \\frac{1}{2}} = -\\frac{2}{\\left(\\frac{1}{2}\\right)\\left[\\left(\\frac{1}{2}\\right)^2 - 1\\right]}\\)\n\\(= -\\frac{2}{\\left(\\frac{1}{2}\\right)\\left(\\frac{1}{4} - 1\\right)}\\)\n\\(\\left(\\frac{dy}{dx}\\right)_{t = \\frac{1}{2}} = -\\frac{2}{\\left(\\frac{1}{2}\\right)\\left(-\\frac{3}{4}\\right)}\\)\n\\(\\left(\\frac{dy}{dx}\\right)_{t = \\frac{1}{2}} = \\frac{16}{3}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.2 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "HARD",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.4.2 SolvedEx.2",
+    "stem": "\\(x = 3\\cos t - 2\\cos^3 t\\), \\(y = 3\\sin t - 2\\sin^3 t\\), at \\(t = \\frac{\\pi}{6}\\)",
+    "solution": "[Textbook misprint: the book's printed solution states \\(\\frac{dy}{dx}=-\\cot t\\) where its own steps give \\(+\\cot t\\), and then writes \\(-\\cot\\frac{\\pi}{6}=\\sqrt{3}\\), which is false. The printed final answer \\(\\sqrt{3}\\) is correct; both intermediates carry a spurious minus.]\n\nGiven, \\(y = 3\\sin t - 2\\sin^3 t\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = \\frac{d}{dt}(3\\sin t - 2\\sin^3 t)\\)\n\\(= 3\\frac{d}{dt}(\\sin t) - 2(\\sin t)^3\\)\n\\(= 3\\cos t - 2(3)\\sin^2 t\\frac{d}{dt}(\\sin t)\\)\n\\(= 3\\cos t - 6\\sin^2 t(\\cos t)\\)\n\\(= 3\\cos t(1 - 2\\sin^2 t)\\)\n\\(\\frac{dy}{dt} = 3\\cos t\\cos 2t\\) ..... (I)\nAnd, \\(x = 3\\cos t - 2\\cos^3 t\\)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = \\frac{d}{dt}(3\\cos t - 2\\cos^3 t)\\)\n\\(= 3\\frac{d}{dt}(\\cos t) - 2\\frac{d}{dt}(\\cos^3 t)\\)\n\\(= 3(-\\sin t) - 2(3)\\cos^2 t\\frac{d}{dt}(\\cos t)\\)\n\\(= -3\\sin t - 6\\cos^2 t(-\\sin t)\\)\n\\(= 6\\cos^2 t\\sin t - 3\\sin t\\)\n\\(= 3\\sin t(2\\cos^2 t - 1)\\)\n\\(\\frac{dx}{dt} = 3\\sin t\\cos 2t\\) ..... (II)\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{3\\cos t\\cos 2t}{3\\sin t\\cos 2t}\\) ..... [From (I) and (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = -\\cot t\\)\nAt \\(t = \\frac{\\pi}{6}\\), we get\n\\(\\left(\\frac{dy}{dx}\\right)_{t = \\frac{\\pi}{6}} = -\\cot\\left(\\frac{\\pi}{6}\\right) = \\sqrt{3}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(x^2 + y^2 = t + \\frac{1}{t}\\) and \\(x^4 + y^4 = t^2 + \\frac{1}{t^2}\\), then show that \\(x^3 y \\frac{dy}{dx} = -1\\).",
+    "solution": "Given that, \\(x^4 + y^4 = t^2 + \\frac{1}{t^2}\\) ... (I)\nAnd \\(x^2 + y^2 = t + \\frac{1}{t}\\)\nSquaring both sides,\n\\(\\left(x^2 + y^2\\right)^2 = \\left(t + \\frac{1}{t}\\right)^2\\)\n\\(x^4 + 2x^2y^2 + y^4 = t^2 + 2 + \\frac{1}{t^2}\\)\n\\(x^4 + 2x^2y^2 + y^4 = x^4 + y^4 + 2\\) ... [From (I)]\n\\(2x^2y^2 = 2\\) \\(\\therefore\\) \\(x^2y^2 = 1\\) ... (II)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{d}{dx}(x^2y^2) = \\frac{d}{dx}(1)\\)\n\\(x^2\\frac{d}{dx}(y^2) + y^2\\frac{d}{dx}(x^2) = 0\\)\n\\(x^2(2y)\\frac{dy}{dx} + y^2(2x) = 0\\)\n\\(2x^2y\\frac{dy}{dx} = -2xy^2 \\Rightarrow \\frac{dy}{dx} = -\\frac{2xy^2}{2x^2y}\\)\n\\(\\frac{dy}{dx} = -\\frac{x\\left(\\frac{1}{x^2}\\right)}{x^2y}\\) ... [From (II)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{-1}{x^3y}\\) \\(\\therefore\\) \\(x^3y\\frac{dy}{dx} = -1\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(x = a\\left(t - \\frac{1}{t}\\right)\\) and \\(y = b\\left(t + \\frac{1}{t}\\right)\\), then show that \\(\\frac{dy}{dx} = \\frac{b^2 x}{a^2 y}\\).",
+    "solution": "[Textbook misprint: the book's printed solution gives \\(\\frac{x^2}{a^2}-\\frac{y^2}{a^2}=-4\\); the second denominator must be \\(b^2\\), as the book's own next line confirms by differentiating with \\(\\frac{1}{b^2}\\). The printed final answer is correct.]\n\nGiven that, \\(x = a\\left(t - \\frac{1}{t}\\right)\\) and \\(y = b\\left(t + \\frac{1}{t}\\right)\\)\ni.e. \\(\\frac{x}{a} = t - \\frac{1}{t}\\) ... (I) and \\(\\frac{y}{b} = t + \\frac{1}{t}\\) ... (II)\nSquare of (I) \\(-\\) Square of (II) gives,\n\\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = \\left(t - \\frac{1}{t}\\right)^2 - \\left(t + \\frac{1}{t}\\right)^2\\)\n\\(= t^2 - 2 + \\frac{1}{t^2} - t^2 - 2 - \\frac{1}{t^2}\\)\n\\(\\therefore\\) \\(\\frac{x^2}{a^2} - \\frac{y^2}{a^2} = -4\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\frac{1}{a^2}\\cdot\\frac{d}{dx}(x^2) - \\frac{1}{b^2}\\cdot\\frac{d}{dx}(y^2) = \\frac{d}{dx}(-4)\\)\n\\(\\frac{1}{a^2}(2x) - \\frac{1}{b^2}(2y)\\cdot\\frac{d}{dx} = 0\\)\n\\(\\frac{1}{a^2}(2x) - \\frac{1}{b^2}(2y)\\cdot\\frac{dy}{dx} = 0\\)\n\\(\\frac{2y}{b^2}\\cdot\\frac{dy}{dx} = \\frac{2x}{a^2} \\Rightarrow \\frac{dy}{dx} = \\frac{b^2 x}{a^2 y}\\)\n\\(\\therefore\\) \\(\\frac{dy}{dx} = \\frac{b^2 x}{a^2 y}\\)"
+  },
+  {
+    "ref": "1.4.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(x = \\sqrt{a^{\\sin^{-1} t}}\\) and \\(y = \\sqrt{a^{\\cos^{-1} t}}\\), then show that \\(\\frac{dy}{dx} = -\\frac{y}{x}\\).",
+    "solution": "Given that, \\(x = \\sqrt{a^{\\sin^{-1} t}}\\) and \\(y = \\sqrt{a^{\\cos^{-1} t}}\\)\ni.e. \\(x = \\sqrt{a^{\\sin^{-1} t}}\\) ... (I) and \\(y = \\sqrt{a^{\\cos^{-1} t}}\\) ... (II)\nDifferentiate (I) w. r. t. \\(t\\)\n\\(\\frac{dx}{dt} = \\frac{d}{dt}\\left(\\sqrt{a^{\\sin^{-1} t}}\\right) = \\frac{1}{2\\sqrt{a^{\\sin^{-1} t}}}\\cdot\\frac{d}{dt}(a^{\\sin^{-1} t})\\)\n\\(= \\frac{1}{2\\sqrt{a^{\\sin^{-1} t}}}\\cdot a^{\\sin^{-1} t}\\cdot\\log a\\frac{d}{dt}(\\sin^{-1} t)\\)\n\\(= \\frac{a^{\\sin^{-1} t}\\cdot\\log a}{2\\sqrt{a^{\\sin^{-1} t}}}\\cdot\\frac{1}{\\sqrt{1 - t^2}}\\)\n\\(\\frac{dx}{dt} = \\frac{\\sqrt{a^{\\sin^{-1} t}}\\cdot\\log a}{2\\sqrt{1 - t^2}} = \\frac{x\\log a}{2\\sqrt{1 - t^2}}\\) ... (III) ... [From (I)]\nNow \\(y = \\sqrt{a^{\\cos^{-1} t}}\\)\nDifferentiate (II) w. r. t. \\(t\\)\n\\(\\frac{dy}{dt} = \\frac{d}{dt}\\left(\\sqrt{a^{\\cos^{-1} t}}\\right) = \\frac{1}{2\\sqrt{a^{\\cos^{-1} t}}}\\cdot\\frac{d}{dt}(a^{\\cos^{-1} t})\\)\n\\(= \\frac{1}{2\\sqrt{a^{\\cos^{-1} t}}}\\cdot a^{\\cos^{-1} t}\\cdot\\log a\\frac{d}{dt}(\\cos^{-1} t)\\)\n\\(= \\frac{a^{\\cos^{-1} t}\\cdot\\log a}{2\\sqrt{a^{\\cos^{-1} t}}}\\left(-\\frac{1}{\\sqrt{1 - t^2}}\\right)\\)\n\\(\\frac{dy}{dt} = \\frac{-\\sqrt{a^{\\cos^{-1} t}}\\cdot\\log a}{2\\sqrt{1 - t^2}} = -\\frac{y\\log a}{2\\sqrt{1 - t^2}}\\) ... (IV) ... [From (II)]\nNow, \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{-\\frac{y\\log a}{2\\sqrt{1 - t^2}}}{\\frac{x\\log a}{2\\sqrt{1 - t^2}}}\\) ..... [From (III) and (IV)]\n\\(\\therefore\\) \\(\\frac{dy}{dx} = -\\frac{y}{x}\\)"
+  }
+]

@@ -14,6 +14,35 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.1 Differentiation (Part 2) — verified against Ch_01_DIFFERENTIATION.pdf
+  //    (2026-07-15). 5 numbered sections, each ending in its own Exercise, then a
+  //    terminal Miscellaneous Exercise 1 (I = 12 MCQ, II = subjective).
+  //    Two structural quirks, both faithful to the book:
+  //    (a) §1.2 and §1.3 and §1.4 and §1.5 each carry TWO Solved-Examples blocks
+  //        (under 1.2.3 + 1.2.6, 1.3.1 + 1.3.3, 1.4.2 + 1.4.3, 1.5.1 + 1.5.2) but
+  //        only ONE exercise, which sits after the second block. Refs are prefixed
+  //        by SUBSECTION (1.2.3 / 1.2.6 …), which is what keeps them unique and
+  //        makes longest-prefix routing unambiguous.
+  //    (b) §1.2.1 "Geometrical meaning of Derivative" is motivating prose with no
+  //        questions, so it owns no block.
+  "differentiation-12": [
+    { group: "1.1 Derivatives of Composite Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1.3 SolvedEx"] },
+    { group: "1.1 Derivatives of Composite Functions", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
+    { group: "1.2 Derivatives of Inverse Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2.3 SolvedEx"] },
+    { group: "1.2 Derivatives of Inverse Trigonometric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2.6 SolvedEx"] },
+    { group: "1.2 Derivatives of Inverse Trigonometric Functions", label: "Exercise 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 Q"] },
+    { group: "1.3 Logarithmic Differentiation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.3.1 SolvedEx"] },
+    { group: "1.3 Derivatives of Implicit Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.3.3 SolvedEx"] },
+    { group: "1.3 Derivatives of Implicit Functions", label: "Exercise 1.3", kind: "exercise", refPrefixes: ["Ex 1.3 Q"] },
+    { group: "1.4 Derivatives of Parametric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.4.2 SolvedEx"] },
+    { group: "1.4 Differentiation of One Function w.r.t. Another", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.4.3 SolvedEx"] },
+    { group: "1.4 Differentiation of One Function w.r.t. Another", label: "Exercise 1.4", kind: "exercise", refPrefixes: ["Ex 1.4 Q"] },
+    { group: "1.5 Higher Order Derivatives", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.5.1 SolvedEx"] },
+    { group: "1.5 Successive Differentiation (nth Order Derivative)", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.5.2 SolvedEx"] },
+    { group: "1.5 Successive Differentiation (nth Order Derivative)", label: "Exercise 1.5", kind: "exercise", refPrefixes: ["Ex 1.5 Q"] },
+    { group: "Miscellaneous Exercise 1", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc I Q"] },
+    { group: "Miscellaneous Exercise 1", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II Q"] },
+  ],
   // ── Ch.6 Line and Planes — verified against Ch_06_Line_&_Planes.pdf + the
   //    Part-1 ANSWERS section (2026-07-07). 7 numbered sections, but only 4
   //    numbered exercises + 2 Miscellaneous blocks: Exercise 6.1 (§6.1),

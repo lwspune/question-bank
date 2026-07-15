@@ -1,0 +1,325 @@
+[
+  {
+    "ref": "Ex 1.1 Q.1 (i)",
+    "verdict": "AGREE",
+    "our_answer": "5(x^3-2x-1)^4(3x^2-2)",
+    "book_answer": "5(3x^2-2)(x^3-2x-1)^4"
+  },
+  {
+    "ref": "Ex 1.1 Q.1 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "(5/2)(2x^{3/2}-3x^{4/3}-5)^{3/2}(3\\sqrt{x}-4\\sqrt[3]{x})",
+    "book_answer": "(5/2)(3\\sqrt{x}-4\\sqrt[3]{x})(2x^{3/2}-3x^{4/3}-5)^{3/2}"
+  },
+  {
+    "ref": "Ex 1.1 Q.1 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "(x+2)/\\sqrt{x^2+4x-7}",
+    "book_answer": "(x+2)/\\sqrt{x^2+4x-7}"
+  },
+  {
+    "ref": "Ex 1.1 Q.1 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "x(2\\sqrt{x^2+1}+1)/(2\\sqrt{x^2+1}\\,\\sqrt{x^2+\\sqrt{x^2+1}})",
+    "book_answer": "x(2\\sqrt{x^2+1}+1)/(2\\sqrt{x^2+1}\\cdot\\sqrt{x^2+\\sqrt{x^2+1}})"
+  },
+  {
+    "ref": "Ex 1.1 Q.1 (v)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "-88(4x-7)/(9(2x^2-7x-5)^{14/3})",
+    "book_answer": "-(4x-7)/((2x^2-7x-5)^{8/3})",
+    "evidence": "Stem SOURCE-VERIFIED on p-10.png: y = 8/(3*cbrt((2x^2-7x-5)^11)) exactly as we transcribed, so the mis-transcription hypothesis is rejected. Re-derivation: y = (8/3)u^{-11/3} with u = 2x^2-7x-5, u' = 4x-7. dy/dx = (8/3)(-11/3)u^{-14/3}u' = -(88/9)(4x-7)(2x^2-7x-5)^{-14/3} = ours. Independent numeric check (mpmath, 50 dps, d/dx of the printed stem at x=5,6,8): truth = -0.00273852587266, -4.97701607693e-5, -7.35356200585e-7. Ours matches all three to <1e-20 relative. The book's expression gives -0.0280076509704, -0.00318133129918, -0.000337603702953 -- wrong at every point. The book/truth ratio is NOT constant (10.2, 63.9, 459.1), so this is a wrong functional FORM, not a dropped constant: the book's exponent -8/3 is 1 subtracted from the MAGNITUDE of 11/3 (11/3-1=8/3) instead of from the exponent itself (-11/3-1=-14/3), and the coefficient 88/9 is lost entirely. Key re-read at 2x zoom to rule out a misread: it unambiguously prints -(4x-7) over (2x^2-7x-5)^{8/3}, no coefficient. Confidence: very high."
+  },
+  {
+    "ref": "Ex 1.1 Q.1 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "15(3x-4)/(2(3x-5)^{3/2}) \\cdot (\\sqrt{3x-5}-1/\\sqrt{3x-5})^4",
+    "book_answer": "15(3x-4)/(2(3x-5)^{3/2}) (\\sqrt{3x-5}-1/\\sqrt{3x-5})^4"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (i)",
+    "verdict": "AGREE",
+    "our_answer": "-2x\\sin(x^2+a^2)",
+    "book_answer": "-2x sin(x^2+a^2)"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "3e^{3x+2}/(2\\sqrt{e^{3x+2}+5})",
+    "book_answer": "3e^{(3x+2)}/(2\\sqrt{e^{(3x+2)}+5})"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "\\operatorname{cosec} x",
+    "book_answer": "cosec x"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "\\sec^2\\sqrt{x}/(4\\sqrt{x}\\,\\sqrt{\\tan\\sqrt{x}})",
+    "book_answer": "sec^2\\sqrt{x}/(4\\sqrt{x}\\cdot\\sqrt{tan\\sqrt{x}})"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (v)",
+    "verdict": "AGREE",
+    "our_answer": "-9\\cot^2[\\log(x^3)]\\operatorname{cosec}^2[\\log(x^3)]/x",
+    "book_answer": "-9 cosec^2[log(x^3)] . cot^2[log(x^3)] / x"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "3\\sin^2 x\\cos x\\cdot 5^{\\sin^3 x+3}\\log 5",
+    "book_answer": "3 sin^2 x . cos x . 5^{sin^3 x+3} . log 5"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (vii)",
+    "verdict": "AGREE",
+    "our_answer": "\\sin x\\,\\operatorname{cosec}(\\sqrt{\\cos x})\\cot(\\sqrt{\\cos x})/(2\\sqrt{\\cos x})",
+    "book_answer": "sin x cosec\\sqrt{cos x} . cot(\\sqrt{cos x}) / (2\\sqrt{cos x})"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (viii)",
+    "verdict": "AGREE",
+    "our_answer": "-3x^2\\tan(x^3-5)",
+    "book_answer": "-3x^2 tan(x^3-5)"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (ix)",
+    "verdict": "AGREE",
+    "our_answer": "5\\sin 2x\\cdot e^{3\\sin^2 x-2\\cos^2 x}",
+    "book_answer": "5 sin 2x . e^{3 sin^2 x - 2 cos^2 x}"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (x)",
+    "verdict": "AGREE",
+    "our_answer": "-2x\\sin[2\\log(x^2+7)]/(x^2+7)",
+    "book_answer": "-2x . sin[2 log(x^2+7)]/(x^2+7)"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xi)",
+    "verdict": "AGREE",
+    "our_answer": "-\\cos x\\,\\sin(\\sin x)\\,\\sec^2[\\cos(\\sin x)]",
+    "book_answer": "-sec^2[cos(sin x)] . sin(sin x) . cos x"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xii)",
+    "verdict": "AGREE",
+    "our_answer": "4x^3\\sec^2(x^4+4)\\sec[\\tan(x^4+4)]\\tan[\\tan(x^4+4)]",
+    "book_answer": "4x^3 . sec^2(x^4+4) . sec[tan(x^4+4)] . tan[tan(x^4+4)]"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xiii)",
+    "verdict": "AGREE",
+    "our_answer": "2(\\log x-1)/x",
+    "book_answer": "2 log x / x - 2/x"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xiv)",
+    "verdict": "AGREE",
+    "our_answer": "\\cos\\sqrt{\\sin\\sqrt{x}}\\;\\cos\\sqrt{x}/(4\\sqrt{x}\\,\\sqrt{\\sin\\sqrt{x}})",
+    "book_answer": "cos\\sqrt{sin\\sqrt{x}} . cos\\sqrt{x} / (4\\sqrt{x} . \\sqrt{sin\\sqrt{x}})"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xv)",
+    "verdict": "AGREE",
+    "our_answer": "2xe^{x^2}\\tan(e^{x^2})",
+    "book_answer": "2x . e^{x^2}[tan(e^{x^2})]"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xvi)",
+    "verdict": "AGREE",
+    "our_answer": "1/(2x\\log x)",
+    "book_answer": "1/(2x log x)"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xvii)",
+    "verdict": "AGREE",
+    "our_answer": "2\\log[\\log(\\log x)]/(x\\,\\log x\\,\\log(\\log x))",
+    "book_answer": "2[log[log(log x)]] / (x log x . log(log x))"
+  },
+  {
+    "ref": "Ex 1.1 Q.2 (xviii)",
+    "verdict": "AGREE",
+    "our_answer": "4x\\sin(2x^2)",
+    "book_answer": "4x sin(2x^2)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (i)",
+    "verdict": "AGREE",
+    "our_answer": "6(x+2)(x^2+4x+1)^2 + 4(3x^2-5)(x^3-5x-2)^3",
+    "book_answer": "6(x+2)(x^2+4x+1)^2 + 4(3x^2-5)(x^3-5x-2)^3"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "4(1+4x)^4(3+x-x^2)^7(17+9x-21x^2)",
+    "book_answer": "8(1-2x)(1+4x)^5(3+x-x^2)^7 + 20(1+4x)^4(3+x-x^2)^8",
+    "evidence": "Apparent disagreement DISSOLVED on equivalence testing -- the book simply leaves the product-rule sum unfactored. Factoring (1+4x)^4(3+x-x^2)^7 out of the book's form gives [8(1+4x)(1-2x) + 20(3+x-x^2)] = [8+16x-64x^2] + [60+20x-20x^2] = 68+36x-84x^2 = 4(17+9x-21x^2), i.e. exactly ours. Numeric confirm at x=0.3,1.0,1.7 vs d/dx of the stem: both forms match truth to <1e-20 relative."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "(14-3x)/(2(7-3x)^{3/2})",
+    "book_answer": "(14-3x)/(2(7-3x)^{3/2})"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (iv)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "6x^2(x^3-5)^4(x^3+15)/(x^3+3)^4",
+    "book_answer": "6x^2(x^3+15)(x^3-5)^4/(x^3+3)^6",
+    "evidence": "Stem SOURCE-VERIFIED on p-11.png: y = (x^3-5)^5/(x^3+3)^3 exactly as we transcribed. Re-derivation (quotient rule): numerator = 5(x^3-5)^4(3x^2)(x^3+3)^3 - (x^3-5)^5*3(x^3+3)^2(3x^2) = 3x^2(x^3-5)^4(x^3+3)^2[5(x^3+3)-3(x^3-5)] = 3x^2(x^3-5)^4(x^3+3)^2(2x^3+30); over (x^3+3)^6 this cancels to 6x^2(x^3-5)^4(x^3+15)/(x^3+3)^4 = ours. The book's NUMERATOR is character-for-character identical to ours -- it independently corroborates our stem -- but it kept the un-reduced (x^3+3)^6 denominator after factoring (x^3+3)^2 out of the numerator, so its answer is ours divided by (x^3+3)^2. Independent numeric check at x=0.7,1.4,2.2: truth = 169.877969287, 4.96543735206, 21.8450384732; ours matches to <1e-20 relative; book gives 15.2007251916, 0.150497277772, 0.117277523417 -- wrong at every point. Key re-read at 2x zoom: the exponent is unmistakably 6. Confidence: very high."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (v)",
+    "verdict": "AGREE",
+    "our_answer": "\\sin 2x(1+\\sin^2 x)(1+\\cos^2 x)^2(1-5\\sin^2 x)",
+    "book_answer": "sin 2x(1+sin^2 x)(1+cos^2 x)^2(1-5 sin^2 x)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "-\\sin x/(2\\sqrt{\\cos x}) - \\sin\\sqrt{x}/(4\\sqrt{x}\\,\\sqrt{\\cos\\sqrt{x}})",
+    "book_answer": "-sin x/(2\\sqrt{cos x}) - sin\\sqrt{x}/(4\\sqrt{x} . \\sqrt{cos\\sqrt{x}})"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (vii)",
+    "verdict": "AGREE",
+    "our_answer": "3\\sec 3x",
+    "book_answer": "3 sec 3x"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (viii)",
+    "verdict": "AGREE",
+    "our_answer": "\\pi\\cos x^\\circ/(90(1-\\sin x^\\circ)^2)",
+    "book_answer": "\\pi cos x^o / (90(1 - sin x^o)^2)",
+    "evidence": "Degree convention confirmed on both sides: the pi/90 factor (= 2 * pi/180) is present in the book's key too. Numeric check with x in degrees (stem = (1+sin(pi*x/180))/(1-sin(pi*x/180))) at x=20,50,100 deg: both match truth to <1e-20."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (ix)",
+    "verdict": "AGREE",
+    "our_answer": "-\\operatorname{cosec}^2(\\log x/2)/(2x) + 2\\operatorname{cosec} 2x",
+    "book_answer": "-cosec^2(log x/2)/(2x) + tan x . cosec^2 x",
+    "evidence": "Apparent disagreement DISSOLVED on equivalence testing. The two second terms are identically equal: tan x * cosec^2 x = (sin x/cos x)(1/sin^2 x) = 1/(sin x cos x) = 2/(2 sin x cos x) = 2/sin 2x = 2 cosec 2x. Ours is the collapsed form, the book's the raw one. Numeric confirm at x=0.5,0.8,1.4 vs d/dx of the stem: both match truth to <1e-20 relative."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (x)",
+    "verdict": "AGREE",
+    "our_answer": "8/(e^{2x}+e^{-2x})^2",
+    "book_answer": "8e^{4x}/(e^{4x}+1)^2",
+    "evidence": "Apparent disagreement DISSOLVED on equivalence testing. (e^{2x}+e^{-2x})^2 = e^{-4x}(e^{4x}+1)^2, so 8/(e^{2x}+e^{-2x})^2 = 8e^{4x}/(e^{4x}+1)^2 identically. Numeric confirm at x=-0.7,0.3,1.1: both match truth to <1e-20 relative."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xi)",
+    "verdict": "AGREE",
+    "our_answer": "-e^{\\sqrt{x}}/(\\sqrt{x}(e^{\\sqrt{x}}-1)^2)",
+    "book_answer": "-e^{\\sqrt{x}}/(\\sqrt{x}(e^{\\sqrt{x}}-1)^2)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xii)",
+    "verdict": "AGREE",
+    "our_answer": "6\\operatorname{cosec} 2x + 4\\cot x + 14x/(x^2+7)",
+    "book_answer": "6 cosec 2x + 4 cot x + 14x/(x^2+7)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xiii)",
+    "verdict": "AGREE",
+    "our_answer": "3\\operatorname{cosec} 3x",
+    "book_answer": "3 cosec 3x"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xiv)",
+    "verdict": "AGREE",
+    "our_answer": "-(5/2)\\operatorname{cosec}(5x/2)",
+    "book_answer": "-(5/2) cosec(5x/2)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xv)",
+    "verdict": "AGREE",
+    "our_answer": "-\\sec x",
+    "book_answer": "-sec x"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xvi)",
+    "verdict": "AGREE",
+    "our_answer": "2\\log 4 + 3x/(x^2+5) - 9x^2/(4x^3-8)",
+    "book_answer": "2 log 4 + 3x/(x^2+5) - 9x^2/(2(2x^3-4))",
+    "evidence": "Apparent disagreement DISSOLVED: 2(2x^3-4) = 4x^3-8, identical denominators. Numeric confirm at x=1.5,2.0,3.0: both match truth to <1e-20 relative."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xvii)",
+    "verdict": "AGREE",
+    "our_answer": "2x - 6/(5-4x) + 2/(7-6x)",
+    "book_answer": "2x - 6/(5-4x) + 2/(7-6x)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xviii)",
+    "verdict": "AGREE",
+    "our_answer": "-\\sin x\\log a - 6x/(x^2-3) - 1/(x\\log x)",
+    "book_answer": "-sin x log a - 6x/(x^2-3) - 1/(x log x)"
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xix)",
+    "verdict": "AGREE",
+    "our_answer": "0",
+    "book_answer": "0",
+    "evidence": "Both agree the function collapses to a constant: 25^{log_5 sec x} - 16^{log_4 tan x} = sec^2 x - tan^2 x = 1, so dy/dx = 0. Numeric d/dx of the raw stem at x=0.5,0.9,1.2 returns ~1e-60 (floating-point zero), confirming the constant."
+  },
+  {
+    "ref": "Ex 1.1 Q.3 (xx)",
+    "verdict": "AGREE",
+    "our_answer": "x(x^2+2)^3(7x^2+38)/(x^2+5)^{3/2}",
+    "book_answer": "x(x^2+2)^3(7x^2+38)/(x^2+5)^{3/2}"
+  },
+  {
+    "ref": "Ex 1.1 Q.4 (i)",
+    "verdict": "AGREE",
+    "our_answer": "-16",
+    "book_answer": "-16"
+  },
+  {
+    "ref": "Ex 1.1 Q.4 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "35",
+    "book_answer": "35"
+  },
+  {
+    "ref": "Ex 1.1 Q.4 (iii)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "20",
+    "book_answer": "-20",
+    "evidence": "Stem AND table SOURCE-VERIFIED on p-11.png: 's(x) = f[9 - f(x)], find s'(4)', with the table rows (2|1|6|-3|4), (4|3|4|5|-6), (6|5|2|-4|7) exactly as we transcribed. Re-derivation: s'(x) = f'[9-f(x)] * d/dx(9-f(x)) = f'[9-f(x)] * (-f'(x)). At x=4: f(4)=3 so 9-f(4)=6; f'(6)=-4; f'(4)=5. s'(4) = (-4)*(-5) = +20. INDEPENDENT THIRD SOURCE: I built concrete quintic Hermite interpolants f,g reproducing every value and derivative in the printed table (verified: f(2)=1,f'(2)=-3,f(4)=3,f'(4)=5,f(6)=5,f'(6)=-4 etc.), then numerically differentiated the ACTUAL composite t -> f(9-f(t)) at t=4: result = +20.0 exactly. The same construction reproduces the book's own (i)=-16, (ii)=35, (iv)=28, so the method is validated on the three rows where we already agree -- it is only (iii) that the book gets wrong. The book appears to have dropped the inner minus sign from d/dx(9-f(x)) = -f'(x), computing f'(6)*f'(4) = -4*5 = -20. Confidence: very high."
+  },
+  {
+    "ref": "Ex 1.1 Q.4 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "28",
+    "book_answer": "28"
+  },
+  {
+    "ref": "Ex 1.1 Q.5",
+    "verdict": "AGREE",
+    "our_answer": "-5",
+    "book_answer": "-5"
+  },
+  {
+    "ref": "Ex 1.1 Q.6",
+    "verdict": "AGREE",
+    "our_answer": "12/5",
+    "book_answer": "12/5"
+  },
+  {
+    "ref": "Ex 1.1 Q.7",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "x = 0, 2\\pi/3, 4\\pi/3",
+    "book_answer": "x = 0 or 2\\pi/3 or 2\\pi",
+    "evidence": "Stem SOURCE-VERIFIED on p-11.png, INCLUDING the domain: 'y = sin 2x - 2 sin x, 0 <= x < 2*pi' -- the right end is a STRICT inequality, so 2*pi is excluded. Re-derivation: dy/dx = 2cos2x - 2cos x = 0 => 2cos^2 x - 1 = cos x => (2cos x + 1)(cos x - 1) = 0 => cos x = -1/2 (x = 2pi/3, 4pi/3) or cos x = 1 (x = 0, 2pi). On 0 <= x < 2pi that is {0, 2pi/3, 4pi/3}. INDEPENDENT THIRD SOURCE: numeric root-scan of dy/dx over [0, 2pi) with 4000 brackets + findroot located exactly three zeros: 0, 2.09439510239 (=2pi/3), 4.18879020479 (=4pi/3) -- matching ours exactly. The book is wrong on TWO counts: (a) it OMITS 4pi/3, a genuine in-domain zero (dy/dx(4pi/3) = 2cos(8pi/3) - 2cos(4pi/3) = 2(-1/2) - 2(-1/2) = 0, numerically -1.7e-40); (b) it LISTS 2pi, which is a zero of dy/dx but lies outside the printed half-open domain 0 <= x < 2pi. Confidence: very high."
+  },
+  {
+    "ref": "Ex 1.1 Q.8",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "e^{2x}+6e^x+14,  e^{x^2+5}+3,  2x,  e^x,  f'[g(x)].g'(x),  2e^{2x}+6e^x,  8,  g'[f(x)].f'(x),  2xe^{x^2+5},  -2e^6",
+    "book_answer": "e^{2x}+6e^x+14,  e^{x^2+5},  2x,  e^x,  f'[g(x)].g'(x),  2e^{2x}+6e^x,  8,  g'[f(x)].f'(x),  2xe^{x^2+5},  -2e^6",
+    "evidence": "Disagreement is confined to blank 2 (g[f(x)]); the other nine blanks agree exactly. Stem SOURCE-VERIFIED on p-12.png: f(x) = x^2+5, g(x) = e^x+3, and the printed HINT BASKET is { f'[g(x)].g'(x), 2e^{2x}+6e^x, 8, g'[f(x)].f'(x), 2xe^{x^2+5}, -2e^6, e^{2x}+6e^x+14, e^{x^2+5}+3, 2x, e^x }. Re-derivation: g[f(x)] = e^{f(x)} + 3 = e^{x^2+5} + 3 = ours; numeric check at x=0.3, 1.1 gives g(f(x)) = 165.389862053 / 500.701251287, matching ours exactly and exceeding the book's printed item by exactly 3. DECISIVE: the book's own hint basket contains 'e^{x^2+5} + 3' and does NOT contain a bare 'e^{x^2+5}', so the key's item matches no available hint -- the activity requires each of the ten hints be used exactly once, and 9 of the key's 10 items match a basket entry verbatim. Read at 2x zoom, the key prints 'e^{x^2+5}' followed by a conspicuous gap before the comma, exactly where '+ 3' belongs. This reads as a typographic drop in the answer key rather than a reasoning error, but as printed the key is wrong. Confidence: high."
+  }
+]

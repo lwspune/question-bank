@@ -1,0 +1,216 @@
+[
+  {
+    "ref": "1.1.3 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "EASY",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.1",
+    "stem": "\\(y = \\sqrt{x^2 + 5}\\)",
+    "solution": "Method 1 :\nLet \\(u = x^2 + 5\\) then \\(y = \\sqrt{u}\\), where \\(y\\) is a differentiable function of \\(u\\) and \\(u\\) is a differentiable function of \\(x\\) then\n\\(\\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\) ..... (I)\nNow, \\(y = \\sqrt{u}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ u\\)\n\\(\\frac{dy}{du} = \\frac{d}{du}(\\sqrt{u}) = \\frac{1}{2\\sqrt{u}}\\) and \\(u = x^2 + 5\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{du}{dx} = \\frac{d}{dx}(x^2 + 5) = 2x\\)\nNow, equation (I) becomes,\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{u}} \\times 2x = \\frac{x}{\\sqrt{x^2 + 5}}\\)\n\nMethod 2 :\nWe have \\(y = \\sqrt{x^2 + 5}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(\\sqrt{x^2 + 5}\\right)\\)\n[Treat \\(x^2 + 5\\) as \\(u\\) in mind and use the formula of derivative of \\(\\sqrt{u}\\)]\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{x^2 + 5}} \\cdot \\frac{d}{dx}(x^2 + 5)\\)\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{x^2 + 5}}(2x)\\)\n\\(\\frac{dy}{dx} = \\frac{x}{\\sqrt{x^2 + 5}}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "EASY",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.1",
+    "stem": "\\(y = \\sin(\\log x)\\)",
+    "solution": "Method 1 :\nLet \\(u = \\log x\\) then \\(y = \\sin u\\), where \\(y\\) is a differentiable function of \\(u\\) and \\(u\\) is a differentiable function of \\(x\\) then\n\\(\\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\) ..... (I)\nNow, \\(y = \\sin u\\)\nDifferentiate \\(w.\\ r.\\ t.\\ u\\)\n\\(\\frac{dy}{du} = \\frac{d}{du}(\\sin u) = \\cos u\\) and \\(u = \\log x\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{du}{dx} = \\frac{d}{dx}(\\log x) = \\frac{1}{x}\\)\nNow, equation (I) becomes,\n\\(\\frac{dy}{dx} = \\cos u \\times \\frac{1}{x} = \\frac{\\cos(\\log x)}{x}\\)\n\nNote : Hence onwards let's use Method 2.\n\nMethod 2 :\nWe have \\(y = \\sin(\\log x)\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}[\\sin(\\log x)]\\)\n[Treat \\(\\log x\\) as \\(u\\) in mind and use the formula of derivative of \\(\\sin u\\)]\n\\(\\frac{dy}{dx} = \\cos(\\log x) \\times \\frac{d}{dx}(\\log x)\\)\n\\(\\frac{dy}{dx} = \\cos(\\log x) \\cdot \\frac{1}{x}\\)\n\\(\\frac{dy}{dx} = \\frac{\\cos(\\log x)}{x}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "EASY",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.1",
+    "stem": "\\(y = e^{\\tan x}\\)",
+    "solution": "\\(y = e^{\\tan x}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}[e^{\\tan x}]\\)\n\\(\\frac{dy}{dx} = e^{\\tan x} \\times \\frac{d}{dx}(\\tan x)\\)\n\\(\\frac{dy}{dx} = e^{\\tan x} \\cdot \\sec^2 x = \\sec^2 x \\cdot e^{\\tan x}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.1 (iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "EASY",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.1",
+    "stem": "\\(\\log(x^5 + 4)\\)",
+    "solution": "Let \\(y = \\log(x^5 + 4)\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[\\log(x^5 + 4)\\right]\\)\n\\(\\frac{dy}{dx} = \\frac{1}{x^5 + 4} \\times \\frac{d}{dx}(x^5 + 4)\\)\n\\(\\frac{dy}{dx} = \\frac{1}{x^5 + 4}(5x^4) = \\frac{5x^4}{x^5 + 4}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.1 (v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "EASY",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.1",
+    "stem": "\\(5^{3\\cos x - 2}\\)",
+    "solution": "Let \\(y = 5^{3\\cos x - 2}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[5^{3\\cos x - 2}\\right]\\)\n\\(\\frac{dy}{dx} = 5^{3\\cos x - 2} \\cdot \\log 5 \\times \\frac{d}{dx}(3\\cos x - 2)\\)\n\\(\\frac{dy}{dx} = -3\\sin x \\cdot 5^{3\\cos x - 2} \\cdot \\log 5\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.1 (vi)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.1",
+    "stem": "\\(y = \\frac{3}{(2x^2 - 7)^5}\\)",
+    "solution": "Let \\(y = \\frac{3}{(2x^2 - 7)^5}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(\\frac{3}{(2x^2 - 7)^5}\\right) = 3\\frac{d}{dx}\\left(\\frac{1}{(2x^2 - 7)^5}\\right)\\)\n\\(= 3 \\times \\frac{-5}{(2x^2 - 7)^6} \\times \\frac{d}{dx}(2x^2 - 7)\\)\n\\(= -\\frac{15}{(2x^2 - 7)^6}(4x)\\)\n\\(\\frac{dy}{dx} = -\\frac{60x}{(2x^2 - 7)^6}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.2 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.2",
+    "stem": "\\(y = \\sqrt{\\sin x^3}\\)",
+    "solution": "\\(y = \\sqrt{\\sin x^3}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(\\sqrt{\\sin x^3}\\right)\\)\n\\(= \\frac{1}{2\\sqrt{\\sin x^3}} \\times \\frac{d}{dx}(\\sin x^3)\\)\n\\(= \\frac{1}{2\\sqrt{\\sin x^3}} \\times \\cos x^3 \\times \\frac{d}{dx}(x^3)\\)\n\\(= \\frac{1}{2\\sqrt{\\sin x^3}} \\times \\cos x^3 \\times (3x^2)\\)\n\\(\\therefore\\ \\frac{dy}{dx} = \\frac{3x^2 \\cos x^3}{2\\sqrt{\\sin x^3}}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.2 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.2",
+    "stem": "\\(y = \\cot^2(x^3)\\)",
+    "solution": "\\(y = \\cot^2(x^3)\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(\\cot^2(x^3)\\right)\\)\n\\(= \\frac{d}{dx}\\left[\\cot(x^3)\\right]^2\\)\n\\(= 2\\cot(x^3)\\frac{d}{dx}\\left[\\cot(x^3)\\right]\\)\n\\(= 2\\cot(x^3)\\left[-\\operatorname{cosec}^2(x^3)\\right]\\frac{d}{dx}(x^3)\\)\n\\(= -2\\cot(x^3)\\operatorname{cosec}^2(x^3)(3x^2)\\)\n\\(\\therefore\\ \\frac{dy}{dx} = -6x^2 \\cot(x^3)\\operatorname{cosec}^2(x^3)\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.2 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.2",
+    "stem": "\\(y = \\log\\left[\\cos(x^5)\\right]\\)",
+    "solution": "\\(y = \\log\\left[\\cos(x^5)\\right]\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(\\log[\\cos(x^5)]\\right)\\)\n\\(= \\frac{1}{\\cos(x^5)} \\cdot \\frac{d}{dx}\\left[\\cos(x^5)\\right]\\)\n\\(= \\frac{1}{\\cos(x^5)}\\left(-\\sin(x^5)\\right)\\frac{d}{dx}(x^5)\\)\n\\(\\therefore\\ \\frac{dy}{dx} = -\\tan(x^5)(5x^4) = -5x^4 \\tan(x^5)\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.2 (iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.2",
+    "stem": "\\(y = (x^3 + 2x - 3)^4 (x + \\cos x)^3\\)",
+    "solution": "\\(y = (x^3 + 2x - 3)^4 (x + \\cos x)^3\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[(x^3 + 2x - 3)^4 (x + \\cos x)^3\\right]\\)\n\\(= (x^3 + 2x - 3)^4 \\cdot \\frac{d}{dx}(x + \\cos x)^3 + (x + \\cos x)^3 \\cdot \\frac{d}{dx}(x^3 + 2x - 3)^4\\)\n\\(= (x^3 + 2x - 3)^4 \\cdot 3(x + \\cos x)^2 \\cdot \\frac{d}{dx}(x + \\cos x) + (x + \\cos x)^3 \\cdot 4(x^3 + 2x - 3)^3 \\cdot \\frac{d}{dx}(x^3 + 2x - 3)\\)\n\\(= (x^3 + 2x - 3)^4 \\cdot 3(x + \\cos x)^2 (1 - \\sin x) + (x + \\cos x)^3 \\cdot 4(x^3 + 2x - 3)^3 (3x^2 + 2)\\)\n\\(\\therefore\\ \\frac{dy}{dx} = 3(x^3 + 2x - 3)^4 (x + \\cos x)^2 (1 - \\sin x) + 4(3x^2 + 2)(x^3 + 2x - 3)^3 (x + \\cos x)^3\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.2 (v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.2",
+    "stem": "\\(y = (1 + \\cos^2 x)^4 \\times \\sqrt{x + \\sqrt{\\tan x}}\\)",
+    "solution": "\\(y = (1 + \\cos^2 x)^4 \\times \\sqrt{x + \\sqrt{\\tan x}}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[(1 + \\cos^2 x)^4 \\times \\sqrt{x + \\sqrt{\\tan x}}\\right]\\)\n\\(= (1 + \\cos^2 x)^4 \\frac{d}{dx}\\left(\\sqrt{x + \\sqrt{\\tan x}}\\right) + \\left(\\sqrt{x + \\sqrt{\\tan x}}\\right)\\frac{d}{dx}(1 + \\cos^2 x)^4\\)\n\\(= (1 + \\cos^2 x)^4 \\cdot \\frac{1}{2\\sqrt{x + \\sqrt{\\tan x}}} \\cdot \\frac{d}{dx}\\left(x + \\sqrt{\\tan x}\\right) + \\left(\\sqrt{x + \\sqrt{\\tan x}}\\right) \\cdot 4(1 + \\cos^2 x)^3 \\frac{d}{dx}\\left[1 + (\\cos x)^2\\right]\\)\n\\(= (1 + \\cos^2 x)^4 \\cdot \\frac{1}{2\\sqrt{x + \\sqrt{\\tan x}}}\\left(1 + \\frac{1}{2\\sqrt{\\tan x}} \\cdot \\frac{d}{dx}(\\tan x)\\right) + \\left(\\sqrt{x + \\sqrt{\\tan x}}\\right) \\cdot 4(1 + \\cos^2 x)^3 (2\\cos x)\\frac{d}{dx}(\\cos x)\\)\n\\(= (1 + \\cos^2 x)^4 \\cdot \\frac{1}{2\\sqrt{x + \\sqrt{\\tan x}}}\\left(1 + \\frac{\\sec^2 x}{2\\sqrt{\\tan x}}\\right) + \\left(\\sqrt{x + \\sqrt{\\tan x}}\\right) \\cdot 4(1 + \\cos^2 x)^3 (2\\cos x)(-\\sin x)\\)\n\\(= (1 + \\cos^2 x)^4 \\cdot \\frac{1}{2\\sqrt{x + \\sqrt{\\tan x}}}\\left(\\frac{2\\sqrt{\\tan x} + \\sec^2 x}{2\\sqrt{\\tan x}}\\right) - \\left(\\sqrt{x + \\sqrt{\\tan x}}\\right) \\cdot 4(1 + \\cos^2 x)^3 (2\\sin x \\cos x)\\)\n\\(\\frac{dy}{dx} = \\frac{(1 + \\cos^2 x)^4 (2\\sqrt{\\tan x} + \\sec^2 x)}{4\\sqrt{\\tan x}\\sqrt{x + \\sqrt{\\tan x}}} - 4\\sin 2x (1 + \\cos^2 x)^3 \\sqrt{x + \\sqrt{\\tan x}}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.3 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.3",
+    "stem": "\\(y = \\log_3(\\log_5 x)\\)",
+    "solution": "\\(y = \\log_3(\\log_5 x)\\)\n\\(= \\log_3\\left(\\frac{\\log x}{\\log 5}\\right) = \\log_3(\\log x) - \\log_3(\\log 5)\\)\n\\(\\therefore\\ y = \\frac{\\log(\\log x)}{\\log 3} - \\log_3(\\log 5)\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[\\frac{\\log(\\log x)}{\\log 3} - \\log_3(\\log 5)\\right]\\)\n\\(= \\frac{1}{\\log 3}\\frac{d}{dx}[\\log(\\log x)] - \\frac{d}{dx}[\\log_3(\\log 5)]\\)\n\\(= \\frac{1}{\\log 3} \\times \\frac{1}{\\log x}\\frac{d}{dx}(\\log x) - 0\\)  [Note that \\(\\log_3(\\log 5)\\) is constant]\n\\(= \\frac{1}{\\log 3} \\times \\frac{1}{\\log x} \\times \\frac{1}{x}\\)\n\\(\\therefore\\ \\frac{dy}{dx} = \\frac{1}{x \\log x \\log 3}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.3 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.3",
+    "stem": "\\(y = \\log\\left[e^{3x} \\cdot \\frac{(3x - 4)^{\\frac{2}{3}}}{\\sqrt[3]{2x + 5}}\\right]\\)",
+    "solution": "\\(y = \\log\\left[e^{3x} \\cdot \\frac{(3x - 4)^{\\frac{2}{3}}}{\\sqrt[3]{2x + 5}}\\right] = \\log\\left[\\frac{e^{3x} \\cdot (3x - 4)^{\\frac{2}{3}}}{(2x + 5)^{\\frac{1}{3}}}\\right]\\)\n\\(= \\log\\left[e^{3x} \\cdot (3x - 4)^{\\frac{2}{3}}\\right] - \\log\\left[(2x + 5)^{\\frac{1}{3}}\\right]\\)\n\\(= \\log e^{3x} + \\log(3x - 4)^{\\frac{2}{3}} - \\log(2x + 5)^{\\frac{1}{3}}\\)\n\\(\\therefore\\ y = 3x + \\frac{2}{3}\\log(3x - 4) - \\frac{1}{3}\\log(2x + 5)\\)  [\\(\\because \\log e = 1\\)]\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[3x + \\frac{2}{3}\\log(3x - 4) - \\frac{1}{3}\\log(2x + 5)\\right]\\)\n\\(= 3\\frac{d}{dx}(x) + \\frac{2}{3} \\cdot \\frac{d}{dx}[\\log(3x - 4)] - \\frac{1}{3} \\cdot \\frac{d}{dx}[\\log(2x + 5)]\\)\n\\(= 3(1) + \\frac{2}{3} \\cdot \\frac{1}{3x - 4} \\cdot \\frac{d}{dx}(3x - 4) - \\frac{1}{3} \\cdot \\frac{1}{2x + 5} \\cdot \\frac{d}{dx}(2x + 5)\\)\n\\(= 3(1) + \\frac{2}{3} \\cdot \\frac{1}{3x - 4} \\cdot (3) - \\frac{1}{3} \\cdot \\frac{1}{2x + 5} \\cdot (2)\\)\n\\(\\therefore\\ \\frac{dy}{dx} = 3 + \\frac{2}{3x - 4} - \\frac{2}{3(2x + 5)}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.3 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.3",
+    "stem": "\\(y = \\log\\left[\\sqrt{\\frac{1 - \\cos\\left(\\frac{3x}{2}\\right)}{1 + \\cos\\left(\\frac{3x}{2}\\right)}}\\right]\\)",
+    "solution": "\\(y = \\log\\left[\\sqrt{\\frac{1 - \\cos\\left(\\frac{3x}{2}\\right)}{1 + \\cos\\left(\\frac{3x}{2}\\right)}}\\right] = \\log\\left[\\sqrt{\\frac{2\\sin^2\\left(\\frac{3x}{4}\\right)}{2\\cos^2\\left(\\frac{3x}{4}\\right)}}\\right]\\)\n\\(\\therefore\\ y = \\log\\left[\\tan\\left(\\frac{3x}{4}\\right)\\right]\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left\\{\\log\\left[\\tan\\left(\\frac{3x}{4}\\right)\\right]\\right\\}\\)\n\\(= \\frac{1}{\\tan\\left(\\frac{3x}{4}\\right)} \\cdot \\frac{d}{dx}\\left[\\tan\\left(\\frac{3x}{4}\\right)\\right]\\)\n\\(= \\cot\\left(\\frac{3x}{4}\\right) \\cdot \\sec^2\\left(\\frac{3x}{4}\\right) \\cdot \\frac{d}{dx}\\left(\\frac{3x}{4}\\right)\\)\n\\(= \\frac{\\cos\\left(\\frac{3x}{4}\\right)}{\\sin\\left(\\frac{3x}{4}\\right)} \\times \\frac{1}{\\cos^2\\left(\\frac{3x}{4}\\right)} \\times \\frac{3}{4}\\)\n\\(= \\frac{3}{2\\left[2\\sin\\left(\\frac{3x}{4}\\right) \\cdot \\cos\\left(\\frac{3x}{4}\\right)\\right]} = \\frac{3}{2\\sin\\left(\\frac{3x}{2}\\right)}\\)\n\\(\\therefore\\ \\frac{dy}{dx} = \\frac{3}{2}\\operatorname{cosec}\\left(\\frac{3x}{2}\\right)\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.3 (iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.3",
+    "stem": "\\(y = \\log\\left[\\frac{x + \\sqrt{x^2 + a^2}}{\\sqrt{x^2 + a^2} - x}\\right]\\)",
+    "solution": "\\(y = \\log\\left[\\frac{x + \\sqrt{x^2 + a^2}}{\\sqrt{x^2 + a^2} - x}\\right] = \\log\\left[\\frac{\\sqrt{x^2 + a^2} + x}{\\sqrt{x^2 + a^2} - x} \\times \\frac{\\sqrt{x^2 + a^2} + x}{\\sqrt{x^2 + a^2} + x}\\right]\\)\n\\(= \\log\\left[\\frac{\\left(\\sqrt{x^2 + a^2} + x\\right)^2}{x^2 + a^2 - x^2}\\right]\\)\n\\(= \\log\\left[\\frac{\\left(\\sqrt{x^2 + a^2} + x\\right)^2}{a^2}\\right]\\)\n\\(= \\log\\left(\\sqrt{x^2 + a^2} + x\\right)^2 - \\log(a^2)\\)\n\\(\\therefore\\ y = 2\\log\\left(\\sqrt{x^2 + a^2} + x\\right) - \\log(a^2)\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left[2\\log\\left(\\sqrt{x^2 + a^2} + x\\right) - \\log(a^2)\\right]\\)\n\\(= 2\\frac{d}{dx}\\left[\\log\\left(\\sqrt{x^2 + a^2} + x\\right)\\right] - \\frac{d}{dx}[\\log(a^2)]\\)\n\\(= 2 \\times \\frac{1}{\\sqrt{x^2 + a^2} + x} \\cdot \\frac{d}{dx}\\left[\\sqrt{x^2 + a^2} + x\\right] - 0\\)\n\\(= \\frac{2}{\\sqrt{x^2 + a^2} + x} \\cdot \\left[\\frac{1}{2\\sqrt{x^2 + a^2}} \\cdot \\frac{d}{dx}(x^2 + a^2) + 1\\right]\\)\n\\(= \\frac{2}{\\sqrt{x^2 + a^2} + x} \\cdot \\left[\\frac{1}{2\\sqrt{x^2 + a^2}}(2x) + 1\\right]\\)\n\\(= \\frac{2}{\\sqrt{x^2 + a^2} + x} \\cdot \\left[\\frac{x + \\sqrt{x^2 + a^2}}{\\sqrt{x^2 + a^2}}\\right]\\)\n\\(\\frac{dy}{dx} = \\frac{2}{\\sqrt{x^2 + a^2}}\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.3 (v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.3",
+    "stem": "\\(y = (4)^{\\log_2(\\sin x)} + (9)^{\\log_3(\\cos x)}\\)",
+    "solution": "\\(y = (4)^{\\log_2(\\sin x)} + (9)^{\\log_3(\\cos x)}\\)\n\\(= \\left(2^2\\right)^{\\log_2(\\sin x)} + \\left(3^2\\right)^{\\log_3(\\cos x)}\\)\n\\(= (2)^{2\\log_2(\\sin x)} + (3)^{2\\log_3(\\cos x)}\\)\n\\(= (2)^{\\log_2(\\sin^2 x)} + (3)^{\\log_3(\\cos^2 x)}\\)  [\\(\\because a^{\\log_a f(x)} = f(x)\\)]\n\\(= \\sin^2 x + \\cos^2 x\\)\n\\(\\therefore\\ y = 1\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}(1) = 0\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.3 (vi)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "context": "Differentiate the following \\(w.\\ r.\\ t.\\ x\\).",
+    "setLabel": "1.1.3 SolvedEx.3",
+    "stem": "\\(y = a^{a^{\\log_a(\\cot x)}}\\)",
+    "solution": "\\(y = a^{a^{\\log_a(\\cot x)}}\\)\n\\(y = a^{\\cot x}\\)  [\\(\\because a^{\\log_a f(x)} = f(x)\\)]\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(a^{\\cot x}\\right)\\)\n\\(= a^{\\cot x}\\log a \\cdot \\frac{d}{dx}(\\cot x)\\)\n\\(= a^{\\cot x}\\log a \\left(-\\operatorname{cosec}^2 x\\right)\\)\n\\(\\frac{dy}{dx} = -\\operatorname{cosec}^2 x \\cdot a^{\\cot x}\\log a\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x) = \\sqrt{7g(x) - 3}\\), \\(g(3) = 4\\) and \\(g'(3) = 5\\), find \\(f'(3)\\).",
+    "solution": "Given that : \\(f(x) = \\sqrt{7g(x) - 3}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(f'(x) = \\frac{d}{dx}\\left(\\sqrt{7g(x) - 3}\\right) = \\frac{1}{2\\sqrt{7g(x) - 3}}\\frac{d}{dx}[7g(x) - 3]\\)\n\\(\\therefore\\ f'(x) = \\frac{7g'(x)}{2\\sqrt{7g(x) - 3}}\\)\nFor \\(x = 3\\), we get\n\\(f'(3) = \\frac{7g'(3)}{2\\sqrt{7g(3) - 3}} = \\frac{35}{2(5)} = \\frac{7}{2}\\)  [Since \\(g(3) = 4\\) and \\(g'(3) = 5\\)]"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "stem": "If \\(F(x) = G\\{3G[5G(x)]\\}\\), \\(G(0) = 0\\) and \\(G'(0) = 3\\), find \\(F'(0)\\).",
+    "solution": "Given that : \\(F(x) = G\\{3G[5G(x)]\\}\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(F'(x) = \\frac{d}{dx}G\\{3G[5G(x)]\\}\\)\n\\(= G'\\{3G[5G(x)]\\}3 \\cdot \\frac{d}{dx}\\left[G[5G(x)]\\right]\\)\n\\(= G'\\{3G[5G(x)]\\}3 \\cdot G'[5G(x)]\\, 5 \\cdot \\frac{d}{dx}[G(x)]\\)\n\\(F'(x) = 15 \\cdot G'\\{3G[5G(x)]\\}G'[5G(x)]\\, G'(x)\\)\nFor \\(x = 0\\), we get\n\\(F'(0) = 15 \\cdot G'\\{3G[5G(0)]\\}G'[5G(0)]\\, G'(0)\\)\n\\(= 15 \\cdot G'[3G(0)]G'(0) \\cdot (3)\\)  [\\(\\because G(0) = 0\\) and \\(G'(0) = 3\\)]\n\\(= 15 \\cdot G'(0)(3)(3) = 15 \\cdot (3)(3)(3) = 405\\)"
+  },
+  {
+    "ref": "1.1.3 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "stem": "Select the appropriate hint from the hint basket and fill in the blank spaces in the following paragraph. [Activity]\n\n\"Let \\(f(x) = \\sin x\\) and \\(g(x) = \\log x\\) then \\(f[g(x)] = \\)______ and \\(g[f(x)] = \\)______. Now \\(f'(x) = \\)______ and \\(g'(x) = \\)______.\nThe derivative of \\(f[g(x)]\\) \\(w.\\ r.\\ t.\\ x\\) in terms of \\(f\\) and \\(g\\) is ______.\nTherefore \\(\\frac{d}{dx}\\left[f[g(x)]\\right] = \\)______ and \\(\\left[\\frac{d}{dx}[f[g(x)]]\\right]_{x=1} = \\)______.\nThe derivative of \\(g[f(x)]\\) \\(w.\\ r.\\ t.\\ x\\) in terms of \\(f\\) and \\(g\\) is ______.\nTherefore \\(\\frac{d}{dx}\\left[g[f(x)]\\right] = \\)______ and \\(\\left[\\frac{d}{dx}[g[f(x)]]\\right]_{x=\\frac{\\pi}{3}} = \\)______.\"\n\nHint basket : \\(\\left\\{f'[g(x)] \\cdot g'(x),\\ \\frac{\\cos(\\log x)}{x},\\ 1,\\ g'[f(x)] \\cdot f'(x),\\ \\cot x,\\ \\sqrt{3},\\ \\sin(\\log x),\\ \\log(\\sin x),\\ \\cos x,\\ \\frac{1}{x}\\right\\}\\)",
+    "solution": "[Textbook misprint: the activity asks for the derivative at \\(x=\\frac{\\pi}{3}\\), where \\(\\cot\\frac{\\pi}{3}=\\frac{1}{\\sqrt{3}}\\) — but the hint basket offers only \\(\\sqrt{3}\\), and the book's own solution ends with \\(\\sqrt{3}\\). The evaluation point should read \\(x=\\frac{\\pi}{6}\\), for which \\(\\cot\\frac{\\pi}{6}=\\sqrt{3}\\).]\n\n\\(\\sin(\\log x)\\), \\(\\log(\\sin x)\\), \\(\\cos x\\), \\(\\frac{1}{x}\\), \\(f'[g(x)] \\cdot g'(x)\\), \\(\\frac{\\cos(\\log x)}{x}\\), \\(1\\), \\(g'[f(x)] \\cdot f'(x)\\), \\(\\cot x\\), \\(\\sqrt{3}\\)."
+  }
+]

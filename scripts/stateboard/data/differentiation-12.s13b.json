@@ -1,0 +1,80 @@
+[
+  {
+    "ref": "1.3.3 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "EASY",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.3.3 SolvedEx.1",
+    "stem": "\\(x^5 + xy^3 + x^2y + y^4 = 4\\)",
+    "solution": "Given that : \\(x^5 + xy^3 + x^2y + y^4 = 4\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(x^5) + \\frac{d}{dx}(xy^3) + \\frac{d}{dx}(x^2y) + \\frac{d}{dx}(y^4) = \\frac{d}{dx}(4)\\)\n\\(5x^4 + x\\frac{d}{dx}(y^3) + y^3\\frac{d}{dx}(x) + x^2\\frac{d}{dx}(y) + y\\frac{d}{dx}(x^2) + 4y^3\\frac{d}{dx}(y) = 0\\)\n\\(5x^4 + x(3y^2)\\frac{dy}{dx} + y^3(1) + x^2\\frac{dy}{dx} + y(2x) + 4y^3\\frac{dy}{dx} = 0\\)\n\\(x^2\\frac{dy}{dx} + 3xy^2\\frac{dy}{dx} + 4y^3\\frac{dy}{dx} = -5x^4 - 2xy - y^3\\)\n\\((x^2 + 3xy^2 + 4y^3)\\frac{dy}{dx} = -(5x^4 + 2xy + y^3)\\)\n\\(\\therefore \\frac{dy}{dx} = -\\frac{5x^4 + 2xy + y^3}{x^2 + 3xy^2 + 4y^3}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.3.3 SolvedEx.1",
+    "stem": "\\(y^3 + \\cos(xy) = x^2 - \\sin(x + y)\\)",
+    "solution": "Given that : \\(y^3 + \\cos(xy) = x^2 - \\sin(x + y)\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(y^3) + \\frac{d}{dx}[\\cos(xy)] = \\frac{d}{dx}(x^2) - \\frac{d}{dx}[\\sin(x + y)]\\)\n\\(3y^2\\frac{d}{dx}(y) - \\sin(xy)\\frac{d}{dx}(xy) = 2x - \\cos(x + y)\\frac{d}{dx}(x + y)\\)\n\\(3y^2\\frac{dy}{dx} - \\sin(xy)\\left[x\\frac{dy}{dx} + y(1)\\right] = 2x - \\cos(x + y)\\left[1 + \\frac{dy}{dx}\\right]\\)\n\\(3y^2\\frac{dy}{dx} - x\\sin(xy)\\frac{dy}{dx} - y\\sin(xy) = 2x - \\cos(x + y) - \\cos(x + y)\\frac{dy}{dx}\\)\n\\(3y^2\\frac{dy}{dx} - x\\sin(xy)\\frac{dy}{dx} + \\cos(x + y)\\frac{dy}{dx} = 2x + y\\sin(xy) - \\cos(x + y)\\)\n\\([3y^2 - x\\sin(xy) + \\cos(x + y)]\\frac{dy}{dx} = 2x + y\\sin(xy) - \\cos(x + y)\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{2x + y\\sin(xy) - \\cos(x + y)}{3y^2 - x\\sin(xy) + \\cos(x + y)}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.1 (iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "context": "Find \\(\\frac{dy}{dx}\\) if",
+    "setLabel": "1.3.3 SolvedEx.1",
+    "stem": "\\(x^2 + e^{xy} = y^2 + \\log(x + y)\\)",
+    "solution": "Given that : \\(x^2 + e^{xy} = y^2 + \\log(x + y)\\)\nRecall that \\(\\frac{d}{dx}g(f(x)) = g'(f(x)) \\cdot \\frac{d}{dx}f(x)\\)\nDifferentiate w. r. t. x.\n\\(\\frac{d}{dx}(x^2) + \\frac{d}{dx}[e^{xy}] = \\frac{d}{dx}(y^2) + \\frac{d}{dx}[\\log(x + y)]\\)\n\\(2x + e^{xy}\\frac{d}{dx}(xy) = 2y\\frac{dy}{dx} + \\frac{1}{x + y}\\frac{d}{dx}(x + y)\\)\n\\(2x + e^{xy}\\left[x\\frac{dy}{dx} + y(1)\\right] = 2y\\frac{dy}{dx} + \\frac{1}{x + y}\\left[1 + \\frac{dy}{dx}\\right]\\)\n\\(2x + xe^{xy}\\frac{dy}{dx} + ye^{xy} = 2y\\frac{dy}{dx} + \\frac{1}{x + y} + \\frac{1}{x + y} \\cdot \\frac{dy}{dx}\\)\n\\(2x + ye^{xy} - \\frac{1}{x + y} = 2y\\frac{dy}{dx} - xe^{xy}\\frac{dy}{dx} + \\frac{1}{x + y} \\cdot \\frac{dy}{dx}\\)\n\\(2x + ye^{xy} - \\frac{1}{x + y} = \\left[2y - xe^{xy} + \\frac{1}{x + y}\\right]\\frac{dy}{dx}\\)\n\\(\\frac{2x(x + y) + ye^{xy}(x + y) - 1}{x + y} = \\left[\\frac{2y(x + y) - xe^{xy}(x + y) + 1}{x + y}\\right]\\frac{dy}{dx}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{2x(x + y) + ye^{xy}(x + y) - 1}{2y(x + y) - xe^{xy}(x + y) + 1}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(x^m \\cdot y^n = (x + y)^{m + n}\\), then prove that \\(\\frac{dy}{dx} = \\frac{y}{x}\\).",
+    "solution": "[Textbook misprint: the printed stem reads \"Find \\(x^m\\cdot y^n=(x+y)^{m+n}\\), then prove that…\", which is meaningless with a \"then prove that\" clause. It should read \"If\".]\n\nGiven that : \\(x^m \\cdot y^n = (x + y)^{m + n}\\)\nTaking log on both the sides, we get\n\\(\\log[x^m \\cdot y^n] = \\log[(x + y)^{m + n}]\\)\n\\(m\\log x + n\\log y = (m + n)\\log(x + y)\\)\nDifferentiate w. r. t. x.\n\\(m\\frac{d}{dx}(\\log x) + n\\frac{d}{dx}(\\log y) = (m + n)\\frac{d}{dx}[\\log(x + y)]\\)\n\\(\\frac{m}{x} + \\frac{n}{y} \\cdot \\frac{dy}{dx} = \\frac{m + n}{x + y} \\cdot \\frac{d}{dx}(x + y)\\)\n\\(\\frac{m}{x} + \\frac{n}{y} \\cdot \\frac{dy}{dx} = \\frac{m + n}{x + y} \\cdot \\left[1 + \\frac{dy}{dx}\\right]\\)\n\\(\\frac{m}{x} + \\frac{n}{y} \\cdot \\frac{dy}{dx} = \\frac{m + n}{x + y} + \\frac{m + n}{x + y} \\cdot \\frac{dy}{dx}\\)\n\\(\\frac{n}{y} \\cdot \\frac{dy}{dx} - \\frac{m + n}{x + y} \\cdot \\frac{dy}{dx} = \\frac{m + n}{x + y} - \\frac{m}{x}\\)\n\\(\\left[\\frac{n}{y} - \\frac{m + n}{x + y}\\right]\\frac{dy}{dx} = \\frac{m + n}{x + y} - \\frac{m}{x}\\)\n\\(\\left[\\frac{n(x + y) - (m + n)y}{y(x + y)}\\right]\\frac{dy}{dx} = \\left[\\frac{(m + n)x - m(x + y)}{x(x + y)}\\right]\\)\n\\(\\left[\\frac{nx + ny - my - ny}{y}\\right]\\frac{dy}{dx} = \\frac{mx + nx - mx - my}{x}\\)\n\\(\\left[\\frac{nx - my}{y}\\right]\\frac{dy}{dx} = \\frac{nx - my}{x}\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{y}{x}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(\\sin\\left(\\frac{px^m - qy^m}{px^m + qy^m}\\right) = r\\), then show that \\(\\frac{dy}{dx} = \\frac{y}{x}\\), where \\(r\\) is a constant.",
+    "solution": "[Textbook misprint: the book's printed solution substitutes \\(s=\\frac{p(1-t)}{q(1-t)}\\); the denominator should be \\(q(1+t)\\), as the line above it derives. The result is unaffected because \\(s\\) cancels.]\n\nGiven that : \\(\\sin\\left(\\frac{px^m - qy^m}{px^m + qy^m}\\right) = r\\)\n\\(\\frac{px^m - qy^m}{px^m + qy^m} = \\sin^{-1} r\\)\n\\(\\frac{px^m - qy^m}{px^m + qy^m} = t\\) \\(\\ldots\\ldots\\) [ Let \\(t = \\sin^{-1} r\\) ]\n\\(px^m - qy^m = ptx^m + qty^m\\)\n\\(px^m - ptx^m = qy^m + qty^m\\)\n\\(p(1 - t)x^m = q(1 + t)y^m\\)\n\\(y^m = \\left(\\frac{p(1 - t)}{q(1 + t)}\\right)x^m\\)\n\\(y^m = s \\cdot x^m\\) \\(\\ldots\\ldots\\) (I) \\(\\ldots\\ldots\\) [ Let \\(s = \\left(\\frac{p(1 - t)}{q(1 - t)}\\right)\\) ]\nDifferentiate w. r. t. x\n\\(\\frac{d}{dx}(y^m) = s\\frac{d}{dx}(x^m)\\)\n\\(my^{m - 1}\\frac{dy}{dx} = s \\cdot mx^{m - 1}\\)\n\\(\\frac{dy}{dx} = s \\cdot \\frac{x^{m - 1}}{y^{m - 1}}\\)\n\\(\\frac{dy}{dx} = \\frac{y^m}{x^m} \\times \\frac{x^{m - 1}}{y^{m - 1}}\\) \\(\\ldots\\ldots\\) [ From (I) ]\n\\(\\therefore \\frac{dy}{dx} = \\frac{y}{x}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(\\sec^{-1}\\left(\\frac{x^3 + y^3}{x^3 - y^3}\\right) = 2a\\), then show that \\(\\frac{dy}{dx} = \\frac{x^2\\tan^2 a}{y^2}\\), where \\(a\\) is a constant.",
+    "solution": "Given that : \\(\\sec^{-1}\\left(\\frac{x^3 + y^3}{x^3 - y^3}\\right) = 2a\\) \\(\\ldots\\ldots\\) [We will not eliminate \\(a\\), as answer contains \\(a\\)]\n\\(\\therefore \\cos^{-1}\\left(\\frac{x^3 - y^3}{x^3 + y^3}\\right) = 2a\\)\n\\(\\frac{x^3 - y^3}{x^3 + y^3} = \\cos 2a\\)\n\\(x^3 - y^3 = x^3\\cos 2a + y^3\\cos 2a\\)\n\\(x^3 - x^3\\cos 2a = y^3\\cos 2a + y^3\\)\n\\(x^3(1 - \\cos 2a) = y^3(1 + \\cos 2a)\\)\n\\(y^3 = \\left(\\frac{1 - \\cos 2a}{1 + \\cos 2a}\\right)x^3\\)\n\\(y^3 = \\left(\\frac{2\\sin^2 a}{2\\cos^2 a}\\right)x^3\\)\n\\(y^3 = (\\tan^2 a)x^3\\) \\(\\ldots\\ldots\\) (I)\nDifferentiate w. r. t. x\n\\(\\frac{d}{dx}(y^3) = (\\tan^2 a)\\frac{d}{dx}(x^3)\\)\n\\(3y^2\\frac{dy}{dx} = (\\tan^2 a)3x^2\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{x^2\\tan^2 a}{y^2}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(y = \\sqrt{\\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\ldots \\infty}}}\\), then show that \\(\\frac{dy}{dx} = \\frac{\\sec^2 x}{2y - 1}\\).",
+    "solution": "Given that : \\(y = \\sqrt{\\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\ldots \\infty}}}\\) \\(\\ldots\\ldots\\) (I)\nSquaring both sides, we get\n\\(y^2 = \\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\ldots \\infty}}\\), which is same as\n\\(y^2 = \\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\ldots \\infty}}}\\)\n\\(y^2 = \\tan x + y\\) \\(\\ldots\\ldots\\) [ From (I) ]\nDifferentiate w. r. t. x\n\\(\\frac{d}{dx}(y^2) = \\frac{d}{dx}(\\tan x) + \\frac{dy}{dx}\\)\n\\(2y\\frac{dy}{dx} - \\frac{dy}{dx} = \\sec^2 x\\)\n\\((2y - 1)\\frac{dy}{dx} = \\sec^2 x\\)\n\\(\\therefore \\frac{dy}{dx} = \\frac{\\sec^2 x}{2y - 1}\\)"
+  },
+  {
+    "ref": "1.3.3 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(\\sqrt{1 - x^2} + \\sqrt{1 - y^2} = a(x - y)\\), then show that \\(\\frac{dy}{dx} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\).",
+    "solution": "Given that : \\(\\sqrt{1 - x^2} + \\sqrt{1 - y^2} = a(x - y)\\) \\(\\ldots\\ldots\\) (I)\nPut \\(x = \\sin\\alpha\\), \\(y = \\sin\\beta\\)\n\\(\\therefore \\alpha = \\sin^{-1} x\\), \\(\\beta = \\sin^{-1} y\\)\nEquation (I) becomes,\n\\(\\sqrt{1 - \\sin^2\\alpha} + \\sqrt{1 - \\sin^2\\beta} = a(\\sin\\alpha - \\sin\\beta)\\)\n\\(\\cos\\alpha + \\cos\\beta = a(\\sin\\alpha - \\sin\\beta)\\)\n\\(2\\cos\\left(\\frac{\\alpha + \\beta}{2}\\right)\\cos\\left(\\frac{\\alpha - \\beta}{2}\\right) = 2a\\cos\\left(\\frac{\\alpha + \\beta}{2}\\right)\\sin\\left(\\frac{\\alpha - \\beta}{2}\\right)\\)\n\\(\\cos\\left(\\frac{\\alpha - \\beta}{2}\\right) = a\\sin\\left(\\frac{\\alpha + \\beta}{2}\\right) \\Rightarrow \\cot\\left(\\frac{\\alpha - \\beta}{2}\\right) = a\\)\n\\(\\frac{\\alpha - \\beta}{2} = \\cot^{-1} a\\) \\(\\therefore \\alpha - \\beta = 2\\cot^{-1} a\\)\n\\(\\therefore \\sin^{-1} x - \\sin^{-1} y = 2\\cot^{-1} a\\)\nDifferentiate w. r. t. x\n\\(\\frac{d}{dx}(\\sin^{-1} x) - \\frac{d}{dx}(\\sin^{-1} y) = \\frac{d}{dx}(2\\cot^{-1} a)\\)\n\\(\\frac{1}{\\sqrt{1 - x^2}} - \\frac{1}{\\sqrt{1 - y^2}} \\cdot \\frac{dy}{dx} = 0\\)\n\\(\\therefore \\frac{dy}{dx} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\)"
+  }
+]

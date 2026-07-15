@@ -210,6 +210,40 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.1 Differentiation (12th, Part 2). 64pp — the largest State Board chapter
+  //    yet. The methods spine of Part-02 calculus; feeds Ch.2 Application of
+  //    Derivatives. 5 teaching sections, each ending in its own exercise:
+  //    §1.1 Composite functions / chain rule p1-11 (Ex 1.1 @p10) · §1.2 Inverse
+  //    functions + inverse trig p12-28 (Ex 1.2 @p28) · §1.3 Logarithmic + implicit
+  //    p29-39 (Ex 1.3 @p38) · §1.4 Parametric + derivative-wrt-another p40-47
+  //    (Ex 1.4 @p47) · §1.5 Higher-order derivatives p48-59 (Ex 1.5 @p59) ·
+  //    Miscellaneous Exercise 1 p60-63 (I = 12 MCQ, II = subjective).
+  //    §1.2.1 "Geometrical meaning of Derivative" is motivating PROSE with no
+  //    questions of its own (p12-13 flows straight into 1.2.2) → deliberately NOT
+  //    a subtopic; each exercise block is method-pure, so subtopics are finer-
+  //    grained than the MHT-CET Differentiation notes chapter. Two [Activity]
+  //    fill-in-the-blank questions (Ex 1.1 Q8 + one more) — a shape earlier
+  //    chapters didn't have; transcribe faithfully as subjective.
+  //    Text layer flattens 2-D math (dy/dx, fractions) → VISION.
+  "differentiation-12": {
+    id: "differentiation-12",
+    chapterName: "Differentiation",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Differentiation.pdf",
+    pdf: cls12("Part 02/Ch_01_DIFFERENTIATION.pdf"),
+    note: "Maharashtra State Board (Class 12) — Differentiation (Balbharati textbook)",
+    subtopics: [
+      "Derivatives of Composite Functions (Chain Rule)",
+      "Derivatives of Inverse Functions",
+      "Derivatives of Inverse Trigonometric Functions",
+      "Logarithmic Differentiation",
+      "Derivatives of Implicit Functions",
+      "Derivatives of Parametric Functions",
+      "Differentiation of One Function with respect to Another",
+      "Higher Order Derivatives",
+    ],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).
