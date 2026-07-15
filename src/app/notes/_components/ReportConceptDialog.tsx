@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Flag, Mail } from "lucide-react";
 import { toast } from "sonner";
+import { CONTACT_EMAIL } from "@/lib/brand";
 import {
   Dialog,
   DialogClose,
@@ -37,7 +38,7 @@ type Props = {
   conceptName: string;
 };
 
-const REPORT_EMAIL = "connect.lwspune@gmail.com";
+const REPORT_EMAIL = CONTACT_EMAIL;
 
 export default function ReportConceptDialog({
   subtopicSlug,

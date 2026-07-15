@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AppHeader from "@/components/AppHeader";
+import { CONTACT_EMAIL } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const CONTACT = "connect.lwspune@gmail.com";
+const CONTACT = CONTACT_EMAIL;
 
 export default function PrivacyPage() {
   return (
