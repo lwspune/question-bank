@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -42,6 +42,12 @@ import {
   UNASSIGNED_KEY,
 } from "@/lib/papers/template";
 import type { PaperDetail } from "@/lib/papers/admin";
+import {
+  branchesInBatches,
+  batchesInBranch,
+  branchKeyOf,
+  type BatchPick,
+} from "@/lib/batches/validate";
 import { formatUsageLabel, type UsageRef } from "@/lib/papers/usage";
 import type { SectionTemplate } from "@/lib/papers/types";
 import type { QuestionPreview } from "@/lib/questions/query";
@@ -61,6 +67,9 @@ import PaperDownload from "./PaperDownload";
 const SELECT_CLASS =
   "h-8 rounded-md border border-input bg-background px-2 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
+// Branch-filter sentinel: "no branch" = the paper is org-wide (no batch).
+const ORG_WIDE = "__orgwide__";
+
 export default function PaperEditor({
   detail,
   previews,
@@ -76,7 +85,7 @@ export default function PaperEditor({
   exams: { id: string; name: string }[];
   orgMembers: { id: string; label: string }[];
   /** Active org batches for the paper's batch selector (0054). */
-  batches: { id: string; label: string }[];
+  batches: BatchPick[];
 }) {
   const router = useRouter();
   const finalized = detail.status === "finalized";
@@ -141,6 +150,19 @@ export default function PaperEditor({
   const [titleDraft, setTitleDraft] = useState(detail.title);
   const [sectionsOpen, setSectionsOpen] = useState(false);
   const [confirmFinalize, setConfirmFinalize] = useState(false);
+
+  // Branch filter for the batch selector (Option A). Derived from the paper's
+  // saved batch; resyncs after a save (router.refresh re-renders with new detail).
+  const branchOptions = useMemo(() => branchesInBatches(batches), [batches]);
+  const savedBranchKey = useMemo(() => {
+    if (!detail.batchId) return ORG_WIDE;
+    const b = batches.find((x) => x.id === detail.batchId);
+    return b ? branchKeyOf(b) : ORG_WIDE;
+  }, [detail.batchId, batches]);
+  const [branchFilter, setBranchFilter] = useState(savedBranchKey);
+  useEffect(() => setBranchFilter(savedBranchKey), [savedBranchKey]);
+  const branchBatches =
+    branchFilter === ORG_WIDE ? [] : batchesInBranch(batches, branchFilter);
 
   async function run(fn: () => Promise<{ ok: boolean; error?: string }>, okMsg?: string) {
     setBusy(true);
@@ -223,36 +245,69 @@ export default function PaperEditor({
               {progress.targetTotal}
             </span>
           </div>
-          {/* Batch link — drives the per-batch repeat warning in the add panel. */}
-          <div className="mt-2 flex items-center gap-2 text-sm">
+          {/* Branch → batch. The batch drives the per-batch repeat warning; the
+              branch dropdown just filters which batches are offered (Option A). */}
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
             <Users className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
-            <span className="text-muted-foreground">Batch:</span>
             {finalized ? (
-              <span className="font-medium">{detail.batchLabel ?? "None"}</span>
+              <span>
+                <span className="text-muted-foreground">Batch: </span>
+                <span className="font-medium">{detail.batchLabel ?? "None"}</span>
+              </span>
             ) : (
-              <select
-                value={detail.batchId ?? ""}
-                onChange={(e) =>
-                  run(
-                    () => setPaperBatchAction(detail.id, e.target.value || null),
-                    "Batch updated"
-                  )
-                }
-                disabled={busy}
-                className={SELECT_CLASS}
-                aria-label="Paper batch"
-              >
-                <option value="">None (org-wide)</option>
-                {batches.map((b) => (
-                  <option key={b.id} value={b.id}>
-                    {b.label}
-                  </option>
-                ))}
-                {/* Keep an archived/other batch selectable label if it's the current one. */}
-                {detail.batchId && !batches.some((b) => b.id === detail.batchId) && (
-                  <option value={detail.batchId}>{detail.batchLabel}</option>
+              <>
+                <span className="text-muted-foreground">Branch:</span>
+                <select
+                  value={branchFilter}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setBranchFilter(v);
+                    // Choosing "None (org-wide)" clears the batch; switching to a
+                    // real branch just re-filters until you pick a batch.
+                    if (v === ORG_WIDE && detail.batchId) {
+                      run(() => setPaperBatchAction(detail.id, null), "Batch cleared");
+                    }
+                  }}
+                  disabled={busy || branchOptions.length === 0}
+                  className={SELECT_CLASS}
+                  aria-label="Branch filter"
+                >
+                  <option value={ORG_WIDE}>None (org-wide)</option>
+                  {branchOptions.map((br) => (
+                    <option key={br.key} value={br.key}>
+                      {br.name}
+                    </option>
+                  ))}
+                </select>
+                {branchFilter !== ORG_WIDE && (
+                  <>
+                    <span className="text-muted-foreground">Batch:</span>
+                    <select
+                      value={
+                        detail.batchId && branchBatches.some((b) => b.id === detail.batchId)
+                          ? detail.batchId
+                          : ""
+                      }
+                      onChange={(e) =>
+                        run(
+                          () => setPaperBatchAction(detail.id, e.target.value || null),
+                          "Batch updated"
+                        )
+                      }
+                      disabled={busy}
+                      className={SELECT_CLASS}
+                      aria-label="Paper batch"
+                    >
+                      <option value="">Whole branch (no batch)</option>
+                      {branchBatches.map((b) => (
+                        <option key={b.id} value={b.id}>
+                          {b.name}
+                        </option>
+                      ))}
+                    </select>
+                  </>
                 )}
-              </select>
+              </>
             )}
           </div>
         </div>

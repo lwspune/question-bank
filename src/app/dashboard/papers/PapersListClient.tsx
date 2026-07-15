@@ -19,23 +19,35 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { createPaperAction, deletePaperAction } from "./actions";
 import type { PaperListItem } from "@/lib/papers/admin";
+import {
+  branchesInBatches,
+  batchesInBranch,
+  type BatchPick,
+} from "@/lib/batches/validate";
 
 const SELECT_CLASS =
   "h-9 w-full rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+// Branch-filter sentinel: "no branch chosen" = an org-wide paper (no batch).
+const ORG_WIDE = "__orgwide__";
 
 export default function PapersListClient({
   initialPapers,
   batches,
 }: {
   initialPapers: PaperListItem[];
-  batches: { id: string; label: string }[];
+  batches: BatchPick[];
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
   const [title, setTitle] = useState("");
+  const [branchFilter, setBranchFilter] = useState<string>(ORG_WIDE);
   const [batchId, setBatchId] = useState("");
   const [toDelete, setToDelete] = useState<PaperListItem | null>(null);
+
+  const branches = branchesInBatches(batches);
+  const branchBatches = branchFilter === ORG_WIDE ? [] : batchesInBranch(batches, branchFilter);
 
   async function onCreate(e: React.FormEvent) {
     e.preventDefault();
@@ -77,7 +89,15 @@ export default function PapersListClient({
             Manage batches
           </Link>
         </Button>
-        <Button variant="brand" onClick={() => setNewOpen(true)}>
+        <Button
+          variant="brand"
+          onClick={() => {
+            setTitle("");
+            setBranchFilter(ORG_WIDE);
+            setBatchId("");
+            setNewOpen(true);
+          }}
+        >
           <FilePlus2 className="h-4 w-4" aria-hidden />
           New paper
         </Button>
@@ -154,26 +174,48 @@ export default function PapersListClient({
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="paper-batch">Batch (optional)</Label>
+              <Label htmlFor="paper-branch">Branch (optional)</Label>
               <select
-                id="paper-batch"
-                value={batchId}
-                onChange={(e) => setBatchId(e.target.value)}
+                id="paper-branch"
+                value={branchFilter}
+                onChange={(e) => {
+                  setBranchFilter(e.target.value);
+                  setBatchId(""); // batch list changes with the branch
+                }}
                 className={SELECT_CLASS}
-                disabled={busy}
+                disabled={busy || branches.length === 0}
               >
-                <option value="">None (org-wide)</option>
-                {batches.map((b) => (
-                  <option key={b.id} value={b.id}>
-                    {b.label}
+                <option value={ORG_WIDE}>None (org-wide)</option>
+                {branches.map((br) => (
+                  <option key={br.key} value={br.key}>
+                    {br.name}
                   </option>
                 ))}
               </select>
-              <p className="text-xs text-muted-foreground">
-                Linking a batch warns you if a question was already used for that
-                cohort. You can also set this later inside the paper.
-              </p>
             </div>
+            {branchFilter !== ORG_WIDE && (
+              <div className="space-y-1.5">
+                <Label htmlFor="paper-batch">Batch (optional)</Label>
+                <select
+                  id="paper-batch"
+                  value={batchId}
+                  onChange={(e) => setBatchId(e.target.value)}
+                  className={SELECT_CLASS}
+                  disabled={busy}
+                >
+                  <option value="">Whole branch (no specific batch)</option>
+                  {branchBatches.map((b) => (
+                    <option key={b.id} value={b.id}>
+                      {b.name}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs text-muted-foreground">
+                  Linking a batch warns you if a question was already used for that
+                  cohort. You can also set this later inside the paper.
+                </p>
+              </div>
+            )}
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setNewOpen(false)} disabled={busy}>
                 Cancel

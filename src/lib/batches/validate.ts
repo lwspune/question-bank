@@ -53,3 +53,31 @@ export function splitBatches<T extends { archived: boolean; branchName: string |
 export function formatBatchLabel(b: Pick<Batch, "name" | "branchName">): string {
   return b.branchName ? `${b.branchName} · ${b.name}` : b.name;
 }
+
+// ── branch filter for the paper builder (Option A: branch cascades → batch) ──
+
+/** Minimal batch shape the branch filter needs. */
+export type BatchPick = { id: string; name: string; branchId: string | null; branchName: string | null };
+
+/** Stable filter key for a batch's branch ("" = unbranched bucket). */
+export const branchKeyOf = (b: { branchId: string | null }): string => b.branchId ?? "";
+
+/**
+ * The distinct branches present in a batch list, for the branch-filter dropdown.
+ * Unbranched batches collapse to a single "No branch" entry (key ""). Name-sorted.
+ */
+export function branchesInBatches(batches: BatchPick[]): { key: string; name: string }[] {
+  const seen = new Map<string, string>();
+  for (const b of batches) {
+    const key = branchKeyOf(b);
+    if (!seen.has(key)) seen.set(key, b.branchName ?? "No branch");
+  }
+  return Array.from(seen, ([key, name]) => ({ key, name })).sort((a, b) =>
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+  );
+}
+
+/** The batches belonging to one branch (by filter key). */
+export function batchesInBranch(batches: BatchPick[], branchKey: string): BatchPick[] {
+  return batches.filter((b) => branchKeyOf(b) === branchKey);
+}
