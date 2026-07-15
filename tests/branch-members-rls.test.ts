@@ -42,6 +42,7 @@ describe.skipIf(!HAS_ENV)("branch-scoped teacher access (migration 0057)", () =>
   let batchY: string;
   let paperX: string;
   let paperY: string;
+  let qId: string;
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -97,6 +98,15 @@ describe.skipIf(!HAS_ENV)("branch-scoped teacher access (migration 0057)", () =>
     });
     paperX = await createPaper(adminClient, { orgId, createdBy: adminId, title: `PX ${RUN_ID}`, batchId: batchX });
     paperY = await createPaper(adminClient, { orgId, createdBy: adminId, title: `PY ${RUN_ID}`, batchId: batchY });
+
+    // Any real PUBLIC question id satisfies the paper_questions FK.
+    const { data: q } = await admin
+      .from("questions")
+      .select("id")
+      .eq("visibility", "PUBLIC")
+      .limit(1)
+      .maybeSingle();
+    qId = q!.id as string;
   });
 
   afterAll(async () => {
@@ -135,5 +145,25 @@ describe.skipIf(!HAS_ENV)("branch-scoped teacher access (migration 0057)", () =>
   it("a TEACHER cannot write branch_members directly (admin-only)", async () => {
     const { error } = await teacherX.from("branch_members").insert({ user_id: tyId, branch_id: branchX });
     expect(error).not.toBeNull();
+  });
+
+  // 0058: the paper_questions write policy is branch-scoped too (blind-write guard).
+  it("TEACHER X cannot add a question to an out-of-branch paper (paper_questions)", async () => {
+    const { error } = await teacherX
+      .from("paper_questions")
+      .insert({ paper_id: paperY, question_id: qId });
+    expect(error).not.toBeNull();
+    const { count } = await admin
+      .from("paper_questions")
+      .select("*", { count: "exact", head: true })
+      .eq("paper_id", paperY);
+    expect(count ?? 0).toBe(0);
+  });
+
+  it("TEACHER X CAN add a question to their own branch's paper", async () => {
+    const { error } = await teacherX
+      .from("paper_questions")
+      .insert({ paper_id: paperX, question_id: qId });
+    expect(error).toBeNull();
   });
 });
