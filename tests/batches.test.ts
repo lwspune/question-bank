@@ -7,6 +7,9 @@ import {
   validateBatchInput,
   splitBatches,
   formatBatchLabel,
+  branchesInBatches,
+  batchesInBranch,
+  type BatchPick,
   MAX_NAME,
 } from "@/lib/batches/validate";
 import type { Batch } from "@/lib/batches/types";
@@ -78,5 +81,28 @@ describe("formatBatchLabel", () => {
   });
   it("shows just the name when unbranched", () => {
     expect(formatBatchLabel({ name: "Morning", branchName: null })).toBe("Morning");
+  });
+});
+
+describe("branch filter (branchesInBatches / batchesInBranch)", () => {
+  const picks: BatchPick[] = [
+    { id: "1", name: "M", branchId: "brB", branchName: "Kothrud" },
+    { id: "2", name: "E", branchId: "brA", branchName: "FC Road" },
+    { id: "3", name: "N", branchId: "brA", branchName: "FC Road" },
+    { id: "4", name: "X", branchId: null, branchName: null },
+  ];
+
+  it("lists distinct branches, name-sorted, with an unbranched bucket", () => {
+    expect(branchesInBatches(picks)).toEqual([
+      { key: "brA", name: "FC Road" },
+      { key: "brB", name: "Kothrud" },
+      { key: "", name: "No branch" },
+    ]);
+  });
+
+  it("filters batches to one branch (and the unbranched key)", () => {
+    expect(batchesInBranch(picks, "brA").map((b) => b.id)).toEqual(["2", "3"]);
+    expect(batchesInBranch(picks, "brB").map((b) => b.id)).toEqual(["1"]);
+    expect(batchesInBranch(picks, "").map((b) => b.id)).toEqual(["4"]);
   });
 });

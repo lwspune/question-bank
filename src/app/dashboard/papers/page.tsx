@@ -4,7 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { listPapers } from "@/lib/papers/admin";
 import { listBatches } from "@/lib/batches/admin";
-import { splitBatches, formatBatchLabel } from "@/lib/batches/validate";
+import { splitBatches } from "@/lib/batches/validate";
 import PapersListClient from "./PapersListClient";
 
 export const dynamic = "force-dynamic";
@@ -33,7 +33,12 @@ export default async function PapersPage() {
 
         <PapersListClient
           initialPapers={papers}
-          batches={batches.map((b) => ({ id: b.id, label: formatBatchLabel(b) }))}
+          batches={batches.map((b) => ({
+            id: b.id,
+            name: b.name,
+            branchId: b.branchId,
+            branchName: b.branchName,
+          }))}
         />
       </main>
     </>

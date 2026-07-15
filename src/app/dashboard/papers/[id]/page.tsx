@@ -5,7 +5,7 @@ import AppHeader from "@/components/AppHeader";
 import { getPaperDetail } from "@/lib/papers/admin";
 import { getQuestionUsage } from "@/lib/papers/usage";
 import { listBatches } from "@/lib/batches/admin";
-import { splitBatches, formatBatchLabel } from "@/lib/batches/validate";
+import { splitBatches } from "@/lib/batches/validate";
 import { listMembers } from "@/lib/members/admin";
 import { queryQuestionPreviewsByIds } from "@/lib/questions/query";
 import PaperEditor from "./PaperEditor";
@@ -58,7 +58,12 @@ export default async function PaperEditorPage({
           usage={usage}
           exams={(exams ?? []) as { id: string; name: string }[]}
           orgMembers={orgMembers}
-          batches={batches.map((b) => ({ id: b.id, label: formatBatchLabel(b) }))}
+          batches={batches.map((b) => ({
+            id: b.id,
+            name: b.name,
+            branchId: b.branchId,
+            branchName: b.branchName,
+          }))}
         />
       </main>
     </>
