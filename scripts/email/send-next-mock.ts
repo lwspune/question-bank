@@ -74,22 +74,28 @@ async function main() {
     return;
   }
 
-  const tokens = await ensureUnsubscribeTokens(db, recipients.map((r) => r.userId));
+  // A DRY RUN MUST NOT WRITE. ensureUnsubscribeTokens upserts a student_profiles
+  // row to mint a token, so it is deferred to the --apply path; the preview
+  // renders subjects against a placeholder token (the subject line doesn't
+  // depend on it). Minting on a dry run silently created profile rows for every
+  // candidate the first time this ran.
+  const DRY_TOKEN = "00000000-0000-0000-0000-000000000000";
+  const tokens = apply
+    ? await ensureUnsubscribeTokens(db, recipients.map((r) => r.userId))
+    : new Map<string, string>();
 
   console.log("");
   console.log("KIND        EMAIL                              MOCK                      SUBJECT");
   console.log("-".repeat(140));
   for (const r of recipients) {
-    const token = tokens.get(r.userId);
-    if (!token) throw new Error(`no unsubscribe token minted for ${r.email}`);
-    const email = buildEmail(r, token);
+    const email = buildEmail(r, tokens.get(r.userId) ?? DRY_TOKEN);
     console.log(
       `${r.kind.padEnd(11)} ${r.email.padEnd(34)} ${r.mock.slug.padEnd(25)} ${email.subject}`
     );
   }
 
   if (!apply) {
-    console.log(`\nDry run complete. Re-run with --apply to send these ${recipients.length}.\n`);
+    console.log(`\nDry run complete (no writes). Re-run with --apply to send these ${recipients.length}.\n`);
     return;
   }
 
@@ -103,7 +109,9 @@ async function main() {
 
   for (let i = 0; i < recipients.length; i++) {
     const r = recipients[i];
-    const email = buildEmail(r, tokens.get(r.userId)!);
+    const token = tokens.get(r.userId);
+    if (!token) throw new Error(`no unsubscribe token minted for ${r.email}`);
+    const email = buildEmail(r, token);
 
     if (i > 0) await sleep(THROTTLE_MS);
 
@@ -112,6 +120,7 @@ async function main() {
       subject: email.subject,
       text: email.text,
       html: email.html,
+      replyTo: email.replyTo,
       headers: email.headers,
     });
 
