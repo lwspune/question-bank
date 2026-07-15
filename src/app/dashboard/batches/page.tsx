@@ -16,9 +16,23 @@ export default async function BatchesPage() {
   if (!member) redirect("/login");
 
   const client = createSupabaseServerClient();
+  const isAdmin = member.role === "ADMIN";
   const { active, archived } = splitBatches(await listBatches(client));
-  const { active: branches } = splitBranches(await listBranches(client));
+  const { active: allBranches } = splitBranches(await listBranches(client));
   const { data: exams } = await client.from("exams").select("id, name").order("name");
+
+  // The branch picker shows only branches the caller can file a batch under:
+  // an admin gets all org branches; a teacher only the ones they're assigned to
+  // (RLS would reject an insert under an unassigned branch — filter it out up front).
+  let branches = allBranches;
+  if (!isAdmin) {
+    const { data: mine } = await client
+      .from("branch_members")
+      .select("branch_id")
+      .eq("user_id", member.user.id);
+    const myIds = new Set((mine ?? []).map((r) => r.branch_id as string));
+    branches = allBranches.filter((b) => myIds.has(b.id));
+  }
 
   return (
     <>
@@ -37,12 +51,18 @@ export default async function BatchesPage() {
 
         {branches.length === 0 && (
           <div className="rounded-lg border border-dashed bg-muted/40 p-4 text-sm text-muted-foreground">
-            No branches yet. You can still create unbranched batches, or add branches
-            first in{" "}
-            <a href="/dashboard/branches" className="font-medium text-brand-accent underline">
-              Branches
-            </a>
-            .
+            {isAdmin ? (
+              <>
+                No branches yet — add one in{" "}
+                <a href="/dashboard/branches" className="font-medium text-brand-accent underline">
+                  Branches
+                </a>{" "}
+                so batches can be filed under a campus.
+              </>
+            ) : (
+              <>You&apos;re not assigned to any branch yet. Ask your admin to assign you
+              to a branch so you can build papers for it.</>
+            )}
           </div>
         )}
 

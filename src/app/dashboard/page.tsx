@@ -40,9 +40,10 @@ export default async function DashboardPage() {
     getSessionSuperadmin(),
   ]);
 
-  // Teachers don't see the dashboard — they go straight to /browse where
-  // the editor workflow lives (clicking through to /questions/[id]/edit).
-  // Admin tooling on this page (upload, reports, members) is admin-only.
+  // Teachers don't see the admin dashboard — they go straight to /browse, where
+  // they pick questions and build papers (branch-scoped) via the cart. Content
+  // editing is superadmin-only; admin tooling here (reports, members, branches)
+  // is admin-only.
   if (member && member.role === "TEACHER") redirect("/browse");
 
   // Org-less means "not staff" (admins atomically get an org_members row).
