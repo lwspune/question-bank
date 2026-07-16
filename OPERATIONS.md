@@ -40,6 +40,40 @@ The secret is read at request time via `process.env.SYNC_SHARED_SECRET`, so a re
 
 Checkout is dormant until 4 env vars are set in Vercel + `.env.local`: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `NEXT_PUBLIC_RAZORPAY_KEY_ID` (= key id, publishable for the client), `RAZORPAY_WEBHOOK_SECRET`. Without them `/api/billing/order` returns 503 (the `/pricing` Buy button shows "not configured"). Create a webhook in the Razorpay dashboard → `https://www.pyqvault.com/api/billing/webhook`, subscribe to **`order.paid`**, secret = `RAZORPAY_WEBHOOK_SECRET`. **Test mode needs no KYC**; KYC gates only live keys. Going live = swap the 4 vars to `rzp_live_…` values + repoint/add a live webhook (no code change). Change the price/duration in [src/lib/billing/plans.ts](src/lib/billing/plans.ts) (`PLANS`). As of 2026-06-01 the account is **not yet created** — see [[project-paywall-build]].
 
+### Outbound email (Resend) — the mock-recommendation campaign
+
+**Provider:** Resend, account `official.lwspune`. Domain `pyqvault.com` **Verified**, region Tokyo (ap-northeast-1), DNS auto-configured at GoDaddy. Free tier = **100 emails/day, 3,000/month, 2 req/sec** (the 600ms throttle in [resend.ts](src/lib/email/resend.ts) is sized to that rate limit). Env (`.env.local`, **not** Vercel — this is a local script, not a route): `RESEND_API_KEY` (send-only key) + `EMAIL_FROM` (`"PYQ Vault <mocks@pyqvault.com>"`). Missing either ⇒ the script fails fast before touching an address.
+
+**Run it:**
+```sh
+npm run email:preview -- --html          # render the templates — no DB, no key, no send
+npm run email:send                       # DRY RUN (default) — prints recipients, writes NOTHING
+npm run email:send -- --apply --limit=3  # stage it: send to the first 3
+npm run email:send -- --apply            # the rest
+npm run email:send -- --apply --only=a@b.com
+```
+The `--` before flags is required — npm swallows them otherwise. That mis-typing is safe by construction (a dropped `--apply` just dry-runs), but it's why a "send" can look like it did nothing. `npx tsx scripts/email/send-next-mock.ts …` works too, without the `--`.
+**Re-running is safe.** Every send writes a UNIQUE `dedupe_key` to `email_sends`, so a repeat run picks nobody already emailed for that mock — `first_mock:{user}` is once-ever, `next_mock:{user}:{mock}` never repeats a paper. The campaign **self-continues**: after the 7-day cooldown, each `next_mock` student is offered the next unattempted paper down the catalogue. Nothing to schedule; just re-run it.
+
+**Suppress someone** — always via the real mechanism, never a code skip-list:
+```sql
+INSERT INTO public.student_profiles (user_id, email_opt_out)
+SELECT id, true FROM auth.users WHERE email = 'someone@example.com'
+ON CONFLICT (user_id) DO UPDATE SET email_opt_out = true, updated_at = now();
+```
+Students self-serve the same thing via the unsubscribe link in every email (`/unsubscribe/[token]` → confirm button → `POST /api/unsubscribe/[token]`; GET never acts, because mailbox scanners prefetch links).
+
+**Reading the outcome — two traps.**
+1. **`sent=N` is NOT evidence of delivery.** A pre-existing GoDaddy DMARC (`p=quarantine`) means an auth failure lands in **spam silently** — no bounce, and `email_sends.status` still says `sent`. Check Resend → Logs, or ask a recipient.
+2. **Watch bounces.** Bounce rate is what throttles or suspends a sending domain. `isUndeliverable()` blocks RFC-2606 reserved TLDs (leaked test fixtures live in `auth.users` — the roster is derived from it), but a real-but-dead address still bounces.
+
+**Audit:** every attempt — sent OR failed — is one immutable `email_sends` row (own-row readable by the student; service-role written).
+```sql
+SELECT status, count(*), max(created_at) FROM public.email_sends GROUP BY status;
+```
+
+**NOT the same thing as Supabase Auth SMTP.** This is our app calling the Resend **API**. Password-reset / magic-link mail is sent by *Supabase* and needs SMTP credentials set in the Supabase dashboard — still unwired. See ROADMAP "Custom SMTP for Supabase Auth". Wiring it also unblocks the invite-teacher flow.
+
 ### Managing members (admins + teachers)
 
 `/dashboard/members` is the admin UI as of 2026-05-26. Add new admins/teachers with name + email + password + role; reset passwords; change roles; remove members. Last-admin protection + self-protection prevent locking yourself out. The page is admin-only; teachers are redirected to /browse.

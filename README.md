@@ -68,7 +68,7 @@ Open http://localhost:3000 → redirects to `/browse` (the public landing).
 
 ### 8. Onboard your first admin
 
-The login page accepts email + password sign-in. Magic-link is intentionally disabled until custom SMTP is wired (see [CLAUDE.md decisions log](./CLAUDE.md)). To create an admin:
+The login page accepts email + password sign-in. Magic-link is intentionally disabled until custom SMTP is wired for **Supabase Auth** — note that's separate from the Resend **API** the app uses for outbound campaign email (shipped 2026-07-16); Auth mail is sent by Supabase and needs SMTP credentials in its dashboard. See [ROADMAP](./ROADMAP.md) "Custom SMTP for Supabase Auth" and the [CLAUDE.md decisions log](./CLAUDE.md). To create an admin:
 
 1. **Create the auth user via the Supabase dashboard:** Authentication → Users → "Add user" → email + a password you choose.
 2. **Set the password directly in `auth.users`** (or in the dashboard's user editor). Bcrypt example: `UPDATE auth.users SET encrypted_password = crypt('your-password', gen_salt('bf')) WHERE email = 'you@example.com';`

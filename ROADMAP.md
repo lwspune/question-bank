@@ -147,7 +147,7 @@ Today teachers upload text-only Excels and add images via the per-question edit 
 
 ### Teacher invitation flow
 
-First admin is seeded via SQL; teacher addition is manual. A proper "invite teacher" flow is gated on SMTP being available (see Auth section).
+First admin is seeded via SQL; teacher addition is manual. A proper "invite teacher" flow is gated on SMTP being available (see Auth section) — **as of 2026-07-16 that gate is one Supabase dashboard form away, not a build: the Resend account + verified domain exist.** (Teachers are also created directly in `/dashboard/members` since 2026-05-26, so this is now about invitations rather than access.)
 
 ### Notes-lint guide-side rename validation — ✅ SHIPPED 2026-05-30
 
@@ -201,9 +201,20 @@ New `saved_filters(user_id, org_id, name, filters_jsonb, created_at)` table + a 
 
 ## Auth + accounts
 
-### Custom SMTP (Resend) — now a real need
+### Custom SMTP for Supabase Auth — HALF DONE (2026-07-16). Resend account + verified domain exist; Auth is not wired to it.
 
-Supabase's default-SMTP cap (~2 emails/hour project-wide) is dev-only. **Self-serve student accounts shipped 2026-06-01 with email confirmation OFF**, so signup itself sends no mail — but **password resets do** (and they run through the same throttled service), so any email/password student who forgets their password is currently stuck. Wire a custom SMTP provider (Resend or any — see CLAUDE.md "Razorpay cost" discussion; Resend isn't mandatory) before the first real paying cohort. Magic-link can be re-enabled at the same time but isn't required (password + Google OAuth cover sign-in).
+**Do not read "we have Resend now" as "this is done".** Two different things share the name, and only one shipped:
+
+| | What it is | State |
+|---|---|---|
+| **Resend API** | Our app POSTs to `api.resend.com` with `RESEND_API_KEY`. Powers the mock-recommendation campaign (migration 0059, `src/lib/email/`). | ✅ Shipped 2026-07-16 |
+| **Supabase Auth SMTP** | Password-reset + magic-link + invite mail, sent by **Supabase**, not our code. Configured with SMTP host/port/user/pass in the Supabase dashboard. | ❌ **Still not wired** |
+
+So the original problem stands: Supabase's default-SMTP cap (~2 emails/hour project-wide) is dev-only, and **any email/password student who forgets their password is still stuck** (signup itself sends no mail — email confirmation is OFF — but resets run through the throttled service). Google-OAuth students are unaffected.
+
+**What changed is that the hard part is done.** The Resend account (`official.lwspune`) exists, `pyqvault.com` is **Verified** (region Tokyo / ap-northeast-1), and DKIM + the SPF macro chain + the return-path MX all resolve — independently confirmed from public DNS, not just the dashboard. A pre-existing GoDaddy DMARC (`p=quarantine`) is in place and aligns.
+
+**What's left is dashboard config, not a build:** Supabase → Authentication → SMTP Settings → host `smtp.resend.com`, port 465, username `resend`, password = a Resend API key, sender = an address on the verified domain. That single change closes this item **plus** "Password reset flow" and "Teacher invitation flow" below. Deliberately not done for you: it changes auth-mail behaviour for every user and needs your credentials. See [[project-mock-recommendation-email]] + the CLAUDE.md 2026-07-15/16 Decisions entry.
 
 ### Optional user accounts — recently-built papers, drill streaks
 
@@ -211,7 +222,7 @@ Supabase's default-SMTP cap (~2 emails/hour project-wide) is dev-only. **Self-se
 
 ### Password reset flow
 
-No UI yet — admins reset directly via SQL (see CLAUDE.md Operations). **Now a real gap, not just a teacher nicety:** self-serve email/password students shipped 2026-06-01, and they have no "forgot password" path. Needs custom SMTP (above) + a reset-request page. Google-OAuth students are unaffected. Prioritise alongside the first batch of real paying students.
+No UI yet — admins reset directly via SQL (see CLAUDE.md Operations). **Now a real gap, not just a teacher nicety:** self-serve email/password students shipped 2026-06-01, and they have no "forgot password" path. Needs custom SMTP (above) + a reset-request page. Google-OAuth students are unaffected. Prioritise alongside the first batch of real paying students. **(2026-07-16: the SMTP half is now one dashboard form away — see above. The reset-request PAGE is still unbuilt, and it's the only remaining code.)**
 
 ---
 
