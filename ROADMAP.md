@@ -147,7 +147,7 @@ Today teachers upload text-only Excels and add images via the per-question edit 
 
 ### Teacher invitation flow
 
-First admin is seeded via SQL; teacher addition is manual. A proper "invite teacher" flow is gated on SMTP being available (see Auth section) — **as of 2026-07-16 that gate is one Supabase dashboard form away, not a build: the Resend account + verified domain exist.** (Teachers are also created directly in `/dashboard/members` since 2026-05-26, so this is now about invitations rather than access.)
+First admin is seeded via SQL; teacher addition is manual. A proper "invite teacher" flow was gated on SMTP being available (see Auth section) — **that gate LIFTED 2026-07-16: Supabase Auth SMTP is wired to Resend and verified.** (Teachers are also created directly in `/dashboard/members` since 2026-05-26, so this is now about invitations rather than access.) **Inherit the caveat:** an invite mail uses the same `ConfirmationURL` mechanism as the reset mail, so it will carry the same cross-domain link that Gmail flags as phishing — do the `/auth/confirm` work under "Password reset flow" first, or the invite lands in spam too.
 
 ### Notes-lint guide-side rename validation — ✅ SHIPPED 2026-05-30
 
@@ -201,20 +201,20 @@ New `saved_filters(user_id, org_id, name, filters_jsonb, created_at)` table + a 
 
 ## Auth + accounts
 
-### Custom SMTP for Supabase Auth — HALF DONE (2026-07-16). Resend account + verified domain exist; Auth is not wired to it.
+### Custom SMTP for Supabase Auth — ✅ DONE 2026-07-16 (but the stock template gets flagged as phishing — see Password reset flow)
 
-**Do not read "we have Resend now" as "this is done".** Two different things share the name, and only one shipped:
+**Two different things share the name "Resend"; both are now live, but they are not the same system:**
 
 | | What it is | State |
 |---|---|---|
 | **Resend API** | Our app POSTs to `api.resend.com` with `RESEND_API_KEY`. Powers the mock-recommendation campaign (migration 0059, `src/lib/email/`). | ✅ Shipped 2026-07-16 |
-| **Supabase Auth SMTP** | Password-reset + magic-link + invite mail, sent by **Supabase**, not our code. Configured with SMTP host/port/user/pass in the Supabase dashboard. | ❌ **Still not wired** |
+| **Supabase Auth SMTP** | Password-reset + magic-link + invite mail, sent by **Supabase**, not our code. | ✅ Wired 2026-07-16 |
 
-So the original problem stands: Supabase's default-SMTP cap (~2 emails/hour project-wide) is dev-only, and **any email/password student who forgets their password is still stuck** (signup itself sends no mail — email confirmation is OFF — but resets run through the throttled service). Google-OAuth students are unaffected.
+**Config (Supabase → Authentication → Emails → SMTP Settings):** host `smtp.resend.com` · port 465 · username `resend` · password = a Resend API key · sender `noreply@pyqvault.com` / "PYQ Vault". **Enabling SMTP does not lift the throttle** — the separate `GOTRUE_RATE_LIMIT_EMAIL_SENT` was raised **2/1h → 30** (Authentication → Rate Limits). Both halves are needed; the old ~2/hour cap was the actual bug.
 
-**What changed is that the hard part is done.** The Resend account (`official.lwspune`) exists, `pyqvault.com` is **Verified** (region Tokyo / ap-northeast-1), and DKIM + the SPF macro chain + the return-path MX all resolve — independently confirmed from public DNS, not just the dashboard. A pre-existing GoDaddy DMARC (`p=quarantine`) is in place and aligns.
+**Verified end-to-end**, not assumed: a live `POST /auth/v1/recover` produced `user_recovery_requested` with `status:200, error:null` and a **2.77s duration** (an SMTP round-trip, not a no-op), and the mail arrived with **SPF PASS · DKIM PASS (`pyqvault.com`) · DMARC PASS**, delivered in 1 second via `ap-northeast-1.amazonses.com`.
 
-**What's left is dashboard config, not a build:** Supabase → Authentication → SMTP Settings → host `smtp.resend.com`, port 465, username `resend`, password = a Resend API key, sender = an address on the verified domain. That single change closes this item **plus** "Password reset flow" and "Teacher invitation flow" below. Deliberately not done for you: it changes auth-mail behaviour for every user and needs your credentials. See [[project-mock-recommendation-email]] + the CLAUDE.md 2026-07-15/16 Decisions entry.
+**⚠️ It arrives in SPAM with Gmail's red "This message might be dangerous" phishing banner** — and the cause is NOT deliverability. See "Password reset flow" below; the same-day campaign proves the domain is healthy (31/31 to inbox).
 
 ### Optional user accounts — recently-built papers, drill streaks
 
@@ -222,7 +222,28 @@ So the original problem stands: Supabase's default-SMTP cap (~2 emails/hour proj
 
 ### Password reset flow
 
-No UI yet — admins reset directly via SQL (see CLAUDE.md Operations). **Now a real gap, not just a teacher nicety:** self-serve email/password students shipped 2026-06-01, and they have no "forgot password" path. Needs custom SMTP (above) + a reset-request page. Google-OAuth students are unaffected. Prioritise alongside the first batch of real paying students. **(2026-07-16: the SMTP half is now one dashboard form away — see above. The reset-request PAGE is still unbuilt, and it's the only remaining code.)**
+No UI yet — admins reset directly via SQL (see CLAUDE.md Operations). Self-serve email/password students shipped 2026-06-01 and have no "forgot password" path; Google-OAuth students are unaffected. **The SMTP half is DONE (2026-07-16, above). What remains is code — and a hard requirement we now have evidence for.**
+
+**THE FINDING (2026-07-16): Supabase's stock reset template gets flagged by Gmail as PHISHING, and it is a CONTENT problem, not a deliverability one.** The mail lands in **spam** under a red *"This message might be dangerous — messages like this one were used to steal personal information"* banner. Why: the stock template's `{{ .ConfirmationURL }}` always resolves to the **project domain** (`<ref>.supabase.co/auth/v1/verify?token=…`), so the email says `From: PYQ Vault <noreply@pyqvault.com>` and its only link points somewhere else entirely. A password-reset email whose link domain ≠ its From domain is the textbook credential-harvesting shape.
+
+**The same-day natural experiment isolates it beyond doubt** — same domain, same hour, same provider, same auth result, only the content differs:
+
+| | Mock campaign (our `src/lib/email/`) | Auth reset (Supabase stock template) |
+|---|---|---|
+| SPF / DKIM / DMARC | PASS / PASS / PASS | PASS / PASS / PASS |
+| Links point to | `www.pyqvault.com` (= From domain) | `…supabase.co` (≠ From domain) |
+| Outcome | ✅ **31/31 to INBOX** | ❌ spam + phishing banner |
+
+So: do **not** chase DNS/warm-up/reputation. The fix is to make the link live on our domain.
+
+**Scope (the documented Supabase pattern):**
+1. Custom template → `<a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery">` (dashboard).
+2. **`/auth/confirm`** route handler — `verifyOtp({token_hash, type})` → session → redirect. Validate `type` + the redirect target (open-redirect risk).
+3. **`/reset-password`** page — new-password form (`updateUser({password})`).
+4. **`/forgot-password`** page — the email input; today there is no UI at all (the 2026-07-16 test was a hand-rolled `POST /auth/v1/recover`).
+5. Brand the auth templates while there — they're student-facing, so the same rule as the reply-to applies (PYQ Vault, not the tenant org).
+
+Same treatment fixes magic-link + invite mail, which use the identical `ConfirmationURL` mechanism. **Deferred by the user 2026-07-16** ("we will take this in future") — nothing is broken that wasn't broken before; a student who forgets their password was already stuck, and is now stuck one step later (the mail sends, but lands in spam looking dangerous).
 
 ---
 

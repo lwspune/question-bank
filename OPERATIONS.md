@@ -72,7 +72,25 @@ Students self-serve the same thing via the unsubscribe link in every email (`/un
 SELECT status, count(*), max(created_at) FROM public.email_sends GROUP BY status;
 ```
 
-**NOT the same thing as Supabase Auth SMTP.** This is our app calling the Resend **API**. Password-reset / magic-link mail is sent by *Supabase* and needs SMTP credentials set in the Supabase dashboard — still unwired. See ROADMAP "Custom SMTP for Supabase Auth". Wiring it also unblocks the invite-teacher flow.
+**Delivery is PROVEN, not assumed (2026-07-16):** the first campaign put **31/31 in the inbox** — Gmail reported **SPF PASS · DKIM PASS (`pyqvault.com`) · DMARC PASS**, delivered in ~1s via `ap-northeast-1.amazonses.com`. So the domain is healthy; if a future send lands in spam, suspect the **content**, not the DNS (see the auth-mail note below for a worked example).
+
+**NOT the same thing as Supabase Auth SMTP** — see the next section. This is our app calling the Resend **API**; auth mail is sent by Supabase itself.
+
+### Supabase Auth SMTP (password reset / magic-link / invites)
+
+Wired 2026-07-16. **Supabase → Authentication → Emails → SMTP Settings:** host `smtp.resend.com` · port 465 · username `resend` (literally, not an email) · password = a Resend API key · sender `noreply@pyqvault.com` / "PYQ Vault".
+
+**Enabling SMTP does NOT lift the throttle** — that's a separate setting and the whole point of the exercise. **Authentication → Rate Limits → "Rate limit for sending emails"** is now **30/hour** (was Supabase's built-in 2/hour, which is dev-only). Both halves are required; check both when auth mail "sends" but nobody gets it.
+
+**Test it without a UI** (there's no `/forgot-password` page yet — ROADMAP):
+```sh
+curl -X POST "$NEXT_PUBLIC_SUPABASE_URL/auth/v1/recover" \
+  -H "apikey: $NEXT_PUBLIC_SUPABASE_ANON_KEY" -H "Content-Type: application/json" \
+  -d '{"email":"someone@example.com"}'
+```
+It always returns **200 with `{}`** — deliberately, to prevent email enumeration — so **200 is not proof of sending**. Verify in the Supabase auth logs instead: look for `action:"user_recovery_requested"` and check the `duration`. ~2.7s means a real SMTP round-trip happened; milliseconds means it never left. `error:null` means SMTP accepted it.
+
+**⚠️ Known: auth mail lands in SPAM with a Gmail phishing banner.** Not a deliverability fault — auth is PASS/PASS/PASS and the campaign from the same domain reaches the inbox. Supabase's stock template links to `<project-ref>.supabase.co` while the From says `pyqvault.com`, and a password-reset email whose link domain ≠ From domain is the classic credential-harvesting shape. Fix = point the template at `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}` + build that route. Deferred — see ROADMAP "Password reset flow".
 
 ### Managing members (admins + teachers)
 
