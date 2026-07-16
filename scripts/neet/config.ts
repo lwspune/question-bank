@@ -61,6 +61,24 @@ export type Paper = {
 };
 
 export const PAPERS: Record<string, Paper> = {
+  "2021": {
+    id: "2021",
+    sourceFile: "NEET_UG_2021.pdf",
+    pdf: join(SOURCE_ROOT, "neet 2021 qp Code M1.pdf"),
+    layout: "two-column",
+    questionCount: 200,
+    pyqYear: 2021,
+    pyqNote: "NEET (UG) 2021 — 12 Sep 2021",
+  },
+  "2022": {
+    id: "2022",
+    sourceFile: "NEET_UG_2022.pdf",
+    pdf: join(SOURCE_ROOT, "neet 2022 qp Code Q1.pdf"),
+    layout: "single-column",
+    questionCount: 200,
+    pyqYear: 2022,
+    pyqNote: "NEET (UG) 2022 — 17 Jul 2022",
+  },
   "2023": {
     id: "2023",
     sourceFile: "NEET_UG_2023.pdf",
