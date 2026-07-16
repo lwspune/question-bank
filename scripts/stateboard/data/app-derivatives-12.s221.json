@@ -1,0 +1,65 @@
+[
+  {
+    "ref": "2.2.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "EASY",
+    "stem": "Find the approximate value of \\(\\sqrt{64.1}\\).",
+    "solution": "Let \\(f(x) = \\sqrt{x}\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = \\frac{1}{2\\sqrt{x}}\\) ... (II)\nLet \\(a = 64\\), \\(h = 0.1\\)\nFor \\(x = a = 64\\), from (I) we get\n\\(f(a) = f(64) = \\sqrt{64} = 8\\) ... (III)\nFor \\(x = a = 64\\), from (II) we get\n\\(f'(a) = f'(64) = \\frac{1}{2\\sqrt{64}} = \\frac{1}{16}\\)\n\\(\\therefore\\) \\(f'(a) = 0.0625\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f(64 + 0.1) \\approx f(64) + (0.1)\\cdot f'(64)\\)\n\\(f(64.1) \\approx 8 + (0.1)\\cdot(0.0625)\\) ... [From (III) and (IV)]\n\\(\\approx 8 + 0.00625\\)\n\\(\\therefore\\) \\(f(64.1) = \\sqrt{64.1} \\approx 8.00625\\)"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "EASY",
+    "stem": "Find the approximate value of \\((3.98)^3\\).",
+    "solution": "Let \\(f(x) = x^3\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = 3x^2\\) ... (II)\nLet \\(a = 4\\), \\(h = -0.02\\)\nFor \\(x = a = 4\\), from (I) we get\n\\(f(a) = f(4) = (4)^3 = 64\\) ... (III)\nFor \\(x = a = 4\\), from (II) we get\n\\(f'(a) = f'(4) = 3(4)^2 = 48\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f[4 + (-0.02)] \\approx f(4) + (-0.02)\\cdot f'(4)\\)\n\\(f(3.98) \\approx 64 + (-0.02).(48)\\) ... [From (III) and (IV)]\n\\(f(3.98) \\approx 64 - 0.96\\)\n\\(\\therefore\\) \\(f(3.98) = (3.98)^3 \\approx 63.04\\)"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "MODERATE",
+    "stem": "Find the approximate value of \\(\\sin(30^\\circ\\, 30')\\). Given that \\(1^\\circ = 0.0175^c\\) and \\(\\cos 30^\\circ = 0.866\\).",
+    "solution": "[Textbook misprint: the degree-to-radian step prints \\(\\frac{\\pi}{6} + \\frac{0.1750^c}{2}\\). The question's own given constant is \\(1^\\circ = 0.0175^c\\), so \\(\\left(\\frac{1}{2}\\right)^\\circ = \\frac{0.0175}{2} = 0.00875\\); the numerator should read \\(0.0175\\), and \\(0.1750\\) is a digit transposition. The error does not propagate — the book's very next line uses the correct \\(h = 0.00875\\) and the final answer \\(0.5075775\\) is right.]\n\nLet \\(f(x) = \\sin x\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = \\cos x\\)\nNow, \\(30^\\circ\\, 30' = 30^\\circ + 30' = 30^\\circ + \\left(\\frac{1}{2}\\right)^\\circ\\)\n\\(= \\frac{\\pi}{6} + \\frac{0.1750^c}{2}\\)\n\\(30^\\circ\\, 30' = \\frac{\\pi}{6} + 0.00875\\) ... (II)\nLet \\(a = \\frac{\\pi}{6}\\), \\(h = 0.00875\\)\nFor \\(x = a = \\frac{\\pi}{6}\\), from (I) we get\n\\(f(a) = f\\left(\\frac{\\pi}{6}\\right) = \\sin\\left(\\frac{\\pi}{6}\\right) = \\frac{1}{2} = 0.5\\) ... (III)\nFor \\(x = a = \\frac{\\pi}{6}\\), from (II) we get\n\\(f'(a) = f'\\left(\\frac{\\pi}{6}\\right) = \\cos\\left(\\frac{\\pi}{6}\\right) = 0.866\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f\\left(\\frac{\\pi}{6} + 0.00875^c\\right) \\approx f\\left(\\frac{\\pi}{6}\\right) + (0.00875)\\cdot f'\\left(\\frac{\\pi}{6}\\right)\\)\n\\(f(30^\\circ\\, 30') \\approx 0.5 + (0.00875)\\cdot(0.866)\\) ... [From (III) and (IV)]\n\\(\\approx 0.5 + 0.0075775\\)\n\\(\\therefore\\) \\(f(30^\\circ\\, 30') = \\sin(30^\\circ\\, 30') \\approx 0.5075775\\)"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "MODERATE",
+    "stem": "Find the approximate value of \\(\\tan^{-1}(0.99)\\), Given that \\(\\pi \\approx 3.1416\\).",
+    "solution": "Let \\(f(x) = \\tan^{-1} x\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = \\frac{1}{1 + x^2}\\) ... (II)\nLet \\(a = 1\\), \\(h = -0.01\\)\nFor \\(x = a = 1\\), from (I) we get\n\\(f(a) = f(1) = \\tan^{-1}(1) = \\frac{\\pi}{4}\\) ... (III)\nFor \\(x = a = 1\\), from (II) we get\n\\(f'(a) = f'(1) = \\frac{1}{1 + 1^2} = 0.5\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f[(1) + (-0.01)] \\approx f(1) + (-0.01)\\cdot f'(1)\\)\n\\(f(0.99) \\approx \\frac{\\pi}{4} - (0.01)\\cdot(0.5)\\) ... [From (III) and (IV)]\n\\(\\approx \\frac{\\pi}{4} - 0.005\\)\n\\(\\approx \\frac{3.1416}{4} - 0.005\\)\n\\(\\approx 0.7854 - 0.005 = 0.7804\\)\n\\(\\therefore\\) \\(f(0.99) = \\tan^{-1}(0.99) \\approx 0.7804\\)"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "EASY",
+    "stem": "Find the approximate value of \\(e^{1.005}\\). Given that \\(e = 2.7183\\).",
+    "solution": "Let \\(f(x) = e^x\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = e^x\\) ... (II)\nLet \\(a = 1\\), \\(h = 0.005\\)\nFor \\(x = a = 1\\), from (I) we get\n\\(f(a) = f(1) = e^1 = 2.7183\\) ... (III)\nFor \\(x = a = 1\\), from (II) we get\n\\(f'(a) = f'(1) = e^1 = 2.7183\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f(1 + 0.005) \\approx f(1) + (0.005)\\cdot f'(1)\\)\n\\(f(1.005) \\approx 2.7183 + (0.005) (2.7183)\\) ... [From (III) and (IV)]\n\\(f(1.005) \\approx 2.7183 + 0.0135915\\)\n\\(\\approx 2.7318915\\)\n\\(f(1.005) = e^{1.005} \\approx 2.73189\\)"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "MODERATE",
+    "stem": "Find the approximate value of \\(\\log_{10}(998)\\). Given that \\(\\log_{10} e = 0.4343\\).",
+    "solution": "[Textbook misprint: the final line prints \\(f(998) = \\log(998) \\approx 2.9991314\\) with a bare \\(\\log\\), dropping the base-10 subscript used in the question and throughout the working. The value is correct.]\n\nLet \\(f(x) = \\log_{10} x = \\frac{\\log x}{\\log 10}\\)\n\\(\\therefore\\) \\(f(x) = (\\log_{10} e)\\cdot \\log x\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = \\frac{\\log_{10} e}{x} = \\frac{0.4343}{x}\\) ... (II)\nLet \\(a = 1000\\), \\(h = -2\\)\nFor \\(x = a = 1000\\), from (I) we get\n\\(f(a) = f(1000) = \\log_{10} 1000\\)\n\\(\\therefore\\) \\(f(a) = 3\\log_{10} 10 = 3\\) ... (III)\nFor \\(x = a = 1000\\), from (II) we get\n\\(f'(a) = f'(1000) = \\frac{0.4343}{1000}\\)\n\\(\\therefore\\) \\(f'(a) = 0.0004343\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f[1000 + (-2)] \\approx f(1000) + (-2) f'(1000)\\)\n\\(f(998) \\approx 3 - (2) (0.0004343)\\) ... [From (III) and (IV)]\n\\(\\approx 3 - 0.0008686\\)\n\\(f(998) = \\log(998) \\approx 2.9991314\\)"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "difficulty": "EASY",
+    "stem": "Find the approximate value of \\(f(x) = x^3 + 5x^2 - 2x + 3\\) at \\(x = 1.98\\).",
+    "solution": "Let \\(f(x) = x^3 + 5x^2 - 2x + 3\\) ... (I)\nDifferentiate w. r. t. x.\n\\(f'(x) = 3x^2 + 10x - 2\\) ... (II)\nLet \\(a = 2\\), \\(h = -0.02\\)\nFor \\(x = a = 2\\), from (I) we get\n\\(f(a) = f(2) = (2)^3 + 5(2)^2 - 2(2) + 3\\)\n\\(\\therefore\\) \\(f(a) = 27\\) ... (III)\nFor \\(x = a = 2\\), from (II) we get\n\\(f'(a) = f'(2) = 3(2)^2 + 10(2) - 2\\)\n\\(\\therefore\\) \\(f'(a) = 30\\) ... (IV)\nWe have, \\(f(a + h) \\approx f(a) + h f'(a)\\)\n\\(f[(2) + (-0.02)] \\approx f(2) + (-0.02)\\cdot f'(2)\\)\n\\(f(1.98) \\approx 27 - (0.02)\\cdot(30)\\) ... [From (III) and (IV)]\n\\(\\approx 27 - 0.6\\)\n\\(f(1.98) \\approx 26.4\\)"
+  }
+]

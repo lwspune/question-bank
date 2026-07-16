@@ -1,0 +1,154 @@
+[
+  {
+    "ref": "Ex 2.2 Q.1 (i)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "2.9917 (2.99167)",
+    "book_answer": "2.9168",
+    "true_value": "2.99165506",
+    "evidence": "Stem source-verified on p-10.png as sqrt(8.95) (our transcription is correct). f(x)=sqrt(x), a=9, h=-0.05: f(a)=3, f'(9)=1/6, so approx = 3 - 0.05/6 = 2.9916667, which agrees with the TRUE value 2.99165506 to 5 dp. The book's 2.9168 is 0.0749 away from the true value and matches no valid choice of (a,h) - sqrt of anything near 8.95 cannot be 2.9168 (2.9168^2 = 8.5077). It reads as a misprint of 2.99167 with a dropped '9' (2.9[9]167 -> 2.9167 ~ 2.9168). Book (ii)-(v) all match ours exactly, so the key rows are correctly aligned and (i) is a lone outlier. Our answer is correct."
+  },
+  {
+    "ref": "Ex 2.2 Q.1 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "3.0370 (3.03704)",
+    "book_answer": "3.03704",
+    "true_value": "3.03658897"
+  },
+  {
+    "ref": "Ex 2.2 Q.1 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "1.99975",
+    "book_answer": "1.9997",
+    "true_value": "1.99974994",
+    "evidence": "Rounding only: approx = 1.99975, book truncates/rounds to 1.9997. Same value."
+  },
+  {
+    "ref": "Ex 2.2 Q.1 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "248.32",
+    "book_answer": "248.32",
+    "true_value": "248.4059688",
+    "evidence": "Both sides give the linear approximation 248.32. The ~0.09 gap from the true value is inherent to the method at h=-0.03 on a quartic, not an error."
+  },
+  {
+    "ref": "Ex 2.2 Q.1 (v)",
+    "verdict": "AGREE",
+    "our_answer": "64.48",
+    "book_answer": "64.48",
+    "true_value": "64.481201"
+  },
+  {
+    "ref": "Ex 2.2 Q.2 (i)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "0.87475",
+    "book_answer": "0.953",
+    "true_value": "0.87461971",
+    "evidence": "Stem source-verified: sin(61 deg) given 1 deg = 0.0175^c, sqrt3 = 1.732. a=60 deg, h=0.0175^c: f(a)=1.732/2=0.866, f'(a)=cos 60 = 0.5, so approx = 0.866 + 0.0175*0.5 = 0.866 + 0.00875 = 0.87475 - which agrees with the TRUE value 0.87461971 to 3 dp. The book's 0.953 is 0.0784 away from the true value; since sin is bounded and sin(61 deg) is unambiguously ~0.8746, 0.953 cannot be right. The book's slip is a decimal-place error on the correction term: 0.866 + 0.0875 = 0.9535 ~ 0.953 (h*f'(a) taken 10x too large). Book (iii) and (iv) match ours exactly, so the rows are aligned. Our answer is correct."
+  },
+  {
+    "ref": "Ex 2.2 Q.2 (ii)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "0.4924 (0.4924225)",
+    "book_answer": "0.42423",
+    "true_value": "0.49242356",
+    "evidence": "DECISIVE - the book's key contradicts ITSELF. sin(29 deg 30') and cos(60 deg 30') (part iii) are the SAME number (co-function identity; both computed = 0.4924235601). The book keys (ii) as 0.42423 but (iii) as 0.4924 - two different values for one mathematically identical quantity, so at least one is a misprint, and (iii) is the one matching truth. Our derivation: a=30 deg, h=-30' = -0.00875^c, f(a)=0.5, f'(a)=cos 30 = 0.866, approx = 0.5 - 0.00875*0.866 = 0.4924225, agreeing with the TRUE value 0.49242356 to 5 dp. The book's 0.42423 is 0.068 off truth and is a digit-scramble of 0.4924. Our answer is correct."
+  },
+  {
+    "ref": "Ex 2.2 Q.2 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "0.4924 (0.4924225)",
+    "book_answer": "0.4924",
+    "true_value": "0.49242356"
+  },
+  {
+    "ref": "Ex 2.2 Q.2 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "1.0233 (1.0233333)",
+    "book_answer": "1.02334",
+    "true_value": "1.02354609",
+    "evidence": "Rounding of the intermediate only. Exact: h = (2/3)*0.0175 = 0.01166667, approx = 1 + 2*0.01166667 = 1.0233333. The book's 1.02334 comes from rounding h to 0.011667 (or 0.667*0.0175) before doubling -> 1.023334. Difference is 7e-6; same value."
+  },
+  {
+    "ref": "Ex 2.2 Q.3 (i)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "0.7849 (pi/4 - 0.0005)",
+    "book_answer": "0.7845",
+    "true_value": "0.78489791",
+    "evidence": "a=1, h=-0.001, f'(1)=1/2, so approx = pi/4 - 0.0005. With the pi = 3.1416 convention, pi/4 = 0.7854 and approx = 0.7849; the TRUE value arctan(0.999) = 0.78489791 rounds to 0.7849, confirming ours. The book's 0.7845 is 0.0004 off truth and does not round-trip: it is only reachable by taking pi/4 ~ 0.785 (0.785 - 0.0005 = 0.7845). That is INTERNALLY INCONSISTENT with the book's own (ii) and (iii), both keyed 0.7859 = 0.7854 + 0.0005, i.e. using pi/4 = 0.7854 - which for (i) forces 0.7849. Rows are aligned: our (ii) and (iii) match the book exactly. CONFIDENCE NOTE: this is the mildest of the five (magnitude 0.0004) and could be argued to be a coarse-rounding artifact rather than a true error; flagging for adjudication."
+  },
+  {
+    "ref": "Ex 2.2 Q.3 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "0.7859 (pi/4 + 0.0005)",
+    "book_answer": "0.7859",
+    "true_value": "0.78589841"
+  },
+  {
+    "ref": "Ex 2.2 Q.3 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "0.7859 (pi/4 + 0.0005)",
+    "book_answer": "0.7859",
+    "true_value": "0.78589791"
+  },
+  {
+    "ref": "Ex 2.2 Q.4 (i)",
+    "verdict": "AGREE",
+    "our_answer": "2.7047 (2.70471)",
+    "book_answer": "2.70471",
+    "true_value": "2.70472434",
+    "evidence": "Both sides use approx = 0.995*e = 0.995*2.7183 = 2.7047085 -> 2.70471. The book's 5-dp value confirms it also used e = 2.7183."
+  },
+  {
+    "ref": "Ex 2.2 Q.4 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "8.1279",
+    "book_answer": "8.1279",
+    "true_value": "8.16616991",
+    "evidence": "Both give 7.389*1.1 = 8.1279. The ~0.038 gap from truth is inherent to a linear step of h=0.1 on e^x, not an error."
+  },
+  {
+    "ref": "Ex 2.2 Q.4 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "9.0989 (9.098874)",
+    "book_answer": "9.09887",
+    "true_value": "9.09942023",
+    "evidence": "Confirms log 3 = 1.0986 is the NATURAL log: approx = 9 + 0.01*9*1.0986 = 9.098874, agreeing with the true 3^2.01 = 9.09942 to 3 dp. (log10 3 = 0.4771 would give 9.0429, far from truth.)"
+  },
+  {
+    "ref": "Ex 2.2 Q.5 (i)",
+    "verdict": "AGREE",
+    "our_answer": "4.6152",
+    "book_answer": "4.6152",
+    "true_value": "4.61512052"
+  },
+  {
+    "ref": "Ex 2.2 Q.5 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "2.1983 (2.198311)",
+    "book_answer": "2.1983",
+    "true_value": "2.19833507"
+  },
+  {
+    "ref": "Ex 2.2 Q.5 (iii)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "3.0069 (3.0069488)",
+    "book_answer": "3.006049",
+    "true_value": "3.00689371",
+    "evidence": "Stem source-verified: log10(1016) given log10 e = 0.4343. a=1000, h=16, f'(x) = (log10 e)/x so f'(1000) = 0.0004343; approx = 3 + 16*0.0004343 = 3.0069488, agreeing with the TRUE value 3.00689371 to 4 dp. The book's 3.006049 is 0.00084 off truth. DECISIVE: the book's OWN worked Ex. 6 on the same page (p-10.png / book p.75) does log10(998) with a=1000, h=-2 and prints 3 - 2(0.0004343) = 2.9991314 - the identical method, which we reproduce exactly. Applying it with h=+16 can only give 3.0069488. Working backwards, the book's 0.006049 would require h = 13.93, which corresponds to no point in the question. So the book's key contradicts its own solved example. Book (i) and (ii) match ours exactly, so rows are aligned. Our answer is correct."
+  },
+  {
+    "ref": "Ex 2.2 Q.6 (i)",
+    "verdict": "AGREE",
+    "our_answer": "6.91",
+    "book_answer": "6.91",
+    "true_value": "6.910599"
+  },
+  {
+    "ref": "Ex 2.2 Q.6 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "9.72",
+    "book_answer": "9.72",
+    "true_value": "9.836928",
+    "evidence": "Both give 9 + 0.12*6 = 9.72. The 0.117 gap from truth is inherent to the large linear step h=0.12 on a cubic, not an error on either side."
+  }
+]

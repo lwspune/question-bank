@@ -244,6 +244,56 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.2 Application of Derivatives (12th, Part 2). 30pp — the direct sequel to
+  //    Ch.1 Differentiation: every method from Ch.1 applied. 6 topics per "Let us
+  //    Study", modelled as 8 subtopics mapping 1:1 onto the book's numbered sections.
+  //    Angle-between-curves is folded into Tangents and Normals (only Misc II Q.1 —
+  //    1 "orthogonal" + 2 "angle between" mentions chapter-wide, too thin to stand
+  //    alone); Velocity/Acceleration/Jerk is KEPT separate (own numbered section +
+  //    own solved-example block).
+  //
+  //    UNLIKE Differentiation, the exercises are NOT method-pure — Ex 2.1 fuses
+  //    tangents/normals (Q1-6) with rate measure (Q7+), and Ex 2.4 fuses
+  //    increasing/decreasing with maxima/minima. Subtopics are assigned PER-QUESTION.
+  //
+  //    BLOCK MAP — (page, y), NOT page (7 blocks start mid-page; §2.3.2 at p13
+  //    y≈586 and Exercise 2.4 at p24 y≈549 start near the page BOTTOM, so a
+  //    page-derived band silently drops them). Verified via get_text('blocks'):
+  //      §2.1.2 Tangents/Normals   p00 y543 → solved p01 y230 → p03 y319
+  //      §2.1.3 Rate measure       p03 y319 → solved p03 y646 → p06 y 71
+  //      §2.1.4 Velocity/Acc/Jerk  p06 y 71 → solved p06 y318 → p07 y 73
+  //      EXERCISE 2.1              p07 y 73 → p08 y 71        (16 top-level Q)
+  //      §2.2.1 Approximations     p08 y 71 → solved p08 y317 → p10 y475
+  //      EXERCISE 2.2              p10 y475 → p11 y 67        ( 6 top-level Q)
+  //      §2.3.1 Rolle's Theorem    p11 y 67 → solved p11 y402 → p13 y586
+  //      §2.3.2 LMVT               p13 y586 → solved p14 y280 → p15 y 73
+  //      EXERCISE 2.3              p15 y 73 → p15 y460        ( 7 top-level Q)
+  //      §2.4.1 Incr/Decr          p15 y460 → solved p16 y517 → p18 y 69
+  //      §2.4.2-2.4.4 Maxima/Minima p18 y 69 → solved p19 y77 + p20 y429 → p24 y549
+  //      EXERCISE 2.4              p24 y549 → p26 y 81        (24 top-level Q)
+  //      MISCELLANEOUS EXERCISE 2  p27 y 77 → end  (I = 10 MCQ p27; II = 21 subj p28+)
+  //    32 solved examples across 9 blocks. Layout is TWO-COLUMN for the body +
+  //    exercises (p01-p25) and single-column for Miscellaneous (p27-29) — read each
+  //    two-column page LEFT column fully, then RIGHT column.
+  "app-derivatives-12": {
+    id: "app-derivatives-12",
+    chapterName: "Application of Derivatives",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Application_of_Derivatives.pdf",
+    pdf: cls12("Part 02/Ch_02_Application_of_Derivatives.pdf"),
+    note: "Maharashtra State Board (Class 12) — Application of Derivatives (Balbharati textbook)",
+    subtopics: [
+      "Tangents and Normals",
+      "Derivative as a Rate Measure",
+      "Velocity, Acceleration and Jerk",
+      "Approximations",
+      "Rolle's Theorem",
+      "Lagrange's Mean Value Theorem",
+      "Increasing and Decreasing Functions",
+      "Maxima and Minima",
+    ],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).

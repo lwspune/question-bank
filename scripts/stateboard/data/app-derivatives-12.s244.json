@@ -1,0 +1,65 @@
+[
+  {
+    "ref": "2.4.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find the local maximum and local minimum value of \\(f(x) = x^3 - 3x^2 - 24x + 5\\).",
+    "solution": "Given that \\(f(x) = x^3 - 3x^2 - 24x + 5\\) \\(\\ldots\\) (I)\nDifferentiate (I) w. r. t. \\(x\\).\n\\(f'(x) = 3x^2 - 6x - 24\\) \\(\\ldots\\) (II)\nFor extreme values, \\(f'(x) = 0\\)\n\\(3x^2 - 6x - 24\\) i.e. \\(3(x^2 - 2x - 8) = 0\\)\ni.e. \\(x^2 - 2x - 8 = 0\\) i.e. \\((x + 2)(x - 4) = 0\\)\n\\(\\Rightarrow x + 2 = 0\\) or \\(x - 4 = 0 \\Rightarrow x = -2\\) or \\(x = 4\\)\nThe stationary points are \\(x = -2\\) and \\(x = 4\\).\nDifferentiate (II) w. r. t. \\(x\\).\n\\(f''(x) = 6x - 6\\) \\(\\ldots\\) (III)\nFor \\(x = -2\\), from (III) we get,\n\\(f''(-2) = 6(-2) - 6 = -18 < 0\\)\n\\(\\therefore\\) At \\(x = -2\\), \\(f(x)\\) has a maximum value.\nFor maximum of \\(f(x)\\), put \\(x = -2\\) in (I)\n\\(f(-2) = (-2)^3 - 3(-2)^2 - 24(-2) + 5 = 33\\).\nFor \\(x = 4\\), from (III) we get\n\\(f''(4) = 6(4) - 6 = 18 > 0\\)\n\\(\\therefore\\) At \\(x = 4\\), \\(f(x)\\) has a minimum value.\nFor minima of \\(f(x)\\), put \\(x = 4\\) in (I)\n\\(f(4) = (4)^3 - 3(4)^2 - 24(4) + 5 = -75\\)\n\\(\\therefore\\) Local maximum of \\(f(x)\\) is 33 when \\(x = -2\\)\nand\nLocal minimum of \\(f(x)\\) is \\(-75\\) when \\(x = 4\\)."
+  },
+  {
+    "ref": "2.4.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "EASY",
+    "stem": "A wire of length 120 cm is bent in the form of a rectangle. Find its dimensions if the area of the rectangle is maximum.",
+    "solution": "Let \\(x\\) cm and \\(y\\) cm be the length and the breadth of the rectangle. Perimeter of rectangle = 120 cm.\n\\(\\therefore\\) \\(2(x + y) = 120\\) so, \\(x + y = 60\\)\n\\(\\therefore\\) \\(y = 60 - x\\) \\(\\ldots\\) (I)\nLet \\(A\\) be the area of the rectangle\n\\(\\therefore\\) \\(A = xy = x(60 - x) = 60x - x^2\\) \\(\\ldots\\) [From (I)]\nDifferentiate w. r. t. \\(x\\).\n\\(\\dfrac{dA}{dx} = 60 - 2x\\) \\(\\ldots\\) (II)\nFor maximum area \\(\\dfrac{dA}{dx} = 0\\)\ni.e. \\(60 - 2x = 0 \\Rightarrow x = 30\\)\nDifferentiate (II) w. r. t. \\(x\\).\n\\(\\dfrac{d^2A}{dx^2} = -2\\) \\(\\ldots\\) (III)\nFor, \\(x = 30\\) from (III) we get,\n\\(\\left(\\dfrac{d^2A}{dx^2}\\right)_{x = 30} = -2 < 0\\)\nWhen, \\(x = 30\\), Area of the rectangle is maximum.\nPut \\(x = 30\\) in (I) we get \\(y = 60 - 30 = 30\\)\n\\(\\therefore\\) Area of the rectangle is maximum if length = breadth = 30 cm."
+  },
+  {
+    "ref": "2.4.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "A Rectangular sheet of paper has it area 24 sq. meters. The margin at the top and the bottom are 75 cm each and at the sides 50 cm each. What are the dimensions of the paper, if the area of the printed space is maximum ?",
+    "solution": "[Textbook misprint: the book prints the step \\(-1.5x + \\frac{24}{x^2} = 0 \\Rightarrow 1.5x^2 = 24\\). The leading term should be \\(-1.5\\), not \\(-1.5x\\) — the derivative established earlier gives \\(-1.5\\), and the printed conclusion \\(x^2 = 16 \\Rightarrow x = 4\\) follows only from \\(-1.5 + \\frac{24}{x^2} = 0\\). The final answer is correct.]\n\nLet \\(x\\) m and \\(y\\) m be the width and the length of the rectangular sheet of paper respectively. Area of the paper = 24 sq. m.\n\\(\\therefore\\) \\(xy = 24 \\Rightarrow y = \\dfrac{24}{x}\\) \\(\\ldots\\) (I)\nAfter leaving the margins, length of the printing space is \\((x - 1)\\) m and breadth of the printing space is \\((y - 1.5)\\) m.\nLet \\(A\\) be the area of the printing space\n\\(A = (x - 1)(y - 1.5) = (x - 1)\\left(\\dfrac{24}{x} - 1.5\\right)\\)\n\\(= 24 - 1.5x - \\dfrac{24}{x} + 1.5\\) \\(\\ldots\\) [ From (I)]\n\\(A = 25.5 - 1.5x - \\dfrac{24}{x}\\) \\(\\ldots\\) (II)\nDifferentiate w. r. t. \\(x\\).\n\\(\\dfrac{dA}{dx} = -1.5 + \\dfrac{24}{x^2}\\) \\(\\ldots\\) (III)\nFor maximum printing space \\(\\dfrac{dA}{dx} = 0\\)\ni.e. \\(-1.5x + \\dfrac{24}{x^2} = 0 \\Rightarrow 1.5x^2 = 24 \\Rightarrow x = \\pm 4, x \\neq -4\\)\n\\(\\therefore\\) \\(x = 4\\)\nDifferentiate (III) w. r. t. \\(x\\).\n\\(\\dfrac{d^2A}{dx^2} = -\\dfrac{48}{x^3}\\) \\(\\ldots\\) (IV)\nFor, \\(x = 4\\), from (IV) we get,\n\\(\\left(\\dfrac{d^2A}{dx^2}\\right)_{x = 4} = -\\dfrac{48}{(4)^3} < 0\\)\nWhen, \\(x = 4\\) Area of the rectangular printing space is maximum.\nPut \\(x = 4\\) in (I) we get \\(y = \\dfrac{24}{4} = 6\\)\n\\(\\therefore\\) Area of the printing space is maximum when width and length of sheet are 4 meter and 6 meter respectively."
+  },
+  {
+    "ref": "2.4.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "An open box is to be cut out of piece of square card of side 18 cm by cutting of equal squares from the corners and turning up the sides. Find the maximum volume of the box.",
+    "solution": "Let the side of each of the small squares cut be \\(x\\) cm, so that each side of the box to be made is \\((18 - 2x)\\) cm. and height \\(x\\) cm.\nLet \\(V\\) be the volume of the box.\n\\(V\\) = Area of the base \\(\\times\\) Height\n\\(= (18 - 2x)^2 x = (324 - 72x + 4x^2) x\\)\n\\(V = 4x^3 - 72x^2 + 324x\\) \\(\\ldots\\) (I)\nDifferentiate w. r. t. \\(x\\)\n\\(\\dfrac{dV}{dx} = 12x^2 - 144x + 324\\) \\(\\ldots\\) (II)\nFor maximum volume \\(\\dfrac{dV}{dx} = 0\\)\ni.e. \\(12x^2 - 144x + 324 = 0 \\Rightarrow x^2 - 12x + 27 = 0\\)\n\\((x - 3)(x - 9) = 0 \\Rightarrow x - 3 = 0\\) or \\(x - 9 = 0\\)\n\\(\\therefore\\) \\(x = 3\\) or \\(x = 9\\), but \\(x \\neq 9\\) \\(\\therefore\\) \\(x = 3\\)\nDifferentiate (II) w. r. t. \\(x\\)\n\\(\\dfrac{d^2V}{dx^2} = 24x - 144\\) \\(\\ldots\\) (III)\nFor, \\(x = 3\\) from (III) we get,\n\\(\\left(\\dfrac{d^2V}{dx^2}\\right)_{x = 3} = 24(3) - 144 = -72 < 0\\)\nVolume of the box is maximum when \\(x = 3\\).\nMaximum volume of the box\n\\(= (18 - 6)^2 (3) = 432\\) c.c."
+  },
+  {
+    "ref": "2.4.4 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Two sides of a triangle are given, find the angle between them such that the area of the triangle is maximum.",
+    "solution": "[Textbook misprint: the second-derivative evaluation prints \\(\\left(\\frac{d^2\\Delta}{dA^2}\\right)_{A = \\frac{\\pi}{2}} = -\\frac{bc}{2}\\sin\\frac{\\pi}{2} = -\\frac{bc}{a}\\). Since \\(\\sin\\frac{\\pi}{2} = 1\\), the value is \\(-\\frac{bc}{2}\\); the denominator \\(a\\) is a typesetting slip (\\(a\\) is the triangle's third side in the accompanying figure). The sign is still negative, so the conclusion \\(A = \\frac{\\pi}{2}\\) stands.]\n\nLet \\(ABC\\) be a triangle. Let the given sides be \\(AB = c\\) and \\(AC = b\\).\nLet \\(\\Delta\\) be the area of the triangle.\n\\(\\Delta = \\dfrac{1}{2} bc \\sin A\\) \\(\\ldots\\) (I)\nDifferentiate w. r. t. \\(A\\).\n\\(\\dfrac{d\\Delta}{dA} = \\dfrac{bc}{2} \\cos A\\) \\(\\ldots\\) (II)\nFor maximum area \\(\\dfrac{d\\Delta}{dA} = 0\\)\ni.e. \\(\\dfrac{bc}{2} \\cos A = 0 \\Rightarrow \\cos A = 0 \\Rightarrow A = \\dfrac{\\pi}{2}\\)\nDifferentiate (II) w. r. t. \\(A\\).\n\\(\\dfrac{d^2\\Delta}{dA^2} = -\\dfrac{bc}{2} \\sin A\\) \\(\\ldots\\) (III)\nFor, \\(A = \\dfrac{\\pi}{2}\\) from (III) we get,\n\\(\\left(\\dfrac{d^2\\Delta}{dA^2}\\right)_{A = \\frac{\\pi}{2}} = -\\dfrac{bc}{2} \\sin\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{-bc}{a} < 0\\)\nWhen, \\(A = \\dfrac{\\pi}{2}\\) Area of the triangle is maximum.\nHence, the area of the triangle is maximum when the angle between the given sides \\(\\dfrac{\\pi}{2}\\).\nNote : \\(\\sin A\\) is maximum (=1), when \\(A = \\dfrac{\\pi}{2}\\)"
+  },
+  {
+    "ref": "2.4.4 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "The slant side of a right circular cone is \\(l\\). Show that the semi-vertical angle of the cone of maximum volume is \\(\\tan^{-1}(\\sqrt{2})\\).",
+    "solution": "Let \\(x\\) be the height of the cone and \\(r\\) be the radius of the base.\nSo, \\(r^2 = l^2 - x^2\\) \\(\\ldots\\) (I)\nLet \\(V\\) be the volume of the cone.\n\\(V = \\dfrac{1}{3} \\pi r^2 x = \\dfrac{\\pi}{3} (l^2 - x^2) x\\)\n\\(\\therefore\\) \\(V = \\dfrac{\\pi}{3} (l^2 x - x^3)\\)\nDifferentiate w. r. t. \\(x\\)\n\\(\\dfrac{dV}{dx} = \\dfrac{\\pi}{3} (l^2 - 3x^2)\\) \\(\\ldots\\) (II)\nFor maximum volume \\(\\dfrac{dV}{dx} = 0\\)\ni.e. \\(\\dfrac{\\pi}{3} (l^2 - 3x^2) = 0 \\Rightarrow x^2 = \\dfrac{l^2}{3}\\)\n\\(x = \\pm \\dfrac{l}{\\sqrt{3}} \\Rightarrow x = \\dfrac{l}{\\sqrt{3}}\\) or \\(x = -\\dfrac{l}{\\sqrt{3}}\\) is the stataionary point but, \\(x \\neq -\\dfrac{l}{\\sqrt{3}}\\) \\(\\therefore\\) \\(x = \\dfrac{l}{\\sqrt{3}}\\)\nDifferentiate (II) w. r. t. \\(x\\)\n\\(\\left(\\dfrac{d^2V}{dx^2}\\right) = -2\\pi x\\) \\(\\ldots\\) (III)\nFor, \\(x = \\dfrac{l}{\\sqrt{3}}\\) from (III) we get,\n\\(\\left(\\dfrac{d^2V}{dx^2}\\right)_{x = \\frac{l}{\\sqrt{3}}} = -\\dfrac{2\\pi l}{\\sqrt{3}} < 0\\)\nVolume of the cone is maximum when height of the cone is \\(x = \\dfrac{l}{\\sqrt{3}}\\).\nPut \\(x = \\dfrac{l}{\\sqrt{3}}\\) in (I) we get, \\(r = \\sqrt{l^2 - \\left(\\dfrac{l}{\\sqrt{3}}\\right)^2} = \\dfrac{l\\sqrt{2}}{\\sqrt{3}}\\)\nLet \\(\\alpha\\) be the semi-vertical angle.\nThen \\(\\tan \\alpha = \\dfrac{r}{x} = \\dfrac{\\frac{l\\sqrt{2}}{\\sqrt{3}}}{\\frac{l}{\\sqrt{3}}} = \\sqrt{2}\\)\n\\(\\therefore\\) \\(\\alpha = \\tan^{-1}(\\sqrt{2})\\)"
+  },
+  {
+    "ref": "2.4.4 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Find the height of a covered box of fixed volume so that the total surface area of the box is minimum whose base is a rectangle with one side three times as long as the other.",
+    "solution": "Given that, box has a rectangular base with one side three times as long as other.\nLet \\(x\\) and \\(3x\\) be the sides of the rectangular base.\nLet \\(h\\) be the height of the box and \\(V\\) be its volume.\n\\(V = (x)(3x)(h) = 3x^2 h\\) \\(\\ldots\\) [Observe that \\(V\\) is constant]\nDifferentiate w. r. t. \\(x\\).\n\\(\\dfrac{dV}{dx} = 3x^2 \\dfrac{dh}{dx} + h \\dfrac{d}{dx} (3x^2)\\)\n\\(\\therefore\\) \\(3x^2 \\dfrac{dh}{dx} + 6xh = 0 \\Rightarrow \\dfrac{dh}{dx} = -\\dfrac{2h}{x}\\) \\(\\ldots\\) (I)\nLet \\(S\\) be the surface area of the box.\n\\(\\therefore\\) \\(S = (2 \\times 3x^2) + (2 \\times 3xh) + (2 \\times xh) = 6x^2 + 8xh\\)\nDifferentiate w. r. t. \\(x\\).\n\\(\\dfrac{dS}{dx} = 12x + 8\\left(x \\dfrac{dh}{dx} + h \\dfrac{d}{dx}(x)\\right)\\)\n\\(\\dfrac{dS}{dx} = 12x + 8\\left[x\\left(-\\dfrac{2h}{x}\\right) + h\\right]\\) \\(\\ldots\\) [ from (I) ]\n\\(= 12x + 8(-2h + h)\\)\n\\(\\therefore\\) \\(\\dfrac{dS}{dx} = 12x - 8h\\) \\(\\ldots\\) (II)\nFor minimum surface area\n\\(\\dfrac{dS}{dx} = 0 \\Rightarrow 12x - 8h = 0 \\Rightarrow h = \\dfrac{3x}{2}\\)\nDifferentiate (II) w. r. t. \\(x\\).\n\\(\\left(\\dfrac{d^2S}{dx^2}\\right) = 12 - 8 \\dfrac{dh}{dx} = 12 - 8\\left(-\\dfrac{2h}{x}\\right) = 12 + \\dfrac{16h}{x}\\) \\(\\ldots\\) (III) \\(\\ldots\\) [ from (I) ]\nBoth \\(x\\) and \\(h\\) are positive, from (III) we get,\n\\(\\left(\\dfrac{d^2S}{dx^2}\\right) = 12 + \\dfrac{16h}{x} > 0\\)\nSurface area of the box is minimum if height = \\(\\dfrac{3}{2} \\times\\) shorter side of base."
+  }
+]

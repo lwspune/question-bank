@@ -1,0 +1,44 @@
+[
+  {
+    "ref": "2.1.2 SolvedEx.1 (i)",
+    "setLabel": "2.1.2 SolvedEx.1",
+    "context": "Find the equations of tangent and normal to the curve at the given point on it.",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "difficulty": "EASY",
+    "stem": "\\(y = 2x^3 - x^2 + 2\\) at \\(\\left(\\frac{1}{2}, 2\\right)\\)",
+    "solution": "Given that : \\(y = 2x^3 - x^2 + 2\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}(2x^3 - x^2 + 2) = 6x^2 - 2x\\)\nSlope of tangent at \\(\\left(\\frac{1}{2}, 2\\right) = m = 6\\left(\\frac{1}{2}\\right)^2 - 2\\left(\\frac{1}{2}\\right)\\)\n\\(\\therefore m = \\frac{1}{2}\\)\nSlope of normal at \\(\\left(\\frac{1}{2}, 2\\right) = m' = -2\\)\nEquation of tangent is given by\n\\(y - 2 = \\frac{1}{2}\\left(x - \\frac{1}{2}\\right) \\Rightarrow 2y - 4 = \\frac{2x - 1}{2}\\)\n\\(4y - 8 = 2x - 1 \\Rightarrow 2x - 4y + 7 = 0\\)\nEquation of normal is given by\n\\(y - 2 = -2\\left(x - \\frac{1}{2}\\right) \\Rightarrow y - 2 = -2x + 1\\)\n\\(2x + y - 3 = 0\\)"
+  },
+  {
+    "ref": "2.1.2 SolvedEx.1 (ii)",
+    "setLabel": "2.1.2 SolvedEx.1",
+    "context": "Find the equations of tangent and normal to the curve at the given point on it.",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "difficulty": "MODERATE",
+    "stem": "\\(x^3 + 2x^2 y - 9xy = -2\\) at \\((2, 1)\\)",
+    "solution": "Given that : \\(x^3 + 2x^2 y - 9xy = -2\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(3x^2 + 2\\left(x^2 \\frac{dy}{dx} + y \\frac{d}{dx}(x^2)\\right) - 9\\left(x \\frac{dy}{dx} + y \\frac{d}{dx}(x)\\right) = 0\\)\n\\(3x^2 + 2x^2 \\frac{dy}{dx} + 4xy - 9x \\frac{dy}{dx} - 9y = 0\\)\n\\((2x^2 - 9x) \\frac{dy}{dx} = 9y - 4xy - 3x^2 \\therefore \\frac{dy}{dx} = \\frac{9y - 4xy - 3x^2}{2x^2 - 9x}\\)\nSlope of tangent at \\((2, 1)\\)\n\\(\\left(\\frac{dy}{dx}\\right)_{(2,\\, 1)} = m = \\frac{9(1) - 4(2)(1) - 3(4)}{2(4) - 9(1)} = \\frac{9 - 8 - 12}{8 - 9}\\)\n\\(m = \\frac{-11}{-1} \\therefore m = 11\\)\nSlope of normal at \\((2, 1) = m' = -\\frac{1}{11}\\)\nEquation of tangent is given by\n\\(y - 1 = 11(x - 2) \\Rightarrow 11x - y - 21 = 0\\)\nEquation of normal is given by\n\\(y - 1 = -\\frac{1}{11}(x - 2) \\Rightarrow 11y - 11 = -x + 2\\)\n\\(x + 11y - 13 = 0\\)"
+  },
+  {
+    "ref": "2.1.2 SolvedEx.1 (iii)",
+    "setLabel": "2.1.2 SolvedEx.1",
+    "context": "Find the equations of tangent and normal to the curve at the given point on it.",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "difficulty": "HARD",
+    "stem": "\\(x = 2 \\sin^3 \\theta\\), \\(y = 3 \\cos^3 \\theta\\) at \\(\\theta = \\frac{\\pi}{4}\\)",
+    "solution": "[Textbook misprint: in the normal-equation step the book prints \\(y - \\frac{3}{2\\sqrt{2}} = \\frac{2x}{2} - \\frac{2}{3\\sqrt{2}}\\). Expanding \\(\\frac{2}{3}\\left(x - \\frac{1}{\\sqrt{2}}\\right)\\) gives \\(\\frac{2x}{3}\\), not \\(\\frac{2x}{2}\\); the book's own next line uses \\(\\frac{2x}{3}\\), and the printed final answer is correct. The error is confined to that one intermediate line, preserved below as printed.]\n\nGiven that : \\(y = 3 \\cos^3 \\theta\\)\nDifferentiate \\(w.\\ r.\\ t.\\ \\theta\\)\n\\(\\frac{dy}{d\\theta} = 3 \\frac{d}{d\\theta} (\\cos \\theta)^3 = 9 \\cos^2 \\theta \\frac{d}{d\\theta} (\\cos \\theta)\\)\n\\(\\therefore \\frac{dy}{d\\theta} = -9 \\cos^2 \\theta \\sin \\theta\\)\nNow, \\(x = 2 \\sin^3 \\theta\\)\nDifferentiate \\(w.\\ r.\\ t.\\ \\theta\\)\n\\(\\frac{dx}{d\\theta} = 2 \\frac{d}{d\\theta} (\\sin \\theta)^3 = 6 \\sin^2 \\theta \\frac{d}{d\\theta} (\\sin \\theta)\\)\n\\(\\therefore \\frac{dx}{d\\theta} = 6 \\sin^2 \\theta \\cos \\theta\\)\nWe know that\n\\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = -\\frac{9 \\cos^2 \\theta \\sin \\theta}{6 \\sin^2 \\theta \\cos \\theta} = -\\frac{3}{2} \\cot \\theta\\)\nSlope of tangent at \\(\\theta = \\frac{\\pi}{4}\\) is\n\\(\\left(\\frac{dy}{dx}\\right)_{\\theta = \\frac{\\pi}{4}} = m = -\\frac{3}{2} \\cot\\left(\\frac{\\pi}{4}\\right) = -\\frac{3}{2}\\)\nSlope of normal at \\(\\left(\\theta = \\frac{\\pi}{4}\\right) = m' = \\frac{2}{3}\\)\nWhen, \\(\\theta = \\frac{\\pi}{4}\\)\n\\(x = 2 \\sin^3\\left(\\frac{\\pi}{4}\\right) = 2 \\left(\\frac{1}{\\sqrt{2}}\\right)^3 = \\frac{1}{\\sqrt{2}}\\)\n\\(y = 3 \\cos^3\\left(\\frac{\\pi}{4}\\right) = 3 \\left(\\frac{1}{\\sqrt{2}}\\right)^3 = \\frac{3}{2\\sqrt{2}}\\)\n\\(\\therefore\\) The point is \\(P = \\left(\\frac{1}{\\sqrt{2}}, \\frac{3}{2\\sqrt{2}}\\right)\\)\nEquation of tangent at \\(P\\) is given by\n\\(y - \\frac{3}{2\\sqrt{2}} = -\\frac{3}{2}\\left(x - \\frac{1}{\\sqrt{2}}\\right) \\Rightarrow y - \\frac{3}{2\\sqrt{2}} = -\\frac{3x}{2} + \\frac{3}{2\\sqrt{2}}\\)\n\\(\\frac{3x}{2} + y - \\frac{3}{\\sqrt{2}} = 0\\) i.e. \\(3x + 2y - 3\\sqrt{2} = 0\\)\nEquation of normal is given by\n\\(y - \\frac{3}{2\\sqrt{2}} = \\frac{2}{3}\\left(x - \\frac{1}{\\sqrt{2}}\\right) \\Rightarrow y - \\frac{3}{2\\sqrt{2}} = \\frac{2x}{2} - \\frac{2}{3\\sqrt{2}}\\)\n\\(\\frac{2x}{3} - y - \\frac{2}{3\\sqrt{2}} + \\frac{3}{2\\sqrt{2}} = 0\\)\ni.e. \\(4\\sqrt{2}x - 6\\sqrt{2}y + 5 = 0\\) \\(\\ldots\\) [ Multiply by \\(6\\sqrt{2}\\) ]"
+  },
+  {
+    "ref": "2.1.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "difficulty": "MODERATE",
+    "stem": "Find points on the curve given by \\(y = x^3 - 6x^2 + x + 3\\) where the tangents are parallel to the line \\(y = x + 5\\).",
+    "solution": "Equation of curve is \\(y = x^3 - 6x^2 + x + 3\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(\\frac{dy}{dx} = \\frac{d}{dx}(x^3 - 6x^2 + x + 3) = 3x^2 - 12x + 1\\)\nGiven that the tangent is parallel to \\(y = x + 5\\) whose slope is 1.\n\\(\\therefore\\) Slope of tangent \\(= \\frac{dy}{dx} = 1 \\Rightarrow 3x^2 - 12x + 1 = 1\\)\n\\(3x(x - 4) = 0\\) so, \\(x = 0\\) or \\(x = 4\\)\nWhen \\(x = 0\\), \\(y = (0)^3 - 6(0)^2 + (0) + 3 = 3\\)\nWhen \\(x = 4\\), \\(y = (4)^3 - 6(4)^2 + (4) + 3 = -25\\)\nSo the required points on the curve are \\((0, 3)\\) and \\((4, -25)\\)."
+  }
+]

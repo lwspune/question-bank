@@ -1,0 +1,228 @@
+[
+  {
+    "ref": "Ex 2.4 Q.1 (i)",
+    "verdict": "AGREE",
+    "our_answer": "Increasing on R (f' = 3(x-2)^2 >= 0, zero only at the isolated point x = 2)",
+    "book_answer": "Increasing for all x in R"
+  },
+  {
+    "ref": "Ex 2.4 Q.1 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "Decreasing on R (f' = -3(x-1)^2 <= 0, zero only at the isolated point x = 1)",
+    "book_answer": "Decreasing for all x in R"
+  },
+  {
+    "ref": "Ex 2.4 Q.1 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "Increasing wherever defined: increasing on (-inf, 0) and on (0, inf); f' = (x^2+1)/x^2 > 0 throughout the domain",
+    "book_answer": "Increasing for all x in R",
+    "note": "Precision difference, not a conflict. sympy: f' > 0 on Union((-inf,0),(0,inf)), f' = 0 nowhere. The book's phrase 'for all x in R' is loose on two counts (the domain is R\\{0}, and f is not increasing across the break: f(-1) = f(1) = 0 with -1 < 1). Our per-branch statement is the more careful one and says the same thing the book means (f' > 0 throughout the domain). Flagged for the maintainer only if a strict errata reading is wanted; on the rule that an isolated/excluded point is a precision matter, this is AGREE."
+  },
+  {
+    "ref": "Ex 2.4 Q.2 (i)",
+    "verdict": "AGREE",
+    "our_answer": "x in (-inf,-1) U (2,inf), i.e. x < -1 or x > 2",
+    "book_answer": "x < -1 and x > 2"
+  },
+  {
+    "ref": "Ex 2.4 Q.2 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "R with x != 1, i.e. (-inf,1) U (1,inf)",
+    "book_answer": "R - {1}",
+    "note": "Exact set match. f' = 3(x-1)^2, so f' > 0 iff x != 1 — this also independently confirms the key row is paired to the right sub-item."
+  },
+  {
+    "ref": "Ex 2.4 Q.2 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "x in (-inf,-2) U (6,inf), i.e. x < -2 or x > 6",
+    "book_answer": "x < -2 and x > 6"
+  },
+  {
+    "ref": "Ex 2.4 Q.3 (i)",
+    "verdict": "AGREE",
+    "our_answer": "x in (-1, 2)",
+    "book_answer": "-1 < x < 2"
+  },
+  {
+    "ref": "Ex 2.4 Q.3 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "x in (-5,0) U (0,5), i.e. -5 < x < 5 with x != 0",
+    "book_answer": "(-5, 5) - {0}",
+    "note": "Exact set match; both correctly excise x = 0, where f is undefined."
+  },
+  {
+    "ref": "Ex 2.4 Q.3 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "x in (2, 4)",
+    "book_answer": "x in (2, 4)"
+  },
+  {
+    "ref": "Ex 2.4 Q.4",
+    "verdict": "AGREE",
+    "our_answer": "(a) increasing on (-inf,-4) U (12,inf); (b) decreasing on (-4, 12)",
+    "book_answer": "(a) (-inf,-4] U [12,inf); (b) -4 <= x <= 12 i.e. [-4,12]",
+    "note": "Boundary-convention difference only, on the same critical points x = -4, 12 (sympy: f' > 0 on (-inf,-4)U(12,inf), f' < 0 on (-4,12), f' = 0 at {-4,12}). Q.4 asks plain 'Increasing/Decreasing' (not 'strictly'), so the book closes the intervals at the points where f' = 0 — and it is internally consistent about this, since Q.2(ii)/Q.3, which do say 'strictly', are printed open/excised. Our open intervals state a true fact but are the less inclusive form. This is the one row where a maintainer might reasonably choose to widen our answer to match the book's convention; neither side is wrong."
+  },
+  {
+    "ref": "Ex 2.4 Q.5",
+    "verdict": "AGREE",
+    "our_answer": "(a) x < -3 or x > 8; (b) -3 < x < 8",
+    "book_answer": "(a) x < -3 and x > 8; (b) -3 < x < 8"
+  },
+  {
+    "ref": "Ex 2.4 Q.6",
+    "verdict": "AGREE",
+    "our_answer": "(a) x in (-1,1); (b) x in (-inf,-1) U (1,inf)",
+    "book_answer": "(a) -1 < x < 1; (b) (-inf,-1) U (1,inf)"
+  },
+  {
+    "ref": "Ex 2.4 Q.7",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shown: f' = (3x-1)(3x+1)/(3x^2) > 0 on (1/3,1) and < 0 on (1/9,1/3)",
+    "book_answer": "(none — 'Show that'; the book prints no key for (7))",
+    "note": "Our derivation independently verified: sympy confirms f' > 0 on the whole of (1/3,1) and f' < 0 on the whole of (1/9,1/3); spot values f'(1/2) = 5/3 > 0 and f'(1/5) = -16/3 < 0 match our solution's own checks."
+  },
+  {
+    "ref": "Ex 2.4 Q.8",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shown: f' = 1 + sin x >= 0 for all x, zero only at the isolated points x = -pi/2 + 2n*pi",
+    "book_answer": "(none — 'Show that'; the book prints no key for (8))",
+    "note": "Verified: sympy minimum of 1 + sin x over R is 0, so f' >= 0 everywhere with isolated zeros."
+  },
+  {
+    "ref": "Ex 2.4 Q.9 (i)",
+    "verdict": "AGREE",
+    "our_answer": "Max = 36/25 at x = -3/5; Min = -16/27 at x = 1/3",
+    "book_answer": "Max = 36/25, Min = -16/27"
+  },
+  {
+    "ref": "Ex 2.4 Q.9 (ii)",
+    "verdict": "AGREE",
+    "our_answer": "Max = -3 at x = 1; Min = -128 at x = 6",
+    "book_answer": "Max = -3, Min = -128"
+  },
+  {
+    "ref": "Ex 2.4 Q.9 (iii)",
+    "verdict": "AGREE",
+    "our_answer": "Max = 20 at x = 2; Min = 16 at x = 4",
+    "book_answer": "Max = 20, Min = 16",
+    "note": "The local max value (20) exceeding the local min value (16) is correct for this cubic, not a defect; sympy confirms f''(2) = -6 < 0 and f''(4) = 6 > 0."
+  },
+  {
+    "ref": "Ex 2.4 Q.9 (iv)",
+    "verdict": "AGREE",
+    "our_answer": "Min = 8, attained at BOTH x = 2 and x = -2; no maximum (f -> inf as x -> 0 and as x -> +-inf)",
+    "book_answer": "Min = 8",
+    "note": "Confirmed by sympy: crit = {-2, 2}, f''(+-2) = 8 > 0 (both minima), f(2) = f(-2) = 8; numeric grid over x != 0 finds global min 8. The book prints only the extreme VALUE, which is correct for both points, and correctly prints no Max. Our answer additionally names both locations — extra completeness, not a conflict."
+  },
+  {
+    "ref": "Ex 2.4 Q.9 (v)",
+    "verdict": "AGREE",
+    "our_answer": "Min = -1/e at x = 1/e; no maximum",
+    "book_answer": "Min = -1/e"
+  },
+  {
+    "ref": "Ex 2.4 Q.9 (vi)",
+    "verdict": "AGREE",
+    "our_answer": "Max = 1/e at x = e; no minimum",
+    "book_answer": "Max = 1/e"
+  },
+  {
+    "ref": "Ex 2.4 Q.10",
+    "verdict": "AGREE",
+    "our_answer": "Parts 15 and 15; maximum product 225",
+    "book_answer": "15, 15"
+  },
+  {
+    "ref": "Ex 2.4 Q.11",
+    "verdict": "AGREE",
+    "our_answer": "Parts 10 and 10; minimum sum of squares 200",
+    "book_answer": "10, 10"
+  },
+  {
+    "ref": "Ex 2.4 Q.12",
+    "verdict": "AGREE",
+    "our_answer": "Dimensions 9 m x 9 m (a square); maximum area 81 sq. m",
+    "book_answer": "9",
+    "note": "The book prints the single dimension 9 (the rectangle is a square of side 9); sympy: A = x(18-x) has its only critical point at x = 9, A(9) = 81. Our answer reports both dimensions plus the area — extra completeness."
+  },
+  {
+    "ref": "Ex 2.4 Q.13",
+    "verdict": "AGREE",
+    "our_answer": "Maximum height 12.8, at t = 1.4",
+    "book_answer": "12.8",
+    "note": "sympy: crit t = 7/5, h = 64/5 = 12.8 exactly."
+  },
+  {
+    "ref": "Ex 2.4 Q.14",
+    "verdict": "AGREE",
+    "our_answer": "Base (length) sqrt(2), height (breadth) 1/sqrt(2); maximum area 1 sq. unit",
+    "book_answer": "l = sqrt(2) and b = 1/sqrt(2)",
+    "note": "sympy: A = 2x*sqrt(1-x^2) is maximal at x = sqrt(2)/2, giving base 2x = sqrt(2), height sqrt(1-x^2) = 1/sqrt(2), area 1. Book reports dimensions; we report dimensions AND the area — extra completeness."
+  },
+  {
+    "ref": "Ex 2.4 Q.15",
+    "verdict": "AGREE",
+    "our_answer": "Radius = a cm and Height = a cm; minimum sheet 3*pi*a^2 sq. cm",
+    "book_answer": "Radius = Height = a",
+    "note": "sympy: dS/dr = 0 at r = a, then h = a^3/a^2 = a, S_min = 3*pi*a^2. Book reports the dimensions; the extra S_min is ours."
+  },
+  {
+    "ref": "Ex 2.4 Q.16",
+    "verdict": "AGREE",
+    "our_answer": "The other two sides are 3 cm and 3 cm; maximum area 2*sqrt(5) sq. cm",
+    "book_answer": "3, 3"
+  },
+  {
+    "ref": "Ex 2.4 Q.17",
+    "verdict": "AGREE",
+    "our_answer": "Square base of side 8 cm, height 4 cm (8 x 8 x 4); largest volume 256 cu. cm",
+    "book_answer": "Side of square base = 8 cm, Height = 4 cm"
+  },
+  {
+    "ref": "Ex 2.4 Q.18",
+    "verdict": "AGREE",
+    "our_answer": "x = 75 items per day; maximum profit P = 4000",
+    "book_answer": "x = 75, P = 4000"
+  },
+  {
+    "ref": "Ex 2.4 Q.19",
+    "verdict": "AGREE",
+    "our_answer": "The numbers are 6 and 9 (6 squared, 9 cubed); maximum value 26244",
+    "book_answer": "6, 9",
+    "note": "sympy: F = x^2(15-x)^3 has crit {0, 6, 15}; only x = 6 is interior-admissible, F(6) = 26244; a numeric grid over (0,15) also peaks at x = 6. Our answer additionally states which number is squared and which cubed."
+  },
+  {
+    "ref": "Ex 2.4 Q.20",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shown: with xy = A fixed, P = 2(x + A/x) is minimal at x = sqrt(A), where y = x, so the rectangle is a square (least perimeter 4*sqrt(A))",
+    "book_answer": "(none — 'Show that'; the book prints no key for (20))"
+  },
+  {
+    "ref": "Ex 2.4 Q.21",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shown: least surface area gives V = 2*pi*r^3, hence h = V/(pi*r^2) = 2r = the diameter",
+    "book_answer": "(none — 'Show that'; the book prints no key for (21))"
+  },
+  {
+    "ref": "Ex 2.4 Q.22",
+    "verdict": "AGREE",
+    "our_answer": "4*pi*r^3/(3*sqrt(3)) = 4*sqrt(3)*pi*r^3/9 cu. cm",
+    "book_answer": "4*pi*r^3/(3*sqrt(3)) cm^3",
+    "note": "sympy: V = 2*pi*y*(r^2-y^2) is maximal at y = r/sqrt(3), V = 4*sqrt(3)*pi*r^3/9, and simplify(V - 4*pi*r^3/(3*sqrt(3))) == 0 — our rationalised form is identical to the book's, not a different answer."
+  },
+  {
+    "ref": "Ex 2.4 Q.23",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shown: dy/dx = x^2/((1+x)(2+x)^2) >= 0 for all x > -1, zero only at the isolated point x = 0",
+    "book_answer": "(none — 'Show that'; the book prints no key for (23))",
+    "note": "Verified: sympy simplifies dy/dx to exactly x^2/((x+1)(x+2)^2) and finds no point of (-1, inf) where dy/dx < 0."
+  },
+  {
+    "ref": "Ex 2.4 Q.24",
+    "verdict": "NO-BOOK-KEY",
+    "our_answer": "Shown: dy/dtheta = cos(theta)(4 - cos(theta))/(2 + cos(theta))^2 >= 0 on [0, pi/2], zero only at the endpoint theta = pi/2",
+    "book_answer": "(none — 'Prove that'; the book prints no key for (24))",
+    "note": "Verified: sympy confirms the identity for dy/dtheta and that its minimum on [0, pi/2] is 0 (attained only at theta = pi/2)."
+  }
+]

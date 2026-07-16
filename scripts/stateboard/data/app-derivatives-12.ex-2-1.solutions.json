@@ -1,0 +1,156 @@
+[
+  {
+    "id": "a253bf28-096a-4914-b5fa-9b4db36b5045",
+    "ref": "Ex 2.1 Q.1 (i)",
+    "solution": "First verify the point lies on the curve: at \\(x = 0\\), \\(y = 0^2 + 2e^0 + 2 = 0 + 2 + 2 = 4\\). So \\((0, 4)\\) is on the curve.\nDifferentiate \\(y = x^2 + 2e^x + 2\\) with respect to \\(x\\):\n\\(\\dfrac{dy}{dx} = 2x + 2e^x\\)\nSlope of the tangent at \\((0, 4)\\):\n\\(m = \\left(\\dfrac{dy}{dx}\\right)_{(0,\\,4)} = 2(0) + 2e^0 = 2\\)\nEquation of the tangent: \\(y - 4 = 2(x - 0)\\)\n\\(\\Rightarrow y = 2x + 4\\)\n\\(\\Rightarrow 2x - y + 4 = 0\\)\nSlope of the normal \\(= -\\dfrac{1}{m} = -\\dfrac{1}{2}\\)\nEquation of the normal: \\(y - 4 = -\\dfrac{1}{2}(x - 0)\\)\n\\(\\Rightarrow 2y - 8 = -x\\)\n\\(\\Rightarrow x + 2y - 8 = 0\\)\n\\(\\therefore\\) Tangent: \\(2x - y + 4 = 0\\);  Normal: \\(x + 2y - 8 = 0\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9e90c4ec-84fb-445a-a7d3-2c321cbcf2bc",
+    "ref": "Ex 2.1 Q.1 (ii)",
+    "solution": "First verify the point lies on the curve: \\(2^3 + 4^3 - 9(2)(4) = 8 + 64 - 72 = 0\\). So \\((2, 4)\\) is on the curve.\nDifferentiate \\(x^3 + y^3 - 9xy = 0\\) with respect to \\(x\\) (implicit differentiation, using the product rule on \\(9xy\\)):\n\\(3x^2 + 3y^2\\dfrac{dy}{dx} - 9\\left(y + x\\dfrac{dy}{dx}\\right) = 0\\)\n\\(\\Rightarrow 3x^2 + 3y^2\\dfrac{dy}{dx} - 9y - 9x\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow \\dfrac{dy}{dx}\\left(3y^2 - 9x\\right) = 9y - 3x^2\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{9y - 3x^2}{3y^2 - 9x} = \\dfrac{3y - x^2}{y^2 - 3x}\\)\nSlope of the tangent at \\((2, 4)\\):\n\\(m = \\dfrac{3(4) - 2^2}{4^2 - 3(2)} = \\dfrac{12 - 4}{16 - 6} = \\dfrac{8}{10} = \\dfrac{4}{5}\\)\nEquation of the tangent: \\(y - 4 = \\dfrac{4}{5}(x - 2)\\)\n\\(\\Rightarrow 5y - 20 = 4x - 8\\)\n\\(\\Rightarrow 4x - 5y + 12 = 0\\)\nSlope of the normal \\(= -\\dfrac{1}{m} = -\\dfrac{5}{4}\\)\nEquation of the normal: \\(y - 4 = -\\dfrac{5}{4}(x - 2)\\)\n\\(\\Rightarrow 4y - 16 = -5x + 10\\)\n\\(\\Rightarrow 5x + 4y - 26 = 0\\)\n\\(\\therefore\\) Tangent: \\(4x - 5y + 12 = 0\\);  Normal: \\(5x + 4y - 26 = 0\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "748df700-0013-4439-900c-0b52fdd1617e",
+    "ref": "Ex 2.1 Q.1 (iii)",
+    "solution": "First verify the point lies on the curve: \\(\\left(\\sqrt{3}\\right)^2 - \\sqrt{3}\\left(\\sqrt{3}\\right)(2) + 2(2)^2 = 3 - 6 + 8 = 5\\). So \\(\\left(\\sqrt{3},\\, 2\\right)\\) is on the curve.\nDifferentiate \\(x^2 - \\sqrt{3}xy + 2y^2 = 5\\) with respect to \\(x\\):\n\\(2x - \\sqrt{3}\\left(y + x\\dfrac{dy}{dx}\\right) + 4y\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow 2x - \\sqrt{3}y - \\sqrt{3}x\\dfrac{dy}{dx} + 4y\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow \\dfrac{dy}{dx}\\left(4y - \\sqrt{3}x\\right) = \\sqrt{3}y - 2x\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{\\sqrt{3}y - 2x}{4y - \\sqrt{3}x}\\)\nSlope of the tangent at \\(\\left(\\sqrt{3},\\, 2\\right)\\):\n\\(m = \\dfrac{\\sqrt{3}(2) - 2\\sqrt{3}}{4(2) - \\sqrt{3}\\left(\\sqrt{3}\\right)} = \\dfrac{2\\sqrt{3} - 2\\sqrt{3}}{8 - 3} = \\dfrac{0}{5} = 0\\)\nThe slope is \\(0\\), so the tangent is horizontal (parallel to the X-axis).\nEquation of the tangent: \\(y - 2 = 0(x - \\sqrt{3})\\)\n\\(\\Rightarrow y = 2\\)\nSince the tangent is horizontal, the normal is vertical (its slope is undefined), so it is a line of the form \\(x = \\) constant through \\(\\left(\\sqrt{3},\\, 2\\right)\\).\nEquation of the normal: \\(x = \\sqrt{3}\\)\n\\(\\therefore\\) Tangent: \\(y = 2\\);  Normal: \\(x = \\sqrt{3}\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "03c62112-431b-4410-b15d-8a34192cea31",
+    "ref": "Ex 2.1 Q.1 (iv)",
+    "solution": "First verify the point lies on the curve: \\(2(1)\\left(\\dfrac{\\pi}{2}\\right) + \\pi\\sin\\dfrac{\\pi}{2} = \\pi + \\pi = 2\\pi\\). So \\(\\left(1,\\, \\dfrac{\\pi}{2}\\right)\\) is on the curve.\nDifferentiate \\(2xy + \\pi\\sin y = 2\\pi\\) with respect to \\(x\\):\n\\(2\\left(y + x\\dfrac{dy}{dx}\\right) + \\pi\\cos y\\,\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow 2y + 2x\\dfrac{dy}{dx} + \\pi\\cos y\\,\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow \\dfrac{dy}{dx}\\left(2x + \\pi\\cos y\\right) = -2y\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{-2y}{2x + \\pi\\cos y}\\)\nSlope of the tangent at \\(\\left(1,\\, \\dfrac{\\pi}{2}\\right)\\). Note \\(\\cos\\dfrac{\\pi}{2} = 0\\):\n\\(m = \\dfrac{-2\\left(\\dfrac{\\pi}{2}\\right)}{2(1) + \\pi(0)} = \\dfrac{-\\pi}{2}\\)\nEquation of the tangent: \\(y - \\dfrac{\\pi}{2} = -\\dfrac{\\pi}{2}(x - 1)\\)\nMultiplying throughout by \\(2\\): \\(2y - \\pi = -\\pi x + \\pi\\)\n\\(\\Rightarrow \\pi x + 2y - 2\\pi = 0\\)\nSlope of the normal \\(= -\\dfrac{1}{m} = \\dfrac{2}{\\pi}\\)\nEquation of the normal: \\(y - \\dfrac{\\pi}{2} = \\dfrac{2}{\\pi}(x - 1)\\)\nMultiplying throughout by \\(2\\pi\\): \\(2\\pi y - \\pi^2 = 4(x - 1)\\)\n\\(\\Rightarrow 2\\pi y - \\pi^2 = 4x - 4\\)\n\\(\\Rightarrow 4x - 2\\pi y + \\pi^2 - 4 = 0\\)\n\\(\\therefore\\) Tangent: \\(\\pi x + 2y - 2\\pi = 0\\);  Normal: \\(4x - 2\\pi y + \\pi^2 - 4 = 0\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6189672c-3f31-43eb-902d-81c4ff07ddb7",
+    "ref": "Ex 2.1 Q.1 (v)",
+    "solution": "First verify the point lies on the curve. At \\(\\left(\\dfrac{\\pi}{4},\\, \\dfrac{\\pi}{2}\\right)\\):\nLHS \\(= \\dfrac{\\pi}{4}\\sin\\left(2 \\cdot \\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{4}\\sin\\pi = 0\\)\nRHS \\(= \\dfrac{\\pi}{2}\\cos\\left(2 \\cdot \\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{2}\\cos\\dfrac{\\pi}{2} = 0\\)\nLHS \\(=\\) RHS, so the point is on the curve.\nDifferentiate \\(x\\sin 2y = y\\cos 2x\\) with respect to \\(x\\) (product rule on both sides):\n\\(\\sin 2y + x \\cdot 2\\cos 2y \\cdot \\dfrac{dy}{dx} = \\dfrac{dy}{dx}\\cos 2x + y\\left(-2\\sin 2x\\right)\\)\nSubstitute \\(x = \\dfrac{\\pi}{4},\\ y = \\dfrac{\\pi}{2}\\), using \\(\\sin 2y = \\sin\\pi = 0\\), \\(\\cos 2y = \\cos\\pi = -1\\), \\(\\cos 2x = \\cos\\dfrac{\\pi}{2} = 0\\), \\(\\sin 2x = \\sin\\dfrac{\\pi}{2} = 1\\):\n\\(0 + \\dfrac{\\pi}{4} \\cdot 2(-1)\\dfrac{dy}{dx} = \\dfrac{dy}{dx}(0) + \\dfrac{\\pi}{2}(-2)(1)\\)\n\\(\\Rightarrow -\\dfrac{\\pi}{2}\\dfrac{dy}{dx} = -\\pi\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = 2\\)\nSo the slope of the tangent is \\(m = 2\\).\nEquation of the tangent: \\(y - \\dfrac{\\pi}{2} = 2\\left(x - \\dfrac{\\pi}{4}\\right)\\)\n\\(\\Rightarrow y - \\dfrac{\\pi}{2} = 2x - \\dfrac{\\pi}{2}\\)\n\\(\\Rightarrow 2x - y = 0\\)\nSlope of the normal \\(= -\\dfrac{1}{m} = -\\dfrac{1}{2}\\)\nEquation of the normal: \\(y - \\dfrac{\\pi}{2} = -\\dfrac{1}{2}\\left(x - \\dfrac{\\pi}{4}\\right)\\)\nMultiplying throughout by \\(8\\): \\(8y - 4\\pi = -4x + \\pi\\)\n\\(\\Rightarrow 4x + 8y - 5\\pi = 0\\)\n\\(\\therefore\\) Tangent: \\(2x - y = 0\\);  Normal: \\(4x + 8y - 5\\pi = 0\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1b72645f-5475-4ff7-a3f3-ce45f5b9a802",
+    "ref": "Ex 2.1 Q.1 (vi)",
+    "solution": "The curve is given parametrically. Find the point at \\(\\theta = \\dfrac{\\pi}{6}\\):\n\\(x = \\sin\\dfrac{\\pi}{6} = \\dfrac{1}{2}\\)\n\\(y = \\cos\\left(2 \\cdot \\dfrac{\\pi}{6}\\right) = \\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\)\nSo the point is \\(\\left(\\dfrac{1}{2},\\, \\dfrac{1}{2}\\right)\\).\nDifferentiate with respect to \\(\\theta\\):\n\\(\\dfrac{dx}{d\\theta} = \\cos\\theta\\),  \\(\\dfrac{dy}{d\\theta} = -2\\sin 2\\theta\\)\n\\(\\dfrac{dy}{dx} = \\dfrac{dy/d\\theta}{dx/d\\theta} = \\dfrac{-2\\sin 2\\theta}{\\cos\\theta}\\)\nAt \\(\\theta = \\dfrac{\\pi}{6}\\), using \\(\\sin\\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}\\) and \\(\\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\):\n\\(m = \\dfrac{-2\\left(\\dfrac{\\sqrt{3}}{2}\\right)}{\\dfrac{\\sqrt{3}}{2}} = \\dfrac{-\\sqrt{3}}{\\dfrac{\\sqrt{3}}{2}} = -2\\)\nEquation of the tangent: \\(y - \\dfrac{1}{2} = -2\\left(x - \\dfrac{1}{2}\\right)\\)\n\\(\\Rightarrow y - \\dfrac{1}{2} = -2x + 1\\)\nMultiplying throughout by \\(2\\): \\(2y - 1 = -4x + 2\\)\n\\(\\Rightarrow 4x + 2y - 3 = 0\\)\nSlope of the normal \\(= -\\dfrac{1}{m} = \\dfrac{1}{2}\\)\nEquation of the normal: \\(y - \\dfrac{1}{2} = \\dfrac{1}{2}\\left(x - \\dfrac{1}{2}\\right)\\)\nMultiplying throughout by \\(4\\): \\(4y - 2 = 2x - 1\\)\n\\(\\Rightarrow 2x - 4y + 1 = 0\\)\n\\(\\therefore\\) Tangent: \\(4x + 2y - 3 = 0\\);  Normal: \\(2x - 4y + 1 = 0\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5975a400-333d-4a95-9141-ce5dc931d057",
+    "ref": "Ex 2.1 Q.1 (vii)",
+    "solution": "The curve is given parametrically. Find the point at \\(t = 4\\):\n\\(x = \\sqrt{4} = 2\\)\n\\(y = 4 - \\dfrac{1}{\\sqrt{4}} = 4 - \\dfrac{1}{2} = \\dfrac{7}{2}\\)\nSo the point is \\(\\left(2,\\, \\dfrac{7}{2}\\right)\\).\nWrite \\(x = t^{1/2}\\) and \\(y = t - t^{-1/2}\\) and differentiate with respect to \\(t\\):\n\\(\\dfrac{dx}{dt} = \\dfrac{1}{2}t^{-1/2} = \\dfrac{1}{2\\sqrt{t}}\\)\n\\(\\dfrac{dy}{dt} = 1 + \\dfrac{1}{2}t^{-3/2} = 1 + \\dfrac{1}{2t\\sqrt{t}}\\)\nAt \\(t = 4\\):\n\\(\\dfrac{dx}{dt} = \\dfrac{1}{2\\sqrt{4}} = \\dfrac{1}{4}\\)\n\\(\\dfrac{dy}{dt} = 1 + \\dfrac{1}{2(4)\\sqrt{4}} = 1 + \\dfrac{1}{16} = \\dfrac{17}{16}\\)\n\\(m = \\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\dfrac{\\dfrac{17}{16}}{\\dfrac{1}{4}} = \\dfrac{17}{16} \\times 4 = \\dfrac{17}{4}\\)\nEquation of the tangent: \\(y - \\dfrac{7}{2} = \\dfrac{17}{4}(x - 2)\\)\nMultiplying throughout by \\(4\\): \\(4y - 14 = 17x - 34\\)\n\\(\\Rightarrow 17x - 4y - 20 = 0\\)\nSlope of the normal \\(= -\\dfrac{1}{m} = -\\dfrac{4}{17}\\)\nEquation of the normal: \\(y - \\dfrac{7}{2} = -\\dfrac{4}{17}(x - 2)\\)\nMultiplying throughout by \\(34\\): \\(34y - 119 = -8(x - 2) = -8x + 16\\)\n\\(\\Rightarrow 8x + 34y - 135 = 0\\)\n\\(\\therefore\\) Tangent: \\(17x - 4y - 20 = 0\\);  Normal: \\(8x + 34y - 135 = 0\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "87326f62-2630-490d-bf1d-a7f14d24aac0",
+    "ref": "Ex 2.1 Q.2",
+    "solution": "Write the given line \\(6x + 3y - 5 = 0\\) in slope form:\n\\(3y = -6x + 5 \\Rightarrow y = -2x + \\dfrac{5}{3}\\)\nSo the slope of the line is \\(-2\\).\nThe tangent is perpendicular to this line, so\nslope of the tangent \\(= -\\dfrac{1}{-2} = \\dfrac{1}{2}\\)\nNow differentiate the curve \\(y = \\sqrt{x - 3}\\):\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2\\sqrt{x - 3}}\\)\nSet this equal to the required slope:\n\\(\\dfrac{1}{2\\sqrt{x - 3}} = \\dfrac{1}{2}\\)\n\\(\\Rightarrow \\sqrt{x - 3} = 1\\)\n\\(\\Rightarrow x - 3 = 1\\)\n\\(\\Rightarrow x = 4\\)\nThe corresponding \\(y\\): \\(y = \\sqrt{4 - 3} = 1\\).\nCheck: at \\((4, 1)\\), \\(\\dfrac{dy}{dx} = \\dfrac{1}{2\\sqrt{1}} = \\dfrac{1}{2}\\), and \\(\\dfrac{1}{2} \\times (-2) = -1\\), confirming perpendicularity.\n\\(\\therefore\\) The required point is \\((4,\\, 1)\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "60b63718-ae91-4bcf-a913-9af3fad8b89d",
+    "ref": "Ex 2.1 Q.3",
+    "solution": "Write the given line \\(3x - y + 1 = 0\\) as \\(y = 3x + 1\\), so its slope is \\(3\\).\nThe tangents are parallel to this line, so the slope of each tangent must be \\(3\\).\nDifferentiate the curve \\(y = x^3 - 2x^2 - x\\):\n\\(\\dfrac{dy}{dx} = 3x^2 - 4x - 1\\)\nSet the slope equal to \\(3\\):\n\\(3x^2 - 4x - 1 = 3\\)\n\\(\\Rightarrow 3x^2 - 4x - 4 = 0\\)\n\\(\\Rightarrow 3x^2 - 6x + 2x - 4 = 0\\)\n\\(\\Rightarrow 3x(x - 2) + 2(x - 2) = 0\\)\n\\(\\Rightarrow (x - 2)(3x + 2) = 0\\)\n\\(\\Rightarrow x = 2\\) or \\(x = -\\dfrac{2}{3}\\)\nThere are two such points. Find \\(y\\) for each.\nWhen \\(x = 2\\): \\(y = 2^3 - 2(2)^2 - 2 = 8 - 8 - 2 = -2\\), giving \\((2,\\, -2)\\).\nWhen \\(x = -\\dfrac{2}{3}\\): \\(y = \\left(-\\dfrac{2}{3}\\right)^3 - 2\\left(-\\dfrac{2}{3}\\right)^2 - \\left(-\\dfrac{2}{3}\\right) = -\\dfrac{8}{27} - \\dfrac{8}{9} + \\dfrac{2}{3}\\)\n\\(= -\\dfrac{8}{27} - \\dfrac{24}{27} + \\dfrac{18}{27} = -\\dfrac{14}{27}\\), giving \\(\\left(-\\dfrac{2}{3},\\, -\\dfrac{14}{27}\\right)\\).\n\\(\\therefore\\) The required points are \\((2,\\, -2)\\) and \\(\\left(-\\dfrac{2}{3},\\, -\\dfrac{14}{27}\\right)\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "3bcf0811-25a0-49f7-819d-949ac2177c3e",
+    "ref": "Ex 2.1 Q.4",
+    "solution": "A tangent parallel to the X-axis has slope \\(0\\).\nDifferentiate \\(x^2 + y^2 - 2x - 4y + 1 = 0\\) with respect to \\(x\\):\n\\(2x + 2y\\dfrac{dy}{dx} - 2 - 4\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow \\dfrac{dy}{dx}\\left(2y - 4\\right) = 2 - 2x\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{2 - 2x}{2y - 4} = \\dfrac{1 - x}{y - 2}\\)\nSet \\(\\dfrac{dy}{dx} = 0\\):\n\\(1 - x = 0 \\Rightarrow x = 1\\)\nSubstitute \\(x = 1\\) into the equation of the curve to find the corresponding \\(y\\):\n\\((1)^2 + y^2 - 2(1) - 4y + 1 = 0\\)\n\\(\\Rightarrow 1 + y^2 - 2 - 4y + 1 = 0\\)\n\\(\\Rightarrow y^2 - 4y = 0\\)\n\\(\\Rightarrow y(y - 4) = 0\\)\n\\(\\Rightarrow y = 0\\) or \\(y = 4\\)\nSo the points of contact are \\((1,\\, 0)\\) and \\((1,\\, 4)\\). Since each tangent is horizontal, its equation is \\(y = \\) constant.\n(As a check, the curve is \\((x - 1)^2 + (y - 2)^2 = 4\\), a circle with centre \\((1, 2)\\) and radius \\(2\\); its horizontal tangents are at \\(y = 2 \\pm 2\\), i.e. \\(y = 0\\) and \\(y = 4\\).)\n\\(\\therefore\\) The required tangents are \\(y = 0\\) and \\(y = 4\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ff816d55-b5a9-436d-9d6f-b412e03b6dff",
+    "ref": "Ex 2.1 Q.5",
+    "solution": "Write the given line \\(x + 3y = 4\\) as \\(y = -\\dfrac{1}{3}x + \\dfrac{4}{3}\\), so its slope is \\(-\\dfrac{1}{3}\\).\nThe normals are parallel to this line, so\nslope of each normal \\(= -\\dfrac{1}{3}\\)\n\\(\\Rightarrow\\) slope of the corresponding tangent \\(= -\\dfrac{1}{-\\dfrac{1}{3}} = 3\\)\nDifferentiate \\(3x^2 - y^2 = 8\\) with respect to \\(x\\):\n\\(6x - 2y\\dfrac{dy}{dx} = 0\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{3x}{y}\\)\nSet the tangent slope equal to \\(3\\):\n\\(\\dfrac{3x}{y} = 3 \\Rightarrow y = x\\)\nSubstitute \\(y = x\\) into the curve:\n\\(3x^2 - x^2 = 8 \\Rightarrow 2x^2 = 8 \\Rightarrow x^2 = 4 \\Rightarrow x = \\pm 2\\)\nBoth signs are valid, so there are two points: \\((2,\\, 2)\\) and \\((-2,\\, -2)\\).\nNormal at \\((2, 2)\\) with slope \\(-\\dfrac{1}{3}\\):\n\\(y - 2 = -\\dfrac{1}{3}(x - 2)\\)\n\\(\\Rightarrow 3y - 6 = -x + 2\\)\n\\(\\Rightarrow x + 3y - 8 = 0\\)\nNormal at \\((-2, -2)\\) with slope \\(-\\dfrac{1}{3}\\):\n\\(y + 2 = -\\dfrac{1}{3}(x + 2)\\)\n\\(\\Rightarrow 3y + 6 = -x - 2\\)\n\\(\\Rightarrow x + 3y + 8 = 0\\)\n\\(\\therefore\\) The required normals are \\(x + 3y - 8 = 0\\) and \\(x + 3y + 8 = 0\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "e4c3fe4a-7439-433b-997f-cd8a7e630d44",
+    "ref": "Ex 2.1 Q.6",
+    "solution": "The line \\(y = 4x - 5\\) touches the curve \\(y^2 = ax^3 + b\\) at \\((2, 3)\\). Two conditions follow.\nCondition 1 - the point \\((2, 3)\\) lies on the curve:\n\\(3^2 = a(2)^3 + b\\)\n\\(\\Rightarrow 9 = 8a + b\\)  ... (1)\n(The point also lies on the line, as a check: \\(4(2) - 5 = 3\\). True.)\nCondition 2 - the slope of the curve at \\((2, 3)\\) equals the slope of the line, which is \\(4\\).\nDifferentiate \\(y^2 = ax^3 + b\\) with respect to \\(x\\):\n\\(2y\\dfrac{dy}{dx} = 3ax^2\\)\n\\(\\Rightarrow \\dfrac{dy}{dx} = \\dfrac{3ax^2}{2y}\\)\nAt \\((2, 3)\\):\n\\(\\dfrac{dy}{dx} = \\dfrac{3a(2)^2}{2(3)} = \\dfrac{12a}{6} = 2a\\)\nSet this equal to \\(4\\):\n\\(2a = 4 \\Rightarrow a = 2\\)  ... (2)\nSubstitute \\(a = 2\\) into (1):\n\\(9 = 8(2) + b = 16 + b\\)\n\\(\\Rightarrow b = 9 - 16 = -7\\)\n\\(\\therefore a = 2\\) and \\(b = -7\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "be0aa6cd-8d16-4f71-9e71-5ee08eb554cd",
+    "ref": "Ex 2.1 Q.7",
+    "solution": "The particle moves along \\(6y = x^3 + 2\\), so both \\(x\\) and \\(y\\) are functions of time \\(t\\).\n\"The \\(y\\)-coordinate is changing \\(8\\) times as fast as the \\(x\\)-coordinate\" means\n\\(\\dfrac{dy}{dt} = 8\\dfrac{dx}{dt}\\)\nDifferentiate \\(6y = x^3 + 2\\) with respect to \\(t\\):\n\\(6\\dfrac{dy}{dt} = 3x^2\\dfrac{dx}{dt}\\)\nSubstitute \\(\\dfrac{dy}{dt} = 8\\dfrac{dx}{dt}\\):\n\\(6\\left(8\\dfrac{dx}{dt}\\right) = 3x^2\\dfrac{dx}{dt}\\)\n\\(\\Rightarrow 48\\dfrac{dx}{dt} = 3x^2\\dfrac{dx}{dt}\\)\nSince the particle is moving, \\(\\dfrac{dx}{dt} \\neq 0\\), so we may divide by \\(\\dfrac{dx}{dt}\\):\n\\(48 = 3x^2\\)\n\\(\\Rightarrow x^2 = 16\\)\n\\(\\Rightarrow x = \\pm 4\\)\nBoth values are valid, so there are two points. Find \\(y\\) for each from \\(6y = x^3 + 2\\).\nWhen \\(x = 4\\): \\(6y = 4^3 + 2 = 64 + 2 = 66 \\Rightarrow y = 11\\), giving \\((4,\\, 11)\\).\nWhen \\(x = -4\\): \\(6y = (-4)^3 + 2 = -64 + 2 = -62 \\Rightarrow y = -\\dfrac{62}{6} = -\\dfrac{31}{3}\\), giving \\(\\left(-4,\\, -\\dfrac{31}{3}\\right)\\).\n\\(\\therefore\\) The required points are \\((4,\\, 11)\\) and \\(\\left(-4,\\, -\\dfrac{31}{3}\\right)\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "adb1335c-72da-4858-82f2-32bb3db7314d",
+    "ref": "Ex 2.1 Q.8",
+    "solution": "Let \\(r\\) be the radius and \\(S\\) the surface area of the spherical bubble at time \\(t\\).\nGiven: \\(\\dfrac{dr}{dt} = 0.02\\) cm/sec. Required: \\(\\dfrac{dS}{dt}\\) when \\(r = 5\\) cm.\nThe surface area of a sphere is\n\\(S = 4\\pi r^2\\)\nDifferentiate with respect to \\(t\\) (chain rule, since \\(r\\) is a function of \\(t\\)):\n\\(\\dfrac{dS}{dt} = 4\\pi \\cdot 2r \\cdot \\dfrac{dr}{dt} = 8\\pi r\\dfrac{dr}{dt}\\)\nSubstitute \\(r = 5\\) and \\(\\dfrac{dr}{dt} = 0.02\\):\n\\(\\dfrac{dS}{dt} = 8\\pi(5)(0.02) = 40\\pi \\times 0.02 = 0.8\\pi\\)\n\\(= \\dfrac{4\\pi}{5} \\approx 2.51\\) cm\\(^2\\)/sec\nThe answer is positive, so the surface area is indeed increasing.\n\\(\\therefore\\) The surface area is increasing at the rate of \\(0.8\\pi = \\dfrac{4\\pi}{5} \\approx 2.51\\) cm\\(^2\\)/sec.",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "7c775284-68ae-4902-884d-455afaf310ed",
+    "ref": "Ex 2.1 Q.9",
+    "solution": "Let \\(r\\), \\(S\\) and \\(V\\) be the radius, surface area and volume of the balloon at time \\(t\\).\nGiven: \\(\\dfrac{dS}{dt} = 2\\) cm\\(^2\\)/sec. Required: \\(\\dfrac{dV}{dt}\\) when \\(r = 6\\) cm.\nStep 1 - find \\(\\dfrac{dr}{dt}\\) from the surface-area rate.\n\\(S = 4\\pi r^2\\)\n\\(\\Rightarrow \\dfrac{dS}{dt} = 8\\pi r\\dfrac{dr}{dt}\\)\nAt \\(r = 6\\):\n\\(2 = 8\\pi(6)\\dfrac{dr}{dt} = 48\\pi\\dfrac{dr}{dt}\\)\n\\(\\Rightarrow \\dfrac{dr}{dt} = \\dfrac{2}{48\\pi} = \\dfrac{1}{24\\pi}\\) cm/sec\nStep 2 - use this in the volume rate.\n\\(V = \\dfrac{4}{3}\\pi r^3\\)\n\\(\\Rightarrow \\dfrac{dV}{dt} = \\dfrac{4}{3}\\pi \\cdot 3r^2 \\cdot \\dfrac{dr}{dt} = 4\\pi r^2\\dfrac{dr}{dt}\\)\nSubstitute \\(r = 6\\) and \\(\\dfrac{dr}{dt} = \\dfrac{1}{24\\pi}\\):\n\\(\\dfrac{dV}{dt} = 4\\pi(36)\\left(\\dfrac{1}{24\\pi}\\right) = \\dfrac{144\\pi}{24\\pi} = 6\\)\n\\(\\therefore\\) The volume is increasing at the rate of \\(6\\) cm\\(^3\\)/sec.",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9d121fea-102f-44ac-baab-ce49618fc81e",
+    "ref": "Ex 2.1 Q.10",
+    "solution": "Let \\(x\\) be the length of a side and \\(A\\) the area of the equilateral triangle at time \\(t\\).\nGiven: \\(\\dfrac{dx}{dt} = \\sqrt{2}\\) cm/sec. Required: \\(\\dfrac{dA}{dt}\\) when \\(x = 3\\) cm.\nThe area of an equilateral triangle of side \\(x\\) is\n\\(A = \\dfrac{\\sqrt{3}}{4}x^2\\)\nDifferentiate with respect to \\(t\\):\n\\(\\dfrac{dA}{dt} = \\dfrac{\\sqrt{3}}{4} \\cdot 2x \\cdot \\dfrac{dx}{dt} = \\dfrac{\\sqrt{3}}{2}x\\dfrac{dx}{dt}\\)\nSubstitute \\(x = 3\\) and \\(\\dfrac{dx}{dt} = \\sqrt{2}\\):\n\\(\\dfrac{dA}{dt} = \\dfrac{\\sqrt{3}}{2}(3)\\left(\\sqrt{2}\\right) = \\dfrac{3\\sqrt{3}\\sqrt{2}}{2} = \\dfrac{3\\sqrt{6}}{2}\\)\n\\(\\approx 3.67\\) cm\\(^2\\)/sec\n\\(\\therefore\\) The area is increasing at the rate of \\(\\dfrac{3\\sqrt{6}}{2} \\approx 3.67\\) cm\\(^2\\)/sec.",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ee0254ca-c375-4c64-8cf1-88eaab53405f",
+    "ref": "Ex 2.1 Q.11",
+    "solution": "Let \\(r\\), \\(V\\) and \\(S\\) be the radius, volume and surface area of the sphere at time \\(t\\).\nGiven: \\(\\dfrac{dV}{dt} = 20\\) cm\\(^3\\)/sec. Required: \\(\\dfrac{dS}{dt}\\) when \\(r = 5\\) cm.\nStep 1 - find \\(\\dfrac{dr}{dt}\\) from the volume rate.\n\\(V = \\dfrac{4}{3}\\pi r^3\\)\n\\(\\Rightarrow \\dfrac{dV}{dt} = 4\\pi r^2\\dfrac{dr}{dt}\\)\nAt \\(r = 5\\):\n\\(20 = 4\\pi(25)\\dfrac{dr}{dt} = 100\\pi\\dfrac{dr}{dt}\\)\n\\(\\Rightarrow \\dfrac{dr}{dt} = \\dfrac{20}{100\\pi} = \\dfrac{1}{5\\pi}\\) cm/sec\nStep 2 - use this in the surface-area rate.\n\\(S = 4\\pi r^2\\)\n\\(\\Rightarrow \\dfrac{dS}{dt} = 8\\pi r\\dfrac{dr}{dt}\\)\nSubstitute \\(r = 5\\) and \\(\\dfrac{dr}{dt} = \\dfrac{1}{5\\pi}\\):\n\\(\\dfrac{dS}{dt} = 8\\pi(5)\\left(\\dfrac{1}{5\\pi}\\right) = \\dfrac{40\\pi}{5\\pi} = 8\\)\n\\(\\therefore\\) The surface area is increasing at the rate of \\(8\\) cm\\(^2\\)/sec.",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "571cdf42-3033-4c8d-8449-250cdd18f7d0",
+    "ref": "Ex 2.1 Q.12",
+    "solution": "Let \\(x\\) be the edge and \\(V\\) the volume of the cube at time \\(t\\).\nThe edge is decreasing at \\(0.6\\) cm/sec, so the rate is negative:\n\\(\\dfrac{dx}{dt} = -0.6\\) cm/sec\nRequired: \\(\\dfrac{dV}{dt}\\) when \\(x = 2\\) cm.\nThe volume of a cube is\n\\(V = x^3\\)\nDifferentiate with respect to \\(t\\):\n\\(\\dfrac{dV}{dt} = 3x^2\\dfrac{dx}{dt}\\)\nSubstitute \\(x = 2\\) and \\(\\dfrac{dx}{dt} = -0.6\\):\n\\(\\dfrac{dV}{dt} = 3(2)^2(-0.6) = 12 \\times (-0.6) = -7.2\\) cm\\(^3\\)/sec\nThe negative sign confirms that the volume is decreasing.\n\\(\\therefore\\) The volume is decreasing at the rate of \\(7.2 = \\dfrac{36}{5}\\) cm\\(^3\\)/sec.",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5dac277e-8b53-47ce-901c-147746baf168",
+    "ref": "Ex 2.1 Q.13",
+    "solution": "Let the lamp post be \\(AB\\) of height \\(6\\) m. At time \\(t\\), let the man be at a distance \\(x\\) metres from the foot of the lamp post, and let \\(s\\) metres be the length of his shadow.\nGiven: \\(\\dfrac{dx}{dt} = 6\\) km/hr (he walks away from the post). Required: \\(\\dfrac{ds}{dt}\\).\nThe man (height \\(2\\) m) and the lamp post (height \\(6\\) m) are both vertical, and the tip of the shadow, the man's head and the lamp's top are collinear. This gives two similar triangles: the small triangle formed by the man and his shadow, and the large triangle formed by the lamp post and the whole distance from its foot to the shadow's tip \\((x + s)\\).\nBy similar triangles,\n\\(\\dfrac{2}{s} = \\dfrac{6}{x + s}\\)\n\\(\\Rightarrow 2(x + s) = 6s\\)\n\\(\\Rightarrow 2x + 2s = 6s\\)\n\\(\\Rightarrow 2x = 4s\\)\n\\(\\Rightarrow s = \\dfrac{x}{2}\\)\nDifferentiate with respect to \\(t\\):\n\\(\\dfrac{ds}{dt} = \\dfrac{1}{2}\\dfrac{dx}{dt}\\)\nSubstitute \\(\\dfrac{dx}{dt} = 6\\):\n\\(\\dfrac{ds}{dt} = \\dfrac{1}{2}(6) = 3\\) km/hr\nNote that the answer does not depend on \\(x\\) - the shadow lengthens at a constant rate.\n\\(\\therefore\\) The length of the shadow is increasing at the rate of \\(3\\) km/hr.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Draw a vertical lamp post of height 6 m at the left, a shorter vertical man of height 2 m at distance x to its right, and the ray from the lamp top through the man's head meeting the ground at the shadow tip; mark x (post to man) and s (man to tip), showing the two similar triangles."
+  },
+  {
+    "id": "4830cbdd-fff8-4dbf-97e6-64a0933b63d3",
+    "ref": "Ex 2.1 Q.14",
+    "solution": "At time \\(t\\), let \\(x\\) metres be the distance of the man from the foot of the lamp post and \\(s\\) metres the length of his shadow.\nThe man walks towards the lamp post, so \\(x\\) is decreasing:\n\\(\\dfrac{dx}{dt} = -\\dfrac{3}{4}\\) metre/sec\nThe man (height \\(1.5\\) m) and the lamp post (height \\(4.5\\) m) are vertical, and the lamp's top, the man's head and the shadow's tip are collinear, giving similar triangles:\n\\(\\dfrac{1.5}{s} = \\dfrac{4.5}{x + s}\\)\n\\(\\Rightarrow 1.5(x + s) = 4.5s\\)\n\\(\\Rightarrow 1.5x + 1.5s = 4.5s\\)\n\\(\\Rightarrow 1.5x = 3s\\)\n\\(\\Rightarrow s = \\dfrac{x}{2}\\)\n(i) Rate at which the shadow is shortening.\nDifferentiate \\(s = \\dfrac{x}{2}\\) with respect to \\(t\\):\n\\(\\dfrac{ds}{dt} = \\dfrac{1}{2}\\dfrac{dx}{dt} = \\dfrac{1}{2}\\left(-\\dfrac{3}{4}\\right) = -\\dfrac{3}{8}\\) metre/sec\nThe negative sign shows the shadow is shortening.\n(ii) Rate at which the tip of the shadow is moving.\nLet \\(u\\) be the distance of the tip of the shadow from the foot of the lamp post. Then\n\\(u = x + s = x + \\dfrac{x}{2} = \\dfrac{3x}{2}\\)\nDifferentiate with respect to \\(t\\):\n\\(\\dfrac{du}{dt} = \\dfrac{3}{2}\\dfrac{dx}{dt} = \\dfrac{3}{2}\\left(-\\dfrac{3}{4}\\right) = -\\dfrac{9}{8}\\) metre/sec\nThe negative sign shows the tip is moving towards the lamp post.\n\\(\\therefore\\) (i) The shadow is shortening at the rate of \\(\\dfrac{3}{8}\\) metre/sec.\n(ii) The tip of the shadow is moving towards the lamp post at the rate of \\(\\dfrac{9}{8}\\) metre/sec.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Draw a vertical lamp post of height 4.5 m, a vertical man of height 1.5 m at distance x from its foot walking towards it (arrow pointing at the post), and the ray from the lamp top through the man's head down to the shadow tip; label x, the shadow s beyond the man, and the tip distance x + s from the post."
+  },
+  {
+    "id": "99de494d-d64a-4852-8c2e-9f1a5593b576",
+    "ref": "Ex 2.1 Q.15",
+    "solution": "At time \\(t\\), let \\(x\\) metres be the distance of the foot of the ladder from the wall and \\(y\\) metres the height of the top of the ladder above the ground.\nThe wall is vertical and the ground horizontal, so by Pythagoras' theorem (the ladder length \\(10\\) m is constant):\n\\(x^2 + y^2 = 10^2 = 100\\)\nGiven: \\(\\dfrac{dx}{dt} = 1.2\\) m/sec (the foot is pulled away from the wall). Required: \\(\\dfrac{dy}{dt}\\) when \\(x = 6\\) m.\nFirst find \\(y\\) when \\(x = 6\\):\n\\(6^2 + y^2 = 100 \\Rightarrow y^2 = 100 - 36 = 64 \\Rightarrow y = 8\\) m (taking the positive root, as \\(y\\) is a height)\nDifferentiate \\(x^2 + y^2 = 100\\) with respect to \\(t\\):\n\\(2x\\dfrac{dx}{dt} + 2y\\dfrac{dy}{dt} = 0\\)\n\\(\\Rightarrow \\dfrac{dy}{dt} = -\\dfrac{x}{y}\\dfrac{dx}{dt}\\)\nSubstitute \\(x = 6\\), \\(y = 8\\), \\(\\dfrac{dx}{dt} = 1.2\\):\n\\(\\dfrac{dy}{dt} = -\\dfrac{6}{8}(1.2) = -\\dfrac{3}{4}(1.2) = -0.9\\) m/sec\nThe negative sign shows that \\(y\\) is decreasing, i.e. the top of the ladder is sliding down.\n\\(\\therefore\\) The top of the ladder is sliding down the wall at the rate of \\(0.9 = \\dfrac{9}{10}\\) metre/sec.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Draw a right-angled triangle: a vertical wall as the left side, the ground as the base, and the 10 m ladder as the hypotenuse; label the base x (with an arrow showing the foot pulled away from the wall) and the vertical side y (with an arrow showing the top sliding down)."
+  },
+  {
+    "id": "ad3f80f8-cbf8-426d-968a-aac3a0244d79",
+    "ref": "Ex 2.1 Q.16",
+    "solution": "Let \\(h\\) cm be the depth of the water (measured along the axis) and \\(r\\) cm the radius of the water surface at time \\(t\\), and let \\(V\\) be the volume of water.\nGiven: \\(\\dfrac{dh}{dt} = 1\\) cm/sec. Required: \\(\\dfrac{dV}{dt}\\) when \\(h = 2\\) cm.\nStep 1 - express \\(r\\) in terms of \\(h\\).\nThe water forms a cone similar to the hollow cone, with semi-vertical angle \\(30^\\circ\\). In the right-angled triangle formed by the axis, the radius and the slant side,\n\\(\\tan 30^\\circ = \\dfrac{r}{h}\\)\n\\(\\Rightarrow r = h\\tan 30^\\circ = \\dfrac{h}{\\sqrt{3}}\\)\nStep 2 - express \\(V\\) as a function of \\(h\\) alone.\n\\(V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi\\left(\\dfrac{h}{\\sqrt{3}}\\right)^2 h = \\dfrac{1}{3}\\pi \\cdot \\dfrac{h^2}{3} \\cdot h = \\dfrac{\\pi h^3}{9}\\)\nStep 3 - differentiate with respect to \\(t\\).\n\\(\\dfrac{dV}{dt} = \\dfrac{\\pi}{9} \\cdot 3h^2 \\cdot \\dfrac{dh}{dt} = \\dfrac{\\pi h^2}{3}\\dfrac{dh}{dt}\\)\nSubstitute \\(h = 2\\) and \\(\\dfrac{dh}{dt} = 1\\):\n\\(\\dfrac{dV}{dt} = \\dfrac{\\pi(2)^2}{3}(1) = \\dfrac{4\\pi}{3}\\)\n\\(\\approx 4.19\\) cm\\(^3\\)/sec\n\\(\\therefore\\) The volume of water is increasing at the rate of \\(\\dfrac{4\\pi}{3} \\approx 4.19\\) cm\\(^3\\)/sec.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Draw an inverted (vertex-down) hollow cone with its vertical axis marked, the semi-vertical angle 30 degrees at the vertex between the axis and the slant side, water filling the lower part to depth h along the axis, and the water surface radius r drawn horizontally from the axis to the slant side."
+  }
+]
