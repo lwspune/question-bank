@@ -15,7 +15,7 @@ Outputs:
   scripts/stateboard/out/solution-diagrams/_montage.png (verify sheet)
   scripts/stateboard/data/pair-lines-12.solution-images.json  (ref -> png manifest)
 """
-import os, json, math, re, sys
+import os, json, math, re, sys, glob
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -68,11 +68,25 @@ def constraint(A, B, op, C, label="", color=BLUE, dashed=False):
 class Canvas:
     def __init__(self, spec):
         self.spec = spec
-        self.xr = spec["xr"]; self.yr = spec["yr"]
         self.w, self.h = W * SS, H * SS
+        self.m = MARGIN * SS
+        xr = list(spec["xr"]); yr = list(spec["yr"])
+        # `equal_aspect` (physical-geometry figures): make the x and y scales equal so
+        # a circle renders as a CIRCLE and a right angle looks square. px() maps xr/yr
+        # to the drawable box independently, so without this a semicircular window
+        # comes out an ellipse. Only ever EXPANDS a range (never crops the author's
+        # intended view). Default OFF — the coordinate-plane chapters (LP, area
+        # regions) deliberately use their own aspect and must not change.
+        if spec.get("equal_aspect"):
+            target = (self.w - 2 * self.m) / (self.h - 2 * self.m)   # required dx/dy
+            dx = xr[1] - xr[0]; dy = yr[1] - yr[0]
+            if dx / dy < target:
+                need = dy * target; c = (xr[0] + xr[1]) / 2.0; xr = [c - need / 2, c + need / 2]
+            else:
+                need = dx / target; c = (yr[0] + yr[1]) / 2.0; yr = [c - need / 2, c + need / 2]
+        self.xr = tuple(xr); self.yr = tuple(yr)
         self.img = Image.new("RGBA", (self.w, self.h), (255, 255, 255, 255))
         self.d = ImageDraw.Draw(self.img, "RGBA")
-        self.m = MARGIN * SS
         self.f = _font(15 * SS)
         self.fs = _font(13 * SS)
 
@@ -228,11 +242,17 @@ class Canvas:
     def conic(self, c):
         # circle (a=b=r) or ellipse, drawn parametrically so the px transform's
         # unequal x/y scaling is respected (d.ellipse would distort it).
-        th = np.linspace(0, 2 * np.pi, 360)
+        # `t0`/`t1` (DEGREES, default 0..360) draw a partial ARC — a semicircular
+        # window top, a dome, a sphere's visible profile.
+        t0 = float(c.get("t0", 0.0)); t1 = float(c.get("t1", 360.0))
+        th = np.linspace(math.radians(t0), math.radians(t1), 360)
         a = c.get("r", c.get("a")); b = c.get("r", c.get("b"))
         xs = c["cx"] + a * np.cos(th); ys = c["cy"] + b * np.sin(th)
         pts = [self.px(float(x), float(y)) for x, y in zip(xs, ys)]
-        self._polyline(pts + [pts[0]], c.get("color", BLUE), 3 * SS)
+        full = abs(t1 - t0) >= 359.9
+        if c.get("close", full):
+            pts = pts + [pts[0]]
+        self._polyline(pts, c.get("color", BLUE), 3 * SS)
         if c.get("label"):
             tx, ty = self.px(c["cx"], c["cy"] + b)
             self.d.text((tx + 4 * SS, ty - 16 * SS), c["label"], font=self.fs, fill=c.get("color", BLUE))
@@ -249,6 +269,43 @@ class Canvas:
         bot = [self.px(float(x), float(y)) for x, y in zip(xs, los)]
         self.d.polygon(top + bot[::-1], fill=SHADE)
 
+    # ── Finite-geometry support (Application of Derivatives: optimisation setups —
+    #    cones, boxes, ladders, windows). Unlike `lines` (infinite, clipped to the
+    #    viewport) these are SEGMENTS between two given points, which is what a
+    #    physical figure is made of. Such figures also usually want `axes: false`.
+    def segment(self, s):
+        p = self.px(s["x1"], s["y1"]); q = self.px(s["x2"], s["y2"])
+        color = s.get("color", BLUE)
+        if s.get("dashed"):
+            self._dashed(p, q, color, 3 * SS)
+        else:
+            self.d.line([p, q], fill=color, width=3 * SS)
+        if s.get("label"):
+            mx, my = (p[0] + q[0]) / 2, (p[1] + q[1]) / 2
+            dx = s.get("dx", 6) * SS; dy = s.get("dy", -18) * SS
+            self.d.text((mx + dx, my + dy), s["label"], font=self.fs, fill=color)
+
+    def poly(self, pl):
+        # An OUTLINED polygon/polyline (spec["polygon"] only shades — this draws edges).
+        pts = [self.px(x, y) for x, y in pl["pts"]]
+        if pl.get("close", True):
+            pts = pts + [pts[0]]
+        color = pl.get("color", BLUE)
+        if pl.get("dashed"):
+            for i in range(len(pts) - 1):
+                self._dashed(pts[i], pts[i + 1], color, 3 * SS)
+        else:
+            self._polyline(pts, color, 3 * SS)
+
+    def rightangle(self, ra):
+        # Small square mark at `xy`, spanned by unit directions u and v.
+        O = np.array([ra["x"], ra["y"]], dtype=float)
+        u = np.array(ra["u"], dtype=float); v = np.array(ra["v"], dtype=float)
+        u = u / np.linalg.norm(u); v = v / np.linalg.norm(v)
+        s = float(ra.get("size", 0.22))
+        pts = [self.px(*(O + u * s)), self.px(*(O + u * s + v * s)), self.px(*(O + v * s))]
+        self._polyline(pts, ra.get("color", GRAY), 2 * SS)
+
     def point(self, p):
         x, y = self.px(p["x"], p["y"])
         r = 4 * SS
@@ -259,30 +316,59 @@ class Canvas:
 
     def caption(self):
         cap = self.spec.get("caption", "")
-        if cap:
-            x, y = 8 * SS, 8 * SS
-            tw = self.d.textlength(cap, font=self.fs)
-            th = 16 * SS
-            # opaque white pad so the caption stays readable over any line
-            self.d.rectangle([x - 3 * SS, y - 2 * SS, x + tw + 3 * SS, y + th], fill=(255, 255, 255, 235))
-            self.d.text((x, y), cap, font=self.fs, fill=(60, 60, 60))
+        if not cap:
+            return
+        x, y = 8 * SS, 8 * SS
+        budget = self.w - 16 * SS
+        # WRAP on word boundaries — the caption used to be drawn as one unwrapped
+        # line, so a long one silently clipped at the right edge (one shipped
+        # Linear-Programming diagram does exactly that). Short captions are
+        # untouched: they stay a single line, byte-identical to before.
+        words = cap.split()
+        lines, cur = [], ""
+        for w in words:
+            trial = (cur + " " + w).strip()
+            if cur and self.d.textlength(trial, font=self.fs) > budget:
+                lines.append(cur); cur = w
+            else:
+                cur = trial
+        if cur:
+            lines.append(cur)
+        lh = 16 * SS
+        widest = max(self.d.textlength(t, font=self.fs) for t in lines)
+        # opaque white pad so the caption stays readable over any line
+        self.d.rectangle([x - 3 * SS, y - 2 * SS, x + widest + 3 * SS, y + lh * len(lines)],
+                         fill=(255, 255, 255, 235))
+        for i, t in enumerate(lines):
+            self.d.text((x, y + i * lh), t, font=self.fs, fill=(60, 60, 60))
 
     def render(self):
         for s in self.spec.get("shade", []):   # shaded region under/between curves (drawn first)
             self.shade_region(s)
         if self.spec.get("polygon"):
             self.polygon(self.spec["polygon"])
+        for pg in self.spec.get("shade_polys", []):   # extra shaded polygons (fill only)
+            self.polygon(pg)
         if self.spec.get("feasible"):
             self.feasible(self.spec["feasible"])
-        self.axes()
+        # `axes: false` for physical-geometry figures (a cone's axial section or a
+        # ladder against a wall has no X/Y axes — drawing them is noise).
+        if self.spec.get("axes", True):
+            self.axes()
         for L in self.spec.get("lines", []):
             self.line(L)
+        for s in self.spec.get("segments", []):
+            self.segment(s)
+        for pl in self.spec.get("polys", []):
+            self.poly(pl)
         for cv in self.spec.get("curves", []):
             self.curve(cv)
         for c in self.spec.get("conics", []):
             self.conic(c)
         for p in self.spec.get("points", []):
             self.point(p)
+        for ra in self.spec.get("rightangles", []):
+            self.rightangle(ra)
         self.caption()
         return self.img.resize((W, H), Image.LANCZOS).convert("RGB")
 
@@ -472,11 +558,68 @@ def build_app_integration_specs():
     return specs
 
 
+def build_app_derivatives_specs():
+    # Ch.2 Application of Derivatives diagrams are DATA-DRIVEN. Unlike LP (feasible
+    # regions) and App-of-Definite-Integration (area regions) — where the figure IS
+    # the answer and lives on a coordinate plane — these are the physical SETUP of an
+    # optimisation/related-rate problem: a cone's axial section, a box net, a ladder
+    # on a wall, a semicircular window. So they lean on `segments` (finite, not the
+    # infinite `lines`), arc `conics` (t0/t1), outlined `polys`, and `axes: false`.
+    # Each entry: {ref, xr, yr, caption, axes?, segments:[{x1,y1,x2,y2,label,color,
+    #   dashed,dx,dy}], polys:[{pts,color,close,dashed}], conics:[{cx,cy,r|a,b,t0,t1}],
+    #   curves:[{expr,dom}], shade_polys:[[[x,y],..]], points:[{x,y,label,dx,dy}],
+    #   rightangles:[{x,y,u,v,size}]}.
+    # GOTCHA (bit an authoring agent): `polys` are drawn AFTER `segments` (see
+    # Canvas.render), so a closed poly silently OVERDRAWS a coloured highlight
+    # segment sharing that edge — the label then names a colour that isn't on
+    # screen. To highlight individual edges, draw them all as `segments` and skip
+    # the poly, rather than layering one over the other.
+    # Globs part-files (`…diagram-specs.json` + `…diagram-specs.<group>.json`) so
+    # parallel authoring agents can each own one without clobbering the others.
+    parts = sorted(glob.glob(os.path.join(HERE, "data", "app-derivatives-12.diagram-specs*.json")))
+    raw = []
+    seen = set()
+    for p in parts:
+        for r in json.load(open(p, encoding="utf-8")):
+            if r["ref"] in seen:
+                raise SystemExit(f"duplicate diagram spec for ref {r['ref']!r} (in {os.path.basename(p)})")
+            seen.add(r["ref"]); raw.append(r)
+    if not raw:
+        return []
+    col = lambda name: _COLORS.get(name, BLUE)
+    specs = []
+    for r in raw:
+        # equal_aspect defaults ON here: these are physical figures, so circles must
+        # be circular and right angles square.
+        spec = {"ref": r["ref"], "xr": tuple(r["xr"]), "yr": tuple(r["yr"]),
+                "caption": r.get("caption", ""), "axes": r.get("axes", True),
+                "equal_aspect": r.get("equal_aspect", True)}
+        if r.get("segments"):
+            spec["segments"] = [{**s, "color": col(s.get("color", "blue"))} for s in r["segments"]]
+        if r.get("polys"):
+            spec["polys"] = [{**pl, "color": col(pl.get("color", "blue"))} for pl in r["polys"]]
+        if r.get("conics"):
+            spec["conics"] = [{**c, "color": col(c.get("color", "blue"))} for c in r["conics"]]
+        if r.get("curves"):
+            spec["curves"] = [dict(expr=c["expr"], dom=c["dom"], label=c.get("label", ""), color=col(c.get("color", "blue"))) for c in r["curves"]]
+        if r.get("shade_polys"):
+            spec["shade_polys"] = [[tuple(pt) for pt in pg] for pg in r["shade_polys"]]
+        if r.get("lines"):
+            spec["lines"] = [ln(l["A"], l["B"], l["C"], l.get("label", ""), col(l.get("color", "blue")), l.get("dashed", False)) for l in r["lines"]]
+        if r.get("points"):
+            spec["points"] = [dict(x=pt["x"], y=pt["y"], label=pt.get("label", ""), dx=pt.get("dx", 8), dy=pt.get("dy", -18)) for pt in r["points"]]
+        if r.get("rightangles"):
+            spec["rightangles"] = r["rightangles"]
+        specs.append(spec)
+    return specs
+
+
 # chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
 SPEC_BUILDERS = {
     "pair-lines-12": build_pair_lines_specs,
     "linear-prog-12": build_linear_prog_specs,
     "app-def-integration-12": build_app_integration_specs,
+    "app-derivatives-12": build_app_derivatives_specs,
 }
 
 

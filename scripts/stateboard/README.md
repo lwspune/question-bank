@@ -126,9 +126,35 @@ PDF only arrives later, run it as a post-flip pass (it's idempotent).
 - **Figures the student must read** (circuits, diagrams) → `snap-crop.ts` + `attach-images.ts`
   (ink-bounding via the shared `scripts/lib/figures/snapcrop.py`; montage-verify — never trust an
   agent's self-verify of its own crop). See [[figure-snapcrop-verify]].
-- **Authored SOLUTION diagrams** (`diagramWouldHelp` from step 5 — geometry, feasible regions) →
-  add specs to `render_solution_diagrams.py` (Pillow, deterministic), montage-verify each against
-  its stem, attach via `attach-solution-image.ts` (migration 0042).
+- **Authored SOLUTION diagrams** (`diagramWouldHelp` from step 5) → add specs, render, montage-verify
+  each against its stem, attach via `attach-solution-image.ts` (migration 0042).
+
+  **Decide with this line, not the flag count:** build where **the figure IS the answer** — LP's
+  feasible regions (65), App-of-Def-Integration's area regions (40), Pair-of-Lines' constructions
+  (20). Skip where the figure is only the SETUP and the answer is a number, and the prose already
+  defines every variable — Vectors + Line-and-Planes shipped without any. **The gating question is
+  "is any STEM unanswerable without the figure?"**, not "would a picture be nice".
+
+  Two renderer families now exist, `SPEC_BUILDERS[chapterId]` picks per chapter, and all are
+  DATA-DRIVEN (authoring agents emit `data/<id>.diagram-specs*.json`; the App-of-Derivatives builder
+  globs part-files so parallel agents don't clobber each other, and errors on a duplicate ref):
+  - **Coordinate-plane** (LP, area regions): `lines` (INFINITE, clipped to the viewport), `feasible`
+    (Sutherland-Hodgman half-plane clip), `curves` (`y=f(x)` exprs), `shade`, `conics`.
+  - **Physical geometry** (App-of-Derivatives — cones, boxes, ladders, windows): **`segments`**
+    (FINITE, between two points — `lines` is useless here), `axes:false`, arc `conics` (`t0`/`t1`
+    in degrees), outlined `polys`, `rightangles`.
+    - **Set `equal_aspect` (default ON for that builder).** `px()` maps xr/yr to the drawable box
+      INDEPENDENTLY, so without it a circle renders as an ellipse and a right angle isn't square.
+      It only ever EXPANDS a range. It is OFF globally so the coordinate-plane chapters are untouched.
+    - **`polys` draw AFTER `segments`** — a closed poly silently overdraws a coloured highlight edge,
+      so the label names a colour that isn't on screen. Highlight edges with `segments` only.
+    - **Draw 3-D solids as a 2-D AXIAL CROSS-SECTION** (there are no 3-D primitives, and the
+      cross-section is what the maths actually uses). Say so in the caption. A NET beats an oblique
+      projection where one exists — a net is literally truthful, an oblique sketch is foreshortened.
+  - **Geometry must be TRUTHFUL, not schematic** — an inscribed corner must actually satisfy
+    `x²+y²=r²`; a stated 30° must actually compute to 30°. **Audit this yourself from the spec data**
+    (a few lines of python), don't accept an agent's self-report. Where the OPTIMUM is the answer,
+    draw the optimum; where the VARIABLE is the point, stay generic.
 
 ### 8. Flip PUBLIC — `flip-public.ts <id> --with-mcq --apply`
 Flips `question_format='subjective' AND solution IS NOT NULL` (+ MCQs with a correct option).

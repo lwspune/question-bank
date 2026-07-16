@@ -1,0 +1,39 @@
+[
+  {
+    "ref": "Ex 2.1 Q.15",
+    "xr": [-1.6, 8.0],
+    "yr": [-1.6, 10.2],
+    "axes": false,
+    "caption": "Ladder 10 m: x increases at 1.2 m/s, y slides down",
+    "segments": [
+      { "x1": -0.8, "y1": 0, "x2": 8.0, "y2": 0, "color": "gray" },
+      { "x1": 0, "y1": -0.8, "x2": 0, "y2": 10.0, "color": "gray" },
+      { "x1": 0, "y1": 0, "x2": 6, "y2": 0, "color": "red", "label": "x", "dx": -4, "dy": 6 },
+      { "x1": 0, "y1": 0, "x2": 0, "y2": 8, "color": "green", "label": "y", "dx": -20, "dy": -8 },
+      { "x1": 0, "y1": 8, "x2": 6, "y2": 0, "color": "blue", "label": "10 m", "dx": 6, "dy": -6 }
+    ],
+    "rightangles": [{ "x": 0, "y": 0, "u": [1, 0], "v": [0, 1], "size": 0.45 }],
+    "points": [
+      { "x": 0, "y": 8, "label": "top", "dx": 8, "dy": -20 },
+      { "x": 6, "y": 0, "label": "foot", "dx": 4, "dy": 8 }
+    ]
+  },
+  {
+    "ref": "Misc II Q.15",
+    "xr": [-3.4, 3.4],
+    "yr": [-1.2, 5.2],
+    "axes": false,
+    "caption": "Window: rectangle 2x by y, semicircle radius x on top; perimeter 2y + 2x + (pi)x",
+    "polys": [
+      { "pts": [[-2, 2], [-2, 0], [2, 0], [2, 2]], "close": false, "color": "blue" }
+    ],
+    "conics": [{ "cx": 0, "cy": 2, "r": 2, "t0": 0, "t1": 180, "color": "blue" }],
+    "segments": [
+      { "x1": -2, "y1": 2, "x2": 2, "y2": 2, "color": "gray", "dashed": true, "label": "not on the boundary", "dx": -46, "dy": 2 },
+      { "x1": -2, "y1": 0, "x2": 2, "y2": 0, "color": "red", "label": "2x", "dx": -6, "dy": 6 },
+      { "x1": -2, "y1": 0, "x2": -2, "y2": 2, "color": "green", "label": "y", "dx": -18, "dy": -8 },
+      { "x1": 0, "y1": 2, "x2": 0, "y2": 4, "color": "purple", "dashed": true, "label": "x", "dx": 6, "dy": -8 }
+    ],
+    "points": [{ "x": 0, "y": 2, "label": "", "dx": 0, "dy": 0 }]
+  }
+]
