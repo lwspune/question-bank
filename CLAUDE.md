@@ -90,6 +90,9 @@ npm run quiz:assemble <route> <chapter> [max] [size] [-- --theme=X]   # ready at
 npm run quiz:delete <slug>   # delete an assembled quiz here + propagate the delete to nda-tracker (drafts only there)
 npm run quiz:push [daily/<slug>]   # push a single DraftQuiz module to nda-tracker (default: the hand-authored classical quiz)
 npm run stats              # report live bank size (PUBLIC by exam/subject) + taxonomy + /notes chapter & diagram counts — for verifying the header lines instead of hand-maintaining them
+# — Outbound email (Resend; migration 0059). Runbook in OPERATIONS.md —
+npm run email:preview -- --html   # render both templates (no DB, no key, no send) → generated-papers/email-preview.html
+npm run email:send                # DRY RUN by default — prints who'd get what, writes NOTHING. Add `-- --apply` to send (npm needs the `--`), `-- --only=<email>`, `-- --limit=N`. Idempotent: a UNIQUE dedupe_key means a re-run can't double-send; re-run it after the 7-day cooldown and each next_mock student gets the next unattempted paper.
 npm run board:lint         # /board section-structure gate: fails if a PUBLIC board (question_kind='practice') row lacks section_* fields or a chapter's section_seq isn't contiguous 1..N (scripts/stateboard/lint-sections.ts)
 npm run db:types           # supabase gen types (requires SUPABASE_PROJECT_REF env)
 npm run prepush            # the chained gate, MIRRORS CI: typecheck → lint → notes:lint → notes:latex → test → build; run by .githooks/pre-push
