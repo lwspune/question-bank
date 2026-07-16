@@ -1,0 +1,137 @@
+[
+  {
+    "ref": "3.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int x^2\\, 5^x\\, dx\\)",
+    "solution": "\\(I = x^2 \\int 5^x\\, dx - \\int \\frac{d}{dx} x^2 \\left( \\int 5^x\\, dx \\right) dx\\)\n\\(= x^2\\, 5^x\\, \\frac{1}{\\log 5} - \\int 2x\\, 5^x\\, \\frac{1}{\\log 5}\\, dx\\)\n\\(= \\frac{1}{\\log 5} x^2 5^x - \\frac{2}{\\log 5} \\left\\{ x \\int 5^x\\, dx - \\int \\frac{d}{dx} x \\left( \\int 5^x\\, dx \\right) dx \\right\\}\\)\n\\(= \\frac{1}{\\log 5} x^2 5^x - \\frac{2}{\\log 5} \\left\\{ x\\, 5^x\\, \\frac{1}{\\log 5} - \\int (1) \\left( 5^x\\, \\frac{1}{\\log 5} \\right) dx \\right\\}\\)\n\\(= \\frac{1}{\\log 5} x^2 5^x - \\frac{2}{\\log 5} \\left\\{ \\frac{1}{\\log 5} x\\, 5^x - \\int \\frac{1}{\\log 5} 5^x\\, dx \\right\\}\\)\n\\(= \\frac{1}{\\log 5} x^2 5^x - \\frac{2}{\\log 5} \\left\\{ \\frac{1}{\\log 5} x\\, 5^x - \\frac{1}{\\log 5} 5^x\\, \\frac{1}{\\log 5} \\right\\} + c\\)\n\\(= \\frac{1}{\\log 5} x^2 5^x - \\frac{2}{(\\log 5)^2} x\\, 5^x + \\frac{2}{(\\log 5)^3} 5^x + c\\)\n\\(\\therefore \\int x^2 5^x\\, dx = \\frac{5^x}{\\log 5} \\left\\{ x^2 - \\frac{2x}{\\log 5} + \\frac{2}{(\\log 5)^2} \\right\\} + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int x \\tan^{-1} x\\, dx\\)",
+    "solution": "\\(I = \\int (\\tan^{-1} x)\\, x\\, dx\\) \\quad \\ldots\\ \\text{by LIATE}\n\\(= \\tan^{-1} x \\int x\\, dx - \\int \\frac{d}{dx} \\tan^{-1} x \\left( \\int x\\, dx \\right) dx\\)\n\\(= \\tan^{-1} x\\, \\frac{x^2}{2} - \\int \\frac{1}{1 + x^2}\\, \\frac{x^2}{2}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\tan^{-1} x - \\frac{1}{2} \\int \\frac{x^2}{1 + x^2}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\tan^{-1} x - \\frac{1}{2} \\int \\frac{1 + x^2 - 1}{1 + x^2}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\tan^{-1} x - \\frac{1}{2} \\int \\left[ 1 - \\frac{1}{1 + x^2} \\right] dx\\)\n\\(= \\frac{1}{2} x^2 \\tan^{-1} x - \\frac{1}{2} [x - \\tan^{-1} x] + c\\)\n\\(\\therefore \\int x \\tan^{-1} x\\, dx = \\frac{1}{2} x^2 \\tan^{-1} x - \\frac{1}{2} x + \\frac{1}{2} \\tan^{-1} x + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\frac{x}{1 - \\sin x}\\, dx\\)",
+    "solution": "\\(I = \\int \\frac{x}{1 - \\sin x}\\, \\frac{(1 + \\sin x)}{(1 + \\sin x)}\\, dx\\)\n\\(= \\int \\frac{x(1 + \\sin x)}{1 - \\sin^2 x}\\, dx = \\int \\frac{x(1 + \\sin x)}{\\cos^2 x}\\, dx = \\int x \\left( \\frac{1}{\\cos^2 x} + \\frac{\\sin x}{\\cos^2 x} \\right) dx\\)\n\\(= \\int x (\\sec^2 x + \\sec x \\tan x)\\, dx\\)\n\\(= \\int x \\sec^2 x\\, dx + \\int x \\sec x \\tan x\\, dx\\)\n\\(= \\left( x \\int \\sec^2 x\\, dx - \\int \\frac{d}{dx} x \\left( \\int \\sec^2 x\\, dx \\right) dx \\right) + \\left( x \\int \\sec x \\tan x\\, dx - \\int \\frac{d}{dx} x \\left( \\int \\sec x \\tan x\\, dx \\right) dx \\right)\\)\n\\(= x \\tan x - \\int (1) \\tan x\\, dx + x \\sec x - \\int (1) \\sec x\\, dx\\)\n\\(= x \\tan x - \\log (\\sec x) + x \\sec x - \\log (\\sec x + \\tan x) + c\\)\n\\(= x (\\sec x + \\tan x) - \\log (\\sec x) - \\log (\\sec x + \\tan x) + c\\)\n\\(\\therefore \\int \\frac{x}{1 - \\sin x}\\, dx = x (\\sec x + \\tan x) - \\log [(\\sec x)(\\sec x + \\tan x)] + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int e^{2x} \\sin 3x\\, dx\\)",
+    "solution": "\\(I = \\int e^{2x} \\sin 3x\\, dx\\)\nHere we use repeated integration by parts. To evaluate \\(\\int e^{ax} \\sin (bx + c)\\, dx\\); \\(\\int e^{ax} \\cos (bx + c)\\, dx\\) any function can be taken as a first function.\n\\(I = e^{2x} \\int \\sin 3x\\, dx - \\int \\frac{d}{dx} e^{2x} \\left( \\int \\sin 3x\\, dx \\right) dx\\)\n\\(= e^{2x} \\left( - \\cos 3x\\, \\frac{1}{3} \\right) - \\int e^{2x}\\, 2 \\left( - \\cos 3x\\, \\frac{1}{3} \\right) dx\\)\n\\(= - \\frac{1}{3} e^{2x} \\cos 3x + \\frac{2}{3} \\int e^{2x} \\cos 3x\\, dx\\)\n\\(= - \\frac{1}{3} e^{2x} \\cos 3x + \\frac{2}{3} \\left( e^{2x} \\int \\cos 3x \\cdot dx - \\int \\frac{d}{dx} e^{2x} \\left( \\int \\cos 3x\\, dx \\right) dx \\right)\\)\n\\(= - \\frac{1}{3} e^{2x} \\cos 3x + \\frac{2}{3} \\left[ e^{2x} \\left( \\sin 3x\\, \\frac{1}{3} \\right) - \\int e^{2x}\\, 2 \\left( \\sin 3x\\, \\frac{1}{3} \\right) dx \\right]\\)\n\\(= - \\frac{1}{3} e^{2x} \\cos 3x + \\frac{2}{9} e^{2x} \\sin 3x - \\frac{4}{9} \\int e^{2x} \\sin 3x\\, dx\\)\n\\(I = - \\frac{1}{3} e^{2x} \\cos 3x + \\frac{2}{9} e^{2x} \\sin 3x - \\frac{4}{9} I\\)\n\\(I + \\frac{4}{9} I = \\frac{e^{2x}}{9} [-3 \\cos 3x + 2 \\sin 3x] + c\\)\n\\(\\frac{13}{9} I = \\frac{e^{2x}}{9} [2 \\sin 3x - 3 \\cos 3x] + c\\)\n\\(= \\frac{e^{2x}}{13} [2 \\sin 3x - 3 \\cos 3x] + c\\)\n\\(\\therefore \\int e^{2x} \\sin 3x\\, dx = \\frac{e^{2x}}{13} [2 \\sin 3x - 3 \\cos 3x] + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\left[ \\log (\\log x) + \\frac{1}{(\\log x)^2} \\right] dx\\)",
+    "solution": "\\(I = \\int \\log (\\log x)\\, 1\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x) \\int 1\\, dx - \\int \\frac{d}{dx} \\log (\\log x) \\int 1\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x)\\, x - \\int \\frac{1}{\\log x}\\, \\frac{1}{x}\\, (x)\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x)\\, x - \\int \\frac{1}{\\log x}\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x)\\, x - \\int (\\log x)^{-1}\\, 1\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x)\\, x - \\left\\{ (\\log x)^{-1} \\int 1\\, dx + \\int \\frac{d}{dx} (\\log x)^{-1} \\int 1\\, dx\\, dx \\right\\} + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x)\\, x - \\left\\{ (\\log x)^{-1} x - \\int - 1 (\\log x)^{-2}\\, \\frac{1}{x}\\, x\\, dx \\right\\} + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= \\log (\\log x)\\, x - (\\log x)^{-1} x - \\int (\\log x)^{-2}\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(= x \\log (\\log x) - \\frac{x}{\\log x} - \\int \\frac{1}{(\\log x)^2}\\, dx + \\int \\frac{1}{(\\log x)^2}\\, dx\\)\n\\(\\therefore \\int \\left[ \\log (\\log x) + \\frac{1}{(\\log x)^2} \\right] dx = x \\log (\\log x) - \\frac{x}{\\log x} + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\sqrt{a^2 - x^2}\\, dx\\)",
+    "solution": "Let \\(I = \\int \\sqrt{a^2 - x^2}\\, 1\\, dx\\)\n\\(= \\sqrt{a^2 - x^2} \\int 1\\, dx - \\int \\frac{d}{dx} \\sqrt{a^2 - x^2} \\left( \\int 1\\, dx \\right) dx\\)\n\\(= \\sqrt{a^2 - x^2}\\, x - \\int \\frac{1}{2\\sqrt{a^2 - x^2}} (-2x)(x)\\, dx\\)\n\\(= \\sqrt{a^2 - x^2}\\, x + \\int \\frac{x^2}{\\sqrt{a^2 - x^2}}\\, dx\\)\n\\(= \\sqrt{a^2 - x^2}\\, x + \\int \\frac{a^2 - (a^2 - x^2)}{\\sqrt{a^2 - x^2}}\\, dx\\)\n\\(= \\sqrt{a^2 - x^2}\\, x + \\int \\left[ \\frac{a^2}{\\sqrt{a^2 - x^2}} - \\frac{(a^2 - x^2)}{\\sqrt{a^2 - x^2}} \\right] dx\\)\n\\(= x \\sqrt{a^2 - x^2} + a^2 \\int \\frac{1}{\\sqrt{a^2 - x^2}}\\, dx - \\int \\sqrt{a^2 - x^2}\\, dx\\)\n\\(I = x \\sqrt{a^2 - x^2} + a^2 \\int \\frac{1}{\\sqrt{a^2 - x^2}}\\, dx - I\\)\n\\(\\therefore I + I = x \\sqrt{a^2 - x^2} + a^2 \\sin^{-1} \\left( \\frac{x}{a} \\right) + c\\)\n\\(\\therefore I = \\frac{x}{2} \\sqrt{a^2 - x^2} + \\frac{a^2}{2} \\sin^{-1} \\left( \\frac{x}{a} \\right) + \\frac{c}{2}\\)\n\\(\\therefore \\int \\sqrt{a^2 - x^2}\\, dx = \\frac{x}{2} \\sqrt{a^2 - x^2} + \\frac{a^2}{2} \\sin^{-1} \\left( \\frac{x}{a} \\right) + c_1\\) where \\(c_1 = \\frac{c}{2}\\)\ne.g. \\(\\int \\sqrt{9 - x^2}\\, dx = \\frac{x}{2} \\sqrt{9 - x^2} + \\frac{9}{2} \\sin^{-1} \\left( \\frac{x}{3} \\right) + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\sqrt{a^2 + x^2}\\, dx\\)",
+    "solution": "With reference to Example 6 (the standard result \\(\\int \\sqrt{a^2 - x^2}\\, dx\\) derived by integration by parts), the book states the result:\n\\(\\int \\sqrt{a^2 + x^2}\\, dx = \\frac{x}{2} \\sqrt{x^2 + a^2} + \\frac{a^2}{2} \\log \\left( x + \\sqrt{x^2 + a^2} \\right) + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\sqrt{x^2 - a^2}\\, dx\\)",
+    "solution": "With reference to Example 6 (the standard result \\(\\int \\sqrt{a^2 - x^2}\\, dx\\) derived by integration by parts), the book states the result:\n\\(\\int \\sqrt{x^2 - a^2}\\, dx = \\frac{x}{2} \\sqrt{x^2 - a^2} - \\frac{a^2}{2} \\log \\left( x + \\sqrt{x^2 - a^2} \\right) + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int x \\sin^{-1} x\\, dx\\)",
+    "solution": "\\(I = \\int \\sin^{-1} x\\, x\\, dx\\) \\quad \\ldots\\ \\text{by LIATE}\n\\(= \\sin^{-1} x \\int x\\, dx - \\int \\frac{d}{dx} \\sin^{-1} x \\left( \\int x\\, dx \\right) dx\\)\n\\(= \\sin^{-1} x\\, \\frac{x^2}{2} - \\int \\frac{1}{\\sqrt{1 - x^2}}\\, \\frac{x^2}{2}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\sin^{-1} x - \\frac{1}{2} \\int \\frac{x^2}{\\sqrt{1 - x^2}}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\sin^{-1} x - \\frac{1}{2} \\int \\frac{1 - (1 - x^2)}{\\sqrt{1 - x^2}}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\sin^{-1} x - \\frac{1}{2} \\int \\left[ \\frac{1}{\\sqrt{1 - x^2}} - \\frac{(1 - x^2)}{\\sqrt{1 - x^2}} \\right] dx\\)\n\\(= \\frac{1}{2} x^2 \\sin^{-1} x - \\frac{1}{2} \\int \\frac{dx}{\\sqrt{1 - x^2}} + \\frac{1}{2} \\int \\sqrt{1 - x^2}\\, dx\\)\n\\(= \\frac{1}{2} x^2 \\sin^{-1} x - \\frac{1}{2} \\sin^{-1} x + \\frac{1}{2} \\left[ \\frac{x}{2} \\sqrt{1 - x^2} + \\frac{1}{2} \\sin^{-1} (x) \\right] + c\\)\n\\(= \\frac{1}{2} x^2 \\sin^{-1} x + \\frac{1}{4} x \\sqrt{1 - x^2} - \\frac{1}{4} \\sin^{-1} x + c\\)\n\\(\\therefore \\int x \\sin^{-1} x\\, dx = \\frac{1}{2} x^2 \\sin^{-1} x + \\frac{1}{4} x \\sqrt{1 - x^2} - \\frac{1}{4} \\sin^{-1} x + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\cos^{-1} \\sqrt{x}\\, dx\\)",
+    "solution": "put \\(\\sqrt{x} = t\\)\n\\(\\therefore x = t^2\\), and differentiating, \\(dx = 2t\\, dt\\)\n\\(I = \\int \\cos^{-1} t \\cdot 2t\\, dt\\)\nIntegrate by parts with \\(u = \\cos^{-1} t\\), \\(dv = 2t\\, dt\\) (so \\(v = t^2\\)):\n\\(I = t^2 \\cos^{-1} t - \\int t^2 \\cdot \\left(\\frac{-1}{\\sqrt{1-t^2}}\\right) dt = t^2 \\cos^{-1} t + \\int \\frac{t^2}{\\sqrt{1-t^2}}\\, dt\\)\nWriting \\(t^2 = -(1-t^2) + 1\\):\n\\(\\int \\frac{t^2}{\\sqrt{1-t^2}}\\, dt = -\\int \\sqrt{1-t^2}\\, dt + \\int \\frac{1}{\\sqrt{1-t^2}}\\, dt = -\\left[\\frac{t}{2}\\sqrt{1-t^2} + \\frac{1}{2}\\sin^{-1} t\\right] + \\sin^{-1} t = -\\frac{t}{2}\\sqrt{1-t^2} + \\frac{1}{2}\\sin^{-1} t\\)\n\\(\\therefore I = t^2 \\cos^{-1} t - \\frac{t}{2}\\sqrt{1-t^2} + \\frac{1}{2}\\sin^{-1} t + c\\)\nBack-substituting \\(t = \\sqrt{x}\\) (so \\(t^2 = x\\), \\(1-t^2 = 1-x\\)):\n\\(\\therefore \\int \\cos^{-1} \\sqrt{x}\\, dx = x \\cos^{-1} \\sqrt{x} - \\frac{\\sqrt{x}}{2}\\sqrt{1-x} + \\frac{1}{2}\\sin^{-1} \\sqrt{x} + c\\)"
+  },
+  {
+    "ref": "3.3 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\sqrt{4 + 3x - 2x^2}\\, dx\\)",
+    "solution": "\\(I = \\int \\sqrt{4 - 2x^2 + 3x}\\, dx\\)\n\\(= \\int \\sqrt{4 - 2 \\left( x^2 - \\frac{3}{2} x \\right)}\\, dx\\)\n\\(= \\int \\sqrt{2} \\sqrt{2 - \\left( x^2 - \\frac{3}{2} x \\right)}\\, dx\\)\n\\(\\because \\left\\{ \\left( \\frac{1}{2}\\ \\text{coefficient of}\\ x \\right)^2 = \\left[ \\frac{1}{2} \\left( - \\frac{3}{2} \\right) \\right]^2 = \\left( - \\frac{3}{4} \\right)^2 = \\frac{9}{16} \\right\\}\\)\n\\(I = \\sqrt{2} \\int \\sqrt{2 - \\left( x^2 - \\frac{3}{2} x + \\frac{9}{16} - \\frac{9}{16} \\right)}\\, dx\\)\n\\(= \\sqrt{2} \\int \\sqrt{2 - \\left( x^2 - \\frac{3}{2} x + \\frac{9}{16} \\right) + \\frac{9}{16}}\\, dx\\)\n\\(= \\sqrt{2} \\int \\sqrt{\\left( \\frac{\\sqrt{41}}{4} \\right)^2 - \\left( x - \\frac{3}{4} \\right)^2}\\, dx\\)\n\\(\\because \\int \\sqrt{a^2 - x^2}\\, dx = \\frac{x}{2} \\sqrt{a^2 - x^2} + \\frac{a^2}{2} \\sin^{-1} \\left( \\frac{x}{a} \\right) + c\\)\n\\(= \\sqrt{2} \\left[ \\frac{\\left( x - \\frac{3}{4} \\right)}{2} \\sqrt{\\left( \\frac{\\sqrt{41}}{4} \\right)^2 - \\left( x - \\frac{3}{4} \\right)^2} + \\frac{\\left( \\frac{\\sqrt{41}}{4} \\right)^2}{2} \\sin^{-1} \\left( \\frac{x - \\frac{3}{4}}{\\frac{\\sqrt{41}}{4}} \\right) \\right] + c\\)\n\\(= \\sqrt{2} \\left[ \\frac{4x - 3}{8} \\sqrt{2 + \\frac{3}{2} x - x^2} + \\frac{41}{32} \\sin^{-1} \\left( \\frac{4x - 3}{\\sqrt{41}} \\right) \\right] + c\\)\n\\(\\therefore \\int \\sqrt{4 + 3x - 2x^2}\\, dx = \\frac{4x - 3}{8} \\sqrt{4 + 3x - 2x^2} + \\frac{41}{16 \\sqrt{2}} \\sin^{-1} \\left( \\frac{4x - 3}{\\sqrt{41}} \\right) + c\\)"
+  },
+  {
+    "ref": "3.3.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int e^x \\left( \\frac{2 + \\sin 2x}{1 + \\cos 2x} \\right) dx\\)",
+    "solution": "\\(I = \\int e^x \\left( \\frac{2 + 2 \\sin x \\cdot \\cos x}{2 \\cdot \\cos^2 x} \\right) dx\\)\n\\(= \\int e^x \\left( \\frac{1}{\\cos^2 x} + \\frac{\\sin x \\cos x}{\\cos^2 x} \\right) dx\\)\n\\(= \\int e^x [ \\sec^2 x + \\tan x ]\\, dx\\)\n\\(= \\int e^x [ \\tan x + \\sec^2 x ]\\, dx\\)\n\\(\\therefore f(x) = \\tan x \\Rightarrow f'(x) = \\sec^2 x\\)\n\\(\\therefore \\int e^x [ f(x) + f'(x) ]\\, dx = e^x \\cdot f(x) + c\\)\n\\(I = e^x \\cdot \\tan x + c\\)\n\\(\\therefore \\int e^x \\left( \\frac{2 + \\sin 2x}{1 + \\cos 2x} \\right) dx = e^x \\cdot \\tan x + c\\)"
+  },
+  {
+    "ref": "3.3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int e^x \\left[ \\frac{x + 2}{(x + 3)^2} \\right] dx\\)",
+    "solution": "\\(I = \\int e^x \\left[ \\frac{x + 3 - 1}{(x + 3)^2} \\right] dx\\)\n\\(= \\int e^x \\left[ \\frac{x + 3}{(x + 3)^2} + \\frac{-1}{(x + 3)^2} \\right] dx\\)\n\\(= \\int e^x \\left[ \\frac{1}{x + 3} + \\frac{-1}{(x + 3)^2} \\right] dx\\)\n\\(\\therefore f(x) = \\frac{1}{x + 3} \\Rightarrow f'(x) = \\frac{-1}{(x + 3)^2}\\)\n\\(\\therefore \\int e^x [ f(x) + f'(x) ] \\cdot dx = e^x \\cdot f(x) + c\\)\n\\(= e^x \\cdot \\left( \\frac{1}{x + 3} \\right) + c\\)\n\\(= \\frac{e^x}{x + 3} + c\\)\n\\(\\therefore \\int e^x \\left[ \\frac{x + 2}{(x + 3)^2} \\right] dx = \\frac{e^x}{x + 3} + c\\)"
+  },
+  {
+    "ref": "3.3.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int e^{\\tan^{-1} x} \\left( \\frac{1 + x + x^2}{1 + x^2} \\right) dx\\)",
+    "solution": "put \\(\\tan^{-1} x = t\\)\n\\(\\therefore x = \\tan t\\)\ndifferentiating w.r.t. \\(x\\)\n\\(\\therefore \\frac{1}{1 + x^2}\\, dx = 1\\, dt\\)\n\\(I = \\int e^t [ 1 + \\tan t + \\tan^2 t ]\\, dt\\)\n\\(= \\int e^t [ \\tan t + (1 + \\tan^2 t) ]\\, dt\\)\n\\(= \\int e^t [ \\tan t + \\sec^2 t ]\\, dt\\)\nHere \\(f(t) = \\tan t \\Rightarrow f'(t) = \\sec^2 t\\)\n\\(I = e^t \\cdot f(t) + c\\)\n\\(= e^t \\cdot \\tan t + c\\)\n\\(= e^{\\tan^{-1} x} \\cdot x + c\\)\n\\(\\therefore \\int e^{\\tan^{-1} x} \\cdot \\left( \\frac{1 + x + x^2}{1 + x^2} \\right) dx = e^{\\tan^{-1} x} \\cdot x + c\\)"
+  },
+  {
+    "ref": "3.3.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\frac{(x^2 + 1) \\cdot e^x}{(x + 1)^2}\\, dx\\)",
+    "solution": "\\(I = \\int e^x \\left[ \\frac{x^2 + 1}{(x + 1)^2} \\right] dx\\)\n\\(= \\int e^x \\left[ \\frac{x^2 - 1 + 2}{(x + 1)^2} \\right] dx\\)\n\\(= \\int e^x \\left[ \\frac{x^2 - 1}{(x + 1)^2} + \\frac{2}{(x + 1)^2} \\right] dx\\)\n\\(= \\int e^x \\left[ \\frac{x - 1}{x + 1} + \\frac{2}{(x + 1)^2} \\right] dx\\)\nHere \\(f(x) = \\frac{x - 1}{x + 1}\\)\n\\(\\Rightarrow f'(x) = \\frac{(x + 1)(1) - (x - 1)(1)}{(x + 1)^2} = \\frac{2}{(x + 1)^2}\\)\n\\(\\because \\int [ f(x) + f'(x) ]\\, dx = e^x\\, f(x) + c\\)\n\\(I = e^x \\left( \\frac{x - 1}{x + 1} \\right) + c\\)\n\\(\\therefore \\int \\frac{(x^2 + 1)\\, e^x}{(x + 1)^2}\\, dx = e^x \\left( \\frac{x - 1}{x + 1} \\right) + c\\)"
+  }
+]

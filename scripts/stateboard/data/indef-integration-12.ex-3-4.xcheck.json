@@ -1,0 +1,163 @@
+[
+  {
+    "ref": "Ex 3.4 I (i)",
+    "verdict": "AGREE",
+    "our_answer": "1/4 log|x-1| - 2 log|x+2| + 11/4 log|x+3| + c",
+    "book_answer": "1/4 log(x-1) - 2 log(x+2) + 11/4 (x+3) + c",
+    "evidence": "Coefficients A=1/4, B=-2, C=11/4 match exactly; our answer's derivative verified = (x^2+2)/((x-1)(x+2)(x+3)) (sympy). NOTE: the book key has a PRINTING TYPO on the third term — it prints '11/4 (x+3)' with the word 'log' dropped; the intended term is '11/4 log(x+3)'. Our answer is correct; errata-worthy misprint in the printed key."
+  },
+  {
+    "ref": "Ex 3.4 I (ii)",
+    "verdict": "AGREE",
+    "our_answer": "1/6 tan^{-1}x + 1/(15 sqrt2) log|(x-sqrt2)/(x+sqrt2)| - sqrt3/10 tan^{-1}(x/sqrt3) + c",
+    "book_answer": "1/6 tan^{-1}x + 1/(15 sqrt2) log((x-sqrt2)/(x+sqrt2)) - sqrt3/10 tan^{-1}(x/sqrt3) + c",
+    "evidence": "Identical. Derivative verified = x^2/((x^2+1)(x^2-2)(x^2+3)) (sympy). Note sqrt3/10 = 3/(10 sqrt3)."
+  },
+  {
+    "ref": "Ex 3.4 I (iii)",
+    "verdict": "AGREE",
+    "our_answer": "31/41 log|3x-7| + 51/41 log|2x+9| + c",
+    "book_answer": "51/41 log(2x+9) + 31/41 log(3x-7) + c",
+    "evidence": "Identical (terms reordered). Derivative verified = (12x+3)/(6x^2+13x-63) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (iv)",
+    "verdict": "AGREE",
+    "our_answer": "-8/5 log|x+4| - 2/5 log|x-1| + c",
+    "book_answer": "-8/5 log(x+4) - 2/5 log(x-1) + c",
+    "evidence": "Identical. Derivative verified = 2x/(4-3x-x^2) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (v)",
+    "verdict": "AGREE",
+    "our_answer": "x - log|x+3| + log|x-2| + c",
+    "book_answer": "x - log(x+3) + log(x-2) + c",
+    "evidence": "Identical. Improper fraction; derivative verified = (x^2+x-1)/(x^2+x-6) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (vi)",
+    "verdict": "AGREE",
+    "our_answer": "x^2 + 3x + 5/3 log|3x+1| + log|x-1| + c",
+    "book_answer": "x^2 + 3x + 5/3 log(3x+1) + log(x-1) + c",
+    "evidence": "Identical. Derivative verified = (6x^3+5x^2-7)/(3x^2-2x-1) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (vii)",
+    "verdict": "AGREE",
+    "our_answer": "-1/2 log|2x-1| + 1/2 log|2x+1| + 3 log|x+3| + c",
+    "book_answer": "1/2 log|(2x+1)/(2x-1)| + 3 log(x+3) + c",
+    "evidence": "Identical (our two log terms combine to book's single ratio log). Derivative verified = (12x^2-2x-9)/((4x^2-1)(x+3)) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (viii)",
+    "verdict": "AGREE",
+    "our_answer": "1/5 log|x^5/(x^5+1)| + c",
+    "book_answer": "1/5 log(x^5/(x^5+1)) + c",
+    "evidence": "Identical. Derivative verified = 1/(x(x^5+1)) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (ix)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "-9/2 tan^{-1}(x/2) + 11/sqrt5 tan^{-1}(x/sqrt5) + c",
+    "book_answer": "11/sqrt5 tan^{-1}(x/2) - 9/2 tan^{-1}(x/2) + c",
+    "evidence": "PF: 2x^2-1 = -9/(x^2+4) + 11/(x^2+5), so integral = -9/2 tan^{-1}(x/2) + 11/sqrt5 tan^{-1}(x/sqrt5). Our answer's derivative verified = (2x^2-1)/(x^4+9x^2+20) (sympy). The book prints the FIRST term's argument as x/2 (zoom-confirmed) instead of x/sqrt5 — that term comes from 11/(x^2+5) and must be tan^{-1}(x/sqrt5). d/dx of the book's expression = 0.1677 at x=1 vs integrand 0.0333 — book is wrong. (Coefficient 11/sqrt5 is right; only the argument is mis-printed.)"
+  },
+  {
+    "ref": "Ex 3.4 I (x)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "2 log|x+1| - 2 log|x-1| + 5/(2 sqrt2) log|(x-sqrt2)/(x+sqrt2)| + c",
+    "book_answer": "2 log((x+1)/(x-1)) + 5/(2 sqrt2) log((x+sqrt2)/(x-sqrt2)) + c",
+    "evidence": "First term agrees. Second term: integral of 5/(x^2-2) = 5/(2 sqrt2) log|(x-sqrt2)/(x+sqrt2)| by the standard 1/(x^2-a^2) formula. The book's argument (x+sqrt2)/(x-sqrt2) is the RECIPROCAL, i.e. the negative of the correct log — a sign error. Our answer's derivative verified = (x^2+3)/((x^2-1)(x^2-2)) (sympy); the book's expression differentiates to -1.214 at x=3 vs integrand +0.214 — book is wrong."
+  },
+  {
+    "ref": "Ex 3.4 I (xi)",
+    "verdict": "AGREE",
+    "our_answer": "log|(x^2+2)/(x^2+3)| + c",
+    "book_answer": "log((2+x^2)/(3+x^2)) + c",
+    "evidence": "Identical. Derivative verified = 2x/((2+x^2)(3+x^2)) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xii)",
+    "verdict": "AGREE",
+    "our_answer": "1/(5 log2) log|(2^x-4)/(2^x+1)| + c",
+    "book_answer": "1/(5*log2) log((2^x-4)/(2^x+1)) + c",
+    "evidence": "Identical. Derivative verified = 2^x/(4^x-3*2^x-4) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xiii)",
+    "verdict": "AGREE",
+    "our_answer": "11/4 log|x+1| + 5/(2(x+1)) - 11/4 log|x+3| + c",
+    "book_answer": "5/2 (1/(x+1)) + 11/4 log((x+1)/(x+3)) + c",
+    "evidence": "Identical: our 5/(2(x+1)) = 5/2 * 1/(x+1); our two log terms combine to 11/4 log((x+1)/(x+3)). Derivative verified = (3x-2)/((x+1)^2(x+3)) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xiv)",
+    "verdict": "AGREE",
+    "our_answer": "6 log|x| - log|x+1| - 9/(x+1) + c",
+    "book_answer": "6*log x - log(x+1) - 9/(x+1) + c",
+    "evidence": "Identical. Derivative verified = (5x^2+20x+6)/(x^3+2x^2+x) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xv)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "1/3 log|x^3| + 1/6 log|1+x^3| - 1/2 log|1+3x^3| + c   (= 1/6 log[x^6 (x^3+1)/(3x^3+1)^3])",
+    "book_answer": "1/8 log[x^6 (x^3+3)/(3x^3+1)^3] + c",
+    "evidence": "Denominator factors as (1+x^3)(1+3x^3); PF of 1/(t(1+t)(1+3t)) = 1/t + (1/2)/(1+t) - (9/2)/(1+3t), giving our answer, whose combined single-log form is 1/6 log[x^6(x^3+1)/(3x^3+1)^3]. Our derivative verified = 1/(x(1+4x^3+3x^6)) (sympy), matching integrand 0.125 at x=1. The book has TWO errors (zoom-confirmed): coefficient 1/8 should be 1/6, and the numerator factor (x^3+3) should be (x^3+1). d/dx of the book expression = 0 at x=1 vs integrand 0.125 — book is wrong. (Replacing 1/8->1/6 and (x^3+3)->(x^3+1) makes it verify.)"
+  },
+  {
+    "ref": "Ex 3.4 I (xvi)",
+    "verdict": "AGREE",
+    "our_answer": "1/3 log|x-1| - 1/6 log(x^2+x+1) - 1/sqrt3 tan^{-1}((2x+1)/sqrt3) + c",
+    "book_answer": "1/3 log(x-1) - 1/6 log(x^2+x+1) - 1/sqrt3 tan^{-1}((2x+1)/sqrt3) + c",
+    "evidence": "Identical. Derivative verified = 1/(x^3-1) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xvii)",
+    "verdict": "AGREE",
+    "our_answer": "3 log|sinx-2| - 4/(sinx-2) + c",
+    "book_answer": "3*log(sinx-2) - 4/(sinx-2) + c",
+    "evidence": "Identical. Derivative verified = (3sinx-2)cosx/(5-4sinx-cos^2x) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xviii)",
+    "verdict": "AGREE",
+    "our_answer": "1/6 log|1-cosx| + 1/2 log|1+cosx| - 2/3 log|1+2cosx| + c",
+    "book_answer": "1/2 log(cosx+1) + 1/6 log(cosx-1) - 2/3 log(2cosx+1) + c",
+    "evidence": "Identical (|1-cosx|=|cosx-1| etc., terms reordered). Derivative verified = 1/(sinx+sin2x) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xix)",
+    "verdict": "AGREE",
+    "our_answer": "1/8 log|1-cosx| - 1/8 log|1+cosx| + 1/(4(1+cosx)) + c",
+    "book_answer": "1/8 log((cosx-1)/(cosx+1)) + 1/(4*(cosx+1)) + c",
+    "evidence": "Identical (our two log terms combine to book's ratio log; |1-cosx|=|cosx-1|). Derivative verified = 1/(2sinx+sin2x) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xx)",
+    "verdict": "AGREE",
+    "our_answer": "-1/6 log|1-sinx| - 1/2 log|1+sinx| + 2/3 log|1+2sinx| + c",
+    "book_answer": "1/6 log[(1+2sinx)^4/((1-sinx)(1+sinx)^3)] + c",
+    "evidence": "Identical: expanding the book's single log gives 2/3 log(1+2sinx) - 1/6 log(1-sinx) - 1/2 log(1+sinx) = our answer. Derivative verified = 1/(sin2x+cosx) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xxi)",
+    "verdict": "AGREE",
+    "our_answer": "1/10 log|1-cosx| - 1/2 log|1+cosx| + 2/5 log|3+2cosx| + c",
+    "book_answer": "1/10 log(1-cosx) - 1/2 log(1+cosx) + 2/5 log(3+2cosx) + c",
+    "evidence": "Identical. Derivative verified = 1/(sinx(3+2cosx)) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xxii)",
+    "verdict": "AGREE",
+    "our_answer": "1/2 log(e^x+1) - 1/4 log(e^{2x}+9) + 1/6 tan^{-1}(e^x/3) + c",
+    "book_answer": "1/2 log[(e^x+1)/(e^{2x}+9)^{1/2}] + 1/6 tan^{-1}(e^x/3) + c",
+    "evidence": "Identical: book's 1/2 log[(e^x+1)/(e^{2x}+9)^{1/2}] = 1/2 log(e^x+1) - 1/4 log(e^{2x}+9). Derivative verified = 5e^x/((e^x+1)(e^{2x}+9)) (sympy)."
+  },
+  {
+    "ref": "Ex 3.4 I (xxiii)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "5/13 log|3logx+2| - 5/26 log((logx)^2+1) + 12/13 tan^{-1}(logx) + c",
+    "book_answer": "5/26 log[(3logx+2)^2/sqrt((logx)^2+1)] + 11/26 tan^{-1}(logx) + c",
+    "evidence": "PF: (2t+3)/((3t+2)(t^2+1)) = (15/13)/(3t+2) + (-5/13 t + 12/13)/(t^2+1), giving A=15/13, B=-5/13, C=12/13. Integral = 5/13 log|3t+2| - 5/26 log(t^2+1) + 12/13 tan^{-1}t (t=logx). Our derivative verified = integrand (=3/2 at t=0) (sympy). The book (zoom-confirmed) has a spurious SQUARE ROOT on ((logx)^2+1) inside the log — giving coeff -5/52 instead of the correct -5/26 — AND a wrong tan^{-1} coefficient 11/26 instead of 12/13 (=24/26). d/dx of book expression = 1 at t=0 vs integrand 3/2 — book is wrong. (Dropping the sqrt and using 12/13 for the tan^{-1} makes it verify.)"
+  }
+]

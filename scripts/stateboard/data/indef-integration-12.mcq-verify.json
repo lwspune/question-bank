@@ -1,0 +1,142 @@
+[
+  {
+    "id": "9ac7a587-5482-4912-87f2-5ef940a7d3b2",
+    "ref": "Misc I Q.1",
+    "derived_answer": "B",
+    "solution": "Note \\(1+x+\\sqrt{x+x^2}=(\\sqrt{x})^2+(\\sqrt{1+x})^2+\\sqrt{x}\\sqrt{1+x}\\), which is \\((\\sqrt{x}+\\sqrt{1+x})^2-\\sqrt{x}\\sqrt{1+x}\\)... more directly, the numerator equals \\((\\sqrt{x}+\\sqrt{1+x})\\sqrt{x+1}\\) after factoring: dividing by \\(\\sqrt{x}+\\sqrt{1+x}\\) gives integrand \\(\\sqrt{x+1}\\). Then \\(\\int\\sqrt{x+1}\\,dx=\\frac{2}{3}(x+1)^{3/2}+c\\). Differentiating option B returns \\(\\sqrt{x+1}\\), matching. Answer B.",
+    "matches_current": true
+  },
+  {
+    "id": "d94446e6-9244-40ee-b077-7573d28282f8",
+    "ref": "Misc I Q.2",
+    "derived_answer": "A",
+    "solution": "Add the two integrals: \\(\\int\\frac{1}{x+x^5}dx+\\int\\frac{x^4}{x+x^5}dx=\\int\\frac{1+x^4}{x(1+x^4)}dx=\\int\\frac{1}{x}dx=\\log x\\). Since the first integral is \\(f(x)\\), the required integral \\(=\\log x-f(x)+c\\). Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "d3c2b99b-f8cd-40f3-b006-faeb2a1cf717",
+    "ref": "Misc I Q.3",
+    "derived_answer": "B",
+    "solution": "Write \\(\\log(3x)=\\log x+\\log 3\\) and \\(\\log(9x)=\\log x+\\log 9=\\log x+2\\log 3\\). Put \\(t=\\log(9x)\\), \\(dt=\\frac{1}{x}dx\\); then \\(\\log(3x)=t-\\log 3\\), so the integral is \\(\\int\\frac{t-\\log 3}{t}dt=t-(\\log 3)\\log t=\\log(9x)-(\\log 3)\\log(\\log 9x)\\). Since \\(\\log(9x)\\) differs from \\(\\log x\\) by the constant \\(\\log 9\\), this equals \\(\\log x-(\\log 3)\\cdot\\log(\\log 9x)+c\\). Differentiating option B reproduces the integrand exactly. Answer B.",
+    "matches_current": true
+  },
+  {
+    "id": "ec5abd41-81b5-441c-87b7-fe7b2e5fe9de",
+    "ref": "Misc I Q.4",
+    "derived_answer": "A",
+    "solution": "\\(\\frac{\\sin^m x}{\\cos^{m+2}x}=\\frac{\\sin^m x}{\\cos^m x}\\cdot\\frac{1}{\\cos^2 x}=\\tan^m x\\,\\sec^2 x\\). With \\(t=\\tan x\\), \\(dt=\\sec^2 x\\,dx\\), integral \\(=\\int t^m dt=\\frac{\\tan^{m+1}x}{m+1}+c\\). Verified for \\(m=3\\): \\(\\frac{d}{dx}\\frac{\\tan^{m+1}x}{m+1}=\\tan^m x\\sec^2 x\\). Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "2f364d51-b419-450f-91e5-a62e1653252d",
+    "ref": "Misc I Q.5",
+    "derived_answer": "D",
+    "solution": "\\(\\tan(\\sin^{-1}x)=\\frac{\\sin(\\sin^{-1}x)}{\\cos(\\sin^{-1}x)}=\\frac{x}{\\sqrt{1-x^2}}\\). Put \\(u=1-x^2\\), \\(du=-2x\\,dx\\); \\(\\int\\frac{x}{\\sqrt{1-x^2}}dx=-\\sqrt{1-x^2}+c\\). Differentiating option D gives \\(\\frac{x}{\\sqrt{1-x^2}}\\), matching. Answer D.",
+    "matches_current": true
+  },
+  {
+    "id": "c0de422d-f554-420e-a90c-1d1e11350c6d",
+    "ref": "Misc I Q.6",
+    "derived_answer": "B",
+    "solution": "Using \\(1-\\cos x=2\\sin^2(x/2)\\) and \\(\\sin x=2\\sin(x/2)\\cos(x/2)\\): \\(\\frac{x-\\sin x}{1-\\cos x}=\\frac{x}{2}\\csc^2\\frac{x}{2}-\\cot\\frac{x}{2}\\). Integrate \\(\\frac{x}{2}\\csc^2\\frac{x}{2}\\) by parts (\\(u=x\\), \\(dv=\\frac12\\csc^2\\frac{x}{2}dx\\Rightarrow v=-\\cot\\frac{x}{2}\\)): \\(=-x\\cot\\frac{x}{2}+\\int\\cot\\frac{x}{2}dx\\). The \\(\\int\\cot\\frac{x}{2}dx\\) cancels the \\(-\\int\\cot\\frac{x}{2}dx\\) remaining term, leaving \\(-x\\cot\\frac{x}{2}+c\\). Differentiation of option B confirms it. Answer B.",
+    "matches_current": true
+  },
+  {
+    "id": "11f6bf99-d8d3-4643-9ad2-ba56688aeead",
+    "ref": "Misc I Q.7",
+    "derived_answer": "A",
+    "solution": "With \\(t=\\sin^{-1}x\\), \\(f(x)g(x)dx=t\\,e^{t}\\,dt\\). Integration by parts: \\(\\int t\\,e^t dt=e^t(t-1)=e^{\\sin^{-1}x}(\\sin^{-1}x-1)+c\\). Differentiating this returns the integrand. DEFECTIVE MCQ: options A and D are printed identically (\\(e^{\\sin^{-1}x}(\\sin^{-1}x-1)+c\\)) and both are correct; the intended correct choice is the first one, A.",
+    "matches_current": true
+  },
+  {
+    "id": "ace36076-729f-4844-a782-40fbeb759889",
+    "ref": "Misc I Q.8",
+    "derived_answer": "A",
+    "solution": "\\(\\int\\tan^3 x\\sec^3 x\\,dx=\\int\\tan^2 x\\sec^2 x(\\sec x\\tan x)dx=\\int(\\sec^2 x-1)\\sec^2 x\\,d(\\sec x)\\) with \\(u=\\sec x\\): \\(\\int(u^4-u^2)du=\\frac{u^5}{5}-\\frac{u^3}{3}=\\frac{1}{5}\\sec^5 x-\\frac{1}{3}\\sec^3 x+c\\). Comparing with \\(\\frac{1}{m}\\sec^m x-\\frac{1}{n}\\sec^n x\\) gives \\((m,n)=(5,3)\\). Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "2f88482c-5a61-4c8b-b359-cd411aef92af",
+    "ref": "Misc I Q.9",
+    "derived_answer": "C",
+    "solution": "\\(\\frac{1}{\\cos x-\\cos^2 x}=\\frac{1}{\\cos x(1-\\cos x)}=\\frac{1}{\\cos x}+\\frac{1}{1-\\cos x}\\) (partial fractions in \\(\\cos x\\)). Then \\(\\int\\sec x\\,dx=\\log(\\sec x+\\tan x)\\) and \\(\\int\\frac{dx}{1-\\cos x}=\\int\\frac12\\csc^2\\frac{x}{2}dx=-\\cot\\frac{x}{2}\\). Sum \\(=\\log(\\sec x+\\tan x)-\\cot\\frac{x}{2}+c\\). Differentiation of option C reproduces the integrand exactly. Answer C.",
+    "matches_current": true
+  },
+  {
+    "id": "e3fd1a74-7c9d-4256-9f2e-00e7985ce638",
+    "ref": "Misc I Q.10",
+    "derived_answer": "B",
+    "solution": "\\(\\frac{\\sqrt{\\cot x}}{\\sin x\\cos x}=\\sqrt{\\cot x}\\cdot\\frac{\\sec^2 x}{\\tan x}=\\frac{\\sec^2 x}{(\\cot x)^{1/2}\\tan x}\\). Put \\(t=\\cot x\\), \\(dt=-\\csc^2 x\\,dx\\); the integrand becomes \\(-t^{-1/2}dt\\), giving \\(-2\\sqrt{t}=-2\\sqrt{\\cot x}+c\\). Differentiating option B returns the integrand. Answer B.",
+    "matches_current": true
+  },
+  {
+    "id": "b5b063a9-073f-4f98-b01f-f46eb196226e",
+    "ref": "Misc I Q.11",
+    "derived_answer": "A",
+    "solution": "\\(\\frac{e^x(x-1)}{x^2}=e^x\\left(\\frac{1}{x}-\\frac{1}{x^2}\\right)=e^x\\left(\\frac1x+\\frac{d}{dx}\\frac1x\\right)\\). By the \\(\\int e^x(f+f')=e^x f\\) rule with \\(f=\\frac1x\\), integral \\(=\\frac{e^x}{x}+c\\). Differentiating option A gives \\(\\frac{e^x(x-1)}{x^2}\\). Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "e3d2c9a8-d920-4656-b3bd-9ff0155ebe48",
+    "ref": "Misc I Q.12",
+    "derived_answer": "A",
+    "solution": "\\(\\int\\sin(\\log x)dx\\): put \\(x=e^t\\), \\(dx=e^t dt\\), \\(=\\int e^t\\sin t\\,dt=\\frac{e^t}{2}(\\sin t-\\cos t)=\\frac{x}{2}[\\sin(\\log x)-\\cos(\\log x)]+c\\). Differentiation of option A confirms it. Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "d73d3087-6501-4518-b532-8884990c4b53",
+    "ref": "Misc I Q.13",
+    "derived_answer": "D",
+    "solution": "Since \\(\\frac{d}{dx}x^x=x^x(1+\\log x)\\), the integrand is exactly \\(\\frac{d}{dx}x^x\\), so \\(\\int x^x(1+\\log x)dx=x^x+c\\). Answer D.",
+    "matches_current": true
+  },
+  {
+    "id": "4dd90813-3be3-4c37-8b47-45b08412ee00",
+    "ref": "Misc I Q.14",
+    "derived_answer": "C",
+    "solution": "\\(\\cos^{-3/7}x\\,\\sin^{-11/7}x=\\frac{\\sec^2 x}{\\tan^{11/7}x}\\) (since \\(\\cos^{-3/7}\\sin^{-11/7}=\\cos^{-2}\\cdot(\\tan)^{-11/7}\\)). Put \\(t=\\tan x\\): \\(\\int t^{-11/7}dt=\\frac{t^{-4/7}}{-4/7}=-\\frac{7}{4}\\tan^{-4/7}x+c\\). Differentiating option C returns the integrand (verified numerically to machine precision). Answer C.",
+    "matches_current": true
+  },
+  {
+    "id": "4729d581-dacd-4b94-a034-833f98b463c8",
+    "ref": "Misc I Q.15",
+    "derived_answer": "A",
+    "solution": "Denominator \\(\\cos^2 x+\\sin^2 x=1\\) and numerator \\(\\cos^2 x-\\sin^2 x=\\cos 2x\\), so \\(2\\int\\cos 2x\\,dx=2\\cdot\\frac{\\sin 2x}{2}=\\sin 2x+c\\). Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "5fad6115-20fe-4a0e-911a-c8f9c30976f3",
+    "ref": "Misc I Q.16",
+    "derived_answer": "D",
+    "solution": "Divide numerator and denominator inside by \\(\\cos^2 x\\): \\(\\frac{1}{\\cos x\\sqrt{\\sin^2 x-\\cos^2 x}}=\\frac{\\sec^2 x}{\\sqrt{\\tan^2 x-1}}\\). Put \\(t=\\tan x\\), \\(dt=\\sec^2 x\\,dx\\): \\(\\int\\frac{dt}{\\sqrt{t^2-1}}=\\log\\!\\left(t+\\sqrt{t^2-1}\\right)=\\log\\!\\left(\\tan x+\\sqrt{\\tan^2 x-1}\\right)+c\\). Differentiating option D reproduces the integrand (verified numerically on the valid domain \\(x\\in(\\pi/4,\\pi/2)\\)). Answer D.",
+    "matches_current": true
+  },
+  {
+    "id": "9b3b5bbe-21c3-428a-bea6-57922fc0d44c",
+    "ref": "Misc I Q.17",
+    "derived_answer": "A",
+    "solution": "\\(\\log(ex)=1+\\log x\\), so integrand \\(=\\frac{\\log x}{(1+\\log x)^2}=\\frac{(1+\\log x)-1}{(1+\\log x)^2}=\\frac{1}{1+\\log x}-\\frac{1}{(1+\\log x)^2}\\). This is \\(e^t\\)-type form under \\(x=e^t\\): \\(\\int e^t\\left(\\frac{1}{1+t}-\\frac{1}{(1+t)^2}\\right)dt=\\frac{e^t}{1+t}=\\frac{x}{1+\\log x}+c\\). Differentiating option A returns the integrand. Answer A.",
+    "matches_current": true
+  },
+  {
+    "id": "67239b67-5c97-4a45-ad68-c3fe083b6d51",
+    "ref": "Misc I Q.18",
+    "derived_answer": "D",
+    "solution": "\\(\\frac{d}{dx}\\big(x\\sin(\\log x)\\big)=\\sin(\\log x)+x\\cos(\\log x)\\cdot\\frac1x=\\sin(\\log x)+\\cos(\\log x)\\), exactly the integrand. Hence \\(\\int[\\sin(\\log x)+\\cos(\\log x)]dx=x\\sin(\\log x)+c\\). Answer D.",
+    "matches_current": true
+  },
+  {
+    "id": "b631ad49-8dec-46e5-b501-78b7b0161597",
+    "ref": "Misc I Q.19",
+    "derived_answer": "C",
+    "solution": "\\(\\cos 2x-1=-2\\sin^2 x\\), \\(\\cos 2x+1=2\\cos^2 x\\), so integrand \\(=-\\tan^2 x=-(\\sec^2 x-1)=1-\\sec^2 x\\). Integrating: \\(x-\\tan x+c\\). Answer C.",
+    "matches_current": true
+  },
+  {
+    "id": "82607e76-b397-43be-bd78-63e1f70ceb64",
+    "ref": "Misc I Q.20",
+    "derived_answer": "A",
+    "solution": "\\(\\frac{e^{2x}+e^{-2x}}{e^x}=e^{x}+e^{-3x}\\). Integrate: \\(e^x+\\frac{e^{-3x}}{-3}=e^x-\\frac{1}{3e^{3x}}+c\\). Differentiating option A returns the integrand. Answer A.",
+    "matches_current": true
+  }
+]

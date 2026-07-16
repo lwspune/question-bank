@@ -1,0 +1,246 @@
+[
+  { "ref": "Misc I Q.1", "verdict": "AGREE",
+    "our_answer": "B: \\(\\frac{2}{3}(x+1)^{3/2}+c\\)",
+    "book_answer": "B: \\(\\frac{2}{3}(x+1)^{3/2}+c\\)",
+    "evidence": "Integrand simplifies to \\(\\sqrt{x+1}\\); \\(\\int\\sqrt{x+1}\\,dx=\\frac{2}{3}(x+1)^{3/2}+c\\). d/dx of B returns the integrand (verified numerically, err 0 at 6 pts). Book table keys B." },
+
+  { "ref": "Misc I Q.2", "verdict": "AGREE",
+    "our_answer": "A: \\(\\log x-f(x)+c\\)",
+    "book_answer": "A: \\(\\log x-f(x)+c\\)",
+    "evidence": "The two integrals sum to \\(\\int\\frac{1+x^4}{x(1+x^4)}dx=\\log x\\); required = \\(\\log x-f(x)\\). Identity check simplify(1/x - 1/(x+x^5) - x^4/(x+x^5))=0. Book keys A." },
+
+  { "ref": "Misc I Q.3", "verdict": "AGREE",
+    "our_answer": "B: \\(\\log(x)-(\\log 3)\\cdot\\log(\\log 9x)+c\\)",
+    "book_answer": "B: \\(\\log(x)-(\\log 3)\\cdot\\log(\\log 9x)+c\\)",
+    "evidence": "d/dx of B reproduces \\(\\frac{\\log(3x)}{x\\log(9x)}\\) (numeric err 0 at 6 pts). Book keys B." },
+
+  { "ref": "Misc I Q.4", "verdict": "AGREE",
+    "our_answer": "A: \\(\\frac{\\tan^{m+1}x}{m+1}+c\\)",
+    "book_answer": "A: \\(\\frac{\\tan^{m+1}x}{m+1}+c\\)",
+    "evidence": "Integrand = \\(\\tan^m x\\sec^2 x\\); with t=tan x gives \\(\\frac{\\tan^{m+1}x}{m+1}\\). Verified for m=3 (err 0). Book keys A." },
+
+  { "ref": "Misc I Q.5", "verdict": "AGREE",
+    "our_answer": "D: \\(-\\sqrt{1-x^2}+c\\)",
+    "book_answer": "D: \\(-\\sqrt{1-x^2}+c\\)",
+    "evidence": "\\(\\tan(\\sin^{-1}x)=\\frac{x}{\\sqrt{1-x^2}}\\); integral \\(=-\\sqrt{1-x^2}\\). d/dx of D = integrand (err 0). Book keys D." },
+
+  { "ref": "Misc I Q.6", "verdict": "AGREE",
+    "our_answer": "B: \\(-x\\cot(x/2)+c\\)",
+    "book_answer": "B: \\(-x\\cot(x/2)+c\\)",
+    "evidence": "d/dx of \\(-x\\cot(x/2)\\) reproduces \\(\\frac{x-\\sin x}{1-\\cos x}\\) (err 0 at 6 pts). Book keys B." },
+
+  { "ref": "Misc I Q.7", "verdict": "AGREE",
+    "our_answer": "A: \\(e^{\\sin^{-1}x}(\\sin^{-1}x-1)+c\\)",
+    "book_answer": "A: \\(e^{\\sin^{-1}x}(\\sin^{-1}x-1)+c\\)",
+    "evidence": "With t=sin^{-1}x the product is t·e^t; integrates to \\(e^{\\sin^{-1}x}(\\sin^{-1}x-1)\\) (d/dx err 0). KNOWN DEFECT: options A and D are printed IDENTICALLY (both \\(e^{\\sin^{-1}x}(\\sin^{-1}x-1)+c\\)), so both are correct; the book table keys A (the first), matching ours." },
+
+  { "ref": "Misc I Q.8", "verdict": "AGREE",
+    "our_answer": "A: \\((5, 3)\\)",
+    "book_answer": "A: \\((5, 3)\\)",
+    "evidence": "\\(\\int\\tan^3x\\sec^3x\\,dx=\\frac{1}{5}\\sec^5x-\\frac{1}{3}\\sec^3x\\) (d/dx err 0), so (m,n)=(5,3). Book keys A." },
+
+  { "ref": "Misc I Q.9", "verdict": "AGREE",
+    "our_answer": "C: \\(\\log(\\sec x+\\tan x)-\\cot(x/2)+c\\)",
+    "book_answer": "C: \\(\\log(\\sec x+\\tan x)-\\cot(x/2)+c\\)",
+    "evidence": "Partial fractions in cos x give \\(\\sec x+\\frac{1}{1-\\cos x}\\); integrates to option C (d/dx err 0). Book keys C." },
+
+  { "ref": "Misc I Q.10", "verdict": "AGREE",
+    "our_answer": "B: \\(-2\\sqrt{\\cot x}+c\\)",
+    "book_answer": "B: \\(-2\\sqrt{\\cot x}+c\\)",
+    "evidence": "With t=cot x the integrand becomes \\(-t^{-1/2}dt\\), giving \\(-2\\sqrt{\\cot x}\\) (d/dx err 0). Book keys B." },
+
+  { "ref": "Misc I Q.11", "verdict": "AGREE",
+    "our_answer": "A: \\(\\frac{e^x}{x}+c\\)",
+    "book_answer": "A: \\(\\frac{e^x}{x}+c\\)",
+    "evidence": "\\(\\int e^x(\\frac1x-\\frac1{x^2})dx=\\frac{e^x}{x}\\) (d/dx err 0). Book keys A." },
+
+  { "ref": "Misc I Q.12", "verdict": "AGREE",
+    "our_answer": "A: \\(\\frac{x}{2}[\\sin(\\log x)-\\cos(\\log x)]+c\\)",
+    "book_answer": "A: \\(\\frac{x}{2}[\\sin(\\log x)-\\cos(\\log x)]+c\\)",
+    "evidence": "d/dx of A reproduces \\(\\sin(\\log x)\\) (err 0 at 6 pts). Book keys A." },
+
+  { "ref": "Misc I Q.13", "verdict": "AGREE",
+    "our_answer": "D: \\(x^x+c\\)",
+    "book_answer": "D: \\(x^x+c\\)",
+    "evidence": "\\(\\frac{d}{dx}x^x=x^x(1+\\log x)\\), the exact integrand, so integral = \\(x^x\\). Book keys D." },
+
+  { "ref": "Misc I Q.14", "verdict": "AGREE",
+    "our_answer": "C: \\(-\\frac{7}{4}\\tan^{-4/7}x+c\\)",
+    "book_answer": "C: \\(-\\frac{7}{4}\\tan^{-4/7}x+c\\)",
+    "evidence": "Integrand = \\(\\sec^2x\\,\\tan^{-11/7}x\\); t=tan x gives \\(-\\frac{7}{4}\\tan^{-4/7}x\\) (d/dx err 0 numerically). Book keys C." },
+
+  { "ref": "Misc I Q.15", "verdict": "AGREE",
+    "our_answer": "A: \\(\\sin 2x+c\\)",
+    "book_answer": "A: \\(\\sin 2x+c\\)",
+    "evidence": "Denominator=1, numerator=cos 2x, so \\(2\\int\\cos 2x\\,dx=\\sin 2x\\) (d/dx err 0). Book keys A." },
+
+  { "ref": "Misc I Q.16", "verdict": "AGREE",
+    "our_answer": "D: \\(\\log(\\tan x+\\sqrt{\\tan^2x-1})+c\\)",
+    "book_answer": "D: \\(\\log(\\tan x+\\sqrt{\\tan^2x-1})+c\\)",
+    "evidence": "Integrand = \\(\\frac{\\sec^2x}{\\sqrt{\\tan^2x-1}}\\); t=tan x gives \\(\\log(t+\\sqrt{t^2-1})\\) (d/dx err 0 on valid domain). Book keys D." },
+
+  { "ref": "Misc I Q.17", "verdict": "AGREE",
+    "our_answer": "A: \\(\\frac{x}{1+\\log x}+c\\)",
+    "book_answer": "A: \\(\\frac{x}{1+\\log x}+c\\)",
+    "evidence": "\\(\\log(ex)=1+\\log x\\); integrand = \\(\\frac{1}{1+\\log x}-\\frac{1}{(1+\\log x)^2}\\), integrates to \\(\\frac{x}{1+\\log x}\\) (d/dx err 0). Book keys A." },
+
+  { "ref": "Misc I Q.18", "verdict": "AGREE",
+    "our_answer": "D: \\(x\\sin(\\log x)+c\\)",
+    "book_answer": "D: \\(x\\sin(\\log x)+c\\)",
+    "evidence": "\\(\\frac{d}{dx}(x\\sin(\\log x))=\\sin(\\log x)+\\cos(\\log x)\\), the integrand (err 0). Book keys D." },
+
+  { "ref": "Misc I Q.19", "verdict": "AGREE",
+    "our_answer": "C: \\(x-\\tan x+c\\)",
+    "book_answer": "C: \\(x-\\tan x+c\\)",
+    "evidence": "\\(\\frac{\\cos 2x-1}{\\cos 2x+1}=-\\tan^2x=1-\\sec^2x\\), integrates to \\(x-\\tan x\\) (d/dx err 0). Book keys C." },
+
+  { "ref": "Misc I Q.20", "verdict": "AGREE",
+    "our_answer": "A: \\(e^x-\\frac{1}{3e^{3x}}+c\\)",
+    "book_answer": "A: \\(e^x-\\frac{1}{3e^{3x}}+c\\)",
+    "evidence": "Integrand = \\(e^x+e^{-3x}\\); integral = \\(e^x-\\frac{1}{3}e^{-3x}\\) (d/dx err 0). Book keys A." },
+
+  { "ref": "Misc II Q.1", "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "\\(\\frac{2}{7}x^{7/2}-\\frac{8}{5}x^{5/2}+\\frac{8}{3}x^{3/2}+c\\)",
+    "book_answer": "\\(\\frac{2}{7}x^{7/2}-\\frac{8}{5}x^{5/2}-\\frac{8}{3}x^{3/2}+c\\) (p267 II.1)",
+    "evidence": "Integrand \\((x-2)^2\\sqrt x=x^{5/2}-4x^{3/2}+4x^{1/2}\\); the last term integrates to \\(+\\frac{8}{3}x^{3/2}\\) (\\(4\\cdot\\frac23\\)), sign POSITIVE. Our d/dx returns the integrand exactly (err 0 at 6 pts); the book's \\(-\\frac{8}{3}x^{3/2}\\) does NOT (errs 4.4-10.4). The book printed the sign of the third term wrong." },
+
+  { "ref": "Misc II Q.2", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{x^7}{7}-\\frac{x^6}{6}+\\frac{x^5}{5}-\\frac{x^4}{4}+\\frac{x^3}{3}-\\frac{x^2}{2}+x-\\log|x+1|+c\\)",
+    "book_answer": "same (p267 II.2)",
+    "evidence": "Polynomial-division form identical to book; d/dx err 0 at 6 pts." },
+
+  { "ref": "Misc II Q.3", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{1}{15}(6x+5)^{5/2}+c\\)",
+    "book_answer": "\\(\\frac{1}{15}(6x+5)^{5/2}+c\\) (p267 II.3)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc II Q.4", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{(t+1)^2}{2}-3(t+1)+3\\log|t+1|+\\frac{1}{t+1}+c\\)",
+    "book_answer": "\\(\\frac{t^2}{2}-2t+3\\log(t+1)+\\frac{1}{t+1}+c\\) (p267 II.4)",
+    "evidence": "Expanding ours gives \\(\\frac{t^2}{2}-2t-\\frac52+3\\log|t+1|+\\frac{1}{t+1}\\) = book form minus the constant \\(\\frac52\\) (absorbed in c). Equivalent; both d/dx to the integrand (err 0)." },
+
+  { "ref": "Misc II Q.5", "verdict": "AGREE",
+    "our_answer": "\\(3\\tan x-2\\sec x+c\\)",
+    "book_answer": "\\(3\\tan x-2\\sec x+c\\) (p267 II.5)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc II Q.6", "verdict": "AGREE",
+    "our_answer": "\\(\\tan\\theta-\\cot\\theta-3\\theta+c\\)",
+    "book_answer": "\\(\\tan\\theta-\\cot\\theta-3\\theta+c\\) (p267 II.6)",
+    "evidence": "Identical; d/dx err 0 (in \\(\\theta\\))." },
+
+  { "ref": "Misc II Q.7", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{x}{4}+\\frac{\\sin 2x}{8}+\\frac{\\sin 4x}{16}+\\frac{\\sin 6x}{24}+c\\)",
+    "book_answer": "\\(\\frac{1}{48}(2\\sin 6x+3\\sin 4x+6\\sin 2x+12x)+c\\) (p267 II.7)",
+    "evidence": "Book form expands term-by-term to ours (\\(\\frac{2\\sin6x}{48}=\\frac{\\sin6x}{24}\\), etc.). Identical; d/dx err 0." },
+
+  { "ref": "Misc II Q.8", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{\\sin 2x}{2}-\\frac{\\sin 3x}{3}+c\\)",
+    "book_answer": "\\(\\frac{1}{2}\\sin 2x-\\frac{1}{3}\\sin 3x+c\\) (p267 II.8)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc II Q.9", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{\\pi x}{4}-\\frac{x^2}{4}+c\\)",
+    "book_answer": "\\(\\frac{\\pi}{4}x-\\frac{1}{4}x^2+c\\) (p267 II.9)",
+    "evidence": "Identical; d/dx err 0. (Pre-flag II.9 admits equivalent forms — here book matches ours directly.)" },
+
+  { "ref": "Misc III Q.1", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{(1+\\log x)^4}{4}+c\\)",
+    "book_answer": "\\(\\frac{1}{4}(1+\\log x)^4+c\\) (p267 III.1)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.2", "verdict": "AGREE",
+    "our_answer": "\\(x\\tan^{-1}x-\\frac12\\log(1+x^2)-(x-1)\\tan^{-1}(x-1)+\\frac12\\log(1+(x-1)^2)+c\\)",
+    "book_answer": "\\((\\tan^{-1}x)x-\\frac12\\log(1+x^2)-(1-x)\\tan^{-1}(1-x)+\\frac12\\log(x^2-2x+2)+c\\) (p267 III.2)",
+    "evidence": "\\(\\tan^{-1}(1-x)=-\\tan^{-1}(x-1)\\) so \\(-(1-x)\\tan^{-1}(1-x)=-(x-1)\\tan^{-1}(x-1)\\); and \\(x^2-2x+2=1+(x-1)^2\\). Algebraically identical to ours; d/dx err 0." },
+
+  { "ref": "Misc III Q.3", "verdict": "AGREE",
+    "our_answer": "\\(-\\cot(\\log x)+c\\)",
+    "book_answer": "\\(-\\cot(\\log x)+c\\) (p267 III.3)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.4", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{2}{3}\\sec(x^{3/2})+c\\)",
+    "book_answer": "\\(\\frac{2}{3}\\sec x^{3/2}+c\\) (p267 III.4)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.5", "verdict": "AGREE",
+    "our_answer": "\\(x\\log(1+\\cos x)+c\\)",
+    "book_answer": "\\(x\\log(1+\\cos x)+c\\) (p277 III.5)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.6", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{1}{3}\\sin^{-1}(x^3)+c\\)",
+    "book_answer": "\\(\\frac{1}{3}\\sin^{-1}(x^3)+c\\) (p277 III.6)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.7", "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "\\(\\frac{1}{4}\\log|3-\\cot 2x|+c\\)",
+    "book_answer": "\\(\\frac{1}{4}\\log(3-2\\cot x)+c\\) (p277 III.7)",
+    "evidence": "Source stem (p150 III.7) is \\(\\frac{1}{(1-\\cos 4x)(3-\\cot 2x)}\\) — denominator factor is \\(3-\\cot 2x\\) (confirmed against source image). With \\(1-\\cos4x=2\\sin^2 2x\\), t=cot 2x gives \\(\\frac14\\log|3-\\cot 2x|\\). Our d/dx returns the integrand (err 0); the book's \\(3-2\\cot x\\) argument does NOT (errs up to 9.9). Book wrote \\(\\cot 2x\\) as \\(2\\cot x\\) — a wrong simplification (\\(\\cot 2x\\neq 2\\cot x\\))." },
+
+  { "ref": "Misc III Q.8", "verdict": "AGREE",
+    "our_answer": "\\(x\\log(\\log x)-\\frac{x}{\\log x}+c\\)",
+    "book_answer": "\\(x(\\log(\\log x)-\\frac{1}{\\log x})+c\\) (p277 III.8)",
+    "evidence": "Book factorization equals ours; d/dx err 0." },
+
+  { "ref": "Misc III Q.9", "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "\\(\\frac{1}{\\sqrt{13}}\\log|\\tan\\frac{x+\\varphi}{2}|+c,\\ \\varphi=\\tan^{-1}\\frac23\\)",
+    "book_answer": "\\(\\frac{2}{\\sqrt{13}}\\tan^{-1}\\!\\big(\\frac{2\\tan(x/2)-3}{\\sqrt{13}}\\big)+c\\) (p277 III.9)",
+    "evidence": "For \\(\\int\\frac{dx}{2\\cos x+3\\sin x}\\) the Weierstrass denominator \\(-2t^2+6t+2\\) (t=tan(x/2)) has real roots (indefinite), so the antiderivative is LOGARITHMIC, not arctan. Our log form d/dx = integrand (err 0 at 6 pts); the book's arctan form does NOT (errs 0.03-1.4). The book's arctan form is the wrong TYPE for this integral (it fits \\(a+b\\cos+c\\sin\\) with \\(a^2>b^2+c^2\\); here \\(a=0\\)). NOTE: author pre-flagged III.9 as admitting equivalent surface forms, but the book answer is genuinely non-equivalent (verified non-equal), so BOOK-KEY-WRONG, not AGREE." },
+
+  { "ref": "Misc III Q.10", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{1}{2}\\sec^{-1}x+\\frac{\\sqrt{x^2-1}}{2x^2}+c\\)",
+    "book_answer": "\\(\\frac{1}{4}(2\\sec^{-1}x+\\frac{2\\sqrt{x^2-1}}{x^2})+c\\) (p277 III.10)",
+    "evidence": "Book expands to \\(\\frac12\\sec^{-1}x+\\frac{\\sqrt{x^2-1}}{2x^2}\\), identical to ours; d/dx err 0." },
+
+  { "ref": "Misc III Q.11", "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "\\(-\\frac{3}{2}\\sqrt{-2x^2+x+3}+\\frac{7}{4\\sqrt2}\\sin^{-1}\\frac{4x-1}{5}+c\\)",
+    "book_answer": "\\(-\\frac{3}{2}\\sqrt{-2x^2+x+3}+\\frac{7}{4\\sqrt2}\\sin^{-1}\\frac{2x-1}{\\sqrt7}+c\\) (p277 III.11)",
+    "evidence": "Completing the square: \\(-2x^2+x+3=\\frac{25}{8}-2(x-\\frac14)^2\\), giving arcsin argument \\((x-\\frac14)/(5/4)=\\frac{4x-1}{5}\\). At the domain boundary x=3/2 our arg \\(=1\\Rightarrow\\pi/2\\) (correct); book's \\(\\frac{2\\cdot3/2-1}{\\sqrt7}=2/\\sqrt7\\neq1\\). Our d/dx = integrand (err 0); book's does NOT (errs up to 2.8). Book's arcsin argument is wrong. NOTE: author pre-flagged III.11 as equivalent-form; it is genuinely non-equivalent, so BOOK-KEY-WRONG." },
+
+  { "ref": "Misc III Q.12", "verdict": "AGREE",
+    "our_answer": "\\(x\\log(x^2+1)-2x+2\\tan^{-1}x+c\\)",
+    "book_answer": "\\(x\\log(x^2+1)-2[x-\\tan^{-1}x]+c\\) (p277 III.12)",
+    "evidence": "Book = \\(x\\log(x^2+1)-2x+2\\tan^{-1}x\\), identical to ours; d/dx err 0." },
+
+  { "ref": "Misc III Q.13", "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "\\(\\frac{e^{2x}(\\sin 2x-\\cos 2x)}{8}+c\\)",
+    "book_answer": "\\(\\frac{1}{4}e^{2x}[\\sin 2x-\\cos 2x]+c\\) (p277 III.13)",
+    "evidence": "\\(\\sin x\\cos x=\\frac12\\sin 2x\\), so \\(\\int e^{2x}\\sin x\\cos x\\,dx=\\frac12\\int e^{2x}\\sin 2x\\,dx=\\frac12\\cdot\\frac{e^{2x}(\\sin2x-\\cos2x)}{4}=\\frac{e^{2x}(\\sin2x-\\cos2x)}{8}\\). Our d/dx = integrand (err 0); book's \\(\\frac14\\) coefficient d/dx = \\(2\\times\\) integrand (errs 0.5-3.8). Book dropped the \\(\\frac12\\) from \\(\\sin x\\cos x\\) — off by factor 2." },
+
+  { "ref": "Misc III Q.14", "verdict": "AGREE",
+    "our_answer": "\\(\\frac12\\log|x-1|+\\frac{1}{18}\\log|3x-1|-\\frac49\\log|3x-2|+c\\)",
+    "book_answer": "\\(\\frac{1}{18}\\log(3x-1)+\\frac12\\log(x-1)-\\frac49\\log(3x-2)+c\\) (p277 III.14)",
+    "evidence": "Same three terms (reordered); partial-fraction coeffs A=1/2, B=1/6, C=-4/3 verified by cover-up; d/dx err 0." },
+
+  { "ref": "Misc III Q.15", "verdict": "AGREE",
+    "our_answer": "\\(\\frac16\\log|1-\\cos x|+\\frac12\\log|1+\\cos x|-\\frac23\\log|1+2\\cos x|+c\\)",
+    "book_answer": "\\(\\frac16\\log\\{\\frac{(\\cos x-1)(\\cos x+1)^3}{(2\\cos x+1)^4}\\}+c\\) (p277 III.15)",
+    "evidence": "Book log expands to \\(\\frac16\\log(\\cos x-1)+\\frac12\\log(\\cos x+1)-\\frac23\\log(2\\cos x+1)\\); \\(\\log(\\cos x-1)\\) and \\(\\log|1-\\cos x|\\) differ by a constant. Algebraically identical to ours; both d/dx to the integrand (err 0)." },
+
+  { "ref": "Misc III Q.16", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{\\tan x-1}{2}\\sqrt{7+2\\tan x-\\tan^2x}+4\\sin^{-1}\\frac{\\tan x-1}{2\\sqrt2}+c\\)",
+    "book_answer": "same (p277 III.16)",
+    "evidence": "Identical to book; d/dx err 0." },
+
+  { "ref": "Misc III Q.17", "verdict": "AGREE",
+    "our_answer": "\\(\\frac14\\log|x+3|+\\frac34\\log|x-1|-\\log|x+1|+c\\)",
+    "book_answer": "\\(\\frac14\\log\\{\\frac{(x-1)^3(x+3)}{(x+1)^4}\\}+c\\) (p277 III.17)",
+    "evidence": "Book log expands to \\(\\frac34\\log(x-1)+\\frac14\\log(x+3)-\\log(x+1)\\), identical to ours; partial-fraction coeffs verified; d/dx err 0." },
+
+  { "ref": "Misc III Q.18", "verdict": "AGREE",
+    "our_answer": "\\(\\frac15\\log|\\frac{x^5}{x^5+1}|+c\\)",
+    "book_answer": "\\(\\frac15\\log(\\frac{x^5}{x^5+1})+c\\) (p277 III.18)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.19", "verdict": "AGREE",
+    "our_answer": "\\(2\\sqrt{\\tan x}+c\\)",
+    "book_answer": "\\(2\\sqrt{\\tan x}+c\\) (p277 III.19)",
+    "evidence": "Identical; d/dx err 0." },
+
+  { "ref": "Misc III Q.20", "verdict": "AGREE",
+    "our_answer": "\\(\\frac{\\tan^3x}{3}+2\\tan x-\\cot x+c\\)",
+    "book_answer": "\\(\\frac{1}{3\\cot^3x}+\\frac{2}{\\cot x}-\\cot x+c\\) (p277 III.20)",
+    "evidence": "\\(\\frac{1}{\\cot^3x}=\\tan^3x\\) and \\(\\frac{1}{\\cot x}=\\tan x\\), so book = ours; d/dx err 0." }
+]

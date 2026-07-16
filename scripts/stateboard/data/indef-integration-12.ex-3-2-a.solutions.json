@@ -1,0 +1,296 @@
+[
+  {
+    "id": "2908db3d-2e20-4167-8923-202ffa25e5f6",
+    "ref": "Ex 3.2(A) I (1)",
+    "solution": "Let \\(t = \\log x\\), so \\(dt = \\dfrac{1}{x}\\, dx\\).\n\\(\\displaystyle \\int \\frac{(\\log x)^n}{x}\\, dx = \\int t^n\\, dt = \\frac{t^{n+1}}{n+1} + c = \\frac{(\\log x)^{n+1}}{n+1} + c\\) \\((n \\ne -1)\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "14cce6e2-92d3-473f-b01e-939af28658e4",
+    "ref": "Ex 3.2(A) I (2)",
+    "solution": "Let \\(t = \\sin^{-1} x\\), so \\(dt = \\dfrac{1}{\\sqrt{1 - x^2}}\\, dx\\).\n\\(\\displaystyle \\int \\frac{(\\sin^{-1} x)^{3/2}}{\\sqrt{1 - x^2}}\\, dx = \\int t^{3/2}\\, dt = \\frac{t^{5/2}}{5/2} = \\frac{2}{5}\\,(\\sin^{-1} x)^{5/2} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "7f03eb0f-917c-4843-b1ab-dc18dc71012e",
+    "ref": "Ex 3.2(A) I (3)",
+    "solution": "Note that \\(\\dfrac{1 + x}{x} = 1 + \\dfrac{1}{x}\\). Let \\(t = x + \\log x\\), so \\(dt = \\left(1 + \\dfrac{1}{x}\\right) dx = \\dfrac{1 + x}{x}\\, dx\\).\n\\(\\displaystyle \\int \\frac{1 + x}{x\\,\\sin(x + \\log x)}\\, dx = \\int \\frac{dt}{\\sin t} = \\int \\operatorname{cosec} t\\, dt = \\log\\left|\\tan \\frac{t}{2}\\right| + c = \\log\\left|\\tan\\!\\left(\\frac{x + \\log x}{2}\\right)\\right| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "197276a4-8197-4373-b6ea-fee4fc358de9",
+    "ref": "Ex 3.2(A) I (4)",
+    "solution": "Let \\(t = \\tan(x^2)\\), so \\(dt = 2x\\,\\sec^2(x^2)\\, dx\\), i.e. \\(x\\,\\sec^2(x^2)\\, dx = \\dfrac{dt}{2}\\).\n\\(\\displaystyle \\int \\frac{x\\,\\sec^2(x^2)}{\\sqrt{\\tan^3(x^2)}}\\, dx = \\frac{1}{2}\\int t^{-3/2}\\, dt = \\frac{1}{2}\\cdot\\frac{t^{-1/2}}{-1/2} = -\\,t^{-1/2} = -\\frac{1}{\\sqrt{\\tan(x^2)}} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "985f9858-6810-45cc-9797-342e4c526c3c",
+    "ref": "Ex 3.2(A) I (5)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\frac{1}{3}(e^{3x}+1)\\) with the \\(\\log\\) dropped; the correct answer is \\(\\frac{1}{3}\\log(e^{3x}+1)\\). The answer below is correct.]\n\nLet \\(t = e^{3x} + 1\\), so \\(dt = 3e^{3x}\\, dx\\), i.e. \\(e^{3x}\\, dx = \\dfrac{dt}{3}\\).\n\\(\\displaystyle \\int \\frac{e^{3x}}{e^{3x} + 1}\\, dx = \\frac{1}{3}\\int \\frac{dt}{t} = \\frac{1}{3}\\log|t| + c = \\frac{1}{3}\\log\\!\\left(e^{3x} + 1\\right) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1d56870c-6b03-4108-bdd6-52341672a070",
+    "ref": "Ex 3.2(A) I (6)",
+    "solution": "Note that \\(\\dfrac{x^2 + 2}{x^2 + 1} = 1 + \\dfrac{1}{x^2 + 1}\\). Let \\(t = x + \\tan^{-1} x\\), so \\(dt = \\left(1 + \\dfrac{1}{1 + x^2}\\right) dx = \\dfrac{x^2 + 2}{x^2 + 1}\\, dx\\).\n\\(\\displaystyle \\int \\frac{x^2 + 2}{x^2 + 1}\\, a^{x + \\tan^{-1} x}\\, dx = \\int a^{t}\\, dt = \\frac{a^{t}}{\\log a} + c = \\frac{a^{x + \\tan^{-1} x}}{\\log a} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ec683c07-19a3-48a6-a464-906d9de498de",
+    "ref": "Ex 3.2(A) I (7)",
+    "solution": "Let \\(u = e^{x}\\), so \\(du = e^{x}\\, dx\\); the integral becomes \\(\\displaystyle \\int \\frac{\\log(\\sin u)}{\\tan u}\\, du = \\int \\log(\\sin u)\\cdot\\frac{\\cos u}{\\sin u}\\, du\\).\nNow let \\(t = \\log(\\sin u)\\), so \\(dt = \\dfrac{\\cos u}{\\sin u}\\, du\\).\n\\(\\displaystyle \\int t\\, dt = \\frac{t^2}{2} = \\frac{1}{2}\\big(\\log(\\sin e^{x})\\big)^2 + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "af0ea29a-ed11-41b2-aab4-8ce2d047b83c",
+    "ref": "Ex 3.2(A) I (8)",
+    "solution": "Divide numerator and denominator by \\(e^{x}\\): \\(\\dfrac{e^{2x} + 1}{e^{2x} - 1} = \\dfrac{e^{x} + e^{-x}}{e^{x} - e^{-x}}\\). Since \\(\\dfrac{d}{dx}\\big(e^{x} - e^{-x}\\big) = e^{x} + e^{-x}\\), put \\(t = e^{x} - e^{-x}\\).\n\\(\\displaystyle \\int \\frac{e^{2x} + 1}{e^{2x} - 1}\\, dx = \\int \\frac{dt}{t} = \\log\\left|e^{x} - e^{-x}\\right| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "81ac2981-d9cd-4496-9663-70f88bc17f11",
+    "ref": "Ex 3.2(A) I (9)",
+    "solution": "Write \\(\\cos^3 x = (1 - \\sin^2 x)\\cos x\\). Let \\(t = \\sin x\\), \\(dt = \\cos x\\, dx\\).\n\\(\\displaystyle \\int \\sin^4 x\\,\\cos^3 x\\, dx = \\int t^4 (1 - t^2)\\, dt = \\int (t^4 - t^6)\\, dt = \\frac{t^5}{5} - \\frac{t^7}{7} = \\frac{\\sin^5 x}{5} - \\frac{\\sin^7 x}{7} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9463e877-68b0-4cdc-acba-235da70b22cf",
+    "ref": "Ex 3.2(A) I (10)",
+    "solution": "Multiply numerator and denominator by \\(x^{11}\\): \\(\\dfrac{1}{4x + 5x^{-11}} = \\dfrac{x^{11}}{4x^{12} + 5}\\). Let \\(t = 4x^{12} + 5\\), so \\(dt = 48x^{11}\\, dx\\).\n\\(\\displaystyle \\int \\frac{x^{11}}{4x^{12} + 5}\\, dx = \\frac{1}{48}\\int \\frac{dt}{t} = \\frac{1}{48}\\log\\!\\left(4x^{12} + 5\\right) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2e7916d1-cb49-419b-8a4e-d29496984d1e",
+    "ref": "Ex 3.2(A) I (11)",
+    "solution": "Let \\(t = x^{10}\\), so \\(dt = 10x^{9}\\, dx\\), i.e. \\(x^{9}\\, dx = \\dfrac{dt}{10}\\).\n\\(\\displaystyle \\int x^{9}\\,\\sec^2(x^{10})\\, dx = \\frac{1}{10}\\int \\sec^2 t\\, dt = \\frac{1}{10}\\tan(x^{10}) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2fd938cb-1e8f-42cb-9ca8-90e08040259d",
+    "ref": "Ex 3.2(A) I (12)",
+    "solution": "Since \\(e^{3\\log x} = x^{3}\\), the integral is \\(\\displaystyle \\int \\frac{x^{3}}{x^{4} + 1}\\, dx\\). Let \\(t = x^{4} + 1\\), so \\(dt = 4x^{3}\\, dx\\).\n\\(\\displaystyle = \\frac{1}{4}\\int \\frac{dt}{t} = \\frac{1}{4}\\log\\!\\left(x^{4} + 1\\right) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "04b9ebdd-4e97-4d74-9a52-bb7e51099c67",
+    "ref": "Ex 3.2(A) I (13)",
+    "solution": "Write \\(\\sin x\\cos x = \\cos^2 x\\,\\tan x\\), so \\(\\dfrac{\\sqrt{\\tan x}}{\\sin x\\,\\cos x} = \\dfrac{\\sqrt{\\tan x}}{\\cos^2 x\\,\\tan x} = \\dfrac{\\sec^2 x}{\\sqrt{\\tan x}}\\). Let \\(t = \\tan x\\), \\(dt = \\sec^2 x\\, dx\\).\n\\(\\displaystyle \\int \\frac{\\sec^2 x}{\\sqrt{\\tan x}}\\, dx = \\int t^{-1/2}\\, dt = 2\\sqrt{t} = 2\\sqrt{\\tan x} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f4c719b4-4104-4dd4-98e4-2f76e3a1febc",
+    "ref": "Ex 3.2(A) I (14)",
+    "solution": "Since \\((x - 1)^2 = x^2 - 2x + 1 = (x^2 + 1) - 2x\\), we have \\(\\dfrac{(x - 1)^2}{(x^2 + 1)^2} = \\dfrac{1}{x^2 + 1} - \\dfrac{2x}{(x^2 + 1)^2}\\).\nNow \\(\\displaystyle \\int \\frac{dx}{x^2 + 1} = \\tan^{-1} x\\), and with \\(t = x^2 + 1\\), \\(\\displaystyle \\int \\frac{2x}{(x^2 + 1)^2}\\, dx = -\\frac{1}{x^2 + 1}\\).\nHence the integral \\(= \\tan^{-1} x + \\dfrac{1}{x^2 + 1} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "305e6276-3dbc-417c-94c0-cb9ffd6971f7",
+    "ref": "Ex 3.2(A) I (15)",
+    "solution": "Let \\(t = 3\\cos^2 x + 4\\sin^2 x\\). Then \\(dt = (-6\\cos x\\sin x + 8\\sin x\\cos x)\\, dx = 2\\sin x\\cos x\\, dx\\), which is exactly the numerator.\n\\(\\displaystyle \\int \\frac{2\\sin x\\cos x}{3\\cos^2 x + 4\\sin^2 x}\\, dx = \\int \\frac{dt}{t} = \\log\\!\\left(3\\cos^2 x + 4\\sin^2 x\\right) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "e6296696-57f5-4314-bb23-e24c96e21bb6",
+    "ref": "Ex 3.2(A) I (16)",
+    "solution": "Since \\(\\sqrt{x^3} = x\\sqrt{x}\\), we have \\(\\sqrt{x} + \\sqrt{x^3} = \\sqrt{x}\\,(1 + x)\\). Let \\(t = \\sqrt{x}\\), so \\(x = t^2\\) and \\(dx = 2t\\, dt\\).\n\\(\\displaystyle \\int \\frac{1}{\\sqrt{x}\\,(1 + x)}\\, dx = \\int \\frac{2t}{t\\,(1 + t^2)}\\, dt = \\int \\frac{2}{1 + t^2}\\, dt = 2\\tan^{-1} t = 2\\tan^{-1}\\!\\sqrt{x} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2dc5dc41-7fdf-4612-852c-8e9dfd6cf049",
+    "ref": "Ex 3.2(A) I (17)",
+    "solution": "The numerator is the derivative of the denominator: \\(\\dfrac{d}{dx}\\big(10^{x} + x^{10}\\big) = 10^{x}\\log 10 + 10x^{9}\\). Let \\(t = 10^{x} + x^{10}\\).\n\\(\\displaystyle \\int \\frac{10x^{9} + 10^{x}\\log 10}{10^{x} + x^{10}}\\, dx = \\int \\frac{dt}{t} = \\log\\!\\left(10^{x} + x^{10}\\right) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "cc347bef-9bda-40d4-b5c9-caf5b7834672",
+    "ref": "Ex 3.2(A) I (18)",
+    "solution": "Let \\(t = 1 + 4x^{n}\\), so \\(dt = 4n\\,x^{n-1}\\, dx\\), i.e. \\(x^{n-1}\\, dx = \\dfrac{dt}{4n}\\).\n\\(\\displaystyle \\int \\frac{x^{n-1}}{\\sqrt{1 + 4x^{n}}}\\, dx = \\frac{1}{4n}\\int t^{-1/2}\\, dt = \\frac{1}{4n}\\cdot 2\\sqrt{t} = \\frac{1}{2n}\\sqrt{1 + 4x^{n}} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "77531329-4546-402d-8a56-eca17a78f9a6",
+    "ref": "Ex 3.2(A) I (19)",
+    "solution": "Let \\(t = x + 2\\), so \\(x = t - 2\\), \\(dx = dt\\), and \\(2x + 1 = 2t - 3\\).\n\\(\\displaystyle \\int (2x + 1)\\sqrt{x + 2}\\, dx = \\int (2t - 3)\\,t^{1/2}\\, dt = \\int \\big(2t^{3/2} - 3t^{1/2}\\big)\\, dt = \\frac{4}{5}t^{5/2} - 2t^{3/2}\\).\nHence \\(= \\dfrac{4}{5}(x + 2)^{5/2} - 2(x + 2)^{3/2} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "7237fe96-733d-4d89-9a7d-72cc10a88a6d",
+    "ref": "Ex 3.2(A) I (20)",
+    "solution": "Let \\(t = a^2 + x^2\\), so \\(x^2 = t - a^2\\) and \\(x\\, dx = \\dfrac{dt}{2}\\). Then \\(x^5\\, dx = (t - a^2)^2\\cdot\\dfrac{dt}{2}\\).\n\\(\\displaystyle \\int x^5\\sqrt{a^2 + x^2}\\, dx = \\frac{1}{2}\\int (t - a^2)^2\\, t^{1/2}\\, dt = \\frac{1}{2}\\int \\big(t^{5/2} - 2a^2 t^{3/2} + a^4 t^{1/2}\\big)\\, dt\\).\n\\(\\displaystyle = \\frac{1}{2}\\left(\\frac{2}{7}t^{7/2} - \\frac{4a^2}{5}t^{5/2} + \\frac{2a^4}{3}t^{3/2}\\right) = \\frac{1}{7}(a^2 + x^2)^{7/2} - \\frac{2a^2}{5}(a^2 + x^2)^{5/2} + \\frac{a^4}{3}(a^2 + x^2)^{3/2} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8899afd3-cd5d-4ffc-8c82-84f8c51e93a1",
+    "ref": "Ex 3.2(A) I (21)",
+    "solution": "Let \\(t = 2 - 3x\\), so \\(dx = -\\dfrac{dt}{3}\\) and \\(5 - 3x = 3 + t\\).\n\\(\\displaystyle \\int (5 - 3x)(2 - 3x)^{-1/2}\\, dx = -\\frac{1}{3}\\int (3 + t)\\,t^{-1/2}\\, dt = -\\frac{1}{3}\\int \\big(3t^{-1/2} + t^{1/2}\\big)\\, dt\\).\n\\(\\displaystyle = -\\frac{1}{3}\\left(6t^{1/2} + \\frac{2}{3}t^{3/2}\\right) = -2\\sqrt{2 - 3x} - \\frac{2}{9}(2 - 3x)^{3/2} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6b35a511-735b-4e6a-adf8-3b3cf0625552",
+    "ref": "Ex 3.2(A) I (22)",
+    "solution": "Let \\(t = 2x + 3\\), so \\(x = \\dfrac{t - 3}{2}\\) and \\(dx = \\dfrac{dt}{2}\\). Then \\(7 + 4x + 5x^2 = \\dfrac{5}{4}t^2 - \\dfrac{11}{2}t + \\dfrac{49}{4}\\).\n\\(\\displaystyle \\int \\frac{7 + 4x + 5x^2}{(2x + 3)^{3/2}}\\, dx = \\frac{1}{2}\\int \\left(\\frac{5}{4}t^{1/2} - \\frac{11}{2}t^{-1/2} + \\frac{49}{4}t^{-3/2}\\right) dt\\).\n\\(\\displaystyle = \\frac{5}{12}t^{3/2} - \\frac{11}{2}t^{1/2} - \\frac{49}{4}t^{-1/2} = \\frac{5}{12}(2x + 3)^{3/2} - \\frac{11}{2}\\sqrt{2x + 3} - \\frac{49}{4\\sqrt{2x + 3}} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6029f6ff-ecf5-4cee-b28c-8a62e5736b21",
+    "ref": "Ex 3.2(A) I (23)",
+    "solution": "Let \\(t = x^3\\), so \\(dt = 3x^2\\, dx\\); also \\(x^6 = (x^3)^2 = t^2\\).\n\\(\\displaystyle \\int \\frac{x^2}{\\sqrt{9 - x^6}}\\, dx = \\frac{1}{3}\\int \\frac{dt}{\\sqrt{9 - t^2}} = \\frac{1}{3}\\sin^{-1}\\!\\frac{t}{3} = \\frac{1}{3}\\sin^{-1}\\!\\left(\\frac{x^3}{3}\\right) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1ed8526d-e598-4871-9c2f-4befccfc6eb5",
+    "ref": "Ex 3.2(A) I (24)",
+    "solution": "Multiply numerator and denominator by \\(x^2\\): \\(\\dfrac{1}{x(x^3 - 1)} = \\dfrac{x^2}{x^3(x^3 - 1)}\\). Let \\(t = x^3\\), so \\(dt = 3x^2\\, dx\\).\n\\(\\displaystyle \\int \\frac{x^2}{x^3(x^3 - 1)}\\, dx = \\frac{1}{3}\\int \\frac{dt}{t(t - 1)} = \\frac{1}{3}\\int \\left(\\frac{1}{t - 1} - \\frac{1}{t}\\right) dt = \\frac{1}{3}\\log\\left|\\frac{t - 1}{t}\\right| = \\frac{1}{3}\\log\\left|\\frac{x^3 - 1}{x^3}\\right| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c8b62c7b-5c9c-4fd9-a6f5-34804961f074",
+    "ref": "Ex 3.2(A) I (25)",
+    "solution": "Let \\(t = \\log(\\log x)\\). Then \\(dt = \\dfrac{1}{\\log x}\\cdot\\dfrac{1}{x}\\, dx = \\dfrac{1}{x\\,\\log x}\\, dx\\).\n\\(\\displaystyle \\int \\frac{1}{x\\,\\log x\\,\\log(\\log x)}\\, dx = \\int \\frac{dt}{t} = \\log\\big|\\log(\\log x)\\big| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "559551c6-feea-4a4e-845b-78feef29edb6",
+    "ref": "Ex 3.2(A) II (1)",
+    "solution": "Using sum-to-product formulae: \\(\\cos 3x - \\cos 4x = 2\\sin\\dfrac{7x}{2}\\sin\\dfrac{x}{2}\\) and \\(\\sin 3x + \\sin 4x = 2\\sin\\dfrac{7x}{2}\\cos\\dfrac{x}{2}\\).\nSo the integrand \\(= \\dfrac{2\\sin\\frac{7x}{2}\\sin\\frac{x}{2}}{2\\sin\\frac{7x}{2}\\cos\\frac{x}{2}} = \\tan\\dfrac{x}{2}\\).\n\\(\\displaystyle \\int \\tan\\frac{x}{2}\\, dx = -2\\log\\left|\\cos\\frac{x}{2}\\right| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c37e97e3-dc20-47f0-b8bd-98915d3d8af1",
+    "ref": "Ex 3.2(A) II (2)",
+    "solution": "Write \\(\\cos x = \\cos\\big[(x - a) + a\\big] = \\cos(x - a)\\cos a - \\sin(x - a)\\sin a\\).\nThen \\(\\dfrac{\\cos x}{\\sin(x - a)} = \\cos a\\,\\dfrac{\\cos(x - a)}{\\sin(x - a)} - \\sin a = \\cos a\\,\\cot(x - a) - \\sin a\\).\n\\(\\displaystyle \\int \\frac{\\cos x}{\\sin(x - a)}\\, dx = \\cos a\\,\\log|\\sin(x - a)| - x\\sin a + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ca043a0d-13a7-4bec-9700-6617518be192",
+    "ref": "Ex 3.2(A) II (3)",
+    "solution": "Write \\(x - a = (x + b) - (a + b)\\), so \\(\\sin(x - a) = \\sin(x + b)\\cos(a + b) - \\cos(x + b)\\sin(a + b)\\).\nThen \\(\\dfrac{\\sin(x - a)}{\\cos(x + b)} = \\cos(a + b)\\,\\tan(x + b) - \\sin(a + b)\\).\n\\(\\displaystyle \\int \\frac{\\sin(x - a)}{\\cos(x + b)}\\, dx = -\\cos(a + b)\\,\\log|\\cos(x + b)| - x\\sin(a + b) + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0aecf8ae-3ce4-4b1c-b95b-80b415f5f135",
+    "ref": "Ex 3.2(A) II (4)",
+    "solution": "Factor the denominator: \\(\\sin x\\cos x + 2\\cos^2 x = \\cos^2 x\\,(\\tan x + 2)\\). So the integrand \\(= \\dfrac{\\sec^2 x}{\\tan x + 2}\\). Let \\(t = \\tan x\\), \\(dt = \\sec^2 x\\, dx\\).\n\\(\\displaystyle \\int \\frac{\\sec^2 x}{\\tan x + 2}\\, dx = \\int \\frac{dt}{t + 2} = \\log|\\tan x + 2| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ede9d4d8-e539-44fa-b4b4-37846253ee17",
+    "ref": "Ex 3.2(A) II (5)",
+    "solution": "[Textbook answer-key error: the printed key gives the \\(x\\)-coefficient as \\(\\frac{11}{75}\\); solving \\(25A = 11\\) gives \\(A = \\frac{11}{25}\\). The answer below is correct.]\n\nWrite \\(\\sin x + 2\\cos x = A(3\\sin x + 4\\cos x) + B(3\\cos x - 4\\sin x)\\), noting \\(3\\cos x - 4\\sin x = \\dfrac{d}{dx}(3\\sin x + 4\\cos x)\\).\nComparing coefficients: \\(3A - 4B = 1,\\ 4A + 3B = 2 \\Rightarrow A = \\dfrac{11}{25},\\ B = \\dfrac{2}{25}\\).\n\\(\\displaystyle \\int \\frac{\\sin x + 2\\cos x}{3\\sin x + 4\\cos x}\\, dx = \\frac{11}{25}x + \\frac{2}{25}\\log|3\\sin x + 4\\cos x| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b959c1c2-a269-440d-99b9-ce57499bc6c0",
+    "ref": "Ex 3.2(A) II (6)",
+    "solution": "\\(\\dfrac{1}{2 + 3\\tan x} = \\dfrac{\\cos x}{2\\cos x + 3\\sin x}\\). Write \\(\\cos x = A(2\\cos x + 3\\sin x) + B(3\\cos x - 2\\sin x)\\), where \\(3\\cos x - 2\\sin x = \\dfrac{d}{dx}(2\\cos x + 3\\sin x)\\).\nComparing: \\(2A + 3B = 1,\\ 3A - 2B = 0 \\Rightarrow A = \\dfrac{2}{13},\\ B = \\dfrac{3}{13}\\).\n\\(\\displaystyle \\int \\frac{1}{2 + 3\\tan x}\\, dx = \\frac{2}{13}x + \\frac{3}{13}\\log|2\\cos x + 3\\sin x| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6c455f4e-e59a-4348-85c5-a216fc5f148b",
+    "ref": "Ex 3.2(A) II (7)",
+    "solution": "Divide: \\(\\dfrac{4e^{x} - 25}{2e^{x} - 5} = 2 - \\dfrac{15}{2e^{x} - 5}\\). For \\(\\displaystyle \\int \\frac{dx}{2e^{x} - 5}\\), multiply by \\(\\dfrac{e^{-x}}{e^{-x}}\\) and put \\(t = 2 - 5e^{-x}\\), \\(dt = 5e^{-x}\\, dx\\):\n\\(\\displaystyle \\int \\frac{dx}{2e^{x} - 5} = \\int \\frac{e^{-x}\\, dx}{2 - 5e^{-x}} = \\frac{1}{5}\\log|2 - 5e^{-x}|\\).\n\\(\\displaystyle \\int \\frac{4e^{x} - 25}{2e^{x} - 5}\\, dx = 2x - 3\\log|2 - 5e^{-x}| + c = 5x - 3\\log|2e^{x} - 5| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9a941c1a-1f61-4054-bd6b-5047c89e2265",
+    "ref": "Ex 3.2(A) II (8)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(-5x - \\log|3e^x - 4|\\); both the sign of the linear term and the denominator constant are wrong. The correct answer is \\(5x - \\log|3e^x + 4|\\). The answer below is correct.]\n\nDivide: \\(\\dfrac{20 + 12e^{x}}{3e^{x} + 4} = 4 + \\dfrac{4}{3e^{x} + 4}\\). For \\(\\displaystyle \\int \\frac{dx}{3e^{x} + 4}\\), multiply by \\(\\dfrac{e^{-x}}{e^{-x}}\\) and put \\(t = 3 + 4e^{-x}\\), \\(dt = -4e^{-x}\\, dx\\):\n\\(\\displaystyle \\int \\frac{dx}{3e^{x} + 4} = \\int \\frac{e^{-x}\\, dx}{3 + 4e^{-x}} = -\\frac{1}{4}\\log|3 + 4e^{-x}|\\).\n\\(\\displaystyle \\int \\frac{20 + 12e^{x}}{3e^{x} + 4}\\, dx = 4x - \\log|3 + 4e^{-x}| + c = 5x - \\log|3e^{x} + 4| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b35c1a0d-27dc-4630-ad5f-d72895ea4041",
+    "ref": "Ex 3.2(A) II (9)",
+    "solution": "Divide: \\(\\dfrac{3e^{2x} + 5}{4e^{2x} - 5} = \\dfrac{3}{4} + \\dfrac{35}{4}\\cdot\\dfrac{1}{4e^{2x} - 5}\\). For \\(\\displaystyle \\int \\frac{dx}{4e^{2x} - 5}\\), multiply by \\(\\dfrac{e^{-2x}}{e^{-2x}}\\) and put \\(t = 4 - 5e^{-2x}\\), \\(dt = 10e^{-2x}\\, dx\\):\n\\(\\displaystyle \\int \\frac{dx}{4e^{2x} - 5} = \\int \\frac{e^{-2x}\\, dx}{4 - 5e^{-2x}} = \\frac{1}{10}\\log|4 - 5e^{-2x}|\\).\n\\(\\displaystyle \\int \\frac{3e^{2x} + 5}{4e^{2x} - 5}\\, dx = \\frac{3}{4}x + \\frac{7}{8}\\log|4 - 5e^{-2x}| + c = -x + \\frac{7}{8}\\log|4e^{2x} - 5| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "050a4bc9-45c9-4818-a109-7d13cd8b2381",
+    "ref": "Ex 3.2(A) II (10)",
+    "solution": "Write \\(\\cos^8 x\\,\\cot x = \\dfrac{\\cos^9 x}{\\sin x}\\). Let \\(t = \\sin x\\), \\(dt = \\cos x\\, dx\\), and \\(\\cos^8 x = (1 - \\sin^2 x)^4 = (1 - t^2)^4\\).\n\\(\\displaystyle \\int \\frac{\\cos^9 x}{\\sin x}\\, dx = \\int \\frac{(1 - t^2)^4}{t}\\, dt = \\int \\left(\\frac{1}{t} - 4t + 6t^3 - 4t^5 + t^7\\right) dt\\).\n\\(\\displaystyle = \\log|\\sin x| - 2\\sin^2 x + \\frac{3}{2}\\sin^4 x - \\frac{2}{3}\\sin^6 x + \\frac{1}{8}\\sin^8 x + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0da9f6f3-c7d0-4106-b330-3d35ba73f52d",
+    "ref": "Ex 3.2(A) II (11)",
+    "solution": "\\(\\tan^5 x = \\tan^3 x(\\sec^2 x - 1) = \\tan^3 x\\,\\sec^2 x - \\tan^3 x\\), and \\(\\tan^3 x = \\tan x(\\sec^2 x - 1) = \\tan x\\,\\sec^2 x - \\tan x\\).\nIntegrating term by term (using \\(\\int \\tan^k x\\,\\sec^2 x\\, dx = \\tfrac{\\tan^{k+1} x}{k+1}\\) and \\(\\int \\tan x\\, dx = \\log|\\sec x|\\)):\n\\(\\displaystyle \\int \\tan^5 x\\, dx = \\frac{\\tan^4 x}{4} - \\frac{\\tan^2 x}{2} + \\log|\\sec x| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "3b541aa8-f5ae-459c-8a58-d699b1ac5b9e",
+    "ref": "Ex 3.2(A) II (12)",
+    "solution": "\\(\\cos^7 x = (\\cos^2 x)^3\\cos x = (1 - \\sin^2 x)^3\\cos x\\). Let \\(t = \\sin x\\), \\(dt = \\cos x\\, dx\\).\n\\(\\displaystyle \\int \\cos^7 x\\, dx = \\int (1 - t^2)^3\\, dt = \\int \\big(1 - 3t^2 + 3t^4 - t^6\\big)\\, dt = t - t^3 + \\frac{3}{5}t^5 - \\frac{1}{7}t^7\\).\n\\(\\displaystyle = \\sin x - \\sin^3 x + \\frac{3}{5}\\sin^5 x - \\frac{1}{7}\\sin^7 x + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "24502d7d-7ffd-4da5-b109-f99ad3944d2d",
+    "ref": "Ex 3.2(A) II (13)",
+    "solution": "Since \\(3x = 2x + x\\), \\(\\tan 3x = \\dfrac{\\tan 2x + \\tan x}{1 - \\tan 2x\\,\\tan x}\\), which rearranges to \\(\\tan 3x\\,\\tan 2x\\,\\tan x = \\tan 3x - \\tan 2x - \\tan x\\).\n\\(\\displaystyle \\int \\tan 3x\\,\\tan 2x\\,\\tan x\\, dx = \\int (\\tan 3x - \\tan 2x - \\tan x)\\, dx = \\frac{1}{3}\\log|\\sec 3x| - \\frac{1}{2}\\log|\\sec 2x| - \\log|\\sec x| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2d68552f-9a16-470e-8e58-a34933bfaf08",
+    "ref": "Ex 3.2(A) II (14)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\frac{1}{6}\\cos^{11}x - \\frac{1}{9}\\cos^9 x + \\frac{1}{13}\\cos^{13}x\\); the \\(\\cos^{11}x\\) coefficient should be \\(\\frac{2}{11}\\) and the \\(\\cos^{13}x\\) term should be negative. The answer below is correct.]\n\n\\(\\sin^5 x = (\\sin^2 x)^2\\sin x = (1 - \\cos^2 x)^2\\sin x\\). Let \\(t = \\cos x\\), \\(dt = -\\sin x\\, dx\\).\n\\(\\displaystyle \\int \\sin^5 x\\,\\cos^8 x\\, dx = -\\int (1 - t^2)^2\\, t^8\\, dt = -\\int \\big(t^8 - 2t^{10} + t^{12}\\big)\\, dt = -\\frac{t^9}{9} + \\frac{2t^{11}}{11} - \\frac{t^{13}}{13}\\).\n\\(\\displaystyle = -\\frac{\\cos^9 x}{9} + \\frac{2\\cos^{11} x}{11} - \\frac{\\cos^{13} x}{13} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8bb2f65b-5800-47ff-ad34-7da3cfe6897b",
+    "ref": "Ex 3.2(A) II (15)",
+    "solution": "\\(\\sin 2x = 2\\sin x\\cos x\\). Let \\(t = \\cos^2 x\\), so \\(dt = 2\\cos x(-\\sin x)\\, dx = -\\sin 2x\\, dx\\), i.e. \\(\\sin 2x\\, dx = -dt\\).\n\\(\\displaystyle \\int 3^{\\cos^2 x}\\,\\sin 2x\\, dx = \\int 3^{t}(-dt) = -\\frac{3^{t}}{\\log 3} = -\\frac{3^{\\cos^2 x}}{\\log 3} + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9bc0785b-a181-4d19-a5ba-7acebd11537f",
+    "ref": "Ex 3.2(A) II (16)",
+    "solution": "Since \\(6x = 10x - 4x\\), \\(\\sin 6x = \\sin 10x\\cos 4x - \\cos 10x\\sin 4x\\). Dividing by \\(\\sin 10x\\,\\sin 4x\\):\n\\(\\dfrac{\\sin 6x}{\\sin 10x\\,\\sin 4x} = \\dfrac{\\cos 4x}{\\sin 4x} - \\dfrac{\\cos 10x}{\\sin 10x} = \\cot 4x - \\cot 10x\\).\n\\(\\displaystyle \\int (\\cot 4x - \\cot 10x)\\, dx = \\frac{1}{4}\\log|\\sin 4x| - \\frac{1}{10}\\log|\\sin 10x| + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "24d3e2c0-64b9-4f6d-8b21-fa7dd37e02f1",
+    "ref": "Ex 3.2(A) II (17)",
+    "solution": "[Textbook answer-key error: the printed key writes \\(\\frac{1}{2}\\log\\big[(1+\\cos^2 x) - \\cos^2 x\\big]\\), placing the \\(-\\cos^2 x\\) inside the log (which would collapse to \\(\\frac{1}{2}\\log 1 = 0\\)); it belongs outside, as \\(\\frac{1}{2}\\log(1+\\cos^2 x) - \\frac{1}{2}\\cos^2 x\\). The answer below is correct.]\n\nLet \\(t = \\cos x\\), so \\(dt = -\\sin x\\, dx\\) and \\(\\cos^3 x = t^3\\).\n\\(\\displaystyle \\int \\frac{\\sin x\\,\\cos^3 x}{1 + \\cos^2 x}\\, dx = -\\int \\frac{t^3}{1 + t^2}\\, dt = -\\int \\left(t - \\frac{t}{1 + t^2}\\right) dt = -\\frac{t^2}{2} + \\frac{1}{2}\\log(1 + t^2)\\).\n\\(\\displaystyle = \\frac{1}{2}\\log(1 + \\cos^2 x) - \\frac{1}{2}\\cos^2 x + c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]

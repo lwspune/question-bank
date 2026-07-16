@@ -1,0 +1,296 @@
+[
+  {
+    "id": "83809171-48d9-4e6a-ae63-e849138bc78e",
+    "ref": "Ex 3.3 I (i)",
+    "solution": "By parts (LIATE: the logarithm is 'L', so take it as \\(u\\)): \\(u = \\log x,\\ dv = x^2\\, dx\\), giving \\(du = \\dfrac{1}{x}\\, dx,\\ v = \\dfrac{x^3}{3}\\).\nUsing \\(\\int u\\, dv = uv - \\int v\\, du\\):\n\\(\\int x^2\\log x\\, dx = \\dfrac{x^3}{3}\\log x - \\int \\dfrac{x^3}{3}\\cdot\\dfrac{1}{x}\\, dx = \\dfrac{x^3}{3}\\log x - \\dfrac{1}{3}\\int x^2\\, dx\\)\n\\(= \\dfrac{x^3}{3}\\log x - \\dfrac{x^3}{9} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "af4be5c6-28f4-419c-8312-0b0cf5c9a64b",
+    "ref": "Ex 3.3 I (ii)",
+    "solution": "By parts with \\(u = x^2\\) (the algebraic part) and \\(dv = \\sin 3x\\, dx\\), so \\(du = 2x\\, dx,\\ v = -\\dfrac{\\cos 3x}{3}\\):\n\\(\\int x^2\\sin 3x\\, dx = -\\dfrac{x^2\\cos 3x}{3} + \\dfrac{2}{3}\\int x\\cos 3x\\, dx\\)\nFor \\(\\int x\\cos 3x\\, dx\\), again by parts (\\(u=x,\\ dv=\\cos 3x\\, dx,\\ v=\\dfrac{\\sin 3x}{3}\\)):\n\\(\\int x\\cos 3x\\, dx = \\dfrac{x\\sin 3x}{3} - \\dfrac{1}{3}\\int \\sin 3x\\, dx = \\dfrac{x\\sin 3x}{3} + \\dfrac{\\cos 3x}{9}\\)\nHence \\(\\int x^2\\sin 3x\\, dx = -\\dfrac{x^2\\cos 3x}{3} + \\dfrac{2x\\sin 3x}{9} + \\dfrac{2\\cos 3x}{27} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8b49c373-ca53-48c5-87e0-e64e6406c912",
+    "ref": "Ex 3.3 I (iii)",
+    "solution": "By parts (LIATE: inverse-trig is 'I', take it as \\(u\\)): \\(u = \\tan^{-1} x,\\ dv = x\\, dx\\), so \\(du = \\dfrac{1}{1+x^2}\\, dx,\\ v = \\dfrac{x^2}{2}\\):\n\\(\\int x\\tan^{-1} x\\, dx = \\dfrac{x^2}{2}\\tan^{-1} x - \\dfrac{1}{2}\\int \\dfrac{x^2}{1+x^2}\\, dx\\)\nSince \\(\\dfrac{x^2}{1+x^2} = 1 - \\dfrac{1}{1+x^2}\\), \\(\\int \\dfrac{x^2}{1+x^2}\\, dx = x - \\tan^{-1} x\\).\n\\(= \\dfrac{x^2}{2}\\tan^{-1} x - \\dfrac{1}{2}\\left(x - \\tan^{-1} x\\right) = \\dfrac{(x^2+1)}{2}\\tan^{-1} x - \\dfrac{x}{2} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1817c0f7-5231-4ea9-9f49-ac3312b06a60",
+    "ref": "Ex 3.3 I (iv)",
+    "solution": "By parts with \\(u = \\tan^{-1} x\\) (inverse-trig, 'I') and \\(dv = x^2\\, dx\\), so \\(du = \\dfrac{1}{1+x^2}\\, dx,\\ v = \\dfrac{x^3}{3}\\):\n\\(\\int x^2\\tan^{-1} x\\, dx = \\dfrac{x^3}{3}\\tan^{-1} x - \\dfrac{1}{3}\\int \\dfrac{x^3}{1+x^2}\\, dx\\)\nSince \\(\\dfrac{x^3}{1+x^2} = x - \\dfrac{x}{1+x^2}\\), \\(\\int \\dfrac{x^3}{1+x^2}\\, dx = \\dfrac{x^2}{2} - \\dfrac{1}{2}\\log(1+x^2)\\).\n\\(= \\dfrac{x^3}{3}\\tan^{-1} x - \\dfrac{x^2}{6} + \\dfrac{1}{6}\\log(1+x^2) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "fde2470e-e390-4598-8e6a-dd4e4a220fa6",
+    "ref": "Ex 3.3 I (v)",
+    "solution": "[Textbook answer-key error: the printed key's second term is \\(-\\frac{x}{12}(x^3-3x)\\), carrying an extra \\(x\\) in the coefficient; it should be \\(-\\frac{1}{12}(x^3-3x)\\). The answer below is correct.]\n\nBy parts with \\(u = \\tan^{-1} x\\) and \\(dv = x^3\\, dx\\), so \\(du = \\dfrac{1}{1+x^2}\\, dx,\\ v = \\dfrac{x^4}{4}\\):\n\\(\\int x^3\\tan^{-1} x\\, dx = \\dfrac{x^4}{4}\\tan^{-1} x - \\dfrac{1}{4}\\int \\dfrac{x^4}{1+x^2}\\, dx\\)\nSince \\(\\dfrac{x^4}{1+x^2} = x^2 - 1 + \\dfrac{1}{1+x^2}\\), \\(\\int \\dfrac{x^4}{1+x^2}\\, dx = \\dfrac{x^3}{3} - x + \\tan^{-1} x\\).\n\\(= \\dfrac{x^4}{4}\\tan^{-1} x - \\dfrac{x^3}{12} + \\dfrac{x}{4} - \\dfrac{1}{4}\\tan^{-1} x + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "38103c05-17e4-4da2-a6d6-60122967bd84",
+    "ref": "Ex 3.3 I (vi)",
+    "solution": "Write \\((\\log x)^2 = (\\log x)^2\\cdot 1\\) and take \\(u = (\\log x)^2,\\ dv = dx\\), so \\(du = \\dfrac{2\\log x}{x}\\, dx,\\ v = x\\):\n\\(\\int (\\log x)^2\\, dx = x(\\log x)^2 - \\int x\\cdot\\dfrac{2\\log x}{x}\\, dx = x(\\log x)^2 - 2\\int \\log x\\, dx\\)\nAnd \\(\\int \\log x\\, dx = x\\log x - x\\) (by parts). Therefore\n\\(\\int (\\log x)^2\\, dx = x(\\log x)^2 - 2x\\log x + 2x + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "56b661b6-ef29-49cd-980e-7bc52de17e35",
+    "ref": "Ex 3.3 I (vii)",
+    "solution": "Write \\(\\sec^3 x = \\sec x\\cdot \\sec^2 x\\) and take \\(u = \\sec x,\\ dv = \\sec^2 x\\, dx\\), so \\(du = \\sec x\\tan x\\, dx,\\ v = \\tan x\\). Let \\(I = \\int \\sec^3 x\\, dx\\):\n\\(I = \\sec x\\tan x - \\int \\tan x\\cdot \\sec x\\tan x\\, dx = \\sec x\\tan x - \\int \\sec x(\\sec^2 x - 1)\\, dx\\)\n\\(I = \\sec x\\tan x - \\int \\sec^3 x\\, dx + \\int \\sec x\\, dx = \\sec x\\tan x - I + \\log|\\sec x + \\tan x|\\)\nSo \\(2I = \\sec x\\tan x + \\log|\\sec x + \\tan x|\\), giving\n\\(\\int \\sec^3 x\\, dx = \\dfrac{1}{2}\\sec x\\tan x + \\dfrac{1}{2}\\log|\\sec x + \\tan x| + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5d51691b-ee6b-4d9c-ae58-5fa14ce3fa21",
+    "ref": "Ex 3.3 I (viii)",
+    "solution": "First reduce the power: \\(\\sin^2 x = \\dfrac{1 - \\cos 2x}{2}\\), so \\(\\int x\\sin^2 x\\, dx = \\dfrac{1}{2}\\int x\\, dx - \\dfrac{1}{2}\\int x\\cos 2x\\, dx\\).\nFor \\(\\int x\\cos 2x\\, dx\\), by parts (\\(u = x,\\ dv = \\cos 2x\\, dx,\\ v = \\dfrac{\\sin 2x}{2}\\)):\n\\(\\int x\\cos 2x\\, dx = \\dfrac{x\\sin 2x}{2} - \\dfrac{1}{2}\\int \\sin 2x\\, dx = \\dfrac{x\\sin 2x}{2} + \\dfrac{\\cos 2x}{4}\\)\nHence \\(\\int x\\sin^2 x\\, dx = \\dfrac{x^2}{4} - \\dfrac{x\\sin 2x}{4} - \\dfrac{\\cos 2x}{8} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5c8c9428-8143-4d34-8e6a-1662f68a1552",
+    "ref": "Ex 3.3 I (ix)",
+    "solution": "By parts (log is 'L'): \\(u = \\log x,\\ dv = x^3\\, dx\\), so \\(du = \\dfrac{1}{x}\\, dx,\\ v = \\dfrac{x^4}{4}\\):\n\\(\\int x^3\\log x\\, dx = \\dfrac{x^4}{4}\\log x - \\int \\dfrac{x^4}{4}\\cdot\\dfrac{1}{x}\\, dx = \\dfrac{x^4}{4}\\log x - \\dfrac{1}{4}\\int x^3\\, dx\\)\n\\(= \\dfrac{x^4}{4}\\log x - \\dfrac{x^4}{16} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9b74f05d-3211-4d58-bdd9-71607bb200ea",
+    "ref": "Ex 3.3 I (x)",
+    "solution": "Let \\(I = \\int e^{2x}\\cos 3x\\, dx\\). By parts twice (each time \\(u = e^{2x}\\)) the integral reproduces itself. Using the standard result \\(\\int e^{ax}\\cos bx\\, dx = \\dfrac{e^{ax}}{a^2+b^2}(a\\cos bx + b\\sin bx) + c\\) with \\(a = 2,\\ b = 3\\) (so \\(a^2+b^2 = 13\\)):\n\\(\\int e^{2x}\\cos 3x\\, dx = \\dfrac{e^{2x}}{13}\\left(2\\cos 3x + 3\\sin 3x\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2359a589-00fd-48d3-939e-d4066901643b",
+    "ref": "Ex 3.3 I (xi)",
+    "solution": "By parts (inverse-trig is 'I'): \\(u = \\sin^{-1} x,\\ dv = x\\, dx\\), so \\(du = \\dfrac{1}{\\sqrt{1-x^2}}\\, dx,\\ v = \\dfrac{x^2}{2}\\):\n\\(\\int x\\sin^{-1} x\\, dx = \\dfrac{x^2}{2}\\sin^{-1} x - \\dfrac{1}{2}\\int \\dfrac{x^2}{\\sqrt{1-x^2}}\\, dx\\)\nWith \\(\\dfrac{x^2}{\\sqrt{1-x^2}} = \\dfrac{-(1-x^2)+1}{\\sqrt{1-x^2}}\\), one gets \\(\\int \\dfrac{x^2}{\\sqrt{1-x^2}}\\, dx = \\dfrac{1}{2}\\sin^{-1} x - \\dfrac{x\\sqrt{1-x^2}}{2}\\).\n\\(= \\dfrac{x^2}{2}\\sin^{-1} x - \\dfrac{1}{4}\\sin^{-1} x + \\dfrac{x\\sqrt{1-x^2}}{4} = \\dfrac{(2x^2-1)}{4}\\sin^{-1} x + \\dfrac{x\\sqrt{1-x^2}}{4} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "63767718-be9d-4e0b-bc21-20d677b531f7",
+    "ref": "Ex 3.3 I (xii)",
+    "solution": "By parts with \\(u = \\cos^{-1} x\\) and \\(dv = x^2\\, dx\\), so \\(du = -\\dfrac{1}{\\sqrt{1-x^2}}\\, dx,\\ v = \\dfrac{x^3}{3}\\):\n\\(\\int x^2\\cos^{-1} x\\, dx = \\dfrac{x^3}{3}\\cos^{-1} x + \\dfrac{1}{3}\\int \\dfrac{x^3}{\\sqrt{1-x^2}}\\, dx\\)\nPut \\(1-x^2 = t\\) in the remaining integral: \\(\\int \\dfrac{x^3}{\\sqrt{1-x^2}}\\, dx = \\dfrac{(1-x^2)^{3/2}}{3} - \\sqrt{1-x^2}\\).\n\\(= \\dfrac{x^3}{3}\\cos^{-1} x + \\dfrac{1}{3}\\left[\\dfrac{(1-x^2)^{3/2}}{3} - \\sqrt{1-x^2}\\right] = \\dfrac{x^3}{3}\\cos^{-1} x - \\dfrac{(x^2+2)\\sqrt{1-x^2}}{9} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "d42b03bb-fd54-4dd2-a097-c9059f33b876",
+    "ref": "Ex 3.3 I (xiii)",
+    "solution": "Put \\(t = \\log x\\), so \\(dt = \\dfrac{1}{x}\\, dx\\). Then \\(\\int \\dfrac{\\log(\\log x)}{x}\\, dx = \\int \\log t\\, dt\\).\nBy parts, \\(\\int \\log t\\, dt = t\\log t - t\\). Restoring \\(t = \\log x\\):\n\\(\\int \\dfrac{\\log(\\log x)}{x}\\, dx = \\log x\\cdot\\log(\\log x) - \\log x + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "d346fce3-3f9b-4250-b884-c915a90da712",
+    "ref": "Ex 3.3 I (xiv)",
+    "solution": "By parts with \\(u = \\sin^{-1} t\\) and \\(dv = \\dfrac{t}{\\sqrt{1-t^2}}\\, dt\\), so \\(du = \\dfrac{1}{\\sqrt{1-t^2}}\\, dt\\) and \\(v = \\int \\dfrac{t}{\\sqrt{1-t^2}}\\, dt = -\\sqrt{1-t^2}\\):\n\\(\\int \\dfrac{t\\sin^{-1} t}{\\sqrt{1-t^2}}\\, dt = -\\sqrt{1-t^2}\\,\\sin^{-1} t + \\int \\sqrt{1-t^2}\\cdot\\dfrac{1}{\\sqrt{1-t^2}}\\, dt\\)\n\\(= -\\sqrt{1-t^2}\\,\\sin^{-1} t + \\int dt = t - \\sqrt{1-t^2}\\,\\sin^{-1} t + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1378ca51-03e8-437c-9d99-fdf1bb22a5fe",
+    "ref": "Ex 3.3 I (xv)",
+    "solution": "Put \\(t = \\sqrt{x}\\), so \\(x = t^2\\) and \\(dx = 2t\\, dt\\): \\(\\int \\cos\\sqrt{x}\\, dx = 2\\int t\\cos t\\, dt\\).\nBy parts (\\(u = t,\\ dv = \\cos t\\, dt,\\ v = \\sin t\\)): \\(\\int t\\cos t\\, dt = t\\sin t + \\cos t\\).\n\\(= 2\\left(t\\sin t + \\cos t\\right) = 2\\sqrt{x}\\,\\sin\\sqrt{x} + 2\\cos\\sqrt{x} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "bff4b08c-fec0-48d5-a497-1bc98757e926",
+    "ref": "Ex 3.3 I (xvi)",
+    "solution": "Put \\(t = \\cos\\theta\\), so \\(dt = -\\sin\\theta\\, d\\theta\\): \\(\\int \\sin\\theta\\,\\log(\\cos\\theta)\\, d\\theta = -\\int \\log t\\, dt\\).\nSince \\(\\int \\log t\\, dt = t\\log t - t\\) (by parts):\n\\(= -\\left(t\\log t - t\\right) = -\\cos\\theta\\,\\log(\\cos\\theta) + \\cos\\theta + c = \\cos\\theta\\left(1 - \\log(\\cos\\theta)\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2b601d85-3cc3-41d7-bfab-e3e84330bc2a",
+    "ref": "Ex 3.3 I (xvii)",
+    "solution": "Reduce the cube: \\(\\cos^3 x = \\dfrac{3\\cos x + \\cos 3x}{4}\\), so \\(\\int x\\cos^3 x\\, dx = \\dfrac{3}{4}\\int x\\cos x\\, dx + \\dfrac{1}{4}\\int x\\cos 3x\\, dx\\).\nBy parts: \\(\\int x\\cos x\\, dx = x\\sin x + \\cos x\\) and \\(\\int x\\cos 3x\\, dx = \\dfrac{x\\sin 3x}{3} + \\dfrac{\\cos 3x}{9}\\).\n\\(= \\dfrac{3}{4}\\left(x\\sin x + \\cos x\\right) + \\dfrac{1}{4}\\left(\\dfrac{x\\sin 3x}{3} + \\dfrac{\\cos 3x}{9}\\right)\\)\n\\(= \\dfrac{3x\\sin x}{4} + \\dfrac{3\\cos x}{4} + \\dfrac{x\\sin 3x}{12} + \\dfrac{\\cos 3x}{36} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0bf2963d-729e-4b28-832c-9cffbcb9c2f0",
+    "ref": "Ex 3.3 I (xviii)",
+    "solution": "Here the integrand is \\(\\dfrac{\\sin\\left((\\log x)^2\\right)}{x}\\cdot\\log x\\). Put \\(t = (\\log x)^2\\), so \\(dt = \\dfrac{2\\log x}{x}\\, dx\\), i.e. \\(\\dfrac{\\log x}{x}\\, dx = \\dfrac{dt}{2}\\).\n\\(\\int \\dfrac{\\sin\\left((\\log x)^2\\right)}{x}\\cdot\\log x\\, dx = \\dfrac{1}{2}\\int \\sin t\\, dt = -\\dfrac{1}{2}\\cos t\\)\n\\(= -\\dfrac{1}{2}\\cos\\left((\\log x)^2\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b85e9a6b-664d-430e-91fd-2279ee2eb9e2",
+    "ref": "Ex 3.3 I (xix)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(-\\frac{1}{2}(\\log x)^2\\); this differentiates to \\(-\\frac{\\log x}{x}\\), the negative of the integrand. The correct answer is \\(+\\frac{1}{2}(\\log x)^2\\). The answer below is correct.]\n\nPut \\(t = \\log x\\), so \\(dt = \\dfrac{1}{x}\\, dx\\). Then \\(\\int \\dfrac{\\log x}{x}\\, dx = \\int t\\, dt = \\dfrac{t^2}{2}\\).\n\\(= \\dfrac{(\\log x)^2}{2} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "47cab0bd-d293-44d7-af5a-ce8c7778af53",
+    "ref": "Ex 3.3 I (xx)",
+    "solution": "[Textbook answer-key error: the printed key is structurally wrong — it prints \\(x\\sin 3x\\) and \\(x\\sin 7x\\) terms (should be \\(x\\cos 3x\\), \\(x\\cos 7x\\)) plus a stray \\(\\frac{1}{18}\\cos x\\), and does not differentiate to the integrand. The answer below is correct.]\n\nConvert the product to a sum: \\(\\sin 2x\\cos 5x = \\dfrac{1}{2}\\left[\\sin 7x - \\sin 3x\\right]\\), so\n\\(\\int x\\sin 2x\\cos 5x\\, dx = \\dfrac{1}{2}\\int x\\sin 7x\\, dx - \\dfrac{1}{2}\\int x\\sin 3x\\, dx\\).\nBy parts: \\(\\int x\\sin 7x\\, dx = -\\dfrac{x\\cos 7x}{7} + \\dfrac{\\sin 7x}{49}\\) and \\(\\int x\\sin 3x\\, dx = -\\dfrac{x\\cos 3x}{3} + \\dfrac{\\sin 3x}{9}\\).\n\\(= -\\dfrac{x\\cos 7x}{14} + \\dfrac{\\sin 7x}{98} + \\dfrac{x\\cos 3x}{6} - \\dfrac{\\sin 3x}{18} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "a30c82d1-6672-4c7c-a5d3-c215cbd33b36",
+    "ref": "Ex 3.3 I (xxi)",
+    "solution": "Put \\(t = x^{1/3}\\), so \\(x = t^3\\) and \\(dx = 3t^2\\, dt\\): \\(\\int \\cos\\left(\\sqrt[3]{x}\\right)\\, dx = 3\\int t^2\\cos t\\, dt\\).\nBy parts twice: \\(\\int t^2\\cos t\\, dt = t^2\\sin t - 2\\int t\\sin t\\, dt = t^2\\sin t + 2t\\cos t - 2\\sin t\\).\n\\(= 3\\left(t^2\\sin t + 2t\\cos t - 2\\sin t\\right) = 3x^{2/3}\\sin\\left(\\sqrt[3]{x}\\right) + 6\\sqrt[3]{x}\\,\\cos\\left(\\sqrt[3]{x}\\right) - 6\\sin\\left(\\sqrt[3]{x}\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "de1df4a7-1921-4be9-8e34-b5a383e18b38",
+    "ref": "Ex 3.3 II (i)",
+    "solution": "Let \\(I = \\int e^{2x}\\sin 3x\\, dx\\). This is the recurring type; using \\(\\int e^{ax}\\sin bx\\, dx = \\dfrac{e^{ax}}{a^2+b^2}(a\\sin bx - b\\cos bx) + c\\) with \\(a = 2,\\ b = 3\\) (so \\(a^2+b^2 = 13\\)):\n\\(\\int e^{2x}\\sin 3x\\, dx = \\dfrac{e^{2x}}{13}\\left(2\\sin 3x - 3\\cos 3x\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c39346e3-7657-4e96-a70e-1e35b5f9b343",
+    "ref": "Ex 3.3 II (ii)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\frac{e^{-x}}{5}[-\\cos x + 2\\sin 2x]\\) with the argument \\(\\cos x\\) instead of \\(\\cos 2x\\); the correct answer is \\(\\frac{e^{-x}}{5}(2\\sin 2x - \\cos 2x)\\). The answer below is correct.]\n\nLet \\(I = \\int e^{-x}\\cos 2x\\, dx\\). Using \\(\\int e^{ax}\\cos bx\\, dx = \\dfrac{e^{ax}}{a^2+b^2}(a\\cos bx + b\\sin bx) + c\\) with \\(a = -1,\\ b = 2\\) (so \\(a^2+b^2 = 5\\)):\n\\(\\int e^{-x}\\cos 2x\\, dx = \\dfrac{e^{-x}}{5}\\left(-\\cos 2x + 2\\sin 2x\\right) = \\dfrac{e^{-x}}{5}\\left(2\\sin 2x - \\cos 2x\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c9b6f0fe-4c92-46ab-8805-dce34ec73639",
+    "ref": "Ex 3.3 II (iii)",
+    "solution": "Let \\(I = \\int \\sin(\\log x)\\, dx\\). By parts (\\(u = \\sin(\\log x),\\ dv = dx,\\ v = x\\)):\n\\(I = x\\sin(\\log x) - \\int \\cos(\\log x)\\, dx\\).\nFor \\(J = \\int \\cos(\\log x)\\, dx\\), again by parts: \\(J = x\\cos(\\log x) + \\int \\sin(\\log x)\\, dx = x\\cos(\\log x) + I\\).\nSubstituting: \\(I = x\\sin(\\log x) - x\\cos(\\log x) - I\\), so \\(2I = x\\left[\\sin(\\log x) - \\cos(\\log x)\\right]\\).\n\\(\\int \\sin(\\log x)\\, dx = \\dfrac{x}{2}\\left[\\sin(\\log x) - \\cos(\\log x)\\right] + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "3a3eecb4-4ffc-425d-a017-2ac7f98f25a8",
+    "ref": "Ex 3.3 II (iv)",
+    "solution": "Write \\(\\sqrt{5x^2+3} = \\sqrt{5}\\,\\sqrt{x^2 + \\tfrac{3}{5}}\\). Using \\(\\int \\sqrt{x^2+a^2}\\, dx = \\dfrac{x}{2}\\sqrt{x^2+a^2} + \\dfrac{a^2}{2}\\log\\left|x + \\sqrt{x^2+a^2}\\right|\\) with \\(a^2 = \\tfrac{3}{5}\\):\n\\(\\int \\sqrt{5x^2+3}\\, dx = \\sqrt{5}\\left[\\dfrac{x}{2}\\sqrt{x^2+\\tfrac{3}{5}} + \\dfrac{3}{10}\\log\\left|x + \\sqrt{x^2+\\tfrac{3}{5}}\\right|\\right]\\)\n\\(= \\dfrac{x}{2}\\sqrt{5x^2+3} + \\dfrac{3\\sqrt{5}}{10}\\log\\left|x + \\sqrt{x^2+\\tfrac{3}{5}}\\right| + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "7831275a-390e-4acb-8288-caec89918657",
+    "ref": "Ex 3.3 II (v)",
+    "solution": "[Textbook answer-key error: the printed key gives the second coefficient as \\(\\frac{a^2}{2}\\); the substitution \\(t=x^3\\) puts a factor \\(\\frac{1}{3}\\) on both terms, so it should be \\(\\frac{a^2}{6}\\). The answer below is correct.]\n\nPut \\(t = x^3\\), so \\(dt = 3x^2\\, dx\\), i.e. \\(x^2\\, dx = \\dfrac{dt}{3}\\): \\(\\int x^2\\sqrt{a^2 - x^6}\\, dx = \\dfrac{1}{3}\\int \\sqrt{a^2 - t^2}\\, dt\\).\nUsing \\(\\int \\sqrt{a^2-t^2}\\, dt = \\dfrac{t}{2}\\sqrt{a^2-t^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{t}{a}\\):\n\\(= \\dfrac{1}{3}\\left[\\dfrac{t}{2}\\sqrt{a^2-t^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{t}{a}\\right] = \\dfrac{x^3}{6}\\sqrt{a^2 - x^6} + \\dfrac{a^2}{6}\\sin^{-1}\\dfrac{x^3}{a} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "50702be5-04ba-4dce-80e8-bdae6d17e625",
+    "ref": "Ex 3.3 II (vi)",
+    "solution": "Expand and complete the square: \\((x-3)(7-x) = -x^2 + 10x - 21 = 4 - (x-5)^2\\).\nUsing \\(\\int \\sqrt{a^2-u^2}\\, du = \\dfrac{u}{2}\\sqrt{a^2-u^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{u}{a}\\) with \\(u = x-5,\\ a = 2\\):\n\\(\\int \\sqrt{(x-3)(7-x)}\\, dx = \\dfrac{x-5}{2}\\sqrt{(x-3)(7-x)} + 2\\sin^{-1}\\left(\\dfrac{x-5}{2}\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ddd5bca8-c25d-45a8-8d90-fbb9534a4d0e",
+    "ref": "Ex 3.3 II (vii)",
+    "solution": "Note \\(\\sqrt{4^x(4^x+4)} = 2^x\\sqrt{4^x+4}\\). Put \\(t = 2^x\\), so \\(dt = 2^x\\log 2\\, dx\\), i.e. \\(dx = \\dfrac{dt}{t\\log 2}\\), and \\(4^x = t^2\\):\n\\(\\int 2^x\\sqrt{4^x+4}\\, dx = \\int t\\sqrt{t^2+4}\\cdot\\dfrac{dt}{t\\log 2} = \\dfrac{1}{\\log 2}\\int \\sqrt{t^2+4}\\, dt\\).\nUsing \\(\\int \\sqrt{t^2+a^2}\\, dt = \\dfrac{t}{2}\\sqrt{t^2+a^2} + \\dfrac{a^2}{2}\\log\\left|t+\\sqrt{t^2+a^2}\\right|\\) with \\(a = 2\\):\n\\(= \\dfrac{1}{\\log 2}\\left[\\dfrac{2^x}{2}\\sqrt{4^x+4} + 2\\log\\left(2^x + \\sqrt{4^x+4}\\right)\\right] + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "948fd33c-d578-4bb7-9f60-94e43c55b554",
+    "ref": "Ex 3.3 II (viii)",
+    "solution": "Split: \\(\\int (x+1)\\sqrt{2x^2+3}\\, dx = \\int x\\sqrt{2x^2+3}\\, dx + \\int \\sqrt{2x^2+3}\\, dx\\).\nFor the first, put \\(w = 2x^2+3\\ (dw = 4x\\, dx)\\): \\(\\int x\\sqrt{2x^2+3}\\, dx = \\dfrac{1}{4}\\int \\sqrt{w}\\, dw = \\dfrac{(2x^2+3)^{3/2}}{6}\\).\nFor the second, \\(\\sqrt{2x^2+3} = \\sqrt{2}\\,\\sqrt{x^2+\\tfrac{3}{2}}\\), so \\(\\int \\sqrt{2x^2+3}\\, dx = \\dfrac{x}{2}\\sqrt{2x^2+3} + \\dfrac{3\\sqrt{2}}{4}\\log\\left|x + \\sqrt{x^2+\\tfrac{3}{2}}\\right|\\).\n\\(= \\dfrac{(2x^2+3)^{3/2}}{6} + \\dfrac{x}{2}\\sqrt{2x^2+3} + \\dfrac{3\\sqrt{2}}{4}\\log\\left|x + \\sqrt{x^2+\\tfrac{3}{2}}\\right| + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6eb2470b-1327-47d7-a2c7-d276d9ac9139",
+    "ref": "Ex 3.3 II (ix)",
+    "solution": "Complete the square: \\(5 - 4x - x^2 = 9 - (x+2)^2\\), and write \\(x = (x+2) - 2\\):\n\\(\\int x\\sqrt{5-4x-x^2}\\, dx = \\int (x+2)\\sqrt{9-(x+2)^2}\\, dx - 2\\int \\sqrt{9-(x+2)^2}\\, dx\\).\nFirst part (put \\(w = 9-(x+2)^2\\)): \\(\\int (x+2)\\sqrt{9-(x+2)^2}\\, dx = -\\dfrac{(5-4x-x^2)^{3/2}}{3}\\).\nSecond part: \\(2\\int \\sqrt{9-(x+2)^2}\\, dx = (x+2)\\sqrt{5-4x-x^2} + 9\\sin^{-1}\\left(\\dfrac{x+2}{3}\\right)\\).\n\\(= -\\dfrac{(5-4x-x^2)^{3/2}}{3} - (x+2)\\sqrt{5-4x-x^2} - 9\\sin^{-1}\\left(\\dfrac{x+2}{3}\\right) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9a71686b-9fc9-4d58-9c73-de416905a9ff",
+    "ref": "Ex 3.3 II (x)",
+    "solution": "Put \\(t = \\tan x\\), so \\(dt = \\sec^2 x\\, dx\\): \\(\\int \\sec^2 x\\,\\sqrt{\\tan^2 x + \\tan x - 7}\\, dx = \\int \\sqrt{t^2 + t - 7}\\, dt\\).\nComplete the square: \\(t^2 + t - 7 = \\left(t + \\tfrac{1}{2}\\right)^2 - \\tfrac{29}{4}\\). Using \\(\\int \\sqrt{u^2-a^2}\\, du = \\dfrac{u}{2}\\sqrt{u^2-a^2} - \\dfrac{a^2}{2}\\log\\left|u + \\sqrt{u^2-a^2}\\right|\\) with \\(u = t+\\tfrac{1}{2},\\ a^2 = \\tfrac{29}{4}\\):\n\\(= \\dfrac{2\\tan x + 1}{4}\\sqrt{\\tan^2 x + \\tan x - 7} - \\dfrac{29}{8}\\log\\left|\\tan x + \\tfrac{1}{2} + \\sqrt{\\tan^2 x + \\tan x - 7}\\right| + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0782be60-2b73-46e5-a5f6-128ce7c585d9",
+    "ref": "Ex 3.3 II (xi)",
+    "solution": "Complete the square: \\(x^2 + 2x + 5 = (x+1)^2 + 4\\). Using \\(\\int \\sqrt{u^2+a^2}\\, du = \\dfrac{u}{2}\\sqrt{u^2+a^2} + \\dfrac{a^2}{2}\\log\\left|u + \\sqrt{u^2+a^2}\\right|\\) with \\(u = x+1,\\ a = 2\\):\n\\(\\int \\sqrt{x^2+2x+5}\\, dx = \\dfrac{x+1}{2}\\sqrt{x^2+2x+5} + 2\\log\\left|x+1 + \\sqrt{x^2+2x+5}\\right| + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "d326d164-1066-405b-b725-017e031f9372",
+    "ref": "Ex 3.3 II (xii)",
+    "solution": "[Textbook answer-key error: the printed key's log coefficient evaluates to \\(\\frac{23}{16}\\); the correct coefficient is \\(\\sqrt{2}\\cdot\\frac{a^2}{2} = \\frac{23\\sqrt{2}}{32}\\) (with \\(a^2=\\frac{23}{16}\\)). The answer below is correct.]\n\nTake out \\(\\sqrt{2}\\) and complete the square: \\(2x^2+3x+4 = 2\\left[\\left(x+\\tfrac{3}{4}\\right)^2 + \\tfrac{23}{16}\\right]\\), so \\(\\sqrt{2x^2+3x+4} = \\sqrt{2}\\,\\sqrt{\\left(x+\\tfrac{3}{4}\\right)^2 + \\tfrac{23}{16}}\\).\nUsing \\(\\int \\sqrt{u^2+a^2}\\, du = \\dfrac{u}{2}\\sqrt{u^2+a^2} + \\dfrac{a^2}{2}\\log\\left|u + \\sqrt{u^2+a^2}\\right|\\) with \\(u = x+\\tfrac{3}{4},\\ a^2 = \\tfrac{23}{16}\\):\n\\(\\int \\sqrt{2x^2+3x+4}\\, dx = \\dfrac{4x+3}{8}\\sqrt{2x^2+3x+4} + \\dfrac{23\\sqrt{2}}{32}\\log\\left|x + \\tfrac{3}{4} + \\sqrt{x^2 + \\tfrac{3}{2}x + 2}\\right| + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "d257677b-b158-4416-bc68-f060d30ce3d1",
+    "ref": "Ex 3.3 III (i)",
+    "solution": "Use the rule \\(\\int e^x\\left[f(x) + f'(x)\\right]\\, dx = e^x f(x) + c\\). Take \\(f(x) = 2 + \\cot x\\), so \\(f'(x) = -\\operatorname{cosec}^2 x\\), and indeed \\(f(x) + f'(x) = 2 + \\cot x - \\operatorname{cosec}^2 x\\).\n\\(\\int (2 + \\cot x - \\operatorname{cosec}^2 x)e^x\\, dx = e^x(2 + \\cot x) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "abc21d61-84b7-44e0-ab91-210aab7014f2",
+    "ref": "Ex 3.3 III (ii)",
+    "solution": "Simplify using half-angles: \\(1 + \\cos x = 2\\cos^2\\tfrac{x}{2}\\) and \\(1 + \\sin x = 1 + 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\), so\n\\(\\dfrac{1+\\sin x}{1+\\cos x} = \\tan\\tfrac{x}{2} + \\dfrac{1}{2}\\sec^2\\tfrac{x}{2}\\).\nThis has the form \\(f(x) + f'(x)\\) with \\(f(x) = \\tan\\tfrac{x}{2}\\) (since \\(f'(x) = \\tfrac{1}{2}\\sec^2\\tfrac{x}{2}\\)). Hence by \\(\\int e^x[f+f']\\, dx = e^x f\\):\n\\(\\int \\left(\\dfrac{1+\\sin x}{1+\\cos x}\\right)e^x\\, dx = e^x\\tan\\tfrac{x}{2} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "84fd3dd8-1975-48ec-8b1d-2cc1934e4b07",
+    "ref": "Ex 3.3 III (iii)",
+    "solution": "This has the form \\(\\int e^x[f(x) + f'(x)]\\, dx = e^x f(x) + c\\). Take \\(f(x) = \\dfrac{1}{x}\\), so \\(f'(x) = -\\dfrac{1}{x^2}\\), and \\(f(x)+f'(x) = \\dfrac{1}{x} - \\dfrac{1}{x^2}\\).\n\\(\\int e^x\\left(\\dfrac{1}{x} - \\dfrac{1}{x^2}\\right)\\, dx = \\dfrac{e^x}{x} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2feda0b0-b51c-427d-a0b6-84c1d7113b47",
+    "ref": "Ex 3.3 III (iv)",
+    "solution": "Rewrite \\(\\dfrac{x}{(x+1)^2} = \\dfrac{(x+1)-1}{(x+1)^2} = \\dfrac{1}{x+1} - \\dfrac{1}{(x+1)^2}\\). This is \\(f(x)+f'(x)\\) with \\(f(x) = \\dfrac{1}{x+1}\\) (so \\(f'(x) = -\\dfrac{1}{(x+1)^2}\\)).\nBy \\(\\int e^x[f+f']\\, dx = e^x f\\):\n\\(\\int \\left(\\dfrac{x}{(x+1)^2}\\right)e^x\\, dx = \\dfrac{e^x}{x+1} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2cb0be6e-ce65-4136-b93d-79e88cde3718",
+    "ref": "Ex 3.3 III (v)",
+    "solution": "Distribute: \\(\\dfrac{e^x}{x}\\left[x(\\log x)^2 + 2\\log x\\right] = e^x\\left[(\\log x)^2 + \\dfrac{2\\log x}{x}\\right]\\).\nThis is \\(f(x)+f'(x)\\) with \\(f(x) = (\\log x)^2\\) (so \\(f'(x) = \\dfrac{2\\log x}{x}\\)). By \\(\\int e^x[f+f']\\, dx = e^x f\\):\n\\(\\int \\dfrac{e^x}{x}\\left[x(\\log x)^2 + 2\\log x\\right]\\, dx = e^x(\\log x)^2 + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5e021c1b-b39b-407c-bcb4-aa07bec607cb",
+    "ref": "Ex 3.3 III (vi)",
+    "solution": "Distribute: \\(e^{5x}\\left(\\dfrac{5x\\log x + 1}{x}\\right) = e^{5x}\\left[5\\log x + \\dfrac{1}{x}\\right]\\).\nThis matches \\(\\int e^{ax}\\left[a f(x) + f'(x)\\right]\\, dx = e^{ax} f(x) + c\\) with \\(a = 5\\) and \\(f(x) = \\log x\\) (so \\(a f = 5\\log x,\\ f' = \\tfrac{1}{x}\\)).\n\\(\\int e^{5x}\\left(\\dfrac{5x\\log x + 1}{x}\\right)\\, dx = e^{5x}\\log x + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5a9dd10c-3fde-4d1e-9bb9-b0c9d35c76de",
+    "ref": "Ex 3.3 III (vii)",
+    "solution": "Split off \\(e^{\\sin^{-1} x}\\): the integrand is \\(e^{\\sin^{-1} x}\\left[\\dfrac{x}{\\sqrt{1-x^2}} + 1\\right]\\). Put \\(t = \\sin^{-1} x\\), so \\(x = \\sin t,\\ \\sqrt{1-x^2} = \\cos t,\\ dx = \\cos t\\, dt\\):\n\\(\\int e^{t}\\left(\\dfrac{\\sin t}{\\cos t} + 1\\right)\\cos t\\, dt = \\int e^{t}(\\sin t + \\cos t)\\, dt\\).\nSince \\(\\int e^{t}[f(t)+f'(t)]\\, dt = e^{t}f(t)\\) with \\(f(t) = \\sin t\\) (\\(f'(t) = \\cos t\\)): \\(= e^{t}\\sin t\\).\nRestoring \\(t = \\sin^{-1} x\\) (so \\(\\sin t = x\\)): \\(\\int e^{\\sin^{-1} x}\\left(\\dfrac{x + \\sqrt{1-x^2}}{\\sqrt{1-x^2}}\\right)\\, dx = x\\,e^{\\sin^{-1} x} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "abad2f7a-783b-45b9-8502-5fb4adc39b33",
+    "ref": "Ex 3.3 III (viii)",
+    "solution": "By the logarithm law \\(\\log(1+x)^{(1+x)} = (1+x)\\log(1+x)\\). Put \\(u = 1+x\\ (du = dx)\\): \\(\\int (1+x)\\log(1+x)\\, dx = \\int u\\log u\\, du\\).\nBy parts (\\(u\\)-part \\(= \\log u,\\ dv = u\\, du,\\ v = \\tfrac{u^2}{2}\\)): \\(\\int u\\log u\\, du = \\dfrac{u^2}{2}\\log u - \\int \\dfrac{u^2}{2}\\cdot\\dfrac{1}{u}\\, du = \\dfrac{u^2}{2}\\log u - \\dfrac{u^2}{4}\\).\n\\(\\int \\log(1+x)^{(1+x)}\\, dx = \\dfrac{(1+x)^2}{2}\\log(1+x) - \\dfrac{(1+x)^2}{4} + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f08f454f-ce1a-44d5-9261-73272f95c390",
+    "ref": "Ex 3.3 III (ix)",
+    "solution": "Put \\(t = \\log x\\), so \\(x = e^{t}\\) and \\(dx = e^{t}\\, dt\\):\n\\(\\int \\operatorname{cosec}(\\log x)\\left[1 - \\cot(\\log x)\\right]\\, dx = \\int e^{t}\\operatorname{cosec} t\\left(1 - \\cot t\\right)\\, dt = \\int e^{t}\\left[\\operatorname{cosec} t - \\operatorname{cosec} t\\cot t\\right]\\, dt\\).\nThis is \\(\\int e^{t}[f(t)+f'(t)]\\, dt = e^{t}f(t)\\) with \\(f(t) = \\operatorname{cosec} t\\) (since \\(f'(t) = -\\operatorname{cosec} t\\cot t\\)). So \\(= e^{t}\\operatorname{cosec} t\\).\nRestoring \\(t = \\log x\\): \\(\\int \\operatorname{cosec}(\\log x)\\left[1 - \\cot(\\log x)\\right]\\, dx = x\\,\\operatorname{cosec}(\\log x) + c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]

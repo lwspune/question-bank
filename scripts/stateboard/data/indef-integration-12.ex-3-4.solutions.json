@@ -1,0 +1,163 @@
+[
+  {
+    "id": "b66e2b1b-9f9e-459c-acda-32579f5899b1",
+    "ref": "Ex 3.4 I (i)",
+    "solution": "[Textbook answer-key error: the printed key writes the third term as \\(\\frac{11}{4}(x+3)\\) with the \\(\\log\\) dropped; it should be \\(\\frac{11}{4}\\log|x+3|\\). The answer below is correct.]\n\nLet \\(\\frac{x^2+2}{(x-1)(x+2)(x+3)}=\\frac{A}{x-1}+\\frac{B}{x+2}+\\frac{C}{x+3}\\).\nThen \\(x^2+2=A(x+2)(x+3)+B(x-1)(x+3)+C(x-1)(x+2)\\).\nPut \\(x=1:\\ 3=A(3)(4)\\Rightarrow A=\\frac{1}{4}\\).\nPut \\(x=-2:\\ 6=B(-3)(1)\\Rightarrow B=-2\\).\nPut \\(x=-3:\\ 11=C(-4)(-1)\\Rightarrow C=\\frac{11}{4}\\).\n\\(\\therefore I=\\frac{1}{4}\\int\\frac{dx}{x-1}-2\\int\\frac{dx}{x+2}+\\frac{11}{4}\\int\\frac{dx}{x+3}\\).\n\\(\\therefore I=\\frac{1}{4}\\log|x-1|-2\\log|x+2|+\\frac{11}{4}\\log|x+3|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "08375ab2-7836-4d2c-af89-885829753feb",
+    "ref": "Ex 3.4 I (ii)",
+    "solution": "Put \\(t=x^2\\). Then \\(\\frac{x^2}{(x^2+1)(x^2-2)(x^2+3)}=\\frac{t}{(t+1)(t-2)(t+3)}=\\frac{A}{t+1}+\\frac{B}{t-2}+\\frac{C}{t+3}\\).\nSo \\(t=A(t-2)(t+3)+B(t+1)(t+3)+C(t+1)(t-2)\\).\nPut \\(t=-1:\\ -1=A(-3)(2)\\Rightarrow A=\\frac{1}{6}\\).\nPut \\(t=2:\\ 2=B(3)(5)\\Rightarrow B=\\frac{2}{15}\\).\nPut \\(t=-3:\\ -3=C(-2)(-5)\\Rightarrow C=-\\frac{3}{10}\\).\nRestoring \\(t=x^2\\):\n\\(I=\\frac{1}{6}\\int\\frac{dx}{x^2+1}+\\frac{2}{15}\\int\\frac{dx}{x^2-2}-\\frac{3}{10}\\int\\frac{dx}{x^2+3}\\).\n\\(\\therefore I=\\frac{1}{6}\\tan^{-1}x+\\frac{2}{15}\\cdot\\frac{1}{2\\sqrt2}\\log\\left|\\frac{x-\\sqrt2}{x+\\sqrt2}\\right|-\\frac{3}{10}\\cdot\\frac{1}{\\sqrt3}\\tan^{-1}\\frac{x}{\\sqrt3}\\).\n\\(\\therefore I=\\frac{1}{6}\\tan^{-1}x+\\frac{1}{15\\sqrt2}\\log\\left|\\frac{x-\\sqrt2}{x+\\sqrt2}\\right|-\\frac{\\sqrt3}{10}\\tan^{-1}\\frac{x}{\\sqrt3}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "74aba218-f56a-49dc-8247-90cb6f6deded",
+    "ref": "Ex 3.4 I (iii)",
+    "solution": "Factorise the denominator: \\(6x^2+13x-63=(3x-7)(2x+9)\\).\nLet \\(\\frac{12x+3}{(3x-7)(2x+9)}=\\frac{A}{3x-7}+\\frac{B}{2x+9}\\Rightarrow 12x+3=A(2x+9)+B(3x-7)\\).\nPut \\(x=\\frac{7}{3}:\\ 31=A\\left(\\frac{41}{3}\\right)\\Rightarrow A=\\frac{93}{41}\\).\nPut \\(x=-\\frac{9}{2}:\\ -51=B\\left(-\\frac{41}{2}\\right)\\Rightarrow B=\\frac{102}{41}\\).\n\\(\\therefore I=\\frac{93}{41}\\int\\frac{dx}{3x-7}+\\frac{102}{41}\\int\\frac{dx}{2x+9}\\).\n\\(\\therefore I=\\frac{31}{41}\\log|3x-7|+\\frac{51}{41}\\log|2x+9|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "64f621ac-1d5b-4960-8479-118883e37364",
+    "ref": "Ex 3.4 I (iv)",
+    "solution": "Factorise: \\(4-3x-x^2=-(x^2+3x-4)=-(x+4)(x-1)\\).\n\\(\\therefore \\frac{2x}{4-3x-x^2}=\\frac{-2x}{(x+4)(x-1)}=\\frac{A}{x+4}+\\frac{B}{x-1}\\), so \\(-2x=A(x-1)+B(x+4)\\).\nPut \\(x=-4:\\ 8=A(-5)\\Rightarrow A=-\\frac{8}{5}\\).\nPut \\(x=1:\\ -2=B(5)\\Rightarrow B=-\\frac{2}{5}\\).\n\\(\\therefore I=-\\frac{8}{5}\\int\\frac{dx}{x+4}-\\frac{2}{5}\\int\\frac{dx}{x-1}\\).\n\\(\\therefore I=-\\frac{8}{5}\\log|x+4|-\\frac{2}{5}\\log|x-1|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "e2038c22-d2cc-437c-ace9-248868354e76",
+    "ref": "Ex 3.4 I (v)",
+    "solution": "The integrand is improper (numerator degree = denominator degree), so divide first:\n\\(\\frac{x^2+x-1}{x^2+x-6}=1+\\frac{5}{x^2+x-6}=1+\\frac{5}{(x+3)(x-2)}\\).\nLet \\(\\frac{5}{(x+3)(x-2)}=\\frac{A}{x+3}+\\frac{B}{x-2}\\Rightarrow 5=A(x-2)+B(x+3)\\).\nPut \\(x=-3:\\ 5=A(-5)\\Rightarrow A=-1\\); put \\(x=2:\\ 5=B(5)\\Rightarrow B=1\\).\n\\(\\therefore I=\\int 1\\,dx-\\int\\frac{dx}{x+3}+\\int\\frac{dx}{x-2}\\).\n\\(\\therefore I=x-\\log|x+3|+\\log|x-2|+c=x+\\log\\left|\\frac{x-2}{x+3}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "cccc9689-6139-4289-a034-c8c9a2aa2d57",
+    "ref": "Ex 3.4 I (vi)",
+    "solution": "Numerator degree > denominator degree, so divide first:\n\\(\\frac{6x^3+5x^2-7}{3x^2-2x-1}=(2x+3)+\\frac{8x-4}{3x^2-2x-1}\\).\nFactorise \\(3x^2-2x-1=(3x+1)(x-1)\\) and split \\(\\frac{8x-4}{(3x+1)(x-1)}=\\frac{A}{3x+1}+\\frac{B}{x-1}\\), so \\(8x-4=A(x-1)+B(3x+1)\\).\nPut \\(x=1:\\ 4=B(4)\\Rightarrow B=1\\); put \\(x=-\\frac{1}{3}:\\ -\\frac{20}{3}=A\\left(-\\frac{4}{3}\\right)\\Rightarrow A=5\\).\n\\(\\therefore I=\\int(2x+3)\\,dx+5\\int\\frac{dx}{3x+1}+\\int\\frac{dx}{x-1}\\).\n\\(\\therefore I=x^2+3x+\\frac{5}{3}\\log|3x+1|+\\log|x-1|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ffec351b-5e7a-478e-8964-efa4ee340111",
+    "ref": "Ex 3.4 I (vii)",
+    "solution": "Factorise \\(4x^2-1=(2x-1)(2x+1)\\), so the integrand is \\(\\frac{12x^2-2x-9}{(2x-1)(2x+1)(x+3)}=\\frac{A}{2x-1}+\\frac{B}{2x+1}+\\frac{C}{x+3}\\).\nThen \\(12x^2-2x-9=A(2x+1)(x+3)+B(2x-1)(x+3)+C(2x-1)(2x+1)\\).\nPut \\(x=\\frac{1}{2}:\\ -7=A(2)\\left(\\frac{7}{2}\\right)=7A\\Rightarrow A=-1\\).\nPut \\(x=-\\frac{1}{2}:\\ -5=B(-2)\\left(\\frac{5}{2}\\right)=-5B\\Rightarrow B=1\\).\nPut \\(x=-3:\\ 105=C(-7)(-5)=35C\\Rightarrow C=3\\).\n\\(\\therefore I=-\\int\\frac{dx}{2x-1}+\\int\\frac{dx}{2x+1}+3\\int\\frac{dx}{x+3}\\).\n\\(\\therefore I=-\\frac{1}{2}\\log|2x-1|+\\frac{1}{2}\\log|2x+1|+3\\log|x+3|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f50818d2-9abb-4f94-84b0-83564c0168f9",
+    "ref": "Ex 3.4 I (viii)",
+    "solution": "Multiply numerator and denominator by \\(x^4\\): \\(\\frac{1}{x(x^5+1)}=\\frac{x^4}{x^5(x^5+1)}\\).\nPut \\(t=x^5\\), so \\(dt=5x^4\\,dx\\).\n\\(\\therefore I=\\frac{1}{5}\\int\\frac{dt}{t(t+1)}=\\frac{1}{5}\\int\\left(\\frac{1}{t}-\\frac{1}{t+1}\\right)dt=\\frac{1}{5}\\left(\\log|t|-\\log|t+1|\\right)\\).\nRestoring \\(t=x^5\\):\n\\(\\therefore I=\\frac{1}{5}\\log\\left|\\frac{x^5}{x^5+1}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "a4993b53-034b-4509-ad06-fa275310d23c",
+    "ref": "Ex 3.4 I (ix)",
+    "solution": "[Textbook answer-key error: the printed key gives the first term as \\(\\frac{11}{\\sqrt{5}}\\tan^{-1}\\frac{x}{2}\\); since it comes from \\(\\frac{11}{x^2+5}\\), the argument must be \\(\\frac{x}{\\sqrt{5}}\\), not \\(\\frac{x}{2}\\). The answer below is correct.]\n\nFactorise: \\(x^4+9x^2+20=(x^2+4)(x^2+5)\\). Put \\(t=x^2\\) to split:\n\\(\\frac{2x^2-1}{(x^2+4)(x^2+5)}=\\frac{2t-1}{(t+4)(t+5)}=\\frac{A}{t+4}+\\frac{B}{t+5}\\Rightarrow 2t-1=A(t+5)+B(t+4)\\).\nPut \\(t=-4:\\ -9=A(1)\\Rightarrow A=-9\\); put \\(t=-5:\\ -11=B(-1)\\Rightarrow B=11\\).\nRestoring \\(t=x^2\\):\n\\(I=-9\\int\\frac{dx}{x^2+4}+11\\int\\frac{dx}{x^2+5}\\).\n\\(\\therefore I=-9\\cdot\\frac{1}{2}\\tan^{-1}\\frac{x}{2}+11\\cdot\\frac{1}{\\sqrt5}\\tan^{-1}\\frac{x}{\\sqrt5}=-\\frac{9}{2}\\tan^{-1}\\frac{x}{2}+\\frac{11}{\\sqrt5}\\tan^{-1}\\frac{x}{\\sqrt5}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "80dc6a13-2861-4858-8095-fd08b8a38b16",
+    "ref": "Ex 3.4 I (x)",
+    "solution": "[Textbook answer-key error: the printed key's second log is \\(\\frac{5}{2\\sqrt{2}}\\log\\left|\\frac{x+\\sqrt{2}}{x-\\sqrt{2}}\\right|\\); the standard form \\(\\int\\frac{dx}{x^2-2}\\) gives the reciprocal ratio \\(\\frac{x-\\sqrt{2}}{x+\\sqrt{2}}\\), so the book's term has the wrong sign. The answer below is correct.]\n\nPut \\(t=x^2\\): \\(\\frac{x^2+3}{(x^2-1)(x^2-2)}=\\frac{t+3}{(t-1)(t-2)}=\\frac{A}{t-1}+\\frac{B}{t-2}\\Rightarrow t+3=A(t-2)+B(t-1)\\).\nPut \\(t=1:\\ 4=A(-1)\\Rightarrow A=-4\\); put \\(t=2:\\ 5=B(1)\\Rightarrow B=5\\).\nRestoring \\(t=x^2\\): \\(\\frac{x^2+3}{(x^2-1)(x^2-2)}=\\frac{-4}{x^2-1}+\\frac{5}{x^2-2}\\), and \\(\\frac{-4}{x^2-1}=\\frac{2}{x+1}-\\frac{2}{x-1}\\).\n\\(\\therefore I=2\\int\\frac{dx}{x+1}-2\\int\\frac{dx}{x-1}+5\\int\\frac{dx}{x^2-2}\\).\n\\(\\therefore I=2\\log|x+1|-2\\log|x-1|+\\frac{5}{2\\sqrt2}\\log\\left|\\frac{x-\\sqrt2}{x+\\sqrt2}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "51056f0e-585d-4875-95f1-e83b397c43e3",
+    "ref": "Ex 3.4 I (xi)",
+    "solution": "Put \\(t=x^2\\), so \\(dt=2x\\,dx\\). The numerator gives \\(2x\\,dx=dt\\):\n\\(\\therefore I=\\int\\frac{dt}{(2+t)(3+t)}=\\int\\left(\\frac{1}{2+t}-\\frac{1}{3+t}\\right)dt=\\log|2+t|-\\log|3+t|\\).\nRestoring \\(t=x^2\\):\n\\(\\therefore I=\\log\\left|\\frac{x^2+2}{x^2+3}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2c159ef3-68d4-43aa-9e18-7c9fb916cfdf",
+    "ref": "Ex 3.4 I (xii)",
+    "solution": "Note \\(4^x=(2^x)^2\\). Put \\(t=2^x\\), so \\(dt=2^x\\log 2\\,dx\\), i.e. \\(2^x\\,dx=\\frac{dt}{\\log 2}\\).\n\\(\\therefore I=\\frac{1}{\\log 2}\\int\\frac{dt}{t^2-3t-4}=\\frac{1}{\\log 2}\\int\\frac{dt}{(t-4)(t+1)}\\).\nNow \\(\\frac{1}{(t-4)(t+1)}=\\frac{1}{5}\\left(\\frac{1}{t-4}-\\frac{1}{t+1}\\right)\\).\n\\(\\therefore I=\\frac{1}{5\\log 2}\\left(\\log|t-4|-\\log|t+1|\\right)\\).\nRestoring \\(t=2^x\\):\n\\(\\therefore I=\\frac{1}{5\\log 2}\\log\\left|\\frac{2^x-4}{2^x+1}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8094eadb-c69f-4324-a16b-86b9d7afe4f4",
+    "ref": "Ex 3.4 I (xiii)",
+    "solution": "Let \\(\\frac{3x-2}{(x+1)^2(x+3)}=\\frac{A}{x+1}+\\frac{B}{(x+1)^2}+\\frac{C}{x+3}\\).\nThen \\(3x-2=A(x+1)(x+3)+B(x+3)+C(x+1)^2\\).\nPut \\(x=-1:\\ -5=B(2)\\Rightarrow B=-\\frac{5}{2}\\).\nPut \\(x=-3:\\ -11=C(4)\\Rightarrow C=-\\frac{11}{4}\\).\nCompare coefficients of \\(x^2:\\ 0=A+C\\Rightarrow A=\\frac{11}{4}\\).\n\\(\\therefore I=\\frac{11}{4}\\int\\frac{dx}{x+1}-\\frac{5}{2}\\int\\frac{dx}{(x+1)^2}-\\frac{11}{4}\\int\\frac{dx}{x+3}\\).\n\\(\\therefore I=\\frac{11}{4}\\log|x+1|+\\frac{5}{2(x+1)}-\\frac{11}{4}\\log|x+3|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8b34f332-5680-4a8b-9654-16cc70840a7a",
+    "ref": "Ex 3.4 I (xiv)",
+    "solution": "Factorise \\(x^3+2x^2+x=x(x+1)^2\\).\nLet \\(\\frac{5x^2+20x+6}{x(x+1)^2}=\\frac{A}{x}+\\frac{B}{x+1}+\\frac{C}{(x+1)^2}\\).\nThen \\(5x^2+20x+6=A(x+1)^2+Bx(x+1)+Cx\\).\nPut \\(x=0:\\ 6=A\\Rightarrow A=6\\).\nPut \\(x=-1:\\ -9=C(-1)\\Rightarrow C=9\\).\nCompare coefficients of \\(x^2:\\ 5=A+B\\Rightarrow B=-1\\).\n\\(\\therefore I=6\\int\\frac{dx}{x}-\\int\\frac{dx}{x+1}+9\\int\\frac{dx}{(x+1)^2}\\).\n\\(\\therefore I=6\\log|x|-\\log|x+1|-\\frac{9}{x+1}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5eca01d4-a982-4c4c-942d-cdb207e48c4d",
+    "ref": "Ex 3.4 I (xv)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\frac{1}{8}\\log\\left|\\frac{x^6(x^3+3)}{(3x^3+1)^3}\\right|\\); the coefficient should be \\(\\frac{1}{6}\\) and the numerator factor should be \\((x^3+1)\\) (from the factorisation \\((x^3+1)(3x^3+1)\\)), not \\((x^3+3)\\). The answer below is correct.]\n\nFactorise \\(1+4x^3+3x^6=(1+x^3)(1+3x^3)\\), and multiply numerator and denominator by \\(x^2\\):\n\\(\\frac{1}{x(1+4x^3+3x^6)}=\\frac{x^2}{x^3(1+x^3)(1+3x^3)}\\).\nPut \\(t=x^3\\), so \\(dt=3x^2\\,dx\\).\n\\(\\therefore I=\\frac{1}{3}\\int\\frac{dt}{t(1+t)(1+3t)}\\).\nSplit \\(\\frac{1}{t(1+t)(1+3t)}=\\frac{1}{t}+\\frac{B}{1+t}+\\frac{C}{1+3t}\\); putting \\(t=0,-1,-\\frac{1}{3}\\) gives \\(B=\\frac{1}{2},\\ C=-\\frac{9}{2}\\).\n\\(\\therefore I=\\frac{1}{3}\\left[\\log|t|+\\frac{1}{2}\\log|1+t|-\\frac{3}{2}\\log|1+3t|\\right]\\).\nRestoring \\(t=x^3\\):\n\\(\\therefore I=\\frac{1}{3}\\log|x^3|+\\frac{1}{6}\\log|1+x^3|-\\frac{1}{2}\\log|1+3x^3|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "bdfe3a81-df59-4074-a76e-04010b1b7f2a",
+    "ref": "Ex 3.4 I (xvi)",
+    "solution": "Factorise \\(x^3-1=(x-1)(x^2+x+1)\\).\nLet \\(\\frac{1}{(x-1)(x^2+x+1)}=\\frac{A}{x-1}+\\frac{Bx+C}{x^2+x+1}\\Rightarrow 1=A(x^2+x+1)+(Bx+C)(x-1)\\).\nPut \\(x=1:\\ 1=3A\\Rightarrow A=\\frac{1}{3}\\).\nCompare \\(x^2:\\ 0=A+B\\Rightarrow B=-\\frac{1}{3}\\); constant: \\(1=A-C\\Rightarrow C=-\\frac{2}{3}\\).\n\\(\\therefore I=\\frac{1}{3}\\int\\frac{dx}{x-1}-\\frac{1}{3}\\int\\frac{x+2}{x^2+x+1}\\,dx\\).\nFor the second, \\(x+2=\\frac{1}{2}(2x+1)+\\frac{3}{2}\\) and \\(x^2+x+1=\\left(x+\\frac{1}{2}\\right)^2+\\left(\\frac{\\sqrt3}{2}\\right)^2\\), so\n\\(\\int\\frac{x+2}{x^2+x+1}\\,dx=\\frac{1}{2}\\log(x^2+x+1)+\\frac{3}{2}\\cdot\\frac{2}{\\sqrt3}\\tan^{-1}\\frac{2x+1}{\\sqrt3}=\\frac{1}{2}\\log(x^2+x+1)+\\sqrt3\\,\\tan^{-1}\\frac{2x+1}{\\sqrt3}\\).\n\\(\\therefore I=\\frac{1}{3}\\log|x-1|-\\frac{1}{6}\\log(x^2+x+1)-\\frac{1}{\\sqrt3}\\tan^{-1}\\frac{2x+1}{\\sqrt3}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6bbb4ac4-55e8-4f33-8285-99ec7fdb9319",
+    "ref": "Ex 3.4 I (xvii)",
+    "solution": "Put \\(t=\\sin x\\), so \\(dt=\\cos x\\,dx\\), and \\(\\cos^2 x=1-\\sin^2 x=1-t^2\\).\nDenominator: \\(5-4\\sin x-\\cos^2 x=5-4t-(1-t^2)=t^2-4t+4=(t-2)^2\\).\n\\(\\therefore I=\\int\\frac{3t-2}{(t-2)^2}\\,dt\\).\nPut \\(u=t-2\\Rightarrow 3t-2=3u+4\\):\n\\(I=\\int\\frac{3u+4}{u^2}\\,du=\\int\\left(\\frac{3}{u}+\\frac{4}{u^2}\\right)du=3\\log|u|-\\frac{4}{u}\\).\nRestoring \\(u=t-2=\\sin x-2\\):\n\\(\\therefore I=3\\log|\\sin x-2|-\\frac{4}{\\sin x-2}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1863884a-6644-4dd0-9629-4923c9357841",
+    "ref": "Ex 3.4 I (xviii)",
+    "solution": "\\(\\sin x+\\sin 2x=\\sin x+2\\sin x\\cos x=\\sin x(1+2\\cos x)\\).\nMultiply numerator and denominator by \\(\\sin x\\):\n\\(\\frac{1}{\\sin x(1+2\\cos x)}=\\frac{\\sin x}{\\sin^2 x(1+2\\cos x)}=\\frac{\\sin x}{(1-\\cos^2 x)(1+2\\cos x)}\\).\nPut \\(t=\\cos x\\), so \\(dt=-\\sin x\\,dx\\):\n\\(I=-\\int\\frac{dt}{(1-t)(1+t)(1+2t)}\\).\nSplit \\(\\frac{1}{(1-t)(1+t)(1+2t)}=\\frac{1}{6(1-t)}-\\frac{1}{2(1+t)}+\\frac{4}{3(1+2t)}\\).\nIntegrating this and then applying the outer minus sign:\n\\(I=\\frac{1}{6}\\log|1-t|+\\frac{1}{2}\\log|1+t|-\\frac{2}{3}\\log|1+2t|\\).\nRestoring \\(t=\\cos x\\):\n\\(\\therefore I=\\frac{1}{6}\\log|1-\\cos x|+\\frac{1}{2}\\log|1+\\cos x|-\\frac{2}{3}\\log|1+2\\cos x|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c3347bd1-61d4-4b6c-8124-ac5ed8393b34",
+    "ref": "Ex 3.4 I (xix)",
+    "solution": "\\(2\\sin x+\\sin 2x=2\\sin x+2\\sin x\\cos x=2\\sin x(1+\\cos x)\\).\nMultiply numerator and denominator by \\(\\sin x\\):\n\\(\\frac{1}{2\\sin x(1+\\cos x)}=\\frac{\\sin x}{2\\sin^2 x(1+\\cos x)}=\\frac{\\sin x}{2(1-\\cos x)(1+\\cos x)^2}\\).\nPut \\(t=\\cos x\\), so \\(dt=-\\sin x\\,dx\\):\n\\(I=-\\frac{1}{2}\\int\\frac{dt}{(1-t)(1+t)^2}\\).\nSplit \\(\\frac{1}{(1-t)(1+t)^2}=\\frac{1}{4(1-t)}+\\frac{1}{4(1+t)}+\\frac{1}{2(1+t)^2}\\), so\n\\(\\int\\frac{dt}{(1-t)(1+t)^2}=-\\frac{1}{4}\\log|1-t|+\\frac{1}{4}\\log|1+t|-\\frac{1}{2(1+t)}\\).\n\\(\\therefore I=-\\frac{1}{2}\\left[-\\frac{1}{4}\\log|1-t|+\\frac{1}{4}\\log|1+t|-\\frac{1}{2(1+t)}\\right]\\).\nRestoring \\(t=\\cos x\\):\n\\(\\therefore I=\\frac{1}{8}\\log|1-\\cos x|-\\frac{1}{8}\\log|1+\\cos x|+\\frac{1}{4(1+\\cos x)}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c0962d96-7792-48ff-a6de-6ccd330735f1",
+    "ref": "Ex 3.4 I (xx)",
+    "solution": "\\(\\sin 2x+\\cos x=2\\sin x\\cos x+\\cos x=\\cos x(2\\sin x+1)\\).\nMultiply numerator and denominator by \\(\\cos x\\):\n\\(\\frac{1}{\\cos x(2\\sin x+1)}=\\frac{\\cos x}{\\cos^2 x(2\\sin x+1)}=\\frac{\\cos x}{(1-\\sin^2 x)(2\\sin x+1)}\\).\nPut \\(t=\\sin x\\), so \\(dt=\\cos x\\,dx\\):\n\\(I=\\int\\frac{dt}{(1-t)(1+t)(1+2t)}\\).\nSplit \\(\\frac{1}{(1-t)(1+t)(1+2t)}=\\frac{1}{6(1-t)}-\\frac{1}{2(1+t)}+\\frac{4}{3(1+2t)}\\).\n\\(\\therefore I=-\\frac{1}{6}\\log|1-t|-\\frac{1}{2}\\log|1+t|+\\frac{2}{3}\\log|1+2t|\\).\nRestoring \\(t=\\sin x\\):\n\\(\\therefore I=-\\frac{1}{6}\\log|1-\\sin x|-\\frac{1}{2}\\log|1+\\sin x|+\\frac{2}{3}\\log|1+2\\sin x|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "e1d24121-c924-4270-9d5e-217bb42d8899",
+    "ref": "Ex 3.4 I (xxi)",
+    "solution": "Multiply numerator and denominator by \\(\\sin x\\):\n\\(\\frac{1}{\\sin x(3+2\\cos x)}=\\frac{\\sin x}{\\sin^2 x(3+2\\cos x)}=\\frac{\\sin x}{(1-\\cos^2 x)(3+2\\cos x)}\\).\nPut \\(t=\\cos x\\), so \\(dt=-\\sin x\\,dx\\):\n\\(I=-\\int\\frac{dt}{(1-t)(1+t)(3+2t)}\\).\nSplit \\(\\frac{1}{(1-t)(1+t)(3+2t)}=\\frac{1}{10(1-t)}+\\frac{1}{2(1+t)}-\\frac{4}{5(3+2t)}\\).\nIntegrating this and then applying the outer minus sign:\n\\(I=\\frac{1}{10}\\log|1-t|-\\frac{1}{2}\\log|1+t|+\\frac{2}{5}\\log|3+2t|\\).\nRestoring \\(t=\\cos x\\):\n\\(\\therefore I=\\frac{1}{10}\\log|1-\\cos x|-\\frac{1}{2}\\log|1+\\cos x|+\\frac{2}{5}\\log|3+2\\cos x|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "24c3fcf7-7cb4-46dc-9aba-798da7e28c85",
+    "ref": "Ex 3.4 I (xxii)",
+    "solution": "Put \\(t=e^x\\), so \\(dt=e^x\\,dx\\), and \\(e^{2x}=t^2\\).\n\\(\\therefore I=\\int\\frac{5\\,dt}{(t+1)(t^2+9)}\\).\nLet \\(\\frac{5}{(t+1)(t^2+9)}=\\frac{A}{t+1}+\\frac{Bt+C}{t^2+9}\\Rightarrow 5=A(t^2+9)+(Bt+C)(t+1)\\).\nPut \\(t=-1:\\ 5=10A\\Rightarrow A=\\frac{1}{2}\\).\nCompare \\(t^2:\\ 0=A+B\\Rightarrow B=-\\frac{1}{2}\\); constant: \\(5=9A+C\\Rightarrow C=\\frac{1}{2}\\).\n\\(\\therefore I=\\frac{1}{2}\\int\\frac{dt}{t+1}-\\frac{1}{2}\\int\\frac{t-1}{t^2+9}\\,dt\\).\nNow \\(\\int\\frac{t-1}{t^2+9}\\,dt=\\frac{1}{2}\\log(t^2+9)-\\frac{1}{3}\\tan^{-1}\\frac{t}{3}\\), so\n\\(I=\\frac{1}{2}\\log|t+1|-\\frac{1}{4}\\log(t^2+9)+\\frac{1}{6}\\tan^{-1}\\frac{t}{3}\\).\nRestoring \\(t=e^x\\):\n\\(\\therefore I=\\frac{1}{2}\\log(e^x+1)-\\frac{1}{4}\\log(e^{2x}+9)+\\frac{1}{6}\\tan^{-1}\\frac{e^x}{3}+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9ce2a6ee-7062-4d1c-a02c-8f8fb42e4e12",
+    "ref": "Ex 3.4 I (xxiii)",
+    "solution": "[Textbook answer-key error: the printed key carries a spurious square root on the \\(\\log((\\log x)^2+1)\\) term (making its coefficient \\(-\\frac{5}{52}\\) instead of \\(-\\frac{5}{26}\\)) and gives the \\(\\tan^{-1}\\) coefficient as \\(\\frac{11}{26}\\) instead of \\(\\frac{12}{13}\\). The answer below is correct.]\n\nPut \\(t=\\log x\\), so \\(dt=\\frac{dx}{x}\\).\n\\(\\therefore I=\\int\\frac{2t+3}{(3t+2)(t^2+1)}\\,dt\\).\nLet \\(\\frac{2t+3}{(3t+2)(t^2+1)}=\\frac{A}{3t+2}+\\frac{Bt+C}{t^2+1}\\Rightarrow 2t+3=A(t^2+1)+(Bt+C)(3t+2)\\).\nPut \\(t=-\\frac{2}{3}:\\ \\frac{5}{3}=A\\left(\\frac{13}{9}\\right)\\Rightarrow A=\\frac{15}{13}\\).\nCompare \\(t^2:\\ 0=A+3B\\Rightarrow B=-\\frac{5}{13}\\); constant: \\(3=A+2C\\Rightarrow C=\\frac{12}{13}\\).\n\\(\\therefore I=\\frac{15}{13}\\int\\frac{dt}{3t+2}+\\frac{1}{13}\\int\\frac{-5t+12}{t^2+1}\\,dt\\).\n\\(=\\frac{15}{13}\\cdot\\frac{1}{3}\\log|3t+2|-\\frac{5}{13}\\cdot\\frac{1}{2}\\log(t^2+1)+\\frac{12}{13}\\tan^{-1}t\\).\nRestoring \\(t=\\log x\\):\n\\(\\therefore I=\\frac{5}{13}\\log|3\\log x+2|-\\frac{5}{26}\\log\\big((\\log x)^2+1\\big)+\\frac{12}{13}\\tan^{-1}(\\log x)+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]
