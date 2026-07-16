@@ -47,6 +47,12 @@ A solution-authoring agent, while validating its own output as ASCII-clean, noti
 
 **Not acted on** (shipped work → [[learning-propagation-protocol]]: log, 360, ask). **Scope to establish first:** grep the `data/*.solutions.json` set AND the live `questions.solution` column for `[≠⇒⇐×÷√∴∈∞]` outside `\(…\)` zones — the DB is what students see, and the JSON may have drifted from it. **Blast radius:** cosmetic only (a glyph renders unstyled; no answer is wrong). **Cost:** small if scripted (the `apply-solutions.ts` path is solution-only + hash-safe). **Recommendation:** fold into the next State Board chapter's pass rather than a standalone campaign — or add the check to `notes:latex`-style linting so it's caught at authoring time going forward.
 
+### `\csc` vs `\operatorname{cosec}` inconsistency in Indefinite Integration (cosmetic)
+
+Ch.3's Exercise 3.1 solutions were authored with `\csc` where every other block (and the Indian-textbook convention this project follows) uses `\operatorname{cosec}`. Both render correctly in KaTeX, so it's purely a within-chapter notation inconsistency — left un-normalised at ship.
+
+**Why:** trivial reader-facing inconsistency; not worth the risk of a content UPDATE on its own. **How to apply:** a solution-only, hash-safe `\csc`→`\operatorname{cosec}` string replace over the `indef-integration-12` rows (mirror to `data/indef-integration-12.ex-3-1.solutions.json`). **Best folded into the same future notation-lint pass as the raw-unicode-leak item above** — one State Board "solution notation" cleanup covering both `[≠⇒⇐…]` leaks and `\csc`/`cosec`, ideally as a `notes:latex`-style check run at authoring time.
+
 ## 2026-07-15
 
 ### Sweep abandoned `in_progress` mock attempts to `expired` (a stale row can block a clean restart)
