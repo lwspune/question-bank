@@ -1,0 +1,296 @@
+[
+  {
+    "ref": "Ex 3.3 I (i)",
+    "verdict": "AGREE",
+    "our_answer": "x^3/3 log x - x^3/9 + c",
+    "book_answer": "x^3/9 (3 log x - 1) + c",
+    "evidence": "Book (x^3/9)(3 log x - 1) = x^3/3 log x - x^3/9 = ours. Identical."
+  },
+  {
+    "ref": "Ex 3.3 I (ii)",
+    "verdict": "AGREE",
+    "our_answer": "-x^2 cos3x/3 + 2x sin3x/9 + 2 cos3x/27 + c",
+    "book_answer": "-(x^2/3) cos3x + (2/9) x sin3x + (2/27) cos3x + c",
+    "evidence": "Term-by-term identical."
+  },
+  {
+    "ref": "Ex 3.3 I (iii)",
+    "verdict": "AGREE",
+    "our_answer": "(x^2+1)/2 tan^-1 x - x/2 + c",
+    "book_answer": "(x^2/2) tan^-1 x - (1/2)(x - tan^-1 x) + c",
+    "evidence": "Book = (x^2/2)atanx - x/2 + (1/2)atanx = (x^2+1)/2 atanx - x/2 = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (iv)",
+    "verdict": "AGREE",
+    "our_answer": "x^3/3 tan^-1 x - x^2/6 + (1/6) log(1+x^2) + c",
+    "book_answer": "x^3/3 tan^-1 x - x^2/6 + (1/6) log(1+x^2) + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 I (v)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "x^4/4 tan^-1 x - x^3/12 + x/4 - (1/4) tan^-1 x + c",
+    "book_answer": "(1/4)(tan^-1 x)(x^4-1) - (x/12)(x^3-3x) + c",
+    "evidence": "Integrand x^3 atan(x). d/dx[ours]=integrand (sympy OK). Book's second term as printed is (x/12)(x^3-3x); d/dx of the full book expression != integrand (residual -x^3/3+x^2/4+x/2-1/4). The correct factored form is (1/12)(x^3-3x) = x^3/12 - x/4, which equals ours and differentiates to the integrand. The book printed an extra x in the numerator of the coefficient (x/12 instead of 1/12). Confirmed by zoomed image: book clearly prints x/12."
+  },
+  {
+    "ref": "Ex 3.3 I (vi)",
+    "verdict": "AGREE",
+    "our_answer": "x(log x)^2 - 2x log x + 2x + c",
+    "book_answer": "x[(log x)^2 - 2(log x) + 2] + c",
+    "evidence": "Expanding book = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (vii)",
+    "verdict": "AGREE",
+    "our_answer": "(1/2) sec x tan x + (1/2) log|sec x + tan x| + c",
+    "book_answer": "(1/2) log(sec x + tan x) + (1/2) sec x tan x + c",
+    "evidence": "Same two terms, order swapped."
+  },
+  {
+    "ref": "Ex 3.3 I (viii)",
+    "verdict": "AGREE",
+    "our_answer": "x^2/4 - x sin2x/4 - cos2x/8 + c",
+    "book_answer": "(1/4)[x^2 - x sin2x - (1/2) cos2x] + c",
+    "evidence": "Book expanded = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (ix)",
+    "verdict": "AGREE",
+    "our_answer": "x^4/4 log x - x^4/16 + c",
+    "book_answer": "x^4/4 log x - x^4/16 + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 I (x)",
+    "verdict": "AGREE",
+    "our_answer": "e^2x/13 (2 cos3x + 3 sin3x) + c",
+    "book_answer": "e^2x/13 [2 cos3x + 3 sin3x] + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 I (xi)",
+    "verdict": "AGREE",
+    "our_answer": "(2x^2-1)/4 sin^-1 x + x sqrt(1-x^2)/4 + c",
+    "book_answer": "(x^2/2) sin^-1 x + (1/4) x sqrt(1-x^2) - (1/4) sin^-1 x + c",
+    "evidence": "Book atan-coeffs combine: (x^2/2 - 1/4)asinx = (2x^2-1)/4 asinx = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (xii)",
+    "verdict": "AGREE",
+    "our_answer": "x^3/3 cos^-1 x - (x^2+2) sqrt(1-x^2)/9 + c",
+    "book_answer": "x^3/3 cos^-1 x - (1/3) sqrt(1-x^2) + (1/9)(1-x^2)^(3/2) + c",
+    "evidence": "Book: sqrt(1-x^2)[-1/3 + (1-x^2)/9] = sqrt(1-x^2)(-2-x^2)/9 = -(x^2+2)sqrt(1-x^2)/9 = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (xiii)",
+    "verdict": "AGREE",
+    "our_answer": "log x . log(log x) - log x + c",
+    "book_answer": "(log x)[log(log x) - 1] + c",
+    "evidence": "Expanding book = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (xiv)",
+    "verdict": "AGREE",
+    "our_answer": "t - sqrt(1-t^2) sin^-1 t + c",
+    "book_answer": "-(sin^-1 t) sqrt(1-t^2) + t + c",
+    "evidence": "Identical (terms reordered)."
+  },
+  {
+    "ref": "Ex 3.3 I (xv)",
+    "verdict": "AGREE",
+    "our_answer": "2 sqrt(x) sin sqrt(x) + 2 cos sqrt(x) + c",
+    "book_answer": "2[sqrt(x) sin sqrt(x) + cos sqrt(x)] + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 I (xvi)",
+    "verdict": "AGREE",
+    "our_answer": "cos theta (1 - log(cos theta)) + c",
+    "book_answer": "(cos theta)[1 - log(cos theta)] + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 I (xvii)",
+    "verdict": "AGREE",
+    "our_answer": "3x sinx/4 + 3 cosx/4 + x sin3x/12 + cos3x/36 + c",
+    "book_answer": "(1/4)[(x/3) sin3x + (1/9) cos3x + 3x sinx + 3 cosx] + c",
+    "evidence": "Book expanded term-by-term = ours."
+  },
+  {
+    "ref": "Ex 3.3 I (xviii)",
+    "verdict": "AGREE",
+    "our_answer": "-(1/2) cos((log x)^2) + c",
+    "book_answer": "-(1/2) cos(log x)^2 + c",
+    "evidence": "READING CONFIRMED: our author read the stem sin(log x)^2 as sin((log x)^2). The book's answer -(1/2)cos((log x)^2) is exactly the result of that reading (put t=(log x)^2), so it confirms our interpretation. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 I (xix)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "(log x)^2/2 + c",
+    "book_answer": "-(1/2)(log x)^2 + c",
+    "evidence": "Integrand log(x)/x. d/dx[(log x)^2/2] = log(x)/x = integrand (ours correct). d/dx[-(1/2)(log x)^2] = -log(x)/x = NEGATIVE of integrand. Book printed a spurious minus sign; sign is wrong."
+  },
+  {
+    "ref": "Ex 3.3 I (xx)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "-x cos7x/14 + sin7x/98 + x cos3x/6 - sin3x/18 + c",
+    "book_answer": "(x/6) sin3x + (1/18) cos x - (1/14) x sin7x - (1/98) cos7x + c",
+    "evidence": "Integrand x sin2x cos5x = (1/2)x(sin7x - sin3x). d/dx[ours]=integrand (sympy OK). The book's answer is structurally wrong for this integrand: it has x sin3x / x sin7x (should be x cos3x / x cos7x) and a cos x term (no such argument arises); sympy: d/dx[book literal] != integrand (residual -x sin2x cos5x + x cos3x/2 - x cos7x/2 - sinx/18 + sin3x/6). Even reading '1/18 cos x' as '1/18 cos 3x' still fails to differentiate to the integrand. Book key wrong."
+  },
+  {
+    "ref": "Ex 3.3 I (xxi)",
+    "verdict": "AGREE",
+    "our_answer": "3x^(2/3) sin(cbrt x) + 6 cbrt x cos(cbrt x) - 6 sin(cbrt x) + c",
+    "book_answer": "(3x^(2/3) - 6) sin(cbrt x) + 6 cbrt x cos(cbrt x) + c",
+    "evidence": "Book (3x^(2/3)-6)sin = 3x^(2/3)sin - 6 sin; regrouped = ours."
+  },
+  {
+    "ref": "Ex 3.3 II (i)",
+    "verdict": "AGREE",
+    "our_answer": "e^2x/13 (2 sin3x - 3 cos3x) + c",
+    "book_answer": "e^2x/13 [2 sin3x - 3 cos3x] + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 II (ii)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "e^-x/5 (2 sin2x - cos2x) + c",
+    "book_answer": "e^-x/5 [-cos x + 2 sin2x] + c",
+    "evidence": "Integrand e^-x cos2x. Standard result gives e^-x/5(-cos2x + 2 sin2x) = ours; d/dx[ours]=integrand (sympy OK). Book printed '-cos x' (argument x, not 2x); d/dx[book literal] != integrand. Confirmed by zoomed image (reads 'cos x'). Almost certainly a missing-'2' misprint on the cos argument, but as printed the key is wrong."
+  },
+  {
+    "ref": "Ex 3.3 II (iii)",
+    "verdict": "AGREE",
+    "our_answer": "x/2 [sin(log x) - cos(log x)] + c",
+    "book_answer": "x/2 [sin(log x) - cos(log x)] + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 II (iv)",
+    "verdict": "AGREE",
+    "our_answer": "x/2 sqrt(5x^2+3) + 3sqrt5/10 log|x + sqrt(x^2+3/5)| + c",
+    "book_answer": "sqrt5[ x/2 sqrt(x^2+3/5) + (3/10) log(x + sqrt(x^2+3/5)) ] + c",
+    "evidence": "sqrt5*sqrt(x^2+3/5)=sqrt(5x^2+3); sqrt5*(3/10)=3sqrt5/10. Book distributed = ours. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (v)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "x^3/6 sqrt(a^2-x^6) + (a^2/6) sin^-1(x^3/a) + c",
+    "book_answer": "x^3/6 . sqrt(a^2-x^6) + (a^2/2) sin^-1(x^3/a) + c",
+    "evidence": "Integrand x^2 sqrt(a^2-x^6). Sub t=x^3 gives (1/3)*integral, so both terms carry the 1/3: second coeff = (1/3)(a^2/2) = a^2/6. d/dx[ours with a^2/6]=integrand (sympy OK). Book's a^2/2 omits the 1/3 factor on the second term; d/dx[book]!=integrand (residual a^2 x^2/sqrt(a^2-x^6)). Confirmed by zoomed image: book prints a^2/2."
+  },
+  {
+    "ref": "Ex 3.3 II (vi)",
+    "verdict": "AGREE",
+    "our_answer": "(x-5)/2 sqrt((x-3)(7-x)) + 2 sin^-1((x-5)/2) + c",
+    "book_answer": "(x-5)/2 sqrt((x-3)(7-x)) + 2 sin^-1((x-5)/2) + c",
+    "evidence": "Identical. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (vii)",
+    "verdict": "AGREE",
+    "our_answer": "(1/log2)[ 2^x/2 sqrt(4^x+4) + 2 log(2^x + sqrt(4^x+4)) ] + c",
+    "book_answer": "(1/log2){ 2^x/2 sqrt(4^x+4) + 2 log(2^x + sqrt(4^x+4)) } + c",
+    "evidence": "Identical. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (viii)",
+    "verdict": "AGREE",
+    "our_answer": "(2x^2+3)^(3/2)/6 + x/2 sqrt(2x^2+3) + 3sqrt2/4 log|x + sqrt(x^2+3/2)| + c",
+    "book_answer": "(1/6)(2x^2+3)^(3/2) + sqrt2[ x/2 sqrt(x^2+3/2) + (3/4) log(x + sqrt(x^2+3/2)) ] + c",
+    "evidence": "sqrt2*sqrt(x^2+3/2)=sqrt(2x^2+3); sqrt2*(3/4)=3sqrt2/4. Book distributed = ours. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (ix)",
+    "verdict": "AGREE",
+    "our_answer": "-(5-4x-x^2)^(3/2)/3 - (x+2) sqrt(5-4x-x^2) - 9 sin^-1((x+2)/3) + c",
+    "book_answer": "-(1/3)(5-4x-x^2)^(3/2) - (x+2) sqrt(5-4x-x^2) - 9 sin^-1((x+2)/3) + c",
+    "evidence": "Identical. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (x)",
+    "verdict": "AGREE",
+    "our_answer": "(2tanx+1)/4 sqrt(tan^2x+tanx-7) - 29/8 log|tanx + 1/2 + sqrt(tan^2x+tanx-7)| + c",
+    "book_answer": "(1+2tanx)/4 sqrt(tan^2x+tanx-7) - 29/8 log{1/2 + tanx + sqrt(tan^2x+tanx-7)} + c",
+    "evidence": "2tanx+1 = 1+2tanx; tanx+1/2 = 1/2+tanx. Identical. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (xi)",
+    "verdict": "AGREE",
+    "our_answer": "(x+1)/2 sqrt(x^2+2x+5) + 2 log|x+1 + sqrt(x^2+2x+5)| + c",
+    "book_answer": "(x+1)/2 sqrt(x^2+2x+5) + 2 log{x+1 + sqrt(x^2+2x+5)} + c",
+    "evidence": "Identical. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 II (xii)",
+    "verdict": "BOOK-KEY-WRONG",
+    "our_answer": "(4x+3)/8 sqrt(2x^2+3x+4) + (23 sqrt2/32) log|x + 3/4 + sqrt(x^2+3/2 x+2)| + c",
+    "book_answer": "sqrt2{ (4x+3)/8 sqrt(x^2+3/2 x+2) + (23/(16 sqrt2)) log[(x+3/4) + sqrt(x^2+3/2 x+2)] } + c",
+    "evidence": "Integrand sqrt(2x^2+3x+4). Correct log coeff = sqrt2 * a^2/2 with a^2=23/16 -> sqrt2*(23/32) = 23 sqrt2/32 (=1.0165); d/dx[ours]=integrand (sympy OK). Book has the log coeff INSIDE the brace as 23/(16 sqrt2) which itself = 23 sqrt2/32, but the outer sqrt2 then multiplies it (the brace also holds the first term that NEEDS the outer sqrt2 to form sqrt(2x^2+3x+4)), giving sqrt2*(23/(16 sqrt2)) = 23/16 (=1.4375). So the printed book log coefficient is off by a factor of sqrt2; d/dx[book literal]!=integrand (sympy nonzero). First term is correct. Book key wrong on the log coefficient (sqrt2 double-applied)."
+  },
+  {
+    "ref": "Ex 3.3 III (i)",
+    "verdict": "AGREE",
+    "our_answer": "e^x(2 + cot x) + c",
+    "book_answer": "e^x(2 + cot x) + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 III (ii)",
+    "verdict": "AGREE",
+    "our_answer": "e^x tan(x/2) + c",
+    "book_answer": "e^x . tan(x/2) + c",
+    "evidence": "Identical. d/dx[ours]=integrand (sympy residual reduces to 0 via (1+cos x)tan(x/2)=sin x)."
+  },
+  {
+    "ref": "Ex 3.3 III (iii)",
+    "verdict": "AGREE",
+    "our_answer": "e^x/x + c",
+    "book_answer": "e^x . (1/x) + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 III (iv)",
+    "verdict": "AGREE",
+    "our_answer": "e^x/(x+1) + c",
+    "book_answer": "e^x . (1/(x+1)) + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 III (v)",
+    "verdict": "AGREE",
+    "our_answer": "e^x(log x)^2 + c",
+    "book_answer": "e^x . (log x)^2 + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 III (vi)",
+    "verdict": "AGREE",
+    "our_answer": "e^5x log x + c",
+    "book_answer": "e^5x . log x + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 III (vii)",
+    "verdict": "AGREE",
+    "our_answer": "x e^(sin^-1 x) + c",
+    "book_answer": "e^(sin^-1 x) . x + c",
+    "evidence": "Identical."
+  },
+  {
+    "ref": "Ex 3.3 III (viii)",
+    "verdict": "AGREE",
+    "our_answer": "(1+x)^2/2 log(1+x) - (1+x)^2/4 + c",
+    "book_answer": "(1+x)^2/2 (log(1+x) - 1/2) + c",
+    "evidence": "READING CONFIRMED: our author read the stem log(1+x)^(1+x) as (1+x)log(1+x). Expanding book = (1+x)^2/2 log(1+x) - (1+x)^2/4 = ours, which confirms that reading. d/dx[ours]=integrand (sympy OK)."
+  },
+  {
+    "ref": "Ex 3.3 III (ix)",
+    "verdict": "AGREE",
+    "our_answer": "x cosec(log x) + c",
+    "book_answer": "x . cosec(log x) + c",
+    "evidence": "Identical."
+  }
+]

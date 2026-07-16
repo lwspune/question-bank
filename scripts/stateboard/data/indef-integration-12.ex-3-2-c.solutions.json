@@ -1,0 +1,65 @@
+[
+  {
+    "id": "7f793fb8-8d14-4a6b-8c10-5915f8030cde",
+    "ref": "Ex 3.2(C) I (i)",
+    "solution": "Write \\(3x+4 = A\\frac{d}{dx}(x^2+6x+5)+B = A(2x+6)+B\\).\nComparing coefficients: \\(2A=3,\\ 6A+B=4\\Rightarrow A=\\frac{3}{2},\\ B=-5\\).\n\\(\\therefore I=\\frac{3}{2}\\int\\frac{2x+6}{x^2+6x+5}\\,dx-5\\int\\frac{dx}{x^2+6x+5}\\).\nThe first integral \\(=\\frac{3}{2}\\log|x^2+6x+5|\\).\nFor the second, \\(x^2+6x+5=(x+3)^2-2^2\\), so \\(\\int\\frac{dx}{(x+3)^2-2^2}=\\frac{1}{4}\\log\\left|\\frac{x+1}{x+5}\\right|\\).\n\\(\\therefore I=\\frac{3}{2}\\log|x^2+6x+5|-\\frac{5}{4}\\log\\left|\\frac{x+1}{x+5}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "a6fdd5b5-2cf8-4d41-83d1-b03005332a83",
+    "ref": "Ex 3.2(C) I (ii)",
+    "solution": "Write \\(2x+1 = A(2x+4)+B\\), where \\(2x+4=\\frac{d}{dx}(x^2+4x-5)\\).\nComparing: \\(2A=2,\\ 4A+B=1\\Rightarrow A=1,\\ B=-3\\).\n\\(\\therefore I=\\int\\frac{2x+4}{x^2+4x-5}\\,dx-3\\int\\frac{dx}{x^2+4x-5}\\).\nThe first integral \\(=\\log|x^2+4x-5|\\).\nNow \\(x^2+4x-5=(x+2)^2-3^2\\), so \\(\\int\\frac{dx}{(x+2)^2-3^2}=\\frac{1}{6}\\log\\left|\\frac{x-1}{x+5}\\right|\\).\n\\(\\therefore I=\\log|x^2+4x-5|-\\frac{1}{2}\\log\\left|\\frac{x-1}{x+5}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6a0296c5-6def-4ab7-952c-e0a9e900143f",
+    "ref": "Ex 3.2(C) I (iii)",
+    "solution": "Write \\(2x+3 = A(4x+3)+B\\), where \\(4x+3=\\frac{d}{dx}(2x^2+3x-1)\\).\nComparing: \\(4A=2,\\ 3A+B=3\\Rightarrow A=\\frac{1}{2},\\ B=\\frac{3}{2}\\).\n\\(\\therefore I=\\frac{1}{2}\\int\\frac{4x+3}{2x^2+3x-1}\\,dx+\\frac{3}{2}\\int\\frac{dx}{2x^2+3x-1}\\).\nThe first integral \\(=\\frac{1}{2}\\log|2x^2+3x-1|\\).\nFor the second, \\(2x^2+3x-1=2\\left[\\left(x+\\frac{3}{4}\\right)^2-\\left(\\frac{\\sqrt{17}}{4}\\right)^2\\right]\\), so\n\\(\\int\\frac{dx}{2x^2+3x-1}=\\frac{1}{2}\\int\\frac{dx}{\\left(x+\\frac{3}{4}\\right)^2-\\left(\\frac{\\sqrt{17}}{4}\\right)^2}=\\frac{1}{\\sqrt{17}}\\log\\left|\\frac{4x+3-\\sqrt{17}}{4x+3+\\sqrt{17}}\\right|\\).\n\\(\\therefore I=\\frac{1}{2}\\log|2x^2+3x-1|+\\frac{3}{2\\sqrt{17}}\\log\\left|\\frac{4x+3-\\sqrt{17}}{4x+3+\\sqrt{17}}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "cd634a47-2cc0-4ed3-ac1c-9985e06902fa",
+    "ref": "Ex 3.2(C) I (iv)",
+    "solution": "Write \\(3x+4 = A(4x+2)+B\\), where \\(4x+2=\\frac{d}{dx}(2x^2+2x+1)\\).\nComparing: \\(4A=3,\\ 2A+B=4\\Rightarrow A=\\frac{3}{4},\\ B=\\frac{5}{2}\\).\n\\(\\therefore I=\\frac{3}{4}\\int\\frac{4x+2}{\\sqrt{2x^2+2x+1}}\\,dx+\\frac{5}{2}\\int\\frac{dx}{\\sqrt{2x^2+2x+1}}\\).\nThe first integral \\(=\\frac{3}{4}\\cdot 2\\sqrt{2x^2+2x+1}=\\frac{3}{2}\\sqrt{2x^2+2x+1}\\).\nFor the second, \\(2x^2+2x+1=2\\left[\\left(x+\\frac{1}{2}\\right)^2+\\left(\\frac{1}{2}\\right)^2\\right]\\), so\n\\(\\int\\frac{dx}{\\sqrt{2x^2+2x+1}}=\\frac{1}{\\sqrt{2}}\\int\\frac{dx}{\\sqrt{\\left(x+\\frac{1}{2}\\right)^2+\\left(\\frac{1}{2}\\right)^2}}=\\frac{1}{\\sqrt{2}}\\log\\left|\\left(x+\\tfrac{1}{2}\\right)+\\sqrt{x^2+x+\\tfrac{1}{2}}\\right|\\).\n\\(\\therefore I=\\frac{3}{2}\\sqrt{2x^2+2x+1}+\\frac{5}{2\\sqrt{2}}\\log\\left|\\left(x+\\tfrac{1}{2}\\right)+\\sqrt{x^2+x+\\tfrac{1}{2}}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8eb0da36-458c-4999-8ae9-14e543831c39",
+    "ref": "Ex 3.2(C) I (v)",
+    "solution": "Write \\(7x+3 = A(2-2x)+B\\), where \\(2-2x=\\frac{d}{dx}(3+2x-x^2)\\).\nComparing: \\(-2A=7,\\ 2A+B=3\\Rightarrow A=-\\frac{7}{2},\\ B=10\\).\n\\(\\therefore I=-\\frac{7}{2}\\int\\frac{2-2x}{\\sqrt{3+2x-x^2}}\\,dx+10\\int\\frac{dx}{\\sqrt{3+2x-x^2}}\\).\nThe first integral \\(=-\\frac{7}{2}\\cdot 2\\sqrt{3+2x-x^2}=-7\\sqrt{3+2x-x^2}\\).\nFor the second, \\(3+2x-x^2=2^2-(x-1)^2\\), so \\(\\int\\frac{dx}{\\sqrt{2^2-(x-1)^2}}=\\sin^{-1}\\left(\\frac{x-1}{2}\\right)\\).\n\\(\\therefore I=-7\\sqrt{3+2x-x^2}+10\\sin^{-1}\\left(\\frac{x-1}{2}\\right)+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "7f68c099-b3df-43d5-b890-fc11298b69a4",
+    "ref": "Ex 3.2(C) I (vi)",
+    "solution": "First rationalise: \\(\\sqrt{\\frac{x-7}{x-9}}=\\frac{x-7}{\\sqrt{(x-7)(x-9)}}=\\frac{x-7}{\\sqrt{x^2-16x+63}}\\).\nWrite \\(x-7 = A(2x-16)+B\\), where \\(2x-16=\\frac{d}{dx}(x^2-16x+63)\\).\nComparing: \\(2A=1,\\ -16A+B=-7\\Rightarrow A=\\frac{1}{2},\\ B=1\\).\n\\(\\therefore I=\\frac{1}{2}\\int\\frac{2x-16}{\\sqrt{x^2-16x+63}}\\,dx+\\int\\frac{dx}{\\sqrt{x^2-16x+63}}\\).\nThe first integral \\(=\\frac{1}{2}\\cdot 2\\sqrt{x^2-16x+63}=\\sqrt{x^2-16x+63}\\).\nNow \\(x^2-16x+63=(x-8)^2-1\\), so \\(\\int\\frac{dx}{\\sqrt{(x-8)^2-1}}=\\log\\left|(x-8)+\\sqrt{x^2-16x+63}\\right|\\).\n\\(\\therefore I=\\sqrt{x^2-16x+63}+\\log\\left|(x-8)+\\sqrt{x^2-16x+63}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8e66b1c2-52de-4d67-bab6-6f03331a3fb3",
+    "ref": "Ex 3.2(C) I (vii)",
+    "solution": "First rationalise: \\(\\sqrt{\\frac{9-x}{x}}=\\frac{9-x}{\\sqrt{x(9-x)}}=\\frac{9-x}{\\sqrt{9x-x^2}}\\).\nWrite \\(9-x = A(9-2x)+B\\), where \\(9-2x=\\frac{d}{dx}(9x-x^2)\\).\nComparing: \\(-2A=-1,\\ 9A+B=9\\Rightarrow A=\\frac{1}{2},\\ B=\\frac{9}{2}\\).\n\\(\\therefore I=\\frac{1}{2}\\int\\frac{9-2x}{\\sqrt{9x-x^2}}\\,dx+\\frac{9}{2}\\int\\frac{dx}{\\sqrt{9x-x^2}}\\).\nThe first integral \\(=\\frac{1}{2}\\cdot 2\\sqrt{9x-x^2}=\\sqrt{9x-x^2}\\).\nNow \\(9x-x^2=\\left(\\frac{9}{2}\\right)^2-\\left(x-\\frac{9}{2}\\right)^2\\), so \\(\\int\\frac{dx}{\\sqrt{\\left(\\frac{9}{2}\\right)^2-\\left(x-\\frac{9}{2}\\right)^2}}=\\sin^{-1}\\left(\\frac{2x-9}{9}\\right)\\).\n\\(\\therefore I=\\sqrt{9x-x^2}+\\frac{9}{2}\\sin^{-1}\\left(\\frac{2x-9}{9}\\right)+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f12e6439-43ad-4b42-b360-303c795bf992",
+    "ref": "Ex 3.2(C) I (viii)",
+    "solution": "Put \\(t=\\sin x\\), so \\(dt=\\cos x\\,dx\\).\n\\(\\therefore I=\\int\\frac{3\\,dt}{4t^2+4t-1}\\).\nNow \\(4t^2+4t-1=4\\left(t+\\frac{1}{2}\\right)^2-2=4\\left[\\left(t+\\frac{1}{2}\\right)^2-\\left(\\frac{1}{\\sqrt2}\\right)^2\\right]\\).\n\\(\\therefore I=\\frac{3}{4}\\int\\frac{dt}{\\left(t+\\frac{1}{2}\\right)^2-\\left(\\frac{1}{\\sqrt2}\\right)^2}=\\frac{3}{4}\\cdot\\frac{1}{2\\cdot\\frac{1}{\\sqrt2}}\\log\\left|\\frac{t+\\frac{1}{2}-\\frac{1}{\\sqrt2}}{t+\\frac{1}{2}+\\frac{1}{\\sqrt2}}\\right|\\).\nRestoring \\(t=\\sin x\\):\n\\(\\therefore I=\\frac{3\\sqrt2}{8}\\log\\left|\\frac{2\\sin x+1-\\sqrt2}{2\\sin x+1+\\sqrt2}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "eef2a192-65fd-4ed5-a5c8-87e738f84765",
+    "ref": "Ex 3.2(C) I (ix)",
+    "solution": "Simplify the integrand: \\(\\frac{e^{3x}-e^{2x}}{e^x+1}=\\frac{e^{2x}(e^x-1)}{e^x+1}\\), so \\(\\sqrt{\\frac{e^{3x}-e^{2x}}{e^x+1}}=e^x\\sqrt{\\frac{e^x-1}{e^x+1}}\\).\nPut \\(t=e^x\\), so \\(dt=e^x\\,dx\\).\n\\(\\therefore I=\\int\\sqrt{\\frac{t-1}{t+1}}\\,dt=\\int\\frac{t-1}{\\sqrt{t^2-1}}\\,dt=\\int\\frac{t}{\\sqrt{t^2-1}}\\,dt-\\int\\frac{dt}{\\sqrt{t^2-1}}\\).\n\\(=\\sqrt{t^2-1}-\\log\\left|t+\\sqrt{t^2-1}\\right|\\).\nRestoring \\(t=e^x\\):\n\\(\\therefore I=\\sqrt{e^{2x}-1}-\\log\\left|e^x+\\sqrt{e^{2x}-1}\\right|+c\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]

@@ -1,0 +1,205 @@
+[
+  {
+    "id": "ed2a1d68-d066-40f4-af3b-df4ad16424b5",
+    "ref": "Misc II Q.1",
+    "solution": "[Textbook answer-key error: the printed key gives the third term as \\(-\\frac{8}{3}x^{3/2}\\); expanding \\((x-2)^2\\sqrt{x}\\) and integrating gives \\(+\\frac{8}{3}x^{3/2}\\). The answer below is correct.]\n\nExpand the square and integrate term by term (power rule).\n\\(\\int(x-2)^2\\sqrt{x}\\,dx=\\int(x^2-4x+4)\\,x^{1/2}\\,dx=\\int\\left(x^{5/2}-4x^{3/2}+4x^{1/2}\\right)dx\\)\n\\(=\\dfrac{2}{7}x^{7/2}-\\dfrac{8}{5}x^{5/2}+\\dfrac{8}{3}x^{3/2}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8bbd5e0c-4a0f-4ed0-a243-5684a7a2a8e3",
+    "ref": "Misc II Q.2",
+    "solution": "Divide \\(x^7\\) by \\(x+1\\); since \\(x^7=(x+1)(x^6-x^5+x^4-x^3+x^2-x+1)-1\\),\n\\(\\dfrac{x^7}{x+1}=x^6-x^5+x^4-x^3+x^2-x+1-\\dfrac{1}{x+1}\\).\nIntegrating each term:\n\\(\\int\\dfrac{x^7}{x+1}\\,dx=\\dfrac{x^7}{7}-\\dfrac{x^6}{6}+\\dfrac{x^5}{5}-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}-\\dfrac{x^2}{2}+x-\\log|x+1|+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9d54de5e-2ccd-449a-8a21-8f6387112b9c",
+    "ref": "Misc II Q.3",
+    "solution": "Substitution. Put \\(t=6x+5\\), so \\(dt=6\\,dx\\).\n\\(\\int(6x+5)^{3/2}\\,dx=\\dfrac{1}{6}\\int t^{3/2}\\,dt=\\dfrac{1}{6}\\cdot\\dfrac{2}{5}\\,t^{5/2}=\\dfrac{1}{15}(6x+5)^{5/2}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9dd40d8b-ee8c-4ed9-aae2-91f40544fb70",
+    "ref": "Misc II Q.4",
+    "solution": "Substitution. Put \\(u=t+1\\), so \\(t=u-1,\\ dt=du\\) and \\(t^3=(u-1)^3=u^3-3u^2+3u-1\\).\n\\(\\int\\dfrac{t^3}{(t+1)^2}\\,dt=\\int\\dfrac{u^3-3u^2+3u-1}{u^2}\\,du=\\int\\left(u-3+\\dfrac{3}{u}-\\dfrac{1}{u^2}\\right)du\\)\n\\(=\\dfrac{u^2}{2}-3u+3\\log|u|+\\dfrac{1}{u}\\).\nRe-substituting \\(u=t+1\\):\n\\(=\\dfrac{(t+1)^2}{2}-3(t+1)+3\\log|t+1|+\\dfrac{1}{t+1}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "537d026e-df06-482a-b124-ded1336f80aa",
+    "ref": "Misc II Q.5",
+    "solution": "Split the fraction using \\(\\dfrac{1}{\\cos^2x}=\\sec^2x\\) and \\(\\dfrac{\\sin x}{\\cos^2x}=\\sec x\\tan x\\).\n\\(\\int\\dfrac{3-2\\sin x}{\\cos^2x}\\,dx=3\\int\\sec^2x\\,dx-2\\int\\sec x\\tan x\\,dx\\)\n\\(=3\\tan x-2\\sec x+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c025caa5-1846-41c6-b387-7f82ca336320",
+    "ref": "Misc II Q.6",
+    "solution": "Use \\(\\sin^6\\theta+\\cos^6\\theta=1-3\\sin^2\\theta\\cos^2\\theta\\), so the integrand becomes\n\\(\\dfrac{1-3\\sin^2\\theta\\cos^2\\theta}{\\sin^2\\theta\\cos^2\\theta}=\\dfrac{1}{\\sin^2\\theta\\cos^2\\theta}-3=\\sec^2\\theta+\\operatorname{cosec}^2\\theta-3\\)\n(since \\(\\dfrac{1}{\\sin^2\\theta\\cos^2\\theta}=\\dfrac{\\sin^2\\theta+\\cos^2\\theta}{\\sin^2\\theta\\cos^2\\theta}\\)).\n\\(\\int\\left(\\sec^2\\theta+\\operatorname{cosec}^2\\theta-3\\right)d\\theta=\\tan\\theta-\\cot\\theta-3\\theta+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "346694c2-f695-45cf-a632-e680805525a2",
+    "ref": "Misc II Q.7",
+    "solution": "Convert the product to a sum. First \\(\\cos 3x\\cos x=\\tfrac12(\\cos 4x+\\cos 2x)\\), so\n\\(\\cos 3x\\cos 2x\\cos x=\\tfrac12\\cos 2x(\\cos 4x+\\cos 2x)=\\tfrac14(\\cos 6x+\\cos 2x+\\cos 4x+1)\\).\n\\(\\int\\cos 3x\\cos 2x\\cos x\\,dx=\\dfrac14\\left(\\dfrac{\\sin 6x}{6}+\\dfrac{\\sin 2x}{2}+\\dfrac{\\sin 4x}{4}+x\\right)\\)\n\\(=\\dfrac{x}{4}+\\dfrac{\\sin 2x}{8}+\\dfrac{\\sin 4x}{16}+\\dfrac{\\sin 6x}{24}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "da50b9fd-9e38-4173-a52c-e99f75c00df6",
+    "ref": "Misc II Q.8",
+    "solution": "Simplify the fraction first. By factor formulae \\(\\cos 7x-\\cos 8x=2\\sin\\tfrac{15x}{2}\\sin\\tfrac{x}{2}\\), and multiplying \\(1+2\\cos 5x\\) by \\(2\\sin\\tfrac{5x}{2}\\) gives \\(2\\sin\\tfrac{15x}{2}\\), so \\(1+2\\cos 5x=\\dfrac{\\sin(15x/2)}{\\sin(5x/2)}\\).\nHence \\(\\dfrac{\\cos 7x-\\cos 8x}{1+2\\cos 5x}=2\\sin\\tfrac{x}{2}\\sin\\tfrac{5x}{2}=\\cos 2x-\\cos 3x\\).\n\\(\\int(\\cos 2x-\\cos 3x)\\,dx=\\dfrac{\\sin 2x}{2}-\\dfrac{\\sin 3x}{3}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "3141e4c0-ad28-4c1e-920b-9b470374dba4",
+    "ref": "Misc II Q.9",
+    "solution": "Simplify the argument with half-angles:\n\\(\\dfrac{1+\\sin x}{\\cos x}=\\dfrac{\\left(\\cos\\frac{x}{2}+\\sin\\frac{x}{2}\\right)^2}{\\cos^2\\frac{x}{2}-\\sin^2\\frac{x}{2}}=\\dfrac{1+\\tan\\frac{x}{2}}{1-\\tan\\frac{x}{2}}=\\tan\\left(\\dfrac{\\pi}{4}+\\dfrac{x}{2}\\right)\\).\nSo \\(\\cot^{-1}\\left(\\tan\\left(\\tfrac{\\pi}{4}+\\tfrac{x}{2}\\right)\\right)=\\cot^{-1}\\left(\\cot\\left(\\tfrac{\\pi}{4}-\\tfrac{x}{2}\\right)\\right)=\\dfrac{\\pi}{4}-\\dfrac{x}{2}\\).\n\\(\\int\\left(\\dfrac{\\pi}{4}-\\dfrac{x}{2}\\right)dx=\\dfrac{\\pi x}{4}-\\dfrac{x^2}{4}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "a57c700b-0633-4179-a4f3-9172ef5fe64f",
+    "ref": "Misc III Q.1",
+    "solution": "Substitution. Put \\(t=1+\\log x\\), so \\(dt=\\dfrac{1}{x}\\,dx\\).\n\\(\\int\\dfrac{(1+\\log x)^3}{x}\\,dx=\\int t^3\\,dt=\\dfrac{t^4}{4}=\\dfrac{(1+\\log x)^4}{4}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "592fb0a2-b5a3-4023-97af-7946120222f6",
+    "ref": "Misc III Q.2",
+    "solution": "Express the inverse-cot as a difference of arctangents. Since \\(\\dfrac{x-(x-1)}{1+x(x-1)}=\\dfrac{1}{1-x+x^2}\\),\n\\(\\cot^{-1}(1-x+x^2)=\\tan^{-1}\\dfrac{1}{1-x+x^2}=\\tan^{-1}x-\\tan^{-1}(x-1)\\).\nIntegrate each by parts, using \\(\\int\\tan^{-1}u\\,du=u\\tan^{-1}u-\\tfrac12\\log(1+u^2)\\):\n\\(\\int\\cot^{-1}(1-x+x^2)\\,dx=x\\tan^{-1}x-\\dfrac12\\log(1+x^2)-(x-1)\\tan^{-1}(x-1)+\\dfrac12\\log\\!\\left(1+(x-1)^2\\right)+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b0d951e0-5e64-41e4-916f-7626af80456c",
+    "ref": "Misc III Q.3",
+    "solution": "Substitution. Put \\(t=\\log x\\), so \\(dt=\\dfrac{1}{x}\\,dx\\).\n\\(\\int\\dfrac{1}{x\\sin^2(\\log x)}\\,dx=\\int\\operatorname{cosec}^2t\\,dt=-\\cot t=-\\cot(\\log x)+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "36e2e096-3da0-4e7d-9194-6aaf56081b52",
+    "ref": "Misc III Q.4",
+    "solution": "Substitution. Put \\(t=x^{3/2}\\), so \\(dt=\\tfrac{3}{2}x^{1/2}\\,dx\\), i.e. \\(\\sqrt{x}\\,dx=\\tfrac{2}{3}\\,dt\\).\n\\(\\int\\sqrt{x}\\,\\sec\\!\\left(x^{3/2}\\right)\\tan\\!\\left(x^{3/2}\\right)dx=\\dfrac{2}{3}\\int\\sec t\\tan t\\,dt=\\dfrac{2}{3}\\sec t=\\dfrac{2}{3}\\sec\\!\\left(x^{3/2}\\right)+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "fafb18f1-63f4-40e2-9d1c-01971a44786d",
+    "ref": "Misc III Q.5",
+    "solution": "Use \\(1+\\cos x=2\\cos^2\\tfrac{x}{2}\\), so \\(\\log(1+\\cos x)=\\log 2+2\\log\\left|\\cos\\tfrac{x}{2}\\right|\\). For the second term, integrate by parts with \\(\\int\\tan\\tfrac{x}{2}\\,dx=-2\\log\\left|\\cos\\tfrac{x}{2}\\right|\\):\n\\(\\int x\\tan\\tfrac{x}{2}\\,dx=-2x\\log\\left|\\cos\\tfrac{x}{2}\\right|+2\\int\\log\\left|\\cos\\tfrac{x}{2}\\right|dx\\).\nSubtracting, the remaining integral terms cancel:\n\\(\\int\\left[\\log(1+\\cos x)-x\\tan\\tfrac{x}{2}\\right]dx=x\\log 2+2x\\log\\left|\\cos\\tfrac{x}{2}\\right|=x\\log(1+\\cos x)+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "41a3e5cd-bd17-40a0-96a6-672140a4e0ac",
+    "ref": "Misc III Q.6",
+    "solution": "Substitution. Put \\(t=x^3\\), so \\(dt=3x^2\\,dx\\).\n\\(\\int\\dfrac{x^2}{\\sqrt{1-x^6}}\\,dx=\\dfrac{1}{3}\\int\\dfrac{dt}{\\sqrt{1-t^2}}=\\dfrac{1}{3}\\sin^{-1}t=\\dfrac{1}{3}\\sin^{-1}\\!\\left(x^3\\right)+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f6102dd7-6862-48f9-a13d-5965543c60f9",
+    "ref": "Misc III Q.7",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\frac{1}{4}\\log|3-2\\cot x|\\), having wrongly simplified \\(\\cot 2x\\) to \\(2\\cot x\\); the correct answer is \\(\\frac{1}{4}\\log|3-\\cot 2x|\\). The answer below is correct.]\n\nUse \\(1-\\cos 4x=2\\sin^2 2x\\), so the integrand is \\(\\dfrac{1}{2\\sin^2 2x\\,(3-\\cot 2x)}\\). Put \\(t=\\cot 2x\\), so \\(dt=-2\\operatorname{cosec}^2 2x\\,dx\\), i.e. \\(\\dfrac{dx}{\\sin^2 2x}=-\\dfrac{dt}{2}\\).\n\\(\\int\\dfrac{dx}{(1-\\cos 4x)(3-\\cot 2x)}=-\\dfrac{1}{4}\\int\\dfrac{dt}{3-t}=\\dfrac{1}{4}\\log|3-t|=\\dfrac{1}{4}\\log|3-\\cot 2x|+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8d645fe4-9eb6-4ea5-a695-ff959a68ee81",
+    "ref": "Misc III Q.8",
+    "solution": "Integrate by parts and use a cancelling pair. \\(\\int\\log(\\log x)\\,dx=x\\log(\\log x)-\\int\\dfrac{dx}{\\log x}\\). Also \\(\\dfrac{d}{dx}\\dfrac{x}{\\log x}=\\dfrac{1}{\\log x}-\\dfrac{1}{(\\log x)^2}\\), so \\(\\int\\dfrac{dx}{(\\log x)^2}=\\int\\dfrac{dx}{\\log x}-\\dfrac{x}{\\log x}\\).\nAdding, the \\(\\int\\dfrac{dx}{\\log x}\\) terms cancel:\n\\(\\int\\left[\\log(\\log x)+\\dfrac{1}{(\\log x)^2}\\right]dx=x\\log(\\log x)-\\dfrac{x}{\\log x}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c7a74fd0-777f-4d5b-9dfa-c740012df76e",
+    "ref": "Misc III Q.9",
+    "solution": "[Textbook answer-key error: the printed key gives an inverse-tangent form, but the Weierstrass denominator \\(2\\cos x+3\\sin x\\) has real roots, so the antiderivative is logarithmic, not \\(\\tan^{-1}\\). The correct answer is \\(\\frac{1}{\\sqrt{13}}\\log\\left|\\tan\\frac{x+\\varphi}{2}\\right|+c\\), \\(\\varphi=\\tan^{-1}\\frac{2}{3}\\). The answer below is correct.]\n\nDenominator of the form \\(a\\cos x+b\\sin x\\). Write \\(2\\cos x+3\\sin x=\\sqrt{13}\\,\\sin(x+\\varphi)\\) with \\(\\cos\\varphi=\\dfrac{3}{\\sqrt{13}},\\ \\sin\\varphi=\\dfrac{2}{\\sqrt{13}}\\), i.e. \\(\\varphi=\\tan^{-1}\\dfrac{2}{3}\\).\n\\(\\int\\dfrac{dx}{2\\cos x+3\\sin x}=\\dfrac{1}{\\sqrt{13}}\\int\\operatorname{cosec}(x+\\varphi)\\,dx=\\dfrac{1}{\\sqrt{13}}\\log\\left|\\tan\\dfrac{x+\\varphi}{2}\\right|+c,\\quad\\varphi=\\tan^{-1}\\dfrac{2}{3}\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1a280fac-3e4a-498c-8744-c87b34496028",
+    "ref": "Misc III Q.10",
+    "solution": "Trigonometric substitution. Put \\(x=\\sec\\theta\\), so \\(dx=\\sec\\theta\\tan\\theta\\,d\\theta\\) and \\(\\sqrt{x^2-1}=\\tan\\theta\\).\n\\(\\int\\dfrac{dx}{x^3\\sqrt{x^2-1}}=\\int\\dfrac{\\sec\\theta\\tan\\theta}{\\sec^3\\theta\\tan\\theta}\\,d\\theta=\\int\\cos^2\\theta\\,d\\theta=\\dfrac{\\theta}{2}+\\dfrac{\\sin\\theta\\cos\\theta}{2}\\).\nWith \\(\\theta=\\sec^{-1}x,\\ \\cos\\theta=\\dfrac{1}{x},\\ \\sin\\theta=\\dfrac{\\sqrt{x^2-1}}{x}\\):\n\\(=\\dfrac{1}{2}\\sec^{-1}x+\\dfrac{\\sqrt{x^2-1}}{2x^2}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6cddb1bf-c49b-4b3f-a9c4-d7827157b3c2",
+    "ref": "Misc III Q.11",
+    "solution": "[Textbook answer-key error: the printed key's \\(\\sin^{-1}\\) argument is \\(\\frac{2x-1}{\\sqrt{7}}\\); completing the square on \\(-2x^2+x+3\\) gives the argument \\(\\frac{4x-1}{5}\\). The answer below is correct.]\n\nLinear over \\(\\sqrt{\\text{quadratic}}\\). Write \\(3x+1=-\\tfrac{3}{4}(-4x+1)+\\tfrac{7}{4}\\), where \\(-4x+1=\\dfrac{d}{dx}(-2x^2+x+3)\\).\nFirst part: \\(-\\tfrac{3}{4}\\int\\dfrac{-4x+1}{\\sqrt{-2x^2+x+3}}\\,dx=-\\tfrac{3}{4}\\cdot 2\\sqrt{-2x^2+x+3}=-\\tfrac{3}{2}\\sqrt{-2x^2+x+3}\\).\nSecond part, complete the square \\(-2x^2+x+3=2\\left[\\dfrac{25}{16}-\\left(x-\\tfrac{1}{4}\\right)^2\\right]\\):\n\\(\\tfrac{7}{4}\\int\\dfrac{dx}{\\sqrt{-2x^2+x+3}}=\\dfrac{7}{4\\sqrt{2}}\\sin^{-1}\\dfrac{4x-1}{5}\\).\n\\(\\therefore\\ \\int\\dfrac{3x+1}{\\sqrt{-2x^2+x+3}}\\,dx=-\\dfrac{3}{2}\\sqrt{-2x^2+x+3}+\\dfrac{7}{4\\sqrt{2}}\\sin^{-1}\\dfrac{4x-1}{5}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "036e93c5-3237-409f-ae24-1e12a3e4d1d3",
+    "ref": "Misc III Q.12",
+    "solution": "Integration by parts with \\(u=\\log(x^2+1),\\ dv=dx\\).\n\\(\\int\\log(x^2+1)\\,dx=x\\log(x^2+1)-\\int\\dfrac{2x^2}{x^2+1}\\,dx=x\\log(x^2+1)-2\\int\\left(1-\\dfrac{1}{x^2+1}\\right)dx\\)\n\\(=x\\log(x^2+1)-2x+2\\tan^{-1}x+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "62be9d80-d63d-4057-819e-94dd3a049711",
+    "ref": "Misc III Q.13",
+    "solution": "[Textbook answer-key error: the printed key has the factor \\(\\frac{1}{4}\\), giving exactly twice the integrand on differentiation; the \\(\\frac{1}{2}\\) from \\(\\sin x\\cos x=\\frac{1}{2}\\sin 2x\\) was dropped, so the correct factor is \\(\\frac{1}{8}\\). The answer below is correct.]\n\nFirst \\(\\sin x\\cos x=\\tfrac12\\sin 2x\\), so the integral is \\(\\tfrac12\\int e^{2x}\\sin 2x\\,dx\\). Using \\(\\int e^{ax}\\sin bx\\,dx=\\dfrac{e^{ax}(a\\sin bx-b\\cos bx)}{a^2+b^2}\\) with \\(a=b=2\\):\n\\(\\tfrac12\\int e^{2x}\\sin 2x\\,dx=\\tfrac12\\cdot\\dfrac{e^{2x}(2\\sin 2x-2\\cos 2x)}{8}=\\dfrac{e^{2x}(\\sin 2x-\\cos 2x)}{8}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "be9bb3b7-0e07-49d5-acd7-6c2b19fe9022",
+    "ref": "Misc III Q.14",
+    "solution": "Partial fractions: \\(\\dfrac{x^2}{(x-1)(3x-1)(3x-2)}=\\dfrac{A}{x-1}+\\dfrac{B}{3x-1}+\\dfrac{C}{3x-2}\\). By the cover-up rule, \\(A=\\tfrac12,\\ B=\\tfrac16,\\ C=-\\tfrac43\\).\n\\(\\int=\\dfrac12\\log|x-1|+\\dfrac16\\cdot\\dfrac13\\log|3x-1|-\\dfrac43\\cdot\\dfrac13\\log|3x-2|\\)\n\\(=\\dfrac12\\log|x-1|+\\dfrac{1}{18}\\log|3x-1|-\\dfrac{4}{9}\\log|3x-2|+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1e0441bd-197e-4f20-955b-22cf8fd938a1",
+    "ref": "Misc III Q.15",
+    "solution": "Write \\(\\sin x+\\sin 2x=\\sin x(1+2\\cos x)\\) and multiply numerator and denominator by \\(\\sin x\\). With \\(t=\\cos x,\\ dt=-\\sin x\\,dx\\):\n\\(\\int\\dfrac{dx}{\\sin x(1+2\\cos x)}=-\\int\\dfrac{dt}{(1-t^2)(1+2t)}=-\\int\\dfrac{dt}{(1-t)(1+t)(1+2t)}\\).\nPartial fractions give \\(\\dfrac{1/6}{1-t}-\\dfrac{1/2}{1+t}+\\dfrac{4/3}{1+2t}\\), so\n\\(=\\dfrac16\\log|1-\\cos x|+\\dfrac12\\log|1+\\cos x|-\\dfrac23\\log|1+2\\cos x|+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "09b541d8-5512-41c2-a191-2b55693edf21",
+    "ref": "Misc III Q.16",
+    "solution": "Put \\(t=\\tan x,\\ dt=\\sec^2x\\,dx\\); then complete the square \\(7+2t-t^2=8-(t-1)^2\\).\n\\(\\int\\sec^2x\\sqrt{7+2\\tan x-\\tan^2x}\\,dx=\\int\\sqrt{8-(t-1)^2}\\,dt\\).\nUsing \\(\\int\\sqrt{a^2-u^2}\\,du=\\dfrac{u}{2}\\sqrt{a^2-u^2}+\\dfrac{a^2}{2}\\sin^{-1}\\dfrac{u}{a}\\) with \\(u=t-1,\\ a=2\\sqrt{2}\\):\n\\(=\\dfrac{\\tan x-1}{2}\\sqrt{7+2\\tan x-\\tan^2x}+4\\sin^{-1}\\dfrac{\\tan x-1}{2\\sqrt{2}}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5d317498-9ff1-4b64-9d47-ec80b7844093",
+    "ref": "Misc III Q.17",
+    "solution": "Factor the denominator: \\(x^3+3x^2-x-3=x^2(x+3)-(x+3)=(x+3)(x-1)(x+1)\\). Partial fractions:\n\\(\\dfrac{x+5}{(x+3)(x-1)(x+1)}=\\dfrac{1/4}{x+3}+\\dfrac{3/4}{x-1}-\\dfrac{1}{x+1}\\).\n\\(\\int\\dfrac{x+5}{x^3+3x^2-x-3}\\,dx=\\dfrac14\\log|x+3|+\\dfrac34\\log|x-1|-\\log|x+1|+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "14118076-d2c9-4cce-850b-79c10732eb90",
+    "ref": "Misc III Q.18",
+    "solution": "Multiply numerator and denominator by \\(x^4\\): \\(\\dfrac{1}{x(x^5+1)}=\\dfrac{x^4}{x^5(x^5+1)}\\). Put \\(t=x^5,\\ dt=5x^4\\,dx\\).\n\\(\\int\\dfrac{x^4}{x^5(x^5+1)}\\,dx=\\dfrac15\\int\\dfrac{dt}{t(t+1)}=\\dfrac15\\int\\left(\\dfrac1t-\\dfrac{1}{t+1}\\right)dt=\\dfrac15\\log\\left|\\dfrac{t}{t+1}\\right|\\)\n\\(=\\dfrac15\\log\\left|\\dfrac{x^5}{x^5+1}\\right|+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "800470e5-2e9e-4a5c-b6fb-27976f0b63a5",
+    "ref": "Misc III Q.19",
+    "solution": "Write \\(\\sin x\\cos x=\\tan x\\cos^2x\\), so the integrand is \\(\\dfrac{\\sqrt{\\tan x}}{\\tan x\\cos^2x}=\\dfrac{\\sec^2x}{\\sqrt{\\tan x}}\\). Put \\(t=\\tan x,\\ dt=\\sec^2x\\,dx\\).\n\\(\\int\\dfrac{\\sqrt{\\tan x}}{\\sin x\\cos x}\\,dx=\\int t^{-1/2}\\,dt=2\\sqrt{t}=2\\sqrt{\\tan x}+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "fa3386b6-b2ae-4421-8361-f40402c5a237",
+    "ref": "Misc III Q.20",
+    "solution": "Put \\(t=\\tan x,\\ dt=\\sec^2x\\,dx\\); then \\(\\sec^2x=1+t^2\\) and \\(\\operatorname{cosec}^2x=\\dfrac{1+t^2}{t^2}\\), giving\n\\(\\sec^4x\\operatorname{cosec}^2x\\,dx=\\dfrac{(1+t^2)^2}{t^2}\\,dt=\\left(t^{-2}+2+t^2\\right)dt\\).\n\\(\\int\\sec^4x\\operatorname{cosec}^2x\\,dx=-\\dfrac1t+2t+\\dfrac{t^3}{3}=\\dfrac{\\tan^3x}{3}+2\\tan x-\\cot x+c\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]

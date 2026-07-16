@@ -294,6 +294,56 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.3 Indefinite Integration (12th, Part 2). 56pp — the second-largest State
+  //    Board chapter. The 3-technique spine of integration (substitution, by parts,
+  //    partial fractions), modelled as 7 subtopics mapping onto the book's numbered
+  //    sections. ALL math is VISION: the text layer substitutes Sinhala glyphs
+  //    (ධ න ඦ ν) for the integral sign, so stems/solutions are unreadable from text.
+  //
+  //    EXERCISES USE TWO-LEVEL NUMBERING — Roman groups I./II./III. (each with its
+  //    own shared instruction, e.g. "Integrate the following" / "Evaluate") each
+  //    containing (i)…(x) sub-items. So a set = one Roman group; refs are
+  //    `Ex <sec> <Roman> (<roman>)`, siblings sharing setLabel `Ex <sec> <Roman>`.
+  //    Solved examples are bare-numbered `1. 2. 3.` + "Solution :" per block →
+  //    refs `<sec> SolvedEx.<N>`.
+  //
+  //    BLOCK MAP — (page, y), verified via get_text('blocks'). Many blocks start
+  //    MID-PAGE and several exercises are a mid-page BAND (start AND end on one page):
+  //      §3.1 Elementary        solved p02 y552 → p07 y424
+  //      EXERCISE 3.1           p07 y424 → p08 y 70   (groups I-IV)
+  //      §3.2.1-3.2.2 Subst+Trig solved p11 y448 → p15 y 76
+  //      EXERCISE 3.2 (A)       p15 y 76 → p15 y574   (mid-page band; groups I-II)
+  //      §3.2.3-3.2.5 Special   solved p20 y350 → p28 y 76
+  //      EXERCISE 3.2 (B)       p28 y 76 → p29 y 73   (groups I-II)
+  //      §3.2.6 (px+q)/quad     solved p30 y 76 → p33 y 76
+  //      EXERCISE 3.2 (C)       p33 y 76 → p33 y281   (mid-page band; group I)
+  //      §3.3 By Parts          solved p35 y 76 → p42 y497  (§3.3.3 e^x[f+f'] solved p41 y350)
+  //      EXERCISE 3.3           p42 y497 → p43 y386   (groups I-III)
+  //      §3.4 Partial Fractions solved p44 y243 → p49 y630
+  //      EXERCISE 3.4           p49 y630 → p50 y372   (group I)
+  //      MISCELLANEOUS EXERCISE 3  p53 y 76 → end  (I = 20 MCQ, II = subjective)
+  //    "Activity" blocks = fill-in-the-blank derivations scattered in the theory;
+  //    transcribe faithfully as subjective where they pose a question (the
+  //    Differentiation precedent), skip pure prose. Two-column body + exercises;
+  //    single-column Miscellaneous. Verify layout per page (it varies).
+  "indef-integration-12": {
+    id: "indef-integration-12",
+    chapterName: "Indefinite Integration",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Indefinite_Integration.pdf",
+    pdf: cls12("Part 02/Ch_03_Indefinite_Integration.pdf"),
+    note: "Maharashtra State Board (Class 12) — Indefinite Integration (Balbharati textbook)",
+    subtopics: [
+      "Elementary Integration and Standard Formulae",
+      "Integration by Substitution",
+      "Integrals of Trigonometric Functions",
+      "Special Integrals of Quadratic Forms",
+      "Integrals of the Type (px+q) over a Quadratic",
+      "Integration by Parts",
+      "Integration by Partial Fractions",
+    ],
+  },
+
   // ── Ch.4 Pair of Straight Lines (12th, Part 1). Algebraic, light figures
   //    (few small line sketches). Homogeneous + general 2nd-degree equations of a
   //    line-pair. Equations as LaTeX (x^2, 2hxy, \tan\theta formulas).

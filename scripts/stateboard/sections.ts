@@ -14,6 +14,39 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.3 Indefinite Integration (Part 2) — verified against
+  //    Ch_03_Indefinite_Integration.pdf via a get_text('blocks') (page, y) scan
+  //    (2026-07-16). The 3-technique spine: each numbered section is Solved
+  //    Examples → its Exercise, in book order. Structural notes, all faithful:
+  //    (a) §3.2 "Methods of Integration" splits into THREE exercise sub-blocks
+  //        3.2(A) substitution+trig, 3.2(B) special integrals, 3.2(C) (px+q)/quad —
+  //        each with its own solved-examples run (ref-prefixed 3.2A/3.2B/3.2C to
+  //        stay unique).
+  //    (b) §3.3 Integration by Parts carries TWO solved-examples runs — the main
+  //        §3.3 run (refs "3.3 SolvedEx") and the §3.3.3 e^x[f+f'] sub-run (refs
+  //        "3.3.3 SolvedEx", which RESTARTS at 1) — but only one Exercise 3.3;
+  //        both prefixes route to the same solved block (note "3.3 SolvedEx" does
+  //        NOT prefix-match "3.3.3 SolvedEx" — the 4th char is '.' vs ' ' — so
+  //        both must be listed).
+  //    (c) Miscellaneous Exercise 3 has THREE parts: I = 20 MCQ, II = 9 subjective,
+  //        III = 20 subjective ("Misc I/II/III Q" are mutually non-prefixing).
+  "indef-integration-12": [
+    { group: "3.1 Elementary Integration", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 SolvedEx"] },
+    { group: "3.1 Elementary Integration", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 "] },
+    { group: "3.2 Methods of Integration — Substitution and Trigonometric", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2A SolvedEx"] },
+    { group: "3.2 Methods of Integration — Substitution and Trigonometric", label: "Exercise 3.2 (A)", kind: "exercise", refPrefixes: ["Ex 3.2(A) "] },
+    { group: "3.2 Special Integrals", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2B SolvedEx"] },
+    { group: "3.2 Special Integrals", label: "Exercise 3.2 (B)", kind: "exercise", refPrefixes: ["Ex 3.2(B) "] },
+    { group: "3.2 Integrals of the Type (px+q) over a Quadratic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2C SolvedEx"] },
+    { group: "3.2 Integrals of the Type (px+q) over a Quadratic", label: "Exercise 3.2 (C)", kind: "exercise", refPrefixes: ["Ex 3.2(C) "] },
+    { group: "3.3 Integration by Parts", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 SolvedEx", "3.3.3 SolvedEx"] },
+    { group: "3.3 Integration by Parts", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 "] },
+    { group: "3.4 Integration by Partial Fraction", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.4 SolvedEx"] },
+    { group: "3.4 Integration by Partial Fraction", label: "Exercise 3.4", kind: "exercise", refPrefixes: ["Ex 3.4 "] },
+    { group: "Miscellaneous Exercise 3", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc I Q"] },
+    { group: "Miscellaneous Exercise 3", label: "Integrate / Evaluate", kind: "miscellaneous", refPrefixes: ["Misc II Q"] },
+    { group: "Miscellaneous Exercise 3", label: "Integrate the following", kind: "miscellaneous", refPrefixes: ["Misc III Q"] },
+  ],
   // ── Ch.2 Application of Derivatives (Part 2) — verified against
   //    Ch_02_Application_of_Derivatives.pdf via a get_text('blocks') (page, y)
   //    scan (2026-07-16). 4 numbered exercises + a terminal Miscellaneous 2.

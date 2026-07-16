@@ -1,0 +1,110 @@
+[
+  {
+    "ref": "3.2A SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "EASY",
+    "stem": "\\(\\int \\frac{\\cot (\\log x)}{x}\\, dx\\)",
+    "solution": "Let \\(I = \\int \\frac{\\cot (\\log x)}{x}\\, dx\\)\nput \\(\\log x = t\\)\n\\(\\therefore \\frac{1}{x}\\, dx = 1\\, dt\\)\n\\(= \\int \\cot t\\, dt\\)\n\\(= \\log (\\sin t) + c\\)\n\\(= \\log (\\sin \\log x) + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "EASY",
+    "stem": "\\(\\int \\frac{\\cos \\sqrt{x}}{\\sqrt{x}}\\, dx\\)",
+    "solution": "Let \\(I = \\int \\frac{\\cos \\sqrt{x}}{\\sqrt{x}}\\, dx\\)\nput \\(\\sqrt{x} = t\\)\n\\(\\therefore \\frac{1}{2\\sqrt{x}}\\, dx = 1\\, dt\\)\n\\(\\therefore \\frac{1}{\\sqrt{x}}\\, dx = 2\\, dt\\)\n\\(= 2 \\cdot \\int \\cos t\\, dt\\)\n\\(= 2 \\cdot \\sin t + c\\)\n\\(= 2 \\cdot \\sin \\sqrt{x} + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{\\sec^8 x}{\\operatorname{cosec} x}\\, dx\\)",
+    "solution": "\\(I = \\int \\sec^7 x \\cdot \\sec x \\cdot \\frac{1}{\\operatorname{cosec} x}\\, dx\\)\n\\(= \\int \\sec^7 x \\cdot \\frac{1}{\\cos x} \\cdot \\sin x\\, dx\\)\n\\(= \\int \\sec^7 x \\cdot \\tan x\\, dx\\)\n\\(= \\int \\sec^6 x \\cdot \\sec x \\cdot \\tan x\\, dx\\)\nput \\(\\sec x = t\\)\n\\(\\therefore \\sec x \\cdot \\tan x\\, dx = dt\\)\n\\(= \\int t^6\\, dt\\)\n\\(= \\frac{t^7}{7} + c\\)\n\\(= \\frac{\\sec^7 x}{7} + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{1}{x + \\sqrt{x}}\\, dx\\)",
+    "solution": "\\(I = \\int \\frac{1}{x + \\sqrt{x}}\\, dx\\)\n\\(= \\int \\frac{1}{\\sqrt{x}\\,(\\sqrt{x} + 1)}\\, dx\\)\nput \\(\\sqrt{x} + 1 = t\\)\n\\(\\therefore \\frac{1}{2\\sqrt{x}}\\, dx = 1\\, dt\\)\n\\(\\therefore \\frac{1}{\\sqrt{x}}\\, dx = 2\\, dt\\)\n\\(= \\int \\frac{1}{t} \\cdot 2\\, dt\\)\n\\(= 2 \\cdot \\int \\frac{1}{t}\\, dt\\)\n\\(= 2 \\cdot \\log (t) + c\\)\n\\(= 2 \\cdot \\log (\\sqrt{x} + 1) + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int 5^{5^x} \\cdot 5^x\\, dx\\)",
+    "solution": "\\(I = \\int 5^{5^x} \\cdot 5^x\\, dx\\)\nput \\(5^x = t\\)\n\\(\\therefore 5^x \\cdot \\log 5\\, dx = 1\\, dt\\)\n\\(5^x\\, dx = \\frac{1}{\\log 5}\\, dt\\)\n\\(= \\int 5^t \\cdot \\frac{1}{\\log 5}\\, dt\\)\n\\(I = \\frac{1}{\\log 5} \\cdot \\int 5^t\\, dt\\)\n\\(= \\frac{1}{\\log 5} \\cdot 5^t \\cdot \\frac{1}{\\log 5} + c\\)\n\\(= \\left(\\frac{1}{\\log 5}\\right)^2 \\cdot 5^{5^x} + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{1}{1 + e^{-x}}\\, dx\\)",
+    "solution": "\\(I = \\int \\frac{1}{1 + e^{-x}}\\, dx\\)\n\\(= \\int \\frac{1}{1 + \\frac{1}{e^x}}\\, dx\\)\n\\(= \\int \\frac{1}{\\frac{e^x + 1}{e^x}}\\, dx\\)\n\\(= \\int \\frac{e^x}{e^x + 1}\\, dx\\)\n\\(\\because \\frac{d}{dx}(e^x + 1) = e^x\\)\n\\(= \\log [e^x + 1] + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{e^x (1 + x)}{\\cos (x \\cdot e^x)}\\, dx\\)",
+    "solution": "put \\(x \\cdot e^x = t\\)\nDifferentiating both sides\n\\((x \\cdot e^x + e^x \\cdot 1)\\, dx = 1\\, dt\\)\n\\(e^x (1 + x)\\, dx = 1\\, dt\\)\n\\(I = \\int \\frac{1}{\\cos t}\\, dt\\)\n\\(= \\int \\sec t\\, dt\\)\n\\(= \\log (\\sec t + \\tan t) + c\\)\n\\(= \\log (\\sec (xe^x) + \\tan (xe^x)) + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\frac{1}{3x + 7x^{-n}}\\, dx\\)",
+    "solution": "Consider \\(\\int \\frac{1}{3x + 7x^{-n}}\\, dx\\)\n\\(= \\int \\frac{1}{3x + \\frac{7}{x^n}}\\, dx = \\int \\frac{1}{\\frac{3x^{n+1} + 7}{x^n}}\\, dx\\)\n\\(= \\int \\frac{x^n}{3x^{n+1} + 7}\\, dx\\)\nput \\(3x^{n+1} + 7 = t\\)\nDifferentiate \\(w.\\,r.\\,t.\\,x\\)\n\\(3(n + 1) x^n\\, dx = dt\\)\n\\(\\therefore x^n\\, dx = \\frac{1}{3(n + 1)}\\, dt\\)\n\\(= \\int \\frac{\\frac{1}{3(n + 1)}}{t}\\, dt\\)\n\\(= \\frac{1}{3(n + 1)} \\cdot \\log (t) + c\\)\n\\(= \\frac{1}{3(n + 1)} \\cdot \\log (3x^{n+1} + 7) + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int (3x + 2)\\, \\sqrt{x - 4}\\, dx\\)",
+    "solution": "put \\(x - 4 = t\\)\n\\(\\therefore x = 4 + t\\)\nDifferentiate\n\\(1\\, dx = 1\\, dt\\)\n\\(= \\int [\\, 3(4 + t) + 2\\, ] \\cdot \\sqrt{t}\\, dt\\)\n\\(= \\int (14 + 3t)\\, t^{\\frac{1}{2}}\\, dt\\)\n\\(= \\int \\left(14 t^{\\frac{1}{2}} + 3 t^{\\frac{3}{2}}\\right) dt\\)\n\\(= 14\\, \\frac{t^{\\frac{3}{2}}}{\\frac{3}{2}} + 3\\, \\frac{t^{\\frac{5}{2}}}{\\frac{5}{2}}\\)\n\\(= \\frac{28}{3} (x - 4)^{\\frac{3}{2}} + \\frac{6}{5} (x - 4)^{\\frac{5}{2}} + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\frac{\\sin (x + a)}{\\cos (x - b)}\\, dx\\)",
+    "solution": "\\(= \\int \\frac{\\sin [(x - b) + (a + b)]}{\\cos (x - b)}\\, dx\\)\n\\(= \\int \\frac{\\sin (x - b) \\cdot \\cos (a + b) + \\cos (x - b) \\cdot \\sin (a + b)}{\\cos (x - b)}\\, dx\\)\n\\(= \\int \\left[\\frac{\\sin (x - b) \\cdot \\cos (a + b)}{\\cos (x - b)} + \\frac{\\cos (x - b) \\cdot \\sin (a + b)}{\\cos (x - b)}\\right] dx\\)\n\\(= \\int [\\cos (a + b) \\cdot \\tan (x - b) + \\sin (a + b)]\\, dx\\)\n\\(= \\cos (a + b) \\cdot \\log (\\sec (x - b)) + x \\cdot \\sin (a + b) + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{e^x + 1}{e^x - 1}\\, dx\\)",
+    "solution": "\\(I = \\int \\frac{e^x - 1 + 2}{e^x - 1}\\, dx\\)\n\\(= \\int \\left(\\frac{e^x - 1}{e^x - 1} + \\frac{2}{e^x - 1}\\right) dx\\)\n\\(= \\int \\left(1 + \\frac{2}{e^x - 1}\\right) dx\\)\n\\(= \\int dx + \\int \\frac{2}{e^x (1 - e^{-x})}\\, dx\\)\n\\(= \\int 1\\, dx + 2 \\int \\frac{e^{-x}}{1 - e^{-x}}\\, dx\\)\nput \\((1 - e^{-x}) = t\\)\nDifferentiate \\(w.\\,r.\\,t.\\,x\\)\n\\(-(e^{-x})(-1)\\, dx = 1\\, dt\\)\n\\(e^{-x}\\, dx = 1\\, dt\\)\n\\(I = \\int 1\\, dx + 2 \\int \\frac{1}{t}\\, dt\\)\n\\(= x + 2 \\cdot \\log (t) + c\\)\n\\(= x + 2 \\log (1 - e^{-x}) + c\\)\n\\(\\therefore \\int \\frac{e^x + 1}{e^x - 1}\\, dx = x + 2 \\log (1 - e^{-x}) + c\\)"
+  },
+  {
+    "ref": "3.2A SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\int \\frac{1}{1 - \\tan x}\\, dx\\)",
+    "solution": "\\(I = \\int \\frac{1}{1 - \\frac{\\sin x}{\\cos x}}\\, dx\\)\n\\(= \\int \\frac{\\cos x}{\\cos x - \\sin x}\\, dx\\)\n\\(= \\int \\frac{\\cos x}{\\sqrt{2} \\left(\\frac{1}{\\sqrt{2}} \\cos x - \\frac{1}{\\sqrt{2}} \\cos x\\right)}\\, dx\\)\n\\(= \\frac{1}{\\sqrt{2}} \\int \\frac{\\cos x}{\\cos \\frac{\\pi}{4} \\cos x - \\sin \\frac{\\pi}{4} \\sin x}\\, dx\\)\n\\(= \\frac{1}{\\sqrt{2}} \\int \\frac{\\cos x}{\\cos \\left(x + \\frac{\\pi}{4}\\right)}\\, dx\\)\nput \\(x + \\frac{\\pi}{4} = t\\) \\(\\therefore x = t - \\frac{\\pi}{4}\\)\nDifferentiating both sides\n\\(1\\, dx = 1\\, dt\\)\n\\(= \\frac{1}{\\sqrt{2}} \\int \\frac{\\cos \\left(t - \\frac{\\pi}{4}\\right)}{\\cos t}\\, dt\\)\n\\(= \\frac{1}{\\sqrt{2}} \\int \\frac{\\cos t \\cdot \\cos \\frac{\\pi}{4} + \\sin t \\cdot \\sin \\frac{\\pi}{4}}{\\cos t}\\, dt\\)\n\\(= \\frac{1}{\\sqrt{2}} \\int \\left[\\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}} \\tan t\\right] dt\\)\n\\(= \\frac{1}{\\sqrt{2}} \\cdot \\frac{1}{\\sqrt{2}} [\\, t + \\log (\\sec t)\\,] + c\\)\n\\(= \\frac{1}{2} \\left[x + \\frac{\\pi}{4} + \\log \\sec \\left(x + \\frac{\\pi}{4}\\right)\\right] + c\\)"
+  }
+]

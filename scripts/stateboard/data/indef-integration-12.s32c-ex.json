@@ -1,0 +1,119 @@
+[
+  {
+    "ref": "3.2C SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\frac{2x-3}{3x^2+4x+5}\\, dx\\)",
+    "solution": "Write the numerator as \\(2x-3 = A\\,\\frac{d}{dx}(3x^2+4x+5) + B\\)\n\\(2x-3 = A(6x+4)+B = (6A)x + (4A+B)\\)\nComparing the coefficients of like variables and constants: \\(6A=2\\) and \\(4A+B=-3\\)\n\\(\\Rightarrow A=\\frac{1}{3}\\) and \\(B=-\\frac{13}{3}\\)\n\\(\\therefore \\int \\frac{2x-3}{3x^2+4x+5}\\, dx = \\frac{1}{3}\\int \\frac{6x+4}{3x^2+4x+5}\\, dx - \\frac{13}{3}\\int \\frac{1}{3x^2+4x+5}\\, dx = I_1 - I_2\\) ..... (i)\n\\(I_1 = \\frac{1}{3}\\int \\frac{6x+4}{3x^2+4x+5}\\, dx\\); put \\(3x^2+4x+5=t\\), \\(\\therefore (6x+4)\\,dx = dt\\)\n\\(I_1 = \\frac{1}{3}\\int \\frac{1}{t}\\, dt = \\frac{1}{3}\\log t + c_1 = \\frac{1}{3}\\log(3x^2+4x+5) + c_1\\) ..... (ii)\n\\(I_2 = \\frac{13}{3}\\int \\frac{1}{3x^2+4x+5}\\, dx = \\frac{13}{9}\\int \\frac{1}{x^2+\\frac{4}{3}x+\\frac{5}{3}}\\, dx = \\frac{13}{9}\\int \\frac{1}{\\left(x+\\frac{2}{3}\\right)^2+\\left(\\frac{\\sqrt{11}}{3}\\right)^2}\\, dx\\)\nUsing \\(\\int \\frac{1}{x^2+a^2}\\, dx = \\frac{1}{a}\\tan^{-1}\\left(\\frac{x}{a}\\right) + c\\),\n\\(I_2 = \\frac{13}{9}\\cdot\\frac{1}{\\frac{\\sqrt{11}}{3}}\\tan^{-1}\\left(\\frac{x+\\frac{2}{3}}{\\frac{\\sqrt{11}}{3}}\\right) + c_2 = \\frac{13}{3\\sqrt{11}}\\tan^{-1}\\left(\\frac{3x+2}{\\sqrt{11}}\\right) + c_2\\) ..... (iii)\nThus, from (i), (ii) and (iii),\n\\(\\int \\frac{2x-3}{3x^2+4x+5}\\, dx = \\frac{1}{3}\\log(3x^2+4x+5) - \\frac{13}{3\\sqrt{11}}\\tan^{-1}\\left(\\frac{3x+2}{\\sqrt{11}}\\right) + c\\)  \\(\\ (\\because c_1 + c_2 = c)\\)"
+  },
+  {
+    "ref": "3.2C SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\sqrt{\\frac{x-5}{x-7}}\\, dx\\)",
+    "solution": "\\(I = \\int \\sqrt{\\frac{(x-5)(x-5)}{(x-7)(x-5)}}\\, dx = \\int \\sqrt{\\frac{(x-5)^2}{x^2-12x+35}}\\, dx\\)\nWrite \\(x-5 = A\\,\\frac{d}{dx}(x^2-12x+35) + B\\)\n\\(x-5 = A(2x-12)+B = (2A)x + (-12A+B)\\)\nComparing the coefficients of like variables and constants: \\(2A=1\\) and \\(-12A+B=-5\\)\n\\(\\Rightarrow A=\\frac{1}{2}\\) and \\(B=1\\)\n\\(I = \\frac{1}{2}\\int \\frac{2x-12}{\\sqrt{x^2-12x+35}}\\, dx + \\int \\frac{1}{\\sqrt{x^2-12x+35}}\\, dx = I_1 + I_2\\) ..... (i)\n\\(I_1 = \\frac{1}{2}\\int \\frac{2x-12}{\\sqrt{x^2-12x+35}}\\, dx\\); put \\(x^2-12x+35=t\\), \\(\\therefore (2x-12)\\,dx = dt\\)\n\\(I_1 = \\frac{1}{2}\\int \\frac{1}{\\sqrt{t}}\\, dt = \\int \\frac{1}{2\\sqrt{t}}\\, dt = \\sqrt{t} + c_1 = \\sqrt{x^2-12x+35} + c_1\\) ..... (ii)\n\\(I_2 = \\int \\frac{1}{\\sqrt{x^2-12x+35}}\\, dx = \\int \\frac{1}{\\sqrt{x^2-12x+36-1}}\\, dx = \\int \\frac{1}{\\sqrt{(x-6)^2-(1)^2}}\\, dx\\)\nUsing \\(\\int \\frac{1}{\\sqrt{x^2-a^2}}\\, dx = \\log\\left(x+\\sqrt{x^2-a^2}\\right) + c\\),\n\\(I_2 = \\log\\left((x-6)+\\sqrt{(x-6)^2-1}\\right) + c_2 = \\log\\left((x-6)+\\sqrt{x^2-12x+35}\\right) + c_2\\) ..... (iii)\nThus, from (i), (ii) and (iii),\n\\(\\int \\sqrt{\\frac{x-5}{x-7}}\\, dx = \\sqrt{x^2-12x+35} + \\log\\left((x-6)+\\sqrt{x^2-12x+35}\\right) + c\\)  \\(\\ (c_1 + c_2 = c)\\)"
+  },
+  {
+    "ref": "3.2C SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int \\sqrt{\\frac{8-x}{x}}\\, dx\\)",
+    "solution": "Rationalise by multiplying numerator and denominator inside the root by \\((8-x)\\):\n\\(= \\int \\sqrt{\\frac{(8-x)}{x}\\times\\frac{(8-x)}{(8-x)}}\\, dx = \\int \\sqrt{\\frac{(8-x)^2}{8x-x^2}}\\, dx = \\int \\frac{(8-x)}{\\sqrt{8x-x^2}}\\, dx\\)\nWrite \\(8-x = A\\,\\frac{d}{dx}(8x-x^2) + B\\)\n\\(8-x = A(8-2x) + B = (8A+B) - 2Ax\\)\nComparing the coefficients of like variables and constants: \\(8A+B=8\\) and \\(-2A=-1\\)\n\\(\\Rightarrow A=\\frac{1}{2}\\) and \\(B=4\\)\n\\(= \\frac{1}{2}\\int \\frac{8-2x}{\\sqrt{8x-x^2}}\\, dx + 4\\int \\frac{1}{\\sqrt{8x-x^2}}\\, dx = I_1 + I_2\\) ..... (i)\n\\(I_1 = \\frac{1}{2}\\int \\frac{8-2x}{\\sqrt{8x-x^2}}\\, dx\\); put \\(8x-x^2 = t\\), \\(\\therefore (8-2x)\\,dx = dt\\)\n\\(I_1 = \\frac{1}{2}\\int \\frac{1}{\\sqrt{t}}\\, dt = \\sqrt{t} + c_1 = \\sqrt{8x-x^2} + c_1\\) ..... (ii)\n\\(I_2 = 4\\int \\frac{1}{\\sqrt{8x-x^2}}\\, dx = 4\\int \\frac{1}{\\sqrt{-(x^2-8x)}}\\, dx = 4\\int \\frac{1}{\\sqrt{16-(x-4)^2}}\\, dx\\)\nUsing \\(\\int \\frac{1}{\\sqrt{a^2-x^2}}\\, dx = \\sin^{-1}\\left(\\frac{x}{a}\\right) + c\\) with \\(a=4\\),\n\\(I_2 = 4\\sin^{-1}\\left(\\frac{x-4}{4}\\right) + c_2\\) ..... (iii)\nThus, from (i), (ii) and (iii),\n\\(\\int \\sqrt{\\frac{8-x}{x}}\\, dx = \\sqrt{8x-x^2} + 4\\sin^{-1}\\left(\\frac{x-4}{4}\\right) + c\\)  \\(\\ (\\because c_1 + c_2 = c)\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\frac{3x+4}{x^2+6x+5}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\frac{2x+1}{x^2+4x-5}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\frac{2x+3}{2x^2+3x-1}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\frac{3x+4}{\\sqrt{2x^2+2x+1}}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "MODERATE",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\frac{7x+3}{\\sqrt{3+2x-x^2}}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "HARD",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\sqrt{\\frac{x-7}{x-9}}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "HARD",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\sqrt{\\frac{9-x}{x}}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "HARD",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\frac{3\\cos x}{4\\sin^2 x + 4\\sin x - 1}\\, dx\\)"
+  },
+  {
+    "ref": "Ex 3.2(C) I (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "difficulty": "HARD",
+    "context": "Evaluate :",
+    "setLabel": "Ex 3.2(C) I",
+    "stem": "\\(\\int \\sqrt{\\frac{e^{3x} - e^{2x}}{e^x + 1}}\\, dx\\)"
+  }
+]

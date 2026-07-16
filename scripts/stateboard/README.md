@@ -60,6 +60,10 @@ Then `mark-mcq-verify.ts <id> --write` stamps `matches_current` **here** (the ve
 self-report agreement, or it stops being blind). `apply-solutions.ts` applies the brief solution
 and flags every `matches_current=false` LOUD for a manual re-key. Do NOT trust the ingest key.
 
+**"Activity" fill-in-the-blank SOLVED examples (Indefinite Integration).** Some chapters print a worked example as a fill-in-the-blank *activity* — dotted `(....)` blanks in the book's OWN solution, WITH the final answer. When these sit in the SOLVED-example flow (not an exercise), they commit as `bucket:solved` and ship PUBLIC with the book's solution — so a `(....)`-riddled "model answer" would ship broken. **Complete the blanks** with the correct intermediate terms (the final answer is printed, the steps are standard), **sympy-verify** the completed derivation, and — since `apply-solutions` only touches exercise-subjective — push the fix with a **direct DB `solution` UPDATE + mirror to the source fragment**. Watch for agents handling these inconsistently (one may fill, one may preserve); scan committed solved rows for `\.\.\.\.`/`ldots`/`refer .* solve it` and adjudicate (many hits are false positives: `..... (i)` equation-numbering, `\ldots by LIATE` annotations, terse-but-complete standard-result formulas).
+
+**⚠️ Authoring LaTeX in a one-off? Use the Write tool, NEVER `python -c`/heredoc.** A `python -c` heredoc double-escapes: the shell eats one backslash AND Python string-escapes `\f`→formfeed, `\t`→tab, `\b`→backspace — so `\frac`/`\therefore`/`\because` become control chars in the written JSON. This bit the MAINTAINER (not just subagents) on Indefinite Integration's solved-example fixes. Author into a `.py`/`.json`/`.ts` file with the **Write tool** using **raw strings** (`r"""..."""`); then scan the DB (`solution ~ '[\f\t\b]'`) to confirm 0 control chars. See [[heredoc-backslash-eating]].
+
 ### 5. Author subjective solutions — `apply-solutions.ts <id> --apply`
 Parallel authoring agents (partition by subtopic / exercise block) write
 `data/<id>.<group>.solutions.json` (`{id, ref, solution}`) for the exercise-subjective rows
