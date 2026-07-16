@@ -1,0 +1,128 @@
+[
+  {
+    "id": "622b9d8a-9ef3-4677-9c06-ca571c5071f0",
+    "ref": "Ex 2.3 Q.1 (i)",
+    "solution": "Rolle's theorem needs three conditions to hold on \\([1, 3]\\).\n\nCondition 1 (continuity): \\(f(x) = x^2 - 4x + 3\\) is a polynomial, so it is continuous on \\([1, 3]\\).\n\nCondition 2 (differentiability): \\(f\\) is a polynomial, so it is differentiable on \\((1, 3)\\).\n\nCondition 3 (equal end values):\n\\(f(1) = 1 - 4 + 3 = 0\\)\n\\(f(3) = 9 - 12 + 3 = 0\\)\n\\(\\therefore f(1) = f(3)\\).\n\nAll three conditions are satisfied, so Rolle's theorem is applicable (valid) for \\(f\\) on \\([1, 3]\\).\n\nTo find \\(c\\):\n\\(f'(x) = 2x - 4\\)\n\\(f'(c) = 0 \\Rightarrow 2c - 4 = 0 \\Rightarrow c = 2\\)\n\nSince \\(c = 2 \\in (1, 3)\\), the conclusion of Rolle's theorem is verified.\n\nRolle's theorem is valid, with \\(c = 2\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8f103fa4-001b-4036-96c0-2c680747b97c",
+    "ref": "Ex 2.3 Q.1 (ii)",
+    "solution": "Rolle's theorem needs three conditions to hold on \\([0, \\pi]\\).\n\nCondition 1 (continuity): \\(e^{-x}\\) and \\(\\sin x\\) are continuous for all \\(x\\), and a product of continuous functions is continuous. So \\(f(x) = e^{-x}\\sin x\\) is continuous on \\([0, \\pi]\\).\n\nCondition 2 (differentiability): both factors are differentiable for all \\(x\\), so \\(f\\) is differentiable on \\((0, \\pi)\\).\n\nCondition 3 (equal end values):\n\\(f(0) = e^{0}\\sin 0 = 1 \\times 0 = 0\\)\n\\(f(\\pi) = e^{-\\pi}\\sin \\pi = e^{-\\pi} \\times 0 = 0\\)\n\\(\\therefore f(0) = f(\\pi)\\).\n\nAll three conditions are satisfied, so Rolle's theorem is applicable (valid).\n\nTo find \\(c\\), differentiate by the product rule:\n\\(f'(x) = e^{-x}\\cos x + \\sin x \\cdot \\left(-e^{-x}\\right) = e^{-x}\\left(\\cos x - \\sin x\\right)\\)\n\n\\(f'(c) = 0 \\Rightarrow e^{-c}\\left(\\cos c - \\sin c\\right) = 0\\)\n\nSince \\(e^{-c} \\neq 0\\) for every real \\(c\\),\n\\(\\cos c - \\sin c = 0 \\Rightarrow \\tan c = 1\\)\n\nIn \\((0, \\pi)\\) the only solution is \\(c = \\dfrac{\\pi}{4}\\).\n\nSince \\(c = \\dfrac{\\pi}{4} \\in (0, \\pi)\\), the conclusion of Rolle's theorem is verified.\n\nRolle's theorem is valid, with \\(c = \\dfrac{\\pi}{4}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "bf70989f-00fc-4520-a858-fa8a108802c7",
+    "ref": "Ex 2.3 Q.1 (iii)",
+    "solution": "Rolle's theorem needs three conditions to hold on \\([1, 3]\\).\n\nCondition 1 (continuity): \\(f(x) = 2x^2 - 5x + 3\\) is a polynomial, so it is continuous on \\([1, 3]\\).\n\nCondition 2 (differentiability): \\(f\\) is a polynomial, so it is differentiable on \\((1, 3)\\).\n\nCondition 3 (equal end values):\n\\(f(1) = 2(1)^2 - 5(1) + 3 = 2 - 5 + 3 = 0\\)\n\\(f(3) = 2(9) - 5(3) + 3 = 18 - 15 + 3 = 6\\)\n\\(\\therefore f(1) \\neq f(3)\\).\n\nThe third condition fails. Hence Rolle's theorem is NOT applicable to \\(f\\) on \\([1, 3]\\).\n\nRolle's theorem is invalid (not applicable) — \\(f\\) is continuous on \\([1, 3]\\) and differentiable on \\((1, 3)\\), but \\(f(1) = 0 \\neq 6 = f(3)\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0dc30d21-ab4b-40c4-92fb-99cc52e59e69",
+    "ref": "Ex 2.3 Q.1 (iv)",
+    "solution": "Rolle's theorem needs three conditions to hold on \\([0, 2\\pi]\\).\n\nCondition 1 (continuity): \\(\\sin x\\) and \\(\\cos x\\) are continuous for all \\(x\\), so \\(f(x) = \\sin x - \\cos x + 3\\) is continuous on \\([0, 2\\pi]\\).\n\nCondition 2 (differentiability): \\(f\\) is differentiable for all \\(x\\), so it is differentiable on \\((0, 2\\pi)\\).\n\nCondition 3 (equal end values):\n\\(f(0) = \\sin 0 - \\cos 0 + 3 = 0 - 1 + 3 = 2\\)\n\\(f(2\\pi) = \\sin 2\\pi - \\cos 2\\pi + 3 = 0 - 1 + 3 = 2\\)\n\\(\\therefore f(0) = f(2\\pi)\\).\n\nAll three conditions are satisfied, so Rolle's theorem is applicable (valid).\n\nTo find \\(c\\):\n\\(f'(x) = \\cos x + \\sin x\\)\n\n\\(f'(c) = 0 \\Rightarrow \\cos c + \\sin c = 0 \\Rightarrow \\tan c = -1\\)\n\nIn \\((0, 2\\pi)\\), \\(\\tan c = -1\\) gives \\(c = \\dfrac{3\\pi}{4}\\) (second quadrant) and \\(c = \\dfrac{7\\pi}{4}\\) (fourth quadrant).\n\nBoth values lie in \\((0, 2\\pi)\\), so the conclusion of Rolle's theorem is verified.\n\nRolle's theorem is valid, with \\(c = \\dfrac{3\\pi}{4}\\) or \\(c = \\dfrac{7\\pi}{4}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "513601e0-ef9a-4dde-8ec2-5043e52657e7",
+    "ref": "Ex 2.3 Q.1 (v)",
+    "solution": "The two branches define \\(f\\) on \\([0, 2]\\) and on \\([2, 6]\\), so the interval to be tested is \\([0, 6]\\), with \\(x = 2\\) the junction of the two branches.\n\nCondition 1 (continuity): each branch is a polynomial, so \\(f\\) is continuous everywhere except possibly at \\(x = 2\\). At \\(x = 2\\):\n\\(\\displaystyle \\lim_{x \\to 2^{-}} f(x) = \\lim_{x \\to 2^{-}} x^2 = 4\\)\n\\(\\displaystyle \\lim_{x \\to 2^{+}} f(x) = \\lim_{x \\to 2^{+}} (6 - x) = 4\\)\n\\(f(2) = 2^2 = 4\\)\nAll three are equal, so \\(f\\) is continuous at \\(x = 2\\), hence continuous on \\([0, 6]\\).\n\nCondition 2 (differentiability): test \\(x = 2\\), which is an interior point of \\((0, 6)\\).\nLeft-hand derivative: for \\(x < 2\\), \\(f(x) = x^2\\), so \\(f'(x) = 2x\\) and \\(Lf'(2) = 2(2) = 4\\).\nRight-hand derivative: for \\(x > 2\\), \\(f(x) = 6 - x\\), so \\(f'(x) = -1\\) and \\(Rf'(2) = -1\\).\nSince \\(Lf'(2) = 4 \\neq -1 = Rf'(2)\\), \\(f\\) is not differentiable at \\(x = 2\\).\n\nThe second condition fails at the interior point \\(x = 2\\), so Rolle's theorem is NOT applicable, even though the third condition happens to hold:\n\\(f(0) = 0^2 = 0\\) and \\(f(6) = 6 - 6 = 0\\), so \\(f(0) = f(6)\\).\n\nRolle's theorem is invalid (not applicable) — \\(f\\) is continuous on \\([0, 6]\\) and \\(f(0) = f(6)\\), but \\(f\\) is not differentiable at the interior point \\(x = 2\\) (the left-hand derivative is \\(4\\), the right-hand derivative is \\(-1\\)).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "a65c7b05-f5b5-48eb-8c7e-db13bbebee58",
+    "ref": "Ex 2.3 Q.1 (vi)",
+    "solution": "Rolle's theorem needs three conditions to hold on \\([-1, 1]\\). Here \\(f(x) = x^{\\frac{2}{3}} = \\left(\\sqrt[3]{x}\\right)^{2}\\), which is defined for every real \\(x\\).\n\nCondition 1 (continuity): \\(\\sqrt[3]{x}\\) is continuous for all real \\(x\\), so \\(f\\) is continuous on \\([-1, 1]\\).\n\nCondition 3 (equal end values):\n\\(f(-1) = \\left(\\sqrt[3]{-1}\\right)^{2} = (-1)^2 = 1\\)\n\\(f(1) = \\left(\\sqrt[3]{1}\\right)^{2} = 1^2 = 1\\)\n\\(\\therefore f(-1) = f(1)\\).\n\nCondition 2 (differentiability): for \\(x \\neq 0\\),\n\\(f'(x) = \\dfrac{2}{3}x^{-\\frac{1}{3}} = \\dfrac{2}{3\\sqrt[3]{x}}\\)\n\nAt \\(x = 0\\) this is undefined. Checking the derivative from first principles at \\(x = 0\\):\n\\(\\displaystyle \\lim_{h \\to 0}\\dfrac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0}\\dfrac{h^{\\frac{2}{3}} - 0}{h} = \\lim_{h \\to 0}\\dfrac{1}{h^{\\frac{1}{3}}}\\)\n\nwhich is \\(+\\infty\\) as \\(h \\to 0^{+}\\) and \\(-\\infty\\) as \\(h \\to 0^{-}\\). So the derivative does not exist at \\(x = 0\\).\n\nSince \\(x = 0\\) is an interior point of \\((-1, 1)\\), the second condition fails, so Rolle's theorem is NOT applicable.\n\nRolle's theorem is invalid (not applicable) — \\(f\\) is continuous on \\([-1, 1]\\) and \\(f(-1) = f(1) = 1\\), but \\(f\\) is not differentiable at the interior point \\(x = 0\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "9930f995-e157-4da1-becc-fc3e57c68cb2",
+    "ref": "Ex 2.3 Q.2",
+    "solution": "(The stem prints \"thorem\"; read it as \"theorem\".)\n\n\\(f(x) = x^4 + x^2 - 2\\) is a polynomial, so it is continuous on every closed interval and differentiable on every open interval. Hence the first two conditions of Rolle's theorem hold on \\([a, b]\\) for any \\(a, b\\).\n\nThe condition that determines \\(b\\) is the third one, \\(f(a) = f(b)\\), with \\(a = -1\\).\n\n\\(f(-1) = (-1)^4 + (-1)^2 - 2 = 1 + 1 - 2 = 0\\)\n\n\\(\\therefore f(b) = 0\\)\n\\(b^4 + b^2 - 2 = 0\\)\n\nFactorising,\n\\(\\left(b^2 + 2\\right)\\left(b^2 - 1\\right) = 0\\)\n\nSince \\(b^2 + 2 > 0\\) for every real \\(b\\), we need\n\\(b^2 - 1 = 0 \\Rightarrow b = \\pm 1\\)\n\nNow \\(b = -1\\) is rejected, because \\(b = a = -1\\) would not give an interval \\([a, b]\\) (and \\(b > a\\) is required).\n\n\\(\\therefore b = 1\\)\n\nCheck: \\(f(-1) = f(1) = 0\\), and \\(f'(x) = 4x^3 + 2x = 2x\\left(2x^2 + 1\\right) = 0\\) gives \\(x = 0 \\in (-1, 1)\\), so Rolle's theorem does hold on \\([-1, 1]\\).\n\n\\(\\therefore b = 1\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "41c3fe89-4298-4e4f-8cf6-27a23f6ce120",
+    "ref": "Ex 2.3 Q.3 (i)",
+    "solution": "\\(f(x) = \\sin x + \\cos x + 7\\), \\(x \\in [0, 2\\pi]\\).\n\nCondition 1 (continuity): \\(\\sin x\\) and \\(\\cos x\\) are continuous for all \\(x\\), so \\(f\\) is continuous on \\([0, 2\\pi]\\).\n\nCondition 2 (differentiability): \\(f\\) is differentiable for all \\(x\\), so it is differentiable on \\((0, 2\\pi)\\).\n\nCondition 3 (equal end values):\n\\(f(0) = \\sin 0 + \\cos 0 + 7 = 0 + 1 + 7 = 8\\)\n\\(f(2\\pi) = \\sin 2\\pi + \\cos 2\\pi + 7 = 0 + 1 + 7 = 8\\)\n\\(\\therefore f(0) = f(2\\pi)\\).\n\nAll three conditions of Rolle's theorem are satisfied, so there exists \\(c \\in (0, 2\\pi)\\) with \\(f'(c) = 0\\).\n\n\\(f'(x) = \\cos x - \\sin x\\)\n\n\\(f'(c) = 0 \\Rightarrow \\cos c - \\sin c = 0 \\Rightarrow \\tan c = 1\\)\n\nIn \\((0, 2\\pi)\\), \\(\\tan c = 1\\) gives \\(c = \\dfrac{\\pi}{4}\\) (first quadrant) and \\(c = \\dfrac{5\\pi}{4}\\) (third quadrant).\n\nBoth lie in \\((0, 2\\pi)\\), so Rolle's theorem is verified with \\(c = \\dfrac{\\pi}{4}\\) or \\(c = \\dfrac{5\\pi}{4}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "8cbb4abb-6046-47b7-8787-60bdbf967140",
+    "ref": "Ex 2.3 Q.3 (ii)",
+    "solution": "\\(f(x) = \\sin\\left(\\dfrac{x}{2}\\right)\\), \\(x \\in [0, 2\\pi]\\).\n\nCondition 1 (continuity): \\(\\sin\\left(\\dfrac{x}{2}\\right)\\) is continuous for all \\(x\\), so \\(f\\) is continuous on \\([0, 2\\pi]\\).\n\nCondition 2 (differentiability): \\(f\\) is differentiable for all \\(x\\), so it is differentiable on \\((0, 2\\pi)\\).\n\nCondition 3 (equal end values):\n\\(f(0) = \\sin 0 = 0\\)\n\\(f(2\\pi) = \\sin \\pi = 0\\)\n\\(\\therefore f(0) = f(2\\pi)\\).\n\nAll three conditions of Rolle's theorem are satisfied, so there exists \\(c \\in (0, 2\\pi)\\) with \\(f'(c) = 0\\).\n\nBy the chain rule,\n\\(f'(x) = \\dfrac{1}{2}\\cos\\left(\\dfrac{x}{2}\\right)\\)\n\n\\(f'(c) = 0 \\Rightarrow \\dfrac{1}{2}\\cos\\left(\\dfrac{c}{2}\\right) = 0 \\Rightarrow \\cos\\left(\\dfrac{c}{2}\\right) = 0\\)\n\nFor \\(c \\in (0, 2\\pi)\\) we have \\(\\dfrac{c}{2} \\in (0, \\pi)\\), where the only solution of \\(\\cos\\theta = 0\\) is \\(\\theta = \\dfrac{\\pi}{2}\\).\n\n\\(\\dfrac{c}{2} = \\dfrac{\\pi}{2} \\Rightarrow c = \\pi\\)\n\nSince \\(c = \\pi \\in (0, 2\\pi)\\), Rolle's theorem is verified with \\(c = \\pi\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "444335c0-0e8e-4a4e-b998-4f926c8fb3f6",
+    "ref": "Ex 2.3 Q.3 (iii)",
+    "solution": "\\(f(x) = x^2 - 5x + 9\\), \\(x \\in [1, 4]\\).\n\nCondition 1 (continuity): \\(f\\) is a polynomial, so it is continuous on \\([1, 4]\\).\n\nCondition 2 (differentiability): \\(f\\) is a polynomial, so it is differentiable on \\((1, 4)\\).\n\nCondition 3 (equal end values):\n\\(f(1) = 1 - 5 + 9 = 5\\)\n\\(f(4) = 16 - 20 + 9 = 5\\)\n\\(\\therefore f(1) = f(4)\\).\n\nAll three conditions of Rolle's theorem are satisfied, so there exists \\(c \\in (1, 4)\\) with \\(f'(c) = 0\\).\n\n\\(f'(x) = 2x - 5\\)\n\n\\(f'(c) = 0 \\Rightarrow 2c - 5 = 0 \\Rightarrow c = \\dfrac{5}{2}\\)\n\nSince \\(c = \\dfrac{5}{2} \\in (1, 4)\\), Rolle's theorem is verified with \\(c = \\dfrac{5}{2}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "6edf68d7-6080-4da4-ad77-38209d4b2de0",
+    "ref": "Ex 2.3 Q.4",
+    "solution": "\\(f(x) = x^3 + px^2 + qx + 5\\) is a polynomial, so it is continuous on \\([1, 3]\\) and differentiable on \\((1, 3)\\) for all \\(p\\) and \\(q\\). Rolle's theorem therefore holds precisely when \\(f(1) = f(3)\\), and then \\(f'(c) = 0\\) at the given \\(c\\).\n\nStep 1 — use \\(f(1) = f(3)\\):\n\\(f(1) = 1 + p + q + 5 = 6 + p + q\\)\n\\(f(3) = 27 + 9p + 3q + 5 = 32 + 9p + 3q\\)\n\n\\(6 + p + q = 32 + 9p + 3q\\)\n\\(0 = 26 + 8p + 2q\\)\n\\(\\therefore 4p + q = -13\\) ... (1)\n\nStep 2 — use \\(f'(c) = 0\\) with \\(c = 2 + \\dfrac{1}{\\sqrt{3}}\\):\n\\(f'(x) = 3x^2 + 2px + q\\)\n\n\\(c^2 = \\left(2 + \\dfrac{1}{\\sqrt{3}}\\right)^2 = 4 + \\dfrac{4}{\\sqrt{3}} + \\dfrac{1}{3} = \\dfrac{13}{3} + \\dfrac{4}{\\sqrt{3}}\\)\n\n\\(3c^2 = 13 + \\dfrac{12}{\\sqrt{3}} = 13 + 4\\sqrt{3}\\)\n\n\\(2pc = 2p\\left(2 + \\dfrac{1}{\\sqrt{3}}\\right) = 4p + \\dfrac{2p}{\\sqrt{3}}\\)\n\n\\(f'(c) = 0\\) gives\n\\(13 + 4\\sqrt{3} + 4p + \\dfrac{2p}{\\sqrt{3}} + q = 0\\) ... (2)\n\nStep 3 — substitute \\(q = -13 - 4p\\) from (1) into (2):\n\\(13 + 4\\sqrt{3} + 4p + \\dfrac{2p}{\\sqrt{3}} - 13 - 4p = 0\\)\n\\(4\\sqrt{3} + \\dfrac{2p}{\\sqrt{3}} = 0\\)\n\\(\\dfrac{2p}{\\sqrt{3}} = -4\\sqrt{3}\\)\n\\(2p = -4 \\times 3 = -12\\)\n\\(\\therefore p = -6\\)\n\nFrom (1), \\(q = -13 - 4(-6) = -13 + 24 = 11\\).\n\nCheck: \\(f(x) = x^3 - 6x^2 + 11x + 5\\) gives \\(f(1) = 11 = f(3)\\), and \\(f'(x) = 3x^2 - 12x + 11 = 0\\) gives \\(x = \\dfrac{12 \\pm \\sqrt{144 - 132}}{6} = \\dfrac{12 \\pm 2\\sqrt{3}}{6} = 2 \\pm \\dfrac{1}{\\sqrt{3}}\\), which includes the given \\(c = 2 + \\dfrac{1}{\\sqrt{3}}\\).\n\n\\(\\therefore p = -6\\) and \\(q = 11\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "c28adbfc-f654-417b-8c1c-11fb3160b1fb",
+    "ref": "Ex 2.3 Q.5",
+    "solution": "\\(f(x) = (x - 2)\\log x\\), \\(x \\in [1, 2]\\).\n\nStep 1 — check the conditions of Rolle's theorem.\nContinuity: \\(x - 2\\) is a polynomial and \\(\\log x\\) is continuous for \\(x > 0\\); since \\([1, 2]\\) lies in \\((0, \\infty)\\), the product \\(f\\) is continuous on \\([1, 2]\\).\nDifferentiability: both factors are differentiable for \\(x > 0\\), so \\(f\\) is differentiable on \\((1, 2)\\).\nEnd values:\n\\(f(1) = (1 - 2)\\log 1 = (-1)(0) = 0\\)\n\\(f(2) = (2 - 2)\\log 2 = (0)\\log 2 = 0\\)\n\\(\\therefore f(1) = f(2)\\).\n\nAll three conditions hold, so by Rolle's theorem there exists at least one \\(c \\in (1, 2)\\) such that \\(f'(c) = 0\\).\n\nStep 2 — compute \\(f'(x)\\) by the product rule:\n\\(f'(x) = (x - 2)\\cdot\\dfrac{1}{x} + \\log x \\cdot 1 = \\dfrac{x - 2}{x} + \\log x\\)\n\nStep 3 — write down \\(f'(c) = 0\\):\n\\(\\dfrac{c - 2}{c} + \\log c = 0\\)\n\nMultiplying throughout by \\(c\\) (valid, since \\(c \\in (1, 2)\\) so \\(c \\neq 0\\)):\n\\(c - 2 + c\\log c = 0\\)\n\\(\\therefore c\\log c = 2 - c\\)\n\nSo the number \\(x = c\\) satisfies \\(x\\log x = 2 - x\\), and \\(c \\in (1, 2)\\).\n\nHence the equation \\(x\\log x = 2 - x\\) is satisfied by at least one value of \\(x\\) in \\((1, 2)\\), as required.\n\n(Numerically this root is \\(c \\approx 1.4547\\), which indeed lies in \\((1, 2)\\).)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "16bb5cb7-af98-405a-b0ae-58671adf7ae6",
+    "ref": "Ex 2.3 Q.6",
+    "solution": "\\(f(x) = x(x + 3)e^{-\\frac{x}{2}} = \\left(x^2 + 3x\\right)e^{-\\frac{x}{2}}\\) on \\([-3, 0]\\).\n\n(It is given that all the conditions of Rolle's theorem are satisfied; indeed \\(f(-3) = (-3)(0)e^{\\frac{3}{2}} = 0\\) and \\(f(0) = (0)(3)e^{0} = 0\\), so \\(f(-3) = f(0)\\).)\n\nDifferentiate by the product rule:\n\\(f'(x) = (2x + 3)e^{-\\frac{x}{2}} + \\left(x^2 + 3x\\right)\\left(-\\dfrac{1}{2}e^{-\\frac{x}{2}}\\right)\\)\n\n\\(f'(x) = e^{-\\frac{x}{2}}\\left[(2x + 3) - \\dfrac{x^2 + 3x}{2}\\right]\\)\n\n\\(f'(x) = \\dfrac{e^{-\\frac{x}{2}}}{2}\\left[4x + 6 - x^2 - 3x\\right] = \\dfrac{e^{-\\frac{x}{2}}}{2}\\left(-x^2 + x + 6\\right)\\)\n\n\\(f'(x) = -\\dfrac{e^{-\\frac{x}{2}}}{2}\\left(x^2 - x - 6\\right) = -\\dfrac{e^{-\\frac{x}{2}}}{2}(x - 3)(x + 2)\\)\n\nNow set \\(f'(c) = 0\\):\n\\(-\\dfrac{e^{-\\frac{c}{2}}}{2}(c - 3)(c + 2) = 0\\)\n\nSince \\(e^{-\\frac{c}{2}} \\neq 0\\) for every real \\(c\\),\n\\((c - 3)(c + 2) = 0 \\Rightarrow c = 3\\) or \\(c = -2\\)\n\nRolle's theorem requires \\(c \\in (-3, 0)\\). Now \\(c = 3 \\notin (-3, 0)\\), so it is rejected, while \\(c = -2 \\in (-3, 0)\\).\n\n\\(\\therefore c = -2\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "260a0407-0381-4e22-a922-5b00d91af3e4",
+    "ref": "Ex 2.3 Q.7 (i)",
+    "solution": "\\(f(x) = \\log x\\) on \\([1, e]\\).\n\nCondition 1 (continuity): \\(\\log x\\) is continuous for \\(x > 0\\), and \\([1, e] \\subset (0, \\infty)\\), so \\(f\\) is continuous on \\([1, e]\\).\n\nCondition 2 (differentiability): \\(\\log x\\) is differentiable for \\(x > 0\\), so \\(f\\) is differentiable on \\((1, e)\\).\n\nBoth conditions of Lagrange's mean value theorem (LMVT) hold, so there exists \\(c \\in (1, e)\\) such that\n\\(f'(c) = \\dfrac{f(e) - f(1)}{e - 1}\\)\n\nHere\n\\(f(1) = \\log 1 = 0\\), \\(f(e) = \\log e = 1\\)\n\n\\(\\dfrac{f(e) - f(1)}{e - 1} = \\dfrac{1 - 0}{e - 1} = \\dfrac{1}{e - 1}\\)\n\nAlso \\(f'(x) = \\dfrac{1}{x}\\), so \\(f'(c) = \\dfrac{1}{c}\\).\n\n\\(\\dfrac{1}{c} = \\dfrac{1}{e - 1} \\Rightarrow c = e - 1\\)\n\nSince \\(e \\approx 2.718\\), we get \\(c = e - 1 \\approx 1.718\\), and \\(1 < 1.718 < 2.718\\), so \\(c \\in (1, e)\\).\n\nHence LMVT is verified, with \\(c = e - 1\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f1125eee-b5f6-4f0e-adbd-4fde1cb0f539",
+    "ref": "Ex 2.3 Q.7 (ii)",
+    "solution": "\\(f(x) = (x - 1)(x - 2)(x - 3)\\) on \\([0, 4]\\).\n\nExpanding, \\(f(x) = x^3 - 6x^2 + 11x - 6\\), which is a polynomial.\n\nCondition 1 (continuity): \\(f\\) is a polynomial, so it is continuous on \\([0, 4]\\).\n\nCondition 2 (differentiability): \\(f\\) is a polynomial, so it is differentiable on \\((0, 4)\\).\n\nBoth conditions of LMVT hold, so there exists \\(c \\in (0, 4)\\) such that\n\\(f'(c) = \\dfrac{f(4) - f(0)}{4 - 0}\\)\n\nHere\n\\(f(0) = (-1)(-2)(-3) = -6\\)\n\\(f(4) = (3)(2)(1) = 6\\)\n\n\\(\\dfrac{f(4) - f(0)}{4 - 0} = \\dfrac{6 - (-6)}{4} = \\dfrac{12}{4} = 3\\)\n\nAlso \\(f'(x) = 3x^2 - 12x + 11\\).\n\n\\(f'(c) = 3\\)\n\\(3c^2 - 12c + 11 = 3\\)\n\\(3c^2 - 12c + 8 = 0\\)\n\n\\(c = \\dfrac{12 \\pm \\sqrt{144 - 96}}{6} = \\dfrac{12 \\pm \\sqrt{48}}{6} = \\dfrac{12 \\pm 4\\sqrt{3}}{6} = 2 \\pm \\dfrac{2\\sqrt{3}}{3}\\)\n\nNumerically, \\(\\dfrac{2\\sqrt{3}}{3} = \\dfrac{2}{\\sqrt{3}} \\approx 1.1547\\), so \\(c \\approx 3.1547\\) or \\(c \\approx 0.8453\\).\n\nBoth values lie in \\((0, 4)\\), so both are acceptable.\n\nHence LMVT is verified, with \\(c = 2 + \\dfrac{2}{\\sqrt{3}}\\) or \\(c = 2 - \\dfrac{2}{\\sqrt{3}}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "21db68a4-03e7-48ac-995e-ad2ca3c421fb",
+    "ref": "Ex 2.3 Q.7 (iii)",
+    "solution": "\\(f(x) = x^2 - 3x - 1\\), \\(x \\in \\left[-\\dfrac{11}{7}, \\dfrac{13}{7}\\right]\\).\n\nCondition 1 (continuity): \\(f\\) is a polynomial, so it is continuous on \\(\\left[-\\dfrac{11}{7}, \\dfrac{13}{7}\\right]\\).\n\nCondition 2 (differentiability): \\(f\\) is a polynomial, so it is differentiable on \\(\\left(-\\dfrac{11}{7}, \\dfrac{13}{7}\\right)\\).\n\nBoth conditions of LMVT hold, so there exists \\(c\\) in the open interval such that\n\\(f'(c) = \\dfrac{f\\left(\\frac{13}{7}\\right) - f\\left(-\\frac{11}{7}\\right)}{\\frac{13}{7} - \\left(-\\frac{11}{7}\\right)}\\)\n\nHere\n\\(f\\left(\\dfrac{13}{7}\\right) = \\dfrac{169}{49} - \\dfrac{39}{7} - 1 = \\dfrac{169 - 273 - 49}{49} = -\\dfrac{153}{49}\\)\n\n\\(f\\left(-\\dfrac{11}{7}\\right) = \\dfrac{121}{49} + \\dfrac{33}{7} - 1 = \\dfrac{121 + 231 - 49}{49} = \\dfrac{303}{49}\\)\n\n\\(\\dfrac{13}{7} - \\left(-\\dfrac{11}{7}\\right) = \\dfrac{24}{7}\\)\n\n\\(\\dfrac{f\\left(\\frac{13}{7}\\right) - f\\left(-\\frac{11}{7}\\right)}{\\frac{24}{7}} = \\dfrac{-\\frac{153}{49} - \\frac{303}{49}}{\\frac{24}{7}} = \\dfrac{-\\frac{456}{49}}{\\frac{24}{7}} = -\\dfrac{456}{49} \\times \\dfrac{7}{24} = -\\dfrac{456}{168} = -\\dfrac{19}{7}\\)\n\nAlso \\(f'(x) = 2x - 3\\).\n\n\\(f'(c) = -\\dfrac{19}{7}\\)\n\\(2c - 3 = -\\dfrac{19}{7}\\)\n\\(2c = 3 - \\dfrac{19}{7} = \\dfrac{21 - 19}{7} = \\dfrac{2}{7}\\)\n\\(\\therefore c = \\dfrac{1}{7}\\)\n\nSince \\(-\\dfrac{11}{7} < \\dfrac{1}{7} < \\dfrac{13}{7}\\), we have \\(c \\in \\left(-\\dfrac{11}{7}, \\dfrac{13}{7}\\right)\\).\n\nHence LMVT is verified, with \\(c = \\dfrac{1}{7}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "3a78bee3-87d7-45bf-a260-e245dbe799d7",
+    "ref": "Ex 2.3 Q.7 (iv)",
+    "solution": "\\(f(x) = 2x - x^2\\), \\(x \\in [0, 1]\\).\n\nCondition 1 (continuity): \\(f\\) is a polynomial, so it is continuous on \\([0, 1]\\).\n\nCondition 2 (differentiability): \\(f\\) is a polynomial, so it is differentiable on \\((0, 1)\\).\n\nBoth conditions of LMVT hold, so there exists \\(c \\in (0, 1)\\) such that\n\\(f'(c) = \\dfrac{f(1) - f(0)}{1 - 0}\\)\n\nHere\n\\(f(0) = 2(0) - 0^2 = 0\\)\n\\(f(1) = 2(1) - 1^2 = 1\\)\n\n\\(\\dfrac{f(1) - f(0)}{1 - 0} = \\dfrac{1 - 0}{1} = 1\\)\n\nAlso \\(f'(x) = 2 - 2x\\).\n\n\\(f'(c) = 1\\)\n\\(2 - 2c = 1\\)\n\\(2c = 1\\)\n\\(\\therefore c = \\dfrac{1}{2}\\)\n\nSince \\(c = \\dfrac{1}{2} \\in (0, 1)\\), LMVT is verified, with \\(c = \\dfrac{1}{2}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "5277471d-3df5-46a0-ad0c-4c1f41cb94ee",
+    "ref": "Ex 2.3 Q.7 (v)",
+    "solution": "\\(f(x) = \\dfrac{x - 1}{x - 3}\\) on \\([4, 5]\\).\n\nCondition 1 (continuity): \\(f\\) is a rational function, so it is continuous everywhere except where the denominator vanishes, i.e. except at \\(x = 3\\). Since \\(3 \\notin [4, 5]\\), \\(f\\) is continuous on \\([4, 5]\\).\n\nCondition 2 (differentiability): for the same reason, \\(f\\) is differentiable everywhere except at \\(x = 3\\), and \\(3 \\notin (4, 5)\\), so \\(f\\) is differentiable on \\((4, 5)\\).\n\nBoth conditions of LMVT hold, so there exists \\(c \\in (4, 5)\\) such that\n\\(f'(c) = \\dfrac{f(5) - f(4)}{5 - 4}\\)\n\nHere\n\\(f(4) = \\dfrac{4 - 1}{4 - 3} = \\dfrac{3}{1} = 3\\)\n\\(f(5) = \\dfrac{5 - 1}{5 - 3} = \\dfrac{4}{2} = 2\\)\n\n\\(\\dfrac{f(5) - f(4)}{5 - 4} = \\dfrac{2 - 3}{1} = -1\\)\n\nNow differentiate by the quotient rule:\n\\(f'(x) = \\dfrac{(x - 3)(1) - (x - 1)(1)}{(x - 3)^2} = \\dfrac{x - 3 - x + 1}{(x - 3)^2} = \\dfrac{-2}{(x - 3)^2}\\)\n\n\\(f'(c) = -1\\)\n\\(\\dfrac{-2}{(c - 3)^2} = -1\\)\n\\((c - 3)^2 = 2\\)\n\\(c - 3 = \\pm\\sqrt{2}\\)\n\\(c = 3 \\pm \\sqrt{2}\\)\n\nNow \\(\\sqrt{2} \\approx 1.414\\), so the two values are \\(c \\approx 4.414\\) and \\(c \\approx 1.586\\).\n\nThe value \\(c = 3 - \\sqrt{2} \\approx 1.586\\) does not lie in \\((4, 5)\\), so it is rejected. The value \\(c = 3 + \\sqrt{2} \\approx 4.414\\) does lie in \\((4, 5)\\), so it is accepted.\n\nHence LMVT is verified, with \\(c = 3 + \\sqrt{2}\\).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]

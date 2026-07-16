@@ -1,0 +1,20 @@
+[
+  {
+    "ref": "2.1.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Jerk",
+    "difficulty": "EASY",
+    "stem": "A car is moving in such a way that the distance it covers, is given by the equation \\(s = 4t^2 + 3t\\) where \\(s\\) is in meters and \\(t\\) is in seconds. What would be the velocity and the acceleration of the car at time \\(t = 20\\) second ?",
+    "solution": "[Textbook misprint: the book writes the acceleration step as \\(a = \\frac{d}{dt}\\left(\\frac{dv}{dt}\\right)\\). That expression is the JERK (the third derivative of displacement); acceleration is \\(a = \\frac{dv}{dt} = \\frac{d}{dt}\\left(\\frac{ds}{dt}\\right)\\). The operation actually carried out on the right-hand side is \\(\\frac{dv}{dt}\\), and the printed answer \\(8\\) m/sec\\(^2\\) is correct.]\n\nLet \\(v\\) be the velocity and \\(a\\) be the acceleration of the car.\nDistance traveled by the car is given by\n\\(s = 4t^2 + 3t\\)\nDifferentiate w. r. t. t.\n\\(\\therefore\\) Velocity of the car is given by\n\\(v = \\frac{ds}{dt} = \\frac{d}{dt}\\left(4t^2 + 3t\\right) = 8t + 3\\)   . . . (I)\nand Acceleration of the car is given by\n\\(a = \\frac{d}{dt}\\left(\\frac{dv}{dt}\\right) = \\frac{d}{dt}\\left(8t + 3\\right) = 8\\)   . . . (II)\nPut \\(t = 20\\) in (I),\n\\(\\therefore\\) Velocity of the car, \\(v_{t = 20} = 8(20) + 3 = 163\\) m/sec.\nPut \\(t = 20\\) in (II),\n\\(\\therefore\\) Acceleration of the car, \\(a_{t = 20} = 8\\) m/sec\\(^2\\).\nNote : In this problem, the acceleration is independent of time. Such a motion is said to be uniformly accelerated motion."
+  },
+  {
+    "ref": "2.1.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Jerk",
+    "difficulty": "MODERATE",
+    "stem": "The displacement of a particle at time \\(t\\) is given by \\(s = 2t^3 - 5t^2 + 4t - 3\\). Find the time when the acceleration is 14 ft/ sec\\(^2\\), the velocity and the displacement at that time.",
+    "solution": "Displacement of a particle is given by\n\\(s = 2t^3 - 5t^2 + 4t - 3\\)   . . . (I)\nDifferentiate w. r. t. t.\nVelocity, \\(v = \\frac{ds}{dt} = \\frac{d}{dt}\\left(2t^3 - 5t^2 + 4t - 3\\right)\\)\n\\(\\therefore\\) \\(v = 6t^2 - 10t + 4\\)   . . . (II)\nAcceleration, \\(a = \\frac{dv}{dt} = \\frac{d}{dt}\\left(6t^2 - 10t + 4\\right)\\)\n\\(\\therefore\\) \\(a = 12t - 10\\)   . . . (III)\nGiven : Acceleration = 14 ft/ sec\\(^2\\).\n\\(\\therefore\\) \\(12t - 10 = 14 \\Rightarrow 12t = 24 \\Rightarrow t = 2\\)\nSo, the particle reaches an acceleration of 14 ft/ sec\\(^2\\) in 2 seconds.\nVelocity, when \\(t = 2\\) is\n\\(\\therefore\\) \\(v_{t = 2} = 6(2)^2 - 10(2) + 4 = 8\\) ft/ sec.\nDisplacement when \\(t = 2\\) is\n\\(\\therefore\\) \\(s_{t = 2} = 2(2)^3 - 5(2)^2 + 4(2) - 3 = 1\\) foot.\nHence the velocity is 8 ft/ sec and the displacement is 1 foot after 2 seconds."
+  }
+]

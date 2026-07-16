@@ -1,0 +1,72 @@
+[
+  {
+    "id": "d31ebe4f-3081-4849-a27b-2aa6483bd130",
+    "ref": "Misc I Q.1",
+    "derived_answer": "A",
+    "solution": "Rolle's theorem on \\([1, 3]\\) requires \\(f(1) = f(3)\\). Now \\(f(1) = a + b + 5\\) and \\(f(3) = 27a + 9b + 27\\), so \\(a + b + 5 = 27a + 9b + 27\\), which gives \\(13a + 4b = -11\\) ... (i). Next, \\(f'(x) = 3ax^2 + 2bx + 11\\). Since \\(\\left(2 + \\frac{1}{\\sqrt{3}}\\right)^2 = \\frac{13}{3} + \\frac{4}{\\sqrt{3}}\\), the condition \\(f'\\left(2 + \\frac{1}{\\sqrt{3}}\\right) = 0\\) becomes \\(3a\\left(\\frac{13}{3} + \\frac{4}{\\sqrt{3}}\\right) + 2b\\left(2 + \\frac{1}{\\sqrt{3}}\\right) + 11 = 0\\), that is \\((13a + 4b + 11) + \\sqrt{3}\\left(4a + \\frac{2b}{3}\\right) = 0\\). The rational part is zero by (i), and since \\(\\sqrt{3}\\) is irrational the remaining bracket must vanish too: \\(4a + \\frac{2b}{3} = 0\\), giving \\(b = -6a\\). Putting this in (i): \\(13a - 24a = -11\\), so \\(a = 1\\) and \\(b = -6\\). Check: \\(f(x) = x^3 - 6x^2 + 11x - 6\\) has \\(f(1) = f(3) = 0\\), and \\(f'(x) = 3x^2 - 12x + 11\\) vanishes at \\(x = 2 \\pm \\frac{1}{\\sqrt{3}}\\), so both conditions hold. \\(\\therefore a = 1,\\ b = -6\\).",
+    "matches_current": true
+  },
+  {
+    "id": "7d175474-18f3-41a1-b996-abf27db33350",
+    "ref": "Misc I Q.2",
+    "derived_answer": "C",
+    "solution": "Differentiate using the quotient rule: \\(f'(x) = \\frac{2x(x^2 + 1) - (x^2 - 1)(2x)}{(x^2 + 1)^2} = \\frac{4x}{(x^2 + 1)^2}\\). Since \\((x^2 + 1)^2 > 0\\) for every real \\(x\\), the sign of \\(f'\\) is just the sign of \\(x\\): \\(f'(x) < 0\\) for \\(x < 0\\) and \\(f'(x) > 0\\) for \\(x > 0\\). So \\(f\\) decreases on \\((-\\infty, 0)\\) and increases on \\((0, \\infty)\\), and by the first-derivative test \\(x = 0\\) gives a minimum. Its value is \\(f(0) = \\frac{0 - 1}{0 + 1} = -1\\). Note the trap: rewriting \\(f(x) = 1 - \\frac{2}{x^2 + 1}\\) shows \\(f(x) \\to 1\\) as \\(x \\to \\pm\\infty\\), so \\(1\\) is only the supremum of \\(f\\), is never actually attained, and is certainly not the minimum. \\(\\therefore\\) the minimum value of \\(f\\) is \\(-1\\).",
+    "matches_current": true
+  },
+  {
+    "id": "676decef-6f71-43fc-90aa-d3f6581f34ae",
+    "ref": "Misc I Q.3",
+    "derived_answer": "B",
+    "solution": "Let \\(x\\) be the distance of the foot of the ladder from the wall and \\(y\\) the height of its top above the ground, at time \\(t\\). The ladder has fixed length \\(5\\) m, so \\(x^2 + y^2 = 25\\). We are given \\(\\frac{dx}{dt} = 1.5\\) m/sec, and we want \\(\\frac{dy}{dt}\\) when \\(x = 4\\). When \\(x = 4\\): \\(y = \\sqrt{25 - 16} = 3\\). Differentiating \\(x^2 + y^2 = 25\\) with respect to \\(t\\): \\(2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0\\), hence \\(\\frac{dy}{dt} = -\\frac{x}{y}\\cdot\\frac{dx}{dt}\\). Substituting the values: \\(\\frac{dy}{dt} = -\\frac{4}{3} \\times 1.5 = -2\\). The negative sign shows that the height is decreasing. \\(\\therefore\\) the top of the ladder slides down at the rate of \\(2\\) m/sec.",
+    "matches_current": true
+  },
+  {
+    "id": "5e630b22-e43e-4ee2-8f75-acb3b7e0a149",
+    "ref": "Misc I Q.4",
+    "derived_answer": "B",
+    "solution": "Define \\(h(x) = f(x) - 2g(x)\\). As \\(f\\) and \\(g\\) are differentiable, so is \\(h\\), with \\(h'(x) = f'(x) - 2g'(x)\\). At the left endpoint, \\(h(0) = f(0) - 2g(0) = 0 - 2(0) = 0\\). We are told there exists \\(c \\in (0, 1)\\) with \\(f'(c) = 2g'(c)\\), that is \\(h'(c) = 0\\). This is precisely the conclusion of Rolle's theorem applied to \\(h\\) on \\([0, 1]\\), and the hypothesis that delivers it is \\(h(1) = h(0)\\). So we need \\(h(1) = 0\\), i.e. \\(f(1) - 2g(1) = 0\\). With \\(f(1) = 6\\): \\(6 = 2g(1)\\), hence \\(g(1) = 3\\). A concrete pair confirming this is \\(f(x) = 6x,\\ g(x) = 3x\\): here \\(f(0) = g(0) = 0\\), \\(f(1) = 6\\), \\(g(1) = 3\\), and \\(f'(c) = 6 = 2g'(c)\\) for every \\(c\\) in \\((0, 1)\\). \\(\\therefore g(1) = 3\\).",
+    "matches_current": true
+  },
+  {
+    "id": "67317b44-30e9-46f6-ac70-4d9eb3cd51d4",
+    "ref": "Misc I Q.5",
+    "derived_answer": "D",
+    "solution": "Differentiate: \\(f'(x) = 3x^2 - 12x + 9 = 3(x^2 - 4x + 3) = 3(x - 1)(x - 3)\\). \\(f\\) is strictly decreasing exactly where \\(f'(x) < 0\\), i.e. where \\((x - 1)(x - 3) < 0\\). A product of two factors is negative precisely when the factors have opposite signs, which happens for \\(1 < x < 3\\). Sign check: \\(f'(0) = 9 > 0\\), \\(f'(2) = -3 < 0\\), \\(f'(4) = 9 > 0\\). So \\(f\\) is increasing on \\((-\\infty, 1)\\), decreasing on \\((1, 3)\\), and increasing again on \\((3, \\infty)\\). Note the trap: \\((-\\infty, 1] \\cup [3, \\infty)\\) is the set on which \\(f\\) is INCREASING, not decreasing. \\(\\therefore f\\) is strictly decreasing in \\((1, 3)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9fa84dae-2d4d-4501-9d18-0bb9ffc8b19d",
+    "ref": "Misc I Q.6",
+    "derived_answer": "C",
+    "solution": "Here \\(y = \\alpha \\log x + \\beta x^2 + x\\), so \\(\\frac{dy}{dx} = \\frac{\\alpha}{x} + 2\\beta x + 1\\). At an extreme point the derivative vanishes, so \\(\\frac{dy}{dx} = 0\\) at both \\(x = -1\\) and \\(x = 2\\). At \\(x = -1\\): \\(-\\alpha - 2\\beta + 1 = 0\\), which gives \\(\\alpha = 1 - 2\\beta\\) ... (i). At \\(x = 2\\): \\(\\frac{\\alpha}{2} + 4\\beta + 1 = 0\\); multiplying throughout by \\(2\\), \\(\\alpha + 8\\beta + 2 = 0\\) ... (ii). Substituting (i) into (ii): \\((1 - 2\\beta) + 8\\beta + 2 = 0\\), so \\(6\\beta = -3\\) and \\(\\beta = -\\frac{1}{2}\\). Then \\(\\alpha = 1 - 2\\left(-\\frac{1}{2}\\right) = 2\\). Verification: with these values \\(\\frac{dy}{dx} = \\frac{2}{x} - x + 1 = \\frac{-(x + 1)(x - 2)}{x}\\), which is indeed zero at \\(x = -1\\) and \\(x = 2\\). \\(\\therefore \\alpha = 2,\\ \\beta = -\\frac{1}{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "d1f802fd-d5ec-47d8-9c76-f58189d1a57e",
+    "ref": "Misc I Q.7",
+    "derived_answer": "D",
+    "solution": "First notice that the equation factorises: \\(x^2 + 2xy - 3y^2 = (x - y)(x + 3y) = 0\\), so the curve is really a pair of straight lines, \\(y = x\\) and \\(x + 3y = 0\\). The given point \\((1, 1)\\) lies on the line \\(y = x\\). Differentiating implicitly: \\(2x + 2y + 2x\\frac{dy}{dx} - 6y\\frac{dy}{dx} = 0\\). At \\((1, 1)\\) this gives \\(4 - 4\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = 1\\). Hence the slope of the normal is \\(-1\\), and the normal is \\(y - 1 = -(x - 1)\\), i.e. \\(x + y = 2\\). This normal is perpendicular to the line \\(y = x\\), so it cannot meet that branch again; it must therefore cut the other branch \\(x + 3y = 0\\). Solving \\(x = -3y\\) together with \\(x + y = 2\\): \\(-3y + y = 2\\), so \\(y = -1\\) and \\(x = 3\\). The normal meets the curve again at \\((3, -1)\\), where \\(x > 0\\) and \\(y < 0\\). \\(\\therefore\\) it meets the curve again in the fourth quadrant.",
+    "matches_current": true
+  },
+  {
+    "id": "ac9d9cec-71bc-4ac1-8f9a-d4a1e84e74dc",
+    "ref": "Misc I Q.8",
+    "derived_answer": "A",
+    "solution": "The curve meets the Y-axis where \\(x = 0\\): then \\(y = 1 - e^{0} = 1 - 1 = 0\\), so the point of intersection is the origin \\((0, 0)\\). Differentiating \\(y = 1 - e^{\\frac{x}{2}}\\): \\(\\frac{dy}{dx} = -\\frac{1}{2}e^{\\frac{x}{2}}\\). At \\(x = 0\\) the slope of the tangent is \\(-\\frac{1}{2}e^{0} = -\\frac{1}{2}\\). The tangent at \\((0, 0)\\) is therefore \\(y - 0 = -\\frac{1}{2}(x - 0)\\), i.e. \\(2y = -x\\). \\(\\therefore\\) the equation of the tangent is \\(x + 2y = 0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "134a7de7-0385-4f2d-be48-695a447ae5c5",
+    "ref": "Misc I Q.9",
+    "derived_answer": "D",
+    "solution": "First check that \\((1, 1)\\) lies on the curve: \\(1^2 = 1(2 - 1)^2 = 1\\), which is true. Differentiating \\(y^2 = x(2 - x)^2\\) implicitly: \\(2y\\frac{dy}{dx} = (2 - x)^2 + x \\cdot 2(2 - x)(-1) = (2 - x)\\big[(2 - x) - 2x\\big] = (2 - x)(2 - 3x)\\). At \\((1, 1)\\): \\(2\\frac{dy}{dx} = (1)(-1)\\), so \\(\\frac{dy}{dx} = -\\frac{1}{2}\\). The tangent is \\(y - 1 = -\\frac{1}{2}(x - 1)\\), i.e. \\(y = \\frac{3 - x}{2}\\). Substituting this into the curve: \\(\\left(\\frac{3 - x}{2}\\right)^2 = x(2 - x)^2\\), so \\((3 - x)^2 = 4x(2 - x)^2\\), which expands to \\(4x^3 - 17x^2 + 22x - 9 = 0\\) and factorises as \\((x - 1)^2(4x - 9) = 0\\). The repeated root \\(x = 1\\) is the point of contact (a tangent meets the curve doubly there), so the fresh intersection is \\(x = \\frac{9}{4}\\), giving \\(y = \\frac{1}{2}\\left(3 - \\frac{9}{4}\\right) = \\frac{3}{8}\\). \\(\\therefore P = \\left(\\frac{9}{4}, \\frac{3}{8}\\right)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "bc2df72e-34e7-4eb0-b5ba-9c37aaa2de03",
+    "ref": "Misc I Q.10",
+    "derived_answer": "D",
+    "solution": "Use the approximation \\(f(a + h) \\approx f(a) + h \\cdot f'(a)\\) with \\(f(x) = \\tan x\\). Since \\(44^\\circ 30' = 45^\\circ - 30'\\), take \\(a = 45^\\circ = \\frac{\\pi}{4}\\) and \\(h = -30' = -\\frac{1}{2}^\\circ\\). Converting \\(h\\) to radians using \\(1^\\circ = 0.0175\\): \\(h = -0.5 \\times 0.0175 = -0.00875\\). Now \\(f(a) = \\tan 45^\\circ = 1\\), and \\(f'(x) = \\sec^2 x\\), so \\(f'(a) = \\sec^2 45^\\circ = (\\sqrt{2})^2 = 2\\). Therefore \\(\\tan(44^\\circ 30') \\approx 1 + (-0.00875)(2) = 1 - 0.0175 = 0.9825\\). \\(\\therefore\\) the approximate value is \\(0.9825\\).",
+    "matches_current": true
+  }
+]

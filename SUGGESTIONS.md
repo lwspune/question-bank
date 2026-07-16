@@ -27,6 +27,22 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-16
+
+### `solution_image` diagrams for State Board Ch.2 Application of Derivatives (19 flagged rows) — deferred, not blocked
+
+The solution-authoring agents flagged **19 of 116** exercise rows `diagramWouldHelp` (Ex 2.1 Q.13-16 shadow/ladder/cone · Ex 2.4 Q.13-17/21/22 box/cylinder/semicircle/sphere · Misc II Q.4/12/13/15/16/18/19/20 cone/window/sphere cross-sections). **Deliberately skipped at ingest** per the documented line: build `solution_image` where the figure IS the answer (Linear Programming's feasible regions = 65 diagrams; App-of-Definite-Integration's area regions = 40), skip where the figure is the SETUP and the answer is a number (the Vectors + Line-and-Planes precedent). **No question stem is unanswerable without one** — every solution defines its variables in prose, so the chapter is complete and correct as shipped.
+
+**Why it's a real build, not a quick win:** Pair-of-Straight-Lines got its 20 diagrams because 2-D line geometry (lines by `Ax+By+C=0`, shaded polygons, points) already existed in `render_solution_diagrams.py`. These need **new renderer modes** — cone/cylinder/sphere cross-sections, a ladder-wall right triangle, a semicircle-plus-rectangle window, a box-from-sheet net. That's a `SPEC_BUILDERS['app-derivatives-12']` plus several new primitive draw modes.
+
+**How to apply if picked up:** the `diagramWouldHelp` + `diagramNote` fields are already recorded in `scripts/stateboard/data/app-derivatives-12.{ex-2-1,ex-2-4,misc-ii}.solutions.json` — the work-list is authored, so it's: add specs → render → **montage-verify each against its stem** (never trust the render blindly) → `attach-solution-image.ts`. Same recipe as Ch.4/Ch.7. The book itself prints figures for `2.4.4 SolvedEx.3/4/5` (Fig 2.4.5/2.4.6/2.4.7), which could alternatively be snapCropped rather than authored.
+
+### Three raw-unicode-math leaks in shipped `*.solutions.json` files (backfill candidate — see the ledger)
+
+A solution-authoring agent, while validating its own output as ASCII-clean, noticed **3 stray `≠`/`⇒`/`⇐` characters** across the 48 sibling State Board `*.solutions.json` files (i.e. in *already-shipped* chapters, not this one). Project convention is that all math is LaTeX inside `\(…\)`; a raw unicode operator renders as a bare glyph instead of typeset math. Not identified per-file — the agent reported the count in passing, not the locations.
+
+**Not acted on** (shipped work → [[learning-propagation-protocol]]: log, 360, ask). **Scope to establish first:** grep the `data/*.solutions.json` set AND the live `questions.solution` column for `[≠⇒⇐×÷√∴∈∞]` outside `\(…\)` zones — the DB is what students see, and the JSON may have drifted from it. **Blast radius:** cosmetic only (a glyph renders unstyled; no answer is wrong). **Cost:** small if scripted (the `apply-solutions.ts` path is solution-only + hash-safe). **Recommendation:** fold into the next State Board chapter's pass rather than a standalone campaign — or add the check to `notes:latex`-style linting so it's caught at authoring time going forward.
+
 ## 2026-07-15
 
 ### Sweep abandoned `in_progress` mock attempts to `expired` (a stale row can block a clean restart)

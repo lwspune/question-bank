@@ -14,6 +14,38 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.2 Application of Derivatives (Part 2) — verified against
+  //    Ch_02_Application_of_Derivatives.pdf via a get_text('blocks') (page, y)
+  //    scan (2026-07-16). 4 numbered exercises + a terminal Miscellaneous 2.
+  //    Structural notes, all faithful to the book:
+  //    (a) Exercise 2.1 serves THREE teaching sub-sections (§2.1.2 tangents/
+  //        normals, §2.1.3 rate measure, §2.1.4 velocity/acceleration/jerk), each
+  //        of which has its OWN Solved-Examples block. It is grouped with §2.1.4,
+  //        the block it physically follows (the Differentiation precedent).
+  //    (b) §2.4 likewise carries THREE Solved-Examples blocks (§2.4.1 incr/decr,
+  //        §2.4.3 first-derivative test, §2.4.4 second-derivative test) but only
+  //        Exercise 2.4, which sits after the third.
+  //    (c) §2.4.2 "Maxima and Minima" is definitional prose with no questions of
+  //        its own → owns no block (cf. Differentiation's §1.2.1).
+  //    Refs are SUBSECTION-prefixed (2.1.2 / 2.1.3 / 2.4.3 / 2.4.4 …), which is
+  //    what keeps them unique — §2.4.3 and §2.4.4 BOTH restart at "Ex. 1".
+  "app-derivatives-12": [
+    { group: "2.1 Applications of Derivatives to Tangents and Normals", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1.2 SolvedEx"] },
+    { group: "2.1 Derivative as a Rate Measure", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1.3 SolvedEx"] },
+    { group: "2.1 Velocity, Acceleration and Jerk", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1.4 SolvedEx"] },
+    { group: "2.1 Velocity, Acceleration and Jerk", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 Q"] },
+    { group: "2.2 Approximations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2.1 SolvedEx"] },
+    { group: "2.2 Approximations", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 Q"] },
+    { group: "2.3 Rolle's Theorem", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.3.1 SolvedEx"] },
+    { group: "2.3 Lagrange's Mean Value Theorem (LMVT)", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.3.2 SolvedEx"] },
+    { group: "2.3 Lagrange's Mean Value Theorem (LMVT)", label: "Exercise 2.3", kind: "exercise", refPrefixes: ["Ex 2.3 Q"] },
+    { group: "2.4 Increasing and Decreasing Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.4.1 SolvedEx"] },
+    { group: "2.4 Maxima and Minima (First Derivative Test)", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.4.3 SolvedEx"] },
+    { group: "2.4 Maxima and Minima (Second Derivative Test)", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.4.4 SolvedEx"] },
+    { group: "2.4 Maxima and Minima (Second Derivative Test)", label: "Exercise 2.4", kind: "exercise", refPrefixes: ["Ex 2.4 Q"] },
+    { group: "Miscellaneous Exercise 2", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc I Q"] },
+    { group: "Miscellaneous Exercise 2", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II Q"] },
+  ],
   // ── Ch.1 Differentiation (Part 2) — verified against Ch_01_DIFFERENTIATION.pdf
   //    (2026-07-15). 5 numbered sections, each ending in its own Exercise, then a
   //    terminal Miscellaneous Exercise 1 (I = 12 MCQ, II = subjective).

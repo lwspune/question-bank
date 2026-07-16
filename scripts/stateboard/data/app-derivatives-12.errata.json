@@ -1,0 +1,78 @@
+[
+  {
+    "ref": "Ex 2.2 Q.1 (i)",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(2.9168\\). That value is self-refuting — \\(2.9168^2 = 8.5077\\), not \\(8.95\\). With \\(a = 9\\) and \\(h = -0.05\\), \\(\\sqrt{8.95} \\approx 3 - \\frac{0.05}{6} = 2.9917\\), which agrees with the true value \\(2.99166\\) to 5 decimal places. The answer below is correct.]"
+  },
+  {
+    "ref": "Ex 2.2 Q.2 (i)",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(0.953\\). The true value of \\(\\sin 61^\\circ\\) is \\(0.87462\\), so the key cannot be right. The slip is visible: \\(0.866 + 0.0875 = 0.9535 \\approx 0.953\\) — the correction term \\(h\\,f'(a)\\) was taken ten times too large (\\(0.0875\\) instead of \\(0.0175 \\times 0.5 = 0.00875\\)). The answer below is correct.]"
+  },
+  {
+    "ref": "Ex 2.2 Q.2 (ii)",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(0.42423\\). The key contradicts itself — \\(\\sin(29^\\circ 30')\\) and \\(\\cos(60^\\circ 30')\\) are the same number (both \\(0.492424\\)), yet the book keys this part \\(0.42423\\) and part (iii) \\(0.4924\\). The digits of the correct value \\(0.49242\\) have been scrambled. The answer below is correct.]"
+  },
+  {
+    "ref": "Ex 2.2 Q.3 (i)",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(0.7845\\). The true value of \\(\\tan^{-1}(0.999)\\) is \\(0.78490\\). The key is also internally inconsistent: its own parts (ii) and (iii) print \\(0.7859 = \\frac{\\pi}{4} + 0.0005\\) using \\(\\pi = 3.1416\\), so this part must be \\(\\frac{\\pi}{4} - 0.0005 = 0.7849\\). The answer below is correct.]"
+  },
+  {
+    "ref": "Ex 2.2 Q.5 (iii)",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(3.006049\\). With \\(a = 1000\\) and \\(h = 16\\), \\(\\log_{10} 1016 \\approx 3 + 16(0.0004343) = 3.0069\\), agreeing with the true value \\(3.00689\\). The book also contradicts its own worked Ex. 6, which applies the identical method to \\(\\log_{10} 998\\). Back-solving the key's value requires \\(h = 13.93\\), which appears nowhere in the question. The answer below is correct.]"
+  },
+  {
+    "ref": "Misc II Q.21",
+    "bracket": "[Textbook answer-key error: the printed key gives Max \\(= \\frac{5}{4}\\), Min \\(= 1\\). The maximum is right, but the minimum is wrong: \\(f\\left(\\frac{3\\pi}{2}\\right) = \\cos^2\\frac{3\\pi}{2} + \\sin\\frac{3\\pi}{2} = -1\\), a value the function actually attains below the claimed minimum. Substituting \\(u = \\sin x \\in [-1, 1]\\) gives \\(f = 1 - u^2 + u\\), whose least value on \\([-1, 1]\\) is \\(-1\\) at \\(u = -1\\). The book evaluated only \\(x = \\frac{\\pi}{2}\\) from the branch \\(\\cos x = 0\\) and never checked the other root \\(x = \\frac{3\\pi}{2}\\); its value \\(1\\) is only a LOCAL minimum. The answer below is correct.]"
+  },
+  {
+    "ref": "Misc II Q.11",
+    "bracket": "[Textbook answer-key note: the printed key gives only \"Increasing in \\([e, \\infty)\\), Decreasing in \\((1, e)\\)\" and omits the \\((0, 1)\\) branch of the domain. The stem sets no domain restriction, so the domain is \\((0,1) \\cup (1,\\infty)\\), and \\(f'(x) = \\frac{\\log x - 1}{(\\log x)^2} < 0\\) on \\((0,1)\\) as well. Everything the key states is true, but it is incomplete; the answer below gives the full picture.]"
+  },
+  {
+    "ref": "Misc I Q.6",
+    "bracket": "[Textbook misprint: the question is incoherent as printed — \\(x = -1\\) cannot be an extreme point of \\(y = \\alpha \\log x + \\beta x^2 + x\\), because \\(\\log x\\) is undefined at \\(x = -1\\). Under the evidently intended reading \\(\\log|x|\\) (whose derivative is still \\(\\frac{1}{x}\\)), the conditions \\(y'(-1) = y'(2) = 0\\) determine \\(\\alpha = 2\\), \\(\\beta = -\\frac{1}{2}\\) uniquely — which is the book's own key, option C. The key is correct; only the stem is defective.]"
+  },
+  {
+    "ref": "2.1.2 SolvedEx.1 (iii)",
+    "bracket": "[Textbook misprint: in the normal-equation step the book prints \\(y - \\frac{3}{2\\sqrt{2}} = \\frac{2x}{2} - \\frac{2}{3\\sqrt{2}}\\). Expanding \\(\\frac{2}{3}\\left(x - \\frac{1}{\\sqrt{2}}\\right)\\) gives \\(\\frac{2x}{3}\\), not \\(\\frac{2x}{2}\\); the book's own next line uses \\(\\frac{2x}{3}\\), and the printed final answer is correct. The error is confined to that one intermediate line, preserved below as printed.]"
+  },
+  {
+    "ref": "2.1.3 SolvedEx.2",
+    "bracket": "[Textbook misprint: the book concludes that \"the radius of the spherical ball is increasing at the rate of \\(\\frac{1}{36}\\) cc/sec\". The unit is wrong — \\(\\frac{dR}{dt}\\) is a length rate and should read cm/sec; cc/sec is the unit of the GIVEN \\(\\frac{dV}{dt}\\), evidently carried over. The value \\(\\frac{1}{36}\\) is correct and the downstream working is unaffected.]"
+  },
+  {
+    "ref": "2.1.4 SolvedEx.1",
+    "bracket": "[Textbook misprint: the book writes the acceleration step as \\(a = \\frac{d}{dt}\\left(\\frac{dv}{dt}\\right)\\). That expression is the JERK (the third derivative of displacement); acceleration is \\(a = \\frac{dv}{dt} = \\frac{d}{dt}\\left(\\frac{ds}{dt}\\right)\\). The operation actually carried out on the right-hand side is \\(\\frac{dv}{dt}\\), and the printed answer \\(8\\) m/sec\\(^2\\) is correct.]"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.3",
+    "bracket": "[Textbook misprint: the degree-to-radian step prints \\(\\frac{\\pi}{6} + \\frac{0.1750^c}{2}\\). The question's own given constant is \\(1^\\circ = 0.0175^c\\), so \\(\\left(\\frac{1}{2}\\right)^\\circ = \\frac{0.0175}{2} = 0.00875\\); the numerator should read \\(0.0175\\), and \\(0.1750\\) is a digit transposition. The error does not propagate — the book's very next line uses the correct \\(h = 0.00875\\) and the final answer \\(0.5075775\\) is right.]"
+  },
+  {
+    "ref": "2.2.1 SolvedEx.6",
+    "bracket": "[Textbook misprint: the final line prints \\(f(998) = \\log(998) \\approx 2.9991314\\) with a bare \\(\\log\\), dropping the base-10 subscript used in the question and throughout the working. The value is correct.]"
+  },
+  {
+    "ref": "2.3.1 SolvedEx.2",
+    "bracket": "[Textbook misprint: the book prints \\(f'(x) = 2x - 4 = 2(x - 4)\\). The correct factoring is \\(2(x - 2)\\); the book's own next line uses \\(2(c - 2) = 0 \\Rightarrow c = 2\\), so the printed final answer is correct and the error is confined to that one step.]"
+  },
+  {
+    "ref": "2.3.1 SolvedEx.4",
+    "bracket": "[Textbook misprint: two defects in the printed working, neither affecting the answer. (1) Both evaluation lines are labelled \\(f(a)\\); the second — for \\(x = b = \\frac{5\\pi}{4}\\) — should read \\(f(b)\\). (2) The book states \\(f'(c) = 0\\) for some \\(c \\in \\left[\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right]\\) using a CLOSED interval, where Rolle's theorem guarantees \\(c\\) in the OPEN interval \\(\\left(\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right)\\). The conclusion \\(c = \\pi\\) is correct either way.]"
+  },
+  {
+    "ref": "2.4.1 SolvedEx.3",
+    "bracket": "[Textbook misprint: the book prints \"Hence, \\(x \\in (\\infty, -6)\\) or \\(x \\in (-2, \\infty)\\)\". The left interval is missing its minus sign and should read \\((-\\infty, -6)\\); the book's own preceding line correctly states that \\(f\\) is increasing if and only if \\(x < -6\\) or \\(x > -2\\). The conclusion is otherwise correct.]"
+  },
+  {
+    "ref": "2.4.3 SolvedEx.1",
+    "bracket": "[Textbook misprint: the book's printed working carries four corrupted lines, although its final answers (maximum \\(2\\) at \\(x = -1\\), minimum \\(-2\\) at \\(x = 1\\)) are correct. (1) A stray \\(\\Rightarrow 0\\) appears mid-chain in \\(x^2 - 1 = 0 \\Rightarrow 0 \\Rightarrow x^2 = 1\\). (2) \"\\(f'(x) > 0\\) for \\(x = 1 - h \\Rightarrow f(x)\\) is decreasing for \\(x > 1\\)\" contradicts the line above it, which correctly derives \\(f'(1 - h) < 0\\); it should read \\(f'(x) < 0\\), decreasing for \\(x < 1\\). (3) The mirrored line for \\(x = 1 + h\\) carries the same defect. (4) \"\\(f'(x) > 0\\) for \\(-1 < x < -1 + h\\)\" should be \\(< 0\\); as printed, both intervals around \\(x = -1\\) show \\(> 0\\), which would make \\(x = -1\\) not a maximum at all. The working is preserved below as printed.]"
+  },
+  {
+    "ref": "2.4.4 SolvedEx.3",
+    "bracket": "[Textbook misprint: the book prints the step \\(-1.5x + \\frac{24}{x^2} = 0 \\Rightarrow 1.5x^2 = 24\\). The leading term should be \\(-1.5\\), not \\(-1.5x\\) — the derivative established earlier gives \\(-1.5\\), and the printed conclusion \\(x^2 = 16 \\Rightarrow x = 4\\) follows only from \\(-1.5 + \\frac{24}{x^2} = 0\\). The final answer is correct.]"
+  },
+  {
+    "ref": "2.4.4 SolvedEx.5",
+    "bracket": "[Textbook misprint: the second-derivative evaluation prints \\(\\left(\\frac{d^2\\Delta}{dA^2}\\right)_{A = \\frac{\\pi}{2}} = -\\frac{bc}{2}\\sin\\frac{\\pi}{2} = -\\frac{bc}{a}\\). Since \\(\\sin\\frac{\\pi}{2} = 1\\), the value is \\(-\\frac{bc}{2}\\); the denominator \\(a\\) is a typesetting slip (\\(a\\) is the triangle's third side in the accompanying figure). The sign is still negative, so the conclusion \\(A = \\frac{\\pi}{2}\\) stands.]"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "86230a4b-1cf3-4092-bb47-548f40e9d1c7",
+    "ref": "Ex 2.2 Q.1 (i)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(2.9168\\). That value is self-refuting — \\(2.9168^2 = 8.5077\\), not \\(8.95\\). With \\(a = 9\\) and \\(h = -0.05\\), \\(\\sqrt{8.95} \\approx 3 - \\frac{0.05}{6} = 2.9917\\), which agrees with the true value \\(2.99166\\) to 5 decimal places. The answer below is correct.]\n\nLet \\(f(x) = \\sqrt{x}\\). Take \\(a = 9\\), \\(h = -0.05\\), so \\(a + h = 8.95\\).\n\\(f(a) = \\sqrt{9} = 3\\)\n\\(f'(x) = \\frac{1}{2\\sqrt{x}}\\), so \\(f'(9) = \\frac{1}{2 \\times 3} = \\frac{1}{6}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\sqrt{8.95} \\approx 3 + (-0.05)\\left(\\frac{1}{6}\\right) = 3 - 0.00833 = 2.99167\\)\n\\(\\therefore \\sqrt{8.95} \\approx 2.9917\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "1d30d193-a216-4f5f-a2a5-d1fb1cce1ec5",
+    "ref": "Ex 2.2 Q.1 (ii)",
+    "solution": "Let \\(f(x) = \\sqrt[3]{x} = x^{1/3}\\). Take \\(a = 27\\), \\(h = 1\\), so \\(a + h = 28\\).\n\\(f(a) = \\sqrt[3]{27} = 3\\)\n\\(f'(x) = \\frac{1}{3}x^{-2/3} = \\frac{1}{3\\left(\\sqrt[3]{x}\\right)^{2}}\\), so \\(f'(27) = \\frac{1}{3 \\times 3^{2}} = \\frac{1}{27}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\sqrt[3]{28} \\approx 3 + (1)\\left(\\frac{1}{27}\\right) = 3 + 0.03704 = 3.03704\\)\n\\(\\therefore \\sqrt[3]{28} \\approx 3.0370\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0478f19e-8a87-47be-a361-e95d4b4fb729",
+    "ref": "Ex 2.2 Q.1 (iii)",
+    "solution": "Let \\(f(x) = \\sqrt[5]{x} = x^{1/5}\\). Take \\(a = 32\\), \\(h = -0.02\\), so \\(a + h = 31.98\\).\n\\(f(a) = \\sqrt[5]{32} = 2\\)\n\\(f'(x) = \\frac{1}{5}x^{-4/5} = \\frac{1}{5\\left(\\sqrt[5]{x}\\right)^{4}}\\), so \\(f'(32) = \\frac{1}{5 \\times 2^{4}} = \\frac{1}{80}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\sqrt[5]{31.98} \\approx 2 + (-0.02)\\left(\\frac{1}{80}\\right) = 2 - 0.00025 = 1.99975\\)\n\\(\\therefore \\sqrt[5]{31.98} \\approx 1.99975\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "e5103bcb-a38e-49bf-b234-40de9fe21c0c",
+    "ref": "Ex 2.2 Q.1 (iv)",
+    "solution": "Let \\(f(x) = x^{4}\\). Take \\(a = 4\\), \\(h = -0.03\\), so \\(a + h = 3.97\\).\n\\(f(a) = 4^{4} = 256\\)\n\\(f'(x) = 4x^{3}\\), so \\(f'(4) = 4 \\times 4^{3} = 4 \\times 64 = 256\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\((3.97)^{4} \\approx 256 + (-0.03)(256) = 256 - 7.68 = 248.32\\)\n\\(\\therefore (3.97)^{4} \\approx 248.32\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "457816ac-1425-43c5-a648-40d5dd6c8bb0",
+    "ref": "Ex 2.2 Q.1 (v)",
+    "solution": "Let \\(f(x) = x^{3}\\). Take \\(a = 4\\), \\(h = 0.01\\), so \\(a + h = 4.01\\).\n\\(f(a) = 4^{3} = 64\\)\n\\(f'(x) = 3x^{2}\\), so \\(f'(4) = 3 \\times 4^{2} = 48\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\((4.01)^{3} \\approx 64 + (0.01)(48) = 64 + 0.48 = 64.48\\)\n\\(\\therefore (4.01)^{3} \\approx 64.48\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "fe5897c0-a640-44c7-a864-120fcba5d213",
+    "ref": "Ex 2.2 Q.2 (i)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(0.953\\). The true value of \\(\\sin 61^\\circ\\) is \\(0.87462\\), so the key cannot be right. The slip is visible: \\(0.866 + 0.0875 = 0.9535 \\approx 0.953\\) — the correction term \\(h\\,f'(a)\\) was taken ten times too large (\\(0.0875\\) instead of \\(0.0175 \\times 0.5 = 0.00875\\)). The answer below is correct.]\n\nLet \\(f(x) = \\sin x\\), with \\(x\\) in radians. Take \\(a = 60^\\circ = \\frac{\\pi}{3}\\) and \\(h = 1^\\circ = 0.0175^{c}\\) (as given), so \\(a + h = 61^\\circ\\).\n\\(f(a) = \\sin 60^\\circ = \\frac{\\sqrt{3}}{2} = \\frac{1.732}{2} = 0.866\\)\n\\(f'(x) = \\cos x\\), so \\(f'(60^\\circ) = \\cos 60^\\circ = 0.5\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\sin 61^\\circ \\approx 0.866 + (0.0175)(0.5) = 0.866 + 0.00875 = 0.87475\\)\n\\(\\therefore \\sin 61^\\circ \\approx 0.87475\\)\nNote: \\(h\\) must be in radians, which is why the given conversion \\(1^\\circ = 0.0175^{c}\\) is used.",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b20b43f5-ee30-4070-859b-290d39217f4d",
+    "ref": "Ex 2.2 Q.2 (ii)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(0.42423\\). The key contradicts itself — \\(\\sin(29^\\circ 30')\\) and \\(\\cos(60^\\circ 30')\\) are the same number (both \\(0.492424\\)), yet the book keys this part \\(0.42423\\) and part (iii) \\(0.4924\\). The digits of the correct value \\(0.49242\\) have been scrambled. The answer below is correct.]\n\nLet \\(f(x) = \\sin x\\), with \\(x\\) in radians. Take \\(a = 30^\\circ\\) and \\(h = -30' = -\\left(\\frac{1}{2}\\right)^\\circ\\).\nIn radians, \\(h = -\\frac{1}{2} \\times 0.0175 = -0.00875^{c}\\), so \\(a + h = 29^\\circ 30'\\).\n\\(f(a) = \\sin 30^\\circ = 0.5\\)\n\\(f'(x) = \\cos x\\), so \\(f'(30^\\circ) = \\cos 30^\\circ = \\frac{\\sqrt{3}}{2} = \\frac{1.732}{2} = 0.866\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\sin(29^\\circ 30') \\approx 0.5 + (-0.00875)(0.866) = 0.5 - 0.0075775 = 0.4924225\\)\n\\(\\therefore \\sin(29^\\circ 30') \\approx 0.4924\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b678a6df-6eeb-4687-bca0-be28cf30dc4b",
+    "ref": "Ex 2.2 Q.2 (iii)",
+    "solution": "Let \\(f(x) = \\cos x\\), with \\(x\\) in radians. Take \\(a = 60^\\circ\\) and \\(h = 30' = \\left(\\frac{1}{2}\\right)^\\circ\\).\nIn radians, \\(h = \\frac{1}{2} \\times 0.0175 = 0.00875^{c}\\), so \\(a + h = 60^\\circ 30'\\).\n\\(f(a) = \\cos 60^\\circ = 0.5\\)\n\\(f'(x) = -\\sin x\\), so \\(f'(60^\\circ) = -\\sin 60^\\circ = -\\frac{\\sqrt{3}}{2} = -0.866\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\cos(60^\\circ 30') \\approx 0.5 + (0.00875)(-0.866) = 0.5 - 0.0075775 = 0.4924225\\)\n\\(\\therefore \\cos(60^\\circ 30') \\approx 0.4924\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "0784d608-4bf7-4ade-ba33-5b71daa2db53",
+    "ref": "Ex 2.2 Q.2 (iv)",
+    "solution": "Let \\(f(x) = \\tan x\\), with \\(x\\) in radians. Take \\(a = 45^\\circ\\) and \\(h = 40' = \\left(\\frac{40}{60}\\right)^\\circ = \\left(\\frac{2}{3}\\right)^\\circ\\).\nIn radians, \\(h = \\frac{2}{3} \\times 0.0175 = 0.0116667^{c}\\), so \\(a + h = 45^\\circ 40'\\).\n\\(f(a) = \\tan 45^\\circ = 1\\)\n\\(f'(x) = \\sec^{2} x\\), so \\(f'(45^\\circ) = \\sec^{2} 45^\\circ = \\left(\\sqrt{2}\\right)^{2} = 2\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\tan(45^\\circ 40') \\approx 1 + (0.0116667)(2) = 1 + 0.0233333 = 1.0233333\\)\n\\(\\therefore \\tan(45^\\circ 40') \\approx 1.0233\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "017db0c8-39b9-493b-89c6-e4abab2b04e1",
+    "ref": "Ex 2.2 Q.3 (i)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(0.7845\\). The true value of \\(\\tan^{-1}(0.999)\\) is \\(0.78490\\). The key is also internally inconsistent: its own parts (ii) and (iii) print \\(0.7859 = \\frac{\\pi}{4} + 0.0005\\) using \\(\\pi = 3.1416\\), so this part must be \\(\\frac{\\pi}{4} - 0.0005 = 0.7849\\). The answer below is correct.]\n\nLet \\(f(x) = \\tan^{-1} x\\). Take \\(a = 1\\), \\(h = -0.001\\), so \\(a + h = 0.999\\).\n\\(f(a) = \\tan^{-1} 1 = \\frac{\\pi}{4}\\)\n\\(f'(x) = \\frac{1}{1 + x^{2}}\\), so \\(f'(1) = \\frac{1}{1 + 1} = \\frac{1}{2}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\tan^{-1}(0.999) \\approx \\frac{\\pi}{4} + (-0.001)\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{4} - 0.0005\\)\nTaking \\(\\pi = 3.1416\\), \\(\\frac{\\pi}{4} = 0.7854\\):\n\\(\\tan^{-1}(0.999) \\approx 0.7854 - 0.0005 = 0.7849\\)\n\\(\\therefore \\tan^{-1}(0.999) \\approx \\frac{\\pi}{4} - 0.0005 = 0.7849\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "f861a5a2-c2c4-4cdf-9f9c-f5a2ec24b4e0",
+    "ref": "Ex 2.2 Q.3 (ii)",
+    "solution": "Let \\(f(x) = \\cot^{-1} x\\). Take \\(a = 1\\), \\(h = -0.001\\), so \\(a + h = 0.999\\).\n\\(f(a) = \\cot^{-1} 1 = \\frac{\\pi}{4}\\)\n\\(f'(x) = \\frac{-1}{1 + x^{2}}\\), so \\(f'(1) = \\frac{-1}{1 + 1} = -\\frac{1}{2}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\cot^{-1}(0.999) \\approx \\frac{\\pi}{4} + (-0.001)\\left(-\\frac{1}{2}\\right) = \\frac{\\pi}{4} + 0.0005\\)\nTaking \\(\\pi = 3.1416\\), \\(\\frac{\\pi}{4} = 0.7854\\):\n\\(\\cot^{-1}(0.999) \\approx 0.7854 + 0.0005 = 0.7859\\)\n\\(\\therefore \\cot^{-1}(0.999) \\approx \\frac{\\pi}{4} + 0.0005 = 0.7859\\)\nNote: \\(\\cot^{-1}\\) is a decreasing function, so a decrease in \\(x\\) raises the value, unlike \\(\\tan^{-1}\\) in part (i).",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "ece311aa-bd6d-4937-9025-fc66b9887969",
+    "ref": "Ex 2.2 Q.3 (iii)",
+    "solution": "Let \\(f(x) = \\tan^{-1} x\\). Take \\(a = 1\\), \\(h = 0.001\\), so \\(a + h = 1.001\\).\n\\(f(a) = \\tan^{-1} 1 = \\frac{\\pi}{4}\\)\n\\(f'(x) = \\frac{1}{1 + x^{2}}\\), so \\(f'(1) = \\frac{1}{1 + 1} = \\frac{1}{2}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\tan^{-1}(1.001) \\approx \\frac{\\pi}{4} + (0.001)\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{4} + 0.0005\\)\nTaking \\(\\pi = 3.1416\\), \\(\\frac{\\pi}{4} = 0.7854\\):\n\\(\\tan^{-1}(1.001) \\approx 0.7854 + 0.0005 = 0.7859\\)\n\\(\\therefore \\tan^{-1}(1.001) \\approx \\frac{\\pi}{4} + 0.0005 = 0.7859\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "2d96e0c9-7b0e-4079-b4a8-98e9c49710ae",
+    "ref": "Ex 2.2 Q.4 (i)",
+    "solution": "Let \\(f(x) = e^{x}\\). Take \\(a = 1\\), \\(h = -0.005\\), so \\(a + h = 0.995\\).\n\\(f(a) = e^{1} = e\\)\n\\(f'(x) = e^{x}\\), so \\(f'(1) = e\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(e^{0.995} \\approx e + (-0.005)e = e(1 - 0.005) = 0.995\\,e\\)\nTaking the standard value \\(e = 2.7183\\):\n\\(e^{0.995} \\approx 0.995 \\times 2.7183 = 2.70471\\)\n\\(\\therefore e^{0.995} \\approx 2.7047\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "514545ff-dcc4-418a-b4a9-6d7b3e599978",
+    "ref": "Ex 2.2 Q.4 (ii)",
+    "solution": "Let \\(f(x) = e^{x}\\). Take \\(a = 2\\), \\(h = 0.1\\), so \\(a + h = 2.1\\).\n\\(f(a) = e^{2} = 7.389\\) (as given)\n\\(f'(x) = e^{x}\\), so \\(f'(2) = e^{2} = 7.389\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(e^{2.1} \\approx 7.389 + (0.1)(7.389) = 7.389(1 + 0.1) = 7.389 \\times 1.1 = 8.1279\\)\n\\(\\therefore e^{2.1} \\approx 8.1279\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "28b4250a-2d19-4d71-8163-bf5a84be7778",
+    "ref": "Ex 2.2 Q.4 (iii)",
+    "solution": "Let \\(f(x) = 3^{x}\\). Take \\(a = 2\\), \\(h = 0.01\\), so \\(a + h = 2.01\\).\n\\(f(a) = 3^{2} = 9\\)\n\\(f'(x) = 3^{x}\\log 3\\), so \\(f'(2) = 9 \\times \\log 3 = 9 \\times 1.0986\\) (using the given \\(\\log 3 = 1.0986\\), a natural logarithm)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(3^{2.01} \\approx 9 + (0.01)(9 \\times 1.0986) = 9 + 0.098874 = 9.098874\\)\n\\(\\therefore 3^{2.01} \\approx 9.0989\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "d00c3b0a-21b4-441f-a044-4c28df4f590d",
+    "ref": "Ex 2.2 Q.5 (i)",
+    "solution": "Let \\(f(x) = \\log_e x\\). Take \\(a = 100\\), \\(h = 1\\), so \\(a + h = 101\\).\n\\(f(a) = \\log_e 100 = \\log_e\\left(10^{2}\\right) = 2\\log_e 10 = 2 \\times 2.3026 = 4.6052\\) (using the given \\(\\log_e 10 = 2.3026\\))\n\\(f'(x) = \\frac{1}{x}\\), so \\(f'(100) = \\frac{1}{100} = 0.01\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\log_e(101) \\approx 4.6052 + (1)(0.01) = 4.6152\\)\n\\(\\therefore \\log_e(101) \\approx 4.6152\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "dcf131b1-8e62-4b8a-bcd7-23a0b406d443",
+    "ref": "Ex 2.2 Q.5 (ii)",
+    "solution": "Let \\(f(x) = \\log_e x\\). Take \\(a = 9\\), \\(h = 0.01\\), so \\(a + h = 9.01\\).\n\\(f(a) = \\log_e 9 = \\log_e\\left(3^{2}\\right) = 2\\log_e 3 = 2 \\times 1.0986 = 2.1972\\) (using the given \\(\\log 3 = 1.0986\\), a natural logarithm)\n\\(f'(x) = \\frac{1}{x}\\), so \\(f'(9) = \\frac{1}{9}\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\log_e(9.01) \\approx 2.1972 + (0.01)\\left(\\frac{1}{9}\\right) = 2.1972 + 0.001111 = 2.198311\\)\n\\(\\therefore \\log_e(9.01) \\approx 2.1983\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "68bd1251-4e02-43e3-90b1-2a00fec1f771",
+    "ref": "Ex 2.2 Q.5 (iii)",
+    "solution": "[Textbook answer-key error: the printed key gives \\(3.006049\\). With \\(a = 1000\\) and \\(h = 16\\), \\(\\log_{10} 1016 \\approx 3 + 16(0.0004343) = 3.0069\\), agreeing with the true value \\(3.00689\\). The book also contradicts its own worked Ex. 6, which applies the identical method to \\(\\log_{10} 998\\). Back-solving the key's value requires \\(h = 13.93\\), which appears nowhere in the question. The answer below is correct.]\n\nLet \\(f(x) = \\log_{10} x\\). Take \\(a = 1000\\), \\(h = 16\\), so \\(a + h = 1016\\).\n\\(f(a) = \\log_{10} 1000 = \\log_{10}\\left(10^{3}\\right) = 3\\)\nSince \\(\\log_{10} x = \\left(\\log_{10} e\\right)\\log_e x\\), we get \\(f'(x) = \\frac{\\log_{10} e}{x}\\).\nSo \\(f'(1000) = \\frac{0.4343}{1000} = 0.0004343\\) (using the given \\(\\log_{10} e = 0.4343\\))\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(\\log_{10}(1016) \\approx 3 + (16)(0.0004343) = 3 + 0.0069488 = 3.0069488\\)\n\\(\\therefore \\log_{10}(1016) \\approx 3.0069\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "85258f97-d5ef-4f74-b645-da11eadc4a39",
+    "ref": "Ex 2.2 Q.6 (i)",
+    "solution": "Let \\(f(x) = x^{3} - 3x + 5\\). Take \\(a = 2\\), \\(h = -0.01\\), so \\(a + h = 1.99\\).\n\\(f(a) = f(2) = 2^{3} - 3(2) + 5 = 8 - 6 + 5 = 7\\)\n\\(f'(x) = 3x^{2} - 3\\), so \\(f'(2) = 3(4) - 3 = 9\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(f(1.99) \\approx 7 + (-0.01)(9) = 7 - 0.09 = 6.91\\)\n\\(\\therefore f(1.99) \\approx 6.91\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  },
+  {
+    "id": "b62094bf-33d4-45fc-be26-dd2687b30df3",
+    "ref": "Ex 2.2 Q.6 (ii)",
+    "solution": "Let \\(f(x) = x^{3} + 5x^{2} - 7x + 10\\). Take \\(a = 1\\), \\(h = 0.12\\), so \\(a + h = 1.12\\).\n\\(f(a) = f(1) = 1 + 5 - 7 + 10 = 9\\)\n\\(f'(x) = 3x^{2} + 10x - 7\\), so \\(f'(1) = 3 + 10 - 7 = 6\\)\nUsing \\(f(a + h) \\approx f(a) + h\\,f'(a)\\):\n\\(f(1.12) \\approx 9 + (0.12)(6) = 9 + 0.72 = 9.72\\)\n\\(\\therefore f(1.12) \\approx 9.72\\)",
+    "diagramWouldHelp": false,
+    "diagramNote": ""
+  }
+]

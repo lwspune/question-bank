@@ -20,7 +20,9 @@ Add a `CHAPTERS[<id>]` entry: `chapterName`, `subjectName` (must exist), `source
 arc, not the book's raw section labels — split a section if it fuses distinct skills).
 
 ### 2. Render — `render.ts <id>`
-Full-page PNGs → `out/<id>/p-NN.png` (gitignored). The textbook is single-column.
+Full-page PNGs → `out/<id>/p-NN.png` (gitignored).
+
+**Most pages are TWO-COLUMN, and the layout VARIES within a chapter** (Differentiation 60 of 64 pages two-col; Vectors 33 of 61; App-of-Derivatives 21 of 30 with a single-column Miscellaneous). Tell each agent to read the **LEFT column fully, then the RIGHT** — reading across scrambles question order and can shred a solved example. **Do NOT hand agents a per-page column map derived from a block-geometry heuristic**: on App-of-Derivatives a `wide-block` heuristic mislabelled three pages, and each time the agent caught it only because it *looked at the page*. Say "these pages are usually two-column — verify per page yourself" and let them check.
 
 **Map blocks by (page, y) — NOT by page.** Sections start MID-PAGE, so a plain header scan
 gives you a *page* list, not a *block* map, and any band you derive from it will silently drop
@@ -91,6 +93,13 @@ PDF only arrives later, run it as a post-flip pass (it's idempotent).
    - **`simplify()` returning non-zero is NOT evidence of inequality.** Constraint-curve identities
      only collapse when reduced against the given relation / evaluated at points solved ONTO the
      curve. This alone would have manufactured 3 false "our answer is wrong" findings on Ex 1.3.
+   - **A sympy `solve`/`solveset` MISS is not evidence either — same trap, different function.**
+     On App-of-Derivatives Ex 2.3 it returned *no* roots in `(0, 2π)` for one trig row and only
+     `π/4` (missing `5π/4`) for another — principal-branch artifacts, not mathematics. Taken at
+     face value they'd have produced 2 bogus `OUR-ANSWER-WRONG` findings. **Test the claimed value
+     directly** (`f'(3π/4)` came back ~1e-41 = zero) and scan the interval numerically for roots,
+     rather than trusting an empty/short solution set. Generally: a CAS returning "nothing" is a
+     question, never a verdict.
    - **Expect ~20 apparent disagreements per chapter to dissolve** on equivalence testing
      (`2\cdot4^x\log4` ≡ `4^{x+1}\log2`), and treat a book answer that prints ONE principal branch
      where ours documents ± as AGREE, not an error.

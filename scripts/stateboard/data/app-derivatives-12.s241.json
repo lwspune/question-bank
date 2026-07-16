@@ -1,0 +1,29 @@
+[
+  {
+    "ref": "2.4.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Show that the function \\(f(x) = x^3 + 10x + 7\\) for \\(x \\in R\\) is strictly increasing.",
+    "solution": "Given that \\(f(x) = x^3 + 10x + 7\\)\nDifferentiate w. r. t. x.\n\\(f'(x) = 3x^2 + 10\\)\nHere, \\(3x^2 \\geq 0\\) for all \\(x \\in R\\) and \\(10 > 0\\).\n\\(\\therefore\\) \\(3x^2 + 10 > 0 \\Rightarrow f'(x) > 0\\)\nThus \\(f(x)\\) is a strictly increasing function."
+  },
+  {
+    "ref": "2.4.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function \\(f(x) = x^3 + 6x^2 + 12x - 5\\) is increasing or decreasing for all \\(x \\in R\\).",
+    "solution": "Given that \\(f(x) = x^3 + 6x^2 + 12x - 5\\)\nDifferentiate w. r. t. x.\n\\(f'(x) = 3x^2 + 12x + 12 = 3(x^2 + 4x + 4)\\)\n\\(f'(x) = 3(x + 2)^2\\)\n\\(3(x + 2)^2\\) is always positive for \\(x \\neq -2\\)\n\\(\\therefore f'(x) \\geq 0\\) for all \\(x \\in R\\)\nHence \\(f(x)\\) is an increasing function for all \\(x \\in R\\)."
+  },
+  {
+    "ref": "2.4.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(x\\), for which the funciton \\(f(x) = x^3 + 12x^2 + 36x + 6\\) is (i) monotonically increasing. (ii) monotonically decreasing.",
+    "solution": "[Textbook misprint: the book prints \"Hence, \\(x \\in (\\infty, -6)\\) or \\(x \\in (-2, \\infty)\\)\". The left interval is missing its minus sign and should read \\((-\\infty, -6)\\); the book's own preceding line correctly states that \\(f\\) is increasing if and only if \\(x < -6\\) or \\(x > -2\\). The conclusion is otherwise correct.]\n\nGiven that \\(f(x) = x^3 + 12x^2 + 36x + 6\\)\nDifferentiate w. r. t. x.\n\\(f'(x) = 3x^2 + 24x + 36\\)\n\\(= 3(x^2 + 8x + 12)\\)\n\\(f'(x) = 3(x + 2)(x + 6)\\)\n(i) \\(f(x)\\) is monotonically increasing if \\(f'(x) > 0\\)\ni.e. \\(3(x + 2)(x + 6) > 0\\), \\((x + 2)(x + 6) > 0\\)\nthen either \\((x + 2) < 0\\) and \\((x + 6) < 0\\) OR \\((x + 2) > 0\\) and \\((x + 6) > 0\\)\nCase (I) : \\(x + 2 < 0\\) and \\(x + 6 < 0\\)\n\\(x < -2\\) and \\(x < -6\\)\nThus for every \\(x < -6\\), \\((x + 2)(x + 6) > 0\\), hence \\(f\\) is monotonically increasing.\nCase (II) : \\(x + 2 > 0\\) and \\(x + 6 > 0\\)\n\\(x > -2\\) and \\(x > -6\\)\nThus for every \\(x > -2\\), \\((x + 2)(x + 6) > 0\\) and \\(f\\) is monotonically increasing.\n\\(\\therefore\\) From Case (I) and Case (II), \\(f(x)\\) is monotonically increasing if and only if \\(x < -6\\) or \\(x > -2\\).\nHence, \\(x \\in (\\infty, -6)\\) or \\(x \\in (-2, \\infty) \\Rightarrow f\\) is monotonically increasing.\n(ii) \\(f(x)\\) is said to be monotonically decreasing if \\(f'(x) < 0\\)\ni.e. \\(3(x + 2)(x + 6) < 0\\), \\((x + 2)(x + 6) < 0\\)\nthen either \\((x + 2) < 0\\) and \\((x + 6) > 0\\) OR \\((x + 2) > 0\\) and \\((x + 6) < 0\\)\nCase (I) : \\(x + 2 < 0\\) and \\(x + 6 > 0\\)\n\\(x < -2\\) and \\(x > -6\\)\nThus for \\(x \\in (-6, -2)\\), \\(f\\) is monotonically decreasing.\nCase (II) : \\(x + 2 > 0\\) and \\(x + 6 < 0\\)\n\\(x > -2\\) and \\(x < -6\\)\n\\(\\therefore\\) This case does not arise. . . . [check. why ?]"
+  }
+]

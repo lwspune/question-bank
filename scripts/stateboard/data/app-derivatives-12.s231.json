@@ -1,0 +1,51 @@
+[
+  {
+    "ref": "2.3.1 SolvedEx.1 (i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rolle's Theorem",
+    "difficulty": "EASY",
+    "setLabel": "2.3.1 SolvedEx.1",
+    "context": "Check whether conditions of Rolle's theorem are satisfied by the following functions.",
+    "stem": "\\(f(x) = 2x^3 - 5x^2 + 3x + 2\\), \\(x \\in \\left[0, \\dfrac{3}{2}\\right]\\)",
+    "solution": "Given that \\(f(x) = 2x^3 - 5x^2 + 3x + 2\\)   . . . (I)\n\\(f(x)\\) is a polynomial which is continuous on \\(\\left[0, \\dfrac{3}{2}\\right]\\) and it is differentiable on \\(\\left(0, \\dfrac{3}{2}\\right)\\).\nLet \\(a = 0\\), and \\(b = \\dfrac{3}{2}\\),\nFor \\(x = a = 0\\) from (I) we get,\n\\(f(a) = f(0) = 2(0)^3 - 5(0)^2 + 3(0) + 2 = 2\\)\nFor \\(x = b = \\left(\\dfrac{3}{2}\\right)\\) from (I) we get,\n\\(f(b) = f\\left(\\dfrac{3}{2}\\right) = 2\\left(\\dfrac{3}{2}\\right)^3 - 5\\left(\\dfrac{3}{2}\\right)^2 + 3\\left(\\dfrac{3}{2}\\right) + 2 = \\dfrac{54}{8} - \\dfrac{45}{4} + \\dfrac{9}{2} + 2\\)\n\\(f(b) = f\\left(\\dfrac{3}{2}\\right) = \\dfrac{54 - 90 + 36}{8} + 2 = 2\\)\nSo, here \\(f(a) = f(b)\\) i.e. \\(f(0) = f\\left(\\dfrac{3}{2}\\right) = 2\\)\nHence conditions of Rolle's Theorem are satified."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.1 (ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rolle's Theorem",
+    "difficulty": "EASY",
+    "setLabel": "2.3.1 SolvedEx.1",
+    "context": "Check whether conditions of Rolle's theorem are satisfied by the following functions.",
+    "stem": "\\(f(x) = x^2 - 2x + 3\\), \\(x \\in [1, 4]\\)",
+    "solution": "Given that \\(f(x) = x^2 - 2x + 3\\)   . . . (I)\n\\(f(x)\\) is a polynomial which is continuous on \\([1, 4]\\) and it is differentiable on \\((1, 4)\\).\nLet \\(a = 1\\), and \\(b = 4\\)\nFor \\(x = a = 1\\) from (I) we get,\n\\(f(a) = f(1) = (1)^2 - 2(1) + 3 = 2\\)\nFor \\(x = b = 4\\) from (I) we get,\n\\(f(b) = f(4) = (4)^2 - 2(4) + 3 = 11\\)\nSo, here \\(f(a) \\neq f(b)\\) i.e. \\(f(1) \\neq f(4)\\)\nHence conditions of Rolle's theorem are not satisfied."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rolle's Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Verify Rolle's theorem for the function \\(f(x) = x^2 - 4x + 10\\) on \\([0, 4]\\).",
+    "solution": "[Textbook misprint: the book prints \\(f'(x) = 2x - 4 = 2(x - 4)\\). The correct factoring is \\(2(x - 2)\\); the book's own next line uses \\(2(c - 2) = 0 \\Rightarrow c = 2\\), so the printed final answer is correct and the error is confined to that one step.]\n\nGiven that \\(f(x) = x^2 - 4x + 10\\)   . . . (I)\n\\(f(x)\\) is a polynomial which is continuous on \\([0, 4]\\) and it is differentiable on \\((0, 4)\\).\nLet \\(a = 0\\), and \\(b = 4\\)\nFor \\(x = a = 0\\) from (I) we get,\n\\(f(a) = f(0) = (0)^2 - 4(0) + 10 = 10\\)\nFor \\(x = b = 4\\) from (I) we get,\n\\(f(b) = f(4) = (4)^2 - 4(4) + 10 = 10\\)\nSo, here \\(f(a) = f(b)\\)   i.e. \\(f(0) = f(4) = 10\\)\nAll the conditions of Rolle's theorem are satisfied.\nTo get the value of \\(c\\), we should have\n\\(f'(c) = 0\\) for some \\(c \\in (0, 4)\\)\nDifferentiate (I) \\(w.r.t.\\) \\(x\\).\n\\(f'(x) = 2x - 4 = 2(x - 4)\\)\nNow, for \\(x = c\\),\n\\(f'(c) = 0 \\Rightarrow 2(c - 2) = 0 \\Rightarrow c = 2\\)\nAlso \\(c = 2 \\in (0, 4)\\)\nThus Rolle's theorem is verified."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rolle's Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Given an interval \\([a, b]\\) that satisfies hypothesis of Rolle's theorem for the function \\(f(x) = x^3 - 2x^2 + 3\\). It is known that \\(a = 0\\). Find the value of \\(b\\).",
+    "solution": "Given that \\(f(x) = x^3 - 2x^2 + 3\\)   . . . (I)\nLet \\(g(x) = x^3 - 2x^2 = x^2(x - 2)\\)\nFrom (I), \\(f(x) = g(x) + 3\\)\nWe see that \\(g(x)\\) becomes zero for \\(x = 0\\) and \\(x = 2\\).\nWe observe that for \\(x = 0\\),\n\\(f(0) = g(0) + 3 = 3\\)\nand for \\(x = 2\\),\n\\(f(2) = g(2) + 3 = 3\\)\n\\(\\therefore\\) We can write that \\(f(0) = f(2) = 3\\)\nIt is obvious that the function \\(f(x)\\) is everywhere continuous and differentiable as a cubic polynomial. Consequently, it satisfies all the conditions of Rolle's theorem on the interval \\([0, 2]\\).\nSo \\(b = 2\\)."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rolle's Theorem",
+    "difficulty": "HARD",
+    "stem": "Verify Rolle's theorem for the function \\(f(x) = e^x(\\sin x - \\cos x)\\) on \\(\\left[\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right]\\).",
+    "solution": "[Textbook misprint: two defects in the printed working, neither affecting the answer. (1) Both evaluation lines are labelled \\(f(a)\\); the second — for \\(x = b = \\frac{5\\pi}{4}\\) — should read \\(f(b)\\). (2) The book states \\(f'(c) = 0\\) for some \\(c \\in \\left[\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right]\\) using a CLOSED interval, where Rolle's theorem guarantees \\(c\\) in the OPEN interval \\(\\left(\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right)\\). The conclusion \\(c = \\pi\\) is correct either way.]\n\nGiven that, \\(f(x) = e^x(\\sin x - \\cos x)\\)   . . . (I)\nWe know that \\(e^x\\), \\(\\sin x\\) and \\(\\cos x\\) are continuous and differentiable on their domains. Therefore \\(f(x)\\) is continuous and differentiable on \\(\\left[\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right]\\) and \\(\\left(\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right)\\) respectively.\nLet \\(a = \\dfrac{\\pi}{4}\\), and \\(b = \\dfrac{5\\pi}{4}\\)\nFor \\(x = a = \\dfrac{\\pi}{4}\\) from (I) we get,\n\\(f(a) = f\\left(\\dfrac{\\pi}{4}\\right) = e^{\\frac{\\pi}{4}}\\left[\\sin\\left(\\dfrac{\\pi}{4}\\right) - \\cos\\left(\\dfrac{\\pi}{4}\\right)\\right] = e^{\\frac{\\pi}{4}}\\left(\\dfrac{1}{\\sqrt{2}} - \\dfrac{1}{\\sqrt{2}}\\right) = 0\\)\nFor \\(x = b = \\left(\\dfrac{5\\pi}{4}\\right)\\) from (I) we get,\n\\(f(a) = f\\left(\\dfrac{5\\pi}{4}\\right) = e^{\\frac{5\\pi}{4}}\\left[\\sin\\left(\\dfrac{5\\pi}{4}\\right) - \\cos\\left(\\dfrac{5\\pi}{4}\\right)\\right] = e^{\\frac{5\\pi}{4}}\\left(-\\dfrac{1}{\\sqrt{2}} + \\dfrac{1}{\\sqrt{2}}\\right) = 0\\)\n\\(\\therefore\\) \\(f(a) = f(b)\\)   i.e. \\(f\\left(\\dfrac{\\pi}{4}\\right) = f\\left(\\dfrac{5\\pi}{4}\\right)\\).\nAll the conditions of Rolle's theorem are satisfied.\nTo get the value of \\(c\\), we should have \\(f'(c) = 0\\) for some \\(c \\in \\left[\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right]\\).\nDifferentiate (I) \\(w.r.t.\\) \\(x\\).\n\\(f'(x) = e^x(\\cos x + \\sin x) + (\\sin x - \\cos x)e^x = 2e^x \\sin x\\)\nNow, for \\(x = c\\), \\(f'(c) = 0 \\Rightarrow 2e^c \\sin c = 0\\). As \\(e^c \\neq 0\\) for any \\(c \\in R\\)\n\\(\\sin c = 0 \\Rightarrow c = 0, \\pm\\pi, \\pm 2\\pi, \\pm 3\\pi, \\ldots\\)\nIt is clearly seen that \\(\\pi \\in \\left[\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right] \\therefore c = \\pi\\)\nThus Rolle's theorem is verified."
+  }
+]
