@@ -21,9 +21,15 @@ describe.skipIf(!HAS_ENV)("queryQuestionsByIds (against LWS Pune seed)", () => {
       process.env.SUPABASE_SERVICE_ROLE_KEY!,
       { auth: { persistSession: false } }
     );
+    // Deterministically sample MCQ questions: the option-hydration assertion
+    // below requires a 4-option MCQ, and the bank now contains subjective
+    // (zero-option) rows (State Board), so an unfiltered/unordered LIMIT could
+    // otherwise surface a subjective row at [0] and fail spuriously.
     const { data } = await client
       .from("questions")
       .select("id")
+      .eq("question_format", "mcq")
+      .order("id")
       .limit(5);
     sampleIds = (data ?? []).map((r) => r.id as string);
   });

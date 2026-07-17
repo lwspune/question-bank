@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Q4(1)",
+    "format": "subjective",
+    "chapter": "Similarity",
+    "subtopic": "Theorem of Areas of Similar Triangles",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), seg DE \\(\\parallel\\) side BC. If \\(2A(\\triangle ADE) = A(\\square DBCE)\\), find \\(AB : AD\\) and show that \\(BC = \\sqrt{3}\\, DE\\).",
+    "solution": "\\(A(\\square DBCE) = A(\\triangle ABC) - A(\\triangle ADE)\\). Given \\(2A(\\triangle ADE) = A(\\square DBCE) = A(\\triangle ABC) - A(\\triangle ADE)\\), so \\(3A(\\triangle ADE) = A(\\triangle ABC)\\), i.e. \\(\\dfrac{A(\\triangle ADE)}{A(\\triangle ABC)} = \\dfrac{1}{3}\\). Since DE \\(\\parallel\\) BC, \\(\\triangle ADE \\sim \\triangle ABC\\), and the ratio of areas equals the ratio of squares of corresponding sides: \\(\\dfrac{AD^2}{AB^2} = \\dfrac{DE^2}{BC^2} = \\dfrac{1}{3}\\). \\(\\therefore \\dfrac{AD}{AB} = \\dfrac{1}{\\sqrt{3}}\\), so \\(AB : AD = \\sqrt{3} : 1\\). Also \\(\\dfrac{DE}{BC} = \\dfrac{1}{\\sqrt{3}}\\), hence \\(BC = \\sqrt{3}\\, DE\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(2)",
+    "format": "subjective",
+    "chapter": "Geometric Constructions",
+    "subtopic": "Construction of a Similar Triangle",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\triangle SHR \\sim \\triangle SVU\\). In \\(\\triangle SHR\\), \\(SH = 4.5\\) cm, \\(HR = 5.2\\) cm, \\(SR = 5.8\\) cm and \\(\\dfrac{SH}{SV} = \\dfrac{3}{5}\\). Construct \\(\\triangle SVU\\).",
+    "solution": "Since \\(\\dfrac{SH}{SV} = \\dfrac{3}{5}\\), we have \\(\\dfrac{SV}{SH} = \\dfrac{5}{3}\\), so \\(\\triangle SVU\\) is larger than \\(\\triangle SHR\\) with scale factor \\(\\dfrac{5}{3}\\). Steps: (1) Construct \\(\\triangle SHR\\) with \\(SH = 4.5\\) cm, \\(HR = 5.2\\) cm, \\(SR = 5.8\\) cm. (2) Draw ray SB making an acute angle with side SR, on the side opposite to H. (3) Mark 5 equal points \\(S_1, S_2, S_3, S_4, S_5\\) on ray SB. (4) Join \\(S_3 R\\). Through \\(S_5\\) draw a line parallel to \\(S_3 R\\) meeting ray SR (extended) at U. (5) Through U draw a line parallel to HR meeting ray SH (extended) at V. Then \\(\\triangle SVU\\) is the required triangle similar to \\(\\triangle SHR\\) with \\(\\dfrac{SV}{SH} = \\dfrac{5}{3}\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(3)",
+    "format": "subjective",
+    "chapter": "Mensuration",
+    "subtopic": "Surface Area and Volume of Solids",
+    "difficulty": "MODERATE",
+    "stem": "An ice-cream pot has a right circular cylindrical shape. The radius of the base is 12 cm and the height is 7 cm. This pot is completely filled with ice-cream. The entire ice-cream is given to students in the form of right circular ice-cream cones having diameter 4 cm and height 3.5 cm. If each student is given one cone, how many students can be served?",
+    "solution": "Volume of the cylindrical pot \\(= \\pi r^2 h = \\pi \\times 12^2 \\times 7 = 1008\\pi\\) cubic cm. For each cone, radius \\(= \\dfrac{4}{2} = 2\\) cm and height \\(= 3.5\\) cm, so volume of one cone \\(= \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi \\times 2^2 \\times 3.5 = \\dfrac{14\\pi}{3}\\) cubic cm. Number of students \\(= \\dfrac{\\text{volume of pot}}{\\text{volume of one cone}} = \\dfrac{1008\\pi}{\\frac{14\\pi}{3}} = \\dfrac{1008 \\times 3}{14} = 216\\). Hence 216 students can be served.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  }
+]

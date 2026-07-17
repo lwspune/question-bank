@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "Q3(A)(1)",
+    "format": "subjective",
+    "chapter": "Similarity",
+    "subtopic": "Tests of Similarity of Triangles",
+    "difficulty": "MODERATE",
+    "stem": "In the following figure, \\(XY \\parallel\\) seg AC. If \\(2AX = 3BX\\) and \\(XY = 9\\), complete the activity to find the value of AC.",
+    "solution": "\\(2AX = 3BX \\Rightarrow \\dfrac{AX}{BX} = \\dfrac{3}{2}\\). By componendo, \\(\\dfrac{AX + BX}{BX} = \\dfrac{3 + 2}{2} \\Rightarrow \\dfrac{AB}{BX} = \\dfrac{5}{2}\\) ...(I). In \\(\\triangle BCA\\) and \\(\\triangle BYX\\): \\(\\angle BCA \\cong \\angle BYX\\) (corresponding angles, \\(XY \\parallel AC\\)) and \\(\\angle B\\) is common, so \\(\\triangle BCA \\sim \\triangle BYX\\) (AA test of similarity). \\(\\therefore \\dfrac{BA}{BX} = \\dfrac{AC}{XY}\\) (corresponding sides of similar triangles). From (I), \\(\\dfrac{5}{2} = \\dfrac{AC}{9} \\Rightarrow AC = \\dfrac{5 \\times 9}{2} = 22.5\\).",
+    "reviewFlag": true,
+    "hasFigure": true,
+    "figureNote": "triangle ABC with A at top, B lower-left, C lower-right; X on AB and Y on BC, segment XY parallel to AC, p-07"
+  },
+  {
+    "ref": "Q3(A)(2)",
+    "format": "subjective",
+    "chapter": "Pythagoras Theorem",
+    "subtopic": "Applications of Pythagoras Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Complete the activity to prove that the sum of the squares of the diagonals of a rhombus is equal to the sum of the squares of its sides. (\\(\\square PQRS\\) is a rhombus; diagonals PR and SQ intersect each other at point T.)",
+    "solution": "Given: \\(\\square PQRS\\) is a rhombus; diagonals PR and SQ intersect at T. To prove: \\(PS^2 + SR^2 + QR^2 + PQ^2 = PR^2 + QS^2\\). Diagonals of a rhombus bisect each other, so T is the midpoint of both PR and SQ. In \\(\\triangle PQS\\), PT is the median and in \\(\\triangle QRS\\), RT is the median. By Apollonius theorem: \\(PQ^2 + PS^2 = 2PT^2 + 2QT^2\\) ...(I) and \\(QR^2 + SR^2 = 2RT^2 + 2QT^2\\) ...(II). Adding (I) and (II): \\(PQ^2 + PS^2 + QR^2 + SR^2 = 2(PT^2 + RT^2) + 4QT^2\\). Since \\(RT = PT\\), \\(= 2(PT^2 + PT^2) + 4QT^2 = 4PT^2 + 4QT^2 = (2PT)^2 + (2QT)^2 = PR^2 + QS^2\\). \\(\\therefore PS^2 + SR^2 + QR^2 + PQ^2 = PR^2 + QS^2\\).",
+    "reviewFlag": true,
+    "hasFigure": true,
+    "figureNote": "rhombus PQRS with both diagonals PR and SQ drawn, intersecting at T; equal-length tick marks on all four sides, p-08"
+  },
+  {
+    "ref": "Q3(B)(1)",
+    "format": "subjective",
+    "chapter": "Co-ordinate Geometry",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Show that the points \\(P(1, -2)\\), \\(Q(5, 2)\\), \\(R(3, -1)\\), \\(S(-1, -5)\\) are the vertices of a parallelogram.",
+    "solution": "For \\(\\square PQRS\\) to be a parallelogram, its diagonals PR and QS must bisect each other. Midpoint of PR \\(= \\left(\\dfrac{1+3}{2}, \\dfrac{-2+(-1)}{2}\\right) = \\left(2, -\\dfrac{3}{2}\\right)\\). Midpoint of QS \\(= \\left(\\dfrac{5+(-1)}{2}, \\dfrac{2+(-5)}{2}\\right) = \\left(2, -\\dfrac{3}{2}\\right)\\). The midpoints coincide, so the diagonals bisect each other. \\(\\therefore\\) PQRS is a parallelogram.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(2)",
+    "format": "subjective",
+    "chapter": "Circle",
+    "subtopic": "Tangent Segment Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the tangent segments drawn from an external point to a circle are congruent.",
+    "solution": "Given: A circle with centre O; P is a point in the exterior; PA and PB are tangent segments touching the circle at A and B. To prove: \\(PA \\cong PB\\). Construction: Draw seg OA, seg OB and seg OP. Proof: A tangent is perpendicular to the radius at the point of contact, so \\(\\angle OAP = \\angle OBP = 90^\\circ\\). In right-angled \\(\\triangle OAP\\) and \\(\\triangle OBP\\): \\(OA = OB\\) (radii of the same circle) and hypotenuse \\(OP = OP\\) (common side). \\(\\therefore \\triangle OAP \\cong \\triangle OBP\\) (hypotenuse-side test). \\(\\therefore PA = PB\\) (corresponding sides of congruent triangles), i.e. the tangent segments are congruent.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(3)",
+    "format": "subjective",
+    "chapter": "Geometric Constructions",
+    "subtopic": "Construction of a Tangent to a Circle",
+    "difficulty": "MODERATE",
+    "stem": "Draw a circle with radius 4.1 cm. Construct tangents to the circle from a point at a distance of 7.3 cm from the centre.",
+    "solution": "Steps of construction: (1) Draw a circle with centre O and radius 4.1 cm. (2) Take a point P such that \\(OP = 7.3\\) cm and draw seg OP. (3) Draw the perpendicular bisector of seg OP; let it meet OP at M. (4) With M as centre and radius MO \\((= MP)\\), draw an arc cutting the circle at points A and B. (5) Draw lines PA and PB. Then PA and PB are the required tangents from P. (Since P, A, O, B lie on a circle with diameter OP, \\(\\angle OAP = \\angle OBP = 90^\\circ\\), so PA and PB touch the circle at A and B.)",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(4)",
+    "format": "subjective",
+    "chapter": "Mensuration",
+    "subtopic": "Surface Area and Volume of Solids",
+    "difficulty": "MODERATE",
+    "stem": "How many solid cylinders of radius 10 cm and height 6 cm can be made by melting a solid sphere of radius 30 cm?",
+    "solution": "Volume of the sphere \\(= \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi (30)^3 = \\dfrac{4}{3}\\pi \\times 27000 = 36000\\pi\\) cm\\(^3\\). Volume of one cylinder \\(= \\pi R^2 h = \\pi (10)^2 \\times 6 = 600\\pi\\) cm\\(^3\\). Number of cylinders \\(= \\dfrac{36000\\pi}{600\\pi} = 60\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  }
+]

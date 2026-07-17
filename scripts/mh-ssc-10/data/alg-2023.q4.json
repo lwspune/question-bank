@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Q4(i)",
+    "format": "subjective",
+    "chapter": "Arithmetic Progression",
+    "subtopic": "Sum of n Terms of an A.P.",
+    "difficulty": "HARD",
+    "stem": "If the first term of an A.P. is \\(p\\), the second term is \\(q\\) and the last term is \\(r\\), then show that the sum of all the terms is \\((q + r - 2p) \\times \\dfrac{(p + r)}{2(q - p)}\\).",
+    "solution": "The common difference \\(d = q - p\\). Let there be \\(n\\) terms with last term \\(r\\).\n\\(r = p + (n - 1)d \\Rightarrow n - 1 = \\dfrac{r - p}{q - p} \\Rightarrow n = \\dfrac{r - p}{q - p} + 1 = \\dfrac{r - p + q - p}{q - p} = \\dfrac{q + r - 2p}{q - p}\\).\nSum \\(S_n = \\dfrac{n}{2}(\\text{first term} + \\text{last term}) = \\dfrac{n}{2}(p + r) = \\dfrac{1}{2} \\cdot \\dfrac{q + r - 2p}{q - p} \\cdot (p + r) = (q + r - 2p) \\times \\dfrac{(p + r)}{2(q - p)}\\). Hence proved.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(ii)",
+    "format": "subjective",
+    "chapter": "Statistics",
+    "subtopic": "Pictorial Representation of Statistical Data",
+    "difficulty": "MODERATE",
+    "stem": "Show the following data by a frequency polygon:\n\n| Electricity bill (₹) | Families |\n|---|---|\n| 200–400 | 240 |\n| 400–600 | 300 |\n| 600–800 | 450 |\n| 800–1000 | 350 |\n| 1000–1200 | 160 |",
+    "solution": "Find the class mark (mid-value) of each class and plot the point (class mark, frequency); join them by line segments, with the two ends brought down to the mid-values of the imagined adjacent classes (frequency 0).\nClass marks and frequencies: \\((300, 240)\\), \\((500, 300)\\), \\((700, 450)\\), \\((900, 350)\\), \\((1100, 160)\\); with the end points \\((100, 0)\\) at the start and \\((1300, 0)\\) at the end. Plotting these seven points and joining them in order gives the required frequency polygon.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(iii)",
+    "format": "subjective",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Word Problems and Applications",
+    "difficulty": "HARD",
+    "stem": "The sum of the squares of five consecutive natural numbers is 1455. Find the numbers.",
+    "solution": "Let the five consecutive natural numbers be \\(n-2, n-1, n, n+1, n+2\\).\nSum of squares \\(= (n-2)^2 + (n-1)^2 + n^2 + (n+1)^2 + (n+2)^2 = 5n^2 + 10 = 1455\\).\n\\(5n^2 = 1445 \\Rightarrow n^2 = 289 \\Rightarrow n = 17\\) (natural number).\n\\(\\therefore\\) the numbers are \\(15, 16, 17, 18, 19\\). (Check: \\(225 + 256 + 289 + 324 + 361 = 1455\\).)",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  }
+]
