@@ -101,6 +101,43 @@ instruction in `context`, give each sub-item its own row, and set the same
 - **Mensuration**: Surface Area and Volume of Solids · Combination of Solids and
   Frustum · Area of Sector and Segment of a Circle
 
+## Science paper structure (Science and Technology I & II)
+
+Different from Maths: **Q1(A) = 5 MCQs** (not 4), then Q1(B) short-answer (do as
+directed / name / match), then Q2/Q3/Q4/Q5 subjective with internal choice ("answer
+any five", "answer any one"). Science I = Physics + Chemistry; Science II = Biology.
+Many Science questions are recall (no figure); flag only genuine diagrams (circuit,
+ray diagram, apparatus, biology figure) with `hasFigure:true` + `figureNote`.
+"Complete the following / label the diagram / balance the equation" activities →
+fill them in the `solution`. Give scientific-reasons / distinguish / define
+questions are subjective with an authored model answer.
+
+## Science and Technology I catalog (chapter → subtopics)
+
+- **Gravitation**: Newton's Law of Gravitation · Free Fall and Acceleration due to Gravity · Kepler's Laws of Planetary Motion · Escape Velocity and Satellites
+- **Periodic Classification of Elements**: Early Attempts and Mendeleev's Periodic Table · Modern Periodic Table · Periodic Trends
+- **Chemical Reactions and Equations**: Balancing Chemical Equations · Types of Chemical Reactions · Oxidation, Reduction and Corrosion
+- **Effects of Electric Current**: Magnetic Effect of Electric Current · Electromagnetic Induction · Electric Motor and Generator · Domestic Electric Circuits and Safety
+- **Heat**: Specific Heat Capacity · Latent Heat and Change of State · Anomalous Behaviour of Water
+- **Refraction of Light**: Refraction and Refractive Index · Total Internal Reflection · Applications of Refraction
+- **Lenses**: Types of Lenses and Terminology · Image Formation by Lenses · Lens Formula and Magnification · Human Eye and Defects of Vision
+- **Metallurgy**: Properties of Metals and Non-Metals · Reactivity Series and Ionic Compounds · Extraction of Metals · Corrosion and Alloys
+- **Carbon Compounds**: Covalent Bonding in Carbon · Hydrocarbons and Functional Groups · Nomenclature and Isomerism · Important Organic Compounds
+- **Space Missions**: Satellites and Orbits · Launch Vehicles · Space Missions of India
+
+## Science and Technology II catalog (chapter → subtopics)
+
+- **Heredity and Evolution**: Heredity and Variation · Mendel's Laws of Inheritance · Evolution and its Theories · Speciation and Evidences of Evolution
+- **Life Processes in Living Organisms Part 1**: Cell Division — Mitosis and Meiosis · Nutrition in Living Organisms · Cellular Respiration
+- **Life Processes in Living Organisms Part 2**: Types of Reproduction · Human Reproductive System · Reproductive Health
+- **Environmental Management**: Ecosystem and Ecological Balance · Biodiversity and Conservation · Environmental Conservation
+- **Towards Green Energy**: Energy Sources · Renewable and Non-Renewable Energy · Green Energy Technologies
+- **Animal Classification**: Basis of Classification · Non-Chordates · Chordates
+- **Introduction to Microbiology**: Types of Microorganisms · Useful Microorganisms · Industrial and Applied Microbiology
+- **Cell Biology and Biotechnology**: Cell Structure and Organelles · Biotechnology and its Applications · Genetic Engineering
+- **Social Health**: Health and Disease · Social Health and Issues · Addiction and Stress Management
+- **Disaster Management**: Types of Disasters · Disaster Management and Mitigation · First Aid
+
 ## After writing
 
 Run `npx tsx scripts/mh-ssc-10/merge.ts <paperId>` then

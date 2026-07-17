@@ -128,6 +128,122 @@ export const CATALOG: Record<string, SubjectCatalog> = {
       ],
     },
   },
+  "Science and Technology I": {
+    subjectName: "Science and Technology I",
+    chapters: {
+      Gravitation: [
+        "Newton's Law of Gravitation",
+        "Free Fall and Acceleration due to Gravity",
+        "Kepler's Laws of Planetary Motion",
+        "Escape Velocity and Satellites",
+      ],
+      "Periodic Classification of Elements": [
+        "Early Attempts and Mendeleev's Periodic Table",
+        "Modern Periodic Table",
+        "Periodic Trends",
+      ],
+      "Chemical Reactions and Equations": [
+        "Balancing Chemical Equations",
+        "Types of Chemical Reactions",
+        "Oxidation, Reduction and Corrosion",
+      ],
+      "Effects of Electric Current": [
+        "Magnetic Effect of Electric Current",
+        "Electromagnetic Induction",
+        "Electric Motor and Generator",
+        "Domestic Electric Circuits and Safety",
+      ],
+      Heat: [
+        "Specific Heat Capacity",
+        "Latent Heat and Change of State",
+        "Anomalous Behaviour of Water",
+      ],
+      "Refraction of Light": [
+        "Refraction and Refractive Index",
+        "Total Internal Reflection",
+        "Applications of Refraction",
+      ],
+      Lenses: [
+        "Types of Lenses and Terminology",
+        "Image Formation by Lenses",
+        "Lens Formula and Magnification",
+        "Human Eye and Defects of Vision",
+      ],
+      Metallurgy: [
+        "Properties of Metals and Non-Metals",
+        "Reactivity Series and Ionic Compounds",
+        "Extraction of Metals",
+        "Corrosion and Alloys",
+      ],
+      "Carbon Compounds": [
+        "Covalent Bonding in Carbon",
+        "Hydrocarbons and Functional Groups",
+        "Nomenclature and Isomerism",
+        "Important Organic Compounds",
+      ],
+      "Space Missions": [
+        "Satellites and Orbits",
+        "Launch Vehicles",
+        "Space Missions of India",
+      ],
+    },
+  },
+  "Science and Technology II": {
+    subjectName: "Science and Technology II",
+    chapters: {
+      "Heredity and Evolution": [
+        "Heredity and Variation",
+        "Mendel's Laws of Inheritance",
+        "Evolution and its Theories",
+        "Speciation and Evidences of Evolution",
+      ],
+      "Life Processes in Living Organisms Part 1": [
+        "Cell Division — Mitosis and Meiosis",
+        "Nutrition in Living Organisms",
+        "Cellular Respiration",
+      ],
+      "Life Processes in Living Organisms Part 2": [
+        "Types of Reproduction",
+        "Human Reproductive System",
+        "Reproductive Health",
+      ],
+      "Environmental Management": [
+        "Ecosystem and Ecological Balance",
+        "Biodiversity and Conservation",
+        "Environmental Conservation",
+      ],
+      "Towards Green Energy": [
+        "Energy Sources",
+        "Renewable and Non-Renewable Energy",
+        "Green Energy Technologies",
+      ],
+      "Animal Classification": [
+        "Basis of Classification",
+        "Non-Chordates",
+        "Chordates",
+      ],
+      "Introduction to Microbiology": [
+        "Types of Microorganisms",
+        "Useful Microorganisms",
+        "Industrial and Applied Microbiology",
+      ],
+      "Cell Biology and Biotechnology": [
+        "Cell Structure and Organelles",
+        "Biotechnology and its Applications",
+        "Genetic Engineering",
+      ],
+      "Social Health": [
+        "Health and Disease",
+        "Social Health and Issues",
+        "Addiction and Stress Management",
+      ],
+      "Disaster Management": [
+        "Types of Disasters",
+        "Disaster Management and Mitigation",
+        "First Aid",
+      ],
+    },
+  },
 };
 
 export function requireCatalog(subjectName: string): SubjectCatalog {
@@ -229,6 +345,80 @@ export const PAPERS: Record<string, Paper> = {
     pdf: src("10th ssc geometry board qp 2026.pdf"),
     sourceFile: "MH_SSC_10_Geometry_2026.pdf",
     note: "Maharashtra State Board Class 10 (SSC) — Geometry (Mathematics Part II), March 2026 board paper",
+  },
+  // ── Science and Technology I (Physics + Chemistry) ──
+  "sci1-2023": {
+    id: "sci1-2023",
+    subjectName: "Science and Technology I",
+    year: 2023,
+    month: "March",
+    pdf: src("10th ssc Sci-I board qp 2023.pdf"),
+    sourceFile: "MH_SSC_10_Science_I_2023.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2023 board paper",
+  },
+  "sci1-2024": {
+    id: "sci1-2024",
+    subjectName: "Science and Technology I",
+    year: 2024,
+    month: "March",
+    pdf: src("10th ssc SCI-I board qp 2024.pdf"),
+    sourceFile: "MH_SSC_10_Science_I_2024.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2024 board paper",
+  },
+  "sci1-2025": {
+    id: "sci1-2025",
+    subjectName: "Science and Technology I",
+    year: 2025,
+    month: "March",
+    pdf: src("10th ssc Sci-I board qp 2025.pdf"),
+    sourceFile: "MH_SSC_10_Science_I_2025.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2025 board paper",
+  },
+  "sci1-2026": {
+    id: "sci1-2026",
+    subjectName: "Science and Technology I",
+    year: 2026,
+    month: "March",
+    pdf: src("10th ssc Sci-I board qp 2026.pdf"),
+    sourceFile: "MH_SSC_10_Science_I_2026.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2026 board paper",
+  },
+  // ── Science and Technology II (Biology) ──
+  "sci2-2023": {
+    id: "sci2-2023",
+    subjectName: "Science and Technology II",
+    year: 2023,
+    month: "March",
+    pdf: src("10th ssc Sci-II board qp 2023.pdf"),
+    sourceFile: "MH_SSC_10_Science_II_2023.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2023 board paper",
+  },
+  "sci2-2024": {
+    id: "sci2-2024",
+    subjectName: "Science and Technology II",
+    year: 2024,
+    month: "March",
+    pdf: src("10th ssc Sci-II board qp 2024.pdf"),
+    sourceFile: "MH_SSC_10_Science_II_2024.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2024 board paper",
+  },
+  "sci2-2025": {
+    id: "sci2-2025",
+    subjectName: "Science and Technology II",
+    year: 2025,
+    month: "March",
+    pdf: src("10th ssc Sci-II board qp 2025.pdf"),
+    sourceFile: "MH_SSC_10_Science_II_2025.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2025 board paper",
+  },
+  "sci2-2026": {
+    id: "sci2-2026",
+    subjectName: "Science and Technology II",
+    year: 2026,
+    month: "March",
+    pdf: src("10th ssc Sci-II board qp 2026.pdf"),
+    sourceFile: "MH_SSC_10_Science_II_2026.pdf",
+    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2026 board paper",
   },
 };
 
