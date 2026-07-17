@@ -1,14 +1,38 @@
 import { describe, it, expect } from "vitest";
-import { NDA_MATHS_PAPER } from "@/lib/mocks/blueprints";
+import { NDA_MATHS_PAPER, NEET_PAPER } from "@/lib/mocks/blueprints";
 import {
   mockSlug,
   mockTitle,
+  neetMockSlug,
+  neetMockTitle,
   orderPaperRows,
   validatePaperRows,
   buildMockPaper,
   type PaperQuestionRow,
 } from "@/lib/mocks/reconstruct";
 import { slugToUuid } from "@/lib/quiz/quizPayload";
+
+// A NEET sitting: Physics 1-N, Chemistry N+1..2N, then a CONTENT-MIXED Biology
+// block (Botany + Zoology interleaved by source_row). Default 200-q layout.
+function neetRows(per = 50): PaperQuestionRow[] {
+  const rows: PaperQuestionRow[] = [];
+  const push = (n: number, subject: string) =>
+    rows.push({
+      id: `q-${n}`,
+      sourceRow: n,
+      questionNumber: String(n),
+      subjectName: subject,
+      answer: (["A", "B", "C", "D"] as const)[n % 4],
+    });
+  for (let n = 1; n <= per; n++) push(n, "Physics");
+  for (let n = per + 1; n <= 2 * per; n++) push(n, "Chemistry");
+  // Biology: mostly Botany, a few Zoology interleaved (row 3 and 7 of the block).
+  for (let n = 2 * per + 1; n <= 4 * per; n++) {
+    const k = n - 2 * per;
+    push(n, k % 4 === 3 ? "Zoology" : "Botany");
+  }
+  return rows.sort((a, b) => (a.id < b.id ? 1 : -1)); // shuffle
+}
 
 // 120 well-formed Mathematics rows, deliberately shuffled + with text
 // question_number ("1","10","100") to prove we sort numerically, not lexically.
@@ -127,5 +151,84 @@ describe("buildMockPaper", () => {
     expect(() =>
       buildMockPaper(NDA_MATHS_PAPER, mathsRows(118), { year: 2024, month: "Sep" })
     ).toThrow();
+  });
+});
+
+describe("NEET reconstruction", () => {
+  it("builds edition-aware slugs (no month; Re-NEET distinguished)", () => {
+    expect(neetMockSlug(2024, false)).toBe("neet-2024");
+    expect(neetMockSlug(2024, true)).toBe("neet-2024-re");
+    expect(neetMockSlug(2021, false)).toBe("neet-2021");
+  });
+
+  it("titles regular vs re-examination sittings", () => {
+    expect(neetMockTitle(2024, false)).toBe("NEET (UG) 2024");
+    expect(neetMockTitle(2024, true)).toBe("Re-NEET (UG) 2024");
+  });
+
+  it("validates a NEET paper: Botany+Zoology both map to the Biology section", () => {
+    // No hard per-section count for NEET; every row maps to a section, keys present.
+    expect(validatePaperRows(NEET_PAPER, neetRows(50))).toEqual([]);
+  });
+
+  it("does NOT flag a NEET paper that is a couple of questions short (soft count)", () => {
+    const rows = neetRows(50).slice(0, 198); // 198 of 200
+    expect(validatePaperRows(NEET_PAPER, rows)).toEqual([]);
+  });
+
+  it("does not flag a grace row that has no answer key", () => {
+    const rows = neetRows(50);
+    const idx = rows.findIndex((r) => r.id === "q-93");
+    rows[idx] = { ...rows[idx], answer: null, grace: true };
+    expect(validatePaperRows(NEET_PAPER, rows)).toEqual([]);
+  });
+
+  it("still flags a non-grace row with no key", () => {
+    const rows = neetRows(50);
+    const idx = rows.findIndex((r) => r.id === "q-93");
+    rows[idx] = { ...rows[idx], answer: null };
+    expect(validatePaperRows(NEET_PAPER, rows).some((m) => /key|answer/i.test(m))).toBe(true);
+  });
+
+  it("orders Biology by source_row so Botany + Zoology interleave, and derives totals from actual rows", () => {
+    const snap = buildMockPaper(NEET_PAPER, neetRows(50), {
+      year: 2024,
+      month: null,
+      slug: neetMockSlug(2024, false),
+      title: neetMockTitle(2024, false),
+      durationSecs: 200 * 60,
+    });
+    expect(snap.slug).toBe("neet-2024");
+    expect(snap.id).toBe(slugToUuid("neet-2024"));
+    expect(snap.totalQuestions).toBe(200);
+    expect(snap.totalMarks).toBe(800); // 200 * +4
+    expect(snap.durationSecs).toBe(200 * 60);
+    // positions are 1..200 contiguous, matching the source numbering
+    expect(snap.questions.map((q) => q.position)).toEqual(
+      Array.from({ length: 200 }, (_, i) => i + 1)
+    );
+    // the Biology block (positions 101..200) is ordered by source_row: q-101..q-200
+    expect(snap.questions[100].questionId).toBe("q-101");
+    expect(snap.questions[199].questionId).toBe("q-200");
+    // Physics first, Biology last
+    expect(snap.questions[0].sectionKey).toBe("physics");
+    expect(snap.questions[199].sectionKey).toBe("biology");
+  });
+
+  it("carries the grace flag onto the snapshot question", () => {
+    const rows = neetRows(50);
+    const idx = rows.findIndex((r) => r.id === "q-93");
+    rows[idx] = { ...rows[idx], grace: true };
+    const snap = buildMockPaper(NEET_PAPER, rows, {
+      year: 2022,
+      month: null,
+      slug: neetMockSlug(2022, false),
+      title: neetMockTitle(2022, false),
+      durationSecs: 200 * 60,
+    });
+    const graced = snap.questions.find((q) => q.questionId === "q-93");
+    expect(graced?.grace).toBe(true);
+    // a normal question carries no grace flag
+    expect(snap.questions.find((q) => q.questionId === "q-1")?.grace).toBeUndefined();
   });
 });

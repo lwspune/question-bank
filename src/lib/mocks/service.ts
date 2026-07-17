@@ -180,6 +180,7 @@ export async function submitAttempt(
     marks: q.marks,
     negMarks: q.negMarks,
     answer: key[q.questionId] ?? "A",
+    ...(q.grace ? { grace: true } : {}),
   }));
   const answerMap: Record<string, string | null> = {};
   for (const [qid, a] of Object.entries(answers)) answerMap[qid] = a.selectedLabel;
@@ -224,6 +225,7 @@ export async function submitAttempt(
     },
   ];
   for (const gq of gradeQuestions) {
+    if (gq.grace) continue; // a grace question is never "wrong" (no drill fuel)
     const selected = answerMap[gq.questionId];
     if (selected && selected !== gq.answer) {
       events.push({
@@ -318,6 +320,9 @@ export type ReviewItem = {
   verdict: 1 | -1 | 0;
   solution: string | null;
   solutionImageUrl: string | null;
+  /** Officially dropped/bonus: awarded to all. The correct-answer highlight is
+   *  suppressed and a disclosure badge shown (see the result review UI). */
+  grace: boolean;
 };
 
 export type AttemptReview = {
@@ -348,9 +353,12 @@ export async function getAttemptReview(
     .sort((a, b) => a.position - b.position)
     .map((s) => {
       const c = content.get(s.questionId);
+      const grace = s.grace === true;
       const selectedLabel = answers[s.questionId]?.selectedLabel ?? null;
-      const correctLabel = c?.options.find((o) => o.isCorrect)?.label ?? null;
-      const verdict: 1 | -1 | 0 = !selectedLabel ? 0 : selectedLabel === correctLabel ? 1 : -1;
+      // Grace questions have no valid key (NTA awarded all): suppress the correct
+      // highlight and count the row as awarded (verdict 1) for everyone.
+      const correctLabel = grace ? null : c?.options.find((o) => o.isCorrect)?.label ?? null;
+      const verdict: 1 | -1 | 0 = grace ? 1 : !selectedLabel ? 0 : selectedLabel === correctLabel ? 1 : -1;
       return {
         position: s.position,
         sectionKey: s.sectionKey,
@@ -363,6 +371,7 @@ export async function getAttemptReview(
         verdict,
         solution: c?.solution ?? null,
         solutionImageUrl: c?.solutionImageUrl ?? null,
+        grace,
       };
     });
 

@@ -19,10 +19,16 @@ export type MockSectionBlueprint = {
   key: string;
   label: string;
   /** Bank subject name(s) that compose this section. Maths is one subject;
-   *  the GAT General-Knowledge section (later) will span several. */
+   *  the GAT General-Knowledge section spans several; NEET's Biology spans
+   *  Botany + Zoology (content-mixed). */
   subjects: string[];
-  /** How many questions the real paper puts in this section — the contract. */
-  count: number;
+  /**
+   * How many questions the real paper puts in this section — a HARD faithfulness
+   * contract when present. Omitted for exams whose section size varies by sitting
+   * (NEET: 180- vs 200-question layouts, and a content-split Biology block) — for
+   * those, buildMockPaper derives totals from the actual rows (soft-count).
+   */
+  count?: number;
 };
 
 export type MockPaperBlueprint = {
@@ -95,14 +101,51 @@ export const NDA_GAT_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * NEET (UG) — one combined paper: Physics · Chemistry · Biology, +4 / −1.
+ *
+ * Unlike NDA, NEET has TWO layouts (2025+ = 180 q, pre-2025 = 200 q) AND a
+ * content-split Biology block (Botany + Zoology are mixed, not 45/45), so no
+ * section carries a hard `count` — the reconstruction validates by subject
+ * membership + derives the true total from the sitting's actual PUBLIC rows.
+ * Biology is ONE section spanning both bio subjects (like GAT's GK section spans
+ * eight): ordering by source_row recovers the true Botany/Zoology interleave.
+ *
+ * durationSecs here is the 180-q default (180 min); the 200-q sittings run 200
+ * min and override it per sitting (see scripts/mocks build path). Sittings vary
+ * per year, so NEET is NOT discovered by the NDA year+month loop — it's driven by
+ * a source_file-keyed registry — hence it is deliberately absent from
+ * MOCK_BLUEPRINTS.
+ */
+export const NEET_PAPER: MockPaperBlueprint = {
+  code: "full",
+  examName: "NEET",
+  examSlug: "neet",
+  paperLabel: "NEET (UG)",
+  durationSecs: 180 * 60,
+  marking: { correct: 4, wrong: -1 },
+  sections: [
+    { key: "physics", label: "Physics", subjects: ["Physics"] },
+    { key: "chemistry", label: "Chemistry", subjects: ["Chemistry"] },
+    { key: "biology", label: "Biology", subjects: ["Botany", "Zoology"] },
+  ],
+};
+
+/** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
   NDA_GAT_PAPER,
 ];
 
-/** Sum of the section counts — the paper's total question count. */
+/** Every blueprint (incl. exams with bespoke build paths) — for getBlueprint. */
+const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
+  ...MOCK_BLUEPRINTS,
+  NEET_PAPER,
+];
+
+/** Sum of the DECLARED section counts (0 when a blueprint declares none). */
 export function totalQuestions(bp: MockPaperBlueprint): number {
-  return bp.sections.reduce((sum, s) => sum + s.count, 0);
+  return bp.sections.reduce((sum, s) => sum + (s.count ?? 0), 0);
 }
 
 /** Total marks at full correct (uniform-per-paper marking). */
@@ -116,7 +159,7 @@ export function getBlueprint(
   code: string
 ): MockPaperBlueprint | null {
   return (
-    MOCK_BLUEPRINTS.find((b) => b.examSlug === examSlug && b.code === code) ??
+    ALL_BLUEPRINTS.find((b) => b.examSlug === examSlug && b.code === code) ??
     null
   );
 }

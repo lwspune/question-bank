@@ -35,6 +35,12 @@ export type MockGradeQuestion = {
   negMarks: number;
   /** The correct option label (the answer key). */
   answer: "A" | "B" | "C" | "D";
+  /**
+   * Officially dropped / bonus question: award full marks to EVERY attempt,
+   * never penalize, regardless of the chosen option (NTA grace-marks reality).
+   * Counted as correct in the tally.
+   */
+  grace?: boolean;
 };
 
 export type SectionScore = {
@@ -85,6 +91,17 @@ export function gradeMock(
     const sec = (sectionScores[q.sectionKey] ??= emptySection());
     maxScore += q.marks;
     sec.maxScore += q.marks;
+
+    // Grace (officially dropped / bonus): everyone gets full marks, no penalty,
+    // regardless of what — or whether — they answered.
+    if (q.grace) {
+      correct++;
+      sec.correct++;
+      score += q.marks;
+      sec.score += q.marks;
+      verdicts[q.questionId] = 1;
+      continue;
+    }
 
     const chosen = String(answers?.[q.questionId] ?? "").trim().toUpperCase();
     const key = String(q.answer).trim().toUpperCase();

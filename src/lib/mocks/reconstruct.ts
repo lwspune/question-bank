@@ -32,6 +32,12 @@ export type PaperQuestionRow = {
   subjectName: string;
   /** The correct option label, or null when the key is missing (a defect). */
   answer: "A" | "B" | "C" | "D" | null;
+  /**
+   * Officially dropped / bonus question (e.g. NTA awarded full marks to all).
+   * It appeared on the real paper, so a faithful mock includes it — but it has
+   * no valid key, so it's graded as GRACE: full marks to everyone, no penalty.
+   */
+  grace?: boolean;
 };
 
 export type MockQuestionSnapshot = {
@@ -40,6 +46,8 @@ export type MockQuestionSnapshot = {
   sectionKey: string;
   marks: number;
   negMarks: number;
+  /** Grace question — awarded to all at grade time (see PaperQuestionRow.grace). */
+  grace?: boolean;
 };
 
 export type MockPaperSnapshot = {
@@ -114,6 +122,20 @@ export function mockTitle(
 }
 
 /**
+ * NEET slug — no month (NEET has none) and a `-re` segment for a re-examination
+ * so the two same-year sittings (NEET 2024 + Re-NEET 2024) get distinct slugs.
+ * e.g. "neet-2024", "neet-2024-re", "neet-2021".
+ */
+export function neetMockSlug(year: number, isRe: boolean): string {
+  return `neet-${year}${isRe ? "-re" : ""}`;
+}
+
+/** NEET title, e.g. "NEET (UG) 2024" / "Re-NEET (UG) 2024". */
+export function neetMockTitle(year: number, isRe: boolean): string {
+  return `${isRe ? "Re-NEET" : "NEET"} (UG) ${year}`;
+}
+
+/**
  * Check reconstructed rows against the blueprint. Returns a list of issue
  * strings (empty = the paper faithfully reconstructs). Never throws.
  */
@@ -134,9 +156,13 @@ export function validatePaperRows(
       continue;
     }
     perSection.set(key, (perSection.get(key) ?? 0) + 1);
-    if (!r.answer) issues.push(`Question ${r.id} has no correct answer (key)`);
+    // A grace (officially-dropped/bonus) question legitimately has no valid key.
+    if (!r.answer && !r.grace) issues.push(`Question ${r.id} has no correct answer (key)`);
   }
+  // Per-section count is a HARD contract only where the blueprint declares one
+  // (NDA). NEET's sections omit `count` (layout varies by sitting) → skipped.
   for (const s of bp.sections) {
+    if (s.count == null) continue;
     const got = perSection.get(s.key) ?? 0;
     if (got !== s.count) {
       issues.push(
@@ -145,9 +171,11 @@ export function validatePaperRows(
     }
   }
 
-  // Total count.
+  // Total count — only when the blueprint declares section counts. NEET derives
+  // its total from the actual rows (soft-count; the build script warns on a short
+  // sitting from its per-sitting expected count instead).
   const expectedTotal = totalQuestions(bp);
-  if (rows.length !== expectedTotal) {
+  if (expectedTotal > 0 && rows.length !== expectedTotal) {
     issues.push(
       `Paper expected ${expectedTotal} questions, got ${rows.length}`
     );
@@ -178,13 +206,21 @@ export function validatePaperRows(
 export function buildMockPaper(
   bp: MockPaperBlueprint,
   rows: PaperQuestionRow[],
-  opts: { year: number; month: string | null; title?: string }
+  opts: {
+    year: number;
+    month: string | null;
+    title?: string;
+    /** Override the derived slug (NEET supplies its own edition-aware slug). */
+    slug?: string;
+    /** Override the blueprint's default duration (NEET's 200-q sittings). */
+    durationSecs?: number;
+  }
 ): MockPaperSnapshot {
+  const slug =
+    opts.slug ?? mockSlug(bp.examSlug, opts.year, opts.month, bp.code);
   const issues = validatePaperRows(bp, rows);
   if (issues.length > 0) {
-    throw new Error(
-      `Cannot build mock ${mockSlug(bp.examSlug, opts.year, opts.month, bp.code)}:\n- ${issues.join("\n- ")}`
-    );
+    throw new Error(`Cannot build mock ${slug}:\n- ${issues.join("\n- ")}`);
   }
 
   const questions: MockQuestionSnapshot[] = [];
@@ -201,11 +237,18 @@ export function buildMockPaper(
         sectionKey: section.key,
         marks: bp.marking.correct,
         negMarks: bp.marking.wrong,
+        ...(r.grace ? { grace: true } : {}),
       });
     }
   }
 
-  const slug = mockSlug(bp.examSlug, opts.year, opts.month, bp.code);
+  // Totals + per-section counts are derived from the rows actually placed — so
+  // the soft-count exams (NEET) report their true length, and NDA still reports
+  // the blueprint count (placed === declared by its hard contract).
+  const total = questions.length;
+  const placedPerSection = new Map<string, number>();
+  for (const q of questions)
+    placedPerSection.set(q.sectionKey, (placedPerSection.get(q.sectionKey) ?? 0) + 1);
   return {
     slug,
     id: slugToUuid(slug),
@@ -215,15 +258,17 @@ export function buildMockPaper(
     title: opts.title ?? mockTitle(bp, opts.year, opts.month),
     pyqYear: opts.year,
     pyqMonth: opts.month,
-    durationSecs: bp.durationSecs,
+    durationSecs: opts.durationSecs ?? bp.durationSecs,
     marking: bp.marking,
-    totalQuestions: totalQuestions(bp),
-    totalMarks: totalMarks(bp),
-    sections: bp.sections.map((s) => ({
-      key: s.key,
-      label: s.label,
-      count: s.count,
-    })),
+    totalQuestions: total,
+    totalMarks: Math.round(total * bp.marking.correct * 100) / 100,
+    sections: bp.sections
+      .map((s) => ({
+        key: s.key,
+        label: s.label,
+        count: s.count ?? placedPerSection.get(s.key) ?? 0,
+      }))
+      .filter((s) => s.count > 0), // drop empty sections (defensive)
     questions,
   };
 }
