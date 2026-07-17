@@ -20,7 +20,8 @@ export type ExamSlug =
   | "neet"
   | "mh-hsc-12"
   | "cbse-12"
-  | "mh-sb-9";
+  | "mh-sb-9"
+  | "mh-ssc-10";
 
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
@@ -125,6 +126,17 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/mh-sb-9", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (9th is not a board year → no PYQs) → /browse defaults to Practice
     boardExam: true, // textbook content → gets the /board reader + the "Board" nav tab
+  },
+  {
+    slug: "mh-ssc-10",
+    displayName: "MH SSC 10",
+    examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
+    // NOT practiceOnly: Class 10 IS a board year → these are real past-year board
+    // papers (question_kind='pyq'), so /browse defaults to the PYQ view.
+    // NOT boardExam: PYQ papers aren't textbook-structured, so they live on /browse
+    // (and /mock later), not the book-faithful /board reader.
   },
 ] as const;
 

@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Q4(1)",
+    "format": "subjective",
+    "chapter": "Geometric Constructions",
+    "subtopic": "Construction of a Similar Triangle",
+    "difficulty": "HARD",
+    "stem": "\\(\\triangle ABC \\sim \\triangle ADE\\). In \\(\\triangle ABC\\), \\(AB = 6.3\\) cm, \\(\\angle CAB = 50^\\circ\\), \\(AC = 5.6\\) cm and \\(\\dfrac{AB}{AD} = \\dfrac{7}{5}\\). Construct \\(\\triangle ADE\\).",
+    "solution": "Since \\(\\triangle ABC \\sim \\triangle ADE\\) with scale factor \\(\\dfrac{AD}{AB} = \\dfrac{5}{7}\\), the corresponding sides of \\(\\triangle ADE\\) are: \\(AD = \\dfrac{5}{7} \\times AB = \\dfrac{5}{7} \\times 6.3 = 4.5\\) cm, \\(AE = \\dfrac{5}{7} \\times AC = \\dfrac{5}{7} \\times 5.6 = 4.0\\) cm, and \\(\\angle DAE = \\angle CAB = 50^\\circ\\). Steps of construction: (1) First construct \\(\\triangle ABC\\) with \\(AB = 6.3\\) cm, \\(\\angle CAB = 50^\\circ\\), \\(AC = 5.6\\) cm. (2) Since D lies on ray AB (or its side) with \\(AD < AB\\), mark point D on seg AB such that \\(AD = 4.5\\) cm. (3) Draw seg DE parallel to seg BC meeting AC at E (then \\(AE = 4.0\\) cm). (4) \\(\\triangle ADE\\) is the required triangle with \\(AD = 4.5\\) cm, \\(AE = 4.0\\) cm, \\(\\angle DAE = 50^\\circ\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(2)",
+    "format": "subjective",
+    "chapter": "Mensuration",
+    "subtopic": "Surface Area and Volume of Solids",
+    "difficulty": "HARD",
+    "stem": "Surface area of a sphere and total surface area of a cube are same. Show that the ratio of the volume of the sphere to that of the cube is \\(\\sqrt{6} : \\sqrt{\\pi}\\).",
+    "solution": "Let the radius of the sphere be \\(r\\) and the side of the cube be \\(a\\). Given: surface area of sphere \\(=\\) total surface area of cube. \\(\\therefore 4\\pi r^2 = 6a^2 \\Rightarrow a^2 = \\dfrac{2\\pi r^2}{3} \\Rightarrow a = r\\sqrt{\\dfrac{2\\pi}{3}}\\). Now, \\(\\dfrac{V_{\\text{sphere}}}{V_{\\text{cube}}} = \\dfrac{\\frac{4}{3}\\pi r^3}{a^3} = \\dfrac{\\frac{4}{3}\\pi r^3}{r^3 \\left(\\frac{2\\pi}{3}\\right)^{3/2}}\\). Let \\(k = \\dfrac{2\\pi}{3}\\); then \\(\\dfrac{4}{3}\\pi = 2k\\), so the ratio \\(= \\dfrac{2k}{k^{3/2}} = \\dfrac{2}{\\sqrt{k}} = \\dfrac{2}{\\sqrt{\\frac{2\\pi}{3}}} = 2\\sqrt{\\dfrac{3}{2\\pi}} = \\dfrac{2\\sqrt{3}}{\\sqrt{2}\\,\\sqrt{\\pi}} = \\dfrac{\\sqrt{2}\\,\\sqrt{3}}{\\sqrt{\\pi}} = \\dfrac{\\sqrt{6}}{\\sqrt{\\pi}}\\). \\(\\therefore V_{\\text{sphere}} : V_{\\text{cube}} = \\sqrt{6} : \\sqrt{\\pi}\\). Hence shown.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(3)",
+    "format": "subjective",
+    "chapter": "Similarity",
+    "subtopic": "Theorem of Areas of Similar Triangles",
+    "difficulty": "HARD",
+    "stem": "In \\(\\triangle ABC\\), A-X-B and A-Y-C is such that segment XY \\(\\parallel\\) side BC. Segment XY divides \\(\\triangle ABC\\) in two equal areas, then find \\(\\dfrac{BX}{AB}\\).",
+    "solution": "Since seg XY \\(\\parallel\\) side BC, \\(\\triangle AXY \\sim \\triangle ABC\\). XY divides \\(\\triangle ABC\\) into two equal areas, so \\(A(\\triangle AXY) = \\dfrac{1}{2}A(\\triangle ABC)\\), i.e. \\(\\dfrac{A(\\triangle AXY)}{A(\\triangle ABC)} = \\dfrac{1}{2}\\). By the theorem of areas of similar triangles, \\(\\dfrac{A(\\triangle AXY)}{A(\\triangle ABC)} = \\left(\\dfrac{AX}{AB}\\right)^2\\). \\(\\therefore \\left(\\dfrac{AX}{AB}\\right)^2 = \\dfrac{1}{2} \\Rightarrow \\dfrac{AX}{AB} = \\dfrac{1}{\\sqrt{2}}\\). Now \\(\\dfrac{BX}{AB} = \\dfrac{AB - AX}{AB} = 1 - \\dfrac{AX}{AB} = 1 - \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2} - 1}{\\sqrt{2}} = \\dfrac{2 - \\sqrt{2}}{2}\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  }
+]
