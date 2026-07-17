@@ -27,6 +27,16 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-17
+
+### Rename 2 mislabeled NEET source PDFs in `C:\tmp\PYQPs\NEET\` (source-folder hygiene only)
+
+The 2026-07-17 exhaustive non-ingested-code cross-check proved every NEET code = its year's ingested set, and in doing so caught **2 files whose filename names the wrong sitting**: `neet 2024 qp code E4.pdf` is actually **NEET UG 2023** (cover "7 May 2023, Booklet Code E4") and `neet 2026 qp code 70.pdf` is actually **NEET (UG)-2026 Re-Examination** (cover "21/06/2026, Code 70", 180 q, 43 pp). Their content is already in the bank under the correct year (2023 via code E3; Re-NEET 2026 via code 50), so **nothing is missing** — this is pure folder hygiene.
+
+**Why:** if NEET 2023/2024 or Re-NEET is ever re-ingested from this folder, the misnamed files invite picking the wrong-year source (E4 would pollute a "2024" run with 2023 questions). Renaming now removes a latent foot-gun.
+
+**How to apply:** rename `neet 2024 qp code E4.pdf` → `neet 2023 qp code E4.pdf` and `neet 2026 qp code 70.pdf` → `reneet 2026 qp code 70.pdf` (the source folder is outside the repo, so no commit). Optional; the ingest is already complete and correct without it.
+
 ## 2026-07-16
 
 ### ~~`solution_image` diagrams for State Board Ch.2 Application of Derivatives (19 flagged rows)~~ — **DONE 2026-07-16** (built on the user's call the same day; 19 attached + PUBLIC; renderer extended to physical geometry — see the Decisions log)

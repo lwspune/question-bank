@@ -127,6 +127,27 @@ The 6-row PDF-vs-bank extraction-error taxonomy ([[gdrive-pdf-fetch]]) covers th
 
 ---
 
+## Content ingestion (source material)
+
+### GRB IIT-JEE chemistry textbooks → JEE Mains practice bank (analysis done 2026-07-17; ingestion deferred)
+
+Three GRB (G.R. Bathla) IIT-JEE chemistry textbooks sit at `C:\tmp\Practice\JEE_Mains\Chem\` — **GRB Physical (995pp · 15 ch), Organic (1,107pp · 18 ch), Inorganic (997pp · 19 ch)**, ~3,100 pages total. These are third-party **commercial** prep books, not PYQs; they'd land as `question_kind='practice'` under **JEE Mains → Chemistry**.
+
+**Findings from the 2026-07-17 source probe (so a future session doesn't re-probe 3,100 pages):**
+- **Fully scanned books with a GARBLED OCR text layer — unusable for parsing.** Every page is a full-page scan with a bad two-column OCR overlay (`"AroM1CSTRUC!LfFl~"`=ATOMIC STRUCTURE, `"4TtEo"`=4πε₀; stems + solutions shredded together). **Vision transcription is forced** — reuse the practice-PDF / NEET pipeline shape (per-column hi-DPI render → vision agents) at ~10× the scale.
+- **Volume: ~1,400 exercise pages → roughly 15k–30k questions** (theory dominates the rest; exercises are 30–110pp blocks at chapter ends). Must be **phased** book-by-book / chapter-by-chapter, not one-shot.
+- **Formats are diverse**: standard 4-option MCQ + assertion–reason (Statement-1/2) + statement (I/II/III) + List I–II matching + comprehension + subjective/numerical. Most carry (a)–(d) so model as MCQ; matching/subjective need special handling (subjective supported since 0041).
+- **Answer keys present inline** (per-section ANSWERS blocks + `[Hint:…]` worked solutions) → vision-extractable; good for correctness + notes/RAG.
+- **Figures baked into the page scans** (Organic especially — wall-to-wall structures) → snapCrop per question (no extractable image objects).
+
+**Two open decisions (deferred by the user, to settle at pilot time):**
+1. ⚠️ **Copyright / visibility.** Third-party commercially copyrighted content — publishing on public pyqvault.com is a real infringement/reputation risk against the PYQ-first positioning. Recommendation: **PRIVATE (org-staff practice) at most**, never PUBLIC. Confirm intent before ingesting.
+2. **Scope + formats.** Recommendation: **pilot ONE chapter of ONE book** (e.g. Physical Ch.1 exercises), **MCQ-only** first, validate quality, then scale. Don't run all 3 books before a pilot proves the pipeline.
+
+See [[practice-pdf-vision-ingestion]] + [[figure-snapcrop-verify]] + [[neet-ingestion]] for the reusable pipeline shape.
+
+---
+
 ## Admin tooling
 
 ### `/dashboard/quizzes` — server-side filtering + pagination (past ~1000 quizzes)
