@@ -1,0 +1,66 @@
+[
+  {
+    "id": "0f64f940-f2c7-4881-940b-22af1f2785e5",
+    "ref": "Prob Q3",
+    "solution": "Let \\(E\\) = persons who speak English, \\(F\\) = persons who speak French. Given \\(n(E)=72\\), \\(n(F)=43\\), and since each of the 100 persons speaks at least one language, \\(n(E \\cup F)=100\\). Using \\(n(E \\cup F)=n(E)+n(F)-n(E \\cap F)\\): \\(100=72+43-n(E \\cap F)\\), so \\(n(E \\cap F)=115-100=15\\). Only English \\(=n(E)-n(E \\cap F)=72-15=57\\). Only French \\(=n(F)-n(E \\cap F)=43-15=28\\). Only English \\(=57\\), only French \\(=28\\), both English and French \\(=15\\)."
+  },
+  {
+    "id": "f5cc2f22-a492-49c1-a964-864d7ed25eb0",
+    "ref": "Prob Q4",
+    "solution": "Let \\(A\\) = trees planted by Parth, \\(B\\) = trees planted by Pradnya. Given \\(n(A)=70\\), \\(n(B)=90\\), \\(n(A \\cap B)=25\\). Trees planted by Parth or Pradnya \\(=n(A \\cup B)=n(A)+n(B)-n(A \\cap B)=70+90-25=135\\). \\(n(A \\cup B)=135\\)."
+  },
+  {
+    "id": "cb683413-b02e-48f8-805b-64f67b286a01",
+    "ref": "Prob Q5",
+    "solution": "Using \\(n(A \\cup B)=n(A)+n(B)-n(A \\cap B)\\): \\(36=20+28-n(A \\cap B)\\), so \\(n(A \\cap B)=48-36=12\\). \\(n(A \\cap B)=12\\)."
+  },
+  {
+    "id": "3117e8bf-3244-4da1-ac8f-96b4742e7ed7",
+    "ref": "Prob Q6",
+    "solution": "Total students \\(=28\\). Students having a dog or cat \\(=\\) (only dog) \\(+\\) (only cat) \\(+\\) (both) \\(=8+6+10=24\\). Students who do not have a dog or cat \\(=28-24=4\\). \\(4\\) students."
+  },
+  {
+    "id": "3d0fabb7-77ae-4c46-a9f0-74e29312d699",
+    "ref": "Prob Q7(i)",
+    "solution": "\\(A=\\{3, 4, 5, 7\\}\\), \\(B=\\{1, 4, 8\\}\\). The common element \\(4\\) goes in the overlap; \\(3, 5, 7\\) in the A-only region and \\(1, 8\\) in the B-only region. \\(A \\cup B=\\{1, 3, 4, 5, 7, 8\\}\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Two overlapping ovals A and B: A-only = 3, 5, 7; overlap (A∩B) = 4; B-only = 1, 8. The whole shaded region is A∪B."
+  },
+  {
+    "id": "ef63ddba-6202-48a3-aec5-33853651ce21",
+    "ref": "Prob Q7(ii)",
+    "solution": "\\(P=\\{a, b, c, e, f\\}\\), \\(Q=\\{l, m, n, e, b\\}\\). The common elements \\(b, e\\) go in the overlap; \\(a, c, f\\) in the P-only region and \\(l, m, n\\) in the Q-only region. \\(P \\cup Q=\\{a, b, c, e, f, l, m, n\\}\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Two overlapping ovals P and Q: P-only = a, c, f; overlap (P∩Q) = b, e; Q-only = l, m, n. The whole shaded region is P∪Q."
+  },
+  {
+    "id": "60222dd5-99ec-41aa-bc88-64967844d61b",
+    "ref": "Prob Q7(iii)",
+    "solution": "Prime numbers between 80 and 100 give \\(X=\\{83, 89, 97\\}\\). Odd numbers between 90 and 100 give \\(Y=\\{91, 93, 95, 97, 99\\}\\). The common element \\(97\\) goes in the overlap; \\(83, 89\\) in the X-only region and \\(91, 93, 95, 99\\) in the Y-only region. \\(X \\cup Y=\\{83, 89, 91, 93, 95, 97, 99\\}\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Two overlapping ovals X and Y: X-only = 83, 89; overlap (X∩Y) = 97; Y-only = 91, 93, 95, 99. The whole shaded region is X∪Y."
+  },
+  {
+    "id": "d1ba0662-7ba6-46b5-999d-cf142380a05f",
+    "ref": "Prob Q8",
+    "solution": "[Textbook answer-key error: the printed answer lists the subset relations only partially and repeats \"S \\(\\subseteq\\) X\" while omitting several correct ones (e.g. \\(Y \\subseteq X\\), \\(V \\subseteq X\\), \\(Y \\subseteq T\\)).] Every square is a rhombus, a rectangle, a parallelogram and a quadrilateral; every rhombus and every rectangle is a parallelogram and a quadrilateral; every parallelogram is a quadrilateral. So the subset relations are: \\(S \\subseteq V\\), \\(S \\subseteq Y\\), \\(S \\subseteq T\\), \\(S \\subseteq X\\), \\(V \\subseteq T\\), \\(V \\subseteq X\\), \\(Y \\subseteq T\\), \\(Y \\subseteq X\\), \\(T \\subseteq X\\).",
+    "_note": "The book's printed list is partial and repeats 'S ⊆ X' (it omits Y ⊆ X). The complete correct set of relations is given above."
+  },
+  {
+    "id": "cb3beb0a-34fd-419b-97ca-e47553e7f974",
+    "ref": "Prob Q9",
+    "solution": "The empty set has no elements, so uniting it with \\(M\\) adds nothing and intersecting it with \\(M\\) shares nothing. \\(M \\cup \\varnothing=M\\) and \\(M \\cap \\varnothing=\\varnothing\\)."
+  },
+  {
+    "id": "6406c0fa-6c1f-483f-9b25-b0c345b4dd1a",
+    "ref": "Prob Q10*",
+    "solution": "The universal set is every element inside the rectangle: \\(U=\\{1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13\\}\\). Set \\(A\\) is the A-only region together with the overlap: \\(A=\\{1, 2, 3, 5, 7\\}\\). Set \\(B\\) is the B-only region together with the overlap: \\(B=\\{1, 5, 8, 9, 10\\}\\). \\(A \\cup B=\\{1, 2, 3, 5, 7, 8, 9, 10\\}\\) and \\(A \\cap B=\\{1, 5\\}\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Rectangle U with two overlapping ovals A and B: A-only = 2, 3, 7; overlap (A∩B) = 1, 5; B-only = 8, 9, 10; outside both ovals but inside U = 4, 11, 13."
+  },
+  {
+    "id": "2ffec181-24ed-462d-9eff-78f3e0ee9509",
+    "ref": "Prob Q11",
+    "solution": "Using \\(n(A \\cup B)=n(A)+n(B)-n(A \\cap B)\\): \\(n(A \\cup B)=7+13-4=16\\). \\(n(A \\cup B)=16\\)."
+  }
+]
