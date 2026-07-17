@@ -83,4 +83,35 @@ describe("gradeMock", () => {
     expect(r.score).toBe(0);
     expect(r.skipped).toBe(4);
   });
+
+  // Officially-dropped / bonus questions (NTA awarded full marks to everyone):
+  // a grace question always scores full, never penalizes, regardless of answer.
+  it("awards a grace question full marks regardless of the answer", () => {
+    const grace: MockGradeQuestion[] = [
+      { questionId: "g1", sectionKey: "chemistry", marks: 4, negMarks: -1, answer: "A", grace: true },
+      { questionId: "g2", sectionKey: "botany", marks: 4, negMarks: -1, answer: "B", grace: true },
+      { questionId: "g3", sectionKey: "physics", marks: 4, negMarks: -1, answer: "C", grace: true },
+    ];
+    // g1 answered "wrong", g2 skipped, g3 answered "right" — all award +4, none penalize.
+    const r = gradeMock(grace, { g1: "D", g3: "C" });
+    expect(r.score).toBe(12);
+    expect(r.correct).toBe(3);
+    expect(r.wrong).toBe(0);
+    expect(r.skipped).toBe(0);
+    expect(r.maxScore).toBe(12);
+    expect(r.verdicts).toEqual({ g1: 1, g2: 1, g3: 1 });
+    expect(r.sectionScores.chemistry).toMatchObject({ correct: 1, wrong: 0, score: 4 });
+  });
+
+  it("mixes grace and normal questions correctly", () => {
+    const mixed: MockGradeQuestion[] = [
+      { questionId: "n1", sectionKey: "physics", marks: 4, negMarks: -1, answer: "A" },
+      { questionId: "g1", sectionKey: "physics", marks: 4, negMarks: -1, answer: "B", grace: true },
+    ];
+    const r = gradeMock(mixed, { n1: "Z", g1: "Z" }); // both wrong picks
+    // n1 penalized (-1), g1 graced (+4) → 3
+    expect(r.score).toBe(3);
+    expect(r.correct).toBe(1); // the grace one
+    expect(r.wrong).toBe(1); // the real one
+  });
 });

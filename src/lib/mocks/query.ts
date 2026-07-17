@@ -13,6 +13,8 @@ export type MockSnapshotQuestion = {
   sectionKey: string;
   marks: number;
   negMarks: number;
+  /** Grace question — awarded to all at grade time (officially dropped/bonus). */
+  grace?: boolean;
 };
 
 export type MockSection = { key: string; label: string; count: number };

@@ -37,6 +37,14 @@ The 2026-07-17 exhaustive non-ingested-code cross-check proved every NEET code =
 
 **How to apply:** rename `neet 2024 qp code E4.pdf` → `neet 2023 qp code E4.pdf` and `neet 2026 qp code 70.pdf` → `reneet 2026 qp code 70.pdf` (the source folder is outside the repo, so no commit). Optional; the ingest is already complete and correct without it.
 
+### Drive the authed E2E flow for NEET mocks — specifically the grace-badge render
+
+The 8 NEET mocks ([[mock-tests]]) shipped with the pure core fully unit-tested (46 mock tests incl. grace grading / edition slug / soft-count), snapshot integrity DB-verified (0 dangling refs, override at position 5), and `/mock` + `/mock/neet-2025` (instructions) smoke-tested anon — but the **auth-gated runner → submit → result flow was never driven end-to-end**. The one piece with no other proof is the **grace rendering**: on the result page, a grace question (2022 Q93/Q128, Re-2026 Q26) must show the amber "Grace — awarded to all" badge, suppress the placeholder-key green highlight, and count as awarded in the tally. The grade math is unit-tested; the badge is presentational and only shows under a real submitted attempt.
+
+**Why:** Definition-of-Done wants the golden path seen in the browser, and grace is a NEET-only UI branch that no anon curl or unit test exercises. A wrong prop or a verdict-mapping slip would only show on a real result page.
+
+**How to apply:** sign in as a student, take **NEET (UG) 2022** (has 2 grace questions), answer Q93/Q128 with anything (or skip), submit, and confirm the result page shows the amber grace badge + disclosure banner on those two, no green "correct" option, and both counted in the Correct tally. Same class as the still-open E2E items — the four sign-up gates (2026-07-12) and the member-management redesign (2026-07-15) — so batch it into one signed-in QA pass. A 200-q attempt is long; the fastest check is to open an attempt, jump to Q93/Q128 via the palette, submit immediately.
+
 ## 2026-07-16
 
 ### ~~`solution_image` diagrams for State Board Ch.2 Application of Derivatives (19 flagged rows)~~ — **DONE 2026-07-16** (built on the user's call the same day; 19 attached + PUBLIC; renderer extended to physical geometry — see the Decisions log)

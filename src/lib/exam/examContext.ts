@@ -99,6 +99,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "NEET", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
+    hasMocks: true, // 8 NEET (UG) mocks (2021-2026 + 2 Re-NEET) published at /mock
   },
   {
     slug: "mh-hsc-12",

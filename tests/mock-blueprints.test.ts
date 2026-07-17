@@ -3,6 +3,7 @@ import {
   MOCK_BLUEPRINTS,
   NDA_MATHS_PAPER,
   NDA_GAT_PAPER,
+  NEET_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -49,5 +50,40 @@ describe("mock blueprints", () => {
   it("returns null for an unknown exam/paper", () => {
     expect(getBlueprint("nda", "physics")).toBeNull();
     expect(getBlueprint("neet", "maths")).toBeNull();
+  });
+});
+
+describe("NEET blueprint", () => {
+  it("is one combined paper across Physics / Chemistry / Biology", () => {
+    expect(NEET_PAPER.code).toBe("full");
+    expect(NEET_PAPER.examSlug).toBe("neet");
+    expect(NEET_PAPER.examName).toBe("NEET");
+    expect(NEET_PAPER.sections.map((s) => s.key)).toEqual([
+      "physics",
+      "chemistry",
+      "biology",
+    ]);
+  });
+
+  it("puts Botany + Zoology in one content-mixed Biology section", () => {
+    const bio = NEET_PAPER.sections.find((s) => s.key === "biology")!;
+    expect(bio.subjects).toEqual(["Botany", "Zoology"]);
+  });
+
+  it("marks +4 / -1", () => {
+    expect(NEET_PAPER.marking).toEqual({ correct: 4, wrong: -1 });
+  });
+
+  it("declares no per-section count (the count varies per sitting: 180 vs 200)", () => {
+    for (const s of NEET_PAPER.sections) expect(s.count).toBeUndefined();
+    // With no declared counts, the blueprint sum is 0 — buildMockPaper derives
+    // the true total from the actual rows placed (soft-count contract).
+    expect(totalQuestions(NEET_PAPER)).toBe(0);
+  });
+
+  it("is resolvable by getBlueprint but is NOT in the NDA discovery list", () => {
+    expect(getBlueprint("neet", "full")).toBe(NEET_PAPER);
+    expect(MOCK_BLUEPRINTS).not.toContain(NEET_PAPER); // NDA year+month loop only
+    expect(MOCK_BLUEPRINTS).toHaveLength(2);
   });
 });

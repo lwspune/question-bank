@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Check, X, Minus, RotateCcw } from "lucide-react";
+import { Check, X, Minus, RotateCcw, Gift } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import KatexRenderer from "@/components/math/KatexRenderer";
@@ -150,14 +150,33 @@ function Tally({ icon: Icon, value, label, tone }: { icon: typeof Check; value: 
 }
 
 function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: string }) {
-  const border =
-    item.verdict === 1 ? "border-l-emerald-500" : item.verdict === -1 ? "border-l-red-500" : "border-l-muted-foreground/40";
+  const border = item.grace
+    ? "border-l-amber-500"
+    : item.verdict === 1
+      ? "border-l-emerald-500"
+      : item.verdict === -1
+        ? "border-l-red-500"
+        : "border-l-muted-foreground/40";
   return (
     <li className={cn("rounded-lg border border-l-4 bg-card p-4", border)}>
       <div className="flex items-center justify-between">
         <span className="font-mono text-xs text-muted-foreground">Q{item.position}</span>
-        <VerdictBadge verdict={item.verdict} />
+        {item.grace ? (
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
+            <Gift className="h-3.5 w-3.5" aria-hidden />
+            Grace — awarded to all
+          </span>
+        ) : (
+          <VerdictBadge verdict={item.verdict} />
+        )}
       </div>
+      {item.grace && (
+        <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
+          This question was officially dropped (or marked bonus) by NTA — every candidate was
+          awarded full marks regardless of their answer, so there is no correct option. See the
+          note in the solution for the reason.
+        </p>
+      )}
       {item.context && (
         <div className="mt-2 border-l-2 border-muted pl-3 font-serif text-sm italic text-muted-foreground">
           <BlockText text={item.context} />
@@ -173,7 +192,9 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
 
       <ul className="mt-3 space-y-1.5">
         {item.options.map((opt) => {
-          const isCorrect = opt.isCorrect;
+          // Grace questions have no valid key (NTA awarded all) — never paint an
+          // option correct/wrong; just neutrally mark what the student picked.
+          const isCorrect = !item.grace && opt.isCorrect;
           const isPicked = item.selectedLabel === opt.label;
           return (
             <li
@@ -181,7 +202,8 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
               className={cn(
                 "flex items-start gap-2 rounded-md border p-2 text-sm",
                 isCorrect && "border-emerald-400 bg-emerald-50 dark:bg-emerald-950/30",
-                isPicked && !isCorrect && "border-red-400 bg-red-50 dark:bg-red-950/30"
+                isPicked && !isCorrect && !item.grace && "border-red-400 bg-red-50 dark:bg-red-950/30",
+                isPicked && item.grace && "border-amber-400 bg-amber-50 dark:bg-amber-950/30"
               )}
             >
               <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold">
@@ -191,7 +213,9 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
                 <KatexRenderer text={opt.text} />
               </div>
               {isCorrect && <span className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400">Correct</span>}
-              {isPicked && !isCorrect && <span className="shrink-0 text-xs font-medium text-red-700 dark:text-red-400">Your pick</span>}
+              {isPicked && !isCorrect && (
+                <span className={cn("shrink-0 text-xs font-medium", item.grace ? "text-amber-700 dark:text-amber-400" : "text-red-700 dark:text-red-400")}>Your pick</span>
+              )}
             </li>
           );
         })}
