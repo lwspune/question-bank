@@ -17,11 +17,18 @@ import {
 } from "@/components/ui/dialog";
 import {
   listActivePapersAction,
+  listPickerBatchesAction,
   addCartToPaperAction,
   createPaperAction,
   questionUsageAction,
 } from "@/app/dashboard/papers/actions";
 import { filterUnused, type UsageRef } from "@/lib/papers/usage";
+import { PAPER_PICKER_LIMIT } from "@/lib/papers/picker";
+
+const SELECT_CLASS =
+  "h-10 w-full rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+type PaperOption = { id: string; title: string; batchLabel: string | null };
 
 /**
  * Commit the /browse cart into a collaborative paper. Org-member only (the cart
@@ -33,41 +40,70 @@ export default function AddToPaperDialog({
   questionIds,
   open,
   onOpenChange,
+  onCommitted,
 }: {
   questionIds: string[];
   open: boolean;
   onOpenChange: (v: boolean) => void;
+  /** Fired after a successful add — the cart clears itself here (no accumulation). */
+  onCommitted?: () => void;
 }) {
   const router = useRouter();
-  const [papers, setPapers] = useState<{ id: string; title: string }[]>([]);
+  const [papers, setPapers] = useState<PaperOption[]>([]);
   const [selectedId, setSelectedId] = useState("");
   const [loading, setLoading] = useState(false);
   const [busy, setBusy] = useState(false);
   const [creating, setCreating] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [usage, setUsage] = useState<Record<string, UsageRef[]>>({});
+  // Picker filters — drafts pile up, so the list is recency-capped + searchable.
+  const [query, setQuery] = useState("");
+  const [batchId, setBatchId] = useState("");
+  const [batches, setBatches] = useState<{ id: string; label: string }[]>([]);
   const count = questionIds.length;
   const idsKey = questionIds.join(",");
 
+  // Load the batch-filter options once per open.
   useEffect(() => {
     if (!open) return;
     let cancelled = false;
-    setLoading(true);
-    listActivePapersAction().then((res) => {
-      if (cancelled) return;
-      setLoading(false);
-      if (res.ok) {
-        setPapers(res.papers);
-        setSelectedId((cur) => cur || res.papers[0]?.id || "");
-        setCreating(res.papers.length === 0);
-      } else {
-        toast.error(res.error);
-      }
+    listPickerBatchesAction().then((res) => {
+      if (!cancelled && res.ok) setBatches(res.batches);
     });
     return () => {
       cancelled = true;
     };
   }, [open]);
+
+  // Load draft papers whenever the picker filters change (debounced for the
+  // search box). Only the initial, unfiltered open auto-flips to "create" mode
+  // when the org genuinely has no drafts — a filter that returns nothing must not.
+  useEffect(() => {
+    if (!open) return;
+    let cancelled = false;
+    setLoading(true);
+    const t = setTimeout(() => {
+      listActivePapersAction({ query: query || undefined, batchId: batchId || null }).then(
+        (res) => {
+          if (cancelled) return;
+          setLoading(false);
+          if (res.ok) {
+            setPapers(res.papers);
+            setSelectedId((cur) =>
+              res.papers.some((p) => p.id === cur) ? cur : res.papers[0]?.id ?? ""
+            );
+            if (!query && !batchId) setCreating(res.papers.length === 0);
+          } else {
+            toast.error(res.error);
+          }
+        }
+      );
+    }, 200);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, [open, query, batchId]);
 
   // Cross-paper soft-warn: which cart questions already live in OTHER papers
   // (excluding the selected target — "already in this one" is the add's own
@@ -107,6 +143,9 @@ export default function AddToPaperDialog({
     toast.success(parts.join(" · "), {
       action: { label: "View paper", onClick: () => router.push(`/dashboard/papers/${paperId}`) },
     });
+    // Clear the cart now that it's committed — otherwise the selection lingers
+    // in localStorage and piles up across papers.
+    onCommitted?.();
     onOpenChange(false);
   }
 
@@ -149,13 +188,11 @@ export default function AddToPaperDialog({
           <DialogTitle>Add {count} question{count === 1 ? "" : "s"} to a paper</DialogTitle>
           <DialogDescription>
             Questions are filed into the section matching their subject. You can
-            rearrange them in the paper afterwards. Your selection stays here too.
+            rearrange them in the paper afterwards. Adding clears your selection.
           </DialogDescription>
         </DialogHeader>
 
-        {loading ? (
-          <p className="py-6 text-center text-sm text-muted-foreground">Loading papers…</p>
-        ) : creating ? (
+        {creating ? (
           <div className="space-y-1.5">
             <Label htmlFor="atp-title">New paper title</Label>
             <Input
@@ -178,20 +215,67 @@ export default function AddToPaperDialog({
           </div>
         ) : (
           <div className="space-y-2">
-            <Label htmlFor="atp-select">Paper</Label>
-            <select
-              id="atp-select"
-              value={selectedId}
-              onChange={(e) => setSelectedId(e.target.value)}
-              disabled={busy}
-              className="h-10 w-full rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {papers.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.title}
-                </option>
-              ))}
-            </select>
+            <Label htmlFor="atp-search">Paper</Label>
+            <div className="flex gap-2">
+              <Input
+                id="atp-search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search papers by title…"
+                disabled={busy}
+                className="flex-1"
+              />
+              {batches.length > 0 && (
+                <select
+                  value={batchId}
+                  onChange={(e) => setBatchId(e.target.value)}
+                  disabled={busy}
+                  aria-label="Filter by batch"
+                  className="h-10 max-w-[45%] rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <option value="">All batches</option>
+                  {batches.map((b) => (
+                    <option key={b.id} value={b.id}>
+                      {b.label}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </div>
+            {loading ? (
+              <p className="py-2 text-sm text-muted-foreground">Loading papers…</p>
+            ) : papers.length === 0 ? (
+              <p className="py-2 text-sm text-muted-foreground">
+                No draft papers match.{" "}
+                <button
+                  type="button"
+                  onClick={() => setCreating(true)}
+                  className="text-brand-accent underline hover:opacity-80"
+                >
+                  Create a new paper
+                </button>
+                .
+              </p>
+            ) : (
+              <select
+                id="atp-select"
+                value={selectedId}
+                onChange={(e) => setSelectedId(e.target.value)}
+                disabled={busy}
+                className={SELECT_CLASS}
+              >
+                {papers.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.title}
+                    {p.batchLabel ? ` — ${p.batchLabel}` : ""}
+                  </option>
+                ))}
+              </select>
+            )}
+            <p className="text-xs text-muted-foreground">
+              Showing the {PAPER_PICKER_LIMIT} most recent drafts — search or filter
+              to reach older ones.
+            </p>
             <button
               type="button"
               onClick={() => setCreating(true)}

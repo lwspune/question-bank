@@ -252,6 +252,7 @@ export default function CartPill({
           questionIds={cart.ids}
           open={addPaperOpen}
           onOpenChange={setAddPaperOpen}
+          onCommitted={() => cart.clear()}
         />
       )}
 

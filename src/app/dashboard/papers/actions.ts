@@ -13,7 +13,7 @@ import {
   createPaper,
   deletePaper,
   getPaperDetail,
-  listPapers,
+  listDraftPapersForPicker,
   addQuestion,
   addQuestionsToPaper,
   removeQuestion,
@@ -28,7 +28,7 @@ import { queryQuestions } from "@/lib/questions/query";
 import { EMPTY_FILTERS, type Difficulty } from "@/lib/questions/filters";
 import type { SectionTemplate } from "@/lib/papers/types";
 import { getQuestionUsage, type UsageRef } from "@/lib/papers/usage";
-import { setPaperBatch } from "@/lib/batches/admin";
+import { setPaperBatch, listBatches } from "@/lib/batches/admin";
 
 type Ok<T = unknown> = { ok: true } & T;
 type Err = { ok: false; error: string };
@@ -86,19 +86,49 @@ export async function setPaperBatchAction(
   }
 }
 
-/** Active (draft) papers in the caller's org — feeds the cart's "Add to paper" picker. */
-export async function listActivePapersAction(): Promise<
-  Result<{ papers: { id: string; title: string }[] }>
+/**
+ * Draft papers for the cart's "Add to paper" picker — recency-capped + optionally
+ * narrowed by title/batch (filtered in SQL). Drafts accumulate, so an unbounded
+ * list clogged the dropdown; this caps to the most recent and lets the caller
+ * search / filter to reach the rest.
+ */
+export async function listActivePapersAction(
+  opts: { query?: string; batchId?: string | null } = {}
+): Promise<
+  Result<{ papers: { id: string; title: string; batchLabel: string | null }[] }>
 > {
   const member = await requireMember();
   if (!member) return { ok: false, error: "Not authorized." };
   try {
     const client = createSupabaseServerClient();
-    const all = await listPapers(client);
-    const papers = all
-      .filter((p) => p.status === "draft")
-      .map((p) => ({ id: p.id, title: p.title }));
+    const papers = await listDraftPapersForPicker(client, {
+      query: opts.query,
+      batchId: opts.batchId ?? null,
+    });
     return { ok: true, papers };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
+}
+
+/** Active batches (for the "Add to paper" picker's batch filter). */
+export async function listPickerBatchesAction(): Promise<
+  Result<{ batches: { id: string; label: string }[] }>
+> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+  try {
+    const client = createSupabaseServerClient();
+    const batches = await listBatches(client);
+    return {
+      ok: true,
+      batches: batches
+        .filter((b) => !b.archived)
+        .map((b) => ({
+          id: b.id,
+          label: b.branchName ? `${b.branchName} · ${b.name}` : b.name,
+        })),
+    };
   } catch (e) {
     return { ok: false, error: msg(e) };
   }
