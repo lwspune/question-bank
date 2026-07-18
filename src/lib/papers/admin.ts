@@ -14,6 +14,7 @@ import {
   UNASSIGNED_KEY,
 } from "./template";
 import { buildSnapshot, planBulkAdd } from "./sections";
+import { PAPER_PICKER_LIMIT, paperTitleIlikePattern } from "./picker";
 import type {
   SectionTemplate,
   MembershipRow,
@@ -94,6 +95,46 @@ export async function listPapers(client: SupabaseClient): Promise<PaperListItem[
     createdBy: r.created_by,
     questionCount: r.paper_questions?.[0]?.count ?? 0,
     batchId: r.batch_id,
+    batchLabel: batchLabelFromEmbed(r.batch),
+  }));
+}
+
+/**
+ * Draft papers for the cart's "Add to paper" picker — recency-capped and
+ * optionally narrowed by title/batch, all filtered IN SQL. The old path fetched
+ * every paper then filtered in JS, so the picker grew unbounded as drafts piled
+ * up (a paper leaves the list only when finalized or deleted) and risked the
+ * PostgREST 1000-row cap. RLS still scopes to the caller's org (and a teacher's
+ * branches). Most-recently-touched first.
+ */
+export async function listDraftPapersForPicker(
+  client: SupabaseClient,
+  opts: { query?: string | null; batchId?: string | null; limit?: number } = {}
+): Promise<{ id: string; title: string; batchLabel: string | null }[]> {
+  let q = client
+    .from("papers")
+    .select(
+      "id, title, batch:batches!batch_id(name, branch:branches!branch_id(name))"
+    )
+    .eq("status", "draft")
+    .order("updated_at", { ascending: false })
+    .limit(opts.limit ?? PAPER_PICKER_LIMIT);
+
+  const pattern = paperTitleIlikePattern(opts.query);
+  if (pattern) q = q.ilike("title", pattern);
+  if (opts.batchId) q = q.eq("batch_id", opts.batchId);
+
+  const { data, error } = await q;
+  if (error) throw new Error(`listDraftPapersForPicker: ${error.message}`);
+
+  type Raw = {
+    id: string;
+    title: string;
+    batch: BatchEmbedRow | BatchEmbedRow[] | null;
+  };
+  return ((data ?? []) as Raw[]).map((r) => ({
+    id: r.id,
+    title: r.title,
     batchLabel: batchLabelFromEmbed(r.batch),
   }));
 }
