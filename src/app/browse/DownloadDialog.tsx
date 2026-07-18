@@ -155,17 +155,38 @@ export default function DownloadDialog({
       <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0">
         <DialogHeader className="px-6 pt-6">
           <DialogTitle>
-            Download {activeCount} question{activeCount === 1 ? "" : "s"}
+            {canDownload
+              ? `Download ${activeCount} question${activeCount === 1 ? "" : "s"}`
+              : "Papers are for teachers"}
           </DialogTitle>
           <DialogDescription>
-            Word files — Question Paper and Answer Key (0.5″ margins, 2 columns,
-            Cambria 10pt)
-            {canTags
-              ? " — plus a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
-              : "."}
+            {canDownload ? (
+              <>
+                Word files — Question Paper and Answer Key (0.5″ margins, 2
+                columns, Cambria 10pt)
+                {canTags
+                  ? " — plus a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
+                  : "."}
+              </>
+            ) : (
+              "Browsing, preview, timed mock tests and notes stay free — no account needed."
+            )}
           </DialogDescription>
         </DialogHeader>
 
+        {!canDownload ? (
+          <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
+            <p>
+              Building and downloading question papers as Word files is a teacher
+              feature. Request a teacher account and we&apos;ll set you up.
+            </p>
+            <p>
+              You&apos;ll be able to filter the bank, assemble papers, and export
+              the Question Paper and Answer Key — numbered and formatted for the
+              classroom.
+            </p>
+          </div>
+        ) : (
         <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
           {cartAvailable && (
             <div
@@ -234,19 +255,8 @@ export default function DownloadDialog({
               {error}
             </p>
           )}
-          {!canDownload && (
-            <div className="space-y-1.5 rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
-              <p className="font-medium text-foreground">
-                Paper downloads are for teachers.
-              </p>
-              <p>
-                Browsing, preview, timed mock tests and notes stay free. To build
-                and download question papers as Word files, request a teacher
-                account — we&apos;ll set you up.
-              </p>
-            </div>
-          )}
         </div>
+        )}
 
         <DialogFooter className="sticky bottom-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row">
           <Button
