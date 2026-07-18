@@ -264,6 +264,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...notesEntries,
     ...quizEntries,
     {
+      // Teacher-access lead page — a real acquisition surface for coaching staff.
+      url: `${SITE_URL}/request-access`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified: now,
       changeFrequency: "yearly",

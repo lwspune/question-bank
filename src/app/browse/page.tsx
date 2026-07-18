@@ -35,7 +35,7 @@ import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
 export const metadata: Metadata = {
   title: "Browse questions",
   description:
-    "Filter past-year questions by exam, chapter, difficulty, and year. Browse free; a free account unlocks Word downloads of the Question Paper + Answer Key.",
+    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Teachers can download the Question Paper + Answer Key as Word files.",
   alternates: { canonical: "/browse" },
 };
 

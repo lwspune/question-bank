@@ -105,11 +105,11 @@ describe.skipIf(!HAS_ENV)("/api/export kind validation", () => {
 
 /**
  * The download gate on the anon path. In tests cookies() throws → the request
- * resolves as anon, so every kind is denied with 401 ("sign in to download")
- * before the query runs. Student→200 / student-tags→403 / staff→200 need a real
- * cookie session and are covered by the pure resolveExportAccess spec
- * (tests/export-access.test.ts). Each request uses a unique x-forwarded-for so
- * the anon rate-limit bucket never interferes.
+ * resolves as anon, so every kind is denied with 401 ("sign in") before the
+ * query runs. Downloads are now STAFF-only (2026-07-18): student→403 (all kinds)
+ * / staff→200 need a real cookie session and are covered by the pure
+ * resolveExportAccess spec (tests/export-access.test.ts). Each request uses a
+ * unique x-forwarded-for so the anon rate-limit bucket never interferes.
  */
 describe.skipIf(!HAS_ENV)("/api/export download gate (anon)", () => {
   for (const kind of ["paper", "key", "tags"] as const) {

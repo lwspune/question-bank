@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { Download, FileText, Key, LogIn, Table } from "lucide-react";
+import { Download, FileText, GraduationCap, Key, Table } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,11 +55,10 @@ export default function DownloadDialog({
   isSignedIn?: boolean;
   isStaff?: boolean;
 }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const returnUrl = searchParams.toString()
-    ? `${pathname}?${searchParams.toString()}`
-    : pathname;
+  // Downloads are staff-only (paper/key/tags all require an org account). A
+  // non-staff visitor (anon OR signed-in student) sees a "request teacher access"
+  // prompt instead — derived from the same gate the API enforces.
+  const canDownload = resolveExportAccess({ kind: "paper", isSignedIn, isStaff }).allowed;
   const canTags = resolveExportAccess({ kind: "tags", isSignedIn, isStaff }).allowed;
   const [internalOpen, setInternalOpen] = useState(false);
   const open = externalOpen ?? internalOpen;
@@ -236,11 +234,17 @@ export default function DownloadDialog({
               {error}
             </p>
           )}
-          {!isSignedIn && (
-            <p className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
-              Downloads are free with an account. Browsing and preview stay open —
-              sign in to get the Word files.
-            </p>
+          {!canDownload && (
+            <div className="space-y-1.5 rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
+              <p className="font-medium text-foreground">
+                Paper downloads are for teachers.
+              </p>
+              <p>
+                Browsing, preview, timed mock tests and notes stay free. To build
+                and download question papers as Word files, request a teacher
+                account — we&apos;ll set you up.
+              </p>
+            </div>
           )}
         </div>
 
@@ -251,13 +255,13 @@ export default function DownloadDialog({
             disabled={busy}
             className="w-full sm:w-auto"
           >
-            {busy ? "Working…" : isSignedIn ? "Done" : "Cancel"}
+            {busy ? "Working…" : canDownload ? "Done" : "Cancel"}
           </Button>
-          {!isSignedIn ? (
+          {!canDownload ? (
             <Button asChild variant="brand" className="w-full sm:w-auto">
-              <Link href={`/login?next=${encodeURIComponent(returnUrl)}`}>
-                <LogIn className="h-4 w-4" aria-hidden />
-                Sign in to download
+              <Link href="/request-access">
+                <GraduationCap className="h-4 w-4" aria-hidden />
+                Request teacher access
               </Link>
             </Button>
           ) : (

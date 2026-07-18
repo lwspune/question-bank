@@ -11,6 +11,10 @@ import { revalidatePath } from "next/cache";
 import { requireSuperadmin, HttpError } from "@/lib/auth";
 import { createOrg, listOrgsWithStats, type OrgStat } from "@/lib/superadmin/admin";
 import { createMember, type MemberRole } from "@/lib/members/admin";
+import {
+  setTeacherAccessRequestStatus,
+  type TeacherRequestStatus,
+} from "@/lib/teacherAccess/service";
 
 type Err = { ok: false; error: string };
 type Result<T = unknown> = ({ ok: true } & T) | Err;
@@ -78,6 +82,18 @@ export async function createOrgMemberAction(input: {
     case "error":
       return { ok: false, error: result.message };
   }
+}
+
+export async function setTeacherRequestStatusAction(
+  id: string,
+  status: TeacherRequestStatus
+): Promise<Result> {
+  const denied = await gate();
+  if (denied) return denied;
+  const res = await setTeacherAccessRequestStatus(id, status);
+  if (!res.ok) return res;
+  revalidatePath("/superadmin");
+  return { ok: true };
 }
 
 function msg(e: unknown): string {

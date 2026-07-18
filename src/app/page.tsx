@@ -157,7 +157,7 @@ export default async function Home() {
               {catalog.totalPublicQuestions.toLocaleString("en-IN")} questions
             </span>
             <span className="text-muted-foreground">
-              {catalog.exams.length} exams · free to browse, sign in to download
+              {catalog.exams.length} exams · free to browse · teachers download papers
             </span>
           </div>
           <div className="mt-5 flex flex-wrap gap-3">
@@ -276,8 +276,9 @@ export default async function Home() {
             Build a paper in two clicks
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
-            Filter the bank by exam, chapter, difficulty and PYQ year — then
-            sign in to download the Question Paper + Answer Key as Word files.
+            Filter the bank by exam, chapter, difficulty and PYQ year, and
+            preview every question free. Teachers can download the Question Paper
+            + Answer Key as Word files.
           </p>
           <Link
             href="/browse"
