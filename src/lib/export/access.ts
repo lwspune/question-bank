@@ -2,11 +2,17 @@
  * Export access gate (pure — no I/O, importable from both the API route and the
  * client DownloadDialog so the two never diverge).
  *
- * Tiers:
- *   - paper / key  → any signed-in user (self-serve student OR org staff).
- *   - tags (.xlsx nda-tracker sheet) → org staff only (teacher/admin accounts).
- *   - anon         → nothing. Browsing + preview stay free; the download is the
- *                    sign-in gate.
+ * Tiers (all three now require org staff — 2026-07-18):
+ *   - paper / key  → org STAFF only (teacher/admin accounts). A downloadable Word
+ *                    paper is a teacher artifact — students get the online product
+ *                    (preview, timed mocks, notes) instead, so download is scoped
+ *                    to provisioned teachers. Was "any signed-in account".
+ *   - tags (.xlsx nda-tracker sheet) → org staff only (unchanged).
+ *   - anon         → nothing. Browsing + preview stay free.
+ *
+ * A signed-in student (no org membership) is NOT staff, so they're denied 403 —
+ * the UI turns that into a "request teacher access" prompt rather than a sign-in
+ * one, since signing in as a student wouldn't unlock the download.
  *
  * Denials carry the HTTP status the route should return (401 = not signed in,
  * 403 = signed in but not staff) plus a user-facing message.
@@ -24,26 +30,21 @@ export function resolveExportAccess(input: {
 }): ExportAccess {
   const { kind, isSignedIn, isStaff } = input;
 
-  if (kind === "tags") {
-    if (!isSignedIn) {
-      return { allowed: false, status: 401, message: "Sign in to download." };
-    }
-    if (!isStaff) {
-      return {
-        allowed: false,
-        status: 403,
-        message: "The tagged sheet is available to PYQ Vault staff accounts only.",
-      };
-    }
-    return { allowed: true };
-  }
-
-  // paper | key — any signed-in account.
+  // Every downloadable artifact is staff-only. Distinguish anon (401) from a
+  // signed-in-but-not-staff student (403) so the route + UI can respond in kind.
   if (!isSignedIn) {
     return {
       allowed: false,
       status: 401,
-      message: "Sign in to download the question paper and answer key.",
+      message: "Sign in with a teacher account to download.",
+    };
+  }
+  if (!isStaff) {
+    return {
+      allowed: false,
+      status: 403,
+      message:
+        "Downloads are for teacher accounts. Request teacher access and we'll set you up.",
     };
   }
   return { allowed: true };
