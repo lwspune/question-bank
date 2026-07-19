@@ -116,13 +116,15 @@ export async function setTeacherAccessRequestStatus(
 }
 
 /**
- * Best-effort ops notification so a lead never sits unseen. Never throws and
- * never blocks the insert — if email isn't configured (RESEND_API_KEY unset)
- * sendEmail just returns { ok: false } and we swallow it. Goes to the monitored
- * public inbox (override with TEACHER_REQUESTS_NOTIFY_EMAIL).
+ * Build the ops-notification payload for a new teacher lead. PURE — the
+ * recipient is resolved separately (env-dependent) so this stays unit-testable.
+ * The message field is user-controlled, so the HTML body is escaped.
  */
-export async function notifyNewTeacherRequest(value: TeacherAccessClean): Promise<void> {
-  const to = process.env.TEACHER_REQUESTS_NOTIFY_EMAIL || CONTACT_EMAIL;
+export function buildTeacherRequestNotification(value: TeacherAccessClean): {
+  subject: string;
+  text: string;
+  html: string;
+} {
   const lines = [
     `Name: ${value.name}`,
     value.institute ? `Institute: ${value.institute}` : null,
@@ -136,10 +138,35 @@ export async function notifyNewTeacherRequest(value: TeacherAccessClean): Promis
     `<h2>New teacher access request</h2><ul>` +
     lines.map((l) => `<li>${escapeHtml(l)}</li>`).join("") +
     `</ul><p>Triage at <strong>/superadmin</strong>.</p>`;
+  return { subject: `Teacher access request — ${value.name}`, text, html };
+}
+
+/**
+ * Best-effort ops notification so a lead never sits unseen. Never throws and
+ * never blocks the insert — but, unlike the original bare `catch {}`, a failure
+ * is LOGGED (this went silent for two real leads) and returned so the caller /
+ * Vercel runtime logs can see it. If email isn't configured (RESEND_API_KEY /
+ * EMAIL_FROM unset in the deployment) sendEmail returns { ok: false } and we log
+ * that. Goes to the monitored public inbox (override with
+ * TEACHER_REQUESTS_NOTIFY_EMAIL). We deliberately do NOT log the lead's PII —
+ * only the recipient + provider error.
+ */
+export async function notifyNewTeacherRequest(
+  value: TeacherAccessClean
+): Promise<{ ok: boolean; error?: string }> {
+  const to = process.env.TEACHER_REQUESTS_NOTIFY_EMAIL || CONTACT_EMAIL;
+  const { subject, text, html } = buildTeacherRequestNotification(value);
   try {
-    await sendEmail({ to, subject: `Teacher access request — ${value.name}`, text, html });
-  } catch {
-    // swallow — notification is best-effort
+    const result = await sendEmail({ to, subject, text, html });
+    if (!result.ok) {
+      console.error(`teacher-access notification not sent (to ${to}): ${result.error}`);
+      return { ok: false, error: result.error };
+    }
+    return { ok: true };
+  } catch (e) {
+    const error = (e as Error).message;
+    console.error(`teacher-access notification threw (to ${to}): ${error}`);
+    return { ok: false, error };
   }
 }
 

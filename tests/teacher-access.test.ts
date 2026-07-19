@@ -7,6 +7,7 @@
  */
 import { describe, it, expect } from "vitest";
 import { validateTeacherAccessRequest } from "@/lib/teacherAccess/validate";
+import { buildTeacherRequestNotification } from "@/lib/teacherAccess/service";
 
 const base = {
   name: "Asha Teacher",
@@ -104,5 +105,58 @@ describe("validateTeacherAccessRequest", () => {
     const r = validateTeacherAccessRequest({ ...base, message: "x".repeat(1001) });
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.field).toBe("message");
+  });
+});
+
+const clean = {
+  name: "Asha Teacher",
+  institute: "Bright Academy",
+  email: "asha@example.com",
+  mobile: "919876543210",
+  city: "Pune",
+  message: "We run an NDA batch.",
+  consent: true as const,
+};
+
+describe("buildTeacherRequestNotification", () => {
+  it("includes every populated field as a line", () => {
+    const n = buildTeacherRequestNotification(clean);
+    expect(n.subject).toBe("Teacher access request — Asha Teacher");
+    expect(n.text).toContain("Name: Asha Teacher");
+    expect(n.text).toContain("Institute: Bright Academy");
+    expect(n.text).toContain("Email: asha@example.com");
+    expect(n.text).toContain("Mobile: 919876543210");
+    expect(n.text).toContain("City: Pune");
+    expect(n.text).toContain("Message: We run an NDA batch.");
+  });
+
+  it("omits null optionals (no empty lines)", () => {
+    const n = buildTeacherRequestNotification({
+      ...clean,
+      institute: null,
+      email: null,
+      city: null,
+      message: null,
+    });
+    expect(n.text).toContain("Name: Asha Teacher");
+    expect(n.text).toContain("Mobile: 919876543210");
+    expect(n.text).not.toContain("Institute:");
+    expect(n.text).not.toContain("Email:");
+    expect(n.text).not.toContain("City:");
+    expect(n.text).not.toContain("Message:");
+    expect(n.html).not.toContain("Email:");
+  });
+
+  it("escapes HTML in the message so a lead can't inject markup into the ops email", () => {
+    const n = buildTeacherRequestNotification({
+      ...clean,
+      message: `<script>alert(1)</script> & "quotes"`,
+    });
+    expect(n.html).not.toContain("<script>");
+    expect(n.html).toContain("&lt;script&gt;");
+    expect(n.html).toContain("&amp;");
+    expect(n.html).toContain("&quot;");
+    // the plain-text part carries the raw value (not rendered as markup)
+    expect(n.text).toContain("<script>alert(1)</script>");
   });
 });
