@@ -79,12 +79,31 @@ def concepts_cell(concepts):
     return "\n".join("• " + c for c in concepts)
 
 
+CLASS_LABEL = {"9th": "Std 9th", "10th": "Std 10th", "11th": "Std 11th", "12th": "Std 12th"}
+
+
 def book_cell(d):
-    sec, ex, note = d.get("section"), d.get("exercise"), d.get("note")
-    if not sec:
+    """Render a textbook column (State Board / NCERT).
+
+    New format: `homework` = [{class, ref}] renders a class-tagged homework block
+      (foundation exercises from 9th/10th plus the current 11th/12th exercise).
+    Legacy: a plain `exercise` string still renders as a single "→ …" line
+      (kept so the other subjects' JSONs build unchanged).
+    """
+    sec, note = d.get("section"), d.get("note")
+    hw, ex = d.get("homework"), d.get("exercise")
+    if not sec and not hw:
         return "GAP" + (f"\n{note}" if note else "")
-    out = [sec]
-    if ex: out.append("→ " + ex)
+    out = []
+    if sec: out.append(sec)
+    if hw:
+        out.append("Homework")
+        for item in hw:
+            cls = CLASS_LABEL.get(item.get("class", ""), item.get("class", ""))
+            ref = item.get("ref", "")
+            out.append("→ " + (f"{cls}: {ref}" if cls else ref))
+    elif ex:
+        out.append("→ " + ex)
     if note: out.append("Note: " + note)
     return "\n".join(out)
 
@@ -105,6 +124,7 @@ FLAG_LABEL = {
     "sb_split": "⚠ SB split", "ncert_gap": "⚠ NCERT gap",
     "ncert_aligned": "✓ NCERT", "cet_anchor": "★ CET", "nda_anchor": "★ NDA",
     "cbse_gap": "⚠ CBSE gap", "cbse_xi": "◆ CBSE: teach in XI",
+    "prereq": "↑ Prerequisite (revise first)",
 }
 
 
@@ -117,61 +137,26 @@ def subtopic_cell(row):
 # ---------- content bodies (add to a given doc; no create/save) ----------
 def spine_body(doc, data):
     title = data.get("plan_title", "Spiral Teaching Plan")
-    h = doc.add_heading(f"LWS Pune {data['subject']} Std {roman(data['grade'])} — {title}", level=0)
+    prefix = data.get("title_prefix", "LWS Pune ")  # set "" to de-brand the main title
+    h = doc.add_heading(f"{prefix}{data['subject']} Std {roman(data['grade'])} — {title}", level=0)
     h.runs[0].font.color.rgb = BRAND
     meta = doc.add_paragraph()
-    meta.add_run(f"{data['board']} · {data['textbook']}\n").italic = True
-    tbd0 = sum(1 for u in data["units"] if u.get("sessions") is None)
-    if data.get("total_teaching_sessions"):
-        extra0 = f" · +{tbd0} numerical/supplementary units (sessions TBD)" if tbd0 else ""
-        meta.add_run(f"{data['total_teaching_sessions']} board-chapter sessions "
-                     f"+ {data.get('buffer_sessions','?')} buffer of {data.get('academic_year_sessions','?')}{extra0}").font.size = Pt(9)
-    else:
-        meta.add_run("Session estimates: TBD").font.size = Pt(9)
+    meta.add_run(f"{data['board']} · {data['textbook']}").italic = True
 
-    # Guiding principles
-    doc.add_heading("Guiding Principles", level=1)
-    gp = data["guiding_principles"]
-    t = doc.add_table(rows=len(gp) + 1, cols=2); t.style = "Table Grid"
-    header_row(t, ["Principle", "What it means"], size=9)
-    for i, g in enumerate(gp, start=1):
-        set_cell(t.rows[i].cells[0], g["principle"], size=9, bold=True)
-        set_cell(t.rows[i].cells[1], g["meaning"], size=9)
-    set_widths(t, [1.6, 5.6])
-
-    # Overview
+    # Overview — the operational roadmap. Timeline + Sign are blank fill-in columns:
+    # the teacher writes planned dates in Timeline and signs Sign as each unit completes.
+    # (Phase per unit still shows in the mapping section; sessions live in the JSON.)
     doc.add_heading("Chapter Overview — All Units", level=1)
     units = data["units"]
     t = doc.add_table(rows=len(units) + 1, cols=5); t.style = "Table Grid"
-    header_row(t, ["#", "Chapter Title", "Board Source", "Sessions", "Phase"], size=9)
+    header_row(t, ["#", "Chapter Title", "Board Source", "Timeline", "Sign"], size=9)
     for i, u in enumerate(units, start=1):
         set_cell(t.rows[i].cells[0], u["unit_no"], size=9, bold=True)
         set_cell(t.rows[i].cells[1], u["title"], size=9)
         set_cell(t.rows[i].cells[2], u["board_source"], size=9)
-        set_cell(t.rows[i].cells[3], str(u["sessions"]) if u.get("sessions") is not None else "TBD", size=9)
-        set_cell(t.rows[i].cells[4], "PHASE " + str(u["phase"]), size=9)
-    set_widths(t, [0.5, 2.9, 2.1, 0.8, 0.9])
-    ss = [u["sessions"] for u in units if u.get("sessions") is not None]
-    tbd = sum(1 for u in units if u.get("sessions") is None)
-    if ss:
-        extra = f" · +{tbd} numerical/supplementary units (TBD)" if tbd else ""
-        doc.add_paragraph().add_run(
-            f"Total: {sum(ss)} board-chapter sessions · {data.get('academic_year_sessions','?')}-session year · "
-            f"{data.get('buffer_sessions','?')} buffer{extra}.").italic = True
-
-    # Phase-by-phase detail
-    doc.add_heading("Phase-by-Phase Detail", level=1)
-    phases = {p["phase"]: p for p in data["phases"]}
-    for ph in sorted(phases):
-        p = phases[ph]
-        doc.add_heading(f"Phase {ph} — {p['name']}", level=2)
-        doc.add_paragraph().add_run(p["blurb"]).italic = True
-        for u in [x for x in units if x["phase"] == ph]:
-            para = doc.add_paragraph()
-            para.add_run(f"Unit {u['unit_no']} · {u['title']} ").bold = True
-            sess = f"{u['sessions']} sessions" if u.get("sessions") is not None else "sessions TBD"
-            para.add_run(f"({u['board_source']} · {sess})\n").font.size = Pt(9)
-            para.add_run(u["why_here"]).font.size = Pt(9)
+        set_cell(t.rows[i].cells[3], "", size=9)   # Timeline — teacher fills in planned dates
+        set_cell(t.rows[i].cells[4], "", size=9)   # Sign — completion signature
+    set_widths(t, [0.5, 2.7, 1.9, 1.2, 0.9])
 
     supp = data.get("supplementary_nda_topics")
     if supp:
@@ -218,6 +203,18 @@ def deepdive_body(doc, data, unit_meta=None, first_break=False):
         set_widths(t, widths)
 
 
+def principles_body(doc, data):
+    """Guiding Principles table — the design rationale, rendered at the END of the plan."""
+    doc.add_heading("Guiding Principles", level=1)
+    gp = data["guiding_principles"]
+    t = doc.add_table(rows=len(gp) + 1, cols=2); t.style = "Table Grid"
+    header_row(t, ["Principle", "What it means"], size=9)
+    for i, g in enumerate(gp, start=1):
+        set_cell(t.rows[i].cells[0], g["principle"], size=9, bold=True)
+        set_cell(t.rows[i].cells[1], g["meaning"], size=9)
+    set_widths(t, [1.6, 5.6])
+
+
 # ---------- document builders ----------
 def new_doc():
     doc = Document(); doc.styles["Normal"].font.name = "Calibri"
@@ -227,6 +224,7 @@ def new_doc():
 def build_spiral(data, out_path):
     doc = new_doc(); portrait(doc.sections[0])
     spine_body(doc, data)
+    principles_body(doc, data)
     doc.save(out_path); return out_path
 
 
@@ -238,9 +236,11 @@ def build_deepdive(data, out_path, unit_meta=None):
 
 def build_combined(spine, deep, unit_meta, out_path):
     doc = new_doc(); portrait(doc.sections[0])
-    spine_body(doc, spine)
-    landscape(doc.add_section(WD_SECTION.NEW_PAGE))   # section break: plan -> mapping
+    spine_body(doc, spine)                            # title + Chapter Overview (+ supplementary)
+    landscape(doc.add_section(WD_SECTION.NEW_PAGE))   # section break: overview -> mapping
     deepdive_body(doc, deep, unit_meta)
+    portrait(doc.add_section(WD_SECTION.NEW_PAGE))    # section break: mapping -> guiding principles (at end)
+    principles_body(doc, spine)
     doc.save(out_path); return out_path
 
 

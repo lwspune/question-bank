@@ -18,7 +18,7 @@ Per subject-grade, identified by a **slug** `<subject>-<grade>` (e.g. `maths-xi`
 | `<slug>-spiral-plan.json` | **Spine** — the units in teaching order + metadata (the "what order & why"). |
 | `<slug>-deep-dive.json` | **Deep-dive** — per-unit subtopic → concept → 4-source mapping (the "what maps to what"). |
 | `build-docx.py` | Generator (shared, subject-agnostic). |
-| `<slug>-teaching-plan.docx` | **Output** — one combined file: plan (portrait) → section break → mapping (landscape). |
+| `<slug>-teaching-plan.docx` | **Output** — one combined file: Chapter Overview (portrait) → mapping (landscape) → Guiding Principles (portrait, at end). Overview columns = #/title/board-source/**Timeline**/**Sign** (Timeline+Sign are blank fill-in). Phase-by-Phase Detail removed 2026-07-20; `phases`/`sessions`/`why_here` stay in the JSON, unrendered. |
 
 Run: `python build-docx.py <slug>` → writes `<slug>-teaching-plan.docx` only.
 The JSON is the source of truth; the `.docx` is a throwaway render. Regenerate any time.
@@ -35,6 +35,7 @@ metadata (title/board_source/phase/sessions) lives once in the spine and is join
 {
   "grade": 11, "subject": "Mathematics",
   "board": "...", "textbook": "...", "plan_title": "...",
+  "title_prefix": "LWS Pune ",           // optional; set "" to de-brand the main plan title
   "total_teaching_sessions": 145,      // or null if no session source (renders "TBD")
   "buffer_sessions": 35, "academic_year_sessions": 180,
   "notes": ["..."],                    // NOT rendered in the doc; keep synced anyway
@@ -61,9 +62,16 @@ metadata (title/board_source/phase/sessions) lives once in the spine and is join
     { "unit_no": "1", "rows": [
       { "id": "1.1", "subtopic": "...",
         "concepts": ["...", "..."],
-        "state_board": { "section": "§x.y ...", "exercise": "Ex x.y", "note": null },  // section=null => GAP
+        // Textbook columns (state_board/ncert): `homework` is the current format —
+        // a class-tagged list drawing prerequisite 9th/10th exercises + the current
+        // 11th/12th one. `exercise` (a plain string) is the legacy single-ref form
+        // still honoured for other subjects. section=null AND no homework => GAP.
+        "state_board": { "section": "§x.y ...",
+          "homework": [ { "class": "9th", "ref": "Practice Set 1.1" },
+                        { "class": "11th", "ref": "Ex 5.1" } ], "note": null },
         "cet":  { "pyq_count": 22, "topic": "<bank subtopic name>", "relevance": "high", "note": null },
-        "ncert":{ "section": "...", "exercise": "...", "note": "GAP - ..." },
+        "ncert":{ "section": "...",
+          "homework": [ { "class": "11th", "ref": "Ex 1.1-1.3" } ], "note": "GAP - ..." },
         "nda":  { "pyq_count": 76, "topic": "...", "relevance": "high", "note": null },
         "flags": ["nda_anchor"] }
     ]}
@@ -72,7 +80,12 @@ metadata (title/board_source/phase/sessions) lives once in the spine and is join
 ```
 **Flags** (rendered as chips): `nda_anchor`/`cet_anchor` (primary exam focus) · `ncert_gap` (not in
 rationalised NCERT) · `ncert_aligned` (clean 1:1) · `sb_split` · `cet_only` (droppable for NDA) ·
-`cet_leaning`. `relevance` ∈ low | med | med-high | high | none.
+`cet_leaning` · `prereq` (↑ Prerequisite (revise first) — used on `N.0` rows, see §5). `relevance` ∈
+low | med | med-high | high | none.
+
+**Textbook columns** (`state_board`/`ncert`) carry `homework: [{class, ref}]` — a class-tagged list
+(`class` ∈ `9th|10th|11th|12th`) rendered `→ Std Nth: <ref>`. A plain `exercise` string is the legacy
+single-ref form, still honoured. `section=null` AND no `homework` ⇒ the cell renders **GAP**.
 
 ---
 
@@ -135,6 +148,17 @@ Row IDs are `"<unit_no>.<k>"`; keep spine and deep-dive `unit_no` lists identica
   distributed practice beat blocked practice for retention.
 - **Numbering.** Units are `1..N` sequential in teaching order; the board chapter reference lives in
   `board_source`, not the number.
+- **`N.0` prerequisite rows (the dependency map).** A foundation unit leads with a row id `N.0`
+  (`flags:["prereq"]`) = "revise this FIRST". Two kinds: **cross-grade** (a Class 9/10 SB + NCERT
+  chapter, via `homework` with `9th`/`10th` refs) and **within-XI** (an earlier XI unit's real
+  exercises, e.g. Continuity `23.0` → Unit 22 Limits). Consolidate a unit's foundation into its `N.0`
+  row rather than scattering 9th/10th refs across the subtopic rows — one predictable "row `.0` = what
+  to revise" slot, subtopic rows stay current-grade-only. Verified against the real Class-9/10 PDFs.
+- **Forward NCERT-12 cross-refs.** Where an XI-State-Board topic is sequenced into NCERT **Class 12**
+  (Matrices, Determinants, Continuity, Inverse Trig, Bayes…), cite `Std 12th: Ex X` in the NCERT
+  column instead of a bare GAP. Keep a true **GAP** only for topics not in NCERT at ANY grade — verify
+  against the Class-12 book, don't trust a "Class 12" note (some are wrong; see the memory).
+- **De-brand the title** with the optional spine field `title_prefix:""` (default `"LWS Pune "`).
 
 ---
 

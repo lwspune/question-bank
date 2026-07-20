@@ -27,6 +27,16 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-20
+
+### Propagate the maths-xi teaching-plan rework to the other 5 plans
+
+`maths-xi` was comprehensively reworked (2026-07-20) into a full 9th→12th dependency map — class-tagged `homework: [{class, ref}]`, `N.0` prerequisite rows (cross-grade Class 9/10 + within-XI), forward `Std 12th` NCERT cross-refs, and a de-branded title (`title_prefix:""`). The generator (`build-docx.py`) + JSON schema changes are backward-compatible, so **maths-xii, physics-xi/xii, chemistry-xi/xii still build in the OLD format** — they carry bare `exercise` strings, no prerequisite rows, and bare "GAP" cells where NCERT sequences a topic into Class 12. See [[teaching-plan-generator]].
+
+**Why:** the new format is markedly more useful for teachers (explicit "revise this first" per unit, real 9th–12th exercise homework, GAP that distinguishes "in NCERT later" from "not in NCERT"). Leaving 5 plans in the old format is an inconsistency a user flipping between subjects will notice. Only the per-unit foundation authoring is left — the machinery already exists.
+
+**How to apply:** per plan, (1) run a transform converting `exercise` → `homework:[{class:"11th"|"12th", ref}]`; (2) author `N.0` prerequisite rows from the verified 9th–12th PDFs (SB Class 9/10 at `.../State-Board/{01. 9th,02. 10th}/`, NCERT at `.../NCERT/Books/<grade>/`); (3) add forward `Std 12th` NCERT refs where a topic is Class-12-sequenced, correcting any wrong "Class 12" notes to true GAPs; (4) `python build-docx.py <slug>` + verify the render. Maths-xii is the natural next one (shares the NDA-first framing). Physics/Chemistry differ (board-order, different NCERT split) — re-derive the foundation per subject, don't copy maths.
+
 ## 2026-07-17
 
 ### Rename 2 mislabeled NEET source PDFs in `C:\tmp\PYQPs\NEET\` (source-folder hygiene only)
