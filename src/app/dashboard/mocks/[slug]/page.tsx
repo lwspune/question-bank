@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { cn } from "@/lib/utils";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionSuperadmin } from "@/lib/auth";
 import { getMockAttemptsDetail, getMockFeedbackSummary, type MockAttemptDetail } from "@/lib/mocks/adminStats";
 
 export const dynamic = "force-dynamic";
@@ -30,9 +30,8 @@ function fmtDate(iso: string | null): string {
 }
 
 export default async function MockAttemptsPage({ params }: { params: Params }) {
-  const member = await getSessionMember();
-  if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/browse");
+  // Platform-wide data (not org-scoped) — superadmin only.
+  if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const [detail, feedback] = await Promise.all([
     getMockAttemptsDetail(params.slug),

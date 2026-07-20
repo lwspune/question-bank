@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { Lightbulb, MessageSquareHeart } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionSuperadmin } from "@/lib/auth";
 import { getFeedbackOverview, type FeedbackItem } from "@/lib/feedback/adminStats";
 
 export const dynamic = "force-dynamic";
@@ -15,9 +15,8 @@ function fmtDate(iso: string): string {
 }
 
 export default async function FeedbackDashboardPage() {
-  const member = await getSessionMember();
-  if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/browse");
+  // Platform-wide data (not org-scoped) — superadmin only.
+  if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const { nps, npsComments, featureRequests } = await getFeedbackOverview();
 

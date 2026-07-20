@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionSuperadmin } from "@/lib/auth";
 import { getActivityShape } from "@/lib/activity/adminStats";
 import { classifyUsageShape, KIND_LABELS, type UsageVerdict } from "@/lib/activity/shape";
 import type { ActivityKind } from "@/lib/activity/events";
@@ -27,9 +27,8 @@ function kindLabel(kind: string): string {
 }
 
 export default async function ActivityShapePage() {
-  const member = await getSessionMember();
-  if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/browse");
+  // Platform-wide data (not org-scoped) — superadmin only.
+  if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const shape = await getActivityShape(90);
   const verdict = classifyUsageShape(shape);

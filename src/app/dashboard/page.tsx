@@ -238,7 +238,7 @@ function QuickActions({
           description="Add admins and teachers, reset passwords, manage roles."
         />
       )}
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/dashboard/students"
           icon={<GraduationCap className="h-5 w-5" aria-hidden />}
@@ -246,7 +246,7 @@ function QuickActions({
           description="See who has signed up — self-serve student accounts, when they joined."
         />
       )}
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/dashboard/entitlements"
           icon={<Gem className="h-5 w-5" aria-hidden />}
@@ -254,7 +254,7 @@ function QuickActions({
           description="Grant or revoke free premium access for students by email."
         />
       )}
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/dashboard/quizzes"
           icon={<ListChecks className="h-5 w-5" aria-hidden />}
@@ -262,7 +262,7 @@ function QuickActions({
           description="View quizzes assembled from the /notes question pool and their status."
         />
       )}
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/dashboard/mocks"
           icon={<Timer className="h-5 w-5" aria-hidden />}
@@ -270,7 +270,7 @@ function QuickActions({
           description="See how students scored on each timed mock test, attempt by attempt."
         />
       )}
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/dashboard/feedback"
           icon={<MessageSquareHeart className="h-5 w-5" aria-hidden />}
@@ -278,7 +278,7 @@ function QuickActions({
           description="NPS score and student suggestions — what to build next."
         />
       )}
-      {isAdmin && (
+      {isSuperadmin && (
         <ActionCard
           href="/dashboard/activity"
           icon={<Activity className="h-5 w-5" aria-hidden />}

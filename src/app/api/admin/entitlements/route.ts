@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { requireAdmin, HttpError } from "@/lib/auth";
+import { requireSuperadmin, HttpError } from "@/lib/auth";
 import {
   grantEntitlement,
   listEntitlements,
@@ -22,7 +22,8 @@ type Body =
 
 export async function POST(request: NextRequest) {
   try {
-    const member = await requireAdmin();
+    // Entitlements are platform-wide (student access, no org dimension) — superadmin only.
+    const user = await requireSuperadmin();
     const body = (await request.json().catch(() => null)) as Body | null;
     if (!body || typeof body !== "object" || !("action" in body)) {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
@@ -40,7 +41,7 @@ export async function POST(request: NextRequest) {
           scope: body.scope ?? SCOPE_ALL,
           expiresAt: body.expiresAt ?? null,
           note: body.note ?? null,
-          grantedBy: member.user.id,
+          grantedBy: user.id,
         });
         switch (result.kind) {
           case "ok":
