@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionSuperadmin } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { getQuizPoolStats, listAssembledQuizzes, countAssembledQuizzes } from "@/lib/quiz/admin";
@@ -8,9 +8,8 @@ import QuizBrowser from "./QuizBrowser";
 export const dynamic = "force-dynamic";
 
 export default async function QuizzesPage() {
-  const member = await getSessionMember();
-  if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/browse");
+  // Platform-wide data (not org-scoped) — superadmin only.
+  if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const [stats, quizzes, quizCount] = await Promise.all([
     getQuizPoolStats(),

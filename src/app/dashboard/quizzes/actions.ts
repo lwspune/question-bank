@@ -3,7 +3,7 @@
 // Assembly lives in the CLI (`npm run quiz:assemble`) — the dashboard is a
 // read-only view. The only write action here is publish-to-public.
 import { revalidatePath } from "next/cache";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export type PublishResult = { ok: true; publicSlug: string } | { ok: false; error: string };
@@ -12,11 +12,11 @@ export type PublishResult = { ok: true; publicSlug: string } | { ok: false; erro
  * Publish a quiz to the PUBLIC lead-magnet funnel: sets quizzes.public_slug to
  * the quiz's (already clean, unique) slug, which is BOTH the public gate and the
  * shareable URL /quiz/<slug>. Pass publish=false to take it back private.
- * Admin-only (quizzes is service-role-write).
+ * Superadmin-only — quizzes are platform-wide content (service-role-write), not
+ * org-scoped, so a per-org admin must not publish them.
  */
 export async function setQuizPublicAction(quizId: string, publish: boolean): Promise<PublishResult> {
-  const member = await getSessionMember();
-  if (!member || member.role !== "ADMIN") return { ok: false, error: "Not authorized." };
+  if (!(await getSessionSuperadmin())) return { ok: false, error: "Not authorized." };
 
   const db = createSupabaseAdminClient();
   const { data: quiz, error: readErr } = await db

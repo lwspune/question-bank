@@ -6,7 +6,7 @@ import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import AttemptsList from "@/app/mock/_components/AttemptsList";
 import { cn } from "@/lib/utils";
-import { getSessionMember } from "@/lib/auth";
+import { getSessionSuperadmin } from "@/lib/auth";
 import { getStudentDetail } from "@/lib/students/detail";
 
 export const dynamic = "force-dynamic";
@@ -20,9 +20,8 @@ function fmtDate(iso: string | null): string {
 }
 
 export default async function StudentDetailPage({ params }: { params: Params }) {
-  const member = await getSessionMember();
-  if (!member) redirect("/login");
-  if (member.role !== "ADMIN") redirect("/browse");
+  // Platform-wide data (not org-scoped) — superadmin only.
+  if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const detail = await getStudentDetail(params.id);
   if (!detail) notFound();
