@@ -175,6 +175,81 @@ function escapeXmlText(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
+const OVERLINE = "̅"; // combining overline (drawn after a base char)
+
+// LaTeX macro → Unicode symbol. Negative lookahead (?![a-zA-Z]) matches a whole
+// control word (\cup but not \cupfoo), independent of what follows — a plain
+// \b breaks when the next char is a letter (e.g. \cap\bar → \cap∩bar).
+const PRETTIFY_TOKENS: [RegExp, string][] = [
+  [/\\cup(?![a-zA-Z])/g, "∪"],
+  [/\\cap(?![a-zA-Z])/g, "∩"],
+  [/\\subseteq(?![a-zA-Z])/g, "⊆"],
+  [/\\subsetneq(?![a-zA-Z])/g, "⊊"],
+  [/\\subset(?![a-zA-Z])/g, "⊂"],
+  [/\\supseteq(?![a-zA-Z])/g, "⊇"],
+  [/\\supset(?![a-zA-Z])/g, "⊃"],
+  [/\\setminus(?![a-zA-Z])/g, "∖"],
+  [/\\triangle(?![a-zA-Z])/g, "△"],
+  [/\\notin(?![a-zA-Z])/g, "∉"],
+  [/\\in(?![a-zA-Z])/g, "∈"],
+  [/\\varnothing(?![a-zA-Z])/g, "∅"],
+  [/\\emptyset(?![a-zA-Z])/g, "∅"],
+  [/\\times(?![a-zA-Z])/g, "×"],
+  [/\\cdot(?![a-zA-Z])/g, "·"],
+  [/\\leq(?![a-zA-Z])/g, "≤"],
+  [/\\geq(?![a-zA-Z])/g, "≥"],
+  [/\\neq(?![a-zA-Z])/g, "≠"],
+  [/\\ne(?![a-zA-Z])/g, "≠"],
+];
+
+// Single-char superscripts we can render as a real Unicode glyph: set
+// complement (c) and small powers. `n` covers the common cardinality exponent.
+const PRETTIFY_SUP: Record<string, string> = {
+  c: "ᶜ",
+  C: "ᶜ",
+  "1": "¹",
+  "2": "²",
+  "3": "³",
+  n: "ⁿ",
+};
+
+/**
+ * Best-effort LaTeX → readable-Unicode rendering for a math zone the OMML
+ * pipeline could NOT convert (temml/mml2omml failed → null). Used ONLY on the
+ * fallback path, so it never touches convertible math; the goal is that a Word
+ * paper shows `(A ∪ B)ᶜ` instead of raw `\((A \cup B)^c\)` markup.
+ *
+ * It deliberately does NOT restructure math (no complement-vs-derivative
+ * guessing, no re-parenthesising) — worst case an unmapped macro is left
+ * verbatim, which is never worse than today's raw fallback. Export-path only;
+ * the website (KaTeX) is unaffected. Pure.
+ */
+export function prettifyMathFallback(latex: string): string {
+  let s = latex;
+  // Token macros first, while every macro's leading `\` boundary is intact.
+  for (const [re, ch] of PRETTIFY_TOKENS) s = s.replace(re, ch);
+  // \overline{…}/\bar{…}: overline each base char (skip spaces).
+  s = s.replace(/\\(?:overline|bar)\s*\{([^{}]*)\}/g, (_, inner: string) =>
+    [...inner].map((c) => (c === " " ? c : c + OVERLINE)).join("")
+  );
+  // Single-level fractions.
+  s = s.replace(/\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "$1/$2");
+  // Complement/power superscripts (\^c, \^{c}, \^2, …); leave others as `^x`.
+  s = s.replace(
+    /\^\{([cC123n])\}|\^([cC123n])/g,
+    (_, a: string, b: string) => PRETTIFY_SUP[a ?? b] ?? `^${a ?? b}`
+  );
+  // Spacing/delimiter cleanup, then prime.
+  s = s
+    .replace(/\\left(?![a-zA-Z])|\\right(?![a-zA-Z])/g, "")
+    .replace(/\\([{}])/g, "$1")
+    .replace(/\\[,;!]/g, " ")
+    .replace(/\\ /g, " ")
+    .replace(/\\[()[\]]/g, "")
+    .replace(/'/g, "′");
+  return s.replace(/[ \t]{2,}/g, " ").trim();
+}
+
 /**
  * Tokenize a question/option/solution text into a flat list of text and OMML
  * segments, ready to be emitted into a docx Paragraph.
@@ -204,12 +279,12 @@ export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
     if (omml) {
       out.push({ type: "math", content: omml, display: isBlock });
     } else {
-      // Fallback: keep the raw LaTeX as text so the question is still readable.
-      const wrapped =
-        seg.type === "inline"
-          ? `\\(${seg.content}\\)`
-          : `\\[${seg.content}\\]`;
-      out.push({ type: "text", content: wrapped });
+      // Fallback: OMML conversion failed (temml/mml2omml). Emit readable
+      // Unicode instead of raw \(...\) markup so the Word paper stays legible.
+      // See prettifyMathFallback — this is the construct-agnostic safety net
+      // that catches the mml2omml superscript-on-\cap/\cup-group crash and any
+      // future conversion failure. Surfaced by `npm run audit:omml`.
+      out.push({ type: "text", content: prettifyMathFallback(seg.content) });
     }
   }
   return out;
