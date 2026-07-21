@@ -19,7 +19,8 @@ type Target = { chapterName: string; subtopicName: string };
  *   • SLUG mode (quizzes + tagged exam questions): ?subtopic=<notes-slug>...
  *     Resolves each slug to its location via the notes registry.
  *   • NAME mode (exams without slugs): ?exam=NDA&subject=Maths&chapter=<name>&subtopic=<name>
- *     Resolves DB names directly.
+ *     Resolves DB names directly. The subtopic is optional — chapter-only
+ *     (the "Where to focus" path) lands on the chapter's whole practice set.
  *
  * Corpus is chosen by subject — Maths → the practice bank (fresh problems),
  * every other subject → the PYQ bank (no practice bank exists). Fallback chain
@@ -52,12 +53,15 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  // NAME mode — exam path. Needs subject + chapter + subtopic names.
+  // NAME mode — exam path + the "Where to focus" chapter path. Needs subject +
+  // chapter; the subtopic name is optional. With a subtopic the /browse filter
+  // narrows to it; without one (chapter-only) it lands on the chapter's whole
+  // practice set (empty subtopicIds → chapter-level browse).
   const subject = sp.get("subject");
   const chapter = sp.get("chapter");
-  const subtopicName = subtopics[0];
+  const subtopicName = subtopics[0] ?? "";
   const exam = sp.get("exam") || "NDA";
-  if (subject && chapter && subtopicName) {
+  if (subject && chapter) {
     return resolveAndRedirect(
       url,
       exam,

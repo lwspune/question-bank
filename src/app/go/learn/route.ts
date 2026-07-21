@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { buildLearnPath } from "@/lib/notes/goLinks";
+import { buildChapterLearnPath, buildLearnPath } from "@/lib/notes/goLinks";
 
 export const dynamic = "force-dynamic";
 
@@ -8,8 +8,10 @@ export const dynamic = "force-dynamic";
  *
  * The cross-app "Learn this" target. `subtopic` is resolved first as a notes
  * slug (the quiz path + tagged exam questions), then as a DB subtopic NAME when
- * `chapter` is supplied (the exam path, which carries names not slugs). Degrades
- * to the /notes index when nothing resolves (e.g. an English subtopic with no
+ * `chapter` is supplied (the exam path, which carries names not slugs). When no
+ * subtopic resolves but a `chapter` is given, degrades to the chapter-level
+ * notes index (the "Where to focus" path). Degrades to the /notes index when
+ * nothing resolves (e.g. an English subtopic with no
  * notes) — never a dead end.
  */
 export function GET(request: NextRequest) {
@@ -18,6 +20,9 @@ export function GET(request: NextRequest) {
   const concept = url.searchParams.get("concept");
   const chapter = url.searchParams.get("chapter");
 
-  const path = buildLearnPath(subtopic, concept, chapter) ?? "/notes";
+  const path =
+    buildLearnPath(subtopic, concept, chapter) ??
+    buildChapterLearnPath(chapter) ??
+    "/notes";
   return NextResponse.redirect(new URL(path, url.origin));
 }

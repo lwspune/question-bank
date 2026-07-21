@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import {
+  buildChapterLearnPath,
   buildLearnPath,
   canonicalSubjectName,
   corpusForSubject,
+  getChapterByName,
   getSubtopicByName,
   getSubtopicBySlug,
 } from "@/lib/notes/goLinks";
@@ -104,6 +106,35 @@ describe("getSubtopicByName (exam path)", () => {
     expect(getSubtopicByName(sampleChapterName, "Nope")).toBeNull();
     expect(getSubtopicByName(null, sampleSubtopicName)).toBeNull();
     expect(getSubtopicByName(sampleChapterName, null)).toBeNull();
+  });
+});
+
+describe("getChapterByName (chapter-level path)", () => {
+  it("resolves a shipped chapter name to its location", () => {
+    const loc = getChapterByName(sampleChapterName);
+    expect(loc).not.toBeNull();
+    expect(loc?.chapterSlug).toBe(sampleChapter.chapterSlug);
+    expect(loc?.subjectRoute).toBe(sampleChapter.subjectRoute);
+  });
+
+  it("returns null for unknown / missing input", () => {
+    expect(getChapterByName("No Such Chapter XYZ")).toBeNull();
+    expect(getChapterByName("")).toBeNull();
+    expect(getChapterByName(null)).toBeNull();
+    expect(getChapterByName(undefined)).toBeNull();
+  });
+});
+
+describe("buildChapterLearnPath", () => {
+  it("builds the chapter-level notes index path", () => {
+    expect(buildChapterLearnPath(sampleChapterName)).toBe(
+      `/notes/${sampleChapter.subjectRoute}/${sampleChapter.chapterSlug}`
+    );
+  });
+
+  it("returns null when the chapter has no notes", () => {
+    expect(buildChapterLearnPath("No Such Chapter XYZ")).toBeNull();
+    expect(buildChapterLearnPath(null)).toBeNull();
   });
 });
 

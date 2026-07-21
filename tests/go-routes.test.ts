@@ -55,6 +55,24 @@ describe("/go/learn (no DB)", () => {
       `/notes/${sampleChapter.subjectRoute}/${sampleChapter.chapterSlug}/${sampleSubtopicSlug}`
     );
   });
+
+  it("chapter-only → the chapter notes index ('Where to focus' path)", () => {
+    const res = learnGET(
+      makeReq(
+        `/go/learn?chapter=${encodeURIComponent(sampleChapter.chapter.chapterName)}`
+      )
+    );
+    expect(res.status).toBe(307);
+    expect(new URL(res.headers.get("location") ?? "").pathname).toBe(
+      `/notes/${sampleChapter.subjectRoute}/${sampleChapter.chapterSlug}`
+    );
+  });
+
+  it("chapter-only with an unknown chapter falls back to /notes", () => {
+    const res = learnGET(makeReq("/go/learn?chapter=No%20Such%20Chapter"));
+    expect(res.status).toBe(307);
+    expect(new URL(res.headers.get("location") ?? "").pathname).toBe("/notes");
+  });
 });
 
 describe.skipIf(!HAS_ENV)("/go/practice (DB-backed)", () => {
@@ -90,6 +108,20 @@ describe.skipIf(!HAS_ENV)("/go/practice (DB-backed)", () => {
     expect(loc.pathname).toBe("/browse");
     expect(loc.searchParams.get("kind")).toBe("practice");
     expect(loc.searchParams.get("subtopicIds")).toBeTruthy();
+  });
+
+  it("chapter-only NAME mode (no subtopic) → chapter-level practice filter", async () => {
+    const res = await practiceGET(
+      makeReq(
+        `/go/practice?exam=NDA&subject=Maths&chapter=${encodeURIComponent(sampleChapter.chapter.chapterName)}`
+      )
+    );
+    expect(res.status).toBe(307);
+    const loc = new URL(res.headers.get("location") ?? "");
+    expect(loc.pathname).toBe("/browse");
+    expect(loc.searchParams.get("kind")).toBe("practice");
+    expect(loc.searchParams.get("chapterIds")).toBeTruthy();
+    expect(loc.searchParams.get("subtopicIds")).toBeNull();
   });
 
   it("NAME mode: a non-Maths subject resolves to the PYQ bank (no kind=practice)", async () => {
