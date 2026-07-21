@@ -83,6 +83,123 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "Maths Mock 2" (dated 20/07/2026, "6M") — 120-q NDA Maths mock (Marks 300,
+  // Batch NDA Sep'26) spanning the algebra/trig/calculus/vector spine: Trigonometric
+  // Identities (Q1–15 minus the equations), Trigonometric Equations (Q7,16–22),
+  // Properties of Triangle (Q8,11,14,23–25,29,30,33,34), Height & Distance (Q26,27),
+  // Inverse Trigonometry (Q32), Complex Numbers (Q35–51, incl. the cube-root-of-unity
+  // Q43/Q47), Sequence & Series (Q52–68), Matrices & Determinants (Q69–85, several
+  // image-rendered determinants), Indefinite Integration (Q86,91–101), Definite
+  // Integration (Q94,101,102), Vectors (Q103–120). Born-digital PDF, clean-ish text
+  // layer but math reflowed/scrambled → vision-transcribed from page PNGs; NO printed
+  // key (every answer DERIVED). Single-subject multi-chapter mode. Flawed/low-conf
+  // items flagged via reviewNote: Q114 (options a≡b), Q117 (correct answer absent from
+  // options), Q83 (cut-off matrix entry), Q98 (option-B print typo), Q39 (only one of
+  // the two valid general solutions is offered). Full ingest (paper + bank + Excel);
+  // only status:"new" rows flip PUBLIC.
+  "lws-maths-mock-2-jul": {
+    slug: "lws-maths-mock-2-jul",
+    title: "NDA Maths — LWS Mock 2 (20 Jul)",
+    recordsFile: "lws-maths-mock-2-jul.records.json",
+    outName: "Tags_LWS_Maths_Mock_2_20Jul",
+    sourceFile: "LWS_Maths_Mock_2_20-7_6M.pdf",
+    subjectName: "Mathematics",
+    chapters: {
+      "Trigonometric Identities": [
+        "Compound Angle Formulas",
+        "Multiple and Half-Angle Formulas",
+        "Product-to-Sum and Sum-to-Product Identities",
+        "Specific Values and Quadrants",
+      ],
+      "Trigonometric Equations": [
+        "General Solutions and Counting Solutions of Trigonometric Equations",
+        "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+      ],
+      "Properties of Triangle": [
+        "In-circle and Regular Polygon Geometry",
+        "Sine and Cosine Rules — Solving Triangles",
+        "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+      ],
+      "Height & Distance": ["Heights and Distances from Angles of Elevation"],
+      "Inverse Trigonometry": ["Evaluation of Composite Inverse Trigonometric Expressions"],
+      "Complex Numbers": [
+        "Cube Roots of Unity",
+        "Modulus, Argument, and Conjugate",
+        "Powers and Roots",
+      ],
+      "Sequence & Series": [
+        "Arithmetic Progressions",
+        "Geometric Progressions",
+        "Harmonic Progressions and the Three Means",
+        "Interrelating AP, GP and HP",
+        "Special Series and Special Sums",
+      ],
+      "Matrices & Determinants": [
+        "Cofactors, Adjoint, and Inverse",
+        "Determinant Properties, Operations, and Sums",
+        "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+        "Matrix Operations, Polynomials, and Equations",
+        "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+        "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+      ],
+      "Indefinite Integration": [
+        "Integration by Partial Fractions",
+        "Integration by Parts",
+        "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+        "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+      ],
+      "Definite Integration": [
+        "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+        "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+      ],
+      Vectors: [
+        "Cross Product and Triple Product",
+        "Dot Product and Angle",
+        "Magnitude, Components, Projection, and Direction Cosines",
+        "Position Vectors and Section",
+        "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
+      ],
+    },
+    pyqNote: "NDA Maths practice — LWS Maths Mock 2 (20/07/2026)",
+    examName: "NDA",
+    section: { key: "maths-mock-2-jul", label: "Maths Mock 2 (20 Jul)" },
+    bankAdd: true,
+  },
+
+  // LWS "English Mock Test 2 (Dinner)" — 50-q NDA English (GAT) MOCK spanning FOUR
+  // chapters: Reading Comprehension (Q1–5 Passage-1 "subjective idealism", Q6–10
+  // Passage-2 "twin paradox" → two shared passages: context + setLabel RC1/RC2 →
+  // Inferential Comprehension), Vocabulary (Q11–15 similar-sounding-word triples →
+  // Confusable Word Pairs; Q16–20 word↔meaning match-lists + Q21–30 single-word
+  // usage-count → Word Definition), Grammar (Q31–40 discourse markers → Discourse
+  // Markers and Connectors), Sentence Rearrangement (Q41–50 S1–S6 P/Q/R/S para-
+  // jumbles → Paragraph Sequencing). Born-digital DOCX, clean text layer, NO printed
+  // key (answers DERIVED). Single-subject multi-chapter mode (`chapters` + per-record
+  // `chapter`). Low-confidence items flagged via reviewNote (Q11, Q22, Q24, Q26, Q31 —
+  // vocab-usage judgment + one standalone connector). Full ingest scaffold present
+  // (paper + bank + Excel); the tagged Excel is the immediate deliverable.
+  "eng-mock-2-dinner": {
+    slug: "eng-mock-2-dinner",
+    title: "NDA English — Mock Test 2 (Dinner)",
+    recordsFile: "eng-mock-2-dinner.records.json",
+    outName: "Tags_NDA_English_Mock_2_Dinner",
+    sourceFile: "English_Mock_Test_2_Dinner.docx",
+    subjectName: "English",
+    chapters: {
+      "Reading Comprehension": [
+        "Inferential Comprehension",
+        "Literal Comprehension",
+        "Vocabulary in Context",
+      ],
+      Vocabulary: ["Confusable Word Pairs", "Word Definition", "Synonyms", "Antonyms"],
+      Grammar: ["Discourse Markers and Connectors"],
+      "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+    },
+    pyqNote: "NDA English (GAT) mock — LWS English Mock Test 2 (Dinner)",
+    examName: "NDA",
+    section: { key: "eng-mock-2-dinner", label: "English Mock Test 2 (Dinner)" },
+    bankAdd: true,
+  },
   // LWS "NDA ENG BB3" — 50-q NDA English test spanning SIX chapters: Spotting Errors
   // (Q1–10), Sentence Improvement (Q11–15 → Spotting Errors › Sentence Improvement),
   // Homonyms (Q16–20 → Vocabulary › Confusable Word Pairs), Question Tags (Q21–25 →
@@ -833,6 +950,126 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "apj-gat-mock-7", label: "APJ GAT Mock 7" },
     bankAdd: true,
     createPaper: false, // bank-only ingest of the 73 status:"new" rows; no /dashboard/papers paper
+  },
+
+  // LWS "Vectors Balanced Practice Set" (NDA_Physics_Vectors_Balanced_MCQs_v3) — 25-q
+  // NDA Physics Vectors test, born-digital .docx, clean text layer, NO printed key
+  // (all 25 answers DERIVED). Excel-ONLY (bankAdd:false), mirroring `phys-units-vectors`:
+  // NDA Physics has a "Units, Measurement and Dimensions" chapter but NO "Vectors"
+  // chapter, so a bank/paper ingest would need a taxonomy decision first — the ask here
+  // is only the OMR tagged sheet. Same four ad-hoc Vectors subtopics as phys-units-vectors.
+  // Flagged: Q8 flawed (parallelogram-from-diagonals area = 5√3 = √75 ≈ 8.66 is not among
+  // the printed options √21/√42/2√42/4√2; keyed B as nearest for OMR grading). Derived
+  // answer distribution A×9 · B×7 · C×8 · D×1 (the paper genuinely has one D key, Q12).
+  "phys-vectors-balanced": {
+    slug: "phys-vectors-balanced",
+    title: "NDA Physics — Vectors Balanced Practice Set (v3)",
+    recordsFile: "phys-vectors-balanced.records.json",
+    outName: "Tags_NDA_Physics_Vectors_Balanced",
+    sourceFile: "NDA_Physics_Vectors_Balanced_MCQs_v3.docx",
+    subjectName: "Physics",
+    chapterName: "Vectors",
+    subtopics: [
+      "Vector Addition and Resultants",
+      "Dot Product, Cross Product and Angle",
+      "Vector Components and Geometry",
+      "Relative Velocity and Motion",
+    ],
+    pyqNote: "NDA Physics practice — LWS Vectors Balanced Practice Set (v3)",
+    examName: "NDA",
+    section: { key: "vectors", label: "Vectors" },
+    bankAdd: false, // Excel-only: emit the OMR tagged sheet, no bank commit / no paper
+  },
+
+  // LWS "APJ GAT Mock 8" — 150-q NDA GAT (General Ability Test) MOCK spanning FOUR
+  // subjects: English (Q1–50), Geography (Q51–100), Physics (Q101–125, Light &
+  // Optics), Chemistry (Q126–150, Acids/Bases/Salts). Born-digital .docx; formulas
+  // recovered via pandoc→LaTeX. NO printed key (answers DERIVED + cross-checked vs
+  // the bank). Multi-subject mode (`subjects` + per-record `subject`+`chapter`).
+  // Semantic dedup vs the NDA bank: 59 new / 90 dup / 1 flawed. English is wholly
+  // new (idioms/RC/completions/synonyms/antonyms); Physics + Chemistry are entirely
+  // recurring; Geography is mostly recurring with a new vegetation cluster. Source-doc
+  // artifact: Q32 truncated jumbled stem (flawed, best-guess key + note); Q33–35 are
+  // an internal duplicate of Q23–25 (status "dup" — kept for OMR parity). Re-derivation
+  // flagged an EXISTING bank wrong-key at Q57 (Match river-basin/town: bank keys C,
+  // geographically impossible — Uttarkashi is on the Bhagirathi; Excel uses correct B)
+  // → logged for backfill review. Q93 (Chir vs Deodar) + Q98 (Red Sanders IUCN
+  // year-sensitivity) flagged. createPaper:false => Excel + bank ingest, no
+  // /dashboard/papers paper. Of the 59 status:"new", 58 committed + flipped PUBLIC;
+  // Q69 (Narmada/Jabalpur monsoon cloze) turned out byte-identical to an existing
+  // NDA row and deduped at commit (content_hash) — it already lives in the bank.
+  "apj-gat8": {
+    slug: "apj-gat8",
+    title: "NDA GAT — APJ Mock 8",
+    recordsFile: "apj-gat8.records.json",
+    outName: "Tags_NDA_APJ_GAT_Mock_8",
+    sourceFile: "NDA_GAT_Practice__APJ_GAT_Mock_8.docx",
+    subjects: {
+      English: {
+        Grammar: ["Preposition Usage", "Sentence Completion"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": ["No Error (Correct Sentence)", "Tense and Verb Form"],
+        Vocabulary: ["Antonyms", "Synonyms"],
+      },
+      Geography: {
+        "Earth's Structure, Landforms and Geological Time": ["Landforms and Mass Movements", "Soils"],
+        "Indian Geography — Economy, Resources and Transport": ["Agriculture, Crops, Soils and Land Use"],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India", "Indian Rivers, Lakes and Water Bodies",
+          "Indian Soils and Climate-Agriculture", "Location, Extent and Frontiers of India",
+        ],
+        "World and Human Geography": ["World — Rivers, Canals and Water Bodies"],
+      },
+      Physics: {
+        "Light and Optics": [
+          "Lenses and Lens Formula", "Prisms and Dispersion",
+          "Reflection and Mirrors", "Refraction, Speed of Light and TIR",
+        ],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": [
+          "Acid-Base Theory: Concepts, Oxides and Electrolytes", "Common Acids: Names, Formulas and Uses",
+          "Salts and Common Compounds", "Water of Crystallization", "pH Scale and Common Substances",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS APJ GAT Mock 8",
+    examName: "NDA",
+    section: { key: "apj-gat-mock-8", label: "APJ GAT Mock 8" },
+    bankAdd: true,
+    createPaper: false, // Excel + (optional) bank ingest only; no /dashboard/papers paper
+  },
+
+  // LWS "Geomorphology and Landforms Mock Test" — 50-q NDA Geography (GAT) MOCK on the
+  // NCERT "Geomorphic Processes" + "Landforms and their Evolution" chapters (exogenic/
+  // endogenic forces, diastrophism, weathering, mass movement, and fluvial/glacial/
+  // karst/arid/coastal landforms). Single-subject single-chapter: everything files
+  // under "Earth's Structure, Landforms and Geological Time" across three subtopics
+  // (Landforms and Mass Movements / Weathering and Denudation / Earth's Interior,
+  // Crust and Plate Tectonics). Born-digital DOCX, clean text layer, NO printed key
+  // (answers DERIVED from NCERT). Dedup ran FIRST on stems vs the 86-row chapter bank:
+  // 0 DUP, 1 MAYBE (Q9, kept new — distinct 2-statement question), 49 NEW → all 50
+  // status:"new". Low-confidence items flagged via reviewNote (Q11 energy-source set,
+  // Q15 biological-weathering odd-one-out, Q37 assertion-reason, Q47 polje).
+  "geo-geomorphology-landforms": {
+    slug: "geo-geomorphology-landforms",
+    title: "NDA Geography — Geomorphology and Landforms Mock Test",
+    recordsFile: "geo-geomorphology-landforms.records.json",
+    outName: "Tags_NDA_Geography_Geomorphology_Landforms",
+    sourceFile: "GEOMORPHOLOGY_AND_LANDFORMS_Mock_Test.docx",
+    subjectName: "Geography",
+    chapterName: "Earth's Structure, Landforms and Geological Time",
+    subtopics: [
+      "Landforms and Mass Movements",
+      "Weathering and Denudation",
+      "Earth's Interior, Crust and Plate Tectonics",
+    ],
+    pyqNote: "NDA Geography (GAT) practice — LWS Geomorphology and Landforms Mock Test",
+    examName: "NDA",
+    section: { key: "geomorphology-landforms", label: "Geomorphology and Landforms" },
+    bankAdd: true,
   },
 };
 
