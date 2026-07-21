@@ -27,6 +27,24 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-21
+
+### Manually verify the OMML prettify fallback in a downloaded Word paper
+
+The 2026-07-21 fix (`prettifyMathFallback`, merged `db2184f`) makes OMML-unconvertible math zones degrade to readable Unicode in the docx export instead of raw `\(...\)`. It's proven correct at the *text* level (18 tests + real-data validation on all 20 affected zones → 0 backslash-macros remain), but this repo has **no headless docx render**, so the rendered Word output was never eyeballed.
+
+**Why:** Definition-of-Done wants the golden path seen. The fallback emits characters like `ᶜ` (U+1D9C), `′` (U+2032), and a combining overline (`A̅`) — these need to render legibly in Word's default fonts on a real machine, which no automated test here can confirm.
+
+**How to apply:** As a teacher, download the paper containing the NDA-2018-II Maths Q5 sets question (or any of the 12 flagged rows — run `npm run audit:omml` for the list in `generated-papers/omml-sweep.md`). Confirm the options read as `(A ∪ B)′`, `(A ∩ B)²`, `A̅∩B̅`, etc., with no raw `\cap`/`\cup`/`\(` markup and no tofu boxes. If a glyph renders poorly, adjust the mapping in `prettifyMathFallback` (`src/lib/export/ommlBuilder.ts`).
+
+### Replace or fork the unmaintained `mml2omml` (docx export root fix)
+
+The 2026-07-21 crash (a superscript on a `\cap`/`\cup` group throws inside `mml2omml`) is one instance of a class: `mml2omml` is unmaintained (0.5.0 is latest) and will keep throwing on temml MathML shapes it can't stringify. The prettify fallback + `audit:omml` probe contain the symptom (readable degradation + ingest-time detection), but the math still can't become real OMML for those zones.
+
+**Why:** Every future crash means another set of questions rendering as fallback text instead of typeset math in Word papers. The probe makes recurrence visible but doesn't fix it. Fixing the library is the only way those zones become proper OMML.
+
+**How to apply:** Evaluate options — (a) fork `mml2omml` and patch the nested-superscript stringify crash (needs pinpointing the `stringify` node with undefined `children`); (b) switch to a maintained MathML→OMML path; (c) render OMML-unconvertible zones to an embedded image via temml/MathJax SVG (heavier; adds a dependency + non-editable math). Not urgent — the fallback + probe hold the line. See [[docx-omml-export-pipeline]].
+
 ## 2026-07-20
 
 ### Propagate the maths-xi teaching-plan rework to the other 5 plans
