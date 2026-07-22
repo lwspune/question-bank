@@ -258,6 +258,36 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
       continue;
     }
 
+    if (q.questionFormat === "numeric") {
+      // NAT: no A/B/C/D letter — the answer is the exact numerical value.
+      children.push(
+        new Paragraph({
+          numbering: { reference: NUM_REF, level: 0 },
+          children: [
+            new TextRun({ text: "Answer: ", italics: true, bold: true }),
+            new TextRun({ text: q.numericAnswer != null ? String(q.numericAnswer) : "(pending)" }),
+          ],
+        })
+      );
+      if (input.includeSolutions && q.solution) {
+        children.push(
+          new Paragraph({
+            indent: { left: 720 },
+            children: [
+              new TextRun({ text: "Solution: ", italics: true, bold: true }),
+              ...mathRuns(q.solution, builder),
+            ],
+          })
+        );
+      }
+      if (input.includeSolutions) {
+        const solImg = solutionImagePara(q, input.imageBytes);
+        if (solImg) children.push(solImg);
+        children.push(blank());
+      }
+      continue;
+    }
+
     const correct = q.options.find((o) => o.isCorrect);
     children.push(
       new Paragraph({

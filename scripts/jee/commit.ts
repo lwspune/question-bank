@@ -13,7 +13,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
-import { contentHash } from "../../src/lib/upload/hash";
+import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import { keepForSubject, parseSubjectArg } from "./lib";
@@ -24,6 +24,7 @@ type Rec = {
   subject: string;
   status: string;
   stem: string;
+  numericAnswer?: number | null;
   options: { label: "A" | "B" | "C" | "D"; text: string; isCorrect: boolean }[] | null;
 };
 
@@ -48,6 +49,28 @@ function buildRows(paperId: string, paper: PaperData, subject?: string): ParsedR
 
     const text = normalizeNewlines(paper.stemOverrides?.[key] ?? r.stem);
     if (!text.trim()) throw new Error(`Q${r.questionNumber}: empty stem — add a stemOverride in papers/${paperId}.json`);
+
+    // Section-B NAT: no options, exact numeric answer (override wins over parsed).
+    if (r.status === "numeric" || paper.numericOverrides?.[key] !== undefined) {
+      const numericAnswer = paper.numericOverrides?.[key] ?? r.numericAnswer;
+      if (numericAnswer === null || numericAnswer === undefined) {
+        throw new Error(`Q${r.questionNumber}: no numeric answer — add a numericOverride in papers/${paperId}.json`);
+      }
+      return {
+        sourceRow: r.questionNumber,
+        questionNumber: key,
+        subjectName: cls.subject ?? r.subject,
+        chapterName: cls.chapter,
+        subtopicName: cls.subtopic,
+        text,
+        difficulty: "MODERATE" as const,
+        solution: undefined,
+        questionFormat: "numeric" as const,
+        numericAnswer,
+        options: [],
+        contentHash: numericContentHash(text, null),
+      };
+    }
 
     // Answer: an explicit override (corrects a mis-keyed soln) wins over the extracted key.
     const answer = paper.answerOverrides?.[key] ?? r.options?.find((o) => o.isCorrect)?.label;

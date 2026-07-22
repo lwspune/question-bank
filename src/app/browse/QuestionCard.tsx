@@ -80,9 +80,12 @@ export default function QuestionCard({
   // unlock the answer. Admins audit content via the Edit page.
   const [picked, setPicked] = useState<OptionLabel | null>(null);
   const revealed = picked !== null;
-  // Subjective (free-response) questions have no options — the answer is the
-  // model answer in `solution`, shown via the reveal button below.
+  // Subjective (free-response) and numeric (NAT) questions have no options.
+  // Subjective's answer is the model answer in `solution`; numeric's answer is
+  // the exact value in `numericAnswer`. Both reveal via the button below.
   const isSubjective = question.questionFormat === "subjective";
+  const isNumeric = question.questionFormat === "numeric";
+  const isOpenFormat = isSubjective || isNumeric;
   const cart = useCart();
   const inCart = !hideCart && cart.has(question.id);
 
@@ -275,7 +278,7 @@ export default function QuestionCard({
               </div>
             )}
 
-            {!isSubjective && (
+            {!isOpenFormat && (
             <ol className="space-y-2 pt-2">
               {question.options.map((opt) => {
                 const isPickedByUser = picked === opt.label;
@@ -339,7 +342,7 @@ export default function QuestionCard({
               })}
             </ol>
             )}
-            {!isSubjective && !revealed && (
+            {!isOpenFormat && !revealed && (
               <p className="pt-1 text-center text-xs text-muted-foreground">
                 Tap an option to check your answer.
               </p>
@@ -353,7 +356,34 @@ export default function QuestionCard({
               </p>
             )}
 
-            {question.solution && (
+            {/* Numeric (NAT): a reveal showing the exact answer, plus the worked
+                solution if present. The answer is a plain number (no options). */}
+            {isNumeric && (
+              <div>
+                <button
+                  type="button"
+                  onClick={toggleSolution}
+                  className="font-sans text-xs font-medium text-primary hover:underline"
+                >
+                  {showSolution ? "Hide answer" : "Show answer"}
+                </button>
+                {showSolution && (
+                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
+                    <p className="font-sans">
+                      <span className="font-medium">Answer:</span>{" "}
+                      <span className="tabular-nums">{question.numericAnswer}</span>
+                    </p>
+                    {question.solution && (
+                      <div className="pt-2">
+                        <BlockText text={question.solution} />
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {!isNumeric && question.solution && (
               <div>
                 <button
                   type="button"

@@ -114,7 +114,8 @@ export async function commitStaged(
     text: string;
     difficulty: ParsedRowPayload["difficulty"];
     solution: string | null;
-    question_format: "mcq" | "subjective";
+    question_format: "mcq" | "subjective" | "numeric";
+    numeric_answer: number | null;
     content_hash: string;
     source_file: string;
     source_row: number;
@@ -165,6 +166,7 @@ export async function commitStaged(
           difficulty: row.difficulty,
           solution: row.solution ?? null,
           question_format: row.questionFormat ?? "mcq",
+          numeric_answer: row.questionFormat === "numeric" ? row.numericAnswer ?? null : null,
           content_hash: row.contentHash,
           source_file: filename,
           source_row: row.sourceRow,

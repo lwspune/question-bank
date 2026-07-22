@@ -13,6 +13,7 @@ import {
   normalizeMathFunctions,
   keepForSubject,
   parseSubjectArg,
+  parseNumericAnswer,
 } from "../scripts/jee/lib";
 
 describe("cleanText", () => {
@@ -366,5 +367,25 @@ describe("parseSubjectArg", () => {
   });
   it("returns undefined when absent", () => {
     expect(parseSubjectArg(["node", "commit.ts", "2021-p19", "--apply"])).toBeUndefined();
+  });
+});
+
+describe("parseNumericAnswer (JEE Section B / NAT answers)", () => {
+  it("parses a plain integer answer", () => {
+    expect(parseNumericAnswer("7744")).toBe(7744);
+    expect(parseNumericAnswer("5")).toBe(5);
+  });
+  it("parses decimals and strips thousands commas", () => {
+    expect(parseNumericAnswer("1.50")).toBe(1.5);
+    expect(parseNumericAnswer("2,021")).toBe(2021);
+  });
+  it("parses a negative value", () => {
+    expect(parseNumericAnswer("-3")).toBe(-3);
+  });
+  it("returns null for an unparseable / ambiguous token (forces an override)", () => {
+    expect(parseNumericAnswer("5 or 6")).toBeNull();
+    expect(parseNumericAnswer("abc")).toBeNull();
+    expect(parseNumericAnswer("")).toBeNull();
+    expect(parseNumericAnswer(undefined)).toBeNull();
   });
 });

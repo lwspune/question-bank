@@ -254,6 +254,20 @@ export function parseSubjectArg(argv: string[]): string | undefined {
   return flag ? flag.slice("--subject=".length) : undefined;
 }
 
+/**
+ * Parse a Section-B (Numerical Answer Type) answer token into a number.
+ * The soln-doc token for a NAT question IS the answer value (e.g. "7744",
+ * "1.50", "2,021"). Returns null for anything that isn't a single clean number
+ * (ambiguous / ranged answers must be resolved with an answerOverride).
+ */
+export function parseNumericAnswer(token: string | undefined): number | null {
+  if (!token) return null;
+  const cleaned = token.replace(/,/g, "").trim();
+  if (!/^-?\d+(?:\.\d+)?$/.test(cleaned)) return null;
+  const n = Number(cleaned);
+  return Number.isFinite(n) ? n : null;
+}
+
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 const SECTION_OR_PART = /PART-|SECTION/i;
 

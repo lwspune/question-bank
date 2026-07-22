@@ -231,6 +231,50 @@ describe("subjective questions (question_format = 'subjective')", () => {
   });
 });
 
+const NAT: QuestionRow = {
+  id: "nq1",
+  text: "The value of \\(k\\) is",
+  context: null,
+  difficulty: "MODERATE",
+  solution: "Solving gives \\(k = 7744\\).",
+  imageUrl: null,
+  setId: null,
+  questionFormat: "numeric",
+  numericAnswer: 7744,
+  exam: { id: "e", name: "JEE Mains" },
+  subject: { id: "s", name: "Maths" },
+  chapter: { id: "c", name: "Sequences and Series" },
+  subtopic: null,
+  questionNumber: "81",
+  pyqYear: 2021,
+  pyqMonth: null,
+  pyqNote: "Paper 19",
+  options: [],
+};
+
+describe("numeric (NAT) questions (question_format = 'numeric')", () => {
+  it("paper: renders the stem with no option labels", async () => {
+    const buf = await buildQuestionPaper({ title: "T", questions: [NAT] });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("m:oMath");
+    for (const label of ["(a)", "(b)", "(c)", "(d)"]) {
+      expect(xml).not.toContain(label);
+    }
+  });
+
+  it("answer key: prints the exact numeric answer, never a '(?)' letter", async () => {
+    const buf = await buildAnswerKey({
+      title: "T",
+      questions: [NAT],
+      includeSolutions: false,
+    });
+    const xml = await readDocXml(buf);
+    expect(xml).toContain("Answer:");
+    expect(xml).toContain("7744");
+    expect(xml).not.toContain("(?)");
+  });
+});
+
 describe("groupBySubtopic — section headings", () => {
   const withSub = (
     id: string,

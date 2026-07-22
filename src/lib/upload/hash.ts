@@ -40,3 +40,21 @@ export function subjectiveContentHash(
     .update(`SUBJECTIVE\n${ctx}\n${q}`)
     .digest("hex");
 }
+
+/**
+ * Dedup hash for a NUMERIC-answer (NAT) question — zero options, the answer in
+ * `numeric_answer`. Same design as {@link subjectiveContentHash}: namespaced
+ * (`NUMERIC\n` — can't collide with an MCQ or subjective hash for the same
+ * stem), context-aware (set-sibling disambiguation), and **excludes the answer**
+ * so correcting a mis-keyed value doesn't change the id / orphan the row.
+ */
+export function numericContentHash(
+  question: string,
+  context: string | null
+): string {
+  const q = norm(question);
+  const ctx = context ? norm(context) : "";
+  return createHash("sha256")
+    .update(`NUMERIC\n${ctx}\n${q}`)
+    .digest("hex");
+}

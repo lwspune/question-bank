@@ -19,9 +19,11 @@ import {
   findDuplicateSolutionNumbers,
   localSection,
   matchValueToOption,
+  parseNumericAnswer,
   splitSolutions,
   type JeeSubject,
 } from "./lib";
+import { numericContentHash } from "../../src/lib/upload/hash";
 
 const OPTION_LABELS = ["A", "B", "C", "D"] as const;
 type Label = (typeof OPTION_LABELS)[number];
@@ -29,6 +31,7 @@ type Label = (typeof OPTION_LABELS)[number];
 type Option = { label: Label; text: string; isCorrect: boolean };
 type Status =
   | "ok"
+  | "numeric"
   | "skipped_numerical"
   | "no_answer_key"
   | "image_options"
@@ -41,6 +44,8 @@ type PilotRecord = {
   stem: string;
   options: Option[] | null;
   correctLabel: Label | null;
+  /** The parsed answer for a Section-B NAT record (status 'numeric'); null otherwise. */
+  numericAnswer: number | null;
   solution: string | null;
   imageRefs: string[];
   hasStemImage: boolean;
@@ -86,6 +91,10 @@ function main() {
   // MCQ-vs-numerical is decided purely by whether 4 options parse, and subjects are
   // assigned per-question via classification (see PaperData.classification.subject).
   const compilation = process.argv.includes("--compilation");
+  // With --numeric, Section B (Numerical Answer Type) questions are KEPT as
+  // numeric-format records (answer parsed from the soln token) instead of being
+  // dropped as skipped_numerical. NAT rows carry no options.
+  const withNumeric = process.argv.includes("--numeric");
   const pandoc = findPandoc();
   const media = mediaDir(paperId);
   mkdirSync(media, { recursive: true });
@@ -123,6 +132,7 @@ function main() {
       questionNumber: q.number,
       subject: q.subject,
       stem: q.stem,
+      numericAnswer: null as number | null,
       imageRefs: q.imageRefs,
       hasStemImage: q.imageRefs.length > 0,
       solution: solutions.get(q.number) ?? null,
@@ -132,7 +142,22 @@ function main() {
     // EXCEPT for compilations, where it doesn't hold, so numerical questions are
     // detected by the absence of parsed options (the `q.options === null` check below).
     if (!compilation && localSection(q.number) === "B") {
-      return { ...base, status: "skipped_numerical", options: null, correctLabel: null, contentHash: null };
+      if (!withNumeric) {
+        return { ...base, status: "skipped_numerical", options: null, correctLabel: null, contentHash: null };
+      }
+      // Section-B NAT: the soln token IS the numeric answer; no options.
+      const num = parseNumericAnswer(tokens.get(q.number));
+      if (num === null) {
+        return { ...base, status: "no_answer_key", options: null, correctLabel: null, contentHash: null };
+      }
+      return {
+        ...base,
+        status: "numeric",
+        options: null,
+        correctLabel: null,
+        numericAnswer: num,
+        contentHash: numericContentHash(q.stem, null),
+      };
     }
 
     // Section A MCQ that failed to yield 4 options — surface it loudly.
@@ -177,10 +202,11 @@ function main() {
   for (const s of ["Physics", "Chemistry", "Maths"] as JeeSubject[]) {
     const arr = subj(s);
     const mcq = arr.filter((r) => r.status === "ok").length;
-    console.log(`  ${s.padEnd(10)} ${arr.length} blocks · ${mcq} clean MCQ`);
+    const nat = arr.filter((r) => r.status === "numeric").length;
+    console.log(`  ${s.padEnd(10)} ${arr.length} blocks · ${mcq} clean MCQ${nat ? ` · ${nat} NAT` : ""}`);
   }
   console.log(`\nstatus breakdown:`);
-  for (const st of ["ok", "skipped_numerical", "no_answer_key", "image_options", "needs_review"] as Status[]) {
+  for (const st of ["ok", "numeric", "skipped_numerical", "no_answer_key", "image_options", "needs_review"] as Status[]) {
     console.log(`  ${st.padEnd(18)} ${by((r) => r.status === st)}`);
   }
   const review = records.filter((r) => r.status === "no_answer_key" || r.status === "needs_review");
