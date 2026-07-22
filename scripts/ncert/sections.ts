@@ -45,6 +45,27 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise on Chapter 7", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
     { group: "Miscellaneous Exercise on Chapter 7", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
   ],
+
+  // ── Ch.3 Matrices (12th, Part 1). Book reading order: §3.2/3.3 (order, types)
+  //    with Examples 1–5 → Exercise 3.1; §3.4 Operations with Examples 6–19 →
+  //    Exercise 3.2; §3.5/3.6 Transpose + Symmetric/Skew with Examples 20–22 →
+  //    Exercise 3.3; §3.7 Elementary Operations → Exercise 3.4 (one MCQ, the
+  //    rationalised 2025-26 edition dropped its subjective questions; §3.7 has no
+  //    solved-example block — its worked examples are the Miscellaneous Examples);
+  //    then the Miscellaneous Examples 23–25 and the Miscellaneous Exercise.
+  //    Example refs are section-banded (3.1/3.2/3.3 Eg + Misc Eg) so each solved
+  //    block routes cleanly. Verified against the reconstructed outline.
+  matrices: [
+    { group: "3.2 Matrices and 3.3 Types of Matrices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 Eg"] },
+    { group: "3.2 Matrices and 3.3 Types of Matrices", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 Q"] },
+    { group: "3.4 Operations on Matrices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2 Eg"] },
+    { group: "3.4 Operations on Matrices", label: "Exercise 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 Q"] },
+    { group: "3.5 Transpose and 3.6 Symmetric and Skew Symmetric Matrices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 Eg"] },
+    { group: "3.5 Transpose and 3.6 Symmetric and Skew Symmetric Matrices", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 Q"] },
+    { group: "3.7 Elementary Operation (Transformation) of a Matrix", label: "Exercise 3.4", kind: "exercise", refPrefixes: ["Ex 3.4 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 3", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 3", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

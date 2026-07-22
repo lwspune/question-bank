@@ -1,0 +1,157 @@
+[
+  {
+    "id": "5a93d00d-3d6a-4e7a-9a15-e83a5f4bb000",
+    "ref": "Ex 3.1 Q1 (i)",
+    "solution": "The matrix \\(A\\) has 3 horizontal lines (rows) and 4 vertical lines (columns).\nThe order of a matrix is written as (number of rows) \\(\\times\\) (number of columns).\nHence the order of \\(A\\) is \\(3 \\times 4\\)."
+  },
+  {
+    "id": "86664d82-d733-4305-919d-de751ee37602",
+    "ref": "Ex 3.1 Q1 (ii)",
+    "solution": "The number of elements in a matrix equals (number of rows) \\(\\times\\) (number of columns).\nHere \\(A\\) has order \\(3 \\times 4\\), so the number of elements \\(= 3 \\times 4 = 12\\)."
+  },
+  {
+    "id": "82a5c529-4788-40e3-896f-26095919ff2f",
+    "ref": "Ex 3.1 Q1 (iii)",
+    "solution": "In \\(a_{ij}\\), \\(i\\) is the row number and \\(j\\) is the column number.\n\\(a_{13}\\) = row 1, column 3 \\(= 19\\).\n\\(a_{21}\\) = row 2, column 1 \\(= 35\\).\n\\(a_{33}\\) = row 3, column 3 \\(= -5\\).\n\\(a_{24}\\) = row 2, column 4 \\(= 12\\).\n\\(a_{23}\\) = row 2, column 3 \\(= \\frac{5}{2}\\)."
+  },
+  {
+    "id": "537d5e11-b108-48f0-846d-7ee4d5cad9bd",
+    "ref": "Ex 3.1 Q2",
+    "solution": "A matrix of order \\(m \\times n\\) has \\(mn\\) elements, so the possible orders correspond to the ordered factor pairs of the number of elements.\n24 elements: the ordered factorisations of 24 are \\(1 \\times 24,\\ 2 \\times 12,\\ 3 \\times 8,\\ 4 \\times 6,\\ 6 \\times 4,\\ 8 \\times 3,\\ 12 \\times 2,\\ 24 \\times 1\\), giving 8 possible orders.\n13 elements: 13 is prime, so the only ordered factor pairs are \\(1 \\times 13\\) and \\(13 \\times 1\\), giving 2 possible orders."
+  },
+  {
+    "id": "bc2e68f2-927e-43e5-8d88-1d7af8d1dd24",
+    "ref": "Ex 3.1 Q3",
+    "solution": "The possible orders \\(m \\times n\\) correspond to the ordered factor pairs of the number of elements.\n18 elements: \\(1 \\times 18,\\ 2 \\times 9,\\ 3 \\times 6,\\ 6 \\times 3,\\ 9 \\times 2,\\ 18 \\times 1\\), giving 6 possible orders.\n5 elements: 5 is prime, so \\(1 \\times 5\\) and \\(5 \\times 1\\), giving 2 possible orders."
+  },
+  {
+    "id": "0f3032a8-c4e0-4bed-a27d-f4b8f14f4da4",
+    "ref": "Ex 3.1 Q4 (i)",
+    "solution": "Here \\(a_{ij} = \\frac{(i+j)^{2}}{2}\\) with \\(i, j \\in \\{1, 2\\}\\).\n\\(a_{11} = \\frac{(1+1)^{2}}{2} = \\frac{4}{2} = 2\\).\n\\(a_{12} = \\frac{(1+2)^{2}}{2} = \\frac{9}{2}\\).\n\\(a_{21} = \\frac{(2+1)^{2}}{2} = \\frac{9}{2}\\).\n\\(a_{22} = \\frac{(2+2)^{2}}{2} = \\frac{16}{2} = 8\\).\nHence \\(A = \\begin{bmatrix} 2 & \\frac{9}{2} \\\\ \\frac{9}{2} & 8 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "a0b31e33-c47a-485e-a7ec-fb91bec0b2f2",
+    "ref": "Ex 3.1 Q4 (ii)",
+    "solution": "Here \\(a_{ij} = \\frac{i}{j}\\) with \\(i, j \\in \\{1, 2\\}\\).\n\\(a_{11} = \\frac{1}{1} = 1\\), \\(a_{12} = \\frac{1}{2}\\), \\(a_{21} = \\frac{2}{1} = 2\\), \\(a_{22} = \\frac{2}{2} = 1\\).\nHence \\(A = \\begin{bmatrix} 1 & \\frac{1}{2} \\\\ 2 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "e5f401d7-5cc5-4fc0-93a1-6231fddce6fc",
+    "ref": "Ex 3.1 Q4 (iii)",
+    "solution": "Here \\(a_{ij} = \\frac{(i+2j)^{2}}{2}\\) with \\(i, j \\in \\{1, 2\\}\\).\n\\(a_{11} = \\frac{(1+2)^{2}}{2} = \\frac{9}{2}\\).\n\\(a_{12} = \\frac{(1+4)^{2}}{2} = \\frac{25}{2}\\).\n\\(a_{21} = \\frac{(2+2)^{2}}{2} = \\frac{16}{2} = 8\\).\n\\(a_{22} = \\frac{(2+4)^{2}}{2} = \\frac{36}{2} = 18\\).\nHence \\(A = \\begin{bmatrix} \\frac{9}{2} & \\frac{25}{2} \\\\ 8 & 18 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "9a7082c8-b214-414c-8f82-422190c5572a",
+    "ref": "Ex 3.1 Q5 (i)",
+    "solution": "Here \\(a_{ij} = \\frac{1}{2}\\lvert -3i + j \\rvert\\) with \\(i \\in \\{1,2,3\\}\\) and \\(j \\in \\{1,2,3,4\\}\\).\nRow 1 \\((i=1)\\): \\(\\frac{1}{2}\\lvert -2 \\rvert = 1,\\ \\frac{1}{2}\\lvert -1 \\rvert = \\frac{1}{2},\\ \\frac{1}{2}\\lvert 0 \\rvert = 0,\\ \\frac{1}{2}\\lvert 1 \\rvert = \\frac{1}{2}\\).\nRow 2 \\((i=2)\\): \\(\\frac{1}{2}\\lvert -5 \\rvert = \\frac{5}{2},\\ \\frac{1}{2}\\lvert -4 \\rvert = 2,\\ \\frac{1}{2}\\lvert -3 \\rvert = \\frac{3}{2},\\ \\frac{1}{2}\\lvert -2 \\rvert = 1\\).\nRow 3 \\((i=3)\\): \\(\\frac{1}{2}\\lvert -8 \\rvert = 4,\\ \\frac{1}{2}\\lvert -7 \\rvert = \\frac{7}{2},\\ \\frac{1}{2}\\lvert -6 \\rvert = 3,\\ \\frac{1}{2}\\lvert -5 \\rvert = \\frac{5}{2}\\).\nHence \\(A = \\begin{bmatrix} 1 & \\frac{1}{2} & 0 & \\frac{1}{2} \\\\ \\frac{5}{2} & 2 & \\frac{3}{2} & 1 \\\\ 4 & \\frac{7}{2} & 3 & \\frac{5}{2} \\end{bmatrix}\\)."
+  },
+  {
+    "id": "0e19f75b-09b7-4d92-b0c1-01cf82e219a2",
+    "ref": "Ex 3.1 Q5 (ii)",
+    "solution": "Here \\(a_{ij} = 2i - j\\) with \\(i \\in \\{1,2,3\\}\\) and \\(j \\in \\{1,2,3,4\\}\\).\nRow 1 \\((i=1)\\): \\(2-1=1,\\ 2-2=0,\\ 2-3=-1,\\ 2-4=-2\\).\nRow 2 \\((i=2)\\): \\(4-1=3,\\ 4-2=2,\\ 4-3=1,\\ 4-4=0\\).\nRow 3 \\((i=3)\\): \\(6-1=5,\\ 6-2=4,\\ 6-3=3,\\ 6-4=2\\).\nHence \\(A = \\begin{bmatrix} 1 & 0 & -1 & -2 \\\\ 3 & 2 & 1 & 0 \\\\ 5 & 4 & 3 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "5dd2ad5d-043e-418a-815b-578e0b1bf502",
+    "ref": "Ex 3.1 Q6 (i)",
+    "solution": "Two matrices are equal when their corresponding elements are equal.\nComparing \\(\\begin{bmatrix} 4 & 3 \\\\ x & 5 \\end{bmatrix} = \\begin{bmatrix} y & z \\\\ 1 & 5 \\end{bmatrix}\\): from the top row \\(y = 4\\) and \\(z = 3\\); from the bottom row \\(x = 1\\).\nHence \\(x = 1,\\ y = 4,\\ z = 3\\)."
+  },
+  {
+    "id": "44fddb55-eaa2-4c72-8e4a-474868246422",
+    "ref": "Ex 3.1 Q6 (ii)",
+    "solution": "Equate corresponding elements of \\(\\begin{bmatrix} x+y & 2 \\\\ 5+z & xy \\end{bmatrix} = \\begin{bmatrix} 6 & 2 \\\\ 5 & 8 \\end{bmatrix}\\).\n\\(5 + z = 5 \\Rightarrow z = 0\\).\n\\(x + y = 6\\) and \\(xy = 8\\).\nSo \\(x\\) and \\(y\\) are roots of \\(t^{2} - 6t + 8 = 0\\), i.e. \\((t-2)(t-4) = 0\\), giving \\(t = 2\\) or \\(t = 4\\).\nHence \\(x = 2,\\ y = 4,\\ z = 0\\) or \\(x = 4,\\ y = 2,\\ z = 0\\)."
+  },
+  {
+    "id": "8821feb9-abcd-4a7a-90fc-82c69b6037e6",
+    "ref": "Ex 3.1 Q6 (iii)",
+    "solution": "Equate corresponding elements of \\(\\begin{bmatrix} x+y+z \\\\ x+z \\\\ y+z \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 5 \\\\ 7 \\end{bmatrix}\\).\n\\(x+y+z = 9\\) ... (1)\n\\(x+z = 5\\) ... (2)\n\\(y+z = 7\\) ... (3)\nSubtracting (2) from (1): \\(y = 9 - 5 = 4\\).\nFrom (3): \\(z = 7 - y = 7 - 4 = 3\\).\nFrom (2): \\(x = 5 - z = 5 - 3 = 2\\).\nHence \\(x = 2,\\ y = 4,\\ z = 3\\)."
+  },
+  {
+    "id": "53d62cdd-06ff-447b-a77a-106325cb3dc1",
+    "ref": "Ex 3.1 Q7",
+    "solution": "Equate corresponding elements of \\(\\begin{bmatrix} a-b & 2a+c \\\\ 2a-b & 3c+d \\end{bmatrix} = \\begin{bmatrix} -1 & 5 \\\\ 0 & 13 \\end{bmatrix}\\).\n\\(a - b = -1\\) ... (1)\n\\(2a + c = 5\\) ... (2)\n\\(2a - b = 0\\) ... (3)\n\\(3c + d = 13\\) ... (4)\nSubtracting (1) from (3): \\((2a - b) - (a - b) = 0 - (-1)\\), so \\(a = 1\\).\nFrom (1): \\(b = a + 1 = 2\\).\nFrom (2): \\(c = 5 - 2a = 3\\).\nFrom (4): \\(d = 13 - 3c = 13 - 9 = 4\\).\nHence \\(a = 1,\\ b = 2,\\ c = 3,\\ d = 4\\)."
+  },
+  {
+    "id": "70587aca-9249-419d-9989-06c1f732428e",
+    "ref": "Ex 3.2 Q1 (i)",
+    "solution": "Add corresponding elements:\n\\(A + B = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix} + \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix} = \\begin{bmatrix} 2+1 & 4+3 \\\\ 3+(-2) & 2+5 \\end{bmatrix} = \\begin{bmatrix} 3 & 7 \\\\ 1 & 7 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "3849b2ec-84fa-4798-a1d7-0effe313c02c",
+    "ref": "Ex 3.2 Q1 (ii)",
+    "solution": "Subtract corresponding elements:\n\\(A - B = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix} - \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix} = \\begin{bmatrix} 2-1 & 4-3 \\\\ 3-(-2) & 2-5 \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\ 5 & -3 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "28f93224-51ca-4826-8ad8-d998a38ed46b",
+    "ref": "Ex 3.2 Q1 (iii)",
+    "solution": "First scale \\(A\\) by 3: \\(3A = 3\\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix} = \\begin{bmatrix} 6 & 12 \\\\ 9 & 6 \\end{bmatrix}\\).\n\\(3A - C = \\begin{bmatrix} 6 & 12 \\\\ 9 & 6 \\end{bmatrix} - \\begin{bmatrix} -2 & 5 \\\\ 3 & 4 \\end{bmatrix} = \\begin{bmatrix} 6-(-2) & 12-5 \\\\ 9-3 & 6-4 \\end{bmatrix} = \\begin{bmatrix} 8 & 7 \\\\ 6 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "e1c985f6-f21c-4455-88a1-c69eb01ad34f",
+    "ref": "Ex 3.2 Q2 (i)",
+    "solution": "Add corresponding elements:\n\\(\\begin{bmatrix} a & b \\\\ -b & a \\end{bmatrix} + \\begin{bmatrix} a & b \\\\ b & a \\end{bmatrix} = \\begin{bmatrix} a+a & b+b \\\\ -b+b & a+a \\end{bmatrix} = \\begin{bmatrix} 2a & 2b \\\\ 0 & 2a \\end{bmatrix}\\)."
+  },
+  {
+    "id": "4431b80b-25de-4260-9f3b-4cdbc831b845",
+    "ref": "Ex 3.2 Q2 (ii)",
+    "solution": "Add corresponding elements and use the identities \\((p+q)^{2} = p^{2}+2pq+q^{2}\\) and \\((p-q)^{2} = p^{2}-2pq+q^{2}\\):\n\\(\\begin{bmatrix} a^{2}+b^{2} & b^{2}+c^{2} \\\\ a^{2}+c^{2} & a^{2}+b^{2} \\end{bmatrix} + \\begin{bmatrix} 2ab & 2bc \\\\ -2ac & -2ab \\end{bmatrix} = \\begin{bmatrix} a^{2}+b^{2}+2ab & b^{2}+c^{2}+2bc \\\\ a^{2}+c^{2}-2ac & a^{2}+b^{2}-2ab \\end{bmatrix}\\).\nHence the sum is \\(\\begin{bmatrix} (a+b)^{2} & (b+c)^{2} \\\\ (a-c)^{2} & (a-b)^{2} \\end{bmatrix}\\)."
+  },
+  {
+    "id": "45e3c4f7-0bc4-4bb7-9bc9-d6b90b9cd16f",
+    "ref": "Ex 3.2 Q2 (iii)",
+    "solution": "Add corresponding elements:\n\\(\\begin{bmatrix} -1 & 4 & -6 \\\\ 8 & 5 & 16 \\\\ 2 & 8 & 5 \\end{bmatrix} + \\begin{bmatrix} 12 & 7 & 6 \\\\ 8 & 0 & 5 \\\\ 3 & 2 & 4 \\end{bmatrix} = \\begin{bmatrix} 11 & 11 & 0 \\\\ 16 & 5 & 21 \\\\ 5 & 10 & 9 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "569e29e4-10a3-4425-84c8-3083eaa5a8cc",
+    "ref": "Ex 3.2 Q2 (iv)",
+    "solution": "Add corresponding elements and use \\(\\sin^{2} x + \\cos^{2} x = 1\\):\n\\(\\begin{bmatrix} \\cos^{2} x & \\sin^{2} x \\\\ \\sin^{2} x & \\cos^{2} x \\end{bmatrix} + \\begin{bmatrix} \\sin^{2} x & \\cos^{2} x \\\\ \\cos^{2} x & \\sin^{2} x \\end{bmatrix} = \\begin{bmatrix} \\cos^{2}x+\\sin^{2}x & \\sin^{2}x+\\cos^{2}x \\\\ \\sin^{2}x+\\cos^{2}x & \\cos^{2}x+\\sin^{2}x \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "d89a51d4-5748-49a0-9f87-b1f6a82fb647",
+    "ref": "Ex 3.2 Q4",
+    "solution": "\\(A + B = \\begin{bmatrix} 1 & 2 & -3 \\\\ 5 & 0 & 2 \\\\ 1 & -1 & 1 \\end{bmatrix} + \\begin{bmatrix} 3 & -1 & 2 \\\\ 4 & 2 & 5 \\\\ 2 & 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 4 & 1 & -1 \\\\ 9 & 2 & 7 \\\\ 3 & -1 & 4 \\end{bmatrix}\\).\n\\(B - C = \\begin{bmatrix} 3 & -1 & 2 \\\\ 4 & 2 & 5 \\\\ 2 & 0 & 3 \\end{bmatrix} - \\begin{bmatrix} 4 & 1 & 2 \\\\ 0 & 3 & 2 \\\\ 1 & -2 & 3 \\end{bmatrix} = \\begin{bmatrix} -1 & -2 & 0 \\\\ 4 & -1 & 3 \\\\ 1 & 2 & 0 \\end{bmatrix}\\).\nVerification:\n\\(A + (B - C) = \\begin{bmatrix} 1 & 2 & -3 \\\\ 5 & 0 & 2 \\\\ 1 & -1 & 1 \\end{bmatrix} + \\begin{bmatrix} -1 & -2 & 0 \\\\ 4 & -1 & 3 \\\\ 1 & 2 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & -3 \\\\ 9 & -1 & 5 \\\\ 2 & 1 & 1 \\end{bmatrix}\\).\n\\((A + B) - C = \\begin{bmatrix} 4 & 1 & -1 \\\\ 9 & 2 & 7 \\\\ 3 & -1 & 4 \\end{bmatrix} - \\begin{bmatrix} 4 & 1 & 2 \\\\ 0 & 3 & 2 \\\\ 1 & -2 & 3 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & -3 \\\\ 9 & -1 & 5 \\\\ 2 & 1 & 1 \\end{bmatrix}\\).\nBoth sides are equal, so \\(A + (B - C) = (A + B) - C\\)."
+  },
+  {
+    "id": "6f621773-374f-4b8d-b0c7-bbe8633f236b",
+    "ref": "Ex 3.2 Q5",
+    "solution": "Multiplying \\(A\\) by 3 and \\(B\\) by 5 clears the denominators:\n\\(3A = \\begin{bmatrix} 2 & 3 & 5 \\\\ 1 & 2 & 4 \\\\ 7 & 6 & 2 \\end{bmatrix}\\) and \\(5B = \\begin{bmatrix} 2 & 3 & 5 \\\\ 1 & 2 & 4 \\\\ 7 & 6 & 2 \\end{bmatrix}\\).\n\\(3A - 5B = \\begin{bmatrix} 2 & 3 & 5 \\\\ 1 & 2 & 4 \\\\ 7 & 6 & 2 \\end{bmatrix} - \\begin{bmatrix} 2 & 3 & 5 \\\\ 1 & 2 & 4 \\\\ 7 & 6 & 2 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "d5bbaf02-30ef-4113-af06-23dd2cadd845",
+    "ref": "Ex 3.2 Q6",
+    "solution": "Multiply each matrix by its scalar.\n\\(\\cos\\theta \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} = \\begin{bmatrix} \\cos^{2}\\theta & \\sin\\theta\\cos\\theta \\\\ -\\sin\\theta\\cos\\theta & \\cos^{2}\\theta \\end{bmatrix}\\).\n\\(\\sin\\theta \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix} = \\begin{bmatrix} \\sin^{2}\\theta & -\\sin\\theta\\cos\\theta \\\\ \\sin\\theta\\cos\\theta & \\sin^{2}\\theta \\end{bmatrix}\\).\nAdding and using \\(\\cos^{2}\\theta + \\sin^{2}\\theta = 1\\):\n\\(\\begin{bmatrix} \\cos^{2}\\theta+\\sin^{2}\\theta & \\sin\\theta\\cos\\theta-\\sin\\theta\\cos\\theta \\\\ -\\sin\\theta\\cos\\theta+\\sin\\theta\\cos\\theta & \\cos^{2}\\theta+\\sin^{2}\\theta \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "eb74a82c-552e-4793-9a48-36cd27b24c74",
+    "ref": "Ex 3.2 Q7 (i)",
+    "solution": "Adding the two equations: \\((X + Y) + (X - Y) = \\begin{bmatrix} 7 & 0 \\\\ 2 & 5 \\end{bmatrix} + \\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}\\), i.e. \\(2X = \\begin{bmatrix} 10 & 0 \\\\ 2 & 8 \\end{bmatrix}\\), so \\(X = \\begin{bmatrix} 5 & 0 \\\\ 1 & 4 \\end{bmatrix}\\).\nSubtracting the two equations: \\((X + Y) - (X - Y) = \\begin{bmatrix} 7 & 0 \\\\ 2 & 5 \\end{bmatrix} - \\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}\\), i.e. \\(2Y = \\begin{bmatrix} 4 & 0 \\\\ 2 & 2 \\end{bmatrix}\\), so \\(Y = \\begin{bmatrix} 2 & 0 \\\\ 1 & 1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "f46c399d-b6a1-48cd-b930-2c73eb380592",
+    "ref": "Ex 3.2 Q7 (ii)",
+    "solution": "Let \\(P = 2X + 3Y = \\begin{bmatrix} 2 & 3 \\\\ 4 & 0 \\end{bmatrix}\\) and \\(Q = 3X + 2Y = \\begin{bmatrix} 2 & -2 \\\\ -1 & 5 \\end{bmatrix}\\).\nCompute \\(3P - 2Q\\) to eliminate \\(X\\): \\((6X + 9Y) - (6X + 4Y) = 5Y\\).\n\\(3P = \\begin{bmatrix} 6 & 9 \\\\ 12 & 0 \\end{bmatrix}\\), \\(2Q = \\begin{bmatrix} 4 & -4 \\\\ -2 & 10 \\end{bmatrix}\\), so \\(5Y = \\begin{bmatrix} 2 & 13 \\\\ 14 & -10 \\end{bmatrix}\\) and \\(Y = \\begin{bmatrix} \\frac{2}{5} & \\frac{13}{5} \\\\ \\frac{14}{5} & -2 \\end{bmatrix}\\).\nCompute \\(2P - 3Q\\) to eliminate \\(Y\\): \\((4X + 6Y) - (9X + 6Y) = -5X\\).\n\\(2P = \\begin{bmatrix} 4 & 6 \\\\ 8 & 0 \\end{bmatrix}\\), \\(3Q = \\begin{bmatrix} 6 & -6 \\\\ -3 & 15 \\end{bmatrix}\\), so \\(-5X = \\begin{bmatrix} -2 & 12 \\\\ 11 & -15 \\end{bmatrix}\\) and \\(X = \\begin{bmatrix} \\frac{2}{5} & -\\frac{12}{5} \\\\ -\\frac{11}{5} & 3 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "b6bc60e3-b0fd-4b85-b3e9-7651d555b9ee",
+    "ref": "Ex 3.2 Q8",
+    "solution": "From \\(2X + Y = \\begin{bmatrix} 1 & 0 \\\\ -3 & 2 \\end{bmatrix}\\), we get \\(2X = \\begin{bmatrix} 1 & 0 \\\\ -3 & 2 \\end{bmatrix} - Y = \\begin{bmatrix} 1 & 0 \\\\ -3 & 2 \\end{bmatrix} - \\begin{bmatrix} 3 & 2 \\\\ 1 & 4 \\end{bmatrix} = \\begin{bmatrix} -2 & -2 \\\\ -4 & -2 \\end{bmatrix}\\).\nHence \\(X = \\begin{bmatrix} -1 & -1 \\\\ -2 & -1 \\end{bmatrix}\\)."
+  },
+  {
+    "id": "d4dd1c9f-1d47-475c-933d-5e935fd085ef",
+    "ref": "Ex 3.2 Q9",
+    "solution": "\\(2\\begin{bmatrix} 1 & 3 \\\\ 0 & x \\end{bmatrix} + \\begin{bmatrix} y & 0 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 2 & 6 \\\\ 0 & 2x \\end{bmatrix} + \\begin{bmatrix} y & 0 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 2+y & 6 \\\\ 1 & 2x+2 \\end{bmatrix}\\).\nEquating with \\(\\begin{bmatrix} 5 & 6 \\\\ 1 & 8 \\end{bmatrix}\\): \\(2 + y = 5 \\Rightarrow y = 3\\) and \\(2x + 2 = 8 \\Rightarrow x = 3\\).\nHence \\(x = 3,\\ y = 3\\)."
+  },
+  {
+    "id": "4ba1ad7d-1650-4230-91f8-f0d0a77a349b",
+    "ref": "Ex 3.2 Q10",
+    "solution": "\\(2\\begin{bmatrix} x & z \\\\ y & t \\end{bmatrix} + 3\\begin{bmatrix} 1 & -1 \\\\ 0 & 2 \\end{bmatrix} = \\begin{bmatrix} 2x+3 & 2z-3 \\\\ 2y & 2t+6 \\end{bmatrix}\\) and \\(3\\begin{bmatrix} 3 & 5 \\\\ 4 & 6 \\end{bmatrix} = \\begin{bmatrix} 9 & 15 \\\\ 12 & 18 \\end{bmatrix}\\).\nEquating corresponding elements:\n\\(2x + 3 = 9 \\Rightarrow x = 3\\).\n\\(2z - 3 = 15 \\Rightarrow z = 9\\).\n\\(2y = 12 \\Rightarrow y = 6\\).\n\\(2t + 6 = 18 \\Rightarrow t = 6\\).\nHence \\(x = 3,\\ y = 6,\\ z = 9,\\ t = 6\\)."
+  },
+  {
+    "id": "e710ec31-b93b-4094-95cc-80fc92528cdd",
+    "ref": "Ex 3.2 Q11",
+    "solution": "\\(x\\begin{bmatrix} 2 \\\\ 3 \\end{bmatrix} + y\\begin{bmatrix} -1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 2x - y \\\\ 3x + y \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 5 \\end{bmatrix}\\).\nSo \\(2x - y = 10\\) and \\(3x + y = 5\\).\nAdding the two equations: \\(5x = 15 \\Rightarrow x = 3\\).\nThen \\(y = 2x - 10 = 6 - 10 = -4\\).\nHence \\(x = 3,\\ y = -4\\)."
+  },
+  {
+    "id": "49fe27cd-98ea-4507-ba2b-bddce138e220",
+    "ref": "Ex 3.2 Q12",
+    "solution": "\\(3\\begin{bmatrix} x & y \\\\ z & w \\end{bmatrix} = \\begin{bmatrix} 3x & 3y \\\\ 3z & 3w \\end{bmatrix}\\), and the right side is \\(\\begin{bmatrix} x & 6 \\\\ -1 & 2w \\end{bmatrix} + \\begin{bmatrix} 4 & x+y \\\\ z+w & 3 \\end{bmatrix} = \\begin{bmatrix} x+4 & x+y+6 \\\\ z+w-1 & 2w+3 \\end{bmatrix}\\).\nEquating corresponding elements:\n\\(3x = x + 4 \\Rightarrow x = 2\\).\n\\(3w = 2w + 3 \\Rightarrow w = 3\\).\n\\(3y = x + y + 6 \\Rightarrow 2y = 2 + 6 = 8 \\Rightarrow y = 4\\).\n\\(3z = z + w - 1 \\Rightarrow 2z = 3 - 1 = 2 \\Rightarrow z = 1\\).\nHence \\(x = 2,\\ y = 4,\\ z = 1,\\ w = 3\\)."
+  }
+]

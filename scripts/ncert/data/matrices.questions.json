@@ -1,0 +1,1258 @@
+[
+  {
+    "ref": "3.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Consider the following information regarding the number of men and women workers in three factories I, II and III\n\n| Factory | Men workers | Women workers |\n|---|---|---|\n| I | 30 | 25 |\n| II | 25 | 31 |\n| III | 27 | 26 |\n\nRepresent the above information in the form of a \\(3 \\times 2\\) matrix. What does the entry in the third row and second column represent?",
+    "solution": "The information is represented in the form of a \\(3 \\times 2\\) matrix as follows:\n\\(A = \\begin{bmatrix} 30 & 25 \\\\ 25 & 31 \\\\ 27 & 26 \\end{bmatrix}\\)\nThe entry in the third row and second column represents the number of women workers in factory III."
+  },
+  {
+    "ref": "3.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "If a matrix has 8 elements, what are the possible orders it can have?",
+    "solution": "We know that if a matrix is of order \\(m \\times n\\), it has \\(mn\\) elements. Thus, to find all possible orders of a matrix with 8 elements, we will find all ordered pairs of natural numbers, whose product is 8.\nThus, all possible ordered pairs are \\((1, 8), (8, 1), (4, 2), (2, 4)\\)\nHence, possible orders are \\(1 \\times 8\\), \\(8 \\times 1\\), \\(4 \\times 2\\), \\(2 \\times 4\\)."
+  },
+  {
+    "ref": "3.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Construct a \\(3 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\frac{1}{2}|i - 3j|\\).",
+    "solution": "In general a \\(3 \\times 2\\) matrix is given by \\(A = \\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\\\ a_{31} & a_{32} \\end{bmatrix}\\).\nNow \\(a_{ij} = \\frac{1}{2}|i - 3j|\\), \\(i = 1, 2, 3\\) and \\(j = 1, 2\\).\nTherefore \\(a_{11} = \\frac{1}{2}|1 - 3 \\times 1| = 1\\) \\qquad \\(a_{12} = \\frac{1}{2}|1 - 3 \\times 2| = \\frac{5}{2}\\)\n\\(a_{21} = \\frac{1}{2}|2 - 3 \\times 1| = \\frac{1}{2}\\) \\qquad \\(a_{22} = \\frac{1}{2}|2 - 3 \\times 2| = 2\\)\n\\(a_{31} = \\frac{1}{2}|3 - 3 \\times 1| = 0\\) \\qquad \\(a_{32} = \\frac{1}{2}|3 - 3 \\times 2| = \\frac{3}{2}\\)\nHence the required matrix is given by \\(A = \\begin{bmatrix} 1 & \\frac{5}{2} \\\\ \\frac{1}{2} & 2 \\\\ 0 & \\frac{3}{2} \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "3.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\begin{bmatrix} x+3 & z+4 & 2y-7 \\\\ -6 & a-1 & 0 \\\\ b-3 & -21 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 6 & 3y-2 \\\\ -6 & -3 & 2c+2 \\\\ 2b+4 & -21 & 0 \\end{bmatrix}\\)\nFind the values of \\(a\\), \\(b\\), \\(c\\), \\(x\\), \\(y\\) and \\(z\\).",
+    "solution": "As the given matrices are equal, therefore, their corresponding elements must be equal. Comparing the corresponding elements, we get\n\\(x + 3 = 0\\), \\(z + 4 = 6\\), \\(2y - 7 = 3y - 2\\)\n\\(a - 1 = -3\\), \\(0 = 2c + 2\\), \\(b - 3 = 2b + 4\\),\nSimplifying, we get\n\\(a = -2\\), \\(b = -7\\), \\(c = -1\\), \\(x = -3\\), \\(y = -5\\), \\(z = 2\\)"
+  },
+  {
+    "ref": "3.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(a\\), \\(b\\), \\(c\\), and \\(d\\) from the following equation:\n\\(\\begin{bmatrix} 2a+b & a-2b \\\\ 5c-d & 4c+3d \\end{bmatrix} = \\begin{bmatrix} 4 & -3 \\\\ 11 & 24 \\end{bmatrix}\\)",
+    "solution": "By equality of two matrices, equating the corresponding elements, we get\n\\(2a + b = 4\\) \\qquad \\(5c - d = 11\\)\n\\(a - 2b = -3\\) \\qquad \\(4c + 3d = 24\\)\nSolving these equations, we get\n\\(a = 1\\), \\(b = 2\\), \\(c = 3\\) and \\(d = 4\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "context": "In the matrix \\(A = \\begin{bmatrix} 2 & 5 & 19 & -7 \\\\ 35 & -2 & \\frac{5}{2} & 12 \\\\ \\sqrt{3} & 1 & -5 & 17 \\end{bmatrix}\\), write:",
+    "setLabel": "Ex 3.1 Q1",
+    "stem": "The order of the matrix,"
+  },
+  {
+    "ref": "Ex 3.1 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "context": "In the matrix \\(A = \\begin{bmatrix} 2 & 5 & 19 & -7 \\\\ 35 & -2 & \\frac{5}{2} & 12 \\\\ \\sqrt{3} & 1 & -5 & 17 \\end{bmatrix}\\), write:",
+    "setLabel": "Ex 3.1 Q1",
+    "stem": "The number of elements,"
+  },
+  {
+    "ref": "Ex 3.1 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "context": "In the matrix \\(A = \\begin{bmatrix} 2 & 5 & 19 & -7 \\\\ 35 & -2 & \\frac{5}{2} & 12 \\\\ \\sqrt{3} & 1 & -5 & 17 \\end{bmatrix}\\), write:",
+    "setLabel": "Ex 3.1 Q1",
+    "stem": "Write the elements \\(a_{13}\\), \\(a_{21}\\), \\(a_{33}\\), \\(a_{24}\\), \\(a_{23}\\)."
+  },
+  {
+    "ref": "Ex 3.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "If a matrix has 24 elements, what are the possible orders it can have? What, if it has 13 elements?"
+  },
+  {
+    "ref": "Ex 3.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "If a matrix has 18 elements, what are the possible orders it can have? What, if it has 5 elements?"
+  },
+  {
+    "ref": "Ex 3.1 Q4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(2 \\times 2\\) matrix, \\(A = [a_{ij}]\\), whose elements are given by:",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "\\(a_{ij} = \\frac{(i+j)^2}{2}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(2 \\times 2\\) matrix, \\(A = [a_{ij}]\\), whose elements are given by:",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "\\(a_{ij} = \\frac{i}{j}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(2 \\times 2\\) matrix, \\(A = [a_{ij}]\\), whose elements are given by:",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "\\(a_{ij} = \\frac{(i+2j)^2}{2}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q5 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(3 \\times 4\\) matrix, whose elements are given by:",
+    "setLabel": "Ex 3.1 Q5",
+    "stem": "\\(a_{ij} = \\frac{1}{2}|-3i + j|\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q5 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(3 \\times 4\\) matrix, whose elements are given by:",
+    "setLabel": "Ex 3.1 Q5",
+    "stem": "\\(a_{ij} = 2i - j\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q6 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find the values of \\(x\\), \\(y\\) and \\(z\\) from the following equations:",
+    "setLabel": "Ex 3.1 Q6",
+    "stem": "\\(\\begin{bmatrix} 4 & 3 \\\\ x & 5 \\end{bmatrix} = \\begin{bmatrix} y & z \\\\ 1 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q6 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find the values of \\(x\\), \\(y\\) and \\(z\\) from the following equations:",
+    "setLabel": "Ex 3.1 Q6",
+    "stem": "\\(\\begin{bmatrix} x+y & 2 \\\\ 5+z & xy \\end{bmatrix} = \\begin{bmatrix} 6 & 2 \\\\ 5 & 8 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q6 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find the values of \\(x\\), \\(y\\) and \\(z\\) from the following equations:",
+    "setLabel": "Ex 3.1 Q6",
+    "stem": "\\(\\begin{bmatrix} x+y+z \\\\ x+z \\\\ y+z \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 5 \\\\ 7 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(a\\), \\(b\\), \\(c\\) and \\(d\\) from the equation:\n\\(\\begin{bmatrix} a-b & 2a+c \\\\ 2a-b & 3c+d \\end{bmatrix} = \\begin{bmatrix} -1 & 5 \\\\ 0 & 13 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "\\(A = [a_{ij}]_{m \\times n}\\) is a square matrix, if",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(m < n\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(m > n\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(m = n\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 3.1 Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Which of the given values of \\(x\\) and \\(y\\) make the following pair of matrices equal \\(\\begin{bmatrix} 3x+7 & 5 \\\\ y+1 & 2-3x \\end{bmatrix}\\), \\(\\begin{bmatrix} 0 & y-2 \\\\ 8 & 4 \\end{bmatrix}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x = \\dfrac{-1}{3},\\ y = 7\\)"
+      },
+      {
+        "label": "B",
+        "text": "Not possible to find"
+      },
+      {
+        "label": "C",
+        "text": "\\(y = 7,\\ x = \\dfrac{-2}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x = \\dfrac{-1}{3},\\ y = \\dfrac{-2}{3}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex 3.1 Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "The number of all possible matrices of order \\(3 \\times 3\\) with each entry 0 or 1 is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "27"
+      },
+      {
+        "label": "B",
+        "text": "18"
+      },
+      {
+        "label": "C",
+        "text": "81"
+      },
+      {
+        "label": "D",
+        "text": "512"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex 3.2 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} -2 & 5 \\\\ 3 & 4 \\end{bmatrix}\\). Find each of the following:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(A + B\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} -2 & 5 \\\\ 3 & 4 \\end{bmatrix}\\). Find each of the following:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(A - B\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} -2 & 5 \\\\ 3 & 4 \\end{bmatrix}\\). Find each of the following:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(3A - C\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} -2 & 5 \\\\ 3 & 4 \\end{bmatrix}\\). Find each of the following:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(AB\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\begin{bmatrix} 2 & 4 \\\\ 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 \\\\ -2 & 5 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} -2 & 5 \\\\ 3 & 4 \\end{bmatrix}\\). Find each of the following:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(BA\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "context": "Compute the following:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\begin{bmatrix} a & b \\\\ -b & a \\end{bmatrix} + \\begin{bmatrix} a & b \\\\ b & a \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Compute the following:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\begin{bmatrix} a^2+b^2 & b^2+c^2 \\\\ a^2+c^2 & a^2+b^2 \\end{bmatrix} + \\begin{bmatrix} 2ab & 2bc \\\\ -2ac & -2ab \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "context": "Compute the following:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\begin{bmatrix} -1 & 4 & -6 \\\\ 8 & 5 & 16 \\\\ 2 & 8 & 5 \\end{bmatrix} + \\begin{bmatrix} 12 & 7 & 6 \\\\ 8 & 0 & 5 \\\\ 3 & 2 & 4 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Compute the following:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\begin{bmatrix} \\cos^2 x & \\sin^2 x \\\\ \\sin^2 x & \\cos^2 x \\end{bmatrix} + \\begin{bmatrix} \\sin^2 x & \\cos^2 x \\\\ \\cos^2 x & \\sin^2 x \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Compute the indicated products.",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(\\begin{bmatrix} a & b \\\\ -b & a \\end{bmatrix}\\begin{bmatrix} a & -b \\\\ b & a \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "EASY",
+    "context": "Compute the indicated products.",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(\\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\begin{bmatrix} 2 & 3 & 4 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Compute the indicated products.",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(\\begin{bmatrix} 1 & -2 \\\\ 2 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "context": "Compute the indicated products.",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(\\begin{bmatrix} 2 & 3 & 4 \\\\ 3 & 4 & 5 \\\\ 4 & 5 & 6 \\end{bmatrix}\\begin{bmatrix} 1 & -3 & 5 \\\\ 0 & 2 & 4 \\\\ 3 & 0 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Compute the indicated products.",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(\\begin{bmatrix} 2 & 1 \\\\ 3 & 2 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 1 \\\\ -1 & 2 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Compute the indicated products.",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(\\begin{bmatrix} 3 & -1 & 3 \\\\ -1 & 0 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & -3 \\\\ 1 & 0 \\\\ 3 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & -3 \\\\ 5 & 0 & 2 \\\\ 1 & -1 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 3 & -1 & 2 \\\\ 4 & 2 & 5 \\\\ 2 & 0 & 3 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 4 & 1 & 2 \\\\ 0 & 3 & 2 \\\\ 1 & -2 & 3 \\end{bmatrix}\\), then compute \\((A+B)\\) and \\((B - C)\\). Also, verify that \\(A + (B - C) = (A + B) - C\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\frac{2}{3} & 1 & \\frac{5}{3} \\\\ \\frac{1}{3} & \\frac{2}{3} & \\frac{4}{3} \\\\ \\frac{7}{3} & 2 & \\frac{2}{3} \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} \\frac{2}{5} & \\frac{3}{5} & 1 \\\\ \\frac{1}{5} & \\frac{2}{5} & \\frac{4}{5} \\\\ \\frac{7}{5} & \\frac{6}{5} & \\frac{2}{5} \\end{bmatrix}\\), then compute \\(3A - 5B\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Simplify \\(\\cos\\theta \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} + \\sin\\theta \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q7 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Find X and Y, if",
+    "setLabel": "Ex 3.2 Q7",
+    "stem": "\\(X + Y = \\begin{bmatrix} 7 & 0 \\\\ 2 & 5 \\end{bmatrix}\\) and \\(X - Y = \\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q7 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Find X and Y, if",
+    "setLabel": "Ex 3.2 Q7",
+    "stem": "\\(2X + 3Y = \\begin{bmatrix} 2 & 3 \\\\ 4 & 0 \\end{bmatrix}\\) and \\(3X + 2Y = \\begin{bmatrix} 2 & -2 \\\\ -1 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "stem": "Find X, if \\(Y = \\begin{bmatrix} 3 & 2 \\\\ 1 & 4 \\end{bmatrix}\\) and \\(2X + Y = \\begin{bmatrix} 1 & 0 \\\\ -3 & 2 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "EASY",
+    "stem": "Find \\(x\\) and \\(y\\), if \\(2\\begin{bmatrix} 1 & 3 \\\\ 0 & x \\end{bmatrix} + \\begin{bmatrix} y & 0 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 5 & 6 \\\\ 1 & 8 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Solve the equation for \\(x, y, z\\) and \\(t\\), if \\(2\\begin{bmatrix} x & z \\\\ y & t \\end{bmatrix} + 3\\begin{bmatrix} 1 & -1 \\\\ 0 & 2 \\end{bmatrix} = 3\\begin{bmatrix} 3 & 5 \\\\ 4 & 6 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\begin{bmatrix} 2 \\\\ 3 \\end{bmatrix} + y\\begin{bmatrix} -1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 5 \\end{bmatrix}\\), find the values of \\(x\\) and \\(y\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Given \\(3\\begin{bmatrix} x & y \\\\ z & w \\end{bmatrix} = \\begin{bmatrix} x & 6 \\\\ -1 & 2w \\end{bmatrix} + \\begin{bmatrix} 4 & x+y \\\\ z+w & 3 \\end{bmatrix}\\), find the values of \\(x, y, z\\) and \\(w\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), show that \\(F(x)\\,F(y) = F(x + y)\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q14 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Show that",
+    "setLabel": "Ex 3.2 Q14",
+    "stem": "\\(\\begin{bmatrix} 5 & -1 \\\\ 6 & 7 \\end{bmatrix}\\begin{bmatrix} 2 & 1 \\\\ 3 & 4 \\end{bmatrix} \\neq \\begin{bmatrix} 2 & 1 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} 5 & -1 \\\\ 6 & 7 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q14 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "context": "Show that",
+    "setLabel": "Ex 3.2 Q14",
+    "stem": "\\(\\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 0 \\\\ 1 & 1 & 0 \\end{bmatrix}\\begin{bmatrix} -1 & 1 & 0 \\\\ 0 & -1 & 1 \\\\ 2 & 3 & 4 \\end{bmatrix} \\neq \\begin{bmatrix} -1 & 1 & 0 \\\\ 0 & -1 & 1 \\\\ 2 & 3 & 4 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 0 \\\\ 1 & 1 & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "Find \\(A^2 - 5A + 6I\\), if \\(A = \\begin{bmatrix} 2 & 0 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & -1 & 0 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix}\\), prove that \\(A^3 - 6A^2 + 7A + 2I = 0\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & -2 \\\\ 4 & -2 \\end{bmatrix}\\) and \\(I = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\), find \\(k\\) so that \\(A^2 = kA - 2I\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 0 & -\\tan\\frac{\\alpha}{2} \\\\ \\tan\\frac{\\alpha}{2} & 0 \\end{bmatrix}\\) and \\(I\\) is the identity matrix of order 2, show that \\(I + A = (I - A)\\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q19 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "A trust fund has ₹30,000 that must be invested in two different types of bonds. The first bond pays 5% interest per year, and the second bond pays 7% interest per year. Using matrix multiplication, determine how to divide ₹30,000 among the two types of bonds. If the trust fund must obtain an annual total interest of:",
+    "setLabel": "Ex 3.2 Q19",
+    "stem": "₹1800"
+  },
+  {
+    "ref": "Ex 3.2 Q19 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "context": "A trust fund has ₹30,000 that must be invested in two different types of bonds. The first bond pays 5% interest per year, and the second bond pays 7% interest per year. Using matrix multiplication, determine how to divide ₹30,000 among the two types of bonds. If the trust fund must obtain an annual total interest of:",
+    "setLabel": "Ex 3.2 Q19",
+    "stem": "₹2000"
+  },
+  {
+    "ref": "Ex 3.2 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "The bookshop of a particular school has 10 dozen chemistry books, 8 dozen physics books, 10 dozen economics books. Their selling prices are ₹80, ₹60 and ₹40 each respectively. Find the total amount the bookshop will receive from selling all the books using matrix algebra."
+  },
+  {
+    "ref": "Ex 3.2 Q21",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Assume X, Y, Z, W and P are matrices of order \\(2 \\times n\\), \\(3 \\times k\\), \\(2 \\times p\\), \\(n \\times 3\\) and \\(p \\times k\\), respectively. The restriction on \\(n\\), \\(k\\) and \\(p\\) so that \\(PY + WY\\) will be defined are:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(k = 3\\), \\(p = n\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(k\\) is arbitrary, \\(p = 2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(p\\) is arbitrary, \\(k = 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(k = 2\\), \\(p = 3\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex 3.2 Q22",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "stem": "Assume X, Y, Z, W and P are matrices of order \\(2 \\times n\\), \\(3 \\times k\\), \\(2 \\times p\\), \\(n \\times 3\\) and \\(p \\times k\\), respectively. If \\(n = p\\), then the order of the matrix \\(7X - 5Z\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(p \\times 2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2 \\times n\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n \\times 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(p \\times n\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "3.3 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & \\sqrt{3} & 2 \\\\ 4 & 2 & 0 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & -1 & 2 \\\\ 1 & 2 & 4 \\end{bmatrix}\\), verify that (i) \\((A')' = A\\), (ii) \\((A + B)' = A' + B'\\), (iii) \\((kB)' = kB'\\), where \\(k\\) is any constant.",
+    "solution": "(i) We have \\(A = \\begin{bmatrix} 3 & \\sqrt{3} & 2 \\\\ 4 & 2 & 0 \\end{bmatrix} \\Rightarrow A' = \\begin{bmatrix} 3 & 4 \\\\ \\sqrt{3} & 2 \\\\ 2 & 0 \\end{bmatrix} \\Rightarrow (A')' = \\begin{bmatrix} 3 & \\sqrt{3} & 2 \\\\ 4 & 2 & 0 \\end{bmatrix} = A\\). Thus \\((A')' = A\\).\n\n(ii) We have \\(A = \\begin{bmatrix} 3 & \\sqrt{3} & 2 \\\\ 4 & 2 & 0 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & -1 & 2 \\\\ 1 & 2 & 4 \\end{bmatrix} \\Rightarrow A + B = \\begin{bmatrix} 5 & \\sqrt{3}-1 & 4 \\\\ 5 & 4 & 4 \\end{bmatrix}\\). Therefore \\((A + B)' = \\begin{bmatrix} 5 & 5 \\\\ \\sqrt{3}-1 & 4 \\\\ 4 & 4 \\end{bmatrix}\\). Now \\(A' = \\begin{bmatrix} 3 & 4 \\\\ \\sqrt{3} & 2 \\\\ 2 & 0 \\end{bmatrix}\\), \\(B' = \\begin{bmatrix} 2 & 1 \\\\ -1 & 2 \\\\ 2 & 4 \\end{bmatrix}\\), so \\(A' + B' = \\begin{bmatrix} 5 & 5 \\\\ \\sqrt{3}-1 & 4 \\\\ 4 & 4 \\end{bmatrix}\\). Thus \\((A + B)' = A' + B'\\).\n\n(iii) We have \\(kB = k\\begin{bmatrix} 2 & -1 & 2 \\\\ 1 & 2 & 4 \\end{bmatrix} = \\begin{bmatrix} 2k & -k & 2k \\\\ k & 2k & 4k \\end{bmatrix}\\). Then \\((kB)' = \\begin{bmatrix} 2k & k \\\\ -k & 2k \\\\ 2k & 4k \\end{bmatrix} = k\\begin{bmatrix} 2 & 1 \\\\ -1 & 2 \\\\ 2 & 4 \\end{bmatrix} = kB'\\). Thus \\((kB)' = kB'\\)."
+  },
+  {
+    "ref": "3.3 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} -2 \\\\ 4 \\\\ 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 & -6 \\end{bmatrix}\\), verify that \\((AB)' = B'A'\\).",
+    "solution": "We have \\(A = \\begin{bmatrix} -2 \\\\ 4 \\\\ 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 & -6 \\end{bmatrix}\\). Then \\(AB = \\begin{bmatrix} -2 \\\\ 4 \\\\ 5 \\end{bmatrix}\\begin{bmatrix} 1 & 3 & -6 \\end{bmatrix} = \\begin{bmatrix} -2 & -6 & 12 \\\\ 4 & 12 & -24 \\\\ 5 & 15 & -30 \\end{bmatrix}\\). Now \\(A' = \\begin{bmatrix} -2 & 4 & 5 \\end{bmatrix}\\), \\(B' = \\begin{bmatrix} 1 \\\\ 3 \\\\ -6 \\end{bmatrix}\\). \\(B'A' = \\begin{bmatrix} 1 \\\\ 3 \\\\ -6 \\end{bmatrix}\\begin{bmatrix} -2 & 4 & 5 \\end{bmatrix} = \\begin{bmatrix} -2 & 4 & 5 \\\\ -6 & 12 & 15 \\\\ 12 & -24 & -30 \\end{bmatrix} = (AB)'\\). Clearly \\((AB)' = B'A'\\)."
+  },
+  {
+    "ref": "3.3 Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "HARD",
+    "stem": "Express the matrix \\(B = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\) as the sum of a symmetric and a skew symmetric matrix.",
+    "solution": "Here \\(B' = \\begin{bmatrix} 2 & -1 & 1 \\\\ -2 & 3 & -2 \\\\ -4 & 4 & -3 \\end{bmatrix}\\). Let \\(P = \\frac{1}{2}(B + B') = \\frac{1}{2}\\begin{bmatrix} 4 & -3 & -3 \\\\ -3 & 6 & 2 \\\\ -3 & 2 & -6 \\end{bmatrix} = \\begin{bmatrix} 2 & \\frac{-3}{2} & \\frac{-3}{2} \\\\ \\frac{-3}{2} & 3 & 1 \\\\ \\frac{-3}{2} & 1 & -3 \\end{bmatrix}\\). Now \\(P' = \\begin{bmatrix} 2 & \\frac{-3}{2} & \\frac{-3}{2} \\\\ \\frac{-3}{2} & 3 & 1 \\\\ \\frac{-3}{2} & 1 & -3 \\end{bmatrix} = P\\). Thus \\(P = \\frac{1}{2}(B + B')\\) is a symmetric matrix. Also, let \\(Q = \\frac{1}{2}(B - B') = \\frac{1}{2}\\begin{bmatrix} 0 & -1 & -5 \\\\ 1 & 0 & 6 \\\\ 5 & -6 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & \\frac{-1}{2} & \\frac{-5}{2} \\\\ \\frac{1}{2} & 0 & 3 \\\\ \\frac{5}{2} & -3 & 0 \\end{bmatrix}\\). Then \\(Q' = \\begin{bmatrix} 0 & \\frac{1}{2} & \\frac{5}{2} \\\\ \\frac{-1}{2} & 0 & -3 \\\\ \\frac{-5}{2} & 3 & 0 \\end{bmatrix} = -Q\\). Thus \\(Q = \\frac{1}{2}(B - B')\\) is a skew symmetric matrix. Now \\(P + Q = \\begin{bmatrix} 2 & \\frac{-3}{2} & \\frac{-3}{2} \\\\ \\frac{-3}{2} & 3 & 1 \\\\ \\frac{-3}{2} & 1 & -3 \\end{bmatrix} + \\begin{bmatrix} 0 & \\frac{-1}{2} & \\frac{-5}{2} \\\\ \\frac{1}{2} & 0 & 3 \\\\ \\frac{5}{2} & -3 & 0 \\end{bmatrix} = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix} = B\\). Thus, B is represented as the sum of a symmetric and a skew symmetric matrix."
+  },
+  {
+    "ref": "Ex 3.3 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "Find the transpose of each of the following matrices:",
+    "setLabel": "Ex 3.3 Q1",
+    "stem": "\\(\\begin{bmatrix} 5 \\\\ \\frac{1}{2} \\\\ -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "Find the transpose of each of the following matrices:",
+    "setLabel": "Ex 3.3 Q1",
+    "stem": "\\(\\begin{bmatrix} 1 & -1 \\\\ 2 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "Find the transpose of each of the following matrices:",
+    "setLabel": "Ex 3.3 Q1",
+    "stem": "\\(\\begin{bmatrix} -1 & 5 & 6 \\\\ \\sqrt{3} & 5 & 6 \\\\ 2 & 3 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} -1 & 2 & 3 \\\\ 5 & 7 & 9 \\\\ -2 & 1 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -4 & 1 & -5 \\\\ 1 & 2 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix}\\), then verify that",
+    "setLabel": "Ex 3.3 Q2",
+    "stem": "\\((A + B)' = A' + B'\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} -1 & 2 & 3 \\\\ 5 & 7 & 9 \\\\ -2 & 1 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -4 & 1 & -5 \\\\ 1 & 2 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix}\\), then verify that",
+    "setLabel": "Ex 3.3 Q2",
+    "stem": "\\((A - B)' = A' - B'\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A' = \\begin{bmatrix} 3 & 4 \\\\ -1 & 2 \\\\ 0 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 2 & 3 \\end{bmatrix}\\), then verify that",
+    "setLabel": "Ex 3.3 Q3",
+    "stem": "\\((A + B)' = A' + B'\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A' = \\begin{bmatrix} 3 & 4 \\\\ -1 & 2 \\\\ 0 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 2 & 3 \\end{bmatrix}\\), then verify that",
+    "setLabel": "Ex 3.3 Q3",
+    "stem": "\\((A - B)' = A' - B'\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A' = \\begin{bmatrix} -2 & 3 \\\\ 1 & 2 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -1 & 0 \\\\ 1 & 2 \\end{bmatrix}\\), then find \\((A + 2B)'\\)."
+  },
+  {
+    "ref": "Ex 3.3 Q5 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "For the matrices A and B, verify that \\((AB)' = B'A'\\), where",
+    "setLabel": "Ex 3.3 Q5",
+    "stem": "\\(A = \\begin{bmatrix} 1 \\\\ -4 \\\\ 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -1 & 2 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q5 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "For the matrices A and B, verify that \\((AB)' = B'A'\\), where",
+    "setLabel": "Ex 3.3 Q5",
+    "stem": "\\(A = \\begin{bmatrix} 0 \\\\ 1 \\\\ 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 5 & 7 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q6 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "Verify the given relation for the following matrix.",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), then verify that \\(A' A = I\\)."
+  },
+  {
+    "ref": "Ex 3.3 Q6 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "Verify the given relation for the following matrix.",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "If \\(A = \\begin{bmatrix} \\sin\\alpha & \\cos\\alpha \\\\ -\\cos\\alpha & \\sin\\alpha \\end{bmatrix}\\), then verify that \\(A' A = I\\)."
+  },
+  {
+    "ref": "Ex 3.3 Q7 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "EASY",
+    "stem": "Show that the matrix \\(A = \\begin{bmatrix} 1 & -1 & 5 \\\\ -1 & 2 & 1 \\\\ 5 & 1 & 3 \\end{bmatrix}\\) is a symmetric matrix."
+  },
+  {
+    "ref": "Ex 3.3 Q7 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "EASY",
+    "stem": "Show that the matrix \\(A = \\begin{bmatrix} 0 & 1 & -1 \\\\ -1 & 0 & 1 \\\\ 1 & -1 & 0 \\end{bmatrix}\\) is a skew symmetric matrix."
+  },
+  {
+    "ref": "Ex 3.3 Q8 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "context": "For the matrix \\(A = \\begin{bmatrix} 1 & 5 \\\\ 6 & 7 \\end{bmatrix}\\), verify that",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "\\((A + A')\\) is a symmetric matrix"
+  },
+  {
+    "ref": "Ex 3.3 Q8 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "context": "For the matrix \\(A = \\begin{bmatrix} 1 & 5 \\\\ 6 & 7 \\end{bmatrix}\\), verify that",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "\\((A - A')\\) is a skew symmetric matrix"
+  },
+  {
+    "ref": "Ex 3.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{1}{2}(A + A')\\) and \\(\\frac{1}{2}(A - A')\\), when \\(A = \\begin{bmatrix} 0 & a & b \\\\ -a & 0 & c \\\\ -b & -c & 0 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 3.3 Q10 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "context": "Express the following matrices as the sum of a symmetric and a skew symmetric matrix:",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "\\(\\begin{bmatrix} 3 & 5 \\\\ 1 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q10 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "HARD",
+    "context": "Express the following matrices as the sum of a symmetric and a skew symmetric matrix:",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "\\(\\begin{bmatrix} 6 & -2 & 2 \\\\ -2 & 3 & -1 \\\\ 2 & -1 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q10 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "HARD",
+    "context": "Express the following matrices as the sum of a symmetric and a skew symmetric matrix:",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "\\(\\begin{bmatrix} 3 & 3 & -1 \\\\ -2 & -2 & 1 \\\\ -4 & -5 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q10 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "context": "Express the following matrices as the sum of a symmetric and a skew symmetric matrix:",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "\\(\\begin{bmatrix} 1 & 5 \\\\ -1 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If A, B are symmetric matrices of same order, then \\(AB - BA\\) is a",
+    "options": [
+      {
+        "label": "A",
+        "text": "Skew symmetric matrix"
+      },
+      {
+        "label": "B",
+        "text": "Symmetric matrix"
+      },
+      {
+        "label": "C",
+        "text": "Zero matrix"
+      },
+      {
+        "label": "D",
+        "text": "Identity matrix"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex 3.3 Q12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), and \\(A + A' = I\\), then the value of \\(\\alpha\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{3\\pi}{2}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex 3.4 Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Elementary Operations and Inverse of a Matrix",
+    "difficulty": "EASY",
+    "stem": "Matrices \\(A\\) and \\(B\\) will be inverse of each other only if",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(AB = BA\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(AB = BA = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(AB = 0,\\ BA = I\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(AB = BA = I\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Elementary Operations and Inverse of a Matrix",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), then prove that \\(A^n = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), \\(n \\in \\mathbf{N}\\).",
+    "solution": "We shall prove the result by using principle of mathematical induction.\n\nWe have \\(P(n)\\): If \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), then \\(A^n = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), \\(n \\in \\mathbf{N}\\)\n\n\\(P(1)\\): \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), so \\(A^1 = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\)\n\nTherefore, the result is true for \\(n = 1\\).\n\nLet the result be true for \\(n = k\\). So\n\n\\(P(k)\\): \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), then \\(A^k = \\begin{bmatrix} \\cos k\\theta & \\sin k\\theta \\\\ -\\sin k\\theta & \\cos k\\theta \\end{bmatrix}\\)\n\nNow, we prove that the result holds for \\(n = k+1\\)\n\nNow \\(A^{k+1} = A \\cdot A^k = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\begin{bmatrix} \\cos k\\theta & \\sin k\\theta \\\\ -\\sin k\\theta & \\cos k\\theta \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} \\cos\\theta\\cos k\\theta - \\sin\\theta\\sin k\\theta & \\cos\\theta\\sin k\\theta + \\sin\\theta\\cos k\\theta \\\\ -\\sin\\theta\\cos k\\theta + \\cos\\theta\\sin k\\theta & -\\sin\\theta\\sin k\\theta + \\cos\\theta\\cos k\\theta \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} \\cos(\\theta + k\\theta) & \\sin(\\theta + k\\theta) \\\\ -\\sin(\\theta + k\\theta) & \\cos(\\theta + k\\theta) \\end{bmatrix} = \\begin{bmatrix} \\cos(k+1)\\theta & \\sin(k+1)\\theta \\\\ -\\sin(k+1)\\theta & \\cos(k+1)\\theta \\end{bmatrix}\\)\n\nTherefore, the result is true for \\(n = k+1\\). Thus by principle of mathematical induction, we have \\(A^n = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), holds for all natural numbers."
+  },
+  {
+    "ref": "Misc Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A\\) and \\(B\\) are symmetric matrices of the same order, then show that \\(AB\\) is symmetric if and only if \\(A\\) and \\(B\\) commute, that is \\(AB = BA\\).",
+    "solution": "Since \\(A\\) and \\(B\\) are both symmetric matrices, therefore \\(A' = A\\) and \\(B' = B\\).\n\nLet \\(AB\\) be symmetric, then \\((AB)' = AB\\)\n\nBut \\((AB)' = B'A' = BA\\) (Why?)\n\nTherefore \\(BA = AB\\)\n\nConversely, if \\(AB = BA\\), then we shall show that \\(AB\\) is symmetric.\n\nNow \\((AB)' = B'A'\\)\n\n\\(= B\\,A\\) (as \\(A\\) and \\(B\\) are symmetric)\n\n\\(= AB\\)\n\nHence \\(AB\\) is symmetric."
+  },
+  {
+    "ref": "Misc Eg.25",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "Let \\(A = \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 5 & 2 \\\\ 7 & 4 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} 2 & 5 \\\\ 3 & 8 \\end{bmatrix}\\). Find a matrix \\(D\\) such that \\(CD - AB = O\\).",
+    "solution": "Since \\(A\\), \\(B\\), \\(C\\) are all square matrices of order 2, and \\(CD - AB\\) is well defined, \\(D\\) must be a square matrix of order 2.\n\nLet \\(D = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\). Then \\(CD - AB = 0\\) gives\n\n\\(\\begin{bmatrix} 2 & 5 \\\\ 3 & 8 \\end{bmatrix}\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} - \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} 5 & 2 \\\\ 7 & 4 \\end{bmatrix} = O\\)\n\nor \\(\\begin{bmatrix} 2a+5c & 2b+5d \\\\ 3a+8c & 3b+8d \\end{bmatrix} - \\begin{bmatrix} 3 & 0 \\\\ 43 & 22 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\n\nor \\(\\begin{bmatrix} 2a+5c-3 & 2b+5d \\\\ 3a+8c-43 & 3b+8d-22 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\n\nBy equality of matrices, we get\n\n\\(2a + 5c - 3 = 0\\) ... (1)\n\n\\(3a + 8c - 43 = 0\\) ... (2)\n\n\\(2b + 5d = 0\\) ... (3)\n\nand \\(3b + 8d - 22 = 0\\) ... (4)\n\nSolving (1) and (2), we get \\(a = -191\\), \\(c = 77\\). Solving (3) and (4), we get \\(b = -110\\), \\(d = 44\\)."
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A\\) and \\(B\\) are symmetric matrices, prove that \\(AB - BA\\) is a skew symmetric matrix."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Show that the matrix \\(B'AB\\) is symmetric or skew symmetric according as \\(A\\) is symmetric or skew symmetric."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Transpose of a Matrix",
+    "difficulty": "HARD",
+    "stem": "Find the values of \\(x, y, z\\) if the matrix \\(A = \\begin{bmatrix} 0 & 2y & z \\\\ x & y & -z \\\\ x & -y & z \\end{bmatrix}\\) satisfy the equation \\(A'A = I\\)."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "For what values of \\(x\\): \\(\\begin{bmatrix} 1 & 2 & 1 \\end{bmatrix} \\begin{bmatrix} 1 & 2 & 0 \\\\ 2 & 0 & 1 \\\\ 1 & 0 & 2 \\end{bmatrix} \\begin{bmatrix} 0 \\\\ 2 \\\\ x \\end{bmatrix} = O\\)?"
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & 1 \\\\ -1 & 2 \\end{bmatrix}\\), show that \\(A^2 - 5A + 7I = 0\\)."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(x\\), if \\(\\begin{bmatrix} x & -5 & -1 \\end{bmatrix} \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix} \\begin{bmatrix} x \\\\ 4 \\\\ 1 \\end{bmatrix} = O\\)."
+  },
+  {
+    "ref": "Misc Q7 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "setLabel": "Misc Q7",
+    "context": "A manufacturer produces three products \\(x, y, z\\) which he sells in two markets. Annual sales are indicated below:\n\n| Market | \\(x\\) | \\(y\\) | \\(z\\) |\n|---|---|---|---|\n| I | 10,000 | 2,000 | 18,000 |\n| II | 6,000 | 20,000 | 8,000 |",
+    "stem": "If unit sale prices of \\(x, y\\) and \\(z\\) are Rs 2.50, Rs 1.50 and Rs 1.00, respectively, find the total revenue in each market with the help of matrix algebra."
+  },
+  {
+    "ref": "Misc Q7 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "setLabel": "Misc Q7",
+    "context": "A manufacturer produces three products \\(x, y, z\\) which he sells in two markets. Annual sales are indicated below:\n\n| Market | \\(x\\) | \\(y\\) | \\(z\\) |\n|---|---|---|---|\n| I | 10,000 | 2,000 | 18,000 |\n| II | 6,000 | 20,000 | 8,000 |",
+    "stem": "If the unit costs of the above three commodities are Rs 2.00, Rs 1.00 and 50 paise respectively. Find the gross profit."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Elementary Operations and Inverse of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "Find the matrix \\(X\\) so that \\(X \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix} = \\begin{bmatrix} -7 & -8 & -9 \\\\ 2 & 4 & 6 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & -\\alpha \\end{bmatrix}\\) is such that \\(A^2 = I\\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1 + \\alpha^2 + \\beta\\gamma = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1 - \\alpha^2 + \\beta\\gamma = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1 - \\alpha^2 - \\beta\\gamma = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1 + \\alpha^2 - \\beta\\gamma = 0\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "EASY",
+    "stem": "If the matrix \\(A\\) is both symmetric and skew symmetric, then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A\\) is a diagonal matrix"
+      },
+      {
+        "label": "B",
+        "text": "\\(A\\) is a zero matrix"
+      },
+      {
+        "label": "C",
+        "text": "\\(A\\) is a square matrix"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A\\) is square matrix such that \\(A^2 = A\\), then \\((I + A)^3 - 7A\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(I - A\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(I\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3A\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "3.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "stem": "Given \\(A = \\begin{bmatrix} \\sqrt{3} & 1 & -1 \\\\ 2 & 3 & 0 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & \\sqrt{5} & 1 \\\\ -2 & 3 & \\frac{1}{2} \\end{bmatrix}\\), find \\(A + B\\).",
+    "solution": "Since \\(A\\), \\(B\\) are of the same order \\(2 \\times 3\\). Therefore, addition of \\(A\\) and \\(B\\) is defined and is given by\n\\[A + B = \\begin{bmatrix} 2 + \\sqrt{3} & 1 + \\sqrt{5} & 1 - 1 \\\\ 2 - 2 & 3 + 3 & 0 + \\frac{1}{2} \\end{bmatrix} = \\begin{bmatrix} 2 + \\sqrt{3} & 1 + \\sqrt{5} & 0 \\\\ 0 & 6 & \\frac{1}{2} \\end{bmatrix}\\]"
+  },
+  {
+    "ref": "3.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 3 & -1 & 3 \\\\ -1 & 0 & 2 \\end{bmatrix}\\), then find \\(2A - B\\).",
+    "solution": "We have\n\\[2A - B = 2\\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{bmatrix} - \\begin{bmatrix} 3 & -1 & 3 \\\\ -1 & 0 & 2 \\end{bmatrix}\\]\n\\[= \\begin{bmatrix} 2 & 4 & 6 \\\\ 4 & 6 & 2 \\end{bmatrix} + \\begin{bmatrix} -3 & 1 & -3 \\\\ 1 & 0 & -2 \\end{bmatrix}\\]\n\\[= \\begin{bmatrix} 2 - 3 & 4 + 1 & 6 - 3 \\\\ 4 + 1 & 6 + 0 & 2 - 2 \\end{bmatrix} = \\begin{bmatrix} -1 & 5 & 3 \\\\ 5 & 6 & 0 \\end{bmatrix}\\]"
+  },
+  {
+    "ref": "3.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 8 & 0 \\\\ 4 & -2 \\\\ 3 & 6 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & -2 \\\\ 4 & 2 \\\\ -5 & 1 \\end{bmatrix}\\), then find the matrix \\(X\\), such that \\(2A + 3X = 5B\\).",
+    "solution": "We have \\(2A + 3X = 5B\\)\nor \\(2A + 3X - 2A = 5B - 2A\\)\nor \\(2A - 2A + 3X = 5B - 2A\\) (Matrix addition is commutative)\nor \\(O + 3X = 5B - 2A\\) (\\(-2A\\) is the additive inverse of \\(2A\\))\nor \\(3X = 5B - 2A\\) (\\(O\\) is the additive identity)\nor \\(X = \\frac{1}{3}(5B - 2A)\\)\nor \\(X = \\frac{1}{3}\\left(5\\begin{bmatrix} 2 & -2 \\\\ 4 & 2 \\\\ -5 & 1 \\end{bmatrix} - 2\\begin{bmatrix} 8 & 0 \\\\ 4 & -2 \\\\ 3 & 6 \\end{bmatrix}\\right) = \\frac{1}{3}\\left(\\begin{bmatrix} 10 & -10 \\\\ 20 & 10 \\\\ -25 & 5 \\end{bmatrix} + \\begin{bmatrix} -16 & 0 \\\\ -8 & 4 \\\\ -6 & -12 \\end{bmatrix}\\right)\\)\n\\[= \\frac{1}{3}\\begin{bmatrix} 10 - 16 & -10 + 0 \\\\ 20 - 8 & 10 + 4 \\\\ -25 - 6 & 5 - 12 \\end{bmatrix} = \\frac{1}{3}\\begin{bmatrix} -6 & -10 \\\\ 12 & 14 \\\\ -31 & -7 \\end{bmatrix} = \\begin{bmatrix} -2 & \\frac{-10}{3} \\\\ 4 & \\frac{14}{3} \\\\ \\frac{-31}{3} & \\frac{-7}{3} \\end{bmatrix}\\]"
+  },
+  {
+    "ref": "3.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(X\\) and \\(Y\\), if \\(X + Y = \\begin{bmatrix} 5 & 2 \\\\ 0 & 9 \\end{bmatrix}\\) and \\(X - Y = \\begin{bmatrix} 3 & 6 \\\\ 0 & -1 \\end{bmatrix}\\).",
+    "solution": "We have \\((X + Y) + (X - Y) = \\begin{bmatrix} 5 & 2 \\\\ 0 & 9 \\end{bmatrix} + \\begin{bmatrix} 3 & 6 \\\\ 0 & -1 \\end{bmatrix}\\).\nor \\((X + X) + (Y - Y) = \\begin{bmatrix} 8 & 8 \\\\ 0 & 8 \\end{bmatrix} \\Rightarrow 2X = \\begin{bmatrix} 8 & 8 \\\\ 0 & 8 \\end{bmatrix}\\)\nor \\(X = \\frac{1}{2}\\begin{bmatrix} 8 & 8 \\\\ 0 & 8 \\end{bmatrix} = \\begin{bmatrix} 4 & 4 \\\\ 0 & 4 \\end{bmatrix}\\)\nAlso \\((X + Y) - (X - Y) = \\begin{bmatrix} 5 & 2 \\\\ 0 & 9 \\end{bmatrix} - \\begin{bmatrix} 3 & 6 \\\\ 0 & -1 \\end{bmatrix}\\)\nor \\((X - X) + (Y + Y) = \\begin{bmatrix} 5 - 3 & 2 - 6 \\\\ 0 & 9 + 1 \\end{bmatrix} \\Rightarrow 2Y = \\begin{bmatrix} 2 & -4 \\\\ 0 & 10 \\end{bmatrix}\\)\nor \\(Y = \\frac{1}{2}\\begin{bmatrix} 2 & -4 \\\\ 0 & 10 \\end{bmatrix} = \\begin{bmatrix} 1 & -2 \\\\ 0 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "3.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(x\\) and \\(y\\) from the following equation:\n\\[2\\begin{bmatrix} x & 5 \\\\ 7 & y - 3 \\end{bmatrix} + \\begin{bmatrix} 3 & -4 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix}\\]",
+    "solution": "We have\n\\[2\\begin{bmatrix} x & 5 \\\\ 7 & y - 3 \\end{bmatrix} + \\begin{bmatrix} 3 & -4 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix} \\Rightarrow \\begin{bmatrix} 2x & 10 \\\\ 14 & 2y - 6 \\end{bmatrix} + \\begin{bmatrix} 3 & -4 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix}\\]\nor \\(\\begin{bmatrix} 2x + 3 & 10 - 4 \\\\ 14 + 1 & 2y - 6 + 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix} \\Rightarrow \\begin{bmatrix} 2x + 3 & 6 \\\\ 15 & 2y - 4 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix}\\)\nor \\(2x + 3 = 7\\) and \\(2y - 4 = 14\\) (Why?)\nor \\(2x = 7 - 3\\) and \\(2y = 18\\)\nor \\(x = \\frac{4}{2}\\) and \\(y = \\frac{18}{2}\\)\ni.e. \\(x = 2\\) and \\(y = 9\\)."
+  },
+  {
+    "ref": "3.2 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "HARD",
+    "stem": "Two farmers Ramkishan and Gurcharan Singh cultivates only three varieties of rice namely Basmati, Permal and Naura. The sale (in Rupees) of these varieties of rice by both the farmers in the month of September and October are given by the following matrices \\(A\\) and \\(B\\).\nSeptember Sales (in Rupees): \\(A = \\begin{bmatrix} 10{,}000 & 20{,}000 & 30{,}000 \\\\ 50{,}000 & 30{,}000 & 10{,}000 \\end{bmatrix}\\) (row 1 Ramkishan, row 2 Gurcharan Singh; columns Basmati, Permal, Naura).\nOctober Sales (in Rupees): \\(B = \\begin{bmatrix} 5000 & 10{,}000 & 6000 \\\\ 20{,}000 & 10{,}000 & 10{,}000 \\end{bmatrix}\\) (row 1 Ramkishan, row 2 Gurcharan Singh; columns Basmati, Permal, Naura).\n(i) Find the combined sales in September and October for each farmer in each variety.\n(ii) Find the decrease in sales from September to October.\n(iii) If both farmers receive 2% profit on gross sales, compute the profit for each farmer and for each variety sold in October.",
+    "solution": "(i) Combined sales in September and October for each farmer in each variety is given by\n\\[A + B = \\begin{bmatrix} 15{,}000 & 30{,}000 & 36{,}000 \\\\ 70{,}000 & 40{,}000 & 20{,}000 \\end{bmatrix}\\]\n(columns Basmati, Permal, Naura; row 1 Ramkishan, row 2 Gurcharan Singh).\n(ii) Change in sales from September to October is given by\n\\[A - B = \\begin{bmatrix} 5000 & 10{,}000 & 24{,}000 \\\\ 30{,}000 & 20{,}000 & 0 \\end{bmatrix}\\]\n(columns Basmati, Permal, Naura; row 1 Ramkishan, row 2 Gurcharan Singh).\n(iii) \\(2\\% \\text{ of } B = \\frac{2}{100} \\times B = 0.02 \\times B\\)\n\\[= 0.02\\begin{bmatrix} 5000 & 10{,}000 & 6000 \\\\ 20{,}000 & 10{,}000 & 10{,}000 \\end{bmatrix} = \\begin{bmatrix} 100 & 200 & 120 \\\\ 400 & 200 & 200 \\end{bmatrix}\\]\n(columns Basmati, Permal, Naura; row 1 Ramkishan, row 2 Gurcharan Singh).\nThus, in October Ramkishan receives \\(\\text{Rs } 100\\), \\(\\text{Rs } 200\\) and \\(\\text{Rs } 120\\) as profit in the sale of each variety of rice, respectively, and Gurcharan Singh receives profit of \\(\\text{Rs } 400\\), \\(\\text{Rs } 200\\) and \\(\\text{Rs } 200\\) in the sale of each variety of rice, respectively."
+  },
+  {
+    "ref": "3.2 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find AB, if \\(A = \\begin{bmatrix} 6 & 9 \\\\ 2 & 3 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & 6 & 0 \\\\ 7 & 9 & 8 \\end{bmatrix}\\).",
+    "solution": "The matrix A has 2 columns which is equal to the number of rows of B. Hence AB is defined. Now\n\\(AB = \\begin{bmatrix} 6(2)+9(7) & 6(6)+9(9) & 6(0)+9(8) \\\\ 2(2)+3(7) & 2(6)+3(9) & 2(0)+3(8) \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 12+63 & 36+81 & 0+72 \\\\ 4+21 & 12+27 & 0+24 \\end{bmatrix} = \\begin{bmatrix} 75 & 117 & 72 \\\\ 25 & 39 & 24 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "3.2 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & -2 & 3 \\\\ -4 & 2 & 5 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\\\ 2 & 1 \\end{bmatrix}\\), then find AB, BA. Show that \\(AB \\ne BA\\).",
+    "solution": "Since A is a \\(2 \\times 3\\) matrix and B is \\(3 \\times 2\\) matrix. Hence AB and BA are both defined and are matrices of order \\(2 \\times 2\\) and \\(3 \\times 3\\), respectively. Note that\n\\(AB = \\begin{bmatrix} 1 & -2 & 3 \\\\ -4 & 2 & 5 \\end{bmatrix} \\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\\\ 2 & 1 \\end{bmatrix} = \\begin{bmatrix} 2-8+6 & 3-10+3 \\\\ -8+8+10 & -12+10+5 \\end{bmatrix} = \\begin{bmatrix} 0 & -4 \\\\ 10 & 3 \\end{bmatrix}\\)\nand \\(BA = \\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\\\ 2 & 1 \\end{bmatrix} \\begin{bmatrix} 1 & -2 & 3 \\\\ -4 & 2 & 5 \\end{bmatrix} = \\begin{bmatrix} 2-12 & -4+6 & 6+15 \\\\ 4-20 & -8+10 & 12+25 \\\\ 2-4 & -4+2 & 6+5 \\end{bmatrix} = \\begin{bmatrix} -10 & 2 & 21 \\\\ -16 & 2 & 37 \\\\ -2 & -2 & 11 \\end{bmatrix}\\)\nClearly \\(AB \\ne BA\\)\nIn the above example both AB and BA are of different order and so \\(AB \\ne BA\\). But one may think that perhaps AB and BA could be the same if they were of the same order. But it is not so, here we give an example to show that even if AB and BA are of same order they may not be same."
+  },
+  {
+    "ref": "3.2 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\), then \\(AB = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}\\).",
+    "solution": "and \\(BA = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}\\). Clearly \\(AB \\ne BA\\).\nThus matrix multiplication is not commutative."
+  },
+  {
+    "ref": "3.2 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "EASY",
+    "stem": "Find AB, if \\(A = \\begin{bmatrix} 0 & -1 \\\\ 0 & 2 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 3 & 5 \\\\ 0 & 0 \\end{bmatrix}\\).",
+    "solution": "We have \\(AB = \\begin{bmatrix} 0 & -1 \\\\ 0 & 2 \\end{bmatrix} \\begin{bmatrix} 3 & 5 \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\).\nThus, if the product of two matrices is a zero matrix, it is not necessary that one of the matrices is a zero matrix."
+  },
+  {
+    "ref": "3.2 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 0 & 3 \\\\ 3 & -1 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 \\\\ 0 & 2 \\\\ -1 & 4 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 1 & 2 & 3 & -4 \\\\ 2 & 0 & -2 & 1 \\end{bmatrix}\\), find A(BC), (AB)C and show that (AB)C = A(BC).",
+    "solution": "We have \\(AB = \\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 0 & 3 \\\\ 3 & -1 & 2 \\end{bmatrix} \\begin{bmatrix} 1 & 3 \\\\ 0 & 2 \\\\ -1 & 4 \\end{bmatrix} = \\begin{bmatrix} 1+0+1 & 3+2-4 \\\\ 2+0-3 & 6+0+12 \\\\ 3+0-2 & 9-2+8 \\end{bmatrix} = \\begin{bmatrix} 2 & 1 \\\\ -1 & 18 \\\\ 1 & 15 \\end{bmatrix}\\)\n\\((AB)(C) = \\begin{bmatrix} 2 & 1 \\\\ -1 & 18 \\\\ 1 & 15 \\end{bmatrix} \\begin{bmatrix} 1 & 2 & 3 & -4 \\\\ 2 & 0 & -2 & 1 \\end{bmatrix} = \\begin{bmatrix} 2+2 & 4+0 & 6-2 & -8+1 \\\\ -1+36 & -2+0 & -3-36 & 4+18 \\\\ 1+30 & 2+0 & 3-30 & -4+15 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 4 & 4 & 4 & -7 \\\\ 35 & -2 & -39 & 22 \\\\ 31 & 2 & -27 & 11 \\end{bmatrix}\\)\nNow \\(BC = \\begin{bmatrix} 1 & 3 \\\\ 0 & 2 \\\\ -1 & 4 \\end{bmatrix} \\begin{bmatrix} 1 & 2 & 3 & -4 \\\\ 2 & 0 & -2 & 1 \\end{bmatrix} = \\begin{bmatrix} 1+6 & 2+0 & 3-6 & -4+3 \\\\ 0+4 & 0+0 & 0-4 & 0+2 \\\\ -1+8 & -2+0 & -3-8 & 4+4 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 7 & 2 & -3 & -1 \\\\ 4 & 0 & -4 & 2 \\\\ 7 & -2 & -11 & 8 \\end{bmatrix}\\)\nTherefore \\(A(BC) = \\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 0 & 3 \\\\ 3 & -1 & 2 \\end{bmatrix} \\begin{bmatrix} 7 & 2 & -3 & -1 \\\\ 4 & 0 & -4 & 2 \\\\ 7 & -2 & -11 & 8 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 7+4-7 & 2+0+2 & -3-4+11 & -1+2-8 \\\\ 14+0+21 & 4+0-6 & -6+0-33 & -2+0+24 \\\\ 21-4+14 & 6+0-4 & -9+4-22 & -3-2+16 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 4 & 4 & 4 & -7 \\\\ 35 & -2 & -39 & 22 \\\\ 31 & 2 & -27 & 11 \\end{bmatrix}\\). Clearly, (AB) C = A (BC)"
+  },
+  {
+    "ref": "3.2 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 0 & 6 & 7 \\\\ -6 & 0 & 8 \\\\ 7 & -8 & 0 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 2 \\\\ 1 & 2 & 0 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} 2 \\\\ -2 \\\\ 3 \\end{bmatrix}\\). Calculate AC, BC and (A + B)C. Also, verify that (A + B)C = AC + BC.",
+    "solution": "Now, \\(A + B = \\begin{bmatrix} 0 & 7 & 8 \\\\ -5 & 0 & 10 \\\\ 8 & -6 & 0 \\end{bmatrix}\\)\nSo \\((A + B)C = \\begin{bmatrix} 0 & 7 & 8 \\\\ -5 & 0 & 10 \\\\ 8 & -6 & 0 \\end{bmatrix} \\begin{bmatrix} 2 \\\\ -2 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} 0-14+24 \\\\ -10+0+30 \\\\ 16+12+0 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 20 \\\\ 28 \\end{bmatrix}\\)\nFurther \\(AC = \\begin{bmatrix} 0 & 6 & 7 \\\\ -6 & 0 & 8 \\\\ 7 & -8 & 0 \\end{bmatrix} \\begin{bmatrix} 2 \\\\ -2 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} 0-12+21 \\\\ -12+0+24 \\\\ 14+16+0 \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 12 \\\\ 30 \\end{bmatrix}\\)\nand \\(BC = \\begin{bmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 2 \\\\ 1 & 2 & 0 \\end{bmatrix} \\begin{bmatrix} 2 \\\\ -2 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} 0-2+3 \\\\ 2+0+6 \\\\ 2-4+0 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 8 \\\\ -2 \\end{bmatrix}\\)\nSo \\(AC + BC = \\begin{bmatrix} 9 \\\\ 12 \\\\ 30 \\end{bmatrix} + \\begin{bmatrix} 1 \\\\ 8 \\\\ -2 \\end{bmatrix} = \\begin{bmatrix} 10 \\\\ 20 \\\\ 28 \\end{bmatrix}\\)\nClearly, \\((A + B)C = AC + BC\\)"
+  },
+  {
+    "ref": "3.2 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & -2 & 1 \\\\ 4 & 2 & 1 \\end{bmatrix}\\), then show that \\(A^3 - 23A - 40I = O\\).",
+    "solution": "We have \\(A^2 = A \\cdot A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & -2 & 1 \\\\ 4 & 2 & 1 \\end{bmatrix} \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & -2 & 1 \\\\ 4 & 2 & 1 \\end{bmatrix} = \\begin{bmatrix} 19 & 4 & 8 \\\\ 1 & 12 & 8 \\\\ 14 & 6 & 15 \\end{bmatrix}\\)\nSo \\(A^3 = A \\, A^2 = \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & -2 & 1 \\\\ 4 & 2 & 1 \\end{bmatrix} \\begin{bmatrix} 19 & 4 & 8 \\\\ 1 & 12 & 8 \\\\ 14 & 6 & 15 \\end{bmatrix} = \\begin{bmatrix} 63 & 46 & 69 \\\\ 69 & -6 & 23 \\\\ 92 & 46 & 63 \\end{bmatrix}\\)\nNow\n\\(A^3 - 23A - 40I = \\begin{bmatrix} 63 & 46 & 69 \\\\ 69 & -6 & 23 \\\\ 92 & 46 & 63 \\end{bmatrix} - 23 \\begin{bmatrix} 1 & 2 & 3 \\\\ 3 & -2 & 1 \\\\ 4 & 2 & 1 \\end{bmatrix} - 40 \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 63 & 46 & 69 \\\\ 69 & -6 & 23 \\\\ 92 & 46 & 63 \\end{bmatrix} + \\begin{bmatrix} -23 & -46 & -69 \\\\ -69 & 46 & -23 \\\\ -92 & -46 & -23 \\end{bmatrix} + \\begin{bmatrix} -40 & 0 & 0 \\\\ 0 & -40 & 0 \\\\ 0 & 0 & -40 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 63-23-40 & 46-46+0 & 69-69+0 \\\\ 69-69+0 & -6+46-40 & 23-23+0 \\\\ 92-92+0 & 46-46+0 & 63-23-40 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix} = O\\)"
+  },
+  {
+    "ref": "3.2 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "In a legislative assembly election, a political group hired a public relations firm to promote its candidate in three ways: telephone, house calls, and letters. The cost per contact (in paise) is given in matrix A as\n\\(A = \\begin{bmatrix} 40 \\\\ 100 \\\\ 50 \\end{bmatrix}\\begin{matrix} \\text{Telephone} \\\\ \\text{Housecall} \\\\ \\text{Letter} \\end{matrix}\\)\nThe number of contacts of each type made in two cities X and Y is given by \\(B = \\begin{bmatrix} 1000 & 500 & 5000 \\\\ 3000 & 1000 & 10{,}000 \\end{bmatrix}\\begin{matrix} \\rightarrow \\text{X} \\\\ \\rightarrow \\text{Y} \\end{matrix}\\), where the columns are Telephone, Housecall and Letter respectively. Find the total amount spent by the group in the two cities X and Y.",
+    "solution": "We have\n\\(BA = \\begin{bmatrix} 1000 & 500 & 5000 \\\\ 3000 & 1000 & 10{,}000 \\end{bmatrix} \\begin{bmatrix} 40 \\\\ 100 \\\\ 50 \\end{bmatrix} = \\begin{bmatrix} 40{,}000+50{,}000+2{,}50{,}000 \\\\ 1{,}20{,}000+1{,}00{,}000+5{,}00{,}000 \\end{bmatrix} = \\begin{bmatrix} 3{,}40{,}000 \\\\ 7{,}20{,}000 \\end{bmatrix}\\begin{matrix} \\rightarrow \\text{X} \\\\ \\rightarrow \\text{Y} \\end{matrix}\\)\nSo the total amount spent by the group in the two cities is 3,40,000 paise and 7,20,000 paise, i.e., Rs 3400 and Rs 7200, respectively."
+  }
+]

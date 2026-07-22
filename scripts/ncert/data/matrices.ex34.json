@@ -1,0 +1,44 @@
+[
+  {
+    "ref": "Ex 3.4 Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Elementary Operations and Inverse of a Matrix",
+    "difficulty": "EASY",
+    "stem": "Matrices \\(A\\) and \\(B\\) will be inverse of each other only if",
+    "options": [
+      {"label": "A", "text": "\\(AB = BA\\)"},
+      {"label": "B", "text": "\\(AB = BA = 0\\)"},
+      {"label": "C", "text": "\\(AB = 0,\\ BA = I\\)"},
+      {"label": "D", "text": "\\(AB = BA = I\\)"}
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Elementary Operations and Inverse of a Matrix",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), then prove that \\(A^n = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), \\(n \\in \\mathbf{N}\\).",
+    "solution": "We shall prove the result by using principle of mathematical induction.\n\nWe have \\(P(n)\\): If \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), then \\(A^n = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), \\(n \\in \\mathbf{N}\\)\n\n\\(P(1)\\): \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), so \\(A^1 = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\)\n\nTherefore, the result is true for \\(n = 1\\).\n\nLet the result be true for \\(n = k\\). So\n\n\\(P(k)\\): \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), then \\(A^k = \\begin{bmatrix} \\cos k\\theta & \\sin k\\theta \\\\ -\\sin k\\theta & \\cos k\\theta \\end{bmatrix}\\)\n\nNow, we prove that the result holds for \\(n = k+1\\)\n\nNow \\(A^{k+1} = A \\cdot A^k = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\begin{bmatrix} \\cos k\\theta & \\sin k\\theta \\\\ -\\sin k\\theta & \\cos k\\theta \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} \\cos\\theta\\cos k\\theta - \\sin\\theta\\sin k\\theta & \\cos\\theta\\sin k\\theta + \\sin\\theta\\cos k\\theta \\\\ -\\sin\\theta\\cos k\\theta + \\cos\\theta\\sin k\\theta & -\\sin\\theta\\sin k\\theta + \\cos\\theta\\cos k\\theta \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} \\cos(\\theta + k\\theta) & \\sin(\\theta + k\\theta) \\\\ -\\sin(\\theta + k\\theta) & \\cos(\\theta + k\\theta) \\end{bmatrix} = \\begin{bmatrix} \\cos(k+1)\\theta & \\sin(k+1)\\theta \\\\ -\\sin(k+1)\\theta & \\cos(k+1)\\theta \\end{bmatrix}\\)\n\nTherefore, the result is true for \\(n = k+1\\). Thus by principle of mathematical induction, we have \\(A^n = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), holds for all natural numbers."
+  },
+  {
+    "ref": "Misc Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Symmetric and Skew-Symmetric Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A\\) and \\(B\\) are symmetric matrices of the same order, then show that \\(AB\\) is symmetric if and only if \\(A\\) and \\(B\\) commute, that is \\(AB = BA\\).",
+    "solution": "Since \\(A\\) and \\(B\\) are both symmetric matrices, therefore \\(A' = A\\) and \\(B' = B\\).\n\nLet \\(AB\\) be symmetric, then \\((AB)' = AB\\)\n\nBut \\((AB)' = B'A' = BA\\) (Why?)\n\nTherefore \\(BA = AB\\)\n\nConversely, if \\(AB = BA\\), then we shall show that \\(AB\\) is symmetric.\n\nNow \\((AB)' = B'A'\\)\n\n\\(= B\\,A\\) (as \\(A\\) and \\(B\\) are symmetric)\n\n\\(= AB\\)\n\nHence \\(AB\\) is symmetric."
+  },
+  {
+    "ref": "Misc Eg.25",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of Matrices",
+    "difficulty": "HARD",
+    "stem": "Let \\(A = \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 5 & 2 \\\\ 7 & 4 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} 2 & 5 \\\\ 3 & 8 \\end{bmatrix}\\). Find a matrix \\(D\\) such that \\(CD - AB = O\\).",
+    "solution": "Since \\(A\\), \\(B\\), \\(C\\) are all square matrices of order 2, and \\(CD - AB\\) is well defined, \\(D\\) must be a square matrix of order 2.\n\nLet \\(D = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\). Then \\(CD - AB = 0\\) gives\n\n\\(\\begin{bmatrix} 2 & 5 \\\\ 3 & 8 \\end{bmatrix}\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} - \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} 5 & 2 \\\\ 7 & 4 \\end{bmatrix} = O\\)\n\nor \\(\\begin{bmatrix} 2a+5c & 2b+5d \\\\ 3a+8c & 3b+8d \\end{bmatrix} - \\begin{bmatrix} 3 & 0 \\\\ 43 & 22 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\n\nor \\(\\begin{bmatrix} 2a+5c-3 & 2b+5d \\\\ 3a+8c-43 & 3b+8d-22 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\n\nBy equality of matrices, we get\n\n\\(2a + 5c - 3 = 0\\) ... (1)\n\n\\(3a + 8c - 43 = 0\\) ... (2)\n\n\\(2b + 5d = 0\\) ... (3)\n\nand \\(3b + 8d - 22 = 0\\) ... (4)\n\nSolving (1) and (2), we get \\(a = -191\\), \\(c = 77\\). Solving (3) and (4), we get \\(b = -110\\), \\(d = 44\\)."
+  }
+]

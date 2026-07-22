@@ -1,0 +1,122 @@
+[
+  {
+    "id": "c33c55a7-6a4c-4e80-8cd8-d05ef5712cc1",
+    "ref": "Ex 3.3 Q1 (i)",
+    "solution": "The transpose is obtained by writing the rows of the given matrix as columns. The given matrix is a column matrix of order \\(3 \\times 1\\), so its transpose is a row matrix of order \\(1 \\times 3\\).\n\\[\\left(\\begin{bmatrix} 5 \\\\ \\frac{1}{2} \\\\ -1 \\end{bmatrix}\\right)' = \\begin{bmatrix} 5 & \\frac{1}{2} & -1 \\end{bmatrix}\\]"
+  },
+  {
+    "id": "d7713850-ced4-4323-b148-8268248535bb",
+    "ref": "Ex 3.3 Q1 (ii)",
+    "solution": "The transpose is obtained by interchanging rows and columns, i.e. \\((A')_{ij} = A_{ji}\\). The first column \\((1, 2)\\) becomes the first row and the second column \\((-1, 3)\\) becomes the second row.\n\\[\\left(\\begin{bmatrix} 1 & -1 \\\\ 2 & 3 \\end{bmatrix}\\right)' = \\begin{bmatrix} 1 & 2 \\\\ -1 & 3 \\end{bmatrix}\\]"
+  },
+  {
+    "id": "ccecbae3-9c75-44a9-8bc8-53f90a12934e",
+    "ref": "Ex 3.3 Q1 (iii)",
+    "solution": "Interchange rows and columns. Column 1 \\((-1, \\sqrt{3}, 2)\\) becomes row 1, column 2 \\((5, 5, 3)\\) becomes row 2, and column 3 \\((6, 6, -1)\\) becomes row 3.\n\\[\\left(\\begin{bmatrix} -1 & 5 & 6 \\\\ \\sqrt{3} & 5 & 6 \\\\ 2 & 3 & -1 \\end{bmatrix}\\right)' = \\begin{bmatrix} -1 & \\sqrt{3} & 2 \\\\ 5 & 5 & 3 \\\\ 6 & 6 & -1 \\end{bmatrix}\\]"
+  },
+  {
+    "id": "0520c9d4-4e98-49ba-96a6-3e76820b99eb",
+    "ref": "Ex 3.3 Q2 (i)",
+    "solution": "We verify \\((A + B)' = A' + B'\\).\nFirst compute \\(A + B\\):\n\\[A + B = \\begin{bmatrix} -1 & 2 & 3 \\\\ 5 & 7 & 9 \\\\ -2 & 1 & 1 \\end{bmatrix} + \\begin{bmatrix} -4 & 1 & -5 \\\\ 1 & 2 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix} = \\begin{bmatrix} -5 & 3 & -2 \\\\ 6 & 9 & 9 \\\\ -1 & 4 & 2 \\end{bmatrix}\\]\nTaking transpose (LHS):\n\\[(A + B)' = \\begin{bmatrix} -5 & 6 & -1 \\\\ 3 & 9 & 4 \\\\ -2 & 9 & 2 \\end{bmatrix}\\]\nNow the RHS. \\(A' = \\begin{bmatrix} -1 & 5 & -2 \\\\ 2 & 7 & 1 \\\\ 3 & 9 & 1 \\end{bmatrix}\\), \\(B' = \\begin{bmatrix} -4 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ -5 & 0 & 1 \\end{bmatrix}\\), so\n\\[A' + B' = \\begin{bmatrix} -5 & 6 & -1 \\\\ 3 & 9 & 4 \\\\ -2 & 9 & 2 \\end{bmatrix}\\]\nSince LHS \\(=\\) RHS, \\((A + B)' = A' + B'\\) is verified."
+  },
+  {
+    "id": "86a272c4-4f3e-419e-8cdc-568599d6b87a",
+    "ref": "Ex 3.3 Q2 (ii)",
+    "solution": "We verify \\((A - B)' = A' - B'\\).\nFirst compute \\(A - B\\):\n\\[A - B = \\begin{bmatrix} -1 & 2 & 3 \\\\ 5 & 7 & 9 \\\\ -2 & 1 & 1 \\end{bmatrix} - \\begin{bmatrix} -4 & 1 & -5 \\\\ 1 & 2 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix} = \\begin{bmatrix} 3 & 1 & 8 \\\\ 4 & 5 & 9 \\\\ -3 & -2 & 0 \\end{bmatrix}\\]\nTaking transpose (LHS):\n\\[(A - B)' = \\begin{bmatrix} 3 & 4 & -3 \\\\ 1 & 5 & -2 \\\\ 8 & 9 & 0 \\end{bmatrix}\\]\nNow the RHS. \\(A' = \\begin{bmatrix} -1 & 5 & -2 \\\\ 2 & 7 & 1 \\\\ 3 & 9 & 1 \\end{bmatrix}\\), \\(B' = \\begin{bmatrix} -4 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ -5 & 0 & 1 \\end{bmatrix}\\), so\n\\[A' - B' = \\begin{bmatrix} 3 & 4 & -3 \\\\ 1 & 5 & -2 \\\\ 8 & 9 & 0 \\end{bmatrix}\\]\nSince LHS \\(=\\) RHS, \\((A - B)' = A' - B'\\) is verified."
+  },
+  {
+    "id": "12830636-5681-4093-8007-c02d1273b265",
+    "ref": "Ex 3.3 Q3 (i)",
+    "solution": "We are given \\(A' = \\begin{bmatrix} 3 & 4 \\\\ -1 & 2 \\\\ 0 & 1 \\end{bmatrix}\\), so \\(A = (A')' = \\begin{bmatrix} 3 & -1 & 0 \\\\ 4 & 2 & 1 \\end{bmatrix}\\), and \\(B = \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 2 & 3 \\end{bmatrix}\\).\nVerify \\((A + B)' = A' + B'\\).\n\\[A + B = \\begin{bmatrix} 3 & -1 & 0 \\\\ 4 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & 1 & 1 \\\\ 5 & 4 & 4 \\end{bmatrix}\\]\nTaking transpose (LHS):\n\\[(A + B)' = \\begin{bmatrix} 2 & 5 \\\\ 1 & 4 \\\\ 1 & 4 \\end{bmatrix}\\]\nNow the RHS. \\(B' = \\begin{bmatrix} -1 & 1 \\\\ 2 & 2 \\\\ 1 & 3 \\end{bmatrix}\\), so\n\\[A' + B' = \\begin{bmatrix} 3 & 4 \\\\ -1 & 2 \\\\ 0 & 1 \\end{bmatrix} + \\begin{bmatrix} -1 & 1 \\\\ 2 & 2 \\\\ 1 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & 5 \\\\ 1 & 4 \\\\ 1 & 4 \\end{bmatrix}\\]\nSince LHS \\(=\\) RHS, \\((A + B)' = A' + B'\\) is verified."
+  },
+  {
+    "id": "3668c38f-36b5-49a2-831a-65cb6d6ebe34",
+    "ref": "Ex 3.3 Q3 (ii)",
+    "solution": "As before, \\(A = (A')' = \\begin{bmatrix} 3 & -1 & 0 \\\\ 4 & 2 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 2 & 3 \\end{bmatrix}\\).\nVerify \\((A - B)' = A' - B'\\).\n\\[A - B = \\begin{bmatrix} 3 & -1 & 0 \\\\ 4 & 2 & 1 \\end{bmatrix} - \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 4 & -3 & -1 \\\\ 3 & 0 & -2 \\end{bmatrix}\\]\nTaking transpose (LHS):\n\\[(A - B)' = \\begin{bmatrix} 4 & 3 \\\\ -3 & 0 \\\\ -1 & -2 \\end{bmatrix}\\]\nNow the RHS. \\(B' = \\begin{bmatrix} -1 & 1 \\\\ 2 & 2 \\\\ 1 & 3 \\end{bmatrix}\\), so\n\\[A' - B' = \\begin{bmatrix} 3 & 4 \\\\ -1 & 2 \\\\ 0 & 1 \\end{bmatrix} - \\begin{bmatrix} -1 & 1 \\\\ 2 & 2 \\\\ 1 & 3 \\end{bmatrix} = \\begin{bmatrix} 4 & 3 \\\\ -3 & 0 \\\\ -1 & -2 \\end{bmatrix}\\]\nSince LHS \\(=\\) RHS, \\((A - B)' = A' - B'\\) is verified."
+  },
+  {
+    "id": "d502a595-97af-4833-9f65-7f89056e0f06",
+    "ref": "Ex 3.3 Q4",
+    "solution": "Given \\(A' = \\begin{bmatrix} -2 & 3 \\\\ 1 & 2 \\end{bmatrix}\\), so \\(A = (A')' = \\begin{bmatrix} -2 & 1 \\\\ 3 & 2 \\end{bmatrix}\\), and \\(B = \\begin{bmatrix} -1 & 0 \\\\ 1 & 2 \\end{bmatrix}\\).\nCompute \\(2B\\):\n\\[2B = \\begin{bmatrix} -2 & 0 \\\\ 2 & 4 \\end{bmatrix}\\]\nThen\n\\[A + 2B = \\begin{bmatrix} -2 & 1 \\\\ 3 & 2 \\end{bmatrix} + \\begin{bmatrix} -2 & 0 \\\\ 2 & 4 \\end{bmatrix} = \\begin{bmatrix} -4 & 1 \\\\ 5 & 6 \\end{bmatrix}\\]\nTaking transpose:\n\\[(A + 2B)' = \\begin{bmatrix} -4 & 5 \\\\ 1 & 6 \\end{bmatrix}\\]"
+  },
+  {
+    "id": "bf8b4382-5278-42aa-b30e-7290cc3f77f8",
+    "ref": "Ex 3.3 Q5 (i)",
+    "solution": "Here \\(A = \\begin{bmatrix} 1 \\\\ -4 \\\\ 3 \\end{bmatrix}\\) (order \\(3 \\times 1\\)) and \\(B = \\begin{bmatrix} -1 & 2 & 1 \\end{bmatrix}\\) (order \\(1 \\times 3\\)). We verify \\((AB)' = B'A'\\).\nCompute \\(AB\\) (order \\(3 \\times 3\\)):\n\\[AB = \\begin{bmatrix} 1 \\\\ -4 \\\\ 3 \\end{bmatrix}\\begin{bmatrix} -1 & 2 & 1 \\end{bmatrix} = \\begin{bmatrix} -1 & 2 & 1 \\\\ 4 & -8 & -4 \\\\ -3 & 6 & 3 \\end{bmatrix}\\]\nTaking transpose (LHS):\n\\[(AB)' = \\begin{bmatrix} -1 & 4 & -3 \\\\ 2 & -8 & 6 \\\\ 1 & -4 & 3 \\end{bmatrix}\\]\nNow the RHS. \\(B' = \\begin{bmatrix} -1 \\\\ 2 \\\\ 1 \\end{bmatrix}\\), \\(A' = \\begin{bmatrix} 1 & -4 & 3 \\end{bmatrix}\\), so\n\\[B'A' = \\begin{bmatrix} -1 \\\\ 2 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 1 & -4 & 3 \\end{bmatrix} = \\begin{bmatrix} -1 & 4 & -3 \\\\ 2 & -8 & 6 \\\\ 1 & -4 & 3 \\end{bmatrix}\\]\nSince LHS \\(=\\) RHS, \\((AB)' = B'A'\\) is verified."
+  },
+  {
+    "id": "6c34d3de-ec02-41e6-85c6-c2bc0955a6ab",
+    "ref": "Ex 3.3 Q5 (ii)",
+    "solution": "Here \\(A = \\begin{bmatrix} 0 \\\\ 1 \\\\ 2 \\end{bmatrix}\\) (order \\(3 \\times 1\\)) and \\(B = \\begin{bmatrix} 1 & 5 & 7 \\end{bmatrix}\\) (order \\(1 \\times 3\\)). We verify \\((AB)' = B'A'\\).\nCompute \\(AB\\) (order \\(3 \\times 3\\)):\n\\[AB = \\begin{bmatrix} 0 \\\\ 1 \\\\ 2 \\end{bmatrix}\\begin{bmatrix} 1 & 5 & 7 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 1 & 5 & 7 \\\\ 2 & 10 & 14 \\end{bmatrix}\\]\nTaking transpose (LHS):\n\\[(AB)' = \\begin{bmatrix} 0 & 1 & 2 \\\\ 0 & 5 & 10 \\\\ 0 & 7 & 14 \\end{bmatrix}\\]\nNow the RHS. \\(B' = \\begin{bmatrix} 1 \\\\ 5 \\\\ 7 \\end{bmatrix}\\), \\(A' = \\begin{bmatrix} 0 & 1 & 2 \\end{bmatrix}\\), so\n\\[B'A' = \\begin{bmatrix} 1 \\\\ 5 \\\\ 7 \\end{bmatrix}\\begin{bmatrix} 0 & 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 0 & 1 & 2 \\\\ 0 & 5 & 10 \\\\ 0 & 7 & 14 \\end{bmatrix}\\]\nSince LHS \\(=\\) RHS, \\((AB)' = B'A'\\) is verified."
+  },
+  {
+    "id": "407b7863-335a-466f-acfe-6f5137502183",
+    "ref": "Ex 3.3 Q6 (i)",
+    "solution": "Given \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), its transpose is \\(A' = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\).\nCompute \\(A'A\\):\n\\[A'A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\]\nEntry \\((1,1)\\): \\(\\cos^{2}\\alpha + \\sin^{2}\\alpha = 1\\).\nEntry \\((1,2)\\): \\(\\cos\\alpha\\sin\\alpha - \\sin\\alpha\\cos\\alpha = 0\\).\nEntry \\((2,1)\\): \\(\\sin\\alpha\\cos\\alpha - \\cos\\alpha\\sin\\alpha = 0\\).\nEntry \\((2,2)\\): \\(\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1\\).\nTherefore\n\\[A'A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\]\nHence \\(A'A = I\\) is verified."
+  },
+  {
+    "id": "92d21939-cccc-4b4f-9b5f-bc14ada64738",
+    "ref": "Ex 3.3 Q6 (ii)",
+    "solution": "Given \\(A = \\begin{bmatrix} \\sin\\alpha & \\cos\\alpha \\\\ -\\cos\\alpha & \\sin\\alpha \\end{bmatrix}\\), its transpose is \\(A' = \\begin{bmatrix} \\sin\\alpha & -\\cos\\alpha \\\\ \\cos\\alpha & \\sin\\alpha \\end{bmatrix}\\).\nCompute \\(A'A\\):\n\\[A'A = \\begin{bmatrix} \\sin\\alpha & -\\cos\\alpha \\\\ \\cos\\alpha & \\sin\\alpha \\end{bmatrix}\\begin{bmatrix} \\sin\\alpha & \\cos\\alpha \\\\ -\\cos\\alpha & \\sin\\alpha \\end{bmatrix}\\]\nEntry \\((1,1)\\): \\(\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1\\).\nEntry \\((1,2)\\): \\(\\sin\\alpha\\cos\\alpha - \\cos\\alpha\\sin\\alpha = 0\\).\nEntry \\((2,1)\\): \\(\\cos\\alpha\\sin\\alpha - \\sin\\alpha\\cos\\alpha = 0\\).\nEntry \\((2,2)\\): \\(\\cos^{2}\\alpha + \\sin^{2}\\alpha = 1\\).\nTherefore\n\\[A'A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\]\nHence \\(A'A = I\\) is verified."
+  },
+  {
+    "id": "2c032f40-6f3e-4d93-8983-e0fa13180833",
+    "ref": "Ex 3.3 Q7 (i)",
+    "solution": "A matrix \\(A\\) is symmetric if \\(A' = A\\). Write the transpose of \\(A = \\begin{bmatrix} 1 & -1 & 5 \\\\ -1 & 2 & 1 \\\\ 5 & 1 & 3 \\end{bmatrix}\\) by interchanging rows and columns:\n\\[A' = \\begin{bmatrix} 1 & -1 & 5 \\\\ -1 & 2 & 1 \\\\ 5 & 1 & 3 \\end{bmatrix}\\]\nSince \\(A' = A\\), the matrix \\(A\\) is a symmetric matrix."
+  },
+  {
+    "id": "b1828c45-68fd-4a2f-a115-9d036a300050",
+    "ref": "Ex 3.3 Q7 (ii)",
+    "solution": "A matrix \\(A\\) is skew symmetric if \\(A' = -A\\). Write the transpose of \\(A = \\begin{bmatrix} 0 & 1 & -1 \\\\ -1 & 0 & 1 \\\\ 1 & -1 & 0 \\end{bmatrix}\\) by interchanging rows and columns:\n\\[A' = \\begin{bmatrix} 0 & -1 & 1 \\\\ 1 & 0 & -1 \\\\ -1 & 1 & 0 \\end{bmatrix} = -\\begin{bmatrix} 0 & 1 & -1 \\\\ -1 & 0 & 1 \\\\ 1 & -1 & 0 \\end{bmatrix} = -A\\]\nSince \\(A' = -A\\) (and the diagonal entries are all \\(0\\)), the matrix \\(A\\) is a skew symmetric matrix."
+  },
+  {
+    "id": "68c22bb8-5670-4bb8-baa9-515529bd44ea",
+    "ref": "Ex 3.3 Q8 (i)",
+    "solution": "Given \\(A = \\begin{bmatrix} 1 & 5 \\\\ 6 & 7 \\end{bmatrix}\\), so \\(A' = \\begin{bmatrix} 1 & 6 \\\\ 5 & 7 \\end{bmatrix}\\).\nCompute \\(A + A'\\):\n\\[A + A' = \\begin{bmatrix} 1 & 5 \\\\ 6 & 7 \\end{bmatrix} + \\begin{bmatrix} 1 & 6 \\\\ 5 & 7 \\end{bmatrix} = \\begin{bmatrix} 2 & 11 \\\\ 11 & 14 \\end{bmatrix}\\]\nTaking transpose of this result:\n\\[(A + A')' = \\begin{bmatrix} 2 & 11 \\\\ 11 & 14 \\end{bmatrix} = A + A'\\]\nSince \\((A + A')' = A + A'\\), the matrix \\(A + A'\\) is symmetric. (In general \\((A + A')' = A' + (A')' = A' + A = A + A'\\).)"
+  },
+  {
+    "id": "4cf43931-08e6-42d9-9870-639fffe28ab8",
+    "ref": "Ex 3.3 Q8 (ii)",
+    "solution": "Given \\(A = \\begin{bmatrix} 1 & 5 \\\\ 6 & 7 \\end{bmatrix}\\), so \\(A' = \\begin{bmatrix} 1 & 6 \\\\ 5 & 7 \\end{bmatrix}\\).\nCompute \\(A - A'\\):\n\\[A - A' = \\begin{bmatrix} 1 & 5 \\\\ 6 & 7 \\end{bmatrix} - \\begin{bmatrix} 1 & 6 \\\\ 5 & 7 \\end{bmatrix} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}\\]\nTaking transpose of this result:\n\\[(A - A')' = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix} = -\\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix} = -(A - A')\\]\nSince \\((A - A')' = -(A - A')\\), the matrix \\(A - A'\\) is skew symmetric. (In general \\((A - A')' = A' - A = -(A - A')\\).)"
+  },
+  {
+    "id": "4da38476-b21d-4e74-a37b-d5fb319d3026",
+    "ref": "Ex 3.3 Q9",
+    "solution": "Given \\(A = \\begin{bmatrix} 0 & a & b \\\\ -a & 0 & c \\\\ -b & -c & 0 \\end{bmatrix}\\), its transpose is \\(A' = \\begin{bmatrix} 0 & -a & -b \\\\ a & 0 & -c \\\\ b & c & 0 \\end{bmatrix}\\).\nFirst, \\(A + A' = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\), so\n\\[\\frac{1}{2}(A + A') = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\]\nNext, \\(A - A' = \\begin{bmatrix} 0 & 2a & 2b \\\\ -2a & 0 & 2c \\\\ -2b & -2c & 0 \\end{bmatrix}\\), so\n\\[\\frac{1}{2}(A - A') = \\begin{bmatrix} 0 & a & b \\\\ -a & 0 & c \\\\ -b & -c & 0 \\end{bmatrix} = A\\]\nThus \\(\\frac{1}{2}(A + A')\\) is the (zero) symmetric part and \\(\\frac{1}{2}(A - A') = A\\) is the skew symmetric part, consistent with \\(A\\) itself being skew symmetric."
+  },
+  {
+    "id": "ffed224b-85fe-4996-83c1-76fe865096c0",
+    "ref": "Ex 3.3 Q10 (i)",
+    "solution": "Any square matrix can be written as \\(A = P + Q\\) where \\(P = \\frac{1}{2}(A + A')\\) is symmetric and \\(Q = \\frac{1}{2}(A - A')\\) is skew symmetric.\nHere \\(A = \\begin{bmatrix} 3 & 5 \\\\ 1 & -1 \\end{bmatrix}\\), so \\(A' = \\begin{bmatrix} 3 & 1 \\\\ 5 & -1 \\end{bmatrix}\\).\nSymmetric part:\n\\[P = \\frac{1}{2}(A + A') = \\frac{1}{2}\\begin{bmatrix} 6 & 6 \\\\ 6 & -2 \\end{bmatrix} = \\begin{bmatrix} 3 & 3 \\\\ 3 & -1 \\end{bmatrix}\\]\nSkew symmetric part:\n\\[Q = \\frac{1}{2}(A - A') = \\frac{1}{2}\\begin{bmatrix} 0 & 4 \\\\ -4 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix}\\]\nCheck: \\(P + Q = \\begin{bmatrix} 3 & 3 \\\\ 3 & -1 \\end{bmatrix} + \\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix} = \\begin{bmatrix} 3 & 5 \\\\ 1 & -1 \\end{bmatrix} = A\\).\nTherefore\n\\[A = \\underbrace{\\begin{bmatrix} 3 & 3 \\\\ 3 & -1 \\end{bmatrix}}_{\\text{symmetric}} + \\underbrace{\\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix}}_{\\text{skew symmetric}}\\]"
+  },
+  {
+    "id": "d4d7afcc-f49a-4e59-a756-48cf08bf128f",
+    "ref": "Ex 3.3 Q10 (ii)",
+    "solution": "Write \\(A = P + Q\\) with \\(P = \\frac{1}{2}(A + A')\\) symmetric and \\(Q = \\frac{1}{2}(A - A')\\) skew symmetric.\nHere \\(A = \\begin{bmatrix} 6 & -2 & 2 \\\\ -2 & 3 & -1 \\\\ 2 & -1 & 3 \\end{bmatrix}\\), and since interchanging rows and columns leaves it unchanged, \\(A' = \\begin{bmatrix} 6 & -2 & 2 \\\\ -2 & 3 & -1 \\\\ 2 & -1 & 3 \\end{bmatrix} = A\\).\nSymmetric part:\n\\[P = \\frac{1}{2}(A + A') = \\frac{1}{2}\\begin{bmatrix} 12 & -4 & 4 \\\\ -4 & 6 & -2 \\\\ 4 & -2 & 6 \\end{bmatrix} = \\begin{bmatrix} 6 & -2 & 2 \\\\ -2 & 3 & -1 \\\\ 2 & -1 & 3 \\end{bmatrix}\\]\nSkew symmetric part:\n\\[Q = \\frac{1}{2}(A - A') = \\frac{1}{2}\\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\]\nTherefore\n\\[A = \\underbrace{\\begin{bmatrix} 6 & -2 & 2 \\\\ -2 & 3 & -1 \\\\ 2 & -1 & 3 \\end{bmatrix}}_{\\text{symmetric}} + \\underbrace{\\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}}_{\\text{skew symmetric}}\\]\nThe given matrix is itself symmetric, so its skew symmetric part is the zero matrix."
+  },
+  {
+    "id": "6c22d6ec-51c2-4275-b9cd-b23b6e185d2b",
+    "ref": "Ex 3.3 Q10 (iii)",
+    "solution": "Write \\(A = P + Q\\) with \\(P = \\frac{1}{2}(A + A')\\) symmetric and \\(Q = \\frac{1}{2}(A - A')\\) skew symmetric.\nHere \\(A = \\begin{bmatrix} 3 & 3 & -1 \\\\ -2 & -2 & 1 \\\\ -4 & -5 & 2 \\end{bmatrix}\\), so \\(A' = \\begin{bmatrix} 3 & -2 & -4 \\\\ 3 & -2 & -5 \\\\ -1 & 1 & 2 \\end{bmatrix}\\).\nSymmetric part:\n\\[P = \\frac{1}{2}(A + A') = \\frac{1}{2}\\begin{bmatrix} 6 & 1 & -5 \\\\ 1 & -4 & -4 \\\\ -5 & -4 & 4 \\end{bmatrix} = \\begin{bmatrix} 3 & \\frac{1}{2} & -\\frac{5}{2} \\\\ \\frac{1}{2} & -2 & -2 \\\\ -\\frac{5}{2} & -2 & 2 \\end{bmatrix}\\]\nSkew symmetric part:\n\\[Q = \\frac{1}{2}(A - A') = \\frac{1}{2}\\begin{bmatrix} 0 & 5 & 3 \\\\ -5 & 0 & 6 \\\\ -3 & -6 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & \\frac{5}{2} & \\frac{3}{2} \\\\ -\\frac{5}{2} & 0 & 3 \\\\ -\\frac{3}{2} & -3 & 0 \\end{bmatrix}\\]\nCheck: \\(P + Q = A\\). Therefore\n\\[A = \\underbrace{\\begin{bmatrix} 3 & \\frac{1}{2} & -\\frac{5}{2} \\\\ \\frac{1}{2} & -2 & -2 \\\\ -\\frac{5}{2} & -2 & 2 \\end{bmatrix}}_{\\text{symmetric}} + \\underbrace{\\begin{bmatrix} 0 & \\frac{5}{2} & \\frac{3}{2} \\\\ -\\frac{5}{2} & 0 & 3 \\\\ -\\frac{3}{2} & -3 & 0 \\end{bmatrix}}_{\\text{skew symmetric}}\\]"
+  },
+  {
+    "id": "ad145c8a-02eb-4632-a4fd-b38628386ef5",
+    "ref": "Ex 3.3 Q10 (iv)",
+    "solution": "Write \\(A = P + Q\\) with \\(P = \\frac{1}{2}(A + A')\\) symmetric and \\(Q = \\frac{1}{2}(A - A')\\) skew symmetric.\nHere \\(A = \\begin{bmatrix} 1 & 5 \\\\ -1 & 2 \\end{bmatrix}\\), so \\(A' = \\begin{bmatrix} 1 & -1 \\\\ 5 & 2 \\end{bmatrix}\\).\nSymmetric part:\n\\[P = \\frac{1}{2}(A + A') = \\frac{1}{2}\\begin{bmatrix} 2 & 4 \\\\ 4 & 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 2 \\end{bmatrix}\\]\nSkew symmetric part:\n\\[Q = \\frac{1}{2}(A - A') = \\frac{1}{2}\\begin{bmatrix} 0 & 6 \\\\ -6 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 3 \\\\ -3 & 0 \\end{bmatrix}\\]\nCheck: \\(P + Q = \\begin{bmatrix} 1 & 2 \\\\ 2 & 2 \\end{bmatrix} + \\begin{bmatrix} 0 & 3 \\\\ -3 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 5 \\\\ -1 & 2 \\end{bmatrix} = A\\).\nTherefore\n\\[A = \\underbrace{\\begin{bmatrix} 1 & 2 \\\\ 2 & 2 \\end{bmatrix}}_{\\text{symmetric}} + \\underbrace{\\begin{bmatrix} 0 & 3 \\\\ -3 & 0 \\end{bmatrix}}_{\\text{skew symmetric}}\\]"
+  },
+  {
+    "id": "2fc4ba62-bb52-4bc6-a628-1e24ea74b6ba",
+    "ref": "Misc Q1",
+    "solution": "Given that \\(A\\) and \\(B\\) are symmetric, so \\(A' = A\\) and \\(B' = B\\). To prove \\(AB - BA\\) is skew symmetric, we show \\((AB - BA)' = -(AB - BA)\\).\nUsing \\((PQ)' = Q'P'\\) and \\((P - Q)' = P' - Q'\\):\n\\[(AB - BA)' = (AB)' - (BA)' = B'A' - A'B'\\]\nSubstituting \\(A' = A\\) and \\(B' = B\\):\n\\[(AB - BA)' = BA - AB = -(AB - BA)\\]\nSince \\((AB - BA)' = -(AB - BA)\\), the matrix \\(AB - BA\\) is skew symmetric. Hence proved."
+  },
+  {
+    "id": "f15b2471-670d-4e81-ba80-d32eb8a00880",
+    "ref": "Misc Q2",
+    "solution": "We examine the transpose of \\(B'AB\\). Using \\((PQ)' = Q'P'\\) repeatedly and \\((B')' = B\\):\n\\[(B'AB)' = B'\\,A'\\,(B')' = B'\\,A'\\,B\\]\nCase 1 — \\(A\\) is symmetric, so \\(A' = A\\):\n\\[(B'AB)' = B'A'B = B'AB\\]\nHence \\(B'AB\\) is symmetric.\nCase 2 — \\(A\\) is skew symmetric, so \\(A' = -A\\):\n\\[(B'AB)' = B'A'B = B'(-A)B = -B'AB\\]\nHence \\(B'AB\\) is skew symmetric.\nTherefore \\(B'AB\\) is symmetric or skew symmetric according as \\(A\\) is symmetric or skew symmetric. Hence proved."
+  },
+  {
+    "id": "5b23e6a9-5640-42af-9a3e-c41dc802e163",
+    "ref": "Misc Q3",
+    "solution": "Given \\(A = \\begin{bmatrix} 0 & 2y & z \\\\ x & y & -z \\\\ x & -y & z \\end{bmatrix}\\), so \\(A' = \\begin{bmatrix} 0 & x & x \\\\ 2y & y & -y \\\\ z & -z & z \\end{bmatrix}\\).\nThe condition \\(A'A = I\\) means the columns of \\(A\\) form an orthonormal set. The columns of \\(A\\) are\n\\[c_1 = \\begin{bmatrix} 0 \\\\ x \\\\ x \\end{bmatrix},\\quad c_2 = \\begin{bmatrix} 2y \\\\ y \\\\ -y \\end{bmatrix},\\quad c_3 = \\begin{bmatrix} z \\\\ -z \\\\ z \\end{bmatrix}\\]\nThe diagonal entries of \\(A'A\\) give the squared norms, each equal to \\(1\\):\n\\[c_1\\cdot c_1 = 0 + x^{2} + x^{2} = 2x^{2} = 1 \\;\\Rightarrow\\; x = \\pm\\frac{1}{\\sqrt{2}}\\]\n\\[c_2\\cdot c_2 = 4y^{2} + y^{2} + y^{2} = 6y^{2} = 1 \\;\\Rightarrow\\; y = \\pm\\frac{1}{\\sqrt{6}}\\]\n\\[c_3\\cdot c_3 = z^{2} + z^{2} + z^{2} = 3z^{2} = 1 \\;\\Rightarrow\\; z = \\pm\\frac{1}{\\sqrt{3}}\\]\nThe off-diagonal entries are automatically zero: \\(c_1\\cdot c_2 = xy - xy = 0\\), \\(c_1\\cdot c_3 = -xz + xz = 0\\), \\(c_2\\cdot c_3 = 2yz - yz - yz = 0\\). So the orthogonality conditions are satisfied for all sign choices.\nHence \\(x = \\pm\\dfrac{1}{\\sqrt{2}}\\), \\(y = \\pm\\dfrac{1}{\\sqrt{6}}\\), \\(z = \\pm\\dfrac{1}{\\sqrt{3}}\\)."
+  }
+]
