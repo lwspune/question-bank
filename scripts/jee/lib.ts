@@ -232,6 +232,28 @@ export function subjectForNumber(n: number): JeeSubject {
   return n <= 30 ? "Physics" : n <= 60 ? "Chemistry" : "Maths";
 }
 
+/**
+ * Single-subject commit filter (Maths-first pass). A row is kept when its
+ * RESOLVED subject equals the target — resolved = the content-based
+ * classification subject when present (needed for non-standard compilations,
+ * where the position blocks don't hold), else the position-derived one.
+ * No target ⇒ keep everything (backward-compatible full-paper commit).
+ */
+export function keepForSubject(
+  target: string | undefined,
+  positionSubject: string,
+  classificationSubject?: string,
+): boolean {
+  if (!target) return true;
+  return (classificationSubject ?? positionSubject) === target;
+}
+
+/** Read the `--subject=<name>` CLI flag; undefined when absent. */
+export function parseSubjectArg(argv: string[]): string | undefined {
+  const flag = argv.find((a) => a.startsWith("--subject="));
+  return flag ? flag.slice("--subject=".length) : undefined;
+}
+
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 const SECTION_OR_PART = /PART-|SECTION/i;
 

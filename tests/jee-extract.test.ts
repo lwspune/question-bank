@@ -11,6 +11,8 @@ import {
   parseOptionsFromText,
   segmentQuestions,
   normalizeMathFunctions,
+  keepForSubject,
+  parseSubjectArg,
 } from "../scripts/jee/lib";
 
 describe("cleanText", () => {
@@ -336,5 +338,33 @@ The logic circuit shown above is equivalent to (a) p (b) q (c) r (d) s`;
     const q9 = out.find((q) => q.number === 9)!;
     expect(q9.stem).toContain("The logic circuit");
     expect(q9.imageRefs).toEqual(["media/media/image2.png"]);
+  });
+});
+
+describe("keepForSubject (Maths-first single-subject commit filter)", () => {
+  it("keeps every row when no target is given (full-paper commit)", () => {
+    expect(keepForSubject(undefined, "Physics")).toBe(true);
+    expect(keepForSubject(undefined, "Maths", "Chemistry")).toBe(true);
+  });
+
+  it("keeps a row whose position-derived subject matches the target", () => {
+    expect(keepForSubject("Maths", "Maths")).toBe(true);
+    expect(keepForSubject("Maths", "Physics")).toBe(false);
+  });
+
+  it("lets a content classification override the position subject (compilations)", () => {
+    // Maths question sitting at a Chemistry position (compilation): classification wins.
+    expect(keepForSubject("Maths", "Chemistry", "Maths")).toBe(true);
+    // A real Chemistry question at a Maths position: classification excludes it.
+    expect(keepForSubject("Maths", "Maths", "Chemistry")).toBe(false);
+  });
+});
+
+describe("parseSubjectArg", () => {
+  it("extracts the --subject=<name> value", () => {
+    expect(parseSubjectArg(["node", "commit.ts", "2021-p19", "--subject=Maths", "--apply"])).toBe("Maths");
+  });
+  it("returns undefined when absent", () => {
+    expect(parseSubjectArg(["node", "commit.ts", "2021-p19", "--apply"])).toBeUndefined();
   });
 });

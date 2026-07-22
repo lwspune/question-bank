@@ -16,6 +16,7 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
+import { keepForSubject, parseSubjectArg } from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, loadPaper, recordsPath, requirePaperId, isCommittable, type PaperData } from "./config";
 
 type Rec = {
@@ -31,9 +32,14 @@ function loadEnv() {
   dotenv.config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
-function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
+function buildRows(paperId: string, paper: PaperData, subject?: string): ParsedRowPayload[] {
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
-  const eligible = records.filter((r) => isCommittable(r.status, r.questionNumber, paper));
+  const eligible = records
+    .filter((r) => isCommittable(r.status, r.questionNumber, paper))
+    // Maths-first single-subject pass: keep only the target subject's rows.
+    // Phy/Chem rows are excluded BEFORE the classification requirement below,
+    // so a Maths-only paper file needs no Phy/Chem classification.
+    .filter((r) => keepForSubject(subject, r.subject, paper.classification[String(r.questionNumber)]?.subject));
 
   return eligible.map((r) => {
     const key = String(r.questionNumber);
@@ -82,13 +88,14 @@ function buildRows(paperId: string, paper: PaperData): ParsedRowPayload[] {
 
 async function main() {
   const apply = process.argv.includes("--apply");
-  const paperId = requirePaperId(process.argv, 2, "commit.ts <paperId> [--apply]");
+  const subject = parseSubjectArg(process.argv);
+  const paperId = requirePaperId(process.argv, 2, "commit.ts <paperId> [--subject=Maths] [--apply]");
   loadEnv();
   const paper = loadPaper(paperId);
   const { sourceFile, pyqYear, pyqNote } = paper;
-  const rows = buildRows(paperId, paper);
+  const rows = buildRows(paperId, paper, subject);
 
-  console.log(`Built ${rows.length} MCQ rows for JEE Mains ${paperId} (${sourceFile}).`);
+  console.log(`Built ${rows.length} MCQ rows for JEE Mains ${paperId} (${sourceFile})${subject ? ` [subject=${subject}]` : ""}.`);
   const byChapter = new Map<string, number>();
   for (const r of rows) byChapter.set(`${r.subjectName} · ${r.chapterName}`, (byChapter.get(`${r.subjectName} · ${r.chapterName}`) ?? 0) + 1);
   console.log("\nchapters that will auto-create:");
