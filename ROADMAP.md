@@ -54,6 +54,26 @@ IPMAT, CUET, NEET, JEE Main — already shown in `/browse` Hero as "Coming soon.
 
 ---
 
+## `/notes` graduated practice — L1/L2/L3 inline reps + practice sourcing (analysis done 2026-07-22; deferred)
+
+**Trigger for revisit:** user flagged the current per-concept `practiceSet` as low quality and asked whether to (a) source practice from HSC/CBSE and (b) add L2/L3 tiers alongside L1 with 3 questions each. Analysed in detail, then parked as a "big change — sleep on it." Full reasoning in the 2026-07-22 chat; key facts distilled here so we don't re-derive.
+
+**Two distinct problems, don't conflate:**
+1. **L1 quality.** The authored `practiceSet` reps are deliberately trivial fluency items (e.g. "Order of a 3×5 matrix? → 3×5", "Iⁿ? → I") — vocabulary/one-step recall, not exam-representative. Fixable cheaply by rewriting them into genuine one-step *problems*; **no architecture change**. This is Phase 0.
+2. **No graduated harder practice inline.** The only inline attemptable practice is the authored self-check (1) + `practiceSet` (L1). Real bank questions appear only as the single featured PYQ + a "Drill N more" link *out* to `/browse`. Adding inline L2/L3 is the real feature.
+
+**Load-bearing constraint (the crux cost):** `question_concept_tags` holds **4,792 PYQ questions and 0 practice** — practice/board questions are never concept-tagged by design, because every tag-gated surface (notes drills, guide principles, quiz-harvest, worked examples) assumes **tag ⇒ PYQ**. To surface bank *practice*/board questions per concept you must either (a) concept-tag practice too + add a `kind`/exam guard at every PYQ-only consumer (invasive, regression-prone), or (b) build a **separate practice-tag axis** that never touches `question_concept_tags` (cleaner, more new code). Recommend (b).
+
+**Source decision — NDA practice bank beats HSC/CBSE.** The NDA *practice* corpus (~219 practice q in Matrices alone, difficulty-labelled, MCQ, same exam) is the right primary source: aligned, correct format, no cross-exam mapping. Boards are ~90% **subjective** (CBSE Matrices+Determinants = 207 q but only 18 MCQ; State Board Matrices ~120 q subjective + error-prone keys, 151 errata bank-wide) → poor fit for MCQ short-reps; use CBSE **MCQ-only** as a thin supplement for genuinely thin concepts, skip HSC subjective.
+
+**Feasibility of "3 per tier per concept":** EASY is thin at the *concept* level (Special Determinants: 1 PYQ-EASY + 2 practice-EASY for the whole 4-concept subtopic; Linear Systems 1+1) — that thinness is *why* L1 is authored. A rigid 3×3 won't fill uniformly. Prefer **variable counts** and/or tier at the **subtopic** level where volume exists.
+
+**Recommended phasing when revisited:** Phase 0 = rewrite L1 reps to genuine problems (Matrices pilot, no schema). Phase 1 = pilot inline L2/L3 sourced from the NDA practice bank via a **separate practice-tag axis**, Matrices only, variable counts; measure effort/quality before bank-wide. Boards = targeted MCQ supplement only. Avoid duplicating the existing subtopic **mastery checkpoint** + per-concept **"Drill N more"** link — inline tiers must add *graduated attempt-then-check without leaving the page*.
+
+**Type/UI implications:** `PracticeProblem` (prompt/answer/method) is too light for real MCQs — either extend it with a `tier`/`difficulty` and keep authoring, or reference bank UUIDs and render MCQ-style (options + reveal, like `WorkedExampleCard`). Open decisions for the user: primary source · tagging mechanism · tier rigidity · first-cut scope.
+
+---
+
 ## Taxonomy cleanup (data work)
 
 Per-chapter subtopic consolidation from question-leakage names ("Integral of 1/(1−cosx)") to technique-level canonicals ("Half-Angle Substitution"). Workflow documented in the [[reclassification-sql-pattern]] and [[taxonomy-inline-iteration]] memories. Done counts + per-subject narratives: CLAUDE.md "Cleaned subjects · post-delta sizing" table and [[taxonomy-cleanup-progress]] memory.
