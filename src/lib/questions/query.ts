@@ -22,6 +22,8 @@ export type QuestionRow = {
   /** MCQ (4 options, one correct) or subjective (no options, model answer in `solution`). Migration 0041.
    *  Optional on the view-model — absent means MCQ (real DB rows always carry it; hand-built fixtures default to MCQ). */
   questionFormat?: QuestionFormat;
+  /** The exact answer for a `numeric` (NAT) question; null for mcq/subjective. Migration 0061. */
+  numericAnswer?: number | null;
   /** Original Q-number from the source PYQ paper's Excel "Q" column (nullable for the 150 pre-migration MHT-CET seed rows). */
   questionNumber: string | null;
   /** PYQ metadata — surfaced as the `[Q# · disambiguator · year]` provenance chip on the question card. */
@@ -91,7 +93,7 @@ export async function queryQuestions(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format,
+      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format, numeric_answer,
       question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -188,6 +190,7 @@ export async function queryQuestions(
     solution_image_url: string | null;
     set_id: string | null;
     question_format: QuestionFormat;
+    numeric_answer: number | null;
     question_number: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -251,7 +254,7 @@ export async function queryQuestionsByIds(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format,
+      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format, numeric_answer,
       question_number, pyq_year, pyq_month, pyq_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -281,6 +284,7 @@ export async function queryQuestionsByIds(
     solution_image_url: string | null;
     set_id: string | null;
     question_format: QuestionFormat;
+    numeric_answer: number | null;
     question_number: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -307,6 +311,7 @@ export async function queryQuestionsByIds(
       solutionImageUrl: r.solution_image_url,
       setId: r.set_id,
       questionFormat: r.question_format,
+      numericAnswer: r.numeric_answer,
       questionNumber: r.question_number,
       pyqYear: r.pyq_year,
       pyqMonth: r.pyq_month,

@@ -33,8 +33,12 @@ export type ParsedRowPayload = {
   difficulty: Difficulty;
   solution?: string;
   /** 'mcq' (default) has the 4 options below; 'subjective' has an empty options
-   *  array and its model answer in `solution`. Migration 0041. */
-  questionFormat?: "mcq" | "subjective";
+   *  array and its model answer in `solution` (migration 0041); 'numeric' (NAT)
+   *  has an empty options array and its exact answer in `numericAnswer`
+   *  (migration 0061). */
+  questionFormat?: "mcq" | "subjective" | "numeric";
+  /** The single correct value for a 'numeric' (NAT) question; ignored otherwise. */
+  numericAnswer?: number;
   options: { label: OptionLabel; text: string; isCorrect: boolean }[];
   contentHash: string;
 };

@@ -1,0 +1,137 @@
+{
+  "sourceFile": "JEE_2021_Paper25.docx",
+  "pyqYear": 2021,
+  "pyqNote": "Paper 25",
+  "classification": {
+    "61": {
+      "chapter": "Permutations and Combinations",
+      "subtopic": "Number of Solutions"
+    },
+    "62": {
+      "chapter": "Binomial Theorem",
+      "subtopic": "General Term and Irrational Terms"
+    },
+    "63": {
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals"
+    },
+    "64": {
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations"
+    },
+    "65": {
+      "chapter": "Vector Algebra",
+      "subtopic": "Rotation of Vectors"
+    },
+    "66": {
+      "chapter": "Sequences and Series",
+      "subtopic": "Geometric Progression"
+    },
+    "67": {
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "The Plane"
+    },
+    "68": {
+      "chapter": "Sequences and Series",
+      "subtopic": "Infinite Geometric Progression"
+    },
+    "69": {
+      "chapter": "Determinants",
+      "subtopic": "Properties of Determinants"
+    },
+    "70": {
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties and Values"
+    },
+    "71": {
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices"
+    },
+    "72": {
+      "chapter": "Straight Lines",
+      "subtopic": "Area of Triangle"
+    },
+    "73": {
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima"
+    },
+    "74": {
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability"
+    },
+    "75": {
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals"
+    },
+    "76": {
+      "chapter": "Limits and Continuity",
+      "subtopic": "Evaluation of Limits"
+    },
+    "77": {
+      "chapter": "Probability",
+      "subtopic": "Binomial Distribution"
+    },
+    "78": {
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "The Plane"
+    },
+    "79": {
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations"
+    },
+    "80": {
+      "chapter": "Conic Sections",
+      "subtopic": "Circle"
+    },
+    "81": {
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Between Curves"
+    },
+    "82": {
+      "chapter": "Trigonometry",
+      "subtopic": "Trigonometric Equations"
+    },
+    "83": {
+      "chapter": "Binomial Theorem",
+      "subtopic": "Binomial Coefficient Sums"
+    },
+    "84": {
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations"
+    },
+    "85": {
+      "chapter": "Quadratic Equations",
+      "subtopic": "Roots and Relations"
+    },
+    "86": {
+      "chapter": "Trigonometry",
+      "subtopic": "Trigonometric Equations"
+    },
+    "87": {
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "The Plane"
+    },
+    "88": {
+      "chapter": "Differential Equations",
+      "subtopic": "Formation of Differential Equations"
+    },
+    "89": {
+      "chapter": "Complex Numbers",
+      "subtopic": "Quadratic Equations and Complex Roots"
+    },
+    "90": {
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals"
+    }
+  },
+  "stemOverrides": {
+    "72": "The triangle formed by the lines \\(x - y = 0\\), \\(x + 2y = 3\\) and \\(2x + y = 6\\) is a:",
+    "74": "Let \\(f\\) be any function defined on \\(\\mathbb{R}\\) and let it satisfy the condition \\(|f(x)-f(y)|\\le \\left|(x-y)^{2}\\right|,\\ \\forall\\,(x,y)\\in\\mathbb{R}\\). If \\(f(0)=1\\), then:",
+    "79": "Let \\(R=\\{(P,Q)\\mid P \\text{ and } Q \\text{ are at the same distance from the origin}\\}\\) be a relation, then the equivalence class of \\((1,-1)\\) is the set:",
+    "81": "The area of the region bounded by the curve \\(y=\\big||x-1|-2\\big|\\) and the line \\(y=2\\) is ____."
+  },
+  "authoredSolutions": {
+    "72": "The line \\(x-y=0\\) has slope \\(1\\); \\(x+2y=3\\) has slope \\(-\\frac{1}{2}\\); \\(2x+y=6\\) has slope \\(-2\\). The acute angle between the first and second satisfies \\(\\tan\\theta=\\left|\\frac{1-(-1/2)}{1+1\\cdot(-1/2)}\\right|=3\\), and between the first and third \\(\\tan\\theta=\\left|\\frac{1-(-2)}{1+1\\cdot(-2)}\\right|=3\\). Two equal angles make the triangle isosceles. Hence (C).",
+    "81": "Substitute \\(u=x-1\\), so the curve becomes \\(y=\\big||u|-2\\big|\\); the answer is the same because a horizontal shift does not change area.\n\nFind where the curve meets \\(y=2\\): \\(\\big||u|-2\\big|=2\\Rightarrow |u|-2=\\pm 2\\Rightarrow |u|=4\\) or \\(|u|=0\\). So the line touches the curve at \\(u=-4,\\ 0,\\ 4\\).\n\nOn \\([0,4]\\): for \\(0\\le u\\le 2\\), \\(y=2-u\\); for \\(2\\le u\\le 4\\), \\(y=u-2\\). The curve dips to \\(y=0\\) at \\(u=2\\) and rises back to \\(y=2\\) at \\(u=4\\). By symmetry the shape on \\([-4,0]\\) is the mirror image, so the required area is\n\\[\\text{Area}=2\\int_{0}^{4}\\big(2-y\\big)\\,du.\\]\n\nCompute the two pieces:\n\\[\\int_{0}^{2}\\big(2-(2-u)\\big)\\,du=\\int_{0}^{2}u\\,du=2,\\qquad \\int_{2}^{4}\\big(2-(u-2)\\big)\\,du=\\int_{2}^{4}(4-u)\\,du=\\Big[4u-\\tfrac{u^{2}}{2}\\Big]_{2}^{4}=8-6=2.\\]\n\nThus \\(\\int_{0}^{4}(2-y)\\,du=2+2=4\\), and the total area \\(=2\\times 4=8.\\)"
+  }
+}

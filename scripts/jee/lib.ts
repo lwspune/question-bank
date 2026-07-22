@@ -232,6 +232,42 @@ export function subjectForNumber(n: number): JeeSubject {
   return n <= 30 ? "Physics" : n <= 60 ? "Chemistry" : "Maths";
 }
 
+/**
+ * Single-subject commit filter (Maths-first pass). A row is kept when its
+ * RESOLVED subject equals the target — resolved = the content-based
+ * classification subject when present (needed for non-standard compilations,
+ * where the position blocks don't hold), else the position-derived one.
+ * No target ⇒ keep everything (backward-compatible full-paper commit).
+ */
+export function keepForSubject(
+  target: string | undefined,
+  positionSubject: string,
+  classificationSubject?: string,
+): boolean {
+  if (!target) return true;
+  return (classificationSubject ?? positionSubject) === target;
+}
+
+/** Read the `--subject=<name>` CLI flag; undefined when absent. */
+export function parseSubjectArg(argv: string[]): string | undefined {
+  const flag = argv.find((a) => a.startsWith("--subject="));
+  return flag ? flag.slice("--subject=".length) : undefined;
+}
+
+/**
+ * Parse a Section-B (Numerical Answer Type) answer token into a number.
+ * The soln-doc token for a NAT question IS the answer value (e.g. "7744",
+ * "1.50", "2,021"). Returns null for anything that isn't a single clean number
+ * (ambiguous / ranged answers must be resolved with an answerOverride).
+ */
+export function parseNumericAnswer(token: string | undefined): number | null {
+  if (!token) return null;
+  const cleaned = token.replace(/,/g, "").trim();
+  if (!/^-?\d+(?:\.\d+)?$/.test(cleaned)) return null;
+  const n = Number(cleaned);
+  return Number.isFinite(n) ? n : null;
+}
+
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 const SECTION_OR_PART = /PART-|SECTION/i;
 

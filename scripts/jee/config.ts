@@ -24,6 +24,7 @@ export type PaperData = {
   optionOverrides?: Record<string, Partial<Record<OptionLabel, string>>>;
   stemOverrides?: Record<string, string>; // supply/replace stem text (e.g. a match-list rendered as an image)
   answerOverrides?: Record<string, OptionLabel>; // correct the answer when the soln doc mis-keyed it (duplicate/missing number)
+  numericOverrides?: Record<string, number>; // supply/correct the answer for a Section-B NAT (numeric) question
   solutionFixes?: Record<string, [string, string][]>;
   authoredSolutions?: Record<string, string>;
 };
@@ -36,7 +37,10 @@ export type PaperData = {
 export function isCommittable(status: string, questionNumber: number, paper: PaperData): boolean {
   if (status === "ok" || status === "image_options") return true;
   const k = String(questionNumber);
-  return Boolean(paper.stemOverrides?.[k] || paper.answerOverrides?.[k]);
+  // A Section-B NAT row is committable once it has a parsed answer (status
+  // 'numeric') or one supplied via a numericOverride.
+  if (status === "numeric") return true;
+  return Boolean(paper.stemOverrides?.[k] || paper.answerOverrides?.[k] || paper.numericOverrides?.[k]);
 }
 
 const OUT = join(__dirname, "out");

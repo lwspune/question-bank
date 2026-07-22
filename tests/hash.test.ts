@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { contentHash, subjectiveContentHash } from "@/lib/upload/hash";
+import { contentHash, subjectiveContentHash, numericContentHash } from "@/lib/upload/hash";
 
 describe("contentHash", () => {
   it("is deterministic for identical inputs", () => {
@@ -79,5 +79,36 @@ describe("subjectiveContentHash", () => {
     expect(subjectiveContentHash(stem, null)).not.toBe(
       contentHash(stem, [], "")
     );
+  });
+});
+
+describe("numericContentHash", () => {
+  it("is deterministic, whitespace-collapsed, hex sha256", () => {
+    const a = numericContentHash("The value of k is", null);
+    const b = numericContentHash("  The   value of k is ", "");
+    expect(a).toBe(b);
+    expect(a).toMatch(/^[0-9a-f]{64}$/);
+  });
+
+  it("differs on different stem and disambiguates by context", () => {
+    expect(numericContentHash("value of n", null)).not.toBe(
+      numericContentHash("value of m", null)
+    );
+    expect(numericContentHash("x", "Set 1")).not.toBe(
+      numericContentHash("x", "Set 2")
+    );
+  });
+
+  it("is stable across answer backfill (answer is NOT in the hash)", () => {
+    // The numeric answer lives in numeric_answer, not the hash — correcting a
+    // key must not change the id / orphan the row (mirrors subjective).
+    const stem = "The number of solutions is";
+    expect(numericContentHash(stem, null)).toBe(numericContentHash(stem, null));
+  });
+
+  it("is namespaced away from MCQ and subjective hashes with the same stem", () => {
+    const stem = "The value is";
+    expect(numericContentHash(stem, null)).not.toBe(contentHash(stem, [], ""));
+    expect(numericContentHash(stem, null)).not.toBe(subjectiveContentHash(stem, null));
   });
 });

@@ -6,7 +6,7 @@ export type QuestionKind = "pyq" | "practice" | "all";
 
 /** Question shape (migration 0041). 'mcq' has 4 options + one correct; 'subjective'
  *  has zero options and its model answer lives in `questions.solution`. */
-export type QuestionFormat = "mcq" | "subjective";
+export type QuestionFormat = "mcq" | "subjective" | "numeric";
 
 export type Filters = {
   examId: string | null;
