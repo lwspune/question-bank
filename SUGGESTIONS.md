@@ -46,6 +46,14 @@ The public-quiz known-visitor suppression (2026-07-22 Decisions entry — signed
 
 **How to apply:** in a browser: as a **signed-in student** on a published `/quiz/<slug>`, tap "See my score" → confirm NO sheet, straight to score, and **no new `quiz_leads` row** in `/dashboard/leads` (the deliberate lead-reduction). As an **anon returner** (submit once, reload) → confirm the "Continue as X" one-tap with no consent re-tick. Batch into the same signed-in QA pass as the other open E2E items (four sign-up gates 2026-07-12, member-management 2026-07-15, NEET grace-badge 2026-07-17).
 
+### Verify the 2 reconstructed JEE Maths stems against a clean source if 2021 papers become available
+
+Two PUBLIC JEE Maths stems were reconstructed from OCR-garbled source during the 2026-07-22 solution backfill and shipped: **p17 Q70** (`JEE_2021_Paper17.docx` — source printed `y(c)=3, y(d)` with domain `x>2`; reconstructed as `y(3)=3 → y(4)`, which is self-consistent, respects the domain, and yields the official answer 12) and **p25 Q81** (`JEE_2021_Paper25.docx` — source truncated at "area bounded by y=||x-1|-2| is....."; reconstructed as area between the curve and the line `y=2`, deriving the official 8). Both match their verified keys, but the exact original wording is unconfirmed.
+
+**Why:** the answers are right and the stems are self-consistent, so this is low-risk — but a reconstructed stem *could* differ from the actual JEE 2021 wording (e.g. p25 Q81's bounding line, p70's eval points). Only matters if a student cross-references the original paper.
+
+**How to apply:** if a clean JEE Main 2021 source (official PDF / trusted key) is obtained, diff these two stems and update via `stemOverride` + `resync` if they differ. Also relevant when ingesting the **Physics + Chemistry** halves of the Maths-only papers (17, 19-26) — those subjects are not yet ingested (see the [[jee-mains-ingestion]] RESUME), and the same source docs will be re-read then.
+
 ## 2026-07-21
 
 ### Manually verify the OMML prettify fallback in a downloaded Word paper
