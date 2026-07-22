@@ -79,6 +79,35 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Properties of Definite Integrals",
     ],
   },
+
+  // ── Ch.3 Matrices (12th, Part 1). 42pp, ~25 solved examples + Ex 3.1–3.4 +
+  //    Miscellaneous. HARDEST content type for transcription: the OCR text layer
+  //    flattens matrix arrays into interleaved token-jumbles + private-use bracket
+  //    glyphs → VISION mandatory, matrices transcribed as LaTeX \begin{bmatrix}
+  //    (the shipped State Board Ch.2 Matrices did exactly this). Solved Examples
+  //    1–25 are scattered through the teaching prose (p0–37), NOT confined to the
+  //    exercise pages, so render ALL pages. Section→page map (0-based):
+  //      Ex 3.1 p8-23 · Ex 3.2 p24-31 (MCQ p27) · Ex 3.3 p32-34 (MCQ p34) ·
+  //      Ex 3.4 p35-37 · Miscellaneous p38-41 (MCQ p39).
+  //    Answers: lemh1an.pdf p1-4 (Ch-3 exercises).
+  matrices: {
+    id: "matrices",
+    chapterName: "Matrices",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_12_Maths__Matrices.pdf",
+    pdf: cls12Maths("Part 1/03. Matrices.pdf"),
+    answersPdf: cls12Maths("Part 1/lemh1an.pdf"),
+    note: "NCERT (CBSE Class 12) — Matrices (Chapter 3, NCERT Mathematics Part 1)",
+    subtopics: [
+      "Order and Types of Matrices",
+      "Equality of Matrices",
+      "Addition and Scalar Multiplication",
+      "Multiplication of Matrices",
+      "Transpose of a Matrix",
+      "Symmetric and Skew-Symmetric Matrices",
+      "Elementary Operations and Inverse of a Matrix",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

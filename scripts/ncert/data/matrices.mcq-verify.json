@@ -1,0 +1,79 @@
+[
+  {
+    "id": "4e10beb1-7323-4688-bcfe-82b5df998da2",
+    "ref": "Ex 3.1 Q8",
+    "derived_answer": "C",
+    "matches_current": true,
+    "solution": "A matrix is square when its number of rows equals its number of columns. For \\(A = [a_{ij}]_{m \\times n}\\) this means \\(m = n\\). Hence the answer is (C)."
+  },
+  {
+    "id": "6c58f709-6e91-430c-a128-b1f7c4a9e146",
+    "ref": "Ex 3.1 Q9",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "Equating corresponding entries of \\(\\begin{bmatrix} 3x+7 & 5 \\\\ y+1 & 2-3x \\end{bmatrix} = \\begin{bmatrix} 0 & y-2 \\\\ 8 & 4 \\end{bmatrix}\\): from \\(3x+7 = 0\\) we get \\(x = -\\frac{7}{3}\\), but from \\(2-3x = 4\\) we get \\(x = -\\frac{2}{3}\\). These two values of \\(x\\) contradict each other, so no \\(x, y\\) make the matrices equal. Hence (B) Not possible to find."
+  },
+  {
+    "id": "1adc1f11-2201-4729-bf61-ee25eab1c401",
+    "ref": "Ex 3.1 Q10",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "A \\(3 \\times 3\\) matrix has \\(9\\) entries, and each entry can be chosen independently as \\(0\\) or \\(1\\) (\\(2\\) choices). So the number of such matrices is \\(2^{9} = 512\\). Hence (D)."
+  },
+  {
+    "id": "0a042b55-2078-4329-9bf9-d1a4cdd37f17",
+    "ref": "Ex 3.2 Q21",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "Here \\(P\\) is \\(p \\times k\\), \\(Y\\) is \\(3 \\times k\\), \\(W\\) is \\(n \\times 3\\). For \\(PY\\) to be defined, the columns of \\(P\\) must equal the rows of \\(Y\\): \\(k = 3\\); then \\(PY\\) has order \\(p \\times k = p \\times 3\\). Also \\(WY\\) has order \\(n \\times 3\\). For the sum \\(PY + WY\\) to be defined, the two orders must match, so \\(p = n\\). Hence (A) \\(k = 3,\\ p = n\\)."
+  },
+  {
+    "id": "5be1d320-760b-4657-a9a7-c59ae01fd0a5",
+    "ref": "Ex 3.2 Q22",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "\\(X\\) has order \\(2 \\times n\\) and \\(Z\\) has order \\(2 \\times p\\). With \\(n = p\\), \\(Z\\) is \\(2 \\times n\\), so \\(7X\\) and \\(5Z\\) are both \\(2 \\times n\\) and \\(7X - 5Z\\) has order \\(2 \\times n\\). Hence (B)."
+  },
+  {
+    "id": "f44c0b3f-645e-4101-b272-dc471f664bff",
+    "ref": "Ex 3.3 Q11",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "For symmetric \\(A, B\\) we have \\(A' = A\\) and \\(B' = B\\). Then \\((AB - BA)' = (AB)' - (BA)' = B'A' - A'B' = BA - AB = -(AB - BA)\\). A matrix equal to the negative of its transpose is skew symmetric. Hence (A) Skew symmetric matrix."
+  },
+  {
+    "id": "afab4976-a361-48e1-8eb8-d7de301cee86",
+    "ref": "Ex 3.3 Q12",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "\\(A' = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), so \\(A + A' = \\begin{bmatrix} 2\\cos\\alpha & 0 \\\\ 0 & 2\\cos\\alpha \\end{bmatrix}\\). Setting this equal to \\(I\\) gives \\(2\\cos\\alpha = 1\\), i.e. \\(\\cos\\alpha = \\frac{1}{2}\\), so \\(\\alpha = \\frac{\\pi}{3}\\). Hence (B)."
+  },
+  {
+    "id": "241ccf2a-25a4-4fa0-9e89-18620af45a6f",
+    "ref": "Ex 3.4 Q1",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "Matrices \\(A\\) and \\(B\\) are inverses of each other precisely when their product both ways is the identity: \\(AB = BA = I\\). Hence (D)."
+  },
+  {
+    "id": "c1becd4d-9636-4d9a-8672-3dbef8d999a3",
+    "ref": "Misc Q9",
+    "derived_answer": "C",
+    "matches_current": true,
+    "solution": "\\(A^2 = \\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & -\\alpha \\end{bmatrix}\\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & -\\alpha \\end{bmatrix} = \\begin{bmatrix} \\alpha^2 + \\beta\\gamma & 0 \\\\ 0 & \\alpha^2 + \\beta\\gamma \\end{bmatrix}\\). Setting \\(A^2 = I\\) gives \\(\\alpha^2 + \\beta\\gamma = 1\\), i.e. \\(1 - \\alpha^2 - \\beta\\gamma = 0\\). Hence (C)."
+  },
+  {
+    "id": "7c9a4073-fd20-47c9-8c7b-06caad83ffad",
+    "ref": "Misc Q10",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "If \\(A\\) is symmetric then \\(A' = A\\); if \\(A\\) is skew symmetric then \\(A' = -A\\). Both together give \\(A = -A\\), so \\(2A = O\\) and \\(A = O\\). Hence (B) \\(A\\) is a zero matrix."
+  },
+  {
+    "id": "8d42f3f4-25e0-4faf-9c28-7a53d5b02bb7",
+    "ref": "Misc Q11",
+    "derived_answer": "C",
+    "matches_current": true,
+    "solution": "Since \\(A^2 = A\\), also \\(A^3 = A^2 \\cdot A = A \\cdot A = A^2 = A\\). Then \\((I + A)^3 = I + 3A + 3A^2 + A^3 = I + 3A + 3A + A = I + 7A\\). Therefore \\((I + A)^3 - 7A = I + 7A - 7A = I\\). Hence (C)."
+  }
+]

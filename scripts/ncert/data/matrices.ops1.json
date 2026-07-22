@@ -1,0 +1,56 @@
+[
+  {
+    "ref": "3.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "EASY",
+    "stem": "Given \\(A = \\begin{bmatrix} \\sqrt{3} & 1 & -1 \\\\ 2 & 3 & 0 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & \\sqrt{5} & 1 \\\\ -2 & 3 & \\frac{1}{2} \\end{bmatrix}\\), find \\(A + B\\).",
+    "solution": "Since \\(A\\), \\(B\\) are of the same order \\(2 \\times 3\\). Therefore, addition of \\(A\\) and \\(B\\) is defined and is given by\n\\[A + B = \\begin{bmatrix} 2 + \\sqrt{3} & 1 + \\sqrt{5} & 1 - 1 \\\\ 2 - 2 & 3 + 3 & 0 + \\frac{1}{2} \\end{bmatrix} = \\begin{bmatrix} 2 + \\sqrt{3} & 1 + \\sqrt{5} & 0 \\\\ 0 & 6 & \\frac{1}{2} \\end{bmatrix}\\]"
+  },
+  {
+    "ref": "3.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 3 & -1 & 3 \\\\ -1 & 0 & 2 \\end{bmatrix}\\), then find \\(2A - B\\).",
+    "solution": "We have\n\\[2A - B = 2\\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{bmatrix} - \\begin{bmatrix} 3 & -1 & 3 \\\\ -1 & 0 & 2 \\end{bmatrix}\\]\n\\[= \\begin{bmatrix} 2 & 4 & 6 \\\\ 4 & 6 & 2 \\end{bmatrix} + \\begin{bmatrix} -3 & 1 & -3 \\\\ 1 & 0 & -2 \\end{bmatrix}\\]\n\\[= \\begin{bmatrix} 2 - 3 & 4 + 1 & 6 - 3 \\\\ 4 + 1 & 6 + 0 & 2 - 2 \\end{bmatrix} = \\begin{bmatrix} -1 & 5 & 3 \\\\ 5 & 6 & 0 \\end{bmatrix}\\]"
+  },
+  {
+    "ref": "3.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 8 & 0 \\\\ 4 & -2 \\\\ 3 & 6 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & -2 \\\\ 4 & 2 \\\\ -5 & 1 \\end{bmatrix}\\), then find the matrix \\(X\\), such that \\(2A + 3X = 5B\\).",
+    "solution": "We have \\(2A + 3X = 5B\\)\nor \\(2A + 3X - 2A = 5B - 2A\\)\nor \\(2A - 2A + 3X = 5B - 2A\\) (Matrix addition is commutative)\nor \\(O + 3X = 5B - 2A\\) (\\(-2A\\) is the additive inverse of \\(2A\\))\nor \\(3X = 5B - 2A\\) (\\(O\\) is the additive identity)\nor \\(X = \\frac{1}{3}(5B - 2A)\\)\nor \\(X = \\frac{1}{3}\\left(5\\begin{bmatrix} 2 & -2 \\\\ 4 & 2 \\\\ -5 & 1 \\end{bmatrix} - 2\\begin{bmatrix} 8 & 0 \\\\ 4 & -2 \\\\ 3 & 6 \\end{bmatrix}\\right) = \\frac{1}{3}\\left(\\begin{bmatrix} 10 & -10 \\\\ 20 & 10 \\\\ -25 & 5 \\end{bmatrix} + \\begin{bmatrix} -16 & 0 \\\\ -8 & 4 \\\\ -6 & -12 \\end{bmatrix}\\right)\\)\n\\[= \\frac{1}{3}\\begin{bmatrix} 10 - 16 & -10 + 0 \\\\ 20 - 8 & 10 + 4 \\\\ -25 - 6 & 5 - 12 \\end{bmatrix} = \\frac{1}{3}\\begin{bmatrix} -6 & -10 \\\\ 12 & 14 \\\\ -31 & -7 \\end{bmatrix} = \\begin{bmatrix} -2 & \\frac{-10}{3} \\\\ 4 & \\frac{14}{3} \\\\ \\frac{-31}{3} & \\frac{-7}{3} \\end{bmatrix}\\]"
+  },
+  {
+    "ref": "3.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(X\\) and \\(Y\\), if \\(X + Y = \\begin{bmatrix} 5 & 2 \\\\ 0 & 9 \\end{bmatrix}\\) and \\(X - Y = \\begin{bmatrix} 3 & 6 \\\\ 0 & -1 \\end{bmatrix}\\).",
+    "solution": "We have \\((X + Y) + (X - Y) = \\begin{bmatrix} 5 & 2 \\\\ 0 & 9 \\end{bmatrix} + \\begin{bmatrix} 3 & 6 \\\\ 0 & -1 \\end{bmatrix}\\).\nor \\((X + X) + (Y - Y) = \\begin{bmatrix} 8 & 8 \\\\ 0 & 8 \\end{bmatrix} \\Rightarrow 2X = \\begin{bmatrix} 8 & 8 \\\\ 0 & 8 \\end{bmatrix}\\)\nor \\(X = \\frac{1}{2}\\begin{bmatrix} 8 & 8 \\\\ 0 & 8 \\end{bmatrix} = \\begin{bmatrix} 4 & 4 \\\\ 0 & 4 \\end{bmatrix}\\)\nAlso \\((X + Y) - (X - Y) = \\begin{bmatrix} 5 & 2 \\\\ 0 & 9 \\end{bmatrix} - \\begin{bmatrix} 3 & 6 \\\\ 0 & -1 \\end{bmatrix}\\)\nor \\((X - X) + (Y + Y) = \\begin{bmatrix} 5 - 3 & 2 - 6 \\\\ 0 & 9 + 1 \\end{bmatrix} \\Rightarrow 2Y = \\begin{bmatrix} 2 & -4 \\\\ 0 & 10 \\end{bmatrix}\\)\nor \\(Y = \\frac{1}{2}\\begin{bmatrix} 2 & -4 \\\\ 0 & 10 \\end{bmatrix} = \\begin{bmatrix} 1 & -2 \\\\ 0 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "3.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(x\\) and \\(y\\) from the following equation:\n\\[2\\begin{bmatrix} x & 5 \\\\ 7 & y - 3 \\end{bmatrix} + \\begin{bmatrix} 3 & -4 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix}\\]",
+    "solution": "We have\n\\[2\\begin{bmatrix} x & 5 \\\\ 7 & y - 3 \\end{bmatrix} + \\begin{bmatrix} 3 & -4 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix} \\Rightarrow \\begin{bmatrix} 2x & 10 \\\\ 14 & 2y - 6 \\end{bmatrix} + \\begin{bmatrix} 3 & -4 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix}\\]\nor \\(\\begin{bmatrix} 2x + 3 & 10 - 4 \\\\ 14 + 1 & 2y - 6 + 2 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix} \\Rightarrow \\begin{bmatrix} 2x + 3 & 6 \\\\ 15 & 2y - 4 \\end{bmatrix} = \\begin{bmatrix} 7 & 6 \\\\ 15 & 14 \\end{bmatrix}\\)\nor \\(2x + 3 = 7\\) and \\(2y - 4 = 14\\) (Why?)\nor \\(2x = 7 - 3\\) and \\(2y = 18\\)\nor \\(x = \\frac{4}{2}\\) and \\(y = \\frac{18}{2}\\)\ni.e. \\(x = 2\\) and \\(y = 9\\)."
+  },
+  {
+    "ref": "3.2 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition and Scalar Multiplication",
+    "difficulty": "HARD",
+    "stem": "Two farmers Ramkishan and Gurcharan Singh cultivates only three varieties of rice namely Basmati, Permal and Naura. The sale (in Rupees) of these varieties of rice by both the farmers in the month of September and October are given by the following matrices \\(A\\) and \\(B\\).\nSeptember Sales (in Rupees): \\(A = \\begin{bmatrix} 10{,}000 & 20{,}000 & 30{,}000 \\\\ 50{,}000 & 30{,}000 & 10{,}000 \\end{bmatrix}\\) (row 1 Ramkishan, row 2 Gurcharan Singh; columns Basmati, Permal, Naura).\nOctober Sales (in Rupees): \\(B = \\begin{bmatrix} 5000 & 10{,}000 & 6000 \\\\ 20{,}000 & 10{,}000 & 10{,}000 \\end{bmatrix}\\) (row 1 Ramkishan, row 2 Gurcharan Singh; columns Basmati, Permal, Naura).\n(i) Find the combined sales in September and October for each farmer in each variety.\n(ii) Find the decrease in sales from September to October.\n(iii) If both farmers receive 2% profit on gross sales, compute the profit for each farmer and for each variety sold in October.",
+    "solution": "(i) Combined sales in September and October for each farmer in each variety is given by\n\\[A + B = \\begin{bmatrix} 15{,}000 & 30{,}000 & 36{,}000 \\\\ 70{,}000 & 40{,}000 & 20{,}000 \\end{bmatrix}\\]\n(columns Basmati, Permal, Naura; row 1 Ramkishan, row 2 Gurcharan Singh).\n(ii) Change in sales from September to October is given by\n\\[A - B = \\begin{bmatrix} 5000 & 10{,}000 & 24{,}000 \\\\ 30{,}000 & 20{,}000 & 0 \\end{bmatrix}\\]\n(columns Basmati, Permal, Naura; row 1 Ramkishan, row 2 Gurcharan Singh).\n(iii) \\(2\\% \\text{ of } B = \\frac{2}{100} \\times B = 0.02 \\times B\\)\n\\[= 0.02\\begin{bmatrix} 5000 & 10{,}000 & 6000 \\\\ 20{,}000 & 10{,}000 & 10{,}000 \\end{bmatrix} = \\begin{bmatrix} 100 & 200 & 120 \\\\ 400 & 200 & 200 \\end{bmatrix}\\]\n(columns Basmati, Permal, Naura; row 1 Ramkishan, row 2 Gurcharan Singh).\nThus, in October Ramkishan receives \\(\\text{Rs } 100\\), \\(\\text{Rs } 200\\) and \\(\\text{Rs } 120\\) as profit in the sale of each variety of rice, respectively, and Gurcharan Singh receives profit of \\(\\text{Rs } 400\\), \\(\\text{Rs } 200\\) and \\(\\text{Rs } 200\\) in the sale of each variety of rice, respectively."
+  }
+]

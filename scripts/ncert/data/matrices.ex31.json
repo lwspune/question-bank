@@ -1,0 +1,181 @@
+[
+  {
+    "ref": "3.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Consider the following information regarding the number of men and women workers in three factories I, II and III\n\n| Factory | Men workers | Women workers |\n|---|---|---|\n| I | 30 | 25 |\n| II | 25 | 31 |\n| III | 27 | 26 |\n\nRepresent the above information in the form of a \\(3 \\times 2\\) matrix. What does the entry in the third row and second column represent?",
+    "solution": "The information is represented in the form of a \\(3 \\times 2\\) matrix as follows:\n\\(A = \\begin{bmatrix} 30 & 25 \\\\ 25 & 31 \\\\ 27 & 26 \\end{bmatrix}\\)\nThe entry in the third row and second column represents the number of women workers in factory III."
+  },
+  {
+    "ref": "3.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "If a matrix has 8 elements, what are the possible orders it can have?",
+    "solution": "We know that if a matrix is of order \\(m \\times n\\), it has \\(mn\\) elements. Thus, to find all possible orders of a matrix with 8 elements, we will find all ordered pairs of natural numbers, whose product is 8.\nThus, all possible ordered pairs are \\((1, 8), (8, 1), (4, 2), (2, 4)\\)\nHence, possible orders are \\(1 \\times 8\\), \\(8 \\times 1\\), \\(4 \\times 2\\), \\(2 \\times 4\\)."
+  },
+  {
+    "ref": "3.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Construct a \\(3 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\frac{1}{2}|i - 3j|\\).",
+    "solution": "In general a \\(3 \\times 2\\) matrix is given by \\(A = \\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\\\ a_{31} & a_{32} \\end{bmatrix}\\).\nNow \\(a_{ij} = \\frac{1}{2}|i - 3j|\\), \\(i = 1, 2, 3\\) and \\(j = 1, 2\\).\nTherefore \\(a_{11} = \\frac{1}{2}|1 - 3 \\times 1| = 1\\) \\qquad \\(a_{12} = \\frac{1}{2}|1 - 3 \\times 2| = \\frac{5}{2}\\)\n\\(a_{21} = \\frac{1}{2}|2 - 3 \\times 1| = \\frac{1}{2}\\) \\qquad \\(a_{22} = \\frac{1}{2}|2 - 3 \\times 2| = 2\\)\n\\(a_{31} = \\frac{1}{2}|3 - 3 \\times 1| = 0\\) \\qquad \\(a_{32} = \\frac{1}{2}|3 - 3 \\times 2| = \\frac{3}{2}\\)\nHence the required matrix is given by \\(A = \\begin{bmatrix} 1 & \\frac{5}{2} \\\\ \\frac{1}{2} & 2 \\\\ 0 & \\frac{3}{2} \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "3.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\begin{bmatrix} x+3 & z+4 & 2y-7 \\\\ -6 & a-1 & 0 \\\\ b-3 & -21 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 6 & 3y-2 \\\\ -6 & -3 & 2c+2 \\\\ 2b+4 & -21 & 0 \\end{bmatrix}\\)\nFind the values of \\(a\\), \\(b\\), \\(c\\), \\(x\\), \\(y\\) and \\(z\\).",
+    "solution": "As the given matrices are equal, therefore, their corresponding elements must be equal. Comparing the corresponding elements, we get\n\\(x + 3 = 0\\), \\(z + 4 = 6\\), \\(2y - 7 = 3y - 2\\)\n\\(a - 1 = -3\\), \\(0 = 2c + 2\\), \\(b - 3 = 2b + 4\\),\nSimplifying, we get\n\\(a = -2\\), \\(b = -7\\), \\(c = -1\\), \\(x = -3\\), \\(y = -5\\), \\(z = 2\\)"
+  },
+  {
+    "ref": "3.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(a\\), \\(b\\), \\(c\\), and \\(d\\) from the following equation:\n\\(\\begin{bmatrix} 2a+b & a-2b \\\\ 5c-d & 4c+3d \\end{bmatrix} = \\begin{bmatrix} 4 & -3 \\\\ 11 & 24 \\end{bmatrix}\\)",
+    "solution": "By equality of two matrices, equating the corresponding elements, we get\n\\(2a + b = 4\\) \\qquad \\(5c - d = 11\\)\n\\(a - 2b = -3\\) \\qquad \\(4c + 3d = 24\\)\nSolving these equations, we get\n\\(a = 1\\), \\(b = 2\\), \\(c = 3\\) and \\(d = 4\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "context": "In the matrix \\(A = \\begin{bmatrix} 2 & 5 & 19 & -7 \\\\ 35 & -2 & \\frac{5}{2} & 12 \\\\ \\sqrt{3} & 1 & -5 & 17 \\end{bmatrix}\\), write:",
+    "setLabel": "Ex 3.1 Q1",
+    "stem": "The order of the matrix,"
+  },
+  {
+    "ref": "Ex 3.1 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "context": "In the matrix \\(A = \\begin{bmatrix} 2 & 5 & 19 & -7 \\\\ 35 & -2 & \\frac{5}{2} & 12 \\\\ \\sqrt{3} & 1 & -5 & 17 \\end{bmatrix}\\), write:",
+    "setLabel": "Ex 3.1 Q1",
+    "stem": "The number of elements,"
+  },
+  {
+    "ref": "Ex 3.1 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "context": "In the matrix \\(A = \\begin{bmatrix} 2 & 5 & 19 & -7 \\\\ 35 & -2 & \\frac{5}{2} & 12 \\\\ \\sqrt{3} & 1 & -5 & 17 \\end{bmatrix}\\), write:",
+    "setLabel": "Ex 3.1 Q1",
+    "stem": "Write the elements \\(a_{13}\\), \\(a_{21}\\), \\(a_{33}\\), \\(a_{24}\\), \\(a_{23}\\)."
+  },
+  {
+    "ref": "Ex 3.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "If a matrix has 24 elements, what are the possible orders it can have? What, if it has 13 elements?"
+  },
+  {
+    "ref": "Ex 3.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "If a matrix has 18 elements, what are the possible orders it can have? What, if it has 5 elements?"
+  },
+  {
+    "ref": "Ex 3.1 Q4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(2 \\times 2\\) matrix, \\(A = [a_{ij}]\\), whose elements are given by:",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "\\(a_{ij} = \\frac{(i+j)^2}{2}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(2 \\times 2\\) matrix, \\(A = [a_{ij}]\\), whose elements are given by:",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "\\(a_{ij} = \\frac{i}{j}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(2 \\times 2\\) matrix, \\(A = [a_{ij}]\\), whose elements are given by:",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "\\(a_{ij} = \\frac{(i+2j)^2}{2}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q5 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(3 \\times 4\\) matrix, whose elements are given by:",
+    "setLabel": "Ex 3.1 Q5",
+    "stem": "\\(a_{ij} = \\frac{1}{2}|-3i + j|\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q5 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a \\(3 \\times 4\\) matrix, whose elements are given by:",
+    "setLabel": "Ex 3.1 Q5",
+    "stem": "\\(a_{ij} = 2i - j\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q6 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find the values of \\(x\\), \\(y\\) and \\(z\\) from the following equations:",
+    "setLabel": "Ex 3.1 Q6",
+    "stem": "\\(\\begin{bmatrix} 4 & 3 \\\\ x & 5 \\end{bmatrix} = \\begin{bmatrix} y & z \\\\ 1 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q6 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find the values of \\(x\\), \\(y\\) and \\(z\\) from the following equations:",
+    "setLabel": "Ex 3.1 Q6",
+    "stem": "\\(\\begin{bmatrix} x+y & 2 \\\\ 5+z & xy \\end{bmatrix} = \\begin{bmatrix} 6 & 2 \\\\ 5 & 8 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q6 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find the values of \\(x\\), \\(y\\) and \\(z\\) from the following equations:",
+    "setLabel": "Ex 3.1 Q6",
+    "stem": "\\(\\begin{bmatrix} x+y+z \\\\ x+z \\\\ y+z \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 5 \\\\ 7 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 3.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equality of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(a\\), \\(b\\), \\(c\\) and \\(d\\) from the equation:\n\\(\\begin{bmatrix} a-b & 2a+c \\\\ 2a-b & 3c+d \\end{bmatrix} = \\begin{bmatrix} -1 & 5 \\\\ 0 & 13 \\end{bmatrix}\\)"
+  }
+]
