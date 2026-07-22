@@ -108,6 +108,35 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Elementary Operations and Inverse of a Matrix",
     ],
   },
+
+  // ── Ch.4 Determinants (12th, Part 1). 28pp, ~19 solved examples + Ex 4.1–4.5 +
+  //    Miscellaneous. Determinant/matrix arrays flatten in the OCR text layer →
+  //    VISION (matrices as \begin{bmatrix}, determinants as \begin{vmatrix}).
+  //    The rationalised 2025-26 edition folds "Properties of Determinants" into
+  //    §4.2, so the subtopic arc is 5 units. Solved Examples 1–19 are scattered
+  //    through the prose (render ALL pages). Section→page map (0-based):
+  //      §4.2 Determinant + Ex 1-5 · EXERCISE 4.1 p5 · §4.3 Area of a Triangle +
+  //      Ex 6-7 · EXERCISE 4.2 p7 · §4.4 Minors & Cofactors + Ex 8-11 ·
+  //      EXERCISE 4.3 p11 · §4.5 Adjoint & Inverse + Ex 12-15 · EXERCISE 4.4 p16 ·
+  //      §4.6 Applications + Ex 16-19 · EXERCISE 4.5 p21 · Miscellaneous p23
+  //      (MCQ p24). No per-question figures (p0 has only the chapter-opening
+  //      portrait). Answers: lemh1an.pdf p4-6 (Ch-4 exercises).
+  determinants: {
+    id: "determinants",
+    chapterName: "Determinants",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_12_Maths__Determinants.pdf",
+    pdf: cls12Maths("Part 1/04. Determinants.pdf"),
+    answersPdf: cls12Maths("Part 1/lemh1an.pdf"),
+    note: "NCERT (CBSE Class 12) — Determinants (Chapter 4, NCERT Mathematics Part 1)",
+    subtopics: [
+      "Determinant and its Properties",
+      "Area of a Triangle",
+      "Minors and Cofactors",
+      "Adjoint and Inverse of a Matrix",
+      "Solving System of Linear Equations",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
