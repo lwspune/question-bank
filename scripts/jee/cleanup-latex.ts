@@ -89,9 +89,20 @@ function repairSplitDelimiters(s: string): string {
   return out;
 }
 
+// Strip pandoc hard-break / stray control chars that sit inside a math zone right
+// before its closing delimiter — common in piecewise/matrix NAT stems
+// (`\right.\\)`, `\right.\ \]`). Safe: a legit matrix row-break `\\` is always
+// followed by content or `\end{...}`, never a bare `)`/`]`.
+function preClean(s: string): string {
+  return s
+    .replace(/\\\\\)/g, "\\)") // \\) (hard-break + bare paren) -> proper close
+    .replace(/\\\\\]/g, "\\]") // \\] -> \]
+    .replace(/\\ (\s*\\[)\]])/g, "$1"); // backslash-space right before a close
+}
+
 /** Full cosmetic + repair transform for one field. */
 const fix = (s: string): string =>
-  repairSplitDelimiters(repairGluedMacros(normalizeMathFunctions(s)).replace(/(?<!\\)\\\s*$/, "").trimEnd());
+  repairSplitDelimiters(repairGluedMacros(normalizeMathFunctions(preClean(s))).replace(/(?<!\\)\\\s*$/, "").trimEnd());
 
 async function main() {
   const apply = process.argv.includes("--apply");
