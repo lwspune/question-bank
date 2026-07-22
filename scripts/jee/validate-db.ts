@@ -32,12 +32,22 @@ async function main() {
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
-  const { data, error } = await client
-    .from("questions")
-    .select("question_number, text, context, solution, image_url, options(label, text, image_url)")
-    .eq("exam_id", EXAM_ID);
-  if (error) throw new Error(error.message);
-  const rows = (data ?? []) as Row[];
+  // Page through ALL rows in 1000-row windows — PostgREST caps a raw .select()
+  // at 1000, and the JEE exam now exceeds that, so a single call would silently
+  // skip the newest rows (the documented PostgREST 1000-row cap pitfall).
+  const rows: Row[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await client
+      .from("questions")
+      .select("question_number, text, context, solution, image_url, options(label, text, image_url)")
+      .eq("exam_id", EXAM_ID)
+      .order("id", { ascending: true })
+      .range(from, from + 999);
+    if (error) throw new Error(error.message);
+    const page = (data ?? []) as Row[];
+    rows.push(...page);
+    if (page.length < 1000) break;
+  }
 
   const cnt = (s: string, re: RegExp) => (s.match(re) || []).length;
   let broken = 0;
