@@ -84,6 +84,28 @@ export const CATALOG: Record<string, SubjectCatalog> = {
         "Mean, Median and Mode of Grouped Data",
         "Pictorial Representation of Statistical Data",
       ],
+      // Class-9 prerequisite topics that the OLD-pattern (pre-2020) Class-10
+      // Algebra board paper drew on for quick 1-mark Q1 items (surfaced by the
+      // 2019 paper). Kept as honest distinct chapters; a later Phase-D pass can
+      // merge/canonicalise if preferred.
+      Polynomials: [
+        "Coefficient Form of a Polynomial",
+        "Value of a Polynomial",
+        "Operations on Polynomials",
+      ],
+      Surds: [
+        "Multiplication of Surds",
+        "Operations on Surds",
+        "Rationalisation of Surds",
+      ],
+      Sets: [
+        "Union and Intersection of Sets",
+        "Types of Sets and Subsets",
+      ],
+      "Ratio and Proportion": [
+        "Reduced Form of a Ratio",
+        "Properties of Proportion",
+      ],
     },
   },
   Geometry: {
@@ -186,6 +208,30 @@ export const CATALOG: Record<string, SubjectCatalog> = {
         "Launch Vehicles",
         "Space Missions of India",
       ],
+      // OLD-syllabus (pre-2020) Science I chapters surfaced by the 2016/2018
+      // board papers — kept as honest distinct chapters (a later Phase-D pass can
+      // merge/canonicalise if preferred).
+      "Reflection of Light": [
+        "Spherical Mirrors and Terminology",
+        "Image Formation by Mirrors",
+        "Mirror Formula and Magnification",
+      ],
+      "Current Electricity": [
+        "Ohm's Law and Resistance",
+        "Resistivity",
+        "Series and Parallel Combination of Resistors",
+        "Electric Power and Energy",
+      ],
+      "Acids, Bases and Salts": [
+        "Acids, Bases and Indicators",
+        "pH Scale",
+        "Salts and Their Uses",
+      ],
+      "Environmental Pollution": [
+        "Types and Sources of Pollution",
+        "Effects and Control of Pollution",
+        "Biodegradable and Non-biodegradable Waste",
+      ],
     },
   },
   "Science and Technology II": {
@@ -267,160 +313,73 @@ export type Paper = {
   note: string; // questions.pyq_note
 };
 
-export const PAPERS: Record<string, Paper> = {
-  // ── Algebra (Mathematics Part I) ──
-  "alg-2023": {
-    id: "alg-2023",
-    subjectName: "Algebra",
-    year: 2023,
-    month: "March",
-    pdf: src("10th ssc Algebra board qp 2023.pdf"),
-    sourceFile: "MH_SSC_10_Algebra_2023.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Algebra (Mathematics Part I), March 2023 board paper",
-  },
-  "alg-2024": {
-    id: "alg-2024",
-    subjectName: "Algebra",
-    year: 2024,
-    month: "March",
-    paperCode: "N 619",
-    pdf: src("10th ssc Algebra board qp 2024.pdf"),
-    sourceFile: "MH_SSC_10_Algebra_2024.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Algebra (Mathematics Part I), March 2024 board paper",
-  },
-  "alg-2025": {
-    id: "alg-2025",
-    subjectName: "Algebra",
-    year: 2025,
-    month: "March",
-    paperCode: "N 819",
-    pdf: src("10th ssc Algebra board qp 2026 (1).pdf"), // MISLABELED: actually March 2025
-    sourceFile: "MH_SSC_10_Algebra_2025.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Algebra (Mathematics Part I), March 2025 board paper",
-  },
-  "alg-2026": {
-    id: "alg-2026",
-    subjectName: "Algebra",
-    year: 2026,
-    month: "March",
-    paperCode: "N 919",
-    pdf: src("10th ssc Algebra board qp 2026.pdf"),
-    sourceFile: "MH_SSC_10_Algebra_2026.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Algebra (Mathematics Part I), March 2026 board paper",
-  },
-  // ── Geometry (Mathematics Part II) ──
-  "geo-2023": {
-    id: "geo-2023",
-    subjectName: "Geometry",
-    year: 2023,
-    month: "March",
-    pdf: src("10th ssc geometry board qp 2023.pdf"),
-    sourceFile: "MH_SSC_10_Geometry_2023.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Geometry (Mathematics Part II), March 2023 board paper",
-  },
-  "geo-2024": {
-    id: "geo-2024",
-    subjectName: "Geometry",
-    year: 2024,
-    month: "March",
-    pdf: src("10th ssc geometry board qp 2024.pdf"),
-    sourceFile: "MH_SSC_10_Geometry_2024.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Geometry (Mathematics Part II), March 2024 board paper",
-  },
-  "geo-2025": {
-    id: "geo-2025",
-    subjectName: "Geometry",
-    year: 2025,
-    month: "March",
-    paperCode: "N 832",
-    pdf: src("10th ssc geometry board qp 2026 (1).pdf"), // MISLABELED: actually March 2025
-    sourceFile: "MH_SSC_10_Geometry_2025.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Geometry (Mathematics Part II), March 2025 board paper",
-  },
-  "geo-2026": {
-    id: "geo-2026",
-    subjectName: "Geometry",
-    year: 2026,
-    month: "March",
-    pdf: src("10th ssc geometry board qp 2026.pdf"),
-    sourceFile: "MH_SSC_10_Geometry_2026.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Geometry (Mathematics Part II), March 2026 board paper",
-  },
-  // ── Science and Technology I (Physics + Chemistry) ──
-  "sci1-2023": {
-    id: "sci1-2023",
-    subjectName: "Science and Technology I",
-    year: 2023,
-    month: "March",
-    pdf: src("10th ssc Sci-I board qp 2023.pdf"),
-    sourceFile: "MH_SSC_10_Science_I_2023.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2023 board paper",
-  },
-  "sci1-2024": {
-    id: "sci1-2024",
-    subjectName: "Science and Technology I",
-    year: 2024,
-    month: "March",
-    pdf: src("10th ssc SCI-I board qp 2024.pdf"),
-    sourceFile: "MH_SSC_10_Science_I_2024.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2024 board paper",
-  },
-  "sci1-2025": {
-    id: "sci1-2025",
-    subjectName: "Science and Technology I",
-    year: 2025,
-    month: "March",
-    pdf: src("10th ssc Sci-I board qp 2025.pdf"),
-    sourceFile: "MH_SSC_10_Science_I_2025.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2025 board paper",
-  },
-  "sci1-2026": {
-    id: "sci1-2026",
-    subjectName: "Science and Technology I",
-    year: 2026,
-    month: "March",
-    pdf: src("10th ssc Sci-I board qp 2026.pdf"),
-    sourceFile: "MH_SSC_10_Science_I_2026.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part I, March 2026 board paper",
-  },
-  // ── Science and Technology II (Biology) ──
-  "sci2-2023": {
-    id: "sci2-2023",
-    subjectName: "Science and Technology II",
-    year: 2023,
-    month: "March",
-    pdf: src("10th ssc Sci-II board qp 2023.pdf"),
-    sourceFile: "MH_SSC_10_Science_II_2023.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2023 board paper",
-  },
-  "sci2-2024": {
-    id: "sci2-2024",
-    subjectName: "Science and Technology II",
-    year: 2024,
-    month: "March",
-    pdf: src("10th ssc Sci-II board qp 2024.pdf"),
-    sourceFile: "MH_SSC_10_Science_II_2024.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2024 board paper",
-  },
-  "sci2-2025": {
-    id: "sci2-2025",
-    subjectName: "Science and Technology II",
-    year: 2025,
-    month: "March",
-    pdf: src("10th ssc Sci-II board qp 2025.pdf"),
-    sourceFile: "MH_SSC_10_Science_II_2025.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2025 board paper",
-  },
-  "sci2-2026": {
-    id: "sci2-2026",
-    subjectName: "Science and Technology II",
-    year: 2026,
-    month: "March",
-    pdf: src("10th ssc Sci-II board qp 2026.pdf"),
-    sourceFile: "MH_SSC_10_Science_II_2026.pdf",
-    note: "Maharashtra State Board Class 10 (SSC) — Science and Technology Part II, March 2026 board paper",
-  },
+// After the 2026-07-21 canonical rename, every source PDF is named exactly
+// `MH_SSC_10_<Subject>_<Year>.pdf` (== sourceFile == the DB dedup key), so the
+// pdf path, sourceFile and note are all derivable from (subjectName, year).
+const FILE_SUBJECT: Record<string, string> = {
+  Algebra: "Algebra",
+  Geometry: "Geometry",
+  "Science and Technology I": "Science_I",
+  "Science and Technology II": "Science_II",
 };
+const ID_PREFIX: Record<string, string> = {
+  Algebra: "alg",
+  Geometry: "geo",
+  "Science and Technology I": "sci1",
+  "Science and Technology II": "sci2",
+};
+const PAPER_LABEL: Record<string, string> = {
+  Algebra: "Algebra (Mathematics Part I)",
+  Geometry: "Geometry (Mathematics Part II)",
+  "Science and Technology I": "Science and Technology Part I",
+  "Science and Technology II": "Science and Technology Part II",
+};
+
+function mkPaper(subjectName: string, year: number, paperCode?: string): Paper {
+  const sourceFile = `MH_SSC_10_${FILE_SUBJECT[subjectName]}_${year}.pdf`;
+  return {
+    id: `${ID_PREFIX[subjectName]}-${year}`,
+    subjectName,
+    year,
+    month: "March",
+    ...(paperCode ? { paperCode } : {}),
+    pdf: src(sourceFile),
+    sourceFile,
+    note: `Maharashtra State Board Class 10 (SSC) — ${PAPER_LABEL[subjectName]}, March ${year} board paper`,
+  };
+}
+
+// One scanned board QP each. Years present on disk per subject (2021: no exam
+// held; Science I has no 2017). Verified printed-cover codes passed where known.
+const PAPER_SPECS: Array<[string, number, string?]> = [
+  // Algebra (Mathematics Part I)
+  ["Algebra", 2016], ["Algebra", 2017], ["Algebra", 2018], ["Algebra", 2019],
+  ["Algebra", 2020], ["Algebra", 2022], ["Algebra", 2023],
+  ["Algebra", 2024, "N 619"], ["Algebra", 2025, "N 819"], ["Algebra", 2026, "N 919"],
+  // Geometry (Mathematics Part II)
+  ["Geometry", 2016], ["Geometry", 2017], ["Geometry", 2018], ["Geometry", 2019],
+  ["Geometry", 2020], ["Geometry", 2022], ["Geometry", 2023], ["Geometry", 2024],
+  ["Geometry", 2025, "N 832"], ["Geometry", 2026, "N 932"],
+  // Science and Technology I (no 2017 on disk)
+  ["Science and Technology I", 2016], ["Science and Technology I", 2018],
+  ["Science and Technology I", 2019], ["Science and Technology I", 2020],
+  ["Science and Technology I", 2022], ["Science and Technology I", 2023],
+  ["Science and Technology I", 2024], ["Science and Technology I", 2025],
+  ["Science and Technology I", 2026],
+  // Science and Technology II (Biology)
+  ["Science and Technology II", 2016], ["Science and Technology II", 2017],
+  ["Science and Technology II", 2018], ["Science and Technology II", 2019],
+  ["Science and Technology II", 2020], ["Science and Technology II", 2022],
+  ["Science and Technology II", 2023], ["Science and Technology II", 2024],
+  ["Science and Technology II", 2025], ["Science and Technology II", 2026],
+];
+
+export const PAPERS: Record<string, Paper> = Object.fromEntries(
+  PAPER_SPECS.map(([subjectName, year, paperCode]) => {
+    const paper = mkPaper(subjectName, year, paperCode);
+    return [paper.id, paper];
+  }),
+);
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
 
