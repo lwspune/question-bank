@@ -44,7 +44,8 @@ function buildRows(paperId: string, paper: PaperData, subject?: string, numericO
     // Section-B backfill: commit ONLY the numeric (NAT) rows, leaving already-
     // committed+cleaned MCQ untouched (re-committing them would recompute the
     // content_hash from the raw extract, miss the dedup, and duplicate rows).
-    .filter((r) => !numericOnly || r.status === "numeric");
+    // A numericOverride recovers a Section-B row whose answer token didn't parse.
+    .filter((r) => !numericOnly || r.status === "numeric" || paper.numericOverrides?.[String(r.questionNumber)] !== undefined);
 
   return eligible.map((r) => {
     const key = String(r.questionNumber);

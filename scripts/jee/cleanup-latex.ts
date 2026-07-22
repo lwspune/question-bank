@@ -11,13 +11,13 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
-import { contentHash } from "../../src/lib/upload/hash";
+import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeMathFunctions } from "./lib";
 
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
 
 type Opt = { id: string; label: string; text: string; is_correct: boolean };
-type Row = { id: string; question_number: string; text: string; context: string | null; solution: string | null; options: Opt[] };
+type Row = { id: string; question_number: string; question_format: string; text: string; context: string | null; solution: string | null; options: Opt[] };
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -102,7 +102,7 @@ async function main() {
 
   const { data, error } = await client
     .from("questions")
-    .select("id, question_number, text, context, solution, options(id, label, text, is_correct)")
+    .select("id, question_number, question_format, text, context, solution, options(id, label, text, is_correct)")
     .eq("exam_id", EXAM_ID);
   if (error) throw new Error(error.message);
   const rows = (data ?? []) as Row[];
@@ -148,8 +148,14 @@ async function main() {
     if (newContext !== r.context) update.context = newContext;
     if (newSolution !== r.solution) update.solution = newSolution;
     if (textChanged || optsChanged) {
-      const correct = newOpts.find((o) => o.is_correct)?.label ?? "";
-      update.content_hash = contentHash(newText, newOpts.map((o) => o.newText), correct);
+      // Numeric (NAT) rows hash via numericContentHash (no options); using the
+      // MCQ contentHash would write a wrong dedup key and duplicate on re-commit.
+      if (r.question_format === "numeric") {
+        update.content_hash = numericContentHash(newText, null);
+      } else {
+        const correct = newOpts.find((o) => o.is_correct)?.label ?? "";
+        update.content_hash = contentHash(newText, newOpts.map((o) => o.newText), correct);
+      }
       hashRecomputed++;
     }
     if (Object.keys(update).length) {
