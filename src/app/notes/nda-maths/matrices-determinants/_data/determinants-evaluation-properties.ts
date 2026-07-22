@@ -9,7 +9,8 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
     "Fifty-nine PYQs — the largest and hardest area in the chapter (46% HARD). This is where the " +
     "marks and the traps both live: determinant of products and scalars (det(kA) = kⁿ det A is the " +
     "#1 trap), the row/column properties, the factor-theorem and Vandermonde determinants, cyclic " +
-    "determinants, and telescoping sums of determinants. The eight concepts below cover the lot.",
+    "determinants, telescoping sums of determinants, differentiating a determinant, and " +
+    "binomial-coefficient (Pascal) determinants. The ten concepts below cover the lot.",
   concepts: [
     // C1 — evaluating
     {
@@ -115,10 +116,10 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
             "single most common determinant mistake in this bank.",
         },
         {
-          title: "\\(\\det(I+AA^T) = 1 + A^TA\\) — use the dot product, not the trace",
+          title: "\\(\\det(I+AA^T) = 1 + A^TA\\) — don't forget the \\(+1\\)",
           body:
-            "For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to add " +
-            "\\(\\operatorname{tr}(AA^T)\\) without the \\(+1\\), or to expand the full \\(3\\times3\\) by hand.",
+            "For a column vector \\(A\\), \\(\\det(I+AA^T)=1+A^TA=1+\\sum a_i^2\\). The common slip is to report " +
+            "just \\(\\sum a_i^2\\) (dropping the \\(+1\\)), or to expand the full \\(3\\times3\\) by hand.",
         },
         {
           title: "\\(\\det(A+B) \\neq \\det A + \\det B\\)",
@@ -149,7 +150,6 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         label: "Core row/column properties",
         latex: "R_i \\leftrightarrow R_j \\Rightarrow \\det \\to -\\det \\qquad \\text{two identical/proportional rows} \\Rightarrow \\det = 0 \\qquad \\det(kR_i\\text{-scaled}) = k\\det A",
       },
-      visualizationSlug: "sarrus-rule",
       authoredExample: {
         prompt:
           "If \\(\\Delta = \\begin{vmatrix}a&b&c\\\\d&e&f\\\\g&h&i\\end{vmatrix}\\), what happens to \\(\\Delta\\) if you multiply row 1 by 3 and swap rows 2 and 3?",
@@ -365,8 +365,9 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "pattern (rank 1) the determinant is 0; if entries are bounded (all \\(\\pm 1\\)), the " +
         "determinant is bounded too. Spot the structure instead of expanding.",
       definition:
-        "- **Rank-1 patterns:** if \\(a_{ij}\\) factors as \\(f(i)g(j)\\) (e.g. \\(a_{ij} = 2(i+j)\\) is a " +
-        "sum of two rank-1 pieces), the \\(3\\times3\\) determinant collapses to 0.\n" +
+        "- **Low-rank patterns:** if \\(a_{ij}\\) is a single product \\(f(i)g(j)\\) (rank 1), or a sum of a " +
+        "few such pieces (e.g. \\(a_{ij} = 2(i+j) = 2i + 2j\\) is rank 2), the \\(3\\times3\\) determinant " +
+        "collapses to 0 — rank \\(< 3\\) forces the rows dependent.\n" +
         "- **Bounded entries:** a third-order determinant with entries all \\(\\pm1\\) lies in a small " +
         "range; the maximum magnitude is 4.\n" +
         "- **Counting determinants** from a fixed set of numbers uses permutations of the placements.",
