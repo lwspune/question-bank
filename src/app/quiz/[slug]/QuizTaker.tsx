@@ -5,7 +5,9 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { Check, X, Minus, BookOpen, Share2, Sparkles, Loader2, ChevronLeft, ArrowRight } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import { useSignedIn } from "@/components/auth/useSignedIn";
 import { isValidIndianMobile } from "@/lib/quiz/leads";
+import { resolveQuizGate, priorConsentValid, type StoredIdentity } from "@/lib/quiz/gate";
 import { scoreVerdict, type VerdictTone } from "@/lib/quiz/verdict";
 import type { PublicQuiz } from "@/lib/quiz/publicQuiz";
 import type { SubmitResult } from "@/lib/quiz/submit";
@@ -13,7 +15,6 @@ import type { SubmitResult } from "@/lib/quiz/submit";
 const LETTERS = ["A", "B", "C", "D"] as const;
 type Letter = (typeof LETTERS)[number];
 const STORE_KEY = "qb:lead:v1";
-type StoredIdentity = { name: string; mobile: string };
 type Phase = "taking" | "review" | "gating" | "results";
 
 const TONE: Record<VerdictTone, { stroke: string; text: string; soft: string }> = {
@@ -30,6 +31,7 @@ export default function QuizTaker({ slug, quiz }: { slug: string; quiz: PublicQu
   const [index, setIndex] = useState(0);
   const [result, setResult] = useState<SubmitResult | null>(null);
   const [stored, setStored] = useState<StoredIdentity | null>(null);
+  const { signedIn, loading: authLoading } = useSignedIn();
 
   useEffect(() => {
     try {
@@ -40,6 +42,7 @@ export default function QuizTaker({ slug, quiz }: { slug: string; quiz: PublicQu
     }
   }, []);
 
+  const mode = resolveQuizGate({ signedIn, stored });
   const total = quiz.questions.length;
   const answeredCount = Object.keys(answers).length;
 
@@ -69,6 +72,18 @@ export default function QuizTaker({ slug, quiz }: { slug: string; quiz: PublicQu
             setPhase("taking");
           }}
           onSubmit={() => setPhase("gating")}
+        />
+      ) : authLoading ? (
+        <GatingSpinner />
+      ) : mode === "skip" ? (
+        <AutoGrade
+          slug={slug}
+          answers={answers}
+          onDone={(r) => {
+            setResult(r);
+            setPhase("results");
+          }}
+          onError={() => setPhase("review")}
         />
       ) : (
         <Gate
@@ -302,6 +317,66 @@ function ReviewView({
   );
 }
 
+/* ─────────────────  Auth-loading placeholder + signed-in auto-grade  ───────────────── */
+
+function GatingSpinner() {
+  return (
+    <div className="flex items-center justify-center rounded-2xl border bg-card p-10">
+      <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" aria-label="Loading" />
+    </div>
+  );
+}
+
+/**
+ * Signed-in students skip the lead sheet entirely: POST slug + answers to the
+ * grade-only endpoint (the route reads their session and captures no lead), then
+ * straight to results. Same-origin fetch carries the session cookie.
+ */
+function AutoGrade({
+  slug,
+  answers,
+  onDone,
+  onError,
+}: {
+  slug: string;
+  answers: Record<string, string>;
+  onDone: (r: SubmitResult) => void;
+  onError: () => void;
+}) {
+  const fired = useRef(false);
+  useEffect(() => {
+    if (fired.current) return; // StrictMode double-mount guard — grade once
+    fired.current = true;
+    (async () => {
+      try {
+        const res = await fetch("/api/public-quiz/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug, answers }),
+        });
+        const json = await res.json();
+        if (!res.ok) {
+          toast.error(json.error ?? "Something went wrong. Please try again.");
+          onError();
+          return;
+        }
+        onDone(json as SubmitResult);
+      } catch {
+        toast.error("Network error. Please try again.");
+        onError();
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border bg-card p-10 text-center">
+      <Loader2 className="h-6 w-6 animate-spin text-brand-accent" aria-hidden />
+      <p className="text-sm text-muted-foreground">Grading your quiz…</p>
+    </div>
+  );
+}
+
 /* ─────────────────────────  Gate (bottom sheet)  ───────────────────────── */
 
 function Gate({
@@ -322,6 +397,8 @@ function Gate({
   const [consent, setConsent] = useState(false);
   const [editing, setEditing] = useState(!stored);
   const [busy, setBusy] = useState(false);
+  // A same-number returner who already opted in doesn't re-tick consent (sticky).
+  const priorConsent = priorConsentValid(stored);
 
   // Lock scroll + Escape to cancel while the sheet is up.
   useEffect(() => {
@@ -338,7 +415,8 @@ function Gate({
   async function submit() {
     if (!name.trim()) return toast.error("Please enter your name.");
     if (!isValidIndianMobile(mobile)) return toast.error("Enter a valid 10-digit mobile number.");
-    if (!consent) return toast.error("Please accept the consent to see your score.");
+    const consentGiven = consent || (!!stored && !editing && priorConsent);
+    if (!consentGiven) return toast.error("Please accept the consent to see your score.");
     setBusy(true);
     try {
       const utm = new URLSearchParams(window.location.search).get("utm_source") ?? undefined;
@@ -352,7 +430,7 @@ function Gate({
         toast.error(json.error ?? "Something went wrong. Please try again.");
         return;
       }
-      onDone(json as SubmitResult, { name: name.trim(), mobile });
+      onDone(json as SubmitResult, { name: name.trim(), mobile, consentedAt: new Date().toISOString() });
     } catch {
       toast.error("Network error. Please try again.");
     } finally {
@@ -399,7 +477,7 @@ function Gate({
               <p className="text-sm">
                 Continue as <span className="font-medium">{stored.name}</span> · {stored.mobile}
               </p>
-              {consentField}
+              {!priorConsent && consentField}
               <div className="flex items-center gap-3 pt-1">
                 <button
                   onClick={submit}

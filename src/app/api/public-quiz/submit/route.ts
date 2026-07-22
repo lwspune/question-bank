@@ -1,15 +1,22 @@
 /**
- * POST /api/public-quiz/submit — the public quiz funnel's one anon write.
+ * POST /api/public-quiz/submit — grade a public quiz.
  *
- * Flow: rate-limit (IP) → validate (zod) → normalise/validate mobile + require
- * consent → fetch the answer key SERVER-SIDE (getGradingBySlug, gated on
- * public_slug) → grade → record the lead (retake-aware) → return score + the
- * key + /notes links + the billingLive flag. The answer key is revealed ONLY in
- * this response, after the visitor is captured.
+ * Two paths, chosen by whether the caller is signed in:
+ *   - ANON: rate-limit (IP) → validate (zod) → normalise/validate mobile +
+ *     require consent → grade → record the lead (retake-aware). The lead capture
+ *     IS the price of the score for an anonymous visitor.
+ *   - SIGNED-IN: a known account, so we skip capture entirely — validate only
+ *     slug + answers, grade, and return, writing NO lead. (Signed-in students
+ *     deliberately never appear in the /dashboard/leads funnel.)
+ *
+ * Either way the answer key is fetched SERVER-SIDE (getGradingBySlug, gated on
+ * public_slug) and revealed ONLY in this response — never shipped to the static
+ * page.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getSessionUser } from "@/lib/auth";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { isBillingConfigured } from "@/lib/billing/razorpay";
@@ -29,6 +36,12 @@ const BodySchema = z.object({
   consent: z.literal(true), // must affirmatively consent (DPDP)
   answers: z.record(z.string(), z.string()),
   utmSource: z.string().max(120).optional(),
+});
+
+/** Signed-in grade-only path — no identity capture, no consent, no lead. */
+const AuthedSchema = z.object({
+  slug: z.string().min(1).max(120),
+  answers: z.record(z.string(), z.string()),
 });
 
 export async function POST(request: NextRequest) {
@@ -53,6 +66,30 @@ export async function POST(request: NextRequest) {
     } catch {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
+
+    // getSessionUser reads next/headers cookies; outside a real request scope
+    // (unit tests) that throws — treat the throw as anon, mirroring /api/export.
+    let signedIn = false;
+    try {
+      signedIn = !!(await getSessionUser());
+    } catch {
+      signedIn = false;
+    }
+
+    // Signed-in student: grade only, capture nothing.
+    if (signedIn) {
+      const authed = AuthedSchema.safeParse(raw);
+      if (!authed.success) {
+        return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+      }
+      const grading = await getGradingBySlug(admin, authed.data.slug);
+      if (!grading) {
+        return NextResponse.json({ error: "Quiz not found." }, { status: 404 });
+      }
+      const result = buildSubmitResult(grading, authed.data.answers, isBillingConfigured());
+      return NextResponse.json(result, { status: 200 });
+    }
+
     const parsed = BodySchema.safeParse(raw);
     if (!parsed.success) {
       return NextResponse.json(
