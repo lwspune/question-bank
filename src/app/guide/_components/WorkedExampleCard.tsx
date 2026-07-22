@@ -22,6 +22,8 @@ const DIFFICULTY_STYLES = {
 } as const;
 
 export default function WorkedExampleCard({ rank, example, presentMode }: Props) {
+  // Three-stage reveal: options (neutral) → answer (correct highlighted) → solution.
+  const [showOptions, setShowOptions] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const correct = example.options.find((o) => o.isCorrect);
@@ -80,12 +82,12 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
         )}
       </div>
 
-      {/* Options reveal */}
+      {/* Options reveal — stage 1 (neutral) */}
       <div className={cn("border-t", presentMode ? "px-6 py-4" : "px-4 py-3")}>
-        {!showAnswer ? (
+        {!showOptions ? (
           <button
             type="button"
-            onClick={() => setShowAnswer(true)}
+            onClick={() => setShowOptions(true)}
             className={cn(
               "inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
               presentMode ? "text-xl" : "text-xs"
@@ -95,50 +97,73 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
               className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
               aria-hidden
             />
-            Show options and answer
+            Show options
           </button>
         ) : (
-          <ol
-            className={cn(presentMode ? "space-y-3 text-2xl" : "space-y-1.5 text-sm")}
-          >
-            {example.options.map((o) => (
-              <li
-                key={o.label}
+          <>
+            <ol
+              className={cn(presentMode ? "space-y-3 text-2xl" : "space-y-1.5 text-sm")}
+            >
+              {example.options.map((o) => {
+                const highlight = o.isCorrect && showAnswer;
+                return (
+                  <li
+                    key={o.label}
+                    className={cn(
+                      "flex gap-2 rounded-md",
+                      presentMode ? "px-3 py-2" : "px-2 py-1",
+                      highlight && "bg-emerald-50 dark:bg-emerald-950/30"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "font-semibold tabular-nums",
+                        highlight
+                          ? "text-emerald-700 dark:text-emerald-400"
+                          : "text-muted-foreground"
+                      )}
+                    >
+                      {o.label}.
+                    </span>
+                    <span className="font-serif">
+                      <KatexRenderer text={o.text} />
+                    </span>
+                    {highlight && (
+                      <CheckCircle2
+                        className={cn(
+                          "ml-auto shrink-0 text-emerald-600 dark:text-emerald-400",
+                          presentMode ? "h-7 w-7" : "h-4 w-4"
+                        )}
+                        aria-label="Correct answer"
+                      />
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+
+            {/* Answer reveal — stage 2 (highlight the correct option) */}
+            {!showAnswer && (
+              <button
+                type="button"
+                onClick={() => setShowAnswer(true)}
                 className={cn(
-                  "flex gap-2 rounded-md",
-                  presentMode ? "px-3 py-2" : "px-2 py-1",
-                  o.isCorrect && "bg-emerald-50 dark:bg-emerald-950/30"
+                  "mt-3 inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
+                  presentMode ? "text-xl" : "text-xs"
                 )}
               >
-                <span
-                  className={cn(
-                    "font-semibold tabular-nums",
-                    o.isCorrect
-                      ? "text-emerald-700 dark:text-emerald-400"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {o.label}.
-                </span>
-                <span className="font-serif">
-                  <KatexRenderer text={o.text} />
-                </span>
-                {o.isCorrect && (
-                  <CheckCircle2
-                    className={cn(
-                      "ml-auto shrink-0 text-emerald-600 dark:text-emerald-400",
-                      presentMode ? "h-7 w-7" : "h-4 w-4"
-                    )}
-                    aria-label="Correct answer"
-                  />
-                )}
-              </li>
-            ))}
-          </ol>
+                <ChevronDown
+                  className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
+                  aria-hidden
+                />
+                Show answer
+              </button>
+            )}
+          </>
         )}
       </div>
 
-      {/* Solution reveal */}
+      {/* Solution reveal — stage 3 */}
       {showAnswer && example.solution && (
         <div
           className={cn(
