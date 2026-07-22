@@ -24,17 +24,25 @@ describe.skipIf(!HAS_ENV)("get_pyq_years RPC", () => {
     );
 
     // Ground truth: every distinct non-null pyq_year currently in the DB.
-    // .range(0, 99999) bypasses the PostgREST 1000-row cap for this fetch
-    // (test code only — production goes through the RPC).
-    const { data, error } = await client
-      .from("questions")
-      .select("pyq_year")
-      .not("pyq_year", "is", null)
-      .range(0, 99999);
-    expect(error).toBeNull();
-    truthYears = Array.from(
-      new Set((data ?? []).map((r) => r.pyq_year as number))
-    ).sort((a, b) => b - a);
+    // PostgREST caps a single response at 1000 rows regardless of .range(), so a
+    // one-shot fetch would itself be truncated (and miss the oldest years once
+    // the bank exceeds 1000 year-tagged rows — exactly the bug the RPC fixes).
+    // Page through in 1000-row windows (the documented cap remedy) to see EVERY
+    // year. Production goes through the RPC; this is test-only ground truth.
+    const seen = new Set<number>();
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await client
+        .from("questions")
+        .select("pyq_year")
+        .not("pyq_year", "is", null)
+        .order("id", { ascending: true })
+        .range(from, from + 999);
+      expect(error).toBeNull();
+      const rows = data ?? [];
+      for (const r of rows) seen.add(r.pyq_year as number);
+      if (rows.length < 1000) break;
+    }
+    truthYears = Array.from(seen).sort((a, b) => b - a);
   });
 
   it("returns every distinct non-null pyq_year in the DB", async () => {
