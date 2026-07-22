@@ -66,6 +66,27 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise on Chapter 3", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
     { group: "Miscellaneous Exercise on Chapter 3", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
   ],
+
+  // ── Ch.4 Determinants (12th, Part 1). Book reading order: each numbered section
+  //    (§4.2 Determinant → §4.3 Area → §4.4 Minors & Cofactors → §4.5 Adjoint &
+  //    Inverse → §4.6 Applications) with its worked Examples then its Exercise,
+  //    followed by the Miscellaneous Exercise. Example refs are section-banded
+  //    (4.1/4.2/4.3/4.4/4.5 Eg — band = the exercise the examples lead into) so
+  //    each solved block routes cleanly. This edition's Miscellaneous has no
+  //    solved-example block (only the exercise). Verified against the outline.
+  determinants: [
+    { group: "4.2 Determinant", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 Eg"] },
+    { group: "4.2 Determinant", label: "Exercise 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 Q"] },
+    { group: "4.3 Area of a Triangle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 Eg"] },
+    { group: "4.3 Area of a Triangle", label: "Exercise 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 Q"] },
+    { group: "4.4 Minors and Cofactors", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.3 Eg"] },
+    { group: "4.4 Minors and Cofactors", label: "Exercise 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 Q"] },
+    { group: "4.5 Adjoint and Inverse of a Matrix", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.4 Eg"] },
+    { group: "4.5 Adjoint and Inverse of a Matrix", label: "Exercise 4.4", kind: "exercise", refPrefixes: ["Ex 4.4 Q"] },
+    { group: "4.6 Applications of Determinants and Matrices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.5 Eg"] },
+    { group: "4.6 Applications of Determinants and Matrices", label: "Exercise 4.5", kind: "exercise", refPrefixes: ["Ex 4.5 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 4", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

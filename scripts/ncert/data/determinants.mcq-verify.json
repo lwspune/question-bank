@@ -1,0 +1,51 @@
+[
+  {
+    "id": "8344a914-2362-4ac0-906a-91289ca5d3bd",
+    "ref": "Ex 4.1 Q8",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "Evaluate both determinants. The left side is \\(\\begin{vmatrix} x & 2 \\\\ 18 & x \\end{vmatrix} = x^2 - 36\\). The right side is \\(\\begin{vmatrix} 6 & 2 \\\\ 18 & 6 \\end{vmatrix} = 36 - 36 = 0\\). So \\(x^2 - 36 = 0\\), giving \\(x = \\pm 6\\). Hence (B)."
+  },
+  {
+    "id": "79266382-6de1-413c-9f65-03bdf402aaed",
+    "ref": "Ex 4.2 Q5",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "Area \\(= \\frac{1}{2}\\left| x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) \\right|\\). With vertices \\((2, -6), (5, 4), (k, 4)\\): area \\(= \\frac{1}{2}|2(4 - 4) + 5(4 + 6) + k(-6 - 4)| = \\frac{1}{2}|50 - 10k|\\). Setting this equal to \\(35\\) gives \\(|50 - 10k| = 70\\), so \\(50 - 10k = \\pm 70\\), i.e. \\(k = -2\\) or \\(k = 12\\). Hence (D) \\(12, -2\\)."
+  },
+  {
+    "id": "fc963c75-2e2a-458c-96e3-fcb080c9da48",
+    "ref": "Ex 4.3 Q5",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "A determinant equals the sum of the products of the elements of any one row (or column) with their own cofactors. Expanding along the first column gives \\(\\Delta = a_{11} A_{11} + a_{21} A_{21} + a_{31} A_{31}\\). (Options A and C mix elements with the cofactors of a different row/column — those alien-cofactor sums are \\(0\\).) Hence (D)."
+  },
+  {
+    "id": "44f8da6e-f989-49b1-97e4-2c8dbf2d0f11",
+    "ref": "Ex 4.4 Q17",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "For a nonsingular square matrix of order \\(n\\), \\(|\\operatorname{adj} A| = |A|^{n-1}\\). Here \\(n = 3\\), so \\(|\\operatorname{adj} A| = |A|^{2}\\). Hence (B)."
+  },
+  {
+    "id": "3a992c0a-db5b-4c41-a8ae-d95138ec4619",
+    "ref": "Ex 4.4 Q18",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "Since \\(A A^{-1} = I\\), taking determinants gives \\(\\det(A)\\det(A^{-1}) = \\det(I) = 1\\). Therefore \\(\\det(A^{-1}) = \\dfrac{1}{\\det(A)}\\). Hence (B)."
+  },
+  {
+    "id": "51907651-071c-428f-b7bc-395bf300c809",
+    "ref": "Misc Q8",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "For a diagonal matrix with nonzero diagonal entries, the inverse is the diagonal matrix of the reciprocals: \\(A^{-1} = \\begin{bmatrix} x^{-1} & 0 & 0 \\\\ 0 & y^{-1} & 0 \\\\ 0 & 0 & z^{-1} \\end{bmatrix}\\) (check: \\(A A^{-1} = I\\)). Hence (A)."
+  },
+  {
+    "id": "f74598b3-5d83-4eb2-8e5e-2ef5eadc1388",
+    "ref": "Misc Q9",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "Expanding, \\(\\det(A) = 1(1 + \\sin^2\\theta) - \\sin\\theta(-\\sin\\theta + \\sin\\theta) + 1(\\sin^2\\theta + 1) = 2 + 2\\sin^2\\theta\\). Since \\(\\sin^2\\theta \\in [0, 1]\\) for \\(0 \\le \\theta \\le 2\\pi\\), \\(\\det(A) \\in [2, 4]\\). Hence (D)."
+  }
+]

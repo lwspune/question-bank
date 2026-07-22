@@ -1,0 +1,111 @@
+[
+  {
+    "ref": "4.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "EASY",
+    "stem": "Find the area of the triangle whose vertices are \\((3, 8)\\), \\((-4, 2)\\) and \\((5, 1)\\).",
+    "solution": "The area of triangle is given by\n\\[\\Delta = \\frac{1}{2}\\begin{vmatrix} 3 & 8 & 1 \\\\ -4 & 2 & 1 \\\\ 5 & 1 & 1 \\end{vmatrix}\\]\n\\[= \\frac{1}{2}\\left[3(2-1) - 8(-4-5) + 1(-4-10)\\right]\\]\n\\[= \\frac{1}{2}(3 + 72 - 14) = \\frac{61}{2}\\]"
+  },
+  {
+    "ref": "4.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of the line joining \\(A(1, 3)\\) and \\(B(0, 0)\\) using determinants and find \\(k\\) if \\(D(k, 0)\\) is a point such that area of triangle ABD is 3 sq units.",
+    "solution": "Let \\(P(x, y)\\) be any point on AB. Then, area of triangle ABP is zero (Why?). So\n\\[\\frac{1}{2}\\begin{vmatrix} 0 & 0 & 1 \\\\ 1 & 3 & 1 \\\\ x & y & 1 \\end{vmatrix} = 0\\]\nThis gives \\(\\frac{1}{2}(y - 3x) = 0\\) or \\(y = 3x\\), which is the equation of required line AB.\nAlso, since the area of the triangle ABD is 3 sq. units, we have\n\\[\\frac{1}{2}\\begin{vmatrix} 1 & 3 & 1 \\\\ 0 & 0 & 1 \\\\ k & 0 & 1 \\end{vmatrix} = \\pm 3\\]\nThis gives, \\(\\frac{-3k}{2} = \\pm 3\\), i.e., \\(k = \\mp 2\\)."
+  },
+  {
+    "ref": "Ex 4.2 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "EASY",
+    "context": "Find area of the triangle with vertices at the point given in each of the following:",
+    "setLabel": "Ex 4.2 Q1",
+    "stem": "\\((1, 0)\\), \\((6, 0)\\), \\((4, 3)\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "EASY",
+    "context": "Find area of the triangle with vertices at the point given in each of the following:",
+    "setLabel": "Ex 4.2 Q1",
+    "stem": "\\((2, 7)\\), \\((1, 1)\\), \\((10, 8)\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "EASY",
+    "context": "Find area of the triangle with vertices at the point given in each of the following:",
+    "setLabel": "Ex 4.2 Q1",
+    "stem": "\\((-2, -3)\\), \\((3, 2)\\), \\((-1, -8)\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "stem": "Show that points \\(A(a, b + c)\\), \\(B(b, c + a)\\), \\(C(c, a + b)\\) are collinear."
+  },
+  {
+    "ref": "Ex 4.2 Q3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "context": "Find values of \\(k\\) if area of triangle is 4 sq. units and vertices are:",
+    "setLabel": "Ex 4.2 Q3",
+    "stem": "\\((k, 0)\\), \\((4, 0)\\), \\((0, 2)\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "context": "Find values of \\(k\\) if area of triangle is 4 sq. units and vertices are:",
+    "setLabel": "Ex 4.2 Q3",
+    "stem": "\\((-2, 0)\\), \\((0, 4)\\), \\((0, k)\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 4.2 Q4",
+    "stem": "Find equation of line joining \\((1, 2)\\) and \\((3, 6)\\) using determinants."
+  },
+  {
+    "ref": "Ex 4.2 Q4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 4.2 Q4",
+    "stem": "Find equation of line joining \\((3, 1)\\) and \\((9, 3)\\) using determinants."
+  },
+  {
+    "ref": "Ex 4.2 Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Area of a Triangle",
+    "difficulty": "MODERATE",
+    "stem": "If area of triangle is 35 sq units with vertices \\((2, -6)\\), \\((5, 4)\\) and \\((k, 4)\\). Then \\(k\\) is",
+    "options": [
+      {"label": "A", "text": "\\(12\\)"},
+      {"label": "B", "text": "\\(-2\\)"},
+      {"label": "C", "text": "\\(-12, -2\\)"},
+      {"label": "D", "text": "\\(12, -2\\)"}
+    ],
+    "answer": "D"
+  }
+]

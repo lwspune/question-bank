@@ -1,0 +1,174 @@
+[
+  {
+    "ref": "4.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\begin{vmatrix} 2 & 4 \\\\ -1 & 2 \\end{vmatrix}\\).",
+    "solution": "We have \\(\\begin{vmatrix} 2 & 4 \\\\ -1 & 2 \\end{vmatrix} = 2(2) - 4(-1) = 4 + 4 = 8\\)."
+  },
+  {
+    "ref": "4.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\begin{vmatrix} x & x+1 \\\\ x-1 & x \\end{vmatrix}\\).",
+    "solution": "We have \\(\\begin{vmatrix} x & x+1 \\\\ x-1 & x \\end{vmatrix} = x(x) - (x+1)(x-1) = x^{2} - (x^{2} - 1) = x^{2} - x^{2} + 1 = 1\\)."
+  },
+  {
+    "ref": "4.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the determinant \\(\\Delta = \\begin{vmatrix} 1 & 2 & 4 \\\\ -1 & 3 & 0 \\\\ 4 & 1 & 0 \\end{vmatrix}\\).",
+    "solution": "Note that in the third column, two entries are zero. So expanding along third column \\(C_3\\), we get \\(\\Delta = 4\\begin{vmatrix} -1 & 3 \\\\ 4 & 1 \\end{vmatrix} - 0\\begin{vmatrix} 1 & 2 \\\\ 4 & 1 \\end{vmatrix} + 0\\begin{vmatrix} 1 & 2 \\\\ -1 & 3 \\end{vmatrix} = 4(-1 - 12) - 0 + 0 = -52\\)."
+  },
+  {
+    "ref": "4.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\Delta = \\begin{vmatrix} 0 & \\sin\\alpha & -\\cos\\alpha \\\\ -\\sin\\alpha & 0 & \\sin\\beta \\\\ \\cos\\alpha & -\\sin\\beta & 0 \\end{vmatrix}\\).",
+    "solution": "Expanding along \\(R_1\\), we get \\(\\Delta = 0\\begin{vmatrix} 0 & \\sin\\beta \\\\ -\\sin\\beta & 0 \\end{vmatrix} - \\sin\\alpha\\begin{vmatrix} -\\sin\\alpha & \\sin\\beta \\\\ \\cos\\alpha & 0 \\end{vmatrix} - \\cos\\alpha\\begin{vmatrix} -\\sin\\alpha & 0 \\\\ \\cos\\alpha & -\\sin\\beta \\end{vmatrix}\\) \\( = 0 - \\sin\\alpha(0 - \\sin\\beta\\cos\\alpha) - \\cos\\alpha(\\sin\\alpha\\sin\\beta - 0) = \\sin\\alpha\\sin\\beta\\cos\\alpha - \\cos\\alpha\\sin\\alpha\\sin\\beta = 0\\)."
+  },
+  {
+    "ref": "4.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "Find values of \\(x\\) for which \\(\\begin{vmatrix} 3 & x \\\\ x & 1 \\end{vmatrix} = \\begin{vmatrix} 3 & 2 \\\\ 4 & 1 \\end{vmatrix}\\).",
+    "solution": "We have \\(\\begin{vmatrix} 3 & x \\\\ x & 1 \\end{vmatrix} = \\begin{vmatrix} 3 & 2 \\\\ 4 & 1 \\end{vmatrix}\\), i.e. \\(3 - x^{2} = 3 - 8\\), i.e. \\(x^{2} = 8\\). Hence \\(x = \\pm 2\\sqrt{2}\\)."
+  },
+  {
+    "ref": "Ex 4.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "EASY",
+    "stem": "Evaluate the determinant \\(\\begin{vmatrix} 2 & 4 \\\\ -5 & -1 \\end{vmatrix}\\)."
+  },
+  {
+    "ref": "Ex 4.1 Q2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "EASY",
+    "context": "Evaluate the determinant.",
+    "setLabel": "Ex 4.1 Q2",
+    "stem": "\\(\\begin{vmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the determinant.",
+    "setLabel": "Ex 4.1 Q2",
+    "stem": "\\(\\begin{vmatrix} x^{2} - x + 1 & x - 1 \\\\ x + 1 & x + 1 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 \\\\ 4 & 2 \\end{bmatrix}\\), then show that \\(|2A| = 4|A|\\)."
+  },
+  {
+    "ref": "Ex 4.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 2 \\\\ 0 & 0 & 4 \\end{bmatrix}\\), then show that \\(|3A| = 27|A|\\)."
+  },
+  {
+    "ref": "Ex 4.1 Q5 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "EASY",
+    "context": "Evaluate the determinants.",
+    "setLabel": "Ex 4.1 Q5",
+    "stem": "\\(\\begin{vmatrix} 3 & -1 & -2 \\\\ 0 & 0 & -1 \\\\ 3 & -5 & 0 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q5 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the determinants.",
+    "setLabel": "Ex 4.1 Q5",
+    "stem": "\\(\\begin{vmatrix} 3 & -4 & 5 \\\\ 1 & 1 & -2 \\\\ 2 & 3 & 1 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q5 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the determinants.",
+    "setLabel": "Ex 4.1 Q5",
+    "stem": "\\(\\begin{vmatrix} 0 & 1 & 2 \\\\ -1 & 0 & -3 \\\\ -2 & 3 & 0 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q5 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the determinants.",
+    "setLabel": "Ex 4.1 Q5",
+    "stem": "\\(\\begin{vmatrix} 2 & -1 & -2 \\\\ 0 & 2 & -1 \\\\ 3 & -5 & 0 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 1 & -2 \\\\ 2 & 1 & -3 \\\\ 5 & 4 & -9 \\end{bmatrix}\\), find \\(|A|\\)."
+  },
+  {
+    "ref": "Ex 4.1 Q7 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "context": "Find values of \\(x\\), if the following holds.",
+    "setLabel": "Ex 4.1 Q7",
+    "stem": "\\(\\begin{vmatrix} 2 & 4 \\\\ 5 & 1 \\end{vmatrix} = \\begin{vmatrix} 2x & 4 \\\\ 6 & x \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q7 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "context": "Find values of \\(x\\), if the following holds.",
+    "setLabel": "Ex 4.1 Q7",
+    "stem": "\\(\\begin{vmatrix} 2 & 3 \\\\ 4 & 5 \\end{vmatrix} = \\begin{vmatrix} x & 3 \\\\ 2x & 5 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.1 Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Determinant and its Properties",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\begin{vmatrix} x & 2 \\\\ 18 & x \\end{vmatrix} = \\begin{vmatrix} 6 & 2 \\\\ 18 & 6 \\end{vmatrix}\\), then \\(x\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(6\\)"},
+      {"label": "B", "text": "\\(\\pm 6\\)"},
+      {"label": "C", "text": "\\(-6\\)"},
+      {"label": "D", "text": "\\(0\\)"}
+    ],
+    "answer": "B"
+  }
+]

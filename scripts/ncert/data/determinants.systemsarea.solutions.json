@@ -1,0 +1,127 @@
+[
+  {
+    "id": "af2d1e3f-4eb1-47a7-b4ce-e85cda07e801",
+    "ref": "Ex 4.2 Q1 (i)",
+    "solution": "Area \\(= \\frac{1}{2}\\left| \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} \\right|\\) with vertices \\((1, 0), (6, 0), (4, 3)\\).\n\\(\\Delta = \\begin{vmatrix} 1 & 0 & 1 \\\\ 6 & 0 & 1 \\\\ 4 & 3 & 1 \\end{vmatrix} = 1(0 \\cdot 1 - 1 \\cdot 3) - 0(6 \\cdot 1 - 1 \\cdot 4) + 1(6 \\cdot 3 - 0 \\cdot 4)\\)\n\\(= 1(-3) - 0 + 1(18) = -3 + 18 = 15\\).\nArea \\(= \\frac{1}{2}|15| = \\frac{15}{2}\\) sq. units."
+  },
+  {
+    "id": "d2ba2908-fbab-4061-88b8-7904d41525bf",
+    "ref": "Ex 4.2 Q1 (ii)",
+    "solution": "Vertices \\((2, 7), (1, 1), (10, 8)\\).\n\\(\\Delta = \\begin{vmatrix} 2 & 7 & 1 \\\\ 1 & 1 & 1 \\\\ 10 & 8 & 1 \\end{vmatrix} = 2(1 \\cdot 1 - 1 \\cdot 8) - 7(1 \\cdot 1 - 1 \\cdot 10) + 1(1 \\cdot 8 - 1 \\cdot 10)\\)\n\\(= 2(-7) - 7(-9) + 1(-2) = -14 + 63 - 2 = 47\\).\nArea \\(= \\frac{1}{2}|47| = \\frac{47}{2}\\) sq. units."
+  },
+  {
+    "id": "0ad1d50e-bd6f-4385-99ce-73211e85bc2a",
+    "ref": "Ex 4.2 Q1 (iii)",
+    "solution": "Vertices \\((-2, -3), (3, 2), (-1, -8)\\).\n\\(\\Delta = \\begin{vmatrix} -2 & -3 & 1 \\\\ 3 & 2 & 1 \\\\ -1 & -8 & 1 \\end{vmatrix}\\)\n\\(= -2(2 \\cdot 1 - 1 \\cdot (-8)) - (-3)(3 \\cdot 1 - 1 \\cdot (-1)) + 1(3 \\cdot (-8) - 2 \\cdot (-1))\\)\n\\(= -2(2 + 8) + 3(3 + 1) + 1(-24 + 2) = -2(10) + 3(4) + (-22) = -20 + 12 - 22 = -30\\).\nArea \\(= \\frac{1}{2}|-30| = 15\\) sq. units."
+  },
+  {
+    "id": "c05f5457-152b-4714-98b8-14a73c33876a",
+    "ref": "Ex 4.2 Q2",
+    "solution": "The points are collinear if the area of the triangle they form is zero, i.e. the determinant of the coordinate matrix is \\(0\\).\n\\(\\Delta = \\begin{vmatrix} a & b + c & 1 \\\\ b & c + a & 1 \\\\ c & a + b & 1 \\end{vmatrix}\\).\nApply \\(C_2 \\to C_2 + C_1\\):\n\\(\\Delta = \\begin{vmatrix} a & a + b + c & 1 \\\\ b & a + b + c & 1 \\\\ c & a + b + c & 1 \\end{vmatrix}\\).\nTake the common factor \\((a + b + c)\\) out of \\(C_2\\):\n\\(\\Delta = (a + b + c) \\begin{vmatrix} a & 1 & 1 \\\\ b & 1 & 1 \\\\ c & 1 & 1 \\end{vmatrix}\\).\nColumns \\(C_2\\) and \\(C_3\\) are identical, so the determinant is \\(0\\). Hence \\(\\Delta = 0\\) and the points \\(A, B, C\\) are collinear."
+  },
+  {
+    "id": "40cef6d3-09a0-4f3a-ae7e-62b1a4a0ee5f",
+    "ref": "Ex 4.2 Q3 (i)",
+    "solution": "Vertices \\((k, 0), (4, 0), (0, 2)\\), area \\(= 4\\) sq. units.\n\\(\\Delta = \\begin{vmatrix} k & 0 & 1 \\\\ 4 & 0 & 1 \\\\ 0 & 2 & 1 \\end{vmatrix} = k(0 \\cdot 1 - 1 \\cdot 2) - 0(4 \\cdot 1 - 1 \\cdot 0) + 1(4 \\cdot 2 - 0 \\cdot 0)\\)\n\\(= -2k + 8\\).\nArea \\(= \\frac{1}{2}|{-2k + 8}| = 4 \\Rightarrow |{-2k + 8}| = 8\\).\nSo \\(-2k + 8 = 8\\) or \\(-2k + 8 = -8\\), giving \\(k = 0\\) or \\(k = 8\\)."
+  },
+  {
+    "id": "b00d4f23-a994-4723-a19c-56a9b925a57a",
+    "ref": "Ex 4.2 Q3 (ii)",
+    "solution": "Vertices \\((-2, 0), (0, 4), (0, k)\\), area \\(= 4\\) sq. units.\n\\(\\Delta = \\begin{vmatrix} -2 & 0 & 1 \\\\ 0 & 4 & 1 \\\\ 0 & k & 1 \\end{vmatrix} = -2(4 \\cdot 1 - 1 \\cdot k) - 0(0 \\cdot 1 - 1 \\cdot 0) + 1(0 \\cdot k - 4 \\cdot 0)\\)\n\\(= -2(4 - k) = 2k - 8\\).\nArea \\(= \\frac{1}{2}|2k - 8| = 4 \\Rightarrow |2k - 8| = 8\\).\nSo \\(2k - 8 = 8\\) or \\(2k - 8 = -8\\), giving \\(k = 8\\) or \\(k = 0\\)."
+  },
+  {
+    "id": "68c49a55-7825-4d1a-a4d8-ea1bb4773391",
+    "ref": "Ex 4.2 Q4 (i)",
+    "solution": "The equation of the line through \\((1, 2)\\) and \\((3, 6)\\) is obtained by setting the area determinant of a general point \\((x, y)\\) with the two points to zero:\n\\(\\begin{vmatrix} x & y & 1 \\\\ 1 & 2 & 1 \\\\ 3 & 6 & 1 \\end{vmatrix} = 0\\).\nExpanding along \\(R_1\\):\n\\(x(2 \\cdot 1 - 1 \\cdot 6) - y(1 \\cdot 1 - 1 \\cdot 3) + 1(1 \\cdot 6 - 2 \\cdot 3) = 0\\)\n\\(x(-4) - y(-2) + (6 - 6) = 0 \\Rightarrow -4x + 2y = 0\\).\nDividing by \\(2\\): \\(y = 2x\\)."
+  },
+  {
+    "id": "73efc21d-0727-4709-9cc8-5320395e222a",
+    "ref": "Ex 4.2 Q4 (ii)",
+    "solution": "The equation of the line through \\((3, 1)\\) and \\((9, 3)\\) is given by:\n\\(\\begin{vmatrix} x & y & 1 \\\\ 3 & 1 & 1 \\\\ 9 & 3 & 1 \\end{vmatrix} = 0\\).\nExpanding along \\(R_1\\):\n\\(x(1 \\cdot 1 - 1 \\cdot 3) - y(3 \\cdot 1 - 1 \\cdot 9) + 1(3 \\cdot 3 - 1 \\cdot 9) = 0\\)\n\\(x(-2) - y(-6) + (9 - 9) = 0 \\Rightarrow -2x + 6y = 0\\).\nDividing by \\(-2\\): \\(x - 3y = 0\\)."
+  },
+  {
+    "id": "d9f9cd30-13e4-4d3f-a484-6a46b7099a4b",
+    "ref": "Ex 4.5 Q1",
+    "solution": "The system is \\(x + 2y = 2\\), \\(2x + 3y = 3\\), i.e. \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 3 \\end{bmatrix}\\).\n\\(|A| = 1 \\cdot 3 - 2 \\cdot 2 = 3 - 4 = -1 \\neq 0\\).\nSince \\(|A| \\neq 0\\), \\(A\\) is non-singular, so \\(A^{-1}\\) exists and the system has a unique solution. Hence the system is consistent."
+  },
+  {
+    "id": "56249837-5f34-4acd-a2ce-cc12cba27b8b",
+    "ref": "Ex 4.5 Q2",
+    "solution": "The system is \\(2x - y = 5\\), \\(x + y = 4\\), i.e. \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & -1 \\\\ 1 & 1 \\end{bmatrix}\\).\n\\(|A| = 2 \\cdot 1 - (-1) \\cdot 1 = 2 + 1 = 3 \\neq 0\\).\nSince \\(|A| \\neq 0\\), \\(A\\) is non-singular and the system has a unique solution. Hence the system is consistent."
+  },
+  {
+    "id": "01a3b580-7c64-426f-a994-fad50d3a7939",
+    "ref": "Ex 4.5 Q3",
+    "solution": "The system is \\(x + 3y = 5\\), \\(2x + 6y = 8\\), i.e. \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 3 \\\\ 2 & 6 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 5 \\\\ 8 \\end{bmatrix}\\).\n\\(|A| = 1 \\cdot 6 - 3 \\cdot 2 = 6 - 6 = 0\\).\nSince \\(|A| = 0\\), compute \\((\\operatorname{adj} A) B\\). Here \\(\\operatorname{adj} A = \\begin{bmatrix} 6 & -3 \\\\ -2 & 1 \\end{bmatrix}\\).\n\\((\\operatorname{adj} A) B = \\begin{bmatrix} 6 & -3 \\\\ -2 & 1 \\end{bmatrix} \\begin{bmatrix} 5 \\\\ 8 \\end{bmatrix} = \\begin{bmatrix} 30 - 24 \\\\ -10 + 8 \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ -2 \\end{bmatrix} \\neq O\\).\nSince \\(|A| = 0\\) and \\((\\operatorname{adj} A) B \\neq O\\), the system is inconsistent (has no solution)."
+  },
+  {
+    "id": "d90c0dd8-b0e0-4944-af36-75bf6c97870e",
+    "ref": "Ex 4.5 Q4",
+    "solution": "The system is \\(x + y + z = 1\\), \\(2x + 3y + 2z = 2\\), \\(ax + ay + 2az = 4\\), with \\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ a & a & 2a \\end{bmatrix}\\).\nTaking \\(a\\) common from \\(R_3\\): \\(|A| = a \\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ 1 & 1 & 2 \\end{vmatrix}\\).\n\\(\\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ 1 & 1 & 2 \\end{vmatrix} = 1(3 \\cdot 2 - 2 \\cdot 1) - 1(2 \\cdot 2 - 2 \\cdot 1) + 1(2 \\cdot 1 - 3 \\cdot 1) = 1(4) - 1(2) + 1(-1) = 1\\).\nSo \\(|A| = a\\). For \\(a \\neq 0\\), \\(|A| \\neq 0\\), so \\(A\\) is non-singular and the system has a unique solution. Hence the system is consistent."
+  },
+  {
+    "id": "2b2995dc-f7e5-42e0-b43e-615fc992adad",
+    "ref": "Ex 4.5 Q5",
+    "solution": "The system is \\(3x - y - 2z = 2\\), \\(2y - z = -1\\), \\(3x - 5y = 3\\), with \\(A = \\begin{bmatrix} 3 & -1 & -2 \\\\ 0 & 2 & -1 \\\\ 3 & -5 & 0 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 \\\\ -1 \\\\ 3 \\end{bmatrix}\\).\n\\(|A| = 3(2 \\cdot 0 - (-1)(-5)) - (-1)(0 \\cdot 0 - (-1) \\cdot 3) + (-2)(0 \\cdot (-5) - 2 \\cdot 3)\\)\n\\(= 3(-5) + 1(3) - 2(-6) = -15 + 3 + 12 = 0\\).\nSince \\(|A| = 0\\), compute \\((\\operatorname{adj} A) B\\). The cofactor matrix is \\(\\begin{bmatrix} -5 & -3 & -6 \\\\ 10 & 6 & 12 \\\\ 5 & 3 & 6 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} -5 & 10 & 5 \\\\ -3 & 6 & 3 \\\\ -6 & 12 & 6 \\end{bmatrix}\\).\n\\((\\operatorname{adj} A) B = \\begin{bmatrix} -5 & 10 & 5 \\\\ -3 & 6 & 3 \\\\ -6 & 12 & 6 \\end{bmatrix} \\begin{bmatrix} 2 \\\\ -1 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} -10 - 10 + 15 \\\\ -6 - 6 + 9 \\\\ -12 - 12 + 18 \\end{bmatrix} = \\begin{bmatrix} -5 \\\\ -9 \\\\ -6 \\end{bmatrix} \\neq O\\).\nSince \\(|A| = 0\\) and \\((\\operatorname{adj} A) B \\neq O\\), the system is inconsistent."
+  },
+  {
+    "id": "0a5093ab-7a70-46bf-9aac-f920dc12a452",
+    "ref": "Ex 4.5 Q6",
+    "solution": "The system is \\(5x - y + 4z = 5\\), \\(2x + 3y + 5z = 2\\), \\(5x - 2y + 6z = -1\\), with \\(A = \\begin{bmatrix} 5 & -1 & 4 \\\\ 2 & 3 & 5 \\\\ 5 & -2 & 6 \\end{bmatrix}\\).\n\\(|A| = 5(3 \\cdot 6 - 5 \\cdot (-2)) - (-1)(2 \\cdot 6 - 5 \\cdot 5) + 4(2 \\cdot (-2) - 3 \\cdot 5)\\)\n\\(= 5(18 + 10) + 1(12 - 25) + 4(-4 - 15) = 5(28) + (-13) + 4(-19) = 140 - 13 - 76 = 51 \\neq 0\\).\nSince \\(|A| \\neq 0\\), \\(A\\) is non-singular and the system has a unique solution. Hence the system is consistent."
+  },
+  {
+    "id": "7bad3a6f-92dc-4e16-b44e-9f721f0027f8",
+    "ref": "Ex 4.5 Q7",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 5 & 2 \\\\ 7 & 3 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 4 \\\\ 5 \\end{bmatrix}\\).\n\\(|A| = 5 \\cdot 3 - 2 \\cdot 7 = 15 - 14 = 1 \\neq 0\\).\n\\(A^{-1} = \\frac{1}{|A|} \\operatorname{adj} A = \\frac{1}{1} \\begin{bmatrix} 3 & -2 \\\\ -7 & 5 \\end{bmatrix}\\).\n\\(X = A^{-1} B = \\begin{bmatrix} 3 & -2 \\\\ -7 & 5 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 5 \\end{bmatrix} = \\begin{bmatrix} 12 - 10 \\\\ -28 + 25 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -3 \\end{bmatrix}\\).\nHence \\(x = 2\\), \\(y = -3\\)."
+  },
+  {
+    "id": "2f7d2c4f-938a-4ffb-8736-947b240ae3ad",
+    "ref": "Ex 4.5 Q8",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -2 \\\\ 3 \\end{bmatrix}\\).\n\\(|A| = 2 \\cdot 4 - (-1) \\cdot 3 = 8 + 3 = 11 \\neq 0\\).\n\\(A^{-1} = \\frac{1}{11} \\begin{bmatrix} 4 & 1 \\\\ -3 & 2 \\end{bmatrix}\\).\n\\(X = A^{-1} B = \\frac{1}{11} \\begin{bmatrix} 4 & 1 \\\\ -3 & 2 \\end{bmatrix} \\begin{bmatrix} -2 \\\\ 3 \\end{bmatrix} = \\frac{1}{11} \\begin{bmatrix} -8 + 3 \\\\ 6 + 6 \\end{bmatrix} = \\frac{1}{11} \\begin{bmatrix} -5 \\\\ 12 \\end{bmatrix}\\).\nHence \\(x = -\\frac{5}{11}\\), \\(y = \\frac{12}{11}\\)."
+  },
+  {
+    "id": "929cefec-411d-490d-b7a5-a35958e7fb83",
+    "ref": "Ex 4.5 Q9",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 4 & -3 \\\\ 3 & -5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 3 \\\\ 7 \\end{bmatrix}\\).\n\\(|A| = 4 \\cdot (-5) - (-3) \\cdot 3 = -20 + 9 = -11 \\neq 0\\).\n\\(A^{-1} = \\frac{1}{-11} \\begin{bmatrix} -5 & 3 \\\\ -3 & 4 \\end{bmatrix}\\).\n\\(X = A^{-1} B = \\frac{1}{-11} \\begin{bmatrix} -5 & 3 \\\\ -3 & 4 \\end{bmatrix} \\begin{bmatrix} 3 \\\\ 7 \\end{bmatrix} = \\frac{1}{-11} \\begin{bmatrix} -15 + 21 \\\\ -9 + 28 \\end{bmatrix} = \\frac{1}{-11} \\begin{bmatrix} 6 \\\\ 19 \\end{bmatrix}\\).\nHence \\(x = -\\frac{6}{11}\\), \\(y = -\\frac{19}{11}\\)."
+  },
+  {
+    "id": "39934337-312e-4db4-86d4-cd88bfa06e36",
+    "ref": "Ex 4.5 Q10",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 5 & 2 \\\\ 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 3 \\\\ 5 \\end{bmatrix}\\).\n\\(|A| = 5 \\cdot 2 - 2 \\cdot 3 = 10 - 6 = 4 \\neq 0\\).\n\\(A^{-1} = \\frac{1}{4} \\begin{bmatrix} 2 & -2 \\\\ -3 & 5 \\end{bmatrix}\\).\n\\(X = A^{-1} B = \\frac{1}{4} \\begin{bmatrix} 2 & -2 \\\\ -3 & 5 \\end{bmatrix} \\begin{bmatrix} 3 \\\\ 5 \\end{bmatrix} = \\frac{1}{4} \\begin{bmatrix} 6 - 10 \\\\ -9 + 25 \\end{bmatrix} = \\frac{1}{4} \\begin{bmatrix} -4 \\\\ 16 \\end{bmatrix}\\).\nHence \\(x = -1\\), \\(y = 4\\)."
+  },
+  {
+    "id": "887d1b26-ce96-478b-be77-2dbc5c46c9bf",
+    "ref": "Ex 4.5 Q11",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & 1 & 1 \\\\ 1 & -2 & -1 \\\\ 0 & 3 & -5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 \\\\ \\frac{3}{2} \\\\ 9 \\end{bmatrix}\\).\n\\(|A| = 2((-2)(-5) - (-1)(3)) - 1((1)(-5) - (-1)(0)) + 1((1)(3) - (-2)(0)) = 2(13) - 1(-5) + 1(3) = 34\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 13 & 5 & 3 \\\\ 8 & -10 & -6 \\\\ 1 & 3 & -5 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 13 & 8 & 1 \\\\ 5 & -10 & 3 \\\\ 3 & -6 & -5 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{34} \\operatorname{adj} A\\).\n\\(X = A^{-1} B = \\frac{1}{34} \\begin{bmatrix} 13 & 8 & 1 \\\\ 5 & -10 & 3 \\\\ 3 & -6 & -5 \\end{bmatrix} \\begin{bmatrix} 1 \\\\ \\frac{3}{2} \\\\ 9 \\end{bmatrix} = \\frac{1}{34} \\begin{bmatrix} 13 + 12 + 9 \\\\ 5 - 15 + 27 \\\\ 3 - 9 - 45 \\end{bmatrix} = \\frac{1}{34} \\begin{bmatrix} 34 \\\\ 17 \\\\ -51 \\end{bmatrix}\\).\nHence \\(x = 1\\), \\(y = \\frac{1}{2}\\), \\(z = -\\frac{3}{2}\\)."
+  },
+  {
+    "id": "f963a09d-3db1-4f5c-8f43-60ac74925e59",
+    "ref": "Ex 4.5 Q12",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & -1 & 1 \\\\ 2 & 1 & -3 \\\\ 1 & 1 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 4 \\\\ 0 \\\\ 2 \\end{bmatrix}\\).\n\\(|A| = 1(1 \\cdot 1 - (-3)(1)) - (-1)(2 \\cdot 1 - (-3)(1)) + 1(2 \\cdot 1 - 1 \\cdot 1) = 1(4) + 1(5) + 1(1) = 10\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 4 & -5 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 5 & 3 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 4 & 2 & 2 \\\\ -5 & 0 & 5 \\\\ 1 & -2 & 3 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{10} \\operatorname{adj} A\\).\n\\(X = A^{-1} B = \\frac{1}{10} \\begin{bmatrix} 4 & 2 & 2 \\\\ -5 & 0 & 5 \\\\ 1 & -2 & 3 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 0 \\\\ 2 \\end{bmatrix} = \\frac{1}{10} \\begin{bmatrix} 16 + 0 + 4 \\\\ -20 + 0 + 10 \\\\ 4 - 0 + 6 \\end{bmatrix} = \\frac{1}{10} \\begin{bmatrix} 20 \\\\ -10 \\\\ 10 \\end{bmatrix}\\).\nHence \\(x = 2\\), \\(y = -1\\), \\(z = 1\\)."
+  },
+  {
+    "id": "658b8500-86cf-4825-aaee-a2aa75b5bc52",
+    "ref": "Ex 4.5 Q13",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & 3 & 3 \\\\ 1 & -2 & 1 \\\\ 3 & -1 & -2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 5 \\\\ -4 \\\\ 3 \\end{bmatrix}\\).\n\\(|A| = 2((-2)(-2) - (1)(-1)) - 3((1)(-2) - (1)(3)) + 3((1)(-1) - (-2)(3)) = 2(5) - 3(-5) + 3(5) = 40\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 5 & 5 & 5 \\\\ 3 & -13 & 11 \\\\ 9 & 1 & -7 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 5 & 3 & 9 \\\\ 5 & -13 & 1 \\\\ 5 & 11 & -7 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{40} \\operatorname{adj} A\\).\n\\(X = A^{-1} B = \\frac{1}{40} \\begin{bmatrix} 5 & 3 & 9 \\\\ 5 & -13 & 1 \\\\ 5 & 11 & -7 \\end{bmatrix} \\begin{bmatrix} 5 \\\\ -4 \\\\ 3 \\end{bmatrix} = \\frac{1}{40} \\begin{bmatrix} 25 - 12 + 27 \\\\ 25 + 52 + 3 \\\\ 25 - 44 - 21 \\end{bmatrix} = \\frac{1}{40} \\begin{bmatrix} 40 \\\\ 80 \\\\ -40 \\end{bmatrix}\\).\nHence \\(x = 1\\), \\(y = 2\\), \\(z = -1\\)."
+  },
+  {
+    "id": "1319e443-8bf5-4cfa-8fbb-deee93f2ff05",
+    "ref": "Ex 4.5 Q14",
+    "solution": "Write \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & -1 & 2 \\\\ 3 & 4 & -5 \\\\ 2 & -1 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 7 \\\\ -5 \\\\ 12 \\end{bmatrix}\\).\n\\(|A| = 1(4 \\cdot 3 - (-5)(-1)) - (-1)(3 \\cdot 3 - (-5)(2)) + 2(3 \\cdot (-1) - 4 \\cdot 2) = 1(7) + 1(19) + 2(-11) = 4\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 7 & -19 & -11 \\\\ 1 & -1 & -1 \\\\ -3 & 11 & 7 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 7 & 1 & -3 \\\\ -19 & -1 & 11 \\\\ -11 & -1 & 7 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{4} \\operatorname{adj} A\\).\n\\(X = A^{-1} B = \\frac{1}{4} \\begin{bmatrix} 7 & 1 & -3 \\\\ -19 & -1 & 11 \\\\ -11 & -1 & 7 \\end{bmatrix} \\begin{bmatrix} 7 \\\\ -5 \\\\ 12 \\end{bmatrix} = \\frac{1}{4} \\begin{bmatrix} 49 - 5 - 36 \\\\ -133 + 5 + 132 \\\\ -77 + 5 + 84 \\end{bmatrix} = \\frac{1}{4} \\begin{bmatrix} 8 \\\\ 4 \\\\ 12 \\end{bmatrix}\\).\nHence \\(x = 2\\), \\(y = 1\\), \\(z = 3\\)."
+  },
+  {
+    "id": "c0749268-61e7-4039-bcb0-b62bee27d1be",
+    "ref": "Ex 4.5 Q15",
+    "solution": "Given \\(A = \\begin{bmatrix} 2 & -3 & 5 \\\\ 3 & 2 & -4 \\\\ 1 & 1 & -2 \\end{bmatrix}\\).\n\\(|A| = 2(2 \\cdot (-2) - (-4)(1)) - (-3)(3 \\cdot (-2) - (-4)(1)) + 5(3 \\cdot 1 - 2 \\cdot 1) = 2(0) + 3(-2) + 5(1) = -1\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 0 & 2 & 1 \\\\ -1 & -9 & -5 \\\\ 2 & 23 & 13 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 0 & -1 & 2 \\\\ 2 & -9 & 23 \\\\ 1 & -5 & 13 \\end{bmatrix}\\).\n\\(A^{-1} = \\frac{1}{|A|} \\operatorname{adj} A = \\frac{1}{-1} \\begin{bmatrix} 0 & -1 & 2 \\\\ 2 & -9 & 23 \\\\ 1 & -5 & 13 \\end{bmatrix} = \\begin{bmatrix} 0 & 1 & -2 \\\\ -2 & 9 & -23 \\\\ -1 & 5 & -13 \\end{bmatrix}\\).\nThe system \\(2x - 3y + 5z = 11\\), \\(3x + 2y - 4z = -5\\), \\(x + y - 2z = -3\\) is \\(AX = B\\) with \\(B = \\begin{bmatrix} 11 \\\\ -5 \\\\ -3 \\end{bmatrix}\\).\n\\(X = A^{-1} B = \\begin{bmatrix} 0 & 1 & -2 \\\\ -2 & 9 & -23 \\\\ -1 & 5 & -13 \\end{bmatrix} \\begin{bmatrix} 11 \\\\ -5 \\\\ -3 \\end{bmatrix} = \\begin{bmatrix} 0 - 5 + 6 \\\\ -22 - 45 + 69 \\\\ -11 - 25 + 39 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\).\nHence \\(x = 1\\), \\(y = 2\\), \\(z = 3\\)."
+  },
+  {
+    "id": "809e1a51-1060-44e8-9f99-d80a8575de08",
+    "ref": "Ex 4.5 Q16",
+    "solution": "Let the cost per kg of onion, wheat and rice be \\(x\\), \\(y\\), \\(z\\) rupees. The data give:\n\\(4x + 3y + 2z = 60\\), \\(2x + 4y + 6z = 90\\), \\(6x + 2y + 3z = 70\\).\nWrite \\(AX = B\\) with \\(A = \\begin{bmatrix} 4 & 3 & 2 \\\\ 2 & 4 & 6 \\\\ 6 & 2 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 60 \\\\ 90 \\\\ 70 \\end{bmatrix}\\).\n\\(|A| = 4(4 \\cdot 3 - 6 \\cdot 2) - 3(2 \\cdot 3 - 6 \\cdot 6) + 2(2 \\cdot 2 - 4 \\cdot 6) = 4(0) - 3(-30) + 2(-20) = 50\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 0 & 30 & -20 \\\\ -5 & 0 & 10 \\\\ 10 & -20 & 10 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 0 & -5 & 10 \\\\ 30 & 0 & -20 \\\\ -20 & 10 & 10 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{50} \\operatorname{adj} A\\).\n\\(X = A^{-1} B = \\frac{1}{50} \\begin{bmatrix} 0 & -5 & 10 \\\\ 30 & 0 & -20 \\\\ -20 & 10 & 10 \\end{bmatrix} \\begin{bmatrix} 60 \\\\ 90 \\\\ 70 \\end{bmatrix} = \\frac{1}{50} \\begin{bmatrix} 0 - 450 + 700 \\\\ 1800 + 0 - 1400 \\\\ -1200 + 900 + 700 \\end{bmatrix} = \\frac{1}{50} \\begin{bmatrix} 250 \\\\ 400 \\\\ 400 \\end{bmatrix}\\).\nHence \\(x = 5\\), \\(y = 8\\), \\(z = 8\\). The cost is: onion Rs 5 per kg, wheat Rs 8 per kg, and rice Rs 8 per kg."
+  },
+  {
+    "id": "d3527ec3-c673-4666-a94e-d284947c1d0b",
+    "ref": "Misc Q7",
+    "solution": "Put \\(u = \\dfrac{1}{x}\\), \\(v = \\dfrac{1}{y}\\), \\(w = \\dfrac{1}{z}\\). The system becomes linear:\n\\(2u + 3v + 10w = 4\\), \\(4u - 6v + 5w = 1\\), \\(6u + 9v - 20w = 2\\).\nWrite \\(AX = B\\) with \\(A = \\begin{bmatrix} 2 & 3 & 10 \\\\ 4 & -6 & 5 \\\\ 6 & 9 & -20 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 4 \\\\ 1 \\\\ 2 \\end{bmatrix}\\).\n\\(|A| = 2((-6)(-20) - 5 \\cdot 9) - 3(4 \\cdot (-20) - 5 \\cdot 6) + 10(4 \\cdot 9 - (-6)(6)) = 2(75) - 3(-110) + 10(72) = 1200\\).\nThe cofactor matrix is \\(\\begin{bmatrix} 75 & 110 & 72 \\\\ 150 & -100 & 0 \\\\ 75 & 30 & -24 \\end{bmatrix}\\), so \\(\\operatorname{adj} A = \\begin{bmatrix} 75 & 150 & 75 \\\\ 110 & -100 & 30 \\\\ 72 & 0 & -24 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{1200} \\operatorname{adj} A\\).\n\\(X = A^{-1} B = \\frac{1}{1200} \\begin{bmatrix} 75 & 150 & 75 \\\\ 110 & -100 & 30 \\\\ 72 & 0 & -24 \\end{bmatrix} \\begin{bmatrix} 4 \\\\ 1 \\\\ 2 \\end{bmatrix} = \\frac{1}{1200} \\begin{bmatrix} 300 + 150 + 150 \\\\ 440 - 100 + 60 \\\\ 288 + 0 - 48 \\end{bmatrix} = \\frac{1}{1200} \\begin{bmatrix} 600 \\\\ 400 \\\\ 240 \\end{bmatrix}\\).\nSo \\(u = \\frac{1}{2}\\), \\(v = \\frac{1}{3}\\), \\(w = \\frac{1}{5}\\). Therefore \\(x = \\frac{1}{u} = 2\\), \\(y = \\frac{1}{v} = 3\\), \\(z = \\frac{1}{w} = 5\\)."
+  }
+]
