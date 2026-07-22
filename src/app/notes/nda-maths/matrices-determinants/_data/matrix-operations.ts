@@ -166,7 +166,7 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Using all the prime numbers less than 30 as entries (each used once), how many different ORDERS of matrix are possible?",
+          "A matrix uses each prime number less than 30 exactly once as an entry. How many different ORDERS are possible?",
         steps: [
           "Primes < 30: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 — that's 10 numbers.",
           "A matrix using all 10 has 10 entries → order \\(m\\times n\\) with \\(mn = 10\\).",
@@ -282,8 +282,10 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
       definition:
         "Expressions like \\(A^2 - 4A\\), \\(23A^3 - 19A^2 - 4A\\) are evaluated by substituting powers " +
         "of \\(A\\). For a \\(2\\times2\\) matrix, **Cayley–Hamilton** gives " +
-        "\\(A^2 - (a+d)A + (ad-bc)I = O\\) where \\(a+d\\) is the trace and \\(ad-bc\\) the determinant " +
-        "— the fastest route to the constant \\(k\\) in \\(A^2 - kA + cI = O\\) problems.",
+        "\\(A^2 - (a+d)A + (ad-bc)I = O\\) where \\(a+d\\) is the **trace** (the sum of the diagonal entries) " +
+        "and \\(ad-bc\\) the determinant — the fastest route to the constant \\(k\\) in " +
+        "\\(A^2 - kA + cI = O\\) problems. The same equation also yields the inverse: " +
+        "\\(A^2 - kA - I = O \\Rightarrow A^{-1} = A - kI\\) (developed in **Cofactors, Adjoint & Inverse**).",
       formula: {
         label: "Cayley–Hamilton (2×2)",
         latex: "A^2 - (a+d)\\,A + (ad - bc)\\,I = O",
@@ -300,7 +302,7 @@ export const MATRIX_OPERATIONS_NOTE: SubtopicNote = {
       selfCheckExample: {
         prompt: "If \\(A = \\begin{pmatrix}1&2&2\\\\2&1&2\\\\2&2&1\\end{pmatrix}\\), find \\(A^2 - 4A\\).",
         steps: [
-          "\\(A^2\\): each diagonal entry \\(= 1+4+4 = 9\\); each off-diagonal \\(= 2+2+2 = ... \\) compute one: row1·col2 \\(= 1\\cdot2+2\\cdot1+2\\cdot2 = 8\\). So \\(A^2 = \\begin{pmatrix}9&8&8\\\\8&9&8\\\\8&8&9\\end{pmatrix}\\).",
+          "\\(A^2\\): each diagonal entry \\(= 1+4+4 = 9\\); each off-diagonal entry \\(=\\) row·column \\(= 1\\cdot2+2\\cdot1+2\\cdot2 = 8\\). So \\(A^2 = \\begin{pmatrix}9&8&8\\\\8&9&8\\\\8&8&9\\end{pmatrix}\\).",
           "\\(4A = \\begin{pmatrix}4&8&8\\\\8&4&8\\\\8&8&4\\end{pmatrix}\\).",
           "\\(A^2 - 4A = \\begin{pmatrix}5&0&0\\\\0&5&0\\\\0&0&5\\end{pmatrix} = 5I\\).",
         ],

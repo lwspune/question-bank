@@ -9,7 +9,9 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
     "Twenty-two PYQs, mostly EASY–MODERATE — high-yield because each type is recognised by one " +
     "equation and then answers itself (a skew-symmetric matrix of odd order has determinant 0; an " +
     "orthogonal matrix has inverse equal to its transpose). Learn the catalog and the recognition " +
-    "questions become instant.",
+    "questions become instant. The determinant facts used here — odd-order skew-symmetric is 0, " +
+    "orthogonal is plus or minus 1, diagonal is the product of the diagonal — are proved in the next " +
+    "note, Determinants: Evaluation and Properties; here, use them as recognition shortcuts.",
   concepts: [
     // C1 — types catalog (REFERENCE)
     {

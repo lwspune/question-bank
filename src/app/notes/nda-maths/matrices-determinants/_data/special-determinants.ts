@@ -33,13 +33,13 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
         answer: "\\(1\\).",
       },
       selfCheckExample: {
-        prompt: "In triangle \\(ABC\\), evaluate the determinant whose rows force a triangle identity such that two rows coincide. What is the typical value?",
+        prompt: "Evaluate \\(\\begin{vmatrix}1 & \\cos^2\\theta & \\sin^2\\theta\\\\ 1 & \\cos^2\\phi & \\sin^2\\phi\\\\ 1 & \\cos^2\\psi & \\sin^2\\psi\\end{vmatrix}\\).",
         steps: [
-          "Triangle determinants usually exploit \\(A + B + C = \\pi\\) so that one row becomes a linear combination of the others.",
-          "Dependent rows ⇒ determinant 0.",
-          "Always test for row dependence via the angle-sum identity before grinding.",
+          "In every row \\(\\cos^2 + \\sin^2 = 1\\), so column 2 \\(+\\) column 3 equals column 1 (all 1s).",
+          "Apply \\(C_1 \\to C_1 - C_2 - C_3\\): column 1 becomes all zeros.",
+          "A zero column ⇒ determinant 0. (This is the standard move — use a trig identity to force column/row dependence.)",
         ],
-        answer: "Most triangle trig determinants in the bank evaluate to 0 by row dependence.",
+        answer: "\\(0\\).",
       },
       practiceSet: [
         { prompt: "\\(\\cos^2\\theta + \\sin^2\\theta = ?\\)", answer: "\\(1\\)" },
@@ -156,9 +156,9 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
       selfCheckExample: {
         prompt: "If \\(a, b, c\\) are in AP, what is \\(\\begin{vmatrix}x+1&x+2&x+3\\\\x+2&x+3&x+4\\\\x+a&x+b&x+c\\end{vmatrix}\\)?",
         steps: [
-          "Rows 1 and 2 differ by the constant row \\((1,1,1)\\); the entries are themselves in AP across each row.",
-          "\\(R_3 - R_2\\) and \\(R_2 - R_1\\) are equal (constant differences) ⇒ rows dependent.",
-          "Dependent rows ⇒ determinant 0.",
+          "Every row is a 3-term AP across the columns (row 1 and row 2 have common difference 1; row 3 has common difference \\(b-a=c-b\\) since \\(a,b,c\\) are in AP).",
+          "Apply \\(C_2 \\to C_2 - C_1\\) and \\(C_3 \\to C_3 - C_2\\): the two new columns become \\((1,1,b-a)\\) and \\((1,1,c-b)\\), which are identical because \\(b-a = c-b\\).",
+          "Two equal columns ⇒ determinant 0. (Equivalently, each row being an AP forces \\(C_1 - 2C_2 + C_3 = 0\\).)",
         ],
         answer: "\\(0\\).",
       },

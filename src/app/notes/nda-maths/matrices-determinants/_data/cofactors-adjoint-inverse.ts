@@ -174,7 +174,10 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "(non-singular).",
       definition:
         "\\(A^{-1} = \\dfrac{1}{|A|}\\operatorname{adj}A\\), defined iff \\(|A| \\neq 0\\). For " +
-        "\\(2\\times2\\): \\(A^{-1} = \\dfrac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}\\).",
+        "\\(2\\times2\\): \\(A^{-1} = \\dfrac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}\\). " +
+        "**2×2 shortcut via Cayley–Hamilton:** since \\(A^2 - (a+d)A + |A|\\,I = O\\), multiplying by " +
+        "\\(A^{-1}\\) gives \\(A^{-1} = \\dfrac{(a+d)I - A}{|A|}\\) — no adjoint needed. (The same identity " +
+        "reduces any power \\(A^n\\) to a combination of \\(A\\) and \\(I\\).)",
       formula: {
         label: "Inverse formula",
         latex: "A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A \\quad (|A| \\neq 0)",
@@ -202,6 +205,7 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         { prompt: "Inverse exists iff?", answer: "\\(|A| \\neq 0\\)" },
         { prompt: "Inverse of \\(\\operatorname{diag}(2,5)\\)?", answer: "\\(\\operatorname{diag}(\\tfrac12,\\tfrac15)\\)" },
         { prompt: "\\(|A^{-1}|\\) in terms of \\(|A|\\)?", answer: "\\(1/|A|\\)" },
+        { prompt: "If \\(A^2 - kA - I = O\\), then \\(A^{-1} = ?\\)", answer: "\\(A - kI\\)", method: "\\(A(A-kI)=I\\)" },
       ],
       pyqExampleId: "87243760-4ae1-49fc-adae-c4b57b867aa6", // 2017 — inverse of diagonal
     },
@@ -221,7 +225,8 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "- **Double inverse:** \\((A^{-1})^{-1} = A\\)\n" +
         "- **Determinant:** \\(\\det(A^{-1}) = 1/\\det A\\)\n" +
         "- **Transpose:** \\((A^T)^{-1} = (A^{-1})^T\\)\n" +
-        "- **Scalar:** \\((kA)^{-1} = \\tfrac1k A^{-1}\\)",
+        "- **Scalar:** \\((kA)^{-1} = \\tfrac1k A^{-1}\\)\n" +
+        "- **Power:** \\((A^n)^{-1} = (A^{-1})^n\\)",
       formula: {
         label: "Reversal law for inverses",
         latex: "(AB)^{-1} = B^{-1}A^{-1}",
@@ -278,8 +283,8 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "**Orthogonal / rotation:** \\(A^{-1} = A^T\\) (and for a rotation \\(R(\\theta)^{-1} = R(-\\theta)\\)). " +
         "**Involutory:** \\(A^{-1} = A\\). Use these instead of the adjoint route when the type is clear.",
       formula: {
-        label: "Inverse properties of special matrices",
-        latex: "(A^{-1})^{-1} = A \\qquad (A^T)^{-1} = (A^{-1})^T \\qquad (kA)^{-1} = \\frac{1}{k}A^{-1} \\qquad (A^n)^{-1} = (A^{-1})^n",
+        label: "Inverses of special matrices",
+        latex: "\\operatorname{diag}(d_i)^{-1} = \\operatorname{diag}(1/d_i) \\qquad \\text{orthogonal: } A^{-1} = A^T \\qquad R(\\theta)^{-1} = R(-\\theta) \\qquad \\text{involutory: } A^{-1} = A",
       },
       authoredExample: {
         prompt: "Find the inverse of \\(A = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}\\).",
