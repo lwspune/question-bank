@@ -33,14 +33,18 @@ function loadEnv() {
   dotenv.config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
-function buildRows(paperId: string, paper: PaperData, subject?: string): ParsedRowPayload[] {
+function buildRows(paperId: string, paper: PaperData, subject?: string, numericOnly = false): ParsedRowPayload[] {
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
   const eligible = records
     .filter((r) => isCommittable(r.status, r.questionNumber, paper))
     // Maths-first single-subject pass: keep only the target subject's rows.
     // Phy/Chem rows are excluded BEFORE the classification requirement below,
     // so a Maths-only paper file needs no Phy/Chem classification.
-    .filter((r) => keepForSubject(subject, r.subject, paper.classification[String(r.questionNumber)]?.subject));
+    .filter((r) => keepForSubject(subject, r.subject, paper.classification[String(r.questionNumber)]?.subject))
+    // Section-B backfill: commit ONLY the numeric (NAT) rows, leaving already-
+    // committed+cleaned MCQ untouched (re-committing them would recompute the
+    // content_hash from the raw extract, miss the dedup, and duplicate rows).
+    .filter((r) => !numericOnly || r.status === "numeric");
 
   return eligible.map((r) => {
     const key = String(r.questionNumber);
@@ -112,13 +116,14 @@ function buildRows(paperId: string, paper: PaperData, subject?: string): ParsedR
 async function main() {
   const apply = process.argv.includes("--apply");
   const subject = parseSubjectArg(process.argv);
-  const paperId = requirePaperId(process.argv, 2, "commit.ts <paperId> [--subject=Maths] [--apply]");
+  const numericOnly = process.argv.includes("--numeric-only");
+  const paperId = requirePaperId(process.argv, 2, "commit.ts <paperId> [--subject=Maths] [--numeric-only] [--apply]");
   loadEnv();
   const paper = loadPaper(paperId);
   const { sourceFile, pyqYear, pyqNote } = paper;
-  const rows = buildRows(paperId, paper, subject);
+  const rows = buildRows(paperId, paper, subject, numericOnly);
 
-  console.log(`Built ${rows.length} MCQ rows for JEE Mains ${paperId} (${sourceFile})${subject ? ` [subject=${subject}]` : ""}.`);
+  console.log(`Built ${rows.length} rows for JEE Mains ${paperId} (${sourceFile})${subject ? ` [subject=${subject}]` : ""}${numericOnly ? " [numeric-only]" : ""}.`);
   const byChapter = new Map<string, number>();
   for (const r of rows) byChapter.set(`${r.subjectName} · ${r.chapterName}`, (byChapter.get(`${r.subjectName} · ${r.chapterName}`) ?? 0) + 1);
   console.log("\nchapters that will auto-create:");
@@ -177,12 +182,16 @@ async function main() {
     .eq("source_file", sourceFile)
     .is("upload_job_id", null);
 
-  // Pilot stays PRIVATE until verified in /browse.
-  const { error: vErr, count } = await client
+  // Freshly-committed rows stay PRIVATE until verified in /browse. On a
+  // --numeric-only backfill scope this to the numeric rows so already-PUBLIC
+  // MCQ for the same paper aren't taken offline.
+  let flip = client
     .from("questions")
     .update({ visibility: "PRIVATE" }, { count: "exact" })
     .eq("exam_id", EXAM_ID)
     .eq("source_file", sourceFile);
+  if (numericOnly) flip = flip.eq("question_format", "numeric");
+  const { error: vErr, count } = await flip;
   if (vErr) throw new Error(`visibility flip failed: ${vErr.message}`);
   console.log(`set ${count} JEE rows to PRIVATE.`);
 

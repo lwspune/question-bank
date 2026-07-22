@@ -14,7 +14,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
-import { contentHash } from "../../src/lib/upload/hash";
+import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { EXAM_ID, loadPaper, requirePaperId } from "./config";
 
@@ -43,6 +43,7 @@ async function main() {
     ...Object.keys(paper.stemOverrides ?? {}),
     ...Object.keys(paper.optionOverrides ?? {}),
     ...Object.keys(paper.answerOverrides ?? {}),
+    ...Object.keys(paper.numericOverrides ?? {}),
   ]);
   if (!nums.size) {
     console.log("no overrides in this paper — nothing to resync.");
@@ -56,7 +57,7 @@ async function main() {
   for (const num of nums) {
     const { data: q } = await client
       .from("questions")
-      .select("id, text, options(id, label, text, is_correct)")
+      .select("id, text, question_format, numeric_answer, options(id, label, text, is_correct)")
       .eq("exam_id", EXAM_ID)
       .eq("source_file", paper.sourceFile)
       .eq("question_number", num)
@@ -65,10 +66,30 @@ async function main() {
       console.warn(`  Q${num}: not committed — skipping`);
       continue;
     }
+    const newText = normalizeNewlines(paper.stemOverrides?.[num] ?? q.text);
+
+    // Numeric (NAT) rows: no options; hash via numericContentHash; the answer
+    // lives in numeric_answer (correctable via a numericOverride).
+    if (q.question_format === "numeric") {
+      if (!mathOk(newText)) {
+        console.warn(`  Q${num}: override still KaTeX-broken — NOT writing`);
+        continue;
+      }
+      const numAns = paper.numericOverrides?.[num] ?? (q.numeric_answer as number | null);
+      console.log(`  Q${num}: ${apply ? "updating" : "would update"} (numeric answer ${numAns})`);
+      if (apply) {
+        await client
+          .from("questions")
+          .update({ text: newText, numeric_answer: numAns, content_hash: numericContentHash(newText, null) })
+          .eq("id", q.id);
+        updated++;
+      }
+      continue;
+    }
+
     type Opt = { id: string; label: string; text: string; is_correct: boolean };
     const opts = q.options as Opt[];
 
-    const newText = normalizeNewlines(paper.stemOverrides?.[num] ?? q.text);
     const optOv = paper.optionOverrides?.[num] ?? {};
     const answer =
       paper.answerOverrides?.[num] ?? opts.find((o) => o.is_correct)?.label ?? "";
