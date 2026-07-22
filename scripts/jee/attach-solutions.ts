@@ -43,12 +43,18 @@ function mathOk(text: string): { ok: boolean; err?: string } {
 
 async function main() {
   const apply = process.argv.includes("--apply");
-  const paperId = requirePaperId(process.argv, 2, "attach-solutions.ts <paperId> [--apply]");
+  // --numeric-only: attach solutions ONLY to the numeric (NAT) rows — used by the
+  // Section-B backfill on an already-committed+cleaned paper, so the MCQ rows'
+  // live (cleaned) solutions are not overwritten from the raw re-extract.
+  const numericOnly = process.argv.includes("--numeric-only");
+  const paperId = requirePaperId(process.argv, 2, "attach-solutions.ts <paperId> [--numeric-only] [--apply]");
   loadEnv();
   const paper = loadPaper(paperId);
   const { sourceFile } = paper;
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
-  const mcq = records.filter((r) => isCommittable(r.status, r.questionNumber, paper));
+  const mcq = records
+    .filter((r) => isCommittable(r.status, r.questionNumber, paper))
+    .filter((r) => !numericOnly || r.status === "numeric" || paper.numericOverrides?.[String(r.questionNumber)] !== undefined);
 
   // Image-only / empty source solutions: fall back to a hand-authored text solution
   // if one exists, else write NULL (the bank solution field is text-only).
