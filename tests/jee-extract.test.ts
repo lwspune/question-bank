@@ -140,6 +140,14 @@ describe("localSection", () => {
     expect(localSection(62)).toBe("A"); // maths MCQ
     expect(localSection(81)).toBe("B");
   });
+  it("2025 layout (subjectSize 25): first 20 of each 25-block part to A, last 5 to B", () => {
+    expect(localSection(51, 25)).toBe("A"); // maths shift-1 MCQ start
+    expect(localSection(70, 25)).toBe("A");
+    expect(localSection(71, 25)).toBe("B"); // maths shift-1 NAT start
+    expect(localSection(75, 25)).toBe("B");
+    expect(localSection(126, 25)).toBe("A"); // maths shift-2 MCQ start
+    expect(localSection(146, 25)).toBe("B");
+  });
 });
 
 describe("subjectForNumber", () => {
@@ -158,6 +166,17 @@ describe("subjectForNumber", () => {
     expect(subjectForNumber(150)).toBe("Chemistry");
     expect(subjectForNumber(151)).toBe("Maths"); // shift 2 Maths
     expect(subjectForNumber(180)).toBe("Maths");
+  });
+  it("2025 layout (shiftSize 75): 25-block subjects, 2 shifts = 150", () => {
+    expect(subjectForNumber(1, 75)).toBe("Physics");
+    expect(subjectForNumber(25, 75)).toBe("Physics");
+    expect(subjectForNumber(26, 75)).toBe("Chemistry");
+    expect(subjectForNumber(50, 75)).toBe("Chemistry");
+    expect(subjectForNumber(51, 75)).toBe("Maths");
+    expect(subjectForNumber(75, 75)).toBe("Maths");
+    expect(subjectForNumber(76, 75)).toBe("Physics"); // shift 2
+    expect(subjectForNumber(126, 75)).toBe("Maths"); // shift 2 Maths
+    expect(subjectForNumber(150, 75)).toBe("Maths");
   });
 });
 

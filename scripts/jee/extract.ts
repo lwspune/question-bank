@@ -109,7 +109,15 @@ function main() {
   console.log(`[pandoc] ${basename(solnDocx)} -> markdown`);
   pandocToMd(pandoc, solnDocx, sMd);
 
-  const questions = segmentQuestions(readFileSync(qMd, "utf8"));
+  // Layout auto-detect: 2025 sittings are 150 questions (2 shifts x 75: each
+  // subject 20 MCQ + 5 NAT), vs the 180/90 layout of 2021-2024 (30-block
+  // subjects). Segment once to count, then re-segment with the right shift size
+  // so subjects map correctly. `--layout2025` forces the 75/shift split.
+  const qMdText = readFileSync(qMd, "utf8");
+  const probe = segmentQuestions(qMdText);
+  const shiftSize = process.argv.includes("--layout2025") || probe.length === 150 ? 75 : 90;
+  const subjectSize = shiftSize / 3;
+  const questions = shiftSize === 90 ? probe : segmentQuestions(qMdText, shiftSize);
   const solnText = readFileSync(sMd, "utf8");
   const tokens = parseAnswerTokens(solnText);
   const solutions = splitSolutions(solnText);
@@ -136,12 +144,16 @@ function main() {
     console.warn(`[warn] solution doc has DUPLICATE numbers ${dupSoln.join(", ")} — the key for each (and the question it shadowed) is unreliable; set answerOverrides`);
   }
 
-  // Sanity: each subject part should be exactly 30 questions (20 MCQ + 10 numerical).
-  // Skipped for compilations, whose subject boundaries are non-standard by design.
+  // Sanity: each subject should have (subjectSize x #shifts) blocks — 60 for a
+  // two-shift 90-layout file, 50 for a two-shift 2025 (25-block) file, 30 for a
+  // single-shift 90 file. Skipped for compilations (non-standard boundaries).
   if (!compilation) {
+    const perShift = subjectSize;
+    const shifts = Math.max(1, Math.round(questions.length / (shiftSize)));
+    const expected = perShift * shifts;
     for (const s of ["Physics", "Chemistry", "Maths"] as JeeSubject[]) {
       const n = questions.filter((q) => q.subject === s).length;
-      if (n !== 30) console.warn(`[warn] ${s} has ${n} blocks (expected 30) — section split may be off`);
+      if (n !== expected) console.warn(`[warn] ${s} has ${n} blocks (expected ${expected}) — section split may be off`);
     }
   }
 
@@ -159,7 +171,7 @@ function main() {
     // Position is the authoritative Section A/B discriminator (not option count) —
     // EXCEPT for compilations, where it doesn't hold, so numerical questions are
     // detected by the absence of parsed options (the `q.options === null` check below).
-    if (!compilation && localSection(q.number) === "B") {
+    if (!compilation && localSection(q.number, subjectSize) === "B") {
       if (!withNumeric) {
         return { ...base, status: "skipped_numerical", options: null, correctLabel: null, contentHash: null };
       }

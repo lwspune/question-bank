@@ -247,8 +247,11 @@ export function findDuplicateSolutionNumbers(solnMd: string): number[] {
  * stray `(a)..(d)` markers inside a "Number of ... among the following" count
  * question must NOT promote it to an MCQ.
  */
-export function localSection(globalNumber: number): "A" | "B" {
-  const local = ((globalNumber - 1) % 30) + 1;
+// Section A = the first 20 MCQ of each subject block; Section B = the remaining
+// NAT. `subjectSize` is the per-subject block size: 30 for 2021-2024 (20 MCQ +
+// 10 NAT), 25 for 2025 (20 MCQ + 5 NAT — the optional-NAT was dropped).
+export function localSection(globalNumber: number, subjectSize = 30): "A" | "B" {
+  const local = ((globalNumber - 1) % subjectSize) + 1;
   return local <= 20 ? "A" : "B";
 }
 
@@ -338,13 +341,14 @@ const PART_SUBJECT: { re: RegExp; subject: JeeSubject }[] = [
  * varies per paper (e.g. Paper 6's Chemistry header didn't match PART_SUBJECT,
  * leaving Q31-60 mislabelled Physics until this override).
  */
-export function subjectForNumber(n: number): JeeSubject {
-  // 2022-2025 sittings are two shifts concatenated in one file (180 blocks:
-  // shift 1 = Q1-90, shift 2 = Q91-180), each shift Physics/Chem/Maths in
-  // 30-blocks. Wrap per 90 so shift 2 maps identically. Identical to the raw
-  // ≤60/≤90 split for a single-shift 90-block 2021 paper (n≤90 ⇒ local===n).
-  const local = ((n - 1) % 90) + 1;
-  return local <= 30 ? "Physics" : local <= 60 ? "Chemistry" : "Maths";
+export function subjectForNumber(n: number, shiftSize = 90): JeeSubject {
+  // Two shifts concatenated in one file, each shift Physics/Chem/Maths in equal
+  // blocks. `shiftSize` = questions per shift: 90 for 2021-2024 (30-block
+  // subjects, 180-total two-shift or 90-total single-shift), 75 for 2025
+  // (25-block subjects, 150-total). Wrap per shift so shift 2 maps identically.
+  const sub = shiftSize / 3;
+  const local = ((n - 1) % shiftSize) + 1;
+  return local <= sub ? "Physics" : local <= 2 * sub ? "Chemistry" : "Maths";
 }
 
 /**
@@ -387,7 +391,7 @@ const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem aft
 const SECTION_OR_PART = /PART-|SECTION/i;
 
 /** Segment the whole question markdown into per-question blocks. */
-export function segmentQuestions(md: string): RawQuestion[] {
+export function segmentQuestions(md: string, shiftSize = 90): RawQuestion[] {
   const lines = md.split(/\r?\n/);
   const out: RawQuestion[] = [];
   let subject: JeeSubject = "Physics";
@@ -405,7 +409,7 @@ export function segmentQuestions(md: string): RawQuestion[] {
     const parsed = parseOptionsFromText(cleaned);
     out.push({
       number: cur.number,
-      subject: subjectForNumber(cur.number),
+      subject: subjectForNumber(cur.number, shiftSize),
       stem: parsed ? parsed.stem : cleaned,
       options: parsed ? parsed.options : null,
       imageRefs,
