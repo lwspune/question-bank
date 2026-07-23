@@ -21,6 +21,9 @@ import {
   matchValueToOption,
   parseNumericAnswer,
   splitSolutions,
+  parseAnswerTokensOrdered,
+  splitSolutionsOrdered,
+  solnNumberingIsBroken,
   type JeeSubject,
 } from "./lib";
 import { numericContentHash } from "../../src/lib/upload/hash";
@@ -111,6 +114,21 @@ function main() {
   const tokens = parseAnswerTokens(solnText);
   const solutions = splitSolutions(solnText);
 
+  // Answer/solution keying: by the soln block's printed number (default), OR
+  // POSITIONAL (i-th block answers the i-th question) when the numbering is
+  // broken — pandoc reset most blocks to `1.` (the "all-1." case, common in the
+  // 2022-2025 sittings). Auto-detected; force with --positional / --by-number.
+  const positional =
+    process.argv.includes("--positional") ||
+    (!process.argv.includes("--by-number") && solnNumberingIsBroken(solnText));
+  const orderedTokens = parseAnswerTokensOrdered(solnText);
+  const orderedSolutions = splitSolutionsOrdered(solnText);
+  const tokenAt = (n: number): string | undefined => (positional ? orderedTokens[n - 1] : tokens.get(n));
+  const solutionAt = (n: number): string | undefined => (positional ? orderedSolutions[n - 1] : solutions.get(n));
+  if (positional) {
+    console.log(`[keys] POSITIONAL mapping (soln numbering broken/all-1.): ${orderedTokens.length} ordered blocks for ${questions.length} questions`);
+  }
+
   // A duplicate solution number means a mis-numbered block silently overwrote an
   // earlier answer key (Map last-wins) — BOTH need an answerOverride.
   const dupSoln = findDuplicateSolutionNumbers(solnText);
@@ -135,7 +153,7 @@ function main() {
       numericAnswer: null as number | null,
       imageRefs: q.imageRefs,
       hasStemImage: q.imageRefs.length > 0,
-      solution: solutions.get(q.number) ?? null,
+      solution: solutionAt(q.number) ?? null,
     };
 
     // Position is the authoritative Section A/B discriminator (not option count) —
@@ -146,7 +164,7 @@ function main() {
         return { ...base, status: "skipped_numerical", options: null, correctLabel: null, contentHash: null };
       }
       // Section-B NAT: the soln token IS the numeric answer; no options.
-      const num = parseNumericAnswer(tokens.get(q.number));
+      const num = parseNumericAnswer(tokenAt(q.number));
       if (num === null) {
         return { ...base, status: "no_answer_key", options: null, correctLabel: null, contentHash: null };
       }
@@ -166,7 +184,7 @@ function main() {
     }
 
     // Resolve the correct label: a clean (a-d) token, else a value-token matched to an option.
-    const token = tokens.get(q.number);
+    const token = tokenAt(q.number);
     let correctLabel: Label | null = null;
     if (token && /^[abcd]$/i.test(token)) correctLabel = token.toUpperCase() as Label;
     else if (token) correctLabel = matchValueToOption(token, q.options);

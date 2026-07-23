@@ -6,6 +6,9 @@ import {
   findDuplicateSolutionNumbers,
   localSection,
   subjectForNumber,
+  parseAnswerTokensOrdered,
+  splitSolutionsOrdered,
+  solnNumberingIsBroken,
   matchValueToOption,
   splitSolutions,
   parseOptionsFromText,
@@ -155,6 +158,28 @@ describe("subjectForNumber", () => {
     expect(subjectForNumber(150)).toBe("Chemistry");
     expect(subjectForNumber(151)).toBe("Maths"); // shift 2 Maths
     expect(subjectForNumber(180)).toBe("Maths");
+  });
+});
+
+describe("positional key mapping (all-1. soln docs)", () => {
+  const allOne = "1.  **(c)** first\n\n1.  **(7)** second\n\n1.  **(b)** third\n";
+  const sequential = "1.  **(c)** first\n\n2.  **(7)** second\n\n3.  **(b)** third\n";
+  it("solnNumberingIsBroken flags an all-1. doc, not a sequential one", () => {
+    // needs >=20 blocks to trip; build a 30-block all-1. doc
+    const big = Array.from({ length: 30 }, () => "1.  **(a)** x").join("\n\n");
+    expect(solnNumberingIsBroken(big)).toBe(true);
+    const seq = Array.from({ length: 30 }, (_, i) => `${i + 1}.  **(a)** x`).join("\n\n");
+    expect(solnNumberingIsBroken(seq)).toBe(false);
+  });
+  it("parseAnswerTokensOrdered returns tokens in document order regardless of number", () => {
+    expect(parseAnswerTokensOrdered(allOne)).toEqual(["c", "7", "b"]);
+    expect(parseAnswerTokensOrdered(sequential)).toEqual(["c", "7", "b"]);
+  });
+  it("splitSolutionsOrdered aligns bodies 1:1 with the tokens", () => {
+    const bodies = splitSolutionsOrdered(allOne);
+    expect(bodies).toHaveLength(3);
+    expect(bodies[0]).toContain("first");
+    expect(bodies[2]).toContain("third");
   });
 });
 

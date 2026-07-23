@@ -191,6 +191,43 @@ export function parseAnswerTokens(solnMd: string): Map<number, string> {
 }
 
 /**
+ * ORDERED answer tokens — the i-th `**(x)**` block's token, ignoring its (often
+ * broken) printed number. For a soln doc whose pandoc numbering reset every block
+ * to `1.` (the "all-1." case), position is the ONLY reliable key: the i-th soln
+ * block answers the i-th question. `answerTokenAt(ordered, qNumber)` reads it 1-indexed.
+ */
+export function parseAnswerTokensOrdered(solnMd: string): string[] {
+  const out: string[] = [];
+  for (const m of solnMd.matchAll(ANSWER_TOKEN)) out.push(m[2].trim());
+  return out;
+}
+
+/** ORDERED solution bodies, aligned 1:1 with parseAnswerTokensOrdered. */
+export function splitSolutionsOrdered(solnMd: string): string[] {
+  const starts: { index: number; markerLen: number }[] = [];
+  for (const m of solnMd.matchAll(ANSWER_TOKEN)) starts.push({ index: m.index!, markerLen: m[0].length });
+  return starts.map((s, i) => {
+    const end = i + 1 < starts.length ? starts[i + 1].index : solnMd.length;
+    return cleanText(solnMd.slice(s.index + s.markerLen, end));
+  });
+}
+
+/**
+ * True when the soln doc's block numbering is broken (pandoc reset most blocks
+ * to `1.`), so a by-number key map collapses and positional mapping is required.
+ * Heuristic: many answer blocks but very few DISTINCT printed numbers.
+ */
+export function solnNumberingIsBroken(solnMd: string): boolean {
+  const nums = new Set<number>();
+  let total = 0;
+  for (const m of solnMd.matchAll(ANSWER_TOKEN)) {
+    nums.add(Number(m[1]));
+    total++;
+  }
+  return total >= 20 && nums.size <= Math.max(2, Math.floor(total * 0.15));
+}
+
+/**
  * Solution numbers that appear more than once — a source-doc typo (a block
  * mis-numbered as an earlier question) silently corrupts the answer key via
  * Map last-wins. Surface it so the affected keys get an answerOverride.
