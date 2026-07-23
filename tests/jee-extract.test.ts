@@ -13,6 +13,9 @@ import {
   splitSolutions,
   parseOptionsFromText,
   segmentQuestions,
+} from "../scripts/jee/lib";
+import { isCommittable } from "../scripts/jee/config";
+import {
   normalizeMathFunctions,
   keepForSubject,
   parseSubjectArg,
@@ -439,5 +442,23 @@ describe("parseNumericAnswer (JEE Section B / NAT answers)", () => {
     expect(parseNumericAnswer("abc")).toBeNull();
     expect(parseNumericAnswer("")).toBeNull();
     expect(parseNumericAnswer(undefined)).toBeNull();
+  });
+});
+
+describe("isCommittable — numericOverride of 0 (config.ts)", () => {
+  // Regression: a legitimate NAT answer of 0 must not read as "no override".
+  const paper = (o: Record<string, unknown>) => ({ classification: {}, ...o }) as never;
+
+  it("commits a needs_review row whose numericOverride is 0", () => {
+    expect(isCommittable("needs_review", 61, paper({ numericOverrides: { "61": 0 } }))).toBe(true);
+  });
+  it("commits a needs_review row whose numericOverride is a nonzero number", () => {
+    expect(isCommittable("needs_review", 47, paper({ numericOverrides: { "47": 96 } }))).toBe(true);
+  });
+  it("drops a needs_review row with no override of any kind", () => {
+    expect(isCommittable("needs_review", 50, paper({ numericOverrides: { "61": 0 } }))).toBe(false);
+  });
+  it("still commits clean MCQ rows regardless of overrides", () => {
+    expect(isCommittable("ok", 1, paper({}))).toBe(true);
   });
 });

@@ -1,0 +1,45 @@
+{
+  "sourceFile": "JEE_2021_Paper15.docx",
+  "pyqYear": 2021,
+  "pyqNote": "2021 Compilation Paper 15",
+  "compilation": true,
+  "classification": {
+    "43": { "subject": "Maths", "chapter": "Quadratic Equations", "subtopic": "Modulus Equations" },
+    "46": { "subject": "Maths", "chapter": "Continuity and Differentiability", "subtopic": "Differentiability" },
+    "47": { "subject": "Maths", "chapter": "Integrals", "subtopic": "Definite Integrals" },
+    "49": { "subject": "Maths", "chapter": "Vector Algebra", "subtopic": "Dot and Cross Product" },
+    "50": { "subject": "Maths", "chapter": "Determinants", "subtopic": "Determinant Equations" },
+    "52": { "subject": "Maths", "chapter": "Complex Numbers", "subtopic": "Geometry of Complex Numbers" },
+    "53": { "subject": "Maths", "chapter": "Limits and Continuity", "subtopic": "Evaluation of Limits" },
+    "55": { "subject": "Maths", "chapter": "Sequences and Series", "subtopic": "Special Sums" },
+    "57": { "subject": "Maths", "chapter": "Binomial Theorem", "subtopic": "Rational and Irrational Terms" }
+  },
+  "answerOverrides": {
+    "43": "B",
+    "46": "B"
+  },
+  "stemOverrides": {
+    "46": "If \\(f(x)=\\begin{cases} 5x+1, & x<2 \\\\ \\int_{0}^{x} (5+|1-t|)\\,dt, & x\\ge 2 \\end{cases}\\) then"
+  },
+  "numericOverrides": {
+    "47": 0,
+    "49": 6,
+    "50": 1,
+    "52": -1,
+    "53": 39,
+    "55": 4,
+    "57": 11
+  },
+  "notes": "2021 compilation Paper 15, Maths only. Keys independently re-derived from the stems (Q50 = 1 confirmed vs the source's own key; source keys elsewhere untrustworthy). Shipped 9 of 15 (2 MCQ + 7 integer-NAT). Skipped: Q44 (two option-images missing), Q45 (angle-bisector equation), Q48 (matrix answer), Q51 (cot(pi/24) irrational), Q54 (requires stem reconstruction), Q56 (coplanarity relation).",
+  "authoredSolutions": {
+    "43": "Let \\(t=|x|\\ge0\\): \\(t^2-t-12=(t-4)(t+3)=0\\Rightarrow t=4\\), so \\(x=\\pm4\\) — \\(2\\) real solutions.",
+    "46": "At \\(x=2\\): LHL \\(=5(2)+1=11\\) and RHL \\(=\\int_0^2(5+|1-t|)\\,dt=10+1=11\\), so \\(f\\) is continuous. But LHD \\(=5\\) while RHD \\(=5+|1-2|=6\\ne5\\), so \\(f\\) is continuous but not differentiable at \\(x=2\\).",
+    "47": "Since \\(\\log\\big(x+\\sqrt{x^2+1}\\big)=\\sinh^{-1}x\\) is an odd function, \\(\\int_{-1}^{1}\\sinh^{-1}x\\,dx=0\\).",
+    "49": "\\(|\\vec a\\times\\vec b|=|\\vec a||\\vec b|\\sin\\theta=10\\sin\\theta=8\\Rightarrow\\sin\\theta=\\tfrac45,\\ \\cos\\theta=\\tfrac35\\). Hence \\(|\\vec a\\cdot\\vec b|=10\\cdot\\tfrac35=6\\).",
+    "50": "The circulant determinant equals \\((\\sin x-\\cos x)^2(\\sin x+2\\cos x)\\). On \\([-\\tfrac\\pi4,\\tfrac\\pi4]\\), \\(\\sin x=\\cos x\\) only at \\(x=\\tfrac\\pi4\\), while \\(\\tan x=-2\\) has no solution there — so there is exactly \\(1\\) solution.",
+    "52": "\\(\\operatorname{Re}(z^2)+2(\\operatorname{Im}z)^2+2\\operatorname{Re}(z)=x^2-y^2+2y^2+2x=x^2+y^2+2x=0\\): a circle with centre \\((-1,0)\\). The parabola \\(x^2-6x+y+13=0\\) has vertex \\((3,-4)\\). The line through \\((-1,0)\\) and \\((3,-4)\\) has slope \\(-1\\), i.e. \\(y=-x-1\\), giving \\(y\\)-intercept \\(-1\\).",
+    "53": "A finite limit at \\(x=2\\) forces \\(P(2)=0\\) with \\(P'(2)=7\\). Writing \\(P(x)=(x-2)(ax+b)\\): \\(P(3)=3a+b=9\\) and \\(2a+b=7\\Rightarrow a=2,\\ b=3\\). So \\(P(x)=(x-2)(2x+3)\\) and \\(P(5)=3\\cdot13=39\\).",
+    "55": "For even \\(n\\), \\(\\big[\\tfrac n2\\big]=\\tfrac n2\\); for odd \\(n\\), \\(\\big[-\\tfrac n2\\big]=-\\tfrac{n+1}2\\). Summing \\(n=8\\) to \\(100\\): the even part is \\(4+5+\\cdots+50=1269\\) and the odd part is \\(-(5+6+\\cdots+50)=-1265\\), giving a total of \\(4\\).",
+    "57": "The general term \\(\\binom{12}{k}2^{(12-k)/3}3^{k/4}\\) is rational iff \\(3\\mid(12-k)\\) and \\(4\\mid k\\), i.e. \\(k\\in\\{0,12\\}\\): \\(2\\) rational terms. Of the \\(13\\) terms, \\(11\\) are irrational."
+  }
+}
