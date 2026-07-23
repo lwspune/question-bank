@@ -24,6 +24,18 @@ type Rec = {
 };
 type Sol = { chapter: string; subtopic: string; solution: string; flag?: string; answer?: string };
 
+/**
+ * Some classification agents double-escape their LaTeX (writing `\\(`, `\\frac`
+ * for the inline delimiter/commands). The literal `\\(` is never valid LaTeX —
+ * the inline delimiter is a single-backslash `\(` — so its presence is an
+ * unambiguous signal the whole string is double-escaped; halve every run.
+ * This correctly reduces command `\\frac`->`\frac` AND matrix row-sep `\\\\`->`\\`.
+ */
+export function normalizeEscaping(sol: string): string {
+  if (sol.includes("\\\\(")) return sol.replace(/\\\\/g, "\\");
+  return sol;
+}
+
 function main() {
   const paperId = requirePaperId(process.argv, 2, 'assemble-safe.ts <paperId> <sourceFile> <pyqYear> "<pyqNote>"');
   const sourceFile = process.argv[3];
@@ -56,7 +68,7 @@ function main() {
     const s = sols[k];
     if (!s) { noClass.push(k); continue; }
     classification[k] = { subject: "Maths", chapter: s.chapter, subtopic: s.subtopic };
-    if (s.solution) authoredSolutions[k] = s.solution;
+    if (s.solution) authoredSolutions[k] = normalizeEscaping(s.solution);
     if (s.flag) flags.push(`Q${k}: ${s.flag}`);
     if (r.status === "numeric") {
       if (r.numericAnswer !== null && r.numericAnswer !== undefined) numericOverrides[k] = r.numericAnswer;
