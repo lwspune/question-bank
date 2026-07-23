@@ -1,0 +1,99 @@
+{
+  "sourceFile": "JEE_2021_Paper13.docx",
+  "pyqYear": 2021,
+  "pyqNote": "2021 Compilation Paper 13",
+  "compilation": true,
+  "classification": {
+    "44": {
+      "subject": "Maths",
+      "chapter": "Trigonometry",
+      "subtopic": "Trigonometric Equations"
+    },
+    "45": {
+      "subject": "Maths",
+      "chapter": "Sequences and Series",
+      "subtopic": "Arithmetic Progression"
+    },
+    "46": {
+      "subject": "Maths",
+      "chapter": "Relations and Functions",
+      "subtopic": "Domain and Range"
+    },
+    "47": {
+      "subject": "Maths",
+      "chapter": "Sequences and Series",
+      "subtopic": "Inequalities"
+    },
+    "48": {
+      "subject": "Maths",
+      "chapter": "Permutations and Combinations",
+      "subtopic": "Permutations"
+    },
+    "49": {
+      "subject": "Maths",
+      "chapter": "Matrices",
+      "subtopic": "Matrix Multiplication"
+    },
+    "52": {
+      "subject": "Maths",
+      "chapter": "Conic Sections",
+      "subtopic": "Circle"
+    },
+    "53": {
+      "subject": "Maths",
+      "chapter": "Relations and Functions",
+      "subtopic": "Onto Functions"
+    },
+    "54": {
+      "subject": "Maths",
+      "chapter": "Conic Sections",
+      "subtopic": "Parabola"
+    },
+    "56": {
+      "subject": "Maths",
+      "chapter": "Complex Numbers",
+      "subtopic": "Cube Roots of Unity"
+    },
+    "57": {
+      "subject": "Maths",
+      "chapter": "Quadratic Equations",
+      "subtopic": "Modulus Equations"
+    },
+    "59": {
+      "subject": "Maths",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals"
+    }
+  },
+  "answerOverrides": {
+    "44": "D",
+    "45": "D",
+    "46": "B",
+    "52": "C",
+    "54": "A",
+    "56": "C",
+    "57": "C",
+    "59": "C"
+  },
+  "numericOverrides": {
+    "47": 96,
+    "48": 96,
+    "49": 3125,
+    "53": 30240
+  },
+  "notes": "2021 compilation Paper 13, Maths only. Source key MISALIGNED (Q56 answer 2/9 was mislabeled as Q58); every key independently blind-re-derived. Shipped 12 of 16 (8 MCQ + 4 integer-NAT). Skipped: Q50 (prob 43/162), Q51 (e=(sqrt5-1)/2), Q55 (sum 4/3), Q58 (antiderivative) — non-integer/irrational answers that don't fit the MCQ/NAT schema.",
+  "authoredSolutions": {
+    "44": "Since \\(\\sin^7 x\\le \\sin^2 x\\) and \\(\\cos^7 x\\le \\cos^2 x\\) (as \\(t^7\\le t^2\\) for \\(t\\in[0,1]\\) and \\(t^7<0\\le t^2\\) for \\(t<0\\)), \\(\\sin^7 x+\\cos^7 x\\le 1\\), with equality only when \\(\\sin x,\\cos x\\in\\{0,1\\}\\), i.e. \\((\\sin x,\\cos x)=(1,0)\\) or \\((0,1)\\). On \\([0,4\\pi]\\): \\(\\cos x=1\\) at \\(0,2\\pi,4\\pi\\) and \\(\\sin x=1\\) at \\(\\tfrac{\\pi}{2},\\tfrac{5\\pi}{2}\\), giving \\(5\\) solutions.",
+    "45": "With \\(S_{10}=530,\\ S_5=140\\): \\(2a+9d=106\\) and \\(2a+4d=56\\), so \\(5d=50\\Rightarrow d=10,\\ a=8\\). Then \\(S_{20}=\\tfrac{20}{2}(16+190)=2060\\) and \\(S_6=\\tfrac{6}{2}(16+50)=198\\), so \\(S_{20}-S_6=1862\\).",
+    "46": "The numerator \\(\\cos^{-1}\\sqrt{x^2-x+1}\\) needs \\(x^2-x\\le0\\Rightarrow x\\in[0,1]\\). The denominator \\(\\sqrt{\\sin^{-1}(x-\\tfrac12)}\\) must be positive, so \\(x>\\tfrac12\\). Intersection \\((\\tfrac12,1]\\), giving \\((\\alpha,\\beta)=(\\tfrac12,1)\\) and \\(\\alpha+\\beta=\\tfrac32\\).",
+    "47": "Dividing by \\(10^n\\), the condition is \\((1.1)^n>1+(0.9)^n\\). At \\(n=4\\): \\(11^4=14641<16561=10^4+9^4\\) (fails); at \\(n=5\\): \\(161051>159049\\) (holds), and it holds for all \\(n\\ge5\\). So \\(n\\in\\{5,\\dots,100\\}\\), i.e. \\(96\\) integers.",
+    "48": "Using all five digits \\(\\{0,2,4,6,8\\}\\) without repetition gives \\(5!=120\\) strings; those with leading \\(0\\) number \\(4!=24\\). Every valid 5-digit number exceeds \\(10000\\), so the count is \\(120-24=96\\).",
+    "49": "\\(A\\) swaps indices \\(1,2\\), so \\(AB\\) swaps rows \\(1,2\\) of \\(B\\) while \\(BA\\) swaps columns \\(1,2\\). Equating forces \\(b_{11}=b_{22},\\ b_{12}=b_{21},\\ b_{13}=b_{23},\\ b_{31}=b_{32}\\), with \\(b_{33}\\) free: \\(5\\) independent entries, each from \\(\\{1,2,3,4,5\\}\\), giving \\(5^5=3125\\).",
+    "52": "Reading the linear terms as \\(-108x+120y\\), divide by \\(36\\): centre \\(\\big(\\tfrac32,-\\tfrac53\\big)\\) and \\(r^2=\\tfrac{9}{4}+\\tfrac{25}{9}-\\tfrac{C}{36}=\\frac{181-C}{36}\\). Not meeting either axis needs \\(0<r<\\min(\\tfrac53,\\tfrac32)=\\tfrac32\\), i.e. \\(0<\\frac{181-C}{36}<\\tfrac94\\Rightarrow 100<C<181\\). So \\(C\\in(100,181)\\).",
+    "53": "An onto \\(f:A\\to A\\) on a finite set is a bijection. Three distinct values summing to \\(3\\) must be \\(\\{0,1,2\\}\\), assigned to positions \\(1,2,3\\) in \\(3!=6\\) ways; the remaining \\(7\\) positions map bijectively to the remaining \\(7\\) values in \\(7!=5040\\) ways. Total \\(6\\cdot5040=30240\\).",
+    "54": "The line \\(y=-2x+k\\) is tangent to \\(\\frac{x^2}{3}-\\frac{y^2}{3}=1\\) when \\(k^2=a^2m^2-b^2=12-3=9\\Rightarrow k=\\pm3\\). Tangency to \\(y^2=\\alpha x\\): substituting gives \\(2y^2+\\alpha y-\\alpha k=0\\) with discriminant \\(0\\Rightarrow \\alpha=-8k\\). Taking \\(k=3\\), \\(\\alpha=-24\\).",
+    "56": "For a die value \\(r\\), \\(\\omega^{r}\\) depends on \\(r\\bmod 3\\); each residue \\(0,1,2\\) occurs for two faces, probability \\(\\tfrac13\\) each. Since \\(1+\\omega+\\omega^2=0\\), the sum is \\(0\\) iff the three residues are a permutation of \\(\\{0,1,2\\}\\): probability \\(3!\\left(\\tfrac13\\right)^3=\\frac{6}{27}=\\frac29\\).",
+    "57": "Solve \\((|x|-3)|x+4|=6\\). For \\(x\\ge0\\): \\(x^2+x-18=0\\Rightarrow x=\\frac{-1+\\sqrt{73}}{2}\\) (one root). For \\(-4\\le x<0\\): \\(x^2+7x+18=0\\) has negative discriminant (none). For \\(x<-4\\): \\(x^2+7x+6=0\\Rightarrow x=-1,-6\\), only \\(x=-6\\) valid. Total \\(2\\) solutions.",
+    "59": "The exponent is \\(\\frac{x}{\\pi}-\\big[\\frac{x}{\\pi}\\big]\\), so on \\([n\\pi,(n+1)\\pi)\\) with \\(x=n\\pi+t\\) the integrand is \\(\\sin^2 t\\,e^{-t/\\pi}\\), the same on all \\(100\\) intervals. With \\(J=\\int_0^{\\pi}e^{-t/\\pi}\\sin^2 t\\,dt=\\frac{2\\pi^3(1-e^{-1})}{1+4\\pi^2}\\), summing \\(100\\) copies gives \\(I=\\frac{200(1-e^{-1})\\pi^3}{1+4\\pi^2}\\), so \\(\\alpha=200(1-e^{-1})\\)."
+  }
+}

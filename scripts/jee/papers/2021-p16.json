@@ -1,0 +1,57 @@
+{
+  "sourceFile": "JEE_2021_Paper16.docx",
+  "pyqYear": 2021,
+  "pyqNote": "2021 Compilation Paper 16",
+  "compilation": true,
+  "classification": {
+    "42": { "subject": "Maths", "chapter": "Limits and Continuity", "subtopic": "Evaluation of Limits" },
+    "43": { "subject": "Maths", "chapter": "Binomial Theorem", "subtopic": "General Term" },
+    "44": { "subject": "Maths", "chapter": "Integrals", "subtopic": "Definite Integrals" },
+    "45": { "subject": "Maths", "chapter": "Quadratic Equations", "subtopic": "Symmetric Functions of Roots" },
+    "46": { "subject": "Maths", "chapter": "Limits and Continuity", "subtopic": "Evaluation of Limits" },
+    "47": { "subject": "Maths", "chapter": "Trigonometry", "subtopic": "Trigonometric Identities" },
+    "48": { "subject": "Maths", "chapter": "Probability", "subtopic": "Classical Probability" },
+    "49": { "subject": "Maths", "chapter": "Conic Sections", "subtopic": "Circle" },
+    "51": { "subject": "Maths", "chapter": "Statistics", "subtopic": "Variance and Standard Deviation" },
+    "53": { "subject": "Maths", "chapter": "Sequences and Series", "subtopic": "Arithmetic Progression" },
+    "54": { "subject": "Maths", "chapter": "Determinants", "subtopic": "Evaluation of Determinants" },
+    "55": { "subject": "Maths", "chapter": "Continuity and Differentiability", "subtopic": "Continuity" },
+    "56": { "subject": "Maths", "chapter": "Matrices", "subtopic": "Inverse of a Matrix" },
+    "61": { "subject": "Maths", "chapter": "Differential Equations", "subtopic": "Formation and Solutions" }
+  },
+  "answerOverrides": {
+    "42": "A",
+    "43": "A",
+    "44": "A",
+    "45": "B",
+    "46": "A",
+    "47": "B",
+    "48": "C",
+    "49": "B"
+  },
+  "numericOverrides": {
+    "51": 16,
+    "53": 3,
+    "54": 6,
+    "55": 5,
+    "56": 5,
+    "61": 0
+  },
+  "notes": "2021 compilation Paper 16, Maths only. Source answer key AGREES with independent blind re-derivation on all 8 clean MCQ (Q42-49) — aligned and trustworthy. Shipped 14 of 20 (8 MCQ + 6 integer-NAT). Skipped: Q50 (two-point answer), Q52 (irrational limit), Q57 (irrational area), Q58 (ambiguous vector stem), Q59 (irrational), Q60 (irrational distance, garbled stem).",
+  "authoredSolutions": {
+    "42": "With \\(f(2)=4,\\ f'(2)=1\\), the numerator \\(\\to 4f(2)-4f(2)=0\\) — a \\(\\frac00\\) form. By L'Hopital, \\(\\lim_{x\\to2}\\frac{2x\\,f(2)-4f'(x)}{1}=4f(2)-4f'(2)=16-4=12\\).",
+    "43": "In \\((x^2+\\tfrac1{bx})^{11}\\) the \\(x^7\\) term needs \\(22-3r=7\\Rightarrow r=5\\), coefficient \\(\\binom{11}{5}b^{-5}\\). In \\((x-\\tfrac1{bx^2})^{11}\\) the \\(x^{-7}\\) term needs \\(11-3r=-7\\Rightarrow r=6\\), coefficient \\(\\binom{11}{6}b^{-6}\\). Since \\(\\binom{11}{5}=\\binom{11}{6}\\), \\(b^{-5}=b^{-6}\\Rightarrow b=1\\).",
+    "44": "Because \\(g(x)=x\\cos x\\) is odd, \\(\\frac1{1+e^{g}}+\\frac1{1+e^{-g}}=1\\), so \\(I=\\int_0^{\\pi/4}\\frac{dx}{\\sin^4x+\\cos^4x}\\). Substituting \\(t=\\tan x\\), \\(\\int_0^1\\frac{1+t^2}{1+t^4}\\,dt=\\frac{\\pi}{2\\sqrt2}\\).",
+    "45": "Here \\(\\alpha+\\beta=-20^{1/4}\\) and \\(\\alpha\\beta=\\sqrt5\\), so \\(\\alpha^2+\\beta^2=\\sqrt{20}-2\\sqrt5=0\\). Then \\(\\alpha^4+\\beta^4=-2(\\alpha\\beta)^2=-10\\), and \\(\\alpha^8+\\beta^8=(\\alpha^4+\\beta^4)^2-2(\\alpha\\beta)^4=100-50=50\\).",
+    "46": "The left limit \\((1+|\\sin x|)^{3a/|\\sin x|}\\to e^{3a}\\); the right limit's exponent \\(\\frac{\\cot4x}{\\cot2x}\\to\\tfrac12\\), giving \\(e^{1/2}\\). Continuity forces \\(e^{3a}=b=e^{1/2}\\Rightarrow a=\\tfrac16,\\ b^2=e\\), so \\(6a+b^2=1+e\\).",
+    "47": "Squaring \\(\\sin\\theta+\\cos\\theta=\\tfrac12\\) gives \\(\\sin2\\theta=-\\tfrac34\\). Then \\(\\cos4\\theta=1-2\\sin^22\\theta=-\\tfrac18\\) and \\(\\sin6\\theta=3\\sin2\\theta-4\\sin^32\\theta=-\\tfrac9{16}\\). The bracket sums to \\(-\\tfrac{23}{16}\\), and \\(16\\) times it is \\(-23\\).",
+    "48": "\\(2^n-2\\equiv0\\pmod3\\Rightarrow(-1)^n\\equiv-1\\Rightarrow n\\) is odd. Of the \\(90\\) two-digit numbers, \\(45\\) are odd, so the probability is \\(\\frac{45}{90}=\\frac12\\).",
+    "49": "The circle has centre \\(C(1,3)\\), \\(r=2\\); from \\(P(-1,1)\\) the tangent length is \\(2=r\\), so \\(\\angle APB=90^\\circ\\) and \\(AB=2\\sqrt2\\). Placing \\(A(2,0),B(0,2),D(0,-2)\\) on \\(x^2+y^2=4\\) with \\(AD=AB\\) gives area \\(=\\tfrac12|2(2+2)|=4\\).",
+    "51": "The mean gives \\(\\sum x=72\\), and the known terms sum to \\(60\\), so \\(a+b=12\\). Variance \\(\\tfrac{37}{4}\\Rightarrow\\sum x^2=722\\); the known squares sum to \\(642\\), so \\(a^2+b^2=80\\). Then \\(2ab=144-80=64\\) and \\((a-b)^2=80-64=16\\).",
+    "53": "The AP condition is \\((2^x-5)^2=2(2^x-\\tfrac72)\\). With \\(t=2^x\\): \\(t^2-12t+32=0\\Rightarrow t=8\\) or \\(4\\); requiring \\(t>5\\) gives \\(t=8\\), so \\(x=3\\).",
+    "54": "Using \\(R_1\\to R_1-R_3\\) and \\(R_2\\to R_2-R_3\\) and expanding, \\(f(x)=4+2\\cos2x\\), which is maximised when \\(\\cos2x=1\\): \\(f_{\\max}=6\\).",
+    "55": "\\(f(x)=\\min\\{\\{x\\},\\,1-\\{x\\}\\}\\) is a continuous triangular wave, so \\(p=0\\). On \\([0,3]\\) it has corner points at \\(x=0.5,1,1.5,2,2.5\\), giving \\(q=5\\); hence \\(p+q=5\\).",
+    "56": "For \\(A=\\begin{bmatrix}1&2\\\\-1&4\\end{bmatrix}\\), \\(\\operatorname{tr}=5,\\ \\det=6\\). By Cayley-Hamilton \\(A^2-5A+6I=0\\Rightarrow A^{-1}=\\tfrac56 I-\\tfrac16A\\), so \\(\\alpha=\\tfrac56,\\ \\beta=-\\tfrac16\\) and \\(5(\\alpha-\\beta)=5\\).",
+    "61": "Since \\(\\sin(x+y)+\\sin(x-y)=2\\sin x\\cos y\\), the equation gives \\(\\sec x\\,y'=2\\sin x\\cos y\\Rightarrow y'=2\\sin x\\cos x\\cos y\\). At \\(x=\\tfrac\\pi2\\), \\(\\cos x=0\\Rightarrow y'=0\\), so \\(5\\,y'(\\tfrac\\pi2)=0\\)."
+  }
+}

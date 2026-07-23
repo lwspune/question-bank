@@ -40,7 +40,13 @@ export function isCommittable(status: string, questionNumber: number, paper: Pap
   // A Section-B NAT row is committable once it has a parsed answer (status
   // 'numeric') or one supplied via a numericOverride.
   if (status === "numeric") return true;
-  return Boolean(paper.stemOverrides?.[k] || paper.answerOverrides?.[k] || paper.numericOverrides?.[k]);
+  // NB: check for presence with `!== undefined`, not truthiness — a legitimate
+  // NAT answer of 0 (or an empty-string override) must not read as "no override".
+  return (
+    paper.stemOverrides?.[k] !== undefined ||
+    paper.answerOverrides?.[k] !== undefined ||
+    paper.numericOverrides?.[k] !== undefined
+  );
 }
 
 const OUT = join(__dirname, "out");
