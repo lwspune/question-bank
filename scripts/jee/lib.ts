@@ -1,5 +1,6 @@
 // Pure helpers for the JEE Mains pandoc-markdown extractor.
 // Unit-tested in tests/jee-extract.test.ts. No IO here.
+import katex from "katex";
 
 export type JeeSubject = "Physics" | "Chemistry" | "Maths";
 
@@ -65,6 +66,78 @@ function fixFuncsInZone(zone: string): string {
  */
 export function normalizeMathFunctions(text: string): string {
   return text.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, (zone) => fixFuncsInZone(zone));
+}
+
+// --- Shared LaTeX repair (used by cleanup-latex.ts + attach-solutions.ts) ---
+// Strip pandoc hard-break / stray control chars sitting inside a math zone right
+// before its closing delimiter, and drop a leading empty `\(\\)`. Safe: a legit
+// matrix row-break `\\` is always followed by content or `\end{...}`, never a
+// bare `)`/`]`.
+export function preCleanLatex(s: string): string {
+  return s
+    .replace(/\\underset\{([^{}]+)\}\{\\overset\{([\s\S]*?)\}\{︸\}\}/g, "\\underbrace{$2}_{$1}")
+    .replace(/[︷︸⏞⏟]/g, "")
+    .replace(/^\\\(\s*\\+\s*\\?\)/, "")
+    .replace(/\\\(\s*\\\\\s*\\\)/g, "")
+    .replace(/\\\\\)/g, "\\)")
+    .replace(/\\\\\]/g, "\\]")
+    .replace(/\\\\+(\s*\\[)\]])/g, "$1")
+    .replace(/\\ (\s*\\[)\]])/g, "$1");
+}
+
+// KaTeX-validated de-glue: when a macro ran into the next token (`\inR`, `\veeq`)
+// it renders "Undefined control sequence". Split at the longest valid prefix.
+function repairZone(inner: string): string {
+  let s = inner;
+  for (let i = 0; i < 15; i++) {
+    try {
+      katex.renderToString(s, { throwOnError: true, strict: false });
+      return s;
+    } catch (e) {
+      const m = String((e as Error).message).match(/Undefined control sequence: \\([A-Za-z]+)/);
+      if (!m) return s;
+      const name = m[1];
+      let k = 0;
+      for (let j = name.length - 1; j >= 1; j--) {
+        try {
+          katex.renderToString("\\" + name.slice(0, j) + " x", { throwOnError: true, strict: false });
+          k = j;
+          break;
+        } catch {
+          /* try a shorter prefix */
+        }
+      }
+      if (!k) return s;
+      s = s.replace("\\" + name, "\\" + name.slice(0, k) + " " + name.slice(k));
+    }
+  }
+  return s;
+}
+
+function repairGluedMacros(text: string): string {
+  return text.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, (zone) => {
+    const open = zone.startsWith("\\[") ? "\\[" : "\\(";
+    const close = open === "\\[" ? "\\]" : "\\)";
+    return open + repairZone(zone.slice(2, -2)) + close;
+  });
+}
+
+// Repair split `\(...\)` delimiters: pandoc breaks a field's math at the field
+// boundary — drop a trailing dangling `\(`, prepend `\(` when the first delimiter
+// seen is a `\)`.
+function repairSplitDelimiters(s: string): string {
+  let out = s.replace(/\s*\\\(\s*$/, "");
+  const fo = out.indexOf("\\(");
+  const fc = out.indexOf("\\)");
+  if (fc !== -1 && (fo === -1 || fc < fo)) out = "\\(" + out;
+  return out;
+}
+
+/** Full cosmetic + repair transform for one long-form field (stem/option/solution). */
+export function repairLatex(s: string): string {
+  return repairSplitDelimiters(
+    repairGluedMacros(normalizeMathFunctions(preCleanLatex(s))).replace(/(?<!\\)\\\s*$/, "").trimEnd(),
+  );
 }
 
 /**
@@ -229,7 +302,12 @@ const PART_SUBJECT: { re: RegExp; subject: JeeSubject }[] = [
  * leaving Q31-60 mislabelled Physics until this override).
  */
 export function subjectForNumber(n: number): JeeSubject {
-  return n <= 30 ? "Physics" : n <= 60 ? "Chemistry" : "Maths";
+  // 2022-2025 sittings are two shifts concatenated in one file (180 blocks:
+  // shift 1 = Q1-90, shift 2 = Q91-180), each shift Physics/Chem/Maths in
+  // 30-blocks. Wrap per 90 so shift 2 maps identically. Identical to the raw
+  // ≤60/≤90 split for a single-shift 90-block 2021 paper (n≤90 ⇒ local===n).
+  const local = ((n - 1) % 90) + 1;
+  return local <= 30 ? "Physics" : local <= 60 ? "Chemistry" : "Maths";
 }
 
 /**

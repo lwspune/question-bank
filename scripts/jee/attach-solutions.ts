@@ -15,6 +15,7 @@ import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
+import { repairLatex } from "./lib";
 import { EXAM_ID, loadPaper, recordsPath, requirePaperId, isCommittable, type PaperData } from "./config";
 
 type Rec = { questionNumber: number; status: string; solution: string | null };
@@ -72,6 +73,10 @@ async function main() {
       solution = cleaned.trim() ? cleaned : null;
       src = solution ? "source" : "none";
     }
+    // Repair pandoc artifacts (hard-break/split-delimiter/glued-macro) BEFORE the
+    // KaTeX guard, so a source solution with a `\right.\\)` / `\right.\ \]` doesn't
+    // get skipped-as-broken and left null. cleanup-latex applies the same repair.
+    if (solution) solution = repairLatex(solution);
     return { num: r.questionNumber, solution, src, check: solution ? mathOk(solution) : { ok: true } };
   });
 

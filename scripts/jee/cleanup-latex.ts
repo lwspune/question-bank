@@ -12,7 +12,7 @@ import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
-import { normalizeMathFunctions } from "./lib";
+import { repairLatex } from "./lib";
 
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
 
@@ -35,74 +35,8 @@ function mathOk(text: string): boolean {
   return true;
 }
 
-// KaTeX-validated de-glue: when a macro ran into the next token (`\inR`, `\veeq`)
-// it renders as "Undefined control sequence". Find the longest prefix split that
-// renders. Fires only on real failures, so it can't break `\infty` / `\simeq`.
-function repairZone(inner: string): string {
-  let s = inner;
-  for (let i = 0; i < 15; i++) {
-    try {
-      katex.renderToString(s, { throwOnError: true, strict: false });
-      return s;
-    } catch (e) {
-      const m = String((e as Error).message).match(/Undefined control sequence: \\([A-Za-z]+)/);
-      if (!m) return s; // not a glued-macro error (e.g. matrix / nesting) — leave it
-      const name = m[1];
-      // Longest prefix that is itself a valid macro (validated in ISOLATION, so a
-      // second glued macro elsewhere in the zone doesn't block the split).
-      let k = 0;
-      for (let j = name.length - 1; j >= 1; j--) {
-        try {
-          katex.renderToString("\\" + name.slice(0, j) + " x", { throwOnError: true, strict: false });
-          k = j;
-          break;
-        } catch {
-          /* try a shorter prefix */
-        }
-      }
-      if (!k) return s; // no valid prefix — give up on this segment
-      s = s.replace("\\" + name, "\\" + name.slice(0, k) + " " + name.slice(k));
-    }
-  }
-  return s;
-}
-
-function repairGluedMacros(text: string): string {
-  return text.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, (zone) => {
-    const open = zone.startsWith("\\[") ? "\\[" : "\\(";
-    const close = open === "\\[" ? "\\]" : "\\)";
-    return open + repairZone(zone.slice(2, -2)) + close;
-  });
-}
-
-/**
- * Repair split `\(...\)` delimiters: pandoc breaks an option's math at the field
- * boundary, leaving the OPEN `\(` dangling at the end of the previous field and
- * the next field starting mid-math. Per field: drop a trailing dangling `\(`, and
- * prepend `\(` when the first delimiter seen is a `\)` (field starts inside math).
- */
-function repairSplitDelimiters(s: string): string {
-  let out = s.replace(/\s*\\\(\s*$/, ""); // trailing dangling open
-  const fo = out.indexOf("\\(");
-  const fc = out.indexOf("\\)");
-  if (fc !== -1 && (fo === -1 || fc < fo)) out = "\\(" + out; // missing leading open
-  return out;
-}
-
-// Strip pandoc hard-break / stray control chars that sit inside a math zone right
-// before its closing delimiter — common in piecewise/matrix NAT stems
-// (`\right.\\)`, `\right.\ \]`). Safe: a legit matrix row-break `\\` is always
-// followed by content or `\end{...}`, never a bare `)`/`]`.
-function preClean(s: string): string {
-  return s
-    .replace(/\\\\\)/g, "\\)") // \\) (hard-break + bare paren) -> proper close
-    .replace(/\\\\\]/g, "\\]") // \\] -> \]
-    .replace(/\\ (\s*\\[)\]])/g, "$1"); // backslash-space right before a close
-}
-
-/** Full cosmetic + repair transform for one field. */
-const fix = (s: string): string =>
-  repairSplitDelimiters(repairGluedMacros(normalizeMathFunctions(preClean(s))).replace(/(?<!\\)\\\s*$/, "").trimEnd());
+/** Full cosmetic + repair transform for one field (shared with attach-solutions). */
+const fix = (s: string): string => repairLatex(s);
 
 async function main() {
   const apply = process.argv.includes("--apply");

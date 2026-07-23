@@ -148,6 +148,14 @@ describe("subjectForNumber", () => {
     expect(subjectForNumber(61)).toBe("Maths");
     expect(subjectForNumber(90)).toBe("Maths");
   });
+  it("wraps a 2-shift (180-block) file per 90 — shift 2 repeats the subject blocks", () => {
+    expect(subjectForNumber(91)).toBe("Physics"); // shift 2 Physics
+    expect(subjectForNumber(120)).toBe("Physics");
+    expect(subjectForNumber(121)).toBe("Chemistry");
+    expect(subjectForNumber(150)).toBe("Chemistry");
+    expect(subjectForNumber(151)).toBe("Maths"); // shift 2 Maths
+    expect(subjectForNumber(180)).toBe("Maths");
+  });
 });
 
 describe("matchValueToOption", () => {
