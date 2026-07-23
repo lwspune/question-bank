@@ -28,6 +28,28 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-23
+
+### Complete the JEE Maths multi-year program (compilations 13-16 + 2022-2025)
+
+2021 Maths is now complete (all standard + Maths-only papers, MCQ + Section-B NAT; JEE at 1,271 q PUBLIC). The remaining JEE Maths work is a large, well-scoped program now that the full source is on disk (`C:\Vilas\LWS_Pune\JEE_Mains\PYQs\{2021..2025}`, 69 sittings): **compilations 13-16** (2021, `--compilation`, verify every key) + **2022-2025 Maths** (43 date-named sittings). This is planned ingestion (tracked in the [[jee-mains-ingestion]] RESUME), not a bug — logged here so the scope is visible.
+
+**Why:** ~1,300 more Maths questions across 4 exam years is the single biggest bank expansion available, and the NAT-backfill loop + tooling (`extract --numeric`, `commit/attach --numeric-only`, the taxonomy handout, parallel classify+solve agents) is now proven and fast.
+
+**How to apply:** per the RESUME order — (1) compilations 13-16 first (harder, mixed-subject, every-key-reverified); (2) then 2022-2025, piloting ONE 2022 date-named sitting end-to-end first to settle the `paperId`/`source_file` scheme for date names (e.g. `2022-jun14`), then batch each year. Each 2022-2025 sitting is a standard 90-q shift, so the same Maths-only + NAT loop applies. Note 2024 `31 jan (1)` has no soln doc, and 2023 `31 jan (1)` is a second-shift/dup to disambiguate.
+
+### If a figure source appears, complete p9 NAT Q84 (currently PRIVATE)
+
+JEE 2021 Paper 9 Q81-90's Q84 ("The missing value in the following figure is") was kept PRIVATE because the figure is absent from the extracted source — it's unanswerable as text. If the original figure is ever sourced, attach it (the P3 Q37 / P12 Q54 precedent for figureless incompletes) and flip PUBLIC.
+
+**Why:** it's the one JEE 2021 Maths NAT not live; a real question lost only to a missing diagram.
+
+**How to apply:** source the figure from the original 2021 Paper 9 booklet, attach via the image path, author the solution, flip `question_format='numeric'` PUBLIC for that row.
+
+*(Carry-forward 2026-07-22 — the "verify 2 reconstructed JEE stems" item now covers **~14** reconstructed/overridden stems, not 2: this session OCR-reconstructed ~12 more NAT stems across Papers 2-10,18 and overrode 2 source keys (p8 Q86 15/4→3.75, p9 Q86 (d)→4). All match their verified answers, but if a clean official JEE 2021 source appears, diff these stems/keys too. See the 2026-07-22 entry below.)*
+
+---
+
 ## 2026-07-22
 
 ### Confirm the `--no-verify` Determinants push went green in CI, and address the recurring `next build` OOM in the pre-push hook
