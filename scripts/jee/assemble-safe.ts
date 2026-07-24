@@ -70,10 +70,15 @@ function main() {
     classification[k] = { subject: "Maths", chapter: s.chapter, subtopic: s.subtopic };
     if (s.solution) authoredSolutions[k] = normalizeEscaping(s.solution);
     if (s.flag) flags.push(`Q${k}: ${s.flag}`);
-    if (r.status === "numeric") {
-      if (r.numericAnswer !== null && r.numericAnswer !== undefined) numericOverrides[k] = r.numericAnswer;
-      else if (s.answer !== undefined) numericOverrides[k] = Number(s.answer);
-      else noKey.push(k + "(NAT)");
+    const hasOpts = Boolean(r.options && r.options.length >= 4);
+    if (r.status === "numeric" || (!hasOpts && r.status !== "ok")) {
+      // NAT — or a no_answer_key/needs_review row with NO options: treat as NAT
+      // when we have a numeric answer (extracted or agent-derived). A no-option
+      // row whose only answer is an MCQ LETTER can't be a clean 4-option MCQ, so
+      // it's dropped (uncommittable) rather than shipped malformed.
+      const raw = r.numericAnswer ?? (s.answer !== undefined ? Number(s.answer) : NaN);
+      if (raw !== null && raw !== undefined && Number.isFinite(raw)) numericOverrides[k] = raw as number;
+      else noKey.push(k + (hasOpts ? "(NAT)" : "(no-options, non-numeric — dropped)"));
     } else {
       const key = r.options?.find((o) => o.isCorrect)?.label ?? s.answer;
       if (key) answerOverrides[k] = key;
