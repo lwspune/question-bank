@@ -21,7 +21,7 @@ const except = exceptArg ? exceptArg.slice("--except=".length).split(",") : [];
     const opens = (blob.match(OPEN) || []).length, closes = (blob.match(CLOSE) || []).length;
     const f = [];
     if (opens !== closes) f.push("delim " + opens + "/" + closes);
-    if (/\\n(?![a-zA-Z])/.test(blob)) f.push("literal-bs-n");
+    if (/(?<!\\)\\n(?![a-zA-Z])/.test(blob)) f.push("literal-bs-n"); // exclude matrix row-sep \\n
     if (!q.solution) f.push("NO-SOLUTION");
     if (q.question_format === "numeric" && (q.numeric_answer === null || q.numeric_answer === undefined)) f.push("NAT-no-answer");
     if (f.length) {

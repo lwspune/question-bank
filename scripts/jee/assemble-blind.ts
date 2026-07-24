@@ -14,12 +14,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { recordsPath, paperDataPath, requirePaperId } from "./config";
-
-/** Halve double-escaped agent LaTeX (`\\(` tell). Mirrors assemble-safe. */
-function normalizeEscaping(sol: string): string {
-  if (sol.includes("\\\\(")) return sol.replace(/\\\\/g, "\\");
-  return sol;
-}
+import { cleanSolution } from "./sol-clean";
 
 type Rec = {
   questionNumber: number;
@@ -68,12 +63,13 @@ function main() {
       continue;
     }
     classification[k] = { subject: "Maths", chapter: s.chapter, subtopic: s.subtopic };
-    if (s.solution) authoredSolutions[k] = normalizeEscaping(s.solution);
+    if (s.solution) authoredSolutions[k] = cleanSolution(s.solution);
   }
 
   const paper = {
     sourceFile, pyqYear, pyqNote,
     classification, answerOverrides, numericOverrides,
+    skip: dropped.map((d) => Number(d.replace(/\D.*$/, ""))).filter((n) => Number.isFinite(n)),
     notes: `${pyqNote} — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.`,
     authoredSolutions,
   };
