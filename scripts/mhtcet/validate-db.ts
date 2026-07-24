@@ -9,6 +9,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
+import { renderCorruption } from "../lib/render-lint";
 import { EXAM_ID, loadShift, requireShiftId } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -50,7 +51,7 @@ async function main() {
   const rows = (data ?? []) as Row[];
 
   const cnt = (s: string, re: RegExp) => (s.match(re) || []).length;
-  let broken = 0, mdLeaks = 0, artifacts = 0, unicode = 0, incomplete = 0;
+  let broken = 0, mdLeaks = 0, artifacts = 0, unicode = 0, incomplete = 0, corruption = 0;
   for (const r of rows.sort((a, b) => Number(a.question_number) - Number(b.question_number))) {
     if (VISUAL_REF.test(r.text) && !/\\\[/.test(r.text) && !r.image_url && r.options.every((o) => !o.image_url)) {
       incomplete++;
@@ -72,9 +73,15 @@ async function main() {
         const ch = [...new Set((val.match(new RegExp(RAW_UNICODE, "g")) || []))].join("");
         console.log(`Q${r.question_number} [${where}] raw unicode math: ${ch}`);
       }
+      // Render-corruption classes from the OCR ingest: lowercase-start stem
+      // (dropped lead-in), $/\( delimiter scramble, plain-text \_ blank.
+      for (const flag of renderCorruption(val, { isStem: where === "text" })) {
+        corruption++;
+        console.log(`Q${r.question_number} [${where}] render-corruption: ${flag} :: ${val.slice(0, 55)}`);
+      }
     }
   }
-  console.log(`\n${rows.length} rows | KaTeX-broken: ${broken} | md leaks: ${mdLeaks} | delimiter/backslash: ${artifacts} | raw-unicode: ${unicode} | incomplete?: ${incomplete}`);
+  console.log(`\n${rows.length} rows | KaTeX-broken: ${broken} | md leaks: ${mdLeaks} | delimiter/backslash: ${artifacts} | raw-unicode: ${unicode} | render-corruption: ${corruption} | incomplete?: ${incomplete}`);
   console.log(`flawed (PRIVATE): ${[...flawed].map((k) => "Q" + k).join(", ") || "none"}`);
 }
 
