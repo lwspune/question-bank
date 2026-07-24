@@ -14,6 +14,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { recordsPath, paperDataPath, requirePaperId } from "./config";
+import { cleanSolution } from "./sol-clean";
 
 type Rec = {
   questionNumber: number;
@@ -68,7 +69,7 @@ function main() {
     const s = sols[k];
     if (!s) { noClass.push(k); continue; }
     classification[k] = { subject: "Maths", chapter: s.chapter, subtopic: s.subtopic };
-    if (s.solution) authoredSolutions[k] = normalizeEscaping(s.solution);
+    if (s.solution) authoredSolutions[k] = cleanSolution(s.solution);
     if (s.flag) flags.push(`Q${k}: ${s.flag}`);
     const hasOpts = Boolean(r.options && r.options.length >= 4);
     if (r.status === "numeric" || (!hasOpts && r.status !== "ok")) {
