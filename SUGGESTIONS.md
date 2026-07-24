@@ -54,6 +54,16 @@ The ~1,900 JEE Maths questions on broken/no-key papers carry **fully AI-derived*
 
 **How to apply:** obtain official NTA answer keys (public after each session); diff a random ~5% sample of blind-solved rows (`notes: "…BLIND-derived…"` in `papers/*.json`) against them; if the disagreement rate is material, widen the check. Skip-flagged rows are already PRIVATE/dropped, so scope is the PUBLIC blind rows only.
 
+### ~~Add a render-corruption lint to the JEE/MHT-CET ingest (catch stem corruption at commit, not via user reports)~~ — **DONE 2026-07-24**
+
+**DONE 2026-07-24:** shared pure helper `renderCorruption()` in `scripts/lib/render-lint.ts` (mirrors the `scripts/lib/figures/` shared-helper precedent) — flags the three mechanical classes (lowercase-start stem, `$`/`\(` scramble, plain-text `\_`); 15 TDD cases in `tests/render-lint.test.ts`. Wired report-only into both `scripts/jee/validate-db.ts` and `scripts/mhtcet/validate-db.ts` (new `render-corruption: N` line in each summary). Live JEE run confirmed **0** remaining (this session's ~290 fixes were complete). Class 4 (mid-stem dropped symbol) stays report-driven — no mechanical signature.
+
+A report-triggered audit (2026-07-24 Decisions entry + [[stem-render-corruption-probes]]) found four render-corruption classes in the pandoc/BLIND-ingested bank, three of which have a clean mechanical SQL probe: (1) a stem starting lowercase (dropped lead-in), (2) a field mixing `$` and `\(` (delimiter scramble → KaTeX "can't use \( in math mode"), (3) plain-text `\_` outside math zones (escaped-underscore blank). This session swept the *existing* bank (~290 rows fixed), but the same ingest will re-introduce them on the next Physics/Chemistry run or any new pandoc-ingested exam.
+
+**Why:** these render as visible garbage on PUBLIC pages and only surface when a human reads the question or files a report. A commit-time check turns a report-driven trickle into a zero-escape gate — cheap, since the ingest already runs `validate-db`/`cleanup-latex` per paper.
+
+**How to apply:** extend `scripts/jee/validate-db.ts` (and the MHT-CET equivalent) with three flags per committed stem/solution/option: `btrim(text) ~ '^[a-z]'` (lowercase-start), `text ~ '\$' AND text ~ '\\('` (delimiter mix), and `regexp_replace(text,'\\\(.*?\\\)','','g') ~ '\\_'` (plain-text `\_` — strip math zones first, math-zone `\_` is valid). Report, don't auto-fix (class 3's fix is trailing-only; classes 1–2 need source-verification). The mid-stem-dropped-symbol class (#4) is not detectable — stays report-triaged.
+
 ---
 
 ## 2026-07-23
