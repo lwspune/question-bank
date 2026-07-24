@@ -156,8 +156,8 @@ export const INVERSE_FUNCTIONS_NOTE: SubtopicNote = {
         label: "The two workhorse collapses",
         latex: "\\sin^{-1}\\!\\big(3x - 4x^3\\big) = 3\\sin^{-1}x, \\qquad \\tan^{-1}\\!\\dfrac{2x}{1-x^2} = 2\\tan^{-1}x",
         symbols: [
-          { symbol: "x = \\sin\\theta", meaning: "use when the argument is a sine multiple-angle (\\(3x-4x^3\\), \\(2x\\sqrt{1-x^2}\\))" },
-          { symbol: "x = \\tan\\theta", meaning: "use when the argument is a tangent/double-angle ratio" },
+          { symbol: "\\(x = \\sin\\theta\\)", meaning: "use when the argument is a sine multiple-angle (\\(3x-4x^3\\), \\(2x\\sqrt{1-x^2}\\))" },
+          { symbol: "\\(x = \\tan\\theta\\)", meaning: "use when the argument is a tangent/double-angle ratio" },
         ],
       },
       pyqExampleId: "c02f435c-dbb4-4029-a0ea-c912605d4a91",
@@ -221,7 +221,7 @@ export const INVERSE_FUNCTIONS_NOTE: SubtopicNote = {
         latex: "\\tan^{-1}x + \\tan^{-1}y = \\tan^{-1}\\!\\dfrac{x+y}{1-xy}, \\qquad \\sin^{-1}x + \\cos^{-1}x = \\dfrac{\\pi}{2}",
         symbols: [
           { symbol: "1 - xy", meaning: "denominator of the combined argument; sign flips for the subtraction form" },
-          { symbol: "\\pi/2", meaning: "the constant a complementary pair collapses to — derivative \\(0\\)" },
+          { symbol: "\\(\\pi/2\\)", meaning: "the constant a complementary pair collapses to — derivative \\(0\\)" },
         ],
       },
       pyqExampleId: "ad13852e-9e8c-4494-acb1-9416090063f4",
@@ -281,7 +281,7 @@ export const INVERSE_FUNCTIONS_NOTE: SubtopicNote = {
         latex: "\\text{If } u = a\\,\\theta \\text{ and } v = b\\,\\theta, \\text{ then } \\dfrac{du}{dv} = \\dfrac{a}{b}",
         symbols: [
           { symbol: "a, b", meaning: "the constant multiples after each function collapses to a multiple of \\(\\theta\\)" },
-          { symbol: "d\\theta", meaning: "cancels in the ratio — never appears in the final answer" },
+          { symbol: "\\(d\\theta\\)", meaning: "cancels in the ratio — never appears in the final answer" },
         ],
       },
       pyqExampleId: "264b2e9f-53db-4324-8f58-154ab674a1af",

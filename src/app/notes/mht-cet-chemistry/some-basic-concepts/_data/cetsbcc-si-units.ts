@@ -259,7 +259,7 @@ export const SI_UNITS_NOTE: SubtopicNote = {
         label: "Average atomic mass",
         latex: "\\bar{m} = \\sum_i m_i\\,f_i \\quad\\text{where}\\quad \\sum_i f_i = 1",
         symbols: [
-          { symbol: "\\bar{m}", meaning: "average atomic mass" },
+          { symbol: "\\(\\bar{m}\\)", meaning: "average atomic mass" },
           { symbol: "m_i", meaning: "mass of isotope i" },
           { symbol: "f_i", meaning: "fractional abundance of isotope i (percentage / 100)" },
         ],

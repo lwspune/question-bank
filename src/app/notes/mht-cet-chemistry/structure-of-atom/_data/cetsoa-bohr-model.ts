@@ -157,7 +157,7 @@ export const BOHR_MODEL_NOTE: SubtopicNote = {
           { symbol: "r_n", meaning: "radius of the nth orbit" },
           { symbol: "n", meaning: "orbit number (principal quantum number)" },
           { symbol: "Z", meaning: "atomic number (nuclear charge)" },
-          { symbol: "0.529 \\text{\\AA}", meaning: "Bohr radius a_0 (= 52.9 pm)" },
+          { symbol: "\\(0.529 \\text{\\AA}\\)", meaning: "Bohr radius a_0 (= 52.9 pm)" },
         ],
       },
       pyqExampleId: "5c5820e8-205c-48b2-bf0a-66349b942090", // radius of 3rd orbit of He+ = 238.1 pm
@@ -285,7 +285,7 @@ export const BOHR_MODEL_NOTE: SubtopicNote = {
           { symbol: "v_n", meaning: "speed of the electron in the nth orbit" },
           { symbol: "Z", meaning: "atomic number" },
           { symbol: "n", meaning: "orbit number" },
-          { symbol: "2.18 \\times 10^{6}", meaning: "first-orbit speed in hydrogen (m/s)" },
+          { symbol: "\\(2.18 \\times 10^{6}\\)", meaning: "first-orbit speed in hydrogen (m/s)" },
         ],
       },
       authoredExample: {
@@ -344,7 +344,7 @@ export const BOHR_MODEL_NOTE: SubtopicNote = {
         label: "Energy gap between two orbits",
         latex: "\\Delta E = 13.6\\,Z^2\\left(\\dfrac{1}{n_1^2} - \\dfrac{1}{n_2^2}\\right)\\ \\text{eV}",
         symbols: [
-          { symbol: "\\Delta E", meaning: "energy absorbed (n1 to n2, up) or emitted (down)" },
+          { symbol: "\\(\\Delta E\\)", meaning: "energy absorbed (n1 to n2, up) or emitted (down)" },
           { symbol: "n_1", meaning: "lower orbit number" },
           { symbol: "n_2", meaning: "higher orbit number" },
           { symbol: "Z", meaning: "atomic number" },
@@ -412,7 +412,7 @@ export const BOHR_MODEL_NOTE: SubtopicNote = {
         latex: "\\text{electrons} = Z - (\\text{charge}) = 1",
         symbols: [
           { symbol: "Z", meaning: "atomic number (number of protons)" },
-          { symbol: "\\text{charge}", meaning: "the positive charge on the ion" },
+          { symbol: "\\(\\text{charge}\\)", meaning: "the positive charge on the ion" },
           { symbol: "= 1", meaning: "hydrogen-like requires exactly one remaining electron" },
         ],
       },

@@ -29,7 +29,7 @@ export const LOGARITHMIC_NOTE: SubtopicNote = {
         latex:
           "\\frac{d}{dx}\\left[f(x)^{g(x)}\\right] = f(x)^{g(x)}\\left[g'(x)\\,\\log f(x) + g(x)\\,\\frac{f'(x)}{f(x)}\\right]",
         symbols: [
-          { symbol: "g'(x)\\,\\log f(x)", meaning: "the term from differentiating the exponent (treat base as constant)" },
+          { symbol: "\\(g'(x)\\,\\log f(x)\\)", meaning: "the term from differentiating the exponent (treat base as constant)" },
           { symbol: "g(x)\\,f'(x)/f(x)", meaning: "the term from differentiating the base (treat exponent as constant)" },
         ],
       },
@@ -232,7 +232,7 @@ export const LOGARITHMIC_NOTE: SubtopicNote = {
         label: "Change of base",
         latex: "\\log_a b = \\frac{\\log b}{\\log a}",
         symbols: [
-          { symbol: "\\log", meaning: "natural log (base \\(e\\)) throughout this chapter" },
+          { symbol: "\\(\\log\\)", meaning: "natural log (base \\(e\\)) throughout this chapter" },
           { symbol: "a", meaning: "the base — when it depends on \\(x\\), this is why you must convert" },
         ],
       },

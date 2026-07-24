@@ -28,8 +28,8 @@ export const PH_POH_NOTE: SubtopicNote = {
         latex: "K_w = [\\text{H}^+][\\text{OH}^-] = 10^{-14} \\quad (25\\,^{\\circ}\\text{C})",
         symbols: [
           { symbol: "K_w", meaning: "ionic product of water (mol^2 L^-2)" },
-          { symbol: "[\\text{H}^+]", meaning: "hydrogen-ion (hydronium) concentration (mol/L)" },
-          { symbol: "[\\text{OH}^-]", meaning: "hydroxide-ion concentration (mol/L)" },
+          { symbol: "\\([\\text{H}^+]\\)", meaning: "hydrogen-ion (hydronium) concentration (mol/L)" },
+          { symbol: "\\([\\text{OH}^-]\\)", meaning: "hydroxide-ion concentration (mol/L)" },
         ],
       },
       pyqExampleId: "0fbe488f-15a3-4c2f-aa44-b2f8a5ec9c6c", // [OH-] from 0.05 M H+ -> 2.0e-13 M
@@ -91,9 +91,9 @@ export const PH_POH_NOTE: SubtopicNote = {
         label: "pH, pOH and their sum",
         latex: "\\text{pH} = -\\log[\\text{H}^+], \\quad \\text{pOH} = -\\log[\\text{OH}^-], \\quad \\text{pH} + \\text{pOH} = 14",
         symbols: [
-          { symbol: "\\text{pH}", meaning: "negative log of hydrogen-ion concentration" },
-          { symbol: "\\text{pOH}", meaning: "negative log of hydroxide-ion concentration" },
-          { symbol: "[\\text{H}^+]", meaning: "hydrogen-ion concentration (mol/L)" },
+          { symbol: "\\(\\text{pH}\\)", meaning: "negative log of hydrogen-ion concentration" },
+          { symbol: "\\(\\text{pOH}\\)", meaning: "negative log of hydroxide-ion concentration" },
+          { symbol: "\\([\\text{H}^+]\\)", meaning: "hydrogen-ion concentration (mol/L)" },
         ],
       },
       pyqExampleId: "8f439652-c9e3-47c4-a745-3f118dc9496b", // [H+] from pH 3.76 -> 1.738e-4
@@ -157,7 +157,7 @@ export const PH_POH_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "c", meaning: "molar concentration of the acid or base" },
           { symbol: "Z", meaning: "number of H+ (or OH-) furnished per formula unit" },
-          { symbol: "\\text{pOH}", meaning: "= -log[OH-], for a base" },
+          { symbol: "\\(\\text{pOH}\\)", meaning: "= -log[OH-], for a base" },
         ],
       },
       pyqExampleId: "e7f5e96e-b083-42b7-bc43-1134746273cb", // 4g NaOH in 500 mL -> pH 13.301
@@ -219,7 +219,7 @@ export const PH_POH_NOTE: SubtopicNote = {
         label: "Weak acid / base",
         latex: "[\\text{H}^+] = \\alpha c = \\sqrt{K_a\\,c} \\;\\Rightarrow\\; \\text{pH} = \\tfrac12\\!\\left(pK_a - \\log c\\right)",
         symbols: [
-          { symbol: "\\alpha", meaning: "degree of dissociation (percentage / 100)" },
+          { symbol: "\\(\\alpha\\)", meaning: "degree of dissociation (percentage / 100)" },
           { symbol: "c", meaning: "molar concentration of the weak electrolyte" },
           { symbol: "K_a", meaning: "acid dissociation constant" },
         ],

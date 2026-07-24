@@ -124,7 +124,7 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
         label: "Shifted-angle split",
         latex: "\\dfrac{1}{\\sin(x-a)\\sin(x-b)} = \\dfrac{1}{\\sin(b-a)}\\big[\\cot(x-b) - \\cot(x-a)\\big]",
         symbols: [
-          { symbol: "\\sin(b-a)", meaning: "constant divisor — the sine of the difference of the two shifts" },
+          { symbol: "\\(\\sin(b-a)\\)", meaning: "constant divisor — the sine of the difference of the two shifts" },
         ],
       },
       authoredExample: {

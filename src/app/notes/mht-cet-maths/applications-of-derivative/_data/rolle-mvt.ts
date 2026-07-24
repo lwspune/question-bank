@@ -203,7 +203,7 @@ export const ROLLE_MVT_NOTE: SubtopicNote = {
         label: "Lagrange's Mean Value Theorem",
         latex: "f'(c) = \\dfrac{f(b) - f(a)}{b - a},\\qquad c \\in (a,b)",
         symbols: [
-          { symbol: "\\frac{f(b)-f(a)}{b-a}", meaning: "slope of the chord joining the endpoints" },
+          { symbol: "\\(\\frac{f(b)-f(a)}{b-a}\\)", meaning: "slope of the chord joining the endpoints" },
           { symbol: "f'(c)", meaning: "slope of the tangent at the guaranteed point c" },
         ],
       },

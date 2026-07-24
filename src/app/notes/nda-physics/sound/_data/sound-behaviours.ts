@@ -91,8 +91,8 @@ export const SOUND_BEHAVIOURS_NOTE: SubtopicNote = {
         latex: "d_\\text{min} = \\dfrac{v \\, t_\\text{persistence}}{2}",
         symbols: [
           { symbol: "v", meaning: "speed of sound in the medium (m/s)" },
-          { symbol: "t_\\text{persistence}", meaning: "ear's persistence threshold \\(\\approx 0.1\\) s" },
-          { symbol: "d_\\text{min}", meaning: "minimum reflector distance (m)" },
+          { symbol: "\\(t_\\text{persistence}\\)", meaning: "ear's persistence threshold \\(\\approx 0.1\\) s" },
+          { symbol: "\\(d_\\text{min}\\)", meaning: "minimum reflector distance (m)" },
         ],
       },
       visualizationSlug: "echo-geometry",
@@ -215,7 +215,7 @@ export const SOUND_BEHAVIOURS_NOTE: SubtopicNote = {
         label: "Beat frequency",
         latex: "f_\\text{beat} = |f_1 - f_2|",
         symbols: [
-          { symbol: "f_\\text{beat}", meaning: "number of beats per second (Hz)" },
+          { symbol: "\\(f_\\text{beat}\\)", meaning: "number of beats per second (Hz)" },
           { symbol: "f_1, f_2", meaning: "the two nearly-equal source frequencies (Hz)" },
         ],
       },

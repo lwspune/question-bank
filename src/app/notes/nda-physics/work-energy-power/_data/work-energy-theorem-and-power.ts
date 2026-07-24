@@ -26,7 +26,7 @@ export const WORK_ENERGY_THEOREM_AND_POWER_NOTE: SubtopicNote = {
         label: "Work-energy theorem",
         latex: "W_\\text{net} = \\Delta KE = \\tfrac{1}{2}mv_f^2 - \\tfrac{1}{2}mv_i^2",
         symbols: [
-          { symbol: "W_\\text{net}", meaning: "net work done by all forces (J)" },
+          { symbol: "\\(W_\\text{net}\\)", meaning: "net work done by all forces (J)" },
           { symbol: "v_i", meaning: "initial speed (m/s)" },
           { symbol: "v_f", meaning: "final speed (m/s)" },
         ],

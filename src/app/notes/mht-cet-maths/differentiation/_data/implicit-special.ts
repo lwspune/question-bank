@@ -29,7 +29,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
         latex:
           "\\frac{d}{dx}\\big[g(y)\\big] = g'(y)\\,\\frac{dy}{dx}, \\qquad \\frac{d}{dx}(xy)=y+x\\frac{dy}{dx}",
         symbols: [
-          { symbol: "\\frac{dy}{dx}", meaning: "the unknown you collect and solve for" },
+          { symbol: "\\(\\frac{dy}{dx}\\)", meaning: "the unknown you collect and solve for" },
           { symbol: "g(y)", meaning: "any function of \\(y\\); its \\(x\\)-derivative carries \\(\\frac{dy}{dx}\\)" },
         ],
       },
@@ -90,7 +90,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
         label: "Differentiating log(x + y)",
         latex: "\\frac{d}{dx}\\log(x+y) = \\frac{1}{x+y}\\left(1 + \\frac{dy}{dx}\\right)",
         symbols: [
-          { symbol: "1 + \\frac{dy}{dx}", meaning: "the chain-rule derivative of the inner \\(x+y\\)" },
+          { symbol: "\\(1 + \\frac{dy}{dx}\\)", meaning: "the chain-rule derivative of the inner \\(x+y\\)" },
         ],
       },
       pyqExampleId: "f232541d-a646-4a25-9beb-7ecac489bcab",
@@ -152,7 +152,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
         latex: "\\frac{d}{dx}\\big[u(x)\\,\\log v(x)\\big] = u'\\log v + u\\cdot\\frac{v'}{v}",
         symbols: [
           { symbol: "u(x)", meaning: "the exponent (often containing \\(y\\))" },
-          { symbol: "\\log v(x)", meaning: "log of the base, after taking logs of both sides" },
+          { symbol: "\\(\\log v(x)\\)", meaning: "log of the base, after taking logs of both sides" },
         ],
       },
       pyqExampleId: "943a5a7c-1940-4b72-8a7c-a3c656d32e5e",
@@ -215,7 +215,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
         latex:
           "\\tan y = \\frac{x\\sin\\alpha}{1 - x\\cos\\alpha} \\;\\Rightarrow\\; \\frac{dy}{dx} = \\frac{\\sin\\alpha}{1 - 2x\\cos\\alpha + x^2}",
         symbols: [
-          { symbol: "\\sec^2 y", meaning: "rewritten as \\(1 + \\tan^2 y\\) to substitute the given expression" },
+          { symbol: "\\(\\sec^2 y\\)", meaning: "rewritten as \\(1 + \\tan^2 y\\) to substitute the given expression" },
         ],
       },
       pyqExampleId: "95773188-0bab-4435-a2f2-1c073a573c6a",

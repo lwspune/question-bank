@@ -81,8 +81,8 @@ export const PHASE_CHANGE_AND_BOILING_NOTE: SubtopicNote = {
         label: "Boiling condition",
         latex: "P_{\\text{vapour}} = P_{\\text{atmospheric}}",
         symbols: [
-          { symbol: "P_{\\text{vapour}}", meaning: "saturated vapour pressure of the liquid" },
-          { symbol: "P_{\\text{atmospheric}}", meaning: "external (atmospheric) pressure" },
+          { symbol: "\\(P_{\\text{vapour}}\\)", meaning: "saturated vapour pressure of the liquid" },
+          { symbol: "\\(P_{\\text{atmospheric}}\\)", meaning: "external (atmospheric) pressure" },
         ],
       },
       authoredExample: {
@@ -182,9 +182,9 @@ export const PHASE_CHANGE_AND_BOILING_NOTE: SubtopicNote = {
         label: "Newton's law of cooling",
         latex: "-\\frac{d\\theta}{dt} \\propto (\\theta - \\theta_0)",
         symbols: [
-          { symbol: "\\theta", meaning: "temperature of the body" },
-          { symbol: "\\theta_0", meaning: "temperature of the surroundings" },
-          { symbol: "\\frac{d\\theta}{dt}", meaning: "rate of change of temperature with time" },
+          { symbol: "\\(\\theta\\)", meaning: "temperature of the body" },
+          { symbol: "\\(\\theta_0\\)", meaning: "temperature of the surroundings" },
+          { symbol: "\\(\\frac{d\\theta}{dt}\\)", meaning: "rate of change of temperature with time" },
         ],
       },
       authoredExample: {

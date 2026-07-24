@@ -29,7 +29,7 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "h", meaning: "vertical height (opposite the angle)" },
           { symbol: "d", meaning: "horizontal distance to the base (adjacent)" },
-          { symbol: "\\theta", meaning: "angle of elevation at the observer" },
+          { symbol: "\\(\\theta\\)", meaning: "angle of elevation at the observer" },
         ],
       },
       visualizationSlug: "hd-elevation-triangle",

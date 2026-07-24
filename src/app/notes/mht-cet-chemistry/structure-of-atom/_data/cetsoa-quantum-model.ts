@@ -30,7 +30,7 @@ export const QUANTUM_MODEL_NOTE: SubtopicNote = {
         latex:
           "\\lambda = \\dfrac{h}{mv} = \\dfrac{h}{p} \\qquad p = \\dfrac{h}{\\lambda}",
         symbols: [
-          { symbol: "\\lambda", meaning: "de Broglie wavelength (m)" },
+          { symbol: "\\(\\lambda\\)", meaning: "de Broglie wavelength (m)" },
           { symbol: "h", meaning: "Planck's constant, 6.63e-34 J s" },
           { symbol: "m", meaning: "mass of the particle (kg)" },
           { symbol: "v", meaning: "velocity of the particle (m/s)" },
@@ -110,9 +110,9 @@ export const QUANTUM_MODEL_NOTE: SubtopicNote = {
         latex:
           "\\Delta x \\cdot \\Delta p \\geq \\dfrac{h}{4\\pi} \\qquad \\Delta x \\cdot \\Delta v \\geq \\dfrac{h}{4\\pi m}",
         symbols: [
-          { symbol: "\\Delta x", meaning: "uncertainty in position" },
-          { symbol: "\\Delta p", meaning: "uncertainty in momentum" },
-          { symbol: "\\Delta v", meaning: "uncertainty in velocity" },
+          { symbol: "\\(\\Delta x\\)", meaning: "uncertainty in position" },
+          { symbol: "\\(\\Delta p\\)", meaning: "uncertainty in momentum" },
+          { symbol: "\\(\\Delta v\\)", meaning: "uncertainty in velocity" },
           { symbol: "h", meaning: "Planck's constant" },
         ],
       },

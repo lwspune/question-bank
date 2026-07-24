@@ -272,7 +272,7 @@ export const RATE_OF_CHANGE_NOTE: SubtopicNote = {
         latex:
           "\\dfrac{dy}{dt} = f'(x)\\,\\dfrac{dx}{dt} \\qquad \\dfrac{d}{dt}\\sqrt{x^2 + y^2} = \\dfrac{x\\dot x + y\\dot y}{\\sqrt{x^2 + y^2}}",
         symbols: [
-          { symbol: "\\dot x, \\dot y", meaning: "\\(dx/dt\\) and \\(dy/dt\\)" },
+          { symbol: "\\(\\dot x, \\dot y\\)", meaning: "\\(dx/dt\\) and \\(dy/dt\\)" },
         ],
       },
       authoredExample: {

@@ -80,7 +80,7 @@ export const ISOTOPES_NOTE: SubtopicNote = {
         label: "Weighted average and back-solving abundance",
         latex: "\\bar{M} = \\frac{m_1 x + m_2 (100 - x)}{100}",
         symbols: [
-          { symbol: "\\bar{M}", meaning: "average atomic mass" },
+          { symbol: "\\(\\bar{M}\\)", meaning: "average atomic mass" },
           { symbol: "m_1, m_2", meaning: "isotope masses" },
           { symbol: "x", meaning: "percentage abundance of isotope 1" },
         ],

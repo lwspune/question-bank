@@ -29,7 +29,7 @@ export const WORK_AND_WORK_DONE_NOTE: SubtopicNote = {
           { symbol: "W", meaning: "work done (joules, J)" },
           { symbol: "F", meaning: "magnitude of the applied force (N)" },
           { symbol: "d", meaning: "magnitude of the displacement (m)" },
-          { symbol: "\\theta", meaning: "angle between the force and the displacement" },
+          { symbol: "\\(\\theta\\)", meaning: "angle between the force and the displacement" },
         ],
       },
       visualizationSlug: "wep-work-at-angle",
@@ -85,9 +85,9 @@ export const WORK_AND_WORK_DONE_NOTE: SubtopicNote = {
         label: "Sign cases of W = F d cos θ",
         latex: "\\cos 0^\\circ = 1,\\quad \\cos 90^\\circ = 0,\\quad \\cos 180^\\circ = -1",
         symbols: [
-          { symbol: "\\theta = 0^\\circ", meaning: "force along motion — positive work" },
-          { symbol: "\\theta = 90^\\circ", meaning: "force perpendicular — zero work" },
-          { symbol: "\\theta = 180^\\circ", meaning: "force opposes motion — negative work" },
+          { symbol: "\\(\\theta = 0^\\circ\\)", meaning: "force along motion — positive work" },
+          { symbol: "\\(\\theta = 90^\\circ\\)", meaning: "force perpendicular — zero work" },
+          { symbol: "\\(\\theta = 180^\\circ\\)", meaning: "force opposes motion — negative work" },
         ],
       },
       authoredExample: {

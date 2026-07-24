@@ -26,8 +26,8 @@ export const NEWTONS_COOLING_NOTE: SubtopicNote = {
         label: "Newton's law of cooling",
         latex: "\\dfrac{d\\theta}{dt} = -k(\\theta - \\theta_s), \\qquad k > 0",
         symbols: [
-          { symbol: "\\theta", meaning: "temperature of the body at time t" },
-          { symbol: "\\theta_s", meaning: "surrounding (ambient) temperature — constant" },
+          { symbol: "\\(\\theta\\)", meaning: "temperature of the body at time t" },
+          { symbol: "\\(\\theta_s\\)", meaning: "surrounding (ambient) temperature — constant" },
           { symbol: "k", meaning: "positive cooling constant" },
         ],
       },
@@ -91,8 +91,8 @@ export const NEWTONS_COOLING_NOTE: SubtopicNote = {
         latex:
           "\\log(\\theta - \\theta_s) = -kt + c \\qquad\\Longleftrightarrow\\qquad \\theta - \\theta_s = (\\theta_0 - \\theta_s)\\,e^{-kt}",
         symbols: [
-          { symbol: "\\theta_0", meaning: "initial temperature of the body (at t = 0)" },
-          { symbol: "c", meaning: "constant of integration = \\log(\\theta_0 - \\theta_s)" },
+          { symbol: "\\(\\theta_0\\)", meaning: "initial temperature of the body (at t = 0)" },
+          { symbol: "c", meaning: "constant of integration \\(= \\log(\\theta_0 - \\theta_s)\\)" },
         ],
       },
       authoredExample: {
@@ -156,8 +156,8 @@ export const NEWTONS_COOLING_NOTE: SubtopicNote = {
         latex:
           "\\dfrac{\\theta_2 - \\theta_s}{\\theta_1 - \\theta_s} = e^{-k(t_2 - t_1)}",
         symbols: [
-          { symbol: "\\theta_1, \\theta_2", meaning: "temperatures at times t₁, t₂" },
-          { symbol: "\\theta_s", meaning: "surrounding temperature — subtracted from both" },
+          { symbol: "\\(\\theta_1, \\theta_2\\)", meaning: "temperatures at times t₁, t₂" },
+          { symbol: "\\(\\theta_s\\)", meaning: "surrounding temperature — subtracted from both" },
         ],
       },
       authoredExample: {

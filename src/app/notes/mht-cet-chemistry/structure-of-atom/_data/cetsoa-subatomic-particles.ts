@@ -270,7 +270,7 @@ export const SUBATOMIC_PARTICLES_NOTE: SubtopicNote = {
         label: "Weighted average atomic mass",
         latex: "\\bar{m} = \\frac{m_1 x + m_2 (100 - x)}{100}",
         symbols: [
-          { symbol: "\\bar{m}", meaning: "average atomic mass" },
+          { symbol: "\\(\\bar{m}\\)", meaning: "average atomic mass" },
           { symbol: "m_1, m_2", meaning: "the two isotope masses" },
           { symbol: "x", meaning: "percentage abundance of isotope 1" },
         ],

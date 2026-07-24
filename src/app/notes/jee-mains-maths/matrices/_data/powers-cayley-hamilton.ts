@@ -82,8 +82,8 @@ export const POWERS_CAYLEY_HAMILTON_NOTE: SubtopicNote = {
         label: "Binomial for a nilpotent shift",
         latex: "A = I + N,\\ N^k = O \\ \\Rightarrow\\ A^n = I + nN + \\binom{n}{2}N^2 + \\dots",
         symbols: [
-          { symbol: "N", meaning: "nilpotent part A − I (strictly triangular)" },
-          { symbol: "\\binom{n}{2}", meaning: "n(n−1)/2, the coefficient of N²" },
+          { symbol: "\\(N\\)", meaning: "nilpotent part A − I (strictly triangular)" },
+          { symbol: "\\(\\binom{n}{2}\\)", meaning: "n(n−1)/2, the coefficient of N²" },
         ],
       },
       authoredExample: {
@@ -201,8 +201,8 @@ export const POWERS_CAYLEY_HAMILTON_NOTE: SubtopicNote = {
         label: "Cayley-Hamilton (2×2)",
         latex: "A^2 - (\\operatorname{tr}A)\\,A + (\\det A)\\,I = O",
         symbols: [
-          { symbol: "\\operatorname{tr}A", meaning: "a + d, sum of diagonal entries" },
-          { symbol: "\\det A", meaning: "ad − bc" },
+          { symbol: "\\(\\operatorname{tr}A\\)", meaning: "a + d, sum of diagonal entries" },
+          { symbol: "\\(\\det A\\)", meaning: "ad − bc" },
         ],
       },
       authoredExample: {

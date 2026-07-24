@@ -80,7 +80,7 @@ export const GRAVITATION_FIELD_AND_POTENTIAL_NOTE: SubtopicNote = {
         label: "Surface gravity from density",
         latex: "g = \\dfrac{4}{3}\\pi G \\rho R",
         symbols: [
-          { symbol: "\\rho", meaning: "mean density of the planet" },
+          { symbol: "\\(\\rho\\)", meaning: "mean density of the planet" },
           { symbol: "R", meaning: "radius of the planet" },
           { symbol: "g", meaning: "surface gravity (∝ ρR)" },
         ],
@@ -134,8 +134,8 @@ export const GRAVITATION_FIELD_AND_POTENTIAL_NOTE: SubtopicNote = {
         label: "Average density of a composite body",
         latex: "\\bar{\\rho} = \\dfrac{m_1 + m_2}{V_{\\text{total}}} = \\dfrac{\\rho_1 V_1 + \\rho_2 V_2}{V_1 + V_2}",
         symbols: [
-          { symbol: "\\rho_i, V_i", meaning: "density and volume of part i" },
-          { symbol: "\\bar{\\rho}", meaning: "average density of the whole body" },
+          { symbol: "\\(\\rho_i, V_i\\)", meaning: "density and volume of part i" },
+          { symbol: "\\(\\bar{\\rho}\\)", meaning: "average density of the whole body" },
         ],
       },
       visualizationSlug: "grav-composite-sphere",
@@ -249,8 +249,8 @@ export const GRAVITATION_FIELD_AND_POTENTIAL_NOTE: SubtopicNote = {
         latex: "W_{\\text{apparent}} = N = 0 \\quad (\\text{free fall}); \\qquad F_{\\text{gravity}} \\neq 0",
         symbols: [
           { symbol: "N", meaning: "normal (contact) reaction from the floor" },
-          { symbol: "W_{\\text{apparent}}", meaning: "apparent weight (= N)" },
-          { symbol: "F_{\\text{gravity}}", meaning: "actual gravitational pull (non-zero)" },
+          { symbol: "\\(W_{\\text{apparent}}\\)", meaning: "apparent weight (= N)" },
+          { symbol: "\\(F_{\\text{gravity}}\\)", meaning: "actual gravitational pull (non-zero)" },
         ],
       },
       authoredExample: {

@@ -398,7 +398,7 @@ export const UNITS_AND_DIMENSIONS_NOTE: SubtopicNote = {
         label: "Strain is a pure ratio",
         latex: "\\text{strain} = \\frac{\\Delta L}{L} = \\frac{[L]}{[L]} = [M^0 L^0 T^0]",
         symbols: [
-          { symbol: "\\Delta L", meaning: "change in length, [L]" },
+          { symbol: "\\(\\Delta L\\)", meaning: "change in length, [L]" },
           { symbol: "L", meaning: "original length, [L]" },
         ],
       },

@@ -27,7 +27,7 @@ export const EXPECTATION_VARIANCE_SD_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "x_i", meaning: "the values X can take" },
           { symbol: "P(X=x_i)", meaning: "the probability of each value (the pmf)" },
-          { symbol: "\\mu", meaning: "the mean / expected value — a weighted average, not always an attainable value" },
+          { symbol: "\\(\\mu\\)", meaning: "the mean / expected value — a weighted average, not always an attainable value" },
         ],
       },
       authoredExample: {
@@ -148,7 +148,7 @@ export const EXPECTATION_VARIANCE_SD_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "E(X^2)", meaning: "average of the SQUARES: \\(\\sum x^2 P(x)\\)" },
           { symbol: "[E(X)]^2", meaning: "the SQUARE of the mean — a different, smaller number in general" },
-          { symbol: "\\sigma", meaning: "standard deviation = \\(\\sqrt{\\text{Var}}\\), in the same units as X" },
+          { symbol: "\\(\\sigma\\)", meaning: "standard deviation = \\(\\sqrt{\\text{Var}}\\), in the same units as X" },
         ],
       },
       authoredExample: {

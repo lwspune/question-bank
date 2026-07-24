@@ -28,9 +28,9 @@ export const STOICHIOMETRY_NOTE: SubtopicNote = {
         latex:
           "m_{\\text{target}} = n_{\\text{known}} \\times \\dfrac{\\text{coeff}_{\\text{target}}}{\\text{coeff}_{\\text{known}}} \\times M_{\\text{target}}",
         symbols: [
-          { symbol: "n_{\\text{known}}", meaning: "moles of the given substance (mass/M or volume/22.4)" },
-          { symbol: "\\text{coeff}", meaning: "the balanced-equation coefficient of each substance" },
-          { symbol: "M_{\\text{target}}", meaning: "molar mass of the substance being found" },
+          { symbol: "\\(n_{\\text{known}}\\)", meaning: "moles of the given substance (mass/M or volume/22.4)" },
+          { symbol: "\\(\\text{coeff}\\)", meaning: "the balanced-equation coefficient of each substance" },
+          { symbol: "\\(M_{\\text{target}}\\)", meaning: "molar mass of the substance being found" },
         ],
       },
       pyqExampleId: "283ca157-107b-41df-a01d-3deab2e3e484", // KClO3 for 5.6 dm3 O2 = 20.40 g

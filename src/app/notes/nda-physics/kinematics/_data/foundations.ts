@@ -82,7 +82,7 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
         latex: "|\\vec{s}| \\leq d \\qquad \\vec{s}_{\\text{round trip}} = 0",
         symbols: [
           { symbol: "d", meaning: "distance (total path length, scalar)" },
-          { symbol: "\\vec{s}", meaning: "displacement (start → finish, vector)" },
+          { symbol: "\\(\\vec{s}\\)", meaning: "displacement (start → finish, vector)" },
         ],
       },
       authoredExample: {
@@ -136,7 +136,7 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
         latex: "\\bar{v}_{\\text{speed}} = \\dfrac{d}{t} \\qquad \\bar{v}_{\\text{velocity}} = \\dfrac{\\vec{s}}{t}",
         symbols: [
           { symbol: "d", meaning: "total distance" },
-          { symbol: "\\vec{s}", meaning: "total displacement" },
+          { symbol: "\\(\\vec{s}\\)", meaning: "total displacement" },
           { symbol: "t", meaning: "total time" },
         ],
       },
@@ -190,9 +190,9 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
         label: "Position vector and its derivatives",
         latex: "\\vec{v} = \\dfrac{d\\vec{r}}{dt}, \\quad \\vec{a} = \\dfrac{d\\vec{v}}{dt}, \\quad |\\vec{s}_{\\text{net}}| = \\sqrt{s_x^2 + s_y^2}",
         symbols: [
-          { symbol: "\\vec{r}", meaning: "position vector" },
-          { symbol: "\\vec{v}", meaning: "velocity vector" },
-          { symbol: "\\vec{a}", meaning: "acceleration vector" },
+          { symbol: "\\(\\vec{r}\\)", meaning: "position vector" },
+          { symbol: "\\(\\vec{v}\\)", meaning: "velocity vector" },
+          { symbol: "\\(\\vec{a}\\)", meaning: "acceleration vector" },
         ],
       },
       authoredExample: {

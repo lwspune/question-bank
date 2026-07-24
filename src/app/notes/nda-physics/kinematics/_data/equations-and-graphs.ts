@@ -199,8 +199,8 @@ export const EQUATIONS_AND_GRAPHS_NOTE: SubtopicNote = {
         label: "Velocity-time graph readings",
         latex: "a = \\text{slope} = \\dfrac{\\Delta v}{\\Delta t}, \\qquad s = \\text{area under the graph}",
         symbols: [
-          { symbol: "\\Delta v", meaning: "change in velocity" },
-          { symbol: "\\Delta t", meaning: "time interval" },
+          { symbol: "\\(\\Delta v\\)", meaning: "change in velocity" },
+          { symbol: "\\(\\Delta t\\)", meaning: "time interval" },
           { symbol: "s", meaning: "displacement" },
         ],
       },

@@ -195,8 +195,8 @@ export const GRAVITATION_NEWTONS_LAW_NOTE: SubtopicNote = {
         label: "Action-reaction pair",
         latex: "\\vec{F}_{12} = -\\,\\vec{F}_{21}, \\qquad |\\vec{F}_{12}| = |\\vec{F}_{21}| = \\dfrac{G m_1 m_2}{r^2}",
         symbols: [
-          { symbol: "\\vec{F}_{12}", meaning: "force on body 1 due to body 2" },
-          { symbol: "\\vec{F}_{21}", meaning: "force on body 2 due to body 1" },
+          { symbol: "\\(\\vec{F}_{12}\\)", meaning: "force on body 1 due to body 2" },
+          { symbol: "\\(\\vec{F}_{21}\\)", meaning: "force on body 2 due to body 1" },
         ],
       },
       authoredExample: {

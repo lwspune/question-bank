@@ -227,8 +227,8 @@ export const BY_PARTS_NOTE: SubtopicNote = {
         latex:
           "\\int u\\,v\\,dx = u\\,v_1 - u'\\,v_2 + u''\\,v_3 - u'''\\,v_4 + \\cdots",
         symbols: [
-          { symbol: "u', u'', \\ldots", meaning: "successive derivatives of the polynomial \\(u\\)" },
-          { symbol: "v_1, v_2, \\ldots", meaning: "successive integrals of \\(v\\)" },
+          { symbol: "\\(u', u'', \\ldots\\)", meaning: "successive derivatives of the polynomial \\(u\\)" },
+          { symbol: "\\(v_1, v_2, \\ldots\\)", meaning: "successive integrals of \\(v\\)" },
         ],
       },
       authoredExample: {

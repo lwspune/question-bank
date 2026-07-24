@@ -149,7 +149,7 @@ export const OSCILLATIONS_SIMPLE_PENDULUM_NOTE: SubtopicNote = {
         latex: "F = -mg\\sin\\theta \\;\\approx\\; -mg\\,\\theta \\quad (\\theta \\text{ small})",
         symbols: [
           { symbol: "F", meaning: "restoring force along the arc" },
-          { symbol: "\\theta", meaning: "angular displacement from the vertical" },
+          { symbol: "\\(\\theta\\)", meaning: "angular displacement from the vertical" },
           { symbol: "m", meaning: "mass of the bob" },
         ],
       },

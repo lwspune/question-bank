@@ -29,7 +29,7 @@ export const OSCILLATIONS_SHM_AND_WAVES_NOTE: SubtopicNote = {
           { symbol: "F", meaning: "restoring force" },
           { symbol: "x", meaning: "displacement from the mean position" },
           { symbol: "k", meaning: "force constant (positive)" },
-          { symbol: "\\omega", meaning: "angular frequency" },
+          { symbol: "\\(\\omega\\)", meaning: "angular frequency" },
         ],
       },
       authoredExample: {
@@ -91,7 +91,7 @@ export const OSCILLATIONS_SHM_AND_WAVES_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "T", meaning: "period (s)" },
           { symbol: "f", meaning: "frequency (Hz)" },
-          { symbol: "\\omega", meaning: "angular frequency (rad/s)" },
+          { symbol: "\\(\\omega\\)", meaning: "angular frequency (rad/s)" },
         ],
       },
       visualizationSlug: "osc-shm-displacement-time",

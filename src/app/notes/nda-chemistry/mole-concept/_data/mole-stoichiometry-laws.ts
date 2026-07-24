@@ -82,7 +82,7 @@ export const MOLE_STOICHIOMETRY_LAWS_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "E", meaning: "equivalent weight" },
           { symbol: "M", meaning: "molar mass" },
-          { symbol: "n\\text{-factor}", meaning: "replaceable H+ (acid) or OH- (base) per molecule" },
+          { symbol: "\\(n\\text{-factor}\\)", meaning: "replaceable H+ (acid) or OH- (base) per molecule" },
         ],
       },
       pyqExampleId: "6ba46ed2-9561-4bb2-9849-ab894c7769be", // eq wt of oxalic acid dihydrate = 63

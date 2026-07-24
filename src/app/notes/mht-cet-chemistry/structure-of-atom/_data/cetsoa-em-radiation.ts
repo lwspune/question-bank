@@ -28,8 +28,8 @@ export const EM_RADIATION_NOTE: SubtopicNote = {
         label: "Wavenumber",
         latex: "\\bar{\\nu} = \\dfrac{1}{\\lambda}",
         symbols: [
-          { symbol: "\\bar{\\nu}", meaning: "wavenumber (m^-1 or cm^-1)" },
-          { symbol: "\\lambda", meaning: "wavelength (m or cm, matching the wavenumber unit)" },
+          { symbol: "\\(\\bar{\\nu}\\)", meaning: "wavenumber (m^-1 or cm^-1)" },
+          { symbol: "\\(\\lambda\\)", meaning: "wavelength (m or cm, matching the wavenumber unit)" },
         ],
       },
       pyqExampleId: "89435f38-94b9-42c1-b6b7-224d3cc56364", // wavenumber of 0.25 um -> 4.0 x 10^6 m^-1
@@ -91,8 +91,8 @@ export const EM_RADIATION_NOTE: SubtopicNote = {
         latex: "c = \\nu\\lambda \\qquad \\Rightarrow \\qquad \\nu = \\dfrac{c}{\\lambda}",
         symbols: [
           { symbol: "c", meaning: "speed of light, 3 x 10^8 m/s (same for all EM radiation)" },
-          { symbol: "\\nu", meaning: "frequency (Hz)" },
-          { symbol: "\\lambda", meaning: "wavelength (m)" },
+          { symbol: "\\(\\nu\\)", meaning: "frequency (Hz)" },
+          { symbol: "\\(\\lambda\\)", meaning: "wavelength (m)" },
         ],
       },
       pyqExampleId: "8cfd1e17-6bd8-4f83-8c51-fe4c5a3922b4", // violet 400 nm -> 7.5 x 10^14 Hz
@@ -155,9 +155,9 @@ export const EM_RADIATION_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "E", meaning: "energy of one photon (J)" },
           { symbol: "h", meaning: "Planck's constant, 6.626 x 10^-34 J s" },
-          { symbol: "\\nu", meaning: "frequency (Hz)" },
+          { symbol: "\\(\\nu\\)", meaning: "frequency (Hz)" },
           { symbol: "c", meaning: "speed of light, 3 x 10^8 m/s" },
-          { symbol: "\\lambda", meaning: "wavelength (m)" },
+          { symbol: "\\(\\lambda\\)", meaning: "wavelength (m)" },
           { symbol: "N_A", meaning: "Avogadro number, 6.022 x 10^23 mol^-1" },
         ],
       },
