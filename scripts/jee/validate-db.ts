@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
+import { renderCorruption } from "../lib/render-lint";
 
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -54,6 +55,7 @@ async function main() {
   let mdLeaks = 0;
   let artifacts = 0;
   let incomplete = 0;
+  let corruption = 0;
   for (const r of rows) {
     // Completeness ≠ renderability: a visual-referencing stem with no image
     // anywhere is probably missing a figure that failed to extract.
@@ -87,9 +89,15 @@ async function main() {
         artifacts++;
         console.log(`Q${r.question_number} [${where}] trailing backslash: ...${val.slice(-40)}`);
       }
+      // Render-corruption classes from the OCR/BLIND ingest: lowercase-start
+      // stem (dropped lead-in), $/\( delimiter scramble, plain-text \_ blank.
+      for (const flag of renderCorruption(val, { isStem: where === "text" })) {
+        corruption++;
+        console.log(`Q${r.question_number} [${where}] render-corruption: ${flag} :: ${val.slice(0, 55)}`);
+      }
     }
   }
-  console.log(`\n${rows.length} questions checked | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts} | incomplete? ${incomplete} (soft — review each)`);
+  console.log(`\n${rows.length} questions checked | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts} | render-corruption: ${corruption} | incomplete? ${incomplete} (soft — review each)`);
 }
 
 main().catch((e) => {
