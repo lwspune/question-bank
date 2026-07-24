@@ -27,6 +27,10 @@ export type PaperData = {
   numericOverrides?: Record<string, number>; // supply/correct the answer for a Section-B NAT (numeric) question
   solutionFixes?: Record<string, [string, string][]>;
   authoredSolutions?: Record<string, string>;
+  // Question numbers to EXCLUDE from commit entirely (e.g. a blind-solver flagged
+  // the stem/options corrupted). Filtered before the classification requirement,
+  // so a committable "ok" row can be dropped without a "no classification" throw.
+  skip?: number[];
 };
 
 /**

@@ -69,6 +69,7 @@ function main() {
   const paper = {
     sourceFile, pyqYear, pyqNote,
     classification, answerOverrides, numericOverrides,
+    skip: dropped.map((d) => Number(d.replace(/\D.*$/, ""))).filter((n) => Number.isFinite(n)),
     notes: `${pyqNote} — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.`,
     authoredSolutions,
   };

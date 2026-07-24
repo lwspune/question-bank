@@ -36,6 +36,7 @@ function loadEnv() {
 function buildRows(paperId: string, paper: PaperData, subject?: string, numericOnly = false): ParsedRowPayload[] {
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
   const eligible = records
+    .filter((r) => !paper.skip?.includes(r.questionNumber))
     .filter((r) => isCommittable(r.status, r.questionNumber, paper))
     // Maths-first single-subject pass: keep only the target subject's rows.
     // Phy/Chem rows are excluded BEFORE the classification requirement below,
