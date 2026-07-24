@@ -28,11 +28,41 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-24
+
+### Fix the `cleanup-latex` function-name de-glue so it doesn't mangle English words inside `\text{}`
+
+The `scripts/jee/cleanup-latex.ts` de-glue step (which inserts a backslash before a glued trig/`\det`/`\log` function name) fires **inside `\text{}` on ordinary English words** whose prefix is a function name: `singular`→`\sin gular`, `singles`→`\sin gles`, and by extension `cosine`/`determinant`/`logic`/`tangent`/`section`/`limit`/… KaTeX then rejects the zone, so `attach-solutions` skips the whole solution (silent NO-SOLUTION). This bit 2 JEE solutions this session (apr11 Q70, jan31 Q83), worked around by rewording. The MHT-CET `cleanupArtifacts` glued-trig de-glue (CLAUDE.md line 9) shares the risk.
+
+**Why:** a silent NO-SOLUTION on an otherwise-correct row is easy to miss (only `scan-flip`'s NO-SOLUTION flag catches it), and it recurs on any solution that says "singular matrix"/"cosine rule"/"the determinant" in prose. The reword workaround is fragile.
+
+**How to apply:** in the de-glue regex, require the function-name match to NOT be immediately followed by a lowercase letter that continues a word (negative lookahead `(?![a-z])`), OR skip de-gluing entirely inside `\text{…}`/`\operatorname{…}` spans (the function names there are always literal text). Add a regression test with `\text{singular}` / `\text{cosine rule}`. Apply the same fix to the MHT-CET `cleanupArtifacts`.
+
+### JEE Mains Physics + Chemistry ingestion (the only remaining JEE work)
+
+JEE Mains **Maths** is now complete across every sitting on disk 2021-2025 (3,715 q PUBLIC). Physics + Chemistry were deliberately skipped under the Maths-only strategy — but the same ~40 sittings' source DOCX carry full Physics (Q1-30/…) + Chemistry (Q31-60/…) blocks, and the exact two-lane pipeline (`dump-maths` → SAFE/BLIND agents → `assemble-*` → commit/attach/cleanup/scan-flip) would ingest them with only a subject-flag change. Logged as visible scope, not a bug.
+
+**Why:** it would roughly **triple** the JEE corpus (to ~10-11k q) with proven, fast tooling — the single biggest remaining bank expansion. Whether to do it is a product call (Maths-first positioning vs full-subject coverage).
+
+**How to apply:** decide subject scope first; then reuse the pipeline with `--subject=Physics` / `--subject=Chemistry` (the numbering triage + blind-solve routing is subject-agnostic). Chemistry's structure/reaction figures will need the figure-attach path; Physics is mostly text+math like Maths.
+
+### Spot-verify a sample of the blind-solved JEE answers against official keys, if sourced
+
+The ~1,900 JEE Maths questions on broken/no-key papers carry **fully AI-derived** answers (the source keys were positionally shifted/absent, so they were ignored). Each was solved from scratch with a skip-if-uncertain rule, but there is no independent cross-check against an authoritative key (unlike the safe-key papers). If clean official JEE 2022-2025 answer keys ever become available, a spot-check pass would confirm the blind-solve accuracy rate.
+
+**Why:** blind-solve is high-quality but not audited; a sampled cross-check would quantify the residual error rate and catch any systematic blind-solver blind spot.
+
+**How to apply:** obtain official NTA answer keys (public after each session); diff a random ~5% sample of blind-solved rows (`notes: "…BLIND-derived…"` in `papers/*.json`) against them; if the disagreement rate is material, widen the check. Skip-flagged rows are already PRIVATE/dropped, so scope is the PUBLIC blind rows only.
+
+---
+
 ## 2026-07-23
 
-### Complete the JEE Maths multi-year program (compilations 13-16 + 2022-2025)
+### ~~Complete the JEE Maths multi-year program (compilations 13-16 + 2022-2025)~~ — **DONE 2026-07-24**
 
-2021 Maths is now complete (all standard + Maths-only papers, MCQ + Section-B NAT; JEE at 1,271 q PUBLIC). The remaining JEE Maths work is a large, well-scoped program now that the full source is on disk (`C:\Vilas\LWS_Pune\JEE_Mains\PYQs\{2021..2025}`, 69 sittings): **compilations 13-16** (2021, `--compilation`, verify every key) + **2022-2025 Maths** (43 date-named sittings). This is planned ingestion (tracked in the [[jee-mains-ingestion]] RESUME), not a bug — logged here so the scope is visible.
+**DONE 2026-07-24 (merges `54b6f2c`→`fe82a6f`):** JEE Mains Maths ingestion is COMPLETE — every sitting on disk 2021-2025 (~40 sittings) ingested; **JEE 1,271 → 3,715 q PUBLIC (Maths 3,202)**. Compilations 13-16 finished via blind-solve; all of 2022-2025 done via the new two-lane SAFE/BLIND pipeline (see the 2026-07-24 Decisions entry + [[pyq-key-trust-triage]]). New infra: `dump-maths`, `assemble-safe`, `assemble-blind`, `sol-clean`, `scan-flip`, `paper.skip[]`. Only Physics + Chemistry remain (Maths-only strategy).
+
+~~2021 Maths is now complete (all standard + Maths-only papers, MCQ + Section-B NAT; JEE at 1,271 q PUBLIC). The remaining JEE Maths work is a large, well-scoped program now that the full source is on disk (`C:\Vilas\LWS_Pune\JEE_Mains\PYQs\{2021..2025}`, 69 sittings): **compilations 13-16** (2021, `--compilation`, verify every key) + **2022-2025 Maths** (43 date-named sittings).~~
 
 **Why:** ~1,300 more Maths questions across 4 exam years is the single biggest bank expansion available, and the NAT-backfill loop + tooling (`extract --numeric`, `commit/attach --numeric-only`, the taxonomy handout, parallel classify+solve agents) is now proven and fast.
 
