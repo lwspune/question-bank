@@ -47,10 +47,12 @@ describe("notesNav — cross-exam notes grouping", () => {
   });
 
   it("returns a valid exam with empty subjects (coming-soon), null for unknown slug", () => {
-    // jee-mains is a registered exam but has no notes yet.
-    const jee = getNotesExamGroup("jee-mains");
-    expect(jee).not.toBeNull();
-    expect(jee!.subjects).toEqual([]);
+    // cds is a registered exam with no notes yet. Keep this on a genuinely
+    // note-less exam — jee-mains gained notes (Matrices, 2026-07-24), which
+    // would silently flip a real chapter's negative case here.
+    const cds = getNotesExamGroup("cds");
+    expect(cds).not.toBeNull();
+    expect(cds!.subjects).toEqual([]);
     // an unknown slug is a 404.
     expect(getNotesExamGroup("not-an-exam")).toBeNull();
   });
@@ -60,5 +62,11 @@ describe("notesNav — cross-exam notes grouping", () => {
     expect(slugs).toContain("nda");
     expect(slugs).toContain("mht-cet");
     expect(slugs).toContain("jee-mains");
+  });
+
+  it("jee-mains exposes its Matrices notes subject", () => {
+    const jee = getNotesExamGroup("jee-mains");
+    expect(jee).not.toBeNull();
+    expect(jee!.subjects.map((s) => s.subjectRoute)).toContain("jee-mains-maths");
   });
 });
