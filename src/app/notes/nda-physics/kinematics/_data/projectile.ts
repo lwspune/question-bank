@@ -27,7 +27,7 @@ export const PROJECTILE_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "u", meaning: "launch speed (upward)" },
           { symbol: "g", meaning: "acceleration due to gravity (≈ 10 m/s²)" },
-          { symbol: "h_{\\max}", meaning: "maximum height" },
+          { symbol: "\\(h_{\\max}\\)", meaning: "maximum height" },
         ],
       },
       authoredExample: {

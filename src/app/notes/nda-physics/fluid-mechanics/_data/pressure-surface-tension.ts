@@ -81,7 +81,7 @@ export const PRESSURE_SURFACE_TENSION_NOTE: SubtopicNote = {
         latex: "P = \\rho g h",
         symbols: [
           { symbol: "P", meaning: "gauge pressure at depth h (Pa)" },
-          { symbol: "\\rho", meaning: "density of the liquid (kg/m³)" },
+          { symbol: "\\(\\rho\\)", meaning: "density of the liquid (kg/m³)" },
           { symbol: "g", meaning: "acceleration due to gravity (m/s²)" },
           { symbol: "h", meaning: "depth below the free surface (m)" },
         ],
@@ -198,9 +198,9 @@ export const PRESSURE_SURFACE_TENSION_NOTE: SubtopicNote = {
         label: "Absolute pressure in a liquid open to air",
         latex: "P_{\\text{abs}} = P_{\\text{atm}} + \\rho g h",
         symbols: [
-          { symbol: "P_{\\text{abs}}", meaning: "absolute (true) pressure (Pa)" },
-          { symbol: "P_{\\text{atm}}", meaning: "atmospheric pressure (Pa)" },
-          { symbol: "\\rho g h", meaning: "gauge pressure due to the liquid column (Pa)" },
+          { symbol: "\\(P_{\\text{abs}}\\)", meaning: "absolute (true) pressure (Pa)" },
+          { symbol: "\\(P_{\\text{atm}}\\)", meaning: "atmospheric pressure (Pa)" },
+          { symbol: "\\(\\rho g h\\)", meaning: "gauge pressure due to the liquid column (Pa)" },
         ],
       },
       authoredExample: {

@@ -146,7 +146,7 @@ export const ENERGY_AND_CONSERVATION_NOTE: SubtopicNote = {
         latex: "mgh = \\tfrac{1}{2}mv^2 \\;\\Rightarrow\\; v = \\sqrt{2gh}",
         symbols: [
           { symbol: "mgh", meaning: "potential energy at the top (J)" },
-          { symbol: "\\tfrac{1}{2}mv^2", meaning: "kinetic energy at the bottom (J)" },
+          { symbol: "\\(\\tfrac{1}{2}mv^2\\)", meaning: "kinetic energy at the bottom (J)" },
           { symbol: "v", meaning: "landing speed (m/s)" },
         ],
       },
@@ -269,8 +269,8 @@ export const ENERGY_AND_CONSERVATION_NOTE: SubtopicNote = {
         label: "Frame-dependent change in kinetic energy",
         latex: "\\Delta K_{S'} = mgh + mu\\sqrt{2gh} \\;>\\; \\Delta K_{S} = mgh",
         symbols: [
-          { symbol: "\\Delta K_S", meaning: "KE change in the rest frame = mgh" },
-          { symbol: "\\Delta K_{S'}", meaning: "KE change in a frame moving with speed u" },
+          { symbol: "\\(\\Delta K_S\\)", meaning: "KE change in the rest frame = mgh" },
+          { symbol: "\\(\\Delta K_{S'}\\)", meaning: "KE change in a frame moving with speed u" },
           { symbol: "u", meaning: "relative speed of the two frames (m/s)" },
         ],
       },

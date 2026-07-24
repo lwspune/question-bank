@@ -29,8 +29,8 @@ export const HYDROGEN_SPECTRUM_NOTE: SubtopicNote = {
         latex:
           "\\bar{\\nu} = \\dfrac{1}{\\lambda} = R_H\\, Z^2\\left(\\dfrac{1}{n_1^2} - \\dfrac{1}{n_2^2}\\right) \\qquad (n_1 < n_2)",
         symbols: [
-          { symbol: "\\bar{\\nu}", meaning: "wavenumber of the line (cm^-1 or m^-1)" },
-          { symbol: "\\lambda", meaning: "wavelength of the line" },
+          { symbol: "\\(\\bar{\\nu}\\)", meaning: "wavenumber of the line (cm^-1 or m^-1)" },
+          { symbol: "\\(\\lambda\\)", meaning: "wavelength of the line" },
           { symbol: "R_H", meaning: "Rydberg constant = 1.097 x 10^7 m^-1 = 109677 cm^-1" },
           { symbol: "Z", meaning: "atomic number (Z = 1 for hydrogen)" },
           { symbol: "n_1", meaning: "lower orbit (fallen TO), the larger positive fraction" },

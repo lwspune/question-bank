@@ -229,7 +229,7 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         label: "The reciprocal substitution",
         latex: "t = x \\pm \\dfrac{k}{x} \\;\\Rightarrow\\; dt = \\left(1 \\mp \\dfrac{k}{x^2}\\right)dx",
         symbols: [
-          { symbol: "\\pm k/x", meaning: "sign chosen so \\(dt\\) matches the numerator after dividing by \\(x^2\\)" },
+          { symbol: "\\(\\pm k/x\\)", meaning: "sign chosen so \\(dt\\) matches the numerator after dividing by \\(x^2\\)" },
         ],
       },
       authoredExample: {

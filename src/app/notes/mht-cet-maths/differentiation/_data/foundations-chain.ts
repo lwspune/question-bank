@@ -439,8 +439,8 @@ export const FOUNDATIONS_CHAIN_NOTE: SubtopicNote = {
         latex:
           "1+\\cos x = 2\\cos^2\\tfrac{x}{2},\\quad 1-\\cos x = 2\\sin^2\\tfrac{x}{2},\\quad \\sqrt{1\\pm\\sin 2x}=|\\sin x\\pm\\cos x|",
         symbols: [
-          { symbol: "\\tfrac{x}{2}", meaning: "half-angle — appears whenever you collapse \\(1\\pm\\cos x\\)" },
-          { symbol: "|\\cdots|", meaning: "the root of a perfect square is a MODULUS; fix the sign on the given interval" },
+          { symbol: "\\(\\tfrac{x}{2}\\)", meaning: "half-angle — appears whenever you collapse \\(1\\pm\\cos x\\)" },
+          { symbol: "\\(|\\cdots|\\)", meaning: "the root of a perfect square is a MODULUS; fix the sign on the given interval" },
         ],
       },
       authoredExample: {

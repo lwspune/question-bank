@@ -24,10 +24,10 @@ export const BUOYANCY_DENSITY_FLOTATION_NOTE: SubtopicNote = {
         label: "Density and relative density",
         latex: "\\rho = \\dfrac{m}{V}, \\qquad \\text{RD} = \\dfrac{\\rho_{\\text{substance}}}{\\rho_{\\text{water}}}",
         symbols: [
-          { symbol: "\\rho", meaning: "density (kg/m³)" },
+          { symbol: "\\(\\rho\\)", meaning: "density (kg/m³)" },
           { symbol: "m", meaning: "mass (kg)" },
           { symbol: "V", meaning: "volume (m³)" },
-          { symbol: "\\text{RD}", meaning: "relative density (no unit)" },
+          { symbol: "\\(\\text{RD}\\)", meaning: "relative density (no unit)" },
         ],
       },
       authoredExample: {
@@ -81,8 +81,8 @@ export const BUOYANCY_DENSITY_FLOTATION_NOTE: SubtopicNote = {
         label: "Mixture density (equal masses)",
         latex: "\\rho_{\\text{eq.mass}} = \\dfrac{2\\rho_1\\rho_2}{\\rho_1 + \\rho_2}",
         symbols: [
-          { symbol: "\\rho_1, \\rho_2", meaning: "densities of the two components" },
-          { symbol: "\\rho_{\\text{eq.mass}}", meaning: "density of an equal-mass mixture" },
+          { symbol: "\\(\\rho_1, \\rho_2\\)", meaning: "densities of the two components" },
+          { symbol: "\\(\\rho_{\\text{eq.mass}}\\)", meaning: "density of an equal-mass mixture" },
         ],
       },
       authoredExample: {
@@ -138,8 +138,8 @@ export const BUOYANCY_DENSITY_FLOTATION_NOTE: SubtopicNote = {
         latex: "F_b = \\rho_{\\text{fluid}}\\, V_{\\text{disp}}\\, g",
         symbols: [
           { symbol: "F_b", meaning: "buoyant force / upthrust (N)" },
-          { symbol: "\\rho_{\\text{fluid}}", meaning: "density of the fluid (kg/m³)" },
-          { symbol: "V_{\\text{disp}}", meaning: "volume of fluid displaced (m³)" },
+          { symbol: "\\(\\rho_{\\text{fluid}}\\)", meaning: "density of the fluid (kg/m³)" },
+          { symbol: "\\(V_{\\text{disp}}\\)", meaning: "volume of fluid displaced (m³)" },
           { symbol: "g", meaning: "acceleration due to gravity (m/s²)" },
         ],
       },
@@ -194,7 +194,7 @@ export const BUOYANCY_DENSITY_FLOTATION_NOTE: SubtopicNote = {
         label: "Apparent weight in a fluid",
         latex: "W_{\\text{app}} = W - F_b",
         symbols: [
-          { symbol: "W_{\\text{app}}", meaning: "apparent (scale) weight in the fluid (N)" },
+          { symbol: "\\(W_{\\text{app}}\\)", meaning: "apparent (scale) weight in the fluid (N)" },
           { symbol: "W", meaning: "true weight in air (N)" },
           { symbol: "F_b", meaning: "buoyant force = weight of displaced fluid (N)" },
         ],
@@ -251,10 +251,10 @@ export const BUOYANCY_DENSITY_FLOTATION_NOTE: SubtopicNote = {
         label: "Fraction submerged of a floating body",
         latex: "\\dfrac{V_{\\text{submerged}}}{V_{\\text{total}}} = \\dfrac{\\rho_{\\text{body}}}{\\rho_{\\text{fluid}}}",
         symbols: [
-          { symbol: "V_{\\text{submerged}}", meaning: "submerged volume (m³)" },
-          { symbol: "V_{\\text{total}}", meaning: "total volume of the body (m³)" },
-          { symbol: "\\rho_{\\text{body}}", meaning: "average density of the body" },
-          { symbol: "\\rho_{\\text{fluid}}", meaning: "density of the fluid" },
+          { symbol: "\\(V_{\\text{submerged}}\\)", meaning: "submerged volume (m³)" },
+          { symbol: "\\(V_{\\text{total}}\\)", meaning: "total volume of the body (m³)" },
+          { symbol: "\\(\\rho_{\\text{body}}\\)", meaning: "average density of the body" },
+          { symbol: "\\(\\rho_{\\text{fluid}}\\)", meaning: "density of the fluid" },
         ],
       },
       authoredExample: {

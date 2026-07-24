@@ -78,7 +78,7 @@ export const HEAT_CALORIMETRY_SPECIFIC_HEAT_NOTE: SubtopicNote = {
           { symbol: "Q", meaning: "heat supplied or removed (J)" },
           { symbol: "m", meaning: "mass (kg)" },
           { symbol: "c", meaning: "specific heat capacity (J/(kg·°C))" },
-          { symbol: "\\Delta\\theta", meaning: "change in temperature (°C or K)" },
+          { symbol: "\\(\\Delta\\theta\\)", meaning: "change in temperature (°C or K)" },
         ],
       },
       authoredExample: {
@@ -205,7 +205,7 @@ export const HEAT_CALORIMETRY_SPECIFIC_HEAT_NOTE: SubtopicNote = {
           "Q = m\\int_{T_1}^{T_2}\\!\\big(C_0 + \\alpha T\\big)\\,dT = m(T_2 - T_1)\\left[C_0 + \\tfrac{1}{2}\\alpha(T_1 + T_2)\\right]",
         symbols: [
           { symbol: "C_0", meaning: "specific heat at T = 0 (a constant)" },
-          { symbol: "\\alpha", meaning: "rate of change of specific heat with temperature" },
+          { symbol: "\\(\\alpha\\)", meaning: "rate of change of specific heat with temperature" },
           { symbol: "T_1, T_2", meaning: "initial and final temperatures" },
         ],
       },

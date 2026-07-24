@@ -26,8 +26,8 @@ export const REFRACTION_AND_TIR_NOTE: SubtopicNote = {
         latex: "n_1 \\sin\\theta_1 = n_2 \\sin\\theta_2",
         symbols: [
           { symbol: "n_1, n_2", meaning: "refractive indices of the two media" },
-          { symbol: "\\theta_1", meaning: "angle of incidence (from the normal)" },
-          { symbol: "\\theta_2", meaning: "angle of refraction (from the normal)" },
+          { symbol: "\\(\\theta_1\\)", meaning: "angle of incidence (from the normal)" },
+          { symbol: "\\(\\theta_2\\)", meaning: "angle of refraction (from the normal)" },
         ],
       },
       authoredExample: {
@@ -194,7 +194,7 @@ export const REFRACTION_AND_TIR_NOTE: SubtopicNote = {
         label: "Critical angle",
         latex: "\\sin\\theta_c = \\dfrac{1}{n}",
         symbols: [
-          { symbol: "\\theta_c", meaning: "critical angle (denser→rarer)" },
+          { symbol: "\\(\\theta_c\\)", meaning: "critical angle (denser→rarer)" },
           { symbol: "n", meaning: "refractive index of the denser medium (vs air)" },
         ],
       },

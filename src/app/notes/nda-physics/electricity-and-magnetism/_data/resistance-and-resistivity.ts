@@ -28,7 +28,7 @@ export const RESISTANCE_AND_RESISTIVITY_NOTE: SubtopicNote = {
         latex: "R = \\rho\\,\\dfrac{L}{A}",
         symbols: [
           { symbol: "R", meaning: "resistance (Ω)" },
-          { symbol: "\\rho", meaning: "resistivity of the material (Ω·m)" },
+          { symbol: "\\(\\rho\\)", meaning: "resistivity of the material (Ω·m)" },
           { symbol: "L", meaning: "length of the wire (m)" },
           { symbol: "A", meaning: "cross-sectional area (m²)" },
         ],

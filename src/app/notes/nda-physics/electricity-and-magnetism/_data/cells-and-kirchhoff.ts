@@ -25,7 +25,7 @@ export const CELLS_AND_KIRCHHOFF_NOTE: SubtopicNote = {
         label: "Terminal voltage and circuit current",
         latex: "V = \\varepsilon - I r, \\qquad I = \\dfrac{\\varepsilon}{R + r}",
         symbols: [
-          { symbol: "\\varepsilon", meaning: "EMF of the cell (volt)" },
+          { symbol: "\\(\\varepsilon\\)", meaning: "EMF of the cell (volt)" },
           { symbol: "r", meaning: "internal resistance (Ω)" },
           { symbol: "R", meaning: "external resistance (Ω)" },
           { symbol: "V", meaning: "terminal voltage (volt)" },

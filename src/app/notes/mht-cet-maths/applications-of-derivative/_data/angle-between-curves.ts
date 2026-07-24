@@ -88,7 +88,7 @@ export const ANGLE_BETWEEN_CURVES_NOTE: SubtopicNote = {
         latex: "\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1 m_2}\\right|",
         symbols: [
           { symbol: "m_1, m_2", meaning: "the two tangent slopes at the intersection point" },
-          { symbol: "\\theta", meaning: "the acute angle between the curves" },
+          { symbol: "\\(\\theta\\)", meaning: "the acute angle between the curves" },
         ],
       },
       authoredExample: {

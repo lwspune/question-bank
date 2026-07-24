@@ -29,7 +29,7 @@ export const MAGNETIC_FORCE_NOTE: SubtopicNote = {
           { symbol: "q", meaning: "charge (C)" },
           { symbol: "v", meaning: "speed (m/s)" },
           { symbol: "B", meaning: "magnetic field (T)" },
-          { symbol: "\\theta", meaning: "angle between v and B" },
+          { symbol: "\\(\\theta\\)", meaning: "angle between v and B" },
         ],
       },
       authoredExample: {

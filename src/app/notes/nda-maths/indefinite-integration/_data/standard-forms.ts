@@ -71,7 +71,7 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         latex: "\\int x^n\\,dx = \\dfrac{x^{n+1}}{n+1} + C \\quad (n \\neq -1)",
         symbols: [
           {
-            symbol: "n \\neq -1",
+            symbol: "\\(n \\neq -1\\)",
             meaning: "the exclusion that makes \\(\\int x^{-1} = \\ln|x|\\) a separate row",
           },
         ],
@@ -198,7 +198,7 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         latex: "\\int a^x\\,dx = \\dfrac{a^x}{\\ln a} + C",
         symbols: [
           { symbol: "a", meaning: "the constant base, \\(a>0,\\ a\\neq 1\\)" },
-          { symbol: "\\ln a", meaning: "natural log of the base — the divisor" },
+          { symbol: "\\(\\ln a\\)", meaning: "natural log of the base — the divisor" },
         ],
       },
       authoredExample: {
@@ -397,8 +397,8 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         latex:
           "1+\\cos x = 2\\cos^2\\tfrac{x}{2},\\quad 1-\\cos x = 2\\sin^2\\tfrac{x}{2},\\quad \\sqrt{1\\pm\\sin 2x}=|\\sin x\\pm\\cos x|",
         symbols: [
-          { symbol: "\\tfrac{x}{2}", meaning: "half-angle — appears whenever you collapse \\(1\\pm\\cos x\\)" },
-          { symbol: "|\\cdots|", meaning: "the root of a perfect square is a MODULUS; fix the sign on the given interval" },
+          { symbol: "\\(\\tfrac{x}{2}\\)", meaning: "half-angle — appears whenever you collapse \\(1\\pm\\cos x\\)" },
+          { symbol: "\\(|\\cdots|\\)", meaning: "the root of a perfect square is a MODULUS; fix the sign on the given interval" },
         ],
       },
       authoredExample: {

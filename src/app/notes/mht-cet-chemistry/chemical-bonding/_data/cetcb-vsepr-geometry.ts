@@ -83,8 +83,8 @@ export const VSEPR_NOTE: SubtopicNote = {
         latex: "\\text{lp} = \\frac{V - \\text{bp}}{2}",
         symbols: [
           { symbol: "V", meaning: "valence electrons of the central atom" },
-          { symbol: "\\text{bp}", meaning: "bond pairs = number of atoms bonded to it (single bonds)" },
-          { symbol: "\\text{lp}", meaning: "lone pairs left on the central atom" },
+          { symbol: "\\(\\text{bp}\\)", meaning: "bond pairs = number of atoms bonded to it (single bonds)" },
+          { symbol: "\\(\\text{lp}\\)", meaning: "lone pairs left on the central atom" },
         ],
       },
       pyqExampleId: "8845765b-aab8-4bbd-b790-188ae36e4127", // highest lone pairs -> ICl3 (2)

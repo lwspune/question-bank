@@ -31,7 +31,7 @@ export const DALTON_KTG_NOTE: SubtopicNote = {
           { symbol: "P_i", meaning: "partial pressure of component i" },
           { symbol: "x_i", meaning: "mole fraction of component i" },
           { symbol: "n_i", meaning: "moles of component i" },
-          { symbol: "P_{\\text{total}}", meaning: "total pressure of the mixture" },
+          { symbol: "\\(P_{\\text{total}}\\)", meaning: "total pressure of the mixture" },
         ],
       },
       pyqExampleId: "eb6e7839-db12-42fc-acb4-f0861f766b3d", // 28 g N2 + 8 g He + 40 g Ne, P_total 20 bar -> P(N2) = 4 bar

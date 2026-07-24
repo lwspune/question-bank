@@ -307,7 +307,7 @@ export const KSP_NOTE: SubtopicNote = {
           { symbol: "S", meaning: "molar solubility (mol dm^-3)" },
           { symbol: "m", meaning: "mass solubility (g dm^-3)" },
           { symbol: "M", meaning: "molar mass of the salt (g mol^-1)" },
-          { symbol: "[\\text{OH}^-]", meaning: "hydroxide-ion concentration from the pH" },
+          { symbol: "\\([\\text{OH}^-]\\)", meaning: "hydroxide-ion concentration from the pH" },
         ],
       },
       pyqExampleId: "327a0991-a47d-4b78-b413-afb58242f2e7", // Ba(OH)2 pH 12 -> Ksp = 5e-7

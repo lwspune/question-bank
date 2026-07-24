@@ -26,7 +26,7 @@ export const PH_SCALE_NOTE: SubtopicNote = {
         label: "Definition of pH",
         latex: "\\text{pH} = -\\log_{10}[\\text{H}^{+}]",
         symbols: [
-          { symbol: "[\\text{H}^{+}]", meaning: "hydrogen-ion concentration (mol/L)" },
+          { symbol: "\\([\\text{H}^{+}]\\)", meaning: "hydrogen-ion concentration (mol/L)" },
         ],
       },
       pyqExampleId: "75928834-14aa-432f-8b70-8fdcbc4a5b1a", // higher H+ -> higher pH is NOT correct

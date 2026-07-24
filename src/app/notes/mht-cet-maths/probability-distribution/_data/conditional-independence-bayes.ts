@@ -26,9 +26,9 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
         latex:
           "P(A\\mid B) = \\dfrac{P(A\\cap B)}{P(B)},\\qquad P(B) > 0",
         symbols: [
-          { symbol: "P(A\\cap B)", meaning: "probability that both A and B occur" },
+          { symbol: "\\(P(A\\cap B)\\)", meaning: "probability that both A and B occur" },
           { symbol: "P(B)", meaning: "probability of the conditioning (given) event — the new universe" },
-          { symbol: "P(A\\mid B)", meaning: "probability of A once B is known to have occurred" },
+          { symbol: "\\(P(A\\mid B)\\)", meaning: "probability of A once B is known to have occurred" },
         ],
       },
       visualizationSlug: "conditional-restrict",
@@ -206,7 +206,7 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
           "P(A\\cap B) = P(A)\\,P(B),\\qquad P(A\\cup B) = P(A)+P(B)-P(A)\\,P(B)",
         symbols: [
           { symbol: "P(A)P(B)", meaning: "the product form — holds ONLY for independent A, B" },
-          { symbol: "P(A'\\mid B)", meaning: "equals P(A') when A, B are independent" },
+          { symbol: "\\(P(A'\\mid B)\\)", meaning: "equals P(A') when A, B are independent" },
         ],
       },
       visualizationSlug: "exclusive-vs-independent",
@@ -347,7 +347,7 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "H_i", meaning: "the partition (mutually exclusive, exhaustive routes)" },
           { symbol: "P(H_i)", meaning: "prior probability of route i" },
-          { symbol: "P(E\\mid H_i)", meaning: "probability of E along route i" },
+          { symbol: "\\(P(E\\mid H_i)\\)", meaning: "probability of E along route i" },
         ],
       },
       visualizationSlug: "probability-tree",
@@ -412,8 +412,8 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
           "P(H_k\\mid E) = \\dfrac{P(H_k)\\,P(E\\mid H_k)}{\\sum_{i} P(H_i)\\,P(E\\mid H_i)}",
         symbols: [
           { symbol: "P(H_k)", meaning: "prior — probability of cause k before the evidence" },
-          { symbol: "P(E\\mid H_k)", meaning: "likelihood — how well cause k predicts the evidence E" },
-          { symbol: "P(H_k\\mid E)", meaning: "posterior — probability of cause k after seeing E" },
+          { symbol: "\\(P(E\\mid H_k)\\)", meaning: "likelihood — how well cause k predicts the evidence E" },
+          { symbol: "\\(P(H_k\\mid E)\\)", meaning: "posterior — probability of cause k after seeing E" },
         ],
       },
       visualizationSlug: "probability-tree",

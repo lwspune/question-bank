@@ -122,8 +122,8 @@ export const CIRCULAR_NOTE: SubtopicNote = {
         label: "Average acceleration over half a circle",
         latex: "\\bar{a} = \\dfrac{|\\Delta \\vec{v}|}{\\Delta t} = \\dfrac{2v}{\\pi r / v} = \\dfrac{2v^2}{\\pi r}",
         symbols: [
-          { symbol: "\\Delta \\vec{v}", meaning: "vector change in velocity (= 2v over half a circle)" },
-          { symbol: "\\Delta t", meaning: "time for the half circle (= πr/v)" },
+          { symbol: "\\(\\Delta \\vec{v}\\)", meaning: "vector change in velocity (= 2v over half a circle)" },
+          { symbol: "\\(\\Delta t\\)", meaning: "time for the half circle (= πr/v)" },
           { symbol: "v", meaning: "constant speed" },
         ],
       },

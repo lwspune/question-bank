@@ -107,9 +107,9 @@ export const ACID_BASE_THEORIES_NOTE: SubtopicNote = {
         label: "Conjugate base from an acid",
         latex: "\\text{Acid} \\;\\rightleftharpoons\\; \\text{Conjugate base} + \\text{H}^+",
         symbols: [
-          { symbol: "\\text{Acid}", meaning: "proton donor (the species with the extra H+)" },
-          { symbol: "\\text{Conjugate base}", meaning: "what remains after the acid loses one H+" },
-          { symbol: "\\text{H}^+", meaning: "the single proton that distinguishes the pair" },
+          { symbol: "\\(\\text{Acid}\\)", meaning: "proton donor (the species with the extra H+)" },
+          { symbol: "\\(\\text{Conjugate base}\\)", meaning: "what remains after the acid loses one H+" },
+          { symbol: "\\(\\text{H}^+\\)", meaning: "the single proton that distinguishes the pair" },
         ],
       },
       pyqExampleId: "ed5b1dc0-faa0-4046-b889-ff30d45161ad", // conjugate base of HClO4 -> ClO4-

@@ -86,7 +86,7 @@ export const THERMODYNAMIC_PROCESSES_NOTE: SubtopicNote = {
         label: "First law of thermodynamics",
         latex: "\\Delta U = Q - W",
         symbols: [
-          { symbol: "\\Delta U", meaning: "change in internal energy" },
+          { symbol: "\\(\\Delta U\\)", meaning: "change in internal energy" },
           { symbol: "Q", meaning: "heat supplied to the system" },
           { symbol: "W", meaning: "work done BY the system" },
         ],

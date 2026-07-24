@@ -26,8 +26,8 @@ export const SIMPLE_MACHINES_NOTE: SubtopicNote = {
         latex: "MA = \\dfrac{\\text{load}}{\\text{effort}} = \\dfrac{\\text{effort arm}}{\\text{load arm}}",
         symbols: [
           { symbol: "MA", meaning: "mechanical advantage (no units)" },
-          { symbol: "\\text{effort arm}", meaning: "distance from fulcrum to effort (m)" },
-          { symbol: "\\text{load arm}", meaning: "distance from fulcrum to load (m)" },
+          { symbol: "\\(\\text{effort arm}\\)", meaning: "distance from fulcrum to effort (m)" },
+          { symbol: "\\(\\text{load arm}\\)", meaning: "distance from fulcrum to load (m)" },
         ],
       },
       authoredExample: {

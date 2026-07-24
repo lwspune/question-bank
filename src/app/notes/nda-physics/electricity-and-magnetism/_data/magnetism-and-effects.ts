@@ -178,7 +178,7 @@ export const MAGNETISM_AND_EFFECTS_NOTE: SubtopicNote = {
           { symbol: "B", meaning: "magnetic field (tesla)" },
           { symbol: "I", meaning: "current in the wire (A)" },
           { symbol: "r", meaning: "perpendicular distance from the wire (m)" },
-          { symbol: "\\mu_0", meaning: "permeability of free space" },
+          { symbol: "\\(\\mu_0\\)", meaning: "permeability of free space" },
         ],
       },
       authoredExample: {

@@ -30,7 +30,7 @@ export const DERIVATIVE_WRT_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "u = f(x)", meaning: "the function being differentiated (the 'top')" },
           { symbol: "v = g(x)", meaning: "the function we differentiate with respect to (the 'bottom')" },
-          { symbol: "dv/dx \\neq 0", meaning: "ratio is undefined where the bottom's derivative vanishes" },
+          { symbol: "\\(dv/dx \\neq 0\\)", meaning: "ratio is undefined where the bottom's derivative vanishes" },
         ],
       },
       authoredExample: {

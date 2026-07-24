@@ -33,7 +33,7 @@ export const WAVE_EQUATION_AND_BANDS_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "v", meaning: "wave speed (m/s)" },
           { symbol: "f", meaning: "frequency (Hz)" },
-          { symbol: "\\lambda", meaning: "wavelength (m)" },
+          { symbol: "\\(\\lambda\\)", meaning: "wavelength (m)" },
         ],
       },
       authoredExample: {
@@ -95,9 +95,9 @@ export const WAVE_EQUATION_AND_BANDS_NOTE: SubtopicNote = {
         label: "Speed of sound in an ideal gas",
         latex: "v = \\sqrt{\\dfrac{\\gamma P}{\\rho}} = \\sqrt{\\dfrac{\\gamma R T}{M}}",
         symbols: [
-          { symbol: "\\gamma", meaning: "adiabatic index (\\(C_p/C_v\\))" },
+          { symbol: "\\(\\gamma\\)", meaning: "adiabatic index (\\(C_p/C_v\\))" },
           { symbol: "P", meaning: "pressure (Pa)" },
-          { symbol: "\\rho", meaning: "density (kg/m^3)" },
+          { symbol: "\\(\\rho\\)", meaning: "density (kg/m^3)" },
           { symbol: "T", meaning: "absolute temperature (K)" },
           { symbol: "M", meaning: "molar mass (kg/mol)" },
         ],

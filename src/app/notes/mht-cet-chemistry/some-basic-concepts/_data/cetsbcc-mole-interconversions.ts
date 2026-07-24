@@ -31,7 +31,7 @@ export const MOLE_INTERCONVERSIONS_NOTE: SubtopicNote = {
           { symbol: "V_1", meaning: "volume of one particle" },
           { symbol: "M", meaning: "molar mass (g/mol)" },
           { symbol: "N_A", meaning: "Avogadro's number, \\(6.022 \\times 10^{23}\\)" },
-          { symbol: "\\rho", meaning: "density" },
+          { symbol: "\\(\\rho\\)", meaning: "density" },
         ],
       },
       pyqExampleId: "5e97cb48-673d-469b-a7fa-eb8dd30abe2a", // mass in g of 1 atom of a 10 u element
@@ -400,7 +400,7 @@ export const MOLE_INTERCONVERSIONS_NOTE: SubtopicNote = {
         latex: "M = 2 \\times \\text{V.D.}",
         symbols: [
           { symbol: "M", meaning: "molar mass (g/mol)" },
-          { symbol: "\\text{V.D.}", meaning: "vapour density (relative to H2)" },
+          { symbol: "\\(\\text{V.D.}\\)", meaning: "vapour density (relative to H2)" },
         ],
       },
       pyqExampleId: "cc044b12-ef50-41a2-acbe-b5aa5d36b35d", // VD=16, 8 g -> 5.6 dm3

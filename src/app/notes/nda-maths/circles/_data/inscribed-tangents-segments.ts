@@ -180,7 +180,7 @@ export const INSCRIBED_TANGENTS_SEGMENTS_NOTE: SubtopicNote = {
         latex: "A_{\\text{minor}} = \\tfrac{a^2}{2}\\,(\\theta - \\sin\\theta)",
         symbols: [
           { symbol: "a", meaning: "radius" },
-          { symbol: "\\theta", meaning: "central angle (radians)" },
+          { symbol: "\\(\\theta\\)", meaning: "central angle (radians)" },
         ],
       },
       authoredExample: {

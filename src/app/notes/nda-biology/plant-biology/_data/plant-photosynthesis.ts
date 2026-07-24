@@ -25,10 +25,10 @@ export const PLANT_PHOTOSYNTHESIS_NOTE: SubtopicNote = {
         label: "Overall photosynthesis equation",
         latex: "6\\,\\text{CO}_2 + 6\\,\\text{H}_2\\text{O} \\xrightarrow{\\text{light, chlorophyll}} \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6\\,\\text{O}_2",
         symbols: [
-          { symbol: "\\text{CO}_2", meaning: "carbon dioxide — the carbon source (a requirement)" },
-          { symbol: "\\text{H}_2\\text{O}", meaning: "water — the hydrogen source (a requirement)" },
-          { symbol: "\\text{C}_6\\text{H}_{12}\\text{O}_6", meaning: "glucose — the food made (a product)" },
-          { symbol: "\\text{O}_2", meaning: "oxygen — released (a PRODUCT, never a requirement)" },
+          { symbol: "\\(\\text{CO}_2\\)", meaning: "carbon dioxide — the carbon source (a requirement)" },
+          { symbol: "\\(\\text{H}_2\\text{O}\\)", meaning: "water — the hydrogen source (a requirement)" },
+          { symbol: "\\(\\text{C}_6\\text{H}_{12}\\text{O}_6\\)", meaning: "glucose — the food made (a product)" },
+          { symbol: "\\(\\text{O}_2\\)", meaning: "oxygen — released (a PRODUCT, never a requirement)" },
         ],
       },
       visualizationSlug: "plant-photosynthesis-flow",
@@ -89,8 +89,8 @@ export const PLANT_PHOTOSYNTHESIS_NOTE: SubtopicNote = {
         label: "Photolysis of water (the source of O₂)",
         latex: "2\\,\\text{H}_2\\text{O} \\xrightarrow{\\text{light}} 4\\text{H}^+ + 4e^- + \\text{O}_2",
         symbols: [
-          { symbol: "\\text{H}_2\\text{O}", meaning: "water — the molecule that is split" },
-          { symbol: "\\text{O}_2", meaning: "oxygen released — sourced from water, not CO₂" },
+          { symbol: "\\(\\text{H}_2\\text{O}\\)", meaning: "water — the molecule that is split" },
+          { symbol: "\\(\\text{O}_2\\)", meaning: "oxygen released — sourced from water, not CO₂" },
         ],
       },
       authoredExample: {

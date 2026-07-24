@@ -392,7 +392,7 @@ export const GROWTH_DECAY_MODELS_NOTE: SubtopicNote = {
         label: "Square-root and surface-area models",
         latex: "\\dfrac{dx}{dt} = -k\\sqrt{x} \\Rightarrow 2\\sqrt{x} = -kt + c; \\qquad \\dfrac{dV}{dt} = -kS \\Rightarrow \\dfrac{dr}{dt} = -k",
         symbols: [
-          { symbol: "2\\sqrt{x} = -kt+c", meaning: "the integrated square-root law — linear in \\(\\sqrt{x}\\)" },
+          { symbol: "\\(2\\sqrt{x} = -kt+c\\)", meaning: "the integrated square-root law — linear in \\(\\sqrt{x}\\)" },
           { symbol: "dr/dt = -k", meaning: "surface-area evaporation ⇒ radius shrinks at a constant rate" },
         ],
       },

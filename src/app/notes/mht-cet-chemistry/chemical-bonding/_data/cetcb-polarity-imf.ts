@@ -29,7 +29,7 @@ export const POLARITY_IMF_NOTE: SubtopicNote = {
         label: "Dipole moment",
         latex: "\\mu = q \\times d",
         symbols: [
-          { symbol: "\\mu", meaning: "dipole moment (debye, D)" },
+          { symbol: "\\(\\mu\\)", meaning: "dipole moment (debye, D)" },
           { symbol: "q", meaning: "magnitude of the separated charge" },
           { symbol: "d", meaning: "distance between the positive and negative charge centres" },
         ],

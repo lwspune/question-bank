@@ -202,9 +202,9 @@ export const HYBRIDIZATION_NOTE: SubtopicNote = {
         label: "Steric number",
         latex: "\\text{SN} = (\\sigma\\text{-bonded atoms}) + (\\text{lone pairs on central atom})",
         symbols: [
-          { symbol: "\\text{SN}", meaning: "steric number, which fixes the hybridization" },
-          { symbol: "\\sigma\\text{-bonded atoms}", meaning: "atoms directly bonded (each multiple bond counts once)" },
-          { symbol: "\\text{lone pairs}", meaning: "non-bonding electron pairs on the central atom" },
+          { symbol: "\\(\\text{SN}\\)", meaning: "steric number, which fixes the hybridization" },
+          { symbol: "\\(\\sigma\\text{-bonded atoms}\\)", meaning: "atoms directly bonded (each multiple bond counts once)" },
+          { symbol: "\\(\\text{lone pairs}\\)", meaning: "non-bonding electron pairs on the central atom" },
         ],
       },
       pyqExampleId: "ea41fd10-5e5e-414c-81e7-085cfa7fab28", // H2O central atom sp3

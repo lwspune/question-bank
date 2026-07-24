@@ -27,7 +27,7 @@ export const KA_KB_NOTE: SubtopicNote = {
         label: "Percent dissociation and alpha from Ka",
         latex: "\\text{\\% dissociation} = \\alpha \\times 100 \\qquad \\alpha = \\sqrt{\\dfrac{K_a}{c}}",
         symbols: [
-          { symbol: "\\alpha", meaning: "degree of dissociation (fraction ionised, 0 to 1)" },
+          { symbol: "\\(\\alpha\\)", meaning: "degree of dissociation (fraction ionised, 0 to 1)" },
           { symbol: "K_a", meaning: "acid dissociation constant" },
           { symbol: "c", meaning: "initial molar concentration of the acid" },
         ],
@@ -94,7 +94,7 @@ export const KA_KB_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "K_a, K_b", meaning: "acid / base dissociation constant" },
           { symbol: "c", meaning: "initial molar concentration" },
-          { symbol: "\\alpha", meaning: "degree of dissociation" },
+          { symbol: "\\(\\alpha\\)", meaning: "degree of dissociation" },
         ],
       },
       pyqExampleId: "0fe08e53-9342-45d8-b6e7-24640bc519eb", // 2% base in 0.1 M -> Kb = 4e-5
@@ -157,10 +157,10 @@ export const KA_KB_NOTE: SubtopicNote = {
         label: "Hydrogen / hydroxide ion concentration",
         latex: "[\\text{H}^+] = c\\alpha = \\sqrt{K_a\\,c} \\qquad [\\text{OH}^-] = c\\alpha = \\sqrt{K_b\\,c}",
         symbols: [
-          { symbol: "[\\text{H}^+]", meaning: "hydrogen (hydronium) ion concentration" },
-          { symbol: "[\\text{OH}^-]", meaning: "hydroxide ion concentration" },
+          { symbol: "\\([\\text{H}^+]\\)", meaning: "hydrogen (hydronium) ion concentration" },
+          { symbol: "\\([\\text{OH}^-]\\)", meaning: "hydroxide ion concentration" },
           { symbol: "c", meaning: "initial concentration of acid / base" },
-          { symbol: "\\alpha", meaning: "degree of dissociation" },
+          { symbol: "\\(\\alpha\\)", meaning: "degree of dissociation" },
           { symbol: "K_a, K_b", meaning: "dissociation constant" },
         ],
       },

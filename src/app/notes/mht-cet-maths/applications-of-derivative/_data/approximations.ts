@@ -207,7 +207,7 @@ export const APPROXIMATIONS_NOTE: SubtopicNote = {
         latex: "\\dfrac{d}{dx}\\log_{10} x = \\dfrac{0.4343}{x}, \\qquad \\dfrac{d}{dx}a^x = a^x \\log a",
         symbols: [
           { symbol: "0.4343", meaning: "\\(\\log_{10} e\\) — the base-conversion factor for a base-10 log" },
-          { symbol: "\\log a", meaning: "natural log of the base, in the exponential derivative" },
+          { symbol: "\\(\\log a\\)", meaning: "natural log of the base, in the exponential derivative" },
         ],
       },
       authoredExample: {

@@ -223,8 +223,8 @@ export const CLASSICAL_PROBABILITY_NOTE: SubtopicNote = {
         latex:
           "P(A\\cup B) = P(A) + P(B) - P(A\\cap B),\\qquad P(\\text{exactly one}) = P(A\\cup B) - P(A\\cap B)",
         symbols: [
-          { symbol: "P(A\\cup B)", meaning: "probability that A or B (or both) occurs" },
-          { symbol: "P(A\\cap B)", meaning: "probability that both occur (the overlap)" },
+          { symbol: "\\(P(A\\cup B)\\)", meaning: "probability that A or B (or both) occurs" },
+          { symbol: "\\(P(A\\cap B)\\)", meaning: "probability that both occur (the overlap)" },
           { symbol: "P(A')", meaning: "complement, \\(1 - P(A)\\)" },
         ],
       },

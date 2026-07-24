@@ -29,7 +29,7 @@ export const PARAMETRIC_HIGHER_NOTE: SubtopicNote = {
         latex: "\\dfrac{dy}{dx} = \\dfrac{\\,dy/dt\\,}{\\,dx/dt\\,}, \\qquad \\dfrac{dx}{dt} \\neq 0",
         symbols: [
           { symbol: "t", meaning: "the parameter (often \\(\\theta\\)) linking \\(x\\) and \\(y\\)" },
-          { symbol: "dx/dt \\neq 0", meaning: "needed so the slope is defined" },
+          { symbol: "\\(dx/dt \\neq 0\\)", meaning: "needed so the slope is defined" },
         ],
       },
       authoredExample: {
@@ -271,7 +271,7 @@ export const PARAMETRIC_HIGHER_NOTE: SubtopicNote = {
         latex: "\\dfrac{d^n}{dx^n}\\big(\\sin(ax+b)\\big) = a^n \\sin\\!\\left(ax+b+\\dfrac{n\\pi}{2}\\right)",
         symbols: [
           { symbol: "a^n", meaning: "the coefficient \\(a\\) factors out once per differentiation" },
-          { symbol: "n\\pi/2", meaning: "each derivative advances the phase by a quarter-turn" },
+          { symbol: "\\(n\\pi/2\\)", meaning: "each derivative advances the phase by a quarter-turn" },
         ],
       },
       authoredExample: {

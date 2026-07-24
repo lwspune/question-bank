@@ -194,10 +194,10 @@ export const TEMPERATURE_AND_THERMOMETRY_NOTE: SubtopicNote = {
         latex:
           "\\Delta L = L\\alpha\\,\\Delta\\theta \\qquad \\beta = 2\\alpha \\qquad \\gamma = 3\\alpha = \\tfrac{3}{2}\\beta",
         symbols: [
-          { symbol: "\\alpha", meaning: "linear expansion coefficient" },
-          { symbol: "\\beta", meaning: "areal (superficial) expansion coefficient" },
-          { symbol: "\\gamma", meaning: "volume (cubical) expansion coefficient" },
-          { symbol: "\\Delta\\theta", meaning: "rise in temperature" },
+          { symbol: "\\(\\alpha\\)", meaning: "linear expansion coefficient" },
+          { symbol: "\\(\\beta\\)", meaning: "areal (superficial) expansion coefficient" },
+          { symbol: "\\(\\gamma\\)", meaning: "volume (cubical) expansion coefficient" },
+          { symbol: "\\(\\Delta\\theta\\)", meaning: "rise in temperature" },
         ],
       },
       authoredExample: {
@@ -251,8 +251,8 @@ export const TEMPERATURE_AND_THERMOMETRY_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "T", meaning: "time period of the pendulum" },
           { symbol: "L", meaning: "length of the pendulum rod" },
-          { symbol: "\\gamma_{\\text{real}}", meaning: "true volume expansion of the liquid" },
-          { symbol: "\\gamma_{\\text{apparent}}", meaning: "observed expansion (uncorrected)" },
+          { symbol: "\\(\\gamma_{\\text{real}}\\)", meaning: "true volume expansion of the liquid" },
+          { symbol: "\\(\\gamma_{\\text{apparent}}\\)", meaning: "observed expansion (uncorrected)" },
         ],
       },
       authoredExample: {

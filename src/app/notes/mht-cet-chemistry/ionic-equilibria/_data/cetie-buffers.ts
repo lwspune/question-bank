@@ -126,9 +126,9 @@ export const BUFFERS_NOTE: SubtopicNote = {
         label: "Henderson-Hasselbalch (acidic buffer)",
         latex: "\\text{pH} = pK_a + \\log\\dfrac{[\\text{salt}]}{[\\text{acid}]}",
         symbols: [
-          { symbol: "pK_a", meaning: "acid dissociation exponent, = -\\log K_a" },
-          { symbol: "[\\text{salt}]", meaning: "concentration of the conjugate base (the salt)" },
-          { symbol: "[\\text{acid}]", meaning: "concentration of the weak acid" },
+          { symbol: "pK_a", meaning: "acid dissociation exponent, \\(= -\\log K_a\\)" },
+          { symbol: "\\([\\text{salt}]\\)", meaning: "concentration of the conjugate base (the salt)" },
+          { symbol: "\\([\\text{acid}]\\)", meaning: "concentration of the weak acid" },
         ],
       },
       pyqExampleId: "6b04dd58-547b-48c2-8d9f-58f39f4eb58c", // 0.01 M acid, 0.02 M salt, pKa 4.680 -> 4.981
@@ -206,7 +206,7 @@ export const BUFFERS_NOTE: SubtopicNote = {
         latex: "[\\text{salt}] = [\\text{acid}] \\;\\Rightarrow\\; \\text{pH} = pK_a = -\\log K_a",
         symbols: [
           { symbol: "K_a", meaning: "acid dissociation constant of the weak acid" },
-          { symbol: "pK_a", meaning: "= -\\log K_a" },
+          { symbol: "pK_a", meaning: "\\(= -\\log K_a\\)" },
         ],
       },
       pyqExampleId: "1e22cd8b-ccd1-425b-84a0-bc336ddc5571", // equal conc, Ka=1.8e-5 -> pH = pKa = 4.7447
@@ -275,9 +275,9 @@ export const BUFFERS_NOTE: SubtopicNote = {
         label: "Henderson-Hasselbalch (basic buffer)",
         latex: "\\text{pOH} = pK_b + \\log\\dfrac{[\\text{salt}]}{[\\text{base}]} \\qquad \\text{pH} = 14 - \\text{pOH}",
         symbols: [
-          { symbol: "pK_b", meaning: "base dissociation exponent, = -\\log K_b" },
-          { symbol: "[\\text{salt}]", meaning: "concentration of the salt (conjugate acid)" },
-          { symbol: "[\\text{base}]", meaning: "concentration of the weak base" },
+          { symbol: "pK_b", meaning: "base dissociation exponent, \\(= -\\log K_b\\)" },
+          { symbol: "\\([\\text{salt}]\\)", meaning: "concentration of the salt (conjugate acid)" },
+          { symbol: "\\([\\text{base}]\\)", meaning: "concentration of the weak base" },
         ],
       },
       pyqExampleId: "f80479eb-e176-4efb-aa1f-b4520e4d3592", // 0.4 M NH4OH, 0.5 M NH4Cl, pKb 4.730 -> pOH 4.83

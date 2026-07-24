@@ -1,13 +1,18 @@
 /**
  * One-shot LaTeX audit of the /notes editorial content. Read-only.
- * Walks every SubtopicNote in NOTES_CHAPTERS and reports three failure modes:
+ * Walks every SubtopicNote in NOTES_CHAPTERS and reports four modes (1–3 fail
+ * the gate; 4 is informational):
  *   1. LaTeX markup in PLAIN-TEXT fields (title, oneLineDefinition,
  *      whyItMatters, concept.name, formula.label) — these don't go through
  *      KatexRenderer, so any \(...\) or \command leaks as raw markup + into
  *      SEO metadata.
  *   2. Unbalanced \(...\) or \[...\] delimiters in KaTeX fields — breaks the
  *      segmenter.
- *   3. Non-ASCII characters inside KaTeX fields — inventory, so we can spot
+ *   3. A bare LaTeX macro in a formula symbol/meaning legend — FormulaBlock
+ *      hands those to KatexRenderer RAW (no \[...\] auto-wrap like formula.latex
+ *      gets), so a macro outside a \(...\) zone renders as literal markup
+ *      (e.g. "\det A"). Delimiter-balance can't see it (zero delimiters).
+ *   4. Non-ASCII characters inside KaTeX fields — inventory, so we can spot
  *      unicode math (°, ×, ≤, →, …) that may render inconsistently.
  */
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
@@ -16,7 +21,25 @@ type Hit = { where: string; detail: string };
 
 const plainLeaks: Hit[] = [];
 const delimImbalance: Hit[] = [];
+const unwrappedMacro: Hit[] = [];
 const unicodeCounts = new Map<string, { count: number; sample: string }>();
+
+// A formula's symbol/meaning legend (FormulaBlock) hands the string to
+// KatexRenderer RAW — no auto-wrapping like formula.latex gets — so any LaTeX
+// macro must sit inside a \(...\) / \[...\] zone or it renders as literal
+// markup (e.g. a bare "\det A" printed verbatim). Delimiter-balance can't catch
+// this (a bare macro has zero delimiters = "balanced"), so check it directly.
+const MATH_ZONE = /\\\(.*?\\\)|\\\[.*?\\\]/gs;
+function checkUnwrapped(where: string, s: string | undefined) {
+  if (!s) return;
+  const residual = s.replace(/\\\\/g, " ").replace(MATH_ZONE, " ");
+  const m = residual.match(/\\[a-zA-Z]+/);
+  if (m)
+    unwrappedMacro.push({
+      where,
+      detail: `${m[0]} not wrapped in \\(...\\) :: ${s.slice(0, 80)}`,
+    });
+}
 
 const hasLatexMarkup = (s: string) => /\\\(|\\\)|\\\[|\\\]|\\[a-zA-Z]/.test(s);
 // Plain-text fields render raw (no KatexRenderer / RichText), so Markdown
@@ -92,6 +115,9 @@ for (const chapter of NOTES_CHAPTERS) {
         for (const sym of c.formula?.symbols ?? []) {
           katexFields.push([`${cb}.formula.symbol`, sym.symbol]);
           katexFields.push([`${cb}.formula.meaning`, sym.meaning]);
+          // symbol/meaning render raw (no auto-\[...\] wrap) — bare macros leak
+          checkUnwrapped(`${cb}.formula.symbol`, sym.symbol);
+          checkUnwrapped(`${cb}.formula.meaning`, sym.meaning);
         }
         const ex = c.authoredExample;
         katexFields.push([`${cb}.authored.prompt`, ex.prompt]);
@@ -149,7 +175,11 @@ console.log(`\n=== 2. Unbalanced KaTeX delimiters (${delimImbalance.length}) ===
 for (const h of delimImbalance) console.log(`  [IMBALANCE] ${h.where}: ${h.detail}`);
 if (delimImbalance.length === 0) console.log("  none");
 
-console.log(`\n=== 3. Non-ASCII chars in KaTeX fields (${unicodeCounts.size} distinct) ===`);
+console.log(`\n=== 3. Unwrapped LaTeX macros in symbol/meaning legend (${unwrappedMacro.length}) ===`);
+for (const h of unwrappedMacro) console.log(`  [UNWRAPPED] ${h.where}: ${h.detail}`);
+if (unwrappedMacro.length === 0) console.log("  none");
+
+console.log(`\n=== 4. Non-ASCII chars in KaTeX fields (${unicodeCounts.size} distinct) ===`);
 const sorted = [...unicodeCounts.entries()].sort((a, b) => b[1].count - a[1].count);
 for (const [ch, { count, sample }] of sorted) {
   const code = "U+" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0");
@@ -159,10 +189,10 @@ console.log(
   "  (Non-ASCII in prose between math zones is fine — these are informational.)"
 );
 
-// Sections 1 + 2 are real defects; section 3 is informational only.
-if (plainLeaks.length > 0 || delimImbalance.length > 0) {
+// Sections 1 + 2 + 3 are real defects that fail the gate; 4 is informational.
+if (plainLeaks.length > 0 || delimImbalance.length > 0 || unwrappedMacro.length > 0) {
   console.error(
-    `\nnotes-latex: FAIL — ${plainLeaks.length} plain-text leak(s), ${delimImbalance.length} delimiter imbalance(s).`
+    `\nnotes-latex: FAIL — ${plainLeaks.length} plain-text leak(s), ${delimImbalance.length} delimiter imbalance(s), ${unwrappedMacro.length} unwrapped-macro leak(s).`
   );
   process.exit(1);
 }

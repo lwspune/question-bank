@@ -128,7 +128,7 @@ export const GRAVITATION_ORBITS_KEPLER_ESCAPE_NOTE: SubtopicNote = {
         symbols: [
           { symbol: "v_e", meaning: "escape velocity from the surface" },
           { symbol: "M, R", meaning: "planet's mass and radius" },
-          { symbol: "\\rho", meaning: "planet's mean density" },
+          { symbol: "\\(\\rho\\)", meaning: "planet's mean density" },
         ],
       },
       authoredExample: {
@@ -188,7 +188,7 @@ export const GRAVITATION_ORBITS_KEPLER_ESCAPE_NOTE: SubtopicNote = {
         label: "Orbit is sustained by gravity alone",
         latex: "F_{\\text{gravity}} = \\dfrac{GMm}{R^2} = \\dfrac{mv_o^2}{R} \\;\\Rightarrow\\; \\text{no propulsion needed}",
         symbols: [
-          { symbol: "F_{\\text{gravity}}", meaning: "gravitational pull = the centripetal force" },
+          { symbol: "\\(F_{\\text{gravity}}\\)", meaning: "gravitational pull = the centripetal force" },
           { symbol: "v_o", meaning: "orbital speed" },
         ],
       },
