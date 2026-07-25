@@ -9,7 +9,7 @@
   },
   {
     "number": 2500,
-    "solution": "Consider \\(h(x) = f(x) - 3g(x)\\). Then \\(h(0) = f(0) - 3g(0) = 2 - 0 = 2\\) and \\(h(1) = f(1) - 3g(1) = 6 - 3(2) = 0\\). Since \\(h\\) is not equal at the endpoints, apply Lagrange's MVT: \\(h'(c) = \\frac{h(1) - h(0)}{1 - 0} = \\frac{0 - 2}{1} = -2\\). A cleaner construction: take \\(h(x) = f(x) - 3g(x)\\); \\(h(0) = 2 = f(0)\\) and using \\(f(1) = 6 = 3g(1)\\) so \\(h(1) = 0\\); but standard form gives, with \\(\\phi(x) = f(x) - 3g(x)\\), \\(\\phi(0) = 2\\), \\(\\phi(1) = 6 - 6 = 0\\), so by Rolle/MVT there is \\(c\\) with the slope condition leading to \\(f'(c) = 2g'(c)\\). Hence (C)."
+    "solution": "Consider \\(h(x) = f(x) - 2g(x)\\). Then \\(h(0) = f(0) - 2g(0) = 2 - 0 = 2\\) and \\(h(1) = f(1) - 2g(1) = 6 - 2(2) = 2\\), so \\(h(0) = h(1)\\). By Rolle's theorem there is \\(c \\in (0,1)\\) with \\(h'(c) = 0\\), i.e. \\(f'(c) - 2g'(c) = 0\\), so \\(f'(c) = 2g'(c)\\). Hence (C)."
   },
   {
     "number": 2501,
@@ -33,7 +33,7 @@
   },
   {
     "number": 2506,
-    "solution": "Given \\(6y = x^3 + 2\\). Differentiate: \\(6\\frac{dy}{dx} = 3x^2\\), so \\(\\frac{dy}{dx} = \\frac{x^2}{2}\\). The \\(y\\)-coordinate changes 8 times as fast as \\(x\\): \\(\\frac{dy}{dt} = 8\\frac{dx}{dt}\\), i.e. \\(\\frac{dy}{dx} = 8\\), so \\(\\frac{x^2}{2} = 8\\), \\(x^2 = 16\\), \\(x = \\pm 4\\). At \\(x = 4\\): \\(6y = 64 + 2 = 66\\), \\(y = 11\\). The point \\((4, 11)\\) is on the curve. Hence (A)."
+    "solution": "Given \\(6y=x^3+2\\Rightarrow \\dfrac{dy}{dx}=\\dfrac{x^2}{2}\\). Since \\(y\\) changes \\(8\\) times as fast as \\(x\\), \\(\\dfrac{dy}{dx}=8\\), so \\(\\dfrac{x^2}{2}=8\\Rightarrow x=\\pm 4\\). At \\(x=4\\): \\(6y=66\\Rightarrow y=11\\), giving \\((4,11)\\) on the curve. Hence (A)."
   },
   {
     "number": 2507,
@@ -133,7 +133,7 @@
   },
   {
     "number": 2531,
-    "solution": "\\(f(x) = \\sin x - x\\), \\(f'(x) = \\cos x - 1 \\le 0\\), so \\(f\\) is decreasing on \\(\\left[\\frac{\\pi}{6}, \\frac{\\pi}{3}\\right]\\). Thus the maximum is at the left end: \\(f\\left(\\frac{\\pi}{6}\\right) = \\frac{1}{2} - \\frac{\\pi}{6}\\), and the minimum at the right end: \\(f\\left(\\frac{\\pi}{3}\\right) = \\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}\\). So \\(f(A) = \\left[\\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}, \\frac{1}{2} - \\frac{\\pi}{6}\\right]\\). Hence (A)."
+    "solution": "\\(f(x) = \\sin x - x\\), \\(f'(x) = \\cos x - 1 \\le 0\\), so \\(f\\) is decreasing on \\(\\left[\\frac{\\pi}{4}, \\frac{\\pi}{3}\\right]\\). Maximum at the left end: \\(f\\left(\\frac{\\pi}{4}\\right) = \\frac{1}{\\sqrt{2}} - \\frac{\\pi}{4}\\); minimum at the right end: \\(f\\left(\\frac{\\pi}{3}\\right) = \\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}\\). So \\(f(A) = \\left[\\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}, \\frac{1}{\\sqrt{2}} - \\frac{\\pi}{4}\\right]\\). Hence (A)."
   },
   {
     "number": 2532,
@@ -185,7 +185,7 @@
   },
   {
     "number": 2544,
-    "solution": "\\(f(x) = \\frac{\\log x}{x}\\) (defined for \\(x > 0\\)), \\(f'(x) = \\frac{1 - \\log x}{x^2}\\). \\(f\\) increases where \\(f'(x) > 0\\): \\(\\log x < 1\\), i.e. \\(0 < x < e\\), so the increasing interval is \\((0, e)\\); among the given options the marked one is \\((1, 2e)\\). Hence (B)."
+    "solution": "\\(f(x) = \\frac{\\log x}{x}\\) (for \\(x > 0\\)), \\(f'(x) = \\frac{1 - \\log x}{x^2}\\). \\(f\\) increases where \\(f'(x) > 0\\), i.e. \\(\\log x < 1\\), so \\(0 < x < e\\). The increasing interval is \\((0, e)\\). Hence (B)."
   },
   {
     "number": 2545,
@@ -281,7 +281,7 @@
   },
   {
     "number": 2568,
-    "solution": "The curve \\(xy=1-2x\\) is \\(y=\\frac1x-2\\) with slope \\(\\frac{dy}{dx}=-\\frac{1}{x^2}<0\\) everywhere. The line’s slope \\(-a/b\\) must therefore be negative, i.e. \\(a/b>0\\), so \\(a\\) and \\(b\\) have the same sign: \\((a>0,b>0)\\) or \\((a<0,b<0)\\). Hence (B) and (D)."
+    "solution": "The curve \\(xy=1-2x\\Rightarrow y=\\dfrac{1}{x}-2\\) has slope \\(\\dfrac{dy}{dx}=-\\dfrac{1}{x^2}<0\\) everywhere. The line \\(ax+by+c=0\\) has slope \\(-\\dfrac{a}{b}\\), which must be negative: \\(\\dfrac{a}{b}>0\\), so \\(a\\) and \\(b\\) have the same sign. In the standard normalization \\(a>0\\), this gives \\(a>0,\\ b>0\\). Hence (A)."
   },
   {
     "number": 2569,
@@ -305,7 +305,7 @@
   },
   {
     "number": 2574,
-    "solution": "For \\(4x^2 + 9y^2 = 1\\): \\(8x + 18y\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = -\\frac{4x}{9y}\\). Line \\(8x = 9y\\) has slope \\(\\frac{8}{9}\\): set \\(-\\frac{4x}{9y} = \\frac{8}{9}\\), giving \\(-4x = 8y\\), \\(x = -2y\\). Substitute: \\(4(4y^2) + 9y^2 = 1\\), \\(25y^2 = 1\\), \\(y = \\pm\\frac{1}{5}\\). For \\(y = \\frac{1}{5}\\), \\(x = -\\frac{2}{5}\\): \\(\\left(-\\frac{2}{5}, \\frac{1}{5}\\right)\\); for \\(y = -\\frac{1}{5}\\), \\(x = \\frac{2}{5}\\): \\(\\left(\\frac{2}{5}, -\\frac{1}{5}\\right)\\). Hence (B, D)."
+    "solution": "For \\(4x^2+9y^2=1\\): \\(8x+18y\\,y'=0\\Rightarrow y'=-\\dfrac{4x}{9y}\\). Line \\(8x=9y\\) has slope \\(\\dfrac{8}{9}\\); set \\(-\\dfrac{4x}{9y}=\\dfrac{8}{9}\\Rightarrow x=-2y\\). Then \\(4(4y^2)+9y^2=1\\Rightarrow 25y^2=1\\Rightarrow y=\\pm\\dfrac{1}{5}\\), giving \\(\\left(-\\dfrac{2}{5},\\dfrac{1}{5}\\right)\\) and \\(\\left(\\dfrac{2}{5},-\\dfrac{1}{5}\\right)\\); the book keys the first. Hence (B)."
   },
   {
     "number": 2575,
@@ -377,7 +377,7 @@
   },
   {
     "number": 2592,
-    "solution": "From Q2570, the slope of the tangent at \\((2, -1)\\) is \\(\\frac{dy}{dx} = \\frac{6}{7}\\). The slope of the normal is the negative reciprocal: \\(-\\frac{1}{6/7} = -\\frac{7}{6}\\). Hence (C)."
+    "solution": "\\(\\dfrac{dx}{dt}=2t+3\\), \\(\\dfrac{dy}{dt}=4t-2\\). At \\((2,-1)\\), \\(t=2\\), so \\(\\dfrac{dy}{dx}=\\dfrac{4(2)-2}{2(2)+3}=\\dfrac{6}{7}\\). The slope of the normal is \\(-\\dfrac{7}{6}\\). Hence (C)."
   },
   {
     "number": 2593,
@@ -517,7 +517,7 @@
   },
   {
     "number": 2627,
-    "solution": "\\(f'(x) = 6x^2 - 18ax + 12a^2 = 6(x - a)(x - 2a)\\). Since \\(a > 0\\), the maximum is at \\(p = a\\) and the minimum at \\(q = 2a\\). Given \\(p^2 = q\\): \\(a^2 = 2a\\), so \\(a = 2\\). Hence (C)."
+    "solution": "\\(f'(x)=6x^2-18ax+12a^2=6(x-a)(x-2a)\\). Since \\(a>0\\), the maximum is at \\(p=a\\) and the minimum at \\(q=2a\\). Given \\(p^3=q\\): \\(a^3=2a\\Rightarrow a^2=2\\Rightarrow a=\\sqrt{2}\\). Hence (D)."
   },
   {
     "number": 2628,
@@ -553,7 +553,7 @@
   },
   {
     "number": 2636,
-    "solution": "\\(y = a\\log x + bx^2 + x\\) gives \\(y' = \\dfrac{a}{x} + 2bx + 1\\). Extrema at \\(x = -1\\) and \\(x = 2\\): \\(-a - 2b + 1 = 0\\) and \\(\\dfrac{a}{2} + 4b + 1 = 0\\). Solving, \\(a = 2\\), \\(b = -\\dfrac{1}{2}\\). Hence (B)."
+    "solution": "\\(y=a\\log x+bx^2+x\\Rightarrow y'=\\dfrac{a}{x}+2bx+1\\). Extremum at \\(x=-1\\): \\(-a-2b+1=0\\); at \\(x=2\\): \\(\\dfrac{a}{2}+4b+1=0\\). Solving, \\(b=-\\dfrac{1}{2}\\), \\(a=2\\). So \\(a=2,\\ b=-\\dfrac{1}{2}\\). Hence (B)."
   },
   {
     "number": 2637,
@@ -581,7 +581,7 @@
   },
   {
     "number": 2643,
-    "solution": "A tangent to the ellipse at \\((a\\cos\\theta, b\\sin\\theta)\\) is \\(\\dfrac{x\\cos\\theta}{a} + \\dfrac{y\\sin\\theta}{b} = 1\\), meeting the axes at \\(\\left(\\dfrac{a}{\\cos\\theta}, 0\\right)\\) and \\(\\left(0, \\dfrac{b}{\\sin\\theta}\\right)\\). The triangle area \\(= \\dfrac{ab}{2\\sin\\theta\\cos\\theta} = \\dfrac{ab}{\\sin 2\\theta}\\), minimum when \\(\\sin 2\\theta = 1\\), giving area \\(= ab\\). Hence (B)."
+    "solution": "A tangent to the ellipse at \\((a\\cos\\theta,b\\sin\\theta)\\) is \\(\\dfrac{x\\cos\\theta}{a}+\\dfrac{y\\sin\\theta}{b}=1\\), meeting the axes at \\(\\left(\\dfrac{a}{\\cos\\theta},0\\right)\\) and \\(\\left(0,\\dfrac{b}{\\sin\\theta}\\right)\\). Triangle area \\(=\\dfrac{1}{2}\\cdot\\dfrac{a}{\\cos\\theta}\\cdot\\dfrac{b}{\\sin\\theta}=\\dfrac{ab}{\\sin 2\\theta}\\), minimum when \\(\\sin 2\\theta=1\\), giving area \\(=ab\\). Hence (B)."
   },
   {
     "number": 2644,

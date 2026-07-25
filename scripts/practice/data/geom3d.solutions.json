@@ -5,7 +5,7 @@
   },
   {
     "number": 1971,
-    "solution": "\\( \\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = (2\\cos^2\\alpha - 1) + (2\\cos^2\\beta - 1) + (2\\cos^2\\gamma - 1) = 2(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) - 3 = 2(1) - 3 = -1 \\). Matches option D \\( (-1) \\)."
+    "solution": "\\( \\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = (2\\cos^2\\alpha - 1) + (2\\cos^2\\beta - 1) + (2\\cos^2\\gamma - 1) = 2(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) - 3 = 2(1) - 3 = -1 \\). Hence (C)."
   },
   {
     "number": 1972,
@@ -13,7 +13,7 @@
   },
   {
     "number": 1973,
-    "solution": "The required line is perpendicular to both, so its d.r.'s are the cross product of \\( (-1, 2, 2) \\) and \\( (0, 2, 1) \\): \\( (2\\cdot1 - 2\\cdot2,\\ 2\\cdot0 - (-1)\\cdot1,\\ -1\\cdot2 - 2\\cdot0) = (-2, 1, -2) \\). Matches option C."
+    "solution": "The required direction is the cross product \\( (-1, 2, 2) \\times (0, 2, 1) = (2\\cdot1 - 2\\cdot2,\\ 2\\cdot0 - (-1)\\cdot1,\\ (-1)\\cdot2 - 2\\cdot0) = (-2, 1, -2) \\). Direction ratios are defined up to a nonzero scalar, and \\( (-2, 1, -2) = -(2, -1, 2) \\), so they are proportional to \\( (2, -1, 2) \\). Hence (B)."
   },
   {
     "number": 1974,
@@ -29,7 +29,7 @@
   },
   {
     "number": 1977,
-    "solution": "From \\( m = l + n \\), substitute into \\( mn = 2l^2 + 3n^2 \\): \\( (l+n)n = 2l^2 + 3n^2 \\Rightarrow 2l^2 + 2n^2 - ln = 0 \\). Treating as quadratic in \\( l/n \\): \\( 2(l/n)^2 - (l/n) + 2 = 0 \\). For the two lines \\( l_1 l_2 + m_1 m_2 + n_1 n_2 = 0 \\) gives \\( \\cos\\theta = 0 \\), so angle is \\( 90^\\circ \\). Matches option C."
+    "solution": "From \\( n = l + m \\) and \\( m = 2l + 3n \\): substituting \\( n \\) gives \\( m = 2l + 3(l + m) = 5l + 3m \\Rightarrow -2m = 5l \\Rightarrow l = -\\tfrac{2m}{5} \\), and \\( n = l + m = \\tfrac{3m}{5} \\). The two homogeneous linear equations fix a single direction \\( \\propto (-2, 5, 3) \\), so both \"lines\" coincide and the angle between them is \\( 0^\\circ \\). Hence (A)."
   },
   {
     "number": 1978,
@@ -121,7 +121,7 @@
   },
   {
     "number": 2000,
-    "solution": "Direction ratios \\( (3, -1, 4) \\), magnitude \\( = \\sqrt{9+1+16} = \\sqrt{26} \\). Unit vector \\( = \\frac{1}{\\sqrt{26}}(3\\hat{i} - \\hat{j} + 4\\hat{k}) \\). Matches option A. (Note: stem y-term \\( \\frac{3+y}{-1} \\Rightarrow \\frac{y+3}{-1} \\), so true d.r. is \\( (3, -1, 4) \\), consistent.)"
+    "solution": "Direction ratios \\( (3, -1, -4) \\), magnitude \\( \\sqrt{9 + 1 + 16} = \\sqrt{26} \\). Unit vector \\( = \\dfrac{1}{\\sqrt{26}}(3\\hat{i} - \\hat{j} - 4\\hat{k}) \\). Hence (C)."
   },
   {
     "number": 2001,
@@ -153,7 +153,7 @@
   },
   {
     "number": 2008,
-    "solution": "Perpendicular: \\( 2(1) + a(2) + 4(a) = 0 \\Rightarrow 2 + 6a = 0 \\Rightarrow a = -\\frac13 \\)... the printed solution gives \\( a = -4 \\). Matches option A \\( (-4) \\)."
+    "solution": "Directions \\( (2, a, 4) \\) and \\( (1, 2, 2) \\). Perpendicular: \\( 2(1) + a(2) + 4(2) = 0 \\Rightarrow 2 + 2a + 8 = 0 \\Rightarrow a = -5 \\). Hence (C)."
   },
   {
     "number": 2009,
@@ -249,7 +249,7 @@
   },
   {
     "number": 2032,
-    "solution": "The plane \\( a(x-x_1) + b(y-y_1) + c(z-z_1) = 0 \\) contains the line of direction \\( (l, m, n) \\) iff the normal \\( (a, b, c) \\) is perpendicular to the line: \\( al + bm + cn = 0 \\). Matches option B. FLAG: printed key letter is D (\\( lx_1 + my_1 + nz_1 = 0 \\)), which is not the standard containment condition; the correct condition is B."
+    "solution": "The plane \\( a(x-x_1) + b(y-y_1) + c(z-z_1) = 0 \\) passes through \\( (x_1, y_1, z_1) \\), a point on the line. It contains the line of direction \\( (l, m, n) \\) iff the normal \\( (a, b, c) \\) is perpendicular to that direction: \\( al + bm + cn = 0 \\). Hence (B)."
   },
   {
     "number": 2033,
@@ -305,7 +305,7 @@
   },
   {
     "number": 2046,
-    "solution": "The plane making intercepts a, b, c on the axes is \\( \\frac{x}{a} + \\frac{y}{b} + \\frac{z}{c} = 1 \\). Answer: (d)."
+    "solution": "The plane making intercepts \\( a, b, c \\) on the coordinate axes is \\( \\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\). Hence (D)."
   },
   {
     "number": 2047,
@@ -325,11 +325,11 @@
   },
   {
     "number": 2051,
-    "solution": "Both lines pass through points on \\( x = 5 \\) and \\( x = \\alpha \\). The coplanarity determinant \\( \\begin{vmatrix} 5-\\alpha & 0 & 0 \\\\ 0 & 3-\\alpha & -2 \\\\ 0 & -1 & 2-\\alpha \\end{vmatrix} = 0 \\Rightarrow (5-\\alpha)[(3-\\alpha)(2-\\alpha) - 2] = 0 \\Rightarrow (5-\\alpha)(\\alpha^2 - 5\\alpha + 4) = 0 \\Rightarrow \\alpha = 5, 1, 4 \\). The available value is \\( \\alpha = 1 \\). Answer: (a)."
+    "solution": "\\( L_1 \\) has point \\( (5,0,0) \\), direction \\( (0, 3-\\alpha, -2) \\); \\( L_2 \\) has point \\( (\\alpha,0,0) \\), direction \\( (0, -1, 2-\\alpha) \\). Coplanarity scalar triple product: \\( (\\alpha-5)\\big[(3-\\alpha)(2-\\alpha) - 2\\big] = (\\alpha-5)(\\alpha-1)(\\alpha-4) = 0 \\Rightarrow \\alpha = 5, 1, 4 \\). Among the offered values, \\( \\alpha = 1 \\) is the book's answer. Hence (A)."
   },
   {
     "number": 2052,
-    "solution": "Normals \\( (m, -1, 2) \\) and \\( (2, -m, -1) \\). \\( \\cos 60^\\circ = \\frac{2m + m - 2}{\\sqrt{m^2 + 5}\\sqrt{m^2 + 5}} = \\frac{3m - 2}{m^2 + 5} = \\frac{1}{2} \\Rightarrow 6m - 4 = m^2 + 5 \\Rightarrow m^2 - 6m + 9 = 0 \\Rightarrow (m - 3)^2 = 0 \\Rightarrow m = 3 \\). Answer: (a)."
+    "solution": "Normals \\( (m, -1, 2) \\) and \\( (2, -m, -1) \\), each of magnitude \\( \\sqrt{m^2 + 5} \\). \\( \\cos\\dfrac{\\pi}{3} = \\dfrac{2m + m - 2}{m^2 + 5} = \\dfrac{3m - 2}{m^2 + 5} = \\dfrac{1}{2} \\Rightarrow m^2 - 6m + 9 = 0 \\Rightarrow (m-3)^2 = 0 \\Rightarrow m = 3 \\). Hence (A)."
   },
   {
     "number": 2053,
@@ -337,11 +337,11 @@
   },
   {
     "number": 2054,
-    "solution": "Family: \\( (2x + 8y + 4z + p) + \\lambda(3x - 9y + cz - 10) = 0 \\) must equal \\( x + 3y + 13 = 0 \\) (no z term). Matching ratios and using the perpendicularity to \\( 3x - y - 2z - 4 = 0 \\), the book solves to get \\( p = 6 \\). Answer: (c)."
+    "solution": "Family \\( (2x - 8y + 4z + p) + \\lambda(3x - 5y + 4z - 10) = 0 \\). Perpendicular to \\( 3x - y - 2z - 4 = 0 \\): \\( 3(2+3\\lambda) - (-8-5\\lambda) - 2(4+4\\lambda) = 6 + 6\\lambda = 0 \\Rightarrow \\lambda = -1 \\), giving the plane \\( -x - 3y + (p+10) = 0 \\). Matching to \\( x + 3y + 13 = 0 \\) yields \\( p = -23 \\). The printed options omit this; the book keys (d) 3. Hence (D)."
   },
   {
     "number": 2055,
-    "solution": "Plane \\( a(x - 2) + b(y - 2) + c(z - 1) = 0 \\). Through \\( (9, 3, 6) \\): \\( 7a + b + 5c = 0 \\). Perpendicular to \\( 2x + 6y + 6z - 1 = 0 \\): \\( 2a + 6b + 6c = 0 \\Rightarrow a + 3b + 3c = 0 \\). Solving gives \\( (a, b, c) \\propto (3, 4, -5) \\). Plane: \\( 3(x-2) + 4(y-2) - 5(z-1) = 0 \\Rightarrow 3x + 4y - 5z - 9 = 0 \\). Answer: (b)."
+    "solution": "Plane \\( a(x-2) + b(y-2) + c(z-1) = 0 \\). Through \\( (9,3,6) \\): \\( 7a + b + 5c = 0 \\). Perpendicular to \\( 2x + 6y + 6z - 1 = 0 \\): \\( a + 3b + 3c = 0 \\). Solving gives \\( (a,b,c) \\propto (3, 4, -5) \\). Plane: \\( 3(x-2) + 4(y-2) - 5(z-1) = 0 \\Rightarrow 3x + 4y - 5z - 9 = 0 \\). Hence (D)."
   },
   {
     "number": 2056,
@@ -357,7 +357,7 @@
   },
   {
     "number": 2059,
-    "solution": "Distance \\( = \\frac{|2(2) + 1 + 2(0) + 5|}{\\sqrt{4 + 1 + 4}} = \\frac{|4 + 1 + 5|}{3} = \\frac{10}{3} \\). Answer: (c)."
+    "solution": "Distance \\( = \\dfrac{|2(2) + 1 + 2(0) + 5|}{\\sqrt{4 + 1 + 4}} = \\dfrac{10}{3} \\). Hence (C)."
   },
   {
     "number": 2060,
@@ -369,7 +369,7 @@
   },
   {
     "number": 2062,
-    "solution": "Foot of perpendicular from origin to \\( 3x - 4y + 2z + 3 = 0 \\): point \\( = \\left(\\frac{-3 \\cdot 3}{29}, \\frac{-3 \\cdot (-4)}{29}, \\frac{-3 \\cdot 2}{29}\\right) \\). Using the book's normalization with \\( |n|^2 = 9 + 16 + 4 = 29 \\), the foot is \\( \\left(\\frac{-3}{21}, \\frac{4}{21}, \\frac{-2}{21}\\right) \\) per the keyed option. Answer: (a)."
+    "solution": "Foot of perpendicular from the origin to \\( x - 4y + 2z + 3 = 0 \\): normal \\( (1, -4, 2) \\), \\( |n|^2 = 21 \\). Foot \\( = -\\dfrac{3}{21}(1, -4, 2) = \\left(\\dfrac{-1}{7}, \\dfrac{4}{7}, \\dfrac{-2}{7}\\right) \\). Hence (B)."
   },
   {
     "number": 2063,
@@ -381,7 +381,7 @@
   },
   {
     "number": 2065,
-    "solution": "Second plane \\( \\vec{r} \\cdot (2\\hat{i} + 4\\hat{j} - 4\\hat{k}) = 16 \\) divided by 2 gives \\( \\vec{r} \\cdot (\\hat{i} + 2\\hat{j} - 2\\hat{k}) = 8 \\); first is \\( \\vec{r} \\cdot (\\hat{i} + 2\\hat{j} - 2\\hat{k}) = -5 \\). Distance \\( = \\frac{|8 - (-5)|}{\\sqrt{1 + 4 + 4}} = \\frac{13}{3} \\). Answer: (c)."
+    "solution": "Second plane \\( \\div 2 \\): \\( \\vec{r}\\cdot(\\hat{i}+2\\hat{j}-2\\hat{k}) = 8 \\); first: \\( \\vec{r}\\cdot(\\hat{i}+2\\hat{j}-2\\hat{k}) = -5 \\). Distance \\( = \\dfrac{|8-(-5)|}{\\sqrt{1+4+4}} = \\dfrac{13}{3} \\). Hence (C)."
   },
   {
     "number": 2066,
@@ -397,7 +397,7 @@
   },
   {
     "number": 2069,
-    "solution": "Line through \\( (-2, 6, 4) \\) and \\( (1, 3, 5) \\): direction \\( (3, -3, 1) \\). Meet \\( x = 0 \\): from \\( x = -2 + 3t = 0 \\Rightarrow t = 2/3 \\), point A \\( = (0, 4, 14/3) \\). Meet \\( y = 0 \\): \\( 6 - 3t = 0 \\Rightarrow t = 2 \\), point B \\( = (4, 0, 6) \\). \\( AB = \\sqrt{16 + 16 + (6 - 14/3)^2} = \\sqrt{16 + 16 + (4/3)^2} \\); the book obtains \\( AB = 6 \\). Answer: (b)."
+    "solution": "Points \\( (-2,6,4) \\) and \\( (1,3,7) \\); direction \\( (3,-3,3) \\propto (1,-1,1) \\). Parametrize \\( (-2+t, 6-t, 4+t) \\). Meet \\( x=0 \\): \\( t=2 \\Rightarrow A=(0,4,6) \\). Meet \\( y=0 \\): \\( t=6 \\Rightarrow B=(4,0,10) \\). \\( AB = \\sqrt{16+16+16} = 4\\sqrt{3} \\). Hence (D)."
   },
   {
     "number": 2070,
@@ -433,7 +433,7 @@
   },
   {
     "number": 2078,
-    "solution": "Family: \\( (x - y + 2z + 3) + \\lambda(x + y + 2z + 1) = 0 \\). Parallel to x-axis means no x-term: \\( (1 + \\lambda) = 0 \\Rightarrow \\lambda = -1 \\). Plane: \\( (x - y + 2z + 3) - (x + y + 2z + 1) = 0 \\Rightarrow -2y + 2 = 0 \\Rightarrow 2y - z = 2 \\) (per the book's keyed option a). Answer: (a)."
+    "solution": "Family \\( (x - y + z + 3) + \\lambda(x + y + 2z + 1) = 0 \\). Parallel to the x-axis means no x-term: \\( 1 + \\lambda = 0 \\Rightarrow \\lambda = -1 \\). Plane: \\( (x-y+z+3) - (x+y+2z+1) = 0 \\Rightarrow -2y - z + 2 = 0 \\Rightarrow 2y + z = 2 \\). Hence (B)."
   },
   {
     "number": 2079,
@@ -513,7 +513,7 @@
   },
   {
     "number": 2098,
-    "solution": "Parametrize: \\( x = 3r + 2, y = 2r - 1, z = -r + 1 \\). For the curve \\( xy = c^2, z = 0 \\): \\( z = 0 \\Rightarrow r = 1 \\)... using \\( z = r + 1 = 0 \\) (book) gives \\( r = -1 \\): \\( x = -1, y = -3 \\), so \\( c^2 = (-1)(-3) = 3 \\Rightarrow c = \\pm\\sqrt{3} \\). The book obtains \\( c = \\pm\\sqrt{5} \\). Answer: (c)."
+    "solution": "Parametrize \\( x = 2 + 3t,\\ y = -1 + 2t,\\ z = 1 + t \\). On \\( z = 0 \\): \\( t = -1 \\Rightarrow x = -1,\\ y = -3 \\). Then \\( c^2 = xy = (-1)(-3) = 3 \\Rightarrow c = \\pm\\sqrt{3} \\), which is not among \\( \\pm 1,\\ \\pm\\tfrac{1}{3},\\ \\pm\\sqrt{5} \\). Hence (D)."
   },
   {
     "number": 2099,

@@ -1,5 +1,9 @@
 {
   "_comment": "Answer overrides where the source key file is wrong (each verified by re-derivation + zoom-crop). Q2816 is an exact duplicate of Q2780 (correctly keyed B); the duplicate was mis-keyed C — overriding to B makes them consistent (commitStaged content-hash dedup will then skip one copy).",
   "2816": { "answer": "B", "reason": "key 'c' wrong: with u=x^2, integral = int_0^{pi/4} u sin u du = (1/sqrt2)(1 - pi/4) = option B (identical to Q2780 which is correctly keyed B)" },
-  "2827": { "answer": "C", "reason": "key 'a' wrong: sqrt(1-cos^2 theta)=|sin theta|, so int_{-pi/2}^{pi/2} |sin theta| d theta = 2*int_0^{pi/2} sin = 2 = option C (the integrand is non-negative so the value cannot be 0)" }
+  "2827": { "answer": "C", "reason": "key 'a' wrong: sqrt(1-cos^2 theta)=|sin theta|, so int_{-pi/2}^{pi/2} |sin theta| d theta = 2*int_0^{pi/2} sin = 2 = option C (the integrand is non-negative so the value cannot be 0)" },
+  "2782": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. DUP_OPTIONS: our B duplicated A as (1/2)(log2)^2; book option b is (5/2)(log2)^2. Book key c=(3/2)(log2)^2 = our C, correct." },
+  "2844": { "answer": "A", "reason": "Mock-5 bank sweep (source-verified): correct=A in our option order. DUP_OPTIONS: our B duplicated 1; book option b is sqrt(e) (our C=1 matches book c). Book key a=0 = our A, correct." },
+  "2845": { "answer": "B", "reason": "Mock-5 bank sweep (source-verified): correct=B in our option order. DUP_OPTIONS: our A duplicated 1; book option a is 4 (our C=1 matches book c). Book key b=2 = our B, correct." },
+  "2881": { "answer": "D", "reason": "Mock-5 bank sweep (source-verified): correct=D in our option order. Book AK letter 'a'(5pi/8) is wrong; the book's OWN worked solution derives 5pi/4 = option d = our D. Same option order as book." }
 }

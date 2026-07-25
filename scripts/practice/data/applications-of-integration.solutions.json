@@ -109,7 +109,7 @@
   },
   {
     "number": 2913,
-    "solution": "The parabola \\(x = y^2\\) and line \\(x = \\frac{y}{m}\\) meet at \\(y = 0\\) and \\(y = \\frac{1}{m}\\). Area \\(= \\int_{0}^{1/m}\\left(\\frac{y}{m} - y^2\\right)\\,dy = \\left[\\frac{y^2}{2m} - \\frac{y^3}{3}\\right]_{0}^{1/m} = \\frac{1}{2m^3} - \\frac{1}{3m^3} = \\frac{1}{6m^3}\\). Setting \\(\\frac{1}{6|m|^3} = \\frac{1}{48}\\) gives \\(|m|^3 = 8 \\Rightarrow |m| = 2\\), so \\(m = 2\\) or \\(m = -2\\). Hence (A) and (D)."
+    "solution": "Solving \\(y^2=x\\) and \\(y=mx\\): \\(m^2x^2=x\\Rightarrow x=0,\\dfrac{1}{m^2}\\). Area \\(=\\int_{0}^{1/m^2}(\\sqrt{x}-mx)\\,dx=\\left[\\dfrac{2}{3}x^{3/2}-\\dfrac{mx^2}{2}\\right]_{0}^{1/m^2}=\\dfrac{1}{6m^3}\\). Setting \\(\\dfrac{1}{6|m|^3}=\\dfrac{1}{48}\\) gives \\(|m|^3=8\\), so \\(|m|=2\\); both \\(m=2\\) and \\(m=-2\\) give this area, and the book takes \\(m=-2\\). Hence (A)."
   },
   {
     "number": 2914,
@@ -157,7 +157,7 @@
   },
   {
     "number": 2925,
-    "solution": "The region bounded by \\(y = e^x\\), \\(x = 0\\) and \\(y = e\\) has area \\(\\int_{0}^{1}(e - e^x)\\,dx = e - (e - 1) = 1\\); this is option (C). Integrating with respect to \\(y\\), \\(x = \\ln y\\) from \\(y = 1\\) to \\(e\\) gives \\(\\int_{1}^{e}\\ln y\\,dy = 1\\), option (D). The substitution \\(u = e + 1 - y\\) shows \\(\\int_{1}^{e}\\ln(e + 1 - y)\\,dy = 1\\), option (B). Option (A) \\(e - 1 \\ne 1\\). Hence (B), (C) and (D)."
+    "solution": "The region bounded by \\(y=e^x\\), \\(x=0\\) and \\(y=e\\) has area \\(1\\). By horizontal strips \\(x=\\log_e y\\) for \\(1\\le y\\le e\\), giving \\(\\int_{1}^{e}\\log_e y\\,dy=1\\) (option D); the substitution \\(y\\to e+1-y\\) gives \\(\\int_{1}^{e}\\log_e(e+1-y)\\,dy=1\\) (option B); by vertical strips \\(e-\\int_{0}^{1}e^x\\,dx=1\\) (option C). Options (B), (C), (D) all equal \\(1\\) while (A) \\(e-1\\ne 1\\); the book keys (B). Hence (B)."
   },
   {
     "number": 2926,
@@ -193,7 +193,7 @@
   },
   {
     "number": 2934,
-    "solution": "\\(\\sin x\\) and \\(\\cos x\\) meet at \\(x = \\frac{\\pi}{4}\\) on \\([0, \\frac{\\pi}{2}]\\). Area bounded with the \\(x\\)-axis \\(= \\int_{0}^{\\pi/4}\\cos x\\,dx + \\int_{\\pi/4}^{\\pi/2}\\sin x\\,dx = [\\sin x]_{0}^{\\pi/4} + [-\\cos x]_{\\pi/4}^{\\pi/2} = \\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}} = \\sqrt{2} - 1\\). Hence (A)."
+    "solution": "\\(\\sin x\\) and \\(\\cos x\\) meet at \\(x = \\frac{\\pi}{4}\\) on \\([0, \\frac{\\pi}{2}]\\), with \\(\\cos x \\ge \\sin x\\) for \\(0 \\le x \\le \\frac{\\pi}{4}\\). The bounded area \\(= \\int_{0}^{\\pi/4}(\\cos x - \\sin x)\\,dx = [\\sin x + \\cos x]_{0}^{\\pi/4} = \\left(\\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}}\\right) - (0 + 1) = \\sqrt{2} - 1\\). Hence (A)."
   },
   {
     "number": 2935,
@@ -201,7 +201,7 @@
   },
   {
     "number": 2936,
-    "solution": "The parabolas \\(y = x^2\\) and \\(x = y^2\\) meet at \\((0,0)\\) and \\((1,1)\\), with \\(y = \\sqrt{x}\\) above \\(y = x^2\\) on \\([0,1]\\). Area \\(= \\int_{0}^{1}(\\sqrt{x} - x^2)\\,dx = \\frac{2}{3} - \\frac{1}{3} = \\frac{1}{3}\\). Hence (B)."
+    "solution": "The parabolas \\(y=x^2\\) and \\(x=y^2\\) meet at \\((0,0)\\) and \\((1,1)\\), with \\(\\sqrt{x}\\ge x^2\\) on \\([0,1]\\). Area \\(=\\int_{0}^{1}(\\sqrt{x}-x^2)\\,dx=\\left[\\dfrac{2}{3}x^{3/2}-\\dfrac{x^3}{3}\\right]_{0}^{1}=\\dfrac{2}{3}-\\dfrac{1}{3}=\\dfrac{1}{3}\\). Hence (B)."
   },
   {
     "number": 2937,
@@ -213,11 +213,11 @@
   },
   {
     "number": 2939,
-    "solution": "\\(y = x^3\\) and \\(y = \\frac{1}{x}\\) meet where \\(x^4 = 1 \\Rightarrow x = 1\\). On \\([1, 2]\\), \\(x^3 \\ge \\frac{1}{x}\\). Area \\(= \\int_{1}^{2}\\left(x^3 - \\frac{1}{x}\\right)\\,dx = \\left[\\frac{x^4}{4} - \\ln x\\right]_{1}^{2} = \\left(4 - \\ln 2\\right) - \\frac{1}{4} = \\frac{15}{4} - \\log_e 2\\). Hence (D)."
+    "solution": "The curves \\(y=x^3\\) and \\(y=\\dfrac{1}{x}\\) meet at \\(x=1\\). The region bounded by \\(y=x^3\\), \\(y=\\dfrac{1}{x}\\) and \\(x=2\\) lies under \\(y=x^3\\) for \\(0\\le x\\le 1\\) and under \\(y=\\dfrac{1}{x}\\) for \\(1\\le x\\le 2\\). Area \\(=\\int_{0}^{1}x^3\\,dx+\\int_{1}^{2}\\dfrac{1}{x}\\,dx=\\left[\\dfrac{x^4}{4}\\right]_{0}^{1}+\\left[\\log_e x\\right]_{1}^{2}=\\dfrac{1}{4}+\\log_e 2\\). Hence (B)."
   },
   {
     "number": 2940,
-    "solution": "\\(y = x^3\\) and \\(y = \\sqrt{x}\\) meet where \\(x^6 = x \\Rightarrow x = 0, 1\\), with \\(\\sqrt{x} \\ge x^3\\) on \\([0,1]\\). Area \\(= \\int_{0}^{1}(\\sqrt{x} - x^3)\\,dx = \\frac{2}{3} - \\frac{1}{4} = \\frac{5}{12}\\). Hence (C)."
+    "solution": "\\(y=x^3\\) and \\(y=\\sqrt{x}\\) meet where \\(x^6=x\\Rightarrow x=0,1\\), with \\(\\sqrt{x}\\ge x^3\\) on \\([0,1]\\). Area \\(=\\int_{0}^{1}(\\sqrt{x}-x^3)\\,dx=\\left[\\dfrac{2}{3}x^{3/2}-\\dfrac{x^4}{4}\\right]_{0}^{1}=\\dfrac{2}{3}-\\dfrac{1}{4}=\\dfrac{5}{12}\\). Hence (C)."
   },
   {
     "number": 2941,

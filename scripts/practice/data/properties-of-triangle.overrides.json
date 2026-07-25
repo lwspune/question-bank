@@ -1,6 +1,8 @@
 {
   "_comment": "Answer overrides where the source key file is wrong (each verified by re-derivation + zoom-crop; the book's printed solution agrees on Q1269).",
   "1252": { "answer": "A", "reason": "key 'c' wrong: in a triangle A+B+C=pi, so cos(A+B)=cos(pi-C)=-cosC = option A" },
-  "1258": { "answer": "B", "reason": "key 'a' wrong: secA = 2cosecB sinC -> sinB = 2 sinC cosA -> sin(A+C)=2 sinC cosA -> sin(A-C)=0 -> A=C, i.e. ISOSCELES = option B (the condition does not force equilateral)" },
-  "1269": { "answer": "A", "reason": "key 'b' wrong: a=2*sqrt2, b=6, A=45deg -> sinB = b sinA / a = 3/2 > 1, impossible -> no triangle = option A (the book's solution states 'no triangle is possible')" }
+  "1258": { "answer": "B", "reason": "Mock-5 bank sweep (source-verified): correct=B in our option order. Book key b=isosceles, math gives A=C (isosceles). Key correct; solution had drifted to 'equilateral'. Options match." },
+  "1269": { "answer": "A", "reason": "Mock-5 bank sweep (source-verified): correct=A in our option order. Book key a='no triangle possible', math gives sinB=3/2>1. Key correct; solution wrongly ended (B). Options match." },
+  "1287": { "answer": "D", "reason": "Mock-5 bank sweep (source-verified): correct=D in our option order. Book a=pi^4/2, b=pi^2/2, c=pi/4, d=pi/2 (our A and B both duplicated pi/2). Key d=pi/2 correct." },
+  "1255": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. Book b = 1/(a^2-b^2) (our B duplicated C). Key c = 1/a^2 - 1/b^2 correct." }
 }

@@ -85,7 +85,7 @@
   },
   {
     "number": 362,
-    "solution": "In \\((1+px)^{n}\\), coefficient of \\(x\\) is \\(np=8\\) and coefficient of \\(x^{2}\\) is \\(\\binom{n}{2}p^{2}=\\dfrac{n(n-1)}{2}p^{2}=24\\). Dividing, \\(\\dfrac{n(n-1)p^{2}/2}{np}=\\dfrac{24}{8}\\Rightarrow \\dfrac{(n-1)p}{2}=3\\Rightarrow (n-1)p=6\\). With \\(np=8\\): \\(np-p=6\\Rightarrow 8-p=6\\Rightarrow p=2\\), and \\(n=8/2=4\\). Hence (C)."
+    "solution": "In \\((1+px)^n\\), the coefficient of \\(x\\) is \\(np=8\\) and the coefficient of \\(x^2\\) is \\(\\binom{n}{2}p^2=\\dfrac{n(n-1)}{2}p^2=24\\). Dividing, \\(\\dfrac{(n-1)p}{2}=3\\Rightarrow(n-1)p=6\\). With \\(np=8\\): \\(8-p=6\\Rightarrow p=2\\), \\(n=4\\). Hence (D)."
   },
   {
     "number": 363,
@@ -121,7 +121,7 @@
   },
   {
     "number": 371,
-    "solution": "Two terms of \\((1+x)^{2n}\\) are equal when their binomial coefficients are equal: \\(\\binom{2n}{3r-1}=\\binom{2n}{r+1}\\). Either \\(3r-1=r+1\\) (giving \\(r=1\\)) or \\((3r-1)+(r+1)=2n\\Rightarrow 4r=2n\\Rightarrow n=2r\\); taking the general relation \\((3r-1)+(r+1)=2n\\) yields \\(n=2r\\), but matching the standard form for these terms gives \\(n=2r+1\\). Hence (D)."
+    "solution": "The \\((3r)^{\\text{th}}\\) term is \\(T_{3r}=\\binom{2n}{3r-1}x^{3r-1}\\) and the \\((r+2)^{\\text{th}}\\) term is \\(T_{r+2}=\\binom{2n}{r+1}x^{r+1}\\). These are equal only if their binomial coefficients are equal: \\(\\binom{2n}{3r-1}=\\binom{2n}{r+1}\\). Rejecting \\(3r-1=r+1\\), take \\((3r-1)+(r+1)=2n\\Rightarrow 4r=2n\\Rightarrow n=2r\\). Hence (C)."
   },
   {
     "number": 372,
@@ -229,7 +229,7 @@
   },
   {
     "number": 398,
-    "solution": "Since \\(5^{2}=25\\equiv -1\\pmod{13}\\), \\(5^{99}=5\\cdot(5^{2})^{49}\\equiv 5\\cdot(-1)^{49}=-5\\equiv 8\\pmod{13}\\). The remainder is 8. Hence (A)."
+    "solution": "Since \\(5^2=25\\equiv-1\\pmod{13}\\), \\(5^{99}=5\\cdot(5^2)^{49}\\equiv 5\\cdot(-1)^{49}=-5\\equiv 8\\pmod{13}\\). Hence (A)."
   },
   {
     "number": 399,

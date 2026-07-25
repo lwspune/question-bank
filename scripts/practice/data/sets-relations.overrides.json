@@ -1,5 +1,10 @@
 {
   "_comment": "Answer overrides where the source key file is wrong (verified by re-derivation + zoom-crop of the source). Q57 and Q82 are EXCLUDED (omitted from questions.json) — the source prints only the number with no stem/options (blank). They surface as intentional coverage gaps. Q60 is genuinely multi-key (B,C) per the answer file — an 'is/are true' question — kept as-is.",
-  "50": { "answer": "D", "reason": "key file 'a' wrong: xRy iff xy>=0 is reflexive (x^2>=0) AND symmetric (xy>=0 => yx>=0) but not transitive (x=1,y=0,z=-1) = option D 'reflexive and symmetric but not transitive'" },
-  "65": { "answer": "C", "reason": "key file 'd' (equivalence) wrong: 1+ab>0 on Z is reflexive+symmetric but NOT transitive (a=1,b=0,c=-1: 1+0>0 and 1+0>0 but 1-1=0 is not >0) = option C; sibling Q53 of the same structure is keyed not-transitive" }
+  "50": { "answer": "D", "reason": "Mock-5 bank sweep (source-verified): correct=D in our option order. Book AK=d, matches bank key D and the math. Only the stored solution's final letter was wrong ('Hence (A)'); corrected to (D)." },
+  "65": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. book-conflict override per user: DUP fixed: OUR B duplicated C; book b='symmetric and transitive but not reflexive', restored. CONFLICT: book AK=d AND" },
+  "40": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. Book AK=b(=4). OUR options are order-swapped from book (B=6, C=4) but all values present; correct value 4 sits at OUR C. Bank wrongly marked B(6)." },
+  "12": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. Book AK=c ('A in C'). OUR B duplicated C ('A in C'); book b='B subseteq C', so B restored. Correct value 'A in C' at C." },
+  "56": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. Book AK=c(2). OUR A duplicated B('1'); book a='3', so A restored to 3. Correct value 2 at C." },
+  "25": { "answer": "C", "reason": "Mock-5 bank sweep (source-verified): correct=C in our option order. Book AK=c ('A cap B'). OUR options were scrambled (C carried 'A cup B', not a book option). Restored to book order b='A - B', c='A cap B'; correct val" },
+  "85": { "answer": "B", "reason": "Mock-5 bank sweep (source-verified): correct=B in our option order. book-conflict override per user: CONFLICT: book AK=d AND book worked-solution=d ('both symmetric and transitive'), but that is mathematically WRONG - " }
 }

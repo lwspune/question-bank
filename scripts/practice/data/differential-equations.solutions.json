@@ -49,7 +49,7 @@
   },
   {
     "number": 2963,
-    "solution": "Multiplying through by \\(y'''\\): \\((y'')^5 y''' + 4(y'')^3 + (y''')^2 = y'''\\sin x\\). The highest order derivative is \\(y'''\\), so order \\(m = 3\\). Its highest power after clearing the fraction is 2, so degree \\(n = 2\\). Hence (D)."
+    "solution": "The highest-order derivative is \\(y'''\\), so the order is \\(m=3\\). To find the degree, clear the fraction by multiplying through by \\(y'''\\): \\((y'')^5\\,y''' + 4(y'')^3 + (y''')^2 = (\\sin x)\\,y'''\\). This is now a polynomial in the derivatives, and the highest power of the highest-order derivative \\(y'''\\) is \\(2\\), so the degree is \\(n=2\\). Thus \\(m=3,\\ n=2\\). Hence (D)."
   },
   {
     "number": 2964,
@@ -161,7 +161,7 @@
   },
   {
     "number": 2991,
-    "solution": "A parabola with axis of symmetry along the \\(x\\)-axis is \\((y-k)^2 = 4a(x-h)\\), containing three arbitrary constants, so the order of the differential equation is 3. Hence (B)."
+    "solution": "A parabola whose axis of symmetry lies along the x-axis has the form \\(y^2=4a(x-h)\\), which contains exactly \\(2\\) arbitrary constants \\(a\\) and \\(h\\). Hence the order of its differential equation is \\(2\\). Hence (A)."
   },
   {
     "number": 2992,
@@ -273,7 +273,7 @@
   },
   {
     "number": 3019,
-    "solution": "Rewrite \\((1 + e^x)y' + ye^x = 1\\) as \\(\\dfrac{d}{dx}\\big[(1 + e^x)y\\big] = 1\\). Integrating, \\((1 + e^x)y = x + C\\). With \\(y(0) = 2\\): \\(2 \\cdot 2 = 0 + C\\), so \\(C = 4\\), giving \\(y = \\dfrac{x + 4}{1 + e^x}\\). Then \\(y(-4) = \\dfrac{0}{1 + e^{-4}} = 0\\), so (A) holds. For a critical point, set the numerator of \\(y'\\) to zero: \\((1 + e^x) - (x + 4)e^x = 0\\), i.e. \\(g(x) = 1 + e^x(-x - 3)\\). Now \\(g(-1) = 1 - 2e^{-1} \\approx 0.26 > 0\\) and \\(g(0) = 1 - 3 = -2 < 0\\), so \\(g\\) changes sign on \\((-1, 0)\\) and \\(y\\) has a critical point there, so (C) holds. Hence (A) and (C)."
+    "solution": "Write the equation as \\(\\dfrac{d}{dx}\\big[(1+e^x)y\\big]=1\\). Integrating, \\((1+e^x)y=x+C\\). With \\(y(0)=2\\): \\(2\\cdot 2 = 0 + C\\Rightarrow C=4\\), so \\(y=\\dfrac{x+4}{1+e^x}\\). Then \\(y(-4)=\\dfrac{0}{1+e^{-4}}=0\\). Hence (A)."
   },
   {
     "number": 3020,
@@ -313,11 +313,11 @@
   },
   {
     "number": 3029,
-    "solution": "Integrate: \\(y = \\int xe^x\\,dx = xe^x - e^x + C = e^x(x - 1) + C\\). With \\(y = 1\\) at \\(x = 1\\): \\(1 = e^1(0) + C\\), so \\(C = 1\\). Thus \\(y = e^x(x - 1) + 1\\). Hence (D)."
+    "solution": "Integrate: \\(y=\\int x e^x\\,dx = e^x(x-1)+C\\). With \\(y=1\\) at \\(x=1\\): \\(1=e^1(1-1)+C=C\\Rightarrow C=1\\). Thus \\(y=e^x(x-1)+1\\), which is option D. Hence (D)."
   },
   {
     "number": 3030,
-    "solution": "Separate: \\(\\dfrac{dy}{y} = \\dfrac{2\\,dx}{x}\\). Integrating, \\(\\log y = 2\\log x + \\log c\\), so \\(y = cx^2\\). Through \\((1, 1)\\): \\(1 = c\\), so \\(y = x^2\\). Hence (D)."
+    "solution": "Separate: \\(\\dfrac{dy}{y}=\\dfrac{2\\,dx}{x}\\Rightarrow \\log y=2\\log x+\\log C\\Rightarrow y=Cx^2\\). Through \\((1,1)\\): \\(C=1\\), so \\(y=x^2\\). Hence (D)."
   },
   {
     "number": 3031,
@@ -389,7 +389,7 @@
   },
   {
     "number": 3048,
-    "solution": "Separate: \\(e^{-y}\\,dy = (e^x + e^{-x} + 2x)\\,dx\\). Integrating, \\(-e^{-y} = e^x - e^{-x} + x^2 + C'\\), i.e. \\(e^{-y} = -e^x + e^{-x} - x^2 - C'\\). Matching the printed option form, \\(e^{-y} = e^x - e^{-x} + x^2 + C\\) is the listed correct relation (option B). Hence (B)."
+    "solution": "Separate: \\(e^{-y}\\,dy=(e^x+e^{-x}+2x)\\,dx\\). Integrating, \\(-e^{-y}=e^x-e^{-x}+x^2+C'\\), i.e. \\(e^{-y}=e^{-x}-e^x-x^2+C\\). Hence (B)."
   },
   {
     "number": 3049,
@@ -401,7 +401,7 @@
   },
   {
     "number": 3051,
-    "solution": "Separate: \\(dx = \\dfrac{e^y - e^{-y}}{e^y + e^{-y}}\\,dy\\). The numerator is the derivative of the denominator, so \\(\\int \\dfrac{e^y - e^{-y}}{e^y + e^{-y}}\\,dy = \\log(e^y + e^{-y})\\). Thus \\(x = \\ln(e^y + e^{-y}) + c\\). Hence (D)."
+    "solution": "The numerator is the derivative of the denominator, so \\(x=\\int\\dfrac{e^y-e^{-y}}{e^y+e^{-y}}\\,dy=\\ln(e^y+e^{-y})+c\\). Hence (D)."
   },
   {
     "number": 3052,
@@ -441,11 +441,11 @@
   },
   {
     "number": 3061,
-    "solution": "Factor the right side: \\(\\dfrac{dy}{dx} = (1 + x)(1 + y + y^2)\\). Separate: \\(\\dfrac{dy}{y^2 + y + 1} = (1 + x)\\,dx\\). Completing the square, \\(y^2 + y + 1 = \\left(y + \\dfrac{1}{2}\\right)^2 + \\dfrac{3}{4}\\), so \\(\\int \\dfrac{dy}{y^2 + y + 1} = \\dfrac{2}{\\sqrt{3}}\\tan^{-1}\\dfrac{2y + 1}{\\sqrt{3}}\\). The right side integrates to \\(x + \\dfrac{x^2}{2} + c\\). Thus \\(\\dfrac{2}{\\sqrt{3}}\\tan^{-1}\\dfrac{2y + 1}{\\sqrt{3}} = x + x^2 + c\\) (printed form). Hence (A)."
+    "solution": "Factor the RHS: \\(\\dfrac{dy}{dx}=(1+x)(1+y+y^2)\\). Separate: \\(\\dfrac{dy}{y^2+y+1}=(1+x)\\,dx\\). Since \\(y^2+y+1=\\left(y+\\tfrac12\\right)^2+\\tfrac34\\), \\(\\int\\dfrac{dy}{y^2+y+1}=\\dfrac{2}{\\sqrt3}\\tan^{-1}\\dfrac{2y+1}{\\sqrt3}\\), and the RHS integrates to \\(x+\\tfrac{x^2}{2}+c\\). Multiplying by \\(2\\sqrt3\\): \\(4\\tan^{-1}\\dfrac{2y+1}{\\sqrt3}=\\sqrt3(2x+x^2)+c\\). Hence (D)."
   },
   {
     "number": 3062,
-    "solution": "Slope \\(\\dfrac{dy}{dx} = \\dfrac{1}{2y}\\). Separate: \\(2y\\,dy = dx\\), so \\(y^2 = x + c\\). Through \\((4, 3)\\): \\(9 = 4 + c\\), so \\(c = 5\\). Thus \\(y^2 = x + 5\\). Hence (D)."
+    "solution": "The slope is the reciprocal of twice the ordinate: \\(\\dfrac{dy}{dx}=\\dfrac{1}{2y}\\). Separate: \\(2y\\,dy=dx\\Rightarrow y^2=x+c\\). Through \\((4,3)\\): \\(9=4+c\\Rightarrow c=5\\). Thus \\(y^2=x+5\\). Hence (C)."
   },
   {
     "number": 3063,
@@ -465,7 +465,7 @@
   },
   {
     "number": 3067,
-    "solution": "Divide by \\(1 + x^2\\): \\(\\dfrac{dy}{dx} + \\dfrac{2x}{1 + x^2}y = \\dfrac{4x^2}{1 + x^2}\\). IF \\(= 1 + x^2\\). Then \\(y(1 + x^2) = \\int (1 + x^2)\\cdot\\dfrac{4x^2}{1 + x^2}\\,dx = \\int 4x^2\\,dx = \\dfrac{4}{3}x^3 + c\\). Hence (A)."
+    "solution": "Rewrite: \\(\\dfrac{dy}{dx}+\\dfrac{2x}{1+x^2}\\,y=\\dfrac{4x^2}{1+x^2}\\). Integrating factor \\(=1+x^2\\). Then \\(y(1+x^2)=\\int (1+x^2)\\cdot\\dfrac{4x^2}{1+x^2}\\,dx=\\int 4x^2\\,dx=\\dfrac{4}{3}x^3+c\\). Hence (C)."
   },
   {
     "number": 3068,

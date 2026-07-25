@@ -33,7 +33,7 @@
   },
   {
     "number": 498,
-    "solution": "Let \\(M = \\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & -\\alpha \\end{bmatrix}\\). Then \\(M^2 = \\begin{bmatrix} \\alpha^2 + \\beta\\gamma & 0 \\\\ 0 & \\alpha^2 + \\beta\\gamma \\end{bmatrix} = (\\alpha^2 + \\beta\\gamma)I\\). For M to be a square root of the unit matrix, \\(M^2 = I\\), so \\(\\alpha^2 + \\beta\\gamma = 1\\), i.e. \\(1 - \\alpha^2 - \\beta\\gamma = 0\\). Hence (A)."
+    "solution": "\\(M^2=(\\alpha^2+\\beta\\gamma)I\\); \\(M^2=I\\Rightarrow \\alpha^2+\\beta\\gamma=1\\), i.e. \\(1-\\alpha^2-\\beta\\gamma=0\\). That relation is option A. Hence (A)."
   },
   {
     "number": 499,
@@ -501,7 +501,7 @@
   },
   {
     "number": 616,
-    "solution": "This is the standard determinant \\(\\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ac & bc & c^2+1 \\end{vmatrix} = 1 + a^2 + b^2 + c^2\\) (it equals \\(\\det(I + v v^T)\\) with \\(v = (a,b,c)^T\\), which is \\(1 + |v|^2\\)). Matches option A."
+    "solution": "The determinant equals \\(\\det(I+vv^{T})\\) with \\(v=(a,b,c)^{T}\\), i.e. \\(1+|v|^2=1+a^2+b^2+c^2\\) (sympy-verified). Hence (C)."
   },
   {
     "number": 617,
@@ -541,7 +541,7 @@
   },
   {
     "number": 626,
-    "solution": "Apply \\(R_2 \\to R_2 - R_1\\): \\((-2x, 0, 0)\\); \\(R_3 \\to R_3 - R_2\\): \\((0, -2y, 0)\\). Expanding gives the determinant \\(= 4xyz\\). So \\(k = 4\\). Matches option C."
+    "solution": "Expanding \\(\\begin{vmatrix} x & y & z \\\\ -x & y & z \\\\ x & -y & z \\end{vmatrix}=4xyz\\) (sympy-verified), so \\(k=4\\). Hence (C)."
   },
   {
     "number": 627,
@@ -681,7 +681,7 @@
   },
   {
     "number": 661,
-    "solution": "\\(A(\\text{adj} A) = |A| I\\). With \\(|A| = 2\\) (order 2), \\(A(\\text{adj} A) = 2I = \\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}\\). Matches option B."
+    "solution": "\\(A(\\mathrm{adj}\\,A)=|A|\\,I=2I=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}\\). Hence (B)."
   },
   {
     "number": 662,
@@ -697,7 +697,7 @@
   },
   {
     "number": 665,
-    "solution": "For invertible \\(A, B\\): \\((AB)^{-1} = B^{-1}A^{-1}\\) (reversal law), which always holds. The other options (\\(AB = BA\\), \\((A+B)(A-B) = A^2 - B^2\\)) fail since matrices need not commute. Matches option C."
+    "solution": "For invertible \\(A,B\\): \\((AB)^{-1}=B^{-1}A^{-1}\\) always holds; the other statements fail since matrices need not commute. That relation is option C. Hence (C)."
   },
   {
     "number": 666,
