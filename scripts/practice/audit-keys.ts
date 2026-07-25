@@ -29,10 +29,14 @@ require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: tr
 /** The LAST option letter a solution explicitly concludes with, or null. */
 export function concludedLetter(sol: string | null): string | null {
   if (!sol) return null;
+  // The trailing lookahead requires the letter to END a token (delimiter or EOL),
+  // so "Hence continuous" / "option carbonyl" no longer match the following word's
+  // first letter — a real letter-conclusion is always followed by )/./,/;/:/space/EOL.
+  const END = "(?=[)\\.,;:\\s]|$)";
   const pats = [
-    /Hence[,\s]*\(?([A-Da-d])\)?/g,
-    /option\s*\(?([A-Da-d])\)?/g,
-    /answer\s*is\s*\(?([A-Da-d])\)?/g,
+    new RegExp(`Hence[,\\s]*\\(?([A-Da-d])\\)?${END}`, "g"),
+    new RegExp(`option\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
+    new RegExp(`answer\\s*is\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
     /\(([A-Da-d])\)\s*\.?\s*$/g,
   ];
   let last: string | null = null;
@@ -100,4 +104,4 @@ async function main() {
     }
   }
 }
-main().catch((e) => { console.error(e); process.exit(1); });
+if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

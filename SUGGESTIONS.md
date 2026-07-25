@@ -39,6 +39,14 @@ The 2026-07-25 practice audit fixed all duplicate-option defects but surfaced **
 
 **How to apply:** for the 3 clear Foundation science ones (q54, q41, q8), source-verify the intended answer against the worksheet + a textbook, then flip via `apply-source-fixes.ts` (key move + solution + collision-guarded hash) and patch the transcription (per the 2026-07-25 idempotency method). q13 needs re-transcription from the worksheet first. q29 needs a biodegradability source call. Q114 needs the user to supply the LWS Mock 2 (6M) master PDF, then restore the real distractor. This is a small **answer-correctness** pass distinct from the shipped duplicate-cleanup; batch with the broader Foundation/Pariksha answer audit if one is ever run.
 
+### Restore the ~57 legacy-2021 JEE Physics/Chemistry image-option questions (empty option text)
+
+The `scripts/jee/audit-keys.ts` backstop (2026-07-25) confirmed JEE Maths keys are clean but surfaced an extraction-COMPLETENESS gap in the **legacy JEE-2021 Physics (10) + Chemistry (47) PUBLIC MCQs**: they are organic-structure / diagram questions whose four options are **figures that were never transcribed or attached**, so the stored option text is empty (`A: | B: | C: | D:`). The `audit:keys` probe flags them as `DUP_OPT` (all-empty texts collide). The answer key is correct in every case (the solution concludes the right letter) — this is a display defect, not a key error. These sit in the deliberately-skipped (Maths-only strategy) subjects.
+
+**Why:** a student browsing these ~57 questions sees a stem + four blank options — unusable. Low urgency because Physics/Chemistry are not the active ingestion focus, but it's a real content-quality gap on PUBLIC rows.
+
+**How to apply:** for each flagged row (`npx tsx scripts/jee/audit-keys.ts Physics` / `Chemistry` → the `DUP_OPT` list), pull the option figures from the source `JEE_2021_PaperN.docx` media (the pipeline already extracted `media/` at ingest), attach them as `optionFigures` via `scripts/jee/attach-images.ts`, and neutralise the empty option labels — mirroring the 2026-06-26 MHT-CET `optionFigures` fix. Alternatively, if Physics/Chemistry stay deprioritized, set these specific rows PRIVATE so blank-option questions aren't shown. Decide per the Maths-only strategy.
+
 ## 2026-07-24
 
 ### Fix the `cleanup-latex` function-name de-glue so it doesn't mangle English words inside `\text{}`
