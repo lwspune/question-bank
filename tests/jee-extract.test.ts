@@ -116,6 +116,21 @@ describe("parseAnswerTokens", () => {
     expect(t.get(62)).toBe("1625");
     expect(t.get(63)).toBe("c");
   });
+
+  it("tolerates a leaked hard-break backslash before the closing ** (2026 pandoc: `**(c)\\**`)", () => {
+    const md = `4.  **(d)\\**
+
+61. **(c)\\**
+
+24. **(16)\\**`;
+    const t = parseAnswerTokens(md);
+    expect(t.get(4)).toBe("d");
+    expect(t.get(61)).toBe("c");
+    expect(t.get(24)).toBe("16");
+    const key = parseAnswerKey(md);
+    expect(key.get(4)).toBe("D");
+    expect(key.get(61)).toBe("C");
+  });
 });
 
 describe("findDuplicateSolutionNumbers", () => {
