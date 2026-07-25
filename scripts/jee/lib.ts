@@ -170,7 +170,11 @@ export function cleanText(s: string): string {
   return out;
 }
 
-const SOLUTION_START = /^(\d+)\.\s+\*\*\(([abcd])\)\*\*/gm;
+// The closing `**` is sometimes preceded by a leaked hard-break `\` (pandoc
+// renders `**(c)\**` when the source put a line break after the answer letter,
+// common in the 2026 sittings). `\\?` accepts that variant; it's a strict
+// superset, so blocks without the backslash (2021-2025) still match.
+const SOLUTION_START = /^(\d+)\.\s+\*\*\(([abcd])\)\\?\*\*/gm;
 
 /** number -> uppercase answer letter, from the soln doc's `N.  **(x)**` headers. */
 export function parseAnswerKey(solnMd: string): Map<number, "A" | "B" | "C" | "D"> {
@@ -181,7 +185,7 @@ export function parseAnswerKey(solnMd: string): Map<number, "A" | "B" | "C" | "D
   return key;
 }
 
-const ANSWER_TOKEN = /^(\d+)\.\s+\*\*\(([^)]+)\)\*\*/gm;
+const ANSWER_TOKEN = /^(\d+)\.\s+\*\*\(([^)]+)\)\\?\*\*/gm;
 
 /** number -> raw answer token (a letter `a`..`d`, OR a value like `1625`). */
 export function parseAnswerTokens(solnMd: string): Map<number, string> {
