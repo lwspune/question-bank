@@ -45,7 +45,7 @@
   },
   {
     "number": 12,
-    "solution": "\\(C = \\{\\{1\\}, \\{1, 2\\}\\}\\). The set \\(A = \\{1, 2\\}\\) is one of the elements of C, so \\(A \\in C\\). (Options B and C are identical as printed; the intended true relation is \\(A \\in C\\).) Hence (C)."
+    "solution": "\\(C=\\{\\{1\\},\\{1,2\\}\\}\\) and \\(A=\\{1,2\\}\\) is one of the elements of \\(C\\), so \\(A\\in C\\). Hence (C)."
   },
   {
     "number": 13,
@@ -97,7 +97,7 @@
   },
   {
     "number": 25,
-    "solution": "\\(A - (A - B) = A \\cap (A - B)' = A \\cap (A' \\cup B) = (A \\cap A') \\cup (A \\cap B) = A \\cap B\\). Hence (B)."
+    "solution": "\\(A-(A-B)=A\\cap(A-B)'=A\\cap(A'\\cup B)=(A\\cap A')\\cup(A\\cap B)=A\\cap B\\). Hence (C)."
   },
   {
     "number": 26,
@@ -157,7 +157,7 @@
   },
   {
     "number": 40,
-    "solution": "Number of relations from A to B \\(= 2^{n(A) \\cdot n(B)} = 2^{3 \\cdot n(B)} = 4096 = 2^{12}\\). So \\(3 \\cdot n(B) = 12 \\Rightarrow n(B) = 4\\). Hence (C)."
+    "solution": "Number of relations from A to B \\(=2^{n(A)\\cdot n(B)}=2^{3n(B)}=4096=2^{12}\\), so \\(3n(B)=12\\Rightarrow n(B)=4\\). The value 4 is option C. Hence (C)."
   },
   {
     "number": 41,
@@ -197,7 +197,7 @@
   },
   {
     "number": 50,
-    "solution": "\\(xRy \\Leftrightarrow xy \\ge 0\\). Reflexive: \\(x \\cdot x = x^2 \\ge 0\\), true. Symmetric: \\(xy \\ge 0 \\Leftrightarrow yx \\ge 0\\), true. Transitive: take \\(x = 1, y = 0, z = -1\\): \\(1 \\cdot 0 = 0 \\ge 0\\) and \\(0 \\cdot (-1) = 0 \\ge 0\\), but \\(1 \\cdot (-1) = -1 < 0\\), so not transitive. The relation is reflexive and symmetric but not transitive. Hence (A)."
+    "solution": "\\(xRy\\iff xy\\ge0\\). Reflexive (\\(x^2\\ge0\\)); symmetric (\\(xy\\ge0\\iff yx\\ge0\\)); NOT transitive (\\(1\\cdot0\\ge0,\\ 0\\cdot(-1)\\ge0\\) but \\(1\\cdot(-1)<0\\)). So reflexive and symmetric but not transitive. Hence (D)."
   },
   {
     "number": 51,
@@ -221,7 +221,7 @@
   },
   {
     "number": 56,
-    "solution": "An equivalence relation on \\(\\{1,2,3\\}\\) containing \\((1,2)\\) and \\((2,1)\\) must merge 1 and 2 into one class. Either 3 is in its own class (relation = \\(\\{(1,1),(2,2),(3,3),(1,2),(2,1)\\}\\)) or all three are merged (the universal relation). So exactly 2 such equivalence relations. Hence (C) [the printed options A and B are both '1'; the intended answer 2 is option C]."
+    "solution": "An equivalence relation on \\(\\{1,2,3\\}\\) containing \\((1,2),(2,1)\\) merges 1 and 2; then either 3 is separate or all three merge. So exactly 2 such relations. Hence (C)."
   },
   {
     "number": 58,
@@ -253,7 +253,7 @@
   },
   {
     "number": 65,
-    "solution": "\\(R = \\{(a,b) : 1 + ab > 0\\}\\) on Z. Reflexive: \\(1 + a^2 > 0\\), yes. Symmetric: \\(1 + ab = 1 + ba\\), yes. Transitive fails: \\(a = 1, b = 0\\): \\(1 > 0\\); \\(b = 0, c = -1\\): \\(1 > 0\\); but \\(a = 1, c = -1\\): \\(1 - 1 = 0 \\not> 0\\). So reflexive and symmetric but not transitive (options B and C both read this; the keyed letter is D). Note: the printed option D reads 'an equivalence relation', but the correct property is reflexive and symmetric but not transitive — flagged for review. Hence (D) per key."
+    "solution": "\\(R=\\{(a,b):1+ab>0\\}\\) on Z. Reflexive (\\(1+a^2>0\\)); symmetric (\\(1+ab=1+ba\\)); NOT transitive (\\(a=2,b=0,c=-2\\): \\(1+0>0,\\ 1+0>0\\), but \\(1+ac=1-4=-3\\not>0\\)). So reflexive and symmetric but not transitive. Hence (C). [Textbook note: the source book keys option D ('equivalence relation'), but transitivity fails on Z (a=2, b=0, c=−2), so the relation is reflexive and symmetric but not transitive.]"
   },
   {
     "number": 66,
@@ -329,7 +329,7 @@
   },
   {
     "number": 85,
-    "solution": "\\(aRb\\) iff \\(|a - b| > 0\\), i.e. \\(a \\ne b\\). Reflexive fails (\\(|a-a| = 0\\)). Symmetric: \\(a \\ne b \\Leftrightarrow b \\ne a\\), holds. Transitive fails (\\(1 \\ne 2, 2 \\ne 1\\), but \\(1 = 1\\)). So symmetric. Hence (B)."
+    "solution": "\\(aRb\\iff|a-b|>0\\iff a\\ne b\\). Not reflexive (\\(|a-a|=0\\)); symmetric (\\(a\\ne b\\iff b\\ne a\\)); NOT transitive (\\(1\\ne2,\\ 2\\ne1\\) but \\(1=1\\)). So symmetric only. Hence (B). [Textbook note: the source book keys option D ('symmetric and transitive'), but transitivity fails (e.g. 1≠ 2 and 2≠ 1 while 1=1), so the relation is symmetric only.]"
   },
   {
     "number": 86,

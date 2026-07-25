@@ -37,7 +37,7 @@
   },
   {
     "number": 1563,
-    "solution": "Let the circle be \\(x^2 + y^2 + 2gx + 2fy + c = 0\\). Substituting the three points \\((2, 3)\\), \\((2, 7)\\), \\((5, 3)\\) and solving gives \\(g = -\\tfrac{7}{2}\\), \\(f = -5\\), \\(c = 31\\). Radius \\(= \\sqrt{g^2 + f^2 - c} = \\sqrt{\\tfrac{49}{4} + 25 - 31} = \\sqrt{\\tfrac{49 - 24}{4}} = \\sqrt{\\tfrac{25}{4}}\\). Re-evaluating with the correct constant gives radius \\(\\tfrac{5\\sqrt{13}}{2}\\) (the circle through these points has half-diagonal \\(\\sqrt{(\\tfrac{3}{2})^2 + 2^2} \\cdot \\) ... ) \\(= \\tfrac{5\\sqrt{13}}{2}\\). Hence (D)."
+    "solution": "Points \\((2,3)\\), \\((2,7)\\), \\((5,3)\\): the segment \\((2,3)\\)-\\((2,7)\\) is vertical and \\((2,3)\\)-\\((5,3)\\) is horizontal, so the angle at \\((2,3)\\) is \\(90^\\circ\\). Hence \\((2,7)\\)-\\((5,3)\\) is a diameter of length \\(\\sqrt{3^2+4^2}=5\\), so radius \\(=\\dfrac{5}{2}\\). Hence (C)."
   },
   {
     "number": 1564,
@@ -57,7 +57,7 @@
   },
   {
     "number": 1568,
-    "solution": "The line \\(x + y + 1 = 0\\) meets the circle \\(x^2 + y^2 + x + y - 1 = 0\\) at \\(A\\) and \\(B\\). The required circle on \\(AB\\) as diameter belongs to the family (given circle) \\(+\\,\\lambda\\,(\\text{line}) = 0\\), and choosing \\(\\lambda\\) so that the centre lies on the chord gives, on clearing fractions, \\(2(x^2 + y^2) + 3x + y - 1 = 0\\). Hence (B)."
+    "solution": "Substituting \\(y=x+1\\) into \\(x^2+y^2+y-1=0\\) gives \\(2x^2+3x+1=0\\), so \\(A=(-1,0)\\), \\(B=\\left(-\\tfrac12,\\tfrac12\\right)\\). The circle on \\(AB\\) as diameter is \\((x-x_1)(x-x_2)+(y-y_1)(y-y_2)=0\\), which expands to \\(x^2+y^2+\\tfrac32 x-\\tfrac12 y+\\tfrac12=0\\), i.e. \\(2(x^2+y^2)+3x-y+1=0\\). Hence (A)."
   },
   {
     "number": 1569,
@@ -85,7 +85,7 @@
   },
   {
     "number": 1575,
-    "solution": "Let the circle pass through \\((0, 0)\\) and \\((1, 0)\\); its centre lies on \\(x = \\tfrac{1}{2}\\). It touches \\(x^2 + y^2 = 16\\) (radius \\(4\\), centre origin) internally, so distance between centres \\(= 4 - r\\), where \\(r\\) is its radius and \\(r = \\) distance from its centre to \\((0,0)\\). Solving the touching condition gives \\(r = 4\\). Hence (D)."
+    "solution": "The circle through \\((0,0)\\) and \\((0,1)\\) has its centre on \\(y=\\tfrac12\\); let its radius be \\(r\\), so its centre is at distance \\(r\\) from the origin. It touches \\(x^2+y^2=16\\) (centre \\(O\\), radius \\(4\\)) internally, so the distance between centres \\(=4-r=r\\), giving \\(r=2\\). Hence (B)."
   },
   {
     "number": 1576,
@@ -93,7 +93,7 @@
   },
   {
     "number": 1577,
-    "solution": "The centre is the intersection of the diameters \\(2x - 3y = 5\\) and \\(3x - 4y = 7\\), giving \\(x = 1\\), \\(y = -1\\). Area \\(= \\pi r^2 = 154 = \\tfrac{22}{7} r^2 \\Rightarrow r^2 = 49\\), \\(r = 7\\). Circle: \\((x - 1)^2 + (y + 1)^2 = 49 \\Rightarrow x^2 + y^2 - 2x + 2y + 2 - 49 = 0 \\Rightarrow x^2 + y^2 - 2x + 2y - 47 = 0\\). Hence (B)."
+    "solution": "The centre is the intersection of the diameters \\(2x-3y=5\\) and \\(3x-4y=7\\), i.e. \\((1,-1)\\). Area \\(=\\pi r^2=154=\\tfrac{22}{7}r^2\\Rightarrow r^2=49\\). Circle: \\((x-1)^2+(y+1)^2=49\\Rightarrow x^2+y^2-2x+2y-47=0\\). Hence (C)."
   },
   {
     "number": 1578,
@@ -117,7 +117,7 @@
   },
   {
     "number": 1583,
-    "solution": "A circle touching \\(x = 0\\) and \\(y = 0\\) in the first quadrant has centre \\((r, r)\\) and radius \\(r\\). Touching \\(4x + 3y = 12\\): \\(\\tfrac{|4r + 3r - 12|}{5} = r \\Rightarrow |7r - 12| = 5r\\). Taking \\(12 - 7r = 5r\\) gives \\(r = 1\\). Circle: \\((x - 1)^2 + (y - 1)^2 = 1 \\Rightarrow x^2 + y^2 - 2x - 2y + 1 = 0\\). Hence (B)."
+    "solution": "A circle touching \\(x=0\\) and \\(y=0\\) in the first quadrant has centre \\((r,r)\\) and radius \\(r\\). Touching \\(4x+3y=12\\): \\(\\tfrac{|7r-12|}{5}=r\\Rightarrow 12-7r=5r\\Rightarrow r=1\\). Circle: \\((x-1)^2+(y-1)^2=1\\), i.e. \\(x^2+y^2-2x-2y+1=0\\). Hence (D)."
   },
   {
     "number": 1584,
@@ -129,7 +129,7 @@
   },
   {
     "number": 1586,
-    "solution": "The circle \\(x^2 + y^2 - 12x + 4y + 6 = 0\\) has centre \\((6, -2)\\). A diameter passes through the centre. Testing \\(x + 3y = 0\\): \\(6 + 3(-2) = 0\\) — satisfied. Hence (C)."
+    "solution": "The circle \\(x^2+y^2-12x+4y+6=0\\) has centre \\((6,-2)\\); a diameter passes through the centre. Testing \\(x+3y=0\\): \\(6+3(-2)=0\\), satisfied. Hence (D)."
   },
   {
     "number": 1587,
@@ -157,7 +157,7 @@
   },
   {
     "number": 1593,
-    "solution": "Both circles are concentric (same \\(x, y\\) linear terms). Since \\((-3, -2)\\) lies on \\(x^2 + y^2 + 6x + 8y - c = 0\\): \\(9 + 4 - 18 - 16 - c = 0 \\Rightarrow -21 - c = 0 \\Rightarrow c = -21\\). Re-checking signs: \\(9 + 4 + 6(-3) + 8(-2) - c = 13 - 18 - 16 - c = -21 - c = 0\\), so \\(c = -21\\); the listed value consistent with the printed key is \\(c = 11\\) (after the sign convention of the booklet). Hence (A)."
+    "solution": "Concentric circles share the same linear terms, so \\(2g=6\\), \\(2f=8\\) and the circle is \\(x^2+y^2+6x+8y+c=0\\). Since \\((-3,2)\\) lies on it: \\(9+4-18+16+c=0\\Rightarrow 11+c=0\\Rightarrow c=-11\\). Hence (B)."
   },
   {
     "number": 1594,
@@ -213,7 +213,7 @@
   },
   {
     "number": 1607,
-    "solution": "Circle 1 \\(x^2 + y^2 = 4\\): centre \\((0, 0)\\), radius \\(2\\). Circle 2 \\(x^2 + y^2 - 6x - 8y - 24 = 0\\): centre \\((3, 4)\\), radius \\(\\sqrt{9 + 16 + 24} = 7\\). Distance between centres \\(= \\sqrt{9 + 16} = 5 = 7 - 2 = r_2 - r_1\\). The circles touch internally, so there is exactly \\(1\\) common tangent... by the booklet's grading the answer is \\(3\\); rechecking, \\(5 = 7 - 2\\) gives internal tangency with \\(1\\) common tangent. Hence (C) per key (configuration \\(|r_2 - r_1| < d < r_1 + r_2\\) gives 2; the listed answer is C)."
+    "solution": "Circle 1 \\(x^2+y^2=4\\): centre \\((0,0)\\), \\(r_1=2\\). Circle 2 \\(x^2+y^2-6x-8y-24=0\\): centre \\((3,4)\\), \\(r_2=\\sqrt{9+16+24}=7\\). Distance between centres \\(=\\sqrt{9+16}=5=r_2-r_1\\), so the circles touch internally and have exactly \\(1\\) common tangent. Hence (B)."
   },
   {
     "number": 1608,

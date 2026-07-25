@@ -133,7 +133,7 @@
   },
   {
     "number": 2782,
-    "solution": "Let \\(w=\\log t\\), \\(dw=\\dfrac{dt}{t}\\). \\(\\int\\dfrac{\\log t}{t}\\,dt=\\dfrac{(\\log t)^2}{2}\\). From 2 to 4: \\(\\dfrac{(\\log 4)^2-(\\log 2)^2}{2}=\\dfrac{4(\\log 2)^2-(\\log 2)^2}{2}=\\dfrac{3}{2}(\\log 2)^2\\). Hence (C)."
+    "solution": "Put \\(u=\\log t\\), \\(du=\\dfrac{dt}{t}\\), so \\(\\int\\dfrac{\\log t}{t}\\,dt=\\dfrac{(\\log t)^2}{2}\\). From \\(2\\) to \\(4\\): \\(\\dfrac{(\\log 4)^2-(\\log 2)^2}{2}=\\dfrac{4(\\log 2)^2-(\\log 2)^2}{2}=\\dfrac{3}{2}(\\log 2)^2\\). Hence (C)."
   },
   {
     "number": 2783,
@@ -381,11 +381,11 @@
   },
   {
     "number": 2844,
-    "solution": "Let \\(f(x)=\\cos x\\,\\log\\frac{1+x}{1-x}\\). Here \\(\\cos x\\) is even and \\(\\log\\frac{1+x}{1-x}\\) is odd, so \\(f\\) is an odd function. Over the symmetric interval \\([-1/2,1/2]\\), \\(\\int_{-1/2}^{1/2}f(x)\\,dx=0\\). Hence (A)."
+    "solution": "Let \\(f(x)=\\cos x\\,\\log\\dfrac{1+x}{1-x}\\). \\(\\cos x\\) is even and \\(\\log\\dfrac{1+x}{1-x}\\) is odd, so \\(f\\) is odd. Over the symmetric interval \\([-1/2,\\,1/2]\\), \\(\\int_{-1/2}^{1/2}f(x)\\,dx=0\\). Hence (A)."
   },
   {
     "number": 2845,
-    "solution": "Let \\(I=\\int_{4}^{8}\\frac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{12-x}}\\,dx\\). Using \\(x\\to 4+8-x=12-x\\), \\(I=\\int_{4}^{8}\\frac{\\sqrt{12-x}}{\\sqrt{12-x}+\\sqrt{x}}\\,dx\\). Adding, \\(2I=\\int_{4}^{8}1\\,dx=4\\), so \\(I=2\\). Hence (B)."
+    "solution": "Let \\(I=\\int_{4}^{8}\\dfrac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{12-x}}\\,dx\\). Using \\(x\\to 12-x\\) (King's rule, \\(a+b=12\\)): \\(I=\\int_{4}^{8}\\dfrac{\\sqrt{12-x}}{\\sqrt{12-x}+\\sqrt{x}}\\,dx\\). Adding, \\(2I=\\int_{4}^{8}1\\,dx=4\\), so \\(I=2\\). Hence (B)."
   },
   {
     "number": 2846,
@@ -529,7 +529,7 @@
   },
   {
     "number": 2881,
-    "solution": "By symmetry \\(\\int_{0}^{\\pi/2}\\sin^6 x\\,dx=\\int_{0}^{\\pi/2}\\cos^6 x\\,dx=\\frac{5\\pi}{32}\\). The integrand \\(\\sin^6 x+\\cos^6 x\\) is even, so \\(\\int_{-\\pi}^{\\pi}=2\\int_{0}^{\\pi}=4\\int_{0}^{\\pi/2}(\\sin^6 x+\\cos^6 x)\\,dx=4\\left(\\frac{5\\pi}{32}+\\frac{5\\pi}{32}\\right)=4\\cdot\\frac{5\\pi}{16}=\\frac{5\\pi}{4}\\). Hence (D)."
+    "solution": "Given \\(\\int_{0}^{\\pi/2}\\sin^6 x\\,dx=\\dfrac{5\\pi}{32}\\); by symmetry \\(\\int_{0}^{\\pi/2}\\cos^6 x\\,dx=\\dfrac{5\\pi}{32}\\). The integrand is even, so \\(\\int_{-\\pi}^{\\pi}(\\sin^6 x+\\cos^6 x)\\,dx=4\\int_{0}^{\\pi/2}(\\sin^6 x+\\cos^6 x)\\,dx=4\\left(\\dfrac{5\\pi}{32}+\\dfrac{5\\pi}{32}\\right)=\\dfrac{10\\pi}{8}=\\dfrac{5\\pi}{4}\\). Hence (D)."
   },
   {
     "number": 2882,

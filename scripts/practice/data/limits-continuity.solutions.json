@@ -425,7 +425,7 @@
   },
   {
     "number": 2330,
-    "solution": "Let \\(t = \\ln x \\to 1\\). The expression is \\(t^{1/(1-t)}\\). Take \\(\\ln\\): \\(\\dfrac{\\ln t}{1-t}\\); with \\(\\ln t \\approx (t-1)\\), this is \\(\\dfrac{t-1}{1-t} = -1\\). So \\(L = e^{-1}\\). Hence (C)."
+    "solution": "Let \\(t=\\ln x\\to 1\\). The expression is \\(t^{1/(1-t)}\\). Taking log, \\(\\dfrac{\\ln t}{1-t}\\); with \\(\\ln t\\approx t-1\\) near \\(t=1\\), this \\(\\to\\dfrac{t-1}{1-t}=-1\\). So the limit \\(=e^{-1}\\). Hence (C)."
   },
   {
     "number": 2331,
@@ -473,11 +473,11 @@
   },
   {
     "number": 2342,
-    "solution": "\\(\\left(1 + \\dfrac{1}{x}\\right)^{x/2} = \\left[\\left(1+\\dfrac{1}{x}\\right)^x\\right]^{1/2} \\to e^{1/2}\\). Hence (D)."
+    "solution": "\\(\\left(1+\\dfrac1x\\right)^{x/2}=\\left[\\left(1+\\dfrac1x\\right)^x\\right]^{1/2}\\to e^{1/2}\\). Hence (D)."
   },
   {
     "number": 2343,
-    "solution": "Let \\(t = h^2 \\to 0^+\\). Then \\(\\dfrac{f(2+t) - f(2-t)}{2t} = \\dfrac{1}{2}\\left[\\dfrac{f(2+t)-f(2)}{t} + \\dfrac{f(2)-f(2-t)}{t}\\right] \\to \\dfrac{1}{2}[f'(2)+f'(2)] = f'(2) = 1\\). Hence (B)."
+    "solution": "Put \\(t=h^2\\to 0^+\\). Then \\(\\dfrac{f(2+t)-f(2-t)}{2t}=\\dfrac12\\left[\\dfrac{f(2+t)-f(2)}{t}+\\dfrac{f(2)-f(2-t)}{t}\\right]\\to\\dfrac12\\left[f'(2)+f'(2)\\right]=f'(2)=1\\). Hence (B). [Textbook note: the source book keys option A (0) and its printed solution reaches 0 via a sign error in the left-hand difference quotient; the correct value is 1.]"
   },
   {
     "number": 2344,
@@ -585,7 +585,7 @@
   },
   {
     "number": 2370,
-    "solution": "On \\((1,2)\\), \\(x^3\\) increases from \\(1\\) to \\(8\\), so \\(x^3 - 3\\) increases from \\(-2\\) to \\(5\\). \\([x^3-3]\\) jumps at each integer value of \\(x^3 - 3\\), i.e. at \\(x^3 - 3 = -1, 0, 1, 2, 3, 4\\) (six values), giving \\(x^3 = 2,3,4,5,6,7\\), all in \\((1,2)\\). So \\(6\\) points of discontinuity. Hence (B)."
+    "solution": "\\(f(x)=[x^3-3]\\) on \\((1,2)\\). As \\(x\\) runs over \\((1,2)\\), \\(x^3\\) runs over \\((1,8)\\), so \\(x^3-3\\) increases strictly over \\((-2,5)\\). The greatest-integer function \\([x^3-3]\\) is discontinuous wherever \\(x^3-3\\) is an integer, i.e. at \\(x^3-3=-1,0,1,2,3,4\\) (six integers in \\((-2,5)\\)), giving \\(x^3=2,3,4,5,6,7\\) — six values of \\(x\\) in \\((1,2)\\). So there are \\(6\\) points of discontinuity. Hence (B)."
   },
   {
     "number": 2371,

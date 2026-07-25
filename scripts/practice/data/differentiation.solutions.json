@@ -177,7 +177,7 @@
   },
   {
     "number": 2426,
-    "solution": "\\(g'(x) = 2[f(2f(x) + 2)]\\cdot f'(2f(x) + 2)\\cdot 2f'(x)\\). At \\(x = 0\\), \\(2f(0) + 2 = 2(-1) + 2 = 0\\), so \\(f(2f(0) + 2) = f(0) = -1\\) and \\(f'(2f(0) + 2) = f'(0) = 1\\). Hence \\(g'(0) = 2(-1)\\cdot 1 \\cdot 2 \\cdot 1 = -4\\). Hence (A)."
+    "solution": "\\(g(x)=[f(2f(x)+2)]^2\\), so \\(g'(x)=2\\,f(2f(x)+2)\\cdot f'(2f(x)+2)\\cdot 2f'(x)\\). At \\(x=0\\): \\(2f(0)+2=2(-1)+2=0\\), so \\(f(2f(0)+2)=f(0)=-1\\) and \\(f'(2f(0)+2)=f'(0)=1\\). Thus \\(g'(0)=2(-1)(1)(2)(1)=-4\\). Hence (B)."
   },
   {
     "number": 2427,
@@ -385,7 +385,7 @@
   },
   {
     "number": 2479,
-    "solution": "Since \\(f=\\int g\\,dx+c\\), \\(f'=g\\). Then \\(h=f^2+g^2=f^2+(f')^2\\), so \\(h'=2ff'+2f'f''=2f'(f+f'')=2f'(0)=0\\) (using \\(f''+f=0\\)). Hence \\(h\\) is constant, so \\(h(2015)=h(2014)=5\\) and \\(h(2015)-h(2014)=0\\). Hence (C)."
+    "solution": "Since \\(f=\\int g\\,dx+\\text{const}\\), \\(f'=g\\). Then \\(h=f^2+g^2=f^2+(f')^2\\), so \\(h'=2ff'+2f'f''=2f'(f+f'')=0\\) using \\(f''+f=0\\). Hence \\(h\\) is constant, so \\(h(2015)-h(2014)=0\\). Hence (C)."
   },
   {
     "number": 2480,

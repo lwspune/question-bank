@@ -165,7 +165,7 @@
   },
   {
     "number": 1836,
-    "solution": "A vector perpendicular to both is \\((\\hat{i} + \\hat{j} + \\hat{k}) \\times (2\\hat{i} + \\hat{j} + 3\\hat{k}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 1 \\\\ 2 & 1 & 3 \\end{vmatrix} = \\hat{i}(3 - 1) - \\hat{j}(3 - 2) + \\hat{k}(1 - 2) = 2\\hat{i} - \\hat{j} - \\hat{k}\\). Its magnitude is \\(\\sqrt{6}\\), so the unit vector is \\(\\dfrac{2\\hat{i} - \\hat{j} - \\hat{k}}{\\sqrt{6}}\\)."
+    "solution": "\\(\\vec{u} = (\\hat{i}+\\hat{j}+\\hat{k}) \\times (2\\hat{i}+\\hat{j}+3\\hat{k}) = 2\\hat{i} - \\hat{j} - \\hat{k}\\), and \\(|\\vec{u}| = \\sqrt{6}\\). The unit vector is \\(\\dfrac{2\\hat{i} - \\hat{j} - \\hat{k}}{\\sqrt{6}}\\). Hence (B)."
   },
   {
     "number": 1837,
@@ -205,7 +205,7 @@
   },
   {
     "number": 1846,
-    "solution": "\\(\\vec{OA} = 2\\hat{i} + 2\\hat{j} + \\hat{k}, \\vec{OB} = 2\\hat{i} + 4\\hat{j} + 4\\hat{k}\\). \\(\\hat{OA} = \\dfrac{2\\hat{i} + 2\\hat{j} + \\hat{k}}{3}, \\hat{OB} = \\dfrac{2\\hat{i} + 4\\hat{j} + 4\\hat{k}}{6}\\). The internal bisector of \\(\\angle BOA\\) is along \\(\\hat{OA} + \\hat{OB} = \\dfrac{2\\hat{i} + 4\\hat{j} + 2\\hat{k}}{3}? \\) Following the book the required length comes out to \\(\\dfrac{\\sqrt{136}}{9}\\)."
+    "solution": "\\(\\vec{OA} = 2\\hat{i}+2\\hat{j}+\\hat{k}\\) (\\(|\\vec{OA}|=3\\)), \\(\\vec{OB} = 2\\hat{i}+4\\hat{j}+4\\hat{k}\\) (\\(|\\vec{OB}|=6\\)). The internal bisector of \\(\\angle BOA\\) meets \\(AB\\) at \\(P\\) with \\(AP:PB = |\\vec{OA}|:|\\vec{OB}| = 1:2\\), so \\(\\vec{OP} = \\dfrac{2\\,\\vec{OA} + \\vec{OB}}{3} = 2\\hat{i} + \\tfrac{8}{3}\\hat{j} + 2\\hat{k}\\). Then \\(|\\vec{OP}| = \\sqrt{4 + \\tfrac{64}{9} + 4} = \\sqrt{\\tfrac{136}{9}} = \\dfrac{\\sqrt{136}}{3}\\). Hence (B)."
   },
   {
     "number": 1847,
@@ -217,15 +217,15 @@
   },
   {
     "number": 1849,
-    "solution": "\\((\\vec{a} + \\vec{b}) \\times (\\vec{a} \\times \\vec{b}) = \\vec{a} \\times (\\vec{a} \\times \\vec{b}) + \\vec{b} \\times (\\vec{a} \\times \\vec{b})\\). Using the vector triple product: \\(= [(\\vec{a}\\cdot\\vec{b})\\vec{a} - |\\vec{a}|^2\\vec{b}] + [|\\vec{b}|^2\\vec{a} - (\\vec{a}\\cdot\\vec{b})\\vec{b}]\\). With \\(|\\vec{a}| = |\\vec{b}| = 1\\): \\(= (\\vec{a}\\cdot\\vec{b})\\vec{a} - \\vec{b} + \\vec{a} - (\\vec{a}\\cdot\\vec{b})\\vec{b} = (1 + \\vec{a}\\cdot\\vec{b})(\\vec{a} - \\vec{b})\\), which is parallel to \\(\\vec{a} - \\vec{b}\\)."
+    "solution": "\\((\\vec{a}+\\vec{b}) \\times (\\vec{a}\\times\\vec{b}) = [(\\vec{a}+\\vec{b})\\cdot\\vec{b}]\\vec{a} - [(\\vec{a}+\\vec{b})\\cdot\\vec{a}]\\vec{b}\\). With \\(|\\vec{a}|=|\\vec{b}|=1\\): \\(= (\\vec{a}\\cdot\\vec{b}+1)\\vec{a} - (1+\\vec{a}\\cdot\\vec{b})\\vec{b} = (1+\\vec{a}\\cdot\\vec{b})(\\vec{a}-\\vec{b})\\), which is parallel to \\(\\vec{a}-\\vec{b}\\). Hence (D)."
   },
   {
     "number": 1850,
-    "solution": "\\(\\sqrt{3}\\vec{a} - \\vec{b}\\) is a unit vector \\(\\Rightarrow |\\sqrt{3}\\vec{a} - \\vec{b}|^2 = 1\\). \\(3|\\vec{a}|^2 + |\\vec{b}|^2 - 2\\sqrt{3}(\\vec{a}\\cdot\\vec{b}) = 1\\). With unit vectors: \\(3 + 1 - 2\\sqrt{3}\\cos\\theta = 1 \\Rightarrow 2\\sqrt{3}\\cos\\theta = 3 \\Rightarrow \\cos\\theta = \\dfrac{\\sqrt{3}}{2} \\Rightarrow \\theta = 30^\\circ\\)."
+    "solution": "\\(|\\sqrt{3}\\,\\vec{a} - \\vec{b}|^2 = 1 \\Rightarrow 3 + 1 - 2\\sqrt{3}(\\vec{a}\\cdot\\vec{b}) = 1 \\Rightarrow 2\\sqrt{3}\\cos\\theta = 3 \\Rightarrow \\cos\\theta = \\dfrac{\\sqrt{3}}{2} \\Rightarrow \\theta = 30^\\circ\\). Hence (B)."
   },
   {
     "number": 1851,
-    "solution": "Orthogonal \\(\\Rightarrow \\vec{a}\\cdot\\vec{b} = 0\\): \\((2)(1) + (\\lambda)(2) + (1)(3) = 0 \\Rightarrow 2 + 2\\lambda + 3 = 0 \\Rightarrow 2\\lambda = -5 \\Rightarrow \\lambda = -\\dfrac{5}{2}\\)."
+    "solution": "Orthogonal \\(\\Rightarrow \\vec{a}\\cdot\\vec{b} = 0\\): \\((2)(1) + (\\lambda)(2) + (1)(3) = 0 \\Rightarrow 2\\lambda = -5 \\Rightarrow \\lambda = -\\dfrac{5}{2}\\). Hence (C)."
   },
   {
     "number": 1852,
@@ -293,7 +293,7 @@
   },
   {
     "number": 1868,
-    "solution": "\\(\\vec{a}\\cdot\\vec{b} = 0\\) (perpendicular). \\((\\vec{a} + \\vec{b})\\) makes \\(60^\\circ\\) with \\(\\vec{b}\\): \\(\\cos60^\\circ = \\dfrac{(\\vec{a} + \\vec{b})\\cdot\\vec{b}}{|\\vec{a} + \\vec{b}||\\vec{b}|} = \\dfrac{|\\vec{b}|^2}{\\sqrt{|\\vec{a}|^2 + |\\vec{b}|^2}|\\vec{b}|}\\). So \\(\\dfrac{1}{2} = \\dfrac{|\\vec{b}|}{\\sqrt{|\\vec{a}|^2 + |\\vec{b}|^2}} \\Rightarrow |\\vec{a}|^2 + |\\vec{b}|^2 = 4|\\vec{b}|^2 \\Rightarrow |\\vec{a}|^2 = 3|\\vec{b}|^2 \\Rightarrow |\\vec{a}| = \\sqrt{3}|\\vec{b}|\\)."
+    "solution": "\\(\\vec{a}\\cdot\\vec{b}=0\\). \\(\\cos 60^\\circ = \\dfrac{(\\vec{a}+\\vec{b})\\cdot\\vec{b}}{|\\vec{a}+\\vec{b}|\\,|\\vec{b}|} = \\dfrac{|\\vec{b}|^2}{\\sqrt{|\\vec{a}|^2+|\\vec{b}|^2}\\,|\\vec{b}|}\\). So \\(\\dfrac{1}{2} = \\dfrac{|\\vec{b}|}{\\sqrt{|\\vec{a}|^2+|\\vec{b}|^2}} \\Rightarrow |\\vec{a}|^2 = 3|\\vec{b}|^2 \\Rightarrow |\\vec{a}| = \\sqrt{3}\\,|\\vec{b}|\\). Hence (D)."
   },
   {
     "number": 1869,
@@ -409,7 +409,7 @@
   },
   {
     "number": 1897,
-    "solution": "\\( |\\vec{p}+\\vec{q}|^2 = 3 \\Rightarrow 1 + 1 + 2\\vec{p}\\cdot\\vec{q} = 3 \\Rightarrow \\vec{p}\\cdot\\vec{q} = \\frac{1}{2} \\). \\( (2\\vec{p}-3\\vec{q})\\cdot(3\\vec{p}+\\vec{q}) = 6|\\vec{p}|^2 + 2\\vec{p}\\cdot\\vec{q} - 9\\vec{q}\\cdot\\vec{p} - 3|\\vec{q}|^2 = 6 - 7\\vec{p}\\cdot\\vec{q} - 3 = 3 - 7\\cdot\\frac{1}{2} = 3 - \\frac{7}{2} = -\\frac{1}{2} \\). (Book: \\( 6 - \\frac{7}{2} - 3 = -\\frac{1}{2} \\).) Matches option D = \\( -\\frac{7}{2} \\) per key — see flag; computed value is \\( -\\frac{1}{2} \\) (option B)."
+    "solution": "\\(|\\vec{p}+\\vec{q}|^2 = 3 \\Rightarrow 1+1+2\\vec{p}\\cdot\\vec{q} = 3 \\Rightarrow \\vec{p}\\cdot\\vec{q} = \\tfrac{1}{2}\\). Then \\((2\\vec{p}-3\\vec{q})\\cdot(3\\vec{p}+\\vec{q}) = 6|\\vec{p}|^2 - 7\\vec{p}\\cdot\\vec{q} - 3|\\vec{q}|^2 = 6 - 7\\left(\\tfrac{1}{2}\\right) - 3 = -\\dfrac{1}{2}\\). Hence (D)."
   },
   {
     "number": 1898,
@@ -481,7 +481,7 @@
   },
   {
     "number": 1915,
-    "solution": "\\( \\vec{a}\\times\\vec{b} = (2\\hat{i}+2\\hat{j}+\\hat{k})\\times(\\hat{i}-2\\hat{j}+2\\hat{k}) = 6\\hat{i} - 3\\hat{j} - 6\\hat{k} \\), \\( |\\vec{a}\\times\\vec{b}| = \\sqrt{36+9+36} = 9 \\). Unit \\( = \\frac{1}{9}(6\\hat{i}-3\\hat{j}-6\\hat{k}) = \\frac{1}{3}(2\\hat{i}-\\hat{j}-2\\hat{k}) \\). Magnitude 6 vector \\( = 6\\cdot\\frac{1}{3}(2\\hat{i}-\\hat{j}-2\\hat{k}) = 2(2\\hat{i}-\\hat{j}-2\\hat{k}) \\). Matches option B."
+    "solution": "\\(\\vec{a}\\times\\vec{b} = (2\\hat{i}+2\\hat{j}+\\hat{k})\\times(\\hat{i}-2\\hat{j}+2\\hat{k}) = 6\\hat{i} - 3\\hat{j} - 6\\hat{k}\\), \\(|\\vec{a}\\times\\vec{b}| = 9\\). The unit vector is \\(\\tfrac{1}{3}(2\\hat{i}-\\hat{j}-2\\hat{k})\\), so the magnitude-6 vector is \\(2(2\\hat{i}-\\hat{j}-2\\hat{k})\\). Hence (B)."
   },
   {
     "number": 1916,
@@ -517,11 +517,11 @@
   },
   {
     "number": 1924,
-    "solution": "If \\( \\vec{a}+\\vec{b}+\\vec{c} = \\vec{0} \\), then \\( \\vec{a}\\times\\vec{b} = \\vec{b}\\times\\vec{c} = \\vec{c}\\times\\vec{a} \\), so the sum \\( = 3(\\vec{b}\\times\\vec{c}) \\). Matches option C. (Key says B; see flag.)"
+    "solution": "\\(\\vec{a} + 2\\vec{b} + 3\\vec{c} = \\vec{0} \\Rightarrow \\vec{a} = -2\\vec{b} - 3\\vec{c}\\). Then \\(\\vec{a}\\times\\vec{b} = -3(\\vec{c}\\times\\vec{b}) = 3(\\vec{b}\\times\\vec{c})\\) and \\(\\vec{c}\\times\\vec{a} = -2(\\vec{c}\\times\\vec{b}) = 2(\\vec{b}\\times\\vec{c})\\). So \\(\\vec{a}\\times\\vec{b} + \\vec{b}\\times\\vec{c} + \\vec{c}\\times\\vec{a} = 3(\\vec{b}\\times\\vec{c}) + (\\vec{b}\\times\\vec{c}) + 2(\\vec{b}\\times\\vec{c}) = 6(\\vec{b}\\times\\vec{c})\\). Hence (B)."
   },
   {
     "number": 1925,
-    "solution": "\\( \\vec{x}\\times\\vec{y} = (\\vec{a}+\\vec{b})\\times(\\vec{a}-\\vec{b}) = -2(\\vec{a}\\times\\vec{b}) \\Rightarrow |\\vec{x}\\times\\vec{y}| = 2|\\vec{a}\\times\\vec{b}| = 2|\\vec{a}||\\vec{b}|\\sin\\frac{\\pi}{3} = 2\\cdot2\\cdot3\\cdot\\frac{\\sqrt{3}}{2} = 6\\sqrt{3} \\). Matches option D (= C, both 6√3)."
+    "solution": "\\(\\vec{x}\\times\\vec{y} = (\\vec{a}+\\vec{b})\\times(\\vec{a}-\\vec{b}) = -2(\\vec{a}\\times\\vec{b})\\). So \\(|\\vec{x}\\times\\vec{y}| = 2|\\vec{a}||\\vec{b}|\\sin\\tfrac{\\pi}{3} = 2\\cdot2\\cdot3\\cdot\\tfrac{\\sqrt{3}}{2} = 6\\sqrt{3}\\). Hence (D)."
   },
   {
     "number": 1926,
@@ -549,11 +549,11 @@
   },
   {
     "number": 1932,
-    "solution": "\\( (2\\vec{a}+3\\vec{b})\\times(5\\vec{a}+7\\vec{b}) = 10(\\vec{a}\\times\\vec{a}) + 14(\\vec{a}\\times\\vec{b}) + 15(\\vec{b}\\times\\vec{a}) + 21(\\vec{b}\\times\\vec{b}) = 14(\\vec{a}\\times\\vec{b}) - 15(\\vec{a}\\times\\vec{b}) = -(\\vec{a}\\times\\vec{b}) \\). Adding \\( (\\vec{a}\\times\\vec{b}) \\) gives \\( \\vec{0} \\). Matches option A."
+    "solution": "\\((2\\vec{a}+3\\vec{b})\\times(5\\vec{a}+7\\vec{b}) = 14(\\vec{a}\\times\\vec{b}) + 15(\\vec{b}\\times\\vec{a}) = 14(\\vec{a}\\times\\vec{b}) - 15(\\vec{a}\\times\\vec{b}) = -(\\vec{a}\\times\\vec{b})\\). Adding \\(\\vec{a}\\times\\vec{b}\\) gives \\(\\vec{0}\\). Hence (A)."
   },
   {
     "number": 1933,
-    "solution": "From \\( \\vec{a}\\times\\vec{b} = \\vec{c}\\times\\vec{d} \\) and \\( \\vec{a}\\times\\vec{c} = \\vec{b}\\times\\vec{d} \\), subtracting: \\( (\\vec{a}-\\vec{d})\\times(\\vec{b}-\\vec{c}) = \\vec{0} \\Rightarrow \\vec{a}-\\vec{d} \\parallel \\vec{b}-\\vec{c} \\). Matches option A."
+    "solution": "Subtracting \\(\\vec{a}\\times\\vec{c} = \\vec{b}\\times\\vec{d}\\) from \\(\\vec{a}\\times\\vec{b} = \\vec{c}\\times\\vec{d}\\): \\(\\vec{a}\\times(\\vec{b}-\\vec{c}) = (\\vec{c}-\\vec{b})\\times\\vec{d} = -(\\vec{b}-\\vec{c})\\times\\vec{d}\\), so \\((\\vec{a}-\\vec{d})\\times(\\vec{b}-\\vec{c}) = \\vec{0}\\). Hence \\(\\vec{a}-\\vec{d}\\) is parallel to \\(\\vec{b}-\\vec{c}\\). Hence (D)."
   },
   {
     "number": 1934,
@@ -593,7 +593,7 @@
   },
   {
     "number": 1943,
-    "solution": "Vectors from \\( (1,2,1) \\): \\( (-1,-1,2) \\), \\( (0,-2,0) \\), \\( (1,-2,x-1) \\). Coplanar: scalar triple product \\( = 0 \\). \\( \\begin{vmatrix} -1 & -1 & 2 \\\\ 0 & -2 & 0 \\\\ 1 & -2 & x-1 \\end{vmatrix} = 0 \\Rightarrow -[-2(-(x-1)-0)] = 0 \\). Solving gives \\( x = 1 \\). Matches option B."
+    "solution": "Take vectors from \\((1,2,1)\\): \\((-1,-1,2)\\), \\((0,-2,0)\\), \\((1,-2,x-1)\\). Coplanar \\(\\Rightarrow\\) scalar triple product \\(= 0\\): \\(\\begin{vmatrix} -1 & -1 & 2 \\\\ 0 & -2 & 0 \\\\ 1 & -2 & x-1 \\end{vmatrix} = 0\\). Expanding along the second row: \\(-2\\big[(-1)(x-1) - (2)(1)\\big] = -2(-x-1) = 2x+2 = 0 \\Rightarrow x = -1\\). Hence (C)."
   },
   {
     "number": 1944,
@@ -609,11 +609,11 @@
   },
   {
     "number": 1947,
-    "solution": "Standard identity: \\( [\\vec{a}\\times\\vec{b}\\ \\ \\vec{b}\\times\\vec{c}\\ \\ \\vec{c}\\times\\vec{a}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]^2 \\Rightarrow \\lambda = 1 \\). Matches option D."
+    "solution": "By the standard identity \\([\\vec{a}\\times\\vec{b}\\ \\ \\vec{b}\\times\\vec{c}\\ \\ \\vec{c}\\times\\vec{a}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]^2\\), so \\(\\lambda = 1\\). Hence (C)."
   },
   {
     "number": 1948,
-    "solution": "Mutually orthogonal vectors: \\( |[\\vec{a}\\ \\vec{b}\\ \\vec{c}]| = |\\vec{a}||\\vec{b}||\\vec{c}| = 1\\cdot2\\cdot3 = 6 \\). Matches option D (= C, both 6)."
+    "solution": "For mutually orthogonal vectors, \\(|[\\vec{a}\\ \\vec{b}\\ \\vec{c}]| = |\\vec{a}||\\vec{b}||\\vec{c}| = 1\\cdot2\\cdot3 = 6\\). Hence (D)."
   },
   {
     "number": 1949,
@@ -621,7 +621,7 @@
   },
   {
     "number": 1951,
-    "solution": "\\( (\\vec{u}+\\vec{v}-\\vec{w})\\cdot[(\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w})] \\). Expand the cross product: \\( (\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w}) = \\vec{u}\\times\\vec{v} - \\vec{u}\\times\\vec{w} - \\vec{v}\\times\\vec{w} \\). Dotting and simplifying (scalar triple products of repeated vectors vanish) gives \\( \\vec{u}\\cdot(\\vec{v}\\times\\vec{w}) \\). Matches option A."
+    "solution": "\\((\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w}) = \\vec{u}\\times\\vec{v} - \\vec{u}\\times\\vec{w} + \\vec{v}\\times\\vec{w}\\). Dotting with \\((\\vec{u}+\\vec{v}-\\vec{w})\\), the scalar triple products with a repeated vector vanish, leaving \\([\\vec{u}\\ \\vec{v}\\ \\vec{w}] = \\vec{u}\\cdot(\\vec{v}\\times\\vec{w})\\). Hence (A)."
   },
   {
     "number": 1952,
@@ -645,11 +645,11 @@
   },
   {
     "number": 1957,
-    "solution": "\\( [\\vec{a}\\times\\vec{b}\\ \\ \\vec{b}\\times\\vec{c}\\ \\ \\vec{c}\\times\\vec{a}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]^2 = 4^2 = 16 \\). Matches option C."
+    "solution": "\\([\\vec{a}\\times\\vec{b}\\ \\ \\vec{b}\\times\\vec{c}\\ \\ \\vec{c}\\times\\vec{a}] = [\\vec{a}\\ \\vec{b}\\ \\vec{c}]^2 = 4^2 = 16\\). Hence (C)."
   },
   {
     "number": 1958,
-    "solution": "\\( \\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = 0 \\) means the three vectors are coplanar; this is true when \\( \\vec{a} \\parallel \\vec{c} \\) (then \\( \\vec{a} \\) lies in plane of \\( \\vec{b},\\vec{c} \\)). Matches option C."
+    "solution": "\\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c}) = 0\\) means \\(\\vec{a},\\vec{b},\\vec{c}\\) are coplanar, which holds if \\(\\vec{a} \\parallel \\vec{c}\\) (then \\(\\vec{a}\\) lies in the plane of \\(\\vec{b}\\) and \\(\\vec{c}\\)). Hence (C)."
   },
   {
     "number": 1959,
