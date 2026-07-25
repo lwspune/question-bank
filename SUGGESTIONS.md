@@ -47,13 +47,9 @@ The `scripts/jee/audit-keys.ts` backstop (2026-07-25) confirmed JEE Maths keys a
 
 **How to apply:** for each flagged row (`npx tsx scripts/jee/audit-keys.ts Physics` / `Chemistry` → the `DUP_OPT` list), pull the option figures from the source `JEE_2021_PaperN.docx` media (the pipeline already extracted `media/` at ingest), attach them as `optionFigures` via `scripts/jee/attach-images.ts`, and neutralise the empty option labels — mirroring the 2026-06-26 MHT-CET `optionFigures` fix. Alternatively, if Physics/Chemistry stay deprioritized, set these specific rows PRIVATE so blank-option questions aren't shown. Decide per the Maths-only strategy.
 
-### Source-PDF spot-check of the ~5 JEE-2026 rows whose garbled stems were RECONSTRUCTED-to-match-key
+### ~~Source-PDF spot-check of the ~5 JEE-2026 rows whose garbled stems were RECONSTRUCTED-to-match-key~~ — **DONE 2026-07-25**
 
-During the 2026 Maths SAFE ingest, a handful of rows had OCR-garbled/truncated stems that the verifying agent reconstructed and then confirmed reproduce the source key — shipped PUBLIC on the SAFE trust rule, but the answer rests on the agent's stem *inference*, not a clean stem. The agents explicitly flagged these "worth a human glance": **jan24-s2 Q55** (garbled second AP constraint, couldn't be independently reproduced — kept source key A), **jan28-s2 Q62** (stem truncated — reconstructed as BP∩AQ locus), **apr04-s1 Q60** (internally-inconsistent statistics data) **+ Q74** (garbled telescoping-sum statement), **jan23-s2 Q52/Q58** (OCR grouping slips, both still land on the key). All are correctly keyed *given the reconstruction*; the risk is that the intended question differs from the reconstructed one.
-
-**Why:** these are the only 2026 rows whose correctness isn't anchored to a clean, independently-derivable stem — the residual risk surface of an otherwise 0-flag batch. Low urgency (each matched the official key), but they're PUBLIC.
-
-**How to apply:** open each row's source `_ak`/QP page (the pandoc'd `out/<id>.md` / `_soln.md`, or the original docx in `PYQs\2026\`) and read the PRINTED stem against the stored stem; if the printed stem matches the reconstruction, done; if it differs, fix via `stemOverrides` + `resync --apply` and re-derive. ~15 min total. Batch with any future JEE-2026 review.
+All 6 flagged stems source-verified against the pandoc'd QP + AK worked solution; **every key was already correct**, and all 6 had a real (minor) stem defect that was fixed via `stemOverrides` + `resync --apply`: jan23-s2 Q52 (`\cos8`→`\cos8θ`), jan23-s2 Q58 (truncated lead-in + `4x`→`4x²`), jan24-s2 Q55 (comma-list→product `α₁α₂α₃α₄`, resolving the "can't reproduce constraint" flag), jan28-s2 Q62 (truncated final question line), apr04-s1 Q60 (`1,103`→`51,103`, resolving the "inconsistent data" flag), apr04-s1 Q74 (`\cosθ_k`→`\cotθ_k`, resolving the "ratio≠3" flag). All 6 re-render clean; solutions were already consistent (agents solved the intended reading).
 
 ## 2026-07-24
 
