@@ -83,6 +83,45 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "Interior of Earth & POP 50 Q" — 50-q NDA GAT test spanning TWO subjects:
+  // Geography (Q1–25, "Interior of Earth" statement-evaluation MCQs → Earth's
+  // Structure chapter: Earth's Interior/Crust/Plate-Tectonics + Earthquakes/Seismic
+  // Waves) and English (Q26–50, POP = Parts of Speech, identify-the-POS of the
+  // underlined word → Grammar › Parts of Speech). Born-digital DOCX, clean text
+  // layer, NO printed key (answers DERIVED). Multi-subject mode (subjects + per-record
+  // subject+chapter). Semantic dedup vs the Geography Earth's-Structure + Grammar
+  // banks: effectively all net-new (49 new / 1 maybe Q14 / 0 dup). Excel keyed to the
+  // LWS OFFICIAL key (45/50 matched the derivation; 5 diverged → aligned to the key:
+  // Q1 C, Q7 B, Q18 B, Q49 B, Q43 bonus/all). createPaper:false → bank ingest only,
+  // no /dashboard/papers paper. 5 rows HELD PRIVATE as status:"flawed" (never
+  // committed/PUBLIC — the questionable keys): Q1 + Q18 (official key looks factually
+  // wrong — Kola 12.26 km / oceanic SiMa), Q16 (approximate figures + no clean
+  // option), Q43 (bonus), Q49 (determiner-vs-conjunction debatable). The other 45
+  // commit PRIVATE practice then flip PUBLIC.
+  "interior-earth-pop-50": {
+    slug: "interior-earth-pop-50",
+    title: "NDA GAT — Interior of Earth & Parts of Speech (50 Q)",
+    recordsFile: "interior-earth-pop-50.records.json",
+    outName: "Tags_NDA_Interior_Earth_and_POP_50Q",
+    sourceFile: "Interior of Earth & POP 50 Q.docx",
+    subjects: {
+      Geography: {
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics",
+          "Earthquakes and Seismic Waves",
+        ],
+      },
+      English: {
+        Grammar: ["Parts of Speech"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS Interior of Earth & Parts of Speech (50 Q)",
+    examName: "NDA",
+    section: { key: "interior-earth-pop-50", label: "Interior of Earth & POP (50 Q)" },
+    bankAdd: true,
+    createPaper: false, // bank ingest only — no /dashboard/papers paper (user's request)
+  },
+
   // LWS "Maths Mock 2" (dated 20/07/2026, "6M") — 120-q NDA Maths mock (Marks 300,
   // Batch NDA Sep'26) spanning the algebra/trig/calculus/vector spine: Trigonometric
   // Identities (Q1–15 minus the equations), Trigonometric Equations (Q7,16–22),
@@ -198,6 +237,46 @@ export const PAPERS: Record<string, PaperSpec> = {
     pyqNote: "NDA English (GAT) mock — LWS English Mock Test 2 (Dinner)",
     examName: "NDA",
     section: { key: "eng-mock-2-dinner", label: "English Mock Test 2 (Dinner)" },
+    bankAdd: true,
+  },
+
+  // LWS "English Mock Test (DINNER 3)" — 50-q NDA English (GAT) MOCK spanning FIVE
+  // chapters: Spotting Errors (Q1–10 Common Errors → prepositions/verb-form/word-choice/
+  // no-error, + Q11–20 Improvement of Sentences → Sentence Improvement), Fill in the
+  // Blanks (Q21–25 single-word contextual → Contextual Fill-in-Blank), Vocabulary
+  // (Q26–35 Synonyms), Cloze Test (Q36–45 one shared "Mass communication" passage →
+  // Word Selection in Passage, context + setLabel CLOZE1), Reading Comprehension
+  // (Q46–50 one shared Orwell "Politics and the English Language" passage → context +
+  // setLabel RC1). Born-digital DOCX, clean text layer, NO printed key (answers
+  // DERIVED). Single-subject multi-chapter mode (`chapters` + per-record `chapter`).
+  // Semantic dedup vs the 1,223-q NDA English bank: 49 new / 1 maybe (Q27 DILIGENT, a
+  // distinct synonym item — bank keys 'conscientious', this 'industrious' → kept new) /
+  // 0 dup — effectively all net-new. Low-confidence items flagged via reviewNote (Q14
+  // domestic/National, Q26 CENSURE, Q31 BEAUTIFUL, Q34 CONSIGNEE, Q39 cloze success/
+  // power, Q49 RC distractor). Full ingest scaffold present (paper + bank + Excel);
+  // the tagged Excel is the immediate deliverable, only status:"new" rows flip PUBLIC.
+  "eng-dinner-3": {
+    slug: "eng-dinner-3",
+    title: "NDA English — Mock Test (Dinner 3)",
+    recordsFile: "eng-dinner-3.records.json",
+    outName: "Tags_NDA_English_Mock_Dinner_3",
+    sourceFile: "English_Mock_Test_Dinner_3.docx",
+    subjectName: "English",
+    chapters: {
+      "Spotting Errors": [
+        "Word Choice, Prepositions and Punctuation",
+        "Tense and Verb Form",
+        "No Error (Correct Sentence)",
+        "Sentence Improvement",
+      ],
+      "Fill in the Blanks": ["Contextual Fill-in-Blank"],
+      Vocabulary: ["Synonyms"],
+      "Cloze Test": ["Word Selection in Passage"],
+      "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+    },
+    pyqNote: "NDA English (GAT) mock — LWS English Mock Test (Dinner 3)",
+    examName: "NDA",
+    section: { key: "eng-dinner-3", label: "English Mock Test (Dinner 3)" },
     bankAdd: true,
   },
   // LWS "NDA ENG BB3" — 50-q NDA English test spanning SIX chapters: Spotting Errors
