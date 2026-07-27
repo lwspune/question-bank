@@ -1,0 +1,78 @@
+[
+  {
+    "ref": "Q2(B)(i)",
+    "bbox": [
+      0.246,
+      0.8434,
+      0.707,
+      1.0
+    ],
+    "page": 0,
+    "bboxNote": "MANUAL widen — the blank boxes are drawn in LIGHT GRAY (~178 gray), above snapcrop's INK<165 threshold, so snapCrop's ink-bound missed the right-hand box (fx1 0.603 vs true 0.702) and the top box's top border. True vector extent: x 0.2509-0.7021, y 0.8439-1.0009. TWO UNAVOIDABLE SOURCE ARTEFACTS: (1) the top box's top border (y 0.8439) sits inside the stem line's descender zone (stem ink runs to 0.850) and the crop must start at x 0.246 to include the left box, so a thin sliver of '...ollowing chart:' rides along the top-left; (2) the bottom box is TRUNCATED BY THE PDF PAGE EDGE in the source itself (its rect is y 0.9702-1.0009, i.e. past the page) - no crop can recover its bottom border. Re-running snap-crop --write would RE-CLIP this; keep the manual bbox."
+  },
+  {
+    "ref": "Q2(B)(iii)",
+    "bbox": [
+      0.309,
+      0.0555,
+      0.679,
+      0.27
+    ],
+    "page": 1,
+    "bboxNote": "MANUAL: fy0 nudged 0.062 -> 0.0555 so the photo's light-sky top strip (true raster top 0.0569) isn't clipped. Next text 'iv.' begins 0.2743, so fy1 0.27 stays leak-free."
+  },
+  {
+    "ref": "Q2(B)(v)",
+    "bbox": [
+      0.173,
+      0.3215,
+      0.779,
+      0.504
+    ],
+    "page": 1,
+    "bboxNote": "MANUAL: fy1 0.501 -> 0.504 so the bottom-centre blank box's lower border isn't flush with the crop edge (true ink ends 0.4971). Next content 'Q.3.' begins 0.5146."
+  },
+  {
+    "ref": "Q3(iv)(a)",
+    "bbox": [
+      0.339,
+      0.6935,
+      0.637,
+      0.849
+    ],
+    "page": 1,
+    "bboxNote": "MANUAL: fy0 nudged 0.697 -> 0.6935 so the faint pink antenna tip (first ink 0.6951, gray ~198) isn't clipped. Stem text ends 0.690; next text 0.8661."
+  },
+  {
+    "ref": "Q3(iv)(b)",
+    "bbox": [
+      0.339,
+      0.6935,
+      0.637,
+      0.849
+    ],
+    "page": 1,
+    "bboxNote": "Same cockroach diagram as Q3(iv)(a)."
+  },
+  {
+    "ref": "Q3(iv)(c)",
+    "bbox": [
+      0.339,
+      0.6935,
+      0.637,
+      0.849
+    ],
+    "page": 1,
+    "bboxNote": "Same cockroach diagram as Q3(iv)(a)."
+  },
+  {
+    "ref": "Q3(vi)",
+    "bbox": [
+      0.366,
+      0.03,
+      0.634,
+      0.289
+    ],
+    "page": 2
+  }
+]

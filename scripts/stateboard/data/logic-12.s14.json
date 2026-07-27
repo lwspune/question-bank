@@ -8,7 +8,7 @@
     "context": "Write the negations of the following stating the rules used.",
     "setLabel": "1.4-ex1",
     "stem": "\\((p \\vee q) \\wedge (q \\vee \\sim r)\\)",
-    "solution": "\\(\\sim [(p \\vee q) \\wedge (q \\vee \\sim r)] \\equiv \\sim (p \\vee q) \\vee \\sim (q \\vee \\sim r)\\) [DeMorgan's law]\\n\\(\\equiv (\\sim p \\wedge \\sim q) \\vee (\\sim q \\wedge r)\\) [DeMorgan's law]\\n\\(\\equiv (\\sim q \\wedge \\sim p) \\vee (\\sim q \\wedge r)\\) [Commutative law]\\n\\(\\equiv \\sim q \\wedge (\\sim p \\vee r)\\) [Distributive law]"
+    "solution": "\\(\\sim [(p \\vee q) \\wedge (q \\vee \\sim r)] \\equiv \\sim (p \\vee q) \\vee \\sim (q \\vee \\sim r)\\) [DeMorgan's law]\n\\(\\equiv (\\sim p \\wedge \\sim q) \\vee (\\sim q \\wedge r)\\) [DeMorgan's law]\n\\(\\equiv (\\sim q \\wedge \\sim p) \\vee (\\sim q \\wedge r)\\) [Commutative law]\n\\(\\equiv \\sim q \\wedge (\\sim p \\vee r)\\) [Distributive law]"
   },
   {
     "ref": "1.4 Ex 1 (ii)",
@@ -19,7 +19,7 @@
     "context": "Write the negations of the following stating the rules used.",
     "setLabel": "1.4-ex1",
     "stem": "\\((p \\to q) \\vee r\\)",
-    "solution": "\\(\\sim [(p \\to q) \\vee r] \\equiv \\sim (p \\to q) \\wedge \\sim r\\) [DeMorgan's law]\\n\\(\\equiv (p \\wedge \\sim q) \\wedge \\sim r\\) [\\(\\sim (p \\to q) \\equiv p \\wedge \\sim q\\)]"
+    "solution": "\\(\\sim [(p \\to q) \\vee r] \\equiv \\sim (p \\to q) \\wedge \\sim r\\) [DeMorgan's law]\n\\(\\equiv (p \\wedge \\sim q) \\wedge \\sim r\\) [\\(\\sim (p \\to q) \\equiv p \\wedge \\sim q\\)]"
   },
   {
     "ref": "1.4 Ex 1 (iii)",
@@ -30,7 +30,7 @@
     "context": "Write the negations of the following stating the rules used.",
     "setLabel": "1.4-ex1",
     "stem": "\\(p \\wedge (q \\vee r)\\)",
-    "solution": "\\(\\sim [p \\wedge (q \\vee r)] \\equiv \\sim p \\vee \\sim (q \\vee r)\\) [DeMorgan's law]\\n\\(\\equiv \\sim p \\vee (\\sim q \\wedge \\sim r)\\) [DeMorgan's law]"
+    "solution": "\\(\\sim [p \\wedge (q \\vee r)] \\equiv \\sim p \\vee \\sim (q \\vee r)\\) [DeMorgan's law]\n\\(\\equiv \\sim p \\vee (\\sim q \\wedge \\sim r)\\) [DeMorgan's law]"
   },
   {
     "ref": "1.4 Ex 1 (iv)",
@@ -41,7 +41,7 @@
     "context": "Write the negations of the following stating the rules used.",
     "setLabel": "1.4-ex1",
     "stem": "\\((\\sim p \\wedge q) \\vee (p \\wedge \\sim q)\\)",
-    "solution": "\\(\\sim [(\\sim p \\wedge q) \\vee (p \\wedge \\sim q)] \\equiv \\sim (\\sim p \\wedge q) \\wedge \\sim (p \\wedge \\sim q)\\) [DeMorgan's law]\\n\\(\\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\) [DeMorgan's law]"
+    "solution": "\\(\\sim [(\\sim p \\wedge q) \\vee (p \\wedge \\sim q)] \\equiv \\sim (\\sim p \\wedge q) \\wedge \\sim (p \\wedge \\sim q)\\) [DeMorgan's law]\n\\(\\equiv (p \\vee \\sim q) \\wedge (\\sim p \\vee q)\\) [DeMorgan's law]"
   },
   {
     "ref": "1.4 Ex 1 (v)",
@@ -52,7 +52,7 @@
     "context": "Write the negations of the following stating the rules used.",
     "setLabel": "1.4-ex1",
     "stem": "\\((p \\wedge q) \\to (\\sim p \\vee r)\\)",
-    "solution": "\\(\\sim [(p \\wedge q) \\to (\\sim p \\vee r)] \\equiv (p \\wedge q) \\wedge \\sim (\\sim p \\vee r)\\) [\\(\\sim (p \\to q) \\equiv p \\wedge \\sim q\\)]\\n\\(\\equiv (p \\wedge q) \\wedge [p \\wedge \\sim r]\\) [DeMorgan's law]\\n\\(\\equiv q \\wedge p \\wedge p \\wedge \\sim r\\) [Associative law]\\n\\(\\equiv q \\wedge p \\wedge \\sim r\\) [Idempotent law]"
+    "solution": "\\(\\sim [(p \\wedge q) \\to (\\sim p \\vee r)] \\equiv (p \\wedge q) \\wedge \\sim (\\sim p \\vee r)\\) [\\(\\sim (p \\to q) \\equiv p \\wedge \\sim q\\)]\n\\(\\equiv (p \\wedge q) \\wedge [p \\wedge \\sim r]\\) [DeMorgan's law]\n\\(\\equiv q \\wedge p \\wedge p \\wedge \\sim r\\) [Associative law]\n\\(\\equiv q \\wedge p \\wedge \\sim r\\) [Idempotent law]"
   },
   {
     "ref": "1.4 Ex 2 (i)",
@@ -63,7 +63,7 @@
     "context": "Rewrite the following statements without using if ...... then.",
     "setLabel": "1.4-ex2",
     "stem": "If prices increase then the wages rise.",
-    "solution": "Let \\(p\\) : Prices increase, \\(q\\) : The wages rise.\\nThe given statement is \\(p \\to q\\) but \\(p \\to q \\equiv \\sim p \\vee q\\).\\nThe given statement can be written as 'Prices do not increase or the wages rise'."
+    "solution": "Let \\(p\\) : Prices increase, \\(q\\) : The wages rise.\nThe given statement is \\(p \\to q\\) but \\(p \\to q \\equiv \\sim p \\vee q\\).\nThe given statement can be written as 'Prices do not increase or the wages rise'."
   },
   {
     "ref": "1.4 Ex 2 (ii)",
@@ -74,7 +74,7 @@
     "context": "Rewrite the following statements without using if ...... then.",
     "setLabel": "1.4-ex2",
     "stem": "If it is cold, then we wear woolen clothes.",
-    "solution": "Let \\(p\\) : It is cold, \\(q\\) : We wear woollen clothes.\\nThe given statement is \\(p \\to q\\) but \\(p \\to q \\equiv \\sim p \\vee q\\).\\nThe given statement can be written as 'It is not cold or we wear woollen clothes'."
+    "solution": "Let \\(p\\) : It is cold, \\(q\\) : We wear woollen clothes.\nThe given statement is \\(p \\to q\\) but \\(p \\to q \\equiv \\sim p \\vee q\\).\nThe given statement can be written as 'It is not cold or we wear woollen clothes'."
   },
   {
     "ref": "1.4 Ex 3 (i)",
@@ -85,7 +85,7 @@
     "context": "Without using truth table prove that :",
     "setLabel": "1.4-ex3",
     "stem": "\\(p \\leftrightarrow q \\equiv \\sim (p \\wedge \\sim q) \\wedge \\sim (q \\wedge \\sim p)\\)",
-    "solution": "We know that \\(p \\leftrightarrow q \\equiv (p \\to q) \\wedge (q \\to p)\\)\\n\\(\\equiv (\\sim p \\vee q) \\wedge (\\sim q \\vee p)\\) [Conditional law]\\n\\(\\equiv \\sim (p \\wedge \\sim q) \\wedge \\sim (q \\wedge \\sim p)\\) [DeMorgan's law]"
+    "solution": "We know that \\(p \\leftrightarrow q \\equiv (p \\to q) \\wedge (q \\to p)\\)\n\\(\\equiv (\\sim p \\vee q) \\wedge (\\sim q \\vee p)\\) [Conditional law]\n\\(\\equiv \\sim (p \\wedge \\sim q) \\wedge \\sim (q \\wedge \\sim p)\\) [DeMorgan's law]"
   },
   {
     "ref": "1.4 Ex 3 (ii)",
@@ -96,7 +96,7 @@
     "context": "Without using truth table prove that :",
     "setLabel": "1.4-ex3",
     "stem": "\\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv \\sim p\\)",
-    "solution": "\\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv (\\sim p \\wedge \\sim q) \\vee (\\sim p \\wedge q)\\) [DeMorgan's law]\\n\\(\\equiv \\sim p \\wedge (\\sim q \\vee q)\\) [Distributive law]\\n\\(\\equiv \\sim p \\wedge t\\) [Complement law]\\n\\(\\equiv \\sim p\\) [Identity law]"
+    "solution": "\\(\\sim (p \\vee q) \\vee (\\sim p \\wedge q) \\equiv (\\sim p \\wedge \\sim q) \\vee (\\sim p \\wedge q)\\) [DeMorgan's law]\n\\(\\equiv \\sim p \\wedge (\\sim q \\vee q)\\) [Distributive law]\n\\(\\equiv \\sim p \\wedge t\\) [Complement law]\n\\(\\equiv \\sim p\\) [Identity law]"
   },
   {
     "ref": "1.4 Ex 3 (iii)",
@@ -107,7 +107,7 @@
     "context": "Without using truth table prove that :",
     "setLabel": "1.4-ex3",
     "stem": "\\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\)",
-    "solution": "\\((p \\vee q) \\wedge \\sim p \\equiv \\sim p \\wedge (p \\vee q)\\) [Commutative law]\\n\\(\\equiv (\\sim p \\wedge p) \\vee (\\sim p \\wedge q)\\) [Distributive law]\\n\\(\\equiv c \\vee (\\sim p \\wedge q)\\) [Complement law]\\n\\(\\equiv \\sim p \\wedge q\\) [Identity law]"
+    "solution": "\\((p \\vee q) \\wedge \\sim p \\equiv \\sim p \\wedge (p \\vee q)\\) [Commutative law]\n\\(\\equiv (\\sim p \\wedge p) \\vee (\\sim p \\wedge q)\\) [Distributive law]\n\\(\\equiv c \\vee (\\sim p \\wedge q)\\) [Complement law]\n\\(\\equiv \\sim p \\wedge q\\) [Identity law]"
   },
   {
     "ref": "1.4 Ex 1.4 Q.1 (i)",

@@ -1,83 +1,83 @@
 [
- {
-  "id": "6da5430a-814f-4d04-8237-fbb55f28a2f6",
-  "ref": "4.3 Q1 i)",
-  "solution": "The lines through the origin are \\(2x^2 + 3xy - 9y^2 = 0\\). Factorising: \\(2x^2 + 6xy - 3xy - 9y^2 = 2x(x + 3y) - 3y(x + 3y) = (2x - 3y)(x + 3y) = 0\\).\\nSo the given pair consists of \\(2x - 3y = 0\\) and \\(x + 3y = 0\\).\\n\\nThe required lines are parallel to these and pass through \\((2, -1)\\), so we keep the same left-hand sides and adjust the constants using the point.\\n\\nLine parallel to \\(2x - 3y = 0\\): \\(2x - 3y = 2(2) - 3(-1) = 7\\), i.e. \\(2x - 3y - 7 = 0\\).\\nLine parallel to \\(x + 3y = 0\\): \\(x + 3y = 2 + 3(-1) = -1\\), i.e. \\(x + 3y + 1 = 0\\).\\n\\nThe joint (combined) equation is the product:\\n\\((2x - 3y - 7)(x + 3y + 1) = 0\\).\\nExpanding: \\(2x^2 + 6xy + 2x - 3xy - 9y^2 - 3y - 7x - 21y - 7 = 0\\), which simplifies to\\n\\(2x^2 + 3xy - 9y^2 - 5x - 24y - 7 = 0\\).\\n\\n**Final answer:** \\(2x^2 + 3xy - 9y^2 - 5x - 24y - 7 = 0\\)."
- },
- {
-  "id": "01af0168-9fea-4a40-b836-ac7758dfcbc7",
-  "ref": "4.3 Q1 ii)",
-  "solution": "For a pair of lines through the origin \\(ax^2 + 2hxy + by^2 = 0\\), the pair of parallel lines through \\((x_1, y_1)\\) is obtained by replacing \\(x\\) with \\(x - x_1\\) and \\(y\\) with \\(y - y_1\\):\\n\\(a(x - x_1)^2 + 2h(x - x_1)(y - y_1) + b(y - y_1)^2 = 0\\).\\n\\nHere \\(x^2 + xy - y^2 = 0\\) (which does not factorise over the rationals, so we use this shift method) and \\((x_1, y_1) = (2, -3)\\).\\n\\nSo the required joint equation is\\n\\((x - 2)^2 + (x - 2)(y + 3) - (y + 3)^2 = 0\\).\\n\\nExpanding each term:\\n\\((x - 2)^2 = x^2 - 4x + 4\\),\\n\\((x - 2)(y + 3) = xy + 3x - 2y - 6\\),\\n\\((y + 3)^2 = y^2 + 6y + 9\\).\\n\\nCombining: \\(x^2 - 4x + 4 + xy + 3x - 2y - 6 - y^2 - 6y - 9 = 0\\), i.e.\\n\\(x^2 + xy - y^2 - x - 8y - 11 = 0\\).\\n\\n**Final answer:** \\(x^2 + xy - y^2 - x - 8y - 11 = 0\\)."
- },
- {
-  "id": "3c223817-cd3e-41cd-8327-f9818e4b765c",
-  "ref": "4.3 Q2",
-  "solution": "Compare \\(x^2 + 2xy + 2y^2 + 2x + 2y + 1 = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 1,\\ b = 2,\\ c = 1,\\ h = 1,\\ g = 1,\\ f = 1\\).\\n\\nA second-degree equation represents a pair of lines only if BOTH conditions hold: (i) \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\) and (ii) \\(h^2 - ab \\ge 0\\) (so that the lines are real).\\n\\nCheck (i): \\(abc + 2fgh - af^2 - bg^2 - ch^2\\)\\n\\(= (1)(2)(1) + 2(1)(1)(1) - (1)(1)^2 - (2)(1)^2 - (1)(1)^2\\)\\n\\(= 2 + 2 - 1 - 2 - 1 = 0\\).\\n\\nAlthough condition (i) is satisfied, check (ii): \\(h^2 - ab = (1)^2 - (1)(2) = 1 - 2 = -1 < 0\\).\\n\\nSince \\(h^2 - ab < 0\\), the lines would be imaginary; the equation does NOT represent a (real) pair of straight lines.\\n\\n**Final answer:** Since \\(h^2 - ab = -1 < 0\\), the equation does not represent a pair of lines. (Hence proved.)"
- },
- {
-  "id": "d00e3ed3-b0a1-4f80-be0c-6349ec684bc9",
-  "ref": "4.3 Q3",
-  "solution": "Compare \\(2x^2 - xy - 3y^2 - 6x + 19y - 20 = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 2,\\ b = -3,\\ c = -20,\\ 2h = -1 \\Rightarrow h = -\\tfrac12,\\ 2g = -6 \\Rightarrow g = -3,\\ 2f = 19 \\Rightarrow f = \\tfrac{19}{2}\\).\\n\\nCheck the determinant condition \\(abc + 2fgh - af^2 - bg^2 - ch^2\\):\\n\\(abc = (2)(-3)(-20) = 120\\),\\n\\(2fgh = 2\\left(\\tfrac{19}{2}\\right)(-3)\\left(-\\tfrac12\\right) = 19 \\times \\tfrac32 = \\tfrac{57}{2} = 28.5\\),\\n\\(af^2 = 2\\left(\\tfrac{19}{2}\\right)^2 = 2 \\cdot \\tfrac{361}{4} = \\tfrac{361}{2} = 180.5\\),\\n\\(bg^2 = (-3)(-3)^2 = -27\\),\\n\\(ch^2 = (-20)\\left(\\tfrac14\\right) = -5\\).\\n\\nSum \\(= 120 + 28.5 - 180.5 - (-27) - (-5) = 120 + 28.5 - 180.5 + 27 + 5 = 0\\).\\n\\nAlso \\(h^2 - ab = \\tfrac14 - (2)(-3) = \\tfrac14 + 6 = \\tfrac{25}{4} > 0\\), so the lines are real and distinct.\\n\\nBoth conditions hold, hence the equation represents a pair of straight lines. (Hence proved.)"
- },
- {
-  "id": "45e75745-83b8-438b-b73e-a617676691a9",
-  "ref": "4.3 Q4",
-  "solution": "Compare \\(2x^2 + xy - y^2 + x + 4y - 3 = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 2,\\ b = -1,\\ c = -3,\\ h = \\tfrac12,\\ g = \\tfrac12,\\ f = 2\\).\\n\\nCheck \\(abc + 2fgh - af^2 - bg^2 - ch^2\\):\\n\\(abc = (2)(-1)(-3) = 6\\),\\n\\(2fgh = 2(2)\\left(\\tfrac12\\right)\\left(\\tfrac12\\right) = 1\\),\\n\\(af^2 = 2(2)^2 = 8\\),\\n\\(bg^2 = (-1)\\left(\\tfrac12\\right)^2 = -\\tfrac14\\),\\n\\(ch^2 = (-3)\\left(\\tfrac12\\right)^2 = -\\tfrac34\\).\\n\\nSum \\(= 6 + 1 - 8 - (-\\tfrac14) - (-\\tfrac34) = 6 + 1 - 8 + \\tfrac14 + \\tfrac34 = 0\\).\\n\\nAlso \\(h^2 - ab = \\tfrac14 - (2)(-1) = \\tfrac14 + 2 = \\tfrac94 > 0\\), so the lines are real. Hence the equation represents a pair of lines.\\n\\n**Acute angle between them:** \\(\\tan\\theta = \\dfrac{2\\sqrt{h^2 - ab}}{|a + b|}\\).\\n\\(\\sqrt{h^2 - ab} = \\sqrt{\\tfrac94} = \\tfrac32\\), and \\(a + b = 2 + (-1) = 1\\).\\n\\(\\tan\\theta = \\dfrac{2 \\cdot \\tfrac32}{|1|} = 3\\).\\n\\n**Final answer:** The equation represents a pair of lines, and the acute angle between them is \\(\\theta = \\tan^{-1}(3)\\)."
- },
- {
-  "id": "841cbdbc-d4ec-4749-84d3-5cd5fdb433b1",
-  "ref": "4.3 Q5 i)",
-  "solution": "Given \\((x - 2)^2 - 3(x - 2)(y + 1) + 2(y + 1)^2 = 0\\).\\n\\nSubstitute \\(X = x - 2\\) and \\(Y = y + 1\\), so the equation becomes\\n\\(X^2 - 3XY + 2Y^2 = 0\\).\\n\\nFactorise: \\(X^2 - 2XY - XY + 2Y^2 = X(X - 2Y) - Y(X - 2Y) = (X - Y)(X - 2Y) = 0\\).\\n\\nSo \\(X - Y = 0\\) or \\(X - 2Y = 0\\).\\n\\nBack-substitute \\(X = x - 2,\\ Y = y + 1\\):\\n\\(X - Y = 0 \\Rightarrow (x - 2) - (y + 1) = 0 \\Rightarrow x - y - 3 = 0\\).\\n\\(X - 2Y = 0 \\Rightarrow (x - 2) - 2(y + 1) = 0 \\Rightarrow x - 2y - 4 = 0\\).\\n\\n**Final answer:** The separate lines are \\(x - y - 3 = 0\\) and \\(x - 2y - 4 = 0\\)."
- },
- {
-  "id": "69ed2218-275e-42e2-9dcc-3310a91760f6",
-  "ref": "4.3 Q5 ii)",
-  "solution": "Given \\(10(x + 1)^2 + (x + 1)(y - 2) - 3(y - 2)^2 = 0\\).\\n\\nSubstitute \\(X = x + 1\\) and \\(Y = y - 2\\), so the equation becomes\\n\\(10X^2 + XY - 3Y^2 = 0\\).\\n\\nFactorise: \\(10X^2 + 6XY - 5XY - 3Y^2 = 2X(5X + 3Y) - Y(5X + 3Y) = (5X + 3Y)(2X - Y) = 0\\).\\n\\nSo \\(5X + 3Y = 0\\) or \\(2X - Y = 0\\).\\n\\nBack-substitute \\(X = x + 1,\\ Y = y - 2\\):\\n\\(5X + 3Y = 0 \\Rightarrow 5(x + 1) + 3(y - 2) = 0 \\Rightarrow 5x + 3y - 1 = 0\\).\\n\\(2X - Y = 0 \\Rightarrow 2(x + 1) - (y - 2) = 0 \\Rightarrow 2x - y + 4 = 0\\).\\n\\n**Final answer:** The separate lines are \\(5x + 3y - 1 = 0\\) and \\(2x - y + 4 = 0\\)."
- },
- {
-  "id": "6e1d45da-6c0c-405e-b56b-ebd7132739cf",
-  "ref": "4.3 Q6 i)",
-  "solution": "Compare \\(3x^2 + 10xy + 3y^2 + 16y + k = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 3,\\ b = 3,\\ c = k,\\ 2h = 10 \\Rightarrow h = 5,\\ 2g = 0 \\Rightarrow g = 0,\\ 2f = 16 \\Rightarrow f = 8\\).\\n\\nFor a pair of lines, \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\):\\n\\(abc = (3)(3)(k) = 9k\\),\\n\\(2fgh = 2(8)(0)(5) = 0\\),\\n\\(af^2 = 3(8)^2 = 192\\),\\n\\(bg^2 = 3(0)^2 = 0\\),\\n\\(ch^2 = k(5)^2 = 25k\\).\\n\\nSo \\(9k + 0 - 192 - 0 - 25k = 0 \\Rightarrow -16k - 192 = 0 \\Rightarrow k = -12\\).\\n\\n**Final answer:** \\(k = -12\\)."
- },
- {
-  "id": "8643286c-a2f6-4c40-94c5-05336c82197c",
-  "ref": "4.3 Q6 ii)",
-  "solution": "Given \\(kxy + 10x + 6y + 4 = 0\\). Compare with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 0,\\ b = 0,\\ c = 4,\\ 2h = k \\Rightarrow h = \\tfrac{k}{2},\\ 2g = 10 \\Rightarrow g = 5,\\ 2f = 6 \\Rightarrow f = 3\\).\\n\\nFor a pair of lines, \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\):\\n\\(abc = 0\\),\\n\\(2fgh = 2(3)(5)\\left(\\tfrac{k}{2}\\right) = 15k\\),\\n\\(af^2 = 0\\),\\n\\(bg^2 = 0\\),\\n\\(ch^2 = 4\\left(\\tfrac{k}{2}\\right)^2 = 4 \\cdot \\tfrac{k^2}{4} = k^2\\).\\n\\nSo \\(0 + 15k - 0 - 0 - k^2 = 0 \\Rightarrow k^2 - 15k = 0 \\Rightarrow k(k - 15) = 0\\).\\n\\nThus \\(k = 0\\) or \\(k = 15\\). The value \\(k = 0\\) removes the \\(xy\\) term and leaves a single line \\(10x + 6y + 4 = 0\\), not a pair, so we reject it.\\n\\n**Final answer:** \\(k = 15\\)."
- },
- {
-  "id": "9c9d02e0-cda5-47dd-a056-cec9d1808286",
-  "ref": "4.3 Q6 iii)",
-  "solution": "Compare \\(x^2 + 3xy + 2y^2 + x - y + k = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 1,\\ b = 2,\\ c = k,\\ 2h = 3 \\Rightarrow h = \\tfrac32,\\ 2g = 1 \\Rightarrow g = \\tfrac12,\\ 2f = -1 \\Rightarrow f = -\\tfrac12\\).\\n\\nFor a pair of lines, \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\):\\n\\(abc = (1)(2)(k) = 2k\\),\\n\\(2fgh = 2\\left(-\\tfrac12\\right)\\left(\\tfrac12\\right)\\left(\\tfrac32\\right) = -\\tfrac34\\),\\n\\(af^2 = 1\\left(-\\tfrac12\\right)^2 = \\tfrac14\\),\\n\\(bg^2 = 2\\left(\\tfrac12\\right)^2 = \\tfrac12\\),\\n\\(ch^2 = k\\left(\\tfrac32\\right)^2 = \\tfrac{9k}{4}\\).\\n\\nSo \\(2k - \\tfrac34 - \\tfrac14 - \\tfrac12 - \\tfrac{9k}{4} = 0\\).\\nThe \\(k\\)-terms: \\(2k - \\tfrac{9k}{4} = \\tfrac{8k - 9k}{4} = -\\tfrac{k}{4}\\). The constants: \\(-\\tfrac34 - \\tfrac14 - \\tfrac12 = -\\tfrac32\\).\\nThus \\(-\\tfrac{k}{4} - \\tfrac32 = 0 \\Rightarrow -\\tfrac{k}{4} = \\tfrac32 \\Rightarrow k = -6\\).\\n\\n**Final answer:** \\(k = -6\\)."
- },
- {
-  "id": "7f11066e-b5a4-4edd-a869-40489b2948c3",
-  "ref": "4.3 Q7",
-  "solution": "Given \\(px^2 - 8xy + 3y^2 + 14x + 2y + q = 0\\). Compare with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = p,\\ b = 3,\\ c = q,\\ 2h = -8 \\Rightarrow h = -4,\\ 2g = 14 \\Rightarrow g = 7,\\ 2f = 2 \\Rightarrow f = 1\\).\\n\\n**Perpendicular condition:** the lines are perpendicular when (coeff. of \\(x^2\\)) + (coeff. of \\(y^2\\)) \\(= 0\\), i.e. \\(a + b = 0\\).\\nSo \\(p + 3 = 0 \\Rightarrow p = -3\\).\\n\\nNow use the pair-of-lines condition \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\) with \\(a = -3,\\ b = 3,\\ h = -4,\\ g = 7,\\ f = 1,\\ c = q\\):\\n\\(abc = (-3)(3)(q) = -9q\\),\\n\\(2fgh = 2(1)(7)(-4) = -56\\),\\n\\(af^2 = (-3)(1)^2 = -3\\),\\n\\(bg^2 = (3)(7)^2 = 147\\),\\n\\(ch^2 = q(-4)^2 = 16q\\).\\n\\nSo \\(-9q + (-56) - (-3) - 147 - 16q = 0 \\Rightarrow -25q - 200 = 0 \\Rightarrow q = -8\\).\\n\\n**Final answer:** \\(p = -3\\) and \\(q = -8\\)."
- },
- {
-  "id": "2c47c1f9-ef45-4f3c-9269-ceb1ff42b882",
-  "ref": "4.3 Q8",
-  "solution": "Given \\(2x^2 + 8xy + py^2 + qx + 2y - 15 = 0\\). Compare with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\\n\\(a = 2,\\ b = p,\\ c = -15,\\ 2h = 8 \\Rightarrow h = 4,\\ 2g = q \\Rightarrow g = \\tfrac{q}{2},\\ 2f = 2 \\Rightarrow f = 1\\).\\n\\n**Parallel condition:** for parallel lines \\(h^2 = ab\\).\\nSo \\((4)^2 = 2p \\Rightarrow 16 = 2p \\Rightarrow p = 8\\).\\n\\nNow use \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\) with \\(a = 2,\\ b = 8,\\ h = 4,\\ g = \\tfrac{q}{2},\\ f = 1,\\ c = -15\\):\\n\\(abc = (2)(8)(-15) = -240\\),\\n\\(2fgh = 2(1)\\left(\\tfrac{q}{2}\\right)(4) = 4q\\),\\n\\(af^2 = 2(1)^2 = 2\\),\\n\\(bg^2 = 8\\left(\\tfrac{q}{2}\\right)^2 = 8 \\cdot \\tfrac{q^2}{4} = 2q^2\\),\\n\\(ch^2 = (-15)(4)^2 = -240\\).\\n\\nSo \\(-240 + 4q - 2 - 2q^2 - (-240) = 0 \\Rightarrow -2q^2 + 4q - 2 = 0\\).\\nDivide by \\(-2\\): \\(q^2 - 2q + 1 = 0 \\Rightarrow (q - 1)^2 = 0 \\Rightarrow q = 1\\).\\n\\n**Final answer:** \\(p = 8\\) and \\(q = 1\\)."
- },
- {
-  "id": "2ea3c623-01d6-46d5-a878-3dead972123c",
-  "ref": "4.3 Q9",
-  "solution": "[Textbook answer-key error: the printed answer key has \\(-25xy\\); it should be \\(-25y^2\\), giving \\(36x^2 - 25y^2 - 252x + 350y - 784 = 0\\) (our answer).]\n\nThe two pairs of opposite sides are given by \\(x^2 - 7x + 6 = 0\\) and \\(y^2 - 14y + 40 = 0\\).\\n\\nFactorise: \\(x^2 - 7x + 6 = (x - 1)(x - 6) = 0 \\Rightarrow x = 1,\\ x = 6\\) (two vertical lines).\\n\\(y^2 - 14y + 40 = (y - 4)(y - 10) = 0 \\Rightarrow y = 4,\\ y = 10\\) (two horizontal lines).\\n\\nThese four lines form a rectangle with vertices\\n\\(A(1, 4),\\ B(6, 4),\\ C(6, 10),\\ D(1, 10)\\).\\n\\nThe diagonals join opposite vertices \\(A(1,4)\\)–\\(C(6,10)\\) and \\(B(6,4)\\)–\\(D(1,10)\\).\\n\\n**Diagonal AC:** slope \\(= \\dfrac{10 - 4}{6 - 1} = \\dfrac{6}{5}\\). Equation: \\(y - 4 = \\tfrac65(x - 1) \\Rightarrow 5y - 20 = 6x - 6 \\Rightarrow 6x - 5y + 14 = 0\\).\\n\\n**Diagonal BD:** slope \\(= \\dfrac{10 - 4}{1 - 6} = -\\dfrac{6}{5}\\). Equation: \\(y - 4 = -\\tfrac65(x - 6) \\Rightarrow 5y - 20 = -6x + 36 \\Rightarrow 6x + 5y - 56 = 0\\).\\n\\nThe joint equation of the diagonals is the product:\\n\\((6x - 5y + 14)(6x + 5y - 56) = 0\\).\\nExpanding: \\(36x^2 + 30xy - 336x - 30xy - 25y^2 + 280y + 84x + 70y - 784 = 0\\), i.e.\\n\\(36x^2 - 25y^2 - 252x + 350y - 784 = 0\\).\\n\\n**Final answer:** \\(36x^2 - 25y^2 - 252x + 350y - 784 = 0\\).",
-  "diagramWouldHelp": true,
-  "diagramNote": "A sketch of the rectangle with vertices A(1,4), B(6,4), C(6,10), D(1,10) formed by the four lines x=1, x=6, y=4, y=10, with the two diagonals AC and BD drawn crossing at the centre, makes it clear which vertices the diagonals join."
- },
- {
-  "id": "bcd43c6a-d308-47ac-b230-acc37de4a088",
-  "ref": "4.3 Q10",
-  "solution": "The pair \\(x^2 - 4xy + y^2 = 0\\) passes through the origin \\(O\\); the two lines meet the line \\(2x + 3y - 1 = 0\\) at \\(A\\) and \\(B\\). The median from \\(O\\) goes to the midpoint \\(M\\) of \\(AB\\).\\n\\n**Slopes of the pair:** in \\(x^2 - 4xy + y^2 = 0\\) put \\(t = y/x\\): \\(1 - 4t + t^2 = 0 \\Rightarrow t = 2 \\pm \\sqrt3\\). So the lines are \\(y = m_1 x\\) and \\(y = m_2 x\\) with \\(m_1 = 2 + \\sqrt3,\\ m_2 = 2 - \\sqrt3\\).\\n\\n**Intersection with \\(2x + 3y = 1\\):** for \\(y = mx\\), \\(2x + 3mx = 1 \\Rightarrow x = \\dfrac{1}{2 + 3m},\\ y = \\dfrac{m}{2 + 3m}\\).\\nFor \\(m_1 = 2 + \\sqrt3\\): \\(2 + 3m_1 = 8 + 3\\sqrt3\\), so \\(A = \\left(\\tfrac{1}{8 + 3\\sqrt3},\\ \\tfrac{2 + \\sqrt3}{8 + 3\\sqrt3}\\right)\\).\\nFor \\(m_2 = 2 - \\sqrt3\\): \\(2 + 3m_2 = 8 - 3\\sqrt3\\), so \\(B = \\left(\\tfrac{1}{8 - 3\\sqrt3},\\ \\tfrac{2 - \\sqrt3}{8 - 3\\sqrt3}\\right)\\).\\n\\n**Midpoint M:** using \\((8 + 3\\sqrt3)(8 - 3\\sqrt3) = 64 - 27 = 37\\):\\n\\(x_A + x_B = \\dfrac{(8 - 3\\sqrt3) + (8 + 3\\sqrt3)}{37} = \\dfrac{16}{37}\\), so \\(x_M = \\dfrac{8}{37}\\).\\nFor the \\(y\\)-coordinates: \\((2 + \\sqrt3)(8 - 3\\sqrt3) = 7 + 2\\sqrt3\\) and \\((2 - \\sqrt3)(8 + 3\\sqrt3) = 7 - 2\\sqrt3\\), so \\(y_A + y_B = \\dfrac{14}{37}\\), giving \\(y_M = \\dfrac{7}{37}\\).\\n\\nThus \\(M = \\left(\\tfrac{8}{37},\\ \\tfrac{7}{37}\\right)\\).\\n\\n**Median from O:** it passes through \\(O(0,0)\\) and \\(M\\), with slope \\(\\dfrac{7/37}{8/37} = \\dfrac78\\). Its equation is \\(y = \\tfrac78 x\\), i.e. \\(7x - 8y = 0\\).\\n\\n**Final answer:** The median from O is \\(7x - 8y = 0\\).",
-  "diagramWouldHelp": true,
-  "diagramNote": "A sketch of triangle OAB — the two lines of x^2-4xy+y^2=0 through the origin O, the cutting line 2x+3y-1=0 meeting them at A and B, and the median from O to the midpoint M of AB — clarifies the construction the median is drawn on."
- },
- {
-  "id": "d679ad76-2f1d-4fea-b987-94d384e79ad8",
-  "ref": "4.3 Q11",
-  "solution": "Given \\(x^2 - y^2 - 2x + 1 = 0\\).\\n\\nGroup the terms in \\(x\\): \\(x^2 - 2x + 1 - y^2 = (x - 1)^2 - y^2 = 0\\).\\n\\nThis is a difference of squares: \\((x - 1)^2 - y^2 = \\big[(x - 1) - y\\big]\\big[(x - 1) + y\\big] = 0\\).\\n\\nSo the two separate lines are\\n\\(x - y - 1 = 0\\) and \\(x + y - 1 = 0\\).\\n\\n**Point of intersection:** solve the two lines simultaneously. Adding them: \\((x - y - 1) + (x + y - 1) = 0 \\Rightarrow 2x - 2 = 0 \\Rightarrow x = 1\\). Substituting into \\(x + y - 1 = 0\\): \\(1 + y - 1 = 0 \\Rightarrow y = 0\\).\\n\\n**Final answer:** The point of intersection of the lines is \\((1, 0)\\).",
-  "diagramWouldHelp": true,
-  "diagramNote": "A quick sketch of the two lines x-y-1=0 and x+y-1=0 crossing in an X shape at (1,0) on the x-axis makes the point of intersection immediately visible."
- }
+  {
+    "id": "6da5430a-814f-4d04-8237-fbb55f28a2f6",
+    "ref": "4.3 Q1 i)",
+    "solution": "The lines through the origin are \\(2x^2 + 3xy - 9y^2 = 0\\). Factorising: \\(2x^2 + 6xy - 3xy - 9y^2 = 2x(x + 3y) - 3y(x + 3y) = (2x - 3y)(x + 3y) = 0\\).\nSo the given pair consists of \\(2x - 3y = 0\\) and \\(x + 3y = 0\\).\n\nThe required lines are parallel to these and pass through \\((2, -1)\\), so we keep the same left-hand sides and adjust the constants using the point.\n\nLine parallel to \\(2x - 3y = 0\\): \\(2x - 3y = 2(2) - 3(-1) = 7\\), i.e. \\(2x - 3y - 7 = 0\\).\nLine parallel to \\(x + 3y = 0\\): \\(x + 3y = 2 + 3(-1) = -1\\), i.e. \\(x + 3y + 1 = 0\\).\n\nThe joint (combined) equation is the product:\n\\((2x - 3y - 7)(x + 3y + 1) = 0\\).\nExpanding: \\(2x^2 + 6xy + 2x - 3xy - 9y^2 - 3y - 7x - 21y - 7 = 0\\), which simplifies to\n\\(2x^2 + 3xy - 9y^2 - 5x - 24y - 7 = 0\\).\n\n**Final answer:** \\(2x^2 + 3xy - 9y^2 - 5x - 24y - 7 = 0\\)."
+  },
+  {
+    "id": "01af0168-9fea-4a40-b836-ac7758dfcbc7",
+    "ref": "4.3 Q1 ii)",
+    "solution": "For a pair of lines through the origin \\(ax^2 + 2hxy + by^2 = 0\\), the pair of parallel lines through \\((x_1, y_1)\\) is obtained by replacing \\(x\\) with \\(x - x_1\\) and \\(y\\) with \\(y - y_1\\):\n\\(a(x - x_1)^2 + 2h(x - x_1)(y - y_1) + b(y - y_1)^2 = 0\\).\n\nHere \\(x^2 + xy - y^2 = 0\\) (which does not factorise over the rationals, so we use this shift method) and \\((x_1, y_1) = (2, -3)\\).\n\nSo the required joint equation is\n\\((x - 2)^2 + (x - 2)(y + 3) - (y + 3)^2 = 0\\).\n\nExpanding each term:\n\\((x - 2)^2 = x^2 - 4x + 4\\),\n\\((x - 2)(y + 3) = xy + 3x - 2y - 6\\),\n\\((y + 3)^2 = y^2 + 6y + 9\\).\n\nCombining: \\(x^2 - 4x + 4 + xy + 3x - 2y - 6 - y^2 - 6y - 9 = 0\\), i.e.\n\\(x^2 + xy - y^2 - x - 8y - 11 = 0\\).\n\n**Final answer:** \\(x^2 + xy - y^2 - x - 8y - 11 = 0\\)."
+  },
+  {
+    "id": "3c223817-cd3e-41cd-8327-f9818e4b765c",
+    "ref": "4.3 Q2",
+    "solution": "Compare \\(x^2 + 2xy + 2y^2 + 2x + 2y + 1 = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 1,\\ b = 2,\\ c = 1,\\ h = 1,\\ g = 1,\\ f = 1\\).\n\nA second-degree equation represents a pair of lines only if BOTH conditions hold: (i) \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\) and (ii) \\(h^2 - ab \\ge 0\\) (so that the lines are real).\n\nCheck (i): \\(abc + 2fgh - af^2 - bg^2 - ch^2\\)\n\\(= (1)(2)(1) + 2(1)(1)(1) - (1)(1)^2 - (2)(1)^2 - (1)(1)^2\\)\n\\(= 2 + 2 - 1 - 2 - 1 = 0\\).\n\nAlthough condition (i) is satisfied, check (ii): \\(h^2 - ab = (1)^2 - (1)(2) = 1 - 2 = -1 < 0\\).\n\nSince \\(h^2 - ab < 0\\), the lines would be imaginary; the equation does NOT represent a (real) pair of straight lines.\n\n**Final answer:** Since \\(h^2 - ab = -1 < 0\\), the equation does not represent a pair of lines. (Hence proved.)"
+  },
+  {
+    "id": "d00e3ed3-b0a1-4f80-be0c-6349ec684bc9",
+    "ref": "4.3 Q3",
+    "solution": "Compare \\(2x^2 - xy - 3y^2 - 6x + 19y - 20 = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 2,\\ b = -3,\\ c = -20,\\ 2h = -1 \\Rightarrow h = -\\tfrac12,\\ 2g = -6 \\Rightarrow g = -3,\\ 2f = 19 \\Rightarrow f = \\tfrac{19}{2}\\).\n\nCheck the determinant condition \\(abc + 2fgh - af^2 - bg^2 - ch^2\\):\n\\(abc = (2)(-3)(-20) = 120\\),\n\\(2fgh = 2\\left(\\tfrac{19}{2}\\right)(-3)\\left(-\\tfrac12\\right) = 19 \\times \\tfrac32 = \\tfrac{57}{2} = 28.5\\),\n\\(af^2 = 2\\left(\\tfrac{19}{2}\\right)^2 = 2 \\cdot \\tfrac{361}{4} = \\tfrac{361}{2} = 180.5\\),\n\\(bg^2 = (-3)(-3)^2 = -27\\),\n\\(ch^2 = (-20)\\left(\\tfrac14\\right) = -5\\).\n\nSum \\(= 120 + 28.5 - 180.5 - (-27) - (-5) = 120 + 28.5 - 180.5 + 27 + 5 = 0\\).\n\nAlso \\(h^2 - ab = \\tfrac14 - (2)(-3) = \\tfrac14 + 6 = \\tfrac{25}{4} > 0\\), so the lines are real and distinct.\n\nBoth conditions hold, hence the equation represents a pair of straight lines. (Hence proved.)"
+  },
+  {
+    "id": "45e75745-83b8-438b-b73e-a617676691a9",
+    "ref": "4.3 Q4",
+    "solution": "Compare \\(2x^2 + xy - y^2 + x + 4y - 3 = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 2,\\ b = -1,\\ c = -3,\\ h = \\tfrac12,\\ g = \\tfrac12,\\ f = 2\\).\n\nCheck \\(abc + 2fgh - af^2 - bg^2 - ch^2\\):\n\\(abc = (2)(-1)(-3) = 6\\),\n\\(2fgh = 2(2)\\left(\\tfrac12\\right)\\left(\\tfrac12\\right) = 1\\),\n\\(af^2 = 2(2)^2 = 8\\),\n\\(bg^2 = (-1)\\left(\\tfrac12\\right)^2 = -\\tfrac14\\),\n\\(ch^2 = (-3)\\left(\\tfrac12\\right)^2 = -\\tfrac34\\).\n\nSum \\(= 6 + 1 - 8 - (-\\tfrac14) - (-\\tfrac34) = 6 + 1 - 8 + \\tfrac14 + \\tfrac34 = 0\\).\n\nAlso \\(h^2 - ab = \\tfrac14 - (2)(-1) = \\tfrac14 + 2 = \\tfrac94 > 0\\), so the lines are real. Hence the equation represents a pair of lines.\n\n**Acute angle between them:** \\(\\tan\\theta = \\dfrac{2\\sqrt{h^2 - ab}}{|a + b|}\\).\n\\(\\sqrt{h^2 - ab} = \\sqrt{\\tfrac94} = \\tfrac32\\), and \\(a + b = 2 + (-1) = 1\\).\n\\(\\tan\\theta = \\dfrac{2 \\cdot \\tfrac32}{|1|} = 3\\).\n\n**Final answer:** The equation represents a pair of lines, and the acute angle between them is \\(\\theta = \\tan^{-1}(3)\\)."
+  },
+  {
+    "id": "841cbdbc-d4ec-4749-84d3-5cd5fdb433b1",
+    "ref": "4.3 Q5 i)",
+    "solution": "Given \\((x - 2)^2 - 3(x - 2)(y + 1) + 2(y + 1)^2 = 0\\).\n\nSubstitute \\(X = x - 2\\) and \\(Y = y + 1\\), so the equation becomes\n\\(X^2 - 3XY + 2Y^2 = 0\\).\n\nFactorise: \\(X^2 - 2XY - XY + 2Y^2 = X(X - 2Y) - Y(X - 2Y) = (X - Y)(X - 2Y) = 0\\).\n\nSo \\(X - Y = 0\\) or \\(X - 2Y = 0\\).\n\nBack-substitute \\(X = x - 2,\\ Y = y + 1\\):\n\\(X - Y = 0 \\Rightarrow (x - 2) - (y + 1) = 0 \\Rightarrow x - y - 3 = 0\\).\n\\(X - 2Y = 0 \\Rightarrow (x - 2) - 2(y + 1) = 0 \\Rightarrow x - 2y - 4 = 0\\).\n\n**Final answer:** The separate lines are \\(x - y - 3 = 0\\) and \\(x - 2y - 4 = 0\\)."
+  },
+  {
+    "id": "69ed2218-275e-42e2-9dcc-3310a91760f6",
+    "ref": "4.3 Q5 ii)",
+    "solution": "Given \\(10(x + 1)^2 + (x + 1)(y - 2) - 3(y - 2)^2 = 0\\).\n\nSubstitute \\(X = x + 1\\) and \\(Y = y - 2\\), so the equation becomes\n\\(10X^2 + XY - 3Y^2 = 0\\).\n\nFactorise: \\(10X^2 + 6XY - 5XY - 3Y^2 = 2X(5X + 3Y) - Y(5X + 3Y) = (5X + 3Y)(2X - Y) = 0\\).\n\nSo \\(5X + 3Y = 0\\) or \\(2X - Y = 0\\).\n\nBack-substitute \\(X = x + 1,\\ Y = y - 2\\):\n\\(5X + 3Y = 0 \\Rightarrow 5(x + 1) + 3(y - 2) = 0 \\Rightarrow 5x + 3y - 1 = 0\\).\n\\(2X - Y = 0 \\Rightarrow 2(x + 1) - (y - 2) = 0 \\Rightarrow 2x - y + 4 = 0\\).\n\n**Final answer:** The separate lines are \\(5x + 3y - 1 = 0\\) and \\(2x - y + 4 = 0\\)."
+  },
+  {
+    "id": "6e1d45da-6c0c-405e-b56b-ebd7132739cf",
+    "ref": "4.3 Q6 i)",
+    "solution": "Compare \\(3x^2 + 10xy + 3y^2 + 16y + k = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 3,\\ b = 3,\\ c = k,\\ 2h = 10 \\Rightarrow h = 5,\\ 2g = 0 \\Rightarrow g = 0,\\ 2f = 16 \\Rightarrow f = 8\\).\n\nFor a pair of lines, \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\):\n\\(abc = (3)(3)(k) = 9k\\),\n\\(2fgh = 2(8)(0)(5) = 0\\),\n\\(af^2 = 3(8)^2 = 192\\),\n\\(bg^2 = 3(0)^2 = 0\\),\n\\(ch^2 = k(5)^2 = 25k\\).\n\nSo \\(9k + 0 - 192 - 0 - 25k = 0 \\Rightarrow -16k - 192 = 0 \\Rightarrow k = -12\\).\n\n**Final answer:** \\(k = -12\\)."
+  },
+  {
+    "id": "8643286c-a2f6-4c40-94c5-05336c82197c",
+    "ref": "4.3 Q6 ii)",
+    "solution": "Given \\(kxy + 10x + 6y + 4 = 0\\). Compare with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 0,\\ b = 0,\\ c = 4,\\ 2h = k \\Rightarrow h = \\tfrac{k}{2},\\ 2g = 10 \\Rightarrow g = 5,\\ 2f = 6 \\Rightarrow f = 3\\).\n\nFor a pair of lines, \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\):\n\\(abc = 0\\),\n\\(2fgh = 2(3)(5)\\left(\\tfrac{k}{2}\\right) = 15k\\),\n\\(af^2 = 0\\),\n\\(bg^2 = 0\\),\n\\(ch^2 = 4\\left(\\tfrac{k}{2}\\right)^2 = 4 \\cdot \\tfrac{k^2}{4} = k^2\\).\n\nSo \\(0 + 15k - 0 - 0 - k^2 = 0 \\Rightarrow k^2 - 15k = 0 \\Rightarrow k(k - 15) = 0\\).\n\nThus \\(k = 0\\) or \\(k = 15\\). The value \\(k = 0\\) removes the \\(xy\\) term and leaves a single line \\(10x + 6y + 4 = 0\\), not a pair, so we reject it.\n\n**Final answer:** \\(k = 15\\)."
+  },
+  {
+    "id": "9c9d02e0-cda5-47dd-a056-cec9d1808286",
+    "ref": "4.3 Q6 iii)",
+    "solution": "Compare \\(x^2 + 3xy + 2y^2 + x - y + k = 0\\) with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 1,\\ b = 2,\\ c = k,\\ 2h = 3 \\Rightarrow h = \\tfrac32,\\ 2g = 1 \\Rightarrow g = \\tfrac12,\\ 2f = -1 \\Rightarrow f = -\\tfrac12\\).\n\nFor a pair of lines, \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\):\n\\(abc = (1)(2)(k) = 2k\\),\n\\(2fgh = 2\\left(-\\tfrac12\\right)\\left(\\tfrac12\\right)\\left(\\tfrac32\\right) = -\\tfrac34\\),\n\\(af^2 = 1\\left(-\\tfrac12\\right)^2 = \\tfrac14\\),\n\\(bg^2 = 2\\left(\\tfrac12\\right)^2 = \\tfrac12\\),\n\\(ch^2 = k\\left(\\tfrac32\\right)^2 = \\tfrac{9k}{4}\\).\n\nSo \\(2k - \\tfrac34 - \\tfrac14 - \\tfrac12 - \\tfrac{9k}{4} = 0\\).\nThe \\(k\\)-terms: \\(2k - \\tfrac{9k}{4} = \\tfrac{8k - 9k}{4} = -\\tfrac{k}{4}\\). The constants: \\(-\\tfrac34 - \\tfrac14 - \\tfrac12 = -\\tfrac32\\).\nThus \\(-\\tfrac{k}{4} - \\tfrac32 = 0 \\Rightarrow -\\tfrac{k}{4} = \\tfrac32 \\Rightarrow k = -6\\).\n\n**Final answer:** \\(k = -6\\)."
+  },
+  {
+    "id": "7f11066e-b5a4-4edd-a869-40489b2948c3",
+    "ref": "4.3 Q7",
+    "solution": "Given \\(px^2 - 8xy + 3y^2 + 14x + 2y + q = 0\\). Compare with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = p,\\ b = 3,\\ c = q,\\ 2h = -8 \\Rightarrow h = -4,\\ 2g = 14 \\Rightarrow g = 7,\\ 2f = 2 \\Rightarrow f = 1\\).\n\n**Perpendicular condition:** the lines are perpendicular when (coeff. of \\(x^2\\)) + (coeff. of \\(y^2\\)) \\(= 0\\), i.e. \\(a + b = 0\\).\nSo \\(p + 3 = 0 \\Rightarrow p = -3\\).\n\nNow use the pair-of-lines condition \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\) with \\(a = -3,\\ b = 3,\\ h = -4,\\ g = 7,\\ f = 1,\\ c = q\\):\n\\(abc = (-3)(3)(q) = -9q\\),\n\\(2fgh = 2(1)(7)(-4) = -56\\),\n\\(af^2 = (-3)(1)^2 = -3\\),\n\\(bg^2 = (3)(7)^2 = 147\\),\n\\(ch^2 = q(-4)^2 = 16q\\).\n\nSo \\(-9q + (-56) - (-3) - 147 - 16q = 0 \\Rightarrow -25q - 200 = 0 \\Rightarrow q = -8\\).\n\n**Final answer:** \\(p = -3\\) and \\(q = -8\\)."
+  },
+  {
+    "id": "2c47c1f9-ef45-4f3c-9269-ceb1ff42b882",
+    "ref": "4.3 Q8",
+    "solution": "Given \\(2x^2 + 8xy + py^2 + qx + 2y - 15 = 0\\). Compare with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\):\n\\(a = 2,\\ b = p,\\ c = -15,\\ 2h = 8 \\Rightarrow h = 4,\\ 2g = q \\Rightarrow g = \\tfrac{q}{2},\\ 2f = 2 \\Rightarrow f = 1\\).\n\n**Parallel condition:** for parallel lines \\(h^2 = ab\\).\nSo \\((4)^2 = 2p \\Rightarrow 16 = 2p \\Rightarrow p = 8\\).\n\nNow use \\(abc + 2fgh - af^2 - bg^2 - ch^2 = 0\\) with \\(a = 2,\\ b = 8,\\ h = 4,\\ g = \\tfrac{q}{2},\\ f = 1,\\ c = -15\\):\n\\(abc = (2)(8)(-15) = -240\\),\n\\(2fgh = 2(1)\\left(\\tfrac{q}{2}\\right)(4) = 4q\\),\n\\(af^2 = 2(1)^2 = 2\\),\n\\(bg^2 = 8\\left(\\tfrac{q}{2}\\right)^2 = 8 \\cdot \\tfrac{q^2}{4} = 2q^2\\),\n\\(ch^2 = (-15)(4)^2 = -240\\).\n\nSo \\(-240 + 4q - 2 - 2q^2 - (-240) = 0 \\Rightarrow -2q^2 + 4q - 2 = 0\\).\nDivide by \\(-2\\): \\(q^2 - 2q + 1 = 0 \\Rightarrow (q - 1)^2 = 0 \\Rightarrow q = 1\\).\n\n**Final answer:** \\(p = 8\\) and \\(q = 1\\)."
+  },
+  {
+    "id": "2ea3c623-01d6-46d5-a878-3dead972123c",
+    "ref": "4.3 Q9",
+    "solution": "[Textbook answer-key error: the printed answer key has \\(-25xy\\); it should be \\(-25y^2\\), giving \\(36x^2 - 25y^2 - 252x + 350y - 784 = 0\\) (our answer).]\n\nThe two pairs of opposite sides are given by \\(x^2 - 7x + 6 = 0\\) and \\(y^2 - 14y + 40 = 0\\).\n\nFactorise: \\(x^2 - 7x + 6 = (x - 1)(x - 6) = 0 \\Rightarrow x = 1,\\ x = 6\\) (two vertical lines).\n\\(y^2 - 14y + 40 = (y - 4)(y - 10) = 0 \\Rightarrow y = 4,\\ y = 10\\) (two horizontal lines).\n\nThese four lines form a rectangle with vertices\n\\(A(1, 4),\\ B(6, 4),\\ C(6, 10),\\ D(1, 10)\\).\n\nThe diagonals join opposite vertices \\(A(1,4)\\)–\\(C(6,10)\\) and \\(B(6,4)\\)–\\(D(1,10)\\).\n\n**Diagonal AC:** slope \\(= \\dfrac{10 - 4}{6 - 1} = \\dfrac{6}{5}\\). Equation: \\(y - 4 = \\tfrac65(x - 1) \\Rightarrow 5y - 20 = 6x - 6 \\Rightarrow 6x - 5y + 14 = 0\\).\n\n**Diagonal BD:** slope \\(= \\dfrac{10 - 4}{1 - 6} = -\\dfrac{6}{5}\\). Equation: \\(y - 4 = -\\tfrac65(x - 6) \\Rightarrow 5y - 20 = -6x + 36 \\Rightarrow 6x + 5y - 56 = 0\\).\n\nThe joint equation of the diagonals is the product:\n\\((6x - 5y + 14)(6x + 5y - 56) = 0\\).\nExpanding: \\(36x^2 + 30xy - 336x - 30xy - 25y^2 + 280y + 84x + 70y - 784 = 0\\), i.e.\n\\(36x^2 - 25y^2 - 252x + 350y - 784 = 0\\).\n\n**Final answer:** \\(36x^2 - 25y^2 - 252x + 350y - 784 = 0\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "A sketch of the rectangle with vertices A(1,4), B(6,4), C(6,10), D(1,10) formed by the four lines x=1, x=6, y=4, y=10, with the two diagonals AC and BD drawn crossing at the centre, makes it clear which vertices the diagonals join."
+  },
+  {
+    "id": "bcd43c6a-d308-47ac-b230-acc37de4a088",
+    "ref": "4.3 Q10",
+    "solution": "The pair \\(x^2 - 4xy + y^2 = 0\\) passes through the origin \\(O\\); the two lines meet the line \\(2x + 3y - 1 = 0\\) at \\(A\\) and \\(B\\). The median from \\(O\\) goes to the midpoint \\(M\\) of \\(AB\\).\n\n**Slopes of the pair:** in \\(x^2 - 4xy + y^2 = 0\\) put \\(t = y/x\\): \\(1 - 4t + t^2 = 0 \\Rightarrow t = 2 \\pm \\sqrt3\\). So the lines are \\(y = m_1 x\\) and \\(y = m_2 x\\) with \\(m_1 = 2 + \\sqrt3,\\ m_2 = 2 - \\sqrt3\\).\n\n**Intersection with \\(2x + 3y = 1\\):** for \\(y = mx\\), \\(2x + 3mx = 1 \\Rightarrow x = \\dfrac{1}{2 + 3m},\\ y = \\dfrac{m}{2 + 3m}\\).\nFor \\(m_1 = 2 + \\sqrt3\\): \\(2 + 3m_1 = 8 + 3\\sqrt3\\), so \\(A = \\left(\\tfrac{1}{8 + 3\\sqrt3},\\ \\tfrac{2 + \\sqrt3}{8 + 3\\sqrt3}\\right)\\).\nFor \\(m_2 = 2 - \\sqrt3\\): \\(2 + 3m_2 = 8 - 3\\sqrt3\\), so \\(B = \\left(\\tfrac{1}{8 - 3\\sqrt3},\\ \\tfrac{2 - \\sqrt3}{8 - 3\\sqrt3}\\right)\\).\n\n**Midpoint M:** using \\((8 + 3\\sqrt3)(8 - 3\\sqrt3) = 64 - 27 = 37\\):\n\\(x_A + x_B = \\dfrac{(8 - 3\\sqrt3) + (8 + 3\\sqrt3)}{37} = \\dfrac{16}{37}\\), so \\(x_M = \\dfrac{8}{37}\\).\nFor the \\(y\\)-coordinates: \\((2 + \\sqrt3)(8 - 3\\sqrt3) = 7 + 2\\sqrt3\\) and \\((2 - \\sqrt3)(8 + 3\\sqrt3) = 7 - 2\\sqrt3\\), so \\(y_A + y_B = \\dfrac{14}{37}\\), giving \\(y_M = \\dfrac{7}{37}\\).\n\nThus \\(M = \\left(\\tfrac{8}{37},\\ \\tfrac{7}{37}\\right)\\).\n\n**Median from O:** it passes through \\(O(0,0)\\) and \\(M\\), with slope \\(\\dfrac{7/37}{8/37} = \\dfrac78\\). Its equation is \\(y = \\tfrac78 x\\), i.e. \\(7x - 8y = 0\\).\n\n**Final answer:** The median from O is \\(7x - 8y = 0\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "A sketch of triangle OAB — the two lines of x^2-4xy+y^2=0 through the origin O, the cutting line 2x+3y-1=0 meeting them at A and B, and the median from O to the midpoint M of AB — clarifies the construction the median is drawn on."
+  },
+  {
+    "id": "d679ad76-2f1d-4fea-b987-94d384e79ad8",
+    "ref": "4.3 Q11",
+    "solution": "Given \\(x^2 - y^2 - 2x + 1 = 0\\).\n\nGroup the terms in \\(x\\): \\(x^2 - 2x + 1 - y^2 = (x - 1)^2 - y^2 = 0\\).\n\nThis is a difference of squares: \\((x - 1)^2 - y^2 = \\big[(x - 1) - y\\big]\\big[(x - 1) + y\\big] = 0\\).\n\nSo the two separate lines are\n\\(x - y - 1 = 0\\) and \\(x + y - 1 = 0\\).\n\n**Point of intersection:** solve the two lines simultaneously. Adding them: \\((x - y - 1) + (x + y - 1) = 0 \\Rightarrow 2x - 2 = 0 \\Rightarrow x = 1\\). Substituting into \\(x + y - 1 = 0\\): \\(1 + y - 1 = 0 \\Rightarrow y = 0\\).\n\n**Final answer:** The point of intersection of the lines is \\((1, 0)\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "A quick sketch of the two lines x-y-1=0 and x+y-1=0 crossing in an X shape at (1,0) on the x-axis makes the point of intersection immediately visible."
+  }
 ]

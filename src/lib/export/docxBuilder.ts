@@ -207,7 +207,9 @@ export async function buildQuestionPaper(
 
 export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
   const builder: Builder = { ommlByIndex: [] };
-  const children: Paragraph[] = [];
+  // (Paragraph | Table) — a solution may contain a GFM pipe-table, which
+  // renders as a native Word table rather than a paragraph.
+  const children: (Paragraph | Table)[] = [];
 
   children.push(titleParagraph(input.title));
   children.push(
@@ -234,22 +236,23 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
     if (q.questionFormat === "subjective") {
       // Subjective questions have no A/B/C/D letter — the "answer" is the model
       // answer itself. Print it inline (or a pending note); never `(?)`.
-      children.push(
-        new Paragraph({
-          numbering: { reference: NUM_REF, level: 0 },
-          children: q.solution
-            ? [
-                new TextRun({ text: "Model answer: ", italics: true, bold: true }),
-                ...mathRuns(q.solution, builder),
-              ]
-            : [
-                new TextRun({
-                  text: "(subjective — model answer pending)",
-                  italics: true,
-                }),
-              ],
-        })
-      );
+      if (q.solution) {
+        children.push(
+          ...solutionBlocks("Model answer: ", q.solution, builder, { numbered: true })
+        );
+      } else {
+        children.push(
+          new Paragraph({
+            numbering: { reference: NUM_REF, level: 0 },
+            children: [
+              new TextRun({
+                text: "(subjective — model answer pending)",
+                italics: true,
+              }),
+            ],
+          })
+        );
+      }
       if (input.includeSolutions) {
         const solImg = solutionImagePara(q, input.imageBytes);
         if (solImg) children.push(solImg);
@@ -271,13 +274,7 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
       );
       if (input.includeSolutions && q.solution) {
         children.push(
-          new Paragraph({
-            indent: { left: 720 },
-            children: [
-              new TextRun({ text: "Solution: ", italics: true, bold: true }),
-              ...mathRuns(q.solution, builder),
-            ],
-          })
+          ...solutionBlocks("Solution: ", q.solution, builder, { indent: 720 })
         );
       }
       if (input.includeSolutions) {
@@ -302,13 +299,7 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
     );
     if (input.includeSolutions && q.solution) {
       children.push(
-        new Paragraph({
-          indent: { left: 720 },
-          children: [
-            new TextRun({ text: "Solution: ", italics: true, bold: true }),
-            ...mathRuns(q.solution, builder),
-          ],
-        })
+        ...solutionBlocks("Solution: ", q.solution, builder, { indent: 720 })
       );
     }
     if (input.includeSolutions) {
@@ -451,6 +442,68 @@ function questionParagraphs(
     }
   }
 
+  return out;
+}
+
+/**
+ * Render a SOLUTION (or subjective model answer) as prose + native Word tables.
+ *
+ * The stem and context paths have always gone through `parseTableBlocks`; the
+ * solution path did not, so a GFM pipe-table in a solution printed as raw
+ * `| a | b |` text in the downloaded answer key. Same defect the web renderer
+ * had until 2026-07-06. Long-form fields (text / context / solution) must all
+ * handle prose + math + table — see tests/docx-solution-table.test.ts.
+ *
+ * The `label` ("Solution: " / "Model answer: ") rides on the first PARAGRAPH;
+ * if the solution opens with a table, the label gets its own paragraph first so
+ * it is never lost.
+ */
+function solutionBlocks(
+  label: string,
+  solution: string,
+  builder: Builder,
+  opts: { numbered?: boolean; indent?: number } = {}
+): (Paragraph | Table)[] {
+  const out: (Paragraph | Table)[] = [];
+  const labelRun = () => new TextRun({ text: label, italics: true, bold: true });
+  const paraProps = () => ({
+    ...(opts.indent ? { indent: { left: opts.indent } } : {}),
+  });
+
+  const blocks = parseTableBlocks(solution);
+  let labelled = false;
+  for (const b of blocks) {
+    const first = !labelled;
+    const numbering =
+      first && opts.numbered ? { numbering: { reference: NUM_REF, level: 0 } } : {};
+    if (b.kind === "text") {
+      out.push(
+        new Paragraph({
+          ...numbering,
+          ...paraProps(),
+          children: [...(first ? [labelRun()] : []), ...mathRuns(b.text, builder)],
+        })
+      );
+      labelled = true;
+    } else {
+      if (first) {
+        out.push(new Paragraph({ ...numbering, ...paraProps(), children: [labelRun()] }));
+        labelled = true;
+      }
+      out.push(docxTable(b, builder));
+    }
+  }
+  if (!labelled) {
+    // Solution was empty/whitespace-only — still print the label paragraph so
+    // the numbering (subjective) isn't dropped.
+    out.push(
+      new Paragraph({
+        ...(opts.numbered ? { numbering: { reference: NUM_REF, level: 0 } } : {}),
+        ...paraProps(),
+        children: [labelRun()],
+      })
+    );
+  }
   return out;
 }
 

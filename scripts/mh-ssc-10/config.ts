@@ -288,6 +288,36 @@ export const CATALOG: Record<string, SubjectCatalog> = {
         "Disaster Management and Mitigation",
         "First Aid",
       ],
+      // OLD-syllabus (pre-2020) Science II chapters surfaced by the 2018 board
+      // paper. Before the 2020 course revision, Paper II was NOT Biology-only —
+      // it carried a Chemistry half (carbon compounds, metallurgy, reaction
+      // types) plus the Biology "Control and Co-ordination" chapter that the
+      // revised course dropped. Named to match the Science I catalog where the
+      // topic is the same chapter; kept as honest distinct chapters (a later
+      // Phase-D pass can merge/canonicalise if preferred).
+      "Chemical Reactions and Equations": [
+        "Balancing Chemical Equations",
+        "Types of Chemical Reactions",
+        "Oxidation, Reduction and Corrosion",
+      ],
+      Metallurgy: [
+        "Properties of Metals and Non-Metals",
+        "Reactivity Series and Ionic Compounds",
+        "Extraction of Metals",
+        "Corrosion and Alloys",
+      ],
+      "Carbon Compounds": [
+        "Covalent Bonding in Carbon",
+        "Hydrocarbons and Functional Groups",
+        "Nomenclature and Isomerism",
+        "Important Organic Compounds",
+      ],
+      "Control and Co-ordination": [
+        "Nervous System and Neurons",
+        "Human Brain and Reflex Action",
+        "Endocrine System and Hormones",
+        "Plant Hormones and Tropisms",
+      ],
     },
   },
 };

@@ -1,0 +1,146 @@
+/**
+ * A GFM pipe-table inside a SOLUTION must export as a native Word table
+ * (<w:tbl>) in the answer key — for every question format.
+ *
+ * Why this test exists: `parseTableBlocks` was wired into the docx stem and
+ * context paths but NOT the solution path, which rendered solutions through
+ * `mathRuns` alone. So a solution table printed as raw `| a | b |` pipes in the
+ * downloaded answer key. The web renderer had the identical bug and was fixed
+ * on 2026-07-06 (`/board` + `/browse` moved to `BlockText`); the exporter was
+ * never brought along — 123 PUBLIC questions carry a table in their solution.
+ *
+ * This is the render CONTRACT test: every long-form field (text, context,
+ * solution) must handle prose + math + table on every surface. If a new field
+ * or a new surface is added and forgets tables, this fails.
+ */
+import { describe, it, expect } from "vitest";
+import JSZip from "jszip";
+import { buildAnswerKey } from "@/lib/export/docxBuilder";
+import type { QuestionRow } from "@/lib/questions/query";
+
+const SOLUTION_WITH_TABLE = [
+  "Measure of central angle = (No. of persons / Total) x 360.",
+  "| Age group | Persons | Central angle |",
+  "|---|---|---|",
+  "| 20 - 25 | 80 | 144 |",
+  "| 25 - 30 | 60 | 108 |",
+  "Hence the pie diagram can be drawn.",
+].join("\n");
+
+const base = {
+  context: null,
+  difficulty: "EASY" as const,
+  imageUrl: null,
+  solutionImageUrl: null,
+  setId: null,
+  exam: { id: "e", name: "Maharashtra State Board Class 10" },
+  subject: { id: "s", name: "Algebra" },
+  chapter: { id: "c", name: "Statistics" },
+  subtopic: null,
+  questionNumber: null,
+  pyqYear: null,
+  pyqMonth: null,
+  pyqNote: null,
+};
+
+const MCQ_Q: QuestionRow = {
+  ...base,
+  id: "q-mcq",
+  text: "Complete the activity for the pie diagram.",
+  solution: SOLUTION_WITH_TABLE,
+  options: [
+    { label: "A" as const, text: "144", isCorrect: true, imageUrl: null },
+    { label: "B" as const, text: "108", isCorrect: false, imageUrl: null },
+    { label: "C" as const, text: "63", isCorrect: false, imageUrl: null },
+    { label: "D" as const, text: "45", isCorrect: false, imageUrl: null },
+  ],
+};
+
+const SUBJECTIVE_Q: QuestionRow = {
+  ...base,
+  id: "q-subj",
+  text: "Complete the following activity to find the central angles.",
+  questionFormat: "subjective",
+  solution: SOLUTION_WITH_TABLE,
+  options: [],
+};
+
+const NUMERIC_Q: QuestionRow = {
+  ...base,
+  id: "q-num",
+  text: "Find the central angle for the 20-25 age group.",
+  questionFormat: "numeric",
+  numericAnswer: 144,
+  solution: SOLUTION_WITH_TABLE,
+  options: [],
+};
+
+const NO_TABLE_Q: QuestionRow = {
+  ...base,
+  id: "q-plain",
+  text: "What is the mean?",
+  solution: "Mean = 141/50 = 2.82 litre.",
+  options: [
+    { label: "A" as const, text: "2.82", isCorrect: true, imageUrl: null },
+    { label: "B" as const, text: "3.10", isCorrect: false, imageUrl: null },
+    { label: "C" as const, text: "2.50", isCorrect: false, imageUrl: null },
+    { label: "D" as const, text: "1.41", isCorrect: false, imageUrl: null },
+  ],
+};
+
+async function documentXml(buf: Buffer): Promise<string> {
+  const zip = await JSZip.loadAsync(buf);
+  return zip.file("word/document.xml")!.async("text");
+}
+
+/** Cell values must land in real table cells, not a raw pipe run. */
+function assertTableRendered(xml: string) {
+  expect(xml).toContain("<w:tbl>");
+  for (const v of ["Age group", "Persons", "Central angle", "144", "108"]) {
+    expect(xml).toContain(v);
+  }
+  // The separator row must never survive as literal text.
+  expect(xml).not.toContain("|---|");
+  // Prose either side of the table is preserved.
+  expect(xml).toContain("Hence the pie diagram can be drawn.");
+}
+
+describe("docx answer key — tables inside solutions", () => {
+  it("renders a solution table for an MCQ", async () => {
+    const xml = await documentXml(
+      await buildAnswerKey({ title: "T", questions: [MCQ_Q], includeSolutions: true })
+    );
+    assertTableRendered(xml);
+  });
+
+  it("renders a solution table for a SUBJECTIVE model answer", async () => {
+    const xml = await documentXml(
+      await buildAnswerKey({ title: "T", questions: [SUBJECTIVE_Q], includeSolutions: true })
+    );
+    assertTableRendered(xml);
+    expect(xml).toContain("Model answer");
+  });
+
+  it("renders a solution table for a NUMERIC question", async () => {
+    const xml = await documentXml(
+      await buildAnswerKey({ title: "T", questions: [NUMERIC_Q], includeSolutions: true })
+    );
+    assertTableRendered(xml);
+  });
+
+  it("emits no table when the solution has none (no regression)", async () => {
+    const xml = await documentXml(
+      await buildAnswerKey({ title: "T", questions: [NO_TABLE_Q], includeSolutions: true })
+    );
+    expect(xml).not.toContain("<w:tbl>");
+    expect(xml).toContain("2.82");
+  });
+
+  it("omits solutions entirely when includeSolutions is false", async () => {
+    const xml = await documentXml(
+      await buildAnswerKey({ title: "T", questions: [MCQ_Q], includeSolutions: false })
+    );
+    expect(xml).not.toContain("<w:tbl>");
+    expect(xml).not.toContain("Age group");
+  });
+});
