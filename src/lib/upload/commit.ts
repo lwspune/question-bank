@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { literalNewlineFields } from "./textGuard";
 import type { ParsedRowPayload, OptionLabel } from "./validate";
 import { makeTaxonomyResolver } from "./taxonomy";
 
@@ -137,6 +138,24 @@ export async function commitStaged(
       result.errors.push({
         sourceRow: row.sourceRow,
         message: `Subject "${row.subjectName}" does not exist for this exam`,
+      });
+      continue;
+    }
+
+    // Reject literal `\n` rather than silently repairing it: content_hash was
+    // computed by the caller from this exact text, so rewriting it here would
+    // desynchronise the stored text from the hash's preimage and duplicate the
+    // row on the next re-ingest. Fix the SOURCE (run normalizeNewlines when
+    // building the payload) so source, DB and hash stay consistent.
+    const badFields = literalNewlineFields(row);
+    if (badFields.length > 0) {
+      result.failed++;
+      result.errors.push({
+        sourceRow: row.sourceRow,
+        message:
+          `Literal "\\n" (backslash + n) in ${badFields.join(", ")} — this never ` +
+          `renders as a line break and breaks GFM pipe-tables. Run ` +
+          `normalizeNewlines() on the source before computing content_hash.`,
       });
       continue;
     }
