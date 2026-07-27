@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { subjectiveContentHash } from "../src/lib/upload/hash";
 import {
   buildRecords,
   latexImbalances,
@@ -221,5 +222,52 @@ describe("latexImbalances", () => {
     const bad = latexImbalances(rows);
     expect(bad).toHaveLength(1);
     expect(bad[0]).toMatch(/stem/);
+  });
+});
+
+/**
+ * Long-form fields must be newline-normalised BEFORE the content hash is taken,
+ * so the stored text always equals the hash's preimage. Without this an agent
+ * JSON that double-escaped its newlines ships a literal two-char backslash-n,
+ * which silently kills GFM pipe-tables on the website AND in the Word export —
+ * and `commitStaged` now rejects such rows outright rather than repairing them
+ * at insert (repairing there would break the text==preimage invariant and
+ * duplicate the row on re-ingest). See src/lib/upload/textGuard.ts.
+ *
+ * NOTE: LITERAL is spelled with a doubled backslash in the source ("\\n") so the
+ * runtime value is the 2-character sequence, not a newline.
+ */
+describe("buildRecords — literal backslash-n normalisation", () => {
+  function subjectiveRow(over: Record<string, unknown> = {}) {
+    return {
+      ref: "Ex 1.1 Q1",
+      format: "subjective" as const,
+      bucket: "exercise" as const,
+      subtopic: "Statements and Logical Connectives",
+      difficulty: "EASY",
+      stem: "Data:\\n\\n| p | q |\\n|---|---|\\n| T | F |",
+      solution: "Step one.\\nStep two.",
+      ...over,
+    };
+  }
+
+  it("converts a literal backslash-n to a real newline in stem and solution", () => {
+    const { rows } = buildRecords(CH, [subjectiveRow()] as never);
+    expect(rows[0].text).toContain("\n");
+    expect(rows[0].text).not.toContain("\\n");
+    expect(rows[0].solution).toBe("Step one.\nStep two.");
+  });
+
+  it("hashes the NORMALISED stem, so stored text is the hash preimage", () => {
+    const { rows } = buildRecords(CH, [subjectiveRow()] as never);
+    expect(rows[0].contentHash).toBe(
+      subjectiveContentHash(rows[0].text, rows[0].context ?? null)
+    );
+  });
+
+  it("leaves LaTeX commands beginning with backslash-n untouched", () => {
+    const stem = "Given \\(a \\neq b\\) and \\(\\nabla f = 0\\).";
+    const { rows } = buildRecords(CH, [subjectiveRow({ stem })] as never);
+    expect(rows[0].text).toBe(stem);
   });
 });

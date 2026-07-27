@@ -11,6 +11,7 @@
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel, Difficulty } from "../../src/lib/upload/validate";
 export { latexImbalances } from "../stateboard/lib";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
 const DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
@@ -100,17 +101,26 @@ export function buildPaperRecords(catalog: PaperCatalog, questions: PaperQuestio
       flags.push({ ref: q.ref, reason: "answer/solution AI-derived — REVIEW-flagged, awaiting human spot-check" });
     }
 
+    // Normalise long-form fields ONCE, before both the payload and the hash, so
+    // stored text == the hash's preimage. commitStaged REJECTS a literal
+    // backslash-n rather than repairing it, precisely to keep that invariant.
+    // Math zones are masked, so LaTeX commands like \neq / \nabla / \nu are
+    // untouched.
+    const stem = normalizeNewlines(q.stem);
+    const ctx = q.context ? normalizeNewlines(q.context) : q.context;
+    const sol = q.solution ? normalizeNewlines(q.solution) : q.solution;
+
     const base = {
       sourceRow,
       questionNumber: q.ref,
       subjectName: catalog.subjectName,
       chapterName: q.chapter,
       subtopicName: q.subtopic,
-      context: q.context,
+      context: ctx,
       setLabel: q.setLabel,
-      text: q.stem,
+      text: stem,
       difficulty,
-      solution: q.solution ?? undefined,
+      solution: sol ?? undefined,
     };
 
     if (q.format === "subjective") {
@@ -121,7 +131,7 @@ export function buildPaperRecords(catalog: PaperCatalog, questions: PaperQuestio
         ...base,
         questionFormat: "subjective",
         options: [],
-        contentHash: subjectiveContentHash(q.stem, q.context ?? null),
+        contentHash: subjectiveContentHash(stem, ctx ?? null),
       });
       continue;
     }
@@ -143,7 +153,7 @@ export function buildPaperRecords(catalog: PaperCatalog, questions: PaperQuestio
       ...base,
       questionFormat: "mcq",
       options,
-      contentHash: contentHash(q.stem, options.map((o) => o.text), answer ?? ""),
+      contentHash: contentHash(stem, options.map((o) => o.text), answer ?? ""),
     });
   }
 

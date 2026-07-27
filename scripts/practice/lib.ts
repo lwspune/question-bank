@@ -1,6 +1,7 @@
 // Pure helpers for the NDA Maths practice ingestion pipeline.
 // Unit-tested in tests/practice-extract.test.ts. No IO here.
 import { contentHash } from "../../src/lib/upload/hash";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload, OptionLabel, Difficulty } from "../../src/lib/upload/validate";
 
 const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
@@ -157,18 +158,24 @@ export function buildRecords(
     const solution = solutions.get(q.number);
     if (!solution) flags.push({ number: q.number, reason: "no solution in source" });
 
+    // Normalise long-form fields before hashing so stored text == the hash's
+    // preimage. commitStaged rejects a literal backslash-n rather than
+    // repairing it, precisely to keep that invariant.
+    const stem = normalizeNewlines(q.stem);
+    const sol = solution ? normalizeNewlines(solution) : solution;
+
     rows.push({
       sourceRow: q.number,
       questionNumber: String(q.number),
       subjectName: topic.subjectName ?? "Mathematics",
       chapterName: topic.chapterName,
       subtopicName: q.subtopic,
-      text: q.stem,
+      text: stem,
       difficulty,
-      solution: solution ?? undefined,
+      solution: sol ?? undefined,
       options,
       contentHash: contentHash(
-        q.stem,
+        stem,
         options.map((o) => o.text),
         [...correct].sort().join(",")
       ),

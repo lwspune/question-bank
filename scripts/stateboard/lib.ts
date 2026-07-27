@@ -7,6 +7,7 @@
 // shared instruction goes in `context`, each sub-item is its own row, and
 // siblings share a `setLabel` (commit turns it into a set_id).
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { findLatexImbalance } from "../practice/lib";
 import type { ParsedRowPayload, OptionLabel, Difficulty } from "../../src/lib/upload/validate";
 
@@ -88,17 +89,28 @@ export function buildRecords(chapter: BuildChapter, questions: SBQuestion[]): Bu
       throw new Error(`${q.ref}: difficulty "${q.difficulty}" not EASY|MODERATE|HARD`);
     }
 
+    // Normalise the long-form fields ONCE, before both the payload and the hash,
+    // so the stored text is always the hash's preimage. An agent-written JSON
+    // that double-escaped its newlines otherwise ships a literal two-char `\n`
+    // that silently kills GFM pipe-tables on the website AND in the Word export
+    // — and `commitStaged` now rejects such rows outright rather than repairing
+    // them at insert (repairing there would break exactly that text==preimage
+    // invariant). Math zones are masked, so `\neq`/`\nabla`/`\nu` are untouched.
+    const stem = normalizeNewlines(q.stem);
+    const ctx = q.context ? normalizeNewlines(q.context) : q.context;
+    const sol = q.solution ? normalizeNewlines(q.solution) : q.solution;
+
     const base = {
       sourceRow,
       questionNumber: q.ref,
       subjectName: chapter.subjectName,
       chapterName: chapter.chapterName,
       subtopicName: q.subtopic,
-      context: q.context,
+      context: ctx,
       setLabel: q.setLabel,
-      text: q.stem,
+      text: stem,
       difficulty,
-      solution: q.solution ?? undefined,
+      solution: sol ?? undefined,
     };
 
     if (q.format === "subjective") {
@@ -112,7 +124,7 @@ export function buildRecords(chapter: BuildChapter, questions: SBQuestion[]): Bu
         ...base,
         questionFormat: "subjective",
         options: [],
-        contentHash: subjectiveContentHash(q.stem, q.context ?? null),
+        contentHash: subjectiveContentHash(stem, ctx ?? null),
       });
       continue;
     }
@@ -134,7 +146,7 @@ export function buildRecords(chapter: BuildChapter, questions: SBQuestion[]): Bu
       ...base,
       questionFormat: "mcq",
       options,
-      contentHash: contentHash(q.stem, options.map((o) => o.text), answer ?? ""),
+      contentHash: contentHash(stem, options.map((o) => o.text), answer ?? ""),
     });
   }
 
