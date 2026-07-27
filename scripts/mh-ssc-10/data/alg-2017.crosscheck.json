@@ -1,0 +1,194 @@
+[
+  {
+    "ref": "Q1(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "Not an A.P. (differences 3, 6 — not constant)",
+    "printedAnswer": "t2 - a = 3, t3 - t2 = 6; difference between successive terms is not constant. Hence it is not an Arithmetic Progression.",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "\\(3 + 2\\sqrt{5}\\)",
+    "printedAnswer": "The other root will be the conjugate of \\(3 - 2\\sqrt{5}\\), i.e. \\(3 + 2\\sqrt{5}\\).",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "S = {1, 2, …, 15}, n(S) = 15",
+    "printedAnswer": "S = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}, n(S) = 15",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(iv)",
+    "verdict": "AGREE",
+    "storedAnswer": "37",
+    "printedAnswer": "(35 + 39)/2 = 74/2 = 37",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(v)",
+    "verdict": "AGREE",
+    "storedAnswer": "7 and 11",
+    "printedAnswer": "a = 3, d = 4; next two terms are a + d, a + 2d, that is 7 and 11.",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(vi)",
+    "verdict": "AGREE",
+    "storedAnswer": "a = 2, b = -1, c = -3",
+    "printedAnswer": "2x^2 - x - 3 = 0; comparing with ax^2 + bx + c = 0 gives a = 2, b = -1, c = -3 (verified on the rendered page 05 — the text layer drops minus signs throughout this PDF)",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "3 and 13",
+    "printedAnswer": "S1 = 3 so first term = 3; S2 = 16 so second term = 16 - 3 = 13",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "\\(\\Delta = 21\\)",
+    "printedAnswer": "b^2 - 4ac = 25 - 4 = 21",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "y = 0; point of intersection (3, 0)",
+    "printedAnswer": "The equation of the X-axis is y = 0; substituting gives x = 3, so the point is (3, 0).",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(iv)",
+    "verdict": "AGREE",
+    "storedAnswer": "\\(\\bar{X} = 1207\\)",
+    "printedAnswer": "X̄ = 1200 + (1/100)(700) = 1200 + 7 = 1207",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(v)",
+    "verdict": "AGREE",
+    "storedAnswer": "S = {HT, TH, HH, TT}, n(S) = 4; A = {HT, TH, HH}, n(A) = 3",
+    "printedAnswer": "S = {HT, TH, HH, TT}, n(S) = 4; A = {HT, TH, HH}, n(A) = 3",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(vi)",
+    "verdict": "AGREE",
+    "storedAnswer": "k = 3",
+    "printedAnswer": "9x + 6y = 18 reduces to 3x + 2y = 6; comparing with kx + 2y = 6 gives k = 3",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "450",
+    "printedAnswer": "a = 100, d = 2, tn = 998 gives n = 450",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(ii)",
+    "verdict": "BOOK-WRONG",
+    "storedAnswer": "\\(x = 4\\) or \\(x = \\dfrac{10}{3}\\)",
+    "printedAnswer": "3x^2 - 12x - 10x + 40 = 0 ⇒ 3x(x - 12) - 10(x - 12) = 0 ⇒ (x - 12)(3x - 10) = 0 ⇒ x = 12 or x = 10/3 (verified on the rendered page 06 — the '12' is genuinely printed, not a text-layer artifact)",
+    "myDerivation": "The book's own split step is right: 3x^2 - 22x + 40 = 3x^2 - 12x - 10x + 40. But 3x^2 - 12x factors as 3x(x - 4), NOT 3x(x - 12); the common bracket is (x - 4), giving (x - 4)(3x - 10) = 0, so x = 4 or 10/3. Substitution settles it: at x = 4, 3(16) - 22(4) + 40 = 48 - 88 + 40 = 0 ✓; at x = 10/3, 3(100/9) - 220/3 + 40 = (100 - 220 + 120)/3 = 0 ✓; at the book's x = 12, 3(144) - 22(12) + 40 = 432 - 264 + 40 = 208 ≠ 0 ✗. Also by Vieta, the roots must multiply to c/a = 40/3, and 12 × 10/3 = 40 ≠ 40/3, while 4 × 10/3 = 40/3 ✓. The book carried the '12' from its own splitting term into the bracket.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "x = -2, y = 3",
+    "printedAnswer": "D = -2, Dx = 16 - 12 = 4, Dy = 6 - 12 = -6; x = -2 and y = 3",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(iv)",
+    "verdict": "AGREE",
+    "storedAnswer": "Adjacent bars of heights 10, 54, 68, 28, 20 over the continuous classes 0-30 … 120-150; tallest bar (68) over 60-90.",
+    "printedAnswer": "Printed as a drawn histogram (solution item 3.v on page 07, a graphic the text layer does not capture): waiting time on X-axis, number of customers on Y-axis, five touching bars whose heights read 10, 54, 68, 28, 20 with the tallest over 60-90.",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(i)",
+    "verdict": "BOOK-WRONG",
+    "storedAnswer": "P(A) = 4/7, P(B) = 2/7, P(C) = 1/7",
+    "printedAnswer": "Pr(A) = 2Pr(B) and Pr(B) = 3Pr(C) ⇒ Pr(A) = 6Pr(C); 6p + 3p + p = 1 ⇒ P(C) = 1/10, P(B) = 3/10, P(A) = 6/10 (verified on the rendered page 08 — the '3' is genuinely printed)",
+    "myDerivation": "The stem (verified on the rendered question page 02) reads 'A is twice as likely to win as B and B is twice as likely to win as C'. So P(A) = 2P(B) and P(B) = 2P(C), hence P(A) = 4P(C). With P(A) + P(B) + P(C) = 1: 4p + 2p + p = 7p = 1 ⇒ p = 1/7, giving P(A) = 4/7, P(B) = 2/7, P(C) = 1/7. The book silently replaced the second 'twice' with 'thrice' (Pr(B) = 3Pr(C)); its ratio 6 : 3 : 1 corresponds to a question that says B is THREE times as likely as C, which this paper does not say. The correct ratio is 4 : 2 : 1.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "Median = 40.6 acres",
+    "printedAnswer": "Median class 35-45, l = 35, f = 25, cf = 36, h = 10; Median = 35 + 5.6 = 40.6",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(iii)(a)",
+    "verdict": "AGREE",
+    "storedAnswer": "Rs 180 crores",
+    "printedAnswer": "(40/360) × Total = 20 ⇒ Total = Rs 180 crores",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(iii)(b)",
+    "verdict": "AGREE",
+    "storedAnswer": "Agriculture Rs 60 crores, Industry Rs 100 crores",
+    "printedAnswer": "Agriculture (120/360) × 180 = Rs 60; Industry (200/360) × 180 = Rs 100",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(iii)(c)",
+    "verdict": "AGREE",
+    "storedAnswer": "Rs 40 crores",
+    "printedAnswer": "Rs 100 - Rs 60 = Rs 40",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q5(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "Rs 40 per dozen",
+    "printedAnswer": "x^2 + 10x - 2000 = 0 ⇒ (x + 50)(x - 40) = 0 ⇒ x = 40 (cost cannot be negative). Original cost Rs 40.",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q5(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "\\(2a + (p + q - 1)d = 0\\), hence \\(S_{p+q} = 0\\)",
+    "printedAnswer": "2a(p - q) + d[(p - q)[(p + q) - 1]] = 0; dividing by (p - q) gives 2a + (p + q - 1)d = 0, so S(p+q) = ((p+q)/2)(0) = 0. Hence proved.",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q5(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "\\(x = -\\dfrac{1}{2},\\ y = \\dfrac{3}{4}\\)",
+    "printedAnswer": "4a - 3b = -12 and 3a + 15b = 8 ⇒ a = -2, b = 4/3 ⇒ x = -1/2 and y = 3/4 (verified on the rendered page 11)",
+    "myDerivation": null,
+    "proposedFix": null
+  }
+]

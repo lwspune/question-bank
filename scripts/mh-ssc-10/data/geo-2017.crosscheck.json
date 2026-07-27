@@ -1,0 +1,186 @@
+[
+  {
+    "ref": "Q1(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "A(ΔABE)/A(ΔBAD) = 2/3",
+    "printedAnswer": "A(ΔABE)/A(ΔBAD) = BE/AD = 6/9 = 2/3",
+    "myDerivation": "Figure on p-00 confirms AB is common to both triangles with BE ⊥ AB at B and AD ⊥ AB at A, so BE and AD are the two heights on the common base AB. Ratio of areas = ratio of heights = 6/9 = 2/3.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "5 cm",
+    "printedAnswer": "distance between centres = 8 − 3 = 5 cm",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(iii)",
+    "verdict": "BOOK-WRONG",
+    "storedAnswer": "height = 3√3 units",
+    "printedAnswer": "the printed final line is '= 3·(√3/2) units', i.e. 3√3/2 ≈ 2.598 — but the line immediately above it is '(√3/2) × 6', which equals 3√3",
+    "myDerivation": "Equilateral triangle of side a: height = (√3/2)a. With a = 6, height = (√3/2)(6) = 3√3 ≈ 5.196. Sanity check by Pythagoras: half-side 3, side 6 ⇒ h = √(36 − 9) = √27 = 3√3. The book's own working line (√3/2)×6 supports 3√3; only its typeset final answer keeps a stray /2 (verified at 2.4× zoom on p-05 — the '2' sits under a fraction bar beneath √3, so this is not a text-layer artifact). Per the brief, the printed worked line is the better evidence and it agrees with us.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(iv)",
+    "verdict": "AGREE",
+    "storedAnswer": "tan(−45°) = −1",
+    "printedAnswer": "tan(−45°) = −tan 45° = −1",
+    "myDerivation": "Minus signs confirmed present on the rendered p-05 (the text layer had dropped them, which would have manufactured a false disagreement).",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(v)",
+    "verdict": "AGREE",
+    "storedAnswer": "slope m = 3, y-intercept c = −5",
+    "printedAnswer": "m = 3 and c = −5",
+    "myDerivation": "The '−5' is confirmed on the rendered p-05; the text layer printed it sign-less as 'c 5'.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q1(vi)",
+    "verdict": "AGREE",
+    "storedAnswer": "44 cm",
+    "printedAnswer": "2πr = 2 × (22/7) × 7 = 44 cm",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "QR = 16 units",
+    "printedAnswer": "PR/QR = PS/SQ ⇒ 12/QR = 6/8 ⇒ QR = 12 × 8/6 = 16 units",
+    "myDerivation": "Figure on p-01 confirms S lies on PQ and RS bisects ∠PRQ, so the angle-bisector theorem applies as stated: PS/SQ = PR/RQ ⇒ 6/8 = 12/QR ⇒ QR = 16.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "PD = 4 units",
+    "printedAnswer": "PA × PB = PC × PD ⇒ 10 × 2 = 5 × PD ⇒ PD = 4 units",
+    "myDerivation": "Figure on p-01 confirms chords AB and CD cross at P INSIDE the circle (not an external secant point), so the intersecting-chords relation PA·PB = PC·PD is the right one: PD = 20/5 = 4.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "Construction steps for a 135° angle at B plus its compass bisector BD; ∠ABD = ∠DBC = 67.5°",
+    "printedAnswer": "The book prints NO text steps for this part — only a drawing (p-06) of ∠ABC = 135° with ray BD bisecting it and the compass arc marks on both arms and on the bisector",
+    "myDerivation": "Judged as a construction, not a numeric match. Our steps (draw ray BC; set off 135° at B to get ray BA; equal-radius arc from B cutting both arms; equal arcs from those two points meeting at D; join BD) are the standard, geometrically valid bisection and reproduce exactly the figure the book draws, including the arc marks. The stated 67.5° halves are correct (135/2).",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(iv)",
+    "verdict": "AGREE",
+    "storedAnswer": "sin θ = 4/5",
+    "printedAnswer": "x = 3, y = 4, r = √(3² + 4²) = 5 ⇒ sin θ = y/r = 4/5",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(v)",
+    "verdict": "AGREE",
+    "storedAnswer": "slope = 7/5",
+    "printedAnswer": "m = (−2 − 5)/(−1 − 4) = −7/−5 = 7/5",
+    "myDerivation": "Rendered p-07 confirms every minus sign the text layer had dropped; the two negatives cancel, so 7/5 is right and there is no sign dispute here.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q2(vi)",
+    "verdict": "BOOK-WRONG",
+    "storedAnswer": "Volume = 9000 cm³",
+    "printedAnswer": "'= 50 × 18 × 10 = 900 cm³' and 'The volume of cuboid is 900 cm³' (the wrong value is printed twice)",
+    "myDerivation": "50 × 18 = 900; 900 × 10 = 9000. So l·b·h = 9000 cm³. The book copies the correct product expression but drops a zero in evaluating it — verified on the rendered p-07, so it is a genuine printing/arithmetic error, not text-layer loss. Our 9000 cm³ is correct.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "Proof that in a 45°-45°-90° triangle each perpendicular side = (1/√2) × hypotenuse",
+    "printedAnswer": "Same proof: ∠A = ∠C = 45° ⇒ AB = BC; AC² = AB² + BC² = 2AB² ⇒ AB = (1/√2)AC",
+    "myDerivation": "Identical logic and identical conclusion. One book slip worth noting: its 'Given' line reads '∠A = ∠C = 45° and ∠D = 90°' — there is no vertex D in ΔABC; it should be ∠B = 90°, which is what our stored answer says. The rest of the printed proof uses ∠B correctly.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(ii)",
+    "verdict": "AGREE",
+    "storedAnswer": "∠AOB = 140°",
+    "printedAnswer": "∠APB = 180° − 140° = 40°; in □OAPB, ∠APB + ∠AOB = 180° ⇒ ∠AOB = 140°",
+    "myDerivation": "Figure on p-02 confirms the configuration: PA and PB are the two tangents meeting at P, and R lies on the ray opposite to PB (B–P–R collinear), so ∠APR and ∠APB really are a linear pair ⇒ ∠APB = 40°. In quadrilateral OAPB the two radius-tangent angles are 90° each, so ∠AOB = 360° − 90° − 90° − 40° = 140°.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "Construction of the tangent from B: circle (C, 3.2), CB = 7.6, midpoint M of CB, semicircle centre M radius MC, A = intersection with the circle, line BA is the tangent",
+    "printedAnswer": "Same six steps, plus the figure on p-09 showing the 3.2 cm circle, CB = 7.6 cm, the perpendicular bisector, M, the semicircle, A and the right angle at A",
+    "myDerivation": "Judged as a construction. Our steps match the printed ones step for step and justify the result (A lies on the circle with diameter CB, so ∠CAB = 90°, i.e. BA ⊥ radius CA ⇒ BA is tangent). Note the book's step 4 says 'radius MP' — P is never defined anywhere in this part; it is a typo for MC (= MB), which is what our stored answer states. So our text is the cleaner of the two.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(iv)",
+    "verdict": "AGREE",
+    "storedAnswer": "51.9 m",
+    "printedAnswer": "tan 60° = AB/BC ⇒ √3 = 90/BC ⇒ BC = 90/√3 = 30√3 = 51.9 m",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q3(v)",
+    "verdict": "AGREE",
+    "storedAnswer": "294 cm²",
+    "printedAnswer": "a³ = 343 ⇒ a = 7; TSA = 6a² = 6 × 7 × 7 = 294 cm²",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "Proof that opposite angles of a cyclic quadrilateral are supplementary",
+    "printedAnswer": "Same proof: ∠BAD = ½ m(arc BCD), ∠BCD = ½ m(arc DAB); adding gives ½ × 360° = 180°, and the remaining pair follows from the angle sum 360°",
+    "myDerivation": null,
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(ii)",
+    "verdict": "BOOK-WRONG",
+    "storedAnswer": "(3x + 4y)² − (4x − 3y)² = 625",
+    "printedAnswer": "(4x + 3y)² − (4x − 3y)² = 576, built on the printed lines '4x = 12 cosec θ + 12 cot θ' and '3y = 12 cosec θ − 12 cot θ'",
+    "myDerivation": "Multiplying x = 3cosecθ + 4cotθ by 4 gives 4x = 12cosecθ + 16cotθ, NOT 12cosecθ + 12cotθ; multiplying y = 4cosecθ − 3cotθ by 3 gives 3y = 12cosecθ − 9cotθ, NOT 12cosecθ − 12cotθ. The book has fabricated the cot coefficients so that they cancel. Correct elimination: 3x + 4y = 25cosecθ and 4x − 3y = 25cotθ, so cosec²θ − cot²θ = 1 gives (3x+4y)² − (4x−3y)² = 625. Numerical disproof at θ = 30° (cosecθ = 2, cotθ = √3): x = 12.9282, y = 2.8038. Ours: (3x+4y)² − (4x−3y)² = 50.000² − 43.3013² = 2500 − 1875 = 625 ✓. Book: (4x+3y)² − (4x−3y)² = 4(4x)(3y) = 48xy = 1739.9 ≠ 576 ✗. Verified against the rendered p-12, so the wrong coefficients are genuinely printed, not text-layer damage.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q4(iii)",
+    "verdict": "AGREE",
+    "storedAnswer": "3582.74 cm²",
+    "printedAnswer": "h₁ = 60 − 10 − 10 = 40; l = 10√2 = 14.1; TSA = πr(l + 2h + 2r) = 3.14 × 10 × 114.1 = 3582.74 cm²",
+    "myDerivation": "Independently: 14.1 + 80 + 20 = 114.1; 31.4 × 114.1 = 3582.74. Agrees.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q5(i)",
+    "verdict": "AGREE",
+    "storedAnswer": "Proof that BD/CD = AB/AC via the construction CE ∥ DA",
+    "printedAnswer": "Same proof and same construction (figure on p-13 shows E on AB, CE ∥ AD, angles 1–4 marked)",
+    "myDerivation": "Figure-verified on p-13: E lies on side AB, CE is drawn parallel to the exterior bisector AD, and the angle labels 1–4 match the roles our proof gives them. Minor book slip: its final justification bracket reads '[Since AE = EC]' although the line it depends on establishes AE = AC (and AE = AC is what makes the substitution work). Our stored answer says 'Since AE = AC', which is the correct one.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q5(ii)",
+    "verdict": "NO-BOOK-ANSWER",
+    "storedAnswer": "Construction of circumcircle + incircle of equilateral ΔXYZ (side 6.5 cm), and ratio of radii (incircle : circumcircle) = 1 : 2",
+    "printedAnswer": "The book prints the 7 construction steps (p-15) and the figure (p-14, ΔXYZ with 6.5 cm sides, both circles drawn) but NEVER states the ratio the question asks for — there is no printed answer for the numeric part",
+    "myDerivation": "Construction part: our steps match the printed ones (perpendicular bisectors → O → circle through a vertex = circumcircle; angle bisectors → circle of radius = distance from O to a side = incircle). Ratio part, derived independently: for an equilateral triangle of side a, circumradius R = a/√3 and inradius r = a/(2√3), so r/R = 1/2, i.e. 1 : 2. (Equivalently the centroid divides each median 2:1 and the incentre/circumcentre/centroid coincide.) Our stored 1 : 2 is correct but is NOT source-verified — the book simply omits it.",
+    "proposedFix": null
+  },
+  {
+    "ref": "Q5(iii)",
+    "verdict": "BOOK-WRONG",
+    "storedAnswer": "median AD: 3x − 2y = 7;  line through C parallel to AB: 3x − 4y = 35",
+    "printedAnswer": "median AD: x − 6y = −19 (from D = (−1, 3));  parallel line: 3x − 4y = −35",
+    "myDerivation": "TWO independent book errors, both confirmed on the rendered p-15. (1) Midpoint: the book writes the correct formula ((x₁+x₂)/2, (y₁+y₂)/2) but then substitutes '(−2 − (−8))/2' — a subtraction where the formula demands addition — getting D = (−1, 3). With B(−3,−2) and C(1,−8) the true midpoint is ((−3+1)/2, (−2+(−8))/2) = (−1, −5). Everything downstream inherits the error: the book's slope 1/6 and equation x − 6y = −19 are the median to a point that isn't the midpoint of BC. Correct: m_AD = (4 − (−5))/(5 − (−1)) = 9/6 = 3/2, and y − 4 = (3/2)(x − 5) ⇒ 3x − 2y = 7. Check: A(5,4) → 15 − 8 = 7 ✓; D(−1,−5) → −3 + 10 = 7 ✓. (2) Sign of the constant: the book's own working line is '4y + 32 = 3x − 3', which rearranges to 3x − 4y = 35, yet it prints the final answer as 3x − 4y = −35. Check with C(1,−8): 3(1) − 4(−8) = 3 + 32 = 35 ✓ — so the printed final answer contradicts the printed working two lines above it, and the working agrees with us. Both parts of our stored answer are correct.",
+    "proposedFix": null
+  }
+]
