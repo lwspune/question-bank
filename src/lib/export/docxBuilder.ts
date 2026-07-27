@@ -607,7 +607,10 @@ function mathRuns(text: string, builder: Builder): ParagraphChild[] {
       const lines = seg.content.split("\n");
       lines.forEach((line, i) => {
         if (i > 0) out.push(new TextRun({ break: 1 }));
-        if (line) out.push(new TextRun({ text: line }));
+        // Markdown **bold** becomes a native Word bold run. Math inside a bold
+        // span stays unbolded: it goes through the OMML path, which carries no
+        // run properties (the web renderer is the same — KaTeX sets its font).
+        if (line) out.push(new TextRun({ text: line, bold: seg.bold ? true : undefined }));
       });
     } else if (seg.type === "underlined-text") {
       // Native Word underline run — bypasses the OMML borderBox path

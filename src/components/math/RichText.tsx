@@ -22,13 +22,9 @@ const renderError = (err: Error) => (
 
 function renderRuns(runs: RichInline[]) {
   return runs.map((r, i) => {
-    if (r.type === "inline") {
-      return (
-        <InlineMath key={i} renderError={renderError}>
-          {r.content}
-        </InlineMath>
-      );
-    }
+    // Block math is never wrapped in <strong>: it renders a block element
+    // (invalid inside inline markup) and KaTeX sets its own font anyway, so
+    // the bold flag would be visually inert.
     if (r.type === "block") {
       return (
         <BlockMath key={i} renderError={renderError}>
@@ -36,14 +32,13 @@ function renderRuns(runs: RichInline[]) {
         </BlockMath>
       );
     }
-    if (r.type === "bold") {
-      return <strong key={i}>{r.content}</strong>;
-    }
-    return (
-      <span key={i} style={{ whiteSpace: "pre-wrap" }}>
-        {r.content}
-      </span>
-    );
+    const node =
+      r.type === "inline" ? (
+        <InlineMath renderError={renderError}>{r.content}</InlineMath>
+      ) : (
+        <span style={{ whiteSpace: "pre-wrap" }}>{r.content}</span>
+      );
+    return r.bold ? <strong key={i}>{node}</strong> : <span key={i}>{node}</span>;
   });
 }
 
