@@ -16,6 +16,7 @@ describe("parseFilters", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "",
       page: 1,
@@ -121,6 +122,7 @@ describe("buildSearchParams", () => {
     pyqYears: [],
     extraIds: [],
     principleSlug: null,
+    fit: "all",
     kind: "pyq",
     q: "",
     page: 1,
@@ -147,6 +149,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "lens",
       page: 2,
@@ -170,6 +173,7 @@ describe("buildSearchParams", () => {
       pyqYears: [2024, 2022],
       extraIds: [],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "wave",
       page: 3,
@@ -193,6 +197,7 @@ describe("buildSearchParams", () => {
         "33333333-3333-3333-3333-333333333333",
       ],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "",
       page: 1,
@@ -212,6 +217,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: "vieta-symmetric-roots",
+      fit: "all",
       kind: "pyq",
       q: "",
       page: 1,
@@ -231,6 +237,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "",
       page: 1,
@@ -248,6 +255,7 @@ describe("buildSearchParams", () => {
       pyqYears: [],
       extraIds: [],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "",
       page: 1,
@@ -265,10 +273,37 @@ describe("buildSearchParams", () => {
       pyqYears: [2024, 2023],
       extraIds: [],
       principleSlug: null,
+      fit: "all",
       kind: "pyq",
       q: "",
       page: 1,
     });
     expect(sp.get("pyqYears")).toBe("2024,2023");
+  });
+});
+
+describe("syllabus fit (JEE → NDA+CET screen)", () => {
+  it("defaults fit to 'all' and rejects unknown values", () => {
+    expect(parseFilters(new URLSearchParams("")).fit).toBe("all");
+    expect(parseFilters(new URLSearchParams("fit=bogus")).fit).toBe("all");
+  });
+
+  it("parses the two active fit values", () => {
+    expect(parseFilters(new URLSearchParams("fit=answerable")).fit).toBe(
+      "answerable"
+    );
+    expect(parseFilters(new URLSearchParams("fit=excluded")).fit).toBe(
+      "excluded"
+    );
+  });
+
+  it("omits the fit param when inactive, emits it when active", () => {
+    const base: Filters = {
+      ...parseFilters(new URLSearchParams("")),
+    };
+    expect(buildSearchParams(base).get("fit")).toBeNull();
+    expect(
+      buildSearchParams({ ...base, fit: "answerable" }).get("fit")
+    ).toBe("answerable");
   });
 });

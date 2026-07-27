@@ -70,6 +70,30 @@ Normalisation now happens in the pure record-builders, immediately before hashin
 
 ---
 
+### Screen the remaining 25 JEE Maths chapters for NDA+CET syllabus fit
+
+Matrices + Determinants is screened (251 q → 239 pass · 12 drop); the machinery ([[syllabus-fit-screen]], migration 0062) is built and the `/browse` filter is live. Every other JEE Maths chapter is still unscreened, so the filter shows them unfiltered behind a caveat.
+
+**Why:** the 95% pass rate is partly an artefact of Matrices being a chapter where NDA runs unusually deep. **Conic Sections (346 q)** and **Three Dimensional Geometry (268 q)** are the two biggest chapters and the likeliest to carry long blacklists — chord of contact, pair of tangents, director circle and skew-line machinery are all plausibly outside both syllabi. Doing those two next both delivers the most questions and stress-tests whether the four-tool blacklist shape generalises.
+
+**How to apply:** per chapter — dump every question (stem + a solution snippet), adjudicate against the taught syllabus, write the drops to `scripts/relevance/data/<screen>.json`, `npx tsx scripts/relevance/commit.ts <file> --apply`, then **append the chapter to `REVIEWED_CHAPTERS` in `src/lib/relevance/config.ts`** (both steps, or the state is wrong in one direction or the other). Add any new out-of-syllabus technique to `BLOCKING_TOOLS` first — the commit script rejects unknown tools. Budget roughly one session per large chapter; it cannot be automated (a keyword screen over solution text over-rejects ~3×).
+
+### Confirm whether MHT-CET teaches elementary row/column transformations
+
+`f0652be7` ("Which matrix canNOT be obtained by a single elementary row operation?") is the only one of 251 verdicts resting on an assumption rather than evidence in this repo. It passes because HSC Class 12 Matrices teaches inverse-by-elementary-transformation — but there is no CET matrices notes chapter to check against, and the CET bank's 50 questions never exercise it.
+
+**Why:** it is a single question, but it is the one place the screen is knowingly unverified, and the same assumption will recur every time a JEE chapter touches elementary transformations.
+
+**How to apply:** check the MHT-CET / Balbharati Class 12 Matrices syllabus. If it is out of scope, add one entry to `scripts/relevance/data/jee-maths-matrices-determinants.json` with a new `elementary-row-ops` tool (register it in `BLOCKING_TOOLS` first) and re-run the commit script — it upserts, so no cleanup is needed.
+
+### Clean up JEE Maths SUBTOPIC taxonomy drift between ingest waves
+
+The 2026-07-24 reshape fixed JEE Maths at **chapter** level (24 → 27 chapters) but left subtopics untouched, and the 2021 and 2024+ ingest waves classified into different subtopic names for the same material. Binomial Theorem carries four near-duplicate buckets (*Remainder and Divisibility* · *Remainder Problems* · *Divisibility and Remainders* · *Divisibility*); `3D Geometry / The Plane` holds 70 questions all pre-2024 while the chapter overall is healthy.
+
+**Why:** it is cosmetic on `/browse` today, but it actively **manufactures false signals in probes** — a subtopic-level year-cliff scan flagged 23 "rationalized-out" topics of which only 2 were real, the rest being this drift (see [[spec-narrower-than-artifact]]). Any future per-subtopic analysis of JEE Maths inherits the same noise.
+
+**How to apply:** the standard [[reclassification-sql-pattern]] — merge the duplicate-named subtopics per chapter, reparenting questions and deleting the empties, then verify 0 empty subtopics and no question-count change. JEE Maths has no `/notes`, `/guide`, mocks or concept tags, so the blast radius is the `/browse` filter dropdown only (the same reason the chapter reshape was safe).
+
 ## 2026-07-25
 
 ### Resolve the 6 Foundation answer-correctness flags left by the `audit:keys` bank sweep

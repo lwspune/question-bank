@@ -22,6 +22,7 @@ const EMPTY_FILTERS: Filters = {
   extraIds: [],
   principleSlug: null,
   kind: "pyq",
+  fit: "all",
   q: "",
   page: 1,
 };
