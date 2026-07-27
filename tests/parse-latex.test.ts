@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   parseLatex,
+  parseRichSegments,
   splitBold,
   parseRichText,
 } from "@/components/math/parseLatex";
@@ -88,6 +89,70 @@ describe("splitBold", () => {
   });
 });
 
+describe("parseRichSegments", () => {
+  it("returns plain prose as a single unbolded text segment", () => {
+    expect(parseRichSegments("hello world")).toEqual([
+      { type: "text", content: "hello world" },
+    ]);
+  });
+
+  it("flags a plain bold span", () => {
+    expect(parseRichSegments("a **b** c")).toEqual([
+      { type: "text", content: "a " },
+      { type: "text", content: "b", bold: true },
+      { type: "text", content: " c" },
+    ]);
+  });
+
+  it("carries bold ACROSS a math zone inside the span", () => {
+    expect(parseRichSegments("**order \\(m \\times n\\) matters**!")).toEqual([
+      { type: "text", content: "order ", bold: true },
+      { type: "inline", content: "m \\times n", bold: true },
+      { type: "text", content: " matters", bold: true },
+      { type: "text", content: "!" },
+    ]);
+  });
+
+  it("carries bold across TWO math zones in one span", () => {
+    expect(parseRichSegments("**\\(a\\) and \\(b\\)**")).toEqual([
+      { type: "inline", content: "a", bold: true },
+      { type: "text", content: " and ", bold: true },
+      { type: "inline", content: "b", bold: true },
+    ]);
+  });
+
+  it("leaves bold adjacent to math unchanged (no regression)", () => {
+    expect(parseRichSegments("**Event** \\(E\\) is a subset")).toEqual([
+      { type: "text", content: "Event", bold: true },
+      { type: "text", content: " " },
+      { type: "inline", content: "E" },
+      { type: "text", content: " is a subset" },
+    ]);
+  });
+
+  it("never treats ** INSIDE a math zone as bold markers", () => {
+    expect(parseRichSegments("\\(a**b**c\\)")).toEqual([
+      { type: "inline", content: "a**b**c" },
+    ]);
+  });
+
+  it("leaves a lone (unpaired) ** as literal text", () => {
+    expect(parseRichSegments("a ** b")).toEqual([{ type: "text", content: "a ** b" }]);
+  });
+
+  it("handles block math inside a bold span", () => {
+    expect(parseRichSegments("**see \\[x^2\\] here**")).toEqual([
+      { type: "text", content: "see ", bold: true },
+      { type: "block", content: "x^2", bold: true },
+      { type: "text", content: " here", bold: true },
+    ]);
+  });
+
+  it("returns empty array for empty input", () => {
+    expect(parseRichSegments("")).toEqual([]);
+  });
+});
+
 describe("parseRichText", () => {
   it("returns a single paragraph for plain prose with inline math", () => {
     expect(parseRichText("hello \\(x\\) world")).toEqual([
@@ -108,8 +173,26 @@ describe("parseRichText", () => {
         type: "paragraph",
         runs: [
           { type: "text", content: "A " },
-          { type: "bold", content: "term" },
+          { type: "text", content: "term", bold: true },
           { type: "text", content: " here" },
+        ],
+      },
+    ]);
+  });
+
+  it("keeps a bold span intact when it CONTAINS inline math", () => {
+    // Regression: bold used to be split per math-fragment, so the opening and
+    // closing ** landed in different strings, never paired, and printed raw.
+    expect(parseRichText("- **Null (zero) matrix \\(O\\):** every entry 0.")).toEqual([
+      {
+        type: "list",
+        items: [
+          [
+            { type: "text", content: "Null (zero) matrix ", bold: true },
+            { type: "inline", content: "O", bold: true },
+            { type: "text", content: ":", bold: true },
+            { type: "text", content: " every entry 0." },
+          ],
         ],
       },
     ]);
@@ -141,7 +224,7 @@ describe("parseRichText", () => {
         type: "list",
         items: [
           [
-            { type: "bold", content: "Event" },
+            { type: "text", content: "Event", bold: true },
             { type: "text", content: " " },
             { type: "inline", content: "E" },
             { type: "text", content: " is a subset" },

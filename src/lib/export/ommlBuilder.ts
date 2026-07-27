@@ -1,9 +1,9 @@
 import temml from "temml";
 import { mml2omml } from "mathml2omml";
-import { parseLatex } from "@/components/math/parseLatex";
+import { parseRichSegments } from "@/components/math/parseLatex";
 
 export type OmmlSegment =
-  | { type: "text"; content: string }
+  | { type: "text"; content: string; bold?: true }
   | { type: "math"; content: string; display: boolean }
   | { type: "underlined-text"; content: string; italic: boolean };
 
@@ -255,11 +255,18 @@ export function prettifyMathFallback(latex: string): string {
  * segments, ready to be emitted into a docx Paragraph.
  */
 export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
-  const parsed = parseLatex(text);
+  // parseRichSegments (not parseLatex) so Markdown `**bold**` is resolved —
+  // it used to pass straight through and print as literal ** in every
+  // downloaded paper — and so a bold span may CONTAIN math.
+  const parsed = parseRichSegments(text);
   const out: OmmlSegment[] = [];
   for (const seg of parsed) {
     if (seg.type === "text") {
-      out.push({ type: "text", content: seg.content });
+      out.push(
+        seg.bold
+          ? { type: "text", content: seg.content, bold: true }
+          : { type: "text", content: seg.content }
+      );
       continue;
     }
     if (seg.type === "inline") {
@@ -284,7 +291,12 @@ export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
       // See prettifyMathFallback — this is the construct-agnostic safety net
       // that catches the mml2omml superscript-on-\cap/\cup-group crash and any
       // future conversion failure. Surfaced by `npm run audit:omml`.
-      out.push({ type: "text", content: prettifyMathFallback(seg.content) });
+      const fallback = prettifyMathFallback(seg.content);
+      out.push(
+        seg.bold
+          ? { type: "text", content: fallback, bold: true }
+          : { type: "text", content: fallback }
+      );
     }
   }
   return out;

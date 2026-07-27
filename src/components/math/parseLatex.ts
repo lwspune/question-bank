@@ -53,27 +53,33 @@ export function maskMathZones(input: string): {
   return { masked, unmask };
 }
 
-export type RichInline =
-  | { type: "text"; content: string }
-  | { type: "bold"; content: string }
-  | { type: "inline"; content: string }
-  | { type: "block"; content: string };
+/**
+ * A run of rendered content: plain text or a math zone, optionally bold.
+ *
+ * Bold is a FLAG, not a segment type, because a `**...**` span may contain
+ * math — `**order \(m \times n\)**` is one bold span spread over a text run
+ * and a math run. (It used to be `{type:"bold"}`, which couldn't express that.)
+ */
+export type RichSegment = {
+  type: "text" | "inline" | "block";
+  content: string;
+  bold?: true;
+};
+
+/** Alias kept for the notes renderer, which speaks in "runs". */
+export type RichInline = RichSegment;
 
 export type RichBlock =
   | { type: "paragraph"; runs: RichInline[] }
   | { type: "list"; items: RichInline[][] };
 
-/**
- * Parse a rich-text string into block structure for the notes renderer:
- * paragraphs and `- ` / `bullet` lists, each carrying inline runs of
- * text / bold / inline-math / block-math. Math zones are masked before the
- * line split so a multi-line block math can't be mistaken for separate lines.
- * Pure; the rendering lives in <RichText>.
- */
-export function parseRichText(input: string): RichBlock[] {
-  if (!input) return [];
+type Zone = { type: "inline" | "block"; content: string };
 
-  const zones: { type: "inline" | "block"; content: string }[] = [];
+const MASK_RE = new RegExp(MASK_OPEN + "(\\d+)" + MASK_CLOSE, "g");
+
+/** Replace math zones with sentinels, returning the zones in mask order. */
+function maskZones(input: string): { masked: string; zones: Zone[] } {
+  const zones: Zone[] = [];
   const masked = input.replace(MATH_PATTERN, (raw) => {
     let type: "inline" | "block";
     let content: string;
@@ -91,29 +97,74 @@ export function parseRichText(input: string): RichBlock[] {
     zones.push({ type, content });
     return MASK_OPEN + i + MASK_CLOSE;
   });
+  return { masked, zones };
+}
 
-  const pushTextRuns = (runs: RichInline[], text: string) => {
-    for (const seg of splitBold(text)) {
-      if (seg.text === "") continue;
-      runs.push(seg.bold ? { type: "bold", content: seg.text } : { type: "text", content: seg.text });
-    }
-  };
+const seg = (
+  type: RichSegment["type"],
+  content: string,
+  bold: boolean
+): RichSegment => (bold ? { type, content, bold: true } : { type, content });
 
-  const maskRe = new RegExp(MASK_OPEN + "(\\d+)" + MASK_CLOSE, "g");
-  const toRuns = (content: string): RichInline[] => {
-    const runs: RichInline[] = [];
-    maskRe.lastIndex = 0;
+/**
+ * Build runs from an ALREADY-MASKED string. Bold is resolved FIRST, on the
+ * masked text, so a bold span can span math zones; only then is each bold /
+ * non-bold piece split at the math sentinels. Doing it the other way round
+ * (the original bug) left the opening and closing `**` in different strings,
+ * so neither paired and both printed literally.
+ */
+function runsFromMasked(masked: string, zones: Zone[]): RichSegment[] {
+  const out: RichSegment[] = [];
+  for (const piece of splitBold(masked)) {
+    MASK_RE.lastIndex = 0;
     let last = 0;
     let m: RegExpExecArray | null;
-    while ((m = maskRe.exec(content)) !== null) {
-      if (m.index > last) pushTextRuns(runs, content.slice(last, m.index));
+    while ((m = MASK_RE.exec(piece.text)) !== null) {
+      if (m.index > last) {
+        out.push(seg("text", piece.text.slice(last, m.index), piece.bold));
+      }
       const z = zones[Number(m[1])];
-      runs.push({ type: z.type, content: z.content });
+      if (z) out.push(seg(z.type, z.content, piece.bold));
       last = m.index + m[0].length;
     }
-    if (last < content.length) pushTextRuns(runs, content.slice(last));
-    return runs;
-  };
+    if (last < piece.text.length) {
+      out.push(seg("text", piece.text.slice(last), piece.bold));
+    }
+  }
+  return out;
+}
+
+/**
+ * Parse an inline string into text / math runs carrying a `bold` flag —
+ * the flat counterpart of `parseRichText` (which adds paragraph + list
+ * structure). Used by <KatexRenderer> and the docx exporter so all three
+ * surfaces resolve `**bold**` and math identically.
+ *
+ * Note this is NOT `parseLatex` with extra fields: `parseLatex` keeps its
+ * bold-blind contract because ~10 ingestion/audit scripts iterate its output
+ * looking only for math zones.
+ */
+export function parseRichSegments(input: string): RichSegment[] {
+  if (!input) return [];
+  const { masked, zones } = maskZones(input);
+  return runsFromMasked(masked, zones);
+}
+
+/**
+ * Parse a rich-text string into block structure for the notes renderer:
+ * paragraphs and `- ` / `bullet` lists, each carrying inline runs of
+ * text / bold / inline-math / block-math. Math zones are masked before the
+ * line split so a multi-line block math can't be mistaken for separate lines.
+ * Pure; the rendering lives in <RichText>.
+ */
+export function parseRichText(input: string): RichBlock[] {
+  if (!input) return [];
+
+  // Mask BEFORE the line split so a multi-line block math can't be mistaken
+  // for separate lines; each line is then turned into runs against the same
+  // zone table.
+  const { masked, zones } = maskZones(input);
+  const toRuns = (content: string): RichInline[] => runsFromMasked(content, zones);
 
   const blocks: RichBlock[] = [];
   let paraBuf: string[] = [];
