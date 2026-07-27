@@ -10,6 +10,9 @@ import {
   getActiveTab,
   examHasMocks,
   DEFAULT_EXAM_SLUG,
+  BOARDS,
+  stdsForBoard,
+  getExamForBoardStd,
 } from "@/lib/exam/examContext";
 
 describe("isPracticeOnlyExam", () => {
@@ -212,5 +215,92 @@ describe("getActiveTab", () => {
     expect(getActiveTab("/browser-other")).toBeNull();
     expect(getActiveTab("/guides")).toBeNull(); // 's' suffix isn't a real route
     expect(getActiveTab("/notes-x")).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Board x Std axis — the written-paper picker's first two dropdowns.
+//
+// The `exams` table CONFLATES board and class into one row (mh-ssc-10 IS
+// "Maharashtra State Board" x 10), so the registry is the only place the two
+// can be separated. These tests pin the derivation, and — just as important —
+// pin the HONEST GAPS: Std 11 and CBSE 9/10 resolve to null because there is no
+// corpus, so the picker can never offer a paper the bank cannot fill.
+// ---------------------------------------------------------------------------
+
+describe("BOARDS", () => {
+  it("lists each board once, in registry order", () => {
+    expect(BOARDS).toEqual(["Maharashtra State Board", "CBSE"]);
+  });
+});
+
+describe("stdsForBoard", () => {
+  it("returns Maharashtra's stds ascending — 11 absent, no corpus", () => {
+    expect(stdsForBoard("Maharashtra State Board")).toEqual([9, 10, 12]);
+  });
+
+  it("returns only Class 12 for CBSE", () => {
+    expect(stdsForBoard("CBSE")).toEqual([12]);
+  });
+
+  it("returns [] for an unknown or empty board", () => {
+    expect(stdsForBoard("ICSE")).toEqual([]);
+    expect(stdsForBoard("")).toEqual([]);
+    expect(stdsForBoard(null)).toEqual([]);
+    expect(stdsForBoard(undefined)).toEqual([]);
+  });
+});
+
+describe("getExamForBoardStd", () => {
+  it("resolves each Maharashtra board+std pair to its exam", () => {
+    expect(getExamForBoardStd("Maharashtra State Board", 9)?.slug).toBe("mh-sb-9");
+    expect(getExamForBoardStd("Maharashtra State Board", 10)?.slug).toBe("mh-ssc-10");
+    expect(getExamForBoardStd("Maharashtra State Board", 12)?.slug).toBe("mh-hsc-12");
+  });
+
+  it("resolves CBSE Class 12", () => {
+    expect(getExamForBoardStd("CBSE", 12)?.slug).toBe("cbse-12");
+  });
+
+  it("returns null for Std 11 — no Class 11 corpus exists in the bank", () => {
+    expect(getExamForBoardStd("Maharashtra State Board", 11)).toBeNull();
+    expect(getExamForBoardStd("CBSE", 11)).toBeNull();
+  });
+
+  it("returns null for CBSE classes that have no corpus yet", () => {
+    expect(getExamForBoardStd("CBSE", 9)).toBeNull();
+    expect(getExamForBoardStd("CBSE", 10)).toBeNull();
+  });
+
+  it("returns null for an unknown board or a missing argument", () => {
+    expect(getExamForBoardStd("ICSE", 10)).toBeNull();
+    expect(getExamForBoardStd(null, 10)).toBeNull();
+    expect(getExamForBoardStd("CBSE", null)).toBeNull();
+  });
+});
+
+describe("board/std registry invariants", () => {
+  it("board and std are declared together — never one without the other", () => {
+    for (const exam of EXAM_REGISTRY) {
+      expect(exam.board === undefined).toBe(exam.std === undefined);
+    }
+  });
+
+  it("no two exams claim the same board+std pair (the pair must resolve to one exam)", () => {
+    const seen = new Set<string>();
+    for (const exam of EXAM_REGISTRY) {
+      if (!exam.board || !exam.std) continue;
+      const pair = `${exam.board}|${exam.std}`;
+      expect(seen.has(pair)).toBe(false);
+      seen.add(pair);
+    }
+  });
+
+  it("every board+std exam is a school board, and coaching exams carry no board", () => {
+    // Foundation Course spans Class 9 AND 10 and is an LWS course, not a board —
+    // it must stay off this axis or the picker would offer it as a "board".
+    expect(getExamBySlug("foundation-course")?.board).toBeUndefined();
+    expect(getExamBySlug("nda")?.board).toBeUndefined();
+    expect(getExamBySlug("neet")?.board).toBeUndefined();
   });
 });

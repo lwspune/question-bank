@@ -23,6 +23,15 @@ export type ExamSlug =
   | "mh-sb-9"
   | "mh-ssc-10";
 
+/**
+ * School boards the bank carries content for. NOT every exam has one — a
+ * coaching/entrance exam (NDA, NEET, the Foundation Course) has no board.
+ */
+export type Board = "Maharashtra State Board" | "CBSE";
+
+/** School class. 11 is declared but currently unreachable — no Class 11 corpus. */
+export type Std = 9 | 10 | 11 | 12;
+
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
   slug: ExamSlug;
@@ -53,6 +62,18 @@ export type ExamEntry = {
    * only when the active exam actually has mocks, like Papers is member-gated.
    */
   hasMocks?: boolean;
+  /**
+   * The board+class this exam IS. The `exams` table conflates the two into one
+   * row ("Maharashtra State Board Class 10"), so this registry is the ONLY place
+   * they can be separated — which is what lets the written-paper builder offer
+   * independent Board and Std dropdowns.
+   *
+   * Declare both or neither (asserted in tests). Omit for coaching/entrance
+   * exams: NDA and NEET aren't board exams at all, and the Foundation Course
+   * spans Class 9 AND 10, so it is a course, not a (board, std) pair.
+   */
+  board?: Board;
+  std?: Std;
 };
 
 export const EXAM_REGISTRY: readonly ExamEntry[] = [
@@ -109,6 +130,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // textbook exercises/solved-examples corpus (board PYQs come later) → /browse defaults to Practice
     boardExam: true, // gets the /board reader + the "Board" nav tab
+    board: "Maharashtra State Board",
+    std: 12,
   },
   {
     slug: "cbse-12",
@@ -118,6 +141,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/cbse-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // NCERT textbook exercises/solved-examples corpus (CBSE PYQs later) → /browse defaults to Practice
     boardExam: true, // NCERT is textbook content → gets the /board reader + the "Board" nav tab
+    board: "CBSE",
+    std: 12,
   },
   {
     slug: "mh-sb-9",
@@ -127,6 +152,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/mh-sb-9", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (9th is not a board year → no PYQs) → /browse defaults to Practice
     boardExam: true, // textbook content → gets the /board reader + the "Board" nav tab
+    board: "Maharashtra State Board",
+    std: 9,
   },
   {
     slug: "mh-ssc-10",
@@ -138,6 +165,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // papers (question_kind='pyq'), so /browse defaults to the PYQ view.
     // NOT boardExam: PYQ papers aren't textbook-structured, so they live on /browse
     // (and /mock later), not the book-faithful /board reader.
+    board: "Maharashtra State Board",
+    std: 10,
   },
 ] as const;
 
@@ -198,6 +227,39 @@ export function examHasMocks(slug: string | null | undefined): boolean {
 export const BOARD_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter(
   (e) => e.boardExam === true
 );
+
+/**
+ * Distinct boards, in registry order — the written-paper builder's first
+ * dropdown. Derived, so registering a new board exam surfaces it automatically.
+ */
+export const BOARDS: readonly Board[] = Array.from(
+  new Set(EXAM_REGISTRY.map((e) => e.board).filter((b): b is Board => Boolean(b)))
+);
+
+/**
+ * The classes a board actually has content for, ascending. Deliberately derived
+ * from the registry rather than hard-coded 9..12, so the Std dropdown can only
+ * ever offer a class the bank can fill — Maharashtra returns [9, 10, 12] because
+ * there is no Class 11 corpus, and offering 11 would produce an empty paper.
+ */
+export function stdsForBoard(board: string | null | undefined): Std[] {
+  if (!board) return [];
+  return EXAM_REGISTRY.filter((e) => e.board === board)
+    .map((e) => e.std!)
+    .sort((a, b) => a - b);
+}
+
+/**
+ * Resolve a (board, std) pair to its exam — the inverse of the conflation in the
+ * `exams` table. Null when the pair has no corpus (Class 11 anywhere, CBSE 9/10).
+ */
+export function getExamForBoardStd(
+  board: string | null | undefined,
+  std: number | null | undefined
+): ExamEntry | null {
+  if (!board || !std) return null;
+  return EXAM_REGISTRY.find((e) => e.board === board && e.std === std) ?? null;
+}
 
 /** Board tab href — the exam's board hub when it's a board exam, else the index. */
 export function resolveBoardHref(slug: string | null | undefined): string {
