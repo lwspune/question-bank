@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { AUDIENCE } from "@/lib/relevance/config";
 import type { Filters, Difficulty, QuestionFormat } from "./filters";
 
 export type OptionRow = {
@@ -85,6 +86,29 @@ export async function queryQuestions(
     principleNarrow = taggedIds;
   }
 
+  // Syllabus-fit screen (migration 0062). The table is an EXCLUSION list, so
+  // 'answerable' subtracts and 'excluded' intersects. Applied regardless of the
+  // selected exam: exclusions only ever reference JEE questions, so subtracting
+  // them is a no-op for every other exam. Whether the CHAPTER has actually been
+  // adjudicated is NOT decided here — see fitCoverage() in lib/relevance/fit.ts,
+  // which the UI renders as a caveat so "unreviewed" can't read as "vetted".
+  let excludedIds: string[] | null = null;
+  if (filters.fit !== "all") {
+    const { data: exRows, error: exErr } = await client
+      .from("question_audience_exclusions")
+      .select("question_id")
+      .eq("audience", AUDIENCE);
+    if (exErr) throw new Error(`audience exclusion lookup: ${exErr.message}`);
+    excludedIds = (exRows ?? []).map(
+      (r) => (r as { question_id: string }).question_id
+    );
+    // Nothing excluded yet: 'answerable' is then unconstrained, but 'excluded'
+    // must return empty rather than `.in("id", [])`, which PostgREST 400s on.
+    if (filters.fit === "excluded" && excludedIds.length === 0) {
+      return { totalCount: 0, rows: [] };
+    }
+  }
+
   // When orgId is null, no org filter is applied — RLS scopes the result:
   //   anon role        → only PUBLIC rows
   //   authenticated    → PUBLIC rows + caller's own org's PRIVATE rows
@@ -106,6 +130,12 @@ export async function queryQuestions(
 
   if (orgId !== null) q = q.eq("org_id", orgId);
   if (principleNarrow !== null) q = q.in("id", principleNarrow);
+  if (excludedIds !== null && excludedIds.length > 0) {
+    q =
+      filters.fit === "excluded"
+        ? q.in("id", excludedIds)
+        : q.not("id", "in", `(${excludedIds.join(",")})`);
+  }
 
   if (filters.examId) q = q.eq("exam_id", filters.examId);
   if (filters.subjectId) q = q.eq("subject_id", filters.subjectId);

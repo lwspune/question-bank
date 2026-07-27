@@ -6,6 +6,7 @@ import { ChevronDown, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { isFitExam } from "@/lib/relevance/fit";
 import {
   Select,
   SelectContent,
@@ -106,6 +107,7 @@ export default function FilterBar({
     extraIds: [],
     principleSlug: null,
     kind: "pyq",
+    fit: "all",
     q: "",
     page: 1,
   };
@@ -118,6 +120,7 @@ export default function FilterBar({
     filters.difficulties.length > 0 ||
     filters.pyqYears.length > 0 ||
     filters.kind !== "pyq" ||
+    filters.fit !== "all" ||
     !!filters.q;
 
   // Sections keyed for ordered rendering. Mobile sheet leads with difficulty
@@ -148,6 +151,37 @@ export default function FilterBar({
                 aria-pressed={on}
               >
                 {k.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    ),
+    fit: (
+      <div className="space-y-1.5">
+        <Label>Syllabus fit</Label>
+        <div
+          role="group"
+          aria-label="Syllabus fit"
+          className="inline-flex w-full rounded-md border border-input bg-background p-0.5"
+        >
+          {FITS.map((f) => {
+            const on = filters.fit === f.value;
+            return (
+              <button
+                key={f.value}
+                type="button"
+                onClick={() => update({ fit: f.value })}
+                className={cn(
+                  "flex-1 rounded-sm px-2 py-1.5 text-xs font-medium transition-colors",
+                  on
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                aria-pressed={on}
+                title={f.title}
+              >
+                {f.label}
               </button>
             );
           })}
@@ -364,8 +398,12 @@ export default function FilterBar({
     ),
   };
 
-  const order: SectionKey[] =
-    mode === "staged" ? STAGED_ORDER : LIVE_ORDER;
+  // The syllabus-fit screen only means anything on JEE Mains — elsewhere the
+  // question already belongs to the student's own exam. Hidden rather than
+  // disabled so it doesn't add noise to the nine other exams' filter bars.
+  const order: SectionKey[] = (mode === "staged" ? STAGED_ORDER : LIVE_ORDER).filter(
+    (k) => k !== "fit" || isFitExam(filters.examId)
+  );
 
   return (
     <div
@@ -396,6 +434,7 @@ export default function FilterBar({
 
 type SectionKey =
   | "kind"
+  | "fit"
   | "exam"
   | "subject"
   | "chapters"
@@ -412,8 +451,26 @@ const KINDS: { value: Filters["kind"]; label: string }[] = [
   { value: "all", label: "All" },
 ];
 
+// Cross-exam syllabus screen (migration 0062). Rendered only when the selected
+// exam is JEE Mains — on NDA or CET the question is already the student's own
+// paper, so the screen has nothing to say.
+const FITS: { value: Filters["fit"]; label: string; title: string }[] = [
+  { value: "all", label: "All JEE", title: "Every JEE question" },
+  {
+    value: "answerable",
+    label: "NDA+CET",
+    title: "Only questions solvable with the NDA + MHT-CET syllabus",
+  },
+  {
+    value: "excluded",
+    label: "Excluded",
+    title: "Only the questions dropped, for auditing the screen",
+  },
+];
+
 const LIVE_ORDER: SectionKey[] = [
   "kind",
+  "fit",
   "exam",
   "subject",
   "chapters",
@@ -425,6 +482,7 @@ const LIVE_ORDER: SectionKey[] = [
 
 const STAGED_ORDER: SectionKey[] = [
   "kind",
+  "fit",
   "exam",
   "subject",
   "difficulty",

@@ -1,3 +1,5 @@
+import { parseFit, type SyllabusFit } from "@/lib/relevance/fit";
+
 export type Difficulty = "EASY" | "MODERATE" | "HARD";
 
 /** Which question corpus to browse. Default 'pyq' keeps the PYQ-first product
@@ -30,6 +32,10 @@ export type Filters = {
   principleSlug: string | null;
   /** PYQ (default) / Practice / All — the question_kind axis (migration 0036). */
   kind: QuestionKind;
+  /** Cross-exam syllabus screen (migration 0062). Only meaningful on JEE Mains:
+   *  narrows to questions an NDA+CET-taught student can actually solve, or to
+   *  the excluded set for auditing. 'all' (default) applies no screen. */
+  fit: SyllabusFit;
   q: string;
   page: number;
 };
@@ -54,6 +60,7 @@ export const EMPTY_FILTERS: Filters = {
   extraIds: [],
   principleSlug: null,
   kind: "pyq",
+  fit: "all",
   q: "",
   page: 1,
 };
@@ -81,6 +88,7 @@ export function parseFilters(params: URLSearchParams): Filters {
   const kind: QuestionKind = KINDS.includes(rawKind as QuestionKind)
     ? (rawKind as QuestionKind)
     : "pyq";
+  const fit = parseFit(params.get("fit"));
   const q = params.get("q") ?? "";
   const pageRaw = parseInt(params.get("page") ?? "1", 10);
   const page = Number.isNaN(pageRaw) || pageRaw < 1 ? 1 : pageRaw;
@@ -94,6 +102,7 @@ export function parseFilters(params: URLSearchParams): Filters {
     extraIds,
     principleSlug,
     kind,
+    fit,
     q,
     page,
   };
@@ -115,6 +124,7 @@ export function buildSearchParams(filters: Filters): URLSearchParams {
     sp.set("extras", filters.extraIds.join(","));
   if (filters.principleSlug) sp.set("principle", filters.principleSlug);
   if (filters.kind !== "pyq") sp.set("kind", filters.kind);
+  if (filters.fit !== "all") sp.set("fit", filters.fit);
   if (filters.q) sp.set("q", filters.q);
   if (filters.page > 1) sp.set("page", String(filters.page));
   return sp;

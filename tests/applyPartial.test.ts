@@ -12,6 +12,7 @@ const SEEDED: Filters = {
   extraIds: [],
   principleSlug: null,
   kind: "pyq",
+  fit: "all",
   q: "vectors",
   page: 4,
 };

@@ -1,0 +1,67 @@
+{
+  "audience": "nda-cet",
+  "scope": "JEE Mains · Maths · Matrices + Determinants (251 PYQs screened, 239 pass)",
+  "screenedOn": "2026-07-27",
+  "exclusions": [
+    {
+      "questionId": "8b8c9e53-8f56-4eb4-9a09-dfb4408f4f9f",
+      "blockingTool": "similarity",
+      "note": "Q = AᵀBA; needs Q^2021 = AᵀB^2021 A"
+    },
+    {
+      "questionId": "469f2be2-b797-462f-8b49-52b3bfa64527",
+      "blockingTool": "similarity",
+      "note": "Q = PAPᵀ, then PᵀQ^2007 P"
+    },
+    {
+      "questionId": "b8127917-95eb-48a4-8359-93f9d4b08753",
+      "blockingTool": "similarity",
+      "note": "M = AᵀBA; inverse of A^2023 Aᵀ"
+    },
+    {
+      "questionId": "84f5bd2f-2f65-4940-8661-f11062f88be2",
+      "blockingTool": "similarity",
+      "note": "B = CAD with D = −C; conjugation-shaped"
+    },
+    {
+      "questionId": "9fbc76f5-7ee5-4e3c-ae17-6980fbba7f03",
+      "blockingTool": "similarity",
+      "note": "C = B⁻¹AB ⇒ C² = B"
+    },
+    {
+      "questionId": "474fee97-08e3-4c6d-beb6-67f41e8dc92b",
+      "blockingTool": "similarity",
+      "note": "B = PAPᵀ, C = PᵀB^10 P"
+    },
+    {
+      "questionId": "820348dc-b267-4c80-b813-4bd521553db3",
+      "blockingTool": "cayley-hamilton-3x3",
+      "note": "A³ = A via the cubic characteristic polynomial"
+    },
+    {
+      "questionId": "bce48532-9748-47a5-ba1c-7d0f59ec21a6",
+      "blockingTool": "cayley-hamilton-3x3",
+      "note": "matches A³ = 4A² − A − 21I to trace / sum-of-minors / det"
+    },
+    {
+      "questionId": "ce80e029-1faf-4de6-9ffb-830608beee0c",
+      "blockingTool": "eigenvalues",
+      "note": "AX = λX stated in the stem"
+    },
+    {
+      "questionId": "ed677ea4-91ea-445b-acf5-6274461d808f",
+      "blockingTool": "eigenvalues",
+      "note": "three eigenvector equations ⇒ diagonalisation"
+    },
+    {
+      "questionId": "e4697f19-2165-41a7-8858-ecf9de5bdff4",
+      "blockingTool": "nilpotent-3x3",
+      "note": "A^99 = I + 99N + C(99,2)N², 3×3 truncated binomial"
+    },
+    {
+      "questionId": "8f338a18-dfbd-45ff-b773-8fdaf91c71c8",
+      "blockingTool": "quadratic-form-test",
+      "note": "XᵀAX = O for all X ⇒ A skew-symmetric"
+    }
+  ]
+}

@@ -30,6 +30,8 @@ import CartPill from "./CartPill";
 import BackToNotes from "./BackToNotes";
 import Hero from "./Hero";
 import ActiveFilterChips from "./ActiveFilterChips";
+import FitCoverageNote from "./FitCoverageNote";
+import { fitCoverage } from "@/lib/relevance/fit";
 import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
 
 export const metadata: Metadata = {
@@ -283,6 +285,13 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             className="mb-4"
           />
         )}
+
+        <FitCoverageNote
+          coverage={fitCoverage(filters.fit, filters.chapterIds)}
+          chapterName={(id) =>
+            chapterOpts.find((c) => c.id === id)?.name ?? "this chapter"
+          }
+        />
 
         <div className="lg:grid lg:grid-cols-[18rem_1fr] lg:gap-8">
           <aside className="hidden lg:block">
