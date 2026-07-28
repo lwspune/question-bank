@@ -18,6 +18,7 @@ import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -241,6 +242,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const quizEntries = await publicQuizEntries(now);
 
+  // Per-chapter question landing pages — the cacheable, indexable face of the
+  // bank. Until these existed the sitemap offered Google exactly ONE URL
+  // (/browse) for ~24k questions, all of them hidden behind UUID query strings.
+  // Guarded like publicQuizEntries so a missing-env build still emits a sitemap.
+  let landingEntries: MetadataRoute.Sitemap = [];
+  try {
+    const landings = await listChapterLandings();
+    landingEntries = [
+      {
+        url: `${SITE_URL}/questions`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
+      },
+      ...landings.map((l) => ({
+        url: `${SITE_URL}${landingHref(l)}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      })),
+    ];
+  } catch {
+    landingEntries = [];
+  }
+
   return [
     {
       // The homepage — highest-authority URL, now a real landing page (was a
@@ -259,6 +285,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...landingEntries,
     ...examHomeEntries,
     ...guideEntries,
     ...notesEntries,
