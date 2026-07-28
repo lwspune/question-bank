@@ -35,6 +35,7 @@ export default function PaperDownload({
   questionIds: string[];
 }) {
   const [open, setOpen] = useState(false);
+  const [includeSourceTag, setIncludeSourceTag] = useState(false);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const busy = busyKind !== null;
   const count = questionIds.length;
@@ -49,7 +50,12 @@ export default function PaperDownload({
         body: JSON.stringify({
           kind,
           questionIds,
-          options: { title, includeSolutions: true, groupBySubtopic: false },
+          options: {
+            title,
+            includeSolutions: true,
+            groupBySubtopic: false,
+            includeSourceTag,
+          },
         }),
       });
       if (!res.ok) {
@@ -98,6 +104,21 @@ export default function PaperDownload({
             then download.
           </p>
         )}
+        <label className="flex cursor-pointer items-start gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={includeSourceTag}
+            onChange={(e) => setIncludeSourceTag(e.target.checked)}
+            disabled={busy}
+            className="mt-0.5 h-4 w-4"
+          />
+          <span>
+            Cite the source after each question in the Question Paper
+            <span className="block text-xs text-muted-foreground">
+              e.g. [JEE Mains 2016]. Practice questions are left untagged.
+            </span>
+          </span>
+        </label>
         <DialogFooter className="flex-col gap-2 sm:flex-row">
           <Button variant="outline" onClick={() => onDownload("tags")} disabled={busy || overCap || count === 0}>
             {busyKind === "tags" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Table className="h-4 w-4" aria-hidden />}

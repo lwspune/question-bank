@@ -23,6 +23,7 @@ import { readImageDimensions, fitWithinBox } from "./imageDimensions";
 import { groupBySet, type Group } from "./groupBySet";
 import { headingsOnChange } from "./subtopicHeadings";
 import { stripPassageCountPhrase } from "./stripPassageCount";
+import { formatSourceTag } from "./sourceTag";
 
 const MARGIN = 720; // 0.5" in twips
 const COL_SPACE = 720;
@@ -96,6 +97,13 @@ export type QuestionPaperInput = {
   imageBytes?: Map<string, Buffer>;
   /** When true, print a bold subtopic heading before each new subtopic run. */
   groupBySubtopic?: boolean;
+  /**
+   * When true, print `[JEE Mains 2016]` after each question's stem — the
+   * coaching-book source citation. Off by default so existing exports are
+   * unchanged. Practice questions (no PYQ year) are never tagged; see
+   * ./sourceTag.
+   */
+  includeSourceTag?: boolean;
 };
 
 export type AnswerKeyInput = {
@@ -149,6 +157,7 @@ export async function buildQuestionPaper(
     ? headingsOnChange(groups.map((g) => groupSubtopicLabel(g)))
     : [];
 
+  const includeSourceTag = !!input.includeSourceTag;
   let position = 1;
   for (let gi = 0; gi < groups.length; gi++) {
     const group = groups[gi];
@@ -161,7 +170,8 @@ export async function buildQuestionPaper(
           group.question,
           builder,
           input.imageBytes,
-          /* skipContextParagraph */ false
+          /* skipContextParagraph */ false,
+          includeSourceTag
         )
       );
       children.push(blank());
@@ -174,7 +184,8 @@ export async function buildQuestionPaper(
           group.questions[0],
           builder,
           input.imageBytes,
-          /* skipContextParagraph */ false
+          /* skipContextParagraph */ false,
+          includeSourceTag
         )
       );
       children.push(blank());
@@ -190,7 +201,8 @@ export async function buildQuestionPaper(
           q,
           builder,
           input.imageBytes,
-          /* skipContextParagraph */ true
+          /* skipContextParagraph */ true,
+          includeSourceTag
         )
       );
       children.push(blank());
@@ -349,23 +361,44 @@ function questionParagraphs(
   q: QuestionRow,
   builder: Builder,
   imageBytes: Map<string, Buffer> | undefined,
-  skipContextParagraph: boolean
+  skipContextParagraph: boolean,
+  includeSourceTag: boolean
 ): (Paragraph | Table)[] {
   const out: (Paragraph | Table)[] = [];
+
+  // Source citation — `[JEE Mains 2016]` — rides on the END of the stem, before
+  // the options, per the coaching-book convention. null when the flag is off or
+  // the question isn't a PYQ (see ./sourceTag).
+  const sourceTag = includeSourceTag ? formatSourceTag(q) : null;
 
   // Stem: split into prose + GFM-table blocks. The question NUMBER rides on the
   // first PARAGRAPH; if the stem opens with a table, emit a numbered empty
   // paragraph first so the number still prints.
   const stemBlocks = parseTableBlocks(q.text);
+  // The tag can't ride inside a table cell, so it attaches to the LAST prose
+  // block; a stem that ends in a table gets it as its own paragraph below.
+  const lastTextBlock = stemBlocks.reduce(
+    (acc, b, i) => (b.kind === "text" ? i : acc),
+    -1
+  );
   let numbered = false;
-  for (const b of stemBlocks) {
+  let tagPrinted = false;
+  for (let i = 0; i < stemBlocks.length; i++) {
+    const b = stemBlocks[i];
     if (b.kind === "text") {
+      const withTag = sourceTag !== null && i === lastTextBlock;
       out.push(
         new Paragraph({
           ...(numbered ? {} : { numbering: { reference: NUM_REF, level: 0 } }),
-          children: mathRuns(b.text, builder),
+          children: [
+            ...mathRuns(b.text, builder),
+            ...(withTag
+              ? [new TextRun({ text: ` ${sourceTag}`, italics: true })]
+              : []),
+          ],
         })
       );
+      if (withTag) tagPrinted = true;
       numbered = true;
     } else {
       if (!numbered) {
@@ -377,6 +410,14 @@ function questionParagraphs(
   }
   if (!numbered) {
     out.push(new Paragraph({ numbering: { reference: NUM_REF, level: 0 }, children: [] }));
+  }
+  if (sourceTag !== null && !tagPrinted) {
+    out.push(
+      new Paragraph({
+        indent: { left: 0 },
+        children: [new TextRun({ text: sourceTag, italics: true })],
+      })
+    );
   }
 
   if (q.imageUrl && imageBytes?.has(q.imageUrl)) {

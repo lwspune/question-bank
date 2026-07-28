@@ -43,6 +43,8 @@ type ExportOptions = {
   title?: string;
   includeSolutions?: boolean;
   groupBySubtopic?: boolean;
+  /** Print `[JEE Mains 2016]` after each PYQ's stem. Question paper only. */
+  includeSourceTag?: boolean;
 };
 
 // Either filter-mode or cart-mode; never both. Front-end picks one.
@@ -208,6 +210,7 @@ export async function POST(request: NextRequest) {
         : "PYQ Vault Export";
     const includeSolutions = !!options.includeSolutions;
     const groupBySubtopic = !!options.groupBySubtopic;
+    const includeSourceTag = !!options.includeSourceTag;
     const safeName = sanitizeFilename(title);
 
     // Tagged sheet for nda-tracker: an .xlsx, not a .docx. No images to fetch —
@@ -252,6 +255,7 @@ export async function POST(request: NextRequest) {
         questions,
         imageBytes,
         groupBySubtopic,
+        includeSourceTag,
       });
       filename = `QP_${safeName}.docx`;
     } else {

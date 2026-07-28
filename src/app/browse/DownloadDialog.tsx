@@ -73,6 +73,7 @@ export default function DownloadDialog({
   const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
   const [groupBySubtopic, setGroupBySubtopic] = useState(false);
+  const [includeSourceTag, setIncludeSourceTag] = useState(false);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -86,7 +87,12 @@ export default function DownloadDialog({
     setBusyKind(kind);
     setError(null);
     try {
-      const exportOptions = { title, includeSolutions, groupBySubtopic };
+      const exportOptions = {
+        title,
+        includeSolutions,
+        groupBySubtopic,
+        includeSourceTag,
+      };
       const body =
         mode === "cart"
           ? { kind, questionIds: cart.ids, options: exportOptions }
@@ -249,6 +255,21 @@ export default function DownloadDialog({
               className="h-4 w-4"
             />
             <span>Group by subtopic (section headings)</span>
+          </label>
+          <label className="flex cursor-pointer items-start gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={includeSourceTag}
+              onChange={(e) => setIncludeSourceTag(e.target.checked)}
+              disabled={busy}
+              className="mt-0.5 h-4 w-4"
+            />
+            <span>
+              Cite the source after each question in the Question Paper
+              <span className="block text-xs text-muted-foreground">
+                e.g. [JEE Mains 2016]. Practice questions are left untagged.
+              </span>
+            </span>
           </label>
           {error && (
             <p className="text-sm text-destructive" role="alert">
