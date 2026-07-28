@@ -8,7 +8,9 @@ import {
   type PageIdentity,
 } from "@/lib/auth-identity";
 
-export type { PageIdentity };
+import type { HeaderSession } from "@/lib/header-session";
+
+export type { PageIdentity, HeaderSession };
 
 export class HttpError extends Error {
   constructor(public status: number, message: string) {
@@ -100,6 +102,51 @@ export async function getPageIdentity(): Promise<PageIdentity> {
     isOrgMember: !!membership,
     isSuperadmin: superadmin,
   });
+}
+
+/**
+ * Resolve everything AppHeader needs about the viewer in a single pass.
+ *
+ * AppHeader renders on every page and used to await getSessionMember() +
+ * getSessionUser() + getSessionSuperadmin() together — three Supabase clients
+ * and three auth.getUser() calls, on every request site-wide. Same shape as
+ * getPageIdentity(), but carries the email / org name / role the header
+ * actually displays.
+ */
+export async function getHeaderSession(): Promise<HeaderSession | null> {
+  // Anon short-circuit: no Supabase cookie ⇒ no session to resolve.
+  if (!hasSupabaseAuthCookie(cookies().getAll().map((c) => c.name))) {
+    return null;
+  }
+
+  const supabase = createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user || !user.email) return null;
+
+  const [{ data: membership }, superadmin] = await Promise.all([
+    supabase
+      .from("org_members")
+      .select("role, org:organizations(id, name)")
+      .eq("user_id", user.id)
+      .maybeSingle(),
+    isSuperadmin(user.id),
+  ]);
+
+  const rawOrg = membership?.org;
+  const org = Array.isArray(rawOrg) ? rawOrg[0] : rawOrg;
+  // Mirrors getSessionMember(): a membership row without a resolvable org is
+  // not staff, so the org chip and Papers tab stay hidden.
+  const isStaff = !!membership && !!org;
+
+  return {
+    email: user.email,
+    role: isStaff ? ((membership.role as "ADMIN" | "TEACHER") ?? null) : null,
+    orgName: org?.name ?? null,
+    isStaff,
+    isSuperadmin: superadmin,
+  };
 }
 
 export async function requireAdmin(): Promise<SessionMember> {

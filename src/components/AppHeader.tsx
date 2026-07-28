@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
+import { getHeaderSession } from "@/lib/auth";
+import { resolveHomeHref } from "@/lib/header-session";
 import { Button } from "@/components/ui/button";
 import { loadActiveExamContext } from "@/lib/exam/loadActiveExamContext";
 import UserMenu from "./UserMenu";
@@ -9,28 +10,15 @@ import PrimaryNav from "./PrimaryNav";
 import ExamPill from "./ExamPill";
 
 export default async function AppHeader() {
-  const [member, user, superadmin, examContext] = await Promise.all([
-    getSessionMember(),
-    getSessionUser(),
-    getSessionSuperadmin(),
+  // ONE session resolution (was three — member + user + superadmin, each with
+  // its own client and its own auth.getUser(), on every page of the site).
+  // A signed-in user with no org_members row is a self-serve student: they get
+  // the account menu so they can sign out, just no org chip or role.
+  const [session, examContext] = await Promise.all([
+    getHeaderSession(),
     loadActiveExamContext(),
   ]);
-  // A signed-in user with no org_members row is a self-serve student — they
-  // still get the account menu (so they can sign out), just no org chip/role.
-  const account = member
-    ? { email: member.user.email, role: member.role }
-    : user
-      ? { email: user.email, role: null }
-      : null;
-  // Brand link lands ADMINs on /dashboard (their home for reports/members/
-  // branches tooling), signed-in students on /me (their account home), and
-  // TEACHER + anon on /browse — where teachers pick questions and build papers.
-  const homeHref =
-    member?.role === "ADMIN"
-      ? "/dashboard"
-      : !member && user
-        ? "/me"
-        : "/browse";
+  const homeHref = resolveHomeHref(session);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -54,29 +42,29 @@ export default async function AppHeader() {
           notesHref={examContext.notesHref}
           boardHref={examContext.boardHref}
           showMocks={examContext.showMocks}
-          showPapers={!!member}
+          showPapers={!!session?.isStaff}
         />
 
         <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
           <ExamPill activeSlug={examContext.slug} />
           {/* Theme toggle is visible to everyone, anon included. */}
           <ThemeToggle />
-          {account ? (
+          {session ? (
             <>
               {/* Org chip only for org members; hidden below md so brand +
                   nav + pill + avatar all fit. */}
-              {member && (
+              {session.orgName && (
                 <span
                   className="hidden max-w-[12rem] truncate text-xs text-muted-foreground md:inline md:max-w-none"
-                  title={member.orgName}
+                  title={session.orgName}
                 >
-                  {member.orgName}
+                  {session.orgName}
                 </span>
               )}
               <UserMenu
-                email={account.email}
-                role={account.role}
-                isSuperadmin={!!superadmin}
+                email={session.email}
+                role={session.role}
+                isSuperadmin={session.isSuperadmin}
               />
             </>
           ) : (
