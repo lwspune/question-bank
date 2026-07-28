@@ -158,7 +158,7 @@ export default function DownloadDialog({
           </Button>
         </DialogTrigger>
       )}
-      <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0">
+      <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0 sm:max-w-xl">
         <DialogHeader className="px-6 pt-6">
           <DialogTitle>
             {canDownload
@@ -193,7 +193,10 @@ export default function DownloadDialog({
             </p>
           </div>
         ) : (
-        <div className="flex-1 space-y-4 overflow-y-auto px-6 py-4">
+        // min-h-0: a flex item's default min-height:auto refuses to shrink below
+        // its content, so without it the body never clips, the dialog blows past
+        // max-h-[90dvh], and the footer overlaps the last control.
+        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-4">
           {cartAvailable && (
             <div
               role="group"
@@ -279,7 +282,11 @@ export default function DownloadDialog({
         </div>
         )}
 
-        <DialogFooter className="sticky bottom-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row">
+        {/* Not sticky: the footer sits OUTSIDE the scrolling body, so it is
+            always visible anyway — and `sticky bottom-0` is what let it ride up
+            over the content once the body stopped clipping. flex-wrap keeps the
+            4 buttons inside the dialog instead of overflowing its left edge. */}
+        <DialogFooter className="shrink-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row sm:flex-wrap">
           <Button
             variant="outline"
             onClick={() => setOpen(false)}

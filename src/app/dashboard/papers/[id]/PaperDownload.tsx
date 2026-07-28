@@ -119,7 +119,7 @@ export default function PaperDownload({
             </span>
           </span>
         </label>
-        <DialogFooter className="flex-col gap-2 sm:flex-row">
+        <DialogFooter className="flex-col gap-2 sm:flex-row sm:flex-wrap">
           <Button variant="outline" onClick={() => onDownload("tags")} disabled={busy || overCap || count === 0}>
             {busyKind === "tags" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Table className="h-4 w-4" aria-hidden />}
             Tagged sheet
