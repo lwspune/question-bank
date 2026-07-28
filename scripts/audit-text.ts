@@ -32,6 +32,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeNewlines } from "../src/lib/text/normalizeNewlines";
 import { parseTableBlocks } from "../src/components/math/parseTableBlocks";
+import { hasDroppedSymbol, leakedOptionValues } from "./lib/textProbes";
 
 const FIELDS = ["text", "context", "solution"] as const;
 type Field = (typeof FIELDS)[number];
@@ -44,6 +45,7 @@ type Row = {
   text: string;
   context: string | null;
   solution: string | null;
+  options: { text: string | null }[] | null;
 };
 
 type Finding = {
@@ -52,7 +54,7 @@ type Finding = {
   qnum: string;
   visibility: string;
   field: Field;
-  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR";
+  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR" | "DROPPED_SYMBOL" | "OPTION_LEAK";
   sample: string;
 };
 
@@ -101,6 +103,26 @@ function inspect(r: Row): Finding[] {
       });
     }
   }
+
+  // Stem-only probes (an option leak or a dropped object is meaningless in a solution).
+  const stem = r.text;
+  if (typeof stem === "string" && stem) {
+    const base = {
+      id: r.id,
+      source: r.source_file ?? "(none)",
+      qnum: r.question_number ?? "(none)",
+      visibility: r.visibility,
+      field: "text" as Field,
+    };
+    if (hasDroppedSymbol(stem)) {
+      const at = stem.search(/\\\(\s*=/);
+      out.push({ ...base, kind: "DROPPED_SYMBOL", sample: stem.slice(Math.max(0, at - 45), at + 45) });
+    }
+    const opts = (r.options ?? []).map((o) => o.text ?? "");
+    if (opts.length && leakedOptionValues(stem, opts)) {
+      out.push({ ...base, kind: "OPTION_LEAK", sample: stem.slice(Math.max(0, stem.length - 110)) });
+    }
+  }
   return out;
 }
 
@@ -120,7 +142,7 @@ async function main() {
   for (let from = 0; ; from += PAGE) {
     let q = client
       .from("questions")
-      .select("id, source_file, question_number, visibility, text, context, solution")
+      .select("id, source_file, question_number, visibility, text, context, solution, options(text)")
       .order("id", { ascending: true })
       .range(from, from + PAGE - 1);
     if (filter) q = q.ilike("source_file", `%${filter}%`);
@@ -136,7 +158,7 @@ async function main() {
   const byKind = (k: Finding["kind"]) => findings.filter((f) => f.kind === k);
   console.log(`audit:text — scanned ${scanned} question(s)${filter ? ` matching "${filter}"` : ""}\n`);
 
-  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR"] as const) {
+  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK"] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);
     for (const f of hits.slice(0, 40)) {
