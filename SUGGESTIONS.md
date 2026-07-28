@@ -42,6 +42,38 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 - **Featured-PYQ solutions are prose, not step-wise** (concept report `regression-correlation / correlation-coefficient-properties`, still OPEN). A student asked that the featured PYQ solution be worked step-by-step like the authored `authoredExample.steps`. The solutions there are correct and do carry reasoning + a common-mistake note, so this is an editorial enhancement, not a defect — but it applies bank-wide (every `/notes` featured PYQ pulls the bank's `solution` field), so it needs a deliberate decision on scope before anyone starts rewriting.
 - **`/notes` key terms are ALL-CAPS in places where the house convention is `**bold**`** — e.g. `central-tendency / what-is-data` renders POPULATION, SAMPLE, SPREAD in caps. Surfaced while triaging an anonymous "typo-or-formatting" concept report that carried no details (resolved `wont-fix`, not reproducible). Cosmetic; a sweep would touch many chapters.
 
+### Sweep every scrolling dialog/sheet for the missing `min-h-0`
+
+`/browse`'s `DownloadDialog` shipped for months with a scroll body that never clipped: a flex item's default `min-height:auto` won't shrink below its content, so the dialog outgrew `max-h-[90dvh]` and its `sticky bottom-0` footer rode up over the last control. Invisible until a third checkbox pushed it past the threshold, at which point a control vanished outright. Fixed on `DownloadDialog` only (`b2ac57e`).
+
+**Why:** the defect is **silent and content-dependent** — it appears when a body grows, not when the code changes, so nothing in the gate will ever catch it and it will keep surfacing as "the UI is broken" bug reports one dialog at a time. The same `max-h` + `flex-col` + `overflow-y-auto` shape is used by several other surfaces (`CartPanel`, the paper-editor Sections dialog, `AddQuestionsPanel`'s sheet, `MobilePromptProvider`'s bottom sheet, the quiz gate), and `ui/sheet.tsx` / `ui/dialog.tsx` are shared primitives.
+
+**How to apply:** `grep -rn "max-h-\[" src/` and, for each hit that is a flex column containing an `overflow-y-auto` child, check the child carries `min-h-0` and the footer is `shrink-0` rather than `sticky bottom-0`. Also check any footer holding ≥3 buttons for `flex-wrap` — shadcn's default `max-w-lg` is 512px and `sm:justify-end` overflows the *left* edge rather than wrapping. Consider baking `min-h-0` into a shared scroll-body class so new dialogs inherit it. Each check is seconds; verification needs a real browser click per dialog (see the note below).
+
+### Cite the source in the Answer Key too
+
+The 2026-07-28 source tag (`[JEE Mains 2016]`) ships on the **Question Paper only** — the user scoped it that way. The Answer Key prints just `(a)` per question, so adding a citation there needs its own placement decision.
+
+**Why:** a teacher filing keys separately from papers has no provenance on the key at all; and once a decision is made the machinery is already built (`formatSourceTag` is exported and pure, `AnswerKeyInput` just needs the flag).
+
+**How to apply:** decide placement first — inline after the letter (`1. (b) [JEE Mains 2016]`) reads tightest given the key's one-paragraph-per-question rhythm, versus its own run in solutions mode. Then thread `includeSourceTag` into `buildAnswerKey`, extend `tests/docx-source-tag.test.ts` (which currently **asserts the key never carries it** — that test must be inverted deliberately, not deleted), and reuse the same checkbox rather than adding a second one.
+
+### Opt the MH-SSC-10 chapter-PYQ handouts into the source tag
+
+`scripts/mh-ssc-10/build-chapter-pyq.ts` builds per-chapter Board-PYQ handouts that deliberately span **2016–2026 in one document**, which is the single highest-value place for a per-question year citation — a student practising a chapter sees which sitting each question came from and how the board's phrasing drifted.
+
+**Why:** it is now a one-word change (`includeSourceTag: true` on the `buildQuestionPaper` call), and these handouts are already-distributed teacher artifacts.
+
+**How to apply:** this is **shipped output**, so per the learning-propagation protocol it needs a 360 + explicit go-ahead before regenerating. Scope: one flag, one script, regenerates both `.docx` per chapter; blast radius is anyone holding an already-printed copy (the questions don't change, only the citation appears). Worth checking one rendered chapter first — the SSC exam name is long (`[Maharashtra State Board Class 10 2019]`, 38 chars) and may wrap in the 2-column layout, in which case shortening the printed exam label for this exam is the prerequisite decision.
+
+### Open verification owed: the DownloadDialog fix was never seen in a browser
+
+`b2ac57e` fixes the dialog layout, but this repo has **no headless render for a click-gated component** — the gate proves it compiles, nothing more.
+
+**Why:** the bug it fixes was itself shipped through a green gate. Re-checking is one click and closes the loop.
+
+**How to apply:** open `/browse` → Download, confirm all three checkboxes render, "Done" sits inside the dialog, and nothing overlaps the button row. If a longer options list is ever added, re-check at a short viewport (the `max-h-[90dvh]` path only engages when the body actually overflows).
+
 ---
 
 ## 2026-07-27
