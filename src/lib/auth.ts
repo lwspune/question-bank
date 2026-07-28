@@ -1,5 +1,14 @@
+import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import {
+  hasSupabaseAuthCookie,
+  deriveIdentity,
+  ANON_IDENTITY,
+  type PageIdentity,
+} from "@/lib/auth-identity";
+
+export type { PageIdentity };
 
 export class HttpError extends Error {
   constructor(public status: number, message: string) {
@@ -50,6 +59,47 @@ export async function getSessionMember(): Promise<SessionMember | null> {
     orgName: org.name,
     role: membership.role as "ADMIN" | "TEACHER",
   };
+}
+
+/**
+ * Resolve the viewer of a PUBLIC page in a single pass.
+ *
+ * Replaces the `getSessionMember()` + `getSessionUser()` + `getSessionSuperadmin()`
+ * trio that `/browse` used to await sequentially — three Supabase clients and
+ * three `auth.getUser()` calls per request, on the site's busiest and most
+ * anon-heavy route. Here: one cookie sniff (free) short-circuits anon entirely,
+ * then one `getUser()` and the two membership lookups run in parallel.
+ *
+ * Use this on public pages that only need the three booleans. Pages that need the
+ * org id/name/role still want `getSessionMember()`.
+ */
+export async function getPageIdentity(): Promise<PageIdentity> {
+  // No Supabase cookie ⇒ no session ⇒ nothing to ask Supabase about. This is the
+  // path the overwhelming majority of /browse traffic takes.
+  if (!hasSupabaseAuthCookie(cookies().getAll().map((c) => c.name))) {
+    return ANON_IDENTITY;
+  }
+
+  const supabase = createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user || !user.email) return ANON_IDENTITY;
+
+  const [{ data: membership }, superadmin] = await Promise.all([
+    supabase
+      .from("org_members")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle(),
+    isSuperadmin(user.id),
+  ]);
+
+  return deriveIdentity({
+    hasUser: true,
+    isOrgMember: !!membership,
+    isSuperadmin: superadmin,
+  });
 }
 
 export async function requireAdmin(): Promise<SessionMember> {

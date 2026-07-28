@@ -2,8 +2,16 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
-import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
+import { getPageIdentity } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import {
+  listExams,
+  listSubjects,
+  listChapters,
+  listSubtopics,
+  getExamNameById,
+  getExamIdByName,
+} from "@/lib/questions/taxonomy";
 import {
   isPracticeOnlyExam,
   getExamBySlug,
@@ -61,12 +69,13 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // isStaff (org member) unlocks the tagged sheet + "Add to paper"; any signed-in
   // account unlocks the paper/key downloads. Only resolve the user when not staff
   // (a member already implies a signed-in user).
-  const member = await getSessionMember();
-  const isStaff = !!member;
-  const isSignedIn = isStaff || !!(await getSessionUser());
-  // Content editing is superadmin-only (migration 0056) — the per-question
+  // ONE identity resolution (was three sequential ones — member + user +
+  // superadmin, each with its own client and its own auth.getUser()). Anon
+  // requests, which are the bulk of this route's traffic, short-circuit on a
+  // cookie check and never touch Supabase auth at all.
+  // canEditContent is superadmin-only (migration 0056) — the per-question
   // "Edit" affordance shows only for the platform admin.
-  const canEditContent = !!(await getSessionSuperadmin());
+  const { isStaff, isSignedIn, canEditContent } = await getPageIdentity();
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -76,12 +85,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // kind filter to "practice" so the default view isn't an empty PYQ list.
   // Only when the user hasn't explicitly chosen a kind in the URL.
   if (filters.examId && !rawParams.has("kind")) {
-    const { data: ex } = await supabase
-      .from("exams")
-      .select("name")
-      .eq("id", filters.examId)
-      .maybeSingle();
-    if (isPracticeOnlyExam(ex?.name)) filters = { ...filters, kind: "practice" };
+    const examName = await getExamNameById(filters.examId);
+    if (isPracticeOnlyExam(examName ?? undefined)) {
+      filters = { ...filters, kind: "practice" };
+    }
   }
 
   // Entry-path gap: a typed/bookmarked bare `/browse` (no examId) carries no
@@ -100,12 +107,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       }) &&
       entry
     ) {
-      const { data: ex } = await supabase
-        .from("exams")
-        .select("id")
-        .eq("name", entry.examName)
-        .maybeSingle();
-      if (ex?.id) filters = { ...filters, examId: ex.id, kind: "practice" };
+      const examId = await getExamIdByName(entry.examName);
+      if (examId) filters = { ...filters, examId, kind: "practice" };
     }
   }
 
@@ -122,47 +125,24 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     p_kind: filters.kind,
   };
 
+  // Taxonomy (exams/subjects/chapters/subtopics) is cached — it's identical for
+  // every visitor and only moves on an ingest. The facet RPCs and the question
+  // query below are NOT cached: they're `security invoker`, so their results are
+  // RLS-scoped per viewer. See src/lib/questions/taxonomy.ts.
   const [
-    { data: exams },
-    { data: subjects },
-    { data: chapters },
-    { data: subtopics },
+    exams,
+    subjects,
+    chapters,
+    subtopics,
     { data: chapterFacets },
     { data: subtopicFacets },
     { data: pyqYears },
     questionsResult,
   ] = await Promise.all([
-    supabase.from("exams").select("id, name").order("name"),
-    filters.examId
-      ? supabase
-          .from("subjects")
-          .select("id, name")
-          .eq("exam_id", filters.examId)
-          .order("name")
-      : Promise.resolve({ data: [] as { id: string; name: string }[] }),
-    filters.subjectId
-      ? supabase
-          .from("chapters")
-          .select("id, name, order_index")
-          .eq("subject_id", filters.subjectId)
-          .order("order_index")
-      : Promise.resolve({
-          data: [] as { id: string; name: string; order_index: number }[],
-        }),
-    filters.chapterIds.length > 0
-      ? supabase
-          .from("subtopics")
-          .select("id, name, chapter_id, order_index")
-          .in("chapter_id", filters.chapterIds)
-          .order("name")
-      : Promise.resolve({
-          data: [] as {
-            id: string;
-            name: string;
-            chapter_id: string;
-            order_index: number | null;
-          }[],
-        }),
+    listExams(),
+    filters.examId ? listSubjects(filters.examId) : Promise.resolve([]),
+    filters.subjectId ? listChapters(filters.subjectId) : Promise.resolve([]),
+    listSubtopics(filters.chapterIds),
     filters.subjectId
       ? supabase.rpc("get_chapter_facets", facetArgs)
       : Promise.resolve({
@@ -315,7 +295,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 questions={questionsResult.rows}
                 pageOffset={(filters.page - 1) * DEFAULT_PAGE_SIZE}
                 canEdit={canEditContent}
-                isLoggedIn={!!member}
+                // Pre-existing semantics: this prop was `!!member` (org staff),
+                // not "any signed-in account". Kept as-is — isStaff is the exact
+                // same boolean, only sourced from the single identity call now.
+                isLoggedIn={isStaff}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={!filters.examId}
                 resourceTags={resourceTags}

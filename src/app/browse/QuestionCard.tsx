@@ -421,7 +421,7 @@ export default function QuestionCard({
             <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t pt-2 font-sans">
               {canEdit ? (
                 <Link
-                  href={`/questions/${question.id}/edit`}
+                  href={`/dashboard/questions/${question.id}/edit`}
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
                 >
                   <Pencil className="h-3 w-3" aria-hidden />

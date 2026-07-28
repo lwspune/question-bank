@@ -93,7 +93,7 @@ export default function QuestionListItem({ question }: Props) {
 
       <div className="flex shrink-0 items-center gap-1">
         <Button asChild variant="ghost" size="sm">
-          <Link href={`/questions/${question.id}/edit`}>
+          <Link href={`/dashboard/questions/${question.id}/edit`}>
             <Pencil className="h-3.5 w-3.5" aria-hidden />
             Edit
           </Link>
