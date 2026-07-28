@@ -83,6 +83,94 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "CHEMICAL BONDING – 30 MCQs" — a 30-q Class-11 Chemistry worksheet, supplied as a
+  // single WhatsApp photo (two printed columns, Q1–15 left / Q16–30 right). Legible enough
+  // to transcribe directly from the image (upscaled column crops); NO printed key, so every
+  // answer is DERIVED. Filed under MHT-CET (examId override) rather than NDA because the
+  // content is squarely Class-11 HSC — Born-Haber cycle, lattice energy, VBT and
+  // hybridisation — well above the basic NDA Chemistry "Chemical Bonding" chapter (13 q,
+  // 3 subtopics); same call as the APJ 11th Chemistry test. Blocks: ionic bonding + lattice
+  // (Q1–5, 16–20), covalent (Q6–10), coordinate (Q11–15), VBT + hybridisation (Q21–25),
+  // sigma/pi orbital overlap (Q26–30 → filed under Hybridization, the chapter's VBT home).
+  // Semantic dedup vs the 65-q MHT-CET bank: 0 dup — the bank is MHT-CET PYQ material (MOT
+  // bond orders, VSEPR shapes of XeF4/BrF5, formal charge) while this is a basic conceptual
+  // worksheet; the 5 nearest rows (Q3/Q9/Q17/Q22/Q23) all ask the INVERSE question over
+  // different option sets, so they are kept as new with a reviewNote. 2 rows HELD PRIVATE
+  // as status:"flawed": Q5 (NO printed option is a true property of ionic compounds — all
+  // four are the negations, so the option block looks inverted; keyed (A) only as an OMR
+  // placeholder) and Q15 (three of the four options — NH3, H2O, Cl- — are all lone-pair
+  // donating ligands, so only Na+ is definitely wrong; keyed (A), the canonical example).
+  // The other 28 commit PRIVATE then flip PUBLIC.
+  "chem-bonding-30": {
+    slug: "chem-bonding-30",
+    title: "MHT-CET Chemistry — Chemical Bonding (30 MCQs)",
+    recordsFile: "chem-bonding-30.records.json",
+    outName: "Tags_MHTCET_Chemistry_Chemical_Bonding_30",
+    sourceFile: "MHTCET_Chemistry_Practice__Chemical_Bonding_30_MCQs.jpg",
+    subjectName: "Chemistry",
+    chapterName: "Chemical Bonding and Molecular Structure",
+    examId: "70e70f9d-c20c-45c6-a346-0c914d65035d", // MHT-CET (not the default NDA EXAM_ID)
+    subtopics: [
+      "Ionic and Covalent Bonding, Lewis Structures and Octet Rule",
+      "Dipole Moment, Polarity and Intermolecular Forces",
+      "Hybridization",
+      "VSEPR Theory and Molecular Geometry",
+      "Molecular Orbital Theory and Bond Order",
+    ],
+    pyqNote: "MHT-CET Chemistry practice — LWS Chemical Bonding (30 MCQs)",
+    examName: "MHT-CET",
+    section: { key: "chemical-bonding", label: "Chemical Bonding" },
+    bankAdd: true,
+  },
+
+  // LWS "MATHEMATICS (MCQ'S)" (22/07/2026) — 75-q NDA Maths test on the Class-11 SETS
+  // chapter, in three printed sections: OBJECTIVE (Q1–54), ASSERT & REASONING (Q55–70,
+  // the standard four A/R codes as options) and CASE STUDY (Q71, one 100-employee
+  // three-floor Venn scenario with five sub-parts (i)–(v) → emitted as Q71–Q75 sharing
+  // `context` + setLabel "CS1", so the OMR sheet has 75 rows). Born-digital PDF but
+  // EVERY math expression is a rendered image — the text layer carries only the prose,
+  // so all stems/options were vision-transcribed off page PNGs. No key is printed ON the
+  // paper (every answer DERIVED, then independently re-derived); the LWS official key
+  // arrived separately as a CSV covering Q1–Q70 only (no key for the Q71–75 case study).
+  // Cross-check vs that key: 69/70 AGREE. The single divergence is Q45 (P({1,2}) power
+  // set), where the official key marks (c) "phi not-in A" — provably false, since phi is
+  // an element of every power set; (d) {1,2} in A is the unique correct option. Option (c)
+  // was source-verified at 8x zoom, so this is a key error, not a transcription slip. On
+  // the teacher's instruction the derived (d) is kept in BOTH the bank and the OMR sheet.
+  // Single-chapter mode.
+  // Semantic dedup vs the 153-q "Sets & Relations" bank: 4 dup (Q4 cheese/apples survey,
+  // Q6 5-element power set, Q7 2^m−2^n=112, Q34 relations count 2^mn) + 4 MAYBE kept as
+  // new (Q37/Q40/Q49/Q63 — same family, different quantities) — the paper is basic
+  // Class-11 Sets while the bank leans NDA relations/counting, so it is largely net-new.
+  // 7 rows HELD PRIVATE as status:"flawed" — printed defects; the official key confirmed
+  // the derived best-guess on every one, so OMR grading is sound but they stay out of the
+  // browsable bank: Q1 (Elements/Members synonymous → two correct options), Q10 + Q11
+  // (stem fractions typeset flat, so the literal reading has no correct option), Q14 +
+  // Q22 + Q51 (option glyphs corrupted / printed as raw LaTeX markup), Q53 (options (c)
+  // and (d) identical). Q56 is figure-dependent — the PRINTED Venn shows A and B disjoint,
+  // making the Assertion false → (d); the official key gives (d) for it AND for its
+  // reprint at Q64, confirming the printed figure was intended, so it ships as "new" with
+  // the diagram described in words. Q64 is status:"dup" — same assertion, same figure.
+  // The other 63 commit PRIVATE then flip PUBLIC.
+  "lws-sets-mcq": {
+    slug: "lws-sets-mcq",
+    title: "NDA Maths — Sets MCQ Test (22 Jul)",
+    recordsFile: "lws-sets-mcq.records.json",
+    outName: "Tags_LWS_Maths_Sets_MCQ_22Jul",
+    sourceFile: "LWS_Maths_Practice__Sets_MCQ_22-07-2026.pdf",
+    subjectName: "Mathematics",
+    chapterName: "Sets & Relations",
+    subtopics: [
+      "Counting Sets, Subsets, and Inclusion-Exclusion",
+      "Set Operations, Identities, and Cartesian Products of Sets",
+      "Relations — Properties, Cartesian Product, and Counting",
+    ],
+    pyqNote: "NDA Maths practice — LWS Sets MCQ Test (22/07/2026)",
+    examName: "NDA",
+    section: { key: "sets-relations", label: "Sets & Relations" },
+    bankAdd: true,
+  },
+
   // LWS "Interior of Earth & POP 50 Q" — 50-q NDA GAT test spanning TWO subjects:
   // Geography (Q1–25, "Interior of Earth" statement-evaluation MCQs → Earth's
   // Structure chapter: Earth's Interior/Crust/Plate-Tectonics + Earthquakes/Seismic
@@ -278,6 +366,7 @@ export const PAPERS: Record<string, PaperSpec> = {
     examName: "NDA",
     section: { key: "eng-dinner-3", label: "English Mock Test (Dinner 3)" },
     bankAdd: true,
+    createPaper: false, // bank ingest only (no /dashboard/papers paper)
   },
   // LWS "NDA ENG BB3" — 50-q NDA English test spanning SIX chapters: Spotting Errors
   // (Q1–10), Sentence Improvement (Q11–15 → Spotting Errors › Sentence Improvement),
