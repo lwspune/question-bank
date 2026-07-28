@@ -9,6 +9,7 @@
  * Read-only by design: no filters, no download dialog, PUBLIC questions only.
  * Anything beyond that is one click away in the tool itself.
  */
+import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -193,14 +194,23 @@ export default async function ChapterQuestionsPage({ params }: Params) {
               No public questions here yet.
             </p>
           ) : (
-            <QuestionList
-              questions={questions.rows}
-              pageOffset={0}
-              canEdit={false}
-              isLoggedIn={false}
-              supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
-              includeExam={false}
-            />
+            // QuestionList's bookmark button calls useSearchParams() to build
+            // its sign-in return path. On /browse that's invisible (the page is
+            // dynamic anyway), but during a static prerender it bails the whole
+            // page out to client rendering — which would silently cost this
+            // route the caching it exists for. A Suspense boundary is the
+            // documented fix: the questions still render on the server, only
+            // the bookmark button defers.
+            <Suspense fallback={null}>
+              <QuestionList
+                questions={questions.rows}
+                pageOffset={0}
+                canEdit={false}
+                isLoggedIn={false}
+                supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+                includeExam={false}
+              />
+            </Suspense>
           )}
         </div>
 
