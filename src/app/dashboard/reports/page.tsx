@@ -166,7 +166,7 @@ export default async function ReportsTriagePage({
                     )}
                   </div>
                   <Link
-                    href={`/questions/${r.questionId}/edit`}
+                    href={`/dashboard/questions/${r.questionId}/edit`}
                     className="font-medium text-primary hover:underline"
                   >
                     Open question →
