@@ -14,7 +14,9 @@ export type Anchors = { col: [number, number]; top: number; bottom: number; answ
 export type FigureEntry = { page: number; bbox: Bbox; anchors?: Anchors };
 
 export type VerifyStatus = "ok" | "needs-review" | "blocked";
-export type VerifyRecord = { status: VerifyStatus; bboxHeight: number; flags: string[] };
+/** `bbox` is optional only for back-compat with verdict files written before it was
+ *  tracked; every record written from now on carries it (see {@link mergeVerify}). */
+export type VerifyRecord = { status: VerifyStatus; bboxHeight: number; flags: string[]; bbox?: Bbox };
 
 export function bboxHeight(b: Bbox): number {
   return Math.round((b[3] - b[1]) * 1000) / 1000;
@@ -107,13 +109,27 @@ export function extractStemLabels(stem: string): string[] {
  * figures to "needs-review" so they can't silently ride through the gate.
  */
 export function mergeVerify(
-  computed: Record<string, { bboxHeight: number; flags: string[] }>,
+  computed: Record<string, { bboxHeight: number; flags: string[]; bbox?: Bbox }>,
   prior: Record<string, VerifyRecord> = {},
 ): Record<string, VerifyRecord> {
   const out: Record<string, VerifyRecord> = {};
   for (const [q, c] of Object.entries(computed)) {
-    const was = prior[q]?.status;
-    out[q] = { status: was === "ok" || was === "blocked" ? was : "needs-review", bboxHeight: c.bboxHeight, flags: c.flags };
+    const p = prior[q];
+    // A re-crop must not inherit the old verdict — the human approved a DIFFERENT
+    // image. (Re-NEET 2026 Q36 was re-cropped and kept its stale "ok", which is how
+    // an answer-leaking crop stayed published.) Records written before bboxes were
+    // tracked have no bbox to compare, so those are preserved as before.
+    const reCropped =
+      p?.bbox !== undefined &&
+      c.bbox !== undefined &&
+      p.bbox.some((v, i) => v !== c.bbox![i]);
+    const keep = !reCropped && (p?.status === "ok" || p?.status === "blocked");
+    out[q] = {
+      status: keep ? p!.status : "needs-review",
+      bboxHeight: c.bboxHeight,
+      flags: c.flags,
+      ...(c.bbox ? { bbox: c.bbox } : {}),
+    };
   }
   return out;
 }

@@ -9,6 +9,7 @@ import {
   extractStemLabels,
   type FigureEntry,
   type VerifyRecord,
+  type Bbox,
 } from "../scripts/lib/figures/verify";
 
 describe("bboxHeight", () => {
@@ -75,18 +76,41 @@ describe("blockedFigureQuestions (the flip-public gate)", () => {
 
 describe("mergeVerify", () => {
   const computed = {
-    "3": { bboxHeight: 0.16, flags: [] },
-    "39": { bboxHeight: 0.5, flags: ["tall bbox (0.5)"] },
+    "3": { bboxHeight: 0.16, flags: [], bbox: [0.1, 0.2, 0.5, 0.36] as Bbox },
+    "39": { bboxHeight: 0.5, flags: ["tall bbox (0.5)"], bbox: [0.1, 0.2, 0.5, 0.7] as Bbox },
   };
   it("preserves a prior human ok/blocked decision, refreshing flags", () => {
-    const prior: Record<string, VerifyRecord> = { "3": { status: "ok", bboxHeight: 0.9, flags: ["stale"] } };
+    const prior: Record<string, VerifyRecord> = {
+      "3": { status: "ok", bboxHeight: 0.16, flags: ["stale"], bbox: [0.1, 0.2, 0.5, 0.36] },
+    };
     const merged = mergeVerify(computed, prior);
     expect(merged["3"].status).toBe("ok");
-    expect(merged["3"].bboxHeight).toBe(0.16); // refreshed
     expect(merged["3"].flags).toEqual([]);
   });
   it("defaults a new/unseen figure to needs-review (can't ride the gate silently)", () => {
     expect(mergeVerify(computed)["39"].status).toBe("needs-review");
+  });
+
+  // A re-crop must NOT inherit the old verdict. This is how a leaking crop stayed
+  // published: Re-NEET 2026 Q36 was re-cropped and kept its stale "ok".
+  it("invalidates a prior ok when the bbox changed", () => {
+    const prior: Record<string, VerifyRecord> = {
+      "3": { status: "ok", bboxHeight: 0.9, flags: [], bbox: [0.1, 0.2, 0.5, 1.1] },
+    };
+    expect(mergeVerify(computed, prior)["3"].status).toBe("needs-review");
+  });
+  it("invalidates a prior blocked when the bbox changed (a re-crop deserves a fresh look)", () => {
+    const prior: Record<string, VerifyRecord> = {
+      "3": { status: "blocked", bboxHeight: 0.9, flags: [], bbox: [0.1, 0.2, 0.5, 1.1] },
+    };
+    expect(mergeVerify(computed, prior)["3"].status).toBe("needs-review");
+  });
+  it("preserves a prior verdict recorded before bboxes were tracked (back-compat)", () => {
+    const prior: Record<string, VerifyRecord> = { "3": { status: "ok", bboxHeight: 0.9, flags: [] } };
+    expect(mergeVerify(computed, prior)["3"].status).toBe("ok");
+  });
+  it("records the bbox so the next run can detect a change", () => {
+    expect(mergeVerify(computed)["3"].bbox).toEqual([0.1, 0.2, 0.5, 0.36]);
   });
 });
 

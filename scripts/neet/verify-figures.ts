@@ -126,8 +126,9 @@ async function main() {
   }
 
   // compute flags + merge verdict
-  const computed: Record<string, { bboxHeight: number; flags: string[] }> = {};
-  for (const q of nums) computed[q] = { bboxHeight: bboxHeight(manifest[q].bbox), flags: figureFlags(manifest[q]) };
+  const computed: Record<string, { bboxHeight: number; flags: string[]; bbox: FigureEntry["bbox"] }> = {};
+  for (const q of nums)
+    computed[q] = { bboxHeight: bboxHeight(manifest[q].bbox), flags: figureFlags(manifest[q]), bbox: manifest[q].bbox };
   const verdict = mergeVerify(computed, prior);
   writeFileSync(verifyPath(paper.id), JSON.stringify(verdict, null, 2) + "\n", "utf8");
 
