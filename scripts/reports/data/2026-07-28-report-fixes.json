@@ -1,0 +1,95 @@
+[
+  {
+    "id": "dd50af9a-2722-4442-985c-1b46f36bacf3",
+    "label": "NDA Maths Sep-2023 Q41",
+    "reason": "Source NDA_Maths_2023_Sep_QP.docx prints 'gof(x) = x - \\sqrt{x} + 1'; the bank pulled the +1 inside the radical. Option (d) also mis-transcribed. Key B verified correct against the source options.",
+    "context": "Let \\(f(x)=x^2-1\\) and \\(g\\circ f(x)=x-\\sqrt{x}+1\\).",
+    "options": { "D": "\\(x+1-\\sqrt{x+1}+1\\)" },
+    "solution": "\\(g\\circ f(x)=g(x^2-1)=x-\\sqrt{x}+1\\). Substitute \\(t=x^2-1\\), so \\(x=\\sqrt{t+1}\\) (taking \\(x\\ge 0\\)): \\(g(t)=\\sqrt{t+1}-\\sqrt{\\sqrt{t+1}}+1=\\sqrt{t+1}-\\sqrt[4]{t+1}+1\\). Hence \\(g(x)=\\sqrt{x+1}-\\sqrt[4]{x+1}+1\\), which is option B. Common mistake: not performing the substitution to find \\(g\\) explicitly, or dropping the \\(+1\\)."
+  },
+  {
+    "id": "4ab8eaca-6dee-41fb-835f-48cf74391426",
+    "label": "NDA Maths Sep-2023 Q42 (set sibling of Q41)",
+    "reason": "Shares the corrupted set context with Q41; same source correction. Key C=3 already agrees with the source and with the corrected g.",
+    "context": "Let \\(f(x)=x^2-1\\) and \\(g\\circ f(x)=x-\\sqrt{x}+1\\)."
+  },
+  {
+    "id": "f2d2b12e-98de-406b-938f-2da1f9fd930b",
+    "label": "JEE 2026 Apr05 S1 Q52",
+    "reason": "Reported: options leaked into stem. Source 5th april 2026 shift-1.docx confirms the option run belongs to the options block (and prints a duplicate '(b)' label for the 4th option). Options recovered earlier via optionOverrides but the stem was never stripped; option text also kept stray parentheses.",
+    "text": "Let the sum of the first \\(n\\) terms of an A.P. be \\(3n^{2}+ 5n\\). Then the sum of squares of the first 10 terms of the A.P. is :",
+    "options": { "A": "10220", "B": "12860", "C": "15220", "D": "19780" }
+  },
+  {
+    "id": "fb63cafb-3548-4407-95d5-19a86821aecb",
+    "label": "JEE 2026 Jan21 S1 Q70",
+    "reason": "Unreported sibling of Q52 found by probe: same optionOverrides recovery, same un-stripped stem and parenthesised option text. Source 21st jan 2026 shift -1.docx prints the duplicate '(d)' label.",
+    "text": "Let O be the vertex of the parabola \\(x^{2}= 4y\\) and Q be any point on it. Let the locus of the point P , which divides the line segment OQ internally in the ratio 2: 3 be the conic C . Then the equation of the chord of C , which is bisected at the point \\((1,2)\\), is:",
+    "options": {
+      "A": "\\(5x - y - 3 = 0\\)",
+      "B": "\\(4x - 5y + 6 = 0\\)",
+      "C": "\\(x - 2y + 3 = 0\\)",
+      "D": "\\(5x - 4y + 3 = 0\\)"
+    }
+  },
+  {
+    "id": "686fca21-45c7-46c5-b695-4c60482c0d0c",
+    "label": "JEE 2024 Apr04 Q156",
+    "reason": "Reported: incomplete. Matrix name B dropped. Source '4 april.docx' carries the same corruption, but the stem's own 'sum of all the elements of the matrix B' pins it.",
+    "text": "Let \\(A =\\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}\\) and \\(B = I + adj(A) + (adjA)^{2}+ \\ldots +\\) \\((adjA)^{10}\\). Then, the sum of all the elements of the matrix B is:"
+  },
+  {
+    "id": "bce48532-9748-47a5-ba1c-7d0f59ec21a6",
+    "label": "JEE 2024 Apr08 Q68",
+    "reason": "Matrix name A dropped. Source '8 april.docx' carries the same corruption; the next clause 'A^3 = 4A^2 - A - 21I' pins it.",
+    "text": "Let \\(A =\\begin{bmatrix} 2 & a & 0 \\\\ 1 & 3 & 1 \\\\ 0 & 5 & \\text{ }b \\end{bmatrix}\\). If \\(A^{3}= 4{\\text{ }A}^{2}- A - 21I\\), where I is the identity matrix of order \\(3 \\times 3\\), then \\(2a + 3b\\) is equal to:"
+  },
+  {
+    "id": "a1ad1ff5-7a29-4623-8e0e-f844dbc79b25",
+    "label": "JEE 2024 Jan27 Q86",
+    "reason": "Variable name c dropped. Source '27 jan.docx' carries the same corruption; the stem's own '(b + c)/a' pins it.",
+    "text": "A fair die is tossed repeatedly until a six is obtained. Let \\(X\\) denote the number of tosses required and let \\(a = P(X = 3),b = P(X \\geq 3)\\) and \\(c = P(X \\geq 6 \\mid X > 3)\\). Then \\(\\frac{b + c}{a}\\) is equal to"
+  },
+  {
+    "id": "cf6eb094-aa66-4591-a14f-b46c6e7d32ff",
+    "label": "JEE 2023 Jan29 Q71",
+    "reason": "Set name S dropped. Source '29 jan.docx' carries the same corruption; the stem's own 'sum over theta in S' pins it.",
+    "text": "Let \\(f(\\theta) = 3\\left( \\sin^{4}\\left( \\frac{3\\pi}{2}- \\theta \\right)+\\sin^{4}(3\\pi + \\theta) \\right)- 2\\left( 1 -\\sin^{2}2\\theta \\right)\\) and \\(S =\\left\\{ \\theta \\in \\lbrack 0,\\pi\\rbrack:f^{'}(\\theta) = \\right.\\) \\(\\left. \\ -\\frac{\\sqrt{3}}{2} \\right\\}\\). If \\(4\\beta =\\sum_{\\theta \\in S} \\theta\\), then \\(f(\\beta)\\) is equal to"
+  },
+  {
+    "id": "b1412276-3632-44a4-9bd1-79ec53a0137c",
+    "label": "JEE 2022 Jul29 Q81",
+    "reason": "Set name S dropped. Source '29 july.docx' carries the same corruption; the stem's own 'theta in S' pins it.",
+    "text": "Let \\(S =\\left\\{ \\theta \\in (0,2\\pi):7\\cos^{2}\\theta - 3\\sin^{2}\\theta - 2 \\right.\\) \\(\\left. \\ \\cos^{2}2\\theta = 2 \\right\\}\\). Then, the sum of roots of all the equations \\(x^{2}- 2\\left( \\tan^{2}\\theta +\\cot^{2}\\theta \\right)x + 6\\sin^{2}\\theta = 0\\) \\(\\theta \\in S\\), is"
+  },
+  {
+    "id": "0afd7cef-243c-491b-875a-5a4f0df88bf5",
+    "label": "JEE 2022 Jun26 Q90",
+    "reason": "Two defects: the curve name y was dropped, AND the clause 'if the sum of abscissas of all the points of intersection of the' was dropped, leaving a dangling 'curve'. Both restored verbatim from source '26 june.docx'.",
+    "text": "Let \\(S = (0,2\\pi) -\\left\\{ \\frac{\\pi}{2},\\frac{3\\pi}{4},\\frac{3\\pi}{2},\\frac{7\\pi}{4} \\right\\}\\). Let \\(y =\\) \\(y(x),x\\in S\\), be the solution curve of the differential equation \\(\\frac{dy}{dx}=\\frac{1}{1 + \\sin2x},y\\left( \\frac{\\pi}{4} \\right)=\\frac{1}{2}\\). If the sum of abscissas of all the points of intersection of the curve \\(y=y(x)\\) with the curve \\(y=\\sqrt{2}\\sin x\\) is \\(\\frac{k\\pi}{12}\\), then \\(k\\) is equal to"
+  },
+  {
+    "id": "ecff9517-bbeb-4a06-9cf9-e444ed49bef8",
+    "label": "MHT-CET 2025 Apr21 S1 Q38",
+    "reason": "Constant name k dropped. Source '21st April Shift I.docx' carries the same corruption; the stem's own 'y = kt^2' pins it.",
+    "text": "A simple pendulum has time period ' \\(T_{1}\\) '. The point of suspension is now moved upward according to equation \\(y =kt^{2}\\) where \\(k = 1\\text{ }m/s^{2}\\). If new time period is ' \\(T_{2}\\) ' then \\(T_{1}^{2}/T_{2}^{2}\\) will be ( \\(g = 10\\text{ }m/s^{2}\\) )"
+  },
+  {
+    "id": "1a752190-2422-41d8-8f0f-7125575205ed",
+    "label": "NDA II 2024 GAT Q69",
+    "reason": "Options duplicated verbatim at the end of the stem (option rows already carry them correctly). Stem truncated at the end of the real question.",
+    "text": "In which one among the following situations, the bulb would glow the most ? (Consider all batteries are the same)"
+  },
+  {
+    "id": "58dfcfd7-4dcd-40c1-8b2d-fade0131377a",
+    "label": "NDA1 2019 GAT Q64",
+    "reason": "Found by the new OPTION_LEAK probe, not reported: all four options duplicated verbatim at the end of the stem (the option rows already carry them). Stem truncated at the question mark.",
+    "text": "In which of the following pairs are the ions isoelectronic?"
+  },
+  {
+    "id": "f1a0a69e-fd21-4b92-be9b-c48beafaf01c",
+    "label": "NDA2 GAT 2018 Q126",
+    "reason": "Options duplicated verbatim at the end of the stem (option rows already carry them correctly). The 'Bhakti Saint - Philosophy' column header is part of the question and is kept.",
+    "text": "Which one of the following pairs is correctly matched?\r\n\r\nBhakti Saint — Philosophy"
+  }
+]

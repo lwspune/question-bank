@@ -32,6 +32,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-28
+
+- **Per-option figure crops for NEET option-figure questions (3 rows).** `NEET_UG_2024.pdf` Q42, Q53, Q87 are questions whose four OPTIONS are figures. They ship as one combined question image plus placeholder option text (`"Circuit option 1"…`), so a student sees four meaningless buttons and has to map them to the `(1)-(4)` labels inside the picture. The bank already supports per-option images (`options.image_url`, 360 rows bank-wide, rendered by [QuestionCard.tsx](src/app/browse/QuestionCard.tsx)) — the NEET pipeline just never used it; `scripts/neet/attach-images.ts` only writes `questions.image_url`. Work needed: extend the attach script with an option-level manifest, derive 4 sub-bboxes each (their layout is a clean 2×2 / 4-row grid — profiled Q42 already: rows y 0.672-0.756 / 0.761-0.834, cols x 0.143-0.334 / 0.513-0.704), crop, verify, write. Usable today, so this is a modelling improvement rather than a defect. *(The combined crops were trimmed of duplicated stem text on 2026-07-28.)*
+- **`audit:text` OPTION_LEAK has 1 known false positive.** `NDA_GAT_Practice__APJ_GAT_Mock_8.docx` Q19 — *"Where are you coming from? (a) Are you (b) an American? (c) No error. (d)"*. It's a spot-the-error question whose first segment happens to end in `?`, which is exactly the terminator the probe uses to tell a leaked option block from inline sentence labels. 1 in 32,291 rows; not worth contorting the rule. Read past it.
+- **Featured-PYQ solutions are prose, not step-wise** (concept report `regression-correlation / correlation-coefficient-properties`, still OPEN). A student asked that the featured PYQ solution be worked step-by-step like the authored `authoredExample.steps`. The solutions there are correct and do carry reasoning + a common-mistake note, so this is an editorial enhancement, not a defect — but it applies bank-wide (every `/notes` featured PYQ pulls the bank's `solution` field), so it needs a deliberate decision on scope before anyone starts rewriting.
+- **`/notes` key terms are ALL-CAPS in places where the house convention is `**bold**`** — e.g. `central-tendency / what-is-data` renders POPULATION, SAMPLE, SPREAD in caps. Surfaced while triaging an anonymous "typo-or-formatting" concept report that carried no details (resolved `wont-fix`, not reproducible). Cosmetic; a sweep would touch many chapters.
+
+---
+
 ## 2026-07-27
 
 ### Ingest the 5 un-ingested MH-SSC-10 subjects — Geography and History first
