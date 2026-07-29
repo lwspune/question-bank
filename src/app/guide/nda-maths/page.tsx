@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, NotebookPen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -8,6 +8,7 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { CHAPTER_TABLE, OVERVIEW, ROUTES } from "./_data/nda-maths";
+import ChapterBreakdownTable from "./_components/ChapterBreakdownTable";
 import { getNotesChapterHref } from "@/lib/links/notesIndex";
 
 /** Pages with full content as of this commit. Other section cards get a
@@ -43,6 +44,17 @@ export default function NdaMathsLanding() {
   // Skip the overview row for the inner-cards grid — that's this page.
   const sectionCards = ROUTES.filter((r) => r.slug !== "");
 
+  // Both derived from CHAPTER_TABLE so they can't drift from it. The notes
+  // hrefs are resolved here (server side) and handed to the client table, so
+  // the /notes registry never reaches the browser bundle.
+  const subtopicCount = CHAPTER_TABLE.reduce(
+    (n, row) => n + row.subtopics.length,
+    0
+  );
+  const notesHrefs = Object.fromEntries(
+    CHAPTER_TABLE.map((row) => [row.chapter, getNotesChapterHref(row.chapter)])
+  );
+
   return (
     <GuideShell
       guideTitle="NDA Mathematics Guide"
@@ -77,57 +89,12 @@ export default function NdaMathsLanding() {
         </h2>
         <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
           All 31 chapters tested in NDA Mathematics, sized by question count
-          across the 2017–2026 bank. Focus column names the top 1–2 subtopics
-          to drill within each chapter. Sorted by share of bank.
+          across the 2017–2026 bank. <strong className="font-medium text-foreground">Marks</strong> is
+          what the chapter is typically worth in one 300-mark paper, so the
+          column spans the whole paper. Click any chapter to expand its share
+          of the {subtopicCount} subtopics. Sorted by share of bank.
         </p>
-        <div className="mt-4 overflow-x-auto rounded-md border">
-          <table className="w-full min-w-[720px] text-sm">
-            <thead className="border-b bg-muted/40">
-              <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">
-                <th className="px-3 py-2 font-medium">Chapter</th>
-                <th className="px-3 py-2 text-right font-medium">Questions</th>
-                <th className="px-3 py-2 text-right font-medium">Share</th>
-                <th className="px-3 py-2 text-right font-medium">% HARD</th>
-                <th className="px-3 py-2 font-medium">Focus topics</th>
-              </tr>
-            </thead>
-            <tbody>
-              {CHAPTER_TABLE.map((row) => {
-                const notesHref = getNotesChapterHref(row.chapter);
-                return (
-                  <tr key={row.chapter} className="border-b last:border-b-0 align-top">
-                    <td className="px-3 py-2 font-medium">
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <span>{row.chapter}</span>
-                        {notesHref && (
-                          <Link
-                            href={notesHref}
-                            className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/5 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary transition-colors hover:bg-primary/10"
-                          >
-                            <NotebookPen className="h-2.5 w-2.5" aria-hidden />
-                            Notes
-                          </Link>
-                        )}
-                      </div>
-                    </td>
-                    <td className="px-3 py-2 text-right tabular-nums">
-                      {row.qCount}
-                    </td>
-                    <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
-                      {row.pctTotal.toFixed(1)}%
-                    </td>
-                    <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">
-                      {row.pctHard}%
-                    </td>
-                    <td className="px-3 py-2 font-serif text-sm leading-relaxed text-muted-foreground">
-                      {row.focus}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        <ChapterBreakdownTable rows={CHAPTER_TABLE} notesHrefs={notesHrefs} />
       </section>
 
       <section className="mt-12">
