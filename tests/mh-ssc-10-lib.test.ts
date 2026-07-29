@@ -106,3 +106,100 @@ describe("buildPaperRecords", () => {
     ).toThrow(/exactly A,B,C,D/);
   });
 });
+
+// ── Multi-subject papers ─────────────────────────────────────────────────────
+// The Social Sciences papers carry TWO disciplines in one printed paper:
+// Paper I = History (Q1-5) + Political Science (Q6-9). So `subject` is a
+// PER-QUESTION field (like `chapter`), and buildPaperRecords accepts an ORDERED
+// list of catalogs. Passing a single catalog is the pre-existing single-subject
+// behaviour and stays valid — every test above exercises it unchanged.
+const HIST: PaperCatalog = {
+  subjectName: "History",
+  chapters: {
+    "Applied History": ["What is Applied History"],
+    "Heritage Management": ["Museums"],
+  },
+};
+const POLSCI: PaperCatalog = {
+  subjectName: "Political Science",
+  chapters: {
+    "The Electoral Process": ["Election Commission"],
+    // deliberately shares a chapter NAME with no History chapter, and History's
+    // "Applied History" is absent here — proves per-subject chapter validation.
+  },
+};
+
+const histQ = (over: Partial<PaperQuestion> = {}): PaperQuestion => ({
+  ref: "Q1(A)(1)",
+  format: "subjective",
+  chapter: "Applied History",
+  subtopic: "What is Applied History",
+  difficulty: "EASY",
+  stem: "What is applied history?",
+  solution: "Applied history applies historical knowledge to present-day problems.",
+  reviewFlag: true,
+  ...over,
+});
+
+describe("buildPaperRecords — multi-subject paper", () => {
+  it("stamps the per-question subject and validates the chapter against THAT subject", () => {
+    const { rows } = buildPaperRecords(
+      [HIST, POLSCI],
+      [
+        histQ(),
+        histQ({
+          ref: "Q7(1)",
+          subject: "Political Science",
+          chapter: "The Electoral Process",
+          subtopic: "Election Commission",
+          stem: "Who conducts elections in India?",
+          solution: "The Election Commission of India.",
+        }),
+      ],
+    );
+    expect(rows.map((r) => r.subjectName)).toEqual(["History", "Political Science"]);
+    expect(rows.map((r) => r.chapterName)).toEqual(["Applied History", "The Electoral Process"]);
+  });
+
+  it("defaults a question with no explicit subject to the FIRST catalog", () => {
+    const { rows } = buildPaperRecords([HIST, POLSCI], [histQ()]);
+    expect(rows[0].subjectName).toBe("History");
+  });
+
+  it("throws when a question names a subject the paper does not carry", () => {
+    expect(() =>
+      buildPaperRecords([HIST, POLSCI], [histQ({ subject: "Geography" })]),
+    ).toThrow(/subject "Geography" not carried by this paper/);
+  });
+
+  it("throws when a chapter is valid for another subject but not the named one", () => {
+    // "Applied History" is a History chapter; naming it under Political Science
+    // must fail rather than silently pass because SOME catalog has it.
+    expect(() =>
+      buildPaperRecords([HIST, POLSCI], [histQ({ subject: "Political Science" })]),
+    ).toThrow(/not in the Political Science catalog/);
+  });
+
+  it("accepts an explicit subject that matches the sole catalog (single-subject paper)", () => {
+    const { rows } = buildPaperRecords(CAT, [mcq({ subject: "Algebra" })]);
+    expect(rows[0].subjectName).toBe("Algebra");
+  });
+
+  it("throws when a single-catalog paper names a different subject", () => {
+    expect(() => buildPaperRecords(CAT, [mcq({ subject: "Geometry" })])).toThrow(
+      /subject "Geometry" not carried by this paper/,
+    );
+  });
+
+  it("keeps source_row global across subjects (paper order, not per-subject)", () => {
+    const { rows } = buildPaperRecords(
+      [HIST, POLSCI],
+      [
+        histQ(),
+        histQ({ ref: "Q6(1)", subject: "Political Science", chapter: "The Electoral Process", subtopic: "Election Commission" }),
+        histQ({ ref: "Q5(1)", chapter: "Heritage Management", subtopic: "Museums" }),
+      ],
+    );
+    expect(rows.map((r) => r.sourceRow)).toEqual([1, 2, 3]);
+  });
+});

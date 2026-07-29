@@ -21,7 +21,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { buildPaperRecords, latexImbalances, type PaperQuestion } from "./lib";
-import { ORG_ID, EXAM_ID, CREATED_BY, requirePaper, requireCatalog, questionsJsonPath } from "./config";
+import { ORG_ID, EXAM_ID, CREATED_BY, requirePaper, paperCatalogs, questionsJsonPath } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -31,17 +31,23 @@ async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
   const paper = requirePaper(id);
-  const catalog = requireCatalog(paper.subjectName);
+  const catalogs = paperCatalogs(paper);
   loadEnv();
 
   const questions: PaperQuestion[] = JSON.parse(readFileSync(questionsJsonPath(id), "utf8"));
-  const { rows, flags } = buildPaperRecords(catalog, questions);
+  const { rows, flags } = buildPaperRecords(catalogs, questions);
 
-  console.log(`\nBuilt ${rows.length} PYQ rows for ${paper.subjectName} ${paper.year} (${id}).`);
+  const subjectLabel = catalogs.map((c) => c.subjectName).join(" + ");
+  console.log(`\nBuilt ${rows.length} PYQ rows for ${subjectLabel} ${paper.year} (${id}).`);
+  if (catalogs.length > 1) {
+    const bySubj = new Map<string, number>();
+    for (const r of rows) bySubj.set(r.subjectName, (bySubj.get(r.subjectName) ?? 0) + 1);
+    console.log(`by subject: ${[...bySubj].map(([k, n]) => `${k}=${n}`).join("  ")}`);
+  }
   const byChap = new Map<string, number>();
-  for (const r of rows) byChap.set(r.chapterName, (byChap.get(r.chapterName) ?? 0) + 1);
+  for (const r of rows) byChap.set(`${r.subjectName} · ${r.chapterName}`, (byChap.get(`${r.subjectName} · ${r.chapterName}`) ?? 0) + 1);
   console.log("by chapter:");
-  for (const [k, n] of [...byChap].sort()) console.log(`  ${k.padEnd(38)} ${n}`);
+  for (const [k, n] of [...byChap].sort()) console.log(`  ${k.padEnd(58)} ${n}`);
   const fmt = new Map<string, number>();
   for (const r of rows) fmt.set(r.questionFormat ?? "mcq", (fmt.get(r.questionFormat ?? "mcq") ?? 0) + 1);
   console.log(`format: ${[...fmt].map(([k, n]) => `${k}=${n}`).join("  ")}`);
