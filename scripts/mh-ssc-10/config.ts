@@ -551,15 +551,31 @@ const MULTI_SUBJECT: Record<string, string[]> = {
   History: ["History", "Political Science"],
 };
 
+// SSC board papers are a March sitting, with ONE exception on disk: the March
+// 2020 Social Sciences Paper II (Geography) was postponed past the COVID
+// lockdown and printed as "BOARD QUESTION PAPER: JULY 2020". Paper I (History)
+// was NOT postponed — its cover code N 452 decodes as `2020 III 21`, i.e. 21
+// March 2020 — and the four 2020 Maths/Science papers all print MARCH, so this
+// override is exactly one paper wide. Keyed by paper id.
+const MONTH_OVERRIDE: Record<string, string> = {
+  "geog-2020": "July",
+  // Social Sciences Paper I 2022 was sat on 1 APRIL — cover code N 752 decodes
+  // as `2022 IV 01 1030`. (The Geography 2022 source we hold is a publisher's
+  // typeset reproduction headed "BOARD QUESTION PAPER: MARCH 2022", so the two
+  // 2022 papers carry different months; each follows its own source.)
+  "hist-2022": "April",
+};
+
 function mkPaper(subjectName: string, year: number, paperCode?: string): Paper {
   const sourceFile = `MH_SSC_10_${FILE_SUBJECT[subjectName]}_${year}.pdf`;
   const subjects = MULTI_SUBJECT[subjectName];
+  const id = `${ID_PREFIX[subjectName]}-${year}`;
   return {
-    id: `${ID_PREFIX[subjectName]}-${year}`,
+    id,
     subjectName,
     ...(subjects ? { subjects } : {}),
     year,
-    month: "March",
+    month: MONTH_OVERRIDE[id] ?? "March",
     ...(paperCode ? { paperCode } : {}),
     pdf: src(sourceFile),
     sourceFile,
@@ -599,12 +615,22 @@ const PAPER_SPECS: Array<[string, number, string?]> = [
   // The 2016-2018 papers are OUT OF SCOPE (old syllabus: Paper II bundled
   // ECONOMICS, Paper I a different History syllabus). 2019 is absent from disk
   // for both subjects; 2021 had no exam. So 6 sittings each, not 10.
+  //
+  // ⚠ 2023 IS DELIBERATELY ABSENT FOR BOTH SUBJECTS — the only 2023 Social
+  // Sciences PDFs on disk are MARATHI-MEDIUM prints, and the medium is on the
+  // cover, not in the filename: Geography 2023 is `N 964 … GEOGRAPHY PAPER-II
+  // (M)` and History 2023 is `N 956 … PAPER-I (M)`, both wholly Devanagari.
+  // This corpus is English medium throughout. Do NOT ingest a translation:
+  // `content_hash` is computed from the stem, so translated rows would fail to
+  // dedup against the real English paper if it is ever sourced, permanently
+  // duplicating the sitting. Source the (E) prints, then add the years back.
+  //
   // Geography (Social Sciences Paper II) — comparative India + Brazil.
-  ["Geography", 2020], ["Geography", 2022], ["Geography", 2023],
-  ["Geography", 2024], ["Geography", 2025], ["Geography", 2026, "N 969"],
+  ["Geography", 2020], ["Geography", 2022],
+  ["Geography", 2024, "N 669"], ["Geography", 2025, "N 869"], ["Geography", 2026, "N 969"],
   // History and Political Science (Social Sciences Paper I) — MULTI-SUBJECT.
-  ["History", 2020], ["History", 2022], ["History", 2023],
-  ["History", 2024], ["History", 2025], ["History", 2026, "N 961"],
+  ["History", 2020, "N 452"], ["History", 2022, "N 752"],
+  ["History", 2024, "N 661"], ["History", 2025, "N 861"], ["History", 2026, "N 961"],
 ];
 
 export const PAPERS: Record<string, Paper> = Object.fromEntries(
