@@ -368,6 +368,59 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: true,
     createPaper: false, // bank ingest only (no /dashboard/papers paper)
   },
+
+  // LWS "English Mock Test (DINNER 4)" — 50-q NDA English (GAT) MOCK spanning FIVE
+  // chapters: Direct/Indirect Speech (Q1–10 → Grammar › Direct and Indirect Speech),
+  // Antonyms (Q11–20 → Vocabulary › Antonyms), Idioms and Phrases (Q21–30 → Idiom
+  // Meaning), Comprehension (Q31–35, one shared Titanic passage → context + setLabel
+  // RC1, split across Inferential/Literal/Vocabulary-in-Context), One Word Substitution
+  // (Q36–40 → Vocabulary › Word Definition), Active/Passive Voice (Q41–45 → Grammar ›
+  // Active and Passive Voice), Sentence Rearrangement (Q46–50 P/Q/R/S part-jumbles →
+  // Sentence Part Rearrangement (PQRS)). Born-digital DOCX, clean text layer, no key in
+  // the paper itself (answers DERIVED) — but the teacher's official key arrived
+  // afterwards as a separate CSV and every answer was cross-checked against it:
+  // 49/50 AGREE, 1 mismatch (Q16, below). The three items flagged low-confidence at
+  // derivation time (Q17 FALLIBLE, Q18 IMPERTINENT, Q19 ROUGH) are all CONFIRMED by the
+  // official key. Single-subject multi-chapter mode (`chapters` + per-record
+  // `chapter`). Semantic dedup vs the 1,296-q NDA English bank: 48 new / 2 dup — Q7
+  // (bfe17d83, identical stem AND identical option order, bank key B confirms our
+  // derivation) and Q27 "fair and square" (dfdcea82). Two MAYBEs adjudicated to NEW:
+  // Q17 FALLIBLE (bank 59c8b76b keys 'perfect' over a disjoint option set) and Q34
+  // 'maiden' (bank 8a7e69fa is a standalone synonym, ours is in-passage vocabulary).
+  // The Titanic passage was additionally checked against questions.context (0 hits in
+  // 3,206 context-bearing English rows), which the bank dump doesn't carry. 1 row HELD
+  // PRIVATE as status:"flawed": Q16 PAROCHIAL, the sole key mismatch — three options
+  // (international, global, world wide) are all defensible antonyms and 'global'/'world
+  // wide' are outright synonyms of each other, so the item has no single defensible key.
+  // Derived B by elimination; the OFFICIAL key says C ('global'), which is the better
+  // answer on the natural local-vs-global axis, so the official key is preserved verbatim
+  // (OMR grading must match how the students were graded) and the row stays PRIVATE.
+  // Full ingest (paper + bank + Excel); the 47 status:"new" rows flip PUBLIC, the 2 dup
+  // + 1 flawed stay PRIVATE as paper-backing only.
+  "eng-dinner-4": {
+    slug: "eng-dinner-4",
+    title: "NDA English — Mock Test (Dinner 4)",
+    recordsFile: "eng-dinner-4.records.json",
+    outName: "Tags_NDA_English_Mock_Dinner_4",
+    sourceFile: "English_Mock_Test_Dinner_4.docx",
+    subjectName: "English",
+    chapters: {
+      Grammar: ["Direct and Indirect Speech", "Active and Passive Voice"],
+      Vocabulary: ["Antonyms", "Word Definition"],
+      "Idioms and Phrases": ["Idiom Meaning"],
+      "Reading Comprehension": [
+        "Inferential Comprehension",
+        "Literal Comprehension",
+        "Vocabulary in Context",
+      ],
+      "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+    },
+    pyqNote: "NDA English (GAT) mock — LWS English Mock Test (Dinner 4)",
+    examName: "NDA",
+    section: { key: "eng-dinner-4", label: "English Mock Test (Dinner 4)" },
+    bankAdd: true,
+  },
+
   // LWS "NDA ENG BB3" — 50-q NDA English test spanning SIX chapters: Spotting Errors
   // (Q1–10), Sentence Improvement (Q11–15 → Spotting Errors › Sentence Improvement),
   // Homonyms (Q16–20 → Vocabulary › Confusable Word Pairs), Question Tags (Q21–25 →
