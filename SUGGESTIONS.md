@@ -32,6 +32,34 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-07-29
+
+### `/browse` is still uncached — decide whether to give its common filters real paths
+
+The 2026-07-29 work made 622 pages cacheable, but `/browse` reads `searchParams` and is therefore **permanently dynamic in the App Router** — no `revalidate` can ever apply. It is the site's single most-visited page (1.9K of 7,638 page views last month) and now the largest remaining compute line.
+
+**Why:** every other surface is now served from cache in 13–236ms while `/browse` still costs a full server render on every hit, including every crawler pass. The 317 landing pages give students a cached path to most of what they'd use Browse for, so this may be acceptable indefinitely — but it should be a *decision*, not a default. Re-check the Vercel Active-CPU chart about a week after the 2026-07-29 deploy: if the daily bars have not fallen materially, the residue is `/browse` and this becomes the next piece of work.
+
+**How to apply:** three options, in ascending cost. (1) **Accept it** and rely on the landing pages — cheapest, likely right for now. (2) **Extend the landing-page family** to cover the next-most-common filter combinations (e.g. chapter + difficulty, or chapter + PYQ year) so more traffic lands on a cached path. (3) **Move the interactive list behind a CDN-cached Route Handler** returning JSON with `s-maxage`, leaving `/browse` a thin client shell — effective but costs server-rendered HTML on the most-indexed interactive surface, so weigh the SEO trade first.
+
+### Make the seven OG-image routes static instead of edge functions
+
+`src/app/**/opengraph-image.tsx` (7 routes) all declare `runtime = "edge"` and render PNGs at request time via satori/resvg — CPU-dense work whose cache is busted on every deploy. Subtracting the middleware line from the edge line in the Vercel Active-CPU breakdown puts them at **~11 minutes/month, roughly 4.5%** of the whole compute budget.
+
+**Why:** these are social-preview cards that almost nobody requests interactively — they are generated for crawlers and link unfurlers. Paying runtime CPU for an image that changes only when the guide's title changes is pure waste, and this project deploys frequently enough that the cache rarely survives.
+
+**How to apply:** render each card once at build (or check a PNG into `public/`) and reference it via the `openGraph.images` metadata field instead of the dynamic `opengraph-image` convention. Keep the dynamic route only where the image genuinely varies per record (`/quiz/[slug]/opengraph-image` is the one plausible keeper). Verify afterwards that the edge line in the Active-CPU breakdown drops to roughly the middleware line.
+
+### Audit Google Search Console before adding more content
+
+Web Analytics for Jun 28 – Jul 28 shows **~196 of 7,638 page views (2.5%) arriving from Google search** — roughly six visits a day — against a corpus of ~24k public questions, 77 notes chapters and 10 guides. The 317 new landing pages address the *structural* half of the problem (Google previously had one URL for the whole bank), but they cannot fix an indexing problem.
+
+**Why:** the entire content strategy is SEO-led. If the existing pages are not indexed, adding another exam or another 500 questions changes nothing — and that is a different diagnosis with a different fix than "not ranking". This is plausibly the highest-leverage open question in the project, and it is cheap to answer.
+
+**How to apply:** open Search Console for `pyqvault.com` and check three things — Coverage (how many of the ~908 sitemap URLs are actually indexed vs excluded, and why), Performance (which queries produce impressions, and average position), and whether the 2026-06-04 rebrand from the old Vercel domain left the site with a young-domain penalty or unconsolidated signals. **Submit the new sitemap only after confirming the 2026-07-29 caching fix is live in production** — 317 fresh crawlable URLs against an uncached site would have raised compute rather than lowered it, and that risk is only retired once `x-nextjs-cache: HIT` is confirmed on the deployed site.
+
+---
+
 ## 2026-07-28
 
 - **NEET figures: DONE — all 8 papers / 175 figures, 0 clipped, 0 answer leaks.** The 4 crops `clipprobe.py` still flags are confirmed **false positives**, so don't chase them: *2021 Q48/Q138* report `LEFT` with **identical** in/out density, which is the adjacent column's text in a two-column paper, not the figure continuing; *2023 Q21/Q37* report `TOP` with in > out, where the ink above is the stem line the crop correctly excludes. Both shapes are worth teaching the probe eventually — an equal in/out density on one edge, and a `TOP` flag whose outside-ink is a text line — but each crop was verified by eye.
@@ -746,6 +774,8 @@ The egress fix (2026-06-27, commit `7a7c47c` — `revalidate` 1h→24h on 208 /n
 **Why:** egress was at 120% of the 5 GB free cap (throttling risk). If the ISR fix doesn't bring it under, the remaining egress is `/browse` dynamic or Storage images, and the next levers apply.
 
 **How to apply:** in ~2 days, check Supabase → Usage → Egress. If still high: (1) trim `solution` (the biggest column) out of the `/browse` *list* query in `src/lib/questions/query.ts`, fetch on card-expand; (2) front question images through `next/image`/a CDN (today `publicImageUrl` re-downloads from Supabase Storage per view); (3) Supabase Pro ($25/mo → 250 GB) — already flagged as needed before Razorpay go-live. Full playbook in [[supabase-egress-levers]].
+
+> **⚠️ INVALIDATED 2026-07-29 — re-open this with a corrected premise.** The `revalidate` 1h→24h half of that fix was almost certainly a **no-op**: `AppHeader` read `cookies()` on every page, so **no page on this site had ever been ISR-cached** (the build produced zero prerendered HTML files). Whatever egress movement followed 2026-06-27 must be re-attributed — most plausibly to the calmer `/browse` sitemap entry. Caching genuinely began on 2026-07-29 (622 prerendered pages, `x-nextjs-cache: HIT`), so **the ISR lever is only now live and the egress question is worth re-measuring from that date**, not from June. Before trusting any future `revalidate` change, verify with `find .next/server/app -name '*.html' | wc -l`. See the 2026-07-29 Decisions entry + [[shell-component-decaches-site]].
 
 ## 2026-06-26
 
