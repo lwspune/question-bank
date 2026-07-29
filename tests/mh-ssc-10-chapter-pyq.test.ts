@@ -196,8 +196,8 @@ describe("orderChapterQuestions — invariants", () => {
 });
 
 describe("CHAPTER_TARGETS registry", () => {
-  it("covers the 33 current-syllabus chapter folders", () => {
-    expect(CHAPTER_TARGETS).toHaveLength(33);
+  it("covers the 56 current-syllabus chapter folders", () => {
+    expect(CHAPTER_TARGETS).toHaveLength(56);
   });
 
   it("has a unique (subject, chapter) key and a unique output directory", () => {
@@ -213,6 +213,21 @@ describe("CHAPTER_TARGETS registry", () => {
     expect(per("Geometry")).toBe(7);
     expect(per("Science and Technology I")).toBe(10);
     expect(per("Science and Technology II")).toBe(10);
+    expect(per("Geography")).toBe(9);
+    expect(per("History")).toBe(9);
+    expect(per("Political Science")).toBe(5);
+  });
+
+  // History and Political Science are two separate BANK SUBJECTS that share one
+  // parent folder on disk, because the board prints them as a single paper. The
+  // dir prefix is what keeps their output directories distinct.
+  it("routes History and Political Science into the shared paper folder", () => {
+    const hist = CHAPTER_TARGETS.filter((t) => t.subject === "History");
+    const pol = CHAPTER_TARGETS.filter((t) => t.subject === "Political Science");
+    for (const t of hist) expect(t.dir.startsWith("History_and_Political_Science/History/")).toBe(true);
+    for (const t of pol) expect(t.dir.startsWith("History_and_Political_Science/Political_Science/")).toBe(true);
+    // Both number their chapters from 01, so only the prefix separates them.
+    expect(hist[0].dir).not.toBe(pol[0].dir);
   });
 
   it("prefixes every directory with its zero-padded chapter number", () => {

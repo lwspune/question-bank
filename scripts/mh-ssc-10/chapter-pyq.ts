@@ -22,7 +22,10 @@ export type SscSubject =
   | "Algebra"
   | "Geometry"
   | "Science and Technology I"
-  | "Science and Technology II";
+  | "Science and Technology II"
+  | "Geography"
+  | "History"
+  | "Political Science";
 
 export type ChapterTarget = {
   /** Bank `subjects.name` — must match exactly. */
@@ -77,6 +80,34 @@ const sci2 = (chapterNo: number, chapter: string, dir: string): ChapterTarget =>
   part: "Science and Technology (Part 2)",
 });
 
+const geography = (chapterNo: number, chapter: string, dir: string): ChapterTarget => ({
+  subject: "Geography",
+  chapter,
+  dir: `Geography/${dir}`,
+  chapterNo,
+  part: "Social Sciences (Paper 2: Geography)",
+});
+
+// History and Political Science are TWO bank subjects printed as ONE board paper
+// (Paper I: Q1-5 History, Q6-9 Political Science), and on disk they share a
+// parent folder. Both number their chapters from 01, so the dir PREFIX is the
+// only thing keeping their output paths apart — keep the two helpers distinct.
+const history = (chapterNo: number, chapter: string, dir: string): ChapterTarget => ({
+  subject: "History",
+  chapter,
+  dir: `History_and_Political_Science/History/${dir}`,
+  chapterNo,
+  part: "Social Sciences (Paper 1: History)",
+});
+
+const polsci = (chapterNo: number, chapter: string, dir: string): ChapterTarget => ({
+  subject: "Political Science",
+  chapter,
+  dir: `History_and_Political_Science/Political_Science/${dir}`,
+  chapterNo,
+  part: "Social Sciences (Paper 1: Political Science)",
+});
+
 export const CHAPTER_TARGETS: ChapterTarget[] = [
   // ── Mathematics Part 1 — Algebra (6) ───────────────────────────────────────
   algebra(1, "Linear Equations in Two Variables", "01_Linear_Equations_in_Two_Variables"),
@@ -119,6 +150,37 @@ export const CHAPTER_TARGETS: ChapterTarget[] = [
   sci2(8, "Cell Biology and Biotechnology", "08_Cell_Biology_and_Biotechnology"),
   sci2(9, "Social Health", "09_Social_Health"),
   sci2(10, "Disaster Management", "10_Disaster_Management"),
+
+  // ── Social Sciences Paper 2 — Geography (9) ────────────────────────────────
+  geography(1, "Field Visit", "01_Field_Visit"),
+  geography(2, "Location and Extent", "02_Location_and_Extent"),
+  geography(3, "Physiography and Drainage", "03_Physiography_and_Drainage"),
+  geography(4, "Climate", "04_Climate"),
+  geography(5, "Natural Vegetation and Wildlife", "05_Natural_Vegetation_and_Wildlife"),
+  geography(6, "Population", "06_Population"),
+  geography(7, "Human Settlements", "07_Human_Settlements"),
+  geography(8, "Economy and Occupations", "08_Economy_and_Occupations"),
+  geography(9, "Tourism, Transport and Communication", "09_Tourism_Transport_and_Communication"),
+
+  // ── Social Sciences Paper 1 — History (9) ──────────────────────────────────
+  // NB the bank spells the two Historiography chapters with a colon, the folders
+  // with an underscore — the registry is explicit precisely so this can't drift.
+  history(1, "Historiography: Development in the West", "01_Historiography_Development_in_the_West"),
+  history(2, "Historiography: Indian Tradition", "02_Historiography_Indian_Tradition"),
+  history(3, "Applied History", "03_Applied_History"),
+  history(4, "History of Indian Arts", "04_History_of_Indian_Arts"),
+  history(5, "Mass Media and History", "05_Mass_Media_and_History"),
+  history(6, "Entertainment and History", "06_Entertainment_and_History"),
+  history(7, "Sports and History", "07_Sports_and_History"),
+  history(8, "Tourism and History", "08_Tourism_and_History"),
+  history(9, "Heritage Management", "09_Heritage_Management"),
+
+  // ── Social Sciences Paper 1 — Political Science (5) ────────────────────────
+  polsci(1, "Working of the Constitution", "01_Working_of_the_Constitution"),
+  polsci(2, "The Electoral Process", "02_The_Electoral_Process"),
+  polsci(3, "Political Parties", "03_Political_Parties"),
+  polsci(4, "Social and Political Movements", "04_Social_and_Political_Movements"),
+  polsci(5, "Challenges faced by Indian Democracy", "05_Challenges_faced_by_Indian_Democracy"),
 ];
 
 /**
