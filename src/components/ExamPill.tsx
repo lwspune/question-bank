@@ -1,33 +1,32 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useTransition } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { Check, ChevronDown } from "lucide-react";
 import { EXAM_REGISTRY, type ExamSlug } from "@/lib/exam/examContext";
 
 /**
- * Header pill that switches the active exam. Stores the choice in a
- * cookie (`qb:exam`) and refreshes the route so server-rendered links
- * (Bank/Guides/Notes hrefs) recompute against the new slug.
+ * Header pill that switches the active exam.
  *
- * Cookie is set client-side via `document.cookie` — keeps the pill a
- * standalone interactive island that doesn't need a route handler.
+ * It used to write the cookie and then call `router.refresh()` so the SERVER
+ * would recompute the Bank/Guides/Notes hrefs. That stopped being viable once
+ * pages became cacheable — a refresh would simply re-serve the same cached copy
+ * and the nav would never change. The owner (HeaderBar) now holds the active
+ * slug in client state and this pill just reports the choice upward, so the nav
+ * updates instantly and no server round-trip is involved at all.
  */
-export default function ExamPill({ activeSlug }: { activeSlug: ExamSlug }) {
-  const router = useRouter();
-  const [pending, startTransition] = useTransition();
+export default function ExamPill({
+  activeSlug,
+  onPick,
+}: {
+  activeSlug: ExamSlug;
+  onPick: (slug: ExamSlug) => void;
+}) {
   const active =
     EXAM_REGISTRY.find((e) => e.slug === activeSlug) ?? EXAM_REGISTRY[0];
 
   function pick(slug: ExamSlug) {
     if (slug === activeSlug) return;
-    // 1-year persistent cookie, root path so every route reads it.
-    const maxAge = 60 * 60 * 24 * 365;
-    document.cookie = `qb_exam=${encodeURIComponent(slug)}; path=/; max-age=${maxAge}; samesite=lax`;
-    startTransition(() => {
-      router.refresh();
-    });
+    onPick(slug);
   }
 
   return (
@@ -37,7 +36,6 @@ export default function ExamPill({ activeSlug }: { activeSlug: ExamSlug }) {
           type="button"
           aria-label={`Switch exam — currently ${active.displayName}`}
           title="Switch exam — changes Bank, Guides & Notes"
-          disabled={pending}
           className="inline-flex h-9 items-center gap-1 rounded-full border border-brand-accent/30 bg-brand-accent/5 px-2.5 text-xs font-semibold text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 sm:px-3"
         >
           <span>{active.displayName}</span>
