@@ -320,6 +320,174 @@ export const CATALOG: Record<string, SubjectCatalog> = {
       ],
     },
   },
+
+  // ── Social Sciences ────────────────────────────────────────────────────────
+  // Chapters lifted VERBATIM from the split Balbharati Std-10 textbooks on disk
+  // (…/10th_Chapters/Geography and …/History_and_Political_Science/{History,
+  // Political_Science}), so the hard-validated chapter axis matches the book the
+  // students actually read. REVISED COURSE ONLY — the pre-2020 papers are out of
+  // scope, so there is deliberately no old-syllabus chapter block here (and no
+  // Economics subject: Economics only ever appeared in the 2016-2018 Paper II).
+  //
+  // The whole Geography course is COMPARATIVE India-vs-Brazil; a single question
+  // routinely spans both countries, so country is NOT a taxonomy axis — chapters
+  // are thematic and a comparison question files under its theme.
+  Geography: {
+    subjectName: "Geography",
+    chapters: {
+      "Field Visit": [
+        "Purpose and Planning of a Field Visit",
+        "Observation and Recording",
+        "Questionnaire and Report Writing",
+      ],
+      "Location and Extent": [
+        "Latitudinal and Longitudinal Extent",
+        "Neighbouring Countries and Boundaries",
+        "Area, Shape and Standard Time",
+      ],
+      "Physiography and Drainage": [
+        "Physiographic Divisions",
+        "Mountains, Plateaus and Plains",
+        "Coastal Plains and Islands",
+        "River Systems and Drainage Basins",
+      ],
+      Climate: [
+        "Factors Affecting Climate",
+        "Temperature and Rainfall Distribution",
+        "Winds and Monsoon",
+        "Climatic Regions",
+      ],
+      "Natural Vegetation and Wildlife": [
+        "Types of Natural Vegetation",
+        "Distribution of Forests",
+        "Wildlife and Biodiversity",
+        "Conservation of Vegetation and Wildlife",
+      ],
+      Population: [
+        "Distribution and Density of Population",
+        "Population Growth and Composition",
+        "Sex Ratio, Literacy and Life Expectancy",
+        "Migration and Urbanisation",
+      ],
+      "Human Settlements": [
+        "Rural and Urban Settlements",
+        "Settlement Patterns",
+        "Factors Affecting Settlement",
+      ],
+      "Economy and Occupations": [
+        "Primary, Secondary and Tertiary Activities",
+        "Agriculture and Allied Occupations",
+        "Minerals, Industries and Manufacturing",
+        "Types of Economy and National Income",
+      ],
+      "Tourism, Transport and Communication": [
+        "Types of Tourism",
+        "Land, Water and Air Transport",
+        "Communication and Media",
+        "Tourism and the Economy",
+      ],
+    },
+  },
+
+  // Social Sciences PAPER I carries TWO disciplines — the printed note says
+  // "Question Nos. 1 to 5 are based on History and Question Nos. 6 to 9 are
+  // based on Political Science" (verified on both the 2017 and 2026 papers). So
+  // hist-<year> is registered with `subjects: [History, Political Science]` and
+  // every transcribed question carries its own `subject`.
+  History: {
+    subjectName: "History",
+    chapters: {
+      "Historiography: Development in the West": [
+        "Tradition of Historiography",
+        "Modern Historiography",
+        "Scientific Perspective in Europe",
+        "Notable Scholars",
+      ],
+      "Historiography: Indian Tradition": [
+        "Tradition of Indian Historiography",
+        "Ancient and Medieval Historical Writing",
+        "Ideological Frameworks in Indian Historiography",
+      ],
+      "Applied History": [
+        "What is Applied History",
+        "Applied History and Research in Various Fields",
+        "Applied History and Our Present",
+        "Management of Cultural and Natural Heritage",
+      ],
+      "History of Indian Arts": [
+        "What is Art",
+        "Indian Traditions of Visual Arts",
+        "Indian Traditions of Performing Arts",
+        "Art, Applied Art and Professional Opportunities",
+      ],
+      "Mass Media and History": [
+        "Introduction to Mass Media",
+        "History of Mass Media",
+        "Newspapers, Radio and Television",
+        "Critical Understanding of Mass Media",
+      ],
+      "Entertainment and History": [
+        "Why do we need Entertainment",
+        "Folk Theatre and Puppetry",
+        "Marathi Theatre",
+        "Indian Film Industry",
+        "Entertainment and Professional Opportunities",
+      ],
+      "Sports and History": [
+        "Importance and Types of Sports",
+        "Globalisation of Sports",
+        "Game Materials and Toys",
+        "Literature and Movies on Sports",
+        "Sports and Professional Opportunities",
+      ],
+      "Tourism and History": [
+        "Tourism in the Past",
+        "Types of Tourism",
+        "Development of Tourism",
+        "Conservation and Preservation of Historical Places",
+      ],
+      "Heritage Management": [
+        "Sources of History, their Conservation and Preservation",
+        "Museums",
+        "Libraries and Archives",
+        "Heritage Management and Professional Opportunities",
+      ],
+    },
+  },
+  "Political Science": {
+    subjectName: "Political Science",
+    chapters: {
+      "Working of the Constitution": [
+        "Democracy and Political Maturity",
+        "Right to Vote and Adult Suffrage",
+        "Social Justice and Reservation",
+        "Judicial System and Judicial Activism",
+      ],
+      "The Electoral Process": [
+        "Election Commission",
+        "Representation and Constituencies",
+        "Conduct of Elections",
+        "Electoral Reforms",
+      ],
+      "Political Parties": [
+        "Characteristics and Functions of Political Parties",
+        "National and Regional Parties",
+        "Party Systems",
+        "Ruling Party and Opposition",
+      ],
+      "Social and Political Movements": [
+        "Why Movements Arise",
+        "Types of Movements",
+        "Movements and Democracy",
+      ],
+      "Challenges faced by Indian Democracy": [
+        "Challenges before Democracy at the Global Level",
+        "Casteism, Communalism and Regionalism",
+        "Corruption and Criminalisation of Politics",
+        "Deepening of Democracy",
+      ],
+    },
+  },
 };
 
 export function requireCatalog(subjectName: string): SubjectCatalog {
@@ -334,7 +502,12 @@ export function requireCatalog(subjectName: string): SubjectCatalog {
 // N 832 `2025 III 07`). Never trust the filename; the printed cover is truth.
 export type Paper = {
   id: string; // slug → data/<id>.*.json + source_file
-  subjectName: string; // must be a CATALOG key (DB subject must exist)
+  subjectName: string; // primary subject — must be a CATALOG key (DB subject must exist)
+  /** Every subject this PRINTED paper carries, in paper order. Absent ⇒ just
+   *  [subjectName]. Only the Social Sciences Paper I is multi-subject today
+   *  (History Q1-5 + Political Science Q6-9). The FIRST entry is the default for
+   *  a transcribed question that omits `subject`. */
+  subjects?: string[];
   year: number; // PYQ year (from the printed cover, not the filename)
   month: string; // "March" (SSC board papers)
   paperCode?: string; // printed cover code, e.g. "N 619" (provenance; agent re-confirms)
@@ -351,25 +524,40 @@ const FILE_SUBJECT: Record<string, string> = {
   Geometry: "Geometry",
   "Science and Technology I": "Science_I",
   "Science and Technology II": "Science_II",
+  Geography: "Geography",
+  History: "History",
 };
+// ⚠ "geo" is GEOMETRY. Geography is "geog" — the two subjects are distinct and
+// a shared prefix would collide their paper ids AND their data/<id>.*.json.
 const ID_PREFIX: Record<string, string> = {
   Algebra: "alg",
   Geometry: "geo",
   "Science and Technology I": "sci1",
   "Science and Technology II": "sci2",
+  Geography: "geog",
+  History: "hist",
 };
 const PAPER_LABEL: Record<string, string> = {
   Algebra: "Algebra (Mathematics Part I)",
   Geometry: "Geometry (Mathematics Part II)",
   "Science and Technology I": "Science and Technology Part I",
   "Science and Technology II": "Science and Technology Part II",
+  Geography: "Social Sciences Paper II — Geography",
+  History: "Social Sciences Paper I — History and Political Science",
+};
+// A printed paper that carries more than one discipline. Keyed by the PRIMARY
+// subject; order is paper order (History Q1-5, then Political Science Q6-9).
+const MULTI_SUBJECT: Record<string, string[]> = {
+  History: ["History", "Political Science"],
 };
 
 function mkPaper(subjectName: string, year: number, paperCode?: string): Paper {
   const sourceFile = `MH_SSC_10_${FILE_SUBJECT[subjectName]}_${year}.pdf`;
+  const subjects = MULTI_SUBJECT[subjectName];
   return {
     id: `${ID_PREFIX[subjectName]}-${year}`,
     subjectName,
+    ...(subjects ? { subjects } : {}),
     year,
     month: "March",
     ...(paperCode ? { paperCode } : {}),
@@ -377,6 +565,11 @@ function mkPaper(subjectName: string, year: number, paperCode?: string): Paper {
     sourceFile,
     note: `Maharashtra State Board Class 10 (SSC) — ${PAPER_LABEL[subjectName]}, March ${year} board paper`,
   };
+}
+
+/** Every catalog a paper's questions may classify into, in paper order. */
+export function paperCatalogs(paper: Paper): SubjectCatalog[] {
+  return (paper.subjects ?? [paper.subjectName]).map(requireCatalog);
 }
 
 // One scanned board QP each. Years present on disk per subject (2021: no exam
@@ -402,6 +595,16 @@ const PAPER_SPECS: Array<[string, number, string?]> = [
   ["Science and Technology II", 2020], ["Science and Technology II", 2022],
   ["Science and Technology II", 2023], ["Science and Technology II", 2024],
   ["Science and Technology II", 2025], ["Science and Technology II", 2026],
+  // ── Social Sciences — REVISED COURSE ONLY (2020+) ──────────────────────────
+  // The 2016-2018 papers are OUT OF SCOPE (old syllabus: Paper II bundled
+  // ECONOMICS, Paper I a different History syllabus). 2019 is absent from disk
+  // for both subjects; 2021 had no exam. So 6 sittings each, not 10.
+  // Geography (Social Sciences Paper II) — comparative India + Brazil.
+  ["Geography", 2020], ["Geography", 2022], ["Geography", 2023],
+  ["Geography", 2024], ["Geography", 2025], ["Geography", 2026, "N 969"],
+  // History and Political Science (Social Sciences Paper I) — MULTI-SUBJECT.
+  ["History", 2020], ["History", 2022], ["History", 2023],
+  ["History", 2024], ["History", 2025], ["History", 2026, "N 961"],
 ];
 
 export const PAPERS: Record<string, Paper> = Object.fromEntries(

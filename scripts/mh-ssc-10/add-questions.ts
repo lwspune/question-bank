@@ -24,14 +24,14 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { buildPaperRecords, latexImbalances, type PaperQuestion } from "./lib";
-import { ORG_ID, EXAM_ID, CREATED_BY, DATA, requirePaper, requireCatalog } from "./config";
+import { ORG_ID, EXAM_ID, CREATED_BY, DATA, requirePaper, paperCatalogs } from "./config";
 
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
   const makePublic = process.argv.includes("--public");
   const paper = requirePaper(id);
-  const catalog = requireCatalog(paper.subjectName);
+  const catalogs = paperCatalogs(paper);
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
   const path = join(DATA, `${id}.additions.json`);
@@ -39,7 +39,7 @@ async function main() {
   const questions: PaperQuestion[] = JSON.parse(readFileSync(path, "utf8"));
   if (questions.length === 0) throw new Error("additions file is empty");
 
-  const { rows, flags } = buildPaperRecords(catalog, questions);
+  const { rows, flags } = buildPaperRecords(catalogs, questions);
   const refs = rows.map((r) => r.questionNumber!).filter(Boolean);
 
   console.log(`\n${apply ? "APPLY" : "[dry-run]"} add ${rows.length} question(s) to ${paper.subjectName} ${paper.year} (${id})`);

@@ -138,6 +138,107 @@ questions are subjective with an authored model answer.
 - **Social Health**: Health and Disease · Social Health and Issues · Addiction and Stress Management
 - **Disaster Management**: Types of Disasters · Disaster Management and Mitigation · First Aid
 
+## Social Sciences papers (Geography · History and Political Science)
+
+**These are the ONLY papers where `subject` matters.** Everything above assumed
+one subject per paper. Social Sciences **Paper I carries TWO disciplines in one
+printed paper** — the paper's own note says so: *"Question Nos. 1 to 5 are based
+on History and Question Nos. 6 to 9 are based on Political Science."*
+
+- `hist-<year>` → set **`"subject": "History"`** on Q1–Q5 rows and
+  **`"subject": "Political Science"`** on Q6–Q9 rows. It is HARD-validated, and a
+  chapter is checked against **that subject's** catalog only — a History chapter
+  named under Political Science is an error, not a pass.
+- `geog-<year>` → single subject; **omit `subject`** (it defaults to Geography).
+
+Only the REVISED COURSE (2020+) is in scope. If a paper you are given mentions
+**Economics**, or its cover says anything other than "(REVISED COURSE)", stop and
+report it — you have the wrong paper.
+
+### Geography paper structure
+
+Q1 MCQ (4) · Q2 odd-one-out / match · Q3 one-sentence answers · **Q4(A) map
+marking** · **Q4(B) map reading** · Q5 geographical reasons · **Q6(A) graph
+drawing from a data table** · **Q6(B) graph reading** · Q7 detailed answers.
+The whole course is **comparative India vs Brazil** — a question may span both
+countries; file it under its THEME chapter, never by country.
+
+### Four Geography question types that need special handling
+
+1. **Q4(B) map reading / Q6(B) graph reading** — the map or graph is PRINTED in
+   the paper and the sub-questions are unanswerable without it. This is a SET:
+   put the instruction ("Observe the map of India and answer the following") in
+   `context`, one row per sub-question, same `setLabel`, and set
+   `hasFigure:true` + a `figureNote` naming the figure and its page on **every**
+   sibling. Still answer each sub-question in `solution` — you can read the map.
+2. **Q4(A) map marking** ("Mark the following on the outline map of India/Brazil,
+   write the names and give index") — one row per item. The outline map is
+   supplied separately and is NOT in the paper, so do **not** set `hasFigure`.
+   Author a **locate-and-describe** `solution`: where the feature is, with the
+   bearings a student would use to place it — e.g. *"Sikkim — a small state in
+   the north-east Himalayas, bounded by Nepal (west), China/Tibet (north), Bhutan
+   (east) and West Bengal (south); mark and shade it, and add it to the index."*
+   Name real neighbours/latitudes/coasts; never write "mark it on the map".
+3. **Q6(A) graph drawing** — the data table is printed in the paper. Put the
+   table in the `stem` as a **GFM pipe-table** (header + `|---|` separator) and
+   keep the instruction ("prepare a simple bar graph and answer the following").
+   The printed sub-questions each become their own row (answerable from the
+   table). In the `solution` for the drawing instruction itself, state the graph
+   type, what goes on each axis with its scale, and the plotted values.
+4. **Q2 "Match the following" / odd-one-out** — one row per pair or per item,
+   not one row for the whole block. Give each row enough of the shared list in
+   `context` to be answerable on its own.
+
+### History and Political Science paper structure
+
+Q1(A) MCQ · Q1(B) match/odd-one-out · Q2 **concept map** + short answers · Q3
+"give reasons" · **Q4 source-passage** · Q5 detailed answers → all History.
+Q6 fill-in-the-blanks · Q7 one-sentence · Q8 true/false-with-reason (+ concept
+map) · Q9 detailed → all Political Science.
+
+- **Source-passage questions (Q4)** — put the whole printed extract in `context`,
+  one row per sub-question, same `setLabel`. The passage is TEXT, not a figure:
+  transcribe it, do **not** set `hasFigure`.
+- **Concept-map questions** ("write the appropriate answers in the concept map")
+  — the printed empty concept map is a blank the student fills, so treat it like
+  a "complete the activity": keep the instruction in the `stem`, and give the
+  FILLED answer in `solution` as a labelled list or a pipe-table. Do not ship an
+  empty box. `hasFigure:false`.
+- These papers are almost entirely text — flag `hasFigure` only for a genuine
+  printed picture/map/timeline the question actually refers to.
+
+## Geography catalog (chapter → subtopics)
+
+- **Field Visit**: Purpose and Planning of a Field Visit · Observation and Recording · Questionnaire and Report Writing
+- **Location and Extent**: Latitudinal and Longitudinal Extent · Neighbouring Countries and Boundaries · Area, Shape and Standard Time
+- **Physiography and Drainage**: Physiographic Divisions · Mountains, Plateaus and Plains · Coastal Plains and Islands · River Systems and Drainage Basins
+- **Climate**: Factors Affecting Climate · Temperature and Rainfall Distribution · Winds and Monsoon · Climatic Regions
+- **Natural Vegetation and Wildlife**: Types of Natural Vegetation · Distribution of Forests · Wildlife and Biodiversity · Conservation of Vegetation and Wildlife
+- **Population**: Distribution and Density of Population · Population Growth and Composition · Sex Ratio, Literacy and Life Expectancy · Migration and Urbanisation
+- **Human Settlements**: Rural and Urban Settlements · Settlement Patterns · Factors Affecting Settlement
+- **Economy and Occupations**: Primary, Secondary and Tertiary Activities · Agriculture and Allied Occupations · Minerals, Industries and Manufacturing · Types of Economy and National Income
+- **Tourism, Transport and Communication**: Types of Tourism · Land, Water and Air Transport · Communication and Media · Tourism and the Economy
+
+## History catalog (chapter → subtopics)
+
+- **Historiography: Development in the West**: Tradition of Historiography · Modern Historiography · Scientific Perspective in Europe · Notable Scholars
+- **Historiography: Indian Tradition**: Tradition of Indian Historiography · Ancient and Medieval Historical Writing · Ideological Frameworks in Indian Historiography
+- **Applied History**: What is Applied History · Applied History and Research in Various Fields · Applied History and Our Present · Management of Cultural and Natural Heritage
+- **History of Indian Arts**: What is Art · Indian Traditions of Visual Arts · Indian Traditions of Performing Arts · Art, Applied Art and Professional Opportunities
+- **Mass Media and History**: Introduction to Mass Media · History of Mass Media · Newspapers, Radio and Television · Critical Understanding of Mass Media
+- **Entertainment and History**: Why do we need Entertainment · Folk Theatre and Puppetry · Marathi Theatre · Indian Film Industry · Entertainment and Professional Opportunities
+- **Sports and History**: Importance and Types of Sports · Globalisation of Sports · Game Materials and Toys · Literature and Movies on Sports · Sports and Professional Opportunities
+- **Tourism and History**: Tourism in the Past · Types of Tourism · Development of Tourism · Conservation and Preservation of Historical Places
+- **Heritage Management**: Sources of History, their Conservation and Preservation · Museums · Libraries and Archives · Heritage Management and Professional Opportunities
+
+## Political Science catalog (chapter → subtopics)
+
+- **Working of the Constitution**: Democracy and Political Maturity · Right to Vote and Adult Suffrage · Social Justice and Reservation · Judicial System and Judicial Activism
+- **The Electoral Process**: Election Commission · Representation and Constituencies · Conduct of Elections · Electoral Reforms
+- **Political Parties**: Characteristics and Functions of Political Parties · National and Regional Parties · Party Systems · Ruling Party and Opposition
+- **Social and Political Movements**: Why Movements Arise · Types of Movements · Movements and Democracy
+- **Challenges faced by Indian Democracy**: Challenges before Democracy at the Global Level · Casteism, Communalism and Regionalism · Corruption and Criminalisation of Politics · Deepening of Democracy
+
 ## After writing
 
 Run `npx tsx scripts/mh-ssc-10/merge.ts <paperId>` then

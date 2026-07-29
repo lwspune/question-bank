@@ -23,7 +23,15 @@ export type PaperQuestion = {
   ref: string;
   /** 'mcq' → has options + a DERIVED answer; 'subjective' → free-response, no options. */
   format: "mcq" | "subjective";
-  chapter: string; // one of the subject catalog's chapters (HARD-validated)
+  /** Which of the paper's subjects this question belongs to. HARD-validated
+   *  against the paper's catalogs. Omit on a single-subject paper (Algebra,
+   *  Geometry, Science I/II, Geography) — it defaults to the sole subject.
+   *  REQUIRED in practice on the Social Sciences papers, which carry TWO
+   *  disciplines in one printed paper (Paper I = History Q1-5 + Political
+   *  Science Q6-9), because the discipline is not derivable from the chapter
+   *  alone. */
+  subject?: string;
+  chapter: string; // one of THAT subject's catalog chapters (HARD-validated)
   subtopic: string; // canonical subtopic (soft-validated; auto-created)
   difficulty: string; // vision estimate → EASY|MODERATE|HARD
   stem: string; // LaTeX-bearing question text (\(...\) inline math; GFM pipe-tables allowed)
@@ -67,12 +75,28 @@ function normalizeMcqOptions(q: PaperQuestion): { label: OptionLabel; text: stri
 
 /**
  * Merge transcribed board-paper questions into commit-ready rows. Hard errors
- * (unknown chapter / bad options / bad difficulty / answer with no matching
- * option / a subjective question carrying options / duplicate ref) throw — they
- * mean a transcription mistake to fix. Soft conditions become flags (off-catalog
- * subtopic; an MCQ with no derived answer; a REVIEW-flagged answer).
+ * (unknown subject / unknown chapter / bad options / bad difficulty / answer
+ * with no matching option / a subjective question carrying options / duplicate
+ * ref) throw — they mean a transcription mistake to fix. Soft conditions become
+ * flags (off-catalog subtopic; an MCQ with no derived answer; a REVIEW-flagged
+ * answer).
+ *
+ * `catalogs` is either a single PaperCatalog (single-subject paper — the
+ * original behaviour, unchanged) or an ORDERED list for a paper that carries
+ * more than one discipline, in which case the FIRST entry is the default for
+ * questions that omit `subject`. A question's chapter is validated against its
+ * OWN subject's catalog, never the union — naming a History chapter under
+ * Political Science must fail, not silently pass because some catalog has it.
  */
-export function buildPaperRecords(catalog: PaperCatalog, questions: PaperQuestion[]): BuildResult {
+export function buildPaperRecords(
+  catalogs: PaperCatalog | PaperCatalog[],
+  questions: PaperQuestion[],
+): BuildResult {
+  const list = Array.isArray(catalogs) ? catalogs : [catalogs];
+  if (list.length === 0) throw new Error("buildPaperRecords: no catalog supplied");
+  const bySubject = new Map(list.map((c) => [c.subjectName, c]));
+  const defaultSubject = list[0].subjectName;
+
   const rows: ParsedRowPayload[] = [];
   const flags: Flag[] = [];
   const seenRefs = new Set<string>();
@@ -82,6 +106,12 @@ export function buildPaperRecords(catalog: PaperCatalog, questions: PaperQuestio
     sourceRow++;
     if (seenRefs.has(q.ref)) throw new Error(`duplicate ref "${q.ref}"`);
     seenRefs.add(q.ref);
+
+    const subjectName = q.subject?.trim() || defaultSubject;
+    const catalog = bySubject.get(subjectName);
+    if (!catalog) {
+      throw new Error(`${q.ref}: subject "${subjectName}" not carried by this paper [${[...bySubject.keys()].join(", ")}]`);
+    }
 
     const subtopics = catalog.chapters[q.chapter];
     if (!subtopics) {
@@ -113,7 +143,7 @@ export function buildPaperRecords(catalog: PaperCatalog, questions: PaperQuestio
     const base = {
       sourceRow,
       questionNumber: q.ref,
-      subjectName: catalog.subjectName,
+      subjectName,
       chapterName: q.chapter,
       subtopicName: q.subtopic,
       context: ctx,
