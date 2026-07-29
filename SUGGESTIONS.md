@@ -58,6 +58,31 @@ Web Analytics for Jun 28 – Jul 28 shows **~196 of 7,638 page views (2.5%) arri
 
 **How to apply:** open Search Console for `pyqvault.com` and check three things — Coverage (how many of the ~908 sitemap URLs are actually indexed vs excluded, and why), Performance (which queries produce impressions, and average position), and whether the 2026-06-04 rebrand from the old Vercel domain left the site with a young-domain penalty or unconsolidated signals. **Submit the new sitemap only after confirming the 2026-07-29 caching fix is live in production** — 317 fresh crawlable URLs against an uncached site would have raised compute rather than lowered it, and that risk is only retired once `x-nextjs-cache: HIT` is confirmed on the deployed site.
 
+### Source the English-medium 2023 Social Sciences papers
+
+The MH-SSC-10 Geography and History ingestion covers 2020, 2022, 2024, 2025 and 2026 — **2023 is missing from both** because the only 2023 PDFs on disk are Marathi-medium prints (`N 964` GEOGRAPHY PAPER-II **(M)**, `N 956` HISTORY & POLITICAL SCIENCE PAPER-I **(M)**), wholly Devanagari, with no English sibling anywhere in `PYQPs/`.
+
+**Why:** it is the only year-gap in an otherwise complete revised-course run, and it is a sourcing problem rather than a work problem — the pipeline, catalogs and briefs are all built and proven, so adding the year is two lines in `PAPER_SPECS` plus a standard transcription pass. A full English translation of geog-2023 was drafted this session and **deliberately discarded**: `content_hash` is stem-derived, so translated rows could never dedup against the real English paper and would permanently duplicate the sitting the day it is sourced.
+
+**How to apply:** obtain the `(E)` prints for the March 2023 Social Sciences Paper I and Paper II (the board publishes both media; the English codes will differ from `N 956`/`N 964`). Drop them into `PYQPs/` as `MH_SSC_10_{Geography,History}_2023.pdf`, re-add `["Geography", 2023]` and `["History", 2023]` to `PAPER_SPECS` in `scripts/mh-ssc-10/config.ts` (the exclusion comment there explains why they were removed), then run the standard pipeline. **Verify the cover says `(E)` before transcribing** — the medium is on the cover, never in the filename.
+
+### Spot-check the two unlabelled-graph answers in `geog-2026`
+
+`Q6(B)(4)` and `Q6(B)(5)` ask for percentages read off a bar graph that prints **no numeric labels on its bars** — only a 0–12% axis. The stored answers ("about 9.5 per cent", and a ~2-point difference) come from a pixel measurement made by the transcribing agent.
+
+**Why:** these are the weakest rows in the 372-question Social Sciences set. I attempted to verify them independently twice and **both probes failed** — they locked onto the graph-paper grid instead of the bold tick dashes and returned impossible values (22–32% on a 0–12% axis) — so rather than manufacture a correction from a broken probe I left the hedged reading in place. The qualitative answers are unambiguous and match the textbook; only the two numbers are soft.
+
+**How to apply:** open `scripts/mh-ssc-10/out/geog-2026/p-05.png` (or the attached crop) and read India's hatched bar and Brazil's plus-filled bar against the axis by eye — a human glance settles in seconds what the probe could not. If they differ from ~9.5% / ~2 points, update the two `solution` fields only (solution-only edits are hash-neutral, so no recompute or re-commit is needed) and sync `data/geog-2026.q567.json`.
+
+### Decide whether answer keys should carry the question figure
+
+A `_PYQ_Key.docx` contains **no question images at all** — `buildAnswerKey` emits none, so a Geography map-reading key shows the questions and the answers but not the map they refer to. This is long-standing behaviour (the shipped Circle chapter has 26 media in the paper and 0 in the key), not a regression, and it is the same shared path behind every `/browse` "Answer Key" download.
+
+**Why:** it never mattered much when figures were small geometry diagrams that a teacher could reconstruct mentally, but Geography leans on figures far harder — 55 of its 203 questions hang off a printed map, pyramid, bar/line/pie graph, and "Name the lake to the far North of India" is unanswerable from the key alone. A teacher marking from the key has to hold the paper open beside it.
+
+**How to apply:** this touches the shared export path, so decide the scope first — key-only-for-figure-questions vs always, and whether it applies to `/browse` downloads or only the chapter handouts. The mechanical change is in `buildAnswerKey` in `src/lib/export/docxBuilder.ts` (mirror the paper path's `fetchImageBytes` + `ImageRun`); the cost is key file size (the Circle paper is ~26 images) and a re-run of `build-chapter-pyq.ts --apply`. Note the existing golden test asserts the key omits figures — that assertion must be inverted deliberately, not deleted.
+
+
 ---
 
 ## 2026-07-28
@@ -106,13 +131,18 @@ The 2026-07-28 source tag (`[JEE Mains 2016]`) ships on the **Question Paper onl
 
 ## 2026-07-27
 
-### Ingest the 5 un-ingested MH-SSC-10 subjects — Geography and History first
+### ~~Ingest the 5 un-ingested MH-SSC-10 subjects — Geography and History first~~ — **PARTLY DONE 2026-07-29**
+
+**Geography and History are DONE** (`0641acd` + `12e08b5`): 10 English-medium revised-course papers → **372 q PUBLIC** across three subjects — Geography 203, History 114, **Political Science 55** — taking mh-ssc-10 from 1,147 to **1,519**. The Social Sciences Paper I turned out to carry **two bank subjects in one printed paper**, so `subject` became a per-question field validated against its own subject's catalog; every one of the 5 History sittings split 23/11 and summed to the printed 40 marks. Per-chapter handouts followed (registry 33 → 56 chapters, 112 files). **Two papers were deliberately excluded: the only 2023 Social Sciences PDFs on disk are Marathi-medium prints** (`N 964` PAPER-II (M), `N 956` PAPER-I (M)) — a translation was drafted and discarded because `content_hash` is stem-derived, so translated rows could never dedup against the real English paper. **Still open: the 3 LANGUAGE subjects** (Hindi 5 · English 3 · Marathi 3) — the scope question below is unchanged and undecided.
+
+<details><summary>original</summary>
 
 Class 10 stores 4 subjects (Algebra, Geometry, Science I, Science II — all complete 2016→2026), but **29 papers across 5 more subjects sit un-ingested on disk**: Geography 9 · History 9 · Hindi 5 · English 3 · Marathi 3. Every one of them includes a **2026** sitting, so these are the *newest* Class-10 papers we don't have.
 
 **Why:** the four ingested subjects are fully current, so all remaining Class-10 growth is here. Geography/History 2016–2018 additionally **bundle official printed solutions**, so those years would be source-verified from the start rather than AI-derived.
 
 **How to apply:** Geography → History first (same structural shape as the Science papers; each needs a `CATALOG` of chapter→subtopics added to `scripts/mh-ssc-10/config.ts` before the HARD chapter validation will pass — that analysis is the real cost, roughly an hour per subject). Then run the standard pipeline (`render` → `dump-text` → transcribe → `merge` → `commit` → figures → `flip-public`). **Hold the three language papers pending a scope decision** — English/Hindi/Marathi are dominated by unseen-passage comprehension, grammar transformation and letter/essay writing; a comprehension question is meaningless without its passage and an essay prompt has no key, so decide what belongs in a question bank before building anything (closer to the CDS English problem than to a Maths paper).
+</details>
 
 ### ~~Add the two missing Geometry `Q5(ii)` construction questions~~ — **DONE 2026-07-27**
 
