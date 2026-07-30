@@ -143,6 +143,20 @@ function main() {
   const solutionAt = (n: number): string | undefined => (positional ? orderedSolutions[n - 1] : solutions.get(n));
   if (positional) {
     console.log(`[keys] POSITIONAL mapping (soln numbering broken/all-1.): ${orderedTokens.length} ordered blocks for ${questions.length} questions`);
+    // Positional mapping is only sound when the blocks line up 1:1 with the
+    // questions. If the counts differ, some block is missing or doubled, every
+    // key after that point is SHIFTED, and the rows still come out looking
+    // "clean" — a silently wrong key, which is worse than no key at all.
+    // Refuse rather than emit them; re-run with --by-number to keep only the
+    // blocks that carry a trustworthy printed number, or --allow-shift if you
+    // have independently established the offset.
+    if (orderedTokens.length !== questions.length && !process.argv.includes("--allow-shift")) {
+      throw new Error(
+        `positional key mapping is MISALIGNED: ${orderedTokens.length} ordered solution blocks vs ${questions.length} questions.\n` +
+          `Every key after the first missing/extra block would be shifted and silently wrong.\n` +
+          `Re-run with --by-number (keeps only reliably-numbered blocks) or --allow-shift if the offset is known.`,
+      );
+    }
   }
 
   // A duplicate solution number means a mis-numbered block silently overwrote an
