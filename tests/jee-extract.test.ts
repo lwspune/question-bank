@@ -391,6 +391,27 @@ describe("segmentQuestions", () => {
     expect(out[0].stem).toContain("\\begin{matrix}");
   });
 
+  it("keeps a stem line that merely CONTAINS 'section'/'part' (cross-section, intersection)", () => {
+    // The stray-header filter was an unanchored /PART-|SECTION/i, so any stem line
+    // mentioning a cross-section or an intersection was silently deleted — 215
+    // content lines across 77 of the 91 extracted papers, all three subjects.
+    const md = `1.  A cylindrical conductor of length 2 m and area of cross-section
+    $0.2 mm^2$ carries a current of 1.6 A.\\
+    (a) p (b) q (c) r (d) s
+
+> **SECTION-B**
+
+2.  Find the point of intersection of the line and the curve.\\
+    (a) w (b) x (c) y (d) z`;
+    const out = segmentQuestions(md);
+    expect(out[0].stem).toContain("cylindrical conductor");
+    expect(out[0].stem).toContain("cross-section");
+    expect(out[1].stem).toContain("intersection");
+    // ...while a real SECTION header on its own line is still dropped.
+    expect(out[1].stem).not.toContain("SECTION-B");
+    expect(out[0].stem).not.toContain("SECTION-B");
+  });
+
   it("drops a bare subject-name header so it can't leak into the previous stem", () => {
     // The last question of a subject block is followed by the NEXT subject's
     // banner. `PART-`/`SECTION` headers were already skipped, but the 2025/2026

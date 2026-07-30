@@ -392,7 +392,13 @@ export function parseNumericAnswer(token: string | undefined): number | null {
 }
 
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
-const SECTION_OR_PART = /PART-|SECTION/i;
+// Stray "PART-II" / "SECTION-A" banners sitting inside a question block.
+// ANCHORED to the start of the line (after the `**`/`>` markup `\W*` eats): the
+// original unanchored /PART-|SECTION/i matched anywhere, so a stem line reading
+// "...area of cross-section" or "the point of intersection of..." was silently
+// DELETED — 215 content lines across 77 of 91 papers, in all three subjects.
+// A real banner is always its own line and starts with the word.
+const SECTION_OR_PART = /^\W*(PART\b|SECTION\b)/i;
 // A bare subject banner (`**CHEMISTRY**`) separating subject blocks — the 2025/
 // 2026 sittings print this instead of a `PART-II CHEMISTRY` header, so it slipped
 // past SECTION_OR_PART and was absorbed into the PRECEDING question (into the stem
