@@ -3,6 +3,131 @@
   "pyqYear": 2026,
   "pyqNote": "8 Apr 2026 Shift 2",
   "classification": {
+    "1": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Dimensional Analysis"
+    },
+    "2": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Dimensional Analysis"
+    },
+    "3": {
+      "subject": "Physics",
+      "chapter": "Laws of Motion",
+      "subtopic": "Pseudo Force and Non-Inertial Frames"
+    },
+    "4": {
+      "subject": "Physics",
+      "chapter": "Motion in a Straight Line",
+      "subtopic": "Uniformly Accelerated Motion"
+    },
+    "5": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Lenses and Lensmaker's Formula"
+    },
+    "6": {
+      "subject": "Physics",
+      "chapter": "Motion in a Plane",
+      "subtopic": "Projectile Motion"
+    },
+    "7": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Rolling Motion"
+    },
+    "8": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Pressure and Pascal's Law"
+    },
+    "9": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Viscosity and Reynolds Number"
+    },
+    "10": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "First Law and Work Done"
+    },
+    "11": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "Thermodynamic Processes"
+    },
+    "12": {
+      "subject": "Physics",
+      "chapter": "Oscillations",
+      "subtopic": "Simple Harmonic Motion"
+    },
+    "13": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum"
+    },
+    "14": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Moving Coil Galvanometer"
+    },
+    "15": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Self Inductance and Energy"
+    },
+    "16": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Coulomb's Law"
+    },
+    "17": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Refraction through Prism"
+    },
+    "18": {
+      "subject": "Physics",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect"
+    },
+    "19": {
+      "subject": "Physics",
+      "chapter": "Nuclei",
+      "subtopic": "Radioactivity and Half-Life"
+    },
+    "20": {
+      "subject": "Physics",
+      "chapter": "Semiconductor Electronics",
+      "subtopic": "Logic Gates"
+    },
+    "21": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Capacitance and Combinations"
+    },
+    "22": {
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction"
+    },
+    "23": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force on a Moving Charge"
+    },
+    "24": {
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "subtopic": "DC Circuits"
+    },
+    "25": {
+      "subject": "Physics",
+      "chapter": "Motion in a Straight Line",
+      "subtopic": "Uniformly Accelerated Motion"
+    },
     "51": {
       "subject": "Maths",
       "chapter": "Relations and Functions",
@@ -130,6 +255,7 @@
     }
   },
   "answerOverrides": {
+    "1": "B",
     "51": "A",
     "52": "B",
     "53": "C",
@@ -185,5 +311,25 @@
     "73": "The directions of \\(L_2,L_3\\) are \\((1,2,2)\\) and \\((2,2,1)\\), so \\(L_1\\) (through the origin, perpendicular to both) has direction \\((1,2,2)\\times(2,2,1)=(-2,3,-2)\\). The required point on \\(L_3=(3+2s,3+2s,2+s)\\) with integer coordinate is \\(s=-2\\), giving \\((a,b,c)=(-1,-1,0)\\), \\(a=-1\\in\\mathbb Z\\). Then \\(a+b+c=-2\\) and \\((a+b+c)^2=4\\).",
     "74": "Let the chord be \\(lx+my=1\\). Homogenizing \\(x^2+y^2-6x-8y-11=0\\) with it and setting (coeff of \\(x^2\\))+(coeff of \\(y^2\\))\\(=0\\) for the right angle at \\(O\\) gives \\(11(l^2+m^2)+6l+8m-2=0\\). The foot of perpendicular from \\(O\\) is \\((h,k)=\\frac{(l,m)}{l^2+m^2}\\), so \\(l^2+m^2=\\frac{1}{h^2+k^2}\\), \\(l=\\frac{h}{h^2+k^2}\\). Substituting: \\(2(h^2+k^2)-6h-8k-11=0\\), i.e. \\(x^2+y^2-3x-4y-\\tfrac{11}{2}=0\\). Then \\(\\alpha+\\beta+2\\gamma=3+4+11=18\\).",
     "75": "The geometric series sums to \\(3\\), so \\(\\log_2 f(x)=\\log_2 3\\cdot\\log_3\\!\\big(1+\\tfrac{f(x)}{f(1/x)}\\big)=\\log_2\\!\\big(1+\\tfrac{f(x)}{f(1/x)}\\big)\\). Hence \\(f(x)=1+\\frac{f(x)}{f(1/x)}\\), giving \\(f(x)f(1/x)=f(x)+f(1/x)\\), whose polynomial solution is \\(f(x)=1+x^n\\). From \\(f(6)=37\\): \\(6^n=36\\Rightarrow n=2\\), so \\(f(x)=1+x^2\\). Then \\(\\sum_{n=1}^{10}(1+n^2)=10+385=395\\)."
+  },
+  "stemOverrides": {
+    "4": "A gas balloon is going up with a constant velocity of \\(10\\text{ }m/s\\). When this balloon reached a height of 75 m , a stone is dropped from it and balloon keeps moving up with the same velocity. The height of the balloon when the stone hits the ground is \\(\\_\\_\\_\\_\\) m . (Take \\(g = 10\\text{ }m/s^{2}\\))\\",
+    "8": "A liquid of density \\(600\\text{ }kg/m^{3}\\) flowing steadily in a tube of varying cross-section. The cross-section at a point A is \\(1.0{\\text{ }cm}^{2}\\) and that at B is \\(20{\\text{ }mm}^{2}\\). Both the points A and B are in same horizontal plane, the speed of the liquid at A is \\(10\\text{ }cm/s\\). The difference is pressures at A and B points is\\(\\_\\_\\_\\_\\) Pa.\\",
+    "10": "One mole of diatomic gas having rotational modes only is kept is a cylinder with a piston system. The cross-section area of the cylinder is \\(0.4{\\text{ }cm}^{2}\\). The gas is heated slowly to raise the temperature by \\(1.2\\ ^{\\circ}C\\) during which the piston moves by 25 mm . The amount of heat supplied to the gas is \\(\\_\\_\\_\\_\\) J. (Atmospheric pressure \\(= 100kPa\\), \\(R = 8.3\\text{ }J/mol.K\\) ) (Neglect mass of the piston)\\",
+    "15": "A 30 cm long solenoid has 10 turns per cm and area of \\(5{\\text{ }cm}^{2}\\). The current through the solenoid coil varies from 2 A to 4 A is 3.14 s . The e.m.f. induced in the coil is \\(\\alpha \\times10^{- 5}\\text{ }V\\). The value \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) .\\"
+  },
+  "optionOverrides": {
+    "1": {
+      "A": "\\(200\\alpha\\)",
+      "B": "\\(400\\alpha\\)",
+      "C": "\\(300\\alpha\\)",
+      "D": "\\(500\\alpha\\)"
+    },
+    "20": {
+      "A": "Waveform (A)",
+      "B": "Waveform (B)",
+      "C": "Waveform (C)",
+      "D": "Waveform (D)"
+    }
   }
 }
