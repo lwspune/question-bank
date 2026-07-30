@@ -33,11 +33,19 @@ export function concludedLetter(sol: string | null): string | null {
   // so "Hence continuous" / "option carbonyl" no longer match the following word's
   // first letter — a real letter-conclusion is always followed by )/./,/;/:/space/EOL.
   const END = "(?=[)\\.,;:\\s]|$)";
+  // Assertion-Reason questions label their two statements (A) and (R). Their
+  // solution restates the chosen option verbatim ("Both (A) and (R) are true but
+  // (R) is not the correct explanation of (A)") and so ENDS in `(A)` — which the
+  // bare trailing-letter pattern read as "concludes option A". `(R)` is never an
+  // option letter (options are A-D), so `(A)` + `(R)` together mark A-R labels.
+  // Only the bare-trailing pattern is suppressed; an explicit "Hence (C)" /
+  // "answer is (C)" in an A-R solution is still a real conclusion.
+  const assertionReason = /\(A\)/.test(sol) && /\(R\)/.test(sol);
   const pats = [
     new RegExp(`Hence[,\\s]*\\(?([A-Da-d])\\)?${END}`, "g"),
     new RegExp(`option\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
     new RegExp(`answer\\s*is\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
-    /\(([A-Da-d])\)\s*\.?\s*$/g,
+    ...(assertionReason ? [] : [/\(([A-Da-d])\)\s*\.?\s*$/g]),
   ];
   let last: string | null = null;
   for (const re of pats) { let m: RegExpExecArray | null; while ((m = re.exec(sol))) last = m[1].toUpperCase(); }

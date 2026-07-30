@@ -393,6 +393,12 @@ export function parseNumericAnswer(token: string | undefined): number | null {
 
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 const SECTION_OR_PART = /PART-|SECTION/i;
+// A bare subject banner (`**CHEMISTRY**`) separating subject blocks — the 2025/
+// 2026 sittings print this instead of a `PART-II CHEMISTRY` header, so it slipped
+// past SECTION_OR_PART and was absorbed into the PRECEDING question (into the stem
+// when that question is a NAT, into option (d) when it's an MCQ).
+// Anchored to the WHOLE line, so a stem that merely mentions the word is untouched.
+const SUBJECT_BANNER = /^\W*(PHYSICS|CHEMISTRY|MATHEMATICS|MATHS)\W*$/i;
 
 /** Segment the whole question markdown into per-question blocks. */
 export function segmentQuestions(md: string, shiftSize = 90): RawQuestion[] {
@@ -441,6 +447,7 @@ export function segmentQuestions(md: string, shiftSize = 90): RawQuestion[] {
     if (!cur) continue;
 
     if (SECTION_OR_PART.test(line)) continue; // stray section headers
+    if (SUBJECT_BANNER.test(line)) continue; // bare `**CHEMISTRY**` subject banner
     if (line.trim() === "" || line.trim() === "<!-- -->") continue;
 
     cur.textParts.push(line.replace(/(?<!\\)\\$/, "").trim()); // drop a single pandoc hard-break `\`, but keep matrix `\\`

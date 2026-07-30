@@ -391,6 +391,30 @@ describe("segmentQuestions", () => {
     expect(out[0].stem).toContain("\\begin{matrix}");
   });
 
+  it("drops a bare subject-name header so it can't leak into the previous stem", () => {
+    // The last question of a subject block is followed by the NEXT subject's
+    // banner. `PART-`/`SECTION` headers were already skipped, but the 2025/2026
+    // sittings print a bare `**CHEMISTRY**` line, which the segmenter absorbed
+    // into the preceding stem (83 rows corpus-wide).
+    // A NAT last-question has no option markers to absorb the stray line, so it
+    // lands in the stem; an MCQ last-question absorbs it into option (d).
+    const md = `1.  **A numerical last question with no options**
+
+> **CHEMISTRY**
+
+26. **A chemistry MCQ -**\\
+    (a) p (b) q (c) r (d) s
+
+> **MATHEMATICS**
+
+51. **A maths MCQ -**\\
+    (a) w (b) x (c) y (d) z`;
+    const out = segmentQuestions(md, 75);
+    expect(out[0].stem).not.toContain("CHEMISTRY");
+    expect(out.find((q) => q.number === 26)!.options![3]).not.toContain("MATHEMATICS");
+    expect(out.map((q) => q.number)).toEqual([1, 26, 51]);
+  });
+
   it("segments a question whose number is alone on its line (stem after an image)", () => {
     // pandoc renders `9.  ` with the stem after an interspersed figure; trimEnd
     // strips the trailing space, so the start anchor must allow end-of-line.

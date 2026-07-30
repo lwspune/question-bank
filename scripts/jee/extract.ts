@@ -84,8 +84,16 @@ function main() {
   if (!questionDocx || !existsSync(questionDocx)) {
     throw new Error(`question docx not found: ${questionDocx}`);
   }
-  const solnDocx = join(dirname(questionDocx), basename(questionDocx).replace(/\.docx$/i, " soln.docx"));
-  if (!existsSync(solnDocx)) throw new Error(`solution docx not found: ${solnDocx}`);
+  // The sibling solution/answer-key doc. 2021-2025 name it "<paper> soln.docx";
+  // the 2026 sittings name it "<paper>_ak.docx" (and vary the case), so try each
+  // known suffix rather than making every 2026 paper a hand-staged rename.
+  const solnCandidates = [" soln.docx", "_ak.docx", "_AK.docx", " soln.DOCX"].map((suffix) =>
+    join(dirname(questionDocx), basename(questionDocx).replace(/\.docx$/i, suffix)),
+  );
+  const solnDocx = solnCandidates.find((p) => existsSync(p));
+  if (!solnDocx) {
+    throw new Error(`solution docx not found; tried:\n  ${solnCandidates.join("\n  ")}`);
+  }
 
   const paperId = requirePaperId(process.argv, 3, 'extract.ts "<Paper N.docx>" <paperId>');
   // Non-standard "compilation" papers (e.g. the 2021 Paper 11-16 topic sets) don't

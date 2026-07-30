@@ -184,15 +184,30 @@ async function main() {
     .eq("source_file", sourceFile)
     .is("upload_job_id", null);
 
-  // Freshly-committed rows stay PRIVATE until verified in /browse. On a
-  // --numeric-only backfill scope this to the numeric rows so already-PUBLIC
-  // MCQ for the same paper aren't taken offline.
+  // Freshly-committed rows stay PRIVATE until verified in /browse. The flip is
+  // scoped by `source_file`, which covers the WHOLE paper — so it must be
+  // narrowed to whatever slice this run actually committed, or a later pass takes
+  // an earlier pass's already-PUBLIC rows offline:
+  //   --numeric-only  → the numeric rows only (MCQ for the paper stay PUBLIC)
+  //   --subject=X     → subject X only (a second-subject pass over the same paper
+  //                     must not un-publish the first subject's live rows)
   let flip = client
     .from("questions")
     .update({ visibility: "PRIVATE" }, { count: "exact" })
     .eq("exam_id", EXAM_ID)
     .eq("source_file", sourceFile);
   if (numericOnly) flip = flip.eq("question_format", "numeric");
+  if (subject) {
+    const { data: subjectRow, error: sErr } = await client
+      .from("subjects")
+      .select("id")
+      .eq("exam_id", EXAM_ID)
+      .eq("name", subject)
+      .maybeSingle();
+    if (sErr) throw new Error(`subject lookup failed: ${sErr.message}`);
+    if (!subjectRow) throw new Error(`subject not found for the visibility flip: ${subject}`);
+    flip = flip.eq("subject_id", subjectRow.id);
+  }
   const { error: vErr, count } = await flip;
   if (vErr) throw new Error(`visibility flip failed: ${vErr.message}`);
   console.log(`set ${count} JEE rows to PRIVATE.`);
