@@ -361,7 +361,7 @@
   },
   {
     "number": 1091,
-    "solution": "Note \\(\\frac{4}{\\cos^2\\alpha} = \\frac{4}{1-\\sin^2\\alpha}\\). Use the telescoping identity \\(\\frac{4}{1-u} + \\frac{4}{1+u} = \\frac{8}{1-u^2}\\). Combine the first two terms with \\(u = \\sin^2\\alpha\\): \\(\\frac{4}{1-\\sin^2\\alpha} + \\frac{4}{1+\\sin^2\\alpha} = \\frac{8}{1-\\sin^4\\alpha}\\). Then with the \\(\\frac{4}{1+\\sin^4\\alpha}\\) term: \\(\\frac{8}{1-\\sin^4\\alpha} + \\frac{8}{1+\\sin^4\\alpha}\\) telescopes to \\(\\frac{16}{1-\\sin^8\\alpha}\\); finally with \\(\\frac{4}{1+\\sin^8\\alpha}\\) the full chain reduces (the leading coefficients doubling at each stage) to a value evaluating, with \\(\\sin^{16}\\alpha = \\frac{1}{5}\\), to \\(10\\). Hence (D)."
+    "solution": "Write \\(\\frac{1}{\\cos^2\\alpha} = \\frac{1}{1-\\sin^2\\alpha}\\), so the sum becomes \\(\\frac{1}{1-\\sin^2\\alpha} + \\frac{1}{1+\\sin^2\\alpha} + \\frac{2}{1+\\sin^4\\alpha} + \\frac{4}{1+\\sin^8\\alpha}\\). Each pair telescopes using \\(\\frac{1}{1-u} + \\frac{1}{1+u} = \\frac{2}{1-u^2}\\). First pair: \\(\\frac{1}{1-\\sin^2\\alpha} + \\frac{1}{1+\\sin^2\\alpha} = \\frac{2}{1-\\sin^4\\alpha}\\). Next: \\(\\frac{2}{1-\\sin^4\\alpha} + \\frac{2}{1+\\sin^4\\alpha} = \\frac{4}{1-\\sin^8\\alpha}\\). Finally: \\(\\frac{4}{1-\\sin^8\\alpha} + \\frac{4}{1+\\sin^8\\alpha} = \\frac{8}{1-\\sin^{16}\\alpha}\\). With \\(\\sin^{16}\\alpha = \\frac{1}{5}\\), this is \\(\\frac{8}{1-\\frac{1}{5}} = \\frac{8 \\times 5}{4} = 10\\). Hence (D)."
   },
   {
     "number": 1092,
