@@ -391,6 +391,38 @@ describe("segmentQuestions", () => {
     expect(out[0].stem).toContain("\\begin{matrix}");
   });
 
+  it("keeps a stem line that merely STARTS with the word 'part'", () => {
+    // Anchoring the banner filter to line-start was not enough: ordinary prose
+    // often begins with "part" — "part (B) and part (C), respectively..." and
+    // "part of it submerged in water..." were both still being deleted. A real
+    // banner is the WHOLE line and names a roman numeral or a section letter.
+    const md = `1.  For the given circuit the input and output are shown in
+    part (B) and part (C), respectively. Identify the components used.\\
+    (a) p (b) q (c) r (d) s
+
+> **SECTION-B**
+
+2.  The cube floats with a
+    part of it submerged in water. Find the mass.`;
+    const out = segmentQuestions(md);
+    expect(out[0].stem).toContain("Identify the components used");
+    expect(out[1].stem).toContain("submerged in water");
+    expect(out[1].stem).not.toContain("SECTION-B");
+  });
+
+  it("still drops every real banner variant the corpus prints", () => {
+    // The separator has to stay loose: the papers print "SECTION-A",
+    // "SECTION: B", "Section -- B" and even a misspelled "PART- I PHYSCIS".
+    const banners = [
+      "**SECTION-A**", "**SECTION: B**", "**Section -- B**",
+      "**PART-I PHYSICS**", "**PART- I PHYSCIS**", "**PART-II CHEMISTRY**",
+    ];
+    for (const b of banners) {
+      const out = segmentQuestions(`1.  Stem text here.\n\n${b}\n\n2.  Next stem.`);
+      expect(out[0].stem, `banner leaked: ${b}`).toBe("Stem text here.");
+    }
+  });
+
   it("keeps a stem line that merely CONTAINS 'section'/'part' (cross-section, intersection)", () => {
     // The stray-header filter was an unanchored /PART-|SECTION/i, so any stem line
     // mentioning a cross-section or an intersection was silently deleted — 215

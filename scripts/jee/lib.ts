@@ -393,12 +393,22 @@ export function parseNumericAnswer(token: string | undefined): number | null {
 
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors
 // Stray "PART-II" / "SECTION-A" banners sitting inside a question block.
-// ANCHORED to the start of the line (after the `**`/`>` markup `\W*` eats): the
-// original unanchored /PART-|SECTION/i matched anywhere, so a stem line reading
-// "...area of cross-section" or "the point of intersection of..." was silently
-// DELETED — 215 content lines across 77 of 91 papers, in all three subjects.
-// A real banner is always its own line and starts with the word.
-const SECTION_OR_PART = /^\W*(PART\b|SECTION\b)/i;
+// Matched against the WHOLE line, because the two looser forms both destroyed
+// real content:
+//   /PART-|SECTION/i        (unanchored) ate any line CONTAINING the word —
+//                           "...area of cross-section", "the point of
+//                           intersection of..." — 215 lines across 77 papers.
+//   /^\W*(PART\b|SECTION\b)/i (line-start) still ate any line BEGINNING with
+//                           the word — "part (B) and part (C), respectively...",
+//                           "part of it submerged in water...".
+// A genuine banner occupies its whole line and names a roman numeral (PART-II)
+// or a section letter (SECTION-A), optionally followed by the subject.
+// The separator is deliberately loose (`[\W]*`) because the corpus prints every
+// variant — "SECTION-A", "SECTION: B", "Section -- B", "PART- I PHYSCIS" (sic) —
+// while the ROMAN NUMERAL / SECTION LETTER plus the end-of-line anchor are what
+// keep ordinary prose ("part of it submerged...", "part (B) and part (C)...")
+// from matching.
+const SECTION_OR_PART = /^\W*(PART[\W]*[IVX]+(\W+[A-Z]+)?|SECTION[\W]*[AB])\W*$/i;
 // A bare subject banner (`**CHEMISTRY**`) separating subject blocks — the 2025/
 // 2026 sittings print this instead of a `PART-II CHEMISTRY` header, so it slipped
 // past SECTION_OR_PART and was absorbed into the PRECEDING question (into the stem
