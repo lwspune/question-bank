@@ -32,6 +32,18 @@ describe("concludedLetter", () => {
     expect(concludedLetter("(A) is true but (R) is false")).toBeNull();
   });
 
+  it("does not read an ENUMERATING solution's last option mention as its conclusion", () => {
+    // Multi-statement questions are solved by walking every choice in turn:
+    // "For option (A) ... For option (B) ... For option (C) ... For option (D)".
+    // The last `option (X)` is the last thing EXAMINED, not the answer — the
+    // real conclusion here is the trailing "A, B & D only", i.e. option A.
+    const enumerated =
+      "For option (A) it can be 1D motion. For option (B) yes 1D. " +
+      "For option (C) time can't be negative, not possible. For option (D) possible. A, B & D only";
+    expect(concludedLetter(enumerated)).toBeNull();
+    expect(auditRow(opts("A"), enumerated)).toBeNull();
+  });
+
   it("still reads a real conclusion in a solution that happens to mention (R)", () => {
     // Guard against over-suppressing: a genuine "answer is (C)" wins.
     expect(concludedLetter("Using (R) = 8.314, we get ... Hence the answer is (C)")).toBe("C");

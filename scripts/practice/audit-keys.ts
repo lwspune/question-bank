@@ -41,9 +41,18 @@ export function concludedLetter(sol: string | null): string | null {
   // Only the bare-trailing pattern is suppressed; an explicit "Hence (C)" /
   // "answer is (C)" in an A-R solution is still a real conclusion.
   const assertionReason = /\(A\)/.test(sol) && /\(R\)/.test(sol);
+  // A solution that walks EVERY choice in turn ("For option (A) ... For option
+  // (B) ... (C) ... (D)") ends on the last option EXAMINED, not the answer —
+  // its real conclusion is a trailing phrase like "A, B & D only". Three or
+  // more distinct `option (X)` letters marks the enumeration, so drop that
+  // pattern; the explicit "Hence"/"answer is" forms still apply.
+  const optionLetters = new Set(
+    [...sol.matchAll(/option\s*\(?([A-Da-d])\)?(?=[)\.,;:\s]|$)/g)].map((m) => m[1].toUpperCase()),
+  );
+  const enumerating = optionLetters.size >= 3;
   const pats = [
     new RegExp(`Hence[,\\s]*\\(?([A-Da-d])\\)?${END}`, "g"),
-    new RegExp(`option\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
+    ...(enumerating ? [] : [new RegExp(`option\\s*\\(?([A-Da-d])\\)?${END}`, "g")]),
     new RegExp(`answer\\s*is\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
     ...(assertionReason ? [] : [/\(([A-Da-d])\)\s*\.?\s*$/g]),
   ];
