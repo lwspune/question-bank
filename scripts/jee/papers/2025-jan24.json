@@ -3,56 +3,456 @@
   "pyqYear": 2025,
   "pyqNote": "24 Jan 2025",
   "classification": {
-    "51": { "chapter": "Vector Algebra", "subtopic": "Vector Equations" },
-    "52": { "chapter": "Integrals", "subtopic": "Definite Integrals" },
-    "53": { "chapter": "Limits and Continuity", "subtopic": "Evaluation of Limits" },
-    "54": { "chapter": "Sequences and Series", "subtopic": "Special Sums" },
-    "55": { "chapter": "Relations and Functions", "subtopic": "Composition and Types of Functions" },
-    "56": { "chapter": "Complex Numbers", "subtopic": "Quadratic Equations and Complex Roots" },
-    "57": { "chapter": "Limits and Continuity", "subtopic": "Evaluation of Limits" },
-    "58": { "chapter": "Three Dimensional Geometry", "subtopic": "Lines in Space" },
-    "59": { "chapter": "Differential Equations", "subtopic": "Linear Differential Equations" },
-    "60": { "chapter": "Conic Sections", "subtopic": "Ellipse" },
-    "61": { "chapter": "Probability", "subtopic": "Classical Probability" },
-    "62": { "chapter": "Application of Derivatives", "subtopic": "Maxima and Minima" },
-    "63": { "chapter": "Application of Integrals", "subtopic": "Area Between Curves" },
-    "64": { "chapter": "Statistics", "subtopic": "Standard Deviation" },
-    "65": { "chapter": "Conic Sections", "subtopic": "Circle" },
-    "66": { "chapter": "Binomial Theorem", "subtopic": "Binomial Coefficients and Series" },
-    "67": { "chapter": "Quadratic Equations", "subtopic": "Roots and Relations" },
-    "68": { "chapter": "Three Dimensional Geometry", "subtopic": "Lines in Space" },
-    "69": { "chapter": "Straight Lines", "subtopic": "Image of a Point" },
-    "70": { "chapter": "Determinants", "subtopic": "System of Linear Equations" },
-    "71": { "chapter": "Integrals", "subtopic": "Fundamental Theorem of Calculus" },
-    "72": { "chapter": "Inverse Trigonometric Functions", "subtopic": "Properties and Values" },
-    "73": { "chapter": "Permutations and Combinations", "subtopic": "Combinations" },
-    "74": { "chapter": "Matrices", "subtopic": "Algebra of Matrices" },
-    "75": { "chapter": "Permutations and Combinations", "subtopic": "Combinations" },
-    "126": { "chapter": "Conic Sections", "subtopic": "Locus of Midpoints of Chords" },
-    "127": { "chapter": "Relations and Functions", "subtopic": "One-One and Onto Functions" },
-    "128": { "chapter": "Inverse Trigonometric Functions", "subtopic": "Properties and Values" },
-    "129": { "chapter": "Differential Equations", "subtopic": "Linear Differential Equations" },
-    "130": { "chapter": "Relations and Functions", "subtopic": "Sets and Venn Diagrams" },
-    "131": { "chapter": "Vector Algebra", "subtopic": "Position Vectors and Direction Ratios" },
-    "132": { "chapter": "Continuity and Differentiability", "subtopic": "Differentiability" },
-    "133": { "chapter": "Straight Lines", "subtopic": "Intercepts and Locus" },
-    "134": { "chapter": "Sequences and Series", "subtopic": "Arithmetic Progression" },
-    "135": { "chapter": "Sequences and Series", "subtopic": "Infinite Geometric Progression" },
-    "136": { "chapter": "Determinants", "subtopic": "System of Linear Equations" },
-    "137": { "chapter": "Application of Derivatives", "subtopic": "Increasing and Decreasing Functions" },
-    "138": { "chapter": "Binomial Theorem", "subtopic": "Binomial Coefficients and Series" },
-    "139": { "chapter": "Vector Algebra", "subtopic": "Dot Product and Projection" },
-    "140": { "chapter": "Determinants", "subtopic": "Properties of Determinants" },
-    "141": { "chapter": "Permutations and Combinations", "subtopic": "Combinations" },
-    "142": { "chapter": "Application of Integrals", "subtopic": "Area Between Curves" },
-    "143": { "chapter": "Quadratic Equations", "subtopic": "Equations with Absolute Value" },
-    "144": { "chapter": "Probability", "subtopic": "Classical Probability" },
-    "145": { "chapter": "Conic Sections", "subtopic": "Parabola" },
-    "146": { "chapter": "Relations and Functions", "subtopic": "Composition and Types of Functions" },
-    "147": { "chapter": "Three Dimensional Geometry", "subtopic": "Lines in Space" },
-    "148": { "chapter": "Differential Equations", "subtopic": "Linear Differential Equations" },
-    "149": { "chapter": "Conic Sections", "subtopic": "Hyperbola" },
-    "150": { "chapter": "Integrals", "subtopic": "Integration by Substitution" }
+    "1": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Capacitance and Combinations"
+    },
+    "2": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Lenses and Lensmaker's Formula"
+    },
+    "3": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Surface Tension"
+    },
+    "4": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Errors in Measurement"
+    },
+    "5": {
+      "subject": "Physics",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model and Hydrogen Spectrum"
+    },
+    "6": {
+      "subject": "Physics",
+      "chapter": "Semiconductor Electronics",
+      "subtopic": "Semiconductor Diodes"
+    },
+    "7": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Surface Tension"
+    },
+    "8": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Collisions and Angular Momentum"
+    },
+    "9": {
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "subtopic": "Young's Double Slit Experiment"
+    },
+    "10": {
+      "subject": "Physics",
+      "chapter": "Laws of Motion",
+      "subtopic": "Friction"
+    },
+    "11": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Rolling Motion"
+    },
+    "12": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Lenses and Lensmaker's Formula"
+    },
+    "13": {
+      "subject": "Physics",
+      "chapter": "Oscillations",
+      "subtopic": "Simple Harmonic Motion"
+    },
+    "14": {
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "subtopic": "Kepler's Laws"
+    },
+    "15": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Lenses and Lensmaker's Formula"
+    },
+    "16": {
+      "subject": "Physics",
+      "chapter": "Alternating Current",
+      "subtopic": "RMS and Average Values"
+    },
+    "17": {
+      "subject": "Physics",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "de Broglie Wavelength"
+    },
+    "18": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Capacitance and Combinations"
+    },
+    "19": {
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "subtopic": "Variable Force"
+    },
+    "20": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "Thermodynamic Processes"
+    },
+    "21": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Gauss's Law and Electric Flux"
+    },
+    "22": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Measuring Instruments"
+    },
+    "23": {
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "subtopic": "DC Circuits"
+    },
+    "24": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law"
+    },
+    "25": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "Thermodynamic Processes"
+    },
+    "51": {
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector Equations"
+    },
+    "52": {
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals"
+    },
+    "53": {
+      "chapter": "Limits and Continuity",
+      "subtopic": "Evaluation of Limits"
+    },
+    "54": {
+      "chapter": "Sequences and Series",
+      "subtopic": "Special Sums"
+    },
+    "55": {
+      "chapter": "Relations and Functions",
+      "subtopic": "Composition and Types of Functions"
+    },
+    "56": {
+      "chapter": "Complex Numbers",
+      "subtopic": "Quadratic Equations and Complex Roots"
+    },
+    "57": {
+      "chapter": "Limits and Continuity",
+      "subtopic": "Evaluation of Limits"
+    },
+    "58": {
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Lines in Space"
+    },
+    "59": {
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations"
+    },
+    "60": {
+      "chapter": "Conic Sections",
+      "subtopic": "Ellipse"
+    },
+    "61": {
+      "chapter": "Probability",
+      "subtopic": "Classical Probability"
+    },
+    "62": {
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima"
+    },
+    "63": {
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Between Curves"
+    },
+    "64": {
+      "chapter": "Statistics",
+      "subtopic": "Standard Deviation"
+    },
+    "65": {
+      "chapter": "Conic Sections",
+      "subtopic": "Circle"
+    },
+    "66": {
+      "chapter": "Binomial Theorem",
+      "subtopic": "Binomial Coefficients and Series"
+    },
+    "67": {
+      "chapter": "Quadratic Equations",
+      "subtopic": "Roots and Relations"
+    },
+    "68": {
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Lines in Space"
+    },
+    "69": {
+      "chapter": "Straight Lines",
+      "subtopic": "Image of a Point"
+    },
+    "70": {
+      "chapter": "Determinants",
+      "subtopic": "System of Linear Equations"
+    },
+    "71": {
+      "chapter": "Integrals",
+      "subtopic": "Fundamental Theorem of Calculus"
+    },
+    "72": {
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties and Values"
+    },
+    "73": {
+      "chapter": "Permutations and Combinations",
+      "subtopic": "Combinations"
+    },
+    "74": {
+      "chapter": "Matrices",
+      "subtopic": "Algebra of Matrices"
+    },
+    "75": {
+      "chapter": "Permutations and Combinations",
+      "subtopic": "Combinations"
+    },
+    "76": {
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "subtopic": "Young's Double Slit Experiment"
+    },
+    "77": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum"
+    },
+    "78": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force on a Moving Charge"
+    },
+    "79": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Rolling Motion"
+    },
+    "80": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law"
+    },
+    "81": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "Thermodynamic Processes"
+    },
+    "82": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Electric Potential and Potential Energy"
+    },
+    "83": {
+      "subject": "Physics",
+      "chapter": "Motion in a Plane",
+      "subtopic": "Vector Addition"
+    },
+    "84": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Rolling Motion"
+    },
+    "85": {
+      "subject": "Physics",
+      "chapter": "Thermal Properties of Matter",
+      "subtopic": "Thermal Expansion"
+    },
+    "86": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Field of a Coil"
+    },
+    "87": {
+      "subject": "Physics",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect"
+    },
+    "88": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "First Law and Cyclic Processes"
+    },
+    "89": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Optical Instruments"
+    },
+    "90": {
+      "subject": "Physics",
+      "chapter": "Semiconductor Electronics",
+      "subtopic": "Logic Gates"
+    },
+    "91": {
+      "subject": "Physics",
+      "chapter": "Thermal Properties of Matter",
+      "subtopic": "Conduction"
+    },
+    "92": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Dimensional Analysis"
+    },
+    "93": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Coulomb's Law"
+    },
+    "94": {
+      "subject": "Physics",
+      "chapter": "Oscillations",
+      "subtopic": "Simple Harmonic Motion"
+    },
+    "95": {
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "subtopic": "Polarisation"
+    },
+    "96": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Field of a Solenoid"
+    },
+    "97": {
+      "subject": "Physics",
+      "chapter": "Motion in a Plane",
+      "subtopic": "Circular Motion"
+    },
+    "98": {
+      "subject": "Physics",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photon Momentum and Energy"
+    },
+    "99": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Solids",
+      "subtopic": "Elastic Moduli"
+    },
+    "100": {
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "subtopic": "Acceleration due to Gravity"
+    },
+    "126": {
+      "chapter": "Conic Sections",
+      "subtopic": "Locus of Midpoints of Chords"
+    },
+    "127": {
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions"
+    },
+    "128": {
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties and Values"
+    },
+    "129": {
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations"
+    },
+    "130": {
+      "chapter": "Relations and Functions",
+      "subtopic": "Sets and Venn Diagrams"
+    },
+    "131": {
+      "chapter": "Vector Algebra",
+      "subtopic": "Position Vectors and Direction Ratios"
+    },
+    "132": {
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability"
+    },
+    "133": {
+      "chapter": "Straight Lines",
+      "subtopic": "Intercepts and Locus"
+    },
+    "134": {
+      "chapter": "Sequences and Series",
+      "subtopic": "Arithmetic Progression"
+    },
+    "135": {
+      "chapter": "Sequences and Series",
+      "subtopic": "Infinite Geometric Progression"
+    },
+    "136": {
+      "chapter": "Determinants",
+      "subtopic": "System of Linear Equations"
+    },
+    "137": {
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions"
+    },
+    "138": {
+      "chapter": "Binomial Theorem",
+      "subtopic": "Binomial Coefficients and Series"
+    },
+    "139": {
+      "chapter": "Vector Algebra",
+      "subtopic": "Dot Product and Projection"
+    },
+    "140": {
+      "chapter": "Determinants",
+      "subtopic": "Properties of Determinants"
+    },
+    "141": {
+      "chapter": "Permutations and Combinations",
+      "subtopic": "Combinations"
+    },
+    "142": {
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Between Curves"
+    },
+    "143": {
+      "chapter": "Quadratic Equations",
+      "subtopic": "Equations with Absolute Value"
+    },
+    "144": {
+      "chapter": "Probability",
+      "subtopic": "Classical Probability"
+    },
+    "145": {
+      "chapter": "Conic Sections",
+      "subtopic": "Parabola"
+    },
+    "146": {
+      "chapter": "Relations and Functions",
+      "subtopic": "Composition and Types of Functions"
+    },
+    "147": {
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Lines in Space"
+    },
+    "148": {
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations"
+    },
+    "149": {
+      "chapter": "Conic Sections",
+      "subtopic": "Hyperbola"
+    },
+    "150": {
+      "chapter": "Integrals",
+      "subtopic": "Integration by Substitution"
+    }
   },
   "authoredSolutions": {
     "62": "Take a rectangle \\([0,w]\\times[c,t]\\) inside \\(R\\). The lower bound \\(y\\ge x\\) forces \\(c\\ge w\\), and \\(y\\le 9-\\frac{11}{3}x^{2}\\) forces \\(t\\le 9-\\frac{11}{3}w^{2}\\), so the area is at most \\(A(w)=w\\left(9-w-\\frac{11}{3}w^{2}\\right)\\). Setting \\(A'(w)=9-2w-11w^{2}=0\\) gives \\(w=\\frac{9}{11}\\), and \\(A\\left(\\frac{9}{11}\\right)=\\frac{9}{11}\\cdot\\frac{63}{11}=\\frac{567}{121}\\).",
@@ -61,9 +461,14 @@
     "146": "Exactly one of the \\(98\\) integers in \\(\\{1,\\dots,98\\}\\) is assigned \\(1\\) (the rest \\(0\\)): \\(98\\) choices. The two remaining integers \\(99,100\\) may each map to \\(0\\) or \\(1\\) freely: \\(2^{2}=4\\) ways. Total \\(=98\\times4=392\\)."
   },
   "stemOverrides": {
+    "3": "An air bubble of radius 0.1 cm lies at a depth of 20 cm below the free surface of a liquid of density \\(1000\\text{ }kg/m^{3}\\). If the pressure inside the bubble is \\(2100\\text{ }N/m^{2}\\) greater than the atmospheric pressure, then the surface tension of the liquid in SI unit is (use \\(g = 10\\text{ }m/s^{2}\\) )",
+    "18": "A parallel plate capacitor was made with two rectangular plates, each with a length of \\(l = 3\\text{ }cm\\) and breadth of \\(b = 1\\text{ }cm\\). The distance between the plates is \\(3\\mu\\text{ }m\\). Out of the following, which are the ways to increase the capacitance by a factor of 10 ? (A) \\(l = 30\\text{ }cm,\\text{ }b = 1\\text{ }cm,\\text{ }d = 1\\mu\\text{ }m\\) (B) \\(l = 3\\text{ }cm,\\text{ }b = 1\\text{ }cm,\\text{ }d = 30\\mu\\text{ }m\\) (C) \\(l = 6\\text{ }cm,\\text{ }b = 5\\text{ }cm,\\text{ }d = 3\\mu\\text{ }m\\) (D) \\(l = 1\\text{ }cm,\\text{ }b = 1\\text{ }cm,\\text{ }d = 10\\mu\\text{ }m\\) (E) \\(l = 5\\text{ }cm,\\text{ }b = 2\\text{ }cm,\\text{ }d = 1\\mu\\text{ }m\\) Choose the correct answer from the options given below :",
+    "24": "A current of 5 A exists in a square loop of side \\(\\frac{1}{\\sqrt{2}}\\text{ }m\\). Then the magnitude of the magnetic field \\(B\\) at the centre of the square loop will be \\(p \\times10^{- 6}\\text{ }T\\). where, value of p is \\(\\_\\_\\_\\_\\_\\) \\(\\left\\lbrack Take\\ \\mu_{0} \\right.\\\\) \\(= 4\\pi\\times10^{- 7}\\text{ }T{\\text{ }mA}^{- 1}\\) ].",
     "75": "Let \\(S=\\left\\{p_{1},p_{2},\\ldots,p_{10}\\right\\}\\) be the set of first ten prime numbers. Let \\(A=S\\cup P\\), where \\(P\\) is the set of all possible products of distinct elements of \\(S\\). Then the number of all ordered pairs \\((x,y)\\), \\(x\\in S\\), \\(y\\in A\\), such that \\(x\\) divides \\(y\\), is",
-    "147": "Let \\(P\\) be the image of the point \\(Q(7,-2,5)\\) in the line \\(L:\\frac{x-1}{2}=\\frac{y+1}{3}=\\frac{z}{4}\\) and \\(R(5,p,q)\\) be a point on \\(L\\). Then the square of the area of \\(\\triangle PQR\\) is",
-    "135": "If \\(7 = 5 + \\frac{1}{7}(5+\\alpha) + \\frac{1}{7^{2}}(5+2\\alpha) + \\frac{1}{7^{3}}(5+3\\alpha) + \\cdots\\) upto \\(\\infty\\), then the value of \\(\\alpha\\) is:"
+    "89": "A photograph of a landscape is captured by a drone camera at a height of 18 km . The size of the camera film is \\(2\\text{ }cm \\times 2\\text{ }cm\\) and the area of the landscape photographed is \\(400{\\text{ }km}^{2}\\). The focal length of the lens in the drone camera is :",
+    "93": "A small uncharged conducting sphere is placed in contact with an identical sphere but having \\(4 \\times10^{- 8}\\) C charge and then removed to a distance such that the force of repulsion between them is \\(9 \\times10^{- 3}\\text{ }N\\). The distance between them is (Take \\(\\frac{1}{4\\pi\\varepsilon_{0}}\\) as \\(9 \\times10^{9}\\) in SI units)",
+    "135": "If \\(7 = 5 + \\frac{1}{7}(5+\\alpha) + \\frac{1}{7^{2}}(5+2\\alpha) + \\frac{1}{7^{3}}(5+3\\alpha) + \\cdots\\) upto \\(\\infty\\), then the value of \\(\\alpha\\) is:",
+    "147": "Let \\(P\\) be the image of the point \\(Q(7,-2,5)\\) in the line \\(L:\\frac{x-1}{2}=\\frac{y+1}{3}=\\frac{z}{4}\\) and \\(R(5,p,q)\\) be a point on \\(L\\). Then the square of the area of \\(\\triangle PQR\\) is"
   },
   "notes": "2025 24 Jan sitting — 2025 LAYOUT: 150 q = 2 shifts x 75 (each subject 20 MCQ + 5 NAT). Maths = Q51-75 + Q126-150 = 50 q (40 MCQ + 10 NAT). Auto-detected shiftSize=75. Clean sequential number-matched keys (spot-verified Q73/Q54). Q75 leaked next-section 'Physics' header (stripped); Q147 glued \\bigtriangleupPQR -> \\triangle PQR."
 }
