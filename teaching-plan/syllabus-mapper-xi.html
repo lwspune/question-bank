@@ -1,0 +1,618 @@
+<title>Std 11 Syllabus Mapper · 2026-27</title>
+
+<style>
+  :root{
+    --paper:#F6F8FA; --card:#FFFFFF; --ink:#161E28; --ink-2:#43505F; --ink-3:#71808F;
+    --rule:#DCE3EA; --rule-2:#EDF1F5;
+    --accent:#A3372A; --accent-soft:#F6E7E4; --accent-ink:#8C2E23;
+    --ok:#0F6F5C; --ok-soft:#DFF0EA;
+    --warn:#8A5A0B; --warn-soft:#FBEEDA;
+    --cp1:#7EA8B8; --cp2:#4E8497; --cp3:#2E6377; --cp4:#134155; --pill-ink:#FFFFFF;
+    --shadow:0 1px 2px rgba(20,32,45,.06),0 8px 24px -16px rgba(20,32,45,.28);
+    --display:Georgia,'Iowan Old Style','Times New Roman',serif;
+    --body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --mono:ui-monospace,'Cascadia Mono','SF Mono',Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#101720; --card:#18212C; --ink:#E7EDF3; --ink-2:#AFBECD; --ink-3:#7B8B9B;
+      --rule:#2A3644; --rule-2:#212B37;
+      --accent:#E2755F; --accent-soft:#39221E; --accent-ink:#EE9683;
+      --ok:#5FCBAE; --ok-soft:#12302A;
+      --warn:#E0AC5A; --warn-soft:#33270F;
+      --cp1:#5F8898; --cp2:#4E8497; --cp3:#68A7BC; --cp4:#8FC5D8; --pill-ink:#0C1219;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101720; --card:#18212C; --ink:#E7EDF3; --ink-2:#AFBECD; --ink-3:#7B8B9B;
+    --rule:#2A3644; --rule-2:#212B37;
+    --accent:#E2755F; --accent-soft:#39221E; --accent-ink:#EE9683;
+    --ok:#5FCBAE; --ok-soft:#12302A;
+    --warn:#E0AC5A; --warn-soft:#33270F;
+    --cp1:#5F8898; --cp2:#4E8497; --cp3:#68A7BC; --cp4:#8FC5D8; --pill-ink:#0C1219;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+  }
+  :root[data-theme="light"]{
+    --paper:#F6F8FA; --card:#FFFFFF; --ink:#161E28; --ink-2:#43505F; --ink-3:#71808F;
+    --rule:#DCE3EA; --rule-2:#EDF1F5;
+    --accent:#A3372A; --accent-soft:#F6E7E4; --accent-ink:#8C2E23;
+    --ok:#0F6F5C; --ok-soft:#DFF0EA;
+    --warn:#8A5A0B; --warn-soft:#FBEEDA;
+    --cp1:#7EA8B8; --cp2:#4E8497; --cp3:#2E6377; --cp4:#134155; --pill-ink:#FFFFFF;
+    --shadow:0 1px 2px rgba(20,32,45,.06),0 8px 24px -16px rgba(20,32,45,.28);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+       font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:32px 22px 72px;display:flex;flex-direction:column;gap:26px}
+
+  /* masthead */
+  .mast{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px;
+        border-bottom:2px solid var(--ink);padding-bottom:16px}
+  .mast .lede{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:6px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+           color:var(--accent);font-weight:600}
+  h1{font-family:var(--display);font-size:clamp(28px,4.4vw,42px);line-height:1.08;margin:0;
+     letter-spacing:-.02em;text-wrap:balance;font-weight:700}
+  .sub{color:var(--ink-2);font-size:14.5px;max-width:62ch;margin:0}
+  .mast .yr{font-family:var(--mono);font-size:12px;color:var(--ink-3);text-align:right;
+            line-height:1.7;white-space:nowrap}
+  .yr b{color:var(--ink);font-weight:600}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;
+         background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+  .stat{background:var(--card);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+  .stat .n{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-.02em;
+           font-variant-numeric:tabular-nums;line-height:1.15}
+  .stat .k{font-size:11.5px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+  .stat .h{font-size:12px;color:var(--ink-2)}
+
+  /* timeline */
+  .tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+  .tl .cp{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;
+          display:flex;flex-direction:column;gap:3px;border-left:4px solid var(--c)}
+  .tl .cp .w{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
+  .tl .cp .t{font-weight:650;font-size:14.5px}
+  .tl .cp .d{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+  /* callout */
+  .note{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+        border-radius:8px;padding:13px 15px;font-size:13.5px;color:var(--ink);display:flex;gap:11px}
+  .note .mk{font-family:var(--mono);font-weight:700;color:var(--accent-ink);flex:none}
+  .note p{margin:0 0 6px}
+  .note p:last-child{margin-bottom:0}
+
+  /* controls */
+  .ctl{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+       background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;
+       position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
+  .grp{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .grp>.lb{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:650}
+  .chip{font:inherit;font-size:12.5px;padding:4px 11px;border-radius:999px;cursor:pointer;
+        border:1px solid var(--rule);background:transparent;color:var(--ink-2);transition:.13s}
+  .chip:hover{border-color:var(--ink-3);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .chip:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  select,input[type=search]{font:inherit;font-size:13px;padding:5px 9px;border-radius:6px;
+        border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+  input[type=search]{min-width:170px}
+  .count{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--ink-3);
+         font-variant-numeric:tabular-nums}
+
+  /* table */
+  .tblwrap{border:1px solid var(--rule);border-radius:8px;overflow-x:auto;background:var(--card);
+           box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:1050px}
+  thead th{position:sticky;top:0;background:var(--card);z-index:10;
+        font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+        font-weight:700;text-align:left;padding:11px 10px;border-bottom:1.5px solid var(--ink);white-space:nowrap}
+  thead th.ex{text-align:center;width:52px}
+  tbody td{padding:9px 10px;border-bottom:1px solid var(--rule-2);vertical-align:top;font-size:13.5px}
+  tbody tr:hover td{background:color-mix(in srgb,var(--accent) 4%,transparent)}
+  tr.grp-row td{background:color-mix(in srgb,var(--ink) 5%,transparent);
+        font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+        color:var(--ink-2);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+  tr.subj-row td{background:color-mix(in srgb,var(--accent) 7%,transparent);
+        border-bottom:1px solid var(--rule);padding:10px}
+  .subj-row .s{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .subj-row .m{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+  .no{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ch{font-weight:550;line-height:1.35}
+  .sec{display:block;font-size:11.5px;color:var(--ink-3);margin-top:1px}
+  .pend{color:var(--ink-3);font-style:italic;font-weight:400}
+  .cmt{font-size:12.5px;color:var(--ink-2);line-height:1.45;min-width:230px}
+  .per{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+  .per b{font-size:14px;font-weight:600}
+  .per span{display:block;font-size:11px;color:var(--ink-3)}
+  .none{color:var(--ink-3)}
+
+  .pill{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;
+        letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;
+        color:var(--pill-ink);background:var(--c);white-space:nowrap}
+
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+       padding:2px 7px;border-radius:4px;margin-right:5px;white-space:nowrap}
+  .tag.skip{background:var(--warn-soft);color:var(--warn)}
+  .tag.nda{background:var(--accent-soft);color:var(--accent-ink)}
+  .tag.flag{background:var(--accent);color:var(--card)}
+
+  td.ex{text-align:center;white-space:nowrap}
+  .tick{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+        border-radius:5px;background:var(--ok-soft);color:var(--ok);font-weight:800;font-size:12px;
+        cursor:help}
+  .dash{color:var(--ink-3);opacity:.45;font-family:var(--mono);cursor:help}
+  .na{color:var(--ink-3);opacity:.3;font-family:var(--mono);font-size:11px}
+  .brd{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);white-space:nowrap}
+
+  .empty{padding:40px;text-align:center;color:var(--ink-3);font-size:14px}
+
+  footer{border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-direction:column;gap:12px}
+  footer h2{font-family:var(--display);font-size:15px;margin:0;font-weight:700}
+  .lg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 26px;
+      font-size:12.5px;color:var(--ink-2)}
+  .lg div{display:flex;gap:8px;align-items:baseline}
+  .lg b{color:var(--ink);font-weight:650;flex:none}
+  .src{font-size:12px;color:var(--ink-3);line-height:1.6;max-width:78ch}
+  .src code{font-family:var(--mono);font-size:11.5px;background:var(--rule-2);padding:1px 5px;border-radius:3px}
+
+  @media (max-width:620px){
+    .wrap{padding:20px 14px 56px}
+    .mast .yr{text-align:left}
+    .ctl{position:static}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  @media print{
+    :root{--paper:#fff;--card:#fff;--ink:#000;--ink-2:#333;--ink-3:#666;--rule:#bbb;--rule-2:#ddd;
+          --cp1:#7EA8B8;--cp2:#4E8497;--cp3:#2E6377;--cp4:#134155;--pill-ink:#fff}
+    .ctl,.note,.stats,.tl{display:none}
+    .wrap{max-width:none;padding:0;gap:14px}
+    .tblwrap{border:none;box-shadow:none;overflow:visible}
+    table{min-width:0;font-size:10pt}
+    tbody td{padding:4px 6px}
+    thead th{position:static}
+    tr{break-inside:avoid}
+    .tick{background:none;color:#000}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="lede">
+      <div class="eyebrow">APJ Innovation School &amp; Junior College · Sonde Karla</div>
+      <h1>Std 11 Syllabus Mapper</h1>
+      <p class="sub">Every chapter taught this year — when it is first examined, how much teaching
+        time it needs, which entrance exams test it, and where it sits in the Board and CBSE books.</p>
+    </div>
+    <div class="yr">
+      Academic year <b>2026-27</b><br>
+      109 chapters · 9 subjects<br>
+      1 period = <b>50 min</b>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><div class="k">Chapters mapped</div><div class="n">109</div><div class="h">across 9 subjects</div></div>
+    <div class="stat"><div class="k">Teaching periods</div><div class="n">145</div><div class="h">≈ 121 hours · Maths only</div></div>
+    <div class="stat"><div class="k">Exam flags verified</div><div class="n">80<span style="font-size:15px;color:var(--ink-3)">/308</span></div><div class="h">exact taxonomy matches</div></div>
+    <div class="stat"><div class="k">Pulled from Std 12</div><div class="n">7</div><div class="h">Physics 6 · Chemistry 1</div></div>
+  </section>
+
+  <section class="tl" aria-label="Examination checkpoints">
+    <div class="cp" style="--c:var(--cp1)"><div class="w">Checkpoint 1</div><div class="t">Unit Test 1</div><div class="d">10 Aug 2026 · 25 marks</div></div>
+    <div class="cp" style="--c:var(--cp2)"><div class="w">Checkpoint 2</div><div class="t">First Term Exam</div><div class="d">12 Oct 2026</div></div>
+    <div class="cp" style="--c:var(--cp3)"><div class="w">Checkpoint 3</div><div class="t">Unit Test 2</div><div class="d">14 Dec 2026</div></div>
+    <div class="cp" style="--c:var(--cp4)"><div class="w">Checkpoint 4</div><div class="t">Term End Exam</div><div class="d">8 Feb 2027</div></div>
+  </section>
+
+  <div class="note">
+    <span class="mk">!</span>
+    <div>
+      <p><b>A blank exam cell is not a claim that the topic is untested.</b> A tick appears only where
+        this chapter's name matches a chapter in that exam's verified past-paper taxonomy exactly.
+        Physics <i>Optics</i>, for instance, shows blank across all four — yet every one of them tests it
+        under a different chapter name. Treat blanks as “not yet confirmed”, and hover any tick to see
+        the chapter it matched.</p>
+      <p><b>Teaching periods exist for Maths only.</b> There is no session plan on record for Physics,
+        Chemistry, Biology, Geography, IT or CS, so those cells are left empty rather than estimated.</p>
+    </div>
+  </div>
+
+  <div class="ctl">
+    <div class="grp">
+      <span class="lb">Subject</span>
+      <select id="fSubject" aria-label="Filter by subject"><option value="">All subjects</option></select>
+    </div>
+    <div class="grp">
+      <span class="lb">First examined</span>
+      <button class="chip" data-cp="ut1" aria-pressed="false">UT 1</button>
+      <button class="chip" data-cp="term1" aria-pressed="false">First Term</button>
+      <button class="chip" data-cp="ut2" aria-pressed="false">UT 2</button>
+      <button class="chip" data-cp="term_end" aria-pressed="false">Term End</button>
+    </div>
+    <div class="grp">
+      <span class="lb">Tested by</span>
+      <button class="chip" data-ex="nda" aria-pressed="false">NDA</button>
+      <button class="chip" data-ex="cet" aria-pressed="false">CET</button>
+      <button class="chip" data-ex="jee" aria-pressed="false">JEE</button>
+      <button class="chip" data-ex="neet" aria-pressed="false">NEET</button>
+    </div>
+    <div class="grp">
+      <input type="search" id="fText" placeholder="Find a chapter…" aria-label="Search chapters">
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <div class="tblwrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:62px">Ch.</th>
+          <th style="min-width:230px">Chapter</th>
+          <th style="width:104px">First examined</th>
+          <th style="width:76px;text-align:right">Periods</th>
+          <th class="ex" title="UPSC National Defence Academy">NDA</th>
+          <th class="ex" title="MHT-CET">CET</th>
+          <th class="ex" title="JEE Mains">JEE</th>
+          <th class="ex" title="NEET (UG)">NEET</th>
+          <th style="width:112px">Board source</th>
+          <th style="min-width:240px">Notes</th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>No chapters match these filters.</div>
+  </div>
+
+  <footer>
+    <h2>How to read this table</h2>
+    <div class="lg">
+      <div><b>✓</b><span>Chapter name matches that exam's verified past-paper taxonomy. Hover to see the matched name.</span></div>
+      <div><b>–</b><span>No exact match found. May still be tested under another name — confirm before dropping it.</span></div>
+      <div><b>n/a</b><span>Not a chapter-mapped entrance-exam subject.</span></div>
+      <div><b>SKIP</b><span>Marked as skipped in the school plan.</span></div>
+      <div><b>NDA ONLY</b><span>Taught for NDA; outside the CBSE course.</span></div>
+      <div><b>CHECK</b><span>Sources disagree — verify before planning around it.</span></div>
+      <div><b>SB 11 / SB 12</b><span>Maharashtra State Board Std 11 or Std 12 textbook.</span></div>
+      <div><b>CBSE 11 / CBSE 12</b><span>Chapter sits in the CBSE/NCERT book for that class.</span></div>
+    </div>
+    <p class="src"><b>Sources.</b> Chapters, checkpoints and the bracketed board notes are transcribed from the
+      school's Std-11 Syllabus Mapper document for 2026-27. Teaching periods are aggregated from the Maths XI
+      spiral teaching plan (50-minute periods; the per-chapter figures sum to its declared 145 total, and
+      Trigonometry is planned across Part I Ch. 1–3 together, so those three share one figure).
+      Exam ticks are computed against the live past-year-question taxonomy for NDA, MHT-CET, JEE Mains and
+      NEET, matching on chapter name under case, punctuation and “and/&amp;” normalisation.
+      Underlying data: <code>teaching-plan/syllabus-mapper-xi.json</code>.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var CP = {
+    ut1:{label:"UT 1", c:"var(--cp1)"},
+    term1:{label:"First Term", c:"var(--cp2)"},
+    ut2:{label:"UT 2", c:"var(--cp3)"},
+    term_end:{label:"Term End", c:"var(--cp4)"}
+  };
+  // m = matched exam chapter names (evidence for each tick)
+  var DATA = [
+   {g:"COMMON", s:"English (H.L)", mappable:false,
+    note:"Literature and skills sections, not exam-mapped chapters. Grammar is examined in every paper.",
+    rows:[
+     {n:"1.1",t:"Being Neighborly",sec:"Section One · Prose",cp:"ut1"},
+     {n:"1.2",t:"On To The Summit: We Reach The Top",sec:"Section One · Prose",cp:"ut1"},
+     {n:"1.3",t:"The Call of the Soil",sec:"Section One · Prose",cp:"ut1"},
+     {n:"1.4",t:"Pillars of Democracy",sec:"Section One · Prose",cp:"ut1"},
+     {n:"1.5",t:"Mrs. Adis",sec:"Section One · Prose",cp:"ut1"},
+     {n:"1.6",t:"Tiger Hills",sec:"Section One · Prose",cp:"ut1"},
+     {n:"2.1",t:"Cherry Tree",sec:"Section Two · Poetry",cp:"ut1"},
+     {n:"2.2",t:"The Sower",sec:"Section Two · Poetry",cp:"ut1"},
+     {n:"2.3",t:"There is Another Sky",sec:"Section Two · Poetry",cp:"ut1"},
+     {n:"2.4",t:"Upon Westminster Bridge",sec:"Section Two · Poetry",cp:"ut1"},
+     {n:"2.5",t:"Nose versus Eyes",sec:"Section Two · Poetry",cp:"ut1"},
+     {n:"2.6",t:"The Planners",sec:"Section Two · Poetry",cp:"term1"},
+     {n:"3.1",t:"Expansion of Ideas",sec:"Section Three · Writing Skills",cp:"term1"},
+     {n:"3.2",t:"Blog Writing",sec:"Section Three · Writing Skills",cp:"term1"},
+     {n:"3.3",t:"E-mails",sec:"Section Three · Writing Skills",cp:"term1"},
+     {n:"3.4",t:"Interview",sec:"Section Three · Writing Skills",cp:"term1"},
+     {n:"3.5",t:"Film Review",sec:"Section Three · Writing Skills",cp:"term1"},
+     {n:"3.6",t:"The Art of Compering",sec:"Section Three · Writing Skills",cp:"term1"},
+     {n:"4.1",t:"History of English Drama",sec:"Section Four · Genre – Drama",cp:"ut2"},
+     {n:"4.2",t:"The Rising of the Moon",sec:"Section Four · Genre – Drama",cp:"ut2"},
+     {n:"4.3",t:"Extracts of Drama — (A) A Midsummer Night's Dream, (B) An Enemy of the People",sec:"Section Four · Genre – Drama",cp:"ut2"}
+    ]},
+
+   {g:"SCIENCE STREAM", s:"Physics", mappable:true, rows:[
+     {n:"1",t:"Units and Measurements",cp:"ut1",b:"SB 11",
+      m:{cet:"MHT-CET · Units and Measurement",jee:"JEE Mains · Units and Measurements",neet:"NEET · Units and Measurements"}},
+     {n:"2",t:"Mathematical Methods",cp:"ut1",b:"SB 11",
+      c:"Board-only toolkit chapter; entrance exams test its vector and calculus content inside other chapters."},
+     {n:"3",t:"Motion in a Plane",cp:"ut1",b:"SB 11",c:"Includes 11th CBSE Motion in a Straight Line.",
+      m:{cet:"MHT-CET · Motion in a Plane",jee:"JEE Mains · Motion in a Plane",neet:"NEET · Motion in a Plane"}},
+     {n:"4",t:"Laws of Motion",cp:"term1",b:"SB 11",c:"Includes 11th CBSE Work, Power and Energy.",
+      m:{cet:"MHT-CET · Laws of Motion",jee:"JEE Mains · Laws of Motion",neet:"NEET · Laws of Motion"}},
+     {n:"5",t:"Gravitation",cp:"term1",b:"SB 11",
+      m:{nda:"NDA · Gravitation",cet:"MHT-CET · Gravitation",jee:"JEE Mains · Gravitation",neet:"NEET · Gravitation"}},
+     {n:"6",t:"Mechanical Properties of Solids",cp:"term1",b:"SB 11",
+      m:{cet:"MHT-CET · Mechanical Properties of Solids",jee:"JEE Mains · Mechanical Properties of Solids",neet:"NEET · Mechanical Properties of Solids"}},
+     {n:"7",t:"Sound",cp:"term1",b:"SB 11",
+      m:{nda:"NDA · Sound",cet:"MHT-CET · Sound"}},
+     {n:"8",t:"Thermal Properties of Matter",cp:"ut2",b:"SB 11",
+      m:{cet:"MHT-CET · Thermal Properties of Matter",jee:"JEE Mains · Thermal Properties of Matter",neet:"NEET · Thermal Properties of Matter"}},
+     {n:"9",t:"Oscillations",cp:"ut2",b:"SB 12 · CBSE 11",c:"Pulled forward from Std 12 State Board; CBSE places it in Class 11.",fwd:true,
+      m:{cet:"MHT-CET · Oscillations",jee:"JEE Mains · Oscillations",neet:"NEET · Oscillations"}},
+     {n:"10",t:"Superposition of Waves",cp:"ut2",b:"SB 12 · CBSE 11",c:"Pulled forward from Std 12 SB; 11th CBSE Book 2 (Waves).",fwd:true,
+      m:{cet:"MHT-CET · Superposition of Waves"}},
+     {n:"11",t:"Mechanical Properties of Fluids",cp:"ut2",b:"SB 12 · CBSE 11",c:"Pulled forward from Std 12 State Board; CBSE places it in Class 11.",fwd:true,
+      m:{cet:"MHT-CET · Mechanical Properties of Fluids",jee:"JEE Mains · Mechanical Properties of Fluids",neet:"NEET · Mechanical Properties of Fluids"}},
+     {n:"12",t:"Electromagnetic Waves and Communication System",cp:"ut2",b:"CBSE 12",
+      c:"12th CBSE Electromagnetic Waves. Communication System is dropped from the rationalised NCERT."},
+     {n:"13",t:"Rotational Dynamics",cp:"term_end",b:"SB 12 · CBSE 11",c:"Pulled forward from Std 12 SB; 11th CBSE Systems of Particles and Rotational Motion.",fwd:true,
+      m:{cet:"MHT-CET · Rotational Dynamics"}},
+     {n:"14",t:"Thermodynamics",cp:"term_end",b:"SB 12 · CBSE 11",c:"Printed as “Thermodynamic” in the school plan. 11th CBSE Book 2.",fwd:true,
+      m:{cet:"MHT-CET · Thermodynamics",jee:"JEE Mains · Thermodynamics",neet:"NEET · Thermodynamics"}},
+     {n:"15",t:"Kinetic Theory of Gases",cp:"term_end",b:"SB 12 · CBSE 11",c:"Printed as “Kinetic Theory of Gas” in the school plan.",fwd:true,
+      m:{cet:"MHT-CET · Kinetic Theory of Gases"}},
+     {n:"16",t:"Optics",cp:"term_end",b:"CBSE 12",c:"12th CBSE Ray Optics and Optical Instruments."}
+   ]},
+
+   {g:"SCIENCE STREAM", s:"Chemistry", mappable:true, rows:[
+     {n:"1",t:"Some Basic Concepts of Chemistry",cp:"ut1",b:"SB 11",
+      m:{cet:"MHT-CET · Some Basic Concepts of Chemistry",jee:"JEE Mains · Some Basic Concepts of Chemistry",neet:"NEET · Some Basic Concepts of Chemistry"}},
+     {n:"2",t:"Introduction to Analytical Chemistry",cp:"ut1",b:"SB 11",skip:true,c:"Marked [Skip] in the school plan."},
+     {n:"3",t:"Basic Analytical Techniques",cp:"ut1",b:"SB 11",skip:true,c:"Marked [Skip] in the school plan."},
+     {n:"4",t:"Structure of Atom",cp:"ut1",b:"SB 11",
+      m:{cet:"MHT-CET · Structure of Atom",jee:"JEE Mains · Structure of Atom",neet:"NEET · Structure of Atom"}},
+     {n:"7",t:"Modern Periodic Table",cp:"ut1",b:"SB 11",c:"11th CBSE: Classification of Elements and Periodicity in Properties.",
+      m:{cet:"MHT-CET · Modern Periodic Table"}},
+     {n:"5",t:"Chemical Bonding",cp:"term1",b:"SB 11",c:"CBSE/NCERT title: Chemical Bonding and Molecular Structure.",
+      m:{nda:"NDA · Chemical Bonding"}},
+     {n:"6",t:"Redox Reactions",cp:"term1",b:"SB 11",
+      m:{cet:"MHT-CET · Redox Reactions",neet:"NEET · Redox Reactions"}},
+     {n:"14",t:"Basic Principles of Organic Chemistry",cp:"term1",b:"SB 11",c:"CBSE/NCERT title: Organic Chemistry — Some Basic Principles and Techniques.",
+      m:{cet:"MHT-CET · Basic Principles of Organic Chemistry"}},
+     {n:"10",t:"States of Matter",cp:"term1",b:"SB 11",ndaOnly:true,c:"NDA only, not for CBSE — dropped from the rationalised NCERT Class 11.",
+      m:{cet:"MHT-CET · States of Matter",neet:"NEET · States of Matter"}},
+     {n:"8",t:"Elements of Group 1 and 2",cp:"ut2",b:"SB 11",ndaOnly:true,c:"NDA only, not for CBSE. CBSE/NCERT equivalent: The s-Block Elements.",
+      m:{cet:"MHT-CET · Elements of Group 1 and 2"}},
+     {n:"9",t:"Elements of Group 13, 14 and 15",cp:"ut2",b:"SB 11",ndaOnly:true,c:"NDA only, not for CBSE. CBSE/NCERT equivalent: The p-Block Elements.",
+      m:{cet:"MHT-CET · Elements of Group 13, 14 and 15"}},
+     {n:"15",t:"Hydrocarbons",cp:"ut2",b:"SB 11",
+      m:{jee:"JEE Mains · Hydrocarbons",neet:"NEET · Hydrocarbons"}},
+     {n:"13",t:"Nuclear Chemistry and Radioactivity",cp:"ut2",b:"SB 11",c:"Not a separate CBSE Class-11 chapter."},
+     {n:"16",t:"Chemistry in Everyday Life",cp:"term_end",b:"SB 11",
+      m:{nda:"NDA · Chemistry in Everyday Life",jee:"JEE Mains · Chemistry in Everyday Life",neet:"NEET · Chemistry in Everyday Life"}},
+     {n:"11",t:"Adsorption and Colloids",cp:"term_end",b:"SB 11",ndaOnly:true,c:"Not for CBSE. CBSE/NCERT equivalent: Surface Chemistry (Class 12)."},
+     {n:"12",t:"Chemical Equilibrium",cp:"term_end",b:"SB 11",flag:true,
+      c:"Sources disagree: the school plan brackets this [12th SB, 11th CBSE], but the Balbharati Std-11 book carries it as Part I Ch. 12. Confirm before planning around it."},
+     {n:"13*",t:"Chemical Thermodynamics",cp:"term_end",b:"SB 12 · CBSE 11",fwd:true,flag:true,
+      c:"Pulled forward from Std 12 SB. The school plan numbers this 13, colliding with Nuclear Chemistry (also 13).",
+      m:{jee:"JEE Mains · Chemical Thermodynamics"}}
+   ]},
+
+   {g:"SCIENCE STREAM", s:"Maths & Stats", mappable:true, rows:[
+     {n:"I-1",t:"Angle and its Measurement",cp:"ut1",b:"SB 11",per:24,perNote:"Trigonometry is planned as Parts A + B + C across Part I Ch. 1–3 together (9+9+6 periods); the figure is shared by those three chapters and not separable.",perShared:true},
+     {n:"II-2",t:"Sequences and Series",cp:"ut1",b:"SB 11",per:8,
+      m:{cet:"MHT-CET · Sequences and Series",jee:"JEE Mains · Sequences and Series"}},
+     {n:"II-5",t:"Sets and Relations",cp:"ut1",b:"SB 11",per:6,
+      m:{nda:"NDA · Sets & Relations"}},
+     {n:"I-2",t:"Trigonometry - I",cp:"ut1",b:"SB 11",per:24,perShared:true,perNote:"Shared with Angle and its Measurement and Trigonometry - II.",
+      m:{cet:"MHT-CET · Trigonometry - I"}},
+     {n:"I-3",t:"Trigonometry - II",cp:"term1",b:"SB 11",per:24,perShared:true,perNote:"Shared with Angle and its Measurement and Trigonometry - I.",
+      m:{cet:"MHT-CET · Trigonometry - II"}},
+     {n:"I-4",t:"Determinants and Matrices",cp:"term1",b:"SB 11",per:10,
+      m:{cet:"MHT-CET · Determinants and Matrices"}},
+     {n:"II-1",t:"Complex Numbers",cp:"term1",b:"SB 11",per:10,
+      m:{nda:"NDA · Complex Numbers",cet:"MHT-CET · Complex Numbers",jee:"JEE Mains · Complex Numbers"}},
+     {n:"II-3",t:"Permutations and Combinations",cp:"term1",b:"SB 11",per:8,
+      m:{cet:"MHT-CET · Permutations and Combinations",jee:"JEE Mains · Permutations and Combinations"}},
+     {n:"II-6",t:"Functions",cp:"term1",b:"SB 11",per:9,
+      m:{nda:"NDA · Functions"}},
+     {n:"I-5",t:"Straight Line",cp:"ut2",b:"SB 11",per:8,
+      m:{cet:"MHT-CET · Straight Line",jee:"JEE Mains · Straight Lines"}},
+     {n:"I-6",t:"Circle",cp:"ut2",b:"SB 11",per:7,
+      m:{nda:"NDA · Circles",cet:"MHT-CET · Circle"}},
+     {n:"I-7",t:"Conic Sections",cp:"ut2",b:"SB 11",per:12,
+      m:{cet:"MHT-CET · Conic Sections",jee:"JEE Mains · Conic Sections"}},
+     {n:"II-7",t:"Limits",cp:"ut2",b:"SB 11",per:7,
+      m:{cet:"MHT-CET · Limits"}},
+     {n:"II-4",t:"Methods of Induction and Binomial Theorem",cp:"ut2",b:"SB 11",per:7},
+     {n:"I-8",t:"Measures of Dispersion",cp:"term_end",b:"SB 11",per:5,
+      m:{cet:"MHT-CET · Measures of Dispersion"}},
+     {n:"I-9",t:"Probability",cp:"term_end",b:"SB 11",per:7,
+      m:{nda:"NDA · Probability",jee:"JEE Mains · Probability"}},
+     {n:"II-8",t:"Continuity",cp:"term_end",b:"SB 11",per:5},
+     {n:"II-9",t:"Differentiation",cp:"term_end",b:"SB 11",per:12,
+      m:{nda:"NDA · Differentiation",cet:"MHT-CET · Differentiation",jee:"JEE Mains · Differentiation"}},
+     {n:"II-11",t:"Introduction to 3D Geometry",cp:"term_end",b:"NCERT only",c:"[NCERT Only] — not in the Balbharati Std-11 course; taught from NCERT."}
+   ]},
+
+   {g:"SCIENCE STREAM", s:"Biology", mappable:true, rows:[
+     {n:"1",t:"Living World",cp:"ut1",b:"SB 11"},
+     {n:"2",t:"Systematics of Living Organisms",cp:"ut1",b:"SB 11"},
+     {n:"3",t:"Kingdom Plantae",cp:"ut1",b:"SB 11"},
+     {n:"4",t:"Kingdom Animalia",cp:"term1",b:"SB 11"},
+     {n:"5",t:"Cell Structure and Organization",cp:"term1",b:"SB 11"},
+     {n:"6",t:"Biomolecules",cp:"term1",b:"SB 11"},
+     {n:"7",t:"Cell Division",cp:"term1",b:"SB 11"},
+     {n:"8",t:"Plant Tissues and Anatomy",cp:"ut2",b:"SB 11"},
+     {n:"9",t:"Morphology of Flowering Plants",cp:"ut2",b:"SB 11",
+      m:{neet:"NEET Botany · Morphology of Flowering Plants"}},
+     {n:"10",t:"Animal Tissue",cp:"ut2",b:"SB 11"},
+     {n:"11",t:"Study of Animal Type: Cockroach",cp:"ut2",b:"SB 11"},
+     {n:"12",t:"Photosynthesis",cp:"ut2",b:"SB 11"},
+     {n:"13",t:"Respiration and Energy Transfer",cp:"term_end",b:"SB 11"},
+     {n:"14",t:"Human Nutrition",cp:"term_end",b:"SB 11"},
+     {n:"15",t:"Excretion and Osmoregulation",cp:"term_end",b:"SB 11"},
+     {n:"16",t:"Skeleton and Movement",cp:"term_end",b:"SB 11"}
+   ]},
+
+   {g:"OTHER SUBJECTS", s:"Geography", mappable:true, rows:[
+     {n:"1",t:"Earth Movements",cp:"ut1",b:"SB 11"},
+     {n:"2",t:"Weathering and Mass Wasting",cp:"term1",b:"SB 11"},
+     {n:"3",t:"Agents of Erosion",cp:"term1",b:"SB 11"},
+     {n:"4",t:"Climatic Regions",cp:"term1",b:"SB 11"},
+     {n:"5",t:"Global Climate Change",cp:"ut2",b:"SB 11"},
+     {n:"6",t:"Ocean Resources",cp:"ut2",b:"SB 11"},
+     {n:"7",t:"Indian Ocean — Relief and Strategic Importance",cp:"ut2",b:"SB 11"},
+     {n:"8",t:"Biomes",cp:"term_end",b:"SB 11"},
+     {n:"9",t:"Disaster Management",cp:"term_end",b:"SB 11"}
+   ]},
+
+   {g:"OTHER SUBJECTS", s:"IT", mappable:false, rows:[
+     {n:"1",t:"Basics of Information Technology",cp:"ut1",b:"SB 11"},
+     {n:"2",t:"Introduction to DBMS",cp:"term1",b:"SB 11"},
+     {n:"3",t:"Impressive Web Designing",cp:"ut2",b:"SB 11"},
+     {n:"4",t:"Cyber Law",cp:"term_end",b:"SB 11"}
+   ]},
+
+   {g:"OTHER SUBJECTS", s:"CS – 1", mappable:false,
+    note:"Lesson numbers are per the school exam plan; titles to be filled in from the textbook index.",
+    rows:[
+     {n:"L-1",t:null,cp:"ut1",b:"SB 11"},
+     {n:"L-2",t:null,cp:"ut1",b:"SB 11"},
+     {n:"L-3",t:null,cp:"term1",b:"SB 11"},
+     {n:"L-4",t:null,cp:"ut2",b:"SB 11"}
+   ]},
+
+   {g:"OTHER SUBJECTS", s:"CS – 2", mappable:false,
+    note:"Lesson numbers are per the school exam plan; titles to be filled in from the textbook index.",
+    rows:[
+     {n:"L-2",t:null,cp:"ut1",b:"SB 11"},
+     {n:"L-1",t:null,cp:"term1",b:"SB 11"},
+     {n:"L-3",t:null,cp:"ut2",b:"SB 11"}
+   ]}
+  ];
+
+  var EXAMS = ["nda","cet","jee","neet"];
+  var tb = document.getElementById("tb");
+  var sel = document.getElementById("fSubject");
+  var txt = document.getElementById("fText");
+  var countEl = document.getElementById("count");
+  var emptyEl = document.getElementById("empty");
+  var state = { subject:"", cps:{}, exams:{}, q:"" };
+
+  DATA.forEach(function(b){
+    var o = document.createElement("option");
+    o.value = b.s; o.textContent = b.s; sel.appendChild(o);
+  });
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(ch){
+      return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[ch];
+    });
+  }
+
+  function keep(block, r){
+    if (state.subject && block.s !== state.subject) return false;
+    var cps = Object.keys(state.cps).filter(function(k){return state.cps[k];});
+    if (cps.length && cps.indexOf(r.cp) === -1) return false;
+    var exs = Object.keys(state.exams).filter(function(k){return state.exams[k];});
+    if (exs.length){
+      if (!block.mappable) return false;
+      var hit = exs.some(function(e){ return r.m && r.m[e]; });
+      if (!hit) return false;
+    }
+    if (state.q){
+      var hay = (block.s + " " + (r.t || "") + " " + (r.n||"") + " " + (r.c||"") + " " + (r.sec||"")).toLowerCase();
+      if (hay.indexOf(state.q) === -1) return false;
+    }
+    return true;
+  }
+
+  function render(){
+    var html = "", shown = 0, lastGroup = null;
+
+    DATA.forEach(function(block){
+      var rows = block.rows.filter(function(r){ return keep(block, r); });
+      if (!rows.length) return;
+
+      if (block.g !== lastGroup){
+        html += '<tr class="grp-row"><td colspan="10">' + esc(block.g) + "</td></tr>";
+        lastGroup = block.g;
+      }
+
+      var per = 0, seen = {};
+      rows.forEach(function(r){
+        if (!r.per) return;
+        if (r.perShared){ if (seen[r.per]) return; seen[r.per] = 1; }
+        per += r.per;
+      });
+      var meta = rows.length + (rows.length === 1 ? " chapter" : " chapters");
+      if (per) meta += " · " + per + " periods ≈ " + Math.round(per * 50 / 60) + " h";
+      if (block.note) meta += " · " + block.note;
+
+      html += '<tr class="subj-row"><td colspan="10">'
+            + '<span class="s">' + esc(block.s) + "</span> "
+            + '<span class="m">' + esc(meta) + "</span></td></tr>";
+
+      rows.forEach(function(r){
+        shown++;
+        var cp = CP[r.cp];
+        html += "<tr>";
+        html += '<td class="no">' + esc(r.n) + "</td>";
+
+        html += '<td class="ch">';
+        if (r.skip)    html += '<span class="tag skip">Skip</span>';
+        if (r.ndaOnly) html += '<span class="tag nda">NDA only</span>';
+        if (r.flag)    html += '<span class="tag flag">Check</span>';
+        html += r.t ? esc(r.t) : '<span class="pend">Title pending</span>';
+        if (r.sec) html += '<span class="sec">' + esc(r.sec) + "</span>";
+        html += "</td>";
+
+        html += '<td><span class="pill" style="--c:' + cp.c + '">' + esc(cp.label) + "</span></td>";
+
+        html += '<td class="per">';
+        if (r.per){
+          html += "<b>" + r.per + "</b><span>≈ " + Math.round(r.per * 50 / 60) + " h"
+               + (r.perShared ? " · shared" : "") + "</span>";
+        } else {
+          html += '<span class="dash" title="No session plan on record for this subject">–</span>';
+        }
+        html += "</td>";
+
+        EXAMS.forEach(function(e){
+          if (!block.mappable){
+            html += '<td class="ex"><span class="na" title="Not a chapter-mapped entrance-exam subject">n/a</span></td>';
+          } else if (r.m && r.m[e]){
+            html += '<td class="ex"><span class="tick" title="Matches ' + esc(r.m[e]) + '">✓</span></td>';
+          } else {
+            html += '<td class="ex"><span class="dash" title="No exact chapter-name match — may still be tested under another name">–</span></td>';
+          }
+        });
+
+        html += '<td class="brd">' + (r.b ? esc(r.b) : '<span class="none">–</span>') + "</td>";
+
+        var cmt = r.c || "";
+        if (r.perNote) cmt = cmt ? cmt + " " + r.perNote : r.perNote;
+        html += '<td class="cmt">' + (cmt ? esc(cmt) : '<span class="none">–</span>') + "</td>";
+        html += "</tr>";
+      });
+    });
+
+    tb.innerHTML = html;
+    emptyEl.hidden = shown > 0;
+    countEl.textContent = shown + " of 109 chapters";
+  }
+
+  sel.addEventListener("change", function(){ state.subject = sel.value; render(); });
+  txt.addEventListener("input", function(){ state.q = txt.value.trim().toLowerCase(); render(); });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".chip"), function(btn){
+    btn.addEventListener("click", function(){
+      var on = btn.getAttribute("aria-pressed") === "true";
+      btn.setAttribute("aria-pressed", on ? "false" : "true");
+      var bag = btn.dataset.cp ? state.cps : state.exams;
+      bag[btn.dataset.cp || btn.dataset.ex] = !on;
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
