@@ -50,10 +50,18 @@ export function concludedLetter(sol: string | null): string | null {
     [...sol.matchAll(/option\s*\(?([A-Da-d])\)?(?=[)\.,;:\s]|$)/g)].map((m) => m[1].toUpperCase()),
   );
   const enumerating = optionLetters.size >= 3;
+  // A solution may RULE OUT a choice by name ("so option A fails") long before it
+  // states its real conclusion. Reading that as the conclusion inverts the test,
+  // so drop an `option X` immediately followed by a rejecting verb.
+  const REJECT = "(?!\\s*(?:fails?|is\\s+(?:wrong|incorrect|false)|cannot|does\\s+not|would\\s+not))";
   const pats = [
     new RegExp(`Hence[,\\s]*\\(?([A-Da-d])\\)?${END}`, "g"),
-    ...(enumerating ? [] : [new RegExp(`option\\s*\\(?([A-Da-d])\\)?${END}`, "g")]),
+    ...(enumerating ? [] : [new RegExp(`option\\s*\\(?([A-Da-d])\\)?${END}${REJECT}`, "g")]),
     new RegExp(`answer\\s*is\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
+    // The house style for authored solutions is "the correct choice is B" (a bare
+    // leading option letter trips this very probe, so prompts forbid it). Without
+    // this pattern the probe cannot see the conclusion it asked authors to write.
+    new RegExp(`correct\\s+(?:choice|option|answer)\\s+is\\s*\\(?([A-Da-d])\\)?${END}`, "g"),
     ...(assertionReason ? [] : [/\(([A-Da-d])\)\s*\.?\s*$/g]),
   ];
   let last: string | null = null;
