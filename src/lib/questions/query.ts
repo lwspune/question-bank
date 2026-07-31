@@ -61,6 +61,16 @@ export type QueryResult = {
 
 export const DEFAULT_PAGE_SIZE = 25;
 
+/**
+ * Postgres cancels a statement that exceeds `statement_timeout` with SQLSTATE
+ * 57014. Matched on the code where PostgREST supplies one, with a message
+ * fallback because it does not always pass the code through.
+ */
+function isStatementTimeout(error: { code?: string | null; message?: string | null }): boolean {
+  if (error.code === "57014") return true;
+  return /canceling statement due to statement timeout/i.test(error.message ?? "");
+}
+
 export async function queryQuestions(
   client: SupabaseClient,
   orgId: string | null,
@@ -200,7 +210,16 @@ export async function queryQuestions(
     .order("id", { ascending: true })
     .range(start, end);
 
-  const { data, error, count } = await q;
+  // `next build` prerenders every /questions/<exam>/<subject>/<chapter> landing
+  // page concurrently, and that burst can trip Postgres' statement timeout even
+  // though the query itself runs in ~13ms — a different handful of pages fails
+  // on each build, which is the signature of contention rather than a slow plan.
+  // Retry ONLY a cancelled statement, briefly; anything else propagates at once.
+  let { data, error, count } = await q;
+  for (let attempt = 0; attempt < 2 && error && isStatementTimeout(error); attempt += 1) {
+    await new Promise((r) => setTimeout(r, 250 * (attempt + 1)));
+    ({ data, error, count } = await q);
+  }
   if (error) throw new Error(`questions query: ${error.message}`);
 
   type RawOption = {
