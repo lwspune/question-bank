@@ -56,14 +56,25 @@ function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, s
     if (refs.length > 1) console.warn(`  Q${rec.questionNumber}: ${refs.length} stem figures, only the first is attached`);
     return { qImage: refs[0] ?? null, optImages: {} };
   }
+  // The four option pictures are always the LAST four images: any figure that
+  // belongs to the stem is emitted before them. So 4 refs = options only,
+  // 5 = one stem figure + options, 6 = two stem figures (e.g. a logic circuit
+  // AND its input waveforms) + options, and so on. Keying off the tail rather
+  // than an exact count is what makes 6+ work; previously anything but 4 or 5
+  // threw and the row silently ended up with NO option images at all.
   const labels = ["A", "B", "C", "D"];
-  if (refs.length === 5) {
-    return { qImage: refs[0], optImages: Object.fromEntries(labels.map((l, i) => [l, refs[i + 1]])) };
+  if (refs.length < 4) {
+    throw new Error(`Q${rec.questionNumber}: blank options but only ${refs.length} image(s) — cannot map choices`);
   }
-  if (refs.length === 4) {
-    return { qImage: null, optImages: Object.fromEntries(labels.map((l, i) => [l, refs[i]])) };
+  const optRefs = refs.slice(-4);
+  const stemRefs = refs.slice(0, -4);
+  if (stemRefs.length > 1) {
+    console.warn(`  Q${rec.questionNumber}: ${stemRefs.length} stem figures alongside option images, only the first is attached`);
   }
-  throw new Error(`Q${rec.questionNumber}: unexpected option-image count ${refs.length}`);
+  return {
+    qImage: stemRefs[0] ?? null,
+    optImages: Object.fromEntries(labels.map((l, i) => [l, optRefs[i]])),
+  };
 }
 
 async function uploadRef(client: SupabaseClient, ref: string, fallbackDir: string): Promise<string> {
