@@ -75,3 +75,22 @@ describe("auditRow", () => {
       .toBeNull();
   });
 });
+
+describe("concludedLetter — conclusion phrasing vs rejected choices", () => {
+  it("reads the house-style 'the correct choice is X' as the conclusion", () => {
+    expect(concludedLetter("Work it through. Hence the correct choice is C.")).toBe("C");
+  });
+
+  it("ignores a choice that is explicitly ruled out earlier in the solution", () => {
+    // Real row: JEE 2022 Jun25 Q2, key C. The solution rejects A by name before
+    // concluding C; reading "option A fails" as the conclusion inverts the test.
+    const sol =
+      "The cross product of any vector with itself vanishes. Also A.A is non-zero, " +
+      "so option A fails, and a vector cannot be compared with zero. Hence the correct choice is C.";
+    expect(concludedLetter(sol)).toBe("C");
+  });
+
+  it("still reads a plain 'option B' mention as the conclusion when nothing rejects it", () => {
+    expect(concludedLetter("Substituting gives 5, which is option B")).toBe("B");
+  });
+});
