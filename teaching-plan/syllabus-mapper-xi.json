@@ -1,0 +1,206 @@
+{
+  "grade": 11,
+  "academic_year": "2026-27",
+  "institution": "APJ Innovation School and Junior College, Sonde Karla",
+  "source_doc": "Syllabus_Mapper_2026-27_Std11.docx",
+  "purpose": "Chapter-level syllabus mapper: what is taught in Std 11, when it is first examined, how much teaching time it needs, which entrance exams test it, and where it sits in the Board/CBSE/NCERT books. Std 9/10/12 reuse this schema.",
+  "period_minutes": 50,
+  "checkpoints": [
+    { "id": "ut1", "label": "Unit Test 1", "date": "2026-08-10", "marks": 25 },
+    { "id": "term1", "label": "First Term Exam", "date": "2026-10-12", "marks": null },
+    { "id": "ut2", "label": "Unit Test 2", "date": "2026-12-14", "marks": null },
+    { "id": "term_end", "label": "Term End Exam", "date": "2027-02-08", "marks": null }
+  ],
+  "evidence": {
+    "chapters_and_checkpoints": "Transcribed verbatim from the school's Std-11 Syllabus Mapper docx (rows = subject, columns = the 4 checkpoints, cumulative 'Earlier Syllabus +').",
+    "board_and_comment": "The bracketed notes in that same docx ([12th SB, 11th CBSE], [NDA Only. Not for CBSE], [Skip], [NCERT Only], ...). Unbracketed chapters default to Maharashtra State Board Std 11, cross-confirmed for Maths/Physics/Chemistry against teaching-plan/<subject>-xi-spiral-plan.json board_source.",
+    "periods": "teaching-plan/maths-xi-spiral-plan.json unit sessions (50-minute periods), aggregated to board chapters. Sums to the declared 145 total exactly. No session source exists for Physics, Chemistry, Biology, Geography, IT or CS -- those are left blank rather than estimated.",
+    "exam_flags": "Set ONLY where the chapter name matches a chapter in that exam's live PYQ taxonomy under case/punctuation/'and-&' normalisation. The matched name is recorded so every tick is checkable. Blank means NO VERIFIED MATCH -- it does not mean the topic is untested."
+  },
+  "groups": [
+    {
+      "name": "COMMON",
+      "subjects": [
+        {
+          "subject": "English (H.L)",
+          "exam_subject": null,
+          "note": "Literature/skills sections, not exam-mappable chapters. Grammar is examined in every paper.",
+          "chapters": [
+            { "no": "1.1", "title": "Being Neighborly", "checkpoint": "ut1", "section": "Section One (Prose)" },
+            { "no": "1.2", "title": "On To The Summit: We Reach The Top", "checkpoint": "ut1", "section": "Section One (Prose)" },
+            { "no": "1.3", "title": "The Call of the Soil", "checkpoint": "ut1", "section": "Section One (Prose)" },
+            { "no": "1.4", "title": "Pillars of Democracy", "checkpoint": "ut1", "section": "Section One (Prose)" },
+            { "no": "1.5", "title": "Mrs. Adis", "checkpoint": "ut1", "section": "Section One (Prose)" },
+            { "no": "1.6", "title": "Tiger Hills", "checkpoint": "ut1", "section": "Section One (Prose)" },
+            { "no": "2.1", "title": "Cherry Tree", "checkpoint": "ut1", "section": "Section Two (Poetry)" },
+            { "no": "2.2", "title": "The Sower", "checkpoint": "ut1", "section": "Section Two (Poetry)" },
+            { "no": "2.3", "title": "There is Another Sky", "checkpoint": "ut1", "section": "Section Two (Poetry)" },
+            { "no": "2.4", "title": "Upon Westminster Bridge", "checkpoint": "ut1", "section": "Section Two (Poetry)" },
+            { "no": "2.5", "title": "Nose versus Eyes", "checkpoint": "ut1", "section": "Section Two (Poetry)" },
+            { "no": "2.6", "title": "The Planners", "checkpoint": "term1", "section": "Section Two (Poetry)" },
+            { "no": "3.1", "title": "Expansion of Ideas", "checkpoint": "term1", "section": "Section Three (Writing Skills)" },
+            { "no": "3.2", "title": "Blog Writing", "checkpoint": "term1", "section": "Section Three (Writing Skills)" },
+            { "no": "3.3", "title": "E-mails", "checkpoint": "term1", "section": "Section Three (Writing Skills)" },
+            { "no": "3.4", "title": "Interview", "checkpoint": "term1", "section": "Section Three (Writing Skills)" },
+            { "no": "3.5", "title": "Film Review", "checkpoint": "term1", "section": "Section Three (Writing Skills)" },
+            { "no": "3.6", "title": "The Art of Compering", "checkpoint": "term1", "section": "Section Three (Writing Skills)" },
+            { "no": "4.1", "title": "History of English Drama", "checkpoint": "ut2", "section": "Section Four (Genre - Drama)" },
+            { "no": "4.2", "title": "The Rising of the Moon", "checkpoint": "ut2", "section": "Section Four (Genre - Drama)" },
+            { "no": "4.3", "title": "Extracts of Drama - (A) A Midsummer Night's Dream, (B) An Enemy of the People", "checkpoint": "ut2", "section": "Section Four (Genre - Drama)" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SCIENCE STREAM",
+      "subjects": [
+        {
+          "subject": "Physics",
+          "exam_subject": "Physics",
+          "chapters": [
+            { "no": "1", "title": "Units and Measurements", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "2", "title": "Mathematical Methods", "checkpoint": "ut1", "board": "SB 11", "comment": "Board-only toolkit chapter; entrance exams test the vectors/calculus content inside other chapters." },
+            { "no": "3", "title": "Motion in a Plane", "checkpoint": "ut1", "board": "SB 11", "comment": "Includes 11th CBSE Motion in a Straight Line." },
+            { "no": "4", "title": "Laws of Motion", "checkpoint": "term1", "board": "SB 11", "comment": "Includes 11th CBSE Work, Power and Energy." },
+            { "no": "5", "title": "Gravitation", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "6", "title": "Mechanical Properties of Solids", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "7", "title": "Sound", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "8", "title": "Thermal Properties of Matter", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "9", "title": "Oscillations", "checkpoint": "ut2", "board": "SB 12 / CBSE 11", "comment": "Pulled forward from Std 12 State Board; CBSE places it in Class 11." },
+            { "no": "10", "title": "Superposition of Waves", "checkpoint": "ut2", "board": "SB 12 / CBSE 11", "comment": "Pulled forward from Std 12 SB; 11th CBSE Book 2 (Waves)." },
+            { "no": "11", "title": "Mechanical Properties of Fluids", "checkpoint": "ut2", "board": "SB 12 / CBSE 11", "comment": "Pulled forward from Std 12 State Board; CBSE places it in Class 11." },
+            { "no": "12", "title": "Electromagnetic Waves and Communication System", "checkpoint": "ut2", "board": "CBSE 12", "comment": "12th CBSE Electromagnetic Waves. Communication System is dropped from the rationalised NCERT." },
+            { "no": "13", "title": "Rotational Dynamics", "checkpoint": "term_end", "board": "SB 12 / CBSE 11", "comment": "Pulled forward from Std 12 SB; 11th CBSE Systems of Particles and Rotational Motion." },
+            { "no": "14", "title": "Thermodynamics", "checkpoint": "term_end", "board": "SB 12 / CBSE 11", "comment": "Printed as 'Thermodynamic' in the source doc. 11th CBSE Book 2." },
+            { "no": "15", "title": "Kinetic Theory of Gases", "checkpoint": "term_end", "board": "SB 12 / CBSE 11", "comment": "Printed as 'Kinetic Theory of Gas' in the source doc." },
+            { "no": "16", "title": "Optics", "checkpoint": "term_end", "board": "CBSE 12", "comment": "12th CBSE Ray Optics and Optical Instruments." }
+          ]
+        },
+        {
+          "subject": "Chemistry",
+          "exam_subject": "Chemistry",
+          "chapters": [
+            { "no": "1", "title": "Some Basic Concepts of Chemistry", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "2", "title": "Introduction to Analytical Chemistry", "checkpoint": "ut1", "board": "SB 11", "status": "skip", "comment": "Marked [Skip] in the school plan." },
+            { "no": "3", "title": "Basic Analytical Techniques", "checkpoint": "ut1", "board": "SB 11", "status": "skip", "comment": "Marked [Skip] in the school plan." },
+            { "no": "4", "title": "Structure of Atom", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "7", "title": "Modern Periodic Table", "checkpoint": "ut1", "board": "SB 11", "comment": "11th CBSE: Classification of Elements and Periodicity in Properties." },
+            { "no": "5", "title": "Chemical Bonding", "checkpoint": "term1", "board": "SB 11", "comment": "CBSE/NCERT title: Chemical Bonding and Molecular Structure." },
+            { "no": "6", "title": "Redox Reactions", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "14", "title": "Basic Principles of Organic Chemistry", "checkpoint": "term1", "board": "SB 11", "comment": "CBSE/NCERT title: Organic Chemistry - Some Basic Principles and Techniques." },
+            { "no": "10", "title": "States of Matter", "checkpoint": "term1", "board": "SB 11", "status": "nda_only", "comment": "NDA only. Not for CBSE (dropped from the rationalised NCERT Class 11)." },
+            { "no": "8", "title": "Elements of Group 1 and 2", "checkpoint": "ut2", "board": "SB 11", "status": "nda_only", "comment": "NDA only. Not for CBSE. CBSE/NCERT equivalent: The s-Block Elements." },
+            { "no": "9", "title": "Elements of Group 13, 14 and 15", "checkpoint": "ut2", "board": "SB 11", "status": "nda_only", "comment": "NDA only. Not for CBSE. CBSE/NCERT equivalent: The p-Block Elements." },
+            { "no": "15", "title": "Hydrocarbons", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "13", "title": "Nuclear Chemistry and Radioactivity", "checkpoint": "ut2", "board": "SB 11", "comment": "Not a separate CBSE Class-11 chapter." },
+            { "no": "16", "title": "Chemistry in Everyday Life", "checkpoint": "term_end", "board": "SB 11" },
+            { "no": "11", "title": "Adsorption and Colloids", "checkpoint": "term_end", "board": "SB 11", "status": "nda_only", "comment": "Not for CBSE. CBSE/NCERT equivalent: Surface Chemistry (Class 12)." },
+            { "no": "12", "title": "Chemical Equilibrium", "checkpoint": "term_end", "board": "SB 11", "comment": "CONFLICT: the school plan brackets this [12th SB, 11th CBSE], but the Balbharati Std-11 book carries it as Part I Ch. 12. Confirm before planning around it." },
+            { "no": "13*", "title": "Chemical Thermodynamics", "checkpoint": "term_end", "board": "SB 12 / CBSE 11", "comment": "Pulled forward from Std 12 SB. The source doc numbers this 13, colliding with Nuclear Chemistry (also 13)." }
+          ]
+        },
+        {
+          "subject": "Maths & Stats",
+          "exam_subject": "Maths",
+          "chapters": [
+            { "no": "I-1", "title": "Angle and its Measurement", "checkpoint": "ut1", "board": "SB 11", "periods_group": "trig", "comment": "Taught as Trigonometry Parts A/B/C spanning Part I Ch. 1-3; teaching time is planned across the three chapters together." },
+            { "no": "II-2", "title": "Sequences and Series", "checkpoint": "ut1", "board": "SB 11", "periods": 8 },
+            { "no": "II-5", "title": "Sets and Relations", "checkpoint": "ut1", "board": "SB 11", "periods": 6 },
+            { "no": "I-2", "title": "Trigonometry - I", "checkpoint": "ut1", "board": "SB 11", "periods_group": "trig" },
+            { "no": "I-3", "title": "Trigonometry - II", "checkpoint": "term1", "board": "SB 11", "periods_group": "trig" },
+            { "no": "I-4", "title": "Determinants and Matrices", "checkpoint": "term1", "board": "SB 11", "periods": 10 },
+            { "no": "II-1", "title": "Complex Numbers", "checkpoint": "term1", "board": "SB 11", "periods": 10 },
+            { "no": "II-3", "title": "Permutations and Combinations", "checkpoint": "term1", "board": "SB 11", "periods": 8 },
+            { "no": "II-6", "title": "Functions", "checkpoint": "term1", "board": "SB 11", "periods": 9 },
+            { "no": "I-5", "title": "Straight Line", "checkpoint": "ut2", "board": "SB 11", "periods": 8 },
+            { "no": "I-6", "title": "Circle", "checkpoint": "ut2", "board": "SB 11", "periods": 7 },
+            { "no": "I-7", "title": "Conic Sections", "checkpoint": "ut2", "board": "SB 11", "periods": 12 },
+            { "no": "II-7", "title": "Limits", "checkpoint": "ut2", "board": "SB 11", "periods": 7 },
+            { "no": "II-4", "title": "Methods of Induction and Binomial Theorem", "checkpoint": "ut2", "board": "SB 11", "periods": 7 },
+            { "no": "I-8", "title": "Measures of Dispersion", "checkpoint": "term_end", "board": "SB 11", "periods": 5 },
+            { "no": "I-9", "title": "Probability", "checkpoint": "term_end", "board": "SB 11", "periods": 7 },
+            { "no": "II-8", "title": "Continuity", "checkpoint": "term_end", "board": "SB 11", "periods": 5 },
+            { "no": "II-9", "title": "Differentiation", "checkpoint": "term_end", "board": "SB 11", "periods": 12 },
+            { "no": "II-11", "title": "Introduction to 3D Geometry", "checkpoint": "term_end", "board": "NCERT only", "comment": "[NCERT Only] - not in the Balbharati Std-11 course; taught from NCERT." }
+          ],
+          "periods_groups": {
+            "trig": { "periods": 24, "covers": ["I-1", "I-2", "I-3"], "note": "Planned as Trigonometry A (9) + B (9) + C (6) across Part I Ch. 1-3; not separable per chapter." }
+          }
+        },
+        {
+          "subject": "Biology",
+          "exam_subject": "Biology",
+          "chapters": [
+            { "no": "1", "title": "Living World", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "2", "title": "Systematics of Living Organisms", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "3", "title": "Kingdom Plantae", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "4", "title": "Kingdom Animalia", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "5", "title": "Cell Structure and Organization", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "6", "title": "Biomolecules", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "7", "title": "Cell Division", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "8", "title": "Plant Tissues and Anatomy", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "9", "title": "Morphology of Flowering Plants", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "10", "title": "Animal Tissue", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "11", "title": "Study of Animal Type: Cockroach", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "12", "title": "Photosynthesis", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "13", "title": "Respiration and Energy Transfer", "checkpoint": "term_end", "board": "SB 11" },
+            { "no": "14", "title": "Human Nutrition", "checkpoint": "term_end", "board": "SB 11" },
+            { "no": "15", "title": "Excretion and Osmoregulation", "checkpoint": "term_end", "board": "SB 11" },
+            { "no": "16", "title": "Skeleton and Movement", "checkpoint": "term_end", "board": "SB 11" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OTHER SUBJECTS",
+      "subjects": [
+        {
+          "subject": "Geography",
+          "exam_subject": null,
+          "chapters": [
+            { "no": "1", "title": "Earth Movements", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "2", "title": "Weathering and Mass Wasting", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "3", "title": "Agents of Erosion", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "4", "title": "Climatic Regions", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "5", "title": "Global Climate Change", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "6", "title": "Ocean Resources", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "7", "title": "Indian Ocean - Relief and Strategic Importance", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "8", "title": "Biomes", "checkpoint": "term_end", "board": "SB 11" },
+            { "no": "9", "title": "Disaster Management", "checkpoint": "term_end", "board": "SB 11" }
+          ]
+        },
+        {
+          "subject": "IT",
+          "exam_subject": null,
+          "chapters": [
+            { "no": "1", "title": "Basics of Information Technology", "checkpoint": "ut1", "board": "SB 11" },
+            { "no": "2", "title": "Introduction to DBMS", "checkpoint": "term1", "board": "SB 11" },
+            { "no": "3", "title": "Impressive Web Designing", "checkpoint": "ut2", "board": "SB 11" },
+            { "no": "4", "title": "Cyber Law", "checkpoint": "term_end", "board": "SB 11" }
+          ]
+        },
+        {
+          "subject": "CS - 1",
+          "exam_subject": null,
+          "note": "Lesson numbers are per the school exam plan; titles to be filled in from the textbook index.",
+          "chapters": [
+            { "no": "L-1", "title": null, "checkpoint": "ut1", "board": "SB 11", "titles_pending": true },
+            { "no": "L-2", "title": null, "checkpoint": "ut1", "board": "SB 11", "titles_pending": true },
+            { "no": "L-3", "title": null, "checkpoint": "term1", "board": "SB 11", "titles_pending": true },
+            { "no": "L-4", "title": null, "checkpoint": "ut2", "board": "SB 11", "titles_pending": true }
+          ]
+        },
+        {
+          "subject": "CS - 2",
+          "exam_subject": null,
+          "note": "Lesson numbers are per the school exam plan; titles to be filled in from the textbook index.",
+          "chapters": [
+            { "no": "L-2", "title": null, "checkpoint": "ut1", "board": "SB 11", "titles_pending": true },
+            { "no": "L-1", "title": null, "checkpoint": "term1", "board": "SB 11", "titles_pending": true },
+            { "no": "L-3", "title": null, "checkpoint": "ut2", "board": "SB 11", "titles_pending": true }
+          ]
+        }
+      ]
+    }
+  ]
+}
