@@ -391,6 +391,83 @@ describe("segmentQuestions", () => {
     expect(out[0].stem).toContain("\\begin{matrix}");
   });
 
+  it("keeps a stem line that merely STARTS with the word 'part'", () => {
+    // Anchoring the banner filter to line-start was not enough: ordinary prose
+    // often begins with "part" — "part (B) and part (C), respectively..." and
+    // "part of it submerged in water..." were both still being deleted. A real
+    // banner is the WHOLE line and names a roman numeral or a section letter.
+    const md = `1.  For the given circuit the input and output are shown in
+    part (B) and part (C), respectively. Identify the components used.\\
+    (a) p (b) q (c) r (d) s
+
+> **SECTION-B**
+
+2.  The cube floats with a
+    part of it submerged in water. Find the mass.`;
+    const out = segmentQuestions(md);
+    expect(out[0].stem).toContain("Identify the components used");
+    expect(out[1].stem).toContain("submerged in water");
+    expect(out[1].stem).not.toContain("SECTION-B");
+  });
+
+  it("still drops every real banner variant the corpus prints", () => {
+    // The separator has to stay loose: the papers print "SECTION-A",
+    // "SECTION: B", "Section -- B" and even a misspelled "PART- I PHYSCIS".
+    const banners = [
+      "**SECTION-A**", "**SECTION: B**", "**Section -- B**",
+      "**PART-I PHYSICS**", "**PART- I PHYSCIS**", "**PART-II CHEMISTRY**",
+    ];
+    for (const b of banners) {
+      const out = segmentQuestions(`1.  Stem text here.\n\n${b}\n\n2.  Next stem.`);
+      expect(out[0].stem, `banner leaked: ${b}`).toBe("Stem text here.");
+    }
+  });
+
+  it("keeps a stem line that merely CONTAINS 'section'/'part' (cross-section, intersection)", () => {
+    // The stray-header filter was an unanchored /PART-|SECTION/i, so any stem line
+    // mentioning a cross-section or an intersection was silently deleted — 215
+    // content lines across 77 of the 91 extracted papers, all three subjects.
+    const md = `1.  A cylindrical conductor of length 2 m and area of cross-section
+    $0.2 mm^2$ carries a current of 1.6 A.\\
+    (a) p (b) q (c) r (d) s
+
+> **SECTION-B**
+
+2.  Find the point of intersection of the line and the curve.\\
+    (a) w (b) x (c) y (d) z`;
+    const out = segmentQuestions(md);
+    expect(out[0].stem).toContain("cylindrical conductor");
+    expect(out[0].stem).toContain("cross-section");
+    expect(out[1].stem).toContain("intersection");
+    // ...while a real SECTION header on its own line is still dropped.
+    expect(out[1].stem).not.toContain("SECTION-B");
+    expect(out[0].stem).not.toContain("SECTION-B");
+  });
+
+  it("drops a bare subject-name header so it can't leak into the previous stem", () => {
+    // The last question of a subject block is followed by the NEXT subject's
+    // banner. `PART-`/`SECTION` headers were already skipped, but the 2025/2026
+    // sittings print a bare `**CHEMISTRY**` line, which the segmenter absorbed
+    // into the preceding stem (83 rows corpus-wide).
+    // A NAT last-question has no option markers to absorb the stray line, so it
+    // lands in the stem; an MCQ last-question absorbs it into option (d).
+    const md = `1.  **A numerical last question with no options**
+
+> **CHEMISTRY**
+
+26. **A chemistry MCQ -**\\
+    (a) p (b) q (c) r (d) s
+
+> **MATHEMATICS**
+
+51. **A maths MCQ -**\\
+    (a) w (b) x (c) y (d) z`;
+    const out = segmentQuestions(md, 75);
+    expect(out[0].stem).not.toContain("CHEMISTRY");
+    expect(out.find((q) => q.number === 26)!.options![3]).not.toContain("MATHEMATICS");
+    expect(out.map((q) => q.number)).toEqual([1, 26, 51]);
+  });
+
   it("segments a question whose number is alone on its line (stem after an image)", () => {
     // pandoc renders `9.  ` with the stem after an interspersed figure; trimEnd
     // strips the trailing space, so the start anchor must allow end-of-line.

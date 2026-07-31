@@ -3,6 +3,131 @@
   "pyqYear": 2026,
   "pyqNote": "2 Apr 2026 Shift 2",
   "classification": {
+    "1": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Dimensional Analysis"
+    },
+    "2": {
+      "subject": "Physics",
+      "chapter": "Laws of Motion",
+      "subtopic": "Friction"
+    },
+    "3": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Centre of Mass"
+    },
+    "4": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force on a Moving Charge"
+    },
+    "5": {
+      "subject": "Physics",
+      "chapter": "Semiconductor Electronics",
+      "subtopic": "Logic Gates"
+    },
+    "6": {
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "subtopic": "Escape Velocity"
+    },
+    "7": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Measuring Instruments"
+    },
+    "8": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Surface Tension"
+    },
+    "9": {
+      "subject": "Physics",
+      "chapter": "Kinetic Theory",
+      "subtopic": "Kinetic Theory of Gases"
+    },
+    "10": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Viscosity and Reynolds Number"
+    },
+    "11": {
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "subtopic": "Kinetic Energy"
+    },
+    "12": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Properties of EM Waves"
+    },
+    "13": {
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "subtopic": "DC Circuits"
+    },
+    "14": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Motion of Charge in Electric Field"
+    },
+    "15": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Gauss's Law and Electric Flux"
+    },
+    "16": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Total Internal Reflection"
+    },
+    "17": {
+      "subject": "Physics",
+      "chapter": "Alternating Current",
+      "subtopic": "LCR Series Circuit"
+    },
+    "18": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Self Inductance and Energy"
+    },
+    "19": {
+      "subject": "Physics",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Binding Energy"
+    },
+    "20": {
+      "subject": "Physics",
+      "chapter": "Oscillations",
+      "subtopic": "Simple Harmonic Motion"
+    },
+    "21": {
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "subtopic": "Young's Double Slit Experiment"
+    },
+    "22": {
+      "subject": "Physics",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model and Hydrogen Spectrum"
+    },
+    "23": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "First Law and Work Done"
+    },
+    "24": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Lenses and Lensmaker's Formula"
+    },
+    "25": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Moment of Inertia"
+    },
     "51": {
       "subject": "Maths",
       "chapter": "Quadratic Equations",
@@ -130,6 +255,7 @@
     }
   },
   "answerOverrides": {
+    "1": "B",
     "51": "D",
     "52": "C",
     "53": "B",
@@ -152,6 +278,7 @@
     "70": "B"
   },
   "numericOverrides": {
+    "22": 32,
     "71": 120,
     "72": 34,
     "73": 18,
@@ -185,5 +312,20 @@
     "73": "The circle on diameter \\(AB\\) has centre \\(M\\) (midpoint of \\(AB\\)) and radius \\(r=\\tfrac12|AB|=|MB|\\). Internal tangency to \\(x^2+y^2=36\\) gives \\(|OM|=6-r\\), so \\(|OM|+|MB|=6\\). With \\(M=\\big(\\tfrac{3+x}{2},\\tfrac{y}{2}\\big)\\) for \\(B=(x,y)\\): \\(\\sqrt{(x+3)^2+y^2}+\\sqrt{(x-3)^2+y^2}=12\\), an ellipse with \\(a=6,\\ c=3\\). Thus \\(e=\\tfrac12\\) and \\(72e^2=18.\\)",
     "74": "\\(16x^2-9y^2=144\\) is \\(\\tfrac{x^2}{9}-\\tfrac{y^2}{16}=1\\). Intersecting with \\(8x-3y=24\\): \\(16x^2-(8x-24)^2=144\\Rightarrow x^2-8x+15=0\\Rightarrow x=3,5\\). Area \\(A=\\int_3^5\\left[\\tfrac43\\sqrt{x^2-9}-\\tfrac{8x-24}{3}\\right]dx=\\big(\\tfrac{40}{3}-6\\ln 3\\big)-\\tfrac{16}{3}=8-6\\ln 3\\). Hence \\(3(A+6\\ln 3)=24.\\)",
     "75": "Let \\(g(x)=x^2-x-\\tfrac12\\), increasing on \\([2,4]\\) with \\(g(2)=1.5,\\ g(4)=11.5\\). Then \\(f(x)=[g(x)]\\) is discontinuous exactly where \\(g(x)\\) is an integer. The integers in \\((1.5,11.5)\\) are \\(2,3,\\ldots,11\\), i.e. \\(10\\) values, so there are \\(10\\) points of discontinuity."
+  },
+  "stemOverrides": {
+    "4": "A particle having charge \\(10^{- 9}C\\) moving in \\(x-y\\) plane in fields of \\(0.4\\widehat{j}\\text{ }N/C\\) and \\(4 \\times10^{- 3}\\widehat{k}\\text{ }T\\) experiences a force of \\((4\\widehat{i}+ 2\\widehat{j}) \\times10^{- 10}\\text{ }N\\). The velocity of the particle at that instant is \\(\\_\\_\\_\\_\\) \\(m/s\\).\\",
+    "8": "The surface tension of a soap bubble is \\(0.03\\text{ }N/m\\). The work done in increasing the diameter of bubble from 2 cm to 6 cm is \\(\\alpha\\pi\\times10^{- 4}\\text{ }J\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) . (Take \\(\\pi= 3.14\\) )\\",
+    "9": "A mixture of carbon dioxide and oxygen has volume \\(8310{\\text{ }cm}^{3}\\), temperature 300 K , pressure 100 kPa and mass 13.2 g . The number of moles of carbon dioxide and oxygen gases in the mixture respectively are \\(\\_\\_\\_\\_\\) .(Assume both carbon dioxide and oxygen gases behave like ideal gases) [ \\(R = 8.31\\text{ }J/mol.K\\) ]",
+    "10": "If an air bubble of diameter 2 mm rises steadily through a liquid of density \\(2000\\text{ }kg/m^{3}\\) at a rate of \\(0.5\\text{ }cm/s\\), then the coefficient of viscosity of liquid is \\(\\_\\_\\_\\_\\) Poise. (Take \\(g = 10\\text{ }m/s^{2}\\) )\\",
+    "15": "Two-point charges \\(8\\mu C\\) and \\(- 2\\mu C\\) are located at \\(x = 2\\text{ }cm\\) and \\(x = 4\\text{ }cm\\), respectively on the x -axis. The ratio of electric flux due to these charges through two spheres of radii 3 cm and 5 cm with their centers at the origin is \\(\\_\\_\\_\\_\\) .\\",
+    "18": "A circular current loop of radius \\(R\\) is placed inside square loop of side length \\(L\\ (L \\gg R)\\) such that they are co-planar, and their centers coincide. The permeability of free space is \\(\\mu_{0}\\). The mutual inductance between circular loop and square loop is \\(\\_\\_\\_\\_\\) .\\",
+    "20": "The equation of motion of a particle is given by \\(x = a\\sin(50t + \\pi/3)\\text{ }cm\\). The particle will come to rest at time \\(t_{1}\\) and it will have zero acceleration at time \\(t_{2}\\). The \\(t_{1}\\) and \\(t_{2}\\) respectively are \\(\\_\\_\\_\\_\\) .\\"
+  },
+  "optionOverrides": {
+    "12": {
+      "C": "\\(30\\widehat{k}\\)",
+      "D": "\\(- 600\\widehat{k}\\)"
+    }
   }
 }

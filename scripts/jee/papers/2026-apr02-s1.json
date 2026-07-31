@@ -3,6 +3,131 @@
   "pyqYear": 2026,
   "pyqNote": "2 Apr 2026 Shift 1",
   "classification": {
+    "1": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Dimensional Analysis"
+    },
+    "2": {
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "subtopic": "Errors in Measurement"
+    },
+    "3": {
+      "subject": "Physics",
+      "chapter": "Motion in a Straight Line",
+      "subtopic": "Variable Acceleration"
+    },
+    "4": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Torque"
+    },
+    "5": {
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "subtopic": "Kepler's Laws"
+    },
+    "6": {
+      "subject": "Physics",
+      "chapter": "System of Particles and Rotational Motion",
+      "subtopic": "Rotational Kinematics"
+    },
+    "7": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Capacitance and Combinations"
+    },
+    "8": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "First Law and Work Done"
+    },
+    "9": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Electric Potential and Potential Energy"
+    },
+    "10": {
+      "subject": "Physics",
+      "chapter": "Waves",
+      "subtopic": "Travelling Waves"
+    },
+    "11": {
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "subtopic": "Electric Field and Superposition"
+    },
+    "12": {
+      "subject": "Physics",
+      "chapter": "Semiconductor Electronics",
+      "subtopic": "Semiconductor Diodes"
+    },
+    "13": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Faraday's Law"
+    },
+    "14": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law"
+    },
+    "15": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Refraction through Prism"
+    },
+    "16": {
+      "subject": "Physics",
+      "chapter": "Ray Optics",
+      "subtopic": "Lenses and Lensmaker's Formula"
+    },
+    "17": {
+      "subject": "Physics",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect"
+    },
+    "18": {
+      "subject": "Physics",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Properties of EM Waves"
+    },
+    "19": {
+      "subject": "Physics",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model and Hydrogen Spectrum"
+    },
+    "20": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Surface Tension"
+    },
+    "21": {
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction"
+    },
+    "22": {
+      "subject": "Physics",
+      "chapter": "Thermodynamics",
+      "subtopic": "Thermodynamic Processes"
+    },
+    "23": {
+      "subject": "Physics",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force on a Moving Charge"
+    },
+    "24": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Solids",
+      "subtopic": "Elastic Moduli"
+    },
+    "25": {
+      "subject": "Physics",
+      "chapter": "Mechanical Properties of Fluids",
+      "subtopic": "Pressure and Pascal's Law"
+    },
     "51": {
       "subject": "Maths",
       "chapter": "Quadratic Equations",
@@ -130,6 +255,7 @@
     }
   },
   "answerOverrides": {
+    "15": "B",
     "51": "C",
     "52": "D",
     "53": "B",
@@ -185,5 +311,18 @@
     "73": "\\(ax^2+2\\sqrt2 bx+c>0\\ \\forall x\\) needs \\(a>0\\) and discriminant \\(<0\\): \\(8b^2<4ac\\Rightarrow ac>2b^2\\). Over \\(\\{1,2,3,4\\}^3\\): \\(b=1\\) gives 13 pairs, \\(b=2\\) gives 4, \\(b=3,4\\) give 0, total \\(17\\). Probability \\(=\\frac{17}{64}\\) with \\(\\gcd=1\\), so \\(m+n=81\\).",
     "74": "Exactly three axis intersections with equal intercepts \\(\\Rightarrow\\) the circle passes through the origin with centre \\((h,h)\\), so \\(r^2=2h^2\\). Distance from centre to \\(x+y=1\\) is \\(\\frac{|2h-1|}{\\sqrt2}\\); the chord \\(\\sqrt{14}\\) gives \\(\\frac72=2h^2-\\frac{(2h-1)^2}{2}\\Rightarrow 4h-1=7\\Rightarrow h=2\\). Hence \\(r^2=8\\).",
     "75": "The two integrands are inverse functions: \\(y=\\log_2(x^2+4)\\Leftrightarrow x=\\sqrt{2^y-4}\\), mapping \\((x,y)\\) from \\((0,2)\\) to \\((2\\sqrt3,4)\\). By the inverse-function relation, \\(\\alpha=\\int_0^{2\\sqrt3}y\\,dx+\\int_2^4 x\\,dy=[xy]=2\\sqrt3\\cdot4=8\\sqrt3\\). Therefore \\(\\alpha^2=192\\)."
+  },
+  "stemOverrides": {
+    "2": "The diameter of a wire measured by a screw gauge of least count 0.001 cm is 0.08 cm . The length measured by a scale of least count 0.1 cm is 150 cm . When a weight of 100 N is applied to the wire, the extension in length is 0.5 cm , measured by a micrometer of least count 0.001 cm . The error in the measured Young's modulus is \\(\\alpha \\times10^{9}\\text{ }N/m^{2}\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\)。(Ignore the contribution of the load to Young's modulus error calculation)\\",
+    "17": "For a certain metal, when monochromatic light of wavelength \\(\\lambda\\) is incident, the stopping potential for photoelectrons is \\(3V_{0}\\). When the same metal is illuminated by light of wavelength \\(2\\lambda\\), then the stopping potential becomes \\(V_{0}\\). The threshold wavelength for photoelectric emission for the given metal is \\(\\alpha\\lambda\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) .\\",
+    "20": "A liquid drop of diameter 2 mm breaks into 512 droplets. The change in surface energy is \\(\\alpha \\times10^{- 6}\\text{ }J\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) . (Take surface tension of liquid \\(= 0.08\\text{ }N/m\\) )\\"
+  },
+  "optionOverrides": {
+    "12": {
+      "A": "Circuit (A)",
+      "B": "Circuit (B)",
+      "C": "Circuit (C)",
+      "D": "Circuit (D)"
+    }
   }
 }

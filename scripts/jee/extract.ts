@@ -84,8 +84,16 @@ function main() {
   if (!questionDocx || !existsSync(questionDocx)) {
     throw new Error(`question docx not found: ${questionDocx}`);
   }
-  const solnDocx = join(dirname(questionDocx), basename(questionDocx).replace(/\.docx$/i, " soln.docx"));
-  if (!existsSync(solnDocx)) throw new Error(`solution docx not found: ${solnDocx}`);
+  // The sibling solution/answer-key doc. 2021-2025 name it "<paper> soln.docx";
+  // the 2026 sittings name it "<paper>_ak.docx" (and vary the case), so try each
+  // known suffix rather than making every 2026 paper a hand-staged rename.
+  const solnCandidates = [" soln.docx", "_ak.docx", "_AK.docx", " soln.DOCX"].map((suffix) =>
+    join(dirname(questionDocx), basename(questionDocx).replace(/\.docx$/i, suffix)),
+  );
+  const solnDocx = solnCandidates.find((p) => existsSync(p));
+  if (!solnDocx) {
+    throw new Error(`solution docx not found; tried:\n  ${solnCandidates.join("\n  ")}`);
+  }
 
   const paperId = requirePaperId(process.argv, 3, 'extract.ts "<Paper N.docx>" <paperId>');
   // Non-standard "compilation" papers (e.g. the 2021 Paper 11-16 topic sets) don't
@@ -135,6 +143,20 @@ function main() {
   const solutionAt = (n: number): string | undefined => (positional ? orderedSolutions[n - 1] : solutions.get(n));
   if (positional) {
     console.log(`[keys] POSITIONAL mapping (soln numbering broken/all-1.): ${orderedTokens.length} ordered blocks for ${questions.length} questions`);
+    // Positional mapping is only sound when the blocks line up 1:1 with the
+    // questions. If the counts differ, some block is missing or doubled, every
+    // key after that point is SHIFTED, and the rows still come out looking
+    // "clean" — a silently wrong key, which is worse than no key at all.
+    // Refuse rather than emit them; re-run with --by-number to keep only the
+    // blocks that carry a trustworthy printed number, or --allow-shift if you
+    // have independently established the offset.
+    if (orderedTokens.length !== questions.length && !process.argv.includes("--allow-shift")) {
+      throw new Error(
+        `positional key mapping is MISALIGNED: ${orderedTokens.length} ordered solution blocks vs ${questions.length} questions.\n` +
+          `Every key after the first missing/extra block would be shifted and silently wrong.\n` +
+          `Re-run with --by-number (keeps only reliably-numbered blocks) or --allow-shift if the offset is known.`,
+      );
+    }
   }
 
   // A duplicate solution number means a mis-numbered block silently overwrote an

@@ -39,12 +39,25 @@ async function main() {
   const paperId = requirePaperId(process.argv, 2, "resync.ts <paperId> [--apply]");
   loadEnv();
   const paper = loadPaper(paperId);
-  const nums = new Set<string>([
+  let nums = new Set<string>([
     ...Object.keys(paper.stemOverrides ?? {}),
     ...Object.keys(paper.optionOverrides ?? {}),
     ...Object.keys(paper.answerOverrides ?? {}),
     ...Object.keys(paper.numericOverrides ?? {}),
   ]);
+  // A whole-paper resync rewrites every overridden row from its override text,
+  // which REVERTS any post-commit `cleanup-latex` pass on those rows. When
+  // repairing a specific question, scope the write so untouched rows stay as
+  // they were shipped.
+  const only = process.argv.find((a) => a.startsWith("--only="));
+  if (only) {
+    const wanted = new Set(only.slice("--only=".length).split(",").filter(Boolean));
+    const missing = [...wanted].filter((n) => !nums.has(n));
+    if (missing.length) {
+      throw new Error(`--only names questions with no override in ${paperId}: ${missing.join(", ")}`);
+    }
+    nums = new Set([...nums].filter((n) => wanted.has(n)));
+  }
   if (!nums.size) {
     console.log("no overrides in this paper — nothing to resync.");
     return;
