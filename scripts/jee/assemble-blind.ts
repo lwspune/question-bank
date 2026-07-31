@@ -54,7 +54,18 @@ function main() {
     const k = String(r.questionNumber);
     const s = sols[k];
     if (!s || s.skip || s.answer === undefined || s.answer === null) { dropped.push(k + (s?.skip ? "(skip)" : "(no-answer)")); continue; }
-    const hasOpts = Boolean(r.options && r.options.length >= 4);
+    // A row whose options were absorbed into the stem parses with none. commit.ts
+    // can SYNTHESIZE the option set from optionOverrides when all four labels are
+    // supplied, so such a row is still a shippable MCQ — treat it as one rather
+    // than dropping work the solver already did.
+    const fix = (s as { optionFix?: unknown }).optionFix;
+    const suppliedLabels = new Set(
+      Array.isArray(fix)
+        ? fix.map((o: { label?: string }) => String(o?.label ?? ""))
+        : Object.keys((fix ?? {}) as Record<string, unknown>),
+    );
+    const canSynthesize = ["A", "B", "C", "D"].every((l) => suppliedLabels.has(l));
+    const hasOpts = Boolean(r.options && r.options.length >= 4) || canSynthesize;
     const ans = s.answer;
     if (hasOpts && typeof ans === "string" && LETTER.test(ans.trim())) {
       answerOverrides[k] = ans.trim();
