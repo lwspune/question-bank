@@ -45,7 +45,7 @@ type Sol = {
  * intentional one. Refusing costs a one-line manual fix; guessing costs
  * permanent taxonomy damage.
  */
-export function subtopicNameFrom(gap: string): string | null {
+export function parseGap(gap: string): { chapter?: string; subtopic: string } | null {
   const usable = (s: string) =>
     s.length > 0 &&
     s.length <= 70 &&
@@ -53,25 +53,35 @@ export function subtopicNameFrom(gap: string): string | null {
     !/\bproposed\b/i.test(s) &&
     !/\bno subtopic\b/i.test(s);
 
-  let s = gap.trim();
-  if (usable(s)) return s;
+  const raw = gap.trim();
+  if (usable(raw)) return { subtopic: raw };
 
   // Agents commonly write "[Chapter ::] Name - why it is needed".
   // Split on " :: " FIRST: several chapter names contain " - " themselves
   // ("Organic Chemistry - Some Basic Principles and Techniques"), so cutting on
   // the hyphen first would truncate mid-chapter and yield a bogus name.
-  const parts = s.split(" :: ");
-  s = parts[parts.length - 1].trim();
+  const parts = raw.split(" :: ");
+  let s = parts[parts.length - 1].trim();
+  // A named chapter is DELIBERATE — the agent is saying the topic belongs
+  // elsewhere than the placeholder it was forced to use. Dropping it files the
+  // new subtopic under the wrong chapter (this put "Electronic Effects and
+  // Reaction Intermediates" under Hydrocarbons instead of Organic Basics).
+  const chapter = parts.length > 1 ? parts[parts.length - 2].trim() : undefined;
 
   // Then drop the trailing justification at the first " - ".
   const dash = s.indexOf(" - ");
   if (dash > 0) s = s.slice(0, dash).trim();
-  if (usable(s)) return s;
+  if (usable(s)) return { chapter, subtopic: s };
 
   // Last resort: drop a trailing parenthetical gloss, which is commentary
   // rather than part of the name.
   const paren = s.replace(/\s*\([^()]*\)\s*$/, "").trim();
-  return usable(paren) ? paren : null;
+  return usable(paren) ? { chapter, subtopic: paren } : null;
+}
+
+/** Back-compat shim: the name alone. */
+export function subtopicNameFrom(gap: string): string | null {
+  return parseGap(gap)?.subtopic ?? null;
 }
 
 function main() {
@@ -89,9 +99,17 @@ function main() {
   const skips: string[] = [];
 
   const rejected: string[] = [];
+  const moved: string[] = [];
   for (const [qn, s] of Object.entries(sols)) {
     if (s.taxonomyGap && s.taxonomyGap !== s.subtopic) {
-      const name = subtopicNameFrom(s.taxonomyGap);
+      const parsed = parseGap(s.taxonomyGap);
+      const name = parsed?.subtopic ?? null;
+      // If the agent named a DIFFERENT chapter, honour it — it is saying the
+      // topic belongs elsewhere than the placeholder it was forced to use.
+      if (parsed?.chapter && parsed.chapter !== s.chapter) {
+        moved.push(`Q${qn}  chapter  ${s.chapter}  ->  ${parsed.chapter}`);
+        s.chapter = parsed.chapter;
+      }
       if (!name) {
         // Some agents write PROSE here ("Chapter X has no subtopic for ...
         // Proposed: '...'"). Promoting that verbatim would create a subtopic
@@ -111,6 +129,11 @@ function main() {
   console.log(`${paperId} [${subject}]: ${Object.keys(sols).length} rows`);
   console.log(`\n  taxonomy gaps promoted: ${promoted.length}`);
   promoted.forEach((p) => console.log(`    ${p}`));
+  if (moved.length) {
+    console.log(`
+  chapter corrections (agent named a different chapter): ${moved.length}`);
+    moved.forEach((m) => console.log(`    ${m}`));
+  }
   if (rejected.length) {
     console.log(`\n  !! REJECTED taxonomyGap (not a usable name — fix by hand): ${rejected.length}`);
     rejected.forEach((r) => console.log(`    ${r}`));
