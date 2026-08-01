@@ -205,6 +205,192 @@ export const CHAPTERS: Record<string, Chapter> = {
       "India's Foreign Policy — Phases and Nuclear Policy",
     ],
   },
+
+  // ── History ch.4-10 ────────────────────────────────────────────────────────
+  // Every range below was verified by checking that the page after the range is
+  // the NEXT chapter's opener. Richer exercises than ch.1-3: most carry a
+  // "complete the table/chart/timeline" activity (→ GFM pipe-table in the stem,
+  // separator row mandatory) alongside the usual MCQ / short-note / give-reasons
+  // blocks. "Projects" and inline activity boxes stay un-ingested as before.
+
+  "economic-development-9": {
+    id: "economic-development-9",
+    chapterName: "Economic Development",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Economic_Development.pdf",
+    pdf: HIST,
+    pages: range(24, 31), // printed pp 15-22; Exercises on p31
+    note: "Maharashtra State Board (Class 9) — Economic Development (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Mixed Economy and the Sectors",
+      "The Five Year Plans",
+      "Nationalisation of Banks and the 20-Point Programme",
+      "Industrial Workers and Their Movements",
+    ],
+  },
+
+  "education-9": {
+    id: "education-9",
+    chapterName: "Education",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Education.pdf",
+    pdf: HIST,
+    pages: range(32, 39), // printed pp 23-30; Exercises on p39
+    note: "Maharashtra State Board (Class 9) — Education (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Primary and Secondary Education",
+      "Commissions and Educational Institutions",
+      "Higher, Technical and Professional Education",
+      "Science, Agriculture and Medical Research",
+    ],
+  },
+
+  "empowerment-9": {
+    id: "empowerment-9",
+    chapterName: "Empowerment of Women and other Weaker Sections",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Empowerment_of_Women.pdf",
+    pdf: HIST,
+    pages: range(40, 45), // printed pp 31-36; Exercises on p45
+    note: "Maharashtra State Board (Class 9) — Empowerment of Women and other Weaker Sections (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Women's Movements and Participation",
+      "Laws for Women",
+      "Weaker Sections and Minorities",
+      "Human Rights",
+    ],
+  },
+
+  "science-technology-9": {
+    id: "science-technology-9",
+    chapterName: "Science and Technology",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Science_and_Technology.pdf",
+    pdf: HIST,
+    pages: range(46, 51), // printed pp 37-42; Exercises on p51
+    note: "Maharashtra State Board (Class 9) — Science and Technology (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Atomic Energy and Nuclear Tests",
+      "Missile Development",
+      "Space Research and Satellites",
+      "Communication and Transport",
+    ],
+  },
+
+  "industry-trade-9": {
+    id: "industry-trade-9",
+    chapterName: "Industry and Trade",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Industry_and_Trade.pdf",
+    pdf: HIST,
+    pages: range(52, 55), // printed pp 43-46; Exercises on p55
+    note: "Maharashtra State Board (Class 9) — Industry and Trade (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Major Industries of India",
+      "Industrial Policy and Institutions",
+      "Natural Resources and Allied Sectors",
+      "Trade — Internal and Foreign",
+    ],
+  },
+
+  "changing-life-1-9": {
+    id: "changing-life-1-9",
+    chapterName: "Changing Life : 1",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Changing_Life_1.pdf",
+    pdf: HIST,
+    pages: range(56, 60), // printed pp 47-51; Exercises on p60
+    note: "Maharashtra State Board (Class 9) — Changing Life : 1 (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Family and Social Change",
+      "Social Welfare and Weaker Sections",
+      "Public Health and Medical Advances",
+      "Rural Development and Urbanisation",
+    ],
+  },
+
+  "changing-life-2-9": {
+    id: "changing-life-2-9",
+    chapterName: "Changing Life : 2",
+    subjectName: "History",
+    sourceFile: "StateBoard_09_History__Changing_Life_2.pdf",
+    pdf: HIST,
+    pages: range(61, 63), // printed pp 52-54; Exercises on p63
+    note: "Maharashtra State Board (Class 9) — Changing Life : 2 (Balbharati textbook, History and Political Science)",
+    // Only 3 subtopics: the chapter is 3pp / 8 questions, and Theatre-Films-and-
+    // Television is one continuous media narrative in the book.
+    subtopics: [
+      "Language",
+      "Sports",
+      "Media — Newspapers, Films and Television",
+    ],
+  },
+
+  // ── Political Science ch.3-6 ───────────────────────────────────────────────
+
+  "defence-system-9": {
+    id: "defence-system-9",
+    chapterName: "India's Defence System",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_09_PolSci__Indias_Defence_System.pdf",
+    pdf: HIST,
+    pages: range(81, 85), // printed pp 72-76; Exercises on p85
+    note: "Maharashtra State Board (Class 9) — India's Defence System (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "National Security and Its Safeguards",
+      "The Armed Forces",
+      "Paramilitary and Auxiliary Forces",
+      "Human Security and Challenges",
+    ],
+  },
+
+  "united-nations-9": {
+    id: "united-nations-9",
+    chapterName: "The United Nations",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_09_PolSci__The_United_Nations.pdf",
+    pdf: HIST,
+    pages: range(86, 92), // printed pp 77-83; Exercises span p91-92
+    note: "Maharashtra State Board (Class 9) — The United Nations (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Establishment, Objectives and Principles",
+      "Organs of the United Nations",
+      "Peacekeeping and Development Goals",
+      "India and the United Nations",
+    ],
+  },
+
+  "india-other-countries-9": {
+    id: "india-other-countries-9",
+    chapterName: "India and Other Countries",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_09_PolSci__India_and_Other_Countries.pdf",
+    pdf: HIST,
+    pages: range(93, 99), // printed pp 84-90; Exercises on p99
+    note: "Maharashtra State Board (Class 9) — India and Other Countries (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "India and Pakistan",
+      "India and China",
+      "India and Her Other Neighbours",
+      "India and the Wider World",
+    ],
+  },
+
+  "international-problems-9": {
+    id: "international-problems-9",
+    chapterName: "International Problems",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_09_PolSci__International_Problems.pdf",
+    pdf: HIST,
+    pages: range(100, 105), // printed pp 91-96; Exercises on p105
+    note: "Maharashtra State Board (Class 9) — International Problems (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Human Rights",
+      "Environmental Degradation and Conservation",
+      "Terrorism",
+      "Refugees",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
