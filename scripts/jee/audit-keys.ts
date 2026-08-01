@@ -17,6 +17,20 @@
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { auditRow } from "../practice/audit-keys";
+
+/**
+ * Rows whose duplicate options are FAITHFUL to the source docx — the printed
+ * paper itself repeats an option. Verified by pandoc-ing the source; the answer
+ * is present and correctly keyed, so inventing a distractor to break the tie
+ * would be fabrication. Labelled rather than silenced, so the count can reach a
+ * meaningful zero without hiding a real extraction bug.
+ */
+const SOURCE_DUPS: { file: string; qnum: string; note: string }[] = [
+  { file: "JEE_2022_Jun27.docx", qnum: "71", note: "options (c) and (d) both print 2 - log_2 3" },
+  { file: "JEE_2024_Apr08.docx", qnum: "152", note: "options (b) and (c) both print 25" },
+];
+const isSourceDup = (file: string | null, qnum: string) =>
+  SOURCE_DUPS.some((d) => d.file === file && d.qnum === qnum);
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 const JEE_EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
@@ -32,7 +46,7 @@ async function main() {
   const flags: { src: string; qnum: string; flag: string; vis: string }[] = [];
   for (;;) {
     let q = db.from("questions")
-      .select("question_number, source_file, visibility, solution, subjects!inner(name), options(label, text, is_correct)")
+      .select("question_number, source_file, visibility, solution, subjects!inner(name), options(label, text, is_correct, image_url)")
       .eq("exam_id", JEE_EXAM_ID)
       .eq("subjects.name", subject)
       .eq("question_kind", "pyq")
@@ -45,7 +59,8 @@ async function main() {
     if (!data || data.length === 0) break;
     for (const row of data as any[]) {
       scanned++;
-      const flag = auditRow(row.options ?? [], row.solution);
+      const raw = auditRow(row.options ?? [], row.solution);
+      const flag = raw === "DUP_OPT" && isSourceDup(row.source_file, row.question_number) ? "SOURCE_DUP" : raw;
       if (flag) flags.push({ src: row.source_file ?? "?", qnum: row.question_number, flag, vis: row.visibility });
     }
     if (data.length < PAGE) break;
