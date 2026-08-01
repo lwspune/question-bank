@@ -33,6 +33,32 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-01
+
+### Make the `/questions` prerender resilient at the source, not just via a retry
+
+`next build` began failing while prerendering the 317 `/questions/<exam>/<subject>/<chapter>` landing pages with `canceling statement due to statement timeout` — a *different* handful of pages on each run, spanning three exams. `EXPLAIN (ANALYZE)` showed the chapter query runs in **13 ms**, so this is not a slow plan: Next prerenders those pages concurrently and this session's ~1,600 new rows tipped the burst past Postgres' `statement_timeout`. Shipped mitigation is a bounded retry on SQLSTATE 57014 in `queryQuestions` (2 attempts, short backoff), which took the build from failing twice consecutively to clean.
+
+**Why:** the retry treats the symptom. As the bank keeps growing (Chemistry, more exams), the burst gets wider and two retries will eventually not be enough — and this build runs on **Vercel deploys**, so a failure there blocks the site from updating, not just a local gate. It also silently lengthens every build that hits it.
+
+**How to apply:** pick one of — (a) cap static-generation concurrency in `next.config.js` (`experimental.cpus` / `workerThreads:false`) so the prerender stops stampeding the DB, measuring the build-time cost; (b) raise `statement_timeout` for the build's role only; or (c) reduce the per-page cost by serving the landing pages from a cached aggregate rather than a live `questions` query. Option (a) is the smallest change; (c) is the durable one. Keep the retry regardless — it is correct defence-in-depth.
+
+### Give `audit:keys` a picture-option exemption so `DUP_OPT` stays a real signal
+
+`npx tsx scripts/jee/audit-keys.ts Physics` now reports **49 `DUP_OPT`** flags, every one a false positive: they are picture-option rows whose four option *texts* are empty by construction (the options are attached images), so the probe sees four identical blank strings and calls them duplicates. Verified all four option images are attached on every flagged row, i.e. the questions render correctly.
+
+**Why:** 49 known-benign flags is enough noise to hide a real duplicate-option defect in the same subject — precisely the failure the probe exists to catch. The signal-to-noise will get worse when Chemistry (whose organic-structure questions are heavily picture-option) is ingested.
+
+**How to apply:** in `auditRow`, skip the duplicate-option check when every option has empty/whitespace text AND `image_url IS NOT NULL` — i.e. classify the row as `IMAGE_OPTIONS` rather than `DUP_OPT`, reported separately (or not at all). Keep flagging the genuinely broken case: blank option text with **no** image, which is the real "unusable row" defect that the separate legacy-2021 restore item covers.
+
+### Re-check the 6 remaining render-corruption rows and 46 dangling artifacts flagged by `validate-db`
+
+`npx tsx scripts/jee/validate-db.ts` now reports **KaTeX-broken: 0** of 7,436 (down from 47 this session) and render-corruption 221 → **6**, but leaves `dangling artifacts: 46` and `incomplete? 31 (soft)` unexamined. Those two counters were never triaged in this session — they predate it and were out of scope for the Physics ingest.
+
+**Why:** the KaTeX and render-corruption counters are now clean enough that these are the only remaining automated signals on JEE content quality; leaving them permanently un-triaged means the numbers stop being watched and a genuine regression hides in a stable-looking count.
+
+**How to apply:** dump the 46 dangling-artifact rows and the 31 soft "incomplete?" rows with their `source_file`/`question_number`, classify each into benign-by-construction vs real defect (the same triage that turned 49 `DUP_OPT` into a known-benign class), then either fix the real ones or teach the probe to exclude the benign shape so both counters can be driven to a meaningful zero.
+
 ## 2026-07-29
 
 ### `/browse` is still uncached — decide whether to give its common filters real paths
@@ -248,7 +274,9 @@ The `scripts/jee/cleanup-latex.ts` de-glue step (which inserts a backslash befor
 
 **How to apply:** in the de-glue regex, require the function-name match to NOT be immediately followed by a lowercase letter that continues a word (negative lookahead `(?![a-z])`), OR skip de-gluing entirely inside `\text{…}`/`\operatorname{…}` spans (the function names there are always literal text). Add a regression test with `\text{singular}` / `\text{cosine rule}`. Apply the same fix to the MHT-CET `cleanupArtifacts`.
 
-### JEE Mains Physics + Chemistry ingestion (the only remaining JEE work)
+### ~~JEE Mains Physics + Chemistry ingestion (the only remaining JEE work)~~ — **PHYSICS DONE 2026-08-01; Chemistry still open**
+
+**PHYSICS DONE 2026-08-01** (merges `5042d67` · `71c741a` · `3e61121`): **3,482 q PUBLIC / 7 PRIVATE across 88 papers**, every sitting on disk, now level with Maths. Key discovery — Physics needed **no re-extraction**: extraction is subject-agnostic, so the Maths runs had already produced every Physics row in `out/*.records.json` and only the DB commit filtered by subject (`dump-maths.ts` → `dump-subject.ts --subject=Physics`). Both lanes closed; ~13 wrong source keys caught, the sharpest being 2023-feb01's entire shift-2 key block displaced by +2. `audit:keys` = 0 SOLN-vs-KEY across 2,559 Physics MCQs. **Chemistry remains open** (259 q, legacy-2021 only) — same pipeline with `--subject=Chemistry`, but its structure/reaction figures need the figure-attach path, and the ~47 legacy-2021 blank-option rows below overlap with it.
 
 JEE Mains **Maths** is now complete across every sitting on disk 2021-2025 (3,715 q PUBLIC). Physics + Chemistry were deliberately skipped under the Maths-only strategy — but the same ~40 sittings' source DOCX carry full Physics (Q1-30/…) + Chemistry (Q31-60/…) blocks, and the exact two-lane pipeline (`dump-maths` → SAFE/BLIND agents → `assemble-*` → commit/attach/cleanup/scan-flip) would ingest them with only a subject-flag change. Logged as visible scope, not a bug.
 
