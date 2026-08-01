@@ -51,13 +51,13 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 **How to apply:** in `auditRow`, skip the duplicate-option check when every option has empty/whitespace text AND `image_url IS NOT NULL` — i.e. classify the row as `IMAGE_OPTIONS` rather than `DUP_OPT`, reported separately (or not at all). Keep flagging the genuinely broken case: blank option text with **no** image, which is the real "unusable row" defect that the separate legacy-2021 restore item covers.
 
-### Re-check the 6 remaining render-corruption rows and 46 dangling artifacts flagged by `validate-db`
+### Triage the residual `validate-db` counters — 37 dangling artifacts, 31 soft "incomplete?", 6 render-corruption
 
-`npx tsx scripts/jee/validate-db.ts` now reports **KaTeX-broken: 0** of 7,436 (down from 47 this session) and render-corruption 221 → **6**, but leaves `dangling artifacts: 46` and `incomplete? 31 (soft)` unexamined. Those two counters were never triaged in this session — they predate it and were out of scope for the Physics ingest.
+**The urgent half of this was DONE 2026-08-01** (`6cee84b`): triaging the then-46 `dangling artifacts` showed 8 of them were NOT hygiene but 4 PUBLIC rows whose options had been shredded by the option splitter — a `\[…\]` block straddling options B..D, leaving the middle options with no delimiters at all, and in two rows **the unreadable option was the keyed answer**. Fixed and pushed; the counter is now 37. What remains is genuinely low-priority.
 
-**Why:** the KaTeX and render-corruption counters are now clean enough that these are the only remaining automated signals on JEE content quality; leaving them permanently un-triaged means the numbers stop being watched and a genuine regression hides in a stable-looking count.
+**Why:** the residue is ~36 cosmetic trailing backslashes plus `JEE_2021_Paper12` Q54 (truncated in source, already deliberately PRIVATE), and 31 soft "visual-ref stem but no image" flags where the probe cannot distinguish a genuinely missing figure from a stem that merely says "shown". Left permanently un-triaged, both counters stop being watched and a real regression hides in a stable-looking number.
 
-**How to apply:** dump the 46 dangling-artifact rows and the 31 soft "incomplete?" rows with their `source_file`/`question_number`, classify each into benign-by-construction vs real defect (the same triage that turned 49 `DUP_OPT` into a known-benign class), then either fix the real ones or teach the probe to exclude the benign shape so both counters can be driven to a meaningful zero.
+**How to apply:** for the trailing backslashes, extend the existing zone-repair sweep to strip a field-final `\` outside math (safe — it renders as a stray character). For the 31 `incomplete?`, dump them with `source_file`/`question_number` and split into (a) figure genuinely missing → recover from the source `media/` via `attach-images.ts`, (b) stem is self-contained despite the wording → teach `VISUAL_REF` to exclude the shape, so the counter can reach a meaningful zero. **Lesson from the completed half: do not assume a counter is benign because it is stable — sample it before deciding.**
 
 ## 2026-07-29
 
