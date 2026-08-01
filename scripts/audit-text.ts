@@ -6,7 +6,7 @@
  *
  * Read-only triage, like `audit:keys` / `audit:omml`. Run after an ingest.
  *
- * Two classes, both of which silently degrade rendering rather than erroring:
+ * Every class here silently degrades rendering rather than erroring:
  *
  * 1. LITERAL_NEWLINE — a two-character `\n` (backslash + n) where a real line
  *    break belongs. The render layer can't tell it from prose, so a GFM
@@ -23,16 +23,24 @@
  *    renders as pipe soup. Deliberately uses the REAL parser rather than a
  *    regex, so the probe can never disagree with the renderer.
  *
- * Both detectors reuse production helpers, so a false positive here is a real
+ * 5. PANDOC_ARTIFACT — a pandoc extraction leftover that reaches the reader as
+ *    literal markup: a hard-line-break backslash stranded in prose
+ *    ("stability.\ (I) (II)"), a CJK full stop substituted for a period, or
+ *    escaped punctuation (`\>`, `\"`). Six of the eight /dashboard/reports open
+ *    on 2026-08-01 were this class, and the bank-wide sweep behind it repaired
+ *    758 rows. Repairable in place — see scripts/audit-pandoc-artifacts.ts.
+ *
+ * Every detector reuses production helpers, so a false positive here is a real
  * disagreement worth investigating, not a probe artefact. Math zones are masked
- * by `normalizeNewlines`, so `\neq` / `\nabla` / `\nu` and matrix `\\` row
- * separators are never flagged.
+ * by `normalizeNewlines` / `maskMathZones`, so `\neq` / `\nabla` / `\nu` and
+ * matrix `\\` row separators are never flagged.
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeNewlines } from "../src/lib/text/normalizeNewlines";
 import { parseTableBlocks } from "../src/components/math/parseTableBlocks";
 import { hasDroppedSymbol, leakedOptionValues } from "./lib/textProbes";
+import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
 
 const FIELDS = ["text", "context", "solution"] as const;
 type Field = (typeof FIELDS)[number];
@@ -54,7 +62,7 @@ type Finding = {
   qnum: string;
   visibility: string;
   field: Field;
-  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR" | "DROPPED_SYMBOL" | "OPTION_LEAK";
+  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR" | "DROPPED_SYMBOL" | "OPTION_LEAK" | "PANDOC_ARTIFACT";
   sample: string;
 };
 
@@ -100,6 +108,16 @@ function inspect(r: Row): Finding[] {
         ...base,
         kind: "TABLE_NO_SEPARATOR",
         sample: value.slice(Math.max(0, at - 20), at + 90).replace(/\n/g, "⏎"),
+      });
+    }
+    if (pandocArtifactCount(value) > 0) {
+      const fixed = stripPandocArtifacts(value);
+      let at = 0;
+      while (at < value.length && value[at] === fixed[at]) at++;
+      out.push({
+        ...base,
+        kind: "PANDOC_ARTIFACT",
+        sample: value.slice(Math.max(0, at - 40), at + 45).replace(/\n/g, "⏎"),
       });
     }
   }
@@ -158,7 +176,7 @@ async function main() {
   const byKind = (k: Finding["kind"]) => findings.filter((f) => f.kind === k);
   console.log(`audit:text — scanned ${scanned} question(s)${filter ? ` matching "${filter}"` : ""}\n`);
 
-  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK"] as const) {
+  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK", "PANDOC_ARTIFACT"] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);
     for (const f of hits.slice(0, 40)) {
