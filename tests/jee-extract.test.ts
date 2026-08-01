@@ -11,13 +11,14 @@ import {
   solnNumberingIsBroken,
   matchValueToOption,
   gridTableToPipe,
+  unwrapPhantom,
   splitSolutions,
   parseOptionsFromText,
   segmentQuestions,
   dropProseHardBreaks,
 } from "../scripts/jee/lib";
 import { isCommittable } from "../scripts/jee/config";
-import { subtopicNameFrom } from "../scripts/jee/promote-gaps";
+import { subtopicNameFrom, parseGap } from "../scripts/jee/promote-gaps";
 import {
   normalizeMathFunctions,
   keepForSubject,
@@ -754,5 +755,65 @@ describe("subtopicNameFrom — recovering a name from the agent's usual shapes",
 
   it("still refuses when no name can be isolated", () => {
     expect(subtopicNameFrom("there is really no good fit here. Consider something else entirely.")).toBeNull();
+  });
+});
+
+describe("parseGap — a named chapter is deliberate and must survive", () => {
+  it("returns the chapter alongside the subtopic", () => {
+    // Regression: dropping the chapter filed "Electronic Effects and Reaction
+    // Intermediates" under Hydrocarbons (the placeholder the agent was forced
+    // to use) instead of Organic Basics, which is what it actually named.
+    expect(
+      parseGap("Organic Chemistry - Some Basic Principles and Techniques :: Electronic Effects and Reaction Intermediates - no such subtopic exists"),
+    ).toEqual({
+      chapter: "Organic Chemistry - Some Basic Principles and Techniques",
+      subtopic: "Electronic Effects and Reaction Intermediates",
+    });
+  });
+
+  it("leaves chapter undefined for a bare name", () => {
+    expect(parseGap("Nucleic Acids")).toEqual({ subtopic: "Nucleic Acids" });
+  });
+
+  it("keeps the chapter even when a parenthetical gloss has to be trimmed", () => {
+    const r = parseGap(
+      "Chemical Kinetics :: Rate of Reaction and Rate Expressions (stoichiometric rate relations, read from a plot) - neither subtopic covers it",
+    );
+    expect(r?.chapter).toBe("Chemical Kinetics");
+    expect(r?.subtopic).toBe("Rate of Reaction and Rate Expressions");
+  });
+});
+
+describe("unwrapPhantom — reveal reagents pandoc buried in a phantom", () => {
+  it("leaves text with no phantom untouched", () => {
+    const s = "Plain \\(x = 2\\) stem.";
+    expect(unwrapPhantom(s)).toBe(s);
+  });
+
+  it("unwraps a simple payload", () => {
+    expect(unwrapPhantom("A \\xrightarrow{\\phantom{H^{+}}} B")).toBe("A \\xrightarrow{H^{+}} B");
+  });
+
+  it("balances NESTED braces in the payload", () => {
+    // The corpus wraps things like \text{~Oxidation~} and LiAlH_{4}; a regex
+    // that stops at the first inner } would corrupt the stem.
+    expect(unwrapPhantom("X \\phantom{\\text{~Oxidation~}} Y")).toBe("X \\text{~Oxidation~} Y");
+    expect(unwrapPhantom("X \\phantom{LiAlH_{4}} Y")).toBe("X LiAlH_{4} Y");
+  });
+
+  it("unwraps every occurrence, not just the first", () => {
+    expect(unwrapPhantom("\\phantom{673\\text{ }K} then \\phantom{h\\nu}")).toBe(
+      "673\\text{ }K then h\\nu",
+    );
+  });
+
+  it("drops a genuinely EMPTY phantom (that one really is spacing)", () => {
+    expect(unwrapPhantom("a\\phantom{}b")).toBe("ab");
+    expect(unwrapPhantom("a\\phantom{   }b")).toBe("ab");
+  });
+
+  it("is idempotent", () => {
+    const once = unwrapPhantom("A \\xrightarrow{\\phantom{LiAlH_{4}}} B");
+    expect(unwrapPhantom(once)).toBe(once);
   });
 });
