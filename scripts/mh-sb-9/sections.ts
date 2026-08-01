@@ -85,6 +85,11 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   "international-problems-9": [
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
   ],
+  // Geography — the book heads its block "Exercise" (singular), but the outline
+  // shape is identical: one block per chapter, no solved-example bucket.
+  "endogenetic-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

@@ -51,6 +51,15 @@ void PART2; // referenced by later (Geometry) chapters as they are added
 // NOT the pre-split `9th_Chapters/` folder names, which paraphrase (that folder's
 // splits also drop the odd opener page, so we render from the whole book).
 const HIST = join(SOURCE_ROOT, "9th_Hist_SB.pdf"); // History + Political Science
+// Geography — 12 chapters over four areas (Practical / Physical / General / Human),
+// same +9 page offset, and like the History book it ships NO answers section.
+// Structurally it is the HARDEST of the three: only 5 of its ~217 questions are
+// four-option MCQs (Ch.7), two more "tick the correct option" blocks print just
+// THREE options (Ch.2, Ch.6) and so ship as free-response with the options in the
+// stem, and its figures are LOAD-BEARING — several questions ("study the map and
+// answer", "identify the landforms in the diagrams") are unanswerable without the
+// printed graphic, unlike the humanities book where one figure was optional colour.
+const GEOG = join(SOURCE_ROOT, "9th_Geog_SB.pdf"); // Geography
 
 export type Chapter = {
   id: string; // slug → data/<id>.* + source_file
@@ -389,6 +398,33 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Environmental Degradation and Conservation",
       "Terrorism",
       "Refugees",
+    ],
+  },
+
+  // ── Geography (9th_Geog_SB.pdf) ─────────────────────────────────────────────
+  // PILOT chapter, ingested first so the Geography question shapes could be judged
+  // before committing the other 11. Chapter ranges for the full book, all verified
+  // by checking the page after each range is the next chapter's opener (printed →
+  // 0-based PDF = +9): 1 Distributional Maps 10-17 · 2 Endogenetic 18-31 ·
+  // 3 Exogenetic-1 32-38 · 4 Exogenetic-2 39-49 · 5 Precipitation 50-58 ·
+  // 6 Sea Water 59-65 · 7 IDL 66-72 · 8 Economics 73-75 · 9 Trade 76-83 ·
+  // 10 Urbanisation 84-90 · 11 Transport 91-96 · 12 Tourism 97-105.
+  "endogenetic-9": {
+    id: "endogenetic-9",
+    chapterName: "Endogenetic Movements",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Endogenetic_Movements.pdf",
+    pdf: GEOG,
+    pages: range(18, 31), // printed pp 9-22; Exercise on p29
+    note: "Maharashtra State Board (Class 9) — Endogenetic Movements (Balbharati textbook, Geography)",
+    // The book's own section arc: classification → slow (orogenic → folds/blocks/
+    // rift valleys; epeirogenic) → sudden (earthquakes) → volcanoes.
+    subtopics: [
+      "Classification of Internal Movements",
+      "Mountain-building Movements — Folds, Blocks and Rift Valleys",
+      "Continent-building Movements",
+      "Earthquakes",
+      "Volcanoes",
     ],
   },
 };

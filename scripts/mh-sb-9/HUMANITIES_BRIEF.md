@@ -113,6 +113,50 @@ fewer than four options, say so in your report — do NOT invent one to reach fo
   a literal two-character `\\n`.
 - There is no mathematics in this book — do not use `\(...\)` anywhere.
 
+## Geography chapters — additional rules
+
+The Geography book (`9th_Geog_SB.pdf`) follows everything above, with three
+differences that come up constantly.
+
+**1. Most "multiple choice" blocks here are NOT four-option.** Ch.2's "Tick the
+correct option" prints THREE choices per item, and Ch.6's salinity grid offers
+only High / Medium / Low. **Never invent a fourth option to reach four.** Ingest
+any such item as `"format": "subjective"` / `"bucket": "exercise-subjective"`,
+with no `options` and no `answer`, listing the printed choices inside the `stem`
+on their own line, e.g.
+
+```
+On which of the following are slow movements in the earth's interior dependent?
+Landforms / Velocity / Direction
+```
+
+Only a genuine four-option block (Ch.7 "Select the correct option") is an `mcq`.
+Say in your report how many of each you found.
+
+**2. The question verbs are wider.** All of these are ordinary numbered exercise
+questions and are transcribed normally — the instruction goes in `context`, the
+item in `stem`:
+*give reasons why the sentence is right or wrong · give geographical reasons ·
+identify and name X from the description · arrange in chronological order ·
+distinguish / differentiate between · odd one out · rewrite the correct statement ·
+correct and rewrite the incorrect statement · identify the wrong pair · complete
+the table / flowchart · match the columns (often a three-column "make a chain") ·
+suggest measures · name them on the basis of the given information.*
+
+- A **match-the-columns** question is ONE row: reproduce the columns as a GFM
+  pipe-table in the stem (separator row mandatory).
+- **"Show X on an outline map"** and **"draw a neat labelled diagram of X"** are
+  student *drawing* tasks, not figure-dependent questions — transcribe the stem
+  and do NOT record them in `.figneed.json`; there is nothing in the book to crop.
+- A question that says **"study the map/figure/picture above and answer"** IS
+  figure-dependent — record it in `.figneed.json`. When several sub-items share one
+  printed figure, record the figure once per sub-item ref that needs it.
+
+**3. Watch the two-column interleave — it is worse in this book.** Exercise items
+routinely appear in the text layer out of printed order (Ch.7 emits Q3–Q5 before
+Q2; Ch.8 splits its exercise around a block of body prose). Rebuild the true order
+from the page images every time.
+
 ## Report back
 
 The row count split MCQ/subjective, the ref of every row, any MCQ where you

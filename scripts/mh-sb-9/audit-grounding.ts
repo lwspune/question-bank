@@ -28,7 +28,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { OUT, CHAPTERS, requireChapter } from "./config";
+import { OUT, DATA, CHAPTERS, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -117,7 +117,23 @@ async function auditChapter(id: string): Promise<number> {
     console.log(`\n${id}: SKIPPED — no ${textPath}. Run: npx tsx scripts/mh-sb-9/dump-text.ts ${id}`);
     return 0;
   }
-  const chapterText = readFileSync(textPath, "utf8");
+  let chapterText = readFileSync(textPath, "utf8");
+
+  // Geography especially: a lot of a chapter's factual content is printed INSIDE
+  // its maps and diagrams, and PyMuPDF cannot see those labels — they are vector
+  // art, not text. Without this, every map-sourced fact reads as unsourced (fig
+  // 2.18's plate names produced 12 false positives on the pilot chapter). The
+  // optional data/<id>.figtext.json supplies that missing text, transcribed off
+  // the rendered figure and attributed to it, so a real invention still stands out.
+  const figPath = join(DATA, `${id}.figtext.json`);
+  if (existsSync(figPath)) {
+    const fig = JSON.parse(readFileSync(figPath, "utf8")) as {
+      figures?: Record<string, string[]>;
+    };
+    const labels = Object.values(fig.figures ?? {}).flat();
+    chapterText += "\n" + labels.join("\n");
+    console.log(`  (+${labels.length} figure labels from ${id}.figtext.json)`);
+  }
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
