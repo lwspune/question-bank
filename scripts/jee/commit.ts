@@ -16,7 +16,7 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
-import { keepForSubject, parseSubjectArg } from "./lib";
+import { keepForSubject, parseSubjectArg, gridTableToPipe } from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, loadPaper, recordsPath, requirePaperId, isCommittable, type PaperData } from "./config";
 
 type Rec = {
@@ -53,7 +53,14 @@ function buildRows(paperId: string, paper: PaperData, subject?: string, numericO
     const cls = paper.classification[key];
     if (!cls) throw new Error(`no classification for Q${r.questionNumber} in ${paperId}`);
 
-    const text = normalizeNewlines(paper.stemOverrides?.[key] ?? r.stem);
+    // gridTableToPipe FIRST: pandoc renders a data table as a grid table
+    // (`+---+---+`), which `parseTableBlocks` does not recognise — it would ship
+    // as raw `+====+` noise on /browse and in every Word export. Chemistry leans
+    // on data tables far harder than Maths/Physics did (111 stems vs 10).
+    // A stemOverride is authored by hand, so it is already in the right shape.
+    const text = normalizeNewlines(
+      paper.stemOverrides?.[key] ?? gridTableToPipe(r.stem),
+    );
     if (!text.trim()) throw new Error(`Q${r.questionNumber}: empty stem — add a stemOverride in papers/${paperId}.json`);
 
     // Section-B NAT: no options, exact numeric answer (override wins over parsed).

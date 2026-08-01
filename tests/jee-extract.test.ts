@@ -10,12 +10,14 @@ import {
   splitSolutionsOrdered,
   solnNumberingIsBroken,
   matchValueToOption,
+  gridTableToPipe,
   splitSolutions,
   parseOptionsFromText,
   segmentQuestions,
   dropProseHardBreaks,
 } from "../scripts/jee/lib";
 import { isCommittable } from "../scripts/jee/config";
+import { subtopicNameFrom } from "../scripts/jee/promote-gaps";
 import {
   normalizeMathFunctions,
   keepForSubject,
@@ -601,5 +603,156 @@ describe("dropProseHardBreaks — pandoc line-break marker stranded mid-prose", 
     expect(dropProseHardBreaks("takes 6 min. 40 s over \\(200\\alpha\\) then 7 and 8\\ next")).toBe(
       "takes 6 min. 40 s over \\(200\\alpha\\) then 7 and 8 next",
     );
+  });
+});
+
+describe("gridTableToPipe (pandoc grid table -> GFM pipe table)", () => {
+  it("leaves text with no grid table untouched", () => {
+    const s = "Plain stem with \\(a|b\\) and a | pipe but no table.";
+    expect(gridTableToPipe(s)).toBe(s);
+  });
+
+  it("converts a simple flattened 2-column grid table", () => {
+    const s =
+      "Data: +------+------+ | A | B | +:====:+:====:+ | 1 | 2 | +------+------+ | 3 | 4 | +------+------+";
+    const out = gridTableToPipe(s);
+    expect(out).toContain("| A | B |");
+    expect(out).toContain("| --- | --- |");
+    expect(out).toContain("| 1 | 2 |");
+    expect(out).toContain("| 3 | 4 |");
+    expect(out).not.toMatch(/\+[-=:]{3,}\+/);
+  });
+
+  it("emits the separator row GFM requires, on its own line", () => {
+    const s = "+---+---+ | A | B | +===+===+ | 1 | 2 | +---+---+";
+    const lines = gridTableToPipe(s).split("\n").map((l) => l.trim()).filter(Boolean);
+    const sep = lines.findIndex((l) => /^\|\s*---/.test(l));
+    expect(sep).toBeGreaterThan(0);
+    expect(lines[sep - 1]).toBe("| A | B |");
+  });
+
+  it("joins a multi-line header into one cell per column", () => {
+    // pandoc splits a tall header cell across physical rows; they must merge.
+    const s =
+      "+------+------+ | Compound | Enthalpy | | | | | | (kJ/mol) | +:====:+:====:+ | XY | 42 | +------+------+";
+    const out = gridTableToPipe(s);
+    expect(out).toContain("| Compound | Enthalpy (kJ/mol) |");
+  });
+
+  it("preserves math zones inside cells verbatim", () => {
+    const s = "+---+---+ | \\[X_{2}(g)\\] | \\[\\Delta_{f}H\\] | +===+===+ | 8 | 140 | +---+---+";
+    const out = gridTableToPipe(s);
+    expect(out).toContain("\\[X_{2}(g)\\]");
+    expect(out).toContain("\\[\\Delta_{f}H\\]");
+  });
+
+  it("does not split a cell on a pipe that lives inside a math zone", () => {
+    // `\(|A|\)` in a cell must stay ONE cell, else the columns shift right.
+    const s = "+---+---+ | \\(|A| = 3\\) | ok | +===+===+ | 1 | 2 | +---+---+";
+    const out = gridTableToPipe(s);
+    expect(out).toContain("| \\(|A| = 3\\) | ok |");
+    expect(out).toContain("| 1 | 2 |");
+  });
+
+  it("aligns a 3-column multi-physical-row header to the right columns", () => {
+    // Regression (real data, 2026-apr05-s2 Q29): pandoc puts the units on a
+    // second physical row. Adjacent rows leave a separator artifact when the
+    // stem is flattened, so a naive `k % cols` drifts by one per row and files
+    // the units under the WRONG column.
+    const s =
+      "+----+----+----+ | Compound | dfH | S | | | | | | | (kJ/mol) | (J/mol K) | " +
+      "+:==:+:==:+:==:+ | XY(g) | 42 | 200 | +----+----+----+ | X2(g) | 8 | 140 | +----+----+----+";
+    const out = gridTableToPipe(s);
+    expect(out).toContain("| Compound | dfH (kJ/mol) | S (J/mol K) |");
+    expect(out).toContain("| XY(g) | 42 | 200 |");
+    expect(out).toContain("| X2(g) | 8 | 140 |");
+  });
+
+  it("keeps the prose that precedes the table", () => {
+    const s = "Consider the data for the reaction: +---+---+ | A | B | +===+===+ | 1 | 2 | +---+---+";
+    expect(gridTableToPipe(s)).toMatch(/^Consider the data for the reaction:/);
+  });
+
+  it("does not fire on an inline math pipe (determinant / abs value)", () => {
+    const s = "Given \\(|A| = 3\\) and \\(|x|\\), find y.";
+    expect(gridTableToPipe(s)).toBe(s);
+  });
+
+  it("is idempotent on an already-converted table", () => {
+    const once = gridTableToPipe("+---+---+ | A | B | +===+===+ | 1 | 2 | +---+---+");
+    expect(gridTableToPipe(once)).toBe(once);
+  });
+});
+
+describe("subtopicNameFrom (guard on agent taxonomy proposals)", () => {
+  it("accepts a bare subtopic name", () => {
+    expect(subtopicNameFrom("Nernst Equation and Cell EMF")).toBe("Nernst Equation and Cell EMF");
+    expect(subtopicNameFrom("  Stability of Complexes  ")).toBe("Stability of Complexes");
+  });
+
+  it("accepts a name containing an apostrophe or parentheses", () => {
+    expect(subtopicNameFrom("Enthalpy Changes, Hess's Law and Bond Enthalpy")).toBe(
+      "Enthalpy Changes, Hess's Law and Bond Enthalpy",
+    );
+    expect(subtopicNameFrom("Bond Parameters (Bond Length, Bond Angle, Bond Order)")).toBe(
+      "Bond Parameters (Bond Length, Bond Angle, Bond Order)",
+    );
+  });
+
+  it("REFUSES prose rather than digging a name out of it", () => {
+    // Recovering the quoted span looks tempting but mangles any name with an
+    // apostrophe: "Hess's" closes the quote early and yields "s Law and Bond
+    // Enthalpy", which would be created as a real subtopic.
+    const prose =
+      "Chemical Thermodynamics has no subtopic for enthalpy. Proposed: 'Enthalpy Changes, Hess's Law and Bond Enthalpy'.";
+    expect(subtopicNameFrom(prose)).toBeNull();
+  });
+
+  it("refuses an over-long value and an empty one", () => {
+    expect(subtopicNameFrom("x".repeat(71))).toBeNull();
+    expect(subtopicNameFrom("   ")).toBeNull();
+  });
+
+  it("refuses anything that reads like a proposal sentence", () => {
+    expect(subtopicNameFrom("Proposed: Henry's Law")).toBeNull();
+    expect(subtopicNameFrom("no subtopic covers this")).toBeNull();
+  });
+});
+
+describe("subtopicNameFrom — recovering a name from the agent's usual shapes", () => {
+  it("takes the name before the ' - ' justification", () => {
+    expect(
+      subtopicNameFrom(
+        "Group 14 Elements (Compounds of Tin and Lead) - no group-14 subtopic exists under The p-Block Elements",
+      ),
+    ).toBe("Group 14 Elements (Compounds of Tin and Lead)");
+  });
+
+  it("splits on ' :: ' BEFORE ' - ', because a chapter name can contain ' - '", () => {
+    // "Organic Chemistry - Some Basic Principles and Techniques" has its own
+    // hyphen; cutting on the hyphen first truncates mid-chapter.
+    expect(
+      subtopicNameFrom(
+        "Organic Chemistry - Some Basic Principles and Techniques :: Electronic Effects and Reaction Intermediates - no such subtopic exists",
+      ),
+    ).toBe("Electronic Effects and Reaction Intermediates");
+  });
+
+  it("takes the subtopic half of a Chapter :: Subtopic proposal", () => {
+    expect(subtopicNameFrom("Biomolecules :: Nucleic Acids - the chapter has no nucleic-acid subtopic")).toBe(
+      "Nucleic Acids",
+    );
+  });
+
+  it("drops a trailing parenthetical gloss only when needed to fit", () => {
+    expect(
+      subtopicNameFrom(
+        "Chemical Kinetics :: Rate of Reaction and Rate Expressions (stoichiometric rate relations, read off a concentration-time plot) - neither existing subtopic covers it",
+      ),
+    ).toBe("Rate of Reaction and Rate Expressions");
+  });
+
+  it("still refuses when no name can be isolated", () => {
+    expect(subtopicNameFrom("there is really no good fit here. Consider something else entirely.")).toBeNull();
   });
 });

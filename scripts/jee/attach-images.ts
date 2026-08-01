@@ -13,6 +13,7 @@
  * source_file so question numbers can't collide across papers.
  */
 import { existsSync, readFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { basename, join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { uploadImage } from "../../src/lib/storage/images";
@@ -44,16 +45,57 @@ function resolveImage(ref: string, fallbackDir: string): string | null {
 }
 
 /**
+ * Stack multiple STEM figures into one composite PNG and return its path.
+ *
+ * A question has a single `questions.image_url`, but an organic stem often
+ * prints two or three structures ("the condensation between <A> and <B> gives
+ * <C>"). Keeping only the first shipped a question that cannot be answered from
+ * what is on screen — 130 rows / 351 dropped figures in the JEE Chemistry
+ * corpus. Option pictures are NOT composited: they map onto their own
+ * `options.image_url` and must stay separate.
+ *
+ * Returns null when compositing is impossible, so the caller can fall back to
+ * the previous first-figure-only behaviour rather than attaching nothing.
+ */
+function composeStemFigures(
+  refs: string[],
+  fallbackDir: string,
+  paperId: string,
+  qn: number,
+): string | null {
+  const resolved = refs.map((r) => resolveImage(r, fallbackDir)).filter((p): p is string => Boolean(p));
+  if (resolved.length !== refs.length) {
+    console.warn(`  Q${qn}: ${refs.length - resolved.length} stem figure(s) missing on disk — not compositing`);
+    return null;
+  }
+  const out = join(mediaDir(paperId), `composite_q${qn}.png`);
+  const res = spawnSync("python", [join("scripts/jee/compose_figures.py"), out, ...resolved], {
+    encoding: "utf8",
+  });
+  if (res.status !== 0) {
+    console.warn(`  Q${qn}: compositing failed (${(res.stderr || "").trim()}) — falling back to first figure`);
+    return null;
+  }
+  return existsSync(out) ? out : null;
+}
+
+/**
  * [questionImage | null, {label->image}] for a record. Branches on whether the
  * options carry TEXT (not on status): options-with-text means every image is a
  * stem/question figure (incl. a match-list rendered as an image); blank options
  * mean the choices themselves are pictures.
  */
-function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, string> } {
+function planFor(
+  rec: Rec,
+  ctx: { fallbackDir: string; paperId: string },
+): { qImage: string | null; optImages: Record<string, string> } {
   const refs = rec.imageRefs;
+  const stem = (rs: string[]) =>
+    rs.length > 1
+      ? composeStemFigures(rs, ctx.fallbackDir, ctx.paperId, rec.questionNumber) ?? rs[0]
+      : rs[0] ?? null;
   if (rec.options === null) {
-    if (refs.length > 1) console.warn(`  Q${rec.questionNumber}: ${refs.length} stem figures, only the first is attached`);
-    return { qImage: refs[0] ?? null, optImages: {} };
+    return { qImage: stem(refs), optImages: {} };
   }
   // Map images onto the WORDLESS options specifically. The old test was
   // all-or-nothing — any option with text meant "stem figure only" — so a MIXED
@@ -64,8 +106,7 @@ function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, s
     .map((o) => o.label)
     .sort();
   if (wordless.length === 0) {
-    if (refs.length > 1) console.warn(`  Q${rec.questionNumber}: ${refs.length} stem figures, only the first is attached`);
-    return { qImage: refs[0] ?? null, optImages: {} };
+    return { qImage: stem(refs), optImages: {} };
   }
   // The four option pictures are always the LAST four images: any figure that
   // belongs to the stem is emitted before them. So 4 refs = options only,
@@ -80,11 +121,8 @@ function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, s
   }
   const optRefs = refs.slice(-wordless.length);
   const stemRefs = refs.slice(0, -wordless.length);
-  if (stemRefs.length > 1) {
-    console.warn(`  Q${rec.questionNumber}: ${stemRefs.length} stem figures alongside option images, only the first is attached`);
-  }
   return {
-    qImage: stemRefs[0] ?? null,
+    qImage: stem(stemRefs),
     optImages: Object.fromEntries(wordless.map((l, i) => [l, optRefs[i]])),
   };
 }
@@ -116,7 +154,7 @@ async function main() {
   for (const r of imgRecs) {
     let plan: ReturnType<typeof planFor>;
     try {
-      plan = planFor(r);
+      plan = planFor(r, { fallbackDir, paperId });
     } catch (e) {
       skip.add(r.questionNumber);
       console.warn(`  ${(e as Error).message} — SKIPPING (handle manually)`);
@@ -137,7 +175,7 @@ async function main() {
   let optSet = 0;
   for (const r of imgRecs) {
     if (skip.has(r.questionNumber)) continue;
-    const plan = planFor(r);
+    const plan = planFor(r, { fallbackDir, paperId });
     const { data: q } = await client
       .from("questions")
       .select("id, image_url, options(id, label, image_url)")

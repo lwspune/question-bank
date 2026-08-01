@@ -15,6 +15,7 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { recordsPath, paperDataPath, requirePaperId } from "./config";
 import { cleanSolution } from "./sol-clean";
+import { parseSubjectArg } from "./lib";
 
 type Rec = {
   questionNumber: number;
@@ -38,14 +39,38 @@ export function normalizeEscaping(sol: string): string {
 }
 
 function main() {
-  const paperId = requirePaperId(process.argv, 2, 'assemble-safe.ts <paperId> <sourceFile> <pyqYear> "<pyqNote>"');
-  const sourceFile = process.argv[3];
-  const pyqYear = Number(process.argv[4]);
-  const pyqNote = process.argv[5];
-  if (!sourceFile || !pyqYear || !pyqNote) throw new Error("need <sourceFile> <pyqYear> <pyqNote>");
+  const paperId = requirePaperId(process.argv, 2, 'assemble-safe.ts <paperId> [<sourceFile> <pyqYear> "<pyqNote>"]');
 
+  // When a paper file already exists (it does for every paper whose Maths or
+  // Physics block shipped first), reuse its identity rather than making the
+  // caller retype it — a mistyped sourceFile would scope the commit to a
+  // filename no other subject uses and silently create a parallel paper.
+  let prior: Record<string, any> = {};
+  try {
+    prior = JSON.parse(readFileSync(paperDataPath(paperId), "utf8"));
+  } catch {
+    prior = {};
+  }
+  // Positionals only — a `--flag` sitting in argv[3] is NOT a sourceFile.
+  // Without this, `assemble-safe <id> --subject=Chemistry` silently took
+  // "--subject=Chemistry" as the source file and committed 100 rows under it.
+  const positional = process.argv.slice(3).filter((a) => !a.startsWith("--"));
+  const sourceFile = positional[0] ?? prior.sourceFile;
+  const pyqYear = Number(positional[1] ?? prior.pyqYear);
+  const pyqNote = positional[2] ?? prior.pyqNote;
+  if (typeof sourceFile !== "string" || !/\.docx$/i.test(sourceFile)) {
+    throw new Error(`sourceFile must be a .docx filename, got: ${String(sourceFile)}`);
+  }
+  if (!sourceFile || !pyqYear || !pyqNote) {
+    throw new Error(
+      `need <sourceFile> <pyqYear> <pyqNote> (no existing papers/${paperId}.json to inherit them from)`,
+    );
+  }
+
+  // Defaults to Maths so every pre-existing invocation behaves identically.
+  const subject = parseSubjectArg(process.argv) ?? "Maths";
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
-  const maths = records.filter((r) => r.subject === "Maths");
+  const maths = records.filter((r) => r.subject === subject);
 
   // Merge all agent sol files for this paper.
   const outDir = join("scripts/jee/out");
@@ -68,7 +93,7 @@ function main() {
     const k = String(r.questionNumber);
     const s = sols[k];
     if (!s) { noClass.push(k); continue; }
-    classification[k] = { subject: "Maths", chapter: s.chapter, subtopic: s.subtopic };
+    classification[k] = { subject, chapter: s.chapter, subtopic: s.subtopic };
     if (s.solution) authoredSolutions[k] = cleanSolution(s.solution);
     if (s.flag) flags.push(`Q${k}: ${s.flag}`);
     const hasOpts = Boolean(r.options && r.options.length >= 4);
@@ -87,17 +112,41 @@ function main() {
     }
   }
 
+  const note = `${pyqNote} — ${subject} only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.`;
+
+  // MERGE, never clobber — the same guard assemble-blind already carries. By the
+  // time a second subject is ingested the file holds a SHIPPED block for another
+  // one (Maths ran first, then Physics), and a fresh write would silently discard
+  // its classification, overrides and authored solutions.
+  const prevPath = paperDataPath(paperId);
+  let prev: Record<string, any> = {};
+  try {
+    prev = JSON.parse(readFileSync(prevPath, "utf8"));
+  } catch {
+    prev = {};
+  }
+  const prevClass = (prev.classification ?? {}) as Record<string, { subject: string }>;
+  const collisions = Object.keys(classification).filter(
+    (k) => prevClass[k] && prevClass[k].subject !== subject,
+  );
+  if (collisions.length) {
+    throw new Error(
+      `${paperId}: question ${collisions.join(", ")} already classified as another subject — refusing to overwrite`,
+    );
+  }
+
   const paper = {
+    ...prev,
     sourceFile,
     pyqYear,
     pyqNote,
-    classification,
-    answerOverrides,
-    numericOverrides,
-    notes: `${pyqNote} — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.`,
-    authoredSolutions,
+    classification: { ...prevClass, ...classification },
+    answerOverrides: { ...(prev.answerOverrides ?? {}), ...answerOverrides },
+    numericOverrides: { ...(prev.numericOverrides ?? {}), ...numericOverrides },
+    notes: prev.notes ? `${prev.notes}\n${note}` : note,
+    authoredSolutions: { ...(prev.authoredSolutions ?? {}), ...authoredSolutions },
   };
-  writeFileSync(paperDataPath(paperId), JSON.stringify(paper, null, 2) + "\n");
+  writeFileSync(prevPath, JSON.stringify(paper, null, 2) + "\n");
   const nMcq = Object.keys(answerOverrides).length, nNat = Object.keys(numericOverrides).length;
   console.log(`${paperId}: ${nMcq} MCQ + ${nNat} NAT = ${nMcq + nNat} classified; ${Object.keys(authoredSolutions).length} solutions.`);
   if (noClass.length) console.log(`  NO AGENT DATA (Qs missing from sol files): ${noClass.join(", ")}`);
