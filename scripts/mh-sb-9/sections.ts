@@ -29,6 +29,29 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Practice Set 1.4", label: "Practice Set 1.4", kind: "exercise", refPrefixes: ["Ex 1.4 "] },
     { group: "Problem Set 1", label: "Problem Set 1", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
+
+  // ── History + Political Science (9th_Hist_SB.pdf) ───────────────────────────
+  // These chapters are structurally MUCH simpler than the Maths ones: the book
+  // interleaves narrative prose with activity boxes and closes each chapter with
+  // a SINGLE "Exercises" block — there are no numbered practice sets, no separate
+  // problem set, and (unlike every Maths chapter) no solved-example block at all.
+  // So each outline is one `exercise` block holding every question in printed
+  // order, which is exactly how the page reads. Every ref is prefixed "Ex ".
+  "sources-of-history-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "events-after-1960-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "internal-challenges-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "post-ww-political-developments-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "foreign-policy-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
