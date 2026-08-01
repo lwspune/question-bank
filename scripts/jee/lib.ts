@@ -320,13 +320,19 @@ export function parseOptionsFromText(
     const idxD = nextMarker("(d)", idxC + 3);
     if (idxD === -1) continue;
 
-    const stem = text.slice(0, idxA).trim();
+    // pandoc leaves a hard-break `\` at the end of the stem's last line. When
+    // cleanText ran, that backslash was still MID-string (the options followed
+    // it), so cleanText's trailing-`\` strip did not see it — it only becomes
+    // trailing here, after the split. Strip it on each piece. `\\` (a row
+    // separator) and `\)` are preserved by the lookbehind, same as cleanText.
+    const dropBreak = (s: string) => s.replace(/(?<!\\)\\$/, "").trimEnd();
+    const stem = dropBreak(text.slice(0, idxA).trim());
     const options = [
-      text.slice(idxA + 3, idxB).trim(),
-      text.slice(idxB + 3, idxC).trim(),
-      text.slice(idxC + 3, idxD).trim(),
-      text.slice(idxD + 3).trim(),
-    ];
+      text.slice(idxA + 3, idxB),
+      text.slice(idxB + 3, idxC),
+      text.slice(idxC + 3, idxD),
+      text.slice(idxD + 3),
+    ].map((o) => dropBreak(o.trim()));
     return { stem, options };
   }
   return null;
