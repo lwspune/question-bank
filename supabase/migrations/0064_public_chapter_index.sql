@@ -1,0 +1,43 @@
+-- NOTE ON NUMBERING: applied to the database on 2026-08-01 under the label
+-- `0063_public_chapter_index` (version 20260801074324) before noticing that
+-- 0063 was already taken by 0063_written_papers.sql. The version timestamp
+-- orders it correctly and the index is live; this file carries the correct
+-- sequence number. Nothing is missing — the DB ledger label just reads 0063.
+--
+-- ---------------------------------------------------------------------------
+-- Missing index for the ANON public read path.
+--
+-- The /questions landing pages (317 of them, shipped 2026-07-29) and every anon
+-- chapter-filtered /browse query run WITHOUT an org_id: `queryQuestions` only
+-- adds `.eq("org_id", …)` when a caller supplies one, and anon never does.
+--
+-- The index those queries were landing on, questions_filter_idx, is
+--     (org_id, exam_id, subject_id, chapter_id)
+-- with org_id LEADING. Postgres cannot use a leading column it has no value
+-- for, so the plan degraded to effectively scanning the whole index. Measured
+-- on one chapter with identical filters:
+--
+--     without org_id : 430 buffers, 102 ms
+--     with    org_id :  94 buffers,   1 ms
+--
+-- ~100x, paid on every anon chapter query since those pages shipped. The one
+-- existing PUBLIC-oriented index, questions_public_filters_idx, is
+-- (visibility, exam_id, subject_id, created_at) — it stops at subject_id and
+-- carries no chapter_id, so it cannot serve this pattern either.
+--
+-- The visible symptom was the build: `anon` carries statement_timeout = 3s
+-- (authenticated gets 8s), and once the corpus grew, `next build` prerendering
+-- 688 pages concurrently began tripping SQLSTATE 57014 on these pages and
+-- failing outright — a different handful each run, which reads like flake but
+-- was a genuine missing index all along.
+--
+-- After this index, the same query is an Index Only Scan at 9.5 ms / 39 buffers
+-- and the build prerenders all 688 pages with zero timeouts.
+--
+-- Partial on visibility='PUBLIC' because that is exactly the anon-visible set
+-- (RLS grants anon `visibility = 'PUBLIC'`), which keeps the index small.
+-- question_kind trails so the PYQ/Practice toggle narrows inside the index
+-- rather than re-checking the heap.
+create index if not exists questions_public_chapter_idx
+  on public.questions (exam_id, subject_id, chapter_id, question_kind)
+  where visibility = 'PUBLIC';
