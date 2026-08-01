@@ -554,3 +554,22 @@ describe("isCommittable — numericOverride of 0 (config.ts)", () => {
     expect(isCommittable("ok", 1, paper({}))).toBe(true);
   });
 });
+
+describe("parseOptionsFromText — pandoc hard-break at the stem/option seam", () => {
+  it("drops a trailing hard-break `\` left on the stem by the split", () => {
+    // The backslash is mid-string when cleanText runs (options follow it), so it
+    // only becomes trailing after the stem is cut — cleanText cannot catch it.
+    const r = parseOptionsFromText("The logic gate circuit is\ (a) X (b) Y (c) Z (d) W");
+    expect(r?.stem).toBe("The logic gate circuit is");
+  });
+
+  it("preserves a LaTeX row separator `\\` and a closing `\)`", () => {
+    const r = parseOptionsFromText("Matrix \(\begin{matrix} a \\ b \end{matrix}\) (a) X (b) Y (c) Z (d) W");
+    expect(r?.stem).toBe("Matrix \(\begin{matrix} a \\ b \end{matrix}\)");
+  });
+
+  it("drops a trailing hard-break on an option too", () => {
+    const r = parseOptionsFromText("Q (a) first\ (b) second (c) third (d) fourth");
+    expect(r?.options[0]).toBe("first");
+  });
+});
