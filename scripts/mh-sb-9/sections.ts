@@ -52,6 +52,39 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   "foreign-policy-9": [
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
   ],
+  "economic-development-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "education-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "empowerment-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "science-technology-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "industry-trade-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "changing-life-1-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "changing-life-2-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "defence-system-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "united-nations-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "india-other-countries-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "international-problems-9": [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
