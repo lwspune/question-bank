@@ -69,7 +69,11 @@ export function concludedLetter(sol: string | null): string | null {
   return last;
 }
 
-type Opt = { label: string; text: string; is_correct: boolean };
+/**
+ * `image_url` is optional: callers that never have picture options (the practice
+ * bank) can omit it and behave exactly as before.
+ */
+type Opt = { label: string; text: string; is_correct: boolean; image_url?: string | null };
 export function auditRow(opts: Opt[], solution: string | null): string | null {
   const sorted = [...opts].sort((a, b) => a.label.localeCompare(b.label));
   const correct = sorted.filter((o) => o.is_correct);
@@ -78,6 +82,23 @@ export function auditRow(opts: Opt[], solution: string | null): string | null {
   const concluded = concludedLetter(solution);
   const key = correct[0]?.label ?? null;
   if (sorted.length !== 4 || correct.length !== 1) return `STRUCT(${sorted.length}opt,${correct.length}corr)`;
+  // An option is USABLE if it has text or an image. Judge that per option, not
+  // across the row: a mixed row (three structure images + one "Both (a) and (c)")
+  // is legitimate, while a row with a blank, image-less option is unusable no
+  // matter what its siblings carry — and in two live cases that blank option was
+  // the KEY.
+  const empties = sorted.filter((o) => !(o.text ?? "").trim() && !o.image_url);
+  if (empties.length) return `BLANK_OPTIONS(${empties.map((o) => o.label).join("")})`;
+  // A picture-option row stores its choices as images, so its texts are empty BY
+  // CONSTRUCTION and collide as "duplicates". Not a defect, and it drowned the
+  // real signal (49 such flags in JEE Physics alone hid one genuine one).
+  const pictures = sorted.filter((o) => !(o.text ?? "").trim() && o.image_url);
+  if (pictures.length) {
+    const urls = pictures.map((o) => o.image_url);
+    if (urls.length !== new Set(urls).size) return "DUP_OPT_IMAGE";
+    const worded = texts.filter((t) => t !== "");
+    return worded.length !== new Set(worded).size ? "DUP_OPT" : "IMAGE_OPTIONS";
+  }
   if (dup) return "DUP_OPT";
   if (concluded && key && concluded !== key) return `SOLN_${concluded}!=KEY_${key}`;
   return null;

@@ -94,3 +94,60 @@ describe("concludedLetter — conclusion phrasing vs rejected choices", () => {
     expect(concludedLetter("Substituting gives 5, which is option B")).toBe("B");
   });
 });
+
+describe("auditRow — picture options vs genuinely blank options", () => {
+  const mk = (
+    spec: { label: string; text: string; img?: string | null; correct?: boolean }[],
+  ) => spec.map((s) => ({ label: s.label, text: s.text, is_correct: !!s.correct, image_url: s.img ?? null }));
+
+  it("classifies an all-image option set as IMAGE_OPTIONS, not a duplicate", () => {
+    // Four empty texts collide as "duplicates" but every option carries an image.
+    const row = mk([
+      { label: "A", text: "", img: "u/a.png" },
+      { label: "B", text: "", img: "u/b.png", correct: true },
+      { label: "C", text: "", img: "u/c.png" },
+      { label: "D", text: "", img: "u/d.png" },
+    ]);
+    expect(auditRow(row, "Hence (B)")).toBe("IMAGE_OPTIONS");
+  });
+
+  it("flags a blank option that has NO image, naming the labels", () => {
+    const row = mk([
+      { label: "A", text: "first" },
+      { label: "B", text: "" },
+      { label: "C", text: "third", correct: true },
+      { label: "D", text: "fourth" },
+    ]);
+    expect(auditRow(row, "Hence (C)")).toBe("BLANK_OPTIONS(B)");
+  });
+
+  it("accepts a MIXED row — image options alongside one worded option", () => {
+    const row = mk([
+      { label: "A", text: "", img: "u/a.png" },
+      { label: "B", text: "", img: "u/b.png" },
+      { label: "C", text: "", img: "u/c.png" },
+      { label: "D", text: "Both (a) and (c)", correct: true },
+    ]);
+    expect(auditRow(row, "Hence (D)")).toBe("IMAGE_OPTIONS");
+  });
+
+  it("still catches two image options sharing one image", () => {
+    const row = mk([
+      { label: "A", text: "", img: "u/same.png" },
+      { label: "B", text: "", img: "u/same.png", correct: true },
+      { label: "C", text: "", img: "u/c.png" },
+      { label: "D", text: "", img: "u/d.png" },
+    ]);
+    expect(auditRow(row, "Hence (B)")).toBe("DUP_OPT_IMAGE");
+  });
+
+  it("still catches duplicate WORDED options when no images are involved", () => {
+    const row = mk([
+      { label: "A", text: "same" },
+      { label: "B", text: "same", correct: true },
+      { label: "C", text: "other" },
+      { label: "D", text: "another" },
+    ]);
+    expect(auditRow(row, "Hence (B)")).toBe("DUP_OPT");
+  });
+});
