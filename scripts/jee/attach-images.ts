@@ -51,8 +51,19 @@ function resolveImage(ref: string, fallbackDir: string): string | null {
  */
 function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, string> } {
   const refs = rec.imageRefs;
-  const hasOptionText = rec.options === null || rec.options.some((o) => o.text.trim() !== "");
-  if (hasOptionText) {
+  if (rec.options === null) {
+    if (refs.length > 1) console.warn(`  Q${rec.questionNumber}: ${refs.length} stem figures, only the first is attached`);
+    return { qImage: refs[0] ?? null, optImages: {} };
+  }
+  // Map images onto the WORDLESS options specifically. The old test was
+  // all-or-nothing — any option with text meant "stem figure only" — so a MIXED
+  // row (three structure pictures plus a worded "Both (a) and (c)") got NO option
+  // images at all and shipped with blank, unusable choices, one of them the key.
+  const wordless = rec.options
+    .filter((o) => o.text.trim() === "")
+    .map((o) => o.label)
+    .sort();
+  if (wordless.length === 0) {
     if (refs.length > 1) console.warn(`  Q${rec.questionNumber}: ${refs.length} stem figures, only the first is attached`);
     return { qImage: refs[0] ?? null, optImages: {} };
   }
@@ -62,18 +73,19 @@ function planFor(rec: Rec): { qImage: string | null; optImages: Record<string, s
   // AND its input waveforms) + options, and so on. Keying off the tail rather
   // than an exact count is what makes 6+ work; previously anything but 4 or 5
   // threw and the row silently ended up with NO option images at all.
-  const labels = ["A", "B", "C", "D"];
-  if (refs.length < 4) {
-    throw new Error(`Q${rec.questionNumber}: blank options but only ${refs.length} image(s) — cannot map choices`);
+  if (refs.length < wordless.length) {
+    throw new Error(
+      `Q${rec.questionNumber}: ${wordless.length} wordless option(s) but only ${refs.length} image(s) — cannot map choices`,
+    );
   }
-  const optRefs = refs.slice(-4);
-  const stemRefs = refs.slice(0, -4);
+  const optRefs = refs.slice(-wordless.length);
+  const stemRefs = refs.slice(0, -wordless.length);
   if (stemRefs.length > 1) {
     console.warn(`  Q${rec.questionNumber}: ${stemRefs.length} stem figures alongside option images, only the first is attached`);
   }
   return {
     qImage: stemRefs[0] ?? null,
-    optImages: Object.fromEntries(labels.map((l, i) => [l, optRefs[i]])),
+    optImages: Object.fromEntries(wordless.map((l, i) => [l, optRefs[i]])),
   };
 }
 
