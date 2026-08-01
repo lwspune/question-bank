@@ -1,0 +1,70 @@
+[
+  {
+    "id": "79731ab8-a09a-4635-b6aa-ad9c67620ff5",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\begin{bmatrix} -1 \\\\ 0 \\\\ 2 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\begin{bmatrix} 1 \\\\ 1 \\\\ 2 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\begin{bmatrix} 0 \\\\ -1 \\\\ -1 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\begin{bmatrix} 2 \\\\ 1 \\\\ 1 \\end{bmatrix}\\)"
+      }
+    ],
+    "solution": "\\(\\det(\\operatorname{Adj} A) = (\\det A)^{2}\\); computing \\(\\det(\\operatorname{Adj} A) = 4\\) gives \\(\\det A = 2\\) (positive, as required). Then \\(X = A^{-1}B = \\frac{1}{\\det A}(\\operatorname{Adj} A)B\\). With \\(B = \\begin{bmatrix} 1 \\\\ 1 \\\\ 2 \\end{bmatrix}\\), \\((\\operatorname{Adj} A)B = \\begin{bmatrix} 1-1-2 \\\\ 1+1-2 \\\\ 1+1+2 \\end{bmatrix} = \\begin{bmatrix} -2 \\\\ 0 \\\\ 4 \\end{bmatrix}\\); dividing by \\(2\\) gives \\(X = \\begin{bmatrix} -1 \\\\ 0 \\\\ 2 \\end{bmatrix}\\). Matches option A.",
+    "note": "options row->column vectors; solution restated in column form (key A unchanged, verified)"
+  },
+  {
+    "id": "c62e5487-ad3a-45f6-a2a6-3897c4094ecf",
+    "text": "If \\(x \\in R\\), then the value of the determinant \\(\\begin{vmatrix} (5^x + 5^{-x})^2 & (5^x - 5^{-x})^2 & 1 \\\\ (6^x + 6^{-x})^2 & (6^x - 6^{-x})^2 & 1 \\\\ (7^x + 7^{-x})^2 & (7^x - 7^{-x})^2 & 1 \\end{vmatrix}\\) is",
+    "note": "stem: dropped vestigial y,z (determinant uses only x). Key D=0 unchanged, verified"
+  },
+  {
+    "id": "b6a3ae11-6e43-4024-8591-f7f0a0d065b3",
+    "text": "Match List-I with List-II.\n\n|  | List-I (Purification technique) |  | List-II (Used to separate) |\n| --- | --- | --- | --- |\n| (A) | Simple distillation | (I) | Steam volatile compound |\n| (B) | Fractional distillation | (II) | Two liquids with large difference in boiling points |\n| (C) | Steam distillation | (III) | Liquid decomposing at its boiling point |\n| (D) | Distillation under reduced pressure | (IV) | Two liquids with close boiling points |\n\nChoose the correct answer from the options given below :",
+    "note": "table header rebuilt from source docx (List-I (Purification technique) / List-II (Used to separate))"
+  },
+  {
+    "id": "8c7e0a6a-81d5-4f53-acfe-f6e3e911b7a3",
+    "text": "One half cell in a voltaic cell is constructed by dipping silver rod in \\(AgNO_{3}\\) solution of unknown concentration, other half cell is Zn rod dipped in 1 molar solution of \\(ZnSO_{4}\\). A voltage of 1.60 V is measured at 298 K for this cell. What is the concentration of \\(Ag^{+}\\)ions used in terms of \\(\\log x\\left( x =\\left\\lbrack Ag^{+} \\right\\rbrack \\right)\\)?\n\\(E_{Zn^{2 +}/Zn}^{\\Theta}= - 0.76\\text{ }V,E_{Ag^{+}/Ag}^{\\Theta}= + 0.80\\text{ }V\\), \\(\\frac{2.303RT}{F}= 0.059\\text{ }V\\)",
+    "note": "stem: stray pandoc line-break backslash -> newline"
+  },
+  {
+    "id": "524dbb38-7953-4ef6-b6d6-50f19bfac5d7",
+    "options": [
+      {
+        "label": "A",
+        "text": "Copper (s) \\(>\\) Bromine (l) \\(>\\) Helium (g)"
+      },
+      {
+        "label": "B",
+        "text": "Bromine (l) \\(>\\) Copper (s) \\(>\\) Helium (g)"
+      }
+    ],
+    "note": "options A/B: \\> -> \\(>\\), matching options C/D"
+  },
+  {
+    "id": "83c54ff3-8d16-4002-a34a-fb30f72dbda6",
+    "text": "Consider the following data for the reaction\n\\(X_{2}(\\text{ }g) +Y_{2}(\\text{ }g) \\rightleftharpoons 2XY(g)\\) at 600 K. The \\(\\Delta_{r}G^{\\ominus}\\) (in \\(kJ\\,mol^{-1}\\)) for the reaction is:\n\n| Compound | \\[\\Delta_{f}H_{600\\text{ }K}^{\\Theta}\\] \\[\\left( kJmol^{- 1} \\right)\\] | \\[S_{600\\text{ }K}^{\\Theta}\\] \\[\\left( Jmol^{- 1}{\\text{ }K}^{- 1} \\right)\\] |\n| --- | --- | --- |\n| \\[XY(g)\\] | 42 | 200 |\n| \\[X_{2}(\\text{ }g)\\] | 8 | 140 |\n| \\[Y_{2}(\\text{ }g)\\] | 80 | 250 |",
+    "note": "stem: stray pandoc line-break backslash -> newline"
+  },
+  {
+    "id": "e4049dd2-d0f5-4bbd-afc3-2fb465429f21",
+    "solution": "\\(w_{g} + w_{\\text{res~}} = \\Delta k\\)\n\\[{mgh + w_{\\text{res~}} = \\frac{1}{2}{mv}^{2} }{\\therefore w_{res} = \\frac{1}{2}{mv}^{2} - mgh }{= 10^{- 3}\\left( \\frac{25}{2} - 10^{4} \\right) }{= - 9.98\\text{ }J}\\]",
+    "note": "solution: stray pandoc line-break backslash -> newline (stem was clean)"
+  },
+  {
+    "id": "db975aa3-904f-480a-a415-4608642124a4",
+    "text": "The density \\(\\rho\\) of a uniform cylinder is determined by measuring its mass m , length \\(l\\) and diameter d . The measured values of \\(m,l\\) and d are \\(97.42 \\pm 0.02\\text{ }g,8.35 \\pm 0.05\\text{ }mm\\) and \\(20.20 \\pm 0.02\\text{ }mm\\), respectively. Calculated percentage fractional error in \\(\\rho\\) is \\(\\_\\_\\_\\_\\).",
+    "solution": "\\(m = 97.42 \\pm 0.02\\text{ }g\\)\\ \\[{l = 8.35 \\pm 0.05\\text{ }mm }{d = 20.20 \\pm 0.02\\text{ }mm }{\\rho = \\frac{m}{\\frac{\\pi}{4}{\\text{ }d}^{2}\\mathcal{l}} }{\\Rightarrow \\frac{\\Delta\\rho}{\\rho} = \\frac{\\Delta m}{m} + \\frac{2\\Delta\\text{ }d}{\\text{ }d} + \\frac{\\Delta\\mathcal{l}}{\\mathcal{l}} }{= \\frac{0.02}{97.42} + 2 \\times \\frac{0.02}{20.20} + \\frac{0.05}{8.35} = 0.0082 }\\]\\(\\%\\) error \\(= 0.82\\%\\)",
+    "note": "stem: CJK full stop -> '.'; solution: OCR '1' -> 'l' for the length variable"
+  }
+]
