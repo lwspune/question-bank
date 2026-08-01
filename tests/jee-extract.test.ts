@@ -13,6 +13,7 @@ import {
   splitSolutions,
   parseOptionsFromText,
   segmentQuestions,
+  dropProseHardBreaks,
 } from "../scripts/jee/lib";
 import { isCommittable } from "../scripts/jee/config";
 import {
@@ -571,5 +572,34 @@ describe("parseOptionsFromText — pandoc hard-break at the stem/option seam", (
   it("drops a trailing hard-break on an option too", () => {
     const r = parseOptionsFromText("Q (a) first\ (b) second (c) third (d) fourth");
     expect(r?.options[0]).toBe("first");
+  });
+});
+
+describe("dropProseHardBreaks — pandoc line-break marker stranded mid-prose", () => {
+  it("removes a break mid-sentence", () => {
+    expect(dropProseHardBreaks("with time.\\ The impulse")).toBe("with time. The impulse");
+  });
+
+  it("removes a break before an inline statement list", () => {
+    expect(dropProseHardBreaks("Identify the correct statements:\\ (A) foo")).toBe(
+      "Identify the correct statements: (A) foo",
+    );
+  });
+
+  it("keeps a thin space INSIDE a math zone (there it is a legal macro)", () => {
+    const s = "value \\(a\\ b\\) here";
+    expect(dropProseHardBreaks(s)).toBe(s);
+  });
+
+  it("keeps a LaTeX row separator", () => {
+    const s = "\\(\\begin{matrix} a \\\\ b \\end{matrix}\\) x";
+    expect(dropProseHardBreaks(s)).toBe(s);
+  });
+
+  it("does not splice a math zone into prose that contains bare numbers", () => {
+    // Regression: a numeric placeholder would collide with "6" / "40" here.
+    expect(dropProseHardBreaks("takes 6 min. 40 s over \\(200\\alpha\\) then 7 and 8\\ next")).toBe(
+      "takes 6 min. 40 s over \\(200\\alpha\\) then 7 and 8 next",
+    );
   });
 });
