@@ -66,7 +66,12 @@ These were auto-created from only 260 legacy-2021 questions and are still the
 weakest part of the spine. Growing, but check them at reshape time:
 
 - `Alcohols, Phenols and Ethers` — has `Ethers` and `Phenols` but **no Alcohols
-  subtopic at all**.
+  subtopic at all**. Now the single most-cited gap: four separate agents hit it
+  (jan24-s1 Q40, jan24-s2 Q41, jan28-s2 Q31, apr05-s1 Q42) and each had to file
+  an alcohol question under `Phenols` or `Ethers`. MHT-CET splits the chapter six
+  ways; borrowing `Chemical Reactions of Alcohols and Acidity`,
+  `Classification of Alcohols and Phenols` and
+  `Physical Properties of Alcohols, Phenols and Ethers` would close it.
 - `Haloalkanes and Haloarenes` — only `Nucleophilic Substitution`. MHT-CET splits
   this five ways (preparation / SN1-SN2 / elimination / polyhalogen / physical).
 - `Solutions` — was `Colligative Properties` alone; Henry's and Raoult's added
