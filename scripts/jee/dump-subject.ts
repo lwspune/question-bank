@@ -10,9 +10,9 @@
  *
  *   npx tsx scripts/jee/dump-subject.ts <paperId> [--subject=Physics]
  */
-import { readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
-import { recordsPath, requirePaperId } from "./config";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, join } from "node:path";
+import { mediaDir, recordsPath, requirePaperId } from "./config";
 import { parseSubjectArg } from "./lib";
 
 type Rec = {
@@ -36,9 +36,18 @@ function main() {
 
   const out: string[] = [];
   for (const r of rows) {
-    const figs = r.imageRefs?.length ?? 0;
-    const fig = figs ? `  [FIGURE x${figs}${r.hasStemImage ? " in-stem" : ""}]` : "";
+    const refs = r.imageRefs ?? [];
+    const fig = refs.length ? `  [FIGURE x${refs.length}${r.hasStemImage ? " in-stem" : ""}]` : "";
     out.push(`=== Q${r.questionNumber} [${r.status}]${fig} ===`);
+    // Emit the resolved on-disk paths so a classifier can actually OPEN the
+    // figure. A text-only dump forces the agent to either guess or abstain on
+    // every figure-bearing question — on the Chemistry pilot that was 4 of 25,
+    // and one of them (a zero-order half-life plot read as first-order) was
+    // MISCLASSIFIED purely because the plot wasn't visible.
+    for (const ref of refs) {
+      const local = existsSync(ref) ? ref : join(mediaDir(paperId), "media", basename(ref));
+      out.push(`  [IMAGE] ${local}`);
+    }
     out.push(r.stem.trim());
     if (r.status === "numeric") {
       out.push(`  NAT answer: ${r.numericAnswer ?? "(none)"}`);
