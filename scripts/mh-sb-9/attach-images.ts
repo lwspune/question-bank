@@ -27,21 +27,28 @@ function loadEnv() {
 
 type FigSpec = { page: number; bbox: [number, number, number, number] };
 
-/** Read every data/<id>.*fig.json fragment and collect {ref: {page, bbox}}. */
-function loadManifest(id: string): Record<string, FigSpec> {
-  const files = readdirSync(DATA).filter((f) => f.startsWith(`${id}.`) && f.endsWith("fig.json"));
-  const out: Record<string, FigSpec> = {};
-  for (const f of files) {
+/** Read every data/<id>.*fig.json fragment and collect {ref: {page, bbox}}.
+ *  An entry may instead carry `file` — a path to a pre-made image, used when the
+ *  figure a question reads CANNOT be expressed as one bbox on one page. That is
+ *  not hypothetical: Precipitation's Q2/Q3 read a set of three labelled figures
+ *  where (A) is on printed p48 and (B),(C) overleaf on p49, so a single crop can
+ *  never show what the question asks about. Those get one stitched composite. */
+function loadManifest(id: string): { crops: Record<string, FigSpec>; files: Record<string, string> } {
+  const names = readdirSync(DATA).filter((f) => f.startsWith(`${id}.`) && f.endsWith("fig.json"));
+  const crops: Record<string, FigSpec> = {};
+  const files: Record<string, string> = {};
+  for (const f of names) {
     const frag = JSON.parse(readFileSync(join(DATA, f), "utf8")) as Array<{
-      ref: string; page?: number; bbox?: [number, number, number, number];
+      ref: string; page?: number; bbox?: [number, number, number, number]; file?: string;
     }>;
     for (const q of frag) {
+      if (crops[q.ref] || files[q.ref]) throw new Error(`duplicate figure ref "${q.ref}" (in ${f})`);
+      if (q.file) { files[q.ref] = join(DATA, q.file); continue; }
       if (q.page === undefined || !q.bbox) continue;
-      if (out[q.ref]) throw new Error(`duplicate figure ref "${q.ref}" (in ${f})`);
-      out[q.ref] = { page: q.page, bbox: q.bbox };
+      crops[q.ref] = { page: q.page, bbox: q.bbox };
     }
   }
-  return out;
+  return { crops, files };
 }
 
 /** Crop each fractional bbox via PyMuPDF; returns {ref: imagePath}. Size-aware. */
@@ -103,13 +110,14 @@ async function main() {
   const ch = requireChapter(id);
   loadEnv();
 
-  const figs = loadManifest(id);
-  const refs = Object.keys(figs);
+  const { crops: figs, files: premade } = loadManifest(id);
+  const refs = [...Object.keys(figs), ...Object.keys(premade)];
   if (refs.length === 0) throw new Error(`no figure specs found in data/${id}.*fig.json`);
-  console.log(`${ch.chapterName}: ${refs.length} figure(s) to crop.`);
+  console.log(`${ch.chapterName}: ${refs.length} figure(s) (${Object.keys(figs).length} cropped, ${Object.keys(premade).length} pre-made).`);
 
-  const crops = cropFigures(ch.pdf, figs, join(OUT, `${id}-figs`));
-  console.log(`cropped ${Object.keys(crops).length} PNG(s) to ${join(OUT, `${id}-figs`)}`);
+  const cropped = Object.keys(figs).length ? cropFigures(ch.pdf, figs, join(OUT, `${id}-figs`)) : {};
+  const crops: Record<string, string> = { ...cropped, ...premade };
+  console.log(`${Object.keys(crops).length} image(s) ready in ${join(OUT, `${id}-figs`)} / data/`);
 
   if (!apply) {
     console.log("\n[dry-run] eyeball the cropped PNGs (leak/completeness), then pass --apply to upload + set image_url.");
