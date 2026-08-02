@@ -14,6 +14,7 @@ import {
   ListChecks,
   MessageSquareHeart,
   Search,
+  Table2,
   Timer,
   Upload,
   Users,
@@ -213,6 +214,12 @@ function QuickActions({
           }
         />
       )}
+      <ActionCard
+        href="/dashboard/syllabus"
+        icon={<Table2 className="h-5 w-5" aria-hidden />}
+        title="Syllabus map"
+        description="Which Std XI/XII Chemistry concepts each exam requires."
+      />
       {isAdmin && (
         <ActionCard
           href="/dashboard/notes-reports"
