@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildGapView,
   chapterKey,
   isTopLevelSection,
   parseChapterKey,
@@ -75,6 +76,46 @@ describe("sectionGroupKey / isTopLevelSection", () => {
   it("falls back to the ref itself when unparseable, rather than losing the row", () => {
     expect(sectionGroupKey("Misc")).toBe("Misc");
     expect(isTopLevelSection("Misc")).toBe(true);
+  });
+});
+
+describe("buildGapView", () => {
+  const chapters = [
+    { cls: 11, chapterNo: 1, chapterName: "Basics", conceptCount: 22, status: { CET: "full" as const } },
+    { cls: 11, chapterNo: 2, chapterName: "Analytical", conceptCount: 20, status: { CET: "not" as const } },
+    { cls: 11, chapterNo: 7, chapterName: "Periodic", conceptCount: 15, status: { CET: "partial" as const } },
+    { cls: 12, chapterNo: 9, chapterName: "Unreviewed", conceptCount: 32, status: { CET: null } },
+  ];
+
+  it("separates not-required from partly-required and sums concepts", () => {
+    const v = buildGapView(chapters, "CET");
+    expect(v.notRequired.map((c) => c.chapterName)).toEqual(["Analytical"]);
+    expect(v.notConcepts).toBe(20);
+    expect(v.partlyRequired.map((c) => c.chapterName)).toEqual(["Periodic"]);
+    expect(v.partlyConcepts).toBe(15);
+  });
+
+  it("never presents an unassessed chapter as skippable", () => {
+    // The damaging failure: a teacher drops content on a ruling nobody made.
+    const v = buildGapView(chapters, "CET");
+    expect(v.notRequired.map((c) => c.chapterName)).not.toContain("Unreviewed");
+    expect(v.unassessed.map((c) => c.chapterName)).toEqual(["Unreviewed"]);
+    expect(v.unassessedConcepts).toBe(32);
+  });
+
+  it("treats a mixed chapter as partly required, not as skippable", () => {
+    const v = buildGapView(
+      [{ cls: 11, chapterNo: 5, chapterName: "Split", conceptCount: 8, status: { CET: "mixed" as const } }],
+      "CET",
+    );
+    expect(v.partlyRequired).toHaveLength(1);
+    expect(v.notRequired).toHaveLength(0);
+  });
+
+  it("reports an entirely unknown exam as unassessed rather than as no gap", () => {
+    const v = buildGapView(chapters, "NOT-AN-EXAM");
+    expect(v.unassessed).toHaveLength(4);
+    expect(v.notRequired).toHaveLength(0);
   });
 });
 

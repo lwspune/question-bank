@@ -9,6 +9,7 @@ import {
   SYLLABUS_EXAMS,
   STATUS_LABEL,
   STATUS_SHORT,
+  buildGapView,
   chapterKey,
   parseChapterKey,
   type ChapterStatus,
@@ -17,7 +18,7 @@ import {
 
 export const dynamic = "force-dynamic";
 
-type Search = { chapter?: string };
+type Search = { chapter?: string; gap?: string };
 
 /**
  * Status colours carry a text label too — never colour alone, since the whole
@@ -49,6 +50,15 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
 
   const db = createSupabaseServerClient();
   const matrix = await loadSyllabusMatrix(db);
+
+  // Only a known exam may drive the gap view; an unrecognised ?gap= falls back
+  // to no selection rather than rendering an all-unassessed table that would
+  // read as "this exam needs nothing".
+  const gapExam =
+    searchParams.gap && (SYLLABUS_EXAMS as readonly string[]).includes(searchParams.gap)
+      ? (searchParams.gap as (typeof SYLLABUS_EXAMS)[number])
+      : null;
+  const gap = gapExam ? buildGapView(matrix.chapters, gapExam) : null;
 
   const selected = searchParams.chapter ? parseChapterKey(searchParams.chapter) : null;
   const detail = selected
@@ -117,6 +127,103 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
               </tbody>
             </table>
           </div>
+        </section>
+
+        {/* gap view — what the State Board teaches that an exam does not need */}
+        <section aria-labelledby="gap" className="mb-8">
+          <h2 id="gap" className="mb-1 text-sm font-semibold">
+            Gap view — taught by the State Board, not required by
+          </h2>
+          <div className="mb-3 flex flex-wrap gap-1.5">
+            {SYLLABUS_EXAMS.filter((e) => e !== "MH State Board").map((exam) => {
+              const active = gapExam === exam;
+              return (
+                <Link
+                  key={exam}
+                  href={active ? "/dashboard/syllabus" : `/dashboard/syllabus?gap=${encodeURIComponent(exam)}`}
+                  scroll={false}
+                  aria-pressed={active}
+                  className={`rounded-full border px-3 py-1 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                    active
+                      ? "bg-brand text-brand-foreground border-transparent"
+                      : "hover:bg-muted"
+                  }`}
+                >
+                  {exam}
+                </Link>
+              );
+            })}
+          </div>
+
+          {!gapExam ? (
+            <p className="text-sm text-muted-foreground">
+              Pick an exam to list the State Board chapters it does not require.
+            </p>
+          ) : (
+            <>
+              <p className="mb-3 text-sm">
+                <strong className="tabular-nums">{gap!.notConcepts}</strong> of{" "}
+                <span className="tabular-nums">{matrix.totalConcepts}</span> concepts (
+                {Math.round((gap!.notConcepts / matrix.totalConcepts) * 100)}%) are taught by
+                the State Board but never required by {gapExam}
+                {gap!.partlyConcepts > 0 && (
+                  <>
+                    ; a further{" "}
+                    <strong className="tabular-nums">{gap!.partlyConcepts}</strong> are only
+                    partly required
+                  </>
+                )}
+                .
+              </p>
+
+              {gap!.unassessedConcepts > 0 && (
+                <p className="mb-3 rounded-md border border-amber-300 bg-amber-50 p-2 text-xs text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
+                  {gap!.unassessedConcepts} concepts have no ruling for {gapExam} yet. They are
+                  listed separately below and must not be read as skippable.
+                </p>
+              )}
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {(
+                  [
+                    ["Not required", gap!.notRequired, "text-muted-foreground"],
+                    ["Partly required", gap!.partlyRequired, "text-amber-700 dark:text-amber-300"],
+                    ...(gap!.unassessed.length
+                      ? ([["Not yet assessed", gap!.unassessed, "text-amber-700 dark:text-amber-300"]] as const)
+                      : []),
+                  ] as const
+                ).map(([label, list, tone]) => (
+                  <div key={label} className="rounded-md border">
+                    <h3 className={`border-b bg-muted/40 p-2 text-xs font-semibold ${tone}`}>
+                      {label} — {list.length} chapter{list.length === 1 ? "" : "s"}
+                    </h3>
+                    {list.length === 0 ? (
+                      <p className="p-3 text-xs text-muted-foreground">None.</p>
+                    ) : (
+                      <ul className="divide-y">
+                        {list.map((c) => (
+                          <li
+                            key={`${c.cls}-${c.chapterNo}`}
+                            className="flex items-baseline justify-between gap-3 p-2 text-sm"
+                          >
+                            <span>
+                              <span className="mr-2 text-xs text-muted-foreground">
+                                Std {c.cls === 11 ? "XI" : "XII"} · {c.chapterNo}
+                              </span>
+                              {c.chapterName}
+                            </span>
+                            <span className="shrink-0 tabular-nums text-xs text-muted-foreground">
+                              {c.conceptCount}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* chapter x exam matrix */}

@@ -109,6 +109,19 @@ async function main() {
     return;
   }
 
+  // Note length is CHECK'd at 500 in 0065. Validate BEFORE writing: the upsert
+  // is chunked and not transactional, so a violation partway through leaves the
+  // earlier chunks written and the rest not — a silent half-applied ruling.
+  const longNotes = ruling.chapters.filter((c) => (c.note?.length ?? 0) > 500);
+  if (longNotes.length) {
+    console.error(`\nREFUSING TO WRITE — ${longNotes.length} note(s) exceed the 500-char limit:`);
+    for (const c of longNotes) {
+      console.error(`  Std ${c.class} ch ${c.chapter_no}: ${c.note!.length} chars`);
+    }
+    process.exitCode = 1;
+    return;
+  }
+
   const rows = concepts.map((c) => {
     const r = ruled.get(`${c.class}|${c.chapter_no}`)!;
     return {
