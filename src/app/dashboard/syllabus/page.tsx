@@ -129,8 +129,8 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
               <table className="w-full min-w-[46rem] text-sm">
                 <thead className="bg-muted/50">
                   <tr>
-                    <th scope="col" className="p-3 text-left font-medium w-10">#</th>
-                    <th scope="col" className="p-3 text-left font-medium">Chapter</th>
+                    <th scope="col" className="p-3 text-left font-medium w-14">Ref</th>
+                    <th scope="col" className="p-3 text-left font-medium">Chapter / section</th>
                     <th scope="col" className="p-3 text-right font-medium w-16">Concepts</th>
                     {SYLLABUS_EXAMS.map((exam) => (
                       <th key={exam} scope="col" className="p-3 text-center font-medium">
@@ -140,17 +140,20 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((row) => {
+                  {rows.flatMap((row) => {
                     const key = chapterKey(row.cls, row.chapterNo);
                     const isOpen = searchParams.chapter === key;
-                    return (
-                      <tr key={key} className={`border-t ${isOpen ? "bg-brand/5" : ""}`}>
-                        <td className="p-3 tabular-nums text-muted-foreground">
-                          {row.chapterNo}
-                        </td>
-                        <th scope="row" className="p-3 text-left font-normal">
+
+                    const chapterRow = (
+                      <tr key={key} className="border-t bg-muted/30">
+                        <td className="p-3 tabular-nums font-semibold">{row.chapterNo}</td>
+                        <th scope="row" className="p-3 text-left font-semibold">
                           <Link
-                            href={isOpen ? "/dashboard/syllabus" : `/dashboard/syllabus?chapter=${key}`}
+                            href={
+                              isOpen
+                                ? "/dashboard/syllabus"
+                                : `/dashboard/syllabus?chapter=${key}`
+                            }
                             scroll={false}
                             className="underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
                             aria-expanded={isOpen}
@@ -167,12 +170,12 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                             <td key={exam} className="p-1.5 text-center">
                               <span
                                 title={cellTitle(s)}
-                                className={`inline-block w-full rounded px-2 py-1 text-xs font-medium ${
+                                className={`inline-block w-full rounded px-2 py-1 text-xs font-semibold ${
                                   CELL[s ?? "none"]
                                 }`}
                               >
                                 <span className="sr-only">
-                                  {exam}: {cellTitle(s)}.{" "}
+                                  {row.chapterName} overall — {exam}: {cellTitle(s)}.{" "}
                                 </span>
                                 <span aria-hidden>{cellText(s)}</span>
                               </span>
@@ -181,6 +184,45 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                         })}
                       </tr>
                     );
+
+                    const sectionRows = row.sections.map((sec) => (
+                      <tr key={`${key}-${sec.sectionNo}`} className="border-t">
+                        <td className="py-2 pl-3 pr-1 text-right font-mono text-[11px] text-muted-foreground">
+                          {sec.sectionNo}
+                        </td>
+                        <th scope="row" className="py-2 pl-4 pr-3 text-left font-normal font-serif">
+                          {sec.title}
+                          {sec.conceptCount > 1 && (
+                            <span className="ml-2 text-[11px] text-muted-foreground">
+                              +{sec.conceptCount - 1} sub
+                            </span>
+                          )}
+                        </th>
+                        <td className="p-3 text-right tabular-nums text-muted-foreground">
+                          {sec.conceptCount}
+                        </td>
+                        {SYLLABUS_EXAMS.map((exam) => {
+                          const s = sec.status[exam];
+                          return (
+                            <td key={exam} className="p-1.5 text-center">
+                              <span
+                                title={cellTitle(s)}
+                                className={`inline-block w-full rounded px-2 py-0.5 text-xs ${
+                                  CELL[s ?? "none"]
+                                }`}
+                              >
+                                <span className="sr-only">
+                                  {sec.sectionNo} {sec.title} — {exam}: {cellTitle(s)}.{" "}
+                                </span>
+                                <span aria-hidden>{cellText(s)}</span>
+                              </span>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ));
+
+                    return [chapterRow, ...sectionRows];
                   })}
                 </tbody>
               </table>

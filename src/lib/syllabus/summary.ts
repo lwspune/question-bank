@@ -63,6 +63,24 @@ export function tallyByExam(
   return t;
 }
 
+/**
+ * The section a concept rolls up into, one level below the chapter: "1.2.1" -> "1.2".
+ * A top-level section is its own group, so grouping by this key never drops a row.
+ *
+ * Matches on the leading numeric pair rather than splitting on ".", so lettered
+ * refs ("5.4 (a)", used by the NCERT-sourced concepts) group under their parent
+ * instead of each becoming a singleton. Anything unparseable falls back to
+ * itself — a row we cannot place must still be shown, never silently lost.
+ */
+export function sectionGroupKey(sectionNo: string): string {
+  const m = /^(\d+)\.(\d+)/.exec(sectionNo.trim());
+  return m ? `${m[1]}.${m[2]}` : sectionNo.trim();
+}
+
+export function isTopLevelSection(sectionNo: string): boolean {
+  return sectionGroupKey(sectionNo) === sectionNo.trim();
+}
+
 /** A stable, URL-safe key for one chapter of one class. */
 export function chapterKey(cls: number, chapterNo: number): string {
   return `${cls}-${chapterNo}`;
