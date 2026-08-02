@@ -221,8 +221,8 @@ map) · Q9 detailed → all Political Science.
 
 ## History catalog (chapter → subtopics)
 
-- **Historiography: Development in the West**: Tradition of Historiography · Modern Historiography · Scientific Perspective in Europe · Notable Scholars
-- **Historiography: Indian Tradition**: Tradition of Indian Historiography · Ancient and Medieval Historical Writing · Ideological Frameworks in Indian Historiography
+- **Historiography: Development in the West**: Tradition of Historiography · Modern Historiography · Development of Scientific Perspective in Europe and Historiography · Notable Scholars
+- **Historiography: Indian Tradition**: Tradition of Indian Historiography · Tradition of Indian Historiography · Indian Historiography: Various Ideological Frameworks
 - **Applied History**: What is Applied History · Applied History and Research in Various Fields · Applied History and Our Present · Management of Cultural and Natural Heritage
 - **History of Indian Arts**: What is Art · Indian Traditions of Visual Arts · Indian Traditions of Performing Arts · Art, Applied Art and Professional Opportunities
 - **Mass Media and History**: Introduction to Mass Media · History of Mass Media · Newspapers, Radio and Television · Critical Understanding of Mass Media
@@ -233,7 +233,7 @@ map) · Q9 detailed → all Political Science.
 
 ## Political Science catalog (chapter → subtopics)
 
-- **Working of the Constitution**: Democracy and Political Maturity · Right to Vote and Adult Suffrage · Social Justice and Reservation · Judicial System and Judicial Activism
+- **Working of the Constitution**: Democracy and Political Maturity · Right to Vote · Social Justice and Equality · Role of Judiciary
 - **The Electoral Process**: Election Commission · Representation and Constituencies · Conduct of Elections · Electoral Reforms
 - **Political Parties**: Characteristics and Functions of Political Parties · National and Regional Parties · Party Systems · Ruling Party and Opposition
 - **Social and Political Movements**: Why Movements Arise · Types of Movements · Movements and Democracy

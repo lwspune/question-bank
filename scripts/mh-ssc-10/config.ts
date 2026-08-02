@@ -400,13 +400,13 @@ export const CATALOG: Record<string, SubjectCatalog> = {
       "Historiography: Development in the West": [
         "Tradition of Historiography",
         "Modern Historiography",
-        "Scientific Perspective in Europe",
+        "Development of Scientific Perspective in Europe and Historiography",
         "Notable Scholars",
       ],
       "Historiography: Indian Tradition": [
         "Tradition of Indian Historiography",
-        "Ancient and Medieval Historical Writing",
-        "Ideological Frameworks in Indian Historiography",
+        "Tradition of Indian Historiography",
+        "Indian Historiography: Various Ideological Frameworks",
       ],
       "Applied History": [
         "What is Applied History",
@@ -459,9 +459,9 @@ export const CATALOG: Record<string, SubjectCatalog> = {
     chapters: {
       "Working of the Constitution": [
         "Democracy and Political Maturity",
-        "Right to Vote and Adult Suffrage",
-        "Social Justice and Reservation",
-        "Judicial System and Judicial Activism",
+        "Right to Vote",
+        "Social Justice and Equality",
+        "Role of Judiciary",
       ],
       "The Electoral Process": [
         "Election Commission",
