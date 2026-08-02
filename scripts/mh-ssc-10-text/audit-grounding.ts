@@ -46,6 +46,14 @@ const STOP = new Set(
     .filter(Boolean)
 );
 
+/** Lowercase words a capitalised run may legitimately contain but never END on. */
+const CONNECTOR = new Set(["of", "the", "and", "for", "de"]);
+
+/** Stopword test, CASE-INSENSITIVE: the connector allowance admits lowercase
+ *  "the" into a run, which a case-sensitive `STOP.has` then failed to recognise
+ *  as glue — that is how "So the" survived to be reported as a missing name. */
+const isStop = (w: string) => STOP.has(w[0].toUpperCase() + w.slice(1).toLowerCase());
+
 /** Normalise for containment testing: collapse all whitespace, unify quotes/dashes. */
 function norm(s: string): string {
   return s
@@ -82,25 +90,41 @@ export function ungroundedTokens(solution: string, chapterText: string): Hit[] {
   //    span a full stop, or "Golden Temple. The army" becomes one bogus token and
   //    the real signal drowns. Within a sentence, the FIRST word's capital is
   //    grammatical, so it only counts when it joins a multi-word run.
-  const sentences = sol.split(/(?<=[.!?:;])\s+/);
+  //    A GFM pipe-table cell is a sentence boundary too: concept-map answers are
+  //    authored as tables and every cell opens with a capital, so without this
+  //    one table contributes five bogus "names" ("Casts", "Prepares", …).
+  //    (norm() has already collapsed newlines, so the pipe is the only extra
+  //    boundary needed — row breaks are invisible by this point.)
+  const sentences = sol.split(/(?<=[.!?:;])\s+|\s*\|\s*/);
   const re = /\b([A-Z][a-zA-Z'’-]*(?:\s+(?:of|the|and|for|de)\s+)?(?:\s*[A-Z][a-zA-Z'’-]*)*)/g;
   for (const sentence of sentences) {
     for (const m of sentence.matchAll(re)) {
-      let token = m[1].trim().replace(/[.,;:'"]+$/, "");
+      // Trailing punctuation, then a POSSESSIVE — "'s" is grammar, never part of
+      // the name, but it defeats containment outright and turned every mention of
+      // Savarkar's / Ambedkar's into a hit against a chapter that names them both.
+      let token = m[1].trim().replace(/['’]s\b/g, "").replace(/[.,;:'"]+$/, "");
       const at = m.index ?? 0;
       // Drop a leading sentence-initial capital from a run ("True. At Yalta" →
       // handled by the split; "The League of Nations" → keep "League of Nations").
       let words = token.split(/\s+/);
-      if (at === 0 && words.length > 1 && STOP.has(words[0])) {
+      if (at === 0 && words.length > 1 && isStop(words[0])) {
         words = words.slice(1);
         token = words.join(" ");
       }
+      // The connector allowance above lets a run END on "of"/"the"/"for"/… — and
+      // a name never does. Left in place, "UNESCO for" gets tested against the
+      // chapter as one unit and reported missing even though UNESCO is right
+      // there, and "So the" / "Facilitate the" become hits made of pure glue.
+      // Trimming a trailing connector is strictly noise-reducing: the part of a
+      // name that carries the signal always precedes it.
+      while (words.length && CONNECTOR.has(words[words.length - 1].toLowerCase())) words.pop();
+      token = words.join(" ");
       if (!token || token.length < 4) continue;
       if (words.length === 1) {
-        if (STOP.has(words[0])) continue;
+        if (isStop(words[0])) continue;
         if (at === 0) continue; // bare sentence-initial capital carries no name
       }
-      if (words.every((w) => STOP.has(w))) continue;
+      if (words.every(isStop)) continue;
       if (seen.has(token)) continue;
       seen.add(token);
       if (hayLower.includes(token.toLowerCase())) continue;

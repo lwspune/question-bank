@@ -83,6 +83,92 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Notable Scholars",
     ],
   },
+
+  // Every subtopic list below is the CHAPTER'S OWN section headings. Where a name
+  // already exists on the chapter from the PYQ ingest it is reused verbatim (the
+  // six that had drifted were renamed to the book in the same pass), so PYQ and
+  // practice rows share one axis. Names marked NEW are added by these rows.
+
+  "historiography-indian-10": {
+    id: "historiography-indian-10",
+    chapterName: "Historiography: Indian Tradition",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Historiography_Indian_Tradition.pdf",
+    pdf: HIST,
+    pages: range(16, 23), // printed pp 7-14; Exercise on p22
+    note: "Maharashtra State Board (Class 10) — Historiography: Indian Tradition (Balbharati textbook, History and Political Science)",
+    // The book gives this chapter only TWO numbered sections. §2.2 carries the
+    // colonial / Orientalist / nationalist / Marxist / subaltern strands as
+    // sub-parts rather than as sections of their own — kept as the book has it.
+    subtopics: [
+      "Tradition of Indian Historiography",
+      "Indian Historiography: Various Ideological Frameworks",
+    ],
+  },
+
+  "applied-history-10": {
+    id: "applied-history-10",
+    chapterName: "Applied History",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Applied_History.pdf",
+    pdf: HIST,
+    pages: range(24, 30), // printed pp 15-21; Exercise on p30
+    note: "Maharashtra State Board (Class 10) — Applied History (Balbharati textbook, History and Political Science)",
+    // The four existing subtopics were ALREADY the book's 3.1-3.4 verbatim — this
+    // chapter needed no rename at all. Only 3.5 is new.
+    subtopics: [
+      "What is Applied History",
+      "Applied History and Research in Various Fields",
+      "Applied History and Our Present",
+      "Management of Cultural and Natural Heritage",
+      "Affiliated Professional Fields", // NEW — §3.5
+    ],
+  },
+
+  "working-of-constitution-10": {
+    id: "working-of-constitution-10",
+    chapterName: "Working of the Constitution",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_10_PolSci__Working_of_the_Constitution.pdf",
+    pdf: HIST,
+    pages: range(78, 83), // printed pp 69-74; Exercise on p83
+    note: "Maharashtra State Board (Class 10) — Working of the Constitution (Balbharati textbook, History and Political Science)",
+    // Political Science sections are UNNUMBERED, so these are the book's bold
+    // headings in printed order.
+    subtopics: [
+      "Democracy and Political Maturity",
+      "Right to Vote",
+      "Decentralisation of Democracy", // NEW
+      "Right to Information", // NEW
+      "Social Justice and Equality",
+      "Role of Judiciary",
+    ],
+  },
+
+  "electoral-process-10": {
+    id: "electoral-process-10",
+    chapterName: "The Electoral Process",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_10_PolSci__The_Electoral_Process.pdf",
+    pdf: HIST,
+    pages: range(84, 90), // printed pp 75-81; Exercise spans p89-90
+    note: "Maharashtra State Board (Class 10) — The Electoral Process (Balbharati textbook, History and Political Science)",
+    // NOTE: the chapter also still carries a legacy PYQ-era subtopic "Conduct of
+    // Elections" (8 pyq rows). It matches NO section of this book — those
+    // questions belong across Functions of Election Commission / Code of Conduct /
+    // Types of Elections, which is per-question reclassification rather than a
+    // rename, so it was deliberately left alone. It is absent from this list
+    // because no textbook row should be filed under it.
+    subtopics: [
+      "Election Commission",
+      "Functions of Election Commission", // NEW
+      "Restructuring of the Constituency", // NEW
+      "Code of Conduct", // NEW
+      "Challenges in Free and Fair Elections", // NEW
+      "Electoral Reforms",
+      "Types of Elections", // NEW
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
