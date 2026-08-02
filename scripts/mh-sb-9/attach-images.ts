@@ -18,7 +18,7 @@ import { readFileSync, readdirSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createClient } from "@supabase/supabase-js";
-import { uploadImage } from "../../src/lib/storage/images";
+import { uploadImage, MAX_SIZE_BYTES } from "../../src/lib/storage/images";
 import { ORG_ID, EXAM_ID, OUT, DATA, requireChapter } from "./config";
 
 function loadEnv() {
@@ -44,24 +44,55 @@ function loadManifest(id: string): Record<string, FigSpec> {
   return out;
 }
 
-/** Crop each fractional bbox to a 4x PNG via PyMuPDF; returns {ref: pngPath}. */
+/** Crop each fractional bbox via PyMuPDF; returns {ref: imagePath}. Size-aware. */
 function cropFigures(pdf: string, figs: Record<string, FigSpec>, dir: string): Record<string, string> {
   mkdirSync(dir, { recursive: true });
+  // 4x is right for a small line-art diagram (a Venn diagram, a flowchart), but
+  // the Geography chapters crop NEAR-FULL-PAGE colour maps and photographs — the
+  // Exogenetic-2 landform panorama lands at 7.2 MB against the 1 MB storage cap
+  // (MAX_SIZE_BYTES in src/lib/storage/images) and the upload simply throws. So
+  // step the render scale down until the PNG fits, then fall back to JPEG (also
+  // an ALLOWED_MIME) when even a modest scale won't compress — a printed
+  // photograph is already lossy, so JPEG costs nothing real and stays legible.
+  // Small figures still take the 4x PNG path on the first try, unchanged.
+  // Ported from scripts/mh-ssc-10/attach-images.ts, which hit this first.
   const py = `
-import fitz, json, sys, re
-pdf, figs, outdir = sys.argv[1], json.loads(sys.argv[2]), sys.argv[3]
+import fitz, json, sys, re, io
+from PIL import Image
+pdf, figs, outdir, budget = sys.argv[1], json.loads(sys.argv[2]), sys.argv[3], int(sys.argv[4])
 d = fitz.open(pdf); out = {}
 for ref, spec in figs.items():
     pg = d[spec["page"]]; w, h = pg.rect.width, pg.rect.height
     fx0, fy0, fx1, fy1 = spec["bbox"]
     clip = fitz.Rect(fx0*w, fy0*h, fx1*w, fy1*h)
-    pix = pg.get_pixmap(matrix=fitz.Matrix(4, 4), clip=clip)
     slug = re.sub(r'[^A-Za-z0-9]+', '_', ref).strip('_')
-    p = outdir + "/fig-" + slug + ".png"; pix.save(p); out[ref] = p
+    chosen = None
+    for scale in (4, 3, 2.5, 2):
+        pix = pg.get_pixmap(matrix=fitz.Matrix(scale, scale), clip=clip)
+        data = pix.tobytes("png")
+        if len(data) <= budget:
+            p = outdir + "/fig-" + slug + ".png"
+            open(p, "wb").write(data); chosen = (p, scale, "png", len(data)); break
+    if chosen is None:
+        pix = pg.get_pixmap(matrix=fitz.Matrix(3, 3), clip=clip)
+        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+        for q in (88, 80, 70, 60):
+            buf = io.BytesIO(); img.save(buf, "JPEG", quality=q, optimize=True)
+            if buf.tell() <= budget or q == 60:
+                p = outdir + "/fig-" + slug + ".jpg"
+                open(p, "wb").write(buf.getvalue()); chosen = (p, 3, "jpeg q%d" % q, buf.tell()); break
+    p, scale, fmt, size = chosen
+    print("  %-14s %sx %-9s %6d KB" % (ref, scale, fmt, size // 1024), file=sys.stderr)
+    out[ref] = p
 print(json.dumps(out))
 `;
-  const res = spawnSync("python", ["-c", py, pdf, JSON.stringify(figs), dir], { encoding: "utf8", maxBuffer: 128 * 1024 * 1024 });
+  const budget = Math.floor(MAX_SIZE_BYTES * 0.95); // headroom under the hard cap
+  const res = spawnSync("python", ["-c", py, pdf, JSON.stringify(figs), dir, String(budget)], {
+    encoding: "utf8",
+    maxBuffer: 128 * 1024 * 1024,
+  });
   if (res.status !== 0) throw new Error(`crop failed: ${res.stderr}`);
+  if (res.stderr.trim()) console.log(res.stderr.trimEnd());
   return JSON.parse(res.stdout.trim().split("\n").pop()!);
 }
 
@@ -101,7 +132,8 @@ async function main() {
     if (error) throw new Error(`"${ref}" lookup: ${error.message}`);
     if (!q) { console.log(`  "${ref}": NO committed row — commit the question first; skipping`); missing++; continue; }
     if (q.image_url && !force) { console.log(`  "${ref}": image_url already set — skipping (use --force to overwrite)`); continue; }
-    const path = await uploadImage(client, ORG_ID, readFileSync(pngPath), "image/png");
+    const mime = pngPath.endsWith(".jpg") ? "image/jpeg" : "image/png";
+    const path = await uploadImage(client, ORG_ID, readFileSync(pngPath), mime);
     const { error: uErr } = await client.from("questions").update({ image_url: path }).eq("id", q.id);
     if (uErr) throw new Error(`"${ref}" set image_url: ${uErr.message}`);
     console.log(`  "${ref}": attached ${path}`);

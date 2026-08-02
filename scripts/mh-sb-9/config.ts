@@ -427,6 +427,183 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Volcanoes",
     ],
   },
+
+  "distributional-maps-9": {
+    id: "distributional-maps-9",
+    chapterName: "Distributional Maps",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Distributional_Maps.pdf",
+    pdf: GEOG,
+    pages: range(10, 17), // printed pp 1-8; Exercise spans p16-17
+    note: "Maharashtra State Board (Class 9) — Distributional Maps (Balbharati textbook, Geography)",
+    // "Geographical field-visit" is a book section with no exercise questions.
+    subtopics: [
+      "Purpose and Types of Distributional Maps",
+      "Dot Method",
+      "Choropleth Method",
+      "Isopleth Method",
+    ],
+  },
+
+  "exogenetic-1-9": {
+    id: "exogenetic-1-9",
+    chapterName: "Exogenetic Processes Part-1",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Exogenetic_Processes_1.pdf",
+    pdf: GEOG,
+    pages: range(32, 38), // printed pp 23-29; Exercise on p38
+    note: "Maharashtra State Board (Class 9) — Exogenetic Processes Part-1 (Balbharati textbook, Geography)",
+    subtopics: [
+      "Mechanical Weathering",
+      "Chemical Weathering",
+      "Biological Weathering",
+      "Mass Movements and Erosion",
+    ],
+  },
+
+  "exogenetic-2-9": {
+    id: "exogenetic-2-9",
+    chapterName: "Exogenetic Processes Part-2",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Exogenetic_Processes_2.pdf",
+    pdf: GEOG,
+    pages: range(39, 49), // printed pp 30-40; Exercise spans p48-49
+    note: "Maharashtra State Board (Class 9) — Exogenetic Processes Part-2 (Balbharati textbook, Geography)",
+    subtopics: [
+      "Work of Rivers",
+      "Work of Glaciers",
+      "Work of Wind",
+      "Work of Sea Waves",
+      "Work of Groundwater",
+    ],
+  },
+
+  "precipitation-9": {
+    id: "precipitation-9",
+    chapterName: "Precipitation",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Precipitation.pdf",
+    pdf: GEOG,
+    pages: range(50, 58), // printed pp 41-49; Exercise spans p57-58
+    note: "Maharashtra State Board (Class 9) — Precipitation (Balbharati textbook, Geography)",
+    subtopics: [
+      "Forms of Precipitation — Snow, Hail and Rain",
+      "Types of Rainfall",
+      "Fog, Dew and Frost",
+      "Measurement of Rainfall",
+      "Acid Rain and Effects of Precipitation",
+    ],
+  },
+
+  "sea-water-9": {
+    id: "sea-water-9",
+    chapterName: "The Properties of Sea Water",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Properties_of_Sea_Water.pdf",
+    pdf: GEOG,
+    pages: range(59, 65), // printed pp 50-56; Exercise on p65
+    note: "Maharashtra State Board (Class 9) — The Properties of Sea Water (Balbharati textbook, Geography)",
+    subtopics: [
+      "Salinity of Sea Water",
+      "Temperature of Sea Water",
+      "Density of Sea Water",
+    ],
+  },
+
+  "idl-9": {
+    id: "idl-9",
+    chapterName: "International Date Line",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__International_Date_Line.pdf",
+    pdf: GEOG,
+    pages: range(66, 72), // printed pp 57-63; Exercise on p71
+    note: "Maharashtra State Board (Class 9) — International Date Line (Balbharati textbook, Geography)",
+    // The ONLY Geography chapter with genuine four-option MCQs (its Q2).
+    subtopics: [
+      "The Need for a Date Line",
+      "The International Date Line and Its Course",
+      "Crossing the IDL and Its Importance",
+    ],
+  },
+
+  "economics-intro-9": {
+    id: "economics-intro-9",
+    chapterName: "Introduction to Economics",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Introduction_to_Economics.pdf",
+    pdf: GEOG,
+    pages: range(73, 75), // printed pp 64-66; Exercise on p75
+    note: "Maharashtra State Board (Class 9) — Introduction to Economics (Balbharati textbook, Geography)",
+    subtopics: [
+      "Meaning and Scope of Economics",
+      "Types of Economy",
+      "Factors Affecting an Economy and Globalisation",
+    ],
+  },
+
+  "trade-9": {
+    id: "trade-9",
+    chapterName: "Trade",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Trade.pdf",
+    pdf: GEOG,
+    pages: range(76, 83), // printed pp 67-74; Exercise on p83
+    note: "Maharashtra State Board (Class 9) — Trade (Balbharati textbook, Geography)",
+    subtopics: [
+      "Barter System and the Origins of Trade",
+      "Types of Trade — Wholesale and Retail",
+      "Domestic and International Trade",
+      "International Trade Organisations",
+      "Balance of Trade and Marketing",
+    ],
+  },
+
+  "urbanisation-9": {
+    id: "urbanisation-9",
+    chapterName: "Urbanisation",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Urbanisation.pdf",
+    pdf: GEOG,
+    pages: range(84, 90), // printed pp 75-81; Exercise spans p89-90
+    note: "Maharashtra State Board (Class 9) — Urbanisation (Balbharati textbook, Geography)",
+    subtopics: [
+      "The Process of Urbanisation",
+      "Causes of Urbanisation",
+      "Advantages of Urbanisation",
+      "Problems of Urbanisation",
+    ],
+  },
+
+  "transport-communication-9": {
+    id: "transport-communication-9",
+    chapterName: "Transport and Communication",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Transport_and_Communication.pdf",
+    pdf: GEOG,
+    pages: range(91, 96), // printed pp 82-87; Exercise on p96
+    note: "Maharashtra State Board (Class 9) — Transport and Communication (Balbharati textbook, Geography)",
+    subtopics: [
+      "Means of Transport",
+      "Importance of Transport",
+      "Means of Communication",
+    ],
+  },
+
+  "tourism-9": {
+    id: "tourism-9",
+    chapterName: "Tourism",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Tourism.pdf",
+    pdf: GEOG,
+    pages: range(97, 105), // printed pp 88-96; Exercise spans p103-104
+    note: "Maharashtra State Board (Class 9) — Tourism (Balbharati textbook, Geography)",
+    subtopics: [
+      "Types of Tourism",
+      "Domestic and International Tourism",
+      "Importance and Development of Tourism in India",
+      "Effects of Tourism",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
