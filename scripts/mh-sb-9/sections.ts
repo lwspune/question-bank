@@ -85,6 +85,44 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   "international-problems-9": [
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex "] },
   ],
+  // Geography — the book heads its block "Exercise" (singular), but the outline
+  // shape is identical: one block per chapter, no solved-example bucket.
+  "endogenetic-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "distributional-maps-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "exogenetic-1-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "exogenetic-2-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "precipitation-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sea-water-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "idl-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "economics-intro-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "trade-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "urbanisation-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "transport-communication-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "tourism-9": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

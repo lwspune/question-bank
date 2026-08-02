@@ -51,6 +51,15 @@ void PART2; // referenced by later (Geometry) chapters as they are added
 // NOT the pre-split `9th_Chapters/` folder names, which paraphrase (that folder's
 // splits also drop the odd opener page, so we render from the whole book).
 const HIST = join(SOURCE_ROOT, "9th_Hist_SB.pdf"); // History + Political Science
+// Geography — 12 chapters over four areas (Practical / Physical / General / Human),
+// same +9 page offset, and like the History book it ships NO answers section.
+// Structurally it is the HARDEST of the three: only 5 of its ~217 questions are
+// four-option MCQs (Ch.7), two more "tick the correct option" blocks print just
+// THREE options (Ch.2, Ch.6) and so ship as free-response with the options in the
+// stem, and its figures are LOAD-BEARING — several questions ("study the map and
+// answer", "identify the landforms in the diagrams") are unanswerable without the
+// printed graphic, unlike the humanities book where one figure was optional colour.
+const GEOG = join(SOURCE_ROOT, "9th_Geog_SB.pdf"); // Geography
 
 export type Chapter = {
   id: string; // slug → data/<id>.* + source_file
@@ -389,6 +398,210 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Environmental Degradation and Conservation",
       "Terrorism",
       "Refugees",
+    ],
+  },
+
+  // ── Geography (9th_Geog_SB.pdf) ─────────────────────────────────────────────
+  // PILOT chapter, ingested first so the Geography question shapes could be judged
+  // before committing the other 11. Chapter ranges for the full book, all verified
+  // by checking the page after each range is the next chapter's opener (printed →
+  // 0-based PDF = +9): 1 Distributional Maps 10-17 · 2 Endogenetic 18-31 ·
+  // 3 Exogenetic-1 32-38 · 4 Exogenetic-2 39-49 · 5 Precipitation 50-58 ·
+  // 6 Sea Water 59-65 · 7 IDL 66-72 · 8 Economics 73-75 · 9 Trade 76-83 ·
+  // 10 Urbanisation 84-90 · 11 Transport 91-96 · 12 Tourism 97-105.
+  "endogenetic-9": {
+    id: "endogenetic-9",
+    chapterName: "Endogenetic Movements",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Endogenetic_Movements.pdf",
+    pdf: GEOG,
+    pages: range(18, 31), // printed pp 9-22; Exercise on p29
+    note: "Maharashtra State Board (Class 9) — Endogenetic Movements (Balbharati textbook, Geography)",
+    // The book's own section arc: classification → slow (orogenic → folds/blocks/
+    // rift valleys; epeirogenic) → sudden (earthquakes) → volcanoes.
+    subtopics: [
+      "Classification of Internal Movements",
+      "Mountain-building Movements — Folds, Blocks and Rift Valleys",
+      "Continent-building Movements",
+      "Earthquakes",
+      "Volcanoes",
+    ],
+  },
+
+  "distributional-maps-9": {
+    id: "distributional-maps-9",
+    chapterName: "Distributional Maps",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Distributional_Maps.pdf",
+    pdf: GEOG,
+    pages: range(10, 17), // printed pp 1-8; Exercise spans p16-17
+    note: "Maharashtra State Board (Class 9) — Distributional Maps (Balbharati textbook, Geography)",
+    // "Geographical field-visit" is a book section with no exercise questions.
+    subtopics: [
+      "Purpose and Types of Distributional Maps",
+      "Dot Method",
+      "Choropleth Method",
+      "Isopleth Method",
+    ],
+  },
+
+  "exogenetic-1-9": {
+    id: "exogenetic-1-9",
+    chapterName: "Exogenetic Processes Part-1",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Exogenetic_Processes_1.pdf",
+    pdf: GEOG,
+    pages: range(32, 38), // printed pp 23-29; Exercise on p38
+    note: "Maharashtra State Board (Class 9) — Exogenetic Processes Part-1 (Balbharati textbook, Geography)",
+    subtopics: [
+      "Mechanical Weathering",
+      "Chemical Weathering",
+      "Biological Weathering",
+      "Mass Movements and Erosion",
+    ],
+  },
+
+  "exogenetic-2-9": {
+    id: "exogenetic-2-9",
+    chapterName: "Exogenetic Processes Part-2",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Exogenetic_Processes_2.pdf",
+    pdf: GEOG,
+    pages: range(39, 49), // printed pp 30-40; Exercise spans p48-49
+    note: "Maharashtra State Board (Class 9) — Exogenetic Processes Part-2 (Balbharati textbook, Geography)",
+    subtopics: [
+      "Work of Rivers",
+      "Work of Glaciers",
+      "Work of Wind",
+      "Work of Sea Waves",
+      "Work of Groundwater",
+    ],
+  },
+
+  "precipitation-9": {
+    id: "precipitation-9",
+    chapterName: "Precipitation",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Precipitation.pdf",
+    pdf: GEOG,
+    pages: range(50, 58), // printed pp 41-49; Exercise spans p57-58
+    note: "Maharashtra State Board (Class 9) — Precipitation (Balbharati textbook, Geography)",
+    subtopics: [
+      "Forms of Precipitation — Snow, Hail and Rain",
+      "Types of Rainfall",
+      "Fog, Dew and Frost",
+      "Measurement of Rainfall",
+      "Acid Rain and Effects of Precipitation",
+    ],
+  },
+
+  "sea-water-9": {
+    id: "sea-water-9",
+    chapterName: "The Properties of Sea Water",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Properties_of_Sea_Water.pdf",
+    pdf: GEOG,
+    pages: range(59, 65), // printed pp 50-56; Exercise on p65
+    note: "Maharashtra State Board (Class 9) — The Properties of Sea Water (Balbharati textbook, Geography)",
+    subtopics: [
+      "Salinity of Sea Water",
+      "Temperature of Sea Water",
+      "Density of Sea Water",
+    ],
+  },
+
+  "idl-9": {
+    id: "idl-9",
+    chapterName: "International Date Line",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__International_Date_Line.pdf",
+    pdf: GEOG,
+    pages: range(66, 72), // printed pp 57-63; Exercise on p71
+    note: "Maharashtra State Board (Class 9) — International Date Line (Balbharati textbook, Geography)",
+    // The ONLY Geography chapter with genuine four-option MCQs (its Q2).
+    subtopics: [
+      "The Need for a Date Line",
+      "The International Date Line and Its Course",
+      "Crossing the IDL and Its Importance",
+    ],
+  },
+
+  "economics-intro-9": {
+    id: "economics-intro-9",
+    chapterName: "Introduction to Economics",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Introduction_to_Economics.pdf",
+    pdf: GEOG,
+    pages: range(73, 75), // printed pp 64-66; Exercise on p75
+    note: "Maharashtra State Board (Class 9) — Introduction to Economics (Balbharati textbook, Geography)",
+    subtopics: [
+      "Meaning and Scope of Economics",
+      "Types of Economy",
+      "Factors Affecting an Economy and Globalisation",
+    ],
+  },
+
+  "trade-9": {
+    id: "trade-9",
+    chapterName: "Trade",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Trade.pdf",
+    pdf: GEOG,
+    pages: range(76, 83), // printed pp 67-74; Exercise on p83
+    note: "Maharashtra State Board (Class 9) — Trade (Balbharati textbook, Geography)",
+    subtopics: [
+      "Barter System and the Origins of Trade",
+      "Types of Trade — Wholesale and Retail",
+      "Domestic and International Trade",
+      "International Trade Organisations",
+      "Balance of Trade and Marketing",
+    ],
+  },
+
+  "urbanisation-9": {
+    id: "urbanisation-9",
+    chapterName: "Urbanisation",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Urbanisation.pdf",
+    pdf: GEOG,
+    pages: range(84, 90), // printed pp 75-81; Exercise spans p89-90
+    note: "Maharashtra State Board (Class 9) — Urbanisation (Balbharati textbook, Geography)",
+    subtopics: [
+      "The Process of Urbanisation",
+      "Causes of Urbanisation",
+      "Advantages of Urbanisation",
+      "Problems of Urbanisation",
+    ],
+  },
+
+  "transport-communication-9": {
+    id: "transport-communication-9",
+    chapterName: "Transport and Communication",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Transport_and_Communication.pdf",
+    pdf: GEOG,
+    pages: range(91, 96), // printed pp 82-87; Exercise on p96
+    note: "Maharashtra State Board (Class 9) — Transport and Communication (Balbharati textbook, Geography)",
+    subtopics: [
+      "Means of Transport",
+      "Importance of Transport",
+      "Means of Communication",
+    ],
+  },
+
+  "tourism-9": {
+    id: "tourism-9",
+    chapterName: "Tourism",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_09_Geog__Tourism.pdf",
+    pdf: GEOG,
+    pages: range(97, 105), // printed pp 88-96; Exercise spans p103-104
+    note: "Maharashtra State Board (Class 9) — Tourism (Balbharati textbook, Geography)",
+    subtopics: [
+      "Types of Tourism",
+      "Domestic and International Tourism",
+      "Importance and Development of Tourism in India",
+      "Effects of Tourism",
     ],
   },
 };
