@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   chapterKey,
+  isTopLevelSection,
   parseChapterKey,
   rollUpChapterStatus,
+  sectionGroupKey,
   tallyByExam,
 } from "../src/lib/syllabus/summary";
 
@@ -45,6 +47,34 @@ describe("tallyByExam", () => {
       not: 0,
       unassessed: 1,
     });
+  });
+});
+
+describe("sectionGroupKey / isTopLevelSection", () => {
+  it("rolls a sub-section up into its parent section", () => {
+    expect(sectionGroupKey("1.2.1")).toBe("1.2");
+    expect(sectionGroupKey("13.8.4")).toBe("13.8");
+  });
+
+  it("leaves a top-level section as its own group, so nothing is dropped", () => {
+    expect(sectionGroupKey("1.2")).toBe("1.2");
+    expect(isTopLevelSection("1.2")).toBe(true);
+    expect(isTopLevelSection("1.2.1")).toBe(false);
+  });
+
+  it("groups a lettered NCERT-style ref under its numeric parent", () => {
+    // "5.4 (a)" must join 5.4, not become a singleton group.
+    expect(sectionGroupKey("5.4 (a)")).toBe("5.4");
+    expect(sectionGroupKey("5.2.2 (d)")).toBe("5.2");
+  });
+
+  it("handles depth beyond three levels", () => {
+    expect(sectionGroupKey("1.2.3.4")).toBe("1.2");
+  });
+
+  it("falls back to the ref itself when unparseable, rather than losing the row", () => {
+    expect(sectionGroupKey("Misc")).toBe("Misc");
+    expect(isTopLevelSection("Misc")).toBe(true);
   });
 });
 

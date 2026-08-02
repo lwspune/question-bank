@@ -1,6 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
+  isTopLevelSection,
   rollUpChapterStatus,
+  sectionGroupKey,
   tallyByExam,
   SYLLABUS_EXAMS,
   type ChapterStatus,
@@ -19,12 +21,21 @@ export type ConceptRow = {
   seq: number;
 };
 
+/** One level below the chapter: a printed book section and everything under it. */
+export type SectionRow = {
+  sectionNo: string;
+  title: string;
+  conceptCount: number;
+  status: Record<SyllabusExam, ChapterStatus>;
+};
+
 export type ChapterRow = {
   cls: number;
   chapterNo: number;
   chapterName: string;
   conceptCount: number;
   status: Record<SyllabusExam, ChapterStatus>;
+  sections: SectionRow[];
 };
 
 export type SyllabusMatrix = {
@@ -105,36 +116,71 @@ export async function loadSyllabusMatrix(
     m.set(l.exam, l.status);
   }
 
-  const chapters = new Map<string, { row: Omit<ChapterRow, "status">; ids: string[] }>();
+  type ChapterAcc = {
+    cls: number;
+    chapterNo: number;
+    chapterName: string;
+    ids: string[];
+    sections: Map<string, { title: string; ids: string[]; firstSeq: number }>;
+  };
+
+  const chapters = new Map<string, ChapterAcc>();
   for (const c of scoped) {
     const key = `${c.class}|${c.chapter_no}`;
     let entry = chapters.get(key);
     if (!entry) {
       entry = {
-        row: {
-          cls: c.class,
-          chapterNo: c.chapter_no,
-          chapterName: c.chapter_name,
-          conceptCount: 0,
-        },
+        cls: c.class,
+        chapterNo: c.chapter_no,
+        chapterName: c.chapter_name,
         ids: [],
+        sections: new Map(),
       };
       chapters.set(key, entry);
     }
-    entry.row.conceptCount += 1;
     entry.ids.push(c.id);
+
+    const groupKey = sectionGroupKey(c.section_no);
+    let section = entry.sections.get(groupKey);
+    if (!section) {
+      // Title defaults to the ref so a group whose own N.M row is missing from
+      // the book still renders with something meaningful.
+      section = { title: groupKey, ids: [], firstSeq: c.seq };
+      entry.sections.set(groupKey, section);
+    }
+    section.ids.push(c.id);
+    section.firstSeq = Math.min(section.firstSeq, c.seq);
+    if (isTopLevelSection(c.section_no)) section.title = c.concept;
   }
 
+  const statusFor = (ids: string[]) => {
+    const status = {} as Record<SyllabusExam, ChapterStatus>;
+    for (const exam of SYLLABUS_EXAMS) {
+      status[exam] = rollUpChapterStatus(
+        ids.map((id) => byConcept.get(id)?.get(exam) ?? null),
+      );
+    }
+    return status;
+  };
+
   const rows: ChapterRow[] = [...chapters.values()]
-    .map(({ row, ids }) => {
-      const status = {} as Record<SyllabusExam, ChapterStatus>;
-      for (const exam of SYLLABUS_EXAMS) {
-        status[exam] = rollUpChapterStatus(
-          ids.map((id) => byConcept.get(id)?.get(exam) ?? null),
-        );
-      }
-      return { ...row, status };
-    })
+    .map((entry) => ({
+      cls: entry.cls,
+      chapterNo: entry.chapterNo,
+      chapterName: entry.chapterName,
+      conceptCount: entry.ids.length,
+      status: statusFor(entry.ids),
+      sections: [...entry.sections.entries()]
+        // Book order, not string order: "1.10" must follow "1.9", which a
+        // lexical sort on the ref would reverse.
+        .sort((a, b) => a[1].firstSeq - b[1].firstSeq)
+        .map(([sectionNo, s]) => ({
+          sectionNo,
+          title: s.title,
+          conceptCount: s.ids.length,
+          status: statusFor(s.ids),
+        })),
+    }))
     .sort((a, b) => a.cls - b.cls || a.chapterNo - b.chapterNo);
 
   const tallies = {} as Record<SyllabusExam, ExamTally>;
