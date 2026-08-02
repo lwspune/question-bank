@@ -12,6 +12,8 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { NCERT_TO_SB } from "./exam-chapter-map";
+import { bestMatch } from "./match-sections";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -19,6 +21,7 @@ function loadEnv() {
 
 type Concept = {
   id: string;
+  source: string;
   class: number;
   chapter_no: number;
   chapter_name: string;
@@ -47,9 +50,12 @@ async function main() {
     return out;
   }
 
+  // `source` is REQUIRED in the payload. Without it the State Board spine and the
+  // NCERT/exam spines merge on (class, chapter_no) — State Board Ch.1 and NCERT
+  // Ch.1 became one 54-row chapter, silently interleaving two different books.
   const concepts = await all<Concept>(
     "syllabus_concepts",
-    "id,class,chapter_no,chapter_name,section_no,concept,seq",
+    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
   );
   const links = await all<Link>("syllabus_concept_exams", "concept_id,exam,status,note");
 
@@ -62,7 +68,16 @@ async function main() {
   const examIndex = new Map(exams.map((e, i) => [e, i]));
   const STATUS = ["full", "partial", "not"];
 
-  const notes: Record<string, string> = {};
+  // Notes are PER CONCEPT, deduplicated through a string pool.
+  //
+  // An earlier version keyed them per (source, chapter, exam) on the assumption
+  // that rulings are chapter-grained. That holds for the State Board and exam
+  // spines but NOT for NCERT, whose rulings are per SECTION: Vitamins (10.4) and
+  // Hormones (10.6) share chapter 10, so Hormones displayed the Vitamins note.
+  // The pool keeps the file small without letting one ruling stand in for another.
+  const notePool: string[] = [];
+  const poolIndex = new Map<string, number>();
+  const noteOf: Record<string, number> = {};
   const compactLinks: number[][] = [];
   for (const l of links) {
     const ci = idIndex.get(l.concept_id);
@@ -70,19 +85,60 @@ async function main() {
     if (ci === undefined || ei === undefined) continue;
     compactLinks.push([ci, ei, STATUS.indexOf(l.status)]);
     if (l.note) {
-      // One note per (chapter, exam) — they are authored at chapter grain, so
-      // keeping 864 copies would bloat the file with duplicates.
-      const c = concepts[ci];
-      notes[`${c.class}-${c.chapter_no}-${ei}`] ??= l.note;
+      let pi = poolIndex.get(l.note);
+      if (pi === undefined) {
+        pi = notePool.length;
+        notePool.push(l.note);
+        poolIndex.set(l.note, pi);
+      }
+      noteOf[`${ci}|${ei}`] = pi;
     }
   }
 
+  // State Board first — it is the baseline every other spine is measured against.
+  const sources = [...new Set(concepts.map((c) => c.source))].sort((a, b) =>
+    a === "MH State Board" ? -1 : b === "MH State Board" ? 1 : a.localeCompare(b),
+  );
+  const srcIndex = new Map(sources.map((s, i) => [s, i]));
+
+  // Which State Board SUBTOPIC covers each NCERT subtopic. Candidates are drawn
+  // only from the mapped State Board chapter(s) — matching across the whole book
+  // would pair headings that merely share a word.
+  const sbByChapter = new Map<string, { sectionNo: string; title: string }[]>();
+  for (const c of concepts) {
+    if (c.source !== "MH State Board") continue;
+    const k = `${c.class}-${c.chapter_no}`;
+    if (!sbByChapter.has(k)) sbByChapter.set(k, []);
+    sbByChapter.get(k)!.push({ sectionNo: c.section_no, title: c.concept });
+  }
+  const ncertMatch: Record<string, [string, string] | null> = {};
+  for (const c of concepts) {
+    if (c.source !== "NCERT") continue;
+    const mappedChapters = NCERT_TO_SB[`${c.class}-${c.chapter_no}`] ?? [];
+    const candidates = mappedChapters.flatMap((k) => sbByChapter.get(k) ?? []);
+    const m = bestMatch(c.concept, candidates);
+    ncertMatch[`${c.class}|${c.section_no}`] = m ? [m.sectionNo, m.title] : null;
+  }
+  const matched = Object.values(ncertMatch).filter(Boolean).length;
+  console.log(`  NCERT->State Board subtopic matches: ${matched}/${Object.keys(ncertMatch).length}`);
+
   const payload = {
+    ncertMatch,
     exams,
+    sources,
     statuses: STATUS,
-    concepts: concepts.map((c) => [c.class, c.chapter_no, c.chapter_name, c.section_no, c.concept, c.seq]),
+    concepts: concepts.map((c) => [
+      srcIndex.get(c.source)!,
+      c.class,
+      c.chapter_no,
+      c.chapter_name,
+      c.section_no,
+      c.concept,
+      c.seq,
+    ]),
     links: compactLinks,
-    notes,
+    notePool,
+    noteOf,
     generatedAt: new Date().toISOString().slice(0, 16).replace("T", " "),
   };
 
@@ -181,6 +237,8 @@ function render(dataJson: string): string {
 <div class="wrap">
   <h1>Syllabus map — Chemistry</h1>
   <p class="sub" id="headline"></p>
+  <div class="toolbar" id="spineChips"></div>
+  <p class="sub" id="spineNote" style="font-size:12px"></p>
   <p class="sub" style="font-size:12px">
     <strong>What this page is:</strong> a list of every numbered section of the Maharashtra
     State Board Std XI + XII Chemistry textbooks, and for each one, whether a given exam
@@ -196,20 +254,23 @@ function render(dataJson: string): string {
     <span><span class="cell none">–</span> not yet assessed</span>
   </div>
 
-  <h2>How each exam draws on the State Board syllabus</h2>
+  <h2>Is each exam covered by the State Board syllabus?</h2>
   <p class="sub" style="font-size:12px;margin:0 0 8px">
-    Every row counts the <strong>same 864 State Board concepts</strong> — the columns are what
-    that exam does with them. Read a row as a sentence:
-    <em>"Of the 864 State Board concepts, MHT-CET requires 730, partly requires 39,
-    and does not require 95."</em>
-    Nothing here counts material outside the State Board books.
+    Each row counts <strong>that exam's own subtopics</strong> — so the base differs per row,
+    which is the point. Read a row as a sentence:
+    <em>"JEE Mains asks 150 subtopics; the State Board covers 136, partly covers 2,
+    and does not cover 12."</em>
+    The last column is the gap to work on.
   </p>
   <div class="box" style="max-height:none"><table id="coverage"></table></div>
 
-  <h2>Gap view — taught by the State Board, not required by…</h2>
+  <div id="sbOnly">
+  <h2>Gap — subtopics the State Board does not fully cover</h2>
   <div class="toolbar" id="gapChips"></div>
   <div id="gapOut"></div>
 
+  </div>
+  <div id="spineSummary"></div>
   <h2>Chapter → section → concept</h2>
   <div class="toolbar">
     <input type="search" id="q" placeholder="Filter concepts…" aria-label="Filter concepts">
@@ -218,12 +279,47 @@ function render(dataJson: string): string {
   </div>
   <div class="box"><table id="matrix"></table></div>
 
+  <h2>NCERT Std XI + XII — which State Board subtopic covers each</h2>
+  <p class="sub" style="font-size:12px">
+    Rows are NCERT sections. The right-hand columns name the <strong>State Board subtopic</strong>
+    that covers each one. Matching is automatic (title overlap within the mapped chapter) and
+    deliberately conservative — a weak overlap is reported as <strong>no match</strong> rather
+    than asserting a correspondence that may not hold, so blanks include both real gaps and
+    wording mismatches. Treat it as a review list.
+  </p>
+  <p class="note" style="margin-bottom:10px">
+    <strong>Why this count differs from the gap section above.</strong>
+    That section reports <strong>adjudicated rulings</strong> — sections read by hand and judged
+    uncovered. This table reports <strong>title matches</strong> — whether the matcher could name
+    the State Board subtopic. They measure different things, so an unmatched row is usually
+    <em>not</em> a gap: most unmatched sections are ruled fully covered, and the matcher simply
+    could not pair the titles. Only rows badged <span class="cell not" style="display:inline-block">No</span>
+    are adjudicated gaps.
+  </p>
+  <div class="toolbar">
+    <input type="search" id="nq" placeholder="Filter NCERT subtopics…" aria-label="Filter NCERT subtopics">
+    <label class="sub"><input type="checkbox" id="nOnlyGaps"> show only unmatched</label>
+    <span class="sub" id="ncount"></span>
+  </div>
+  <div class="box"><table id="ncert"></table></div>
+
   <p class="foot" id="foot"></p>
 </div>
 <script id="data" type="application/json">${dataJson}</script>
 <script>
 const D = JSON.parse(document.getElementById('data').textContent);
-const EXAMS = D.exams, ST = D.statuses;
+const EXAMS = D.exams, ST = D.statuses, SOURCES = D.sources;
+const SB = 'MH State Board';
+/** Note for one concept under one exam, or '' — resolved through the string pool. */
+function noteFor(conceptIdx, exam){
+  const pi = D.noteOf[conceptIdx+'|'+EXAMS.indexOf(exam)];
+  return pi===undefined ? '' : D.notePool[pi];
+}
+// Which spine is on screen. The State Board spine and the exam/NCERT spines
+// answer OPPOSITE questions, so they can never share one table:
+//   State Board spine -> rows are SB concepts; "does exam X require this?"
+//   other spine       -> rows are what X teaches/asks; "does the SB cover it?"
+let spine = SB;
 /**
  * Every ADJUDICATED state gets a word and a colour; only the UNKNOWN state gets a
  * grey dash. The first cut had this inverted — 'not' rendered as an em-dash in
@@ -237,9 +333,10 @@ const SHORT = {full:'Yes', partial:'Part', not:'No'};
 const LABEL = {full:'Required by this exam', partial:'Partly required by this exam',
                not:'NOT required by this exam (reviewed)'};
 
-// concepts: [class, chapterNo, chapterName, sectionNo, concept, seq]
-const C = D.concepts.map((r,i)=>({i,cls:r[0],ch:r[1],chName:r[2],sec:r[3],name:r[4],seq:r[5],st:{}}));
-for (const [ci,ei,si] of D.links) C[ci].st[EXAMS[ei]] = ST[si];
+// concepts: [sourceIdx, class, chapterNo, chapterName, sectionNo, concept, seq]
+const ALL = D.concepts.map((r,i)=>({i,src:SOURCES[r[0]],cls:r[1],ch:r[2],chName:r[3],sec:r[4],name:r[5],seq:r[6],st:{}}));
+for (const [ci,ei,si] of D.links) ALL[ci].st[EXAMS[ei]] = ST[si];
+let C = ALL.filter(c=>c.src===spine);
 
 const groupKey = s => { const m=/^(\\d+)\\.(\\d+)/.exec(String(s).trim()); return m? m[1]+'.'+m[2] : String(s).trim(); };
 const isTop = s => groupKey(s) === String(s).trim();
@@ -253,24 +350,38 @@ function roll(list, exam){
 }
 
 // build chapter -> section -> concepts
-const chapters = [];
-const byCh = new Map();
-for (const c of C){
-  const k = c.cls+'-'+c.ch;
-  let ch = byCh.get(k);
-  if(!ch){ ch={key:k,cls:c.cls,ch:c.ch,name:c.chName,items:[],secs:new Map()}; byCh.set(k,ch); chapters.push(ch); }
-  ch.items.push(c);
-  const gk = groupKey(c.sec);
-  let s = ch.secs.get(gk);
-  if(!s){ s={key:gk,title:gk,items:[],seq:c.seq}; ch.secs.set(gk,s); }
-  s.items.push(c); s.seq=Math.min(s.seq,c.seq);
-  if(isTop(c.sec)) s.title=c.name;
+let chapters = [], byCh = new Map();
+function rebuild(){
+  C = ALL.filter(c=>c.src===spine);
+  chapters = []; byCh = new Map();
+  for (const c of C){
+    // Keyed within the spine only. Keying across spines merged State Board Ch.1
+    // with NCERT Ch.1 into one 54-row chapter.
+    const k = c.cls+'-'+c.ch;
+    let ch = byCh.get(k);
+    if(!ch){ ch={key:k,cls:c.cls,ch:c.ch,name:c.chName,items:[],secs:new Map()}; byCh.set(k,ch); chapters.push(ch); }
+    ch.items.push(c);
+    const gk = groupKey(c.sec);
+    let s = ch.secs.get(gk);
+    if(!s){ s={key:gk,title:gk,items:[],seq:c.seq}; ch.secs.set(gk,s); }
+    s.items.push(c); s.seq=Math.min(s.seq,c.seq);
+    if(isTop(c.sec)) s.title=c.name;
+  }
+  chapters.sort((a,b)=>a.cls-b.cls||a.ch-b.ch);
+  for(const ch of chapters) ch.sections=[...ch.secs.values()].sort((a,b)=>a.seq-b.seq);
 }
-chapters.sort((a,b)=>a.cls-b.cls||a.ch-b.ch);
-for(const ch of chapters) ch.sections=[...ch.secs.values()].sort((a,b)=>a.seq-b.seq);
+rebuild();
 
-document.getElementById('headline').textContent =
-  C.length+' concepts · '+chapters.length+' chapters · '+EXAMS.length+' exams';
+/** The exam columns that make sense for the current spine. */
+function activeExams(){ return spine===SB ? EXAMS.filter(e=>e!==SB) : [SB]; }
+
+function drawHeadline(){
+  document.getElementById('headline').textContent =
+    C.length+' concepts · '+chapters.length+' chapters · spine: '+spine;
+  document.getElementById('spineNote').innerHTML = spine===SB
+    ? 'Rows are <strong>State Board</strong> concepts. Each column asks: <em>does that exam require this?</em>'
+    : 'Rows are what <strong>'+spine.replace(' bank taxonomy','')+'</strong> teaches or asks. One column asks: <em>does the State Board syllabus cover it?</em> Anything marked <strong>No</strong> is a gap.';
+}
 document.getElementById('foot').textContent =
   'Generated '+D.generatedAt+' from the live bank. Prototype for layout iteration — the shipped page is /dashboard/syllabus.';
 
@@ -284,21 +395,31 @@ function cell(st){
 
 /* coverage */
 (function(){
-  // Column headers name the RELATIONSHIP ("does not require"), not a bare "Not".
-  // "Not" next to an exam name reads as "95 exam topics missing from the State
-  // Board" — the exact inversion of what the number means.
-  let h='<thead><tr><th>Exam</th>'+
-        '<th class="num">Requires</th><th class="num">Partly requires</th>'+
-        '<th class="num">Does <u>not</u> require</th><th class="num">Not yet assessed</th>'+
-        '<th class="num">State Board total</th><th>Share of the 864</th></tr></thead><tbody>';
-  for(const e of EXAMS){
-    let f=0,p=0,n=0,u=0;
-    for(const c of C){ const s=c.st[e]; if(s==='full')f++; else if(s==='partial')p++; else if(s==='not')n++; else u++; }
-    const pc=x=>(x/C.length*100).toFixed(1)+'%';
-    h+='<tr><th>'+e+'</th><td class="num">'+f+'</td><td class="num">'+p+'</td>'+
-       '<td class="num">'+n+'</td><td class="num">'+(u||'—')+'</td>'+
-       '<td class="num" style="color:var(--muted)">'+C.length+'</td>'+
-       '<td><span class="bar" title="'+pc(f)+' required, '+pc(p)+' partly, '+pc(n)+' not required">'+
+  // Rows are each EXAM's / book's OWN subtopics; the columns say how many of them
+  // the State Board syllabus teaches. The base differs per row on purpose — that
+  // is the point. An earlier version counted the 864 State Board concepts on every
+  // row, which answered the opposite question and read as "95 CET topics missing
+  // from the State Board" when it meant "95 State Board topics CET never asks".
+  let h='<thead><tr><th>Exam / book</th>'+
+        '<th class="num">Its own subtopics</th>'+
+        '<th class="num">Covered in State Board</th>'+
+        '<th class="num">Partly</th>'+
+        '<th class="num">NOT covered (gap)</th>'+
+        '<th>Share covered</th></tr></thead><tbody>';
+  for(const src of SOURCES){
+    if(src===SB) continue;                       // the State Board vs itself is meaningless
+    const mine = ALL.filter(c=>c.src===src);
+    let f=0,p=0,n=0;
+    for(const c of mine){ const st=c.st[SB]; if(st==='full')f++; else if(st==='partial')p++; else if(st==='not')n++; }
+    const pc=x=>(x/mine.length*100).toFixed(1)+'%';
+    const label=src.replace(' bank taxonomy','');
+    const sub=src.endsWith('bank taxonomy')?'from the question bank':'Std XI + XII sections';
+    h+='<tr><th>'+label+'<div class="sub" style="font-size:11px;margin:0">'+sub+'</div></th>'+
+       '<td class="num">'+mine.length+'</td>'+
+       '<td class="num">'+f+'</td>'+
+       '<td class="num">'+(p||'—')+'</td>'+
+       '<td class="num"><strong'+(n?' style="color:var(--not-fg)"':'')+'>'+n+'</strong></td>'+
+       '<td><span class="bar" title="'+pc(f)+' covered, '+pc(p)+' partly, '+pc(n)+' not covered">'+
        '<i style="width:'+pc(f)+';background:var(--full-fg)"></i>'+
        '<i style="width:'+pc(p)+';background:var(--part-fg)"></i>'+
        '<i style="width:'+pc(n)+';background:var(--not-fg)"></i></span></td></tr>';
@@ -308,49 +429,46 @@ function cell(st){
 
 /* gap view */
 let gapExam=null;
+// Chips are SPINES, not exams-on-the-State-Board-spine. The section lists the
+// selected exam's OWN subtopics that the State Board does not fully cover, so it
+// reads in the same direction as the summary table above it. An earlier version
+// listed the reverse (State Board chapters the exam does not need), which
+// contradicted the table directly above and confused which way the gap ran.
+const GAP_SOURCES = SOURCES.filter(x=>x!==SB);
 const chipBox=document.getElementById('gapChips');
-for(const e of EXAMS){
-  if(e==='MH State Board') continue;
+for(const src of GAP_SOURCES){
   const b=document.createElement('button');
-  b.className='chip'; b.textContent=e; b.setAttribute('aria-pressed','false');
-  b.onclick=()=>{ gapExam = gapExam===e ? null : e; drawGap(); };
+  b.className='chip'; b.textContent=src.replace(' bank taxonomy',''); b.setAttribute('aria-pressed','false');
+  b.onclick=()=>{ gapExam = gapExam===src ? null : src; drawGap(); };
   chipBox.appendChild(b);
 }
 function drawGap(){
-  [...chipBox.children].forEach(b=>b.setAttribute('aria-pressed', String(b.textContent===gapExam)));
+  [...chipBox.children].forEach((b,i)=>b.setAttribute('aria-pressed', String(GAP_SOURCES[i]===gapExam)));
   const out=document.getElementById('gapOut');
-  if(!gapExam){ out.innerHTML='<p class="sub">Pick an exam to list the State Board chapters it does not require.</p>'; return; }
-  const not=[],part=[],un=[];
-  for(const ch of chapters){
-    const s=roll(ch.items,gapExam);
-    const e={cls:ch.cls,ch:ch.ch,name:ch.name,n:ch.items.length};
-    if(s==='not')not.push(e); else if(s==='partial'||s==='mixed')part.push(e); else if(s===null)un.push(e);
+  if(!gapExam){ out.innerHTML='<p class="sub">Pick an exam to list the subtopics the State Board does not fully cover.</p>'; return; }
+  const label=gapExam.replace(' bank taxonomy','');
+  const mine=ALL.filter(c=>c.src===gapExam);
+  const not=mine.filter(c=>c.st[SB]==='not');
+  const part=mine.filter(c=>c.st[SB]==='partial');
+  const unassessed=mine.filter(c=>!c.st[SB]);
+
+  let h='<p class="sub">Of <strong>'+mine.length+'</strong> '+label+' subtopics, the State Board does <strong>not cover '+
+        not.length+'</strong>'+(part.length?' and only partly covers <strong>'+part.length+'</strong>':'')+
+        (unassessed.length?'; '+unassessed.length+' not yet assessed':'')+'.</p>';
+  if(!not.length && !part.length){
+    out.innerHTML=h+'<p class="note">No gaps — every '+label+' subtopic is covered by the State Board syllabus.</p>';
+    return;
   }
-  const sum=a=>a.reduce((k,x)=>k+x.n,0);
-  const xi=not.filter(x=>x.cls===11).length, xii=not.filter(x=>x.cls===12).length;
-  let h='<p class="sub"><strong>'+sum(not)+'</strong> of '+C.length+' concepts ('+
-        Math.round(sum(not)/C.length*100)+'%) are taught by the State Board but never required by '+gapExam+
-        (sum(part)?'; a further <strong>'+sum(part)+'</strong> only partly':'')+'. '+
-        'Excluded chapters: Std XI '+xi+', Std XII '+xii+'.</p>';
-  if(sum(un)) h+='<p class="note warn">'+sum(un)+' concepts have no ruling for '+gapExam+' yet — listed separately, and NOT skippable.</p>';
-  h+='<div class="grid">';
-  for(const [t,list] of [['Not required',not],['Partly required',part],...(un.length?[['Not yet assessed',un]]:[])]){
-    h+='<div class="card"><h3>'+t+' — '+list.length+' chapter'+(list.length===1?'':'s')+'</h3><ul>';
-    h+= list.length? list.map(x=>'<li><span><span class="num" style="margin-right:6px">Std '+(x.cls===11?'XI':'XII')+' · '+x.ch+'</span>'+x.name+'</span><span class="num">'+x.n+'</span></li>').join('')
-                   : '<li style="color:var(--muted)">None.</li>';
-    h+='</ul></div>';
-  }
-  document.getElementById('gapOut').innerHTML=h+'</div>';
-  // notes for the selected exam
-  const ei=EXAMS.indexOf(gapExam);
-  const ns=Object.entries(D.notes).filter(([k])=>k.endsWith('-'+ei));
-  if(ns.length){
-    const box=document.createElement('details');
-    box.innerHTML='<summary class="sub" style="cursor:pointer;margin-top:10px">Ruling notes ('+ns.length+')</summary>'+
-      ns.map(([k,v])=>{const [cl,c]=k.split('-'); const ch=byCh.get(cl+'-'+c);
-        return '<p class="note"><strong>Std '+(cl==='11'?'XI':'XII')+' Ch.'+c+' '+(ch?ch.name:'')+'</strong><br>'+v+'</p>';}).join('');
-    document.getElementById('gapOut').appendChild(box);
-  }
+  const rows=(list,cls)=>list.map(c=>{
+    const note=noteFor(c.i, SB);
+    return '<tr><td>'+cell(c.st[SB])+'</td><td>'+c.name+
+      '<div class="sub" style="font-size:11px;margin:0">'+c.chName+'</div>'+
+      (note?'<div class="note" style="margin:4px 0 0">'+note+'</div>':'')+'</td></tr>';
+  }).join('');
+  h+='<div class="box" style="max-height:none"><table><thead><tr>'+
+     '<th style="width:64px">State Board</th><th>Subtopic — and why</th>'+
+     '</tr></thead><tbody>'+rows(not)+rows(part)+'</tbody></table></div>';
+  out.innerHTML=h;
 }
 drawGap();
 
@@ -360,7 +478,7 @@ let expandAll=false;
 function drawMatrix(){
   const q=document.getElementById('q').value.trim().toLowerCase();
   let h='<thead><tr><th style="width:70px">Ref</th><th>Chapter / section / concept</th><th class="num">n</th>'+
-        EXAMS.map(e=>'<th style="text-align:center">'+e.replace('MH State Board','State Board').replace(' Class 12','')+'</th>').join('')+'</tr></thead><tbody>';
+        activeExams().map(e=>'<th style="text-align:center">'+(spine===SB?e.replace(' Class 12',''):'Covered by State Board?')+'</th>').join('')+'</tr></thead><tbody>';
   let shown=0;
   for(const ch of chapters){
     const match = c => !q || c.name.toLowerCase().includes(q) || String(c.sec).includes(q);
@@ -369,18 +487,18 @@ function drawMatrix(){
     const isOpen = expandAll || open.has(ch.key) || (q && anyMatch);
     h+='<tr class="chap" data-k="'+ch.key+'"><td>'+(ch.cls===11?'XI':'XII')+'.'+ch.ch+'</td>'+
        '<td>'+(isOpen?'▾ ':'▸ ')+ch.name+'</td><td class="num">'+ch.items.length+'</td>'+
-       EXAMS.map(e=>'<td>'+cell(roll(ch.items,e))+'</td>').join('')+'</tr>';
+       activeExams().map(e=>'<td>'+cell(roll(ch.items,e))+'</td>').join('')+'</tr>';
     if(!isOpen) continue;
     for(const s of ch.sections){
       const secItems = q ? s.items.filter(match) : s.items;
       if(q && !secItems.length) continue;
       h+='<tr class="sec"><td>'+s.key+'</td><td>'+s.title+'</td><td class="num">'+s.items.length+'</td>'+
-         EXAMS.map(e=>'<td>'+cell(roll(s.items,e))+'</td>').join('')+'</tr>';
+         activeExams().map(e=>'<td>'+cell(roll(s.items,e))+'</td>').join('')+'</tr>';
       for(const c of secItems){
         if(isTop(c.sec) && s.items.length>1) continue; // its title is already the section row
         shown++;
         h+='<tr class="con"><td>'+c.sec+'</td><td>'+c.name+'</td><td class="num"></td>'+
-           EXAMS.map(e=>'<td>'+cell(c.st[e]??null)+'</td>').join('')+'</tr>';
+           activeExams().map(e=>'<td>'+cell(c.st[e]??null)+'</td>').join('')+'</tr>';
       }
     }
   }
@@ -398,7 +516,40 @@ document.getElementById('expandAll').onclick=e=>{
   e.target.textContent = expandAll?'Collapse all':'Expand all';
   drawMatrix();
 };
+function drawNcert(){
+  const q=document.getElementById('nq').value.trim().toLowerCase();
+  const onlyGaps=document.getElementById('nOnlyGaps').checked;
+  const rows=ALL.filter(c=>c.src==='NCERT');
+  let h='<thead><tr><th style="width:60px">NCERT</th><th>NCERT subtopic</th>'+
+        '<th style="width:150px">NCERT chapter</th>'+
+        '<th style="width:60px">SB ref</th><th>Covered by State Board subtopic</th></tr></thead><tbody>';
+  let shown=0, lastCh='';
+  for(const c of rows){
+    const m=D.ncertMatch[c.cls+'|'+c.sec];
+    if(onlyGaps && m) continue;
+    if(q && !(c.name.toLowerCase().includes(q)||c.chName.toLowerCase().includes(q)||String(c.sec).includes(q))) continue;
+    shown++;
+    const chLabel='Std '+(c.cls===11?'XI':'XII')+' · '+c.ch+'. '+c.chName;
+    if(chLabel!==lastCh){ lastCh=chLabel;
+      h+='<tr class="chap"><td colspan="5">'+chLabel+'</td></tr>'; }
+    h+='<tr><td class="num">'+c.sec+'</td><td>'+c.name+'</td>'+
+       '<td class="sub" style="font-size:11px">'+c.chName+'</td>'+
+       (m ? '<td class="num">'+m[0]+'</td><td>'+m[1]+'</td>'
+          : '<td colspan="2">'+cell(c.st[SB]==='not'?'not':null)+
+            ' <span class="sub" style="font-size:11px">'+
+            (c.st[SB]==='not'?'not covered — adjudicated gap':'no confident title match — review')+
+            '</span></td>')+'</tr>';
+  }
+  document.getElementById('ncert').innerHTML=h+'</tbody>';
+  const total=rows.length, unmatched=rows.filter(c=>!D.ncertMatch[c.cls+'|'+c.sec]).length;
+  document.getElementById('ncount').textContent=shown+' shown · '+(total-unmatched)+' of '+total+' matched to a State Board subtopic';
+}
+document.getElementById('nq').addEventListener('input',drawNcert);
+document.getElementById('nOnlyGaps').addEventListener('change',drawNcert);
+drawNcert();
+
 drawMatrix();
+redraw();
 </script>
 </body>
 </html>`;

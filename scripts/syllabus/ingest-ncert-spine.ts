@@ -18,6 +18,7 @@
 import { readFileSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { NCERT_TO_SB } from "./exam-chapter-map";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -37,42 +38,56 @@ properties property nature concept concepts idea ideas study terms term`.split(/
 
 const REVIEW_BELOW = 60; // percent of title terms present
 
+
 /**
- * NCERT chapter -> the State Board chapter(s) that would teach it, as "class-chapter".
- * Searches are scoped to these. Without scoping, a passing mention anywhere in the
- * 1.6M-char corpus counts as coverage — which is how NCERT's Vitamins section
- * scored 100% while the State Board Biomolecules chapter says "vitamin" 0 times.
+ * Flagged, examined, and found genuinely covered — the probe's search term was
+ * wrong, not the coverage.
+ *
+ * This list exists so "reviewed and fine" is distinguishable from "never looked
+ * at". Without it both states are simply absent from ADJUDICATED and silently
+ * default to `full`, which is exactly how 10 real gaps (NCERT 8.9/8.10) sat
+ * unnoticed until the JEE spine contradicted them.
  */
-const NCERT_TO_SB: Record<string, string[]> = {
-  "11-1": ["11-1", "11-2"],   // Some Basic Concepts (+ the calculation half in Analytical Chemistry)
-  "11-2": ["11-4"],           // Structure of Atom
-  "11-3": ["11-7"],           // Classification and Periodicity -> Modern Periodic Table
-  "11-4": ["11-5"],           // Chemical Bonding
-  "11-5": ["12-4"],           // Thermodynamics -> Std XII Chemical Thermodynamics
-  "11-6": ["11-12", "12-3"],  // Equilibrium -> Chemical Equilibrium + Ionic Equilibria
-  "11-7": ["11-6"],           // Redox
-  "11-8": ["11-14", "11-3"],  // Organic Basics (+ purification in Analytical Techniques)
-  "11-9": ["11-15"],          // Hydrocarbons
-  "12-1": ["12-2"],           // Solutions
-  "12-2": ["12-5"],           // Electrochemistry
-  "12-3": ["12-6"],           // Chemical Kinetics
-  "12-4": ["12-8"],           // d- and f-Block -> Transition and Inner Transition
-  "12-5": ["12-9"],           // Coordination Compounds
-  "12-6": ["12-10"],          // Haloalkanes -> Halogen Derivatives
-  "12-7": ["12-11"],          // Alcohols, Phenols and Ethers
-  "12-8": ["12-12"],          // Aldehydes, Ketones and Carboxylic Acids
-  "12-9": ["12-13"],          // Amines
-  "12-10": ["12-14"],         // Biomolecules
+const RESOLVED_COVERED: Record<string, string> = {
+  "11 2.3.3": "Truncated title ('Evidence'); the section is atomic spectra, covered in SB 11-4.",
+  "11 4.9.2": "Probe searched 'h-bonds'. SB teaches hydrogen bonding — 1 mention in Chemical Bonding, 18 in States of Matter. Covered, though not in the chapter NCERT places it.",
+  "11 6.1.2": "Probe searched hyphenated 'liquid-vapour'. SB 11-12 has liquid 19, vapour 24, equilibrium 176.",
+  "11 9.2.1": "Probe searched 'nomenclature'. SB Hydrocarbons says 'IUPAC' 10 times.",
+  "11 9.3.2": "Probe searched 'nomenclature'. Same as 9.2.1.",
+  "11 9.4.1": "Probe searched 'nomenclature'. Same as 9.2.1.",
+  "11 9.5.1": "Probe searched 'nomenclature'. Same as 9.2.1.",
+  "11 5.1": "Title carried a body-text bleed ('boundary'). SB 12-4 has system 152, surroundings 63.",
+  "12 1.5": "Truncated title ('Ideal and Non-'). SB 12-2 has 'ideal solution' 11, Raoult 17.",
+  "12 2.6.1": "Probe searched plural 'batteries'. SB Electrochemistry covers batteries 20 times.",
+  "12 2.6.2": "Probe searched plural 'batteries'. Same as 2.6.1.",
+  "12 3.2": "Truncated title ('Factors Influencing'). SB 12-6 covers temperature 31, catalyst 13.",
+  "12 3.3.3": "Probe searched hyphenated 'half-life'. SB 12-6 has 'half life' 17 and t1/2 31.",
+  "12 4.3.9": "Garbled extraction ('diamagnetismparamagnetism'). Magnetic properties covered in SB 12-8.",
+  "12 4.5.4": "Generic title ('General Characteristics'); SB 12-8 covers d-block characteristics.",
+  "12 4.6.2": "Probe searched 'sizes'. SB 12-8 has ionic radii 19, atomic radii 9.",
+  "12 5.2": "Truncated title ('Definitions of'); the terms are covered in SB 12-9.",
+  "12 5.3": "Garbled extraction ('cistrans-cis'). Geometric isomerism covered in SB 12-9.",
+  "12 5.3.1": "Probe searched 'formulas'/'mononuclear'. SB 12-9 has IUPAC 16, formula 12, naming 3.",
+  "12 6.8.1": "Line-break hyphenation ('Dichloro- methane'). SB 12-10 names dichloromethane 3 times.",
+  "12 6.8.2": "Line-break hyphenation. SB 12-10 has chloroform 6.",
+  "12 6.8.3": "Line-break hyphenation. SB 12-10 has iodoform 1.",
+  "12 6.8.4": "Line-break hyphenation. SB 12-10 has carbon tetrachloride 1.",
 };
 
 /**
  * `<class> <section_no>` -> ruling. Adjudicated by hand against the State Board
  * chapter that would teach it, after the chapter-scoped probe flagged 32
- * candidates. The other 28 resolved to hyphenation ("dichloro-"), truncated
- * titles, generic words, or plural/singular misses ("batteries" vs 20 real
- * mentions of battery in SB Electrochemistry).
+ * candidates. Everything flagged is either here or in RESOLVED_COVERED above.
  */
 const ADJUDICATED: Record<string, [("partial" | "not"), string]> = {
+  "11 7.3.3": [
+    "not",
+    "Redox titrimetry is absent. 'titration' appears exactly ONCE in the entire State Board corpus — and in Adsorption and Colloids, not Redox or Ionic Equilibria. 'normality' and 'equivalent weight' are zero. JEE Unit 20 requires titrimetric exercises (oxalic acid vs KMnO4, Mohr's salt vs KMnO4), so this is JEE-relevant too.",
+  ],
+  "11 6.11.6": [
+    "partial",
+    "SB Ionic Equilibria mentions 'dibasic' once; 'polybasic', 'polyacidic', 'tribasic' and 'polyprotic' are all absent from the corpus. Multistage ionisation is treated much more thinly than NCERT does.",
+  ],
   "12 10.4": [
     "not",
     "State Board Std XII Biomolecules contains 'vitamin' ZERO times. The word appears only in Chemistry in Everyday Life and Amines, neither of which teaches vitamins as a topic. Confirmed independently from the JEE bank spine, where Vitamins is also a gap.",
@@ -89,6 +104,35 @@ const ADJUDICATED: Record<string, [("partial" | "not"), string]> = {
     "partial",
     "Physical properties of aromatic compounds are covered, but 'sulphonation' is absent from State Board Hydrocarbons AND from the entire corpus. Nitration and Friedel-Crafts are present, so only this one electrophilic substitution is missing.",
   ],
+  // NCERT 8.9 + 8.10, the ANALYSIS half of organic techniques. State Board Ch.3
+  // covers 8.8 Purification fully (crystallisation 17, chromatography 27,
+  // distillation 32) but teaches no elemental analysis: lassaigne, kjeldahl and
+  // carius are all ZERO across the entire corpus.
+  //
+  // These were caught by reconciling against the JEE spine, where the same
+  // content is ruled `not`. They had defaulted to `full` because the probe
+  // flagged them and they were left unadjudicated — the two spines contradicted
+  // each other until this cross-check.
+  ...Object.fromEntries(
+    [
+      ["8.9", "Qualitative Analysis of Organic Compounds"],
+      ["8.9.1", "Detection of Carbon and Hydrogen"],
+      ["8.9.2", "Detection of Other Elements"],
+      ["8.10", "Quantitative Analysis"],
+      ["8.10.1", "Carbon and Hydrogen"],
+      ["8.10.2", "Nitrogen"],
+      ["8.10.3", "Halogens (Carius method)"],
+      ["8.10.4", "Sulphur"],
+      ["8.10.5", "Phosphorus"],
+      ["8.10.6", "Oxygen"],
+    ].map(([sec, name]) => [
+      `11 ${sec}`,
+      [
+        "not",
+        `${name}: the State Board teaches purification (Ch.3) but no elemental analysis — Lassaigne, Kjeldahl and Carius are absent from the entire corpus. Matches the JEE spine, where Estimation and Detection of Elements are the largest live gap (18 PYQs, 14 since 2023).`,
+      ] as ["not", string],
+    ]),
+  ),
 };
 
 async function main() {
@@ -154,12 +198,29 @@ async function main() {
   );
   console.log(`\nFull review list -> ${reportPath}`);
 
-  const adjudicatedCount = Object.keys(ADJUDICATED).length;
-  if (review.length > adjudicatedCount) {
-    console.log(
-      `\nNOTE: ${review.length - adjudicatedCount} flagged section(s) are not yet adjudicated.` +
-        `\nThey will be written as 'full' unless ruled otherwise — read the report first.`,
-    );
+  // A flag counts as handled if it was ruled OR explicitly cleared. Anything
+  // left over is genuinely unreviewed and will default to `full` — say so loudly,
+  // because silence became a coverage claim once already.
+  const handled = (k: string) => k in ADJUDICATED || k in RESOLVED_COVERED;
+  const pending = review.filter((r) => !handled(`${r.class} ${r.section_no}`));
+  const cleared = review.filter((r) => `${r.class} ${r.section_no}` in RESOLVED_COVERED).length;
+  const ruled = review.filter((r) => `${r.class} ${r.section_no}` in ADJUDICATED).length;
+  console.log(`
+Of ${review.length} flagged: ${ruled} ruled a gap, ${cleared} examined and cleared, ${pending.length} still unreviewed.`);
+  if (pending.length) {
+    console.log("STILL UNREVIEWED — these will be written as 'full' by default:");
+    for (const r of pending) console.log(`  Std${r.class} ${r.section_no}  ${r.concept.slice(0, 50)}`);
+  }
+  // Rulings outside the flagged set are fine (cross-checks find gaps the probe
+  // missed), but a stale key that matches no section would silently do nothing.
+  const live = new Set(sections.map((x) => `${x.class} ${x.section_no}`));
+  const orphans = [...Object.keys(ADJUDICATED), ...Object.keys(RESOLVED_COVERED)].filter((k) => !live.has(k));
+  if (orphans.length) {
+    console.error(`
+REFUSING TO WRITE — ${orphans.length} entr(ies) name no live section:`);
+    for (const o of orphans) console.error("  " + o);
+    process.exitCode = 1;
+    return;
   }
 
   if (!apply) {

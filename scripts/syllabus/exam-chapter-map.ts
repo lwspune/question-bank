@@ -95,3 +95,31 @@ export const EXAM_CHAPTER_TO_SB: Record<string, Record<string, string[] | null>>
     "Practical Chemistry": ["11-2", "11-3"],
   },
 };
+
+/**
+ * NCERT chapter -> the State Board chapter(s) that would teach it, as "class-chapter".
+ * Searches are scoped to these. Without scoping, a passing mention anywhere in the
+ * 1.6M-char corpus counts as coverage — which is how NCERT's Vitamins section
+ * scored 100% while the State Board Biomolecules chapter says "vitamin" 0 times.
+ */
+export const NCERT_TO_SB: Record<string, string[]> = {
+  "11-1": ["11-1", "11-2"],   // Some Basic Concepts (+ the calculation half in Analytical Chemistry)
+  "11-2": ["11-4"],           // Structure of Atom
+  "11-3": ["11-7"],           // Classification and Periodicity -> Modern Periodic Table
+  "11-4": ["11-5"],           // Chemical Bonding
+  "11-5": ["12-4"],           // Thermodynamics -> Std XII Chemical Thermodynamics
+  "11-6": ["11-12", "12-3"],  // Equilibrium -> Chemical Equilibrium + Ionic Equilibria
+  "11-7": ["11-6"],           // Redox
+  "11-8": ["11-14", "11-3"],  // Organic Basics (+ purification in Analytical Techniques)
+  "11-9": ["11-15"],          // Hydrocarbons
+  "12-1": ["12-2"],           // Solutions
+  "12-2": ["12-5"],           // Electrochemistry
+  "12-3": ["12-6"],           // Chemical Kinetics
+  "12-4": ["12-8"],           // d- and f-Block -> Transition and Inner Transition
+  "12-5": ["12-9"],           // Coordination Compounds
+  "12-6": ["12-10"],          // Haloalkanes -> Halogen Derivatives
+  "12-7": ["12-11"],          // Alcohols, Phenols and Ethers
+  "12-8": ["12-12"],          // Aldehydes, Ketones and Carboxylic Acids
+  "12-9": ["12-13"],          // Amines
+  "12-10": ["12-14"],         // Biomolecules
+};
