@@ -81,6 +81,61 @@ export function isTopLevelSection(sectionNo: string): boolean {
   return sectionGroupKey(sectionNo) === sectionNo.trim();
 }
 
+export type GapEntry = { cls: number; chapterNo: number; chapterName: string; conceptCount: number };
+
+export type GapView = {
+  /** Chapters the State Board teaches that this exam never requires. */
+  notRequired: GapEntry[];
+  /** Chapters this exam requires only in part. */
+  partlyRequired: GapEntry[];
+  /** Chapters with no ruling yet — reported separately so they read as unknown, not safe. */
+  unassessed: GapEntry[];
+  notConcepts: number;
+  partlyConcepts: number;
+  unassessedConcepts: number;
+};
+
+/**
+ * "The State Board teaches this; exam X does not need it."
+ *
+ * Unassessed chapters are kept in their own bucket rather than folded into
+ * notRequired. Presenting an unreviewed chapter as skippable is the single most
+ * damaging thing this view could do — a teacher would drop content on the
+ * strength of a ruling nobody ever made.
+ */
+export function buildGapView<
+  T extends { cls: number; chapterNo: number; chapterName: string; conceptCount: number; status: Record<string, ChapterStatus> },
+>(chapters: T[], exam: string): GapView {
+  const view: GapView = {
+    notRequired: [],
+    partlyRequired: [],
+    unassessed: [],
+    notConcepts: 0,
+    partlyConcepts: 0,
+    unassessedConcepts: 0,
+  };
+  for (const c of chapters) {
+    const entry: GapEntry = {
+      cls: c.cls,
+      chapterNo: c.chapterNo,
+      chapterName: c.chapterName,
+      conceptCount: c.conceptCount,
+    };
+    const s = c.status[exam];
+    if (s === "not") {
+      view.notRequired.push(entry);
+      view.notConcepts += c.conceptCount;
+    } else if (s === "partial" || s === "mixed") {
+      view.partlyRequired.push(entry);
+      view.partlyConcepts += c.conceptCount;
+    } else if (s === null || s === undefined) {
+      view.unassessed.push(entry);
+      view.unassessedConcepts += c.conceptCount;
+    }
+  }
+  return view;
+}
+
 /** A stable, URL-safe key for one chapter of one class. */
 export function chapterKey(cls: number, chapterNo: number): string {
   return `${cls}-${chapterNo}`;
