@@ -18,6 +18,18 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   "historiography-west-10": [
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
   ],
+  "historiography-indian-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "applied-history-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "working-of-constitution-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "electoral-process-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
