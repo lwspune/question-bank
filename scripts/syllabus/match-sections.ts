@@ -48,14 +48,78 @@ export function similarity(a: string, b: string): number {
 
 export const MIN_SCORE = 0.5;
 
-export type Candidate = { sectionNo: string; title: string };
+/** The parent section's title, or "" for a top-level section. */
+export function parentTitle(sectionNo: string, byNo: Map<string, string>): string {
+  const parts = sectionNo.trim().split(".");
+  if (parts.length < 3) return "";
+  return byNo.get(parts.slice(0, 2).join(".")) ?? "";
+}
+
+/**
+ * Are two sections' parents compatible?
+ *
+ * This is a GUARD on the bare-title score, not an input to it. Prefixing both
+ * titles with their parents was tried first and made matching WORSE — it gave
+ * siblings extra tokens to tie on, so "The pH Scale" under "Ionization of Acids
+ * and Bases" started matching "Acids and Bases" instead of "pH Scale".
+ *
+ * As a guard it only ever REJECTS: when both sides have a parent and those
+ * parents share nothing, the titles agreeing is a coincidence. That is what
+ * separates "Physical properties" under Aromatic Hydrocarbons from the State
+ * Board's "Physical properties of alkanes" — the exact wrong-section answer that
+ * would mislead a student.
+ *
+ * Missing parent (either side top-level) means no evidence, so it permits.
+ */
+export function parentsCompatible(a: string, b: string): boolean {
+  if (!a || !b) return true;
+  return similarity(a, b) > 0;
+}
+
+/**
+ * Titles that say nothing on their own — every chapter has a "Preparation" and a
+ * "Physical properties", so they are only identifiable through their parent.
+ *
+ * The parent guard applies to THESE ONLY. Applied to every title it cost 68 real
+ * matches (Chromatography under "Methods of Purification" was rejected against
+ * "Chromatographic techniques" because the parents share no words) while the
+ * confusion it exists to prevent only ever arises between generic siblings.
+ */
+const GENERIC = new Set(
+  `preparation preparations properties property nomenclature isomerism structure
+structures classification uses reactions reaction methods method definitions
+introduction general physical chemical`.split(/\s+/),
+);
+
+/**
+ * MAJORITY-generic, not all-generic. Extraction leaves stray words in titles —
+ * "Properties Sulphonation: Physical properties" is the aromatic-hydrocarbons
+ * section, and that one stray token was enough to switch the guard off and let it
+ * match "Physical properties of alkanes" again.
+ */
+export function isGenericTitle(title: string): boolean {
+  const t = tokens(title);
+  if (!t.length) return false;
+  return t.filter((w) => GENERIC.has(w)).length * 2 >= t.length;
+}
+
+export type Candidate = { sectionNo: string; title: string; parent?: string };
 
 export type Match = { sectionNo: string; title: string; score: number } | null;
 
-/** Best-scoring candidate, or null when nothing clears MIN_SCORE. */
-export function bestMatch(title: string, candidates: Candidate[]): Match {
+/**
+ * Best-scoring candidate, or null when nothing clears MIN_SCORE.
+ *
+ * `parent` on both sides is optional; when both are present and incompatible the
+ * candidate is skipped, however well the titles score.
+ */
+export function bestMatch(title: string, candidates: Candidate[], parent = ""): Match {
+  // Only generic titles need the parent guard; a distinctive title identifies
+  // itself, and guarding it just discards good matches.
+  const guard = isGenericTitle(title);
   let best: Match = null;
   for (const c of candidates) {
+    if (guard && !parentsCompatible(parent, c.parent ?? "")) continue;
     const score = similarity(title, c.title);
     if (score > (best?.score ?? 0)) best = { sectionNo: c.sectionNo, title: c.title, score };
   }

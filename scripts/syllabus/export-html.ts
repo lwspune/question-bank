@@ -13,7 +13,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { NCERT_TO_SB } from "./exam-chapter-map";
-import { bestMatch } from "./match-sections";
+import { bestMatch, parentTitle } from "./match-sections";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -29,7 +29,13 @@ type Concept = {
   concept: string;
   seq: number;
 };
-type Link = { concept_id: string; exam: string; status: string; note: string | null };
+type Link = {
+  concept_id: string;
+  exam: string;
+  status: string;
+  note: string | null;
+  covered_by: string | null;
+};
 
 async function main() {
   loadEnv();
@@ -57,7 +63,7 @@ async function main() {
     "syllabus_concepts",
     "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
   );
-  const links = await all<Link>("syllabus_concept_exams", "concept_id,exam,status,note");
+  const links = await all<Link>("syllabus_concept_exams", "concept_id,exam,status,note,covered_by");
 
   // Compact payload: index concepts, then emit links as [conceptIdx, examIdx, status].
   // The raw join is ~3.4k rows; inlining it verbatim would triple the file for no gain.
@@ -78,6 +84,57 @@ async function main() {
   const notePool: string[] = [];
   const poolIndex = new Map<string, number>();
   const noteOf: Record<string, number> = {};
+  // covered_by keeps its own pool, separate from notes: a row can carry a mapping
+  // without a caveat, and vice versa.
+  //
+  // Each entry is [refs, names]. The refs go in the narrow "SB ref" column and the
+  // NAMES in the wide one — the column is headed "Covered by State Board subtopic",
+  // so shipping bare numbers would leave the teacher to look each one up in the
+  // book, which is exactly the work this table exists to remove.
+  //
+  // Titles are resolved CLASS-SCOPED. A bare section number is ambiguous across
+  // the two years (State Board Std XI 2.5 is not Std XII 2.5), and cross-year
+  // mappings are the common case in this data, not the exception.
+  const sbTitleByClassNo = new Map<string, string>();
+  const sbChapterByClassNo = new Map<string, string>();
+  const conceptClassOf = new Map<string, number>();
+  for (const c of concepts) {
+    conceptClassOf.set(c.id, c.class);
+    if (c.source !== "MH State Board") continue;
+    sbTitleByClassNo.set(`${c.class}|${c.section_no}`, c.concept);
+    sbChapterByClassNo.set(`${c.class}|${c.chapter_no}`, c.chapter_name);
+  }
+  // Third element: the State Board CHAPTER(S). The table used to print the NCERT
+  // chapter here, which merely repeated the group heading the row already sits
+  // under. The chapter a section lands in is the part that carries information —
+  // it is routinely NOT the same-numbered chapter, and sometimes not even the
+  // same school year.
+  const resolveCovered = (raw: string, conceptId: string): [string, string, string] => {
+    const defaultCls = conceptClassOf.get(conceptId);
+    const parts = raw.split(",").map((x) => x.trim()).filter(Boolean);
+    const refs: string[] = [];
+    const names: string[] = [];
+    const chapters: string[] = [];
+    for (const ref of parts) {
+      const m = ref.match(/^(XI|XII):(.+)$/);
+      const cls = m ? (m[1] === "XII" ? 12 : 11) : defaultCls;
+      const no = m ? m[2].trim() : ref;
+      const yr = m ? `Std ${m[1]} ` : "";
+      const title = sbTitleByClassNo.get(`${cls}|${no}`) ?? "";
+      refs.push(`${yr}${no}`);
+      names.push(title ? `${yr}${no} ${title}` : `${yr}${no}`);
+      const chNo = no.split(".")[0];
+      const chName = sbChapterByClassNo.get(`${cls}|${chNo}`);
+      // Label the year only when it differs from the NCERT row's own year, so the
+      // cross-year cases stand out instead of every row carrying "Std XI".
+      const label = chName ? `${yr}Ch.${chNo} ${chName}` : `${yr}Ch.${chNo}`;
+      if (!chapters.includes(label)) chapters.push(label);
+    }
+    return [refs.join(", "), names.join(" · "), chapters.join(" + ")];
+  };
+  const coveredPool: [string, string, string][] = [];
+  const coveredIndex = new Map<string, number>();
+  const coveredOf: Record<string, number> = {};
   const compactLinks: number[][] = [];
   for (const l of links) {
     const ci = idIndex.get(l.concept_id);
@@ -93,6 +150,17 @@ async function main() {
       }
       noteOf[`${ci}|${ei}`] = pi;
     }
+    if (l.covered_by) {
+      const rendered = resolveCovered(l.covered_by, l.concept_id);
+      const key = JSON.stringify(rendered);
+      let pi = coveredIndex.get(key);
+      if (pi === undefined) {
+        pi = coveredPool.length;
+        coveredPool.push(rendered);
+        coveredIndex.set(key, pi);
+      }
+      coveredOf[`${ci}|${ei}`] = pi;
+    }
   }
 
   // State Board first — it is the baseline every other spine is measured against.
@@ -104,19 +172,37 @@ async function main() {
   // Which State Board SUBTOPIC covers each NCERT subtopic. Candidates are drawn
   // only from the mapped State Board chapter(s) — matching across the whole book
   // would pair headings that merely share a word.
-  const sbByChapter = new Map<string, { sectionNo: string; title: string }[]>();
+  // Parent-title lookups, so a sub-section is matched WITH its context. Bare
+  // "Physical properties" under Aromatic Hydrocarbons otherwise matched the State
+  // Board's "Physical properties of alkanes" — a confident pointer to the wrong
+  // section, which is the worst outcome for someone answering a student.
+  const sbTitleByNo = new Map<string, string>();
+  const ncertTitleByNo = new Map<string, string>();
+  for (const c of concepts) {
+    if (c.source === "MH State Board") sbTitleByNo.set(c.section_no, c.concept);
+    else if (c.source === "NCERT") ncertTitleByNo.set(`${c.class}|${c.section_no}`, c.concept);
+  }
+  const ncertParent = new Map(
+    [...ncertTitleByNo].map(([k, v]) => [k.split("|")[1], v]),
+  );
+
+  const sbByChapter = new Map<string, { sectionNo: string; title: string; parent?: string }[]>();
   for (const c of concepts) {
     if (c.source !== "MH State Board") continue;
     const k = `${c.class}-${c.chapter_no}`;
     if (!sbByChapter.has(k)) sbByChapter.set(k, []);
-    sbByChapter.get(k)!.push({ sectionNo: c.section_no, title: c.concept });
+    sbByChapter.get(k)!.push({
+      sectionNo: c.section_no,
+      title: c.concept,
+      parent: parentTitle(c.section_no, sbTitleByNo),
+    });
   }
   const ncertMatch: Record<string, [string, string] | null> = {};
   for (const c of concepts) {
     if (c.source !== "NCERT") continue;
     const mappedChapters = NCERT_TO_SB[`${c.class}-${c.chapter_no}`] ?? [];
     const candidates = mappedChapters.flatMap((k) => sbByChapter.get(k) ?? []);
-    const m = bestMatch(c.concept, candidates);
+    const m = bestMatch(c.concept, candidates, parentTitle(c.section_no, ncertParent));
     ncertMatch[`${c.class}|${c.section_no}`] = m ? [m.sectionNo, m.title] : null;
   }
   const matched = Object.values(ncertMatch).filter(Boolean).length;
@@ -127,22 +213,38 @@ async function main() {
     exams,
     sources,
     statuses: STATUS,
-    concepts: concepts.map((c) => [
-      srcIndex.get(c.source)!,
-      c.class,
-      c.chapter_no,
-      c.chapter_name,
-      c.section_no,
-      c.concept,
-      c.seq,
-    ]),
+    // The exam spines carry their PYQ count inside the concept NAME
+    // ("Diazonium Salts (12 PYQ)"). Split it here, in TypeScript, rather than in
+    // the page: this file emits the page through a template literal, which eats
+    // the backslashes in a regex literal — /\((\d+)\s*PYQ\)/ reached the browser
+    // as /(((d+)s*PYQ)/ and silently returned 0 for every row. Index 7 is the
+    // count, and the name is stored already cleaned.
+    concepts: concepts.map((c) => {
+      const m = c.concept.match(/^(.*?)\s*\((\d+)\s*PYQ\)\s*$/);
+      return [
+        srcIndex.get(c.source)!,
+        c.class,
+        c.chapter_no,
+        c.chapter_name,
+        c.section_no,
+        m ? m[1] : c.concept,
+        c.seq,
+        m ? Number(m[2]) : 0,
+      ];
+    }),
     links: compactLinks,
     notePool,
     noteOf,
+    coveredPool,
+    coveredOf,
     generatedAt: new Date().toISOString().slice(0, 16).replace("T", " "),
   };
 
+  console.log(
+    `  covered_by: ${coveredPool.length} distinct mapping(s) across ${Object.keys(coveredOf).length} rows`,
+  );
   const html = render(JSON.stringify(payload));
+
   const dir = join(process.cwd(), "generated-papers");
   mkdirSync(dir, { recursive: true });
   const dest = join(dir, "syllabus-map.html");
@@ -275,6 +377,7 @@ function render(dataJson: string): string {
   <div class="toolbar">
     <input type="search" id="q" placeholder="Filter concepts…" aria-label="Filter concepts">
     <button class="chip" id="expandAll" aria-pressed="false">Expand all</button>
+    <label style="margin-left:10px"><input type="checkbox" id="mSubs"> show concepts (N.M.x)</label>
     <span class="sub" id="count"></span>
   </div>
   <div class="box"><table id="matrix"></table></div>
@@ -298,10 +401,33 @@ function render(dataJson: string): string {
   </p>
   <div class="toolbar">
     <input type="search" id="nq" placeholder="Filter NCERT subtopics…" aria-label="Filter NCERT subtopics">
+    <label style="margin-left:10px"><input type="checkbox" id="nSubs"> show sub-sections (N.M.x — auto-matched only)</label>
     <label class="sub"><input type="checkbox" id="nOnlyGaps"> show only unmatched</label>
     <span class="sub" id="ncount"></span>
   </div>
   <div class="box"><table id="ncert"></table></div>
+
+  <h2>JEE Mains — which State Board subtopic covers each</h2>
+  <p class="sub" style="font-size:12px">
+    Rows are what JEE Mains <strong>actually asked</strong>, taken from the question bank, so each
+    carries its PYQ count and the gaps sort by exam weight. Every pointer here was read off both
+    books by hand — there is no automatic matching in this table.
+  </p>
+  <p class="note" style="margin-bottom:10px">
+    <strong>What this table can and cannot tell you.</strong> Because the spine is the BANK
+    taxonomy rather than the official syllabus, it measures what JEE demonstrably asked in the
+    years the bank holds. A row badged <span class="cell not" style="display:inline-block">No</span>
+    is a topic JEE asks and the State Board does not teach. But something in the official syllabus
+    that was never sampled has <em>no row at all</em> — so absence from this list is not evidence
+    of absence from the exam.
+  </p>
+  <div class="toolbar">
+    <input type="search" id="jq" placeholder="Filter JEE subtopics…" aria-label="Filter JEE subtopics">
+    <label style="margin-left:10px"><input type="checkbox" id="jOnlyGaps"> show only gaps and partials</label>
+    <label class="sub"><input type="checkbox" id="jByWeight"> sort by PYQ weight</label>
+    <span class="sub" id="jcount"></span>
+  </div>
+  <div class="box"><table id="jee"></table></div>
 
   <p class="foot" id="foot"></p>
 </div>
@@ -310,7 +436,28 @@ function render(dataJson: string): string {
 const D = JSON.parse(document.getElementById('data').textContent);
 const EXAMS = D.exams, ST = D.statuses, SOURCES = D.sources;
 const SB = 'MH State Board';
+// The NCERT rulings on an exam-spine row are stored under this exam name: on an
+// exam spine the exam column names WHICH SYLLABUS is being asked about, so one
+// JEE subtopic carries a State Board answer and an NCERT answer side by side.
+const NC = 'CBSE Class 12';
 /** Note for one concept under one exam, or '' — resolved through the string pool. */
+function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+// Distinguishes a mapping a human read off both books from one the title matcher
+// guessed. Both are useful; conflating them is not.
+function badge(kind){
+  return kind==='verified'
+    ? '<span class="sub" style="font-size:10px;border:1px solid var(--line);border-radius:8px;padding:0 5px">verified</span>'
+    : '<span class="sub" style="font-size:10px;opacity:.7">auto-matched</span>';
+}
+function noteHtml(c, exam){
+  const n=noteFor(c.i, exam);
+  return n ? '<div class="sub" style="font-size:11px;margin-top:3px">'+esc(n)+'</div>' : '';
+}
+// Returns [refs, names] or null.
+function coveredFor(conceptIdx, exam){
+  const pi = D.coveredOf[conceptIdx+'|'+EXAMS.indexOf(exam)];
+  return pi===undefined ? null : D.coveredPool[pi];
+}
 function noteFor(conceptIdx, exam){
   const pi = D.noteOf[conceptIdx+'|'+EXAMS.indexOf(exam)];
   return pi===undefined ? '' : D.notePool[pi];
@@ -334,7 +481,7 @@ const LABEL = {full:'Required by this exam', partial:'Partly required by this ex
                not:'NOT required by this exam (reviewed)'};
 
 // concepts: [sourceIdx, class, chapterNo, chapterName, sectionNo, concept, seq]
-const ALL = D.concepts.map((r,i)=>({i,src:SOURCES[r[0]],cls:r[1],ch:r[2],chName:r[3],sec:r[4],name:r[5],seq:r[6],st:{}}));
+const ALL = D.concepts.map((r,i)=>({i,src:SOURCES[r[0]],cls:r[1],ch:r[2],chName:r[3],sec:r[4],name:r[5],seq:r[6],pyq:r[7]||0,st:{}}));
 for (const [ci,ei,si] of D.links) ALL[ci].st[EXAMS[ei]] = ST[si];
 let C = ALL.filter(c=>c.src===spine);
 
@@ -494,6 +641,10 @@ function drawMatrix(){
       if(q && !secItems.length) continue;
       h+='<tr class="sec"><td>'+s.key+'</td><td>'+s.title+'</td><td class="num">'+s.items.length+'</td>'+
          activeExams().map(e=>'<td>'+cell(roll(s.items,e))+'</td>').join('')+'</tr>';
+      // SECTION (N.M) is the working grain for this table. The concept rows below
+      // it are N.M.x, one level finer than anything that has been mapped or
+      // adjudicated, so by default they only pad the table. Off unless asked for.
+      if(!document.getElementById('mSubs').checked) continue;
       for(const c of secItems){
         if(isTop(c.sec) && s.items.length>1) continue; // its title is already the section row
         shown++;
@@ -510,6 +661,7 @@ function drawMatrix(){
   });
 }
 document.getElementById('q').addEventListener('input',drawMatrix);
+document.getElementById('mSubs').addEventListener('change',drawMatrix);
 document.getElementById('expandAll').onclick=e=>{
   expandAll=!expandAll; open.clear();
   e.target.setAttribute('aria-pressed',String(expandAll));
@@ -519,33 +671,113 @@ document.getElementById('expandAll').onclick=e=>{
 function drawNcert(){
   const q=document.getElementById('nq').value.trim().toLowerCase();
   const onlyGaps=document.getElementById('nOnlyGaps').checked;
-  const rows=ALL.filter(c=>c.src==='NCERT');
+  // Sort by (class, chapter, section) NUMERICALLY. The payload arrives in DB
+  // order, which interleaved chapters and printed the same chapter heading twice
+  // with an unrelated one wedged between — a table nobody can read down.
+  // String sort is not enough either: "1.10" must follow "1.9", not "1.1".
+  const secKey=s=>String(s).split('.').map(n=>String(parseInt(n,10)||0).padStart(4,'0')).join('.');
+  // TOP-LEVEL (N.M) ONLY by default. That is the agreed grain for this table, and
+  // it is also the only grain that is hand-verified — sub-sections carry nothing
+  // but title-matcher guesses, so showing them buries the 127 checked answers
+  // under ~290 rows of noise. The toggle keeps them reachable without making them
+  // the default view.
+  const subs=document.getElementById('nSubs').checked;
+  // isTop, NOT a regex. This file emits the page through a TS template literal, so
+  // a backslash in a regex literal is eaten on the way out: /^\\d+\\.\\d+$/ was
+  // written to the page as /^d+.d+$/, which matches nothing and rendered an EMPTY
+  // table. isTop already exists, is used by the matrix above, and has no escapes.
+  const rows=ALL.filter(c=>c.src==='NCERT' && (subs || isTop(c.sec))).slice().sort((a,b)=>
+    a.cls-b.cls || a.ch-b.ch || secKey(a.sec).localeCompare(secKey(b.sec)));
   let h='<thead><tr><th style="width:60px">NCERT</th><th>NCERT subtopic</th>'+
-        '<th style="width:150px">NCERT chapter</th>'+
+        '<th style="width:170px">State Board chapter</th>'+
         '<th style="width:60px">SB ref</th><th>Covered by State Board subtopic</th></tr></thead><tbody>';
   let shown=0, lastCh='';
   for(const c of rows){
+    // A HAND-VERIFIED covered_by always beats the title matcher. The matcher
+    // guesses from title similarity; these were read off both books. Showing a
+    // guess where a verified answer exists is how a student gets sent to the
+    // wrong page.
+    const cb=coveredFor(c.i, SB);
     const m=D.ncertMatch[c.cls+'|'+c.sec];
-    if(onlyGaps && m) continue;
+    if(onlyGaps && (cb || m)) continue;
     if(q && !(c.name.toLowerCase().includes(q)||c.chName.toLowerCase().includes(q)||String(c.sec).includes(q))) continue;
     shown++;
     const chLabel='Std '+(c.cls===11?'XI':'XII')+' · '+c.ch+'. '+c.chName;
     if(chLabel!==lastCh){ lastCh=chLabel;
       h+='<tr class="chap"><td colspan="5">'+chLabel+'</td></tr>'; }
     h+='<tr><td class="num">'+c.sec+'</td><td>'+c.name+'</td>'+
-       '<td class="sub" style="font-size:11px">'+c.chName+'</td>'+
-       (m ? '<td class="num">'+m[0]+'</td><td>'+m[1]+'</td>'
+       '<td class="sub" style="font-size:11px">'+(cb ? esc(cb[2]) : '')+'</td>'+
+       (cb ? '<td class="num">'+esc(cb[0])+'</td><td>'+esc(cb[1])+' '+badge('verified')+noteHtml(c,SB)+'</td>'
+        : m ? '<td class="num">'+m[0]+'</td><td>'+m[1]+' '+badge('auto')+'</td>'
           : '<td colspan="2">'+cell(c.st[SB]==='not'?'not':null)+
             ' <span class="sub" style="font-size:11px">'+
             (c.st[SB]==='not'?'not covered — adjudicated gap':'no confident title match — review')+
-            '</span></td>')+'</tr>';
+            '</span>'+noteHtml(c,SB)+'</td>')+'</tr>';
   }
   document.getElementById('ncert').innerHTML=h+'</tbody>';
   const total=rows.length, unmatched=rows.filter(c=>!D.ncertMatch[c.cls+'|'+c.sec]).length;
-  document.getElementById('ncount').textContent=shown+' shown · '+(total-unmatched)+' of '+total+' matched to a State Board subtopic';
+  const verified=rows.filter(c=>coveredFor(c.i,SB)).length;
+  const topLevel=rows.length;
+  document.getElementById('ncount').textContent=shown+' shown · '+verified+' of '+topLevel+' hand-verified against both books';
 }
+/* JEE Mains spine. Rows are bank subtopics, so each carries a PYQ count; that is
+   what lets the gaps be ranked by what they actually cost in the exam. */
+const JEE_SRC='JEE Mains bank taxonomy';
+function drawJee(){
+  const q=document.getElementById('jq').value.trim().toLowerCase();
+  const onlyGaps=document.getElementById('jOnlyGaps').checked;
+  const byWeight=document.getElementById('jByWeight').checked;
+  let rows=ALL.filter(c=>c.src===JEE_SRC);
+  if(q) rows=rows.filter(c=>c.name.toLowerCase().includes(q)||c.chName.toLowerCase().includes(q));
+  if(onlyGaps) rows=rows.filter(c=>c.st[SB]==='not'||c.st[SB]==='partial');
+  rows=rows.slice().sort(byWeight
+    ? (a,b)=>b.pyq-a.pyq
+    : (a,b)=>a.chName.localeCompare(b.chName)||b.pyq-a.pyq);
+  let h='<thead><tr><th style="width:52px">PYQ</th><th>JEE subtopic</th>'+
+        '<th style="width:110px">NCERT</th>'+
+        '<th style="width:150px">State Board chapter</th>'+
+        '<th style="width:120px">SB ref</th><th>Covered by State Board subtopic</th></tr></thead><tbody>';
+  let lastCh='';
+  for(const c of rows){
+    // Chapter bands only make sense in chapter order; weight order is a flat list.
+    if(!byWeight && c.chName!==lastCh){ lastCh=c.chName;
+      h+='<tr class="chap"><td colspan="6">'+esc(c.chName)+'</td></tr>'; }
+    const cb=coveredFor(c.i, SB);
+    const st=c.st[SB];
+    const nb=coveredFor(c.i, NC);
+    const nst=c.st[NC];
+    h+='<tr><td class="num">'+c.pyq+'</td><td>'+esc(c.name)+
+       (st==='not'?' '+cell('not'):st==='partial'?' '+cell('partial'):'')+'</td>'+
+       '<td class="num" style="font-size:11px">'+
+         (nb ? esc(nb[0]) : '<span class="cell not" style="display:inline-block">none</span>')+
+         (nst==='partial'&&nb?' <span class="sub" style="font-size:10px">part</span>':'')+
+       '</td>'+
+       '<td class="sub" style="font-size:11px">'+(cb?esc(cb[2]):'')+'</td>'+
+       (cb ? '<td class="num">'+esc(cb[0])+'</td><td>'+esc(cb[1])+' '+badge('verified')+noteHtml(c,SB)+'</td>'
+           : '<td colspan="2"><span class="sub" style="font-size:11px">'+
+             (st==='not'?'not covered — nowhere to point':'no single section — see note')+
+             '</span>'+noteHtml(c,SB)+'</td>')+'</tr>';
+  }
+  document.getElementById('jee').innerHTML=h+'</tbody>';
+  const all=ALL.filter(c=>c.src===JEE_SRC);
+  const gapPyq=all.filter(c=>c.st[SB]==='not').reduce((s,c)=>s+c.pyq,0);
+  const ncGap=all.filter(c=>c.st[NC]==='not');
+  const neither=all.filter(c=>c.st[NC]==='not'&&c.st[SB]==='not');
+  const ncGapPyq=ncGap.reduce((s,c)=>s+c.pyq,0);
+  const neitherPyq=neither.reduce((s,c)=>s+c.pyq,0);
+  document.getElementById('jcount').textContent=
+    rows.length+' shown · '+all.length+' subtopics · State Board misses '+
+    all.filter(c=>c.st[SB]==='not').length+' ('+gapPyq+' PYQ) · NCERT misses '+
+    ncGap.length+' ('+ncGapPyq+' PYQ) · NEITHER covers '+neither.length+' ('+neitherPyq+' PYQ)';
+}
+document.getElementById('jq').addEventListener('input',drawJee);
+document.getElementById('jOnlyGaps').addEventListener('change',drawJee);
+document.getElementById('jByWeight').addEventListener('change',drawJee);
+drawJee();
+
 document.getElementById('nq').addEventListener('input',drawNcert);
 document.getElementById('nOnlyGaps').addEventListener('change',drawNcert);
+document.getElementById('nSubs').addEventListener('change',drawNcert);
 drawNcert();
 
 drawMatrix();
