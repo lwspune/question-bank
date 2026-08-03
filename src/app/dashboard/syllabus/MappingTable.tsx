@@ -94,6 +94,15 @@ export default function MappingTable({
                       className="p-2 px-3 text-sm font-semibold"
                     >
                       {band}
+                      {/* The book chapter this exam chapter mostly lives in.
+                          Shown because the table is ORDERED by it — without it
+                          the sequence looks arbitrary and invites a "why is
+                          this row here?" that the header answers directly. */}
+                      {r.chapterPrimary && (
+                        <span className="ml-2 text-xs font-normal text-muted-foreground">
+                          → {r.chapterPrimary}
+                        </span>
+                      )}
                       {r.oldSyllabus && (
                         <span className="ml-2 text-xs font-normal text-muted-foreground">
                           — old syllabus, not examined since 2023

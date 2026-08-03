@@ -10,12 +10,12 @@
  * =====================================================================
  * NOT the surface of record. /dashboard/syllabus is. Keep them in step.
  * =====================================================================
- * Both group the JEE table by JEE CHAPTER. Grouping by State Board chapter was
- * built and reverted: it reads down the book a teacher teaches, but it scatters
- * each exam chapter across the table, and "what does JEE ask in Amines" turned
- * out to matter more. The sortKey (4th element of a coveredPool entry) is left
- * in place — it is what that ordering needs, and re-deriving it is the only
- * hard part of trying again.
+ * Both group the JEE table by JEE CHAPTER, and both order those chapters along
+ * the STATE BOARD book — each chapter sits at the State Board chapter holding
+ * most of its PYQ, named in the band header. That is the synthesis of two
+ * earlier attempts: grouping ROWS by State Board chapter read down the book but
+ * shattered each exam chapter, and alphabetical chapter order carried no
+ * information at all. Ordering whole chapters keeps both properties.
  *
  * Remaining differences, deliberate:
  *   - the page has an always-on per-exam live-gap list, and a second,
@@ -36,6 +36,9 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { NCERT_TO_SB } from "./exam-chapter-map";
 import { bestMatch, parentTitle } from "./match-sections";
+// The SAME helper the shipped page orders with. Two implementations of this is
+// how the page silently fell behind once already.
+import { dominantSbByChapter, sbBookOrder } from "../../src/lib/syllabus/summary";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -266,6 +269,42 @@ async function main() {
     }
   }
 
+  // WHICH STATE BOARD CHAPTER DOES EACH EXAM CHAPTER MOSTLY LIVE IN?
+  //
+  // Computed HERE, in TypeScript, and shipped in the payload — the same reason
+  // the PYQ count is (see `concepts` below). A first cut parsed the chapter
+  // label with a regex inside the emitted page script; the template literal ate
+  // the backslashes, so /^Std (XI|XII) Ch\.(\d+)/ reached the browser as
+  // /^Std (XI|XII) Ch.(d+)/, matched nothing, and every chapter scored equal —
+  // the table quietly fell back to alphabetical order with no error anywhere.
+  const sbExamIdx = examIndex.get("MH State Board");
+  const domCh: Record<string, [string, number]> = {};
+  if (sbExamIdx !== undefined) {
+    const examRows = concepts
+      .filter((c) => c.source.endsWith("bank taxonomy"))
+      .map((c) => {
+        const pm = c.concept.match(/^(.*?)\s*\((\d+)\s*PYQ\)\s*$/);
+        const ci = idIndex.get(c.id);
+        const pi = ci === undefined ? undefined : coveredOf[`${ci}|${sbExamIdx}`];
+        const labels = pi === undefined ? [] : coveredPool[pi][2].split(" + ").filter(Boolean);
+        return {
+          chapterName: c.chapter_name,
+          pyq: pm ? Number(pm[2]) : 0,
+          // Synthesised into the shape the shared helper takes. Only the class
+          // and chapter number matter to it, and both are in the label.
+          refs: labels.flatMap((label) => {
+            const lm = label.match(/^Std (XI|XII) Ch\.(\d+)/);
+            return lm
+              ? [{ cls: lm[1] === "XII" ? 12 : 11, no: `${lm[2]}.0`, chapterLabel: label }]
+              : [];
+          }),
+        };
+      });
+    for (const [chapterName, d] of dominantSbByChapter(examRows)) {
+      domCh[chapterName] = [d.label, sbBookOrder(d)];
+    }
+  }
+
   // State Board first — it is the baseline every other spine is measured against.
   const sources = [...new Set(concepts.map((c) => c.source))].sort((a, b) =>
     a === "MH State Board" ? -1 : b === "MH State Board" ? 1 : a.localeCompare(b),
@@ -342,6 +381,7 @@ async function main() {
     noteOf,
     coveredPool,
     coveredOf,
+    domCh,
     generatedAt: new Date().toISOString().slice(0, 16).replace("T", " "),
   };
 
@@ -856,12 +896,18 @@ function drawJee(){
   // Old-syllabus chapters sink to the bottom in BOTH orders — they are history,
   // and letting a dead chapter outrank a live one by PYQ count would misdirect
   // exactly the prioritisation this table exists to support.
-  // Grouped by the JEE chapter. Ordering along the State Board book was tried and
-  // reverted: it scattered each exam chapter across the table, and "what does JEE
-  // ask in Amines" matters more than "what does JEE ask about SB Ch.13".
+  // Rows stay grouped by their JEE chapter — ordering individual ROWS along the
+  // State Board book scattered each chapter across the table and was reverted.
+  // What is ordered by the book is whole CHAPTERS: each sits at the State Board
+  // chapter holding most of its PYQ, so this reads as a teaching sequence while
+  // no chapter is broken apart. Dominance is by weight, not earliest pointer: a
+  // chapter touching SB Ch.2 with one subtopic but holding 39 questions in
+  // Ch.8 belongs at Ch.8.
+  var domCh=D.domCh||{};
+  var chOrd=function(ch){ return domCh[ch] ? domCh[ch][1] : Number.MAX_SAFE_INTEGER; };
   rows=rows.slice().sort((a,b)=>
     (isOld(a)?1:0)-(isOld(b)?1:0) ||
-    (byWeight ? b.pyq-a.pyq : a.chName.localeCompare(b.chName)||b.pyq-a.pyq));
+    (byWeight ? b.pyq-a.pyq : chOrd(a.chName)-chOrd(b.chName)||a.chName.localeCompare(b.chName)||b.pyq-a.pyq));
   let h='<thead><tr><th style="width:52px">PYQ</th><th>JEE subtopic</th>'+
         '<th style="width:150px">State Board chapter</th>'+
         '<th>Covered by State Board subtopic</th>'+
@@ -872,6 +918,7 @@ function drawJee(){
     // Chapter bands only make sense in chapter order; weight order is a flat list.
     if(!byWeight && c.chName!==lastCh){ lastCh=c.chName;
       h+='<tr class="chap"><td colspan="6">'+esc(c.chName)+
+         (domCh[c.chName]?' <span class="sub" style="font-weight:400;font-size:11px">→ '+esc(domCh[c.chName][0])+'</span>':'')+
          (isOld(c)?' <span class="sub" style="font-weight:400;font-size:11px">— OLD SYLLABUS, not examined since '+D.liveFrom+'</span>':'')+
          '</td></tr>'; }
     const cb=coveredFor(c.i, SB);

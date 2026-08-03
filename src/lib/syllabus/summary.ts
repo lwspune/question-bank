@@ -198,3 +198,71 @@ export function parseChapterKey(key: string): { cls: number; chapterNo: number }
   if (cls < 9 || cls > 12 || chapterNo < 1) return null;
   return { cls, chapterNo };
 }
+
+/**
+ * Which chapter of a BOOK does an exam chapter mostly live in?
+ *
+ * Used to order an exam-spine table along the book a teacher actually teaches
+ * from, WITHOUT breaking each exam chapter apart. Ordering rows by their own
+ * State Board pointer was built and reverted: it scattered "what does JEE ask
+ * in Amines" across the whole table. Ordering whole CHAPTERS by their dominant
+ * book chapter keeps each one intact and still reads down the book.
+ *
+ * Dominance is by PYQ weight, not by earliest pointer. A chapter that touches
+ * Std XI Ch.2 with a single subtopic but has 39 questions in Std XII Ch.8
+ * belongs at Ch.8; sorting on the earliest pointer would file it near the front
+ * of the book on the strength of one question.
+ */
+export type DominantSbInput = {
+  chapterName: string;
+  pyq: number;
+  refs: { cls: number; no: string; chapterLabel: string }[];
+};
+export type DominantSb = { label: string; cls: number; chapterNo: number; pyq: number };
+
+export function dominantSbByChapter(rows: DominantSbInput[]): Map<string, DominantSb> {
+  // chapterName -> book chapter label -> PYQ behind it
+  const weights = new Map<string, Map<string, { cls: number; chapterNo: number; pyq: number }>>();
+  for (const r of rows) {
+    const perChapter = weights.get(r.chapterName) ?? new Map();
+    // De-duplicated per ROW: a row pointing at 5.1 and 5.3 is one topic in one
+    // chapter, and counting its PYQ twice would inflate that chapter.
+    const seen = new Set<string>();
+    for (const ref of r.refs) {
+      if (seen.has(ref.chapterLabel)) continue;
+      seen.add(ref.chapterLabel);
+      const prev = perChapter.get(ref.chapterLabel);
+      // A subtopic straddling two chapters counts its PYQ against BOTH — the
+      // question genuinely needs both, so splitting the count understates each.
+      perChapter.set(ref.chapterLabel, {
+        cls: ref.cls,
+        chapterNo: Number(ref.no.split(".")[0]) || 0,
+        pyq: (prev?.pyq ?? 0) + r.pyq,
+      });
+    }
+    weights.set(r.chapterName, perChapter);
+  }
+
+  const out = new Map<string, DominantSb>();
+  for (const [chapterName, perChapter] of weights) {
+    // A chapter with no pointer into the book at all is deliberately ABSENT
+    // rather than given a placeholder: it has no position in book order, and
+    // callers sort it last instead of inventing one.
+    const best = [...perChapter.entries()].sort(
+      (a, b) =>
+        b[1].pyq - a[1].pyq ||
+        // Ties break to the EARLIER chapter, so the answer does not depend on
+        // the order rows happened to arrive in.
+        a[1].cls - b[1].cls ||
+        a[1].chapterNo - b[1].chapterNo,
+    )[0];
+    if (best) out.set(chapterName, { label: best[0], ...best[1] });
+  }
+  return out;
+}
+
+/** Sort key along the book. A chapter with no home in it sorts last. */
+export function sbBookOrder(d: DominantSb | undefined): number {
+  if (!d) return Number.MAX_SAFE_INTEGER;
+  return d.cls * 1000 + d.chapterNo;
+}

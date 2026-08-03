@@ -96,4 +96,34 @@ let bad = 0;
 if (!ncert) { console.log("\nFAIL: NCERT table is EMPTY"); bad = 1; }
 if (!matrix) { console.log("FAIL: matrix table is EMPTY"); bad = 1; }
 if (!jee) { console.log("FAIL: JEE table is EMPTY"); bad = 1; }
+
+// ORDER, not just presence. The JEE table is ordered by State Board chapter, and
+// the failure mode is silent: a regex that loses its backslashes on the way
+// through the template literal matches nothing, every chapter scores equal, and
+// the table falls back to alphabetical with no error and an UNCHANGED row count.
+// That shipped once. So assert the order itself.
+const bands = [...jbody.matchAll(/<tr class="chap">([\s\S]*?)<\/tr>/g)].map((m) =>
+  m[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(),
+);
+const live = bands.filter((b) => !/OLD SYLLABUS/i.test(b));
+const ordOf = (b) => {
+  const m = /→ Std (XI|XII) Ch\.(\d+)/.exec(b);
+  return m ? (m[1] === "XI" ? 0 : 1000) + Number(m[2]) : Number.MAX_SAFE_INTEGER;
+};
+const labelled = live.filter((b) => ordOf(b) !== Number.MAX_SAFE_INTEGER);
+console.log(`
+JEE bands: ${bands.length} (${live.length} live, ${labelled.length} with a State Board chapter)`);
+if (labelled.length < 2) {
+  console.log("FAIL: JEE bands carry no State Board chapter — ordering data did not reach the page");
+  bad = 1;
+} else {
+  let back = 0;
+  for (let i = 1; i < labelled.length; i++) if (ordOf(labelled[i - 1]) > ordOf(labelled[i])) back++;
+  if (back) {
+    console.log(`FAIL: State Board chapter order goes backwards ${back} time(s) across JEE bands`);
+    bad = 1;
+  } else {
+    console.log(`  order OK: ${labelled[0].slice(0, 60)} ... ${labelled.at(-1).slice(0, 60)}`);
+  }
+}
 process.exit(bad);

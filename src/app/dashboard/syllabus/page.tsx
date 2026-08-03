@@ -71,6 +71,10 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
       // Both books on one row, so "neither covers this" is visible at a glance.
       books: ["MH State Board", "CBSE Class 12"],
       oldSyllabus,
+      // Chapters run in State Board book order rather than alphabetically, so
+      // this reads as a teaching sequence. Deliberately NOT set on the NCERT
+      // table above: that one keeps its own book order.
+      orderByBook: "MH State Board",
     }),
     loadExamSpineSummaries(db, { oldSyllabus }),
   ]);
@@ -518,9 +522,13 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
           </h2>
           <p className="mb-3 text-xs text-muted-foreground">
             Rows are what JEE actually asked, from the question bank, so each carries its PYQ
-            count. Chapters JEE no longer sets are marked old syllabus and listed last. Because
-            the spine is the bank rather than the official syllabus, a topic never sampled has
-            no row — absence here is not evidence of absence from the exam.
+            count. Chapters run in <strong>State Board book order</strong> — each sits at the
+            State Board chapter holding most of its questions, named after the arrow, so you can
+            read down the book you teach from. Where that chapter is chosen by a one- or
+            two-question margin the placement is soft, so check the row itself before relying on
+            it. Chapters JEE no longer sets are marked old syllabus and listed last. Because the
+            spine is the bank rather than the official syllabus, a topic never sampled has no
+            row — absence here is not evidence of absence from the exam.
           </p>
           <MappingTable
             rows={jeeRows}

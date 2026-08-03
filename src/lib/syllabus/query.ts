@@ -1,6 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
   BOOK_OF_EXAM,
+  dominantSbByChapter,
+  sbBookOrder,
   parseCoveredRef,
   splitCoveredBy,
   splitPyqCount,
@@ -302,6 +304,12 @@ export type MappingRow = {
    */
   sbChapterLabel: string;
   sbOrder: { cls: number; chapterNo: number } | null;
+  /**
+   * The book chapter this row's CHAPTER mostly lives in — set only when
+   * `orderByBook` is on. Rendered in the band header so the ordering explains
+   * itself instead of looking arbitrary.
+   */
+  chapterPrimary: string;
 };
 
 /** The State Board chapter a row's pointers land in, for grouping and ordering. */
@@ -414,6 +422,13 @@ export async function loadMappingRows(
     subject?: string;
     topLevelOnly?: boolean;
     oldSyllabus?: Set<string>;
+    /**
+     * Order whole CHAPTERS along this book instead of alphabetically, so the
+     * table reads down the book being taught. Opt-in per table: the NCERT table
+     * keeps its own book order, and inheriting the State Board sequence there
+     * would silently reorder a table nobody asked to change.
+     */
+    orderByBook?: string;
   },
 ): Promise<MappingRow[]> {
   const subject = opts.subject ?? "Chemistry";
@@ -441,7 +456,7 @@ export async function loadMappingRows(
     byConcept.set(l.concept_id, list);
   }
 
-  return mine
+  const mapped: MappingRow[] = mine
     .map((c) => {
       const { name, pyq } = splitPyqCount(c.concept);
       const mineLinks = byConcept.get(c.id) ?? [];
@@ -465,24 +480,49 @@ export async function loadMappingRows(
         pyq,
         covers,
         oldSyllabus: opts.oldSyllabus?.has(c.chapter_name) ?? false,
+        chapterPrimary: "",
         ...sbPlacement(covers["MH State Board"]?.refs ?? []),
       };
     })
-    // Grouped by the row's OWN chapter. Ordering along the State Board book was
-    // tried and reverted: it scattered each exam chapter across the table, and
-    // reading "what does JEE ask in Amines" turned out to matter more than
-    // "what does JEE ask about State Board Ch.13".
-    //
-    // Old-syllabus chapters still sink to the bottom — they are history, and
-    // letting a dead chapter outrank a live one misdirects prioritisation.
-    .sort(
-      (a, b) =>
-        Number(a.oldSyllabus) - Number(b.oldSyllabus) ||
-        a.chapterName.localeCompare(b.chapterName) ||
-        b.pyq - a.pyq ||
-        a.cls - b.cls ||
-        a.sectionNo.localeCompare(b.sectionNo, undefined, { numeric: true }),
+;
+
+  // Rows stay grouped by their OWN chapter — ordering individual rows along the
+  // book was built and reverted, because it scattered each exam chapter across
+  // the table and "what does JEE ask in Amines" matters more.
+  //
+  // What `orderByBook` changes is the order of whole CHAPTERS: each is placed at
+  // the book chapter holding most of its PYQ, so the table reads down the book
+  // without any chapter being broken apart.
+  const chapterOrder = new Map<string, number>();
+  if (opts.orderByBook) {
+    const book = opts.orderByBook;
+    const dominant = dominantSbByChapter(
+      mapped.map((r) => ({
+        chapterName: r.chapterName,
+        pyq: r.pyq,
+        refs: r.covers[book]?.refs ?? [],
+      })),
     );
+    for (const r of mapped) {
+      const d = dominant.get(r.chapterName);
+      r.chapterPrimary = d?.label ?? "";
+      chapterOrder.set(r.chapterName, sbBookOrder(d));
+    }
+  }
+
+  return mapped.sort(
+    (a, b) =>
+      // Old-syllabus chapters sink to the bottom — they are history, and letting
+      // a dead chapter outrank a live one misdirects prioritisation.
+      Number(a.oldSyllabus) - Number(b.oldSyllabus) ||
+      // Falls back to alphabetical when no book order is requested, and breaks
+      // ties within one book chapter the same way.
+      (chapterOrder.get(a.chapterName) ?? 0) - (chapterOrder.get(b.chapterName) ?? 0) ||
+      a.chapterName.localeCompare(b.chapterName) ||
+      b.pyq - a.pyq ||
+      a.cls - b.cls ||
+      a.sectionNo.localeCompare(b.sectionNo, undefined, { numeric: true }),
+  );
 }
 
 /**
@@ -560,6 +600,9 @@ export async function loadExamSpineSummaries(
             pyq,
             covers,
             oldSyllabus: opts.oldSyllabus?.has(c.chapter_name) ?? false,
+            // Gap rows are listed on their own, never in a book-ordered table,
+            // so they carry no primary chapter.
+            chapterPrimary: "",
             ...sbPlacement(covers["MH State Board"]?.refs ?? []),
           };
         });
