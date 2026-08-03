@@ -136,6 +136,55 @@ export function buildGapView<
   return view;
 }
 
+/**
+ * The spine a row belongs to. `syllabus_concepts.source` names the book or bank
+ * a row was extracted from, and rows from different spines must never be mixed:
+ * every spine uses subject "Chemistry" and numbers its chapters from 1, so a
+ * query filtered on subject alone folds State Board Ch.1, NCERT Ch.1 and the
+ * exam-bank rows into one chapter.
+ */
+export const SPINE = {
+  stateBoard: "MH State Board",
+  ncert: "NCERT",
+  jee: "JEE Mains bank taxonomy",
+} as const;
+
+/**
+ * Which syllabus an exam column is asking about when it sits on an EXAM-spine
+ * row. On the State Board spine the column means "does exam X require this?";
+ * on an exam spine it means "does book Y cover this?", so the same column name
+ * points at a different book.
+ */
+export const BOOK_OF_EXAM: Record<string, string> = {
+  "MH State Board": SPINE.stateBoard,
+  "CBSE Class 12": SPINE.ncert,
+};
+
+/** "Diazonium Salts (12 PYQ)" -> { name, pyq }. Exam spines carry the count in the name. */
+export function splitPyqCount(concept: string): { name: string; pyq: number } {
+  const m = /^(.*?)\s*\((\d+)\s*PYQ\)\s*$/.exec(concept);
+  return m ? { name: m[1], pyq: Number(m[2]) } : { name: concept, pyq: 0 };
+}
+
+/**
+ * Parse one covered_by reference. An `XI:` / `XII:` prefix names the school YEAR
+ * explicitly; without one the ref belongs to the same year as the row it sits on.
+ * Cross-year mappings are the common case in this data, so a bare number cannot
+ * be assumed to mean the row's own year without that default being stated.
+ */
+export function parseCoveredRef(ref: string, defaultCls: number): { cls: number; no: string } {
+  const m = /^(XI|XII):(.+)$/.exec(ref.trim());
+  if (!m) return { cls: defaultCls, no: ref.trim() };
+  return { cls: m[1] === "XII" ? 12 : 11, no: m[2].trim() };
+}
+
+export function splitCoveredBy(coveredBy: string): string[] {
+  return coveredBy
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);
+}
+
 /** A stable, URL-safe key for one chapter of one class. */
 export function chapterKey(cls: number, chapterNo: number): string {
   return `${cls}-${chapterNo}`;
