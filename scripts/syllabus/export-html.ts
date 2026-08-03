@@ -65,6 +65,44 @@ async function main() {
   );
   const links = await all<Link>("syllabus_concept_exams", "concept_id,exam,status,note,covered_by");
 
+  // WHICH JEE CHAPTERS ARE OLD SYLLABUS — derived from the bank, not asserted.
+  // A chapter whose newest PYQ is 2021 has not been examined since the 2023-24
+  // rationalisation; one that reaches 2026 is live. Computing it here means the
+  // flag re-derives itself as the bank grows, instead of rotting in a hardcoded
+  // list. (s-Block looks dead on volume — 10 questions — but reaches 2026, so
+  // volume is the wrong test; recency is the right one.)
+  // Filtered SERVER-side on the embedded exam/subject. Selecting every question
+  // and filtering in JS pulled ~24k rows to use ~700 of them, and would get worse
+  // with every ingest; !inner + eq pushes the restriction into the query.
+  type QRow = { pyq_year: number | null; chapters: { name: string } | null };
+  const lastYearByChapter = new Map<string, number>();
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("questions")
+      .select("pyq_year,exams!inner(name),subjects!inner(name),chapters!inner(name)")
+      .eq("exams.name", "JEE Mains")
+      .eq("subjects.name", "Chemistry")
+      .eq("visibility", "PUBLIC")
+      .eq("question_kind", "pyq")
+      .range(from, from + 999);
+    if (error) throw new Error(`jee years: ${error.message}`);
+    const rows = (data ?? []) as unknown as QRow[];
+    for (const r of rows) {
+      const ch = r.chapters?.name;
+      if (!ch || !r.pyq_year) continue;
+      lastYearByChapter.set(ch, Math.max(lastYearByChapter.get(ch) ?? 0, r.pyq_year));
+    }
+    if (rows.length < 1000) break;
+  }
+  const LIVE_FROM = 2023;
+  const oldSyllabusChapters = [...lastYearByChapter]
+    .filter(([, yr]) => yr < LIVE_FROM)
+    .map(([ch]) => ch);
+  console.log(
+    `  JEE old-syllabus chapters (no PYQ since ${LIVE_FROM}): ${oldSyllabusChapters.length}` +
+      (oldSyllabusChapters.length ? ` — ${oldSyllabusChapters.join(", ")}` : ""),
+  );
+
   // Compact payload: index concepts, then emit links as [conceptIdx, examIdx, status].
   // The raw join is ~3.4k rows; inlining it verbatim would triple the file for no gain.
   const exams = [...new Set(links.map((l) => l.exam))].sort((a, b) =>
@@ -87,47 +125,82 @@ async function main() {
   // covered_by keeps its own pool, separate from notes: a row can carry a mapping
   // without a caveat, and vice versa.
   //
-  // Each entry is [refs, names]. The refs go in the narrow "SB ref" column and the
-  // NAMES in the wide one — the column is headed "Covered by State Board subtopic",
-  // so shipping bare numbers would leave the teacher to look each one up in the
-  // book, which is exactly the work this table exists to remove.
+  // Each entry is [refs, names, chapters]. Only names and chapters are rendered:
+  // a name already leads with its section number ("11.4 Alcohols and Phenols"),
+  // so a separate ref column just repeated it. `refs` is kept because it is the
+  // compact form, useful for any surface that wants numbers alone.
   //
   // Titles are resolved CLASS-SCOPED. A bare section number is ambiguous across
   // the two years (State Board Std XI 2.5 is not Std XII 2.5), and cross-year
   // mappings are the common case in this data, not the exception.
-  const sbTitleByClassNo = new Map<string, string>();
-  const sbChapterByClassNo = new Map<string, string>();
+  //
+  // ONE LOOKUP PER BOOK. A ruling's refs point into whichever syllabus its `exam`
+  // column names, so resolving them all against the State Board would label an
+  // NCERT ref with a State Board chapter — NCERT 7.4 (Alcohols, Phenols and
+  // Ethers) would read as State Board Std XII Ch.7 (Groups 16, 17 and 18). That
+  // is a confident pointer at the wrong book, the worst failure this table has.
+  const titleByBook = new Map<string, Map<string, string>>();
+  const chapterByBook = new Map<string, Map<string, string>>();
   const conceptClassOf = new Map<string, number>();
   for (const c of concepts) {
     conceptClassOf.set(c.id, c.class);
-    if (c.source !== "MH State Board") continue;
-    sbTitleByClassNo.set(`${c.class}|${c.section_no}`, c.concept);
-    sbChapterByClassNo.set(`${c.class}|${c.chapter_no}`, c.chapter_name);
+    if (!titleByBook.has(c.source)) {
+      titleByBook.set(c.source, new Map());
+      chapterByBook.set(c.source, new Map());
+    }
+    titleByBook.get(c.source)!.set(`${c.class}|${c.section_no}`, c.concept);
+    chapterByBook.get(c.source)!.set(`${c.class}|${c.chapter_no}`, c.chapter_name);
   }
+  // Which spine an `exam` column refers to when it appears on an exam-spine row.
+  const BOOK_OF_EXAM: Record<string, string> = {
+    "MH State Board": "MH State Board",
+    "CBSE Class 12": "NCERT",
+  };
+  const sbTitleByClassNo = titleByBook.get("MH State Board") ?? new Map();
   // Third element: the State Board CHAPTER(S). The table used to print the NCERT
   // chapter here, which merely repeated the group heading the row already sits
   // under. The chapter a section lands in is the part that carries information —
   // it is routinely NOT the same-numbered chapter, and sometimes not even the
   // same school year.
-  const resolveCovered = (raw: string, conceptId: string): [string, string, string] => {
+  const resolveCovered = (raw: string, conceptId: string, exam: string): [string, string, string] => {
+    const book = BOOK_OF_EXAM[exam] ?? "MH State Board";
+    const titleMap = titleByBook.get(book) ?? new Map<string, string>();
+    const chapterMap = chapterByBook.get(book) ?? new Map<string, string>();
     const defaultCls = conceptClassOf.get(conceptId);
     const parts = raw.split(",").map((x) => x.trim()).filter(Boolean);
     const refs: string[] = [];
     const names: string[] = [];
     const chapters: string[] = [];
+    // Resolve first, THEN label. An earlier version printed the year only when the
+    // ref carried an explicit prefix, so Std XI rows were labelled and Std XII
+    // rows were bare — which reads as though the unlabelled ones have no year
+    // rather than being the other one. Every chapter now states its year.
+    const seen: { cls: number; no: string; title: string; chNo: string; chName: string }[] = [];
     for (const ref of parts) {
       const m = ref.match(/^(XI|XII):(.+)$/);
-      const cls = m ? (m[1] === "XII" ? 12 : 11) : defaultCls;
+      const cls = (m ? (m[1] === "XII" ? 12 : 11) : defaultCls) ?? 12;
       const no = m ? m[2].trim() : ref;
-      const yr = m ? `Std ${m[1]} ` : "";
-      const title = sbTitleByClassNo.get(`${cls}|${no}`) ?? "";
-      refs.push(`${yr}${no}`);
-      names.push(title ? `${yr}${no} ${title}` : `${yr}${no}`);
       const chNo = no.split(".")[0];
-      const chName = sbChapterByClassNo.get(`${cls}|${chNo}`);
-      // Label the year only when it differs from the NCERT row's own year, so the
-      // cross-year cases stand out instead of every row carrying "Std XI".
-      const label = chName ? `${yr}Ch.${chNo} ${chName}` : `${yr}Ch.${chNo}`;
+      seen.push({
+        cls,
+        no,
+        title: titleMap.get(`${cls}|${no}`) ?? "",
+        chNo,
+        chName: chapterMap.get(`${cls}|${chNo}`) ?? "",
+      });
+    }
+    // The subtopic column repeats the year only when a row spans BOTH years —
+    // that is the only case where the numbers alone are ambiguous. Otherwise the
+    // chapter column beside it already says which book.
+    const spansYears = new Set(seen.map((x) => x.cls)).size > 1;
+    const yrOf = (cls: number) => `Std ${cls === 12 ? "XII" : "XI"} `;
+    for (const x of seen) {
+      const pre = spansYears ? yrOf(x.cls) : "";
+      refs.push(`${pre}${x.no}`);
+      names.push(x.title ? `${pre}${x.no} ${x.title}` : `${pre}${x.no}`);
+      const label = x.chName
+        ? `${yrOf(x.cls)}Ch.${x.chNo} ${x.chName}`
+        : `${yrOf(x.cls)}Ch.${x.chNo}`;
       if (!chapters.includes(label)) chapters.push(label);
     }
     return [refs.join(", "), names.join(" · "), chapters.join(" + ")];
@@ -151,7 +224,7 @@ async function main() {
       noteOf[`${ci}|${ei}`] = pi;
     }
     if (l.covered_by) {
-      const rendered = resolveCovered(l.covered_by, l.concept_id);
+      const rendered = resolveCovered(l.covered_by, l.concept_id, l.exam);
       const key = JSON.stringify(rendered);
       let pi = coveredIndex.get(key);
       if (pi === undefined) {
@@ -233,6 +306,8 @@ async function main() {
       ];
     }),
     links: compactLinks,
+    oldSyllabus: oldSyllabusChapters,
+    liveFrom: LIVE_FROM,
     notePool,
     noteOf,
     coveredPool,
@@ -440,6 +515,11 @@ const SB = 'MH State Board';
 // exam spine the exam column names WHICH SYLLABUS is being asked about, so one
 // JEE subtopic carries a State Board answer and an NCERT answer side by side.
 const NC = 'CBSE Class 12';
+// Chapters an exam no longer examines, derived from the bank at export time.
+// Declared HERE, above the coverage summary that uses it — as a const it is in
+// the temporal dead zone until evaluated, so a later declaration would throw.
+const OLD_SYL=new Set(D.oldSyllabus||[]);
+function isOld(c){ return OLD_SYL.has(c.chName); }
 /** Note for one concept under one exam, or '' — resolved through the string pool. */
 function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 // Distinguishes a mapping a human read off both books from one the title matcher
@@ -555,12 +635,18 @@ function cell(st){
         '<th>Share covered</th></tr></thead><tbody>';
   for(const src of SOURCES){
     if(src===SB) continue;                       // the State Board vs itself is meaningless
-    const mine = ALL.filter(c=>c.src===src);
+    // LIVE subtopics only. Counting chapters the exam no longer sets inflates the
+    // gap with history — JEE read "15 not covered" when 10 of those were in
+    // chapters last examined in 2021, so the number to act on is 5.
+    const all_ = ALL.filter(c=>c.src===src);
+    const mine = all_.filter(c=>!isOld(c));
+    const oldN = all_.length-mine.length;
     let f=0,p=0,n=0;
     for(const c of mine){ const st=c.st[SB]; if(st==='full')f++; else if(st==='partial')p++; else if(st==='not')n++; }
-    const pc=x=>(x/mine.length*100).toFixed(1)+'%';
+    const pc=x=>(x/(mine.length||1)*100).toFixed(1)+'%';
     const label=src.replace(' bank taxonomy','');
-    const sub=src.endsWith('bank taxonomy')?'from the question bank':'Std XI + XII sections';
+    const sub=(src.endsWith('bank taxonomy')?'from the question bank':'Std XI + XII sections')+
+      (oldN?' · excludes '+oldN+' old-syllabus subtopics':'');
     h+='<tr><th>'+label+'<div class="sub" style="font-size:11px;margin:0">'+sub+'</div></th>'+
        '<td class="num">'+mine.length+'</td>'+
        '<td class="num">'+f+'</td>'+
@@ -594,14 +680,17 @@ function drawGap(){
   const out=document.getElementById('gapOut');
   if(!gapExam){ out.innerHTML='<p class="sub">Pick an exam to list the subtopics the State Board does not fully cover.</p>'; return; }
   const label=gapExam.replace(' bank taxonomy','');
-  const mine=ALL.filter(c=>c.src===gapExam);
+  const mineAll=ALL.filter(c=>c.src===gapExam);
+  const mine=mineAll.filter(c=>!isOld(c));
+  const oldSkipped=mineAll.length-mine.length;
   const not=mine.filter(c=>c.st[SB]==='not');
   const part=mine.filter(c=>c.st[SB]==='partial');
   const unassessed=mine.filter(c=>!c.st[SB]);
 
   let h='<p class="sub">Of <strong>'+mine.length+'</strong> '+label+' subtopics, the State Board does <strong>not cover '+
         not.length+'</strong>'+(part.length?' and only partly covers <strong>'+part.length+'</strong>':'')+
-        (unassessed.length?'; '+unassessed.length+' not yet assessed':'')+'.</p>';
+        (unassessed.length?'; '+unassessed.length+' not yet assessed':'')+'.'+
+        (oldSkipped?' <span class="sub">('+oldSkipped+' subtopics in chapters no longer examined are excluded.)</span>':'')+'</p>';
   if(!not.length && !part.length){
     out.innerHTML=h+'<p class="note">No gaps — every '+label+' subtopic is covered by the State Board syllabus.</p>';
     return;
@@ -688,9 +777,11 @@ function drawNcert(){
   // table. isTop already exists, is used by the matrix above, and has no escapes.
   const rows=ALL.filter(c=>c.src==='NCERT' && (subs || isTop(c.sec))).slice().sort((a,b)=>
     a.cls-b.cls || a.ch-b.ch || secKey(a.sec).localeCompare(secKey(b.sec)));
+  // No separate ref column: every name in the covering column already leads with
+  // its section number ("1.2.1 Matter"), so a ref column only repeated it.
   let h='<thead><tr><th style="width:60px">NCERT</th><th>NCERT subtopic</th>'+
         '<th style="width:170px">State Board chapter</th>'+
-        '<th style="width:60px">SB ref</th><th>Covered by State Board subtopic</th></tr></thead><tbody>';
+        '<th>Covered by State Board subtopic</th></tr></thead><tbody>';
   let shown=0, lastCh='';
   for(const c of rows){
     // A HAND-VERIFIED covered_by always beats the title matcher. The matcher
@@ -704,12 +795,14 @@ function drawNcert(){
     shown++;
     const chLabel='Std '+(c.cls===11?'XI':'XII')+' · '+c.ch+'. '+c.chName;
     if(chLabel!==lastCh){ lastCh=chLabel;
-      h+='<tr class="chap"><td colspan="5">'+chLabel+'</td></tr>'; }
+      h+='<tr class="chap"><td colspan="4">'+chLabel+'</td></tr>'; }
     h+='<tr><td class="num">'+c.sec+'</td><td>'+c.name+'</td>'+
        '<td class="sub" style="font-size:11px">'+(cb ? esc(cb[2]) : '')+'</td>'+
-       (cb ? '<td class="num">'+esc(cb[0])+'</td><td>'+esc(cb[1])+' '+badge('verified')+noteHtml(c,SB)+'</td>'
-        : m ? '<td class="num">'+m[0]+'</td><td>'+m[1]+' '+badge('auto')+'</td>'
-          : '<td colspan="2">'+cell(c.st[SB]==='not'?'not':null)+
+       (cb ? '<td>'+esc(cb[1])+' '+badge('verified')+noteHtml(c,SB)+'</td>'
+        // The auto-matcher returns [ref, title] separately, so join them into the
+        // same "<number> <title>" shape the verified rows already use.
+        : m ? '<td>'+m[0]+' '+m[1]+' '+badge('auto')+'</td>'
+          : '<td>'+cell(c.st[SB]==='not'?'not':null)+
             ' <span class="sub" style="font-size:11px">'+
             (c.st[SB]==='not'?'not covered — adjudicated gap':'no confident title match — review')+
             '</span>'+noteHtml(c,SB)+'</td>')+'</tr>';
@@ -730,45 +823,58 @@ function drawJee(){
   let rows=ALL.filter(c=>c.src===JEE_SRC);
   if(q) rows=rows.filter(c=>c.name.toLowerCase().includes(q)||c.chName.toLowerCase().includes(q));
   if(onlyGaps) rows=rows.filter(c=>c.st[SB]==='not'||c.st[SB]==='partial');
-  rows=rows.slice().sort(byWeight
-    ? (a,b)=>b.pyq-a.pyq
-    : (a,b)=>a.chName.localeCompare(b.chName)||b.pyq-a.pyq);
+  // Old-syllabus chapters sink to the bottom in BOTH orders — they are history,
+  // and letting a dead chapter outrank a live one by PYQ count would misdirect
+  // exactly the prioritisation this table exists to support.
+  rows=rows.slice().sort((a,b)=>
+    (isOld(a)?1:0)-(isOld(b)?1:0) ||
+    (byWeight ? b.pyq-a.pyq : a.chName.localeCompare(b.chName)||b.pyq-a.pyq));
   let h='<thead><tr><th style="width:52px">PYQ</th><th>JEE subtopic</th>'+
-        '<th style="width:110px">NCERT</th>'+
         '<th style="width:150px">State Board chapter</th>'+
-        '<th style="width:120px">SB ref</th><th>Covered by State Board subtopic</th></tr></thead><tbody>';
+        '<th>Covered by State Board subtopic</th>'+
+        '<th style="width:150px">NCERT chapter</th>'+
+        '<th>Covered by NCERT subtopic</th></tr></thead><tbody>';
   let lastCh='';
   for(const c of rows){
     // Chapter bands only make sense in chapter order; weight order is a flat list.
     if(!byWeight && c.chName!==lastCh){ lastCh=c.chName;
-      h+='<tr class="chap"><td colspan="6">'+esc(c.chName)+'</td></tr>'; }
+      h+='<tr class="chap"><td colspan="6">'+esc(c.chName)+
+         (isOld(c)?' <span class="sub" style="font-weight:400;font-size:11px">— OLD SYLLABUS, not examined since '+D.liveFrom+'</span>':'')+
+         '</td></tr>'; }
     const cb=coveredFor(c.i, SB);
     const st=c.st[SB];
     const nb=coveredFor(c.i, NC);
     const nst=c.st[NC];
-    h+='<tr><td class="num">'+c.pyq+'</td><td>'+esc(c.name)+
+    h+='<tr'+(isOld(c)?' style="opacity:.62"':'')+'><td class="num">'+c.pyq+'</td><td>'+esc(c.name)+
+       (isOld(c)?' <span class="sub" style="font-size:10px;border:1px solid var(--line);border-radius:8px;padding:0 5px">old syllabus</span>':'')+
        (st==='not'?' '+cell('not'):st==='partial'?' '+cell('partial'):'')+'</td>'+
-       '<td class="num" style="font-size:11px">'+
-         (nb ? esc(nb[0]) : '<span class="cell not" style="display:inline-block">none</span>')+
-         (nst==='partial'&&nb?' <span class="sub" style="font-size:10px">part</span>':'')+
-       '</td>'+
+       // State Board: chapter, then the covering subtopic. The section NUMBER is
+       // already the head of each name ("11.4 Alcohols and Phenols"), so a
+       // separate ref column only repeated it.
        '<td class="sub" style="font-size:11px">'+(cb?esc(cb[2]):'')+'</td>'+
-       (cb ? '<td class="num">'+esc(cb[0])+'</td><td>'+esc(cb[1])+' '+badge('verified')+noteHtml(c,SB)+'</td>'
-           : '<td colspan="2"><span class="sub" style="font-size:11px">'+
+       (cb ? '<td>'+esc(cb[1])+' '+badge('verified')+noteHtml(c,SB)+'</td>'
+           : '<td><span class="sub" style="font-size:11px">'+
              (st==='not'?'not covered — nowhere to point':'no single section — see note')+
-             '</span>'+noteHtml(c,SB)+'</td>')+'</tr>';
+             '</span>'+noteHtml(c,SB)+'</td>')+
+       // NCERT last, same two-column shape, so the two books read side by side.
+       '<td class="sub" style="font-size:11px">'+(nb?esc(nb[2]):'')+'</td>'+
+       (nb ? '<td>'+esc(nb[1])+(nst==='partial'?' '+cell('partial'):'')+noteHtml(c,NC)+'</td>'
+           : '<td>'+cell(nst==='not'?'not':null)+
+             '<span class="sub" style="font-size:11px"> '+
+             (nst==='not'?'not in NCERT':'no single section')+'</span>'+noteHtml(c,NC)+'</td>')+
+       '</tr>';
   }
   document.getElementById('jee').innerHTML=h+'</tbody>';
   const all=ALL.filter(c=>c.src===JEE_SRC);
   const gapPyq=all.filter(c=>c.st[SB]==='not').reduce((s,c)=>s+c.pyq,0);
-  const ncGap=all.filter(c=>c.st[NC]==='not');
-  const neither=all.filter(c=>c.st[NC]==='not'&&c.st[SB]==='not');
-  const ncGapPyq=ncGap.reduce((s,c)=>s+c.pyq,0);
-  const neitherPyq=neither.reduce((s,c)=>s+c.pyq,0);
+  const live=all.filter(c=>!isOld(c));
+  const liveGap=live.filter(c=>c.st[SB]==='not');
+  const liveGapPyq=liveGap.reduce((s,c)=>s+c.pyq,0);
+  const oldN=all.length-live.length;
   document.getElementById('jcount').textContent=
-    rows.length+' shown · '+all.length+' subtopics · State Board misses '+
-    all.filter(c=>c.st[SB]==='not').length+' ('+gapPyq+' PYQ) · NCERT misses '+
-    ncGap.length+' ('+ncGapPyq+' PYQ) · NEITHER covers '+neither.length+' ('+neitherPyq+' PYQ)';
+    rows.length+' shown · '+live.length+' live subtopics ('+oldN+' old-syllabus, listed last) · '+
+    'State Board misses '+liveGap.length+' of the live ones ('+liveGapPyq+' PYQ) · '+
+    all.filter(c=>c.st[SB]==='not').length+' including old ('+gapPyq+' PYQ)';
 }
 document.getElementById('jq').addEventListener('input',drawJee);
 document.getElementById('jOnlyGaps').addEventListener('change',drawJee);
