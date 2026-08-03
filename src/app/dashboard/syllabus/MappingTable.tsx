@@ -54,6 +54,9 @@ export default function MappingTable({
   showPyq?: boolean;
 }) {
   let lastChapter = "";
+  // One definition of the column count, used by both the header and the band —
+  // computing it twice is how a colSpan silently stops matching its table.
+  const totalCols = 2 + books.length * 2;
   return (
     <div className="overflow-x-auto rounded-lg border">
       <table className="w-full min-w-[52rem] text-sm">
@@ -86,7 +89,10 @@ export default function MappingTable({
               <Fragment key={r.id}>
                 {band && (
                   <tr className="border-t bg-muted/30">
-                    <td colSpan={2 + books.length * 2} className="p-2 px-3 text-sm font-semibold">
+                    <td
+                      colSpan={totalCols}
+                      className="p-2 px-3 text-sm font-semibold"
+                    >
                       {band}
                       {r.oldSyllabus && (
                         <span className="ml-2 text-xs font-normal text-muted-foreground">

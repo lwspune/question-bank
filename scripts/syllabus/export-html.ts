@@ -5,9 +5,31 @@
  *   npx tsx scripts/syllabus/export-html.ts
  *   -> generated-papers/syllabus-map.html   (gitignored; open with file://)
  *
- * Data is inlined, so the file works offline and can be mailed to anyone. Once a
- * layout settles here, port it to src/app/dashboard/syllabus/page.tsx — this file
- * is a prototype, NOT the shipped surface, and nothing should read from it.
+ * Data is inlined, so the file works offline and can be mailed to anyone.
+ *
+ * =====================================================================
+ * NOT the surface of record. /dashboard/syllabus is. Keep them in step.
+ * =====================================================================
+ * Both group the JEE table by JEE CHAPTER. Grouping by State Board chapter was
+ * built and reverted: it reads down the book a teacher teaches, but it scatters
+ * each exam chapter across the table, and "what does JEE ask in Amines" turned
+ * out to matter more. The sortKey (4th element of a coveredPool entry) is left
+ * in place — it is what that ordering needs, and re-deriving it is the only
+ * hard part of trying again.
+ *
+ * Remaining differences, deliberate:
+ *   - the page has an always-on per-exam live-gap list, and a second,
+ *     opposite-direction gap view ("State Board content NOT required by X").
+ *   - this file has the client-side filters (only-gaps, sort-by-PYQ-weight,
+ *     show sub-sections) that the page has none of. If those are wanted, they
+ *     belong on the page as a client island, NOT as grounds for keeping a
+ *     second implementation of the same tables alive.
+ *
+ * Kept because it caught real defects faster than a deploy cycle could — the
+ * empty column, the lost sort, a regex mangled by the template literal, and
+ * NCERT refs resolving against the State Board book. But two surfaces reading
+ * the same tables is how the page silently fell behind once already: change one,
+ * change the other, or retire this.
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
@@ -162,7 +184,11 @@ async function main() {
   // under. The chapter a section lands in is the part that carries information —
   // it is routinely NOT the same-numbered chapter, and sometimes not even the
   // same school year.
-  const resolveCovered = (raw: string, conceptId: string, exam: string): [string, string, string] => {
+  const resolveCovered = (
+    raw: string,
+    conceptId: string,
+    exam: string,
+  ): [string, string, string, number] => {
     const book = BOOK_OF_EXAM[exam] ?? "MH State Board";
     const titleMap = titleByBook.get(book) ?? new Map<string, string>();
     const chapterMap = chapterByBook.get(book) ?? new Map<string, string>();
@@ -203,9 +229,13 @@ async function main() {
         : `${yrOf(x.cls)}Ch.${x.chNo}`;
       if (!chapters.includes(label)) chapters.push(label);
     }
-    return [refs.join(", "), names.join(" · "), chapters.join(" + ")];
+    // Order on the FIRST pointer: a row spanning two chapters must be filed
+    // under one, and the first is the one its own mapping leads with.
+    const head = seen[0];
+    const sortKey = head ? head.cls * 1000 + (Number(head.chNo) || 0) : Number.MAX_SAFE_INTEGER;
+    return [refs.join(", "), names.join(" · "), chapters.join(" + "), sortKey];
   };
-  const coveredPool: [string, string, string][] = [];
+  const coveredPool: [string, string, string, number][] = [];
   const coveredIndex = new Map<string, number>();
   const coveredOf: Record<string, number> = {};
   const compactLinks: number[][] = [];
@@ -826,6 +856,9 @@ function drawJee(){
   // Old-syllabus chapters sink to the bottom in BOTH orders — they are history,
   // and letting a dead chapter outrank a live one by PYQ count would misdirect
   // exactly the prioritisation this table exists to support.
+  // Grouped by the JEE chapter. Ordering along the State Board book was tried and
+  // reverted: it scattered each exam chapter across the table, and "what does JEE
+  // ask in Amines" matters more than "what does JEE ask about SB Ch.13".
   rows=rows.slice().sort((a,b)=>
     (isOld(a)?1:0)-(isOld(b)?1:0) ||
     (byWeight ? b.pyq-a.pyq : a.chName.localeCompare(b.chName)||b.pyq-a.pyq));

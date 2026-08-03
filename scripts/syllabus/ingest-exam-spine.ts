@@ -323,7 +323,6 @@ const COVERED: Record<string, Covered> = {
     [
       "Reaction Products",
       "Named Reactions",
-      "Oxidation, Reduction and Identification Tests",
     ].map((s) => [
       `JEE Mains${SEP}Organic Reaction Mechanisms${SEP}${s}`,
       {
@@ -894,8 +893,12 @@ const COVERED_NCERT: Record<string, Covered> = {
   ),
 
   // ---- Organic Reaction Mechanisms (bank artefact) ----
+  // "Oxidation, Reduction and Identification Tests" is gone from both lists: its
+  // single question was a carbylamine "reagent used to distinguish" match-list
+  // and moved to Amines, leaving the subtopic empty, so the bank-derived spine
+  // no longer lists it.
   ...Object.fromEntries(
-    ["Reaction Products", "Named Reactions", "Oxidation, Reduction and Identification Tests"].map((s) => [
+    ["Reaction Products", "Named Reactions"].map((s) => [
       `JEE Mains${SEP}Organic Reaction Mechanisms${SEP}${s}`,
       {
         to: "",
@@ -1140,6 +1143,28 @@ async function main() {
   // book, which is the worst failure this table has.
   // (Ref validation runs earlier, BEFORE the dry-run exit, so a bad reference is
   // caught while the mapping is being written rather than only on --apply.)
+
+  // PRUNE rows the bank no longer produces. The ingest upserts on section_no, and
+  // those numbers are POSITIONAL (JEE-001..JEE-nnn assigned from sort order), so
+  // when a subtopic disappears every later row shifts down by one and the old
+  // LAST number is left behind as a ghost still carrying its ruling. Reclassifying
+  // 37 questions out of a catch-all emptied one subtopic and exposed this.
+  const liveSections = new Set(
+    rows.map((r, i) => `${r.exam} bank taxonomy|${r.exam.slice(0, 3).toUpperCase()}-${String(i + 1).padStart(3, "0")}`),
+  );
+  const stale = (back ?? []).filter(
+    (r) => r.source.endsWith("bank taxonomy") && !liveSections.has(`${r.source}|${r.section_no}`),
+  );
+  if (stale.length) {
+    // Rulings cascade with the concept, which is right: a ruling on a subtopic the
+    // bank no longer has is meaningless.
+    const { error: delErr } = await db
+      .from("syllabus_concepts")
+      .delete()
+      .in("id", stale.map((r) => r.id));
+    if (delErr) throw new Error(`prune: ${delErr.message}`);
+    console.log(`Pruned ${stale.length} stale exam-spine row(s) the bank no longer produces.`);
+  }
 
   // 0065 CHECKs note length at 500 and the upsert is chunked, so a violation
   // partway through would leave a half-applied ruling. Validate before writing.

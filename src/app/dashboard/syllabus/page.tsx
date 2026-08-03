@@ -9,6 +9,7 @@ import {
   loadChapterConcepts,
   loadMappingRows,
   loadOldSyllabusChapters,
+  loadExamSpineSummaries,
 } from "@/lib/syllabus/query";
 import { SPINE } from "@/lib/syllabus/summary";
 import MappingTable from "./MappingTable";
@@ -58,7 +59,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
   const db = createSupabaseServerClient();
   // Old-syllabus chapters are needed before the rows so the sort can sink them.
   const oldSyllabus = await loadOldSyllabusChapters(db);
-  const [matrix, ncertRows, jeeRows] = await Promise.all([
+  const [matrix, ncertRows, jeeRows, examSpines] = await Promise.all([
     loadSyllabusMatrix(db),
     loadMappingRows(db, {
       spine: SPINE.ncert,
@@ -71,6 +72,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
       books: ["MH State Board", "CBSE Class 12"],
       oldSyllabus,
     }),
+    loadExamSpineSummaries(db, { oldSyllabus }),
   ]);
 
   // Only a known exam may drive the gap view; an unrecognised ?gap= falls back
@@ -117,45 +119,113 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
 
         {/* coverage summary */}
         <section aria-labelledby="coverage" className="mb-8">
-          <h2 id="coverage" className="mb-2 text-sm font-semibold">
-            Coverage by exam
+          <h2 id="coverage" className="mb-1 text-sm font-semibold">
+            Does the State Board cover what each exam asks?
           </h2>
+          <p className="mb-3 text-xs text-muted-foreground">
+            Rows are each exam&rsquo;s OWN subtopics, taken from the question bank. This is the
+            inverse of the chapter matrix below, and the only direction that can say &ldquo;the exam
+            asks something the books never teach&rdquo;. Chapters an exam no longer sets are
+            excluded &mdash; counting them inflates the gap with history.
+          </p>
           <div className="overflow-x-auto rounded-md border">
-            <table className="w-full min-w-[34rem] text-sm">
+            <table className="w-full min-w-[38rem] text-sm">
               <thead className="bg-muted/50">
                 <tr>
                   <th scope="col" className="p-3 text-left font-medium">Exam</th>
-                  <th scope="col" className="p-3 text-right font-medium">In syllabus</th>
+                  <th scope="col" className="p-3 text-right font-medium">Its own subtopics</th>
+                  <th scope="col" className="p-3 text-right font-medium">Covered</th>
                   <th scope="col" className="p-3 text-right font-medium">Partly</th>
-                  <th scope="col" className="p-3 text-right font-medium">Not</th>
-                  <th scope="col" className="p-3 text-right font-medium">Unassessed</th>
+                  <th scope="col" className="p-3 text-right font-medium">Not covered</th>
                 </tr>
               </thead>
               <tbody>
-                {SYLLABUS_EXAMS.map((exam) => {
-                  const t = matrix.tallies[exam];
-                  return (
-                    <tr key={exam} className="border-t">
-                      <th scope="row" className="p-3 text-left font-medium">{exam}</th>
-                      <td className="p-3 text-right tabular-nums">{t.full}</td>
-                      <td className="p-3 text-right tabular-nums">{t.partial}</td>
-                      <td className="p-3 text-right tabular-nums">{t.not}</td>
-                      <td className="p-3 text-right tabular-nums text-muted-foreground">
-                        {t.unassessed}
-                      </td>
-                    </tr>
-                  );
-                })}
+                {examSpines.map((e) => (
+                  <tr key={e.spine} className="border-t">
+                    <th scope="row" className="p-3 text-left font-medium">
+                      {e.label}
+                      <span className="block text-xs font-normal text-muted-foreground">
+                        from the question bank
+                        {e.oldExcluded > 0 && ` · excludes ${e.oldExcluded} old-syllabus`}
+                      </span>
+                    </th>
+                    <td className="p-3 text-right tabular-nums">{e.live}</td>
+                    <td className="p-3 text-right tabular-nums">{e.full}</td>
+                    <td className="p-3 text-right tabular-nums">{e.partial || "—"}</td>
+                    <td
+                      className={`p-3 text-right font-semibold tabular-nums ${
+                        e.not ? "text-rose-700 dark:text-rose-300" : ""
+                      }`}
+                    >
+                      {e.not}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </section>
 
+        <section aria-labelledby="live-gaps" className="mb-8">
+          <h2 id="live-gaps" className="mb-1 text-sm font-semibold">
+            Live gaps &mdash; asked by an exam, not taught by the State Board
+          </h2>
+          <p className="mb-3 text-xs text-muted-foreground">
+            Sorted by PYQ weight, so the most expensive gap is first. Old-syllabus chapters are
+            not listed: they are history, and letting a dead chapter outrank a live one would
+            misdirect the prioritisation this view exists to support.
+          </p>
+          <div className="space-y-4">
+            {examSpines.filter((e) => e.gaps.length > 0).map((e) => (
+              <div key={e.spine} className="rounded-md border">
+                <p className="border-b bg-muted/30 p-3 text-sm font-medium">
+                  {e.label} &mdash; {e.gaps.length} not covered (
+                  {e.gaps.reduce((n, r) => n + r.pyq, 0)} PYQ)
+                </p>
+                <ul className="divide-y">
+                  {e.gaps.map((g) => (
+                    <li key={g.id} className="flex gap-3 p-3 text-sm">
+                      <span className="w-10 shrink-0 text-right tabular-nums text-muted-foreground">
+                        {g.pyq || "—"}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="font-medium">{g.concept}</span>
+                        <span className="ml-2 text-xs text-muted-foreground">{g.chapterName}</span>
+                        {g.covers["MH State Board"]?.note && (
+                          <span className="mt-1 block text-xs text-muted-foreground">
+                            {g.covers["MH State Board"].note}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            {examSpines.every((e) => e.gaps.length === 0) && (
+              <p className="text-sm text-muted-foreground">
+                No live gaps &mdash; every subtopic these exams set is taught by the State Board.
+              </p>
+            )}
+          </div>
+        </section>
+
         {/* gap view — what the State Board teaches that an exam does not need */}
+        {/*
+          The OPPOSITE direction to the live-gap section above, and kept because
+          it answers a different question: "Live gaps" is what a student must ADD
+          for an exam; this is what the State Board teaches BEYOND that exam —
+          the what-can-I-skip view. Both are useful; presenting them without
+          naming the direction is what would read as a contradiction.
+        */}
         <section aria-labelledby="gap" className="mb-8">
           <h2 id="gap" className="mb-1 text-sm font-semibold">
-            Gap view — taught by the State Board, not required by
+            The other direction — State Board content NOT required by
           </h2>
+          <p className="mb-3 text-xs text-muted-foreground">
+            Rows here are State Board chapters, not exam subtopics. This is what a State Board
+            student could de-prioritise for a given exam — the mirror of the live gaps above.
+          </p>
           <div className="mb-3 flex flex-wrap gap-1.5">
             {SYLLABUS_EXAMS.filter((e) => e !== "MH State Board").map((exam) => {
               const active = gapExam === exam;

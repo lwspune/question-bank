@@ -295,7 +295,27 @@ export type MappingRow = {
   /** Per book: how it is covered, and where. */
   covers: Record<string, { status: ConceptStatus | null; note: string | null; refs: CoveredRef[] }>;
   oldSyllabus: boolean;
+  /**
+   * Where this row sits in the STATE BOARD book — the axis a teacher works
+   * along. Null when nothing in the State Board covers it, which is why those
+   * rows sort last: they belong to no chapter of the book being taught.
+   */
+  sbChapterLabel: string;
+  sbOrder: { cls: number; chapterNo: number } | null;
 };
+
+/** The State Board chapter a row's pointers land in, for grouping and ordering. */
+function sbPlacement(refs: CoveredRef[]): Pick<MappingRow, "sbChapterLabel" | "sbOrder"> {
+  if (refs.length === 0) return { sbChapterLabel: "", sbOrder: null };
+  const labels = [...new Set(refs.map((r) => r.chapterLabel))];
+  // Order on the FIRST pointer. A row spanning two chapters has to be filed
+  // under one of them, and the first is the one its own mapping leads with.
+  const first = refs[0];
+  return {
+    sbChapterLabel: labels.join(" + "),
+    sbOrder: { cls: first.cls, chapterNo: Number(first.no.split(".")[0]) || 0 },
+  };
+}
 
 /** Lookup of every section title and chapter name, per spine and per class. */
 type BookIndex = {
@@ -445,11 +465,16 @@ export async function loadMappingRows(
         pyq,
         covers,
         oldSyllabus: opts.oldSyllabus?.has(c.chapter_name) ?? false,
+        ...sbPlacement(covers["MH State Board"]?.refs ?? []),
       };
     })
-    // Old-syllabus chapters sink to the bottom: they are history, and letting a
-    // dead chapter outrank a live one would misdirect the prioritisation this
-    // view exists to support.
+    // Grouped by the row's OWN chapter. Ordering along the State Board book was
+    // tried and reverted: it scattered each exam chapter across the table, and
+    // reading "what does JEE ask in Amines" turned out to matter more than
+    // "what does JEE ask about State Board Ch.13".
+    //
+    // Old-syllabus chapters still sink to the bottom — they are history, and
+    // letting a dead chapter outrank a live one misdirects prioritisation.
     .sort(
       (a, b) =>
         Number(a.oldSyllabus) - Number(b.oldSyllabus) ||
@@ -458,4 +483,103 @@ export async function loadMappingRows(
         a.cls - b.cls ||
         a.sectionNo.localeCompare(b.sectionNo, undefined, { numeric: true }),
     );
+}
+
+/**
+ * Every EXAM spine at once, from a single fetch.
+ *
+ * Direction matters here. The chapter matrix asks "does exam X require this
+ * State Board concept?"; this asks the inverse — "does the State Board cover
+ * what exam X actually sets?" — and only the inverse can express "the exam asks
+ * something the books never teach", which is the gap worth acting on.
+ */
+export type ExamSpineSummary = {
+  spine: string;
+  /** "JEE Mains bank taxonomy" -> "JEE Mains". */
+  label: string;
+  live: number;
+  full: number;
+  partial: number;
+  not: number;
+  /** Subtopics excluded because the exam no longer sets that chapter. */
+  oldExcluded: number;
+  /** The uncovered ones, for the gap list. */
+  gaps: MappingRow[];
+  partials: MappingRow[];
+};
+
+export async function loadExamSpineSummaries(
+  db: SupabaseClient,
+  opts: { subject?: string; oldSyllabus?: Set<string> } = {},
+): Promise<ExamSpineSummary[]> {
+  const subject = opts.subject ?? "Chemistry";
+  const all = await fetchAll<RawConcept>(
+    db,
+    "syllabus_concepts",
+    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
+    { column: "subject", value: subject },
+  );
+  const links = await fetchAll<RawLink>(
+    db,
+    "syllabus_concept_exams",
+    "concept_id,exam,status,note,covered_by",
+  );
+  const byConcept = new Map<string, RawLink[]>();
+  for (const l of links) {
+    const list = byConcept.get(l.concept_id) ?? [];
+    list.push(l);
+    byConcept.set(l.concept_id, list);
+  }
+  const books = indexBooks(all);
+
+  const spines = [...new Set(all.map((c) => c.source))].filter((s) => s.endsWith("bank taxonomy"));
+  return spines
+    .map((spine) => {
+      const rows: MappingRow[] = all
+        .filter((c) => c.source === spine)
+        .map((c) => {
+          const { name, pyq } = splitPyqCount(c.concept);
+          const mine = byConcept.get(c.id) ?? [];
+          const covers: MappingRow["covers"] = {};
+          for (const bookExam of ["MH State Board", "CBSE Class 12"]) {
+            const hit = mine.find((l) => l.exam === bookExam);
+            covers[bookExam] = {
+              status: hit?.status ?? null,
+              note: hit?.note ?? null,
+              refs: hit?.covered_by
+                ? resolveRefs(hit.covered_by, c.class, books.get(BOOK_OF_EXAM[bookExam] ?? ""))
+                : [],
+            };
+          }
+          return {
+            id: c.id,
+            cls: c.class,
+            chapterName: c.chapter_name,
+            sectionNo: c.section_no,
+            concept: name,
+            pyq,
+            covers,
+            oldSyllabus: opts.oldSyllabus?.has(c.chapter_name) ?? false,
+            ...sbPlacement(covers["MH State Board"]?.refs ?? []),
+          };
+        });
+
+      // LIVE only. Counting chapters the exam no longer sets inflates the gap
+      // with history: JEE read "15 not covered" when 10 of those sat in chapters
+      // last examined in 2021, so the number to act on is 5.
+      const live = rows.filter((r) => !r.oldSyllabus);
+      const st = (r: MappingRow) => r.covers["MH State Board"]?.status ?? null;
+      return {
+        spine,
+        label: spine.replace(" bank taxonomy", ""),
+        live: live.length,
+        full: live.filter((r) => st(r) === "full").length,
+        partial: live.filter((r) => st(r) === "partial").length,
+        not: live.filter((r) => st(r) === "not").length,
+        oldExcluded: rows.length - live.length,
+        gaps: live.filter((r) => st(r) === "not").sort((a, b) => b.pyq - a.pyq),
+        partials: live.filter((r) => st(r) === "partial").sort((a, b) => b.pyq - a.pyq),
+      };
+    })
+    .sort((a, b) => b.not - a.not || a.label.localeCompare(b.label));
 }
