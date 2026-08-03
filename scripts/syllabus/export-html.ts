@@ -18,8 +18,13 @@
  * information at all. Ordering whole chapters keeps both properties.
  *
  * Remaining differences, deliberate:
- *   - the page has an always-on per-exam live-gap list, and a second,
- *     opposite-direction gap view ("State Board content NOT required by X").
+ *   - the page splits its live-gap list into NOT covered and PARTLY covered.
+ *     It also USED to carry an opposite-direction view rolled up to State Board
+ *     chapters ("chapters not required by exam X"); that was removed. The
+ *     rollup asserted a verdict over a whole chapter, so Std XI Ch.8 read
+ *     "not required by JEE" while JEE's live s-Block chapter maps straight into
+ *     it — the page contradicting its own JEE table. Subtopic grain is the only
+ *     honest unit here, and this file was right not to have the view at all.
  *   - this file has the client-side filters (only-gaps, sort-by-PYQ-weight,
  *     show sub-sections) that the page has none of. If those are wanted, they
  *     belong on the page as a client island, NOT as grounds for keeping a

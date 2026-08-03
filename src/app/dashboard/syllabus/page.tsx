@@ -17,7 +17,6 @@ import {
   SYLLABUS_EXAMS,
   STATUS_LABEL,
   STATUS_SHORT,
-  buildGapView,
   chapterKey,
   parseChapterKey,
   type ChapterStatus,
@@ -26,7 +25,7 @@ import {
 
 export const dynamic = "force-dynamic";
 
-type Search = { chapter?: string; gap?: string };
+type Search = { chapter?: string };
 
 /**
  * Status colours carry a text label too — never colour alone, since the whole
@@ -78,15 +77,6 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
     }),
     loadExamSpineSummaries(db, { oldSyllabus }),
   ]);
-
-  // Only a known exam may drive the gap view; an unrecognised ?gap= falls back
-  // to no selection rather than rendering an all-unassessed table that would
-  // read as "this exam needs nothing".
-  const gapExam =
-    searchParams.gap && (SYLLABUS_EXAMS as readonly string[]).includes(searchParams.gap)
-      ? (searchParams.gap as (typeof SYLLABUS_EXAMS)[number])
-      : null;
-  const gap = gapExam ? buildGapView(matrix.chapters, gapExam) : null;
 
   const selected = searchParams.chapter ? parseChapterKey(searchParams.chapter) : null;
   const detail = selected
@@ -172,156 +162,79 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
 
         <section aria-labelledby="live-gaps" className="mb-8">
           <h2 id="live-gaps" className="mb-1 text-sm font-semibold">
-            Live gaps &mdash; asked by an exam, not taught by the State Board
+            Live gaps &mdash; exam subtopics the State Board does not fully cover
           </h2>
           <p className="mb-3 text-xs text-muted-foreground">
-            Sorted by PYQ weight, so the most expensive gap is first. Old-syllabus chapters are
-            not listed: they are history, and letting a dead chapter outrank a live one would
-            misdirect the prioritisation this view exists to support.
+            Rows are <strong>exam subtopics</strong>, split into those the State Board does not
+            cover at all and those it covers only partly. Sorted by PYQ weight, so the most
+            expensive gap is first. Old-syllabus chapters are not listed: they are history, and
+            letting a dead chapter outrank a live one would misdirect the prioritisation this
+            view exists to support.
           </p>
           <div className="space-y-4">
-            {examSpines.filter((e) => e.gaps.length > 0).map((e) => (
-              <div key={e.spine} className="rounded-md border">
-                <p className="border-b bg-muted/30 p-3 text-sm font-medium">
-                  {e.label} &mdash; {e.gaps.length} not covered (
-                  {e.gaps.reduce((n, r) => n + r.pyq, 0)} PYQ)
-                </p>
-                <ul className="divide-y">
-                  {e.gaps.map((g) => (
-                    <li key={g.id} className="flex gap-3 p-3 text-sm">
-                      <span className="w-10 shrink-0 text-right tabular-nums text-muted-foreground">
-                        {g.pyq || "—"}
-                      </span>
-                      <span className="min-w-0">
-                        <span className="font-medium">{g.concept}</span>
-                        <span className="ml-2 text-xs text-muted-foreground">{g.chapterName}</span>
-                        {g.covers["MH State Board"]?.note && (
-                          <span className="mt-1 block text-xs text-muted-foreground">
-                            {g.covers["MH State Board"].note}
-                          </span>
-                        )}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            {examSpines.every((e) => e.gaps.length === 0) && (
+            {examSpines
+              .filter((e) => e.gaps.length > 0 || e.partials.length > 0)
+              .map((e) => (
+                <div key={e.spine} className="rounded-md border">
+                  <p className="border-b bg-muted/30 p-3 text-sm font-medium">{e.label}</p>
+                  {(
+                    [
+                      ["Not covered", e.gaps, "text-rose-700 dark:text-rose-300"],
+                      ["Partly covered", e.partials, "text-amber-700 dark:text-amber-300"],
+                    ] as const
+                  ).map(([label, list, tone]) =>
+                    list.length === 0 ? null : (
+                      <div key={label}>
+                        <h3 className={`border-b bg-muted/10 px-3 py-2 text-xs font-semibold ${tone}`}>
+                          {label} &mdash; {list.length} subtopic{list.length === 1 ? "" : "s"} (
+                          {list.reduce((n, r) => n + r.pyq, 0)} PYQ)
+                        </h3>
+                        <ul className="divide-y">
+                          {list.map((g) => (
+                            <li key={g.id} className="flex gap-3 p-3 text-sm">
+                              <span className="w-10 shrink-0 text-right tabular-nums text-muted-foreground">
+                                {g.pyq || "—"}
+                              </span>
+                              <span className="min-w-0">
+                                <span className="font-medium">{g.concept}</span>
+                                <span className="ml-2 text-xs text-muted-foreground">
+                                  {g.chapterName}
+                                </span>
+                                {/* Where it IS partly covered, the pointer is the
+                                    actionable part — "partly" alone tells a teacher
+                                    nothing about which section to open. */}
+                                {g.covers["MH State Board"]?.refs.length > 0 && (
+                                  <span className="mt-1 block text-xs text-muted-foreground">
+                                    State Board:{" "}
+                                    {g.covers["MH State Board"].refs
+                                      .map((r) => (r.title ? `${r.no} ${r.title}` : r.no))
+                                      .join(" · ")}
+                                  </span>
+                                )}
+                                {g.covers["MH State Board"]?.note && (
+                                  <span className="mt-1 block text-xs text-muted-foreground">
+                                    {g.covers["MH State Board"].note}
+                                  </span>
+                                )}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ),
+                  )}
+                </div>
+              ))}
+            {examSpines.every((e) => e.gaps.length === 0 && e.partials.length === 0) && (
               <p className="text-sm text-muted-foreground">
-                No live gaps &mdash; every subtopic these exams set is taught by the State Board.
+                No live gaps &mdash; every subtopic these exams set is fully taught by the State
+                Board.
               </p>
             )}
           </div>
         </section>
 
         {/* gap view — what the State Board teaches that an exam does not need */}
-        {/*
-          The OPPOSITE direction to the live-gap section above, and kept because
-          it answers a different question: "Live gaps" is what a student must ADD
-          for an exam; this is what the State Board teaches BEYOND that exam —
-          the what-can-I-skip view. Both are useful; presenting them without
-          naming the direction is what would read as a contradiction.
-        */}
-        <section aria-labelledby="gap" className="mb-8">
-          <h2 id="gap" className="mb-1 text-sm font-semibold">
-            The other direction — State Board content NOT required by
-          </h2>
-          <p className="mb-3 text-xs text-muted-foreground">
-            Rows here are State Board chapters, not exam subtopics. This is what a State Board
-            student could de-prioritise for a given exam — the mirror of the live gaps above.
-          </p>
-          <div className="mb-3 flex flex-wrap gap-1.5">
-            {SYLLABUS_EXAMS.filter((e) => e !== "MH State Board").map((exam) => {
-              const active = gapExam === exam;
-              return (
-                <Link
-                  key={exam}
-                  href={active ? "/dashboard/syllabus" : `/dashboard/syllabus?gap=${encodeURIComponent(exam)}`}
-                  scroll={false}
-                  aria-pressed={active}
-                  className={`rounded-full border px-3 py-1 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                    active
-                      ? "bg-brand text-brand-foreground border-transparent"
-                      : "hover:bg-muted"
-                  }`}
-                >
-                  {exam}
-                </Link>
-              );
-            })}
-          </div>
-
-          {!gapExam ? (
-            <p className="text-sm text-muted-foreground">
-              Pick an exam to list the State Board chapters it does not require.
-            </p>
-          ) : (
-            <>
-              <p className="mb-3 text-sm">
-                <strong className="tabular-nums">{gap!.notConcepts}</strong> of{" "}
-                <span className="tabular-nums">{matrix.totalConcepts}</span> concepts (
-                {Math.round((gap!.notConcepts / matrix.totalConcepts) * 100)}%) are taught by
-                the State Board but never required by {gapExam}
-                {gap!.partlyConcepts > 0 && (
-                  <>
-                    ; a further{" "}
-                    <strong className="tabular-nums">{gap!.partlyConcepts}</strong> are only
-                    partly required
-                  </>
-                )}
-                .
-              </p>
-
-              {gap!.unassessedConcepts > 0 && (
-                <p className="mb-3 rounded-md border border-amber-300 bg-amber-50 p-2 text-xs text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
-                  {gap!.unassessedConcepts} concepts have no ruling for {gapExam} yet. They are
-                  listed separately below and must not be read as skippable.
-                </p>
-              )}
-
-              <div className="grid gap-4 md:grid-cols-2">
-                {(
-                  [
-                    ["Not required", gap!.notRequired, "text-muted-foreground"],
-                    ["Partly required", gap!.partlyRequired, "text-amber-700 dark:text-amber-300"],
-                    ...(gap!.unassessed.length
-                      ? ([["Not yet assessed", gap!.unassessed, "text-amber-700 dark:text-amber-300"]] as const)
-                      : []),
-                  ] as const
-                ).map(([label, list, tone]) => (
-                  <div key={label} className="rounded-md border">
-                    <h3 className={`border-b bg-muted/40 p-2 text-xs font-semibold ${tone}`}>
-                      {label} — {list.length} chapter{list.length === 1 ? "" : "s"}
-                    </h3>
-                    {list.length === 0 ? (
-                      <p className="p-3 text-xs text-muted-foreground">None.</p>
-                    ) : (
-                      <ul className="divide-y">
-                        {list.map((c) => (
-                          <li
-                            key={`${c.cls}-${c.chapterNo}`}
-                            className="flex items-baseline justify-between gap-3 p-2 text-sm"
-                          >
-                            <span>
-                              <span className="mr-2 text-xs text-muted-foreground">
-                                Std {c.cls === 11 ? "XI" : "XII"} · {c.chapterNo}
-                              </span>
-                              {c.chapterName}
-                            </span>
-                            <span className="shrink-0 tabular-nums text-xs text-muted-foreground">
-                              {c.conceptCount}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </section>
-
         {/* chapter x exam matrix */}
         {byClass.map(({ cls, rows }) => (
           <section key={cls} aria-labelledby={`std-${cls}`} className="mb-8">
