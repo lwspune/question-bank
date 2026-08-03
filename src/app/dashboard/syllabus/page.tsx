@@ -4,7 +4,14 @@ import { ArrowLeft, Table2 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { loadSyllabusMatrix, loadChapterConcepts } from "@/lib/syllabus/query";
+import {
+  loadSyllabusMatrix,
+  loadChapterConcepts,
+  loadMappingRows,
+  loadOldSyllabusChapters,
+} from "@/lib/syllabus/query";
+import { SPINE } from "@/lib/syllabus/summary";
+import MappingTable from "./MappingTable";
 import {
   SYLLABUS_EXAMS,
   STATUS_LABEL,
@@ -49,7 +56,22 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
   if (!member) redirect("/login");
 
   const db = createSupabaseServerClient();
-  const matrix = await loadSyllabusMatrix(db);
+  // Old-syllabus chapters are needed before the rows so the sort can sink them.
+  const oldSyllabus = await loadOldSyllabusChapters(db);
+  const [matrix, ncertRows, jeeRows] = await Promise.all([
+    loadSyllabusMatrix(db),
+    loadMappingRows(db, {
+      spine: SPINE.ncert,
+      books: ["MH State Board"],
+      topLevelOnly: true,
+    }),
+    loadMappingRows(db, {
+      spine: SPINE.jee,
+      // Both books on one row, so "neither covers this" is visible at a glance.
+      books: ["MH State Board", "CBSE Class 12"],
+      oldSyllabus,
+    }),
+  ]);
 
   // Only a known exam may drive the gap view; an unrecognised ?gap= falls back
   // to no selection rather than rendering an all-unassessed table that would
@@ -404,6 +426,42 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
             </div>
           </section>
         )}
+
+        <section aria-labelledby="ncert-map" className="mb-8">
+          <h2 id="ncert-map" className="mb-1 text-sm font-semibold">
+            NCERT Std XI + XII — which State Board subtopic covers each
+          </h2>
+          <p className="mb-3 text-xs text-muted-foreground">
+            The question a CBSE student asks: I have this NCERT section, where is it in my
+            State Board book? Top-level sections only; every pointer was read off both books.
+          </p>
+          <MappingTable
+            rows={ncertRows}
+            rowLabel="NCERT subtopic"
+            books={[{ exam: "MH State Board", label: "State Board" }]}
+          />
+        </section>
+
+        <section aria-labelledby="jee-map" className="mb-8">
+          <h2 id="jee-map" className="mb-1 text-sm font-semibold">
+            JEE Mains — where each subtopic is taught
+          </h2>
+          <p className="mb-3 text-xs text-muted-foreground">
+            Rows are what JEE actually asked, from the question bank, so each carries its PYQ
+            count. Chapters JEE no longer sets are marked old syllabus and listed last. Because
+            the spine is the bank rather than the official syllabus, a topic never sampled has
+            no row — absence here is not evidence of absence from the exam.
+          </p>
+          <MappingTable
+            rows={jeeRows}
+            rowLabel="JEE subtopic"
+            showPyq
+            books={[
+              { exam: "MH State Board", label: "State Board" },
+              { exam: "CBSE Class 12", label: "NCERT" },
+            ]}
+          />
+        </section>
 
         <p className="text-xs text-muted-foreground">
           Rulings are authored in <code>scripts/syllabus/data/</code> and committed with{" "}
