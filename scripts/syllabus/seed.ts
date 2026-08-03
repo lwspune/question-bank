@@ -4,6 +4,7 @@
  *   npx tsx scripts/syllabus/seed.ts                      # dry-run, writes nothing
  *   npx tsx scripts/syllabus/seed.ts --apply              # write
  *   npx tsx scripts/syllabus/seed.ts --subject=physics    # another subject
+ *   npx tsx scripts/syllabus/seed.ts --subject=physics --spine=ncert
  *
  * Reads the State Board seed files named by the subject registry (Chemistry
  * unless --subject says otherwise) — the Maharashtra State Board Std XI/XII
@@ -35,11 +36,18 @@ function load(file: string): ConceptRow[] {
 async function main() {
   const apply = process.argv.includes("--apply");
   const cfg = requireSubjectArg(process.argv);
+  const spine = process.argv.includes("--spine=ncert") ? "ncert" : "stateBoard";
   loadEnv();
 
-  console.log(`subject: ${cfg.label}`);
+  const files = spine === "ncert" ? cfg.ncertSeedFiles : cfg.seedFiles;
+  if (files.length === 0) {
+    console.error(`${cfg.label} has no ${spine} seed files registered.`);
+    process.exit(1);
+  }
+
+  console.log(`subject: ${cfg.label}  spine: ${spine}`);
   const rows: ConceptRow[] = [];
-  for (const file of cfg.seedFiles) {
+  for (const file of files) {
     const loaded = load(file);
     console.log(`  ${file}: ${loaded.length} concepts`);
     rows.push(...loaded);

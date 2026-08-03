@@ -39,6 +39,15 @@ export type SyllabusSubject = {
   /** State Board spine seed files under scripts/syllabus/data/. */
   seedFiles: string[];
   /**
+   * NCERT spine seed files, seeded with `--spine=ncert`.
+   *
+   * Separate from the State Board list rather than concatenated: the two spines
+   * are seeded independently (the NCERT extraction is a different script with
+   * its own failure modes), and a single list would force a re-seed of both
+   * whenever either changes. Empty means that spine is not extracted yet.
+   */
+  ncertSeedFiles: string[];
+  /**
    * The State Board book teaches some topics across BOTH years as complementary
    * halves — Std XI Ch.10 Electrostatics stops at Gauss' law and Std XII Ch.8
    * picks it up at potential and capacitance; likewise current electricity,
@@ -70,6 +79,9 @@ export const SYLLABUS_SUBJECTS: Record<SyllabusSubjectKey, SyllabusSubject> = {
     label: "Chemistry",
     liveFromYear: 2023,
     seedFiles: ["chem-sb-11.json", "chem-sb-12.json"],
+    // Chemistry's NCERT spine is seeded by ingest-ncert-spine.ts, which also
+    // authors its State Board rulings, so it is not re-seeded from here.
+    ncertSeedFiles: [],
     spiralChapters: false,
     crossYearNote: {
       // Measured: 12 of 72 Std XI rows cross into the Std XII State Board book
@@ -87,6 +99,7 @@ export const SYLLABUS_SUBJECTS: Record<SyllabusSubjectKey, SyllabusSubject> = {
     label: "Physics",
     liveFromYear: 2024,
     seedFiles: ["phy-sb-11.json", "phy-sb-12.json"],
+    ncertSeedFiles: ["phy-ncert-11.json", "phy-ncert-12.json"],
     spiralChapters: true,
   },
 };
