@@ -35,7 +35,9 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-08-03
 
-### Re-derive the stale State Board `status` rulings, or retire the column's authority
+### ~~Re-derive the stale State Board `status` rulings, or retire the column's authority~~ — **DONE 2026-08-03**
+
+**Shipped (`0d3b0a1`).** Option (a) — full derivation — turned out to be IMPOSSIBLE and the entry was wrong to lead with it: the NDA (47) and MHT-CET (122) spines carry **zero** `covered_by` pointers, so half the exams have nothing to derive from. Took option (b) instead. Generalising the probe beyond JEE found **2 more contradictions I had not seen** (CBSE Class 12, States of Matter 10.2/10.2.1 vs NCERT's Hydrogen Bonding), so 13 distinct (concept, exam) rulings were corrected `not` → `partial`, each with a dated note. `partial` not `full`: a pointer proves the exam asks *something* in that section, not that the whole section is needed. New standing probe `scripts/syllabus/audit-directions.ts` (`--ci` exits 1); negative-controlled by planting a contradiction and confirming it fires. Note: my earlier "16" counted pointer HITS, not concepts.
 
 `syllabus_concept_exams.status` on the **State Board spine** answers "does exam X require this concept?" and was authored *before* the `covered_by` mappings existed. Nothing keeps the two directions in agreement, and they have drifted: a probe found **33 State Board concepts marked `status='not'` for JEE that a JEE subtopic explicitly points at** — 16 of them from chapters JEE still sets (Std XI Ch.8 Elements of Group 1 and 2 ×14, Ch.10 States of Matter ×2). The view that surfaced this contradiction was removed on 2026-08-03, so **nothing renders these rows today** — but the data is still wrong.
 
@@ -43,7 +45,9 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 **How to apply:** two honest options. **(a) Derive it** — replace the stored `status` for the State Board spine with a value computed from the `covered_by` pointers (pointed-at by a live exam subtopic ⇒ required; pointed-at only by a retired chapter ⇒ no longer required; unpointed ⇒ not required *by the bank*), so the two directions cannot disagree by construction. This is the structural fix and matches how the alignment table already works. **(b) Patch the 16** back to `partial` and add `scripts/syllabus/audit-alignment.ts`-style standing probe asserting no `status='not'` row is pointed at by a live exam subtopic — cheaper, but leaves two datasets that must be kept in step by discipline. Prefer (a). Either way, keep the probe: it is what found this.
 
-### Load the syllabus tables once per request instead of ten times
+### ~~Load the syllabus tables once per request instead of ten times~~ — **DONE 2026-08-03**
+
+**Shipped (`0d3b0a1`).** New `loadSyllabusData(db)` + an optional `data` on every loader's opts; `/dashboard/syllabus` loads once and threads it through all six. Direct `fetchAll` sites in `query.ts`: **10 → 2** (the pair inside the shared loader). Loaders still fetch for themselves when `data` is omitted, so scripts and tests calling one loader are unaffected. Verified by running every loader BOTH ways and diffing the serialised output — byte-identical.
 
 `/dashboard/syllabus` runs five loaders — `loadSyllabusMatrix`, `loadMappingRows` ×2, `loadExamSpineSummaries`, `loadAlignmentRows`, `loadNcertGaps` — and **each independently pages the full `syllabus_concepts` and `syllabus_concept_exams` tables**. That is roughly ten full-table fetches of the same ~1,600 concepts and ~3,400 links on every page load.
 

@@ -104,9 +104,36 @@ function emptyTally(): ExamTally {
   return { full: 0, partial: 0, not: 0, unassessed: 0 };
 }
 
+/**
+ * The two tables every syllabus loader needs.
+ *
+ * Each loader used to page BOTH tables itself, so `/dashboard/syllabus` — which
+ * runs six of them in one Promise.all — made ~10 full-table fetches of the same
+ * ~1,600 concepts and ~3,400 links per request. The page now loads once and
+ * passes the payload down. Every loader still fetches for itself when `data` is
+ * omitted, so scripts and tests that call a single loader are unaffected.
+ */
+export type SyllabusData = { concepts: RawConcept[]; links: RawLink[] };
+
+export async function loadSyllabusData(
+  db: SupabaseClient,
+  subject = "Chemistry",
+): Promise<SyllabusData> {
+  const [concepts, links] = await Promise.all([
+    fetchAll<RawConcept>(
+      db,
+      "syllabus_concepts",
+      "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
+      { column: "subject", value: subject },
+    ),
+    fetchAll<RawLink>(db, "syllabus_concept_exams", "concept_id,exam,status,note,covered_by"),
+  ]);
+  return { concepts, links };
+}
+
 export async function loadSyllabusMatrix(
   db: SupabaseClient,
-  opts: { subject?: string } = {},
+  opts: { subject?: string; data?: SyllabusData } = {},
 ): Promise<SyllabusMatrix> {
   const subject = opts.subject ?? "Chemistry";
 
@@ -114,22 +141,11 @@ export async function loadSyllabusMatrix(
   // uses subject "Chemistry" and numbers chapters from 1, so State Board Ch.1,
   // NCERT Ch.1 and the exam-bank rows all merged into a single chapter row. The
   // page was correct when written and the data grew underneath it.
-  const scoped = (
-    await fetchAll<RawConcept>(
-      db,
-      "syllabus_concepts",
-      "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
-      { column: "subject", value: subject },
-    )
-  ).filter((c) => c.source === SPINE.stateBoard);
+  const { concepts: allConcepts, links } = opts?.data ?? (await loadSyllabusData(db, subject));
+  const scoped = allConcepts.filter((c) => c.source === SPINE.stateBoard);
 
   // Links are not subject-filtered at the DB (the join column is concept_id);
   // the per-concept lookup below discards any that belong to another subject.
-  const links = await fetchAll<RawLink>(
-    db,
-    "syllabus_concept_exams",
-    "concept_id,exam,status,note,covered_by",
-  );
 
   const byConcept = new Map<string, Map<string, ConceptStatus>>();
   for (const l of links) {
@@ -428,6 +444,8 @@ export async function loadMappingRows(
     subject?: string;
     topLevelOnly?: boolean;
     oldSyllabus?: Set<string>;
+    /** Pre-loaded tables, so a page running several loaders fetches once. */
+    data?: SyllabusData;
     /**
      * Order whole CHAPTERS along this book instead of alphabetically, so the
      * table reads down the book being taught. Opt-in per table: the NCERT table
@@ -438,12 +456,7 @@ export async function loadMappingRows(
   },
 ): Promise<MappingRow[]> {
   const subject = opts.subject ?? "Chemistry";
-  const all = await fetchAll<RawConcept>(
-    db,
-    "syllabus_concepts",
-    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
-    { column: "subject", value: subject },
-  );
+  const { concepts: all, links: allLinks } = opts.data ?? (await loadSyllabusData(db, subject));
   const books = indexBooks(all);
 
   const mine = all
@@ -451,9 +464,7 @@ export async function loadMappingRows(
     .filter((c) => !opts.topLevelOnly || isTopLevelSection(c.section_no));
   const mineIds = new Set(mine.map((c) => c.id));
 
-  const links = (
-    await fetchAll<RawLink>(db, "syllabus_concept_exams", "concept_id,exam,status,note,covered_by")
-  ).filter((l) => mineIds.has(l.concept_id));
+  const links = allLinks.filter((l) => mineIds.has(l.concept_id));
 
   const byConcept = new Map<string, RawLink[]>();
   for (const l of links) {
@@ -562,20 +573,10 @@ export type ExamSpineSummary = {
 
 export async function loadExamSpineSummaries(
   db: SupabaseClient,
-  opts: { subject?: string; oldSyllabus?: Set<string> } = {},
+  opts: { subject?: string; oldSyllabus?: Set<string>; data?: SyllabusData } = {},
 ): Promise<ExamSpineSummary[]> {
   const subject = opts.subject ?? "Chemistry";
-  const all = await fetchAll<RawConcept>(
-    db,
-    "syllabus_concepts",
-    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
-    { column: "subject", value: subject },
-  );
-  const links = await fetchAll<RawLink>(
-    db,
-    "syllabus_concept_exams",
-    "concept_id,exam,status,note,covered_by",
-  );
+  const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
   const byConcept = new Map<string, RawLink[]>();
   for (const l of links) {
     const list = byConcept.get(l.concept_id) ?? [];
@@ -652,20 +653,10 @@ export async function loadExamSpineSummaries(
  */
 export async function loadAlignmentRows(
   db: SupabaseClient,
-  opts: { subject?: string; oldSyllabus?: Set<string> } = {},
+  opts: { subject?: string; oldSyllabus?: Set<string>; data?: SyllabusData } = {},
 ): Promise<AlignmentRow[]> {
   const subject = opts.subject ?? "Chemistry";
-  const all = await fetchAll<RawConcept>(
-    db,
-    "syllabus_concepts",
-    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
-    { column: "subject", value: subject },
-  );
-  const links = await fetchAll<RawLink>(
-    db,
-    "syllabus_concept_exams",
-    "concept_id,exam,status,note,covered_by",
-  );
+  const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
   const linkOf = new Map(links.map((l) => [`${l.concept_id}|${l.exam}`, l]));
 
   const anchors: AlignAnchor[] = all
@@ -750,20 +741,10 @@ export type NcertGapRow = {
 
 export async function loadNcertGaps(
   db: SupabaseClient,
-  opts: { subject?: string } = {},
+  opts: { subject?: string; data?: SyllabusData } = {},
 ): Promise<NcertGapRow[]> {
   const subject = opts.subject ?? "Chemistry";
-  const all = await fetchAll<RawConcept>(
-    db,
-    "syllabus_concepts",
-    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
-    { column: "subject", value: subject },
-  );
-  const links = await fetchAll<RawLink>(
-    db,
-    "syllabus_concept_exams",
-    "concept_id,exam,status,note,covered_by",
-  );
+  const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
   const linkOf = new Map(links.map((l) => [`${l.concept_id}|${l.exam}`, l]));
 
   // Which NCERT sections an EXAM already flags as a State Board gap, keyed

@@ -12,6 +12,7 @@ import {
   loadAlignmentRows,
   loadExamSpineSummaries,
   loadNcertGaps,
+  loadSyllabusData,
 } from "@/lib/syllabus/query";
 import { SPINE } from "@/lib/syllabus/summary";
 import AlignmentTable from "./AlignmentTable";
@@ -62,12 +63,17 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
   const db = createSupabaseServerClient();
   // Old-syllabus chapters are needed before the rows so the sort can sink them.
   const oldSyllabus = await loadOldSyllabusChapters(db);
+  // Load the two syllabus tables ONCE. Each loader would otherwise page both
+  // itself — six loaders, ~10 full-table fetches of the same ~1,600 concepts
+  // and ~3,400 links, per request.
+  const data = await loadSyllabusData(db);
   const [matrix, ncertRows, jeeRows, examSpines, alignRows, ncertGaps] = await Promise.all([
-    loadSyllabusMatrix(db),
+    loadSyllabusMatrix(db, { data }),
     loadMappingRows(db, {
       spine: SPINE.ncert,
       books: ["MH State Board"],
       topLevelOnly: true,
+      data,
     }),
     loadMappingRows(db, {
       spine: SPINE.jee,
@@ -78,10 +84,11 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
       // this reads as a teaching sequence. Deliberately NOT set on the NCERT
       // table above: that one keeps its own book order.
       orderByBook: "MH State Board",
+      data,
     }),
-    loadExamSpineSummaries(db, { oldSyllabus }),
-    loadAlignmentRows(db, { oldSyllabus }),
-    loadNcertGaps(db),
+    loadExamSpineSummaries(db, { oldSyllabus, data }),
+    loadAlignmentRows(db, { oldSyllabus, data }),
+    loadNcertGaps(db, { data }),
   ]);
 
   const selected = searchParams.chapter ? parseChapterKey(searchParams.chapter) : null;
