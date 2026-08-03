@@ -164,17 +164,21 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
           </div>
         </section>
 
-        <section aria-labelledby="live-gaps" className="mb-8">
-          <h2 id="live-gaps" className="mb-1 text-sm font-semibold">
-            Live gaps &mdash; exam subtopics the State Board does not fully cover
-          </h2>
-          <p className="mb-3 text-xs text-muted-foreground">
+        <CollapsibleSection
+          id="live-gaps"
+          title="Live gaps — exam subtopics the State Board does not fully cover"
+          count={examSpines.reduce((n, e) => n + e.gaps.length + e.partials.length, 0)}
+          countLabel="subtopics"
+          description={
+            <>
             Rows are <strong>exam subtopics</strong>, split into those the State Board does not
             cover at all and those it covers only partly. Sorted by PYQ weight, so the most
             expensive gap is first. Old-syllabus chapters are not listed: they are history, and
             letting a dead chapter outrank a live one would misdirect the prioritisation this
             view exists to support.
-          </p>
+            </>
+          }
+        >
           <div className="space-y-4">
             {examSpines
               .filter((e) => e.gaps.length > 0 || e.partials.length > 0)
@@ -236,15 +240,16 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
               </p>
             )}
           </div>
-        </section>
+        </CollapsibleSection>
 
-        {/* gap view — what the State Board teaches that an exam does not need */}
         {/* chapter x exam matrix */}
         {byClass.map(({ cls, rows }) => (
-          <section key={cls} aria-labelledby={`std-${cls}`} className="mb-8">
-            <h2 id={`std-${cls}`} className="mb-2 text-sm font-semibold">
-              Std {cls === 11 ? "XI" : "XII"} — {rows.length} chapters
-            </h2>
+          <CollapsibleSection
+            key={cls}
+            id={`std-${cls}`}
+            title={`Std ${cls === 11 ? "XI" : "XII"} — ${rows.length} chapters`}
+            count={rows.reduce((n, r) => n + 1 + r.sections.length, 0)}
+          >
             <div className="overflow-x-auto rounded-md border">
               <table className="w-full min-w-[46rem] text-sm">
                 <thead className="bg-muted/50">
@@ -347,7 +352,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                 </tbody>
               </table>
             </div>
-          </section>
+          </CollapsibleSection>
         ))}
 
         {/* per-chapter detail */}
