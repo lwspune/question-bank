@@ -14,6 +14,7 @@ import {
 } from "@/lib/syllabus/query";
 import { SPINE } from "@/lib/syllabus/summary";
 import AlignmentTable from "./AlignmentTable";
+import CollapsibleSection from "./CollapsibleSection";
 import MappingTable from "./MappingTable";
 import {
   SYLLABUS_EXAMS,
@@ -421,11 +422,13 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
           const rows = alignRows.filter((r) => r.anchor.cls === cls);
           if (rows.length === 0) return null;
           return (
-            <section key={`align-${cls}`} aria-labelledby={`align-${cls}`} className="mb-8">
-              <h2 id={`align-${cls}`} className="mb-1 text-sm font-semibold">
-                Std {cls === 11 ? "XI" : "XII"} — State Board · NCERT · JEE Mains, side by side
-              </h2>
-              <p className="mb-3 text-xs text-muted-foreground">
+            <CollapsibleSection
+              key={`align-${cls}`}
+              id={`align-${cls}`}
+              title={`Std ${cls === 11 ? "XI" : "XII"} — State Board · NCERT · JEE Mains, side by side`}
+              count={rows.length}
+              description={
+                <>
                 One subtopic per cell, in State Board book order. A subtopic <strong>repeats</strong>
                 {" "}
                 down a column when it answers more than one thing on the other side &mdash; that is
@@ -435,9 +438,11 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                 section. The two blanks differ: &ldquo;not in NCERT&rdquo; is a checked claim, while
                 &ldquo;not asked in the bank&rdquo; only means no past question has been sampled for
                 it &mdash; not that JEE never asks it.
-              </p>
+                </>
+              }
+            >
               <AlignmentTable rows={rows} />
-            </section>
+            </CollapsibleSection>
           );
         })}
 
@@ -449,11 +454,13 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
           const rows = ncertRows.filter((r) => r.cls === cls);
           if (rows.length === 0) return null;
           return (
-            <section key={cls} aria-labelledby={`ncert-map-${cls}`} className="mb-8">
-              <h2 id={`ncert-map-${cls}`} className="mb-1 text-sm font-semibold">
-                NCERT Std {cls === 11 ? "XI" : "XII"} — which State Board subtopic covers each
-              </h2>
-              <p className="mb-3 text-xs text-muted-foreground">
+            <CollapsibleSection
+              key={cls}
+              id={`ncert-map-${cls}`}
+              title={`NCERT Std ${cls === 11 ? "XI" : "XII"} — which State Board subtopic covers each`}
+              count={rows.length}
+              description={
+                <>
                 The question a CBSE student asks: I have this NCERT section, where is it in my
                 State Board book? In NCERT book order. Top-level sections only; every pointer
                 was read off both books.
@@ -463,21 +470,24 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                     callout belongs on this year only. */}
                 {cls === 11 &&
                   " Watch the year: NCERT teaches Thermodynamics and Equilibrium in Class 11, but the State Board holds them until Std XII — the mismatch there is timing, not absence."}
-              </p>
+                </>
+              }
+            >
               <MappingTable
                 rows={rows}
                 rowLabel="NCERT subtopic"
                 books={[{ exam: "MH State Board", label: "State Board" }]}
               />
-            </section>
+            </CollapsibleSection>
           );
         })}
 
-        <section aria-labelledby="jee-map" className="mb-8">
-          <h2 id="jee-map" className="mb-1 text-sm font-semibold">
-            JEE Mains — where each subtopic is taught
-          </h2>
-          <p className="mb-3 text-xs text-muted-foreground">
+        <CollapsibleSection
+          id="jee-map"
+          title="JEE Mains — where each subtopic is taught"
+          count={jeeRows.length}
+          description={
+            <>
             Rows are what JEE actually asked, from the question bank, so each carries its PYQ
             count. Chapters run in <strong>State Board book order</strong> — each sits at the
             State Board chapter holding most of its questions, named after the arrow, so you can
@@ -486,7 +496,9 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
             it. Chapters JEE no longer sets are marked old syllabus and listed last. Because the
             spine is the bank rather than the official syllabus, a topic never sampled has no
             row — absence here is not evidence of absence from the exam.
-          </p>
+            </>
+          }
+        >
           <MappingTable
             rows={jeeRows}
             rowLabel="JEE subtopic"
@@ -496,7 +508,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
               { exam: "CBSE Class 12", label: "NCERT" },
             ]}
           />
-        </section>
+        </CollapsibleSection>
 
         <p className="text-xs text-muted-foreground">
           Rulings are authored in <code>scripts/syllabus/data/</code> and committed with{" "}
