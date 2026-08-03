@@ -3,6 +3,10 @@
  *
  *   npx tsx scripts/syllabus/gap.ts                 # coverage per exam
  *   npx tsx scripts/syllabus/gap.ts "JEE Mains"     # per-chapter detail for one exam
+ *   npx tsx scripts/syllabus/gap.ts --subject=physics
+ *
+ * Scoped to ONE subject (Chemistry unless --subject says otherwise): the table
+ * holds every subject's spines, so an unscoped total mixes them.
  *
  * Reports THREE distinct states per exam, and keeping them distinct is the whole
  * point of the table: `full`/`partial`/`not` are adjudicated judgements, while a
@@ -12,6 +16,7 @@
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { SYLLABUS_EXAMS, isSyllabusExam } from "./lib";
+import { requireSubjectArg } from "./subject-arg";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -37,11 +42,17 @@ async function main() {
    * and grows with every subject added. A closure rather than a top-level
    * generic so the Supabase client keeps its inferred type.
    */
-  async function fetchAll<T>(table: string, columns: string): Promise<T[]> {
+  async function fetchAll<T>(
+    table: string,
+    columns: string,
+    eq?: { column: string; value: string },
+  ): Promise<T[]> {
     const out: T[] = [];
     const PAGE = 1000;
     for (let from = 0; ; from += PAGE) {
-      const { data, error } = await db.from(table).select(columns).range(from, from + PAGE - 1);
+      let q = db.from(table).select(columns);
+      if (eq) q = q.eq(eq.column, eq.value);
+      const { data, error } = await q.range(from, from + PAGE - 1);
       if (error) throw new Error(`${table}: ${error.message}`);
       const rows = (data ?? []) as unknown as T[];
       out.push(...rows);
@@ -50,17 +61,31 @@ async function main() {
     return out;
   }
 
+  // Scoped to ONE subject: this table holds every subject's spines, so an
+  // unfiltered read reports a coverage total that silently mixes them and the
+  // "UNASSESSED" column becomes every other subject's concepts.
+  const cfg = requireSubjectArg(process.argv);
   const concepts = await fetchAll<ConceptRow>(
     "syllabus_concepts",
     "id,class,chapter_no,chapter_name",
+    { column: "subject", value: cfg.subject },
   );
-  const links = await fetchAll<ExamRow>("syllabus_concept_exams", "concept_id,exam,status");
+  // syllabus_concept_exams has NO subject column — a link is scoped only through
+  // the concept it points at, so it must be filtered by membership, not by a
+  // column. Skipping this would leave every other subject's rulings in the
+  // per-exam counts while `concepts` held one subject, making "UNASSESSED"
+  // (concepts - rows) understate and potentially go negative.
+  const conceptIds = new Set(concepts.map((c) => c.id));
+  const allLinks = await fetchAll<ExamRow>("syllabus_concept_exams", "concept_id,exam,status");
+  const links = allLinks.filter((l) => conceptIds.has(l.concept_id));
 
-  const target = process.argv[2];
+  // First NON-FLAG argument: `--subject=` may sit in any position.
+  const target = process.argv.slice(2).find((a) => !a.startsWith("--"));
   if (target && !isSyllabusExam(target)) {
     throw new Error(`unknown exam "${target}". Known: ${SYLLABUS_EXAMS.join(", ")}`);
   }
 
+  console.log(`\nSubject: ${cfg.label}`);
   console.log(`\nConcept map: ${concepts.length} concepts ` +
     `(Std 11: ${concepts.filter((c) => c.class === 11).length}, ` +
     `Std 12: ${concepts.filter((c) => c.class === 12).length})\n`);

@@ -27,6 +27,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import * as XLSX from "xlsx";
 import { loadOldSyllabusChapters } from "../../src/lib/syllabus/query";
+import { requireSubjectArg } from "./subject-arg";
 import {
   SPINE,
   splitCoveredBy,
@@ -86,7 +87,9 @@ function writeSheet(rows: Record<string, string | number>[], headers: string[], 
 }
 
 async function main() {
-  const which = (process.argv[2] ?? "all").toLowerCase();
+  // Positionals, skipping flags — `--subject=` may sit in any position.
+  const positional = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+  const which = (positional[0] ?? "all").toLowerCase();
   const db = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -152,7 +155,7 @@ async function main() {
 
   // ---------- NCERT ----------
   if (which === "all" || which === "ncert") {
-    for (const cls of which === "ncert" && process.argv[3] ? [Number(process.argv[3])] : [11, 12]) {
+    for (const cls of which === "ncert" && positional[1] ? [Number(positional[1])] : [11, 12]) {
       const mine = concepts.filter(
         (c) => c.source === SPINE.ncert && c.class === cls && isTopLevelSection(c.section_no),
       );
@@ -192,7 +195,11 @@ async function main() {
 
   // ---------- JEE ----------
   if (which === "all" || which === "jee") {
-    const oldSyllabus = await loadOldSyllabusChapters(db as never);
+    const cfg = requireSubjectArg(process.argv);
+    const oldSyllabus = await loadOldSyllabusChapters(db as never, {
+      subject: cfg.subject,
+      liveFromYear: cfg.liveFromYear,
+    });
     const mine = concepts.filter((c) => c.source === SPINE.jee);
     const edges = edgesFor(mine, (c) => c.id);
 

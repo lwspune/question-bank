@@ -1,12 +1,13 @@
 /**
  * Seed the syllabus concept map (migration 0065).
  *
- *   npx tsx scripts/syllabus/seed.ts           # dry-run (default), writes nothing
- *   npx tsx scripts/syllabus/seed.ts --apply   # write
+ *   npx tsx scripts/syllabus/seed.ts                      # dry-run, writes nothing
+ *   npx tsx scripts/syllabus/seed.ts --apply              # write
+ *   npx tsx scripts/syllabus/seed.ts --subject=physics    # another subject
  *
- * Reads scripts/syllabus/data/chem-sb-11.json and chem-sb-12.json — the
- * Maharashtra State Board Std XI/XII Chemistry books' own numbered section
- * headings, extracted from the chapter PDFs.
+ * Reads the State Board seed files named by the subject registry (Chemistry
+ * unless --subject says otherwise) — the Maharashtra State Board Std XI/XII
+ * books' own numbered section headings, extracted from the chapter PDFs.
  *
  * Idempotent: upserts on (source, class, subject, section_no), so a re-run is a
  * no-op and a corrected concept title overwrites in place. It deliberately does
@@ -17,8 +18,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { findDuplicateKeys, validateConceptRow, type ConceptRow } from "./lib";
-
-const FILES = ["chem-sb-11.json", "chem-sb-12.json"];
+import { requireSubjectArg } from "./subject-arg";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -34,10 +34,12 @@ function load(file: string): ConceptRow[] {
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  const cfg = requireSubjectArg(process.argv);
   loadEnv();
 
+  console.log(`subject: ${cfg.label}`);
   const rows: ConceptRow[] = [];
-  for (const file of FILES) {
+  for (const file of cfg.seedFiles) {
     const loaded = load(file);
     console.log(`  ${file}: ${loaded.length} concepts`);
     rows.push(...loaded);
@@ -54,6 +56,21 @@ async function main() {
   if (dupes.length) {
     console.error(`\nREFUSING TO WRITE — duplicate keys would upsert onto each other:`);
     for (const d of dupes.slice(0, 20)) console.error("  " + d);
+    process.exit(1);
+  }
+
+  // The `subject` written is the FILE's, not the flag's, and the upsert key
+  // includes it — so a file mislabelled "Chemistry" seeded under --subject=physics
+  // would silently overwrite the Chemistry spine. Refuse rather than reconcile:
+  // the file is the source of record, and rewriting its subject here would hide
+  // an authoring mistake instead of surfacing it.
+  const wrong = [...new Set(rows.map((r) => r.subject))].filter((s) => s !== cfg.subject);
+  if (wrong.length) {
+    console.error(
+      `\nREFUSING TO WRITE — seed files declare subject ${wrong
+        .map((s) => `"${s}"`)
+        .join(", ")} but --subject resolves to "${cfg.subject}".`,
+    );
     process.exit(1);
   }
 

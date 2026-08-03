@@ -19,6 +19,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
 import { loadAlignmentRows, loadOldSyllabusChapters } from "../../src/lib/syllabus/query";
+import { requireSubjectArg } from "./subject-arg";
 import { SPINE, splitCoveredBy, parseCoveredRef } from "../../src/lib/syllabus/summary";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -98,8 +99,13 @@ async function main() {
   const pct = inferred.size ? Math.round((agree / inferred.size) * 100) : 0;
   console.log(`  inference would be ${pct}% correct — which is why pairing is authored-only\n`);
 
+  const cfg = requireSubjectArg(process.argv);
   const rows = await loadAlignmentRows(db as never, {
-    oldSyllabus: await loadOldSyllabusChapters(db as never),
+    subject: cfg.subject,
+    oldSyllabus: await loadOldSyllabusChapters(db as never, {
+      subject: cfg.subject,
+      liveFromYear: cfg.liveFromYear,
+    }),
   });
   const anchors = new Set(rows.map((r) => `${r.anchor.cls}|${r.anchor.sectionNo}`));
   console.log(`Alignment table: ${rows.length} rows over ${anchors.size} State Board subtopics`);
