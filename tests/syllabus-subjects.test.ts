@@ -71,6 +71,17 @@ describe("syllabus subject registry", () => {
     expect(SYLLABUS_SUBJECTS.chemistry.seedFiles).toEqual(["chem-sb-11.json", "chem-sb-12.json"]);
     expect(SYLLABUS_SUBJECTS.physics.seedFiles).toEqual(["phy-sb-11.json", "phy-sb-12.json"]);
   });
+
+  // Chemistry's NCERT spine is seeded by ingest-ncert-spine.ts (which also
+  // authors its rulings), so it is deliberately empty here rather than
+  // duplicated into a second seeding path.
+  it("keeps the NCERT spine files on their own axis", () => {
+    expect(SYLLABUS_SUBJECTS.physics.ncertSeedFiles).toEqual([
+      "phy-ncert-11.json",
+      "phy-ncert-12.json",
+    ]);
+    expect(SYLLABUS_SUBJECTS.chemistry.ncertSeedFiles).toEqual([]);
+  });
 });
 
 describe("parseSubjectArg", () => {
