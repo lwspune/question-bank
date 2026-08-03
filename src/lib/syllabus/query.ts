@@ -723,3 +723,87 @@ export async function loadAlignmentRows(
 
   return buildAlignmentRows(anchors, pointers, authoredPairs);
 }
+
+/**
+ * NCERT sections the State Board does not fully teach.
+ *
+ * The exam-spine summaries cannot answer this: they iterate sources ending
+ * "bank taxonomy", and NCERT is a BOOK. The shape also differs — a book section
+ * carries no PYQ count, so these sort in book order rather than by weight.
+ *
+ * `alsoAskedBy` marks a hole an exam already reports from its own side (JEE's
+ * "Vitamins" and NCERT 10.4 are one gap seen twice). Shown rather than filtered:
+ * dropping them would understate what a CBSE student loses, but leaving them
+ * unmarked reads as double-counting.
+ */
+export type NcertGapRow = {
+  id: string;
+  cls: number;
+  chapterNo: number;
+  chapterName: string;
+  sectionNo: string;
+  concept: string;
+  status: "not" | "partial";
+  note: string | null;
+  alsoAskedBy: string | null;
+};
+
+export async function loadNcertGaps(
+  db: SupabaseClient,
+  opts: { subject?: string } = {},
+): Promise<NcertGapRow[]> {
+  const subject = opts.subject ?? "Chemistry";
+  const all = await fetchAll<RawConcept>(
+    db,
+    "syllabus_concepts",
+    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
+    { column: "subject", value: subject },
+  );
+  const links = await fetchAll<RawLink>(
+    db,
+    "syllabus_concept_exams",
+    "concept_id,exam,status,note,covered_by",
+  );
+  const linkOf = new Map(links.map((l) => [`${l.concept_id}|${l.exam}`, l]));
+
+  // Which NCERT sections an EXAM already flags as a State Board gap, keyed
+  // `cls|section`. Resolved through the exam's own NCERT pointer.
+  const alsoAsked = new Map<string, string>();
+  for (const c of all) {
+    if (!c.source.endsWith("bank taxonomy")) continue;
+    if (linkOf.get(`${c.id}|${SPINE.stateBoard}`)?.status !== "not") continue;
+    const ncertRef = linkOf.get(`${c.id}|CBSE Class 12`)?.covered_by;
+    if (!ncertRef) continue;
+    const { name } = splitPyqCount(c.concept);
+    for (const raw of splitCoveredBy(ncertRef)) {
+      const { cls, no } = parseCoveredRef(raw, c.class);
+      alsoAsked.set(`${cls}|${no}`, name);
+    }
+  }
+
+  return all
+    .filter((c) => c.source === SPINE.ncert && isTopLevelSection(c.section_no))
+    .map((c) => {
+      const hit = linkOf.get(`${c.id}|${SPINE.stateBoard}`);
+      const status = hit?.covered_by ? hit.status : hit?.status ?? "not";
+      return { c, hit, status };
+    })
+    .filter(({ status }) => status === "not" || status === "partial")
+    .map(({ c, hit, status }) => ({
+      id: c.id,
+      cls: c.class,
+      chapterNo: c.chapter_no,
+      chapterName: c.chapter_name,
+      sectionNo: c.section_no,
+      concept: c.concept,
+      status: status as "not" | "partial",
+      note: hit?.note ?? null,
+      alsoAskedBy: alsoAsked.get(`${c.class}|${c.section_no}`) ?? null,
+    }))
+    .sort(
+      (a, b) =>
+        a.cls - b.cls ||
+        a.chapterNo - b.chapterNo ||
+        a.sectionNo.localeCompare(b.sectionNo, undefined, { numeric: true }),
+    );
+}

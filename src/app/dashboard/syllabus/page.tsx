@@ -11,6 +11,7 @@ import {
   loadOldSyllabusChapters,
   loadAlignmentRows,
   loadExamSpineSummaries,
+  loadNcertGaps,
 } from "@/lib/syllabus/query";
 import { SPINE } from "@/lib/syllabus/summary";
 import AlignmentTable from "./AlignmentTable";
@@ -61,7 +62,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
   const db = createSupabaseServerClient();
   // Old-syllabus chapters are needed before the rows so the sort can sink them.
   const oldSyllabus = await loadOldSyllabusChapters(db);
-  const [matrix, ncertRows, jeeRows, examSpines, alignRows] = await Promise.all([
+  const [matrix, ncertRows, jeeRows, examSpines, alignRows, ncertGaps] = await Promise.all([
     loadSyllabusMatrix(db),
     loadMappingRows(db, {
       spine: SPINE.ncert,
@@ -80,6 +81,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
     }),
     loadExamSpineSummaries(db, { oldSyllabus }),
     loadAlignmentRows(db, { oldSyllabus }),
+    loadNcertGaps(db),
   ]);
 
   const selected = searchParams.chapter ? parseChapterKey(searchParams.chapter) : null;
@@ -167,13 +169,14 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
         <CollapsibleSection
           id="live-gaps"
           title="Live gaps — exam subtopics the State Board does not fully cover"
-          count={examSpines.reduce((n, e) => n + e.gaps.length + e.partials.length, 0)}
+          count={examSpines.reduce((n, e) => n + e.gaps.length + e.partials.length, 0) + ncertGaps.length}
           countLabel="subtopics"
           description={
             <>
-            Rows are <strong>exam subtopics</strong>, split into those the State Board does not
-            cover at all and those it covers only partly. Sorted by PYQ weight, so the most
-            expensive gap is first. Old-syllabus chapters are not listed: they are history, and
+            What the State Board does not fully cover, split into not-covered-at-all and
+            covered-only-partly. The exam blocks are <strong>exam subtopics</strong> sorted by PYQ
+            weight, so the most expensive gap is first; the NCERT block is <strong>book
+            sections</strong> in book order, because a book section carries no PYQ count. Old-syllabus chapters are not listed: they are history, and
             letting a dead chapter outrank a live one would misdirect the prioritisation this
             view exists to support.
             </>
@@ -233,7 +236,65 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
                   )}
                 </div>
               ))}
-            {examSpines.every((e) => e.gaps.length === 0 && e.partials.length === 0) && (
+            {ncertGaps.length > 0 &&
+              ([11, 12] as const).map((cls) => {
+                const mine = ncertGaps.filter((g) => g.cls === cls);
+                if (mine.length === 0) return null;
+                return (
+                  <div key={`ncert-gap-${cls}`} className="rounded-md border">
+                    <p className="border-b bg-muted/30 p-3 text-sm font-medium">
+                      NCERT Std {cls === 11 ? "XI" : "XII"}{" "}
+                      <span className="font-normal text-muted-foreground">— book, not an exam</span>
+                    </p>
+                    {(
+                      [
+                        ["Not covered", "not", "text-rose-700 dark:text-rose-300"],
+                        ["Partly covered", "partial", "text-amber-700 dark:text-amber-300"],
+                      ] as const
+                    ).map(([label, status, tone]) => {
+                      const list = mine.filter((g) => g.status === status);
+                      if (list.length === 0) return null;
+                      return (
+                        <div key={label}>
+                          <h3 className={`border-b bg-muted/10 px-3 py-2 text-xs font-semibold ${tone}`}>
+                            {label} &mdash; {list.length} section{list.length === 1 ? "" : "s"}
+                          </h3>
+                          <ul className="divide-y">
+                            {list.map((g) => (
+                              <li key={g.id} className="flex gap-3 p-3 text-sm">
+                                <span className="w-12 shrink-0 text-right font-mono text-xs text-muted-foreground">
+                                  {g.sectionNo}
+                                </span>
+                                <span className="min-w-0">
+                                  <span className="font-medium">{g.concept}</span>
+                                  <span className="ml-2 text-xs text-muted-foreground">
+                                    {g.chapterName}
+                                  </span>
+                                  {/* Same hole an exam already lists from its own
+                                      side — marked so it does not read as a
+                                      second, separate gap. */}
+                                  {g.alsoAskedBy && (
+                                    <span className="ml-2 rounded-full border px-1.5 py-0.5 text-[10px] text-muted-foreground">
+                                      also above as &ldquo;{g.alsoAskedBy}&rdquo;
+                                    </span>
+                                  )}
+                                  {g.note && (
+                                    <span className="mt-1 block text-xs text-muted-foreground">
+                                      {g.note}
+                                    </span>
+                                  )}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            {ncertGaps.length === 0 &&
+              examSpines.every((e) => e.gaps.length === 0 && e.partials.length === 0) && (
               <p className="text-sm text-muted-foreground">
                 No live gaps &mdash; every subtopic these exams set is fully taught by the State
                 Board.

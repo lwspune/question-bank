@@ -1,6 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // The 317 /questions landing pages prerender concurrently at build, and each
+  // queries Postgres. The query itself is fast (EXPLAIN: ~13ms on an existing
+  // index) — the failures are CONTENTION: a burst of prerenders trips Postgres'
+  // statement_timeout, and queryQuestions' 57014 retry can only absorb so much.
+  //
+  // cpus caps how many pages generate at once, which attacks the cause.
+  // staticPageGenerationTimeout raises the 60s worker limit whose SIGTERM was
+  // killing pages MID-RETRY — turning a slow-but-recovering page into a hard
+  // build failure. Cost of both: a slower build.
+  staticPageGenerationTimeout: 180,
+  experimental: { cpus: 4 },
   async redirects() {
     return [
       {
