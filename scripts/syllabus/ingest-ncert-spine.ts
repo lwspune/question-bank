@@ -688,10 +688,16 @@ REFUSING TO WRITE — ${orphans.length} entr(ies) name no live section:`);
   // re-extraction REMOVES a row (an intext question correctly filtered out, say)
   // the old row lingers forever and shows up as a section that does not exist.
   // That is how the DB drifted to 398 NCERT rows while the file had 392.
+  //
+  // SCOPED TO THIS SUBJECT. Without the subject filter this prune reads EVERY
+  // subject's NCERT rows, and since `wanted` only ever holds this run's sections
+  // every other subject's rows are "stale" — so running the Chemistry ingest
+  // would delete the whole Physics NCERT spine, rulings cascading with it.
   const { data: existing, error: exErr } = await db
     .from("syllabus_concepts")
     .select("id,class,section_no")
-    .eq("source", "NCERT");
+    .eq("source", "NCERT")
+    .eq("subject", "Chemistry");
   if (exErr) throw new Error(exErr.message);
   const wanted = new Set(sections.map((s) => `${s.class}|${s.section_no}`));
   const stale = (existing ?? []).filter((r) => !wanted.has(`${r.class}|${r.section_no}`));

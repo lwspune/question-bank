@@ -6,16 +6,15 @@
  * gap report is computed from, so a malformed row silently widens or hides a gap.
  */
 
-/** Syllabus authorities we adjudicate against. Not the same set as bank exams. */
-export const SYLLABUS_EXAMS = [
-  "MH State Board",
-  "NDA",
-  "JEE Mains",
-  "MHT-CET",
-  "CBSE Class 12",
-] as const;
-
-export type SyllabusExam = (typeof SYLLABUS_EXAMS)[number];
+/**
+ * Syllabus authorities we adjudicate against. Not the same set as bank exams.
+ *
+ * Re-exported from the app's copy rather than declared twice: this list gates
+ * what the seed will write, and a script that accepts an exam the page cannot
+ * render (or rejects one it can) is a silently invisible ruling.
+ */
+import { SYLLABUS_EXAMS, type SyllabusExam } from "../../src/lib/syllabus/summary";
+export { SYLLABUS_EXAMS, type SyllabusExam };
 
 /**
  * `full`    - required by this exam as written.

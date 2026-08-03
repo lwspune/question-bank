@@ -8,12 +8,11 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
+// Shared with the page rather than re-declared: this audit exists to prove the
+// refs resolve the way the page resolves them, which a private copy of the map
+// cannot do once the two drift.
+import { BOOK_OF_EXAM } from "../../src/lib/syllabus/summary";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
-
-const BOOK_OF_EXAM: Record<string, string> = {
-  "MH State Board": "MH State Board",
-  "CBSE Class 12": "NCERT",
-};
 
 async function main() {
   const db = createClient(

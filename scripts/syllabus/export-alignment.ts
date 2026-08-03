@@ -13,6 +13,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { loadAlignmentRows, loadOldSyllabusChapters } from "../../src/lib/syllabus/query";
+import { requireSubjectArg } from "./subject-arg";
 import type { AlignmentRow } from "../../src/lib/syllabus/summary";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -27,7 +28,14 @@ function main() {
       process.env.SUPABASE_SERVICE_ROLE_KEY!,
       { auth: { persistSession: false } },
     ) as never;
-    const rows = await loadAlignmentRows(db, { oldSyllabus: await loadOldSyllabusChapters(db) });
+    const cfg = requireSubjectArg(process.argv);
+    const rows = await loadAlignmentRows(db, {
+      subject: cfg.subject,
+      oldSyllabus: await loadOldSyllabusChapters(db, {
+        subject: cfg.subject,
+        liveFromYear: cfg.liveFromYear,
+      }),
+    });
 
     const stat = {
       both: rows.filter((r) => r.ncert && r.jee).length,

@@ -44,7 +44,8 @@ type C = {
 };
 type L = { concept_id: string; exam: string; covered_by: string | null };
 
-const CLS = Number(process.argv[2] ?? 11);
+// First non-flag positional, so a `--subject=` flag cannot be read as a class.
+const CLS = Number(process.argv.slice(2).find((a) => !a.startsWith("--")) ?? 11);
 const roman = (c: number) => (c === 12 ? "XII" : "XI");
 
 async function page<T>(db: any, table: string, cols: string): Promise<T[]> {

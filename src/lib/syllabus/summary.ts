@@ -84,9 +84,13 @@ export function isTopLevelSection(sectionNo: string): boolean {
 /**
  * The spine a row belongs to. `syllabus_concepts.source` names the book or bank
  * a row was extracted from, and rows from different spines must never be mixed:
- * every spine uses subject "Chemistry" and numbers its chapters from 1, so a
- * query filtered on subject alone folds State Board Ch.1, NCERT Ch.1 and the
- * exam-bank rows into one chapter.
+ * every spine numbers its chapters from 1, so a query filtered on subject alone
+ * folds State Board Ch.1, NCERT Ch.1 and the exam-bank rows into one chapter.
+ *
+ * These name BOOKS, not subjects, so they are shared across subjects rather than
+ * per-subject: Physics and Chemistry both live under "MH State Board" and are
+ * separated by the `subject` column. Scoping a query needs BOTH — source alone
+ * merges two subjects' Ch.1, subject alone merges three books' Ch.1.
  */
 export const SPINE = {
   stateBoard: "MH State Board",

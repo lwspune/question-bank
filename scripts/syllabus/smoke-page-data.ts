@@ -11,6 +11,7 @@ import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
 import { loadSyllabusMatrix, loadMappingRows, loadOldSyllabusChapters } from "../../src/lib/syllabus/query";
 import { SPINE } from "../../src/lib/syllabus/summary";
+import { requireSubjectArg } from "./subject-arg";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -21,10 +22,17 @@ async function main() {
     { auth: { persistSession: false } },
   ) as never;
 
-  const oldSyllabus = await loadOldSyllabusChapters(db);
+  const cfg = requireSubjectArg(process.argv);
+  const subject = cfg.subject;
+  console.log(`subject: ${cfg.label} (liveFromYear ${cfg.liveFromYear})\n`);
+
+  const oldSyllabus = await loadOldSyllabusChapters(db, {
+    subject,
+    liveFromYear: cfg.liveFromYear,
+  });
   console.log(`old-syllabus chapters: ${oldSyllabus.size} — ${[...oldSyllabus].join(", ")}`);
 
-  const matrix = await loadSyllabusMatrix(db);
+  const matrix = await loadSyllabusMatrix(db, { subject });
   console.log(`\nState Board matrix: ${matrix.totalConcepts} concepts, ${matrix.chapters.length} chapters`);
   console.log(
     "  first 3:",
@@ -34,6 +42,7 @@ async function main() {
   const ncert = await loadMappingRows(db, {
     spine: SPINE.ncert,
     books: ["MH State Board"],
+    subject,
     topLevelOnly: true,
   });
   const ncertMapped = ncert.filter((r) => r.covers["MH State Board"].refs.length > 0).length;
@@ -46,6 +55,7 @@ async function main() {
   const jee = await loadMappingRows(db, {
     spine: SPINE.jee,
     books: ["MH State Board", "CBSE Class 12"],
+    subject,
     oldSyllabus,
   });
   const live = jee.filter((r) => !r.oldSyllabus);

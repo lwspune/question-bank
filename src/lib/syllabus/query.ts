@@ -117,7 +117,7 @@ export type SyllabusData = { concepts: RawConcept[]; links: RawLink[] };
 
 export async function loadSyllabusData(
   db: SupabaseClient,
-  subject = "Chemistry",
+  subject: string,
 ): Promise<SyllabusData> {
   const [concepts, links] = await Promise.all([
     fetchAll<RawConcept>(
@@ -133,14 +133,14 @@ export async function loadSyllabusData(
 
 export async function loadSyllabusMatrix(
   db: SupabaseClient,
-  opts: { subject?: string; data?: SyllabusData } = {},
+  opts: { subject: string; data?: SyllabusData },
 ): Promise<SyllabusMatrix> {
-  const subject = opts.subject ?? "Chemistry";
+  const subject = opts.subject;
 
   // SCOPED TO ONE SPINE. Filtering on subject alone was a live bug: every spine
-  // uses subject "Chemistry" and numbers chapters from 1, so State Board Ch.1,
-  // NCERT Ch.1 and the exam-bank rows all merged into a single chapter row. The
-  // page was correct when written and the data grew underneath it.
+  // of a subject numbers its chapters from 1, so State Board Ch.1, NCERT Ch.1
+  // and the exam-bank rows all merged into a single chapter row. The page was
+  // correct when written and the data grew underneath it.
   const { concepts: allConcepts, links } = opts?.data ?? (await loadSyllabusData(db, subject));
   const scoped = allConcepts.filter((c) => c.source === SPINE.stateBoard);
 
@@ -240,15 +240,21 @@ export type ConceptDetail = ConceptRow & {
 
 export async function loadChapterConcepts(
   db: SupabaseClient,
+  subject: string,
   cls: number,
   chapterNo: number,
 ): Promise<{ chapterName: string; concepts: ConceptDetail[] } | null> {
   // Same spine scope as the matrix: (class, chapter_no) is NOT unique across
   // spines, so without this the detail view mixes three books' chapter 1.
+  //
+  // The subject filter matters for exactly the same reason one level up: every
+  // subject's State Board book also numbers its chapters from 1, so scoping to
+  // the spine alone would merge Physics Ch.1 into Chemistry Ch.1.
   const { data, error } = await db
     .from("syllabus_concepts")
     .select("id,source,class,chapter_no,chapter_name,section_no,concept,seq")
     .eq("source", SPINE.stateBoard)
+    .eq("subject", subject)
     .eq("class", cls)
     .eq("chapter_no", chapterNo)
     .order("seq", { ascending: true });
@@ -396,14 +402,17 @@ function resolveRefs(
  * asserted, so the flag re-derives itself as the corpus grows. Recency is the
  * test, not volume: s-Block has only ~10 questions but reaches 2026, so it is
  * live, while metallurgy has more and stopped at 2021.
+ *
+ * `liveFromYear` is per-subject and comes from the subject registry — the two
+ * rationalisations landed in different exam cycles, so one shared constant
+ * misreads the later one. See SyllabusSubject.liveFromYear.
  */
-export const LIVE_FROM_YEAR = 2023;
-
 export async function loadOldSyllabusChapters(
   db: SupabaseClient,
-  exam = "JEE Mains",
-  subject = "Chemistry",
+  opts: { subject: string; liveFromYear: number; exam?: string },
 ): Promise<Set<string>> {
+  const { subject, liveFromYear } = opts;
+  const exam = opts.exam ?? "JEE Mains";
   const lastYear = new Map<string, number>();
   const PAGE = 1000;
   for (let from = 0; ; from += PAGE) {
@@ -427,7 +436,7 @@ export async function loadOldSyllabusChapters(
     }
     if (rows.length < PAGE) break;
   }
-  return new Set([...lastYear].filter(([, y]) => y < LIVE_FROM_YEAR).map(([ch]) => ch));
+  return new Set([...lastYear].filter(([, y]) => y < liveFromYear).map(([ch]) => ch));
 }
 
 /**
@@ -441,7 +450,7 @@ export async function loadMappingRows(
   opts: {
     spine: string;
     books: string[];
-    subject?: string;
+    subject: string;
     topLevelOnly?: boolean;
     oldSyllabus?: Set<string>;
     /** Pre-loaded tables, so a page running several loaders fetches once. */
@@ -455,7 +464,7 @@ export async function loadMappingRows(
     orderByBook?: string;
   },
 ): Promise<MappingRow[]> {
-  const subject = opts.subject ?? "Chemistry";
+  const subject = opts.subject;
   const { concepts: all, links: allLinks } = opts.data ?? (await loadSyllabusData(db, subject));
   const books = indexBooks(all);
 
@@ -573,9 +582,9 @@ export type ExamSpineSummary = {
 
 export async function loadExamSpineSummaries(
   db: SupabaseClient,
-  opts: { subject?: string; oldSyllabus?: Set<string>; data?: SyllabusData } = {},
+  opts: { subject: string; oldSyllabus?: Set<string>; data?: SyllabusData },
 ): Promise<ExamSpineSummary[]> {
-  const subject = opts.subject ?? "Chemistry";
+  const subject = opts.subject;
   const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
   const byConcept = new Map<string, RawLink[]>();
   for (const l of links) {
@@ -653,9 +662,9 @@ export async function loadExamSpineSummaries(
  */
 export async function loadAlignmentRows(
   db: SupabaseClient,
-  opts: { subject?: string; oldSyllabus?: Set<string>; data?: SyllabusData } = {},
+  opts: { subject: string; oldSyllabus?: Set<string>; data?: SyllabusData },
 ): Promise<AlignmentRow[]> {
-  const subject = opts.subject ?? "Chemistry";
+  const subject = opts.subject;
   const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
   const linkOf = new Map(links.map((l) => [`${l.concept_id}|${l.exam}`, l]));
 
@@ -741,9 +750,9 @@ export type NcertGapRow = {
 
 export async function loadNcertGaps(
   db: SupabaseClient,
-  opts: { subject?: string; data?: SyllabusData } = {},
+  opts: { subject: string; data?: SyllabusData },
 ): Promise<NcertGapRow[]> {
-  const subject = opts.subject ?? "Chemistry";
+  const subject = opts.subject;
   const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
   const linkOf = new Map(links.map((l) => [`${l.concept_id}|${l.exam}`, l]));
 
