@@ -16,6 +16,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustDo } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -67,11 +68,11 @@ describe.skipIf(!HAS_ENV)("question_principle_tags RLS", () => {
     orgAId = orgA!.id;
     orgBId = orgB!.id;
 
-    await admin.from("org_members").insert([
+    await mustDo("org_members", () => admin.from("org_members").insert([
       { org_id: orgAId, user_id: adminAId, role: "ADMIN" },
       { org_id: orgAId, user_id: teacherAId, role: "TEACHER" },
       { org_id: orgBId, user_id: adminBId, role: "ADMIN" },
-    ]);
+    ]));
 
     // Borrow existing taxonomy
     const { data: ex } = await admin.from("exams").select("id").limit(1).single();

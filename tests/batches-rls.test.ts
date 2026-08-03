@@ -15,6 +15,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { must, mustDo } from "./helpers/fixture";
 import {
   createBatch,
   updateBatch,
@@ -79,18 +80,20 @@ describe.skipIf(!HAS_ENV)("batches RLS + per-batch usage (migration 0054)", () =
     teacherBId = await mkUser(TEACHER_B);
 
     const mkOrg = async (name: string) => {
-      const { data } = await admin.from("organizations").insert({ name }).select("id").single();
-      return data!.id as string;
+      const row = await must<{ id: string }>(`organizations:${name}`, () =>
+        admin.from("organizations").insert({ name }).select("id").single(),
+      );
+      return row.id;
     };
     orgAId = await mkOrg(ORG_A);
     orgBId = await mkOrg(ORG_B);
 
-    await admin.from("org_members").insert([
+    await mustDo("org_members", () => admin.from("org_members").insert([
       { user_id: adminAId, org_id: orgAId, role: "ADMIN" },
       { user_id: teacherAId, org_id: orgAId, role: "TEACHER" },
       { user_id: teacherA2Id, org_id: orgAId, role: "TEACHER" },
       { user_id: teacherBId, org_id: orgBId, role: "TEACHER" },
-    ]);
+    ]));
 
     const { data: exam } = await admin.from("exams").select("id").eq("name", "MHT-CET").single();
     const examId = exam!.id;
