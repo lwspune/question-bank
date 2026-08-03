@@ -33,9 +33,37 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-03
+
+### Re-derive the stale State Board `status` rulings, or retire the column's authority
+
+`syllabus_concept_exams.status` on the **State Board spine** answers "does exam X require this concept?" and was authored *before* the `covered_by` mappings existed. Nothing keeps the two directions in agreement, and they have drifted: a probe found **33 State Board concepts marked `status='not'` for JEE that a JEE subtopic explicitly points at** — 16 of them from chapters JEE still sets (Std XI Ch.8 Elements of Group 1 and 2 ×14, Ch.10 States of Matter ×2). The view that surfaced this contradiction was removed on 2026-08-03, so **nothing renders these rows today** — but the data is still wrong.
+
+**Why:** the defect is latent, not fixed. Any future surface that reads the State Board `status` column inherits it, and the failure mode is the worst kind: a confident, plausible, wrong verdict ("Ch.8 is not required by JEE") that a teacher could act on by dropping a chapter JEE actively examines. It also blocks ever re-introducing an honest "what can I skip?" view, which is a genuinely useful question the page currently cannot answer.
+
+**How to apply:** two honest options. **(a) Derive it** — replace the stored `status` for the State Board spine with a value computed from the `covered_by` pointers (pointed-at by a live exam subtopic ⇒ required; pointed-at only by a retired chapter ⇒ no longer required; unpointed ⇒ not required *by the bank*), so the two directions cannot disagree by construction. This is the structural fix and matches how the alignment table already works. **(b) Patch the 16** back to `partial` and add `scripts/syllabus/audit-alignment.ts`-style standing probe asserting no `status='not'` row is pointed at by a live exam subtopic — cheaper, but leaves two datasets that must be kept in step by discipline. Prefer (a). Either way, keep the probe: it is what found this.
+
+### Load the syllabus tables once per request instead of ten times
+
+`/dashboard/syllabus` runs five loaders — `loadSyllabusMatrix`, `loadMappingRows` ×2, `loadExamSpineSummaries`, `loadAlignmentRows`, `loadNcertGaps` — and **each independently pages the full `syllabus_concepts` and `syllabus_concept_exams` tables**. That is roughly ten full-table fetches of the same ~1,600 concepts and ~3,400 links on every page load.
+
+**Why:** collapsing the tables behind `<details>` on 2026-08-03 made the page shorter to *scroll*, and explicitly did not make it faster to *arrive* — this is why. The page is admin-only and `ƒ`, so it is not a public-traffic cost, but it is the kind of waste that quietly triples when a fourth book or a second subject is added, and the fix is mechanical rather than clever.
+
+**How to apply:** hoist the two `fetchAll` calls to the page (or a small `loadSyllabusData(db)` returning `{concepts, links}`), and change each builder to take that payload instead of a `db` handle. The builders are already pure below the fetch, so this is a signature change plus deleting the fetches — no logic moves. Verify by counting queries in the Supabase log before and after, not by timing (the tables are small enough that wall-clock may barely move while the query count drops 10× — the point is the shape, not today's latency).
+
+### Investigate the elevated DB-integration flake rate
+
+Three consecutive full-gate runs failed on 2026-08-03, each on a **different** DB-integration file (`principle-tags-rls` ×2 assertions, then `batches-rls` ×5 with `new row violates row-level security policy`), and **every one passed in isolation immediately afterwards** (14/14, then 13/13). The fourth run was clean. This is the known shared-prod-DB contention pattern, but three in a row is more than the usual one-in-several.
+
+**Why:** the flake is currently absorbed by re-running, which works but trains the reflex "gate failed, run it again" — and that reflex is exactly what would let a *real* regression through. It also costs ~4 minutes per spurious failure, and it happened during a session that already had a genuine build failure, making triage slower than it should have been.
+
+**How to apply:** first establish whether the rate actually rose or the sample is small — count failures per gate run over the last ~20 runs before concluding anything. If real, the likely causes in order: (1) fixture-org collisions between files running in parallel (the `batches-rls` symptom, an RLS *policy* rejection, points at a teacher/branch fixture from another file being swept mid-run — see [[test-data-leak-org-signal]]); (2) contention with the same Postgres the `/questions` prerender hammers, now that `next build` runs in the same gate; (3) genuinely slower prod DB. Cheapest mitigation if (1): give the DB-integration files a shared serial pool (`poolOptions.threads.singleThread` or a vitest `sequence.concurrent: false` on that glob) so they cannot race each other.
+
 ## 2026-08-01
 
-### Make the `/questions` prerender resilient at the source, not just via a retry
+### ~~Make the `/questions` prerender resilient at the source, not just via a retry~~ — **DONE 2026-08-03**
+
+**Shipped (`5a11ef4`):** option (a). `next.config.mjs` gains `experimental: { cpus: 4 }` (caps the prerender burst — the actual cause) + `staticPageGenerationTimeout: 180`. The second turned out to matter as much as the first: Next's 60s worker limit was SIGTERMing pages **between** `queryQuestions`' 57014 retries, converting a recovering page into a hard build failure. Before: 4–6 statement timeouts + 2 SIGTERMs per build. After: **zero of both, across two consecutive builds.** The retry is kept as defence-in-depth, as the entry recommended. Option (c) — serving the landing pages from a cached aggregate — remains the durable fix if the burst widens again.
 
 `next build` began failing while prerendering the 317 `/questions/<exam>/<subject>/<chapter>` landing pages with `canceling statement due to statement timeout` — a *different* handful of pages on each run, spanning three exams. `EXPLAIN (ANALYZE)` showed the chapter query runs in **13 ms**, so this is not a slow plan: Next prerenders those pages concurrently and this session's ~1,600 new rows tipped the burst past Postgres' `statement_timeout`. Shipped mitigation is a bounded retry on SQLSTATE 57014 in `queryQuestions` (2 attempts, short backoff), which took the build from failing twice consecutively to clean.
 
