@@ -1,0 +1,64 @@
+{
+  "exam": "JEE Mains",
+  "subject": "Physics",
+  "source": "JEE Mains bank taxonomy",
+  "reviewedOn": "2026-08-04",
+  "basis": [
+    "Every ruling names the section that teaches it and was checked against the",
+    "book TEXT via generated-papers/physics-corpus.json, not against section",
+    "titles. A title match is not evidence: JEE's Transformers has no heading in",
+    "the State Board AC chapter, yet the topic is taught in full one chapter",
+    "earlier, and a title-only pass would have called it a gap.",
+    "",
+    "Coverage is judged on what the exam DEMANDS, not on how our bank happens to",
+    "solve it. Absent rulings are absent on purpose - an unreviewed subtopic has",
+    "no row at all, so 'not yet assessed' stays distinguishable from 'covered'."
+  ],
+  "rulings": [
+    {
+      "section_no": "JEE-001",
+      "subtopic": "Inductive and Capacitive Reactance",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.5",
+        "note": "13.5 derives the voltage-current relation for R, L and C individually; reactance appears 66 times in the chapter."
+      },
+      "ncert": { "status": "full", "coveredBy": "XII:7.4, XII:7.5" }
+    },
+    {
+      "section_no": "JEE-002",
+      "subtopic": "LC Oscillations",
+      "stateBoard": { "status": "full", "coveredBy": "XII:13.7" },
+      "ncert": {
+        "status": "not",
+        "note": "NOT in NCERT at all: 'LC oscillation' occurs ZERO times across all four Physics volumes, both years - the rationalised edition dropped it. The State Board still teaches it at 13.7, so this is a gap on the NCERT side, the reverse of the usual direction."
+      }
+    },
+    {
+      "section_no": "JEE-003",
+      "subtopic": "LCR Series Circuit",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.5, XII:13.8, XII:13.9",
+        "note": "Series LCR in 13.5, resonance in 13.8 and sharpness/Q-factor in 13.9."
+      },
+      "ncert": { "status": "full", "coveredBy": "XII:7.6, XII:7.6.1, XII:7.6.2" }
+    },
+    {
+      "section_no": "JEE-004",
+      "subtopic": "RMS and Average Values",
+      "stateBoard": { "status": "full", "coveredBy": "XII:13.3" },
+      "ncert": { "status": "full", "coveredBy": "XII:7.2, XII:7.3" }
+    },
+    {
+      "section_no": "JEE-005",
+      "subtopic": "Transformers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.15",
+        "note": "Taught in ELECTROMAGNETIC INDUCTION (12.15), not the AC chapter - a teacher looking under AC Circuits will not find it. Treatment is complete: turn ratio Ns/Np (eq 12.49), ideal-transformer power relation (12.50), and both step-up and step-down cases."
+      },
+      "ncert": { "status": "full", "coveredBy": "XII:7.8" }
+    }
+  ]
+}
