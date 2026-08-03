@@ -414,20 +414,37 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
           </section>
         )}
 
-        <section aria-labelledby="ncert-map" className="mb-8">
-          <h2 id="ncert-map" className="mb-1 text-sm font-semibold">
-            NCERT Std XI + XII — which State Board subtopic covers each
-          </h2>
-          <p className="mb-3 text-xs text-muted-foreground">
-            The question a CBSE student asks: I have this NCERT section, where is it in my
-            State Board book? Top-level sections only; every pointer was read off both books.
-          </p>
-          <MappingTable
-            rows={ncertRows}
-            rowLabel="NCERT subtopic"
-            books={[{ exam: "MH State Board", label: "State Board" }]}
-          />
-        </section>
+        {/* Split by YEAR, and in NCERT book order within each. One combined table
+            could not be ordered honestly: both NCERT years number their chapters
+            from 1, so a single sequence either interleaves two different Ch.1s or
+            hides the year. */}
+        {([11, 12] as const).map((cls) => {
+          const rows = ncertRows.filter((r) => r.cls === cls);
+          if (rows.length === 0) return null;
+          return (
+            <section key={cls} aria-labelledby={`ncert-map-${cls}`} className="mb-8">
+              <h2 id={`ncert-map-${cls}`} className="mb-1 text-sm font-semibold">
+                NCERT Std {cls === 11 ? "XI" : "XII"} — which State Board subtopic covers each
+              </h2>
+              <p className="mb-3 text-xs text-muted-foreground">
+                The question a CBSE student asks: I have this NCERT section, where is it in my
+                State Board book? In NCERT book order. Top-level sections only; every pointer
+                was read off both books.
+                {/* Measured, not assumed: 12 of 72 Std XI rows cross into the Std
+                    XII State Board book and every one of them is Thermodynamics
+                    or Equilibrium. Std XII crosses back exactly once, so the
+                    callout belongs on this year only. */}
+                {cls === 11 &&
+                  " Watch the year: NCERT teaches Thermodynamics and Equilibrium in Class 11, but the State Board holds them until Std XII — the mismatch there is timing, not absence."}
+              </p>
+              <MappingTable
+                rows={rows}
+                rowLabel="NCERT subtopic"
+                books={[{ exam: "MH State Board", label: "State Board" }]}
+              />
+            </section>
+          );
+        })}
 
         <section aria-labelledby="jee-map" className="mb-8">
           <h2 id="jee-map" className="mb-1 text-sm font-semibold">

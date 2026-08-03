@@ -290,6 +290,7 @@ export type CoveredRef = { cls: number; no: string; title: string; chapterLabel:
 export type MappingRow = {
   id: string;
   cls: number;
+  chapterNo: number;
   chapterName: string;
   sectionNo: string;
   concept: string;
@@ -474,6 +475,7 @@ export async function loadMappingRows(
       return {
         id: c.id,
         cls: c.class,
+        chapterNo: c.chapter_no,
         chapterName: c.chapter_name,
         sectionNo: c.section_no,
         concept: name,
@@ -518,9 +520,14 @@ export async function loadMappingRows(
       // Falls back to alphabetical when no book order is requested, and breaks
       // ties within one book chapter the same way.
       (chapterOrder.get(a.chapterName) ?? 0) - (chapterOrder.get(b.chapterName) ?? 0) ||
+      // Then the row's OWN book order. Alphabetical put NCERT's Alcohols first
+      // and Structure of Atom near the end, which is no order at all. Class
+      // leads because BOTH NCERT years number their chapters from 1, so Std XI
+      // Ch.1 and Std XII Ch.1 would otherwise interleave.
+      a.cls - b.cls ||
+      a.chapterNo - b.chapterNo ||
       a.chapterName.localeCompare(b.chapterName) ||
       b.pyq - a.pyq ||
-      a.cls - b.cls ||
       a.sectionNo.localeCompare(b.sectionNo, undefined, { numeric: true }),
   );
 }
@@ -594,6 +601,7 @@ export async function loadExamSpineSummaries(
           return {
             id: c.id,
             cls: c.class,
+            chapterNo: c.chapter_no,
             chapterName: c.chapter_name,
             sectionNo: c.section_no,
             concept: name,
