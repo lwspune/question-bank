@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
   BOOK_OF_EXAM,
+  buildAlignmentRows,
   dominantSbByChapter,
   sbBookOrder,
   parseCoveredRef,
@@ -12,6 +13,10 @@ import {
   sectionGroupKey,
   tallyByExam,
   SYLLABUS_EXAMS,
+  type AlignAnchor,
+  type AlignmentRow,
+  type AlignPointer,
+  type AlignSide,
   type ChapterStatus,
   type ConceptStatus,
   type ExamTally,
@@ -633,4 +638,88 @@ export async function loadExamSpineSummaries(
       };
     })
     .sort((a, b) => b.not - a.not || a.label.localeCompare(b.label));
+}
+
+/**
+ * The three-book alignment table: State Board subtopic | NCERT subtopic | JEE
+ * subtopic, one of each per row, anchored on the State Board at 1.x grain.
+ *
+ * Both other spines point AT the State Board, so their pointers are read in the
+ * direction they were authored — nothing is inverted. The NCERT<->JEE pairing
+ * uses the separately authored JEE->NCERT edge and is never inferred from a
+ * shared State Board section: measured against that edge, inferring the pairing
+ * agrees only 129 times out of 168, invents 39 and misses 25.
+ */
+export async function loadAlignmentRows(
+  db: SupabaseClient,
+  opts: { subject?: string; oldSyllabus?: Set<string> } = {},
+): Promise<AlignmentRow[]> {
+  const subject = opts.subject ?? "Chemistry";
+  const all = await fetchAll<RawConcept>(
+    db,
+    "syllabus_concepts",
+    "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
+    { column: "subject", value: subject },
+  );
+  const links = await fetchAll<RawLink>(
+    db,
+    "syllabus_concept_exams",
+    "concept_id,exam,status,note,covered_by",
+  );
+  const linkOf = new Map(links.map((l) => [`${l.concept_id}|${l.exam}`, l]));
+
+  const anchors: AlignAnchor[] = all
+    .filter((c) => c.source === SPINE.stateBoard && isTopLevelSection(c.section_no))
+    .map((c) => ({
+      id: c.id,
+      cls: c.class,
+      chapterNo: c.chapter_no,
+      chapterName: c.chapter_name,
+      sectionNo: c.section_no,
+      concept: c.concept,
+    }));
+
+  const romanCh = (c: RawConcept) =>
+    `Std ${romanOf(c.class)} Ch.${c.chapter_no} ${c.chapter_name}`;
+
+  const pointers: AlignPointer[] = [];
+  for (const c of all) {
+    const isNcert = c.source === SPINE.ncert;
+    const isJee = c.source.endsWith("bank taxonomy") && c.source === SPINE.jee;
+    if (!isNcert && !isJee) continue;
+    const covered = linkOf.get(`${c.id}|${SPINE.stateBoard}`)?.covered_by;
+    if (!covered) continue;
+    const { name, pyq } = splitPyqCount(c.concept);
+    const side: AlignSide = isNcert
+      ? { id: c.id, label: `${c.section_no} ${c.concept}`, chapterLabel: romanCh(c) }
+      : {
+          id: c.id,
+          label: name,
+          chapterLabel: c.chapter_name,
+          pyq,
+          oldSyllabus: opts.oldSyllabus?.has(c.chapter_name) ?? false,
+        };
+    for (const raw of splitCoveredBy(covered)) {
+      const { cls, no } = parseCoveredRef(raw, c.class);
+      pointers.push({ spine: isNcert ? "ncert" : "jee", side, cls, sectionNo: no });
+    }
+  }
+
+  // The authored JEE -> NCERT edge, resolved to concept ids so the pairing is by
+  // identity rather than by a section string that could drift.
+  const ncertByKey = new Map(
+    all.filter((c) => c.source === SPINE.ncert).map((c) => [`${c.class}|${c.section_no}`, c.id]),
+  );
+  const authoredPairs = new Set<string>();
+  for (const c of all.filter((x) => x.source === SPINE.jee)) {
+    const covered = linkOf.get(`${c.id}|CBSE Class 12`)?.covered_by;
+    if (!covered) continue;
+    for (const raw of splitCoveredBy(covered)) {
+      const { cls, no } = parseCoveredRef(raw, c.class);
+      const nid = ncertByKey.get(`${cls}|${no}`);
+      if (nid) authoredPairs.add(`${c.id}|${nid}`);
+    }
+  }
+
+  return buildAlignmentRows(anchors, pointers, authoredPairs);
 }

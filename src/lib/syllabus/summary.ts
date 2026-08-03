@@ -211,3 +211,94 @@ export function sbBookOrder(d: DominantSb | undefined): number {
   if (!d) return Number.MAX_SAFE_INTEGER;
   return d.cls * 1000 + d.chapterNo;
 }
+
+/**
+ * A three-book alignment row: one State Board subtopic, one NCERT subtopic, one
+ * JEE subtopic. Any cell may be blank and any value may repeat across rows —
+ * that repetition is what lets the table stay honest, because it removes the
+ * need to squeeze a many-to-many mapping into a single cell.
+ *
+ * Anchored on the State Board at 1.x grain: deeper pointers roll up to their
+ * parent section. That IS lossy — a pointer authored at 5.8.7 shows on the 5.8
+ * row, so a JEE topic can appear beside a parent section named something else —
+ * but 1.x is the grain the books are navigated at.
+ */
+export type AlignSide = {
+  id: string;
+  label: string;
+  chapterLabel: string;
+  pyq?: number;
+  oldSyllabus?: boolean;
+};
+export type AlignAnchor = {
+  id: string;
+  cls: number;
+  chapterNo: number;
+  chapterName: string;
+  sectionNo: string;
+  concept: string;
+};
+export type AlignPointer = {
+  spine: "ncert" | "jee";
+  side: AlignSide;
+  /** Class of the TARGET section, not of the pointing row. */
+  cls: number;
+  sectionNo: string;
+};
+export type AlignmentRow = { anchor: AlignAnchor; ncert: AlignSide | null; jee: AlignSide | null };
+
+export function buildAlignmentRows(
+  anchors: AlignAnchor[],
+  pointers: AlignPointer[],
+  /** `${jeeId}|${ncertId}` for every pairing an author actually wrote. */
+  authoredPairs: Set<string>,
+): AlignmentRow[] {
+  // Keyed by CLASS as well as section: both State Board years number their
+  // sections from 1, so a Std XII pointer would otherwise land on the Std XI
+  // section of the same number.
+  const key = (cls: number, sectionNo: string) => `${cls}|${sectionGroupKey(sectionNo)}`;
+
+  const inbound = new Map<string, { ncert: AlignSide[]; jee: AlignSide[] }>();
+  for (const a of anchors) inbound.set(key(a.cls, a.sectionNo), { ncert: [], jee: [] });
+  for (const p of pointers) {
+    const bucket = inbound.get(key(p.cls, p.sectionNo));
+    if (!bucket) continue; // points somewhere this book does not have — not ours to show
+    const list = p.spine === "ncert" ? bucket.ncert : bucket.jee;
+    // Once per anchor. A source pointing at 5.5, 5.5.1 and 5.5.2 is ONE mapping
+    // at 1.x grain; counting it three times would repeat the row and, worse,
+    // repeat its PYQ count as though the topic carried triple the weight.
+    if (!list.some((s) => s.id === p.side.id)) list.push(p.side);
+  }
+
+  const rows: AlignmentRow[] = [];
+  for (const anchor of anchors) {
+    const { ncert, jee } = inbound.get(key(anchor.cls, anchor.sectionNo))!;
+    const pairedN = new Set<string>();
+    const pairedJ = new Set<string>();
+    for (const j of jee) {
+      for (const n of ncert) {
+        if (!authoredPairs.has(`${j.id}|${n.id}`)) continue;
+        rows.push({ anchor, ncert: n, jee: j });
+        pairedN.add(n.id);
+        pairedJ.add(j.id);
+      }
+    }
+    // Everything left over gets its OWN row rather than being paired off with
+    // whatever else happens to share this section. Co-location is not
+    // equivalence: tested against the authored edge, pairing through a shared
+    // State Board section invents ~39 correspondences that were never made.
+    for (const n of ncert) if (!pairedN.has(n.id)) rows.push({ anchor, ncert: n, jee: null });
+    for (const j of jee) if (!pairedJ.has(j.id)) rows.push({ anchor, ncert: null, jee: j });
+    // An anchor nothing points at still gets a row: that is the skip list —
+    // State Board content neither book asks for — and it only reads as a
+    // finding if it is visible.
+    if (ncert.length === 0 && jee.length === 0) rows.push({ anchor, ncert: null, jee: null });
+  }
+
+  return rows.sort(
+    (a, b) =>
+      a.anchor.cls - b.anchor.cls ||
+      a.anchor.chapterNo - b.anchor.chapterNo ||
+      a.anchor.sectionNo.localeCompare(b.anchor.sectionNo, undefined, { numeric: true }),
+  );
+}

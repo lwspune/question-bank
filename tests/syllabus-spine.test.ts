@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   BOOK_OF_EXAM,
+  buildAlignmentRows,
   dominantSbByChapter,
   sbBookOrder,
   parseCoveredRef,
@@ -137,5 +138,113 @@ describe("dominantSbByChapter", () => {
 
   it("sorts a chapter with no book home last", () => {
     expect(sbBookOrder(undefined)).toBeGreaterThan(sbBookOrder({ label: "z", cls: 12, chapterNo: 99, pyq: 0 }));
+  });
+});
+
+describe("buildAlignmentRows", () => {
+  const anchor = (sectionNo: string, concept: string, cls = 11, chapterNo = 5) => ({
+    id: `sb-${cls}-${sectionNo}`, cls, chapterNo, chapterName: `Ch${chapterNo}`, sectionNo, concept,
+  });
+  const side = (id: string, label: string, extra: Record<string, unknown> = {}) => ({
+    id, label, chapterLabel: "someChapter", ...extra,
+  });
+  const ptr = (spine: "ncert" | "jee", s: ReturnType<typeof side>, sectionNo: string, cls = 11) => ({
+    spine, side: s, cls, sectionNo,
+  });
+
+  it("pairs NCERT and JEE only when the pairing was AUTHORED", () => {
+    const n = side("n1", "4.2 Ionic Bond");
+    const j = side("j1", "Ionic Bonding");
+    const rows = buildAlignmentRows(
+      [anchor("5.2", "Kossel and Lewis")],
+      [ptr("ncert", n, "5.2"), ptr("jee", j, "5.2")],
+      new Set(["j1|n1"]),
+    );
+    expect(rows).toHaveLength(1);
+    expect([rows[0].ncert?.id, rows[0].jee?.id]).toEqual(["n1", "j1"]);
+  });
+
+  it("NEVER fabricates: co-located but unauthored pairs get separate rows", () => {
+    // The measured risk this guards: joining NCERT to JEE through a shared State
+    // Board section invents 39 pairings the author never made. Repeating the
+    // anchor is the honest alternative.
+    const rows = buildAlignmentRows(
+      [anchor("5.2", "Kossel and Lewis")],
+      [ptr("ncert", side("n1", "N"), "5.2"), ptr("jee", side("j1", "J"), "5.2")],
+      new Set(),
+    );
+    expect(rows).toHaveLength(2);
+    expect(rows.filter((r) => r.ncert && r.jee)).toHaveLength(0);
+    expect(rows.map((r) => r.ncert?.id ?? r.jee?.id).sort()).toEqual(["j1", "n1"]);
+  });
+
+  it("lets one NCERT section pair with SEVERAL JEE subtopics", () => {
+    const rows = buildAlignmentRows(
+      [anchor("11.4", "Alcohols and Phenols", 12, 11)],
+      [
+        ptr("ncert", side("n1", "7.4"), "11.4", 12),
+        ptr("jee", side("j1", "Phenols"), "11.4", 12),
+        ptr("jee", side("j2", "Alcohol Reactions"), "11.4", 12),
+      ],
+      new Set(["j1|n1", "j2|n1"]),
+    );
+    expect(rows).toHaveLength(2);
+    expect(rows.every((r) => r.ncert?.id === "n1")).toBe(true);
+  });
+
+  it("rolls a DEEPER pointer up to its 1.x parent", () => {
+    const rows = buildAlignmentRows(
+      [anchor("5.8", "Resonance")],
+      [ptr("jee", side("j1", "Ionic Bonding"), "5.8.7")],
+      new Set(),
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].anchor.sectionNo).toBe("5.8");
+    expect(rows[0].jee?.id).toBe("j1");
+  });
+
+  it("counts a source once per anchor even when it points at several sub-sections", () => {
+    // 4.7 MO Theory maps to 5.5, 5.5.1 .. 5.5.5 — all one section at 1.x grain,
+    // so it must not become six identical rows with the PYQ count repeated.
+    const rows = buildAlignmentRows(
+      [anchor("5.5", "Molecular orbital theory")],
+      ["5.5", "5.5.1", "5.5.2", "5.5.3"].map((sec) => ptr("jee", side("j1", "MO Theory"), sec)),
+      new Set(),
+    );
+    expect(rows).toHaveLength(1);
+  });
+
+  it("keeps an anchor nothing points at — that is the skip list", () => {
+    const rows = buildAlignmentRows([anchor("2.8", "Use of graph")], [], new Set());
+    expect(rows).toHaveLength(1);
+    expect([rows[0].ncert, rows[0].jee]).toEqual([null, null]);
+  });
+
+  it("ignores a pointer whose target is not an anchor of this book", () => {
+    const rows = buildAlignmentRows(
+      [anchor("5.1", "Introduction")],
+      [ptr("jee", side("j1", "Elsewhere"), "9.9")],
+      new Set(),
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].jee).toBeNull();
+  });
+
+  it("does not let a Std XI pointer land on the identically numbered Std XII section", () => {
+    const rows = buildAlignmentRows(
+      [anchor("1.2", "SB XI 1.2", 11, 1), anchor("1.2", "SB XII 1.2", 12, 1)],
+      [ptr("jee", side("j1", "J"), "1.2", 12)],
+      new Set(),
+    );
+    expect(rows.find((r) => r.anchor.cls === 11)!.jee).toBeNull();
+    expect(rows.find((r) => r.anchor.cls === 12)!.jee?.id).toBe("j1");
+  });
+
+  it("orders along the book: Std XI first, then chapter, then section numerically", () => {
+    const rows = buildAlignmentRows(
+      [anchor("5.10", "j", 11, 5), anchor("5.9", "i", 11, 5), anchor("1.1", "a", 12, 1)],
+      [], new Set(),
+    );
+    expect(rows.map((r) => `${r.anchor.cls}:${r.anchor.sectionNo}`)).toEqual(["11:5.9", "11:5.10", "12:1.1"]);
   });
 });

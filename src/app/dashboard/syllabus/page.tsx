@@ -9,9 +9,11 @@ import {
   loadChapterConcepts,
   loadMappingRows,
   loadOldSyllabusChapters,
+  loadAlignmentRows,
   loadExamSpineSummaries,
 } from "@/lib/syllabus/query";
 import { SPINE } from "@/lib/syllabus/summary";
+import AlignmentTable from "./AlignmentTable";
 import MappingTable from "./MappingTable";
 import {
   SYLLABUS_EXAMS,
@@ -58,7 +60,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
   const db = createSupabaseServerClient();
   // Old-syllabus chapters are needed before the rows so the sort can sink them.
   const oldSyllabus = await loadOldSyllabusChapters(db);
-  const [matrix, ncertRows, jeeRows, examSpines] = await Promise.all([
+  const [matrix, ncertRows, jeeRows, examSpines, alignRows] = await Promise.all([
     loadSyllabusMatrix(db),
     loadMappingRows(db, {
       spine: SPINE.ncert,
@@ -76,6 +78,7 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
       orderByBook: "MH State Board",
     }),
     loadExamSpineSummaries(db, { oldSyllabus }),
+    loadAlignmentRows(db, { oldSyllabus }),
   ]);
 
   const selected = searchParams.chapter ? parseChapterKey(searchParams.chapter) : null;
@@ -413,6 +416,30 @@ export default async function SyllabusMapPage({ searchParams }: { searchParams: 
             </div>
           </section>
         )}
+
+        {([11, 12] as const).map((cls) => {
+          const rows = alignRows.filter((r) => r.anchor.cls === cls);
+          if (rows.length === 0) return null;
+          return (
+            <section key={`align-${cls}`} aria-labelledby={`align-${cls}`} className="mb-8">
+              <h2 id={`align-${cls}`} className="mb-1 text-sm font-semibold">
+                Std {cls === 11 ? "XI" : "XII"} — State Board · NCERT · JEE Mains, side by side
+              </h2>
+              <p className="mb-3 text-xs text-muted-foreground">
+                One subtopic per cell, in State Board book order. A subtopic <strong>repeats</strong>
+                {" "}
+                down a column when it answers more than one thing on the other side &mdash; that is
+                what keeps every cell a single subtopic instead of a list. NCERT and JEE sit on the
+                same row only where that pairing was <strong>authored</strong>; where it was not,
+                each gets its own row rather than being paired off just for sharing a State Board
+                section. The two blanks differ: &ldquo;not in NCERT&rdquo; is a checked claim, while
+                &ldquo;not asked in the bank&rdquo; only means no past question has been sampled for
+                it &mdash; not that JEE never asks it.
+              </p>
+              <AlignmentTable rows={rows} />
+            </section>
+          );
+        })}
 
         {/* Split by YEAR, and in NCERT book order within each. One combined table
             could not be ordered honestly: both NCERT years number their chapters
