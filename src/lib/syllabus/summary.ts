@@ -96,6 +96,8 @@ export const SPINE = {
   stateBoard: "MH State Board",
   ncert: "NCERT",
   jee: "JEE Mains bank taxonomy",
+  cet: "MHT-CET bank taxonomy",
+  nda: "NDA bank taxonomy",
 } as const;
 
 /**
@@ -108,6 +110,24 @@ export const BOOK_OF_EXAM: Record<string, string> = {
   "MH State Board": SPINE.stateBoard,
   "CBSE Class 12": SPINE.ncert,
 };
+
+/** The suffix that marks a `source` as an exam's bank taxonomy rather than a book. */
+const EXAM_SPINE_SUFFIX = " bank taxonomy";
+
+export function isExamSpine(source: string): boolean {
+  return source.endsWith(EXAM_SPINE_SUFFIX);
+}
+
+/**
+ * "NDA bank taxonomy" -> "NDA": the exam whose PYQs a spine was sampled from,
+ * and so the exam whose `questions` rows decide which of its chapters are dead.
+ *
+ * Anchored to the END of the string, so a book spine passes through unchanged
+ * rather than being silently mangled into a plausible-looking exam name.
+ */
+export function examOfSpine(source: string): string {
+  return isExamSpine(source) ? source.slice(0, -EXAM_SPINE_SUFFIX.length) : source;
+}
 
 /** "Diazonium Salts (12 PYQ)" -> { name, pyq }. Exam spines carry the count in the name. */
 export function splitPyqCount(concept: string): { name: string; pyq: number } {

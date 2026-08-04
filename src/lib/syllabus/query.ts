@@ -3,6 +3,8 @@ import {
   BOOK_OF_EXAM,
   buildAlignmentRows,
   dominantSbByChapter,
+  examOfSpine,
+  isExamSpine,
   sbBookOrder,
   parseCoveredRef,
   splitCoveredBy,
@@ -398,28 +400,44 @@ function resolveRefs(
 }
 
 /**
- * JEE chapters the exam no longer sets, DERIVED from the bank rather than
- * asserted, so the flag re-derives itself as the corpus grows. Recency is the
- * test, not volume: s-Block has only ~10 questions but reaches 2026, so it is
- * live, while metallurgy has more and stopped at 2021.
+ * Chapters an exam no longer sets, DERIVED from the bank rather than asserted,
+ * so the flag re-derives itself as the corpus grows. Recency is the test, not
+ * volume: s-Block has only ~10 questions but reaches 2026, so it is live, while
+ * metallurgy has more and stopped at 2021.
  *
  * `liveFromYear` is per-subject and comes from the subject registry — the two
  * rationalisations landed in different exam cycles, so one shared constant
  * misreads the later one. See SyllabusSubject.liveFromYear.
+ *
+ * Keyed BY EXAM, because "dead" is a property of an (exam, chapter) pair and not
+ * of a chapter name. Exams share chapter names freely — 27 names are common to
+ * two or more spines in this data — so applying one exam's dead set to another's
+ * rows marks live content as history. That was a real defect: JEE dropped
+ * Solid State and Surface Chemistry, which MHT-CET still examined in 2025 with
+ * 173 questions between them, and those rows were being excluded from its own
+ * live-gap analysis.
+ *
+ * One scan covers every exam asked for: the alternative, a scan each, multiplies
+ * round trips on a page that already pages two whole tables.
  */
-export async function loadOldSyllabusChapters(
+export async function loadOldSyllabusByExam(
   db: SupabaseClient,
-  opts: { subject: string; liveFromYear: number; exam?: string },
-): Promise<Set<string>> {
-  const { subject, liveFromYear } = opts;
-  const exam = opts.exam ?? "JEE Mains";
-  const lastYear = new Map<string, number>();
+  opts: { subject: string; liveFromYear: number; exams: string[] },
+): Promise<Map<string, Set<string>>> {
+  const { subject, liveFromYear, exams } = opts;
+  const out = new Map<string, Set<string>>(exams.map((e) => [e, new Set<string>()]));
+  if (exams.length === 0) return out;
+
+  // exam -> chapter -> most recent year it was examined. Nested rather than a
+  // joined string key: both halves contain spaces ("JEE Mains", "Solid State"),
+  // so no single-character delimiter can be split back apart reliably.
+  const lastYear = new Map<string, Map<string, number>>();
   const PAGE = 1000;
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("questions")
       .select("pyq_year,exams!inner(name),subjects!inner(name),chapters!inner(name)")
-      .eq("exams.name", exam)
+      .in("exams.name", exams)
       .eq("subjects.name", subject)
       .eq("visibility", "PUBLIC")
       .eq("question_kind", "pyq")
@@ -427,16 +445,36 @@ export async function loadOldSyllabusChapters(
     if (error) throw new Error(`old-syllabus years: ${error.message}`);
     const rows = (data ?? []) as unknown as {
       pyq_year: number | null;
+      exams: { name: string } | null;
       chapters: { name: string } | null;
     }[];
     for (const r of rows) {
       const ch = r.chapters?.name;
-      if (!ch || !r.pyq_year) continue;
-      lastYear.set(ch, Math.max(lastYear.get(ch) ?? 0, r.pyq_year));
+      const ex = r.exams?.name;
+      if (!ch || !ex || !r.pyq_year) continue;
+      let perExam = lastYear.get(ex);
+      if (!perExam) lastYear.set(ex, (perExam = new Map()));
+      perExam.set(ch, Math.max(perExam.get(ch) ?? 0, r.pyq_year));
     }
     if (rows.length < PAGE) break;
   }
-  return new Set([...lastYear].filter(([, y]) => y < liveFromYear).map(([ch]) => ch));
+
+  for (const [ex, perExam] of lastYear) {
+    const dead = out.get(ex);
+    if (!dead) continue;
+    for (const [ch, y] of perExam) if (y < liveFromYear) dead.add(ch);
+  }
+  return out;
+}
+
+/** Single-exam convenience over {@link loadOldSyllabusByExam}. */
+export async function loadOldSyllabusChapters(
+  db: SupabaseClient,
+  opts: { subject: string; liveFromYear: number; exam?: string },
+): Promise<Set<string>> {
+  const exam = opts.exam ?? "JEE Mains";
+  const byExam = await loadOldSyllabusByExam(db, { ...opts, exams: [exam] });
+  return byExam.get(exam) ?? new Set();
 }
 
 /**
@@ -582,7 +620,16 @@ export type ExamSpineSummary = {
 
 export async function loadExamSpineSummaries(
   db: SupabaseClient,
-  opts: { subject: string; oldSyllabus?: Set<string>; data?: SyllabusData },
+  opts: {
+    subject: string;
+    /**
+     * Dead chapters keyed BY EXAM. Every spine here belongs to a different exam,
+     * so one shared set is not merely imprecise, it is wrong: exams reuse chapter
+     * names, and a name dead for one is routinely live for another.
+     */
+    oldSyllabusByExam?: Map<string, Set<string>>;
+    data?: SyllabusData;
+  },
 ): Promise<ExamSpineSummary[]> {
   const subject = opts.subject;
   const { concepts: all, links } = opts.data ?? (await loadSyllabusData(db, subject));
@@ -594,9 +641,10 @@ export async function loadExamSpineSummaries(
   }
   const books = indexBooks(all);
 
-  const spines = [...new Set(all.map((c) => c.source))].filter((s) => s.endsWith("bank taxonomy"));
+  const spines = [...new Set(all.map((c) => c.source))].filter(isExamSpine);
   return spines
     .map((spine) => {
+      const dead = opts.oldSyllabusByExam?.get(examOfSpine(spine));
       const rows: MappingRow[] = all
         .filter((c) => c.source === spine)
         .map((c) => {
@@ -622,7 +670,7 @@ export async function loadExamSpineSummaries(
             concept: name,
             pyq,
             covers,
-            oldSyllabus: opts.oldSyllabus?.has(c.chapter_name) ?? false,
+            oldSyllabus: dead?.has(c.chapter_name) ?? false,
             // Gap rows are listed on their own, never in a book-ordered table,
             // so they carry no primary chapter.
             chapterPrimary: "",
@@ -637,7 +685,7 @@ export async function loadExamSpineSummaries(
       const st = (r: MappingRow) => r.covers["MH State Board"]?.status ?? null;
       return {
         spine,
-        label: spine.replace(" bank taxonomy", ""),
+        label: examOfSpine(spine),
         live: live.length,
         full: live.filter((r) => st(r) === "full").length,
         partial: live.filter((r) => st(r) === "partial").length,

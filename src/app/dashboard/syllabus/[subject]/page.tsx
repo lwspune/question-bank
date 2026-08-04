@@ -8,13 +8,13 @@ import {
   loadSyllabusMatrix,
   loadChapterConcepts,
   loadMappingRows,
-  loadOldSyllabusChapters,
+  loadOldSyllabusByExam,
   loadAlignmentRows,
   loadExamSpineSummaries,
   loadNcertGaps,
   loadSyllabusData,
 } from "@/lib/syllabus/query";
-import { SPINE } from "@/lib/syllabus/summary";
+import { SPINE, examOfSpine } from "@/lib/syllabus/summary";
 import {
   SYLLABUS_SUBJECTS,
   resolveSyllabusSubject,
@@ -50,6 +50,48 @@ const CELL: Record<Exclude<ChapterStatus, null> | "none", string> = {
   none: "bg-background text-muted-foreground",
 };
 
+/**
+ * The exams that get a per-subtopic "where is this taught" table, in the order
+ * they are shown — descending bank size, so the deepest corpus leads.
+ *
+ * An exam appears only if its spine actually has rows for the subject, so this
+ * list may name more exams than a given subject has been mapped for.
+ */
+const EXAM_TABLES: { spine: string; short: string; note: React.ReactNode }[] = [
+  {
+    spine: SPINE.jee,
+    short: "JEE",
+    note: null,
+  },
+  {
+    spine: SPINE.cet,
+    short: "MHT-CET",
+    // Full State Board coverage here is the expected result, not a finding —
+    // saying so stops a reader reading a wall of green as a strong claim.
+    note: (
+      <>
+        {" "}
+        MHT-CET is set on the State Board syllabus, so full coverage in that column is what
+        should happen rather than a finding; the column that carries information here is NCERT.
+      </>
+    ),
+  },
+  {
+    spine: SPINE.nda,
+    short: "NDA",
+    // NDA is the one exam where blank rows are common, and a blank row reads as
+    // a broken map unless the reason is stated.
+    note: (
+      <>
+        {" "}
+        A blank in <strong>both</strong> book columns means the topic is in neither book, not
+        that the row is unfinished — several are Class 9/10 general science, which this map has
+        no spine for yet.
+      </>
+    ),
+  },
+];
+
 function cellText(status: ChapterStatus): string {
   if (status === null) return "?";
   if (status === "mixed") return "Mixed";
@@ -79,16 +121,23 @@ export default async function SyllabusMapPage({
   const subject = subjectConfig.subject;
 
   const db = createSupabaseServerClient();
-  // Old-syllabus chapters are needed before the rows so the sort can sink them.
-  const oldSyllabus = await loadOldSyllabusChapters(db, {
-    subject,
-    liveFromYear: subjectConfig.liveFromYear,
-  });
   // Load the two syllabus tables ONCE. Each loader would otherwise page both
   // itself — six loaders, ~10 full-table fetches of the same ~1,600 concepts
   // and ~3,400 links, per request.
   const data = await loadSyllabusData(db, subject);
-  const [matrix, ncertRows, jeeRows, examSpines, alignRows, ncertGaps] = await Promise.all([
+
+  // Old-syllabus chapters are needed before the rows so the sort can sink them,
+  // and are resolved PER EXAM: exams reuse chapter names, so one exam's dead set
+  // applied to another's rows buries live content (JEE dropped Solid State,
+  // which MHT-CET still examined in 2025).
+  const oldByExam = await loadOldSyllabusByExam(db, {
+    subject,
+    liveFromYear: subjectConfig.liveFromYear,
+    exams: EXAM_TABLES.map((t) => examOfSpine(t.spine)),
+  });
+  const deadOf = (spine: string) => oldByExam.get(examOfSpine(spine)) ?? new Set<string>();
+
+  const [matrix, ncertRows, examTables, examSpines, alignRows, ncertGaps] = await Promise.all([
     loadSyllabusMatrix(db, { subject, data }),
     loadMappingRows(db, {
       spine: SPINE.ncert,
@@ -97,20 +146,26 @@ export default async function SyllabusMapPage({
       topLevelOnly: true,
       data,
     }),
-    loadMappingRows(db, {
-      spine: SPINE.jee,
-      // Both books on one row, so "neither covers this" is visible at a glance.
-      books: ["MH State Board", "CBSE Class 12"],
-      subject,
-      oldSyllabus,
-      // Chapters run in State Board book order rather than alphabetically, so
-      // this reads as a teaching sequence. Deliberately NOT set on the NCERT
-      // table above: that one keeps its own book order.
-      orderByBook: "MH State Board",
-      data,
-    }),
-    loadExamSpineSummaries(db, { subject, oldSyllabus, data }),
-    loadAlignmentRows(db, { subject, oldSyllabus, data }),
+    Promise.all(
+      EXAM_TABLES.map(async (t) => ({
+        ...t,
+        rows: await loadMappingRows(db, {
+          spine: t.spine,
+          // Both books on one row, so "neither covers this" is visible at a glance.
+          books: ["MH State Board", "CBSE Class 12"],
+          subject,
+          oldSyllabus: deadOf(t.spine),
+          // Chapters run in State Board book order rather than alphabetically, so
+          // this reads as a teaching sequence. Deliberately NOT set on the NCERT
+          // table above: that one keeps its own book order.
+          orderByBook: "MH State Board",
+          data,
+        }),
+      })),
+    ),
+    loadExamSpineSummaries(db, { subject, oldSyllabusByExam: oldByExam, data }),
+    // The three-book crosswalk is JEE-anchored, so it takes JEE's dead set.
+    loadAlignmentRows(db, { subject, oldSyllabus: deadOf(SPINE.jee), data }),
     loadNcertGaps(db, { subject, data }),
   ]);
 
@@ -591,33 +646,75 @@ export default async function SyllabusMapPage({
           );
         })}
 
-        <CollapsibleSection
-          id="jee-map"
-          title="JEE Mains — where each subtopic is taught"
-          count={jeeRows.length}
-          description={
-            <>
-            Rows are what JEE actually asked, from the question bank, so each carries its PYQ
-            count. Chapters run in <strong>State Board book order</strong> — each sits at the
-            State Board chapter holding most of its questions, named after the arrow, so you can
-            read down the book you teach from. Where that chapter is chosen by a one- or
-            two-question margin the placement is soft, so check the row itself before relying on
-            it. Chapters JEE no longer sets are marked old syllabus and listed last. Because the
-            spine is the bank rather than the official syllabus, a topic never sampled has no
-            row — absence here is not evidence of absence from the exam.
-            </>
+        {examTables.map(({ spine, short, note, rows }) => {
+          // Gated on CITATIONS, not on row count. An exam spine can carry a
+          // status for every subtopic and still have no section pointers — that
+          // is exactly the state of MHT-CET and NDA in Chemistry, whose 122 and
+          // 47 rows would render as wall-to-wall blanks and read as "the State
+          // Board teaches none of this", the precise opposite of the truth for
+          // an exam set on the State Board syllabus. The table appears by itself
+          // once someone authors the pointers.
+          if (!rows.some((r) => Object.values(r.covers).some((c) => c.refs.length > 0))) {
+            return null;
           }
-        >
-          <MappingTable
-            rows={jeeRows}
-            rowLabel="JEE subtopic"
-            showPyq
-            books={[
-              { exam: "MH State Board", label: "State Board" },
-              { exam: "CBSE Class 12", label: "NCERT" },
-            ]}
-          />
-        </CollapsibleSection>
+          // Derived, not asserted per exam: the sentence appears only where a
+          // chapter is actually marked, so it cannot go stale in either
+          // direction as the bank grows.
+          const hasOld = rows.some((r) => r.oldSyllabus);
+          return (
+            <CollapsibleSection
+              key={spine}
+              id={`${short.toLowerCase()}-map`}
+              title={`${examOfSpine(spine)} — where each subtopic is taught`}
+              count={rows.length}
+              description={
+                <>
+                Rows are what {short} actually asked, from the question bank, so each carries its
+                PYQ count. Chapters run in <strong>State Board book order</strong> — each sits at
+                the State Board chapter holding most of its questions, named after the arrow, so
+                you can read down the book you teach from. Where that chapter is chosen by a one-
+                or two-question margin the placement is soft, so check the row itself before
+                relying on it.
+                {hasOld ? ` Chapters ${short} no longer sets are marked old syllabus and listed last.` : ""}
+                {" "}Because the spine is the bank rather than the official syllabus, a topic never
+                sampled has no row — absence here is not evidence of absence from the exam.
+                {note}
+                </>
+              }
+            >
+              <MappingTable
+                rows={rows}
+                rowLabel={`${short} subtopic`}
+                showPyq
+                books={[
+                  { exam: "MH State Board", label: "State Board" },
+                  { exam: "CBSE Class 12", label: "NCERT" },
+                ]}
+              />
+            </CollapsibleSection>
+          );
+        })}
+
+        {/* Named, not silently omitted. A missing table otherwise reads as
+            "nothing to say about that exam", which is the one confusion this
+            whole map exists to prevent. */}
+        {(() => {
+          const unmapped = examTables
+            .filter(
+              (t) =>
+                t.rows.length > 0 &&
+                !t.rows.some((r) => Object.values(r.covers).some((c) => c.refs.length > 0)),
+            )
+            .map((t) => `${examOfSpine(t.spine)} (${t.rows.length})`);
+          if (unmapped.length === 0) return null;
+          return (
+            <p className="text-xs text-muted-foreground">
+              No per-subtopic table yet for <strong>{unmapped.join(", ")}</strong> in{" "}
+              {subjectConfig.label}: their subtopics carry a coverage verdict, shown in the gaps
+              section above, but nobody has yet recorded <em>which section</em> teaches each one.
+            </p>
+          );
+        })()}
 
         <p className="text-xs text-muted-foreground">
           Rulings are authored in <code>scripts/syllabus/data/</code> and committed with{" "}
