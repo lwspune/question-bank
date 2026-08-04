@@ -1,12 +1,35 @@
 import { describe, expect, it } from "vitest";
 import {
   chapterKey,
+  examOfSpine,
+  isExamSpine,
   isTopLevelSection,
   parseChapterKey,
   rollUpChapterStatus,
   sectionGroupKey,
   tallyByExam,
 } from "../src/lib/syllabus/summary";
+
+describe("examOfSpine", () => {
+  it("names the exam an exam-spine was sampled from", () => {
+    expect(examOfSpine("NDA bank taxonomy")).toBe("NDA");
+    expect(examOfSpine("JEE Mains bank taxonomy")).toBe("JEE Mains");
+    expect(examOfSpine("MHT-CET bank taxonomy")).toBe("MHT-CET");
+  });
+
+  it("only strips the suffix at the END", () => {
+    // A book spine is not an exam spine; leaving it unchanged is what lets a
+    // caller detect that it passed the wrong kind of source.
+    expect(examOfSpine("MH State Board")).toBe("MH State Board");
+    expect(examOfSpine("bank taxonomy of nowhere")).toBe("bank taxonomy of nowhere");
+  });
+
+  it("isExamSpine separates the two kinds of source", () => {
+    expect(isExamSpine("NDA bank taxonomy")).toBe(true);
+    expect(isExamSpine("MH State Board")).toBe(false);
+    expect(isExamSpine("NCERT")).toBe(false);
+  });
+});
 
 describe("rollUpChapterStatus", () => {
   it("returns the shared status when every concept agrees", () => {
