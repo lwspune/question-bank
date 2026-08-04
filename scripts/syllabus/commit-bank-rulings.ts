@@ -35,6 +35,9 @@ type File = { exam: string; subject: string; source: string; rulings: Ruling[] }
 /** Which book each exam COLUMN is asking about on a bank-spine row. */
 const BOOK_OF = { "MH State Board": "MH State Board", "CBSE Class 12": "NCERT" } as const;
 
+/** Mirrors the syllabus_concept_exams_note_len CHECK constraint (migration 0065). */
+const NOTE_MAX = 500;
+
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 }
@@ -84,6 +87,21 @@ function main() {
           `${r.section_no}: ruling is for "${r.subtopic}" but the spine now holds "${actual}" ` +
             `— positional refs shifted; re-anchor this file before writing`,
         );
+      }
+      // Mirrors the syllabus_concept_exams_note_len CHECK. Without this the
+      // dry run reports a clean file and the limit is only discovered by the
+      // INSERT failing, which is the least useful moment to learn it: the whole
+      // batch rolls back and nothing says WHICH note was too long.
+      for (const [side, s] of [
+        ["stateBoard", r.stateBoard],
+        ["ncert", r.ncert],
+      ] as const) {
+        const n = s?.note;
+        if (n && n.length > NOTE_MAX) {
+          problems.push(
+            `${r.section_no} ${side}: note is ${n.length} chars, limit is ${NOTE_MAX}`,
+          );
+        }
       }
     }
 

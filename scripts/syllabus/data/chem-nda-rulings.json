@@ -1,0 +1,643 @@
+{
+  "exam": "NDA",
+  "subject": "Chemistry",
+  "source": "NDA bank taxonomy",
+  "reviewedOn": "2026-08-04",
+  "basis": "First real adjudication of NDA Chemistry. These 47 subtopics previously carried status 'full' for the State Board with no citation and no NCERT ruling at all, because scripts/syllabus/ingest-exam-spine.ts defaults an unruled subtopic to 'full' and carries 226 authored rulings for JEE Mains and ZERO for NDA. That default was never a judgement about NDA; it was displayed as one. Every ruling here was decided by searching the actual book TEXT per chapter (generated-papers/chem-corpus.json, 51 chapters / 2.93M chars, via scripts/syllabus/search_corpus.py), never by matching a chapter or section title. Authored by four agents against scripts/syllabus/RULING_BRIEF.md, then spot-verified against the corpus by the reviewer; three subtopics (Fertilizers, Cement/Glass, Paints) were adjudicated independently first and used as blind controls on the batch, and all three matched. NOTE ON 'not': it means NOT IN THESE TWO Std XI/XII BOOKS. NDA is a services exam whose General Ability paper draws on Class 9/10 general science and general awareness, so several of these topics are genuinely taught in the Maharashtra Class 9/10 science books, for which this map carries no spine yet.",
+  "rulings": [
+    {
+      "section_no": "NDA-272",
+      "subtopic": "Acid-Base Theory: Concepts, Oxides and Electrolytes",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.2, XII:3.2.1, XII:3.2.2, XII:3.3, XII:3.3.1, XII:3.3.2, XII:3.3.3, XII:7.9.2",
+        "note": "All three legs are taught in their own sections: strong/weak electrolytes at XII:3.2.1-3.2.2, the Arrhenius/Bronsted-Lowry/Lewis theories at XII:3.3.1-3.3.3 (including the amphoteric nature of water), and the acidic/basic/amphoteric/neutral oxide classification with definitions, examples and reactions at XII:7.9.2 'Simple Oxides'. XI:7.5.3 adds the periodic trend in oxide character."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.9, XI:6.10, XI:6.10.1, XI:6.10.2, XI:6.10.3, XI:3.7.2",
+        "note": "Theories (XI:6.10.1-6.10.3) and Faraday's strong/weak electrolyte classification (XI:6.9) are full. The oxide leg survives ONLY as a condensed paragraph inside XI:3.7.2, since the rationalised edition dropped the p-block chapter that used to carry it — but that paragraph does define amphoteric and neutral oxides, gives Na2O/Cl2O7/Al2O3/As2O3/CO/NO/N2O and works Problem 3.10 with the litmus test, which is the depth the exam asks."
+      }
+    },
+    {
+      "section_no": "NDA-273",
+      "subtopic": "Common Acids: Names, Formulas and Uses",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:9.7.6, XI:9.6.7, XI:9.7.3, XII:7.10.2, XII:7.11.2, XII:7.8.1, XII:7.8.2, XII:3.3",
+        "note": "The mineral acids each get a named section with formula and structure — HNO3 at XI:9.7.6, H3PO4 at XI:9.6.7, H3BO3 at XI:9.7.3, H2SO4 at XII:7.10.2 (contact-process manufacture, properties, uses), HCl at XII:7.11.2 — and XII:7.8.1/7.8.2 tabulate the oxoacids of sulfur and the halogens by name and formula. The everyday organic acids are named with their sources in the XII:3.3 opening paragraph (acetic in vinegar, citric in lemons, tartaric in tamarind)."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:6.10, XI:6.11.3, XII:8.10",
+        "note": "MISSING is the mineral-acid chemistry: there is no section on H2SO4, HNO3 or HCl (no contact-process manufacture, no preparation/properties/uses), because the rationalised edition removed the p-block chapters that carried them. What remains is names and formulas as examples — the Table 6.7 ionization constants of common weak acids and the acid/base examples in XI:6.10 — plus carboxylic acids with a dedicated XII:8.10 'Uses of Carboxylic Acids'."
+      }
+    },
+    {
+      "section_no": "NDA-274",
+      "subtopic": "pH Scale and Common Substances",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.5, XII:3.6, XII:3.6.1, XII:3.6.2",
+        "note": "The scale itself is full — Sorensen's definition, Kw and autoionization at XII:3.5, pH+pOH=14 at XII:3.6.1, and the acidic/basic/neutral criterion with worked problems at XII:3.6.2. The 'common substances' half is thinner than NCERT's: no comparative table, just 'do you know' values (gastric juice about 2, blood 7.36-7.42) and a rain-water pH 5.1 exercise."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.11.1, XI:6.11.2",
+        "note": "XI:6.11.2 carries Table 6.5 'the pH of some common substances', which is exactly what this subtopic asks — gastric juice 1.2, lemon juice 2.2, vinegar 3.0, tomato juice 4.2, black coffee 5.0, saliva 6.4, milk 6.8, blood 7.4, sea water 7.8, milk of magnesia 10, lime water 10.5 — plus pH paper and pH meters."
+      }
+    },
+    {
+      "section_no": "NDA-275",
+      "subtopic": "Salts and Common Compounds",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.3, XI:8.3.1, XI:8.3.2, XI:8.3.3, XI:9.8.1, XII:3.7, XII:3.7.1",
+        "note": "XI:8.3 exists precisely to cover 'five important compounds of s-block elements with reference to their preparation, properties and uses' — sodium carbonate/washing soda Na2CO3.10H2O (Solvay process) at 8.3.1, caustic soda at 8.3.2, CaCO3 at 8.3.3 — with borax at XI:9.8.1. The salt-as-a-class side (types of salts, hydrolysis) is XII:3.7-3.7.1. Plaster of Paris is ZERO in both books."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:6.11.9, XI:6.13",
+        "note": "Salts as an acid-base CLASS are taught — formation, hydrolysis and the pH of salt solutions at XI:6.11.9, sparingly soluble salts at XI:6.13. MISSING is the named-compound identities the exam asks for: 'washing soda' is one passing clause in XI:6.10 with no formula, and 'baking soda', 'sodium bicarbonate', 'bleaching powder', 'plaster of paris' and 'blue vitriol' are all ZERO, because the rationalised edition dropped the s-block and p-block chapters that carried them."
+      }
+    },
+    {
+      "section_no": "NDA-276",
+      "subtopic": "Water of Crystallization",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:2.4.1, XI:8.3.1",
+        "note": "The phrase is used and computed with, but never taught as a concept. Its only occurrences are XI:2.4.1 percent-composition exercises (green vitriol FeSO4.7H2O; a hydrated-salt empirical-formula problem), and XI:8.3.1 gives Na2CO3.10H2O with the decahydrate to monohydrate to anhydrous heating sequence. MISSING is a section defining water of crystallisation and tabulating the common hydrates the exam names; 'pentahydrate' and 'efflorescence' are ZERO in both books."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Searched water of crystallisation/crystallization, decahydrate, pentahydrate, hydrated salt, efflorescence, deliquescent, blue vitriol, green vitriol, washing soda, CuSO4. 'water of crystallisation' is ZERO in NCERT; the 'hydrated' hits are hydrated IONS in solution, not water of crystallisation. The rationalised edition has no s-/p-block chapter to carry hydrated salts. Class 9/10 general science."
+      }
+    },
+    {
+      "section_no": "NDA-277",
+      "subtopic": "Atomic Models: Dalton, Rutherford, Bohr",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.6, XI:4.4, XI:4.5, XI:4.6, XI:4.6.1, XI:4.6.4",
+        "note": "All three are taught, but Rutherford's model has no heading of its own: the gold-foil experiment is at XI:4.1.2 (as the discovery of the proton) and the nuclear model is set out inside XI:4.4 'Drawbacks of Rutherford atomic model', which describes the solar-system analogy before demolishing it. Thomson appears only as the discoverer of the electron, not as a model."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.6, XI:2.2, XI:2.2.2, XI:2.2.5, XI:2.4, XI:2.4.1, XI:2.4.2",
+        "note": "NCERT has an explicit XI:2.2 'Atomic Models' block, so it also carries the Thomson plum-pudding model that the State Board omits."
+      }
+    },
+    {
+      "section_no": "NDA-278",
+      "subtopic": "Atomic Number, Mass Number and Subatomic Particles",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.1, XI:4.1.1, XI:4.1.2, XI:4.1.3, XI:4.2",
+        "note": "XI:4.1 opens with Table 4.1 of the charge and mass of electron, proton and neutron, then discovery sections for each; XI:4.2 defines Z, A = Z + N and the nuclide notation."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.1, XI:2.1.1, XI:2.1.4, XI:2.2.3"
+      }
+    },
+    {
+      "section_no": "NDA-279",
+      "subtopic": "Electron Configuration and Valence Shells",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.7.4, XI:4.7.5, XI:4.7.6, XI:7.3, XI:7.3.1, XI:7.3.2, XI:7.3.3",
+        "note": "Aufbau, Pauli and Hund at XI:4.7.5 with the filling order and the Cr/Cu half-filled exceptions at XI:4.7.6; the valence-shell side — outermost configuration by period, group and block — is XI:7.3-7.3.3."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.6.3, XI:2.6.4, XI:2.6.5, XI:2.6.6, XI:3.5, XI:3.6"
+      }
+    },
+    {
+      "section_no": "NDA-280",
+      "subtopic": "Isotopes and Isoelectronic Species",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.3, XI:4.7.6, XI:7.5.2",
+        "note": "XI:4.3 covers isotopes, isobars AND isotones — isotones are a State Board extra, the term being ZERO in NCERT. 'Isoelectronic species' is defined verbatim at the end of XI:4.7.6 with the K+/Ar/Ca2+ 18-electron set."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.2.4, XI:3.7.1",
+        "note": "Split across two chapters: isotopes and isobars at XI:2.2.4, isoelectronic species at XI:3.7.1 where it is defined against ionic radii. 'Isotone' is ZERO in NCERT."
+      }
+    },
+    {
+      "section_no": "NDA-281",
+      "subtopic": "Periodic Trends, Valency and Atomicity",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:7.5, XI:7.5.1, XI:7.5.2, XI:7.5.3, XII:7.5.1",
+        "note": "Trends at XI:7.5.1-7.5.2, and valency at XI:7.5.3, which carries Table 7.6 giving valency and the hydride and oxide formula for every main group. 'Atomicity' is named once in the whole corpus, at XII:7.5.1, explaining oxygen's anomalous behaviour (O2 diatomic vs P4, S8) — a genuine use, though not a section defining it."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:3.7, XI:3.7.1, XI:3.7.2",
+        "note": "Trends are full and valency is full — XI:3.7.2(a) is headed 'Periodicity of valence or oxidation states'. MISSING is atomicity: the word is ZERO in NCERT, and with the p-block chapters removed nothing contrasts O2 with O3, S8 or P4 as elemental molecules. Atomicity is Class 9 material."
+      }
+    },
+    {
+      "section_no": "NDA-282",
+      "subtopic": "Allotropes of Carbon",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:9.6, XI:9.6.1, XII:1.3.2",
+        "note": "XI:9.6.1 is titled 'Allotropes of Carbon' and works through diamond (sp3, tetrahedral), graphite and fullerene — 'fullerene' scores 9 hits there and ZERO in NCERT. XII:1.3.2 revisits the diamond/graphite structures as covalent network crystals."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'allotrope', 'allotropy', 'fullerene', 'graphene' and 'amorphous carbon' are ALL zero across the rationalised NCERT. The single 'allotropic' hit is notation housekeeping in XI:5 Thermodynamics. Graphite's 17 hits there are C(graphite) as a standard state in thermochemical sums — none of it teaches allotropy. The p-Block unit that carried this is gone; the topic now lives in Class 9/10 general science."
+      }
+    },
+    {
+      "section_no": "NDA-283",
+      "subtopic": "Catenation, Tetra-valency and Isomerism",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:9.5, XI:5.4.4, XI:14.5, XI:14.5.1",
+        "note": "XI:9.5 defines catenation outright ('the property of self linking of atoms of an element by covalent bonds to form chains and rings'), gives the group-14 order C >> Si > Ge = Sn and the bond enthalpy that explains it. Tetravalency is argued from hybridisation at XI:5.4.4."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:8.2, XI:8.6, XI:8.6.1",
+        "note": "Tetravalence and isomerism each have their own section (8.2 is titled 'Tetravalence of Carbon'). CATENATION is what is missing: it occurs exactly once in all of NCERT, in the opening paragraph of XI:8, which names and glosses it but credits it to 'the previous unit you have learnt' — a p-Block unit the rationalised edition no longer contains. No section teaches the bond-strength basis or the down-group trend."
+      }
+    },
+    {
+      "section_no": "NDA-284",
+      "subtopic": "Common Carbon Compounds and Pigments",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:15.1.6, XII:11.6, XII:9.10",
+        "note": "The individual compounds are taught well inside the organic chapters, but there is NO survey section on everyday carbon compounds of the Class-10 kind. PIGMENTS are the weak leg: 'pigment' has two incidental hits in the whole corpus, and the only substantive pigment content is one line of XII:9.10 naming chlorophyll as an Mg complex and haemoglobin as an Fe complex."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:9.2.3, XII:7.5, XII:5.7",
+        "note": "Same shape. XI:9.2.3 is the one place a pigment is explained — carbon black from incomplete combustion, 'used in the manufacture of ink, printer ink, black pigments' — and XII:5.7 names chlorophyll and haemoglobin as coordination compounds. MISSING: any survey of common everyday carbon compounds, and any treatment of pigments or dyes in their own right."
+      }
+    },
+    {
+      "section_no": "NDA-285",
+      "subtopic": "Functional Groups and Common Organic Compounds",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.3.2, XI:14.4.7, XII:11.6"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.4.1, XI:8.4.2, XI:8.5.3",
+        "note": "NCERT additionally teaches the homologous series as its own section (8.4.2); the State Board covers it inside XI:14.3.2 rather than separately."
+      }
+    },
+    {
+      "section_no": "NDA-286",
+      "subtopic": "Hydrocarbons and Organic Classification",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.3, XI:14.3.1, XI:15.1, XI:15.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.4, XI:9.1, XI:9.2, XI:9.5"
+      }
+    },
+    {
+      "section_no": "NDA-287",
+      "subtopic": "Soaps, Detergents and Hydrogenation of Oils",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:16.3, XI:16.3.1, XI:8.1.5, XI:11.7.2",
+        "note": "Two separate places carry the oil-hardening reaction: XI:8.1.5 gives it as a use of dihydrogen ('hydrogenation of unsaturated organic compounds such as oil using nickel catalyst gives... vanaspati Ghee') and XI:11.7.2 repeats it as the worked example of heterogeneous catalysis. Soaps, detergents, saponification and micelle formation are in XI:16.3/16.3.1."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:9.2.2",
+        "note": "The hydrogenation REACTION is taught at XI:9.2.2, but never applied to oils: 'vanaspati' and 'vegetable ghee' are ZERO in NCERT. Soaps and detergents are absent as a topic — 'saponification' is ZERO and all six soap/detergent hits are passing. The Chemistry in Everyday Life unit that carried this was rationalised out."
+      }
+    },
+    {
+      "section_no": "NDA-288",
+      "subtopic": "Bond Counting and Molecular Structure",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.2.4, XI:5.2.5, XI:5.3, XI:5.4.3, XI:5.4.5, XI:5.6.4",
+        "note": "The counting itself is drilled: XI:5.4.3 defines sigma and pi bonds by overlap type, and the chapter's exercises ask for the number of sigma and pi bonds in acetylene. Lewis structures get a five-step recipe at XI:5.2.5, shapes from VSEPR at XI:5.3, bond order at XI:5.6.4."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:4.1.3, XI:4.3.4, XI:4.4, XI:4.5.4, XI:4.6, XI:4.6.1"
+      }
+    },
+    {
+      "section_no": "NDA-289",
+      "subtopic": "Ionic and Covalent Bonding",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.2, XI:5.2.1, XI:5.2.2, XI:5.2.3, XI:5.2.7, XI:5.6.5, XI:5.8.7"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:4.1, XI:4.1.1, XI:4.1.2, XI:4.1.5, XI:4.2, XI:4.2.1, XI:4.3.6"
+      }
+    },
+    {
+      "section_no": "NDA-290",
+      "subtopic": "Valency, Oxidation States and Molecular Formula",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:7.5.3, XI:6.2, XI:6.2.1, XI:6.2.2, XI:2.4, XI:2.4.1",
+        "note": "XI:7.5.3 ties the three together explicitly — it defines valency as combining power, then distinguishes it from oxidation number ('valence does not have any sign associated with it, but oxidation number does') and tabulates valency against the hydride and oxide formula per group."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:3.7.2, XI:7.3, XI:7.3.1, XI:1.9, XI:1.9.1"
+      }
+    },
+    {
+      "section_no": "NDA-291",
+      "subtopic": "Endothermic and Exothermic Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.10.1, XII:4.10.2, XII:4.10.4",
+        "note": "XII:4.10.2 is titled 'Exothermic and endothermic reactions'. Note the cross-year offset: the State Board teaches thermodynamics in Std XII, NCERT in Std XI."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.4, XI:5.5",
+        "note": "No section carries the words in its title, but XI:5.4 teaches it in full — 'in an exothermic reaction, heat is evolved... qp will be negative and ArH will also be negative. Similarly in an endothermic reaction, heat is absorbed' — a case where a title search alone would have produced a wrong 'not'."
+      }
+    },
+    {
+      "section_no": "NDA-292",
+      "subtopic": "Physical vs Chemical Changes",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:1.3.2, XI:12.2, XI:12.3",
+        "note": "The discriminating criterion is stated at XI:1.3.2, with coal and magnesium burning as examples. MISSING is any section teaching the classification of CHANGES: 'physical change' has one hit in the entire State Board corpus, and XI:12.1 opens by explicitly handing the topic back to earlier classes ('You have learnt earlier that changes can be physical or chemical'). Class 9/10 material, assumed rather than taught."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:1.3.1",
+        "note": "Identical shape. XI:1.3.1 gives the criterion but the section is about properties, not changes; 'physical change' is ZERO in NCERT Std XI. No worked classification of everyday changes."
+      }
+    },
+    {
+      "section_no": "NDA-293",
+      "subtopic": "Redox: Oxidation, Reduction and Reducing Agents",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:6.1.1, XI:6.1.2, XI:6.2, XI:6.2.1, XI:6.3",
+        "note": "XI:6.1.2 defines oxidant and reductant explicitly, and 'oxidation number' scores 132 hits in that chapter."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:7.1, XI:7.2, XI:7.3, XI:7.3.2"
+      }
+    },
+    {
+      "section_no": "NDA-294",
+      "subtopic": "Specific Reactions: Precipitation, Electrolysis and Daily Life",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XII:3.9.3, XII:5.5, XII:5.5.1, XII:5.5.2, XI:16.1.2",
+        "note": "The two NAMED reactions are covered in full — XII:3.9.3 is titled 'Condition of precipitation', and electrolysis gets molten NaCl, aqueous NaCl and the quantitative aspects. The daily-life leg is short: there is NO corrosion or rusting section. 'corrosion' appears only as an adjective in an alloy-uses list, and 'rusting' is a single word inside a list in XI:6.1. NCERT gives corrosion a whole section; this book does not."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.13, XI:6.13.1, XII:2.5, XII:2.5.1, XII:2.8",
+        "note": "All three legs have a real section, which is the reverse of the usual pattern in this map: XI:6.13 works the condition of precipitation via Qsp against Ksp, XII:2.5.1 gives the products of electrolysis, and XII:2.8 Corrosion covers rusting electrochemically — the daily-life reaction the State Board leaves as a passing word."
+      }
+    },
+    {
+      "section_no": "NDA-295",
+      "subtopic": "Thermal and Photochemical Decomposition",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XII:7.9.1, XI:8.3.3",
+        "note": "The THERMAL half is genuinely taught with the exact reactions this subtopic asks about: XII:7.9.1 prepares dioxygen by thermal decomposition of metal oxides (Ag2O, HgO, PbO2) and by heating chlorates and nitrates, and XI:8.3.3 gives CaCO3 to CaO + CO2. The PHOTOCHEMICAL half is absent: 'photolysis', 'photochemical decomposition' and 'silver bromide' are ZERO in both books. Nothing on silver halides darkening in sunlight."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Searched thermal decomposition/dissociation, photolysis, photochemical, silver bromide, sunlight. Every 'thermal decomposition' hit is a vehicle for another topic — N2O5 and HI as kinetics examples in XII:3, CaCO3 as a heterogeneous-equilibrium example in XI:6 — and the single 'photochemical' hit is an end-of-chapter question. XI:7.3.1 lists decomposition as a redox type but never distinguishes reactions by agent, which is what this subtopic asks."
+      }
+    },
+    {
+      "section_no": "NDA-296",
+      "subtopic": "Types of Reactions: Combination, Decomposition, Displacement",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:6.1.2, XI:6.4",
+        "note": "DISPLACEMENT is taught by name at XI:6.1.2 ('Displacement reactions can also be looked upon as redox reactions... X + YZ to XZ + Y'), and XI:6.4 builds the electrode-potential treatment on it. The other two are not: 'combination reaction' and 'synthesis reaction' are ZERO across the ENTIRE State Board corpus. Checked against the homonym trap by reading the plain-'combination' hits — every one is ordinary English ('combination with oxygen'), never a reaction class."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:7.3, XI:7.3.1",
+        "note": "The opposite of what the Std XI/XII level would lead you to expect: XI:7.3.1 'Types of Redox Reactions' is this subtopic almost line for line — combination (C + O2, 3Mg + N2, CH4), decomposition ('the opposite of combination reactions', 2H2O, 2NaH, 2KClO3), displacement and disproportionation. One caveat for a reader: the types are defined as classes of REDOX reaction, so the definitions carry an elemental-form requirement that would exclude a non-redox case such as CaCO3 to CaO + CO2."
+      }
+    },
+    {
+      "section_no": "NDA-297",
+      "subtopic": "Common Chemicals and Their Uses",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.2.6, XI:8.3, XI:8.3.1, XI:8.3.2, XI:8.3.3, XI:8.3.4, XI:16.1.2, XI:16.3, XI:16.3.1",
+        "note": "XI:8.3 opens 'we consider five important compounds of s-block elements with reference to their preparation, properties and uses' and delivers exactly that for washing soda (Solvay), caustic soda (Castner-Kellner), calcium carbonate, hydrogen peroxide and LiAlH4, each with a numbered Uses list. Everyday chemicals are split across a second, unexpected chapter: XI:16.3 teaches soaps and synthetic detergents, XI:16.1.2 food antioxidants and preservatives."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "The rationalised edition dropped the s-Block, p-Block and Chemistry in Everyday Life units and nothing replaced them. 'baking soda', 'bleaching powder', 'plaster of paris' and 'sodium bicarbonate' are ZERO; 'washing soda' survives as one clause in XI:6.10, 'caustic soda' as one clause in XI:7, and soap and gypsum only inside the Harappan-history paragraph of XI:1.1. No section gives the preparation or uses of any household chemical. Class 9/10 general science."
+      }
+    },
+    {
+      "section_no": "NDA-298",
+      "subtopic": "Medicines and Health Chemistry",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:16.2, XI:16.2.1, XI:16.2.2",
+        "note": "XI:16.2.1 defines analgesics and antipyretics and works through salicylic acid, aspirin and paracetamol; XI:16.2.2 treats antimicrobials as an umbrella term and separates disinfectants, antiseptics (tincture of iodine, Dettol) and antibiotics, and the chapter's exercise asks 'what is meant by a broad spectrum antibiotic?'."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "NCERT deleted its Chemistry in Everyday Life chapter and no section teaches medicines. 'antacid' is ZERO. What remains is three incidental clauses inside organic chapters: aspirin's properties in XII:7.4.4, chloramphenicol and iodoform in XII:6.8, and 'antiseptics' listed as a phenol application. A single clause is not a treatment of the topic."
+      }
+    },
+    {
+      "section_no": "NDA-299",
+      "subtopic": "Hardness and Purity of Water",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:8.3.1, XI:11.9.8, XI:16.3, XII:2.10.6, XII:3.9",
+        "note": "Hard water is defined and used: XI:16.3 explains that it holds Ca/Mg salts which precipitate soap as scum, XI:8.3.1 gives Na2CO3 as a softener, XII:3.9 removes hardness with lime via Ksp. Purity is XI:11.9.8 (alum) and XII:2.10.6 (reverse osmosis). MISSING: 'temporary hardness' and 'permanent hardness' are both ZERO, no unit of hardness, no named softening process (Clark's, lime-soda, ion-exchange), no chlorination."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:1.6.5, XII:5.7",
+        "note": "Purity has a real section: XII:1.6.5 'Reverse Osmosis and Water Purification'. Hardness has one bullet — XII:5.7, hardness estimated by titration with Na2EDTA. MISSING: 'hard water' is ZERO across all of NCERT, so there is no definition of hardness, no temporary/permanent split and no softening method; the topic is half-covered only because water purification is taught separately."
+      }
+    },
+    {
+      "section_no": "NDA-300",
+      "subtopic": "Properties and Anomalous Behaviour of Water",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:10.2.1, XII:1.3.3, XII:3.5",
+        "note": "One anomaly is taught explicitly: XI:10.2.1 states that the hydrides of N, O and F 'have abnormally high boiling points due to the presence of hydrogen bonding'. XII:1.3.3 classes ice as a hydrogen-bonded molecular solid and XII:3.5 teaches autoionisation. MISSING is the anomalous behaviour the subtopic is named for — maximum density at 4 C, anomalous expansion, and why ice floats are ZERO in BOTH books. That material is Class 9/10 general science and school Physics."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:4.9, XI:4.9.2, XI:6.11.1",
+        "note": "XI:4.9 defines the hydrogen bond and XI:4.9.2 names water among the examples; XI:6.11.1 teaches Kw. MISSING: the same anomalies, AND — unlike the State Board — the rationalised text does not even state water's abnormally high boiling point as a consequence of hydrogen bonding. NCERT is thinner here than the State Board."
+      }
+    },
+    {
+      "section_no": "NDA-301",
+      "subtopic": "Properties of Hydrogen",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.1, XI:8.1.1, XI:8.1.2, XI:8.1.3, XI:8.1.4, XI:8.1.5",
+        "note": "Cited from an unexpected chapter: there is no chapter called Hydrogen, but XI Ch.8 'Elements of Group 1 and 2' opens with a complete hydrogen unit — occurrence, position in the periodic table, isotopes (protium/deuterium/tritium), preparation of dihydrogen by laboratory and industrial routes (Zn/HCl, electrolysis, water gas, syngas), and 8.1.5 physical and chemical properties including hydride formation."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:2.2.4",
+        "note": "The rationalised edition deleted the Hydrogen unit outright. Exactly ONE aspect survives, in a section about isotopes generally: XI:2.2.4 names protium, deuterium and tritium. Everything else is gone — 'isotopes of hydrogen', 'position of hydrogen', 'water gas' and 'syngas' are ZERO, and there is no occurrence, preparation, properties, hydrides or heavy water. Dihydrogen's other hits are it acting as a reagent elsewhere."
+      }
+    },
+    {
+      "section_no": "NDA-302",
+      "subtopic": "Cement, Glass and Building Materials",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:8.3.3, XI:9.8.1, XII:1.2.2",
+        "note": "Only the glass thread is taught, and only as physical state: XII:1.2.2 lists glass among amorphous solids, 'in fact, they are supercooled liquids' — the standard exam fact. XI:9.8.1 gives borax in borosilicate glass, and XI:8.3.3's Uses list has marble as a building material and quicklime as 'the major ingredient of cement'. MISSING: cement itself is never taught — 'portland', 'clinker' and 'mortar' are ZERO in BOTH books."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Same searches, worse result. 'portland', 'clinker' and 'mortar' are ZERO; cement and glass appear only in the ancient-India paragraph of XI:1.1, which is history, not chemistry. NCERT also dropped the Solid State chapter, so 'amorphous' and 'supercooled' are ZERO across the whole corpus — it cannot even offer the glass-as-amorphous-solid fact the State Board does."
+      }
+    },
+    {
+      "section_no": "NDA-303",
+      "subtopic": "Common Industrial Substances and Alloys",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.6.7, XII:8.6.8, XII:8.9.2, XII:7.10.2, XI:8.3.2",
+        "note": "XII:8.6.8 is a full alloy section — definition, ferrous/non-ferrous split, nickel/chromium/stainless steel, brass, bronze, cupronickel and nichrome each with uses. XII:8.9.2 adds the blast-furnace extraction of iron. The industrial-chemicals half is carried by XII:7.10.2 ('sulfuric acid is a very important industrial chemical') and XI:8.3.2 (caustic soda by the Castner-Kellner cell)."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:4.3.14",
+        "note": "The alloy half is properly taught: XII:4.3.14 defines an alloy, gives the 15-percent metallic-radii rule and names the ferrous alloys plus brass and bronze. MISSING: the common industrial SUBSTANCES half. With the s-Block and p-Block units deleted, no section gives the manufacture or industrial uses of sodium carbonate, caustic soda, bleaching powder, sulfuric acid or ammonia."
+      }
+    },
+    {
+      "section_no": "NDA-304",
+      "subtopic": "Fertilizers",
+      "stateBoard": {
+        "status": "not",
+        "note": "No section on fertilisers. 'manure' and 'NPK' are ZERO; 'fertilizer' scores four hits and every one is a passing clause in a Uses list — ammonia 'used in manufacture of fertilizers such as urea' (XI:9.8.3), sulfuric acid 'in the manufacture of fertilizers... superphosphate' (XII:7.10.2, the corpus's only 'superphosphate'), soil pH in buffers (XII:3.8.4). 'urea' scores 41 hits but they are colligative-property sums and urea-formaldehyde polymer. Class 9/10 general science."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Same searches, same result, and NCERT is thinner still: 'fertiliser' appears three times, twice in the importance-of-chemistry intro at XI:1.1 and once as an aside on why the Haber process matters. 'fertilizer', 'manure', 'NPK' and 'superphosphate' are ZERO. NCERT also dropped its Chemistry in Everyday Life and p-Block chapters, so there is nowhere the topic could sit."
+      }
+    },
+    {
+      "section_no": "NDA-305",
+      "subtopic": "Industrial Gases, Manufacturing and Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.1.4, XI:9.8.3, XI:12.9, XII:7.9.1, XII:7.10.2, XII:7.11.1",
+        "note": "The strongest of this set. XI:12.9 'Industrial Application: The Haber process' gives the flow diagram, 1:3 volumes, 450 C, 200 atm and the iron/molybdenum catalyst; XII:7.10.2 gives sulfuric acid by the contact process as three numbered steps with the V2O5 converter and oleum; XII:7.11.1 gives chlorine's preparation and properties. Beyond the citations, XI:8.3.1 teaches the Solvay process and XII:8.9.2 the blast furnace."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:6.8, XI:6.8.5, XII:4.3.12",
+        "note": "The two flagship processes are taught, but as illustrations of equilibrium rather than manufacturing chemistry: XI:6.8 works the Haber process with real numbers and then the contact process. MISSING: the gases themselves. With the Hydrogen and both p-Block units deleted there is no preparation, properties or reactions of dihydrogen, ammonia, chlorine, dioxygen, ozone or sulfur dioxide, and 'solvay' and 'blast furnace' are ZERO in NCERT."
+      }
+    },
+    {
+      "section_no": "NDA-306",
+      "subtopic": "Paints and Coatings",
+      "stateBoard": {
+        "status": "not",
+        "note": "No section teaches paints, pigments or protective coatings. 'primer' and 'drying oil' are ZERO; every paint/varnish/lacquer/enamel/pigment hit is incidental — paint as an oil-in-water emulsion example (XI:11.9.2), 'paint (mixture of oils, pigment, additive)' as an example of a mixture (XI:1.2.2), methyl alcohol as a solvent for paints (XII:11.6), and a sulfuric-acid uses list (XII:7.10.2). Electroplating and galvanising are present but taught as electrochemistry (XII:5.5), not as coatings."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Same shape. The nearest thing is XII:2.8 Corrosion, which names 'covering the surface with paint' as one prevention method in a single sentence, then moves to tin/zinc coating and sacrificial electrodes — it teaches corrosion, not paints. No composition, no pigments, no coating chemistry."
+      }
+    },
+    {
+      "section_no": "NDA-307",
+      "subtopic": "Colloids and Suspensions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:11.9, XI:11.9.2, XI:11.9.5, XI:11.9.7",
+        "note": "XI:11.9 opens by contrasting a true solution, a colloid and a suspension explicitly by particle size, which is exactly the exam's framing; 11.9.2 classifies colloids by dispersed phase and medium, 11.9.5 covers the Tyndall effect and Brownian motion, 11.9.7 emulsions."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "The Surface Chemistry chapter is gone from the rationalised set and nothing replaced it. 'colloid', 'colloidal', 'Tyndall', 'micelle', 'emulsion' and 'dispersed phase' are ALL zero across both NCERT volumes. The nearest hits are false leads: 'adsorption' is entirely chromatography in XI:8.8.5, 'coagulation' is protein denaturation in XII:10.2, 'aerosol' is CFCs in XII:6.8.5."
+      }
+    },
+    {
+      "section_no": "NDA-308",
+      "subtopic": "Compounds, Mixtures and Solutions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.2.2, XI:1.2.1, XII:2.2, XII:2.4",
+        "note": "XI:1.2.2 gives the whole tree: pure substances split into elements and compounds 'combined in a fixed proportion', mixtures split into homogeneous and heterogeneous, with solutions defined as homogeneous mixtures and suspensions as the heterogeneous case."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.2.2, XI:1.2.1, XII:1.1, XII:1.3",
+        "note": "XI:1.2.2 'Classification of Matter' teaches the same tree, though it opens by referring the reader back to Class IX Chapter 2, so it is revision rather than first teaching."
+      }
+    },
+    {
+      "section_no": "NDA-309",
+      "subtopic": "Physical vs Chemical Changes",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:1.3, XI:1.3.2",
+        "note": "The operative CRITERION is taught at XI:1.3, with burning coal and burning magnesium as worked examples. MISSING is the CHANGE taxonomy the exam asks about: 'physical change' occurs 3 times in the whole State Board corpus and never in a defining passage, and XI:12.1 states outright 'You have learnt earlier that changes can be physical or chemical and reversible or irreversible' — the book treats melting/dissolving vs rusting/souring as settled Class 9/10 knowledge."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:1.3.1, XI:1.5.1",
+        "note": "Same shape. XI:1.3.1 states the criterion with combustibility and reactivity to acids as examples, but no section enumerates physical vs chemical changes with examples or discusses reversibility, and XI:1.2.2 explicitly defers the classification of matter to Class IX."
+      }
+    },
+    {
+      "section_no": "NDA-310",
+      "subtopic": "Separation Techniques",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:3.2.1, XI:3.2.2, XI:3.3.1, XI:3.3.2, XI:3.3.3, XI:3.4, XI:3.5.1, XI:3.5.2",
+        "note": "An entire chapter (XI Ch.3 Some Analytical Techniques) is devoted to it: crystallisation and fractional crystallisation, simple/fractional/reduced-pressure distillation, solvent extraction, and adsorption and partition chromatography."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.8.1, XI:8.8.2, XI:8.8.3, XI:8.8.4, XI:8.8.5",
+        "note": "The same technique set, but framed throughout as purification of ORGANIC compounds rather than as general separation. Worth flagging that the elementary techniques an NDA paper may reach for — filtration, decantation, evaporation, sieving — are not taught as such in EITHER book."
+      }
+    },
+    {
+      "section_no": "NDA-311",
+      "subtopic": "States of Matter, Phase Changes and Diffusion",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.2.3, XI:10.3, XI:10.4, XI:10.6, XI:10.8, XI:12.2, XII:4.9.1",
+        "note": "XI:1.2.3 gives the three states and their interconversion; XI:10.3 lists diffusion as a characteristic property of gases and defines rate of diffusion; XI:10.4 the gas laws, 10.6 kinetic molecular theory, 10.8 the liquid state. One honest gap: GRAHAM'S law of diffusion is absent from both books — 'Graham' and 'effusion' are zero in the whole corpus — so a question asking rate proportional to 1/sqrt(M) is unsupported even here."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:1.2.1, XI:6.1.1, XI:6.1.2, XI:6.1.3",
+        "note": "The dedicated States of Matter chapter was deleted and only fragments remain. XI:1.2.1 describes the three states, and phase changes are taught as physical equilibria in XI:6.1.1-6.1.3. Everything quantitative is gone: 'Boyle', 'Charles', 'gas laws', 'kinetic molecular theory' and 'standard temperature' are ALL ZERO across the four NCERT volumes. Diffusion survives only as an illustration of entropy in XI:5."
+      }
+    },
+    {
+      "section_no": "NDA-312",
+      "subtopic": "Alloys and Their Composition",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XII:8.6.8, XII:1.8.1",
+        "note": "XII:8.6.8 defines an alloy as a random solid solution, splits ferrous from non-ferrous, and gives compositions for brass (Cu-Zn), bronze (Cu-Sn), cupro-nickel and the steels. MISSING are most of the named alloys an NDA question draws on: 'duralumin' is zero in both books, 'solder' is a single passing mention, and german silver, gun metal and magnalium do not appear. The book gives constituents, not percentage compositions."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:4.3.14",
+        "note": "XII:4.3.14 'Alloy Formation' covers the same ground and no more: alloys as homogeneous solid solutions, the 15-percent metallic-radius rule, ferrous alloys and stainless steel, brass and bronze. The same list is missing (solder, duralumin, german silver) and no percentage compositions are given."
+      }
+    },
+    {
+      "section_no": "NDA-313",
+      "subtopic": "Corrosion and Its Prevention",
+      "stateBoard": {
+        "status": "not",
+        "note": "No corrosion section anywhere in either State Board volume — one of the few places NCERT is the fuller book. 'corrosion' scores 2 hits, both the adjective 'corrosion resistant' (XI:9.3, XII:8.6.8); 'corrode' is the zinc anode of a dry cell in XII:5.10.1; the single 'anodizing' hit in XII:5.5 is electrochemical art for COLOURING metals, not protection. 'galvaniz', 'cathodic protection' and 'protective coating' are zero. Class 9/10 general science."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:2.8",
+        "note": "XII:2.8 teaches corrosion as an electrochemical process with the anode/cathode half-reactions, cell potential, rust as hydrated ferric oxide and tarnishing, then prevention explicitly: barrier paints and chemical coatings, covering with Sn or Zn, and a sacrificial electrode of Mg or Zn 'which corrodes itself but saves the object'."
+      }
+    },
+    {
+      "section_no": "NDA-314",
+      "subtopic": "Extraction of Metals and Ores",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.9, XII:8.9.1, XII:8.9.2",
+        "note": "Worth stating plainly because a chapter-title scan misses it: there is no metallurgy CHAPTER, but XII:8.9 inside the transition-elements chapter teaches the topic properly — mineral vs ore, gangue, a table of the ores of Fe/Cu/Zn (haematite, magnetite, chalcopyrite, zinc blende, calamine), concentration by washing, hydraulic classification, magnetic separation and froth flotation, the pyro-/hydro-/electro-metallurgy split, and 8.9.2 the full blast-furnace extraction of iron."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'General Principles and Processes of Isolation of Elements' was removed and nothing replaced it. 'calcination', 'smelting', 'blast furnace', 'froth flotation', 'bauxite' and 'haematite' are all ZERO in NCERT. The nearest thing is one sentence in XI:7.3.1 noting that metal-displacement reactions 'find many applications in metallurgical processes' — a principle, not ore processing."
+      }
+    },
+    {
+      "section_no": "NDA-315",
+      "subtopic": "Reactivity Series and Reactions with Water",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.2.4, XI:6.1.2, XII:5.12, XI:6.4.1",
+        "note": "Both halves are present, from different places. XI:8.2.4 gives the qualitative behaviour the exam asks for: Li reacts slowly, Na and K vigorously and catch fire, beryllium not at all, magnesium only with hot water, Ca and below with cold water. XII:5.12 'Electrochemical series' is a DEEPER quantitative treatment that overlaps the exam's qualitative ordering rather than being the same object; alone it would be partial."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:7.2.1, XI:7.3.1, XII:2.3",
+        "note": "'reactivity series' as a PHRASE is zero in both books — it is Class 9/10 vocabulary — but the content is taught under the other name and, in NCERT's case, at exactly the exam's level. XI:7.2.1 builds the ordering Zn>Cu>Ag and names it 'a metal activity series or electrochemical series'. XI:7.3.1 then does the water and acid chemistry outright: alkali metals and Ca/Sr/Ba 'displace hydrogen from cold water', Mg and Fe react with steam, with silver and gold unreactive."
+      }
+    },
+    {
+      "section_no": "NDA-316",
+      "subtopic": "Mole Concept, Avogadro's Law and Molar Calculations",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.5, XI:1.7, XI:1.8, XI:1.9, XI:10.4.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.5.5, XI:1.7, XI:1.8",
+        "note": "Fully taught, but flag one difference that can cost a mark: NCERT works to the current IUPAC STP (273.15 K, 1 bar) and therefore uses a molar volume of 22.7 L. '22.4' is ZERO in NCERT, whereas the State Board uses 22.4 L throughout and NDA keys generally expect 22.4 L."
+      }
+    },
+    {
+      "section_no": "NDA-317",
+      "subtopic": "Stoichiometry and Laws of Chemical Combination",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.4.1, XI:1.4.2, XI:1.4.3, XI:1.4.4, XI:1.5, XI:2.5.1, XI:2.6",
+        "note": "Split across two chapters: all the laws (conservation of mass, definite proportions, multiple proportions, Gay-Lussac, Avogadro) are in XI Ch.1, while the calculations — stoichiometric problems and limiting reagent — sit in XI Ch.2 Introduction to Analytical Chemistry."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.5.1, XI:1.5.2, XI:1.5.3, XI:1.5.4, XI:1.5.5, XI:1.10, XI:1.10.1",
+        "note": "NCERT keeps laws and calculations together in XI Ch.1, where the State Board separates them across Ch.1 and Ch.2."
+      }
+    },
+    {
+      "section_no": "NDA-318",
+      "subtopic": "Practical Applications: Health, Food and Lab Methods",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:16.1, XI:16.1.2, XI:16.2.1, XI:16.2.2, XI:16.3.1, XI:2.2.1, XI:2.2.2",
+        "note": "XI Ch.16 Chemistry in Everyday Life covers all three legs: 16.1/16.1.2 food chemistry (nutrients, balanced diet, food additives, food quality), 16.2.1 analgesics and antipyretics, 16.2.2 antimicrobials, 16.3.1 soaps and detergents. Lab methods are in XI:2.2.1/2.2.2, chemical methods of qualitative and quantitative analysis."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:10.4, XII:10.6, XII:10.1, XII:10.2, XI:8.9, XI:8.10",
+        "note": "The Chemistry in Everyday Life chapter is deleted, so only fragments survive. Health and food are covered inside Biomolecules — XII:10.4 Vitamins with deficiency diseases, XII:10.6 Hormones, and carbohydrates and proteins as nutrients — and lab methods by XI:8.9/8.10. MISSING: the classes of medicines, soaps and detergents as a taught topic, and food preservatives and additives."
+      }
+    }
+  ]
+}

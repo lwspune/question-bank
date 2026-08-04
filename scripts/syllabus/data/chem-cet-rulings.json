@@ -1,0 +1,1574 @@
+{
+  "exam": "MHT-CET",
+  "subject": "Chemistry",
+  "source": "MHT-CET bank taxonomy",
+  "reviewedOn": "2026-08-04",
+  "basis": "First real adjudication of MHT-CET Chemistry. These subtopics previously carried status 'full' for the State Board with no citation and no NCERT ruling at all, because scripts/syllabus/ingest-exam-spine.ts defaults an unruled subtopic to 'full' and carries 226 authored rulings for JEE Mains and ZERO for MHT-CET. Every ruling here was decided by searching the actual book TEXT per chapter (generated-papers/chem-corpus.json, 51 chapters / 2.93M chars, via scripts/syllabus/search_corpus.py), never by matching a chapter or section title. Authored by six agents against scripts/syllabus/RULING_BRIEF.md and spot-verified against the corpus by the reviewer. READ THE TWO COLUMNS DIFFERENTLY: MHT-CET is set ON the State Board syllabus, so a State Board 'full' is the expected result rather than a finding, and the column carrying information is NCERT, whose rationalised edition dropped seven chapters this exam still examines.",
+  "rulings": [
+    {
+      "section_no": "MHT-150",
+      "subtopic": "Chemical Reactions of Alcohols and Acidity",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:11.4.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:7.4.4",
+        "note": "7.4.4 splits the reactions into O-H and C-O bond cleavage, then teaches 'Acidity of alcohols' explicitly (electron-releasing groups lower acid strength, alkoxides are stronger bases than hydroxide) alongside esterification, dehydration and oxidation."
+      }
+    },
+    {
+      "section_no": "MHT-151",
+      "subtopic": "Classification of Alcohols and Phenols",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:11.2, XII:11.2.1"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:7.1, XII:7.1.1, XII:7.1.2"
+      }
+    },
+    {
+      "section_no": "MHT-152",
+      "subtopic": "Ethers, Preparation and Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:11.5, XII:11.5.1, XII:11.5.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:7.6, XII:7.6.1, XII:7.6.3"
+      }
+    },
+    {
+      "section_no": "MHT-153",
+      "subtopic": "IUPAC and Common Nomenclature of Alcohols, Phenols and Ethers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:11.3, XII:11.3.1, XII:11.3.2, XII:11.3.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:7.2",
+        "note": "NCERT compresses all three families into the single section 7.2, where the State Board gives alcohols, phenols and ethers a subsection each. Both give common and IUPAC names, including the alkoxy-prefix convention for ethers."
+      }
+    },
+    {
+      "section_no": "MHT-154",
+      "subtopic": "Phenols, Preparation and Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:11.4.2, XII:11.4.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:7.4.2, XII:7.4.4"
+      }
+    },
+    {
+      "section_no": "MHT-155",
+      "subtopic": "Physical Properties of Alcohols, Phenols and Ethers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:11.4.3, XII:11.5.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:7.4.3, XII:7.6.2"
+      }
+    },
+    {
+      "section_no": "MHT-156",
+      "subtopic": "Carboxylic Acids, Properties, Reactions and Derivatives",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.5, XII:12.6.4, XII:12.9, XII:12.9.1, XII:12.9.3, XII:12.9.7",
+        "note": "Every derivative is taught: acyl chloride 12.9.3, amide 12.9.4, anhydride 12.9.5, decarboxylation 12.9.6, reduction 12.9.7; esterification is taught from the alcohol side at XII:11.4.4. Only alpha-halogenation is absent — 'Hell', 'Volhard' and 'Zelinsky' are ZERO across the entire State Board corpus while NCERT teaches HVZ. MHT-CET is set on this syllabus, so that is extra NCERT depth, not an exam gap."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:8.7, XII:8.8, XII:8.9, XII:8.9.1, XII:8.9.3, XII:8.9.4"
+      }
+    },
+    {
+      "section_no": "MHT-157",
+      "subtopic": "Nomenclature and Classification of Aldehydes, Ketones and Carboxylic Acids",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.2, XII:12.2.1, XII:12.2.2, XII:12.2.3, XII:12.3, XII:12.3.1, XII:12.3.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:8.1, XII:8.1.1, XII:8.6, XII:8.6.1",
+        "note": "NCERT has no separate 'Classification' heading, so a title search reports a gap where none exists. 8.1.1 names aliphatic and aromatic aldehydes and ketones, and 8.6 opens by splitting carboxylic acids into aliphatic and aromatic, with dicarboxylic acids named in 8.6.1."
+      }
+    },
+    {
+      "section_no": "MHT-158",
+      "subtopic": "Nucleophilic Addition and Condensation Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.7, XII:12.7.1, XII:12.8.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:8.4",
+        "note": "'bisulphite' is ZERO in NCERT, which reads as a missing addition until the spelling is varied: NCERT writes 'hydrogensulphite' (4 hits in 8.4). 8.4 carries HCN/cyanohydrin, hydrogensulphite, alcohols to acetals, the ammonia derivatives (hydrazone, semicarbazone, Schiff base), aldol and Cannizzaro."
+      }
+    },
+    {
+      "section_no": "MHT-159",
+      "subtopic": "Oxidation, Reduction and Identification Tests",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.8.1, XII:12.8.3, XII:12.9.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:8.4, XII:8.9.1",
+        "note": "NCERT has no separate laboratory-tests heading like the State Board's 12.8.1; Tollens, Fehling, Schiff and the iodoform test all sit inside 8.4, alongside Clemmensen, Wolff-Kishner and LiAlH4/NaBH4 reduction. Carboxyl detection is in 8.9.1."
+      }
+    },
+    {
+      "section_no": "MHT-160",
+      "subtopic": "Preparation Methods of Aldehydes and Ketones",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.4, XII:12.4.1, XII:12.4.2, XII:12.4.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:8.2, XII:8.2.1, XII:8.2.2, XII:8.2.3",
+        "note": "8.2 is comprehensive: ozonolysis, hydration of alkynes, Rosenmund, Stephen and DIBAL-H, Etard with chromyl chloride, CrO3, Gatterman-Koch, side-chain chlorination, acyl chloride with dialkylcadmium, and nitrile with Grignard."
+      }
+    },
+    {
+      "section_no": "MHT-161",
+      "subtopic": "Nomenclature, Structural Isomers and Physical Properties",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.4.3, XI:14.4.4, XI:15.1, XI:15.1.1, XI:15.1.4",
+        "note": "Nomenclature is not in the hydrocarbons chapter: IUPAC naming of straight-chain and branched alkanes is XI:14.4.3 and 14.4.4 in the general organic chapter. 15.1.1 gives chain isomerism and 15.1.4 the boiling-point and solubility trends."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.5.2, XI:9.2.1, XI:9.2.3",
+        "note": "Same split as the State Board — alkane IUPAC naming is XI:8.5.2 in the general organic chapter; 9.2.1 adds isomerism worked examples and 9.2.3 the physical properties."
+      }
+    },
+    {
+      "section_no": "MHT-162",
+      "subtopic": "Preparation of Alkanes, Wurtz, Grignard and Decarboxylation",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.1.3, XII:12.9.6",
+        "note": "15.1.3 teaches Wurtz coupling, Grignard hydrolysis, reduction of alkyl halides and catalytic hydrogenation — but NOT decarboxylation. Soda-lime decarboxylation to an alkane is taught a year later at XII:12.9.6, so the subtopic spans both years. Kolbe's electrolytic method is absent from the whole State Board corpus."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.2.2",
+        "note": "All three sit in one section: 9.2.2 gives Wurtz, soda-lime decarboxylation and Grignard hydrolysis, plus Kolbe's electrolytic method, which the State Board never teaches."
+      }
+    },
+    {
+      "section_no": "MHT-163",
+      "subtopic": "Reactions of Alkanes, Free Radical Halogenation",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.1.5",
+        "note": "15.1.5 gives the free-radical mechanism explicitly (homolysis initiation, then propagation), the F2 > Cl2 > Br2 > I2 reactivity order, the 3>2>1 ease of substitution with product percentages, plus combustion, pyrolysis and cracking."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.2.3"
+      }
+    },
+    {
+      "section_no": "MHT-164",
+      "subtopic": "Nomenclature, Hybridization and Stability of Alkenes",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.4.5, XI:14.4.5, XI:15.2, XI:15.2.1",
+        "note": "Naming of unsaturated hydrocarbons is XI:14.4.5 and ethene's sp2 geometry is XI:5.4.5; the book has no section 15.2.2, so the sp3-to-sp2 change and the printed stability order both sit in the body of 15.2."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:9.3.1, XI:9.3.2",
+        "note": "Nomenclature (9.3.2) and the sp2 double-bond structure (9.3.1) are full. MISSING is the relative stability ORDER of alkenes — the R2C=CR2 > R2C=CHR > RCH=CHR > RCH=CH2 > CH2=CH2 sequence the State Board prints appears nowhere in NCERT. 'stability' in XI:9 refers only to ethane conformations, the vinylic cation and benzene resonance; 8.7.9 notes hyperconjugation is possible in alkenes without ordering them."
+      }
+    },
+    {
+      "section_no": "MHT-165",
+      "subtopic": "Preparation of Alkenes by Elimination",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.3.4, XII:6.7.1",
+        "note": "9.3.4 gives every elimination route — dehydrohalogenation with alcoholic KOH, dehalogenation of vicinal dihalides with Zn, and acidic dehydration of alcohols. 'Saytzeff' is ZERO in NCERT XI:9; the orientation rule is taught a year later as Zaitsev in XII:6.7.1, hence the cross-year citation."
+      }
+    },
+    {
+      "section_no": "MHT-166",
+      "subtopic": "Reactions of Alkenes, Addition, Oxidation and Ozonolysis",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.2.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.3.5"
+      }
+    },
+    {
+      "section_no": "MHT-167",
+      "subtopic": "Nomenclature and Identification of Alkynes",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.4.5, XI:15.3, XI:15.3.4",
+        "note": "Naming is at XI:14.4.5 in the general organic chapter; 15.3 gives position isomerism and the term 'terminal alkyne'. 15.3.4 carries both the acidity of terminal alkynes and, in a 'Do you know?' box, the AgNO3 precipitate test used to distinguish terminal from non-terminal alkynes."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:9.4.1, XI:9.4.4",
+        "note": "9.4.1 covers nomenclature and isomerism in full, and 9.4.4 teaches terminal-alkyne acidity with Na and NaNH2. MISSING is the identification test itself — the Ag+/Cu+ acetylide precipitate that tells a terminal from a non-terminal alkyne. 'AgNO3', 'silver nitrate', 'ammoniacal' and 'cuprous' are all ZERO in NCERT XI:9, while the State Board prints the AgNO3 test at 15.3.4."
+      }
+    },
+    {
+      "section_no": "MHT-168",
+      "subtopic": "Reactions of Alkynes",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.3.4",
+        "note": "A search for 'polymerisation' returns zero here and reads as a gap: the State Board spells it 'polymerization' and 'trimerization' with a z where NCERT uses an s. Both books teach ethyne trimerising to benzene over a red-hot iron tube. 15.3.4 also carries acidity and the addition of H2, halogens, HX and water."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.4.4"
+      }
+    },
+    {
+      "section_no": "MHT-169",
+      "subtopic": "Chemical Reactions and Basicity of Amines",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.5, XII:13.5.1, XII:13.5.2, XII:13.6, XII:13.6.2, XII:13.6.3, XII:13.6.4, XII:13.6.5, XII:13.8, XII:13.9"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:9.6",
+        "note": "XII:9.6 teaches basicity (Kb/pKb, alkanamines vs arylamines) plus alkylation, acylation, carbylamine, nitrous acid, Hinsberg and electrophilic substitution. MISSING: Hofmann's exhaustive alkylation and Hofmann elimination of quaternary ammonium hydroxide to the LEAST substituted alkene, which the State Board gives its own sections. 'exhaustive', 'quaternary ammonium hydroxide' and 'hofmann rule' are ZERO in NCERT."
+      }
+    },
+    {
+      "section_no": "MHT-170",
+      "subtopic": "Diazonium Salts and Aromatic Amine Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.6.6, XII:13.7, XII:13.7.1, XII:13.7.2, XII:13.9",
+        "note": "Diazotisation itself is taught under the nitrous-acid reaction XII:13.6.6; XII:13.7.1/13.7.2 then carry the displacement (Sandmeyer) and retention (coupling, azo dye) reactions."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:9.6, XII:9.7, XII:9.8, XII:9.9",
+        "note": "'diazonium' scores 32 hits in XII:9, the highest of either book; Sandmeyer, Gattermann and coupling to azo dyes are all present. Electrophilic substitution in aniline sits in XII:9.6, not the diazonium sections."
+      }
+    },
+    {
+      "section_no": "MHT-171",
+      "subtopic": "Nomenclature and Classification of Amines",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.1, XII:13.2, XII:13.2.1, XII:13.2.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:9.1, XII:9.2, XII:9.3"
+      }
+    },
+    {
+      "section_no": "MHT-172",
+      "subtopic": "Physical Properties of Amines",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.4, XII:13.4.1"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:9.5",
+        "note": "XII:9.5 covers intermolecular H-bonding, the primary > secondary > tertiary boiling-point order with a comparison table against alcohols and alkanes, and the fall in water solubility with molar mass."
+      }
+    },
+    {
+      "section_no": "MHT-173",
+      "subtopic": "Preparation of Amines",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:13.3, XII:13.3.1, XII:13.3.2, XII:13.3.3, XII:13.3.4, XII:13.3.5, XII:13.3.6"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:9.4",
+        "note": "NCERT keeps all six routes in one section: ammonolysis, reduction of nitro compounds, nitriles and amides, Gabriel phthalimide synthesis and Hoffmann bromamide degradation."
+      }
+    },
+    {
+      "section_no": "MHT-174",
+      "subtopic": "Electrophilic Aromatic Substitution",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.4.6, XI:15.4.7, XII:13.9, XII:10.6.1"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.5.5, XI:9.5.6, XII:9.6, XII:6.7.2",
+        "note": "XI:9.5.5 gives nitration, sulphonation, halogenation and both Friedel-Crafts reactions with the electrophile-generation mechanism; XI:9.5.6 the o/p vs m directive influence. Activated (aniline) and deactivated (haloarene) rings are handled in the Std XII chapters."
+      }
+    },
+    {
+      "section_no": "MHT-175",
+      "subtopic": "Side-Chain Reactions, Oxidation and Other Transformations",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:12.4.2, XII:12.5.4, XII:10.3.2",
+        "note": "Not in the Hydrocarbons chapter — 'side chain' is ZERO in XI:15. XII:12.4.2 has the Etard reaction, the CrO3/acetic anhydride route and side-chain chlorination of toluene; XII:12.5.4 oxidises the whole alkyl chain to -COOH; XII:10.3.2 covers free-radical benzylic and allylic halogenation."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:8.2.2, XII:8.7, XII:6.4.2",
+        "note": "Same cross-chapter split as the State Board: XII:8.2.2 carries Etard and the benzylidene-diacetate route, XII:8.7 the vigorous oxidation of alkylbenzenes to aromatic carboxylic acids, XII:6.4.2 free-radical halogenation with allylic and benzylic classification."
+      }
+    },
+    {
+      "section_no": "MHT-176",
+      "subtopic": "Structure, Aromaticity and Identification",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:15.4.1, XI:15.4.2, XI:15.4.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:9.5.2, XI:9.5.3",
+        "note": "A search for 'Huckel' returns ZERO in NCERT and would wrongly read as a gap — NCERT spells it with an umlaut. XI:9.5.3 states the rule in full: planarity, complete pi delocalisation and (4n+2) pi electrons, plus the X-ray evidence for equal C-C bond lengths in XI:9.5.2."
+      }
+    },
+    {
+      "section_no": "MHT-177",
+      "subtopic": "Electronic Effects, Hybridization, Intermediates and General Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.6, XI:14.6.1, XI:14.6.2, XI:14.6.3, XI:14.6.4, XI:14.6.5, XI:14.6.6, XI:14.6.7, XI:14.6.8, XI:5.4.4, XI:5.4.5",
+        "note": "The organic-basics chapter carries the effects (inductive, resonance, electromeric, hyperconjugation) and the intermediates (carbocation, carbanion, free radical), but NOT hybridisation: 'hybridi' scores only 2 in XI:14, so sp3/sp2/sp is taught in the Chemical Bonding chapter and applied in XI:15."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.7, XI:8.7.1, XI:8.7.2, XI:8.7.4, XI:8.7.5, XI:8.7.6, XI:8.7.7, XI:8.7.8, XI:8.7.9, XI:8.7.10, XI:8.2, XI:8.2.1",
+        "note": "Unlike the State Board, NCERT puts carbon's hybridisation inside the organic chapter itself (XI:8.2 Tetravalence of Carbon) as well as XI:4.6; XI:8.7.10 additionally classifies substitution, addition, elimination and rearrangement as reaction types."
+      }
+    },
+    {
+      "section_no": "MHT-178",
+      "subtopic": "Isomerism and Stereochemistry",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.5, XI:14.5.1, XI:15.2.1, XII:10.5, XII:10.5.1, XII:10.5.2, XII:10.5.3, XII:10.5.4, XII:10.5.5",
+        "note": "XI:14.5 gives the full isomerism chart but says outright it will detail 'only structural isomerism'; the stereochemistry is deferred — geometrical to XI:15.2.1 and optical to XII:10.5.x, which is the dedicated treatment."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.6, XI:8.6.1, XI:8.6.2, XI:9.3.3, XII:6.7.1",
+        "note": "Same deferral as the State Board: XI:8.6.2 is a single paragraph defining stereoisomerism. Cis-trans detail is XI:9.3.3; chirality, enantiomers, racemisation and inversion are folded into the SN mechanism discussion XII:6.7.1 rather than given their own section."
+      }
+    },
+    {
+      "section_no": "MHT-179",
+      "subtopic": "IUPAC Nomenclature, Functional Groups and Homologous Series",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:14.3, XI:14.3.1, XI:14.3.2, XI:14.4, XI:14.4.2, XI:14.4.3, XI:14.4.4, XI:14.4.5, XI:14.4.6, XI:14.4.7, XI:14.4.8",
+        "note": "There is no 'Homologous series' heading, which a title-only check would read as a gap; it is taught inside XI:14.3.2 with the definition, the constant -CH2- difference, the homologue term and the general formula."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:8.4, XI:8.4.1, XI:8.4.2, XI:8.5, XI:8.5.1, XI:8.5.2, XI:8.5.3, XI:8.5.4",
+        "note": "NCERT gives homologous series its own numbered section XI:8.4.2, unlike the State Board."
+      }
+    },
+    {
+      "section_no": "MHT-180",
+      "subtopic": "Amino Acids, Peptides and Proteins",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:14.3, XII:14.3.1, XII:14.3.2, XII:14.3.3, XII:14.3.4, XII:14.3.5"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:10.2, XII:10.2.1, XII:10.2.2, XII:10.2.3",
+        "note": "Zwitter ion, amphoteric behaviour, essential/non-essential classification, peptide linkage, primary to quaternary structure and denaturation are all present. 'isoelectric point' is ZERO in BOTH books, so neither teaches it."
+      }
+    },
+    {
+      "section_no": "MHT-181",
+      "subtopic": "Carbohydrates, Classification, Structure and Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:14.2, XII:14.2.1, XII:14.2.2, XII:14.2.3, XII:14.2.4, XII:14.2.5, XII:14.2.6, XII:14.2.7, XII:14.2.8"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:10.1, XII:10.1.1",
+        "note": "The rationalised chapter collapses carbohydrates into two numbered sections against the State Board's nine, but the content is there: classification, glucose open-chain and Haworth ring forms, anomers, and the reactions. 'mutarotation' and 'osazone' are ZERO in BOTH books."
+      }
+    },
+    {
+      "section_no": "MHT-182",
+      "subtopic": "Glycosidic Linkages in Di- and Polysaccharides",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:14.2.9, XII:14.2.10"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:10.1, XII:10.1.1",
+        "note": "No numbered disaccharide or polysaccharide section survives rationalisation, but the text does: 'glycosidic' 10 hits, sucrose 15, maltose 7, lactose 6, starch 16, cellulose 10, plus invert sugar. Coverage is thinner than the State Board's but teaches the linkage and the reducing/non-reducing distinction."
+      }
+    },
+    {
+      "section_no": "MHT-183",
+      "subtopic": "Lipids, Enzymes and Other Biomolecules",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XII:14.3.6, XI:16.1, XI:16.1.2",
+        "note": "Enzymes are full at XII:14.3.6. Lipids are taught but NOT in Biomolecules — XII:14 says 'lipid' once and has ZERO 'fatty acid', 'triglyceride' and 'cholesterol'; the real treatment is XI:16.1 food chemistry. MISSING: hormones ('hormone' ZERO in XII:14) and vitamins as a chemical class."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:10.3, XII:10.3.1, XII:10.4, XII:10.6",
+        "note": "The trimmed chapter KEPT enzymes (mechanism, active site), vitamins XII:10.4 (fat/water-soluble classes and deficiency diseases) and hormones XII:10.6. MISSING: lipids. There is no lipid section; 'lipid' appears twice inside a list, and 'fatty acid', 'triglyceride' and 'cholesterol' are ZERO. NCERT has no Chemistry in Everyday Life chapter to carry them."
+      }
+    },
+    {
+      "section_no": "MHT-184",
+      "subtopic": "Nucleic Acids, DNA, RNA, Nucleotides and Bases",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:14.4, XII:14.4.1, XII:14.4.2, XII:14.4.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:10.5, XII:10.5.1, XII:10.5.2, XII:10.5.3",
+        "note": "Nucleic acids survived rationalisation intact: nucleoside/nucleotide composition, ribose vs 2-deoxyribose, the bases with thymine in DNA and uracil in RNA, the Watson-Crick double helix, and the three RNA types. Hit counts run below the State Board's but the substance is present."
+      }
+    },
+    {
+      "section_no": "MHT-185",
+      "subtopic": "Dipole Moment, Polarity and Intermolecular Forces",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.6.5, XI:5.7, XI:10.2, XI:10.2.1",
+        "note": "Split across two chapters: bond polarity and dipole moment sit in XI ch.5 Chemical Bonding, while the intermolecular-force taxonomy is in XI ch.10 States of Matter — 10.2.1 lists dipole-dipole, ion-dipole, dipole-induced-dipole, London dispersion and hydrogen bonding."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:4.3.6, XI:4.9, XI:4.9.1, XI:4.9.2",
+        "note": "Dipole moment and bond polarity are taught in full and hydrogen bonding has its own section. MISSING is the intermolecular-force taxonomy: the rationalised NCERT XI has no States of Matter chapter, so 'London force' and 'dispersion force' are ZERO across all of NCERT and 'dipole-dipole' never occurs in ch.4. Its 'van der Waals' hits are van der Waals RADIUS in the bond-length section."
+      }
+    },
+    {
+      "section_no": "MHT-186",
+      "subtopic": "Hybridization",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XI:5.4.4, XI:5.4.5, XII:9.9.1",
+        "note": "XI:5.4.5 states outright that 's and p orbitals can hybridize to form the following: i. sp3 ii. sp2 iii. sp'. The d-involving sp3d and sp3d2 are ABSENT from the bonding chapter — 'sp3d'/'sp3d2' are ZERO in XI ch.5 — even though its own VSEPR table gives PCl5 as trigonal bipyramidal and SF6 as octahedral. The State Board first assigns sp3d2/d2sp3 in XII:9.9.1, valence bond theory for coordination complexes."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:4.6, XI:4.6.1, XI:4.6.2, XI:4.6.3",
+        "note": "4.6.3 'Hybridisation of Elements involving d Orbitals' covers the sp3d (PCl5) and sp3d2 (SF6) cases the State Board bonding chapter omits."
+      }
+    },
+    {
+      "section_no": "MHT-187",
+      "subtopic": "Ionic and Covalent Bonding, Lewis Structures and Octet Rule",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.2.1, XI:5.2.2, XI:5.2.3, XI:5.2.4, XI:5.2.5, XI:5.2.6, XI:5.2.7"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:4.1.1, XI:4.1.2, XI:4.1.3, XI:4.1.4, XI:4.1.5, XI:4.2, XI:4.2.1"
+      }
+    },
+    {
+      "section_no": "MHT-188",
+      "subtopic": "Molecular Orbital Theory and Bond Order",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.5, XI:5.5.1, XI:5.5.3, XI:5.5.4, XI:5.5.6, XI:5.6.4",
+        "note": "MO theory is 36 hits in XI ch.5 with bonding/antibonding orbitals, energy-level order and MO descriptions of simple diatomics; bond order is defined separately among the covalent-bond parameters at 5.6.4, not inside the MO block."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:4.7, XI:4.7.1, XI:4.7.3, XI:4.7.4, XI:4.7.5, XI:4.8, XI:4.3.4",
+        "note": "Bond order is defined at 4.3.4 under bond parameters; 4.8 works the homonuclear diatomics."
+      }
+    },
+    {
+      "section_no": "MHT-189",
+      "subtopic": "VSEPR Theory and Molecular Geometry",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.3",
+        "note": "XI:5.3's Table 5.3 runs the full 2-to-6 electron-pair series (linear, trigonal planar, tetrahedral, trigonal bipyramidal PCl5, octahedral SF6) and Table 5.4 handles lone pairs via the AB2E / AB3E / AB2E2 notation."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:4.4"
+      }
+    },
+    {
+      "section_no": "MHT-190",
+      "subtopic": "First-Order Kinetics, Rate Constant and Half-Life",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:6.5.1, XII:6.5.2, XII:6.5.3, XII:6.5.4, XII:6.5.5, XII:6.5.9"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:3.3.2, XII:3.3.3",
+        "note": "3.3.3 derives t1/2 = 0.693/k and both books also carry pseudo-first-order reactions."
+      }
+    },
+    {
+      "section_no": "MHT-191",
+      "subtopic": "Rate Law, Order, Molecularity and Rate Expression",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:6.3.1, XII:6.3.2, XII:6.3.3, XII:6.4.2, XII:6.4.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:3.2.1, XII:3.2.2, XII:3.2.3, XII:3.2.4"
+      }
+    },
+    {
+      "section_no": "MHT-192",
+      "subtopic": "Rate of Reaction, Stoichiometry and Average Rate",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:6.2, XII:6.2.1, XII:6.2.2",
+        "note": "XII:6.2 works the stoichiometric scaling explicitly on A + 3B -> 2C, giving rate = -d[A]/dt = -(1/3)d[B]/dt = (1/2)d[C]/dt, alongside average (6.2.1) and instantaneous (6.2.2) rate."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:3.1"
+      }
+    },
+    {
+      "section_no": "MHT-193",
+      "subtopic": "Reaction Mechanism, Intermediates and Rate-Determining Step",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:6.4.1, XII:6.4.2, XII:6.4.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:3.2.4",
+        "note": "All three sit inside 3.2.4 rather than a section of their own: NCERT works the iodide-catalysed H2O2 decomposition, names IO- as an intermediate 'formed during the course of the reaction but not in the overall balanced equation', and identifies the slow first step as rate determining. Searching 'reaction intermediate' returns zero — NCERT writes 'an intermediate'."
+      }
+    },
+    {
+      "section_no": "MHT-194",
+      "subtopic": "Temperature Dependence, Arrhenius and Collision Theory",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:6.6, XII:6.6.1, XII:6.7, XII:6.7.1, XII:6.7.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:3.4, XII:3.4.1, XII:3.5"
+      }
+    },
+    {
+      "section_no": "MHT-195",
+      "subtopic": "Zero-Order Kinetics",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:6.5.8"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:3.3.1, XII:3.3.3",
+        "note": "3.3.1 gives the integrated law [R] = -kt + [R]0, the linear plot and the ammonia-on-platinum example; the zero-order half-life t1/2 = [R]0/2k is derived one section later in 3.3.3."
+      }
+    },
+    {
+      "section_no": "MHT-196",
+      "subtopic": "Enthalpy and Relation Between ΔH and ΔU",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.8, XII:4.8.1, XII:4.8.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.2.2",
+        "note": "Cross-year: NCERT teaches thermodynamics in Std XI ch.5, the State Board holds it to Std XII ch.4. 5.2.2 defines H = U + pV and derives the delta-H to delta-U relation."
+      }
+    },
+    {
+      "section_no": "MHT-197",
+      "subtopic": "Entropy and Second Law",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.11.2, XII:4.11.3, XII:4.11.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.6",
+        "note": "Cross-year: NCERT teaches thermodynamics in Std XI ch.5, the State Board in Std XII ch.4. Entropy is 62 hits in NCERT ch.5; 5.6 carries entropy as a state function, a sub-part on the Second Law, plus absolute entropy and the third law."
+      }
+    },
+    {
+      "section_no": "MHT-198",
+      "subtopic": "First Law of Thermodynamics, Internal Energy and Work",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.3, XII:4.4, XII:4.6, XII:4.7, XII:4.7.1, XII:4.7.2",
+        "note": "The State Board adds a maximum-work section (4.5) that NCERT ch.5 lacks; conversely 'calorimet' is ZERO in the State Board corpus while NCERT devotes 5.3 to it. Neither gap touches the first law itself."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.1.4, XI:5.2.1, XI:5.3",
+        "note": "Cross-year: NCERT teaches thermodynamics in Std XI ch.5, the State Board in Std XII ch.4. 5.2.1 derives pressure-volume work and the isothermal reversible case, plus free expansion and the adiabatic case."
+      }
+    },
+    {
+      "section_no": "MHT-199",
+      "subtopic": "Gibbs Free Energy and Spontaneity",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.11.5, XII:4.11.6, XII:4.11.7, XII:4.11.8"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.6, XI:5.7",
+        "note": "Cross-year: NCERT teaches thermodynamics in Std XI ch.5, the State Board in Std XII ch.4. 5.6 gives delta-G = delta-H - T delta-S with the sign table over temperature; 5.7 links it to equilibrium."
+      }
+    },
+    {
+      "section_no": "MHT-200",
+      "subtopic": "Thermochemistry, Hess's Law and Bond Enthalpy",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.10, XII:4.10.5, XII:4.10.7, XII:4.10.8, XII:4.10.9"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.4, XI:5.5",
+        "note": "Cross-year: NCERT teaches thermodynamics in Std XI ch.5, the State Board in Std XII ch.4. NCERT gives Hess's law as a sub-part of 5.4 rather than its own numbered section, and puts bond, lattice and solution enthalpies in 5.5."
+      }
+    },
+    {
+      "section_no": "MHT-201",
+      "subtopic": "Thermodynamic Systems, Properties and Processes",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:4.2.1, XII:4.2.2, XII:4.2.3, XII:4.2.4, XII:4.2.5, XII:4.2.7"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:5.1.1, XI:5.1.2, XI:5.1.3",
+        "note": "Cross-year: NCERT teaches thermodynamics in Std XI ch.5, the State Board in Std XII ch.4. NAMING mismatch only: 'isochoric', 'isobaric' and 'path function' are ZERO in NCERT, which teaches the same processes as 'constant volume' and 'constant pressure' and states that q and w 'depend on the path and are not the state functions'."
+      }
+    },
+    {
+      "section_no": "MHT-202",
+      "subtopic": "Bonding Theories, EAN, Crystal Field, Hybridization and Magnetism",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:5.4.4, XII:9.6, XII:9.9.1, XII:9.9.6"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:4.6, XII:5.5.1, XII:5.5.2, XII:5.5.4, XII:5.5.5",
+        "note": "VBT (5.5.1), magnetic properties incl. the spin-only formula (5.5.2), CFT (5.5.4) and colour (5.5.5) are taught in full, with hybridisation at XI:4.6. MISSING: the EAN rule. 'effective atomic number', 'EAN', 'inert gas rule' and 'eighteen electron' are ZERO in NCERT. The State Board gives EAN its own section, XII:9.6."
+      }
+    },
+    {
+      "section_no": "MHT-203",
+      "subtopic": "Complex Types, Homoleptic, Heteroleptic, Cationic, Anionic, Neutral",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:9.4, XII:9.4.1, XII:9.4.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:5.2, XII:5.3.2",
+        "note": "NCERT has no separate 'classification of complexes' section: homoleptic/heteroleptic are defined in 5.2 and the cationic/anionic/neutral distinction is carried by the naming rules in 5.3.2, where the State Board sets it out as 9.4.1/9.4.2."
+      }
+    },
+    {
+      "section_no": "MHT-204",
+      "subtopic": "Isomerism in Coordination Compounds",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:9.7, XII:9.7.1, XII:9.7.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:5.4, XII:5.4.1, XII:5.4.2, XII:5.4.3, XII:5.4.4, XII:5.4.5"
+      }
+    },
+    {
+      "section_no": "MHT-205",
+      "subtopic": "Ligands, Denticity and Donor Atoms",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:9.2, XII:9.2.1, XII:9.2.2, XII:9.2.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:5.2",
+        "note": "The two books name the same idea differently: NCERT says unidentate/didentate ('monodentate' and 'bidentate' are both ZERO in NCERT) where the State Board says monodentate/bidentate. Ambidentate, polydentate, chelate, denticity and donor atom are all present in NCERT 5.2."
+      }
+    },
+    {
+      "section_no": "MHT-206",
+      "subtopic": "Oxidation State, Coordination Number and IUPAC Nomenclature",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:9.3.2, XII:9.3.3, XII:9.5"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:5.2, XII:5.3, XII:5.3.1, XII:5.3.2"
+      }
+    },
+    {
+      "section_no": "MHT-207",
+      "subtopic": "Batteries, Primary, Secondary and Fuel Cells",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:5.10, XII:5.10.1, XII:5.10.2, XII:5.10.3, XII:5.10.4, XII:5.11, XII:5.11.1"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:2.6, XII:2.6.1, XII:2.6.2, XII:2.7"
+      }
+    },
+    {
+      "section_no": "MHT-208",
+      "subtopic": "Cell Constant and Conductivity Measurements",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:5.3.1, XII:5.3.9"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:2.4, XII:2.4.1"
+      }
+    },
+    {
+      "section_no": "MHT-209",
+      "subtopic": "Faraday's Laws of Electrolysis",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:5.5.3",
+        "note": "Naming caveat, not a content gap: 'Faraday's law', 'laws of electrolysis' and 'electrochemical equivalent' are ALL ZERO in the State Board corpus. XII:5.5.3 teaches the identical quantitative relation — Q=It, charge/96500 to moles of electrons, then half-reaction stoichiometry — and defines the faraday as 96500 C per mole of electrons. Numericals are fully answerable; a 'state Faraday's first law' recall item is not."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:2.5",
+        "note": "States both laws by name under 'Quantitative Aspects of Electrolysis' in XII:2.5, and derives the Faraday constant."
+      }
+    },
+    {
+      "section_no": "MHT-210",
+      "subtopic": "Galvanic Cells, EMF, Nernst Equation and Thermodynamics",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:5.6, XII:5.6.1, XII:5.6.2, XII:5.6.3, XII:5.7, XII:5.7.1, XII:5.7.2, XII:5.8, XII:5.8.1, XII:5.8.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:2.2, XII:2.3, XII:2.3.1, XII:2.3.2"
+      }
+    },
+    {
+      "section_no": "MHT-211",
+      "subtopic": "Molar Conductivity, Kohlrausch's Law and Degree of Dissociation",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:5.3.2, XII:5.3.7, XII:5.3.8"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:2.4, XII:2.4.2"
+      }
+    },
+    {
+      "section_no": "MHT-212",
+      "subtopic": "Group 1 Alkali Metals, Properties and Reactivity",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.2.2, XI:8.2.3, XI:8.2.4, XI:8.2.6"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:3.6.1, XI:3.7.1",
+        "note": "No s-Block chapter, but XI:3.6.1 is not empty: it gives the Group 1 ns1 configuration table and teaches that these are reactive metals of low ionisation enthalpy forming 1+ ions, with reactivity increasing down the group; XI:3.7.1 adds radius and IE trends. MISSING: the group chemistry asked — oxide/peroxide/superoxide formation, the blue liquid-ammonia solution, Li2CO3 decomposition, uses."
+      }
+    },
+    {
+      "section_no": "MHT-213",
+      "subtopic": "Group 2 Alkaline Earth Metals, Properties and Reactivity",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.2.2, XI:8.2.3, XI:8.2.4, XI:8.2.5, XI:8.2.6"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:3.6.1, XI:3.7.2",
+        "note": "No s-Block chapter, but XI:3.6.1 covers Group 2 beside Group 1 (ns2, 2+ ions) and XI:3.7.2 does teach the Be-Al diagonal relationship with radius data, despite promising to defer it to group units that no longer exist. MISSING: reaction with cold and hot water, burning in air, BeO amphoterism, hydroxide and sulphate solubility trends, and quicklime."
+      }
+    },
+    {
+      "section_no": "MHT-214",
+      "subtopic": "Industrial Processes, Minerals, Hydrogen Compounds and Alloys",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:8.1.4, XI:8.3.1, XI:8.3.3, XI:8.3.4, XII:7.2",
+        "note": "Spans chapters and years: dihydrogen manufacture and water gas/syngas are XI:8.1.4, Solvay is XI:8.3.1, slaked lime XI:8.3.3, H2O2 including the Merck process XI:8.3.4, while the mineral names asked (carnallite, galena) are taught in the Std XII occurrence section 7.2."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "No s-Block chapter and no hydrogen unit. 'Solvay', 'blast furnace', 'Merck', 'carnallite', 'galena', 'pyrites', 'apatite' and 'quicklime' are all ZERO; 'water gas' has a single hit as an equilibrium example in XI:6; H2O2 manufacture is absent. Alloys survive only for transition metals at XII:4.3.14, not the s-block alloys asked."
+      }
+    },
+    {
+      "section_no": "MHT-215",
+      "subtopic": "Elements of Group 13, 14 and 15, Properties and Reactions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:9.2, XI:9.3, XI:9.4, XI:9.4.1, XI:9.6, XI:9.7, XI:9.8"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "NCERT deleted the p-Block chapters. 'borax', 'boric acid', 'orthoboric', 'silicone' and 'apatite' are ZERO; 'diborane' has 4 hits, every one B2H6 as a reducing reagent in the XII organic chapters; the phosphorus, nitric acid and ammonia hits are likewise reagents, not group chemistry. Only XI:3.6.2 survives, giving the configuration and non-metallic-character trend, with no group 13/14/15 reactions, oxidation states or structures."
+      }
+    },
+    {
+      "section_no": "MHT-216",
+      "subtopic": "General Trends and p-Block Properties",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:7.3, XII:7.4, XII:7.4.1, XII:7.4.2, XII:7.13, XII:7.13.1"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:3.6.2, XI:3.7.1",
+        "note": "XI:3.6.2 genuinely teaches the general trends asked — ns2np1 to ns2np6 configuration, the noble gases' very low reactivity, the highly negative electron gain enthalpies of halogens and chalcogens, non-metallic character across a period — and XI:3.7.1 gives atomic-size and ionisation trends. MISSING: noble-gas compounds. The only chemical 'xenon' hit names XeF2/KrF2 as a drawback of the octet rule; no xenon fluoride structures or hybridisation."
+      }
+    },
+    {
+      "section_no": "MHT-217",
+      "subtopic": "Group 16 Chalcogens, Oxygen, Sulphur and Ozone",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:7.7.1, XII:7.9, XII:7.9.1, XII:7.9.3, XII:7.10, XII:7.10.1, XII:7.10.2"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "NCERT deleted the p-Block chapter. 'puckered' and 'thermal stability' are ZERO; 'oleum' has 2 hits, both the sulphonation reagent; 'ozone' has 11 hits, all ozonolysis or CFC-driven depletion, never ozone chemistry. No S8 allotropy, no SO2 or H2SO4 manufacture, no group 16 hydride stability order, no chalcogen trends beyond the one line in XI:3.6.2."
+      }
+    },
+    {
+      "section_no": "MHT-218",
+      "subtopic": "Group 17 Halogens, Interhalogens and Oxoacids",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:7.8.2, XII:7.11, XII:7.11.1, XII:7.11.2, XII:7.12, XII:7.12.1"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "NCERT deleted the p-Block chapter. 'interhalogen' and 'bleaching powder' are ZERO. Halogen oxoacids survive only as ionisation-constant examples in XI:6 Equilibrium — acid strength alone, never structure, oxidation state or the oxoacid series asked. The 157 'halogen' hits are organic haloalkanes and haloarenes."
+      }
+    },
+    {
+      "section_no": "MHT-219",
+      "subtopic": "Green Chemistry, Principles, Atom Economy and Green Solvents",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:16.2, XII:16.3, XII:16.4"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'green chemistry', 'atom economy', 'sustainable', 'green solvent' and 'supercritical' are ALL ZERO across every NCERT chapter. The rationalised NCERT has no Green Chemistry chapter and no Environmental Chemistry chapter, so neither the twelve principles nor the atom-economy metric has a home."
+      }
+    },
+    {
+      "section_no": "MHT-220",
+      "subtopic": "Nanochemistry, Nanostructures, Classification and Synthesis",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:16.5, XII:16.6, XII:16.7, XII:16.7.2, XII:16.9, XII:16.10"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'nanomaterial', 'nanochemistry', 'top down', 'bottom up' and 'sol-gel' are ZERO in NCERT. 'nanoparticle' and 'nanotechnology' score exactly 1 hit each and both fall in the SAME sentence of XI Ch.1's historical preface, not a teaching section. No synthesis routes, no size-dependent property treatment."
+      }
+    },
+    {
+      "section_no": "MHT-221",
+      "subtopic": "Classification, Nomenclature and Physical Properties",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:10.1, XII:10.1.1, XII:10.2, XII:10.4, XII:10.4.1, XII:10.4.2, XII:10.4.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:6.1, XII:6.1.1, XII:6.1.2, XII:6.1.3, XII:6.2, XII:6.3, XII:6.6",
+        "note": "Both books classify by number of halogens and by the hybridisation of the carbon bearing X (alkyl, vinylic, aryl, allylic, benzylic). NCERT adds XII:6.3 on the polarity of the C-X bond as a separate section; the State Board folds the same content into XII:10.4.1."
+      }
+    },
+    {
+      "section_no": "MHT-222",
+      "subtopic": "Elimination and Aromatic Nucleophilic Substitution",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:10.6.5, XII:10.6.1",
+        "note": "The haloarene nucleophilic substitution sits in XII:10.6.1, whose heading names reactions with metals — reading the title alone would miss it. The text gives chlorobenzene to phenol at 623 K/300 atm, the activating effect of -NO2 at ortho/para and its absence at meta, and the resonance-stabilised carbanion intermediate."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:6.7.1, XII:6.7.2",
+        "note": "XII:6.7.2 works the nucleophilic-substitution mechanism on haloarenes explicitly, including why -NO2 acts only at ortho/para; XII:6.7.1 covers elimination with the Zaitsev rule. Neither book uses the E1/E2 labels — 'e1' and 'e2' are ZERO in the State Board chapter."
+      }
+    },
+    {
+      "section_no": "MHT-223",
+      "subtopic": "Nucleophilic Substitution Reactions (SN1 and SN2)",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:10.6.2, XII:10.6.3, XII:10.6.4, XII:10.5.4",
+        "note": "'sn1' 30 hits and 'sn2' 28, the deepest treatment in either book, with ambident nucleophiles included. The stereochemical consequence — inversion, racemisation, enantiomers — is carried by the optical-isomerism block XII:10.5.x rather than the mechanism sections."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:6.7.1",
+        "note": "NCERT keeps mechanism and stereochemistry together in XII:6.7.1: SN1 vs SN2, the reactivity order, ambident nucleophiles, and inversion demonstrated on the hydrolysis of optically active 2-bromobutane."
+      }
+    },
+    {
+      "section_no": "MHT-224",
+      "subtopic": "Polyhalogen Compounds — Freon, DDT, War Gases",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XII:10.7.5, XII:10.7.6, XII:7.11.1",
+        "note": "Freons XII:10.7.5 and DDT XII:10.7.6 are full. War gases are NOT in the Halogen Derivatives chapter at all: phosgene, tear gas and mustard gas are named with formulas in a SINGLE line on the uses of chlorine, XII:7.11.1, with no preparation, properties or effects. 'lewisite', 'chloropicrin', 'war gas' and 'chemical warfare' are ZERO in both books."
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:6.8, XII:6.8.5",
+        "note": "Rationalisation did NOT drop DDT, though it carries no numbered heading so a section-title check would say it had: 12 substantive mentions inside XII:6.8 (Paul Muller, insect resistance, fish toxicity, the ban). Freons are full at XII:6.8.5. MISSING: war gases entirely — 'mustard gas', 'tear gas', 'lewisite' and 'chloropicrin' are ZERO in NCERT, and 'phosgene' appears only as chloroform's oxidation product."
+      }
+    },
+    {
+      "section_no": "MHT-225",
+      "subtopic": "Preparation of Alkyl Halides",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:10.3.1, XII:10.3.2, XII:10.3.3, XII:10.3.4, XII:10.3.5",
+        "note": "The parent heading XII:10.3 reads as a reactions section but its numbered subsections are the preparation routes: from alcohols, from hydrocarbons, halogen exchange (Finkelstein), and for aryl halides direct electrophilic halogenation and Sandmeyer's reaction."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:6.4, XII:6.4.1, XII:6.4.2, XII:6.4.3, XII:6.5",
+        "note": "NCERT splits haloarene preparation into its own section XII:6.5 and adds the Swarts reaction for fluorides, which the State Board does not name."
+      }
+    },
+    {
+      "section_no": "MHT-226",
+      "subtopic": "Classification of Polymers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:15.2, XII:15.2.1, XII:15.2.2, XII:15.2.3, XII:15.2.4, XII:15.2.5, XII:15.2.6"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Every classification axis the exam uses is ZERO in NCERT: 'natural polymer', 'synthetic polymer', 'thermoplastic', 'thermosetting', 'elastomer', 'homopolymer', 'copolymer', 'addition polymer', 'condensation polymer', 'biodegradable'. NCERT defines polymer and monomer once in XI:9.3.5 but never classifies polymers. Searched both -s- and -z- spellings."
+      }
+    },
+    {
+      "section_no": "MHT-227",
+      "subtopic": "Polymerization Methods",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:15.2.3, XII:15.3"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:9.3.5, XI:9.4.4",
+        "note": "Addition polymerisation DOES survive inside Hydrocarbons: XI:9.3.5 gives ethene to polythene and propene to polypropene; XI:9.4.4 gives linear polymerisation of ethyne to polyacetylene and cyclic polymerisation to benzene. MISSING: condensation/step-growth polymerisation entirely ('condensation polymer', 'step growth', 'chain growth', 'copolymer' all ZERO) and any free-radical, cationic or anionic mechanism."
+      }
+    },
+    {
+      "section_no": "MHT-228",
+      "subtopic": "Polymers and Their Monomers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:15.3, XII:15.3.1, XII:15.3.2, XII:15.3.5, XII:15.3.6, XII:15.5.1, XII:15.5.2"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XI:9.3.5, XI:9.4.4, XII:10.1, XII:10.2",
+        "note": "Monomer is defined and three pairs survive: ethene/polythene and propene/polypropene, ethyne/polyacetylene; biopolymers keep their monomers in XII:10.1 (glucose in starch and cellulose) and XII:10.2 (alpha-amino acids in proteins). MISSING the synthetic monomer pairs the exam asks: 'terylene', 'PVC', 'neoprene', 'polyester' and 'polyamide' are ZERO, and nylon and bakelite get one incidental uses-mention each."
+      }
+    },
+    {
+      "section_no": "MHT-229",
+      "subtopic": "Properties and Applications of Polymers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:15.2.4, XII:15.3, XII:15.4, XII:15.5, XII:15.6"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "The properties half is a hard zero: 'thermoplastic', 'thermosetting', 'elastomer', 'biodegradable' and 'degree of polymerisation' all ZERO. Applications amount to two or three sentences inside Hydrocarbons — polythene for bags and bottles, polypropene for crates, polyacetylene film as a battery electrode. No properties framework, so not usable as coverage."
+      }
+    },
+    {
+      "section_no": "MHT-230",
+      "subtopic": "Buffer Solutions and Henderson-Hasselbalch",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.8, XII:3.8.1, XII:3.8.2, XII:3.8.3, XII:3.8.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.12, XI:6.12.1",
+        "note": "Cross-year: the State Board teaches this in Std XII ch.3 Ionic Equilibria, NCERT in Std XI ch.6 Equilibrium. NCERT derives the equation from Ka and names it the Henderson-Hasselbalch equation."
+      }
+    },
+    {
+      "section_no": "MHT-231",
+      "subtopic": "Ionic Equilibrium, Ka, Kb and Degree of Dissociation",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.2, XII:3.2.3, XII:3.4, XII:3.4.1, XII:3.4.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.11, XI:6.11.3, XI:6.11.4, XI:6.11.5",
+        "note": "Cross-year (State Board XII ch.3 vs NCERT XI ch.6). Naming caveat: 'Ostwald' and 'dilution law' are ZERO in NCERT ch.6, but the relation itself is explicit at XI:6.11.4, with the parallel treatment for Ka and pKa + pKb = 14 at XI:6.11.5. NCERT spells it 'degree of ionization' — the -s- spelling returns ZERO."
+      }
+    },
+    {
+      "section_no": "MHT-232",
+      "subtopic": "pH, pOH and Ionic Product of Water",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.5, XII:3.6, XII:3.6.1, XII:3.6.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.11.1, XI:6.11.2",
+        "note": "Cross-year: State Board XII ch.3, NCERT XI ch.6. Both give Kw, pKw and the pH + pOH = 14 relation."
+      }
+    },
+    {
+      "section_no": "MHT-233",
+      "subtopic": "Salt Hydrolysis",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.7, XII:3.7.1, XII:3.7.2, XII:3.7.3, XII:3.7.4, XII:3.7.5, XII:3.7.6"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.11.9",
+        "note": "Cross-year: State Board XII ch.3, NCERT XI ch.6. All four salt types are treated in each book, and NCERT gives the weak-acid/weak-base pH formula. Caveat common to BOTH books: the term 'hydrolysis constant' (Kh) is ZERO in each — pH is reached through Ka/Kb/Kw rather than a separately named Kh."
+      }
+    },
+    {
+      "section_no": "MHT-234",
+      "subtopic": "Solubility Product (Ksp)",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.9, XII:3.9.1, XII:3.9.2, XII:3.9.3, XII:3.10, XII:3.10.1"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.13, XI:6.13.1, XI:6.13.2",
+        "note": "Cross-year: State Board XII ch.3, NCERT XI ch.6. Both cover Ksp, the solubility relation and the common-ion effect."
+      }
+    },
+    {
+      "section_no": "MHT-235",
+      "subtopic": "Theories of Acids and Bases",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:3.3, XII:3.3.1, XII:3.3.2, XII:3.3.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:6.10, XI:6.10.1, XI:6.10.2, XI:6.10.3",
+        "note": "Cross-year: State Board XII ch.3, NCERT XI ch.6. Arrhenius, Bronsted-Lowry and Lewis in both; NCERT is the fuller on conjugate acid-base pairs."
+      }
+    },
+    {
+      "section_no": "MHT-236",
+      "subtopic": "Periodic Trends",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:7.5, XI:7.5.1, XI:7.5.2, XI:7.5.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:3.7, XI:3.7.1, XI:3.7.2"
+      }
+    },
+    {
+      "section_no": "MHT-237",
+      "subtopic": "Position in Periodic Table and Electronic Configuration",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:7.2, XI:7.3, XI:7.3.1, XI:7.3.2, XI:7.3.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:3.5, XI:3.6, XI:3.6.1, XI:3.6.2"
+      }
+    },
+    {
+      "section_no": "MHT-238",
+      "subtopic": "Balancing Redox Reactions and Oxidized/Reduced Species",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:6.3, XI:6.3.1, XI:6.3.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:7.3.1, XI:7.3.2"
+      }
+    },
+    {
+      "section_no": "MHT-239",
+      "subtopic": "Oxidation Number Calculation and Determination",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:6.2, XI:6.2.1, XI:6.2.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:7.3"
+      }
+    },
+    {
+      "section_no": "MHT-240",
+      "subtopic": "Reducing/Oxidizing Agents and Acidic/Basic Oxides",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:6.1.2, XI:6.2.3, XI:7.5.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:7.1, XI:7.2, XI:3.7.2",
+        "note": "Split across two chapters in both books: oxidising and reducing agents sit in Redox, while the acidic/basic/amphoteric oxide trend is taught in the Periodicity chapter — NCERT 3.7.2 works Na2O basic, Cl2O7 acidic and Al2O3 amphoteric with a solved problem, matching State Board XI:7.5.3."
+      }
+    },
+    {
+      "section_no": "MHT-241",
+      "subtopic": "Crystal Defects, Magnetic Properties and Semiconductors",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:1.8, XII:1.8.1, XII:1.9, XII:1.9.1, XII:1.9.2, XII:1.9.3, XII:1.9.4, XII:1.9.5, XII:1.10"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'defect' and 'vacancy' are ZERO in the ENTIRE NCERT corpus, as are 'Schottky', 'Frenkel', 'doping', 'n-type', 'p-type', 'band theory' and 'antiferromagnet'. Nearest misses, neither usable: XII:4.3.9 names dia/para/ferromagnetic for transition-metal IONS via unpaired electrons, not solid-state magnetic ordering; XII:2.4 name-checks 'semiconductor' as a conductivity class with no band or doping treatment."
+      }
+    },
+    {
+      "section_no": "MHT-242",
+      "subtopic": "Density and Crystal Structure Calculations",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:1.5.1, XII:1.5.2, XII:1.7.4"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "The density-edge-length relation has no home in NCERT: 'unit cell' and 'edge length' are ZERO across all 19 chapters, so there is nothing to relate molar mass, density and cell edge to. The only hcp/bcc/ccp hits sit in a lattice-type label table for transition metals in XII:4.3.1 and teach no crystal geometry."
+      }
+    },
+    {
+      "section_no": "MHT-243",
+      "subtopic": "Packing Efficiency and Voids",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:1.6, XII:1.6.1, XII:1.6.2, XII:1.6.3, XII:1.7, XII:1.7.1, XII:1.7.2, XII:1.7.3"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'packing efficiency', 'void' and 'tetrahedral void' are ZERO in NCERT. 'close packed' scores only 2 hits, both expanding the abbreviation hcp/ccp in the transition-metal lattice table at XII:4.3.1 — no coordination number of a lattice, no void count per atom, none of the 52.4/68/74 per cent derivations."
+      }
+    },
+    {
+      "section_no": "MHT-244",
+      "subtopic": "Types of Solids, Crystal Systems and Properties",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:1.2, XII:1.2.1, XII:1.2.2, XII:1.2.3, XII:1.3, XII:1.3.1, XII:1.3.2, XII:1.3.3, XII:1.3.4, XII:1.4.4"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'crystal system', 'amorphous', 'isomorphism', 'polymorphism', 'molecular solid', 'covalent solid' and 'lattice point' are ZERO in NCERT. 'ionic solid' scores 2 incidental hits in lattice-enthalpy prose and 'metallic solid' 1 — neither classifies solids nor lists the seven crystal systems or fourteen Bravais lattices."
+      }
+    },
+    {
+      "section_no": "MHT-245",
+      "subtopic": "Unit Cells, Edge Length and Atomic Radius",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:1.4.1, XII:1.4.2, XII:1.4.3, XII:1.5, XII:1.5.1, XII:1.5.2"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'unit cell', 'edge length', 'crystal system' and 'lattice point' are ZERO across all 19 NCERT chapters. NCERT's 'atomic radius' (17 hits, XI:3.7.1) is the periodic-TREND radius, a different quantity from the exam's cell relations, and there is no unit-cell particle count."
+      }
+    },
+    {
+      "section_no": "MHT-246",
+      "subtopic": "Depression of Freezing Point",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:2.9, XII:2.9.1, XII:2.9.2, XII:2.9.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:1.6, XII:1.6.3"
+      }
+    },
+    {
+      "section_no": "MHT-247",
+      "subtopic": "Elevation of Boiling Point",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:2.8, XII:2.8.1, XII:2.8.2, XII:2.8.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:1.6, XII:1.6.2"
+      }
+    },
+    {
+      "section_no": "MHT-248",
+      "subtopic": "Osmotic Pressure",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:2.10, XII:2.10.1, XII:2.10.2, XII:2.10.3, XII:2.10.4, XII:2.10.5, XII:2.10.6"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:1.6.4, XII:1.6.5"
+      }
+    },
+    {
+      "section_no": "MHT-249",
+      "subtopic": "Types of Solutions, Solubility and Henry's Law",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:2.2, XII:2.3, XII:2.4, XII:2.4.1",
+        "note": "Henry's law carries no heading here — it is taught inside XII:2.4.1 'Factors affecting solubility', stated as S = K_H P with the units and physical meaning of K_H worked out."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:1.1, XII:1.3, XII:1.3.1, XII:1.3.2, XII:1.4.2"
+      }
+    },
+    {
+      "section_no": "MHT-250",
+      "subtopic": "Van't Hoff Factor and Abnormal Molar Mass",
+      "stateBoard": {
+        "status": "partial",
+        "coveredBy": "XII:2.11, XII:2.11.1, XII:2.11.2, XII:2.11.3",
+        "note": "Dissociation is taught in full: i defined two ways including formula mass over observed molar mass, the four modified colligative expressions, and i against degree of dissociation. MISSING is solute ASSOCIATION, the i<1 case — 'dimer' is ZERO in XII:2 and 'associat-' returns a single hit that is the ordinary English verb, so the benzoic-acid-in-benzene problem has no basis in this book. 'abnormal' is also ZERO."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:1.7",
+        "note": "Titled 'Abnormal Molar Masses' and covers BOTH directions, dissociation and association — association being the leg the State Board omits."
+      }
+    },
+    {
+      "section_no": "MHT-251",
+      "subtopic": "Vapour Pressure and Raoult's Law",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:2.5, XII:2.5.1, XII:2.5.2, XII:2.7, XII:2.7.1, XII:2.7.2, XII:2.7.3",
+        "note": "Raoult's law for liquid-liquid and for nonvolatile solutes, relative lowering of vapour pressure, and ideal against non-ideal solutions with positive and negative deviation are all present. Worth knowing: AZEOTROPES are absent — 'azeotrope' and 'azeotropic' are ZERO in the State Board corpus, against 10 hits in NCERT XII:1.5.2."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:1.4, XII:1.4.1, XII:1.4.3, XII:1.5, XII:1.5.1, XII:1.5.2, XII:1.6.1"
+      }
+    },
+    {
+      "section_no": "MHT-252",
+      "subtopic": "Laws of Chemical Combination and Percentage Composition",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.4, XI:1.4.1, XI:1.4.2, XI:1.4.3, XI:1.4.4, XI:1.5, XI:2.4.1",
+        "note": "The five laws sit in XI:1.4-1.5, but percentage composition and empirical formula live in a DIFFERENT chapter, XI:2.4.1 in Introduction to Analytical Chemistry, where NCERT keeps both in Ch.1."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.5, XI:1.5.1, XI:1.5.2, XI:1.5.3, XI:1.5.4, XI:1.5.5, XI:1.9, XI:1.9.1"
+      }
+    },
+    {
+      "section_no": "MHT-253",
+      "subtopic": "Mole Concept and Interconversions",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.8, XI:1.9"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.8, XI:1.10",
+        "note": "Mass-mole-particle interconversion is XI:1.8; the mole-to-gas-volume leg is worked in XI:1.10. The books disagree on the constant, which will bite a student: NCERT uses 22.7 L (STP at 1 bar) and '22.4' is ZERO in NCERT, while the State Board uses 22.4 L throughout XI:1.9."
+      }
+    },
+    {
+      "section_no": "MHT-254",
+      "subtopic": "SI Units, Physical Properties and Atomic Abundance",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:1.3, XI:1.3.1, XI:1.3.2, XI:1.7.2"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.3, XI:1.3.3, XI:1.3.4, XI:1.3.5, XI:1.3.6, XI:1.3.7, XI:1.7.2",
+        "note": "Both print the seven SI base units as a table and both derive average atomic mass from isotopic abundance in section 1.7.2 of their Ch.1."
+      }
+    },
+    {
+      "section_no": "MHT-255",
+      "subtopic": "Stoichiometry and Concentration",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:2.5, XI:2.5.1, XI:2.6, XI:2.7, XI:2.7.1, XI:2.7.2, XI:2.7.3, XI:2.7.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:1.10, XI:1.10.1, XI:1.10.2, XII:1.2",
+        "note": "Cross-year: NCERT teaches stoichiometry, limiting reagent and the four concentration terms in XI:1.10.x, then repeats and extends them with ppm in XII:1.2. The State Board puts the whole topic in XI Ch.2 Introduction to Analytical Chemistry, not its Ch.1."
+      }
+    },
+    {
+      "section_no": "MHT-256",
+      "subtopic": "Gas Laws and Ideal Gas Equation",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:10.3, XI:10.4, XI:10.4.1, XI:10.4.2, XI:10.4.3, XI:10.4.4, XI:10.5, XI:10.5.1, XI:10.5.2, XI:10.5.3, XI:10.5.4"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "NCERT deleted its States of Matter chapter and none of this survived elsewhere. 'Boyle', 'Charles', 'kinetic molecular', 'critical temperature' and '22.4' are ZERO across all 19 chapters. 'ideal gas equation' has exactly ONE hit, at XI:6.4.1, used incidentally to convert Kp to Kc. 'Gay-Lussac' survives at XI:1.5.4 but as the law of gaseous VOLUMES, a stoichiometric combining law, not the P-T gas law."
+      }
+    },
+    {
+      "section_no": "MHT-257",
+      "subtopic": "Real Gases, Dalton's Law and KTG",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:10.2, XI:10.5.6, XI:10.6, XI:10.7",
+        "note": "Dalton's law of partial pressures with aqueous tension at XI:10.5.6; KTG postulates, the ideal-against-real comparison and compressibility factor Z at XI:10.6; liquefaction and critical constants at XI:10.7. Boundary worth knowing: the van der Waals EQUATION is absent — it and 'excluded volume' are ZERO in BOTH books — as are rms and most-probable molecular speeds."
+      },
+      "ncert": {
+        "status": "not",
+        "note": "Deleted with the States of Matter chapter. 'real gas', 'compressibility factor', 'kinetic molecular', 'liquefaction', 'root mean square' and 'critical temperature' are ZERO across all of NCERT; the 16 'van der Waals' hits are all intermolecular forces in bonding and organic chapters. Dalton's law survives only as an applied one-liner in XII:1.4.1 Solutions, not as a gas law, and no KTG treatment exists anywhere."
+      }
+    },
+    {
+      "section_no": "MHT-258",
+      "subtopic": "Bohr's Atomic Model",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.6, XI:4.6.1, XI:4.6.2, XI:4.6.3, XI:4.6.4, XI:4.6.5"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.4, XI:2.4.1, XI:2.4.2"
+      }
+    },
+    {
+      "section_no": "MHT-259",
+      "subtopic": "Electromagnetic Radiation and Wave Properties",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.5, XI:4.5.1",
+        "note": "TEXTBOOK ERROR worth reporting: the State Board spells it 'Plank', not 'Planck' — the correct spelling scores ZERO in that book and the misspelling 5 hits in XI Ch.4, against 19 correct spellings in NCERT. Its black-body and photoelectric treatment is also thin (2 mentions each) where NCERT XI:2.3.2 develops both."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.3, XI:2.3.1, XI:2.3.2"
+      }
+    },
+    {
+      "section_no": "MHT-260",
+      "subtopic": "Electronic Configuration and Pauli/Hund Rules",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.7.2, XI:4.7.5, XI:4.7.6",
+        "note": "Pauli's exclusion principle is stated at XI:4.7.2 with quantum numbers and then applied, with Hund's rule of maximum multiplicity, inside XI:4.7.5 Aufbau principle — neither has a heading of its own."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.6.4, XI:2.6.5, XI:2.6.6"
+      }
+    },
+    {
+      "section_no": "MHT-261",
+      "subtopic": "Hydrogen Spectrum and Rydberg Equation",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.5.2, XI:4.6.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.3.3, XI:2.4.1"
+      }
+    },
+    {
+      "section_no": "MHT-262",
+      "subtopic": "Quantum Mechanical Model, de Broglie, Heisenberg and Quantum Numbers",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.6.5, XI:4.7, XI:4.7.1, XI:4.7.2, XI:4.7.3, XI:4.7.4",
+        "note": "de Broglie and Heisenberg are taught in XI:4.6.5 'Reasons for failure of the Bohr model', not under the quantum-model heading, so a title search misses them; the text there sets out both developments explicitly before XI:4.7."
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.5, XI:2.5.1, XI:2.5.2, XI:2.6, XI:2.6.1, XI:2.6.2, XI:2.6.3"
+      }
+    },
+    {
+      "section_no": "MHT-263",
+      "subtopic": "Subatomic Particles, Isotopes, Isobars and Isoelectronic Species",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:4.1, XI:4.1.1, XI:4.1.2, XI:4.1.3, XI:4.2, XI:4.3"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XI:2.1, XI:2.1.1, XI:2.1.4, XI:2.2.3, XI:2.2.4, XI:3.7.1",
+        "note": "Cross-chapter: NCERT defines isoelectronic species in XI:3.7.1 while discussing ionic radii, not in its Structure of Atom chapter. Also 'isotone' is ZERO in NCERT, whereas the State Board teaches isotones alongside isotopes and isobars in XI:4.3."
+      }
+    },
+    {
+      "section_no": "MHT-264",
+      "subtopic": "Adsorption, Physisorption, Chemisorption and Isotherms",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:11.2, XI:11.3, XI:11.3.1, XI:11.3.2, XI:11.4, XI:11.5, XI:11.6"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'physisorption', 'chemisorption', 'Freundlich' and 'surface chemistry' are ZERO in NCERT. The 9 'adsorption' hits all sit in XI:8.8.5 and describe adsorption CHROMATOGRAPHY as a purification technique; the 8 'isotherm' hits are all isothermal processes in XI Ch.5 Thermodynamics. There is no adsorption isotherm to cite."
+      }
+    },
+    {
+      "section_no": "MHT-265",
+      "subtopic": "Catalysis and Nanomaterials",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:11.7, XI:11.7.1, XI:11.7.2, XI:11.7.3, XI:11.8, XI:11.8.1, XII:16.6.3, XII:16.9"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:3.4.1, XI:6.8.5, XII:4.3.12, XII:10.3",
+        "note": "The catalysis that survived rationalisation: catalyst lowering activation energy (XII:3.4.1), catalyst not shifting equilibrium (XI:6.8.5), catalytic properties of transition metals with a one-line surface-bond mechanism (XII:4.3.12), enzymes as biocatalysts (XII:10.3). MISSING: 'homogeneous catalysis' and 'heterogeneous catalysis' are ZERO, as are 'promoter', 'zeolite' and 'shape selective'; no adsorption theory of catalysis and no nanomaterial content at all."
+      }
+    },
+    {
+      "section_no": "MHT-266",
+      "subtopic": "Colloids, Classification, Coagulation and Hardy-Schulze Rule",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XI:11.9, XI:11.9.1, XI:11.9.2, XI:11.9.3, XI:11.9.4, XI:11.9.5, XI:11.9.6, XI:11.9.7, XI:11.9.8"
+      },
+      "ncert": {
+        "status": "not",
+        "note": "'colloid', 'Tyndall', 'emulsion', 'micelle' and 'Hardy' are ALL ZERO in NCERT. 'coagulation' scores 2 hits and both are protein coagulation on denaturation in XII Ch.10 Biomolecules, not colloid coagulation. No lyophilic/lyophobic classification and no Hardy-Schulze rule."
+      }
+    },
+    {
+      "section_no": "MHT-267",
+      "subtopic": "Alloys, Minerals, Ores and Catalysts",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.6.6, XII:8.6.8, XII:8.9, XII:8.9.1"
+      },
+      "ncert": {
+        "status": "partial",
+        "coveredBy": "XII:4.3.12, XII:4.3.14, XII:4.7",
+        "note": "Catalytic properties (4.3.12) and alloy formation (4.3.14, naming ferrous alloys, brass and bronze) are taught in full, with further uses at 4.7. MISSING: minerals and ores. 'pyrites', 'calamine', 'malachite' and 'chalcopyrite' are ZERO; the only ores NCERT names are chromite and pyrolusite, purely as feedstock for K2Cr2O7 and KMnO4. There is no metallurgy section at all."
+      }
+    },
+    {
+      "section_no": "MHT-268",
+      "subtopic": "Colour, Magnetic Properties and Spin-Only Formula",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.6.4, XII:8.6.5"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:4.3.9, XII:4.3.10",
+        "note": "4.3.9 states the spin-only formula and tabulates calculated against observed moments for the first row; 4.3.10 Formation of Coloured Ions carries the d-configuration and colour table."
+      }
+    },
+    {
+      "section_no": "MHT-269",
+      "subtopic": "Inner Transition Elements, Lanthanoids and Actinoids",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.10, XII:8.12, XII:8.12.1, XII:8.12.2, XII:8.12.4, XII:8.13, XII:8.14, XII:8.15"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:4.5, XII:4.5.1, XII:4.5.2, XII:4.5.3, XII:4.6, XII:4.6.4, XII:4.7",
+        "note": "Configurations, oxidation states, lanthanoid contraction and the actinoid comparison are all covered. Applications differ: NCERT 4.7 offers misch metal and steels, while the erbium-doped optical-fibre amplifier this subtopic asks for is a State Board item (XII:8.13)."
+      }
+    },
+    {
+      "section_no": "MHT-270",
+      "subtopic": "Oxidation States of Transition Elements",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.4"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:4.3.4"
+      }
+    },
+    {
+      "section_no": "MHT-271",
+      "subtopic": "Position, Electronic Configuration and General Features of d-Block",
+      "stateBoard": {
+        "status": "full",
+        "coveredBy": "XII:8.2, XII:8.3, XII:8.3.1, XII:8.8"
+      },
+      "ncert": {
+        "status": "full",
+        "coveredBy": "XII:4.1, XII:4.2, XII:4.3, XII:4.3.1"
+      }
+    }
+  ]
+}
