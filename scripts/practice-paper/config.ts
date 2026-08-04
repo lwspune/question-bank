@@ -83,6 +83,175 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "NDA GAT MOCK W09" — 150-q NDA GAT (General Ability Test) weekly MOCK spanning
+  // EIGHT subjects: English (Q1–50), History (Q52–56, 61, 63–68, 70, 116), Polity (Q57,
+  // 59, 60, 62, 69), Chemistry (Q71–83, 85), Physics (Q84, 112, 126–150), Geography
+  // (Q51, 58, 86–105, 120, 123), Biology (Q106–111, 113–115) and Current Affairs
+  // (Q117–119, 121, 122, 124, 125). Born-digital .docx with a clean text layer, so stems
+  // and options came straight from pandoc; only three questions carried their content as
+  // IMAGES (Q132 speed-of-light options, Q134 equations-of-motion options, and the
+  // \(v_1\)/\(v_2\) symbols in the Q132 stem) and were transcribed off the extracted PNGs.
+  // NO printed key — all 150 answers DERIVED by per-subject agents and then INDEPENDENTLY
+  // re-derived question-by-question during review (full agreement, 0 key changes).
+  //
+  // Semantic dedup vs the 3,429-row NDA GAT bank (English/History/Geography/Polity/
+  // Economics/Chemistry/Physics/Biology/Current Affairs), run BEFORE any answer work:
+  // 19 DUP / 38 MAYBE / 93 NEW. MAYBE rows are kept as "new" per the standing precedent
+  // (same family, different instance/values/polarity => a genuinely different question),
+  // with ONE promoted to "dup": Q30, whose bank twin shares 3 of 4 options AND the answer
+  // and is the same reskinned discourse-marker item as the already-dup Q26–Q29. Net:
+  // 126 new / 20 dup / 4 flawed. Physics dedup is dominated by "same template, different
+  // numbers" MAYBEs (Q127/137/138/148/149/150) — different values, so different answers.
+  //
+  // 4 rows HELD PRIVATE as status:"flawed" (printed defects; each keyed for OMR grading
+  // but kept out of the browsable bank):
+  //   Q21  — options (a) and (b) are BOTH "RQSP". The correct sequence is PSRQ, so the
+  //          key (D) is unaffected, but the printed option block is broken.
+  //   Q94  — the stem calls Anaimudi "the highest peak of Eastern Ghats". It is the
+  //          highest peak of the WESTERN Ghats (Kerala); the highest Eastern Ghats peak
+  //          is Arma Konda, in Andhra Pradesh — which is ALSO printed as option (a). Keyed
+  //          C (where Anaimudi actually is), but the item is ambiguous as printed.
+  //   Q131 — asks for a "pure ratio and hence dimensionless" quantity, but none of the
+  //          four printed options is dimensionless (density, velocity, Young's modulus,
+  //          spring constant). The intended answer (strain) is absent. Keyed C.
+  //   Q150 — asks for a VELOCITY but every option is labelled in joules. The value 10 is
+  //          correct and unique, so option (d) "10 J" is keyed on its number.
+  // Also noted (kept "new"): Q124's option (d) is truncated in the source as "Digital
+  // banking infrastructu" -> transcribed as "infrastructure" (key unaffected); Q31 is a
+  // genuinely close call between two discourse markers; Q53's standard gana-sangha
+  // republics (Vajji/Malla) are absent from the options; Q83's option (d) is also true of
+  // a neutral atom; and Q96/Q102/Q117–125 are year-sensitive current-data items (Q102 is
+  // additionally ambiguous — ISFR gives Mizoram the top FOREST-cover increase but
+  // Chhattisgarh the top FOREST-AND-TREE-cover increase, and both are printed options).
+  //
+  // OFFICIAL KEY CROSS-CHECK (the LWS key arrived separately as a CSV covering all 150,
+  // AFTER the answers were derived + independently re-derived): 146/150 AGREE. Of the 4
+  // divergences, 3 were reconciled TO the official key and 1 is held against it:
+  //   Q35  C -> D  adopted. Arguable: 'of course' is the more idiomatic discourse marker
+  //                and 'predominantly' is a degree adverb, so the derived answer was (c).
+  //                Followed the key because it is the teacher's paper; the weakest adoption.
+  //   Q42  D -> C  adopted. Both QRPS and SQRP are grammatical; SQRP is main-clause-first,
+  //                consistent with the setter's own style in Q44.
+  //   Q44  C -> D  adopted, and the official key is genuinely BETTER — the derived QPRS is
+  //                circular ("because it had to wait ... it couldn't take off") while SPQR
+  //                reads cleanly. A real derivation error on our side.
+  //   Q135 HELD at C against an official key of A. The official key is PROVABLY WRONG:
+  //                petroleum, natural gas and coal are all fossil fuels and therefore
+  //                CONVENTIONAL, while tidal energy is the non-conventional one. Corroborated
+  //                by a byte-identical NDA PYQ already in the bank (60c7c564-…, same stem and
+  //                same four options in the same order) which keys (c) Tidal energy. Grading
+  //                against the official key would mark every correct student wrong.
+  // Separately, the official key CONFIRMED the best-guess key on all four flawed rows
+  // (Q21=D, Q94=C, Q131=C, Q150=D), so OMR grading is sound on them despite the defects.
+  //
+  // Two transcription traps this paper exposed, both caught by probe rather than by eye:
+  // (1) the LAST option of every "Directions:"-headed block swallowed the NEXT block's
+  // rubric (11 questions); (2) an option whose own text contains "(C)"/"(P)" reads as an
+  // option marker and mis-splits the block (Q126). Both are fixed in the transcription.
+  "gat-mock-w09": {
+    slug: "gat-mock-w09",
+    title: "NDA GAT — LWS Mock W09",
+    recordsFile: "gat-mock-w09.records.json",
+    outName: "Tags_NDA_GAT_Mock_W09",
+    sourceFile: "NDA_GAT_MOCK_W09.docx",
+    subjects: {
+      English: {
+        "Fill in the Blanks": ["Contextual Fill-in-Blank", "Contextual Word Selection (Phrasal Verbs and Collocations)"],
+        Grammar: ["Direct and Indirect Speech", "Discourse Markers and Connectors", "Sentence Completion", "Subject-Verb Agreement"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension", "Vocabulary in Context"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)", "Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": ["Correct Sentence Identification"],
+        Vocabulary: ["Confusable Word Pairs", "Synonyms", "Word Definition"],
+      },
+      History: {
+        "Ancient India": [
+          "Ancient Indian Literature and Inscriptions", "Buddhism, Jainism and Religious Architecture",
+          "Harappan and Indus Valley Civilization", "Mahajanapadas, Magadha and Mauryan Empire",
+          "Vedic Age, Society and Literature",
+        ],
+        "Medieval India": ["Medieval Travellers, Trade and Crops", "Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)"],
+        "Modern India": [
+          "19th Century Social and Religious Reform", "British Administration, Acts and Legislation",
+          "Freedom Movement — INC, Gandhi and Independence",
+        ],
+        "World History": ["20th Century — World Wars, Modernity and Global Institutions"],
+      },
+      Polity: {
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": ["Constitutional Bodies and Offices"],
+        "Indian Constitution — Making, Foundation and Amendments": ["Constitutional Amendments", "Features, Parts and Schedules of Constitution"],
+        "World Polity, Democracy and International Relations": ["Democracy and Political Theory", "India's Foreign Policy — Panchsheel"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Pressure and Winds", "Climate Classification and Zones",
+          "Humidity, Condensation, Clouds and Precipitation", "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth in Space, Maps and Coordinates": ["Time Zones and International Date Line"],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics", "Earthquakes and Seismic Waves",
+          "Rocks, Minerals and Geological Time", "Weathering and Denudation",
+        ],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Agriculture, Crops, Soils and Land Use", "Economic Sectors and Government Schemes",
+          "Energy and Industries — Power, Petroleum, Iron and Steel", "Highways, Railways and Transport Corridors",
+          "Minerals and Mining", "Ports and Maritime Infrastructure",
+        ],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India", "Indian Rivers, Lakes and Water Bodies",
+          "Indian States and Islands", "Mountains, Plateaus and Plains of India",
+        ],
+        Oceanography: ["Ocean Currents"],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": [
+          "Acid-Base Theory: Concepts, Oxides and Electrolytes", "Common Acids: Names, Formulas and Uses",
+          "pH Scale and Common Substances",
+        ],
+        "Atomic Structure and Periodic Classification": [
+          "Atomic Models: Dalton, Rutherford, Bohr", "Isotopes and Isoelectronic Species",
+          "Periodic Trends, Valency and Atomicity",
+        ],
+        "Chemical Bonding": ["Ionic and Covalent Bonding", "Valency, Oxidation States and Molecular Formula"],
+        "Industrial and Applied Chemistry": ["Cement, Glass and Building Materials", "Industrial Gases, Manufacturing and Reactions"],
+        "Matter and Its States": ["Compounds, Mixtures and Solutions"],
+      },
+      Physics: {
+        "Energy Sources": ["Energy Sources"],
+        "Fluid Mechanics and Properties of Matter": ["Buoyancy, Density and Flotation"],
+        Gravitation: ["Newton's Law of Gravitation", "Orbits, Kepler and Escape"],
+        "Kinematics and Motion": ["Circular Motion", "Equations of Motion and Graphs", "Projectile and Vertical Motion"],
+        "Laws of Motion and Forces": ["Conservation of Momentum and Collisions", "Impulse and Momentum", "Newton's Laws of Motion"],
+        "Light and Optics": [
+          "Lenses and Lens Formula", "Light Phenomena and Spectrum",
+          "Reflection and Mirrors", "Refraction, Speed of Light and TIR",
+        ],
+        Sound: ["Applications — SONAR, Transducers, Instruments"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": ["Energy and Conservation", "Work and Work Done"],
+      },
+      Biology: {
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": ["Cell Organelles and Functions"],
+        "Human Physiology": [
+          "Circulatory and Lymphatic System", "Digestive System and Enzymes",
+          "Nervous System and Sense Organs", "Nutrition, Vitamins and Minerals",
+        ],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": ["Transpiration, Tropisms and Plant Processes"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["UNESCO Recognitions and Cultural Heritage"],
+        "Government Schemes, Policy and Governance": ["Government Events, Reports and Announcements", "Health, Education and Welfare Schemes"],
+        "Science and Technology": ["Information Technology and Railway Safety", "Space Technology and Astronomy"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Mock W09",
+    examName: "NDA",
+    section: { key: "gat-mock-w09", label: "GAT Mock W09" },
+    bankAdd: true,
+    createPaper: false, // Excel + (optional) bank ingest; no /dashboard/papers paper
+  },
+
   // LWS "CHEMICAL BONDING – 30 MCQs" — a 30-q Class-11 Chemistry worksheet, supplied as a
   // single WhatsApp photo (two printed columns, Q1–15 left / Q16–30 right). Legible enough
   // to transcribe directly from the image (upscaled column crops); NO printed key, so every
