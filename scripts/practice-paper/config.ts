@@ -729,6 +729,54 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: false, // Excel-only: emit the OMR tagged sheet, no bank commit / no paper
   },
 
+  // DR APJ INNOVATION JUNIOR COLLEGE "NDA PHYSICS PRACTICE TEST — UNITS & DIMENSIONS" —
+  // 25-q NDA Physics test (45 min, 100 marks), no printed key (answers DERIVED).
+  // Born-digital DOCX with a clean text layer: every stem and all four options came
+  // straight from pandoc, so NO vision pass was needed — only the unicode superscripts
+  // in the dimensional formulas were re-typeset as LaTeX. Single-chapter mode; the NDA
+  // Physics "Units, Measurement and Dimensions" chapter has exactly ONE DB subtopic
+  // ("Units and Dimensions"), so all 25 file there.
+  // Semantic dedup vs the whole 17-q chapter (both question_kinds): 22 new / 3 dup /
+  // 0 flawed — every printed option block is well formed and each has exactly one
+  // correct option present, which is unusually clean for an LWS paper. The 3 dups are
+  // Q2 (G dimensions ≈ 5deaac34, NDA 1 2022 PYQ), Q3 (light year ≈ 6cef58cb / 005c8378)
+  // and Q7 (dimensionless quantity ≈ acceba7a, NDA 1 2025 PYQ — identical stem AND
+  // identical keyed answer "Strain", only the distractors are harder here). Two MAYBEs
+  // adjudicated to NEW per the standing precedent: Q4 (the "which pair is NOT identical"
+  // family also in 24bd737d, but only 2 of 4 options shared and the keyed option text
+  // differs — force/surface-tension vs tension/surface-tension) and Q17 (SI:CGS force
+  // ratio, the inverse statement of eef81c32's "1 dyne equals" over a disjoint option
+  // set). Answer spread A10/B8/C4/D3 — A-heavy but that is how the paper is printed.
+  //
+  // OFFICIAL KEY CROSS-CHECK (the teacher's key arrived separately as a CSV covering all
+  // 25, AFTER every answer had been derived): 25/25 AGREE — zero divergences, the first
+  // LWS paper in this registry to come back perfect (the recent ones ran 146/150, 69/70,
+  // 49/50, 45/50). That includes the four hardest items, all confirmed: Q6 (surface
+  // tension in an E/V/T basis -> EV^-2T^-2), Q8 (van der Waals a -> ML^5T^-2), Q21 (a/b
+  // -> L^-1/2 T^2) and Q25 (mass in an F/L/T basis -> FL^-1T^2). It also confirms the
+  // A-heavy spread is the paper's own, not a transcription artifact.
+  //
+  // createPaper:false => BANK INGEST ONLY (user's request: "add new to nda physics"), so
+  // commit-paper commits just the 22 status:"new" rows — with no paper to back the
+  // printed test, the 3 dups have no consumer (the OMR Excel is built from the records
+  // file, not the bank). Set createPaper:true to also create the /dashboard/papers paper,
+  // which would then commit all 25 for OMR parity.
+  "phys-units-dim-25": {
+    slug: "phys-units-dim-25",
+    title: "NDA Physics — Units & Dimensions Practice Test (25 Q)",
+    recordsFile: "phys-units-dim-25.records.json",
+    outName: "Tags_NDA_Physics_Units_and_Dimensions_25Q",
+    sourceFile: "NDA_Physics_Units_and_Dimensions_Practice_Test.docx",
+    subjectName: "Physics",
+    chapterName: "Units, Measurement and Dimensions",
+    subtopics: ["Units and Dimensions"],
+    pyqNote: "NDA Physics practice — APJ Units & Dimensions Practice Test (25 Q)",
+    examName: "NDA",
+    section: { key: "units-dimensions", label: "Units & Dimensions" },
+    bankAdd: true,
+    createPaper: false, // bank ingest only — no /dashboard/papers paper (user's request)
+  },
+
   // LWS "NDA Practice Test — Physics: Units and dimensions, Vectors" (27-6-26) — 50-q
   // NDA Physics test, no printed key (answers DERIVED). Q1–25 Units & Dimensions,
   // Q26–50 Vectors. Born-digital PDF; the vector half (Q26–50) came through the text
