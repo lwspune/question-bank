@@ -134,6 +134,20 @@ def scrub(title):
 # student needs the reference to be right or visibly incomplete, never plausible
 # and wrong.
 TITLE_OVERRIDES = {
+    # PROSE-SWALLOWED headings: the heading ran straight into the sentence that
+    # follows it, so the stored title was a paragraph. Found 2026-08-04 by
+    # scripts/syllabus/audit-spine.ts, which was written after the same defect
+    # class turned up in the Physics NCERT spine. Each verified against its own
+    # chapter PDF, where the heading line reads exactly as given here:
+    #   1.5.5  -> "...Avogadro's Law equal volumes of all gases at the same
+    #             temperature and pressure should contain equal number of molecules"
+    #   6.10.3 -> "...Lewis Acids and Bases acid as a species which accepts
+    #             electron pair and base which donates an electron pair"
+    #   5.4.1  -> "...Geometric Isomerism complexes due to different possible
+    #             geometric arrangements of the ligands. Important examples"
+    (11, "1.5.5"): "Avogadro's Law",
+    (11, "6.10.3"): "Lewis Acids and Bases",
+    (12, "5.4.1"): "Geometric Isomerism",
     (11, "4.7.2"): "Conditions for the Combination of Atomic Orbitals",
     (11, "6.10.1"): "Arrhenius Concept of Acids and Bases",
     (11, "6.10.2"): "The Brönsted-Lowry Acids and Bases",
