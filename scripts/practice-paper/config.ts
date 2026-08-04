@@ -135,7 +135,9 @@ export const PAPERS: Record<string, PaperSpec> = {
   //   Q44  C -> D  adopted, and the official key is genuinely BETTER — the derived QPRS is
   //                circular ("because it had to wait ... it couldn't take off") while SPQR
   //                reads cleanly. A real derivation error on our side.
-  //   Q135 HELD at C against an official key of A. The official key is PROVABLY WRONG:
+  //   Q135 HELD at C against an official key of A — TEACHER-CONFIRMED 2026-08-04, so this
+  //                divergence is a deliberate ruling, NOT an unreviewed override: do not
+  //                "correct" it back to the official key. The official key is PROVABLY WRONG:
   //                petroleum, natural gas and coal are all fossil fuels and therefore
   //                CONVENTIONAL, while tidal energy is the non-conventional one. Corroborated
   //                by a byte-identical NDA PYQ already in the bank (60c7c564-…, same stem and
