@@ -168,7 +168,13 @@ def is_heading_face(span, body: float) -> bool:
     volume (9.0 against a 10.0-10.5 body).
     """
     f = span["font"].lower()
-    if span["size"] >= body * 1.25:
+    # STRICTLY LARGER than body, at any weight. A 1.25x multiplier was too
+    # blunt: NCERT Std XII sets sub-section headings in plain "Bookman" at 12.0
+    # against a 10.5 body, which clears `> body` but not `>= body * 1.25`, so
+    # 5.2.1 "The magnetic field lines" was silently dropped while 5.2.2-5.2.4
+    # (set in Bookman,Bold) survived. Figure captions are unaffected either way
+    # — they sit BELOW body size in every volume.
+    if span["size"] > body:
         return True
     return ("demi" in f or "bold" in f) and span["size"] >= body
 
@@ -288,6 +294,14 @@ def extract(path: str, chapters) -> tuple[dict, dict]:
         # appending that would yield "INTRODUCTION NTRODUCTION".
         if pending and key == pending["key"] and not HEADING.match(text) and len(text) < 70:
             joined = " ".join(pending["parts"])
+            # CASE MUST MATCH. Std XI sets some BODY text in Bookman-Demi, which
+            # passes the bold test, so an all-caps heading happily swallowed the
+            # sentence after it: 9.3 became "STREAMLINE FLOW So far we have
+            # studied fluids at rest. The study". A wrapped continuation of an
+            # all-caps heading is itself all-caps; running prose is not.
+            if joined and not any(c.islower() for c in joined) and any(c.islower() for c in text):
+                pending = None
+                continue
             if not joined.upper().endswith(text.upper()):
                 pending["parts"].append(text)
             continue
@@ -297,7 +311,14 @@ def extract(path: str, chapters) -> tuple[dict, dict]:
     for ref in order:
         best = max((" ".join(c["parts"]) for c in cands[ref]), key=len)
         title = title_case(clean(best))
-        if title:
+        # A HEADING NAMES SOMETHING: it must carry at least one alphabetic word
+        # of 3+ letters. Display maths sits above body size, so relaxing the size
+        # test to `> body` (needed to recover 5.2.1) also admitted physical
+        # constants as sections — "3.84" -> "10", "6.67" -> "10 459 60",
+        # "5.0" -> "m s" — from 3.84x10^8 m, 6.67x10^-11 and friends. Every real
+        # section title in these books clears this bar comfortably; the shortest
+        # are "Cells", "Atoms", "Beats".
+        if title and re.search(r"[A-Za-z]{3}", title):
             out[ref] = title
     return out, titles
 
