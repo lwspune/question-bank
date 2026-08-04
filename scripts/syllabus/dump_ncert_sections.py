@@ -148,6 +148,35 @@ TITLE_OVERRIDES = {
     (11, "1.5.5"): "Avogadro's Law",
     (11, "6.10.3"): "Lewis Acids and Bases",
     (12, "5.4.1"): "Geometric Isomerism",
+    # BARE-NUMBER headings: Std XII sets these with the number alone on its own
+    # line and the title beside it, so the extractor sees an empty title and the
+    # `3 <= len(title)` guard drops the section entirely. Same layout that
+    # silently lost sections from the Physics NCERT spine. Each title below was
+    # read off the chapter PDF by following the bold run after the number.
+    (11, "8.3.1"): "Complete, Condensed and Bond-line Structural Formulas",
+    (12, "6.4.2"): "From Hydrocarbons",
+    (12, "8.1.1"): "Nomenclature",
+    (12, "8.2.1"): "Preparation of Aldehydes and Ketones",
+    (12, "8.2.2"): "Preparation of Aldehydes",
+    (12, "8.6.1"): "Nomenclature",
+    (12, "8.9.3"): "Reactions Involving -COOH Group",
+    (12, "10.2.2"): "Classification of Amino Acids",
+    # SAME REGION, titles that WERE extracted but came out truncated or with the
+    # body interleaved. Found while verifying the bare-number holes above; the
+    # audit's title probe does not catch these because they carry no sentence
+    # break and no first-person prose.
+    #   8.1.2  was "Structure of"
+    #   8.2.3  was "Preparation 1. From acyl chlorides of Ketones"
+    #   8.9.1  was "Reactions Acidity Involving Reactions with metals and
+    #              alkalies Cleavage of O-H Bond"
+    #   8.9.2  was "Reactions 1. Formation of anhydride Involving Cleavage of
+    #              C-OH Bond"
+    #   10.2.3 was "Structure"
+    (12, "8.1.2"): "Structure of the Carbonyl Group",
+    (12, "8.2.3"): "Preparation of Ketones",
+    (12, "8.9.1"): "Reactions Involving Cleavage of O-H Bond",
+    (12, "8.9.2"): "Reactions Involving Cleavage of C-OH Bond",
+    (12, "10.2.3"): "Structure of Proteins",
     (11, "4.7.2"): "Conditions for the Combination of Atomic Orbitals",
     (11, "6.10.1"): "Arrhenius Concept of Acids and Bases",
     (11, "6.10.2"): "The Brönsted-Lowry Acids and Bases",
@@ -256,16 +285,25 @@ TITLE_OVERRIDES = {
 EXTRA_SECTIONS = {
     (11, 3): [("3.1", "Why do we Need to Classify Elements?")],
     (11, 5): [("5.3", "Measurement of ∆U and ∆H: Calorimetry")],
-    (11, 8): [("8.2", "Tetravalence of Carbon: Shapes of Organic Compounds")],
+    # ONE ENTRY PER (class, chapter) — a repeated key silently wins over the
+    # earlier one, so the sub-section additions below are merged into their
+    # chapter's existing list rather than appended as a second entry.
+    #
     # Title "" means "take it from TITLE_OVERRIDES above".
     # 1.7 sits PAST the last extracted section rather than in a numbering hole, so
     # the hole-filler never reaches it. Verified as printed in the chapter.
+    #
+    # The `N.M.K` entries are SUB-SECTION holes: the book sets them as a bare
+    # number with the title beside it, which the extractor reads as an empty
+    # title and drops. The hole-filler only repairs TOP-LEVEL gaps, so these can
+    # never be recovered automatically.
+    (11, 8): [("8.2", "Tetravalence of Carbon: Shapes of Organic Compounds"), ("8.3.1", "")],
     (12, 1): [("1.1", ""), ("1.2", ""), ("1.7", "")],
-    (12, 6): [("6.2", ""), ("6.3", ""), ("6.4", ""), ("6.5", ""), ("6.7", ""), ("6.8", "")],
-    (12, 9): [("9.2", ""), ("9.3", ""), ("9.8", "")],
-    (12, 10): [("10.2", ""), ("10.5", "")],
-    (12, 8): [("8.6", "")],
     (12, 5): [("5.1", "")],
+    (12, 6): [("6.2", ""), ("6.3", ""), ("6.4", ""), ("6.5", ""), ("6.7", ""), ("6.8", ""), ("6.4.2", "")],
+    (12, 8): [("8.6", ""), ("8.1.1", ""), ("8.2.1", ""), ("8.2.2", ""), ("8.6.1", ""), ("8.9.3", "")],
+    (12, 9): [("9.2", ""), ("9.3", ""), ("9.8", "")],
+    (12, 10): [("10.2", ""), ("10.5", ""), ("10.2.2", "")],
 }
 
 # Numbers that are NOT sections. NCERT numbers its intext/exercise questions N.M

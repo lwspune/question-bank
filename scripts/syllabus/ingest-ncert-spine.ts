@@ -630,12 +630,27 @@ REFUSING TO WRITE — ${orphans.length} entr(ies) name no live section:`);
   // the worst failure this table has: it does not look wrong, it just sends a
   // student to a page that is not in their book. Runs on dry-run too, so the
   // check happens while the mapping is being written, not after it ships.
-  const { data: sbRows, error: sbErr } = await db
-    .from("syllabus_concepts")
-    .select("class,section_no")
-    .eq("source", "MH State Board");
-  if (sbErr) throw new Error(`sb sections: ${sbErr.message}`);
-  const sbLive = new Set((sbRows ?? []).map((r) => `${r.class}|${r.section_no}`));
+  // SCOPED TO CHEMISTRY *AND* PAGED. This query was neither, and both mattered
+  // the moment a second subject existed:
+  //   - no subject filter meant Physics State Board sections counted as valid
+  //     targets for a Chemistry ruling, which is simply the wrong book;
+  //   - no paging meant PostgREST silently capped the result at 1000 rows.
+  //     Chemistry State Board is 863 rows and Physics added 587, so the table
+  //     crossed the cap and ~450 real sections became invisible — the validator
+  //     then rejected 26 perfectly good refs and refused to write. The failure
+  //     looked like corrupt mappings; it was a truncated SELECT.
+  const sbLive = new Set<string>();
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("syllabus_concepts")
+      .select("class,section_no")
+      .eq("source", "MH State Board")
+      .eq("subject", "Chemistry")
+      .range(from, from + 999);
+    if (error) throw new Error(`sb sections: ${error.message}`);
+    for (const r of data ?? []) sbLive.add(`${r.class}|${r.section_no}`);
+    if ((data ?? []).length < 1000) break;
+  }
   // A ref may be prefixed "XII:" to name the OTHER school year. That is not a
   // formatting nicety — the central finding of this mapping is that a third of
   // NCERT Std XI lands in State Board Std XII, and a bare "4.2" would leave a
@@ -693,6 +708,16 @@ REFUSING TO WRITE — ${orphans.length} entr(ies) name no live section:`);
   // subject's NCERT rows, and since `wanted` only ever holds this run's sections
   // every other subject's rows are "stale" — so running the Chemistry ingest
   // would delete the whole Physics NCERT spine, rulings cascading with it.
+  // --concepts-only stops here: no prune, no rulings. Used when an EXTRACTOR
+  // fix adds or retitles sections in a spine whose rulings are already
+  // adjudicated and must not be rewritten as a side effect. Skipping the prune
+  // is safe for that case by construction — recovering sections only ever ADDS,
+  // so there is nothing stale to remove, and a prune here could only destroy.
+  if (process.argv.includes("--concepts-only")) {
+    console.log("\n--concepts-only: wrote concepts; skipped prune and rulings.");
+    return;
+  }
+
   const { data: existing, error: exErr } = await db
     .from("syllabus_concepts")
     .select("id,class,section_no")
