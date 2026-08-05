@@ -16,7 +16,13 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
-import { keepForSubject, parseSubjectArg, gridTableToPipe, unwrapPhantom } from "./lib";
+import {
+  keepForSubject,
+  parseSubjectArg,
+  gridTableToPipe,
+  stripEmptyMath,
+  unwrapPhantom,
+} from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, loadPaper, recordsPath, requirePaperId, isCommittable, type PaperData } from "./config";
 
 type Rec = {
@@ -58,8 +64,11 @@ function buildRows(paperId: string, paper: PaperData, subject?: string, numericO
     // as raw `+====+` noise on /browse and in every Word export. Chemistry leans
     // on data tables far harder than Maths/Physics did (111 stems vs 10).
     // A stemOverride is authored by hand, so it is already in the right shape.
+    // stripEmptyMath runs over BOTH paths and last: pandoc leaves `\(\ \)` where
+    // a fill-in blank stood, and parseLatex trims it to a bare backslash that
+    // KaTeX rejects, failing the entire stem. It is content-free either way.
     const text = normalizeNewlines(
-      paper.stemOverrides?.[key] ?? unwrapPhantom(gridTableToPipe(r.stem)),
+      stripEmptyMath(paper.stemOverrides?.[key] ?? unwrapPhantom(gridTableToPipe(r.stem))),
     );
     if (!text.trim()) throw new Error(`Q${r.questionNumber}: empty stem — add a stemOverride in papers/${paperId}.json`);
 
@@ -100,7 +109,7 @@ function buildRows(paperId: string, paper: PaperData, subject?: string, numericO
     }
     const options = base.map((o) => ({
       label: o.label,
-      text: normalizeNewlines(optOverrides[o.label] ?? o.text),
+      text: normalizeNewlines(stripEmptyMath(optOverrides[o.label] ?? o.text)),
       isCorrect: o.label === answer,
     }));
     if (options.length !== 4) throw new Error(`Q${r.questionNumber}: expected 4 options, got ${options.length}`);

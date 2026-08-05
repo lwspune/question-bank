@@ -17,6 +17,7 @@ import { parseLatex } from "../../src/components/math/parseLatex";
 import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { EXAM_ID, loadPaper, requirePaperId } from "./config";
+import { stripEmptyMath } from "./lib";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -79,7 +80,10 @@ async function main() {
       console.warn(`  Q${num}: not committed — skipping`);
       continue;
     }
-    const newText = normalizeNewlines(paper.stemOverrides?.[num] ?? q.text);
+    // stripEmptyMath mirrors commit.ts: a `\(\ \)` blank left by pandoc trims to
+    // a bare backslash that KaTeX rejects, failing the whole stem. Applying it
+    // here too keeps a resynced row identical to a freshly committed one.
+    const newText = normalizeNewlines(stripEmptyMath(paper.stemOverrides?.[num] ?? q.text));
 
     // Numeric (NAT) rows: no options; hash via numericContentHash; the answer
     // lives in numeric_answer (correctable via a numericOverride).
@@ -108,7 +112,7 @@ async function main() {
       paper.answerOverrides?.[num] ?? opts.find((o) => o.is_correct)?.label ?? "";
     const newOpts = opts.map((o) => ({
       ...o,
-      newText: normalizeNewlines((optOv as Record<string, string>)[o.label] ?? o.text),
+      newText: normalizeNewlines(stripEmptyMath((optOv as Record<string, string>)[o.label] ?? o.text)),
       newCorrect: o.label === answer,
     }));
 
