@@ -11,6 +11,7 @@ import {
   solnNumberingIsBroken,
   matchValueToOption,
   gridTableToPipe,
+  sanitizeLatex,
   solFilesForSubject,
   stripEmptyMath,
   unwrapPhantom,
@@ -817,6 +818,22 @@ describe("unwrapPhantom — reveal reagents pandoc buried in a phantom", () => {
   it("is idempotent", () => {
     const once = unwrapPhantom("A \\xrightarrow{\\phantom{LiAlH_{4}}} B");
     expect(unwrapPhantom(once)).toBe(once);
+  });
+});
+
+describe("sanitizeLatex — de-glue prefix macros before an UPPERCASE letter", () => {
+  it("splits the macros that broke 2023-feb01", () => {
+    expect(sanitizeLatex("\\midMn^{2+}")).toBe("\\mid Mn^{2+}");
+    expect(sanitizeLatex("\\odotA^{2+}")).toBe("\\odot A^{2+}");
+    expect(sanitizeLatex("\\rightleftharpoonsPCl_{3}")).toBe("\\rightleftharpoons PCl_{3}");
+    expect(sanitizeLatex("K_{2}SO_{4}\\cdotAl_{2}")).toBe("K_{2}SO_{4}\\cdot Al_{2}");
+  });
+
+  it("leaves the LONGER macro alone — it continues in lowercase", () => {
+    // This is the whole reason these were excluded from the general list.
+    expect(sanitizeLatex("a\\cdots b")).toBe("a\\cdots b");
+    expect(sanitizeLatex("x\\simeq y")).toBe("x\\simeq y");
+    expect(sanitizeLatex("\\cdot 6H_{2}O")).toBe("\\cdot 6H_{2}O");
   });
 });
 

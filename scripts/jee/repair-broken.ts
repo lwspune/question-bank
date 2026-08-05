@@ -20,7 +20,7 @@ import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { EXAM_ID, loadPaper, paperDataPath, requirePaperId } from "./config";
-import { parseSubjectArg, stripEmptyMath } from "./lib";
+import { parseSubjectArg, sanitizeLatex, stripEmptyMath } from "./lib";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -65,7 +65,7 @@ async function main() {
 
   for (const r of (data ?? []) as { question_number: string; text: string }[]) {
     if (renders(r.text)) continue;
-    const cleaned = stripEmptyMath(r.text);
+    const cleaned = stripEmptyMath(sanitizeLatex(r.text));
     if (cleaned === r.text || !renders(cleaned)) { stillBroken.push(r.question_number); continue; }
     file.stemOverrides = { ...(file.stemOverrides ?? {}), [r.question_number]: cleaned };
     fixed.push(r.question_number);
