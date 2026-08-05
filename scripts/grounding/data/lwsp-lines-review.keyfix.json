@@ -1,0 +1,12 @@
+[
+  {
+    "id": "4de53769-c45b-4a1a-bc7e-67aa82cab5d0",
+    "new_label": "C",
+    "solution": "Since \\(AB\\) is parallel to \\(DC\\), and \\(A(2,3)\\), \\(B(4,3)\\) place \\(AB\\) along \\(y=3\\) with length 2, the side \\(DC\\) lies along \\(y=1\\) through \\(C(5,1)\\); hence \\(D=(d,1)\\). Equal legs \\(AD=BC\\) give \\(\\sqrt{(d-2)^2+4}=\\sqrt{5}\\), so \\((d-2)^2=1\\) and \\(d=1\\) or \\(d=3\\). Both values satisfy the equal-leg condition, so the **isosceles** requirement is what decides between them, and the test is that an isosceles trapezium has **equal diagonals**. For \\(d=1\\): \\(AC=\\sqrt{3^2+2^2}=\\sqrt{13}\\) and \\(BD=\\sqrt{3^2+2^2}=\\sqrt{13}\\) are equal, and the figure is symmetric about \\(x=3\\) with \\(DC=4\\) and \\(AB=2\\). For \\(d=3\\): \\(AC=\\sqrt{13}\\) but \\(BD=\\sqrt{1^2+2^2}=\\sqrt{5}\\), which differ; moreover \\(DC=2=AB\\), so \\(ABCD\\) would be a parallelogram, not an isosceles trapezium. Hence \\(D=(1,1)\\). Hence (C)."
+  },
+  {
+    "id": "a6333a7b-e6ff-4483-bae7-58f19e99c5ec",
+    "new_label": "B",
+    "solution": "From the previous item \\(D=(1,1)\\), so the vertices are \\(A(2,3)\\), \\(B(4,3)\\), \\(C(5,1)\\), \\(D(1,1)\\). Diagonal \\(AC\\) joins \\((2,3)\\) and \\((5,1)\\): slope \\(-\\dfrac{2}{3}\\), giving \\(2x+3y=13\\). Diagonal \\(BD\\) joins \\((4,3)\\) and \\((1,1)\\): slope \\(\\dfrac{2}{3}\\), giving \\(2x-3y=-1\\). Adding the two equations gives \\(4x=12\\), so \\(x=3\\); then \\(3y=7\\), so \\(y=\\dfrac{7}{3}\\). The diagonals meet at \\(\\left(3,\\dfrac{7}{3}\\right)\\), which lies on the trapezium's axis of symmetry \\(x=3\\), as it must. Note that the midpoint shortcut does **not** apply here: diagonals bisect each other only in a parallelogram, and this is a genuine trapezium with \\(DC=4\\neq 2=AB\\). Hence (B)."
+  }
+]
