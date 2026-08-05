@@ -45,6 +45,30 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 **How to apply:** decide between two options. **(a) Fix it** — add `requireSubjectArg` and `.eq("subject", cfg.subject)` to both fetches, and put the subject in the title instead of the hardcoded "Chemistry" string at line ~186. Cheap, and it keeps the WEIGHT column plus the fact that it reads the hand-authored NCERT→State Board edge directly, which is stronger evidence than a derivation. **(b) Retire it** in favour of `export-chapter-maps.ts` (added 2026-08-05), which is subject-scoped and emits BOTH teacher documents — but note it derives NCERT↔State Board from the exam rulings rather than reading edge B, so for a subject that HAS edge B authored (now both) option (a) is the more precise document. Prefer (a), then consider teaching `export-chapter-maps.ts` to prefer edge B when it exists.
 
+### Relax `experimental.cpus: 4` + `staticPageGenerationTimeout: 180` now the query spill is gone
+
+`next.config.mjs` carries both settings solely to throttle around the `/questions` prerender statement timeouts of 2026-08-03. Those were caused by `queryQuestions` spilling ~14 MB to disk per call, which was fixed at the cause on 2026-08-05 (`fa9b627`, production-verified at 0 temp writes and 44 ms). The throttles are now treating a symptom that no longer exists, and `cpus: 4` caps build parallelism on every build.
+
+**Why:** builds are the dominant cost of the gate (~25 MB egress and a couple of minutes each, three per push), so a faster build is felt on every push. Low urgency — the conditional build skip means builds run roughly half as often, which shrank the payoff while this sat in the queue.
+
+**How to apply:** remove both lines, run `npm run gate` twice and confirm zero `statement timeout` / SIGTERM lines and 62x prerendered `.html` files on disk (`find .next/server/app -name '*.html' | wc -l`). If timeouts reappear, restore `staticPageGenerationTimeout` alone first — it was the SIGTERM-mid-retry fix — and only then `cpus`. Do NOT do this in the same push as other risky work; it wants a clean signal.
+
+### Extend the ECONNRESET/fetch-failure retry to the prerender path
+
+`isStatementTimeout` in `src/lib/questions/query.ts` matches SQLSTATE 57014 only. An ECONNRESET surfaces as a *thrown* fetch-level network error and is not retried anywhere.
+
+**Why:** demoted from "urgent" on 2026-08-05 — the spill fix removed the cause and there have been zero occurrences since. But Vercel's deploy build still prerenders 689 pages against production by necessity, so a connection-reset burst there can fail a real deploy, and nothing protects it. Cheap insurance rather than a live-failure fix.
+
+**How to apply:** widen the retry predicate to also catch a thrown `TypeError: fetch failed` / `ECONNRESET` (wrap the awaited query in try/catch rather than only inspecting the PostgREST error object), keeping the same 2-attempt budget and backoff. Add cases to the existing query tests. Apply the same guard to the `/questions` landing-page loaders.
+
+### Consider scoping `audit:omml` and `audit:underlines` by `source_file`
+
+`audit:text` and `audit:keys` both take a `source_file` substring (fixed 2026-08-05 to be case-insensitive and to fail loudly on a zero-row scan). `audit:omml` and `audit:underlines` accept no argument and always sweep the whole 37k-row bank.
+
+**Why:** an unfiltered bank-wide sweep is ~50 MB of egress — about two full builds — and after an ingest only the new rows are unvetted. Not urgent: unlike `audit:text`, neither is part of the documented post-ingest ritual, so they run rarely.
+
+**How to apply:** mirror the `audit:text` pattern exactly — `process.argv[2]` → `.ilike("source_file", '%'+filter+'%')` on the paged query, plus the `⚠ NOTHING SCANNED` guard and non-zero exit when a filter matches nothing. Both scripts already page correctly, so it is a two-line change each.
+
 ## 2026-08-04
 
 ### ~~Remove the `?? "full"` default from `ingest-exam-spine.ts`, or retire the script~~ — **DONE 2026-08-04**
