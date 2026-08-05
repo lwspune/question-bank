@@ -872,6 +872,14 @@ describe("stripEmptyMath — drop content-free math zones", () => {
     );
   });
 
+  it("drops a zone holding only a LaTeX line break", () => {
+    // `\(\\)` is what pandoc leaves where a NAT answer-blank stood: a line break
+    // with nothing to break. KaTeX rejects it and the whole stem fails to
+    // render. Five rows of 2025-apr04 hit this.
+    expect(stripEmptyMath("nitrogen is \\(\\\\) % (nearest integer)")).toBe("nitrogen is % (nearest integer)");
+    expect(stripEmptyMath("produced is \\(\\\\) kg")).toBe("produced is kg");
+  });
+
   it("drops other pure-spacing payloads", () => {
     expect(stripEmptyMath("a \\(\\quad\\) b")).toBe("a b");
     expect(stripEmptyMath("a \\(\\,\\) b")).toBe("a b");
