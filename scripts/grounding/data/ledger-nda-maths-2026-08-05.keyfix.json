@@ -1,0 +1,12 @@
+[
+  {
+    "id": "771d677e-1b0f-4f27-ac56-c30f03b13e41",
+    "new_label": "A",
+    "solution": "Coefficient determinant: \\(\\begin{vmatrix}1&2&3\\\\2&1&3\\\\5&5&9\\end{vmatrix}=1(9-15)-2(18-15)+3(10-5)=-6-6+15=3\\). Since \\(\\Delta=3\\neq0\\), by Cramer's rule the system has a UNIQUE solution. Solving: \\(R_2\\to R_2-2R_1\\) gives \\(-3y-3z=0\\Rightarrow y=-z\\); \\(R_3\\to R_3-5R_1\\) gives \\(-5y-6z=-1\\). Substituting \\(y=-z\\): \\(5z-6z=-1\\Rightarrow z=1\\), so \\(y=-1\\) and \\(x=1-2(-1)-3(1)=0\\). The unique solution is \\((x,y,z)=(0,-1,1)\\), which satisfies all three equations. Hence (A). [Note: an earlier version of this solution row-reduced correctly but then mis-stated the rank as 2; the two reduced rows are independent, so the rank is 3 and the solution is unique.]"
+  },
+  {
+    "id": "59e05e11-b21a-428c-9952-65f3f344f9e2",
+    "new_label": "C",
+    "solution": "\\(f(x)=2\\cos^2x-1=\\cos 2x\\), so \\(f'(x)=-2\\sin 2x\\). The function decreases where \\(f'(x)<0\\), i.e. where \\(\\sin 2x>0\\), i.e. \\(2x\\in(2k\\pi,\\,2k\\pi+\\pi)\\), giving \\(x\\in\\left(k\\pi,\\ k\\pi+\\dfrac{\\pi}{2}\\right)\\) for integers \\(k\\). Each such interval has length \\(\\dfrac{\\pi}{2}\\), so the longest interval of decrease is \\(\\dfrac{\\pi}{2}\\). Hence (C). [Note: the length is \\(\\pi\\) only for \\(\\cos x\\); the double angle halves the period, and with it every monotone interval.]"
+  }
+]
