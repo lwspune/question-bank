@@ -143,6 +143,38 @@ parsing in `promote-gaps.ts`, which is why that helper splits on `" :: "` before
 
 ---
 
+## Declined subtopic proposals — the reshape's actual worklist
+
+Agents propose a `taxonomyGap` when nothing in the handout fits. Promoting one
+mid-ingest is cheap; *reconciling* it at reshape time is not, and a name that
+overlaps an existing subtopic leaves two live axes in one chapter. So the rule
+applied from wave 9 on: **promote only what is genuinely absent, decline
+anything that overlaps, and log the decline here.**
+
+Promoted (genuinely absent, no overlap):
+
+| name | chapter | why it was a real hole |
+|---|---|---|
+| `Magnetic Properties of Solids` | Solid State | JEE had NO magnetism subtopic at all — only Classification, Crystal Defects, Unit Cells, Voids |
+| `Polyhalogen Compounds — Freon, DDT, War Gases` | Haloalkanes and Haloarenes | JEE had only Nucleophilic Substitution + Classification/Nomenclature |
+| `Qualitative Analysis of Acidic Radicals` | The p-Block Elements | no lab/qualitative-analysis subtopic anywhere in JEE Chemistry |
+
+Declined, and why — each is a reshape decision, not an ingest one:
+
+| proposed | declined because |
+|---|---|
+| `Electron Gain Enthalpy` | `Classification of Elements and Periodicity :: Periodic Properties` already covers it. Splitting one named property out from under a general subtopic fragments the axis. |
+| `Types of Redox Reactions` | `Balancing Redox Reactions and Oxidized/Reduced Species` already exists. The real gap is that **JEE has no Redox chapter at all** (see §1); adding a subtopic under an unrelated chapter would entrench the wrong home. |
+| `Oxidation State, Coordination Number and IUPAC Nomenclature` | subsumes the existing `Coordination Compounds :: Ligands and Coordination Number`. |
+| `Industrial Processes, Minerals, Hydrogen Compounds and Alloys` | subsumes the existing `The s-Block Elements :: Solvay Process`. The real problem is that the question spans s-, p- and d-block processes at once, which no single subtopic fixes. |
+
+Note the agents proposed sibling-exam wording **verbatim** in every case and
+refused to coin their own — the handout rule working as intended. The judgement
+about overlap is the maintainer's, not theirs, because only the maintainer is
+looking at the whole chapter.
+
+---
+
 ## Stragglers — 5 questions absent from otherwise-shipped papers
 
 Found by `npx tsx scripts/jee/coverage.ts --subject=Chemistry`, which diffs the
