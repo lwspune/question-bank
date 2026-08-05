@@ -31,6 +31,18 @@ node -e "const r=require('./scripts/jee/out/2023-jan24.records.json');console.lo
 A paper is SAFE (extracted key trustworthy, agent verifies) or BLIND (key
 untrustworthy, agent solves from scratch and the key is ignored).
 
+**Use `npx tsx scripts/jee/triage.ts --subject=<S>`** — it applies everything
+below to every not-yet-ingested paper at once. The manual form is kept here
+because the reasoning still has to be understood; a SAFE verdict is a report, not
+an oracle, and a paper's own `notes` override it.
+
+TWO facts drive the call, and BOTH must hold for SAFE. First, **are there keys at
+all** — an MCQ key lives on the OPTIONS (`isCorrect`), not a top-level field, so
+counting the field alone reports a fully-keyed paper as keyless. A couple of
+unextracted keys is normal (an image-options row) and stays SAFE; a large hole
+means the extractor lost its place and the keys it DID find may sit on the wrong
+questions. Second, **can a key be tied to its question**:
+
 - `grep -oE '^[0-9]+\.' out/<id>_soln.md | sort -u | wc -l` vs the extractor's
   ordered-block count.
 - **distinct == N and blocks == N** → sequential, number-matched. SAFE.
@@ -100,6 +112,11 @@ are normal; do not manufacture a flip.
 - `compose_figures.py` — stack multi-figure stems into one composite PNG.
 - `assemble-safe.ts` / `assemble-blind.ts` — build `papers/<id>.json` from agent output.
 - `cleanup-latex.ts` · `validate.ts` · `validate-db.ts` · `audit-keys.ts` · `scan-flip.js`.
+- `triage.ts` — decide SAFE vs BLIND for every paper not yet ingested for a
+  subject. Encodes the rules below so they are not re-greppped by hand each wave.
+- `coverage.ts` — reconcile a subject BOTH ways (papers on disk vs DB rows), with
+  each short paper printing its own `skip[]` so a gap is either accounted for or
+  visibly is not. Run it before claiming a subject is COMPLETE.
 - `papers/<paperId>.json` — the durable per-paper record. **Commit it at every ship** — surviving DB rows do not save the authoring work.
 
 ## Gotchas
@@ -121,6 +138,25 @@ are normal; do not manufacture a flip.
   line as the check.
 - **Never author LaTeX through a bash heredoc** — backslashes get eaten. Use the
   Write tool, then verify the bytes.
+- **`assemble-safe` must run BEFORE adjudications and must NOT be re-run after.**
+  It recomputes `answerOverrides` from the SOURCE key, so a second run silently
+  reverts every verified flip. Order is: promote-gaps → assemble → adjudicate.
+  (Running it before the overrides exist fails loudly instead — the flip guard
+  reports "expected C, found undefined" — so only the re-run is dangerous.)
+- **`scan-flip` takes the source FILENAME, not the paper id.** Passing the id
+  matches zero rows and prints a perfectly clean `0 rows | flagged 0 | flipped 0`,
+  which reads exactly like "nothing to do". Check the row count equals what
+  commit inserted before believing a flip.
+- **Run `validate-db` BEFORE `scan-flip`, not instead of it.** `scan-flip` does
+  not check OPTION-level delimiter balance, so it has reported 0 flagged on a
+  paper `validate-db` found 7 broken fields in.
+- **Never test a WRITING script against a real paper.** `assemble-blind` was run
+  once as a smoke test and rewrote that paper's `pyqNote`, `notes` and `skip[]`.
+  It now refuses when nothing resolves, but the general rule stands: these
+  scripts write in place and have no dry-run.
+- **A question dropped by the assembler is not the same as one that is skipped.**
+  A `skip[]` entry is dropped at commit WITHOUT the "no classification" error, so
+  it never surfaces. That is why `coverage.ts` exists.
 
 ## Chemistry-specific
 
