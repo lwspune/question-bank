@@ -11,6 +11,7 @@ import {
   solnNumberingIsBroken,
   matchValueToOption,
   gridTableToPipe,
+  stripEmptyMath,
   unwrapPhantom,
   splitSolutions,
   parseOptionsFromText,
@@ -815,5 +816,53 @@ describe("unwrapPhantom — reveal reagents pandoc buried in a phantom", () => {
   it("is idempotent", () => {
     const once = unwrapPhantom("A \\xrightarrow{\\phantom{LiAlH_{4}}} B");
     expect(unwrapPhantom(once)).toBe(once);
+  });
+});
+
+describe("stripEmptyMath — drop content-free math zones", () => {
+  it("leaves a normal stem untouched", () => {
+    const s = "Mass of \\(P\\) is \\(26.4\\text{ }g\\).";
+    expect(stripEmptyMath(s)).toBe(s);
+  });
+
+  it("drops a backslash-space zone, the NAT answer-blank artifact", () => {
+    // parseLatex trims the trailing space, leaving a bare "\" that KaTeX
+    // rejects with "Unexpected character: '\'". This is the exact shape found
+    // on 2024-apr05 Q60 and 2024-jan27 Q148.
+    expect(stripEmptyMath("yield is....... \\(\\ \\) \\(\\%\\).")).toBe("yield is....... \\(\\%\\).");
+    expect(stripEmptyMath("will be - \\(\\ \\) \\(\\times10^{- 2}\\)")).toBe(
+      "will be - \\(\\times10^{- 2}\\)",
+    );
+  });
+
+  it("drops other pure-spacing payloads", () => {
+    expect(stripEmptyMath("a \\(\\quad\\) b")).toBe("a b");
+    expect(stripEmptyMath("a \\(\\,\\) b")).toBe("a b");
+    expect(stripEmptyMath("a \\(~\\) b")).toBe("a b");
+    expect(stripEmptyMath("a \\(\\) b")).toBe("a b");
+    expect(stripEmptyMath("a \\(   \\) b")).toBe("a b");
+  });
+
+  it("collapses only the spaces it absorbs, never whitespace at large", () => {
+    // A blanket whitespace collapse once destroyed a GFM pipe table by removing
+    // the newline that terminated it, so the absorption stays local.
+    expect(stripEmptyMath("| a | b |\n|---|---|\n| \\(\\ \\) | y |\n")).toBe(
+      "| a | b |\n|---|---|\n| | y |\n",
+    );
+    expect(stripEmptyMath("x  y \\(\\ \\) z")).toBe("x  y z");
+  });
+
+  it("keeps a zone holding real content, even if it also has spacing", () => {
+    expect(stripEmptyMath("a \\(\\quad x\\) b")).toBe("a \\(\\quad x\\) b");
+    expect(stripEmptyMath("a \\(\\ 5\\ \\) b")).toBe("a \\(\\ 5\\ \\) b");
+  });
+
+  it("handles display zones too", () => {
+    expect(stripEmptyMath("a \\[\\ \\] b")).toBe("a b");
+  });
+
+  it("is idempotent", () => {
+    const once = stripEmptyMath("yield is \\(\\ \\) \\(\\%\\)");
+    expect(stripEmptyMath(once)).toBe(once);
   });
 });
