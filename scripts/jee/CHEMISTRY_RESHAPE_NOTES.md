@@ -75,9 +75,33 @@ MHT-CET carries `States of Matter :: Gas Laws and Ideal Gas Equation |
 Real Gases, Dalton's Law and KTG`, and it is a standard NCERT Class 11 chapter.
 
 **Decision: deferred, same reasoning as Redox.** Creating a chapter mid-ingest
-files identical content inconsistently — the three questions above already went
-to two different chapters. When the reshape runs, the MHT-CET chapter and
-subtopic names are the seed, and these three rows are the first residents.
+files identical content inconsistently — the questions above already went to two
+different chapters. When the reshape runs, the MHT-CET chapter and subtopic
+names are the seed, and these rows are the first residents.
+
+**This is now the STRONGEST reshape candidate in this file — six votes from four
+independent agents**, ahead of Redox at three:
+
+| paper | Q | topic | filed under |
+|---|---|---|---|
+| 2026-jan28-s2 | 116 | latent heat at a phase change | Chemical Thermodynamics :: Heat Capacity and Calorimetry |
+| 2026-apr07 | 34 | Dalton's law / partial pressures | Some Basic Concepts :: Mole Concept and Stoichiometry |
+| 2023-apr12 | 58 | rms vs most-probable speed | Some Basic Concepts :: Mole Concept and Stoichiometry |
+| 2023-jan31 | 58 | partial pressure, non-reacting mixture | Some Basic Concepts :: Mole Concept and Stoichiometry |
+| 2023-apr08 | 59 | three-bulb gas mixing | Some Basic Concepts :: Mole Concept and Stoichiometry |
+| 2023-apr08 | 124 | van der Waals `a` | Chemical Bonding (turns on intermolecular forces) |
+
+MHT-CET's `States of Matter :: Gas Laws and Ideal Gas Equation | Real Gases,
+Dalton's Law and KTG` covers all six. Note the placements have CONVERGED since
+the precedent was set — four of the six now sit in the same place — so the
+reshape is a clean move of a known set rather than a hunt.
+
+### 1c. No Group 18 / noble-gas subtopic
+`The p-Block Elements` carries subtopics for groups 13, 15, 16 and 17 but none
+for group 18, so xenon chemistry has no home (2023-apr08 Q56, and earlier
+2026-jan28-s2 Q37 which went to `Chemical Bonding :: Molecular Geometry` because
+the question tested VSEPR shape). Neither sibling names one either. Following
+JEE's own "Group N Elements" pattern, `Group 18 Elements` is the natural name.
 
 A guard now exists: `promote-gaps.ts` refuses to promote any classification
 whose CHAPTER is absent from the live-DB handout, because `commit.ts`
