@@ -139,9 +139,27 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const paperId = requirePaperId(process.argv, 2, "attach-images.ts <paperId> [--apply]");
   loadEnv();
-  const { sourceFile } = loadPaper(paperId);
+  const paper = loadPaper(paperId);
+  const { sourceFile } = paper;
   const fallbackDir = join(mediaDir(paperId), "media");
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
+
+  // Bind figures the extractor orphaned (see PaperData.extraImages). Appended,
+  // so a question that already has refs keeps its own order and the recovered
+  // file lands last — which matters because planFor reads OPTION pictures off
+  // the tail. Only ever add an orphan to a question whose figure it genuinely
+  // is; a wrong binding is worse than a missing one.
+  for (const [qn, names] of Object.entries(paper.extraImages ?? {})) {
+    const rec = records.find((r) => r.questionNumber === Number(qn));
+    if (!rec) throw new Error(`extraImages: Q${qn} not found in ${paperId} records`);
+    for (const name of names) {
+      const path = join(fallbackDir, name);
+      if (!existsSync(path)) throw new Error(`extraImages: Q${qn} -> ${name} not on disk`);
+      if (!rec.imageRefs.includes(path)) rec.imageRefs.push(path);
+    }
+    console.log(`  Q${qn}: bound ${names.length} orphaned figure(s): ${names.join(", ")}`);
+  }
+
   // Any image-bearing non-numerical record; the per-question DB lookup below
   // skips ones that weren't committed (e.g. an un-resolved needs_review row).
   const imgRecs = records.filter((r) => r.status !== "skipped_numerical" && r.imageRefs.length > 0);
