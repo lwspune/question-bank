@@ -5,6 +5,10 @@ name: CI
 # the correctness gate that the build-only pre-push hook can't fully cover —
 # in particular the live-taxonomy rename guards.
 #
+# The Build step is CONDITIONAL (2026-08-05) — skipped when a push changed
+# nothing `next build` reads. Vercel's deploy build still runs unconditionally,
+# so a data-only push is still built somewhere before it is served.
+#
 # REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions → New
 # repository secret). Until all three exist, the `build` step and the
 # DB-integration test/lint steps will fail (build SSGs /notes + /guide from
@@ -39,6 +43,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history so the Build gate below can diff against the push /
+          # PR base. Cheap here (~35 MB, ~1.3k commits). Without it the base
+          # commit is missing and needs-build fails safe to "build", silently
+          # undoing the saving.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -54,5 +64,21 @@ jobs:
         run: npm run notes:latex
       - name: Tests (incl. live-taxonomy rename guards — skip if secrets absent)
         run: npm test
+      # `next build` prerenders 689 pages, ~317 of which query Postgres (~25 MB
+      # of egress). 78 of the last 145 pushes to main changed nothing the
+      # compiler reads, so that build could not have failed. Same rule as the
+      # pre-push hook — scripts/lib/needsBuild.ts, spec'd in
+      # tests/needs-build.test.ts — shared so the two gates cannot drift.
+      # It is an allowlist of SKIPS: anything unrecognised builds.
+      - name: Detect build-relevant changes
+        id: buildcheck
+        run: |
+          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if npx tsx scripts/needs-build.ts "$BASE" "${{ github.sha }}"; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Build
+        if: steps.buildcheck.outputs.needed == 'true'
         run: npm run build
