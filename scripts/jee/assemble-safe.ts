@@ -24,7 +24,7 @@ type Rec = {
   numericAnswer?: number | null;
   options: { label: string; text: string; isCorrect: boolean }[] | null;
 };
-type Sol = { chapter: string; subtopic: string; solution: string; flag?: string; answer?: string };
+type Sol = { chapter: string; subtopic: string; solution: string; flag?: string; answer?: string; skip?: boolean; skipReason?: string };
 
 /**
  * Some classification agents double-escape their LaTeX (writing `\\(`, `\\frac`
@@ -88,11 +88,19 @@ function main() {
   const flags: string[] = [];
   const noKey: string[] = [];
   const noClass: string[] = [];
+  const skipped: number[] = [];
 
   for (const r of maths) {
     const k = String(r.questionNumber);
     const s = sols[k];
     if (!s) { noClass.push(k); continue; }
+    // Honour the agent's skip. The brief tells agents to set it when a question
+    // is unanswerable as extracted — typically the LIST a "how many of the
+    // following" question counts is missing entirely. Ignoring it is dangerous
+    // precisely BECAUSE the source key still exists: the row would ship with a
+    // confident answer attached to a stem that cannot support it. assemble-blind
+    // already honoured skip; this side did not.
+    if (s.skip) { skipped.push(Number(k)); continue; }
     classification[k] = { subject, chapter: s.chapter, subtopic: s.subtopic };
     if (s.solution) authoredSolutions[k] = cleanSolution(s.solution);
     if (s.flag) flags.push(`Q${k}: ${s.flag}`);
@@ -143,12 +151,14 @@ function main() {
     classification: { ...prevClass, ...classification },
     answerOverrides: { ...(prev.answerOverrides ?? {}), ...answerOverrides },
     numericOverrides: { ...(prev.numericOverrides ?? {}), ...numericOverrides },
+    skip: [...new Set([...(prev.skip ?? []), ...skipped])],
     notes: prev.notes ? `${prev.notes}\n${note}` : note,
     authoredSolutions: { ...(prev.authoredSolutions ?? {}), ...authoredSolutions },
   };
   writeFileSync(prevPath, JSON.stringify(paper, null, 2) + "\n");
   const nMcq = Object.keys(answerOverrides).length, nNat = Object.keys(numericOverrides).length;
   console.log(`${paperId}: ${nMcq} MCQ + ${nNat} NAT = ${nMcq + nNat} classified; ${Object.keys(authoredSolutions).length} solutions.`);
+  if (skipped.length) console.log(`  SKIPPED by agent (unanswerable as extracted): ${skipped.join(", ")}`);
   if (noClass.length) console.log(`  NO AGENT DATA (Qs missing from sol files): ${noClass.join(", ")}`);
   if (noKey.length) console.log(`  NO KEY (resolve manually): ${noKey.join(", ")}`);
   if (flags.length) { console.log(`  FLAGS (agent disagreed with extracted key):`); flags.forEach((f) => console.log(`    ${f}`)); }

@@ -30,10 +30,19 @@ const LETTER = /^[A-D]$/;
 
 function main() {
   const paperId = requirePaperId(process.argv, 2, 'assemble-blind.ts <paperId> <sourceFile> <pyqYear> "<pyqNote>"');
-  const sourceFile = process.argv[3];
-  const pyqYear = Number(process.argv[4]);
-  const pyqNote = process.argv[5];
+  // Read positionals from a FLAG-FREE view of argv. Its sibling assemble-safe
+  // took process.argv[3] raw, so an earlier `--subject=Chemistry` became the
+  // sourceFile and 100 rows were committed under a source_file of
+  // "--subject=Chemistry" before anyone noticed. The `.docx` assertion is the
+  // backstop: source files are always .docx, so anything else is a mis-parse.
+  const positional = process.argv.slice(3).filter((a) => !a.startsWith("--"));
+  const sourceFile = positional[0];
+  const pyqYear = Number(positional[1]);
+  const pyqNote = positional[2];
   if (!sourceFile || !pyqYear || !pyqNote) throw new Error("need <sourceFile> <pyqYear> <pyqNote>");
+  if (!/\.docx$/i.test(sourceFile)) {
+    throw new Error(`sourceFile must be a .docx filename, got ${JSON.stringify(sourceFile)}`);
+  }
 
   const subject = parseSubjectArg(process.argv) ?? "Maths";
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
@@ -99,6 +108,19 @@ function main() {
   if (collisions.length) {
     throw new Error(
       `${paperId}: question ${collisions.join(", ")} already classified as another subject — refusing to overwrite`,
+    );
+  }
+
+  // Nothing resolved means the agent output is MISSING, not that the paper is
+  // unanswerable — a wrong paperId, a `_sol_*.json` never written, or a run
+  // fired before the agents finished. Writing anyway is destructive and silent:
+  // every question lands in skip[], and a skipped question is dropped at commit
+  // WITHOUT the "no classification" error that would otherwise surface it, so
+  // the paper looks processed and ships nothing. Refuse instead.
+  if (Object.keys(answerOverrides).length + Object.keys(numericOverrides).length === 0) {
+    throw new Error(
+      `${paperId}: 0 of ${rows.length} ${subject} questions resolved — no agent output found ` +
+        `(looked for out/${paperId}_sol_*.json). Refusing to write, which would skip[] the whole paper.`,
     );
   }
 
