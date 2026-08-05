@@ -377,6 +377,21 @@ User-confirmed long-term direction (2026-06-14). Phase A shipped the auto-genera
 
 ## Observability + ops
 
+### Staging Supabase for the gate (tests first) + ECONNRESET retry hardening (analysis done 2026-08-05; deferred)
+
+> **Partly superseded 2026-08-05.** The dominant cause turned out to be a single query, not generic contention — `queryQuestions` was sorting the full row shape and spilling ~14 MB to disk per call (99.4% of the project's temp writes; 1,097 GB lifetime), which drained the Disk IO Budget and made every burst fragile. Fixed in `fa9b627`; the gate now passes with zero ECONNRESET/timeout signals. **What remains open here is EGRESS**, which the query fix does not reduce (both phases still return the same 25 rows) — so the staging project is still the durable answer for that, and items 4 and 6 below are still worth doing. Re-measure before investing in the rest.
+
+**Problem:** the single shared prod Supabase is the binding constraint on the pre-push gate — now **three distinct symptoms of one root cause**: `/questions` prerender statement timeouts (2026-08-03, tuned away with `cpus: 4` + `staticPageGenerationTimeout: 180`), random DB-integration test flakes under concurrent-session load (2026-08-04 SUGGESTIONS ledger entry), and now **pool exhaustion** — a gate run where every stage passes alone but `build` immediately after `test` gets 344 ECONNRESETs (2 of 689 pages fail). Mechanism: 79 test files hammer the DB, `global-teardown` finishes with heavy cascade deletes, and the build then fires 4 prerender workers at ~317 DB-querying pages while the small shared instance is still saturated → the pooler/PostgREST resets connections. The existing retry in `queryQuestions` only matches SQLSTATE 57014 (a PostgREST error object); an ECONNRESET is a *thrown fetch-level network error* and nothing retries it. Each fix so far has tuned headroom against a moving target (bank growth + concurrent sessions), so the class recurs structurally.
+
+**Plan (agreed 2026-08-05, deferred):**
+1. **Second free-tier Supabase project** (user creates it — the MCP can't create projects); apply migrations 0001–0066 from the repo files + `db:seed`.
+2. **Restore a snapshot of prod's content tables** (organizations → taxonomy → questions/options/tags; skip user-keyed tables — `org_members`, `mock_attempts`, `notes_progress`, etc. FK onto `auth.users` and tests create their own users). The "LWS Pune" org row must come along (DB tests `.eq("name","LWS Pune")`).
+3. **Point tests at it**: `.env.test` preferred over `.env.local` in `tests/setup.ts`; flip the three CI secrets. Kills the global-teardown "sweep prod" fragility outright and lets `maxForks: 2` be raised (faster suite).
+4. **Independently valuable, do even without staging:** extend the prerender retry (`queryQuestions` + landing-page loaders) to catch thrown fetch failures/ECONNRESET, not just 57014 — **Vercel deploy builds prerender the same 689 pages against prod by necessity, so an ECONNRESET burst can fail a production deploy today.**
+5. Local/CI **build** stays on prod initially (build-alone has passed twice); phase 2 — export staging env for the gate's build stage too — only if build-vs-prod contention recurs. The local build artifact is discarded (Vercel builds the real deploy), so nothing depends on it hitting prod.
+
+**Standing costs to accept:** migration discipline (every new migration applied to BOTH projects — checklist line or small script), and free-tier auto-pause after ~1 week idle (a stale staging project fails the gate confusingly; weekly keep-alive ping or manual wake). Alternatives considered + rejected: Supabase Pro upgrade (pays prod capacity to absorb test traffic — wrong shape, just moves the cliff); prerendering from a build-time JSON snapshot (largest change, fights the data-driven page design).
+
 ### Frontend error monitoring (Sentry or equivalent)
 
 Currently relying on Vercel function logs (server-side `console.error` paths) + Vercel Analytics (pageview counts, cookieless). Frontend exceptions don't surface anywhere. Consider Sentry only if noise picks up — premature otherwise.
