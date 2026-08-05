@@ -29,7 +29,7 @@ import { createClient } from "@supabase/supabase-js";
 import { requireSubjectArg } from "./subject-arg";
 
 type Side = { status?: "full" | "partial" | "not"; coveredBy?: string; note?: string };
-type Ruling = { section_no: string; subtopic: string; stateBoard?: Side; ncert?: Side };
+type Ruling = { section_no: string; class?: number; subtopic: string; stateBoard?: Side; ncert?: Side };
 type File = { exam: string; subject: string; source: string; rulings: Ruling[] };
 
 /** Which book each exam COLUMN is asking about on a bank-spine row. */
@@ -66,16 +66,60 @@ function main() {
     // --- the spine this file rules on ---
     const { data: spine, error: spineErr } = await db
       .from("syllabus_concepts")
-      .select("id,section_no,concept,chapter_name")
+      .select("id,class,section_no,concept,chapter_name")
       .eq("subject", cfg.subject)
       .eq("source", file.source);
     if (spineErr) throw new Error(spineErr.message);
-    const bySection = new Map((spine ?? []).map((r) => [r.section_no, r]));
+    // Keyed by CLASS + section_no. On an exam spine `JEE-001` is globally unique
+    // so section_no alone worked, but a BOOK spine numbers each year from 1:
+    // NCERT has a section "1.1" in Std XI *and* Std XII, and both are called
+    // "Introduction". A section_no-only key silently applies a Std XI ruling to
+    // the Std XII row, and the subtopic-name guard cannot see it because the
+    // names match. A ruling may therefore carry `class`; without one we match on
+    // section_no but REFUSE when that is ambiguous rather than guessing.
+    const byClassSection = new Map((spine ?? []).map((r) => [`${r.class}|${r.section_no}`, r]));
+    const bySectionOnly = new Map<string, typeof spine>();
+    for (const r of spine ?? []) {
+      const list = bySectionOnly.get(r.section_no) ?? ([] as never);
+      (list as unknown[]).push(r);
+      bySectionOnly.set(r.section_no, list);
+    }
+
+    /** Single definition of "which spine row is this ruling for", so the guard
+     *  and the write can never resolve differently. */
+    const conceptIdOf = (r: Ruling) => {
+      const hit =
+        r.class !== undefined
+          ? byClassSection.get(`${r.class}|${r.section_no}`)
+          : ((bySectionOnly.get(r.section_no) ?? []) as (typeof spine)[number][])[0];
+      if (!hit) throw new Error(`unresolved ruling ${r.section_no} — guard should have caught this`);
+      return hit.id;
+    };
 
     // --- guards 1 + 2 ---
     const problems: string[] = [];
     for (const r of file.rulings) {
-      const row = bySection.get(r.section_no);
+      let row: (typeof spine)[number] | undefined;
+      if (r.class !== undefined) {
+        row = byClassSection.get(`${r.class}|${r.section_no}`);
+        if (!row) {
+          problems.push(
+            `${r.section_no}: no such section in the ${file.source} spine for class ${r.class}`,
+          );
+          continue;
+        }
+      } else {
+        const cands = (bySectionOnly.get(r.section_no) ?? []) as (typeof spine)[number][];
+        if (cands.length > 1) {
+          problems.push(
+            `${r.section_no}: ambiguous — exists in ${cands.length} classes (${cands
+              .map((c) => c.class)
+              .join(", ")}); add a "class" field to this ruling`,
+          );
+          continue;
+        }
+        row = cands[0];
+      }
       if (!row) {
         problems.push(`${r.section_no}: no such section in the ${file.source} spine`);
         continue;
@@ -146,7 +190,7 @@ function main() {
       ([["MH State Board", r.stateBoard], ["CBSE Class 12", r.ncert]] as const)
         .filter(([, side]) => side && (side.status || side.coveredBy))
         .map(([examCol, side]) => ({
-          concept_id: bySection.get(r.section_no)!.id,
+          concept_id: conceptIdOf(r),
           exam: examCol,
           status: side!.status ?? "full",
           note: side!.note ?? null,
