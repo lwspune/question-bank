@@ -143,6 +143,35 @@ parsing in `promote-gaps.ts`, which is why that helper splits on `" :: "` before
 
 ---
 
+## Stragglers — 5 questions absent from otherwise-shipped papers
+
+Found by `npx tsx scripts/jee/coverage.ts --subject=Chemistry`, which diffs the
+papers on disk against the DB in BOTH directions. Each of these is a paper whose
+row count falls short by more than its `skip[]` accounts for, and every one has
+the SAME cause: the option block never parsed (`needs_review` / `image_options`,
+0 usable options), so `commit.ts` had nothing to insert and the question was
+silently absent rather than skipped.
+
+| paper | Q | what it needs |
+|---|---|---|
+| 2023-apr08 | 38 | options are product STRUCTURES (image_options) |
+| 2025-apr03 | 32 | structures inline in the statements |
+| 2025-apr03 | 37 | reaction-sequence products [A],[B],[C] as images |
+| 2025-jan22 | 44 | options lost; stem is intact |
+| 2026-apr04-s2 | 38 | concentration-vs-time GRAPH question |
+
+Recovering one means: render its page, read the four options, supply
+`optionOverrides` (all four labels, which lets `commit.ts` synthesize the option
+set), classify it, and re-commit. That is per-question vision work, so it is
+deliberately NOT on the ingest critical path — 5 questions against the papers
+still to ingest. They cannot be lost: `coverage.ts` reports the shortfall on
+every run, which is the whole reason it exists.
+
+Note this is NOT the same as the three deliberately WITHHELD rows (2021-p3 Q37,
+2023-jan31 Q127, 2025-apr07 Q106), which are committed-but-PRIVATE by choice.
+
+---
+
 ## Method to reuse
 
 The JEE **Maths** taxonomy reshape (24 -> 27 chapters, 2026-07-24) is the
