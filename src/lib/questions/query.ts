@@ -123,20 +123,35 @@ export async function queryQuestions(
   //   anon role        → only PUBLIC rows
   //   authenticated    → PUBLIC rows + caller's own org's PRIVATE rows
   //   service-role     → everything (used in tests with explicit orgId)
-  let q = client
-    .from("questions")
-    .select(
-      `
-      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format, numeric_answer,
-      question_number, pyq_year, pyq_month, pyq_note,
-      exam:exams!exam_id(id, name),
-      subject:subjects!subject_id(id, name),
-      chapter:chapters!chapter_id(id, name),
-      subtopic:subtopics!subtopic_id(id, name, order_index),
-      options(label, text, is_correct, image_url)
-    `,
-      { count: "exact" }
-    );
+  // PHASE A — resolve WHICH questions this page contains, and how many match.
+  //
+  // Deliberately selects ids ONLY. This query carries the ORDER BY, and the
+  // sort's payload is every selected column: fetching the wide row shape here
+  // made Postgres sort ~22k rows at ~922 bytes each to keep 25 of them, an
+  // `external merge` spilling ~14 MB to disk on EVERY call (~500 ms mean,
+  // 3.2 s unfiltered, on a fully warm cache). Narrowed to an id the same sort
+  // is ~30 bytes a row, fits in work_mem, and writes nothing. The wide row
+  // shape is fetched in phase B for the 25 ids that survive.
+  //
+  // The `subtopic` embed rides along only when it is being ordered ON —
+  // PostgREST resolves `order("subtopic(order_index)")` against the SELECT
+  // alias, so the embed has to be present for that branch to parse. It is an
+  // int, so it costs the sort nothing.
+  //
+  // `count: "exact"` stays here and is NOT the problem: PostgREST already
+  // compiles it to its own narrow `pgrst_source_count` CTE, measured at 10 ms
+  // as an index-only scan. Splitting it out by hand would buy nothing.
+  //
+  // Branched rather than a ternary INSIDE .select(): supabase-js parses the
+  // select string at the TYPE level, and a union of two string literals makes
+  // that parser fail (TS2352) even though both branches are individually valid.
+  const orderBySubtopic = filters.chapterIds.length > 0;
+  const from = client.from("questions");
+  let q = orderBySubtopic
+    ? from.select("id, subtopic:subtopics!subtopic_id(order_index)", {
+        count: "exact",
+      })
+    : from.select("id", { count: "exact" });
 
   if (orgId !== null) q = q.eq("org_id", orgId);
   if (principleNarrow !== null) q = q.in("id", principleNarrow);
@@ -188,7 +203,7 @@ export async function queryQuestions(
   // noted ones) sort last and so tie, leaving the historical ordering intact.
   // Skipped entirely on the unfiltered/all-questions view, where a global
   // order_index sort would meaninglessly interleave unrelated chapters.
-  if (filters.chapterIds.length > 0) {
+  if (orderBySubtopic) {
     // PostgREST orders the PARENT result by an embedded to-one column via the
     // `embed(col)` order spec, using the SELECT alias ("subtopic"), NOT the
     // `{ referencedTable }` option (that orders the child collection, a no-op
@@ -211,9 +226,11 @@ export async function queryQuestions(
     .range(start, end);
 
   // `next build` prerenders every /questions/<exam>/<subject>/<chapter> landing
-  // page concurrently, and that burst can trip Postgres' statement timeout even
-  // though the query itself runs in ~13ms — a different handful of pages fails
-  // on each build, which is the signature of contention rather than a slow plan.
+  // page concurrently, and that burst could trip Postgres' statement timeout.
+  // (An earlier note here claimed the query ran in ~13 ms and blamed pure
+  // contention. It did not: pg_stat_statements put the mean at ~500 ms and an
+  // unfiltered EXPLAIN at 3.2 s, nearly all of it the wide sort now removed
+  // above. The 13 ms was an index lookup, not the statement the app issues.)
   // Retry ONLY a cancelled statement, briefly; anything else propagates at once.
   let { data, error, count } = await q;
   for (let attempt = 0; attempt < 2 && error && isStatementTimeout(error); attempt += 1) {
@@ -222,67 +239,21 @@ export async function queryQuestions(
   }
   if (error) throw new Error(`questions query: ${error.message}`);
 
-  type RawOption = {
-    label: "A" | "B" | "C" | "D";
-    text: string;
-    is_correct: boolean;
-    image_url: string | null;
-  };
-  type RawTaxonomy = { id: string; name: string };
-  type Raw = {
-    id: string;
-    text: string;
-    context: string | null;
-    difficulty: Difficulty;
-    solution: string | null;
-    image_url: string | null;
-    solution_image_url: string | null;
-    set_id: string | null;
-    question_format: QuestionFormat;
-    numeric_answer: number | null;
-    question_number: string | null;
-    pyq_year: number | null;
-    pyq_month: string | null;
-    pyq_note: string | null;
-    exam: RawTaxonomy | RawTaxonomy[] | null;
-    subject: RawTaxonomy | RawTaxonomy[] | null;
-    chapter: RawTaxonomy | RawTaxonomy[] | null;
-    subtopic: RawTaxonomy | RawTaxonomy[] | null;
-    options: RawOption[] | null;
-  };
+  const totalCount = count ?? 0;
+  const pageIds = ((data ?? []) as { id: string }[]).map((r) => r.id);
+  // A page past the end of the result set still has a real total to report.
+  if (pageIds.length === 0) return { totalCount, rows: [] };
 
-  const flatten = (v: RawTaxonomy | RawTaxonomy[] | null): RawTaxonomy | null =>
-    Array.isArray(v) ? v[0] ?? null : v;
+  // PHASE B — the wide row shape, for these 25 ids only.
+  //
+  // `queryQuestionsByIds` uses the SAME client, so RLS is re-applied at the
+  // identical scope and visibility cannot widen; org scoping already happened
+  // in phase A, so fetching exactly those ids cannot reach outside the page.
+  // It restores the caller's id order, which is what carries phase A's ORDER BY
+  // through to the result — see the ordering tests in tests/browse-query.test.ts.
+  const rows = await queryQuestionsByIds(client, pageIds);
 
-  const rows: QuestionRow[] = ((data ?? []) as Raw[]).map((r) => ({
-    id: r.id,
-    text: r.text,
-    context: r.context,
-    difficulty: r.difficulty,
-    solution: r.solution,
-    imageUrl: r.image_url,
-    solutionImageUrl: r.solution_image_url,
-    setId: r.set_id,
-    questionFormat: r.question_format,
-    questionNumber: r.question_number,
-    pyqYear: r.pyq_year,
-    pyqMonth: r.pyq_month,
-    pyqNote: r.pyq_note,
-    exam: flatten(r.exam)!,
-    subject: flatten(r.subject)!,
-    chapter: flatten(r.chapter)!,
-    subtopic: flatten(r.subtopic),
-    options: (r.options ?? [])
-      .map((o) => ({
-        label: o.label,
-        text: o.text,
-        isCorrect: o.is_correct,
-        imageUrl: o.image_url,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
-  }));
-
-  return { totalCount: count ?? 0, rows };
+  return { totalCount, rows };
 }
 
 /**

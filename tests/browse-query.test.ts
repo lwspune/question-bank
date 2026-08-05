@@ -122,6 +122,120 @@ describe.skipIf(!HAS_ENV)("queryQuestions (against LWS Pune seed)", () => {
     for (const id of ids1) expect(ids2.has(id)).toBe(false);
   });
 
+  // ---------------------------------------------------------------------
+  // Ordering contract.
+  //
+  // queryQuestions fetches a page in TWO round trips — an id-only query that
+  // carries the filters + ORDER BY + range, then a wide fetch of those ids.
+  // That split exists so the sort never carries `text`/`context`/`solution`
+  // as payload (it was spilling ~14 MB to disk per call), but it means the
+  // final row order comes from re-applying phase A's order to phase B's
+  // result. Nothing else in this file asserts order, so these tests are the
+  // only thing standing between a refactor and a silently shuffled page.
+  // ---------------------------------------------------------------------
+
+  /** ASC NULLS LAST rank: non-nulls compare normally, nulls sort after. */
+  const asc = (v: number | null) => (v === null ? Number.POSITIVE_INFINITY : v);
+
+  async function orderKeysFor(ids: string[]) {
+    const { data } = await client
+      .from("questions")
+      .select("id, created_at, source_row")
+      .in("id", ids);
+    const byId = new Map(
+      (data ?? []).map((r) => [
+        r.id as string,
+        {
+          createdAt: Date.parse(r.created_at as string),
+          sourceRow: (r.source_row as number | null) ?? null,
+        },
+      ])
+    );
+    // Map back over the CALLER's id order — this is what's under test.
+    return ids.map((id) => ({ id, ...byId.get(id)! }));
+  }
+
+  function expectOrderedByContract(
+    seq: { id: string; createdAt: number; sourceRow: number | null }[]
+  ) {
+    for (let i = 1; i < seq.length; i += 1) {
+      const prev = seq[i - 1];
+      const cur = seq[i];
+      // created_at DESC
+      expect(prev.createdAt).toBeGreaterThanOrEqual(cur.createdAt);
+      if (prev.createdAt !== cur.createdAt) continue;
+      // tie → source_row ASC NULLS LAST
+      expect(asc(prev.sourceRow)).toBeLessThanOrEqual(asc(cur.sourceRow));
+      if (asc(prev.sourceRow) !== asc(cur.sourceRow)) continue;
+      // tie → id ASC
+      expect(prev.id < cur.id).toBe(true);
+    }
+  }
+
+  it("orders a page by created_at DESC, then source_row ASC NULLS LAST, then id ASC", async () => {
+    const result = await queryQuestions(
+      client,
+      orgId,
+      { ...EMPTY_FILTERS, examId },
+      25
+    );
+    expect(result.rows.length).toBeGreaterThan(1);
+    expectOrderedByContract(await orderKeysFor(result.rows.map((r) => r.id)));
+  });
+
+  it("keeps the ordering contract across a page boundary", async () => {
+    const [page1, page2] = await Promise.all([
+      queryQuestions(client, orgId, { ...EMPTY_FILTERS, examId, page: 1 }, 25),
+      queryQuestions(client, orgId, { ...EMPTY_FILTERS, examId, page: 2 }, 25),
+    ]);
+    expect(page1.rows.length).toBe(25);
+    expect(page2.rows.length).toBe(25);
+    // Concatenated, the two pages must read as one continuously ordered run —
+    // catches an off-by-one range as well as a per-page reshuffle.
+    expectOrderedByContract(
+      await orderKeysFor([...page1.rows, ...page2.rows].map((r) => r.id))
+    );
+  });
+
+  it("leads with the subtopic teaching order when a chapter is in scope", async () => {
+    // Find a chapter that actually has ≥2 distinct order_index values, rather
+    // than hardcoding one — /notes coverage moves, and a chapter with a single
+    // order_index would make this assertion vacuous.
+    const { data: ordered } = await client
+      .from("subtopics")
+      .select("id, chapter_id, order_index")
+      .not("order_index", "is", null)
+      .limit(1000);
+    const byChapter = new Map<string, Set<number>>();
+    for (const s of ordered ?? []) {
+      const key = s.chapter_id as string;
+      if (!byChapter.has(key)) byChapter.set(key, new Set());
+      byChapter.get(key)!.add(s.order_index as number);
+    }
+    const chapterId = [...byChapter.entries()].find(
+      ([, idx]) => idx.size >= 2
+    )?.[0];
+    if (!chapterId) return; // no noted chapter in this DB — nothing to assert
+
+    const result = await queryQuestions(
+      client,
+      null,
+      { ...EMPTY_FILTERS, kind: "all", chapterIds: [chapterId] },
+      50
+    );
+    expect(result.rows.length).toBeGreaterThan(1);
+
+    const idxById = new Map(
+      (ordered ?? []).map((s) => [s.id as string, s.order_index as number])
+    );
+    const seq = result.rows.map((r) =>
+      r.subtopic ? asc(idxById.get(r.subtopic.id) ?? null) : asc(null)
+    );
+    for (let i = 1; i < seq.length; i += 1) {
+      expect(seq[i - 1]).toBeLessThanOrEqual(seq[i]);
+    }
+  });
+
   it("full-text search hits expected rows", async () => {
     const result = await queryQuestions(
       client,
