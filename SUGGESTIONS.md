@@ -35,6 +35,46 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-05
+
+### Fix or retire `export-chapter-map-docx.ts` — it queries with NO subject filter
+
+`scripts/syllabus/export-chapter-map-docx.ts` builds the NCERT→State Board chapter map as a Word file, and it pages `syllabus_concepts` and `syllabus_concept_exams` with **no `subject` filter at all** (`db.from(table).select(cols).range(...)`). It then keys State Board chapters by `class|chapter_no` and NCERT chapter names by `chapter_no`. Now that Physics shares those `source` values, class numbers and chapter numbers, **re-running it would emit Chemistry mappings carrying Physics chapter labels**. Its sibling `export-chapter-map-xlsx.ts` already takes `--subject`; this one only guards against `--subject` being misread as its class positional.
+
+**Why:** this is the exact bug class Phase 0 fixed in `src/lib/syllabus/query.ts` on 2026-08-03 — "source alone merges two subjects' Ch.1" — but that pass only covered the loaders, and this exporter does its own fetching. The two shipped Chemistry docx in `…/State-Board/03. 11th/` are **clean** (verified against 18 Physics chapter names; they predate the Physics seed), so nothing is wrong today — but the script is a loaded gun for whoever regenerates them next, and the failure is silent: a plausible-looking document with the wrong labels.
+
+**How to apply:** decide between two options. **(a) Fix it** — add `requireSubjectArg` and `.eq("subject", cfg.subject)` to both fetches, and put the subject in the title instead of the hardcoded "Chemistry" string at line ~186. Cheap, and it keeps the WEIGHT column plus the fact that it reads the hand-authored NCERT→State Board edge directly, which is stronger evidence than a derivation. **(b) Retire it** in favour of `export-chapter-maps.ts` (added 2026-08-05), which is subject-scoped and emits BOTH teacher documents — but note it derives NCERT↔State Board from the exam rulings rather than reading edge B, so for a subject that HAS edge B authored (now both) option (a) is the more precise document. Prefer (a), then consider teaching `export-chapter-maps.ts` to prefer edge B when it exists.
+
+## 2026-08-04
+
+### ~~Remove the `?? "full"` default from `ingest-exam-spine.ts`, or retire the script~~ — **DONE 2026-08-04**
+
+**Took option (a) — retired.** `scripts/syllabus/ingest-exam-spine.ts` (1,186 lines) deleted; its 226 inline rulings exported to `scripts/syllabus/data/chem-jee-rulings.json`. Three things proven before deleting: the replacement rebuilds the spine **318/318 identical, 0 drift** (both scripts number continuously across exams, so the feared ref-shift was unfounded); the port re-applies **checksum-identical**, 298 rows unchanged; and — correcting my own account — **JEE Chemistry had ZERO defaulted rulings**, not the ~72 I assumed. All 298 rows either cite a section or carry a deliberate note, including the 4 uncited-`full` rows, which are the two `Organic Reaction Mechanisms` catch-alls whose notes say a catch-all maps to no single section. So the original "the author adjudicated the corpus" claim was true *of JEE*; only its extension to MHT-CET and NDA was false. One exam-spine path and one ruling format remain.
+
+The Chemistry **data** was fixed on 2026-08-04 — all 169 MHT-CET + NDA subtopics are now adjudicated with cited sections. The **script that created the problem is untouched.** `scripts/syllabus/ingest-exam-spine.ts` line ~1109 still writes `status: cov?.status ?? (adj ? adj[0] : "full")`, so the next exam spine ingested through it inherits the identical defect: every unruled subtopic ships as a confident `full` that renders indistinguishably from a real ruling. Its replacement, `ingest-bank-spine.ts`, already does the right thing (writes concepts, **no** link rows) and is what Physics used.
+
+**Why:** this is the only remaining copy of a default that has already shipped a false verdict across 169 subtopics carrying 2,427 PYQ, 14 of which were wrong. The data fix does not prevent recurrence — the next subject or exam added through the old script reproduces it exactly, and the failure is silent by construction (see [[default-becomes-assertion]]). Leaving both scripts in the tree also makes it a coin-flip which one a future session reaches for.
+
+**How to apply:** decide between two options. **(a) Retire it** — `ingest-exam-spine.ts` is now only needed for its 226 inline JEE Chemistry rulings; port those to `data/chem-jee-rulings.json` (the format `commit-bank-rulings.ts` already validates under four guards) and delete the script, leaving one spine-ingest path for every subject. **(b) Narrow it** — change the default to omit the link row entirely and re-run, accepting that JEE Chemistry's "everything else is covered" conclusion then has to be re-stated explicitly rather than inferred. Prefer (a): it removes the fork, and it puts JEE Chemistry's rulings under the same guards and the same reviewability as Physics and the two exams fixed today.
+
+### Feed the State Board "Plank" misspelling into `errata.ts`
+
+The Balbharati **Std XI Chemistry** Structure-of-Atom chapter spells Max Planck's name **"Plank"** throughout — 5 occurrences in the chapter, and the correct spelling scores **zero** across the whole book. Found incidentally while ruling MHT-CET Chemistry MHT-259 (Electromagnetic Radiation), and verified against the corpus: NCERT has 19 correct "Planck", the State Board has 0.
+
+**Why:** the project already runs a publisher-erratum pipeline (`scripts/stateboard/errata.ts`, 151 items across 12 chapters) whose whole point is feeding defects back to Balbharati, and a physicist's name misspelled throughout a chapter is exactly the class of item it collects. It costs nothing to add and it is the kind of thing a publisher can actually fix in a reprint. It also has a small student-facing cost: a student searching "Plank's constant" finds nothing.
+
+**How to apply:** this is a *textbook* defect, not a bank defect — no question is wrong, so there is nothing to re-key and no `content_hash` to recompute. The errata convention attaches to a question's `solution` via a `[Textbook …]` bracket, which does not fit a book-wide spelling error, so decide the shape first: either add a chapter-level errata entry if `errata.ts` supports one, or attach a single `[Textbook misprint: the book prints "Plank" for Planck throughout Std XI Ch.4]` note to one representative Structure-of-Atom question. Do **not** bracket all five occurrences — that is noise, not an erratum.
+
+### Rule the remaining JEE Chemistry subtopics against the *NCERT* column with the new tooling
+
+JEE Chemistry's 149 subtopics were adjudicated long before `search_corpus.py` and the per-chapter corpus existed, and **41 of them carry no NCERT home** — a number that has never been re-verified against book text with the current method. The two exams ruled on 2026-08-04 used the corpus for every single verdict; JEE Chemistry did not.
+
+**Why:** the 2026-08-04 batch found that five separate spelling and naming traps (`-s-`/`-z-`, `bisulphite`/`hydrogensulphite`, `bidentate`/`didentate`, the umlaut in `Huckel`, the book's own `Plank`) each produce a *false absence* — and a false `not` is the most damaging verdict this map can carry, because it tells a teacher a topic is missing when it is taught under another name. JEE Chemistry's 41 no-NCERT-home rulings were authored without that tooling, so some fraction of them are plausibly naming artefacts rather than real gaps. This is a *verification* pass over shipped work, not new authoring.
+
+**How to apply:** permission-gated (it touches shipped rulings). Dump the 41 subtopics whose `CBSE Class 12` ruling is `not`, and for each run the varied-vocabulary check the brief prescribes — both spellings, the alternate reagent name, and the topic's synonyms — against `chem-corpus.json`. Expect most to hold (NCERT genuinely deleted seven chapters), but any that flips is a `not` → `partial`/`full` correction with a citation. Cheap: no new corpus, no new agents necessarily, and the 500-char note guard now catches over-long notes in the dry run.
+
+---
+
 ## 2026-08-03
 
 ### ~~Re-derive the stale State Board `status` rulings, or retire the column's authority~~ — **DONE 2026-08-03**

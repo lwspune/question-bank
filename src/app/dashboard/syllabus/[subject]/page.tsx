@@ -169,6 +169,18 @@ export default async function SyllabusMapPage({
     loadNcertGaps(db, { subject, data }),
   ]);
 
+  // Has anyone authored NCERT -> State Board for this subject? Derived from the
+  // payload already in hand, so it cannot drift from what the table renders. A
+  // blank NCERT cell means "nobody looked" until this is true.
+  const ncertMapped = (() => {
+    const ncertIds = new Set(
+      data.concepts.filter((c) => c.source === SPINE.ncert).map((c) => c.id),
+    );
+    return data.links.some(
+      (l) => ncertIds.has(l.concept_id) && l.exam === SPINE.stateBoard && !!l.covered_by,
+    );
+  })();
+
   const selected = searchParams.chapter ? parseChapterKey(searchParams.chapter) : null;
   const detail = selected
     ? await loadChapterConcepts(db, subject, selected.cls, selected.chapterNo)
@@ -601,13 +613,25 @@ export default async function SyllabusMapPage({
                 what keeps every cell a single subtopic instead of a list. NCERT and JEE sit on the
                 same row only where that pairing was <strong>authored</strong>; where it was not,
                 each gets its own row rather than being paired off just for sharing a State Board
-                section. The two blanks differ: &ldquo;not in NCERT&rdquo; is a checked claim, while
-                &ldquo;not asked in the bank&rdquo; only means no past question has been sampled for
-                it &mdash; not that JEE never asks it.
+                section.{" "}
+                {ncertMapped ? (
+                  <>
+                    The two blanks differ: &ldquo;not in NCERT&rdquo; is a checked claim, while
+                    &ldquo;not asked in the bank&rdquo; only means no past question has been sampled
+                    for it &mdash; not that JEE never asks it.
+                  </>
+                ) : (
+                  <>
+                    The NCERT column reads &ldquo;not mapped yet&rdquo; throughout: the NCERT &rarr;
+                    State Board mapping has not been authored for {subjectConfig.label}, so a blank
+                    there is an <strong>absence of review</strong>, not a finding. &ldquo;Not asked
+                    in the bank&rdquo; likewise only means no past question has been sampled.
+                  </>
+                )}
                 </>
               }
             >
-              <AlignmentTable rows={rows} />
+              <AlignmentTable rows={rows} ncertMapped={ncertMapped} />
             </CollapsibleSection>
           );
         })}

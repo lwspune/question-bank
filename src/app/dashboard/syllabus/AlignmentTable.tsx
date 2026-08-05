@@ -12,7 +12,22 @@ import type { AlignmentRow } from "@/lib/syllabus/summary";
  * Server-rendered like the other tables here: the default view is the whole
  * answer, so there is nothing to filter client-side.
  */
-export default function AlignmentTable({ rows }: { rows: AlignmentRow[] }) {
+export default function AlignmentTable({
+  rows,
+  ncertMapped,
+}: {
+  rows: AlignmentRow[];
+  /**
+   * Has the NCERT -> State Board edge been authored for this subject at all?
+   *
+   * Without this the empty cell claimed "not in NCERT" for a subject where
+   * nobody had ever looked — the map's one cardinal sin, and it shipped: every
+   * Physics row said "not in NCERT" including Dimensional Analysis, which NCERT
+   * teaches across three sections. An unassessed blank must not read as a
+   * verdict.
+   */
+  ncertMapped: boolean;
+}) {
   let lastChapter = "";
   return (
     <div className="overflow-x-auto rounded-lg border">
@@ -70,8 +85,10 @@ export default function AlignmentTable({ rows }: { rows: AlignmentRow[] }) {
                           {r.ncert.chapterLabel}
                         </span>
                       </>
-                    ) : (
+                    ) : ncertMapped ? (
                       <span className="text-xs text-muted-foreground">not in NCERT</span>
+                    ) : (
+                      <span className="text-xs italic text-muted-foreground/70">not mapped yet</span>
                     )}
                   </td>
                   <td className="p-3">

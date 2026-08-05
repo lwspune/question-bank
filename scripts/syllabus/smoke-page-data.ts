@@ -15,8 +15,9 @@ import {
   loadOldSyllabusByExam,
   loadOldSyllabusChapters,
   loadExamSpineSummaries,
+  loadAlignmentRows,
 } from "../../src/lib/syllabus/query";
-import { SPINE, examOfSpine } from "../../src/lib/syllabus/summary";
+import { SPINE, examOfSpine, SYLLABUS_EXAMS } from "../../src/lib/syllabus/summary";
 import { requireSubjectArg } from "./subject-arg";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -141,6 +142,32 @@ async function main() {
       `  ${s.label.padEnd(10)} live ${String(s.live).padStart(4)} · full ${String(s.full).padStart(4)} · ` +
         `partial ${String(s.partial).padStart(3)} · not ${String(s.not).padStart(3)} · old-excluded ${s.oldExcluded}`,
     );
+  }
+
+  // The chapter matrix and the three-book alignment table. Both render a BLANK
+  // for "not assessed" and for "assessed as absent", so the only way to tell
+  // which a page is showing is to count the rows behind it.
+  console.log(`\nchapter matrix tallies — a blank cell renders the same whether the pair was`);
+  console.log(`assessed-as-absent or never assessed, so the counts are the only way to tell:`);
+  for (const exam of SYLLABUS_EXAMS) {
+    const t = matrix.tallies[exam];
+    console.log(
+      `  ${exam.padEnd(16)} full ${String(t.full).padStart(4)} · partial ${String(t.partial).padStart(4)} · not ${String(t.not).padStart(3)} · UNASSESSED ${String(t.unassessed).padStart(4)}`,
+    );
+  }
+
+  const align = await loadAlignmentRows(db, { subject, oldSyllabus });
+  const nWith = (f: (r: (typeof align)[number]) => unknown) => align.filter(f).length;
+  console.log(`\nalignment table: ${align.length} rows`);
+  console.log(`  with an NCERT cell ${nWith((r) => r.ncert)} · with a JEE cell ${nWith((r) => r.jee)}`);
+  console.log(
+    `  paired ${nWith((r) => r.ncert && r.jee)} · neither ${nWith((r) => !r.ncert && !r.jee)}`,
+  );
+  if (!nWith((r) => r.ncert)) {
+    console.log(
+      "  NOTE: zero NCERT cells — the NCERT -> State Board edge is unauthored for this subject,",
+    );
+    console.log("        so the page must render 'not mapped yet', never 'not in NCERT'.");
   }
 
   // Every exam table the page renders, not just JEE.
