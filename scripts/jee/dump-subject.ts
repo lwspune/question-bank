@@ -8,7 +8,11 @@
  * diagram is NOT self-contained, so it can't be classified (or blind-solved)
  * from the text alone — the image has to be read.
  *
- *   npx tsx scripts/jee/dump-subject.ts <paperId> [--subject=Physics]
+ *   npx tsx scripts/jee/dump-subject.ts <paperId> [--subject=Physics] [--blind]
+ *
+ * --blind suppresses the answer key (both the <==srcKEY marker and the NAT
+ * answer) for the BLIND lane, where the extracted key is untrustworthy and the
+ * agent must derive every answer itself. Writes <paperId>_<subject>_blind.txt.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
@@ -29,6 +33,7 @@ type Rec = {
 function main() {
   const paperId = requirePaperId(process.argv, 2, "dump-subject.ts <paperId> [--subject=Physics]");
   const subject = parseSubjectArg(process.argv) ?? "Maths";
+  const blind = process.argv.includes("--blind");
   const records: Rec[] = JSON.parse(readFileSync(recordsPath(paperId), "utf8"));
   const rows = records
     .filter((r) => r.subject === subject)
@@ -50,15 +55,23 @@ function main() {
     }
     out.push(r.stem.trim());
     if (r.status === "numeric") {
-      out.push(`  NAT answer: ${r.numericAnswer ?? "(none)"}`);
+      // In blind mode the NAT answer IS the key — emitting it defeats the lane.
+      out.push(blind ? "  NAT — derive the numeric answer." : `  NAT answer: ${r.numericAnswer ?? "(none)"}`);
     } else if (r.options) {
       for (const o of r.options) {
-        out.push(`  (${o.label}) ${o.text}${o.isCorrect ? "  <==srcKEY" : ""}`);
+        out.push(`  (${o.label}) ${o.text}${!blind && o.isCorrect ? "  <==srcKEY" : ""}`);
       }
     }
     out.push("");
   }
-  const path = join("scripts/jee/out", `${paperId}_${subject.toLowerCase()}.txt`);
+  // A blind dump gets its own filename. If both shared one, a stale keyed dump
+  // left in out/ could be handed to a blind agent with nothing to reveal the
+  // mistake — and an agent that can see the key is not solving blind, it is
+  // rationalising a key that may be shifted.
+  const path = join(
+    "scripts/jee/out",
+    `${paperId}_${subject.toLowerCase()}${blind ? "_blind" : ""}.txt`,
+  );
   writeFileSync(path, out.join("\n"), "utf8");
   console.log(`wrote ${rows.length} ${subject} questions -> ${path}`);
 }
