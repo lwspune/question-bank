@@ -21,7 +21,8 @@ export type ExamSlug =
   | "mh-hsc-12"
   | "cbse-12"
   | "mh-sb-9"
-  | "mh-ssc-10";
+  | "mh-ssc-10"
+  | "worksheets-11-12";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -167,6 +168,15 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // (and /mock later), not the book-faithful /board reader.
     board: "Maharashtra State Board",
     std: 10,
+  },
+  {
+    slug: "worksheets-11-12",
+    displayName: "Worksheets 11+12",
+    examName: "Worksheets - 11th+12th", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree — falls back to the index
+    notesPath: "/notes/worksheets-11-12", // exam hub: "coming soon" until notes ship
+    practiceOnly: true, // Cadetprep concept-practice worksheets → /browse defaults to Practice
+    // NOT boardExam: worksheet content isn't textbook-sectioned, so no /board reader.
   },
 ] as const;
 

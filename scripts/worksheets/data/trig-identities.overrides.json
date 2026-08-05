@@ -1,0 +1,302 @@
+{
+  "_comment": "Adjudicated repairs for the Trigonometric Identities chapter. Every entry was re-derived by hand by the maintainer; the blind agent pass is corroborating evidence, never authority. Keys are '<fileIndex>-<xlsxRow>' (= questions.question_number).",
+
+  "01-2": {
+    "options": { "D": "\\(\\frac{1}{2}\\)" },
+    "reason": "Duplicate distractor (C and D were both '2'); D replaced with 1/2. Key B (=1) verified correct."
+  },
+
+  "01-35": {
+    "options": { "D": "\\(p + q = 0\\)" },
+    "reason": "Options A (p=q) and D (p−q=0) stated the identical fact — two correct options. D replaced with a false statement; key A retained (csc²−cot²=1 ⇒ p=q)."
+  },
+
+  "01-38": {
+    "answer": "A",
+    "stem": "The identity \\(\\frac{1}{\\sec\\theta + \\tan\\theta} = \\sec\\theta - \\tan\\theta\\) is true because:",
+    "solution": "Multiply numerator and denominator by \\(\\sec\\theta - \\tan\\theta\\): \\(\\frac{\\sec\\theta - \\tan\\theta}{(\\sec\\theta + \\tan\\theta)(\\sec\\theta - \\tan\\theta)} = \\frac{\\sec\\theta - \\tan\\theta}{\\sec^2\\theta - \\tan^2\\theta} = \\sec\\theta - \\tan\\theta\\), using \\(\\sec^2\\theta - \\tan^2\\theta = 1\\). The fact \\(\\sin\\theta = \\tan\\theta\\cos\\theta\\), while true, plays no role in this proof — the Pythagorean-type identity alone is the reason.",
+    "reason": "The printed identity sinθ/(secθ+tanθ) = secθ−tanθ is FALSE (θ=45°: LHS ≈ 0.293, RHS ≈ 0.414). Repaired to the intended 1/(secθ+tanθ) = secθ−tanθ, whose proof uses only sec²−tan²=1 ⇒ key C ('Both A and B') → A. Blind verifier independently reached the same reading."
+  },
+
+  "01-42": {
+    "answer": "B",
+    "solution": "\\(\\sin^2\\theta + 4\\cos^2\\theta = \\sin^2\\theta + \\cos^2\\theta + 3\\cos^2\\theta = 1 + 3\\cos^2\\theta\\). This is minimum when \\(\\cos^2\\theta = 0\\), giving minimum value \\(1\\).",
+    "reason": "Key flip D→B: the minimum of 1+3cos²θ is 1 (at θ=90°), not 4 — the source solution rewrote it as 4−3sin²θ and then minimised at sin²θ=0, which is the MAXIMUM."
+  },
+
+  "02-31": {
+    "stem": "Which second-quadrant angle has the same reference angle as \\(30^\\circ\\)?",
+    "reason": "Stem said 'same trigonometric ratios as 30° but in the second quadrant' — strictly false (cos/tan flip sign in QII; only the reference angle matches). Reworded to what the solution actually teaches. Key A (150°) unchanged."
+  },
+
+  "03-27": {
+    "options": { "D": "\\(2\\sin\\theta\\cos\\theta\\)" },
+    "reason": "Option D (sin²θ+cos²θ) also equals 1, duplicating the keyed B. Replaced with a false distractor; key B retained."
+  },
+
+  "03-35": {
+    "options": { "A": "\\(2\\cos\\theta\\)" },
+    "reason": "Option A (−cosθ−cosθ) was the keyed answer −2cosθ unsimplified — two equivalent correct options. Replaced with the sign-error distractor +2cosθ; key C retained."
+  },
+
+  "03-40": {
+    "options": { "A": "\\(-2\\cos\\theta\\)", "B": "\\(\\sin\\theta + \\cos\\theta\\)" },
+    "reason": "Option A (cosθ−cosθ) equalled the keyed answer 0 unsimplified, and B (cosθ+cosθ) duplicated D (2cosθ). Both replaced with distinct false distractors; key C retained."
+  },
+
+  "05-2": {
+    "options": { "C": "\\(\\frac{\\sqrt{2} + \\sqrt{3}}{4}\\)" },
+    "reason": "Option C ((√3+1)/(2√2)) was algebraically identical to the keyed A ((√6+√2)/4) — two correct options. Replaced with a false distractor; key A retained."
+  },
+
+  "05-6": {
+    "options": { "A": "\\(\\cos 90^\\circ\\)" },
+    "reason": "Option A (sin 30°) had the same value (1/2) as the keyed B (cos 60°) — and sin(90°−60°) IS sin 30° by evaluation, making A defensible. Replaced with cos 90° so the co-function answer B is uniquely correct."
+  },
+
+  "05-7": {
+    "options": { "B": "\\(\\frac{1 - \\sqrt{3}}{1 + \\sqrt{3}}\\)" },
+    "reason": "Option B ((√3−1)/(√3+1)) rationalises to exactly 2−√3, identical to the keyed D. Replaced with the sign-flipped form (= −(2−√3), a genuine distractor); key D retained."
+  },
+
+  "05-11": {
+    "answer": "A",
+    "solution": "\\(\\sin(75^\\circ - 30^\\circ) = \\sin 45^\\circ = \\frac{\\sqrt{2}}{2}\\).",
+    "reason": "Key flip B→A: \\(\\sin 45^\\circ = \\frac{\\sqrt{2}}{2}\\) = option A. Source solution's own working agreed but the key said B; self-talk stripped."
+  },
+
+  "05-12": {
+    "options": { "A": "\\(\\frac{63}{65}\\)" },
+    "solution": "With A and B in the first quadrant: \\(\\cos A = \\frac{4}{5}\\) and \\(\\sin B = \\frac{12}{13}\\). Then \\(\\sin(A+B) = \\sin A \\cos B + \\cos A \\sin B = \\frac{3}{5} \\cdot \\frac{5}{13} + \\frac{4}{5} \\cdot \\frac{12}{13} = \\frac{15 + 48}{65} = \\frac{63}{65}\\).",
+    "reason": "No printed option equalled the correct 63/65 (option A's 56/65 is the swapped-values distractor). Option A repaired to 63/65; key A retained; waffling solution rewritten."
+  },
+
+  "05-15": {
+    "answer": "D",
+    "solution": "\\(\\cos 105^\\circ = \\cos(60^\\circ + 45^\\circ) = \\cos 60^\\circ \\cos 45^\\circ - \\sin 60^\\circ \\sin 45^\\circ = \\frac{1}{2} \\cdot \\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{2} - \\sqrt{6}}{4} = -\\frac{\\sqrt{6} - \\sqrt{2}}{4}\\).",
+    "reason": "Key flip B→D: cos 105° = −(√6−√2)/4 ≈ −0.259 = option D. The keyed B (−(√6+√2)/4 ≈ −0.966) is −cos 15°; the source's own solution derives option D's value."
+  },
+
+  "05-16": {
+    "answer": "B",
+    "reason": "Key flip A→B: sin A sin B = cos(A−B) − cos A cos B = 4/5 − 1/2 = 3/10 = option B. The source's own solution derives 3/10 while the key said A (1/10)."
+  },
+
+  "05-17": {
+    "options": { "A": "\\(\\frac{\\sqrt{2} - \\sqrt{6}}{4}\\)" },
+    "reason": "Option A ((√3−1)/(2√2)) was algebraically identical to the keyed C ((√6−√2)/4). Replaced with the negated form (a sign-error distractor); key C retained."
+  },
+
+  "05-21": {
+    "options": { "C": "\\(\\sin^2 A + \\sin^2 B\\)" },
+    "reason": "Option C (sin²Acos²B − cos²Asin²B) is an equivalent expansion of the keyed A (sin²A − sin²B) — two correct options. Replaced with a false distractor; key A retained."
+  },
+
+  "05-25": {
+    "options": { "A": "Product-to-sum identity" },
+    "solution": "Expand both terms with the angle addition formulas: \\(\\sin(45^\\circ + \\theta) = \\sin 45^\\circ \\cos\\theta + \\cos 45^\\circ \\sin\\theta\\) and \\(\\sin(45^\\circ - \\theta) = \\sin 45^\\circ \\cos\\theta - \\cos 45^\\circ \\sin\\theta\\). Adding cancels the \\(\\sin\\theta\\) terms: \\(2\\sin 45^\\circ \\cos\\theta = 2 \\cdot \\frac{\\sqrt{2}}{2}\\cos\\theta = \\sqrt{2}\\cos\\theta\\).",
+    "reason": "Option A (sum-to-product) was ALSO a valid one-step method, making the question ambiguous. Replaced with product-to-sum (inapplicable here) so the keyed C is uniquely correct; solution rewritten to actually show the expansion."
+  },
+
+  "05-35": {
+    "answer": "A",
+    "solution": "\\(\\cos(A+B) = 0\\) with A and B acute means \\(A + B = 90^\\circ\\). \\(\\cos A = \\frac{1}{2}\\) gives \\(A = 60^\\circ\\), so \\(B = 30^\\circ\\) and \\(\\sin B = \\sin 30^\\circ = \\frac{1}{2}\\).",
+    "reason": "Key flip D→A: \\(\\sin B = \\frac{1}{2}\\) = option A. Source solution derived 1/2 then waffled; self-talk stripped."
+  },
+
+  "05-41": {
+    "solution": "Write \\(\\sin(A+B+C) = \\sin((A+B)+C) = \\sin(A+B)\\cos C + \\cos(A+B)\\sin C\\). Expanding \\(\\sin(A+B)\\) and \\(\\cos(A+B)\\) gives \\(\\sin A \\cos B \\cos C + \\cos A \\sin B \\cos C + \\cos A \\cos B \\sin C - \\sin A \\sin B \\sin C\\).",
+    "reason": "Key B verified correct (the expansion carries a minus on the sinAsinBsinC term); the source solution wrongly concluded 'option A' — rewritten."
+  },
+
+  "05-47": {
+    "answer": "D",
+    "stem": "In a triangle ABC, if \\(\\sin(A + B) = \\frac{3}{4}\\) and \\(C\\) is obtuse, find \\(\\cos C\\).",
+    "solution": "In a triangle \\(A + B = 180^\\circ - C\\), so \\(\\sin(A+B) = \\sin(180^\\circ - C) = \\sin C = \\frac{3}{4}\\). Then \\(\\cos^2 C = 1 - \\frac{9}{16} = \\frac{7}{16}\\), and since \\(C\\) is obtuse, \\(\\cos C = -\\frac{\\sqrt{7}}{4}\\).",
+    "reason": "Key flip B→D: the keyed −3/4 confuses sin with cos; the source's OWN solution derives −√7/4 = option D. Without a quadrant constraint the sign is ambiguous (C or D), so the stem now states C is obtuse, making D uniquely correct."
+  },
+
+  "06-7": {
+    "options": { "A": "\\(5\\sin \\theta - 20\\sin^3 \\theta + 15\\sin^5 \\theta\\)" },
+    "reason": "Options A and B were the SAME polynomial in opposite term order (both = sin 5θ). A's leading coefficient changed 16→15 to make it a false distractor; key B retained."
+  },
+
+  "06-24": {
+    "options": { "C": "\\(\\theta = \\frac{n\\pi}{6}\\) where n is even" },
+    "reason": "Option C ('nπ/6 where n is odd') described the identical solution set as the keyed B ((2n+1)π/6). Changed to 'n even' (false — those angles give cos 3θ = ±1); key B retained."
+  },
+
+  "06-27": {
+    "answer": "B",
+    "solution": "\\(\\cos 4\\theta = 1 - 2\\sin^2 2\\theta = 1 - 2 \\cdot \\frac{9}{25} = 1 - \\frac{18}{25} = \\frac{7}{25}\\).",
+    "reason": "Key flip A→B: 1 − 18/25 = +7/25, not −7/25 — the source solution's final subtraction dropped the sign. (Positive regardless of which acute θ branch, since cos 4θ depends only on sin²2θ.)"
+  },
+
+  "06-28": {
+    "options": { "C": "\\(\\frac{\\sqrt{3} - \\sqrt{2}}{4}\\)", "D": "\\(\\frac{\\sqrt{6} + \\sqrt{2}}{8}\\)" },
+    "reason": "Option C ((√3−1)/(2√2)) was algebraically identical to the keyed A ((√6−√2)/4), and D ((√3+1)/(2√2)) was identical to B — two equivalent pairs. C and D replaced with distinct false distractors; key A retained."
+  },
+
+  "06-39": {
+    "options": { "D": "\\(2\\sin 4\\theta \\cos 2\\theta\\)" },
+    "reason": "Option D (2cos2θcos4θ) was the keyed A (2cos4θcos2θ) with factors commuted — identical. Replaced with a wrong function mix; key A retained."
+  },
+
+  "06-40": {
+    "answer": "B",
+    "options": { "D": "\\(\\alpha = \\pm \\beta + 2n\\pi\\)" },
+    "solution": "\\(\\cos 2\\alpha = \\cos 2\\beta\\) gives the general solution \\(2\\alpha = 2n\\pi \\pm 2\\beta\\). Dividing by 2: \\(\\alpha = n\\pi \\pm \\beta\\).",
+    "reason": "Key flip D→B: the question asks for the relationship between α and β, which is α = nπ ± β (option B — the source solution's own Step 3). The old D restated B before dividing by 2 (equivalent, wrong form); replaced with the too-coarse α = ±β + 2nπ distractor."
+  },
+
+  "07-8": {
+    "options": { "B": "\\(\\frac{2 + \\sqrt{3}}{4}\\)" },
+    "solution": "Using \\(\\sin A \\cos B = \\frac{1}{2}[\\sin(A+B) + \\sin(A-B)]\\): \\(\\sin 75^\\circ \\cos 15^\\circ = \\frac{1}{2}[\\sin 90^\\circ + \\sin 60^\\circ] = \\frac{1}{2}\\left[1 + \\frac{\\sqrt{3}}{2}\\right] = \\frac{2 + \\sqrt{3}}{4}\\).",
+    "reason": "No printed option equalled the correct (2+√3)/4. Option B repaired (was 1/2); key B retained; waffling solution rewritten."
+  },
+
+  "07-17": {
+    "options": { "D": "\\(2 \\cos 40^\\circ \\cos 60^\\circ\\)" },
+    "reason": "Option D (2cos40°cos30°) was numerically equal to the keyed A (√3 cos40°) — the un-simplified sum-to-product form. Replaced with 2cos40°cos60° (= cos40°, a genuine distractor matching C's family); key A retained."
+  },
+
+  "07-19": {
+    "answer": "C",
+    "solution": "Using \\(\\sin A \\sin B = \\frac{1}{2}[\\cos(A-B) - \\cos(A+B)]\\): \\(\\sin 45^\\circ \\sin 15^\\circ = \\frac{1}{2}[\\cos 30^\\circ - \\cos 60^\\circ] = \\frac{1}{2}\\left[\\frac{\\sqrt{3}}{2} - \\frac{1}{2}\\right] = \\frac{\\sqrt{3} - 1}{4}\\).",
+    "reason": "Key flip A→C: \\((\\sqrt{3}-1)/4\\) = option C. Source solution derived it and said so in self-talk; stripped."
+  },
+
+  "07-21": {
+    "options": { "A": "\\(\\frac{\\sqrt{3} - 1}{4}\\)" },
+    "solution": "Using \\(\\cos A \\cos B = \\frac{1}{2}[\\cos(A+B) + \\cos(A-B)]\\): \\(\\cos 75^\\circ \\cos 45^\\circ = \\frac{1}{2}[\\cos 120^\\circ + \\cos 30^\\circ] = \\frac{1}{2}\\left[-\\frac{1}{2} + \\frac{\\sqrt{3}}{2}\\right] = \\frac{\\sqrt{3} - 1}{4}\\).",
+    "reason": "No printed option equalled the correct (√3−1)/4 ≈ 0.183. Option A repaired (was (√6−√2)/8 ≈ 0.129); key A retained; waffling solution rewritten."
+  },
+
+  "07-27": {
+    "options": { "D": "\\(\\frac{\\sqrt{2} + \\sqrt{3}}{4}\\)" },
+    "solution": "Using \\(\\cos A \\cos B = \\frac{1}{2}[\\cos(A+B) + \\cos(A-B)]\\): \\(\\cos 37.5^\\circ \\cos 7.5^\\circ = \\frac{1}{2}[\\cos 45^\\circ + \\cos 30^\\circ] = \\frac{1}{2}\\left[\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{3}}{2}\\right] = \\frac{\\sqrt{2} + \\sqrt{3}}{4}\\).",
+    "reason": "Options C and D were identical ((√2+√6)/8) and neither was the correct (√2+√3)/4. Option D repaired; key D retained; waffling solution rewritten."
+  },
+
+  "07-29": {
+    "answer": "C",
+    "solution": "Using \\(\\sin A \\sin B = \\frac{1}{2}[\\cos(A-B) - \\cos(A+B)]\\): \\(\\sin 135^\\circ \\sin 45^\\circ = \\frac{1}{2}[\\cos 90^\\circ - \\cos 180^\\circ] = \\frac{1}{2}[0 - (-1)] = \\frac{1}{2}\\).",
+    "reason": "Key flip A→C: the value is 1/2 = option C (also \\(\\sin 135^\\circ = \\sin 45^\\circ = \\frac{\\sqrt{2}}{2}\\), and \\((\\frac{\\sqrt{2}}{2})^2 = \\frac{1}{2}\\)). Self-talk stripped."
+  },
+
+  "07-30": {
+    "options": {
+      "C": "\\(4 \\cos 5x \\cos 2x \\cos x\\)",
+      "D": "\\(2 \\cos 5x \\cos 2x \\cos x\\)"
+    },
+    "solution": "Group the terms: \\((\\cos 8x + \\cos 2x) + (\\cos 6x + \\cos 4x) = 2\\cos 5x \\cos 3x + 2\\cos 5x \\cos x = 2\\cos 5x(\\cos 3x + \\cos x) = 2\\cos 5x \\cdot 2\\cos 2x \\cos x = 4\\cos 5x \\cos 2x \\cos x\\).",
+    "reason": "Options A/C/D were the SAME wrong product (4cos5x·cos3x·cosx reordered) and none was the correct 4cos5x·cos2x·cosx. C repaired to the correct value, D to a distinct near-miss distractor; key C retained; waffling solution rewritten."
+  },
+
+  "07-34": {
+    "answer": "A",
+    "solution": "Using \\(\\cos A \\sin B = \\frac{1}{2}[\\sin(A+B) - \\sin(A-B)]\\): \\(\\cos 45^\\circ \\sin 15^\\circ = \\frac{1}{2}[\\sin 60^\\circ - \\sin 30^\\circ] = \\frac{1}{2}\\left[\\frac{\\sqrt{3}}{2} - \\frac{1}{2}\\right] = \\frac{\\sqrt{3} - 1}{4}\\).",
+    "reason": "Key flip C→A: \\((\\sqrt{3}-1)/4\\) = option A (numerically 0.183; option C's (√6−√2)/8 is 0.129). Source solution mislabelled its own result as C."
+  },
+
+  "07-37": {
+    "answer": "D",
+    "solution": "Using \\(\\sin A \\cos B = \\frac{1}{2}[\\sin(A+B) + \\sin(A-B)]\\): \\(\\sin 150^\\circ \\cos 30^\\circ = \\frac{1}{2}[\\sin 180^\\circ + \\sin 120^\\circ] = \\frac{1}{2}\\left[0 + \\frac{\\sqrt{3}}{2}\\right] = \\frac{\\sqrt{3}}{4}\\).",
+    "reason": "Key flip B→D: \\(\\frac{\\sqrt{3}}{4}\\) = option D (directly: \\(\\sin 150^\\circ = \\frac{1}{2}\\), \\(\\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{4}\\)). Source solution mislabelled its result as B."
+  },
+
+  "07-40": {
+    "answer": "B",
+    "options": { "C": "\\(\\sqrt{2 - \\sqrt{2}}\\)" },
+    "solution": "\\(\\cos 67.5^\\circ + \\cos 22.5^\\circ = 2 \\cos 45^\\circ \\cos 22.5^\\circ = \\sqrt{2} \\cos 22.5^\\circ\\). Since \\(\\cos 22.5^\\circ = \\frac{\\sqrt{2 + \\sqrt{2}}}{2}\\), the value is \\(\\frac{\\sqrt{2} \\cdot \\sqrt{2 + \\sqrt{2}}}{2} = \\sqrt{\\frac{2 + \\sqrt{2}}{2}} \\approx 1.307\\).",
+    "reason": "Key flip D→B: the value is √((2+√2)/2) ≈ 1.307 = option B; the keyed D (√(2+√2) ≈ 1.848) dropped the divisor. Option C was algebraically identical to B — replaced with √(2−√2), a distinct false distractor."
+  },
+
+  "07-41": {
+    "answer": "B",
+    "options": { "B": "\\(\\frac{1}{4}[\\sin 5\\theta + \\sin 3\\theta - \\sin 7\\theta - \\sin \\theta]\\)" },
+    "solution": "First \\(\\sin 4\\theta \\sin 2\\theta = \\frac{1}{2}[\\cos 2\\theta - \\cos 6\\theta]\\). Multiplying by \\(\\sin\\theta\\): \\(\\frac{1}{2}[\\cos 2\\theta \\sin\\theta - \\cos 6\\theta \\sin\\theta] = \\frac{1}{2}\\left[\\frac{1}{2}(\\sin 3\\theta - \\sin\\theta) - \\frac{1}{2}(\\sin 7\\theta - \\sin 5\\theta)\\right] = \\frac{1}{4}[\\sin 5\\theta + \\sin 3\\theta - \\sin 7\\theta - \\sin\\theta]\\).",
+    "reason": "No printed option was correct — the correct expansion is ¼[sin5θ + sin3θ − sin7θ − sinθ] (verified numerically); old option B was its exact negative. B repaired to the correct expression and keyed (old key A was a wrong cos-form with coefficient 1/8)."
+  },
+
+  "07-42": {
+    "stem": "Simplify \\(\\cos 20^\\circ + \\cos 100^\\circ + \\cos 140^\\circ\\).",
+    "solution": "\\(\\cos 20^\\circ + \\cos 100^\\circ = 2 \\cos 60^\\circ \\cos 40^\\circ = \\cos 40^\\circ\\). Then \\(\\cos 40^\\circ + \\cos 140^\\circ = 2 \\cos 90^\\circ \\cos 50^\\circ = 0\\).",
+    "reason": "As printed (cos100° + cos80° + cos20°) the value is cos20° ≈ 0.94, matching NO option — cos100° + cos80° cancel. The intended classic identity is cos20° + cos100° + cos140° = 0; stem repaired to it, key A (0) retained."
+  },
+
+  "07-44": {
+    "exclude": true,
+    "reason": "Defective beyond clean repair: the true maximum of sin x + sin 2x + sin 3x is ≈ 2.4996 (attained near x ≈ 38.2°), which has no clean closed form; the keyed D (3√3/2 ≈ 2.598) exceeds the actual maximum and every option is wrong. The source solution's 'both factors maximised simultaneously' argument is invalid."
+  },
+
+  "07-45": {
+    "options": { "C": "\\(\\frac{1}{4}[\\cos 14A + \\cos 10A + \\cos 6A + \\cos 2A]\\)" },
+    "solution": "\\(\\cos 2A \\cos 4A = \\frac{1}{2}[\\cos 6A + \\cos 2A]\\). Multiplying by \\(\\cos 8A\\): \\(\\frac{1}{2}[\\cos 6A \\cos 8A + \\cos 2A \\cos 8A] = \\frac{1}{2}\\left[\\frac{1}{2}(\\cos 14A + \\cos 2A) + \\frac{1}{2}(\\cos 10A + \\cos 6A)\\right] = \\frac{1}{4}[\\cos 14A + \\cos 10A + \\cos 6A + \\cos 2A]\\).",
+    "reason": "The keyed C had the right bracket but coefficient 1/8 instead of 1/4 (verified numerically: product of three cosines needs (1/2)² = 1/4). C repaired to the correct coefficient; key C retained."
+  },
+
+  "07-48": {
+    "solution": "Converting \\(\\sin x + \\sin 2x\\) to product form and solving \\(\\sin x + \\sin 3x = 0\\) are direct sum-to-product applications, and \\(\\lim_{x \\to 0} \\frac{\\sin 3x + \\sin 5x}{x}\\) can also use one. The integral \\(\\int \\sin 3x \\cos 5x\\,dx\\), however, has a PRODUCT integrand — it needs the product-to-sum identity instead, so it is NOT a direct application of sum-to-product.",
+    "reason": "Key A verified correct; the source solution described option A's integrand while naming option B — rewritten."
+  },
+
+  "08-12": {
+    "options": { "C": "\\(x = 0, \\frac{\\pi}{4}, \\frac{3\\pi}{4}, \\pi\\)" },
+    "solution": "\\(\\sin 3x - \\sin x = 2 \\cos 2x \\sin x = 0\\), so \\(\\sin x = 0\\) (giving \\(x = 0, \\pi\\)) or \\(\\cos 2x = 0\\) (giving \\(2x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\), i.e. \\(x = \\frac{\\pi}{4}, \\frac{3\\pi}{4}\\)). In \\([0, \\pi]\\): \\(x = 0, \\frac{\\pi}{4}, \\frac{3\\pi}{4}, \\pi\\).",
+    "reason": "The keyed C ({0, π/2, π}) is wrong — π/2 is not a solution (sin(3π/2) = −1 ≠ 1) and it misses π/4, 3π/4. The correct set matched no option; C repaired to it (key C retained). The source solution's even/odd case analysis mis-collapsed x = nπ/4."
+  },
+
+  "08-26": {
+    "answer": "B",
+    "solution": "\\(\\sin^2 x - \\cos^2 x = -\\cos 2x\\), so \\(\\cos 2x = -\\frac{1}{2}\\). For \\(x \\in [0, 2\\pi)\\), \\(2x \\in [0, 4\\pi)\\): \\(2x = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}, \\frac{8\\pi}{3}, \\frac{10\\pi}{3}\\), giving \\(x = \\frac{\\pi}{3}, \\frac{2\\pi}{3}, \\frac{4\\pi}{3}, \\frac{5\\pi}{3}\\).",
+    "reason": "Key flip A→B: the solution set is option B; option A even contains \\(\\frac{29\\pi}{12} \\notin [0, 2\\pi)\\). Self-talk stripped."
+  },
+
+  "08-32": {
+    "options": { "D": "\\(0, \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\)" },
+    "solution": "Using \\(\\sin^2 x = 1 - \\cos^2 x\\): \\(1 - \\cos^2 x + \\cos x = 1\\), so \\(\\cos x(1 - \\cos x) = 0\\). Thus \\(\\cos x = 0\\) (giving \\(x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\)) or \\(\\cos x = 1\\) (giving \\(x = 0\\)). Solutions in \\([0, 2\\pi)\\): \\(x = 0, \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\).",
+    "reason": "The keyed D listed {0, π/2, 2π} — 2π is outside [0, 2π) and 3π/2 is missing. D repaired to the correct set {0, π/2, 3π/2}; key D retained."
+  },
+
+  "08-33": {
+    "answer": "A",
+    "solution": "\\(\\cos 3x = -\\frac{1}{2}\\) gives \\(3x = \\frac{2\\pi}{3} + 2k\\pi\\) or \\(3x = \\frac{4\\pi}{3} + 2k\\pi\\). The smallest positive solution is \\(3x = \\frac{2\\pi}{3}\\), i.e. \\(x = \\frac{2\\pi}{9}\\).",
+    "reason": "Key flip D→A: \\(x = \\frac{\\pi}{9}\\) gives \\(\\cos \\frac{\\pi}{3} = +\\frac{1}{2}\\), not \\(-\\frac{1}{2}\\); the correct smallest solution \\(\\frac{2\\pi}{9}\\) is option A. (Source self-talk said 'option B' — also wrong.)"
+  },
+
+  "08-37": {
+    "options": { "A": "\\(x = n\\pi\\) or \\(x = 2n\\pi \\pm \\frac{\\pi}{3}\\), \\(n \\in \\mathbb{Z}\\)" },
+    "solution": "\\(\\sin 2x = \\sin x\\) gives \\(2\\sin x \\cos x - \\sin x = 0\\), so \\(\\sin x(2\\cos x - 1) = 0\\). Thus \\(\\sin x = 0\\) (i.e. \\(x = n\\pi\\)) or \\(\\cos x = \\frac{1}{2}\\) (i.e. \\(x = 2n\\pi \\pm \\frac{\\pi}{3}\\)).",
+    "reason": "The keyed A ('x = nπ/3 and x = π + 2nπ') includes non-solutions (x = 2π/3: sin 4π/3 ≠ sin 2π/3) and no option gave the full general solution. A repaired to the correct combined form; key A retained; source solution's 'nπ/3 covers all solutions' claim was false."
+  },
+
+  "08-38": {
+    "answer": "C",
+    "solution": "Using \\(\\sec^2 x = 1 + \\tan^2 x\\): \\(\\tan^2 x - \\tan x = 0\\), so \\(\\tan x(\\tan x - 1) = 0\\), giving \\(\\tan x = 0\\) (\\(x = 0, \\pi\\)) or \\(\\tan x = 1\\) (\\(x = \\frac{\\pi}{4}, \\frac{5\\pi}{4}\\)). All four values are in the domain, so \\(x = 0, \\frac{\\pi}{4}, \\pi, \\frac{5\\pi}{4}\\).",
+    "reason": "Key flip D→C: the keyed D ({0, π}) drops the tan x = 1 root family; the full set {0, π/4, π, 5π/4} is option C — which the source's own solution derived before trailing off into a 'need to check' waffle."
+  },
+
+  "08-43": {
+    "stem": "Solve \\(\\tan^2 x - (\\sqrt{3} - 1)\\tan x - \\sqrt{3} = 0\\)",
+    "reason": "As printed (+(√3−1) middle term) the roots are tan x = 1, −√3 → x = nπ+π/4 or nπ−π/3, matching NO option. With the minus sign the equation factors as (tan x − √3)(tan x + 1) — exactly the source solution's own factoring — giving the keyed D. Stem sign repaired to match the solution and key."
+  },
+
+  "08-44": {
+    "answer": "A",
+    "solution": "\\(\\sin x = \\frac{\\sqrt{2}}{2}\\) has solutions \\(x = \\frac{\\pi}{4}\\) and \\(x = \\frac{3\\pi}{4}\\) in \\([0, 2\\pi]\\). Their sum is \\(\\frac{\\pi}{4} + \\frac{3\\pi}{4} = \\pi\\).",
+    "reason": "Key flip D→A: the sum is \\(\\pi\\) = option A. Source solution derived \\(\\pi\\) then said 'this gives option D' — self-talk stripped."
+  },
+
+  "08-47": {
+    "options": { "D": "\\(x = \\frac{n\\pi}{2}\\) or \\(x = 2n\\pi \\pm \\frac{\\pi}{3}\\), \\(n \\in \\mathbb{Z}\\)" },
+    "solution": "\\(\\sin x + \\sin 3x = 2 \\sin 2x \\cos x\\), so the equation becomes \\(\\sin 2x(2\\cos x - 1) = 0\\). Thus \\(\\sin 2x = 0\\) (i.e. \\(x = \\frac{n\\pi}{2}\\)) or \\(\\cos x = \\frac{1}{2}\\) (i.e. \\(x = 2n\\pi \\pm \\frac{\\pi}{3}\\)).",
+    "reason": "The keyed D (x = nπ/2 alone) was incomplete — it misses the cos x = 1/2 family (e.g. x = π/3 satisfies the equation). D repaired to the full general solution; key D retained."
+  },
+
+  "08-51": {
+    "stem": "Find the number of roots of \\(\\sin x = \\frac{x}{100}\\).",
+    "solution": "Since \\(|\\sin x| \\le 1\\), roots require \\(|x| \\le 100 \\approx 31.83\\pi\\). For \\(x > 0\\): one root in \\((0, \\pi)\\), and two roots in each positive hump \\((2k\\pi, (2k+1)\\pi)\\) for \\(k = 1, \\ldots, 15\\) (the last hump \\((30\\pi, 31\\pi)\\) still lies below 100), giving \\(1 + 30 = 31\\) positive roots. By symmetry there are 31 negative roots, plus \\(x = 0\\): total \\(31 + 31 + 1 = 63\\).",
+    "reason": "As printed ('sin x = x/10 in [−10π, 10π]') the answer is 7 — the line x/10 exits [−1,1] at |x| = 10 ≈ 3.2π, so the options 59–65 belong to the classic x/100 variant. Stem repaired to sin x = x/100 (the equation itself confines |x| ≤ 100); key C (63) retained and now correct."
+  }
+}
