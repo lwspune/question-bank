@@ -60,6 +60,16 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
+  // Optional `source_file` substring, matching `audit:text` / `audit:keys`.
+  // Unfiltered this reads all ~37,600 questions with their text, context,
+  // solution and option text — ~30 MB of egress, about a full `next build`'s
+  // worth — and after an ingest only the new rows are unvetted. Applied IN THE
+  // QUERY, so scoping genuinely reduces rows fetched rather than rows printed.
+  // `ilike` (not `like`) so a lowercase filter matches a mixed-case
+  // source_file — the case-sensitivity bug that made `audit:keys` silently
+  // scan 0 rows while reporting "clean" (fixed 2026-08-05).
+  const filter = process.argv[2];
+
   const PAGE = 1000;
   let from = 0;
   let total = 0;
@@ -67,13 +77,15 @@ async function main() {
   const byVisibility: Record<string, number> = {};
 
   for (;;) {
-    const { data, error } = await client
+    let q = client
       .from("questions")
       .select(
         "id, question_number, source_file, visibility, text, context, solution, options(label, text)"
       )
       .order("id")
       .range(from, from + PAGE - 1);
+    if (filter) q = q.ilike("source_file", `%${filter}%`);
+    const { data, error } = await q;
     if (error) throw new Error(error.message);
     const rows = (data ?? []) as Row[];
     if (rows.length === 0) break;
@@ -107,10 +119,30 @@ async function main() {
     from += PAGE;
   }
 
+  // A filter that matches nothing scans 0 rows, finds 0 zones and writes a
+  // report saying so — indistinguishable from a clean bank. Say it loudly and
+  // exit non-zero instead, and do NOT overwrite the existing report with an
+  // empty one. Likeliest cause is a typo'd or over-specific substring.
+  if (filter && total === 0) {
+    console.log(
+      `\n⚠  NOTHING SCANNED — no question has a source_file containing "${filter}".` +
+        `\n   This is NOT a clean result, and ${join("generated-papers", "omml-sweep.md")} was left untouched.` +
+        `\n   Check the substring against:  select distinct source_file from questions;`
+    );
+    process.exitCode = 1;
+    return;
+  }
+
   const affectedRows = new Set(findings.map((f) => f.id));
 
   const lines: string[] = [];
-  lines.push(`# Bank-wide OMML-export sweep`);
+  // The heading must state the scope: a filtered report that claims to be
+  // bank-wide reads as an all-clear for questions it never looked at.
+  lines.push(
+    filter
+      ? `# OMML-export sweep — SCOPED to source_file ~ "${filter}" (NOT bank-wide)`
+      : `# Bank-wide OMML-export sweep`
+  );
   lines.push(``);
   lines.push(`Questions scanned: ${total}`);
   lines.push(`Distinct math strings checked: ${cache.size}`);

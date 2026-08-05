@@ -55,7 +55,18 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 **ATTEMPTED 2026-08-05 — INCONCLUSIVE, still open.** Half of it is resolved and half is not. **`staticPageGenerationTimeout: 180` is now deliberately KEPT** (comment updated in `next.config.mjs`): it is a ceiling, not a delay, so it costs nothing when nothing is slow, and dropping to the 60s default would only re-expose the SIGTERM-mid-retry edge — there is no upside to removing it. **`experimental.cpus: 4` remains unsettled.** Clean-`.next` A/B gave `cpus:4` 177s → no-cap 527s → `cpus:4` **484s** — the CONTROL failed to reproduce, so the middle number measures nothing. The confound was a concurrent ingestion session loading both the machine and the shared Postgres (3 node processes, 17 DB connections observed mid-run). All three runs produced 623 pages with zero timeout/SIGTERM/ECONNRESET, so removing the cap is not dangerous, merely unproven. **To close it:** re-run on an IDLE machine — no ingestion, no MCP traffic, no dev server — alternating **A-B-A-B** and accepting a result only if the two A runs agree within ~10%. Each build is ~25 MB egress and ~3–9 min, so budget ~100 MB for a four-run experiment and decide whether the build-time saving is worth that before starting.
 
-### Extend the ECONNRESET/fetch-failure retry to the prerender path
+### ~~Extend the ECONNRESET/fetch-failure retry to the prerender path~~ — **DECLINED 2026-08-05: the library already does it**
+
+**Do not re-propose this.** The premise — "an ECONNRESET is a thrown fetch-level network error and nothing retries it" — is FALSE. Reading the installed `@supabase/postgrest-js` **2.105.3** (pinned in `package-lock.json`, last touched 2026-05-10, so it was active *during* the incident):
+
+- `this.retryEnabled = builder.retry ?? true` — network retry is **ON by default**
+- `RETRYABLE_METHODS = ['GET','HEAD','OPTIONS']` — covers every read we make
+- `DEFAULT_MAX_RETRIES = 3`, exponential backoff 1s → 2s → 4s
+
+So each of the 344 ECONNRESETs in the failing build had **already been retried three times across ~7s of backoff**. They were not transient blips a retry could absorb — the pool was saturated for far longer than any backoff covers. A fourth layer would only multiply attempts (2 × 3 = 6+ per query) and lengthen a build that is already failing. The proposed *implementation* was also wrong: a fetch failure does **not** throw. `PostgrestBuilder.ts:372` catches it and returns `{ error: {message, details, hint:'', code:''} }`, i.e. through the same `error` channel `queryQuestions` already inspects — so "wrap the await in try/catch" would have caught nothing. The real fix for that build was the sort spill (`fa9b627`), and zero ECONNRESETs have occurred since.
+
+<!-- superseded original text below -->
+### ~~Extend the ECONNRESET/fetch-failure retry to the prerender path (original)~~
 
 `isStatementTimeout` in `src/lib/questions/query.ts` matches SQLSTATE 57014 only. An ECONNRESET surfaces as a *thrown* fetch-level network error and is not retried anywhere.
 
@@ -63,7 +74,14 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 **How to apply:** widen the retry predicate to also catch a thrown `TypeError: fetch failed` / `ECONNRESET` (wrap the awaited query in try/catch rather than only inspecting the PostgREST error object), keeping the same 2-attempt budget and backoff. Add cases to the existing query tests. Apply the same guard to the `/questions` landing-page loaders.
 
-### Consider scoping `audit:omml` and `audit:underlines` by `source_file`
+### ~~Consider scoping `audit:omml` and `audit:underlines` by `source_file`~~ — **DONE (omml) / NOT NEEDED (underlines) 2026-08-05**
+
+Split on measurement. **`audit:omml` — DONE:** it really did page all 37,636 rows selecting `text, context, solution, options(label, text)` (~16 MB of text alone, ~30 MB with overhead — about a full `next build`). Now takes an optional `source_file` substring applied **in the query** (`ilike`, matching `audit:text`/`audit:keys`), plus the `⚠ NOTHING SCANNED` guard that exits 1 and — importantly — **refuses to overwrite the existing report**, since an empty scoped report replacing a bank-wide one is worse than no report. The markdown heading now states the scope (`SCOPED to source_file ~ "x" (NOT bank-wide)`), because a filtered report titled "Bank-wide" reads as an all-clear for rows it never looked at. Verified: nonsense filter → warns/exits 1/report untouched; lowercase `jee_2023` → 1,725 rows (proving `ilike` against mixed-case `JEE_2023_*.docx`), 0 failing zones, scoped heading rendered.
+
+**`audit:underlines` — NOT NEEDED, the suggestion was wrong.** It does not sweep the bank: it already filters server-side with `.or("text.like.*underline*,…")` on questions and `.like("text","%underline%")` on options. Measured: **607 questions + 11 options** out of 37,636, ~0.6 MB. Adding a `source_file` filter would be complexity for no saving.
+
+<!-- superseded original text below -->
+### ~~Consider scoping `audit:omml` and `audit:underlines` by `source_file` (original)~~
 
 `audit:text` and `audit:keys` both take a `source_file` substring (fixed 2026-08-05 to be case-insensitive and to fail loudly on a zero-row scan). `audit:omml` and `audit:underlines` accept no argument and always sweep the whole 37k-row bank.
 
