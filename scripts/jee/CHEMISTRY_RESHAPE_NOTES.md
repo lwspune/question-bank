@@ -61,6 +61,32 @@ MHT-CET subtopic wording (`Reducing/Oxidizing Agents and Acidic/Basic Oxides`,
 that is not really about redox. When the reshape runs, those two subtopic names
 are the seed for the new chapter.
 
+### 1b. No `States of Matter` chapter
+Same shape as the Redox gap, and now with three independent votes:
+
+- 2026-jan28-s2 Q116 — latent heat at a phase change, filed under
+  `Chemical Thermodynamics :: Heat Capacity and Calorimetry`
+- 2026-apr07 Q34 — Dalton's law / partial pressures, filed under
+  `Some Basic Concepts of Chemistry :: Mole Concept and Stoichiometry`
+- 2023-apr12 Q58 — rms vs most-probable speed, filed to the SAME place as
+  apr07 Q34 for consistency
+
+MHT-CET carries `States of Matter :: Gas Laws and Ideal Gas Equation |
+Real Gases, Dalton's Law and KTG`, and it is a standard NCERT Class 11 chapter.
+
+**Decision: deferred, same reasoning as Redox.** Creating a chapter mid-ingest
+files identical content inconsistently — the three questions above already went
+to two different chapters. When the reshape runs, the MHT-CET chapter and
+subtopic names are the seed, and these three rows are the first residents.
+
+A guard now exists: `promote-gaps.ts` refuses to promote any classification
+whose CHAPTER is absent from the live-DB handout, because `commit.ts`
+auto-creates whatever chapter it is handed and would otherwise grow the spine
+silently. (Its first implementation was itself a no-op — it split the handout on
+the phrase "SIBLING REFERENCE", which also appears in the instructions ABOVE the
+chapter list, so the parse yielded an empty set and passed everything. It now
+bounds the section explicitly and throws if it parses zero chapters.)
+
 ### 2. Thin chapters inherited from the legacy 260
 These were auto-created from only 260 legacy-2021 questions and are still the
 weakest part of the spine. Growing, but check them at reshape time:
