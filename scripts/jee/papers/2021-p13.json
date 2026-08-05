@@ -1,7 +1,7 @@
 {
   "sourceFile": "JEE_2021_Paper13.docx",
   "pyqYear": 2021,
-  "pyqNote": "2021 Compilation Paper 13",
+  "pyqNote": "2021 Paper 13",
   "compilation": true,
   "classification": {
     "1": {
@@ -114,6 +114,91 @@
       "chapter": "Current Electricity",
       "subtopic": "EMF and Internal Resistance"
     },
+    "24": {
+      "subject": "Chemistry",
+      "chapter": "Solutions",
+      "subtopic": "Henry's Law and Solubility of Gases"
+    },
+    "25": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subtopic": "Hybridization"
+    },
+    "26": {
+      "subject": "Chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subtopic": "Mole Concept and Stoichiometry"
+    },
+    "27": {
+      "subject": "Chemistry",
+      "chapter": "Polymers",
+      "subtopic": "Polymers and Their Monomers"
+    },
+    "28": {
+      "subject": "Chemistry",
+      "chapter": "Hydrogen",
+      "subtopic": "Properties of Hydrogen"
+    },
+    "31": {
+      "subject": "Chemistry",
+      "chapter": "Solutions",
+      "subtopic": "Colligative Properties"
+    },
+    "32": {
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "subtopic": "Isomerism"
+    },
+    "33": {
+      "subject": "Chemistry",
+      "chapter": "Biomolecules",
+      "subtopic": "Vitamins"
+    },
+    "34": {
+      "subject": "Chemistry",
+      "chapter": "The p-Block Elements",
+      "subtopic": "Group 15 Elements"
+    },
+    "35": {
+      "subject": "Chemistry",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Magnetic Properties"
+    },
+    "36": {
+      "subject": "Chemistry",
+      "chapter": "Amines",
+      "subtopic": "Diazonium Salts"
+    },
+    "37": {
+      "subject": "Chemistry",
+      "chapter": "The d- and f-Block Elements",
+      "subtopic": "Colour, Magnetic Properties and Spin-Only Formula"
+    },
+    "38": {
+      "subject": "Chemistry",
+      "chapter": "The p-Block Elements",
+      "subtopic": "Boron Family"
+    },
+    "39": {
+      "subject": "Chemistry",
+      "chapter": "Amines",
+      "subtopic": "Aromatic Amines and EAS"
+    },
+    "41": {
+      "subject": "Chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subtopic": "Stoichiometry and Concentration"
+    },
+    "42": {
+      "subject": "Chemistry",
+      "chapter": "Structure of Atom",
+      "subtopic": "Electronic Configuration and Pauli/Hund Rules"
+    },
+    "43": {
+      "subject": "Chemistry",
+      "chapter": "Equilibrium",
+      "subtopic": "Equilibrium Constant (Kp, Kc) and Degree of Dissociation"
+    },
     "44": {
       "subject": "Maths",
       "chapter": "Trigonometry",
@@ -195,6 +280,20 @@
     "18": "B",
     "19": "B",
     "20": "C",
+    "24": "B",
+    "25": "A",
+    "26": "B",
+    "27": "D",
+    "28": "B",
+    "31": "D",
+    "32": "D",
+    "33": "A",
+    "34": "C",
+    "35": "A",
+    "36": "A",
+    "37": "B",
+    "38": "A",
+    "39": "B",
     "44": "D",
     "45": "D",
     "46": "B",
@@ -208,12 +307,15 @@
     "14": 60,
     "21": -640,
     "23": 15,
+    "41": 0.004,
+    "42": 12,
+    "43": 20,
     "47": 96,
     "48": 96,
     "49": 3125,
     "53": 30240
   },
-  "notes": "2021 compilation Paper 13, Maths only. Source key MISALIGNED (Q56 answer 2/9 was mislabeled as Q58); every key independently blind-re-derived. Shipped 12 of 16 (8 MCQ + 4 integer-NAT). Skipped: Q50 (prob 43/162), Q51 (e=(sqrt5-1)/2), Q55 (sum 4/3), Q58 (antiderivative) — non-integer/irrational answers that don't fit the MCQ/NAT schema.\n2021 Compilation Paper 13 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
+  "notes": "2021 compilation Paper 13, Maths only. Source key MISALIGNED (Q56 answer 2/9 was mislabeled as Q58); every key independently blind-re-derived. Shipped 12 of 16 (8 MCQ + 4 integer-NAT). Skipped: Q50 (prob 43/162), Q51 (e=(sqrt5-1)/2), Q55 (sum 4/3), Q58 (antiderivative) — non-integer/irrational answers that don't fit the MCQ/NAT schema.\n2021 Compilation Paper 13 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Q24-Q28: extraction dropped the option block for the ENTIRE Q24-Q30 run (0 options recorded on each). All four labels per question are recovered verbatim from the source markdown, which lets commit.ts synthesize the option set; without them assemble-blind drops the row as a no-options non-numeric. Q29 and Q30 are excluded because both are skipped on their own merits: Q29's required answer (AgI/I-) is not among its printed options, and all four of Q30's statements read as true so no false one can be identified.\n[Chemistry stem repair] Q25: Two defects. (i) The match-table was flattened by extraction, so the formulas \\(NO_{2}^{+}\\) and \\(NH_{4}^{+}\\) became detached from their row labels III and IV. (ii) The option block was dropped entirely (0 options recorded); the printed options are: (a) I->(B), II->(A), III->(D), IV->(C); (b) I->(C), II->(B), III->(A), IV->(D); (c) I->(D), II->(B\n[Chemistry stem repair] Q41: The concentration is printed as '.72 g/L' with its leading zero stripped by extraction. Reading it as \\(0.72\\ g\\ L^{-1}\\) is forced by the question's own arithmetic: it is the only value in that range that divides 180 exactly, giving the clean \\(4 \\times 10^{-3}\\ M\\) a numeric-answer question requires, and 72 mg/dL is a physiologically realistic bl\n2021 Paper 13 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 24, 25, 26, 27, 28 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Paper 13 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 24, 25, 26, 27, 28 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Paper 13 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 24, 25, 26, 27, 28 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Paper 13 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
   "authoredSolutions": {
     "1": "For a particle of mass \\(m\\) with kinetic energy \\(K\\) the momentum is \\(p=\\sqrt{2mK}\\), so \\[\\lambda=\\frac{h}{p}=\\frac{h}{\\sqrt{2mK}}.\\] Both particles carry the same \\(K\\), hence \\[\\frac{\\lambda_{e}}{\\lambda_{p}}=\\frac{\\sqrt{2m_{p}K}}{\\sqrt{2m_{e}K}}=\\sqrt{\\frac{m_{p}}{m_{e}}}.\\] Since \\(m_{p}\\gg m_{e}\\) the ratio exceeds 1, which is the expected result that the lighter electron has the longer wavelength.",
     "2": "With \\(\\varepsilon=\\varepsilon_{0}\\sin\\omega t\\) across a capacitor, \\[i=\\frac{dq}{dt}=C\\frac{d\\varepsilon}{dt}=\\varepsilon_{0}\\omega C\\cos\\omega t=\\varepsilon_{0}\\omega C\\sin\\left(\\omega t+\\frac{\\pi}{2}\\right).\\] The current therefore leads the emf by exactly \\(90^{\\circ}\\), so on a phasor diagram the current phasor must sit a quarter turn ahead of the emf phasor. Option (A) draws \\(\\varepsilon\\) along the horizontal axis and \\(i\\) along the vertical axis, a \\(90^{\\circ}\\) lead, which is the pure capacitor. Option (B) shows \\(i\\) lagging by \\(90^{\\circ}\\), which is a pure inductor, while options (C) and (D) show acute lead and lag angles, which correspond to RC and RL combinations rather than a bare capacitor.",
@@ -237,6 +339,23 @@
     "20": "The impulse on the bullet equals its change in momentum, \\[J=m_{b}v_{b}=\\left(4\\times10^{-3}\\right)(50)=0.2\\ \\text{kg m s}^{-1},\\] which immediately rules out the two choices quoting \\(200\\ \\text{kg m s}^{-1}\\). The gun and bullet start at rest, so momentum conservation gives \\[M_{g}V=m_{b}v_{b}\\Rightarrow V=\\frac{0.2}{4}=0.05\\ \\text{m s}^{-1}=5\\ \\text{cm s}^{-1}.\\] The impulse is therefore \\(0.2\\ \\text{kg m s}^{-1}\\) and the recoil speed of the gun is \\(5\\ \\text{cm s}^{-1}\\).",
     "21": "Lowering at constant speed means \\(\\Delta KE=0\\), so by the work-energy theorem the work of the external agent exactly cancels the work of gravity. As the body descends \\(h=0.8\\ \\text{m}\\), gravity does \\[W_{g}=+mgh=(80)(10)(0.8)=+640\\ \\text{J},\\] and therefore \\[W_{ext}=-W_{g}=-640\\ \\text{J}.\\] Equivalently, the external force is \\(mg\\) upward while the displacement is downward, so the two are antiparallel and \\(W_{ext}=-mgh=-640\\ \\text{J}\\).",
     "23": "Let the internal resistance be \\(r\\). With the \\(5\\ \\Omega\\) resistor the current is \\(I_{1}=\\frac{1.25}{5}=0.25\\ \\text{A}\\), so \\(E=1.25+0.25r\\). With the \\(2\\ \\Omega\\) resistor the current is \\(I_{2}=\\frac{1}{2}=0.5\\ \\text{A}\\), so \\(E=1+0.5r\\). Equating the two expressions, \\[1.25+0.25r=1+0.5r\\Rightarrow0.25=0.25r\\Rightarrow r=1\\ \\Omega.\\] Hence \\(E=1.25+0.25(1)=1.5\\ \\text{V}\\), and from \\(E=\\frac{x}{10}\\), \\[x=10E=15.\\]",
+    "24": "Dissolution of a gas in water is exothermic, so by Le Chatelier's principle raising the temperature drives the dissolved gas back out — gas solubility falls as temperature rises. Of the four choices, water at \\(4^{\\circ}C\\) is the coldest, so it holds the most dissolved oxygen; water at \\(80^{\\circ}C\\) holds much less and boiling water has expelled essentially all of it. Polluted water is oxygen-depleted because decomposing organic matter consumes it (high BOD). Hence the correct option is (B).",
+    "25": "Count the electron domains (bond pairs plus lone pairs) on each central atom. \\(SF_{4}\\) has 4 bond pairs and 1 lone pair, i.e. 5 domains, so it is \\(sp^{3}d\\), matching (B). \\(IF_{5}\\) has 5 bond pairs and 1 lone pair, i.e. 6 domains, so it is \\(sp^{3}d^{2}\\), matching (A). \\(NO_{2}^{+}\\) is isoelectronic with \\(CO_{2}\\), linear with only 2 domains, so it is \\(sp\\), matching (D), while \\(NH_{4}^{+}\\) has 4 bond pairs and no lone pair, so it is \\(sp^{3}\\), matching (C). The pairing I-(B), II-(A), III-(D), IV-(C) is choice (A).",
+    "26": "Methylation converts benzene to toluene in a 1:1 mole ratio. Moles of benzene \\(= 10/78 = 0.1282\\) mol, so the theoretical yield of toluene \\((M = 92)\\) is \\(0.1282 \\times 92 = 11.79\\) g. The percentage yield is therefore \\((9.2/11.79) \\times 100 = 78\\%\\). Hence the correct option is (B).",
+    "27": "Read each structure in Column I. Structure I is \\(CH_{2}=C(CH_{3})-CH=CH_{2}\\), 2-methyl-1,3-butadiene, which is isoprene, so I matches (A). Structure II is \\(CH_{2}=CH-C\\equiv N\\), acrylonitrile, so II matches (B). Structure III is the repeating unit \\(-[CH_{2}-C(Cl)=CH-CH_{2}]_{n}-\\), polychloroprene, better known as neoprene, so III matches (C). Structure IV is a seven-membered ring lactam containing \\(-CO-NH-\\), which is caprolactam, so IV matches (D). The pairing I-(A), II-(B), III-(C), IV-(D) is choice (D).",
+    "28": "Hydrogen has three isotopes: protium \\(\\left(^{1}H\\right)\\) and deuterium \\(\\left(^{2}H\\right)\\), both stable, and tritium \\(\\left(^{3}H\\right)\\). Only tritium is radioactive: it decays to \\(^{3}He\\) by emitting a very low-energy \\(\\beta^{-}\\) particle, with a half-life of about 12.3 years. Hence the correct option is (B).",
+    "31": "Depression of freezing point is a colligative property, \\(\\Delta T_{f} = i K_{f} m\\), so at a common concentration the solute that furnishes the most particles depresses the freezing point most. The van't Hoff factors are \\(K_{2}SO_{4}: i = 3\\), \\(KI: i = 2\\), \\(C_{6}H_{12}O_{6}: i = 1\\) and \\(Al_{2}\\left(SO_{4}\\right)_{3}: i = 5\\). \\(Al_{2}\\left(SO_{4}\\right)_{3}\\) gives the largest \\(i\\), hence the largest \\(\\Delta T_{f}\\) and the lowest freezing point. Hence the correct option is (D).",
+    "32": "Pentene is \\(C_{5}H_{10}\\); acyclic structural isomers differ either in carbon skeleton or in the position of the double bond. On the straight chain there are pent-1-ene and pent-2-ene; on the branched four-carbon skeleton there are 2-methylbut-1-ene, 3-methylbut-1-ene and 2-methylbut-2-ene. That is five constitutional isomers — the cis and trans forms of pent-2-ene are stereoisomers, not structural isomers, so they are not counted separately. Hence the correct option is (D).",
+    "33": "Thiamine is the chemical name of vitamin \\(B_{1}\\), whose deficiency causes beri-beri, and pyridoxine is the chemical name of vitamin \\(B_{6}\\), whose deficiency causes convulsions. Riboflavin is \\(B_{2}\\), cyanocobalamin is \\(B_{12}\\) and ascorbic acid is vitamin C, so every other pairing offered is wrong. Hence the correct option is (A).",
+    "34": "Down group 15 the \\(E-H\\) bond becomes longer and weaker as the central atom grows larger, so the hydrides become progressively less stable and more easily give up hydrogen. Reducing character therefore increases in the order \\(NH_{3} < PH_{3} < AsH_{3} < SbH_{3} < BiH_{3}\\). \\(BiH_{3}\\) is the least stable and the strongest reducing agent of the set. Hence the correct option is (C).",
+    "35": "In \\(\\left[Co\\left(NH_{3}\\right)_{6}\\right]Cl_{2}\\) the metal is \\(Co^{2+}\\), a \\(d^{7}\\) ion. For \\(Co(II)\\), ammonia gives \\(\\Delta_{o}\\) of only about \\(10{,}000\\ cm^{-1}\\), well below the pairing energy of roughly \\(21{,}000\\ cm^{-1}\\), so the complex is high spin (outer-orbital, \\(sp^{3}d^{2}\\)) with configuration \\(t_{2g}^{5}e_{g}^{2}\\) and 3 unpaired electrons. In \\(\\left[Co\\left(NH_{3}\\right)_{6}\\right]Cl_{3}\\) the metal is \\(Co^{3+}\\), a \\(d^{6}\\) ion for which \\(\\Delta_{o}\\) with ammonia exceeds the pairing energy, giving the low-spin inner-orbital \\(d^{2}sp^{3}\\) arrangement \\(t_{2g}^{6}e_{g}^{0}\\) with 0 unpaired electrons and a diamagnetic complex. The counts are therefore 3 and 0, which is option (A).",
+    "36": "The scheme converts benzenediazonium chloride to benzene and then benzene to ethylbenzene. Step A is the removal of the diazonium group by reduction, for which hypophosphorous acid \\(H_{3}PO_{2}\\) in water is the standard reagent: \\(C_{6}H_{5}N_{2}^{+}Cl^{-} + H_{3}PO_{2} + H_{2}O \\rightarrow C_{6}H_{6} + N_{2} + H_{3}PO_{3} + HCl\\). Step B attaches an ethyl group to the ring, which is a Friedel-Crafts alkylation using \\(C_{2}H_{5}Cl\\) with anhydrous \\(AlCl_{3}\\). Only one choice pairs these two reagents correctly, so the correct option is (A).",
+    "37": "Both properties here need partly filled \\(d\\) orbitals. \\(Mn^{7+}\\) is \\(d^{0}\\): it has no unpaired electrons, so it is diamagnetic, and the intense colour of \\(MnO_{4}^{-}\\) arises from charge transfer rather than \\(d-d\\) transitions. \\(Mn^{2+}\\) is \\(d^{5}\\) with 5 unpaired electrons and \\(Cu^{2+}\\) is \\(d^{9}\\) with 1 unpaired electron, so both are paramagnetic and both are coloured through \\(d-d\\) transitions. Any pair containing \\(Mn^{7+}\\) therefore fails, leaving \\(Mn^{2+}, Cu^{2+}\\) — option (B).",
+    "38": "Diborane is prepared in the laboratory by oxidising sodium borohydride with iodine, \\(2NaBH_{4} + I_{2} \\rightarrow B_{2}H_{6} + 2NaI + H_{2}\\), so statement (a) is correct. The molecule is not planar: the four terminal \\(B-H\\) bonds lie in one plane while the two bridging hydrogens sit above and below it, and each boron is \\(sp^{3}\\) hybridised, not \\(sp^{2}\\), so (b) and (c) fail. The two \\(B-H-B\\) bridges are three-centre two-electron (banana) bonds, and there are two of them, not one three-centre three-electron bond, so (d) fails as well. Hence the correct option is (A).",
+    "39": "Friedel-Crafts reactions need the Lewis acid \\(AlCl_{3}\\) to generate the electrophile. Aniline has a lone pair on nitrogen that coordinates to \\(AlCl_{3}\\), forming an acid-base adduct in which the nitrogen carries a positive charge; that positively charged group is strongly deactivating and withdraws electron density from the ring, so the ring no longer reacts with the electrophile. Benzene, toluene and ethylbenzene have no such basic site and all undergo Friedel-Crafts alkylation or acylation normally. Hence the correct option is (B).",
+    "41": "Molarity is moles of solute per litre of solution. The molar mass of glucose \\(C_{6}H_{12}O_{6}\\) is \\(6(12) + 12(1) + 6(16) = 180\\ g\\ mol^{-1}\\). One litre of blood contains \\(0.72\\ g\\), which is \\(0.72/180 = 4 \\times 10^{-3}\\) mol. The molarity is therefore \\(4 \\times 10^{-3}\\ M\\), i.e. \\(0.004\\ M\\).",
+    "42": "Vanadium has atomic number 23, so its ground-state configuration is \\(1s^{2}\\ 2s^{2}\\ 2p^{6}\\ 3s^{2}\\ 3p^{6}\\ 4s^{2}\\ 3d^{3}\\). The only \\(p\\) subshells that are occupied are \\(2p\\) and \\(3p\\), each of which is full with 6 electrons. The total number of electrons in \\(p\\) orbitals is therefore \\(6 + 6 = 12\\).",
+    "43": "The two equilibrium constants are related by \\(K_{P} = K_{C}(RT)^{\\Delta n}\\), where \\(\\Delta n\\) is the change in the number of moles of gas. For \\(N_{2}O_{4} \\rightleftharpoons 2NO_{2}\\), \\(\\Delta n = 2 - 1 = 1\\), so \\(K_{C} = K_{P}/(RT)\\). Substituting \\(R = 0.0821\\ L\\ atm\\ K^{-1}\\ mol^{-1}\\) and \\(T = 288\\ K\\) gives \\(RT = 23.64\\), so \\(K_{C} = 476/23.64 = 20.1\\). To the nearest integer \\(K_{C} = 20\\).",
     "44": "Since \\(\\sin^7 x\\le \\sin^2 x\\) and \\(\\cos^7 x\\le \\cos^2 x\\) (as \\(t^7\\le t^2\\) for \\(t\\in[0,1]\\) and \\(t^7<0\\le t^2\\) for \\(t<0\\)), \\(\\sin^7 x+\\cos^7 x\\le 1\\), with equality only when \\(\\sin x,\\cos x\\in\\{0,1\\}\\), i.e. \\((\\sin x,\\cos x)=(1,0)\\) or \\((0,1)\\). On \\([0,4\\pi]\\): \\(\\cos x=1\\) at \\(0,2\\pi,4\\pi\\) and \\(\\sin x=1\\) at \\(\\tfrac{\\pi}{2},\\tfrac{5\\pi}{2}\\), giving \\(5\\) solutions.",
     "45": "With \\(S_{10}=530,\\ S_5=140\\): \\(2a+9d=106\\) and \\(2a+4d=56\\), so \\(5d=50\\Rightarrow d=10,\\ a=8\\). Then \\(S_{20}=\\tfrac{20}{2}(16+190)=2060\\) and \\(S_6=\\tfrac{6}{2}(16+50)=198\\), so \\(S_{20}-S_6=1862\\).",
     "46": "The numerator \\(\\cos^{-1}\\sqrt{x^2-x+1}\\) needs \\(x^2-x\\le0\\Rightarrow x\\in[0,1]\\). The denominator \\(\\sqrt{\\sin^{-1}(x-\\tfrac12)}\\) must be positive, so \\(x>\\tfrac12\\). Intersection \\((\\tfrac12,1]\\), giving \\((\\alpha,\\beta)=(\\tfrac12,1)\\) and \\(\\alpha+\\beta=\\tfrac32\\).",
@@ -252,12 +371,44 @@
   },
   "skip": [
     22,
-    24,
-    25,
-    26,
-    27,
-    28,
     29,
-    30
-  ]
+    30,
+    40
+  ],
+  "optionOverrides": {
+    "24": {
+      "A": "Boiling water",
+      "B": "Water at \\(4^{\\circ}C\\)",
+      "C": "Water at \\(80^{\\circ}C\\)",
+      "D": "Polluted water"
+    },
+    "25": {
+      "A": "I-(B), II-(A), III-(D), IV-(C)",
+      "B": "I-(C), II-(B), III-(A), IV-(D)",
+      "C": "I-(D), II-(B), III-(C), IV-(A)",
+      "D": "I-(B), II-(C), III-(A), IV-(D)"
+    },
+    "26": {
+      "A": "\\(92\\%\\)",
+      "B": "\\(78\\%\\)",
+      "C": "\\(90\\%\\)",
+      "D": "\\(70\\%\\)"
+    },
+    "27": {
+      "A": "I-(B), II-(A), III-(D), IV-(C)",
+      "B": "I-(C), II-(B), III-(A), IV-(D)",
+      "C": "I-(D), II-(B), III-(C), IV-(A)",
+      "D": "I-(A), II-(B), III-(C), IV-(D)"
+    },
+    "28": {
+      "A": "Protium",
+      "B": "Tritium",
+      "C": "Deutrium",
+      "D": "None of the above"
+    }
+  },
+  "stemOverrides": {
+    "25": "Match the following.\n\n| Compound | Hybridisation |\n|---|---|\n| I. \\(SF_{4}\\) | (A) \\(sp^{3}d^{2}\\) |\n| II. \\(IF_{5}\\) | (B) \\(sp^{3}d\\) |\n| III. \\(NO_{2}^{+}\\) | (C) \\(sp^{3}\\) |\n| IV. \\(NH_{4}^{+}\\) | (D) \\(sp\\) |\n|  | (E) \\(sp^{3}d^{3}\\) |",
+    "41": "If concentration of glucose \\(\\left( C_{6}H_{12}O_{6} \\right)\\) in blood is \\(0.72\\text{ }g/L\\). Its molarity is:"
+  }
 }

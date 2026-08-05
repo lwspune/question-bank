@@ -15,7 +15,7 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { recordsPath, paperDataPath, requirePaperId } from "./config";
 import { cleanSolution } from "./sol-clean";
-import { parseSubjectArg } from "./lib";
+import { parseSubjectArg, solFilesForSubject } from "./lib";
 
 type Rec = {
   questionNumber: number;
@@ -75,10 +75,11 @@ function main() {
   // Merge all agent sol files for this paper.
   const outDir = join("scripts/jee/out");
   const sols: Record<string, Sol> = {};
-  for (const f of readdirSync(outDir)) {
-    if (f.startsWith(`${paperId}_sol_`) && f.endsWith(".json")) {
-      Object.assign(sols, JSON.parse(readFileSync(join(outDir, f), "utf8")));
-    }
+  // Scoped to THIS subject: an unscoped glob merges another subject's agent
+  // output, and readdir order lets it overwrite real answers with that pass's
+  // skip flags.
+  for (const f of solFilesForSubject(readdirSync(outDir), paperId, subject)) {
+    Object.assign(sols, JSON.parse(readFileSync(join(outDir, f), "utf8")));
   }
 
   const classification: Record<string, { subject: string; chapter: string; subtopic: string }> = {};

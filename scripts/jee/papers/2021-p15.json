@@ -99,6 +99,91 @@
       "chapter": "Alternating Current",
       "subtopic": "LCR Series Circuit"
     },
+    "21": {
+      "subject": "Chemistry",
+      "chapter": "Hydrogen",
+      "subtopic": "Classification of Hydrides"
+    },
+    "22": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subtopic": "Molecular Orbital Theory"
+    },
+    "23": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "subtopic": "First Law of Thermodynamics, Internal Energy and Work"
+    },
+    "24": {
+      "subject": "Chemistry",
+      "chapter": "The d- and f-Block Elements",
+      "subtopic": "Lanthanoids and Actinoids"
+    },
+    "25": {
+      "subject": "Chemistry",
+      "chapter": "Surface Chemistry",
+      "subtopic": "Colloids"
+    },
+    "27": {
+      "subject": "Chemistry",
+      "chapter": "Polymers",
+      "subtopic": "Polymers and Their Monomers"
+    },
+    "28": {
+      "subject": "Chemistry",
+      "chapter": "General Principles and Processes of Isolation of Elements",
+      "subtopic": "Concentration of Ores"
+    },
+    "29": {
+      "subject": "Chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Carboxylic Acid Reactions"
+    },
+    "30": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Rate of Reaction, Stoichiometry and Average Rate"
+    },
+    "31": {
+      "subject": "Chemistry",
+      "chapter": "Equilibrium",
+      "subtopic": "Acid-Base Equilibria and Indicators"
+    },
+    "32": {
+      "subject": "Chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subtopic": "Oxidation Number Calculation and Determination"
+    },
+    "33": {
+      "subject": "Chemistry",
+      "chapter": "The d- and f-Block Elements",
+      "subtopic": "Colour, Magnetic Properties and Spin-Only Formula"
+    },
+    "35": {
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "subtopic": "Estimation of Elements"
+    },
+    "37": {
+      "subject": "Chemistry",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Stability of Complexes"
+    },
+    "39": {
+      "subject": "Chemistry",
+      "chapter": "Hydrocarbons",
+      "subtopic": "Aromaticity"
+    },
+    "40": {
+      "subject": "Chemistry",
+      "chapter": "Amines",
+      "subtopic": "Diazonium Salts"
+    },
+    "41": {
+      "subject": "Chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Oxidation, Reduction and Identification Tests"
+    },
     "43": {
       "subject": "Maths",
       "chapter": "Quadratic Equations",
@@ -163,15 +248,33 @@
     "17": "B",
     "18": "A",
     "19": "B",
+    "21": "A",
+    "22": "A",
+    "23": "B",
+    "24": "A",
+    "25": "A",
+    "27": "A",
+    "28": "C",
+    "29": "D",
+    "31": "A",
+    "32": "B",
+    "33": "C",
+    "35": "B",
+    "37": "C",
+    "39": "D",
+    "40": "C",
+    "41": "B",
     "43": "B",
     "46": "B"
   },
   "stemOverrides": {
+    "41": "The product of the following reaction sequence is:",
     "46": "If \\(f(x)=\\begin{cases} 5x+1, & x<2 \\\\ \\int_{0}^{x} (5+|1-t|)\\,dt, & x\\ge 2 \\end{cases}\\) then"
   },
   "numericOverrides": {
     "1": 125,
     "15": 372,
+    "30": 0.4,
     "47": 0,
     "49": 6,
     "50": 1,
@@ -180,7 +283,7 @@
     "55": 4,
     "57": 11
   },
-  "notes": "2021 compilation Paper 15, Maths only. Keys independently re-derived from the stems (Q50 = 1 confirmed vs the source's own key; source keys elsewhere untrustworthy). Shipped 9 of 15 (2 MCQ + 7 integer-NAT). Skipped: Q44 (two option-images missing), Q45 (angle-bisector equation), Q48 (matrix answer), Q51 (cot(pi/24) irrational), Q54 (requires stem reconstruction), Q56 (coplanarity relation).\n2021 Compilation Paper 15 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
+  "notes": "2021 compilation Paper 15, Maths only. Keys independently re-derived from the stems (Q50 = 1 confirmed vs the source's own key; source keys elsewhere untrustworthy). Shipped 9 of 15 (2 MCQ + 7 integer-NAT). Skipped: Q44 (two option-images missing), Q45 (angle-bisector equation), Q48 (matrix answer), Q51 (cot(pi/24) irrational), Q54 (requires stem reconstruction), Q56 (coplanarity relation).\n2021 Compilation Paper 15 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 21, 22, 23, 24, 25, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n[Chemistry option repair] Restored the full option block for Q21, Q22, Q23, Q24, Q25, Q27, Q28, Q29 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n2021 Compilation Paper 15 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 21, 22, 23, 24, 25, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Compilation Paper 15 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 21, 22, 23, 24, 25, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Compilation Paper 15 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q41: stem extracted EMPTY; the Grignard-plus-nitrile scheme is entirely in the attached figure. Supplied a pure lead-in that introduces the figure and asserts nothing chemical — no reagent, product or condition is invented, since all of it is in the attached image.",
   "authoredSolutions": {
     "1": "The stone leaves the balloon with the balloon's own velocity, so it is projected upward with \\(u=10\\ \\text{m/s}\\) from a height \\(h=75\\ \\text{m}\\). Taking upward as positive and \\(g=10\\ \\text{m/s}^{2}\\), \\[-75=10t-\\tfrac{1}{2}(10)t^{2}\\] which gives \\(t^{2}-2t-15=0\\), so \\((t-5)(t+3)=0\\) and \\(t=5\\ \\text{s}\\). During this time the balloon, moving at constant speed, rises a further \\(10\\times 5=50\\ \\text{m}\\). Height of the balloon above the ground \\[=75+50=125\\ \\text{m}.\\]",
     "2": "The argument of a trigonometric function must be dimensionless, so \\([Bx]=1\\) gives \\([B]=L^{-1}\\) and \\([Dt]=1\\) gives \\([D]=T^{-1}\\). Since \\(\\cos\\) and \\(\\sin\\) are themselves dimensionless, \\(A\\) and \\(C\\) must carry the dimensions of force, \\([A]=[C]=MLT^{-2}\\). Therefore \\[\\left[\\frac{AD}{B}\\right]=\\frac{\\left(MLT^{-2}\\right)\\left(T^{-1}\\right)}{L^{-1}}=ML^{2}T^{-3}.\\] The matching option is B.",
@@ -201,6 +304,23 @@
     "17": "The force is along \\(\\hat{j}\\) and the displacement is along \\(y\\), so \\[W=\\int_{0}^{2}(5y+4)\\,dy=\\left[\\frac{5y^{2}}{2}+4y\\right]_{0}^{2}=10+8=18\\ \\text{J}.\\] The matching option is B.",
     "18": "Measure time from the instant the current is maximum, so \\(i=i_{0}\\cos\\omega t\\). The current equals its rms value when \\[\\frac{i_{0}}{\\sqrt{2}}=i_{0}\\cos\\omega t\\quad\\Rightarrow\\quad\\omega t=\\frac{\\pi}{4}.\\] Hence \\[t=\\frac{\\pi/4}{2\\pi f}=\\frac{1}{8f}=\\frac{1}{8\\times 50}=2.5\\times 10^{-3}\\ \\text{s}=2.5\\ \\text{ms}.\\] The matching option is A. The values of resistance and voltage are not needed.",
     "19": "From the figure the first circuit is \\(20\\ \\text{V}\\) across \\(R=5\\ \\Omega\\), so \\[P_{1}=\\frac{V^{2}}{R}=\\frac{400}{5}=80\\ \\text{W}.\\] The second is a series \\(RLC\\) circuit with \\(R=5\\ \\Omega\\), \\(L=0.1\\ \\text{H}\\), \\(C=40\\ \\mu\\text{F}\\) on a \\(20\\ \\text{V}\\) source, whose average power is \\[P_{2}=\\frac{V^{2}R}{Z^{2}}=\\frac{400\\times 5}{Z^{2}}.\\] Equating the two powers gives \\(Z^{2}=25\\), i.e. \\(Z=R=5\\ \\Omega\\), which is the resonance condition \\(X_{L}=X_{C}\\). Therefore \\[\\omega=\\frac{1}{\\sqrt{LC}}=\\frac{1}{\\sqrt{0.1\\times 40\\times 10^{-6}}}=\\frac{1}{2\\times 10^{-3}}=500\\ \\text{rad/s}.\\] The matching option is B.",
+    "21": "Interstitial (metallic) hydrides are formed by d- and f-block metals, but groups 7, 8 and 9 leave the well-known \"hydride gap\" — no simple binary hydride of \\(Mn\\), \\(Fe\\) or \\(Co\\) is known. Chromium belongs to group 6, outside that gap, and does take up hydrogen interstitially to give \\(CrH\\). Hence \\(Cr\\) is the metal that forms an interstitial hydride easily, option (A).",
+    "22": "Bond order \\(= \\frac{1}{2}(N_b - N_a)\\). Every electron added to a dioxygen species enters the antibonding \\(\\pi^{*}\\) set, so removing one raises the bond order and adding one lowers it: \\(O_{2}^{+} = 2.5\\), \\(O_{2} = 2\\), \\(O_{2}^{-} = 1.5\\) and \\(O_{2}^{2-} = 1\\). The only choice that lists the four species in a genuine monotonic order of bond order is \\(O_{2}^{+} > O_{2} > O_{2}^{-} > O_{2}^{2-}\\), option (A).",
+    "23": "The first law in the form \\(\\Delta U = q - W\\) applies when \\(W\\) is the work done BY the system. Here the system absorbs \\(q = +150\\ J\\) and does \\(W = +200\\ J\\) of work on the surroundings, so \\(\\Delta U = 150 - 200 = -50\\ J\\). The internal energy falls by \\(50\\ J\\), option (B).",
+    "24": "Holmium \\((Z = 67)\\) has the ground-state configuration \\([Xe]4f^{11}6s^{2}\\). Lanthanoids ionise by losing the two \\(6s\\) electrons first and then one \\(4f\\) electron, so \\(Ho^{3+}\\) is \\([Xe]4f^{10}\\). The \\(4f\\) subshell therefore holds 10 electrons, option (A).",
+    "25": "Classify each colloid by which phase is dispersed in which. Clouds are liquid droplets dispersed in a gas, i.e. an aerosol (Q). Pumice stone is gas trapped in a solid, a solid foam (R). Cheese is a liquid dispersed in a solid, a gel (P). Shaving cream, the remaining entry, pairs with (S). This gives (i)-Q, (ii)-R, (iii)-P, (iv)-S, option (A).",
+    "27": "The textbook biodegradable polyamide is nylon-2-nylon-6, an alternating copolymer of glycine \\(H_{2}N-CH_{2}-COOH\\) and 6-aminohexanoic (amino caproic) acid \\(H_{2}N-(CH_{2})_{5}-COOH\\); its amide backbone is attacked by microorganisms. Adipic acid with hexamethylenediamine gives nylon-6,6, which is not biodegradable, and the other pairs cannot form a polyamide at all. Option (A).",
+    "28": "Froth floatation exploits the preferential wetting of sulphide particles by oil, so it concentrates sulphide ores (P). The reverberatory furnace is used in the copper route, where the matte is worked up to blister copper (S). The blast furnace reduces iron ore to pig iron (Q). Leaching with dilute \\(NaCN\\) followed by displacement with zinc is the standard extraction of silver (R). Hence (i)-P, (ii)-S, (iii)-Q, (iv)-R, option (C).",
+    "29": "Cyclic anhydride formation needs the two \\(-COOH\\) groups on the same side of the double bond so they can reach each other. Maleic acid, the cis isomer of but-2-ene-1,4-dioic acid, loses water intramolecularly on heating to give maleic anhydride, whereas fumaric acid (trans) holds its carboxyls apart and cannot cyclise directly. Treatment with an alcohol and acid would give esters, not the anhydride. Option (D).",
+    "30": "For \\(A \\rightarrow B\\) with 1:1 stoichiometry the average rate is \\(\\frac{\\Delta[B]}{\\Delta t}\\). Here \\(\\Delta[B] = 0.2\\) mol per litre and \\(\\Delta t = 30\\) minutes \\(= 0.5\\) hour, so the average rate is \\(\\frac{0.2}{0.5} = 0.4\\) mol litre\\(^{-1}\\) hour\\(^{-1}\\).",
+    "31": "\\(Ba(OH)_{2}\\) is a strong diacidic base, so complete dissociation of a \\(5 \\times 10^{-3}\\) M solution gives \\([OH^{-}] = 2 \\times 5 \\times 10^{-3} = 10^{-2}\\) M. Using \\(K_{w} = [H_{3}O^{+}][OH^{-}] = 10^{-14}\\) at \\(298\\) K, \\([H_{3}O^{+}] = \\frac{10^{-14}}{10^{-2}} = 10^{-12}\\) M. Option (A).",
+    "32": "Assign oxidation numbers and look for a five-unit change. In \\(C_{2}O_{4}^{2-} \\rightarrow CO_{2}\\) carbon goes \\(+3 \\rightarrow +4\\), a change of 1. In both \\(Cr_{2}O_{7}^{2-} \\rightarrow Cr^{3+}\\) and \\(CrO_{4}^{2-} \\rightarrow Cr^{3+}\\) chromium goes \\(+6 \\rightarrow +3\\), a change of 3. Only \\(MnO_{4}^{-} \\rightarrow Mn^{2+}\\) takes manganese from \\(+7\\) to \\(+2\\), a change of 5. Option (B).",
+    "33": "Use the spin-only formula \\(\\mu = \\sqrt{n(n+2)}\\) BM with \\(n\\) the number of unpaired \\(d\\) electrons. \\(Sc^{3+}\\) is \\(3d^{0}\\), so \\(n = 0\\) and \\(\\mu = 0\\). \\(V^{2+}\\) is \\(3d^{3}\\), so \\(n = 3\\) and \\(\\mu = \\sqrt{15} \\approx 3.9\\). \\(Ti^{2+}\\) is \\(3d^{2}\\), so \\(n = 2\\) and \\(\\mu = \\sqrt{8} \\approx 2.8\\). The set \\(0, 3.9, 2.8\\) is option (C).",
+    "35": "Mass of nitrogen \\(= 0.46 \\times 0.8 = 0.368\\) g, i.e. \\(\\frac{0.368}{14} = 0.0263\\) mol, and all of it appears as \\(NH_{3}\\). Since \\(2NH_{3} + H_{2}SO_{4} \\rightarrow (NH_{4})_{2}SO_{4}\\), the acid needed is \\(\\frac{0.0263}{2} = 0.01314\\) mol, which from a \\(1\\) M solution occupies \\(13.14\\) mL. Equivalently, \\(\\%N = \\frac{1.4 \\times N \\times V}{w}\\) with \\(N = 2\\) gives \\(V = \\frac{46 \\times 0.8}{2.8} = 13.14\\) mL. Option (B).",
+    "37": "All four cations are \\(Co^{2+}\\) with the same charge and coordination number 6, so stability is decided by the chelate effect: replacing two monodentate \\(NH_{3}\\) ligands by one bidentate ethylenediamine releases a particle into solution and raises the entropy, making each chelate ring stabilising. \\([Co(en)_{3}]^{2+}\\) has three chelate rings against two, one and none for the others, so it is the most stable. Option (C).",
+    "39": "Acidity is governed by the stability of the conjugate base. Removing a proton from the \\(sp^{3}\\) carbon of cyclopentadiene gives the cyclopentadienyl anion, which is planar, cyclic, fully conjugated and holds \\(6\\pi\\) electrons, so it is aromatic and exceptionally stable. That drops the \\(pK_{a}\\) of cyclopentadiene to about 16, far below toluene (\\(\\approx 41\\)), cyclopropane and butane, whose carbanions gain no such stabilisation. Option (D).",
+    "40": "\\(SnCl_{2}/HCl\\) reduces nitrobenzene to aniline, so \\(X\\) is \\(C_{6}H_{5}NH_{2}\\); treating \\(X\\) with \\(NaNO_{2} + HCl\\) at low temperature diazotises it to benzenediazonium chloride, \\(Y\\). Coupling \\(Y\\) with the strongly activated aniline occurs at the position para to the amino group, giving \\(p\\)-aminoazobenzene (aniline yellow), \\(C_{6}H_{5}-N=N-C_{6}H_{4}-NH_{2}\\), which is \\(Z\\). Option (B) is the phenol coupling product and options (A) and (D) carry chlorine that no reagent here can introduce. Option (C).",
+    "41": "A Grignard reagent adds only once to a nitrile, and acidic work-up hydrolyses the resulting ketimine to a ketone, so benzonitrile with \\(CH_{3}MgBr\\) followed by \\(H_{3}O^{+}\\) gives acetophenone, \\(C_{6}H_{5}COCH_{3}\\). Acetophenone is a methyl ketone, so it responds to the iodoform test with \\(I_{2}/NaOH\\), giving yellow \\(CHI_{3}\\). Tollens' and Fehling's tests need an aldehyde (and Fehling's fails even for aromatic aldehydes), while ninhydrin detects amino acids. Option (B).",
     "43": "Let \\(t=|x|\\ge0\\): \\(t^2-t-12=(t-4)(t+3)=0\\Rightarrow t=4\\), so \\(x=\\pm4\\) — \\(2\\) real solutions.",
     "46": "At \\(x=2\\): LHL \\(=5(2)+1=11\\) and RHL \\(=\\int_0^2(5+|1-t|)\\,dt=10+1=11\\), so \\(f\\) is continuous. But LHD \\(=5\\) while RHD \\(=5+|1-2|=6\\ne5\\), so \\(f\\) is continuous but not differentiable at \\(x=2\\).",
     "47": "Since \\(\\log\\big(x+\\sqrt{x^2+1}\\big)=\\sinh^{-1}x\\) is an odd function, \\(\\int_{-1}^{1}\\sinh^{-1}x\\,dx=0\\).",
@@ -213,15 +333,60 @@
   },
   "skip": [
     20,
-    21,
-    22,
-    23,
-    24,
-    25,
     26,
-    27,
-    28,
-    29,
-    30
-  ]
+    34,
+    36,
+    38,
+    42
+  ],
+  "optionOverrides": {
+    "21": {
+      "A": "\\(Cr\\)",
+      "B": "\\(Fe\\)",
+      "C": "\\(Mn\\)",
+      "D": "\\(Co\\)"
+    },
+    "22": {
+      "A": "\\(O_{2}^{+} > O_{2} > O_{2}^{-} > O_{2}^{2-}\\)",
+      "B": "\\(O_{2} > O_{2}^{+} > O_{2}^{-} > O_{2}^{2-}\\)",
+      "C": "\\(O_{2}^{-} > O_{2} > O_{2}^{+} > O_{2}^{2-}\\)",
+      "D": "\\(O_{2}^{2-} > O_{2} > O_{2}^{+} > O_{2}^{-}\\)"
+    },
+    "23": {
+      "A": "\\(+50\\text{ }J\\)",
+      "B": "\\(-50\\text{ }J\\)",
+      "C": "\\(350\\text{ }J\\)",
+      "D": "\\(-350\\text{ }J\\)"
+    },
+    "24": {
+      "A": "10",
+      "B": "12",
+      "C": "11",
+      "D": "9"
+    },
+    "25": {
+      "A": "(i) \\(\\rightarrow\\) Q, (ii) \\(\\rightarrow\\) R, (iii) \\(\\rightarrow\\) P, (iv) \\(\\rightarrow\\) S",
+      "B": "(i) \\(\\rightarrow\\) S, (ii) \\(\\rightarrow\\) R, (iii) \\(\\rightarrow\\) Q, (iv) \\(\\rightarrow\\) P",
+      "C": "(i) \\(\\rightarrow\\) P, (ii) \\(\\rightarrow\\) Q, (iii) \\(\\rightarrow\\) S, (iv) \\(\\rightarrow\\) R",
+      "D": "(i) \\(\\rightarrow\\) R, (ii) \\(\\rightarrow\\) S, (iii) \\(\\rightarrow\\) P, (iv) \\(\\rightarrow\\) Q"
+    },
+    "27": {
+      "A": "Glycine, amino caproic acid",
+      "B": "Vinyl chloride, glycine",
+      "C": "Glucose, adipic acid",
+      "D": "Adipic acid, Hexamethylenediamine"
+    },
+    "28": {
+      "A": "(i) \\(\\rightarrow\\) Q, (ii) \\(\\rightarrow\\) R, (iii) \\(\\rightarrow\\) P, (iv) \\(\\rightarrow\\) S",
+      "B": "(i) \\(\\rightarrow\\) S, (ii) \\(\\rightarrow\\) R, (iii) \\(\\rightarrow\\) Q, (iv) \\(\\rightarrow\\) P",
+      "C": "(i) \\(\\rightarrow\\) P, (ii) \\(\\rightarrow\\) S, (iii) \\(\\rightarrow\\) Q, (iv) \\(\\rightarrow\\) R",
+      "D": "(i) \\(\\rightarrow\\) R, (ii) \\(\\rightarrow\\) S, (iii) \\(\\rightarrow\\) P, (iv) \\(\\rightarrow\\) Q"
+    },
+    "29": {
+      "A": "Heating trans but-2-en-1,4-dioic acid",
+      "B": "treating trans but-2-en-1,4-dioic acid with alcohol and acid",
+      "C": "treating cis but-2-en-1,4-dioic acid with alcohol and acid",
+      "D": "Heating cis but-2-en-1,4-dioic acid"
+    }
+  }
 }

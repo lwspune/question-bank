@@ -109,6 +109,111 @@
       "chapter": "Kinetic Theory",
       "subtopic": "Kinetic Theory of Gases"
     },
+    "22": {
+      "subject": "Chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Acidity of Carboxylic Acids"
+    },
+    "23": {
+      "subject": "Chemistry",
+      "chapter": "The p-Block Elements",
+      "subtopic": "Group 14 Elements (Compounds of Tin and Lead)"
+    },
+    "24": {
+      "subject": "Chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Phenols"
+    },
+    "25": {
+      "subject": "Chemistry",
+      "chapter": "Biomolecules",
+      "subtopic": "Proteins"
+    },
+    "26": {
+      "subject": "Chemistry",
+      "chapter": "General Principles and Processes of Isolation of Elements",
+      "subtopic": "Extraction of Aluminium"
+    },
+    "27": {
+      "subject": "Chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subtopic": "Mole Concept and Stoichiometry"
+    },
+    "28": {
+      "subject": "Chemistry",
+      "chapter": "Amines",
+      "subtopic": "Preparation of Amines"
+    },
+    "29": {
+      "subject": "Chemistry",
+      "chapter": "The d- and f-Block Elements",
+      "subtopic": "Oxidation States of Transition Elements"
+    },
+    "30": {
+      "subject": "Chemistry",
+      "chapter": "Environmental Chemistry",
+      "subtopic": "Green Chemistry"
+    },
+    "31": {
+      "subject": "Chemistry",
+      "chapter": "The s-Block Elements",
+      "subtopic": "Group 2 Elements"
+    },
+    "32": {
+      "subject": "Chemistry",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Magnetic Properties"
+    },
+    "33": {
+      "subject": "Chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "subtopic": "Atomic and Ionic Radii"
+    },
+    "34": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subtopic": "Bond Parameters (Bond Length, Bond Angle, Bond Order)"
+    },
+    "35": {
+      "subject": "Chemistry",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Ligands and Coordination Number"
+    },
+    "36": {
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "subtopic": "Resonance and Stability of Resonance Structures"
+    },
+    "37": {
+      "subject": "Chemistry",
+      "chapter": "Polymers",
+      "subtopic": "Polymers and Their Monomers"
+    },
+    "38": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Thermodynamics",
+      "subtopic": "Enthalpy Changes, Hess's Law and Bond Enthalpy"
+    },
+    "39": {
+      "subject": "Chemistry",
+      "chapter": "Hydrogen",
+      "subtopic": "Properties of Hydrogen"
+    },
+    "41": {
+      "subject": "Chemistry",
+      "chapter": "Amines",
+      "subtopic": "Preparation of Amines"
+    },
+    "42": {
+      "subject": "Chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subtopic": "Titrimetric Analysis and Primary Standards"
+    },
+    "45": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Order of Reaction and Half-Life"
+    },
     "46": {
       "subject": "Maths",
       "chapter": "Integrals",
@@ -197,6 +302,23 @@
     "19": "D",
     "20": "C",
     "21": "B",
+    "22": "D",
+    "23": "D",
+    "24": "B",
+    "25": "A",
+    "26": "A",
+    "27": "C",
+    "28": "A",
+    "29": "A",
+    "30": "A",
+    "31": "B",
+    "32": "D",
+    "33": "A",
+    "36": "A",
+    "37": "A",
+    "39": "D",
+    "41": "D",
+    "45": "A",
     "46": "D",
     "47": "A",
     "48": "C",
@@ -206,6 +328,10 @@
     "52": "A"
   },
   "numericOverrides": {
+    "34": 10,
+    "35": 6,
+    "38": 101,
+    "42": 0.9,
     "53": 1,
     "56": 22,
     "57": 3,
@@ -213,7 +339,7 @@
     "60": 3,
     "62": 2
   },
-  "notes": "2021 compilation Paper 14, Maths only. Source answer key is SHIFTED BY +1 (source Q(n) = correct Q(n+1)) — verified against independent blind re-derivation, which the shifted source then corroborates on every MCQ. Shipped 13 of 18 (7 MCQ + 6 integer-NAT). Skipped: Q54 (garbled combinatorics stem), Q55 (locus equation), Q59 (prob 16/2401), Q61 (irrational height), Q63 (irrational, garbled stem).\n2021 Compilation Paper 14 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
+  "notes": "2021 compilation Paper 14, Maths only. Source answer key is SHIFTED BY +1 (source Q(n) = correct Q(n+1)) — verified against independent blind re-derivation, which the shifted source then corroborates on every MCQ. Shipped 13 of 18 (7 MCQ + 6 integer-NAT). Skipped: Q54 (garbled combinatorics stem), Q55 (locus equation), Q59 (prob 16/2401), Q61 (irrational height), Q63 (irrational, garbled stem).\n2021 Compilation Paper 14 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n2021 Compilation Paper 14 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 22, 23, 24, 25, 26, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Compilation Paper 14 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry skip cleanup] Removed 22, 23, 24, 25, 26, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n2021 Compilation Paper 14 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
   "authoredSolutions": {
     "1": "A charge \\(q\\) of mass \\(m\\) accelerated from rest through a potential difference \\(V\\) acquires kinetic energy \\(qV\\), so its momentum is \\(p=\\sqrt{2mqV}\\) and \\[\\lambda=\\frac{h}{p}=\\frac{h}{\\sqrt{2mqV}}\\propto\\frac{1}{\\sqrt{mq}}.\\] With \\(V\\) the same for all three, only the product \\(mq\\) matters. Taking \\(m_{e}\\) and \\(e\\) as units, \\(mq=1\\) for the electron, \\(mq\\approx 1836\\) for the proton and \\(mq\\approx 7294\\times 2=14588\\) for the \\(\\alpha\\)-particle. Since \\(\\lambda\\) falls as \\(mq\\) grows, \\[\\lambda_{e^{-}}>\\lambda_{p^{+}}>\\lambda_{\\alpha},\\] which is the standard result \\(\\lambda_{e}=1.227/\\sqrt{V}\\) Angstrom, \\(\\lambda_{p}=0.286/\\sqrt{V}\\) Angstrom, \\(\\lambda_{\\alpha}=0.101/\\sqrt{V}\\) Angstrom. Hence the correct choice is A. [Source note: the printed stem for this question is a verbatim duplicate of another question in the same file, so the original wording is not recoverable. The stem shown here was reconstructed from the four printed options, which compare the de Broglie wavelengths of an electron, a proton and an alpha particle. The ordering is robust to the exact condition: whether the three are accelerated through the same potential difference, given the same kinetic energy, or given the same speed, the result is the same.]",
     "2": "The gravitational force on the earth is central, so the angular momentum of the earth about the sun is conserved. Speed is greatest at perihelion (distance \\(r_{\\min}\\)) and least at aphelion (distance \\(r_{\\max}\\)); at both of these turning points the velocity is perpendicular to the radius, so \\[m\\,v_{\\max}\\,r_{\\min}=m\\,v_{\\min}\\,r_{\\max}.\\] Therefore \\[v_{\\max}=\\frac{r_{\\max}\\,v_{\\min}}{r_{\\min}},\\] and the correct choice is C. This is exactly Kepler's law of equal areas written for the two apsides.",
@@ -236,6 +362,27 @@
     "19": "For a uniform disc of mass \\(m\\) and radius \\(R\\), the moments of inertia about a diameter and about the perpendicular central axis are \\[I_{x}=I_{y}=\\frac{mR^{2}}{4},\\qquad I_{z}=\\frac{mR^{2}}{2},\\] the last following from the perpendicular-axis theorem. Since \\(K=\\sqrt{I/m}\\), \\[K_{x}=K_{y}=\\frac{R}{2},\\qquad K_{z}=\\frac{R}{\\sqrt{2}},\\] so \\(K_{z}\\neq K_{x}\\) and the Assertion is FALSE. The Reason is true: \\(x\\), \\(y\\) and \\(z\\) are all axes of symmetry of a uniform disc. With a false assertion and a true reason, the correct choice is D.",
     "20": "The first ball retains one quarter of its speed, so \\(v_{1}=\\tfrac{1}{4}\\times 4=1\\ \\text{m/s}\\). For an elastic collision the relative velocity of separation equals the relative velocity of approach: \\[v_{2}-v_{1}=u_{1}-u_{2}=4\\ \\Rightarrow\\ v_{2}=5\\ \\text{m/s}.\\] Momentum conservation then fixes the second mass: \\[2\\times 4=2\\times 1+m_{2}\\times 5\\ \\Rightarrow\\ m_{2}=\\frac{6}{5}=1.2\\ \\text{kg}.\\] The centre of mass moves with a constant velocity given by the total momentum divided by the total mass: \\[v_{cm}=\\frac{m_{1}u_{1}}{m_{1}+m_{2}}=\\frac{2\\times 4}{2+1.2}=\\frac{8}{3.2}=\\frac{5}{2}\\ \\text{m/s}.\\] Hence the correct choice is C.",
     "21": "Mayer's relation \\(C_{P}-C_{V}=R\\) holds exactly only for an IDEAL gas, so a measured value of \\(1.1R\\) signals a departure from ideal behaviour. For a real (van der Waals) gas the intermolecular attraction gives, to first order, \\[C_{P}-C_{V}=R\\left[1+\\frac{2a}{RTV}\\right],\\] which always exceeds \\(R\\) and grows as the temperature falls. The gas therefore behaves ideally, \\(C_{P}-C_{V}\\to R\\), only at high temperature, while the enlarged value \\(1.1R\\) belongs to the lower temperature. Since \\(R\\) is measured at \\(T=P\\) and \\(1.1R\\) at \\(T=Q\\), \\[T_{P}>T_{Q}\\quad\\text{i.e.}\\quad P>Q.\\] Hence the correct choice is B.",
+    "22": "Sodium bicarbonate is decomposed only by an acid stronger than carbonic acid \\((pK_a \\approx 6.4)\\). Acetic acid \\((pK_a \\approx 4.76)\\) is strong enough and gives brisk effervescence of \\(CO_2\\) with \\(NaHCO_3\\). Tetramethylammonium hydroxide is a strong base, methylamine is a base, and benzene diazonium chloride is a salt with no acidic proton of that strength, so none of them liberates \\(CO_2\\). Hence the correct option is (D).",
+    "23": "Silicon is small and can expand its coordination number to six only with the very small fluoride ion, so \\(SiF_6^{2-}\\) is stable while \\(SiCl_6^{2-}\\) cannot form -- six bulky chloride ligands cannot be accommodated around \\(Si\\), and \\(Cl\\) is also a poor donor towards silicon's high-lying \\(d\\) orbitals. Germanium and tin are larger, so \\(GeCl_6^{2-}\\) and \\(Sn(OH)_6^{2-}\\) are both known. Hence the species that does not exist is (D).",
+    "24": "Phenol is so strongly activated that bromine water (a polar medium) gives the trisubstituted product 2,4,6-tribromophenol at once, and a Lewis acid such as \\(FeBr_3\\) is neither needed nor selective. Running the bromination in a solvent of low polarity such as \\(CS_2\\) at low temperature suppresses ionisation of \\(Br_2\\), so only one bromine enters, predominantly at the para position. Hence the correct option is (B).",
+    "25": "Globular proteins, whose chains are coiled into a compact spheroidal shape with polar residues on the outside, dissolve in water; fibrous proteins, in which chains lie parallel and are held by hydrogen bonds and disulphide links, are insoluble. Collagen, myosin and fibrin are all fibrous structural proteins, while albumin is the classic globular, water-soluble protein. Hence the correct option is (A).",
+    "26": "In Bayer's process powdered bauxite is digested with hot concentrated \\(NaOH\\) under pressure. The amphoteric alumina dissolves as sodium meta-aluminate, \\(Al_2O_3 + 2NaOH + 3H_2O \\rightarrow 2Na[Al(OH)_4]\\), while the impurities \\(Fe_2O_3\\), \\(SiO_2\\) and \\(TiO_2\\) stay behind as insoluble red mud and are filtered off. So the species leached (dissolved) out of the ore is \\(Al_2O_3\\). Hence the correct option is (A).",
+    "27": "Complete combustion of butane follows \\(C_4H_{10} + \\frac{13}{2}O_2 \\rightarrow 4CO_2 + 5H_2O\\), so 1 mol of butane gives 5 mol of water. Here \\(72\\ g\\) of water is \\(72/18 = 4\\) mol, which requires \\(4/5 = 0.8\\) mol of butane. Mass of butane \\(= 0.8 \\times 58 = 46.4\\ g\\). Hence the correct option is (C).",
+    "28": "The Gabriel phthalimide synthesis works by an \\(S_N2\\) attack of the potassium phthalimide anion on an alkyl halide. Aryl halides do not undergo this nucleophilic substitution: the \\(C\\)-\\(X\\) bond has partial double-bond character from resonance with the ring, the carbon is \\(sp^2\\) and the approaching nucleophile is repelled by the ring \\(\\pi\\) cloud. Therefore aromatic primary amines cannot be prepared by this route, and that inability to undergo nucleophilic substitution is exactly the reason. Both statements are true and R correctly explains A, so the correct option is (A).",
+    "29": "Taking oxygen as \\(-2\\) in each oxide: in \\(Fe_2O_3\\) iron is \\(+3\\), in \\(MnO_2\\) manganese is \\(+4\\), in \\(V_2O_5\\) vanadium is \\(+5\\) and in \\(CrO_3\\) chromium is \\(+6\\). The increasing order is therefore \\(Fe_2O_3 < MnO_2 < V_2O_5 < CrO_3\\). Hence the correct option is (A).",
+    "30": "Dry cleaning removes grease with a non-aqueous solvent. Carbon tetrachloride and tetrachloroethene \\(C_2Cl_4\\) were the traditional solvents, and liquefied \\(CO_2\\) with a suitable detergent is the modern greener replacement. Hydrogen peroxide is an aqueous oxidising and bleaching agent and has no role as a dry-cleaning solvent. Hence the correct option is (A).",
+    "31": "S2 is false: down group 2 the lattice enthalpy of the hydroxides falls faster than the hydration enthalpy, so solubility of \\(M(OH)_2\\) increases from \\(Mg(OH)_2\\) (sparingly soluble) to \\(Ba(OH)_2\\) (fairly soluble). S1 is also false, because \\(Be(OH)_2\\) is amphoteric and dissolves in alkali, \\(Be(OH)_2 + 2NaOH \\rightarrow Na_2[Be(OH)_4]\\). Both statements are false, so the correct option is (B).",
+    "32": "Attraction into an external magnetic field means paramagnetism, i.e. unpaired electrons. \\([Co(CN)_6]^{3-}\\) is \\(Co^{3+}\\ d^6\\) with the strong-field cyanide, giving low-spin \\(t_{2g}^6\\) and no unpaired electrons; \\(Ni(CO)_4\\) is \\(Ni(0)\\ d^{10}\\), \\(sp^3\\); \\([Ni(CN)_4]^{2-}\\) is \\(Ni^{2+}\\ d^8\\) square planar with all electrons paired -- all three are diamagnetic. \\([Fe(H_2O)_6]^{3+}\\) is \\(Fe^{3+}\\ d^5\\) with weak-field water, so it is high spin with five unpaired electrons and is paramagnetic. Hence the correct option is (D).",
+    "33": "\\(K^{+}\\) belongs to the next period and so is much the largest. \\(Na^{+}\\), \\(Mg^{2+}\\) and \\(Al^{3+}\\) are isoelectronic with neon, and among isoelectronic species radius falls as the nuclear charge rises. The decreasing order is therefore \\(K^{+} > Na^{+} > Mg^{2+} > Al^{3+}\\). Hence the correct option is (A).",
+    "34": "In \\(CH_3-CH=CH-C\\equiv CH\\) every linkage between two atoms contributes exactly one \\(\\sigma\\) bond, the extra bonds of the double and triple linkages being \\(\\pi\\). There are four carbon-carbon linkages, giving four \\(\\sigma\\) bonds, and the hydrogen count is \\(3+1+1+0+1 = 6\\), giving six \\(C\\)-\\(H\\) \\(\\sigma\\) bonds. Total number of \\(\\sigma\\) bonds \\(= 4 + 6 = 10\\).",
+    "35": "Precipitation of 3 moles of \\(AgCl\\) per mole of complex shows that all three chlorides are ionisable and therefore lie outside the coordination sphere, so the complex is \\([Cr(NH_3)_3(H_2O)_3]Cl_3\\). The three ammonia and three water molecules occupy the six coordination positions of the stated octahedral geometry. The secondary valency, i.e. the coordination number of chromium, is therefore 6.",
+    "36": "A valid resonating structure must keep the same total charge as the parent, keep the sigma skeleton unchanged and obey the octet rule -- in particular nitrogen, a second-period element, can never carry five bonds. Options (B) and (C) draw the nitro nitrogen with a double bond to oxygen AND a double bond to carbon, i.e. five bonds on nitrogen, which is impossible; option (C) additionally shifts the sigma framework and (D) does not conserve the overall charge. Only option (A), in which the \\(N=O\\) pi pair has moved onto oxygen (giving two \\(O^{-}\\)) while nitrogen uses its lone pair to form \\(N=C\\), leaves nitrogen tetravalent with charge \\(+1\\) and the molecule overall neutral. Hence the correct option is (A).",
+    "37": "The figure shows benzene rings each carrying a free phenolic \\(-OH\\) and joined to the next ring through \\(-CH_2-\\) methylene bridges at the positions ortho to the \\(-OH\\). That repeating unit is the linear phenol-formaldehyde condensation polymer known as Novolac, formed when phenol and formaldehyde react in acidic medium. Neoprene and Buna-N are diene rubbers and Nylon is a polyamide, so none of them fits the drawn structure. Hence the correct option is (A).",
+    "38": "Enthalpy is a state function, so subliming the solid directly is energetically identical to melting it and then vaporising the liquid (Hess's law). Therefore \\(\\Delta H_{sub} = \\Delta H_{fus} + \\Delta H_{vap}\\). Substituting, \\(\\Delta H_{sub} = 2.8 + 98.2 = 101\\ kJ/mol\\).",
+    "39": "Deuterium is twice as heavy as protium, so the \\(D-D\\) vibration has a smaller zero-point energy than \\(H-H\\) and its bond therefore has to be given more energy to break. Measured values are \\(435.9\\ kJ/mol\\) for \\(H_2\\) against \\(443.4\\ kJ/mol\\) for \\(D_2\\), a difference of about \\(7.5\\ kJ/mol\\). Hence \\(E_H \\approx E_D - 7.5\\), which is option (D).",
+    "41": "Hinsberg's reagent, benzenesulphonyl chloride, reacts only with primary and secondary amines, so the reaction whose product is not an amine at all is the answer. Catalytic hydrogenation of \\(m\\)-tolunitrile over \\(Ni\\) (A), reduction of \\(p\\)-nitrobenzonitrile by \\(Na/Hg\\) with \\(HCl\\) (B) and \\(LiAlH_4\\) reduction of \\(p\\)-cyanobenzaldehyde (C) all convert the \\(-C\\equiv N\\) group into a primary \\(-CH_2NH_2\\) group. In (D) benzonitrile with \\(SnCl_2/HCl\\) undergoes the Stephen reaction, giving an aldimine that hydrolyses to benzaldehyde, not an amine, so its product gives no reaction with Hinsberg's reagent. Hence the correct option is (D).",
+    "42": "In acidic medium dichromate oxidises iron(II) by \\(Cr_2O_7^{2-} + 6Fe^{2+} + 14H^{+} \\rightarrow 2Cr^{3+} + 6Fe^{3+} + 7H_2O\\), so six moles of \\(Fe^{2+}\\) are needed per mole of dichromate. Moles of \\(K_2Cr_2O_7 = 0.1 \\times 0.015 = 1.5 \\times 10^{-3}\\), hence moles of \\(Fe^{2+} = 6 \\times 1.5 \\times 10^{-3} = 9 \\times 10^{-3}\\). These are contained in \\(10\\ mL\\), so the molarity is \\(9 \\times 10^{-3}/0.010 = 0.9\\ M\\).",
+    "45": "Graph (A) plots half-life against concentration as a horizontal line, and a half-life independent of initial concentration is the signature of a first-order reaction, \\(t_{1/2} = 0.693/k\\). Graph (B) shows half-life rising linearly with concentration, which matches zero order, where \\(t_{1/2} = [A]_0/2k\\). Graph (C) shows concentration falling exponentially with time, again first order, while graph (D) shows concentration falling linearly with time, \\([A] = [A]_0 - kt\\), which is zero order. So A and C are first order while B and D are zero order, and the correct option is (A).",
     "46": "Let \\(I=\\int_{\\pi/24}^{5\\pi/24}\\frac{dx}{1+\\sqrt[3]{\\tan 2x}}\\). With limits summing to \\(\\frac{\\pi}{4}\\), apply \\(x\\to\\frac{\\pi}{4}-x\\): \\(\\tan\\big(2(\\frac{\\pi}{4}-x)\\big)=\\cot 2x\\), so the integrand becomes \\(\\frac{\\sqrt[3]{\\tan 2x}}{1+\\sqrt[3]{\\tan 2x}}\\). Adding the two forms, \\(2I=\\int_{\\pi/24}^{5\\pi/24}dx=\\frac{4\\pi}{24}=\\frac{\\pi}{6}\\), so \\(I=\\frac{\\pi}{12}\\).",
     "47": "Vertex is \\(2\\) from the origin and focus \\(4\\) from it (collinear), so \\(a=2\\) and the parabola is \\(y^2=8(x-2)\\). In \\(Y^2=8X\\) with \\(X=x-2\\), the origin gives \\(X_1=-2,\\,Y_1=0\\), so \\(S_1=Y_1^2-8X_1=16\\). The area of the triangle formed by the pair of tangents and the chord of contact is \\(\\frac{S_1^{3/2}}{2a}=\\frac{16^{3/2}}{4}=\\frac{64}{4}=16\\).",
     "48": "From \\(e^2=\\tfrac13\\), \\(b^2=\\tfrac{2}{3}a^2\\); the point \\((\\sqrt{3/2},1)\\) then gives \\(a^2=3,\\,b^2=2\\). So \\(c=1\\), focus \\((1,0)\\), and the circle is \\((x-1)^2+y^2=\\tfrac43\\). Using \\(y^2=2-\\tfrac{2x^2}{3}\\) yields \\(x^2-6x+5=0\\Rightarrow x=1\\) (\\(x=5\\) rejected). The intersection points are \\((1,\\pm\\tfrac{2}{\\sqrt3})\\), so the squared distance between them is \\(\\big(\\tfrac{4}{\\sqrt3}\\big)^2=\\tfrac{16}{3}\\).",
@@ -251,15 +398,9 @@
     "62": "As \\(x\\to2^-\\), \\([x]=1\\) so \\(x-[x]\\to1\\) and \\(\\tan(x-2)\\to0\\), giving \\(e^0=1\\); continuity forces \\(\\mu=1\\). As \\(x\\to2^+\\), \\(x^2-5x+6<0\\), so \\(\\frac{|x^2-5x+6|}{-x^2+5x-6}=1\\) and the RHL is \\(\\frac{\\lambda}{\\mu}\\). Setting it equal to \\(\\mu\\) gives \\(\\lambda=\\mu^2=1\\), so \\(\\mu+\\lambda=2\\)."
   },
   "skip": [
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30
+    40,
+    43,
+    44
   ],
   "stemOverrides": {
     "1": "An electron, a proton and an \\(\\alpha\\)-particle are accelerated from rest through the same potential difference. Arrange their de Broglie wavelengths in decreasing order.",

@@ -14,7 +14,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { recordsPath, paperDataPath, requirePaperId } from "./config";
-import { parseSubjectArg } from "./lib";
+import { parseSubjectArg, solFilesForSubject } from "./lib";
 import { cleanSolution } from "./sol-clean";
 
 type Rec = {
@@ -49,8 +49,11 @@ function main() {
   const rows = records.filter((r) => r.subject === subject);
   const outDir = join("scripts/jee/out");
   const sols: Record<string, Sol> = {};
-  for (const f of readdirSync(outDir)) {
-    if (f.startsWith(`${paperId}_sol_`) && f.endsWith(".json")) Object.assign(sols, JSON.parse(readFileSync(join(outDir, f), "utf8")));
+  // Scoped to THIS subject: an unscoped glob merges another subject's agent
+  // output, and readdir order lets it overwrite real answers with that pass's
+  // skip flags.
+  for (const f of solFilesForSubject(readdirSync(outDir), paperId, subject)) {
+    Object.assign(sols, JSON.parse(readFileSync(join(outDir, f), "utf8")));
   }
 
   const classification: Record<string, { subject: string; chapter: string; subtopic: string }> = {};
@@ -58,6 +61,15 @@ function main() {
   const numericOverrides: Record<string, number> = {};
   const authoredSolutions: Record<string, string> = {};
   const dropped: string[] = [];
+
+  // Read the paper's existing optionOverrides BEFORE the loop, so the
+  // can-synthesize gate below can see option blocks restored by hand.
+  let priorOptionOverrides: Record<string, Record<string, string>> = {};
+  try {
+    priorOptionOverrides = JSON.parse(readFileSync(paperDataPath(paperId), "utf8")).optionOverrides ?? {};
+  } catch {
+    priorOptionOverrides = {};
+  }
 
   for (const r of rows) {
     const k = String(r.questionNumber);
@@ -73,6 +85,11 @@ function main() {
         ? fix.map((o: { label?: string }) => String(o?.label ?? ""))
         : Object.keys((fix ?? {}) as Record<string, unknown>),
     );
+    // ALSO honour options already written into the paper file. This gate used to
+    // read the agent JSON alone, so a maintainer who restored an option block by
+    // hand (or via apply-option-fixes.ts) saw the row dropped anyway — the fix
+    // was invisible to the very check it existed to satisfy.
+    for (const l of Object.keys(priorOptionOverrides[k] ?? {})) suppliedLabels.add(l.trim().toUpperCase());
     const canSynthesize = ["A", "B", "C", "D"].every((l) => suppliedLabels.has(l));
     const hasOpts = Boolean(r.options && r.options.length >= 4) || canSynthesize;
     const ans = s.answer;

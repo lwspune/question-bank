@@ -89,6 +89,121 @@
       "chapter": "Gravitation",
       "subtopic": "Escape Velocity"
     },
+    "18": {
+      "subject": "Chemistry",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Chemical Reactions of Alcohols and Acidity"
+    },
+    "19": {
+      "subject": "Chemistry",
+      "chapter": "Some Basic Concepts of Chemistry",
+      "subtopic": "Stoichiometry and Concentration"
+    },
+    "20": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Bonding and Molecular Structure",
+      "subtopic": "Molecular Orbital Theory"
+    },
+    "21": {
+      "subject": "Chemistry",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Preparation of Alkyl Halides"
+    },
+    "22": {
+      "subject": "Chemistry",
+      "chapter": "General Principles and Processes of Isolation of Elements",
+      "subtopic": "Ellingham Diagram"
+    },
+    "23": {
+      "subject": "Chemistry",
+      "chapter": "The p-Block Elements",
+      "subtopic": "Oxoacids of Phosphorus"
+    },
+    "24": {
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "subtopic": "Electronic Effects and Reaction Intermediates"
+    },
+    "25": {
+      "subject": "Chemistry",
+      "chapter": "Amines",
+      "subtopic": "Basicity of Amines"
+    },
+    "26": {
+      "subject": "Chemistry",
+      "chapter": "The s-Block Elements",
+      "subtopic": "Group 1 Elements"
+    },
+    "27": {
+      "subject": "Chemistry",
+      "chapter": "Structure of Atom",
+      "subtopic": "Bohr Model"
+    },
+    "28": {
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+      "subtopic": "Isomerism"
+    },
+    "29": {
+      "subject": "Chemistry",
+      "chapter": "Equilibrium",
+      "subtopic": "Equilibrium Constant (Kp, Kc) and Degree of Dissociation"
+    },
+    "30": {
+      "subject": "Chemistry",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "First Order Reactions"
+    },
+    "31": {
+      "subject": "Chemistry",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Oxidation, Reduction and Identification Tests"
+    },
+    "32": {
+      "subject": "Chemistry",
+      "chapter": "The p-Block Elements",
+      "subtopic": "Group 16 Elements"
+    },
+    "33": {
+      "subject": "Chemistry",
+      "chapter": "Chemistry in Everyday Life",
+      "subtopic": "Drugs and their Classification"
+    },
+    "34": {
+      "subject": "Chemistry",
+      "chapter": "Environmental Chemistry",
+      "subtopic": "Water Pollution"
+    },
+    "35": {
+      "subject": "Chemistry",
+      "chapter": "Solid State",
+      "subtopic": "Classification of Solids"
+    },
+    "36": {
+      "subject": "Chemistry",
+      "chapter": "Biomolecules",
+      "subtopic": "Nucleic Acids"
+    },
+    "37": {
+      "subject": "Chemistry",
+      "chapter": "Classification of Elements and Periodicity",
+      "subtopic": "Nature of Oxides (Acidic, Basic, Amphoteric, Neutral)"
+    },
+    "38": {
+      "subject": "Chemistry",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates"
+    },
+    "39": {
+      "subject": "Chemistry",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Isomerism"
+    },
+    "40": {
+      "subject": "Chemistry",
+      "chapter": "Surface Chemistry",
+      "subtopic": "Adsorption"
+    },
     "42": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
@@ -161,6 +276,27 @@
     }
   },
   "answerOverrides": {
+    "18": "B",
+    "19": "A",
+    "20": "B",
+    "21": "B",
+    "22": "A",
+    "23": "A",
+    "24": "A",
+    "25": "C",
+    "26": "B",
+    "27": "A",
+    "28": "A",
+    "29": "C",
+    "30": "B",
+    "31": "A",
+    "32": "A",
+    "33": "A",
+    "34": "B",
+    "35": "A",
+    "36": "C",
+    "37": "A",
+    "38": "C",
     "42": "A",
     "43": "A",
     "44": "A",
@@ -172,6 +308,8 @@
   },
   "numericOverrides": {
     "17": 4,
+    "39": 2,
+    "40": 17,
     "51": 16,
     "53": 3,
     "54": 6,
@@ -179,8 +317,31 @@
     "56": 5,
     "61": 0
   },
-  "notes": "2021 compilation Paper 16, Maths only. Source answer key AGREES with independent blind re-derivation on all 8 clean MCQ (Q42-49) — aligned and trustworthy. Shipped 14 of 20 (8 MCQ + 6 integer-NAT). Skipped: Q50 (two-point answer), Q52 (irrational limit), Q57 (irrational area), Q58 (ambiguous vector stem), Q59 (irrational), Q60 (irrational distance, garbled stem).",
+  "notes": "2021 compilation Paper 16, Maths only. Source answer key AGREES with independent blind re-derivation on all 8 clean MCQ (Q42-49) — aligned and trustworthy. Shipped 14 of 20 (8 MCQ + 6 integer-NAT). Skipped: Q50 (two-point answer), Q52 (irrational limit), Q57 (irrational area), Q58 (ambiguous vector stem), Q59 (irrational), Q60 (irrational distance, garbled stem).\n[Chemistry skip cleanup] Removed 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n[Chemistry option repair] Restored the full option block for Q21, Q22, Q23, Q24, Q25, Q26, Q27, Q28, Q29, Q30 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n2021 Compilation Paper 16 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q29: the math zone ended in stranded control-spaces; parseLatex trims them to a bare backslash that KaTeX rejects, breaking the WHOLE stem. scan-flip passed it (its delimiters balance), so it shipped PUBLIC broken and only validate-db caught it. Trimmed by the extended stripEmptyMath, which now runs at commit for every paper.",
   "authoredSolutions": {
+    "18": "Cyclohexylmethanol is a primary alcohol; with \\(H_{3}PO_{4}\\) at \\(120^{\\circ}C\\) it loses water to a primary carbocation, which immediately undergoes ring expansion by a 1,2-alkyl shift to the far more stable tertiary 1-methylcyclohexyl cation. Loss of a proton gives the Zaitsev alkene, so \\(A\\) is 1-methylcyclohexene. Hydroboration-oxidation then adds \\(-H\\) and \\(-OH\\) across that double bond in anti-Markovnikov, syn fashion, placing the \\(-OH\\) on the less substituted carbon. \\(B\\) is therefore 2-methylcyclohexan-1-ol, option (B). Option (A), 1-methylcyclohexanol, is the trap for anyone who applies Markovnikov addition instead.",
+    "19": "Take \\(1\\text{ }cm^{3}\\) of the solution; its mass is \\(1.2\\text{ }g\\). The water in it occupies effectively that same volume, and water has density \\(1\\text{ }g/cm^{3}\\), so the solvent contributes \\(1\\text{ }g\\) and the dissolved \\(NaOH\\) accounts for the remaining \\(0.2\\text{ }g\\), i.e. \\(0.2/40 = 5\\times 10^{-3}\\) mol. Molality is moles of solute per kilogram of solvent, \\(= (5\\times 10^{-3})/(1\\times 10^{-3}\\text{ }kg) = 5\\). The same figure follows if the answer is read as molarity, since one litre of this solution holds \\(5\\) mol of \\(NaOH\\). Option (A).",
+    "20": "Both \\(CO\\) and \\(NO^{+}\\) carry 14 electrons and are isoelectronic with \\(N_{2}\\). The molecular orbital filling is \\(\\sigma 1s^{2}\\sigma^{*}1s^{2}\\sigma 2s^{2}\\sigma^{*}2s^{2}\\pi 2p_{x}^{2}\\pi 2p_{y}^{2}\\sigma 2p_{z}^{2}\\), giving a bond order of \\((10-4)/2 = 3\\) for each. The difference in bond order is therefore \\(0\\), so \\(x/2 = 0\\) and \\(x = 0\\). Option (B).",
+    "21": "Direct iodination of methane, \\(CH_{4}+I_{2}\\rightleftharpoons CH_{3}I+HI\\), is reversible because the \\(HI\\) produced is a good reducing agent and converts \\(CH_{3}I\\) straight back to \\(CH_{4}\\). The reverse step is suppressed by adding an oxidising agent that destroys the \\(HI\\) as it forms; concentrated \\(HIO_{3}\\) oxidises \\(HI\\) to \\(I_{2}\\), which is then available for the forward reaction again. Dilute \\(HNO_{2}\\) and \\(HClO\\) are not the reagents used for this purpose, and aqueous \\(NH_{3}\\) merely neutralises the acid without oxidising the iodide. Option (B).",
+    "22": "An Ellingham diagram plots the standard free energy of formation of oxides, \\(\\Delta G^{\\circ}\\), against temperature. It therefore gives the free energy change directly, it shows which metal can reduce another metal's oxide (the lower line reduces the upper one), and the kinks in each line mark phase changes such as melting and boiling. What it cannot supply is kinetic information: it is purely thermodynamic and says nothing about how fast a reduction proceeds. The incorrect statement is option (A).",
+    "23": "Assign \\(H = +1\\) and \\(O = -2\\) and let the oxidation state of phosphorus be \\(x\\). For \\(H_{4}P_{2}O_{7}\\) (pyrophosphoric acid), \\(4+2x-14 = 0\\) gives \\(x = +5\\). For \\(H_{4}P_{2}O_{6}\\) (hypophosphoric acid), \\(4+2x-12 = 0\\) gives \\(x = +4\\); here the two phosphorus atoms are joined directly by a \\(P-P\\) bond. For \\(H_{4}P_{2}O_{5}\\) (pyrophosphorous acid), \\(4+2x-10 = 0\\) gives \\(x = +3\\). The order is \\(+5, +4, +3\\), option (A).",
+    "24": "The four species are carbocations: (i) benzyl, (ii) vinyl, (iii) ethyl and (iv) ethynyl. The benzyl cation is delocalised over the ring by resonance and is by far the most stable. The ethyl cation is a plain \\(sp^{3}\\) primary cation stabilised by hyperconjugation. In the vinyl and ethynyl cations the positive carbon is \\(sp^{2}\\) and \\(sp\\) respectively, and the greater \\(s\\)-character holds the electrons closer to the nucleus, making that carbon more electronegative and far less willing to bear a positive charge; so both fall below a primary alkyl cation, the \\(sp\\) one being worst. The true relation is (i) > (iii) > (ii) > (iv), option (A).",
+    "25": "The Reason is a correct statement: in aniline the nitrogen lone pair is delocalised into the benzene ring, which is exactly why aniline is a much weaker base than an aliphatic amine. The Assertion, however, is false. In acetamide the nitrogen lone pair is delocalised onto the carbonyl oxygen, a far more electronegative acceptor, so amides are extremely feeble bases; \\(K_{b}\\) for aniline is about \\(4\\times 10^{-10}\\) whereas for acetamide it is of the order of \\(10^{-15}\\). Aniline is therefore more basic than acetamide, not less. Assertion incorrect but Reason correct, option (C).",
+    "26": "\\(S1\\) is correct: lithium halides have appreciable covalent character, \\(LiI\\) most of all, because the very small \\(Li^{+}\\) ion has a high charge density and distorts the halide electron cloud strongly, as Fajans' rules predict. \\(S2\\) misnames that property. What \\(Li^{+}\\) possesses is a high POLARISING POWER; polarisability describes how easily an ion's own electron cloud is deformed, and a small, hard cation such as \\(Li^{+}\\) has very low polarisability, the anion being the polarisable partner. So \\(S1\\) is correct while \\(S2\\) is incorrect, option (B).",
+    "27": "\\(S1\\) is correct: Rutherford's nuclear model located the positive charge in a nucleus but said nothing about how the electrons are arranged or what their energies are, so it could not account for the discrete line spectrum of hydrogen. \\(S2\\) is also correct: Bohr's model assigns the electron a definite orbit radius and a definite velocity at the same instant, which is precisely the simultaneous knowledge of position and momentum that Heisenberg's uncertainty principle forbids, and this is one of the standard listed limitations of the model. Both statements are correct, option (A).",
+    "28": "Turning one \\(CH_{3}\\) group of ethane about the \\(C-C\\) single bond carries the staggered arrangement into the eclipsed one and back. The two differ only by that rotation, interconvert freely at room temperature and cannot be separated, so they are conformational isomers, also called rotamers. They are not enantiomers and not mirror images, since neither form is chiral, and they are certainly not polymers. Option (A).",
+    "29": "Since the vessel is \\(1\\text{ }L\\), the starting concentration of \\(PCl_{5}\\) is \\(3\\text{ }M\\). Let \\(x\\) mol/L dissociate, so at equilibrium \\([PCl_{5}] = 3-x\\) and \\([PCl_{3}] = [Cl_{2}] = x\\). Then \\(K_{C} = x^{2}/(3-x) = 1.844\\), which rearranges to \\(x^{2}+1.844x-5.532 = 0\\). Solving, \\(x = (-1.844+\\sqrt{25.53})/2 = 1.60\\). Hence \\([PCl_{5}] = 3-1.60 \\approx 1.4\\text{ }M\\), option (C).",
+    "30": "The gas phase decomposition \\(2N_{2}O_{5}\\rightarrow 4NO_{2}+O_{2}\\) obeys the rate law \\(\\text{rate} = k[N_{2}O_{5}]\\). Although two molecules of \\(N_{2}O_{5}\\) appear in the balanced equation, the rate determining step is the unimolecular breaking of a single \\(N_{2}O_{5}\\) into \\(NO_{2}\\) and \\(NO_{3}\\), so the observed order is one and not two. It is the classic textbook example of a first order reaction. Option (B).",
+    "31": "2,4-dinitrophenylhydrazine (Brady's reagent) condenses with the carbonyl group of an aldehyde or a ketone to give a 2,4-dinitrophenylhydrazone, which separates as an orange to red solid. Esters and carboxylic acids do not react, because their carbonyl carbon already bears an electron releasing oxygen and is far less electrophilic. Of the four structures only acetophenone carries a ketonic carbonyl; the others are ethyl benzoate, salicylic acid and ethyl salicylate. Option (A).",
+    "32": "On electrolysing a concentrated solution of a sulphate or hydrogensulphate, the anodic process couples two \\(HSO_{4}^{-}\\) ions: \\(2HSO_{4}^{-}\\rightarrow S_{2}O_{8}^{2-}+2e^{-}\\). The product is peroxydisulphuric acid (Marshall's acid), \\(H_{2}S_{2}O_{8}\\), in which two \\(-SO_{3}H\\) units are joined by a peroxide \\(-O-O-\\) linkage, i.e. \\(HO_{3}S-O-O-SO_{3}H\\). Option (D) is pyrosulphuric acid, which has a single bridging oxygen and is not the electrolysis product. Option (A).",
+    "33": "Arsphenamine, known as salvarsan, is the arsenic drug used against syphilis and is classed as the first effective antibiotic, so \\(1\\rightarrow A\\). Valium (diazepam) is a benzodiazepine given to relieve anxiety and is a tranquilizer, so \\(2\\rightarrow B\\). Furacine (nitrofurazone) is applied to wounds and burns to kill micro-organisms on living tissue, which makes it an antiseptic, so \\(3\\rightarrow C\\). Option (A).",
+    "34": "Eutrophication is enrichment of a water body with nutrients such as phosphates and nitrates, which triggers a bloom of algae. When the algae die, bacteria decompose them and that decay consumes the dissolved oxygen, so the oxygen level FALLS sharply rather than rising. Statement (B) is therefore the incorrect one. Eutrophication does pollute water, and a dissolved oxygen concentration below \\(6\\text{ }ppm\\) does inhibit the growth of fish. Option (B).",
+    "35": "Here the three edge lengths are all different (\\(1.5, 2.5, 3\\)) while exactly two interaxial angles are \\(90^{\\circ}\\) and the third is \\(120^{\\circ}\\). Hexagonal is ruled out at once because it demands \\(a = b\\), which fails. Orthorhombic requires all three angles to be \\(90^{\\circ}\\), and triclinic requires that no angle be \\(90^{\\circ}\\). Three unequal axes with two right angles and one angle different from \\(90^{\\circ}\\) is precisely the monoclinic system, here written with the unique angle labelled \\(\\gamma\\) instead of the usual \\(\\beta\\). Option (A).",
+    "36": "The structure drawn is thymine, the pyrimidine base carrying a methyl group at \\(C-5\\) together with two ring carbonyls. Base pairing always couples a pyrimidine with a purine, and thymine pairs through two hydrogen bonds with adenine. Its \\(RNA\\) counterpart uracil, which is the same ring without the methyl group, likewise pairs with adenine, so the complementary base is adenine either way. Option (C).",
+    "37": "\\(Be(OH)_{2}\\) and \\(Al(OH)_{3}\\) both dissolve in acids and in alkalis, giving beryllate and aluminate respectively, so both are amphoteric. \\(B(OH)_{3}\\) is not a proton donor but a Lewis acid: it accepts \\(OH^{-}\\) from water to give \\([B(OH)_{4}]^{-}\\) and \\(H^{+}\\), so it is acidic. \\(NaOH\\) is a strong base and \\(Ca(OH)_{2}\\) a moderately strong one. Hence \\(1\\rightarrow C\\), \\(2\\rightarrow A\\), \\(3\\rightarrow B\\), \\(4\\rightarrow B\\), \\(5\\rightarrow C\\), option (A).",
+    "38": "Barfoed's reagent is copper acetate in a mildly acidic acetic acid medium. Under these weakly acidic conditions only a monosaccharide is a strong enough reducing agent to throw a brick red precipitate of \\(Cu_{2}O\\) within a few minutes; a reducing disaccharide reacts far more slowly and gives no precipitate in that time, so the two classes are told apart. The iodine test detects polysaccharides such as starch, Seliwanoff's test distinguishes ketoses from aldoses, and Tollens' reagent is reduced by every reducing sugar, whether mono- or disaccharide. Option (C).",
+    "39": "\\([Co(NH_{3})_{3}(NO_{2})_{3}]\\) is an octahedral complex of the \\(Ma_{3}b_{3}\\) type. Such a complex has exactly two geometrical isomers, the facial one in which the three identical ligands occupy one triangular face and the meridional one in which they lie on a meridian, so \\(a = 2\\). \\([Cr(C_{2}O_{4})_{3}]^{3-}\\) carries three identical symmetrical bidentate oxalate ligands; a chelate of the \\(M(AA)_{3}\\) type has no geometrical isomers at all, only a pair of non-superimposable optical isomers, so \\(b = 0\\). Hence \\(a+b = 2\\).",
+    "40": "The Freundlich adsorption isotherm is \\(x/m = kp^{1/n}\\), so on changing the pressure the extent of adsorption scales as \\((p_{2}/p_{1})^{1/n}\\). Doubling the pressure multiplies \\(x/m\\) by \\(2^{1/n}\\), and this is given to be \\(64\\). Writing \\(64 = 2^{6}\\) gives \\(2^{1/n} = 2^{6}\\), so \\(1/n = 6\\) and \\(n = 1/6 = 0.1667\\). Expressed in units of \\(10^{-2}\\) this is \\(16.67\\), which rounds to \\(17\\).",
     "42": "With \\(f(2)=4,\\ f'(2)=1\\), the numerator \\(\\to 4f(2)-4f(2)=0\\) — a \\(\\frac00\\) form. By L'Hopital, \\(\\lim_{x\\to2}\\frac{2x\\,f(2)-4f'(x)}{1}=4f(2)-4f'(2)=16-4=12\\).",
     "43": "In \\((x^2+\\tfrac1{bx})^{11}\\) the \\(x^7\\) term needs \\(22-3r=7\\Rightarrow r=5\\), coefficient \\(\\binom{11}{5}b^{-5}\\). In \\((x-\\tfrac1{bx^2})^{11}\\) the \\(x^{-7}\\) term needs \\(11-3r=-7\\Rightarrow r=6\\), coefficient \\(\\binom{11}{6}b^{-6}\\). Since \\(\\binom{11}{5}=\\binom{11}{6}\\), \\(b^{-5}=b^{-6}\\Rightarrow b=1\\).",
     "44": "Because \\(g(x)=x\\cos x\\) is odd, \\(\\frac1{1+e^{g}}+\\frac1{1+e^{-g}}=1\\), so \\(I=\\int_0^{\\pi/4}\\frac{dx}{\\sin^4x+\\cos^4x}\\). Substituting \\(t=\\tan x\\), \\(\\int_0^1\\frac{1+t^2}{1+t^4}\\,dt=\\frac{\\pi}{2\\sqrt2}\\).",
@@ -208,7 +369,7 @@
     "17": "Two planets \\(A\\) and \\(B\\) of masses \\(M\\) and \\(9M\\) with radii \\(R\\) and \\(2R\\) respectively are present 8 \\(R\\) distance away from each other. Minimum velocity with which a particle is projected from surface of A such that it reaches planet B is given by \\(\\sqrt{\\frac{aGM}{7R}}\\). Value of ' \\(a\\) ' is",
     "19": "If density of aqueous \\(NaOH\\) solution is \\(1.2\\text{ }g/cm^{3}\\), then find its molality. [Given that: density of water \\(= 1gm/cm^{3}\\) and molar mass of \\(NaOH = 40gm\\) ]",
     "21": "\\(CH_{4}+ I_{2}\\rightleftharpoons CH_{3}- I + HI\\)Which reagent can stop backward reaction?",
-    "29": "\\(PCl_{5}\\rightleftharpoons PCl_{3}+Cl_{2},{\\text{ }K}_{C}= 1.844\\ \\ \\)If 3 moles of \\(PCl_{5}\\) are taken in \\(1\\text{ }L\\) vessel. Find equilibrium concentration of \\(PCl_{5}\\).",
+    "29": "\\(PCl_{5}\\rightleftharpoons PCl_{3}+Cl_{2},{\\text{ }K}_{C}= 1.844\\)If 3 moles of \\(PCl_{5}\\) are taken in \\(1\\text{ }L\\) vessel. Find equilibrium concentration of \\(PCl_{5}\\).",
     "30": "Decomposition of \\(N_{2}O_{5}\\) is a ______ order reaction",
     "42": "\\(\\lim_{x\\rightarrow 2} \\frac{x^{2}f(2) - 4f(x)}{(x- 2)}=\\) Where, \\(f(2) = 4f^{'}(2) = 1\\)",
     "55": "\\(f(x) =\\) minimum \\(\\{ x - \\lbrack x\\rbrack,\\ 1 + \\lbrack x\\rbrack - x\\}\\), \\(\\lbrack 0,3\\rbrack \\rightarrow R\\), \\(p\\) is the number of points where it is discontinuous, \\(q\\) is the number of points where it is not differentiable. Find \\(p+q\\)."
@@ -219,22 +380,70 @@
       "B": "2-methylcyclohexan-1-ol (structure in image10.png)",
       "C": "1-cyclohexylethan-1-ol (structure in image11.png)",
       "D": "3-methylcyclohexan-1-ol (structure in image12.png)"
+    },
+    "21": {
+      "A": "Dilute \\(HNO_{2}\\)",
+      "B": "Conc. \\(HIO_{3}\\)",
+      "C": "\\(HClO\\)",
+      "D": "\\(NH_{3}\\) (aq)"
+    },
+    "22": {
+      "A": "Graph gives idea about rate of reaction",
+      "B": "Graph gives idea about reduction of metal oxide",
+      "C": "Graph gives idea about free energy change",
+      "D": "Graph gives idea about phase change"
+    },
+    "23": {
+      "A": "\\(+5, +4\\) and \\(+3\\) respectively",
+      "B": "\\(+5, +5\\) and \\(+3\\) respectively",
+      "C": "\\(+3, +4\\) and \\(+5\\) respectively",
+      "D": "\\(+7, +4\\) and \\(+4\\) respectively"
+    },
+    "24": {
+      "A": "i \\(>\\) iii \\(>\\) ii \\(>\\) iv",
+      "B": "ii \\(>\\) iii \\(>\\) i \\(>\\) iv",
+      "C": "iii \\(>\\) ii \\(>\\) i \\(>\\) iv",
+      "D": "iv \\(>\\) ii \\(>\\) iii \\(>\\) i"
+    },
+    "25": {
+      "A": "Both Assertion and Reason are correct.",
+      "B": "Assertion is correct and Reason is incorrect",
+      "C": "Assertion is incorrect but Reason is correct.",
+      "D": "Both Assertion and Reason are incorrect."
+    },
+    "26": {
+      "A": "Both S1 and S2 are correct.",
+      "B": "\\(S1\\) is correct but \\(S2\\) is incorrect.",
+      "C": "\\(S1\\) is incorrect but \\(S2\\) is correct.",
+      "D": "Both S1 and S2 are incorrect."
+    },
+    "27": {
+      "A": "Both S1 and S2 are correct.",
+      "B": "\\(S1\\) is correct but \\(S2\\) is incorrect.",
+      "C": "\\(S1\\) is incorrect but \\(S2\\) is correct.",
+      "D": "Both S1 and S2 are incorrect."
+    },
+    "28": {
+      "A": "Rotamers",
+      "B": "Enantiomers",
+      "C": "Mirror images",
+      "D": "Polymers"
+    },
+    "29": {
+      "A": "\\(3.4M\\)",
+      "B": "\\(2.4M\\)",
+      "C": "\\(1.4M\\)",
+      "D": "\\(4.4M\\)"
+    },
+    "30": {
+      "A": "Zero",
+      "B": "First",
+      "C": "Second",
+      "D": "Pseudo-first"
     }
   },
   "skip": [
     14,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30
+    41
   ]
 }

@@ -11,6 +11,7 @@ import {
   solnNumberingIsBroken,
   matchValueToOption,
   gridTableToPipe,
+  solFilesForSubject,
   stripEmptyMath,
   unwrapPhantom,
   splitSolutions,
@@ -819,6 +820,42 @@ describe("unwrapPhantom — reveal reagents pandoc buried in a phantom", () => {
   });
 });
 
+describe("solFilesForSubject — never merge another subject's agent output", () => {
+  const files = [
+    "2021-p13_sol_chem.json",
+    "2021-p13_sol_physics.json",
+    "2021-p13.records.json",
+    "2021-p14_sol_chem.json",
+  ];
+
+  it("keeps this subject's file and excludes the other subject's", () => {
+    // readdir is alphabetical, so _sol_physics lands AFTER _sol_chem and an
+    // Object.assign merge overwrote real Chemistry answers with the Physics
+    // pass's skip flags. 27 questions were dropped that way.
+    expect(solFilesForSubject(files, "2021-p13", "Chemistry")).toEqual(["2021-p13_sol_chem.json"]);
+    expect(solFilesForSubject(files, "2021-p13", "Physics")).toEqual(["2021-p13_sol_physics.json"]);
+  });
+
+  it("does not leak files belonging to another paper", () => {
+    expect(solFilesForSubject(files, "2021-p13", "Chemistry")).not.toContain("2021-p14_sol_chem.json");
+  });
+
+  it("KEEPS untokenised part-files — a single run's splits carry no subject", () => {
+    const parts = ["p_sol_1.json", "p_sol_2.json", "p_sol_a.json"];
+    expect(solFilesForSubject(parts, "p", "Chemistry")).toEqual(parts);
+  });
+
+  it("recognises every spelling agents have used", () => {
+    const all = ["p_sol_chem.json", "p_sol_chemistry.json", "p_sol_math.json", "p_sol_maths.json", "p_sol_mathematics.json", "p_sol_phys.json"];
+    expect(solFilesForSubject(all, "p", "Chemistry")).toEqual(["p_sol_chem.json", "p_sol_chemistry.json"]);
+    expect(solFilesForSubject(all, "p", "Maths")).toEqual(["p_sol_math.json", "p_sol_maths.json", "p_sol_mathematics.json"]);
+  });
+
+  it("ignores non-sol files entirely", () => {
+    expect(solFilesForSubject(files, "2021-p13", "Chemistry")).not.toContain("2021-p13.records.json");
+  });
+});
+
 describe("stripEmptyMath — drop content-free math zones", () => {
   it("leaves a normal stem untouched", () => {
     const s = "Mass of \\(P\\) is \\(26.4\\text{ }g\\).";
@@ -854,7 +891,11 @@ describe("stripEmptyMath — drop content-free math zones", () => {
 
   it("keeps a zone holding real content, even if it also has spacing", () => {
     expect(stripEmptyMath("a \\(\\quad x\\) b")).toBe("a \\(\\quad x\\) b");
-    expect(stripEmptyMath("a \\(\\ 5\\ \\) b")).toBe("a \\(\\ 5\\ \\) b");
+    // Leading spacing is kept; TRAILING spacing is trimmed, because that is the
+    // exact shape parseLatex reduces to a bare "\" and KaTeX then rejects.
+    // (This assertion previously expected the trailing `\ ` to survive — that
+    // expectation was written before 2021-p16 Q29 shipped broken because of it.)
+    expect(stripEmptyMath("a \\(\\ 5\\ \\) b")).toBe("a \\(\\ 5\\) b");
   });
 
   it("handles display zones too", () => {
@@ -864,5 +905,18 @@ describe("stripEmptyMath — drop content-free math zones", () => {
   it("is idempotent", () => {
     const once = stripEmptyMath("yield is \\(\\ \\) \\(\\%\\)");
     expect(stripEmptyMath(once)).toBe(once);
+  });
+
+  it("trims spacing stranded at the END of a zone that HAS content", () => {
+    // parseLatex trims the zone, leaving a bare "\" that KaTeX rejects and that
+    // takes the whole stem down. Real case: 2021-p16 Q29 shipped PUBLIC broken.
+    expect(stripEmptyMath("\\(K_{C}= 1.844\\ \\ \\)If 3 moles")).toBe("\\(K_{C}= 1.844\\)If 3 moles");
+    expect(stripEmptyMath("\\(x = 2\\quad\\)")).toBe("\\(x = 2\\)");
+    expect(stripEmptyMath("\\[y = 3\\,\\]")).toBe("\\[y = 3\\]");
+  });
+
+  it("never removes spacing that sits between real content", () => {
+    expect(stripEmptyMath("\\(a\\ b\\)")).toBe("\\(a\\ b\\)");
+    expect(stripEmptyMath("\\(a\\quad b\\)")).toBe("\\(a\\quad b\\)");
   });
 });
