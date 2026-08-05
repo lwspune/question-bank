@@ -119,7 +119,13 @@ async function main() {
       // MCQ only — subjective/numeric practice rows legitimately have no options
       .or("question_format.is.null,question_format.eq.mcq")
       .order("id").range(from, from + PAGE - 1);
-    if (filter) q = q.like("source_file", `%${filter}%`);
+    // ilike, NOT like: matched `audit:text`'s filter 2026-08-05. A
+    // case-SENSITIVE filter silently matched nothing when the caller typed
+    // `jee` against `JEE_...` source files, and a zero-row scan reports
+    // "Flagged 0" — indistinguishable from a clean bank. Case-insensitive is
+    // also a strict superset of the old behaviour, so no previously-matched
+    // row can stop matching.
+    if (filter) q = q.ilike("source_file", `%${filter}%`);
     const { data, error } = await q;
     if (error) throw error;
     if (!data || data.length === 0) break;
@@ -140,6 +146,18 @@ async function main() {
     bySrc[f.src] = (bySrc[f.src] ?? 0) + 1;
   }
   console.log(`Scanned ${scanned} practice questions${filter ? ` (source ~ "${filter}")` : ""}`);
+  // A filter that matches nothing prints "Flagged 0" and reads as a pass. Say
+  // so loudly instead — the likeliest cause is a typo'd or over-specific
+  // substring, not a clean bank.
+  if (filter && scanned === 0) {
+    console.log(
+      `\n⚠  NOTHING SCANNED — no practice question has a source_file containing "${filter}".` +
+        `\n   This is NOT a clean result. Check the substring against:` +
+        `\n     select distinct source_file from questions where question_kind='practice';`
+    );
+    process.exitCode = 1;
+    return;
+  }
   console.log(`Flagged ${flags.length}:`, JSON.stringify(byType));
   if (flags.length) {
     console.log("\nBy source file:");

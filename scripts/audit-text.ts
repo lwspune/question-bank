@@ -176,6 +176,19 @@ async function main() {
   const byKind = (k: Finding["kind"]) => findings.filter((f) => f.kind === k);
   console.log(`audit:text — scanned ${scanned} question(s)${filter ? ` matching "${filter}"` : ""}\n`);
 
+  // A filter matching nothing falls through to "clean." below, which reads as
+  // a pass. Say so loudly instead — the likeliest cause is a typo'd or
+  // over-specific substring, not a clean bank.
+  if (filter && scanned === 0) {
+    console.log(
+      `⚠  NOTHING SCANNED — no question has a source_file containing "${filter}".\n` +
+        `   This is NOT a clean result. Check the substring against:\n` +
+        `     select distinct source_file from questions;`
+    );
+    process.exitCode = 1;
+    return;
+  }
+
   for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK", "PANDOC_ARTIFACT"] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);
