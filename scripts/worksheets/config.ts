@@ -85,6 +85,42 @@ export const CHAPTERS: Record<string, Chapter> = {
     { file: "07. Relations Types of Relations.xlsx", subtopicName: "Types of Relations" },
   ],
   },
+  "complex-numbers": {
+    id: "complex-numbers",
+    chapterName: "Complex Numbers",
+    dir: join(SOURCE_ROOT, "03. Complex Numbers", "01. Concept Practice"),
+    sourceFile: "Cadetprep_Worksheets_Complex_Numbers",
+    note: "Cadetprep concept-practice worksheet — Complex Numbers",
+    files: [
+      { file: "01. Definition of imaginary & complex numbers.xlsx", subtopicName: "Imaginary and Complex Numbers" },
+      { file: "02. Powers of i.xlsx", subtopicName: "Powers of i" },
+      { file: "03. Algebra of complex numbers.xlsx", subtopicName: "Algebra of Complex Numbers" },
+      { file: "04. Conjugate and Modulus of a Complex Number.xlsx", subtopicName: "Conjugate and Modulus" },
+      { file: "05. Argument.xlsx", subtopicName: "Argument" },
+      { file: "06. Square Root.xlsx", subtopicName: "Square Root of a Complex Number" },
+      { file: "07. Argand Plane.xlsx", subtopicName: "Argand Plane" },
+      { file: "08. Polar and Euler Form.xlsx", subtopicName: "Polar and Euler Form" },
+      { file: "09. Operation on Polar and Euler Form.xlsx", subtopicName: "Operations in Polar and Euler Form" },
+      { file: "10. Cube root of Unity.xlsx", subtopicName: "Cube Roots of Unity" },
+    ],
+  },
+  "logarithms": {
+    id: "logarithms",
+    chapterName: "Logarithms",
+    dir: join(SOURCE_ROOT, "04. Logarithm", "01. Concept Practice"),
+    sourceFile: "Cadetprep_Worksheets_Logarithms",
+    note: "Cadetprep concept-practice worksheet — Logarithms",
+    // The chapter's "03. Quizzes" folder (60 q, date-coercion + missing keys) is
+    // deliberately NOT here — out of scope per the Concept-Practice-only rule.
+    files: [
+      { file: "01. Exponential to Log.xlsx", subtopicName: "Exponential to Logarithmic Form" },
+      { file: "02. Log to Exponential.xlsx", subtopicName: "Logarithmic to Exponential Form" },
+      { file: "03. Properties.xlsx", subtopicName: "Properties of Logarithms" },
+      { file: "04. Logarithmic Expressions.xlsx", subtopicName: "Logarithmic Expressions" },
+      { file: "05. Logarithmic Equations.xlsx", subtopicName: "Logarithmic Equations" },
+      { file: "06. Mixed.xlsx", subtopicName: "Mixed Practice" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {
