@@ -1,0 +1,240 @@
+{
+  "_comment": "Adjudicated repairs for Angle and Measurement. Rows 2-27 of file 04 (Clock Angle Problems) carried Excel date-coercion damage: an option authored '3:16 4/11' was stored as the date 2025-04-11 03:16:00 (month = fraction numerator, day 11 = denominator). Every damaged option was reconstructed from that decoding AND re-derived from clock-hand arithmetic (minute hand 6°/min, hour hand 0.5°/min; angle at H:m = |30H − 5.5m|). Keys verified during reconstruction.",
+
+  "02-26": {
+    "answer": "D",
+    "solution": "\\(5 \\times \\frac{180}{\\pi} \\approx 286.48^\\circ\\), which rounds to \\(286^\\circ\\).",
+    "reason": "Key flip C→D: 286.48 rounds to 286, not 287 — the source solution computed 286.48 and then rounded it wrong."
+  },
+
+  "02-29": {
+    "answer": "C",
+    "solution": "At 2:30 the hour hand is at \\(2.5 \\times 30 = 75^\\circ\\) and the minute hand at \\(180^\\circ\\). The angle between them is \\(180 - 75 = 105^\\circ\\).",
+    "reason": "Key flip D→C: the keyed 75° is the hour hand's POSITION, not the angle between the hands — the source solution stopped one subtraction short."
+  },
+
+  "02-34": {
+    "answer": "B",
+    "reason": "Key flip C→B: π/3 − π/5 = 2π/15 rad = 24° — the source solution derives exactly 24° (option B) while the key said C (36°)."
+  },
+
+  "02-39": {
+    "answer": "B",
+    "solution": "Total angle \\(= 60 \\times 36^\\circ = 2160^\\circ = 2160 \\times \\frac{\\pi}{180} = 12\\pi\\) radians.",
+    "reason": "Key flip A→B: 60 × 36° = 12π rad. The source solution derived 12π and then invented 'each swing covers both halves so 24π' — the 36° per swing is already the full swing."
+  },
+
+  "02-41": {
+    "answer": "C",
+    "reason": "Key flip D→C: 240° = 4π/3 rad, arc = 30 × 4π/3 = 40π cm — the source solution derives exactly 40π (option C) while the key said D (60π)."
+  },
+
+  "02-35": {
+    "options": { "B": "\\(2{,}000\\pi\\)" },
+    "reason": "No printed option matched: 750 rev/min × 80 s = 1,000 revolutions = 2,000π radians (the source solution derives exactly this). Keyed option B repaired from 20,000π to 2,000π; key B retained."
+  },
+
+  "02-37": {
+    "stem": "The radian measure of an angle is \\(2\\). What is its degree measure (approximately)?",
+    "solution": "\\(2 \\text{ rad} = 2 \\times \\frac{180^\\circ}{\\pi} \\approx 114.59^\\circ\\).",
+    "reason": "As printed ('x radians equals the supplement of x degrees') the equation x·180/π = 180 − x gives x ≈ 3.09, matching no option, and the source solution's algebra was invalid. Stem rewritten to the clean conversion question the keyed B (114.59) answers; options and key unchanged."
+  },
+
+  "02-42": {
+    "exclude": true,
+    "reason": "Conceptually defective beyond repair: 'which value is not possible as a result of degree-to-radian conversion for a positive angle' — every positive real is a possible radian measure, so no option is correct under any reading (the source's 'pure 4 radians has no exact degree value' is false: 4 rad = (720/π)°, and option D fails the same test)."
+  },
+
+  "03-5": {
+    "answer": "A",
+    "options": { "A": "1.57" },
+    "solution": "\\(l = r\\theta\\) gives \\(\\theta = \\frac{l}{r} = \\frac{11}{7} \\approx 1.57\\) radians (exactly \\(\\frac{\\pi}{2}\\) when \\(\\pi \\approx \\frac{22}{7}\\)).",
+    "reason": "Key flip C→A: θ = 11/7 ≈ 1.57 rad = option A; the keyed C (1.25) matches nothing. Option A's float artifact (1.5699999999999998) cleaned to 1.57."
+  },
+
+  "03-10": {
+    "answer": "B",
+    "stem": "If the area of a sector is \\(125\\) cm² and the radius is \\(10\\) cm, what is the central angle in radians?",
+    "solution": "\\(A = \\frac{1}{2}r^2\\theta\\) gives \\(\\theta = \\frac{2A}{r^2} = \\frac{2 \\times 125}{100} = 2.5\\) radians.",
+    "reason": "Key flip C→B + stem repair: as printed (125.6 cm²) θ = 2.512, matching no option exactly; with 125 cm² the answer is exactly 2.5 = option B. The keyed C (3.2) would need area 160."
+  },
+
+  "03-12": {
+    "answer": "D",
+    "reason": "Key flip B→D: perimeter = 2r + arc = 12 + 4 = 16 cm — the source solution derives exactly 16 (option D) while the key said B (12)."
+  },
+
+  "03-13": {
+    "answer": "C",
+    "reason": "Key flip A→C: θ = 8/8 = 1 rad, area = ½ × 64 × 1 = 32 cm² — the source solution derives exactly 32 (option C) while the key said A (16)."
+  },
+
+  "03-28": {
+    "answer": "B",
+    "solution": "\\(A = \\frac{1}{2}r^2\\theta\\): \\(\\pi = \\frac{1}{2}r^2 \\cdot \\frac{\\pi}{3}\\) gives \\(r^2 = 6\\), so \\(r = \\sqrt{6}\\) cm.",
+    "reason": "Key flip A→B: r = √6 exactly — the source solution derived √6 and then wrote 'rounding and NDA context gives 3 cm', which is not a thing (√6 ≈ 2.45)."
+  },
+
+  "03-19": {
+    "options": { "B": "1.57" },
+    "reason": "Float-artifact cleanup: option B stored as 1.5699999999999998 (the θ/2 forgot-the-2 distractor). Key A (3.14) verified correct: θ = 2×157/100 = 3.14."
+  },
+
+  "03-21": {
+    "options": { "A": "2 : 1", "B": "1 : 2", "C": "3 : 1", "D": "1 : 3" },
+    "reason": "Excel time-serial coercion: ratio options stored as fractions of a day (0.04305… × 1440 min = 1:02 = '1:2', etc.) — decoded all four. Equal arcs: 6θ = 3α ⇒ θ:α = 1:2. Key B verified correct."
+  },
+
+  "03-22": {
+    "options": { "B": "\\(\\frac{4\\pi}{3}\\)" },
+    "solution": "\\(A = \\frac{1}{2}r^2\\theta\\) gives \\(\\theta = \\frac{2A}{r^2} = \\frac{2 \\times 24\\pi}{36} = \\frac{4\\pi}{3}\\) radians.",
+    "reason": "No printed option matched the correct 4π/3 (offered: 2π, π, 4π, 3π). Keyed option B repaired to 4π/3; key B retained; the source solution's trailing 'should give π if substitution is correct' waffle removed."
+  },
+
+  "03-24": {
+    "options": { "B": "\\(4\\pi\\) cm" },
+    "solution": "In 15 minutes the minute hand sweeps a quarter revolution, \\(\\theta = \\frac{\\pi}{2}\\). Distance traced by the tip \\(= r\\theta = 8 \\times \\frac{\\pi}{2} = 4\\pi\\) cm.",
+    "reason": "No printed option matched the correct 4π (offered: 2π, 8π/3, 4π/3, 6π). Keyed option B repaired to 4π; key B retained; the source solution's 'marking as close as possible' waffle removed."
+  },
+
+  "03-29": {
+    "options": { "B": "\\(4\\pi\\) cm" },
+    "reason": "Options B (12π/4) and C (3π) were numerically identical. B replaced with a distinct distractor; key A (6π) verified correct: quarter slice = 12 × π/2."
+  },
+
+  "04-2": {
+    "options": { "A": "3:16 4/11", "B": "3:15", "C": "3:18", "D": "3:22 2/11" },
+    "reason": "Date-coercion repair. Hands together between 3 and 4: 5.5m = 90 → m = 180/11 = 16 4/11 → 3:16 4/11. Key A verified correct."
+  },
+
+  "04-6": {
+    "stem": "At what time between 6 and 7 o'clock is the angle between the hands \\(60^\\circ\\) for the first time?",
+    "options": { "A": "6:16 4/11", "B": "6:21 9/11", "C": "6:32 8/11", "D": "6:38 2/11" },
+    "solution": "At \\(6{:}m\\) the angle is \\(|180 - 5.5m|\\). Setting \\(180 - 5.5m = 60\\) gives \\(m = \\frac{120}{5.5} = 21\\tfrac{9}{11}\\), so the first time is 6:21 9/11. (The second time, \\(5.5m = 240\\), falls at 6:43 7/11.)",
+    "reason": "Date-coercion repair + defective stem: as printed ('straight line but not together') the only solution between 6 and 7 is exactly 6:00 — no option matches, and the keyed B (6:21 9/11) is the 60°-first-time answer. Stem repaired to the question the option set belongs to; key B retained and now correct. The source solution's 'opposite at (60/11)×5.5 = 21 9/11' was arithmetically false."
+  },
+
+  "04-8": {
+    "stem": "At what time between 7 and 8 is the angle between the hands \\(60^\\circ\\) for the first time?",
+    "options": { "A": "7:05 5/11", "B": "7:27 3/11", "C": "7:21 9/11", "D": "7:25 5/11" },
+    "solution": "At \\(7{:}m\\) the angle is \\(|210 - 5.5m|\\). Setting \\(210 - 5.5m = 60\\) gives \\(m = \\frac{150}{5.5} = 27\\tfrac{3}{11}\\), so the first time is 7:27 3/11.",
+    "reason": "Date-coercion repair + defective options: the correct 60° time is 7:27 3/11, which matched NO decoded option (the old B, 7:13 7/11, gives 135°). Keyed option B's text repaired to the correct value; 'first time' added since a second solution (7:49 1/11) exists; key B retained."
+  },
+
+  "04-3": {
+    "answer": "C",
+    "solution": "Angle \\(= |30 \\times 2 - 5.5 \\times 15| = |60 - 82.5| = 22.5^\\circ\\).",
+    "reason": "Key flip A→C: the angle at 2:15 is 22.5° — the source solution computed 22.5° and then wrote 'take absolute = 37.5°', which is not an operation."
+  },
+
+  "04-4": {
+    "answer": "A",
+    "solution": "The hands point in opposite directions (straight line, not overlapping) 11 times every 12 hours, so \\(22\\) times in a day.",
+    "reason": "Key flip C→A: opposite-direction events occur 11 times per 12 h = 22/day. The keyed 44 counts ALL straight-line events (opposite + overlapping) — but the stem explicitly excludes overlaps."
+  },
+
+  "04-9": {
+    "answer": "B",
+    "solution": "The hands are at right angles \\(22\\) times in 12 hours — twice per hour in general, but the events around 3 o'clock and 9 o'clock merge with their neighbours, reducing 24 to 22.",
+    "reason": "Key flip A→B: the classic count is 22 per 12 h. The source solution's '+2 extra events at 3 and 9' inverts the actual effect (those are shared events that REDUCE the count)."
+  },
+
+  "04-10": {
+    "answer": "A",
+    "solution": "Taking the hands exactly on the marks: minute hand at \\(4 \\times 30 = 120^\\circ\\), hour hand at \\(3 \\times 30 = 90^\\circ\\); the angle between them is \\(30^\\circ\\). (Strictly the hour hand cannot sit exactly on 3 while the minute hand is on 4 — the question idealises the positions.)",
+    "reason": "Key flip B→A: as posed (hands ON the 4 and the 3), the angle is one 30° division. The source solution derived 30° then hedged toward the keyed 60° with 'must consider hour hand's advance', contradicting the stem's own setup."
+  },
+
+  "04-23": {
+    "answer": "A",
+    "solution": "Angle \\(= |30 \\times 3 - 5.5 \\times 20| = |90 - 110| = 20^\\circ\\).",
+    "reason": "Key flip C→A: the angle at 3:20 is 20° (the 5.5°/min formula already includes the hour hand's advance). The source solution computed 20° and then wrote 'most likely answer 50° after including hour hand advance' — double-counting it."
+  },
+
+  "04-24": {
+    "answer": "A",
+    "solution": "Right angles occur \\(22\\) times in 12 hours, hence \\(44\\) times in 24 hours.",
+    "reason": "Key flip C→A: 44 per day is the classic result — the source solution derived 44 and then added a mythical 'plus 4 extra for two times at 3 & 9 each' to reach the keyed 48."
+  },
+
+  "04-25": {
+    "answer": "D",
+    "solution": "Angle \\(= |30 \\times 7 - 5.5 \\times 20| = |210 - 110| = 100^\\circ\\).",
+    "reason": "Key flip B→D: the angle at 7:20 is 100° — the source solution derives exactly 100° (option D) while the key said B (60°)."
+  },
+
+  "04-29": {
+    "answer": "B",
+    "solution": "The minute hand sweeps \\(6^\\circ\\) per minute, so in 40 minutes it sweeps \\(40 \\times 6 = 240^\\circ\\).",
+    "reason": "Key flip A→B: 240° — the source solution states 240° twice while the key said A (120°)."
+  },
+
+  "04-11": {
+    "options": { "A": "70°" },
+    "reason": "No printed option matched: at 5:40 the angle is |150 − 220| = 70° (the source solution derives exactly this; options offered 20/40/80/100). Keyed option A repaired to 70°."
+  },
+
+  "04-13": {
+    "options": { "B": "130°" },
+    "solution": "Angle \\(= |30 \\times 8 - 5.5 \\times 20| = |240 - 110| = 130^\\circ\\). Since \\(130^\\circ < 180^\\circ\\), this is already the smaller angle.",
+    "reason": "No printed option matched: the angle at 8:20 is 130° (options offered 100/110/120/140). The source solution derived 130° then falsely concluded 'the smaller angle is 110°'. Keyed option B repaired to 130°; solution rewritten."
+  },
+
+  "04-15": {
+    "options": { "A": "12°" },
+    "solution": "Angle \\(= |30 \\times 4 - 5.5 \\times 24| = |120 - 132| = 12^\\circ\\).",
+    "reason": "No printed option matched: the angle at 4:24 is 12° (options offered 78/96/120/60). Keyed option A repaired to 12°; solution waffle trimmed."
+  },
+
+  "04-16": {
+    "options": { "C": "17.5°" },
+    "solution": "Angle \\(= |30 \\times 7 - 5.5 \\times 35| = |210 - 192.5| = 17.5^\\circ\\).",
+    "reason": "No printed option matched: the angle at 7:35 is 17.5° (options offered 37.5/47.5/42.5/49.5). Keyed option C repaired to 17.5°; solution waffle trimmed."
+  },
+
+  "04-21": {
+    "options": { "A": "142.5°" },
+    "solution": "\\(|30 \\times 10 - 5.5 \\times 15| = |300 - 82.5| = 217.5^\\circ\\); the angle between the hands is \\(360^\\circ - 217.5^\\circ = 142.5^\\circ\\).",
+    "reason": "No printed option matched: the angle at 10:15 is 142.5° (options offered 97.5/112.5/120/135). The source solution derived it and then wrote 'nearest to answer given is 97.5°'. Keyed option A repaired to 142.5°; solution rewritten."
+  },
+
+  "04-22": {
+    "options": { "A": "4:05 5/11 and 4:38 2/11" },
+    "solution": "Perpendicular means \\(|120 - 5.5m| = 90\\): either \\(5.5m = 30\\) giving \\(m = 5\\tfrac{5}{11}\\), or \\(5.5m = 210\\) giving \\(m = 38\\tfrac{2}{11}\\). So the hands are perpendicular at 4:05 5/11 and 4:38 2/11.",
+    "reason": "Defective options: the correct perpendicular pair (4:05 5/11 and 4:38 2/11) was split across options A and D — A paired the correct second time with the coincidence time, D paired the correct first time with a right-angle time from another hour. Keyed option A repaired to the correct pair."
+  },
+
+  "04-12": {
+    "options": { "A": "5:27 3/11", "B": "5:32 8/11", "C": "5:16 4/11", "D": "5:15" },
+    "reason": "Date-coercion repair. Hands at 0° between 5 and 6: 5.5m = 150 → m = 300/11 = 27 3/11 → 5:27 3/11. Key A verified correct."
+  },
+
+  "04-17": {
+    "options": { "A": "7:38 2/11", "B": "7:16 4/11", "C": "7:21 9/11", "D": "7:32 8/11" },
+    "reason": "Date-coercion repair. Hands at 0° after 7: 5.5m = 210 → m = 420/11 = 38 2/11 → 7:38 2/11. Key A verified correct."
+  },
+
+  "04-18": {
+    "options": { "A": "1:05 5/11", "B": "1:00", "C": "12:30", "D": "12:12" },
+    "reason": "Date-coercion repair. Coincidences are 720/11 = 65 5/11 minutes apart, so after 12:00 the next is 1:05 5/11. Key A verified correct."
+  },
+
+  "04-19": {
+    "options": { "A": "8:16 4/11", "B": "8:08 3/11", "C": "8:21 9/11", "D": "8:27 3/11" },
+    "reason": "Date-coercion repair. 90° between 8 and 9: |240 − 5.5m| = 90 → m = 150/5.5 = 27 3/11 (the other root lands at 9:00, out of range) → 8:27 3/11. Key D verified correct."
+  },
+
+  "04-26": {
+    "stem": "At what time between 1 and 2 o'clock are the hands in the same straight line but not together?",
+    "options": { "A": "1:05 5/11", "B": "1:38 2/11", "C": "1:16 4/11", "D": "1:27 3/11" },
+    "solution": "Straight line but not together means \\(180^\\circ\\) apart: \\(|30 - 5.5m| = 180\\) gives \\(5.5m = 210\\), so \\(m = \\frac{210}{5.5} = 38\\tfrac{2}{11}\\) — the hands are opposite at 1:38 2/11.",
+    "reason": "Date-coercion repair + stem disambiguation: 'in the same straight line for the first time' is literally the coincidence at 1:05 5/11 (option A), but the keyed B and the source solution intend opposition — stem now says 'but not together', making B uniquely correct. 5.5m = 30 + 180 = 210 → m = 38 2/11 verified."
+  },
+
+  "04-27": {
+    "answer": "A",
+    "options": { "A": "4:21 9/11", "B": "4:38 2/11", "C": "4:10", "D": "4:30" },
+    "solution": "Hands coincide between 4 and 5 when \\(5.5m = 120\\), i.e. \\(m = \\frac{240}{11} = 21\\tfrac{9}{11}\\) — at 4:21 9/11.",
+    "reason": "Date-coercion repair + key flip B→A: the coincidence time is 4:21 9/11 (option A) — the source's OWN solution derives it — while the keyed B (4:38 2/11) is the second right-angle time. "
+  }
+}
