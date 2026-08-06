@@ -14,7 +14,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { findLatexImbalance } from "../practice/lib";
-import { buildWorksheetRows, type Flag, type WorksheetOverride } from "./lib";
+import { buildWorksheetRows, letterDistribution, type Flag, type ShufflePlan, type WorksheetOverride } from "./lib";
 import { requireChapter, ORG_ID, EXAM_ID, CREATED_BY, DATA } from "./config";
 import { readChapterQuestions } from "./read";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
@@ -31,6 +31,10 @@ async function main() {
   const overrides: Record<string, WorksheetOverride> = existsSync(overridesPath)
     ? JSON.parse(readFileSync(overridesPath, "utf8"))
     : {};
+  const shufflesPath = join(DATA, `${chapter.id}.shuffles.json`);
+  const shuffles: ShufflePlan = existsSync(shufflesPath)
+    ? JSON.parse(readFileSync(shufflesPath, "utf8"))
+    : {};
 
   const files = readChapterQuestions(chapter);
   const rows: ParsedRowPayload[] = [];
@@ -42,7 +46,8 @@ async function main() {
     const res = buildWorksheetRows(
       { chapterName: chapter.chapterName, subtopicName: f.subtopicName, fileIndex: f.fileIndex },
       f.questions,
-      overrides
+      overrides,
+      shuffles
     );
     rows.push(...res.rows);
     flags.push(...res.flags);
@@ -58,7 +63,20 @@ async function main() {
   const stale = Object.keys(overrides).filter((k) => !k.startsWith("_") && !usedOverrides.has(k));
   if (stale.length) throw new Error(`overrides with no matching question: ${stale.join(", ")}`);
 
-  console.log(`Built ${rows.length} rows for "${chapter.chapterName}" (${excluded.length} excluded).`);
+  console.log(`Built ${rows.length} rows for "${chapter.chapterName}" (${excluded.length} excluded, ${Object.keys(shuffles).length} rebalance shuffles).`);
+
+  // Correct-letter balance report — the source generates keys skewed toward
+  // A/B, so an unbalanced chapter should get a plan-shuffles pass before PUBLIC.
+  const dist = letterDistribution(
+    rows.map((r) => ({ id: r.questionNumber!, answer: r.options.find((o) => o.isCorrect)!.label, eligible: true }))
+  );
+  const distLine = (["A", "B", "C", "D"] as const)
+    .map((l) => `${l} ${dist[l]} (${Math.round((100 * dist[l]) / rows.length)}%)`)
+    .join("  ");
+  const skewed = (["A", "B", "C", "D"] as const).some(
+    (l) => dist[l] / rows.length < 0.18 || dist[l] / rows.length > 0.32
+  );
+  console.log(`correct-letter balance: ${distLine}${skewed ? "  << SKEWED — run plan-shuffles" : ""}`);
   const bySub = new Map<string, number>();
   for (const r of rows) bySub.set(r.subtopicName!, (bySub.get(r.subtopicName!) ?? 0) + 1);
   console.log("\nby subtopic:");
