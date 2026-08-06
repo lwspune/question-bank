@@ -111,6 +111,51 @@ describe("auditRow — picture options vs genuinely blank options", () => {
     expect(auditRow(row, "Hence (B)")).toBe("IMAGE_OPTIONS");
   });
 
+  it("STILL checks the key on a picture-option row — IMAGE_OPTIONS must not suppress it", () => {
+    // IMAGE_OPTIONS is informational (this is what a drawn option looks like),
+    // NOT a defect — so it must not short-circuit the key check the way a real
+    // structural defect does. It did: auditRow returns ONE flag and the picture
+    // branch returned before the SOLN!=KEY test, leaving 325 JEE Chemistry rows
+    // with no key cross-check at all — and those are the organic-structure rows
+    // that are hardest to verify by eye.
+    const row = mk([
+      { label: "A", text: "", img: "u/a.png" },
+      { label: "B", text: "", img: "u/b.png", correct: true },
+      { label: "C", text: "", img: "u/c.png" },
+      { label: "D", text: "", img: "u/d.png" },
+    ]);
+    expect(auditRow(row, "... Hence (A)")).toBe("SOLN_A!=KEY_B");
+  });
+
+  it("reports IMAGE_OPTIONS when the picture row's key and solution AGREE", () => {
+    const row = mk([
+      { label: "A", text: "", img: "u/a.png" },
+      { label: "B", text: "", img: "u/b.png", correct: true },
+      { label: "C", text: "", img: "u/c.png" },
+      { label: "D", text: "", img: "u/d.png" },
+    ]);
+    expect(auditRow(row, "... Hence (B)")).toBe("IMAGE_OPTIONS");
+  });
+
+  it("a REAL option defect still outranks the key check", () => {
+    // Precedence is deliberate: a shared image / blank option means the row is
+    // unusable, which must be fixed before its key is worth arguing about.
+    const shared = mk([
+      { label: "A", text: "", img: "u/same.png" },
+      { label: "B", text: "", img: "u/same.png", correct: true },
+      { label: "C", text: "", img: "u/c.png" },
+      { label: "D", text: "", img: "u/d.png" },
+    ]);
+    expect(auditRow(shared, "... Hence (A)")).toBe("DUP_OPT_IMAGE");
+    const blank = mk([
+      { label: "A", text: "first" },
+      { label: "B", text: "" },
+      { label: "C", text: "third", correct: true },
+      { label: "D", text: "fourth" },
+    ]);
+    expect(auditRow(blank, "... Hence (A)")).toBe("BLANK_OPTIONS(B)");
+  });
+
   it("flags a blank option that has NO image, naming the labels", () => {
     const row = mk([
       { label: "A", text: "first" },

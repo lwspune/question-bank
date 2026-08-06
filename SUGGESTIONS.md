@@ -86,7 +86,11 @@ recovering an image-only option block is established.
 `apply-option-fixes.ts --apply` → `commit` → `attach-images` → `validate-db` → `scan-flip`. Re-run `coverage.ts`
 afterwards; the SHORT list should then be fully explained by `skip[]` alone.
 
-### Teach `audit:keys`'s `concludedLetter` about match-list and statement-set solutions
+### Teach `audit:keys`'s `concludedLetter` to prefer an AFFIRMATIVE conclusion
+
+**Revised 2026-08-06 after measuring.** The related *coverage* half of this is now **DONE** — `auditRow` returned ONE flag per row and `IMAGE_OPTIONS` returned BEFORE the key check, so **325 JEE Chemistry picture-option rows had no key cross-check at all**. Fixed by treating `IMAGE_OPTIONS` as informational rather than short-circuiting (genuine defects `BLANK_OPTIONS`/`DUP_OPT`/`DUP_OPT_IMAGE` still outrank the key check). That surfaced 21 previously-invisible mismatches exam-wide (18 Chemistry, 3 Physics) and **+2 in the practice bank**; all 21 were read and every one was a false positive, so no wrong answer had been shipped behind the hole. Chemistry `SOLN≠KEY` went 50 → 67.
+
+**What remains is the NOISE, and the original spec targeted the wrong family.** Classifying all 68: **46 are trailing distractor-dismissal** (“… which is option (B); option (D) is wrong because …”), 15 are statement-set, 7 are match-list. So the proposed match-list + statement-set + `Answer:` fix would catch only 22 of 68 — under a third.
 
 `audit-keys Chemistry` reports 50 `SOLN≠KEY` flags; a ~26-row sample was **entirely false positives** in three
 recognisable families: solutions that end by dismissing the distractors, match-list solutions that end with the
@@ -98,8 +102,12 @@ expects a space or "is" after the cue word, not a colon.
 to catch — the same argument that justified the (now shipped) `IMAGE_OPTIONS` exemption. Not all 50 were checked
 individually, so a real one could already be sitting in there.
 
-**How to apply:** in `concludedLetter` (`scripts/practice/audit-keys.ts`, shared with the JEE variant), prefer an
-explicit terminal `Answer: X` / `answer is X` when present; otherwise ignore a trailing match-list mapping
+**How to apply (revised):** the root error is taking the LAST match. These solutions state the answer
+affirmatively and *then* dismiss the rest, so extend `concludedLetter` to prefer an AFFIRMATIVE construction
+(`is option X`, `which is option X`, `Hence X`, `answer is X`, `Answer: X`) and ignore any letter that follows
+a dismissal cue. Do NOT keep extending the existing reject-phrase list (`fails|is wrong|cannot|does not|would
+not`) — it already misses "ruling out (D)", "is wrong for exactly this reason" and "would require", and that
+is a losing game. Superseded original spec: prefer a terminal `Answer: X`; otherwise ignore a trailing match-list mapping
 (`\([A-D]\)\s*-\s*\(?[IVX]`) and a trailing "Hence …only" statement set. Guard the change by re-running the
 practice probe and confirming its 7 genuine `SOLN≠KEY` still fire — that check caught a prior over-tightening.
 

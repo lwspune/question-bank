@@ -92,16 +92,23 @@ export function auditRow(opts: Opt[], solution: string | null): string | null {
   // A picture-option row stores its choices as images, so its texts are empty BY
   // CONSTRUCTION and collide as "duplicates". Not a defect, and it drowned the
   // real signal (49 such flags in JEE Physics alone hid one genuine one).
+  const mismatch = concluded && key && concluded !== key ? `SOLN_${concluded}!=KEY_${key}` : null;
   const pictures = sorted.filter((o) => !(o.text ?? "").trim() && o.image_url);
   if (pictures.length) {
     const urls = pictures.map((o) => o.image_url);
     if (urls.length !== new Set(urls).size) return "DUP_OPT_IMAGE";
     const worded = texts.filter((t) => t !== "");
-    return worded.length !== new Set(worded).size ? "DUP_OPT" : "IMAGE_OPTIONS";
+    if (worded.length !== new Set(worded).size) return "DUP_OPT";
+    // IMAGE_OPTIONS is INFORMATIONAL — it is what a drawn option looks like, not
+    // a defect — so it must not short-circuit the key check the way DUP_OPT and
+    // BLANK_OPTIONS (genuine "row is unusable" defects) legitimately do.
+    // It did, and the cost was invisible: 325 JEE Chemistry rows returned
+    // IMAGE_OPTIONS and never had their key cross-checked against the solution
+    // at all — precisely the organic-structure rows hardest to verify by eye.
+    return mismatch ?? "IMAGE_OPTIONS";
   }
   if (dup) return "DUP_OPT";
-  if (concluded && key && concluded !== key) return `SOLN_${concluded}!=KEY_${key}`;
-  return null;
+  return mismatch;
 }
 
 async function main() {
