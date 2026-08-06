@@ -1,0 +1,144 @@
+{
+  "_comment": "Adjudicated repairs for Logarithms. Recurring source artifacts: a stray apostrophe before fractions (\"'1/2\" for 1/2) and two stems whose numeric premise is false while the keyed conversion is structurally right — premises corrected so the mathematics is true. Every entry re-derived by hand.",
+
+  "01-10": {
+    "stem": "Which of the following logarithmic expressions corresponds to \\(6^0 = 1\\)?",
+    "reason": "The stem printed the exponent as a superscript letter i (6ⁱ = 1) — a glyph error for 6⁰ = 1, under which the keyed C (log₆(1) = 0) is exactly right. No other option is coherent under any reading."
+  },
+
+  "01-23": {
+    "stem": "Which is the logarithmic form of the equation \\(8 = 4^{1.5}\\)?",
+    "options": {
+      "A": "\\(\\log_{1.5}(8) = 4\\)",
+      "B": "\\(\\log_4(8) = 1.5\\)",
+      "C": "\\(\\log_4(1.5) = 8\\)",
+      "D": "\\(\\log_8(4) = 1.5\\)"
+    },
+    "solution": "\\(b^x = y\\) converts to \\(\\log_b(y) = x\\): here \\(4^{1.5} = 8\\), so \\(\\log_4(8) = 1.5\\).",
+    "reason": "The stem's premise was false (4^1.5 = 8, not 64; log₄64 = 3). Premise corrected to 8 and all options rewritten around it; key B retained as the structurally correct conversion."
+  },
+
+  "01-27": {
+    "stem": "Write \\(27 = 9^{3/2}\\) in logarithmic form.",
+    "options": {
+      "A": "\\(\\log_9(27) = 1.5\\)",
+      "B": "\\(\\log_{27}(9) = 1.5\\)",
+      "C": "\\(\\log_9(1.5) = 27\\)",
+      "D": "\\(\\log_{1.5}(9) = 27\\)"
+    },
+    "solution": "\\(9^{3/2} = (9^{1/2})^3 = 3^3 = 27\\), so the logarithmic form is \\(\\log_9(27) = \\frac{3}{2} = 1.5\\).",
+    "reason": "The stem's premise was false (9^(3/2) = 27, not 81; log₉81 = 2). Premise corrected to 27 and options rewritten; key A retained as the structurally correct conversion."
+  },
+
+  "03-4": {
+    "options": { "B": "\\(\\log_a(1) = 0\\)" },
+    "reason": "Stray-apostrophe typo in option B (\"'0\"). Cleaned; key C (power rule) retained."
+  },
+
+  "03-9": {
+    "options": { "A": "\\(\\log_x(x) = 0\\)", "B": "\\(\\log_x(x) = 1\\)" },
+    "reason": "Stray-apostrophe typos in options A and B (\"'0\", \"'1\"). Cleaned; key B retained (log_x x = 1)."
+  },
+
+  "03-6": {
+    "answer": "A",
+    "reason": "Key flip D→A: log₅125 − log₅25 = 3 − 2 = 1 — the source solution derives exactly 1 (option A) while the key said D (2)."
+  },
+
+  "03-8": {
+    "answer": "D",
+    "reason": "Key flip A→D: log₃(27x) = 4 ⇒ 27x = 81 ⇒ x = 3 — the source solution derives exactly x = 3 (option D) while the key said A (81, the intermediate 3⁴)."
+  },
+
+  "03-20": {
+    "answer": "D",
+    "reason": "Key flip B→D: log₁₀(ab²) = 2 + 2·3 = 8 — the source solution derives exactly 8 (option D) while the key said B (7)."
+  },
+
+  "03-21": {
+    "answer": "B",
+    "reason": "Key flip D→B: log₂(8³) = 3·3 = 9 — the source solution derives exactly 9 (option B) while the key said D (24, the 3×8 trap)."
+  },
+
+  "05-6": {
+    "answer": "C",
+    "reason": "Key flip B→C: y + 3 = 16 ⇒ y = 13 — the source solution derives exactly 13 (option C) while the key said B (16, the pre-subtraction value)."
+  },
+
+  "05-8": {
+    "answer": "C",
+    "reason": "Key flip B→C: x = 2 × 8 = 16 — the source solution derives exactly 16 (option C) while the key said B (56, the 7×8 trap)."
+  },
+
+  "03-24": {
+    "options": { "A": "\\(2 \\cdot \\log_3(3) + \\log_3(x)\\)", "D": "\\(\\log_3(9) - 2 \\cdot \\log_3(x)\\)" },
+    "reason": "Options A, B and D were ALL algebraically equivalent (each = 2 + 2log₃x). A now drops a factor (2 + log₃x, false) and D flips a sign; the keyed B stays the unique correct expansion."
+  },
+
+  "03-26": {
+    "options": { "C": "\\(\\log_3(a) - \\log_3(2b)\\)" },
+    "reason": "Old option C (log₃a − log₃b²) was an equivalent restatement of the GIVEN expression — true, just not combined. Replaced with a false variant; key D (log₃(a/b²)) retained."
+  },
+
+  "02-6": {
+    "stem": "Rewrite \\(\\log_9(3) = \\frac{1}{2}\\) in exponential form.",
+    "options": { "A": "\\(9^{1/2} = 3\\)" },
+    "reason": "Apostrophe artifact: stem and keyed option printed \"'1/2\" for the fraction 1/2. Cleaned; key A retained (9^(1/2) = 3)."
+  },
+
+  "02-8": {
+    "stem": "Convert \\(\\log_8(2) = \\frac{1}{3}\\) into its equivalent exponential form.",
+    "options": { "A": "\\(2^{1/3} = 8\\)", "C": "\\(8^{1/3} = 2\\)" },
+    "reason": "Apostrophe artifact (\"'1/3\") in the stem and options A/C. Cleaned; key C retained (8^(1/3) = 2)."
+  },
+
+  "02-9": {
+    "stem": "Rewrite \\(\\log_{27}(3) = \\frac{1}{3}\\) as an exponential equation.",
+    "options": { "A": "\\(\\frac{1}{27^3} = 3\\)" },
+    "reason": "Apostrophe artifact in the stem, and old option A merely restated the logarithmic form (not exponential — a non-answer, arguably a second 'form' trap). A replaced with a false exponential statement; key B retained (27^(1/3) = 3)."
+  },
+
+  "05-4": {
+    "stem": "Solve: \\(\\log_2(x) + \\log_2(4) = 6\\)",
+    "solution": "\\(\\log_2(4x) = 6\\), so \\(4x = 2^6 = 64\\) and \\(x = 16\\).",
+    "reason": "As printed (log₅, RHS 2) the solution is x = 25/4, matching no option; the source solution derived 6.25 and then rambled about 'closest'. Equation repaired to base 2 with RHS 6, making the keyed A (16) exactly correct."
+  },
+
+  "05-9": {
+    "stem": "If \\(\\log_2(x) + \\log_2(4x) = 6\\), solve for \\(x\\).",
+    "solution": "\\(\\log_2(4x^2) = 6\\), so \\(4x^2 = 64\\), \\(x^2 = 16\\), and \\(x = 4\\) (the negative root is rejected — log arguments must be positive).",
+    "reason": "As printed (RHS 5) the solution is 2√2, matching no option (the source solution admitted 'closest possible answer is 4, if available'). RHS repaired 5 → 6, making the keyed B (4) exactly correct."
+  },
+
+  "05-10": {
+    "stem": "If \\(\\log_5(x^2 - 24) = 2\\), what is \\(x\\) (taking the positive root)?",
+    "solution": "\\(x^2 - 24 = 5^2 = 25\\), so \\(x^2 = 49\\) and \\(x = 7\\) (the argument is 25 > 0, valid; \\(x = -7\\) also satisfies the equation, so the positive root is asked for).",
+    "reason": "As printed (x² − 6) the solution is √31, matching no option. Argument repaired to x² − 24, making the keyed B (7) exactly correct; positive-root clause added since −7 equally satisfies."
+  },
+
+  "05-11": {
+    "stem": "Solve: \\(\\log_3(x - 1) + \\log_3(x + 1) = \\log_3(8)\\)",
+    "solution": "\\(\\log_3[(x-1)(x+1)] = \\log_3(8)\\), so \\(x^2 - 1 = 8\\) and \\(x^2 = 9\\). Domain requires \\(x - 1 > 0\\), so \\(x = 3\\).",
+    "reason": "As printed (RHS 2) the solution is √10, matching no option. RHS repaired to log₃(8), making the keyed A (3) exactly correct with the domain check rejecting −3."
+  },
+
+  "06-59": {
+    "solution": "In \\(\\log_b(a)\\), the subscript \\(b\\) is the base of the logarithm, while \\(a\\) is the number whose logarithm is being taken.",
+    "reason": "Key D verified correct; the original one-line solution ended in the literal text 'log_b(a).', whose trailing '(a)' trips the audit:keys concluded-letter probe as a false positive. Reworded."
+  },
+
+  "06-24": {
+    "options": { "A": "All of: negative numbers, 0, and 1" },
+    "reason": "The keyed 'All of the above' sat at position A with its referents BELOW it — the recurring shuffle artifact. Reworded to name the contents; key A retained (a log base must be positive and ≠ 1)."
+  },
+
+  "06-49": {
+    "stem": "If \\(\\log_8(x) = \\frac{1}{3}\\), what is \\(x\\)?",
+    "reason": "Stray-apostrophe typo in the stem (\"'1/3\"). Cleaned; key C retained (8^(1/3) = 2)."
+  },
+
+  "02-10": {
+    "options": { "B": "\\(4^{-1/2} = 16\\)" },
+    "reason": "Option B's exponent was garbled (\"-'1/2\"). Cleaned to a false distractor; key A retained (4^(−2) = 1/16)."
+  }
+}

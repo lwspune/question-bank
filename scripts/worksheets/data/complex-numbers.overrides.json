@@ -1,0 +1,328 @@
+{
+  "_comment": "Adjudicated repairs for Complex Numbers. Every entry re-derived by hand; the blind agent pass is corroborating evidence, never authority. Keys are '<fileIndex>-<xlsxRow>'.",
+
+  "01-4": {
+    "stem": "Which of the following is NOT written in the standard form \\(a + bi\\)?",
+    "solution": "\\(1 + 2i\\), \\(3\\) (\\(= 3 + 0i\\)) and \\(5i\\) (\\(= 0 + 5i\\)) are in (or trivially rewrite to) standard form. \\(\\sqrt{-5}\\) is a radical expression — it must first be simplified to \\(0 + \\sqrt{5}\\,i\\) to be in standard form. (Note: ALL four values ARE complex numbers.)",
+    "reason": "As printed ('Which is NOT a complex number?') every option IS a complex number — the worksheet itself teaches that reals are complex (rows 13/33). The source solution's own rationale is about standard form, so the stem now asks that; key B retained."
+  },
+
+  "01-22": {
+    "options": { "B": "It is of the form \\(bi\\) with \\(b \\neq 0\\) real" },
+    "reason": "Old option B ('a solution to x²+1=0') is not a property of a GENERAL imaginary number (2i solves neither) — a second defensible NOT-answer. Replaced with a true property so the keyed D ('always positive' — imaginary numbers are unordered) is uniquely false. Key D retained."
+  },
+
+  "01-39": {
+    "options": { "A": "Taking the additive inverse" },
+    "reason": "Old option A ('Division') also fails closure (i/i = 1), making two defensible answers. Replaced with additive inverse (closed). Under the worksheet's own convention that 0 is imaginary (its row-41 solution), addition/subtraction are closed, leaving multiplication (i·i = −1) uniquely non-closed. Key C retained."
+  },
+
+  "02-19": {
+    "options": { "A": "When \\(n \\equiv 1 \\pmod 4\\)" },
+    "reason": "Old option A ('when n is even') was logically EQUIVALENT to the keyed D ('n ≡ 0 or 2 mod 4'). Replaced with a false congruence (i^n = i there); key D retained, matching the stem's mod-4 framing."
+  },
+
+  "02-34": {
+    "options": { "A": "\\(i^n \\times i\\)", "B": "\\(i^n \\times i^2\\)", "D": "\\(i^n \\times i^3\\)" },
+    "solution": "\\(i^n \\times i^{-n} = i^0 = 1\\) — real for every \\(n\\). Each of the other products shifts the phase by a fixed power of \\(i\\), so it is real only for particular values of \\(n\\) (e.g. \\(i^n \\times i^2 = -i^n\\), real only when \\(n\\) is even).",
+    "reason": "As printed ALL FOUR options were always real (i^n·i^n = (−1)^n, (i^n)² = (−1)^n, (i^{−n})^{2n} = (−1)^{n²}). Distractors replaced with phase-shift products that are real only for some n, leaving the keyed C (identically 1) uniquely correct."
+  },
+
+  "02-36": {
+    "options": { "A": "\\(i\\)" },
+    "reason": "Old option A ('i^6 = −1') had the same VALUE as the keyed B ('i^2 = −1') — i^6 does equal −1. Replaced with the distinct value i; key B retained (i^4002 = i^2 = −1 since 4002 ≡ 2 mod 4)."
+  },
+
+  "02-20": {
+    "answer": "A",
+    "reason": "Key flip D→A: 201 ≡ 1 (mod 4) so i^201 = i — the source solution derives exactly this while the key said D (−i)."
+  },
+
+  "02-28": {
+    "answer": "D",
+    "reason": "Key flip B→D: −i + i + (−1) = −1 — the source solution derives exactly −1 (option D) while the key said B (i)."
+  },
+
+  "02-29": {
+    "answer": "A",
+    "solution": "The sum runs over \\(i^0, i^1, \\ldots, i^{3999}\\) — 4000 terms, i.e. exactly 1000 complete cycles of \\(1 + i - 1 - i = 0\\). So \\(S = 0\\).",
+    "reason": "Key flip B→A: exponents 0–3999 form 1000 complete zero-sum cycles, so S = 0. The source solution miscounted '999 complete cycles' and left a stray 1."
+  },
+
+  "02-30": {
+    "answer": "C",
+    "solution": "\\((1+i)^2 = 2i\\), so \\((1+i)^{12} = (2i)^6 = 64\\,i^6 = 64 \\cdot (-1) = -64\\). (Polar check: \\(64[\\cos 3\\pi + i \\sin 3\\pi] = -64\\).)",
+    "reason": "Key flip A→C: (1+i)^12 = −64 — the source solution derived −64 twice and then appended 'but (1+i)^12 = 64i when comp…' to justify the wrong key."
+  },
+
+  "03-5": {
+    "answer": "D",
+    "solution": "Subtract componentwise: \\((4 - 1) + (2 - (-3))i = 3 + 5i\\).",
+    "reason": "Key flip C→D: (4+2i) − (1−3i) = 3 + 5i — the source solution derived it and then wrote 'but options indicate 3 + i. Verify calculation.'"
+  },
+
+  "03-9": {
+    "answer": "A",
+    "reason": "Key flip B→A: (1+i)² = 1 + 2i − 1 = 2i — the source solution derives exactly 2i while the key said B (2)."
+  },
+
+  "03-10": {
+    "answer": "B",
+    "solution": "Real part: \\(1 - 3 = -2\\); imaginary part: \\(2i - (-i) = 3i\\). Result: \\(-2 + 3i\\).",
+    "reason": "Key flip A→B: the difference is −2 + 3i, which is option B — the source solution derived it and mislabelled it 'option A'."
+  },
+
+  "03-21": {
+    "answer": "A",
+    "reason": "Key flip C→A: (2+i)(1−2i) = 4 − 3i, real part 4 — the source solution derives exactly 4 while the key said C (5)."
+  },
+
+  "05-4": {
+    "answer": "C",
+    "solution": "\\(z = -2 - 2i\\) lies in the third quadrant. The principal argument (capital-A \\(\\mathrm{Arg}\\), range \\((-\\pi, \\pi]\\)) is \\(-\\pi + \\frac{\\pi}{4} = -\\frac{3\\pi}{4}\\). (In the \\([0, 2\\pi)\\) convention the same direction is \\(\\frac{5\\pi}{4}\\).)",
+    "reason": "Key flip D→C: the stem asks for capital-A Arg, and this worksheet itself asserts Arg(z) ∈ (−π, π] (its row 26 lists that as an always-true statement) — under which Arg(−2−2i) = −3π/4, option C. The keyed 5π/4 belongs to the other convention."
+  },
+
+  "06-4": {
+    "answer": "C",
+    "reason": "Key flip A→C: √(−49) + √(−9) = 7i + 3i = 10i — the source solution literally ends 'Correct answer: C' while the key field said A (8i)."
+  },
+
+  "06-8": {
+    "options": { "B": "\\(10 - 10i\\)" },
+    "reason": "Options B (10 + 10i) and the keyed C (10i + 10) were the same value in swapped order. B replaced with a sign-flipped distractor; key C retained (√(−100) + √100 = 10i + 10)."
+  },
+
+  "06-15": {
+    "answer": "D",
+    "solution": "For \\(x, y > 0\\): \\(\\sqrt{-x}\\cdot\\sqrt{-y} = i\\sqrt{x} \\cdot i\\sqrt{y} = -\\sqrt{xy}\\) ✓; \\(\\sqrt{-x} + \\sqrt{-y} = i(\\sqrt{x} + \\sqrt{y})\\) ✓; and \\(\\sqrt{-xy} = i\\sqrt{xy} = \\sqrt{-x}\\cdot\\sqrt{y}\\) ✓. All three identities hold, so 'All of the above'.",
+    "reason": "Key flip B→D: all three listed identities are true for x, y > 0 (each verified; the source solution's claim that the product 'is not equal to √(−xy)' compared the wrong pair — option C puts the minus inside with a single i factor, which is exactly i√(xy))."
+  },
+
+  "06-18": {
+    "answer": "D",
+    "options": { "C": "\\(a \\neq 0\\)" },
+    "solution": "\\(a^4 \\geq 0\\) and \\(a^2 \\geq 0\\) for every real \\(a\\), so \\(\\sqrt{-a^4} = i\\sqrt{a^4} = a^2 i\\) holds for ANY real \\(a\\) — including \\(a = 0\\) (both sides 0) and negative \\(a\\) (e.g. \\(a = -2\\): \\(\\sqrt{-16} = 4i = (-2)^2 i\\)).",
+    "reason": "Key flip A→D: the identity holds for every real a since a² is never negative — restricting to a > 0 (the keyed A) excludes values where it also holds. Option C also carried a control-character corruption ('a \\r\\neq 0') — cleaned."
+  },
+
+  "07-22": {
+    "answer": "B",
+    "solution": "\\(|z - 2 + 3i| = |z - (2 - 3i)| = 5\\) — a circle centred at \\((2, -3)\\) with radius 5.",
+    "reason": "Key flip C→B: the centre is 2 − 3i = (2, −3), not (2, 3) — the source solution rewrote z − 2 + 3i as z − (2 − 3i) correctly and then misread the sign of the centre's imaginary part."
+  },
+
+  "07-24": {
+    "answer": "B",
+    "solution": "Multiplying \\(z\\) by \\(w = r(\\cos\\varphi + i\\sin\\varphi)\\) multiplies the modulus by \\(|w| = r\\) and adds \\(\\varphi\\) to the argument — i.e. the effect ON \\(z\\) is a scaling by \\(r\\) and a rotation by \\(\\varphi\\). (The product's own polar form is then \\(r^2\\operatorname{cis}(\\theta + \\varphi)\\).)",
+    "reason": "Key flip A→B: the geometric EFFECT of multiplying z by w is scale-by-|w|, rotate-by-arg(w) (option B). The keyed A described the resulting point's polar data (r², θ+φ), not the transformation applied to z."
+  },
+
+  "07-26": {
+    "answer": "A",
+    "solution": "Equidistance from the origin and the LINE \\(x = 3\\) means \\(\\sqrt{x^2 + y^2} = |x - 3|\\), which squares to the parabola \\(y^2 = -6x + 9\\). \\(|z| = |z - 3|\\) is equidistance from the POINT \\((3, 0)\\) (the line \\(x = 1.5\\)), and \\(|z| = 3\\) is a circle — so none of the listed equations is the locus.",
+    "reason": "Key flip C→A: the keyed |z| = |z−3| measures distance to the point (3,0), not to the line x = 3 — the locus asked for is a parabola, which no option gives, making 'None of these' correct."
+  },
+
+  "08-20": {
+    "answer": "B",
+    "solution": "\\(1 = e^{i \\cdot 0} = e^{i2n\\pi}\\) for every integer \\(n\\) — the family \\(e^{i2n\\pi}\\) captures ALL polar representations. (\\(e^{i\\pi} = -1\\), not 1.)",
+    "reason": "Key flip C→B: the keyed C ('Both A and B') is false because A (e^{iπ}) equals −1, not 1. The full set of polar forms of 1 is e^{i2nπ}, option B."
+  },
+
+  "04-4": {
+    "options": { "D": "7" },
+    "reason": "Option D (√625) was numerically identical to the keyed B (25). Replaced with the |real part| distractor 7; key B retained (√(49+576) = 25)."
+  },
+
+  "04-18": {
+    "options": { "D": "\\(|z| > 0\\) for every \\(z\\)" },
+    "reason": "Old option D ('|z| > 0 for z ≠ 0') was ALSO a true statement — two correct options. Dropping its side condition makes it false (fails at z = 0); key B (|z| = |z̄|) retained."
+  },
+
+  "04-19": {
+    "options": { "A": "\\(\\frac{a}{b}i\\)", "B": "\\(\\frac{b}{a}\\)", "C": "\\(-\\,\\frac{b}{a}i\\)" },
+    "reason": "ALL FOUR options were numerically equivalent to i(b/a) (C and D verbatim identical). Keyed D keeps the canonical i(b/a); A/B/C replaced with the inverted-ratio, missing-i and sign-error distractors."
+  },
+
+  "04-21": {
+    "options": { "C": "\\(\\sqrt{221}\\)" },
+    "reason": "No printed option matched: |z·w| = |z||w| = √13·√17 = √221 — the source solution derives exactly this. Keyed option C repaired from √130 (a mis-computed √13·√10); key C retained."
+  },
+
+  "04-22": {
+    "options": {
+      "B": "\\(z \\cdot \\bar{z} = |z|^2 \\geq 0\\) and \\(|z| = |\\bar{z}|\\)",
+      "C": "\\(z - \\bar{z}\\) is always real",
+      "D": "\\(|z + \\bar{z}| = 2|z|\\) for every \\(z\\)"
+    },
+    "reason": "The keyed B read 'Both A and C' with A false (z+z̄ = 2a is real) — a shuffle-artifact combo — while C and D were BOTH true. B now states the two true properties directly; C and D replaced with false statements (z−z̄ is imaginary; |z+z̄| = 2|Re z| ≠ 2|z| in general). Key B retained."
+  },
+
+  "04-24": {
+    "stem": "If \\(z = 1 + i\\), for which positive integer \\(n\\) is \\(z^n\\) a real number?",
+    "solution": "\\(z = 1 + i = \\sqrt{2}\\,e^{i\\pi/4}\\), so \\(z^n\\) is real when \\(n \\cdot \\frac{\\pi}{4}\\) is a multiple of \\(\\pi\\), i.e. when \\(4 \\mid n\\). Indeed \\(z^2 = 2i\\) (imaginary), \\(z^3 = -2 + 2i\\), while \\(z^4 = -4\\) is real.",
+    "reason": "As printed (z = 3+4i) NO positive integer power is real — arctan(4/3) is not a rational multiple of π (verified: z², z³, z⁴ all non-real). Stem repaired to z = 1+i, for which the keyed B (n = 4) is exactly correct."
+  },
+
+  "04-29": {
+    "options": { "B": "Only \\(a > 0\\)" },
+    "reason": "Options B ('a is any real number') and D ('All real numbers') were equivalent duplicates, both correct. B replaced with a false restriction; key D retained (√(a²+4) is even in a)."
+  },
+
+  "04-31": {
+    "stem": "If \\(z = x + yi\\) with \\(|z| = 5\\), and \\(\\bar{z} = 4 - 3i\\), find the value(s) of \\(x\\) and \\(y\\).",
+    "solution": "\\(\\bar{z} = 4 - 3i\\) forces \\(z = 4 + 3i\\), so \\(x = 4, y = 3\\). Consistency check: \\(|z| = \\sqrt{16 + 9} = 5\\) ✓.",
+    "reason": "Stem was self-inconsistent: z̄ = 4−3i forces |z| = 5, contradicting the stated |z| = 10 (the source solution noticed the clash and shrugged). Modulus corrected to 5; key B (x=4, y=3) retained."
+  },
+
+  "05-21": {
+    "options": { "A": "0 only" },
+    "solution": "\\(\\mathrm{Arg}(z^2) = \\mathrm{Arg}(z)\\) requires \\(2\\theta \\equiv \\theta \\pmod{2\\pi}\\), so \\(\\theta = 2k\\pi\\) — whose only principal value is \\(0\\). (\\(\\theta = \\pi\\) fails: then \\(z^2\\) is a positive real with \\(\\mathrm{Arg} = 0 \\neq \\pi\\).)",
+    "reason": "The keyed A ('0 and π') is wrong about π — z a negative real gives Arg(z²) = 0 ≠ π (the source solution made exactly this slip). Option A repaired to '0 only'; key A retained."
+  },
+
+  "05-26": {
+    "stem": "Which of the following statements about arguments is NOT always true?",
+    "solution": "\\(\\mathrm{Arg}(z_1 z_2) = \\mathrm{Arg}(z_1) + \\mathrm{Arg}(z_2)\\) can fail because the sum may fall outside \\((-\\pi, \\pi]\\) — e.g. \\(z_1 = z_2 = -1\\): the sum is \\(2\\pi\\) while \\(\\mathrm{Arg}(z_1 z_2) = 0\\). The other statements hold by definition or convention.",
+    "reason": "Stem said 'always false', but the keyed A holds for many pairs (e.g. z₁ = z₂ = 1+i) — it is 'not always TRUE', not 'always false'. Stem reworded; key A retained; garbled source solution rewritten."
+  },
+
+  "05-27": {
+    "options": { "B": "\\(|z^n| = 1\\) for every \\(n \\in \\mathbb{Z}\\)", "C": "\\(z \\cdot \\bar{z} = 1\\)" },
+    "reason": "The keyed D ('All of the above') was false as printed: old B (Arg(z⁻¹) = −Arg(z)) fails at z = −1, and old C misstated multivaluedness. B and C replaced with properties genuinely true for |z| = 1, making D correct. Key D retained."
+  },
+
+  "07-5": {
+    "answer": "B",
+    "options": { "A": "a horizontal segment through \\((0, b)\\)" },
+    "solution": "\\(z = a + bi\\) and \\(\\bar{z} = a - bi\\) share the real part \\(a\\) and have opposite imaginary parts, so the segment joins \\((a, b)\\) to \\((a, -b)\\): it is vertical and crosses the real axis at \\((a, 0)\\).",
+    "reason": "Key flip D→B: the segment between z and z̄ is VERTICAL, not 'parallel to the x-axis' — the source solution said 'same real part, so horizontally aligned', contradicting itself. Old A ('parallel to the y-axis') was equivalent to B; replaced with a false horizontal variant."
+  },
+
+  "07-13": {
+    "options": { "C": "the line \\(y = x\\)" },
+    "reason": "Options B (y = 0) and C ('x-axis') were the same locus. C replaced with a distinct false locus; key B retained (equidistant from i and −i ⇒ y = 0)."
+  },
+
+  "07-16": {
+    "options": { "D": "Both a point \\((a, b)\\) and a vector \\(\\langle a, b \\rangle\\)" },
+    "reason": "The keyed D read 'Both A and B' with A false ('always on the unit circle') — the combo was written for a different option order (B and C hold the two true representations). D now names the contents; key D retained."
+  },
+
+  "07-23": {
+    "options": { "D": "the line \\(y = x\\)" },
+    "reason": "Options C (line x = 0) and D ('y-axis') were the same locus. D replaced with a distinct false locus; key C retained (perpendicular bisector of ±1 is x = 0)."
+  },
+
+  "08-5": {
+    "options": { "A": "\\(4e^{i\\pi/2}\\)" },
+    "reason": "Old option A (4e^{−iπ}) equals the same point −4 as the keyed B (arguments differ by 2π) — two numerically correct options. Replaced with 4e^{iπ/2} (= 4i, false); key B retained (direct Euler conversion of cos π + i sin π)."
+  },
+
+  "08-15": {
+    "stem": "Express \\((1 + i)^8\\) in exponential form.",
+    "options": { "B": "\\(32e^{i 2\\pi}\\)" },
+    "solution": "\\(1 + i = \\sqrt{2}\\,e^{i\\pi/4}\\), so \\((1+i)^8 = (\\sqrt{2})^8 e^{i \\cdot 8\\pi/4} = 16e^{i 2\\pi} = 16\\) (the argument reduces to 0 as a principal value).",
+    "reason": "Old options A (16e^{i2π}) and B (16e^{i4π}) were the same value 16, and the stem's 'find its argument (principal value)' clashed with every option (the principal argument of 16 is 0, not 2π). Stem trimmed to the conversion ask; B replaced with a wrong-modulus distractor; key A retained."
+  },
+
+  "08-17": {
+    "options": { "A": "\\(e^{i\\pi/3}\\)", "B": "\\(-1\\)" },
+    "reason": "Options A (e^{i2π}), B (e^{i4π}) and the keyed C (1) were ALL the value 1 — three equivalent options. A and B replaced with distinct false values; key C retained (e^{i·12·π/3} = e^{i4π} = 1)."
+  },
+
+  "08-21": {
+    "options": { "C": "\\(64e^{i \\pi/2}\\)" },
+    "reason": "Option C (64e^{i6π/4}) was identical in value to the keyed A (64e^{i3π/2}). Replaced with a wrong-argument distractor; key A retained (2⁶ = 64, 6·π/4 = 3π/2)."
+  },
+
+  "09-5": {
+    "options": { "D": "\\(8e^{i\\pi/4}\\)" },
+    "reason": "Options A and D were byte-identical (8e^{i3π/4}, the correct value). D replaced with the unchanged-argument distractor; key A retained (r³ = 8, 3θ = 3π/4)."
+  },
+
+  "09-11": {
+    "options": { "B": "\\(\\frac{1}{r}e^{-i\\theta}\\)" },
+    "reason": "Options A (re^{−iθ}) and B (re^{i(−θ)}) were notationally different but identical. B replaced with 1/z (the reciprocal, a genuine distractor); key A retained (conjugation negates the argument, keeps the modulus)."
+  },
+
+  "09-19": {
+    "stem": "Which formula expresses \\(\\cos 3\\theta\\) in terms of \\(\\cos\\theta\\) only, using De Moivre's theorem?",
+    "reason": "Option A (cos³θ − 3cosθ sin²θ) is ALSO mathematically equal to cos 3θ (the raw De Moivre expansion); the stem's 'in terms of cos θ' was the only disambiguator. Added 'only' to make the keyed B (4cos³θ − 3cosθ) unambiguous."
+  },
+
+  "06-21": {
+    "options": { "D": "\\(4i\\)" },
+    "solution": "\\(\\sqrt{-4} + \\sqrt{-25} - \\sqrt{-9} = 2i + 5i - 3i = 4i\\).",
+    "reason": "No printed option matched the correct 4i (offered: 12i, 13i, 0, −2i). Keyed option D repaired; the source solution derived 4i and then waffled ('option indicates D is a distractor')."
+  },
+
+  "10-8": {
+    "options": { "B": "\\(-1\\)" },
+    "solution": "\\((1+\\omega)^2 = (-\\omega^2)^2 = \\omega^4 = \\omega\\) and \\((1+\\omega^2)^2 = (-\\omega)^2 = \\omega^2\\). Sum \\(= \\omega + \\omega^2 = -1\\).",
+    "reason": "No printed option matched the correct −1 (offered: 0, 2, −2, 4). The source solution derived ω + ω² = −1 and then trailed off with 'revisit calculation'. Keyed option B repaired."
+  },
+
+  "10-9": {
+    "options": { "A": "\\(-1\\)" },
+    "solution": "\\(1 + \\omega = -\\omega^2\\), so \\((1+\\omega)^3 = (-\\omega^2)^3 = -\\omega^6 = -1\\).",
+    "reason": "No printed option matched the correct −1 (offered: −2, 0, 1, 8). The source solution derived −1 and then second-guessed itself ('but expansion gives −2'). Keyed option A repaired."
+  },
+
+  "10-14": {
+    "options": { "A": "\\(-\\omega^2\\)" },
+    "solution": "The terms are \\(\\omega^{4k}\\) for \\(k = 0, \\ldots, 10\\), and \\(\\omega^{4k} = \\omega^{k \\bmod 3}\\), so the residues cycle 0,1,2 — three full zero-sum cycles plus the leftover \\(\\omega^0 + \\omega^1 = 1 + \\omega = -\\omega^2\\).",
+    "reason": "No printed option matched: the 11-term sum is 1 + ω = −ω² (offered: 14, 0, 13, 1 — the source solution even counted 14 terms of an 11-term series and 'summed' them as 14). Keyed option A repaired."
+  },
+
+  "10-15": {
+    "options": { "A": "3" },
+    "solution": "\\(\\omega^5 = \\omega^2\\), \\(\\omega^7 = \\omega\\), \\(\\omega^{11} = \\omega^2\\). Then \\((1+\\omega^2)^6 = (-\\omega)^6 = 1\\) and \\((1+\\omega)^6 = (-\\omega^2)^6 = 1\\), so the sum is \\(1 + 1 + 1 = 3\\).",
+    "reason": "No printed option matched the correct 3 (offered: 27, 0, 1, 9). The source solution claimed (1+ω)⁶ = 27, but |1+ω| = 1 so its sixth power is 1, not 27. Keyed option A repaired."
+  },
+
+  "10-17": {
+    "stem": "For cube roots of unity \\(1, \\omega, \\omega^2\\), calculate \\((1 + \\omega)^N + (1 + \\omega^2)^N + 1^N\\) for \\(N\\) divisible by 6.",
+    "solution": "For \\(6 \\mid N\\): \\((1+\\omega)^N = (-\\omega^2)^N = (-1)^N \\omega^{2N} = 1\\) and likewise \\((1+\\omega^2)^N = 1\\), so the sum is \\(1 + 1 + 1 = 3\\).",
+    "reason": "Ill-posed as printed: for N divisible by 3 the value is 3 when N is an even multiple but −1 when odd (N = 3 gives −1). Stem tightened to 'divisible by 6', making the keyed B (3) exactly correct."
+  },
+
+  "10-19": {
+    "options": { "A": "\\(-8\\)" },
+    "solution": "\\(1 - \\omega + \\omega^2 = (1 + \\omega + \\omega^2) - 2\\omega = -2\\omega\\), so the cube is \\((-2\\omega)^3 = -8\\omega^3 = -8\\).",
+    "reason": "No printed option matched the correct −8 (offered: −1, 1, 0, 2). Keyed option A repaired; the source solution set up the right identities and never finished."
+  },
+
+  "03-3": {
+    "options": { "C": "\\(10 + 5i\\)", "D": "\\(6 - 5i\\)" },
+    "reason": "Options A and C were identical (10 − 5i) and D was the unsimplified expansion of the same value. C and D replaced with distinct false distractors; key A retained ((2+i)(3−4i) = 6 − 5i + 4 = 10 − 5i)."
+  },
+
+  "03-8": {
+    "options": { "B": "\\(-2 + 5i\\)" },
+    "reason": "Options A and B were identical duplicates (2 − 5i, the correct answer). B replaced with the number itself (the forgot-to-negate distractor); key A retained."
+  },
+
+  "03-12": {
+    "options": { "C": "\\(\\frac{63}{25} + \\frac{16}{25}i\\)" },
+    "solution": "Multiply by the conjugate: \\(\\frac{(5 + 12i)(3 - 4i)}{3^2 + 4^2} = \\frac{15 - 20i + 36i - 48i^2}{25} = \\frac{63 + 16i}{25} = \\frac{63}{25} + \\frac{16}{25}i\\).",
+    "reason": "No printed option matched the correct (63+16i)/25 (back-check: no option times (3+4i) reproduces 5+12i). Keyed option C repaired to the correct value; the source solution derived 63+16i correctly and then collapsed it to '2 + 0i'."
+  },
+
+  "03-13": {
+    "options": { "B": "\\(\\frac{a - bi}{a^2 + b^2}\\)" },
+    "reason": "The keyed B lacked parentheses ('a − bi / (a² + b²)' reads as a − [bi/(a²+b²)]). Rewritten as a proper fraction; key B retained (1/z = z̄/|z|²)."
+  },
+
+  "03-15": {
+    "options": { "A": "\\(8 + i\\)" },
+    "solution": "\\((1 + 2i)(2 - 3i) = 2 - 3i + 4i - 6i^2 = 2 + i + 6 = 8 + i\\).",
+    "reason": "No printed option matched the correct 8 + i (old D was the sign-error 8 − i). Keyed option A repaired; the source solution derived 8+i and then trailed off with 'but compute carefully for answer' — waffle removed."
+  },
+
+  "03-24": {
+    "options": { "A": "Product of two imaginary numbers is always imaginary." },
+    "reason": "Old option A ('Sum of two imaginary numbers is always imaginary') is TRUE under the worksheet's own convention that 0 counts as imaginary — a second correct option. Replaced with a clearly false statement ((bi)(ci) = −bc is real); key B retained."
+  }
+}
