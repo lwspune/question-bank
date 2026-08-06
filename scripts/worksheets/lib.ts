@@ -83,6 +83,83 @@ export type WorksheetOverride = {
   reason: string;
 };
 
+/**
+ * Correct-answer rebalancing (the source generates keys skewed toward A/B —
+ * A 32% / B 30% / C 19% / D 19% on the first 691 shipped questions). A shuffle
+ * entry `"<id>": "D"` means: swap the correct option's TEXT with option D's
+ * text and move the key to D — a single transposition, applied AFTER overrides.
+ * Plans live in data/<chapterId>.shuffles.json (committed) so re-ingestion is
+ * deterministic and idempotent.
+ */
+export type ShufflePlan = Record<string, string>;
+
+// Rows whose option ORDER carries meaning must never be shuffled: combo/positional
+// options ("Both …", "All of the above", "None of these") or a solution that
+// references an option letter.
+const POSITIONAL_OPTION = /\b(both|neither|all of the above|none of (the above|these))\b/i;
+const SOLUTION_LETTER_REF = /\boption\s+\(?[A-D]\)?\b/i;
+
+export function isShuffleEligible(optionTexts: string[], solution: string): boolean {
+  if (optionTexts.some((t) => POSITIONAL_OPTION.test(t))) return false;
+  if (solution && SOLUTION_LETTER_REF.test(solution)) return false;
+  return true;
+}
+
+export type ShuffleRow = { id: string; answer: string; eligible: boolean };
+
+export function letterDistribution(rows: ShuffleRow[]): Record<string, number> {
+  const d: Record<string, number> = { A: 0, B: 0, C: 0, D: 0 };
+  for (const r of rows) d[r.answer] = (d[r.answer] ?? 0) + 1;
+  return d;
+}
+
+/**
+ * Deterministic minimal-move rebalance: targets are n/4 rounded, with the
+ * remainder given to the currently-largest letters (fewest moves). Surplus
+ * letters donate their ELIGIBLE rows (in id order) to deficit letters.
+ * Ineligible rows never move; if eligibility runs out, the plan stops short
+ * (best-effort) rather than forcing a move.
+ */
+export function planShuffles(rows: ShuffleRow[]): ShufflePlan {
+  const counts = letterDistribution(rows);
+  const n = rows.length;
+  const base = Math.floor(n / 4);
+  let remainder = n - base * 4;
+  const targets: Record<string, number> = { A: base, B: base, C: base, D: base };
+  // hand the +1s to the letters with the highest current counts
+  for (const l of LABELS.slice()
+    .sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+    .slice(0, remainder)) {
+    targets[l] += 1;
+  }
+
+  const surplus: Record<string, number> = {};
+  const deficit: Record<string, number> = {};
+  for (const l of LABELS) {
+    const diff = counts[l] - targets[l];
+    if (diff > 0) surplus[l] = diff;
+    else if (diff < 0) deficit[l] = -diff;
+  }
+
+  const plan: ShufflePlan = {};
+  const donors = LABELS.filter((l) => surplus[l]).sort((a, b) => surplus[b] - surplus[a]);
+  const receivers = LABELS.filter((l) => deficit[l]);
+  for (const from of donors) {
+    const candidates = rows
+      .filter((r) => r.answer === from && r.eligible)
+      .sort((a, b) => a.id.localeCompare(b.id));
+    for (const row of candidates) {
+      if (surplus[from] <= 0) break;
+      const to = receivers.find((l) => deficit[l] > 0);
+      if (!to) break;
+      plan[row.id] = to;
+      surplus[from]--;
+      deficit[to]--;
+    }
+  }
+  return plan;
+}
+
 export type Flag = { id: string; reason: string };
 export type BuildContext = {
   chapterName: string;
@@ -112,11 +189,18 @@ export function questionId(fileIndex: number, row: number): string {
 export function buildWorksheetRows(
   ctx: BuildContext,
   questions: WorksheetQuestion[],
-  overrides: Record<string, WorksheetOverride>
+  overrides: Record<string, WorksheetOverride>,
+  shuffles: ShufflePlan = {}
 ): BuildResult {
   const rows: ParsedRowPayload[] = [];
   const flags: Flag[] = [];
   const excluded: string[] = [];
+  const ids = new Set(questions.map((q) => questionId(ctx.fileIndex, q.row)));
+  for (const key of Object.keys(shuffles)) {
+    if (key.startsWith(`${String(ctx.fileIndex).padStart(2, "0")}-`) && !ids.has(key)) {
+      throw new Error(`shuffle entry "${key}" matches no question`);
+    }
+  }
 
   for (const q of questions) {
     const id = questionId(ctx.fileIndex, q.row);
@@ -139,9 +223,22 @@ export function buildWorksheetRows(
       flags.push({ id, reason: "duplicate options — repair a distractor or verify intent" });
     }
 
-    const answer = (ov?.answer ?? q.answer).trim().toUpperCase();
+    let answer = (ov?.answer ?? q.answer).trim().toUpperCase();
     if (!LABELS.includes(answer as OptionLabel)) {
       throw new Error(`${id}: answer letter "${answer}" invalid — supply an override`);
+    }
+
+    // Rebalance shuffle (after overrides): transpose the correct option's text
+    // with the target letter's text and move the key there.
+    const target = shuffles[id]?.trim().toUpperCase();
+    if (target && target !== answer) {
+      if (!LABELS.includes(target as OptionLabel)) {
+        throw new Error(`${id}: shuffle target "${target}" invalid`);
+      }
+      const fromIdx = LABELS.indexOf(answer as OptionLabel);
+      const toIdx = LABELS.indexOf(target as OptionLabel);
+      [optionTexts[fromIdx], optionTexts[toIdx]] = [optionTexts[toIdx], optionTexts[fromIdx]];
+      answer = target;
     }
 
     const solutionRaw = (ov?.solution ?? q.solution).trim();
