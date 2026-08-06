@@ -6,6 +6,15 @@
  *
  *   npx tsx scripts/jee/cleanup-latex.ts          # dry-run (shows diffs)
  *   npx tsx scripts/jee/cleanup-latex.ts --apply
+ *
+ * TAKES NO paperId, DELIBERATELY — and now REFUSES one rather than ignoring it.
+ * This is a once-per-batch whole-exam step (README step 5). It is deliberately
+ * NOT given a paper scope, unlike its neighbour `validate-db`, for two reasons:
+ * it is **non-idempotent** (eats one trailing `\ ` spacer per run, so looping it
+ * corrodes content), and it **writes** — a per-paper habit would repeatedly
+ * rewrite rows outside the pass, the same unscoped-write class as the
+ * `scan-flip` incident. Passing a paperId used to be silently swallowed, which
+ * made a wrongly-scoped run look like a successful one.
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
@@ -13,6 +22,7 @@ import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import { repairLatex } from "./lib";
+import { rejectUnknownArgs } from "./config";
 
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
 
@@ -39,6 +49,13 @@ function mathOk(text: string): boolean {
 const fix = (s: string): string => repairLatex(s);
 
 async function main() {
+  // No paperId, no unknown flags — fail on run 1 instead of sweeping the exam
+  // while looking like a scoped run. See rejectUnknownArgs in ./config.
+  rejectUnknownArgs(process.argv, {
+    allowPositional: false,
+    allowedFlags: ["--apply"],
+    usage: "cleanup-latex.ts [--apply]  (whole-exam, once per batch — takes no paperId)",
+  });
   const apply = process.argv.includes("--apply");
   loadEnv();
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {

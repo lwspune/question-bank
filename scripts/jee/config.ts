@@ -90,3 +90,44 @@ export function requirePaperId(argv: string[], idx: number, usage: string): stri
   if (!id || id.startsWith("--")) throw new Error(`missing <paperId>. Usage: ${usage}`);
   return id;
 }
+
+/**
+ * Fail on any argument a script does not understand, instead of ignoring it.
+ *
+ * WHY THIS EXISTS. The batch-level scripts (`validate-db`, `cleanup-latex`) read
+ * no argv at all, so they silently SWALLOWED whatever they were given. During
+ * the 2026-08-06 Chemistry ingest, `validate-db.ts <paperId> --subject=Chemistry`
+ * was run ~20 times; each one ignored both arguments, swept the whole exam
+ * (10,634 rows, ~10 MB of JSON) and printed a confident success — so a
+ * wrong-scoped invocation was indistinguishable from a right one and the misuse
+ * survived twenty runs, costing ~200 MB of egress. Refusing an argument you do
+ * not understand turns that into a run-1 error. Same footgun class as the
+ * `scan-flip` gotcha: a confident, wrongly-scoped success is worse than a crash.
+ *
+ * Flag matching is EXACT (`--subject` or `--subject=x`), never prefix — a
+ * `--subjects=` typo must not pass as `--subject`, because `parseSubjectArg`
+ * looks for the literal `--subject=` and would silently read nothing.
+ *
+ * @param argv        full `process.argv` ([node, script, ...args])
+ * @param allowPositional whether ONE bare positional (a paperId) is permitted
+ * @param allowedFlags exact flag names, e.g. ["--subject", "--apply"]
+ */
+export function rejectUnknownArgs(
+  argv: string[],
+  { allowPositional, allowedFlags, usage }: { allowPositional: boolean; allowedFlags: string[]; usage: string },
+): void {
+  let positionalSeen = 0;
+  for (const arg of argv.slice(2)) {
+    if (arg.startsWith("--")) {
+      const name = arg.split("=", 1)[0];
+      if (!allowedFlags.includes(name)) {
+        throw new Error(`unknown option \`${arg}\`. Usage: ${usage}`);
+      }
+      continue;
+    }
+    positionalSeen += 1;
+    if (!allowPositional || positionalSeen > 1) {
+      throw new Error(`unexpected argument \`${arg}\`. Usage: ${usage}`);
+    }
+  }
+}

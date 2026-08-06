@@ -37,7 +37,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-08-06
 
-### Scope `validate-db` (and `cleanup-latex`) by paper — they take NO arguments and sweep the whole exam
+### ~~Scope `validate-db` (and `cleanup-latex`) by paper — they take NO arguments and sweep the whole exam~~ — **DONE 2026-08-06, but NOT as specced**
+
+The measurements were right (verified independently: 10,634 rows, **10 MB** of JSON on the wire per run, ~0.19 MB scoped to a paper, so ~200 MB across ~20 runs). **The diagnosis was wrong.** The README documents `validate-db` at step 5 as *"Once at the END of a batch (NOT per paper)"* and invokes it with **no arguments** — so the whole-exam scan is BY DESIGN. The real defect was that the script **silently swallowed** arguments it never claimed to take, so a per-paper misuse reported a confident success and survived twenty runs. Had run 1 errored, the cost would have been 10 MB, not 200.
+
+The suggestion also wrongly bundled the two scripts. `cleanup-latex` must **not** get a paper scope: it is non-idempotent (eats a trailing `\ ` per run) and it **writes**, so a per-paper habit would corrode content and rewrite rows outside the pass — the `scan-flip` unscoped-write class, warned about two gotchas below it in the same README.
+
+**Shipped instead:** a shared `rejectUnknownArgs` in `scripts/jee/config.ts` (12 TDD cases, `tests/jee-cli-args.test.ts`) that refuses an unknown flag or unexpected positional. `validate-db` gains an **optional** `[paperId] [--subject=X]` — both genuinely narrowing the query (`--subject` resolves to `subject_id` and fails on a typo, rather than decorating the log line) — prints its scope on the first AND summary lines, and exits 1 when the scope matches nothing. `cleanup-latex` gets **rejection only**. Verified live: rejections fire on all three bad forms; scoped runs read 179 rows (paper) and 59 (paper+subject) against 10,634 unscoped, a 180× reduction; and the documented bare invocation still reports exactly 10,634.
+
+**Noticed while verifying, NOT fixed:** the whole-exam sweep now reports **KaTeX-broken: 1**, 13 dangling artifacts, 32 render-corruption and 57 soft "incomplete" flags. CLAUDE.md records KaTeX-broken at 0 of 7,436 as of 2026-08-01, so the 1 is new — most likely from the Chemistry ingest. Worth a look, separately from this item.
 
 `scripts/jee/validate-db.ts` contains **zero references to `argv`**: it silently ignores any arguments passed
 to it. Through the Chemistry ingest it was invoked ~20 times as `validate-db.ts <paperId> --subject=Chemistry`
