@@ -121,6 +121,29 @@ are normal; do not manufacture a flip.
 
 ## Gotchas
 
+- **DO NOT re-run `commit.ts --apply` on a paper that is already ingested.** It
+  is NOT the no-op it looks like, for two independent reasons:
+  1. **Duplicates.** Dedup keys on `content_hash`, computed from the text *after*
+     the cleaners run — and cleaners were added during the 2026-08 Chemistry
+     ingest (`gridTableToPipe`, `unwrapPhantom`, `stripEmptyMath`). A row whose
+     text those now change hashes differently from the stored copy, so it
+     INSERTS a second one instead of skipping. ~248 rows across 66 papers differ
+     on `stripEmptyMath` alone; a paper committed early in the ingest differs on
+     more, because each helper landed mid-run.
+  2. **It un-publishes the paper.** `commit` unconditionally sets the source
+     file's rows to PRIVATE (by design — fresh rows wait for verification), so a
+     re-commit takes a live paper offline until `scan-flip --flip` is re-run.
+
+  Measured on 2023-apr08 (2026-08-06): a single re-commit inserted 23 duplicates
+  AND dropped all 57 live rows to PRIVATE. **Recovery:** the rows split cleanly
+  by `created_at` — delete the newer date's rows, set the originals back to
+  PUBLIC. Note `inserted=N` with N>0 on an already-ingested paper is the tell;
+  it should always be 0.
+
+  To add ONE missing question to a shipped paper, do not reach for `commit` —
+  that is the case that bites. Use `resync.ts` for an existing row, and treat
+  inserting a genuinely-new row into a shipped paper as unsupported until
+  `commit` learns a per-question scope and stops forcing PRIVATE.
 - **`cleanup-latex.ts` takes NO paperId — it sweeps EVERY JEE row.** Run it once
   per batch, never per paper. It is non-idempotent on trailing LaTeX spacers
   (eats one `\ ` per run); harmless, but do not loop it. Since 2026-08-06 it
