@@ -10,19 +10,19 @@ name: CI
 # so a data-only push is still built somewhere before it is served.
 #
 # REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions → New
-# repository secret). Until all three exist, the `build` step and the
-# DB-integration test/lint steps will fail (build SSGs /notes + /guide from
-# Supabase; the rename guards resolve names against live taxonomy):
+# repository secret).
+#
+# PRODUCTION project (build prerender + notes:lint + the prod-contract suite):
 #   NEXT_PUBLIC_SUPABASE_URL
 #   NEXT_PUBLIC_SUPABASE_ANON_KEY
 #   SUPABASE_SERVICE_ROLE_KEY   (service role → catches PRIVATE rows too)
 #
-# CAVEAT — single Supabase project. There is one project (wunvtnqlzjrkvolslbnm);
-# `npm test` writes test-prefixed rows (PYQB_/QD_/UD_/EditTest…) to it and
-# global-teardown sweeps them after the run — same as running `npm test`
-# locally. Concurrency below cancels superseded runs to limit overlap, but two
-# runs on different refs can still race. If that becomes noisy, point these
-# secrets at a dedicated staging Supabase project.
+# DEDICATED TEST project (fixture-writing `npm test` — 2026-08-06, after the
+# fixture-leak incident; tests/setup.ts hard-refuses to write fixtures against
+# prod, so `npm test` FAILS without these):
+#   TEST_SUPABASE_URL
+#   TEST_SUPABASE_ANON_KEY
+#   TEST_SUPABASE_SERVICE_ROLE_KEY
 
 on:
   push:
@@ -62,8 +62,18 @@ jobs:
         run: npm run notes:lint
       - name: Notes LaTeX/Markdown audit (static)
         run: npm run notes:latex
-      - name: Tests (incl. live-taxonomy rename guards — skip if secrets absent)
+      # Fixture-writing tests run against the DEDICATED TEST project only —
+      # the TEST_* env vars override the prod names inside tests/setup.ts.
+      - name: Tests (fixture-writing — dedicated test project)
+        env:
+          TEST_SUPABASE_URL: ${{ secrets.TEST_SUPABASE_URL }}
+          TEST_SUPABASE_ANON_KEY: ${{ secrets.TEST_SUPABASE_ANON_KEY }}
+          TEST_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.TEST_SUPABASE_SERVICE_ROLE_KEY }}
         run: npm test
+      # Read-only assertions against LIVE prod content (guide/notes editorial ↔
+      # live taxonomy). Uses the PROD secrets from the job env.
+      - name: Prod-contract tests (read-only against production)
+        run: npm run test:prod-contract
       # `next build` prerenders 689 pages, ~317 of which query Postgres (~25 MB
       # of egress). 78 of the last 145 pushes to main changed nothing the
       # compiler reads, so that build could not have failed. Same rule as the

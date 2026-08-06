@@ -1,5 +1,6 @@
 import { defineConfig } from "vitest/config";
 import path from "node:path";
+import { PROD_CONTRACT_FILES } from "./tests/prodContractFiles";
 
 export default defineConfig({
   resolve: {
@@ -9,6 +10,9 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"],
     globalSetup: ["./tests/global-teardown.ts"],
     include: ["tests/**/*.test.ts"],
+    // Prod-contract suites assert against LIVE prod content and run separately
+    // via `npm run test:prod-contract` (see tests/prodContractFiles.ts).
+    exclude: ["**/node_modules/**", ...PROD_CONTRACT_FILES],
     testTimeout: 30000,
     // Hooks get 3x the per-test budget. A DB-integration suite's beforeAll /
     // afterAll is create-user → insert org → insert member → cascade-DELETE the

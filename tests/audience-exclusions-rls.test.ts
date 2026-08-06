@@ -59,6 +59,9 @@ describe.skipIf(!HAS_ENV)("question_audience_exclusions RLS", () => {
       .from("questions")
       .select("id")
       .eq("visibility", "PUBLIC")
+      // Oldest row = a stable seed question, never a parallel run's transient
+      // fixture (which its afterAll could delete mid-test → FK 23503).
+      .order("created_at", { ascending: true })
       .limit(1)
       .single();
     questionId = (q as { id: string }).id;
