@@ -35,6 +35,67 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-06
+
+### Scope `validate-db` (and `cleanup-latex`) by paper — they take NO arguments and sweep the whole exam
+
+`scripts/jee/validate-db.ts` contains **zero references to `argv`**: it silently ignores any arguments passed
+to it. Through the Chemistry ingest it was invoked ~20 times as `validate-db.ts <paperId> --subject=Chemistry`
+and every single run scanned the entire JEE exam. Measured: **10,634 rows × 960 B = ~10.2 MB per run**, versus
+**0.159 MB** scoped to one paper — a **64×** difference, ~0.20 GB across the session. `cleanup-latex.ts` has the
+same no-arg whole-bank behaviour (already noted in the README gotchas). The summary line prints
+`10634 questions checked` with no indication of scope, which is what let the misuse go unnoticed for twenty runs.
+
+Analysed and specced this session; implementation deliberately **not** done — the user chose to defer it.
+
+**Why:** the per-paper step of the documented loop pays a whole-bank cost it does not need, and the run happened
+to coincide with the Supabase project hitting `exceed_egress_quota` and being restricted. This was not the main
+cause (CLAUDE.md records 11.48 GB against a 5 GB allowance measured 2026-08-05, *before* the session) but it is
+avoidable waste that grows with every new exam. Silently swallowing an argument is also the same footgun class as
+`scan-flip` taking a filename rather than a paper id — both report a confident, wrong-scoped success.
+
+**How to apply:** make the arguments work — optional `<paperId>` positional plus `--subject=`, scoping the query
+by `source_file` (resolved from the paper JSON) and subject. **Keep unfiltered as the default**, because the
+bank-wide sweep has twice earned its keep (it caught the pre-existing `2025-apr07` Q106 and a `2021-p16` Q29 break
+that `scan-flip` passed). Print the scope on the summary line and warn when unfiltered, mirroring `audit:omml`,
+which CLAUDE.md already documents as "PASS THE FILTER after an ingest". Then update the README per-paper loop and
+`AGENT_BRIEF.md` step 4 to pass the paper id, leaving the batch-end sweep full.
+
+### Recover the 5 straggler questions whose option blocks never parsed
+
+`npx tsx scripts/jee/coverage.ts --subject=Chemistry` reports every short paper's gap as explained by its own
+`skip[]` except five, which are logged in `scripts/jee/CHEMISTRY_RESHAPE_NOTES.md`: 2023-apr08 Q38,
+2025-apr03 Q32 + Q37, 2025-jan22 Q44, 2026-apr04-s2 Q38. All are the same defect — the option block extracted
+empty (structures/graphs drawn as pictures), so `commit.ts` had nothing to insert and the row was silently absent
+rather than skipped.
+
+**Why:** they are the only unexplained gaps in an otherwise fully-reconciled subject, so leaving them keeps a
+permanent asterisk on the completion claim. Now cheap: `apply-option-fixes.ts` exists and the workflow for
+recovering an image-only option block is established.
+
+**How to apply:** for each, render its page, read the four options, write them as a structured
+`optionFix` block into the paper's `_sol_chem.json` (all four labels or none), then
+`apply-option-fixes.ts --apply` → `commit` → `attach-images` → `validate-db` → `scan-flip`. Re-run `coverage.ts`
+afterwards; the SHORT list should then be fully explained by `skip[]` alone.
+
+### Teach `audit:keys`'s `concludedLetter` about match-list and statement-set solutions
+
+`audit-keys Chemistry` reports 50 `SOLN≠KEY` flags; a ~26-row sample was **entirely false positives** in three
+recognisable families: solutions that end by dismissing the distractors, match-list solutions that end with the
+mapping (`(A)-(III), (B)-(II)…`), and statement-set solutions ending "Hence (A), (C) and (D) only" — where those
+letters are **statement labels in the stem, not option letters**. `Answer: A.` is also missed, because the regex
+expects a space or "is" after the cue word, not a colon.
+
+**Why:** 50 benign flags in one subject is enough to hide a real key error, which is the failure the probe exists
+to catch — the same argument that justified the (now shipped) `IMAGE_OPTIONS` exemption. Not all 50 were checked
+individually, so a real one could already be sitting in there.
+
+**How to apply:** in `concludedLetter` (`scripts/practice/audit-keys.ts`, shared with the JEE variant), prefer an
+explicit terminal `Answer: X` / `answer is X` when present; otherwise ignore a trailing match-list mapping
+(`\([A-D]\)\s*-\s*\(?[IVX]`) and a trailing "Hence …only" statement set. Guard the change by re-running the
+practice probe and confirming its 7 genuine `SOLN≠KEY` still fire — that check caught a prior over-tightening.
+
+---
 ## 2026-08-05
 
 ### Fix or retire `export-chapter-map-docx.ts` — it queries with NO subject filter
@@ -161,7 +222,9 @@ Three consecutive full-gate runs failed on 2026-08-03, each on a **different** D
 
 **How to apply:** pick one of — (a) cap static-generation concurrency in `next.config.js` (`experimental.cpus` / `workerThreads:false`) so the prerender stops stampeding the DB, measuring the build-time cost; (b) raise `statement_timeout` for the build's role only; or (c) reduce the per-page cost by serving the landing pages from a cached aggregate rather than a live `questions` query. Option (a) is the smallest change; (c) is the durable one. Keep the retry regardless — it is correct defence-in-depth.
 
-### Give `audit:keys` a picture-option exemption so `DUP_OPT` stays a real signal
+### ~~Give `audit:keys` a picture-option exemption so `DUP_OPT` stays a real signal~~ — **DONE (verified 2026-08-06)**
+
+Found already implemented in `scripts/practice/audit-keys.ts` (the option-shape branch returns `IMAGE_OPTIONS` rather than `DUP_OPT` when every option is a picture). Confirmed on the now-complete Chemistry corpus, which is exactly the case this entry predicted would get worse: `audit-keys Chemistry` reports **325 IMAGE_OPTIONS separately from 5 DUP_OPT** across 2,539 MCQs, so the duplicate-option signal survives the picture-heavy organic questions. Struck on verification, not on new work. (Original spec kept below.)
 
 `npx tsx scripts/jee/audit-keys.ts Physics` now reports **49 `DUP_OPT`** flags, every one a false positive: they are picture-option rows whose four option *texts* are empty by construction (the options are attached images), so the probe sees four identical blank strings and calls them duplicates. Verified all four option images are attached on every flagged row, i.e. the questions render correctly.
 
