@@ -53,6 +53,38 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "08. Trigono - T-Equations.xlsx", subtopicName: "Trigonometric Equations" },
     ],
   },
+  "angle-measurement": {
+    id: "angle-measurement",
+  chapterName: "Angle and Measurement",
+  dir: join(SOURCE_ROOT, "01. Angle and Measurement", "Concept Practice"),
+  sourceFile: "Cadetprep_Worksheets_Angle_and_Measurement",
+  note: "Cadetprep concept-practice worksheet — Angle and Measurement",
+  files: [
+    // 01 + 03 are legacy BIFF .xls, 04 is xlsx mislabeled .xls — SheetJS sniffs content.
+    { file: "01. Basic Concepts.xls", subtopicName: "Basic Concepts of Angles" },
+    { file: "02. Systems of Angle Measurement.xlsx", subtopicName: "Systems of Angle Measurement" },
+    { file: "03. Relation Between Angle Arc and Sector.xls", subtopicName: "Angle, Arc and Sector" },
+    // 9 rows carry Excel date-coercion damage ("3:16 4/11" → 2025-04-11 03:16:00);
+    // every option is reconstructed via overrides (clock times are exactly computable).
+    { file: "04. Clock Angle Problems.xls", subtopicName: "Clock Angle Problems" },
+  ],
+  },
+  "sets-relations": {
+    id: "sets-relations",
+  chapterName: "Sets and Relations",
+  dir: join(SOURCE_ROOT, "02. Sets", "Concept Practice"),
+  sourceFile: "Cadetprep_Worksheets_Sets_and_Relations",
+  note: "Cadetprep concept-practice worksheet — Sets and Relations",
+  files: [
+    { file: "01. Sets - Basics.xlsx", subtopicName: "Set Basics" },
+    { file: "02. Sets - Types of Sets.xlsx", subtopicName: "Types of Sets" },
+    { file: "03. Sets - Operations.xlsx", subtopicName: "Set Operations" },
+    { file: "04. Sets - Applications.xlsx", subtopicName: "Applications of Sets" },
+    { file: "05. Relations - Orders Pair and Cartesian Product.xlsx", subtopicName: "Ordered Pairs and Cartesian Product" },
+    { file: "06. Relations - Definition.xlsx", subtopicName: "Introduction to Relations" },
+    { file: "07. Relations Types of Relations.xlsx", subtopicName: "Types of Relations" },
+  ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {

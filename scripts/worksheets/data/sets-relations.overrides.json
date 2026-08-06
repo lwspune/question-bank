@@ -1,0 +1,94 @@
+{
+  "_comment": "Adjudicated repairs for Sets and Relations. Recurring defect class: 'Both A and B / All of the above' options whose letter references were written for a different option order (shuffle artifact) — repaired by naming contents instead of letters. Every entry re-derived by hand; the blind agent pass is corroborating evidence.",
+
+  "01-8": {
+    "options": { "A": "\\([2, 5]\\)" },
+    "reason": "Option A was an empty string (blank cell). Replaced with the closed-interval distractor [2,5]. Key B ([2,5)) verified correct for 2 ≤ x < 5."
+  },
+
+  "01-9": {
+    "options": { "C": "Both P(A) and \\(\\mathcal{P}(A)\\)", "D": "\\(A^c\\)" },
+    "reason": "P(A), 𝒫(A) AND the old option D (℘(A)) are all accepted power-set notations, so 'All of the above' at position C was wrong-by-position (D sat below it and was also valid). D replaced with the complement notation (genuinely wrong); C reworded to name its contents. Key C retained."
+  },
+
+  "01-13": {
+    "options": { "A": "Both \\(\\emptyset\\) and \\(\\{\\}\\)" },
+    "reason": "Keyed option A read 'Both A and B' — self-referential (it IS option A) and aimed at shuffled letters. Reworded to name the two empty-set notations (options B and C). Key A retained."
+  },
+
+  "01-25": {
+    "options": { "C": "\\([1, 2, 3]\\) for a set of integers" },
+    "reason": "Option C was truncated to ' for a set of integers' — the notation it was meant to display was missing. Restored as square-bracket misuse, which is the intended incorrect-notation answer. Key C retained."
+  },
+
+  "01-27": {
+    "options": { "D": "Set-builder \\(\\{x \\in \\mathbb{Q} \\mid 0 < x < 1\\}\\)" },
+    "reason": "Old option D ('Interval (0,1)') was arguably ALSO correct — (0,1) denotes all reals, so it cannot express just the rationals. Replaced with a valid set-builder representation (clearly a wrong answer), leaving the keyed B (roster — impossible for a dense infinite set) uniquely correct."
+  },
+
+  "01-28": {
+    "stem": "Which of these statements about the empty set is TRUE for every \\(x\\)?",
+    "solution": "The empty set has no elements, so for every \\(x\\), \\(x \\notin \\emptyset\\) is true (and \\(x \\in \\emptyset\\) is always false).",
+    "reason": "As printed ('the correct way to DENOTE x is an element of the empty set') the answer is the notation x ∈ ∅ (option C), but the key and teaching intent are the TRUE statement x ∉ ∅ (option B). Stem reworded to ask for the true statement, making key B correct and unambiguous."
+  },
+
+  "02-26": {
+    "options": { "D": "\\(\\{\\emptyset, \\{\\emptyset\\}\\}\\)" },
+    "reason": "Options B ({∅}) and D ({{}}) were logically identical — {} IS ∅. D replaced with the power set of {∅} (a genuine distractor). Key B verified correct: P(∅) = {∅}."
+  },
+
+  "03-27": {
+    "stem": "If \\(n(A \\cup B \\cup C) = 90\\), \\(n(A) = 40\\), \\(n(B) = 50\\), \\(n(C) = 30\\), \\(n(A \\cap B) = 15\\), \\(n(B \\cap C) = 10\\), \\(n(A \\cap C) = 12\\), then \\(n(A \\cap B \\cap C)\\) is:",
+    "solution": "By inclusion–exclusion: \\(90 = 40 + 50 + 30 - 15 - 10 - 12 + n(A \\cap B \\cap C) = 83 + n(A \\cap B \\cap C)\\), so \\(n(A \\cap B \\cap C) = 7\\). (All seven Venn regions come out non-negative, so the data is consistent.)",
+    "reason": "As printed (union = 100) the answer is 17, matching no option; the source solution asserted 7 with broken arithmetic. Stem repaired 100 → 90, which makes the keyed B (7) exactly correct and every Venn region non-negative (verified: singles 20/32/15, pairwise-only 8/3/5, triple 7, total 90)."
+  },
+
+  "04-14": {
+    "answer": "B",
+    "solution": "Only Maths \\(= 90 - 40 - 35 + 20 = 35\\); only Physics \\(= 75 - 40 - 30 + 20 = 25\\); only Chemistry \\(= 65 - 35 - 30 + 20 = 20\\). Exactly one subject \\(= 35 + 25 + 20 = 80\\).",
+    "reason": "Key flip C→B: exactly-one = Σsingles − 2Σpairs + 3·triple = 230 − 210 + 60 = 80 — the source's OWN solution computes 35 + 25 + 20 = 80 and then trails off with 'Wait,'. Keyed C (85) matches nothing."
+  },
+
+  "05-10": {
+    "options": { "A": "Both the \\(\\cap\\) and \\(\\cup\\) distributive identities", "C": "Neither distributive identity" },
+    "reason": "Both printed identities (A×(B∩C) and A×(B∪C) distributivity) are true, and the keyed option read 'Both A and B' — letter references written for a different option order (B and D hold the identities here). A and C reworded to name contents. Key A retained."
+  },
+
+  "06-3": {
+    "solution": "A relation from A to B must be a subset of \\(A \\times B = \\{(1,3), (1,4), (2,3), (2,4)\\}\\). Only \\(\\{(1,3), (2,4)\\}\\) satisfies this — the other sets pair elements in the wrong order or are not sets of ordered pairs at all.",
+    "reason": "Key D verified correct (agents agree); the source solution said 'Option A satisfies this condition' — a stale letter reference from a pre-shuffle option order. Reworded to name the set."
+  },
+
+  "06-10": {
+    "solution": "A relation from \\(\\mathbb{R}\\) to \\(\\mathbb{R}\\) is formally a SET of ordered pairs, i.e. a subset of \\(\\mathbb{R} \\times \\mathbb{R}\\). The set-builder form \\(\\{(x,y) : y = x^2, x \\in \\mathbb{R}\\}\\) is exactly that; 'the parabola' and the bare equation \\(y = x^2\\) describe the relation informally but are not themselves sets of ordered pairs.",
+    "reason": "Key A verified correct (agents agree); the source solution said 'Option B correctly represents…' — a stale letter reference. Reworded to name the representation."
+  },
+
+  "07-3": {
+    "solution": "Reflexivity on \\(\\{1,2,3\\}\\) requires \\((1,1), (2,2), (3,3) \\in R\\). Only \\(R = \\{(1,1), (2,2), (3,3), (1,2)\\}\\) contains all three diagonal pairs (extra pairs like \\((1,2)\\) do not break reflexivity).",
+    "reason": "Key D verified correct (agents agree); the source solution said 'Only option C contains all these pairs' — a stale letter reference (C is {(1,2),(2,1)}). Reworded to name the relation."
+  },
+
+  "07-7": {
+    "options": { "A": "\\(R = \\{(1,2), (2,3), (3,1)\\}\\)" },
+    "reason": "Old option A ({(1,2),(3,4)}) was VACUOUSLY transitive (no chainable pairs), making two correct options. Replaced with a chain missing its closure ((1,2),(2,3) but no (1,3) — genuinely not transitive). Key B verified correct."
+  },
+
+  "07-15": {
+    "options": { "A": "3, 13, 23" },
+    "reason": "Both old A (7, 17, 27) and the keyed D (2, 12, 22) are ≡ 2 (mod 5) — two fully correct options. A replaced with the residue-3 list; key D retained (the canonical residue representatives, matching the source solution)."
+  },
+
+  "07-20": {
+    "stem": "For the relation \\(R = \\{(1,1), (2,2), (3,3), (1,2), (2,3), (1,3)\\}\\) on \\(\\{1, 2, 3\\}\\), which property does R NOT satisfy?",
+    "solution": "R contains \\((1,1), (2,2), (3,3)\\) so it is reflexive, and every chain closes (\\((1,2),(2,3) \\to (1,3) \\in R\\)) so it is transitive. But \\((1,2) \\in R\\) while \\((2,1) \\notin R\\), so R is NOT symmetric.",
+    "reason": "As printed R was ALSO not transitive ((1,2),(2,3) present but (1,3) missing), making options A and B both correct. Adding (1,3) to R makes it transitive and reflexive, leaving symmetry as the unique failing property — key A retained."
+  },
+
+  "05-24": {
+    "answer": "A",
+    "options": { "C": "Elements of the form \\((a, (b, c))\\)" },
+    "solution": "\\(A \\times B = \\{(1,2), (1,3)\\}\\), so \\((A \\times B) \\times A = \\{((1,2), 1), ((1,3), 1)\\}\\) — its elements have the form \\(((a,b), c)\\), and there are \\(2 \\times 1 = 2\\) of them (not 6). Flat triples \\((a,b,c)\\) describe \\(A \\times B \\times A\\), a different (though naturally identified) construction.",
+    "reason": "Key flip C→A: the keyed C read 'Both A and C' — self-referential shuffle artifact — while only A is true as printed (B's flat triples are a different construction; D's '6 elements' is false, there are 2). C replaced with a genuine distractor; waffling truncated solution rewritten."
+  }
+}
