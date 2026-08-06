@@ -50,15 +50,25 @@ kept as-source (re-balancing would need key remaps + solution rewrites for the
    `data/<id>.overrides.json` (`answer` / `options` / `solution` / `stem` /
    `exclude`, each with a `reason`). Solutions flagged for self-talk get clean
    rewrites in the same file.
-5. **Commit** (dry-run first — prints per-subtopic counts, applied overrides,
+5. **Rebalance the correct-answer letters** — the source skews keys toward
+   A/B (~32/30/19/19 on the first 691 q), so plan a deterministic
+   transposition shuffle (eligible rows only; plans are committed and applied
+   at every ingest, so re-runs stay idempotent):
+   ```sh
+   npx tsx scripts/worksheets/plan-shuffles.ts trig-identities --write
+   ```
+   For a chapter ALREADY in the DB, `apply-shuffles.ts <id> --apply` patches
+   the live rows in place (option texts + key + collision-guarded hash) and
+   proves whole-chapter hash idempotency.
+6. **Commit** (dry-run first — prints per-subtopic counts, applied overrides,
    flags, LaTeX-imbalance check; hard-stops on imbalance or a stale override):
    ```sh
    npx tsx scripts/worksheets/commit.ts trig-identities
    npx tsx scripts/worksheets/commit.ts trig-identities --apply
    ```
-6. **Post-commit checks** — `npm run audit:text -- Cadetprep_Worksheets` +
+7. **Post-commit checks** — `npm run audit:text -- Cadetprep_Worksheets` +
    `npm run audit:keys Cadetprep_Worksheets` + spot-check `/browse`.
-7. **Flip PUBLIC**:
+8. **Flip PUBLIC**:
    ```sh
    npx tsx scripts/worksheets/flip-public.ts trig-identities --apply [--except=ids]
    ```
