@@ -123,7 +123,20 @@ are normal; do not manufacture a flip.
 
 - **`cleanup-latex.ts` takes NO paperId — it sweeps EVERY JEE row.** Run it once
   per batch, never per paper. It is non-idempotent on trailing LaTeX spacers
-  (eats one `\ ` per run); harmless, but do not loop it.
+  (eats one `\ ` per run); harmless, but do not loop it. Since 2026-08-06 it
+  **refuses** a paperId rather than ignoring one, and is deliberately given no
+  paper scope — it writes, so a per-paper habit would rewrite rows outside the
+  pass (the `scan-flip` failure class) as well as corroding spacers.
+- **`validate-db.ts` defaults to the whole exam but now ACCEPTS an optional
+  scope:** `validate-db.ts [paperId] [--subject=X]`. Its checks run in Node, so
+  every row crosses the wire — an unscoped run is 10,634 rows ≈ 10 MB of JSON
+  versus ~0.19 MB for one paper. Use the scope for a quick per-paper check after
+  `commit`; keep the bare form for the once-per-batch sweep at step 5. It prints
+  its scope on both the first and the summary line, refuses unknown arguments,
+  and exits non-zero if the scope matches no rows (0 findings on 0 rows is not a
+  pass). Both scripts previously swallowed arguments silently: ~20 per-paper
+  `validate-db.ts <paperId> --subject=Chemistry` runs during the 2026-08-06
+  Chemistry ingest each swept the whole exam and reported success, ~200 MB.
 - **`scan-flip` must be scoped with `--subject`.** It matches on `source_file`,
   and a JEE file carries all three subjects — an unscoped flip once published
   Maths rows that had been deliberately withheld.

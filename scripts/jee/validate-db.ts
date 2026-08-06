@@ -1,11 +1,28 @@
-/** Full KaTeX validation of the live JEE rows (text/context/options/solution). */
+/**
+ * Full KaTeX validation of the live JEE rows (text/context/options/solution).
+ *
+ *   npx tsx scripts/jee/validate-db.ts                       # whole exam (README step 5)
+ *   npx tsx scripts/jee/validate-db.ts 2023-jan24            # one paper
+ *   npx tsx scripts/jee/validate-db.ts 2023-jan24 --subject=Chemistry
+ *
+ * The whole-exam sweep is the DOCUMENTED once-per-batch step and stays the
+ * default. The optional paper scope exists because the checks run in Node, not
+ * in Postgres, so every character has to cross the wire: an unscoped run pulls
+ * 10,634 rows ≈ 10 MB of JSON, versus ~0.19 MB for one paper. Twenty per-paper
+ * runs during the 2026-08-06 Chemistry ingest therefore cost ~200 MB of egress
+ * against a 5 GB monthly allowance — and went unnoticed because the summary
+ * printed a bare row count with no indication of what it had scanned.
+ */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { renderCorruption } from "../lib/render-lint";
+import { loadPaper, rejectUnknownArgs } from "./config";
+import { parseSubjectArg } from "./lib";
 
 const EXAM_ID = "56360311-614d-43ea-9cd9-8ca8178dd679";
+const USAGE = "validate-db.ts [paperId] [--subject=Chemistry]";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 type Opt = { label: string; text: string; image_url: string | null };
@@ -30,20 +47,57 @@ function check(text: string): string | null {
 }
 
 async function main() {
+  // Refuse anything unrecognised rather than ignoring it — see rejectUnknownArgs.
+  rejectUnknownArgs(process.argv, {
+    allowPositional: true,
+    allowedFlags: ["--subject"],
+    usage: USAGE,
+  });
+  const paperId = process.argv[2]?.startsWith("--") ? undefined : process.argv[2];
+  const subject = parseSubjectArg(process.argv);
+  // loadPaper throws on an unknown id, so a typo'd paper fails here rather than
+  // silently widening the scan back to the whole exam.
+  const sourceFile = paperId ? loadPaper(paperId).sourceFile : undefined;
+  const scope = sourceFile
+    ? `${paperId} (${sourceFile})${subject ? ` [subject=${subject}]` : ""}`
+    : "ALL JEE papers — whole-exam sweep";
+  console.log(`Scope: ${scope}`);
+
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
+
+  // --subject must genuinely NARROW, not just decorate the scope line: accepting
+  // a flag and then ignoring it is the same defect this script is being fixed
+  // for. Resolve the name to an id and fail loudly on a typo.
+  let subjectId: string | undefined;
+  if (subject) {
+    const { data, error } = await client
+      .from("subjects")
+      .select("id")
+      .eq("exam_id", EXAM_ID)
+      .eq("name", subject)
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!data) throw new Error(`unknown --subject=${subject} for JEE Mains. Usage: ${USAGE}`);
+    subjectId = data.id as string;
+  }
   // Page through ALL rows in 1000-row windows — PostgREST caps a raw .select()
   // at 1000, and the JEE exam now exceeds that, so a single call would silently
   // skip the newest rows (the documented PostgREST 1000-row cap pitfall).
   const rows: Row[] = [];
   for (let from = 0; ; from += 1000) {
-    const { data, error } = await client
+    let q = client
       .from("questions")
       .select("question_number, text, context, solution, image_url, options(label, text, image_url)")
       .eq("exam_id", EXAM_ID)
       .order("id", { ascending: true })
       .range(from, from + 999);
+    // Scoping happens IN THE QUERY, so a per-paper run genuinely transfers ~55x
+    // less rather than just printing less.
+    if (sourceFile) q = q.eq("source_file", sourceFile);
+    if (subjectId) q = q.eq("subject_id", subjectId);
+    const { data, error } = await q;
     if (error) throw new Error(error.message);
     const page = (data ?? []) as Row[];
     rows.push(...page);
@@ -97,7 +151,21 @@ async function main() {
       }
     }
   }
-  console.log(`\n${rows.length} questions checked | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts} | render-corruption: ${corruption} | incomplete? ${incomplete} (soft — review each)`);
+  // A scope that matches nothing reports "0 questions checked | KaTeX-broken: 0"
+  // — indistinguishable from a clean paper. Say so and exit non-zero instead.
+  if (rows.length === 0) {
+    console.log(
+      `\n⚠  NOTHING CHECKED — no JEE rows match ${scope}.` +
+        `\n   This is NOT a clean result. Wrong paperId, wrong subject, or the paper is not committed yet.`
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  // The scope is repeated on the SUMMARY line, not just at the top: a long run
+  // scrolls its header away, and a bare row count is exactly what let twenty
+  // wrong-scoped runs read as successes.
+  console.log(`\n${rows.length} questions checked [${scope}] | KaTeX-broken: ${broken} | markdown leaks: ${mdLeaks} | dangling artifacts: ${artifacts} | render-corruption: ${corruption} | incomplete? ${incomplete} (soft — review each)`);
 }
 
 main().catch((e) => {
