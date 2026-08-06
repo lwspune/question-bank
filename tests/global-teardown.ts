@@ -38,16 +38,16 @@
  * mechanism for test questions inserted under canonical taxonomy, so 18 test
  * questions (11 PUBLIC) + 12 orgs leaked into production. See the Decisions log.
  */
-import { config } from "dotenv";
-import * as fs from "node:fs";
-import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { isTestOrgName, isTestTaxonomyName, isTestAuthEmail, sweepUntilClean } from "./global-teardown-helpers";
+import { resolveSupabaseTestEnv } from "./helpers/testenv";
 
 export default async function setup() {
   return async function teardown(): Promise<void> {
-    const envFile = path.join(process.cwd(), ".env.local");
-    if (fs.existsSync(envFile)) config({ path: envFile });
+    // Same env resolution as tests/setup.ts — globalSetup does NOT go through
+    // setupFiles, and before this it read .env.local directly, which would
+    // have swept PROD while the workers wrote to the test project.
+    resolveSupabaseTestEnv();
 
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY;

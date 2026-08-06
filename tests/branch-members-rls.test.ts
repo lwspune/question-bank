@@ -104,6 +104,9 @@ describe.skipIf(!HAS_ENV)("branch-scoped teacher access (migration 0057)", () =>
       .from("questions")
       .select("id")
       .eq("visibility", "PUBLIC")
+      // Oldest row = a stable seed question, never a parallel run's transient
+      // fixture (which its afterAll could delete mid-test → FK 23503).
+      .order("created_at", { ascending: true })
       .limit(1)
       .maybeSingle();
     qId = q!.id as string;

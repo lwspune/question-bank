@@ -52,11 +52,16 @@ describe.skipIf(!HAS_ENV)("Mock attempt RLS", () => {
     bobId = bob.user!.id;
 
     // Borrow a real exam + a real PUBLIC question (for the answer FK).
-    const { data: exam } = await admin.from("exams").select("id").limit(1).single();
+    // Deterministic order — an unordered limit(1) picks an arbitrary exam
+    // (the 2026-08-06 leaked fixture landed under MHT-CET by this accident).
+    const { data: exam } = await admin.from("exams").select("id").order("name").limit(1).single();
     const { data: q } = await admin
       .from("questions")
       .select("id")
       .eq("visibility", "PUBLIC")
+      // Oldest row = a stable seed question, never a parallel run's transient
+      // fixture (which its afterAll could delete mid-test → FK 23503).
+      .order("created_at", { ascending: true })
       .limit(1)
       .single();
     questionId = q!.id;
