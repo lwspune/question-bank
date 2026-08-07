@@ -25,6 +25,7 @@
  */
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { bankSubjectNames } from "../../src/lib/syllabus/subjects";
 import { requireSubjectArg } from "./subject-arg";
 
 const EXAMS = ["JEE Mains", "MHT-CET", "NDA"] as const;
@@ -46,7 +47,9 @@ async function loadCounts(db: SupabaseClient, subject: string): Promise<Row[]> {
     const { data, error } = await db
       .from("questions")
       .select("exams!inner(name),subjects!inner(name),chapters!inner(name),subtopics!inner(name)")
-      .eq("subjects.name", subject)
+      // Alias-aware: JEE's subject row is "Maths", NDA/MHT-CET say
+      // "Mathematics" — a plain .eq() would silently ingest a JEE-less spine.
+      .in("subjects.name", bankSubjectNames(subject))
       .eq("visibility", "PUBLIC")
       .eq("question_kind", "pyq")
       .range(from, from + 999);

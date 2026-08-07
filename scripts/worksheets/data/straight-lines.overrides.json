@@ -1,0 +1,164 @@
+{
+  "_comment": "Adjudicated repairs for Straight Lines. Signature defects: equivalent-value option pairs (unreduced fractions, scalar-multiple lines, options displaying their own working) and two computation typos in keyed options. Every entry re-derived by hand.",
+
+  "01-12": {
+    "options": { "A": "\\((11, 10)\\)" },
+    "solution": "External division 3:2: \\(x = \\frac{3(5) - 2(2)}{3 - 2} = 11\\), \\(y = \\frac{3(4) - 2(1)}{3 - 2} = 10\\) — the point \\((11, 10)\\).",
+    "reason": "No printed option matched the correct (11, 10); the keyed A read (11, 7) — right x, y-typo. Repaired."
+  },
+
+  "01-30": {
+    "options": { "D": "\\(\\sqrt{5}\\)" },
+    "reason": "Options B (5) and D (√25) were numerically identical. D replaced; key B retained (distance from y-axis = |x| = 5)."
+  },
+
+  "01-31": {
+    "options": { "C": "\\(\\left(\\frac{9}{2}, \\frac{3}{2}\\right)\\)" },
+    "reason": "Option C ((9/3, 3/3)) equalled the keyed A ((3, 1)). Replaced with a wrong-divisor variant; key A retained."
+  },
+
+  "01-37": {
+    "options": { "A": "\\(\\left(3, \\frac{9}{2}\\right)\\)" },
+    "solution": "The perpendicular bisector of AB is \\(x = 3\\). Equating distances to A and C: \\(4 + (y-3)^2 = (y-7)^2\\) gives \\(8y = 36\\), \\(y = \\frac{9}{2}\\). The equidistant point is \\(\\left(3, \\frac{9}{2}\\right)\\).",
+    "reason": "No printed option was equidistant from all three points — the keyed A (3, 5) is √8 from A but only 2 from C. Repaired to the true circumcenter (3, 9/2)."
+  },
+
+  "01-44": {
+    "options": { "C": "\\(15\\)" },
+    "reason": "Option C ('15/5 = 3') equalled the keyed A and even displayed its own working. Replaced with the un-divided numerator; key A retained (|5+10|/5 = 3)."
+  },
+
+  "01-47": {
+    "options": { "C": "\\(\\left(\\frac{25}{3}, \\frac{25}{4}\\right)\\)", "D": "\\((-3, -4)\\)" },
+    "reason": "Options A, C and D were ALL the point (3, 4) in different dress (D even printed '= (3, 4)'). C and D replaced with distinct false points; key A retained."
+  },
+
+  "02-3": {
+    "options": { "D": "\\(y = \\frac{1}{2}x + 3\\)" },
+    "reason": "Option D (y = x/2 + 2) was the SAME line as the keyed B expanded. Replaced with a different intercept; key B retained."
+  },
+
+  "02-17": {
+    "options": { "D": "\\(x - y = a\\)" },
+    "reason": "Option D (x + y = a) was the keyed A multiplied through by a — the same line. Replaced with the equal-magnitude-opposite-sign trap; key A retained (the stem asks for intercept FORM)."
+  },
+
+  "02-47": {
+    "options": { "D": "\\(x - \\sqrt{3}y - 2 + \\sqrt{3} = 0\\)" },
+    "reason": "Option D was the keyed A divided by √3 — the same line (both verified through (2, −1)). Replaced with a sign-flipped variant that misses the point; key A retained."
+  },
+
+  "04-17": {
+    "options": { "A": "\\(0\\) or \\(-\\sqrt{3}\\)" },
+    "solution": "\\(\\left|\\frac{\\sqrt{3} - m}{1 + \\sqrt{3}m}\\right| = \\tan 60^\\circ = \\sqrt{3}\\) gives \\(m = 0\\) or \\(m = -\\sqrt{3}\\) — the slope-√3 line has inclination 60°, and 60° ± 60° gives inclinations 0° and 120°.",
+    "reason": "No printed option offered the correct pair {0, −√3} (the keyed A paired 0 with 'undefined', but a vertical line makes 30° with a 60°-inclination line, not 60°). Keyed option A repaired."
+  },
+
+  "04-20": {
+    "options": { "B": "\\(\\tan^{-1}\\left(\\frac{1}{3}\\right)\\)" },
+    "reason": "Options B (tan⁻¹(1/2)) and the keyed C (90° − tan⁻¹2) were the same angle (≈26.57°). B replaced; key C retained."
+  },
+
+  "04-24": {
+    "options": { "C": "\\(-\\frac{1}{\\sqrt{3}}\\) or undefined" },
+    "solution": "Slope \\(\\frac{1}{\\sqrt{3}}\\) means inclination 30°; the other line's inclination is 30° ± 60° = 90° (vertical, slope undefined) or −30° (slope \\(-\\frac{1}{\\sqrt{3}}\\)).",
+    "reason": "No printed option offered the correct pair {−1/√3, undefined} (the keyed C paired −1/√3 with √3, which makes only 30° with the given line). Keyed option C repaired."
+  },
+
+  "04-34": {
+    "options": { "A": "\\(\\tan^{-1}\\left(\\frac{\\sqrt{12}}{4}\\right)\\)", "C": "\\(30°\\)" },
+    "reason": "Options A (tan⁻¹(√12/2)), B (tan⁻¹√3) and C (60°) were ALL the same angle — tan θ = 2√(h²−ab)/|a+b| = √3. A and C replaced with distinct false values; key B retained."
+  },
+
+  "04-35": {
+    "answer": "B",
+    "options": { "B": "\\(\\frac{2\\sqrt{3} - 1}{2 + \\sqrt{3}}\\) or \\(\\frac{2\\sqrt{3} + 1}{\\sqrt{3} - 2}\\)" },
+    "solution": "\\(\\left|\\frac{2 - m}{1 + 2m}\\right| = \\tan 30^\\circ = \\frac{1}{\\sqrt{3}}\\): the plus branch gives \\(m = \\frac{2\\sqrt{3} - 1}{2 + \\sqrt{3}} \\approx 0.90\\), the minus branch \\(m = \\frac{2\\sqrt{3} + 1}{\\sqrt{3} - 2} \\approx -16.7\\).",
+    "reason": "Key flip A→B (+ sign repair): the keyed A's values both make 60° with slope 2, not 30°. B held the correct first value but its second was printed with the wrong sign (+16.7 makes ≈23°); denominator flipped to √3 − 2."
+  },
+
+  "05-4": {
+    "options": { "A": "\\(\\frac{10}{7}\\)" },
+    "reason": "Options A (10/5) and the keyed C (2) were the same value. A replaced; key C retained (|15−5|/5 = 2)."
+  },
+
+  "05-5": {
+    "options": { "B": "\\(\\frac{1}{2}\\)" },
+    "reason": "Options B and D were both '1' (the correct value, |13|/13). B replaced with a distinct distractor; key D retained."
+  },
+
+  "05-7": {
+    "options": { "B": "\\(\\sqrt{2}\\)" },
+    "reason": "Options A (1/√2) and B (√2/2) were identical distractors. B replaced; key C retained (|1+1+1|/√2 = 3√2/2)."
+  },
+
+  "05-16": {
+    "options": { "C": "\\(\\left(\\frac{9}{13}, \\frac{20}{13}\\right)\\)" },
+    "solution": "For \\(2x + 3y - 6 = 0\\) from \\((1, 2)\\): \\(t = \\frac{2(1) + 3(2) - 6}{2^2 + 3^2} = \\frac{2}{13}\\); foot \\(= \\left(1 - \\frac{4}{13},\\ 2 - \\frac{6}{13}\\right) = \\left(\\frac{9}{13}, \\frac{20}{13}\\right)\\). Check: \\(2 \\cdot \\frac{9}{13} + 3 \\cdot \\frac{20}{13} = \\frac{78}{13} = 6\\).",
+    "reason": "No printed option matched the correct foot (9/13, 20/13) — the offered points lie on the line but fail perpendicularity. Keyed option C repaired."
+  },
+
+  "05-17": {
+    "options": { "C": "\\(25\\)" },
+    "reason": "Options B (1) and C (25/25) were the same value. C replaced with the un-divided numerator; key B retained."
+  },
+
+  "05-20": {
+    "stem": "The reflection of the point \\((3, 4)\\) in the line \\(y = x\\) is:",
+    "solution": "Reflection in \\(y = x\\) swaps the coordinates: \\((3, 4) \\mapsto (4, 3)\\).",
+    "reason": "As printed (mirror x + y = 7) the point LIES ON the line (3 + 4 = 7), so its reflection is itself — not offered, and all four options also lie on that line. Mirror changed to y = x, for which the keyed A (4, 3) is exactly right."
+  },
+
+  "06-11": {
+    "options": { "A": "\\(x + y = 1\\) and \\(x + 2y = 2\\)" },
+    "reason": "Old option A (x+y=1, x−y=2: slopes −1 and 1) was ALSO a perpendicular pair, duplicating the keyed C (slopes −1/2 and 2). A replaced with a non-perpendicular pair; key C retained."
+  },
+
+  "06-26": {
+    "stem": "The value of \\(m\\) for which the lines \\(3x + 4y = 5\\) and \\(6x + my = 7\\) are parallel is:",
+    "solution": "Parallel means proportional coefficients of \\(x\\) and \\(y\\): \\(\\frac{6}{3} = \\frac{m}{4}\\) gives \\(m = 8\\) (and \\(7 \\neq 2 \\times 5\\), so the lines are distinct, not coincident).",
+    "reason": "As printed (6x + my = 10) the keyed m = 8 makes the second line exactly 2× the first — coincident, not parallel-distinct. Constant changed 10 → 7 so the keyed B (8) is cleanly correct."
+  },
+
+  "05-3": {
+    "answer": "A",
+    "reason": "Key flip B→A: |3(2) + 4(3) − 5|/√(9+16) = 13/5, which is option A. The keyed B (17/5) matches no computation."
+  },
+
+  "08-7": {
+    "options": { "B": "\\((2, 5)\\)", "D": "\\((1, 4)\\)" },
+    "reason": "Options A (0,0), B (2,3) and D (1,1) ALL gave 3x − 4y + 12 > 0 — three correct answers. B and D replaced with negative-side points (2,5 → −2; 1,4 → −1); key A retained."
+  },
+
+  "08-10": {
+    "options": { "B": "\\((3, 0)\\)", "C": "\\((1, 5)\\)", "D": "\\((6, 10)\\)" },
+    "reason": "ALL FOUR printed points satisfied 5x − 3y + 15 = 0 — no unique answer. B, C, D moved off the line (values 30, 5, 15 ≠ 0); key A (0, 5) retained."
+  },
+
+  "08-17": {
+    "answer": "D",
+    "reason": "Key flip C→D: x − 2y + 3 ≥ 0 rearranges to y ≤ (x+3)/2 — the region ON and BELOW the line (origin check: f(0,0) = 3 ≥ 0 and the origin sits below (0, 3/2))."
+  },
+
+  "08-33": {
+    "options": { "C": "\\((0, 2)\\)" },
+    "reason": "Options B (2,2) and C (0,4) BOTH satisfied x + y > 3 and x − y < 1. C replaced with (0,2), which fails the first inequality; key B retained."
+  },
+
+  "08-40": {
+    "options": { "A": "True only if \\(b > 0\\)" },
+    "reason": "Old option A ('Always true') was defensible within the intercept form's domain, making two arguable answers. Replaced with a false necessity claim (b = −2 works fine); key D ('only if b ≠ 0' — genuinely necessary for the form to be defined) retained."
+  },
+
+  "03-36": {
+    "answer": "A",
+    "stem": "Two lines intersect at \\(60^\\circ\\). One has slope \\(\\sqrt{3}\\); if the other line has an obtuse angle of inclination, its slope is:",
+    "solution": "\\(\\left|\\frac{m - \\sqrt{3}}{1 + \\sqrt{3}m}\\right| = \\tan 60^\\circ = \\sqrt{3}\\) gives \\(m = -\\sqrt{3}\\) (inclination 120°) or \\(m = 0\\) (inclination 0°). The obtuse-inclination solution is \\(m = -\\sqrt{3}\\).",
+    "reason": "As printed, BOTH −√3 and 0 satisfy the 60° condition (inclinations 120° and 0° vs the 60° line), and the keyed C (−1/√3) is perpendicular (90°), not 60° — a wrong key. Obtuse-inclination clause added; key C→A."
+  },
+
+  "03-48": {
+    "options": { "D": "\\(-\\frac{1}{\\sqrt{3}}\\)" },
+    "reason": "Options C (1/√3) and D (√3/3) were numerically identical. D replaced with the negated form; key A retained (tan(4π/3) = tan 60° = √3)."
+  }
+}
