@@ -29,7 +29,12 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # MUST match ci.yml and package.json engines (">=22"). On Node 20
+          # @supabase/supabase-js throws "Node.js 20 detected without native
+          # WebSocket support" from createClient() — before any network call,
+          # so the job dies in ~1 second with no useful context. Copy the
+          # version from the workflow that already works; do not type a default.
+          node-version: 22
           cache: npm
 
       - run: npm ci
