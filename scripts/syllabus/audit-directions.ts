@@ -30,12 +30,20 @@ import { join } from "node:path";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
+// Retired JEE chapters per subject — a pointer from a chapter JEE stopped
+// setting does not contradict "not required by JEE today". Chapter names do
+// not collide across subjects, so one flat set is safe.
 const OLD_JEE_CHAPTERS = new Set([
+  // Chemistry (dead after 2021)
   "General Principles and Processes of Isolation of Elements", "Environmental Chemistry",
   "Hydrogen", "Polymers", "Surface Chemistry", "Chemistry in Everyday Life", "Solid State",
+  // Physics (dead after 2023)
+  "Communication Systems",
+  // Mathematics (dead after 2023)
+  "Mathematical Reasoning", "Height & Distance",
 ]);
 
-type C = { id: string; source: string; class: number; chapter_no: number; chapter_name: string; section_no: string; concept: string };
+type C = { id: string; subject: string; source: string; class: number; chapter_no: number; chapter_name: string; section_no: string; concept: string };
 type L = { concept_id: string; exam: string; status: string | null; covered_by: string | null };
 
 async function page<T>(db: any, table: string, cols: string): Promise<T[]> {
@@ -53,7 +61,7 @@ async function main() {
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
-  const concepts = await page<C>(db, "syllabus_concepts", "id,source,class,chapter_no,chapter_name,section_no,concept");
+  const concepts = await page<C>(db, "syllabus_concepts", "id,subject,source,class,chapter_no,chapter_name,section_no,concept");
   const links = await page<L>(db, "syllabus_concept_exams", "concept_id,exam,status,covered_by");
   const byId = new Map(concepts.map((c) => [c.id, c]));
 
@@ -72,7 +80,11 @@ async function main() {
       const m = /^(XI|XII):(.+)$/.exec(raw);
       const cls = m ? (m[1] === "XII" ? 12 : 11) : c.class;
       const sec = (m ? m[2] : raw).trim();
-      const key = `${targetExam}|${cls}|${sec}`;
+      // SUBJECT-scoped: every subject's spines share source names, class
+      // numbers and section refs ("XI:4.2" exists in three subjects), so an
+      // unscoped key lets a Maths pointer "contradict" a Chemistry verdict —
+      // 100+ manufactured hits the moment a second subject's rulings landed.
+      const key = `${c.subject}|${targetExam}|${cls}|${sec}`;
       pointers.set(key, [...(pointers.get(key) ?? []), `${c.concept} [${c.chapter_name}]`]);
     }
   }
@@ -82,10 +94,10 @@ async function main() {
     if (l.status !== "not") continue;
     const c = byId.get(l.concept_id);
     if (!c || c.source !== "MH State Board") continue;
-    const from = pointers.get(`${l.exam}|${c.class}|${c.section_no}`);
+    const from = pointers.get(`${c.subject}|${l.exam}|${c.class}|${c.section_no}`);
     if (!from) continue;
     hits.push(
-      `  ${l.exam.padEnd(14)} Std ${c.class === 11 ? "XI " : "XII"} Ch.${String(c.chapter_no).padEnd(2)} ` +
+      `  ${c.subject.padEnd(11)} ${l.exam.padEnd(14)} Std ${c.class === 11 ? "XI " : "XII"} Ch.${String(c.chapter_no).padEnd(2)} ` +
         `${c.section_no.padEnd(7)} ${c.concept.slice(0, 44).padEnd(46)} <- ${from.join(" | ")}`,
     );
   }
