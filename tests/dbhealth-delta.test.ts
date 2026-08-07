@@ -90,6 +90,41 @@ describe("computeDelta — counter resets (the silent-lie cases)", () => {
     expect(q!.tempBytesDelta).toBe(900);
   });
 
+  it("marks a first-seen query's window activity as UNKNOWN, not as its lifetime", () => {
+    // The bug this pins: migration 0070 widened collection from 50 queries to
+    // 150, so 100 long-lived queries "appeared" and were credited with three
+    // months of calls as if it happened in a 3-minute window. A first-seen
+    // query is either genuinely new (lifetime ~ window) or merely newly
+    // COLLECTED (lifetime >> window), and nothing stored can tell them apart.
+    const d = computeDelta(
+      snap({ queries: [] }),
+      snap({
+        capturedAt: "2026-08-08T12:00:00.000Z",
+        queries: [{ queryid: "7", label: "long-lived, newly collected", calls: 212_079, totalExecMs: 100, tempBytes: 0, rows: 0 }],
+      })
+    );
+    const q = d.queries.find((x) => x.queryid === "7")!;
+    expect(q.isNew).toBe(true);
+    expect(q.windowKnown).toBe(false);
+    expect(q.lifetimeCalls).toBe(212_079);
+  });
+
+  it("ranks queries with a KNOWN window above first-seen ones, whatever their lifetime", () => {
+    const d = computeDelta(
+      snap({ queries: [{ queryid: "tracked", label: "tracked", calls: 1000, totalExecMs: 1, tempBytes: 0, rows: 0 }] }),
+      snap({
+        capturedAt: "2026-08-08T12:00:00.000Z",
+        queries: [
+          { queryid: "huge", label: "newly collected, huge lifetime", calls: 5_000_000, totalExecMs: 1, tempBytes: 0, rows: 0 },
+          { queryid: "tracked", label: "tracked", calls: 1005, totalExecMs: 1, tempBytes: 0, rows: 0 },
+        ],
+      })
+    );
+    expect(d.queries[0].queryid).toBe("tracked");
+    expect(d.queries[0].callsDelta).toBe(5);
+    expect(d.queries[1].windowKnown).toBe(false);
+  });
+
   it("treats a query absent from the previous snapshot as entirely new", () => {
     const d = computeDelta(
       snap({ queries: [] }),

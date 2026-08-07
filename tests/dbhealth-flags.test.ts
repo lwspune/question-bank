@@ -19,6 +19,8 @@ const q = (over: Partial<QueryDelta>): QueryDelta => ({
   callsPerDay: 100,
   isNew: false,
   suspectedReset: false,
+  windowKnown: true,
+  lifetimeCalls: 100,
   ...over,
 });
 
@@ -78,6 +80,20 @@ describe("evaluateFlags — disk spill (the /browse incident)", () => {
     expect(codes(d({ queries: [oneOff] }))).not.toContain("query-disk-spill");
   });
 
+  it("does not fire on a first-seen query, whose figures are lifetime not window", () => {
+    // Migration 0070 widened collection and made 100 long-lived queries
+    // "appear" at once. Treating their lifetime spill as this window's would
+    // have manufactured a critical finding out of months-old history.
+    const firstSeen = q({
+      isNew: true,
+      windowKnown: false,
+      callsDelta: 3329,
+      tempBytesPerCall: 9 * 1024 * 1024,
+      tempBytesDelta: 30 * 1024 * 1024 * 1024,
+    });
+    expect(codes(d({ queries: [firstSeen] }))).not.toContain("query-disk-spill");
+  });
+
   it("stays silent for a query that spilled historically but not in this window", () => {
     // The whole point of measuring per-window: 98 GB lifetime, 0 since the fix.
     expect(codes(d({ queries: [q({ tempBytesDelta: 0, tempBytesPerCall: 0 })] }))).not.toContain("query-disk-spill");
@@ -114,6 +130,18 @@ describe("evaluateFlags — spill nobody claims", () => {
       })
     );
     expect(flags.map((f) => f.code)).not.toContain("spill-unattributed");
+  });
+
+  it("does not let a first-seen query's lifetime spill explain away the window's", () => {
+    // Otherwise a newly-collected query silently 'accounts for' spill it did
+    // not do in this window, and the unattributed warning never fires.
+    const flags = evaluateFlags(
+      d({
+        tempBytesDelta: 200 * 1024 * 1024,
+        queries: [q({ isNew: true, windowKnown: false, tempBytesDelta: 30 * 1024 * 1024 * 1024 })],
+      })
+    );
+    expect(flags.map((f) => f.code)).toContain("spill-unattributed");
   });
 
   it("ignores a trivial amount of unexplained spill", () => {

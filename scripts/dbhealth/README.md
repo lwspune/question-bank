@@ -58,7 +58,15 @@ All handled in `src/lib/dbhealth/delta.ts`, all covered by tests. Each yields
 2. **A single query entry was evicted and re-created** — its counters restart
    while the global reset timestamp does not move. Flagged `suspectedReset`; the
    delta falls back to the current value, which UNDER-counts, and says so.
-3. **The window is too short to extrapolate** — two snapshots two seconds apart
+3. **A query was first seen in this snapshot** — it is either genuinely new
+   (its lifetime is roughly the window) or long-lived and merely newly
+   *collected* (its lifetime is months), and nothing stored tells them apart.
+   Marked `windowKnown: false`; such rows are excluded from the busiest-queries
+   list and from every threshold, and counted in a footnote instead. **Found the
+   hard way:** widening the collector in 0070 made 100 long-lived queries
+   "appear" at once, so the page showed 212,079 lifetime calls under a heading
+   promising this window.
+4. **The window is too short to extrapolate** — two snapshots two seconds apart
    genuinely reported "268 GB/day" from 7 MB of real activity. Below
    `MIN_RATE_WINDOW_HOURS` the raw delta is shown and the rate left blank.
 
@@ -91,6 +99,15 @@ with real data reveals:
 `pg_stat_statements` lives in the `extensions` schema and is not exposed through
 PostgREST — supabase-js cannot read it directly. Same pattern as
 `get_activity_shape` (0053) and `get_dashboard_stats` (0018).
+
+## After changing what the collector collects
+
+The first comparison across a collector change is **degraded by construction**:
+every query the new arms added counts as first-seen, so it is excluded from the
+window figures. Expect a thin busiest-queries list and a likely
+`spill-unattributed` warning on that one run — the spill is real, but the
+queries that did it are sitting in the excluded set. It resolves by itself on
+the next snapshot, once two consecutive runs share a collector. Don't chase it.
 
 ## The monitor's own cost
 
