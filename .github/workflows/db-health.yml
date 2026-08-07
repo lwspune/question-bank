@@ -1,0 +1,41 @@
+name: Database health
+
+# One snapshot a day, at a fixed hour, so consecutive rows form clean ~24 h
+# windows. The value is entirely in the DIFFERENCE between rows: Postgres'
+# load counters are cumulative with no time dimension, so a single reading
+# cannot distinguish "this query spilled 98 GB last month" from "it is
+# spilling right now".
+#
+# Report-only. It never fails the build and never alerts — read the job log,
+# or query db_health_snapshots directly. A threshold that fires wrongly gets
+# ignored, and an ignored report is worse than no report.
+#
+# 02:30 UTC = 08:00 IST. GitHub may delay scheduled runs under load; that is
+# harmless here, because every rate is computed from the actual elapsed time
+# between snapshots rather than from an assumed 24 hours.
+
+on:
+  schedule:
+    - cron: "30 2 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    # Never let a monitoring job block anything or run for long.
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Take snapshot and print the report
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run db:health
