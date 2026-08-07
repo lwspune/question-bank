@@ -1,0 +1,61 @@
+{
+  "_comment": "Adjudicated repairs for Quadratic Equations. Every entry re-derived by hand. Note the chapter-level curation lives in config.ts (duplicate Minima file + two misfiled Formula Revision files excluded).",
+
+  "01-10": {
+    "answer": "A",
+    "solution": "Sum of roots \\(= \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}\\); product \\(= -\\frac{1}{6}\\). The equation is \\(x^2 - \\frac{1}{6}x - \\frac{1}{6} = 0\\), i.e. \\(6x^2 - x - 1 = 0\\).",
+    "reason": "Key flip B→A: sum = 1/6, product = −1/6 gives 6x² − x − 1 = 0 (option A) — the source solution computes both symmetric functions correctly, then trails into self-talk; rewritten clean."
+  },
+
+  "04-20": {
+    "answer": "B",
+    "solution": "\\(m + n = 2\\), \\(mn = -8\\). \\(m^2 + n^2 + mn = (m+n)^2 - 2mn + mn = (m+n)^2 - mn = 4 + 8 = 12\\).",
+    "reason": "Key flip C→B: the source solution derives exactly 12 (option B) and then trails off with 'Wait, let me rec…' while the key says C (−4)."
+  },
+
+  "05-13": {
+    "answer": "A",
+    "solution": "The maximum of \\(-x^2 + px + q\\) is at \\(x = \\frac{p}{2} = 3\\), so \\(p = 6\\). Maximum value \\(= -9 + 18 + q = 9 + q = 10\\) gives \\(q = 1\\). Hence \\(p + q = 7\\).",
+    "reason": "Key flip C→A: p = 6 and q = 1 give p + q = 7 (option A), not the keyed 13."
+  },
+
+  "01-18": {
+    "stem": "If one root of \\(kx^2 + 3x + 1 = 0\\) is \\(-\\frac{1}{2}\\), then \\(k\\) equals:",
+    "solution": "Substituting \\(x = -\\frac{1}{2}\\): \\(\\frac{k}{4} - \\frac{3}{2} + 1 = 0\\), so \\(\\frac{k}{4} = \\frac{1}{2}\\) and \\(k = 2\\). Check: \\(2x^2 + 3x + 1 = (2x+1)(x+1)\\) has roots \\(-\\frac{1}{2}\\) and \\(-1\\).",
+    "reason": "As printed (middle coefficient 2) substitution forces k = 0 — degenerate and matching no option (the source solution derived k/4 = 0 and trailed off with 'Wait'). Middle coefficient repaired 2 → 3, making the keyed B (k = 2) exactly correct with a clean factorization check."
+  },
+
+  "04-12": {
+    "options": { "A": "\\(x^2 - x - 7 = 0\\)" },
+    "solution": "\\(p + q = -3\\), \\(pq = -5\\). New roots sum: \\((p+2) + (q+2) = 1\\); product: \\((p+2)(q+2) = pq + 2(p+q) + 4 = -5 - 6 + 4 = -7\\). Equation: \\(x^2 - x - 7 = 0\\).",
+    "reason": "No printed option had the correct constant −7 (A/B printed −11 — the source solution computed −5 − 6 + 4 and wrote −11 instead of −7). Keyed option A repaired; key A retained."
+  },
+
+  "04-13": {
+    "options": { "B": "\\((ar - cp)^2 = (br - cq)(aq - bp)\\)" },
+    "reason": "The standard common-root condition is (ar−cp)² = (br−cq)(aq−bp) — which the source SOLUTION states correctly — but no printed option matched it (the keyed B squared the wrong factor; verified numerically with x²−5x+6 and x²−4x+4, common root 2). Keyed option B repaired to the condition the solution derives."
+  },
+
+  "04-19": {
+    "options": { "D": "\\(\\pm 4\\sqrt{2}\\)" },
+    "solution": "\\((\\alpha - \\beta)^2 = (\\alpha + \\beta)^2 - 4\\alpha\\beta = k^2 - 16 = 16\\), so \\(k^2 = 32\\) and \\(k = \\pm 4\\sqrt{2}\\).",
+    "reason": "No printed option matched the correct ±4√2 (the keyed D read ±2√5). Keyed option D repaired; the source solution derived ±4√2 and was truncated mid-sentence."
+  },
+
+  "05-20": {
+    "answer": "D",
+    "stem": "The distance from the origin to the vertex of the parabola \\(y = x^2 - 4x + 5\\) is:",
+    "solution": "The vertex is at \\(x = 2\\), \\(y = 4 - 8 + 5 = 1\\), i.e. \\((2, 1)\\). Distance from the origin: \\(\\sqrt{2^2 + 1^2} = \\sqrt{5}\\).",
+    "reason": "As printed ('minimum distance from the origin to the parabola') the true minimum is ≈1.949 (the critical cubic has no clean root), matching no option — even the plausible √5 is only the VERTEX distance, not the curve minimum. Stem repaired to ask exactly that vertex distance; key B→D (√5)."
+  },
+
+  "03-9": {
+    "options": { "B": "\\(\\Delta < 0\\)" },
+    "reason": "Old option B ('Δ is a perfect square') already implies Δ ≥ 0, making it effectively equivalent to the keyed C. Replaced with the imaginary-roots condition (clearly false for rational roots); key C retained."
+  },
+
+  "03-12": {
+    "stem": "For the quadratic equation \\((k-1)x^2 + 2x + 1 = 0\\) to have real roots, \\(k\\) must satisfy:",
+    "reason": "As printed ('the equation'), k = 1 degenerates to the linear 2x + 1 = 0 which still has a real root, making C (k ≤ 2) defensible alongside the keyed A. Adding 'quadratic' forces k ≠ 1, making A uniquely correct (Δ = 8 − 4k ≥ 0 ⇒ k ≤ 2, plus k ≠ 1)."
+  }
+}

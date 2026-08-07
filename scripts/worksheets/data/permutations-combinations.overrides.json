@@ -1,0 +1,355 @@
+{
+  "_comment": "Adjudicated repairs for Permutations and Combinations. Every entry re-derived by hand (circular multiset counts checked via Burnside; inclusion-exclusion counts cross-checked by complement). Files 03/04 carry the source's worst defect density: options generated without solving.",
+
+  "02-10": {
+    "answer": "A",
+    "solution": "The row alternates starting with either a boy or a girl: \\(2 \\times 4! \\times 4! = 2 \\times 576 = 1152\\).",
+    "reason": "Key flip B→A: a row (unlike a circle) has TWO alternating patterns; the source solution's 4!×4! = 576 forgot the starting-gender factor."
+  },
+
+  "03-3": {
+    "answer": "C",
+    "solution": "Total 4-digit numbers from \\(\\{1..5\\}\\) without repetition: \\(P(5,4) = 120\\). Those with 1 and 2 adjacent: choose the other two digits \\(\\binom{3}{2} = 3\\), arrange block + 2 digits \\(3! = 6\\), order within the block \\(2\\): \\(36\\). Valid \\(= 120 - 36 = 84\\).",
+    "reason": "Key flip B→C: the complement count gives 84 (option C), not the keyed 72."
+  },
+
+  "03-4": {
+    "answer": "A",
+    "solution": "Total: \\(7! = 5040\\). All three together (block + 4 others): \\(5! \\times 3! = 720\\). Not all together: \\(5040 - 720 = 4320\\).",
+    "reason": "Key flip C→A: 5040 − 720 = 4320 (option A) — the source solution set up exactly this subtraction while the key said C (2880)."
+  },
+
+  "03-19": {
+    "answer": "D",
+    "solution": "Without repeating digits: first digit odd (3 ways), last digit odd (2 remaining ways), middle two positions from the remaining 4 digits: \\(P(4,2) = 12\\). Total \\(3 \\times 2 \\times 12 = 72\\).",
+    "reason": "Key flip A→D: under the standard no-repetition reading the count is 72 (option D); the keyed 48 matches no consistent reading (with repetition allowed the count is 324)."
+  },
+
+  "03-23": {
+    "answer": "A",
+    "reason": "Key flip B→A: D and R at the two ends in 2! ways, the 6 middle letters in 6! = 720 — total 1440 (option A), exactly the source solution's own setup; the key said B (720)."
+  },
+
+  "02-18": {
+    "options": { "D": "15" },
+    "reason": "Options C and D were identical (30, the correct 5!/(2!2!) for LEVEL). D replaced with a distinct distractor; key C retained."
+  },
+
+  "02-19": {
+    "options": { "C": "24" },
+    "reason": "Options A and C were identical (120, the correct 5! with one object fixed). C replaced; key A retained."
+  },
+
+  "02-20": {
+    "stem": "How many ways can \\(9\\) distinct keys be arranged in a row?",
+    "solution": "A row of 9 distinct keys has \\(9! = 362880\\) arrangements.",
+    "reason": "As printed ('on a keychain if order matters') the question contradicts itself — a keychain is circular and flippable, giving (9−1)!/2 = 20160, which matches no option. Stem repaired to the linear question the keyed A (9! = 362880) answers."
+  },
+
+  "02-21": {
+    "options": { "B": "69300", "C": "17325", "D": "34560" },
+    "reason": "ALL FOUR options were identical (34650 — the correct 11!/(4!4!2!) for MISSISSIPPI). B/C/D replaced with distinct false distractors (double, half, near-miss); key A retained."
+  },
+
+  "03-5": {
+    "options": { "D": "240" },
+    "reason": "Options A and D were identical (360, the correct RR-block count 6!/2! for ARRANGE). D replaced; key A retained."
+  },
+
+  "03-10": {
+    "options": { "A": "12" },
+    "solution": "Arrange the non-A letters B, N, N: \\(\\frac{3!}{2!} = 3\\) ways, creating 4 gaps (_B_N_N_). Choose 3 of the 4 gaps for the identical A's: \\(\\binom{4}{3} = 4\\). Total \\(3 \\times 4 = 12\\).",
+    "reason": "No printed option matched the correct 12 (offered 10/20/30/15) — the source solution set up exactly the 3 × 4 computation and the option sheet ignored it. Keyed option A repaired."
+  },
+
+  "03-18": {
+    "options": { "B": "90720" },
+    "solution": "The two identical M's occupy the first and last positions (1 way). The middle 9 letters A,A,T,T,H,E,I,C,S arrange in \\(\\frac{9!}{2! \\cdot 2!} = 90720\\) ways.",
+    "reason": "No printed option matched the correct 90720 (offered 151200/50400/75600/25200). Keyed option B repaired; the source solution derived the right setup and the options ignored it."
+  },
+
+  "03-25": {
+    "options": { "B": "240" },
+    "solution": "Choose 2 of the 5 positions for the digit 3: \\(\\binom{5}{2} = 10\\). Choose the 3 remaining digits from \\(\\{1,2,4,5\\}\\): \\(\\binom{4}{3} = 4\\). Arrange them in the 3 remaining positions: \\(3! = 6\\). Total \\(10 \\times 4 \\times 6 = 240\\).",
+    "reason": "No printed option matched the correct 240 (offered 30/60/40/50) — the source solution's own method (10 × 4 × 6) gives 240. Keyed option B repaired."
+  },
+
+  "03-26": {
+    "options": { "A": "70" },
+    "solution": "Put the two particular persons in different groups. The first person's 4 companions are chosen from the remaining 8: \\(\\binom{8}{4} = 70\\); the rest go to the other group. (With unlabeled halves this already counts each split once, since the two special persons distinguish the groups.)",
+    "reason": "No printed option matched the correct 70 (offered 112/126/56/84 — 56 is the complement 'same group' count, 126 the unrestricted total). The source solution derived C(8,4) = 70 and was truncated. Keyed option A repaired."
+  },
+
+  "03-27": {
+    "options": { "A": "10080" },
+    "solution": "Treat EEE as one block: 8 units (block, B, O, O, K, K, P, R) with O and K doubled: \\(\\frac{8!}{2! \\cdot 2!} = 10080\\).",
+    "reason": "No printed option matched the correct 10080 (offered 1260/2520/630/1890). Keyed option A repaired; the source solution set up the block computation correctly."
+  },
+
+  "03-29": {
+    "options": { "C": "84" },
+    "solution": "Total arrangements of \\(\\{1,1,2,2,3,4\\}\\): \\(\\frac{6!}{2!2!} = 180\\). By inclusion–exclusion on the glued pairs: with 1's adjacent \\(\\frac{5!}{2!} = 60\\), with 2's adjacent 60, with both 24. Valid \\(= 180 - 60 - 60 + 24 = 84\\).",
+    "reason": "No printed option matched the correct 84 (offered 52/48/36/42). Keyed option C repaired; full inclusion–exclusion shown."
+  },
+
+  "03-30": {
+    "options": { "C": "259200" },
+    "solution": "Arrange the 5 men: \\(5! = 120\\), creating 6 gaps. Distribute the 4 distinct women into gaps with at most 2 per gap: 90 gap-count patterns \\(\\times 4! = 2160\\) placements. Total \\(120 \\times 2160 = 259200\\). (Check by complement: \\(9! - \\text{arrangements with 3 or more women together} = 362880 - 103680 = 259200\\).)",
+    "reason": "No printed option matched the correct 259200 (offered 57600/86400/72000/64800), verified two independent ways. Keyed option C repaired."
+  },
+
+  "05-5": {
+    "options": { "A": "4200" },
+    "solution": "ENGINEERING has 11 letters: E×3, N×3, G×2, I×2, R×1. Vowels EEEII form one block; with consonants N,N,N,G,G,R that is 7 units: \\(\\frac{7!}{3! \\cdot 2!} = 420\\). The block arranges internally in \\(\\frac{5!}{3! \\cdot 2!} = 10\\) ways. Total \\(420 \\times 10 = 4200\\).",
+    "reason": "No printed option matched the correct 4200 (offered 7560/15120/3780/22680). The source solution also miscounted N×4 (which would make 12 letters — ENGINEERING has N×3). Keyed option A repaired."
+  },
+
+  "05-6": {
+    "options": { "C": "72576" },
+    "solution": "Split into two 5-person tables (identical tables): \\(\\frac{\\binom{10}{5}}{2} = 126\\). Seat each table circularly: \\((5-1)! = 24\\) each. Total \\(126 \\times 24 \\times 24 = 72576\\).",
+    "reason": "No printed option matched the correct 72576 (offered 1260/2520/504/756 — orders of magnitude off). The source solution's own method (126 × 24 × 24) gives it. Keyed option C repaired."
+  },
+
+  "05-10": {
+    "options": { "C": "2782080" },
+    "solution": "Arrange the 6 men: \\(6! = 720\\), creating 7 gaps. Place the 4 distinct women into gaps with at most 2 per gap: singles-only \\(\\binom{7}{4} \\cdot 4! = 840\\); one pair + two singles \\(7 \\cdot \\binom{6}{2} \\cdot \\binom{4}{2} \\cdot 2! \\cdot 2! = 2520\\); two pairs \\(\\binom{7}{2} \\cdot 4!/(2!2!) \\cdot 2! \\cdot 2! = 504\\) — total 3864. Overall \\(720 \\times 3864 = 2782080\\).",
+    "reason": "No printed option matched the correct 2,782,080 (the option set appears copied from a different 5-men problem). Keyed option C repaired."
+  },
+
+  "05-11": {
+    "stem": "Find the coefficient of \\(x^{14}\\) in the expansion of \\((x^2 + x^3 + x^4)^6\\).",
+    "solution": "\\((x^2+x^3+x^4)^6 = x^{12}(1+x+x^2)^6\\), so we need the coefficient of \\(x^2\\) in \\((1+x+x^2)^6\\): one \\(x^2\\) factor (\\(\\binom{6}{1} = 6\\)) or two \\(x\\) factors (\\(\\binom{6}{2} = 15\\)) — total \\(21\\).",
+    "reason": "As printed (x^12) the coefficient is trivially 1 — x^12 is the minimum-degree term — matching no option. The option set (28/35/21/42) fits the x^14 variant, whose answer 21 is exactly the keyed C. Stem repaired to x^14."
+  },
+
+  "05-13": {
+    "exclude": true,
+    "reason": "Ill-posed beyond repair: '3 particular people separated by exactly 2 people each from the other two' in a 7-circle needs 6 non-special people to fill the mandated gaps, but only 4 exist — the count is 0, matching no option, and no nearby well-posed variant produces any offered value."
+  },
+
+  "05-15": {
+    "options": { "B": "597" },
+    "solution": "Digits \\(a+b+c+d = 20\\) with \\(a \\geq 1\\), all \\(\\leq 9\\). Substitute \\(a' = a-1\\): \\(a'+b+c+d = 19\\) with caps (8,9,9,9). Inclusion–exclusion: \\(\\binom{22}{3} - \\binom{13}{3} - 3\\binom{12}{3} + 3 = 1540 - 286 - 660 + 3 = 597\\).",
+    "reason": "No printed option matched the correct 597 (offered 45/54/36/63), verified by the digit-sum symmetry s ↔ 37−s (sum 17 also gives 597). Keyed option B repaired."
+  },
+
+  "05-17": {
+    "options": { "C": "120" },
+    "solution": "Substitute \\(y_i = x_i - 2 \\geq 0\\): \\(y_1+y_2+y_3+y_4 = 7\\), giving \\(\\binom{7+3}{3} = \\binom{10}{3} = 120\\).",
+    "reason": "No printed option matched the correct 120 (the keyed 84 = C(9,3) fits a total of 14, not 15). Keyed option C repaired; the source solution's substitution was correct and its option sheet ignored it."
+  },
+
+  "05-18": {
+    "options": { "D": "26" },
+    "solution": "Treating repeated letters as identical (E×3, I×2 vowels; N×3, G×2, R×1 consonants): 2 vowels (EE, EI, II = 3) × 2 consonants (NN, NG, NR, GG, GR = 5) = 15; 3 vowels (EEE, EEI, EII = 3) × 1 consonant (3) = 9; 4 vowels (EEEI, EEII = 2). Total \\(15 + 9 + 2 = 26\\).",
+    "reason": "No printed option matched under either reading (identical letters → 26; all-distinct letters → 215; offered 52/63/45/71). Keyed option D repaired to the multiset count, the standard reading for selections from a word."
+  },
+
+  "05-20": {
+    "exclude": true,
+    "reason": "Near-verbatim cross-file duplicate of 03-25's sibling 03-29 (same multiset 1,1,2,2,3,4, same no-adjacent-identical constraint, correct count 84) — 03-29 already ships repaired. Excluded rather than repaired to avoid the same question twice in one chapter."
+  },
+
+  "05-22": {
+    "options": { "B": "360" },
+    "solution": "ALLAHABAD = A×4, L×2, H, B, D. The four identical A's form one block; with L,L,H,B,D that is 6 units: \\(\\frac{6!}{2!} = 360\\) (the block has no internal arrangements — the A's are identical).",
+    "reason": "No printed option matched the correct 360 (offered 576/288/144/432). Keyed option B repaired."
+  },
+
+  "05-23": {
+    "options": { "B": "161" },
+    "solution": "Both colours are identical, so an arrangement is determined by how many black balls sit in each of the 7 gaps around the 6 whites. Count solutions of \\(g_1+\\cdots+g_7 = 4\\) with \\(g_i \\leq 2\\): unrestricted \\(\\binom{10}{6} = 210\\), minus those with some \\(g_i \\geq 3\\): \\(7 \\times 7 = 49\\). Total \\(161\\).",
+    "reason": "No printed option matched the correct 161 (offered 15/20/25/10 — 35 = C(7,4) would fit 'no TWO consecutive', also absent). Keyed option B repaired."
+  },
+
+  "05-24": {
+    "answer": "B",
+    "reason": "Key flip A→B: a 5-digit palindrome abcba has 5 choices for a (non-zero) and 6 each for b and c: 5 × 6 × 6 = 180 (option B); the key said A (150)."
+  },
+
+  "05-27": {
+    "answer": "A",
+    "reason": "Key flip C→A: choose the particular person's 3 objects C(7,3) = 35, distribute the remaining 4 among the other two people 2⁴ = 16 → 560 (option A) — the source solution's own setup; the key said C (420)."
+  },
+
+  "05-28": {
+    "answer": "A",
+    "reason": "Key flip B→A: C(3,2) vowels × C(4,2) consonants × 4! arrangements = 3 × 6 × 24 = 432 (option A); the key said B (360)."
+  },
+
+  "05-32": {
+    "answer": "C",
+    "reason": "Key flip B→C: give each box 3 balls, distribute the remaining 8: C(11,3) = 165 (option C) — the source solution derives exactly C(11,3); the key said B (84)."
+  },
+
+  "05-30": {
+    "options": { "A": "2880" },
+    "solution": "Seat the 5 husbands around the table: \\((5-1)! = 24\\). The wives must occupy the 5 alternate seats: \\(5! = 120\\). Total \\(24 \\times 120 = 2880\\).",
+    "reason": "No printed option matched the correct 2880 (the keyed A's 768 = (5−1)!·2⁵ answers the different 'couples together' problem). Keyed option A repaired; the source solution derived 24 × 120 and was truncated."
+  },
+
+  "08-20": {
+    "options": { "A": "2940" },
+    "solution": "Each student gets ≥ 2 of the 8 pens, so the size profiles are (4,2,2) and (3,3,2). Each profile assigns to students in 3 ways: \\(3 \\cdot \\frac{8!}{4!2!2!} + 3 \\cdot \\frac{8!}{3!3!2!} = 3 \\cdot 420 + 3 \\cdot 560 = 2940\\).",
+    "reason": "No printed option matched the correct 2940 (the keyed 1806 = Surj(7,3) belongs to a different question). Keyed option A repaired. Note: the source solution's give-2-first method double-counts and was replaced by the size-profile computation."
+  },
+
+  "08-22": {
+    "options": { "C": "756" },
+    "solution": "Choose the 2 children who get nothing: \\(\\binom{4}{2} = 6\\). Distribute 7 distinct gifts onto the other 2 with both non-empty: \\(2^7 - 2 = 126\\). Total \\(6 \\times 126 = 756\\).",
+    "reason": "No printed option matched the correct 756 (offered 240/360/420/480). Keyed option C repaired; the source solution set up exactly this computation."
+  },
+
+  "08-24": {
+    "options": { "D": "23184" },
+    "solution": "Choose the 3 non-empty urns: \\(\\binom{4}{3} = 4\\). Surjections of 8 balls onto them: \\(3^8 - 3 \\cdot 2^8 + 3 = 5796\\). Total \\(4 \\times 5796 = 23184\\).",
+    "reason": "No printed option matched the correct 23184 (offered 10080/15120/20160/25200). Keyed option D repaired; the source solution's inclusion-exclusion was set up correctly and the options ignored it."
+  },
+
+  "09-6": {
+    "options": { "A": "3876" },
+    "solution": "Stars and bars: \\(\\binom{15 + 5 - 1}{5 - 1} = \\binom{19}{4} = 3876\\).",
+    "reason": "The source solution used C(20,4) = 15504 — the wrong formula (n + k − 1 = 19, not 20). Keyed option A repaired to the correct 3876."
+  },
+
+  "09-8": {
+    "options": { "A": "6" },
+    "solution": "Unrestricted: \\(\\binom{9}{2} = 36\\). Subtract distributions where some child gets ≥ 4: \\(3 \\times \\binom{5}{2} = 30\\) (two children over is impossible, 4+4 > 7). Valid \\(= 36 - 30 = 6\\) — exactly the patterns (3,3,1) and (3,2,2), three orderings each.",
+    "reason": "The source solution computed 36 − 30 = 6 correctly and then invented 'add back overlap etc ⇒ 8' (no overlap exists). Keyed option A repaired to 6."
+  },
+
+  "09-10": {
+    "options": { "A": "4" },
+    "solution": "Shelves are identical, so we count partitions of 13 into exactly 3 parts, each ≥ 3: (7,3,3), (6,4,3), (5,5,3), (5,4,4) — \\(4\\) ways.",
+    "reason": "No printed option matched the correct 4 (the option set assumed DISTINCT shelves — that variant gives 15 — while the stem says identical). Keyed option A repaired."
+  },
+
+  "09-11": {
+    "options": { "A": "19" },
+    "solution": "Sum over \\(z\\): \\(z=0\\) gives 7 values of \\(y\\); \\(z=1\\): 5; \\(z=2\\): 4; \\(z=3\\): 2; \\(z=4\\): 1. Total \\(7+5+4+2+1 = 19\\).",
+    "reason": "The source solution enumerated 7+5+4+2+1 = 19 correctly and then wrote 'corrected via enumeration = 28'. Keyed option A repaired to 19."
+  },
+
+  "09-12": {
+    "options": { "B": "48" },
+    "solution": "Choose the 2 empty boxes: \\(\\binom{4}{2} = 6\\). Distribute 9 chocolates into the 2 remaining boxes with each non-empty: \\(\\binom{8}{1} = 8\\). Total \\(6 \\times 8 = 48\\).",
+    "reason": "The source solution computed 6 × 8 = 48 and then appended '⇒ correct 36'. Keyed option B repaired to 48."
+  },
+
+  "09-15": {
+    "options": { "A": "36" },
+    "solution": "The books are identical, so distribute 7 among the other 3 students: \\(\\binom{7 + 3 - 1}{3 - 1} = \\binom{9}{2} = 36\\).",
+    "reason": "The option set (2187 = 3⁷ etc.) was built for DISTINCT books, contradicting the stem's identical books. Keyed option A repaired to the stars-and-bars 36."
+  },
+
+  "09-18": {
+    "options": { "B": "20" },
+    "solution": "Unconstrained: \\(\\binom{12}{2} = 66\\). Subtract violations: \\(x \\geq 5\\): \\(\\binom{7}{2} = 21\\); \\(y \\geq 6\\): \\(\\binom{6}{2} = 15\\); \\(z \\geq 7\\): \\(\\binom{5}{2} = 10\\). No two violations can hold simultaneously (the remaining sum would be negative). Valid \\(= 66 - 46 = 20\\).",
+    "reason": "No printed option matched the correct 20 (option D was the unconstrained 66; the source solution's inclusion-exclusion arithmetic collapsed mid-line into '41?? correct 63'). Keyed option B repaired."
+  },
+
+  "09-19": {
+    "exclude": true,
+    "reason": "Verbatim in-file duplicate of 09-11 (same equation x₁+2x₂+3x₃=12 with renamed variables, same options) — and defective the same way (correct count 19 matches no option). Excluded rather than repaired: repairing both would ship the same question twice in one subtopic."
+  },
+
+  "06-7": {
+    "options": { "B": "15600" },
+    "reason": "Options A and B were identical (22100 = C(52,3), the correct answer). B replaced with a distinct distractor; key A retained."
+  },
+
+  "04-3": {
+    "answer": "C",
+    "reason": "Key flip B→C: pair as a block gives (4−1)!·2! = 12 (option C) — the source solution's own method; the key said B (24)."
+  },
+
+  "04-4": {
+    "answer": "A",
+    "reason": "Key flip C→A: a necklace admits flips, so (6−1)!/2 = 60 (option A); the keyed C (30) divides by an extra 2."
+  },
+
+  "04-5": {
+    "answer": "B",
+    "reason": "Key flip D→B: boys circularly 3! = 6, girls in the 4 gaps 4! = 24 → 144 (option B) — the source solution's own setup; the key said D (1152)."
+  },
+
+  "04-8": {
+    "answer": "B",
+    "reason": "Key flip A→B: fixing one of the pair kills the rotational symmetry, the opposite seat is forced, and the remaining 4 people arrange in 4! = 24 (option B) — exactly the source solution's derivation; the key said A (48)."
+  },
+
+  "04-12": {
+    "answer": "B",
+    "reason": "Key flip A→B: couple-blocks circularly (4−1)! = 6, each couple internally 2⁴ = 16 → 96 (option B); the key said A (48, a dropped factor of 2)."
+  },
+
+  "04-14": {
+    "answer": "A",
+    "reason": "Key flip C→A: girls as one block gives (6−1)! · 3! = 120 · 6 = 720 (option A) — the source solution's own setup; the key said C (2160)."
+  },
+
+  "04-16": {
+    "answer": "A",
+    "solution": "Specific seats break the rotational symmetry: the 4 named people fill their 4 seats in \\(4! = 24\\) ways and the rest fill the remaining seats in \\(4! = 24\\) ways — \\(576\\) total.",
+    "reason": "Key flip C→A: 24 × 24 = 576 (option A) — the source solution computes exactly this; the key said C (96)."
+  },
+
+  "04-18": {
+    "answer": "B",
+    "solution": "CIRCLE has 6 letters with C repeated twice. Circular arrangements \\(= \\frac{6!/2!}{6} = \\frac{360}{6} = 60\\) (no non-trivial rotation can fix an arrangement, so plain division is exact).",
+    "reason": "Key flip A→B: CIRCLE contains TWO C's — the source solution treated all 6 letters as distinct, giving the keyed 120; the correct count is 60 (option B)."
+  },
+
+  "04-20": {
+    "answer": "A",
+    "reason": "Key flip C→A: men circularly (5−1)! = 24, women in the 5 gaps 5! = 120 → 2880 (option A) — the source solution's own setup; the key said C (14400)."
+  },
+
+  "04-22": {
+    "answer": "B",
+    "solution": "Burnside over the dihedral group D₈: rotations fix \\(70 + 2 + 6 + 2 = 80\\) colourings, reflections fix \\(48\\); \\((80 + 48)/16 = 8\\) distinct bracelets.",
+    "reason": "Key flip A→B: the correct bracelet count for 4+4 identical beads is 8 (option B, by Burnside); the keyed A (4) has no supporting computation — naive division 70/16 isn't even an integer."
+  },
+
+  "04-9": {
+    "options": { "A": "7" },
+    "solution": "Linearly there are \\(\\binom{8}{3} = 56\\) colourings. Around a circle, no non-trivial rotation can fix a colouring (a rotation of order d needs the colour counts divisible by d, and 5 and 3 admit none), so each circular arrangement corresponds to exactly 8 linear ones: \\(56 / 8 = 7\\).",
+    "reason": "No printed option matched the correct 7 (offered 8/4/56/16 — 56 is the linear count; the source solution reached 56/8 and stopped). Keyed option A repaired."
+  },
+
+  "04-10": {
+    "options": { "D": "145152" },
+    "solution": "Choose the first table's 5 people: \\(\\binom{10}{5} = 252\\). Seat each table circularly: \\((5-1)! = 24\\) each. Total \\(252 \\times 24 \\times 24 = 145152\\) (tables treated as distinct).",
+    "reason": "All printed options (2520/5040/1260/7560) were off by orders of magnitude from the source solution's own 252 × 24 × 24 = 145152. Keyed option D repaired."
+  },
+
+  "04-17": {
+    "options": { "A": "4320" },
+    "solution": "The trio with exactly one person between each adjacent pair forms a block X·p·Y·q·Z: order the trio \\(3! = 6\\), choose and order the two in-between people from the other 6: \\(6 \\times 5 = 30\\). The block plus the remaining 4 people are 5 units around the circle: \\((5-1)! = 24\\). Total \\(6 \\times 30 \\times 24 = 4320\\).",
+    "reason": "No printed option matched the correct 4320 (offered 432/864/216/1728), cross-checked via a labelled-seat count (9 · 3! · 6! / 9 = 4320). Keyed option A repaired."
+  },
+
+  "04-23": {
+    "answer": "C",
+    "stem": "How many ways can \\(6\\) people sit around a circular table if two particular people must not sit next to each other?",
+    "solution": "Total circular arrangements: \\((6-1)! = 120\\). With the two together (as a block): \\(2! \\times (5-1)! = 48\\). Not together: \\(120 - 48 = 72\\).",
+    "reason": "As printed the question is IMPOSSIBLE: with 5 people the two arcs between the pair sum to 3, so both cannot be ≥ 2 — the source solution's own numbers (24 − 12 − 12) give 0, and every option even exceeded the 24 total. Repaired to the standard 6-people not-adjacent question; key B→C (72)."
+  },
+
+  "04-24": {
+    "stem": "In how many ways can \\(8\\) identical chairs be arranged around a circular table?",
+    "reason": "The stem didn't say the chairs are identical, making 'distinct chairs' (5040, option A) the natural reading against the keyed C (1). Adding 'identical' makes the keyed answer's logic (indistinguishable objects in a circle — one arrangement) unambiguous."
+  },
+
+  "04-26": {
+    "options": { "D": "70" },
+    "solution": "Linearly: \\(\\frac{8!}{3! \\cdot 3! \\cdot 2!} = 560\\) arrangements. No non-trivial rotation of the circle can fix one (the colour counts 3, 3, 2 are not all divisible by any d > 1 dividing 8), so \\(560 / 8 = 70\\).",
+    "reason": "No printed option matched the correct 70 (offered 28/56/14/7 — the keyed 7 dropped a factor). Keyed option D repaired."
+  },
+
+  "04-27": {
+    "options": { "A": "1247400" },
+    "solution": "Divide 12 people into 3 unlabeled groups of 4: \\(\\frac{\\binom{12}{4}\\binom{8}{4}\\binom{4}{4}}{3!} = 5775\\). Seat each group around its table: \\((4-1)! = 6\\) per table, \\(6^3 = 216\\). Total \\(5775 \\times 216 = 1247400\\).",
+    "reason": "All printed options (25200/50400/12600/37800) were off by two orders of magnitude from the source solution's own method (5775 × 6³). Keyed option A repaired."
+  }
+}

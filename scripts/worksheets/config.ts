@@ -121,6 +121,42 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "06. Mixed.xlsx", subtopicName: "Mixed Practice" },
     ],
   },
+  "quadratic-equations": {
+    id: "quadratic-equations",
+    chapterName: "Quadratic Equations",
+    dir: join(SOURCE_ROOT, "04. Quadratic Equations", "Concept Practice"),
+    sourceFile: "Cadetprep_Worksheets_Quadratic_Equations",
+    note: "Cadetprep concept-practice worksheet — Quadratic Equations",
+    // CURATED (2026-08-06 analysis): "05. QE - Minima and Maxima.xlsx" is a 20/20
+    // exact-stem duplicate of the _new file — only _new is ingested. The two
+    // formula files ("Formula Revision_old.xlsx" ⊂ "QE_Formula_revision.xlsx")
+    // are the Formula Revision content class, out of the Concept-Practice scope.
+    files: [
+      { file: "01. QE - Fundamentals.xlsx", subtopicName: "Fundamentals of Quadratic Equations" },
+      { file: "02. QE - Factorization Methods.xlsx", subtopicName: "Factorization Methods" },
+      { file: "03. QE- Nature of Roots.xlsx", subtopicName: "Nature of Roots" },
+      { file: "04. QE- Relationship betn Roots and Coefficients.xlsx", subtopicName: "Roots and Coefficients" },
+      { file: "05. QE - Minima and Maxima_new.xlsx", subtopicName: "Minima and Maxima" },
+    ],
+  },
+  "permutations-combinations": {
+    id: "permutations-combinations",
+    chapterName: "Permutations and Combinations",
+    dir: join(SOURCE_ROOT, "09. Permutations and Combinations", "Concept_Practice"),
+    sourceFile: "Cadetprep_Worksheets_Permutations_and_Combinations",
+    note: "Cadetprep concept-practice worksheet — Permutations and Combinations",
+    files: [
+      { file: "01. Fundamentals.xlsx", subtopicName: "Counting Fundamentals" },
+      { file: "02. Linear Permutations.xlsx", subtopicName: "Linear Permutations" },
+      { file: "03. Permutations with Restrictions.xlsx", subtopicName: "Permutations with Restrictions" },
+      { file: "04. Circular Permutations.xlsx", subtopicName: "Circular Permutations" },
+      { file: "05. Advanced Permutation Topics.xlsx", subtopicName: "Advanced Permutation Topics" },
+      { file: "06. Combinations Basics.xlsx", subtopicName: "Combinations Basics" },
+      { file: "07. Combinations with Restrictions.xlsx", subtopicName: "Combinations with Restrictions" },
+      { file: "08. Distribution of Distinct Objects.xlsx", subtopicName: "Distribution of Distinct Objects" },
+      { file: "09. Distribution of Identical Objects.xlsx", subtopicName: "Distribution of Identical Objects" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {
