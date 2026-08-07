@@ -1,0 +1,109 @@
+{
+  "_comment": "Adjudicated repairs for Functions. Cleanest chapter of the source so far — all keys verified correct; defects are equivalent-value option pairs and loose wording. Every entry re-derived by hand.",
+
+  "01-11": {
+    "options": { "C": "A vertical line \\(x = 5\\)" },
+    "reason": "Option C read 'a horizontal line x = 5' — internally inconsistent (x = 5 is vertical). Corrected to 'vertical', which keeps it a genuine non-function distractor; key B (upward parabola) retained."
+  },
+
+  "01-35": {
+    "options": { "B": "\\(7\\)" },
+    "reason": "Options A (9) and B (9/1) were numerically identical. B replaced; key A retained (f(4) = 9/1 = 9)."
+  },
+
+  "01-40": {
+    "options": { "A": "\\((4, \\infty)\\)" },
+    "reason": "Options A ([0,∞)−{4}) and the keyed C ([0,4)∪(4,∞)) denoted the same set. A replaced with a strict subset (false); key C retained (need x ≥ 0 and x ≠ 4)."
+  },
+
+  "01-46": {
+    "options": { "B": "\\(5\\)" },
+    "reason": "Options A (3) and B (9/3) were numerically identical. B replaced; key A retained (g(7) = 9/3 = 3)."
+  },
+
+  "04-26": {
+    "options": { "C": "\\(\\frac{x}{x - 1}\\)", "D": "\\(\\frac{1}{x - 1}\\)" },
+    "reason": "Doubly duplicated set: A ≡ C (1/(x+1) vs 1/(1+x)) and B ≡ D. C and D replaced with distinct false forms; key A retained (f(1/x) = (1/x)/((1/x)+1) = 1/(1+x))."
+  },
+
+  "05-7": {
+    "options": { "D": "\\((x + 1)^2\\)" },
+    "reason": "Options A (x²−2x+1) and D ((x−1)²) were identical. D replaced with the wrong-sign square; key A retained."
+  },
+
+  "05-8": {
+    "options": { "C": "\\(\\ln 2\\)" },
+    "reason": "Options A (2) and C (ln(e²)) were equivalent. C replaced; key A retained (ln(e²) = 2)."
+  },
+
+  "05-24": {
+    "options": { "D": "\\(2\\ln 2\\)" },
+    "reason": "Options A (4) and D (e^{2ln2}) were equivalent. D replaced with the exponent itself (≈1.39, false); key A retained ((e^{ln2})² = 4)."
+  },
+
+  "05-26": {
+    "options": { "C": "\\(\\tan\\left(\\frac{\\pi}{3}\\right)\\)", "D": "\\(\\frac{\\pi}{4}\\)" },
+    "reason": "Options A (1) and C (tan(π/4)) were equivalent, and D's '\\sqrt[1]{π/4}' was a typeset oddity. C replaced with tan(π/3) = √3 (false), D cleaned to π/4; key A retained."
+  },
+
+  "05-32": {
+    "options": { "D": "\\(8\\)" },
+    "reason": "Options B (4) and D (log₂16) were equivalent. D replaced; key B retained ((f∘g)(3) = log₂(2⁴) = 4)."
+  },
+
+  "05-37": {
+    "options": { "B": "\\(\\sqrt{5}\\)" },
+    "reason": "Options A (3) and B (√9) were equivalent. B replaced; key A retained (√(2·4+1) = 3)."
+  },
+
+  "05-38": {
+    "options": { "C": "\\(\\sqrt{3}\\)" },
+    "reason": "Options A (1) and C (cot(π/4)) were equivalent. C replaced; key A retained (cot(π/2 − π/4) = 1)."
+  },
+
+  "05-42": {
+    "options": { "B": "\\([-1, 1] \\setminus \\{0\\}\\)" },
+    "solution": "\\(\\sec(\\arccos x) = \\frac{1}{x}\\). \\(\\arccos\\) needs \\(x \\in [-1, 1]\\), and at \\(x = 0\\), \\(\\arccos 0 = \\frac{\\pi}{2}\\) where \\(\\sec\\) is undefined — so the domain is \\([-1, 1] \\setminus \\{0\\}\\).",
+    "reason": "No printed option matched the true domain [−1,1]−{0} (sec fails at arccos 0 = π/2). Keyed option B repaired from (−1,1); key B retained."
+  },
+
+  "05-45": {
+    "options": { "B": "\\(\\frac{18}{4}\\)" },
+    "reason": "Options A (9/5) and B (18/10) were the same value unreduced. B replaced with a false fraction; key A retained (f(9) = 18/10 = 9/5)."
+  },
+
+  "06-26": {
+    "options": { "C": "\\(13\\)", "D": "\\(7\\)" },
+    "reason": "C (10/1) duplicated the keyed B (10) and D (5/1) duplicated A (5). Both replaced with distinct values; key B retained (solve (2y+1)/(y−3) = 3 ⇒ y = 10)."
+  },
+
+  "06-35": {
+    "options": { "C": "\\(\\frac{1}{x - 1}\\)" },
+    "reason": "Options A ((x−1)/x) and C (1 − 1/x) were the identical inverse. C replaced with a false form; key A retained (y = 1/(1−x) ⇒ x = (y−1)/y)."
+  },
+
+  "02-2": {
+    "stem": "Which of the following function types is defined by: distinct elements of the domain always map to distinct elements of the codomain?",
+    "reason": "As printed ('every element maps to a unique element') the property describes EVERY function, not injectivity. Stem reworded to the actual defining property; key A (one-to-one) retained."
+  },
+
+  "02-37": {
+    "options": { "D": "\\(\\begin{cases} 1 & \\text{if } x \\neq 0 \\\\ 0 & \\text{if } x = 0 \\end{cases}\\)" },
+    "reason": "Options B (piecewise x / −x) and D (|x|) both described the modulus function — equivalent distractors. D replaced with a distinct false step function; key A (the true sgn definition) retained."
+  },
+
+  "02-40": {
+    "options": { "A": "Many-to-one on \\([0, \\infty)\\)" },
+    "reason": "Old option A ('one-to-one but not onto ℝ') was ALSO a true statement (codomain-dependent), making two defensible answers. Replaced with a false claim (|x| = x is injective on [0,∞)); key C retained."
+  },
+
+  "02-44": {
+    "options": { "B": "Bounded on \\(\\mathbb{R}\\)" },
+    "reason": "Old option B ('Onto') was ALSO true — x³ − x is surjective on ℝ — making two correct options. Replaced with a false claim (the cubic is unbounded); key C (odd function) retained."
+  },
+
+  "02-46": {
+    "options": { "D": "Bijective from \\(\\mathbb{R}\\setminus\\{0\\}\\) to \\(\\mathbb{R}\\)" },
+    "reason": "Old option D ('bijective on (0,∞)') was arguably also true (1/x is a self-inverse bijection there). Pinned to a false codomain claim (1/x never attains 0); key B (odd) retained."
+  }
+}

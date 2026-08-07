@@ -178,6 +178,41 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "Verification&Proof-Problems.xls", subtopicName: "Verification and Proof Problems" },
     ],
   },
+  // ─── Root-layout chapters (folders 06-30): the subtopic worksheets sit directly
+  // in the chapter folder — same 15-col template, same content class as the
+  // Concept Practice folders; scope re-opened by the user 2026-08-07. ───
+  "functions": {
+    id: "functions",
+    chapterName: "Functions",
+    dir: join(SOURCE_ROOT, "06. Functions"),
+    sourceFile: "Cadetprep_Worksheets_Functions",
+    note: "Cadetprep concept-practice worksheet — Functions",
+    files: [
+      { file: "01. Basics Function Theory.xlsx", subtopicName: "Basic Function Theory" },
+      { file: "02. Types of Functions.xlsx", subtopicName: "Types of Functions" },
+      { file: "03. Even and Odd functions.xlsx", subtopicName: "Even and Odd Functions" },
+      { file: "04. Basic Operations.xlsx", subtopicName: "Operations on Functions" },
+      { file: "05. Functions - Composite Functions.xlsx", subtopicName: "Composite Functions" },
+      { file: "06. Inverse Functions.xlsx", subtopicName: "Inverse Functions" },
+    ],
+  },
+  "straight-lines": {
+    id: "straight-lines",
+    chapterName: "Straight Lines",
+    dir: join(SOURCE_ROOT, "07. Straight Lines"),
+    sourceFile: "Cadetprep_Worksheets_Straight_Lines",
+    note: "Cadetprep concept-practice worksheet — Straight Lines",
+    files: [
+      { file: "01. Basics.xlsx", subtopicName: "Coordinate Basics" },
+      { file: "02. Equation of a Straight Line.xlsx", subtopicName: "Equation of a Straight Line" },
+      { file: "03. Slope and Angle Concepts.xlsx", subtopicName: "Slope and Inclination" },
+      { file: "04. Angle Between Two Lines.xlsx", subtopicName: "Angle Between Two Lines" },
+      { file: "05. Distance Formulas.xlsx", subtopicName: "Distance Formulas" },
+      { file: "06. Parallel and Perpendicular Lines.xlsx", subtopicName: "Parallel and Perpendicular Lines" },
+      { file: "07. Concurrent Lines.xlsx", subtopicName: "Concurrent Lines" },
+      { file: "08. Position of Point with Respect to Line.xlsx", subtopicName: "Position of a Point Relative to a Line" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {
