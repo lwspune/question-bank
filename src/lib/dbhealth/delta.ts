@@ -153,10 +153,16 @@ function diffQueries(
       callsPerDay: perDay(callsDelta, elapsedHours),
       isNew,
       suspectedReset,
+      windowKnown: !isNew && !suspectedReset,
+      lifetimeCalls: q.calls,
     };
   });
 
-  // Rank by activity IN THE WINDOW. Ranking by lifetime total is how a query
-  // that was fixed months ago keeps topping the list forever.
-  return out.sort((a, b) => b.callsDelta - a.callsDelta);
+  // Rank by activity IN THE WINDOW — and only among rows where the window is
+  // actually known. A first-seen row carries a lifetime figure, which would
+  // otherwise dominate the ranking and pass itself off as window activity.
+  return out.sort((a, b) => {
+    if (a.windowKnown !== b.windowKnown) return a.windowKnown ? -1 : 1;
+    return b.callsDelta - a.callsDelta;
+  });
 }

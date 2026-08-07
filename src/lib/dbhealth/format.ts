@@ -60,19 +60,29 @@ export function renderReport(delta: HealthDelta, flags: Flag[]): string {
   out.push("");
 
   if (delta.counters.available && delta.queries.length > 0) {
-    const active = delta.queries.filter((q) => q.callsDelta > 0).slice(0, 10);
+    // Only rows whose window is known — a first-seen row carries a LIFETIME
+    // figure, and printing it here would put months of history under a heading
+    // that promises this window.
+    const active = delta.queries.filter((q) => q.windowKnown && q.callsDelta > 0).slice(0, 10);
+    const unknown = delta.queries.filter((q) => !q.windowKnown).length;
     if (active.length === 0) {
-      out.push("BUSIEST QUERIES: none ran in this window.");
+      out.push("BUSIEST QUERIES: none with a measurable window ran in this window.");
     } else {
       out.push("BUSIEST QUERIES (this window, not lifetime)");
       for (const q of active) {
-        const marks = [q.isNew ? "NEW" : "", q.suspectedReset ? "counter-restarted" : ""].filter(Boolean).join(" ");
+        const marks = q.suspectedReset ? "counter-restarted" : "";
         out.push(
           `  ${num(q.callsDelta).padStart(9)} calls  ${bytes(q.tempBytesPerCall).padStart(9)}/call spill  ` +
             `${(q.meanMsPerCall ?? 0).toFixed(1).padStart(7)} ms  ${q.queryid}${marks ? `  [${marks}]` : ""}`
         );
         out.push(`            ${q.label.slice(0, 96)}`);
       }
+    }
+    if (unknown > 0) {
+      out.push(
+        `  (${unknown} newly-tracked ${unknown === 1 ? "query" : "queries"} omitted — first seen this snapshot, so their` +
+          ` counters are lifetime totals, not this window's.)`
+      );
     }
     out.push("");
   }

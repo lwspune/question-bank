@@ -85,6 +85,9 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
     });
   } else {
     for (const q of delta.queries) {
+      // A first-seen or counter-restarted row carries LIFETIME figures, not
+      // this window's. Thresholding on them invents findings out of history.
+      if (!q.windowKnown) continue;
       const perCall = q.tempBytesPerCall;
       if (perCall === null || perCall < THRESHOLDS.spillPerCallWarnBytes) continue;
       if (q.tempBytesDelta < THRESHOLDS.spillTotalMinBytes) continue;
@@ -103,7 +106,10 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
     // read as "all clear" when it actually means "the culprit is off our radar".
     const dbSpill = delta.tempBytesDelta ?? 0;
     if (dbSpill >= THRESHOLDS.unattributedSpillMinBytes) {
-      const claimed = delta.queries.reduce((sum, q) => sum + Math.max(0, q.tempBytesDelta), 0);
+      // Only rows whose window is known can account for the window's spill.
+      const claimed = delta.queries
+        .filter((q) => q.windowKnown)
+        .reduce((sum, q) => sum + Math.max(0, q.tempBytesDelta), 0);
       if (claimed < dbSpill * THRESHOLDS.unattributedSpillFraction) {
         flags.push({
           level: "warn",

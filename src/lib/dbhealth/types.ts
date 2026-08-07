@@ -73,6 +73,20 @@ export type QueryDelta = {
   /** Not present in the previous snapshot at all. */
   isNew: boolean;
   /**
+   * Whether this row's window figures mean anything.
+   *
+   * FALSE for a first-seen query and for one whose counters restarted. A query
+   * absent from the previous snapshot is either genuinely new (lifetime is
+   * roughly the window) or long-lived and merely newly COLLECTED (lifetime is
+   * three months) — and nothing stored distinguishes them. Widening the
+   * collector in migration 0070 made 100 queries "appear" at once, each
+   * credited with its lifetime as if it happened in a 3-minute window. Callers
+   * must NOT rank, sum or threshold on a row where this is false.
+   */
+  windowKnown: boolean;
+  /** Cumulative calls since stats_reset — context for a first-seen row. */
+  lifetimeCalls: number;
+  /**
    * A counter went backwards without a global stats reset — pg_stat_statements
    * evicts entries under memory pressure and re-creates them at zero. The
    * reported delta is then the post-eviction value, which UNDER-counts.

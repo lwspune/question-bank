@@ -169,12 +169,13 @@ export default async function DatabaseHealthPage() {
               )}
             </section>
 
-            {delta.counters.available && delta.queries.some((q) => q.callsDelta > 0) ? (
+            {delta.counters.available && delta.queries.some((q) => q.windowKnown && q.callsDelta > 0) ? (
               <section className="mt-8">
                 <h2 className="text-lg font-medium">Busiest queries in this window</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Ranked by activity in the window, never by lifetime total — otherwise a query fixed months ago
-                  tops the list forever.
+                  tops the list forever. Queries first seen in this snapshot are left out: their counters are
+                  lifetime totals, so there is no honest way to say what they did in this window.
                 </p>
                 <div className="mt-3 overflow-x-auto rounded-lg border">
                   <table className="w-full text-sm">
@@ -188,7 +189,7 @@ export default async function DatabaseHealthPage() {
                     </thead>
                     <tbody>
                       {delta.queries
-                        .filter((q) => q.callsDelta > 0)
+                        .filter((q) => q.windowKnown && q.callsDelta > 0)
                         .slice(0, 10)
                         .map((q) => (
                           <tr key={q.queryid} className="border-t align-top">
@@ -199,9 +200,9 @@ export default async function DatabaseHealthPage() {
                               <code className="block max-w-xl truncate font-mono text-xs text-muted-foreground">
                                 {q.label}
                               </code>
-                              {q.isNew || q.suspectedReset ? (
+                              {q.suspectedReset ? (
                                 <span className="mt-1 inline-block text-xs text-amber-600 dark:text-amber-400">
-                                  {q.isNew ? "new" : "counter restarted — under-counted"}
+                                  counter restarted — under-counted
                                 </span>
                               ) : null}
                             </td>
@@ -210,6 +211,13 @@ export default async function DatabaseHealthPage() {
                     </tbody>
                   </table>
                 </div>
+                {delta.queries.filter((q) => !q.windowKnown).length > 0 ? (
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {delta.queries.filter((q) => !q.windowKnown).length} newly-tracked queries are omitted — they were
+                    first seen in this snapshot, so their counters are totals since the statistics were last reset, not
+                    this window&rsquo;s activity.
+                  </p>
+                ) : null}
               </section>
             ) : null}
 
