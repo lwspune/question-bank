@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { bankSubjectNames } from "./subjects";
 import {
   BOOK_OF_EXAM,
   buildAlignmentRows,
@@ -438,7 +439,11 @@ export async function loadOldSyllabusByExam(
       .from("questions")
       .select("pyq_year,exams!inner(name),subjects!inner(name),chapters!inner(name)")
       .in("exams.name", exams)
-      .eq("subjects.name", subject)
+      // Alias-aware: JEE names its Maths subject row "Maths" while NDA/MHT-CET
+      // say "Mathematics", so a plain .eq() would silently omit JEE from the
+      // dead-chapter scan. Resolved here, inside the loader, so no caller can
+      // forget to widen the join.
+      .in("subjects.name", bankSubjectNames(subject))
       .eq("visibility", "PUBLIC")
       .eq("question_kind", "pyq")
       .range(from, from + PAGE - 1);

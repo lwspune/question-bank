@@ -12,7 +12,7 @@
  * spines, and its route exists.
  */
 
-export type SyllabusSubjectKey = "chemistry" | "physics";
+export type SyllabusSubjectKey = "chemistry" | "physics" | "maths";
 
 export type SyllabusSubject = {
   /** URL segment: /dashboard/syllabus/<key>. */
@@ -47,6 +47,23 @@ export type SyllabusSubject = {
    * whenever either changes. Empty means that spine is not extracted yet.
    */
   ncertSeedFiles: string[];
+  /**
+   * What the BANK's `subjects.name` rows are called, when any exam disagrees
+   * with the spine literal. JEE's Maths subject row is literally "Maths" while
+   * NDA and MHT-CET say "Mathematics" — the first subject where the three banks
+   * disagree — and both bank-join seams (`ingest-bank-spine`,
+   * `loadOldSyllabusByExam`) would silently drop JEE on a plain
+   * `.eq("subjects.name", subject)`: the spine would ingest 196 of 309 subtopics
+   * and the dead-chapter scan would see no JEE Maths at all, with no error
+   * either way. Renaming the JEE row instead is the wrong fix — scripts/jee/
+   * passes the 'Maths' literal throughout.
+   *
+   * Absent means the spine literal IS the bank name (Chemistry, Physics). When
+   * present it must include the spine literal itself: aliases WIDEN the join,
+   * never replace it. Resolve via {@link bankSubjectNames}, not by reading this
+   * field — the helper is what keeps the default in one place.
+   */
+  bankSubjectNames?: string[];
   /**
    * The State Board book teaches some topics across BOTH years as complementary
    * halves — Std XI Ch.10 Electrostatics stops at Gauss' law and Std XII Ch.8
@@ -102,7 +119,39 @@ export const SYLLABUS_SUBJECTS: Record<SyllabusSubjectKey, SyllabusSubject> = {
     ncertSeedFiles: ["phy-ncert-11.json", "phy-ncert-12.json"],
     spiralChapters: true,
   },
+  maths: {
+    key: "maths",
+    subject: "Mathematics",
+    label: "Mathematics",
+    // Measured 2026-08-07: every JEE Maths chapter reaches 2025/2026 except
+    // Height & Distance (last 2023, 15 PYQ) and Mathematical Reasoning (last
+    // 2023, 67 PYQ) — both dropped in the 2025 JEE rationalisation. 2024 flags
+    // exactly those two. Watch: Properties of Triangle last fired 2024 across
+    // only 11 PYQ, so it reads live — correctly undecided until 2026 papers
+    // settle it. NDA has no dead chapters; MHT-CET's Measures of Dispersion
+    // (last 2024) stays live, one silent year not being evidence.
+    liveFromYear: 2024,
+    seedFiles: ["maths-sb-11.json", "maths-sb-12.json"],
+    ncertSeedFiles: ["maths-ncert-11.json", "maths-ncert-12.json"],
+    // Trig (XI Ch.2-3 -> XII Ch.3), Matrices/Determinants (XI Ch.4 -> XII Ch.2),
+    // Straight Line (XI Ch.5 -> XII Pair of Lines), Probability (XI Ch.9 ->
+    // XII Ch.7-8) and Limits/Continuity/Differentiation (XI Part 2 Ch.7-9 ->
+    // XII Part 2 Ch.1-2) all split across the two State Board years.
+    spiralChapters: true,
+    bankSubjectNames: ["Mathematics", "Maths"],
+  },
 };
+
+/**
+ * The `subjects.name` literals a bank join must match for a spine subject.
+ * Defaults to the literal itself for unregistered or alias-free subjects, so
+ * every existing caller keeps its exact behaviour. See
+ * {@link SyllabusSubject.bankSubjectNames} for why this exists.
+ */
+export function bankSubjectNames(subject: string): string[] {
+  const entry = Object.values(SYLLABUS_SUBJECTS).find((s) => s.subject === subject);
+  return entry?.bankSubjectNames ?? [subject];
+}
 
 /** The subject `/dashboard/syllabus` redirects to. */
 export const DEFAULT_SYLLABUS_SUBJECT: SyllabusSubjectKey = "chemistry";
