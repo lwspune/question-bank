@@ -14,6 +14,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
 import { buildConceptWeightTable } from "@/lib/notes/conceptWeight";
+import { loadSubtopicPyqCounts } from "@/lib/notes/subtopicCounts";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
 import ConceptWeightTable from "./ConceptWeightTable";
@@ -56,18 +57,20 @@ export default async function NotesChapterLanding({ chapter }: Props) {
     .map((name) => (name && chapterTax ? chapterTax.subtopics.get(name) : null))
     .filter((id): id is string => Boolean(id));
 
-  const countsBySubtopic = new Map<string, number>();
-  if (subtopicIds.length > 0) {
-    const { data } = await supabase
-      .from("questions")
-      .select("subtopic_id")
-      .in("subtopic_id", subtopicIds)
-      .eq("question_kind", "pyq"); // PYQ-only weightage counts (migration 0036)
-    for (const row of data ?? []) {
-      const id = (row as { subtopic_id: string }).subtopic_id;
-      countsBySubtopic.set(id, (countsBySubtopic.get(id) ?? 0) + 1);
-    }
-  }
+  // Per-subtopic PYQ counts, aggregated in Postgres. This used to fetch ONE ROW
+  // PER QUESTION in the chapter and tally them here — 9,858 bytes / 170 rows on
+  // NDA Maths "Matrices & Determinants" to render five integers, re-run for all
+  // 83 chapter landings on every build. It also carried the PostgREST 1000-row
+  // cap: past 1000 PYQs in a chapter the counts would silently under-report.
+  const countsBySubtopic =
+    chapterTax && subtopicIds.length > 0
+      ? await loadSubtopicPyqCounts(supabase, {
+          chapterId: chapterTax.id,
+          examId: taxonomy.examId,
+          subjectId: taxonomy.subjectId,
+          subtopicIds,
+        })
+      : new Map<string, number>();
 
   // Per-concept PYQ counts for the weightage table. Tags are keyed by
   // subtopic_slug (globally unique) — RLS scopes anon to tags on PUBLIC
