@@ -1,0 +1,395 @@
+{
+  "_comment": "Adjudicated repairs for Derivatives. Dominant defect class: algebraically equivalent option pairs (factored vs expanded, cot x vs cos x/sin x). Every entry re-derived by hand; numeric refutations noted where used.",
+
+  "01-4": {
+    "answer": "D",
+    "options": { "B": "Continuous and differentiable" },
+    "solution": "At \\(x = -2\\): left limit \\(2(-2)+3 = -1\\) equals \\(f(-2) = -2+1 = -1\\), so \\(f\\) is continuous. But the left derivative is 2 and the right derivative is 1, so \\(f\\) is not differentiable there — continuous but not differentiable.",
+    "reason": "Key flip B→D: both 'Continuous' (B) and the more specific 'Continuous but not differentiable' (D) were literally true. D is the complete description; B reworded to the false 'continuous and differentiable' so exactly one option is right."
+  },
+
+  "01-14": {
+    "answer": "D",
+    "solution": "\\(f(x) = [2x] - 2[x]\\) equals 0 when \\(\\{x\\} < \\frac{1}{2}\\) and 1 when \\(\\{x\\} \\geq \\frac{1}{2}\\). On \\([0, 2]\\) it jumps at \\(x = \\frac{1}{2}, 1, \\frac{3}{2}\\), and at the endpoint \\(x = 2\\) the left limit is 1 while \\(f(2) = 0\\) — four points of discontinuity.",
+    "reason": "Key flip C→D: the keyed 1 is far off — the function jumps at 1/2, 1, 3/2 and at the closed endpoint 2 (left-continuity fails), giving 4."
+  },
+
+  "01-28": {
+    "stem": "For \\(f(x) = \\begin{cases} ax + 5 & \\text{for } x \\leq 2 \\\\ bx + 3 & \\text{for } x > 2 \\end{cases}\\) to be differentiable at \\(x = 2\\), which conditions must \\(a\\) and \\(b\\) satisfy?",
+    "solution": "Differentiability at \\(x = 2\\) requires continuity (\\(2a + 5 = 2b + 3\\)) AND matching slopes (\\(a = b\\)). (Note the two conditions together force \\(5 = 3\\), so no such pair exists — the requirement set itself is what the question tests.)",
+    "reason": "As printed ('If f is differentiable…') the premise is impossible — a = b with 2a+5 = 2b+3 has no solution. Stem reworded to ask for the required CONDITIONS, which the keyed A states exactly; the impossibility is disclosed in the solution."
+  },
+
+  "01-43": {
+    "options": { "C": "\\(0\\)" },
+    "reason": "Options A (1/√2) and C (√2/2) were numerically identical. C replaced; key A verified correct (at 3π/4, f = −cos x so f′ = sin x = 1/√2; the kinks of |cos x| are at odd multiples of π/2, not here)."
+  },
+
+  "01-49": {
+    "stem": "For \\(x > 0\\), the derivative of \\(\\sin^{-1}\\left(\\frac{2x}{1+x^2}\\right)\\) with respect to \\(\\cos^{-1}\\left(\\frac{1-x^2}{1+x^2}\\right)\\) is",
+    "reason": "For x > 0 both expressions equal 2tan⁻¹x and the ratio is 1 (the keyed A); for x < 0 the cos⁻¹ form flips sign and the ratio is −1, which option B also offers — domain restriction added to make A uniquely correct."
+  },
+
+  "02-23": {
+    "options": { "A": "\\(\\frac{x^2 - 2x}{(x + 1)^2}\\)" },
+    "reason": "Options A (x²+2x over (x+1)²) and the keyed C (x(x+2) over (x+1)²) were algebraically equivalent. A replaced with the sign-error distractor; key C retained."
+  },
+
+  "02-35": {
+    "options": { "C": "\\(5^x \\log_{10} 5\\)" },
+    "reason": "Under the bank's log-as-natural-log convention, options C (5^x log 5) and the keyed D (5^x ln 5) were equivalent. C pinned to base 10 (a genuine distractor); key D retained."
+  },
+
+  "02-36": {
+    "options": { "B": "\\(\\cos 2x\\)" },
+    "reason": "Options B (sin 2x) and the keyed C (2 sin x cos x) were identical values. B replaced; key C retained."
+  },
+
+  "02-41": {
+    "options": { "D": "\\(\\frac{xe^x + e^x}{x^2}\\)" },
+    "reason": "Options B (e^x(x−1)/x²) and D ((xe^x − e^x)/x²) were the same expression factored/unfactored. D replaced with the sign-error variant; key B retained."
+  },
+
+  "02-43": {
+    "options": { "D": "\\(-\\cot x\\)" },
+    "reason": "Options B (cot x) and D (cos x/sin x) were identical. D replaced with the sign-flipped distractor; key B retained."
+  },
+
+  "02-45": {
+    "options": { "B": "\\(x^2(3\\ln x - 1)\\)" },
+    "reason": "Options A (3x² ln x + x²) and B (x²(3 ln x + 1)) were the same expression. B replaced with the sign-error variant; key A retained."
+  },
+
+  "02-49": {
+    "options": { "A": "\\(\\frac{3x^2 + x^3}{e^x}\\)" },
+    "reason": "Options A ((3x² − x³)/e^x) and the keyed B (x²(3 − x)/e^x) were identical. A replaced with the sign-error variant; key B retained."
+  },
+
+  "02-50": {
+    "options": { "C": "\\(\\frac{3}{2\\sqrt[3]{x}}\\)" },
+    "reason": "Options A ((2/3)x^{−1/3}) and C (2/(3∛x)) were identical. C replaced with the inverted-coefficient distractor; key A retained."
+  },
+
+  "04-7": {
+    "options": { "B": "\\(a^x \\log_{10} a\\)" },
+    "reason": "Option B (a^x log a) equalled the keyed C under the log-as-natural-log convention. Pinned to base 10 (a genuine distractor); key C retained."
+  },
+
+  "04-14": {
+    "stem": "For \\(x > 1\\), find the derivative of \\(\\sec^{-1} x\\).",
+    "reason": "Strictly d/dx sec⁻¹x = 1/(|x|√(x²−1)) and no option carried the |x|; for x > 1 the keyed C is exactly right (and D would be right for x < −1). Domain added to the stem."
+  },
+
+  "04-43": {
+    "stem": "For \\(0 < x < 1\\), what is the derivative of \\(\\cos^{-1}(2x^2 - 1)\\)?",
+    "reason": "cos⁻¹(2x²−1) = 2cos⁻¹x only for x ≥ 0; the derivative's sign flips for x < 0, making the keyed A exact only on (0,1). Domain added to the stem; key A retained."
+  },
+
+  "04-46": {
+    "options": { "B": "\\(15^x(\\ln 5 - \\ln 3)\\)" },
+    "reason": "Options A (15^x ln 15) and B (15^x(ln 5 + ln 3)) were algebraically identical. B's sign flipped (= 15^x ln(5/3), false); key A retained."
+  },
+
+  "04-56": {
+    "options": { "D": "\\(x \\cdot 10^x\\)" },
+    "reason": "Option D (10^x log 10) equalled the keyed C under the natural-log convention (and equals option A under base-10). Replaced with a distinct false distractor; key C retained."
+  },
+
+  "05-9": {
+    "options": { "A": "\\(2\\sec^2 x\\)" },
+    "reason": "Options A (2sec²x tanx) and the keyed D (2tanx sec²x) were identical. A replaced with the missing-tan distractor; key D retained."
+  },
+
+  "05-10": {
+    "options": { "A": "\\(r^n e^{ax}\\cos(bx + n\\theta)\\) where \\(r = \\sqrt{a^2 + b^2}\\) and \\(\\theta = \\tan^{-1}\\frac{a}{b}\\)" },
+    "reason": "Options A and the keyed C stated the same standard result (r² = a²+b², tan α = b/a). A's angle switched to tan⁻¹(a/b) — the classic wrong-ratio distractor; key C retained."
+  },
+
+  "05-12": {
+    "exclude": true,
+    "reason": "Defective beyond repair: (x²−1)y″ + 2xy′ = 2ny + 4n²x²(x²−1)^{n−1} — x-dependent, never a pure multiple of y (numeric refutation at n=2, x=2: LHS 228 vs options 36/54/72/18). The salvageable first-derivative identity is already carried by the repaired 03-46."
+  },
+
+  "05-38": {
+    "options": { "B": "\\(\\frac{1}{48\\sqrt{3}\\,a}\\)" },
+    "solution": "\\(\\frac{dy}{dx} = \\frac{3a\\tan^2\\theta\\sec^2\\theta}{3a\\sec^3\\theta\\tan\\theta} = \\sin\\theta\\). Then \\(\\frac{d^2y}{dx^2} = \\frac{\\cos\\theta}{3a\\sec^3\\theta\\tan\\theta} = \\frac{\\cos^5\\theta}{3a\\sin\\theta}\\); at \\(\\theta = \\frac{\\pi}{3}\\): \\(\\frac{1/32}{3a \\cdot \\sqrt{3}/2} = \\frac{1}{48\\sqrt{3}\\,a}\\).",
+    "reason": "No printed option matched the correct 1/(48√3 a) (verified by finite differences; the keyed B read −1/(27a)). Keyed option B repaired."
+  },
+
+  "05-45": {
+    "options": { "D": "\\(2\\sec^3 x\\)" },
+    "reason": "Options C (sec³x) and D (secx + secx tan²x) were algebraically identical — a duplicated (wrong) pair. D replaced with a distinct distractor; key A verified correct (y″ = secx(sec²x + tan²x))."
+  },
+
+  "05-52": {
+    "exclude": true,
+    "reason": "Doubly defective: the stem's GIVEN dy/dx = (y/x)[m − (m+n)x/a] is not the derivative of x^m(a−x)^n (true log-derivative m/x − n/(a−x)), and even granting the premise, option A's final coefficient is wrong ((m+n)(m+n−1) where the computation gives (m+n)²). Repair would mean re-authoring the question."
+  },
+
+  "05-56": {
+    "answer": "D",
+    "stem": "If \\(x = e^t \\cos t\\) and \\(y = e^t \\sin t\\), then \\(\\frac{d^2y}{dx^2}\\) at \\(t = 0\\) is:",
+    "solution": "\\(\\frac{dy}{dx} = \\frac{\\cos t + \\sin t}{\\cos t - \\sin t} = \\tan\\left(t + \\frac{\\pi}{4}\\right)\\). Then \\(\\frac{d^2y}{dx^2} = \\frac{\\sec^2(t + \\pi/4)}{e^t(\\cos t - \\sin t)}\\); at \\(t = 0\\): \\(\\frac{2}{1} = 2\\).",
+    "reason": "As printed (t = π/4) dx/dt = 0 there, dy/dx blows up and the second derivative does not exist — no finite option can be right. Evaluation point moved to t = 0, where the value is exactly 2; key C→D."
+  },
+
+  "06-10": {
+    "answer": "B",
+    "stem": "The point on the curve \\(y^2 = 4x\\) at which the tangent is perpendicular to the line \\(x + y - 3 = 0\\) is",
+    "solution": "Perpendicular to a slope\\(-1\\) line means tangent slope \\(1\\). On \\(y^2 = 4x\\), \\(y' = \\frac{2}{y} = 1\\) gives \\(y = 2\\), \\(x = 1\\) — the point \\((1, 2)\\).",
+    "reason": "As printed (line x + 2y − 3 = 0) the required point is (1/4, 1), matching no option (checked all four). With the line x + y − 3 = 0 the answer is exactly option B (1,2); the keyed D ('Both B and C') fails since (1,−2) has slope −1. Stem repaired; key D→B."
+  },
+
+  "06-19": {
+    "exclude": true,
+    "reason": "Defective beyond repair: both curves passing through (1,1) forces a = 1, b = 1, but then the slopes (2 vs 3) differ — they CROSS, not touch; no option pair makes the curves touch at (1,1), and no nearby variant recovers the keyed C."
+  },
+
+  "06-25": {
+    "stem": "The points on the curve \\(y = x^3 - 2x^2 + x\\) where the tangent is parallel to the x-axis are",
+    "solution": "\\(y' = 3x^2 - 4x + 1 = (3x - 1)(x - 1) = 0\\) gives \\(x = \\frac{1}{3}\\) (where \\(y = \\frac{4}{27}\\)) and \\(x = 1\\) (where \\(y = 0\\)).",
+    "reason": "As printed (y = x³ − 3x² + 2x) the horizontal-tangent points are x = 1 ± 1/√3 — matching no option, and (1,0) isn't even one of them. The option set fits y = x³ − 2x² + x exactly; stem repaired, key B retained."
+  },
+
+  "06-31": {
+    "options": { "A": "\\(bx + ay - ab = 0\\)" },
+    "solution": "The curve crosses the y-axis at \\((0, b)\\) with slope \\(y' = -\\frac{b}{a}e^{-x/a}\\big|_0 = -\\frac{b}{a}\\). Tangent: \\(y - b = -\\frac{b}{a}x\\), i.e. \\(bx + ay - ab = 0\\) (equivalently \\(\\frac{x}{a} + \\frac{y}{b} = 1\\)).",
+    "reason": "The keyed A (x + ay − ab = 0) dropped the b on the x-term — correct only when b = 1. Repaired to bx + ay − ab = 0; key A retained."
+  },
+
+  "06-38": {
+    "options": { "A": "\\(a = -\\frac{1}{2}, b = -\\frac{3}{4}, c = 3\\)" },
+    "solution": "Gradient at the y-axis point \\((0,5)\\) gives \\(c = 3\\). Touching the x-axis at \\((-2, 0)\\): \\(f(-2) = -8a + 4b - 6 + 5 = 0\\) and \\(f'(-2) = 12a - 4b + 3 = 0\\). Adding: \\(4a + 2 = 0\\), so \\(a = -\\frac{1}{2}\\), then \\(b = -\\frac{3}{4}\\).",
+    "reason": "The keyed A misprinted b as −3/2; the system solves to a = −1/2, b = −3/4, c = 3 (the classic answer). Keyed option repaired."
+  },
+
+  "06-41": {
+    "exclude": true,
+    "reason": "Stem corrupted beyond faithful repair: with a = 2, b = 1 the conditions 'slope 3' (x = 1/4) and 'ordinate 7' (x ≈ 3.34) are mutually inconsistent, and neither x matches any option."
+  },
+
+  "06-44": {
+    "options": { "A": "\\(48x - 24y - 23 = 0\\)" },
+    "solution": "Slope 2 requires \\(\\frac{3}{2\\sqrt{3x-2}} = 2\\), so \\(\\sqrt{3x-2} = \\frac{3}{4}\\): the point is \\(\\left(\\frac{41}{48}, \\frac{3}{4}\\right)\\). Tangent: \\(y - \\frac{3}{4} = 2\\left(x - \\frac{41}{48}\\right)\\), i.e. \\(48x - 24y - 23 = 0\\).",
+    "reason": "None of the printed constants matched the correct tangent 48x − 24y − 23 = 0 (the NCERT answer; = 4x − 2y − 23/12). Keyed option A repaired."
+  },
+
+  "06-45": {
+    "stem": "If the slope of the tangent to the curve \\(y = x^3 - ax^2\\) at the point \\((1, 1-a)\\) is minimum, then \\(a\\) equals",
+    "solution": "The slope is \\(3x^2 - 2ax\\), minimised at \\(x = \\frac{a}{3}\\). For the minimum to occur at \\(x = 1\\): \\(a = 3\\).",
+    "reason": "As printed (y = x³ − ax) the slope 3x² − a is minimised at x = 0 for every a — vacuous. With x³ − ax² (which equally passes through (1, 1−a)) the keyed D (a = 3) is exactly right; stem repaired."
+  },
+
+  "06-48": {
+    "exclude": true,
+    "reason": "Defective beyond repair: orthogonality of y = a/x and y = bx² requires 8a²b⁴ = 1 (from x = 2ab and x³ = a/b), which no printed ab-linear option states, and no nearby curve pair recovers any option."
+  },
+
+  "06-55": {
+    "stem": "For all values of \\(m \\in \\mathbb{R}\\), the line \\(y - mx + m - 1 = 0\\) cuts the circle \\(x^2 + y^2 - 2x - 2y + 1 = 0\\) at an angle",
+    "solution": "The family \\(y - 1 = m(x - 1)\\) always passes through \\((1, 1)\\) — the centre of \\(x^2 + y^2 - 2x - 2y + 1 = 0\\). A line through the centre meets the circle along a diameter, i.e. at \\(90^\\circ\\).",
+    "reason": "As printed (circle x² + y² = 4) the cutting angle varies with m — no fixed answer exists. The classic original centres the circle at the family's fixed point (1,1), making the keyed D (90°) exact; stem repaired."
+  },
+
+  "06-56": {
+    "options": { "A": "\\(3x - y = 0\\)" },
+    "solution": "At \\(t = 1\\): the point is \\((1, 3)\\) and \\(\\frac{dy}{dx} = \\frac{2t+1}{2t-1} = 3\\). Tangent: \\(y - 3 = 3(x - 1)\\), i.e. \\(3x - y = 0\\).",
+    "reason": "The correct tangent 3x − y = 0 matched no option (A and D were parallel lines missing the point (1,3)). Keyed option A repaired."
+  },
+
+  "07-23": {
+    "options": { "C": "\\(\\frac{\\sqrt{2}}{2}\\) cm²/sec" },
+    "reason": "Options A and C were identical (√2 cm²/sec, the correct answer: A = D²/2 ⇒ dA/dt = D·dD/dt = 5√2 × 0.2). C replaced with the half-value distractor; key A retained."
+  },
+
+  "07-26": {
+    "options": { "A": "\\(\\frac{7}{\\pi}\\) cm/sec" },
+    "reason": "Options A (0.07/π) and the keyed D (0.7/(10π)) were the same value. A replaced with a distinct wrong magnitude; key D retained (dr/dt = 0.7/(2π·5))."
+  },
+
+  "07-27": {
+    "options": { "A": "\\(\\frac{1}{9\\pi}\\) cm/sec" },
+    "solution": "With \\(h = \\frac{r}{3}\\), \\(r = 3h\\) and \\(V = \\frac{1}{3}\\pi r^2 h = 3\\pi h^3\\). Then \\(\\frac{dV}{dt} = 9\\pi h^2 \\frac{dh}{dt}\\); at \\(h = 4\\): \\(16 = 144\\pi \\frac{dh}{dt}\\)… i.e. \\(9\\pi \\cdot 16 \\cdot \\frac{dh}{dt} = 16\\), so \\(\\frac{dh}{dt} = \\frac{1}{9\\pi}\\) cm/sec.",
+    "reason": "No printed option matched the correct 1/(9π) (offered 1/36π…1/108π — the option set fits the NCERT h = r/6 variant). Keyed option A repaired."
+  },
+
+  "07-31": {
+    "stem": "The area of a circular ring increases at the rate of \\(\\pi\\) cm²/sec. The inner radius is \\(3\\) cm and is increasing at \\(0.1\\) cm/sec. Find the rate at which the outer radius is increasing when the outer radius is \\(5\\) cm.",
+    "solution": "\\(A = \\pi(R^2 - r^2)\\), so \\(\\frac{dA}{dt} = 2\\pi\\left(R\\frac{dR}{dt} - r\\frac{dr}{dt}\\right) = \\pi\\). Then \\(5\\frac{dR}{dt} - 0.3 = 0.5\\), giving \\(\\frac{dR}{dt} = 0.16\\) cm/sec.",
+    "reason": "As printed (dA/dt = 2) the answer is (10+3π)/(50π) ≈ 0.124, matching no option. With dA/dt = π the keyed B (0.16) is exactly right; stem repaired."
+  },
+
+  "08-37": {
+    "stem": "If \\(f(x) = x^3 - px + q\\) has a local extremum at \\(x = 1\\), then",
+    "solution": "\\(f'(1) = 3 - p = 0\\) gives \\(p = 3\\). (Since \\(f''(1) = 6 > 0\\), the extremum at \\(x = 1\\) is in fact a local minimum; the local maximum sits at \\(x = -1\\).)",
+    "reason": "As printed ('local maximum at x = 1') no p works — f″(1) = 6 > 0 makes x = 1 a minimum for every p. 'Extremum' makes the keyed A (p = 3) exactly right; the min-vs-max fact is disclosed in the solution."
+  },
+
+  "08-44": {
+    "options": { "C": "\\((-\\infty, 1) \\cup (3, \\infty)\\)" },
+    "solution": "\\(f'(x) = 5x^4 - 20x^3 + 15x^2 = 5x^2(x-1)(x-3)\\), which is positive on \\((-\\infty, 0)\\), \\((0, 1)\\) and \\((3, \\infty)\\) and negative on \\((1, 3)\\). The isolated zero at \\(x = 0\\) does not break monotonicity, so \\(f\\) increases on \\((-\\infty, 1)\\) and on \\((3, \\infty)\\).",
+    "reason": "No printed option matched the true increasing set (−∞,1) ∪ (3,∞) — the keyed C wrongly dropped (−∞,0). Keyed option C repaired."
+  },
+
+  "08-47": {
+    "options": { "A": "\\(\\left(\\frac{3\\pi}{4}, \\frac{5\\pi}{4}\\right)\\)" },
+    "solution": "\\(f = (\\sin x - \\cos x)^2 = 1 - \\sin 2x\\), so \\(f' = -2\\cos 2x\\), negative exactly where \\(\\cos 2x > 0\\). On \\(\\left(\\frac{3\\pi}{4}, \\frac{5\\pi}{4}\\right)\\), \\(2x \\in \\left(\\frac{3\\pi}{2}, \\frac{5\\pi}{2}\\right)\\) where cosine is positive throughout — so \\(f\\) is decreasing on that whole interval.",
+    "reason": "As printed the keyed A ((π/4, 5π/4)) contains the increasing sub-interval (π/4, 3π/4) — no printed option matched the full decreasing set. A repaired to (3π/4, 5π/4), on which f genuinely decreases throughout and which no other option can claim; key A retained."
+  },
+
+  "09-19": {
+    "options": { "C": "\\(\\frac{6}{5}\\)" },
+    "solution": "Distance \\(= \\frac{|3(4) - 4(2) - 10|}{\\sqrt{3^2 + 4^2}} = \\frac{6}{5}\\).",
+    "reason": "No printed option matched the correct 6/5 (offered 2/5, 1, 2, 4/5). Keyed option C repaired."
+  },
+
+  "09-24": {
+    "options": { "A": "\\(\\frac{256\\pi}{9}\\) cm³" },
+    "solution": "For cylinder radius \\(r\\), similar triangles give height \\(12 - 3r\\), so \\(V = \\pi r^2(12 - 3r)\\). \\(V' = 24\\pi r - 9\\pi r^2 = 0\\) gives \\(r = \\frac{8}{3}\\), and \\(V = \\pi \\cdot \\frac{64}{9} \\cdot 4 = \\frac{256\\pi}{9}\\) cm³.",
+    "reason": "No printed option matched the correct 256π/9 (offered 64π/56π/72π/48π). Keyed option A repaired."
+  },
+
+  "09-26": {
+    "answer": "C",
+    "solution": "\\(f'(x) = \\frac{\\sin x - x\\cos x}{\\sin^2 x}\\). Let \\(g(x) = \\sin x - x\\cos x\\): \\(g(0) = 0\\) and \\(g'(x) = x\\sin x > 0\\) on \\((0, \\pi)\\), so \\(g > 0\\) and \\(f\\) is strictly increasing — no interior maximum or minimum.",
+    "reason": "Key flip A→C: x/sin x is strictly increasing on (0, π), so it has neither an interior max nor min — the keyed 'minimum at π/2' is a classic mis-key (f(π/2) = π/2 exceeds values near 0)."
+  },
+
+  "09-37": {
+    "answer": "A",
+    "stem": "A point on the parabola \\(y^2 = 4x\\) at which the abscissa increases at twice the rate of the ordinate is:",
+    "solution": "\\(\\frac{dx}{dt} = 2\\frac{dy}{dt}\\) means \\(\\frac{dy}{dx} = \\frac{1}{2}\\). On \\(y^2 = 4x\\), \\(\\frac{dy}{dx} = \\frac{2}{y} = \\frac{1}{2}\\) gives \\(y = 4\\), \\(x = 4\\) — the point \\((4, 4)\\).",
+    "reason": "As printed ('ordinate at twice the abscissa') the point is (1/4, 1), matching no option. With the rates swapped the keyed-style answer (4,4) = option A is exact; stem repaired, key B→A."
+  },
+
+  "09-42": {
+    "options": { "A": "\\(3 - 2a + b = 0\\) and \\(6 - 2a > 0\\)" },
+    "solution": "\\(f'(-1) = 3 - 2a + b = 0\\), and for a local MAXIMUM \\(f''(-1) = -6 + 2a < 0\\), i.e. \\(6 - 2a > 0\\) (\\(a < 3\\)).",
+    "reason": "The keyed A paired the correct first condition with the INVERTED inequality 6 − 2a < 0 (which yields a minimum). Second condition's sign repaired; key A retained."
+  },
+
+  "09-46": {
+    "stem": "For the point \\((0, c)\\) with \\(c > 0\\) and the parabola \\(y = x^2\\), the nearest point on the parabola is the vertex \\((0, 0)\\) only when \\(c \\leq c_0\\). The threshold \\(c_0\\) is:",
+    "solution": "Minimising \\(D^2 = x^2 + (x^2 - c)^2\\): \\(\\frac{d(D^2)}{dx} = 2x[1 + 2(x^2 - c)] = 0\\) gives \\(x = 0\\) or \\(x^2 = c - \\frac{1}{2}\\). The off-vertex minima exist only when \\(c > \\frac{1}{2}\\), so the vertex is nearest exactly when \\(c \\leq \\frac{1}{2}\\).",
+    "reason": "As printed ('the shortest distance occurs when:') the question was ill-posed — a shortest distance exists for every c. Reworded to ask for the structural threshold, which is exactly the keyed A (1/2)."
+  },
+
+  "10-6": {
+    "options": { "C": "\\(\\frac{f(b) - f(a)}{b + a}\\)" },
+    "reason": "Options B and C were mathematically equivalent ((f(a)−f(b))/(a−b) = (f(b)−f(a))/(b−a)). C replaced with the wrong-denominator distractor; key B retained."
+  },
+
+  "10-8": {
+    "options": { "A": "\\(\\sum_{r=0}^{n} \\binom{n}{r} u_r v_r\\)" },
+    "reason": "Options A and B were equivalent statements of Leibnitz's theorem (reindex r → n−r). A replaced with a false form (indices no longer sum to n); key B retained."
+  },
+
+  "10-41": {
+    "stem": "Using Leibnitz theorem, if \\(y = x^3 \\sin x\\), the coefficient of \\(x\\cos x\\) in \\(y_3\\) is:",
+    "solution": "By Leibnitz on \\(u = \\sin x\\), \\(v = x^3\\): \\(y_3 = -x^3\\cos x - 9x^2\\sin x + 18x\\cos x + 6\\sin x\\). The coefficient of \\(x\\cos x\\) is \\(18\\).",
+    "reason": "As printed (y = x³ cos x) the x·cos x term of y₃ has coefficient 0 — matching no option (the x-linear term is −18x sin x). With sin x the keyed D (18) is exact; stem repaired."
+  },
+
+  "10-46": {
+    "options": { "C": "\\(f(x) = \\cos(\\pi x)\\)" },
+    "reason": "Options A (x² − 2x) and C (x(x−2)) were the IDENTICAL function. C replaced with cos(πx) — f(0) = f(2) = 1, smooth, so Rolle applies (a genuine distractor); key B (|x−1|, non-differentiable at 1) retained."
+  },
+
+  "10-54": {
+    "options": { "C": "\\(2\\sec^2 x\\)" },
+    "reason": "Options A and C were identical (commuted factors of 2sec²x tanx). C replaced; key A retained."
+  },
+
+  "02-52": {
+    "answer": "C",
+    "reason": "Key flip B→C: y′(2) = 32 − 72 + 52 − 10 = 2 (option C), not the keyed 6."
+  },
+
+  "03-24": {
+    "answer": "C",
+    "reason": "Key flip D→C: d(e^x/x)/d(ln x) = x · e^x(x−1)/x² = e^x(x−1)/x (option C); the keyed D dropped the denominator."
+  },
+
+  "03-39": {
+    "answer": "C",
+    "reason": "Key flip B→C: y = e^{x+y} gives y′ = y(1 + y′), so y′ = y/(1−y) (option C); the keyed B has the denominator sign flipped."
+  },
+
+  "03-45": {
+    "answer": "D",
+    "reason": "Key flip C→D: (1+tan x)/(1−tan x) = tan(π/4 + x), whose derivative is sec²(π/4 + x) (option D) — the keyed C carries a spurious factor 2."
+  },
+
+  "05-42": {
+    "answer": "A",
+    "solution": "\\(y' = e^{ax}(a\\sin bx + b\\cos bx)\\), \\(y'' = e^{ax}((a^2 - b^2)\\sin bx + 2ab\\cos bx)\\). Then \\(y'' - 2ay' = e^{ax}(-(a^2 + b^2)\\sin bx) = -(a^2 + b^2)y\\).",
+    "reason": "Key flip C→A: the combination equals −(a²+b²)y (option A), not the keyed −b²y — the a²-term does not cancel."
+  },
+
+  "05-48": {
+    "answer": "D",
+    "solution": "\\(y' = e^x(\\sin x + \\cos x)\\); \\(y'' = e^x(\\sin x + \\cos x) + e^x(\\cos x - \\sin x) = 2e^x\\cos x\\); \\(y''' = 2e^x\\cos x - 2e^x\\sin x = 2e^x(\\cos x - \\sin x)\\).",
+    "reason": "Key flip C→D: the source solution derives 2e^x(cos x − sin x) — option D — twice, then trails into 'This is option D, not C' self-talk while the key said C. Solution rewritten clean."
+  },
+
+  "06-28": {
+    "answer": "B",
+    "reason": "Key flip C→B: normals parallel to x + y = 3 (slope −1) need tangent slope 1: 3x² − 12x + 10 = 0 has discriminant 24 > 0 — exactly 2 points (option B)."
+  },
+
+  "06-51": {
+    "answer": "A",
+    "reason": "Key flip C→A: perpendicular to a slope-(−2) line means tangent slope 1/2; 1/(2√(x−1)) = 1/2 gives x = 2, the point (2, 1) (option A). The keyed (5, 2) has tangent slope 1/4."
+  },
+
+  "07-14": {
+    "answer": "D",
+    "reason": "Key flip B→D: dV/dt = (r/2)·dS/dt = (3/2)(0.6) = 0.9 cm³/sec (option D), not the keyed 0.45 (a dropped factor of 2)."
+  },
+
+  "07-17": {
+    "answer": "A",
+    "reason": "Key flip C→A: V = π(rh² − h³/3) gives dV/dt = π(2rh − h²)dh/dt = 20π·dh/dt at h = 2, so dh/dt = 4/(20π) = 1/(5π) cm/sec (option A)."
+  },
+
+  "09-16": {
+    "answer": "B",
+    "reason": "Key flip C→B: minimising (x−3)² + x⁴ gives 2x³ + x − 3 = 0 = (x−1)(2x² + 2x + 3) — the only real root is x = 1 (option B)."
+  },
+
+  "10-18": {
+    "answer": "D",
+    "reason": "Key flip A→D: Rolle fails for BOTH reasons — 1/x is discontinuous at 0 ∈ [−1,1] AND f(−1) = −1 ≠ 1 = f(1) — so 'Both A and B' (option D) is the complete answer."
+  },
+
+  "10-47": {
+    "answer": "D",
+    "solution": "For a cubic, \\(f'\\) is quadratic with roots \\(\\alpha, \\beta\\) — the max and min occur AT those points. Strictly between them, \\(f''\\) (linear) vanishes at \\(\\frac{\\alpha+\\beta}{2}\\): an inflection point.",
+    "reason": "Key flip B→D: the extrema sit at α and β themselves; what lies BETWEEN them is the inflection point (option D), not 'both a maximum and a minimum'."
+  },
+
+  "03-16": {
+    "answer": "A",
+    "stem": "If \\(y = \\sec(\\sqrt{x})\\), then \\(\\frac{dy}{dx}\\) at \\(x = \\frac{\\pi^2}{16}\\) is",
+    "solution": "\\(y' = \\sec(\\sqrt{x})\\tan(\\sqrt{x}) \\cdot \\frac{1}{2\\sqrt{x}}\\). At \\(x = \\frac{\\pi^2}{16}\\), \\(\\sqrt{x} = \\frac{\\pi}{4}\\): \\(y' = \\sqrt{2} \\cdot 1 \\cdot \\frac{2}{\\pi} = \\frac{2\\sqrt{2}}{\\pi}\\).",
+    "reason": "As printed (y = sec(tan√x)) the true value is (4/π)sec(1)tan(1) ≈ 3.67 — tan(π/4) = 1 is one RADIAN, not 45°, so no option matches; the option set was built on that confusion. Stem simplified to sec(√x), for which option A (2√2/π) is exactly right; key B→A."
+  },
+
+  "03-30": {
+    "options": { "D": "\\(\\frac{1}{2}\\sec^2\\frac{x}{2}\\)" },
+    "solution": "\\(\\sqrt{\\frac{1-\\cos x}{1+\\cos x}} = \\tan\\frac{x}{2}\\) (principal branch), whose derivative is \\(\\frac{1}{2}\\sec^2\\frac{x}{2}\\).",
+    "reason": "The keyed D printed csc² for sec² — numeric check at x = π/3: true value 2/3, printed option 2. Repaired csc → sec; key D retained."
+  },
+
+  "03-46": {
+    "answer": "C",
+    "stem": "If \\(y = (x^2 - 1)^n\\), then \\((x^2 - 1)\\frac{dy}{dx}\\) equals",
+    "solution": "\\(y' = 2nx(x^2-1)^{n-1}\\), so \\((x^2 - 1)y' = 2nx(x^2-1)^n = 2nxy\\).",
+    "reason": "As printed (second derivative) the identity is (x²−1)y″ = 2ny + 2(n−1)xy′ — x-dependent, matching NO option (numeric refutation at n=2, x=2: LHS 132 vs options 36/0/72/108). The option set fits the FIRST-derivative identity, whose answer 2nxy is option C; stem repaired, key A→C."
+  },
+
+  "03-49": {
+    "options": { "B": "\\(\\frac{1}{\\sqrt{x}(1 + x)}\\)" },
+    "reason": "Options B and the keyed D were algebraically identical (1/(2√x(1+x))). B replaced with the missing-½ distractor; key D retained."
+  }
+}
