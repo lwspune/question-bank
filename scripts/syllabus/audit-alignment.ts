@@ -24,7 +24,7 @@ import { SPINE, splitCoveredBy, parseCoveredRef } from "../../src/lib/syllabus/s
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-type C = { id: string; source: string; class: number; section_no: string };
+type C = { id: string; subject: string; source: string; class: number; section_no: string };
 type L = { concept_id: string; exam: string; covered_by: string | null };
 
 async function page<T>(db: any, table: string, cols: string): Promise<T[]> {
@@ -45,7 +45,16 @@ async function main() {
     { auth: { persistSession: false } },
   );
 
-  const concepts = await page<C>(db, "syllabus_concepts", "id,source,class,section_no");
+  const cfg = requireSubjectArg(process.argv);
+  // SUBJECT-scoped from the first fetch: every subject's spines share source
+  // names, class numbers and section refs, so an unscoped `class|section_no`
+  // key map keeps whichever subject loaded LAST — the authored-edge backing
+  // set then resolves a JEE ruling to another subject's NCERT row, and the
+  // backing test fails with bogus "unbacked" pairs the day a second subject's
+  // rulings land (82 manufactured failures when Maths arrived, 2026-08-07 —
+  // the audit-directions bug class again).
+  const all = await page<C>(db, "syllabus_concepts", "id,subject,source,class,section_no");
+  const concepts = all.filter((c) => c.subject === cfg.subject);
   const links = await page<L>(db, "syllabus_concept_exams", "concept_id,exam,covered_by");
   const byId = new Map(concepts.map((c) => [c.id, c]));
   const ncertByKey = new Map(
@@ -99,7 +108,6 @@ async function main() {
   const pct = inferred.size ? Math.round((agree / inferred.size) * 100) : 0;
   console.log(`  inference would be ${pct}% correct — which is why pairing is authored-only\n`);
 
-  const cfg = requireSubjectArg(process.argv);
   const rows = await loadAlignmentRows(db as never, {
     subject: cfg.subject,
     oldSyllabus: await loadOldSyllabusChapters(db as never, {

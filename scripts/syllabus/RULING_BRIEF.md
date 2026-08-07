@@ -141,3 +141,76 @@ ruling is plausible, internally consistent and unfalsifiable by any automated
 check — it is the one error class no probe in this repo can catch. If the
 evidence does not settle a subtopic, say so in the note rather than picking the
 tidy answer.
+
+## A hit is not coverage — the false-POSITIVE catalogue
+
+The mirror of the false-absence table above. Each of these produced a wrong
+"taught" claim before being caught:
+
+- **A stale chapter INTRO.** Rationalised NCERT intros still promise deleted
+  content (binomial distribution, A.P., special series, tangents/normals — at
+  least four chapters). Trust the section spine + targeted searches, never the
+  opening prose.
+- **A worked/optimisation EXAMPLE.** Every 'sphere' hit in both Maths corpora
+  is the cone-in-sphere maximisation example; "in-circle" hits are the same.
+  A topic used as an example's setting is not a topic taught.
+- **An appendix pointer.** "(Refer A.1.3 of Class XI Text book)" is not a
+  taught section.
+- **A chapter TITLE.** NCERT ch.4 is still titled "…and Quadratic Equations";
+  every 'quadratic equation' hit is the title/header/intro — the teaching
+  section was deleted.
+
+## Per-subject addenda
+
+Dispatch prompts point here instead of re-typing this. Each block: corpus
+name, ref quirks, the subject's own trap list, source PDF locations.
+
+### Chemistry (`--corpus=chem`)
+
+- Corpora: `dump_chem_corpus.py`. Handout: `chemistry-sections-handout.md`.
+- Traps proven here: the -s-/-z- split (`polymerisation` 9 NCERT vs
+  `polymerization` 61 SB — SYSTEMATIC); reagent-name splits (bisulphite /
+  hydrogensulphite, bidentate / didentate); `Huckel` umlauted in NCERT; the
+  SB prints **`Plank`** for Planck (Std XI Structure of Atom, 5×).
+- Rationalised NCERT dropped: Solid State, Surface Chemistry, Polymers, Green
+  Chemistry, s-/p-Block, States of Matter (Boyle/Charles/kinetic theory gone
+  entirely). Molar volume: NCERT says 22.7 L, never 22.4; SB the reverse.
+
+### Physics (`--corpus=physics`)
+
+- Corpora: `dump_physics_corpus.py`. SB per-chapter PDFs under
+  `…\Subjects\Physics\State_Board\Topics\{11th,12th}_Topics`.
+- Traps proven here: `step-?up` misses "step up" with a space; `\bNOR\b` is
+  the only way to dodge the word "nor"; `newton's law` needs the CURLY
+  apostrophe. The SB is a two-pass SPIRAL (electrostatics, current, magnetism,
+  optics, semiconductors split across both years) — check BOTH years before
+  `not`.
+- Rationalised NCERT dropped: Communication Systems, logic gates, transistors,
+  Doppler, potentiometer, LC/damped oscillations, earth's magnetism.
+
+### Mathematics (`--corpus=maths`)
+
+- Corpora: `dump_maths_corpus.py` — **keyed by the SPINE's renumbered chapter
+  numbers.** The SB Maths years are two Parts both restarting at Ch.1: spine
+  refs renumber Part 2 continuously (Std XI ch10-18 = printed Part-2 Ch.1-9,
+  +9; Std XII ch8-15 = printed Ch.1-8, +7). Cite HANDOUT refs
+  (`maths-sections-handout.md`); the SB Part-2 corpus TEXT prints its own
+  numbers, so translate when reading pages.
+- **The SB text layer GARBLES math** (∫ extracts as Sinhala glyphs, 2-D forms
+  flatten): prose-term search works, formula-level evidence needs the rendered
+  page. SB PDFs: `C:/tmp/PYQPs/MHT-CET/State_Board/11th/Maths/Part 1/Part
+  1_Chapterwise`, `…/Part 2/Part 2_Chapterwise`, `…/12th/Part 01`, `…/Part
+  02`. NCERT PDFs: `…\NCERT\Books\{11th,12th}\Maths` (12th split Part 1/2;
+  Part-2 files "01. Integrals.pdf" = printed Ch.7+).
+- Traps proven here: `Rolle` prefix-matches **"rolled"** dice; `telescop`
+  hits are the telescope INSTRUMENT in conics; SB prints **"orthocenter"**
+  (-er); `bijective` is ZERO in SB (it says "one-one and onto"); `cosec`
+  never `csc`; curly apostrophes on surnames (search `Bayes` not `Bayes'`).
+- Rationalised NCERT dropped: the Plane, trig equations, both triple
+  products, Mathematical Reasoning, binomial distribution + random-variable
+  pmf/mean/variance, quadratic-equation theory, A.P./H.P./special sums,
+  determinant manipulation properties, the inverse-trig identity toolkit,
+  conic tangents/asymptotes, sine/cosine/projection rules, Rolle/MVT,
+  n(A∪B), the power set. NCERT-only strengths: mean deviation,
+  image-of-a-point, FTC derivative form, remainder-by-expansion,
+  one-variable linear inequalities (SB teaches these NOWHERE).
