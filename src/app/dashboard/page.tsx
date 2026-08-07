@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
   Activity,
+  HeartPulse,
   ArrowRight,
   BookOpen,
   Building2,
@@ -291,6 +292,14 @@ function QuickActions({
           icon={<Activity className="h-5 w-5" aria-hidden />}
           title="Usage shape"
           description="How students actually use the app — daily or in bursts — before we build engagement mechanics."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/health"
+          icon={<HeartPulse className="h-5 w-5" aria-hidden />}
+          title="Database health"
+          description="Daily snapshots: disk spill, capacity against the plan caps, and the busiest queries this window."
         />
       )}
       <ActionCard

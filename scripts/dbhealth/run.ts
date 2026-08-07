@@ -24,6 +24,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { computeDelta } from "../../src/lib/dbhealth/delta";
 import { evaluateFlags } from "../../src/lib/dbhealth/flags";
 import { renderReport } from "../../src/lib/dbhealth/format";
+import { rowToSnapshot } from "../../src/lib/dbhealth/rows";
 import type { HealthSnapshot } from "../../src/lib/dbhealth/types";
 
 const local = path.join(process.cwd(), ".env.local");
@@ -38,25 +39,6 @@ function client(): SupabaseClient {
     throw new Error("db:health needs NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY (.env.local)");
   }
   return createClient(url, key, { auth: { persistSession: false } });
-}
-
-/** The stored row, mapped back into the snapshot shape the pure core expects. */
-function rowToSnapshot(r: Record<string, unknown>): HealthSnapshot {
-  return {
-    capturedAt: String(r.captured_at),
-    statsReset: String(r.stats_reset),
-    dbSizeBytes: Number(r.db_size_bytes),
-    connections: Number(r.connections),
-    maxConnections: Number(r.max_connections),
-    cacheHitPct: Number(r.cache_hit_pct),
-    tempBytes: Number(r.temp_bytes),
-    tempFiles: Number(r.temp_files),
-    deadlocks: Number(r.deadlocks),
-    rollbacks: Number(r.rollbacks),
-    largestGroupRows: Number(r.largest_group_rows),
-    tables: (r.tables ?? []) as HealthSnapshot["tables"],
-    queries: (r.queries ?? []) as HealthSnapshot["queries"],
-  };
 }
 
 async function main() {

@@ -8,6 +8,19 @@ npm run db:health -- --dry  # snapshot + report, store nothing
 Runs daily via `.github/workflows/db-health.yml` (02:30 UTC / 08:00 IST), and
 on demand from the Actions tab.
 
+Or read it as a page: **`/dashboard/health`** (superadmin only) — same numbers,
+plus a history table the CLI cannot give you, since the CLI only ever compares
+the latest two snapshots.
+
+```sh
+npx tsx scripts/dbhealth/smoke-page-data.ts   # drives the page's data path
+```
+
+That page is auth-gated and `force-dynamic`, so `next build` never executes it
+and an anon curl is bounced by middleware before the route compiles — a green
+build proves only that it compiles. The smoke script drives everything behind
+the render; it is not a substitute for looking at the page while signed in.
+
 ## Why it exists
 
 Every counter Postgres exposes about load is **cumulative with no time
