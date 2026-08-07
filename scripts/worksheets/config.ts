@@ -157,6 +157,27 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "09. Distribution of Identical Objects.xlsx", subtopicName: "Distribution of Identical Objects" },
     ],
   },
+  "derivatives": {
+    id: "derivatives",
+    chapterName: "Derivatives",
+    dir: join(SOURCE_ROOT, "16. Derivatives", "Concept_Practice"),
+    sourceFile: "Cadetprep_Worksheets_Derivatives",
+    note: "Cadetprep concept-practice worksheet — Derivatives",
+    // All 10 files are legacy BIFF .xls (SheetJS sniffs content). Order = teaching
+    // sequence (foundations → techniques → applications), not the alphabetical dir listing.
+    files: [
+      { file: "Continuity&Differentiability.xls", subtopicName: "Continuity and Differentiability" },
+      { file: "Basic-Differentiation-Rules.xls", subtopicName: "Basic Differentiation Rules" },
+      { file: "Advanced-Differentiation-Techniques.xls", subtopicName: "Advanced Differentiation Techniques" },
+      { file: "Derivatives-Special-Functions.xls", subtopicName: "Derivatives of Special Functions" },
+      { file: "Higher-Order-Derivatives.xls", subtopicName: "Higher-Order Derivatives" },
+      { file: "Tangents&Normals.xls", subtopicName: "Tangents and Normals" },
+      { file: "Rate-of-Change-Problems.xls", subtopicName: "Rate of Change" },
+      { file: "Monotonicity&Critical-Points.xls", subtopicName: "Monotonicity and Critical Points" },
+      { file: "Maxima&Minima.xls", subtopicName: "Maxima and Minima" },
+      { file: "Verification&Proof-Problems.xls", subtopicName: "Verification and Proof Problems" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {
