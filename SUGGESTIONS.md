@@ -32,10 +32,47 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 | **The shared prod DB is now the binding constraint on the pre-push gate** — surfaced 2026-08-04 after the Physics syllabus work roughly doubled `syllabus_concepts` (1,597 → 2,818 rows) while a SECOND session wrote to the same instance concurrently | FOUR consecutive gate failures on data-and-docs-only commits, each a DIFFERENT random suite, with full-suite test time climbing **276s → 335s → 495s**: `worked-examples-context`, `query-order`, `papers-usage-rls`+`teacher-editor-rls`, then `rls`+`teacher-editor-rls`+`upload-detail`. Every one passed ISOLATED in under 12s. One run failed instead at `next build` with `canceling statement due to statement timeout` on 4 of the 317 `/questions` prerenders — **the exact failure the 2026-08-03 entry records as FIXED** by `experimental.cpus: 4` + `staticPageGenerationTimeout: 180`, which had held at zero across two builds. | **LARGELY RESOLVED 2026-08-05 — root-caused to ONE query, not generic contention.** `queryQuestions` selected the full row shape in the query carrying the `ORDER BY`, so Postgres sorted ~22k rows at ~922 bytes each to keep 25 — an `external merge` spilling **13.9 MB per call**, and **99.4% of the entire database's temp writes** (1,097 GB lifetime). That drained the Disk IO Budget, and a throttled disk is what turned every burst into statement timeouts and ECONNRESETs. Fixed in `fa9b627` (two-phase fetch); production-verified over 14,360 calls: **0 bytes temp, mean 173 ms → 43.9 ms**. The CI half was then traced to its own cause — **hook timeouts, NOT fixture races** (2026-08-05 logs: all 2,843 assertions passed, only two suites' `beforeAll`/`afterAll` exceeded 30 s, which stranded fixtures and correctly tripped the teardown guardrail) — fixed by `hookTimeout` 30 s → 90 s in `a9b30b8`. Egress was separately measured to **builds**, not traffic (37 kB/landing page × ~317 pages ≈ 25 MB/build × 3 builds × 145 pushes/month ≈ 10.9 GB vs 11.48 GB observed) and addressed by the conditional build skip (`918f0b5`) plus batching pushes to 1–2/day. **Staging is therefore NOT recommended** — every symptom it was proposed for has been fixed at its cause, and the one failure mode that would REQUIRE it (logical fixture races across concurrent runs) does not appear anywhere in the evidence. Triggers to revisit: CI failing on non-timeout errors, egress above 5 GB after a week, or a second contributor. Superseded plan follows. (1) **Recalibrate the `/questions` prerender headroom**: the 2026-08-03 fix was tuned against a smaller `syllabus_concepts`; the retry budget in `queryQuestions` (2 retries on SQLSTATE 57014) and `staticPageGenerationTimeout` may both need raising, OR the landing-page query needs its own index review now the table is larger. (2) **The 30s vitest hook timeout is too tight for ~40 DB-integration suites against ONE shared production Supabase**, especially with concurrent sessions — `retry: 1` self-heals a single flake but not three in one run. Cheapest real fixes, in order: point the test secrets at a staging project (CLAUDE.md already suggests this "if write traffic gets noisy" — it now is); or raise `hookTimeout` for the integration suites; or serialise them. **Interim reality: `--no-verify` was used once on 2026-08-04 for `393f921`** (data + docs, zero application code, every stage green on that tree at some point, CI as backstop) — that is a symptom to fix, not a practice to adopt. |
 | **A section-spine can ship with MISSING SUB-SECTIONS and PROSE-SWALLOWED TITLES, and neither is visible to a top-level gap check** — found 2026-08-04 when the same two defects were caught in my own Physics NCERT spine (5.2.1 dropped because it is set in plain Bookman 12.0 against a 10.5 body; 9.3 titled `"STREAMLINE FLOW So far we have studied fluids at rest. The study"`). Fixed there, and the new `scripts/syllabus/audit-spine.ts` now probes for both. | Running that probe against the **shipped CHEMISTRY spines** reports: **State Board** — 5 sub-section holes (Std XI 2.3.1; 5.8.1-5.8.6; 9.6.3-9.6.6; Std XII 14.3.1, 16.7.1) + `Std12 7.6.1` = `"Oxidation state : i. The group 16 elements"` (prose swallowed). **NCERT** — 7 sub-section holes (Std XI 8.3.1; Std XII 6.4.2, 8.1.1, 8.2.1-8.2.2, 8.6.1, 8.9.3, 10.2.2) + **three clear prose-swallows**: `Std11 1.5.5` `"Avogadro's Law equal volumes of all gases at the same temperature and"`, `Std11 6.10.3` `"Lewis Acids and Bases acid as a species which accepts electron pair an"`, `Std12 5.4.1` `"Geometric Isomerism complexes due to different possible geometric arra"`. | **Identified — awaiting permission.** NOT actioned: this is shipped Chemistry work from an earlier session and the probe is triage, not proof. 360 sketch: *scope* = ~12 possibly-missing sub-sections + ~4 corrupted titles across 2 spines; *blast radius* = the Chemistry `covered_by` refs are validated at write time, so a MISSING section cannot have been cited — adding one is additive; a RETITLED section changes only display text, no key, no hash; *does-it-apply* = *partly* — some "holes" will be genuine (NCERT's rationalised edition really does drop sub-sections, and `dump_ncert_sections.py` carries ~100 hand `TITLE_OVERRIDES` that may already be deliberate), so **each candidate needs checking against the book before any edit**, exactly as the Physics ones were; *cost* = low per item, but ~16 items; *risk* = low and reversible (re-run the ingest); *recommendation* = **fix the 4 prose-swallowed TITLES** (unambiguous, user-visible, cheap) and **verify-then-decide the sub-section holes** rather than bulk-adding them. — **TITLES DONE 2026-08-04 (user-approved).** Four fixed in BOTH the DB and the source of record: NCERT `11 1.5.5` → "Avogadro's Law", `11 6.10.3` → "Lewis Acids and Bases", `12 5.4.1` → "Geometric Isomerism" (added to `dump_ncert_sections.py` TITLE_OVERRIDES, which wins over the extracted title), and State Board `12 7.6.1` → "Oxidation state" (edited in `data/chem-sb-12.json`). Each was read off its own chapter PDF first. **TWO of the probe's six title candidates were REJECTED as faithful** — `12 1.5.2` ("Relationship between molar mass … is deduced in the following steps") and `12 13.3.6` (the Hofmann synonym list) are entirely in `AGTimes-Bold` in the book, i.e. the heading really is phrased that way; changing them would have corrupted correct data. **THE HOLES ARE REAL AND THE CAUSE IS NOW KNOWN — scope is larger than this ledger row first assumed.** A plain-text search said "not present in book" for the Std XII organic holes; that was MY REGEX FAILING, not the book. A font-aware search finds `8.1.1`, `8.2.1`, `8.2.2` present as **bare section numbers with the title on a separate line** — the exact layout that silently dropped sections from the Physics NCERT spine until `dump_ncert_physics_sections.py` was taught to handle it. The same region also carries truncated/garbled neighbours the title probe does NOT catch (`8.1.2` = "Structure of", `10.2.3` = "Structure", `8.9.1` = "Reactions Acidity Involving Reactions with metals and alkalies Cleavage of O-H Bond", `8.2.3` = "Preparation 1. From acyl chlorides of Ketones"). **Still awaiting permission**, because the fix is no longer "add ~12 rows": it means porting the bare-number + continuation handling into `dump_ncert_sections.py`, re-extracting, and re-seeding — and `ingest-ncert-spine.ts` also WRITES RULINGS and PRUNES, so a re-run touches adjudicated Chemistry judgements, not just titles. **DONE 2026-08-04 (user-approved).** Used the extractor's OWN sanctioned mechanisms rather than rewriting heading detection: 8 sections added via `EXTRA_SECTIONS` (11 8.3.1; 12 6.4.2, 8.1.1, 8.2.1, 8.2.2, 8.6.1, 8.9.3, 10.2.2) plus 13 `TITLE_OVERRIDES`, each title read off its chapter PDF by following the bold run after the bare number. Also repaired 5 garbled neighbours the title probe does NOT catch (8.1.2 'Structure of' → 'Structure of the Carbonyl Group'; 8.2.3 'Preparation 1. From acyl chlorides of Ketones' → 'Preparation of Ketones'; 8.9.1/8.9.2 interleaved bodies; 10.2.3 'Structure' → 'Structure of Proteins'). Written with a NEW `--concepts-only` flag on `ingest-ncert-spine.ts` that stops before the prune and the rulings, so adjudicated Chemistry judgements were never rewritten. **Chemistry NCERT: 416 rows / 10 candidates → 424 / ZERO.** On the State Board side only 2 of 12 flagged holes were real — **10 are genuine book numbering skips, verified absent from the PDF**, so bulk-adding would have invented sections; 14.3.1 'α-Amino acids' was added, and 16.7.1 was deliberately NOT added because the book prints it with NO title at all (`16.7.1 :` then prose) and naming it would be fabrication. JEE rulings and gap counts unchanged (149 rows / 5 live gaps / 24 PYQ) — verified after. |
 | **geo-2016 and geo-2018 are each MISSING their `Q5(ii)` construction sub-question** — found 2026-07-27 during the answer-key cross-check; two independent agents flagged it and the stored refs confirm it (both papers jump `Q5(i)` → `Q5(iii)`) | The source paper asks Q5(ii) (a `ΔSHR ∼ ΔSVU … construct ΔSVU`-type similar-triangle construction) and the **bundled official solution answers it in full with a labelled figure**, but it was never committed — most likely dropped at transcription because a construction has no numeric answer. geo-2017 and geo-2019 both HAVE their Q5(ii), so this is **2 specific questions, not a systematic Geometry gap** (verified by full sub-question inventory on all 4 geo papers + all 3 sci1 papers, which are otherwise complete). | **Identified — awaiting permission.** 360: *scope* = 2 new questions in 2 shipped papers; *blast radius* = **purely ADDITIVE** — new rows, no existing row touched, no hash recompute, nothing downstream affected (a new `content_hash` can only collide with an identical existing question, which the commit guard would catch); *does-it-apply* = yes, and cheaply — the transcription source AND the official solution are both already in hand, so this is transcribe-two-questions, not a re-ingest; *cost* = trivial (one vision/text pass over 2 pages + a scoped `commit.ts` run); *risk/reversibility* = low, reversible by `delete … where source_file=… and question_number='Q5(ii)'`; *recommendation* = **DO** — it closes the only known coverage gap in the Class-10 Maths corpus and the answers would be source-verified from the start, unlike the rest of these papers. Caveat: `commit.ts` inserts by `content_hash`, so committing 2 rows into an existing paper needs a scoped run (or a targeted insert) rather than re-committing the whole paper, which would duplicate nothing but is wasteful. **DONE 2026-07-27 (user-approved)** via the new `scripts/mh-ssc-10/add-questions.ts`; Geometry 263 → 265, both PUBLIC, refs now run `Q5(i)→Q5(ii)→Q5(iii)`. **The caveat turned out to understate the hazard:** `commit.ts` ends with `update({visibility:'PRIVATE'}).eq('source_file', …)` scoped to the WHOLE paper, so a re-commit would have silently flipped all 22/24 already-PUBLIC rows back to PRIVATE — hence the dedicated add script, which scopes both the insert and the follow-up update to the new refs and refuses to run if a ref already exists. **Finding: it is the SAME question in both years** (the board reprinted it verbatim in 2016 and 2018 — probably why both were dropped); transcribed faithfully per paper, and since `norm()` only collapses whitespace the differing punctuation keeps the hashes distinct so both rows survive. |
+| **The optional-parameter (`p_x is null or col = p_x`) anti-pattern makes a `language sql` RPC seq-scan forever** — found 2026-08-07 while fixing the /browse facet RPCs (migration 0068). A `language sql` body is planned ONCE, generically, so the planner cannot prove the parameter is non-null and demotes every predicate to a filter. Proven with `EXPLAIN (GENERIC_PLAN)`: `Seq Scan` cost 7,941 vs 541 for the same query with literals. Fix is `plpgsql` + `RETURN QUERY EXECUTE ... USING` (one-shot plan). NOT fixable with `plan_cache_mode` (tested, no effect). | `public.match_chunks` (migration 0040, the RAG grounding RPC) is the only other function in the schema carrying the pattern — one `p_x is null or` clause. | **Identified 2026-08-07 — no action recommended.** It is effectively DORMANT: `pg_stat_statements` shows **2 calls, ever, at ~1 ms** (the AI tutor that would consume it was never built). Revisit ONLY if a RAG/tutor feature ships and starts calling it at volume; at that point apply the same 0068 treatment. Recorded so the anti-pattern is not re-introduced in a NEW RPC. |
 
 ---
 
-## 2026-08-06
+## 2026-08-07
+
+### ~~Fold the per-subject ruling addendum into RULING_BRIEF.md~~ — **DONE 2026-08-07**
+
+**Shipped same day** — RULING_BRIEF.md gained a "A hit is not coverage" false-positive catalogue + "Per-subject addenda" (Chemistry/Physics/Mathematics blocks: corpus flag, ref quirks, trap lists, PDF paths, rationalised-NCERT deletion digests). Dispatch prompts now point at the brief. Original entry follows.
+
+The Maths ruling batches ran against `RULING_BRIEF.md` plus a substantial addendum that lived only in the agent dispatch PROMPTS: the corpus flag, the SB Part-2 renumbering rule, the confirmed trap list (stale NCERT intros, Rolle/"rolled", telescope-the-instrument, "orthocenter", appendix pointers, example-is-not-coverage), and the established-facts digest. The next subject's batch would re-type all of it from memory.
+
+**Why:** the learning-propagation rule — a durable artifact, not prompt archaeology. The trap list is exactly the part that prevents false verdicts, and it grew per subject (Chemistry's -s-/-z- → Physics' step-up/NOR → Maths' seven new ones).
+
+**How to apply:** add a "Per-subject addenda" section to `scripts/syllabus/RULING_BRIEF.md` (or a sibling `RULING_ADDENDA.md` the brief points at), one block per subject: corpus name, renumbering note, subject trap list, PDF paths. The generic trap catalogue in [[corpus-search-for-coverage-rulings]] is already updated; this is the agent-facing copy.
+
+### ~~Wire the syllabus audits into an npm script~~ — **DONE 2026-08-07**
+
+**Shipped same day** — `npm run syllabus:audit` (`scripts/syllabus/audit-all.ts`: directions --ci gate + per-subject alignment gate + spine triage). **Its FIRST run caught a real defect**: `audit-alignment` was subject-blind too (`ncertByKey` collides `class|section_no` across subjects — 82 manufactured "unbacked pair" failures on maths, and chemistry/physics had been passing on collision-order luck). Fixed by scoping the fetch to the subject; chemistry's split came back exactly its historical 129/39/25, proving the fix. All 7 probes green. Deliberately NOT wired into prepush (live-DB scans). Original entry follows.
+
+`audit-directions --ci`, `audit-alignment`, and `audit-spine` are run ad-hoc after each syllabus change. The 2026-08-07 session proved why standing execution matters: `audit-directions` had silently gone from 0 to 129 (false) contradictions the moment the Maths pointers landed, and nothing ran it until the end-of-phase pass. Note also `audit-directions` accepts but IGNORES `--subject` (it audits globally by design now that it's subject-scoped internally) — its docstring should say so.
+
+**Why:** a probe that only runs when someone remembers is a probe that catches drift late.
+
+**How to apply:** `"syllabus:audit": "tsx scripts/syllabus/audit-directions.ts --ci && tsx scripts/syllabus/audit-alignment.ts && tsx scripts/syllabus/audit-spine.ts"` in package.json (audit-alignment/audit-spine may need per-subject loops or an --all mode), run it after any syllabus commit; optionally fold into prepush-quick since it's DB-read-only and fast.
+
+### ~~Maths syllabus map — Phase 3b rulings + the two derived edges (deferred by scope decision)~~ — **DONE 2026-08-07**
+
+**All three numbered items shipped the same day** (commits `e12614b`, `5c32f6b`, `fbbb6a5`, `8500c6a`, `134f4ca`, pushed `b035c45..134f4ca`): (1) all 308 bank subtopics ruled (10 agent slices, 5/5 blind controls, ~25 claims re-verified); (2) `derive-board-status --subject=maths` → 903 matrix rows; (3) the NCERT→SB edge → 128 authored rulings, alignment table 0→153 NCERT cells / 89 backed pairings. En route: `audit-directions` was found subject-blind (129 manufactured contradictions) and fixed. **Signed-in browser eyeball of `/dashboard/syllabus/maths`: verified by the user 2026-08-07** — the ship is fully verified end-to-end. Original entry follows.
+
+Original scope note (superseded):
+
+The Mathematics syllabus map shipped Phases 0–3a on branch `syllabus-maths` (registry + bank-name alias seam · SB spine 408/33 · NCERT spine 244/27 · exam-bank spines JEE 112 + CET 85 + NDA 111 = 308 rows, ZERO rulings). `/dashboard/syllabus/maths` renders every cell honestly UNASSESSED. The user chose "spines only, rulings later", so the remaining work, in dependency order:
+
+1. **Phase 3b — rulings for the 308 bank subtopics** (JEE 112 → CET 85 → NDA 111), the dominant cost. Needs first: `dump_maths_corpus.py` for both books (NOTE: the SB Maths text layer garbles math — Sinhala glyphs for ∫, flattened 2-D math — so prose-term search works but formula-level evidence needs page renders; the NCERT Maths layer is cleaner), `dump-sections-handout.ts --subject=maths` (emits the renumbered SB refs — Part-2 chapters are stored +9/XI and +7/XII vs print, documented in `dump_sb_maths_sections.py`), and authoring per `RULING_BRIEF.md` in reviewed agent batches with blind controls (the Chemistry/Physics method). Rulings as DATA via `commit-bank-rulings.ts`.
+2. **`derive-board-status.ts --subject=maths`** after 3b — the chapter-matrix exam columns derive from the covered_by pointers (guarded: refuses to overwrite without --force).
+3. **NCERT→SB edge** (the alignment table's NCERT column; renders "not mapped yet" until authored — the shipped Physics posture). ~128 top-level NCERT sections.
+
+Reconciliation notes that will matter in 3b: JEE Maths has ONE subtopic with zero PUBLIC PYQ (Trigonometric Identities → Sum-Product Transformations, 11 practice rows) — correctly absent from the spine; JEE's 4 old-syllabus subtopics (Mathematical Reasoning + Height & Distance chapters, dead at liveFromYear 2024) are in the spine but excluded from live-gap analysis; and the JEE bank subject row is literally `"Maths"` (the `bankSubjectNames` alias seam in `subjects.ts` handles it — any NEW script joining the bank by subject name must use `bankSubjectNames()`, not `.eq`).
+
+
 
 ### ~~Scope `validate-db` (and `cleanup-latex`) by paper — they take NO arguments and sweep the whole exam~~ — **DONE 2026-08-06, but NOT as specced**
 
@@ -68,6 +105,32 @@ bank-wide sweep has twice earned its keep (it caught the pre-existing `2025-apr0
 that `scan-flip` passed). Print the scope on the summary line and warn when unfiltered, mirroring `audit:omml`,
 which CLAUDE.md already documents as "PASS THE FILTER after an ingest". Then update the README per-paper loop and
 `AGENT_BRIEF.md` step 4 to pass the paper id, leaving the batch-end sweep full.
+
+### Push the test-isolation merge + add the TEST_* secrets + watch the first CI run
+
+*Partially stale, corrected 2026-08-07: the merge **was** pushed — `push.log` records `f264852..9cbdd80`, and several pushes have landed since. Only the secrets + first-CI-run half of this item is still open; if CI has been green meanwhile, the secrets already exist and this can be struck entirely.*
+
+The test-isolation work (merge `9cbdd80`: dedicated test project `rjwuwmrzkyergflmmfxq`, prod-guard, prod-contract split, CI changes) is merged to local `main` but **not pushed**, because CI's test step will fail until the three `TEST_SUPABASE_URL` / `TEST_SUPABASE_ANON_KEY` / `TEST_SUPABASE_SERVICE_ROLE_KEY` repo secrets exist (values = `.env.test.local`; steps were given in-chat 2026-08-06).
+
+**Why:** until pushed, CI and Vercel still run against the pre-isolation code; and if anything ELSE is pushed first without the secrets, CI goes red on the guard doing its job — which would look like a regression.
+
+**How to apply:** add the 3 secrets (repo → Settings → Secrets and variables → Actions) → push `main` → watch the run: the "Tests (fixture-writing)" step should target the test project and the "Prod-contract" step prod. Also note this partially supersedes ledger row 32's "staging is NOT recommended" verdict — a separate test project WAS built, but for the fixture-leak class (which row 32 correctly identified as the one failure mode only a separate DB fixes), not for the flake/egress symptoms row 32 resolved at their causes.
+
+### Fix the three test files with missing/conditional cleanup (now low-stakes)
+
+`export-route-kind.test.ts` has **no afterAll at all** (leaks `rate_limits` rows every run — 9,305 accumulated in prod since May, now swept); `quiz-snapshot` + `quiz-slug-numbering` clean up **only if their first test succeeded** (delete-by-captured-variable instead of delete-by-stamp-pattern). Since 2026-08-06 these leak into the **test** project only, and `npm run testdb:reset` re-baselines it — so this went from prod-pollution to hygiene.
+
+**Why:** a test DB that silently accumulates crumbs eventually produces confusing assertion drift (the browse-query ≥150-count class), and the reset is a manual step someone has to remember.
+
+**How to apply:** on the next touch of each file: add an afterAll to export-route-kind deleting `rate_limits` rows matching its `kind-test-<RUN_ID>-` stem; switch the two quiz files' afterAll to delete by their `snaptest<stamp>`/`slugtest<stamp>` slug patterns rather than captured ids. No urgency — fold in, don't make a dedicated pass.
+
+### Know the test project's idle-pause failure mode (and consider a keep-alive)
+
+The free-tier test project **pauses after ~7 days of inactivity**. Regular CI pushes normally prevent it, but after a quiet week (holiday, work paused) the next `npm test` / CI run fails with connection errors that look like an outage.
+
+**Why:** the failure is confusing precisely when context has been lost (returning after a break); the fix is a 30-second dashboard unpause, data intact — but only if you remember this is the cause. `scripts/testdb/README.md` documents it.
+
+**How to apply:** either just remember (README covers it), or add a weekly keep-alive: a scheduled GitHub Action hitting the test project's REST endpoint (one `select 1` via anon key) — ~5 lines of workflow. Decide only if the pause actually bites once.
 
 ### Recover the 5 straggler questions whose option blocks never parsed
 
@@ -110,6 +173,52 @@ not`) — it already misses "ruling out (D)", "is wrong for exactly this reason"
 is a losing game. Superseded original spec: prefer a terminal `Answer: X`; otherwise ignore a trailing match-list mapping
 (`\([A-D]\)\s*-\s*\(?[IVX]`) and a trailing "Hence …only" statement set. Guard the change by re-running the
 practice probe and confirming its 7 genuine `SOLN≠KEY` still fire — that check caught a prior over-tightening.
+
+### Read the first real `db:health` window and decide whether alerting is warranted
+
+The health tracker shipped 2026-08-07 (merge `da90f24`) with exactly one stored snapshot, so its first report
+could only say "first run — no window to compare". The **second** snapshot, from the daily 02:30 UTC Action, is
+the first that produces a genuine ~24 h delta — and it finally answers the question this whole thread started
+from: **did the `/browse` disk spill actually stop on 2026-08-05, or is it still running?** Cumulative counters
+cannot answer that; only the delta can.
+
+**Why:** the tracker is worthless until someone reads it once and confirms the numbers are believable. This is
+also the moment to judge whether the thresholds are calibrated (see [[monitor-threshold-calibration]]) — the
+first two runs already forced two rule changes, so a third is plausible.
+
+**How to apply:** open the "Database health" workflow run, or `npm run db:health -- --dry` locally. Check that
+`FINDINGS` is empty or explicable, that `disk spill` for the window is small, and that no query shows a per-call
+spill. If the numbers hold for ~a week, consider whether any rule deserves to become an alert; until then keep
+it report-only, deliberately. Note `largest chapter` is currently **531** against the 1000-row PostgREST cap —
+worth watching as JEE/State Board chapters grow.
+
+### Commit or discard the three uncommitted LWS mock papers
+
+`scripts/practice-paper/config.ts` carries ~457 uncommitted lines (GAT Mock W1, GAT Mock G1, English Mock PK1,
+built 2026-08-07 afternoon), with their `*.records.json` untracked in `scripts/practice-paper/data/` and tagged
+`.xlsx` in `generated-papers/`. There are also uncommitted edits to `scripts/practice/data/*.json` dated
+2026-08-06. None of it was swept into the db-health commit, deliberately.
+
+**Why:** untracked ingestion records are the artifact that makes a paper reproducible; `generated-papers/` is
+gitignored by convention, so if the records are lost the paper cannot be rebuilt. The longer they sit, the less
+certain their provenance.
+
+**How to apply:** confirm the three papers are final, then commit `config.ts` + the three `data/*.records.json`
+together (no `.xlsx` — see [[no-commit-generated-xlsx]]). Review the `scripts/practice/data/*.json` edits
+separately; their origin was not established this session.
+
+### Fix the `/api/export` 500 on a malformed cart id
+
+A malformed id in the `localStorage` `qb_cart` blob 500s the entire export with a bare "internal error" — the
+ids go straight into a Postgres `uuid` column with no format check (`parseCart` in `src/lib/cart/storage.ts`
+accepts any string). Proven in an earlier session, still unfixed. Recorded here because its only prior home was
+the notes-egress memory, which is now marked CLOSED and may stop being read.
+
+**Why:** it is user-facing and silent — a teacher whose cart got corrupted sees only "internal error" with no
+route to recovery, and the cart is the one piece of state that survives an OAuth round-trip.
+
+**How to apply:** validate ids in `parseCart` (drop non-uuid entries rather than throwing, so a partially
+corrupted cart still exports), and return a 400 with a usable message if nothing valid remains.
 
 ---
 ## 2026-08-05
