@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "D",
+    "working": "With replacement: total outcomes $6^3=216$; all-distinct outcomes $6\\cdot5\\cdot4=120$; $P=120/216=5/9$.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": null,
+    "working": "$ax^2+by^2+2hxy+2gx+2fy+c=0$ is a circle iff coefficient of $x^2$ = coefficient of $y^2$ AND the $xy$ term vanishes, i.e. $a=b$ and $h=0$ (with $g^2+f^2-ac>0$). $c=0$ is not required (it only forces the circle through the origin).",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circle Equation — Centre, Radius, Diameter, and Properties",
+    "difficulty": "EASY",
+    "notes": "DEFECT (two faults). (1) Options (A) and (C) are character-for-character identical: both read 'a = b and c = 0'. (2) The mathematically correct condition 'a = b and h = 0' appears in NO option as printed. Almost certainly one of the duplicated options was originally 'a = b and h = 0' and the source/OCR corrupted h to c; because it is impossible to tell whether (A) or (C) carried it, no letter can be defended. Needs a source-PDF check of the printed options."
+  },
+  {
+    "number": 103,
+    "answer": "A",
+    "working": "$P(B)=1-P(\\overline{B})=1-0.8=0.2$; $P(A\\cap B)=P(A|B)\\,P(B)=0.4\\times0.2=0.08$.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "EASY",
+    "notes": "The datum $P(A\\cup B)=0.5$ is redundant (it only fixes $P(A)=0.38$); the answer follows from the multiplication rule alone."
+  },
+  {
+    "number": 104,
+    "answer": "A",
+    "working": "For direction angles $\\cos^2\\alpha+\\cos^2\\beta+\\cos^2\\gamma=1$. (1) $\\sum\\cos 2\\alpha=2\\sum\\cos^2\\alpha-3=2-3=-1$ TRUE. (2) $\\sum\\sin^2\\alpha=3-\\sum\\cos^2\\alpha=3-1=2\\neq1$ FALSE.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 105,
+    "answer": "B",
+    "working": "Test each: (3,7,1) gives $6+21-6=21$ ✓. Others give $0$, $-16$, $13$.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 106,
+    "answer": "D",
+    "working": "$n_1=(1,1,2)$, $n_2=(-2,1,-1)$: $n_1\\cdot n_2=-3$, $|n_1|=|n_2|=\\sqrt6$, $\\cos\\theta=-3/6=-1/2$, so the acute angle is $\\pi/3$.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "MODERATE",
+    "notes": "OCR typo in the stem: the first plane is printed '$x + y + 2x = 3$' (two $x$ terms, no $z$). Read as $x+y+2z=3$. Taken literally it collapses to $3x+y=3$, giving $\\cos\\theta=5/(2\\sqrt{15})\\approx0.6455$, i.e. $\\approx49.8^\\circ$, which matches no option — confirming the intended term is $2z$."
+  },
+  {
+    "number": 107,
+    "answer": "C",
+    "working": "$y=e^x$ and $y=e^{-x}$ meet at $x=0$; on $[0,1]$, $e^x\\ge e^{-x}$. Area $=\\int_0^1(e^x-e^{-x})dx=[e^x+e^{-x}]_0^1=(e+1/e)-2$.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Between Two Curves and Intersection Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 108,
+    "answer": "D",
+    "working": "$4x^2-9y^2=1$ is $\\frac{x^2}{1/4}-\\frac{y^2}{1/9}=1$: transverse axis along $x$, conjugate axis is the $y$-axis. Put $x=0$: $-9y^2=1$ has no real root, so the hyperbola never meets its conjugate axis.",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Hyperbola — Foci and Eccentricity",
+    "difficulty": "MODERATE",
+    "notes": "Minor option defect (does not change the answer): option (A) prints the same point twice, '(1/2, 0) and (1/2, 0)', evidently intended as $(\\pm1/2,0)$ — those are the vertices on the TRANSVERSE axis, so (A) is a distractor either way."
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "working": "Distance from the axes are $|y|$ and $|x|$; equidistant gives $|x|=|y|$, i.e. $y=\\pm x$, i.e. $x\\pm y=0$ (the pair of bisectors).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 110,
+    "answer": "B",
+    "working": "Form $\\int e^x\\{f(x)+f'(x)\\}dx=e^xf(x)+c$ with $f(x)=\\sqrt x$, $f'(x)=\\frac{1}{2\\sqrt x}$. So the integral is $e^x\\sqrt x+c$.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 111,
+    "answer": "C",
+    "working": "$p=\\sqrt{13}\\approx3.61$, $q=\\sqrt{9}=3$, $r=\\sqrt{18}\\approx4.24$, $s=\\sqrt{17}\\approx4.12$. Hence $r>s>p>q$.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "EASY",
+    "notes": "Option (A) prints a capital 'Q' where the variable is lower-case q — cosmetic only; (A) is $r>s>q>p$, which is false regardless."
+  },
+  {
+    "number": 112,
+    "answer": "B",
+    "working": "Sine rule: $\\sin C=\\frac{c\\sin A}{a}=\\frac{2\\sin120^\\circ}{\\sqrt6}=\\frac{2(\\sqrt3/2)}{\\sqrt6}=\\frac{\\sqrt3}{\\sqrt6}=\\frac{1}{\\sqrt2}$, so $C=45^\\circ$ (the obtuse root is impossible since $A=120^\\circ$).",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 113,
+    "answer": "D",
+    "working": "f = 3,7,6,5 (N=21), cf = 3,10,16,21. Modal class = 6–10 (f=7, boundaries 5.5–10.5). $N/2=10.5>10$, so the median class is the THIRD, 11–15: median $=10.5+\\frac{10.5-10}{6}(5)\\approx10.92$, which lies in 10.5–15.5, not the modal class ⇒ (1) false. The frequencies 3,7,6,5 peak at the 2nd of 4 classes and are clearly asymmetric ⇒ not bell-shaped ⇒ (2) false.",
+    "confidence": "medium",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": "Statement 2 is printed as 'The distribution is well-shaped', almost certainly OCR for 'bell-shaped'. Also note the median (≈10.92) falls only 0.42 above the 10.5 boundary, so statement 1 is false by a narrow margin — if a solver skips the continuity correction and mis-reads the median class as 6–10 they would wrongly pick (A). Worth a source check of the printed key."
+  },
+  {
+    "number": 114,
+    "answer": "C",
+    "working": "N=50, cf = 5,15,35,40,50; $N/2=25$ ⇒ median class 20–30 ($l=20$, cf=15, f=20, h=10). Median $=20+\\frac{25-15}{20}\\times10=25$.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "working": "Midpoints 5,15,25,35,45 with f = 5,10,20,5,10: $\\sum fx=25+150+500+175+450=1300$; mean $=1300/50=26$.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "answer": "A",
+    "working": "Expanding along row 1: $(2-x)\\{-x(3-x)\\}-1\\{-x\\}+1\\{-3+(3-x)\\}=-x(2-x)(3-x)+x-x=-x(2-x)(3-x)$. Singular ⇒ $x=0,2,3$, so $S=\\{0,2,3\\}$.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": "The matrix rows in the stem are separated by single backslashes rather than '\\\\\\\\', but the 3×3 entries are unambiguous."
+  },
+  {
+    "number": 117,
+    "answer": "D",
+    "working": "$\\cos2x-\\sin2x=\\sqrt2\\cos(2x+\\pi/4)$, whose amplitude is $\\sqrt2$; as $2x+\\pi/4$ sweeps all reals the range is the CLOSED interval $[-\\sqrt2,\\ \\sqrt2]$.",
+    "confidence": "medium",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "EASY",
+    "notes": "OPTION DEFECT. The true range $[-\\sqrt2,\\sqrt2]$ matches no option exactly. Option (D) has the correct endpoints but is printed as an OPEN interval $(-\\sqrt2,\\sqrt2)$ (both endpoints ARE attained, at $2x+\\pi/4=0$ and $\\pi$). Option (C) has square brackets but a wrong lower endpoint $-2\\sqrt2$. (D) is selected because only its endpoint VALUES are right and bracket glyphs are a common OCR corruption, whereas (C) is wrong by a factor of 2 on one endpoint. Source-verify the printed brackets before trusting the key."
+  },
+  {
+    "number": 118,
+    "answer": "A",
+    "working": "Separate: $\\frac{dy}{\\sqrt{1-y^2}}=-\\frac{dx}{\\sqrt{1-x^2}}$ ⇒ $\\sin^{-1}y=-\\sin^{-1}x+c$ ⇒ $\\sin^{-1}y+\\sin^{-1}x=c$.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "C",
+    "working": "$|z|^2=(1+\\cos\\theta)^2+\\sin^2\\theta=2+2\\cos\\theta=4\\cos^2(\\theta/2)$ with $\\theta=\\pi/5$, so $|z|=2\\cos(\\pi/10)$ (positive since $\\pi/10$ is acute).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "C",
+    "working": "Let $x=\\sqrt3k,\\ y=2k,\\ z=3k$. Unit ⇒ $3k^2+4k^2+9k^2=16k^2=1$ ⇒ $k=1/4$ ⇒ $z=3/4$.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "EASY",
+    "notes": "Only the positive root is offered; $k=-1/4$ (giving $z=-3/4$) is an equally valid unit vector, but no option covers it."
+  }
+]

@@ -1,0 +1,188 @@
+[
+  {
+    "number": 101,
+    "answer": "D",
+    "working": "From \\(y^{2}=4a(x+a)\\), differentiating gives \\(2yy'=4a\\) so \\(a=\\frac{yy'}{2}\\). Substituting back: \\(y^{2}=4\\cdot\\frac{yy'}{2}(x+\\frac{yy'}{2})=2xyy'+y^{2}(y')^{2}\\), i.e. \\(y\\left[2xy'+y(y')^{2}-y\\right]=0\\), so \\(2x\\frac{dy}{dx}+y\\left(\\frac{dy}{dx}\\right)^{2}-y=0\\). Sympy elimination reproduced exactly \\(-y\\cdot(\\text{option D})\\), confirming the identity. Option (A) is the trap of substituting \\(a=\\frac{dy}{dx}\\) instead of \\(a=\\frac{yy'}{2}\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 102,
+    "answer": "A",
+    "working": "Separating: \\(\\frac{dy}{y-1}=\\frac{dx}{x(x+1)}=\\left(\\frac{1}{x}-\\frac{1}{x+1}\\right)dx\\), so \\(y-1=K\\frac{x}{x+1}\\). At \\((1,2)\\): \\(1=K/2\\Rightarrow K=2\\), giving \\((y-1)(x+1)-2x=0\\). Verified by sympy: the implicit curve solves to \\(y=\\frac{3x+1}{x+1}\\), which passes through \\((1,2)\\) and satisfies \\(y'-\\frac{y-1}{x^{2}+x}=0\\) identically.",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (B) is corrupted: it prints \"2x(y -- 1) + x = 1 = 0\" with TWO equals signs. The source almost certainly read \"2x(y - 1) + x - 1 = 0\" (a distractor); as printed it is not an equation at all. Does not affect the answer, which is (A)."
+  },
+  {
+    "number": 103,
+    "answer": "A",
+    "working": "Highest derivative is \\(\\frac{d^{2}y}{dx^{2}}\\), so the order is 2. Degree is defined only when the equation is a polynomial equation in the variables and derivatives; the terms \\(\\left(\\frac{dy}{dx}\\right)^{1/4}\\) and \\(x^{1/5}\\) carry fractional powers, and clearing the quarter-power leaves \\(\\frac{dy}{dx}=\\left(\\frac{d^{2}y}{dx^{2}}+x^{1/5}\\right)^{4}\\) which is still non-polynomial because of \\(x^{1/5}\\). Hence order 2, degree not defined.",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "This is verbatim JEE Main 2021 (26 Feb, Shift 1) including the option ORDER, whose official key is \"2 and not defined\". Worth recording that degree 4 is a defensible reading if one treats \\(x^{1/5}\\) as a mere coefficient — but 4 is not among the four options, which corroborates (A) as the intended key."
+  },
+  {
+    "number": 104,
+    "answer": "D",
+    "working": "\\(\\log\\frac{dy}{dx}=3x+4y\\Rightarrow\\frac{dy}{dx}=e^{3x}e^{4y}\\Rightarrow e^{-4y}dy=e^{3x}dx\\Rightarrow-\\frac{1}{4}e^{-4y}=\\frac{1}{3}e^{3x}+C\\). Multiplying by \\(-12\\): \\(4e^{3x}+3e^{-4y}=K\\); at \\((0,0)\\), \\(K=4+3=7\\). Checked all four options by implicit differentiation in sympy: only (D) both passes through \\((0,0)\\) AND yields \\(\\frac{dy}{dx}=e^{3x+4y}\\) ((A) and (C) pass the point but fail the ODE).",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 105,
+    "answer": "A",
+    "working": "\\((\\hat{i}+\\hat{j}+\\hat{k})\\cdot(\\hat{j}-\\hat{k})=0+1-1=0\\). A zero dot product with both vectors non-zero means the angle is \\(90^{\\circ}\\).",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 106,
+    "answer": "C",
+    "working": "\\(\\overrightarrow{AB}=(0,1,2)\\), \\(\\overrightarrow{AC}=(1,2,0)\\); \\(\\overrightarrow{AB}\\times\\overrightarrow{AC}=(-4,2,-1)\\) with magnitude \\(\\sqrt{16+4+1}=\\sqrt{21}\\). Area \\(=\\frac{1}{2}\\sqrt{21}\\) sq. units (numerically 2.2913, confirmed). Option (A) is the trap of forgetting the factor \\(\\frac{1}{2}\\).",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 107,
+    "answer": "D",
+    "working": "Projection of \\(\\vec{b}\\) on \\(\\vec{a}\\) is \\(\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|}\\) and of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\). Setting \\(\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|}=2\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\) and cancelling \\(\\vec{a}\\cdot\\vec{b}\\neq0\\) gives \\(|\\vec{b}|=2|\\vec{a}|\\). Hence \\(|\\vec{b}|-|\\vec{a}|=2|\\vec{a}|-|\\vec{a}|=|\\vec{a}|\\). (It equals \\(\\frac{|\\vec{b}|}{2}\\), not \\(|\\vec{b}|\\), which rules out (C).)",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 108,
+    "answer": "C",
+    "working": "\\(\\overrightarrow{BC}=(-2,-6,3)\\) with \\(|\\overrightarrow{BC}|=\\sqrt{4+36+9}=7\\); \\(\\overrightarrow{BA}=(-1,3,0)\\); \\(\\overrightarrow{BA}\\times\\overrightarrow{BC}=(9,3,12)\\) with magnitude \\(\\sqrt{81+9+144}=\\sqrt{234}=3\\sqrt{26}\\). Distance \\(=\\frac{3\\sqrt{26}}{7}\\approx2.1853\\), confirmed numerically.",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Minor stem defect: B is printed \"(2,1-2)\" with a missing comma. It must be \\((2,1,-2)\\) — that reading makes \\(|\\overrightarrow{BC}|\\) exactly 7 and produces the clean option (C); no other reading of that fragment gives an option match."
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "working": "\\(|3\\hat{i}+2\\hat{j}-6\\hat{k}|=\\sqrt{9+4+36}=\\sqrt{49}=7\\). For \\(\\lambda\\) times it to be a unit vector, \\(|\\lambda|\\cdot7=1\\Rightarrow\\lambda=\\pm\\frac{1}{7}\\).",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (B) carries an extraction artifact: \"\\(\\pm\\)`<!-- -->`{=html}7\". The stray HTML comment is a pandoc leftover; the option means \\(\\pm7\\). Cosmetic only — the answer is (A)."
+  },
+  {
+    "number": 110,
+    "answer": "A",
+    "working": "Writing \\(x=\\vec{p}\\cdot\\vec{q}\\), \\(y=\\vec{q}\\cdot\\vec{r}\\), \\(z=\\vec{r}\\cdot\\vec{p}\\), the three perpendicularity conditions give \\(x+z=0\\), \\(y+x=0\\), \\(z+y=0\\); adding/subtracting forces \\(-2x=0\\), so \\(x=y=z=0\\) and the three vectors are mutually perpendicular. Then \\(36+48+16=2(|\\vec{p}|^{2}+|\\vec{q}|^{2}+|\\vec{r}|^{2})=100\\Rightarrow\\) sum of squares \\(=50\\), and \\(|\\vec{p}+\\vec{q}+\\vec{r}|^{2}=50+0=50\\Rightarrow5\\sqrt{2}\\).",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "HARD",
+    "confidence": "high"
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "Sphere centre \\((1,2,-1)\\), radius \\(\\sqrt{1+4+1+3}=3\\); distance from centre to the plane \\(=\\frac{|2-4-1+12|}{3}=3\\), so it is indeed tangent. The contact point is the foot of the perpendicular: \\((1,2,-1)-3\\cdot\\frac{(2,-2,1)}{3}=(-1,4,-2)\\). Verified numerically — \\((-1,4,-2)\\) is the only option satisfying BOTH the plane equation and the sphere equation (each gives exactly 0; the other three give non-zero for both).",
+    "chapter": "3D Geometry",
+    "subtopic": "Sphere",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 112,
+    "answer": "B",
+    "working": "A line through the origin meeting \\(L\\) does so at \\((3+2t,3+t,t)\\), which is also its direction vector. Imposing \\(\\cos60^{\\circ}=\\frac12\\) against \\(L\\)'s direction \\((2,1,1)\\) gives \\(\\frac{9+6t}{\\sqrt6\\sqrt{6t^{2}+18t+18}}=\\pm\\frac12\\Rightarrow t^{2}+3t+2=0\\Rightarrow t=-1,-2\\). These give directions \\((1,2,-1)\\) and \\((-1,1,-2)\\) — numerically \\(60^{\\circ}\\) and \\(120^{\\circ}\\) as directed vectors, i.e. both \\(60^{\\circ}\\) as LINES. So the pair is \\(\\frac{x}{1}=\\frac{y}{2}=\\frac{z}{-1}\\) and \\(\\frac{x}{-1}=\\frac{y}{1}=\\frac{z}{-2}\\).",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "HARD",
+    "confidence": "low",
+    "notes": "DAMAGED — DUPLICATE OPTIONS: options (B) and (C) are printed byte-identical, both reading \"\\(\\frac{x}{1}=\\frac{y}{2}=\\frac{z}{-1}\\) ; \\(\\frac{x}{-1}=\\frac{y}{1}=\\frac{z}{-2}\\)\". My derivation is high-confidence and matches that content exactly, so the MATHEMATICS is settled; only the LETTER is undeterminable — one of B/C was overwritten during extraction. I picked (B) as the first of the duplicated pair, but the printed key could legitimately be (C). Please source-verify the printed options before flipping this row PUBLIC. Note the stem's \\(\\frac{z}{1}\\) is self-consistent: with the common textbook variant \\(\\frac{z}{-1}\\) the answers would instead be \\((1,2,1)\\) and \\((-1,1,2)\\), which match option (A)'s shape only partly — so the stem is NOT corrupted, the options are."
+  },
+  {
+    "number": 113,
+    "answer": "C",
+    "working": "Segment vector \\((2,5,1)-(-1,0,3)=(3,5,-2)\\); the direction ratios \\((6,2,3)\\) have magnitude \\(\\sqrt{36+4+9}=7\\). Projection \\(=\\frac{3(6)+5(2)+(-2)(3)}{7}=\\frac{18+10-6}{7}=\\frac{22}{7}\\), confirmed numerically as 3.142857.",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 114,
+    "answer": "D",
+    "working": "\\(\\overrightarrow{PQ}=(-2-7,\\;8-(-5),\\;13-11)=(-9,13,2)\\). The given triple \\(\\left(\\frac13,\\frac23,\\frac23\\right)\\) has \\(\\frac19+\\frac49+\\frac49=1\\), so it is already a set of direction cosines. Projection \\(=-9\\cdot\\frac13+13\\cdot\\frac23+2\\cdot\\frac23=-3+\\frac{26}{3}+\\frac43=-3+10=7\\).",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "working": "Rewrite the first line as \\(\\frac{x}{k}=\\frac{y-2}{-1}=\\frac{z-1}{2}\\), direction \\((k,-1,2)\\); the second is \\(\\frac{x+1}{3}=\\frac{y-1}{k}=\\frac{z+2}{1}\\), direction \\((3,k,1)\\). Perpendicularity needs \\(3k-k+2=0\\Rightarrow2k+2=0\\Rightarrow k=-1\\) (sympy confirms the single root \\(-1\\)).",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 116,
+    "answer": "D",
+    "working": "The line's direction \\((a,b,c)\\) is identical to the plane's normal \\((a,b,c)\\), so the line is normal to the plane. Formally \\(\\sin\\theta=\\frac{|(a,b,c)\\cdot(a,b,c)|}{|(a,b,c)||(a,b,c)|}=\\frac{a^{2}+b^{2}+c^{2}}{a^{2}+b^{2}+c^{2}}=1\\Rightarrow\\theta=90^{\\circ}\\).",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (A) has a flattened exponent: it prints \\(\\sin^{-1}\\left(\\frac{1}{\\sqrt{a^{2}+b^{2}+a^{c}}}\\right)\\) — the final term \"a^{c}\" must have been \\(c^{2}\\) in the source (an OCR read of \\(c^{2}\\) as \\(a^{c}\\)). Cosmetic for the key, since (A) is a distractor either way; worth repairing before commit."
+  },
+  {
+    "number": 117,
+    "answer": "D",
+    "working": "The normal to \\(x+2y-3z+4=0\\) is \\((1,2,-3)\\) with magnitude \\(\\sqrt{1+4+9}=\\sqrt{14}\\), giving direction cosines \\(\\frac{1}{\\sqrt{14}},\\frac{2}{\\sqrt{14}},-\\frac{3}{\\sqrt{14}}\\). (The opposite sense \\(-\\frac{1}{\\sqrt{14}},-\\frac{2}{\\sqrt{14}},\\frac{3}{\\sqrt{14}}\\) is equally valid but is not offered; option (A) is \\(-(1,2,3)/\\sqrt{14}\\), which is not parallel to the normal.)",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 118,
+    "answer": "B",
+    "working": "Putting \\(x=1\\) and \\(x=-1\\) in \\((1+x)^{50}\\) gives (sum of all coefficients) \\(=2^{50}\\) and (even minus odd) \\(=0\\), so odd-power coefficients sum to \\(\\frac{2^{50}}{2}=2^{49}\\). Verified by direct summation: \\(\\sum_{i\\ \\text{odd}}\\binom{50}{i}=562949953421312=2^{49}\\).",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 119,
+    "answer": "B",
+    "working": "\\(r^{2}=b_{yx}\\cdot b_{xy}=(-0.64)(-0.36)=0.2304\\Rightarrow|r|=0.48\\). The sign of \\(r\\) matches the (common) sign of the regression coefficients, and both are negative, so \\(r=-0.48\\) (sympy: \\(-\\frac{12}{25}\\)).",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 120,
+    "answer": "B",
+    "working": "Assign the lines so that \\(|r|\\le1\\): taking \\(8x-10y=66\\) as y-on-x gives \\(b_{yx}=0.8\\) and \\(40x-18y=214\\) as x-on-y gives \\(b_{xy}=0.45\\), so \\(r^{2}=0.36\\), \\(r=0.6\\) (valid). The reverse assignment gives \\(b_{xy}b_{yx}=\\frac{10}{8}\\cdot\\frac{40}{18}=2.78>1\\), impossible. With \\(\\sigma_{x}=\\sqrt{9}=3\\), \\(b_{yx}=r\\frac{\\sigma_{y}}{\\sigma_{x}}\\Rightarrow0.8=0.6\\cdot\\frac{\\sigma_{y}}{3}\\Rightarrow\\sigma_{y}=4\\); cross-checked via \\(b_{xy}=r\\frac{\\sigma_{x}}{\\sigma_{y}}=0.6\\cdot\\frac34=0.45\\) ✓.",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  }
+]

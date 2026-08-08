@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "C",
+    "working": "Treat as linear in x: dx/dy + x/(1+y^2) = e^{arctan y}/(1+y^2). IF = e^{arctan y}, so d/dy(x e^{arctan y}) = e^{2arctan y}/(1+y^2); with t = arctan y this integrates to e^{2t}/2, giving x e^{arctan y} = (1/2)e^{2arctan y} + C, i.e. 2x e^{arctan y} = e^{2arctan y} + k.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "C",
+    "working": "x^2+y^2-2ay=0 gives 2x+2yy'-2ay'=0 so a=(x+yy')/y'. Substituting: x^2+y^2-2y(x+yy')/y'=0, multiply by y': (x^2-y^2)y' = 2xy.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "B",
+    "working": "y dx + x dy + x^2 y dy = 0, i.e. d(xy) + x^2 y dy = 0. Divide by (xy)^2: d(xy)/(xy)^2 + dy/y = 0, integrating to -1/(xy) + log y = C. (Verified by differentiating back.)",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "C",
+    "working": "f'(x) = 6(x-a)(x-2a); for a>0 the max is at p=a and the min at q=2a. p^2=q gives a^2=2a, so a=2.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "working": "max of sqrt(3)cos x + sin x is sqrt(3+1) = 2, so the exponent maxes at 2+2 = 4 and the value is exp(4).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 86,
+    "answer": "A",
+    "working": "f'(x) = 1 - sin x >= 0 for all x, vanishing only at the isolated points x = pi/2 + 2n*pi, so f is increasing on all of R.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "answer": "A",
+    "working": "y = x^x (x>0): ln y = x ln x, y'/y = 1 + ln x, and y>0, so y' > 0 exactly when ln x > -1, i.e. x > 1/e.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": null,
+    "working": "Read literally, f(a) = (2a^2 - 3) + 3a + 4 = 2a^2 + 3a + 1, whose minimum is 1 - 9/8 = -1/8 (at a = -3/4). That value matches none of the four options.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "DEFECT: stem appears OCR-damaged and the correct value appears in NO option. As printed the function collapses to the quadratic 2a^2+3a+1 with minimum -1/8; options are 15/2, 11/2, -13/2, 71/8. I tried several plausible reconstructions and none reproduces an option: 2a^2-3a+4 -> 23/8; (2a-3)^2+3a+4 -> 127/16; (2a^2-3)^2+3a+4 -> approx 0.24; |2a^2-3|+3|a|+4 -> 7; a restricted to positive integers -> 6. Note 71/8 would be the minimum of 2a^2+3a+10, so the constant term is likely mis-transcribed, but that is a guess and I will not assert it. Source stem needs re-reading."
+  },
+  {
+    "number": 89,
+    "answer": "B",
+    "working": "f'(x) = 12(x-2)(x^2+2), so the only critical point in [0,3] is x=2. f(0)=25, f(2)=48-64+48-96+25=-39, f(3)=243-216+108-144+25=16. Minimum = -39.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "answer": "A",
+    "working": "x = 4 + 2y so xy = 2y^2 + 4y, an upward parabola minimised at y = -1 giving xy = 2 - 4 = -2 (with x = 2).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "working": "sin^2(theta) = (1 - cos 2theta)/2, and cos 2theta has period pi, so the period is pi.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "D",
+    "working": "2 sin((a+b)/2) cos((a-b)/2) = -21/65 and 2 cos((a+b)/2) cos((a-b)/2) = -27/65; squaring and adding gives 4cos^2((a-b)/2) = (441+729)/65^2 = 1170/4225, so cos^2((a-b)/2) = 9/130. Since pi < a-b < 3pi gives pi/2 < (a-b)/2 < 3pi/2, the cosine is negative: -3/sqrt(130).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 93,
+    "answer": "C",
+    "working": "Squaring cos x + sin x = 1/2 gives 2 sin x cos x = -3/4, so (sin x - cos x)^2 = 7/4. On (0,pi) sin x > 0 and hence cos x < 0, so sin x - cos x = sqrt(7)/2; then sin x = (1+sqrt7)/4, cos x = (1-sqrt7)/4 and tan x = (1+sqrt7)/(1-sqrt7) = -(4+sqrt7)/3.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "A",
+    "working": "a+b in [0,pi/2] with cos = 4/5 gives tan(a+b) = 3/4; a-b in [-pi/4,pi/4] with sin = 5/13 gives tan(a-b) = 5/12. tan 2a = tan((a+b)+(a-b)) = (3/4+5/12)/(1-15/48) = (14/12)/(33/48) = 56/33.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "D",
+    "working": "With s = sin^2 x in [0,1], A = s + (1-s)^2 = s^2 - s + 1, minimised at s = 1/2 giving 3/4 and maximised at s = 0 or 1 giving 1. So 3/4 <= A <= 1.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "working": "With t = tan A the sum is t^2/(t-1) - 1/(t(t-1)) = (t^3-1)/(t(t-1)) = (t^2+t+1)/t = tan A + cot A + 1 = sec A cosec A + 1.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": "Options (B) and (C) differ by exactly 1 (tan A + cot A = sec A cosec A), so they are distinct, not duplicates; (B) is the one that matches."
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "working": "With m = sin^2 x cos^2 x: sin^4+cos^4 = 1-2m and sin^6+cos^6 = 1-3m. So f4 - f6 = (1-2m)/4 - (1-3m)/6 = 1/4 - m/2 - 1/6 + m/2 = 1/12, independent of x.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "working": "(cos x + cos 4x) + (cos 2x + cos 3x) = 2cos(5x/2)[cos(3x/2)+cos(x/2)] = 4 cos(5x/2) cos x cos(x/2). In [0,2pi): cos(5x/2)=0 gives x = pi/5, 3pi/5, pi, 7pi/5, 9pi/5; cos x = 0 gives pi/2, 3pi/2; cos(x/2)=0 gives x = pi (already listed). Distinct total = 7.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "working": "Direction cosines give 2cos^2(theta) + cos^2(beta) = 1. From sin^2(beta) = 3 sin^2(theta): cos^2(beta) = 3cos^2(theta) - 2. Substituting, 5cos^2(theta) = 3, so cos^2(theta) = 3/5.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "answer": "A",
+    "working": "(2 sin x - 1)(sin x + 3) = 0, so sin x = 1/2 (sin x = -3 rejected). In [0,3pi]: x = pi/6, 5pi/6, 13pi/6, 17pi/6 (17pi/6 < 18pi/6 = 3pi). That is 4 values.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

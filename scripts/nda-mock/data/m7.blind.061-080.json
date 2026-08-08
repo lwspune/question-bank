@@ -1,0 +1,202 @@
+[
+  {
+    "number": 61,
+    "answer": "B",
+    "working": "Rationalise: \\(\\frac{(1+\\sin x)-(1-\\sin x)}{x(\\sqrt{1+\\sin x}+\\sqrt{1-\\sin x})}=\\frac{2\\sin x}{x(\\sqrt{1+\\sin x}+\\sqrt{1-\\sin x})}\\to \\frac{2\\cdot1}{1+1}=1\\).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 62,
+    "answer": "A",
+    "working": "n is an integer so \\([n]=n\\) and \\(\\lim_{x\\to n^+}(x-n)=0\\). (If the intended stem is \\(x-[x]\\), then just above n we still have \\([x]=n\\), so the limit is again 0.)",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    "difficulty": "EASY",
+    "notes": "Option (A) is printed as the letter 'O' but plainly means 0. Both readings of the stem ([n] as printed, or the likely intended [x]) give 0, so the answer is unaffected."
+  },
+  {
+    "number": 63,
+    "answer": "A",
+    "working": "The series is the expansion of \\(e^x\\), so \\(y=e^x\\) and \\(dy/dx=e^x=y\\).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "working": "\\(f(x)=\\int(x^2+5)dx=\\tfrac13x^3+5x+K\\); \\(f(0)=-1\\Rightarrow K=-1\\).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "working": "Multiply top and bottom by \\((\\csc\\theta-\\cot\\theta)\\); since \\(\\csc^2-\\cot^2=1\\) the integrand is \\((\\csc\\theta-\\cot\\theta)^2=2\\csc^2\\theta-2\\csc\\theta\\cot\\theta-1\\). Integrating: \\(-2\\cot\\theta+2\\csc\\theta-\\theta+c\\).",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 66,
+    "answer": "B",
+    "working": "By King's rule \\(I=\\int_a^b xf(x)dx=\\int_a^b (a+b-x)f(a+b-x)dx=\\int_a^b(a+b-x)f(x)dx\\); adding, \\(2I=(a+b)\\int_a^b f(x)dx\\).",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 67,
+    "answer": "A",
+    "working": "Limits sum to pi, and \\(\\sin(\\pi-\\phi)=\\sin\\phi\\), so King's rule gives \\(2I=\\pi\\int_{\\pi/4}^{3\\pi/4}\\frac{d\\phi}{1+\\sin\\phi}\\). With \\(1+\\sin\\phi=2\\cos^2(\\pi/4-\\phi/2)\\) the inner integral is \\([-\\tan(\\pi/4-\\phi/2)]=2\\tan(\\pi/8)\\), so \\(I=\\pi\\tan(\\pi/8)\\).",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "HARD",
+    "notes": "Numerically checked: Simpson (4 intervals) gives 1.3015 vs pi*tan(pi/8)=1.3013."
+  },
+  {
+    "number": 68,
+    "answer": "A",
+    "working": "Write the numerator as \\(a(f(x)-f(a))-f(a)(x-a)\\); dividing by \\(x-a\\) and letting \\(x\\to a\\) gives \\(af'(a)-f(a)\\). Check with \\(f(x)=x^2,a=1\\): limit is 1 and \\(af'(a)-f(a)=2-1=1\\).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 69,
+    "answer": "B",
+    "working": "For \\(1<x<3\\), \\(|x-1|+|x-3|=(x-1)+(3-x)=2\\), a constant, so the derivative at x=2 is 0.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "EASY",
+    "notes": "Option (B) is printed as the letter 'O' but means 0."
+  },
+  {
+    "number": 70,
+    "answer": "A",
+    "working": "Squaring the first: \\(x^4+2x^2y^2+y^4=t^2-2+1/t^2=(x^4+y^4)-2\\Rightarrow x^2y^2=-1\\) (a constant). Differentiating \\(x^2y^2=\\text{const}\\): \\(xy^2+x^2yy'=0\\Rightarrow y'=-y/x\\), hence \\(x^3y\\,y'=-x^2y^2=1\\).",
+    "confidence": "medium",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "HARD",
+    "notes": "The two given relations force \\(x^2y^2=-1\\), impossible for real x,y — the standard textbook version has \\(x^2+y^2=t+1/t\\) (giving \\(x^2y^2=1\\) and answer -1). Taken exactly as printed the algebra yields +1, which is option A; -1 appears in no option. Flagging the inconsistency."
+  },
+  {
+    "number": 71,
+    "answer": "C",
+    "working": "\\(u=x^{\\log x}\\Rightarrow \\ln u=(\\log x)(\\ln x)\\Rightarrow u'=\\frac{2\\log x}{x}x^{\\log x}\\) (same form for log base e or 10). So \\(dy/dx=2x+\\frac{2\\log x\\cdot x^{\\log x}}{x}=\\frac{2(x^2+\\log x\\cdot x^{\\log x})}{x}\\).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 72,
+    "answer": "B",
+    "working": "\\(\\sin x\\cos x=\\tan x\\cos^2x\\), so the integrand is \\(\\sec^2x/\\sqrt{\\tan x}\\). With \\(t=\\tan x\\), \\(\\int t^{-1/2}dt=2\\sqrt t=2\\sqrt{\\tan x}+c\\).",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 73,
+    "answer": "C",
+    "working": "The denominator must be \\(\\cot x-\\cot a\\) (OCR). Then the limit is \\(\\frac{-\\sin a}{-\\csc^2 a}=\\sin^3 a\\). Verified numerically at a=pi/4: ratio 0.35355 = \\(\\sin^3(\\pi/4)\\).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage: the denominator is printed 'cos x - cot a'. Read literally the denominator does not vanish at x=a, so the limit would be 0, which is in no option; with 'cot x - cot a' the answer is exactly option C."
+  },
+  {
+    "number": 74,
+    "answer": "D",
+    "working": "This is the derivative of \\(1/x\\) at \\(x=a\\), i.e. \\(-1/a^2\\).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 75,
+    "answer": "D",
+    "working": "\\(|x^2\\sin(1/x)|\\le x^2\\to0\\), so continuous at 0; \\(f'(0)=\\lim x\\sin(1/x)=0\\), so differentiable. Not (C), since \\(f'(x)=2x\\sin(1/x)-\\cos(1/x)\\) has no limit at 0.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 76,
+    "answer": "B",
+    "working": "Differentiability implies continuity but not conversely (\\(|x|\\) at 0), so 'a continuous function is always differentiable' is the false statement.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 77,
+    "answer": "D",
+    "working": "Cauchy's equation with \\(f(1)=7\\) gives \\(f(r)=7r\\) for natural r, so \\(\\sum_{r=1}^n f(r)=7\\cdot\\frac{n(n+1)}{2}\\).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 78,
+    "answer": "B",
+    "working": "\\(\\frac1n\\sum (r/n)^{99}\\to\\int_0^1 x^{99}dx=\\frac{1}{100}\\).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 79,
+    "answer": "A",
+    "working": "Limits sum to pi/2, so \\(x\\to\\pi/2-x\\) turns \\(\\tan x\\) into \\(\\cot x\\) and \\(I=\\int\\frac{\\sqrt{\\tan x}}{1+\\sqrt{\\tan x}}dx\\). Adding, \\(2I=\\pi/3-\\pi/6=\\pi/6\\), so \\(I=\\pi/12\\).",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 80,
+    "answer": "B",
+    "working": "Greatest angle C is opposite 12: \\(\\cos C=(64+100-144)/160=1/8\\). Smallest angle A is opposite 8: \\(\\cos A=(100+144-64)/240=3/4\\). Then \\(\\cos2A=2(3/4)^2-1=1/8=\\cos C\\), so \\(C=2A\\) exactly (82.82° vs 41.41°).",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

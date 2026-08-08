@@ -1,0 +1,199 @@
+[
+  {
+    "number": 81,
+    "answer": "C",
+    "working": "\\(\\sqrt3\\sin x-\\cos x = 2\\left(\\sin x\\cos\\frac{\\pi}{6}-\\cos x\\sin\\frac{\\pi}{6}\\right)=2\\sin\\!\\left(x-\\frac{\\pi}{6}\\right)\\), so the limit is \\(2\\lim_{t\\to0}\\frac{\\sin t}{t}=2\\). Numerically the quotient at \\(x=\\pi/6+10^{-7}\\) is 1.9999999989.",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Rendering defect (shared by Q81-Q84): the source \\(\\lim_{x\\to\\pi/6}\\) was extracted as \\(\\binom{\\lim}{x \\rightarrow \\frac{\\pi}{6}}\\), which KaTeX renders as a binomial coefficient with 'lim' on top. The stem needs rewriting as \\lim\\limits_{x \\to \\pi/6}. Also the stray '**' line after each stem is an unterminated bold marker from the extraction. Neither affects the mathematics."
+  },
+  {
+    "number": 82,
+    "answer": "B",
+    "working": "This is the difference quotient of \\(\\log x\\) at \\(x=e\\) (since \\(\\log e=1\\)): the limit is \\(\\left.\\frac{d}{dx}\\log x\\right|_{x=e}=\\frac{1}{e}\\). Numeric check at \\(x=e+10^{-7}\\) gives 0.36787943 vs \\(1/e=0.36787944\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Same \\binom-for-\\lim rendering defect as Q81."
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "working": "Divide numerator and denominator by \\(x^{2}\\): \\(\\frac{1-3/x+2/x^{2}}{1+1/x-6/x^{2}}\\to\\frac{1}{1}=1\\) as \\(x\\to\\infty\\). Equal leading degrees with equal leading coefficients, so the limit is the ratio 1/1.",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Same \\binom-for-\\lim rendering defect as Q81. Trap worth noting: at \\(x\\to1\\) (not \\(\\infty\\)) the value would be \\(-1/... \\) — options (A)/(B) \\(\\pm1/3\\) are the \\(x\\to2\\) distractors."
+  },
+  {
+    "number": 84,
+    "answer": "A",
+    "working": "Rationalize: \\(\\frac{\\sqrt{x+h}-\\sqrt{x}}{h}=\\frac{1}{\\sqrt{x+h}+\\sqrt{x}}\\to\\frac{1}{2\\sqrt{x}}\\) as \\(h\\to0\\). Numeric at \\(x=4\\), \\(h=10^{-8}\\): 0.2500000, matching \\(1/(2\\sqrt4)=0.25\\). Options (B) and (D) are eliminated on sight since the limit cannot depend on \\(h\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Same \\binom-for-\\lim rendering defect as Q81."
+  },
+  {
+    "number": 85,
+    "answer": "A",
+    "working": "\\(x^{3}-3x+2=(x-1)^{2}(x+2)\\) (expand to check: \\((x^{2}-2x+1)(x+2)=x^{3}-3x+2\\)). Hence \\(f(x)=x+2\\) for \\(x\\neq1\\) and \\(\\lim_{x\\to1}f(x)=3\\), so continuity forces \\(k=3\\). Numeric: \\(f(1.000001)=3.0000\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "working": "At \\(x=1\\): \\(\\frac{f(1+h)-f(1)}{h}=\\frac{h\\sin(1/h)}{h}=\\sin(1/h)\\), which oscillates in \\([-1,1]\\) and has no limit as \\(h\\to0\\) — not differentiable at \\(x=1\\). At \\(x=0\\), \\(x-1=-1\\neq0\\), so \\(f\\) is a product/composition of functions smooth in a neighbourhood of 0 and is differentiable there. So differentiable at 0 but not at 1.",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Note the contrast the question is testing: \\((x-1)\\sin\\frac{1}{x-1}\\) is continuous but NOT differentiable at 1, whereas \\((x-1)^{2}\\sin\\frac{1}{x-1}\\) would be differentiable there."
+  },
+  {
+    "number": 87,
+    "answer": "A",
+    "working": "\\(\\tan^{-1}\\frac{a-x}{1+ax}=\\tan^{-1}a-\\tan^{-1}x\\), and \\(\\tan^{-1}a\\) is constant, so the derivative is \\(-\\frac{1}{1+x^{2}}\\). Numeric check with \\(a=1,x=0.3\\): forward difference \\(-0.91743\\) vs \\(-1/(1+0.09)=-0.91743\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (B) is the trap for a student who differentiates \\(\\tan^{-1}a\\) with respect to \\(a\\) as well."
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "working": "\\(y=\\log(1-x^{2})-\\log(1+x^{2})\\Rightarrow \\frac{dy}{dx}=\\frac{-2x}{1-x^{2}}-\\frac{2x}{1+x^{2}}=\\frac{-2x[(1+x^{2})+(1-x^{2})]}{1-x^{4}}=\\frac{-4x}{1-x^{4}}\\). Numeric at \\(x=0.5\\): central difference \\(-2.1333\\) equals \\(-2/0.9375=-2.1333\\); option (D) would give \\(-0.533\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 89,
+    "answer": "D",
+    "working": "Take logs: \\(x\\log y=y-x\\Rightarrow x(1+\\log y)=y\\Rightarrow x=\\frac{y}{1+\\log y}\\). Then \\(\\frac{dx}{dy}=\\frac{(1+\\log y)-y\\cdot\\frac1y}{(1+\\log y)^{2}}=\\frac{\\log y}{(1+\\log y)^{2}}\\), so \\(\\frac{dy}{dx}=\\frac{(1+\\log y)^{2}}{\\log y}\\). Numeric check at the solution point \\(y=e,\\ x=e/2\\) (verifies \\(y^{x}=e^{e/2}=e^{y-x}\\)): formula gives \\(4/1=4\\) and \\(dx/dy=1/4\\), consistent.",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "working": "With \\(x+y=6\\), \\(\\frac1x+\\frac1y=\\frac{x+y}{xy}=\\frac{6}{xy}\\); this is minimised by maximising \\(xy\\), which for a fixed sum is largest at \\(x=y=3\\) giving \\(xy=9\\). Minimum \\(=6/9=2/3\\). (Equivalently AM-HM: \\(\\frac1x+\\frac1y\\ge\\frac{4}{x+y}=\\frac23\\).)",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "The stem does not say the numbers are positive; over all reals the expression is unbounded below (e.g. \\(x\\to0^{-}\\)). Positivity is clearly intended."
+  },
+  {
+    "number": 91,
+    "answer": "C",
+    "working": "Let \\(y=(1/x)^{x}=x^{-x}\\Rightarrow \\ln y=-x\\ln x\\Rightarrow \\frac{y'}{y}=-(\\ln x+1)=0\\Rightarrow x=1/e\\); the sign of \\(-(\\ln x+1)\\) changes \\(+\\to-\\), so it is a maximum. Value \\(=(e)^{1/e}=e^{1/e}\\). Numeric scan over \\(x\\in(0,2]\\) gives max 1.4446786 = \\(e^{1/e}\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (D) \\((1/e)^{1/e}\\approx0.6922\\) is the value of the function's minimum-looking distractor and is less than 1, so it cannot be the maximum of a function that already equals 1 at \\(x=1\\)."
+  },
+  {
+    "number": 92,
+    "answer": "A",
+    "working": "\\(V=a^{3}\\Rightarrow \\frac{dV}{dt}=3a^{2}\\frac{da}{dt}\\Rightarrow 9=3(100)\\frac{da}{dt}\\Rightarrow \\frac{da}{dt}=0.03\\) cm/s. \\(S=6a^{2}\\Rightarrow \\frac{dS}{dt}=12a\\frac{da}{dt}=12(10)(0.03)=3.6\\) cm\\(^{2}\\)/s.",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Unit defect in the printed options: all four are labelled \\({cm}^{3}/s\\), but a rate of change of SURFACE AREA is cm^2/s. The source should read '3.6 cm^2/s'. Separately, this is a related-rates question and the live NDA taxonomy has no 'Rate of Change' subtopic under Application of Derivatives (only Monotonicity/Optimisation/Tangents and Slopes) — 'Tangents and Slopes' is the closest existing home (derivative-as-rate) but is an imperfect fit; flagging in case a subtopic should be added."
+  },
+  {
+    "number": 93,
+    "answer": "D",
+    "working": "As printed, \\(f(x)=3x^{2}+6x-9\\Rightarrow f'(x)=6(x+1)\\), so \\(f\\) decreases on \\((-\\infty,-1)\\) and increases on \\((-1,\\infty)\\). Option (D) 'decreasing in \\((-\\infty,-1)\\)' is true; (B) and (C) are false.",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "confidence": "medium",
+    "notes": "DEFECTIVE OPTION SET as printed. With \\(f=3x^{2}+6x-9\\), option (A) 'f(x) is increasing (-1,3)' is ALSO true, since \\((-1,3)\\subset(-1,\\infty)\\) where \\(f'>0\\) — so two options are correct. The value 3 in the options has no source in \\(3x^{2}+6x-9\\) (whose only critical point is \\(x=-1\\)), which suggests a sign corruption: if the stem is \\(f(x)=3x^{2}-6x-9=3(x-3)(x+1)\\) — one flipped sign, and note -1 and 3 are exactly its ROOTS, the two numbers appearing in the options — then \\(f'=6(x-1)\\), \\(f\\) decreases on \\((-\\infty,1)\\supset(-\\infty,-1)\\), and (D) becomes the UNIQUE true statement while (A) is false. Both the literal reading and that corrected reading give D, which is why I am confident in the letter but only medium on the stem. A third possibility, \\(f(x)=x^{3}-3x^{2}-9x+c\\) (so \\(f'=3x^{2}-6x-9=3(x-3)(x+1)\\), matching the printed coefficients 3/6/9 and making the option intervals the exact monotonic intervals), would make (C) the unique answer instead — worth checking the source page before flipping."
+  },
+  {
+    "number": 94,
+    "answer": "C",
+    "working": "Let the cone's altitude be \\(h\\) and base radius \\(R\\), with the apex on the sphere and base centre at distance \\(h-r\\) from the sphere's centre: \\(R^{2}=r^{2}-(h-r)^{2}=2rh-h^{2}\\). Then \\(V=\\frac{\\pi}{3}(2rh^{2}-h^{3})\\) and \\(\\frac{dV}{dh}=\\frac{\\pi}{3}(4rh-3h^{2})=0\\Rightarrow h=\\frac{4r}{3}\\); \\(V''<0\\) there, so it is the maximum (giving \\(V=\\frac{32}{81}\\pi r^{3}\\), i.e. \\(8/27\\) of the sphere).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Extraction artifact: option (D) ends with a stray '![' image-link fragment ('\\(\\frac{8r}{3}\\) ![') — a broken figure reference bleeding into the option text. Note also that \\(8r/3 > 2r\\) is geometrically impossible for a chord of a sphere of radius r, so (D) is a nonsense distractor either way."
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "working": "\\(\\int\\frac{dx}{\\sqrt{9x-4x^{2}}}=\\frac12\\int\\frac{dx}{\\sqrt{\\frac94x-x^{2}}}\\); completing the square, \\(\\frac94x-x^{2}=\\left(\\frac98\\right)^{2}-\\left(x-\\frac98\\right)^{2}\\), so the integral is \\(\\frac12\\sin^{-1}\\frac{x-9/8}{9/8}+C=\\frac12\\sin^{-1}\\left(\\frac{8x-9}{9}\\right)+C\\). Verified numerically: \\(\\int_{0.5}^{1.5}=0.4644339398\\) equals the closed form's difference 0.4644339398.",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "BLIND-PACKET LEAK: this question's answer and full worked solution were NOT withheld — lines 142-150 of the packet print the options as lowercase '(a)...(d)' and then 'SOL. **(b)** ...' with the complete derivation. I derived and numerically verified B independently before reading it, and my derivation agrees, but the reviewer should know this row's answer was visible. Options are labelled (a)-(d) here rather than (A)-(D) as in every other question; I mapped positionally, so (b) = B."
+  },
+  {
+    "number": 96,
+    "answer": "A",
+    "working": "\\(\\sin^{2}x\\) is even, so \\(\\int_{-\\pi/2}^{\\pi/2}\\sin^{2}x\\,dx=2\\int_{0}^{\\pi/2}\\sin^{2}x\\,dx=2\\cdot\\frac{\\pi}{4}=\\frac{\\pi}{2}\\) (using \\(\\int_0^{\\pi/2}\\sin^2=\\int_0^{\\pi/2}\\cos^2=\\frac12\\cdot\\frac{\\pi}{2}\\)). Simpson check: 1.5707963 = \\(\\pi/2\\).",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "DUPLICATE NUMBERING / SOURCE CONTAMINATION: the packet contains TWENTY-ONE question blocks for numbers 81-100. Immediately after Q95's leaked solution, line 152 carries an extra question numbered '96.' (without the '**Q**' prefix every other question has): 'The value of \\(\\int\\frac{dx}{\\sin x-\\cos x}\\)', with options (A) \\(\\frac{1}{\\sqrt2}\\log\\tan(\\frac{x}{2}-\\frac{\\pi}{8})\\) ... (D) \\(\\sqrt2\\log\\tan(\\frac{x}{2}+\\frac{\\pi}{8})\\). I treated the '**Q96.**'-labelled block (this one, \\(\\int_{-\\pi/2}^{\\pi/2}\\sin^{2}x\\,dx\\)) as the real Q96 because it matches the packet's labelling convention, and read the stray '96.' as bleed-through from a different source document (the same block that leaked Q95's worked solution, which is numbered independently). FOR THE REVIEWER: the stray question's answer is (A) — \\(\\sin x-\\cos x=\\sqrt2\\sin(x-\\frac{\\pi}{4})\\), so the integral is \\(\\frac{1}{\\sqrt2}\\int\\csc(x-\\frac{\\pi}{4})dx=\\frac{1}{\\sqrt2}\\log\\left|\\tan\\left(\\frac{x}{2}-\\frac{\\pi}{8}\\right)\\right|+C\\), verified numerically (\\(\\int_{1.2}^{1.5}=0.40574252\\) vs closed form 0.40574252). Whichever block is genuine, resolve the numbering before commit — one of the two must not become Q96."
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "working": "King's property: with \\(I=\\int_{0}^{\\pi/2}\\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x}+\\sqrt{\\cos x}}dx\\), substituting \\(x\\to\\frac{\\pi}{2}-x\\) gives \\(I=\\int_{0}^{\\pi/2}\\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x}+\\sqrt{\\sin x}}dx\\); adding, \\(2I=\\int_{0}^{\\pi/2}1\\,dx=\\frac{\\pi}{2}\\), so \\(I=\\frac{\\pi}{4}\\). Simpson check: 0.7853982 = \\(\\pi/4\\).",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (D) \\(-\\pi\\) is impossible on sight: the integrand is non-negative on \\((0,\\pi/2)\\)."
+  },
+  {
+    "number": 98,
+    "answer": "B",
+    "working": "On \\((\\pi/3,\\pi/2)\\approx(1.047,1.571)\\) we have \\([x]=1\\), so \\(\\sin(\\pi[x]-x)=\\sin(\\pi-x)=\\sin x\\) and the integral is \\(\\int_{\\pi/3}^{\\pi/2}x\\sin x\\,dx=[\\sin x-x\\cos x]_{\\pi/3}^{\\pi/2}=(1-0)-\\left(\\frac{\\sqrt3}{2}-\\frac{\\pi}{6}\\right)=1-\\frac{\\sqrt3}{2}+\\frac{\\pi}{6}\\). Simpson check on the original integrand (greatest-integer intact): 0.65757337, and \\(1-\\frac{\\sqrt3}{2}+\\frac{\\pi}{6}=0.65757337\\).",
+    "chapter": "Definite Integration",
+    "subtopic": "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "HARD",
+    "confidence": "high",
+    "notes": "Options (C) and (D) are the sign-flipped traps for a student who writes \\(\\sin(\\pi-x)=-\\sin x\\)."
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "working": "\\(y=x^{2}\\) meets \\(y=16\\) at \\(x=\\pm4\\); area \\(=\\int_{-4}^{4}(16-x^{2})dx=\\left[16x-\\frac{x^{3}}{3}\\right]_{-4}^{4}=2\\left(64-\\frac{64}{3}\\right)=\\frac{256}{3}\\). Simpson check: 85.3333 = 256/3.",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Between Two Curves and Intersection Points",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Extraction damage: the entire option block for this question is swallowed inside a markdown image link — lines 190-195 read '![**\\n\\n (A) ... (D) \\(\\frac{128}{3}\\) sq. Units](C:\\\\Users\\\\...\\\\q/media/image27.emf)'. The four options are recoverable verbatim (32/3, 64/3, 256/3, 128/3) but the stem lost its accompanying figure (image27.emf) and the options must be un-nested from the image syntax before commit. Note (D) 128/3 is the half-area \\(\\int_{0}^{4}\\), the intended trap."
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "working": "\\(\\frac{dy}{dx}=e^{-y}(e^{x}+x^{2})\\) is separable: \\(e^{y}dy=(e^{x}+x^{2})dx\\Rightarrow e^{y}=e^{x}+\\frac{x^{3}}{3}+c\\). Verified by differentiating back: \\(e^{y}y'=e^{x}+x^{2}\\Rightarrow y'=e^{x-y}+x^{2}e^{-y}\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "medium",
+    "notes": "CORRUPTED OPTIONS — my derived answer \\(e^{y}=e^{x}+\\frac{x^{3}}{3}+c\\) matches NO option exactly, so this is a best reconstruction. Both (B) 'e^x = x^2/3 + e^x + c' and (C) 'e^x = x^3/3 + e^x + c' are self-contradictory as printed (\\(e^{x}\\) on both sides, which reduces to \\(x^{n}/3+c=0\\)); since B and C differ ONLY in \\(x^{2}/3\\) vs \\(x^{3}/3\\), the intended discriminator is clearly the power, and the left-hand side of both must have been \\(e^{y}\\). Under that reading (C) reads \\(e^{y}=\\frac{x^{3}}{3}+e^{x}+c\\), which is exactly correct, and (A) 'e^x = y^3/3 + e^y + c' is the x/y-swapped distractor. So I answer C on the reconstruction that the printed 'e^x =' on the LHS of (B) and (C) is a y-to-x flattening. A strict reading of the options as printed would make (D) 'None of these' defensible — please source-verify the option block before committing this key."
+  }
+]

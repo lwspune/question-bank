@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "A",
+    "working": "P(none solves) = (1-1/2)(1-1/3)(1-1/4) = (1/2)(2/3)(3/4) = 1/4, so P(solved) = 1 - 1/4 = 3/4.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": "A",
+    "working": "P(A) = 1 - 2/3 = 1/3; from P(A∪B) = P(A)+P(B)-P(A∩B): 3/4 = 1/3 + P(B) - 1/4 gives P(B) = 2/3. Then P(Ā∩B) = P(B) - P(A∩B) = 2/3 - 1/4 = 5/12.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 103,
+    "answer": "D",
+    "working": "Odd number on a die has p = 3/6 = 1/2; n = 5. Variance = npq = 5·(1/2)·(1/2) = 5/4.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 104,
+    "answer": "B",
+    "working": "np = 4, npq = 2 ⇒ q = 1/2, p = 1/2, n = 8. P(X=1) = C(8,1)(1/2)^1(1/2)^7 = 8/256 = 1/32.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 105,
+    "answer": "B",
+    "working": "Recovering P(C) = (1-2x)/2 from the garbled stem: sum = (3x+1)/3 + (1-x)/4 + (1-2x)/2 = 13/12 - x/4 ≤ 1 ⇒ x ≥ 1/3; P(C) ≥ 0 ⇒ x ≤ 1/2 (P(A) ≤ 1 only gives x ≤ 2/3). Hence x ∈ [1/3, 1/2].",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage: the P(C) expression has text spliced in from a neighbouring question ('nd mutually exclusive events such that ... respectively, then\\frac{}{2} at y.'). The trailing fragment (1-2x)/2 is the intended P(C) and yields the standard textbook interval [1/3, 1/2], so the question is still answerable; the stem needs repair."
+  },
+  {
+    "number": 106,
+    "answer": "A",
+    "working": "Exactly one of the 5 horses wins; the 2 chosen are a random 2-subset, so P(winner among them) = 2/5. (Equivalently C(4,1)/C(5,2) = 4/10.)",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 107,
+    "answer": "C",
+    "working": "Contradiction = A true & B lies, or A lies & B true = (4/5)(1/4) + (1/5)(3/4) = 4/20 + 3/20 = 7/20.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 108,
+    "answer": "B",
+    "working": "With the source distribution 0.15, 0.23, 0.12, 0.10, 0.20, 0.08, 0.07, 0.05: E = {2,3,5,7} → 0.62, F = {1,2,3} → 0.50, E∩F = {2,3} → 0.35, so P(E∪F) = 0.62 + 0.50 - 0.35 = 0.77.",
+    "confidence": "medium",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT (stem, not key): the printed p(X) row 0.2, 0.2, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1 sums to 1.1, so it is not a valid probability distribution, and computing from it gives P(E∪F) = 0.80 — a value that appears in NO option. The printed row is the canonical distribution 0.15, 0.23, 0.12, 0.10, 0.20, 0.08, 0.07, 0.05 rounded to one decimal place; that distribution sums to 1.00 and reproduces the whole option set exactly (0.50 = P(F), 0.35 = P(E∩F), 0.77 = P(E∪F)). Answer B is therefore almost certainly the intended key, but the table must be restored to the unrounded values before this ships."
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "working": "np = 4, npq = 2 ⇒ q = 1/2, p = 1/2, n = 8. P(X=2) = C(8,2)(1/2)^8 = 28/256.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 110,
+    "answer": "B",
+    "working": "Total outcomes 3^3 = 27; favourable (all three pick the same house) = 3. P = 3/27 = 1/9.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "Total marks = 100·72 = 7200; boys = 70·75 = 5250; girls total = 1950 over 30 girls ⇒ average 65.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 112,
+    "answer": "B",
+    "working": "Corrected Σx = 170 - 20 + 30 = 180, corrected Σx² = 2830 - 400 + 900 = 3330. Variance = 3330/15 - (180/15)² = 222 - 144 = 78.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 113,
+    "answer": "C",
+    "working": "(2,3) ∈ R but (3,2) ∉ R, so R is not symmetric — option (C) is the true statement. It is also not reflexive ((1,1) absent), not transitive ((1,3),(3,1) but (1,1) absent) and not a function (2 maps to both 4 and 3).",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 114,
+    "answer": "C",
+    "working": "(1) TRUE — mode is read off a histogram by the standard tallest-bar construction. (2) TRUE — median of ax+b is a·median+b, so it does depend on scale. (3) FALSE — variance is independent of origin but Var(ax) = a²Var(x), so it is NOT independent of scale. Correct set = (1) and (2) = option (C).",
+    "confidence": "medium",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage in the options: (C) prints 'Only (A) and (B)' and (D) prints 'Only (A)', where the numbered statement labels (1) and (2) have been rendered as the option letters (A) and (B). Read as intended, (C) = 'Only (1) and (2)' and (D) = 'Only (1)'. Answer C on that reading; options should be repaired to use (1)/(2)/(3) so the self-referential wording does not confuse students."
+  },
+  {
+    "number": 115,
+    "answer": "C",
+    "working": "Mean = 0 (n copies of a, n of -a). Variance = (1/2n)·(2n·a²) = a², so SD = |a| = 2.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "answer": "D",
+    "working": "Mean 6 ⇒ a+b = 30-23 = 7. Variance 6.80 ⇒ Σ(x-6)² = 34; the known terms give 4+1+16 = 21, so (a-6)²+(b-6)² = 13. With a+b = 7 this gives {a,b} = {3,4}. Verified: mean of 3,4,8,5,10 = 6, variance = 6.8.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 117,
+    "answer": "A",
+    "working": "Combined mean = (5·2 + 5·4)/10 = 3; deviations d₁ = -1, d₂ = 1. Combined variance = [5(4+1) + 5(5+1)]/10 = 55/10 = 11/2.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 118,
+    "answer": "A",
+    "working": "Replacing x by 1/x gives f(1/x) + 2f(x) = 3/x; solving the pair gives 3f(x) = 6/x - 3x, i.e. f(x) = 2/x - x. Then f(x) = f(-x) ⇒ 2/x - x = -2/x + x ⇒ x² = 2 ⇒ x = ±√2, exactly two elements.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "D",
+    "working": "Mean = (16+a)/4, Σx² = 134+a². Variance = (134+a²)/4 - ((16+a)/4)² = 12.25; ×16 gives 4(134+a²) - (16+a)² = 196 ⇒ 3a² - 32a + 84 = 0 (roots a = 6, 14/3).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "B",
+    "working": "Sum = 16·16 = 256; delete the observation 16 ⇒ 240 over 15 observations; add 3+4+5 = 12 ⇒ 252 over 18 observations. Mean = 252/18 = 14.0.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

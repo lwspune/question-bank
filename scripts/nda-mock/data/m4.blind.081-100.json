@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "A",
+    "working": "Point (x,y,z) equidistant from origin and (a,0,0) gives x=a/2; similarly y=b/2 and z=c/2. This is the centre of the sphere through the four points, (a/2, b/2, c/2).",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Distance, Section, and Collinearity in 3D",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "B",
+    "working": "cos^2 a + cos^2 b + cos^2 g = 1. With a+b=90, cos b = sin a, so cos^2 a + sin^2 a + cos^2 g = 1 => cos^2 g = 0 => g = 90 degrees.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "A",
+    "working": "Parametrize P = (3-5t, 5-4t, -7+15t). The yz-plane is x=0 => t=3/5, giving y = 5-12/5 = 13/5 and z = -7+9 = 2, i.e. (0, 13/5, 2).",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "B",
+    "working": "Direction ratios = (-2-4, 1-3, -8+5) = (-6,-2,-3), proportional to 6,2,3.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "A",
+    "working": "(a+2, b-1, c+8) must be proportional to (6,2,3). Option A gives exactly (6,2,3), so a,b,c = 4,3,-5.",
+    "confidence": "medium",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "EASY",
+    "notes": "DEFECT — THREE options are simultaneously correct as the question is literally worded. 'Parallel' only requires PROPORTIONAL direction ratios, and A gives (6,2,3)=1x, B gives (3,1,3/2)=0.5x, C gives (12,4,6)=2x — all three are parallel to 6,2,3. Only A has direction ratios EXACTLY 6,2,3 and only A is the point carried over from Q84, so A is certainly the intended key; but B and C cannot be marked wrong. Reported as A rather than null so as not to create a false key disagreement, but the option set needs repair (e.g. change B and C to non-proportional triples)."
+  },
+  {
+    "number": 86,
+    "answer": "A",
+    "working": "Reconstructing the OCR-damaged stem as position vectors 60i+3j, 40i-8j, ai-52j: collinearity of (60,3),(40,-8),(a,-52) gives (-20)(-55) - (-11)(a-60) = 0 => 1100 + 11(a-60) = 0 => a = -40.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Position Vectors and Section",
+    "difficulty": "MODERATE",
+    "notes": "Stem is badly OCR-corrupted — a run of text spliced in from Q84/Q85 ('...irection ratios are 6,2,3...') replaces the second position vector, of which only the fragment '8j' survives. Reconstruction as 40i-8j is corroborated two ways: the surviving '8j' fragment, and the fact that it is the only reading that yields an exact option value (a=-40). Tested alternatives: a=40 forces the second vector to be 40i-52j (same y as the third point, implausible) and a=20 forces a non-integer -24.5j. Stem should be repaired from the source PDF before publishing."
+  },
+  {
+    "number": 87,
+    "answer": "C",
+    "working": "c.d = 5|a|^2 + 6(a.b) - 8|b|^2 = 5 - 8 + 6cos(theta) = 0 => cos(theta) = 1/2 => theta = pi/3.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "working": "Standard identity [a x b, b x c, c x a] = [a b c]^2, so lambda = 1.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "C",
+    "working": "|2a-b|^2 = 4(4) + 9 - 4(a.b) = 25 => a.b = 0. Then |2a+b|^2 = 16 + 9 + 0 = 25, so the magnitude is 5.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "working": "x cross y = (22, 8, 18); (x cross y).z = 66 - 32 - 216 = -182; |z| = sqrt(9+16+144) = 13; projection magnitude = 182/13 = 14.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "A",
+    "working": "With parts A,B: A+B=theta, A-B=phi, tanA = k tanB. Writing p = sinA cosB, q = cosA sinB, p/q = k, sin(theta) = p+q, sin(phi) = p-q, so sin(theta) = ((k+1)/(k-1)) sin(phi). Verified numerically at B=20deg, k=2: 3(0.27653) = 0.8296 vs sin(56.05deg) = 0.8299.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "working": "cos(2pi/3) = cos(4pi/3) = -1/2, so x = -y/2 = -z/2, i.e. y = z = -2x. Then xy+yz+zx = -2x^2 + 4x^2 - 2x^2 = 0.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "MODERATE",
+    "notes": "Braces are mangled in the stem ('y\\cos{\\frac{2\\pi}{3} = z}\\cos\\frac{4\\pi}{3}'); read as x = y cos(2pi/3) = z cos(4pi/3). The answer is 0 under that reading AND under the classic textbook form this is almost certainly a corruption of (x cos t = y cos(t+2pi/3) = z cos(t+4pi/3)), since cos t + cos(t+2pi/3) + cos(t+4pi/3) = 0 forces xy+yz+zx = 0. So the option letter is safe either way, but the stem should be repaired from source; if it is the compound-angle form, reclassify to 'Compound Angle Formulas'."
+  },
+  {
+    "number": 93,
+    "answer": "D",
+    "working": "cosA = 3/sqrt(10), cosB = 2/sqrt(5). cos(A+B) = 6/sqrt(50) - 1/sqrt(50) = 5/(5 sqrt 2) = 1/sqrt2, so A+B = pi/4.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "C",
+    "working": "tan(A-B) = 1 => tanA - tanB = 1 + tanA tanB. y = 1 + (tanA - tanB) - tanA tanB = 1 + 1 = 2. So (y+1)^(y+1) = 3^3 = 27. Checked numerically at A=55, B=10: y = 2.0004.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "working": "cos^2 X - sin^2 Y = cos(X+Y)cos(X-Y), so cos^2 48 - sin^2 12 = cos60 cos36 = (1/2)(sqrt5+1)/4 = (sqrt5+1)/8. Numerically 0.4045 = 0.4045.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "D",
+    "working": "cos(alpha-beta)=1 with alpha-beta in (-2pi,2pi) forces alpha=beta. Then cos(2alpha)=1/e with u=2alpha in (-2pi,2pi) has 4 roots: +-u0 and +-(2pi-u0), u0 = arccos(1/e) = 1.1928. All four give alpha in (-pi,pi), so 4 ordered pairs.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "Simultaneous and Combined Trigonometric Systems",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "working": "tan(alpha+beta) numerator = (2m^2+2m+1)/((m+1)(2m+1)) and denominator = (2m^2+2m+1)/((m+1)(2m+1)), so the ratio is 1 for all m => alpha+beta = pi/4. Checked at m=1: tan = (1/2+1/3)/(1-1/6) = 1.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "B",
+    "working": "Vieta: tanA+tanB = -p, tanA tanB = q, so tan(A+B) = -p/(1-q) = p/(q-1) — exactly option B. Option A is false: with T = p/(q-1), cos^2(A+B)[T^2 + pT + q] evaluates to +q, not -q. C and D drop the sqrt((1-q)^2+p^2) normalisation and are false in general.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "HARD",
+    "notes": "Option A is the classic distractor and is wrong only by a sign — the expression equals +q. If the paper's key says A, it is wrong; verified algebraically (the cos^2 factor 1/(1+T^2) exactly cancels the bracket's [p^2+(q-1)^2]/(q-1)^2, leaving q)."
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "working": "(cos12+cos132) + (cos84+cos156) = 2cos72 cos60 + 2cos120 cos36 = cos72 - cos36 = (sqrt5-1)/4 - (sqrt5+1)/4 = -1/2. Numerically -0.50005.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "working": "sec50 + tan50 = (1+sin50)/cos50 = tan(45+25) = tan70 = 2.74748. Only option C matches: tan20 + 2tan50 = 0.36397 + 2.38350 = 2.74747. (A) 1.5557, (B) 1.9197, (D) 3.1114 all fail.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

@@ -1,0 +1,187 @@
+[
+  {
+    "number": 101,
+    "answer": "D",
+    "working": "Mean 6 over 5 values gives \\(a+b+23=30\\Rightarrow a+b=7\\). Variance \\(6.80=\\frac{\\sum x^2}{5}-36\\Rightarrow\\sum x^2=214\\); since \\(8^2+5^2+10^2=189\\), \\(a^2+b^2=25\\). With \\(a+b=7\\), \\(ab=\\frac{49-25}{2}=12\\), so \\(\\{a,b\\}=\\{3,4\\}\\). Numeric check on 3,4,8,5,10: mean = 6, variance = 34/5 = 6.8 exactly.",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 102,
+    "answer": "A",
+    "working": "Of the \\(2n\\) observations, exactly \\(n\\) lie below the median and \\(n\\) above. Total change \\(=5n-3n=2n\\); dividing by the count \\(2n\\) gives a mean increase of \\(+1\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 103,
+    "answer": "C",
+    "working": "Sum \\(=16\\times16=256\\). Deleting the observation 16 leaves sum 240 over 15 values; adding 3, 4, 5 gives sum \\(252\\) over 18 values, so the mean is \\(252/18=14\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 104,
+    "answer": "A",
+    "working": "For \\(f(t)=\\sum(x_i-t)^2\\), \\(f'(t)=-2\\sum(x_i-t)=0\\) at \\(t=\\bar{x}\\) and \\(f''=2n>0\\), so the sum of squared deviations is minimised (least) at the mean. It is zero only in the degenerate all-equal case, so 'Least' is the general answer.",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 105,
+    "answer": "A",
+    "working": "The eight offsets from \\(\\alpha\\) sorted are \\(-7/2,-3,-5/2,-2,-1/2,1/2,4,5\\). With \\(n=8\\) the median is the mean of the 4th and 5th terms: \\(\\frac{-2+(-1/2)}{2}=-\\frac{5}{4}\\), giving \\(\\alpha-5/4\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 106,
+    "answer": "D",
+    "working": "\\(CV=\\frac{\\sigma}{\\bar{x}}\\times100\\Rightarrow\\bar{x}=\\frac{100\\sigma}{CV}=\\frac{100\\times21.2}{50}=42.4\\). That value appears in none of options A-C, so 'None of these' is correct.",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "The correct value 42.4 is not printed as an option — the standard version of this question offers 42.4 directly. Here D ('None of these') is the intended answer, so the option set is self-consistent rather than damaged; flagging only because A/B/C (36.6, 22.6, 26.6) are all decoys with no derivation behind them."
+  },
+  {
+    "number": 107,
+    "answer": "B",
+    "working": "There are \\(n+1\\) terms \\(2^0,2^1,\\dots,2^n\\). Product \\(=2^{0+1+\\cdots+n}=2^{n(n+1)/2}\\), so \\(GM=2^{\\frac{n(n+1)/2}{n+1}}=2^{n/2}\\). Check \\(n=4\\): terms 1,2,4,8,16, product 1024, \\(GM=1024^{1/5}=4=2^{4/2}\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 108,
+    "answer": "A",
+    "working": "For \\(n=10\\) the median is \\(\\frac{46+48}{2}=47\\). Absolute deviations: 13, 9, 5, 3, 1, 1, 7, 8, 9, 29, summing to 85, so mean deviation \\(=85/10=8.5\\).",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "working": "\\(f_1+f_2=120-68=52\\). Using midpoints 10, 30, 50, 70, 90 with mean 50: \\(170+30f_1+1600+70f_2+1710=6000\\Rightarrow 3f_1+7f_2=252\\). Solving with \\(f_1+f_2=52\\) gives \\(f_2=24,\\ f_1=28\\). Verified: \\(\\sum fx=6000\\), \\(6000/120=50\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Cosmetic only: the table cells render the unknowns in display-math brackets, \"\\[f_{1}\\]\" and \"\\[f_{2}\\]\", and the class limits likewise as \"\\[0 - 20\\]\". These should be inline \\(f_1\\), \\(f_2\\) and plain 0-20; the values and structure are intact and the question is fully answerable."
+  },
+  {
+    "number": 110,
+    "answer": "A",
+    "working": "Expectation is linear: \\(\\bar{X}=\\frac{1}{n}\\sum(aU_i+bV_i)=a\\cdot\\frac{1}{n}\\sum U_i+b\\cdot\\frac{1}{n}\\sum V_i=a\\bar{U}+b\\bar{V}\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "Repeated doubling of 0.77 gives bits 1, 1, 0, 0, 0, 1, 0, 1 (0.77\\(\\to\\)1.54, .54\\(\\to\\)1.08, .08\\(\\to\\).16, .16\\(\\to\\).32, .32\\(\\to\\).64, .64\\(\\to\\)1.28, .28\\(\\to\\).56, .56\\(\\to\\)1.12), i.e. \\((0.11000101)_2\\). Numeric check: \\((0.11000101)_2=0.76953\\) versus option A \\((0.1100101)_2=0.78906\\) and C \\(=0.64453\\).",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary to Decimal Conversion",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 112,
+    "answer": "A",
+    "working": "The two regression lines always intersect at \\((\\bar{x},\\bar{y})\\). If \\(\\bar{x}=\\bar{y}=m\\), then \\(m=am+b\\Rightarrow m=\\frac{b}{1-a}\\), and \\(m=\\alpha m+\\beta\\Rightarrow m=\\frac{\\beta}{1-\\alpha}\\); both expressions in option A are therefore valid.",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 113,
+    "answer": "B",
+    "working": "\\((1101)_2=13\\), \\((110)_2=6\\), so \\(x^2-y^2=169-36=133\\). \\(133=128+4+1=(10000101)_2\\). Decoys check out as A \\(=69\\), C \\(=141\\), D \\(=149\\).",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option D is printed as \"\\((10010101)_{2}^{2}\\)\" — it carries a stray trailing exponent 2 after the base-2 subscript. The source clearly meant \\((10010101)_2\\) (= 149), matching the shape of options A-C; the superscript is an extraction artefact. It does not change the answer, which is B."
+  },
+  {
+    "number": 114,
+    "answer": "A",
+    "working": "Let \\(a^x=b^y=c^z=k\\), so \\(\\log a=\\frac{\\log k}{x}\\), \\(\\log b=\\frac{\\log k}{y}\\), \\(\\log c=\\frac{\\log k}{z}\\). Then \\(\\log_b a=\\frac{\\log a}{\\log b}=\\frac{y}{x}\\) and \\(\\log_c b=\\frac{\\log b}{\\log c}=\\frac{z}{y}\\); equating gives \\(\\frac{y}{x}=\\frac{z}{y}\\), i.e. \\(y^2=xz\\).",
+    "chapter": "Logarithms",
+    "subtopic": "Logarithm Identities, Change of Base, and Sums",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "working": "Since \\(\\log_{1/2}(x-1)=-\\log_2(x-1)\\), the equation becomes \\(\\log_2\\big[(x^2-1)(x-1)\\big]=0\\Rightarrow (x-1)^2(x+1)=1\\Rightarrow x^3-x^2-x=0\\Rightarrow x(x^2-x-1)=0\\). Roots are \\(0,\\ \\frac{1\\pm\\sqrt5}{2}\\); the domain requires \\(x>1\\) (both \\(x^2-1>0\\) and \\(x-1>0\\)), so only \\(x=\\frac{1+\\sqrt5}{2}\\approx1.618\\) survives — exactly 1 solution.",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Stem is garbled at the tail: \"\\(\\log_{2}(x^{2}-1) = \\log_{1/2}(x-1) = a\\) real number, is\". The fragment \"= a real number\" cannot be a third member of the equality chain (it is not a quantity). The source almost certainly read \"...the equation \\(\\log_2(x^2-1)=\\log_{1/2}(x-1)\\), \\(x\\) being a real number, is\" — i.e. a domain qualifier that the extractor swallowed into the math zone. The equation itself is intact and unambiguous, so the answer is unaffected."
+  },
+  {
+    "number": 116,
+    "answer": "A",
+    "working": "I: for an equilateral triangle of side \\(a\\), \\(r=\\frac{a}{2\\sqrt3}\\), \\(R=\\frac{a}{\\sqrt3}\\), and \\(r_1=\\frac{\\Delta}{s-a}=\\frac{\\sqrt3a^2/4}{a/2}=\\frac{\\sqrt3a}{2}\\); dividing through by \\(r\\) gives exactly \\(1:2:3\\) (checked numerically at \\(a=1\\): 0.2887, 0.5774, 0.8660). So I is correct. II is false — \\(\\frac{\\cos A}{a}=\\frac{\\cos B}{b}=\\frac{\\cos C}{c}\\) is not the cosine law (nor generally true; it fails for a 45-75-60 triangle), the sine rule being \\(\\frac{\\sin A}{a}=\\cdots\\). Hence only I.",
+    "chapter": "Properties of Triangle",
+    "subtopic": "In-circle and Regular Polygon Geometry",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 117,
+    "answer": "D",
+    "working": "\\(C=180^\\circ-45^\\circ-75^\\circ=60^\\circ\\). By the sine rule with circumdiameter \\(k\\): \\(a+c\\sqrt2=k\\left(\\sin45^\\circ+\\sqrt2\\sin60^\\circ\\right)=k\\left(\\frac{\\sqrt2}{2}+\\frac{\\sqrt6}{2}\\right)=k\\cdot\\frac{\\sqrt2+\\sqrt6}{2}\\), while \\(b=k\\sin75^\\circ=k\\cdot\\frac{\\sqrt6+\\sqrt2}{4}\\). So \\(a+c\\sqrt2=2b\\) (numerically 1.93185 = 2 x 0.96593).",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 118,
+    "answer": "B",
+    "working": "Let \\(d\\) be the foot-of-ladder to wall distance and \\(h\\) the height the ladder reaches, so \\(h^2+d^2=20^2\\). The flag top is \\(h+20\\) high and subtends \\(60^\\circ\\) at the ladder's foot: \\(h+20=\\sqrt3\\,d\\). Substituting \\(h=\\sqrt{400-d^2}\\) and solving gives \\(d=10\\sqrt3\\), \\(h=10\\), so flag height \\(=10+20=30\\) ft. Checked: \\(10^2+(10\\sqrt3)^2=400\\) and \\(\\sqrt3\\cdot10\\sqrt3=30\\); the other candidate distances \\(5\\sqrt3\\) and \\(7\\sqrt3\\) fail this pair of equations.",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "The shared context is loosely worded: \"Let \\(20ft\\) long ladder reaches \\(20ft\\) below the flag\" (missing articles, and the wall/building is never named until Q119 mentions \"bottom of the building\"). Intended reading: a 20 ft ladder leans against a building and its top touches a point 20 ft below the flag at the top; the angle of elevation of the flag-top from the ladder's foot is 60 degrees. That reading is uniquely determined by the data (d = 10 sqrt3, h = 10, ladder at 30 degrees to the ground) and both Q118 and Q119 answers land exactly on printed options, so the intent is unambiguous."
+  },
+  {
+    "number": 119,
+    "answer": "B",
+    "working": "From the same system \\(h^2+d^2=400\\) and \\(h+20=\\sqrt3\\,d\\): substituting gives \\(400-d^2=(\\sqrt3 d-20)^2=3d^2-40\\sqrt3 d+400\\Rightarrow 4d^2=40\\sqrt3 d\\Rightarrow d=10\\sqrt3\\) ft. Verified: \\(h=\\sqrt{400-300}=10\\) and \\(\\sqrt3\\cdot10\\sqrt3=30=h+20\\).",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 120,
+    "answer": "B",
+    "working": "Product \\(=5\\cdot8\\cdot10\\cdot15\\cdot20\\cdot25\\cdot30=90{,}000{,}000=9\\times10^7\\). With 7 observations, \\(GM=(9\\times10^7)^{1/7}=10\\cdot9^{1/7}\\approx13.69\\) — so not 16.9 and not 18.",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  }
+]

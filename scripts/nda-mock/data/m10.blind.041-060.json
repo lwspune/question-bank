@@ -1,0 +1,183 @@
+[
+  {
+    "number": 41,
+    "answer": "A",
+    "working": "From cos(t) - sin(t) = sqrt(2) sin(t) we get cos(t) = (1 + sqrt(2)) sin(t), so sin(t) = (sqrt(2) - 1) cos(t). Then cos(t) + sin(t) = cos(t)[1 + sqrt(2) - 1] = sqrt(2) cos(t). Numeric check: tan(t) = sqrt(2) - 1 gives t = 22.5 deg, cos + sin = 0.92388 + 0.38268 = 1.30656 and sqrt(2)*cos(22.5) = 1.41421*0.92388 = 1.30656 — match.",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 42,
+    "answer": "D",
+    "working": "2a = (a+b) + (a-b). Since 0 < alpha, beta <= pi/4, a+b lies in (0, pi/2] so sin(a+b) = 3/5 and tan(a+b) = 3/4; a-b lies in (-pi/4, pi/4) so cos(a-b) = 12/13 and tan(a-b) = 5/12. tan2a = (3/4 + 5/12)/(1 - (3/4)(5/12)) = (14/12)/(33/48) = 336/198 = 56/33. Consistency check: 2a = 59.5 deg so alpha = 29.7 deg <= 45 deg, as required.",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 43,
+    "answer": "A",
+    "working": "cos x + cos^2 x = 1 gives cos x = 1 - cos^2 x = sin^2 x. Squaring, sin^4 x = cos^2 x. Hence sin^2 x + sin^4 x = cos x + cos^2 x = 1.",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 44,
+    "answer": "B",
+    "working": "cot(t) - tan(t) = (cos^2 - sin^2)/(sin t cos t) = cos2t/((1/2) sin2t) = 2 cot2t. So 2 cot2t = 2, cot2t = 1, 2t = n*pi + pi/4, t = n*pi/2 + pi/8. Numeric check at t = pi/8: cot - tan = 2.41421 - 0.41421 = 2. Option C's minus branch fails: at t = -pi/8 the expression equals -2, so the plus-or-minus form is wrong.",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 45,
+    "answer": "C",
+    "working": "sec^2 = 1 + tan^2, so 3(1 + 2 tan^2 t) = 5 gives tan^2 t = 1/3, tan t = +/- 1/sqrt(3), hence t = n*pi +/- pi/6. Option D would need tan^2 = 3, giving 3(1 + 6) = 21, not 5.",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 46,
+    "answer": "B",
+    "working": "a - 2b + c = 0 gives a + c = 2b, so s = (a+b+c)/2 = 3b/2 and s - b = b/2. Using cot(A/2) = sqrt(s(s-a)/((s-b)(s-c))) and cot(C/2) = sqrt(s(s-c)/((s-a)(s-b))), the product telescopes to s/(s-b) = (3b/2)/(b/2) = 3. Numeric check with b = 2, a = 1.5, c = 2.5: s = 3, s-b = 1, product of cotangents = 3.",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 47,
+    "answer": "B",
+    "working": "Sine rule a/sinA = b/sinB gives 2/(2/3) = 3 = 3/sinB, so sinB = 1 and B = pi/2.",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 48,
+    "answer": "C",
+    "working": "Angles are 30, 60, 90 degrees. By the sine rule sides are proportional to sin30 : sin60 : sin90 = 1/2 : sqrt(3)/2 : 1 = 1 : sqrt(3) : 2.",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 49,
+    "answer": "B",
+    "working": "3*pi/4 lies outside [-pi/2, pi/2], so sin^{-1}(sin 3pi/4) = pi - 3pi/4 = pi/4. Setting pi/4 = 2*pi/k gives k = 8.",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Evaluation of Composite Inverse Trigonometric Expressions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 50,
+    "answer": "B",
+    "working": "Using tan^{-1}u + tan^{-1}v = tan^{-1}((u+v)/(1-uv)) when uv < 1: 5x/(1-6x^2) = 1, so 6x^2 + 5x - 1 = 0, (6x-1)(x+1) = 0, x = 1/6 or x = -1. x = 1/6 is valid (6x^2 = 1/6 < 1; tan^{-1}(1/3) + tan^{-1}(1/2) = 18.435 + 26.565 = 45 deg). x = -1 gives tan^{-1}(-2) + tan^{-1}(-3) = -135 deg = -3pi/4, not pi/4, so it is extraneous. Exactly 1 root.",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Solving Inverse Trigonometric Equations and Geometric Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 51,
+    "answer": "D",
+    "working": "The principal range of sin^{-1} is [-pi/2, pi/2], and sin(-pi/6) = -1/2, so sin^{-1}(-1/2) = -pi/6.",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Evaluation of Composite Inverse Trigonometric Expressions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 52,
+    "answer": "B",
+    "working": "Horizontal distances from the cliff foot: 150/tan60 = 150/sqrt(3) = 50*sqrt(3) and 150/tan45 = 150. Distance covered = 150 - 150/sqrt(3) = 150(sqrt(3)-1)/sqrt(3) in 2 minutes, so per hour multiply by 30: 4500(sqrt(3)-1)/sqrt(3). Numeric: 150 - 86.60 = 63.40 m in 2 min = 31.70 m/min = 1902 m/hr, and 4500(0.7321)/1.7321 = 1902 — match.",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 53,
+    "answer": "B",
+    "working": "Let d be the horizontal distance and h the cloud's height above the observer (who is 25 m above the lake). The image is 25 + h below the lake, i.e. h + 50 below the observer. So tan15 = h/d and tan45 = (h+50)/d = 1, giving d = h + 50 and h = 50 tan15/(1 - tan15). With tan15 = 2 - sqrt(3), h = 50(2-sqrt(3))/(sqrt(3)-1) = 25(sqrt(3)-1). Height above lake = h + 25 = 25*sqrt(3) (approx 43.30 m). Numeric check: h = 18.30, d = 68.30, 18.30/68.30 = 0.2679 = tan15 — match.",
+    "chapter": "Height & Distance",
+    "subtopic": "Shadows, Leaning Structures, and Special Geometry",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Cosmetic only: option (B) prints \"25\\(\\sqrt{3}\\)\" with the unit \"m\" dropped, while (A), (C), (D) all carry \"m\". No ambiguity — the derived value is 25*sqrt(3) metres."
+  },
+  {
+    "number": 54,
+    "answer": "A",
+    "working": "y - sqrt(3)x - 5 = 0 has slope sqrt(3) (inclination 60 deg); sqrt(3)y - x + 6 = 0 gives y = (x-6)/sqrt(3), slope 1/sqrt(3) (inclination 30 deg). Acute angle = 60 - 30 = 30 deg. Check via formula: tan(angle) = |(sqrt(3) - 1/sqrt(3))/(1 + 1)| = |(2/sqrt(3))/2| = 1/sqrt(3), so 30 deg.",
+    "chapter": "Lines",
+    "subtopic": "Angle Between Lines, Parallelism, and Perpendicularity",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 55,
+    "answer": "A",
+    "working": "Midpoint of (10,-6) and (k,4) is ((10+k)/2, -1), so a = (10+k)/2 and 2b = -1. Then a - 2b = (10+k)/2 + 1 = 7 gives (10+k)/2 = 6, k = 2. Check: midpoint of (10,-6) and (2,4) is (6,-1); a - 2b = 6 - (-1) = 7 — match.",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "working": "p = a/sqrt(sec^2 t + cosec^2 t); sec^2 + cosec^2 = 1/(sin^2 cos^2) = 4/sin^2(2t), so p = a|sin2t|/2. For the second line, sqrt(cos^2 + sin^2) = 1, so p' = a|cos2t|. Then 4p^2 + p'^2 = a^2 sin^2(2t) + a^2 cos^2(2t) = a^2. Numeric check at t = 30 deg, a = 1: p = sin60/2 = 0.4330, p' = |cos60| = 0.5; 4(0.1875) + 0.25 = 1 — match.",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 57,
+    "answer": "D",
+    "working": "Let P = (p, 0) and Q = (0, q). Midpoint (p/2, q/2) = (3,5) gives p = 6, q = 10. Area of right triangle OPQ = (1/2)|p||q| = (1/2)(6)(10) = 30 sq. units.",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 58,
+    "answer": "A",
+    "working": "Vertices: y=3x meets y=6x at (0,0); y=3x meets y=9 at (3,9); y=6x meets y=9 at (3/2, 9). Take the base along y = 9 of length 3 - 3/2 = 3/2 with height 9 from the origin: area = (1/2)(3/2)(9) = 27/4 sq. units.",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 59,
+    "answer": "A",
+    "working": "Line is x - y - sqrt(2) = 0. Tangency requires distance from centre (0,b) to equal the radius b: |0 - b - sqrt(2)|/sqrt(2) = b, so b + sqrt(2) = b*sqrt(2), b(sqrt(2)-1) = sqrt(2), b = sqrt(2)/(sqrt(2)-1) = sqrt(2)(sqrt(2)+1) = 2 + sqrt(2). Numeric check: b = 3.4142, distance = (3.4142 + 1.4142)/1.4142 = 3.4142 — match.",
+    "chapter": "Circles",
+    "subtopic": "Inscribed Geometry, Tangents, and Segments",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 60,
+    "answer": "D",
+    "working": "Divide by 45: x^2/9 + y^2/5 = 1, so a^2 = 9, b^2 = 5 with a = 3 > b = sqrt(5) (major axis along x). Length of latus rectum = 2b^2/a = 2(5)/3 = 10/3.",
+    "chapter": "Conics",
+    "subtopic": "Ellipse — Foci, Eccentricity, and Focal Distances",
+    "difficulty": "EASY",
+    "confidence": "high"
+  }
+]

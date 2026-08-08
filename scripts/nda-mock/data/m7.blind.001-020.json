@@ -1,0 +1,202 @@
+[
+  {
+    "number": 1,
+    "answer": "B",
+    "working": "Coplanarity/intersection: det[(3-1, k-(-1), 0-1); (2,3,4); (1,2,1)] = det[(2,k+1,-1);(2,3,4);(1,2,1)] = 2(3-8) - (k+1)(2-4) - 1(4-3) = 2k - 9 = 0, so k = 9/2. Verified by actual solve: s = -3/2, t = -5 gives the common point (-2,-5.5,-5) on both lines.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 2,
+    "answer": "A",
+    "working": "BC direction = C-B = (-1,-2,2). Foot = B + t(-1,-2,2) = (4-t, 7-2t, 1+2t). (Foot-A)·(-1,-2,2)=0 gives -(3-t)-2(7-2t)+2(2t-2) = 9t-21 = 0, t = 7/3, foot = (5/3, 7/3, 17/3).",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 3,
+    "answer": "D",
+    "working": "Points (1,3,1), (0,1,2); directions (1,-lambda,lambda) and (1/2,1,-1). Coplanar: det[(-1,-2,1);(1,-lambda,lambda);(1/2,1,-1)] = -(lambda-lambda) + 2(-1-lambda/2) + (1+lambda/2) = -1 - lambda/2 = 0, so lambda = -2.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 4,
+    "answer": "C",
+    "working": "xy-plane is z = 0. Section formula: z = (6m + 4n)/(m+n) = 0 gives 6m = -4n, m:n = -2:3. A negative ratio means external division in the ratio 2:3.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Distance, Section, and Collinearity in 3D",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 5,
+    "answer": "D",
+    "working": "Intercept form x/a + y/b + z/c = 1 cuts axes at (a,0,0),(0,b,0),(0,0,c); centroid = (a/3, b/3, c/3) = (alpha,beta,gamma), so a = 3alpha etc. Plane becomes x/(3alpha)+y/(3beta)+z/(3gamma)=1, i.e. x/alpha + y/beta + z/gamma = 3.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "EASY",
+    "notes": "OCR damage in options (A) and (C): both print '\\alpha\\alpha' where the intended term is 'alpha*x'. Does not affect the answer, which is (D)."
+  },
+  {
+    "number": 6,
+    "answer": "C",
+    "working": "V = |det[(1,a,1);(0,1,a);(a,0,1)]| = |1 + a^3 - a|. Minimising f(a) = a^3 - a + 1 gives f'(a) = 3a^2 - 1 = 0, a = 1/sqrt(3) (the local minimum; a = -1/sqrt(3) is the local maximum).",
+    "confidence": "medium",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "MODERATE",
+    "notes": "Strictly, |a^3-a+1| attains its true global minimum of 0 at the real root a = -1.3247..., which is in no option. The question intends the stationary point of the unsigned cubic, giving 1/sqrt(3) = (C)."
+  },
+  {
+    "number": 7,
+    "answer": "C",
+    "working": "Coefficient matrix in the basis (a,b,c) is upper triangular: rows (1,2,3), (0,lambda,4), (0,0,2lambda-1). det = lambda(2lambda-1), non-zero unless lambda = 0 or lambda = 1/2 - so non-coplanar for all except two values.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 8,
+    "answer": "A",
+    "working": "(a x b) x c = (a.c)b - (b.c)a. Matching with (1/3)|b||c|a forces a.c = 0 and -(b.c) = (1/3)|b||c|, i.e. cos(angle b,c) = -1/3. The ACUTE angle theta therefore has cos theta = 1/3, so sin theta = sqrt(1-1/9) = 2sqrt(2)/3.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "HARD",
+    "notes": "Stem OCR: '(1/3)|b \\parallel c|a' is the mangled form of (1/3)|b||c|a - readable. Also the Passage I text for Q9-Q10 is spliced onto the end of option (D)."
+  },
+  {
+    "number": 9,
+    "answer": "D",
+    "working": "Coplanarity det[(-1,1,1);(2,3,lambda);(3,2,3)] = 5lambda - 20 = 0, so lambda = 4. Solving the two lines: s = t = 1 gives the intersection (5,5,5). Checking options, only x = y = z holds (3x+y+z=25 not 20; 2x+y+z=20 not 25; 3x+2y+z=30 not 24).",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 10,
+    "answer": "B",
+    "working": "With lambda = 4, normal of the common plane = (2,3,4) x (3,2,3) = (1,6,-5); plane is x + 6y - 5z = 10. Dot with the normal (4,1,2) of 4x+y+2z=0 gives 4 + 6 - 10 = 0, so the normals - and hence the planes - are perpendicular: pi/2.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "working": "x^2-3x+2 > 0 gives (x-1)(x-2) > 0, i.e. x < 1 or x > 2. x^2-3x-4 <= 0 gives (x+1)(x-4) <= 0, i.e. -1 <= x <= 4. Intersection: [-1,1) union (2,4].",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "working": "Inclusion-exclusion: 21 + 26 + 29 - 14 - 15 - 12 + 8 = 76 - 41 + 8 = 43.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 13,
+    "answer": "A",
+    "working": "1 + omega = -omega^2, so (1+omega)^7 = (-omega^2)^7 = -omega^14 = -omega^2 = 1 + omega. Hence A + B*omega = 1 + omega, (A,B) = (1,1).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 14,
+    "answer": "C",
+    "working": "Two DISTINCT roots on Re(z)=1 cannot both be real (they would both equal 1), so they are conjugates 1 +/- it with t non-zero. Then beta = product = 1 + t^2 > 1, so beta is in (1, infinity).",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 15,
+    "answer": "A",
+    "working": "All of (1,1),(2,2),(3,3) present so reflexive. (1,2) is in R but (2,1) is not, so not symmetric. Transitivity holds: (1,2)&(2,3) gives (1,3) which is present, and every other chain is already in R. So reflexive but not symmetric.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 16,
+    "answer": "B",
+    "working": "The elements of {a,b,c} are a, b, c - not the set {a} - so (A) and (C) are false (the empty set is not an element either). {a} is a subset of {a,b,c}, so (B) is true.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "working": "With z2 = conj(z1) and z4 = conj(z3): arg(z1/z4) + arg(z2/z3) = (arg z1 + arg z3) + (-arg z1 - arg z3) = 0. Checked numerically with z1=1+i, z3=2+3i: 1.7682 + (-1.7682) = 0.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 18,
+    "answer": "C",
+    "working": "|z| = 1 so conj(z) = 1/z, giving 1 + conj(z) = (z+1)/z. Hence (1+z)/(1+conj(z)) = z, whose argument is theta.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 19,
+    "answer": "A",
+    "working": "arg(sqrt3+i) = pi/6, arg(1-i*sqrt3) = -pi/3. arg z = (4n+1)(pi/6) - 4n(-pi/3) = (4n+1)pi/6 + 8n*pi/6 = (12n+1)pi/6 = 2n*pi + pi/6, so the argument is pi/6.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 20,
+    "answer": "B",
+    "working": "Substituting x = -1/y into x^2+5x+2=0 gives 1/y^2 - 5/y + 2 = 0, i.e. 2y^2 - 5y + 1 = 0 - the first equation. So each root of the second is the negative reciprocal of a root of the first. Numerically: roots 0.2192, 2.2808 and -4.5616, -0.4384. Products 1/2 and 2 differ, ruling out (C).",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

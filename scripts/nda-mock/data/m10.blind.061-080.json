@@ -1,0 +1,188 @@
+[
+  {
+    "number": 61,
+    "answer": "C",
+    "working": "Focus (0,0), directrix x = -6. Foot of perpendicular from focus to directrix is (-6,0), so vertex is the midpoint (-3,0) and a = 3, opening rightwards (focus lies right of directrix). Hence \\(y^{2} = 4a(x+3) = 12(x+3)\\). Numeric check at x = 0: \\(y^{2} = 36\\) so \\(|y| = 6\\), and the distance from (0,6) to the focus is 6 = its distance to x = -6.",
+    "chapter": "Conics",
+    "subtopic": "Parabola — Equation, Properties, and Latus Rectum",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 62,
+    "answer": "D",
+    "working": "Vertices \\((\\pm 5,0)\\) give a = 5; foci \\((\\pm 7,0)\\) give c = 7. Then \\(b^{2} = c^{2} - a^{2} = 49 - 25 = 24\\), so the hyperbola is \\(x^{2}/25 - y^{2}/24 = 1\\). Option D matches; A/B have wrong a, and C is an ellipse.",
+    "chapter": "Conics",
+    "subtopic": "Hyperbola — Foci and Eccentricity",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Cosmetic pandoc artifact in the stem: \"(\\(\\pm\\)`<!-- -->`{=html}5,0)\" and the same for the focus — the raw HTML comment is a pandoc inter-token separator and the source clearly reads \"vertex \\((\\pm 5,0)\\) & focus \\((\\pm 7,0)\\)\". Does not affect answerability."
+  },
+  {
+    "number": 63,
+    "answer": "D",
+    "working": "Total committees of 3 from 4 people = \\(\\binom{4}{3} = 4\\). Favourable (2 boys, 1 girl) = \\(\\binom{2}{2}\\binom{2}{1} = 1 \\times 2 = 2\\). Probability = 2/4 = 1/2. (Sanity check: the only other case is 1 boy + 2 girls, also 2 ways, and 2 + 2 = 4 = total.)",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "working": "Primes among 1..10 are 2, 3, 5, 7 — four of them. Probability both drawn are prime = \\(\\binom{4}{2}/\\binom{10}{2} = 6/45 = 2/15\\).",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "working": "All 4 picked from the 6 counterfeits: \\(\\binom{6}{4}/\\binom{15}{4} = 15/1365 = 1/91\\).",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Typo only: \"counterfoils\" in the last line should read \"counterfeits\" (the stem uses \"counterfeits\" earlier). Meaning unambiguous."
+  },
+  {
+    "number": 66,
+    "answer": "B",
+    "working": "Total selections \\(\\binom{10}{3} = 120\\). Need an unordered triple in which one element equals the product of the other two. If one factor were 1 the product equals the other factor, giving a repeat, so both factors are \\(\\ge 2\\): 2·3=6, 2·4=8, 2·5=10 (3·3=9 repeats, 2·6 and 3·4 exceed 10). So exactly 3 triples: {2,3,6}, {2,4,8}, {2,5,10}. Probability = 3/120 = 1/40.",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 67,
+    "answer": "C",
+    "working": "Count ordered pairs with second > first: first = 1 gives 5, first = 2 gives 4, ..., first = 5 gives 1, first = 6 gives 0, total 15 of 36 → 5/12. Cross-check by symmetry: 6 ties, so (36 - 6)/2 = 15 each for 'higher' and 'lower'.",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 68,
+    "answer": "D",
+    "working": "\\(P(A\\cap B) = P(B|A)\\,P(A) = (2/3)(1/4) = 1/6\\). Then \\(P(B) = P(A\\cap B)/P(A|B) = (1/6)/(1/2) = 1/3\\). Consistency check: \\(P(A\\cap B)=1/6 \\le \\min(P(A),P(B)) = 1/4\\), so the data are admissible.",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 69,
+    "answer": "C",
+    "working": "December always has 31 days = 4 complete weeks + 3 extra days, and those extras are the weekdays of the 1st, 2nd and 3rd. A weekday occurs 5 times iff it is one of those three, so 5 Sundays occur iff December 1 is a Friday, Saturday or Sunday — 3 of the 7 equally likely starting days → 3/7.",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 70,
+    "answer": "B",
+    "working": "Total \\(\\binom{30}{3} = 4060\\). Consecutive triples are 1-2-3 up to 28-29-30, i.e. 28 of them, so P(consecutive) = 28/4060 = 1/145 (since 4060 = 28 × 145). Hence P(not consecutive) = 1 - 1/145 = 144/145.",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 71,
+    "answer": "A",
+    "working": "For a fair coin the number of tails is B(100, 1/2), and the odd-index binomial coefficients sum to \\(2^{99}\\) exactly half of \\(2^{100}\\) (from \\((1+1)^{100}\\) and \\((1-1)^{100} = 0\\)). So the probability is 1/2. Small-case check: n = 2 gives P(odd tails) = 2/4 = 1/2; n = 3 gives (3+1)/8 = 1/2.",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 72,
+    "answer": "A",
+    "working": "Among 1..11 there are 6 odd and 5 even numbers. The sum of two is even iff both are odd or both even: \\(\\binom{6}{2} + \\binom{5}{2} = 15 + 10 = 25\\). Conditional probability both odd = 15/25 = 3/5.",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 73,
+    "answer": "A",
+    "working": "With b boys and g girls, \\(71b + 73g = 71.8(b+g)\\) gives \\(1.2g = 0.8b\\), so \\(b/g = 1.2/0.8 = 3/2\\), i.e. 3 : 2. Check with b = 3, g = 2: (213 + 146)/5 = 359/5 = 71.8.",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 74,
+    "answer": "D",
+    "working": "With x < y < z the median is y = 35, and the mean gives x + y + z = 150, so x + z = 115. With z - x = 55 we get z = 85, x = 30. Hence y - x = 35 - 30 = 5. Check: mean of (30, 35, 85) = 150/3 = 50, median 35, z - x = 55.",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Typo only: \"were x<y<z\" should read \"where x<y<z\"."
+  },
+  {
+    "number": 75,
+    "answer": "B",
+    "working": "Mean \\(= \\frac{4x + 9(x-1)}{x + (x-1)} = 6 \\Rightarrow 13x - 9 = 12x - 6 \\Rightarrow x = 3\\). Check x = 3: values 4,4,4,9,9 sum 30 over 5 observations = 6.",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 76,
+    "answer": "C",
+    "working": "Adding a constant c shifts the mean by c but leaves every deviation \\(x_i - \\bar{x}\\) unchanged, so the standard deviation is invariant: new mean 50 + 5 = 55, new S.D. = 10.",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 77,
+    "answer": "D",
+    "working": "\\(r = \\frac{\\operatorname{cov}(x,y)}{\\sigma_x \\sigma_y}\\) with \\(\\sigma_y = \\sqrt{25} = 5\\): \\(0.6 = 27/(5\\sigma_x)\\) gives \\(\\sigma_x = 27/3 = 9\\), so the variance of x is \\(81\\).",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 78,
+    "answer": "B",
+    "working": "Regression coefficient of Y on X is \\(b_{yx} = r\\,\\sigma_y/\\sigma_x = 0.8 \\times 3.5/2.5 = 1.12\\). Line through \\((\\bar{X},\\bar{Y}) = (65,67)\\): \\(Y - 67 = 1.12(X - 65) \\Rightarrow Y = 1.12X - 72.8 + 67 = 1.12X - 5.8\\). Check X = 65: 72.8 - 5.8 = 67.",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "The overbars are lost in extraction: the stem prints \"X = 65 , Y = 67\" where the source must read \\(\\bar{X} = 65\\), \\(\\bar{Y} = 67\\) (the means) — X and Y are declared as the price variables one clause earlier, so as printed the stem asserts the variables equal constants. Reading them as means is the only consistent interpretation and is what makes option B come out exactly."
+  },
+  {
+    "number": 79,
+    "answer": "B",
+    "working": "Coefficient of range \\(= \\frac{H - L}{H + L}\\). Given H - L = 16 and the coefficient = 1/3: \\(16/(H+L) = 1/3 \\Rightarrow H + L = 48\\). (Consistent: H = 32, L = 16, and 16/48 = 1/3.)",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Wording slip in the stem: \"exceeds in lowest score by 16\" should read \"exceeds the lowest score by 16\". Meaning unambiguous."
+  },
+  {
+    "number": 80,
+    "answer": "C",
+    "working": "Coefficient of variation \\(= \\frac{\\sigma}{\\bar{x}} \\times 100 = \\frac{7}{28} \\times 100 = 25\\). (Option B, 1/4, is the un-multiplied ratio — the standard definition includes the factor 100.)",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option B is the unicode character \"¼\" rather than a LaTeX fraction — cosmetic extraction artifact. It is also the distractor for omitting the ×100, so the intended key is unaffected."
+  }
+]

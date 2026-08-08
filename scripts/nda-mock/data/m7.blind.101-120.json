@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "B",
+    "working": "x = sin(θ+β), y = sin(θ−β) ⇒ xy = sin²θ − sin²β, so 1 + xy = 1 + sin²θ − (1 − cos²β) = sin²θ + cos²β. Numerical check θ=30°, β=10°: both sides 1.21985.",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Identities, Properties, and Sum-Difference Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": "C",
+    "working": "sin⁻¹a + sin⁻¹b = sin⁻¹(a√(1−b²) + b√(1−a²)) = (1/3)(√5/3) + (2/3)(2√2/3) = (√5 + 4√2)/9. Sum of angles ≈ 61.3° < 90°, so the formula applies; value 0.87699 ✓.",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Identities, Properties, and Sum-Difference Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 103,
+    "answer": "B",
+    "working": "Three even (or three odd) faces out of six ⇒ 3/6 = 1/2.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 104,
+    "answer": "B",
+    "working": "Favourable = 4·4·4 = 64; total = C(52,3) = 22100. 64/22100 = 16/5525.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": "Option (A) 64/5525 is the un-reduced numerator over the reduced denominator — a distractor, not the value."
+  },
+  {
+    "number": 105,
+    "answer": "B",
+    "working": "|a−b| = 5 only for (1,6) and (6,1): 2 outcomes of 36 ⇒ 1/18.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 106,
+    "answer": "C",
+    "working": "Sum 10 occurs in 3 of 36 ways ⇒ P = 1/12; odds against = 33:3 = 11:1.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 107,
+    "answer": "A",
+    "working": "P(neither A nor B) = P(A' ∩ B') = P((A∪B)') = 1 − P(A∪B).",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "EASY",
+    "notes": "Stem is OCR-truncated: \"P (neither A nor )\" — the B is dropped. Meaning is unambiguous, so the answer is unaffected."
+  },
+  {
+    "number": 108,
+    "answer": "D",
+    "working": "P(A∪B) = P(A) + P(B) − P(A∩B), which equals P(A)+P(B) exactly when P(A∩B) = 0, i.e. when A and B are disjoint (mutually exclusive). Independence (option C) does NOT give this.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 109,
+    "answer": "C",
+    "working": "\"5 on at least one die\" has 11 outcomes; of these, sum ≥ 10 holds for (5,5), (5,6), (6,5) = 3. Conditional probability 3/11.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 110,
+    "answer": "A",
+    "working": "Distinct-faces outcomes = 30; sum 6 with distinct faces = (1,5),(5,1),(2,4),(4,2) = 4 (excluding (3,3)). 4/30 = 2/15.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "P(at least once) = 1 − P(none) = 1 − (0.6)³ = 1 − 0.216 = 0.784.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 112,
+    "answer": "B",
+    "working": "Multinomial: choose which 3 of the 6 throws show 2 (the rest show 4): 6!/(3!3!) = 20 arrangements, each of probability (1/6)^6. 20/46656 = 5/11664.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "\"A cube is thrown\" means a die; the six faces are the digits. Reading intact."
+  },
+  {
+    "number": 113,
+    "answer": "A",
+    "working": "With variance 12.4: Σx = 25, Σx² = 5(12.4+25) = 187. Remaining two observations satisfy a+b = 16, a²+b² = 146 ⇒ ab = 55 ⇒ a,b = 5, 11. Data 1,2,6,5,11 (mean 5, variance 12.4 ✓); mean deviation = (4+3+1+0+6)/5 = 2.8.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "HARD",
+    "notes": "DEFECT (OCR): the stem prints variance \"124\" — a dropped decimal point for 12.4. Taken literally (124), the two unknown observations are 24.97 and −8.97 and the mean deviation is 8.39, which matches no option. With 12.4 the data is the clean set {1,2,5,6,11} and the answer 2.8 is option (A). Source should be corrected to 12.4."
+  },
+  {
+    "number": 114,
+    "answer": "B",
+    "working": "The assignment must give r² ≤ 1: take 8x−10y=66 as y-on-x (b_yx = 0.8) and 40x−18y=214 as x-on-y (b_xy = 0.45); then r² = 0.36, r = 0.6. From b_yx = rσy/σx: 0.8 = 0.6·σy/3 ⇒ σy = 4. (The reverse assignment gives r² = 2.78 > 1, impossible.)",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "working": "Σi·i²/Σi² = Σi³/Σi² = [n²(n+1)²/4] / [n(n+1)(2n+1)/6] = 3n(n+1)/(2(2n+1)). Checked at n=4: both give 10/3.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "answer": "B",
+    "working": "Total = 50·36 = 1800; removing 30 and 42 (sum 72, mean 36) leaves 1728 over 48 ⇒ 36. Deleting two observations whose own mean equals the overall mean leaves the mean unchanged.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 117,
+    "answer": "A",
+    "working": "r = cov/(σxσy) = 8/(3·4) = 2/3.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 118,
+    "answer": "A",
+    "working": "Slopes of the two lines are b_yx = 1.6 and 1/b_xy = 2.5, so tanθ = |(2.5−1.6)/(1+4)| = 0.9/5 = 0.18. Cross-checked with tanθ = ((1−r²)/r)·σxσy/(σx²+σy²) using r = 0.8, σy = 2σx: 0.45·0.4 = 0.18.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "D",
+    "working": "Sum = 3·14 + 2·18 = 42 + 36 = 78; mean = 78/5 = 15.6.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "B",
+    "working": "(n+1)/2 = (n+7)/3 ⇒ 3n+3 = 2n+14 ⇒ n = 11.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

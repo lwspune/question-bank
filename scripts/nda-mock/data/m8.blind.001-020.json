@@ -1,0 +1,187 @@
+[
+  {
+    "number": 1,
+    "answer": "B",
+    "working": "The shared condition is \\(|z_1+z_2|^2=|z_1|^2+|z_2|^2\\). Expanding the left side gives \\(|z_1|^2+|z_2|^2+2\\operatorname{Re}(z_1\\bar z_2)\\), so \\(\\operatorname{Re}(z_1\\bar z_2)=0\\), i.e. \\(z_1\\bar z_2\\) is purely imaginary. Check: \\(z_1=1, z_2=i\\) satisfies \\(|1+i|^2=2=1+1\\) and \\(z_1\\bar z_2=-i\\), purely imaginary.",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "DAMAGED SHARED CONTEXT (affects Q1-Q3): the printed relation reads \\(\\left| z_{1} + z_{1} \\right|^{2} = \\left| z_{1} \\right|^{2} + \\left| z_{2} \\right|^{2}\\) — the left-hand modulus has \\(z_1\\) twice. It must be \\(|z_1+z_2|^2\\): as printed the left side is \\(4|z_1|^2\\), which would make the condition \\(3|z_1|^2=|z_2|^2\\) — a pure modulus relation carrying no information about the argument of \\(z_1\\bar z_2\\), so Q1/Q2/Q3 would all be unanswerable (answer 'None of these' by default). With \\(z_2\\) restored the three questions form the standard chained set."
+  },
+  {
+    "number": 2,
+    "answer": "B",
+    "working": "\\(z_1/z_2 = z_1\\bar z_2/|z_2|^2\\); dividing the purely imaginary \\(z_1\\bar z_2\\) (from Q1) by the positive real \\(|z_2|^2\\) leaves a purely imaginary number. Check with \\(z_1=1,z_2=i\\): \\(1/i=-i\\).",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Relies on the same corrupted shared context flagged in Q1 (\\(|z_1+z_1|\\) must be \\(|z_1+z_2|\\)). Also implicitly requires \\(z_2 \\neq 0\\)."
+  },
+  {
+    "number": 3,
+    "answer": "C",
+    "working": "From Q2, \\(z_1/z_2 = ik\\) with \\(k\\) real. Then \\(i(z_1/z_2) = i\\cdot ik = -k\\), a real number. For \\(k<0\\) the value \\(-k\\) is positive real, whose argument is 0; so 0 is a possible argument. Check \\(z_1=i, z_2=1\\) (\\(|i+1|^2=2=1+1\\)): \\(i(i/1)=-1\\) has argument \\(\\pi\\), while \\(z_1=1,z_2=i\\) gives \\(i(1/i)=1\\) with argument 0 — 0 is attainable, \\(\\pm\\pi/2\\) never is.",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Relies on the same corrupted shared context flagged in Q1. The product is always real, so the only achievable arguments are 0 and \\(\\pi\\); option (C) is the one offered."
+  },
+  {
+    "number": 4,
+    "answer": "C",
+    "working": "\\(\\sum_{r=0}^{n}(2r+1)\\binom{n}{r} = 2\\sum r\\binom{n}{r} + \\sum \\binom{n}{r} = 2\\cdot n2^{n-1} + 2^n = n2^n + 2^n = 2^n(n+1)\\). Numeric check at \\(n=2\\): \\(1+3\\cdot2+5\\cdot1 = 12\\) and \\(2^2(2+1)=12\\) (option B would give 8).",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 5,
+    "answer": "C",
+    "working": "Double the second equation: \\(2x^2+4x+6\\lambda=0\\); subtract \\(2x^2+3x+5\\lambda=0\\) to get \\(x+\\lambda=0\\), so the common root is \\(x=-\\lambda\\). Substituting into \\(x^2+2x+3\\lambda=0\\) gives \\(\\lambda^2+\\lambda=0\\), so \\(\\lambda=0\\) or \\(\\lambda=-1\\). Both verify: \\(\\lambda=0\\) shares root 0; \\(\\lambda=-1\\) shares root 1 (\\(2+3-5=0\\), \\(1+2-3=0\\)).",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Special Quadratics — Parametric, Logarithmic, Constructed",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 6,
+    "answer": "A",
+    "working": "Root 2 in \\(x^2+\\lambda x-12=0\\) gives \\(4+2\\lambda-12=0\\), so \\(\\lambda=4\\). Equal roots in \\(x^2+4x+\\mu=0\\) needs \\(16-4\\mu=0\\), so \\(\\mu=4\\). Hence \\((\\lambda,\\mu)=(4,4)\\).",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 7,
+    "answer": "A",
+    "working": "Let \\(f(x)=(x-a)(x-c)+2(x-b)(x-d)\\), leading coefficient \\(3>0\\). With \\(a<b<c<d\\): \\(f(b)=(b-a)(b-c)<0\\) (positive times negative) and \\(f(d)=(d-a)(d-c)>0\\), so \\(f\\) changes sign and, being an upward parabola taking a negative value, has two distinct real roots. Numeric check \\(a,b,c,d=0,1,2,3\\): \\(3x^2-10x+6=0\\), discriminant \\(100-72=28>0\\).",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 8,
+    "answer": "D",
+    "working": "\\(R_1-R_2=(-b,-b,-b)\\) and \\(R_2-R_3=(-2b,-2b,-2b)\\) are proportional, so the rows are linearly dependent and the determinant is 0. Numeric check with \\(a=1,b=1\\): rows \\((2,3,4),(3,4,5),(5,6,7)\\) give determinant 0.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (A) reads \\(a^{2} + b^{2} + c^{2} - 3abc\\) but the determinant contains only \\(a\\) and \\(b\\) — no \\(c\\) appears anywhere in the matrix. That option is a stray distractor imported from a different (\\(a,b,c\\) circulant) determinant question. It does not block the derivation; (D) 0 is unambiguous."
+  },
+  {
+    "number": 9,
+    "answer": "C",
+    "working": "Each of the 4 parcels is registered independently at any one of the 5 post-offices, so by the product rule the count is \\(5\\times5\\times5\\times5 = 5^4\\).",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 10,
+    "answer": "D",
+    "working": "A garland is a circular arrangement that can be flipped over, so clockwise and anticlockwise orders coincide: the count is \\((10-1)!/2 = 9!/2\\).",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 11,
+    "answer": "B",
+    "working": "\\((x-1/x)^{18}\\) has 19 terms, so the middle one is the 10th, i.e. \\(r=9\\): \\(T_{10}=\\binom{18}{9}x^{9}(-1/x)^{9} = -\\binom{18}{9}\\) (the \\(x\\) powers cancel and \\((-1)^9=-1\\)).",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "working": "Vieta: \\(\\sin\\alpha+\\cos\\alpha=-b/a\\), \\(\\sin\\alpha\\cos\\alpha=c/a\\). Squaring the sum: \\(b^2/a^2 = 1+2c/a\\), so \\(b^2 = a^2+2ac\\), i.e. \\(a^2-b^2+2ac=0\\). Numeric check with \\(\\alpha=45^\\circ\\) (both roots \\(1/\\sqrt2\\)): \\(x^2-\\sqrt2x+1/2=0\\) gives \\(1-2+1=0\\), while option (D) gives \\(1+2+1=4\\neq0\\).",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "working": "\\(A\\) is upper triangular, so \\(|A| = 5\\cdot\\alpha\\cdot5 = 25\\alpha\\). Then \\(|A^2| = |A|^2 = 625\\alpha^2 = 25\\), giving \\(\\alpha^2 = 1/25\\) and \\(|\\alpha| = 1/5\\).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "working": "\\(R_2\\to R_2-R_1\\) and \\(R_3\\to R_3-R_1\\) give rows \\((1,1,1),(0,x,0),(0,0,y)\\), so \\(D = xy\\), which is divisible by both \\(x\\) and \\(y\\). Numeric check \\(x=2,y=3\\): determinant of \\([[1,1,1],[1,3,1],[1,1,4]] = 6 = xy\\).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 15,
+    "answer": "C",
+    "working": "Choosing 11 from 13 means excluding exactly 2 players, so at most 2 of the 4 bowlers can be left out and the team always contains at least \\(4-2=2\\) bowlers. Hence every selection qualifies: \\(\\binom{13}{11}=\\binom{13}{2}=78\\). (Confirmed by complement: 0-bowler teams need 11 from 9 non-bowlers = 0; 1-bowler teams need 10 from 9 = 0.)",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 16,
+    "answer": "A",
+    "working": "No three points on a circle are collinear, so every choice of 3 of the 4 points forms a triangle: \\(\\binom{4}{3}=4\\).",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Geometric Counting",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 17,
+    "answer": "B",
+    "working": "General term \\(T_{r+1} = \\binom{12}{r}(2x^2)^{12-r}(-1/x)^r\\), whose \\(x\\)-power is \\(2(12-r)-r = 24-3r\\). Setting \\(24-3r=0\\) gives \\(r=8\\), so it is the \\((r+1)=9\\)th term.",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 18,
+    "answer": "C",
+    "working": "Reading the intended condition as 'the coefficients of the \\(p\\)th and \\(q\\)th terms of \\((1+x)^n\\) are equal': \\(\\binom{n}{p-1} = \\binom{n}{q-1}\\) forces \\((p-1)+(q-1)=n\\), so \\(p+q = n+2\\). The same value follows from the adjacent-term reading printed here: if the \\(p\\)th and \\((p+1)\\)th coefficients are equal then \\((p-1)+p=n\\), so \\(n=2p-1\\) and \\(p+(p+1)=2p+1=n+2\\).",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "MODERATE",
+    "confidence": "medium",
+    "notes": "DAMAGED STEM. As printed — 'the coefficient of \\(p^{th}\\) and \\((p+1)^{th}\\) terms are respectively \\(p\\) and \\(q\\)' — the symbol \\(p\\) is used simultaneously as a term index and as the value of a coefficient, which is self-contradictory, and \\(q\\) is never tied to a term index. The source is the standard result 'if the coefficients of the \\(p^{th}\\) and \\(q^{th}\\) terms in \\((1+x)^n\\) are EQUAL, then \\(p+q=n+2\\)' — the options \\(n, n+1, n+2, n+3\\) are exactly that question's option set. Reassuringly, the corrupted adjacent-term reading also yields \\(n+2\\), so (C) is robust to either interpretation; confidence is 'medium' only because the stem needs repair, not because the value is doubtful."
+  },
+  {
+    "number": 19,
+    "answer": "A",
+    "working": "The six digits sum to 15, so omitting digit \\(d\\) leaves sum \\(15-d\\), divisible by 3 only for \\(d\\in\\{0,3\\}\\). Omitting 0: digits \\(\\{1,2,3,4,5\\}\\) give \\(5!=120\\) numbers. Omitting 3: digits \\(\\{0,1,2,4,5\\}\\) give \\(5!-4!=120-24=96\\) (subtracting those with leading 0). Total \\(120+96=216\\).",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Forming Numbers from Digits",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 20,
+    "answer": "D",
+    "working": "Written homogeneously the system is \\(x-cy-bz=0,\\; -cx+y-az=0,\\; -bx-ay+z=0\\); a non-trivial solution requires the determinant of \\([[1,-c,-b],[-c,1,-a],[-b,-a,1]]\\) to vanish. Expanding gives \\(1-a^2-b^2-c^2-2abc=0\\), so \\(a^2+b^2+c^2+2abc=1\\). Numeric check \\(a=1,b=c=0\\): the system becomes \\(x=0,\\,y=z,\\,z=y\\), which has non-trivial solutions, and \\(1+0+0+0=1\\).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  }
+]

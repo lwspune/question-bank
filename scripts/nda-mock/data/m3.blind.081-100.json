@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "B",
+    "working": "Multiply R1 by a, R2 by b, R3 by c: LHS becomes abc*D and the matrix becomes [[abc,a^2,a^3],[abc,b^2,b^3],[abc,c^2,c^3]] = abc*|[1,a^2,a^3],[1,b^2,b^3],[1,c^2,c^3]|. Cancelling abc gives D = option B. Verified numerically at (a,b,c)=(1,2,5): target 204, B=204, A=12, C=96, D=120.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "C",
+    "working": "The (3,2) entry is printed 'c - x'; 'c' is undefined in the problem and the antisymmetric off-diagonal pattern ((1,2)=z/(2,1)=-z, (1,3)=-y/(3,1)=y, (2,3)=x) forces -x. Then det = (1+x^2) - z(-z-xy) - y(zx-y) = 1 + x^2 + y^2 + z^2 (the xyz terms cancel) = 1+1 = 2.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage: the (3,2) entry prints as 'c - x' where it must be '-x' (no 'c' is defined anywhere in the question). Reconstruction is forced by the skew off-diagonal pattern and confirmed numerically (det = 2 exactly for random unit vectors). With +x instead the value would be 1-x^2+y^2+z^2+2xyz, which matches no option — so -x is the only consistent reading. Distractor D (2-2xyz) is the trap for sign-slips."
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "working": "|adj A| = |A|^(n-1) for an n x n matrix. So 3^(n-1) = 243 = 3^5, giving n-1 = 5, n = 6.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Cofactors, Adjoint, and Inverse",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "A",
+    "working": "Matrix multiplication is associative wherever the products are defined. If AB and BC both exist then A(BC) and (AB)C are both defined and equal. It is not unconditionally true, because the factors must be conformable, so 'Always true' is wrong.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "working": "A is 3x2 and B is 2x3, so AB is 3x3. For an n x n matrix M, |kM| = k^n |M|; with n = 3, |kAB| = k^3 |AB|.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "notes": "Question-design flaw (not an option-labelling defect): since rank(AB) <= 2 < 3, |AB| = 0 necessarily, so all four options evaluate to 0 and are numerically indistinguishable. The intended answer via |kM| = k^n|M| with n = 3 is unambiguously C, so the key should read C; flagging only because the question is degenerate as posed."
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "working": "Pre-multiply both sides by diag(5,7): [x; -y] = diag(5,7)*[-1; 2] = [-5; 14]. So x = -5 and -y = 14, i.e. y = -14.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "answer": "A",
+    "working": "2/4 = 3/6 = 1/2 but 4/7 != 1/2, so a1/a2 = b1/b2 != c1/c2: the lines are parallel and distinct, hence the system is inconsistent and has no solution.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "working": "By Cramer's rule x0 = Dx/D where Dx replaces the a-column by the d-column, i.e. Dx = |[d1,b1,c1],[d2,b2,c2],[d3,b3,c3]|. A unique solution forces D != 0, so x0 = 0 implies Dx = 0, which is option B. (A is wrong because D != 0 is required for uniqueness.)",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "A",
+    "working": "GP gives b^2 = ac, so c = b^2/a and R2 = (b, b^2/a, b + b^2/a) = (b/a)*(a, b, a+b) = (b/a)*R1. Two proportional rows, so the determinant is 0. Verified numerically with (a,b,c) = (2,6,18): det = 0.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "working": "114 deg 32' 44\" = 114 + 32/60 + 44/3600 = 114.545455 deg. Multiplying by (22/7)/180 gives 2.0000 rad exactly, so the answer is 2 rad. (With pi = 3.14159 it is 1.99920 rad, so the question is set with pi = 22/7; 2 rad is the nearest option either way.)",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "notes": "The angle is exact only under pi = 22/7 (2 rad = 114 deg 32' 43.6\" with 22/7, versus 114 deg 35' 30\" with true pi). Not a defect — the options are 1/2/3/4 rad so B is unambiguous. Classification caveat: degree-radian measurement of angles has no dedicated home in the taxonomy; 'Specific Values and Quadrants' is the closest available fit."
+  },
+  {
+    "number": 91,
+    "answer": "A",
+    "working": "Statement 1: {phi} is a set whose single element is phi, so phi is an element of {phi} — true. Statement 2: {phi} subset of phi would require phi (an element of {phi}) to belong to the empty set — false, since the empty set has no elements. Only 1 is correct.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "C",
+    "working": "For a general set A no element of A is also a subset of A, so A intersect P(A) = empty, hence A - P(A) = A — option C. B fails (the intersection is empty, not A); the spliced option (a) 'A union P(A) = P(A)' fails since A is not a subset of P(A); D fails because A is an element of P(A), so deleting {A} does change P(A).",
+    "confidence": "medium",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "MODERATE",
+    "notes": "Heavy OCR damage: option (A)'s text was spliced up into the stem as '(a) $A \\cup P(A) = P' and the printed option (A) is a bare '$'. The intended option (A) is plainly 'A union P(A) = P(A)', which is false, and options B/C/D survived intact — so C is still determinable. Strictly, C is not a universal identity (for A = {phi}, P(A) = {phi, {phi}} and A - P(A) = empty), but it is the standard intended answer and the only correct choice among the four."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "working": "Read the question-side diagram: circles A (upper-left) and B (upper-right) both overlap circle C (bottom). The hatching fills the whole upper part of C — spanning the C-with-A lune, the central triple region, and the C-with-B lune — bounded above by C's arc and below by the lower arcs of A and B. That is exactly (A union B) intersect C.",
+    "confidence": "medium",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": "Answer read off the low-resolution diagram (q/media/image3.png, ~110 px), hence medium rather than high confidence; the shaded band clearly extends well beyond the small central triple-overlap, which rules out option A. Minor OCR damage in option C: '\\(A \\cup B) - C\\)' is missing its opening parenthesis (intended (A union B) - C)."
+  },
+  {
+    "number": 94,
+    "answer": "D",
+    "working": "p < x < q and p < y < r constrain x and y each only relative to p, q, r; nothing relates x to y, or q to r. Counterexamples defeat A, B and C (e.g. p=0, q=10, r=2, x=5, y=1 gives x > y, killing A; q=10 > r=2 kills B; y=1 < x=5 with x<q also satisfies C, but swapping x and y values breaks it). So no ordering can be asserted.",
+    "confidence": "high",
+    "chapter": "Linear Inequalities",
+    "subtopic": "Linear Systems and Feasible Regions",
+    "difficulty": "EASY",
+    "notes": "Classification caveat: this is a pure order-of-real-numbers reasoning item; 'Linear Inequalities / Linear Systems and Feasible Regions' is the nearest available taxonomy slot but is an imperfect fit."
+  },
+  {
+    "number": 95,
+    "answer": "C",
+    "working": "0.111..._2 = 1/2 + 1/4 + 1/8 + ... = (1/2)/(1 - 1/2) = 1. (Equivalently, in base 2 the recurring 0.111... is the analogue of 0.999... = 1 in base 10.)",
+    "confidence": "high",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary to Decimal Conversion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "working": "10001100_2 = 128+8+4 = 140 and 1101101_2 = 64+32+8+4+1 = 109. Difference = 140 - 109 = 31.",
+    "confidence": "high",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "D",
+    "working": "Both fail. Equal arguments only fix direction: z1 = 1 and z2 = 2 both have argument 0 but are unequal. Equal moduli only fix distance from the origin: z1 = 1 and z2 = -1 both have modulus 1 but are unequal. Equality needs both modulus and argument.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "B",
+    "working": "For b > 0, bi lies on the positive imaginary axis, so arg(bi) = pi/2 (the principal argument).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "B",
+    "working": "A = [-9, 4), B = (-13, 5], C = [-7, 8]. A intersect B = [-9, 4); intersecting with C gives [-7, 4). Now -9 < -7 (excluded), 4 is excluded (A is open at 4), 5 > 4 (excluded), while -7 is included since C is closed at -7. So only -7 belongs.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": "Cosmetic OCR damage in the set-builder notation only (B's brace closes as ')', C omits the 'R' in 'x in R'); the intervals are unambiguous and the answer is unaffected."
+  },
+  {
+    "number": 100,
+    "answer": "B",
+    "working": "Rearranged: (a+c-b)/(c(b-a)) = -(a+c-b)/(a(b-c)). Discarding the degenerate branch a+c-b = 0 gives a(b-c) = -c(b-a), i.e. ab + cb = 2ac, so b = 2ac/(a+c) — the harmonic mean of a and c. Hence a, b, c are in HP. Checked with a=1, c=3, b=1.5: LHS = -2/3 + 2 = 4/3 = 1 + 1/3 = RHS.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "number": 21,
+    "answer": "A",
+    "working": "det A = 10, so A⁻¹ = adj(A)/10 and 10B = adj(A). Cofactor matrix [[4,−5,1],[2,0,−2],[2,5,3]]; its transpose is [[4,2,2],[−5,0,5],[1,−2,3]] ⇒ α = 5.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Cofactors, Adjoint, and Inverse",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 22,
+    "answer": "D",
+    "working": "a_k in G.P. ⇒ log a_k is an A.P., so consecutive columns differ by the same constant: C1 + C3 = 2·C2 ⇒ columns are linearly dependent ⇒ determinant = 0.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 23,
+    "answer": "D",
+    "working": "A² − A + I = 0 ⇒ I = A − A² = A(I − A) ⇒ A⁻¹ = I − A.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "working": "Δ = (α−1)²(α+2) = 0 ⇒ α = 1 or −2. For α = −2 adding the three equations gives 0 = −9 (inconsistent, no solution); for α = 1 all three collapse to x+y+z = 0 ⇒ infinitely many solutions. So α = 1.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 25,
+    "answer": "D",
+    "working": "Write M = 1·vᵗ + (1−x)I with v = ((1+a²)x,(1+b²)x,(1+c²)x). For rank-1 uvᵗ, det(λI+uvᵗ)=λ²(λ+vᵗu); here λ=1−x and vᵗu = x(3+a²+b²+c²) = x(3−2) = x, so f(x) = (1−x)²(1−x+x) = (1−x)² — degree 2.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+    "difficulty": "HARD",
+    "notes": "The hypothesis a²+b²+c²=−2 is impossible for real a,b,c; it is used purely formally (as in the standard textbook version of this item), which is fine since the determinant identity is algebraic."
+  },
+  {
+    "number": 26,
+    "answer": "D",
+    "working": "Units digit must be odd: 4 choices (1,3,5,7). Leading digit non-zero: 5 choices. Middle two digits free: 6 each. Total = 5·6·6·4 = 720.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Forming Numbers from Digits",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 27,
+    "answer": "C",
+    "working": "The number must be a 4-digit number with leading digit 1, 2 or 3: 3 · 5 · 5 · 5 = 375.",
+    "confidence": "medium",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Forming Numbers from Digits",
+    "difficulty": "MODERATE",
+    "notes": "Strictly 'greater than 1000' should exclude 1000 itself, giving 374; 374 is not an option, so the intended answer is the inclusive count 375 (option C). Minor wording defect in the stem, not an option defect."
+  },
+  {
+    "number": 28,
+    "answer": "A",
+    "working": "Coefficients are C(p+q,p) and C(p+q,q); since (p+q)−p = q these are equal.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 29,
+    "answer": "C",
+    "working": "Sum of coefficients = 2ⁿ = 4096 ⇒ n = 12; greatest coefficient is C(12,6) = 924.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 30,
+    "answer": "B",
+    "working": "2·log₉(3^{1−x}+2) = log₃(3^{1−x}+2) = 1 + log₃(4·3^x−1) ⇒ 3/y + 2 = 12y − 3 with y=3^x ⇒ 12y²−5y−3=0 ⇒ y = 3/4 (reject −1/3) ⇒ x = log₃(3/4) = 1 − log₃4. (Verified: log₃6 = 1 + log₃2.)",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "working": "log l = log a + (p−1)log R etc., so C1 = (log R)·C2 + (log a − log R)·C3 — columns are linearly dependent ⇒ determinant = 0.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 32,
+    "answer": "B",
+    "working": "Product = 2^{1/4}·2^{2/8}·2^{3/16}··· = 2^{Σ n/2^{n+1}} and Σ_{n≥1} n/2^{n+1} = ½·Σ n/2ⁿ = ½·2 = 1 ⇒ value = 2¹ = 2.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Special Series and Special Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 33,
+    "answer": "C",
+    "working": "Group as [C(n,r+1)+C(n,r)] + [C(n,r)+C(n,r−1)] = C(n+1,r+1)+C(n+1,r) = C(n+2,r+1) by Pascal's rule twice.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Factorials and Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "working": "Exactly 4 of the first five: C(5,4)·C(8,6) = 5·28 = 140; all five: C(5,5)·C(8,5) = 56. Total = 196.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 35,
+    "answer": "B",
+    "working": "Seat the 6 men round the table: (6−1)! = 5! ways; the 5 women go into 5 of the 6 gaps: ⁶P₅ = 6! ways. Total = 5!·6! = 86400.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 36,
+    "answer": "C",
+    "working": "GARDEN has 6 distinct letters (6! = 720 arrangements); exactly half put A before E ⇒ 720/2 = 360.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 37,
+    "answer": "D",
+    "working": "S = Σ_{k=0}^{10}(−1)^k C(20,k). Since Σ_{k=0}^{20}(−1)^k C(20,k) = 0 and symmetry gives Σ_{k=11}^{20} = S − C(20,10), we get 2S = C(20,10) ⇒ S = ½·C(20,10). (Checked n=4: 1−4+6=3=½C(4,2).)",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "working": "Term k gives C(50,k)(−2)^k x^{k/2}; integral powers ⇔ k even. With f(t)=(1−2t)^50: Σ_{k even} = ½[f(1)+f(−1)] = ½[1 + 3^50].",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 39,
+    "answer": "D",
+    "working": "S_p/S_q = p²/q² for all p,q ⇒ S_n ∝ n² ⇒ a_n = a₁(2n−1). Hence a₆/a₂₁ = 11/41.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 40,
+    "answer": "D",
+    "working": "(a+4d)² = (a+d)(a+8d) ⇒ 8d² = ad ⇒ d≠0 (non-constant) ⇒ a = 8d. Terms 9d, 12d, 16d ⇒ ratio = 12/9 = 4/3.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Interrelating AP, GP and HP",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

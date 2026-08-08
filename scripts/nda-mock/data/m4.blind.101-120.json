@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "C",
+    "working": "More girls than boys among 3 drawn from 5B+3G means at least 2 girls: (2G,1B)=C(3,2)C(5,1)=15 and (3G)=C(3,3)=1, total 16; divided by C(8,3)=56 gives 16/56 = 2/7.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": "C",
+    "working": "Sum 17 comes only from {6,6,5} = 3 arrangements; sum 18 only from (6,6,6) = 1. So 4/216 = 1/54.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 103,
+    "answer": "B",
+    "working": "Inclusion-exclusion on 1..100: multiples of 4 = 25, of 6 = 16, of 12 (=lcm) = 8, so |4 or 6| = 25+16-8 = 33, probability 33/100.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 104,
+    "answer": "C",
+    "working": "Deck has 16 cards, 4 of them aces. P(at least one ace) = 1 - C(12,2)/C(16,2) = 1 - 66/120 = 54/120 = 9/20.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 105,
+    "answer": "A",
+    "working": "C(n,7) = C(n,9) with 7 != 9 forces n = 7+9 = 16. Then P(3 heads) = C(16,3)/2^16 = 560/2^16 = (35*2^4)/2^16 = 35/2^12.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 106,
+    "answer": "A",
+    "working": "Product of 4 chosen numbers is positive iff an even count of negatives: C(6,4)+C(8,2)C(6,2)+C(8,4) = 15+420+70 = 505, over C(14,4) = 1001, giving 505/1001.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "HARD",
+    "notes": "Distractors are the three individual cases (420, 15, 70), so the intended answer is the sum, 505/1001."
+  },
+  {
+    "number": 107,
+    "answer": "C",
+    "working": "Reading the garbled stem as 'P(A) and P(B) are each twice P(C)': 2p+2p+p = 1 so p = 1/5, and P(A or B) = 4p = 4/5.",
+    "confidence": "medium",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "MODERATE",
+    "notes": "OCR-damaged stem: 'The probability of winning A and C winning of B is twice of winning C' is not grammatical. Reading it as P(A)=P(B)=2P(C) gives 4/5, which is option C. The rival chained reading (P(A)=2P(B), P(B)=2P(C)) gives 6/7, which appears in NO option, so it is almost certainly not intended — that supports the P(A)=P(B)=2P(C) reading. Answer given at medium confidence because the reading, not the arithmetic, is uncertain."
+  },
+  {
+    "number": 108,
+    "answer": "A",
+    "working": "'twice' is OCR for 'dice'. P = 1/2 + (1/2)(2/3)P (miss the head, then miss 5-or-6, then position repeats), so P(1 - 1/3) = 1/2 and P = 3/4.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "notes": "Stem OCR: 'throws a twice' and 'in the twice' should read 'throws a dice' / 'in the dice'. Meaning is recoverable and unambiguous."
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "working": "The 6 draws give 6!/(3!3!) = 20 equally likely colour sequences; only WBWBWB and BWBWBW alternate, so 2/20 = 1/10.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "Minor OCR: 'Balls some drawn' = 'Balls are drawn'."
+  },
+  {
+    "number": 110,
+    "answer": "A",
+    "working": "9 balls give 9!/(2!4!3!) = 1260 equally likely colour orders; exactly one is BB WWWW RRR, so probability = 1/1260.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "Minor OCR: 'White ball is drawn at random' should read 'A ball is drawn at random' — the first ball cannot be prescribed white, since the required sequence starts with two black."
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "The series 1,2,4,...,2^n is a GP with n+1 terms (2^0 through 2^n) summing to 2^(n+1) - 1, so A.M. = (2^(n+1) - 1)/(n+1).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — DUPLICATE OPTIONS: (A) and (C) are printed character-for-character identically as (2^n + 1)/n. Verified they are not merely coincident: they agree at n=3,5,7 because they are the same expression. The key is unaffected, since the correct value (2^(n+1)-1)/(n+1) is option B and is distinct from A/C/D at every n tested, so the answer remains determinable. Likely one of A/C was meant to be a different distractor (perhaps (2^n - 1)/n). Also note the common student trap of counting n terms instead of n+1, which yields option-D-style denominators."
+  },
+  {
+    "number": 112,
+    "answer": "B",
+    "working": "Sum of (x_i + 2i) = n*xbar + 2*n(n+1)/2 = n*xbar + n(n+1); dividing by n gives xbar + (n+1).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 113,
+    "answer": "A",
+    "working": "Mean of 1^2..n^2 = (n+1)(2n+1)/6 = 46n/11 gives 22n^2 - 243n + 11 = 0, whose roots are 11 and 1/22; only n = 11 is admissible (check: 12*23/6 = 46 = 46*11/11).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 114,
+    "answer": "B",
+    "working": "Total = 50*36 = 1800; removing 30+42 = 72 leaves 1728 over 48 observations, mean = 1728/48 = 36 (unchanged, since the deleted pair averages 36).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "working": "Weighted mean = sum(i*i^2)/sum(i^2) = sum(i^3)/sum(i^2) = [n^2(n+1)^2/4] / [n(n+1)(2n+1)/6] = 3n(n+1)/(2(2n+1)); verified numerically at n=4 (10/3) and n=7 (28/5).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "answer": "C",
+    "working": "Dividing every observation by alpha then adding 10 is a linear map, so the new mean is xbar/alpha + 10 = (xbar + 10*alpha)/alpha.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": "Option (D) is typeset as 'a*Xbar + 10' with a roman 'a' and capital X; in context it is alpha*xbar + 10, the distractor for multiplying instead of dividing. Cosmetic only."
+  },
+  {
+    "number": 117,
+    "answer": "B",
+    "working": "G.M. = (2*4*8*16*32*64)^(1/6) = (2^21)^(1/6) = 2^(21/6) = 2^(7/2) = 8*sqrt(2).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": "Option (C) '33' looks like OCR damage (2^(7/2) is about 11.31); it is a dead distractor but does not affect the key."
+  },
+  {
+    "number": 118,
+    "answer": "C",
+    "working": "Equal distances each way, so average speed is the harmonic mean of the two speeds: total distance 2d over time d/x + d/y gives 2xy/(x+y).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "C",
+    "working": "By AM-HM (or Cauchy-Schwarz), (a+b+c)(1/a+1/b+1/c) >= 3^2 = 9, with equality iff a = b = c.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "B",
+    "working": "AM >= GM: (x1+...+xn)/n >= (x1...xn)^(1/n) = 1^(1/n) = 1, so the sum is at least n (equality when all xi = 1).",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]
