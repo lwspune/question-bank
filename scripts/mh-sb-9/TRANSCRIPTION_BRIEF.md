@@ -47,7 +47,12 @@ Each object (the `SBQuestion` shape):
 - Practice-set sub-item (i)/(ii)/… → `"Ex N.M Q<n>(iii)"` (see set-grouping)
 - Problem-set question n → `"Prob Q<n>"`  e.g. `"Prob Q2"`
 - Problem-set MCQ Q.1 sub-items (i)/(ii)/… → `"Prob Q1(i)"`, setLabel `"Prob Q1"`
-- A worked example with a printed Solution → `"Solved Eg.<N>"` (rare in Class 9)
+- A worked example with a printed Solution → `"<N.M> SolvedEx.<n>"`, where `N.M` is the
+  Practice set that CLOSES the theory band the example sits in — so the worked examples
+  in the theory running up to Practice set 2.3 are `"2.3 SolvedEx.1"`, `"2.3 SolvedEx.2"`, ….
+  Section-scoped rather than chapter-global on purpose: parallel agents each own one band,
+  so chapter-global numbering would collide, and /board places each solved block
+  immediately before its own practice set. Number from 1 within YOUR band.
 
 ### bucket / format rules
 - Worked **Example** with the book's Solution → `bucket:"solved"`, `format:"subjective"`, include `solution`.

@@ -64,6 +64,15 @@ async function main() {
   writeFileSync(out, JSON.stringify(rows, null, 2), "utf-8");
   console.log(`dumped ${rows.length} MCQ rows (no is_correct) -> ${out}`);
   console.log(`guard OK: every row carries 4 options. refs: ${rows[0].ref} … ${rows[rows.length - 1].ref}`);
+  // The verifying agent's output schema is a CONTRACT with mark-mcq-verify.ts,
+  // and the prompt that drives the agent is written by hand each time — so print
+  // it here rather than leaving the next author to guess. Getting the field name
+  // wrong costs a whole agent run (mark-mcq-verify reports every row as NULL).
+  console.log(
+    `\nthe verifier must write data/<id>.blind.mcq-verify.json as:\n` +
+      `  [{ "id": "<verbatim>", "ref": "<verbatim>", "derived_answer": "A|B|C|D", "why": "<one line>" }]\n` +
+      `  ^ the field is derived_answer — NOT "answer".`
+  );
 }
 
 main().catch((e) => {
