@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   latexToOmml,
+  ommlNestingError,
   sanitizeOmmlForXml,
   textWithMathToOmmlSegments,
 } from "@/lib/export/ommlBuilder";
@@ -217,6 +218,127 @@ describe("latexToOmml — accents (bar/hat/vec/dot/overline)", () => {
     const omml = latexToOmml("\\lim_{x \\to 0} f(x)");
     expect(omml).not.toBeNull();
     expect(omml!).not.toContain("<m:acc>");
+  });
+});
+
+// ── Well-formedness of the OMML we EMIT ──────────────────────────────────────
+//
+// Regression suite for the 2026-08-08 "Word says the file is corrupt" defect.
+// wrapAccents' two rewrites used an unanchored non-greedy `[\s\S]*?`, so when
+// the expected local shape was absent the match ran ACROSS element boundaries
+// and paired one element's opening tag with a DIFFERENT element's closing tag
+// (`<m:acc>…</m:limUpp>`). That is malformed XML: Word refuses to open the
+// document outright, so a single such question silently corrupts a whole paper.
+//
+// Two independent triggers, both real bank content:
+//   1. \dfrac / \displaystyle — temml emits <m:argPr><m:scrLvl> inside <m:lim>,
+//      so the old regex's required `<m:lim><m:r>` never matched locally.
+//   2. nested \overline{…\overline{…}} — same flaw in the borderBox → <m:bar>
+//      rewrite (Boolean-algebra / De Morgan solutions).
+describe("ommlNestingError", () => {
+  it("returns null for well-formed XML", () => {
+    expect(ommlNestingError("<a><b/><c>x</c></a>")).toBeNull();
+  });
+
+  it("accepts self-closing and attribute-bearing tags", () => {
+    expect(
+      ommlNestingError('<m:acc><m:chr m:val="̅"/><m:e>x</m:e></m:acc>')
+    ).toBeNull();
+  });
+
+  it("detects a crossed tag pair", () => {
+    expect(ommlNestingError("<m:acc><m:e>a</m:e></m:limUpp>")).toContain(
+      "m:limUpp"
+    );
+  });
+
+  it("detects an unclosed element", () => {
+    expect(ommlNestingError("<m:acc><m:e>a</m:e>")).toContain("unclosed");
+  });
+});
+
+describe("latexToOmml — emits well-formed OMML (never a corrupt .docx)", () => {
+  // Real bank content. Q119 of APJ-LWS Full Mock 10 (Vectors) — its ANSWER KEY
+  // would not open in Word at all before the fix.
+  const REAL_BANK_FIXTURES: string[] = [
+    // accent class — \dfrac
+    String.raw`\frac{\vec{a}\cdot\vec{b}}{|\vec{a}|}=2\cdot\frac{\vec{a}\cdot\vec{b}}{|\vec{b}|}\Rightarrow|\vec{b}|=2|\vec{a}|`.replace(
+      /\\frac/g,
+      "\\dfrac"
+    ),
+    String.raw`\hat{n}=\dfrac{\bar{n}}{|\bar{n}|}=\dfrac{1}{3}\left(2\hat{i}+\hat{j}+2\hat{k}\right)`,
+    String.raw`\vec{E}=\dfrac{\vec{a}+\vec{d}}{2},\qquad \vec{F}=\dfrac{\vec{b}+\vec{c}}{2}`,
+    String.raw`= \dfrac{\vec{a}\cdot\vec{b}}{|\vec{b}|^2}\vec{b}`,
+    // accent class — nested \bar
+    String.raw`C = \bar{A} \cdot \bar{\bar{B}} = \bar{A} \cdot B`,
+    // overline class — nested \overline (Boolean algebra)
+    String.raw`Y=\overline{\overline{A}+\overline{B}}=A\cdot B`,
+    String.raw`Y = \overline{\overline{A}\cdot\overline{B}} = A + B`,
+    String.raw`Y=\overline{\left(A+\overline{B}\right)+\left(\overline{A}+B\right)}`,
+    String.raw`Y=\overline{\overline{(A+B)\cdot(A\cdot B)}}=(A+B)\cdot(A\cdot B).`,
+  ];
+
+  for (const latex of REAL_BANK_FIXTURES) {
+    it(`is well-formed: ${latex.slice(0, 52)}…`, () => {
+      for (const display of [false, true]) {
+        const omml = latexToOmml(latex, display);
+        // null is an acceptable outcome (caller falls back to Unicode);
+        // malformed XML is NOT — that is what breaks the whole document.
+        if (omml !== null) expect(ommlNestingError(omml)).toBeNull();
+      }
+    });
+  }
+
+  it("converts accents inside \\dfrac (not left as a detached limit)", () => {
+    const omml = latexToOmml(String.raw`\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|}`);
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).not.toContain("<m:limUpp>");
+  });
+
+  it("converts accents under \\displaystyle", () => {
+    const omml = latexToOmml(String.raw`\displaystyle \vec{a}+\vec{b}`);
+    expect(omml).not.toBeNull();
+    expect(omml!).toContain("<m:acc>");
+    expect(omml!).not.toContain("<m:limUpp>");
+  });
+
+  it("converts a nested accent inner-first (\\bar{\\bar{B}})", () => {
+    const omml = latexToOmml(String.raw`\bar{\bar{B}}`);
+    expect(omml).not.toBeNull();
+    expect(ommlNestingError(omml!)).toBeNull();
+    expect((omml!.match(/<m:acc>/g) ?? []).length).toBe(2);
+  });
+
+  it("converts a nested \\overline inner-first", () => {
+    const omml = latexToOmml(String.raw`\overline{\overline{A}\cdot B}`);
+    expect(omml).not.toBeNull();
+    expect(ommlNestingError(omml!)).toBeNull();
+    expect((omml!.match(/<m:bar>/g) ?? []).length).toBe(2);
+    expect(omml!).not.toContain("<m:borderBox>");
+  });
+
+  it("still does NOT convert a real \\lim sitting inside a \\dfrac", () => {
+    const omml = latexToOmml(String.raw`\dfrac{\lim_{x \to 0} f(x)}{2}`);
+    expect(omml).not.toBeNull();
+    expect(ommlNestingError(omml!)).toBeNull();
+    expect(omml!).not.toContain("<m:acc>");
+  });
+
+  it("returns null rather than malformed OMML", () => {
+    // Guard the safety net itself: whatever temml/mml2omml (unmaintained) does,
+    // latexToOmml must never hand the docx builder unbalanced XML.
+    const samples = [
+      ...REAL_BANK_FIXTURES,
+      String.raw`\frac{\bar{x}}{\bar{y}}`,
+      String.raw`\overrightarrow{AB}+\vec{c}`,
+      String.raw`\overline{A}\cdot\overline{B}`,
+      String.raw`\dfrac{\hat{i}+\hat{j}}{\sqrt{2}}`,
+    ];
+    for (const latex of samples) {
+      const omml = latexToOmml(latex);
+      if (omml !== null) expect(ommlNestingError(omml)).toBeNull();
+    }
   });
 });
 

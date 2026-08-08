@@ -1,9 +1,21 @@
 import { parseLatex } from "@/components/math/parseLatex";
-import { latexToOmml, UNDERLINE_BYPASS_RE } from "./ommlBuilder";
+import { convertLatexToOmml, UNDERLINE_BYPASS_RE } from "./ommlBuilder";
 
 export interface OmmlFailure {
   latex: string;
   display: boolean;
+  /**
+   * Why the zone falls back to Unicode.
+   *  - "unconvertible": temml/mml2omml can't handle the construct. Expected for
+   *    the known mml2omml gaps; the fallback is the remedy.
+   *  - "malformed": conversion produced structurally invalid OMML. This is a
+   *    BUG in the converter or in our rewrites, not an unsupported construct —
+   *    before the well-formedness guard existed it made Word refuse to open the
+   *    whole document. Treat any occurrence as a defect to fix, not to accept.
+   */
+  reason: "unconvertible" | "malformed";
+  /** Structural detail for a "malformed" hit (e.g. `</m:limUpp> closes <m:acc>`). */
+  detail?: string;
 }
 
 /**
@@ -28,8 +40,14 @@ export function findOmmlFailures(text: string): OmmlFailure[] {
     // latexToOmml is never called on them, so they are not failures.
     if (seg.type === "inline" && UNDERLINE_BYPASS_RE.test(seg.content)) continue;
     const display = seg.type === "block";
-    if (latexToOmml(seg.content, display) === null) {
-      out.push({ latex: seg.content, display });
+    const result = convertLatexToOmml(seg.content, display);
+    if (!result.ok) {
+      out.push({
+        latex: seg.content,
+        display,
+        reason: result.reason,
+        ...(result.reason === "malformed" ? { detail: result.detail } : {}),
+      });
     }
   }
   return out;

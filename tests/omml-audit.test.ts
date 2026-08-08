@@ -16,7 +16,29 @@ describe("findOmmlFailures", () => {
   it("flags the mml2omml-crashing nested-prime complement", () => {
     const f = findOmmlFailures("\\((B' \\cap A)'\\)");
     expect(f).toHaveLength(1);
-    expect(f[0]).toEqual({ latex: "(B' \\cap A)'", display: false });
+    expect(f[0]).toEqual({
+      latex: "(B' \\cap A)'",
+      display: false,
+      // an unsupported mml2omml construct — NOT a malformed-output bug
+      reason: "unconvertible",
+    });
+  });
+
+  // The shapes that used to emit crossed tags (`<m:acc>…</m:limUpp>`) and make
+  // Word refuse the whole document. They must convert cleanly now — so they are
+  // NOT failures at all, and in particular never "malformed".
+  it("reports nothing for the \\dfrac + accent shape that once corrupted papers", () => {
+    expect(
+      findOmmlFailures(
+        "\\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|}=2|\\vec{a}|\\)"
+      )
+    ).toEqual([]);
+  });
+
+  it("reports nothing for nested \\overline (Boolean algebra)", () => {
+    expect(
+      findOmmlFailures("\\(Y=\\overline{\\overline{A}\\cdot\\overline{B}}\\)")
+    ).toEqual([]);
   });
 
   it("flags a real crashing option verbatim", () => {
