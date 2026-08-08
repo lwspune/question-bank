@@ -23,13 +23,46 @@ export type OmmlSegment =
 export const UNDERLINE_BYPASS_RE =
   /^\s*\\underline\{\s*\\(text|textit)\{([^{}]+)\}\s*\}\s*([.,;:!?]?)\s*$/;
 
+export type OmmlResult =
+  | { ok: true; omml: string }
+  /** temml threw, or mml2omml produced nothing usable. */
+  | { ok: false; reason: "unconvertible" }
+  /** Conversion produced OMML, but it is structurally invalid — a converter or
+   *  rewriter BUG, not an unsupported construct. Reported separately so
+   *  `audit:omml` can tell the two apart; see ommlNestingError. */
+  | { ok: false; reason: "malformed"; detail: string };
+
 /**
- * Convert a LaTeX string to OMML XML. Returns null if the LaTeX cannot be parsed.
+ * Convert a LaTeX string to OMML, reporting WHY it failed when it does.
+ * Prefer `latexToOmml` unless you need the reason (the audit probe does).
+ */
+export function convertLatexToOmml(
+  latex: string,
+  displayMode: boolean = false
+): OmmlResult {
+  const built = latexToOmmlUnchecked(latex, displayMode);
+  if (built === null) return { ok: false, reason: "unconvertible" };
+  const detail = ommlNestingError(built);
+  return detail ? { ok: false, reason: "malformed", detail } : { ok: true, omml: built };
+}
+
+/**
+ * Convert a LaTeX string to OMML XML. Returns null if the LaTeX cannot be parsed
+ * OR if conversion yielded structurally invalid OMML.
  * Caller should fall back to rendering the raw text so the document stays readable.
  */
 export function latexToOmml(
   latex: string,
   displayMode: boolean = false
+): string | null {
+  const result = convertLatexToOmml(latex, displayMode);
+  return result.ok ? result.omml : null;
+}
+
+/** The raw pipeline, WITHOUT the well-formedness guard. Internal. */
+function latexToOmmlUnchecked(
+  latex: string,
+  displayMode: boolean
 ): string | null {
   try {
     const mathml = temml.renderToString(latex, {
@@ -41,6 +74,7 @@ export function latexToOmml(
     if (!omml || typeof omml !== "string" || !omml.includes("m:oMath")) {
       return null;
     }
+    // The well-formedness guard lives in convertLatexToOmml, the sole caller.
     return wrapAccents(wrapMatrixDelimiters(sanitizeOmmlForXml(omml)));
   } catch {
     return null;
@@ -126,12 +160,77 @@ const ACCENT_COMBINING: Record<string, string> = {
   "˜": "̃", // ˜ small tilde    → combining tilde
 };
 
-const LIMUPP_ACCENT_RE = new RegExp(
-  "<m:limUpp><m:e>([\\s\\S]*?)</m:e>" +
-    "<m:lim><m:r>(?:<m:rPr>[\\s\\S]*?</m:rPr>)?<m:t[^>]*>([\\s\\S])</m:t></m:r></m:lim>" +
-    "</m:limUpp>",
-  "g"
+// The INNER shape of an <m:limUpp> that is really an accent: a base <m:e> and
+// an <m:lim> holding exactly one character.
+//
+// `<m:argPr>` is optional and load-bearing: temml emits <m:argPr><m:scrLvl/> in
+// display contexts (\dfrac, \displaystyle). Requiring `<m:lim><m:r>` — as the
+// original regex did — silently failed to match there, and because that regex
+// also scanned across element boundaries it went on to consume a LATER accent's
+// </m:limUpp>, producing `<m:acc>…</m:limUpp>` and a document Word won't open.
+// Matching is now confined to one element's own content by rewriteElements().
+const LIMUPP_ACCENT_INNER_RE = new RegExp(
+  "^(?:<m:limUppPr>[\\s\\S]*?</m:limUppPr>)?" +
+    "(?:<m:argPr>[\\s\\S]*?</m:argPr>)*" +
+    "<m:e>([\\s\\S]*)</m:e>" +
+    "<m:lim>(?:<m:argPr>[\\s\\S]*?</m:argPr>)*" +
+    "<m:r>(?:<m:rPr>[\\s\\S]*?</m:rPr>)?<m:t[^>]*>([\\s\\S])</m:t></m:r></m:lim>$"
 );
+
+/**
+ * Rewrite every `<tag>…</tag>` element in `xml`, innermost first.
+ *
+ * Finds each element's TRUE closing tag by depth-counting rather than by a
+ * non-greedy regex, so a match can never span out of one element and into
+ * another — the flaw that made downloaded papers unopenable. `transform`
+ * receives the element's content (already rewritten) and returns replacement
+ * markup, or null to leave the element as-is.
+ *
+ * Unbalanced input is left untouched from the first unclosed tag onward, so
+ * this can only ever preserve or improve well-formedness. Pure.
+ */
+function rewriteElements(
+  xml: string,
+  tag: string,
+  transform: (inner: string) => string | null
+): string {
+  const openRe = new RegExp(`<${tag}(?:\\s[^>]*)?>`, "g");
+  const anyRe = new RegExp(`<(/?)${tag}(?:\\s[^>]*)?>`, "g");
+  let out = "";
+  let pos = 0;
+  let open: RegExpExecArray | null;
+  while ((open = openRe.exec(xml))) {
+    const contentStart = open.index + open[0].length;
+    anyRe.lastIndex = contentStart;
+    let depth = 1;
+    let contentEnd = -1;
+    let elementEnd = -1;
+    let step: RegExpExecArray | null;
+    while ((step = anyRe.exec(xml))) {
+      if (step[1] === "/") {
+        if (--depth === 0) {
+          contentEnd = step.index;
+          elementEnd = step.index + step[0].length;
+          break;
+        }
+      } else depth++;
+    }
+    if (contentEnd < 0) break; // unclosed — emit the remainder verbatim
+    // Recurse first so nested accents (\bar{\bar{B}}, \overline{\overline{A}})
+    // are already converted when the outer element is considered.
+    const inner = rewriteElements(
+      xml.slice(contentStart, contentEnd),
+      tag,
+      transform
+    );
+    out +=
+      xml.slice(pos, open.index) +
+      (transform(inner) ?? `${open[0]}${inner}</${tag}>`);
+    pos = elementEnd;
+    openRe.lastIndex = elementEnd;
+  }
+  return out + xml.slice(pos);
+}
 
 // \overline in math mode maps to a <m:borderBox> with bottom+left+right hidden
 // (a top-only border) that does NOT render under our injected math defaults.
@@ -140,21 +239,25 @@ const LIMUPP_ACCENT_RE = new RegExp(
 // \underline text bypass (native <w:u>) already covers the common case, and the
 // borderBox fallback for rare bare-\underline shapes is intentionally preserved
 // (see tests/underline-roundtrip.test.ts).
-const BORDERBOX_RE = new RegExp(
-  "<m:borderBox><m:borderBoxPr>([\\s\\S]*?)</m:borderBoxPr><m:e>([\\s\\S]*?)</m:e></m:borderBox>",
-  "g"
+const BORDERBOX_INNER_RE = new RegExp(
+  "^<m:borderBoxPr>([\\s\\S]*?)</m:borderBoxPr><m:e>([\\s\\S]*)</m:e>$"
 );
 
 export function wrapAccents(omml: string): string {
-  let out = omml.replace(LIMUPP_ACCENT_RE, (whole, base, chr) => {
-    const combining = ACCENT_COMBINING[chr];
-    if (!combining) return whole; // not an accent (real limit) — leave alone
+  let out = rewriteElements(omml, "m:limUpp", (inner) => {
+    const match = LIMUPP_ACCENT_INNER_RE.exec(inner);
+    if (!match) return null; // not the accent shape — leave alone
+    const combining = ACCENT_COMBINING[match[2]];
+    if (!combining) return null; // a real limit (\lim, \overset) — leave alone
     return (
       `<m:acc><m:accPr><m:chr m:val="${combining}"/><m:ctrlPr/></m:accPr>` +
-      `<m:e>${base}</m:e></m:acc>`
+      `<m:e>${match[1]}</m:e></m:acc>`
     );
   });
-  out = out.replace(BORDERBOX_RE, (whole, pr, base) => {
+  out = rewriteElements(out, "m:borderBox", (inner) => {
+    const match = BORDERBOX_INNER_RE.exec(inner);
+    if (!match) return null;
+    const [, pr, base] = match;
     const hideTop = pr.includes("m:hideTop");
     const hideBot = pr.includes("m:hideBot");
     const hideLeft = pr.includes("m:hideLeft");
@@ -163,9 +266,43 @@ export function wrapAccents(omml: string): string {
     if (hideBot && hideLeft && hideRight && !hideTop)
       return `<m:bar><m:barPr><m:pos m:val="top"/><m:ctrlPr/></m:barPr><m:e>${base}</m:e></m:bar>`;
     // underline (bottom-only) and any other box are LEFT alone — see note above.
-    return whole;
+    return null;
   });
   return out;
+}
+
+/**
+ * Element-nesting check over an OMML fragment. Returns a human-readable
+ * description of the first structural fault, or null when every tag is
+ * properly closed in order.
+ *
+ * This exists because malformed OMML is not a cosmetic problem: Word validates
+ * word/document.xml strictly and refuses to open the file AT ALL, so one bad
+ * math zone corrupts an entire question paper. Cheap enough to run on every
+ * conversion (see the guard in latexToOmml).
+ *
+ * Deliberately structural-only — it checks tag pairing, not schema validity.
+ * Self-closing tags and attributes are skipped; `<m:t>` bodies have already had
+ * their `<`/`>` escaped by sanitizeOmmlForXml, so text can't be mistaken for
+ * markup. Pure.
+ */
+export function ommlNestingError(xml: string): string | null {
+  const stack: string[] = [];
+  const tag = /<(\/?)([A-Za-z_][\w:.-]*)([^>]*?)(\/?)>/g;
+  let m: RegExpExecArray | null;
+  while ((m = tag.exec(xml))) {
+    const [, closing, name, attrs, selfClosing] = m;
+    if (selfClosing === "/" || attrs.endsWith("/")) continue;
+    if (closing === "/") {
+      const open = stack.pop();
+      if (open !== name) {
+        return `</${name}> closes <${open ?? "nothing"}>`;
+      }
+    } else {
+      stack.push(name);
+    }
+  }
+  return stack.length ? `unclosed <${stack.join(">, <")}>` : null;
 }
 
 function escapeXmlText(s: string): string {

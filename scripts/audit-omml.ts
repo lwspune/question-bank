@@ -39,6 +39,8 @@ type Finding = {
   visibility: string;
   field: string;
   latex: string;
+  reason: "unconvertible" | "malformed";
+  detail?: string;
 };
 
 // Cache findOmmlFailures per distinct field string — options and set-shared
@@ -108,6 +110,8 @@ async function main() {
             visibility: r.visibility,
             field,
             latex: fail.latex,
+            reason: fail.reason,
+            detail: fail.detail,
           });
           byVisibility[r.visibility] = (byVisibility[r.visibility] ?? 0) + 1;
         }
@@ -149,6 +153,21 @@ async function main() {
   lines.push(`Failing math zones (raw): ${findings.length}`);
   lines.push(`Affected questions (distinct): ${affectedRows.size}`);
   lines.push(`Failing zones by visibility: ${JSON.stringify(byVisibility)}`);
+  const malformed = findings.filter((f) => f.reason === "malformed");
+  lines.push(``);
+  // A "malformed" hit is categorically different from an unsupported construct:
+  // the converter produced structurally invalid OMML. The well-formedness guard
+  // in latexToOmml keeps it out of the .docx (it degrades to Unicode instead of
+  // making Word refuse the whole file), but it is a BUG to fix, not to accept.
+  if (malformed.length) {
+    lines.push(
+      `> **${malformed.length} MALFORMED-OMML zone(s) — converter/rewriter bug, fix rather than accept.**`
+    );
+    for (const f of malformed)
+      lines.push(`> - ${f.detail} :: \`${f.latex.slice(0, 70)}\`  {${f.id}}`);
+  } else {
+    lines.push(`Malformed-OMML zones: 0 (all failures are unsupported constructs).`);
+  }
   lines.push(``);
   lines.push(`## Findings by source file`);
   const bySource: Record<string, Finding[]> = {};
@@ -158,7 +177,7 @@ async function main() {
     lines.push(`### ${src}  (${fs.length})`);
     for (const f of fs)
       lines.push(
-        `- [${f.visibility}] Q${f.qnum ?? "?"} ${f.field} :: \`${f.latex.slice(0, 80)}\`  {${f.id}}`
+        `- [${f.visibility}] Q${f.qnum ?? "?"} ${f.field} (${f.reason}) :: \`${f.latex.slice(0, 80)}\`  {${f.id}}`
       );
   }
 
