@@ -1,0 +1,203 @@
+[
+  {
+    "number": 41,
+    "answer": "D",
+    "working": "As x->0, 1/x -> +-infinity and sin(1/x) oscillates through [-1,1] infinitely often, taking every value in [-1,1] in any neighbourhood of 0, so no single limiting value exists.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 42,
+    "answer": "B",
+    "working": "0/0 form since 4^(3/2)=8. Use lim (x^n - a^n)/(x-a) = n*a^(n-1) with n=3/2, a=4: (3/2)*4^(1/2) = (3/2)*2 = 3.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 43,
+    "answer": "D",
+    "working": "As printed the denominator is e^(1/x + 1), so the ratio is identically e^(1/x - 1/x - 1) = e^(-1) for every x != 0. Hence the limit at x=4 is 1/e ~ 0.368, which is neither 0 nor 1 and does exist -> None of these.",
+    "confidence": "medium",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "POSSIBLE SOURCE DEFECT / mismatched option set. Read literally the answer is 1/e = option D, and the question is trivial (the x->4 is irrelevant since the ratio is the constant 1/e). But the option set {0, 1, Does not exist} is exactly the designed option set for the classic textbook limit lim(x->0) e^(1/x)/(e^(1/x)+1), where the right-hand limit is 1, the left-hand limit is 0, and the answer is therefore C (does not exist). If the paper's key says C, the stem is corrupted (limit point 0 printed as 4 AND the '+1' pulled inside the exponent), not the key. Recommend a source check of this stem before trusting either letter.",
+    "flag": true
+  },
+  {
+    "number": 44,
+    "answer": "D",
+    "working": "ln(cos x) = ln(1 - x^2/2 + ...) = -x^2/2 + O(x^4), so the ratio -> -1/2. (Equivalently two applications of L'Hopital: -tan x/(2x) -> -1/2.)",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "Minor OCR: 'In (cos x)' is ln(cos x). Not ambiguous."
+  },
+  {
+    "number": 45,
+    "answer": "B",
+    "working": "For x != 1, (x^2-1)/(x-1) = x+1, so lim(x->1) f(x) = 2. Continuity at x=1 requires k = f(1) = 2.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "working": "(1/x)sin(x^2) = x * (sin x^2)/x^2 -> 0 * 1 = 0 from both sides, and f(0) = 0, so f is continuous at x = 0. Hence (A) and (B) are false and (C) is true.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": "Option (A) is garbled in the source ('= \\neq 0'); read as 'lim(x->0+) f(x) != 0'. Either reading of (A) is false, so the answer is unaffected."
+  },
+  {
+    "number": 47,
+    "answer": "A",
+    "working": "dy/dtheta = 4a sin^3 t cos t, dx/dtheta = -4a cos^3 t sin t, so dy/dx = -sin^2/cos^2 = -tan^2 theta. At theta = 3pi/4, tan theta = -1, so dy/dx = -1 (and dx/dtheta != 0 there).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 48,
+    "answer": "C",
+    "working": "Put x = tan t: (1-x^2)/(1+x^2) = cos 2t, so y = sin^-1(cos 2t) = pi/2 - 2 tan^-1 x for x > 0 (dy/dx = -2/(1+x^2)) and y = pi/2 + 2 tan^-1 x for x < 0 (dy/dx = +2/(1+x^2)). Verified numerically: slope ~ -0.587 near x = 1.55 and ~ +0.587 near x = -1.55, matching 2/(1+x^2) = 0.588. Sign depends on sign of x, so +-2/(1+x^2).",
+    "confidence": "medium",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": "Options C and D are both 'partly right': D (-2/(1+x^2)) is correct only for x > 0, while C (+-2/(1+x^2)) covers both branches and is the standard textbook answer. If the key says D, it has silently assumed x > 0 rather than being wrong outright; C is the more complete answer. Not a duplicate-option defect."
+  },
+  {
+    "number": 49,
+    "answer": "C",
+    "working": "Put t = sqrt(x), dx = 2t dt, so dx/sqrt(x) = 2 dt. Integral becomes 2 * integral tan^4 t sec^2 t dt = 2 tan^5 t / 5 = (2/5) tan^5(sqrt x) + c.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 50,
+    "answer": "A",
+    "working": "integral e^x sin x dx = (e^x/2)(sin x - cos x) + c; check: d/dx[(e^x/2)(sin x - cos x)] = (e^x/2)[(sin x - cos x) + (cos x + sin x)] = e^x sin x. So a = sin x - cos x.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 51,
+    "answer": "B",
+    "working": "y ln x = x ln y => y' ln x + y/x = ln y + x y'/y => y' = (ln y - y/x)/(ln x - x/y) = y(x ln y - y)/(x(y ln x - x)). Checked on the non-degenerate solution point (x,y) = (2,4) [2^4 = 4^2]: formula gives -3.177 and direct implicit differentiation gives -3.178, while option A gives +2.838. (x=y=2 makes A and B coincide at 1, so that test alone is not decisive.)",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 52,
+    "answer": "C",
+    "working": "d(e^(x^3))/d(log x) = [d/dx e^(x^3)] / [d/dx log x] = 3x^2 e^(x^3) / (1/x) = 3x^3 e^(x^3).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": "Assumes log = natural log (the usual convention here); with log base 10 an extra ln 10 factor would appear and no option would match, so natural log is clearly intended."
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "working": "y = a sin^3 t, x = a cos^3 t => dy/dx = -tan t. d2y/dx2 = (d/dt(-tan t))/(dx/dt) = (-sec^2 t)/(-3a cos^2 t sin t) = 1/(3a cos^4 t sin t). At t = pi/4: cos^4 = 1/4, sin = 1/sqrt2, giving 1/(3a * (1/4) * (1/sqrt2)) = 4 sqrt2/(3a).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "working": "f(x) = log x, so f(sin x) = log(sin x) and d/dx log(sin x) = cos x/sin x = cot x.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "notes": "Option (C) f(cos x) = log(cos x) is a distractor, not equal to cot x."
+  },
+  {
+    "number": 55,
+    "answer": "A",
+    "working": "(x^2+1)/(x+1)^2 = (x^2-1+2)/(x+1)^2 = (x-1)/(x+1) + 2/(x+1)^2 = f + f' with f = (x-1)/(x+1). So integral e^x(f+f') dx = e^x f = e^x (x-1)/(x+1) + c. Verified by differentiating A back to e^x(x^2+1)/(x+1)^2.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 56,
+    "answer": "A",
+    "working": "x^4+1 = (x^2-1)(x^2+1) + 2, so the integrand = x^2 - 1 + 2/(x^2+1). Integral from 0 to 1 = [x^3/3 - x + 2 arctan x] = 1/3 - 1 + pi/2 = pi/2 - 2/3 = (3pi - 4)/6 = 0.9041.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 57,
+    "answer": "D",
+    "working": "Slope of normal = tan(3pi/4) = -1. Tangent slope = -1/(normal slope) = -1/(-1) = 1, so f'(3) = 1.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 58,
+    "answer": "A",
+    "working": "Taking the curve as y^2 = p x^3 + q: (2,3) on it gives 9 = 8p + q; differentiating 2y y' = 3p x^2 gives y' = 3p*4/(2*3) = 2p, and the tangent slope is 4, so p = 2 and q = 9 - 16 = -7. (2,3) also lies on y = 4x-5. -> p=2, q=-7.",
+    "confidence": "medium",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage: the stem prints 'y^2 = px^3 q' with the operator between px^3 and q missing. I ruled out multiplication (y^2 = p x^3 q forces 2pq = 4 and 8pq = 9 simultaneously, i.e. 16 = 9 - impossible), so it is + or -. With '+' the answer is p=2, q=-7 (option A); with '-' it is p=2, q=7 (option D) - both appear as options, so the missing character decides the letter. I chose '+' because this is the canonical NCERT Class 12 Ex 6.3 problem ('y = 4x-5 is tangent to y^2 = ax^3 + b at (2,3)', answer a=2, b=-7). Worth a source check; if the printed operator is '-' the key should be D."
+  },
+  {
+    "number": 59,
+    "answer": "C",
+    "working": "sec^-1(u) needs |u| >= 1, but |2x/(1+x^2)| >= 1 requires x^2 - 2|x| + 1 <= 0 i.e. (|x|-1)^2 <= 0, so only x = +-1. At x = -1 the second term sin^-1((x-1)/(x+1)) is undefined (division by zero). So the domain of y is the single point {1}; a derivative cannot exist at an isolated point.",
+    "confidence": "medium",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "HARD",
+    "notes": "Domain-trap question; the offered option 'Does not exist' matches the singleton-domain reading, which supports C. Caveat for the reviewer: the well-known sibling problem is y = sec^-1((x+1)/(x-1)) + sin^-1((x-1)/(x+1)), which is the constant pi/2 with dy/dx = 0 -> that would make the answer D (none of these). If the key is D, check whether the printed first argument is (x+1)/(x-1) rather than 2x/(1+x^2)."
+  },
+  {
+    "number": 60,
+    "answer": "D",
+    "working": "f'(x) = 6x^2 - 6x + 90 = 6(x^2 - x + 15); discriminant = 1 - 60 = -59 < 0 with positive leading coefficient, so f'(x) > 0 for all real x and f is increasing on (-inf, inf).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "Option C's 59/4 is a distractor built from the discriminant (-59); it is not an interval of increase."
+  }
+]

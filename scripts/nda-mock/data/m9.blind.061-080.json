@@ -1,0 +1,185 @@
+[
+  {
+    "number": 61,
+    "answer": "D",
+    "working": "Put \\(p = dy/dx\\). Then \\(\\sqrt{p} = 4p + 7x\\); squaring gives \\(p = (4p+7x)^2 = 16p^2 + 56px + 49x^2\\), a rational-integral equation in \\(p\\). Highest derivative is the first, so order 1; the highest power of \\(dy/dx\\) after rationalising radicals is 2, so degree 2.",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 62,
+    "answer": "A",
+    "working": "Only \\(c\\) is arbitrary (\\(m\\) is a fixed given constant), so one differentiation eliminates the single parameter: \\(dy/dx = m\\). Numeric check: \\(y = 3x + c\\) has \\(y' = 3 = m\\) for every \\(c\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 63,
+    "answer": "B",
+    "working": "\\(y = e^{x}(A\\cos x + B\\sin x)\\) is the general solution of a linear ODE with roots \\(1 \\pm i\\), i.e. \\((D-1)^2 + 1 = 0 \\Rightarrow D^2 - 2D + 2 = 0\\), so \\(y'' - 2y' + 2y = 0\\), i.e. \\(y'' = 2y' - 2y\\). Numeric check with \\(A=1, B=0\\): \\(y = e^x\\cos x\\), \\(y' = e^x(\\cos x - \\sin x)\\), \\(y'' = -2e^x\\sin x\\); then \\(2y' - 2y = -2e^x\\sin x = y''\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "working": "Separating, \\(\\mathrm{cosec}^2 y\\,dy = -dx\\), so \\(-\\cot y = -x + c_1\\), i.e. \\(x = \\cot y + c\\). Verification by implicit differentiation of (C): \\(1 = -\\mathrm{cosec}^2 y \\cdot dy/dx \\Rightarrow dy/dx = -\\sin^2 y\\), so \\(dy/dx + \\sin^2 y = 0\\) exactly.",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 65,
+    "answer": "C",
+    "working": "\\(dy/dx = y(x+1)/[x(y+1)]\\) separates as \\(\\frac{y+1}{y}dy = \\frac{x+1}{x}dx\\), giving \\(y + \\ln y = x + \\ln x + c\\), so \\(\\ln(y/x) = x - y + c\\) and \\(y = A x e^{x-y}\\). Check: implicitly differentiating \\(\\ln y - \\ln x = x - y + c\\) gives \\(y'/y - 1/x = 1 - y'\\), so \\(y'(1+y)/y = (x+1)/x\\), i.e. \\(y' = y(x+1)/[x(y+1)]\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 66,
+    "answer": "B",
+    "working": "Separating, \\(\\tan y\\,dy = \\cot x\\,dx\\), so \\(-\\ln|\\cos y| = \\ln|\\sin x| + c_1\\), giving \\(\\sin x \\cos y = c\\), i.e. \\(\\sin x = c\\sec y\\). Check: differentiating \\(\\sin x = c\\sec y\\) gives \\(\\cos x = c\\sec y\\tan y\\cdot y'\\); since \\(c\\sec y = \\sin x\\), \\(y' = \\cos x/(\\sin x\\tan y) = \\cot x\\cot y\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 67,
+    "answer": "A",
+    "working": "\\(\\sin^{-1}x + \\cos^{-1}x = \\pi/2\\) for all \\(x \\in [-1,1]\\), so \\(\\cos^{-1}x = \\pi/2 - \\pi/5 = 5\\pi/10 - 2\\pi/10 = 3\\pi/10\\).",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Identities, Properties, and Sum-Difference Formulas",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 68,
+    "answer": "C",
+    "working": "Let \\(\\theta = \\sin^{-1}x \\in [-\\pi/2, \\pi/2]\\). \\(\\tan^2\\theta > 1 \\iff |\\tan\\theta| > 1 \\iff \\theta \\in (-\\pi/2, -\\pi/4) \\cup (\\pi/4, \\pi/2)\\) (the endpoints \\(\\pm\\pi/2\\) are excluded because \\(\\tan\\) is undefined there, and \\(\\pm\\pi/4\\) give \\(\\tan^2 = 1\\), not \\(>1\\)). Since \\(\\sin\\) is increasing, \\(x \\in (-1, -1/\\sqrt{2}) \\cup (1/\\sqrt{2}, 1) = (-1,1) - [-1/\\sqrt2, 1/\\sqrt2]\\). Check \\(x = 0.9\\): \\(\\theta \\approx 1.1198\\), \\(\\tan^2\\theta \\approx 4.26 > 1\\) ✓; \\(x = 1/\\sqrt2\\) gives exactly 1, excluded ✓.",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Solving Inverse Trigonometric Equations and Geometric Applications",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (D) \\([-1,1] - (-1/\\sqrt2, 1/\\sqrt2)\\) is the deliberate near-miss: it keeps \\(x = \\pm 1\\) (where \\(\\tan(\\sin^{-1}x) = \\tan(\\pm\\pi/2)\\) is undefined) and \\(x = \\pm 1/\\sqrt2\\) (where \\(\\tan^2 = 1\\), not \\(> 1\\)). (C) is the strictly correct set."
+  },
+  {
+    "number": 69,
+    "answer": "D",
+    "working": "By the sine rule \\(a = k\\sin A\\), \\(b = k\\sin B\\), \\(c = k\\sin C\\). The given equalities become \\(\\tan A = \\tan B = \\tan C\\); since all angles lie in \\((0,\\pi)\\) where \\(\\tan\\) is injective on each branch and \\(A+B+C = \\pi\\), we get \\(A = B = C = 60^\\circ\\). Hence equilateral. Check: for \\(a=b=c\\) and \\(A=B=C=60^\\circ\\), \\(a/\\cos A = a/0.5\\) is common ✓.",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 70,
+    "answer": "A",
+    "working": "LHS \\(\\sin(e^x) \\le 1\\) always. RHS \\(5^x + 5^{-x} \\ge 2\\) by AM-GM, with equality only at \\(x = 0\\), where RHS \\(= 2 > 1 \\ge\\) LHS. So the ranges never overlap and there is no real solution.",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 71,
+    "answer": "B",
+    "working": "Observer's eye is at height 30 m, the same level as the flag top; let \\(d\\) be the horizontal distance. Depression angles: to the flag foot (building top, 25 m) \\(\\alpha\\) with \\(\\tan\\alpha = 5/d\\); to the building foot (0 m) \\(\\beta\\) with \\(\\tan\\beta = 30/d\\). Flag subtends \\(\\alpha\\), building subtends \\(\\beta - \\alpha\\); equating gives \\(\\beta = 2\\alpha\\). So \\(30/d = \\frac{2(5/d)}{1 - 25/d^2} = \\frac{10d}{d^2-25}\\), hence \\(30(d^2-25) = 10d^2 \\Rightarrow 20d^2 = 750 \\Rightarrow d^2 = 37.5 = 75/2\\), \\(d = 5\\sqrt{3/2}\\). Because the flag top is level with the observer, the distance to it equals \\(d\\). Check: \\(d = 6.1237\\), \\(\\alpha = \\arctan(0.8165) = 39.232^\\circ\\), \\(\\beta = \\arctan(4.899) = 78.463^\\circ = 2\\alpha\\) ✓.",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "HARD",
+    "confidence": "high",
+    "notes": "The stem sentence \"At an observer at a height of 30m.\" is garbled — a dropped word/period; the source clearly meant \"An observer is at a height of 30 m\" (or \"At an observer at a height of 30 m the flag-staff and the building subtend equal angles\"). The mathematics is unaffected: the observer's eye is level with the flag top, which is what makes the answer the plain horizontal distance."
+  },
+  {
+    "number": 72,
+    "answer": "D",
+    "working": "\\(P(\\text{at least one head}) = 1 - P(\\text{no head}) = 1 - (1/2)^3 = 1 - 1/8 = 7/8\\).",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 73,
+    "answer": "C",
+    "working": "\"Succeeds twice as often as it fails\" gives \\(p = 2/3\\), \\(q = 1/3\\). With \\(n = 4\\): \\(P(X=3) = \\binom{4}{3}(2/3)^3(1/3) = 4\\cdot\\frac{8}{27}\\cdot\\frac13 = \\frac{32}{81}\\) and \\(P(X=4) = (2/3)^4 = \\frac{16}{81}\\), so \\(P(X \\ge 3) = \\frac{32+16}{81} = \\frac{48}{81} = \\frac{16}{27} \\approx 0.5926\\), an exact match for option (C). Exact-fraction check confirms 16/27.",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 74,
+    "answer": "D",
+    "working": "If \\(k\\) of the five coins show 3 and \\(5-k\\) show 2, the total is \\(3k + 2(5-k) = 10 + k\\). Total 12 \\(\\Rightarrow k = 2\\). Favourable outcomes \\(\\binom{5}{2} = 10\\) out of \\(2^5 = 32\\), so probability \\(= 10/32 = 5/16\\).",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 75,
+    "answer": "B",
+    "working": "\\(P(X = 6) = \\binom{10}{6}(1/2)^{10} = 210/1024 = 105/512\\).",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Minor option oddity (not affecting the answer): option (D) \\({}^{10}C_6\\) is a bare count (210) where a probability belongs, and (A) 512/513 / (C) 100/153 are numerically meaningless distractors. Only (B) is a valid probability of the right form, so this reads as sloppy distractor authoring rather than a transcription loss."
+  },
+  {
+    "number": 76,
+    "answer": "D",
+    "working": "\\(4\\binom{6}{4}p^4q^2 = \\binom{6}{2}p^2q^4\\); both binomial coefficients equal 15, so \\(4p^2 = q^2\\), i.e. \\(2p = q = 1-p\\), giving \\(3p = 1\\), \\(p = 1/3\\). Check with \\(p = 1/3, q = 2/3\\): \\(P(X=4) = 15\\cdot(1/81)(4/9) = 60/729\\), \\(P(X=2) = 15(1/9)(16/81) = 240/729 = 4 \\times 60/729\\) ✓.",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 77,
+    "answer": "C",
+    "working": "Prior: \\(P(\\text{lost heart}) = 1/4\\), \\(P(\\text{lost non-heart}) = 3/4\\). Given a heart lost, the 51 remaining hold 12 hearts: \\(P(2\\text{ hearts}) = \\binom{12}{2}/\\binom{51}{2} = 66/1275\\). Given a non-heart lost, 13 hearts remain: \\(78/1275\\). Bayes: \\(\\frac{(1/4)(66)}{(1/4)(66)+(3/4)(78)} = \\frac{66}{66+234} = \\frac{66}{300} = \\frac{11}{50}\\).",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "HARD",
+    "confidence": "high"
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "working": "\\(P(B|A) = P(A\\cap B)/P(A) = (1/4)/(1/2) = 1/2\\).",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 79,
+    "answer": "B",
+    "working": "\\(P(K) = 0.9\\), \\(P(G) = 0.1\\); \\(P(C|K) = 1\\), \\(P(C|G) = 1/4\\). Bayes: \\(P(G|C) = \\frac{0.1 \\times 0.25}{0.9 \\times 1 + 0.1 \\times 0.25} = \\frac{0.025}{0.925} = \\frac{25}{925} = \\frac{1}{37}\\).",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 80,
+    "answer": "B",
+    "working": "Transfer is white with probability 4/7, leaving bag 2 as 4W, 5B out of 9, so \\(P(\\text{black}) = 5/9\\); transfer is black with probability 3/7, leaving 3W, 6B, so \\(P(\\text{black}) = 6/9\\). Total probability \\(= \\frac{4}{7}\\cdot\\frac{5}{9} + \\frac{3}{7}\\cdot\\frac{6}{9} = \\frac{20}{63} + \\frac{18}{63} = \\frac{38}{63}\\). Note option (A) 38/65 is the same numerator over a wrong denominator (65 is not a possible denominator here, since bag 2 holds 9 balls and bag 1 holds 7).",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  }
+]

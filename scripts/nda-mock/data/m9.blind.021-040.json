@@ -1,0 +1,193 @@
+[
+  {
+    "number": 21,
+    "answer": "C",
+    "working": "Continuity at \\(x=1\\) needs LHL = RHL = f(1). LHL \\(=\\lim_{x\\to1^-}(2x+1)=3\\); RHL \\(=\\lim_{x\\to1^+}(5x-2)=3\\). Hence \\(k=f(1)=3\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 22,
+    "answer": "C",
+    "working": "At \\(x=2\\): \\(f(2)=1+2=3\\) and \\(\\lim_{x\\to2^+}(5-x)=3\\), so f is continuous. But LHD \\(=\\frac{d}{dx}(1+x)=1\\) while RHD \\(=\\frac{d}{dx}(5-x)=-1\\); the one-sided derivatives differ, so f is not differentiable at \\(x=2\\) (a corner).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 23,
+    "answer": "B",
+    "working": "\\(g(x)=f(f(x))=\\big||x-2|-2\\big|\\). For \\(x>20\\), \\(|x-2|=x-2>18\\), so \\(|x-2|-2=x-4>0\\) and the outer modulus is inactive: \\(g(x)=x-4\\). Hence \\(g'(x)=1\\). Numeric check at \\(x=21\\): \\(g=|19-2|=17=21-4\\) and \\(g(22)-g(21)=1\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "working": "Reading the expression as \\(\\log_e\\big[(ax)^x\\big]=x\\log_e(ax)\\), the product rule gives \\(\\frac{d}{dx}=\\log_e(ax)+x\\cdot\\frac{a}{ax}=\\log_e(ax)+1\\). Numeric check with \\(a=1\\): \\(\\frac{d}{dx}(x\\log x)=\\log x+1\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "The stem \\(\\log_{e}(ax)^{x}\\) is ambiguous between \\(\\log_e[(ax)^x]\\) and \\([\\log_e(ax)]^x\\). Only the first reading produces any of the four options (D), so that is clearly what was meant; the second reading yields \\((\\log(ax))^x[\\log\\log(ax)+\\frac{1}{\\log(ax)}]\\), which matches nothing."
+  },
+  {
+    "number": 25,
+    "answer": "A",
+    "working": "Take logs: \\(\\log y=\\tan x\\cdot\\log\\sin x\\). Differentiate: \\(\\frac{y'}{y}=\\sec^2x\\log\\sin x+\\tan x\\cdot\\frac{\\cos x}{\\sin x}=\\sec^2x\\log\\sin x+\\tan x\\cot x=\\sec^2x\\log\\sin x+1\\). So \\(\\frac{dy}{dx}=(\\sin x)^{\\tan x}\\big(1+\\sec^2x\\log_e\\sin x\\big)\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (C) is printed as \\((\\sin x)^{\\tan x}\\cdot\\sec^{2}x\\cdot\\log_{e}\\cdot\\sin x\\) — the stray centred dot after \\(\\log_e\\) is a legacy-equation artefact; the intended distractor is \\((\\sin x)^{\\tan x}\\sec^2x\\log_e\\sin x\\), i.e. option (A) with the \\(+1\\) dropped. Does not affect the key."
+  },
+  {
+    "number": 26,
+    "answer": "A",
+    "working": "Reciprocals of an H.P. form an A.P.: \\(A_5=45\\), \\(A_{11}=69\\). Then \\(6d=69-45=24\\Rightarrow d=4\\), and \\(A_{16}=A_5+11d=45+44=89\\). So the 16th H.P. term is \\(1/89\\).",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 27,
+    "answer": "B",
+    "working": "\\(H=\\frac{2ab}{a+b}\\). Then \\(H+a=\\frac{a(a+3b)}{a+b}\\), \\(H-a=\\frac{a(b-a)}{a+b}\\), so \\(\\frac{H+a}{H-a}=\\frac{a+3b}{b-a}\\); by symmetry \\(\\frac{H+b}{H-b}=\\frac{b+3a}{a-b}=-\\frac{b+3a}{b-a}\\). Sum \\(=\\frac{(a+3b)-(b+3a)}{b-a}=\\frac{2(b-a)}{b-a}=2\\). Numeric check \\(a=1,b=2,H=4/3\\): \\(7+(-5)=2\\).",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 28,
+    "answer": "D",
+    "working": "\\(a+(m-1)d=\\frac1n\\), \\(a+(n-1)d=\\frac1m\\). Subtracting: \\((m-n)d=\\frac1n-\\frac1m=\\frac{m-n}{mn}\\Rightarrow d=\\frac{1}{mn}\\) (valid since \\(m\\ne n\\)). Back-substituting, \\(a=\\frac1n-\\frac{m-1}{mn}=\\frac{1}{mn}\\). Hence \\(a-d=0\\). Numeric check \\(m=2,n=3\\): \\(a=d=1/6\\), \\(T_2=1/3=1/n\\), \\(T_3=1/2=1/m\\).",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 29,
+    "answer": "D",
+    "working": "The eight offsets from \\(\\alpha\\) sorted ascending are \\(-4,\\,-\\frac72,\\,-3,\\,-\\frac52,\\,-2,\\,-\\frac12,\\,\\frac12,\\,5\\). With \\(n=8\\) the median is the mean of the 4th and 5th values: \\(\\frac{-5/2+(-2)}{2}=-\\frac94\\). Median \\(=\\alpha-\\frac94\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (D) prints \\(\\propto-\\dfrac{9}{4}\\) — the proportional-to glyph \\(\\propto\\) has replaced \\(\\alpha\\), a classic legacy MS-Equation symbol-font substitution. Intended text is \\(\\alpha-\\dfrac{9}{4}\\), which is exactly the derived median, so (D) is the key."
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "working": "Total of all n observations \\(=nM\\). Removing the \\(n-4\\) whose sum is \\(a\\) leaves a sum \\(nM-a\\) over 4 observations, so their mean is \\(\\dfrac{nM-a}{4}\\). Numeric check \\(n=6,M=5\\Rightarrow\\) total 30; if the sum of 2 observations is \\(a=6\\), the other 4 sum to 24 and average 6 \\(=(30-6)/4\\).",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (C) prints \\(\\dfrac{nM-A}{2}\\) with a capital \\(A\\) where the stem defines lower-case \\(a\\) — an OCR case slip in a distractor. Harmless; the key is unaffected."
+  },
+  {
+    "number": 31,
+    "answer": "B",
+    "working": "From \\(2\\cos\\theta+\\sin\\theta=1\\), \\(\\sin\\theta=1-2\\cos\\theta\\). Substituting into \\(\\sin^2+\\cos^2=1\\): \\(\\cos^2\\theta+1-4\\cos\\theta+4\\cos^2\\theta=1\\Rightarrow 5\\cos^2\\theta-4\\cos\\theta=0\\Rightarrow\\cos\\theta=0\\) or \\(\\cos\\theta=\\frac45\\). \\(\\cos\\theta=0\\) forces \\(\\theta=\\pi/2\\), excluded, so \\(\\cos\\theta=\\frac45,\\ \\sin\\theta=-\\frac35\\) (check: \\(8/5-3/5=1\\) ✓). Then \\(7\\cos\\theta+6\\sin\\theta=\\frac{28}{5}-\\frac{18}{5}=2\\).",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "Simultaneous and Combined Trigonometric Systems",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "working": "A tangent perpendicular to the x-axis is vertical, i.e. \\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\to\\infty\\), needing \\(dx/dt=0\\) with \\(dy/dt\\ne0\\). Here \\(dx/dt=2t=0\\Rightarrow t=0\\), and \\(dy/dt=2t-1=-1\\ne0\\) there, so the tangent is genuinely vertical at \\(t=0\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Option (B) \\(t=\\infty\\) is not an admissible parameter value; options (C)/(D) \\(t=\\pm1/\\sqrt3\\) are the distractors you get by mistakenly solving \\(dy/dt=0\\) on a cubic-shaped curve. None competes with (A)."
+  },
+  {
+    "number": 33,
+    "answer": "C",
+    "working": "\\(\\frac{dy}{dx}=2e^{2x}\\), so the slope at \\((0,1)\\) is 2. Tangent: \\(y-1=2(x-0)\\Rightarrow y=2x+1\\). Setting \\(y=0\\) gives \\(x=-\\tfrac12\\), i.e. the point \\(\\left(-\\tfrac12,0\\right)\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Two options are damaged: (A) reads \\((0, a)\\) where no \\(a\\) is defined anywhere in the stem — probably a mangled \\((0,1)\\) or \\((0,2)\\); (D) reads \"Non where\", evidently \"Nowhere\". Neither is the key, so the answer stands."
+  },
+  {
+    "number": 34,
+    "answer": "B",
+    "working": "With cylinder radius \\(r\\) and half-height \\(h\\), the inscribing condition is \\(r^2+h^2=R^2\\). Volume \\(V=\\pi r^2(2h)=2\\pi(R^2-h^2)h\\); \\(\\frac{dV}{dh}=2\\pi(R^2-3h^2)=0\\Rightarrow h=R/\\sqrt3\\) (and \\(V''<0\\), a maximum). Then \\(r^2=R^2-\\frac{R^2}{3}=\\frac{2R^2}{3}\\), so \\(r=\\sqrt{\\tfrac23}\\,R\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 35,
+    "answer": "A",
+    "working": "\\(f'(x)=12x^3-24x^2+24x-48=12(x-2)(x^2+2)\\), so the only real critical point is \\(x=2\\) (a minimum, since \\(x^2+2>0\\) makes \\(f'\\) change sign \\(-\\to+\\) at 2). Values: \\(f(1)=-16\\), \\(f(2)=3\\cdot16-8\\cdot8+12\\cdot4-96+25=-39\\), \\(f(3)=243-216+108-144+25=16\\). On \\([1,3]\\) the maximum is 16 and the minimum \\(-39\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "confidence": "medium",
+    "notes": "DAMAGED STEM — the interval is missing: the stem ends \"in the interval\" with nothing after it. The option set identifies it: \\(16\\) and \\(-39\\) are exactly \\(f(3)\\) and \\(f(2)\\), and the distractor \\(-16\\) in option (B) is exactly \\(f(1)\\), so the dropped interval is almost certainly \\([1,3]\\), giving (A). Caveat: the widely-anthologised NCERT version of this function uses \\([0,3]\\), where \\(f(0)=25>16\\) so the true pair is \\(25,-39\\) and the correct choice would be (D) None of these. Recommend restoring the printed interval from the source page before publishing; if it reads \\([0,3]\\), the key is (D), not (A)."
+  },
+  {
+    "number": 36,
+    "answer": "A",
+    "working": "\\(f(x)=5^{-x}\\), so \\(f'(x)=-5^{-x}\\log_e 5<0\\) for every real \\(x\\) (since \\(5^{-x}>0\\)). Hence f is decreasing everywhere. Numeric check: \\(f(0)=1>f(1)=0.2>f(2)=0.04\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Minor wording slip only: \"For the every value of x\" — the stray \"the\" is a transcription/print artefact, meaning is unaffected."
+  },
+  {
+    "number": 37,
+    "answer": "A",
+    "working": "\\(V=\\tfrac43\\pi r^3\\Rightarrow \\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}\\). At \\(r=15\\): \\(30=4\\pi(225)\\frac{dr}{dt}=900\\pi\\frac{dr}{dt}\\), so \\(\\frac{dr}{dt}=\\frac{30}{900\\pi}=\\frac{1}{30\\pi}\\) ft/min.",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Classification caveat, not a source defect: this is a related-rates problem and the live taxonomy has no \"Rate of Change\" subtopic under Application of Derivatives. \"Tangents and Slopes\" is the closest existing slot (derivative read as a rate); a reviewer may prefer to add or reassign."
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "working": "f is continuous on \\([0,\\pi/2]\\) and differentiable inside, so MVT gives \\(f'(c)=\\frac{f(\\pi/2)-f(0)}{\\pi/2-0}=\\frac{0-1}{\\pi/2}=-\\frac{2}{\\pi}\\). Since \\(f'(x)=-\\sin x\\), \\(-\\sin c=-\\frac2\\pi\\Rightarrow \\sin c=\\frac2\\pi\\Rightarrow c=\\sin^{-1}\\!\\left(\\frac2\\pi\\right)\\), which lies in \\((0,\\pi/2)\\) because \\(2/\\pi\\approx0.6366\\in(0,1)\\). (Note \\(\\cos^{-1}(2/\\pi)\\approx0.881\\) has \\(f'=-\\sin(0.881)=-0.771\\ne-0.637\\), so (D) fails.)",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Classification caveat, not a source defect: the taxonomy has no Rolle's/Mean-Value-Theorem subtopic. Filed under \"Tangents and Slopes\" since MVT asserts a tangent parallel to the chord; a reviewer may prefer \"Monotonicity, Extrema, and Critical Points\"."
+  },
+  {
+    "number": 39,
+    "answer": "B",
+    "working": "Substituting \\((3,2)\\) into \\(y^2=4ax\\): \\(4=12a\\Rightarrow a=\\tfrac13\\). Length of latus rectum \\(=4a=\\tfrac43\\).",
+    "chapter": "Conics",
+    "subtopic": "Parabola — Equation, Properties, and Latus Rectum",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "working": "\\(AA'\\) is the major axis, of length \\(2a\\), lying on the x-axis. Taking it as the base, the height of \\(\\triangle APA'\\) is \\(|y_P|\\), so area \\(=\\tfrac12(2a)|y_P|=a|y_P|\\). For \\(P\\) on the ellipse \\(|y_P|\\le b\\), attained at \\(P=(0,\\pm b)\\); hence the maximum area is \\(ab\\).",
+    "chapter": "Conics",
+    "subtopic": "Ellipse — Foci, Eccentricity, and Focal Distances",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Classification caveat only: the taxonomy's single ellipse subtopic is foci/eccentricity-flavoured, whereas this is an ellipse-geometry/area maximisation item; it is nonetheless the closest existing name."
+  }
+]

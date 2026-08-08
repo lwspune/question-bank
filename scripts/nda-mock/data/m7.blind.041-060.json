@@ -1,0 +1,202 @@
+[
+  {
+    "number": 41,
+    "answer": "A",
+    "working": "183! contains factors 2 and 5 many times over, so its unit digit is 0. Unit digits of \\(3^k\\) cycle 3,9,7,1 with period 4; \\(183 = 4\\cdot45+3\\) so \\(3^{183}\\) ends in 7. Sum ends in 0+7 = 7.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Remainders and Divisibility via Binomial Expansion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 42,
+    "answer": "A",
+    "working": "\\(3^{2n+2}-8n-9 = 9^{n+1}-8n-9 = (1+8)^{n+1}-8n-9 = [1+8(n+1)+\\binom{n+1}{2}8^2+\\dots]-8n-9 = 64\\cdot(\\text{integer})\\). So it is always divisible by 64, hence by 16. n=1 gives 64, which is not divisible by 128 or 256.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Remainders and Divisibility via Binomial Expansion",
+    "difficulty": "MODERATE",
+    "notes": "The true universal divisor is 64, which is not an option; 16 is the only option that always divides. n=1 (value 64) rules out 128 and 256."
+  },
+  {
+    "number": 43,
+    "answer": "A",
+    "working": "The (3,1) entry must be 0 (OCR '6'), giving the tridiagonal determinant \\(C(C^2-1)-1(C)=C^3-2C\\). With \\(C=2\\cos\\theta\\): \\(8\\cos^3\\theta-4\\cos\\theta = 2(\\cos3\\theta+\\cos\\theta)=4\\cos2\\theta\\cos\\theta = \\sin4\\theta/\\sin\\theta\\).",
+    "confidence": "medium",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage: the (3,1) entry is printed as 6 but must be 0. Read literally the determinant is \\(C^3-2C+6 = 8\\cos^3\\theta-4\\cos\\theta+6\\), which matches no option (would force D). Verified A numerically at theta=pi/4 (both sides 0) and at theta=pi/3 (both 4*cos(2pi/3)*cos(pi/3) = -1 and sin(4pi/3)/sin(pi/3) = -1); B and C both fail there."
+  },
+  {
+    "number": 44,
+    "answer": "A",
+    "working": "With \\(p=\\log_a b,\\ q=\\log_a c\\) the diagonal is \\(\\log_a1=\\log_b1=\\log_c1=0\\) and the matrix is \\([[0,p,q],[-p,0,-q],[-q,q,0]]\\) — skew-symmetric of odd order 3, so the determinant is 0. Direct expansion also gives \\(pq^2-pq^2=0\\).",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": "Option list is OCR-damaged — a fifth choice is spliced onto (D): '1 (e) log_a(a+b+c)'. Answer A is unaffected."
+  },
+  {
+    "number": 45,
+    "answer": "B",
+    "working": "Sum \\(= {}^{14}C_4 + {}^{17}C_3+{}^{16}C_3+{}^{15}C_3+{}^{14}C_3\\). Telescoping with \\({}^nC_r+{}^nC_{r-1}={}^{n+1}C_r\\): \\({}^{14}C_4+{}^{14}C_3={}^{15}C_4\\), \\(+{}^{15}C_3={}^{16}C_4\\), \\(+{}^{16}C_3={}^{17}C_4\\), \\(+{}^{17}C_3={}^{18}C_4\\).",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Factorials and Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "working": "\\(2x+3y=5 \\Rightarrow y=-\\tfrac23 x+\\tfrac53\\), so parallelism fixes only the slope: \\(m=-2/3\\) with \\(c\\) arbitrary real.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Angle Between Lines, Parallelism, and Perpendicularity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 47,
+    "answer": "A",
+    "working": "\\(3x+4(mx+1)=9 \\Rightarrow x=5/(3+4m)\\). For integer x, \\(3+4m\\) must divide 5, i.e. be \\(\\pm1,\\pm5\\): \\(3+4m=-1\\Rightarrow m=-1\\) (x=-5) and \\(3+4m=-5\\Rightarrow m=-2\\) (x=-1); \\(\\pm1,5\\) give non-integer m. So 2 values.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Equation, Slope, and Family of Lines",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 48,
+    "answer": "B",
+    "working": "The common point of \\(x\\cos\\alpha+y\\sin\\alpha=p\\) and \\(x\\sin\\alpha-y\\cos\\alpha=0\\) is \\((p\\cos\\alpha,p\\sin\\alpha)\\); substituting in \\(ax+by+p=0\\) gives \\(a\\cos\\alpha+b\\sin\\alpha=-1\\). The angle condition gives \\(\\cos\\tfrac\\pi4=|a\\cos\\alpha+b\\sin\\alpha|/\\sqrt{a^2+b^2}=1/\\sqrt{a^2+b^2}\\), so \\(a^2+b^2=2\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Angle Between Lines, Parallelism, and Perpendicularity",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 49,
+    "answer": "B",
+    "working": "\\(P=\\big(\\tfrac{3\\cdot1+2\\cdot2\\cos\\theta}{5},\\tfrac{2\\cdot2\\sin\\theta}{5}\\big)=\\big(\\tfrac{3+4\\cos\\theta}{5},\\tfrac{4\\sin\\theta}{5}\\big)\\). Eliminating theta: \\((5x-3)^2+(5y)^2=16\\), a circle centred (3/5,0) radius 4/5.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 50,
+    "answer": "B",
+    "working": "Intercepts are (a,0) and (0,b) with the right angle at the origin, so area \\(=\\tfrac12|a||b|=ab/2\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 51,
+    "answer": "A",
+    "working": "From vertex A(1,1): \\(B=2(-1,2)-(1,1)=(-3,3)\\), \\(C=2(3,2)-(1,1)=(5,3)\\). Centroid \\(=((1-3+5)/3,(1+3+3)/3)=(1,7/3)\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 52,
+    "answer": "C",
+    "working": "AC is the x-axis, so the altitude from B(3,4) is x=3. BC has slope \\(-4\\), so the altitude from A(0,0) is \\(y=x/4\\); at x=3, y=3/4. Orthocentre \\((3,3/4)\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "working": "Setting the area determinant to zero: \\(4k^2-6k-(2-2k)(5)+ (4k^2+6)=8k^2+4k-4=0\\Rightarrow 2k^2+k-1=0\\Rightarrow (2k-1)(k+1)=0\\Rightarrow k=1/2,-1\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "working": "Solving \\(x^2+y^2+2gx+2fy+c=0\\) through (2,-2),(-1,-1),(5,2) gives \\(g=f=-3/2,\\ c=-8\\), i.e. \\(x^2+y^2-3x-3y-8=0\\); each point verifies (e.g. 25+4-15-6-8=0).",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circles Through Given Points and Concyclicity",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 55,
+    "answer": "C",
+    "working": "Centre is (3,4); a diameter must pass through it. Only \\(x+y=7\\) satisfies \\(3+4=7\\); the others give \\(-7\\ne0\\), \\(0\\ne9\\), \\(-1\\ne1\\).",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circle Equation — Centre, Radius, Diameter, and Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "working": "Need \\(2-x\\ge0\\Rightarrow x\\le2\\) and \\(9-x^2>0\\) (strict, denominator) \\(\\Rightarrow -3<x<3\\). Intersection \\((-3,2]\\).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "working": "\\(x^2-6x+7=(x-3)^2-2\\ge-2\\), attained at x=3, so range \\([-2,\\infty)\\).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 58,
+    "answer": "C",
+    "working": "\\(\\phi(\\psi(x))=(3^x)^2+1=3^{2x}+1\\); \\(\\psi(\\phi(x))=3^{x^2+1}\\).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 59,
+    "answer": "B",
+    "working": "\\(e^{-x}=1/(y+\\sqrt{1+y^2})=\\sqrt{1+y^2}-y\\); subtracting, \\(e^x-e^{-x}=2y\\Rightarrow y=(e^x-e^{-x})/2\\).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 60,
+    "answer": "C",
+    "working": "On (2,3), \\([x]=2\\) so \\(f(x)=x-2\\). Inverting \\(y=x-2\\) gives \\(f^{-1}(x)=x+2\\), mapping (0,1) back to (2,3).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

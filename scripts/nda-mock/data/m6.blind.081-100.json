@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "C",
+    "working": "Treat as linear in x: dx/dy + x/(1+y^2) = e^(arctan y)/(1+y^2). IF = e^(arctan y), so d/dy[x e^(arctan y)] = e^(2 arctan y)/(1+y^2); with t = arctan y the RHS integrates to e^(2t)/2, giving x e^(arctan y) = (1/2)e^(2 arctan y) + C, i.e. 2x e^(arctan y) = e^(2 arctan y) + k.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "C",
+    "working": "From x^2+y^2-2ay=0, a = (x^2+y^2)/(2y). Differentiating: 2x + 2y y' - 2a y' = 0 gives a = (x + y y')/y'. Equating: 2y(x + y y') = (x^2+y^2) y' => 2xy = (x^2 - y^2) y'.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "working": "Fixing one particular relative order (Yuvraj < Dhoni < Pathan) out of the 3! possible relative orders of three named players gives 11!/3! arrangements, so Statement I is true; Statement II (three people can be ordered in 3! ways) is the general fact that justifies it, so it is also true.",
+    "confidence": "medium",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "MODERATE",
+    "notes": "Assertion-reason shape: Statement II is stated WITHOUT the batting constraint, so it is the general (true) fact 3! that explains Statement I. A key of 'Only 1' would only be defensible if Statement II were read as being subject to the constraint (in which case they can be ordered in just 1 way) — worth a second look if the paper keys A."
+  },
+  {
+    "number": 84,
+    "answer": "B",
+    "working": "cos(A-B)=4/5 with t = tan((A-B)/2) gives (1-t^2)/(1+t^2)=4/5 => t=1/3 (A>B since a>b). Napier: 1/3 = ((6-3)/(6+3)) cot(C/2) = (1/3)cot(C/2) => cot(C/2)=1 => C/2 = pi/4 => C = pi/2.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "B",
+    "working": "With C = pi/2 from Q84, area = (1/2)ab sin C = (1/2)(6)(3)(1) = 9.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "EASY",
+    "notes": "Depends on the shared context and on Q84's C = pi/2."
+  },
+  {
+    "number": 86,
+    "answer": "A",
+    "working": "f'(x) = 1 - sin x >= 0 for all x, vanishing only at the isolated points x = pi/2 + 2n*pi, so f is increasing on all of R.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "answer": "A",
+    "working": "y = x^x (x>0): ln y = x ln x, so y'/y = 1 + ln x. Since y>0, y'>0 iff ln x > -1 iff x > 1/e.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": "D",
+    "working": "As printed f(a) = (2a^2-3) + 3(3-a) + 4 = 2a^2 - 3a + 10; minimum at a = 3/4 gives 9/8 - 9/4 + 10 = 71/8.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "The stray parentheses around (2a^2-3) look like OCR residue, but the literal reading lands exactly on the distinctive value 71/8 = option D, which confirms the transcription is faithful (a squared first bracket, for instance, gives ~9.24, matching no option)."
+  },
+  {
+    "number": 89,
+    "answer": "B",
+    "working": "f'(x) = 12x^3 - 24x^2 + 24x - 48 = 12(x-2)(x^2+2), so the only critical point in [0,3] is x=2 with f' < 0 before and > 0 after. f(2) = 48 - 64 + 48 - 96 + 25 = -39 (endpoints f(0)=25, f(3)=-56+... = 3*81-8*27+108-144+25 = 16, both larger).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "answer": "A",
+    "working": "Horizontal distance to the common vertical line: d = 300/tan 60 = 300/sqrt(3) = 100*sqrt(3). Lower plane height = d * tan 45 = 100*sqrt(3).",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "working": "sin^2(theta) = (1 - cos 2theta)/2, and cos 2theta has period pi, so the period is pi.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "D",
+    "working": "2 sin((a+b)/2) cos((a-b)/2) = -21/65 and 2 cos((a+b)/2) cos((a-b)/2) = -27/65. Squaring and adding: 4 cos^2((a-b)/2) = (441+729)/4225 = 18/65, so cos^2((a-b)/2) = 9/130. Since pi < a-b < 3pi, (a-b)/2 lies in (pi/2, 3pi/2) where cosine is negative, hence cos((a-b)/2) = -3/sqrt(130).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 93,
+    "answer": "C",
+    "working": "sin x = 1/2 - cos x squared gives 8cos^2 x - 4cos x - 3 = 0 => cos x = (1 +/- sqrt7)/4. On (0,pi) sin x > 0 forces cos x = (1-sqrt7)/4, so sin x = (1+sqrt7)/4 and tan x = (1+sqrt7)/(1-sqrt7) = -(4+sqrt7)/3.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "A",
+    "working": "cos(a+b)=4/5 with a+b in [0,pi/2] gives tan(a+b)=3/4; sin(a-b)=5/13 with a-b in [-pi/4,pi/4] gives tan(a-b)=5/12. tan 2a = tan((a+b)+(a-b)) = (3/4+5/12)/(1-15/48) = (14/12)/(33/48) = 56/33.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "D",
+    "working": "Put s = sin^2 x in [0,1]: A = s + (1-s)^2 = s^2 - s + 1, a parabola with minimum 3/4 at s=1/2 and maximum 1 at s=0 and s=1. Hence 3/4 <= A <= 1.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "working": "With t = tan A the sum is t^2/(t-1) - 1/(t(t-1)) = (t^3-1)/(t(t-1)) = (t^2+t+1)/t = tan A + cot A + 1, and tan A + cot A = 1/(sin A cos A) = sec A cosec A, so the expression is sec A cosec A + 1.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": "Option C (tan A + cot A) is the same expression short of the +1, so B is uniquely correct — no identical-option defect. Subtopic fit is imperfect: this is reciprocal/quotient-identity simplification, which none of the five Trigonometric Identities subtopics names directly."
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "working": "With p = sin^2 x cos^2 x: sin^4+cos^4 = 1-2p and sin^6+cos^6 = 1-3p, so f4 - f6 = (1-2p)/4 - (1-3p)/6 = (3-6p-2+6p)/12 = 1/12, independent of x.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "working": "Pairing gives (cos x + cos 4x) + (cos 2x + cos 3x) = 2cos(5x/2)[cos(3x/2)+cos(x/2)] = 4 cos(5x/2) cos x cos(x/2). In [0,2pi): cos(5x/2)=0 gives x = pi/5, 3pi/5, pi, 7pi/5, 9pi/5 (5 values); cos x = 0 gives pi/2, 3pi/2 (2 more); cos(x/2)=0 gives x = pi, already counted. Total 7.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "working": "l = n = cos theta, m = cos beta gives 2cos^2 theta + cos^2 beta = 1. sin^2 beta = 3 sin^2 theta gives 1 - cos^2 beta = 3 - 3cos^2 theta, i.e. 2cos^2 theta = 3 - 3cos^2 theta => cos^2 theta = 3/5.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "MODERATE",
+    "notes": "Flagged as a defect INHERITED FROM THE ORIGINAL SOURCE QUESTION (AIEEE 2004), not an OCR issue: cos^2 theta = 3/5 forces sin^2 beta = 3(2/5) = 6/5 > 1 and cos^2 beta = -1/5, so no such line exists geometrically. The algebra is nevertheless consistent and yields 3/5 uniquely, which is the universally published key, so C is the intended answer."
+  },
+  {
+    "number": 100,
+    "answer": "A",
+    "working": "2sin^2 x + 5 sin x - 3 = (2 sin x - 1)(sin x + 3) = 0, so sin x = 1/2 (sin x = -3 rejected). In [0,3pi]: x = pi/6, 5pi/6, 13pi/6, 17pi/6 — four values (13pi/6 ~ 6.81 and 17pi/6 ~ 8.90 are both below 3pi ~ 9.42).",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

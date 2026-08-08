@@ -1,0 +1,202 @@
+[
+  {
+    "number": 21,
+    "answer": "B",
+    "working": "(a+b)x(a-b) = axa - axb + bxa - bxb = 0 - axb - axb - 0 = -2(a x b). The given components are irrelevant; it is an identity.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "EASY",
+    "notes": "OCR typo: b is printed as 'i + 4jhat - 2k' (the j-hat is mangled). Harmless — the result is the general identity -2(a x b), independent of the components."
+  },
+  {
+    "number": 22,
+    "answer": "C",
+    "working": "|lambda*a| = |lambda|*|a| = |lambda|*a = 1, so a = 1/|lambda|. Option D is wrong because lambda may be negative.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 23,
+    "answer": "B",
+    "working": "C - A = (3a-2b) - a = 2(a-b) = -2(b-a) = -2(B-A). So on the line A + t(b-a): C is at t=-2, A at t=0, B at t=1. Hence A lies between C and B (and the three ARE collinear, so D is false).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Position Vectors and Section",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "working": "With AB=a, BC=b in a regular hexagon: CD=b-a, DE=-a, EF=-b, FA=a-b. Then CE=CD+DE=b-2a (1 true); AE=AB+BC+CD+DE=a+b+(b-a)+(-a)=2b-a (2 true); FA=a-b (3 true). Verified with coordinates A(0,0),B(1,0),C(1.5,r3/2),D(1,r3),E(0,r3),F(-0.5,r3/2).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 25,
+    "answer": "B",
+    "working": "|a+b+c|^2 = 1+1+1 + 2(a.b + b.c + c.a) = 3 + 2(0 + cos(pi/3) + 0) = 3 + 1 = 4, since a is perpendicular to both b and c. So the modulus is 2.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 26,
+    "answer": "D",
+    "working": "(i - x j - 2k).(2i + c j + y k) = 2 - c*x - 2y = 0, which is linear in x and y for ANY constant c — a straight line.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "MODERATE",
+    "notes": "Heavy OCR corruption: the second vector's j-coefficient is swallowed by junk text spliced in from other questions ('t which the vectors point of ve sides of a regular hexagon closed with 200 m of fencing'). The answer is nevertheless robust — the dot product is linear in x and y for any CONSTANT j-coefficient, so the locus is a straight line. (Only if that coefficient were itself x would it become a parabola; the standard form of this question is 2i + j + yk.)"
+  },
+  {
+    "number": 27,
+    "answer": "B",
+    "working": "a x b = (1,-1,1), |a x b| = sqrt(3). Vectors of length 5 perpendicular to both are +/- (5/sqrt3)(1,-1,1) — exactly 2.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 28,
+    "answer": "B",
+    "working": "|sin x / x| <= 1/|x| -> 0 as x -> infinity (bounded numerator over unbounded denominator). Limit is 0. (Option A is the x->0 distractor.)",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 29,
+    "answer": "D",
+    "working": "For x in (0,1), arcsin(sqrt(1-x^2)) = arccos(x), so y = arcsin x + arccos x = pi/2, a constant, hence dy/dx = 0. Option C (pi/2) is the value of y, not its derivative.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": "Strictly, y is constant only on (0,1); for x in (-1,0) y = pi/2 - 2*arcsin(-x) and dy/dx = 2/sqrt(1-x^2). The intended (and only offered) answer is 0, valid on the positive branch. Not a defect worth flagging in the key — the standard convention."
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "working": "lim (a^x - 1)/x - lim (b^x - 1)/x = ln a - ln b = log(a/b).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 31,
+    "answer": "C",
+    "working": "The parameter l is missing from the printed piecewise definition; the only reading consistent with the options is the second branch being 2x + l. Continuity at x=2: 3(2)-4 = 2 = 2(2)+l, so l = -2.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": "OCR DEFECT: the question asks for 'the value of l' but no l appears anywhere in the printed definition (branches read '3x - 4' and '2x + 1'). As printed, the two branches give 2 and 5 at x=2, so f is NOT continuous and the question is unanswerable. Reconstructed as '2x + l' (the standard form), which is the ONLY placement giving an answer in the option list: l = -2. Other placements give l = 1/4, 4.5 or 1 — none offered. Stem should be repaired at source."
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "working": "f'(x) = (1/ln x)*(1/x) = 1/(x ln x). At x = e: 1/(e*1) = 1/e = e^(-1).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 33,
+    "answer": "A",
+    "working": "f = e^(sin g) where g = log cos x, so df/dg = e^(sin g) * cos g = f(x) * cos[g(x)]. (Equivalently (df/dx)/(dg/dx) cancels the -tan x factor.)",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "working": "f'(x) = 2x + m >= 0 for all x in [1,2] requires m >= -2x on [1,2], i.e. m >= -2 (binding at x=1). Smallest such m is -2.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 35,
+    "answer": "B",
+    "working": "y = 8 - x, P = x(8-x), P' = 8 - 2x = 0 at x = 4, so max = 4*4 = 16 (equivalently AM-GM: xy <= ((x+y)/2)^2 = 16).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 36,
+    "answer": "C",
+    "working": "(f+g)(x) = x + |x| = 2x for x >= 0 and x + (-x) = 0 for x < 0.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 37,
+    "answer": "B",
+    "working": "(gof)(x) = g(f(x)) = 1/sin(f(x)) = 1/sin(sin x).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "EASY",
+    "notes": "OCR typo: the second function is printed as 'f(x) = 1/sin x' when it must be g(x) = 1/sin x (the question asks for gof). Unambiguous from context."
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "working": "Differentiating sqrt(x) + sqrt(y) = 1: 1/(2 sqrt x) + y'/(2 sqrt y) = 0, so y' = -sqrt(y)/sqrt(x). At (1/4, 1/4): -1.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 39,
+    "answer": "A",
+    "working": "For x > 0, f = sin x, f'(0+) = 1; for x < 0, f = sin(-x) = -sin x, f'(0-) = -1. The one-sided derivatives differ, so f fails to be differentiable only at x = 0 and is differentiable everywhere else.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 40,
+    "answer": "C",
+    "working": "y = 1/log10(x) = ln10/ln x, so dy/dx = -ln10/(x (ln x)^2). Option C = -[(log_x 10)^2 (log10 e)]/x = -[(ln10)^2/(ln x)^2] * [1/ln10] / x = -ln10/(x (ln x)^2). Identical.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

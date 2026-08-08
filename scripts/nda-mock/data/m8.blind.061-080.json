@@ -1,0 +1,186 @@
+[
+  {
+    "number": 61,
+    "answer": "A",
+    "working": "Reflexive: \\(|a-a|=0\\le 1/2\\). Symmetric: \\(|a-b|=|b-a|\\). Not transitive: \\(|0-\\tfrac12|=\\tfrac12\\le\\tfrac12\\) and \\(|\\tfrac12-1|=\\tfrac12\\le\\tfrac12\\), but \\(|0-1|=1>\\tfrac12\\), so \\(0\\rho\\tfrac12\\) and \\(\\tfrac12\\rho 1\\) yet not \\(0\\rho 1\\).",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 62,
+    "answer": "A",
+    "working": "\\(f'(x)=1-\\sin x\\ge 0\\) for all \\(x\\), vanishing only at the isolated points \\(x=\\tfrac{\\pi}{2}+2n\\pi\\); a derivative that is non-negative and zero only on a discrete set gives a strictly increasing function on \\(\\mathbb{R}\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 63,
+    "answer": "D",
+    "working": "Quotient rule: numerator \\(=(\\lambda\\cos x-6\\sin x)(2\\sin x+3\\cos x)-(\\lambda\\sin x+6\\cos x)(2\\cos x-3\\sin x)\\). The \\(2\\lambda\\sin x\\cos x\\) and \\(-18\\sin x\\cos x\\) terms cancel, leaving \\(3\\lambda(\\cos^2x+\\sin^2x)-12(\\sin^2x+\\cos^2x)=3\\lambda-12\\). So \\(f'(x)=\\dfrac{3\\lambda-12}{(2\\sin x+3\\cos x)^2}>0\\iff\\lambda>4\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 64,
+    "answer": "B",
+    "working": "Let \\(y=x^{1/x}\\), \\(\\ln y=\\tfrac{\\ln x}{x}\\); \\(\\tfrac{d}{dx}\\!\\left(\\tfrac{\\ln x}{x}\\right)=\\tfrac{1-\\ln x}{x^2}=0\\) at \\(x=e\\), positive for \\(x<e\\) and negative for \\(x>e\\), so \\(x=e\\) is the maximum and the value is \\(e^{1/e}\\approx 1.4447\\) (compare \\(2^{1/2}=1.414\\), \\(3^{1/3}=1.442\\)).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "working": "\\(\\int\\sec^2 2x\\,dx=\\tfrac12\\tan 2x\\), so the integral is \\(\\tfrac12\\cdot\\tfrac12\\big[\\tan 2x\\big]_0^{\\pi/8}=\\tfrac14(\\tan\\tfrac{\\pi}{4}-0)=\\tfrac14\\).",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 66,
+    "answer": "B",
+    "working": "\\(\\int_0^1(1-x)^9dx=\\left[-\\tfrac{(1-x)^{10}}{10}\\right]_0^1=0+\\tfrac{1}{10}=\\tfrac{1}{10}\\) (equivalently substitute \\(u=1-x\\) to get \\(\\int_0^1u^9du\\)).",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 67,
+    "answer": "D",
+    "working": "Substitute \\(u=x^3\\), \\(du=3x^2dx\\): the integral becomes \\(\\tfrac13\\int_0^{a^3}\\sin u\\,du=\\tfrac13\\big[-\\cos u\\big]_0^{a^3}=\\tfrac13(1-\\cos a^3)\\). Sanity check: the result must be \\(\\ge 0\\) for small \\(a>0\\), which rules out option C.",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 68,
+    "answer": "A",
+    "working": "The family has the single parameter \\(a\\), so one differentiation eliminates it: \\(2x+2y\\tfrac{dy}{dx}=0\\Rightarrow x+y\\tfrac{dy}{dx}=0\\). (Option B has the wrong sign; C is the second-order relation obtained after a further differentiation and is not the minimal-order ODE.)",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 69,
+    "answer": "C",
+    "working": "A general line \\(y=mx+c\\) carries two arbitrary constants, so the ODE is second order: \\(y'=m\\), \\(y''=0\\). Hence \\(\\tfrac{d^2y}{dx^2}=0\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 70,
+    "answer": "D",
+    "working": "First verify \\((-2,3)\\) lies on the curve: \\(-32+54+24+30-72-18+14=0\\). Implicit differentiation: \\(12x^2-3(y^2+2xyy')+12x-5(y+xy')-16yy'+9=0\\). At \\((-2,3)\\): constants \\(48-27-24-15+9=-9\\); \\(y'\\) terms \\(36+10-48=-2\\). So \\(-9-2y'=0\\Rightarrow y'=-\\tfrac92\\) (tangent slope) and the normal slope is \\(-1/y'=\\tfrac29\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 71,
+    "answer": "B",
+    "working": "\\(A+C=B\\) means \\(A+(-B)+C=0\\), and for three angles summing to zero \\(\\tan A+\\tan(-B)+\\tan C=\\tan A\\tan(-B)\\tan C\\), i.e. \\(\\tan A-\\tan B+\\tan C=-\\tan A\\tan B\\tan C\\). Hence \\(\\tan A\\tan B\\tan C=\\tan B-\\tan A-\\tan C\\). Numeric check with \\(A=30^\\circ,C=20^\\circ,B=50^\\circ\\): LHS \\(=0.57735\\times1.19175\\times0.36397=0.25043\\); RHS \\(=1.19175-0.36397-0.57735=0.25043\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 72,
+    "answer": "A",
+    "working": "Tickets 00–49: product of digits zero means a digit is 0 — tens digit 0 gives 00–09 (10), units digit 0 gives 00,10,20,30,40 (5), overlap 00, so \\(|B|=14\\). Among these, digit-sum 8 needs 08 only (80 is out of range since the tens digit is at most 4), so \\(|A\\cap B|=1\\) and \\(P(A\\mid B)=\\tfrac{1}{14}\\).",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 73,
+    "answer": "A",
+    "working": "One of each colour: \\(3\\times4\\times2=24\\) favourable selections out of \\(\\binom{9}{3}=84\\), giving \\(24/84=\\tfrac{2}{7}\\).",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 74,
+    "answer": "A",
+    "working": "Critical points 10, 30, 50 with \\(x=30\\) excluded (undefined) and \\(x=10,50\\) included (value 0). Signs: \\(x\\le 9\\) negative (e.g. \\(x=1\\) gives \\(441/(-29)<0\\)); \\(11\\le x\\le29\\) positive; \\(31\\le x\\le49\\) negative; \\(x\\ge51\\) positive. Count \\(=1+19+1+50=71\\), so \\(P(A)=0.71\\).",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "TWO source defects, neither affecting the answer. (1) Option (D) reads `\\(0.20\\) Direction Q.(75-77) : A fair dice is tossed repeatedly until a six is obtained. Let \\(X\\) denote the number of tosses required.` — the shared DIRECTION line for Q75-77 has been glued onto the tail of this question's option D. Option D is just `0.20`; the direction sentence must be split off and carried as the shared `context` of Q75/76/77 (they are set-based siblings). (2) The set is printed `\\{ 1,2,3,4,\\cdots\\), 100}` — the math zone closes after `\\cdots` so `100}` falls outside it and the closing brace is unpaired; the source means \\(\\{1,2,3,\\ldots,100\\}\\)."
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "working": "Geometric: two failures then a six, \\(P(X=3)=\\left(\\tfrac56\\right)^2\\cdot\\tfrac16=\\tfrac{25}{216}\\).",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "The stem is not self-contained as printed — the setup sentence (\"A fair dice is tossed repeatedly until a six is obtained. Let \\(X\\) denote the number of tosses required.\") was absorbed into Q74's option (D). Needs that sentence as shared `context` across Q75-77, otherwise \\(X\\) is undefined."
+  },
+  {
+    "number": 76,
+    "answer": "B",
+    "working": "\\(X\\ge 3\\) exactly means the first two tosses are not sixes, so \\(P=\\left(\\tfrac56\\right)^2=\\tfrac{25}{36}\\).",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Same missing shared `context` as Q75 — the dice/until-a-six setup defining \\(X\\) was absorbed into Q74's option (D)."
+  },
+  {
+    "number": 77,
+    "answer": "D",
+    "working": "\\(P(X\\ge n)=\\left(\\tfrac56\\right)^{n-1}\\), and \\(X>3\\iff X\\ge4\\). So \\(P(X\\ge6\\mid X\\ge4)=\\dfrac{(5/6)^5}{(5/6)^3}=\\left(\\tfrac56\\right)^2=\\tfrac{25}{36}\\) — the memoryless property (two further failures needed).",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Same missing shared `context` as Q75/Q76 — the dice/until-a-six setup defining \\(X\\) was absorbed into Q74's option (D)."
+  },
+  {
+    "number": 78,
+    "answer": "A",
+    "working": "P(none solves) \\(=\\tfrac12\\cdot\\tfrac14\\cdot\\tfrac34\\cdot\\tfrac78=\\tfrac{21}{256}\\) (failure probabilities \\(\\tfrac12,\\tfrac14,\\tfrac34,\\tfrac78\\)); so P(at least one) \\(=1-\\tfrac{21}{256}=\\tfrac{235}{256}\\). Option B is the complement (a classic trap).",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 79,
+    "answer": "A",
+    "working": "\\(P(A\\cap(B\\cup C))=P(A\\cap B)+P(A\\cap C)-P(A\\cap B\\cap C)=P(A)[P(B)+P(C)-P(B)P(C)]=P(A)P(B\\cup C)\\), so \\(S_1\\) holds; and \\(P(A\\cap(B\\cap C))=P(A)P(B)P(C)=P(A)P(B\\cap C)\\), so \\(S_2\\) holds. Both statements are true — mutual independence (not merely pairwise) is what makes the triple-intersection step valid.",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 80,
+    "answer": "A",
+    "working": "With replacement the draws are independent and identically distributed: \\(\\left(\\tfrac{4}{52}\\right)^2=\\left(\\tfrac{1}{13}\\right)^2=\\tfrac{1}{169}\\). Option B, \\(\\tfrac{1}{221}=\\tfrac{4}{52}\\cdot\\tfrac{3}{51}\\), is the without-replacement answer.",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "confidence": "high"
+  }
+]

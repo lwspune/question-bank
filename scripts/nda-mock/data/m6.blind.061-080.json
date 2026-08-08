@@ -1,0 +1,202 @@
+[
+  {
+    "number": 61,
+    "answer": "A",
+    "working": "The sum/n^(p+1) is a Riemann sum for the integral of x^p on [0,1], which is 1/(p+1). Numerically confirmed for p = 2, 3, 0.5.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 62,
+    "answer": "D",
+    "working": "f''-g''=0 so h = f-g is linear, h = Ax+B. Reading the data as f'(1)=2, g'(1)=4, f(2)=3, g(2)=9: A = 2-4 = -2 and h(2) = -6 gives B = -2, so h(3/2) = -5 (magnitude 5 = option D).",
+    "confidence": "low",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — two problems. (1) The stem's chained equalities 'f'(1) = 2g'(1) = 4f(2) = 3g(2) = 9' are OCR damage: the commas of the original 'f'(1)=2, g'(1)=4, f(2)=3, g(2)=9' became '=' signs. Taken literally the chain gives f'(1)=9, g'(1)=9/2, f(2)=9/4, g(2)=3 and h(3/2) = -3, which is in no option. (2) Under the repaired reading the value is -5, but option D prints +5, i.e. the sign is dropped in the option (the published key for this item is D). Answered D on that basis; the stem needs repair and option D arguably needs the minus sign."
+  },
+  {
+    "number": 63,
+    "answer": "C",
+    "working": "f(x+y)=f(x)f(y) gives f'(x) = f(x) f'(0), so f'(5) = f(5) f'(0) = 2*3 = 6.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "working": "For x<0 the exponent 1/|x|+1/x = 0 so f(x) = x; for x>0 f(x) = x e^(-2/x) -> 0. Continuous everywhere; left derivative at 0 is 1, right derivative is 0 (numerically the right difference quotient is ~1e-869 at h=1e-3), so not differentiable at 0.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "working": "sqrt(1+x^2) y' = n y; differentiating and multiplying by sqrt(1+x^2) gives (1+x^2)y'' + x y' = n^2 y. Verified numerically at (n,x) = (3,0.7), (2.5,1.3), (1,-0.4).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 66,
+    "answer": "A",
+    "working": "Log-differentiating m ln x + n ln y = (m+n) ln(x+y) and solving for y' gives y' = y/x (sympy confirms the unique solution Y(x)/x).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 67,
+    "answer": "B",
+    "working": "With y = 10^(10^x): ln y = 10^x ln10, so (1/y)y' = 10^x (ln10)^2, i.e. lambda = (ln10)^2.",
+    "confidence": "medium",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": "OCR damage: the stem prints y = 10^(10x), for which (1/y)y' = 10 ln10 — a constant that cannot be written as 10^x * lambda with lambda constant. The intended exponent is 10^x (the superscript was flattened). Also note option (C) is ambiguous: parsed as e^{ln((ln10)^2)} it EQUALS option B (5.3019), parsed conventionally as e^{(ln ln10)^2} it is 2.0049 and distinct. Under the conventional parse B is the unique answer; if the source intends the other parse, B and C coincide and the item is defective."
+  },
+  {
+    "number": 68,
+    "answer": "A",
+    "working": "sec(arctan x) = sqrt(1+x^2), so dy/dx = x/sqrt(1+x^2), which at x=1 is 1/sqrt(2) (numerically 0.7071).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 69,
+    "answer": "B",
+    "working": "sin x = sin((x-a)+a) = sin(x-a)cos a + cos(x-a) sin a, so the integrand is cos a + sin a * cot(x-a), giving x cos a + sin a * log|sin(x-a)|. Hence (A,B) = (cos a, sin a); sympy residual 0.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 70,
+    "answer": "C",
+    "working": "cos x + sqrt(3) sin x = 2 sin(x + pi/6), so the integral is (1/2) log|tan((x+pi/6)/2)| = (1/2) log tan(x/2 + pi/12). Differentiation residual simplifies to 0.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 71,
+    "answer": "A",
+    "working": "|sin x| has period pi with integral 2 over each period; 10 periods in [0,10pi] gives 20.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 72,
+    "answer": "D",
+    "working": "[x^2] is 0 on [0,1), 1 on [1,sqrt2), 2 on [sqrt2,sqrt3), 3 on [sqrt3,2). Sum = (sqrt2-1)+2(sqrt3-sqrt2)+3(2-sqrt3) = 5 - sqrt2 - sqrt3 = 1.85374, matching option D exactly.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 73,
+    "answer": "C",
+    "working": "(sinx+cosx)^2 = 1+sin2x and sqrt(1+sin2x) = |sinx+cosx| = sinx+cosx on [0,pi/2], so the integrand reduces to sinx+cosx whose integral over [0,pi/2] is 2.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 74,
+    "answer": "A",
+    "working": "The curves meet only at (0,0) and (1,1) (for x<0 the parabola y^2=x does not exist), so area = integral of (sqrt x - x) on [0,1] = 2/3 - 1/2 = 1/6.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Between Two Curves and Intersection Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 75,
+    "answer": "B",
+    "working": "King's rule with x -> 9-x (since 3+6=9) gives a twin integral; adding, 2I = integral of 1 over [3,6] = 3, so I = 3/2. Sympy confirms 3/2.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 76,
+    "answer": "D",
+    "working": "Split at the crossings pi/4 and 5pi/4: (sqrt2-1) + 2sqrt2 + (sqrt2-1) = 4sqrt2 - 2 = 3.65685, matching option D.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Between Two Curves and Intersection Points",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 77,
+    "answer": "B",
+    "working": "g'(x) = 1/f'(g(x)) and f'(t) = 1/(1+t^5), so g'(x) = 1 + {g(x)}^5.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "working": "Highest derivative is y''' so order 3. Cubing to clear the 2/3 power gives (1+3y')^2 = 64 (y''')^3, so degree 3. Hence (3,3).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 79,
+    "answer": "B",
+    "working": "Integrating twice: y' = -e^(-2x)/2 + c, y = e^(-2x)/4 + cx + d. Sympy confirms y'' = e^(-2x) for that y.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 80,
+    "answer": "C",
+    "working": "y^2 = 4a(x-h) has two parameters; 2y y' = 4a and differentiating again gives y y'' + (y')^2 = 0 — order 2, degree 1, so 'degree and order' = (1,2).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "MODERATE",
+    "notes": "The question asks for degree FIRST then order, so the answer is (1,2) = option C. Option B (2,1) is the trap for reading it as order-then-degree."
+  }
+]

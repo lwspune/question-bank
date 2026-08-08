@@ -1,0 +1,187 @@
+[
+  {
+    "number": 41,
+    "answer": "B",
+    "working": "Divide numerator and denominator by \\(\\csc^2 15^\\circ\\): \\((\\cot^2\\theta-1)/(\\cot^2\\theta+1)=(\\cos^2\\theta-\\sin^2\\theta)/(\\cos^2\\theta+\\sin^2\\theta)=\\cos 2\\theta\\). So the value is \\(\\cos 30^\\circ=\\sqrt3/2\\). Direct check: \\(\\cot 15^\\circ=2+\\sqrt3\\), \\(\\cot^2 15^\\circ=7+4\\sqrt3\\), giving \\((6+4\\sqrt3)/(8+4\\sqrt3)=2\\sqrt3/4=\\sqrt3/2\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 42,
+    "answer": "B",
+    "working": "Acute angles give \\(\\sin\\theta=4/5,\\ \\sin\\phi=3/5\\), so \\(\\cos(\\theta-\\phi)=\\tfrac{3}{5}\\cdot\\tfrac{4}{5}+\\tfrac{4}{5}\\cdot\\tfrac{3}{5}=24/25\\). Then \\(\\cos^2\\frac{\\theta-\\phi}{2}=\\frac{1+24/25}{2}=\\frac{49}{50}\\), so \\(\\cos\\frac{\\theta-\\phi}{2}=7/(5\\sqrt2)\\) (positive, since \\((\\theta-\\phi)/2\\) is small). Numeric check: \\(\\theta=53.1301^\\circ,\\phi=36.8699^\\circ\\Rightarrow\\cos 8.1301^\\circ=0.98995=7/(5\\sqrt2)\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 43,
+    "answer": "B",
+    "working": "Product rule: \\(f'(x)=\\tan^{-1}x+\\dfrac{x}{1+x^2}\\). At \\(x=1\\): \\(\\tan^{-1}1+\\tfrac{1}{2}=\\tfrac{\\pi}{4}+\\tfrac12\\), which is option B written as \\(\\tfrac12+\\tfrac{\\pi}{4}\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 44,
+    "answer": "A",
+    "working": "\\(\\log_x x=1\\) and \\(\\log_{10}10=1\\) are constants, so \\(y=\\dfrac{\\ln x}{\\ln 10}+\\dfrac{\\ln 10}{\\ln x}+2\\). Differentiating: \\(\\dfrac{dy}{dx}=\\dfrac{1}{x\\ln 10}-\\dfrac{\\ln 10}{x(\\ln x)^2}\\). Option B is wrong because \\(1/(x\\log_{10}e)=\\ln 10/x\\), which is not the second term.",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "confidence": "low",
+    "notes": "DAMAGED — DUPLICATE OPTIONS. Options (A) and (C) are byte-identical: both read \\(\\frac{1}{x\\log_{e}10} - \\frac{\\log_{e}10}{x\\left( \\log_{e}x \\right)^{2}}\\). My derived expression equals that string exactly, so the VALUE is certain but the LETTER is a coin flip between A and C. One of the two source options was almost certainly something else that got overwritten during extraction — the natural distractor here is the same expression with a PLUS sign (\\(+\\frac{\\log_e 10}{x(\\log_e x)^2}\\), i.e. forgetting the derivative of \\(1/\\ln x\\) is negative), or a version missing the \\((\\log_e x)^2\\) square. I picked A only because it is the first matching label; the printed key may well say C. Source PDF must be consulted before committing this row."
+  },
+  {
+    "number": 45,
+    "answer": "D",
+    "working": "Series to order \\(x^2\\): \\(xe^x=x+x^2+\\tfrac{x^3}{2}+\\cdots\\) and \\(\\log(1+x)=x-\\tfrac{x^2}{2}+\\cdots\\). The difference is \\(x^2+\\tfrac{x^2}{2}+O(x^3)=\\tfrac32 x^2\\), so the limit is \\(3/2\\). Numeric check at \\(x=0.01\\): \\((0.0101005-0.00995033)/0.0001=1.5017\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 46,
+    "answer": "B",
+    "working": "\\(\\dfrac{\\sin x}{1+\\cos x}=\\dfrac{2\\sin\\frac x2\\cos\\frac x2}{2\\cos^2\\frac x2}=\\tan\\frac x2\\), so \\(f(x)=x/2\\) and \\(f'(x)=1/2\\) for every \\(x\\) — in particular \\(f'(\\pi/3)=1/2\\). Option A is the trap you get by differentiating \\(\\tan^{-1}u\\) without simplifying and then mis-cancelling.",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "confidence": "medium",
+    "notes": "DAMAGED — DROPPED PRIME. The stem asks for \\(f\\left( \\frac{\\pi}{3} \\right)\\) with no prime, but the option set is unambiguously derivative-shaped: option (A) \\(\\frac{1}{2(1 + cosx)}\\) is still a FUNCTION OF x, which cannot be the value of \\(f\\) at the specific point \\(\\pi/3\\), and (B) 1/2 / (C) 1/4 are the classic f'(x) answer and its half. The source certainly reads \\(f'(\\pi/3)\\) (or \\(f'(x)\\)) — the apostrophe was lost in extraction; note Q43 and Q51 in this same packet do carry \\(f'\\) correctly, so the loss is local. Taken LITERALLY as printed, \\(f(\\pi/3)=\\pi/6\\), which matches no option and the answer would be (D) None of these — so if the printed key says D, the stem is intact and the option block is the corrupted part instead. Either way the mathematics is settled; only the stem needs a source check."
+  },
+  {
+    "number": 47,
+    "answer": "C",
+    "working": "From \\(\\tan\\beta=\\cos\\theta\\tan\\alpha\\), \\(\\cos\\theta=\\dfrac{\\sin\\beta\\cos\\alpha}{\\cos\\beta\\sin\\alpha}\\). Then \\(1-\\cos\\theta=\\dfrac{\\sin(\\alpha-\\beta)}{\\sin\\alpha\\cos\\beta}\\) and \\(1+\\cos\\theta=\\dfrac{\\sin(\\alpha+\\beta)}{\\sin\\alpha\\cos\\beta}\\), so \\(\\tan^2\\frac\\theta2=\\dfrac{1-\\cos\\theta}{1+\\cos\\theta}=\\dfrac{\\sin(\\alpha-\\beta)}{\\sin(\\alpha+\\beta)}\\). Numeric check \\(\\alpha=60^\\circ,\\theta=45^\\circ\\Rightarrow\\beta=50.7684^\\circ\\): LHS \\(\\tan^2 22.5^\\circ=0.17157\\), RHS \\(\\sin 9.2316^\\circ/\\sin 110.7684^\\circ=0.17156\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 48,
+    "answer": "B",
+    "working": "\\(\\sin 3A=\\sin A(3-4\\sin^2A)=\\sin A(3-\\tfrac74)=\\tfrac54\\sin A\\) since \\(\\sin^2A=1-9/16=7/16\\); \\(\\sin 2A=2\\sin A\\cos A=\\tfrac32\\sin A\\). So \\(\\sin 3A-\\sin 2A=-\\tfrac14\\sin A=-\\tfrac{\\sqrt7}{16}\\) and \\(16(\\sin 3A-\\sin 2A)=-\\sqrt7\\). Numeric check \\(A=41.4096^\\circ\\): \\(16(0.826797-0.992157)=-2.64575=-\\sqrt7\\). (Takes \\(A\\) acute, the standard reading; a fourth-quadrant \\(A\\) would give \\(+\\sqrt7\\) = option A.)",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 49,
+    "answer": "B",
+    "working": "Sum-to-product: \\(a=2\\sin\\frac{\\theta+\\phi}{2}\\cos\\frac{\\theta-\\phi}{2}\\), \\(b=2\\cos\\frac{\\theta+\\phi}{2}\\cos\\frac{\\theta-\\phi}{2}\\), so \\(a^2+b^2=4\\cos^2\\frac{\\theta-\\phi}{2}\\). Hence \\(\\sin^2\\frac{\\theta-\\phi}{2}=\\frac{4-a^2-b^2}{4}\\) and \\(\\tan\\frac{\\theta-\\phi}{2}=\\sqrt{\\dfrac{4-a^2-b^2}{a^2+b^2}}\\). Numeric check \\(\\theta=60^\\circ,\\phi=0^\\circ\\): \\(a=0.866025,b=1.5,a^2+b^2=3\\Rightarrow\\sqrt{1/3}=0.57735=\\tan 30^\\circ\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "working": "Product rule: \\(\\dfrac{dy}{dx}=e^x\\log x+e^x\\cdot\\dfrac1x=e^x\\left(\\dfrac1x+\\log x\\right)\\). Option B has a spurious factor \\(x\\) on the \\(\\log x\\) term.",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 51,
+    "answer": "B",
+    "working": "\\(f'(x)=3e^{x^2}\\cdot 2x=2x\\,f(x)\\), so the first two terms cancel: \\(f'(x)-2xf(x)=0\\). Also \\(f(0)=3\\Rightarrow\\tfrac13 f(0)=1\\) and \\(f'(0)=0\\). Total \\(=0+1-0=1\\).",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 52,
+    "answer": "A",
+    "working": "\\(\\tan^2\\theta\\) and \\(\\cot^2\\theta\\) are positive with product 1, so by AM-GM \\(\\tan^2\\theta+\\cot^2\\theta\\ge 2\\sqrt{\\tan^2\\theta\\cot^2\\theta}=2\\), equality at \\(\\theta=45^\\circ\\). (Option C is a true but strictly weaker bound; A is the sharp one.)",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "working": "\\(\\sqrt3\\cos x+\\sin x=2\\left(\\cos x\\cos 30^\\circ+\\sin x\\sin 30^\\circ\\right)=2\\cos(x-30^\\circ)\\), which is maximal (value 2) when \\(x-30^\\circ=0\\), i.e. \\(x=30^\\circ\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "working": "For continuity assign \\(f(0)=\\lim_{x\\to 0}f(x)\\). Using \\(\\log(1+u)=u+O(u^2)\\): numerator \\(=ax+bx+O(x^2)\\), so the limit is \\(a+b\\). Numeric check \\(a=b=1,\\ x=0.001\\): \\((0.0009995+0.0010005)/0.001=2.000=a+b\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 55,
+    "answer": "C",
+    "working": "For \\(x\\ne 1\\), \\(\\dfrac{x^2-4x+3}{x^2-1}=\\dfrac{(x-1)(x-3)}{(x-1)(x+1)}=\\dfrac{x-3}{x+1}\\), whose limit as \\(x\\to1\\) (both sides) is \\(-2/2=-1\\). Since \\(f(1)=2\\ne-1\\), \\(f\\) is discontinuous at \\(x=1\\); this also refutes A (limit is \\(-1\\), not 2) and B (limit is \\(-1\\), not 3). Numeric check \\(f(0.9)=0.21/(-0.19)=-1.105\\).",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 56,
+    "answer": "B",
+    "working": "With base radius \\(r\\) and half-height \\(h\\), \\(r^2+h^2=R^2\\) and \\(V=2\\pi r^2h=2\\pi(R^2-h^2)h\\). \\(dV/dh=2\\pi(R^2-3h^2)=0\\Rightarrow h=R/\\sqrt3\\), so \\(r^2=\\tfrac23R^2\\) and \\(r=\\sqrt{2/3}\\,R\\). Numeric check with \\(R=1\\): \\(V(h=0.5774)=2.4184\\) beats \\(V(0.5)=2.356\\) and \\(V(0.6)=2.413\\).",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "MINOR SOURCE ARTIFACT — the stem ends with a stray dangling fragment: \"inscribed in a sphere of radius \\(R\\) is [A\". The trailing \"[A\" is an unterminated bracket left over from the source page, almost certainly the start of a truncated exam-citation tag such as \"[AIEEE 2004]\" / \"[AMU ...]\" (this problem is a standard AIEEE item). It should be stripped from the stem before commit. Do NOT read it as a leaked answer letter: the derivation gives \\(\\sqrt{2/3}\\,R\\), which is option B unambiguously, and option A (\\(\\tfrac23R\\)) is the classic trap of quoting \\(r^2/R^2\\) as \\(r/R\\)."
+  },
+  {
+    "number": 57,
+    "answer": "A",
+    "working": "Point on curve: \\(9=8p+q\\). Implicit differentiation \\(2yy'=3px^2\\Rightarrow y'=3px^2/(2y)\\); at \\((2,3)\\) that is \\(12p/6=2p\\). Tangent slope is 4, so \\(p=2\\), hence \\(q=9-16=-7\\). Verified: \\(y^2=2x^3-7\\) passes through \\((2,3)\\) and has slope 4 there.",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 58,
+    "answer": "C",
+    "working": "\\(e^{a\\log x}=x^a\\) and \\(e^{x\\log a}=a^x\\), so the integral is \\(\\int(x^a+a^x)dx=\\dfrac{x^{a+1}}{a+1}+\\dfrac{a^x}{\\log a}+c\\). Differentiating back gives \\(x^a+a^x\\log a/\\log a=x^a+a^x\\). Option A drops the \\(1/(a+1)\\); option B multiplies by \\(\\log a\\) instead of dividing.",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Benign extraction artifact only: the integral sign renders as \\(\\int_{}^{}\\) with empty limit braces (the usual pandoc rendering of an indefinite integral). No mathematical content is missing."
+  },
+  {
+    "number": 59,
+    "answer": "D",
+    "working": "\\(\\tan x+\\cot x=\\dfrac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\dfrac{1}{\\sin x\\cos x}=\\dfrac{2}{\\sin 2x}\\), so the integrand is \\(\\tfrac12\\sin 2x\\) and the integral is \\(-\\tfrac{\\cos 2x}{4}+c\\). Check by differentiating: \\(\\frac{d}{dx}\\left(-\\tfrac{\\cos 2x}{4}\\right)=\\tfrac{2\\sin 2x}{4}=\\tfrac{\\sin 2x}{2}\\), the integrand.",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Benign extraction artifact only: \\(\\int_{}^{}\\) with empty limit braces = indefinite integral. Nothing missing."
+  },
+  {
+    "number": 60,
+    "answer": "A",
+    "working": "Only \\(dy/dx\\) appears, so the order is 1. To find the degree, clear the radical: \\((y-xy')^2=a^2y'^2+b^2\\Rightarrow (x^2-a^2)y'^2-2xy\\,y'+(y^2-b^2)=0\\), a polynomial of degree 2 in \\(y'\\). Order 1, degree 2.",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "confidence": "high"
+  }
+]

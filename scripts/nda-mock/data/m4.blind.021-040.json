@@ -1,0 +1,202 @@
+[
+  {
+    "number": 21,
+    "answer": "B",
+    "working": "(A-B)(A+B) = A^2 + AB - BA - B^2. Equating to A^2 - B^2 gives AB - BA = O, i.e. AB = BA. A=B, zero and identity are sufficient but not necessary, so only commutativity is always true.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 22,
+    "answer": "B",
+    "working": "Digits 1-9 only (no 0), repetition allowed. 2-digit numbers: 9*9 = 81. 3-digit numbers: 9^3 = 729. Total = 81 + 729 = 810 (1000 itself is excluded and cannot be formed anyway).",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Forming Numbers from Digits",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 23,
+    "answer": "A",
+    "working": "As printed the equation has NO solution: nP3 + nP(n-2) = n(n-1)(n-2) + n!/2, which is 120 at n=5 vs 14n=70, and grows factorially thereafter (checked n=3..11, never equal). Reading the second term as nC(n-2) = nC2 = n(n-1)/2 gives n(n-1)(n-2) + n(n-1)/2 = 14n, i.e. (n-1)(2n-3) = 28, whose unique solution is n = 5 (60 + 10 = 70 = 14*5) — option A.",
+    "confidence": "medium",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Factorials and Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "notes": "OCR DEFECT: the second term is printed as a permutation (nP_{n-2}) but must be a combination (nC_{n-2}). With P the equation is unsolvable for every integer n>=3 and no option works; with C it solves exactly to n=5. Answer A is reported on the repaired reading — verify the source stem prints C."
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "working": "a+(m-1)d = 1/n and a+(n-1)d = 1/m. Subtracting: (m-n)d = (m-n)/(mn) so d = 1/(mn). Then a = 1/n - (m-1)/(mn) = 1/(mn). Hence a = d and a - d = 0.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 25,
+    "answer": "B",
+    "working": "Product of 9 terms = a^9 r^36 = (a r^4)^9 = (T5)^9. The 5th term is the middle term, so product = 2^9 = 512.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Geometric Progressions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 26,
+    "answer": "D",
+    "working": "1/a_k in AP with common difference d, so a_k - a_{k+1} = d a_k a_{k+1}, giving sum = (a_1 - a_n)/d. Also 1/a_n - 1/a_1 = (n-1)d gives d = (a_1 - a_n)/((n-1)a_1 a_n). Substituting, sum = (n-1) a_1 a_n.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 27,
+    "answer": "C",
+    "working": "(X union Y)^c = X^c intersect Y^c, so X intersect (X union Y)^c = (X intersect X^c) intersect Y^c = empty set.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 28,
+    "answer": "D",
+    "working": "P: sin(t) - cos(t) = sqrt2 cos(t) gives tan(t) = 1 + sqrt2. Q: sin(t) + cos(t) = sqrt2 sin(t) gives cos(t) = (sqrt2 - 1) sin(t), i.e. tan(t) = 1/(sqrt2 - 1) = sqrt2 + 1. Identical condition (both = 2.41421...), and cos(t)=0 / sin(t)=0 are impossible in either set, so P = Q.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "Simultaneous and Combined Trigonometric Systems",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 29,
+    "answer": "D",
+    "working": "Ordered pairs (A,B) with A intersect B empty: each of 4 elements goes to A, B, or neither = 3^4 = 81. Only (empty, empty) is self-paired, so unordered count = (81-1)/2 + 1 = 41.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "working": "Non-zero solution requires the determinant to vanish: |4 k 2; k 4 1; 2 2 1| = -(k-4)(k-2) = 0, so k = 2 or k = 4 — two values.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 31,
+    "answer": "B",
+    "working": "x<0 and y<0 make log x and log y undefined, but xy>0 so log(xy) exists. Since (-x)(-y) = xy with -x>0, -y>0, log(xy) = log(-x) + log(-y).",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Logarithm Identities, Change of Base, and Sums",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 32,
+    "answer": "C",
+    "working": "The stem and all three options carry the same OCR fraction-flattening: the intended expressions are y = a^(1/(1-log_a x)) and z = a^(1/(1-log_a y)). With p = log_a x, log_a y = 1/(1-p), log_a z = (p-1)/p, so 1/(1-log_a z) = p and a^(1/(1-log_a z)) = x — verified numerically (a=3, x=7 recovers x = 7.000). That is option C.",
+    "confidence": "medium",
+    "chapter": "Logarithms",
+    "subtopic": "Logarithm Identities, Change of Base, and Sums",
+    "difficulty": "MODERATE",
+    "notes": "OCR DEFECT (fraction flattened in stem AND options): a^{1/(1-log_a t)} has been printed as 1/a^{1-log_a t} throughout. Under the LITERAL printed reading y = x/a and z = x/a^2, so x = a^2 z, which matches NO option (A = 1/(az), B = a^(-z)/z, C = z/a) and the answer would be D. Option B's exponent 'z + log_a z' is itself garbled (should be a digit, not z), confirming OCR damage in the option block. Answer C is reported on the intended/classic reading; verify against the source paper."
+  },
+  {
+    "number": 33,
+    "answer": "C",
+    "working": "AP condition: 2 log(2^x - 1) = log 2 + log(2^x + 3), so (t-1)^2 = 2(t+3) with t = 2^x. Then t^2 - 4t - 5 = 0, t = 5 or t = -1; t>1 forces t = 5, so x = log_2 5.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "MODERATE",
+    "notes": "The stem's separator between the first two log terms is missing (a comma dropped by OCR), but the three-consecutive-terms reading is unambiguous."
+  },
+  {
+    "number": 34,
+    "answer": "A",
+    "working": "A binary fraction 0.b1 b2 b3... equals b1*2^-1 + b2*2^-2 + ..., i.e. each digit is multiplied by 2 raised to negative powers.",
+    "confidence": "high",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary to Decimal Conversion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 35,
+    "answer": "B",
+    "working": "Repeated division by 2 produces the least significant bit first, so the remainders are read in reverse order of generation — bottom to top.",
+    "confidence": "high",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary to Decimal Conversion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 36,
+    "answer": "D",
+    "working": "S = midpoint of QR = (6.5, 1). Slope PS = (1-2)/(6.5-2) = -2/9. Line through (1,-1): y+1 = -(2/9)(x-1), i.e. 2x + 9y + 7 = 0 (checks: 2 - 9 + 7 = 0).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Equation, Slope, and Family of Lines",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 37,
+    "answer": "B",
+    "working": "H = 2ab/(a+b). (H+a)/(H-a) = (a+3b)/(b-a) and (H+b)/(H-b) = (b+3a)/(a-b). Sum = [(a+3b)-(b+3a)]/(b-a) = (2b-2a)/(b-a) = 2. Verified for (a,b) = (2,3), (5,11), (1,7).",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "MODERATE",
+    "notes": "Stem typo: 'harmonic mean between a and be H' should read 'a and b be H'. Does not affect the answer."
+  },
+  {
+    "number": 38,
+    "answer": "A",
+    "working": "If |z| = 1 then |2/z| = 2/|z| = 2, so w = 2/z traces the circle |w| = 2.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 39,
+    "answer": "C",
+    "working": "|z-3| = |z-5| is the set of points equidistant from 3 and 5, i.e. the perpendicular bisector of that segment — the straight line x = 4.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "working": "Infinite GP with |x|<1: y = x/(1-x). Then y - xy = x, so x = y/(1+y). Checked with x = 0.25, y = 1/3: y/(1+y) = 0.25.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Geometric Progressions",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

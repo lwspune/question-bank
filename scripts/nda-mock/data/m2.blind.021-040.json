@@ -1,0 +1,202 @@
+[
+  {
+    "number": 21,
+    "answer": "B",
+    "working": "For x>0, f=log x so f'=1/x. For x<0, f=log(-x) so f'=(-1)/(-x)=1/x. Both branches give 1/x.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 22,
+    "answer": "D",
+    "working": "dy/dx = 2x gives y = x^2 + C; through the origin (0,0) gives C = 0, so y = x^2.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": "Option (B) is garbled OCR: 'y^2(1+x^3) x^4' has no relational sign, so it is not an equation. Does not affect the answer."
+  },
+  {
+    "number": 23,
+    "answer": "C",
+    "working": "Intended ODE dy = -cosec^2(x+y)dx: put v=x+y, dv/dx = 1 - cosec^2 v = -cot^2 v, so -tan^2 v dv = dx, giving v - tan v = x + c, i.e. y - c = tan(x+y).",
+    "confidence": "medium",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — dx and dy appear swapped in the stem. Read LITERALLY as printed ('-cosec^2(x+y)dy = dx') we get dy/dx = -sin^2(x+y); with v=x+y, dv/dx = cos^2 v, so tan(x+y) = x + c, i.e. 'x - c = tan(x+y)', which is NOT an option and would force (D). The option list is built around the 'y - c' form (A and C both use it), which only arises from dy = -cosec^2(x+y)dx, so (C) is the intended key and the stem's differentials are transposed. Option (B) is also garbled OCR copied from Q22 ('y^2(1+x^2)x^4', no relational sign)."
+  },
+  {
+    "number": 24,
+    "answer": "C",
+    "working": "4x^2+9y^2=1 is x^2/(1/2)^2 + y^2/(1/3)^2 = 1, so a=1/2, b=1/3 and area = pi*a*b = pi/6.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Bounded by a Curve, Lines, and Axes",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 25,
+    "answer": "B",
+    "working": "1110 = 3*360 + 30, so sin(1110 deg) = sin(30 deg) = 1/2.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 26,
+    "answer": "D",
+    "working": "y=sin(m arcsin x) satisfies (1-x^2)y'' - x y' + m^2 y = 0. At x=0, y(0)=0 so y''(0) = 0, which is none of m, m^2, m^2+2.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": "Cross-checked by series: y = mx + (m(1-m^2)/6)x^3 + ... has no x^2 term, confirming y''(0)=0."
+  },
+  {
+    "number": 27,
+    "answer": "D",
+    "working": "x->0+ gives -1/x -> -inf so e^(-1/x) -> 0; x->0- gives -1/x -> +inf so e^(-1/x) -> +inf. One-sided limits differ, so the limit does not exist.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 28,
+    "answer": "C",
+    "working": "{(d^4y/dx^4)^3}^(2/3) = (d^4y/dx^4)^2, so the highest derivative is the 4th (order 4) and its power is 2 (degree 2).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 29,
+    "answer": "A",
+    "working": "Divide by y^2: (x dy - y dx)/y^2 = x dx, i.e. -d(x/y) = x dx, so x/y = -x^2/2 + C, giving x^2 y + 2x = 2cy.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": "Verified by back-differentiating x^2y+2x=2cy, which reproduces y' = y^2 + y/x, the original equation."
+  },
+  {
+    "number": 30,
+    "answer": "C",
+    "working": "ax^3 and bx are odd, so their integrals over [-2,2] vanish; the integral equals 4c, depending on c only.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 31,
+    "answer": "A",
+    "working": "y = 2x+5 gives x = (y-5)/2, so g^{-1}(x) = (x-5)/2.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "working": "(1) x^2/x = x for x != 0, so the limit is 0 and exists — true. (2) x^2/x is undefined at x=0, hence not continuous there — true. (3) |x|/x has one-sided limits -1 and +1, so the limit does not exist — true. All three hold.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": "Statement 2 is true on the standard definition: continuity at a point requires the point to be in the domain, and x=0 is excluded from the domain of x^2/x. A reader who silently cancels to f(x)=x would wrongly call it continuous and pick (D)."
+  },
+  {
+    "number": 33,
+    "answer": null,
+    "working": "For every x<1 (both sides of 0), 1-x>0 so |1-x|=1-x and f(x)=1/(1-(1-x))=1/x. Then x->0- gives -inf and x->0+ gives +inf, so the two-sided limit does not exist.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — the mathematically correct answer ('the limit does not exist') appears in NO option. f reduces to 1/x on a punctured neighbourhood of 0, so the one-sided limits are -inf and +inf and the limit fails to exist; it is not 0, 1 or -1 either. Option (B) 'infinity' is presumably the intended key under the loose convention that 1/x 'tends to infinity' at 0, but that convention is wrong here because the two sides carry opposite signs. Note that Q27 in this same paper DOES offer 'does not exist' as an option for an identical sign-mismatch situation, so the omission here is an inconsistency in the paper, not a deliberate convention. Recommend reviewing the printed key: if it is (B), the question should carry a note or be corrected."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "working": "0/0 form; L'Hopital in x gives numerator' = 1/sqrt(a+2x) - 3/(2 sqrt(3x)) -> -1/(2 sqrt(3a)) and denominator' = 1/(2 sqrt(3a+x)) - 1/sqrt(x) -> -3/(4 sqrt a); the ratio is 4/(6 sqrt 3) = 2/(3 sqrt 3).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "Numerically checked with alpha=1 at x=1.01: ratio 0.3845 vs 2/(3 sqrt 3) = 0.3849."
+  },
+  {
+    "number": 35,
+    "answer": "D",
+    "working": "Taking logs, y log x = x - y so y = x/(1+log x); then dy/dx = [(1+log x) - 1]/(1+log x)^2 = log x/(1+log x)^2.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 36,
+    "answer": "A",
+    "working": "f'(x) = 1/x - 1 = 0 gives x = 1; f''(x) = -1/x^2 < 0 so it is a maximum, and f(1) = log 1 - 1 = -1.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 37,
+    "answer": "A",
+    "working": "Square base x with height h and volume x^2 h = 10 gives h = 10/x^2; a closed box has surface area 2x^2 + 4xh = 2x^2 + 40/x.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "working": "cos x has derivative -sin x < 0 exactly on (0, pi), so 0 < x < pi is the full interval of monotonic decrease; on (0, 2pi) it increases after pi.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "Minor design flaw: options (A) and (B) are sub-intervals of (C), so all three are literally true statements; (C) is the intended answer as the maximal such interval. (D) is the only strictly false option."
+  },
+  {
+    "number": 39,
+    "answer": "C",
+    "working": "Multiply by e^{-x}: integral of e^{-x}/(1+e^{-x}) dx; with u = 1+e^{-x}, du = -e^{-x}dx, giving -ln u = -ln(1+e^{-x}) + c.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "working": "sin^2 t + 2cos^2 t - 1 = (sin^2 t + cos^2 t) + cos^2 t - 1 = cos^2 t, so the integral is integral of sec^2 t dt = tan t + c.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+    "difficulty": "EASY",
+    "notes": "Cosmetic OCR artifact only: the stem renders as '2\\cos^{2}{\\theta - 1}', where the brace wrongly swallows the '- 1'. The intended denominator is sin^2(theta) + 2cos^2(theta) - 1; the alternative literal reading 2cos^2(theta-1) would make the integral non-elementary and match no option, so the intent is unambiguous."
+  }
+]

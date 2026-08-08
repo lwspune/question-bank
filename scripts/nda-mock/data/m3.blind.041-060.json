@@ -1,0 +1,202 @@
+[
+  {
+    "number": 41,
+    "answer": "B",
+    "working": "y = 5^{log x} => log y = log x * log 5 => log x = (log y)/(log 5), so x = 10^{(log y)/(log 5)} = y^{1/log 5}. The inverse relation is x = y^{1/\\log 5}.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "MODERATE",
+    "notes": "All four options are printed as 'y = ...' (OCR), which is nonsense for an inverse; they are clearly meant to be 'x = ...'. Reading them that way, (B) x = y^{1/log 5} is the unique correct one."
+  },
+  {
+    "number": 42,
+    "answer": "C",
+    "working": "The stem's function reduces to f(x) = tan x on A = (-pi/2, pi/2) -> R. tan is strictly increasing on that open interval and its range is all of R, so it is one-one and onto, i.e. bijective.",
+    "confidence": "medium",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "notes": "Two defects. (1) The stem is badly OCR-corrupted: 'f(x) = efined by n ow owng function intsh units perpendicular to the vectors tan x' — the function is recoverable only as tan x. (2) Options (A) Injective and (C) Bijective are BOTH true statements for tan on (-pi/2, pi/2) -> R, so 'which one is correct' has two correct answers; (C) is the intended (strongest) one."
+  },
+  {
+    "number": 43,
+    "answer": "D",
+    "working": "a^x > 0 for every real x, so an exponential function never takes the value zero; polynomials, trigonometric and logarithmic functions all vanish somewhere in their domains.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 44,
+    "answer": "D",
+    "working": "y = (m/l)x + alpha, z = (n/l)x + beta is the symmetric line x/l = (y-alpha)/m = (z-beta)/n with direction ratios (l, m, n); the second line has (l', m', n'). Orthogonality of two lines requires ll' + mm' + nn' = 0.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": "Options are printed as lowercase (a)-(d) inline (with (a) and (b) run together on one line) rather than as the usual A-D block; 'll'' is OCR'd as 'II''. Mapped (d) -> D. The second line's stem prints only its y-equation (the z-equation is missing), but the direction ratios (l', m', n') are still implied by the options."
+  },
+  {
+    "number": 45,
+    "answer": "D",
+    "working": "A is false: log x < 0 for 0 < x < 1 (e.g. log 0.1 = -1), so log x is not positive for all x > 0. R is true: the domain of log x is exactly x > 0.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "answer": "D",
+    "working": "With f(0)=0, f'(0) = lim_{h->0} (h sin(1/h))/h = lim sin(1/h), which oscillates and does not exist, so A is false. But |x sin(1/x)| <= |x| -> 0, so f is continuous at 0 and R is true.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": "The stem does not state f(0) = 0 explicitly (the formula is undefined at x = 0); the standard reading f(0)=0 is assumed, and it is the only reading under which R can be true."
+  },
+  {
+    "number": 47,
+    "answer": "C",
+    "working": "sin theta = cos theta => tan theta = 1 => theta = pi/4, 5pi/4 in [0, 2pi], so X has 2 elements and A is true. R is false: sin and cos are both negative in the THIRD quadrant; in the second sin>0, cos<0 and in the fourth sin<0, cos>0.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 48,
+    "answer": "D",
+    "working": "A is false: {x in R | x^2 < 0} is a perfectly well-defined set — it is the empty set. R is true: x^2 >= 0 for every real x (which is exactly why the set is empty, not why it fails to be a set).",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 49,
+    "answer": "A",
+    "working": "P(at least one boy) = 1 - P(all four girls) = 1 - (1/2)^4 = 1 - 1/16 = 15/16.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 50,
+    "answer": "B",
+    "working": "P(girl) = 0.40*0.05 + 0.60*0.10 = 0.02 + 0.06 = 0.08. P(arts | girl) = 0.06/0.08 = 3/4.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 51,
+    "answer": "B",
+    "working": "P(B) = 1 - P(B-bar) = 1/2. P(A) = P(A u B) + P(A n B) - P(B) = 5/6 + 1/3 - 1/2 = 2/3, so P(A-bar) = 1/3.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 52,
+    "answer": "D",
+    "working": "Each toss has 2 outcomes, so the sample space of 5 tosses has 2^5 = 32 sample points.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": "Loose wording: the number of EVENTS (subsets of the sample space) is 2^32, not 32; 32 is the number of OUTCOMES / sample points. Since 2^32 appears in no option, the intended answer is clearly 32 = (D)."
+  },
+  {
+    "number": 53,
+    "answer": "B",
+    "working": "P = (7*6*5)/7^3 = 210/343 = 0.6122..., which is nearest to 0.6.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "working": "After the transfer bag 2 holds 7 balls. P(black) = P(white moved)*4/7 + P(black moved)*5/7 = (5/8)(4/7) + (3/8)(5/7) = (20+15)/56 = 35/56 (= 5/8).",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 55,
+    "answer": "C",
+    "working": "Both are standard criteria for choosing the number of classes: the distribution should show a single clear peak (frequencies rise to a maximum then fall), and observations within a class should cluster about the class mid-point so that the mid-point fairly represents the class.",
+    "confidence": "medium",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "MODERATE",
+    "notes": "Purely a textbook-convention recall item with no derivation available; both stated criteria are standard, hence 'Both 1 and 2', but confidence is only medium because it rests on convention rather than computation."
+  },
+  {
+    "number": 56,
+    "answer": "B",
+    "working": "Four separate towns whose population magnitudes are being compared (519 up to 12185) is categorical, non-continuous data with a very wide spread — a bar chart is the appropriate display. A histogram needs a continuous class interval; 'cubic chart' is not a standard diagram; a pie diagram shows components of one total and would render the 519 sector unreadably thin.",
+    "confidence": "low",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "EASY",
+    "notes": "DEFECT: the stem has NO question sentence at all — only the table is printed, the line asking (presumably) 'which is the most appropriate diagram to represent the above data?' is missing. Answer inferred from the option set. Also genuinely ambiguous between (A) pie diagram (component parts of a total) and (B) bar chart (comparison of magnitudes); I chose (B) on the comparison-of-categories reading, but the printed key could legitimately be (A) — flag for source verification."
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "working": "Series B = (Series A - 1000)/10 term by term (1019->1.9, 1008->0.8, ...). SD is unaffected by the shift and scales by 1/10, so SD(B) = sqrt(38)/10 = sqrt(38/100) = sqrt(0.38).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": "Note sqrt(0.38) = 0.6164, so options (B) and (C) 0.38 are distinct values — (C) is the variance-scaled decoy, not a duplicate."
+  },
+  {
+    "number": 58,
+    "answer": "C",
+    "working": "G^(n1+n2) = G1^n1 * G2^n2, so taking logs: (n1+n2) log G = n1 log G1 + n2 log G2, i.e. log G = (n1 log G1 + n2 log G2)/(n1+n2).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 59,
+    "answer": "D",
+    "working": "Adding the constant (a-b) to every observation shifts the mean by the same constant: new mean = (sum x_i + n(a-b))/n = x-bar + (a-b).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": "Minor OCR typo in the stem: '(A-b)' should read '(a-b)', as used in the options."
+  },
+  {
+    "number": 60,
+    "answer": "B",
+    "working": "For a positively (right) skewed distribution the long tail pulls the mean furthest right: Mode < Median < Mean.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "number": 101,
+    "answer": "A",
+    "working": "Let \\(s=\\sin\\theta\\). From \\(s+s^2+s^3=1\\), \\(s+s^3=1-s^2=\\cos^2\\theta=c^2\\), so \\(s(1+s^2)=c^2\\); with \\(s^2=1-c^2\\) this is \\(s(2-c^2)=c^2\\), i.e. \\(s=c^2/(2-c^2)\\). Squaring and using \\(s^2=1-c^2\\): \\(c^4=(1-c^2)(2-c^2)^2=4-8c^2+5c^4-c^6\\), hence \\(c^6-4c^4+8c^2=4\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 102,
+    "answer": "D",
+    "working": "In a cyclic quadrilateral opposite angles are supplementary: \\(A+C=\\pi\\) and \\(B+D=\\pi\\), so \\(\\cos C=-\\cos A\\) and \\(\\cos D=-\\cos B\\); the sum telescopes to 0. Numeric check with \\(A=80^\\circ,C=100^\\circ,B=70^\\circ,D=110^\\circ\\): \\(0.1736-0.1736+0.3420-0.3420=0\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 103,
+    "answer": "D",
+    "working": "\\(\\cos 40^\\circ+\\cos 80^\\circ=2\\cos 60^\\circ\\cos 20^\\circ=\\cos 20^\\circ\\), and \\(\\cos 160^\\circ=-\\cos 20^\\circ\\), so those three cancel; \\(\\cos 240^\\circ=-\\tfrac12\\). Numeric: \\(0.766+0.1736-0.9397-0.5=-0.5\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 104,
+    "answer": "A",
+    "working": "\\(\\pi/12=15^\\circ\\) and \\(5\\pi/12=75^\\circ\\) are complementary, so \\(\\cos^2 15^\\circ+\\cos^2 75^\\circ=\\cos^2 15^\\circ+\\sin^2 15^\\circ=1\\); adding \\(\\cos^2 45^\\circ=\\tfrac12\\) gives \\(\\tfrac32\\). Numeric: \\(0.9330+0.5+0.0670=1.5\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 105,
+    "answer": "C",
+    "working": "\\(2\\sin\\frac{A}{2}\\sin\\frac{5A}{2}=\\cos 2A-\\cos 3A\\), so the expression is \\(16(\\cos 2A-\\cos 3A)\\). With \\(\\cos A=\\tfrac34\\): \\(\\cos 2A=2(9/16)-1=1/8\\) and \\(\\cos 3A=4(27/64)-3(3/4)=27/16-36/16=-9/16\\). Difference \\(=2/16+9/16=11/16\\), times 16 gives 11.",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 106,
+    "answer": "A",
+    "working": "For each angle \\((\\sec\\theta+\\tan\\theta)(\\sec\\theta-\\tan\\theta)=\\sec^2\\theta-\\tan^2\\theta=1\\), so the required product is the reciprocal of the given one: \\(1/(\\tan\\alpha\\tan\\beta\\tan\\gamma)=\\cot\\alpha\\cot\\beta\\cot\\gamma\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 107,
+    "answer": "A",
+    "working": "GM condition: \\(\\sin^2\\beta=\\sin\\alpha\\cos\\alpha\\). Then \\(\\cos 2\\beta=1-2\\sin^2\\beta=1-2\\sin\\alpha\\cos\\alpha=1-\\sin 2\\alpha\\). Option A: \\(2\\sin^2(\\pi/4-\\alpha)=1-\\cos(\\pi/2-2\\alpha)=1-\\sin 2\\alpha\\). Numeric check \\(\\alpha=30^\\circ\\): \\(\\sin^2\\beta=0.4330\\Rightarrow\\cos2\\beta=1-0.8660=0.1340\\); \\(2\\sin^2 15^\\circ=0.1340\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 108,
+    "answer": "A",
+    "working": "In a triangle \\(\\tan\\frac{A}{2}\\tan\\frac{B}{2}+\\tan\\frac{B}{2}\\tan\\frac{C}{2}+\\tan\\frac{C}{2}\\tan\\frac{A}{2}=1\\). Substituting: \\(\\frac13\\cdot\\frac23+\\tan\\frac{C}{2}\\left(\\frac23+\\frac13\\right)=1\\Rightarrow \\frac29+\\tan\\frac{C}{2}=1\\Rightarrow \\tan\\frac{C}{2}=\\frac79\\). Check: \\(A/2=18.435^\\circ, B/2=33.690^\\circ\\Rightarrow C/2=90-52.125=37.875^\\circ\\), \\(\\tan 37.875^\\circ=0.7778=7/9\\).",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Stem prints \"plain triangle\" for \"plane triangle\" — harmless typo, no effect on the mathematics."
+  },
+  {
+    "number": 109,
+    "answer": "D",
+    "working": "\\(\\pi^2=9.8696\\), so \\([\\pi^2]=9\\) and \\([-\\pi^2]=-10\\) (not \\(-9\\)). Hence \\(f(x)=\\cos 9x+\\cos(-10x)=\\cos 9x+\\cos 10x\\). Testing: \\(f(\\pi/4)=\\cos\\frac{9\\pi}{4}+\\cos\\frac{5\\pi}{2}=0.7071\\ne 2\\); \\(f(\\pm\\pi)=-1+1=0\\), so B and C fail; \\(f(\\pi/2)=\\cos\\frac{9\\pi}{2}+\\cos 5\\pi=0+(-1)=-1\\), so D holds.",
+    "chapter": "Functions",
+    "subtopic": "Greatest Integer Function",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 110,
+    "answer": "C",
+    "working": "Adding 1 to each term keeps the AP: \\(\\frac{a+b+c}{b+c},\\frac{a+b+c}{c+a},\\frac{a+b+c}{a+b}\\) in AP, so \\(\\frac{1}{b+c},\\frac{1}{c+a},\\frac{1}{a+b}\\) are in AP. Then \\(2(b+c)(a+b)=(c+a)(a+2b+c)\\) reduces to \\(2b^2=a^2+c^2\\), i.e. \\(a^2,b^2,c^2\\) in AP. Numeric check with \\(a=1,b=5,c=7\\) (\\(1,25,49\\) in AP): \\(\\frac1{12},\\frac58,\\frac76\\) have common difference \\(\\frac{13}{24}\\) — confirmed; note \\(1,5,7\\) is not an AP/GP, ruling out A, B and D.",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "\\(\\sin^{-1}u\\) needs \\(-1\\le u\\le 1\\); with \\(u=5x\\) this gives \\(-\\tfrac15\\le x\\le\\tfrac15\\), a CLOSED interval (the endpoints \\(x=\\pm 1/5\\) give \\(\\sin^{-1}(\\pm1)=\\pm\\pi/2\\), which is defined), so \\([-1/5,1/5]\\) not the open interval of option A.",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 112,
+    "answer": "D",
+    "working": "Denominator \\(x^2+x-6=(x+3)(x-2)\\) vanishes at \\(x=2\\) and \\(x=-3\\), so the domain is \\(R\\setminus\\{2,-3\\}\\). (The numerator \\((x-1)(x-2)\\) also vanishes at \\(x=2\\), but a \\(0/0\\) point is still excluded from the domain — the function is simply undefined there.)",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 113,
+    "answer": "A",
+    "working": "\\(\\sin 2x\\) has period \\(2\\pi/2=\\pi\\); taking the modulus folds the negative half onto the positive half and halves the period, giving \\(\\pi/2\\). Check: \\(|\\sin 2(x+\\pi/2)|=|\\sin(2x+\\pi)|=|-\\sin 2x|=|\\sin 2x|\\), and no smaller value works since \\(|\\sin 2x|=0\\) exactly at multiples of \\(\\pi/2\\).",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 114,
+    "answer": "D",
+    "working": "\\(\\vec a\\cdot\\vec b=0\\Rightarrow\\) perpendicular. \\(\\cos 60^\\circ=\\frac{(\\vec a+\\vec b)\\cdot\\vec a}{|\\vec a+\\vec b||\\vec a|}=\\frac{|\\vec a|}{|\\vec a+\\vec b|}=\\tfrac12\\Rightarrow|\\vec a+\\vec b|=2|\\vec a|\\). Since \\(|\\vec a+\\vec b|^2=|\\vec a|^2+|\\vec b|^2\\), we get \\(|\\vec b|^2=3|\\vec a|^2\\), i.e. \\(|\\vec b|=\\sqrt3|\\vec a|\\), which is option D (\\(\\sqrt3|\\vec a|=|\\vec b|\\)). Check \\(\\vec a=(1,0),\\vec b=(0,\\sqrt3)\\): \\(\\vec a+\\vec b=(1,\\sqrt3)\\) makes \\(60^\\circ\\) with the x-axis. Option C is the reversed relation.",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 115,
+    "answer": "C",
+    "working": "Independence \\(\\Rightarrow \\mathrm{cov}(x,y)=0\\Rightarrow r=0\\), and \\(b_{yx}=\\mathrm{cov}(x,y)/\\sigma_x^2=r\\sigma_y/\\sigma_x=0\\).",
+    "chapter": "Statistics",
+    "subtopic": "Regression and Correlation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 116,
+    "answer": "C",
+    "working": "\\((1010)_2=8+2=10\\) and \\((111)_2=4+2+1=7\\), so the product is \\(70\\). Cross-check in binary: \\(1010\\times111=1000110_2=64+4+2=70\\).",
+    "chapter": "Binary Numbers",
+    "subtopic": "Binary to Decimal Conversion",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 117,
+    "answer": "D",
+    "working": "Equal distances each way, so average speed is the harmonic mean: \\(\\frac{2\\cdot 12\\cdot 14}{12+14}=\\frac{336}{26}=\\frac{168}{13}=12\\frac{12}{13}\\) km/h. Sanity check with \\(d=84\\) km: times \\(7\\) h and \\(6\\) h, total \\(168/13\\) km/h — matches, and it lies between 12 and 14 as it must.",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (C) is printed as \"11 km//h\" — a stray doubled slash for \"11 km/h\". Cosmetic only; (C) is a distractor either way (11 lies outside [12,14] and cannot be an average of the two speeds)."
+  },
+  {
+    "number": 118,
+    "answer": "A",
+    "working": "With \\(C=90^\\circ\\), \\(\\tan\\frac{B}{2}=\\frac{\\sin B}{1+\\cos B}=\\frac{b/c}{1+a/c}=\\frac{b}{c+a}\\); since \\(b^2=c^2-a^2=(c-a)(c+a)\\), this equals \\(\\sqrt{\\frac{c-a}{c+a}}\\). Numeric check on the 3-4-5 triangle (\\(a=3,b=4,c=5\\)): \\(\\tan(B/2)=\\frac{4/5}{8/5}=\\tfrac12\\) and \\(\\sqrt{2/8}=\\tfrac12\\). Option B is negative under the radical (\\(a<c\\) always), option C is the reciprocal.",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 119,
+    "answer": "B",
+    "working": "By the sine rule, \\(\\frac{\\cos C+\\cos A}{c+a}=\\frac{2\\cos\\frac{A+C}{2}\\cos\\frac{A-C}{2}}{2R\\cdot 2\\sin\\frac{A+C}{2}\\cos\\frac{A-C}{2}}=\\frac{\\cot\\frac{A+C}{2}}{2R}=\\frac{\\tan\\frac{B}{2}}{2R}\\), while \\(\\frac{1-\\cos B}{b}=\\frac{1-\\cos B}{2R\\sin B}=\\frac{\\tan\\frac{B}{2}}{2R}\\); hence the expression \\(=\\frac{1}{b}\\). Verified numerically on two triangles: \\((3,4,5)\\) gives \\(\\frac{4/5}{8}+\\frac{3/5}{4}=\\tfrac14=\\tfrac1b\\), and \\((2,3,4)\\) gives \\(\\frac{5/8}{6}+\\frac{11/16}{3}=\\tfrac13=\\tfrac1b\\) — both single out \\(1/b\\) over \\(1/a\\) and \\(1/c\\).",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 120,
+    "answer": "C",
+    "working": "The terms are \\(\\frac85,\\frac{12}5,\\frac{16}5,\\frac{20}5,\\frac{24}5,\\dots\\), i.e. \\(t_k=\\frac{4(k+1)}5\\). Sum of squares of the first 10: \\(\\frac{16}{25}\\sum_{k=1}^{10}(k+1)^2=\\frac{16}{25}\\left(\\sum_{k=1}^{11}k^2-1\\right)=\\frac{16}{25}(506-1)=\\frac{16}{25}\\cdot 505=\\frac{16}{5}\\cdot 101=323.2\\). Comparing with \\(\\frac{16}{5}m\\) gives \\(m=101\\).",
+    "chapter": "Sequence & Series",
+    "subtopic": "Special Series and Special Sums",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  }
+]

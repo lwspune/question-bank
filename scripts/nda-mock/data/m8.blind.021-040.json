@@ -1,0 +1,187 @@
+[
+  {
+    "number": 21,
+    "answer": "C",
+    "working": "R2 -> R2-R1 gives (2a\\lambda+\\lambda^2,...); R3 -> R3-R1 gives (-2a\\lambda+\\lambda^2,...). Then R2 -> R2+R3 = 2\\lambda^2(1,1,1) and R3 -> R3-\\frac12 R2 = -2\\lambda(a,b,c), so D = 2\\lambda^2 \\cdot (-2\\lambda) \\cdot \\det[a^2,b^2,c^2;1,1,1;a,b,c] = 4\\lambda^3 \\det[a^2,b^2,c^2;a,b,c;1,1,1] after swapping the last two rows. Hence k\\lambda = 4\\lambda^3, k = 4\\lambda^2. Numeric check a,b,c = 1,2,3 and \\lambda=1: LHS determinant = -8, reference determinant = -2, so k\\lambda = 4 and k = 4 = 4\\lambda^2.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 22,
+    "answer": "B",
+    "working": "(AB-BA)^T = B^T A^T - A^T B^T = (-B)A - A(-B) = AB - BA, so AB-BA equals its own transpose and is symmetric. Numeric check with A = [[1,2,0],[2,0,1],[0,1,3]] and B = [[0,1,0],[-1,0,2],[0,-2,0]] confirms AB-BA is symmetric.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (D) prints \"I or -- I\" — the double hyphen is an en/em-dash artifact for the minus sign, i.e. the source meant \"I or -I\". Cosmetic only; the option is a distractor and the question is fully answerable."
+  },
+  {
+    "number": 23,
+    "answer": "D",
+    "working": "S is not reflexive: (x,x) in S would need x = x+1, impossible, so S is not an equivalence relation. T: x-x = 0 is an integer (reflexive); x-y integer implies y-x integer (symmetric); x-y and y-z integers imply x-z integer (transitive), so T is an equivalence relation.",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "working": "Replacing x by 1/x gives f(1/x) + 2f(x) = 3/x. Doubling this and subtracting the original: 3f(x) = 6/x - 3x, so f(x) = 2/x - x. Then f(x) = f(-x) gives 2/x - x = -2/x + x, i.e. 4/x = 2x, x^2 = 2, x = \\pm\\sqrt{2} — exactly two elements. Check: f(\\sqrt2) = 2/\\sqrt2 - \\sqrt2 = 0 = f(-\\sqrt2).",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 25,
+    "answer": "B",
+    "working": "f'(x) = 6x^2 - 30x + 36 = 6(x-2)(x-3), so f increases on [0,2) and decreases on (2,3] — not one-one (e.g. f(1) = 24 and f(2.?) repeats values in [28,29]). f(0)=1, f(2)=29, f(3)=28, so the image is [1,29] exactly, hence onto. Onto but not one-one.",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 26,
+    "answer": "A",
+    "working": "Rows 1 and 2 of A are e_1, e_2 so they are unchanged in A^2. Row 3 of A^2 = a(1,0,0) + b(0,1,0) + (-1)(a,b,-1) = (0,0,1). Hence A^2 = I, the unit matrix (A is an involutory matrix).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 27,
+    "answer": "B",
+    "working": "Symmetric gives A^T = A and skew-symmetric gives A^T = -A, so A = -A, i.e. 2A = 0 and A = O, the null matrix.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Question-quality remark, not damage: the null matrix is also technically a diagonal matrix, so option (A) is not strictly false. (B) is the specific and intended answer since it pins A uniquely."
+  },
+  {
+    "number": 28,
+    "answer": "D",
+    "working": "From 1+\\omega+\\omega^2 = 0 we get 1+\\omega = -\\omega^2, so 1+\\omega-\\omega^2 = -\\omega^2 - \\omega^2 = -2\\omega^2. Then (-2\\omega^2)^7 = -128\\,\\omega^{14} = -128\\,\\omega^{2} since 14 \\equiv 2 \\pmod 3.",
+    "chapter": "Complex Numbers",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 29,
+    "answer": "B",
+    "working": "(1+i)/(1-i) = (1+i)^2/((1-i)(1+i)) = 2i/2 = i. So i^x = 1, which holds exactly when x is a multiple of 4, i.e. x = 4n.",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 30,
+    "answer": "D",
+    "working": "z^2+z+1=0 makes z a primitive cube root of unity, so z^3 = 1 and 1/z = z^2. Then z+1/z = z+z^2 = -1; z^2+1/z^2 = z^2+z = -1; z^3+1/z^3 = 1+1 = 2; and the pattern repeats with period 3. Squares: 1, 1, 4, 1, 1, 4 summing to 12.",
+    "chapter": "Complex Numbers",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "working": "a = ar + ar^2 with a > 0 gives r^2 + r - 1 = 0, so r = (-1 \\pm \\sqrt5)/2. Terms are positive so r > 0, giving r = (\\sqrt5-1)/2 \\approx 0.618. Check: 0.618 + 0.618^2 = 0.618 + 0.382 = 1.",
+    "chapter": "Sequence & Series",
+    "subtopic": "Geometric Progressions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 32,
+    "answer": "D",
+    "working": "AP gives 2y = x+z. The arctan AP gives 2\\tan^{-1}y = \\tan^{-1}x + \\tan^{-1}z, i.e. 2y/(1-y^2) = (x+z)/(1-xz) = 2y/(1-xz), so for y \\neq 0 we get y^2 = xz. Thus x,y,z are simultaneously in AP and GP, which forces x = y = z.",
+    "chapter": "Sequence & Series",
+    "subtopic": "Interrelating AP, GP and HP",
+    "difficulty": "MODERATE",
+    "confidence": "high",
+    "notes": "Edge case worth flagging for the reviewer (not source damage): if y = 0 the step dividing by 2y is invalid, and x = -1, y = 0, z = 1 satisfies both stated AP conditions (-1,0,1 in AP; -\\pi/4, 0, \\pi/4 in AP) without x = y = z. So (D) is the intended answer but is not strictly forced; the other three options are each disprovable, so (D) is still the only defensible choice."
+  },
+  {
+    "number": 33,
+    "answer": "B",
+    "working": "First series has d = 4, second has d = 5; the first common term is 11 and common terms recur every LCM(4,5) = 20, giving the AP 11, 31, 51, ... Sum of 20 terms = (20/2)[2(11) + 19(20)] = 10(22+380) = 4020.",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 34,
+    "answer": "A",
+    "working": "\\tan 75^\\circ = \\tan(45^\\circ+30^\\circ) = 2+\\sqrt3 and \\cot 75^\\circ = \\tan 15^\\circ = 2-\\sqrt3, so the difference is (2+\\sqrt3)-(2-\\sqrt3) = 2\\sqrt3. Numeric check: 3.7321 - 0.2679 = 3.4641 = 2\\sqrt3.",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 35,
+    "answer": "B",
+    "working": "\\tan(A+B) = (-1/2 - 1/3)/(1 - (-1/2)(-1/3)) = (-5/6)/(5/6) = -1, so A+B = 3\\pi/4 modulo \\pi. Of the offered values only 3\\pi/4 has tangent -1 (\\tan(\\pi/4) = \\tan(5\\pi/4) = +1).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "medium",
+    "notes": "Not damage, but the stem fixes no quadrants, so A+B is determined only modulo \\pi. If A and B are both taken as principal values in (-\\pi/2, 0) then A+B \\approx -0.7854 = -\\pi/4, which is not offered. 3\\pi/4 is the only listed value with tangent -1, so (B) is the intended and only consistent answer."
+  },
+  {
+    "number": 36,
+    "answer": "D",
+    "working": "\\cot(A+B) = \\cot 225^\\circ = \\cot 45^\\circ = 1, and \\cot(A+B) = (\\cot A\\cot B - 1)/(\\cot A + \\cot B), so \\cot A\\cot B = 1 + \\cot A + \\cot B. Then (1+\\cot A)(1+\\cot B) = 1+\\cot A+\\cot B+\\cot A\\cot B = 2\\cot A\\cot B, making the ratio 1/2. Numeric check A = 100^\\circ, B = 125^\\circ: 0.12345/0.24693 = 0.49995.",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 37,
+    "answer": "C",
+    "working": "An injection from a 3-element set into a 4-element set picks distinct images in order: 4 \\times 3 \\times 2 = 24 (equivalently {}^4P_3 = 24).",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "working": "f(x) = x - [x] is the fractional-part function, and f(x+1) = (x+1) - [x+1] = x - [x] = f(x). No smaller positive p works since f is strictly increasing on [0,1) and f(0) = 0 \\neq f(p) for 0 < p < 1. Period 1.",
+    "chapter": "Functions",
+    "subtopic": "Greatest Integer Function",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 39,
+    "answer": "B",
+    "working": "Rationalize: ((3x-a)-(x+a))/((x-a)(\\sqrt{3x-a}+\\sqrt{x+a})) = 2(x-a)/((x-a)(\\sqrt{3x-a}+\\sqrt{x+a})) = 2/(\\sqrt{3x-a}+\\sqrt{x+a}) \\to 2/(2\\sqrt{2a}) = 1/\\sqrt{2a}. Numeric check a = 2, x = 2.001: (\\sqrt{4.003}-\\sqrt{4.001})/0.001 \\approx 0.4999 = 1/\\sqrt4 = 1/2.",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 40,
+    "answer": "B",
+    "working": "Divide numerator and denominator by x^2: (1 + b/x + 4/x^2)/(1 + a/x + 5/x^2) \\to 1/1 = 1 as x \\to \\infty. Equal leading degrees with equal leading coefficients give the limit 1.",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Option (C) is typeset as the capital letter \\(O\\) where the source clearly printed the digit 0 (zero) — the standard distractor for a rational limit at infinity. Cosmetic OCR artifact; it is not the answer, so answerability is unaffected."
+  }
+]

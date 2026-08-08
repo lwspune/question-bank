@@ -1,0 +1,202 @@
+[
+  {
+    "number": 61,
+    "answer": "D",
+    "working": "f'(x) numerator = (\\lambda\\cos x-6\\sin x)(2\\sin x+3\\cos x)-(\\lambda\\sin x+6\\cos x)(2\\cos x-3\\sin x) = 3\\lambda(\\cos^2x+\\sin^2x)-12(\\sin^2x+\\cos^2x)=3\\lambda-12. So f'>0 for all x iff 3\\lambda-12>0, i.e. \\lambda>4.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 62,
+    "answer": "D",
+    "working": "Reading the stem literally: f(a)=(2a^2-3)+3(3-a)+4 = 2a^2-3a+10. Minimum at a=3/4 gives 2(9/16)-9/4+10 = 9/8-18/8+80/8 = 71/8.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "The stem's spacing ('3\\ (3-a)') is OCR-noisy, but the literal reading yields exactly 71/8, an unusual value that matches option D character-for-character, so the reading is confirmed by the option list itself."
+  },
+  {
+    "number": 63,
+    "answer": "B",
+    "working": "AM-GM on positive terms: 4e^{2x}+9e^{-2x} \\ge 2\\sqrt{4\\cdot 9}=12, equality when 4e^{2x}=9e^{-2x} i.e. e^{4x}=9/4 (attainable). Minimum = 12.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 64,
+    "answer": "A",
+    "working": "Clearing the fraction: y(dy/dx)^2 = x + (dy/dx)^4. Only the first derivative occurs, so the order is 1 (the degree is 4).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": "'order fo' is an OCR typo for 'order of'; harmless. Classic order-vs-degree trap: degree 4 but order 1."
+  },
+  {
+    "number": 65,
+    "answer": "B",
+    "working": "y=a\\cos(x+b): y'=-a\\sin(x+b), y''=-a\\cos(x+b)=-y. Hence d^2y/dx^2 + y = 0 (two parameters => second order).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 66,
+    "answer": "A",
+    "working": "Differentiate x^2y=a: 2xy + x^2 y' = 0 => y' = -2y/x => dy/dx + 2y/x = 0.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 67,
+    "answer": "B",
+    "working": "dy/dx = \\sin(x+y). Put v=x+y: dv/dx = 1+\\sin v, so \\int dv/(1+\\sin v) = x+c. \\int dv/(1+\\sin v)=\\int(1-\\sin v)/\\cos^2 v\\,dv=\\tan v-\\sec v. Hence \\tan(x+y)-\\sec(x+y)=x+c (verified: d/dv(\\tan v-\\sec v)=(1-\\sin v)/\\cos^2 v = 1/(1+\\sin v)).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 68,
+    "answer": null,
+    "working": "As printed the limits are both \\pi, so the integral is identically 0 — a value in no option. The integrand f(x)=\\sin^4x/(\\sin^4x+\\cos^4x) satisfies f(\\pi/2-x)=1-f(x) giving \\int_0^{\\pi/2}f=\\pi/4, and f has period \\pi, so \\int_0^{\\pi}f=\\pi/2 and \\int_{\\pi}^{2\\pi}f=\\pi/2.",
+    "confidence": "low",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT: limits printed as \\int_{\\pi}^{\\pi}, which evaluates to 0 — not an option. Two plausible repairs give \\pi/2 = option B (lower limit 0 instead of \\pi, or upper limit 2\\pi with the '2' lost), while a third (upper limit \\pi/2) gives \\pi/4 = option A. Both candidate values are present as options, so the intended key is NOT determinable from the damaged stem — needs source verification. B is the more likely intent since the printed lower limit \\pi is probably genuine and f has period \\pi."
+  },
+  {
+    "number": 69,
+    "answer": null,
+    "working": "Area = \\int_0^{\\pi/2}\\sin^2x\\,dx = \\int_0^{\\pi/2}(1-\\cos 2x)/2\\,dx = [x/2-\\sin 2x/4]_0^{\\pi/2} = \\pi/4.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Bounded by a Curve, Lines, and Axes",
+    "difficulty": "EASY",
+    "notes": "DEFECT: options (A) and (B) are printed byte-identical as \\frac{\\pi}{4}. The correct VALUE is \\pi/4, so it appears twice and the correct LETTER is indeterminate. Presumably option B was originally \\pi/2 and the intended key is A — needs source verification. Value confidence is high; letter is the only problem."
+  },
+  {
+    "number": 70,
+    "answer": "A",
+    "working": "Smaller part is 1\\le x\\le 2: area = 2\\int_1^2\\sqrt{4-x^2}dx = 2[(x/2)\\sqrt{4-x^2}+2\\arcsin(x/2)]_1^2 = 2[\\pi-(\\sqrt3/2+\\pi/3)] = 4\\pi/3-\\sqrt3 \\approx 2.46, indeed less than half of 4\\pi.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Bounded by a Curve, Lines, and Axes",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 71,
+    "answer": "D",
+    "working": "3x+y=3 has slope -3, so the perpendicular has slope 1/3. Through (2,2): y-2=(1/3)(x-2) => y = x/3 + 4/3. y-intercept = 4/3.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Angle Between Lines, Parallelism, and Perpendicularity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 72,
+    "answer": "C",
+    "working": "Zero intercepts on both axes => the line passes through the origin. Perpendicular to 3x+4y+6=0 (slope -3/4) => slope 4/3. Through (0,0): y=(4/3)x, i.e. 4x-3y=0.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Angle Between Lines, Parallelism, and Perpendicularity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 73,
+    "answer": "C",
+    "working": "3x-y+2=0 => y=3x+2; substituting into 5x-2y+7=0 gives 5x-6x-4+7=0 => x=3 (y=11). Infinite slope => vertical line x=3.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Equation, Slope, and Family of Lines",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 74,
+    "answer": "C",
+    "working": "AC lies on the x-axis, so the altitude from B(3,4) is x=3. BC has slope (0-4)/(4-3)=-4, so the altitude from A(0,0) is y=x/4; at x=3, y=3/4. Cross-check with the altitude from C(4,0) perpendicular to AB (slope 4/3): y=-3/4(x-4) gives y=3/4 at x=3. Orthocentre (3,3/4).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "MODERATE",
+    "notes": "'Orthorcentre fo' is OCR noise for 'Orthocentre of'; harmless."
+  },
+  {
+    "number": 75,
+    "answer": "B",
+    "working": "(x-4)^2+(y-2)^2 = y^2 => x^2-8x+16+y^2-4y+4 = y^2 => x^2-8x-4y+20=0.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 76,
+    "answer": "B",
+    "working": "The centre lies on the perpendicular bisector x=1. Distance to (4,0) = 5: 3^2+k^2=25 => k=\\pm 4. Centres (1,4) and (1,-4) => exactly two circles.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circles Through Given Points and Concyclicity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 77,
+    "answer": "B",
+    "working": "Touching the x-axis with centre (1,2) => radius = |2| = 2. (x-1)^2+(y-2)^2=4 => x^2+y^2-2x-4y+1=0.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circle Equation — Centre, Radius, Diameter, and Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 78,
+    "answer": "A",
+    "working": "Vertices are (0,0),(1,0),(1,1),(0,1). Diagonal (0,0)-(1,1) is y=x; diagonal (1,0)-(0,1) is x+y=1.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 79,
+    "answer": "A",
+    "working": "Lines perpendicular to ax+by+c=0 have the form bx-ay+k=0. Through (a,b): ab-ab+k=0 => k=0, giving bx-ay=0. (Option B, bx+ay-2ab=0, is not perpendicular to ax+by+c=0.)",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Angle Between Lines, Parallelism, and Perpendicularity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 80,
+    "answer": "C",
+    "working": "The line is horizontal, so the 45 degree crossing angle means the curve's tangent there has slope tan45=1: dy/dx = 1/(2\\sqrt x) = 1 => \\sqrt x = 1/2, x = 1/4, y = \\sqrt{1/4} = 1/2. The line is y = 1/2.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "notes": "The trailing '[Pb.]' is a source-book provenance tag, not part of the stem. Note the trap: x=1/4 (option A) is the abscissa of the crossing point, not the equation of the required horizontal line."
+  }
+]

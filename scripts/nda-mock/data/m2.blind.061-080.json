@@ -1,0 +1,202 @@
+[
+  {
+    "number": 61,
+    "answer": "C",
+    "working": "|P(A)| = 2^4 = 16, so |A x P(A)| = |A| * |P(A)| = 4 * 16 = 64.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 62,
+    "answer": "B",
+    "working": "B = B∩(A∪B) = B∩(A∪C) = (B∩A)∪(B∩C) = (A∩C)∪(B∩C) = (A∪B)∩C = (A∪C)∩C = C. So B = C (A need not equal either).",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 63,
+    "answer": "C",
+    "working": "f(-x) = f(x) so not one-one; f(x) = (x^2+1)^35 >= 1 for all real x, so range is [1, inf) != R, hence not onto.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 64,
+    "answer": "B",
+    "working": "(2+sqrt2)^2 = 4 + 4*sqrt2 + 2 = 6 + 4*sqrt2, which is irrational (sqrt2 irrational, 4 != 0).",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": "Classification-of-number-sets question (N / W / Q / R). The live taxonomy has no Real Number System chapter; filed under Sets & Relations because the paper places it inside the Q61-Q69 sets block and NCERT introduces N/Z/Q/R in the Sets chapter. Chapter fit is weak — flag for a human call."
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "working": "A∩(A'∪B) = (A∩A')∪(A∩B) = ∅ ∪ (A∩B) = ∅, since A and B are disjoint.",
+    "confidence": "medium",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": "DEFECT — two options have the SAME value. Option D, A - B' = A∩(B')' = A∩B, is also ∅ under the disjointness hypothesis, so D is mathematically identical to option A (φ). φ is the canonical/simplest form and is surely the intended key, so I answer A rather than null, but the duplicate should be recorded."
+  },
+  {
+    "number": 66,
+    "answer": "C",
+    "working": "A-(B-C) = A∩(B∩C')' = A∩(B'∪C) = (A∩B')∪(A∩C) = (A-B)∪(A∩C).",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 67,
+    "answer": "C",
+    "working": "(A∪B)' = A'∩B' (De Morgan), so A∩(A∪B)' = A∩A'∩B' = ∅.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 68,
+    "answer": "D",
+    "working": "In (D) the element 1 is paired with both 4 and 5 (also 2 and 3 are doubly paired), violating uniqueness of image, so it is not a function. (A),(B),(C) each assign exactly one image to each of 1,2,3.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "notes": "Option (A) prints \"(2 4)\" with a missing comma — an OCR artefact only; it does not affect the answer."
+  },
+  {
+    "number": 69,
+    "answer": "D",
+    "working": "(3,3) is absent so R is not reflexive; (1,3) and (3,4) are in R but (1,4) is not, so R is not transitive. (R happens to be symmetric, which rules out (B) only because transitivity fails.)",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "MODERATE",
+    "notes": "Stem prints \"(3,1)(3,4)\" with a missing comma between pairs and says R is a relation on A x A (should be: on A); neither affects the answer."
+  },
+  {
+    "number": 70,
+    "answer": "C",
+    "working": "A: -1/2(1+i*sqrt3) = -1/2 - i*sqrt3/2 = omega^2, a cube root of unity -> 4. B: sqrt(-1) = i -> 3. C: (1-i)^3 = (1-i)(-2i) = -2-2i = -2(1+i) -> 1. D: (1+i)^2 = 2i -> 2. So A-4, B-3, C-1, D-2 = option (C).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — options (A) and (D) are byte-identical (both 4 1 3 2), so the paper effectively offers only three distinct choices. The correct ordering 4 3 1 2 is option (C) and is unique, so the question is still answerable; if the printed key is A or D it is wrong."
+  },
+  {
+    "number": 71,
+    "answer": "C",
+    "working": "i^(4n+1) = (i^4)^n * i = 1^n * i = i.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "EASY",
+    "notes": "Option (C) is printed as capital \"I\" — an OCR rendering of the imaginary unit i."
+  },
+  {
+    "number": 72,
+    "answer": "B",
+    "working": "1+omega = -omega^2 and 1+omega^2 = -omega, so the expression = 1 + 1/omega^2 + 1/omega = 1 + omega + omega^2 = 0.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 73,
+    "answer": "D",
+    "working": "First differences 4,6,8,10,12 (second difference 2) give a_n = n^2 + n + 1 (checks for n=1..6). a_15 = 225 + 15 + 1 = 241.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Special Series and Special Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 74,
+    "answer": "A",
+    "working": "a_n = 2n-1 is an AP with a = 1, d = 2. S_n = n/2 * (a_1 + a_n) = n/2 * (1 + 2n-1) = n^2.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "working": "Roots k, k+1 give b = 2k+1 and c = k(k+1). b^2 - 4c = (2k+1)^2 - 4k^2 - 4k = 1. (Equivalently (root difference)^2 = 1^2.)",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "EASY",
+    "notes": "Stem opens \"I\\(x^2 - bx + c = 0\\) are two consecutive integers\" — OCR has dropped \"f the roots of\"; the intended reading is unambiguous."
+  },
+  {
+    "number": 76,
+    "answer": "B",
+    "working": "p = P(A∩B) <= min(0.8, 0.9) = 0.8, and p >= P(A)+P(B)-1 = 0.7. Both bounds are attainable (A subset B gives 0.8; P(A∪B)=1 gives 0.7), so 0.7 <= p <= 0.8.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Bounds on Probability",
+    "difficulty": "MODERATE",
+    "notes": "0.72 in options (A)/(C) is the independence value 0.8*0.9 — a distractor; independence is not given. Closed inequalities are correct since both endpoints are achievable, so (D) is also excluded."
+  },
+  {
+    "number": 77,
+    "answer": "B",
+    "working": "Variance of 1,2,...,n is (n^2 - 1)/12. Setting (n^2-1)/12 = 2 gives n^2 = 25, n = 5.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 78,
+    "answer": "A",
+    "working": "Sum of nC1 + nC2 + ... + nCn = 2^n - nC0 = 2^n - 1, over n terms, so AM = (2^n - 1)/n.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    "difficulty": "MODERATE",
+    "notes": "Classified by the discriminating technique (sum of binomial coefficients = 2^n); the averaging step is trivial. Statistics / Measures of Central Tendency would be the alternative home if the bank prefers to file it with the surrounding Q77-Q80 statistics run."
+  },
+  {
+    "number": 79,
+    "answer": "D",
+    "working": "Students total = 20*15 = 300. With teacher: 21 people at average 16 => 336. Teacher's age = 336 - 300 = 36 yr.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 80,
+    "answer": "B",
+    "working": "Mean = (1*2 + 2*3 + 3f + 4*5)/(2+3+f+5) = (28+3f)/(10+f). f=6 gives 46/16 = 23/8 exactly; f=5,8,10 give 43/15, 26/9, 29/10 (none a clean 8-denominator value).",
+    "confidence": "medium",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT (stem typo) — the printed mean 32/8 = 4 is IMPOSSIBLE: the largest value of x is 4, so the mean can never reach 4 unless every observation is 4. The intended mean is 23/8 (a digit transposition of 32/8), which is satisfied exactly by f = 6, matching option (B). Answer given on that reconstruction; as literally printed the question has no solution. Stem also says the distribution is \"given above\" when the table follows below."
+  }
+]

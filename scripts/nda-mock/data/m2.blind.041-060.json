@@ -1,0 +1,202 @@
+[
+  {
+    "number": 41,
+    "answer": "A",
+    "working": "\\(\\int_0^p (3x^2+4x-5)dx = p^3+2p^2-5p = p^3-2 \\Rightarrow 2p^2-5p+2=0 \\Rightarrow p=\\tfrac12, 2\\).",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Definite Integrals in Function Conditions",
+    "difficulty": "MODERATE",
+    "notes": "OCR typo in option (A): printed as \"1/2 and d\" — the 'd' is a mis-scanned '2'. The correct root pair {1/2, 2} matches only (A); B, C, D are all wrong, so (A) is unambiguously intended."
+  },
+  {
+    "number": 42,
+    "answer": "B",
+    "working": "By parts with u=log tan x, dv=sin x dx: \\(-\\cos x\\log\\tan x + \\int \\cos x\\cdot\\frac{\\sec^2 x}{\\tan x}dx = -\\cos x\\log\\tan x + \\int\\csc x\\,dx = -\\cos x\\log\\tan x + \\log|\\tan(x/2)| + c\\).",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "notes": "Option braces are OCR-mangled but the four option bodies are still distinguishable; (B) is the only one with both the minus sign and tan(x/2)."
+  },
+  {
+    "number": 43,
+    "answer": "B",
+    "working": "\\(x\\,dy = y\\,dx \\Rightarrow \\frac{dy}{y}=\\frac{dx}{x} \\Rightarrow y = cx\\), a family of straight lines through the origin.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 44,
+    "answer": "C",
+    "working": "Clearing the fraction gives \\((dy/dx)^2 + y(dy/dx) = 1\\); the highest derivative present is the first, so order = 1 (degree = 2).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 45,
+    "answer": "B",
+    "working": "\\(\\frac{dx}{dt}=x \\Rightarrow \\ln x = t + \\text{const} \\Rightarrow x = ce^{t}\\).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "working": "\\(ae=2, e=3/2 \\Rightarrow a=4/3, a^2=16/9\\); \\(b^2=a^2(e^2-1)=\\tfrac{16}{9}\\cdot\\tfrac54=\\tfrac{20}{9}\\). Then \\(\\frac{9x^2}{16}-\\frac{9y^2}{20}=1 \\Rightarrow 5x^2-4y^2=\\tfrac{80}{9}=k^2 \\Rightarrow k=\\tfrac{4\\sqrt5}{3}\\).",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Hyperbola — Foci and Eccentricity",
+    "difficulty": "MODERATE",
+    "notes": "OCR typo in the stem: foci printed as \"9 \\pm 2, 0)\" — this is a mis-scan of \"(\\pm 2, 0)\". Reading it as (\\pm 2, 0) makes the arithmetic land exactly on option (C)."
+  },
+  {
+    "number": 47,
+    "answer": "B",
+    "working": "\\(x^3y+xy^3-xy = xy(x^2+y^2-1)=0\\) ⇒ xy=0 (the pair of lines x=0, y=0) together with the circle \\(x^2+y^2=1\\).",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Conic Sections — Identification and Eccentricity Comparison",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 48,
+    "answer": "C",
+    "working": "Subtracting: 2x-2=0 ⇒ x=1, then 2+3y+4=0 ⇒ y=-2. Point (1,-2), distance \\(=\\sqrt{1+4}=\\sqrt5\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 49,
+    "answer": "D",
+    "working": "Slope \\(=\\frac{5-3}{2-4}=-1\\); line is \\(x+y=7\\), so x-intercept = y-intercept = 7 ⇒ \\(\\lambda=\\mu\\).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Equation, Slope, and Family of Lines",
+    "difficulty": "EASY",
+    "notes": "Minor option defect: with \\(\\lambda=\\mu=7\\), option (C) \\(\\lambda>-\\mu\\) (7 > -7) is also a true statement, so two options are simultaneously satisfied. (D) is the unique exact characterisation and is clearly the intended key."
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "working": "Equating squared distances, the \\((a+b)^2\\) and \\((a-b)^2=(b-a)^2\\) constants cancel, leaving \\(2ax-2by=0\\), i.e. \\(-ax+by=0\\). Checked with a=b=1: points (2,0),(0,2) ⇒ perpendicular bisector x=y ⇒ matches (C), not (D).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "MODERATE",
+    "notes": "Stem has an OCR typo: second point printed \"(b-a. a+b)\" — the period is a comma. Does not affect the answer."
+  },
+  {
+    "number": 51,
+    "answer": "B",
+    "working": "\\(a_n=S_n-S_{n-1}=(n^2-2n)-(n^2-4n+3)=2n-3\\); check n=1: \\(a_1=-1=S_1\\).",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Arithmetic Progressions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 52,
+    "answer": "B",
+    "working": "\\(\\sin\\alpha+\\cos\\alpha=-q/p\\), \\(\\sin\\alpha\\cos\\alpha=r/p\\); squaring the sum: \\(q^2/p^2 = 1+2r/p \\Rightarrow q^2=p^2+2pr \\Rightarrow p^2-q^2+2pr=0\\). Verified at \\(\\alpha=\\pi/4\\) (p=1,q=-\\sqrt2,r=1/2), where (D) fails.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "working": "\\((2a+2)^2=a(3a+3) \\Rightarrow (a+1)(a+4)=0\\); a=-1 degenerates (terms -1,0,0), so a=-4 giving -4,-6,-9 with r=3/2 ⇒ 4th term \\(=-9\\cdot\\tfrac32=-13.5\\).",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Geometric Progressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "working": "\\(\\sin10^\\circ\\cos80^\\circ+\\cos10^\\circ\\sin80^\\circ=\\sin90^\\circ=1\\).",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 55,
+    "answer": "B",
+    "working": "With t=tan φ: \\(t^2+t^6=t^3(1+t^2) \\Rightarrow t^6-t^5-t^3+t^2=0 \\Rightarrow t^2(t-1)^2(t^2+t+1)=0\\), true only for t=0 or t=1 — a conditional equation, not an identity.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": "Classification fit is imperfect — the question asks whether the relation is an identity; filed under trigonometric equations because settling it requires finding the solution set (tan φ = 0 or 1). Option (A) is also wrong on its own terms: the relation holds for two families of φ, not \"only one value\"."
+  },
+  {
+    "number": 56,
+    "answer": "B",
+    "working": "\\(\\csc(7\\pi/4)=-\\sqrt2\\), and \\(\\csc^{-1}(-\\sqrt2)=-\\pi/4\\), not \\(+\\pi/4\\). (A) \\(\\sin^{-1}(-1/\\sqrt2)=-\\pi/4\\) ✓ and (C) \\(\\tan^{-1}(1)=\\pi/4\\) ✓, so (B) is the incorrect statement.",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Evaluation of Composite Inverse Trigonometric Expressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "working": "Foot lies between A and B ⇒ \\(d=h\\cot\\alpha+h\\cot\\beta\\), so \\(h/d=1/(\\cot\\alpha+\\cot\\beta)\\). Since \\(\\cot(\\alpha+\\beta)=\\frac{\\cot\\alpha\\cot\\beta-1}{\\cot\\alpha+\\cot\\beta}\\), this equals \\(\\frac{\\cot(\\alpha+\\beta)}{\\cot\\alpha\\cot\\beta-1}\\).",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 58,
+    "answer": "A",
+    "working": "\\(\\sec A-\\tan A=1/p\\) ⇒ \\(\\sec A=\\frac{p^2+1}{2p}\\), \\(\\tan A=\\frac{p^2-1}{2p}\\) ⇒ \\(\\sin A=\\tan A/\\sec A=\\frac{p^2-1}{p^2+1}\\).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": "Classification is a judgement call — the core tool is the Pythagorean identity sec^2-tan^2=1; filed under half-angle because sec A + tan A = tan(pi/4 + A/2) and the result is the standard t-formula shape. The taxonomy has no \"fundamental identities\" subtopic."
+  },
+  {
+    "number": 59,
+    "answer": "D",
+    "working": "\\(\\cos^{-1}x=\\cos^{-1}y \\Rightarrow x=y\\); then \\(2\\sin^{-1}x=\\pi/2 \\Rightarrow \\sin^{-1}x=\\pi/4 \\Rightarrow x=y=1/\\sqrt2\\).",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Solving Inverse Trigonometric Equations and Geometric Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 60,
+    "answer": "B",
+    "working": "\\(6^2+8^2=10^2\\) ⇒ right angle at B, so \\(\\cos A=6/10, \\sin A=8/10\\), \\(\\tan(A/2)=\\frac{1-\\cos A}{\\sin A}=\\tfrac12\\). With t=tan(A/4): \\(\\frac{2t}{1-t^2}=\\tfrac12 \\Rightarrow t^2+4t-1=0 \\Rightarrow t=\\sqrt5-2\\), so \\(\\cot(A/4)=\\frac{1}{\\sqrt5-2}=\\sqrt5+2\\).",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

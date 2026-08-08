@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "C",
+    "working": "Put u = 1 + log x, du = dx/x. Integral becomes ∫u^{-1/2}du = 2√u + c = 2√(1+log x) + c.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "A",
+    "working": "Curves meet where tan x = 1, i.e. x = π/4 + nπ. Slopes there are ±1/√2, so tanθ = |(m1−m2)/(1+m1m2)| = (2/√2)/(1/2) = 2√2 ⇒ θ = tan⁻¹(2√2). Same value at x = 5π/4.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "working": "dy/dx = (9sin²θcosθ)/(−6cos²θsinθ) = −(3/2)tanθ = −3/2 at θ=π/4; point is (1/√2, 3/(2√2)). Tangent: y − 3/(2√2) = −(3/2)(x − 1/√2) ⇒ 3x + 2y = 6/√2 = 3√2. Verified numerically (3x+2y = 4.2426 = 3√2).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "B",
+    "working": "Hill height H, horizontal distance d. From base: d = H cot q; from top of building: d = (H−h)cot p. Equate ⇒ H(cot p − cot q) = h cot p ⇒ H = h cot p/(cot p − cot q). Numerical check h=10, d=100, H=50 gives (B)=50, (A)=−40.",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "A",
+    "working": "d/dx(sin^p x cos^q x) = sin^{p-1}x cos^{q-1}x (p cos²x − q sin²x) = 0 ⇒ tan²x = p/q ⇒ x = tan⁻¹√(p/q).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 86,
+    "answer": "D",
+    "working": "f'(x) = 6x² − 18x + 12 = 6(x−1)(x−2) < 0 exactly for 1 < x < 2.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "answer": "A",
+    "working": "Highest derivative is d²s/dt² ⇒ order 2; its highest power is 2 ⇒ degree 2. (The (ds/dt)³ term does not set the degree.)",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": "A",
+    "working": "One-parameter family ⇒ first-order ODE. Differentiate x²+y²=a²: 2x + 2y y' = 0 ⇒ x + y dy/dx = 0. (Option C is the second differentiation with the constant 1 dropped, so it is wrong.)",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "A",
+    "working": "Identical to Q88: differentiating x²+y²=a² gives x + y dy/dx = 0.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "notes": "DEFECT: Q89 is a character-for-character duplicate of Q88 — same stem and same four options. Either the paper repeats the question or Q89's real stem was lost and Q88's was spliced in during extraction. The answer as printed is still determinable (A), but the source should be checked for the intended Q89."
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "working": "dy/dx = (y+√(x²+y²))/x is homogeneous; y=vx gives x dv/dx = √(1+v²) ⇒ sinh⁻¹v = ln x + ln c ⇒ v + √(1+v²) = cx ⇒ y + √(x²+y²) = cx². Verified: at (1,0) with c=1 the implicit curve gives y' = 1, matching the ODE.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "working": "Treat x as the dependent variable: (1+y²)dx/dy + x = tan⁻¹y ⇒ dx/dy + x/(1+y²) = tan⁻¹y/(1+y²). IF = e^{∫dy/(1+y²)} = e^{tan⁻¹y}.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "working": "f'(x) = 3x² − 12x + 9 = 3(x−1)(x−3) < 0 exactly for 1 < x < 3.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "Option (A) uses ∩ where a union of two rays would be intended; it is empty as written, so it cannot be the answer in any case."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "working": "2(cos²θ − sin²θ) = 2cos2θ = 1 ⇒ cos2θ = 1/2 ⇒ 2θ = 60° ⇒ θ = 30°.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "C",
+    "working": "450°<α<540° ⇒ α/4 ∈ (112.5°,135°), so sin(α/4) ∈ (0.707,0.924) — only 4/5 qualifies. Check: sin(α/4)=4/5, cos(α/4)=−3/5 ⇒ sin(α/2)=−24/25, cos(α/2)=−7/25 ⇒ sinα = 2(−24/25)(−7/25) = 336/625 ✓.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "working": "cos2θ = (1−tan²θ)/(1+tan²θ) = (−2tan²φ)/(2+2tan²φ) = −sin²φ, so cos2θ + sin²φ = 0. Verified numerically at φ=20° (result 3e−17).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": "Option (B) is printed as the capital letter O; it is clearly the digit 0 (OCR damage), which is the correct value."
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "working": "cos(5π/8)=−cos(3π/8) and cos(7π/8)=−cos(π/8), so the sum is 2[cos⁴(π/8)+sin⁴(π/8)] = 2[1 − ½sin²(π/4)] = 2(3/4) = 3/2. Numerically 1.5.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "D",
+    "working": "Squaring gives sin2x = 1/25 − 1 = −24/25; (cos x − sin x)² = 49/25 so cos2x = ±7/25 and tan2x = ∓24/7. Both x = −36.87° and x = 126.87° satisfy the stem, giving −24/7 and +24/7; only 24/7 is offered.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": "The stem is genuinely two-valued: tan2x = ±24/7 (verified numerically for both admissible x). Since −24/7 appears in no option, (D) is the intended answer, but strictly the question should restrict x."
+  },
+  {
+    "number": 98,
+    "answer": "C",
+    "working": "cos A(3−4cos²A) = −cos3A and sin A(3−4sin²A) = sin3A, so the expression is cos²3A + sin²3A = 1. Numerically 1.000 at A=20°.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "A",
+    "working": "With t = sin x cos x ∈ [−½,½], LHS = 1 − 2t², so 2t² + t − 1 = 0 ⇒ t = ½ or t = −1; t = −1 is impossible. t = ½ ⇒ sin2x = 1 ⇒ x = π/4 + kπ ⇒ x = π/4, 5π/4 in [0,2π]: 2 solutions.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "answer": "D",
+    "working": "1∓sinA = (cos(A/2) ∓ sin(A/2))², so the root is |(1−tan(A/2))/(1+tan(A/2))| = |tan(π/4 − A/2)|. Checked at A=60°: LHS = 0.26795 = tan(15°) = tan(π/4 − A/2), whereas tan(π/4 − A) = −0.26795.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

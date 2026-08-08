@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "B",
+    "working": "HM = n / sum(1/x_i) = 3 / (1/3 - 1/6 - 1/6) = 3 / 0, so the harmonic mean is undefined / infinite.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": "Trick question: the reciprocals cancel exactly, so the denominator is 0. Strictly the HM is undefined; the paper's intended reading is the limit, i.e. infinity."
+  },
+  {
+    "number": 82,
+    "answer": null,
+    "working": "The stem lists three measures (AM, Median, GM) but never asks a question — there is no interrogative clause at all, so the options 'Only 1 / Only 2 / Only 3 / All of them' cannot be adjudicated.",
+    "confidence": "low",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": "DEFECT: truncated stem — the question sentence is missing. If the intended question is the standard NDA one 'which of the above can be determined graphically?' the answer would be (B) Only 2 (median, from an ogive). If instead it is 'which can be computed for any set of discrete numbers?' the answer would be (A)/(B)-style (GM fails for negative values). Cannot be settled from the text as printed — needs the source paper."
+  },
+  {
+    "number": 83,
+    "answer": "B",
+    "working": "The series 1,2,4,...,2^n has n+1 terms; product = 2^(0+1+...+n) = 2^(n(n+1)/2), so GM = (2^(n(n+1)/2))^(1/(n+1)) = 2^(n/2).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": "The hint about the sum of the first n naturals is exactly the exponent sum."
+  },
+  {
+    "number": 84,
+    "answer": "B",
+    "working": "Government offices and public libraries supply already-published records (secondary data); a telephonic interview is collected first-hand by the investigator (primary data).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "D",
+    "working": "Intended expression is 1/r^2 + 1/s^2 = (r^2+s^2)/(rs)^2 = ((r+s)^2 - 2rs)/(rs)^2 = (p^2 - 2q)/q^2.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": "OCR typo: the second term is printed as r/s^2 but must be 1/s^2 — option (D) is exactly the value of 1/r^2 + 1/s^2, and the printed form r/s^2 is not symmetric in the roots so it has no closed form in p and q. Answer keyed on the intended (symmetric) expression."
+  },
+  {
+    "number": 86,
+    "answer": null,
+    "working": "(a-b) x (a+3b) = 3(a x b) - (b x a) = 3(a x b) + (a x b) = 4(a x b), so the multiplier is 4 — which appears in none of the four options (10, 5, 8, -8).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "EASY",
+    "notes": "DEFECT (two faults): (1) the stem asks for k but the symbol k is missing from the RHS — it reads '= a x b' where it should read '= k (a x b)'; (2) the correct value for the printed vectors is k = 4, which is in NO option. The options suggest the source question had different coefficients (e.g. (a - 2b) x (a + 3b) gives 5, and (a - 3b) x (a + 5b) gives 8), so a coefficient has been dropped by OCR as well. Unanswerable as printed."
+  },
+  {
+    "number": 87,
+    "answer": "B",
+    "working": "A(1,0,0), B(0,1,0), C(1,1,L). CA.CB = (0,-1,-L).(-1,0,-L) = L^2; AB.AC = 1 and BA.BC = 1 are never zero, so the right angle must be at C, giving L^2 = 0, L = 0 (triangle still non-degenerate).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
+    "difficulty": "MODERATE",
+    "notes": "The vertices are printed with periods as separators ('i.j and i+j+Lk'); read as the three points i, j, i+j+Lk. Check via Pythagoras: |AB|^2 = 2 and |AC|^2 = |BC|^2 = 1+L^2, so 2(1+L^2) = 2 gives L = 0."
+  },
+  {
+    "number": 88,
+    "answer": "A",
+    "working": "(A x B).C is the standard scalar triple product, numerically the volume of the parallelepiped with A, B, C as coterminous edges (the tetrahedron would be one sixth of it).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "C",
+    "working": "|a x b|^2 + (a.b)^2 = |a|^2|b|^2 sin^2(t) + |a|^2|b|^2 cos^2(t) = |a|^2|b|^2 = 1 for unit vectors.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "working": "Resultant R = 2(OA) + 3(BO) = 2a - 3b. G divides AB externally in ratio 3:2, so OG = g = 3b - 2a, hence R = -(3b - 2a) = -1 x OG.",
+    "confidence": "medium",
+    "chapter": "Vectors",
+    "subtopic": "Position Vectors and Section",
+    "difficulty": "HARD",
+    "notes": "General rule: m(OA) + n(OB) = (m+n)(OG) with AG:GB = n:m. Here m = 2, n = -3 (because the second force is 3(BO) = -3(OB)), so the multiplier is m+n = -1 and G divides AB externally. The printed ratio 'BG/AG = -2/3' is the directed section ratio BG:GA = -2:3 for that external point; taken literally as BG = -(2/3)AG it would give g = (2a+3b)/5, which is not parallel to the resultant at all — so the stem's ratio notation is loose. Answer keyed to the self-consistent reading, multiplier = -1."
+  },
+  {
+    "number": 91,
+    "answer": "A",
+    "working": "P(agree) = P(both truthful) + P(both lie) = 0.6x0.7 + 0.4x0.3 = 0.42 + 0.12 = 0.54.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "C",
+    "working": "'Ignoring date' means the day of the week: the first person's day is fixed, the second matches with probability 1/7.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "EASY",
+    "notes": "Stem prints 'ignoring data' — an OCR slip for 'ignoring date', which is what makes the answer 1/7 rather than 1/365."
+  },
+  {
+    "number": 93,
+    "answer": "D",
+    "working": "P(X=3) = P(H)P(3|H) + P(T)P(3|T) = (1/2)(1/3) + (1/2)(1/4) = 1/6 + 1/8 = 7/24.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": "Stem prints the first set as '{1, 2, 3)' with a mismatched brace — harmless, the set is clearly {1,2,3}."
+  },
+  {
+    "number": 94,
+    "answer": "C",
+    "working": "Both are true: Bayes' theorem computes a conditional (posterior) probability, and it requires the conditioning events to form a mutually exclusive and exhaustive partition of the sample space.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "EASY",
+    "notes": "Statement 1 is garbled by OCR ('a formula for computatior. Of a conditional probability') but the meaning is unambiguous."
+  },
+  {
+    "number": 95,
+    "answer": "D",
+    "working": "A binomial model requires a fixed number of independent Bernoulli trials with the success probability p unchanged from trial to trial; the specific values 1/2, 0 or 1 are not required.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "EASY",
+    "notes": "Conceptual 'conditions for a binomial experiment' question; neither of the two Binomial Distribution subtopics is an exact fit, so the general computing subtopic is used. Stem's case-mixing of P(a)/P(A) is an OCR artefact."
+  },
+  {
+    "number": 96,
+    "answer": "D",
+    "working": "MACHINE has 7 distinct letters: vowels A,I,E (3) and consonants M,C,H,N (4). Odd positions are 1,3,5,7 (four of them): place the 3 vowels in 4P3 = 24 ways, then the 4 consonants in the remaining 4 places in 4! = 24 ways; 24x24 = 576.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "working": "Total C(11,6) = 462; subtract 0 women C(7,6) = 7 and exactly 1 woman C(4,1)C(7,5) = 4x21 = 84; 462 - 91 = 371.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "notes": "Direct count agrees: 2W C(4,2)C(7,4)=6x35=210, 3W C(4,3)C(7,3)=4x35=140, 4W C(4,4)C(7,2)=21; 210+140+21 = 371."
+  },
+  {
+    "number": 98,
+    "answer": "B",
+    "working": "GM^2 = AM x HM, so HM = 16/5.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Harmonic Progressions and the Three Means",
+    "difficulty": "EASY",
+    "notes": "Consistent numbers: the two values are 5 +/- 3, i.e. 8 and 2, whose HM is 2x8x2/10 = 16/5."
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "working": "Combined mean = (4x15 + 6x12)/10 = (60 + 72)/10 = 13.2.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "working": "|(1,1)| = sqrt(1^2 + 1^2) = sqrt(2).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "number": 81,
+    "answer": "B",
+    "working": "Substitute \\(u = 1-x\\) (King's reflection on [0,1]): \\(\\int_0^1 x(1-x)^{-3/4}dx = \\int_0^1 (1-u)u^{-3/4}du = \\int_0^1 (u^{-3/4} - u^{1/4})du = 4 - \\frac{4}{5} = \\frac{16}{5}\\). Numerically confirmed via the smoothing substitution \\(x = 1-t^4\\), which gives \\(\\int_0^1 4(1-t^4)dt = 3.2000\\) exactly.",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 82,
+    "answer": "A",
+    "working": "\\(\\int_0^{36}\\frac{dx}{2x+9} = \\frac{1}{2}\\left[\\log(2x+9)\\right]_0^{36} = \\frac{1}{2}(\\log 81 - \\log 9) = \\frac{1}{2}\\log 9 = \\log 3\\). Numerically 1.098612 = log 3, so \\(k = 3\\).",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "working": "Not reflexive (no child is his own brother). Not symmetric (if x is a brother of y and y is female, y is a sister, not a brother, of x). Transitive is the intended answer: x a brother of y and y a brother of z makes x and z siblings with x male, so x is a brother of z.",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "MODERATE",
+    "confidence": "medium",
+    "notes": "Stem looks clean; the medium confidence is mathematical, not a printing concern. Strictly, transitivity also fails on the degenerate chain x R y, y R x (two brothers), which would force (x,x) in R — false, since nobody is his own brother. So a pedantic reading gives (D). The standard textbook convention for this classic item treats the relation as transitive (it tacitly assumes x, y, z distinct), so I report (C). If the printed key is (D), the paper is using the strict reading and (D) is defensible — flagging so the reviewer does not treat a key of (D) as an error."
+  },
+  {
+    "number": 84,
+    "answer": "D",
+    "working": "R = {(x,y) in N^2 : 2x+y=41}. Not reflexive: 3x=41 has no natural solution. Not symmetric: (1,39) is in R (2+39=41) but (39,1) is not (78+1=79). Not transitive: (11,19) is in R (22+19=41) and (19,3) is in R (38+3=41), but (11,3) gives 22+3=25 != 41. Hence none of the three properties holds.",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 85,
+    "answer": "B",
+    "working": "A diagonal matrix has every off-diagonal entry zero. The entry \\(b\\) sits in position (3,2), which is off the diagonal, so \\(b = 0\\).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "working": "Write \\(v = (p,q,r)^T\\); then \\(B = vv^T\\) and \\(A\\) is the skew-symmetric cross-product matrix for \\(v\\), so \\(Av = v \\times v = 0\\). Hence \\(AB = (Av)v^T = 0\\), the null matrix. Verified numerically with \\(p=2, q=-3, r=5\\): every entry of AB is 0.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 87,
+    "answer": "D",
+    "working": "For \\(A = \\begin{bmatrix}1&a\\\\0&1\\end{bmatrix}\\), induction gives \\(A^n = \\begin{bmatrix}1&na\\\\0&1\\end{bmatrix}\\), so \\(A^4 = \\begin{bmatrix}1&4a\\\\0&1\\end{bmatrix}\\). Checked numerically with \\(a=7\\): \\(A^4 = \\begin{bmatrix}1&28\\\\0&1\\end{bmatrix}\\) and \\(28 = 4\\times 7\\).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "working": "Multiplying every element of A by 3 is scalar multiplication: \\(B = 3A\\), i.e. \\(3A = B\\). (The order 2x2 is irrelevant; \\(9A = B\\) would need each element multiplied by 9.)",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 89,
+    "answer": "B",
+    "working": "With \\(A^T = A\\) and \\(B^T = B\\): \\((AB-BA)^T = (AB)^T-(BA)^T = B^TA^T - A^TB^T = BA - AB = -(AB-BA)\\). A matrix equal to the negative of its transpose is skew-symmetric. It need not be null, since AB and BA generally differ.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "working": "For an n x n matrix, scaling every entry by k scales the determinant by \\(k^n\\) (k factors out of each of the n rows). So \\(|A| = |kB| = k^n|B|\\). Verified numerically for n=3 with k=2.5: \\(|kB|/|B| = 15.625 = 2.5^3\\).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "working": "\\(A+B\\) defined forces A and B to have the same order, say m x n. \\(AB\\) defined then forces columns of A = rows of B, i.e. n = m. So both are square matrices of the same order. (C) is a true but incomplete consequence; (B) is the full conclusion.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "working": "Left-multiply \\(B = -A^{-1}BA\\) by A: \\(AB = -BA\\), i.e. \\(AB+BA = 0\\). Then \\((A+B)^2 = A^2 + AB + BA + B^2 = A^2 + B^2\\). Verified with \\(A = \\mathrm{diag}(1,-1)\\), \\(B = \\begin{bmatrix}0&1\\\\1&0\\end{bmatrix}\\), which satisfy the hypothesis: \\((A+B)^2 = 2I = A^2+B^2\\), and it is not the zero matrix, so (A) is wrong.",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 93,
+    "answer": "C",
+    "working": "\\(A^2 = A\\cdot A = (AB)A = A(BA) = AB = A\\) and \\(B^2 = B\\cdot B = (BA)B = B(AB) = BA = B\\), so both are idempotent. Verified with the genuine pair \\(A = \\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}\\), \\(B = \\begin{bmatrix}1&0\\\\1&0\\end{bmatrix}\\) (A != B, AB=A, BA=B, both idempotent).",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 94,
+    "answer": "B",
+    "working": "\\(A\\cap B \\subseteq B\\) always; the equality \\(A\\cap B = B\\) additionally forces \\(B \\subseteq A\\cap B \\subseteq A\\), so \\(B \\subset A\\). (Symmetrically, \\(A\\cup B = B\\) would give \\(A\\subset B\\).)",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 95,
+    "answer": "A",
+    "working": "By distributivity \\((A\\cup B)\\cap(A\\cup C) = A\\cup(B\\cap C)\\). Here \\(B\\cap C = \\{4,5,12\\}\\), so the answer is \\(\\{2,3,4,8,10\\}\\cup\\{4,5,12\\} = \\{2,3,4,5,8,10,12\\}\\). Confirmed by direct set computation.",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "working": "\\(B' = \\{1,2,3,4,5,8,9,10\\}\\), so \\(A\\cap B' = \\{1,2,5\\} = A\\). Structurally: A and B are disjoint, so \\(A \\subseteq B'\\) and \\(A\\cap B' = A\\). Confirmed by direct computation.",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "confidence": "high",
+    "notes": "Glyph defect in the stem: the universal set is printed as the union symbol — \"Let \\(\\cup = \\{1,2,3,4,5,6,7,8,9,10\\}\\)\". The source certainly meant the universal set \\(U\\) (the question then asks for \\(A\\cap B'\\), and a complement is only meaningful relative to a universal set). A legacy MS-Equation \\(U\\) has evidently been transcribed as \\(\\cup\\). Suggested repair: \"Let \\(U = \\{1,2,\\ldots,10\\}\\)\". The answer is unaffected."
+  },
+  {
+    "number": 97,
+    "answer": "C",
+    "working": "Let cheese = 63, apples = 76 (percent). \\(n(A\\cup B) = 63+76-x \\le 100\\) gives \\(x \\ge 39\\); and \\(x \\le \\min(63,76) = 63\\). Both bounds are attainable, so \\(39 \\le x \\le 63\\).",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  },
+  {
+    "number": 98,
+    "answer": "C",
+    "working": "Rewrite as the linear form \\(\\frac{dy}{dx} + (\\tan x)y = \\sec x\\), so \\(P = \\tan x\\) and \\(IF = e^{\\int \\tan x\\,dx} = e^{\\log\\sec x} = \\sec x = \\frac{1}{\\cos x}\\).",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 99,
+    "answer": "B",
+    "working": "\\(\\sin 1\\) means 1 radian ~ 57.3 degrees, so \\(\\sin 1 = 0.8415\\), while \\(\\sin 1^{\\circ} = 0.01745\\). Hence \\(\\sin 1 > \\sin 1^{\\circ}\\). Option (D) is also false numerically: \\(\\frac{\\pi}{180}\\sin 1 = 0.014686 \\neq 0.017452\\).",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "confidence": "high"
+  },
+  {
+    "number": 100,
+    "answer": "A",
+    "working": "Let \\(f(x) = \\cos x - x + \\tfrac{1}{2}\\). Then \\(f(0) = 1.5 > 0\\) and \\(f(\\pi/2) = -1.0708 < 0\\), so by the Intermediate Value Theorem a root lies in \\([0,\\pi/2]\\). The other intervals show no sign change: \\(f(-\\pi/2) = 2.0708\\) and \\(f(0) = 1.5\\) (both positive); \\(f\\) is negative throughout \\([\\pi/2,\\pi]\\) and \\([\\pi,3\\pi/2]\\). Also \\(f'(x) = -\\sin x - 1 \\le 0\\), so the root is unique.",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "confidence": "high"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "B",
+    "working": "|a+b|^2 = 1+1+2cos60 = 3 so |a+b| = sqrt(3) > 1; |a-b|^2 = 2-1 = 1 so |a-b| = 1 exactly, making (c) and (d) both false.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": "C",
+    "working": "A 3-element domain cannot surject onto a 4-element codomain, so the assertion (in its standard form 'f is not onto') is true; R ('f is not one-one') is false, since an injection from a 3-set into a 4-set exists. Hence A true, R false.",
+    "confidence": "low",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "notes": "DEFECT: the Assertion is TRUNCATED — it reads only 'the function f:(1,2,3) -> (a,b,c,d)' with no predicate at all. I reconstructed the standard source form 'f is not onto', which (together with several other plausible reconstructions such as 'f is not a bijection') gives C. If the missing predicate were something else the answer could change, so treat this as unverified. Also the sets are printed with round brackets instead of braces."
+  },
+  {
+    "number": 103,
+    "answer": "D",
+    "working": "Side of equilateral triangle in a circle of R=5 is R*sqrt(3)=5sqrt(3), so AC.BC = 75 while OB.OC = 25 — the assertion 75 < 25 is FALSE. CD is a diameter = 10, angle CAD = angle CBD = 90 (angle in semicircle), so AD^2 = BD^2 = 100-75 = 25; then 2(AD^2+BD^2) = 2(50) = 100 = CD^2, so R is TRUE.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Inscribed Geometry, Tangents, and Segments",
+    "difficulty": "MODERATE",
+    "notes": "Reason R is printed with a stray duplicated '(R)'. The assertion is false under either reading (lengths: 75 vs 25; or dot products: 37.5 vs -12.5)."
+  },
+  {
+    "number": 104,
+    "answer": "D",
+    "working": "A census is a complete enumeration and its output is unquestionably statistical data, so the assertion 'census data are not statistical data' is FALSE. The reason is TRUE — a census involves no probability sampling and is a 100% collection of existing data.",
+    "confidence": "medium",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "EASY",
+    "notes": "Conceptual/definitional question with no computation; the verdict rests on the convention that complete-enumeration data still counts as statistical data. Subtopic is a loose fit — no Statistics subtopic covers data collection/census methodology."
+  },
+  {
+    "number": 105,
+    "answer": "A",
+    "working": "y = 2x+3 is strictly increasing hence one-one (A true). R states x1 != x2 => 2x1+3 != 2x2+3, which is true and is precisely the definition of one-one being verified, so R correctly explains A.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 106,
+    "answer": "B",
+    "working": "cos^2 15 = (1+cos30)/2 = (2+sqrt3)/4, so cos15 = (1/2)sqrt(2+sqrt3). Option (a) is (1/2)sqrt(2-sqrt3) = sin15, the standard distractor.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 107,
+    "answer": "B",
+    "working": "tan has period 180 degrees, so tan(theta) = k has exactly one solution per 180-degree window; in (0,360) that is exactly 2 solutions.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 108,
+    "answer": "D",
+    "working": "A is lower triangular so det A = ab; |A^-1| = 1/det A = 1/(ab).",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Cofactors, Adjoint, and Inverse",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 109,
+    "answer": "D",
+    "working": "Every row of the coefficient matrix sums to 0, so det = 0 and there is no unique solution; adding the three equations gives 0 = l+m+n = 0, so the system is consistent. Rank(A) = rank(A|b) = 2 < 3, hence infinitely many solutions.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 110,
+    "answer": "D",
+    "working": "Put u=1/x, v=1/y: a_i u + b_i v = c_i. Cramer gives u = |c1 b1; c2 b2|/D1 = -D2/D1 (since D2 = |b1 c1; b2 c2| = -|c1 b1; c2 b2|), so x = -D1/D2. Likewise v = |a1 c1; a2 c2|/D1 = -D3/D1, so y = -D1/D3.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "notes": "Heavy OCR corruption in the stem: the RHS of the second equation is replaced by a garbled run of text ('nd telly many solutionsions lved in this data collection ... exhaustive.iginc_2') that has bled in from Q104/Q109 — it should read c_2. Also D3 is printed with a bare 'c' where it should be 'c_1'. The question is still answerable because the option set fixes the intended reading."
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "The matrix is upper triangular, so det = 2 * 5 * (1+p) = 10(1+p) = 20 gives 1+p = 2, p = 1.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 112,
+    "answer": "A",
+    "working": "A^2 = (AB)(AB) = A(BA)B = A(B)B = (AB)B = AB = A, so A is idempotent. Transposing, (A^T)^2 = (A^2)^T = A^T.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "MODERATE",
+    "notes": "Option (c) is (A^-1)^-1 = A, which fails because A^T is not generally equal to A (and A need not even be invertible — any idempotent other than I is singular)."
+  },
+  {
+    "number": 113,
+    "answer": null,
+    "working": "Solving [[1,-3],[0,1]] X = [[1,-1],[0,1]] entrywise: row 2 gives z=0, w=1; row 1 gives x-3z=1 so x=1, and y-3w=-1 so y=2. Hence A = [[1,2],[0,1]] — equivalently A = [[1,3],[0,1]] * [[1,-1],[0,1]] = [[1,2],[0,1]].",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — the correct answer appears in NO option. As printed the unique solution is A = [[1,2],[0,1]]; I verified each option by left-multiplying: (a) gives [[1,-6],[0,1]], (b) gives [[2,-4],[0,2]], (c) gives [[-7,-1],[1,0]], (d) gives [[1,-7],[0,1]] — none equals [[1,-1],[0,1]]. The intended key is almost certainly (d) [[1,-4],[0,1]], which is recovered only if the coefficient matrix is [[1,3],[0,1]] (no minus sign) rather than the printed [[1,-3],[0,1]]. So this is a single-sign stem corruption, not a wrong key; the stem needs source verification and repair."
+  },
+  {
+    "number": 114,
+    "answer": "A",
+    "working": "The k-th term is 10^k - 1, so the sum of 100 terms = sum_{k=1..100} 10^k - 100 = 10(10^100 - 1)/9 - 100 = (10/9)(10^100 - 1) - 100.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Special Series and Special Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "answer": "D",
+    "working": "2x^2 - 3x + 5 = 2(x - 3/4)^2 + 31/8, minimum 31/8 at x = 3/4. (Option (b) 3/4 is the minimising x, the intended distractor.)",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "Classification is borderline — solved by completing the square, so it could equally sit under Quadratic Equations; 'Extrema' is the closest literal subtopic match."
+  },
+  {
+    "number": 116,
+    "answer": "D",
+    "working": "alpha+beta = -4, alpha*beta = 6. alpha^3+beta^3 = (alpha+beta)^3 - 3(alpha*beta)(alpha+beta) = -64 - 3(6)(-4) = -64 + 72 = 8.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 117,
+    "answer": "A",
+    "working": "Sum = -(3p+1)/3, product = -(p+5)/3. Equating: 3p+1 = p+5, so 2p = 4 and p = 2.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 118,
+    "answer": "A",
+    "working": "The alternating sum of binomial coefficients is the expansion of (1-1)^8 = 0.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "C",
+    "working": "Total arrangements 6! = 720; arrangements with all 3 Hindi books together = 4! * 3! = 144; so not-all-together = 720 - 144 = 576.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "D",
+    "working": "n(n-3)/2 = 20 gives n^2 - 3n - 40 = 0, (n-8)(n+5) = 0, so n = 8.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Geometric Counting",
+    "difficulty": "EASY",
+    "notes": "Option (d) is printed as '8$$' — a stray trailing LaTeX delimiter, not part of the value."
+  }
+]
