@@ -42,7 +42,6 @@ export const DATA = join(__dirname, "data"); // committed: transcription (source
 
 const PART1 = join(SOURCE_ROOT, "9th_Maths_Part1_SB.pdf"); // Algebra
 const PART2 = join(SOURCE_ROOT, "9th_Maths_Part2_SB.pdf"); // Geometry
-void PART2; // referenced by later (Geometry) chapters as they are added
 // History AND Political Science ship as ONE physical book (108pp): History ch.1-10
 // (printed pp 1-54) then Political Science ch.1-6 (printed pp 57-96), each with its
 // own contents page. They are two separate BANK subjects (matching mh-ssc-10, where
@@ -141,6 +140,50 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Operations on Quadratic Surds",
       "Rationalization of the Denominator",
       "Absolute Value",
+    ],
+  },
+
+  // ── Ch.1 Basic Concepts in Geometry (Part 2, Geometry) — the FIRST chapter from
+  //    the Geometry volume. Pages 1-12 (1-based) → 0-based 10-21. Structure:
+  //    Practice set 1.1 (p5 — distance on a number line, betweenness) ·
+  //    1.2 (pp7-8 — segments, rays, congruence; Q1 is a TABLE, Q5/Q6 read figures) ·
+  //    1.3 (p11 — if-then form and converses) · Problem Set 1 (pp11-12; Q.1 = a
+  //    five-part MCQ block, Q.2-8 free-response).
+  //    Answers: Part2 p124 (1-based) → 0-based 133 — the WHOLE chapter's key fits
+  //    on that single page (Practice sets 1.1/1.2/1.3 + Problem set 1).
+  //
+  //    ⚠ FIGURES ARE LOAD-BEARING HERE, unlike every Class-9 Maths chapter so far.
+  //    Three exercise figures carry data the question cannot be answered without:
+  //    Fig 1.5 (the number line for Ex 1.1 Q1, 8 sub-items), Fig 1.13 (Ex 1.2 Q5,
+  //    7 sub-items) and Fig 1.14 (Ex 1.2 Q6, 3 sub-items) — 18 rows in total. They
+  //    are VECTOR art, not raster, so they render as ink and snapCrop applies (the
+  //    same shape as Ch.1 Sets' Venn diagrams); an eyeballed bbox fails here just
+  //    as it did there. Every crop must clear the montage verify-gate.
+  //
+  //    Symbol note: the text layer substitutes Symbol-font glyphs (`Ð` for ∠,
+  //    `^` for ⊥, `\` for ∴, `D` for △), so transcription is VISION — but the
+  //    reason is different from Ch.2 Real Numbers, where the radical was absent
+  //    from the text layer entirely rather than merely substituted.
+  "basic-geometry-9": {
+    id: "basic-geometry-9",
+    chapterName: "Basic Concepts in Geometry",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Basic_Concepts_in_Geometry.pdf",
+    pdf: PART2,
+    pages: range(10, 21),
+    answersPdf: PART2,
+    answerPages: [133],
+    note: "Maharashtra State Board (Class 9) — Basic Concepts in Geometry (Balbharati textbook, Part 2 Geometry)",
+    // The chapter's own "Let's study" bullet list (p1), plus a subtopic for the
+    // segment/ray/congruence section the book teaches on pp6-8 and drills in
+    // Practice set 1.2 but does not name in that opener list.
+    subtopics: [
+      "Point, Line and Plane",
+      "Co-ordinates of Points and Distance",
+      "Betweenness",
+      "Line Segment, Ray and Congruence",
+      "Conditional Statements and Converse",
+      "Proof",
     ],
   },
 

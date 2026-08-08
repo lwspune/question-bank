@@ -52,6 +52,23 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Problem Set 2", label: "Problem Set 2", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
 
+  // ── Ch.1 Basic Concepts in Geometry (Part 2, Geometry) — verified against
+  //    9th_Maths_Part2_SB.pdf (pp.1-12). Reading order is: co-ordinate/betweenness
+  //    theory with worked examples → Practice set 1.1 → segment/ray/congruence
+  //    theory → Practice set 1.2 → conditional-statement theory with two worked
+  //    PROOFS → Practice set 1.3 → Problem set 1.
+  //    NOTE there is deliberately NO solved block before Practice Set 1.2: the
+  //    segment/ray section is purely definitional and prints no "Solution :"
+  //    anywhere, so a block for it would sit empty and gap the section_seq run.
+  "basic-geometry-9": [
+    { group: "Co-ordinates, Distance and Betweenness", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 SolvedEx"] },
+    { group: "Practice Set 1.1", label: "Practice Set 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 "] },
+    { group: "Practice Set 1.2", label: "Practice Set 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 "] },
+    { group: "Conditional Statements and Proof", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.3 SolvedEx"] },
+    { group: "Practice Set 1.3", label: "Practice Set 1.3", kind: "exercise", refPrefixes: ["Ex 1.3 "] },
+    { group: "Problem Set 1", label: "Problem Set 1", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   // ── History + Political Science (9th_Hist_SB.pdf) ───────────────────────────
   // These chapters are structurally MUCH simpler than the Maths ones: the book
   // interleaves narrative prose with activity boxes and closes each chapter with
