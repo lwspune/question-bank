@@ -104,6 +104,46 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.2 Real Numbers (Part 1, Algebra). Pages 19-35 (1-based) → 0-based 28-44.
+  //    Structure: Practice set 2.1 (p21 — terminating vs recurring decimals, p/q form) ·
+  //    2.2 (p25 — irrationality proofs, number line, rationals between two numbers) ·
+  //    2.3 (p30 — surds: order, surd-or-not, like/unlike, simplify, compare, add,
+  //    multiply, divide, rationalize a monomial denominator) · 2.4 (p32 — binomial
+  //    surds: multiply + rationalize with a conjugate) · 2.5 (p33 — absolute value) ·
+  //    Problem Set 2 (pp34-35; Q.1 = a TEN-part MCQ block (i)-(x), Q.2-8 free-response).
+  //    Answers: Part1 p130-131 (1-based) → 0-based 139-140 (ch.2's block starts
+  //    mid-page on 139, right after the tail of Problem set 1).
+  //
+  //    ⚠ VISION-ONLY — do NOT reach for dump-text.ts here, unlike Ch.1 Sets. The
+  //    radical sign is VECTOR-DRAWN in this book: U+221A occurs ZERO times across
+  //    all 17 pages of the chapter (and in its answers block). So the text layer
+  //    extracts "(B) √5" as "(B) 5", "∛7" as "7 3", and "√27" as "27" — a
+  //    text-first pass yields questions that are arithmetically DIFFERENT from the
+  //    printed ones, with nothing to flag it. Read the rendered pages.
+  "real-numbers-9": {
+    id: "real-numbers-9",
+    chapterName: "Real Numbers",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Real_Numbers.pdf",
+    pdf: PART1,
+    pages: range(28, 44),
+    answersPdf: PART1,
+    answerPages: range(139, 140),
+    note: "Maharashtra State Board (Class 9) — Real Numbers (Balbharati textbook, Part 1 Algebra)",
+    // The book's OWN section headings (the chapter-opener bullet list on p19),
+    // plus "Absolute value" — a "Let's learn" section on p33 that the opener list
+    // omits but which Practice set 2.5 drills.
+    subtopics: [
+      "Properties of Rational Numbers and Decimal Expansion",
+      "Irrational Numbers and the Number Line",
+      "Surds — Order, Like and Unlike, Simplification",
+      "Comparison of Quadratic Surds",
+      "Operations on Quadratic Surds",
+      "Rationalization of the Denominator",
+      "Absolute Value",
+    ],
+  },
+
   // ── History + Political Science (the 9th_Hist_SB.pdf book) ─────────────────
   //
   // ⚠ NO `answersPdf`/`answerPages` ON ANY CHAPTER BELOW, AND THAT IS NOT AN

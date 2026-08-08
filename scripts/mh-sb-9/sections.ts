@@ -30,6 +30,28 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Problem Set 1", label: "Problem Set 1", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
 
+  // ── Ch.2 Real Numbers (Part 1, Algebra) — verified against 9th_Maths_Part1_SB.pdf
+  //    (pp.19-35). UNLIKE Ch.1 Sets, this chapter DOES carry worked examples with the
+  //    book's own printed working, and they sit inside the theory that leads up to
+  //    each Practice set — so the outline interleaves a solved block before its own
+  //    practice set, which is the order a reader meets them on the page. Solved refs
+  //    are section-scoped (`2.3 SolvedEx.N`), so no two blocks' prefixes nest.
+  //    Problem set 2 is ONE book block (Q.1 = the ten-part MCQ, Q.2-8 free-response)
+  //    → a single miscellaneous block, questions in source_row order.
+  "real-numbers-9": [
+    { group: "Properties of Rational Numbers and Decimal Expansion", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1 SolvedEx"] },
+    { group: "Practice Set 2.1", label: "Practice Set 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 "] },
+    { group: "Irrational Numbers and the Number Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 SolvedEx"] },
+    { group: "Practice Set 2.2", label: "Practice Set 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 "] },
+    { group: "Surds — Order, Comparison and Operations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.3 SolvedEx"] },
+    { group: "Practice Set 2.3", label: "Practice Set 2.3", kind: "exercise", refPrefixes: ["Ex 2.3 "] },
+    { group: "Binomial Surds and Rationalization of the Denominator", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.4 SolvedEx"] },
+    { group: "Practice Set 2.4", label: "Practice Set 2.4", kind: "exercise", refPrefixes: ["Ex 2.4 "] },
+    { group: "Absolute Value", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.5 SolvedEx"] },
+    { group: "Practice Set 2.5", label: "Practice Set 2.5", kind: "exercise", refPrefixes: ["Ex 2.5 "] },
+    { group: "Problem Set 2", label: "Problem Set 2", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   // ── History + Political Science (9th_Hist_SB.pdf) ───────────────────────────
   // These chapters are structurally MUCH simpler than the Maths ones: the book
   // interleaves narrative prose with activity boxes and closes each chapter with

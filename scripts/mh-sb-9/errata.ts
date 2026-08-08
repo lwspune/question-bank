@@ -33,6 +33,26 @@ type Row = {
   chapter: { name: string } | null;
 };
 
+/**
+ * Defects that live in the book's THEORY PROSE, not in a question — so there is
+ * no `solution` to carry a `[Textbook ...]` bracket. Recorded here by hand so the
+ * publisher-facing report is complete; forcing one onto the nearest question's
+ * model answer would put an unrelated note in front of a student.
+ * Each entry must be verified on the RENDERED page (the text layer strips this
+ * book's vector-drawn radicals), and cite the printed page number.
+ */
+const THEORY_ERRATA: { chapter: string; where: string; type: string; issue: string }[] = [
+  {
+    chapter: "Real Numbers",
+    where: "p.29, 'Rationalization of surd' theory",
+    type: "Misprint",
+    issue:
+      "The book states \"√6, √16 √50 are the rationalizing factors of √2\". Only √50 is one " +
+      "(√2·√50 = 10); √2·√6 = 2√3 and √2·√16 = 4√2 are both irrational. The intended list is " +
+      "presumably √8, √18, √50. (A comma between √16 and √50 is also missing.)",
+  },
+];
+
 /** The leading `[...]` flag; assumes the bracket body carries no literal `]`. */
 function extractFlag(solution: string): string | null {
   if (!solution.startsWith("[")) return null;
@@ -73,32 +93,43 @@ async function main() {
       (a.question_number ?? "").localeCompare(b.question_number ?? "")
     );
 
-  const byChapter = new Map<string, typeof rows>();
-  for (const r of rows) {
-    const ch = r.chapter?.name ?? "(unknown)";
-    (byChapter.get(ch) ?? byChapter.set(ch, []).get(ch)!).push(r);
+  type Item = { chapter: string; question: string; type: string; issue: string };
+  const items: Item[] = rows.map((r) => ({
+    chapter: r.chapter?.name ?? "(unknown)",
+    question: r.question_number ?? "—",
+    type: categorize(r.flag!),
+    issue: r.flag!,
+  }));
+  for (const t of THEORY_ERRATA) {
+    items.push({ chapter: t.chapter, question: t.where, type: t.type, issue: t.issue });
+  }
+  items.sort((a, b) => a.chapter.localeCompare(b.chapter) || a.question.localeCompare(b.question));
+
+  const byChapter = new Map<string, Item[]>();
+  for (const r of items) {
+    (byChapter.get(r.chapter) ?? byChapter.set(r.chapter, []).get(r.chapter)!).push(r);
   }
 
   const L: string[] = [];
   L.push("# Maharashtra State Board — Textbook Errata");
   L.push("");
-  L.push(`Compiled from the PYQ Vault question bank. **${rows.length} flagged item(s)** across ${byChapter.size} chapter(s).`);
-  L.push("Each entry is a misprint in the question, or an error in the printed answer key, found while authoring/verifying model solutions.");
+  L.push(`Compiled from the PYQ Vault question bank. **${items.length} flagged item(s)** across ${byChapter.size} chapter(s).`);
+  L.push("Each entry is a misprint in the question, an error in the printed answer key, or a defect in the chapter's theory prose, found while authoring/verifying model solutions.");
   L.push("");
-  const misprint = rows.filter((r) => categorize(r.flag!) === "Misprint" || categorize(r.flag!) === "Error").length;
-  const ak = rows.filter((r) => categorize(r.flag!) === "Answer-key").length;
+  const misprint = items.filter((r) => r.type === "Misprint" || r.type === "Error").length;
+  const ak = items.filter((r) => r.type === "Answer-key").length;
   L.push(`- Question misprints: **${misprint}**`);
   L.push(`- Answer-key errors: **${ak}**`);
   L.push("");
-  for (const [ch, items] of byChapter) {
-    L.push(`## ${ch}  (${items.length})`);
+  for (const [ch, chapterItems] of byChapter) {
+    L.push(`## ${ch}  (${chapterItems.length})`);
     L.push("");
     L.push("| Question | Type | Issue |");
     L.push("|---|---|---|");
-    for (const r of items) {
-      const q = (r.question_number ?? "—").replace(/\|/g, "\\|");
-      const issue = r.flag!.replace(/\s+/g, " ").replace(/\|/g, "\\|");
-      L.push(`| ${q} | ${categorize(r.flag!)} | ${issue} |`);
+    for (const r of chapterItems) {
+      const q = r.question.replace(/\|/g, "\\|");
+      const issue = r.issue.replace(/\s+/g, " ").replace(/\|/g, "\\|");
+      L.push(`| ${q} | ${r.type} | ${issue} |`);
     }
     L.push("");
   }
