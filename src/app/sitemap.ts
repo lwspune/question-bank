@@ -19,12 +19,42 @@ import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
+import { CONTENT_DATES } from "@/lib/seo/contentDates.generated";
+import {
+  contentDateFor,
+  newestOf,
+  parseIsoDate,
+  type ContentDateMap,
+} from "@/lib/seo/lastmod";
 
 const SITE_URL = "https://www.pyqvault.com";
 
+/**
+ * Stamp each entry with the real date its CONTENT last changed, derived from its
+ * own URL, replacing the build-date placeholder the builders above set.
+ *
+ * Doing it as one pass over the finished array rather than at each of the ~30
+ * construction sites means a new guide or notes chapter inherits the behaviour
+ * automatically — there is no per-entry line to forget.
+ *
+ * See src/lib/seo/lastmod.ts for why a truthful per-URL lastmod matters here: the
+ * previous code stamped one build timestamp onto 984 of 988 URLs, which told
+ * Google that everything changed on every deploy and therefore told it nothing.
+ */
+function withContentDates(
+  entries: MetadataRoute.Sitemap,
+  dates: ContentDateMap,
+  fallback: Date
+): MetadataRoute.Sitemap {
+  return entries.map((e) => ({
+    ...e,
+    lastModified: contentDateFor(e.url.replace(SITE_URL, ""), dates, fallback),
+  }));
+}
+
 /** Published public quizzes (DB). Guarded so a missing-env build still produces
  *  the static sitemap rather than failing. */
-async function publicQuizEntries(now: Date): Promise<MetadataRoute.Sitemap> {
+async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
   try {
     const db = createSupabaseAdminClient();
     const { data } = await db
@@ -34,7 +64,7 @@ async function publicQuizEntries(now: Date): Promise<MetadataRoute.Sitemap> {
       .limit(1000);
     return (data ?? []).map((q) => ({
       url: `${SITE_URL}/quiz/${q.public_slug}`,
-      lastModified: q.updated_at ? new Date(q.updated_at as string) : now,
+      lastModified: q.updated_at ? new Date(q.updated_at as string) : buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     }));
@@ -44,18 +74,17 @@ async function publicQuizEntries(now: Date): Promise<MetadataRoute.Sitemap> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
+  const buildDate = new Date();
 
   const guideEntries: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/guide`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
+    // NOTE: /guide is deliberately ABSENT — it is a redirect to /guide/nda, not
+    // a page. Listing a redirecting URL in a sitemap asks Google to index
+    // something that does not exist; it was one of the 3 "Page with redirect"
+    // entries in the 2026-08-09 coverage report. Add it back only if it ever
+    // becomes a real exam picker.
     {
       url: `${SITE_URL}/guide/nda`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
@@ -63,13 +92,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-maths/${r.slug}`
         : `${SITE_URL}/guide/nda-maths`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...DETAIL_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-maths/principles/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -77,13 +106,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-english/${r.slug}`
         : `${SITE_URL}/guide/nda-english`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-english/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -91,13 +120,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-physics/${r.slug}`
         : `${SITE_URL}/guide/nda-physics`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...PHYSICS_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-physics/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -105,13 +134,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-chemistry/${r.slug}`
         : `${SITE_URL}/guide/nda-chemistry`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...CHEMISTRY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-chemistry/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -119,13 +148,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-biology/${r.slug}`
         : `${SITE_URL}/guide/nda-biology`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...BIOLOGY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-biology/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -133,13 +162,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-geography/${r.slug}`
         : `${SITE_URL}/guide/nda-geography`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...GEOGRAPHY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-geography/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -147,13 +176,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-history/${r.slug}`
         : `${SITE_URL}/guide/nda-history`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...HISTORY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-history/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -161,20 +190,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: r.slug
         ? `${SITE_URL}/guide/nda-polity/${r.slug}`
         : `${SITE_URL}/guide/nda-polity`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
     })),
     ...POLITY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-polity/playbooks/${slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
     // NDA Economics — single-page landing, no sub-routes.
     {
       url: `${SITE_URL}/guide/nda-economics`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.7,
     },
@@ -183,23 +212,59 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // shape for crawlers (content is shape-calibration, not memorise-this).
     {
       url: `${SITE_URL}/guide/nda-current-affairs`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.6,
     },
   ];
+
+  // Index + hub pages (/notes, /notes/<exam>, /notes/<subject>) have no _data
+  // directory of their own, so they have no entry in CONTENT_DATES. For them
+  // "last modified" honestly means "when did anything I list last change" — the
+  // newest of their children. Computed here and merged into the lookup so the
+  // single withContentDates() pass below covers every notes URL uniformly.
+  const notesDatesByRoute = Object.entries(CONTENT_DATES).filter(([k]) =>
+    k.startsWith("/notes/")
+  );
+  const newestUnder = (prefix: string): string | null => {
+    const under = notesDatesByRoute
+      .filter(([k]) => k === prefix || k.startsWith(`${prefix}/`))
+      .map(([, v]) => v);
+    if (under.length === 0) return null;
+    // newestOf parses, so mixed UTC-offset strings compare correctly — a plain
+    // lexical max would silently mis-order "…+05:30" against "…Z".
+    return newestOf(under, new Date(0)).toISOString();
+  };
+
+  const aggregateDates: Record<string, string> = {};
+  const allNotes = newestUnder("/notes");
+  if (allNotes) aggregateDates["/notes"] = allNotes;
+  for (const g of getNotesExamGroups()) {
+    const perExam = newestOf(
+      g.subjects.map((s) => newestUnder(`/notes/${s.subjectRoute}`)),
+      new Date(0)
+    );
+    if (perExam.getTime() > 0) {
+      aggregateDates[`/notes/${g.slug}`] = perExam.toISOString();
+    }
+  }
+  for (const c of NOTES_CHAPTERS) {
+    const perSubject = newestUnder(`/notes/${c.subjectRoute}`);
+    if (perSubject) aggregateDates[`/notes/${c.subjectRoute}`] = perSubject;
+  }
+  const contentDates = { ...CONTENT_DATES, ...aggregateDates };
 
   // Notes routes derive from NOTES_CHAPTERS. Adding a chapter to that
   // registry automatically adds: the cross-exam index, each per-exam hub,
   // the subject-route landing (once per distinct subjectRoute), the chapter
   // landing, and one entry per slug.
   const notesEntries: MetadataRoute.Sitemap = [
-    { url: `${SITE_URL}/notes`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE_URL}/notes`, lastModified: buildDate, changeFrequency: "weekly", priority: 0.7 },
   ];
   for (const g of getNotesExamGroups()) {
     notesEntries.push({
       url: `${SITE_URL}/notes/${g.slug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.8,
     });
@@ -210,21 +275,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       subjectRoutesSeen.add(c.subjectRoute);
       notesEntries.push({
         url: `${SITE_URL}/notes/${c.subjectRoute}`,
-        lastModified: now,
+        lastModified: buildDate,
         changeFrequency: "weekly",
         priority: 0.8,
       });
     }
     notesEntries.push({
       url: `${SITE_URL}/notes/${c.subjectRoute}/${c.chapterSlug}`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.8,
     });
     for (const slug of c.slugs) {
       notesEntries.push({
         url: `${SITE_URL}/notes/${c.subjectRoute}/${c.chapterSlug}/${slug}`,
-        lastModified: now,
+        lastModified: buildDate,
         changeFrequency: "weekly",
         priority: 0.7,
       });
@@ -234,13 +299,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const examHomeEntries: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/nda`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.95,
     },
   ];
 
-  const quizEntries = await publicQuizEntries(now);
+  const quizEntries = await publicQuizEntries(buildDate);
 
   // Per-chapter question landing pages — the cacheable, indexable face of the
   // bank. Until these existed the sitemap offered Google exactly ONE URL
@@ -252,13 +317,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     landingEntries = [
       {
         url: `${SITE_URL}/questions`,
-        lastModified: now,
+        lastModified: buildDate,
         changeFrequency: "weekly" as const,
         priority: 0.8,
       },
+      // The real signal: each chapter page's date is the newest PUBLIC question
+      // ingested into that chapter (migration 0072). An ingest now moves exactly
+      // the pages it touched, instead of every URL on the site.
       ...landings.map((l) => ({
         url: `${SITE_URL}${landingHref(l)}`,
-        lastModified: now,
+        lastModified: parseIsoDate(l.lastAdded, buildDate),
         changeFrequency: "weekly" as const,
         priority: 0.7,
       })),
@@ -272,7 +340,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // The homepage — highest-authority URL, now a real landing page (was a
       // bare redirect to /browse until 2026-07-07).
       url: SITE_URL,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 1.0,
     },
@@ -281,32 +349,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // query, so we don't invite a daily recrawl. weekly + 0.8 keeps it
       // indexed without driving Supabase egress on every Googlebot pass.
       url: `${SITE_URL}/browse`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     ...landingEntries,
     ...examHomeEntries,
-    ...guideEntries,
-    ...notesEntries,
+    ...withContentDates(guideEntries, contentDates, buildDate),
+    ...withContentDates(notesEntries, contentDates, buildDate),
     ...quizEntries,
     {
       // Teacher-access lead page — a real acquisition surface for coaching staff.
       url: `${SITE_URL}/request-access`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${SITE_URL}/privacy`,
-      lastModified: now,
+      lastModified: buildDate,
       changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/login`,
-      lastModified: now,
-      changeFrequency: "monthly",
       priority: 0.3,
     },
   ];

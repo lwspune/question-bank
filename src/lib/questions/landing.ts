@@ -53,9 +53,21 @@ export type ChapterLanding = {
   questionCount: number;
   /** Practice-only exams (textbook/worksheet banks) have no PYQ corpus. */
   practiceOnly: boolean;
+  /**
+   * ISO timestamp of the newest PUBLIC question in this chapter, or null if the
+   * lookup failed. This is the page's honest last-modified date: a landing page
+   * changes when questions are ingested into its chapter.
+   *
+   * `questions` has no `updated_at` column, so an EDIT to an existing question
+   * (a key flip, a solution rewrite) does not move this. That under-claims
+   * rather than over-claims, which is the safe direction — see
+   * src/lib/seo/lastmod.ts.
+   */
+  lastAdded: string | null;
 };
 
 type FacetRow = { chapter_id: string; q_count: number };
+type LastAddedRow = { chapter_id: string; last_added: string };
 
 /**
  * Build the full routing table: every chapter with enough PUBLIC questions to
@@ -89,24 +101,51 @@ export const listChapterLandings = unstable_cache(
         .order("name");
 
       for (const subject of dedupeBySlug(subjects ?? [])) {
-        const [{ data: chapters }, { data: facets }] = await Promise.all([
-          db
-            .from("chapters")
-            .select("id, name")
-            .eq("subject_id", subject.id)
-            .order("name"),
-          db.rpc("get_chapter_facets", {
-            p_exam_id: examId,
-            p_subject_id: subject.id,
-            p_difficulties: null,
-            p_pyq_years: null,
-            p_q: null,
-            p_kind: kind,
-          }),
-        ]);
+        const [{ data: chapters }, { data: facets }, lastAddedRes] =
+          await Promise.all([
+            db
+              .from("chapters")
+              .select("id, name")
+              .eq("subject_id", subject.id)
+              .order("name"),
+            db.rpc("get_chapter_facets", {
+              p_exam_id: examId,
+              p_subject_id: subject.id,
+              p_difficulties: null,
+              p_pyq_years: null,
+              p_q: null,
+              p_kind: kind,
+            }),
+            // Newest PUBLIC question per chapter → the sitemap's <lastmod>
+            // (migration 0073). Subject-scoped so it rides questions_filter_idx;
+            // the bank-wide version this replaced took 5.4s and was intermittently
+            // cancelled by the statement timeout. Rides along in this Promise.all,
+            // so it costs no extra round-trip.
+            db.rpc("get_chapter_last_added", {
+              p_subject_id: subject.id,
+              p_kind: kind,
+            }),
+          ]);
+
+        // Surfaced, not swallowed: a silent `{ data }` destructure is exactly how
+        // the 5.4s timeout above went unnoticed — every affected page just
+        // quietly fell back to the build date, recreating the bug being fixed.
+        // The dates are best-effort (never fail a sitemap over one), but a
+        // failure must at least be visible in the logs.
+        if (lastAddedRes.error) {
+          console.warn(
+            `[landing] last-added lookup failed for ${subject.name}: ${lastAddedRes.error.message}`
+          );
+        }
 
         const counts = new Map(
           ((facets ?? []) as FacetRow[]).map((f) => [f.chapter_id, f.q_count])
+        );
+        const lastAddedByChapter = new Map(
+          ((lastAddedRes.data ?? []) as LastAddedRow[]).map((r) => [
+            r.chapter_id,
+            r.last_added,
+          ])
         );
 
         for (const chapter of dedupeBySlug(chapters ?? [])) {
@@ -124,6 +163,7 @@ export const listChapterLandings = unstable_cache(
             chapterId: chapter.id,
             questionCount,
             practiceOnly,
+            lastAdded: lastAddedByChapter.get(chapter.id) ?? null,
           });
         }
       }
