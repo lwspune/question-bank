@@ -15,8 +15,15 @@ export default function robots(): MetadataRoute.Robots {
           "/notes",
           "/quiz",
           "/privacy",
-          "/login",
         ],
+        // `/login` was removed from this Allow list on 2026-08-09. It is now
+        // noindexed at the page level (src/app/login/layout.tsx) because its
+        // client-rendered shell is byte-identical to /signup's, which is what
+        // produced the "Duplicate without user-selected canonical" flag. Note
+        // the directives are complementary, not redundant: robots.txt governs
+        // CRAWLING and the meta tag governs INDEXING — a Disallow here would
+        // actually PREVENT Google from seeing the noindex, so the page stays
+        // crawlable and simply declines to be indexed.
         // `/questions` used to be blanket-disallowed because the only route under
         // it was the admin editor — which has since moved under /dashboard, so
         // the existing /dashboard rule covers it. Leaving the blanket rule in

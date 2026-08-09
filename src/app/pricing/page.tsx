@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: "Premium",
   description:
     "Unlock every premium notes chapter: full worked examples, practice sets, and mastery checkpoints.",
+  // Kept indexable (unlike /login and /signup — a pricing page is a genuine
+  // landing surface), but it needs a canonical: it is reachable with `?next=`
+  // and other CTA query strings, and without this every variant is a separate
+  // undeclared duplicate.
+  alternates: { canonical: "/pricing" },
 };
 
 const PERKS = [
