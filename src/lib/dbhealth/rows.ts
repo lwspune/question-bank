@@ -13,6 +13,16 @@ type Row = Record<string, unknown>;
 const n = (v: unknown): number => Number(v ?? 0);
 
 /**
+ * Like `n`, but preserves NULL as null.
+ *
+ * Columns added by migration 0071 are absent on every earlier row, and the
+ * difference between "we did not record this" and "this was zero" is exactly
+ * what the report must not blur — a stored NULL would otherwise render as a
+ * measured 0% and read as an all-clear.
+ */
+const nOrNull = (v: unknown): number | null => (v === null || v === undefined ? null : Number(v));
+
+/**
  * Map a stored row back into the snapshot shape the pure core expects.
  *
  * SHARED BY THE CLI AND THE PAGE ON PURPOSE. Two hand-written mappers for one
@@ -33,6 +43,9 @@ export function rowToSnapshot(r: Row): HealthSnapshot {
     deadlocks: n(r.deadlocks),
     rollbacks: n(r.rollbacks),
     largestGroupRows: n(r.largest_group_rows),
+    statementsTracked: nOrNull(r.statements_tracked),
+    statementsMax: nOrNull(r.statements_max),
+    statementsEvictions: nOrNull(r.statements_evictions),
     tables: (r.tables ?? []) as HealthSnapshot["tables"],
     queries: (r.queries ?? []) as HealthSnapshot["queries"],
   };

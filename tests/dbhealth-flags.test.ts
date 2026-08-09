@@ -42,6 +42,9 @@ const BASE: HealthDelta = {
   tempFilesDelta: 0,
   deadlocksDelta: 0,
   rollbacksDelta: 10,
+  statementsTracked: 500,
+  statementsMax: 5000,
+  statementsEvictions: 0,
   queries: [],
   tables: [],
 };
@@ -216,5 +219,64 @@ describe("evaluateFlags — ordering and first run", () => {
     const f = flags.find((x) => x.code === "counters-unavailable");
     expect(f).toBeDefined();
     expect(f!.level).toBe("info");
+  });
+});
+
+/**
+ * The pg_stat_statements store, added 2026-08-09 after a real incident.
+ *
+ * Supabase's postgres_exporter reads the WHOLE store once a minute to build its
+ * metrics. At 4,868 entries / 3.8 MB of query text that read no longer fitted in
+ * work_mem (2.1 MB), so it spilled ~5.8 MB to disk twice a minute — 13 GB/day on
+ * a 164 MB database, and the largest remaining consumer of the disk-IO budget.
+ * Clearing the store halved it immediately. Nothing was watching the one gauge
+ * that predicts it, so it took a log-level investigation to find.
+ *
+ * The store also EVICTS silently once full (dealloc reached 12 before the
+ * reset), and what it evicts is this tracker's own input — so the reports were
+ * under-counting with no way to tell.
+ */
+describe("evaluateFlags — the pg_stat_statements store", () => {
+  it("stays quiet when the store has plenty of room", () => {
+    expect(codes(d({ statementsTracked: 500, statementsMax: 5000 }))).not.toContain("statement-store-full");
+  });
+
+  it("warns once the store is filling, naming the one-line fix", () => {
+    const flags = evaluateFlags(d({ statementsTracked: 4100, statementsMax: 5000 }));
+    const f = flags.find((x) => x.code === "statement-store-full");
+    expect(f).toBeDefined();
+    expect(f!.level).toBe("warn");
+    expect(f!.message).toContain("pg_stat_statements_reset");
+  });
+
+  it("escalates to critical when it is nearly full", () => {
+    const flags = evaluateFlags(d({ statementsTracked: 4800, statementsMax: 5000 }));
+    expect(flags.find((x) => x.code === "statement-store-full")!.level).toBe("critical");
+  });
+
+  it("flags eviction separately — it means this tracker's own inputs are lossy", () => {
+    const flags = evaluateFlags(d({ statementsEvictions: 12 }));
+    const f = flags.find((x) => x.code === "statement-store-evicting");
+    expect(f).toBeDefined();
+    expect(f!.level).toBe("warn");
+  });
+
+  it("does not flag eviction when nothing has been evicted", () => {
+    expect(codes(d({ statementsEvictions: 0 }))).not.toContain("statement-store-evicting");
+  });
+
+  /**
+   * Snapshots taken before migration 0071 carry no reading. Reporting a
+   * fullness of 0% (or of NaN) would be inventing a measurement, which is the
+   * one thing this tracker must never do.
+   */
+  it("says nothing at all when the reading was never recorded", () => {
+    const c = codes(d({ statementsTracked: null, statementsMax: null, statementsEvictions: null }));
+    expect(c).not.toContain("statement-store-full");
+    expect(c).not.toContain("statement-store-evicting");
+  });
+
+  it("says nothing when the max is unknown, rather than dividing by zero", () => {
+    expect(codes(d({ statementsTracked: 4900, statementsMax: 0 }))).not.toContain("statement-store-full");
   });
 });

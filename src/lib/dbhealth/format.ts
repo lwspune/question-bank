@@ -43,6 +43,24 @@ export function renderReport(delta: HealthDelta, flags: Flag[]): string {
   out.push(`  connections          ${delta.connections} / ${delta.maxConnections}`);
   out.push(`  cache hit rate       ${delta.cacheHitPct}%`);
   out.push(`  largest chapter      ${num(delta.largestGroupRows)} PUBLIC questions  (PostgREST cap is 1000)`);
+  // "not recorded" is printed as such. A snapshot from before migration 0071
+  // has no reading, and showing 0 / 0 would look like a measurement.
+  if (delta.statementsTracked === null || delta.statementsMax === null) {
+    out.push("  query store          not recorded (snapshot predates migration 0071)");
+  } else {
+    const pct = delta.statementsMax > 0
+      ? ` (${((delta.statementsTracked / delta.statementsMax) * 100).toFixed(0)}%)`
+      : "";
+    const eviction =
+      delta.statementsEvictions === null
+        ? ""
+        : delta.statementsEvictions > 0
+          ? `   evicted ${num(delta.statementsEvictions)}x — inputs lossy`
+          : "   evicted 0";
+    out.push(
+      `  query store          ${num(delta.statementsTracked)} / ${num(delta.statementsMax)} entries${pct}${eviction}`
+    );
+  }
   out.push("");
 
   out.push("THIS WINDOW (cumulative counters)");

@@ -55,6 +55,28 @@ export type HealthSnapshot = {
    * separate production bugs in this repo.
    */
   largestGroupRows: number;
+  /**
+   * How full `pg_stat_statements` is — entries tracked, and the `.max` ceiling.
+   *
+   * A GAUGE, and the one that predicts the disk-spill incident of 2026-08-09.
+   * Supabase's postgres_exporter reads the entire store once a minute; at 4,868
+   * entries (3.8 MB of query text) that read stopped fitting in work_mem and
+   * spilled ~5.8 MB to disk twice a minute — 13 GB/day on a 164 MB database.
+   * Clearing the store halved it on the spot. Cost scales with the store's SIZE,
+   * so this is the number to watch, not the spill it eventually causes.
+   *
+   * null on snapshots taken before migration 0071: the reading was not recorded,
+   * which is NOT the same as zero and must never be reported as a measurement.
+   */
+  statementsTracked: number | null;
+  statementsMax: number | null;
+  /**
+   * `pg_stat_statements_info.dealloc` — how many times the store has been full
+   * and silently discarded its least-used entries. Non-zero means THIS TRACKER'S
+   * OWN INPUT is lossy: the discarded rows are query stats we would otherwise
+   * have diffed, so the reports under-count and cannot say by how much.
+   */
+  statementsEvictions: number | null;
   tables: TableStat[];
   queries: QueryStat[];
 };
@@ -114,6 +136,10 @@ export type HealthDelta = {
   maxConnections: number;
   cacheHitPct: number;
   largestGroupRows: number;
+  /** See HealthSnapshot — null means "not recorded", never "zero". */
+  statementsTracked: number | null;
+  statementsMax: number | null;
+  statementsEvictions: number | null;
 
   // Cumulative counters — null whenever they cannot be trusted.
   tempBytesDelta: number | null;

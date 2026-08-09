@@ -53,6 +53,11 @@ export function computeDelta(prev: HealthSnapshot | null, curr: HealthSnapshot):
     maxConnections: curr.maxConnections,
     cacheHitPct: curr.cacheHitPct,
     largestGroupRows: curr.largestGroupRows,
+    // Gauges, so they survive a stats reset and are reported on the first run
+    // too — unlike everything cumulative below.
+    statementsTracked: curr.statementsTracked,
+    statementsMax: curr.statementsMax,
+    statementsEvictions: curr.statementsEvictions,
     tables: curr.tables,
   };
 

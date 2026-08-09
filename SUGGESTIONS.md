@@ -36,6 +36,30 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-09
+
+### ~~Finish the spill diagnosis — the other half is still unidentified~~ — **RESOLVED 2026-08-09 (there was no other half)**
+
+**Closed the same day it was raised, and the entry itself was based on a bad measurement.** A 56-minute idle window shows `temp_files`/`temp_bytes` **unchanged** from 5 minutes post-reset (5 files / 26 MB), across a period that included a full `prepush`. Spill is **zero**, not halved: clearing `pg_stat_statements` removed ~13 GB/day in full. No second culprit, no support ticket, no further logging session.
+
+The "halved" claim came from a **5.4-minute** sample — below the tracker's own `MIN_RATE_WINDOW_HOURS` floor — and the 5 files it counted were **self-inflicted** (`npm run db:health`, a `collect_db_health()` call, and several `pg_stat_statements` scans, each spilling ~5 MB by design). Lesson filed as rule 7 in [[monitor-threshold-calibration]]: *your own diagnostics are part of the system under test; idle out the window and probe with something that cannot perturb it.* Original entry follows.
+
+Clearing `pg_stat_statements` on 2026-08-09 took the disk spill from ~1.8 to ~0.9 temp files/min (~13 → ~5 GB/day) and confirmed the culprit process is Supabase's `postgres_exporter`. But the log showed the files arriving in **PAIRS**, and only one of each pair was the statement-store read. **The second ~5 GB/day is not diagnosed** — the exporter reads something else of similar size every minute.
+
+**Why:** it is the last unexplained consumer of the Supabase disk-IO allowance, and the one that set off the original alert.
+
+**How to apply:** (1) read the first FULL 24-hour `npm run db:health` window. (2) If still material, re-enable logging for ten minutes to name the second query: `npx supabase --experimental postgres-config update --project-ref wunvtnqlzjrkvolslbnm --config log_temp_files=4MB --no-restart`, read `get_logs(postgres)`, then `postgres-config delete … --config log_temp_files --no-restart`. Resolve the PID via `pg_stat_activity`. (3) Raise a Supabase support ticket. Full recipe in [[db-perf-diagnosis]].
+
+### Consider capping `pg_stat_statements.max` instead of clearing the store periodically
+
+The store refills in roughly three months (2,615 of 4,865 entries were one-off ingestion/audit queries run exactly once), so the 2026-08-09 reset is maintenance that will recur. Migration 0071 now warns at 80% full, which makes the recurrence visible — but the underlying ceiling is a tunable: `pg_stat_statements.max` is 5,000, and the exporter's per-minute read cost scales with how much of that is occupied.
+
+**Why:** lowering the ceiling would bound the exporter's cost permanently rather than relying on someone acting on a warning every quarter. It is a genuine trade-off, not a free win, which is why it needs a decision rather than a silent change. *(Still open after the 2026-08-09 fix proved total — the spill is zero today, but it returns as the store refills, so this is about whether to automate the remedy or keep acting on the 0071 warning.)*
+
+**How to apply:** decide first whether the history is worth more than the disk IO. Lowering to ~1,500 caps the store at roughly a third of the text, but Postgres then evicts far more aggressively — and eviction silently discards entries this tracker diffs, which is exactly what `statement-store-evicting` now warns about. A middle path is to leave `max` alone and simply act on the 0071 warning when it fires. If you do change it, it is the same CLI route as `log_temp_files` (`postgres-config update --config pg_stat_statements.max=…`) and **requires a restart**, unlike the logging flag — so it is not a quiet change.
+
+---
+
 ## 2026-08-07
 
 ### ~~Fold the per-subject ruling addendum into RULING_BRIEF.md~~ — **DONE 2026-08-07**

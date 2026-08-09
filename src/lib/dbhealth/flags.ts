@@ -55,6 +55,21 @@ export const THRESHOLDS = {
    */
   unattributedSpillMinBytes: 50 * 1024 * 1024,
   unattributedSpillFraction: 0.5,
+
+  /**
+   * How full `pg_stat_statements` may get before it costs real disk IO.
+   *
+   * Measured 2026-08-09, not guessed. Supabase's postgres_exporter reads the
+   * ENTIRE store every minute; at 4,868 of 5,000 entries (3.8 MB of query text
+   * against 2.1 MB of work_mem) that read spilled ~5.8 MB to disk twice a
+   * minute — 13 GB/day, and the single largest consumer of the disk-IO budget
+   * on a 164 MB database. Resetting the store halved it immediately.
+   *
+   * 0.8 is where the text crosses work_mem on this instance with margin to act;
+   * 0.95 is where eviction starts and the tracker's own inputs go lossy.
+   */
+  statementStoreWarnFraction: 0.8,
+  statementStoreCriticalFraction: 0.95,
 } as const;
 
 export type FlagLevel = "critical" | "warn" | "info";
@@ -169,6 +184,37 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
       level: "warn",
       code: "cache-hit",
       message: `Cache hit rate is ${delta.cacheHitPct}% (normally 100%) — reads are going to disk.`,
+    });
+  }
+
+  // The pg_stat_statements store. Both rules are skipped entirely when the
+  // reading is null — a snapshot from before migration 0071 did not record it,
+  // and treating "not recorded" as 0 would report a measurement we never took.
+  const tracked = delta.statementsTracked;
+  const storeMax = delta.statementsMax;
+  if (tracked !== null && storeMax !== null && storeMax > 0) {
+    const fraction = tracked / storeMax;
+    if (fraction >= THRESHOLDS.statementStoreWarnFraction) {
+      flags.push({
+        level: fraction >= THRESHOLDS.statementStoreCriticalFraction ? "critical" : "warn",
+        code: "statement-store-full",
+        message:
+          `pg_stat_statements holds ${tracked} of ${storeMax} entries (${(fraction * 100).toFixed(0)}%). ` +
+          `Supabase's postgres_exporter reads the whole store every minute, so its cost scales with this ` +
+          `number — at 97% full it was spilling ~13 GB/day to disk. Most of the store is one-off script ` +
+          `queries that will never run again. Clear it with: select pg_stat_statements_reset();`,
+      });
+    }
+  }
+
+  if (delta.statementsEvictions !== null && delta.statementsEvictions > 0) {
+    flags.push({
+      level: "warn",
+      code: "statement-store-evicting",
+      message:
+        `pg_stat_statements has discarded entries ${delta.statementsEvictions} time(s) because it filled up. ` +
+        `What it discards is THIS REPORT'S OWN INPUT, so the query-level figures above are under-counted ` +
+        `and cannot say by how much. Clear the store to reset it: select pg_stat_statements_reset();`,
     });
   }
 
