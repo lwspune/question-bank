@@ -25,11 +25,60 @@ const BASE: HealthSnapshot = {
   deadlocks: 0,
   rollbacks: 100,
   largestGroupRows: 346,
+  statementsTracked: 500,
+  statementsMax: 5000,
+  statementsEvictions: 0,
   tables: [],
   queries: [],
 };
 
 const snap = (over: Partial<HealthSnapshot>): HealthSnapshot => ({ ...BASE, ...over });
+
+describe("computeDelta — the pg_stat_statements store gauges", () => {
+  it("reports the CURRENT reading, not a difference — it is a gauge, not a counter", () => {
+    const d = computeDelta(
+      snap({ statementsTracked: 4000 }),
+      snap({ capturedAt: "2026-08-08T12:00:00.000Z", statementsTracked: 4800, statementsEvictions: 12 })
+    );
+    expect(d.statementsTracked).toBe(4800);
+    expect(d.statementsMax).toBe(5000);
+    expect(d.statementsEvictions).toBe(12);
+  });
+
+  /**
+   * A stats reset zeroes every cumulative counter, but the store's size is a
+   * gauge — it is still true right now, and it is the reading that tells you
+   * whether to reset again. It must survive the refusal that blanks the rest.
+   */
+  it("survives a stats reset, which blanks the cumulative counters", () => {
+    const d = computeDelta(
+      snap({ statsReset: "2026-05-08T06:49:07.000Z" }),
+      snap({
+        capturedAt: "2026-08-08T12:00:00.000Z",
+        statsReset: "2026-08-09T02:29:32.000Z",
+        statementsTracked: 7,
+      })
+    );
+    expect(d.counters.available).toBe(false);
+    expect(d.tempBytesDelta).toBeNull();
+    expect(d.statementsTracked).toBe(7);
+  });
+
+  it("reports the reading on the very first run, when nothing cumulative can be", () => {
+    const d = computeDelta(null, snap({ statementsTracked: 4868 }));
+    expect(d.isFirstRun).toBe(true);
+    expect(d.statementsTracked).toBe(4868);
+  });
+
+  it("carries a missing reading through as null rather than inventing a zero", () => {
+    const d = computeDelta(
+      null,
+      snap({ statementsTracked: null, statementsMax: null, statementsEvictions: null })
+    );
+    expect(d.statementsTracked).toBeNull();
+    expect(d.statementsMax).toBeNull();
+  });
+});
 
 describe("computeDelta — gauges", () => {
   it("reports absolute change for point-in-time gauges", () => {
