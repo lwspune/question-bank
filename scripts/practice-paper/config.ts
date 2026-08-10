@@ -83,6 +83,620 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "NDA GAT MOCK G1 LWS FINAL" — 150-q NDA GAT MOCK in two printed parts: Part A is
+  // English (Q1–50: antonyms Q1–10, PQRS ordering Q11–20, synonyms Q21–30, prepositions
+  // Q31–40, spotting errors Q41–50) and Part B is general ability (Q51–150). Part B is
+  // SUBJECT-INTERLEAVED rather than blocked — history, current affairs and geography
+  // alternate question by question through Q51–100 — so `subject` is assigned PER RECORD
+  // by content. Final split: English 50 · Physics 31 · History 22 · Chemistry 17 ·
+  // Current Affairs 14 · Geography 12 · Biology 3 · Polity 1. NO printed key: all 150
+  // answers DERIVED.
+  //
+  // Born-digital .docx, but UNLIKE the sibling W1 paper it embeds **33 images across 20
+  // questions**. The coordinator read all 33 and wrote a transcription table the agents
+  // worked from, so no agent had to interpret a picture. Most are benign — inline math
+  // (`m_1`, `V/\sqrt2`) or whole option blocks of chemical formulae, all of which
+  // transcribe to LaTeX. Only six are true diagrams (a lens pair Q108, a two-segment
+  // cylinder Q115, an RC circuit Q140, a generator circuit Q146, an Atwood pulley Q149);
+  // those are described IN WORDS inside the stem, because the tagged Excel is text-only.
+  //
+  // Semantic dedup vs the live NDA bank — run BEFORE any answer derivation, and against a
+  // bank that ALREADY CONTAINED the 145 W1 rows ingested the same day: 89 new / 54 dup /
+  // 7 flawed. The two halves behave completely differently and that is the headline
+  // finding: **all 50 English questions are duplicates** (Q1–25 matched bank rows verbatim,
+  // same stems AND same printed option order; Q26–50 likewise), i.e. Part A is assembled
+  // wholesale from NDA PYQs already in the bank, while Part B is largely net-new (Q51–80
+  // 29 new, Q111–130 18 new, Q131–150 17 new). So this paper's bank contribution is the
+  // science/GK half only.
+  //
+  // 7 rows HELD PRIVATE as status:"flawed" (each keyed for OMR parity, none PUBLIC):
+  //   Q42  — prints only THREE labelled parts where every sibling item prints four, so no
+  //          fourth option exists. Key B is unaffected (the faulty "to meet" is part (b)).
+  //   Q91  — the source carries the stem and BOTH numbered statements but **no option block
+  //          at all**; verified it did not leak into Q90 or Q92, which are both complete.
+  //          The standard statement-code block was RECONSTRUCTED (not transcribed) and the
+  //          answer derived independently (statement 1 true, statement 2 false ⇒ "1 only").
+  //          **Needs a check against the printed paper** — if its options ran in a different
+  //          order the letter moves.
+  //   Q106 — option (c) prints as the bare digit "2", the element symbol missing. Keyed B
+  //          (\(\text{O}_2\), the largest legible molar mass ⇒ fewest moles ⇒ least volume).
+  //   Q109 — the stem says "circuit as shown above" but there is NO figure anywhere in the
+  //          document and none in the image inventory, so the topology is unreadable. Keyed
+  //          A as the only value landing on a printed option; explicitly NOT verified.
+  //   Q113 — the four options ARE GRAPHS, unrepresentable in a text-only sheet. The plots
+  //          are described in words; the physics is unambiguous (\(E = P^2/2m\)) so the key
+  //          B is safe.
+  //   Q124 — the stem breaks off mid-sentence ("...has produced ␣ what is formula"), the ion
+  //          species missing entirely. Ions reconstructed as the only pair consistent with
+  //          the printed option set.
+  //   Q134 — options (c) and (d) are printed IDENTICALLY as \([ML^2T^{-2}]\). The key is
+  //          nonetheless safe: latent heat is energy PER UNIT MASS, so the answer is (a)
+  //          \([M^0L^2T^{-2}]\) and is not part of the duplicated pair.
+  //
+  // OFFICIAL KEY CROSS-CHECK (the LWS key arrived separately as a CSV covering all 150, AFTER
+  // every answer had been derived): **137/150 AGREE after reconciliation, 13 HELD**. That is a
+  // far worse key than the sibling W1 paper (147/150 before reconciliation, 149 after), and the
+  // holds are NOT close calls — most are checkable facts. THREE divergences were adopted TO the
+  // official key:
+  //   Q31  A -> B  adopted, and it exposed a SECOND wrong bank key: the item duplicates bank row
+  //                89d48348 (keyed A, "increase OF greenhouse gases"). The official B is right —
+  //                the sentence's own second clause reads "the increase IN temperature". Bank row
+  //                logged as a backfill candidate.
+  //   Q98  D -> B  adopted. The stem asks which STATEMENTS are correct, not which one is the
+  //                operative mechanism; "radio waves have a very long wavelength" is simply true.
+  //   Q106 B -> C  adopted, and the key DECODES the printed defect: option (c) lost its element
+  //                symbol and prints as a bare "2". For (c) to be correct it must be heavier than
+  //                \(\text{O}_2\), which points to \(\text{CO}_2\) (44 g/mol, the least volume).
+  //                Key set to C; the option TEXT is left exactly as printed, not reconstructed.
+  // The other THIRTEEN are held against the official key, each on specific evidence:
+  //   Q73  — DECISIVE: the official key CONTRADICTS ITSELF. Q63 and Q73 are the SAME assertion-
+  //          reason item printed twice with identical options, and the key marks Q63 = D (which
+  //          we match) but Q73 = A. Held at D on the teacher's own Q63 ruling.
+  //   Q74  — this is verbatim **UPSC Prelims 2012**, whose official answer is (b): the Congress
+  //          kept social reform out of its deliberations, so Ranade's National Social Conference
+  //          was formed as a separate body. Official key says D ("none of the above").
+  //   Q59  — the Sanskrit College at Benaras (1791) was founded by Jonathan Duncan, NOT William
+  //          Jones, so pair 1 is wrong and only pair 2 stands. Official key says 1 and 2.
+  //   Q65  — Wood's Despatch DID recommend the three universities (statement 2 true) and did NOT
+  //          prescribe English at all levels (statement 3 false — vernaculars at the lower
+  //          stages). Official key inverts both.
+  //   Q68  — the technical consultant for the Chennai–Port Blair submarine OFC was TCIL, not
+  //          TRAI, which is the sector regulator; statement 4 is false. Official key says all four.
+  //   Q75  — the Hindu Succession Act does not apply to Christians, Parsis or Jews, so "applies to
+  //          everyone who is not a Muslim" is false as printed. Official key treats it as true.
+  //   Q78  — the RBI's K.V. Kamath committee (6 Aug 2020) recommended parameters for resolving
+  //          COVID-19 STRESSED LOANS of corporate borrowers, not MSME sectors.
+  //   Q90  — the NITI Aayog report recorded a DECLINE in the sex ratio at birth (906 to 900, down
+  //          in 17 of 21 large states), so "no change" is false. Official key treats it as true.
+  //   Q108 — two convex lenses separated by \(f_1 + f_2\) are exactly the Keplerian telescope:
+  //          parallel in, parallel out. Both statements are true. Official key says neither is.
+  //   Q115 — two equal rods in series give \(R = (P_1+P_2)l/A\) over a total length \(2l\), so the
+  //          effective resistivity is \((P_1+P_2)/2\). Official key says \(P_1+P_2\).
+  //   Q120 — specific gravity is a dimensionless ratio of densities and \(g\) cancels in the
+  //          flotation condition, so a hydrometer reads the SAME at altitude.
+  //   Q138 — a telephone repeater restores an attenuated signal, i.e. it is an amplifier; an
+  //          oscillator generates a signal rather than boosting one.
+  //   Q82  — the one genuine toss-up, and the only hold NOT asserted as a key error: it duplicates
+  //          bank row c882e763 (keyed C, both statements true) while the official key says B. The
+  //          claim turns on a source-specific reading of Dayanand's varna-by-merit position.
+  //          Left at the bank's C and flagged as contested rather than adjudicated.
+  //
+  // ONE KEY DELIBERATELY MOVED AWAY FROM ITS MATCHED BANK ROW — Q20 duplicates bank row
+  // 7b7e248f-6a08-4fdc-bf82-a102c862b175, which is keyed A (PRSQ). That bank key is WRONG:
+  // only RSQP reassembles a grammatical sentence ("Instead of worrying about what you cannot
+  // control, shift your energy to what you can create"), while PRSQ strands the opening
+  // prepositional phrase. The bank row's own stored solution never evaluates option D and
+  // settles on A as a "best fit". Keyed D here so the OMR cannot mark correct students wrong;
+  // **the bank row itself is left untouched and logged as a backfill candidate** for a
+  // separate, permissioned key review.
+  //
+  // Other flags carried in reviewNote: Q56 (Muslims and the Extremists) is genuinely
+  // interpretive; Q81's Agriculture Infrastructure Fund was launched by the PM, not the
+  // Agriculture Minister, so the key turns on a loose vs strict reading; Q122 (gold vs
+  // copper, both occur native); Q9's printed "Imperiousness" is almost certainly a
+  // corruption of the bank row's "Imperviousness"; Q131's codes grid extracted TRANSPOSED
+  // and was read row-wise (the only reading giving one-to-one pairings); Q144's option (c)
+  // `CaSiO_4` is charge-unbalanced and was read as a dropped-subscript misprint; and Q146's
+  // fourth option is printed with a duplicated "(b)" label. The paper also contains a real
+  // factual error the agents caught: Q80 asserts Mount Sinabung is on Java (it is on
+  // SUMATRA) and dates its post-dormancy eruption to 2013 (it was 2010).
+  // LWS "NDA GAT W2" — 150-q NDA GAT weekly mock spanning SIX subjects: English (Q1–50),
+  // Biology (Q51–80), Geography (Q81–110 + Q146), Current Affairs (Q111–125 + Q150),
+  // Chemistry (Q126–145 + Q148) and Physics (Q147, Q149). Born-digital .docx, no images at
+  // all, so stems and options came straight from pandoc — no vision pass.
+  //
+  // UNLIKE W09, this paper ships a COMPLETE printed answer key (a separate
+  // "NDA GAT W2 Answer Key.docx", all 150). The key was still treated as a PEER, not an
+  // oracle: all 122 non-duplicate answers were re-derived BLIND (agents never saw the key)
+  // and adjudicated against it — 110 AGREE / 9 agree-but-hedged / 3 DISAGREE. Separately,
+  // the 28 duplicate rows gave a free second check, since the bank already stores their
+  // answers: 27 of 28 matched (the 28th, Q3, is "robust" vs the bank's "sturdy" — synonyms).
+  //
+  // Semantic dedup vs the 3,311-row NDA GAT bank, run BEFORE any answer work: 28 DUP /
+  // 48 MAYBE / 74 NEW. MAYBE is kept as "new" per the standing precedent. The English half
+  // is heavily recycled — Q16–25, Q31–40 and the WHOLE Q41–45 Garrett reading-comprehension
+  // set are verbatim bank rows (Jaccard 1.00, identical options and answers). Vocabulary is
+  // genuinely new: all 24 headwords return zero bank hits. Note Q71 was demoted DUP→MAYBE on
+  // inspection — its bank twin is a 4-stage sequence, this is a 5-stage one.
+  //
+  // Three source defects recorded rather than repaired, none affecting its key: Q70 labels
+  // two options "(c)" and prints no "(d)" (fourth text "vas deferens" restored; separately
+  // "Leydig cell" and "interstitial cells" are the same cell, so it offers three real
+  // choices); Q51's "Filariasis" and "Eliphantiasis" (sic) are one disease; Q143's number is
+  // glued to the tail of Q142's option (d), which silently costs a naive parse Q143–150.
+  // Q144 prints its options as a 2-column table, so they extract in the order a, c, b, d.
+  //
+  // All THREE disagreements ship on the printed key, on the teacher's explicit call
+  // (2026-08-08); each carries a reviewNote recording the argument on both sides.
+  //   Q83  continental shelf — the key needs "abrupt falls" read as the shelf's own gradient
+  //        (gentle, so the claim is false); read as the shelf BREAK the claim is true and the
+  //        answer would be (a). Option (a) is itself broken English ("absent to plate
+  //        boundaries"), so both candidate answers depend on repairing a bad sentence.
+  //   Q113 IIGF 2025 — turns on whether the printed "intelligence governance" is a deliberate
+  //        distortion of the real "internet governance" theme or a typo. Confirmed as the
+  //        paper's own wording, not an extraction artefact.
+  //   Q128 "acids are good conductors" — defensibly false for weak electrolytes, and fits the
+  //        item's design of three definitional traps around one true statement.
+  // Net: 0 flawed. 122 new / 28 dup.
+  // LWS "GAT FULL MOCK W03" — 150-q NDA GAT weekly mock spanning FIVE subjects, cleanly
+  // BLOCKED (unlike G1, which interleaves): English Q1–50, Geography Q51–90, Current
+  // Affairs Q91–100, Biology Q101–125, Chemistry Q126–150. Born-digital .docx with NO
+  // images at all, so stems and options came straight from pandoc — no vision pass.
+  // English breaks down as RC 5 · sentence rearrangement 10 · homonyms 10 · antonyms 3 ·
+  // synonyms 2 · sentence improvement 10 · discourse markers 10; Geography as
+  // geomorphology Q51–80 + economic/human geography Q81–90.
+  //
+  // Ships a COMPLETE printed answer key (a separate "GAT FULL MOCK W03 Answer Key.docx",
+  // all 150, parsed with no conflicts). As on W2 the key was treated as a PEER, not an
+  // oracle: all 150 answers were re-derived BLIND (the key file was physically moved out
+  // of the agents' working directory first) and then adjudicated — **147 AGREE / 3
+  // DISAGREE, 98.0%**. The 11 duplicate rows gave a free second check on top, since the
+  // bank already stores their answers: 7 verbatim dups compared directly and all 7 agreed.
+  //
+  // Semantic dedup vs the 2,902-row NDA bank across the five subjects, run BEFORE any
+  // answer work: 11 DUP / 52 MAYBE / 87 NEW. MAYBE is kept as "new" per the standing
+  // precedent. Far more original than W2 (which was 28 DUP): Geography is the freshest
+  // section at 1 DUP in 40, and the whole Q82–Q90 economic-geography run returned zero
+  // bank hits. An internal-duplicate scan (exact + Jaccard) found NO two questions in the
+  // paper colliding, so all 150 insert without a content_hash collision.
+  //
+  // The three disagreements, all adjudicated with the teacher (2026-08-10):
+  //   Q118 PRINTED KEY IS WRONG → ships the DERIVED answer A. The match-list keys option B,
+  //        which assigns multiple fission to Kala Azar and binary fission to Plasmodium —
+  //        the two are swapped. Leishmania (the Kala Azar parasite) is the textbook binary-
+  //        fission organism (this bank already carries "the stages of binary fission in
+  //        Leishmania") and Plasmodium the textbook multiple-fission one. Only key error found.
+  //   Q85  jhum stages — genuine judgement call with nothing in the bank to settle it. The
+  //        key omits harvesting and adds weeding; the derivation argued a cultivation cycle
+  //        cannot omit harvesting. Ships on the PRINTED KEY (D), both readings in reviewNote.
+  //   Q82  the one FLAWED question (see below) — ships on the printed key for OMR parity.
+  //
+  // Four source defects recorded rather than repaired:
+  //   Q141 has NO STEM AND NO QUESTION NUMBER in the source — verified in the raw
+  //        word/document.xml, so not a pandoc artefact; only its four options survive. The
+  //        dedup gate found the bank already holds the identical question (96249db5) with
+  //        all four options byte-for-byte in the same order, so the stem was RECOVERED from
+  //        there rather than invented, and the row ships status:"dup" (PRIVATE).
+  //   Q82  prints only THREE options (no "d") and its option (c) uses the numeral "i" twice,
+  //        so it is not a valid one-to-one mapping; worse, the true pairing (a-ii, b-iv,
+  //        c-iii, d-i) matches NO printed option. status:"flawed" — optD is an explicit
+  //        "[No fourth option was printed…]" placeholder, never a fabricated distractor.
+  //   Q11  option (b) prints "SQPQ" — Q twice, R missing, not a valid permutation.
+  //   Q97  option (d) is truncated mid-way to "a-3,". Neither affects its key.
+  // Plus two meaning-level source errors kept verbatim: Q14's sentence R drops a "not"
+  // ("liberalisation … will be able to help India"), inverting it, and Q81 dates the Bokaro
+  // steel plant to 1864 — read as a deliberate false statement, since the same item also
+  // plants "Noamundi" for Kiriburu and a non-existent "Krishna Valley Corporation", and the
+  // option set offers "None". Q117's stem carries a stray leftover "75." which WAS dropped.
+  // Net: 138 new / 11 dup / 1 flawed.
+  "gat-mock-w03": {
+    slug: "gat-mock-w03",
+    title: "NDA GAT — LWS Full Mock W03",
+    recordsFile: "gat-mock-w03.records.json",
+    outName: "Tags_NDA_GAT_Mock_W03",
+    sourceFile: "GAT_FULL_MOCK_W03.docx",
+    subjects: {
+      Biology: {
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": ["Cell Division and DNA Replication", "Cell Organelles and Functions"],
+        "Ecology and Environment": ["Ecosystems, Biomes and Ecological Interactions"],
+        "Genetics and Evolution": ["Heredity and DNA"],
+        "Human Physiology": [
+          "Circulatory and Lymphatic System", "Digestive System and Enzymes",
+          "Endocrine System and Hormones", "Immune System — Antibody Production",
+          "Nervous System and Sense Organs",
+        ],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": [
+          "Photosynthesis", "Transpiration, Tropisms and Plant Processes",
+          "Vegetative Propagation",
+        ],
+        Reproduction: ["Animal and Human Reproduction"],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": ["Acid-Base Theory: Concepts, Oxides and Electrolytes"],
+        "Atomic Structure and Periodic Classification": ["Periodic Trends, Valency and Atomicity"],
+        "Carbon and Its Compounds": [
+          "Allotropes of Carbon", "Catenation, Tetra-valency and Isomerism",
+          "Functional Groups and Common Organic Compounds",
+        ],
+        "Chemical Bonding": ["Ionic and Covalent Bonding"],
+        "Chemical Reactions": [
+          "Redox: Oxidation, Reduction and Reducing Agents",
+          "Specific Reactions: Precipitation, Electrolysis and Daily Life",
+        ],
+        "Metals and Non-Metals": [
+          "Alloys and Their Composition", "Corrosion and Its Prevention",
+          "Extraction of Metals and Ores", "Reactivity Series and Reactions with Water",
+        ],
+      },
+      "Current Affairs": {
+        "Environment, Ecology and Energy": ["Climate Change and Summits"],
+        "Government Schemes, Policy and Governance": ["Infrastructure, Transport and Cultural Schemes"],
+        "International Affairs and Relations": [
+          "International Summits, Initiatives and Forums",
+          "World Leaders, Elections and Global Events",
+        ],
+        "National Events, Persons and India General Knowledge": [
+          "Indian Economy, Geography and Resources",
+          "National Days, Festivals and Observances",
+          "National Institutions, Milestones and History",
+        ],
+        "Science and Technology": ["DRDO, Defence and Marine Technology"],
+      },
+      English: {
+        Grammar: ["Discourse Markers and Connectors"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+        "Spotting Errors": ["Sentence Improvement"],
+        Vocabulary: ["Antonyms", "Confusable Word Pairs", "Synonyms"],
+      },
+      Geography: {
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics", "Earthquakes and Seismic Waves",
+          "Landforms and Mass Movements", "Rocks, Minerals and Geological Time",
+          "Volcanoes and Igneous Activity", "Weathering and Denudation",
+        ],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Agriculture, Crops, Soils and Land Use", "Economic Sectors and Government Schemes",
+          "Energy and Industries — Power, Petroleum, Iron and Steel", "Minerals and Mining",
+        ],
+        Oceanography: ["Marine Ecosystems — Coral Reefs", "Ocean Waves and Sea-Floor Topography"],
+        "World and Human Geography": [
+          "Human Geography — Megacities and Population", "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Full Mock W03",
+    examName: "NDA",
+    section: { key: "gat-mock-w03", label: "GAT Full Mock W03" },
+    bankAdd: true,
+    // Like W2 (and unlike W1/G1/W09, which are Excel-only) this one DOES get a
+    // /dashboard/papers paper — the whole 150-question printed test, dups included,
+    // so it reads as the paper the students actually sat.
+    createPaper: true,
+  },
+
+  "gat-mock-w2": {
+    slug: "gat-mock-w2",
+    title: "NDA GAT — LWS Mock W2",
+    recordsFile: "gat-mock-w2.records.json",
+    outName: "Tags_NDA_GAT_Mock_W2",
+    sourceFile: "NDA_GAT_W2.docx",
+    subjects: {
+      Biology: {
+        "Cell Biology": ["Cell Division and DNA Replication"],
+        "Human Physiology": [
+          "Endocrine System and Hormones", "Excretory and Reproductive Anatomy",
+          "Nervous System and Sense Organs",
+        ],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": [
+          "Seed, Fruit and Embryo Development", "Transpiration, Tropisms and Plant Processes",
+        ],
+        Reproduction: ["Angiosperm Reproduction — Pollination and Fertilization"],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": [
+          "Acid-Base Theory: Concepts, Oxides and Electrolytes",
+          "Common Acids: Names, Formulas and Uses", "Salts and Common Compounds",
+          "Water of Crystallization", "pH Scale and Common Substances",
+        ],
+        "Industrial and Applied Chemistry": ["Cement, Glass and Building Materials"],
+      },
+      "Current Affairs": {
+        "Environment, Ecology and Energy": [
+          "Climate Change and Summits", "Environmental Campaigns, Disasters and Energy",
+        ],
+        "Government Schemes, Policy and Governance": [
+          "Government Events, Reports and Announcements",
+          "Health, Education and Welfare Schemes",
+          "Infrastructure, Transport and Cultural Schemes",
+        ],
+        "International Affairs and Relations": [
+          "International Organizations and Multilateral Bodies",
+          "International Summits, Initiatives and Forums",
+          "World Leaders, Elections and Global Events",
+        ],
+        "National Events, Persons and India General Knowledge": [
+          "Indian Economy, Geography and Resources", "National Days, Festivals and Observances",
+          "National Institutions, Milestones and History",
+        ],
+        "Science and Technology": [
+          "Health Technology, Science Awards and Anniversaries", "Nuclear and Renewable Energy",
+        ],
+      },
+      English: {
+        "Cloze Test": ["Word Selection in Passage"],
+        Grammar: ["Parts of Speech", "Sentence Completion"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Literal Comprehension"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        Vocabulary: ["Antonyms", "Synonyms"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Cyclones, Fronts and Local Winds", "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth in Space, Maps and Coordinates": ["Planets and Solar System"],
+        Oceanography: [
+          "Marine Ecosystems — Coral Reefs", "Ocean Currents",
+          "Ocean Waves and Sea-Floor Topography", "Tides and Ocean Movements",
+        ],
+        "World and Human Geography": ["World — Rivers, Canals and Water Bodies"],
+      },
+      Physics: {
+        "Modern Physics": ["Nuclear Physics"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Mock W2",
+    examName: "NDA",
+    section: { key: "gat-mock-w2", label: "GAT Mock W2" },
+    bankAdd: true,
+    // Unlike W1/G1/W09 (Excel-only), this one DOES get a /dashboard/papers paper — the whole
+    // 150-question printed test, dups included, so it reads as the paper the students sat.
+    createPaper: true,
+  },
+
+  "gat-mock-g1": {
+    slug: "gat-mock-g1",
+    title: "NDA GAT — LWS Mock G1",
+    recordsFile: "gat-mock-g1.records.json",
+    outName: "Tags_NDA_GAT_Mock_G1",
+    sourceFile: "NDA_GAT_MOCK_G1_LWS_FINAL.docx",
+    subjects: {
+      Biology: {
+        "Ecology and Environment": ["Ecosystems, Biomes and Ecological Interactions"],
+        "Human Physiology": ["Endocrine System and Hormones"],
+        "Plant Biology": ["Plant Tissues and Meristems"],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": ["Common Acids: Names, Formulas and Uses", "Salts and Common Compounds"],
+        "Atomic Structure and Periodic Classification": ["Periodic Trends, Valency and Atomicity"],
+        "Chemical Bonding": ["Ionic and Covalent Bonding", "Valency, Oxidation States and Molecular Formula"],
+        "Chemical Reactions": ["Redox: Oxidation, Reduction and Reducing Agents"],
+        "Hydrogen and Water": ["Properties and Anomalous Behaviour of Water"],
+        "Industrial and Applied Chemistry": ["Cement, Glass and Building Materials", "Fertilizers"],
+        "Matter and Its States": ["States of Matter, Phase Changes and Diffusion"],
+        "Metals and Non-Metals": ["Corrosion and Its Prevention", "Extraction of Metals and Ores"],
+        "Mole Concept and Stoichiometry": ["Mole Concept, Avogadro's Law and Molar Calculations"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Books, Literature and Authors", "Indian Art, Architecture and Cultural Practices"],
+        "Environment, Ecology and Energy": ["Environmental Campaigns, Disasters and Energy", "Wildlife Conservation and Species"],
+        "Government Schemes, Policy and Governance": [
+          "Governance, Policy and Union Territory Reform", "Government Events, Reports and Announcements",
+          "Health, Education and Welfare Schemes", "Infrastructure, Transport and Cultural Schemes",
+        ],
+        "National Events, Persons and India General Knowledge": ["Indian Economy, Geography and Resources"],
+        Sports: ["Other Sports and Personalities"],
+      },
+      English: {
+        Grammar: ["Preposition Usage"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": ["No Error (Correct Sentence)", "Tense and Verb Form", "Word Choice, Prepositions and Punctuation"],
+        Vocabulary: ["Antonyms", "Synonyms"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora", "Atmospheric Pressure and Winds",
+          "Climate Classification and Zones", "Cyclones, Fronts and Local Winds",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics", "Volcanoes and Igneous Activity",
+        ],
+        Oceanography: ["Ocean Currents"],
+        "World and Human Geography": ["World — Coordinates, Time and Place"],
+      },
+      History: {
+        "Modern India": [
+          "19th Century Social and Religious Reform", "British Administration, Acts and Legislation",
+          "European Trading and Early British Conquest", "Freedom Movement — INC, Gandhi and Independence",
+        ],
+      },
+      Physics: {
+        "Electricity and Magnetism": [
+          "Combination of Resistors", "Electrical Devices", "Electrical Power, Energy and Heating",
+          "Electrostatics", "Magnetism and Magnetic Effects of Current", "Resistance and Resistivity",
+        ],
+        "Fluid Mechanics and Properties of Matter": ["Buoyancy, Density and Flotation"],
+        Gravitation: ["Gravitational Field and Potential", "Newton's Law of Gravitation"],
+        "Heat and Thermodynamics": ["Heat, Calorimetry and Specific Heat", "Temperature and Thermometry"],
+        "Kinematics and Motion": ["Equations of Motion and Graphs"],
+        "Laws of Motion and Forces": ["Newton's Laws of Motion"],
+        "Light and Optics": [
+          "Lenses and Lens Formula", "Light Phenomena and Spectrum",
+          "Prisms and Dispersion", "Refraction, Speed of Light and TIR",
+        ],
+        "Modern Physics": ["Nuclear Physics"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves", "Simple Pendulum"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": ["Energy and Conservation"],
+      },
+      Polity: {
+        "Fundamental Rights, DPSP and Local Governance": ["Fundamental Rights, DPSP and Duties"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Mock G1",
+    examName: "NDA",
+    section: { key: "gat-mock-g1", label: "GAT Mock G1" },
+    bankAdd: true,
+    createPaper: false, // Excel is the requested deliverable; no /dashboard/papers paper
+  },
+
+  // LWS "NDA GAT MOCK W1" — 150-q NDA GAT weekly MOCK spanning FIVE subjects in clean
+  // printed blocks: English (Q1–50), Biology (Q51–90), Current Affairs (Q91–110),
+  // Chemistry (Q111–130) and Geography (Q131–150). Born-digital .docx with a clean text
+  // layer and ZERO embedded images, so every stem and option came straight from pandoc —
+  // no vision pass at all, unusual for an LWS paper. NO printed key: all 150 answers
+  // DERIVED by five per-subject agents.
+  //
+  // English is itself nine printed sub-blocks: an "online shopping" RC passage (Q1–5,
+  // shared via context + setLabel "RC1"), phrasal-verb blanks (Q6–15), discourse markers
+  // (Q16–20), S1–S6 rearrangement (Q21–25), synonyms (Q26–30), antonyms (Q31–35),
+  // spotting errors (Q36–40), sentence improvement (Q41–45) and confusable-word triples
+  // (Q46–50). Chemistry is wholly Class-10 chemical reactions; Geography is wholly
+  // climatology (air masses and fronts); Biology leans statement-code and match-list
+  // shaped rather than the bank's single-fact style.
+  //
+  // Semantic dedup vs the live NDA bank (English 1,383 / Biology 198 / Current Affairs
+  // 192 / Chemistry 308 / Geography 529 rows), run BEFORE any answer derivation:
+  // 146 new / 3 dup / 1 flawed — this paper is almost entirely net-new. The 3 dups
+  // (answer + solution copied from the matched bank row rather than re-derived) are
+  // Q130 (oxidation-reduction reaction ≈ f62b3174), Q141 (troposphere statements ≈
+  // f599d030, bank also holds twin 77c5e8fb) and Q150 (latitudinal-zone ordering ≈
+  // 99e0ba26, which also fixed its filing under Earth in Space rather than climatology).
+  //
+  // OFFICIAL KEY CROSS-CHECK (the LWS key arrived separately as a .docx covering all 150,
+  // AFTER every answer had been derived): 147/150 AGREE. Two divergences were reconciled
+  // TO the official key and ONE is held against it:
+  //   Q37  C -> A  adopted. The item has TWO real errors: part (a) misspells "grateful" as
+  //                "greatful" (verified present in the source .docx) and part (c)'s "them"
+  //                mismatches the singular antecedent "the nation". The derivation picked
+  //                the pronoun; the official key marks the spelling. Adopted because it is
+  //                the teacher's paper — but ALSO demoted to status:"flawed" and held
+  //                PRIVATE, since a student can justify either letter.
+  //   Q97  C -> B  adopted. Genuine scheme-vs-branding ambiguity on "ULLAS was launched in
+  //                2023": the centrally sponsored New India Literacy Programme runs FY
+  //                2022–27 (so the SCHEME launched 2022), while only the ULLAS name, logo
+  //                and mobile app were unveiled on 30 July 2023. The key's reading is the
+  //                standard one.
+  //   Q132 HELD at C against an official key of B — NOT YET TEACHER-CONFIRMED, so treat this
+  //                as an open question, not a settled ruling. This is verbatim **NDA-I 2024
+  //                Q74**, whose official UPSC option set is (A) 1 only / (B) 1 and 2 only /
+  //                (C) 2 and 3 only / (D) 1, 2 and 3, keyed **C = "2 and 3 only"**. This
+  //                reprint SCRAMBLED the options and dropped "2 and 3 only" entirely, so the
+  //                correct answer is ABSENT. The official key here marks B, which in the
+  //                reprint reads "1, 2, 3" — that requires statement 1 to be true, but NCERT
+  //                Class 11 states the passage of a front causes ABRUPT (not slow) weather
+  //                change, and both the UPSC key and the bank's own copy (e6de738f) exclude
+  //                statement 1. So the printed key is provably wrong while our C ("3 only")
+  //                wrongly drops the true statement 2: NEITHER letter is correct.
+  //                RECOMMENDATION: mark Q132 a bonus / award-to-all rather than grade it.
+  //
+  // Other flags carried in reviewNote rather than resolved: Q94's printed statement 3 reads
+  // "Iraq has recently ratified" the terrorism-financing convention, but the actual recent
+  // accession (UN depositary notification CN.639.2025, 29 Oct 2025) was IRAN — the official
+  // key CONFIRMS the derived B ("2 only"), i.e. it too treats statement 3 as printed/false;
+  // Q39 has TWO defensible errors (the tense in part (b) against the "go to the bed" article
+  // slip in part (c) — keyed C, confirmed by the official key); Q14 ("going on in" vs "going
+  // through") and Q44 ("had had" vs "no improvement") are genuine two-answer calls, both
+  // confirmed by the official key; Q119 turns on the carbonation of slaked lime being
+  // exothermic, which NCERT never states outright (confirmed C); and the Current Affairs
+  // keys for Q91/Q98/Q99/Q102/Q108 are TIME-SENSITIVE (annual rankings, scheme end-dates,
+  // yearly themes) — 14 of the 20 were verified by web search at build time.
+  "gat-mock-w1": {
+    slug: "gat-mock-w1",
+    title: "NDA GAT — LWS Mock W1",
+    recordsFile: "gat-mock-w1.records.json",
+    outName: "Tags_NDA_GAT_Mock_W1",
+    sourceFile: "NDA_GAT_MOCK_W1.docx",
+    subjects: {
+      Biology: {
+        "Biodiversity and Classification": ["Animal Kingdom Classification", "Kingdom Fungi"],
+        "Cell Biology": [
+          "Cell Division and DNA Replication", "Cell Organelles and Functions",
+          "Cell Structure Fundamentals", "Cell Wall and Cell Membrane",
+          "Cellular Respiration and ATP", "Prokaryotic vs Eukaryotic Cells",
+        ],
+        "Ecology and Environment": ["Ecosystems, Biomes and Ecological Interactions"],
+        "Human Physiology": [
+          "Circulatory and Lymphatic System", "Digestive System and Enzymes",
+          "Endocrine System and Hormones", "Excretory and Reproductive Anatomy",
+          "Nervous System and Sense Organs", "Respiratory System",
+        ],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": [
+          "Photosynthesis", "Plant Tissues and Meristems",
+          "Transpiration, Tropisms and Plant Processes",
+        ],
+        Reproduction: ["Angiosperm Reproduction — Pollination and Fertilization"],
+      },
+      Chemistry: {
+        "Chemical Reactions": [
+          "Endothermic and Exothermic Reactions", "Physical vs Chemical Changes",
+          "Redox: Oxidation, Reduction and Reducing Agents",
+          "Specific Reactions: Precipitation, Electrolysis and Daily Life",
+          "Thermal and Photochemical Decomposition",
+          "Types of Reactions: Combination, Decomposition, Displacement",
+        ],
+        "Metals and Non-Metals": ["Corrosion and Its Prevention"],
+        "Mole Concept and Stoichiometry": ["Stoichiometry and Laws of Chemical Combination"],
+      },
+      "Current Affairs": {
+        "Defence and Military Exercises": [
+          "Defence Awards, Books and Institutions", "Defence Procurement and Cooperation",
+        ],
+        "Environment, Ecology and Energy": [
+          "Climate Change and Summits", "Environmental Campaigns, Disasters and Energy",
+        ],
+        "Government Schemes, Policy and Governance": [
+          "Health, Education and Welfare Schemes",
+          "Infrastructure, Transport and Cultural Schemes",
+        ],
+        "International Affairs and Relations": [
+          "India's Foreign Policy and Bilateral Relations",
+          "International Organizations and Multilateral Bodies",
+          "International Summits, Initiatives and Forums",
+          "World Leaders, Elections and Global Events",
+        ],
+        "National Events, Persons and India General Knowledge": [
+          "National Days, Festivals and Observances",
+        ],
+        "Science and Technology": ["Space Technology and Astronomy"],
+        Sports: ["Other Sports and Personalities"],
+      },
+      English: {
+        "Fill in the Blanks": ["Contextual Word Selection (Phrasal Verbs and Collocations)"],
+        Grammar: ["Discourse Markers and Connectors"],
+        "Reading Comprehension": ["Literal Comprehension", "Vocabulary in Context"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns", "Sentence Improvement",
+          "Tense and Verb Form", "Word Choice, Prepositions and Punctuation",
+        ],
+        Vocabulary: ["Antonyms", "Confusable Word Pairs", "Synonyms"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora", "Atmospheric Pressure and Winds",
+          "Climate Classification and Zones", "Cyclones, Fronts and Local Winds",
+          "Humidity, Condensation, Clouds and Precipitation",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth in Space, Maps and Coordinates": ["Latitude, Longitude and Geographical Grid"],
+        Oceanography: ["Ocean Currents"],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Mock W1",
+    examName: "NDA",
+    section: { key: "gat-mock-w1", label: "GAT Mock W1" },
+    bankAdd: true,
+    createPaper: false, // Excel is the requested deliverable; no /dashboard/papers paper
+  },
+
   // LWS "NDA GAT MOCK W09" — 150-q NDA GAT (General Ability Test) weekly MOCK spanning
   // EIGHT subjects: English (Q1–50), History (Q52–56, 61, 63–68, 70, 116), Polity (Q57,
   // 59, 60, 62, 69), Chemistry (Q71–83, 85), Physics (Q84, 112, 126–150), Geography
@@ -1510,6 +2124,108 @@ export const PAPERS: Record<string, PaperSpec> = {
     examName: "NDA",
     section: { key: "geomorphology-landforms", label: "Geomorphology and Landforms" },
     bankAdd: true,
+  },
+
+  // LWS "Mock PK1 (Sentence Completion)" — 100-q NDA English (GAT) mock, every item the
+  // same shape: a sentence stem plus four candidate completions, so the whole paper files
+  // under ONE chapter (Grammar). Subtopic is assigned by the point actually TESTED, not by
+  // the format: Sentence Completion 85 / Subject-Verb Agreement 9 (Q5-7, 34, 61-63, 74, 91)
+  // / Correct Sentence Identification 5 (Q56-60) / Direct and Indirect Speech 1 (Q21).
+  // Born-digital .docx with a clean text layer and ZERO images, so every stem and option
+  // came straight from pandoc — no vision pass. NO printed key: all answers DERIVED.
+  //
+  // Q56-Q60 print NO STEM at all — just four candidate sentences — because they are
+  // "choose the correct sentence" items. They are also all duplicates, and the matched bank
+  // rows already carry the stem "Which is the correct sentence?", so that stem is reused
+  // verbatim rather than invented (keeps them consistent with the existing bank copies).
+  //
+  // Semantic dedup vs the FULL live NDA English bank (1,432 rows, all chapters, pyq +
+  // practice), run BEFORE any answer derivation: 20 DUP / 0 MAYBE / 80 NEW. The dups are
+  // two CONTIGUOUS printed runs — Q36-45 and Q51-60 — i.e. those two blocks were lifted
+  // wholesale from existing material while the rest of the paper is net-new. Every dup was
+  // an exact option-multiset match, and the printed option ORDER was then verified to be
+  // identical to the bank row's for all 20, so each bank answer letter carries over
+  // unchanged (answer + solution copied from the matched row, nothing re-derived).
+  //
+  // 1 row HELD PRIVATE as status:"flawed": Q76 prints BOTH "till two years have passed" (a)
+  // and "until two years have passed" (c), which are interchangeable here — two correct
+  // options. Keyed C ("until" is the standard written form) so OMR grading still works.
+  // NOTE this is NOT the same item as the dup Q51 ("I will not pay for the goods ...", bank
+  // key D = "unless"): Q51's blank is CONDITIONAL, Q76's is TEMPORAL, so "unless" is right
+  // there and wrong here.
+  //
+  // OFFICIAL KEY CROSS-CHECK (the LWS key arrived separately as a CSV covering all 100, AFTER
+  // every answer had been derived): 94/100 AGREE, 98/100 after reconciliation. The printed option
+  // ORDER of all six divergences was re-read from the source .docx first, so none is a
+  // transcription slip. FOUR were adopted TO the official key:
+  //   Q34  B -> A  and
+  //   Q91  B -> A  adopted, and these are ONE disagreement applied twice — Q91 is Q34 re-skinned.
+  //                Both are pseudo-clefts ("What distinguishes this theory from others ___ its
+  //                empirical foundations"), where options (c)/(d) die on tense and the item reduces
+  //                to a real usage split: the prescriptive rule treats the "What ..." clause as a
+  //                singular subject ("is"), while the descriptive rule agrees the verb with the
+  //                PLURAL predicate complement ("are"). Both are attested. The official key marks
+  //                "are" CONSISTENTLY on both twins, so it is a deliberate editorial position, not a
+  //                slip. Searched the bank for a third ground truth and found none — its "What ..."
+  //                rows are all reading-comprehension questions, not agreement items.
+  //   Q55  B -> A  adopted, and it exposed a PRINTED DEFECT: (a) "until you see the light turn green"
+  //                and (b) "till you see the green light" are interchangeable, so TWO options are
+  //                correct, while (c) and (d) both invert the sense. This is a dup, and the matched
+  //                bank row keys B — also correct. The bank row is NOT wrong and needs no fix; the
+  //                ITEM is ambiguous. Keyed A here to match the teacher's key for OMR grading.
+  //   Q79  A -> B  adopted. Genuinely arguable and already flagged before the key arrived: (a) "where"
+  //                takes the place noun "Ladakh" as antecedent, (b) "when" picks up the opening
+  //                "Historically". Both grammatical; the temporal reading is the teacher's.
+  // TWO more were first HELD against the official key and then adopted TO it on the teacher's
+  // EXPLICIT instruction (2026-08-07), so the sheet now matches the official key 100/100. Both are
+  // keyed AGAINST standard grammar, so both were demoted to status:"flawed" — they grade the OMR
+  // but must never enter the browsable bank — and in both cases the matched bank row is CORRECT and
+  // is deliberately LEFT UNTOUCHED (it stays PUBLIC with its own, different key). Do not "reconcile"
+  // the bank rows to this paper:
+  //   Q51  D -> C  adopted. "I will not pay for the goods if he sends me the bill again" INVERTS the
+  //                sense: receiving the bill is the condition for PAYING, not for refusing. Bank row
+  //                613bd0e0-da66-45c7-860a-34b39eed2f69 keys D and is unchanged. ((a) "till" and (b)
+  //                "until" also read acceptably; only the official C is indefensible on any reading.)
+  //   Q58  A -> C  adopted. "Whom" is objective case and cannot be the SUBJECT of "has", so the
+  //                official (c) "Whom amongst you has the answer?" is ungrammatical; only (a) "Who
+  //                among you has the answer?" is well formed. Bank row
+  //                1a5d37b5-0028-4c5c-b06f-bc4ce84f0ad1 keys A and is unchanged.
+  // The official key CONFIRMED the best-guess key on the flawed Q76 (C), so OMR grading is sound there.
+  // NET: 3 rows held PRIVATE as status:"flawed" (Q51, Q58, Q76); the 18 remaining dups and the 79
+  // new rows are unaffected.
+  //
+  // Other flags carried in reviewNote rather than resolved: Q10 (option D is well-formed but
+  // "kept staring" contradicts the stem's "avoided looking at her"); Q27 (past perfect "had
+  // yielded" is the tested point, but bare "yielded" is not strictly ungrammatical); Q46 (more than
+  // one option supplies a subject capable of "struggling", so it turns on coherence); Q99 ("Were it
+  // not for" is present-form, but "his timely intervention" fixes the event in past time, so the
+  // mixed "would have collapsed" is keyed over the strictly-present "would collapse").
+  //
+  // Structural property worth knowing before flipping PUBLIC: the paper RE-SKINS ~11 of its
+  // own earlier items in the Q81-100 block — Q13~Q85, Q14~Q86, Q15~Q87, Q17~Q88, Q18~Q89,
+  // Q19~Q90, Q21~Q92, Q22~Q93, Q23~Q94, Q25~Q95, Q34~Q91 — same construction, swapped nouns.
+  // They are genuinely distinct questions (different stems, different options, different
+  // content_hash) so they are kept "new" per the standing MAYBE precedent, but a reviewer may
+  // not want both halves of each pair in the browsable bank.
+  "eng-mock-pk1": {
+    slug: "eng-mock-pk1",
+    title: "NDA English — Mock PK1 (Sentence Completion)",
+    recordsFile: "eng-mock-pk1.records.json",
+    outName: "Tags_NDA_English_Mock_PK1_Sentence_Completion",
+    sourceFile: "Mock PK1 ( Sen Completion) LWS.docx",
+    subjectName: "English",
+    chapterName: "Grammar",
+    subtopics: [
+      "Sentence Completion",
+      "Subject-Verb Agreement",
+      "Correct Sentence Identification",
+      "Direct and Indirect Speech",
+    ],
+    pyqNote: "NDA English (GAT) practice — LWS Mock PK1 (Sentence Completion)",
+    examName: "NDA",
+    section: { key: "grammar", label: "Grammar" },
+    bankAdd: true,
+    createPaper: false, // Excel is the requested deliverable; no /dashboard/papers paper
   },
 };
 
