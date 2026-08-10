@@ -1,0 +1,1845 @@
+[
+  {
+    "ref": "5.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\{x / x \\in \\mathrm{N},\\ x \\text{ is a factor of } 6\\}\\), \\(B = \\{x / x \\in \\mathrm{N},\\ x \\text{ is a factor of } 8\\}\\), find the \\(A - B\\) and \\(B - A\\).",
+    "solution": "\\(A = \\{1, 2, 3, 6\\}\\)\n\\(B = \\{1, 2, 4, 8\\}\\)\n\\(\\therefore A - B = \\{3, 6\\}\\)\n\\(B - A = \\{4, 8\\}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "\\(A = \\left\\{\\dfrac{1}{x} / x \\in \\mathrm{N},\\ x < 8\\right\\}\\), \\(B = \\left\\{\\dfrac{1}{2x} / x \\in \\mathrm{N},\\ x \\le 8\\right\\}\\). Find \\(A - B\\) and \\(B - A\\).",
+    "solution": "\\(A = \\left\\{1, \\dfrac{1}{2}, \\dfrac{1}{3}, \\dfrac{1}{4}, \\dfrac{1}{5}, \\dfrac{1}{6}, \\dfrac{1}{7}\\right\\}\\)\n\\(B = \\left\\{\\dfrac{1}{2}, \\dfrac{1}{4}, \\dfrac{1}{6}, \\dfrac{1}{8}, \\dfrac{1}{10}, \\dfrac{1}{12}, \\dfrac{1}{14}, \\dfrac{1}{16}\\right\\}\\)\n\\(\\therefore A - B = \\left\\{1, \\dfrac{1}{3}, \\dfrac{1}{5}, \\dfrac{1}{7}\\right\\}\\)\nand \\(B - A = \\left\\{\\dfrac{1}{8}, \\dfrac{1}{10}, \\dfrac{1}{12}, \\dfrac{1}{14}, \\dfrac{1}{16}\\right\\}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\), \\(D = \\{7, 8, 9, 10\\}\\) find i) \\(A \\cup B\\) ii) \\(A \\cup B \\cup C\\) iii) \\(B \\cup C \\cup D\\). Are the sets A, B, C, D equivalent?",
+    "solution": "We have\ni) \\(A \\cup B = \\{1, 2, 3, 4, 5, 6\\}\\)\nii) \\(A \\cup B \\cup C = \\{1, 2, 3, 4, 5, 6, 7, 8\\}\\)\niii) \\(B \\cup C \\cup D = \\{3, 4, 5, 6, 7, 8, 9, 10\\}\\)\nAs \\(n(A) = n(B) = n(C) = n(D) = 4\\), the sets A, B, C, D are equivalent."
+  },
+  {
+    "ref": "5.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\) be the universal set, \\(A = \\{1, 3, 5, 7, 9\\}\\), \\(B = \\{2, 3, 4, 6, 8, 10\\}\\), \\(C = \\{6, 7, 8, 9\\}\\) find i) \\(A'\\) ii) \\((A \\cap C)'\\) iii) \\((A')'\\) iv) \\((B - C)'\\)",
+    "solution": "We have\ni) \\(A' = \\{2, 4, 6, 8, 10\\}\\)\nii) \\((A \\cap C) = \\{7, 9\\}\\)\n\\(\\therefore (A \\cap C)' = \\{1, 2, 3, 4, 5, 6, 8, 10\\}\\)\niii) \\((A')' = \\{2, 4, 6, 8, 10\\}' = \\{1, 3, 5, 7, 9\\} = A\\)\niv) \\(B - C = \\{2, 3, 4, 10\\}\\)\n\\(\\therefore (B - C)' = \\{1, 5, 6, 7, 8, 9\\}\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "Let X be the universal set, for the non-empty sets A and B, verify the De Morgan's laws i) \\((A \\cup B)' = A' \\cap B'\\) ii) \\((A \\cap B)' = A' \\cup B'\\). Where \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), \\(A = \\{1, 2, 3, 4, 5\\}\\), \\(B = \\{1, 2, 5, 6, 7\\}\\)",
+    "solution": "\\(A \\cup B = \\{1, 2, 3, 4, 5, 6, 7\\}\\)\n\\((A \\cap B) = \\{1, 2, 5\\}\\)\n\\(A' = \\{6, 7, 8, 9, 10\\}\\)\n\\(B' = \\{3, 4, 8, 9, 10\\}\\)\ni) \\((A \\cup B)' = \\{8, 9, 10\\}\\) ...(1)\n\\(A' \\cap B' = \\{8, 9, 10\\}\\) ...(2)\nfrom (1) and (2),\n\\((A \\cup B)' = A' \\cap B'\\)\nii) \\((A \\cap B)' = \\{3, 4, 6, 7, 8, 9, 10\\}\\) ...(3)\n\\(A' \\cup B' = \\{3, 4, 6, 7, 8, 9, 10\\}\\) ...(4)\nfrom (3) and (4)\n\\((A \\cap B)' = A' \\cup B'\\)"
+  },
+  {
+    "ref": "5.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "HARD",
+    "stem": "If \\(P = \\{x / x^2 + 14x + 40 = 0\\}\\), \\(Q = \\{x / x^2 - 5x + 6 = 0\\}\\), \\(R = \\{x / x^2 + 17x - 60 = 0\\}\\) and the universal set \\(X = \\{-20, -10 - 4, 2, 3, 4\\}\\), find i) \\(P \\cup Q\\) ii) \\(Q \\cap R\\) iii) \\(P \\cup (Q \\cap R)\\) iv) \\(P \\cap (Q \\cup R)\\) v) \\((P \\cup Q)'\\) vi) \\(Q' \\cap R'\\)",
+    "solution": "\\(P = \\{x / x^2 + 14x + 40 = 0\\}\\)\n\\(\\therefore P = \\{-10, -4\\}\\)\nSimilarly \\(Q = \\{3, 2\\}\\), \\(R = \\{-20, 3\\}\\) and\n\\(X = \\{-20, -10, -4, 2, 3, 4\\}\\)\ni) \\(P \\cup Q = \\{-10, -4, 3, 2\\}\\)\nii) \\(Q \\cap R = \\{3\\}\\)\niii) \\(P \\cup (Q \\cap R) = \\{-10, -4, 3\\}\\)\niv) \\(P \\cap (Q \\cup R) = \\phi\\)\nv) \\((P \\cup Q)' = \\{-20, 4\\}\\)\nvi) \\(Q' = \\{-20, -10, -4, 4\\}\\), \\(R' = \\{-10, -4, 2, 4\\}\\)\n\\(Q' \\cap R' = \\{-10, -4, 4\\}\\)",
+    "_note": "Printed defect in the question statement: the universal set is printed as X = {-20, -10 - 4, 2, 3, 4} (a dash where a comma belongs). The book's own Solution restates it as X = {-20, -10, -4, 2, 3, 4}, which is the reading every part of the answer uses. Transcribed as printed."
+  },
+  {
+    "ref": "5.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are the subsets of the universal set X and \\(n(x) = 50\\), \\(n(A) = 35\\), \\(n(B) = 22\\) and \\(n(A' \\cap B') = 3\\), find i) \\(n(A \\cup B)\\) ii) \\(n(A \\cap B)\\) iii) \\(n(A' \\cap B)\\) iv) \\(n(A \\cup B')\\)",
+    "solution": "i) \\(n(A \\cup B) = n(X) - n[(A \\cup B)']\\)\n\\(= n(X) - n(A' \\cap B')\\) (De Morgan's Law)\n\\(= 50 - 3\\)\n\\(= 47\\).\nii) \\(n(A \\cap B) = n(A) + n(B) - n(A \\cup B)\\)\n\\(n(A \\cap B) = 35 + 22 - 47\\)\n\\(= 10\\)\niii) \\(n(A' \\cap B) = n(B) - n(A \\cap B)\\)\n\\(= 22 - 10\\)\n\\(= 12\\)\niv) \\(n(A \\cup B') = n(X) - n[(A \\cup B')']\\)\n\\(= n(X) - n(A' \\cap B)\\)\n\\(= 50 - 12\\)\n\\(= 38\\)",
+    "_note": "Two printed slips. (1) The question prints the universal-set count as n(x) with a lowercase x while the universal set is named X; transcribed as printed. (2) In the printed solution, step iv) sets the prime outside the bracket as n[(A\\cup B)']' ; the intended and internally consistent form is n[(A\\cup B')'] = n(A'\\cap B), which is what the next printed line uses. The solution here is transcribed with the prime in the consistent position."
+  },
+  {
+    "ref": "5.1 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "HARD",
+    "stem": "In a board examination, 40 students failed in Physics, 40 in Chemistry and 35. In Maths, 20 failed in Maths and Physics, 17 in Physics and Chemistry, 15 in Maths and Chemistry and 5 in all the three subjects. If 350 students appeared in the examination, how many of them did not fail in any subject?",
+    "solution": "Let P = set of students failed in Physics, C = set of students failed in Chemistry, M = set of students failed in Maths.\nFrom figure 5.17, we have\n\\(n(X) = 350\\), \\(n(P) = 40\\), \\(n(C) = 40\\), \\(n(M) = 35\\)\n\\(n(M \\cap P) = 20\\), \\(n(P \\cap C) = 17\\), \\(n(M \\cap C) = 15\\)\nand \\(n(M \\cap P \\cap C) = 5\\)\nThe number of students who failed in at least one subject \\(= n(M \\cup P \\cup C)\\)\nwe have,\n\\(n(M \\cup P \\cup C) = n(M) + n(P) + n(C) - n(M \\cap P) - n(P \\cap C) - n(M \\cap C) + n(M \\cap P \\cap C)\\)\n\\(= 35 + 40 + 40 - 20 - 17 - 15 + 5 = 68\\)\nThe number of students who did not fail in any subject \\(= n(X) - n(M \\cup P \\cup C) = 350 - 68 = 282\\)",
+    "_note": "Printed punctuation defect in the stem: the book prints '40 students failed in Physics, 40 in Chemistry and 35. In Maths, 20 failed in Maths and Physics'. The intended reading is '...40 in Chemistry and 35 in Maths. 20 failed in Maths and Physics...', which is what the solution uses (n(M) = 35). Transcribed as printed. The printed solution also carries a Venn diagram (Fig. 5.17) whose regions read 8 (Physics only), 15 (Physics and Maths only), 5 (Maths only), 5 (all three), 10 (Maths and Chemistry only), 12 (Physics and Chemistry only), 13 (Chemistry only); the stem is answerable from its own numbers without the figure."
+  },
+  {
+    "ref": "5.1 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "HARD",
+    "stem": "A company produces three kinds of products A, B and C. The company studied the perference of 1600 consumers for these 3 products. It was found that the product A was liked by 1250, the product B was liked by 930 and product C was liked by 1000. The proudcts A and B were liked by 650, the products B and C were liked by 610 and the products C and A were liked by 700 consumers. None of the products were liked by 30 consumers. Find number of consumers who liked. i) All the three products ii) Only two of these products.",
+    "solution": "Given that totally 1600 consumers were studied. \\(\\therefore n(X) = 1600\\), Let A be the set of all consumers who liked product A. Let B the set of all consumers who liked product B and C be the set of all consumers who liked product C.\n\\(n(A) = 1250\\), \\(n(B) = 930\\), \\(n(C) = 1000\\).\n\\(n(A \\cap B) = 650\\), \\(n(B \\cap C) = 610\\)\n\\(n(A \\cap C) = 700\\), \\(n(A' \\cap B' \\cap C') = 30\\)\ni) \\(n(A \\cup B \\cup C) = n(X) - n[(A \\cup B \\cup C)']\\)\n\\(= n(X) - n(A' \\cap B' \\cap C') = 1600 - 30 = 1570\\)\nSince, \\(n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - n(A \\cap B) - n(B \\cap C) - n(C \\cap A) + n(A \\cap B \\cap C)\\)\n\\(\\therefore 1570 = 1250 + 930 + 1000 - 650 - 610 - 700 + n(A \\cap B \\cap C)\\)\n\\(\\therefore n(A \\cap B \\cap C) = 1570 + 1960 - 3180\\)\n\\(= 350\\)\n\\(\\therefore\\) The number of consumers who liked all the three products is 350.\nii) \\(n[(A \\cap B) \\cap C'] = n(A \\cap B) - n[(A \\cap B) \\cap C]\\)\n\\(\\because n(P \\cap Q') = n(P) - n[P \\cap Q]\\)\n\\(= 650 - 350 = 300\\)\nSimilarly \\(n(A' \\cap B \\cap C) = 610 - 350 = 260\\)\nand \\(n(A \\cap B' \\cap C) = 700 - 350 = 350\\)\n\\(\\therefore\\) The number of consumers who liked only two of the three products is\n\\(= n(A \\cap B \\cap C') + n(A \\cap B' \\cap C) + n(A' \\cap B \\cap C)\\)\n\\(= 300 + 350 + 260 = 910\\)",
+    "_note": "Two spelling typos preserved as printed in the stem: 'perference' (preference) and 'proudcts' (products). In the printed solution the book also sets the prime outside the bracket in step i) as n[(A\\cup B\\cup C)]' and drops the leading n in 'Since, (A\\cup B\\cup C) = n(A) + ...'; both are typesetting slips and the solution here is transcribed with them corrected to the internally consistent form. The printed solution carries a Venn diagram (Fig. 5.18) labelling the regions A\\cap B'\\cap C', A'\\cap B\\cap C', A'\\cap B'\\cap C and A\\cap B'\\cap C'; the stem is answerable without it."
+  },
+  {
+    "ref": "5.1 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "HARD",
+    "stem": "In a survey of 100 consumers 72 like product A and 45 like product B. Find the least and the most number that must have liked both products A and B.",
+    "solution": "Let \\(n(A)\\) and \\(n(B)\\) be number of consumers who like product A and B respectively, i.e. \\(n(A) = 72\\), \\(n(B) = 45\\).\nSince\n\\(n(A \\cup B) = n(A) + n(B) - n(A \\cap B) = 72 + 45 - n(A \\cap B) = 117 - n(A \\cap B)\\).\nBut as only 100 consumers are surveyed. Therefore \\(n(A \\cup B) \\le 100\\) i.e. \\(117 - n(A \\cap B) \\le 100\\).\n\\(\\therefore 117 - 100 \\le n(A \\cap B)\\), \\(17 \\le n(A \\cap B)\\).\nSo the least number of consumers who like both the products is 17.\nSince \\(n(A \\cap B) \\le n(A)\\), \\(n(A \\cap B) \\le n(B)\\), then\n\\(n(A \\cap B) \\le \\min\\{n(A), n(B)\\} = \\min\\{72, 45\\} = 45\\). So the most number of consumers who like both products is 45.",
+    "_note": "The printed solution spells 'proudct' for 'product'; written correctly here as it is prose in the solution, not the question."
+  },
+  {
+    "ref": "Ex 5.1 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Describe the following sets in Roster form",
+    "setLabel": "Ex 5.1 Q1",
+    "stem": "\\(A = \\{x/x \\text{ is a letter of the word 'MOVEMENT'}\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Describe the following sets in Roster form",
+    "setLabel": "Ex 5.1 Q1",
+    "stem": "\\(B = \\left\\{x/x \\text{ is an integer},\\ -\\frac{3}{2} < x < \\frac{9}{2}\\right\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Describe the following sets in Roster form",
+    "setLabel": "Ex 5.1 Q1",
+    "stem": "\\(C = \\{x/x = 2n + 1,\\ n \\in N\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Describe the following sets in Set-Builder form",
+    "setLabel": "Ex 5.1 Q2",
+    "stem": "\\(\\{0\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Describe the following sets in Set-Builder form",
+    "setLabel": "Ex 5.1 Q2",
+    "stem": "\\((0, \\pm 1, \\pm 2, \\pm 3\\}\\)",
+    "_note": "PRINTED AS SHOWN: the book opens this set with a round bracket '(' and closes it with a brace '}'. Transcribed faithfully; the intended set is clearly \\(\\{0, \\pm 1, \\pm 2, \\pm 3\\}\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "MODERATE",
+    "context": "Describe the following sets in Set-Builder form",
+    "setLabel": "Ex 5.1 Q2",
+    "stem": "\\(\\left\\{\\frac{1}{2}, \\frac{2}{5}, \\frac{3}{10}, \\frac{4}{17}, \\frac{5}{26}, \\frac{6}{37}, \\frac{7}{50}\\right\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "MODERATE",
+    "context": "Describe the following sets in Set-Builder form",
+    "setLabel": "Ex 5.1 Q2",
+    "stem": "\\(\\{0, -1, 2, -3, 4, -5, 6, \\ldots\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{x/6x^2 + x - 15 = 0\\}\\), \\(B = \\{x/2x^2 - 5x - 3 = 0\\}\\), \\(C = \\{x/2x^2 - x - 3 = 0\\}\\) then find",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\((A \\cup B \\cup C)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{x/6x^2 + x - 15 = 0\\}\\), \\(B = \\{x/2x^2 - 5x - 3 = 0\\}\\), \\(C = \\{x/2x^2 - x - 3 = 0\\}\\) then find",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\((A \\cap B \\cap C)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "If A, B, C are the sets for the letters in the words 'college', 'marriage' and 'luggage' respective, then verify that \\([A - (B \\cup C)] = [(A - B) \\cap (A - C)]\\)",
+    "_note": "PRINTED AS SHOWN: the book writes 'respective' where 'respectively' is intended."
+  },
+  {
+    "ref": "Ex 5.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cup C)\\)",
+    "_note": "PRINTED AS SHOWN (verified at 2x zoom): the right-hand side's second bracket is printed \\((A \\cup C)\\). The distributive law requires \\((A \\cap C)\\), so the printed identity is FALSE for the given sets (LHS = {3,4}, printed RHS = {1,2,3,4,5,6,7,8}). Transcribed faithfully as a suspected book misprint."
+  },
+  {
+    "ref": "Ex 5.1 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\((A \\cup B)' = (A' \\cap B)'\\)",
+    "_note": "PRINTED AS SHOWN (verified at 2x zoom): the right-hand side is printed \\((A' \\cap B)'\\). De Morgan's law gives \\(A' \\cap B'\\), so the printed identity is FALSE for the given sets (LHS = {7,8,9,10}, printed RHS = {1,2,3,4,7,8,9,10}). Transcribed faithfully as a suspected book misprint."
+  },
+  {
+    "ref": "Ex 5.1 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\((A \\cap B)' = A' \\cup B'\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(A = (A \\cap B) \\cup (A \\cap B')\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(B = (A \\cap B) \\cup (A' \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\((A \\cup B) = (A - B) \\cup (A \\cap B) \\cup (B - A)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "HARD",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(A \\cap (B\\, \\Delta\\, C) = (A \\cap B)\\, \\Delta\\, (A \\cap C)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(n(A \\cup B) = n(A) + n(B) - n(A \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q5(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7, 8\\}\\) and universal set \\(X = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\), then verify the following:",
+    "setLabel": "Ex 5.1 Q5",
+    "stem": "\\(n(B) = (A' \\cap B) + n(A \\cap B)\\)",
+    "_note": "PRINTED AS SHOWN (verified at 2x zoom): the first term on the right is printed \\((A' \\cap B)\\) with no cardinality operator; it should read \\(n(A' \\cap B)\\). Transcribed faithfully as a suspected book misprint (a set is added to a number)."
+  },
+  {
+    "ref": "Ex 5.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "If A and B are subsets of the universal set X and \\(n(X) = 50\\), \\(n(A) = 35\\), \\(n(B) = 20\\), \\(n(A' \\cap B') = 5\\), find",
+    "setLabel": "Ex 5.1 Q6",
+    "stem": "\\(n(A \\cup B)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "If A and B are subsets of the universal set X and \\(n(X) = 50\\), \\(n(A) = 35\\), \\(n(B) = 20\\), \\(n(A' \\cap B') = 5\\), find",
+    "setLabel": "Ex 5.1 Q6",
+    "stem": "\\(n(A \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "If A and B are subsets of the universal set X and \\(n(X) = 50\\), \\(n(A) = 35\\), \\(n(B) = 20\\), \\(n(A' \\cap B') = 5\\), find",
+    "setLabel": "Ex 5.1 Q6",
+    "stem": "\\(n(A' \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "If A and B are subsets of the universal set X and \\(n(X) = 50\\), \\(n(A) = 35\\), \\(n(B) = 20\\), \\(n(A' \\cap B') = 5\\), find",
+    "setLabel": "Ex 5.1 Q6",
+    "stem": "\\(n(A \\cap B')\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "HARD",
+    "context": "In a class of 200 students who appeared certain examinations, 35 students failed in CET, 40 in NEET and 40 in JEE, 20 failed in CET and NEET, 17 in NEET and JEE, 15 in CET and JEE and 5 failed in all three examinations. Find how many students,",
+    "setLabel": "Ex 5.1 Q7",
+    "stem": "did not fail in any examination."
+  },
+  {
+    "ref": "Ex 5.1 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "HARD",
+    "context": "In a class of 200 students who appeared certain examinations, 35 students failed in CET, 40 in NEET and 40 in JEE, 20 failed in CET and NEET, 17 in NEET and JEE, 15 in CET and JEE and 5 failed in all three examinations. Find how many students,",
+    "setLabel": "Ex 5.1 Q7",
+    "stem": "failed in NEET or JEE entrance."
+  },
+  {
+    "ref": "Ex 5.1 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "From amongst 2000 literate individuals of a town, 70% read Marathi newspapers, 50% read English newspapers and 32.5% read both Marathi and English newspapers. Find the number of individuals who read.",
+    "setLabel": "Ex 5.1 Q8",
+    "stem": "at least one of the newspapers."
+  },
+  {
+    "ref": "Ex 5.1 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "From amongst 2000 literate individuals of a town, 70% read Marathi newspapers, 50% read English newspapers and 32.5% read both Marathi and English newspapers. Find the number of individuals who read.",
+    "setLabel": "Ex 5.1 Q8",
+    "stem": "neither Marathi and English newspaper.",
+    "_note": "PRINTED AS SHOWN: the book writes 'neither Marathi and English newspaper' (intended: 'neither Marathi nor English newspaper')."
+  },
+  {
+    "ref": "Ex 5.1 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "From amongst 2000 literate individuals of a town, 70% read Marathi newspapers, 50% read English newspapers and 32.5% read both Marathi and English newspapers. Find the number of individuals who read.",
+    "setLabel": "Ex 5.1 Q8",
+    "stem": "Only one of the newspapers."
+  },
+  {
+    "ref": "Ex 5.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "stem": "In a hostel, 25 students take tea, 20 students take coffee, 15 students take milk, 10 student take bot tea and coffee, 8 students take both milk and coffee. None of them take tea and milk both and everyone takes atleast one beverage, find the total number of students in the hostel.",
+    "_note": "PRINTED AS SHOWN: the book writes '10 student take bot tea and coffee' (intended: '10 students take both tea and coffee') and 'atleast' as one word."
+  },
+  {
+    "ref": "Ex 5.1 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "There are 260 persons with a skin disorder. If 150 had been exposed to the chemical A, 74 to the chemical B, and 36 to both chemicals A and B, find the number of persons exposed to",
+    "setLabel": "Ex 5.1 Q10",
+    "stem": "Chemical A but not Chemical B"
+  },
+  {
+    "ref": "Ex 5.1 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "There are 260 persons with a skin disorder. If 150 had been exposed to the chemical A, 74 to the chemical B, and 36 to both chemicals A and B, find the number of persons exposed to",
+    "setLabel": "Ex 5.1 Q10",
+    "stem": "Chemical B but not Chemical A"
+  },
+  {
+    "ref": "Ex 5.1 Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "context": "There are 260 persons with a skin disorder. If 150 had been exposed to the chemical A, 74 to the chemical B, and 36 to both chemicals A and B, find the number of persons exposed to",
+    "setLabel": "Ex 5.1 Q10",
+    "stem": "Chemical A or Chemical B"
+  },
+  {
+    "ref": "Ex 5.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "EASY",
+    "stem": "Write down the power set of \\(A = \\{1, 2, 3\\}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in Set-Builder form",
+    "setLabel": "Ex 5.1 Q12",
+    "stem": "\\((-3, 0)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in Set-Builder form",
+    "setLabel": "Ex 5.1 Q12",
+    "stem": "\\([6, 12]\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in Set-Builder form",
+    "setLabel": "Ex 5.1 Q12",
+    "stem": "\\((6, \\infty)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in Set-Builder form",
+    "setLabel": "Ex 5.1 Q12",
+    "stem": "\\((-\\infty, 5]\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in Set-Builder form",
+    "setLabel": "Ex 5.1 Q12",
+    "stem": "\\((2, 5]\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in Set-Builder form",
+    "setLabel": "Ex 5.1 Q12",
+    "stem": "\\([-3, 4)\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "HARD",
+    "stem": "A college awarded 38 medals in volley ball, 15 in football and 20 in basket ball. The medals awarded to a total of 58 players and only 3 players got medals in all three sports. How many received medals in exactly two of the three sports?"
+  },
+  {
+    "ref": "Ex 5.1 Q14(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "Ex 5.1 Q14",
+    "stem": "\\(-9 < 2x + 7 \\le 19\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q14(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "Ex 5.1 Q14",
+    "stem": "\\(x^2 - x > 20\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q14(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "HARD",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "Ex 5.1 Q14",
+    "stem": "\\(\\frac{2x}{x - 4} \\le 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q14(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "Ex 5.1 Q14",
+    "stem": "\\(6x^2 + 1 \\le 5x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(A \\cup B\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(B \\cup C\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(A \\cup C\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(A \\cap B\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(B \\cap C\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(A \\cap C\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(A' \\cap B\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(B' \\cap C'\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(B - C\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = (-7, 3]\\), \\(B = [2, 6]\\) and \\(C = [4, 9]\\) then find",
+    "setLabel": "Ex 5.1 Q15",
+    "stem": "\\(A - B\\)"
+  },
+  {
+    "ref": "5.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "If \\((x+1, y-2) = (3, 1)\\) find the value of \\(x\\) and \\(y\\).",
+    "solution": "Since the order pairs are equal, the coresponding elements are equal.\n\\(\\therefore x + 1 = 3\\) and \\(y - 2 = 1\\)\n\\(\\therefore x = 2\\) and \\(y = 3\\)",
+    "_note": "The printed solution spells 'order pairs' and 'coresponding'; transcribed as printed."
+  },
+  {
+    "ref": "5.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\{1, 2\\}\\), find \\(A \\times A\\).",
+    "solution": "We have \\(A = \\{1, 2\\}\\)\n\\(\\therefore A \\times A = \\{(1, 1), (1, 2), (2, 1), (2, 2)\\}\\)"
+  },
+  {
+    "ref": "5.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\{1, 3, 5\\}\\) and \\(B = \\{2, 3\\}\\) find \\(A \\times B\\) and \\(B \\times A\\) show that \\(A \\times B \\ne B \\times A\\).",
+    "solution": "We have \\(A \\times B = \\{(1, 2), (1, 3), (3, 2), (3, 3), (5, 2), (5, 3)\\}\\) and \\(B \\times A = \\{(2, 1), (2, 3), (2, 5), (3, 1), (3, 3), (3, 5)\\}\\)\nAll elements in \\(A \\times B\\), \\(B \\times A\\) except \\((3, 3)\\) are different.\n\\(\\therefore A \\times B \\ne B \\times A\\)"
+  },
+  {
+    "ref": "5.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "stem": "A and B are two sets given in such a way that \\(A \\times B\\) contains 6 elements. If three elements of \\(A \\times B\\) are \\((1, 3)\\), \\((2, 5)\\) and \\((3, 3)\\), find its remaining elements.",
+    "solution": "Since \\((1, 3)\\), \\((2, 5)\\) and \\((3, 3)\\) are in \\(A \\times B\\) it follows that 1, 2, 3 are elements of A and 3, 5 are elements of B. As \\(A \\times B\\) contains 6 elements and if we let\n\\(A = \\{1, 2, 3\\}\\) and \\(B = \\{3, 5\\}\\), then\n\\(A \\times B = \\{(1, 3), (1, 5), (2, 3), (2, 5), (3, 3), (3, 5)\\}\\) giving \\(n(A \\times B) = 6\\).\nHence, the remaining elements of \\(A \\times B\\) are \\((1, 5)\\), \\((2, 3)\\) and \\((3, 5)\\).",
+    "_note": "Ref numbering skips 4 because the book's Ex. 4 in this block is an Activity box (see summary); the book's own Ex. numbers are preserved."
+  },
+  {
+    "ref": "5.2 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "stem": "Express \\(\\{(x, y) / x^2 + y^2 = 25\\) where \\(x, y \\in W\\}\\) as a set of ordered pairs.",
+    "solution": "We have \\(x^2 + y^2 = 25\\)\n\\(\\therefore x = 0, y = 5 \\Rightarrow x^2 + y^2 = (0)^2 + (5)^2 = 25\\)\n\\(x = 4, y = 3 \\Rightarrow x^2 + y^2 = (4)^2 + (3)^2 = 25\\)\n\\(x = 5, y = 0 \\Rightarrow x^2 + y^2 = (5)^2 + (0)^2 = 25\\)\n\\(x = 3, y = 4 \\Rightarrow x^2 + y^2 = (3)^2 + (4)^2 = 25\\)\n\\(\\therefore\\) The set \\(= \\{(0, 5), (3, 4), (4, 3), (5, 0)\\}\\)"
+  },
+  {
+    "ref": "5.2 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{1, 2, 3\\}\\) and \\(B = \\{2, 4, 6\\}\\) Show that \\(R = \\{(1, 2), (1, 4), (3, 2), (3, 4)\\}\\) is a relation from A to B. Find i) domain (R) ii) Co-domain (R) iii) Range (R).",
+    "solution": "Here \\(A = \\{1, 2, 3\\}\\), \\(B = \\{2, 4, 6\\}\\)\nand \\(R = \\{(1, 2), (1, 4), (3, 2), (3, 4)\\}\\)\nSince \\(R \\subset A \\times B\\), R is a relation from A to B\ni) Domain (R) = Set of first components of \\(R = \\{1, 3\\}\\)\nii) Co-domain (R) = \\(B = \\{2, 4, 6\\}\\)\niii) Range (R) = Set of second components of \\(R = \\{2, 4\\}\\)"
+  },
+  {
+    "ref": "5.2 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(A = \\{1, 2, 3, 4, 5\\}\\) and \\(B = \\{1, 4, 5\\}\\). Let R be a relation from A to B. Such that \\((x, y) \\in R\\) if \\(2x < y\\).\ni) List the elements of R.\nii) Find the domain, co-domain and range of R.",
+    "solution": "\\(A = \\{1, 2, 3, 4, 5\\}\\) and \\(B = \\{1, 4, 5\\}\\)\ni) The elements of R are as follows:\n\\(R = \\{(1, 4), (1, 5), (2, 5)\\}\\)\nii) Domian (R) = \\(\\{1, 2\\}\\)\nRange (R) = \\(\\{4, 5\\}\\)\nCo-domain (R) = \\(\\{1, 4, 5\\} = B\\)",
+    "_note": "The book prints the set as 'R = {(1, 4), (1, 5), (2, 5),}' with a stray trailing comma before the closing brace; transcribed without it. The printed solution also spells 'Domian'; kept as printed."
+  },
+  {
+    "ref": "5.2 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{1, 2, 3, 4, 5, 6\\}\\) Define a relation R from A to A by \\(R = \\{(x, y) / y = x + 1\\}\\). Write down the domain, co-domain and range of R.",
+    "solution": "A relation R from A to A is given by\n\\(R = \\{(x, y) / y = x + 1\\}\\) is given by\n\\(R = \\{(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)\\}\\)\nDomain (R) = \\(\\{1, 2, 3, 4, 5\\}\\)\nRange (R) = \\(\\{2, 3, 4, 5, 6\\}\\)\nCo-domain (R) = \\(\\{1, 2, 3, 4, 5, 6\\}\\)",
+    "_note": "In the printed solution the braces are mismatched: it prints 'R = (x, y) / y = x + 1}' (no opening brace) and the roster line 'R = {(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)' (no closing brace). Transcribed with balanced braces; the defect is recorded here rather than silently repaired."
+  },
+  {
+    "ref": "Ex 5.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "If \\((x-1, y+4) = (1, 2)\\) find the values of \\(x\\) and \\(y\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\left(x + \\frac{1}{3}, \\frac{y}{3} - 1\\right) = \\left(\\frac{1}{2}, \\frac{3}{2}\\right)\\), find \\(x\\) and \\(y\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\{a, b, c\\}\\), \\(B = (x, y)\\) find \\(A \\times B\\), \\(B \\times A\\), \\(A \\times A\\), \\(B \\times B\\).",
+    "_note": "Printed as 'B = (x , y)' with round brackets instead of set braces; transcribed as printed. Intended \\(B = \\{x, y\\}\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "If \\(P = \\{1, 2, 3)\\) and \\(Q = \\{1, 4\\}\\), find sets \\(P \\times Q\\) and \\(Q \\times P\\).",
+    "_note": "Printed with a mismatched closing bracket on P: '{1, 2, 3)'. Transcribed as printed; intended \\(P = \\{1, 2, 3\\}\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{1, 2, 3, 4)\\), \\(B = \\{4, 5, 6\\}\\), \\(C = \\{5, 6\\}\\). Verify,",
+    "setLabel": "Ex 5.2 Q5",
+    "stem": "\\(A \\times (B \\cap C) = (A \\times B) \\cap (A \\times C)\\)",
+    "_note": "The shared instruction is printed with a mismatched closing bracket on A: '{1, 2, 3, 4)'. Transcribed as printed; intended \\(A = \\{1, 2, 3, 4\\}\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{1, 2, 3, 4)\\), \\(B = \\{4, 5, 6\\}\\), \\(C = \\{5, 6\\}\\). Verify,",
+    "setLabel": "Ex 5.2 Q5",
+    "stem": "\\(A \\times (B \\cup C) = (A \\times B) \\cup (A \\times C)\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "stem": "Express \\(\\{(x, y) / x^2 + y^2 = 100,\\) where \\(x, y \\in W\\}\\) as a set of ordered pairs."
+  },
+  {
+    "ref": "Ex 5.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(A = \\{6, 8\\}\\) and \\(B = \\{1, 3, 5\\}\\)\nShow that \\(R_1 = \\{(a, b) / a \\in A, b \\in B, a - b\\) is an even number\\(\\}\\) is a null relation. \\(R_2 = \\{(a, b) / a \\in A, b \\in B, a + b\\) is odd number\\(\\}\\) is an universal relation."
+  },
+  {
+    "ref": "Ex 5.2 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_1 = \\{(a, a^2) / a\\) is prime number less than \\(15\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_2 = \\left\\{\\left(a, \\frac{1}{a}\\right) / 0 < a \\le 5, a \\in N\\right\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_3 = \\{(x, y) / y = 3x, y \\in \\{3, 6, 9, 12\\}, x \\in \\{1, 2, 3\\}\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_4 = \\{(x, y) / y > x + 1, x = 1, 2\\) and \\(y = 2, 4, 6\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_5 = \\{(x, y) / x + y = 3, x, y \\in \\{0, 1, 2, 3\\}\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_6 = \\{(a, b) / a \\in N, a < 6\\) and \\(b = 4\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_7 = \\{(a, b) / a, b \\in N, a + b = 6\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q8(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "context": "Write the relation in the Roster form. State its domain and range.",
+    "setLabel": "Ex 5.2 Q8",
+    "stem": "\\(R_8 = \\{(a, b) / b = a + 2, a \\in z, 0 < a < 5\\}\\)",
+    "_note": "The book prints a lowercase 'z' for the set of integers here (elsewhere it uses \\(Z\\)); transcribed as printed."
+  },
+  {
+    "ref": "Ex 5.2 Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a, b \\in \\mathbb{Z},\\ a - b \\text{ is an integer}\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a, b \\in \\mathbb{N},\\ a + b \\text{ is even}\\}\\)",
+    "_note": "The book pre-fills this row of its table as reflexive yes, symmetric yes, transitive NO. The transitive mark is wrong: a + b even means a and b have the same parity, so if a + b and b + c are both even then a and c share parity and a + c is even. The relation is congruence modulo 2, an equivalence relation, hence transitive."
+  },
+  {
+    "ref": "Ex 5.2 Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a, b \\in \\mathbb{N},\\ a \\text{ divides } b\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q9(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a, b \\in \\mathbb{N},\\ a^2 - 4ab + 3b^2 = 0\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q9(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a \\text{ is sister of } b,\\ a, b \\in G = \\text{set of girls}\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q9(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : \\text{line } a \\text{ is perpendicular to line } b \\text{ in a plane}\\}\\)",
+    "_note": "The book prints 'in a place'; 'in a plane' is intended."
+  },
+  {
+    "ref": "Ex 5.2 Q9(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a, b \\in \\mathbb{R},\\ a < b\\}\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q9(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Identify which of the following relations are reflexive, symmetric and transitive. For each, state whether it has each of the three properties and justify briefly.",
+    "setLabel": "Ex 5.2 Q9",
+    "stem": "\\(R = \\{(a, b) : a, b \\in \\mathbb{R},\\ a \\le b^3\\}\\)"
+  },
+  {
+    "ref": "5.2.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "Find \\(x\\) and \\(y\\) when \\((x + 3,\\ 2) = (4,\\ y - 3)\\).",
+    "solution": "Using the definition of equality of two ordered pairs, we have\n\n\\((x + 3,\\ 2) = (4,\\ y - 3)\\)\n\n\\(\\Rightarrow x + 3 = 4\\) and \\(2 = y - 3\\)\n\n\\(\\Rightarrow x = 1\\) and \\(y = 5\\)",
+    "_note": "Printed on p-11 (book p.98), right column, under section 5.2.1 Ordered Pair, labelled simply 'Ex. :' with no example number."
+  },
+  {
+    "ref": "5.2.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{1, 3\\}\\); \\(B = \\{2, 3, 4\\}\\). Find the number of elements in the Cartesian product of \\(A\\) and \\(B\\).",
+    "solution": "Given \\(A = \\{1, 3\\}\\) and \\(B = \\{2, 3, 4\\}\\)\n\n\\(\\therefore n(A) = 2\\) and \\(n(B) = 3\\)\n\n\\(\\therefore n(A \\times B) = 2 \\times 3 = 6\\)",
+    "_note": "Printed on p-11 (book p.98), right column, under section 5.2.2 Cartesian Product of two sets, labelled 'Ex. 2 :'."
+  },
+  {
+    "ref": "5.2.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{1, 2, 3, 4, 5\\}\\) and \\(B = \\{1, 4, 5\\}\\). Let \\(R\\) be a relation such that \\((x, y) \\in R\\) implies \\(x < y\\). List the elements of \\(R\\).",
+    "solution": "Here \\(A = \\{1, 2, 3, 4, 5\\}\\) and \\(B = \\{1, 4, 5\\}\\)\n\n\\(\\therefore R = \\{(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)\\}\\)\n\nThe arrow diagram for this relation \\(R\\) is given by Fig. 5.19.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 5.19 — arrow diagram with oval A containing 1, 2, 3, 4, 5 on the left and oval B containing 1, 4, 5 on the right, with arrows drawn for each ordered pair of R.",
+    "_note": "Printed on p-12 (book p.99), right column, under section 5.2.4 Definitions of relation, Domain, Co-domain and Range of a Relation, labelled simply 'Ex. :'."
+  },
+  {
+    "ref": "5.2.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{1, 2, 3\\}\\) and \\(R = \\{(1, 2), (2, 2), (3, 1), (3, 2)\\}\\). Show that \\(R\\) is a binary relation on \\(A\\).",
+    "solution": "\\(A \\times A = \\{(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3)\\}\\)\n\n\\(R \\subset A \\times A\\) and therefore, \\(R\\) is a binary relation on \\(A\\).",
+    "_note": "Printed on p-13 (book p.100), left column, under 5.2.5 Binary relation on a set, in the 'Illustrative Examples' list as 'Ex. 1.:'. The book prints only the data followed by the working — there is no separate instruction line and no 'Solution :' label; the instruction in the stem is the implied task."
+  },
+  {
+    "ref": "5.2.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(N\\) be the set of all natural numbers and \\(R = \\{(a, b) / a, b \\in N \\text{ and } 2a + b = 10\\}\\). Show that \\(R\\) is a binary relation on \\(N\\), list its elements, and state its domain, co-domain and range.",
+    "solution": "Since \\(R \\subset N \\times N\\), \\(R\\) is a binary relation on \\(N\\).\n\n\\(R = \\{(1, 8), (2, 6), (3, 4), (4, 2)\\}\\)\n\nWe can state domain, range and co-domain of the relation. They are as follows:\n\nDomain \\((R) = \\{1, 2, 3, 4\\}\\)\n\nCo-domain \\((R) = \\{2, 4, 6, 8\\}\\)\n\nCo-domain \\((R) = \\) range \\((R)\\)",
+    "_note": "Printed on p-13 (book p.100), left column, 'Ex. 2.:' of the Illustrative Examples under 5.2.5; no 'Solution :' label — the working is printed inline. BOOK DEFECT transcribed as printed: the book writes 'Co-domain (R) = {2, 4, 6, 8}' where 'Range (R) = {2, 4, 6, 8}' is evidently intended (it then asserts 'Co-domain (R) = range (R)', and the co-domain of a relation on N would be N)."
+  },
+  {
+    "ref": "5.2.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "stem": "\\(R'\\) is defined in \\(Z \\times Z\\) as \\(aR'b\\) if \\((a + b)\\) is even. Let \\(R\\) be defined in \\(Z \\times Z\\) as \\(aRb\\) if \\((a - b)\\) is even. Show that \\(R\\) and \\(R'\\) define the same relation, and describe the subset of \\(Z \\times Z\\) related to them.",
+    "solution": "Note that \\(R\\) and \\(R'\\) define the same relation and the subset related to them is \\(\\{(a, b) / a \\text{ and } b \\text{ both even or } a \\text{ and } b \\text{ both odd}\\}\\).",
+    "_note": "Printed on p-13 (book p.100), right column, 'Ex. 3.:' of the Illustrative Examples under 5.2.5; no 'Solution :' label — the book states the conclusion inline, and the instruction in the stem is the implied task."
+  },
+  {
+    "ref": "5.2.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\{2, 4, 6\\}\\), write \\(R = A \\times A\\) and state what type of relation it is on \\(A\\).",
+    "solution": "\\(R = A \\times A = \\{(2, 2), (2, 4), (2, 6), (4, 2), (4, 4), (4, 6), (6, 2), (6, 4), (6, 6)\\}\\) and \\(R = A \\times A\\) is the universal relation on \\(A\\).",
+    "_note": "Printed on p-13 (book p.100), right column, 'Ex. 4 :' of the Illustrative Examples under 5.2.5; no 'Solution :' label — the working is printed inline."
+  },
+  {
+    "ref": "5.2.7 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "HARD",
+    "stem": "Let \\(R\\) be a relation on \\(Q\\), defined by \\(R = \\{(a, b) / a, b \\in Q \\text{ and } a - b \\in Z\\}\\). Show that \\(R\\) is an equivalence relation.",
+    "solution": "Given \\(R = \\{(a, b) / a, b \\in Q \\text{ and } a - b \\in Z\\}\\)\n\ni) Let \\(a \\in Q\\) then \\(a - a = 0 \\in Z\\)\n\n\\(\\therefore (a, a) \\in R\\)\n\nSo, \\(R\\) is reflexive.\n\nii) \\((a, b) \\in R \\Rightarrow (a - b) \\in Z\\)\n\ni.e. \\((a - b)\\) is an integer\n\n\\(\\Rightarrow -(a - b)\\) is an integer\n\n\\(\\Rightarrow (b - a)\\) is an integer\n\n\\(\\Rightarrow (b, a) \\in R\\)\n\nThus \\((a, b) \\in R \\Rightarrow (b, a) \\in R\\)\n\n\\(\\therefore R\\) is symmetric.\n\niii) \\((a, b) \\in R\\) and \\((b, c) \\in R\\)\n\n\\(\\Rightarrow (a - b)\\) is an integer and \\((b - c)\\) is an integer\n\n\\(\\Rightarrow \\{(a - b) + (b - c)\\}\\) is an integer\n\n\\(\\Rightarrow (a - c)\\) is an integer\n\n\\(\\Rightarrow (a, c) \\in R\\)\n\nThus \\((a, b) \\in R\\) and \\((b, c) \\in R \\Rightarrow (a, c) \\in R\\)\n\n\\(\\therefore R\\) is transitive.\n\nThus, \\(R\\) is reflexive, symmetric and transitive.\n\n\\(\\therefore R\\) is an equivalence relation.",
+    "_note": "Printed on p-14 (book p.101), left column, 'Ex. 1:' of the 'Illustrative examples' under the unnumbered sub-heading 'Equivalence relation:', which sits inside section 5.2.7 Types of relations (begun on p-13, right column)."
+  },
+  {
+    "ref": "5.2.7 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "stem": "Show that the relation \"is congruent to\" on the set of all triangles in a plane is an equivalence relation.",
+    "solution": "Let \\(S\\) be the set of all triangles in a plane. Then, the congruence relation on \\(S\\) is\n\ni) Reflexive, since \\(\\Delta \\cong \\Delta\\) for every \\(\\Delta \\in S\\)\n\nii) Symmetric, since \\(\\Delta_1 \\cong \\Delta_2 \\Rightarrow \\Delta_2 \\cong \\Delta_1\\) for all \\(\\Delta_1, \\Delta_2 \\in S\\).\n\niii) Transitive, since \\(\\Delta_1 \\cong \\Delta_2\\) and \\(\\Delta_2 \\cong \\Delta_3\\), then \\(\\Delta_1 \\cong \\Delta_3\\) for all \\(\\Delta_1, \\Delta_2, \\Delta_3 \\in S\\). Hence, the given relation is an equivalence relation.",
+    "_note": "Printed on p-14 (book p.101), 'Ex. 2 :' under the 'Equivalence relation:' sub-heading of section 5.2.7. The stem and parts i)-ii) are at the foot of the left column; part iii) continues at the top of the right column."
+  },
+  {
+    "ref": "5.2.7 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "HARD",
+    "stem": "Show that \\(R = \\{(a, b) : a, b \\in Z,\\ a \\equiv b \\ (\\mathrm{mod}\\ m)\\}\\) is an equivalence relation.",
+    "solution": "Since \\(a - a = 0\\) is divisible by \\(m\\)\n\n\\(\\therefore a \\equiv a \\ (\\mathrm{mod}\\ m)\\) \\(\\therefore R\\) is reflexive.\n\nIf \\(a \\equiv b \\ (\\mathrm{mod}\\ m)\\) i.e. \\(a - b\\) is divisible by \\(m\\) then \\(b - a\\) is also divisible by \\(m\\)\n\ni.e. \\(b \\equiv a \\ (\\mathrm{mod}\\ m)\\). \\(\\therefore R\\) is symmetric.\n\nIf \\(a \\equiv b \\ (\\mathrm{mod}\\ m)\\) and \\(b \\equiv c \\ (\\mathrm{mod}\\ m)\\)\n\ni.e. \\(a - b\\) is divisible by \\(m\\) and \\(b - c\\) is divisible by \\(m\\).\n\nThen \\(a - c = a - b + b - c = (a - b) + (b - c)\\) is also divisible by \\(m\\). i.e. \\(a \\equiv c \\ (\\mathrm{mod}\\ m)\\).\n\n\\(\\therefore R\\) is transitive.\n\nSo, \\(R\\) is an equivalence relation.",
+    "_note": "Printed on p-14 (book p.101), right column, labelled simply 'Ex.' under the unnumbered sub-heading 'Congruence Modulo:', which sits inside section 5.2.7 Types of relations. The book prints 'transitivie' for 'transitive' (spelling slip only)."
+  },
+  {
+    "ref": "5.1.2 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "State the sets using Roster method.",
+    "setLabel": "5.1.2 SolvedEx.1",
+    "stem": "\\(B\\) is the set of all days in a week.",
+    "solution": "\\(B = \\{\\text{Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}\\}\\)",
+    "_note": "Theory-embedded worked example on p-00 (printed p.87), under 5.1.2 Representation of a set -> 1. Roster Method. The book prints the answer inline on the line below the sub-item rather than under a 'Solution :' label."
+  },
+  {
+    "ref": "5.1.2 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "State the sets using Roster method.",
+    "setLabel": "5.1.2 SolvedEx.1",
+    "stem": "\\(C\\) is the set of all vowels in English alphabets.",
+    "solution": "\\(C = \\{a, e, i, o, u\\}\\)",
+    "_note": "Theory-embedded worked example; sub-item (ii) sits at the top of p-01 (printed p.88), its instruction line on p-00. Answer printed inline, no 'Solution :' label."
+  },
+  {
+    "ref": "5.1.2 SolvedEx.2(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "State the sets using set-Builder method.",
+    "setLabel": "5.1.2 SolvedEx.2",
+    "stem": "\\(Y = \\{\\text{Jan, Feb, Mar, Apr, ...., Dec}\\}\\)",
+    "solution": "\\(Y = \\{x / x \\text{ is a month of a year}\\}\\)",
+    "_note": "Theory-embedded worked example on p-01 (printed p.88), under 5.1.2 Representation of a set -> 2. Set-Builder Method. Answer printed inline, no 'Solution :' label. The book hyphenates as 'set-Builder method'."
+  },
+  {
+    "ref": "5.1.2 SolvedEx.2(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "State the sets using set-Builder method.",
+    "setLabel": "5.1.2 SolvedEx.2",
+    "stem": "\\(B = \\{1, 4, 9, 16, 25, .....\\}\\)",
+    "solution": "\\(B = \\{x / x \\in N \\text{ and } x \\text{ is a square}\\}\\)",
+    "_note": "Theory-embedded worked example on p-01 (printed p.88). Answer printed inline, no 'Solution :' label."
+  },
+  {
+    "ref": "5.1.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "\\(A = \\{x / x \\text{ is a prime number less than } 10\\}\\), \\(B = \\{x / x \\in N,\\ x \\text{ is a factor of } 8\\}\\). Find \\(A \\cup B\\).",
+    "solution": "We have \\(A = \\{2, 3, 5, 7\\}\\)\n\n\\(B = \\{1, 2, 4, 8\\}\\)\n\n\\(\\therefore A \\cup B = \\{1, 2, 3, 4, 5, 7, 8\\}\\)",
+    "_note": "Theory-embedded worked example on p-03 (printed p.90), under 5.1.5 Operations on sets -> 2) Union of Sets. Printed with an explicit 'Solution :' label."
+  },
+  {
+    "ref": "5.1.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "\\(A = \\{1, 3, 5, 7, 9\\}\\)\n\n\\(B = \\{1, 2, 3, 4, 5, 6, 7, 8\\}\\)\n\nFind \\(A \\cap B\\).",
+    "solution": "\\(A \\cap B = \\{1, 3, 5, 7\\}\\)",
+    "_note": "Theory-embedded worked example on p-03 (printed p.90), under 5.1.5 Operations on sets -> 3) Intersection of sets. Printed with an explicit 'Solution:' label."
+  },
+  {
+    "ref": "5.1.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "\\(A = \\{1, 3, 5, 7, 9\\}\\)\n\n\\(B = \\{2, 4, 6, 8, 10\\}\\), \\(A \\cap B = ?\\)",
+    "solution": "\\(\\therefore A \\cap B = \\{\\ \\} = \\phi\\)\n\nIf \\(A \\cap B = \\phi\\), \\(A\\) and \\(B\\) are disjoint sets.",
+    "_note": "Theory-embedded worked example on p-03 (printed p.90), under 5.1.5 Operations on sets -> 3) Intersection of sets. Printed with an explicit 'Solution :' label."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.1(a)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "5.1.6 SolvedEx.1",
+    "stem": "\\(-7 < 2x + 5 \\le 9\\)",
+    "solution": "Subtracting 5, we get\n\n\\(-7 - 5 < 2x \\le 9 - 5\\)\n\n\\(-12 < 2x \\le 4\\)\n\nDividing by 2, we get\n\n\\(-6 < x \\le 2\\)\n\nSo, \\(x \\in (-6, 2]\\).",
+    "_note": "Theory-embedded worked example on p-06 (printed p.93), under 5.1.6 Intervals -> 'Rules of inequality of real numbers.' The instruction is an unnumbered 'Ex. :' and each part carries its own printed working."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.1(b)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "5.1.6 SolvedEx.1",
+    "stem": "\\(x^2 + 2x < 15\\)",
+    "solution": "Subtracting 15, we get\n\n\\(x^2 + 2x - 15 < 0\\)\n\nFactor \\(x^2 + 2x - 15\\), we get\n\nSay \\(p(x) = (x - 3)(x + 5) < 0\\)\n\nAs \\(x - 3\\) and \\(x + 5\\) is 0, for \\(x = 3, -5\\), consider them as critical points. They divide number line into 3 regions as follow.\n\n| Regions | \\(x < -5\\) | \\((-5 < x < 3)\\) | \\((x > 3)\\) |\n|---|---|---|---|\n| Test Points | \\(-6\\) | \\(0\\) | \\(4\\) |\n| Value \\((x-3)(x+5)\\) of at test points | \\((-6-3)(-6+5)\\) \\(= (-9)(-1) = 9\\) | \\((0-3)(0+5)\\) \\(= (-3)(5) = -15\\) | \\((4-3)(4+5)\\) \\(= (1)(9) = 9\\) |\n| Sign of \\(p(x)\\) | \\(p(x) > 0\\) | \\(p(x) < 0\\) | \\(p(x) > 0\\) |\n\nTherefore the solution set is \\((-5 < x < 3)\\)\n\nSo, \\(x\\) \\((-5, 3)\\).",
+    "_note": "Printed defect, transcribed as printed: the final line reads 'So, x (-5, 3).' with the membership symbol in missing between x and the interval. The mathematics is otherwise correct."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.1(c)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "HARD",
+    "context": "Solve the following inequalities and write the solution set using interval notation.",
+    "setLabel": "5.1.6 SolvedEx.1",
+    "stem": "\\(\\frac{x}{x-3} \\ge 4\\)",
+    "solution": "subtracting, 4, we get\n\n[Note that, as we do not know value of \\(x\\), we do not multiply by \\((x - 3)\\)]\n\n\\(\\frac{x}{x-3} - 4 \\ge 0\\)\n\n\\(\\frac{x - 4(x-3)}{x-3} \\ge 0\\)\n\n\\(\\frac{x - 4x + 12}{x-3} \\ge 0\\)\n\n\\(\\frac{-3x + 12}{x-3} \\ge 0\\)\n\n\\(\\frac{-3(x-4)}{x-3} \\ge 0\\)\n\nDividing by \\(-3\\), we get\n\nSay \\(p(x) = \\frac{x-4}{x-3} \\le 0\\)\n\nTake \\(x = 3, 4\\) as critical points. It divides number line into 3 regions as follows.\n\n| Regions | \\((x \\le 3)\\) | \\((3 \\le x \\le 4)\\) | \\((x \\ge 4)\\) |\n|---|---|---|---|\n| Test Points | \\(2\\) | \\(3.5\\) | \\(5\\) |\n| Sign of \\(x - 4\\) | \\(-\\)ve | \\(-\\)ve | \\(+\\)ve |\n| Sign of \\(x - 3\\) | \\(-\\)ve | \\(+\\)ve | \\(+\\)ve |\n| Sign of \\(p(x)\\) | \\(p(x) > 0\\) Except at \\(x = 3\\) | \\(p(x) < 0\\) | \\(p(x) > 0\\) |\n\nThe solution set is \\((x < 3)\\) and \\((x \\ge 4)\\). So \\(x \\in (-\\infty, 3) \\cup [4, \\infty)\\).\n\nHere \\(x = 3\\) is not in the solution set, as it makes denominator 0.",
+    "_note": "Printed defect, transcribed as printed (NOT repaired). The book's own derivation ends at p(x) = (x-4)/(x-3) <= 0 and its own sign table marks p(x) < 0 only in the middle region, so the solution set should be (3, 4]; the printed conclusion (-inf, 3) U [4, inf) is the region where p(x) >= 0, i.e. the opposite. Numerical check on the ORIGINAL inequality x/(x-3) >= 4: x = 3.5 gives 7 (satisfies, but is excluded by the printed answer) and x = 5 gives 2.5 (fails, but is included by the printed answer). Secondary defect: the printed region headers use <= / >= so the three regions overlap at the critical points x = 3 and x = 4, and x = 3 is not admissible at all."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(a)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(A \\cup B\\)",
+    "solution": "\\(A \\cup B = [-5, 3] \\cup (3, 7) = [-5, 7)\\)",
+    "_note": "Book's 'Ex. 8', theory-embedded on p-06 (printed p.93) under 5.1.6 Intervals; its Solution runs onto the top-left of p-07 (printed p.94). Printed stem defect, transcribed as printed: the third set is given as 'and (5, 8)' with the label 'C =' omitted, and the worked solution then treats it as the semi-open interval C = (5, 8], not the open (5, 8). Ref is section-scoped because the SOLVED EXAMPLES banner block later in the chapter has its own 'Ex. 8'."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(b)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(B \\cup C\\)",
+    "solution": "\\(B \\cup C = (3, 7) \\cup (5, 8] = (3, 8]\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(c)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(A \\cup C\\)",
+    "solution": "\\(A \\cup C = [-5, 3] \\cup (5, 8]\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]. The printed answer here is left unsimplified (the two pieces are disjoint, so no single interval exists)."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(d)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(A \\cap B\\)",
+    "solution": "\\(A \\cap B = [-5, 3] \\cap (3, 7) = \\phi\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(e)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(B \\cap C\\)",
+    "solution": "\\(B \\cap C = (3, 7) \\cap (5, 8] = (5, 7)\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(f)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(A \\cap C\\)",
+    "solution": "\\(A \\cap C = [-5, 3] \\cap (5, 8] = \\phi\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(g)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(A \\cup C'\\)",
+    "solution": "\\(A \\cup C' = [-5, 3] \\cup (5, 8]' = [-5, 3] \\cup \\{(-\\infty, 5] \\cup (8, \\infty)\\} = (-\\infty, 5] \\cup (8, \\infty)\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]. The complement is taken relative to R."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(h)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(B - C\\)",
+    "solution": "\\(B - C = (3, 7) - (5, 8] = (3, 5]\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]."
+  },
+  {
+    "ref": "5.1.6 SolvedEx.2(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intervals",
+    "difficulty": "EASY",
+    "context": "If \\(A = [-5, 3]\\), \\(B = (3, 7)\\), and \\((5, 8)\\). Find",
+    "setLabel": "5.1.6 SolvedEx.2",
+    "stem": "\\(C - B\\)",
+    "solution": "\\(C - B = (5, 8] - (3, 7) = [7, 8]\\)",
+    "_note": "Book's 'Ex. 8'. Printed stem omits 'C =' before the third interval and prints it as (5, 8), while the solution uses C = (5, 8]. This is the last sub-item before the boxed SOLVED EXAMPLES banner on p-07."
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "stem": "For the set \\(A = \\{a, b, c, d, e\\}\\) the correct statement is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\{a, b\\} \\in A\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\{a\\} \\in A\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a \\in A\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a \\notin A\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "If \\(aN = \\{ax : x \\in N\\}\\), then set \\(6N \\cap 8N =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(8N\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(48N\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(12N\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(24N\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "stem": "If set A is empty set then \\(n[P[P[P(A)]]]\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "6"
+      },
+      {
+        "label": "B",
+        "text": "16"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "stem": "In a city 20% of the population travels by car, 50% travels by bus and 10% travels by both car and bus. Then, persons travelling by car or bus are",
+    "options": [
+      {
+        "label": "A",
+        "text": "80%"
+      },
+      {
+        "label": "B",
+        "text": "40%"
+      },
+      {
+        "label": "C",
+        "text": "60%"
+      },
+      {
+        "label": "D",
+        "text": "70%"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "stem": "If the two sets A and B are having 43 elements in common, then the number of elements common to each of the sets \\(A \\times B\\) and \\(B \\times A\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(43^2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{43}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(43^{43}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^{86}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Relations",
+    "difficulty": "HARD",
+    "stem": "Let R be a relation on the set N be defined by \\(\\{(x, y) / x, y \\in N, 2x + y = 41\\}\\) Then R is",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reflexive"
+      },
+      {
+        "label": "B",
+        "text": "Symmetric"
+      },
+      {
+        "label": "C",
+        "text": "Transitive"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Relations",
+    "difficulty": "EASY",
+    "stem": "The relation \">\" in the set of N (Natural number) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "Symmetric"
+      },
+      {
+        "label": "B",
+        "text": "Reflexive"
+      },
+      {
+        "label": "C",
+        "text": "Transitive"
+      },
+      {
+        "label": "D",
+        "text": "Equivalent relation"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "EASY",
+    "stem": "A relation between A and B is",
+    "options": [
+      {
+        "label": "A",
+        "text": "only \\(A \\times B\\)"
+      },
+      {
+        "label": "B",
+        "text": "An Universal set of \\(A \\times B\\)"
+      },
+      {
+        "label": "C",
+        "text": "An equivalent set of \\(A \\times B\\)"
+      },
+      {
+        "label": "D",
+        "text": "A subset of \\(A \\times B\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "stem": "If \\((x, y) \\in N \\times N\\), then \\(xy = x^2\\) is a relation which is",
+    "options": [
+      {
+        "label": "A",
+        "text": "Symmetric"
+      },
+      {
+        "label": "B",
+        "text": "Reflexive"
+      },
+      {
+        "label": "C",
+        "text": "Transitive"
+      },
+      {
+        "label": "D",
+        "text": "Equivalence"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\{a, b, c\\}\\) The total no. of distinct relations in \\(A \\times A\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "9"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^9\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc II Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Write down the following sets in set builder form",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\{10, 20, 30, 40, 50\\}\\)"
+  },
+  {
+    "ref": "Misc II Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Write down the following sets in set builder form",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\{a, e, i, o, u)\\)",
+    "_note": "The book prints this set with a closing round bracket instead of a closing brace — \"{a, e, i, o, u)\". Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets and their Representation",
+    "difficulty": "EASY",
+    "context": "Write down the following sets in set builder form",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\{\\text{Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}\\}\\)",
+    "_note": "The book labels this third sub-item \"ii)\" (a repeat of the previous label); it is the third sub-item, so it is emitted as (iii)."
+  },
+  {
+    "ref": "Misc II Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{x / x \\in N, 1 \\le x \\le 12\\}\\), \\(A = \\{1, 4, 7, 10\\}\\), \\(B = \\{2, 4, 6, 7, 11\\}\\), \\(C = \\{3, 5, 8\\ 9, 12\\}\\), write down the sets",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(A \\cup B\\)",
+    "_note": "The book prints set C as \"{3, 5, 8 9, 12}\" with the comma between 8 and 9 missing. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{x / x \\in N, 1 \\le x \\le 12\\}\\), \\(A = \\{1, 4, 7, 10\\}\\), \\(B = \\{2, 4, 6, 7, 11\\}\\), \\(C = \\{3, 5, 8\\ 9, 12\\}\\), write down the sets",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(B \\cap C\\)",
+    "_note": "The book prints set C as \"{3, 5, 8 9, 12}\" with the comma between 8 and 9 missing. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{x / x \\in N, 1 \\le x \\le 12\\}\\), \\(A = \\{1, 4, 7, 10\\}\\), \\(B = \\{2, 4, 6, 7, 11\\}\\), \\(C = \\{3, 5, 8\\ 9, 12\\}\\), write down the sets",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(A - B\\)",
+    "_note": "The book prints set C as \"{3, 5, 8 9, 12}\" with the comma between 8 and 9 missing. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(U = \\{x / x \\in N, 1 \\le x \\le 12\\}\\), \\(A = \\{1, 4, 7, 10\\}\\), \\(B = \\{2, 4, 6, 7, 11\\}\\), \\(C = \\{3, 5, 8\\ 9, 12\\}\\), write down the sets",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(B \\cap C'\\)",
+    "_note": "The book prints set C as \"{3, 5, 8 9, 12}\" with the comma between 8 and 9 missing. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{x / x \\in N, 1 \\le x \\le 12\\}\\), \\(A = \\{1, 4, 7, 10\\}\\), \\(B = \\{2, 4, 6, 7, 11\\}\\), \\(C = \\{3, 5, 8\\ 9, 12\\}\\), write down the sets",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(A \\cup B \\cup C\\)",
+    "_note": "The book prints set C as \"{3, 5, 8 9, 12}\" with the comma between 8 and 9 missing. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(U = \\{x / x \\in N, 1 \\le x \\le 12\\}\\), \\(A = \\{1, 4, 7, 10\\}\\), \\(B = \\{2, 4, 6, 7, 11\\}\\), \\(C = \\{3, 5, 8\\ 9, 12\\}\\), write down the sets",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(A \\cap (B \\cup C)\\)",
+    "_note": "The book prints set C as \"{3, 5, 8 9, 12}\" with the comma between 8 and 9 missing. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "stem": "In a survey of 425 students in a school, it was found that 115 drink apple juice, 160 drink orange juice and 80 drink both apple as well as orange juice. How many drink neither apple juice nor orange juice?"
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Number of Elements",
+    "difficulty": "MODERATE",
+    "stem": "In a school there are 20 teachers who teach Mathematics or Physics. Of these, 12 teach Mathematics and 4 teach both Physics and Mathematics. How many teachers teach Physics?"
+  },
+  {
+    "ref": "Misc II Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "setLabel": "Misc II Q5",
+    "stem": "If \\(A = \\{1, 2, 3\\}\\) and \\(B = \\{2, 4\\}\\), state the elements of \\(A \\times A\\), \\(A \\times B\\), \\(B \\times A\\), \\(B \\times B\\), \\((A \\times B) \\cap (B \\times A)\\)"
+  },
+  {
+    "ref": "Misc II Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ordered Pairs and the Cartesian Product",
+    "difficulty": "MODERATE",
+    "setLabel": "Misc II Q5",
+    "stem": "If \\(A = \\{-1, 1\\}\\), find \\(A \\times A \\times A\\)"
+  },
+  {
+    "ref": "Misc II Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3\\}\\), \\(B = \\{4, 5, 6\\}\\) check if the following are relations from A to B. Also write its domain and range.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(R_1 = \\{(1, 4), (1, 5), (1, 6)\\}\\)"
+  },
+  {
+    "ref": "Misc II Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3\\}\\), \\(B = \\{4, 5, 6\\}\\) check if the following are relations from A to B. Also write its domain and range.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(R_2 = \\{(1, 5), (2, 4), (3, 6)\\}\\)"
+  },
+  {
+    "ref": "Misc II Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3\\}\\), \\(B = \\{4, 5, 6\\}\\) check if the following are relations from A to B. Also write its domain and range.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(R_3 = \\{(1, 4), (1, 5), (3, 6), (2, 6), (3, 4)\\}\\)"
+  },
+  {
+    "ref": "Misc II Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{1, 2, 3\\}\\), \\(B = \\{4, 5, 6\\}\\) check if the following are relations from A to B. Also write its domain and range.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(R_4 = \\{(4, 2), (2, 6), (5, 1), (2, 4)\\}\\)",
+    "_note": "The book labels this fourth sub-item \"ii)\" (a repeat of the second label); it is the fourth sub-item, so it is emitted as (iv)."
+  },
+  {
+    "ref": "Misc II Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Determine the domain and range of the following relations.",
+    "setLabel": "Misc II Q7",
+    "stem": "\\(R = \\{(a, b) / a \\in N, a < 5, b = 4\\}\\)"
+  },
+  {
+    "ref": "Misc II Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Determine the domain and range of the following relations.",
+    "setLabel": "Misc II Q7",
+    "stem": "\\(R = \\{(a, b) / b = |a - 1|, a \\in z, |a| < 3\\}\\)",
+    "_note": "The book prints the set of integers as a lower-case \"z\" here rather than the usual \\(Z\\). Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Find \\(R : A \\to A\\) when \\(A = \\{1, 2, 3, 4\\}\\) such that",
+    "setLabel": "Misc II Q8",
+    "stem": "\\(R = (a, b) / a - b = 10\\}\\)",
+    "_note": "Printed with unbalanced brackets — the opening brace of the set is missing, the book prints \"R = (a, b) / a–b = 10}\". Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relations — Domain, Co-domain and Range",
+    "difficulty": "MODERATE",
+    "context": "Find \\(R : A \\to A\\) when \\(A = \\{1, 2, 3, 4\\}\\) such that",
+    "setLabel": "Misc II Q8",
+    "stem": "\\(R = \\{(a, b) / |a - b|) \\ge 0\\}\\)",
+    "_note": "Printed with a stray closing round bracket after the modulus — the book prints \"R = {(a, b) /|a – b|) ≥ 0}\". Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q9(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "\\(R = \\{1, 2, 3\\} \\to \\{1, 2, 3\\}\\) given by \\(R = \\{(1,1) (2,2), (3,3), (1,2) (2,3)\\}\\) Check if R is",
+    "setLabel": "Misc II Q9",
+    "stem": "relflexive",
+    "_note": "Printed as \"relflexive\" (misspelling of reflexive); transcribed as printed. The shared instruction is also printed with commas missing between some ordered pairs and writes \"R = {1,2,3} → {1,2,3}\" where \"R : {1,2,3} → {1,2,3}\" is meant."
+  },
+  {
+    "ref": "Misc II Q9(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "\\(R = \\{1, 2, 3\\} \\to \\{1, 2, 3\\}\\) given by \\(R = \\{(1,1) (2,2), (3,3), (1,2) (2,3)\\}\\) Check if R is",
+    "setLabel": "Misc II Q9",
+    "stem": "symmentric",
+    "_note": "Printed as \"symmentric\" (misspelling of symmetric); transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q9(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "\\(R = \\{1, 2, 3\\} \\to \\{1, 2, 3\\}\\) given by \\(R = \\{(1,1) (2,2), (3,3), (1,2) (2,3)\\}\\) Check if R is",
+    "setLabel": "Misc II Q9",
+    "stem": "transitive"
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "stem": "Check if \\(R : Z \\to Z\\), \\(R = \\{(a, b) | 2 \\text{ divides } a - b\\}\\) is equivalence relation."
+  },
+  {
+    "ref": "Misc II Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "HARD",
+    "stem": "Show that the relation R in the set \\(A = \\{1, 2, 3, 4, 5\\}\\) Given by \\(R = \\{(a, b) / |a - b| \\text{ is even}\\}\\) is an equivalence relation"
+  },
+  {
+    "ref": "Misc II Q12(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "HARD",
+    "context": "Show that following are equivalence relation",
+    "setLabel": "Misc II Q12",
+    "stem": "R in A is set of all books. given by \\(R = \\{(x, y) / x \\text{ and } y \\text{ have same number of pages}\\}\\)",
+    "_note": "Printed as \"R in A is set of all books. given by\"; the intended reading is \"R in A, where A is the set of all books\". Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q12(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "HARD",
+    "context": "Show that following are equivalence relation",
+    "setLabel": "Misc II Q12",
+    "stem": "R in \\(A = \\{x \\in Z | 0 \\le x \\le 12\\}\\) given by \\(R = \\{(a, b) / |a - b| \\text{ is a multiple of } 4\\}\\)"
+  },
+  {
+    "ref": "Misc II Q12(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Relations",
+    "difficulty": "MODERATE",
+    "context": "Show that following are equivalence relation",
+    "setLabel": "Misc II Q12",
+    "stem": "R in \\(A = \\{x \\in N / x \\le 10\\}\\) given by \\(R = \\{(a, b) | a = b\\}\\)"
+  }
+]

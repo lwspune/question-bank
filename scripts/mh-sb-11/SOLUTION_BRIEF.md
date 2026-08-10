@@ -28,8 +28,14 @@ typically two to six steps, and harder than the Class-9/10 books. Be a careful t
 
 ## Output → `scripts/mh-sb-11/data/<chapterId>.<group>.solutions.json`
 A JSON array of `{id, ref, solution}` — `id` and `ref` copied VERBATIM from the input row,
-`solution` your authored answer. Include ONLY your assigned rows. **Diff your output's `id` set
-against the input file's before you finish** — do not trust your own running count.
+`solution` your authored answer. Include ONLY your assigned rows.
+
+**Before you finish, diff the `ref` -> `id` PAIRING against the input, not just the id set.**
+A count check is useless (agents are reliably off by 1-3 on their own tallies), and even an
+id-SET check is not enough: an off-by-one that shifts ids across neighbouring rows is a
+*permutation*, so the set still matches perfectly while every solution is attached to the wrong
+question. That has now happened twice on this book — once caught, once nearly missed. Rebuild
+from the input's own `ref` -> `id` map rather than assuming your rows stayed aligned.
 
 ## Solution rules
 - **LaTeX for ALL math, inside `\(...\)`** — `\sqrt{}`, `\frac{}{}`, `^\circ` for degrees,

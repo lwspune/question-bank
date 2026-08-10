@@ -32,6 +32,35 @@ Render answer pages to **`out/_answers/<chapterId>/`** — a SIBLING of `out/<ch
 because `render.ts` does `rmSync(out/<chapterId>)` and would otherwise delete them (the same
 trap `dump-text.ts` hit in `mh-sb-9`).
 
+**2b. PLAN TRANSCRIPTION BANDS FROM A `Solution :` SCAN, NOT FROM SECTION BANNERS.**
+This is the single most expensive mistake made on this book so far — it stranded questions in
+two consecutive chapters. A banner scan (`SOLVED EXAMPLES` / `EXERCISE N.M` / `MISCELLANEOUS`)
+finds only the BOXED blocks, but the book also embeds worked examples with printed solutions
+directly in the theory narrative, and the brief says those are `solved` rows too. In Ch.5 the
+boxed blocks account for ~18 of the chapter's **29** `Solution :` markers; the other ~11 sat in
+the theory and were invisible to a banner scan. Before dispatching, run a per-page count:
+
+```
+for each page: len(re.findall(r'Solution\s*:', text)),
+               re.findall(r'Ex\.?\s*(\d+)?\s*:', text),
+               'SOLVED EXAMPLES' in text.upper(),
+               re.findall(r'EXERCISE\s*[:\-]?\s*(\d+\.\d+)', text)
+```
+
+then reconcile: every page carrying a `Solution :` must fall inside some band. (The regex
+under-counts — it misses solutions typeset without a colon — so treat a page with `Ex.` markers
+and zero `Solution :` as suspect rather than empty.) Two further rules earned the same way:
+
+- **Cut bands at BLOCK boundaries, never page boundaries.** A solved run or an exercise must sit
+  wholly inside one band. Where two blocks share a page, name the split point explicitly in both
+  prompts and say who owns which side.
+- **Tell every agent to REPORT on content it does not own.** Each of the four gaps found in
+  Ch.1/Ch.5 was recovered only because an agent described what it saw in a neighbour's territory
+  instead of silently ignoring it. This instruction is doing more work than the boundaries.
+- **Theory-embedded examples need sub-section-scoped refs** (`5.1.3 SolvedEx.1`, `5.2.5
+  SolvedEx.1`), because the bare `<N.M> SolvedEx.<n>` namespace belongs to the boxed block and
+  the book reuses its `Ex.` numbers across both.
+
 **3. Book layout is the Class-12 shape, not the Class-9 shape.** Interleaved `SOLVED EXAMPLES`
 blocks, numbered `EXERCISE N.M` blocks, then `MISCELLANEOUS EXERCISE - N` split into part
 **(I)** (MCQ) and part **(II)** (free-response). Refs therefore follow the Class-12 convention:
