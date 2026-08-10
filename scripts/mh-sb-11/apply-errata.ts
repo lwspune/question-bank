@@ -98,17 +98,32 @@ async function main() {
     applied++;
 
     // Mirror into whichever source JSON carries this ref, so DB and source agree.
+    //
+    // An MCQ fragment row carries NO `solution` field at all (the brief gives an MCQ a key,
+    // not a solution), so a `typeof === "string"` test skips it and the bracket ends up living
+    // ONLY in the database — where the next re-commit silently reverts it. That is exactly the
+    // drift found in scripts/stateboard (3 of its 76 brackets, all on MCQ rows). So when the
+    // field is absent we CREATE it, mirroring what the DB got (bracket alone, since `current`
+    // was empty). Only stop searching once we have actually mirrored.
+    let mirrored = false;
     for (const f of jsonFiles) {
       const path = join(DATA, f);
       const arr = JSON.parse(readFileSync(path, "utf8")) as any[];
       const hit = arr.find((r) => r.ref === e.ref);
       if (!hit) continue;
-      if (typeof hit.solution === "string" && !hit.solution.trimStart().startsWith("[Textbook")) {
-        hit.solution = `${e.bracket}\n\n${hit.solution}`;
-        writeFileSync(path, JSON.stringify(arr, null, 2), "utf-8");
-        console.log(`      mirrored -> ${f}`);
+      const existing = typeof hit.solution === "string" ? hit.solution : "";
+      if (existing.trimStart().startsWith("[Textbook")) {
+        mirrored = true;
+        break;
       }
+      hit.solution = existing ? `${e.bracket}\n\n${existing}` : e.bracket;
+      writeFileSync(path, JSON.stringify(arr, null, 2), "utf-8");
+      console.log(`      mirrored -> ${f}${existing ? "" : " (created solution field)"}`);
+      mirrored = true;
       break;
+    }
+    if (!mirrored) {
+      console.warn(`      !! NOT mirrored to any source file — ${e.ref} would revert on re-commit`);
     }
   }
 

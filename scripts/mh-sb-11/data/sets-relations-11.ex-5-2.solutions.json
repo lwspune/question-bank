@@ -1,0 +1,128 @@
+[
+  {
+    "id": "a08fb2a2-fd9f-46e6-af05-b544fb10ce5e",
+    "ref": "Ex 5.2 Q1",
+    "solution": "Two ordered pairs are equal only when their corresponding components are equal. So \\(x - 1 = 1\\) and \\(y + 4 = 2\\).\nFrom the first, \\(x = 2\\); from the second, \\(y = -2\\).\nHence \\(x = 2,\\ y = -2\\)."
+  },
+  {
+    "id": "1e662b12-253d-4363-b25f-602d9daa49f3",
+    "ref": "Ex 5.2 Q2",
+    "solution": "Equate corresponding components of the two ordered pairs.\n\\(x + \\frac{1}{3} = \\frac{1}{2}\\), so \\(x = \\frac{1}{2} - \\frac{1}{3} = \\frac{3 - 2}{6} = \\frac{1}{6}\\).\n\\(\\frac{y}{3} - 1 = \\frac{3}{2}\\), so \\(\\frac{y}{3} = \\frac{5}{2}\\) and \\(y = \\frac{15}{2}\\).\nHence \\(x = \\frac{1}{6},\\ y = \\frac{15}{2}\\)."
+  },
+  {
+    "id": "0b7e948c-ab8e-4a06-9253-7af1f52f0fd4",
+    "ref": "Ex 5.2 Q3",
+    "solution": "Here \\(A = \\{a, b, c\\}\\) and \\(B = \\{x, y\\}\\). A Cartesian product pairs every element of the first set with every element of the second, so \\(A \\times B\\) has \\(3 \\times 2 = 6\\) pairs, \\(A \\times A\\) has \\(9\\) and \\(B \\times B\\) has \\(4\\).\n\\(A \\times B = \\{(a,x), (a,y), (b,x), (b,y), (c,x), (c,y)\\}\\)\n\\(B \\times A = \\{(x,a), (x,b), (x,c), (y,a), (y,b), (y,c)\\}\\)\n\\(A \\times A = \\{(a,a), (a,b), (a,c), (b,a), (b,b), (b,c), (c,a), (c,b), (c,c)\\}\\)\n\\(B \\times B = \\{(x,x), (x,y), (y,x), (y,y)\\}\\)",
+    "_note": "The stem prints \\(B = (x, y)\\) with round brackets — a printed/transcription bracket artifact. Solved for the evidently intended set \\(B = \\{x, y\\}\\), which is also what the book's own answer uses."
+  },
+  {
+    "id": "769e6280-9d9f-443e-ac25-28943fb8312a",
+    "ref": "Ex 5.2 Q4",
+    "solution": "Here \\(P = \\{1, 2, 3\\}\\) and \\(Q = \\{1, 4\\}\\). Pair every element of the first set with every element of the second; each product has \\(3 \\times 2 = 6\\) ordered pairs.\n\\(P \\times Q = \\{(1,1), (1,4), (2,1), (2,4), (3,1), (3,4)\\}\\)\n\\(Q \\times P = \\{(1,1), (1,2), (1,3), (4,1), (4,2), (4,3)\\}\\)",
+    "_note": "The stem prints P as an opening curly brace with a round closing bracket (\"1, 2, 3\" closed by a parenthesis) — a printed bracket artifact. Solved for the evidently intended set \\(P = \\{1, 2, 3\\}\\), which is what the book's own answer uses."
+  },
+  {
+    "id": "4a1fa1f3-c1dc-46d8-8371-838c2f9e9f40",
+    "ref": "Ex 5.2 Q5(i)",
+    "solution": "Here \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{4, 5, 6\\}\\), \\(C = \\{5, 6\\}\\).\nLeft side: \\(B \\cap C = \\{5, 6\\}\\), so\n\\(A \\times (B \\cap C) = \\{(1,5), (1,6), (2,5), (2,6), (3,5), (3,6), (4,5), (4,6)\\}\\).\nRight side: \\(A \\times B = \\{(1,4), (1,5), (1,6), (2,4), (2,5), (2,6), (3,4), (3,5), (3,6), (4,4), (4,5), (4,6)\\}\\) and \\(A \\times C = \\{(1,5), (1,6), (2,5), (2,6), (3,5), (3,6), (4,5), (4,6)\\}\\). The pairs lying in both are exactly those whose second component is \\(5\\) or \\(6\\), so\n\\((A \\times B) \\cap (A \\times C) = \\{(1,5), (1,6), (2,5), (2,6), (3,5), (3,6), (4,5), (4,6)\\}\\).\nBoth sides are the same set of \\(8\\) ordered pairs, hence \\(A \\times (B \\cap C) = (A \\times B) \\cap (A \\times C)\\) is verified.",
+    "_note": "The shared context prints A with an opening curly brace but a round closing bracket (\"1, 2, 3, 4\" closed by a parenthesis) — a printed bracket artifact. Solved for the evidently intended set \\(A = \\{1, 2, 3, 4\\}\\)."
+  },
+  {
+    "id": "c9490dc7-9429-4170-a7fa-96b4d164c7af",
+    "ref": "Ex 5.2 Q5(ii)",
+    "solution": "Here \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{4, 5, 6\\}\\), \\(C = \\{5, 6\\}\\).\nLeft side: \\(B \\cup C = \\{4, 5, 6\\}\\), so \\(A \\times (B \\cup C)\\) has all \\(4 \\times 3 = 12\\) pairs\n\\(\\{(1,4), (1,5), (1,6), (2,4), (2,5), (2,6), (3,4), (3,5), (3,6), (4,4), (4,5), (4,6)\\}\\).\nRight side: \\(A \\times C = \\{(1,5), (1,6), (2,5), (2,6), (3,5), (3,6), (4,5), (4,6)\\}\\) is contained in \\(A \\times B\\), so the union adds nothing new:\n\\((A \\times B) \\cup (A \\times C) = \\{(1,4), (1,5), (1,6), (2,4), (2,5), (2,6), (3,4), (3,5), (3,6), (4,4), (4,5), (4,6)\\}\\).\nBoth sides are the same set of \\(12\\) ordered pairs, hence \\(A \\times (B \\cup C) = (A \\times B) \\cup (A \\times C)\\) is verified.",
+    "_note": "The shared context prints A with an opening curly brace but a round closing bracket (\"1, 2, 3, 4\" closed by a parenthesis) — a printed bracket artifact. Solved for the evidently intended set \\(A = \\{1, 2, 3, 4\\}\\)."
+  },
+  {
+    "id": "e851e50f-cac4-4b0a-8c68-b626042c18e4",
+    "ref": "Ex 5.2 Q6",
+    "solution": "\\(W = \\{0, 1, 2, 3, \\ldots\\}\\) is the set of whole numbers, and here \\(/\\) reads \"such that\". Since \\(x^2 \\le 100\\), test \\(x = 0, 1, 2, \\ldots, 10\\) and keep those for which \\(100 - x^2\\) is a perfect square: \\(x = 0\\) gives \\(y^2 = 100,\\ y = 10\\); \\(x = 6\\) gives \\(y^2 = 64,\\ y = 8\\); \\(x = 8\\) gives \\(y^2 = 36,\\ y = 6\\); \\(x = 10\\) gives \\(y^2 = 0,\\ y = 0\\). No other value of \\(x\\) works.\nHence the set of ordered pairs is \\(\\{(0, 10), (6, 8), (8, 6), (10, 0)\\}\\)."
+  },
+  {
+    "id": "a64950f8-af73-439f-969c-7eb4a0d519ef",
+    "ref": "Ex 5.2 Q7",
+    "solution": "Every \\(a \\in A = \\{6, 8\\}\\) is even and every \\(b \\in B = \\{1, 3, 5\\}\\) is odd.\nFor \\(R_1\\): even \\(-\\) odd is always odd, so \\(a - b\\) is never an even number and not a single pair of \\(A \\times B\\) satisfies the condition. Hence \\(R_1 = \\{\\ \\} = \\phi\\), i.e. \\(R_1\\) is a null (empty) relation.\nFor \\(R_2\\): even \\(+\\) odd is always odd, so \\(a + b\\) is odd for every pair, and all \\(2 \\times 3 = 6\\) pairs qualify. Hence \\(R_2 = \\{(6,1), (6,3), (6,5), (8,1), (8,3), (8,5)\\} = A \\times B\\), i.e. \\(R_2\\) is a universal relation."
+  },
+  {
+    "id": "824f497e-162a-4daf-b097-e04af9a6949c",
+    "ref": "Ex 5.2 Q8(i)",
+    "solution": "The prime numbers less than \\(15\\) are \\(2, 3, 5, 7, 11, 13\\). Pair each with its square.\n\\(R_1 = \\{(2, 4), (3, 9), (5, 25), (7, 49), (11, 121), (13, 169)\\}\\)\nDomain \\(R_1 = \\{2, 3, 5, 7, 11, 13\\}\\), Range \\(R_1 = \\{4, 9, 25, 49, 121, 169\\}\\)."
+  },
+  {
+    "id": "c8e62f27-8ee0-48d6-bc1d-6a2f12008222",
+    "ref": "Ex 5.2 Q8(ii)",
+    "solution": "The natural numbers with \\(0 < a \\le 5\\) are \\(a = 1, 2, 3, 4, 5\\); pair each with \\(\\frac{1}{a}\\).\n\\(R_2 = \\left\\{(1, 1), \\left(2, \\frac{1}{2}\\right), \\left(3, \\frac{1}{3}\\right), \\left(4, \\frac{1}{4}\\right), \\left(5, \\frac{1}{5}\\right)\\right\\}\\)\nDomain \\(R_2 = \\{1, 2, 3, 4, 5\\}\\), Range \\(R_2 = \\left\\{1, \\frac{1}{2}, \\frac{1}{3}, \\frac{1}{4}, \\frac{1}{5}\\right\\}\\)."
+  },
+  {
+    "id": "be9b1bb4-c22b-455f-8761-6476a5a60a10",
+    "ref": "Ex 5.2 Q8(iii)",
+    "solution": "Take each \\(x \\in \\{1, 2, 3\\}\\) and keep the pair only if \\(y = 3x\\) lies in \\(\\{3, 6, 9, 12\\}\\): \\(x = 1 \\Rightarrow y = 3\\), \\(x = 2 \\Rightarrow y = 6\\), \\(x = 3 \\Rightarrow y = 9\\), and all three values are admissible.\n\\(R_3 = \\{(1, 3), (2, 6), (3, 9)\\}\\)\nDomain \\(R_3 = \\{1, 2, 3\\}\\), Range \\(R_3 = \\{3, 6, 9\\}\\)."
+  },
+  {
+    "id": "f1ef0f54-8a45-481b-b304-170d8cbb953e",
+    "ref": "Ex 5.2 Q8(iv)",
+    "solution": "Test each \\(x\\) against \\(y > x + 1\\) for \\(y \\in \\{2, 4, 6\\}\\).\nFor \\(x = 1\\): need \\(y > 2\\), so \\(y = 4, 6\\). For \\(x = 2\\): need \\(y > 3\\), so \\(y = 4, 6\\).\n\\(R_4 = \\{(1, 4), (1, 6), (2, 4), (2, 6)\\}\\)\nDomain \\(R_4 = \\{1, 2\\}\\), Range \\(R_4 = \\{4, 6\\}\\)."
+  },
+  {
+    "id": "c71549cc-84ca-46c5-bff9-c2a46b602eaf",
+    "ref": "Ex 5.2 Q8(v)",
+    "solution": "Both \\(x\\) and \\(y\\) come from \\(\\{0, 1, 2, 3\\}\\), so list the pairs from that set which add up to \\(3\\).\n\\(R_5 = \\{(0, 3), (1, 2), (2, 1), (3, 0)\\}\\)\nDomain \\(R_5 = \\{0, 1, 2, 3\\}\\), Range \\(R_5 = \\{0, 1, 2, 3\\}\\)."
+  },
+  {
+    "id": "5e5c86d7-8ae8-483e-8253-65f3084b8405",
+    "ref": "Ex 5.2 Q8(vi)",
+    "solution": "The natural numbers with \\(a < 6\\) are \\(a = 1, 2, 3, 4, 5\\), and \\(b\\) is fixed at \\(4\\).\n\\(R_6 = \\{(1, 4), (2, 4), (3, 4), (4, 4), (5, 4)\\}\\)\nDomain \\(R_6 = \\{1, 2, 3, 4, 5\\}\\), Range \\(R_6 = \\{4\\}\\)."
+  },
+  {
+    "id": "8db062d9-d1e2-402b-b639-7bad5390597f",
+    "ref": "Ex 5.2 Q8(vii)",
+    "solution": "Both \\(a\\) and \\(b\\) are natural numbers with \\(a + b = 6\\), so \\(a\\) can be \\(1, 2, 3, 4, 5\\) (taking \\(a = 6\\) would force \\(b = 0 \\notin \\mathbb{N}\\)).\n\\(R_7 = \\{(1, 5), (2, 4), (3, 3), (4, 2), (5, 1)\\}\\)\nDomain \\(R_7 = \\{1, 2, 3, 4, 5\\}\\), Range \\(R_7 = \\{1, 2, 3, 4, 5\\}\\)."
+  },
+  {
+    "id": "2985739e-2a73-4071-9054-95b15f6639ac",
+    "ref": "Ex 5.2 Q8(viii)",
+    "solution": "The integers with \\(0 < a < 5\\) are \\(a = 1, 2, 3, 4\\), and each gives \\(b = a + 2\\).\n\\(R_8 = \\{(1, 3), (2, 4), (3, 5), (4, 6)\\}\\)\nDomain \\(R_8 = \\{1, 2, 3, 4\\}\\), Range \\(R_8 = \\{3, 4, 5, 6\\}\\)."
+  },
+  {
+    "id": "f2044283-6415-440e-9b87-86726c565ee8",
+    "ref": "Ex 5.2 Q9(i)",
+    "solution": "The difference of any two integers is again an integer, so the condition \"\\(a - b\\) is an integer\" holds for every choice of \\(a, b \\in \\mathbb{Z}\\). Thus \\(R = \\mathbb{Z} \\times \\mathbb{Z}\\), the universal relation on \\(\\mathbb{Z}\\).\nReflexive: \\(a - a = 0 \\in \\mathbb{Z}\\), so \\((a, a) \\in R\\) for every \\(a\\) — yes.\nSymmetric: if \\(a - b \\in \\mathbb{Z}\\) then \\(b - a = -(a - b) \\in \\mathbb{Z}\\) — yes.\nTransitive: if \\(a - b \\in \\mathbb{Z}\\) and \\(b - c \\in \\mathbb{Z}\\) then \\(a - c = (a - b) + (b - c) \\in \\mathbb{Z}\\) — yes.\nHence \\(R\\) is reflexive, symmetric and transitive; it is the universal relation \\(\\mathbb{Z} \\times \\mathbb{Z}\\), and so an equivalence relation."
+  },
+  {
+    "id": "5c5742cb-6158-4d00-a287-654d00574406",
+    "ref": "Ex 5.2 Q9(ii)",
+    "solution": "\\(a + b\\) is even exactly when \\(a\\) and \\(b\\) have the same parity (both even or both odd).\nReflexive: \\(a + a = 2a\\) is even, so \\((a, a) \\in R\\) for every \\(a \\in \\mathbb{N}\\) — yes.\nSymmetric: \\(a + b = b + a\\), so if \\(a + b\\) is even then so is \\(b + a\\) — yes.\nTransitive: if \\(a + b\\) is even then \\(a\\) and \\(b\\) have the same parity, and if \\(b + c\\) is even then \\(b\\) and \\(c\\) have the same parity; therefore \\(a\\) and \\(c\\) have the same parity and \\(a + c\\) is even — yes.\nHence \\(R\\) is reflexive, symmetric and transitive; it is congruence modulo \\(2\\) on \\(\\mathbb{N}\\), an equivalence relation.",
+    "_note": "The book's own pre-filled table marks this relation NOT transitive. That entry is wrong. \"\\(a + b\\) even\" says precisely that \\(a\\) and \\(b\\) share parity, i.e. \\(a \\equiv b \\pmod 2\\); parity-sharing is transitive, so \\(R\\) is congruence modulo \\(2\\) and therefore an equivalence relation. Verdict given here: reflexive YES, symmetric YES, transitive YES."
+  },
+  {
+    "id": "892198f3-b332-4562-801f-a01e7d731ba0",
+    "ref": "Ex 5.2 Q9(iii)",
+    "solution": "Reflexive: every natural number divides itself, since \\(a = 1 \\times a\\), so \\((a, a) \\in R\\) for all \\(a\\) — yes.\nSymmetric: \\(2\\) divides \\(4\\), so \\((2, 4) \\in R\\), but \\(4\\) does not divide \\(2\\), so \\((4, 2) \\notin R\\) — no.\nTransitive: if \\(b = ka\\) and \\(c = mb\\) for some \\(k, m \\in \\mathbb{N}\\), then \\(c = (mk)a\\), so \\(a\\) divides \\(c\\) — yes.\nHence \\(R\\) is reflexive and transitive, but not symmetric."
+  },
+  {
+    "id": "50e86dba-cc80-45b8-b14a-d37dc9015017",
+    "ref": "Ex 5.2 Q9(iv)",
+    "solution": "Factorise the defining condition: \\(a^2 - 4ab + 3b^2 = (a - b)(a - 3b) = 0\\), so \\((a, b) \\in R\\) precisely when \\(a = b\\) or \\(a = 3b\\).\nReflexive: \\(a = a\\) holds for every \\(a \\in \\mathbb{N}\\), so \\((a, a) \\in R\\) — yes.\nSymmetric: \\((3, 1) \\in R\\) because \\(3 = 3 \\times 1\\), but \\((1, 3) \\notin R\\) because \\(1 \\ne 3\\) and \\(1 \\ne 3 \\times 3\\) — no.\nTransitive: \\((9, 3) \\in R\\) because \\(9 = 3 \\times 3\\), and \\((3, 1) \\in R\\) because \\(3 = 3 \\times 1\\), but \\((9, 1) \\notin R\\) because \\(9 \\ne 1\\) and \\(9 \\ne 3 \\times 1\\) — no.\nHence \\(R\\) is reflexive only; it is neither symmetric nor transitive."
+  },
+  {
+    "id": "116b0efc-9228-47a5-bf82-c1c6bf991e5e",
+    "ref": "Ex 5.2 Q9(v)",
+    "solution": "Reflexive: no girl is her own sister, so \\((a, a) \\notin R\\) for any \\(a \\in G\\) — no.\nSymmetric: if \\(a\\) is a sister of \\(b\\) and both belong to \\(G\\), the set of girls, then \\(b\\) is a sister of \\(a\\) — yes.\nTransitive: take two girls \\(a\\) and \\(b\\) who are sisters, \\(a \\ne b\\). Then \\((a, b) \\in R\\) and \\((b, a) \\in R\\), but transitivity would force \\((a, a) \\in R\\), which is false — no.\nHence \\(R\\) is symmetric only; it is neither reflexive nor transitive.",
+    "_note": "Transitivity is judged strictly here, over all triples including \\(c = a\\); the pair \\((a, b), (b, a)\\) then forces \\((a, a) \\in R\\), which fails. Some keys instead read the composition only over three DISTINCT girls, on which reading sisterhood does carry over and the relation is marked transitive. The strict verdict (not transitive) is the one given."
+  },
+  {
+    "id": "1436934d-96ba-4ecd-a520-0f8f50915475",
+    "ref": "Ex 5.2 Q9(vi)",
+    "solution": "Reflexive: a line is not perpendicular to itself, so \\((a, a) \\notin R\\) — no.\nSymmetric: if line \\(a\\) is perpendicular to line \\(b\\), then line \\(b\\) is perpendicular to line \\(a\\) — yes.\nTransitive: in a plane, if \\(a \\perp b\\) and \\(b \\perp c\\), then \\(a\\) and \\(c\\) are both perpendicular to the same line, hence \\(a\\) is parallel to \\(c\\), not perpendicular to it, so \\((a, c) \\notin R\\) — no.\nHence \\(R\\) is symmetric only; it is neither reflexive nor transitive."
+  },
+  {
+    "id": "98550266-b0db-4423-8554-e6dec8fd6fa1",
+    "ref": "Ex 5.2 Q9(vii)",
+    "solution": "Reflexive: \\(a < a\\) is false for every real \\(a\\), so \\((a, a) \\notin R\\) — no.\nSymmetric: \\(1 < 2\\) gives \\((1, 2) \\in R\\), but \\(2 < 1\\) is false, so \\((2, 1) \\notin R\\) — no.\nTransitive: if \\(a < b\\) and \\(b < c\\), then \\(a < c\\) — yes.\nHence \\(R\\) is transitive only; it is neither reflexive nor symmetric."
+  },
+  {
+    "id": "597be4b6-e310-4da1-a4ab-086df782abc8",
+    "ref": "Ex 5.2 Q9(viii)",
+    "solution": "Reflexive: this would need \\(a \\le a^3\\) for every real \\(a\\). Taking \\(a = \\frac{1}{2}\\) gives \\(a^3 = \\frac{1}{8} < \\frac{1}{2}\\), so \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right) \\notin R\\) — no.\nSymmetric: \\(1 \\le 2^3 = 8\\) gives \\((1, 2) \\in R\\), but \\(2 \\le 1^3 = 1\\) is false, so \\((2, 1) \\notin R\\) — no.\nTransitive: \\(10 \\le 3^3 = 27\\) gives \\((10, 3) \\in R\\) and \\(3 \\le 2^3 = 8\\) gives \\((3, 2) \\in R\\), but \\(10 \\le 2^3 = 8\\) is false, so \\((10, 2) \\notin R\\) — no.\nHence \\(R\\) is neither reflexive, nor symmetric, nor transitive."
+  }
+]
