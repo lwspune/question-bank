@@ -224,8 +224,9 @@ describe("getActiveTab", () => {
 // The `exams` table CONFLATES board and class into one row (mh-ssc-10 IS
 // "Maharashtra State Board" x 10), so the registry is the only place the two
 // can be separated. These tests pin the derivation, and — just as important —
-// pin the HONEST GAPS: Std 11 and CBSE 9/10 resolve to null because there is no
-// corpus, so the picker can never offer a paper the bank cannot fill.
+// pin the HONEST GAPS: CBSE 9/10/11 resolve to null because there is no corpus,
+// so the picker can never offer a paper the bank cannot fill. Maharashtra Std 11
+// WAS such a gap until the mh-sb-11 Class-11 Maths corpus landed (2026-08-10).
 // ---------------------------------------------------------------------------
 
 describe("BOARDS", () => {
@@ -235,8 +236,8 @@ describe("BOARDS", () => {
 });
 
 describe("stdsForBoard", () => {
-  it("returns Maharashtra's stds ascending — 11 absent, no corpus", () => {
-    expect(stdsForBoard("Maharashtra State Board")).toEqual([9, 10, 12]);
+  it("returns Maharashtra's stds ascending — 11 present since the Class-11 corpus landed", () => {
+    expect(stdsForBoard("Maharashtra State Board")).toEqual([9, 10, 11, 12]);
   });
 
   it("returns only Class 12 for CBSE", () => {
@@ -255,6 +256,7 @@ describe("getExamForBoardStd", () => {
   it("resolves each Maharashtra board+std pair to its exam", () => {
     expect(getExamForBoardStd("Maharashtra State Board", 9)?.slug).toBe("mh-sb-9");
     expect(getExamForBoardStd("Maharashtra State Board", 10)?.slug).toBe("mh-ssc-10");
+    expect(getExamForBoardStd("Maharashtra State Board", 11)?.slug).toBe("mh-sb-11");
     expect(getExamForBoardStd("Maharashtra State Board", 12)?.slug).toBe("mh-hsc-12");
   });
 
@@ -262,8 +264,7 @@ describe("getExamForBoardStd", () => {
     expect(getExamForBoardStd("CBSE", 12)?.slug).toBe("cbse-12");
   });
 
-  it("returns null for Std 11 — no Class 11 corpus exists in the bank", () => {
-    expect(getExamForBoardStd("Maharashtra State Board", 11)).toBeNull();
+  it("returns null for CBSE Std 11 — no Class 11 corpus on that board", () => {
     expect(getExamForBoardStd("CBSE", 11)).toBeNull();
   });
 
