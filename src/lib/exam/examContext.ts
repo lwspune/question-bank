@@ -21,6 +21,7 @@ export type ExamSlug =
   | "mh-hsc-12"
   | "cbse-12"
   | "mh-sb-9"
+  | "mh-sb-11"
   | "mh-ssc-10"
   | "worksheets-11-12";
 
@@ -30,7 +31,7 @@ export type ExamSlug =
  */
 export type Board = "Maharashtra State Board" | "CBSE";
 
-/** School class. 11 is declared but currently unreachable — no Class 11 corpus. */
+/** School class. */
 export type Std = 9 | 10 | 11 | 12;
 
 export type ExamEntry = {
@@ -155,6 +156,17 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // textbook content → gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
     std: 9,
+  },
+  {
+    slug: "mh-sb-11",
+    displayName: "MH State Board 11",
+    examName: "Maharashtra State Board Class 11", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/mh-sb-11", // exam hub: "coming soon" until notes ship
+    practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (11th is not a board year → no PYQs) → /browse defaults to Practice
+    boardExam: true, // textbook content → gets the /board reader + the "Board" nav tab
+    board: "Maharashtra State Board",
+    std: 11,
   },
   {
     slug: "mh-ssc-10",
