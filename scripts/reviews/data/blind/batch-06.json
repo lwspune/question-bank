@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "dc8435b7",
+    "ref": "758",
+    "context": null,
+    "question": "If A and B are two events such that \\(P(A) = \\dfrac{3}{4}\\) and \\(P(B) = \\dfrac{5}{8}\\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(P(A \\cup B) \\ge \\dfrac{3}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(P(\\bar{A} \\cap B) \\le \\dfrac{1}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{3}{8} \\le P(A \\cap B) \\le \\dfrac{5}{8}\\)"
+      },
+      {
+        "label": "D",
+        "text": "All of the above"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Frechet bounds: P(A∩B) ∈ [3/4+5/8−1, min(3/4,5/8)] = [3/8, 5/8], so C holds; P(A∪B) ≥ max(P(A),P(B)) = 3/4, so A holds; P(Ā∩B) = P(B)−P(A∩B) ≤ 5/8 − 3/8 = 1/4, so B holds. All three true."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "761",
+    "context": null,
+    "question": "A complete cycle of a traffic light takes 60 seconds. During each cycle the light is green for 25 seconds, yellow for 5 seconds and red for 30 seconds. At a randomly chosen time, the probability that the light will not be green is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{4}{12}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{7}{12}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Not-green time = 5 + 30 = 35 s out of 60 s; 35/60 = 7/12. (Note A and C are the same value 1/3, which is the not-green complement 25/60 — a distractor pair.)"
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "767",
+    "context": null,
+    "question": "The probability that A can solve a problem is \\(\\dfrac{2}{3}\\) and B can solve it is \\(\\dfrac{3}{4}\\). If both attempt the problem, what is the probability that the problem gets solved?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{11}{12}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{7}{12}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{5}{12}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{1}{2}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Assuming independence, P(solved) = 1 − P(both fail) = 1 − (1/3)(1/4) = 1 − 1/12 = 11/12."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "793",
+    "context": null,
+    "question": "If \\(P(A \\cap B) = \\dfrac{7}{10}\\) and \\(P(B) = \\dfrac{17}{20}\\), where P stands for probability, then \\(P(A \\mid B)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{7}{8}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{17}{20}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{14}{17}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{1}{8}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "P(A|B) = P(A∩B)/P(B) = (7/10)/(17/20) = (7/10)(20/17) = 14/17; sympy confirms 14/17."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "799",
+    "context": null,
+    "question": "If A and B are any two events associated with a random experiment such that \\(P(A) = \\dfrac{3}{8}\\), \\(P(B) = \\dfrac{5}{8}\\) and \\(P(A \\text{ or } B) = \\dfrac{3}{4}\\), then \\(P(A \\mid B)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{2}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{3}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{2}{5}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "P(A∩B) = 3/8 + 5/8 − 3/4 = 1/4; P(A|B) = (1/4)/(5/8) = 2/5. Verified with sympy Rationals."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "825",
+    "context": null,
+    "question": "A crime is committed by one of the two suspects, A and B. Initially, there is equal evidence against both of them. In further investigation at the crime scene, it is found that the guilty party has a blood type found in 20% of the population. If the suspect A does match this blood type, whereas the blood type of suspect B is unknown, then the probability that A is the guilty party is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{3}{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{5}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{2}{3}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Bayes with prior 1/2 each and evidence E = 'A matches': P(E|A guilty) = 1, P(E|B guilty) = 0.2 (population rate). P(A|E) = 0.5/(0.5 + 0.5·0.2) = 0.5/0.6 = 5/6."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "893",
+    "context": null,
+    "question": "If the average of the numbers 1, 2, 3, ...., 98, 99, \\(x\\) is \\(100x\\), then the value of \\(x\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{51}{100}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{50}{99}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{50}{101}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "100 numbers, sum = 4950 + x; (4950+x)/100 = 100x ⇒ 4950 = 9999x ⇒ x = 4950/9999 = 50/101. sympy.solve returns exactly 50/101."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "895",
+    "context": null,
+    "question": "Mode of 7, 6, 10, 7, 5, 9, 3, 7, 5 is",
+    "options": [
+      {
+        "label": "A",
+        "text": "6"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "7"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Frequencies: 7 occurs 3 times, 5 occurs twice, all others once. Mode = 7."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "896",
+    "context": null,
+    "question": "The arithmetic mean of 7 consecutive integers starting with \\(a\\) is \\(m\\). Then the arithmetic mean of 11 consecutive integers starting with \\(a + 2\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2a\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2m\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a + 4\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(m + 4\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Mean of a..a+6 is a+3 = m. Mean of (a+2)..(a+12) is a+7 = (m−3)+7 = m+4. sympy gives mean11 = a+7 and m+4 = a+7 (option C, a+4, is a distractor off by 3)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "900",
+    "context": null,
+    "question": "The arithmetic mean of the first \\(n\\) odd natural numbers is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2n\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(n(n+1)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{n}{2}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Sum of first n odd numbers = n²; mean = n²/n = n. sympy summation of (2k−1) for k=1..n divided by n simplifies to n."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "903",
+    "context": null,
+    "question": "The average marks of boys in a class is 52 and that of girls is 42. The average marks of boys and girls combined is 50. The percentage of boys in the class is",
+    "options": [
+      {
+        "label": "A",
+        "text": "80"
+      },
+      {
+        "label": "B",
+        "text": "60"
+      },
+      {
+        "label": "C",
+        "text": "40"
+      },
+      {
+        "label": "D",
+        "text": "20"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "52b + 42g = 50(b+g) ⇒ 2b = 8g ⇒ b = 4g (sympy confirms b = 4g). Boys fraction = 4/5 = 80%."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "913",
+    "context": null,
+    "question": "The mean deviation from the mean of the set of observations \\(-1, 0, 4\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Mean = (−1+0+4)/3 = 1; |−2|+|−1|+|3| = 6; mean deviation = 6/3 = 2. Computed numerically as 2.0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "935",
+    "context": null,
+    "question": "Let \\(x_1, x_2, \\ldots, x_n\\) be \\(n\\) observations, and let \\(\\bar{x}\\) be their arithmetic mean and \\(\\sigma^2\\) be their variance. **Statement 1:** Variance of \\(2x_1, 2x_2, \\ldots, 2x_n\\) is \\(4\\sigma^2\\). **Statement 2:** Arithmetic mean of \\(2x_1, 2x_2, \\ldots, 2x_n\\) is \\(4\\bar{x}\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "Statement 1 is true, Statement 2 is true; Statement 2 is not a correct explanation for Statement 1"
+      },
+      {
+        "label": "B",
+        "text": "Statement 1 is true, Statement 2 is false"
+      },
+      {
+        "label": "C",
+        "text": "Statement 1 is false, Statement 2 is true"
+      },
+      {
+        "label": "D",
+        "text": "Statement 1 is true, Statement 2 is true; Statement 2 is a correct explanation for Statement 1"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Var(2X) = 2²·Var(X) = 4σ², so Statement 1 is true. Mean(2X) = 2x̄, not 4x̄, so Statement 2 is false."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "937",
+    "context": null,
+    "question": "Variance of 2, 4, 6, 8, 10 is",
+    "options": [
+      {
+        "label": "A",
+        "text": "36"
+      },
+      {
+        "label": "B",
+        "text": "8"
+      },
+      {
+        "label": "C",
+        "text": "9"
+      },
+      {
+        "label": "D",
+        "text": "16"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Mean = 6; squared deviations 16+4+0+4+16 = 40; population variance = 40/5 = 8 (numpy.var = 8.0). Sample variance 10 is not an option, so the population convention is intended."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "941",
+    "context": null,
+    "question": "Variance of the numbers 2, 4, 6, 8 is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "8"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Mean = 5; squared deviations 9+1+1+9 = 20; population variance = 20/4 = 5 (numpy.var = 5.0). Sample variance 20/3 is not an option."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "954",
+    "context": null,
+    "question": "If the coefficient of variation and standard deviation are 60 and 21 respectively, the arithmetic mean of the distribution is",
+    "options": [
+      {
+        "label": "A",
+        "text": "60"
+      },
+      {
+        "label": "B",
+        "text": "30"
+      },
+      {
+        "label": "C",
+        "text": "35"
+      },
+      {
+        "label": "D",
+        "text": "21"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "CV = (σ/x̄)×100 ⇒ x̄ = σ×100/CV = 21×100/60 = 35."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1009",
+    "context": null,
+    "question": "If \\(\\sin\\theta + \\cosec\\theta = 2\\), then the value of \\(\\sin^6\\theta + \\cosec^6\\theta\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^3\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "t + 1/t = 2 with t = sinθ real forces t = 1 (AM–GM equality), so sinθ = cosecθ = 1 and sin⁶θ + cosec⁶θ = 1 + 1 = 2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1032",
+    "context": null,
+    "question": "If \\(\\cos x + \\cos^2 x = 1\\), then the value of \\(\\sin^{12} x + 3\\sin^{10} x + 3\\sin^8 x + \\sin^6 x - 1\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "cos x = 1 − cos²x = sin²x. With u = sin²x the expression is u³(u+1)³ − 1 = [u(u+1)]³ − 1 = [cos x + cos²x]³ − 1 = 1 − 1 = 0. sympy with cos x = (√5−1)/2 gives exactly 0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1094",
+    "context": null,
+    "question": "If \\(\\cot\\alpha \\cot\\beta = 2\\), then \\(\\frac{\\cos(\\alpha+\\beta)}{\\cos(\\alpha-\\beta)}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\tan\\alpha \\tan\\beta\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Dividing numerator and denominator by sinα sinβ: (cotαcotβ − 1)/(cotαcotβ + 1) = (2−1)/(2+1) = 1/3. Numeric check at α = 0.7, 1.1, 0.4, −0.6 with β set so cotαcotβ = 2 gives 0.333333333 each time. (Option D = tanαtanβ = 1/2, not 1/3.)"
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1100",
+    "context": null,
+    "question": "The value of \\(\\cot\\left(\\frac{\\pi}{4}-\\theta\\right)\\cdot\\cot\\left(\\frac{\\pi}{4}+\\theta\\right)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "cot(π/4+θ) = tan(π/4−θ), so the product is cot(π/4−θ)·tan(π/4−θ) = 1. Numeric check at θ = 0.1, 0.5, 1.0, −0.3 gives 1.0 each time."
+  }
+]

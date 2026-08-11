@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "bbf7d08b",
+    "ref": "1243",
+    "context": null,
+    "question": "In the figure, \\(ABC\\) is a triangle in which \\(\\angle C = 90^\\circ\\) and \\(AB = 5\\) cm. \\(D\\) is a point on \\(AB\\) such that \\(AD = 3\\) cm and \\(\\angle ACD = 60^\\circ\\). Then the length of \\(AC\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(5\\sqrt{\\frac{3}{7}}\\) cm"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sqrt{\\frac{5}{7}}\\) cm"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3}{\\sqrt{7}}\\) cm"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "With \\(\\angle A=\\alpha\\), \\(AC=5\\cos\\alpha\\) and sine rule in \\(\\triangle ACD\\) gives \\(3/\\sin 60^\\circ = AC/\\sin(120^\\circ-\\alpha)\\); this reduces to \\(2\\cos\\alpha=\\sqrt3\\sin\\alpha\\), i.e. \\(\\tan\\alpha=2/\\sqrt3\\), \\(\\cos\\alpha=\\sqrt3/\\sqrt7\\). Sympy solve gave \\(\\alpha=49.1066^\\circ\\) and \\(AC=3.27326835\\), exactly \\(5\\sqrt{3/7}=3.27326835\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1244",
+    "context": null,
+    "question": "In \\(\\triangle ABC\\), \\(\\frac{(a + b + c)(b + c - a)(c + a - b)(a + b - c)}{4b^2c^2} =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\cos^2 A\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cos^2 B\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sin^2 A\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sin^2 B\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "\\((a+b+c)(b+c-a)=2bc+(b^2+c^2-a^2)\\) and \\((c+a-b)(a+b-c)=2bc-(b^2+c^2-a^2)\\), so the numerator is \\(4b^2c^2-(2bc\\cos A)^2=4b^2c^2\\sin^2A\\). Sympy: expression minus \\(\\sin^2 A\\) (with \\(A=\\arccos((b^2+c^2-a^2)/2bc)\\)) simplifies to 0."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1250",
+    "context": null,
+    "question": "In a triangle \\(ABC\\), let \\(\\angle A = \\frac{\\pi}{2}\\) and \\((a + b + c)(b + c - a) = \\lambda bc\\), then \\(\\lambda\\) equals to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-2\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "\\((a+b+c)(b+c-a)=(b+c)^2-a^2=b^2+c^2+2bc-a^2\\); with \\(A=90^\\circ\\), \\(a^2=b^2+c^2\\) so it equals \\(2bc\\). Sympy substitution \\(a=\\sqrt{b^2+c^2}\\) returned exactly \\(2bc\\), hence \\(\\lambda=2\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1251",
+    "context": null,
+    "question": "The angles of a triangle are in the ratio \\(1 : 2 : 3\\), then the corresponding sides are in the ratio",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1 : \\sqrt{2} : \\sqrt{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1 : \\sqrt{3} : \\sqrt{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1 : \\sqrt{2} : 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1 : \\sqrt{3} : 2\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Angles are \\(30^\\circ,60^\\circ,90^\\circ\\); by the sine rule the sides are as \\(\\sin30:\\sin60:\\sin90 = 0.5:0.8660:1 = 1:\\sqrt3:2\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1256",
+    "context": null,
+    "question": "Area of \\(\\triangle ABC\\) is \\(a^2 - (b - c)^2\\). Then \\(\\tan(A/2)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{8}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Sympy confirmed \\(a^2-(b-c)^2 = 4(s-b)(s-c)\\) identically. Since \\(\\tan(A/2)=(s-b)(s-c)/\\Delta\\), the condition \\(\\Delta=4(s-b)(s-c)\\) gives \\(\\tan(A/2)=(s-b)(s-c)/[4(s-b)(s-c)]=1/4\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1257",
+    "context": null,
+    "question": "In a triangle \\(ABC\\), \\(\\frac{1}{a + c} + \\frac{1}{b + c} = \\frac{3}{a + b + c}\\), then \\(\\angle ABC\\) in degrees equals",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(60^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(30^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(45^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(90^\\circ\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "medium",
+    "working": "Sympy clearing denominators on the printed equation gives \\(a^2-ab+b^2-c^2=0\\), i.e. \\(\\cos C=ab/(2ab)=1/2\\Rightarrow C=60^\\circ\\) — but the stem asks for \\(\\angle ABC=B\\), which the (a,b)-symmetric condition cannot determine. STEM DEFECT: the standard form is \\(1/(a+b)+1/(b+c)=3/(a+b+c)\\), which sympy gives as \\(a^2-ac+c^2=b^2\\Rightarrow B=60^\\circ\\). Both readings yield 60°, so the letter is unambiguous."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1261",
+    "context": null,
+    "question": "If \\(A + B + C = \\pi\\), then \\(\\tan\\frac{A}{2}\\tan\\frac{B}{2} + \\tan\\frac{B}{2}\\tan\\frac{C}{2} + \\tan\\frac{C}{2}\\tan\\frac{A}{2} =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Standard half-angle identity: \\(A/2+B/2+C/2=\\pi/2\\) forces \\(\\sum\\tan\\frac{A}{2}\\tan\\frac{B}{2}=1\\). Numeric check at three random \\((A,B)\\) pairs returned exactly 1.0 each time."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1262",
+    "context": null,
+    "question": "The sides of a triangle are \\(6 + \\sqrt{12}\\), \\(\\sqrt{48}\\) and \\(\\sqrt{24}\\). The tangent of the smallest angle of the triangle is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{2} - 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{\\sqrt{3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sqrt{3}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Sides are 9.4641, 6.9282, 4.8990; the smallest angle faces \\(\\sqrt{24}\\). Sympy gave \\(\\cos\\theta=(72+24\\sqrt3)/(48+48\\sqrt3)=\\sqrt3/2\\), so \\(\\theta=30^\\circ\\) and \\(\\tan\\theta=0.57735=1/\\sqrt3\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1263",
+    "context": null,
+    "question": "In a right-angled triangle, the sides are \\(a\\), \\(b\\) and \\(c\\), with \\(c\\) as hypotenuse, and \\(c - b \\neq 1\\), \\(c + b \\neq 1\\). Then the value of \\(\\frac{\\log_{c+b} a + \\log_{c-b} a}{2\\log_{c+b} a \\times \\log_{c-b} a}\\) will be",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "\\((p+q)/(2pq)=\\tfrac12(1/p+1/q)=\\tfrac12[\\ln(c+b)+\\ln(c-b)]/\\ln a = \\tfrac12\\ln(c^2-b^2)/\\ln a\\), and \\(c^2-b^2=a^2\\), giving \\(\\tfrac12\\cdot 2=1\\). Sympy with \\(a=\\sqrt{(c-b)(c+b)}\\) simplified the whole expression to exactly 1."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1264",
+    "context": null,
+    "question": "In \\(\\triangle ABC\\), if \\(\\sin^2 A + \\sin^2 B + \\sin^2 C = 2\\), then the triangle is",
+    "options": [
+      {
+        "label": "A",
+        "text": "right angled, but need not be isosceles"
+      },
+      {
+        "label": "B",
+        "text": "right angled and isosceles"
+      },
+      {
+        "label": "C",
+        "text": "isosceles, but need not be right angled"
+      },
+      {
+        "label": "D",
+        "text": "equilateral"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Sympy verified the identity \\(\\sin^2A+\\sin^2B+\\sin^2C=2+2\\cos A\\cos B\\cos C\\) (difference simplifies to 0). So the condition forces \\(\\cos A\\cos B\\cos C=0\\), i.e. exactly one angle is \\(90^\\circ\\) with no constraint tying the legs equal (e.g. 3-4-5 satisfies it), hence right angled but not necessarily isosceles."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1265",
+    "context": null,
+    "question": "In \\(\\triangle ABC\\), if \\(s = \\frac{a + b + c}{2}\\), then \\(\\left(b\\cos^2\\frac{C}{2} + c\\cos^2\\frac{B}{2}\\right)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(s\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2s\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3s\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4s\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Half-angle expansion gives \\(\\tfrac{b+c}{2}+\\tfrac{b\\cos C+c\\cos B}{2}=\\tfrac{b+c}{2}+\\tfrac{a}{2}=s\\) by the projection formula. Sympy: expression minus \\((a+b+c)/2\\) simplifies to 0."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1268",
+    "context": null,
+    "question": "In a triangle \\(ABC\\), \\(AB = 1\\), \\(AC = 2\\) and \\(\\angle A = 60^\\circ\\), its largest angle is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(75^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(90^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(120^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(135^\\circ\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Cosine rule: \\(a^2=4+1-2\\cdot2\\cdot1\\cdot\\tfrac12=3\\), so \\(a=1.7320508\\). Numeric angles are \\(A=60^\\circ, B=90.000^\\circ, C=30.000^\\circ\\); the largest side \\(AC=2\\) faces \\(B=90^\\circ\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1271",
+    "context": null,
+    "question": "A positive acute angle is divided into two parts whose tangents are \\(1/2\\) and \\(1/3\\). Then the angle is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{5}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "\\(\\tan(x+y)=(\\tfrac12+\\tfrac13)/(1-\\tfrac16)=(5/6)/(5/6)=1\\); numerically 1.0, so the angle is \\(45^\\circ=\\pi/4\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1272",
+    "context": null,
+    "question": "In triangle \\(ABC\\), \\(a = 2\\), \\(b = 3\\), and \\(\\sin A = 2/3\\), then \\(B\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(30^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(60^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(90^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(120^\\circ\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Sine rule: \\(\\sin B = b\\sin A/a = 3(2/3)/2 = 1.0\\) exactly, so \\(B=90^\\circ\\) (the only value with sine 1, so no ambiguous case)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1274",
+    "context": null,
+    "question": "In any triangle \\(ABC\\), \\(c^2\\sin 2B + b^2\\sin 2C\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\Delta}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\Delta\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\Delta\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4\\Delta\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Writing \\(b=2R\\sin B, c=2R\\sin C\\) gives \\((bc/R)(c\\cos B+b\\cos C)=abc/R=4\\Delta\\) since \\(\\Delta=abc/4R\\). Numeric check on three random triangles gave value/\\(\\Delta\\) = 4.0 each time."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1277",
+    "context": null,
+    "question": "If in a \\(\\triangle ABC\\), \\(2b^2 = a^2 + c^2\\), then \\(\\frac{\\sin 3B}{\\sin B}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{c^2 - a^2}{2ca}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{c^2 - a^2}{ca}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\left(\\frac{c^2 - a^2}{ca}\\right)^2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\left(\\frac{c^2 - a^2}{2ca}\\right)^2\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "\\(\\sin3B/\\sin B = 4\\cos^2B-1\\) and \\(\\cos B=(a^2+c^2)/(4ac)\\), giving \\([(a^2+c^2)^2-4a^2c^2]/(4a^2c^2)=((c^2-a^2)/2ac)^2\\). Numeric at (a,c)=(3,4): LHS 0.08506944 vs D 0.08506944 (A 0.29167, B 0.58333, C 0.34028); also matched at (2,3) and (5,6)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1279",
+    "context": null,
+    "question": "If in \\(\\triangle ABC\\), \\(\\sin\\frac{A}{2}\\sin\\frac{C}{2} = \\sin\\frac{B}{2}\\) and \\(2s\\) is the perimeter of the triangle, then \\(s\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2b\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(b\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3b\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4b\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "\\(\\sin\\frac{B}{2}=\\cos\\frac{A+C}{2}\\) turns the condition into \\(2\\sin\\frac{A}{2}\\sin\\frac{C}{2}=\\cos\\frac{A}{2}\\cos\\frac{C}{2}\\), i.e. \\(\\tan\\frac{A}{2}\\tan\\frac{C}{2}=(s-b)/s=1/2\\Rightarrow s=2b\\). Numeric check on (4,3,5), (4.5,3,4.5), (3.5,3,5.5) — all with s/b=2 — gave LHS=RHS to 10 dp (e.g. 0.316227766 both sides)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1280",
+    "context": null,
+    "question": "In a triangle \\(ABC\\), \\((b + c)(bc)\\cos A + (a + c)(ac)\\cos B + (a + b)(ab)\\cos C\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a^2 + b^2 + c^2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a^3 + b^3 + c^3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((a + b + c)(a^2 + b^2 + c^2)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((a + b + c)(ab + bc + ca)\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Substituting the cosine rule collapses each term to \\((b+c)(b^2+c^2-a^2)/2\\) etc.; sympy expanded the full sum to exactly \\(a^3+b^3+c^3\\) (difference 0). Spot-check (3,4,5): value 216 = 27+64+125, vs 50 / 600 / 564 for the other options."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1281",
+    "context": null,
+    "question": "In a \\(\\triangle ABC\\) if \\((\\sqrt{3} - 1)a = 2b\\), \\(A = 3B\\), then \\(C\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(60^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(120^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(30^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(45^\\circ\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "\\(a/b=2/(\\sqrt3-1)=\\sqrt3+1\\), and \\(a/b=\\sin3B/\\sin B=3-4\\sin^2B\\), so \\(\\sin^2B=(2-\\sqrt3)/4\\Rightarrow B=15^\\circ\\), \\(A=45^\\circ\\), \\(C=120^\\circ\\). Numeric back-check: \\((\\sqrt3-1)(a/b)=2.0000\\) with \\(a/b=2.7320508\\)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1282",
+    "context": null,
+    "question": "If the ratio of the sides of a triangle is \\(4 : 5 : 7\\), then the triangle must be",
+    "options": [
+      {
+        "label": "A",
+        "text": "right angled triangle"
+      },
+      {
+        "label": "B",
+        "text": "acute angled triangle"
+      },
+      {
+        "label": "C",
+        "text": "obtuse angled triangle"
+      },
+      {
+        "label": "D",
+        "text": "right angled and isosceles triangle"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Largest angle faces 7: \\(\\cos\\theta=(16+25-49)/(2\\cdot4\\cdot5)=-8/40=-0.2<0\\), so that angle is \\(\\approx101.5^\\circ\\) — obtuse (and the sides are unequal, ruling out D)."
+  }
+]

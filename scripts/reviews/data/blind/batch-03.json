@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "bbf7d08b",
+    "ref": "1284",
+    "context": null,
+    "question": "\\(f(x) = |\\sin 2x| + |\\cos 2x|\\) is a periodic function with period",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{8}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "|sin t|+|cos t| has fundamental period pi/2 in t; with t=2x the period in x is pi/4. Numeric scan over 200 points on [0,3]: f(x+P)=f(x) holds for pi, pi/2, pi/4 but FAILS for pi/8, so the fundamental period is pi/4."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1290",
+    "context": null,
+    "question": "If the sides of the triangle are \\(5k\\), \\(6k\\), \\(5k\\), and radius of incircle is \\(6\\), then the value of \\(k\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(5\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(6\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(7\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "s=8k, Heron area = sqrt(8k*3k*2k*3k)=12k^2, so r=Area/s=12k^2/8k=1.5k. Setting 1.5k=6 gives k=4; verified numerically at k=4 the incircle radius is exactly 6.0."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1301",
+    "context": null,
+    "question": "If \\(x + \\frac{1}{x} = 2\\) then the principal value of \\(\\sin^{-1}x\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{3\\pi}{2}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "x+1/x=2 gives x^2-2x+1=0, i.e. (x-1)^2=0, so x=1. sin^{-1}(1)=pi/2. (Option D, 3pi/2, is outside the principal range [-pi/2,pi/2] anyway.)"
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1311",
+    "context": null,
+    "question": "The domain of \\(f(x) = \\sin^{-1}\\left(\\log_2\\left(\\frac{x}{2}\\right)\\right)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0 \\le x \\le 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0 \\le x \\le 4\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1 \\le x \\le 4\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4 \\le x \\le 6\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Need -1 <= log2(x/2) <= 1, i.e. 1/2 <= x/2 <= 2, i.e. 1 <= x <= 4 (which also enforces x>0 for the log). Options A and B wrongly include x near 0 where the log diverges."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1313",
+    "context": null,
+    "question": "In \\(\\triangle ABC\\), if \\(a = 2\\), \\(B = \\tan^{-1}\\frac{1}{2}\\), and \\(C = \\tan^{-1}\\frac{1}{3}\\), then \\((A, b) = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\left(\\frac{\\pi}{4}, \\frac{2\\sqrt{2}}{\\sqrt{5}}\\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\left(\\frac{3\\pi}{4}, \\frac{2}{\\sqrt{5}}\\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\left(\\frac{\\pi}{4}, \\frac{2}{\\sqrt{5}}\\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\left(\\frac{3\\pi}{4}, \\frac{2\\sqrt{2}}{\\sqrt{5}}\\right)\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "B+C = arctan((1/2+1/3)/(1-1/6)) = arctan(1) = pi/4, so A = pi - pi/4 = 3pi/4 (verified numerically: A = 2.356194490 = 3pi/4 exactly). Sine rule b = a*sinB/sinA = 2*(1/sqrt5)/(1/sqrt2) = 2sqrt2/sqrt5 = 1.264911064, matching option D."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1321",
+    "context": null,
+    "question": "The simplified expression of \\(\\sin(\\tan^{-1}x)\\), for any real number \\(x\\) is given by",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{\\sqrt{1+x^2}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{x}{\\sqrt{1+x^2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{1}{\\sqrt{1+x^2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\frac{x}{\\sqrt{1+x^2}}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "With theta = tan^{-1}x in (-pi/2,pi/2), cos theta > 0 and tan theta = x, so sin theta = x/sqrt(1+x^2); this is odd in x, matching the sign of x for both positive and negative x (unlike A and C)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1336",
+    "context": null,
+    "question": "If \\(\\tan^{-1}x + \\tan^{-1}y = \\frac{2\\pi}{3}\\), then \\(\\cot^{-1}x + \\cot^{-1}y\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\sqrt{3}}{2}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "cot^{-1}t = pi/2 - tan^{-1}t for all real t (cot^{-1} range (0,pi)), so the sum = pi - (tan^{-1}x + tan^{-1}y) = pi - 2pi/3 = pi/3."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1338",
+    "context": null,
+    "question": "\\(\\cot^{-1}(21) + \\cot^{-1}(13) + \\cot^{-1}(-8) = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cot^{-1}(26)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Using cot^{-1}t = pi/2 - arctan t (range (0,pi)): 0.0475831 + 0.0767719 + (pi - 0.1243550) = 3.14159265358979324 = pi to 30 digits. Equivalently arctan(1/21)+arctan(1/13) = arctan(1/8), which cancels the arctan part of cot^{-1}(-8)=pi-arctan(1/8)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1341",
+    "context": null,
+    "question": "The value of \\(\\tan^2(\\sec^{-1}2) + \\cot^2(\\operatorname{cosec}^{-1}3)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(13\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(15\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(11\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "tan^2 = sec^2 - 1 = 4-1 = 3 and cot^2 = cosec^2 - 1 = 9-1 = 8, giving 11; direct numeric evaluation of tan^2(arccos(1/2)) + cot^2(arcsin(1/3)) returns exactly 11.0."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1344",
+    "context": null,
+    "question": "If \\(\\cos^{-1}x + \\cos^{-1}y = \\dfrac{2\\pi}{7}\\), then the value of \\(\\sin^{-1}x + \\sin^{-1}y\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{4\\pi}{7}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{3\\pi}{7}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{2\\pi}{7}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{5\\pi}{7}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "sin^{-1}t + cos^{-1}t = pi/2 for each of x and y, so (sin^{-1}x + sin^{-1}y) = pi - (cos^{-1}x + cos^{-1}y) = pi - 2pi/7 = 5pi/7."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1351",
+    "context": null,
+    "question": "If \\(ab < 1\\) and \\(\\cos^{-1}\\left(\\dfrac{1-a^2}{1+a^2}\\right) + \\cos^{-1}\\left(\\dfrac{1-b^2}{1+b^2}\\right) = 2\\tan^{-1}x\\), then x is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{a}{1+ab}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{-a}{1+ab}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{a-b}{1-ab}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{a+b}{1-ab}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "cos^{-1}((1-a^2)/(1+a^2)) = 2tan^{-1}a for a>=0, so LHS = 2(tan^{-1}a + tan^{-1}b) = 2tan^{-1}((a+b)/(1-ab)) since ab<1. Verified at (a,b) = (0.5,0.7), (2,0.3), (0.2,0.1): LHS equals 2*atan((a+b)/(1-ab)) to 25 dps in all three."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1352",
+    "context": null,
+    "question": "The value of \\(\\sin^{-1}\\left(\\dfrac{2\\sqrt{2}}{3}\\right) + \\sin^{-1}\\left(\\dfrac{1}{3}\\right)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{2\\pi}{3}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "(2sqrt2/3)^2 + (1/3)^2 = 8/9 + 1/9 = 1, so the two angles are complementary. Numerically 1.2309594 + 0.3398369 = 1.5707963267948966192 = pi/2 to 30 dps."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1360",
+    "context": null,
+    "question": "If \\(ab > -1,\\ bc > -1\\) and \\(ca > -1\\), then the value of \\(\\cot^{-1}\\left(\\dfrac{ab+1}{a-b}\\right) + \\cot^{-1}\\left(\\dfrac{bc+1}{b-c}\\right) + \\cot^{-1}\\left(\\dfrac{ca+1}{c-a}\\right)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cot^{-1}(a+b+c)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\cot^{-1}(abc)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "medium",
+    "working": "Each term is tan^{-1}((a-b)/(1+ab)) = tan^{-1}a - tan^{-1}b etc., and the three telescope to 0, which is the only option consistent with that identity. CAVEAT: with the strict principal range cot^{-1} in (0,pi) the sum is not 0 — numerically it is exactly pi for (a,b,c) = (2,1,0.5), (3,0.5,-0.2) and (5,2,1) (and 2pi when a<b<c), since the negative-argument term picks up +pi. So D is the intended textbook answer but is only correct under the loose cot^{-1}t = tan^{-1}(1/t) convention."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1366",
+    "context": null,
+    "question": "If \\(\\tan^{-1}2x + \\tan^{-1}3x = \\dfrac{\\pi}{2}\\), then the value of x is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{\\sqrt{6}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{\\sqrt{3}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{1}{\\sqrt{2}}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Sum = pi/2 means the two angles are complementary, so 3x = cot(tan^{-1}2x) = 1/(2x), giving 6x^2 = 1, x = 1/sqrt6 (positive root, needed for both angles to be positive). Check: atan(2/sqrt6)+atan(3/sqrt6) = 1.5707963267948966192 = pi/2."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1371",
+    "context": null,
+    "question": "The value of \\(\\sin^{-1}\\left(\\dfrac{4}{5}\\right) + 2\\tan^{-1}\\left(\\dfrac{1}{3}\\right)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{\\pi}{6}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "2tan^{-1}(1/3) = tan^{-1}(3/4) = cos^{-1}(4/5), and sin^{-1}(4/5)+cos^{-1}(4/5) = pi/2. Numeric: 0.9272952 + 0.6435011 = 1.5707963267948966192 = pi/2 to 30 dps."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1382",
+    "context": null,
+    "question": "If \\(\\sin^{-1}x + \\sin^{-1}y = \\dfrac{2\\pi}{3}\\), then \\(\\cos^{-1}x + \\cos^{-1}y = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{\\pi}{6}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Adding sin^{-1}t + cos^{-1}t = pi/2 for x and y gives total pi, so cos^{-1}x + cos^{-1}y = pi - 2pi/3 = pi/3."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1385",
+    "context": null,
+    "question": "\\(\\sin\\left[\\sin^{-1}\\left(\\dfrac{2}{3}\\right) + 2\\cos^{-1}\\dfrac{2}{3}\\right] = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{3}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{2}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Write the bracket as (sin^{-1}(2/3)+cos^{-1}(2/3)) + cos^{-1}(2/3) = pi/2 + b, so the value is sin(pi/2+b) = cos b = 2/3. Direct numeric evaluation gives 0.666666666666666667."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1386",
+    "context": null,
+    "question": "\\(\\tan^{-1}\\dfrac{x}{\\sqrt{a^2-x^2}}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\sin^{-1}\\dfrac{x}{a}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sin^{-1}\\dfrac{2x}{a}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sin^{-1}\\dfrac{x}{a}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\cos^{-1}\\dfrac{x}{a}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Put x = a sin(theta); then sqrt(a^2-x^2) = a cos(theta) and the argument becomes tan(theta), so the expression is theta = sin^{-1}(x/a). Numeric check a=5, x=3: atan(3/4) = 0.6435011088 = asin(3/5)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1390",
+    "context": null,
+    "question": "\\(\\tan\\left[\\dfrac{1}{2}\\sin^{-1}\\left(\\dfrac{2x}{1+x^2}\\right) + \\dfrac{1}{2}\\cos^{-1}\\left(\\dfrac{1-x^2}{1+x^2}\\right)\\right] = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\infty\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{2x}{1-x^2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{2x}{1+x^2}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "medium",
+    "working": "For 0<=x<1 both inverse terms equal 2tan^{-1}x, so the bracket is 2tan^{-1}x and the tangent is 2x/(1-x^2); verified numerically at x=0.3 (0.65934066) and x=0.7 (2.74509804), both matching 2x/(1-x^2) exactly. CAVEAT: for x<0 the arccos term equals -2tan^{-1}x, so the bracket is 0 and the value is 0 (checked at x=-0.4), i.e. option C only holds on x>=0 — standard textbook answer regardless."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1394",
+    "context": null,
+    "question": "If \\(\\sin^{-1}x + \\sin^{-1}y = \\dfrac{\\pi}{2}\\), then \\(\\cos^{-1}x + \\cos^{-1}y = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{3\\pi}{4}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Summing sin^{-1}t + cos^{-1}t = pi/2 over x and y gives pi in total, so cos^{-1}x + cos^{-1}y = pi - pi/2 = pi/2."
+  }
+]

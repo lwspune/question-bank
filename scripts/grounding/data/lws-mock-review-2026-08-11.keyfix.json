@@ -1,0 +1,12 @@
+[
+  {
+    "id": "e6ede974-ff91-4bb3-9930-47e432ac0db9",
+    "new_label": "D",
+    "solution": "Mean \\(=\\dfrac{2+4+6+8}{4}=5\\). The deviations from the mean are \\(-3,-1,1,3\\), whose squares are \\(9,1,1,9\\) and sum to \\(20\\). Variance \\(=\\dfrac{20}{4}=5\\). Matches option D: \\(5\\).\n\n(The sample variance \\(\\dfrac{20}{3}\\approx 6.67\\) is likewise not among the options, so the intended reading is the population variance either way. The previously stored key, \\(8\\), is not attainable under either convention.)"
+  },
+  {
+    "id": "204f1f5d-05e0-4338-9078-eb6a1d562fd3",
+    "new_label": "C",
+    "solution": "Line 1 passes through the origin with direction \\(\\vec{b_1}=(2,2,4)\\); line 2 passes through \\((4,4,5)\\) with direction \\(\\vec{b_2}=(-2,8,5)\\).\n\n\\(\\vec{b_1}\\times\\vec{b_2}=\\big(2(5)-4(8),\\ 4(-2)-2(5),\\ 2(8)-2(-2)\\big)=(-22,-18,20)\\), so \\(|\\vec{b_1}\\times\\vec{b_2}|=\\sqrt{484+324+400}=\\sqrt{1208}\\approx 34.756\\).\n\nWith \\(\\vec{a_2}-\\vec{a_1}=(4,4,5)\\): \\((\\vec{a_2}-\\vec{a_1})\\cdot(\\vec{b_1}\\times\\vec{b_2})=4(-22)+4(-18)+5(20)=-60\\).\n\nShortest distance \\(=\\dfrac{|-60|}{\\sqrt{1208}}\\approx 1.726\\), which lies in \\([1,2)\\). Matches option C.\n\n(Confirmed independently by minimising \\(|(\\vec{a_1}+s\\vec{b_1})-(\\vec{a_2}+t\\vec{b_2})|\\) numerically, which returns the same \\(1.7263\\).)"
+  }
+]

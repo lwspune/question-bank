@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "dc8435b7",
+    "ref": "5",
+    "context": null,
+    "question": "The set \\(A = \\{x : |2x + 3| < 7\\}\\) is equal to the set",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(D = \\{x : 0 < x + 5 < 7\\}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(B = \\{x : -3 < x < 7\\}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(E = \\{x : -7 < x < 7\\}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(C = \\{x : -13 < 2x < 4\\}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "|2x+3|<7 gives -7<2x+3<7 -> -10<2x<4 -> -5<x<2. Option A: 0<x+5<7 -> -5<x<2, exact match; D gives -6.5<x<2, B and C are wrong intervals."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "10",
+    "context": null,
+    "question": "Let \\(A = \\{1, 2, \\{a, b\\}, 3, 4\\}\\) which among the following statements is incorrect?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\{a, b\\} \\subset A\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\{a, b\\} \\in A\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\{\\{a, b\\}\\} \\subset A\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\{1, 2\\} \\subset A\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "{a,b} subset A would require a in A and b in A, but the element of A is the SET {a,b}, not a and b individually — so A is false. B is true ({a,b} is listed as an element), C is true since its only element {a,b} lies in A, D is true since 1,2 in A."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "21",
+    "context": null,
+    "question": "The value of \\(\\cos 20^\\circ + 2\\sin^2 55^\\circ - \\sqrt{2}\\sin 65^\\circ\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "2sin^2 55 = 1 - cos110 = 1 + sin20, and cos20 + sin20 = sqrt2 sin65, so the expression collapses to 1. Numeric check: 0.9396926 + 1.3420201 - 1.2817127 = 1.000000000."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "26",
+    "context": null,
+    "question": "Consider all the real roots of the equation \\(x^{4}-10x^{2}+9=0\\). What is the sum of the absolute values of the roots?",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "(x^2-1)(x^2-9)=0 so roots are -3,-1,1,3 (sympy confirms). Sum of absolute values = 3+1+1+3 = 8."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "51",
+    "context": null,
+    "question": "On R, the relation \\(\\rho\\) be defined by '\\(x \\rho y\\) holds if and only if \\(x - y\\) is zero or irrational'. Then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\rho\\) is reflexive and transitive but not symmetric"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\rho\\) is reflexive and symmetric but not transitive"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\rho\\) is symmetric and transitive but not reflexive"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\rho\\) is equivalence relation"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Reflexive: x-x=0 qualifies. Symmetric: x-y irrational iff y-x irrational. Not transitive: 1 rho (1+sqrt2) since -sqrt2 is irrational, (1+sqrt2) rho 2 since sqrt2-1 is irrational, but 1-2 = -1 is a nonzero rational."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "63",
+    "context": null,
+    "question": "Let S be the set of all real numbers. A relation R has been defined on S by \\(aRb \\Leftrightarrow |a - b| \\le 1\\), then R is",
+    "options": [
+      {
+        "label": "A",
+        "text": "symmetric and transitive but not reflexive"
+      },
+      {
+        "label": "B",
+        "text": "reflexive and transitive but not symmetric"
+      },
+      {
+        "label": "C",
+        "text": "reflexive and symmetric but not transitive"
+      },
+      {
+        "label": "D",
+        "text": "an equivalence relation"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "|a-a|=0<=1 so reflexive; |a-b|=|b-a| so symmetric. Transitivity fails: |0-1|=1<=1 and |1-2|=1<=1 but |0-2|=2>1."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "89",
+    "context": null,
+    "question": "If \\(z = i^9 + i^{19}\\), then \\(z\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0 + 0i\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1 + 0i\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0 + i\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1 + 2i\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "i^9 = i^(4*2+1) = i and i^19 = i^(4*4+3) = -i, so the sum is 0. Python check: 1j**9 + 1j**19 = 0j."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "91",
+    "context": null,
+    "question": "\\(\\dfrac{(1+i)^{2016}}{(1-i)^{2014}} =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-2i\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2i\\)"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "\\(-2\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "(1+i)^2=2i so numerator = (2i)^1008 = 2^1008; (1-i)^2=-2i so denominator = (-2i)^1007 = 2^1007 i. Ratio = 2/i = -2i; sympy simplify gives exactly -2*I."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "154",
+    "context": null,
+    "question": "The points \\(0\\), \\(2 + 3i\\), \\(i\\), \\(-2 - 2i\\) in the Argand plane are the vertices of a",
+    "options": [
+      {
+        "label": "A",
+        "text": "rectangle"
+      },
+      {
+        "label": "B",
+        "text": "rhombus"
+      },
+      {
+        "label": "C",
+        "text": "trapezium"
+      },
+      {
+        "label": "D",
+        "text": "parallelogram"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Taking A(0,0), B(2,3), C(0,1), D(-2,-2) in the listed order: AB = (2,3) = DC = (2,3), so ABCD is a parallelogram. It is not a rectangle (AB.AD = -10 != 0) and not a rhombus (|AB|=sqrt13 vs |AD|=sqrt8)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "156",
+    "context": null,
+    "question": "For any complex number \\(z\\), the minimum value of \\(|z| + |z - 1|\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "\\(-1\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "|z| + |z-1| >= |z - (z-1)| = 1 by the triangle inequality, with equality for any z on the segment [0,1]. Numeric grid scan over the plane returns minimum 1.0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "194",
+    "context": null,
+    "question": "Let \\(\\alpha\\) and \\(\\beta\\) be the roots of the equation \\(px^2 + qx + r = 0\\). If \\(p, q, r\\) are in A.P. and \\(\\alpha + \\beta = 4\\), then \\(\\alpha\\beta\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-9\\)"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "\\(-5\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{4}{3}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "alpha+beta = -q/p = 4 gives q = -4p; A.P. gives 2q = p+r so r = 2(-4p) - p = -9p. Hence alpha*beta = r/p = -9 (sympy solve returns q=-4p, r=-9p)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "214",
+    "context": null,
+    "question": "If \\(a\\) is positive and if \\(A\\) and \\(G\\) are the arithmetic mean and the geometric mean of the roots of \\(x^2 - 2ax + a^2 = 0\\) respectively, then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A = G\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(A = 2G\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2A = G\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(A^2 = G\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "x^2-2ax+a^2 = (x-a)^2, so both roots equal a. Then A = (a+a)/2 = a and G = sqrt(a*a) = a (a>0), so A = G."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "215",
+    "context": null,
+    "question": "If the difference between the roots of the equation \\(x^2 + ax + 1 = 0\\) is less than \\(\\sqrt5\\), then the set of possible values of \\(a\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((3, \\infty)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((-\\infty, -3)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((-3, 3)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((-3, \\infty)\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "medium",
+    "working": "|alpha-beta| = sqrt((alpha+beta)^2 - 4*alpha*beta) = sqrt(a^2-4) < sqrt5 gives a^2 < 9, i.e. -3 < a < 3. Medium only because for |a|<2 the roots are non-real so the 'difference' is strictly interpretable only via the same formula; the standard intended answer is (-3,3)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "270",
+    "context": null,
+    "question": "Number of ways in which 7 distinct objects can be distributed among 4 children",
+    "options": [
+      {
+        "label": "A",
+        "text": "P(7, 4)"
+      },
+      {
+        "label": "B",
+        "text": "7!"
+      },
+      {
+        "label": "C",
+        "text": "4!"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Each of the 7 distinct objects independently goes to one of 4 children, giving 4^7 = 16384. The offered values are P(7,4)=840, 7!=5040, 4!=24 — none equals 16384, so 'None of these'."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "301",
+    "context": null,
+    "question": "Find \\({}^{n}C_{21}\\) if \\({}^{n}C_{10} = {}^{n}C_{11}\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "0"
+      },
+      {
+        "label": "C",
+        "text": "11"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "nCr = nCs with r != s forces n = r+s = 10+11 = 21 (sympy confirms C(21,10)==C(21,11)). Then 21C21 = 1."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "318",
+    "context": null,
+    "question": "Statement-1 : The number of ways of distributing 10 identical balls in 4 distinct boxes such that no box is empty is \\({}^{9}C_{3}\\).\nStatement-2 : The number of ways of choosing any 3 places from 9 different places is \\({}^{9}C_{3}\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "Statement-1 is true, Statement-2 is false."
+      },
+      {
+        "label": "B",
+        "text": "Statement-1 is false, Statement-2 is true."
+      },
+      {
+        "label": "C",
+        "text": "Statement-1 is true, Statement-2 is true; Statement-2 is a correct explanation for statement-1."
+      },
+      {
+        "label": "D",
+        "text": "Statement-1 is true, Statement-2 is true; Statement-2 is not a correct explanation for statement-1."
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "medium",
+    "working": "Stars and bars: 10 identical balls in a row create 9 internal gaps and choosing 3 of them for dividers gives C(9,3)=84 with no box empty, so Statement-1 is true; Statement-2 is trivially true and is exactly that gap-selection argument, hence a correct explanation. Medium because 'correct explanation' is a judgement call, though the gap argument is literally Statement-2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "323",
+    "context": null,
+    "question": "The number of diagonals in a polygon is 20. The number of sides of the polygon is",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "n(n-3)/2 = 20 gives n^2-3n-40 = 0 = (n-8)(n+5), so n = 8 (sympy returns 8 as the positive root)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "328",
+    "context": null,
+    "question": "The number of ways of selecting a boy and a girl from a class consisting of 20 boys and 30 girls is",
+    "options": [
+      {
+        "label": "A",
+        "text": "50"
+      },
+      {
+        "label": "B",
+        "text": "10"
+      },
+      {
+        "label": "C",
+        "text": "600"
+      },
+      {
+        "label": "D",
+        "text": "1300"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Independent choices multiply: 20 x 30 = 600."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "362",
+    "context": null,
+    "question": "If in the expansion of \\((1+px)^{n}\\), \\(n\\in N\\), the coefficient of \\(x\\) and \\(x^{2}\\) are 8 and 24, then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(n=3,\\ p=2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(n=5,\\ p=3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n=4,\\ p=3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(n=4,\\ p=2\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "np = 8 and n(n-1)p^2/2 = 24; substituting p = 8/n gives 32(n-1)/n = 24 -> n = 4, p = 2. Sympy solve on the pair returns exactly {n:4, p:2}, and (1+2x)^4 has coefficients 8 and 24."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "397",
+    "context": null,
+    "question": "The sum of all positive divisors of 450 is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1209"
+      },
+      {
+        "label": "B",
+        "text": "1299"
+      },
+      {
+        "label": "C",
+        "text": "1199"
+      },
+      {
+        "label": "D",
+        "text": "1099"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "450 = 2 * 3^2 * 5^2, so sigma = (1+2)(1+3+9)(1+5+25) = 3*13*31 = 1209. Direct summation of sympy's divisor list confirms 1209."
+  }
+]
